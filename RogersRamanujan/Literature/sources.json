@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "project": "Mathathon/RogersRamanujan",
+  "problem_id": 127,
+  "prepared_date": "2026-11-13",
+  "scope": "Curated primary-source reading and implementation handoff, with access gaps explicitly recorded.",
+  "sources": [
+    {
+      "accessed_date": "2026-11-13",
+      "notes_file": "PROBLEM_SPEC.md",
+      "independently_verified": false,
+      "id": "SAIR127",
+      "title": "Rogers Ramanujan Identity",
+      "authors": [
+        "SAIR Mathathon problem catalog"
+      ],
+      "year": 2026,
+      "kind": "competition_problem",
+      "url": "https://competition.sair.foundation/competitions/mathathon/problems/127",
+      "read_status": "official_description_references_and_desired_outcome_read_in_browser",
+      "locators": [
+        "Description",
+        "Reference/source material",
+        "Desired outcome"
+      ],
+      "roles": [
+        "Main",
+        "Computation",
+        "Counterexamples",
+        "Experimental",
+        "Lean"
+      ]
+    },
+    {
+      "accessed_date": "2026-11-13",
+      "notes_file": "READING_NOTES.md",
+      "independently_verified": false,
+      "id": "GM81a",
+      "title": "Method for constructing bijections for classical partition identities",
+      "authors": [
+        "A. M. Garsia",
+        "S. C. Milne"
+      ],
+      "year": 1981,
+      "kind": "journal_article",
+      "journal": "Proceedings of the National Academy of Sciences",
+      "volume": "78",
+      "issue": "4",
+      "pages": "2026-2028",
+      "doi": "10.1073/pnas.78.4.2026",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.78.4.2026",
+      "alternate_urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC319275/"
+      ],
+      "read_status": "abstract_and_metadata_only",
+      "locators": [
+        "Abstract"
+      ],
+      "access_gap": "Scanned full text not retrieved; full-text review remains outstanding.",
+      "roles": [
+        "Main",
+        "Computation",
+        "Lean"
+      ]
+    },
+    {
+      "accessed_date": "2026-11-13",
+      "notes_file": "READING_NOTES.md",
+      "independently_verified": false,
+      "id": "GM81b",
+      "title": "A Rogers-Ramanujan bijection",
+      "authors": [
+        "A. M. Garsia",
+        "S. C. Milne"
+      ],
+      "year": 1981,
+      "kind": "journal_article",
+      "journal": "Journal of Combinatorial Theory, Series A",
+      "volume": "31",
+      "issue": "3",
+      "pages": "289-339",
+      "doi": "10.1016/0097-3165(81)90062-5",
+      "url": "https://www.sciencedirect.com/science/article/pii/0097316581900625",
+      "read_status": "abstract_metadata_and_references_only",
+      "locators": [
+        "Abstract",
+        "References"
+      ],
+      "access_gap": "Complete 51-page argument not retrieved.",
+      "roles": [
+        "Main",
+        "Computation"
+      ]
+    },
+    {
+      "accessed_date": "2026-11-13",
+      "notes_file": "READING_NOTES.md",
+      "independently_verified": false,
+      "id": "BZ82",
+      "title": "A short Rogers-Ramanujan bijection",
+      "authors": [
+        "David M. Bressoud",
+        "Doron Zeilberger"
+      ],
+      "year": 1982,
+      "kind": "journal_article",
+      "journal": "Discrete Mathematics",
+      "volume": "38",
+      "issue": "2-3",
+      "pages": "313-315",
+      "doi": "10.1016/0012-365X(82)90298-9",
+      "url": "https://sites.math.rutgers.edu/~zeilberg/mamarimY/rrDG.pdf",
+      "read_status": "paper_text_read_first_page_visually_checked",
+      "locators": [
+        "p. 313: intermediate family B(n), shift, and X(n)",
+        "p. 314: involutions phi and psi, iteration and stopping argument",
+        "p. 315: examples"
+      ],
+      "roles": [
+        "Main",
+        "Computation",
+        "Counterexamples",
+        "Experimental",
+        "Lean"
+      ]
+    },
+    {
+      "accessed_date": "2026-11-13",
+      "notes_file": "READING_NOTES.md",
+      "independently_verified": false,
+      "id": "BP06",
+      "title": "A combinatorial proof of the Rogers-Ramanujan and Schur identities",
+      "authors": [
+        "Cilanne Boulet",
+        "Igor Pak"
+      ],
+      "year": 2006,
+      "kind": "journal_article",
+      "journal": "Journal of Combinatorial Theory, Series A",
+      "volume": "113",
+      "issue": "6",
+      "pages": "1019-1030",
+      "doi": "10.1016/j.jcta.2005.09.007",
+      "arxiv": "math/0411072",
+      "url": "https://pi.math.cornell.edu/~cilanne/Publications/RogersRamanujan.pdf",
+      "alternate_urls": [
+        "https://arxiv.org/abs/math/0411072"
+      ],
+      "version_note": "Author PDF dated 2005-09-12; journal year 2006.",
+      "read_status": "selected_sections_read",
+      "locators": [
+        "Introduction",
+        "Section 1",
+        "Section 2: definitions, Lemmas 2.2 and 2.4, inverse construction",
+        "Section 3"
+      ],
+      "roles": [
+        "Main",
+        "Experimental",
+        "Lean"
+      ]
+    },
+    {
+      "accessed_date": "2026-11-13",
+      "notes_file": "READING_NOTES.md",
+      "independently_verified": false,
+      "id": "PAK06",
+      "title": "Partition bijections, a survey",
+      "authors": [
+        "Igor Pak"
+      ],
+      "year": 2006,
+      "kind": "journal_survey",
+      "journal": "Ramanujan Journal",
+      "volume": "12",
+      "pages": "5-75",
+      "url": "https://www.math.ucla.edu/~pak/papers/psurvey.pdf",
+      "version_note": "Available 69-page preprint dated 2002-09-18; section locators refer to that file.",
+      "read_status": "selected_sections_read",
+      "locators": [
+        "Sections 7.1-7.2: selected passages",
+        "Section 8.4, especially 8.4.4-8.4.5",
+        "Historical remarks on Sections 7-8"
+      ],
+      "roles": [
+        "Main",
+        "Computation",
+        "Lean"
+      ]
+    },
+    {
+      "accessed_date": "2026-11-13",
+      "notes_file": "READING_NOTES.md",
+      "independently_verified": false,
+      "id": "PAK04",
+      "title": "The nature of partition bijections II. Asymptotic stability",
+      "authors": [
+        "Igor Pak"
+      ],
+      "year": 2004,
+      "kind": "preprint",
+      "pages": "32 pages",
+      "url": "https://www.math.ucla.edu/~pak/papers/stab5.pdf",
+      "alternate_urls": [
+        "https://www.math.ucla.edu/~pak/papers/research.htm"
+      ],
+      "version_note": "Year from author's research listing; PDF date typography is ambiguous.",
+      "read_status": "selected_sections_read_definition_audit_outstanding",
+      "locators": [
+        "Introduction",
+        "Theorem 4.1",
+        "Final discussion and reference [18]"
+      ],
+      "limitation": "Detailed definitions and a proposed map's compliance remain to be audited; the separate RR obstruction paper is cited as in preparation.",
+      "roles": [
+        "Main",
+        "Counterexamples",
+        "Experimental"
+      ]
+    },
+    {
+      "accessed_date": "2026-11-13",
+      "notes_file": "READING_NOTES.md",
+      "independently_verified": false,
+      "id": "PAK18",
+      "title": "Complexity problems in enumerative combinatorics",
+      "authors": [
+        "Igor Pak"
+      ],
+      "year": 2018,
+      "kind": "survey_author_version",
+      "url": "https://www.math.ucla.edu/~pak/papers/ICM-paper9.pdf",
+      "version_note": "Author PDF title and date 2018-04-21 retained.",
+      "read_status": "selected_sections_read",
+      "locators": [
+        "Sections 3.2, 3.4 and 3.5",
+        "Theorem 3.1",
+        "References [137]-[138]"
+      ],
+      "limitation": "Use exact geometric hypotheses; the obstruction statement does not exclude every informal notion of naturalness.",
+      "roles": [
+        "Main",
+        "Computation",
+        "Counterexamples"
+      ]
+    },
+    {
+      "accessed_date": "2026-11-13",
+      "notes_file": "READING_NOTES.md",
+      "independently_verified": false,
+      "id": "SOODAK18",
+      "title": "New perspectives on the first Rogers-Ramanujan identity: potential steps towards a simple bijective proof",
+      "authors": [
+        "Ellis Soodak"
+      ],
+      "year": 2018,
+      "kind": "undergraduate_research_paper",
+      "url": "https://math.uchicago.edu/~may/REU2018/REUPapers/Soodak.pdf",
+      "version_note": "Dated 2018-07-20; University of Chicago REU paper.",
+      "read_status": "selected_sections_read",
+      "locators": [
+        "Section 3",
+        "Section 4, Definitions 4.1, 4.2 and 4.4",
+        "Conjecture 4.6, pp. 5-7"
+      ],
+      "limitation": "Conjecture 4.6 is reported checked through n=20, not proved.",
+      "roles": [
+        "Experimental",
+        "Counterexamples"
+      ]
+    },
+    {
+      "accessed_date": "2026-11-13",
+      "notes_file": "READING_NOTES.md",
+      "independently_verified": false,
+      "id": "MSZ09",
+      "title": "Rogers-Ramanujan computer searches",
+      "authors": [
+        "James McLaughlin",
+        "Andrew V. Sills",
+        "Peter Zimmer"
+      ],
+      "year": 2009,
+      "kind": "journal_article",
+      "journal": "Journal of Symbolic Computation",
+      "volume": "44",
+      "issue": "8",
+      "pages": "1068-1078",
+      "doi": "10.1016/j.jsc.2009.02.003",
+      "arxiv": "1812.08222",
+      "url": "https://sites.math.rutgers.edu/~asills/compsearch/CompSearchJSCrev.pdf",
+      "alternate_urls": [
+        "https://digitalcommons.wcupa.edu/math_facpub/30/",
+        "https://arxiv.org/abs/1812.08222"
+      ],
+      "version_note": "Author PDF dated 2009-03-02; arXiv deposit is later.",
+      "read_status": "introduction_and_search_method_passages_read",
+      "locators": [
+        "Introduction",
+        "Section 3: PARI/GP search",
+        "Section 4: Maple search"
+      ],
+      "roles": [
+        "Computation",
+        "Experimental"
+      ]
+    },
+    {
+      "accessed_date": "2026-11-13",
+      "notes_file": "HEXAGON_REVIEW.md",
+      "independently_verified": false,
+      "id": "HEX26",
+      "title": "Riordan lattice paths counted by area",
+      "authors": [
+        "Ilmar Gahramanov"
+      ],
+      "year": 2026,
+      "kind": "hexagon_preprint",
+      "identifier": "hexagon:2610.00705v1",
+      "url": "https://hexagonmath.org/2610.00705v1",
+      "alternate_urls": [
+        "https://hexagonmath.org/pdf/2610.00705v1"
+      ],
+      "source_manifest_url": "https://hexagonmath.org/api/v1/works/2610.00705v1/source",
+      "source_url": "https://hexagonmath.org/api/v1/works/2610.00705v1/source?path=main.tex",
+      "local_source": "sources/hexagon_2610_00705v1.tex",
+      "source_sha256": "c9e2e50b097412de3d59e0d7982f4b08a51f714de641b7106a22a28054074145",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "version_note": "Record header 2026-11-02; history entry 2026-10-31; retain explicit v1.",
+      "read_status": "relevant_tex_sections_read_and_source_integrity_verified",
+      "locators": [
+        "Sections 1-4",
+        "Section 3, source labels sec:fe, eq:fe and eq:rec",
+        "Section 4, equation (4.7), source label eq:dyck"
+      ],
+      "provenance_summary": "Record declares mixed human/AI text and partial human understanding.",
+      "limitation": "Adjacent path-generating-function work, not a solution to SAIR127; asymptotic claims not independently audited.",
+      "roles": [
+        "Experimental",
+        "Computation"
+      ]
+    }
+  ]
+}

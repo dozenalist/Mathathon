@@ -1,0 +1,339 @@
+{
+  "accessed_date": "2026-11-13",
+  "scope": "Public catalog metadata search; not full-text search",
+  "queries": [
+    {
+      "query": "Rogers",
+      "url": "https://hexagonmath.org/api/v1/works?q=Rogers&limit=100",
+      "page": {
+        "limit": 100,
+        "next_cursor": null,
+        "has_more": false,
+        "total": 0
+      },
+      "works": []
+    },
+    {
+      "query": "Ramanujan",
+      "url": "https://hexagonmath.org/api/v1/works?q=Ramanujan&limit=100",
+      "page": {
+        "limit": 100,
+        "next_cursor": null,
+        "has_more": false,
+        "total": 7
+      },
+      "works": [
+        {
+          "id": "hexagon:2611.00415v1",
+          "title": "Every even integer greater than 2 is a prime plus a product of at most 18 primes",
+          "url": "https://hexagonmath.org/abs/2611.00415v1"
+        },
+        {
+          "id": "hexagon:2611.00182v1",
+          "title": "The Exact Second Order Term In Ramanujan's Bound For $\\sigma(n)/n$",
+          "url": "https://hexagonmath.org/abs/2611.00182v1"
+        },
+        {
+          "id": "hexagon:2610.00702v2",
+          "title": "Robin's Inequality at Colossally Abundant Numbers and Nicolas' Inequality at Their Largest Prime Factor",
+          "url": "https://hexagonmath.org/abs/2610.00702v2"
+        },
+        {
+          "id": "hexagon:2610.00692v1",
+          "title": "The partition exponent in the graded pieces of the Claude 3-SAT algorithm is optimal for pieces of that shape",
+          "url": "https://hexagonmath.org/abs/2610.00692v1"
+        },
+        {
+          "id": "hexagon:2610.00560v4",
+          "title": "A lower explicit threshold for Chen's theorem under GRH",
+          "url": "https://hexagonmath.org/abs/2610.00560v4"
+        },
+        {
+          "id": "hexagon:2610.00411v1",
+          "title": "Beyond the Event Horizon: An Operator-First Theory of Persistent Geometry and Black Hole Dynamics",
+          "url": "https://hexagonmath.org/abs/2610.00411v1"
+        },
+        {
+          "id": "hexagon:2610.00375v1",
+          "title": "Ramanujan's prime counting inequality holds for all x ≥ 38,358,837,683: ranges from the zeros, a spectral barrier, and trade-offs",
+          "url": "https://hexagonmath.org/abs/2610.00375v1"
+        }
+      ]
+    },
+    {
+      "query": "partition bijection",
+      "url": "https://hexagonmath.org/api/v1/works?q=partition%20bijection&limit=100",
+      "page": {
+        "limit": 100,
+        "next_cursor": null,
+        "has_more": false,
+        "total": 0
+      },
+      "works": []
+    },
+    {
+      "query": "biject",
+      "url": "https://hexagonmath.org/api/v1/works?q=biject&limit=100",
+      "page": {
+        "limit": 100,
+        "next_cursor": null,
+        "has_more": false,
+        "total": 10
+      },
+      "works": [
+        {
+          "id": "hexagon:2611.00304v1",
+          "title": "Singular perpendicular orbits and complete periodicity in rational triangles",
+          "url": "https://hexagonmath.org/abs/2611.00304v1"
+        },
+        {
+          "id": "hexagon:2611.00276v1",
+          "title": "Definability and Lifting in Model Subgroupoids",
+          "url": "https://hexagonmath.org/abs/2611.00276v1"
+        },
+        {
+          "id": "hexagon:2611.00088v1",
+          "title": "Counting Eulerian circuits in subexponential time, assuming the new #SAT algorithms",
+          "url": "https://hexagonmath.org/abs/2611.00088v1"
+        },
+        {
+          "id": "hexagon:2610.00733v2",
+          "title": "Haagerup vertex operator algebras at central charge eight",
+          "url": "https://hexagonmath.org/abs/2610.00733v2"
+        },
+        {
+          "id": "hexagon:2610.00579v1",
+          "title": "Analytic q-inequalities and a proof of Bergeron's conjecture",
+          "url": "https://hexagonmath.org/abs/2610.00579v1"
+        },
+        {
+          "id": "hexagon:2610.00543v1",
+          "title": "Recurrent tubes and connectedness-preserving bijections of Euclidean spaces",
+          "url": "https://hexagonmath.org/abs/2610.00543v1"
+        },
+        {
+          "id": "hexagon:2610.00538v1",
+          "title": "Nonlinear Wave Limits of Reversible Finite-State Cellular Automata",
+          "url": "https://hexagonmath.org/abs/2610.00538v1"
+        },
+        {
+          "id": "hexagon:2610.00421v1",
+          "title": "Disjoint union activation of difference distance magic labelings",
+          "url": "https://hexagonmath.org/abs/2610.00421v1"
+        },
+        {
+          "id": "hexagon:2610.00237v1",
+          "title": "Unipotent tensor categories and pronilpotent Lie quasibialgebras",
+          "url": "https://hexagonmath.org/abs/2610.00237v1"
+        },
+        {
+          "id": "hexagon:2610.00024v1",
+          "title": "Reflexive equivalence and reflexive-minimal algebras",
+          "url": "https://hexagonmath.org/abs/2610.00024v1"
+        }
+      ]
+    },
+    {
+      "query": "partition",
+      "url": "https://hexagonmath.org/api/v1/works?q=partition&limit=100",
+      "page": {
+        "limit": 100,
+        "next_cursor": null,
+        "has_more": false,
+        "total": 38
+      },
+      "works": [
+        {
+          "id": "hexagon:2611.00368v2",
+          "title": "Supersymmetric Analysis of a Random Band Matrix at Criticality, Volume I",
+          "url": "https://hexagonmath.org/abs/2611.00368v2"
+        },
+        {
+          "id": "hexagon:2611.00367v2",
+          "title": "Supersymmetric Analysis of a Random Band Matrix at Criticality, Volume II",
+          "url": "https://hexagonmath.org/abs/2611.00367v2"
+        },
+        {
+          "id": "hexagon:2611.00361v1",
+          "title": "A unimodular continued fraction for cubic irrationals",
+          "url": "https://hexagonmath.org/abs/2611.00361v1"
+        },
+        {
+          "id": "hexagon:2611.00329v1",
+          "title": "Genuinely multipartite bound entanglement of three qubits",
+          "url": "https://hexagonmath.org/abs/2611.00329v1"
+        },
+        {
+          "id": "hexagon:2611.00300v1",
+          "title": "Integral torus partition functions just above c=1 have no fixed spectral gap",
+          "url": "https://hexagonmath.org/abs/2611.00300v1"
+        },
+        {
+          "id": "hexagon:2611.00270v1",
+          "title": "Quartic exponential matching in the unit square",
+          "url": "https://hexagonmath.org/abs/2611.00270v1"
+        },
+        {
+          "id": "hexagon:2611.00269v1",
+          "title": "Sublinear-space recognition for Boolean grammars",
+          "url": "https://hexagonmath.org/abs/2611.00269v1"
+        },
+        {
+          "id": "hexagon:2611.00191v1",
+          "title": "The orphan theorem: degenerate perpendicular orbits in rational right triangles",
+          "url": "https://hexagonmath.org/abs/2611.00191v1"
+        },
+        {
+          "id": "hexagon:2611.00174v1",
+          "title": "The spinless modular bootstrap at large central charge",
+          "url": "https://hexagonmath.org/abs/2611.00174v1"
+        },
+        {
+          "id": "hexagon:2611.00142v1",
+          "title": "Origin-Centered Mobius Circles, Bernoulli Lemniscates, and Beta–Gamma Dyadic Pairings of the Riemann Zeta Function on the Critical Line",
+          "url": "https://hexagonmath.org/abs/2611.00142v1"
+        },
+        {
+          "id": "hexagon:2611.00049v1",
+          "title": "Nested Squares and Distinct-Prime Goldbach Partitions",
+          "url": "https://hexagonmath.org/abs/2611.00049v1"
+        },
+        {
+          "id": "hexagon:2610.00726v1",
+          "title": "The $p$-Bures–Wasserstein distance via $3\\times3$ block matrices (with application to $p$-Bures–Wasserstein barycenters)",
+          "url": "https://hexagonmath.org/abs/2610.00726v1"
+        },
+        {
+          "id": "hexagon:2610.00725v1",
+          "title": "On majorization inequalities for normalized Jack and Macdonald polynomials",
+          "url": "https://hexagonmath.org/abs/2610.00725v1"
+        },
+        {
+          "id": "hexagon:2610.00720v1",
+          "title": "Monotonicity of Turán-ratios of symmetric polynomials",
+          "url": "https://hexagonmath.org/abs/2610.00720v1"
+        },
+        {
+          "id": "hexagon:2610.00719v1",
+          "title": "Lower bounds for the quantum permanent",
+          "url": "https://hexagonmath.org/abs/2610.00719v1"
+        },
+        {
+          "id": "hexagon:2610.00705v1",
+          "title": "Riordan lattice paths counted by area",
+          "url": "https://hexagonmath.org/abs/2610.00705v1"
+        },
+        {
+          "id": "hexagon:2610.00692v1",
+          "title": "The partition exponent in the graded pieces of the Claude 3-SAT algorithm is optimal for pieces of that shape",
+          "url": "https://hexagonmath.org/abs/2610.00692v1"
+        },
+        {
+          "id": "hexagon:2610.00672v1",
+          "title": "Counting Hamiltonian cycles in sparse graphs in subexponential time, assuming the new #SAT algorithms",
+          "url": "https://hexagonmath.org/abs/2610.00672v1"
+        },
+        {
+          "id": "hexagon:2610.00582v1",
+          "title": "Stability and Convergence of a Regularized Immersed Boundary Method under Dynamic Cartesian Refinement. Part I: Fixed Geometry",
+          "url": "https://hexagonmath.org/abs/2610.00582v1"
+        },
+        {
+          "id": "hexagon:2610.00469v1",
+          "title": "A truncated theta-type series with triangular weights",
+          "url": "https://hexagonmath.org/abs/2610.00469v1"
+        },
+        {
+          "id": "hexagon:2610.00434v1",
+          "title": "Counterexamples to the Two-Bases Conjecture for the Tutte Polynomial",
+          "url": "https://hexagonmath.org/abs/2610.00434v1"
+        },
+        {
+          "id": "hexagon:2610.00420v4",
+          "title": "The Riemann Hypothesis on Young's Lattice",
+          "url": "https://hexagonmath.org/abs/2610.00420v4"
+        },
+        {
+          "id": "hexagon:2610.00402v1",
+          "title": "Lower and Upper Bounds for Glauber Dynamics from Typical States of the Low-Temperature Sherrington–Kirkpatrick Model",
+          "url": "https://hexagonmath.org/abs/2610.00402v1"
+        },
+        {
+          "id": "hexagon:2610.00385v1",
+          "title": "Convolution Smoothing in the Turán Hierarchy: The Blind Zone Extends from Order 43 to Order 61, and Empirically to Order 68",
+          "url": "https://hexagonmath.org/abs/2610.00385v1"
+        },
+        {
+          "id": "hexagon:2610.00364v1",
+          "title": "Partitioning $\\{1,\\dots,n\\}$ into parts of size at most three whose sums are powers of three",
+          "url": "https://hexagonmath.org/abs/2610.00364v1"
+        },
+        {
+          "id": "hexagon:2610.00368v1",
+          "title": "Deciding D-stability is coNP-hard",
+          "url": "https://hexagonmath.org/abs/2610.00368v1"
+        },
+        {
+          "id": "hexagon:2610.00326v1",
+          "title": "A Bipartite Graph with a Nonunimodal Acyclic Polynomial",
+          "url": "https://hexagonmath.org/abs/2610.00326v1"
+        },
+        {
+          "id": "hexagon:2610.00333v1",
+          "title": "Records, scale flows, and Gaussian limits from lattice Poisson fields",
+          "url": "https://hexagonmath.org/abs/2610.00333v1"
+        },
+        {
+          "id": "hexagon:2610.00323v1",
+          "title": "A sqrt(17/2) Lower Bound for Depth Reduction in Explainable Planar k-Center Clustering",
+          "url": "https://hexagonmath.org/abs/2610.00323v1"
+        },
+        {
+          "id": "hexagon:2610.00322v1",
+          "title": "The Willow Transform and the Blind Zone Theorem: A Sharp Obstruction in the Turán Hierarchy for the Riemann ξ-Function",
+          "url": "https://hexagonmath.org/abs/2610.00322v1"
+        },
+        {
+          "id": "hexagon:2610.00306v2",
+          "title": "A Product Formula for Partition-Restricted Boundary Hypermatrix Counts",
+          "url": "https://hexagonmath.org/abs/2610.00306v2"
+        },
+        {
+          "id": "hexagon:2610.00308v2",
+          "title": "A Polynomial Separation for Adaptive Fourier-Overlap Parity Decision Trees",
+          "url": "https://hexagonmath.org/abs/2610.00308v2"
+        },
+        {
+          "id": "hexagon:2610.00286v1",
+          "title": "Gallai's conjecture with two exceptional even vertices",
+          "url": "https://hexagonmath.org/abs/2610.00286v1"
+        },
+        {
+          "id": "hexagon:2610.00275v1",
+          "title": "The Willow Transform and the Blind Zone Theorem: A Sharp Information-Theoretic Obstruction in the Turán Hierarchy for the Riemann xi-Function",
+          "url": "https://hexagonmath.org/abs/2610.00275v1"
+        },
+        {
+          "id": "hexagon:2610.00241v1",
+          "title": "A six-spin obstruction to antiferromagnetic biclique maximization",
+          "url": "https://hexagonmath.org/abs/2610.00241v1"
+        },
+        {
+          "id": "hexagon:2610.00218v2",
+          "title": "A Note on Laminar Presentations and Finite Chain Models for Ample Groupoid Homology",
+          "url": "https://hexagonmath.org/abs/2610.00218v2"
+        },
+        {
+          "id": "hexagon:2610.00206v1",
+          "title": "A 23-Point Counterexample to a Modified Half-Frequency Conjecture for Union–Intersection Systems",
+          "url": "https://hexagonmath.org/abs/2610.00206v1"
+        },
+        {
+          "id": "hexagon:2610.00163v1",
+          "title": "An exponential improvement for Borsuk's problem",
+          "url": "https://hexagonmath.org/abs/2610.00163v1"
+        }
+      ]
+    }
+  ]
+}

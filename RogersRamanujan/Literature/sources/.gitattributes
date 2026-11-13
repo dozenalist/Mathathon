@@ -1,0 +1,2 @@
+# Preserve the downloaded source byte-for-byte so its published SHA-256 is stable.
+hexagon_2610_00705v1.tex -text
