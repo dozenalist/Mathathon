@@ -205,6 +205,12 @@ def sandwich(centres, R):
     outer = [b_rat[i] + slacks[i] for i in range(len(b_rat))]
     v_in, nvi, vin_pts = polytope_volume(n_rat, inner)
     v_out, nvo, vout_pts = polytope_volume(n_rat, outer)
+    if v_in is None:
+        # the inner polytope is empty: the correct lower bound is 0, and the enclosure is
+        # then trivially valid but useless.  Reported rather than crashing.
+        v_in = F(0)
+    if v_out is None:
+        raise ValueError("outer polytope unbounded or degenerate: the cell is not enclosed")
     # CERTIFY R: the true cell is contained in the outer polytope, so it suffices that every
     # outer vertex satisfies |y| <= R.  Without this check the sandwich's error term R*e_i is
     # an assumption rather than a bound.
