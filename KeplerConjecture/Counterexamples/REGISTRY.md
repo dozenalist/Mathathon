@@ -1376,3 +1376,28 @@ read as "certified around C5", and the region and the control are two different 
 four rows stand: the `√3` slack, the inner inclusion, the exact domain tiling and the a-priori-radius
 *formula* are correct as algebra — the defect is in the two inputs to that formula (the helper's verdict
 and `c`'s lower bound).
+
+### K15-X-C081 — `C125(b)` refutes exact-`F` monotonicity, not the nested infimum; `C124`'s `deg ≤ 12` needs its radius
+
+**(a) The classes are nested.** If `C122`'s `c_F` is the minimum volume of a convex body containing
+`B(0,1)` with **at most** `F` faces, then `c_F` is **non-increasing** in `F` by inclusion, and nothing can
+refute it. `C125(b)`'s table — truncated octahedron, 14 faces, `6.158403`, versus icosahedron, 20 faces,
+`5.054056` — shows only that the minimum over **exactly** `F` faces is *not* monotone (it can rise from
+`F = 14` to `F = 20`). That is true and worth recording, but it is a different statement: a
+larger-volume 14-face example cannot refute a non-increasing infimum over nested "at most `F`" classes.
+So `C125`'s obstruction rests on **(a)** the seven unproved values of `F` and **(c)** the equal-cap
+estimate, not on (b). This is the same conflation as my own §7/X-C066, corrected in `REVIEW` §21 — the
+error is mine as much as Main's, and it points the same way: `c_20` (at most 20) is what `C122` needs,
+and it is not available.
+
+**(b) `C124`'s `deg ≤ 12`.** `CLAIMS.md` uses "`S_ε ⊆ matched ∪ N(matched)`, and with `deg ≤ 12`,
+`|S_ε ∩ B| ≤ 26|M ∩ B|`" — so it needs a per-point bound of 12 on neighbours. The steering's witness,
+the origin plus the 18 vectors in `{−2,0,2}³` of squared norm 4 or 8, is a fragment of the fcc lattice:
+I verified **19 points, minimum pairwise distance exactly 2, circumradius `2√2 = 2.828427`**. That
+refutes "at most 12 points in a ball of radius `2√2`", but **it does not refute `deg ≤ 12`**: in that
+fragment the origin has degree `6` and a corner point has degree `5`. So, read as written, `deg ≤ 12` is
+not touched by this witness; what it shows is that the *ball count* version of the bound fails at large
+radius, i.e. `C124` cannot replace `deg ≤ 12` by a counting argument at that scale. Whether `deg ≤ 12`
+itself holds depends on the radius over which neighbours are counted, which `C124` does not state at the
+place I can see; the safe statement is that it needs the kissing-number-12 theorem (Schütte–van der
+Corput) applied to a *sphere of contacts*, and that substituting a finite-ball count is invalid.

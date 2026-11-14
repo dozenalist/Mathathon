@@ -526,3 +526,21 @@ I did **not** audit `C124`/`C125`/`C128`/`C129`; the 19-point configuration name
 (origin plus the 18 vectors in `{−2,0,2}³` of squared norm 4 or 8) does have minimum pairwise distance
 exactly `2` and circumradius `2√2 = 2.828427`, which I verified — but I have not read those claims'
 statements, so I assert no refutation of them.
+
+## 22. `C125(b)`, `C124`'s `deg ≤ 12`, and what the 19-point fragment does and does not refute
+
+`C125(b)` argues that "more faces ⟹ smaller minimum" is false, with the truncated octahedron
+(14 faces, `6.158403`) against the icosahedron (20 faces, `5.054056`). That refutes monotonicity in
+**exactly** `F`. It does not refute monotonicity of the infimum over **at most** `F` faces, which is
+non-increasing by inclusion — and "at most `F`" is the quantity a bound on circumscribed volume needs.
+So `C125`'s conclusion (stop the branch) survives on (a) alone — seven of the eight needed `F` have no
+proved constant — but (b) is not an independent argument, and the same conflation appears in my §7
+(corrected in §21).
+
+`C124` uses `deg ≤ 12`. The steering's 19-point fragment (origin plus the 18 vectors in `{−2,0,2}³` of
+squared norm 4 or 8) I verified directly: **19 points, min pairwise distance exactly `2`, circumradius
+`2√2`**. It is an fcc fragment. Since the origin's degree in it is `6`, it does **not** refute a
+per-point degree bound of 12; it refutes "≤ 12 points in a ball of radius `2√2`". So `C124` cannot use a
+finite-ball count in place of `deg ≤ 12` at that scale, and `deg ≤ 12` itself still needs the
+kissing-number theorem applied to a contact sphere, with the counting radius stated. I did not audit
+`C128`/`C129`.
