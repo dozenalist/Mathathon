@@ -135,6 +135,8 @@ does not establish the universal pair inequality, and nothing here says otherwis
 
 ```
 source read         d289bef49fa25aea10c4c8c0c7299d5d5449fdd0
+superseded          rigorous_cell_volume.py, certify_region.py  (kept for the record; the
+                    suite now runs cell_certificate.py, not rigorous_cell_volume.py)
 repaired verifier   Experimental/scripts/cell_certificate.py
 repaired region     Experimental/scripts/certify_region_v2.py
 witnesses           cell_certificate.witness_1, .witness_2  (run: python3 cell_certificate.py)
