@@ -5524,3 +5524,30 @@ outcome), or whether the 24-parameter finite-difference Hessian is unreliable fo
 second is more likely, since a kernel larger than the symmetry would show up as ratios near `0` in the
 sampler, and `16 000` samples show none below `0.2253`. **Until it is settled, `L1'` is a measured
 conjecture, `c = 0.13` is a guess with slack, and `δ₀` is conditional.**
+
+#### `C142` addendum 9 — the factor `1.5` is resolved: it was one draw's rotation component
+
+Addendum 8 left a `1.5` discrepancy open. It is not a discrepancy. On the exact draw in question,
+
+```
+|u|² = 1,   |proj onto the 3 rotation modes|² = 0.429158,   |u_⊥|² = 0.570842
+0.1378 / 0.570842 = 0.2414     ← the sampler's 0.241, to three figures
+```
+
+So the unprojected curvature `0.1378` and the quotient curvature `0.2414` are the same number seen through
+`|u_⊥|²`. That particular draw had an unusually large rotation component (`0.429` against the `3/24 =
+0.125` a random draw averages), which is why the ratio looked anomalous.
+
+**The general statement, now exact.** For a direction `u` and its projection `u_⊥` onto the orthogonal
+complement of the rotation modes, `curvature(u) = curvature_quotient(u_⊥)·|u_⊥|²`. So non-quotiented
+measurements understate the shape curvature by the factor `|u_⊥|²`, which averages `0.875`; the earlier
+`0.1378` figure was a `0.57`-factor draw, not a different curvature.
+
+**Consequences.** (i) `L1'` in the quotient form is the right statement, with `c = 0.13` safe against the
+measured `0.2253–0.2414`. (ii) There is **no** evidence of a kernel larger than the rotation subspace, so
+the "serious outcome" contemplated in addendum 8 does not arise. (iii) Addendum 8's caution was still
+right to be recorded: two numbers that disagree by a factor `1.5` should be explained, not averaged, and
+here the explanation was a `30`-line computation.
+
+*Status.* `L1'` remains a measured conjecture with a stated constant; `M-CERT-002` is the proof route;
+`δ₀ = 2.8775·10⁻³` is conditional on it.
