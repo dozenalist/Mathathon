@@ -52,6 +52,11 @@ pay for itself (`Σ_C b ≤ 0`); the transfer route needs only
 *stated bound on `Φ`* (the rate in Lemma 3.3 is `O(Φ/r)`), keeping `(T')` as a
 sufficient condition and as a check on fcc/hcp.
 
+**The floor on `Φ`.** `K15-C081` shows the icosahedral cluster forces
+`Φ ≥ 13(√32 − V_dod)/|δ⁺(C)| ≥ 1.3853/144 = 0.00962` at `R = 2.09` (and `0.010495` if
+the leaving-edge count is `132`). A candidate claiming a smaller `Φ` is refuted
+outright; the target is a transfer with `Φ` at or just above that floor.
+
 **The boundary term with explicit constants.** For a blob `U` containing a ball of
 radius `r` and contained in `B(x, r+R)`, the number of edges leaving `U` is at most
 `k_R·#(Λ ∩ (B(x,r+R) ∖ B(x,r−R))) ≤ k_R·((r+R)³ − (r−R)³) ≈ 6 k_R R r²`, and

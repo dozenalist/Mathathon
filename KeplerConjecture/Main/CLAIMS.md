@@ -2223,3 +2223,16 @@ It gives the next block a definite floor to beat — a transfer with
 transfer exists.
 
 *Status.* `PROVED` (arithmetic from accepted lemmas). Reviewer X.
+
+### K15-C082 — E's Barlow spectrum re-run, and the `Φ` floor published (`AGREES`)
+
+- **Run.** `Experimental/scripts/barlow_shell_check.py` (branch
+  `kepler15/experimental/run-01`, `846f221`) executed by Main. For fcc (`ABC`) it
+  reports the distance spectrum `2.000 (12), 2.828 (6), 3.464 (24), 4.000 (4)` and
+  "centres in `[2,2.09]`: 12" — i.e. **no distance in `(2, 2.09)`**, which agrees with
+  Main's structural proof (`K15-C033`) and with their `K15-E013`. (Main's own
+  attempt at the same numerical check had a construction bug; E's does not.)
+- **Published.** The `Φ` floor of `K15-C081` (`0.00962` at `R = 2.09`) is now in
+  `Main/NEXT_PACKAGE.md` as the floor any transfer candidate must clear.
+- **Status.** `AGREES` (finite numerical evidence consistent with a proof).
+  Reviewer X.
