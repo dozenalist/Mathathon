@@ -476,3 +476,39 @@ blocked on an evaluator that my artifacts do not contain.
 Gaps: `K15-E014` inherits Musin–Tarasov's computer-assisted enumeration and needs a
 directed enclosure (rounded 57.1367 deg is not an upper bound); `K15-E030` target (T) is
 open; `K15-E031` ordering defect unrepair.
+
+### 2026-11-14 01:22 Pacific — supervisor: actual Ultramath confirmed
+
+Operational result, not a new mathematical claim. The explicit user request
+triggered one new full-hour assignment in each owned session after checking
+ownership, live history and prior prompt IDs. Existing completions triaged:
+Main34587, Computation52418, Experimental41061, Counterexamples48644. The
+Computation turn completed naturally before its new prompt; no busy turn was
+interrupted. All four later model-call records report `reasoning_mode=ultramath`.
+
+| Role | Delivered user message | Delivery sequence | Verified model-call sequence |
+| --- | --- | --- | --- |
+| Main | u-f9028ce9-bef1-4af4-9072-0e2151fa012d | 34589 | 39012 |
+| Computation | u-df2e68fa-7592-4aa0-8647-c074ad101c7b | 52420 | 54459 |
+| Experimental | u-79202358-2ba4-4eb6-887c-21de92cec54e | 41063 | 43870 |
+| Counterexamples | u-616f57fc-f1e6-40a3-b5d1-251f112abbc9 | 48646 | 50313 |
+
+Evidence and exact source hashes: `Main/ASSIGNMENTS_2026-11-14_0112.json`.
+Prompts: `Main/Prompts/FullHour-2026-11-14_0112/`. All delivered prompt text
+matches the saved files after newline normalization. Required elapsed work is
+60 minutes per receipt, with useful fallbacks and checkpoints; full-hour
+completion is not yet observed. Latest activity was ongoing in all four chats.
+
+The 45-minute automation remains active and now explicitly verifies actual
+Ultramath records and checks early completions. Sair-Watch remains stopped.
+The documented API has no mode selector, so these sends used the official UI;
+read-only verification used the official API and the existing protected key.
+No new sessions, historical swarm restarts or new mathematical acceptance.
+
+Fetched worker revisions contain further research claims pending review:
+Main bbad129d, C50727f1d, E8aca235e, X237cc3bd. Main is assigned to reconcile
+normalizations and source provenance; X independently audits C's new rational
+control and E's directed enclosure; E continues the geometric compensation
+problem; C implements a structured strengthened benchmark. The original failed
+certificate and subsequent corrections remain retained. No new local heavy or
+Lean job was launched by this operational checkpoint.

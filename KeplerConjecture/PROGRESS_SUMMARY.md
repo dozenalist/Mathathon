@@ -1,10 +1,12 @@
 # Kepler Conjecture: progress so far
 
-Updated November 14, 2026, at the 01:00 Pacific operational check. A stale
-Experimental notification was verified and logged; its result remains pending
-for the next 45-minute review. No extra assignment or watcher restart occurred.
-The mathematical status remains that of the preceding review,
-which rejected the submitted certificate. This cumulative account is updated
+Updated November 14, 2026, at the 01:20 Pacific user-requested restart of
+research assignments. All four existing chats are now verified to be running
+in Ultramath mode and have received full-hour assignments. Sair-Watch remains
+stopped; the 45-minute review cadence is unchanged. New worker results are
+published on their feature branches and await integration and independent
+review through Main. No new best packing bound or simpler Kepler proof has
+been accepted. This cumulative account is updated
 at each scheduled check, with a short entry in
 [HourlyUpdates](HourlyUpdates/).
 
@@ -93,8 +95,9 @@ The workers completed that block before publication, and their new commits are
 also included. Main has reconciled the central retractions. Computation supplied
 a repaired checker whose regression tests pass locally, while Experimental
 supplied revised geometric statements and a partition candidate. These await
-full independent review. The strengthened benchmark and rigorous angle-enclosure
-programs are still unwritten. The repaired Gaussian driver reports its solver
+full independent review. At that checkpoint, the strengthened benchmark and
+rigorous angle-enclosure programs were still unwritten. The repaired Gaussian
+driver reports its solver
 error honestly, but another local test found integer truncation in its comparison
 helper. All small checks have finished. No extra prompt cycle was started;
 these completions were triaged into the subsequent assignments.
@@ -107,15 +110,25 @@ all four monitor exits were verified. The active schedule reads the existing
 SAIR chats directly, reviews completed evidence, runs actionable heavy work
 locally and sends concise follow-ups to idle chats. Busy work continues.
 
-All four chats received new research assignments and the requested **30–90
-minute work blocks, normally 60–90 minutes**. Main integrates; Computation
-implements the strengthened benchmark; Experimental develops the rigorous
-angle enclosure and partition route; Counterexamples audits and repairs the
-numerical tools. SAIR owns the bulk of the research. Delivery is confirmed for
-both assignments and timing updates. This verifies the instructions were received,
-not that each agent actually worked for the full requested duration. There are
-at most four owned chats; no historical swarms were resumed. Actual Ultramath
-runtime activation remains unresolved.
+All four chats have now received fresh **full 60-minute assignments**, with
+actual UTC start/finish requirements, interim checkpoints and independent
+fallback tasks. Main integrates and reconciles the proof-to-certificate
+interface; Computation develops a structured shell proposer; Experimental
+works on geometric cell compensation; Counterexamples independently audits
+the certificates, Tammes enclosure and shell theorem. SAIR owns the research.
+Actual model-call records now verify Ultramath in all four chats. This is
+stronger evidence than the earlier maximum-effort settings, which still ran
+in standard mode. Delivery is confirmed; the full hour of work is not yet
+observed. The scheduled review checks for early endings and continues useful
+unfinished work. No historical swarms or extra chats were created.
+
+The latest fetched worker checkpoints report a new rational control near
+0.7799665, repaired positive test fixtures, a directed Tammes enclosure, an
+exact Barlow shell argument and a free-width Gaussian implementation. These
+are pending independent audit and integration. The reported control is weaker
+than known bounds and is not a new best packing result. Finite failures of
+particular optimizers do not establish that a whole mathematical family is
+impossible. The new assignments explicitly require correcting that distinction.
 
 Each scheduled push includes a short readable update, this refreshed cumulative
 summary, technical evidence, and a dated copy of the user-facing response.

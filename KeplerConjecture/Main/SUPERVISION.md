@@ -20,11 +20,34 @@ the saved assignment and timing-update IDs before every send. Historical
 SAIR does the bulk of mathematical research, implementation and independent
 auditing. Main owns choices and integration; Astra supervises, reviews evidence,
 routes messages, executes Lean/heavy work locally and publishes results. Give
-**30–90 minutes of substantive work per block, normally 60–90 minutes**. An
+**a full 60 minutes of substantive work per assignment**, as explicitly
+requested in the latest user message. Record receipt time and earliest finish,
+check actual elapsed work at the scheduled review, and refill any early-ending
+idle chat with remaining work and its independent fallback. An
 interim push or one quick fix should lead into the next useful subtask, not end
 the block. Supply independent fallbacks when a worker is waiting on a dependency.
 Allow an early handoff for a genuine blocker, verified completion, user stop or
 the deadline. Keep long local checks explicit rather than blocking other review.
+
+### Ultramath verified on November 14
+
+The four new full-hour assignments were sent through the official website with
+Ultramath selected. Subsequent actual `model_call` records report
+`reasoning_mode=ultramath` for all four owned sessions. This resolves the earlier
+runtime-mode uncertainty; see `ASSIGNMENTS_2026-11-14_0112.json` for delivery IDs,
+model-call sequences, timestamps and the exact saved prompts.
+
+The documented `chat_say` API has no mode selector, and prior API sends ran in
+standard mode despite maximum effort. For future prompts use the website's
+Ultramath selector unless the official API subsequently documents an equivalent
+field. Verify actual model calls after delivery. Do not infer activation from
+maximum effort or a message setting alone. Keep using the official API for
+read-only history, ownership and deduplication checks. This change does not
+authorize extra chats, swarms or a watcher restart.
+
+The full hour is an assignment requirement, not yet an observed completion.
+Interim pushes must lead to further useful work; do not fill time with sleeping
+or artificial loops. The 45-minute cadence remains in force.
 
 Every scheduled checkpoint synchronizes the latest pushed Kepler artifacts into
 the review branch, preserves authorship/source hashes, and keeps unreviewed
