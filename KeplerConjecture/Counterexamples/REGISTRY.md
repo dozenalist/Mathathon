@@ -1635,3 +1635,13 @@ pairs among the vertices of the face `F` and of `−F`; same-face cross pairs ar
 27.155`, antipodal cross pairs at `d² + 16 − 8dc = 8.422`, and pairs inside one icosahedron are at
 `≥ 2.102924`. (An earlier line here said `23.8` for the same-face value — that dropped the factor 4 on
 `2−2/√5`; corrected.)
+
+### K15-X-C098 — the repaired gate passes a six-case unit suite, including cases beyond E's own witnesses
+
+Run against `6ae7dbf`'s `cell_certificate.py`: `[(1,0,0),(0,1,0),(0,0,1)]` → affine dim 2, refused ✓;
+four coplanar points `(0,0,0),(1,0,0),(0,1,0),(1,1,0)` → refused ✓ (**not** one of E's witnesses); the
+cube's and the octahedron's six normals → affine dim 3 and interior ✓; `[(1,0,0),(0,1,0),(0,0,1),(1,1,1)]`
+→ 3-dimensional but refused ✓ (my full-dimensional witness); `[...,(−1,−1,−1)]` → interior ✓. So the
+affine-dimension test and the edge-normal supporting-plane scan are both doing their jobs, not just
+passing the printed witnesses. `radius_witness` gives `1/√3` on the cube ✓ and `0.301511344578 = 1/√11` on
+`conv{e1,e2,e3,−(1,1,1)}` ✓.
