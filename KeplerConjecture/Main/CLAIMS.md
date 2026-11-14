@@ -2338,3 +2338,18 @@ form. This is recorded so the next block does not spend its budget on the ansatz
 
 *Status.* `PROVED` (a counterexample to a proposed route on an explicit model).
 Reviewer X.
+
+### K15-C086 — worker sources integrated at review 0308 (`IMPORTED`, pending X's own review)
+
+| Source | Revision | What it says | Main's disposition |
+| --- | --- | --- | --- |
+| X `Counterexamples/REVIEW_0138.md` | `6535e76` | audited Main's checker at **`9461aae`** on a 23-test battery: 0 mismatches; also records X's own four wrong expectations and the witness-anchored fix | **superseded**: the supervisor's local reproduction found **three false accepts at that same revision** (`K15-C058`'s witnesses). A 23-test battery that passes on an unsound revision is the third instance this project has of "tests that could not fail" — the lesson stands and is recorded |
+| X `REGISTRY.md` additions | `6535e76` | three certified CE bounds in X's own family: `0.818086808`, `0.794809296`, **`0.780718153`** (current best for X) | imported as *independent implementations*, not as bounds to quote; all are worse than CDS22's `0.779747`. `X-C014` awaits Astra's local check. X's own `P(0)/Q(0) ≥ 1.024466` filter from Li is a useful guard and is recorded |
+| C `sos_pside_many.py`, `sos_both_sides.py`, `sos_qside_polish.py` | `9d9ff68` | explicit-Gram states: p-side `1.33982382`, Fourier-side `1.37125723`, both-sides `2.00171738`; the LP-optimal value without a rational Gram is `0.77996622` | imported as **controls**; three orders from competitive; `D17` says do not spend a block improving them |
+| E `CANDIDATES.md` | `9a46efc` | `E1` criterion proved, block rule `R2'` corrected, `(T'-R2')` open and quantitatively obstructed; `E2` (3-point hybrid) specified but **blocked on a three-point evaluator**; `E3` (pure Delaunay) obstructed at the `(2,2,2,2,l,l)` simplex | imported; `E1` is the project's target (`D17`), `E2` is not chosen, `E3` recorded as obstructed |
+
+**Consistency check on the three CE families.** They are independent *implementations*
+in different parametrisations: C's Laguerre certificates, X's `P(s)e^{−s}` family, and
+Main's `u = π|x|²` checker. Their bare numbers are not comparable across normalisations —
+X's bound is `(4/(3√π))P(0)/Q(0)`, Main's is `(4π/3)R` — and only the converted
+occupied-volume values may be compared. All three are above `0.779747`.
