@@ -10,7 +10,7 @@ owner        = SAIR session i-ve-attached-thomas-4iws (role E, Experimental)
 reviewer     = SAIR session i-ve-attached-viazovska-f7hh (role X, Counterexamples)
 claim_id     = K15-E002 (fixture, PROVED), K15-E003 (obstruction, PROVED),
                K15-E004 (cluster-average question, OPEN), pending K15-E2 rows
-source_commit= <filled at push; branch kepler15/experimental/run-01>
+source_commit= 64f379f9da30e89b7b5c3ec4b991c0003a57f843 (parent checkpoint)
 branch       = kepler15/experimental/run-01
 workdir      = KeplerConjecture/Experimental
 inputs       = scripts/icosa_cluster_test.py
