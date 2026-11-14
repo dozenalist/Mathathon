@@ -22,7 +22,12 @@ rational arithmetic or a stated geometric fact.
 
 Run:  python3 Reviews/repro_c_cutflow_defects.py [path-to-cut_flow.py]
       default Reviews/C_cut_flow_4bcbd3a.py (blob 700e44f6, the version reviewed at 0353-C).
-      Point it at a newer copy to see which defects a repair actually closed.
+      Point it at a newer copy to see which defects a repair actually closed:
+
+        python3 Reviews/repro_c_cutflow_defects.py Reviews/C_cut_flow_c2127cee.py
+
+      The `c2127cee` copy needs `Reviews/k15radicals.py` (also committed here), which that revision
+      imports; both are byte copies from the comp branch.
 """
 import importlib.util, os, sys
 from fractions import Fraction as F
@@ -164,5 +169,10 @@ ck("D8 reachable: --fixture yields PATCH_FEASIBLE on an instance infeasible at e
    status == "PATCH_FEASIBLE", "the same run also prints 'INFEASIBLE at any Phi' for vertex 4")
 
 print("\nRESULT: %d/%d checks reproduce" % (nchecked[0]-len(fails), nchecked[0]))
-print("        " + ("ALL CHECKS REPRODUCE (5 live: D1-D4+D8, 1 latent, 1 cosmetic, 12/12 sweep)" if not fails else "FAILED: %s" % fails))
-sys.exit(0 if not fails else 1)
+if fails:
+    print("        NOT reproducing in this revision (i.e. these defects are GONE or CHANGED):")
+    for f in fails: print("          - " + f)
+else:
+    print("        ALL CHECKS REPRODUCE (5 live: D1-D4+D8, 1 latent, 1 cosmetic, 12/12 sweep)")
+print("        The exit status is 0 either way: this is an audit, not a pass/fail gate.")
+sys.exit(0)
