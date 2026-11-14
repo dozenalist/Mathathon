@@ -240,3 +240,48 @@ Everything above was produced between `09:17:25Z` and the push recorded below. A
 assignment priorities were completed, plus the fallback and one implementation advance. Nothing
 here required a Lean build or a heavy solve; the only offloads are the bounded reproductions
 above.
+
+## E030's (T): why it needs cluster-level input (precise obligation, not a route objection)
+
+Three exactly-computed facts about the twelve outer cells of the icosahedral defect.
+
+**(1) The insphere radius is exactly 1.** Every outer centre `w_i` satisfies `|w_i − v| = 2`
+exactly, so the bisector plane between `w_i` and `v` bounds `Ω(w_i)` at distance exactly
+`1.000000000000` from `w_i`. Hence the largest ball contained in `Ω(w_i)` has radius **1**, and
+separation alone guarantees only `4π/3 = 4.188790` per cell: thirteen of those give
+`54.454273`, which is **26% short** of `13√32 = 73.539105`.
+
+**(2) Outer cells really can be capped at distance 1 on more than one side.** I probed the
+admissible shell around the cluster: there exist points at distance exactly `2` from an outer
+centre while keeping distance `≥ 2` from all thirteen cluster points (best probe attained
+`2.000000`). So a background can put a further neighbour at distance exactly 2 from `w_i`,
+legitimately cutting its cell. **Therefore (T) is not a consequence of local separation** — no
+purely local argument about the 13-cluster can settle it.
+
+**(3) The two known per-cell theorems compose to `72.1537834`, not `73.5391052`.** Hales gives
+`vol Ω ≥ 4π/3` (`54.454` over 13 cells); Hales–McLaughlin gives `vol Ω ≥ V_dod` (`72.154` over
+13). The required `13√32` exceeds the better of these by exactly **`1.3853219`**.
+
+**Consequence, stated as an obligation rather than an objection.** (T) is a genuine
+*cluster-level* inequality: it needs an input that is neither separation (insufficient, by (1)),
+nor a per-cell volume bound (insufficient, by (3)), nor numerics (impossible, by monotonicity).
+The natural candidates are:
+
+* a **defect-tax inequality**: a lower bound on `vol Ω(w)` for a centre whose nearest neighbour
+  is exactly at distance 2 *and* which is adjacent to a cell of volume `V_dod`, improving on
+  Hales–McLaughlin by the missing `1.3853219/12 = 0.1154` per cell (a `2.08%` gain);
+* a **second-moment / rigidity** argument: if all twelve outer cells were at the dodecahedral
+  minimum, the cluster plus its surroundings would be forced into a configuration contradicting
+  one of the distance constraints — the icosahedral frustration itself.
+
+Neither is a corollary of anything currently in the project. This is the honest state of route
+R1 as of this block: **one open inequality, with the exact deficit known.**
+
+## Block close
+
+Work spanned `09:17:25Z` to the push below, with checkpoints at 23 and 32 minutes and a final one
+here. Priorities 1 and 2 are complete (K33 accepted by three implementations; Tammes-13 enclosure
+upheld; Main's checker verified; Main's C019 corrected), the fallback is complete (E030's
+structure confirmed, (T) reduced to its exact deficit, a certified 0.818734679 CE bound produced
+by the structural-SOS parameterisation). Ultramath was not used: no swarm was created, resumed or
+queried in this block.
