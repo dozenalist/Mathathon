@@ -556,3 +556,25 @@ Main/SYNC_2026-11-14_0138.json, including preserved conflicting progress snapsho
 Supervisor sync 2026-11-14 02:23 PST: retained Main progress from e76a15709c5907f76bbbf482755e916c71be76d4 in KeplerConjecture/Main/AgentProgress/Main-e76a1570.md; independent status is in Main/REVIEW_2026-11-14_0223.md.
 
 Supervisor sync 2026-11-14 02:23 PST: retained Computation progress from dbeb320fb80be64799fc722174367ac61c387480 in KeplerConjecture/Main/AgentProgress/Computation-dbeb320f.md; independent status is in Main/REVIEW_2026-11-14_0223.md.
+
+## Supervisor checkpoint: November 14, 02:23 Pacific
+
+Merged all four frozen source checkpoints and Main's completed report 201974b,
+preserving authorship and conflicting progress histories. Independently verified
+X-C013's particular SOS/Fourier/rational bound below 0.794809295672; it is weaker
+than K33b and known results. Main's current checker has another exact false accept:
+q=(u-7/5)^2-2/10^40. Its general soundness and dependent Main-only verdicts remain
+suspended. Exact witnesses and acceptance scope are in Main/REVIEW_2026-11-14_0223.md.
+
+Ten local jobs finished. Geometric controls/search are finite and inconclusive;
+the submitted SDP did not improve the bound. CubeDiff exceeded the monitored
+1 GiB cap without theorem verification. The C035 constant and universal-cut
+quantifiers remain pending. Full commands, versions, resource measurements and
+logs are under Main/LocalChecks/2026-11-14_0223.
+
+Main completion 58136 arrived after 45.573 minutes; a new full-hour assignment
+was delivered at 10:35:02.848 UTC, earliest finish 11:35:02.848 UTC. The other
+three owned chats remain on their existing assignments. Actual Ultramath calls
+are verified for all four; no completed full hour is asserted. Prompt text and
+delivery/mode evidence are in Main/ASSIGNMENTS_2026-11-14_0223.json. Main integrates,
+Counterexamples reviews, and the 45-minute schedule continues without watchers.

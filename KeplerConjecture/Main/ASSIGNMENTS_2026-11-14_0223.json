@@ -1,0 +1,121 @@
+{
+  "review": "2026-11-14 02:23 Pacific scheduled check",
+  "ownership_verified": true,
+  "assignments": [
+    {
+      "role": "Main",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "based-on-the-chats-e0wz"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-0debe010-bc45-4398-82ce-1a827bd48f66",
+      "user_sequence": 58137,
+      "delivery_sequence": 58138,
+      "completion_reviewed": 58136,
+      "purpose": "full-hour assignment",
+      "received_utc": "2026-11-14T10:35:02.848000+00:00",
+      "earliest_finish_utc": "2026-11-14T11:35:02.848000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0223/Main.md",
+      "prompt_sha256": "47ef99a6e44b9df8fd188b3af994395c5fa977010118d2496c117cdfcf05d614",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 59953,
+      "runtime_mode_utc": "2026-11-14T10:36:27.794000+00:00",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T10:44:55.565930+00:00"
+    },
+    {
+      "role": "Counterexamples",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "i-ve-attached-viazovska-f7hh"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-66054e29-4fbe-4dd1-acc3-c98418e68386",
+      "user_sequence": 70455,
+      "delivery_sequence": 70458,
+      "completion_reviewed": null,
+      "purpose": "evidence within existing hour; no clock reset",
+      "received_utc": "2026-11-14T10:43:15.409000+00:00",
+      "earliest_finish_utc": null,
+      "required_substantive_minutes": null,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0223/Counterexamples-evidence.md",
+      "prompt_sha256": "49225837e7363cfa7bcf2d2225e59cd3c256abd2be32d3ffa5fc45dec22421d3",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 70703,
+      "runtime_mode_utc": "2026-11-14T10:43:32.969000+00:00",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T10:44:55.565930+00:00"
+    }
+  ],
+  "prior_early_completions": [
+    {
+      "role": "Main",
+      "completion_sequence": 58136,
+      "previous_prompt_id": "u-22506793-43db-4313-beae-434bf7f68bcc",
+      "received_utc": "2026-11-14T09:42:29.485000+00:00",
+      "completion_utc": "2026-11-14T10:28:03.881000+00:00",
+      "observed_minutes": 45.573,
+      "full_hour_observed": false
+    }
+  ],
+  "latest_activity": [
+    {
+      "role": "Main",
+      "latest_sequence": 61511,
+      "latest_kind": "tool_result",
+      "latest_model_sequence": 61507,
+      "actual_reasoning_mode": "ultramath",
+      "model_call_utc": "2026-11-14T10:44:04.304000+00:00",
+      "current_assignment_id": "u-0debe010-bc45-4398-82ce-1a827bd48f66",
+      "received_utc": "2026-11-14T10:35:02.848000+00:00",
+      "earliest_finish_utc": "2026-11-14T11:35:02.848000+00:00",
+      "checked_utc": "2026-11-14T10:44:55.565930+00:00",
+      "full_hour_observed": false
+    },
+    {
+      "role": "Computation",
+      "latest_sequence": 67211,
+      "latest_kind": "tool_call",
+      "latest_model_sequence": 67208,
+      "actual_reasoning_mode": "ultramath",
+      "model_call_utc": "2026-11-14T10:43:51.742000+00:00",
+      "current_assignment_id": "u-39b3da99-9731-4330-9654-fed9c2e71535",
+      "received_utc": "2026-11-14T02:06:11.22-08:00",
+      "earliest_finish_utc": "2026-11-14T03:06:11.22-08:00",
+      "checked_utc": "2026-11-14T10:44:55.565930+00:00",
+      "full_hour_observed": false
+    },
+    {
+      "role": "Experimental",
+      "latest_sequence": 62325,
+      "latest_kind": "tool_result",
+      "latest_model_sequence": 62321,
+      "actual_reasoning_mode": "ultramath",
+      "model_call_utc": "2026-11-14T10:44:32.471000+00:00",
+      "current_assignment_id": "u-57af39b8-5d26-4bf7-a00a-3e26f77e3c1a",
+      "received_utc": "2026-11-14T01:57:04.441-08:00",
+      "earliest_finish_utc": "2026-11-14T02:57:04.441-08:00",
+      "checked_utc": "2026-11-14T10:44:55.565930+00:00",
+      "full_hour_observed": false
+    },
+    {
+      "role": "Counterexamples",
+      "latest_sequence": 71185,
+      "latest_kind": "assistant_delta",
+      "latest_model_sequence": 71043,
+      "actual_reasoning_mode": "ultramath",
+      "model_call_utc": "2026-11-14T10:44:28.333000+00:00",
+      "current_assignment_id": "u-4d8a5aac-03f7-43eb-88cf-602e0469c05c",
+      "received_utc": "2026-11-14T02:04:17.639-08:00",
+      "earliest_finish_utc": "2026-11-14T03:04:17.639-08:00",
+      "checked_utc": "2026-11-14T10:44:55.565930+00:00",
+      "full_hour_observed": false
+    }
+  ]
+}

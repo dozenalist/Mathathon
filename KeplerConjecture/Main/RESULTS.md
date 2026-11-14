@@ -1,5 +1,14 @@
 # Results — Kepler problem 15
 
+> **Current supervisor checkpoint, November 14, 02:23 Pacific:** General sign
+> checker acceptance remains suspended after a new exact false accept at
+> e76a1570 / 201974b. The specific X-C013 rational SOS certificate independently
+> verifies a weak bound below 0.794809295672; K33b remains the stronger previously
+> checked project control. Neither improves known results. Finite geometric
+> tests are inconclusive and CubeDiff is not Lean-verified. See
+> [REVIEW_2026-11-14_0223.md](REVIEW_2026-11-14_0223.md) for the current acceptance
+> scope; earlier descriptions below do not certify the generic checker.
+
 > **Supervisor checkpoint, November 14, 01:38 Pacific:** Main's generic sign
 > checker remains **unsound at revision 9461aae** despite a first repair. X's
 > earlier generic checker also had a false accept. The particular K33 files

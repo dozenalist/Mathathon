@@ -1,5 +1,15 @@
 # Claim ledger — Kepler problem 15
 
+> **Current supervisor review, November 14, 02:23 Pacific:** Main's checker at
+> e76a1570 / completed report 201974b has a new exact false accept between
+> touching root-isolation intervals. Generic acceptance remains suspended.
+> X-C013's specific rational certificate independently verifies the weak bound
+> below 0.794809295672; this is not a new best bound. Geometric controls remain
+> finite/inconclusive and CubeDiff remains unverified after its memory cap.
+> The explicit claim decisions K15-SUP-0223-01 through -03 in
+> [REVIEW_2026-11-14_0223.md](REVIEW_2026-11-14_0223.md) override conflicting
+> worker labels. Earlier checkpoints below are historical evidence.
+
 > **Current supervisor review, November 14, 01:38 Pacific:** C029's proof is
 > withdrawn. Main's sign predicates at 66267141 and their 9461aae repair have
 > exact false accepts; general soundness and Main-only acceptance claims are

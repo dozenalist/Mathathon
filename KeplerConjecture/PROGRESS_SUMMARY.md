@@ -1,10 +1,11 @@
 # Kepler Conjecture: progress so far
 
-Updated at the November 14, 2026, 01:38 Pacific scheduled review. Worker commits
-and corrections are combined in the review branch. Local checking found a
-geometric proof gap and additional sign-verifier defects. The agents received
-further full-hour work after early endings; actual Ultramath runtime is verified,
-but an hour of continuous work has not been established. Sair-Watch remains
+Updated at the November 14, 2026, 02:23 Pacific scheduled review. Worker commits
+and corrections are combined in the review branch. Independent local checking
+verified another weak rational certificate and found another exact failure in
+Main's sign checker. All ten local jobs finished; the new Lean draft remains
+unverified. Actual Ultramath runtime is verified for all four active chats,
+but completed full-hour work has not yet been established. Sair-Watch remains
 stopped and the 45-minute cadence is unchanged. No new best packing bound or
 simpler Kepler proof has been accepted. This cumulative account is updated
 at each scheduled check, with a short entry in
@@ -144,6 +145,34 @@ actual-clock requirements were delivered in verified Ultramath mode. Main leads
 the mathematical choices and integration; the supervisor supplies evidence and
 local execution. Source revisions, failures, pending work and delivery IDs are
 recorded in [the review](Main/REVIEW_2026-11-14_0138.md).
+
+## What the 02:23 scheduled review established
+
+Counterexamples produced a rational sum-of-squares certificate for an ordinary
+Cohn–Elkies bound below 0.794809295672. We independently reconstructed its
+polynomials, Fourier transform, sign argument and final rational comparison.
+This is a valid but weak control, worse than both known results and our earlier
+degree-33 certificate. It adds a reproducible example, not a better packing bound.
+
+Main's latest generic checker fixes the earlier examples but still misses a
+very narrow negative interval between irrational roots. We supplied an exact
+rational witness and asked Main to establish a complete decision rule, with
+Counterexamples independently reviewing it. Passing the existing regression
+suite is insufficient to accept the checker.
+
+All ten local jobs finished with bounded resources. The four-seed geometric
+search found no counterexample, but its upper-volume estimates cannot prove
+the desired lower-volume inequality. Transfer and block fixtures remain finite
+controls. The submitted SDP run produced no improvement. The smaller Lean
+module exceeded one gigabyte of memory without verification, so only the older
+algebraic normalization is accepted in Lean. A transfer constant, cut-condition
+quantifiers and the infinite-packing extension still require reconciliation.
+
+Main ended its block after 45.573 minutes and received a fresh hour of concrete
+work, including an independent fallback after the checker repair. The other
+three chats continue their existing blocks without interruption. Actual
+Ultramath model calls are verified in all four. Detailed evidence, source hashes
+and delivery records are in [the 02:23 review](Main/REVIEW_2026-11-14_0223.md).
 
 ## How the next stages will run
 

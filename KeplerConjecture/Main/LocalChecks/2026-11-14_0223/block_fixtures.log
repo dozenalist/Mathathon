@@ -1,0 +1,65 @@
+
+=== random_fill : n=107 minsep=2.002605 ===
+  buffer-limited cells: 101   defective: 0
+  R2_one_shell: no defects: all blocks are singletons; (T) holds by definition
+  R2pp_two_shell: no defects: all blocks are singletons; (T) holds by definition
+
+=== fcc_plain : n=500 minsep=2.000000 ===
+  buffer-limited cells: 244   defective: 0
+  R2_one_shell: no defects: all blocks are singletons; (T) holds by definition
+  R2pp_two_shell: no defects: all blocks are singletons; (T) holds by definition
+
+=== hcp : n=175 minsep=2.000000 ===
+  buffer-limited cells: 130   defective: 0
+  R2_one_shell: no defects: all blocks are singletons; (T) holds by definition
+  R2pp_two_shell: no defects: all blocks are singletons; (T) holds by definition
+
+=== icosa_fill : n=131 minsep=2.000000 ===
+  buffer-limited cells: 126   defective: 1
+  R2_one_shell: 1 component(s), disjoint=True (max overlap 0)
+    block 0: |C|=1 |B|=13 sum=135.043176 need=73.539105 (T)=True S-D=+61.504070 diam=4.000 buffer=True
+  R2pp_two_shell: 1 component(s), disjoint=True (max overlap 0)
+    block 0: |C|=1 |B|=14 sum=145.721808 need=79.195959 (T)=True S-D=+66.525848 diam=5.532 buffer=True
+
+=== icosa_fill_b : n=131 minsep=2.000000 ===
+  buffer-limited cells: 113   defective: 1
+  R2_one_shell: 1 component(s), disjoint=True (max overlap 0)
+    block 0: |C|=1 |B|=13 sum=125.554792 need=73.539105 (T)=True S-D=+52.015687 diam=4.000 buffer=True
+  R2pp_two_shell: 1 component(s), disjoint=True (max overlap 0)
+    block 0: |C|=1 |B|=17 sum=180.713344 need=96.166522 (T)=True S-D=+84.546821 diam=6.927 buffer=True
+
+=== a15_saturated : n=2744 minsep=2.000000 ===
+  buffer-limited cells: 1015   defective: 0
+  R2_one_shell: no defects: all blocks are singletons; (T) holds by definition
+  R2pp_two_shell: no defects: all blocks are singletons; (T) holds by definition
+
+=== two_icosa : n=281 minsep=2.000000 ===
+  buffer-limited cells: 241   defective: 2
+  R2_one_shell: 2 component(s), disjoint=True (max overlap 0)
+    block 0: |C|=1 |B|=13 sum=124.271505 need=73.539105 (T)=True S-D=+50.732400 diam=4.000 buffer=True
+    block 1: |C|=1 |B|=13 sum=123.591444 need=73.539105 (T)=True S-D=+50.052339 diam=4.000 buffer=True
+  R2pp_two_shell: 2 component(s), disjoint=True (max overlap 0)
+    block 0: |C|=1 |B|=16 sum=159.027268 need=90.509668 (T)=True S-D=+68.517600 diam=6.953 buffer=True
+    block 1: |C|=1 |B|=17 sum=172.616235 need=96.166522 (T)=True S-D=+76.449712 diam=7.011 buffer=True
+
+=== icosa_fcc_shell : n=189 minsep=2.000000 ===
+  buffer-limited cells: 188   defective: 1
+  R2_one_shell: 1 component(s), disjoint=True (max overlap 0)
+    block 0: |C|=1 |B|=13 sum=167.603248 need=73.539105 (T)=True S-D=+94.064143 diam=4.000 buffer=True
+  R2pp_two_shell: 1 component(s), disjoint=True (max overlap 0)
+    block 0: |C|=1 |B|=13 sum=167.603248 need=73.539105 (T)=True S-D=+94.064143 diam=4.000 buffer=True
+
+=== icosa_fcc_shell_b : n=189 minsep=2.000000 ===
+  buffer-limited cells: 188   defective: 1
+  R2_one_shell: 1 component(s), disjoint=True (max overlap 0)
+    block 0: |C|=1 |B|=13 sum=167.574989 need=73.539105 (T)=True S-D=+94.035883 diam=4.000 buffer=True
+  R2pp_two_shell: 1 component(s), disjoint=True (max overlap 0)
+    block 0: |C|=1 |B|=13 sum=167.574989 need=73.539105 (T)=True S-D=+94.035883 diam=4.000 buffer=True
+
+=== SUMMARY (S - D should be >= 0; deficit is ~0.1066) ===
+  R2_one_shell: 6 block(s) tested, min S-D = +50.052339, max = +94.064143, any negative = False
+  R2pp_two_shell: 6 block(s) tested, min S-D = +66.525848, max = +94.064143, any negative = False
+  NOTE: computed volumes are UPPER bounds, so a positive S-D does NOT certify;
+        only a negative value would refute.  Status: TESTED_FINITE.
+
+written Experimental/evidence/block_evaluator.json

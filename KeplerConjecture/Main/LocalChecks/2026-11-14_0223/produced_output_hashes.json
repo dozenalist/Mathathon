@@ -1,0 +1,8 @@
+{
+  "ProducedOutputs/Computation/out/cut_deficit.json": "69ad9775b64737bfdd493f558a1c52f9c6e20a275e898962f2f172b52cb1191b",
+  "ProducedOutputs/Computation/out/sos_family.json": "d3528d1c5cb5e2a03206c79af4c63bca103d0f5ffe3e92931d5938ae94f15c48",
+  "ProducedOutputs/Computation/out/sos_shell_variant.json": "40c85fce1c66fb0582ad6400a8476b172721261326cb4436f15922ee6a8e60c8",
+  "ProducedOutputs/Experimental/evidence/block_evaluator.json": "99f314cc4f380f3660df4fca32f2f26e654f1aad616b5dccac25e810f7b52f51",
+  "ProducedOutputs/Experimental/evidence/dense_completion_search.json": "fa21ea8f2fcd785a219810a50f49cdacac1dd55455733fb61402408cd04dc0a7",
+  "ProducedOutputs/Experimental/evidence/transfer_evaluator.json": "2082bbc89ea05c588544f20d95c705c32de89c3f031479f9aa1e037a2f77b755"
+}
