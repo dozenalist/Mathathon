@@ -1608,7 +1608,7 @@ separated along a common face normal, are 2-separated **iff** `d ≥ 6cos ρ_c =
 `|d e − 2a_k − 2a_i|² = d² + 4(2 + 2/√5) − 8dc`, which equals 4 exactly when
 `d² − 8cd + 4 + 8/√5 = 0`, i.e. `d = 4c ± √(16c² − 4 − 8/√5) = 4c ± 2c`, the larger root being `6c` by
 `3c² = 1 + 2/√5` (sympy: the larger root is exactly `6cos ρ_c`; the smaller is `2cos ρ_c = 1.5893 < 2`).
-Other pairs are further: same-face `23.8`, antipodal `16 − 12c² = 8.42`, same-icosahedron `≥ 2.102924`.
+Other pairs are further: same-face `27.155`, antipodal `16 − 12c² = 8.42`, same-icosahedron `≥ 2.102924`.
 ∎ Numerically (`c133_parallel_threshold.py`, 40 digits): `mindist(6c) = 2.000000`, `mindist(6c−10⁻⁹) =
 1.9999999992`.
 
@@ -1629,3 +1629,9 @@ Consequence 1 and `C108` step (3) — "volume `= V_dod` ⟹ dodecahedron" — ar
 main theorem, not 4.1. `X-C089`'s "unstated hypothesis" is right about Theorem 4.1 and wrong about the
 paper; `X-C090`'s counterexample stands, but only as a statement about the *polyhedral* strengthening of
 4.1 (the circumscribed icosahedron, 20 faces, `5.054056 < V_dod`), which the conjecture does not need.
+
+*Detail at `d = 6c`* (numerical, exact structure): the global minimum is `2.0`, attained by **six** cross
+pairs among the vertices of the face `F` and of `−F`; same-face cross pairs are at `d² + 4(2−2/√5) =
+27.155`, antipodal cross pairs at `d² + 16 − 8dc = 8.422`, and pairs inside one icosahedron are at
+`≥ 2.102924`. (An earlier line here said `23.8` for the same-face value — that dropped the factor 4 on
+`2−2/√5`; corrected.)
