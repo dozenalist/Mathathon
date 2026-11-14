@@ -1779,3 +1779,10 @@ Greedy 60-point 2-separated set in a box, `ε = 1`: `S_ε` has 53 points, a gree
 `(2+ε)`-graph has 24 edges/48 matched points, and **`S_ε ⊆ matched ∪ N(matched)` holds with 0 exceptions** —
 the combinatorial core of `C132(2)` is right. The maximum degree in the `(2+ε)`-graph there is 4, well below
 `D(1) = 63`, consistent with `D` being a crude but sufficient bound (as `C132` says).
+
+### K15-X-C113 — the ring excess has an exact closed form, and `C132`'s three numbers re-derive
+
+The five ring half-space distances in `ring_excess.py` are `b = |p|/2` with `|p|² = 8 − 8/√5`, i.e.
+**`b = √(2 − 2/√5) = 1.0514622242382672`** exactly (the script uses `1.051462224238` ✓), and
+`b − 1 = 0.0514622242`. So the "ring excess" is a closed form, not a fitted number. Also re-derived:
+`1/(1+0.6832816/2)³ = 0.41408665` (C132's `0.414086` ✓), `1/(1+1/2)³ = 0.2962963` ✓, `2 + 2·63 = 128` ✓.
