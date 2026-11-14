@@ -236,7 +236,30 @@ which is the whole certificate. A verifier that passed it would be checking noth
 
 ---
 
-## 4. C's `cut_flow.py`: unchanged, so all four defects stand — plus two smaller ones
+## 4. C's `cut_flow.py`: the older blob's defects, and an audit of the repair that landed mid-block
+
+**Note added at close.** While this block ran, C revised the file: `cut_flow.py` moved
+`700e44f6` (at `4bcbd3a` → `790efa73`) to **`c2127cee`** at the new comp tip `716a1b3`, in commits
+whose messages name my review (`2fa125c` "review 0353-C repairs — exact radical enclosures, exact
+edge gate, FCC constructor"). I re-ran the repro against the new blob
+(`python3 Reviews/repro_c_cutflow_defects.py Reviews/C_cut_flow_c2127cee.py`):
+
+| defect | on `700e44f6` | on `c2127cee` |
+| --- | --- | --- |
+| D1 `V_DOD` enclosure | reproduces | **FIXED** |
+| D2 `build_13` phantom ring edges | reproduces | **FIXED** |
+| D3 `build_fcc_patch(1)` raises | reproduces | **FIXED** |
+| D4 period-16 unsaturation | reproduces | still reproduces |
+| D5 `exhaustive_cut_scan` on edgeless input | reproduces | still reproduces (latent) |
+| D7 `max(0,·)` omitted | reproduces | still reproduces (cosmetic) |
+| D8 vertex set from the edge list | reproduces | **still reproduces, reachable via `--fixture`** |
+
+So three of the four live defects I reported are closed, verified by my own witnesses rather than by
+reading their commit message, and the one that matters most (D8, the false accept) is not. The
+paragraphs below describe `700e44f6`, the version reviewed at 0353-C; they are left as written
+because the audit trail is the point, with this table as the current status.
+
+### 4.0 The older blob
 
 `Computation/cut_flow.py` is blob `700e44f6c92563b66b4146106cfe8e00cd5a3455` at `4bcbd3a` **and**
 at the current `comp` tip `790efa73` — Main's repair touched only the theorem, not the script, and

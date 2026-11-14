@@ -20,13 +20,17 @@ rational arithmetic or a stated geometric fact.
   D8  verify_flow_exact FALSE-ACCEPTS when a vertex with positive deficit has no incident edge:
       its vertex range is taken from the edge list, so such a vertex is never checked.
 
-Run:  python3 Reviews/repro_c_cutflow_defects.py        (exit 0 iff all four reproduce)
+Run:  python3 Reviews/repro_c_cutflow_defects.py [path-to-cut_flow.py]
+      default Reviews/C_cut_flow_4bcbd3a.py (blob 700e44f6, the version reviewed at 0353-C).
+      Point it at a newer copy to see which defects a repair actually closed.
 """
-import importlib.util, sys
+import importlib.util, os, sys
 from fractions import Fraction as F
 import sympy as sp
 
-spec = importlib.util.spec_from_file_location("cf", "Reviews/C_cut_flow_4bcbd3a.py")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
+MODULE = sys.argv[1] if len(sys.argv) > 1 else "Reviews/C_cut_flow_4bcbd3a.py"
+spec = importlib.util.spec_from_file_location("cf", MODULE)
 cf = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(cf)
 

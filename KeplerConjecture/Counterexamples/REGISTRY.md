@@ -694,3 +694,15 @@ endpoints and `η ∈ {0, ±1/2}` — Main's `le_on_interval` and X's `sign_on_i
 C's `exactcert` has no bounded-interval decision, so this is a two-way test. The failure mode my
 own `exact_sign` docstring warns about (reading the sign from `sign(lc)`, which is only the
 rightmost gap) does not occur in Main's current version.
+
+### K15-X-C036 — C's repair closes D1, D2, D3 and leaves D4, D5, D7, D8 open
+
+`cut_flow.py` moved `700e44f6` → **`c2127cee`** at comp tip `716a1b3` (commits `2fa125c`, `e229923`,
+`a1d99ef`, whose messages name review 0353-C). Re-running `Reviews/repro_c_cutflow_defects.py`
+against the new blob: **D1 (the `V_DOD` enclosure), D2 (the `build_13` ring gate) and D3
+(`build_fcc_patch(1)`) no longer reproduce** — verified by the same witnesses, not by reading the
+commit message. **D4** (period-16 unsaturation), **D5** (`exhaustive_cut_scan` on edgeless input,
+latent), **D7** (`max(0,·)` omitted, cosmetic) and **D8** (vertex set taken from the edge list —
+still producing `status: PATCH_FEASIBLE` through `--fixture` on an instance infeasible at every
+`Φ`) still reproduce. The repro script now takes the module path as an argument so any future
+revision can be audited the same way.
