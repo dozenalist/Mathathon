@@ -222,6 +222,13 @@ which is the case the searches test. So the honest status of the excess is:
 
 Consequently nothing in this block relies on `97.4 %`.
 
+**What *is* proved about the excess is per-configuration, and §2 gives it.** For the frozen
+fixture the excess is *exactly* `5.898017372 − 5.550291029 = 0.347726`, and no superset can
+reduce it — that follows from the exact-cell theorem, not from a search. The step that is
+**not** available is the quantifier swap: "no superset of *this* configuration reduces the
+excess" does not give "no configuration has a smaller excess". The global statement needs a
+lower bound, and none is known above `V_dodeca`.
+
 ---
 
 ## 5. Audit of Main `b42c8d1` `BARLOW_CELLS.md`
