@@ -620,3 +620,12 @@ The exact singleton constant is `(4√2 − V_dod)/12 = 0.0088802684147391605…
 that "the two routes give the same number" holds only because both use that enclosure. The
 direction is safe (an over-estimate of `V_dod` weakens a necessary condition), so the number is a
 valid floor; the word "exact" is what is wrong. Quote `0.0088802684147391605`, or call it a bound.
+
+### K15-X-C031 — the family suite discriminates on `5619c1d` and is blind to two other defect kinds
+
+Same three families against four checker blobs: `a8526a8` 0/900, 0 targeted, 0/8 near-touching;
+**`5619c1d` 0/900, 5 targeted, 3/8 near-touching** (so the suite is not vacuous); `909a50a` 0/900,
+0, 0/8 (its defect was the `η` licence, not a predicate); `5caa1c9` 0/3600, 0, 0/8. The families
+test one failure mode — probe placement relative to roots. A missing precondition or a wrong model
+sign needs a different test, which is why `K15-C098`'s `SUSPENDED` label on generic soundness is
+correct and passing the families is evidence, not proof.
