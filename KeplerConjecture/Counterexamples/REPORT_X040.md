@@ -386,7 +386,7 @@ fixed sample — `Reviews/g8_checker_independence.py`, exit 0.
   certificate rests on — and the algebraic rule (odd-part root count, independently coded). The
   sample has both leading signs, roots at `0`, repeated roots, and 12 near-touching cases
   `(t−r)² ∓ ε` with `ε = 10⁻²⁰, 10⁻⁸` — the family that broke the probe-based checkers. It is not
-  vacuous: **14 of the 52 are non-negative and 38 are not**, and all three routes split the sample
+  vacuous: **14 of the 52 are non-negative and 38 are not**, and all four routes split the sample
   identically.
 
 **The interval predicate too.** The second predicate the shell pipeline uses is `p ≤ η` on a
