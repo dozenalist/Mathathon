@@ -330,3 +330,44 @@ freezing the statement. Stable and independent of all numerical inputs.
 Gaps: `(T'-R2')` open; best certified per-cell bound `5.550291` (McLaughlin) vs required
 `5.665735`, shortfall `2.08 %`;
 `icosa_dense_optimize.py` unauthored (`LOCAL_ICOSA_SEARCH.md` BLOCKED on authoring).
+
+### K15-EXP-008 — 2026-11-14, America/Los_Angeles — role E (Experimental)
+
+Block `K15-REVIEW-0138-E`, receipt `2026-11-14T09:57:21Z`. Branch
+`kepler15/experimental/run-01`, based on `4ea4e8b9`. Runtime Ultramath (as recorded by the
+supervisor; my previous block wrongly reported it as unused, corrected here).
+
+**Corrections accepted and made.**
+
+| id | correction |
+| --- | --- |
+| reporting | completion 51140's "40 minutes / 09:56Z" was inferred from `date` output, not API timestamps; official record (25 min, 09:15:53→09:41:19Z) stands |
+| `K15-E049` | **narrowed** to the uniform-floor directional estimator family (F1–F3); "closes the per-cell route" and "only remaining option" withdrawn, dependent claims corrected |
+| `K15-E045` | made **conditional** on the imported dodecahedral theorem; only `Omega(c) subset D` is unconditional; the import's computer-assisted proof charged |
+| `K15-E062` | **retraction**: the `S-D` values and the "slack factor 470-880" were produced by a broken buffer flag (`vertex radius > R-1e-6` never fires when the buffer is a sphere whose own cells are unbounded); with the correct saturation test `extent <= 2`, every non-vacuous block is flagged unreliable |
+
+**New and proved.** `K15-E060` two-shell target with forced thresholds `4.18`/`8.36` and
+boundary cost `diam C + 8.36`; `K15-E061` antisymmetric transfer theorem (pointwise
+FCC-compatibility from a Hall condition, exact cancellation, explicit `O(r^2)` boundary,
+`(C3)` automatic, `A ≡ 0` on FCC/HCP — a cleaner interface, not less mathematics);
+`K15-E063` A15 is the project's first genuinely saturated fixture (919 valid cells, 0 defects,
+volumes `125/16` and `129/16`, multiplicities `2:6` matching `8a:16d`); the Hall-decomposition
+lemma (per-component checks suffice); and `K15-E064`, a blind periodic relaxation recovering
+`pi/sqrt18` to `1.6e-07` as a calibration.
+
+**Implementation.** Six new committed scripts (`block_evaluator`, `transfer_evaluator`,
+`multi_defect_test`, `dense_completion_search`, `frank_kasper_test`, `periodic_relax`), all
+verified to run; `verify_all_claims.py` extended to the 0138 constants; a cache-key bug in the
+search harness fixed.
+
+**Attempts that failed, retained.** The C15 Laves phase could not be built — three secondary
+sources give conflicting `16d` coordinates, so it is blocked on primary crystallographic data
+rather than guessed. The dense-completion search did not refute `(T')` and did not even beat the
+sparse baseline (it made the configuration worse); recorded with the reason: density is not what
+makes `(T')` hard, saturation is.
+
+**Open.** `(H_R)` (equivalent to `(T')`, no numerical evidence either way), and the sharp
+question `(Q)` — does a saturated packing contain a cell below `sqrt32`? `(Q) = no` would give
+the bound immediately but is strictly stronger than it.
+
+**Not delivered.** No new density bound, no proof of `(H_R)`.
