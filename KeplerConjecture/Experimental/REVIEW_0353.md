@@ -118,6 +118,24 @@ The gap `5.898 − 5.763 = 0.135` is what a better completion would have to clos
 gap `5.763 − 5.550 = 0.213` is what a lower-bound proof would have to clear. **Neither is
 established.** The configuration is a witness, not an extremiser.
 
+### 3.1 The rejected candidate, kept on the record
+
+Block 0308 produced `vol Ω(w1) = 3.237838` and reported it legal (`§14.5` there). It is
+**REJECTED and must not be cited**:
+
+```
+what it claimed     vol Omega(w1) = 3.237838, a legal completion, which would refute (P')
+why it is wrong     the penalty never imposed |z - w1| >= 2, so the optimiser was free to
+                    place "centres" inside the payer itself
+missing constraint  |z - w1| >= 2   (checked explicitly in 1.2; the fixture's added centres
+                                     are constructed at exactly 2 from w1)
+how it was caught   3.237838 < V_dodeca = 5.550291, contradicting the imported dodecahedral
+                    theorem -- a value below a known bound is a bug, not a discovery
+```
+
+The same floor caught two slips in this block (§5.4). It is the cheapest error detector in
+the project and it should be applied to every computed cell volume before it is reported.
+
 ---
 
 ## 4. `K15-E078` is WITHDRAWN: the `97.4 %` claim
