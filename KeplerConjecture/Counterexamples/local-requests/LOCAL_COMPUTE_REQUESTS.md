@@ -20,7 +20,7 @@ purpose               Obtain a fully certified 3D CE value inside the exactly-de
                       where p and q are the polynomials of f and fhat in s=|x|^2. This is the
                       reproducible control the roadmap asks for, with no grids and no tails.
 repository branch     kepler15/counterexamples/run-01
-source commit         <filled at push: the commit containing this file>
+source commit         c8ee8b1 (this file's commit); parent research commit 5c6eac3
 tracked paths         KeplerConjecture/Counterexamples/ce_laguerre_exact.py
                       KeplerConjecture/Counterexamples/ce_lp_search.py
 exact command         cd KeplerConjecture/Counterexamples
@@ -73,7 +73,7 @@ purpose               Recompute, with a second independent method, the two polyt
                       and V(rhombic dodecahedron, inradius 1) = 4*sqrt(2) = 5.6568542, and the
                       forced correction A >= 4*sqrt2 - V_dod = 0.1065632.
 repository branch     kepler15/counterexamples/run-01
-source commit         <filled at push>
+source commit         c8ee8b1 (this file's commit); parent research commit 5c6eac3
 tracked paths         KeplerConjecture/Counterexamples/normalization_check.py  (section 4)
 exact command         cd KeplerConjecture/Counterexamples && python3 normalization_check.py
 deps                  sympy 1.14.0, numpy 2.5.3, scipy 1.18.1
