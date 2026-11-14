@@ -876,15 +876,22 @@ question for `≤ 12`-face cells. **Flag, outside the audited target:** `C115` w
 "`t_dod = 3 tan(π/5) ≈ 1.258`", but `3 tan 36° = 2.17963` while `1.2584 = √3 tan(π/5)` — the formula
 and the decimal disagree by `√3`; check against the paper before quoting.
 
-### K15-X-C051 — the two-dodecahedra threshold is at least `2φ = 3.2360679`, so C116's `6/√5` is valid but 20.6% short
+### K15-X-C051 — the two-dodecahedra threshold is `3.4555003`, so C116's `6/√5` is valid but 28.8% short
 
-`Reviews/near_contact_band_indep.py`. Same configuration as `X-C043` (v at 0 with its twelve
-icosahedral neighbours at `2uᵢ`, w at `d·u₀` with its twelve at `d·u₀ + 2R_t u_j`), but with `d`
-free: the maximum over the twist of the minimum cross-distance is **2 exactly at `d = 2φ =
-3.2360679775`** (twist 36°; `1.9999991` at `2φ − 10⁻⁶`, `2.0000009` at `2φ + 10⁻⁶`). Since a
-packing containing two dodecahedral cells contains such a configuration, the pairwise condition
-alone forbids `d < 2φ`. `2φ/(6/√5) = 1.206011`, so `C116`'s `6/√5 = 2.683281573` (main `8dc264e`) is
-valid but not sharp — its own text allows this ("sharpness is for this certificate"). Caveat: the
-"no other centre cuts either cell" condition is not checked, so `2φ` is a lower bound for the true
-threshold, and no attainability at `2φ` is claimed. Route impact: none — `C114` needs only
-`ε < 0.6832816`, and `2φ − 2 = 1.236`.
+**Corrected entry — the first version of it claimed `2φ` and is withdrawn.** The first script scaled
+*v's* icosahedral ring by the separation `d` as well as w's (`d*V[i]` instead of `2*V[i]`), which
+produced a spurious threshold at `2φ = 3.236068`. With v's ring fixed at radius 2 — the only version
+that models two dodecahedral cells — the computation gives:
+
+```
+max over twist of the minimum cross-distance = 2 exactly at   d* = 3.4555003444
+(twist 36 deg; and at d* no other centre cuts either cell, so the two dodecahedral cells are
+actually attainable there)
+```
+
+So the threshold for two dodecahedral cells is `d* = 3.4555003`, and C116's `6/√5 = 2.6832816`
+(main `8dc264e`) is a **valid but 28.8% short** bound (`d*/2.6832816 = 1.287789`). The configuration
+is the same as `X-C043` with the separation free: v at 0 with its twelve neighbours at `2u_i`, w at
+`d·u₀` with its twelve at `d·u₀ + 2R_t u_j`. `Reviews/near_contact_band_indep.py` reproduces `d*`
+and the attainability check (0 cutting centres). Route impact: none — `C114` needs only
+`ε < 0.6832816`, and `d* − 2 = 1.4555`.

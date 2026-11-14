@@ -603,6 +603,93 @@ gives for `√3 tan(π/5)`). I have not read the paper's own definition of `t_do
 to check against the source rather than a verdict — but it is a formula and a decimal that do not
 agree with each other, in an entry whose purpose is to be the quotable primary source.
 
+**`C116`'s constant is valid but not sharp — the threshold is `3.4555003`, not `6/√5`.** `C116`
+proves that two dodecahedral cells are impossible when their centres are closer than `6/√5 =
+2.683281573`, and says its sharpness is only for its arc-cover certificate. Computing the same
+obstruction directly (`Reviews/near_contact_band_indep.py`): `v` at the origin with its twelve
+icosahedral neighbours at `2uᵢ`, `w` at `d·u₀` with its twelve at `d·u₀ + 2R_t u_j`. Any packing
+containing two dodecahedral cells contains such a configuration, so if a cross-distance is `< 2` for
+every twist, no such packing exists. The maximum over the twist of the minimum cross-distance is
+
+```
+2.0000000000 exactly at   d* = 3.4555003444    (twist 36°)
+```
+
+and at `d*` no other centre cuts either cell, so the two dodecahedral cells are **attainable** there;
+for `d < d*` the cross-distance condition fails at every twist. Hence the threshold is `d*`, and
+`d*/ (6/√5) = 1.287789`: C116's constant is valid but **28.8% short**. (It does not affect the
+route — `C114` needs only `ε < 0.6832816` and `d* − 2 = 1.4555` — but the constant should be
+`3.4555003`.)
+
+**Retraction.** The first version of this paragraph claimed the threshold was `2φ = 3.236068`. That
+came from a script error: I had scaled *v's* icosahedral ring by `d` as well as `w`'s (`d*V[i]`
+instead of `2*V[i]`), which is not the configuration of two dodecahedral cells. The corrected number
+is `3.4555003`; the script now asserts the attainability check and carries the correction in its
+docstring. This is the fourth self-correction of the block and the only one that was pushed before
+being caught.
+
+## 13. How the audit was supported, and what is mine
+
+An eight-member swarm ran on the six attack surfaces in parallel with this audit (same session,
+`.ultramath/smwgg6jiv`, `deepseek-v4.1-flash`, 100 steps each). Two of its submissions were accepted
+after checking (a consolidated adjudication, and a corrected six-item report); the extras that
+survive my own re-checking are integrated above with credit:
+
+- the Tammes-12 slack (§3) and the `K_{1,3}` / `P_3` realisations (§3) — I had missed both;
+- the fcc half-space-shift construction of the crack packing (§5) and the crack-cell formula
+  `√32 + 2ε`, which I then recomputed independently (`Reviews/crack_cell_indep.py`);
+- `density(Z) ≤ 1/2` for the exact-equality set (§6);
+- the `r > 2` icosahedral family showing that even *volume*-stability gives no contacts (§6) — the
+  sharpest single addition to my own §6;
+- the `lim`/`limsup` presentation gap with the saturated slab construction (§7.1).
+
+Three things in this review are corrections of my own errors: the `(M)` characterisation (§3), the
+direction of the slack comparison (§7), and an earlier draft's claim that the displayed slack
+inequality was false. All three were caught by checking against the sources or against another
+implementation, not by re-reading my own prose — which is the argument for doing both.
+
+Everything else — the `C_R` witness, the Theorem D clause audit, the step-4 recomputation and the
+E/Main resolution, the Hales–McLaughlin equality case from the primary source, the independent
+`p ≤ η` decider and the `nsimplify` defect, the crack-cell volumes, and every verdict in §9 — is
+mine, and reproducible from the scripts named in each section.
+
+---
+
+## 14. Post-audit developments in `main` (checked, not part of the audited target)
+
+Between the audit target `a6f3935` and the tip I fetched at close (`8dc264e`) Main pushed, among
+others, `K15-C121` — "an explicit stability bound for cells with `≤ 12` faces" — which is exactly the
+object §6 above says the chain is missing. I checked it; it belongs in the record.
+
+**`C121` is correct.** Statement: if `Ω(v)` has at most 12 faces and every neighbour is at distance
+`≥ 2ρ` (`ρ ≥ 1`), then `vol Ω(v) ≥ V_dod ρ³`. Proof: scale by `1/ρ`; the scaled body has
+`≤ 12` faces, contains `B(0,1)` and has all faces at distance `≥ 1`; Fejes Tóth's Theorem 4.1 (as
+quoted in `C115`) gives volume `≥ ω_dod`; scale back. Two checks: the arithmetic is exact —
+`V_dod·1.045³ = 6.333804106 = 1.119669·√32`, so a `≤ 12`-face cell of an isolated vertex beats `√32`
+by 11.97% — and the "second form" threshold is right: `(3V_dod/4π)^{1/3} = 1.0983541`, above the
+`1.045` in play, which is why Fejes Tóth is doing real work. The application is legitimate because
+`Ω/ρ` is again a Voronoi cell (of the scaled packing, whose minimum distance is still `≥ 2`).
+
+**It is sharp, and its equality case is the `r > 2` family of §6.** Twelve icosahedral directions at
+circumradius `r = 2ρ` give a dodecahedral cell of inradius `ρ` and volume `V_dod ρ³`, with no
+contact at all. So `C121` is not merely a bound — it is attained, by precisely the family that shows
+volume-stability cannot produce contacts.
+
+**Consequently `C121` does not close the corollary, and my §6 stands with a sharper boundary.** What
+the chain needs is *contacts* (distance exactly 2) to feed the matching of Theorem C; `C121` gives
+"some neighbour within `2ρ`". For `ρ = 1.045` that is a neighbour at distance `≤ 2.09` — a
+*near*-contact, and `C116`'s band `6/√5 = 2.683` is wider still. A positive density of near-contacts
+is not a matching of the contact graph, so the step "asymptotically dodecahedral ⟹ `ρ > 0`" is not
+repaired. What `C121` does repair is the *singleton* question for `≤ 12`-face cells, explicitly and
+without compactness, which is a real gain and a different statement.
+
+**One arithmetic flag in `C115` (Main's newest entry, outside the audited target).** It records
+"`t_dod = 3 tan(π/5) ≈ 1.258`". But `3 tan 36° = 2.17963`, while `1.2584 = √3 tan(π/5)`. So a
+factor `√3` looks to be missing from the displayed formula (the decimal is the one my arithmetic
+gives for `√3 tan(π/5)`). I have not read the paper's own definition of `t_dod`, so this is a flag
+to check against the source rather than a verdict — but it is a formula and a decimal that do not
+agree with each other, in an entry whose purpose is to be the quotable primary source.
+
 **`C116`'s constant is valid but not sharp — it can be improved from `6/√5` to `2φ`.** `C116` proves
 that two dodecahedral cells are impossible when their centres are closer than `6/√5 =
 2.683281573`, and says the sharpness is only for its arc-cover certificate. Computing the same
