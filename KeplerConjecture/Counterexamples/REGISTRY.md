@@ -1155,7 +1155,7 @@ At experimental tip `f502b9a` (supersedes `d289bef`):
 | --- | --- | --- |
 | norm | slack `R·(7/4)·e_i + f_i`, `√3 ≤ 7/4` rational | **sound** |
 | radius bootstrap | `R₀ = b_max/(c − (7/4)e_max)`, `b_max` includes `f_i`, `c` a rigorous *lower* bound for `min_u max_i u·n_i` | **sound**: `max_i u·n_i` is 1‑Lipschitz, so `min_mesh − diam` is a lower bound; the mesh diameter (max edge) is a valid covering radius for a spherical triangle — acute gives `L/(2 sin A_max) ≤ L/√3`, obtuse puts the max on an edge at `≤ L/2` |
-| boundedness | `Out` bounded iff `0 ∈ int conv{n_i}`, decided by supporting planes of the hull | **sound**, and *better than what I asked for*: my "four normals with a positive dependence" is only sufficient and **rejects the cube** (any four of its six include an antipodal pair). E found this with their own control. |
+| boundedness | `Out` bounded iff `0 ∈ int conv{n_i}`, decided by supporting planes of the hull | **DEFECTIVE — see the erratum at the end of this entry.** The idea is right and better than "four normals with a positive dependence" (which rejects the cube), but the implementation's contract is false. |
 | inner inclusion | `Inn = {y·n_i' ≤ b_i' − slack}` and `Inn ⊆ Ω ∩ B_R` | **sound** |
 | domain coverage | `n = ceil(span/width)`, box width `span/n` exactly, with `assert lo + n*w == hi` | **sound** |
 
@@ -1167,6 +1167,25 @@ Two limits: `spanning_constant` evaluates the rational normals in float and dedu
 which covers the ~`1e-16` conversion error but is a fudge, not an interval computation; and the old
 `certify_region.py`/`rigorous_cell_volume.py` are still in the tree, so any number they produce keeps
 the old defects — only the `_v2` path is repaired.
+
+**Erratum (same block, after `REVIEW_0653` steering).** The boundedness row above was marked *sound*
+on the strength of E's controls. It is not. `origin_interior_certificate` returns `(True, 1, 1)` for
+`[(1,0,0),(0,1,0),(0,0,1)]`, whose hull is a triangle in `x+y+z=1` and does not contain the origin at
+all; and it returns `(True, 1, 4)` for `[(1,0,0),(0,1,0),(0,0,1),(1,1,1)]`, where **all four points have
+`x+y+z = 1`, so `0 ∉ conv` outright** — a full-dimensional hull, not a degenerate one. The cause is not
+the `b×c` vs `(b−a)×(c−a)` inconsistency alone (that is a real inconsistency, but replacing it does not
+fix the three-point probe: with edge vectors the triangle still returns `(True, 1, 1)`). The cause is
+that the routine never checks the hull is **3-dimensional**: for any set whose hull is at most
+2-dimensional, some plane contains all the points, every point is on one side of it, and the origin is
+strictly inside it, so the "all supporting planes" test is vacuous. Consequence: the **boundedness
+decision** in `polytope_volume` is unreliable — a false positive on a set with ≥ 4 vertices would give a
+finite volume for an unbounded polyhedron, i.e. the `X-C061` failure mode through a new door. On the
+full-dimensional witness it happens to fail safe (`polytope_volume` returns `None`, 0 vertices, and
+`certify` would then raise on `None` rather than return a number), so I have **no** demonstrated false
+*volume*; what is refuted is the helper's contract and the boundedness guarantee, which `X-C072`'s table
+had marked sound. Fix: require `0 ∈ int conv{n_i}` by proving the hull 3-dimensional (a positive
+spanning subset with a strictly positive dependence, *plus* the supporting-plane scan with
+`(b−a)×(c−a)` normals), and refuse otherwise.
 
 **Run at one box.** `certify_region_v2.py 110 110.1 35 35.1 0.1` (the worst corner of the default
 region; 31 s) exits 0 with enclosure **`[5.861826587058, 5.940277014469]`**, above the `5.763417470`
@@ -1329,3 +1348,31 @@ a *different* one-parameter family (there `z = −2cos θ ∈ [0.68, 0.70]`, rad
 1.884]`, volume `[5.861827, 5.940277]`), not a neighbourhood of the C5 fixture. Both are above the
 `5.763417470` target, so nothing false is claimed — but "CERTIFIED for the whole region" should not be
 read as "certified around C5", and the region and the control are two different objects.
+
+### K15-X-C080 — `origin_interior_certificate`'s contract is false, and `spanning_constant` is not rigorous
+
+1. **The helper.** Reproduced exactly:
+   `origin_interior_certificate([(1,0,0),(0,1,0),(0,0,1)])` → `(True, 1, 1)`, while the hull is the
+   triangle in `x+y+z=1` and does not contain the origin. **Stronger**: on
+   `[(1,0,0),(0,1,0),(0,0,1),(1,1,1)]` it returns `(True, 1, 4)` although all four points have
+   `x+y+z = 1`, so `0 ∉ conv` — and this hull *is* 3-dimensional, so the failure is not only the
+   degenerate case. The `b×c` normals (instead of `(b−a)×(c−a)`) are a genuine inconsistency, but they
+   are **not** the operative cause of the three-point probe: with edge-vector normals the answer is
+   still `(True, 1, 1)`. The operative cause is the missing **3-dimensionality** check.
+2. **Consequence, stated exactly.** The boundedness decision in `polytope_volume` (and hence in
+   `certify`) rests on this helper. On the full-dimensional witness the failure is *safe* —
+   `polytope_volume` returns `None` with 0 vertices and `certify` would raise — so I have no
+   demonstrated false volume. What is refuted is the guarantee itself; a false positive on a normal set
+   with ≥ 4 vertices would yield a finite volume for an unbounded cell, which is `X-C061` again.
+3. **The radius path is not rigorous either.** `spanning_constant` evaluates the rational normals in
+   `numpy` floats and returns `F(vals.min()) − F(diam) − 1e-9`: the LaTeX-side argument (1‑Lipschitz,
+   mesh diameter as covering radius) is correct, but the float error is not *bounded*, it is assumed
+   below `1e-9`. So `R₀`, and with it the outer polytope's truncation, is not a certified bound. The
+   fix is to do the mesh evaluation in `Iv`/`Fraction` (the mesh can be generated with rational
+   directions from the icosahedral subdivision, or the `min` can be bounded below on each mesh triangle
+   by its vertices minus the diameter, evaluated exactly), and to drop the `1e-9`.
+
+**Status of `X-C072`**: its table row on boundedness is **withdrawn** (see the erratum there). The other
+four rows stand: the `√3` slack, the inner inclusion, the exact domain tiling and the a-priori-radius
+*formula* are correct as algebra — the defect is in the two inputs to that formula (the helper's verdict
+and `c`'s lower bound).

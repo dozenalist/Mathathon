@@ -474,3 +474,55 @@ certifies `5.8980173718`. The default region is `θ ∈ [110°,111°]`, which **
 it certifies a neighbouring family (volume `[5.861827, 5.940277]`). Both clear the `5.763417470` target,
 so no false claim is made, but "certified for the whole region" is not a statement about the C5 fixture
 the self-test uses, and the two should not be conflated in the ledger.
+
+## 20. Correction: `cell_certificate`'s boundedness test is not sound (my §12 over-credited it)
+
+`REVIEW_0653` steering flagged `origin_interior_certificate`. Reproduced, and it is worse than the
+steering's repro:
+
+```
+origin_interior_certificate([(1,0,0),(0,1,0),(0,0,1)])              -> (True, 1, 1)
+   hull is a triangle in x+y+z=1; the origin is not in it
+origin_interior_certificate([(1,0,0),(0,1,0),(0,0,1),(1,1,1)])      -> (True, 1, 4)
+   all four points have x+y+z = 1, so 0 is NOT in conv -- and this hull IS 3-dimensional
+```
+
+The `b×c`-instead-of-`(b−a)×(c−a)` normals are a real inconsistency, but they are **not** the reason
+the three-point probe passes: I re-ran the same scan with edge-vector normals and it still returns
+`(True, 1, 1)`. The operative defect is that the routine never tests the hull's **dimension**. If
+`conv{n_i}` is at most 2-dimensional, some plane contains every `n_i`, all points are on one side of it,
+the origin is strictly on the inner side, and the "every supporting plane" argument is vacuous. Hence the
+contract "0 lies in the interior of conv{normals}" is false.
+
+What this does and does not break: the verdict feeds the boundedness decision in `polytope_volume`, so
+the *guarantee* is gone. On the full-dimensional witness the failure is safe in practice —
+`polytope_volume` returns `None` with 0 vertices and `certify` then raises on `None`. I have **no
+demonstrated false volume**; what is refuted is the guarantee, and a false positive on a set with ≥ 4
+vertices would reproduce `X-C061` exactly. So `X-C072`'s boundedness row is **withdrawn**; the other four
+rows stand as algebra.
+
+Second, independent: `spanning_constant` returns `F(vals.min()) − F(diam) − 1e-9` from a `numpy` mesh.
+The 1‑Lipschitz + mesh-diameter argument is right, but the float error is assumed below `1e-9`, not
+bounded. §12 called this "a fudge"; it belongs in the defect list, not the limits list, because `R₀`
+truncates the outer polytope.
+
+## 21. Two corrections to my own §7 (13–20-face route)
+
+1. **The classes are nested.** `{polytopes with ≤ F faces}` increases with `F`, so the infimum of the
+   cell volume over the class is **non-increasing** in `F`. My §7 compared the dodecahedron's 11.97%
+   margin at `F = 12` with the icosahedron's 1.96% at `F = 20` and concluded "no obstruction for
+   `F ≤ 20`". That inference is invalid: a larger margin at a smaller `F` says nothing about larger `F`,
+   and a larger-volume 14-face example cannot refute a non-increasing infimum. What §7 actually
+   establishes is narrower: *the icosahedron itself*, at `F = 20`, clears `√32` by 1.96% after the
+   `1.045³` scaling — a statement about one polytope, not about the infimum over the class. The
+   infimum statement still needs 20-face optimality, which is exactly the unproved input §7 named.
+2. **Axial, not all-orientation.** The arc cover — mine (`X-C058`, `X-C064`) and Main's `C127`
+   (`X-C071`) — varies the **twist about the shared vertex axis** with the two dodecahedra in one fixed
+   relative orientation. It is not a theorem about arbitrary relative orientation, and any near-contact
+   statement (`C116`, `C124`) that consumes it inherits that restriction. The gap between "all twists
+   about the axis" and "all orientations" is not small and is not addressed here.
+
+I did **not** audit `C124`/`C125`/`C128`/`C129`; the 19-point configuration named in the steering
+(origin plus the 18 vectors in `{−2,0,2}³` of squared norm 4 or 8) does have minimum pairwise distance
+exactly `2` and circumradius `2√2 = 2.828427`, which I verified — but I have not read those claims'
+statements, so I assert no refutation of them.
