@@ -322,3 +322,58 @@ version must lower-bound the volume of `D` with five faces pushed out by `0.0514
 directions of the actual icosahedral normals, and show the result exceeds
 `5.665734518`. That is a concrete, finite, algebraic problem about a specific polytope, and
 it is exactly the "next missing inequality". Offloaded in `LOCAL_ICOSA_SEARCH.md`.
+
+## K15-E047 — correction: the rigorous angular bound is weaker than the dodecahedral theorem
+
+Checking `K15-E046` against `K15-E042` exposes an inconsistency in my own summary, and the
+estimate, not the bound, is what has to give.
+
+The rigorous star-shaped body is `X = { w + t u : t <= tau(u) }` with
+
+```
+tau(u) = min( min_{known j, cos phi_j > 0} d_j/(2 cos phi_j) ,  1.045 ) ,
+```
+
+so `X` is exactly the region whose volume `K15-E042` computes as `4.733968`. The
+perturbation heuristic of `K15-E046` treated the five faces at `1.051462` as an *independent*
+gain on top of the ideal dodecahedron. That is wrong for two reasons:
+
+1. **The inward direction is capped at `1`, not `1.051462`.** The bisector with `c` lies at
+   distance `1` in the inward direction, and the five neighbours lie at `121.7 deg` from
+   outward, i.e. *inward*. So the `0.051462` relaxation applies only in a ring, not over a
+   full pentagonal face, and the cell cannot gain `0.051462 x A_pent` per face.
+2. **The `4.28` and the `5.5503` are not additive.** `5.550291` is the volume of the ideal
+   twelve-tangent dodecahedron; adding a computed gain to it double counts the region already
+   inside it.
+
+**The consequence, stated plainly.** My rigorous angular technique gives `4.733968`, which is
+**weaker** than simply quoting the dodecahedral theorem (`5.550291`). So the angular
+technique is not competitive with the imported single-cell bound and should not be promoted
+as a route. The correct ordering of what we can *certify* per outer cell is:
+
+```
+4.188790  (inscribed ball)  <  4.733968  (angular + count, this work)  <  5.550291  (McLaughlin)
+                                                        required:  5.665735
+```
+
+The best certified bound remains `5.550291`, giving `12 V_dodeca = 66.6034923422` against
+`67.9888142149`, a shortfall of `1.385321873` (`2.08 %`). The heuristic of `K15-E046` says
+that `2.08 %` is plausibly there — the measured `44 %` slack of `K15-E043` supports this —
+but **neither the heuristic nor the angular technique proves it.**
+
+**Corrected statement of the next missing inequality.** Not "push the faces out by
+`0.051462`" (wrong, per point 1), but:
+
+```
+vol Omega(w) >= Phi ,   where Phi is computed from the six actual neighbour half-spaces
+                          with the outward cone closed at radius 1.045,
+and the honest question is whether Phi > 5.665735 is achievable at all by this information.
+K15-E042 says the answer is no for the star-shaped relaxation (Phi = 4.734), so the
+inequality must use a body that is NOT star-shaped about w -- for instance the actual convex
+cell intersected with the outward shell, or a bound on the completion's ability to cover the
+outward hemisphere that is not reduced to a per-direction cap.
+```
+
+This is the precise state of the geometric route. I flag it rather than leave the earlier,
+more optimistic pointer standing, because a reader following `K15-E046` would spend effort on
+an estimate that the rigorous computation contradicts.

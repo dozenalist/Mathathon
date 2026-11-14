@@ -303,5 +303,16 @@ gain is `4.2844362` against `1.385321873` needed, a margin factor of about `3.09
 line in this entry quoted `1.7205` and `3.8`; corrected.) A first-order estimate only;
 the rigorous version is a finite polytope computation (below).
 
-Gaps: `(T'-R2')` open; best certified per-cell bound `4.734076` vs required `5.665735`;
+**`K15-E047` — correction: the angular bound is weaker than the dodecahedral theorem.**
+Checking `K15-E046` against `K15-E042` showed the perturbation estimate is not additive to
+`V_dodeca` (the `0.051462` relaxation applies only in a ring, because the `c`-bisector caps
+the inward direction at `1`), and that the rigorous angular value `4.733968` is *below*
+`5.550291`. So the angular technique is not competitive and must not be promoted as a route.
+Correct certified ordering per outer cell:
+`4.188790 < 4.733968 < 5.550291 < required 5.665735`. The best certified bound remains the
+dodecahedral theorem, giving a shortfall of `1.385321873` (`2.08 %`). The next missing
+inequality must use a body that is **not** star-shaped about `w`.
+
+Gaps: `(T'-R2')` open; best certified per-cell bound `5.550291` (McLaughlin) vs required
+`5.665735`, shortfall `2.08 %`;
 `icosa_dense_optimize.py` unauthored (`LOCAL_ICOSA_SEARCH.md` BLOCKED on authoring).
