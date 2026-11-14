@@ -80,6 +80,17 @@ the contact, exactly 2; and `v` to `w`'s ring has `|w + R_t q|² = 8 + 4q_x ≥ 
 i.e. distance `≥ 2.102924448` for **every** twist (the `q_x = −2` antipode is the excluded contact).
 So only the 121 cross pairs can clash, and the cover over them settles all twists.
 
+**And the one-parameter family is everything.** Fixing v's cell so that the shared contact is `+x`
+leaves w's cell determined by a rotation `R` with `R u = −u₀` for some icosahedral direction `u`;
+the remaining freedom is `R_t · A₀` with `R_t` the rotation about the v–w axis, period `2π/5`.
+Choosing a different `u` gives `A₀·g` for an icosahedral symmetry `g`, which permutes the standard
+set, so it produces no new configuration. The twist circle is therefore the complete moduli space
+for a pair of dodecahedral cells at a contact.
+
+**Precision.** The cover is not a 60-digit artefact: it holds identically at `mp.dps = 30`, `60` and
+`100`, and it survives shrinking every arc by `2°` — four orders of magnitude more margin than the
+`1e-30` inflation at 60 digits.
+
 So the theorem is true and certified: **for every relative twist, some pair of the two eleven-point
 sets is strictly closer than 2, hence two regular dodecahedral cells of inradius 1 cannot have
 centres at distance exactly 2.** That restores `C108` step (4) — as `X-C058`, replacing `C112` and
