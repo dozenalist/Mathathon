@@ -110,3 +110,8 @@ examples through the committed code: [True, True, True]
 exit=0
 
 ### python3 compare_bz82.py 40
+NMAX = 40
+compared: phi 541114, psi 541114, domains 544365+544365, forward 3251, onto-D per weight 41/41, examples 3
+DISCREPANCIES: 0
+examples through the committed code: [True, True, True]
+exit=0

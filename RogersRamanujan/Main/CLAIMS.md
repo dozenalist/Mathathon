@@ -126,10 +126,16 @@ Three distinct things, kept separate in cycle 2 (cycle 1's "proven inverse pair"
 blurred them): (1) **BZ82's theorem** that the alternating composition is a
 bijection — established mathematics, cited, not ours; (2) **our implementation**
 of it, verified as a bijection over a finite range — TESTED_FINITE; (3) a
-**source-faithfulness proof** — we have finite reproduction of all three printed
-examples and finite involution/closure checks, but no written proof that our code
-implements BZ82's rules on all inputs, so this is at best TESTED_FINITE on the
-tested range, not PROVED.
+**source-faithfulness proof** — cycle 2 supplies the missing independent evidence:
+worker m3 wrote a separate implementation from the scan **without reading
+`bz82.py`**, and `compare_bz82.py 30` reports `phi 66658, psi 66658, domains
+67551+67551, forward 893, onto-D 31/31, examples 3` with **DISCREPANCIES: 0**.
+Two independent readings of the same three-page note therefore agree
+object-for-object across 66 658 states in each involution and all 31 weights.
+(Also confirmed at `n <= 40`: 541 114 states, 0 discrepancies.) This is strong
+but still finite evidence — it is not a written proof that the code implements
+the rules on all inputs, so RR-C007 stays TESTED_FINITE with the independence
+now documented rather than asserted.
 Statement: `forward : A_n -> D_n` and `inverse : D_n -> A_n` as implemented in
 `Computation/bz82.py` are mutually inverse bijections for every
 `0 <= n <= 50`; forward is injective, surjective onto `D_n`, deterministic and
@@ -302,3 +308,22 @@ neither meets the objective; that assessment is accepted. Also **refuted** on
 held-out parameters: $b(5k)=(5^k)$ for $k\ge6$ (7/7 fail), $b(5k)$ affine in
 $k$, $\mathrm{len}(b(4^r))\le2$ (fails at $r=7$), and $\kappa$ a function of
 $s\bmod5$. No rule was found for $(4^r,1^s)$.
+
+### RR-C017 — Implementation trap in `phi` Case I: the two deletions are indexed against the original list.
+Status: **PROVED by witness** (cycle-2 worker m3, F2; confirmed and quantified by Main).
+
+BZ82 says "delete the parts `lambda(a)` and `lambda(mu)`". A natural
+implementation deletes position `a`, then position `mu` — but the list has
+shortened, so the second index is stale and a different part is removed. This
+silently breaks weight preservation: Main implemented the trap and found 172
+differing states at `weight <= 25`, **every one of them with weight broken**,
+first witness `(-1;())` giving `(0;(1,1,1,1))` instead of the correct `(0;(1,1,1))`.
+Worker m3 reports 371 witnesses (presumably over `weight <= 30`); the phenomenon
+and the minimal witness agree.
+
+Recorded because it is the second time in this project that a plausible local
+operation was a silent error — the first was Main's own `z >= 1` restriction in
+`phi` Case II (RR-X005). Both are the same failure mode: a local operation that
+looks forced but is not, with the damage showing up only in weight or an
+involution law. `Computation/bz82.py` collects both slots before removing them,
+which is why it was never affected.

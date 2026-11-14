@@ -137,3 +137,18 @@ on a named lemma, and 4 refutations on held-out parameters are recorded);
 effort saved into the two open proof obligations (all-`n` `phi` case stability
 and `phi^2 = id`), because those are now the only things between this project and
 a completely proved reference map.
+
+## D-7 (2026-11-14, cycle 2) Independent implementation as the faithfulness standard.
+
+`RR-C007` no longer rests on "our code reproduces the printed examples". A second
+implementation, written from the scan without reading the first, agrees
+object-for-object on 66 658 states per involution, 893 forward calls and 31/31
+weights (`compare_bz82.py 30`, and 541 114 states at `n <= 40`). That is the
+standard any future transcription in this project should meet, and it is why
+`Computation/bz82.py` is now treated as reviewed rather than merely tested.
+
+Two local-operation traps are on record, both found by adversarial work rather
+than by review: Main's `z >= 1` restriction (RR-X005, retracted) and the stale
+index in `phi` Case I (RR-C017). The rule to carry into cycle 3: after changing a
+local rule, re-check the involution law and the weight — not just the examples,
+because both traps reproduced the printed examples perfectly.

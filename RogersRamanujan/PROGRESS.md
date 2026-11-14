@@ -343,3 +343,48 @@ of active work, as specified in ROADMAP.
   comparison.
 - **Scope:** this is roadmap level 2 (proved infinite-subfamily result). It is
   **not** a new bijection and does not by itself advance RR-C012.
+
+## 2026-11-14 / RR-M008 / secondary implementation: 0 discrepancies over 66 658 states; Case-I deletion trap recorded
+
+- **Agent and reviewer:** worker m3 (swarm `smwg03n61`, direction A,
+  `Computation/cycle2/`), independently re-run and extended by Main.
+- **Status:** strengthens RR-C007's faithfulness evidence (still TESTED_FINITE);
+  new RR-C017 (trap, PROVED by witness). Swarm `smwg03n61` closed: 4 of 4
+  directions accepted.
+- **Independence result.** `bz82_audit.py` was written from the BZ82 scan
+  **without reading `Computation/bz82.py`**. `compare_bz82.py 30` ->
+  `phi 66658, psi 66658, domains 67551+67551, forward 893, onto-D 31/31,
+  examples 3`, **DISCREPANCIES 0**; at `n <= 40`, 541 114 states, 0.
+  The 893 is the sum of `|A_n|` for `n <= 30`, so the forward map agrees on every
+  single object, not merely in count.
+- **Third independent confirmation of RR-X006.** Negative controls reproduce
+  exactly the 1120 / 374 / 374 failure counts at `n <= 18` for the three
+  alternative `psi` tie-breaks.
+- **F1/F7** re-confirm, from a third implementation, that the admissible set is
+  empty **iff** the state lies outside `phi`'s domain, and that m1's existence
+  criterion holds.
+- **RR-C017, `phi` Case I deletion trap.** BZ82 says delete the parts `lambda(a)`
+  and `lambda(mu)`; deleting position `a` and then position `mu` against the
+  shortened list removes the wrong part. Main implemented the trap: 172 differing
+  states at `weight <= 25`, **all with weight broken**, first witness `(-1;())`
+  giving `(0;(1,1,1,1))` instead of `(0;(1,1,1))`; m3 reports 371 witnesses over a
+  wider range. The committed code collects both slots first, so it was never
+  affected.
+- **Reproduction:** `cd RogersRamanujan/Computation/cycle2 && python3
+  compare_bz82.py 30 && python3 negative_control.py 18`.
+- **Still open:** no all-`n` theorem, no termination proof, no new bijection.
+  RR-C012 **OPEN**.
+
+## Swarm smwg03n61 close-out (cycle 2)
+
+| member | direction | delivered | verdict |
+| --- | --- | --- | --- |
+| m1 | B proof audit | amended all-`n` `psi` proof, empty gap list, monotonicity lemma | accepted |
+| m2 | D Lean | `subStair_weakDec` and the staircase equivalence, non-vacuous | accepted |
+| m4 | C experimental | Theorems F/G closed forms; the `s=0 (5)` obstruction | accepted |
+| m3 | A computation | independent implementation, 0 discrepancies; Case-I trap | accepted |
+
+Four of four accepted. What the block produced: one retraction (my own), one
+completed proof (psi), one completed formalization step (staircase equivalence),
+the first new mathematics (two rays plus a structural obstruction), and a
+secondary implementation that removes the faithfulness bottleneck.
