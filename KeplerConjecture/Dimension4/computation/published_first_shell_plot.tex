@@ -1,0 +1,30 @@
+\documentclass[tikz,border=7pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+  width=15cm,height=8cm,
+  xmin=0,xmax=1,ymin=-0.15,ymax=2.7,
+  xlabel={Cosine of the angle between $x$ and $y$},
+  ylabel={$10^3 F(x,y)$, with $F(0,0)=1$},
+  title={Published $D_4$ lattice bound: first-shell angular slice},
+  xtick={0,0.25,0.5,0.75,1},
+  ytick={0,0.5,1,1.5,2,2.5},
+  grid=major,grid style={gray!15},
+  tick label style={font=\small},
+  axis on top,
+]
+\addplot[draw=none,fill=blue!6] coordinates {(0,-0.15) (0.5,-0.15) (0.5,2.7) (0,2.7)} \closedcycle;
+\addplot[draw=none,fill=orange!12] coordinates {(0.5,-0.15) (1,-0.15) (1,2.7) (0.5,2.7)} \closedcycle;
+\addplot[black!50,thin] coordinates {(0,0) (1,0)};
+\addplot[black!50,dashed] coordinates {(0.5,-0.15) (0.5,2.7)};
+\addplot[blue!65!black,very thick] table[x index=0,y expr=1000*\thisrowno{2},col sep=comma] {published_first_shell_slice.csv};
+\addplot[only marks,mark=*,mark size=2pt,black] coordinates {(0,0) (0.5,0) (1,0)};
+\node[font=\small,align=center] at (axis cs:0.24,2.4) {Nonpositive required};
+\node[font=\small,align=center] at (axis cs:0.74,2.55) {Positive permitted for $0.5<c<1$};
+\node[font=\footnotesize,anchor=north west,align=left] at (rel axis cs:0.02,0.82)
+  {$|x|=|y|=\sqrt2$\\Stored degree parameter $d=13$\\High-precision floating inspection};
+\end{axis}
+\end{tikzpicture}
+\end{document}

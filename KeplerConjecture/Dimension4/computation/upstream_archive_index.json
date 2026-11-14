@@ -1,0 +1,922 @@
+{
+  "source_url": "https://dspace.mit.edu/server/api/core/bitstreams/3ad1c7a0-ced0-45b8-8070-310dccc2190c/content",
+  "full_archive_size": 1227925504,
+  "full_archive_md5_from_repository": "b00fa1aa734c483e69a202aac161377c",
+  "full_archive_downloaded": false,
+  "full_archive_checksum_verified": false,
+  "bytes_retrieved": 1701405,
+  "http_range_requests": 27,
+  "entries": [
+    {
+      "name": "._ThreePointSpherePacking",
+      "size": 178,
+      "header_offset": 0,
+      "data_offset": 512,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking",
+      "size": 0,
+      "header_offset": 1024,
+      "data_offset": 2560,
+      "type": "other"
+    },
+    {
+      "name": "ThreePointSpherePacking/._Manifest.toml",
+      "size": 178,
+      "header_offset": 2560,
+      "data_offset": 3072,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/Manifest.toml",
+      "size": 15132,
+      "header_offset": 3584,
+      "data_offset": 5120,
+      "type": "file",
+      "sha256": "62d47cb963e54039139d607437f4e519509ed68204c3d01b752db78ca899dc2c"
+    },
+    {
+      "name": "ThreePointSpherePacking/._latticethreepointdata",
+      "size": 178,
+      "header_offset": 20480,
+      "data_offset": 20992,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata",
+      "size": 0,
+      "header_offset": 21504,
+      "data_offset": 23040,
+      "type": "other"
+    },
+    {
+      "name": "ThreePointSpherePacking/._threepointdata",
+      "size": 177,
+      "header_offset": 23040,
+      "data_offset": 23552,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata",
+      "size": 0,
+      "header_offset": 24064,
+      "data_offset": 25600,
+      "type": "other"
+    },
+    {
+      "name": "ThreePointSpherePacking/._latticethreepointaltdata",
+      "size": 178,
+      "header_offset": 25600,
+      "data_offset": 26112,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata",
+      "size": 0,
+      "header_offset": 26624,
+      "data_offset": 28160,
+      "type": "other"
+    },
+    {
+      "name": "ThreePointSpherePacking/._Project.toml",
+      "size": 178,
+      "header_offset": 28160,
+      "data_offset": 28672,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/Project.toml",
+      "size": 648,
+      "header_offset": 29184,
+      "data_offset": 30720,
+      "type": "file",
+      "sha256": "9fa57491a1c803114c5ee65e1f7e769ebcbb85b620c53825f165d09668376957"
+    },
+    {
+      "name": "ThreePointSpherePacking/._README.txt",
+      "size": 178,
+      "header_offset": 31744,
+      "data_offset": 32256,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/README.txt",
+      "size": 2758,
+      "header_offset": 32768,
+      "data_offset": 34304,
+      "type": "file",
+      "sha256": "24c91e742537f3e10c75653bcfb20ae53dfa76cfb548cdb7ebc63a46570bbd48"
+    },
+    {
+      "name": "ThreePointSpherePacking/._src",
+      "size": 178,
+      "header_offset": 37376,
+      "data_offset": 37888,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/src",
+      "size": 0,
+      "header_offset": 38400,
+      "data_offset": 39936,
+      "type": "other"
+    },
+    {
+      "name": "ThreePointSpherePacking/src/._threepoint.jl",
+      "size": 178,
+      "header_offset": 39936,
+      "data_offset": 40448,
+      "type": "file",
+      "sha256": "a96e38d2149481288720f9fa6e3b75f71f06fa33cfe9ace6e57ef4b9b3396515"
+    },
+    {
+      "name": "ThreePointSpherePacking/src/threepoint.jl",
+      "size": 6911,
+      "header_offset": 40960,
+      "data_offset": 42496,
+      "type": "file",
+      "sha256": "c62b5163bc0be9a7674fbc32a887dd886a0708dada840bdaa7ea44d0a650a407"
+    },
+    {
+      "name": "ThreePointSpherePacking/src/._latticethreepointalt.jl",
+      "size": 178,
+      "header_offset": 49664,
+      "data_offset": 50176,
+      "type": "file",
+      "sha256": "27b865671d90dd360dcfb2c4fe7c6f9b3a015c66780d94dd12e9d837f083dca7"
+    },
+    {
+      "name": "ThreePointSpherePacking/src/latticethreepointalt.jl",
+      "size": 5966,
+      "header_offset": 50688,
+      "data_offset": 52224,
+      "type": "file",
+      "sha256": "fd080813be7232e5d987b013a64ce4f8b477964fad6327791ad7d616ae8e6139"
+    },
+    {
+      "name": "ThreePointSpherePacking/src/._semidefiniteprogramming.jl",
+      "size": 178,
+      "header_offset": 58368,
+      "data_offset": 58880,
+      "type": "file",
+      "sha256": "33b0d58b1e9ece2b9c3907f40256467a55a6ed075f4ccb92baaa9d76af9c1bb6"
+    },
+    {
+      "name": "ThreePointSpherePacking/src/semidefiniteprogramming.jl",
+      "size": 32285,
+      "header_offset": 59392,
+      "data_offset": 60928,
+      "type": "file",
+      "sha256": "421011e705095057fdf6359369d990ed3f564ffdeac5fdc03d4c31db4573e7b2"
+    },
+    {
+      "name": "ThreePointSpherePacking/src/._latticethreepoint.jl",
+      "size": 178,
+      "header_offset": 93696,
+      "data_offset": 94208,
+      "type": "file",
+      "sha256": "af37e494091c80b87d2b869fd92ccfaf4e16191fc51345bc9e8d67643dc9eaa7"
+    },
+    {
+      "name": "ThreePointSpherePacking/src/latticethreepoint.jl",
+      "size": 5741,
+      "header_offset": 94720,
+      "data_offset": 96256,
+      "type": "file",
+      "sha256": "54f105d7074b9af1d554a81e42b84d28801f8505d29aeb38e9d7061c45aeb244"
+    },
+    {
+      "name": "ThreePointSpherePacking/src/._ThreePointSpherePacking.jl",
+      "size": 178,
+      "header_offset": 102400,
+      "data_offset": 102912,
+      "type": "file",
+      "sha256": "b5479ee48142f122d9f6d738bf3a2904072aead346279f8589564e414657a320"
+    },
+    {
+      "name": "ThreePointSpherePacking/src/ThreePointSpherePacking.jl",
+      "size": 503,
+      "header_offset": 103424,
+      "data_offset": 104960,
+      "type": "file",
+      "sha256": "991a3d52cd105f1b9ac3f7f875036abe02a0a83c125367d24afb2c724a98a279"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/._3-13-1024-2-300-1e-20-0.5-2.00094420625509555331.sdpa-out",
+      "size": 178,
+      "header_offset": 105472,
+      "data_offset": 105984,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/3-13-1024-2-300-1e-20-0.5-2.00094420625509555331.sdpa-out",
+      "size": 53005269,
+      "header_offset": 106496,
+      "data_offset": 108032,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/._pivots-3-13.jls",
+      "size": 178,
+      "header_offset": 53113344,
+      "data_offset": 53113856,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/pivots-3-13.jls",
+      "size": 7936,
+      "header_offset": 53114368,
+      "data_offset": 53115904,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/._pivots-7-13.jls",
+      "size": 178,
+      "header_offset": 53124096,
+      "data_offset": 53124608,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/pivots-7-13.jls",
+      "size": 7936,
+      "header_offset": 53125120,
+      "data_offset": 53126656,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/._pivots-5-13.jls",
+      "size": 178,
+      "header_offset": 53134848,
+      "data_offset": 53135360,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/pivots-5-13.jls",
+      "size": 7936,
+      "header_offset": 53135872,
+      "data_offset": 53137408,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/._5-13-1024-2-300-1e-20-0.5-8.68378640137069397668.sdpa-out",
+      "size": 178,
+      "header_offset": 53145600,
+      "data_offset": 53146112,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/5-13-1024-2-300-1e-20-0.5-8.68378640137069397668.sdpa-out",
+      "size": 53003844,
+      "header_offset": 53146624,
+      "data_offset": 53148160,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/._4-13-1024-2-300-1e-20-0.5-4.00010124348335258054.sdpa-out",
+      "size": 178,
+      "header_offset": 106152448,
+      "data_offset": 106152960,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/4-13-1024-2-300-1e-20-0.5-4.00010124348335258054.sdpa-out",
+      "size": 53006592,
+      "header_offset": 106153472,
+      "data_offset": 106155008,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/._pivots-6-13.jls",
+      "size": 178,
+      "header_offset": 159161856,
+      "data_offset": 159162368,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/pivots-6-13.jls",
+      "size": 7936,
+      "header_offset": 159162880,
+      "data_offset": 159164416,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/._6-13-1024-2-300-1e-20-0.5-22.55605151677631320018.sdpa-out",
+      "size": 178,
+      "header_offset": 159172608,
+      "data_offset": 159173120,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/6-13-1024-2-300-1e-20-0.5-22.55605151677631320018.sdpa-out",
+      "size": 53003547,
+      "header_offset": 159173632,
+      "data_offset": 159175168,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/._indices-13.jls",
+      "size": 178,
+      "header_offset": 212178944,
+      "data_offset": 212179456,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/indices-13.jls",
+      "size": 18947,
+      "header_offset": 212179968,
+      "data_offset": 212181504,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/._pivots-4-13.jls",
+      "size": 178,
+      "header_offset": 212200960,
+      "data_offset": 212201472,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/pivots-4-13.jls",
+      "size": 7936,
+      "header_offset": 212201984,
+      "data_offset": 212203520,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/._7-13-1024-2-300-1e-20-0.5-70.52625935035974634174.sdpa-out",
+      "size": 178,
+      "header_offset": 212211712,
+      "data_offset": 212212224,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointaltdata/7-13-1024-2-300-1e-20-0.5-70.52625935035974634174.sdpa-out",
+      "size": 53003917,
+      "header_offset": 212212736,
+      "data_offset": 212214272,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._16-24-9-24-1-1.14858264135811439351-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 177,
+      "header_offset": 265218560,
+      "data_offset": 265219072,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/16-24-9-24-1-1.14858264135811439351-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 52886508,
+      "header_offset": 265219584,
+      "data_offset": 265221120,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._5-24-9-24-1-1.50137077152528667378-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 178,
+      "header_offset": 318107648,
+      "data_offset": 318108160,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/5-24-9-24-1-1.50137077152528667378-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 52881166,
+      "header_offset": 318108672,
+      "data_offset": 318110208,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._7-24-9-24-1-1.40283795482860395795-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 178,
+      "header_offset": 370991616,
+      "data_offset": 370992128,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/7-24-9-24-1-1.40283795482860395795-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 52881887,
+      "header_offset": 370992640,
+      "data_offset": 370994176,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._10-24-9-24-1-1.33159315323055968063-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 178,
+      "header_offset": 423876096,
+      "data_offset": 423876608,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/10-24-9-24-1-1.33159315323055968063-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 52883849,
+      "header_offset": 423877120,
+      "data_offset": 423878656,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._4-24-9-24-1-1.66463455047252348331-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 178,
+      "header_offset": 476762624,
+      "data_offset": 476763136,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/4-24-9-24-1-1.66463455047252348331-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 52881280,
+      "header_offset": 476763648,
+      "data_offset": 476765184,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._15-24-9-24-1-1.12046738979918739815-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 178,
+      "header_offset": 529646592,
+      "data_offset": 529647104,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/15-24-9-24-1-1.12046738979918739815-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 52883397,
+      "header_offset": 529647616,
+      "data_offset": 529649152,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._9-24-9-24-1-1.38356823626434504083-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 178,
+      "header_offset": 582532608,
+      "data_offset": 582533120,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/9-24-9-24-1-1.38356823626434504083-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 52884725,
+      "header_offset": 582533632,
+      "data_offset": 582535168,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._pivots-9.jls",
+      "size": 178,
+      "header_offset": 635420160,
+      "data_offset": 635420672,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/pivots-9.jls",
+      "size": 5864,
+      "header_offset": 635421184,
+      "data_offset": 635422720,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._11-24-9-24-1-1.20943521035683754252-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 178,
+      "header_offset": 635428864,
+      "data_offset": 635429376,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/11-24-9-24-1-1.20943521035683754252-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 52884426,
+      "header_offset": 635429888,
+      "data_offset": 635431424,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._pivots-6.jls",
+      "size": 178,
+      "header_offset": 688315904,
+      "data_offset": 688316416,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/pivots-6.jls",
+      "size": 5864,
+      "header_offset": 688316928,
+      "data_offset": 688318464,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._3-24-9-24-1-1.88683500938750148960-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 178,
+      "header_offset": 688324608,
+      "data_offset": 688325120,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/3-24-9-24-1-1.88683500938750148960-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 52882822,
+      "header_offset": 688325632,
+      "data_offset": 688327168,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._pivots-7.jls",
+      "size": 178,
+      "header_offset": 741210112,
+      "data_offset": 741210624,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/pivots-7.jls",
+      "size": 5864,
+      "header_offset": 741211136,
+      "data_offset": 741212672,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._pivots-5.jls",
+      "size": 178,
+      "header_offset": 741218816,
+      "data_offset": 741219328,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/pivots-5.jls",
+      "size": 5864,
+      "header_offset": 741219840,
+      "data_offset": 741221376,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._pivots-4.jls",
+      "size": 178,
+      "header_offset": 741227520,
+      "data_offset": 741228032,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/pivots-4.jls",
+      "size": 5864,
+      "header_offset": 741228544,
+      "data_offset": 741230080,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._pivots-3.jls",
+      "size": 178,
+      "header_offset": 741236224,
+      "data_offset": 741236736,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/pivots-3.jls",
+      "size": 5864,
+      "header_offset": 741237248,
+      "data_offset": 741238784,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._13-24-9-24-1-1.14015987547310632997-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 178,
+      "header_offset": 741244928,
+      "data_offset": 741245440,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/13-24-9-24-1-1.14015987547310632997-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 52883473,
+      "header_offset": 741245952,
+      "data_offset": 741247488,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._14-24-9-24-1-1.15288700252500243548-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 178,
+      "header_offset": 794131456,
+      "data_offset": 794131968,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/14-24-9-24-1-1.15288700252500243548-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 52884817,
+      "header_offset": 794132480,
+      "data_offset": 794134016,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._indices-9.jls",
+      "size": 178,
+      "header_offset": 847019008,
+      "data_offset": 847019520,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/indices-9.jls",
+      "size": 8295,
+      "header_offset": 847020032,
+      "data_offset": 847021568,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._pivots-15.jls",
+      "size": 178,
+      "header_offset": 847030272,
+      "data_offset": 847030784,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/pivots-15.jls",
+      "size": 5864,
+      "header_offset": 847031296,
+      "data_offset": 847032832,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._pivots-14.jls",
+      "size": 178,
+      "header_offset": 847038976,
+      "data_offset": 847039488,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/pivots-14.jls",
+      "size": 5864,
+      "header_offset": 847040000,
+      "data_offset": 847041536,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._12-24-9-24-1-1.18294402149161602031-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 178,
+      "header_offset": 847047680,
+      "data_offset": 847048192,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/12-24-9-24-1-1.18294402149161602031-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 52883876,
+      "header_offset": 847048704,
+      "data_offset": 847050240,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._6-24-9-24-1-1.47090696550256328817-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 178,
+      "header_offset": 899934208,
+      "data_offset": 899934720,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/6-24-9-24-1-1.47090696550256328817-2048-2-1024-1.0e-30-0.5.sdpa-out",
+      "size": 52881209,
+      "header_offset": 899935232,
+      "data_offset": 899936768,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._pivots-16.jls",
+      "size": 178,
+      "header_offset": 952818176,
+      "data_offset": 952818688,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/pivots-16.jls",
+      "size": 5864,
+      "header_offset": 952819200,
+      "data_offset": 952820736,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._pivots-13.jls",
+      "size": 177,
+      "header_offset": 952826880,
+      "data_offset": 952827392,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/pivots-13.jls",
+      "size": 5864,
+      "header_offset": 952827904,
+      "data_offset": 952829440,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._pivots-12.jls",
+      "size": 178,
+      "header_offset": 952835584,
+      "data_offset": 952836096,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/pivots-12.jls",
+      "size": 5864,
+      "header_offset": 952836608,
+      "data_offset": 952838144,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._pivots-10.jls",
+      "size": 178,
+      "header_offset": 952844288,
+      "data_offset": 952844800,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/pivots-10.jls",
+      "size": 5864,
+      "header_offset": 952845312,
+      "data_offset": 952846848,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/._pivots-11.jls",
+      "size": 178,
+      "header_offset": 952852992,
+      "data_offset": 952853504,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/threepointdata/pivots-11.jls",
+      "size": 5864,
+      "header_offset": 952854016,
+      "data_offset": 952855552,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/._6-13-1024-2-300-1e-20-0.5-22.60912586771351010453.sdpa-out",
+      "size": 178,
+      "header_offset": 952861696,
+      "data_offset": 952862208,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/6-13-1024-2-300-1e-20-0.5-22.60912586771351010453.sdpa-out",
+      "size": 45830504,
+      "header_offset": 952862720,
+      "data_offset": 952864256,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/._pivots-3-13.jls",
+      "size": 178,
+      "header_offset": 998694912,
+      "data_offset": 998695424,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/pivots-3-13.jls",
+      "size": 7728,
+      "header_offset": 998695936,
+      "data_offset": 998697472,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/._4-13-1024-2-300-1e-20-0.5-4.000102455.sdpa-out",
+      "size": 178,
+      "header_offset": 998705664,
+      "data_offset": 998706176,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/4-13-1024-2-300-1e-20-0.5-4.000102455.sdpa-out",
+      "size": 45825819,
+      "header_offset": 998706688,
+      "data_offset": 998708224,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/._3-13-1024-2-300-1e-20-0.5-2.00553871041203034801.sdpa-out",
+      "size": 177,
+      "header_offset": 1044534272,
+      "data_offset": 1044534784,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/3-13-1024-2-300-1e-20-0.5-2.00553871041203034801.sdpa-out",
+      "size": 45824981,
+      "header_offset": 1044535296,
+      "data_offset": 1044536832,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/._pivots-7-13.jls",
+      "size": 178,
+      "header_offset": 1090361856,
+      "data_offset": 1090362368,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/pivots-7-13.jls",
+      "size": 7728,
+      "header_offset": 1090362880,
+      "data_offset": 1090364416,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/._pivots-5-13.jls",
+      "size": 178,
+      "header_offset": 1090372608,
+      "data_offset": 1090373120,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/pivots-5-13.jls",
+      "size": 7728,
+      "header_offset": 1090373632,
+      "data_offset": 1090375168,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/._pivots-9-13.jls",
+      "size": 178,
+      "header_offset": 1090383360,
+      "data_offset": 1090383872,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/pivots-9-13.jls",
+      "size": 7728,
+      "header_offset": 1090384384,
+      "data_offset": 1090385920,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/._5-13-1024-2-300-1e-20-0.5-8.69619173033920683407.sdpa-out",
+      "size": 178,
+      "header_offset": 1090394112,
+      "data_offset": 1090394624,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/5-13-1024-2-300-1e-20-0.5-8.69619173033920683407.sdpa-out",
+      "size": 45825621,
+      "header_offset": 1090395136,
+      "data_offset": 1090396672,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/._pivots-6-13.jls",
+      "size": 178,
+      "header_offset": 1136222720,
+      "data_offset": 1136223232,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/pivots-6-13.jls",
+      "size": 7728,
+      "header_offset": 1136223744,
+      "data_offset": 1136225280,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/._9-13-1024-2-300-1e-20-0.5-901.88621598431286085086.sdpa-out",
+      "size": 178,
+      "header_offset": 1136233472,
+      "data_offset": 1136233984,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/9-13-1024-2-300-1e-20-0.5-901.88621598431286085086.sdpa-out",
+      "size": 45828223,
+      "header_offset": 1136234496,
+      "data_offset": 1136236032,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/._7-13-1024-2-300-1e-20-0.5-70.51973968781885801275.sdpa-out",
+      "size": 178,
+      "header_offset": 1182064640,
+      "data_offset": 1182065152,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/7-13-1024-2-300-1e-20-0.5-70.51973968781885801275.sdpa-out",
+      "size": 45827276,
+      "header_offset": 1182065664,
+      "data_offset": 1182067200,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/._indices-13.jls",
+      "size": 178,
+      "header_offset": 1227894784,
+      "data_offset": 1227895296,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/indices-13.jls",
+      "size": 15895,
+      "header_offset": 1227895808,
+      "data_offset": 1227897344,
+      "type": "file",
+      "sha256": "bab8ce29ab11524dea508253a83fdbfca06a0d1ce2f37a026133d4da21c37340"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/._pivots-4-13.jls",
+      "size": 178,
+      "header_offset": 1227913728,
+      "data_offset": 1227914240,
+      "type": "file"
+    },
+    {
+      "name": "ThreePointSpherePacking/latticethreepointdata/pivots-4-13.jls",
+      "size": 7728,
+      "header_offset": 1227914752,
+      "data_offset": 1227916288,
+      "type": "file",
+      "sha256": "61fb12505c6b1af6130efaac1660d054942ce91d7e9445ef3fbf662eb52d935e"
+    }
+  ]
+}

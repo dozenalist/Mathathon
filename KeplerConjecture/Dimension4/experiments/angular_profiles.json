@@ -1,0 +1,112 @@
+{
+  "scope": "Exact one-shell angular algebra; no global certificate",
+  "status": "all exact checks passed",
+  "first_shell_size": 24,
+  "cosine_multiplicities_per_root": {
+    "-1": 1,
+    "-1/2": 8,
+    "0": 6,
+    "1/2": 8,
+    "1": 1
+  },
+  "q_coefficients_in_c": {
+    "2": "-1/4",
+    "4": "5/4",
+    "6": "-1"
+  },
+  "q_gegenbauer_coefficients": {
+    "0": "1/64",
+    "2": "1/32",
+    "6": "-1/64"
+  },
+  "q_continuous_spherical_mean": "1/64",
+  "q_discrete_root_shell_mean": "0",
+  "dual_q_gegenbauer_coefficients": {
+    "0": "1/128",
+    "2": "3/256",
+    "4": "1/256",
+    "6": "-1/256",
+    "8": "-1/256"
+  },
+  "dual_q_continuous_spherical_mean": "1/128",
+  "dual_q_status": "Independent local profile, not Fourier transform of q",
+  "safe_angle_quadrature": {
+    "nodes": [
+      "0",
+      "1/2"
+    ],
+    "weights": [
+      "1/2",
+      "1/2"
+    ],
+    "annihilated_angular_degrees_mod_12": [
+      4,
+      6
+    ]
+  },
+  "evaluation_matrix_0_2_10": [
+    [
+      "1",
+      "-1",
+      "-1"
+    ],
+    [
+      "1",
+      "0",
+      "-1"
+    ],
+    [
+      "1",
+      "3",
+      "11"
+    ]
+  ],
+  "evaluation_determinant_0_2_10": "12",
+  "harmonic_shell_means": [
+    {
+      "angular_degree": 0,
+      "effective_radial_dimension": 4,
+      "root_shell_mean": "1"
+    },
+    {
+      "angular_degree": 2,
+      "effective_radial_dimension": 8,
+      "root_shell_mean": "0"
+    },
+    {
+      "angular_degree": 4,
+      "effective_radial_dimension": 12,
+      "root_shell_mean": "0"
+    },
+    {
+      "angular_degree": 6,
+      "effective_radial_dimension": 16,
+      "root_shell_mean": "1"
+    },
+    {
+      "angular_degree": 8,
+      "effective_radial_dimension": 20,
+      "root_shell_mean": "1"
+    },
+    {
+      "angular_degree": 10,
+      "effective_radial_dimension": 24,
+      "root_shell_mean": "0"
+    },
+    {
+      "angular_degree": 12,
+      "effective_radial_dimension": 28,
+      "root_shell_mean": "2"
+    },
+    {
+      "angular_degree": 14,
+      "effective_radial_dimension": 32,
+      "root_shell_mean": "1"
+    },
+    {
+      "angular_degree": 16,
+      "effective_radial_dimension": 36,
+      "root_shell_mean": "1"
+    }
+  ]
+}
