@@ -360,10 +360,95 @@ def c5_no_thirteenth(verbose=True, n_grid=600):
     return float(vol), circ, bound
 
 
+
+def push_in(verbose=True, iters=4500, seed=12345):
+    """Push the witness in while KEEPING the thirteenth facet.  Deterministic.
+
+    The section-5 witness is a genuine thirteen-facet cell at 6.719022368.  Shrinking the seven
+    free centres towards w1 until a 2-separation binds, perturbing, and rejecting every candidate
+    whose cell has fewer than thirteen facets (checked: a plane is a facet iff it carries at
+    least three vertices) reaches 6.452822188 in about seven seconds.  That is the constructive
+    half of section 5.2: thirteen-facet completions exist and are not close to the threshold.
+
+    A run WITHOUT the facet check reaches 6.080235472 but its cell has twelve facets -- the
+    seventh centre sits at |x| = 3.6165 and its bisector at 1.808 misses the cell.  That is why
+    the check is not optional.
+    """
+    import itertools
+    import numpy as np
+
+    def vol_facets(P):
+        import itertools as it
+        from scipy.spatial import ConvexHull
+        dirs = np.vstack([FIXED, P])
+        dists = np.array([1.0] + [float(F(1051462224238, 10 ** 12))] * 5
+                         + [np.linalg.norm(x) / 2 for x in P])
+        n = np.array([d / np.linalg.norm(d) for d in dirs])
+        m = len(dists)
+        V = []
+        for i, j, k in it.combinations(range(m), 3):
+            M = n[[i, j, k]]
+            if abs(np.linalg.det(M)) < 1e-11:
+                continue
+            x = np.linalg.solve(M, dists[[i, j, k]])
+            if np.all(n @ x <= dists + 1e-9):
+                V.append(x)
+        if len(V) < 4:
+            return 0.0, 0
+        V = np.array(V)
+        sup = [i for i in range(m) if np.sum(np.abs(n[i] @ V.T - dists[i]) < 1e-7) >= 3]
+        return float(ConvexHull(V).volume), len(sup)
+
+    def jam(P):
+        need = [2.0 / max(np.linalg.norm(x), 1e-12) for x in P]
+        for i in range(len(P)):
+            for j in range(i):
+                need.append(2.0 / max(np.linalg.norm(P[i] - P[j]), 1e-12))
+            for f in FIXED:
+                need.append(2.0 / max(np.linalg.norm(P[i] - f), 1e-12))
+        return P * max(need)
+
+    def minsep(P):
+        d = [np.linalg.norm(x) for x in P]
+        for i in range(len(P)):
+            for j in range(i):
+                d.append(np.linalg.norm(P[i] - P[j]))
+            for f in FIXED:
+                d.append(np.linalg.norm(P[i] - f))
+        return min(d)
+
+    rng = np.random.default_rng(seed)
+    P = np.array([[float(F(str(x))) for x in p] for p in WITNESS])
+    v0, nf0 = vol_facets(P)
+    best = (v0, P.copy())
+    if verbose:
+        print(f"  seed (the section-5 witness) : {v0:.9f}  facets {nf0}")
+    for it in range(iters):
+        sig = 0.02 if it % 4 else 0.08
+        Q = jam(P + rng.normal(scale=sig, size=P.shape))
+        if minsep(Q) < 2 - 1e-9:
+            continue
+        v, nf = vol_facets(Q)
+        if v <= 0 or nf < 13:
+            continue
+        if v < best[0]:
+            best = (v, Q.copy())
+            P = Q
+    if verbose:
+        print(f"  smallest thirteen-facet cell : {best[0]:.9f}  margin"
+              f" {best[0] - 5.763417470:+.6f}")
+        for x in best[1]:
+            print("    ", [round(float(t), 9) for t in x], "  |x| = %.6f" % np.linalg.norm(x))
+    return best
+
+
 def main():
     print("=" * 78)
     print("THE THIRTEEN-FACE CASE CANNOT BE CLOSED BY COUNTING CENTRES")
     print("=" * 78)
+    if "--push" in sys.argv:
+        push_in()
+        return 0
     if "--search" in sys.argv:
         P, ang = search()
         print("regenerated witness (min pairwise angle %.4f deg):" % ang)
