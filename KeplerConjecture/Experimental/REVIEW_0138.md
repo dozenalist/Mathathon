@@ -26,9 +26,10 @@ What this block actually produced, in one place.
 - `K15-E063`: A15 (β-W) is the project's first genuinely **saturated** fixture — 919 valid
   interior cells, none defective.
 
-**Implementation.** Four new runnable scripts (`block_evaluator`, `transfer_evaluator`,
-`dense_completion_search`, `periodic_relax`, plus `frank_kasper_test`), all committed and all
-verified to run; `verify_all_claims.py` now covers the 0138 constants too. A blind periodic
+**Implementation.** Six new runnable scripts this block — `block_evaluator`,
+`transfer_evaluator`, `multi_defect_test`, `dense_completion_search`, `frank_kasper_test`,
+`periodic_relax` — all committed and all verified to run; plus `verify_all_claims.py` now
+covering the 0138 constants. A blind periodic
 relaxation independently recovers fcc and `pi/sqrt18` to `1.6e-07` — a calibration, not evidence.
 
 **Not delivered.** No new density bound and no proof of `(H_R)`. The sharp remaining question is
