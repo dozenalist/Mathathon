@@ -1,0 +1,33 @@
+====================================================================================
+1. Verify the exact Fourier map against numerical quadrature (3D radial)
+====================================================================================
+   P=1                      T=0.00  quad=+5.5683279968  exact=+5.5683279968  |d|=0.0e+00
+   P=1                      T=0.55  quad=+0.2812642943  exact=+0.2812642943  |d|=5.6e-17
+   P=1                      T=1.30  quad=+0.0000003176  exact=+0.0000003176  |d|=1.7e-17
+   P=1 - s/8                T=0.00  quad=+4.5242664974  exact=+4.5242664974  |d|=0.0e+00
+   P=1 - s/8                T=0.55  quad=+0.3334935033  exact=+0.3334935033  |d|=5.6e-17
+   P=1 - s/8                T=1.30  quad=+0.0000009202  exact=+0.0000009202  |d|=7.2e-18
+   P=s**2/40 - s/2 + 3      T=0.00  quad=+13.0507687426  exact=+13.0507687426  |d|=1.8e-15
+   P=s**2/40 - s/2 + 3      T=0.55  quad=+1.0367885002  exact=+1.0367885002  |d|=2.2e-16
+   P=s**2/40 - s/2 + 3      T=1.30  quad=+0.0000049396  exact=+0.0000049396  |d|=2.9e-17
+====================================================================================
+2. Sign test must ACCEPT an even-multiplicity zero at the contact radius
+====================================================================================
+   -(s - 4)**2                  (double zero at s=4) -> True : ok: sign on (a,inf) = -1, multiplicity at a = 2
+   4 - s                        (simple zero at s=4) -> True : ok: sign on (a,inf) = -1, multiplicity at a = 1
+   -(s - 6)*(s - 4)**2          (double at 4, simple at 6) -> False : odd-multiplicity root(s) in (4,inf): [(6, 1)] (sign flips => not -1)
+   -1                           (constant -1) -> True : ok: sign on (a,inf) = -1, multiplicity at a = 0
+   (v-1)^2                      (double zero at v=1) -> True : ok: sign on (a,inf) = 1, multiplicity at a = 0
+   v-1                          (simple zero at v=1) -> False : odd-multiplicity root(s) in (0,inf): [(1, 1)] (sign flips => not 1)
+====================================================================================
+3. Candidate certification (Kepler comparison reduced to rationals + pi)
+====================================================================================
+   P = -(s - 4)**2              -> f(0)=-16, f^(0)~-31/4 : need both positive
+   P = -(s - 8)/4               -> sign failure: CE1 odd-multiplicity root(s) in (4,inf): [(8, 1)] (sign flips => not -1) / CE2 ok
+   P = -(s - 4)*(s + 10)/10     -> sign failure: CE1 ok / CE2 odd-multiplicity root(s) in (0,inf): [(11/2 + sqrt(230)/2, 1)] (sign flips => not 1)
+
+   A successful certificate reports P(0)/Q(0) rational and the test
+        32 P(0)^2 < pi Q(0)^2   (<=> bound (4 sqrt(pi)/3)P0/Q0 < pi/sqrt18),
+   decided with rational enclosures of pi; the SEARCH over P is a separate LP.
+   No float residual is used as an identity: the map is applied by exact
+   differentiation, and only the quadrature cross-check above is floating point.

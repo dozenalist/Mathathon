@@ -1,0 +1,53 @@
+================================================================================
+1.  FCC lattice, unit balls (separation 2)
+================================================================================
+  [PASS] FCC basis vectors all have length 2                      
+  [PASS] FCC covolume^2 = 32  (cov = 4 sqrt2)                     cov = 4*sqrt(2) = 5.656854
+  [PASS] FCC minimal separation^2 = 4 (sep = 2)                   min |v|^2 = 4
+  [PASS] FCC density = pi/sqrt(18) exactly                        pi/sqrt18 = 0.740480490
+  [PASS] pi/sqrt(18) = (4pi/3)/sqrt(32)                           
+  [PASS] Hales threshold sqrt(32) = 4 sqrt2                       4sqrt2 = 5.656854
+================================================================================
+2.  HCP (ABAB) is a PERIODIC PACKING with the same density, and is NOT a lattice
+================================================================================
+  [PASS] in-plane offset to hollow = 2/sqrt3                      
+  [PASS] interlayer height c = sqrt(4-4/3) = 2sqrt6/3             c = 1.632993
+  [PASS] nearest A-B distance = 2                                 
+  [PASS] HCP cell volume = 8 sqrt2 (2 pts/cell -> 4sqrt2 per point) cell = 11.313708
+  [PASS] HCP density = FCC density = pi/sqrt18                    
+  [PASS] HCP is NOT a lattice: translation by 2*(B-point) leaves the set 2d=(2,2*sqrt(3)/3,4*sqrt(6)/3) not an A-layer vector
+  [PASS] ... because 2*d_xy = (2, 2sqrt3/3) is not in the triangular lattice n = 2/3 not an integer
+================================================================================
+3.  Convention conversions (the delta trap)
+================================================================================
+  [PASS] 2^(-5/2) = 1/(4 sqrt2) = FCC center density at sep 2     2^-5/2 = 0.17677670
+  [PASS] pi/sqrt18 = (4pi/3) * 2^(-5/2)                           
+  [PASS] number density at separation 1 is 8x that at separation 2 must not compare sep-1 counts with sep-2 bounds without x8
+     published value            occupied vol   center density   gap to pi/sqrt18
+     CDS22 CE 2-point                 0.779747     0.18615088       0.039267
+     CDS22 2-pt strengthened          0.773080     0.18455926       0.032600
+     CDS22 general 3-point            0.770271     0.18388866       0.029791
+     CDS22 lattice-only 3-point       0.741506     0.17702152       0.001026
+     Li Thm 6.1 lower bd on CE optimum   0.770657     0.18398089       0.030177
+  [PASS] Li 0.18398089 > 2^(-5/2) strictly (CE not sharp in d=3)  margin 0.00720419 in center-density units
+  [PASS] Li bound sits BELOW CDS22 CE value (different directions of the inequality) 0.18398 < 0.186151
+  [PASS] CDS22 3-point 0.770271 < CDS22 CE 0.779747 (higher-point strictly stronger) 
+================================================================================
+4.  Voronoi-cell volumes: the icosahedral witness and the dodecahedral ceiling
+================================================================================
+  [PASS] rhombic dodecahedron (inradius 1) volume = 4 sqrt2       5.656854249 vs 4sqrt2 = 5.656854249   <- equals FCC covolume and Hales's sqrt(32)
+  [PASS] regular dodecahedron (inradius 1) volume = 5.5503 (dodecahedral constant) 5.550291029
+  [PASS] regular dodecahedron volume < 4 sqrt2  ==> cell-volume bound cannot reach Kepler deficiency 4sqrt2 - V_dodec = 0.106563
+     => dodecahedral ceiling on density: (4pi/3)/V_dodec = 0.754697   (published 0.7546974)
+  [PASS] dodecahedral density ceiling 0.7546974 > pi/sqrt18 (so it cannot prove Kepler) 
+  [PASS] 12 icosahedral neighbours all at distance exactly 2 from the centre 
+  [PASS] icosahedral cluster is a valid packing (neighbour-neighbour distance > 2) min neighbour distance = 2.102924
+  [PASS] ==> any fcc-compatible A needs A(v) >= 4sqrt2 - V_dodec = 0.106563 at such a vertex 
+================================================================================
+5.  Poisson summation on FCC: dual lattice, scale and factor 1/V
+================================================================================
+  [PASS] sum_Lambda f = (1/V) sum_{Lambda*} f^   (Gaussian, N=9 shells) 1.0000021954 vs 1.0000021954
+  [PASS] FCC dual covolume = 1/(4sqrt2) (i.e. Lambda* is a BCC lattice, not Lambda) covol(Lambda*) = 0.176777
+================================================================================
+checks run: 28   failures: 0
+ALL CHECKS PASSED
