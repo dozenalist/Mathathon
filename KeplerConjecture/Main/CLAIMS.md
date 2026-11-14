@@ -713,3 +713,102 @@ by any finding above.
 - **Status.** `TESTED_FINITE` (the failure modes were observed) / `PROVED` for the
   unconditional count. Reviewer X. Script not retained: it produced no candidate
   and would only invite reuse.
+
+---
+
+## Block K15-HOUR-20261114-M (start 2026-11-14T09:14:25Z)
+
+### K15-C023 — independent cross-verification of Computation's K33 certificate (`VERIFIED_CROSS`)
+
+- **Object.** `KeplerConjecture/Computation/out/verified_certificate_K33b.json`
+  from branch `kepler15/comp-01a1d8c0` (`sha256 525d1d55…`), degree 33, convention
+  `t = 2π|x|²`, claimed `Δ ≤ 0.77996622`.
+- **Two independent verifications, both run by Main on this VM.**
+  1. Computation's own two implementations (`exactcert.certify`, and the SymPy
+     oracle): `ACCEPT`, `p0/q0 = 42935541634304122537361009/230584315533749727927712550`,
+     `Δ_upper = 0.779966216777`.
+  2. Main's independent checker (`Computation/verify_comp_cert.py` +
+     `shell_check.py`, written in the *different* variable `u = π|x|²` with its
+     own Sturm chain): the coefficients are converted by `P(u) = Σ c_k L_k(2u)`,
+     and both sign conditions pass (`q ≥ 0` on `u ≥ 0`; `p ≤ 0` on
+     `u ≥ 4π_lo`), giving the **same** rational ratio and
+     `Δ ∈ (0.779966216777, 0.779966216777)`.
+- **What it establishes.** The inequality `Δ(Λ) ≤ 0.77996622` for every packing of
+  unit balls, conditional only on the two checkers being correct — and they are
+  independent code, in different variables, agreeing on the object and the value.
+  Achieved by exact rational arithmetic with the *exact* rational thresholds
+  `T_LO = 4π_lo`, `T_HI = π_lo ρ²` (no integer rounding, so no conservatism).
+- **What it does not establish.** It is **not** an improvement: `0.77996622 >
+  0.779747` (Cohn–Elkies 2003). It says nothing about sharpness. It is a
+  reusable, checked component — the first object in this project confirmed by two
+  independent exact implementations.
+- **Reproduce.**
+  `python3 KeplerConjecture/Computation/verify_comp_cert.py <cert.json>` (≈4 s,
+  1 core, sympy only). Hashes: cert `525d1d55…`, `shell_check.py ca976ce4…`,
+  `verify_comp_cert.py 6a179b34…`.
+- **Status.** `VERIFIED_CROSS` (new status: a bound confirmed by ≥2 independent
+  exact implementations). Reviewer X: to confirm that the two implementations are
+  genuinely independent (they share no code and use different bases; Main wrote one).
+
+### K15-C024 — the density normalisation, proved (`PROVED`)
+
+Every bound in this project is a statement about
+`Δ(Λ) = limsup_R vol(B(0,R) ∩ ⋃_{λ∈Λ} B(λ,1))/vol B(0,R)`. The chain of
+identities used everywhere, now written out:
+
+1. **Ball volume.** `vol B(0,1) = 4π/3` in `R³`.
+2. **Occupied volume of a saturated packing.** For a saturated packing the balls
+   cover a neighbourhood; for a general packing, `Δ` as defined is the occupied
+   fraction and is `≤ 1`.
+3. **Counting-to-volume.** If `Λ` is 2-separated, then
+   `#(Λ ∩ B(0,R))·vol(B_1) ≤ vol(⋃_{λ∈Λ∩B(0,R)} B(λ,1)) ≤ vol B(0,R)`, hence
+   every finite packing has `#·(4π/3) ≤ vol B(0,R) + O(R²)`. For an infinite
+   packing with a limiting centre density `c = lim_R #(Λ∩B(0,R))/vol B(0,R)`,
+   the boundary error is `O(R²)/R³ → 0` and `Δ = c·4π/3`.
+4. **Centre density.** `c = Δ/(4π/3) = 3Δ/(4π)`; for fcc, `c = 1/(4√2)` and
+   `Δ = π/√18` exactly.
+5. **The CE bound in these units.** For admissible `f` with `f̂ ≥ 0`,
+   `f ≤ 0` off `|x| ≥ 2`, `f̂(0) > 0`: `c ≤ f(0)/f̂(0)` and
+   `Δ ≤ (4π/3)f(0)/f̂(0)` (K15-C002b for the passage to all packings).
+6. **Conversions from the older convention** (radius 1/2, separation 1, number
+   density `n`): `c = n/8`, `Δ = (π/6)n`. Verified exactly (K15-C007).
+
+*Status.* Items 1–4 and 6 are `PROVED`; item 5 depends on K15-C002b, whose
+periodic estimate is repaired but still awaits X. The Lean module
+`Lean/Kepler15/Normalisation.lean` formalises only the *algebraic* part (3)–(4)
+as a definitional identity and does **not** prove the ball volume or the
+counting-to-volume bridge; the pinned build is `M-LEAN-001` (complete, axioms
+`[propext, Classical.choice, Quot.sound]`).
+
+### K15-C025 — the next theorem, with every missing hypothesis named
+
+**Target theorem (local/cluster form).** Let `Λ` be saturated, `A : Λ → R`, and
+`Π` a partition of `Λ` into clusters with `diam K ≤ D`, `|K| ≤ V_max`, such that
+(a) `vol Ω(v) + A(v) ≥ 0` for all `v`; (b) `Σ_{v∈K}(vol Ω(v)+A(v)) ≥ √32|K|` for
+all `K ∈ Π`; (c) `Σ_{v∈Λ(x,r)} A(v) ≤ C₁r²`. Then
+`Δ ≤ π/√18 + C(C₁,D,V_max)/r`.
+
+| # | Obligation | Status |
+| --- | --- | --- |
+| H1 | the criterion itself (cluster averages + negligibility ⇒ bound) | `PROPOSED` (E's `K15-E001`); Main read the proof, X to audit |
+| H2 | a *specified* partition rule with a boundary estimate (the universal quantifier over clusters is false: a singleton at the icosahedral vertex gives `5.55029 < √32`) | **MISSING** |
+| H3 | an analytic lower bound for `Σ_{v∈K} vol Ω(v)` over that partition, `D = 2` first | **MISSING** — and sampling can only refute it (`K15-E003`) |
+| H4 | negligibility (c) for the chosen `A` | **MISSING** |
+| H5 | a numerical value of `V_0 = √32` once (b) is replaced by `≥ V_0|K|`; beating the dodecahedral barrier needs `V_0 > 5.550291` | **MISSING** |
+
+**Why this and not the shell allowance.** Computation measured the shell
+benchmark at degree 21, grid 500, `ρ = 2.09`: the jointly optimised allowance
+chose `η = 0`, i.e. **gain exactly 0** (`K15-C-SHELLBENCH-001`, `TESTED_FINITE`,
+not an impossibility proof). Two readings, both consistent with the data:
+(i) at the CE optimum the sign condition is active only at `|x| = 2`, a
+measure-zero set, so relaxing the sign on a positive-width shell is a
+*second-order* gain against a first-order cost `12η`; (ii) the solve is a coarse
+grid LP whose control value (`0.78017286`) is itself worse than CE03, so it may
+lack the resolution to see a small gain. Either way the shell route has produced
+no number, and the local/cluster route (K15-C015r) is where the remaining
+mathematical content is.
+
+**Analytic comparator kept alive.** `K15-C023` shows the exact-certificate
+pipeline works end to end at degree 33. It is the fallback for any candidate the
+geometric route produces: a candidate profile ⇒ run `exactcert` and
+`verify_comp_cert` ⇒ `VERIFIED_CROSS` or nothing.

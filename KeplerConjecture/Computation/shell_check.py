@@ -51,23 +51,20 @@ import sys
 from fractions import Fraction as F
 import sympy as sp
 
-PI_LO = F(31415926535, 10**10)      # 3.1415926535 < pi
-PI_HI = F(31415926539, 10**10)      # pi < 3.1415926539
-T_LO = F(12)                        # <= 4*pi
+PI_LO = F(314159265358979323846264338327, 10 ** 29)   # < pi (matches Computation's)
+PI_HI = F(314159265358979323846264338329, 10 ** 29)   # > pi
+T_LO = F(4) * PI_LO                 # = 4*PI_LO <= 4*pi, rational, no rounding
 T_HI_DEFAULT = F(27, 2)             # <= pi*rho^2 only for rho >= 2.0906
 
 
 def t_hi_for(rho):
-    """Largest simple rational <= pi*rho^2, using the directed lower bound PI_LO.
+    """A rational threshold <= pi*rho^2.
 
-    The shell window must satisfy T_HI <= pi*rho^2 (so that "p <= 0 beyond T_HI"
-    covers the true exterior s >= rho^2); using PI_LO makes this safe.
+    Using the directed lower bound PI_LO < pi gives T_HI = PI_LO*rho^2 exactly,
+    which is rational and loses NOTHING: no integer rounding is needed, so the
+    "conservative threshold" loss of the earlier revision is gone.
     """
-    lim = PI_LO * rho * rho
-    for cand in (F(27, 2), F(13), F(25, 2), F(12), F(23, 2), F(11)):
-        if cand <= lim:
-            return cand
-    return max(T_LO, F(int(lim)))
+    return PI_LO * rho * rho
 
 t = sp.Symbol('t')
 
@@ -109,6 +106,16 @@ def poly_from(coeffs, var):
     return sum(sp.Rational(c) * var ** i for i, c in enumerate(coeffs))
 
 
+def _sign_at(poly_expr, x):
+    """Sign of a polynomial at x in [-inf, +inf]; at infinity use the leading coeff."""
+    P = sp.Poly(poly_expr, sp.Symbol('u'))
+    if x is sp.oo or x == sp.oo:
+        lc = P.LC()
+        return 0 if lc == 0 else (1 if lc > 0 else -1)
+    v = P.eval(x)
+    return 0 if v == 0 else (1 if v > 0 else -1)
+
+
 def nonneg_on_half_line(coeffs) -> bool:
     """q(u) >= 0 for all u >= 0, decided exactly (Sturm / root counting)."""
     u = sp.Symbol('u')
@@ -120,7 +127,7 @@ def nonneg_on_half_line(coeffs) -> bool:
     from sympy import sturm, oo
     seq = sturm(q.as_expr(), u)
     def sign_changes_at(x):
-        vals = [sp.Poly(s, u).eval(x) for s in seq]
+        vals = [_sign_at(s, x) for s in seq]
         vals = [v for v in vals if v != 0]
         return sum(1 for a, b in zip(vals, vals[1:]) if a * b < 0)
     return sign_changes_at(0) - sign_changes_at(oo) == 0
@@ -135,7 +142,7 @@ def le_on_interval(coeffs, eta, lo, hi) -> bool:
         return True
     seq = sturm(r.as_expr(), u)
     def sc(x):
-        vals = [sp.Poly(s, u).eval(x) for s in seq]
+        vals = [_sign_at(s, x) for s in seq]
         vals = [v for v in vals if v != 0]
         return sum(1 for a, b in zip(vals, vals[1:]) if a * b < 0)
     return sc(sp.Rational(lo)) - sc(sp.Rational(hi)) == 0
@@ -151,7 +158,7 @@ def _ray(coeffs, hi) -> bool:
         return False                      # p -> +inf
     seq = sturm(r.as_expr(), u)
     def sc(x):
-        vals = [sp.Poly(s, u).eval(x) for s in seq]
+        vals = [_sign_at(s, x) for s in seq]
         vals = [v for v in vals if v != 0]
         return sum(1 for a, b in zip(vals, vals[1:]) if a * b < 0)
     return sc(sp.Rational(hi)) - sc(oo) == 0
@@ -176,11 +183,13 @@ def check(a, rho=F(209, 100), eta=F(0), K=None, count=12, verbose=True):
     T_HI = t_hi_for(rho)
     rep("containment T_HI = %s <= pi*rho^2" % T_HI,
         T_HI <= PI_LO * rho * rho, "pi*rho^2 > %s" % (PI_LO * rho * rho))
-    rep("window non-degenerate (T_LO < T_HI)", T_LO < T_HI,
-        "else the allowance is empty and this is ordinary CE")
+    if rho > 2:
+        rep("window non-degenerate (T_LO < T_HI)", T_LO < T_HI,
+            "else the allowance is empty and this is ordinary CE")
     rep("fhat >= 0 for u >= 0 (q >= 0)", nonneg_on_half_line(b))
-    rep("f <= eta on the shell (p <= eta on [T_LO, T_HI])",
-        le_on_interval(a, eta, T_LO, T_HI))
+    if rho > 2:
+        rep("f <= eta on the shell (p <= eta on [T_LO, T_HI])",
+            le_on_interval(a, eta, T_LO, T_HI))
     rep("f <= 0 beyond rho (p <= 0 on [T_HI, inf))", _ray(a, T_HI))
     p0, q0 = F(a[0]), F(b[0])
     rep("fhat(0) > 0", q0 > 0, "q(0) = %s" % q0)

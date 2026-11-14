@@ -112,6 +112,22 @@ A third object is a **mechanism**, not a candidate: the exact-Sturm Laguerre fam
 (X-C008), which can certify a number but whose ceiling is obstructed by Li. The
 shell checker above is its practical form for this benchmark.
 
+## 4c. A checked component (K15-C023)
+
+Computation's degree-33 certificate is now confirmed by **two independent exact
+implementations**: their `exactcert` (variable `t = 2π|x|²`) and Main's
+`shell_check` (variable `u = π|x|²`), written separately, agreeing on the object,
+on the verdict, and on the rational ratio
+`p(0)/q(0) = 42935541634304122537361009/230584315533749727927712550`, giving
+`Δ ≤ 0.779966216777`. It is **not** an improvement (`0.779747` is Cohn–Elkies
+2003) — it is the first result in this project whose proof is a finite object
+two independent programs accept. Reproduce with
+`python3 KeplerConjecture/Computation/verify_comp_cert.py <cert.json>` (4 s).
+
+The interface that makes this reusable is `Main/INTERFACE.md`: three conventions,
+their exact dictionaries, and a certificate schema. The dictionary is tested, not
+asserted (`Computation/interface_xcheck.py`).
+
 ## 5. What is not established
 
 - A value near `Δ = 0.78010544` attributed to Computation is **withdrawn**
