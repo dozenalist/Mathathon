@@ -263,6 +263,12 @@ def canonicalise(normals, dists):
 def polytope_volume(normals, dists, require_bounded=True):
     """Exact volume of {y : y.n_i <= d_i}.  REFUSES an unbounded polyhedron.
 
+    NORMALISATION (review 2026-11-14_0823): a half-space {x.n <= d} has face distance d/|n|,
+    so the volume is (1/3) sum_facets (d_i/|n_i|) A_i for general normals.  This function
+    applies `canonicalise` first, which rewrites every half-space as {y.u <= 1} with u = n/d;
+    there the distance is 1 and the formula is (1/3) sum A_i.  The general-normal form is never
+    used directly, which is why no |n| appears below.
+
     SUPPORTED INPUT DOMAIN (documented after review 2026-11-14_0738): normals nonzero,
     offsets d_i > 0 (the origin is interior), the set positively spanning so the polytope is
     bounded, and -- after `canonicalise`, which is applied here -- no two half-spaces

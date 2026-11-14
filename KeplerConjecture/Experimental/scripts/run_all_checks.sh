@@ -36,7 +36,13 @@ run barlow_random_stackings "random Barlow stackings: every layer 4sqrt2 and fcc
 run rational_interval      "exact rational intervals; pi/sin/cos with remainder bounds"
 run cell_certificate        "REPAIRED enclosure: W1-W5 + cube/tet/fcc/hcp/C5 + volume contract (1.8 s)"
 run ring_excess             "ring-excess lemma: C5 configuration cleared by proof, margin +0.109"
-run pair_theorem_12faces      "THEOREM modulo Lindelof: (P') for every 12-face completion, margin +0.0103"
+run pair_theorem_12faces      "THEOREM modulo Fejes Toth: (P') for every 12-face completion, margin +0.0103"
+run ring_face_disk            "disk in the ring FACE (Main G17): t_R >= t* = rho_r/4, margin 0"
+if timeout 300 python3 "Experimental/scripts/face_count_obstruction.py" --fast >/dev/null 2>&1; then
+  printf '%-28s %-8s %s\n' "face_count_obstruction" "PASS" "13 centres within 2.20 exist: the counting route is dead"
+else
+  printf '%-28s %-8s %s\n' "face_count_obstruction" "FAIL" "..."; fail=1
+fi
 # evidence integrity: every JSON must parse, every TXT must be non-empty
 bad=0
 for f in Experimental/evidence/*.json; do
