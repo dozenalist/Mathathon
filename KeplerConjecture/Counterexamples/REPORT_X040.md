@@ -340,6 +340,30 @@ So "0 wrong verdicts on `5caa1c9`" is evidence about one failure mode at one rev
 soundness proof, and `K15-C098`'s `SUSPENDED` label on generic checker soundness remains the right
 one.
 
+### 4.4 `PROOF_GAPS.md` G8: no shared code (definitive), agreement on 52 vectors (sample)
+
+G8 is assigned to X and open: *"confirm C's `exactcert` and Main's `shell_check` share no code path
+and agree on adversarial vectors."* Half of it is now settled outright and the other half on a
+fixed sample — `Reviews/g8_checker_independence.py`, exit 0.
+
+- **No shared code path.** `exactcert.py` (comp tip `5c10267`) imports `fractions.Fraction` and
+  nothing else: `pmul`, `pdivmod`, `pgcd`, `sturm_chain`, `sign_variations`, `cauchy_bound` are
+  hand-written. `shell_check.py` (`5caa1c9`) imports `sympy` and `fractions` and delegates root
+  isolation to SymPy. Neither imports the other; there is no common project module. So agreement
+  between them is agreement between two independent implementations, not a shared bug.
+- **Agreement on 52 vectors.** All 52 give the same verdict on `q ≥ 0` on `[0,∞)` from three
+  routes: Main's SymPy predicate, C's hand-rolled Sturm (`yun_odd_part` + `roots_in_half_line` +
+  `peval`, nothing else), and the algebraic rule (odd-part root count, independently coded). The
+  sample has both leading signs, roots at `0`, repeated roots, and 12 near-touching cases
+  `(t−r)² ∓ ε` with `ε = 10⁻²⁰, 10⁻⁸` — the family that broke the probe-based checkers. It is not
+  vacuous: **14 of the 52 are non-negative and 38 are not**, and all three routes split the sample
+  identically.
+
+**What this does not close.** The sample is finite, and only the `q`-side predicate is compared;
+`p ≤ η` on an interval, the `η` precondition (`X-C025`), `f̂(0) > 0` and the window conditions are
+outside it. G8 should stay open, described as "independence established; agreement sampled, not
+proved".
+
 ## 5. Ledger
 
 | id | claim | status |
