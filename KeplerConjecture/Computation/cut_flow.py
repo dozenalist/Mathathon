@@ -222,12 +222,77 @@ def verify_flow_exact(b, edges, Phi, phi):
     ok_div = all(div[v] >= b[v] for v in range(n))
     return ok_cap, ok_div, div
 
+def load_external_fixture(path):
+    """Portable input format so X or Main can evaluate their own packing without editing code.
+
+    JSON schema (all numbers as strings parseable by Fraction; b_lo <= b <= b_hi required):
+      {"name": str, "note": str,
+       "edges": [[i, j], ...],            undirected, one entry per pair
+       "b_lo": ["...", ...],              per vertex, lower bound on sqrt32 - vol Omega
+       "b_hi": ["...", ...],              per vertex, upper bound
+       "volumes_are_provisional": bool}   true if any volume is floating-point or estimated
+    A fixture with `volumes_are_provisional: true` is evaluated but every row is stamped
+    PROVISIONAL and may never be quoted as a certificate.
+    """
+    d = json.load(open(path))
+    b_lo = [F(str(x)) for x in d["b_lo"]]
+    b_hi = [F(str(x)) for x in d["b_hi"]]
+    edges = [tuple(e) for e in d["edges"]]
+    n = len(b_lo)
+    if len(b_hi) != n:
+        raise SystemExit("b_lo and b_hi must have the same length")
+    if any(lo > hi for lo, hi in zip(b_lo, b_hi)):
+        raise SystemExit("b_lo > b_hi at some vertex; the enclosure is inconsistent")
+    if any(i < 0 or i >= n or j < 0 or j >= n for (i, j) in edges):
+        raise SystemExit("edge index out of range")
+    return dict(name=d.get("name", os.path.basename(path)), b_lo=b_lo, b_hi=b_hi, edges=edges,
+                provisional=bool(d.get("volumes_are_provisional", True)),
+                note=d.get("note", ""))
+
+
+def evaluate_external(fx, Phi_trials=(F(1, 1000), F(1, 100), F(1, 10), F(1))):
+    """Run the criterion on an external fixture.  A violating cut is reported as a genuine
+    obstruction; a flow as PATCH_FEASIBLE.  Provisional volumes are stamped as such."""
+    out = dict(fixture=fx["name"], provisional=fx["provisional"], note=fx["note"], rows=[])
+    print("== external fixture %r  (%d vertices, %d edges)%s"
+          % (fx["name"], len(fx["b_lo"]), len(fx["edges"]),
+             "   [VOLUMES PROVISIONAL]" if fx["provisional"] else "   [volumes certified]"))
+    if fx["note"]:
+        print("   note:", fx["note"])
+    worst = find_violating_cut(fx["b_lo"], fx["edges"], F(0), max_size=min(len(fx["b_lo"]), 6))
+    if worst:
+        ratio, U, sb, bd = worst
+        print("   worst cut (|U| <= 6): U=%s  sum b >= %s  |delta^+|=%d  ratio=%.12f"
+              % (list(U), sb, bd, float(ratio)))
+        print("   => the cut condition FAILS for every Phi < %.12f%s"
+              % (float(ratio), "  (PROVISIONAL)" if fx["provisional"] else ""))
+        out["rows"].append(dict(kind="violating_cut", U=list(U), sum_b=str(sb), boundary=bd,
+                                phi_threshold=str(ratio)))
+    for Phi in Phi_trials:
+        phi = feasible_flow(fx["b_hi"], fx["edges"], Phi)
+        if phi is None:
+            continue
+        ok_cap, ok_div, div = verify_flow_exact(fx["b_hi"], fx["edges"], Phi, phi)
+        print("   Phi=%-8s flow found; |phi|<=Phi %s, divergence>=b %s   PATCH_FEASIBLE only"
+              % (Phi, ok_cap, ok_div))
+        out["rows"].append(dict(kind="flow", Phi=str(Phi), cap_ok=bool(ok_cap),
+                                divergence_ok=bool(ok_div), status="PATCH_FEASIBLE"))
+        break
+    else:
+        print("   no flow found at Phi in %s" % (list(Phi_trials),))
+        out["rows"].append(dict(kind="flow", status="NO_FLOW"))
+    print()
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--json", default=os.path.join(_OUT, "cut_flow.json"))
+    ap.add_argument("--fixture", action="append", default=[],
+                    help="external fixture JSON (repeatable); see load_external_fixture")
     a = ap.parse_args()
     os.makedirs(_OUT, exist_ok=True)
-    report = {"script": "KeplerConjecture/Computation/cut_flow.py",
+    report = {"script": "KeplerConjecture/Computation/cut_flow.py", "external": [],
               "convention": "K15-C044: b(v)=sqrt32-vol Omega(v); G_R edges <= R, capacity Phi; "
                             "transfer exists iff sum_U b <= Phi|delta^+(U)| for every finite U",
               "arithmetic": "rational enclosures b_lo <= b <= b_hi; b_lo used to refute, "
@@ -314,6 +379,8 @@ def main():
                    flow_status=status)
         report["rows"].append(row)
         print()
+    for path in a.fixture:
+        report["external"].append(evaluate_external(load_external_fixture(path)))
     json.dump(report, open(a.json, "w"), indent=1)
     print("wrote", a.json)
     return 0

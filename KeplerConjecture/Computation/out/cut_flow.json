@@ -1,5 +1,30 @@
 {
  "script": "KeplerConjecture/Computation/cut_flow.py",
+ "external": [
+  {
+   "fixture": "example: two-cell ladder (illustrative only)",
+   "provisional": true,
+   "note": "hand-made example of the input schema; deficits are made up, volumes PROVISIONAL",
+   "rows": [
+    {
+     "kind": "violating_cut",
+     "U": [
+      0
+     ],
+     "sum_b": "1/10",
+     "boundary": 1,
+     "phi_threshold": "1/10"
+    },
+    {
+     "kind": "flow",
+     "Phi": "1/10",
+     "cap_ok": true,
+     "divergence_ok": true,
+     "status": "PATCH_FEASIBLE"
+    }
+   ]
+  }
+ ],
  "convention": "K15-C044: b(v)=sqrt32-vol Omega(v); G_R edges <= R, capacity Phi; transfer exists iff sum_U b <= Phi|delta^+(U)| for every finite U",
  "arithmetic": "rational enclosures b_lo <= b <= b_hi; b_lo used to refute, b_hi used for feasibility",
  "rows": [
