@@ -77,6 +77,10 @@
   "denominator": 1000000
  },
  "runtime_s": 0.3,
- "status": "PROVED_CONDITIONAL_ON_CE_THEOREM",
- "scope": "Delta <= certified_delta for every packing, by Cohn-Elkies Theorem 3.1 applied to the exact certificate; the CE theorem is cited, not re-proved. Strict-sign route, so loose."
+ "status": "REFUTED",
+ "scope": "Delta <= certified_delta for every packing, by Cohn-Elkies Theorem 3.1 applied to the exact certificate; the CE theorem is cited, not re-proved. Strict-sign route, so loose.",
+ "declared_status_original": "PROVED_CONDITIONAL_ON_CE_THEOREM",
+ "refuted_by": "repaired exactcert.py: review 48443 found simple positive roots of q for K = 9..21; the two defects were a verbosity-gated return and a sign loss in yun_odd_part.  The declared status PROVED_CONDITIONAL_ON_CE_THEOREM was FALSE for this candidate.",
+ "rejection_reason": "A1 needs p<0 on [8pi,inf); got undecided (1 root(s) of the odd part on [314159265358979323846264338327/12500000000000000000000000000, inf))",
+ "retained_as": "failed candidate / evidence -- do not quote as a bound"
 }
