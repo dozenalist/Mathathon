@@ -16,7 +16,12 @@ Evaluator: C (`using-the-chats-in-mcl6`).
 | `SHELL_CONVERSION.md` | cap-inequality direction repaired; exact radius conversion for centres in `[2,2+delta]`; explicit 12-shell bound; equality fixtures | `K15-E010` PROVED, `K15-E011` PROVED, `K15-E012` PROVISIONAL, `K15-E013` OPEN |
 | `ANALYTIC_LOCAL_MASS.md` | local-mass row outside ordinary CE, in measure form; proved `N(rho)`; sized evaluator for C | `K15-E020` SPECIFIED |
 | `scripts/shell_conversion.py` | exact cap identity, conversion, delta table | exact, <1 s |
-| `scripts/local_mass_search.py` | exploratory search for `N(rho)` | TESTED_FINITE, inadequate (see below) |
+| `scripts/local_mass_search.py` | exploratory search for `N(rho)` | TESTED_FINITE, inadequate |
+| `TAMMES13_ENCLOSURE.md` | frozen enclosure of `delta_13`; Taylor lemma; Barlow `K15-E013` closed | `K15-E013`/`E015` PROVED |
+| `GEOMETRIC_OBSTRUCTION.md` | quantified obstruction to the icosahedral compensation | `K15-E040`/`E041`/`E042` |
+| `REVIEW_CHECKLIST_X.md` | 21-item independent review checklist | for X |
+| `LOCAL_ICOSA_SEARCH.md` | offload, blocked on authoring | REQUESTED |
+| `scripts/{tammes13_enclosure,barlow_shell_check,shell_2p09_interval,interval_selfaudit,outer_cell_angular_bound,icosa_compensation_search,icosa_targeted_completion}.py` | all run clean | mixed; see individual docs |
 | `evidence/` | captured outputs | — |
 
 ## Net result of this block

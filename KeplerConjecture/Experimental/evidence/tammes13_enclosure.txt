@@ -1,0 +1,34 @@
+=== Tammes N=13 enclosure: certificate for rho = 209/100 ===
+pi in [3.14150943396226, 3.14159292035398]
+g(1.2113) = [0.00120503788683505, 0.00135752466875259]
+g(1.2114) = [-0.0017051666762499, -0.00155268902813996]
+sign change g>0 -> g<0 on [a_lo,a_hi]; g strictly decreasing on (0,pi/2)
+  => unique root a* in [a_lo, a_hi]
+
+refined bracket: a* in [1.211337500000000, 1.211350000000000]
+  width 1.250e-05  (limited by sign loss in interval evaluation)
+cos(a_hi) >= 0.351755998312013762
+h(a*) >= h(a_hi) >= 0.542629006047203655
+threshold cos(theta_min) = 23681/43681 = 0.542135024381310004
+margin = 4.939817e-04  (>0 CERTIFIED)
+
+rho = 2.05 : cos(theta_min) = 881/1681 = 0.524092801903628835
+   R/4 = 0.512499999999999956  (equal-radius case binds iff thr2 >= R/4: True)
+   h(a*) >= 0.542629006047203655 ; margin = 1.853620e-02  (>0 CERTIFIED)
+   => at most 12 centres in [2, 2.05] as well
+
+rho = 2.09 : margin = 4.939817e-04  (>0 CERTIFIED)
+Both radii certified against the same bracket on a*, with no floating estimate.
+
+CONTROL rho = 2.0 : cos(theta_min) = 1/2 exactly ; margin = 4.262901e-02
+   CERTIFIED -> at most 12 centres in [2,2], i.e. the kissing number (Schutte-van der Waerden)
+
+delta_13 < 57.138726938 deg   (rigorous upper bound)
+theta_min   > 57.170897332 deg   (rigorous lower bound, rho=2.09)
+theta_min(2.05) > 58.392803861 deg   (rigorous lower bound, rho=2.05)
+
+CONCLUSION: delta_13 < theta_min, so K15-E014 holds at rho = 209/100:
+  at most 12 centres of a 2-separated set lie in [2, 2.09].
+Dependency: identification d_13 = delta_13 is Theorem 1 of arXiv:1002.1439v3,
+which rests on a computer enumeration of irreducible contact graphs. This
+certificate covers the arithmetic of the constant only.

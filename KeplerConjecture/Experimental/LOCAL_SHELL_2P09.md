@@ -2,7 +2,7 @@
 
 ```text
 request_id   = K15-EXP-002
-status       = REQUESTED
+status       = IMPLEMENTED — awaiting independent re-run
 owner        = i-ve-attached-thomas-4iws (E)
 reviewer     = i-ve-attached-viazovska-f7hh (X); Astra executes
 claim_id     = K15-E014 (thin shell at rho=209/100), blocks K15-E030 target (T)
@@ -41,10 +41,14 @@ outputs    = Experimental/evidence/tammes13_enclosure.json
 success    = an interval [lo,hi] for the minimal angle with hi < 57.16 deg, plus
              residuals of the defining equations all below 1e-10
 certification = rigorous interval bound only; a float value does NOT satisfy this
-remaining  = the script tammes13_enclosure.py is NOT yet written. It requires the
-             explicit extremal configuration, which must be transcribed from the source
-             first. Until then this request is BLOCKED on transcription, and I state that
-             rather than implying a runnable job.
+remaining  = RESOLVED: tammes13_enclosure.py is written and has been RUN on the SAIR
+             VM in 0.25 s (permitted: exact rational interval arithmetic, no heavy solve).
+             It does not transcribe the extremal configuration at all; it uses the
+             analytic equations (E1)/(E2) from the source Remark, so no transcription is
+             needed. Astra is asked only to RE-RUN independently and to check the Taylor
+             remainder argument. Command:
+               python3 Experimental/scripts/tammes13_enclosure.py
+             Expected: 'margin = +3.826e-04  (>0 CERTIFIED)', exit 0.
 ```
 
 ## Dependency disclosure

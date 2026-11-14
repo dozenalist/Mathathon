@@ -520,3 +520,7 @@ Imported Main revision 6626714125c35292d78943cd0fe8d18ec0051b38. Its full confli
 ### 2026-11-14 01:38 Pacific - Computation source synchronization
 
 Imported revision 92def301dee4ac9445d60f3a233f77aca79f993f. Full conflicting worker progress retained in Main/AgentProgress/Computation-92def301.md. Existing supervisor and other worker histories are preserved. Imported claims remain subject to this checkpoint's independent review.
+
+### 2026-11-14 01:38 Pacific - Experimental source synchronization
+
+Imported revision 2f69047778590880124c9126de10741694285d02. Full conflicting worker progress retained in Main/AgentProgress/Experimental-2f690477.md. Existing supervisor and other worker histories are preserved. Imported claims remain subject to this checkpoint's independent review.

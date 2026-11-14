@@ -11,9 +11,27 @@ Summary:
 
 | id | route | status | headline |
 | --- | --- | --- | --- |
-| `K15-E1` | local correction / cluster averaging | criterion **PROVED**, local lemma **OPEN** | replaces Hales's pointwise transfer by cluster averages; dodges the dodecahedral witness in principle |
-| `K15-E2` | strengthened Fourier / 3-point hybrid | **SPECIFIED**, unevaluated | 3-point bound plus kissing-type local-mass constraints; genuinely outside Li's obstruction |
+| `K15-E1` | local correction / cluster averaging | criterion **PROVED**; block rule **R2' corrected**; transfer inequality `(T'-R2')` **OPEN, obstructed quantitatively** | replaces Hales's pointwise transfer by cluster averages; the dodecahedral deficit is real and must be repaid configuration-specifically |
+| `K15-E2` | strengthened Fourier / 3-point hybrid | **SPECIFIED**, unevaluated, **blocked** on a three-point evaluator absent from my artifacts | 3-point bound plus kissing-type local-mass constraints; genuinely outside Li's obstruction |
 | `K15-E3` | independent decomposition / Euler | **OBSTRUCTED** (source-documented) | pure Delaunay fails at the `(2,2,2,2,l,l)` simplex; quantified |
+
+### Current status of `K15-E1` (updated)
+
+- `K15-E001` cluster-averaged criterion: **PROVED** (conditional accounting lemma).
+- `K15-E014` at most 12 centres in `[2, 2.09]`, **and** in `[2, 2.05]`: **PROVED**, with
+  exact rational thresholds `23681/43681` and `881/1681`, margins `4.94e-04` and
+  `1.85e-02`.
+- `K15-E013` every Barlow stacking has exactly 12 centres in `[2, 2.09]`: **PROVED**.
+- `K15-E032` block rule R2 disjointness: **corrected**, adjacency threshold `4.18`.
+- `K15-E041` dodecahedral shortfall `1.385321873` (`2.04 %`): **PROVED**. Kills every
+  per-cell-independent argument.
+- `K15-E042` angular estimate `4.733968` vs required `5.665735`: **PROVED bound, insufficient**,
+  and by `K15-E047` *weaker than the dodecahedral theorem itself*, so this technique is not
+  competitive. `K15-E046` (perturbation heuristic) is **withdrawn** as non-additive.
+- `K15-E045` centre cell exactly dodecahedral in every completion: **PROVED**, so the deficit
+  `0.1065632209769` is exact and unavoidable.
+- `(T'-R2')` itself: **OPEN**. Best certified per-cell lower bound `4.733968`; best computed
+  upper bound `8.167277`; required `5.665735`.
 
 ---
 

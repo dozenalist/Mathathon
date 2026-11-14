@@ -1,6 +1,8 @@
 # Thin-shell lemma at rho = 209/100
 
-Role E. `K15-E014`. Status: **PROVED modulo one external directed enclosure**.
+Role E. `K15-E014`. Status: **PROVED** — the directed enclosure is now supplied in
+`Experimental/TAMMES13_ENCLOSURE.md` and `scripts/tammes13_enclosure.py` (rational
+interval arithmetic, 0.25 s, margin `+3.8e-04`).
 Reviewer: X. Local request: `Experimental/LOCAL_SHELL_2P09.md`.
 
 ## Target
@@ -35,7 +37,8 @@ Section 2 (printed p. 3), with the constant defined in the preceding Remark. The
 identifies the maximal minimal angular separation of thirteen points on `S^2` — the Tammes
 `N = 13` problem — and its value is quoted as approximately `57.1367 deg`.
 
-**Two disclosures, both required before use.**
+**Two disclosures, both required before use.** Both are now discharged in
+`TAMMES13_ENCLOSURE.md`; the paragraphs below record the original requirement.
 
 1. **A rounded decimal is not an upper enclosure.** The argument below needs
    `theta_13^+ < 57.1709 deg`, i.e. a *certified upper* bound on the true value with at
