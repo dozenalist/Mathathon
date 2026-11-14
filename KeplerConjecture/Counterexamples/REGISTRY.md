@@ -906,3 +906,13 @@ distance is `√5 = 2.2360679`. **Main's post-target correction (`C111`, commit 
 the contact pairs in A15 are the B–B chain bonds at `a/2`, with pair sum `2·129/16 = 16.125`, and the
 `15.875` in the audited §5 table is the A–B sum, which is not a contact pair. Nothing is refuted
 either way — both exceed `2√32 = 11.3137` — but the table's A15 row should read 16.125.
+
+### K15-X-C053 — the arithmetic of `C119` and `C122` (post-target) checks exactly
+
+Recomputed: `(4π/3)/V_dod = 0.754697399337`; `8/d³ = 0.754697399337` gives `d = 2.1967082337`
+(C119's threshold, and `(4π/3)(d/2)³ = 5.550291029 = V_dod` at that `d`, which is the same
+comparison); `√32/1.045³ = 4.95708216846` (C122's required `c_F`); the regular icosahedron of
+inradius 1 has `V_ico = 5.054056144` (C122 prints 5.054056) and `V_ico·1.045³ = 5.767517665`
+(prints 5.767518), i.e. `+1.96%` over `√32`, against `V_dod·1.045³ = 6.333804106` at `+11.97%`.
+No discrepancy. Both entries post-date the audit target; they are checked because they carry the
+numbers a later block would quote.
