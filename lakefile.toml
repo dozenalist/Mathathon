@@ -16,3 +16,14 @@ name = "Mathathon"
 # Build:  lake build RogersRamanujan
 [[lean_lib]]
 name = "RogersRamanujan"
+
+# ZetaFive correspondence lemmas (2026-11-14).
+# Proves the parallel-construction correspondences of
+# `formalization_inputs/2026-11-14-parallel-01a1dc21/zeta5_unified_framework.tex`:
+# transport μ(P) = τ(x^5 P(-x^2)), the affine Gram pencil G(u) = G(v) + (u-v)M,
+# and the change-of-basis determinant identity. Modules live under
+# ZetaFive/Lean/Correspondences/ with the root module ZetaFive.lean.
+# Build:  lake build ZetaFive
+[[lean_lib]]
+name = "ZetaFive"
+globs = ["ZetaFive", "ZetaFive.+"]
