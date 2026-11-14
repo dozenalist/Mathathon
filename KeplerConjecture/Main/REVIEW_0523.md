@@ -92,6 +92,40 @@ that to a limit of averages.
 Consequently the pair route's gain is now stated only in its true form: **conditional on `ρ > 0`
 and non-quantitative, and not a new packing bound.**
 
+## 2.3 The primary-source equality case — verified, not assumed (`K15-C115`)
+
+The review asked for "the **actual primary-source** equality case". Every earlier block cited
+Hales–McLaughlin's equality case from memory, and `REVIEW_0438` itself flagged it as "the softest
+link in the chain". It is now read.
+
+**Source:** Hales & McLaughlin, *The Dodecahedral Conjecture*, 6 pp.,
+`sha256 beab1f4a…ef6960`, retrieved this block, `pdftotext -layout` (139 128 bytes of text),
+spot-checked against the p. 2 page image.
+
+> *"The assertion can then be stated as the inequality `vol(Ω(Λ,v)) ≥ vol(Ω(Λ_dod,0))` for every
+> `v ∈ Λ`, and for every set of points `Λ ⊂ R³` whose pairwise distances are at least the diameter
+> 2. **The case of equality occurs exactly when `Ω(Λ,v)` is congruent to a regular dodecahedron of
+> inradius 1.**"*
+
+Three things this pins down, all of which the ledger had been assuming:
+
+1. **"Exactly"** — the equality case is a characterisation, not just attainment. That is precisely
+   what Theorem D's step (3) needs, so **Theorem D's dependency is now a citation** and
+   `REVIEW_0438`'s "softest link" is closed.
+2. **The quantification is over arbitrary 2-separated point sets**, not over packings with a
+   density. Theorem D minimises over 2-separated *configurations*, so no bounded-density or
+   saturation hypothesis is smuggled in — this was worth checking and it checks out.
+3. **A second, independent equality source:** §4 quotes Fejes Tóth's Theorem 4.1 — *"Let `P` be
+   any polyhedron with at most 12 faces that contains a unit sphere `S²` … volume … at least
+   `ω_dod`. Equality holds exactly [when] `P` is congruent to the regular dodecahedron."* That is
+   a statement about **all** polyhedra containing a unit sphere, not about Voronoi cells, and it
+   covers the `≤ 12`-face case on its own.
+
+**What it still does not give.** No quantitative stability: neither the introduction nor Theorem
+4.1 bounds how far from a dodecahedron a cell may be while remaining within `V_dod + ε`. So `δ₀`
+remains non-explicit and `G11`/`G14` are unaffected. The verification removes an assumption; it
+adds no number.
+
 ## 3. Worker results integrated
 
 **E's payer search — eight bounded C5 pilots** (45 s each, one CPU, 1 GiB): best

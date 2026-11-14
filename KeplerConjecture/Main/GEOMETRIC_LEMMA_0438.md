@@ -356,10 +356,13 @@ retained only as the value the grid produced. The cover above replaces it. (A on
 does not work: `min over pairs of max_t d² = 8.4223 > 4`, so no single pair is always too close —
 the arcs must be *combined*, which is what the cover does.)
 
-Three things are used and none is re-proved: the **equality case** of Hales–McLaughlin
-(standard, from their proof); that a dodecahedral cell forces twelve tangent neighbours in the
-icosahedral arrangement (the same equality case); and the two-dodecahedra impossibility (Main's
-own computation, `1.1255548 < 2`, a `44%` shortfall so convention-insensitive).
+Three things are used. The **equality case** of Hales–McLaughlin is now read from the primary
+source and quoted verbatim in `K15-C115` — *"the case of equality occurs exactly when `Ω(Λ,v)` is
+congruent to a regular dodecahedron of inradius 1"* — and that source quantifies over *arbitrary*
+2-separated point sets, which is this step's setting; Fejes Tóth's Theorem 4.1 (quoted there)
+supplies the same characterisation independently for polyhedra with `≤ 12` faces. A dodecahedral
+cell forces twelve tangent neighbours in the icosahedral arrangement (the same equality case). And
+the two-dodecahedra impossibility is `K15-C112`, certified for **all** twists by an arc cover.
 
 **Discrepancy with E, recorded and not resolved.** E's `K15-E075` quotes `1.056487696`; Main
 gets `1.12555484451` for the same stated configuration. Both are `< 2` and the conclusion is

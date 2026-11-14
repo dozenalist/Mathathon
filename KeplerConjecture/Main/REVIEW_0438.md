@@ -129,10 +129,10 @@ Written because a referee looks here first; the details are `GEOMETRIC_LEMMA_043
   correct split is "not in an *internal* pair" — a vertex matched to a partner outside `B`
   contributes only `V_dod`. The inequality is unaffected; the justification is now right.
   Also recorded: **maximality is not doing analytic work**, only bookkeeping on `ρ`.
-- **Theorem D** survives its own audit, with one flagged dependency: it needs the *equality
-  case* of Hales–McLaughlin ("`vol Ω = V_dod` iff the regular dodecahedron"). That is standard,
-  and it is **not** re-derived here — **it is the softest link in the chain and the place a
-  referee should push.**
+- **Theorem D** survives its own audit. Its one flagged dependency was the *equality case* of
+  Hales–McLaughlin; that is now **verified against the primary source** and quoted verbatim at
+  `K15-C115`, together with Fejes Tóth's Theorem 4.1 as an independent second source. It was the
+  softest link and is now a cited quotation rather than trained knowledge.
 - **A negative result recorded rather than hidden.** The compressed symmetric pair family
   (`C109`) is too sparse to probe `(L)`: it gives pair sums `20.99`–`30.02`, far *above*
   `2√32`, and since computed volumes are upper bounds it is neither support nor counterexample.

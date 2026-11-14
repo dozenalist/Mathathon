@@ -3498,3 +3498,55 @@ not read a coincidence into it.
 
 *Status.* `PROVED` reduction (item 1 is compactness plus `C112`); no number, no bound. `PENDING_REVIEW`
 with the rest of the pair chain. Reviewer X.
+
+### K15-C115 — the primary-source equality case, verified (`AUDITED`)
+
+Review 0523 asked for "the **actual primary-source** equality case". Previous blocks cited
+Hales–McLaughlin's equality case from memory. It is now read from the paper and quoted here.
+
+**Source.** T. C. Hales and S. McLaughlin, *The Dodecahedral Conjecture*, 6 pages,
+`https://www.cs.cmu.edu/~seanmcl/papers/McLaughlin-Dodec.pdf`, retrieved this block,
+`sha256 beab1f4a6c41bfe02c719db3f16cd3a78c9a6666f3fe7b91fe3c72f939ef6960`, 2 675 648 bytes.
+`pdftotext -layout` gives 139 128 bytes of text; the quotations below are from the extracted
+text and were checked against the page image of p. 2.
+
+**The equality case, verbatim (Introduction, p. 2).**
+
+> *"The assertion can then be stated as the inequality*
+> `vol(Ω(Λ, v)) ≥ vol(Ω(Λ_dod, 0))`
+> *for every `v ∈ Λ`, and for every set of points `Λ ⊂ R³` whose pairwise distances are at least
+> the diameter 2. **The case of equality occurs exactly when `Ω(Λ, v)` is congruent to a regular
+> dodecahedron of inradius 1.**"*
+
+Three things this settles, all of which the ledger had been assuming:
+
+1. **The equality case is an "exactly" statement**, not merely that the dodecahedron attains the
+   bound. `C108` step (3) needs `vol Ω = V_dod ⟹ Ω` is a regular dodecahedron of inradius 1, and
+   that is exactly what the source says. **Theorem D's dependency is verified, not assumed.**
+2. **The quantification is over arbitrary 2-separated point sets**, not over packings with a
+   density — `"every set of points Λ ⊂ R³ whose pairwise distances are at least 2"`. That is
+   precisely the setting of `C108`, which minimises over 2-separated configurations rather than
+   over packings. No bounded-density or saturation hypothesis is smuggled in.
+3. **The extremal object is the 13-point configuration** — *"a finite packing `Λ_dod` (of twelve
+   balls and a thirteenth at the origin) obtained by placing a point of `Λ_dod` at the center of
+   each face of a regular dodecahedron (of inradius 2)"* — i.e. twelve centres at distance exactly
+   `2` in the icosahedral directions, which is the configuration `C069`, `C095` and `C112` all
+   work with.
+
+**A second, independent equality source for the same fact.** §4 quotes Fejes Tóth's reduction:
+
+> **Theorem 4.1.** *"Let `P` be any polyhedron with at most 12 faces that contains a unit sphere
+> `S²`. … The volume of the intersection of `P` with `B` is at least `ω_dod`. Equality holds
+> exactly [when] `P` is congruent to the regular dodecahedron `Ω(Λ_dod, 0)`."*
+
+So for cells with **at most 12 faces** the equality case is Fejes Tóth's theorem — a statement
+about *all* polyhedra containing a unit sphere, not about Voronoi cells at all. The paper also
+records that `t_dod = 3 tan(π/5) ≈ 1.258` is the truncation radius and that the conjecture is
+proved by combining this with the general case.
+
+**What this does *not* give.** No quantitative stability: neither the introduction nor Theorem 4.1
+bounds how far from a dodecahedron a cell may be while staying within `V_dod + ε`. So `δ₀` in
+`C108` remains non-explicit, and `G11`/`G14` are unaffected. The verification removes an
+assumption from Theorem D's ledger entry; it does not add a number.
+
+*Status.* `AUDITED` (source read, quoted, hashed). Reviewer X.
