@@ -430,6 +430,26 @@ Done deliberately against Main's own work, since a referee will look here first.
   if the equality case of Hales–McLaughlin were not "iff regular dodecahedron", step (3) fails
   and D with it. Flagged as the place a referee should push.
 
+## 4.1b The compactness is explicit, just not small
+
+Theorem D's step (2) is a compactness argument, but the admissible set it compactifies is a
+*concrete finite object*, and it is worth recording the size so a future block knows what it
+would be attacking. Using E's witness to bound the infimum, `σ₀ ≤ 11.4482581505`, every cell at
+a minimiser has volume `≤ 11.4483`, hence (cone estimate) circumradius `≤ 3σ₀/π = 10.932`, hence
+both cells are determined by the centres within `2·10.932 = 21.865`, and a 2-separated set in
+`B(0,21.865)` has at most `(21.865)³ ≈ 10453` points.
+
+So:
+
+> **The minimiser of the pair functional is a configuration of at most `≈1.05×10⁴` points in an
+> explicit ball of radius `≈22`** — a finite search problem, not an abstract limit.
+
+That is a genuine step toward explicitness and it is *not* enough: a `10⁴`-point search is far
+beyond an exhaustive check, and the bound would improve only by replacing the cone estimate with
+something that uses how close the cells are to dodecahedral — which is exactly the stability
+information that is missing. Recorded so that the gap between "compactness" and "computation" is
+visible rather than rhetorical.
+
 ## 4.2 The two things that would make it a bound
 
 - **An explicit `δ₀`.** This is precisely E's "payer" problem in a different guise. Careful
