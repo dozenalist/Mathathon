@@ -995,3 +995,20 @@ dependency, so `Main` can integrate from the top down.
 
 **What is *not* an obligation.** The `S - D` magnitudes, the `4.733968`/`8.167277` bounds, and
 the `470-880` slack are withdrawn (`K15-E062`) and should not appear in any integration record.
+
+### 9.6 A15 cell volume is buffer-independent
+
+A final robustness check on the A15 fixture: the cell volume of a fixed interior site,
+computed with three different bounding buffers (`1500` points at radius `30`, `3000` at `40`,
+`6000` at `60`):
+
+```
+nbuf= 1500  R=30   volume = 7.812500000000
+nbuf= 3000  R=40   volume = 7.812500000000
+nbuf= 6000  R=60   volume = 7.812500000000       125/16 = 7.812500000000
+```
+
+Identical to twelve decimal places and equal to the exact rational `125/16`. That rules out the
+failure mode that ruined the earlier fixtures — a volume that drifts with the buffer because the
+cell is really unbounded — and it is the check that the *flag* in Section 5 was designed to make
+unnecessary but which is still worth having for a fixture whose cells are genuinely bounded.
