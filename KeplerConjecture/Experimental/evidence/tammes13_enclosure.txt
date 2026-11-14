@@ -20,6 +20,9 @@ rho = 2.05 : cos(theta_min) = 881/1681 = 0.524092801903628835
 rho = 2.09 : margin = 4.939817e-04  (>0 CERTIFIED)
 Both radii certified against the same bracket on a*, with no floating estimate.
 
+CONTROL rho = 2.0 : cos(theta_min) = 1/2 exactly ; margin = 4.262901e-02
+   CERTIFIED -> at most 12 centres in [2,2], i.e. the kissing number (Schutte-van der Waerden)
+
 delta_13 < 57.138726938 deg   (rigorous upper bound)
 theta_min   > 57.170897332 deg   (rigorous lower bound, rho=2.09)
 theta_min(2.05) > 58.392803861 deg   (rigorous lower bound, rho=2.05)

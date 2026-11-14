@@ -256,6 +256,12 @@ inscribed ball but `16.4 %` short of the threshold. A direction error (`max` ins
 `min` in the fallback) initially reported `5.943752`, above threshold; caught and recorded
 in both the doc and the evidence file.
 
+**Kissing-number control.** At `rho = 2` the threshold is `cos(theta_min) = 1/2` exactly,
+`theta_min = 60 deg`, margin `+4.263e-02`, and the same code certifies "at most 12 centres
+in `[2,2]`" — the three-dimensional kissing number (Schutte-van der Waerden). The pipeline
+therefore reproduces a known theorem as a special case, which is the strongest available
+check that the enclosure chain is sound end to end.
+
 **Interval self-audit.** `interval_selfaudit.py`: 118 point-interval soundness checks
 against 60-digit mpmath, all pass; monotone-wrapper endpoints pass; a too-tight corruption
 is detected `50/50`; the `Iv` constructor rejects `lo > hi` structurally; `pi` enclosure

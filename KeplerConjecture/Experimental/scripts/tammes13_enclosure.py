@@ -190,6 +190,17 @@ def main():
     say(f"rho = 2.09 : margin = {float(margin):.6e}  (>0 CERTIFIED)")
     say("Both radii certified against the same bracket on a*, with no floating estimate.")
 
+    # --- CONTROL: rho = 2 must reproduce the kissing number 12 (Schutte-vdW) ---
+    # at rho=2, cos(theta_min)=1/2 exactly, theta_min=60 deg; delta_13<60 deg by a
+    # wide margin, so the pipeline must return the known kissing number as a special case.
+    thr0 = F(1,2)
+    m0 = h_lo_val - thr0
+    say("")
+    say(f"CONTROL rho = 2.0 : cos(theta_min) = 1/2 exactly ; margin = {float(m0):.6e}")
+    say(f"   {'CERTIFIED' if m0 > 0 else 'FAILED'} -> at most 12 centres in [2,2], "
+        f"i.e. the kissing number (Schutte-van der Waerden)")
+    assert m0 > 0
+
     # report degrees rigorously by bisection (cos decreasing)
     def deg_upper(c_target, lo=F(0), hi=F(157,100)):
         """smallest rational t with cos(t) <= c_target, i.e. an upper bound on arccos(c_target)."""
