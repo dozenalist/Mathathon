@@ -14,7 +14,8 @@ MOVES      insert a random 2-separated point in the annulus; delete a random poi
 RESOURCE CAP  one CPU, <= 1 GiB, hard wall-clock cap (default 300 s, max 600 s).
 All reported volumes are UPPER bounds for any packing containing the set, so a
 FAILURE (S-D < 0) refutes (T')/(H_R) for that set; success does not certify.
-Status: TESTED_FINITE.
+Status: TESTED_FINITE.  (The cache key was fixed after the first run: the original
+(len, |P|_1) key collides and returns stale scores.)
 
 Run: python3 Experimental/scripts/dense_completion_search.py --seconds 120
 """
@@ -29,9 +30,15 @@ def sep_ok(P, p, tree):
     return tree.query(p)[0] >= 2.0-1e-9
 
 _CACHE={}
+def _key(P):
+    """Collision-resistant key for a point set.  An earlier version used
+    (len(P), |P|_1), which collides for similar sets and silently returned stale
+    scores; a rounded coordinate hash is used instead."""
+    return (len(P), hash(np.round(P,9).tobytes()))
+
 def score(P):
     """Voronoi volumes; cached on the point-set hash since it dominates runtime."""
-    key=(len(P), float(np.abs(P).sum()))
+    key=_key(P)
     if key in _CACHE: return _CACHE[key]
     vol,touched=BE.vor_volumes(P)
     if touched[:13].any():
