@@ -552,9 +552,12 @@ every `U` and the fixture is no evidence at any `Φ`.
 
 ### K15-X-C024 — Theorem 1 and the threshold formula, decided in exact arithmetic
 
-`Reviews/audit_cutflow_repair.py` §E: 196 random small instances (`n ≤ 5`, `b ∈ {−2..2}⁵`,
+`Reviews/audit_cutflow_repair.py` §E: 297 random small instances (`n ≤ 6`, `b ∈ {−2..2}ⁿ`,
 `Φ ∈ {0,1,2,3}`, random `F ⊆ V`) decided by **Fourier–Motzkin elimination over ℚ** agree with the
-cut condition in every case (`0/196`). Combined with §D (115 instances via HiGHS and via
+cut condition in every case (`0/297`; one further instance undecided by the blow-up guard). A fixed
+elimination order ran out of memory at `n = 6`; a min-cost order fixed it. Two earlier versions of
+the routine were also wrong (a sign convention, then a premature contradiction test) and were
+caught by this same comparison. Combined with §D (115 instances via HiGHS and via
 `Φ ≥ t*`), Theorem 1's statement and the threshold formula are verified against two independent
 decision procedures, one of which uses no floating point at all.
 

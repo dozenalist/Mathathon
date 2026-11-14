@@ -146,10 +146,10 @@ import random
 random.seed(20261114)
 bad_n = 0; n = 0
 for trial in range(120):
-    k = random.choice([2,3,4,5])
+    k = random.choice([3,4,5,6])
     G = [[] for _ in range(k)]
     for i, j in itertools.combinations(range(k), 2):
-        if random.random() < 0.55: G[i].append(j); G[j].append(i)
+        if random.random() < 0.45: G[i].append(j); G[j].append(i)
     b = [random.randint(-2, 2) for _ in range(k)]
     Fset = set(range(k)) if random.random() < 0.6 else {i for i in range(k) if random.random() < 0.6}
     if not Fset: continue
@@ -167,54 +167,63 @@ ck("120 random instances: C == LP == (Phi >= t*)", bad_n == 0, "%d/%d mismatches
 
 
 # ---------------------------------------------------------------- exact feasibility (no floats)
-def fm_feasible(G, b, Fset, Phi):
+def fm_feasible(G, b, Fset, Phi, cap_cons=3000):
     """Decide {A phi >= b on F, |phi_e| <= Phi_e} in EXACT rational arithmetic by
     Fourier-Motzkin elimination.  No LP solver, no tolerance, no float anywhere.
 
     A constraint is (coeffs: dict var->Fraction, rhs: Fraction), meaning
         sum coeffs[i]*x_i >= rhs .
+    The variable to eliminate is chosen to minimise |pos|*|neg| (a min-cost order keeps the
+    constraint count from exploding; with a fixed order n = 6 ran out of memory).  None means
+    "undecided" (the blow-up guard fired), and callers must skip it rather than count it.
     """
     E = [e for e in edges_of(G) if e[0] in Fset or e[1] in Fset]
     if not E:
         return all(b[v] <= 0 for v in Fset)
     cons = []
     for v in sorted(Fset):                       # div_phi(v) >= b(v),  x_e = phi(e0,e1)
-        d = {}
-        for e in E:
-            if e[0] == v: d[e] = F(1)
-            elif e[1] == v: d[e] = F(-1)
+        d = {e: (F(1) if e[0] == v else F(-1)) for e in E if v in e}
         cons.append((d, F(b[v])))
     for e in E:                                  # -Phi <= x <= Phi
         cons.append(({e: F(1)}, -F(Phi[e])))
         cons.append(({e: F(-1)}, -F(Phi[e])))
-    for k in E:
+    left = set(E)
+    while left:
+        best = None
+        for k in left:
+            npos = sum(1 for (c, _) in cons if c.get(k, F(0)) > 0)
+            nneg = sum(1 for (c, _) in cons if c.get(k, F(0)) < 0)
+            if best is None or npos*nneg < best[0]: best = (npos*nneg, k)
+        _, k = best
         pos = [(c, r) for (c, r) in cons if c.get(k, F(0)) > 0]
         neg = [(c, r) for (c, r) in cons if c.get(k, F(0)) < 0]
-        zer = [(c, r) for (c, r) in cons if c.get(k, F(0)) == 0]
-        newcons = list(zer)
+        newc = [(c, r) for (c, r) in cons if c.get(k, F(0)) == 0]
         for (cp, rp) in pos:
             ap = cp[k]
             for (cn, rn) in neg:
                 bn = cn[k]
-                r = (-bn)*rp + ap*rn            # (-b)(a x + P >= A) + a(b x + Q >= B)
-                c = {}                          #   =>  (-b)P + aQ >= (-b)A + aB
-                for i in list(cp.keys()) + list(cn.keys()):
+                r = (-bn)*rp + ap*rn          # (-b)(a x + P >= A) + a(b x + Q >= B)
+                c = {}                        #   =>  (-b)P + aQ >= (-b)A + aB
+                for i in set(cp) | set(cn):
                     if i == k: continue
-                    v = (-bn)*cp.get(i, F(0)) + ap*cn.get(i, F(0))
-                    if v != 0: c[i] = v
-                newcons.append((c, r))
-        for (c, r) in newcons:                  # an empty row is unconditional: 0 >= r
-            if not c and r > 0: return False
-        cons = [(c, r) for (c, r) in newcons if c]
-    return all(not (len(c) == 0 and r > 0) for (c, r) in cons if True) if cons else True
+                    val = (-bn)*cp.get(i, F(0)) + ap*cn.get(i, F(0))
+                    if val != 0: c[i] = val
+                if not c:
+                    if r > 0: return False    # unconditional contradiction
+                else:
+                    newc.append((c, r))
+                if len(newc) > cap_cons: return None
+        cons = newc
+        left.discard(k)
+    return all(r <= 0 for (c, r) in cons)
 
 print("="*86); print("E. The same instances, decided in exact arithmetic (Fourier-Motzkin)"); print("="*86)
-bad_n, n = 0, 0
-for trial in range(200):
-    k = random.choice([2,3,4,5])
+bad_n, n, und = 0, 0, 0
+for trial in range(300):
+    k = random.choice([3,4,5,6])
     G = [[] for _ in range(k)]
     for i, j in itertools.combinations(range(k), 2):
-        if random.random() < 0.55: G[i].append(j); G[j].append(i)
+        if random.random() < 0.45: G[i].append(j); G[j].append(i)
     b = [random.randint(-2, 2) for _ in range(k)]
     Fset = set(range(k)) if random.random() < 0.6 else {i for i in range(k) if random.random() < 0.6}
     if not Fset: continue
@@ -222,11 +231,13 @@ for trial in range(200):
     uPhi = {e: F(Phi) for e in edges_of(G)}
     ok, _ = cut_holds(G, b, Fset, uPhi)
     ex = fm_feasible(G, b, Fset, uPhi)
+    if ex is None: und += 1; continue
     n += 1
     if ok != ex:
         bad_n += 1
         print("    mismatch:", G, b, sorted(Fset), Phi, "cut=%s FM=%s" % (ok, ex))
-ck("200 random instances: exact FM == cut condition", bad_n == 0, "%d/%d mismatches" % (bad_n, n))
+ck("300 random instances (n<=6): exact FM == cut condition", bad_n == 0,
+   "%d/%d mismatches, %d undecided (guard)" % (bad_n, n, und))
 
 print("="*86)
 print("RESULT:", "ALL PASS" if not FAIL else "FAILURES: %s" % FAIL)

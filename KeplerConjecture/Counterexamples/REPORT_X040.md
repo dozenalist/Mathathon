@@ -35,12 +35,17 @@ steps by hand. It exits 0 only if everything passes; it does.
 **Randomised cross-check, twice, once without floats.** On 115 random small instances (n ≤ 5,
 `b ∈ {−2..2}⁵`, `Φ ∈ {0,1,2,3}`, random `F`) the three answers agreed every time:
 `(C) ⟺ LP feasible ⟺ Φ ≥ t*`. I then replaced the LP by **exact Fourier–Motzkin elimination**
-over ℚ on 196 instances (same generator, larger sample): `0/196` mismatches. So Theorem 1 and the
-threshold formula are now confirmed against an *exact* decision procedure, not a solver with
-tolerances — which matters, because the project has already lost three rounds to
-float-decided checks. The FM routine is 30 lines and shares no code with either the cut scan or
-the LP; my first two versions of it were wrong (a sign convention, then a premature
-"contradiction" test), and both were caught by exactly this comparison.
+over ℚ on 297 instances with `n ≤ 6` (one undecided by a blow-up guard): **0 mismatches**. So
+Theorem 1 and the threshold formula are confirmed against an *exact* decision procedure, not a
+solver with tolerances — which matters, because the project has already lost three rounds to
+float-decided checks.
+
+The FM routine is 30 lines and shares no code with the cut scan or the LP, and its own history is
+worth recording because it shows what the comparison is for: my first version had a sign
+convention backwards (99/196 wrong), the second declared a "contradiction" too early (a nonempty
+residual constraint was mistaken for an unconditional one, 12/196 wrong), and the third used a
+fixed elimination order that ran out of memory at `n = 6`. Each was caught by exactly this
+cross-check, not by reading the code.
 
 **The thing to try to break.** One instance does need both threshold branches at once, so the
 formula's shape is load-bearing rather than cosmetic: take the star of §5(b′) (`b = (4,−4/3,−4/3,−4/3)`,
@@ -345,7 +350,7 @@ one.
 | `X-C021` | The height of `X_C017` is lcm blow-up of mutually coprime term denominators (each `≤ 17` digits, lcm `118` digits), not the pivot block; dyadic rounding at `S = 8` removes it. Coarser than `10⁻⁶` breaks `A`'s forced margin. | **VERIFIED** by the table in §2 |
 | `X-C022` | No small-denominator both-sides triple exists in the `S = 8` basis: the frontier over `ε_AB` shows every sub-2,646-byte certificate is worse than `X-C016`, and the digit floor is ~12–13 (from `S⁻¹⁰`) plus the grid's resolution. | **VERIFIED**, table in §2.1 |
 | `X-C023` | C's four `cut_flow.py` defects reproduce portably (`7/7`) from a byte copy of blob `700e44f6`, unchanged at the current `comp` tip. | **VERIFIED**, `Reviews/repro_c_cutflow_defects.py` |
-| `X-C024` | Theorem 1 and the threshold formula are confirmed against exact Fourier–Motzkin elimination over ℚ (`0/196` mismatches), in addition to the LP (`0/115`). | **VERIFIED**, §E of the audit script |
+| `X-C024` | Theorem 1 and the threshold formula are confirmed against exact Fourier–Motzkin elimination over ℚ: `0/297` mismatches at `n ≤ 6` (1 undecided by the blow-up guard), in addition to the LP (`0/115`). | **VERIFIED**, §E of the audit script |
 | `X-C025` | Main's `η ≥ 0` guard (`5caa1c9`) closes the §17 witness and leaves the `η = 0` control at `0.780370311`; C's solver already had `−η ≥ 0` since `4bcbd3a`, so the witness is synthetic and the exposure was the checker's licence only. | **VERIFIED**, `Reviews/verify_eta_closed.py` |
 | `X-C026` | `5caa1c9` passes 3,600 further random-family queries with 0 wrong verdicts (plus targeted and near-touching families). | **VERIFIED** |
 | `X-C027` | The readable verifier rejects all three tampered certificates and accepts the honest one; the `10⁻⁶` perturbation is invisible to a float comparison of the bound and is caught only by the exact identity. | **VERIFIED**, `Reviews/negative_control_readable.py` |
