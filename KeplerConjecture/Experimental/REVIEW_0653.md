@@ -271,3 +271,63 @@ donnée, renferment le plus grand volume*, Bull. Acad. Sci. St. Pétersbourg **1
 above and records `f = 4, 6, 12` as the equality cases. **Not verified in the original**: I have
 the secondary statement only, and a referee should confirm that Lindelöf's theorem is stated for
 polyhedra circumscribed about a sphere with the equality cases as quoted.
+
+---
+
+## 8. The thirteen-face case, stated exactly
+
+With the premise proved (§7), the only remaining gap on the pair route at the icosahedral pair is
+completions with **thirteen or more faces**. It is worth recording exactly what it would take,
+because the numbers say the obstruction is in the *area* bound rather than in the volume bound.
+
+Same lemma, thirteen faces, `J` the five ring faces:
+
+```
+vol Ω(w1)  =  vol D'' + 5(b−1)·mean_t A_ring(t) ,      D'' has thirteen faces at distance >= 1,
+5(b−1)     =  0.257311121  per unit of area.
+```
+
+The thirteen-face base is at most `5.498284` (the icosahedral twelve plus one extra face at
+distance `1`, measured in `REVIEW_0608` §11.1), so
+
+```
+(P') for thirteen faces  <=  vol D'' + 0.257311·A_min  >=  5.763417
+                         <=  A_min >= (5.763417 − 5.498284)/0.257311 = 1.030400
+                            and  vol D'' >= 5.498284 .
+```
+
+| ingredient | today | needed |
+| --- | --- | --- |
+| provable `A_min` (uncut disk, worst point of the path) | `0.868315` | `1.030400` |
+| true `A_min` in the configurations measured | `1.249 – 1.276` | — |
+| thirteen-face base bound `vol D''` | none (Lindelöf's `n = 13` value is below `V_dod`) | `5.498284` |
+
+**So the gap is not in the geometry but in the certificate of one number.** The uncut-disk
+argument gives `0.868`; the true ring faces have area `1.25`, comfortably above the `1.030` the
+argument needs. The disk bound is lossy because it takes the worst single admissible neighbour
+independently of the others: it ignores that the cutting centres are 2-separated *from each
+other*, so the ones that would cut the same face at the worst angle cannot all be present. Making
+that quantitative is the concrete next step, and it is a finite sphere-packing question about
+five caps, not an analytic one.
+
+## 9. Hashes and reviewer obligations
+
+```
+source read        e71a1779bddaa47693b153106af6ee8521af9ab6
+repaired verifier  Experimental/scripts/cell_certificate.py   (W1-W4 + volume contract)
+region certifier   Experimental/scripts/certify_region_v2.py
+pilot request      Experimental/COMPUTE_REQUEST_0653.md
+ledger             K15-E099 (theorem modulo Lindelöf), K15-E100 (the Lindelöf input)
+                   K15-E091/E094' pending re-certification with the exact radius
+```
+
+**For X, in order.** (1) Witness W3 — three coplanar normals must be *refused*; the old helper
+returned `(True, 1, 1)`. (2) Witness W4 — the exact inradius on the cube's normals must be
+`1/√3`; there is no mesh and no epsilon left in the radius path. (3) The volume contract —
+octahedron `4/3`, box `2×3×4 = 24`, coplanar normals refused. (4) The retraction in §3: confirm
+that the offending 12-tuple is unbounded and that `0.707055 < 4π/3`. (5) The Lindelöf citation —
+**secondary source only**, and the original should be checked before the twelve-face theorem is
+quoted as unconditional.
+
+**Pending, and not to be quoted:** the region certificates of `K15-E094'` (computed with the
+mesh-based radius), and any universal pair claim. Twelve faces is a class, not all completions.
