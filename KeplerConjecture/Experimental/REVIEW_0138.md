@@ -484,8 +484,8 @@ follow-up rather than claim it.
    per-cell bounds and collective arguments are all still open.
 
 Nothing here closes the geometric route, and nothing here should be read as showing the route is
-promising. The deliverable of this block is an auditable target, two runnable evaluators, and one
-retraction.
+promising. The deliverable of this block is an auditable target, six runnable evaluators behind a
+single reproduction command, one proved transfer theorem, and one retraction.
 
 ## 8. Result of the dense-completion search (`K15-EXP-005`)
 
