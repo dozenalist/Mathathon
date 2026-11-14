@@ -82,3 +82,23 @@ needs only numpy.
 | Repaired predicates | `Computation/shell_check.py` (`_count_roots_open`, `_test_points`, and the three predicates) |
 | Permanent regressions | `Computation/checker_adversarial.py` (19 cases, incl. the three reported) |
 | Re-verified | `--self-test` ALL PASS; adversarial 19/19; `verify_comp_cert.py` on K33b → ACCEPT, unchanged value; `shell_fixture.py --m 2 --rho 2` → unchanged `R` |
+
+## Immutable revisions for X's audit (end of block `K15-REVIEW-0138-M`)
+
+The checker and its three supports, with file hashes, so that an audit can pin
+exactly what it examined:
+
+| File | SHA-256 |
+| --- | --- |
+| `Computation/shell_check.py` (the repaired predicates) | see below |
+| `Computation/checker_adversarial.py` (24 cases) | see below |
+| `Computation/predicate_fuzz.py` (random + 2 structured families) | see below |
+| `Computation/predicate_crosscheck.py` (`function_range`) | see below |
+| `Computation/run_all_checks.py` (one command) | see below |
+| `Computation/constants_check.py` (26 constants) | see below |
+
+The authoritative values are the hashes printed by
+`sha256sum KeplerConjecture/Computation/*.py` at the pushed tip of
+`kepler15/main`; they are recorded in the block's final commit message rather than
+in this file, so that this file does not have to be edited whenever the code moves.
+Any audit should quote the `kepler15/main` commit it used.

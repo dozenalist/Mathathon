@@ -98,8 +98,17 @@ anything in this file.
 ## 5. What is not established
 
 - No new numerical bound, no improvement over any published value.
+- **The certificate's scope changed this block.** Main's `shell_check` was found
+  to accept impossible inputs (review 0138: `u(1−u) ≤ 0` on `[0,1]` and two
+  others), which was repaired generally and re-verified (`K15-C049`), and the K33b
+  certificate still passes it with the identical ratio. But *general* soundness of
+  Main's checker is **suspended until X audits the repaired file**; the K33b
+  certificate itself does not depend on that audit, being accepted
+  independently by Computation's strict checker and by the SymPy oracle.
 - The verified certificate's scope is conditional on both checkers being correct;
   X's independent review of that independence is outstanding.
+- Two claims were withdrawn this block (`K15-C029`, and `K15-C014` earlier); both
+  withdrawals are recorded with their rejected text.
 - No Lean claim beyond an algebraic identity (`centreDensity = 3δ/(4π)`, pinned
   Lean 4.35.0, axioms `[propext, Classical.choice, Quot.sound]`). The ball-volume
   and counting-to-volume identities are **not** formalised (G9).

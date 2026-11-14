@@ -838,9 +838,11 @@ geometric route produces: a candidate profile ⇒ run `exactcert` and
   rejected — and that is exactly the shape of a CE optimum, where `f(2) = 0` is
   forced by the equality case. The earlier checker would have rejected every
   tight certificate while accepting only slack ones.
-- **Fix.** Sign changes are now counted on the **odd part** of the polynomial
-  (`sqf_list`, keep factors of odd multiplicity), with endpoints tested for the
-  required sign, and `≤` (not `<`) as the verdict. Regression cases are now
+- **Fix (SUPERSEDED by K15-C058, which found three new witnesses against it).**
+  The first repair counted sign changes on the **odd part** and probed endpoints
+  and midpoint; that is unsound for perfect squares, where every root has even
+  multiplicity. The current algorithm uses the polynomial's own roots (see
+  K15-C058). Regression cases are now
   permanent in `--self-test` §S4: `(u−5)² ≤ 0` on `[0,10]` must FAIL,
   `−(u−5)² ≤ 0` must PASS, `u² ≥ 0` on `[0,∞)` must PASS, `u−1 ≥ 0` must FAIL.
 - **Effect on the earlier result.** C's K33b certificate is still `ACCEPT` with
@@ -1265,13 +1267,15 @@ auditing Main's own repair, so an outside check is still required).
   `3, 4, 6, 9`) and completion-independent whenever the completion keeps distance
   `≥ 2·1.2584 = 2.5168` from the centre. That is an independent numerical
   confirmation of `K15-C012` and a useful sanity check on the whole cell pipeline.
-- **Not robust, and corrected here.** The *cluster sums*
+- **Not robust, and corrected twice.** The *cluster sums*
   `Σ_{v∈K}(vol Ω_K(v) − √32)` are dominated by the cavity between the core and the
-  completion, not by the cluster: with a dense fcc completion at distance `≥ 2.52`
-  the sum is `+54.40`; with the sparse nested completions of the first run it went
-  `+157.87 → +63.71 → +17.91`. The *trend* (decreasing as more points are added)
-  is the monotonicity of `K15-E003`/`K15-C036` and is real; the *values* carry no
-  information about the clubster inequality in a packing.
+  completion. With completions now **validated** to be packings (minimum over *all*
+  pairs, including core–background, is `2.0000`), the nested sequence is
+  `+157.87 → +63.71 → +63.71`. The original table (`… → +17.91`) came from
+  completions that **overlapped the core** (minimum separation `1.25`) and was
+  therefore meaningless. The *trend* (non-increasing as points are added) is the
+  monotonicity of `K15-E003`/`K15-C036` and is real; the values carry no
+  information about the cluster inequality in a packing.
 - **What the fixture therefore establishes.** (i) `V_dod = 5.550291` numerically;
   (ii) nested completions shrink cell volumes monotonically, so every finite value
   is an upper bound and no finite stage decides the sign — the numerical form of
@@ -1469,7 +1473,7 @@ After C advanced to `5c102677…`, Main re-ran both checks:
 So the interface (`K15-C023`, `K15-C031`) survives C's updates; nothing in the
 last two blocks' verification was version-specific.
 
-### K15-C049 — sign predicates falsely accepted positivity between endpoint roots (`REFUTED`, repaired, re-verified)
+### K15-C049 — sign predicates falsely accepted positivity between endpoint roots (`REFUTED`; algorithm SUPERSEDED by `K15-C058`)
 
 - **The defect (reported by local reproduction at `6626714`).** The three
   predicates `le_on_interval`, `nonneg_on_half_line`, `_ray` returned `True` for
@@ -1617,4 +1621,235 @@ last two blocks' verification was version-specific.
   published general form `3(R+1)⁵ = 845.11` sits between them. So the shell count
   buys **15% off** the general constant at the widest certified range (not a
   factor of two, because `3(R+1)⁵` mixes the `k_R` and shell factors).
+- **Quantitative footprint of a hypothetical transfer.** Combining the two
+  constraints: the icosahedral vertex forces `Φ ≥ 0.00888` (12 neighbours) and the
+  negligibility constant at `R = 2.09` is `C₁/Φ = 718.40` (this lemma), so
+  `C₁ ≥ 6.38` for any transfer that works there. Lemma 3.3 then gives
+  `δ(x,r,Λ) ≤ π/√18 + C/r` with `C` of order a few — i.e. **a transfer
+  construction would have a usable rate**, unlike a construction that needs a huge
+  `Φ`. Nothing here assumes such a transfer exists.
 - **Status.** `PROVED` (immediate from `K15-E014`). Reviewer X.
+
+### K15-C055 — independent cross-check of the repaired predicates via `function_range` (`VERIFIED`)
+
+- **Artifact.** `Computation/predicate_crosscheck.py`. SymPy's `function_range`
+  computes the exact range of a polynomial on an interval by a **different route**
+  (critical points plus endpoints, no Sturm chain), so agreement is real evidence
+  that the repaired `K15-C049` predicates are right.
+- **Result.** Five fixed cases (the three reported defects, `u(u−1) ≤ 0` on
+  `[0,1]` which must PASS, and `(u−5)² ≤ 0` on `[0,10]` which must FAIL) all agree
+  with `sup` values `1/4, 0, 0, 1/4, 25`; plus 20/20 random degree-≤3 polynomials
+  on compact intervals, zero disagreements.
+- **Combined with `K15-C050`** (differential fuzz on half-lines, 799 cases, zero
+  false accepts), the repaired predicates now have three independent supports: the
+  mathematical argument, `function_range`, and sampling. That is as much as can be
+  done without X's audit.
+- **Reproduce.** `python3 Computation/predicate_crosscheck.py` (0.6 s).
+- **Status.** `VERIFIED`. Reviewer X.
+
+### K15-C056 — both K33 variants pass the repaired checker, values match C's report (`VERIFIED`)
+
+- `verified_certificate_K33.json` (variant a): `ACCEPT`, ratio
+  `57247406970676848810768955/307445740617578019715085691 = 0.186203285353`,
+  `Δ ≤ 0.779966497784`.
+- `verified_certificate_K33b.json` (variant b): `ACCEPT`,
+  `Δ ≤ 0.779966216777`.
+- Both agree with Computation's own reported pair (`0.77996650` / `0.77996622`
+  from their PROGRESS), which is an independent confirmation of *their* numbers
+  through Main's repaired checker and of *Main's* checker through known-good data.
+- Neither is an improvement on CE03 (`0.779747`); both are `VERIFIED_CROSS`-grade
+  components at their stated scope.
+
+### K15-C057 — E's interval self-audit re-run by Main (`PASSED`; method worth copying)
+
+- **Run.** `Experimental/scripts/interval_selfaudit.py` (branch
+  `kepler15/experimental/run-01`, `4ea4e8b`, cwd set so that its relative import
+  of `Experimental/scripts/tammes13_enclosure.py` resolves).
+- **Result.** `118` point-interval soundness checks with `0` failures; monotone
+  wrapper endpoints `0` failures; a **deliberately corrupted** primitive
+  (swapped endpoints) detected in `50/50` intervals; the constructor rejects
+  `lo > hi`; `333/106 < π < 355/113` confirmed.
+- **Why it matters beyond E's own use.** The audit has two halves —
+  *soundness* (enclosures contain the true value, checked against high-precision
+  arithmetic) and *sensitivity* (a known corruption **must** be caught). That
+  second half is exactly what was missing from Main's sign-predicate tests, which
+  passed while the predicates were unsound (`K15-C049`). Recommend the pattern for
+  every checker in this project: a test suite is not evidence unless it can fail.
+- **Status.** `PASSED` (Main re-ran it; E wrote the audit, so this is a
+  reproducibility check plus a methodological endorsement, not independence).
+  Reviewer X.
+
+### K15-C028 addendum 2 — the `η > 0` path passes exactly (vacuous, as predicted)
+
+After the `K15-C049` repair, the fixture's shell family was exercised end-to-end
+with a genuine allowance: `--m 2 --rho 209/100 --eta 3` returns **all conditions
+PASS** and the exact bound
+`R = (p(0)+12η)/q(0) = 52574263623381858614976224187487229/4074263623381858614976224187487229
+= 12.90399`, i.e. `Δ ≤ 54.052` (rational `π` enclosure).
+
+This is the first *passing* exact shell-allowance certificate in the project — and
+it is vacuous by construction, because the allowance costs `12η = 36` in a
+functional whose useful range is below `0.2`. That is the whole content of
+`K15-C028`: the machinery works; the trade is hopeless at low degree, and
+`K15-C036`-style sampling cannot tell whether it improves at high degree.
+
+### K15-C058 — SECOND-round predicate defect: perfect squares defeat the odd part (`REFUTED`, repaired; supersedes C049's algorithm)
+
+- **What was still wrong.** After the `K15-C049` repair, three *new* witnesses were
+  found by fixed probes:
+  1. `[u(u−1/2)(u−1)]² ≤ 0` on `[0,1]` returned `True`, though the value at `1/4`
+     is `+9/4096`;
+  2. `−[u(u−1)(u−1/2)(u−2)]² ≥ 0` on `[0,∞)` returned `True`, though the value at
+     `1/4` is `−441/65536`;
+  3. `[u(u−1)(u−2)]² ≤ 0` on `[0,∞)` returned `True`, though the value at `1/2` is
+     `+9/64`.
+- **Root cause.** The `C049` algorithm decided the sign from the **odd part** and,
+  when the odd part had no root in the region, probed only `lo`, `(lo+hi)/2`, `hi`.
+  For a perfect square every factor has even multiplicity, so the odd part is a
+  **constant**: the count is zero and the three probes can all land exactly on
+  roots (indeed `0, 1/2, 1` are the roots of the first witness). Concluding "sign
+  constant, probes ≤ 0, accept" was then wrong. The earlier code comment claimed
+  "three roots at these points ⇒ `p ≡ 0`", which is false for degree ≥ 4.
+- **The repair (algorithm changed, not patched).** The odd part is **removed
+  entirely**. Test points now come from the roots of the polynomial *itself*:
+  isolate all real roots in the region, and evaluate at the endpoints plus one
+  rational point in every gap between consecutive roots (and two more per gap for
+  safety). A root is a test point with value `0`, so touching cases pass, and a
+  gap always carries a point where the sign is decided. `_odd_part` and
+  `_count_roots_open` are deleted from `shell_check.py`.
+- **Regressions kept permanently** (`Computation/checker_adversarial.py`, now 24
+  cases): the three new witnesses, a variant on `[2,3]` where the square is
+  positive, and `−[u(u−1)(u−2)]² ≤ 0` on `[0,3]` which must PASS.
+- **Re-verified after the second repair.** All six witnesses (three old, three new)
+  rejected; all valid/touching cases accepted; suite 24/24; the K33b and K33
+  certificates still `ACCEPT` with unchanged ratios; `shell_fixture` unchanged;
+  fuzz on seeds `5, 21, 22, 23` (1100 polynomials) and `function_range` cross-check
+  with 25 fresh random cases: no disagreement.
+- **The fuzz itself needed the same scrutiny.** Its new *structured* pass (perfect
+  squares with rational roots) first reported 19 "false accepts" that were a bug in
+  the test (`_ray(−p)` instead of `_ray(+p)`); after the fix it reports 0. The
+  lesson is the block's theme: a test is only evidence once it has been checked for
+  the ability to be wrong.
+- **Status.** `REFUTED` (the `C049` algorithm) → repaired. **Generic checker
+  acceptance stays suspended** until X audits this revision; X's own `exact_sign`
+  repair (`cb3d76f`) passed the irrational-root witness and six named controls
+  locally, which is finite test evidence, not blanket soundness.
+
+### K15-C059 — audit request published (`PROPOSED` work item)
+
+`Main/AUDIT_REQUEST_X.md` lists what X should check at the current revisions:
+the repaired predicates (four specific questions), the two K33 certificates under
+three implementations, and the seven claims added this block with the point to
+attack in each. It also lists the claims that do **not** depend on the predicates,
+so that a defect in the checker cannot be mistaken for a defect in the mathematics.
+
+### K15-C060 — the shell count holds for every `ρ ≤ 2.09`, not just `2.09` (`PROVED`)
+
+`K15-E014` states that a 2-separated set has at most 12 points in `[2, 2.09]`.
+For any `ρ ≤ 2.09` the annulus `[2, ρ]` is a *subset* of `[2, 2.09]`, so the same
+bound applies: `n(ρ) ≤ 12` for every `2 ≤ ρ ≤ 2.09` — and 12 is attained at every
+such `ρ` by the icosahedral twelve (whose nearest mutual distance is `2.1029… > ρ`
+only for `ρ < 2.1029`, which covers the range).
+
+**Why it matters for the benchmark.** The shell allowance `K15-C018` can be posed
+at any width up to `0.09` and the count is free; the threshold `ρ` is then chosen
+only by the trade between the relaxation's gain and the cost `12η`. And since the
+closed form `δ ≤ (4π/3)(f(0)+12η)/f̂(0)` is monotone in nothing else, larger `ρ`
+is never worse *in the theorem* (the profile at a larger `ρ` is also admissible at
+a smaller one). So `ρ = 2.09` is the natural choice and no separate enclosure is
+needed per width.
+
+*Status.* `PROVED` (immediate from `K15-E014`). Reviewer X.
+
+### K15-C061 — code index and a higher-degree fuzz (`TESTED_FINITE`)
+
+`Computation/README.md` indexes every tool Main ships, with commands and runtimes,
+the conventions in one paragraph, and the three warnings the block produced
+(grid signs are worthless; a test must be able to fail; test points must come from
+the polynomial's own roots).
+
+Added with it: a **degree-12** fuzz run (`--n 200 --deg 12 --seed 77`), 199
+polynomials, zero false accepts — the earlier runs were degree ≤ 6, where the
+isolating-interval code is barely exercised.
+
+### K15-C062 — the repaired predicates scale (`TESTED_FINITE`)
+
+Timing on deliberately hostile inputs (`u`-variable, rational coefficients):
+a degree-33 polynomial with seven simple roots inside the region is decided in
+`0.01 s`; the same polynomial squared (degree 66, every root of even multiplicity,
+which is the shape that broke both earlier algorithms) in `0.07 s`; a degree-200
+synthetic case is not needed because the K33 certificates themselves are decided in
+about `2 s` including the basis conversion. All three hostile verdicts were
+correct (`False`, `False`, `False`, as the root pattern requires).
+
+Scope: timing on this VM, single core, sympy only. The certificate path is the
+slowest real use and stays far below the 300 s cap.
+
+### K15-C063 — X's `audit_K33_signs.half_line_verdict`: exact diagnosis (`REFUTED`, fix identified)
+
+- **Reproduced.** On the file at `e3a63a1`
+  (`Counterexamples/Reviews/K33/audit_K33_signs.py`), the call
+  `half_line_verdict((t²−2)(t²−3), a = 0, want = +1)` returns **`True`**, although
+  the polynomial equals `−3/16` at `t = 3/2`.
+- **Exact cause, in their code:**
+  ```python
+  try: rn = sp.Rational(sp.nsimplify(r))
+  except Exception: rn = None
+  if rn is not None and rn > a: odd.append(...)
+  ```
+  For `r = √2` (returned by `real_roots` as a radical, as the code prints
+  `[-sqrt(2), sqrt(2)]`), `sp.Rational(√2)` raises `TypeError`; the `except` sets
+  `rn = None` and the root is **silently dropped**. The `try/except` turns "this
+  root is irrational" into "there is no root", which is the failure the review
+  named.
+- **Fix (one line).** Never convert the root: test `sp.sign(sp.N(r - a, 30)) > 0`,
+  or keep the algebraic number and compare symbolically. More generally: an
+  exception in a sign test must be a *failure*, never an absence.
+- **Also confirmed good.** The same file, run on the real data, `ACCEPT`s K33 with
+  `Δ = 0.779966498`, matching Main (`0.779966497784`) and Computation — three
+  implementations, one value — and reports that `q`'s minimum on `[0,300]` is
+  `3.708e−6` near `t = 10.332`, i.e. the certificate is legitimately
+  near-tangency and float checks are unsafe there. Its two "NEGATIVE" controls
+  (`c0 += 1/1000`, `c1 += 1/1000`) are accepted with worse bounds
+  (`0.783371916`, `0.787430829`), which is correct behaviour — a worse bound is
+  still a bound — and the label is misleading, not the verdict.
+- **Status.** `REFUTED` (their routine), routed to X with the fix. No project claim
+  used their routine; the K33 value above is unaffected.
+
+### K15-C064 — fuzz now covers the two structured families that broke checkers (`TESTED_FINITE`)
+
+`predicate_fuzz.py` gained two structured passes on top of the random one:
+
+1. **perfect squares** with rational roots (the family of `K15-C058`) — 0 false
+   accepts;
+2. **irrational roots** — products `(u²−a)(u²−b)` with non-square `a, b`, the
+   family that defeats X's routine (`K15-C063`) because a root like `√2` cannot be
+   converted to a `Rational`. Both the nonnegativity and the compact-interval
+   claims are probed at rational points whose exact signs are known — 0 false
+   accepts.
+
+Seeds `55, 61, 62` (600 polynomials total) clean. The point of these passes is
+that **uniform random coefficients never produce either family**, which is why
+three successive checkers passed their "random" tests while being wrong.
+
+### K15-C065 — C's bidirectional cross-validation, imported with one caveat (`IMPORTED`)
+
+- **Their claim (`K15-C-XVAL-002`, branch `kepler15/comp-01a1d8c0`).** Both
+  directions work: their degree-33 certificate (`0.77996622`) is accepted by
+  Main's `shell_check` at `T_LO = 4π_lo`, and a degree-33 *shell* certificate is
+  accepted by their `exactcert` in strict mode at `0.780338357535` against
+  `shell_check`'s `0.780338357611` — agreement to ten digits.
+- **Why it is good news.** A wrong entry in `M`, a wrong `π` enclosure direction,
+  or a mis-mapped `t ↔ u` would break one of the two directions. Neither breaks, so
+  the convention dictionary of `Main/INTERFACE.md` is now tested in both
+  directions on real degree-33 data.
+- **Caveat Main adds.** Their note reads "`shell_check`'s `T_LO = 12` default is
+  sound but pessimistic (it can only reject valid certificates, never accept
+  invalid ones)". The second half of that sentence is **false for the predicates**:
+  `K15-C049` and `K15-C058` were both false-*accept* defects, unrelated to `T_LO`.
+  The threshold argument is correct in itself (a smaller start point only
+  strengthens a `≤ 0` requirement); the general soundness inference is not, and
+  must not be used as evidence. Also, `T_LO` is now `4·PI_LO`, not `12`.
+- **Status.** `IMPORTED` (their evidence, verified in one direction by Main's own
+  runs in `K15-C023`/`C056`). Full acceptance awaits X's audit of the repaired
+  predicates (`Main/AUDIT_REQUEST_X.md`).

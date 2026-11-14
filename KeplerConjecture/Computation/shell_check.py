@@ -106,58 +106,26 @@ def poly_from(coeffs, var):
     return sum(sp.Rational(c) * var ** i for i, c in enumerate(coeffs))
 
 
-def _odd_part(poly_expr):
-    """Product of the irreducible factors of odd multiplicity (the part that
-    controls SIGN changes).  A polynomial touches zero without changing sign
-    exactly at multiple roots of even multiplicity, and those must NOT be
-    counted: at a CE optimum f(2) = 0 is forced, so a checker that rejects
-    even-multiplicity zeros rejects every tight certificate."""
+def _roots_and_gaps(poly_expr, lo, hi):
+    """Test points that meet every interval of constant sign of `poly_expr` on the
+    closed region [lo, hi] (hi may be oo): the endpoints, and one rational point in
+    every gap between consecutive real roots.
+
+    The points are derived from the roots of the polynomial ITSELF, never from its
+    odd part.  Using the odd part loses polynomials all of whose roots have even
+    multiplicity -- e.g. [u(u-1/2)(u-1)]^2, which is +9/4096 at u = 1/4 and was
+    accepted as "<= 0" by the previous revision (review 0138, second round).
+    """
     uu = sp.Symbol('u')
     P = sp.Poly(poly_expr, uu)
-    if P.degree() < 1:
-        return sp.Poly(1, uu)
-    _, fac = sp.factor_list(P)
-    out = sp.Poly(1, uu)
-    for f, m in fac:
-        if m % 2 == 1:
-            out = out * sp.Poly(f, uu)
-    return out
-
-
-def _count_roots_open(expr, lo, hi):
-    """Number of distinct real roots in the OPEN interval (lo, hi); hi may be oo.
-
-    Sturm's V(a) - V(b) counts the distinct roots in (a, b], so a root exactly at
-    `hi` must be subtracted.  (The previous version subtracted a root at `lo`
-    instead, which is why u^2 - u on [0, inf) was misclassified.)"""
-    uu = sp.Symbol('u')
-    P = sp.Poly(expr, uu)
-    if P.degree() < 1:
-        return 0
-    seq = sp.sturm(P.as_expr(), uu)
-    def sc(x):
-        vals = [_sign_at(t, x) for t in seq]
-        vals = [v for v in vals if v != 0]
-        return sum(1 for a, b in zip(vals, vals[1:]) if a * b < 0)
-    n = sc(sp.Rational(lo) if not (hi is sp.oo) else sp.Rational(lo)) - sc(hi)
-    if hi is not sp.oo and _sign_at(P.as_expr(), hi) == 0:
-        n -= 1
-    return n
-
-
-def _test_points(expr, lo, hi):
-    """Rational points that meet every interval of constant sign of `expr` on
-    [lo, hi] (hi may be oo), together with the endpoints.
-
-    Exact: the sign of a polynomial is constant between consecutive real roots,
-    so testing one point per gap plus the endpoints decides the whole interval."""
-    uu = sp.Symbol('u')
-    P = sp.Poly(expr, uu)
-    pts = []
     lo = sp.Rational(lo)
+    pts = [lo]
     if hi is not sp.oo:
         hi = sp.Rational(hi)
-    iv = P.intervals(eps=sp.Rational(1, 10) ** 8) if P.degree() >= 1 else []
+        pts.append(hi)
+    if P.degree() < 1:
+        return pts
+    iv = P.intervals(eps=sp.Rational(1, 10) ** 8)
     roots = []
     for (ivl, m) in iv:
         a, b = (ivl, ivl) if not isinstance(ivl, tuple) else ivl
@@ -167,34 +135,30 @@ def _test_points(expr, lo, hi):
             continue
         roots.append((a, b))
     roots.sort(key=lambda t: t[0])
-    pts.append(lo)
-    if hi is not sp.oo:
-        pts.append(hi)
     prev = lo
     for (a, b) in roots:
         if a > prev:
             pts.append((prev + a) / 2)
         prev = max(prev, b)
     if hi is sp.oo:
-        beyond = prev + 1
-        pts.append(beyond)
-    else:
-        if hi > prev:
-            pts.append((prev + hi) / 2)
-    return pts
+        pts.append(prev + 1)
+    elif hi > prev:
+        pts.append((prev + hi) / 2)
+    # a second interior point per gap guards against a test point that is itself a
+    # root of a factor the isolating interval merged
+    extra = []
+    for x, y in zip(pts, pts[1:]):
+        if x < y:
+            extra.append((2 * x + y) / 3)
+            extra.append((x + 2 * y) / 3)
+    return pts + extra
 
 
 def le_on_interval(coeffs, eta, lo, hi) -> bool:
     """p(u) <= eta for all u in the closed interval [lo, hi], decided exactly."""
     u_ = sp.Symbol('u')
-    r = sp.Poly(poly_from(coeffs, u_), u_)
-    r = sp.Poly(r.as_expr() - sp.Rational(eta), u_)
-    od = _odd_part(r.as_expr())
-    if _count_roots_open(od.as_expr(), lo, hi) == 0:
-        # sign constant on the interval: three probes suffice
-        probes = [sp.Rational(lo), (sp.Rational(lo) + sp.Rational(hi)) / 2, sp.Rational(hi)]
-        return all(r.eval(x) <= 0 for x in probes)
-    return all(r.eval(x) <= 0 for x in _test_points(r.as_expr(), lo, hi))
+    r = sp.Poly(sp.expand(poly_from(coeffs, u_) - sp.Rational(eta)), u_)
+    return all(r.eval(x) <= 0 for x in _roots_and_gaps(r.as_expr(), lo, hi))
 
 
 def nonneg_on_half_line(coeffs) -> bool:
@@ -203,14 +167,7 @@ def nonneg_on_half_line(coeffs) -> bool:
     q = sp.Poly(poly_from(coeffs, u_), u_)
     if q.degree() < 0:
         return True
-    od = _odd_part(q.as_expr())
-    if _count_roots_open(od.as_expr(), 0, sp.oo) == 0:
-        probes = [sp.Integer(0), sp.Integer(1), sp.Rational(1, 2), sp.Integer(2)]
-        vals = [q.eval(x) for x in probes]
-        if all(v == 0 for v in vals):
-            return True           # identically zero on a set of 4 points => zero poly
-        return all(v >= 0 for v in vals)
-    return all(q.eval(x) >= 0 for x in _test_points(q.as_expr(), 0, sp.oo))
+    return all(q.eval(x) >= 0 for x in _roots_and_gaps(q.as_expr(), 0, sp.oo))
 
 
 def _ray(coeffs, hi) -> bool:
@@ -219,11 +176,7 @@ def _ray(coeffs, hi) -> bool:
     p_ = sp.Poly(poly_from(coeffs, u_), u_)
     if p_.degree() < 0:
         return True
-    od = _odd_part(p_.as_expr())
-    if _count_roots_open(od.as_expr(), hi, sp.oo) == 0:
-        probes = [sp.Rational(hi), sp.Rational(hi) + 1, sp.Rational(hi) + 2]
-        return all(p_.eval(x) <= 0 for x in probes)
-    return all(p_.eval(x) <= 0 for x in _test_points(p_.as_expr(), hi, sp.oo))
+    return all(p_.eval(x) <= 0 for x in _roots_and_gaps(p_.as_expr(), hi, sp.oo))
 
 
 def _sign_at(poly_expr, x):

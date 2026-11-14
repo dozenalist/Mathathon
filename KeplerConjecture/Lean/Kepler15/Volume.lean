@@ -35,39 +35,20 @@ abbrev E3 : Type := EuclideanSpace ℝ (Fin 3)
 `Normalisation.lean`; the *theorem* below is what carries content). -/
 noncomputable def volB1 : ℝ := 4 * Real.pi / 3
 
-/-- The Lebesgue volume of the unit ball in `E3` is `4π/3`. -/
-theorem volume_ball_unit :
-    volume (Metric.ball (0 : E3) 1) = ENNReal.ofReal (4 * Real.pi / 3) := by
-  -- R1: Mathlib's general ball-volume formula at n = 3, r = 1.
-  rw [EuclideanSpace.volume_ball]
-  -- goal is now `1 ^ 3 * π ^ (3/2) / Gamma (3/2 + 1) = ofReal (4π/3)`
-  norm_num [Real.Gamma_nat_add_one_over_two]
+/-- The Lebesgue volume of the unit ball in `E3` is `4π/3`.
 
-/-- Scaling form, which is what the periodic-approximation estimate uses. -/
-theorem volume_ball_three (R : ℝ) (hR : 0 ≤ R) :
-    volume (Metric.ball (0 : E3) R) = ENNReal.ofReal (4 * Real.pi / 3 * R ^ 3) := by
-  rw [EuclideanSpace.volume_ball]
-  norm_num [Real.Gamma_nat_add_one_over_two]
-  ring_nf
+NOT PROVED. The two candidate routes are named in the header; the pinned build of
+this module is not attempted until a curated import list fits the local resource
+cap (the broad import hit 60 s / 715 MB and `VolumeOfBalls + Mathlib.Tactic` hit
+the 1 GiB cap after 32.6 s — see `Main/LocalChecks/2026-11-14_0138/`).  `sorry` is
+deliberately absent: the statement is frozen as a `Prop`-valued definition so the
+module carries no unproved theorem. -/
+def BallVolumeClaim : Prop :=
+  volume (Metric.ball (0 : E3) 1) = ENNReal.ofReal (4 * Real.pi / 3)
 
-/-- The arithmetic step of the transfer lemma (`K15-C035`):
-`(r+R)^3 - r^3 <= 3 R (R+1)^2 r^2` for `r >= 1`, `R >= 0`.
-
-This is purely polynomial — no analysis, no `Gamma`, no measure — so it is the
-part of the Lean plan that should compile first and independently of the
-ball-volume identity.  Proof: expand, divide by `R` (the case `R = 0` is
-trivial), and bound `R^2 <= 3 r^2 R^2`, `3 r R <= 6 r^2 R` using `r >= 1`. -/
-theorem cube_diff_le (R r : ℝ) (hr : 1 ≤ r) (hR : 0 ≤ R) :
-    (r + R) ^ 3 - r ^ 3 ≤ 3 * R * (R + 1) ^ 2 * r ^ 2 := by
-  have hRr : 0 ≤ R := hR
-  have h1 : (r + R) ^ 3 - r ^ 3 = R * (3 * r ^ 2 + 3 * r * R + R ^ 2) := by ring
-  have h2 : 3 * r ^ 2 + 3 * r * R + R ^ 2 ≤ 3 * r ^ 2 * (R + 1) ^ 2 := by
-    nlinarith [sq_nonneg (r - 1), sq_nonneg R, sq_nonneg (R * r), hr, hRr,
-      mul_nonneg (mul_nonneg hRr hRr) (sq_nonneg r)]
-  have h3 : 0 ≤ 3 * r ^ 2 * R := by positivity
-  calc (r + R) ^ 3 - r ^ 3 = R * (3 * r ^ 2 + 3 * r * R + R ^ 2) := h1
-    _ ≤ R * (3 * r ^ 2 * (R + 1) ^ 2) := by
-          exact mul_le_mul_of_nonneg_left h2 hRr
-    _ = 3 * R * (R + 1) ^ 2 * r ^ 2 := by ring
+/-- Scaling form of the same claim. -/
+def BallVolumeScalingClaim : Prop :=
+  ∀ R : ℝ, 0 ≤ R →
+    volume (Metric.ball (0 : E3) R) = ENNReal.ofReal (4 * Real.pi / 3 * R ^ 3)
 
 end Kepler15

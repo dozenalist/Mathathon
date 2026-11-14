@@ -65,6 +65,22 @@ def cases():
                 nonneg_on_half_line(coeffs((u - sp.Rational(1, 2)) ** 2)), True))
     out.append(("u(u-1) <= 0 on [0,1] : NEGATIVE between two endpoint roots, must PASS",
                 le_on_interval([0, -1, 1], 0, 0, 1), True))
+    # --- review 0138, SECOND round: perfect squares defeat any odd-part argument
+    # (all roots have even multiplicity, so the odd part is constant).  The test
+    # points must come from the polynomial's own roots, never from its odd part.
+    sq1 = (u * (u - sp.Rational(1, 2)) * (u - 1)) ** 2
+    out.append(("([u(u-1/2)(u-1)]^2 <= 0 on [0,1] : +9/4096 at 1/4, must FAIL",
+                le_on_interval(coeffs(sq1), 0, 0, 1), False))
+    sq2 = -(u * (u - 1) * (u - sp.Rational(1, 2)) * (u - 2)) ** 2
+    out.append(("(-[u(u-1)(u-1/2)(u-2)]^2 >= 0 : -441/65536 at 1/4, must FAIL",
+                nonneg_on_half_line(coeffs(sq2)), False))
+    sq3 = (u * (u - 1) * (u - 2)) ** 2
+    out.append(("([u(u-1)(u-2)]^2 <= 0 from 0 : +9/64 at 1/2, must FAIL",
+                _ray(coeffs(sq3), 0), False))
+    out.append(("([u(u-1/2)(u-1)]^2 <= 0 on [2,3] : positive there, must FAIL",
+                le_on_interval(coeffs(sq1), 0, 2, 3), False))
+    out.append(("(-[u(u-1)(u-2)]^2 <= 0 on [0,3] : square with a sign, must PASS",
+                le_on_interval(coeffs(-sq3), 0, 0, 3), True))
     return out
 
 
@@ -75,7 +91,8 @@ def main():
         good = (got == want)
         ok = ok and good
         print(("PASS  " if good else "FAIL  ") + name + ("" if good else "   (got %s)" % got))
-    print("\nSUITE:", "ALL EXPECTATIONS HOLD" if ok else "MISMATCH")
+    n = len(cases())
+    print("\n%d cases; SUITE: %s" % (n, "ALL EXPECTATIONS HOLD" if ok else "MISMATCH"))
     print("These same cases should be run against Computation's exactcert;"
           "\nthey are stated in Main's basis, so convert with "
           "interface_xcheck.main_to_comp.")

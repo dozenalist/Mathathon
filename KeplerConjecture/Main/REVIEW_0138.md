@@ -19,10 +19,16 @@ not among the hypotheses — and is not true for the `A` Hales actually uses
 
 **Minimal illustration of the logical gap** (arithmetic, not a geometric packing
 counterexample): let `Λ = 2ℤ³` and let `S ⊂ Λ` be a sublattice of density `δ`.
-Set `A = θ` off `S` and `A = −θ/δ` on `S`. Then `Σ_{Λ∩B(x,r)} A = o(r³)` while
-`A ≥ θ` on a set of full density, so no bound of the form `#D_θ ≤ C₁r²/θ` can
-follow. Whether such an `A` is *realizable* by a packing is a separate question;
-it does not need to be, because the step being refuted is logical, not geometric.
+Set `A = θ` off `S` and `A = −θ(1−δ)/δ` on `S`. Then the mean of `A` is exactly
+zero — `(1−δ)θ + δ·(−θ(1−δ)/δ) = 0` — while `A ≥ θ` on the full-density set
+`Λ ∖ S`, so no bound of the form `#D_θ ≤ C₁r²/θ` can follow.
+*(Correction, review 0138-local: the first version of this paragraph wrote
+`A = −θ/δ` on `S`, whose mean is `−δθ`, not zero. The coefficient
+`−θ(1−δ)/δ` is the one that gives zero mean; both versions satisfy the
+one-sided negligibility bound — a negative mean is still `≤ C₁r²` — so the
+illustration survives, but the stated arithmetic did not.)*
+Whether such an `A` is *realizable* by a packing is a separate question; it does
+not need to be, because the step being refuted is logical, not geometric.
 
 ## 2. Withdrawn text (kept as rejected evidence)
 
@@ -123,3 +129,52 @@ This is the second withdrawal of the block (the first was `K15-C029`) and the
 lesson is the same in both: a claim was supported by *tests that could not have
 failed*. The countermeasures are now mechanical — `Computation/run_all_checks.py`
 (8 checks, one command) and the fuzz script `K15-C050`.
+
+## 7. Method note carried forward
+
+The two defects found this block (`K15-C029`'s implicit `A ≥ 0`, and the sign
+predicates of `K15-C049`) have the same shape: a claim whose *tests* could not
+fail. E's `interval_selfaudit.py` is the model to copy — it checks soundness
+*and* that a deliberately corrupted primitive is detected (`K15-C057`).
+`Computation/run_all_checks.py` (`K15-C053`) is Main's version of the same idea,
+and `predicate_fuzz.py` / `predicate_crosscheck.py` are the independent supports
+for the repair. Any future checker in this project should ship with all three.
+
+## 8. Third finding, received near the end of the block: the first repair was wrong too
+
+`K15-C049`'s algorithm (odd part plus three probes) accepted three *new*
+impossible inputs, all perfect squares — `[u(u−1/2)(u−1)]² ≤ 0` on `[0,1]` (value
+`+9/4096` at `1/4`), `−[u(u−1)(u−1/2)(u−2)]² ≥ 0` (value `−441/65536`) and
+`[u(u−1)(u−2)]² ≤ 0` on `[0,∞)` (value `+9/64`). The odd part of a square is a
+constant, so the count was zero and the three probes landed on roots.
+
+The algorithm is now changed rather than patched: test points come from the
+polynomial's own roots, one per constant-sign gap, with the odd part removed from
+the code. `K15-C058` records this; the suite is at 24 cases and includes all six
+witnesses. **Every general soundness claim about the checker remains suspended**,
+and the block's own record now contains three of them (C029, C049, C058) — the
+reason the project's summary asks for X's audit before any of it is relied upon.
+
+Two further corrections from the same evidence round: the signed toy example in
+§1 had the wrong coefficient for a zero mean (`−θ(1−δ)/δ`, not `−θ/δ`; corrected
+in place), and the cluster fixture's completions were **not packings** until a
+cross-distance filter against the core was added (`K15-C039`, updated).
+
+## 9. Block summary (for the supervisor)
+
+Block `K15-REVIEW-0138-M`, receipt `2026-11-14T09:42:58Z`.
+
+**Withdrawn:** `K15-C029` (invalid proof, the reason the block exists),
+`K15-C049`'s algorithm (superseded), `K15-C014` (earlier block, still documented).
+**Added and proved:** `C035` (transfers ⇒ negligibility, explicit constant),
+`C036` (no finite fixture can verify the pointwise inequality), `C043` (Lemma 3.3
+chain re-derived), `C044` (cut condition, corrected in-block), `C045` (synthesis),
+`C054` (transfer graph has degree ≤ 12 at `R ≤ 2.09`), `C029r`/`C029c` (signed
+estimate and its conditional form), `C037` (C002b audited), `C024` (normalisation).
+**Verified:** `C023`, `C031`, `C041`, `C048`, `C052`, `C055`, `C056` (the K33 pair
+under a repaired checker and three implementations).
+**Fixtures:** `C038`, `C039` (corrected twice), `C028` (+ two addenda), `C051`
+(negative search), `C053` (one-command runner), `C030` and `C058`'s 24 cases.
+**Lean:** `C040` — statement frozen, no proof, `M-LEAN-003` filed.
+**Suspended:** every general soundness claim about the checker, until X audits
+`Main/AUDIT_REQUEST_X.md`'s four questions.
