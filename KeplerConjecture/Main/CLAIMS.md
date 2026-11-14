@@ -5682,3 +5682,33 @@ is `δ₀`, and the whole difference between `0.7489` and truth is the remaining
 
 **Not claimed.** No packing bound, no improvement over truth, no reviewed theorem. `L1'` is unproved;
 `C124` is `PENDING_REVIEW`; `RESULTS.md` does not move.
+
+#### `C146` addendum — the determinant suggestion above is WRONG: it is 160 triples, and some go singular
+
+I wrote that extending `L2` to `θ ≈ 0.25` needs "the exact `|det|` for the dodecahedron's 20 triples
+perturbed by `θ`". Checking it before recommending it: **the suggestion is wrong on both counts.**
+
+1. **There are 160 triples, not 20.** Any three of the 12 icosahedral normals are linearly independent
+   (the icosahedron has no three coplanar vertex directions), so all `C(12,3) = 220` triples are
+   nonsingular except the 60 that contain an antipodal pair — `160` nonzero determinants. The 20 "tight"
+   triples are the ones that are *active* at the dodecahedron; the other 140 are not.
+2. **Some inactive triple goes nearly singular.** `min |det|` over the 160 triples:
+
+```
+θ = 0      0.470228      θ = 0.10   0.228504      θ = 0.20   0.000014
+θ = 0.05   0.352378      θ = 0.15   0.100619      θ = 0.2447 0.000016
+```
+
+so at `θ ≈ 0.2` some *would-be* vertex passes extremely close to a face. It is **not** active — the
+measured facet count stays at 12 for `θ ≤ 0.30` — but a determinant bound over all triples cannot be the
+tool, and the "20 triples" suggestion I nearly recorded would have been an eighth error.
+
+**What the correct extension needs**, stated now: fix the **active** vertex set (the 20 tight triples) and
+prove that each stays tight *and* that the other 140 stay slack, i.e. a **slackness margin** at the
+dodecahedron for the inactive triples — which is exactly the object that degenerates above `θ ≈ 0.2`, so
+the margin is small and the bound will be delicate. This is a different computation from `M-CERT-002`'s and
+should be its own job if the large-ball route is pursued.
+
+**Consequence for the recommendation.** `ε = 1` (`M-CERT-002` as pinned: `c = 0.13` on `Σθ² ≤ 0.002`, no
+type changes, `|det| ≥ 0.61`) remains the safe step. The `ε = 0.2` extension is worth `30×` on `δ₀` but
+needs this slackness analysis first, and the analysis is delicate precisely where the gain is largest.
