@@ -393,3 +393,36 @@ becomes a two-line estimate) and `K15-C036` (no finite fixture can verify the
 remaining pointwise volume inequality, because computed cells are upper bounds).
 The negative results on the shell and two-point families are narrowed to their
 tested scope; neither family is called closed.
+
+### K15-MAIN-009 — 2026-11-14 09:42:58Z–(block) — withdrawal repair and transfer construction
+
+Receipt `09:42:58Z`. Read: supervisor `3c8ea4b0…`, C `5c102677…`, E `4ea4e8b9…`,
+X `e3a63a18…`. Twelve commits pushed in-block (hashes in the final report).
+
+- **K15-C029 withdrawn** (review 0138): the proof assumed `A ≥ 0` in bounding
+  `#D_θ` from a signed sum. `Main/REVIEW_0138.md` keeps the rejected text, lists
+  every dependent statement removed from CLAIMS/RESULTS/PROOF_GAPS/PARTITION_SPEC,
+  and gives the corrected estimate `θ#(D_θ) ≤ C₁r² + N_A` (`K15-C029r`) plus the
+  conditional version under `A ≥ 0` (`K15-C029c`).
+- **K15-C035 `PROVED`**: a bounded-range antisymmetric transfer is negligible with
+  the explicit packing-independent constant `3Φ(R+1)⁵`, proved termwise. This is
+  the one architectural simplification produced so far: Hales' Chapter 5 becomes a
+  two-line estimate if his correction is recast in transfer form (Main's reading).
+- **K15-C036 `PROVED` obstruction**: no finite completion can verify the remaining
+  pointwise inequality, since cells computed in a completion are upper bounds.
+  Confirmed numerically by `Computation/cluster_fixture.py` (nested completions,
+  cluster sums `+157.87 → +63.71 → +17.91`, centre cell `5.550291` throughout).
+- **K15-C044 `PROVED`, corrected in-block**: transfer existence is the Hoffman cut
+  condition, not the component condition (the first version was vacuous on
+  connected graphs — a second self-caught overclaim in one block).
+- **K15-C043** Lemma 3.3's chain re-derived independently; **K15-C037** the C002b
+  bridge audited item by item, including the zero-density case; **K15-C041** X's
+  quadrature audit confirms Main's Fourier map to `4.9e−15` (third independent
+  confirmation) and Main reports two defects in their script; **K15-C046/C047**
+  C's proposers and E's claim-verifier integrated as evidence only.
+- **K15-C040** Lean `Volume.lean` (ball volume + the polynomial step of C035),
+  request `M-LEAN-002` for the pinned build. Not compiled here.
+- Scope retraction: the shell and two-point negative results are "no gain in the
+  tested scope", not closure.
+
+Next: the analytic averaged inequality of `Main/NEXT_PACKAGE.md`.

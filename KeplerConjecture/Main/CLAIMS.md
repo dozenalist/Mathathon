@@ -1424,3 +1424,16 @@ the Tammes enclosure values (`δ₁₃ < 57.138726938°`, `θ_min > 57.170897332
 This is a *consistency* check on E's own numbers (E wrote both the claims and the
 script), useful but **not** independent evidence; the independence comes from
 Main's separate re-derivations (`K15-C027`, `K15-C042`).
+
+### K15-C048 — re-verification against the *current* Computation artifacts (`VERIFIED`, repeat of C023/C031)
+
+After C advanced to `5c102677…`, Main re-ran both checks:
+
+- `checker_adversarial.py --against-exactcert` on the current `exactcert.py`:
+  **agrees on every case** (including `p=-(u-T)^2 → neg`, and the two
+  endpoint-root `fail` cases);
+- `verify_certificate.py out/cert.json` on `out/verified_certificate_K33b.json`:
+  `ACCEPT` by both of C's implementations, `p0/q0` unchanged, `Δ ≤ 0.779966216777`.
+
+So the interface (`K15-C023`, `K15-C031`) survives C's updates; nothing in the
+last two blocks' verification was version-specific.
