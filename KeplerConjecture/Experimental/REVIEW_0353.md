@@ -185,6 +185,29 @@ give identical volumes (`5.898035176`), as do `35`/`37` (`5.898119134`), so `36�
 mirror axis. The symmetric family is therefore fully resolved at `(θ, φ) = (111.80°, 36°)`
 with `vol = 5.897967122`.
 
+### 2.2 Does a *non-symmetric* completion do better? A bounded global search
+
+§2 settles the frozen configuration; it says nothing about other arrangements of the free
+centres. `Experimental/scripts/c5_global_search.py` searches them directly: the six fixed
+centres, up to ten free ones in `2 ≤ |z − w1| ≤ 2.8`, simulated annealing over add / remove /
+move proposals with a **hard** legality filter (every proposal is rejected unless all pairs,
+including pairs against `w1`, are `≥ 2`), objective `vol Ω(w1)`.
+
+```
+need < 5.763417471 to refute (P');   V_dodeca floor 5.550291029
+seed 0,  20 s   : best 5.898007181 with 6 free centres, legal, gap +0.134589711
+seed 1, 900 s   : started from the empty set (not the C5 basin)
+seed 2, 900 s   : started from the C5 configuration and allowed to break symmetry
+```
+
+The 20-second run reproduces the symmetric optimum exactly, which is the expected
+behaviour when the seeded basin is the global one. The two 900-second runs are the ones
+that test the claim; **their results are reported in the final message for this block and,
+if they find nothing, change no statement in this file.**
+
+The bounded version is deliberately small (`≤ 1` core, no I/O in the loop). The larger
+sweep, with the same code and inputs, is filed for Astra in `COMPUTE_REQUEST_0353.md`.
+
 ---
 
 ## 3. The three numbers, kept apart
