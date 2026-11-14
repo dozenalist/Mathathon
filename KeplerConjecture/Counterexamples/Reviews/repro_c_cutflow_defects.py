@@ -134,6 +134,12 @@ print("    b = (-1,-1,+1), edges = [(0,1)], flow = 0")
 print("    verify_flow_exact -> (ok_cap=%s, ok_div=%s, div=%s)" % (ok_cap, ok_div, [str(d) for d in div]))
 print("    the true verdict is ok_div = False: div(2) = 0 < b(2) = 1")
 ck("D8 verify_flow_exact accepts an impossible instance", ok_div, "n is taken from the edge list, so vertex 2 is never checked")
+print("    and the same truncation is in two more functions:")
+print("      find_violating_cut(Phi=1) -> %s   (should report U={2} violating at every Phi)" % (cf.find_violating_cut(b8, E8, F(1)),))
+print("      feasible_flow(Phi=1)      -> %s   (should be None)" % (cf.feasible_flow(b8, E8, F(1)),))
+ck("D8 the defect is systematic: 3 functions truncate the vertex set",
+   cf.find_violating_cut(b8, E8, F(1)) is None and cf.feasible_flow(b8, E8, F(1)) is not None,
+   "only exhaustive_cut_scan gets it right")
 print("    cause: n = max(max(e) for e in edges) + 1 = 2, so vertices with no incident edge are")
 print("    outside the divergence check.  The cut scan DOES catch this instance:")
 print("    exhaustive_cut_scan reports the empty-boundary positive set [([2], '1')].")

@@ -670,12 +670,14 @@ holds, on 38 random instances with `n ≤ 5` (25 infeasible, 13 feasible, 0 mism
 four independent decision procedures for Theorem 1 on the same instances — the cut scan, my
 HiGHS LP, my exact Fourier–Motzkin routine, and C's flow constructor.
 
-### K15-X-C034 — `verify_flow_exact` false-accepts at a vertex with positive deficit and no edge
+### K15-X-C034 — three functions take their vertex set from the edge list and accept an impossible instance
 
-`verify_flow_exact` takes its vertex range from the edge list (`n = max(max(e) for e in edges)+1`),
-so a vertex with no incident edge is never checked. Witness: `b = (−1,−1,+1)`,
-`edges = [(0,1)]`, zero flow → `(ok_cap=True, ok_div=True, div=[0,0])`, while the truth is
-`ok_div = False` since `div(2) = 0 < b(2) = 1`. The module contradicts itself here: the cut scan
+`verify_flow_exact`, `find_violating_cut` and `feasible_flow` all infer the vertex set as
+`n = max(max(e) for e in edges)+1`, so a vertex with no incident edge is never checked. Witness:
+`b = (−1,−1,+1)`, `edges = [(0,1)]`, `Φ = 1` — vertex 2 is isolated with a unit deficit, so the
+instance is infeasible at *every* `Φ`. `verify_flow_exact(b, E, 1, {})` → `(True, True, [0,0])`;
+`find_violating_cut(b, E, 1)` → `None`; `feasible_flow(b, E, 1)` → a flow. All three wrong; only
+`exhaustive_cut_scan` is right (`empty_boundary_positive = [([2], '1')]`). The module contradicts itself here: the cut scan
 reports `[([2], '1')]` as an empty-boundary positive set, i.e. infeasible at every `Φ`. Not
 reachable from `main()` (`build_13` gives every vertex an edge for `R ≥ 2−10⁻⁹`, and the edgeless
 regime is skipped), and the fix is one line: `n = len(b)`. D8 of

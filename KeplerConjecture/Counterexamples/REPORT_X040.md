@@ -262,9 +262,11 @@ verify_flow_exact(b, edges, 1, {}) -> (ok_cap=True, ok_div=True, div=[0, 0])
 true verdict: ok_div = False, because div(2) = 0 < b(2) = 1
 ```
 
-The cut scan *does* catch it (`exhaustive_cut_scan` reports the empty-boundary positive set
-`[([2], '1')]`), so the module contradicts itself: the scan says "infeasible at every `Φ`" and the
-flow verifier says "fine". This is the recurring failure mode of the whole project — an exact
+It is systematic, not one slip: three functions take the vertex set from the edge list.
+`find_violating_cut` returns `None` ("no violation") on the same instance, and `feasible_flow`
+returns a flow, both of which are wrong because `{2}` violates at every `Φ`. Only
+`exhaustive_cut_scan` is right (`empty_boundary_positive = [([2], '1')]`), so the module
+contradicts itself: three functions say "fine" and one says "infeasible at every `Φ`". This is the recurring failure mode of the whole project — an exact
 checker that returns OK on an input that is not OK — and it belongs in the record even though no
 shipped fixture is affected (`build_13` gives every vertex an edge at `R ≥ 2−10⁻⁹`, and `main()`
 skips the edgeless regime). It is D8 in `Reviews/repro_c_cutflow_defects.py`. The fix is one line:
@@ -409,7 +411,7 @@ proved".
 | `X-C028` | Main's `D18` reverse condition is not triggered (no fifth defect); `D16`'s acceptance test stands with generic soundness still `SUSPENDED`; `D3`'s anchor is respected. `NEXT_PACKAGE` item 1 (`V = 5.40`) is already implied by Hales–McLaughlin. | **VERIFIED** / one wording defect open in Main's file |
 | `X-C029` | `CLAIMS.md` `K15-C093` still states `sup Φ < ∞` and the `{a}`-cut `4/3` example in its bullet list, both refuted by its own repair note. | **DEFECT** (documentation, Main's file) |
 | `X-C030` | `0.008880268414417` inherits C's `V_DOD` enclosure error: the exact value is `0.0088802684147391605`, so the number is a valid lower bound but not "the exact threshold". | **CORRECTION** |
-| `X-C034` | `verify_flow_exact` false-accepts `b = (−1,−1,+1)` with `edges = [(0,1)]` and zero flow: its vertex range comes from the edge list, so the isolated vertex with positive deficit is never checked. Not reachable from `main()`; one-line fix (`n = len(b)`). | **DEFECT** (live in the function), D8 of `Reviews/repro_c_cutflow_defects.py` |
+| `X-C034` | **Three** functions take their vertex set from the edge list: on `b = (−1,−1,+1)`, `edges = [(0,1)]` (isolated vertex with positive deficit) `verify_flow_exact` accepts, `find_violating_cut` reports no violation, `feasible_flow` returns a flow — all wrong, all for the same reason; only `exhaustive_cut_scan` is right. Not reachable from `main()`; fix is `n = len(b)` in all three. | **DEFECT** (live, systematic), D8 |
 | `X-C033` | C's own `feasible_flow` agrees with the cut condition on 38 random instances (25 infeasible, 13 feasible): a fourth independent decision procedure for Theorem 1, on C's side. | **VERIFIED**, `Reviews/audit_cutflow_repair.py` §F |
 | `X-C032` | `PROOF_GAPS` G8, partially: C's `exactcert` imports only `fractions` and Main's `shell_check` only `sympy`+`fractions`, so they share no code path; **four** routes (Main, C, X's `exact_sign`, algebraic rule) agree on `q ≥ 0` for all 52 adversarial vectors tried, including near-touching `(t−r)²∓ε`. Sample is finite; `p ≤ η` is not covered. | **PARTIAL**, `Reviews/g8_checker_independence.py` |
 | `X-C031` | The family suite catches `a8526a8` (50/900) and `5619c1d` (8/308) and is blind to a missing precondition and to `7dc6be58`; passing it is evidence, not proof. | **VERIFIED**, §4.3 |
