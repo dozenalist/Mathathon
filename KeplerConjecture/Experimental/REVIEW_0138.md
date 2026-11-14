@@ -894,3 +894,26 @@ short and load-bearing. Main: decide between items 1 and 2 above and record the 
 
 **Clock.** Receipt `2026-11-14T09:57:21Z`; final report not before `10:57:21Z`. Elapsed time is
 reported from API timestamps only, per the correction in Section 0.
+
+### 8.1 Status of the cache-key fix
+
+After the collision bug in Section 8 was found, the key was changed from `(len(P), |P|_1)` to
+`(len(P), hash(rounded coordinates))` and committed. A confirmation re-run
+(`--seconds 120 --seeds 2`) was started in the background and **did not finish within its
+four-minute cap**; I stopped it rather than let it run. That is expected rather than alarming:
+with a correct key there are no spurious cache hits, so every candidate set costs a real Voronoi
+decomposition, and the search is materially slower than the version that produced the numbers in
+Section 8.
+
+Consequences, stated plainly:
+
+- The numbers in Section 8 were produced by the **buggy** build. They are not a reliable measure
+  of what the search can reach, though the qualitative conclusion — that a denser completion does
+  not help, because saturation rather than density is the binding condition — does not depend on
+  them.
+- The fixed build is **syntax-verified and imports cleanly but its search has not been observed
+  to completion**. Anyone using it should budget more time than `--seconds 120` and should treat
+  the first run as exploratory.
+- This is a small, clean loose end for the next block: run the fixed harness once to completion
+  and either record a better `sum12` or record that it still cannot improve on the sparse
+  baseline.
