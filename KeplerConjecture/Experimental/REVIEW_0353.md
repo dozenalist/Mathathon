@@ -301,6 +301,21 @@ the sentence reads as a closure statement about a family of arguments, and it is
   Matches Main's table to nine digits in every layer, including the exact `√32` in the
   bulk. The crack energy `0.767` is then `2 × 1.3284948 / (2√3) = 0.7670`, consistent.
 
+- **Density / equality-case claim: correct.** Counts of centres in balls of radius
+  `R = 10,15,20,30,40` at `d = 2.4` divided by the ball volume give
+  `0.1685, 0.1691, 0.1722, 0.1735, 0.1743` against `1/√32 = 0.176777`, i.e.
+  `0.953, 0.957, 0.974, 0.982, 0.986` of the target, rising like `1 − c/R` with `c ≈ 0.55`.
+  That is the `O(r²)` boundary deficit and nothing else, so the crack packing is an
+  equality case, as Main says. The exact argument is one line: every layer has one centre
+  per area `2√3` at spacing `H`, and the crack changes the layer count by `O(1)` and the
+  occupied height by `O(d−H) = O(1)`, both `O(r²)` in a ball.
+
+- **One overstatement, in Main `§1`.** "For `d > 1.633` the packing is 2-separated and
+  saturated" omits the upper bound that the same file derives two sentences later. The
+  correct range is `1.633 ≤ d ≤ 2H = 3.266`; at `d = 3.5` the worst point is at `2.0966`
+  and the packing is **not** saturated (checked above). Every table row satisfies `d ≤ 3.2`,
+  so no computed value is affected — but the sentence as written is false for `d > 3.266`.
+
 **Two slips of my own, both caught by the `V_dodeca` test.** First I put the site at
 `(0,0,−H)`, which is not a site of layer `k=−1` (that layer sits at `2T + Λ`), and got
 `2.946278` — *below* `V_dodeca`, which is impossible. Second, an earlier enumeration
