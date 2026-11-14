@@ -1815,3 +1815,13 @@ way, but the two numbers differ by exactly `1/4` and neither side reconciles the
 which is the record. `cluster_fixture.py` and `transfer_check.py` also pass, and `cluster_fixture.py` states
 the monotonicity direction correctly ("every entry above is an UPPER bound … a positive sum at a finite
 stage cannot certify the inequality", `C036`).
+
+### K15-X-C117 — `C131`'s orientation table reproduces, and my parallel placement beats its optimum
+
+`orient_opt.py` (60 starts, exit 0): `1.0825390920, 1.0827003746, 1.1245183183, 1.1986162533,
+1.2206656075, 1.1622539465, 1.2185574137, 1.4387041421` at `d = 2, 2.02, 2.1, 2.2, 2.5, 3, 3.5, 4`, all
+"legal? False" — exactly `C131`'s quoted `1.0825, 1.1986, 1.1623, 1.4387`. `free_orientation.py`: covered
+fraction `0.839530` at `d = 2` falling to `0.536450` at `d = 3` and `0.113785` at `d = 5` — matching
+`C131`'s "84% … 53%". Note that my parallel placement gives `1.4659` at `d = 4.0` (`X-C099`) against
+`orient_opt`'s `1.4387`, i.e. **the published scan is not the optimum** — its numbers are lower bounds, as
+its author intends, and `X-C096`'s `6cos ρ_c` is the better threshold.
