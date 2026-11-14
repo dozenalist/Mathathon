@@ -200,3 +200,54 @@ computer-assisted ideal. **Conclusion: `(T'-R2')` cannot be proved by per-cell e
 any form presently available, and the block must either be enlarged (two-shell `(T'-2)`) or
 the inequality replaced by a collective statement over the whole block.** That is the
 precise state of the geometric route at handoff.
+
+## K15-E043 — correcting my own pessimism: `(T')` has large slack in reality
+
+An earlier paragraph argued that `(T')` is "implausible" because its threshold mean
+`5.665735` is only `2.080 %` above the dodecahedral floor `5.550291`. **That inference was
+wrong, and I withdraw it.** Comparing the threshold with the *worst-case floor* says nothing
+about whether the inequality holds; the relevant comparison is with actual configurations.
+Measured:
+
+```
+best computed sum   98.007327   vs threshold 67.988814   ->  1.4415x  (+44.2 %)
+targeted completion 99.855149   vs threshold             ->  1.4687x  (+46.9 %)
+best computed mean   8.167277   vs threshold  5.665735   ->  1.4415x
+```
+
+So in every completion examined the sum exceeds the requirement by roughly `44 %`. `(T')` is
+**not marginal**; it is comfortably satisfied by everything computed, and its difficulty is
+entirely in the lower-bound direction. This matters for how the route should be judged: the
+geometric mechanism is not in doubt, only our ability to certify it. The correct one-line
+status is "plausibly true with large slack, unprovable with present tools", not "near the
+edge and probably false".
+
+The `2.080 %` figure remains true and is still useful, but its correct reading is narrower:
+it shows that the *single-cell minimum alone* cannot prove `(T')` (`K15-E041`), not that
+`(T')` is false.
+
+## K15-E044 — why per-cell techniques are stuck, from a second direction
+
+Independent of the quadrature bound of `K15-E042`, a hand estimate gives the same ceiling.
+The six neighbours of an outer centre all lie within `58.28 deg` of the **inward** direction
+(the five at `121.7 deg` from outward; `c` at `180 deg`). Hence the whole **outward
+hemisphere** about `w` is free of known neighbours, and the cell there is limited only by the
+completion, which satisfies `d >= 2.09`, giving `t >= 1.045`. Splitting the integral at the
+equator:
+
+```
+vol Omega(w) >= (1/3) [ 2 pi (1)^3 + 2 pi (1.045)^3 ] = 2.0944 + 2.3905 = 4.4849 .
+```
+
+That beats the inscribed ball (`4.1888`) but is still `20.8 %` below the required `5.665735`.
+Refining with the constraint that at most six further centres lie in `[2, 2.09]` on the
+outward side, mutually `>= 60 deg` apart, and that a centre at angular distance `alpha`
+gives `t >= 2.09/(2 cos alpha)`, raises the estimate only to about `4.9` — still short. The
+quadrature optimum of `4.734` and this hand estimate agree to within the crudeness of the
+latter, which is reassuring about both.
+
+**Conclusion.** Two independent routes cap per-cell bounds near `4.7`–`4.9`, i.e. `13`–`17 %`
+below the requirement, while the truth is `44 %` *above* it. The gap is a deficiency of
+Voronoi-volume lower-bound technique, not of the geometry. Closing it needs an estimate that
+uses the neighbour configuration globally and simultaneously — the next missing inequality,
+and the honest stopping point for this block.

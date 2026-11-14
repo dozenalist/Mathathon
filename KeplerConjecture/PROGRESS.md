@@ -278,5 +278,17 @@ optimiser was already finding the true minimum of this functional. The five fixe
 sit at exactly the tangency angle `arccos(0.52573) = 58.28 deg`, so the configuration is tight
 and free directions buy almost nothing.
 
+**`K15-E043` — self-correction.** Withdrew the earlier "implausible because only `2.080 %`
+above the dodecahedral floor" reading. The best computed sum is `98.007327` against a
+threshold of `67.988814`, i.e. `1.4415x` (`+44.2 %`): `(T')` has large slack in every
+completion examined and is plausibly true. Its difficulty is entirely lower-bound technique,
+not marginality. The `2.080 %` figure survives only as the reason single-cell bounds fail
+(`K15-E041`).
+
+**`K15-E044` — second ceiling.** Hand estimate: all six neighbours lie within `58.28 deg` of
+the inward direction, so the outward hemisphere is free and gives
+`(1/3)[2pi + 2pi(1.045)^3] = 4.4849`; refining with the count gives about `4.9`. Both routes
+cap per-cell bounds at `4.7`–`4.9`, `13`–`17 %` below the requirement.
+
 Gaps: `(T'-R2')` open; best certified per-cell bound `4.734076` vs required `5.665735`;
 `icosa_dense_optimize.py` unauthored (`LOCAL_ICOSA_SEARCH.md` BLOCKED on authoring).
