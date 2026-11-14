@@ -812,3 +812,27 @@ mathematical content is.
 pipeline works end to end at degree 33. It is the fallback for any candidate the
 geometric route produces: a candidate profile ⇒ run `exactcert` and
 `verify_comp_cert` ⇒ `VERIFIED_CROSS` or nothing.
+
+### K15-C026 — `shell_check` accepts tight (even-multiplicity) zeros (`VERIFIED` by self-test)
+
+- **Bug found and fixed in Main's checker.** The first revision decided
+  `q ≥ 0` and `p ≤ 0` by counting *all* distinct real roots on the half-line or
+  interval. A polynomial that *touches* zero without changing sign was therefore
+  rejected — and that is exactly the shape of a CE optimum, where `f(2) = 0` is
+  forced by the equality case. The earlier checker would have rejected every
+  tight certificate while accepting only slack ones.
+- **Fix.** Sign changes are now counted on the **odd part** of the polynomial
+  (`sqf_list`, keep factors of odd multiplicity), with endpoints tested for the
+  required sign, and `≤` (not `<`) as the verdict. Regression cases are now
+  permanent in `--self-test` §S4: `(u−5)² ≤ 0` on `[0,10]` must FAIL,
+  `−(u−5)² ≤ 0` must PASS, `u² ≥ 0` on `[0,∞)` must PASS, `u−1 ≥ 0` must FAIL.
+- **Effect on the earlier result.** C's K33b certificate is still `ACCEPT` with
+  the same exact value (it happens to have strict signs, so the fix changes
+  nothing there). The fix matters for any future tight candidate.
+- **Artifact.** `Computation/shell_check.py`
+  `sha256 4f4a0ba8aee4fc765a204c6ad925e064bb036af2f437a22c669092e4f3f85eb3`.
+  Reproduce: `python3 KeplerConjecture/Computation/shell_check.py --self-test`.
+- **Status.** `VERIFIED` (self-test + re-verification of C's certificate).
+  Reviewer X: the odd-part argument is two lines (`q ≥ 0` on an interval iff the
+  odd part has no root there and `q ≥ 0` at the endpoints); confirm it agrees
+  with `exactcert.yun_odd_part`.

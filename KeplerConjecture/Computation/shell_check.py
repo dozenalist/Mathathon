@@ -106,6 +106,41 @@ def poly_from(coeffs, var):
     return sum(sp.Rational(c) * var ** i for i, c in enumerate(coeffs))
 
 
+def _odd_part(poly_expr):
+    """Product of the irreducible factors of odd multiplicity (the part that
+    controls SIGN changes).  A polynomial touches zero without changing sign
+    exactly at multiple roots of even multiplicity, and those must NOT be
+    counted: at a CE optimum f(2) = 0 is forced, so a checker that rejects
+    even-multiplicity zeros rejects every tight certificate."""
+    uu = sp.Symbol('u')
+    P = sp.Poly(poly_expr, uu)
+    if P.degree() < 1:
+        return sp.Poly(1, uu)
+    _, fac = sp.factor_list(P)
+    out = sp.Poly(1, uu)
+    for f, m in fac:
+        if m % 2 == 1:
+            out = out * sp.Poly(f, uu)
+    return out
+
+
+def _roots_in(poly_expr, lo, hi, closed_lo=False) -> int:
+    """Number of DISTINCT real roots of poly in (lo, hi) (or [lo, hi))."""
+    uu = sp.Symbol('u')
+    P = sp.Poly(poly_expr, uu)
+    if P.degree() < 1:
+        return 0
+    seq = sp.sturm(P.as_expr(), uu)
+    def sc(x):
+        vals = [_sign_at(t, x) for t in seq]
+        vals = [v for v in vals if v != 0]
+        return sum(1 for a, b in zip(vals, vals[1:]) if a * b < 0)
+    n = sc(lo) - sc(hi)
+    if not closed_lo and _sign_at(P.as_expr(), lo) == 0:
+        n -= 1
+    return n
+
+
 def _sign_at(poly_expr, x):
     """Sign of a polynomial at x in [-inf, +inf]; at infinity use the leading coeff."""
     P = sp.Poly(poly_expr, sp.Symbol('u'))
@@ -125,12 +160,14 @@ def nonneg_on_half_line(coeffs) -> bool:
     if q.eval(0) < 0:
         return False
     from sympy import sturm, oo
-    seq = sturm(q.as_expr(), u)
-    def sign_changes_at(x):
-        vals = [_sign_at(s, x) for s in seq]
-        vals = [v for v in vals if v != 0]
-        return sum(1 for a, b in zip(vals, vals[1:]) if a * b < 0)
-    return sign_changes_at(0) - sign_changes_at(oo) == 0
+    od = _odd_part(q.as_expr())
+    if _roots_in(od.as_expr(), sp.Integer(0), sp.oo) > 0:
+        return False
+    # no sign change on [0, inf): the sign is that of q at any non-root point
+    for probe in (0, 1, 2, 3, sp.Rational(1, 2), 10):
+        if q.eval(probe) != 0:
+            return q.eval(probe) > 0
+    return False
 
 
 def le_on_interval(coeffs, eta, lo, hi) -> bool:
@@ -140,12 +177,12 @@ def le_on_interval(coeffs, eta, lo, hi) -> bool:
     from sympy import sturm, oo
     if r.degree() < 0:
         return True
-    seq = sturm(r.as_expr(), u)
-    def sc(x):
-        vals = [_sign_at(s, x) for s in seq]
-        vals = [v for v in vals if v != 0]
-        return sum(1 for a, b in zip(vals, vals[1:]) if a * b < 0)
-    return sc(sp.Rational(lo)) - sc(sp.Rational(hi)) == 0
+    od = _odd_part(r.as_expr())
+    if _roots_in(od.as_expr(), sp.Rational(lo), sp.Rational(hi)) > 0:
+        return False
+    # no sign change inside: the sign on [lo, hi] is the endpoint sign, and the
+    # condition is r = p - eta <= 0 there (this routine certifies an UPPER bound).
+    return r.eval(sp.Rational(lo)) <= 0 and r.eval(sp.Rational(hi)) <= 0
 
 
 def _ray(coeffs, hi) -> bool:
@@ -156,12 +193,10 @@ def _ray(coeffs, hi) -> bool:
         return True
     if r.LC() > 0:
         return False                      # p -> +inf
-    seq = sturm(r.as_expr(), u)
-    def sc(x):
-        vals = [_sign_at(s, x) for s in seq]
-        vals = [v for v in vals if v != 0]
-        return sum(1 for a, b in zip(vals, vals[1:]) if a * b < 0)
-    return sc(sp.Rational(hi)) - sc(oo) == 0
+    od = _odd_part(r.as_expr())
+    if _roots_in(od.as_expr(), sp.Rational(hi), sp.oo) > 0:
+        return False
+    return r.eval(sp.Rational(hi)) <= 0
 
 
 def check(a, rho=F(209, 100), eta=F(0), K=None, count=12, verbose=True):
@@ -239,6 +274,16 @@ def self_test():
     print("   %s  p = 2 - 2u/9 satisfies both p-conditions" % ("PASS" if p_ok else "FAIL"))
     print("   %s  q = 1 + 2u/3 is nonnegative" % ("PASS" if q_ok else "FAIL"))
     ok = ok and p_ok and q_ok
+    print("== S4: even-multiplicity zeros must be ACCEPTED (tight certificates) ==")
+    cases = [("p = (u-5)^2 <= 0 on [0,10] must FAIL", le_on_interval([25, -10, 1], 0, 0, 10), False),
+             ("p = -(u-5)^2 <= 0 on [0,10] must PASS", le_on_interval([-25, 10, -1], 0, 0, 10), True),
+             ("q = u^2 >= 0 on [0,inf) must PASS", nonneg_on_half_line([0, 0, 1]), True),
+             ("q = u-1 >= 0 on [0,inf) must FAIL", nonneg_on_half_line([-1, 1]), False)]
+    for name, got, want in cases:
+        good = (got == want)
+        print("   %s  %s" % ("PASS" if good else "FAIL", name))
+        ok = ok and good
+
     print("\nSELF-TEST:", "ALL PASS" if ok else "FAILURES")
     return ok
 
