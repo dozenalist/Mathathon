@@ -119,6 +119,37 @@ def main():
                     print("FALSE ACCEPT (structured, _ray of +p):", sp.factor(expr), "at", r)
                     sbad += 1
                 break
+    # structured pass 2: IRRATIONAL roots -- the family that defeated X's checker
+    # (a root of u^2 - 2 or u^2 - 3 is irrational; any code that converts a root
+    #  to a Rational inside a try/except silently drops it).
+    ibad = 0
+    for _ in range(max(20, args.n // 10)):
+        a, b = rng.sample([2, 3, 5, 6, 7, 10], 2)
+        expr = (uu ** 2 - a) * (uu ** 2 - b)
+        sign = 1
+        if rng.random() < 0.5:
+            expr = -expr
+            sign = -1
+        # between sqrt(min) and sqrt(max) the product is negative, so the
+        # polynomial has sign -sign there.  Test the claim "expr >= 0" on the
+        # half-line: it must be accepted only when sign = -1 (then expr >= 0).
+        got = nonneg_on_half_line(coeffs_of(expr, uu))
+        if got and sign == 1:
+            print("FALSE ACCEPT (irrational roots, nonneg):", sp.factor(expr))
+            ibad += 1
+        # and a compact-interval claim that must fail: expr <= 0 on a window that
+        # straddles the middle interval when sign = -1 (there expr > 0)
+        mid = (float(min(a, b)) ** 0.5 + float(max(a, b)) ** 0.5) / 2
+        lo = sp.Rational(int(mid * 8), 8)
+        hi = lo + sp.Rational(1, 4)
+        claim = le_on_interval(coeffs_of(expr, uu), 0, lo, hi)
+        vals = [sp.simplify(expr.subs(uu, lo)), sp.simplify(expr.subs(uu, hi)),
+                sp.simplify(expr.subs(uu, (lo + hi) / 2))]
+        if claim and any(v > 0 for v in vals):
+            print("FALSE ACCEPT (irrational roots, interval):", sp.factor(expr), lo, hi)
+            ibad += 1
+    print("structured (irrational-root) cases also checked; false accepts:", ibad)
+    sbad += ibad
     print("structured (perfect-square) cases also checked; false accepts:", sbad)
     bad += sbad
     print("\nchecked %d random polynomials, false accepts found: %d" % (checked, bad))

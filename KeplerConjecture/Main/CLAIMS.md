@@ -1798,3 +1798,19 @@ slowest real use and stays far below the 300 s cap.
   still a bound — and the label is misleading, not the verdict.
 - **Status.** `REFUTED` (their routine), routed to X with the fix. No project claim
   used their routine; the K33 value above is unaffected.
+
+### K15-C064 — fuzz now covers the two structured families that broke checkers (`TESTED_FINITE`)
+
+`predicate_fuzz.py` gained two structured passes on top of the random one:
+
+1. **perfect squares** with rational roots (the family of `K15-C058`) — 0 false
+   accepts;
+2. **irrational roots** — products `(u²−a)(u²−b)` with non-square `a, b`, the
+   family that defeats X's routine (`K15-C063`) because a root like `√2` cannot be
+   converted to a `Rational`. Both the nonnegativity and the compact-interval
+   claims are probed at rational points whose exact signs are known — 0 false
+   accepts.
+
+Seeds `55, 61, 62` (600 polynomials total) clean. The point of these passes is
+that **uniform random coefficients never produce either family**, which is why
+three successive checkers passed their "random" tests while being wrong.
