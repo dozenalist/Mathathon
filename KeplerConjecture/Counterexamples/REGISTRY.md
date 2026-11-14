@@ -1755,3 +1755,11 @@ decisions; E's `barlow_contact_cell.py` uses `sympy`. Independent methods, same 
 and **hcp** local types, `12` contacts at distance 2, `14` vertices with `|x|² = 3/2` (×8) and `2` (×6),
 `K ⊆ B(0,√2)` with equality attained, `12` faces carrying vertices, and `vol K = 4√2 = 5.6568542494923802`
 exactly for both. So the contact-polytope bound (`C104`'s repair of `C094`'s Lemma 1) is doubly verified.
+
+### K15-X-C110 — E's two C5 code paths agree: the float fixture and the exact certifier both give 5.8980173718
+
+`c5_fixture.cell_of(W1, FIXTURE \ W1)` (numpy + `scipy.spatial.ConvexHull`) returns **`5.898017371803719`**
+with `20` vertices and cell circumradius `1.301723341`, and `cell_certificate`'s exact enclosure for the same
+configuration is `[5.898017371, 5.898017371]`. So the independent float and exact paths agree to `1e-12` on
+the C5 cell, and the 12-point fixture is 2-separated *including* the central `C = (0,0,0)` (distances
+`2.0`×7, `2.102924448`×5, pairwise min `2.0`).
