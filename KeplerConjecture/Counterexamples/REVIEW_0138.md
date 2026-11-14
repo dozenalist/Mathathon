@@ -590,3 +590,70 @@ success     a certified value < 0.780718153
 | my invalid `0.810774751` | **retracted** before it could propagate |
 
 Ultramath is the actual runtime, per the supervisor; I accept that and make no contrary claim.
+
+---
+
+## 15. Main's seventh witness: *touching root-isolation intervals* (new defect class)
+
+### 15.1 The witness, verified
+
+Main's `shell_check` at `e76a1570…` (blob lineage: `a8526a8` → `5619c1d` → `812105c3`) rejects the
+six earlier witnesses but **accepts**
+$$q(u)=\Bigl(u-\tfrac75\Bigr)^2-\frac{2}{10^{40}},$$
+for which `q(7/5) = −2×10⁻⁴⁰ < 0`, so `q ≥ 0` on `[0,∞)` is **false**. Its negation is likewise
+accepted by `_ray(−q,0)` and `le_on_interval(−q,0,0,3)`, though `−q(7/5) = +2×10⁻⁴⁰ > 0`.
+
+### 15.2 The mechanism, and why it is a *different* defect from the earlier five
+
+The two real roots are `7/5 ± √(2)·10⁻²⁰`. Their exact isolating intervals **share the rational
+endpoint** `7/5`, and `_test_points` only samples `(prev + a)/2` when `a > prev`; with `a = prev =
+7/5` no point is inserted, so the entire negative dip between the two roots is skipped. The
+`_odd_part` root count is 2 (correct), so the code does take the "roots present" branch — it simply
+has no sample inside the only gap that matters.
+
+**A sharper statement of what goes wrong.** `sympy`'s `real_roots`/`intervals` *collapse*
+near-coincident roots onto a common rational endpoint: on this `q`, `real_roots(multiple=True)`
+returns `[7/5, 7/5]`. Meanwhile **`count_roots` (Sturm) returns exactly 2.** So any decision
+procedure built on isolating-interval midpoints inherits that collapse, while a procedure built on
+an exact root *count* does not.
+
+### 15.3 X's predicate is immune, verified on this witness
+
+My `exact_sign.py` **never samples**: it counts the real roots of the odd-multiplicity part with
+Sturm on `(0,∞)` (or strictly inside the interval) and rejects whenever the count exceeds 0, because
+a simple root forces a sign change. Verified:
+
+| query | value | correct | X's predicate |
+| --- | --- | --- | --- |
+| `nonneg_on_half_line(q)` | `q(7/5) < 0` | reject | **False** ✔ |
+| `_ray(−q, 0)` | `−q(7/5) > 0` | reject | **False** ✔ |
+| `le_on_interval(−q, 0, 0, 3)` | `−q(7/5) > 0` | reject | **False** ✔ |
+
+and the same at `(r, ε) = (7/5, 2·10⁻⁴⁰), (1/2, 10⁻⁶⁰), (3, 10⁻²⁰)`, where the **opposite**
+direction `(u−r)² + ε ≥ 0` (no real roots) is correctly **accepted** — so the immunity is not
+bought by over-rejecting. The Sturm count of `q`'s odd part on `(0,∞)` is `2`, exactly.
+
+### 15.4 What Main needs, stated as a completeness requirement
+
+The repair is **not** "add the endpoint 7/5 to the probe list": with `ε = 10⁻⁶⁰` the dip is
+`10⁻⁶⁰` wide and no finite list of probes can be guaranteed to hit it. The requirement is:
+
+> Decide the sign from an **exact Sturm count** of the odd-multiplicity part on the domain (after
+> removing endpoint factors), together with the **algebraic** sign on the gaps
+> (`sign(c)·sign(u)` at a point inside, or `sign(lc u)` for a half-line once the count is 0).
+> Isolating-interval midpoints may be used to *find* a point in a gap, but must never be the sole
+> evidence that a gap has no sign change.
+
+This is precisely rules (H)/(I) of §12.1, and it is why my implementation survived all three
+generations of Main's witnesses without modification: it was never probe-based.
+
+### 15.5 Status
+
+| item | status |
+| --- | --- |
+| Main `shell_check` (`e76a1570…`, blob `812105c3`) | **PENDING** — 7 false accepts across 3 revisions; audit completeness, not case lists |
+| X `exact_sign.py` | **unchanged and passing** on the new class (no re-probe needed) |
+| `K15-X-C013` | **independently reconstructed locally and confirmed** (`P0/Q0` matches, `Q` has no nonnegative real root, Machin enclosure gives `δ < 0.794809295672`) — remains a weak ordinary-CE control |
+| `K15-X-C014` | factor-rounded SDP running in Astra's private CVXPY environment; **not duplicated here** |
+| transfer constant / cut hypotheses (`C035`/`C044`) | **reconciliation routed through Main**, as instructed |
+| generic checker soundness | **suspended** — no statement about any checker beyond the tested families |
