@@ -45,7 +45,7 @@ Reviewer: X. Withdrawn and narrowed claims are kept, not deleted.
 | --- | --- | --- |
 | `K15-E030`, `K15-E031` | block rule R1 | **withdrawn**; singleton block gives `5.5503 ≥ 5.6569`, false |
 | `K15-E040` | icosahedral compensation | not decidable from certified data |
-| `K15-E043` | "`(T')` is implausible" | **withdrawn**; `(T')` has `+44 %` measured slack |
+| `K15-E043` | "`(T')` is implausible" | **withdrawn** at the time because `(T')` appeared to have `+44 %` slack — but that slack is itself now retracted (`K15-E062`), so `(T')` currently has **no numerical evidence either way** |
 | `K15-E046` | perturbation heuristic | **withdrawn**; non-additive to `V_dodeca` |
 | `K15-E047` | angular technique as a route | **withdrawn**; `4.734 < 5.550291`, weaker than the import |
 | **`K15-E049` as originally worded** | "closes the per-cell route" | **narrowed to family F**; see `REVIEW_0138.md` §1 |
