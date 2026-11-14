@@ -1534,3 +1534,21 @@ last two blocks' verification was version-specific.
   condition with an explicit `Φ`. `Main/NEXT_PACKAGE.md` item 3 stands with this
   lesson recorded.
 - **Status.** `NEGATIVE SEARCH` (nothing found in the tested family). Reviewer X.
+
+### K15-C052 — every quoted constant re-derived by one script (`VERIFIED`)
+
+- **Artifact.** `Computation/constants_check.py`: 22 checks, **ALL PASS**, of
+  every constant the ledger quotes — `4π/3`, `V_dod = 5.550291028515510`,
+  `0.754697399337`, `π/√18 = 0.740480489693`, `√32 = 5.656854249492`,
+  `σ₃ = 0.779635570044` and `V_Rogers = 5.372754099135`, the two required
+  improvements (`1.05288` over Rogers, `1.0192` over dodecahedral, i.e. 5.29% and
+  1.92%), the Tammes thresholds at `ρ = 2.02, 2.05, 2.09` (`0.509852, 0.524093,
+  0.542135` and `59.346°, 58.393°, 57.171°`), `23681/43681` at `ρ = 2.09`, the
+  transfer constants `3Φ(R+1)⁵ = 729` at `(Φ,R) = (1,2)` and `1598.29` at
+  `R = 2.51`, `Φ ≥ 0.0041` at the icosahedral vertex, and the K33b ratio and
+  `Δ = 0.779966216777`.
+- **What it caught.** Three of the script's first-run failures were *my own*
+  rounded placeholders in the check (`1.01920` against `1.01919957…`), not ledger
+  errors: the ledger's percentages (5.29%, 1.92%) are correct. The placeholders
+  were replaced by the exact values with a `1e−5` tolerance.
+- **Status.** `VERIFIED`. Reviewer X: run it before quoting any constant.
