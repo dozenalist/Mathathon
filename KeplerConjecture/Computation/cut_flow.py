@@ -48,15 +48,36 @@ SQ32_LO = F(5656854249492380195206, 10 ** 21)
 SQ32_HI = F(5656854249492380195207, 10 ** 21)
 # Regular dodecahedron of inradius 1  (the central cell of the 13-cluster at separation 2):
 #   V = (15 + 7 sqrt5)/4 * a^3,  a = 2/sqrt(5/2 + 11 sqrt5/10)
-V_DOD_LO = F(5550291028519371, 10 ** 15)   # 5.550291028519371
-V_DOD_HI = F(5550291028519372, 10 ** 15)   # 5.550291028519372
+#
+# CORRECTED (review 0353-C).  The previous hard-coded enclosure
+#     V_DOD in [5.550291028519371, 5.550291028519372]
+# EXCLUDED the true value 5.550291028515510269...  (it was too high by 3.9e-12).  The bounds
+# below are regenerated from that exact radical by rational interval arithmetic with integer
+# square roots (k15radicals.py), which is a reproducible proof rather than a rounded constant.
+import k15radicals as RAD
+V_DOD_LO, V_DOD_HI = RAD.dodeca_volume_enclosure(digits=40)
+# Ring-ring distance for the fixture: the icosahedron of CIRCUMRADIUS 2 has edge
+#   4 sqrt2 / sqrt(5 + sqrt5) = 2.1029244484765344...
+# The previous hard-coded threshold 2.1029 is BELOW that, so build_13(2.1029) wrongly created
+# the 30 ring-ring edges.  The gate now uses this enclosure, in the conservative direction.
+EDGE_LO, EDGE_HI = RAD.icosa_edge_enclosure(digits=40)
 
 def fcc_b():   return F(0), F(0)           # vol Omega = sqrt32 exactly
 def hcp_b():   return F(0), F(0)
 
 def icos_b():
-    """Periodised 13-cluster: cell 0 = regular dodecahedron of inradius 1, cells 1..12 share
-    the rest of the period cube 16^3 = 4096.  Returns (b_lo, b_hi) lists."""
+    """Periodised 13-cluster: cell 0 = regular dodecahedron of inradius 1, cells 1..12 SHARE the
+    rest of the period cube 16^3 = 4096.  Returns (b_lo, b_hi) lists.
+
+    WHAT "SHARE" MEANS (period_convention.py).  The torus cells partition the period cube, so
+        sum_{v in X} vol Omega(v) = 4096   exactly,   and   vol Omega(0) = V_dod exactly,
+    hence the twelve ring cells sum to 4096 - V_dod and, being congruent, each has volume
+    (4096 - V_dod)/12 = 340.870809080957.  Congruence is not assumed: the icosahedron in cyclic
+    coordinates is invariant under coordinate permutations and even sign changes, so the octahedral
+    group preserves both the register and 16 Z^3 and acts transitively on the twelve ring vertices
+    (orbit size 12).  Measured with half-space intersection (float, ~1e-12): the twelve agree to
+    3.4e-13 and the thirteen sum to 4096.000000000.
+    """
     period = F(4096)
     b0_lo = SQ32_LO - V_DOD_HI
     b0_hi = SQ32_HI - V_DOD_LO
@@ -97,7 +118,21 @@ def validate_icos_fixture():
     #   for inradius 1, R_circ = sqrt( (5/2 + 11 sqrt5/10) ) * 2 cos(pi/5) / ...  use the known
     #   value 1.2584086... and bound it crudely and rigorously below 8.
     R_circ_upper = 1.3            # the true value is 1.2584...; 1.3 < 8 already suffices
-    return dict(V1_min_separation=float(dmin), V1_ok=bool(dmin >= 2 - 1e-12),
+    # V4: is the fixture SATURATED?  A packing is saturated if no further unit ball fits, i.e.
+    # if every point of space is within distance 2 of some centre.  For the period-16 cluster the
+    # period cube is large compared with the cluster, so there are big holes: it is NOT saturated.
+    # Saturation is not needed for C044's cut/flow criterion (which applies to any packing), but
+    # it IS needed for Hales-type local arguments, so the scope is recorded explicitly.
+    L = 16.0
+    import itertools as _it
+    best_hole = 0.0
+    for k in _it.product(range(-1, 2), repeat=3):
+        p = [k[t] * L / 2.0 for t in range(3)]
+        d = min((p[0] - v[0]) ** 2 + (p[1] - v[1]) ** 2 + (p[2] - v[2]) ** 2 for v in V) ** 0.5
+        best_hole = max(best_hole, d)
+    saturated = bool(best_hole < 2.0)
+    return dict(V4_max_hole=float(best_hole), V4_saturated=saturated,
+                V1_min_separation=float(dmin), V1_ok=bool(dmin >= 2 - 1e-12),
                 V2_nearest_image=16.0 - 2.0, V2_ok=True,
                 V3_circumradius_bound=R_circ_upper, V3_uncut=bool(R_circ_upper < 8.0))
 
@@ -137,17 +172,29 @@ def icosa_edges():
                 E.add((i, j))
     return V, sorted(E)
 
-def build_13(distance_R):
-    """Vertices 0..12; edges: central to all twelve (distance exactly 2 <= R), plus the
-    icosahedral ring edges (ring distances >= edge 2.1029 <= R iff R >= 2.1029).
-    Distance-gated so the R convention is explicit."""
+def build_13(distance_R, direction="refute"):
+    """Vertices 0..12; edges by DISTANCE, gated with the exact edge length.
+
+    Central-ring edges are at distance exactly 2 (rational, no uncertainty).
+    Ring-ring edges are at distance 4 sqrt2/sqrt(5+sqrt5) in [%s, %s].
+
+    DIRECTION MATTERS, and this is why the parameter exists:
+      direction="refute"  -> include a ring edge iff R >= EDGE_LO, i.e. a SUPERGRAPH of the true
+                             graph.  A cut violating in a supergraph also violates in the true
+                             graph (its boundary is no smaller), so refutation stays sound.
+      direction="flow"    -> include iff R >= EDGE_HI, i.e. a SUBGRAPH.  A flow on a subgraph is a
+                             flow on the true graph, so feasibility stays sound.
+    When R is outside the uncertainty band both directions give the same graph.
+    """ + ("  [edge in (%.15f, %.15f)]" % (float(EDGE_LO), float(EDGE_HI)))
     # BUG FIXED: the central-ring edges are at distance exactly 2, so they must be gated by R
     # too.  An earlier version added them unconditionally, which gave R = 1 a twelve-edge star
     # instead of the correct isolated-vertex graph (the R < 2 regime).
+    R = F(distance_R) if not isinstance(distance_R, F) else distance_R
     E = set()
-    if distance_R >= 2.0 - 1e-9:
+    if R >= 2:                                          # exact rational distance
         E |= {(0, j) for j in range(1, 13)}            # central-ring at distance exactly 2
-    if distance_R >= 2.1029 - 1e-9:
+    gate = EDGE_LO if direction == "refute" else EDGE_HI
+    if R >= gate:
         _, ringE = icosa_edges()
         E |= {(i + 1, j + 1) for (i, j) in ringE}      # ring-ring at the icosahedron edge
     return 13, sorted(E)
@@ -156,7 +203,7 @@ def build_fcc_patch(n):
     """n x n x n supercell of FCC at minimum separation 2 (centres sqrt2 * D_3).
     Every cell volume is sqrt32, so b = 0 exactly.  Edges between centres at distance <= R
     are computed from the explicit coordinates with periodic images."""
-    A = (2.0 ** 0.5) * [[0, 1, 1], [1, 0, 1], [1, 1, 0]]
+    A = [[2.0 ** 0.5 * c for c in row] for row in [[0, 1, 1], [1, 0, 1], [1, 1, 0]]]   # elementwise
     sites = []
     for i in range(n):
         for j in range(n):
@@ -272,6 +319,22 @@ def exhaustive_cut_scan(b_lo, edges, cap_subsets=1 << 16):
     return dict(t_star=best[0], U=list(best[1]), sum_b=best[2], boundary=best[3],
                 subsets_scanned=(1 << n) - 1,
                 empty_boundary_positive=[(list(U), str(sb)) for (U, sb) in empty_boundary_positive])
+
+
+def bracket_t_star(b_lo, b_hi, edges):
+    """Pin t* between two exhaustive scans:  t_lo <= t* <= t_hi.
+
+    b_lo <= b <= b_hi componentwise, so for EVERY subset U the ratio is monotone in b, and taking
+    the max over U preserves both inequalities.  Hence the scan on b_lo gives a lower bound and the
+    scan on b_hi an upper bound -- an interval, not a one-sided bound.  Reported only when the two
+    scans agree on the maximizing U, which is what makes the interval tight.
+    """
+    lo = exhaustive_cut_scan(b_lo, edges)
+    hi = exhaustive_cut_scan(b_hi, edges)
+    if lo is None or hi is None:
+        return None
+    return dict(t_lo=lo["t_star"], t_hi=hi["t_star"], U_lo=lo["U"], U_hi=hi["U"],
+                same_argmax=bool(lo["U"] == hi["U"]), width=hi["t_star"] - lo["t_star"])
 
 
 def feasible_flow(b, edges, Phi):
@@ -432,6 +495,10 @@ def main():
     print("   V2 nearest periodic image of the origin at distance %.1f >= 2   OK" % val["V2_nearest_image"])
     print("   V3 central cell circumradius <= %.1f < 8 (half-period), so the cell is UNCUT"
           % val["V3_circumradius_bound"])
+    print("   V4 largest empty hole >= %.4f  =>  %s"
+          % (val["V4_max_hole"],
+             "SATURATED" if val["V4_saturated"] else
+             "UNSATURATED (a further ball fits): a sparse periodic fixture"))
     print("      => the central cell is exactly the regular dodecahedron of inradius 1; its volume")
     print("         is the certified enclosure [%s, %s]\n" % (V_DOD_LO, V_DOD_HI))
     if not (val["V1_ok"] and val["V2_ok"] and val["V3_uncut"]):
@@ -439,7 +506,9 @@ def main():
     b_lo, b_hi = icos_b()
     print("== icosahedral 13-cluster (periodised), b from rational enclosures:")
     print("   central cell b in [%.12f, %.12f]" % (float(b_lo[0]), float(b_hi[0])))
-    print("   ring cells  b in [%.6f, %.6f]" % (float(b_lo[1]), float(b_hi[1])))
+    print("   ring cells  b in [%.6f, %.6f]  (each of the twelve; congruent by the octahedral"
+          % (float(b_lo[1]), float(b_hi[1])))
+    print("               symmetry, measured to 3.4e-13 -- see period_convention.py)")
     for R in (1.0, 2.0, 2.1029, 3.0):
         n, edges = build_13(R)
         row = dict(fixture="icos13", R=R, n_edges=len(edges),
@@ -464,8 +533,8 @@ def main():
         pos = [r for r in sb_rows if r["verdict"] == "SINGLETON_BOUND"]
         if pos:
             print("   per-fixture singleton bounds b(v)/deg(v): "
-                  + ", ".join("v%d: %s/%d = %.12f"
-                              % (r["vertex"], r["b"], r["degree"], float(F(r["singleton"])))
+                  + ", ".join("v%d: %.15f (deg %d)"
+                              % (r["vertex"], float(F(r["singleton"])), r["degree"])
                               for r in pos))
         if infeas:
             print("   POSITIVE DEFICIT AT DEGREE ZERO at vertices %s: no transfer exists at any"
@@ -487,13 +556,24 @@ def main():
             print("                arbitrary fixture)")
         dec = period_decoupling(R)
         print("            period vs R: copies are >= %.4f apart, R = %.4f -> %s"
-              % (dec["gap"], R, "DECOUPLED (patch threshold is exact for the infinite packing)"
-                 if dec["decoupled"] else "INTERACTING (patch result is PATCH_ONLY)"))
+              % (dec["gap"], R,
+                 "DECOUPLED (the extremum over finite U is attained inside one copy, so the"
+                 " infinite-packing extremum is the patch extremum)" if dec["decoupled"]
+                 else "INTERACTING (patch result is PATCH_ONLY)"))
         ex = exhaustive_cut_scan(b_lo, edges)
         if ex is not None:
-            print("            EXACT scan of all %d subsets: t* = %.15f at U=%s  %s"
+            print("            t* from all %d subsets (b_lo scan): %.15f at U=%s  %s"
                   % (ex["subsets_scanned"], float(ex["t_star"]), ex["U"],
-                     "(singleton is optimal)" if ex["U"] == [0] else ""))
+                     "(singleton attains it)" if ex["U"] == [0] else ""))
+            br = bracket_t_star(b_lo, b_hi, edges)
+            if br is not None:
+                print("            BRACKET on the true t*: [%.15f, %.15f]  width %.1e  %s"
+                      % (float(br["t_lo"]), float(br["t_hi"]), float(br["width"]),
+                         "(same maximizer)" if br["same_argmax"] else
+                         "(DIFFERENT maximizers -- read both)"))
+                row["t_star_bracket"] = [str(br["t_lo"]), str(br["t_hi"])]
+                row["t_star_width"] = str(br["width"])
+                row["t_star_argmax_stable"] = br["same_argmax"]
             if ex["empty_boundary_positive"]:
                 print("            NOTE: %d empty-boundary subset(s) have sum_U b > 0 -> infeasible"
                       " at any Phi" % len(ex["empty_boundary_positive"]))
@@ -507,9 +587,10 @@ def main():
                   % (list(U), float(sb), float(bd)))
             print("            sum b / |delta^+| = %.12f" % float(ratio))
         Phi_try = (phi_min + F(1, 100)) if phi_min is not None else F(1, 100)
-        phi = feasible_flow(b_hi, edges, Phi_try)
+        n_f, edges_f = build_13(R, direction="flow")      # SUBGRAPH: sound for feasibility
+        phi = feasible_flow(b_hi, edges_f, Phi_try)
         if phi is not None:
-            ok_cap, ok_div, div = verify_flow_exact(b_hi, edges, Phi_try, phi)
+            ok_cap, ok_div, div = verify_flow_exact(b_hi, edges_f, Phi_try, phi)
             print("            Phi=%.6f: flow found, |phi|<=Phi: %s, divergence>=b: %s"
                   % (float(Phi_try), ok_cap, ok_div))
             print("            (PATCH_FEASIBLE only: this says nothing about other finite U"
