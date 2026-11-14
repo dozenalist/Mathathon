@@ -353,3 +353,34 @@ run on the VM.
 Not fetchable at this checkpoint: `Main/HOURLY_REVIEW_2026-11-14_0008.md` and
 `Computation/Reviews/48443/` (announced, absent from `0e28e09`). K15-C017's
 witness is therefore carried from the assignment text (`M-QUEUE-001`).
+
+### K15-COMP-004 — 2026-11-15 00:08 Pacific — Computation (role C), review 48443
+
+**RETRACTION.** `K15-C-EXACTCERT-001` is **REFUTED** and withdrawn in full. No bound in
+`Computation/` is currently proved.
+
+| claim | status | detail |
+| --- | --- | --- |
+| K15-C-EXACTCERT-001 | **REFUTED** | the `K = 21` certificate has ten simple positive roots of `q`; `q(57955199/21687900) ≈ -3.8762318927e-05 < 0`. Witness reproduced exactly by `exactcert_tests.py` T5 |
+| the certified ladder (`0.82276` … `0.78011`) | **REFUTED** | all seven stored candidates (`out/certificate_K9..K21.json`) are rejected by the repaired checker, by A1 or A2. Retained as evidence, not deleted |
+| K15-C-BUG-001 | **PROVED (defect)** | `certify_relaxed` had `if verbose: print(...); return rec`, placing `return` inside the `if`: failures were swallowed whenever `verbose=False`, and the success path then set `ok=True` with the failure `reason` still attached |
+| K15-C-BUG-002 | **PROVED (defect)** | `yun_odd_part` returned a monic odd part and discarded `lc(p)`, so `-t-1` mapped to `t+1` and the sign of the polynomial was lost |
+| K15-C-CHECKER-001 | repaired, tested | single-return-path verdict computed before any printing; `yun_odd_part` returns `(c, u)` with `sign(p) = sign(c)·sign(u)`; constants, zero polynomials and endpoint roots handled explicitly and fail closed |
+| K15-C-TESTS-001 | tested | `exactcert_tests.py`: verbosity invariance over 7 candidates, the review's `[2,-1]` case rejected in both modes, sign-preservation of the odd part, degenerate-input fail-closed, the `K21` counterexample and its witness, and 24 random candidates cross-checked against an independent SymPy oracle with no false acceptance. All pass |
+| K15-C-ROUNDUP-001 | repaired | bounds are rendered from `4·PI_HI·p0/(3·q0)` by exact ceiling division (`delta_upper_decimal`), so the displayed value is an upper bound rather than a truncation of a float |
+| K15-C-ODDDEG-001 / K15-C-STRICTLOSS-001 | retained | still correct and independent of the bug |
+
+**What the review corrected that I had asserted wrongly.** (i) I reported `ok=true` while the
+`reason` field said "A2: 10 simple root(s) of the odd part on the half-line" — the JSON
+contradicted itself and I did not read it back. (ii) I displayed `0.78010544`, a truncation of
+my own float, as a certified bound. (iii) I described the `K=9` disagreement between strict and
+squarefree paths (`2.50596` vs `0.82276`) as evidence the strict test was "useless", when in
+fact the squarefree verdict was itself unsound.
+
+**Process change adopted.** The checker now has a regression suite that must pass before any
+bound is reported, and `ok=true` with a non-null `reason` is impossible by construction.
+
+**Deliberately not attempted in this block:** the strengthened 3D benchmark (shell-count
+`<=12` to `rho = 2.09`, objective `(4*pi/3)(f(0)+12 eta)/fhat(0)`). Per the assignment the
+checker repair takes precedence; the specification and handoff are in
+`Computation/REQUESTS/K15-C-REQ-003.md` for the next block.
