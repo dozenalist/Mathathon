@@ -130,6 +130,25 @@ the ring (contact at `1.9938` at `105°`), and above `120°` it penetrates the *
 at `120°` the added margin is exactly `2.000000`, so the window closes on a contact at both
 ends. The optimum is strictly inside.
 
+**The azimuth is resolved too.** Block 0308 only compared `φ ∈ {0°, 36°}`. Sweeping
+`φ` in `3°` steps with `θ` re-optimised at each:
+
+```
+vol        phi   theta   minsep(added)
+5.898007181  36    112     2.170617     <- optimum
+5.899012348  33    112     2.124816
+5.901995162  30    112     2.081673
+5.906856424  27    112     2.041477
+5.913426947  24    112     2.004519
+5.921461585  21    112     1.971085     <- illegal below ~22 deg
+```
+
+The volume increases monotonically as `φ` decreases from `36°`, and legality fails below
+`φ ≈ 22°`, so `φ = 36°` is optimal and the optimum is **interior in `φ`** — not pinned by a
+contact. (By the reflection symmetry of the pentagon there is nothing to check beyond
+`36°`.) The symmetric family is therefore fully resolved at `(θ, φ) = (112°, 36°)` with
+`vol = 5.898007181`.
+
 ---
 
 ## 3. The three numbers, kept apart
