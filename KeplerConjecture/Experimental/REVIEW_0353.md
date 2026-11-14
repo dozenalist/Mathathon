@@ -264,6 +264,23 @@ The gap `5.898 − 5.763 = 0.135` is what a better completion would have to clos
 gap `5.763 − 5.550 = 0.213` is what a lower-bound proof would have to clear. **Neither is
 established.** The configuration is a witness, not an extremiser.
 
+### 3.0 Two things this fixture does *not* claim
+
+**The twelve pairs are one problem, not twelve.** The icosahedral group acts transitively
+on the twelve outer centres and fixes `c`, so for every `i` there is a symmetry carrying the
+pair `(c, w_1)` to `(c, w_i)`. The local problem — minimise `vol Ω(w_i)` over legal
+supersets — is therefore *identical* for the twelve, and "the icosahedral pair" is a single
+configuration. That is why `§2` settles one case and not eleven more.
+
+**The fixture is a witness for the pair, not a compensation of the cluster.** Its five
+pentagons and its south pole are built around `w_1` alone. If one tried to give all twelve
+payers the same treatment the twelve pentagons would interfere: this is the same frustration
+recorded in `K15-E040` and in the failed completions of block 0308. So the fixture shows
+that **one** payer can be pushed to `5.897967` while the centre keeps its dodecahedral cell;
+it says nothing about whether all twelve can be compensated at once, which is what `(CUT)`
+actually needs. The pair conjecture `(P')` is the statement that each pair, individually,
+can be — and that is exactly the statement `5.897967` tests.
+
 ### 3.1 The rejected candidate, kept on the record
 
 Block 0308 produced `vol Ω(w1) = 3.237838` and reported it legal (`§14.5` there). It is
