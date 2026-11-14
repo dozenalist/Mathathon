@@ -153,14 +153,15 @@ was entirely a `G`/`A` artefact of the pivot solve.
 
 I re-ran the SDP at three larger forced margins `ε_AB` (the stored one is `10⁻⁶`) and shrank
 each solution at the coarsest grid that still passes exact `LDLᵀ`, so the answer is a frontier
-rather than a single point:
+rather than a single point. Each density is the one at the *coarsest* grid that still passes, i.e.
+the row's own certificate — not the best density that configuration could reach at a fine grid:
 
 | forced `ε_AB` | density | coarsest grid that passes | digits | bytes |
 | --- | --- | --- | --- | --- |
 | **`10⁻⁶`** (stored) | **0.7822673** | `2⁻²⁴` | **20** | **2,646** |
 | `10⁻³` | 0.783625 | `2⁻¹⁸` | 18 | 2,231 |
-| `10⁻²` | 0.795846 | `2⁻¹²` | 16 | 1,833 |
-| `5·10⁻²` | 0.850160 | `2⁻¹⁰` | 16 | 1,732 |
+| `10⁻²` | 0.795789 | `2⁻¹²` | 16 | 1,833 |
+| `5·10⁻²` | 0.849759 | `2⁻¹⁰` | 16 | 1,732 |
 
 Two conclusions.
 
