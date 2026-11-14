@@ -1,0 +1,72 @@
+[
+  {
+    "job": "independent_repairs",
+    "workdir": ".",
+    "args": [
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\worktrees\\kepler15-01a1d8c0\\KeplerConjecture\\Main\\LocalChecks\\2026-11-14_0438\\probe_repairs.py",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0438\\local-jobs\\KeplerConjecture"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 30,
+    "elapsed_seconds": 2.343,
+    "peak_observed_bytes": 60358656,
+    "log": "independent_repairs.log"
+  },
+  {
+    "job": "c_cut_tests",
+    "workdir": "Computation",
+    "args": [
+      "tests_cut_flow.py"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 30,
+    "elapsed_seconds": 3.36,
+    "peak_observed_bytes": 93175808,
+    "log": "c_cut_tests.log"
+  },
+  {
+    "job": "e_exact_fixture",
+    "workdir": ".",
+    "args": [
+      "Experimental/scripts/c5_fixture.py"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 30,
+    "elapsed_seconds": 3.093,
+    "peak_observed_bytes": 95436800,
+    "log": "e_exact_fixture.log"
+  },
+  {
+    "job": "e_barlow_contact",
+    "workdir": ".",
+    "args": [
+      "Experimental/scripts/barlow_contact_cell.py"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 30,
+    "elapsed_seconds": 4.954,
+    "peak_observed_bytes": 58159104,
+    "log": "e_barlow_contact.log"
+  },
+  {
+    "job": "e_global_pilot_seed0",
+    "workdir": ".",
+    "args": [
+      "Experimental/scripts/c5_global_search.py",
+      "--seconds",
+      "45",
+      "--seed",
+      "0"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 60,
+    "elapsed_seconds": 46.593,
+    "peak_observed_bytes": 79122432,
+    "log": "e_global_pilot_seed0.log"
+  }
+]

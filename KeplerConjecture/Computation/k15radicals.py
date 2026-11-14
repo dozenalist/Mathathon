@@ -93,7 +93,7 @@ def self_test():
     print("                   %s]" % float(v_hi))
     print("       true value: %s" % mp.nstr(exact_v, 20))
     good_v = float(v_lo) <= float(exact_v) <= float(v_hi)
-    old_bad = F(5550291028519371, 10 ** 15) <= F(str(mp.nstr(exact_v, 20))) 
+    old_bad = F(5550291028519371, 10 ** 15) <= F(str(mp.nstr(exact_v, 20)))
     print("       true value inside the NEW enclosure: %s" % good_v)
     print("       ... and the OLD lower bound 5.550291028519371 was above it: %s"
           % (float(exact_v) < 5.550291028519371))

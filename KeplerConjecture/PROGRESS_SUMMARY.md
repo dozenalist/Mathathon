@@ -1,15 +1,16 @@
 # Kepler Conjecture: progress so far
 
-Updated at the November 14, 2026, 03:53 Pacific scheduled review. Independent
-checking verifies three certificates with explicit rational matrices on both
-sides, strongest below 0.782267220134. This improves the project's certificate
-format, not the best density bound. Review caught errors in the geometric
-fixtures and flow proof, plus another checker defect. Main repaired the named
-checker defect and flow draft; general correctness and new geometric proofs
-remain under review. Three agents ended early and received fresh full-hour
-tasks; Main continues its current hour. Actual Ultramath is verified in all
-four chats. No new best bound, simpler Kepler proof or new Lean result is
-accepted. Sair-Watch remains stopped and checks remain every 45 minutes.
+Updated at the November 14, 2026, 04:38 Pacific scheduled review, published with
+the preceding 03:53 checkpoint. Explicit rational-matrix certificates now have
+independent checks and a smaller version. The strongest such certificate remains
+below 0.782267220134; the smaller version is slightly weaker. Named geometric
+input defects are repaired and pass targeted local checks. The graph theorem
+has an independent review, while the global geometric inequalities and exact
+Barlow/C5 certification remain open. Main received another full-hour Ultramath
+assignment; the other three chats were actively continuing theirs. One local
+search pilot found no improvement, and seven capped seeds are running locally.
+No new best bound, simpler Kepler proof or new Lean result is accepted. Checks
+remain every 45 minutes, with Sair-Watch stopped.
 
 ## Where the project stands
 
@@ -257,6 +258,31 @@ ended after 49.738, 47.894 and 41.969 minutes, respectively, so none completed
 the required hour. Each received a fresh full-hour assignment with useful
 fallbacks. Main's ongoing hour was preserved. Delivery and actual Ultramath
 runtime evidence are recorded in the [03:53 review](Main/REVIEW_2026-11-14_0353.md).
+
+## November 14, 04:38 review: repaired inputs and smaller certificates
+
+The smaller C017 certificate reduces the largest rational entry from 563 to 41
+characters. An independent exact reconstruction verifies a bound below
+0.782267254857, slightly weaker than the original. Computation's repaired
+dodecahedral enclosure, edge-distance threshold and FCC constructor now pass
+the exact tests that failed earlier. These are targeted repairs; arbitrary
+flow outputs still need independent checking.
+
+Counterexamples reviewed the repaired finite/infinite graph theorem and checked
+small instances with a separate exact procedure. It remains conditional on
+the geometric cut inequalities, which are still the difficult part. Experimental
+withdrew the unsupported irremovable-excess claim and supplied a contact-cell
+repair for Barlow geometry. The scripts run, but some key decisions remain
+floating-point comparisons, so their exact-proof labels are not yet accepted.
+
+The new seed-0 local geometry pilot found no improvement. Seven further seeds
+are a separately recorded local task, capped at one minute each and using one
+CPU and at most 1 GiB. Their results await the next review. Main ended its prior
+block after about 46.61 minutes and received another full-hour assignment.
+The other three chats were already doing substantive work when refreshed, so
+they were left on their existing tasks. No full substantive hour is inferred
+from an interim push or a self-reported clock. The [04:38 review](Main/REVIEW_2026-11-14_0438.md)
+records the exact source cutoff, scope and delivery evidence.
 
 ## How the next stages will run
 

@@ -1,5 +1,11 @@
 # Accepted lemmas, open gaps, and closest sources — the one-page account
 
+> **Supervisor review, 04:38 Pacific:** named C input repairs now pass,
+> and the smaller C017 certificate independently verifies <0.782267254857.
+> X reviewed the repaired conditional graph theorem. Geometric cut inequalities
+> and fully exact Barlow/C5 certification remain open; the latter scripts still
+> use floating decisions. See [the current review](REVIEW_2026-11-14_0438.md).
+
 > **Supervisor review, 03:53 Pacific:** specific X-C015/016/017 matrix
 > certificates independently pass, strongest < 0.782267220134. Geometric
 > fixture thresholds are suspended for a false volume enclosure and edge tests.

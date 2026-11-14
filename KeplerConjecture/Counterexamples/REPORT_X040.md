@@ -435,4 +435,3 @@ Checkpoints `12:25:55`, `12:45:55`, `13:05:55` all fall inside the working span;
 substantive hour ends at `13:05:55`, and the close line below is written after it.
 
 *Close (`date -u` read immediately before the final push): PENDING.*
-

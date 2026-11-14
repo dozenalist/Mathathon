@@ -1,0 +1,61 @@
+==============================================================================
+FROZEN FIXTURE  (exact coordinates in Q(sqrt5, sqrt55))
+==============================================================================
+  c      +0.000000000000 +0.000000000000 +0.000000000000
+  w1     +0.000000000000 +0.000000000000 +2.000000000000
+  ring0  +1.788854382000 +0.000000000000 +0.894427191000
+  ring1  +0.552786404500 +1.701301616704 +0.894427191000
+  ring2  -1.447213595500 +1.051462224238 +0.894427191000
+  ring3  -1.447213595500 -1.051462224238 +0.894427191000
+  ring4  +0.552786404500 -1.701301616704 +0.894427191000
+  pent0  +1.499957652430 +1.089783024697 +2.750000000000
+  pent1  -0.572932841543 +1.763305974323 +2.750000000000
+  pent2  -1.854049621774 +0.000000000000 +2.750000000000
+  pent3  -0.572932841543 -1.763305974323 +2.750000000000
+  pent4  +1.499957652430 -1.089783024697 +2.750000000000
+  south  +0.000000000000 +0.000000000000 +4.000000000000
+
+[1] exact distances that define the fixture
+  |w1 - c|            = 2.000000000000000   (exactly 2)
+  |ring_k - c|        = 2.000000000000000   (exactly 2)
+  |ring_k - w1|       = 2.102924448476534   (= edge of the icos)
+  |pent_k - w1|       = 2.000000000000000   (exactly 2, by cos^2+sin^2=1)
+  |south - w1|        = 2.000000000000000   (exactly 2)
+
+[2] legality: every pair, INCLUDING pairs against w1 itself
+  min over all 78 pairs = 2.000000000000000  at (c, ring0)
+  min separation on pairs (added centre, anything but w1) = 2.171229792   <- real margin
+  (the printed overall minimum is the constructed |pent-w1| = |south-w1| = 2,
+   which is a legal contact, not a slack)
+  PASS: 2-separated (the only equality is the constructed |pent-w1| = |south-w1| = 2)
+
+[3] the cell of w1 from the twelve centres
+  bounded polytope: True
+  vertices: 20   max|vertex - w1| = 1.301723341121
+  vol Omega(w1) = 5.898017371804
+  (ball B(w1,2) is inactive: max|vertex| = 1.301723 < 2)
+  above V_dodeca = 5.550291029? True   (a value below it would be a bug)
+  threshold (P') needs 5.763417470;  margin = +0.134599901
+
+[4] THEOREM: no legal centre can cut this cell  ->  vol12 is exact
+  a cutting centre needs |z-w1| <= 2*max|vertex| = 2.603446682
+  covering radius of the 12 directions about w1: max over mesh = 39.4801 deg,
+     mesh diameter 2.3686 deg  =>  certified  gamma <= 41.8488 deg
+  worst |z - s|^2 over the shell (gamma, rho<=rho_max) = 3.043698336   (needs < 4)
+  PASS: every z with 2 <= |z-w1| <= rho_max is within distance 2 of a fixture centre
+        => no legal superset cuts the cell => vol Omega(w1) = 5.898017371804 EXACTLY
+
+[5] cross-check of the volume (independent Monte Carlo, 4e6 samples)
+  MC = 5.901210   exact = 5.898017   |diff| = 0.003192  (MC sigma ~ 0.01)
+
+[6] the rejected candidate 3.237838 (kept for the record)
+  A run in block 0308 reported vol = 3.237838 as 'legal'.  It is REJECTED:
+  its penalty never imposed |z - w1| >= 2, so the optimiser put centres inside the
+  payer.  A value below V_dodeca = 5.550291 contradicts the imported dodecahedral
+  theorem, which is what exposed it.  It is not evidence of anything.
+
+wrote Experimental/evidence/c5_fixture.json
+
+==============================================================================
+ALL CHECKS PASSED
+==============================================================================

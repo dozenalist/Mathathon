@@ -641,3 +641,21 @@ with evidence steering. Full delivery IDs, times, source hashes, local limits
 and decisions are in Main/ASSIGNMENTS_2026-11-14_0353.json,
 Main/SYNC_2026-11-14_0353.json and Main/REVIEW_2026-11-14_0353.md.
 All local jobs ended; two searches reached caps. Watchers remain stopped.
+
+## Supervisor checkpoint: November 14, 04:38 Pacific
+
+Integrated Main 7ba7146, C 6fbd0a1, E 498cfc3 and X d64de36 with original
+authorship. K15-SUP-0438-01 verifies the smaller rational Gram certificate
+strictly below 0.782267254857. Named C input repairs pass (-02). X independently
+reviews the repaired graph theorem, conditional on the geometric cuts (-03).
+E's unsupported irremovable-excess claim is withdrawn; Barlow contact-cell and
+C5 geometry scripts pass but floating filters prevent fully exact certification
+from those runs alone (-04). Five local foreground jobs completed. Seven capped
+local search seeds remain an explicit private task; no Lean build was requested.
+
+Main completions 102385/102479 were deduplicated and a new full-hour website
+assignment delivered, with actual Ultramath verified. C/E/X remained busy;
+interim completions did not trigger duplicate assignments. Main received local
+results at its next step without resetting its new hour. Exact IDs and times:
+Main/ASSIGNMENTS_2026-11-14_0438.json. Detailed scope, sources and pending jobs:
+Main/REVIEW_2026-11-14_0438.md. No new best bound or simpler Kepler proof accepted.

@@ -1,0 +1,20 @@
+
+=== fcc ===
+  contacts: 12, all at distance 2;  vertices of K: 14
+  |x|^2 =    3/2   multiplicity 8
+  |x|^2 =      2   multiplicity 6
+  K subset B(0,sqrt2):  True   (exact; equality attained at |x|^2 = 2)
+  faces carrying vertices: 12;  vol K = 4*sqrt(2)  = 5.6568542494923801952
+  vol K = 4*sqrt2 exactly  (agrees with (F4))
+
+=== hcp ===
+  contacts: 12, all at distance 2;  vertices of K: 14
+  |x|^2 =    3/2   multiplicity 8
+  |x|^2 =      2   multiplicity 6
+  K subset B(0,sqrt2):  True   (exact; equality attained at |x|^2 = 2)
+  faces carrying vertices: 12;  vol K = 4*sqrt(2)  = 5.6568542494923801952
+  vol K = 4*sqrt2 exactly  (agrees with (F4))
+
+ALL CHECKS PASSED
+Lemma 1' holds exactly for both local types, so Main's Lemma 1 is repairable
+without circularity:  K subset B(v,sqrt2) subset H_c  for every non-contact c.
