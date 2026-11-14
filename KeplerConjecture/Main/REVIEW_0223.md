@@ -101,10 +101,10 @@ instruction, Lean imports are **not** iterated this block: the module stays
 - **`K15-C080`** — the transfer's cut condition is *strictly weaker* than `(T')`
   when a component has out-edges, but a **closed** component reduces it exactly to
   `(T')`; the first version wrongly asserted every bounded component has out-edges.
-- **`K15-C081`/`C082`** — a cluster-level floor on `Φ`: `Φ ≥ 1.3853218727/132 =
-  0.0104949` at `R = 2.09` (using the outer–outer distance `2.102924 > 2.09`), so a
-  candidate transfer with smaller `Φ` is refuted outright. E's Barlow spectrum was
-  re-run and agrees with `K15-C033`.
+- **`K15-C081`/`C082`** — a cluster-level floor on `Φ` was claimed and then
+  **withdrawn in review 0308**: it used an upper bound on the cluster's signed deficit
+  as a lower bound. The valid floor is the singleton one, `Φ ≥ 0.0088803`
+  (`K15-C081r`). E's Barlow spectrum was re-run and agrees with `K15-C033`.
 - **`K15-C075`** — cost profile: the witness `0.07 s`, degree-33 rational roots
   `0.02 s`, but a degree-35 polynomial with a `1.4·10⁻¹⁰` root pair takes minutes.
   Exact but slow; no certificate enters that branch.
