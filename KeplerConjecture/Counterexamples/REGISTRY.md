@@ -1986,7 +1986,8 @@ column, which is the one that matters, was right.)
 `KeplerConjecture/` at `6ae7dbf`; the last two say "not refuted" / "inconclusive" explicitly, and
 `dense_completion_search` notes "computed sum is an UPPER bound so this is inconclusive" — the monotonicity
 direction is stated correctly, as in `cluster_fixture` (`X-C116`). That is **27** Experimental programs run
-this block, every one passing from the documented directory.
+this block, every one passing from the documented directory; `X-C132` adds one more
+(`icosa_compensation_search`), for **28**.
 
 ### K15-X-C132 — the defective module passes its own controls, which is why `X-C060`/`X-C061` survived
 
