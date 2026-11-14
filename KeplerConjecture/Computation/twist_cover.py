@@ -1,30 +1,35 @@
 #!/usr/bin/env python3
-"""K15-C112 -- two adjacent dodecahedral centres, certified for ALL relative twists.
+"""K15-C123 -- two adjacent dodecahedral centres impossible for ALL twists, RIGOROUS INNER arcs.
 
-Review 0523: a sampled twist maximum is not a proof.  Here is the proof, by arc covering.
+Rounding direction, which Main got wrong once and which the review caught:
+  * v1 sampled a twist grid                                              (retracted, review 0523)
+  * v2 built an arc cover but INFLATED endpoints outward by 1e-20        (retracted, review 0608)
+  * v3 (this file) uses rigorous INNER arcs.
 
-For a pair (a in v's other eleven, q in w's other eleven) the squared distance under a relative
-twist t about the v-w axis is a pure sinusoid
+Why inner.  A clash for every twist means the union of the violation sets
+T_pq = { t : pair (p,q) closer than 2 } covers the twist circle.  Each T_pq is an open arc.  Arcs
+A_pq SUBSET of T_pq that still cover give a correct proof.  Arcs A_pq SUPERSET of T_pq do not:
+the cover could be produced entirely by the added material.  So the rounding must go INWARD.
 
-    d^2(t) = A + B cos t + C sin t = A + R cos(t - psi),   R = sqrt(B^2+C^2), psi = atan2(C,B),
+Construction.  d^2(t) = A + B cos t + C sin t = A + R cos(t - psi), so
+    T_pq = { t : cos(t - psi) < (4 - A)/R },
+an open arc with centre psi and half-width h = arccos((4-A)/R).  With 60-digit mpf arithmetic
+(per-operation error ~1e-59, ~20 operations, so < 1e-57 total) and a deliberate inner margin
+MARGIN = 1e-30, the interval
+    ( psi - h + MARGIN ,  psi + h - MARGIN )
+lies strictly inside T_pq.  MARGIN is 27 orders above the arithmetic error and 27 orders below
+any arc width, so it costs nothing and guarantees the direction.
 
-so the twists for which that pair is CLOSER than 2 form
-
-    T = { t : cos(t - psi) < (4 - A)/R },
-
-which is empty, the whole circle, or a single arc of half-width arccos((4-A)/R).  A clash for
-every twist is therefore the statement that the finitely many arcs T cover the twist circle
-(period 2*pi/5 = 72 deg, the icosahedral stabiliser of the shared vertex axis).
-
-Arithmetic: 50 significant digits, and every arc endpoint is inflated by EPS before the cover
-test, so the arcs tested are supersets of the true ones and the cover is conservative in the
-right direction.  22-24 arcs; no twist is sampled and no grid is involved.
+A cover of [0, 2*pi/5] by these inner arcs is a cover by strict violations: for every relative
+twist some pair is STRICTLY closer than 2.  The period 2*pi/5 is the icosahedral stabiliser of
+the shared vertex axis.
 """
+import math
 import sys
-from mpmath import mp, mpf, pi, atan2, sqrt, floor, acos
+from mpmath import mp, mpf, pi, atan2, sqrt, acos
 
-mp.dps = 50
-EPS = mpf('1e-20')
+mp.dps = 60
+MARGIN = mpf('1e-30')
 PERIOD = 2 * pi / 5
 
 
@@ -40,25 +45,25 @@ def build():
     for k in range(5):
         a = 2 * pi * k / 5 + pi / 5
         pts.append((RHO * mp.cos(a), RHO * mp.sin(a), -H))
-    return [(z, y, -x) for (x, y, z) in pts]      # rotate the north pole onto +x
+    return [(z, y, -x) for (x, y, z) in pts]          # north pole onto +x
 
 
 def eleven(rot, sign):
-    keep = []
-    for q in rot:
-        if abs(q[0] - 2 * sign) < mpf('1e-30'):
-            continue
-        keep.append(q)
+    keep = [q for q in rot if abs(q[0] - 2 * sign) > mpf('1e-40')]
     assert len(keep) == 11, len(keep)
     return keep
 
 
-def arcs():
+def inner_arcs(d=None, threshold=None, verbose=False):
+    """inner safe arcs in [0, PERIOD]; d = centre separation (default 2), threshold = 2."""
     rot = build()
-    A = eleven(rot, +1)          # v's other eleven (w is at x = +2 in v's frame)
-    Q = eleven(rot, -1)          # w's other eleven, in w's frame (v is at x = -2)
-    w = (mpf(2), mpf(0), mpf(0))
-    out = []
+    A = eleven(rot, +1)
+    Q = eleven(rot, -1)
+    dd = mpf(2) if d is None else mpf(d)
+    thr = mpf(2) if threshold is None else mpf(threshold)
+    t2 = thr * thr
+    w = (dd, mpf(0), mpf(0))
+    out, kinds = [], {'whole': 0, 'empty': 0, 'arc': 0}
     for a in A:
         u = (w[0] - a[0], w[1] - a[1], w[2] - a[2])
         for q in Q:
@@ -66,52 +71,66 @@ def arcs():
             B = 2 * (u[1] * q[1] + u[2] * q[2])
             C = 2 * (u[2] * q[1] - u[1] * q[2])
             R = sqrt(B * B + C * C)
+            if Aij + R < t2:
+                out.append((mpf(0), PERIOD)); kinds['whole'] += 1; continue
+            if Aij - R > t2:
+                kinds['empty'] += 1; continue
             psi = atan2(C, B)
-            if Aij + R < 4:                      # too close for every twist
-                out.append((mpf(0), PERIOD))
-                continue
-            if Aij - R > 4:                      # never too close
-                continue
-            c = (4 - Aij) / R
+            c = (t2 - Aij) / R
             c = max(min(c, mpf(1)), mpf(-1))
-            half = acos(c)
-            lo, hi = psi - half, psi + half
-            k0 = int(floor(lo / PERIOD)) - 2
+            h = acos(c)
+            left = psi - h + MARGIN
+            right = psi + h - MARGIN
+            if right <= left:
+                kinds['empty'] += 1; continue
+            kinds['arc'] += 1
+            k0 = int(math.floor(float(left) / float(PERIOD))) - 2
             for k in range(k0, k0 + 6):
-                l2, h2 = lo + k * PERIOD, hi + k * PERIOD
+                l2, h2 = left + k * PERIOD, right + k * PERIOD
                 L = max(l2, mpf(0))
                 Hh = min(h2, PERIOD)
                 if Hh > L:
-                    out.append((L - EPS, Hh + EPS))     # inflate: superset
-    return out
+                    out.append((L, Hh))
+    if verbose:
+        print(f"  kinds: whole {kinds['whole']} empty {kinds['empty']} proper {kinds['arc']}")
+    return out, kinds
 
 
-def main():
-    A = arcs()
-    print(f"arcs built: {len(A)} of at most 121 pairs")
-    A = sorted(A)
+def coverage(arcs):
+    if not arcs:
+        return False, [], [], mpf(0)
+    arcs = sorted(arcs)
     merged = []
-    for lo, hi in A:
+    for lo, hi in arcs:
         if merged and lo <= merged[-1][1]:
             merged[-1][1] = max(merged[-1][1], hi)
         else:
             merged.append([lo, hi])
-    print(f"after merging: {len(merged)} interval(s), total length "
-          f"{float(sum(hi - lo for lo, hi in merged)):.6f} of period {float(PERIOD):.6f}")
-    for lo, hi in merged:
-        print(f"   [{float(lo):+.8f}, {float(hi):+.8f}]")
-    starts_ok = merged[0][0] <= mpf(0)
-    ends_ok = merged[-1][1] >= PERIOD
     gaps = [i for i in range(len(merged) - 1) if merged[i][1] < merged[i + 1][0]]
-    print(f"\nstarts at 0: {starts_ok}   reaches the period end: {ends_ok}   gaps: {len(gaps)}")
-    ok = starts_ok and ends_ok and not gaps
+    starts = merged[0][0] <= 0
+    ends = merged[-1][1] >= PERIOD
+    total = sum(hi - lo for lo, hi in merged)
+    return (starts and ends and not gaps), merged, gaps, total
+
+
+def main():
+    print("rigorous INNER arcs (margin 1e-30, arithmetic 60 digits)")
+    arcs, kinds = inner_arcs(verbose=True)
+    ok, merged, gaps, total = coverage(arcs)
+    print(f"arcs placed: {len(arcs)}   merged: {len(merged)}   covered length "
+          f"{float(total):.10f} of period {float(PERIOD):.10f}")
+    print(f"starts at 0: {merged[0][0] <= 0}   reaches period end: {merged[-1][1] >= PERIOD}"
+          f"   gaps: {len(gaps)}")
+    for lo, hi in merged:
+        print(f"   [{float(lo):+.10f}, {float(hi):+.10f}]")
     print()
     if ok:
-        print("CERTIFIED (all twists, not a sample): the arcs cover the whole twist circle, so")
-        print("for EVERY relative twist some pair of the two eleven-point sets is closer than 2.")
-        print("Two adjacent dodecahedral centres are therefore impossible.")
+        print("CERTIFIED with INNER arcs.  For EVERY relative twist some pair is strictly")
+        print("closer than 2, so two adjacent dodecahedral centres are impossible.")
+        print("Because the arcs used are subsets of the true violation sets, the cover is a")
+        print("cover by strict violations and needs no outward rounding anywhere.")
     else:
-        print("NOT CERTIFIED: coverage failed.")
+        print("NOT CERTIFIED with inner arcs.")
     return 0 if ok else 1
 
 

@@ -336,8 +336,10 @@ d²(t) = A + B cos t + C sin t = A + R cos(t − ψ),     R = √(B²+C²),
 
 so the twists that put that pair closer than `2` form the arc `{cos(t−ψ) < (4−A)/R}` of
 half-width `arccos((4−A)/R)` — empty, the whole circle, or a single arc. Each endpoint is
-computed at 50 digits and then **inflated by `1e−20`**, so the arcs tested are supersets of the
-true ones. The resulting arcs merge into **one interval covering `[0, 2π/5]` with zero gaps**,
+computed at 60 digits and then **shrunk inward by `1e−30`**, so each arc is a *subset* of the true
+violation set and a cover by them is a cover by strict violations (`K15-C123`; an earlier version
+inflated outward by `1e−20`, which cannot certify an exclusion — the extra material could close the
+gaps by itself). The resulting arcs merge into **one interval covering `[0, 2π/5]` with zero gaps**,
 `2π/5` being the icosahedral period of the shared vertex axis:
 
 ```

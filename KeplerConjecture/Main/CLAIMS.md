@@ -3832,3 +3832,40 @@ and a face-count bound. Neither is a sharpness barrier and both are finite-dimen
 
 *Status.* `PROPOSED`. The arithmetic in the table is `PROVED` and re-derived in
 `constants_check.py`; the two gaps are open. Reviewer X.
+
+### K15-C123 — the arc cover is re-done with rigorous **inner** arcs (`PROVED`; supersedes `C112`'s rounding)
+
+Review 0608: *"Your arc cover must use rigorous INNER safe arcs for a cover by strict violations;
+inflating outer numerical endpoints cannot certify an all-twists exclusion."* **Correct, and it is
+a soundness error in `C112` as written.**
+
+**What was wrong.** `C112` built, for each of the 121 pairs, the arc of twists that put that pair
+closer than 2, and then **inflated both endpoints outward by `1e−20`**. That produces supersets of
+the true violation sets. A cover by supersets does not prove a cover by the sets: the extra
+material can close the gaps by itself. The same inflation is *correct* when bounding an error term
+and *wrong* here — the direction depends on whether the arcs are being estimated or covered.
+
+**The fix.** Arcs are now **inner**: with `T_pq = (ψ − h, ψ + h)` the true (open) violation arc,
+the interval used is `(ψ − h + MARGIN, ψ + h − MARGIN)` with `MARGIN = 1e−30` at 60-digit
+arithmetic. Arithmetic error is `< 1e−57` over ~20 operations, so `MARGIN` is 27 orders above the
+error and 27 orders below any arc width: the shrink is rigorous and costs nothing. A cover by inner
+arcs is a cover by **strict** violations, which is exactly what an all-twists exclusion needs.
+
+**Result (unchanged, now sound).** 121 pairs: 71 never violate, 50 give proper arcs; 125 arcs
+placed (including wrapped copies), merging into **one interval covering `[0, 2π/5]` with zero
+gaps**, length `1.2566370614 = 2π/5`. So for every relative twist some pair is strictly closer
+than 2, and two adjacent dodecahedral centres are impossible.
+
+**`C116` re-derived with inner arcs, and it survives.** The critical separation, re-bisected with
+the inner-arc test to 30 iterations, is bracketed by
+`[2.68328157290816, 2.68328157309443]`, which contains `6/√5 = 2.68328157299975`. So the band
+`ε < 0.6832816` stands, now certified in the sound direction.
+
+**Also fixed in the same pass:** `near_contact_band.py` had the same outward inflation (it was a
+copy of the `C112` construction) and is now rewired to the inner-arc routine; `twist_cover.coverage`
+gains an empty-input guard (with `d` large enough no pair violates, the merge list was empty and
+the code crashed).
+
+*Status.* `PROVED` (modulo the 60-digit arithmetic and the `1e−30` inner margin). `C112`'s
+*statement* is unchanged and its rounding is superseded; per review 0608 both `C112` and this entry
+stay **`PENDING_REVIEW`** until X checks the exact claims.

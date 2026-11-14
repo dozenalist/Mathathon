@@ -37,49 +37,15 @@ def eleven(rot, sign):
     return [q for q in rot if abs(q[0] - 2 * sign) > mpf('1e-30')]
 
 
-def covers(d, thr):
-    """does the union of 'too close' arcs cover the twist circle, for centres d apart?"""
-    rot = build()
-    A = eleven(rot, +1)
-    Q = eleven(rot, -1)
-    w = (mpf(d), mpf(0), mpf(0))
-    t2 = thr * thr
-    out = []
-    for a in A:
-        u = (w[0] - a[0], w[1] - a[1], w[2] - a[2])
-        for q in Q:
-            Aij = (u[0]**2 + u[1]**2 + u[2]**2) + (q[0]**2 + q[1]**2 + q[2]**2)
-            B = 2 * (u[1] * q[1] + u[2] * q[2])
-            C = 2 * (u[2] * q[1] - u[1] * q[2])
-            R = sqrt(B * B + C * C)
-            psi = atan2(C, B)
-            if Aij + R < t2:
-                return True, 1.0
-            if Aij - R > t2:
-                continue
-            c = (t2 - Aij) / R
-            c = max(min(c, mpf(1)), mpf(-1))
-            half = acos(c)
-            lo, hi = psi - half, psi + half
-            k0 = int(floor(lo / PERIOD)) - 2
-            for k in range(k0, k0 + 6):
-                l2, h2 = lo + k * PERIOD, hi + k * PERIOD
-                L, Hh = max(l2, mpf(0)), min(h2, PERIOD)
-                if Hh > L:
-                    out.append((L - EPS, Hh + EPS))
-    out.sort()
-    merged = []
-    for lo, hi in out:
-        if merged and lo <= merged[-1][1]:
-            merged[-1][1] = max(merged[-1][1], hi)
-        else:
-            merged.append([lo, hi])
-    cov = 0
-    if merged and merged[0][0] <= mpf(0) and merged[-1][1] >= PERIOD:
-        cov = sum(hi - lo for lo, hi in merged) / PERIOD
-        gaps = sum(1 for i in range(len(merged) - 1) if merged[i][1] < merged[i + 1][0])
-        return gaps == 0, float(cov)
-    return False, float(cov)
+def covers(d):
+    """True iff the INNER safe arcs at centre separation d cover the twist circle.
+
+    Uses twist_cover.inner_arcs, i.e. rigorous inner arcs (K15-C123).  An earlier version of this
+    file inflated endpoints OUTWARD by 1e-20, which cannot certify an all-twists exclusion."""
+    from twist_cover import inner_arcs, coverage
+    arcs, _ = inner_arcs(d=d)
+    ok, merged, gaps, total = coverage(arcs)
+    return ok, float(total)
 
 
 def main():
@@ -87,7 +53,7 @@ def main():
     print(f"{'d':>8} {'cover?':>8} {'coverage':>10}")
     last_ok = None
     for d in ('2.00', '2.02', '2.05', '2.10', '2.20', '2.40', '2.60', '2.80', '3.00'):
-        ok, cov = covers(mpf(d), mpf(2))
+        ok, cov = covers(mpf(d))
         print(f"{d:>8} {str(ok):>8} {cov:>10.4f}")
         if ok:
             last_ok = d
