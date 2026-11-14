@@ -569,3 +569,14 @@ on Astra's machine rather than the SAIR VM.
 **Closing record for the block:** explicit-Gram certificates improved `5.99 → 2.62 → 1.99 → 1.41 →
 1.37125723`, with degree 9 worse at the same budget. All statuses are best-found / tested-family;
 no optimality is claimed anywhere.
+
+### K15-COMP-032 — 2026-11-14 — Computation (role C), record certificate independently validated
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-SOSVAL-001 | **VERIFIED_EXACT (four routes)** | the record certificate `Δ ≤ 1.37125723` (`out/hop2_23.json`) passes: the Gram identity by exact expansion; the exact conversion of `p` to the Laguerre basis (zero residual); `exactcert.certify` in strict **and** even-multiplicity modes; and the independent SymPy oracle. **Main's `shell_check` was deliberately not used**, since it is unsound | `REVIEW_0138.md` §13 |
+
+**Block closing record.** Twenty-two commits. Explicit-Gram certificates improved
+`5.99 → 2.62 → 1.99 → 1.41 → 1.37125723`, degree 9 worse at equal budget, record validated by four
+independent routes. Every status is `VERIFIED_EXACT`, `PROVED`, `TESTED_FAMILY` or
+`TESTED_FINITE` as appropriate; no optimality is claimed anywhere.

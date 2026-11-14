@@ -561,3 +561,18 @@ degree-5 optimum at `uphill = 0.05`, 3000 iterations, seed 101:
 Degree 9 is **worse**, because the parameter space grows faster than the iteration budget. Recorded
 so that nobody reads "higher degree" as "better" on this route: the record is a joint property of
 degree *and* search effort, and `(degree 7, 4000 hops)` is the best combination found.
+
+### Independent validation of the record certificate
+
+`out/hop2_23.json` (`Δ ≤ 1.37125723`) was checked by four routes, all passing:
+
+| check | result |
+| --- | --- |
+| Gram identity `q = Σ r_i² + u Σ s_j²`, by exact expansion | **holds** |
+| exact conversion of `p` to the Laguerre basis (residual identically zero) | **exact** |
+| `exactcert.certify`, strict mode (own Sturm + Yun over `Q`) | **ACCEPT**, `Δ ≤ 1.37125723` |
+| `exactcert.certify`, even-multiplicity mode | **ACCEPT** |
+| `exactcert_oracle.oracle` (independent SymPy `sqf_list` + `count_roots`) | **ACCEPT** |
+
+So the record rests on an explicit identity plus two exact implementations that share no code.
+`Main's shell_check` was **not** used for it, deliberately, since it is unsound (§1).
