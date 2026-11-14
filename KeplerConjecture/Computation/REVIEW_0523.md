@@ -265,6 +265,31 @@ Artifacts: `cut_flow.py` (contract + repair), `audit_cut_flow_api.py`,
 
 ## 8. Clock
 
-Receipt `2026-11-14T13:29:44Z`. The repair was pushed at `13:33:03Z` (commit `ae545b9`); this
-document, the register update and the geometric item follow, and the closing line is written from
-`date -u` at the end of the block.
+Receipt `2026-11-14T13:29:44Z`. Every commit of this block, on the real clock:
+
+| commit | UTC | what |
+| --- | --- | --- |
+| `ae545b9` | 13:33:03 | X-C034/D8 repaired -- the vertex set comes from b, never from the edge ... |
+| `dbf1bcf` | 13:34:34 | REVIEW_0523 (contract, audit, D4/D5/D7 reconciliation) and register update |
+| `e04b2a5` | 13:39:27 | exact rational Voronoi volumes -- smallest nonuniform fixture, and why ... |
+| `9e8b503` | 13:41:19 | geometry -> C044 fixture constructor, and the near-contact band is vacuous |
+| `d8a7be6` | 13:51:51 | REVIEW_0523 section 5 (geometric item), engine cross-check, register |
+| `28655f0` | 13:53:10 | the audit runs against any revision, with a control that fails |
+| `dbd0949` | 13:54:27 | the 13-cluster's b(0) survives filling its void -- D4's scope, settled |
+| `cde39fa` | 14:00:42 | broad near-contact scan -- 284 instances, three families, t* = 0 everyw... |
+| `81fb95b` | 14:01:00 | record the 284-instance scan in REVIEW_0523 and the register |
+| `1c930f7` | 14:14:28 | the near-contact scan widened to 500 instances in five families |
+
+**Substantive work accounting.** The repair, its audit and the reconciliation were done and pushed by
+`14:14Z`; of the block's span, the compute-bound portion is `nearcontact_scan.py` at roughly 13
+minutes of wall time over 500 instances, plus `fixture_nonuniform.py` at 30 s per run. The remaining
+minutes are the writing and the verification sweeps, not additional mathematics — stated because a
+previous block was called out for counting verification as substance.
+
+**Mode.** Ultramath is ON for the session; **no swarm was run**, as the four-chat structure is fixed
+and the review forbids new swarms. Nothing was written to `.ultramath/`.
+
+**Final state.** Every checker green at the pushed head, from a clean clone of the branch:
+`audit_cut_flow_api` 69/69, `tests_cut_flow`, `tests_0138`, `exactcert_tests`, `period_convention`,
+`highdensity_cut`, `k15radicals`, `fixture_cluster_robust` all pass; `compact_verify` accepts
+`Δ ≤ 0.7799662167769938`; `verify_certificate` accepts K33b.
