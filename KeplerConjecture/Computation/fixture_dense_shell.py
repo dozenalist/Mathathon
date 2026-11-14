@@ -161,6 +161,50 @@ def flow_and_obstruction_test():
           dmax < 2)
     return ok
 
+def cuboctahedral_shell(r):
+    """The OTHER natural 12-shell: the cuboctahedron, which is exactly FCC's neighbourhood."""
+    s_ = float(r) / 2 ** 0.5
+    pts = []
+    for a in (1, -1):
+        for b in (1, -1):
+            for v in ((a, b, 0), (a, 0, b), (0, a, b)):
+                q = tuple(F(int(round(c * s_ * DEN)), DEN) for c in v)
+                if q not in pts:
+                    pts.append(q)
+    return pts
+
+def contrast_test():
+    """Same contact number, same radius, opposite verdict -- so the ARRANGEMENT is what matters.
+
+    The cuboctahedral 12-shell is FCC's neighbourhood: at radius exactly 2 its cell is the rhombic
+    dodecahedron of volume sqrt(32), so b = 0 and it is never positive.  Above radius 2 it is
+    negative.  The icosahedral shell at the same radius gives b(0) = +0.1024.
+    """
+    ok = True
+    L = [[PERIOD, F(0), F(0)], [F(0), PERIOD, F(0)], [F(0), F(0), PERIOD]]
+    for r in ("2.0005", "2.05"):
+        sites = [(F(0), F(0), F(0))] + cuboctahedral_shell(F(r))
+        q = FN.min_separation(L, sites)
+        if q < 4:
+            print("  ..   cuboctahedral r = %s is not a packing" % r); ok = False; continue
+        comp = []
+        for s in sites:
+            for n in FN.lattice_points(L, 1):
+                w = tuple(s[t] + n[t] for t in range(3))
+                if FN.norm2(list(w)) <= 25:
+                    comp.append(w)
+        vol, _, _, _ = FN.cell_volume(sites[0], comp, return_vertices=True)
+        b0 = CF.SQ32_LO - vol
+        good = b0 < 0
+        ok = ok and good
+        print("  %s cuboctahedral shell r = %-7s : vol %.9f, b(0) = %+.9f < 0"
+              % ("PASS" if good else "FAIL", r, float(vol), float(b0)))
+    print("     (at r = 2 exactly this shell is FCC's neighbourhood: volume sqrt(32), b = 0)")
+    print("     => with the same 12 contacts at the same distance, the ICOSAHEDRAL shell gives")
+    print("        b(0) = +0.1024 and the CUBOCTAHEDRAL one gives a negative b.  The arrangement")
+    print("        decides, not the contact count or the radius.")
+    return ok
+
 def cut_profile():
     """Where does the fixture's content sit among all 8191 subsets?"""
     import json
@@ -354,6 +398,11 @@ if __name__ == "__main__":
     print("     5.5502910285 of radius exactly 2 (which the irrational 13-cluster realises)")
 
     print("\n" + "=" * 100)
+    print("A5. THE CONTRAST: the same 12 contacts, the other arrangement, the opposite verdict")
+    print("=" * 100)
+    contrast_ok = contrast_test()
+
+    print("\n" + "=" * 100)
     print("B. THE NONVACUOUS WINDOW: where does the shell stop giving b(0) > 0?")
     print("=" * 100)
     lo, hi, vlo, vhi = family()
@@ -363,5 +412,5 @@ if __name__ == "__main__":
     print("  t* = b(0)/12 at the last nonvacuous r: %.12f" % float((CF.SQ32_LO - vlo) / 12))
 
     print("\nexported:", export(L, sites, vols))
-    print("dense_shell:", "PASS" if (good and conv_ok and flow_ok) else "FAIL")
-    sys.exit(0 if (good and conv_ok and flow_ok) else 1)
+    print("dense_shell:", "PASS" if (good and conv_ok and flow_ok and contrast_ok) else "FAIL")
+    sys.exit(0 if (good and conv_ok and flow_ok and contrast_ok) else 1)
