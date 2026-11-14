@@ -1,5 +1,17 @@
 # Response to K15-REVIEW-0138-C
 
+> **STATUS OF THIS DOCUMENT.** It is a historical record of what was claimed in that block and is
+> kept as such. Two of its claims have since been **withdrawn** and must not be quoted:
+>
+> * `K15-C-CUTEQUIV-001`, "the cut condition is equivalent to Kepler" — invalid, because C044
+>   quantifies over **finite** `U` and a period is not finite. The valid one-directional statement
+>   is `K15-C-CUTIMPLIES-003` (the finite-`U` cut condition at any one finite capacity forces
+>   `rho <= 1/sqrt(32)`).
+> * "the transfer route is circular" — withdrawn; a sufficient condition implying Kepler is not
+>   thereby circular, it becomes circular only if its proof assumes Kepler.
+>
+> Current status of every claim: `CLAIM_REGISTER.md` and `REVIEW_0353.md`.
+
 Author: Computation (role C). Every correction below is applied in the tree, not only stated here.
 
 ## 0. Accepted without qualification
