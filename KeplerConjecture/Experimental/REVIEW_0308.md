@@ -335,3 +335,95 @@ the cluster, *for every* completion, the cut surplus is bounded below by `-1.278
 `E045b` and McLaughlin) and above by the (unknown) truth; *and* the two standard families give at
 most `66.603` against `67.989` required. It is *not* a claim that `(H_R)` is false — the truth may
 well exceed `67.989`; it is a claim that no currently available bound reaches it.
+
+## 9. A third attempt, which failed informatively: finite constraint sets bound the cell above
+
+Before settling on the formulation below I tried to compute the payer's cell directly, on the theory
+that the six known half-spaces plus an adversarial completion might pin it down. Computed
+polytope volumes (half-space intersection, exact directions from the fixture):
+
+| body | volume |
+| --- | --- |
+| six known half-spaces `cap B(0,2)` | `26.508617` |
+| six known + six tangent "completion" centres | `10.219733` |
+| reference: twelve tangent in the pentagonal model | `9.807948` |
+| `V_dodeca` | `5.550291` |
+| required mean | `5.665735` |
+
+**Every one of these is an upper bound.** Adding constraints shrinks the cell, so a finite
+constraint set gives `vol Omega <= (computed value)`, never `>=`. The numbers `26.51` and `10.22`
+therefore say nothing about the truth, and the third row is a warning about the model rather than a
+result: `9.808 != 5.550` shows my twelve directions were **not** the icosahedral ones around `w_i`
+— the five known neighbours sit at `58.28 deg` from `c`, whereas an icosahedron around `w_i` would
+put them at `63.43 deg`. So the actual configuration is not a subset of any icosahedron centred at
+`w_i`, which is itself worth recording: **the payers are not near-dodecahedral in a
+directions-compatible way.**
+
+I record this as a failed attempt rather than deleting it, because the failure mode (computing a
+finite constraint set and reading it as a lower bound) is exactly the one that produced the
+retracted `S - D` figures, and it recurs.
+
+## 10. The obstruction in the form it actually takes: a stability gap
+
+Combining §8 (two families excluded) and §9 (finite sets give upper bounds), the requirement
+cannot be met by any per-cell lower bound of the kinds available. What remains is a *stability*
+statement, and it is worth writing down because it is the precise missing input.
+
+**Required statement (`S_dod`).** There is an explicit `delta > 0` such that: if `v` is a centre
+of a saturated 2-separated set and `v` is **not** in the exact icosahedral configuration (`v` has
+twelve tangent neighbours at the icosahedron vertices of circumradius `2`), then
+
+```
+vol Omega(v)  >=  V_dodeca + delta .
+```
+
+For the cut `S = {c}` to be discharged by this route we need
+
+```
+12 (V_dodeca + delta)  >=  13 sqrt32 - V_dodeca
+      =>      delta  >=  13(sqrt32 - V_dodeca)/12  =  0.1154435 .
+```
+
+So the missing input is a **quantitative stability version of the dodecahedral theorem at the
+icosahedral configuration, with gap at least `0.1154435`** — equivalently, a lower bound of
+`5.665735` for any cell that is not exactly dodecahedral.
+
+**Why this is the right way to state it.**
+
+- It is *not* a per-cell bound of the excluded families: it uses the hypothesis "not exactly
+  icosahedral", which is a global exclusion rather than an inscribed body or a universal minimum.
+- It explains why `V_dodeca` alone is `2.04 %` short (§8): the minimum is attained, at `c` itself,
+  and stability says the *next* cells are strictly bigger.
+- It is a recognizable problem type (stability of an isoperimetric-type theorem), so its difficulty
+  can be compared to known work rather than guessed at.
+
+**What is honestly unknown.** Whether `(S_dod)` holds with a gap as large as `0.1154` (i.e. `2.1 %`
+of `V_dodeca`) is not something I can check, and I make no estimate. The measured excess in the
+pentagonal-pole model (§9, `10.219733`) is far larger than needed, which is weak encouragement and
+nothing more, since that model has only twelve constraints and the true cell is smaller.
+
+**Complexity compared to the Hales step.** `(S_dod)` is a statement about an infinite class
+(saturated packings, all non-icosahedral cells). Hales's local inequalities are each about a
+`6`-dimensional box and are decided by subdivision; `(S_dod)` has no such finite-dimensional
+reduction that I can see, because "not exactly icosahedral" does not bound the cell away from the
+extremal shape. So on present evidence `(S_dod)` is **harder** than the Hales step it would
+replace, not easier. That is the honest complexity verdict and it is weaker than the one I gave in
+§6, which spoke only of machinery.
+
+## 11. Status at the 20-minute checkpoint
+
+Checkpoint `11:36:52Z`. Substantive work completed in this block so far:
+
+| item | state |
+| --- | --- |
+| `K15-E070` `(Q)` = YES | **proved**, imports nothing, five-line form for checking (§1) |
+| `K15-E045a/b` split | done; `(Q)` uses only `a` (§2) |
+| `K15-E071` diameter obligation removed | **proved** (compactness, bounded degree from `E014`) (§3) |
+| ball cuts vs arbitrary subsets | component reduction proved; ball form shown neither necessary nor sufficient (§4) |
+| `STATUS_FOR_MAIN` | reconciled: 44 % removed, `E045` split, `E048`/`E049` restricted (§5) |
+| Main's `0.0104949` floor | not adopted (§5) |
+| fixture + script | `ICOSA_CUT_PACKAGE.md`, `icosa_cut_check.py` written and run (§4b) |
+| obstruction | two families excluded (§8); stability gap `0.1154435` identified as the missing input (§10) |
+| timing record | corrected; waiting does not establish compliance (`TIMING_CORRECTION.md`) |
+
+No early return; work continues.
