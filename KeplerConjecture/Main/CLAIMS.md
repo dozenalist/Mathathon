@@ -1743,3 +1743,14 @@ a smaller one). So `ρ = 2.09` is the natural choice and no separate enclosure i
 needed per width.
 
 *Status.* `PROVED` (immediate from `K15-E014`). Reviewer X.
+
+### K15-C061 — code index and a higher-degree fuzz (`TESTED_FINITE`)
+
+`Computation/README.md` indexes every tool Main ships, with commands and runtimes,
+the conventions in one paragraph, and the three warnings the block produced
+(grid signs are worthless; a test must be able to fail; test points must come from
+the polynomial's own roots).
+
+Added with it: a **degree-12** fuzz run (`--n 200 --deg 12 --seed 77`), 199
+polynomials, zero false accepts — the earlier runs were degree ≤ 6, where the
+isolating-interval code is barely exercised.
