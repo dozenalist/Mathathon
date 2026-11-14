@@ -25,6 +25,8 @@ never used to promote anything above TESTED_FINITE.
 | RR-C014 | **Theorem G**: closed forms for the all-fours ray $(4^r)$ | **PROVED** (same caveat) |
 | RR-C015 | $(1^s)$ with $s\equiv0\ (5)$, $s\ge30$: **provably** not closable in 2 steps; measured path lengths 44–672 | **PROVED** (lower bound) + TESTED_FINITE (lengths) |
 | RR-C016 | Candidate mechanisms M1 (collapse-and-singleton), M2 (free window) | OPEN; neither meets the objective |
+| RR-C018 | **Lemma CI**: `phi` Case I maps into Case II; `a' = a-1`; `mu' >= mu` | PROVED (weight, `a'=a-1`) + TESTED_FINITE (`weight<=26`) |
+| RR-C019 | BZ82's printed `mu_bar > mu` is **false**; the correct statement is `>=`, equality iff `lam(a)=lam(a+1)` | **REFUTED** (5 844 of 10 285 Case-I states, first `(-1;())`) |
 | RR-C012 | A "more natural" bijection meeting all criteria | **OPEN** |
 
 ## Details

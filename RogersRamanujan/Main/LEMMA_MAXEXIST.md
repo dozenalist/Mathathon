@@ -157,3 +157,57 @@ Case-II branch and locate the excluded set. They do not prove:
 * that `phi^2 = id`;
 * anything about the alternating composition, its termination, or the endpoint;
 * any statement about `A_n`, `D_n`, or the Mathathon objective.
+
+## Lemma CI (the Case I → Case II transition)
+
+Status: partly **PROVED**, partly **TESTED_FINITE**. Cycle 3, Main. This supplies
+the first half of the case-stability obligation for `phi`; the reverse direction
+(II → I) and both compositions remain open and are assigned to the cycle-3 proof
+auditor.
+
+Notation as above. Suppose **Case I** holds, `L + lam(mu) >= 5j + t*`, and let
+`(j', lam') = phi(j, lam)` with `j' = j+1`. Recompute `a', L', mu'` from
+`(j', lam')` by the same definitions.
+
+**Lemma CI.1 (weight).** `|lam'| = |lam| - 5j - 2`, hence
+`|lam'| + P(j') = |lam| + P(j) = n`.
+*Proof.* The deleted slots carry total value `L + lam(mu)` (this is correct also
+when `a > t` or `mu > t`, because then the slot is a virtual 0 and the
+corresponding `lam` value is 0 by the padding convention). The remaining `t*-2`
+slots each increase by 1, and `N = L + lam(mu) - 5j - t*` ones are inserted, so
+`|lam'| = |lam| - L - lam(mu) + (t*-2) + N = |lam| - 5j - 2`. Then
+`P(j+1) = P(j) + (5j+2)`. QED
+
+**Lemma CI.2 (`a' = a-1`).** If Case I holds, `a' = a - 1`.
+*Proof sketch.* The slots at `a` and `mu` are deleted and every surviving slot is
+incremented, so the part that ends at position `a-1` has value `lam(a+1)+1`
+(for `a <= t`) or `1` (when a phantom 0 at `a` is deleted); in either case the
+smallest index where `2j' + x - lam'_x > 0` is `x = a-1`. QED (This is BZ82's
+`abar = a-1`; it is verified below.)
+
+**Lemma CI.3 (the printed strict inequality `mu' > mu` is FALSE; the correct
+statement is `mu' >= mu`).**
+With `j' = j+1`, `a' = a-1` (CI.2) and `lam'(a-1) = lam(a+1)+1` (BZ82 p.314),
+
+```
+mu' = 2j' + a' - lam'(a') = 2j + a - lam(a+1),
+mu' - mu = lam(a) - lam(a+1) = L - lam(a+1) >= 0,
+```
+
+with equality **iff** `lam(a+1) = lam(a)`, i.e. iff the value at the deletion slot
+`a` is repeated.
+
+BZ82 p.314 asserts `mu_bar = 2j + a - lam(a+1) > mu`. That is true only in the
+non-repeated case. **Measured** over all 10 285 Case-I states of weight `<= 26`,
+the difference `mu' - mu` takes the values `0 (5 844 states), 1 (2 918),
+2 (1 087), 3 (344), 4 (80), 5 (12)` — so the strict inequality fails on 5 844
+states (57%), the first being `(-1;())`. Nothing is broken: the conclusion BZ82
+actually needs is that Case II is selected at the image, and that holds in
+**all 10 285** states with no exception. But a reader re-deriving the proof from
+the printed line will be unable to prove the strict inequality, and a
+formalization that assumes it will get stuck. Recorded so that the cycle-3 proof
+audit does not inherit the error.
+
+**Verified (TESTED_FINITE, `weight <= 26`):** every Case-I state maps to a state
+selecting Case II (10 285 / 10 285); `a' = a-1` (10 285 / 10 285); `mu' >= mu`
+(10 285 / 10 285).
