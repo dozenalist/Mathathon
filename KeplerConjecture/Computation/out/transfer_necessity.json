@@ -2,7 +2,16 @@
  "script": "KeplerConjecture/Computation/transfer_necessity.py",
  "claim": "K15-C-TRANSFER-DENSITY-002",
  "status": "PROVED (large-box averaging; no periodicity of phi required)",
- "statement": "a bounded transfer (|phi| <= Phi, divergence >= b) on a packing of finite density implies rho <= 1/sqrt(32)",
+ "statement": "a bounded transfer (|phi| <= Phi, divergence >= b) on a packing of finite upper density that is D-saturated for some finite D implies rho <= 1/sqrt(32)",
+ "hypotheses": [
+  "finite upper density",
+  "D-saturation: every point of space within D of a centre (equivalent to diam Omega(v) <= D; LEMMA S)"
+ ],
+ "lemma_B": "D-saturation gives |U*| = |B| + O_D(L^2): cells of centres in B lie in B grown by D, and every point of B at distance > D from the boundary lies in a cell of a centre in B",
+ "why_saturation_is_needed": "sum_{v in Lambda cap B} vol Omega(v) = |B| + O(L^2) does NOT follow from the cells tiling space: FCC in a half-space has empty intersection with a box in the void, so the sum is 0 while |B| = L^3",
+ "corollary_1": "K15-C-CUTIMPLIES-003: the finite-U cut condition alone, at any finite Phi, forces rho <= 1/sqrt(32) (take U = Lambda cap B)",
+ "corollary_2": "a D-saturated packing with rho > 1/sqrt(32) admits no bounded transfer and violates some finite cut",
+ "does_not_apply_to": "packings that are not D-saturated, e.g. the period-16 13-cluster (cells of diameter >= 12.3); there the cut/flow work is a refutation of a capacity, not a density bound",
  "method": "sum the divergence bound over a box of side L; antisymmetry cancels interior edges; crossing edges are O(rho R L^2) and the volume is L^3, so the mean of b tends to 0 and sqrt32 rho - 1 <= 0",
  "supersedes": "the earlier periodic-sum argument, which needed phi periodic -- a hypothesis the conclusion does not supply",
  "withdrawn": "the inference that this implication makes the transfer route 'circular'; a sufficient condition implying Kepler is not circular unless its proof assumes Kepler",
