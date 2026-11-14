@@ -2000,3 +2000,9 @@ So the defects are invisible to the module's own suite — which is exactly why 
 witness rather than a re-run. Also this batch: `icosa_compensation_search.py` exits 0 with "not refuted
 (inconclusive: computed sum is an upper bound)"; `c5_global_search.py` needs more than 200 s (timed out, not
 a failure).
+
+### K15-X-C133 — `c5_global_search` needs more than 300 s (a length, not a failure)
+
+`Experimental/scripts/c5_global_search.py` did not finish within 300 s at `6ae7dbf` (exit 124 under
+`timeout`); its sibling `c5_family.py` covers the same family and does finish. Nothing in this block depends
+on it; recorded so that a later run does not mistake the timeout for a defect.
