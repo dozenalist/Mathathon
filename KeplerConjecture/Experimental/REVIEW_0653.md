@@ -376,3 +376,40 @@ there. So `vol Ω ≥ vol Ω' ≥ V_dod`, with equality forcing `Ω' = ` the dod
 `(2R)³ ≈ 10453`; the correct 2-separation bound is `(2R+1)³ = 11953`, a `14 %` term (recorded in
 `REVIEW_0353` §5.4). No conclusion changes, but the number as written is not the one the
 argument gives, and if it is ever fed to a computation the constant matters.
+
+---
+
+## 11. How much of the margin is the ring's stretch?
+
+The twelve-face bound is `V_dod + 5(ρ_r/2 − 1)·π(ρ_r/4)²`, a function of the ring distance alone.
+Evaluating it against the threshold:
+
+```
+rho_r      bound          vs 5.763417470
+2.000000   5.550291       fails  (= V_dod: no excess at all)
+2.020000   5.590350       fails
+2.040000   5.632004       fails
+2.060000   5.675275       fails
+2.080000   5.720188       fails
+2.102924   5.773718       PASS   <- the icosahedral cluster
+2.150000   5.890651       PASS
+```
+
+so the argument clears the threshold for every **`ρ_r ≥ 2.098586`**, and the icosahedral cluster
+sits at `2.102924` — a margin of only `0.0043` in the ring distance, `0.2 %`.
+
+**Read that as a statement about where the content is.** At `ρ_r = 2` the ring is tangent and the
+bound degenerates to `V_dod`, which is below the threshold — exactly the dodecahedral
+configuration, where `(P')` is false as an equality-adjacent statement. The pair inequality at
+the icosahedral pair is true *because the ring is stretched*: `ρ_r/2 = 1.051462` instead of `1`,
+a `5.15 %` displacement, and the argument converts that stretch into `0.2234` of volume against
+the `0.2131` the pair inequality needs.
+
+This is the same content as the obstruction of `REVIEW_0608` §8.3b seen from the other side:
+no argument that treats the ring faces as being at distance `1` can work, and the whole margin is
+the stretch.
+
+**Caveat.** The `0.0043` margin is in the *hypothesis*, not in the theorem: the theorem is stated
+for the actual icosahedral cluster (`ρ_r = 2.102924…`, fixed by the geometry), so it is not a
+free parameter being tuned. The table above says that a hypothetical cluster with a shorter ring
+would not be covered by this argument.
