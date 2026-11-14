@@ -932,3 +932,13 @@ reproduction is sound. **But this is not the `5.897967122` quoted in §5 of the 
 Both exceed the payer target `2√32 − V_dod = 5.763417470`; the §5 margin `0.134549652` belongs to
 E's value and this fixture's margin is `0.134599902`. No claim is affected, but the two numbers
 should not be quoted interchangeably.
+
+### K15-X-C056 — the two `CDS22` three-point numbers are in the source
+
+`EXPOSITION_0438` §4 quotes `0.770271` (general three-point) and `0.741506` (lattice three-point) as
+`CDS22`. Checked against the paper: Cohn, de Laat and Salmon, *Three-point bounds for sphere
+packing*, arXiv:2206.15373 — the HTML full text contains **`0.770271` twice and `0.741506` twice**
+(a table and a comparison). So the attribution is right. Note for a later reader: the paper's
+*abstract* advertises new bounds only "in dimension 4 through 7 and 9 through 16", because `d = 3`
+is not new territory — the `d = 3` values are there, but a reader who stops at the abstract will
+think they are the project's own computation. They are not.

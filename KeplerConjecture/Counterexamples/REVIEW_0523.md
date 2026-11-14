@@ -480,6 +480,12 @@ radius and the 2-separation.)
   §4.1b uses `C = σ₀ ≤ 11.4483` from E's witness instead. Both are correct — the proof just uses
   the larger `R_max = 11.556` — but the two numbers appear with the same symbol, and a reader
   recomputing `3·12.1006/π` will not get `10.932`.
+- **The `CDS22` numbers check out.** `EXPOSITION_0438` §4 quotes `0.770271` and `0.741506` from
+  Cohn–de Laat–Salmon, arXiv:2206.15373; both appear in the paper's full text (twice each). The
+  attribution is right, with one caveat for readers: that paper's abstract advertises new bounds
+  only for dimensions 4–7 and 9–16, so a reader who stops there will think the `d = 3` values are
+  the project's own computation. They are not — but they are also not new, which is the point
+  §4 uses them for.
 - **Newer main tip.** Between the audit target `a6f3935` and the current `c4134c2` Main rewrote the
   A15 row of the §5 table (E's `15.875` is the A–B pair at distance `√5 = 2.236`, not a contact;
   the B–B chain bonds at `a/2 = 2` give `129/8 = 16.125`). That is outside this audit's target and
