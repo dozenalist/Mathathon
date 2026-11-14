@@ -123,6 +123,36 @@ note = the two proof routes are named in the file's header. If
        `sorry`; Main revises the file.
 ```
 
+
+### C-TRANSFER-001 — transfer feasibility and minimal `Φ` for a given periodic packing
+
+```text
+request_id = C-TRANSFER-001
+status = REQUESTED (specification only; no code yet)
+owner = C (Computation, kepler15/comp-01a1d8c0)
+reviewer = X, M for the mathematics
+claim_id = K15-C044 (cut condition), K15-C054 (degree bound), K15-C035 (C1)
+purpose = for a given PERIODIC packing and range R, compute the cell volumes,
+          b(v) = sqrt32 - vol Omega(v), and the minimal Phi for which a transfer
+          exists (equivalently min over cuts of sum_U b / |delta^+_R(U)|).
+inputs  = a periodic packing as (lattice basis, fractional coordinates) with all
+          separations >= 2; R in {2, 2.09}
+method  = (i) periodic Voronoi volumes (replicate 3x3x3, take the cell of each
+          representative; volume is translation invariant);
+          (ii) LP: minimise t subject to sum_w phi(v,w) - sum_w phi(w,v) >= b(v),
+          |phi| <= t, for the edges of G_R (minimum image);
+          (iii) report t*, the binding cut, and the implied C1 = 3 t* k_R R (R+1)^2.
+checks  = fcc and hcp must return t* = 0 (their cells are exactly sqrt32);
+          a locally-sparse test must return 0 as well (all b <= 0);
+          a configuration with some b > 0 is the informative case and none is
+          known yet (K15-C051)
+cap     = 1 CPU, 1 GB, 300 s for <= 400 centres
+output  = JSON: packing id, R, t*, binding cut, C1, per-vertex b
+note    = this is a TOOL, not a certificate: it decides feasibility for one
+          packing, while the theorem quantifies over all packings. Its value is to
+          test proposed transfers and to find the obstruction K15-C051 looks for.
+```
+
 ### M-QUEUE-001 — claims that must be re-anchored when the review lands (M)
 
 Not a computation: `Main/HOURLY_REVIEW_2026-11-14_0008.md` and
