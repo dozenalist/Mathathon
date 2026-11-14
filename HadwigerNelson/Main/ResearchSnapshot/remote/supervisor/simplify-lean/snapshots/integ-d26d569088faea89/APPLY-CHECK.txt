@@ -1,0 +1,5 @@
+$ patch -p1 --dry-run -i 0001-conditional-spectrum.patch  ->  rc=0
+checking file lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean
+
+$ patch -p1 --dry-run -i 0002-conditional-limits.patch  ->  rc=0
+checking file lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean

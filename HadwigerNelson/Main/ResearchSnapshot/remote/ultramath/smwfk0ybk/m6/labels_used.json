@@ -1,0 +1,30 @@
+{
+ "3": {
+  "min_labels_distribution": {
+   "2": 36
+  },
+  "max_min_labels": 2
+ },
+ "4": {
+  "min_labels_distribution": {
+   "2": 216
+  },
+  "max_min_labels": 2
+ },
+ "5": {
+  "min_labels_distribution": {
+   "3": 25,
+   "5": 170,
+   "4": 30
+  },
+  "max_min_labels": 5
+ },
+ "6": {
+  "min_labels_distribution": {
+   "4": 3,
+   "6": 162,
+   "5": 12
+  },
+  "max_min_labels": 6
+ }
+}

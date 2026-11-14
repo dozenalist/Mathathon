@@ -1,0 +1,94 @@
+Each assertion permits an exceptional angular set depending on the fixed centers and on the specified maps.
+Proof. Fix b ∈ Wx, with realizing samplings (yn,rn). For every n, the point yn + rne is typical for
+almost every e. The second point yn + rne + v is typical for almost every pair (e,v): in angular
+coordinates the map
+Gn(e,v) = yn + rne + v
+has Jacobian of absolute value rn|sin(argv − arge)|, which is nonsingular off a product-null set.
+On countably many smaller coordinate patches away from that set, change of variables pulls back
+any plane-null set to a product-null set. The two typical points have distance one. Lemma 4.3
+therefore gives
+ai(yn + rne)ai(yn + rne + v) = 0 for almost every (e,v). (5.4)
+We need the following strong convergence for the second factor:
+ai(yn + rne + v) −→ ai(x + e + v) in L1
+(S × S). (5.5)
+Here is a change-of-variables proof which also covers arbitrary measurable color boundaries. For
+δ > 0, discard the angular pairs with |sin(argv − arge)| ≤ δ. Their measure tends to zero with δ.
+On the remaining set, for large n, the Jacobian is bounded below by δ/2. The multiplicity of Gn
+there is at most two: an inverse image of a specified sum amounts to an intersection of the circle
+of radius rn with a translated circle of radius one. A coincident-circle case can occur only at the
+antiparallel, hence discarded, directions. The same assertions hold for G(e,v) = x + e + v. Their
+images lie in one fixed compact plane region for all large n.
+It follows that on the retained angular set the pushforwards of angular product measure have
+densities bounded by a constant depending only on δ, uniformly in n. Approximate ai on a com-
+pact neighborhood of those images by a continuous function taking values in [0,1], in plane L1.
+The density bounds control its composition errors uniformly. For the continuous approximant the
+compositions converge uniformly, since yn → x and rn → 1. First making the approximation error
+small, then letting n → ∞, and finally letting δ ↓ 0, proves (5.5).
+Set Bn(e) = ai(yn +rne) and Q(e,v) = ai(x +e+v). The error in replacing the second factor of
+(5.4) by Q, after integration, is at most the L1 error in (5.5). Weak-* convergence of Bn then applies
+to the fixed L1(S) test
+R
+S
+Q(e,v)dσ(v). We obtain
+Z
+S×S
+bi(e)ai(x + e + v)dσ(e)dσ(v) = 0.
+Both factors are nonnegative, so their product is zero almost everywhere. Taking the countable
+generating trace families in Definition 5.1, for all five labels, proves exclusion of Px(e). Inter-
+changing e,v proves exclusion of Px(v), and gives (5.2). In particular this passage used a strongly
+convergent factor against a weak-* limit, not a product of two weak-* limits.
+Next fix an angular density-one point e of Dx,i and any nonparallel direction v. The map
+(e′
+,v′
+) 7−→ x + e′
++ v′
+is a smooth local diffeomorphism near (e,v). Choose real angular coordinates near e,v and an
+inverse branch on a plane neighborhood of x + e + v. For small h, the inverse image under this
+branch of B(x + e + v,h) lies in a product of angular intervals of length O(h) about e,v, and its
+change-of-variables factors are bounded. On this branch, (5.2) implies that a point of Ai has first
+coordinate outside Dx,i, apart from a spatial null set. Therefore
+|Ai ∩ B(x + e + v,h)| ≤ Ch|[e − Ch,e + Ch] \ Dx,i| = o(h2
+).
+28The constants can depend on the fixed nonparallel pair. This establishes assertion 2 for each such
+v. It is a two-dimensional neighborhood argument and does not restrict (5.2) to a possibly excep-
+tional single-angle fiber.
+Finally fix the centers and representation in assertion 3, and work first on a smaller compact
+arc on which one inverse branch of the two-angle sum map is available. Let a trace b ∈ Wz be
+realized by (zn,rn). Applying this inverse branch to zn + rn f − x gives perturbed representations
+zn + rn f = x + sn(f) + tn(f),
+where sn,tn are nonparallel and converge to s,t in C1 on the smaller arc. Shrinking the arc if nec-
+essary, s is a diffeomorphism with derivative bounded away from zero, and the sn have uniformly
+bounded inverse derivatives for large n.
+For Di = Dx,i, these facts imply
+1Di
+(sn(f)) −→ 1Di
+(s(f)) in L1
+on the smaller arc. (5.6)
+To verify it, approximate 1Di
+on a common image interval by a continuous function in angular
+L1. Change of variables and the inverse-derivative bounds control the errors of composition uni-
+formly for sn and for s. Uniform convergence of sn handles the continuous approximant.
+Almost every f with sn(f) ∈ Di has sn(f) a density-one point of Di. Indeed the set of excep-
+tions in Di is angular null by differentiation, and sn pulls it back to a null set. Assertion 2 makes
+the density of Ai at zn +rn f zero for all these f. The sampling (zn,rn) is typical on its circle, so for
+almost every such f its actual color cannot be i. Consequently
+ai(zn + rn f)1Di
+(sn(f)) = 0 almost everywhere on the smaller arc.
+Use (5.6) to replace the second factor strongly in L1, and then use weak-* convergence of the first
+factor. Nonnegativity gives
+bi(f)1Di
+(s(f)) = 0 almost everywhere.
+Taking a countable generating family of traces at z and the five labels proves (5.3) on this arc. A
+countable cover by smaller arcs proves it on the stated domain.
+Remark 5.3. In assertion 3 of Lemma 5.2, the second endpoint map t may be constant. Nonparallel-
+ness makes the two-dimensional sum map invertible, while the local diffeomorphism requirement
+on s alone controls preimages of angular null sets. In particular, for any fixed direction a, the rep-
+resentation
+(x + a) + f = x + f + a
+is admissible off f = ±a. The proof applies at every fixed pair of centers and never needs a
+common exceptional angular set over an uncountable family of centers.
+Corollary 5.4 (Sixty-degree exclusion). At every fixed center x,
+Px(f) ∩ Px(Rf) = ∅ for almost every f ∈ S. (5.7)
+Proof. Use x + f = x + Rf + R−1 f in Lemma 5.2. The endpoint directions are nonparallel and the
+first endpoint map is a rotation.
+29

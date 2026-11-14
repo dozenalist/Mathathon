@@ -1,0 +1,63 @@
+Hadwiger--Nelson Problem Prompt
+
+Current task statement
+
+The \emph{chromatic number of the plane} $\chi(\mathbb{R}^{2})$ is the least $k \in \mathbb{N}$ for which there is a colouring $c : \mathbb{R}^{2} \to \{1, \dots, k\}$ such that
+
+\[
+  |x - y| = 1 \;\Longrightarrow\; c(x) \neq c(y)
+  \qquad \text{for all } x, y \in \mathbb{R}^{2}.
+\]
+
+A \emph{unit-distance graph} is a graph $G = (V, E)$ with $V \subseteq \mathbb{R}^{2}$ and
+
+\[
+  E = \bigl\{ \{u, v\} : u, v \in V,\ u \neq v,\ |u - v| = 1 \bigr\}.
+\]
+
+Its chromatic number is denoted $\chi(G)$; a colouring of $G$ is \emph{proper} when adjacent vertices receive different colours.
+
+Resolve the Hadwiger--Nelson problem completely:
+
+\[
+  \text{Determine the exact value of } \chi(\mathbb{R}^{2}).
+\]
+
+You must either:
+
+1. Prove an upper bound $\chi(\mathbb{R}^{2}) \le k$ for an explicit $k \in \mathbb{N}$, by exhibiting a colouring
+   \[
+     c : \mathbb{R}^{2} \to \{1, \dots, k\}
+   \]
+   and proving rigorously that $|x - y| = 1$ implies $c(x) \neq c(y)$;
+
+2. Prove a lower bound $\chi(\mathbb{R}^{2}) \ge k$ for an explicit $k \in \mathbb{N}$, by exhibiting a finite unit-distance graph $G = (V, E)$ with $V \subset \mathbb{R}^{2}$ finite, together with an exact verification that $|u - v| = 1$ for every edge $\{u, v\} \in E$ and a complete proof that $\chi(G) = k$, that is, that $G$ admits no proper $(k-1)$-colouring.
+
+Neither resolution alone determines $\chi(\mathbb{R}^{2})$. A complete resolution of the problem is exactly a matching pair: one finite unit-distance graph $G \subset \mathbb{R}^{2}$ with $\chi(G) = k$ and one proper colouring $c : \mathbb{R}^{2} \to \{1, \dots, k\}$ of the plane, for the same explicit $k$. The problem is settled only when the two values of $k$ coincide.
+
+A complete lower-bound certificate must contain an explicit finite vertex set $V \subset \mathbb{R}^{2}$ with exact coordinates, the complete edge list, an exact computation in exact arithmetic showing that every edge has length exactly $1$, and a complete proof that no proper $(k-1)$-colouring of $G$ exists. A complete upper-bound certificate must contain an explicit colouring formula and a complete proof that no two points at distance exactly $1$ receive the same colour.
+
+Partial progress does not count unless it closes one of the two halves above at a specific explicit $k$. In particular, colourings of a lattice, of a sublattice, of $\mathbb{Q}^{2}$, of $\mathbb{Z}^{2}$, of a finite set, or of only almost every point of the plane; $\varepsilon$-relaxations, meaning colourings or graphs that separate points at distances in $[1-\varepsilon, 1+\varepsilon]$ or forbid distances in an interval $[1, 2]$ rather than the single value $1$; colourings that are required to be measurable, Borel, periodic, or otherwise regular, presented as resolutions of the unrestricted problem; non-measurable colourings presented as explicit colourings; lower bounds from graphs that are $k$-chromatic but not realised with every edge of length exactly $1$, or realised only approximately or only numerically; results about the chromatic number of finite-field planes $\mathbb{F}_{p}^{2}$, of $\mathbb{Q}^{2}$, or of a normed plane other than $(\mathbb{R}^{2}, \ell_{2})$, transplanted to $\mathbb{R}^{2}$ without proof; arguments that leave the value of $\chi$ undetermined on a dense or measure-zero part of the plane; reductions to another unproved statement, including restatements in terms of graph homomorphisms, polynomial systems, or Ramsey-type assertions, without a new proof of the reduced statement; computational verification through any bounded search or fixed graph family that is not accompanied by a checkable certificate; claims resting on the axiom of choice or on its failure without tracking which; claims that no finite $k$ suffices that rest on the cardinality of $\mathbb{R}^{2}$; and candidate $k$-chromatic unit-distance graphs without a complete non-$(k-1)$-colourability proof are insufficient.
+
+Search and coordination requirements
+
+Use multiagent v2 aggressively and dynamically. You have up to 64 concurrent agents available. Do not use a fixed assignment such as ``$N$ agents for strategy $X$.'' Instead, manage the search using the following heuristics:
+
+\begin{itemize}
+  \item Begin with a genuinely diverse portfolio of lower-bound and upper-bound approaches. Agents should explore finite unit-distance graph construction, combinatorial search and exact cover methods, SAT and ILP formulations, the polynomial method and algebraic geometry (Nullstellensatz, Gr\"obner bases, chromatic number via polynomial systems), spectral and eigenvalue bounds, semidefinite programming and Lov\'asz-type relaxations, graph homomorphisms and categorical products, Euclidean Ramsey theory, lattice colourings and periodic tilings, Voronoi and covering arguments, measurable and fractional chromatic number, topology and Borsuk--Ulam-type arguments, algebraic number theory for vertex coordinates, group actions and symmetry reduction, order theory and compactness, model theory, and computational sanity checks.
+  \item Preserve independence during early rounds. Do not tell most agents the currently favored lower-bound construction or colouring strategy.
+  \item Maintain an explicit registry of approach families. Group agents by the mathematical idea they are using, not by superficial wording. Redirect agents when too many converge to the same incomplete route.
+  \item Do not allow one approach to dominate merely because it gives elegant reductions. A route that ends at a lemma equivalent in strength to the Hadwiger--Nelson problem is not close to completion unless it supplies a genuinely new proof of that lemma.
+  \item When an approach stalls at a theorem-strength missing lemma, mark that route as blocked. Continue only if someone proposes a materially new mechanism, invariant, construction, or obstruction.
+  \item Keep several incompatible lower-bound and upper-bound routes alive through multiple rounds. Cross-pollinate ideas only after independent agents have exposed the real strengths and gaps of their approaches.
+  \item Use adversarial agents throughout. Every affirmative upper bound must be checked for confusion between the chromatic number of the plane and that of a lattice, a dense subset, a finite graph, or a finite-field analogue; between the unrestricted and the measurable chromatic number; tacit measurability, periodicity, translation-invariance, or convexity assumptions; colour classes that fail to cover a boundary, a dense set, or a set of distance $1$ pairs; unjustified claims that a colouring defined on a fundamental domain extends; unstated use of the axiom of choice or of the de Bruijn--Erd\H{o}s compactness theorem; incorrect appeals to continuity; and circular use of statements equivalent to the Hadwiger--Nelson problem.
+  \item Every proposed lower bound must be checked for exact unit-distance verification in exact arithmetic, correct chromatic-number computation including SAT and ILP encoding errors and unverified unsatisfiability claims, hidden proper $(k-1)$-colourings of the graph, duplicated or merged vertices, embeddings that are only approximate or only numerically realised, graphs that are $k$-chromatic only with several distinct edge lengths, subgraphs that are in fact $(k-1)$-colourable, de Grey-type constructions transcribed with errors, transfer arguments from finite fields, from higher-dimensional lattices, or from other normed planes mistaken for $\mathbb{R}^{2}$, phenomena of finite characteristic mistakenly imported into $\mathbb{R}$, and incomplete non-$(k-1)$-colourability arguments.
+  \item Require agents to return concrete lemmas, explicit graphs with exact coordinates, explicit colouring formulas, algebraic identities, vertex and edge counts, degree and independence-number estimates, checkable certificates such as a verified unsatisfiability proof, an exhaustive case analysis, or a self-contained combinatorial argument, or counterexamples to proposed sublemmas. Reject status reports, vague optimism, and claims that an unproved global compatibility statement is ``routine.''
+  \item The root agent should repeatedly synthesize, challenge, redirect, and launch new rounds. Do not stop after the first wave fails.
+\end{itemize}
+
+Return only when a complete resolution --- a lower-bound unit-distance graph and an upper-bound colouring at the same explicit $k$ --- survives adversarial audit. Do not return a reduction, partial result, isolated missing lemma, ``best effort'' summary, or explanation of why the problem is difficult.
+
+Spend at least 8 hours on this before even thinking of returning or giving up.
+
+Public search may be used only for ordinary mathematical background or standard named theorems, not to search for a solution to this exact problem or benchmark. Do not search the public web merely to determine whether the value of $\chi(\mathbb{R}^{2})$ is known or what the current best bounds are, and do not answer that it is open.

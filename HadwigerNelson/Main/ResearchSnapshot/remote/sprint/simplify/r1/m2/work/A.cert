@@ -1,0 +1,27 @@
+== toolchain ==
+Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+
+== statements and axioms ==
+OAI.EuclideanFiveColor.no_proper_five_coloring : ¬∃ c, OAI.EuclideanFiveColor.ProperColoring 5 c
+'OAI.EuclideanFiveColor.no_proper_five_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+OAI.EuclideanFiveColor.no_proper_five_coloring_algebraic : ¬∃ c, OAI.PlaneFiveColor.LabelModel.Proper 5 c
+'OAI.EuclideanFiveColor.no_proper_five_coloring_algebraic' depends on axioms: [propext, Classical.choice, Quot.sound]
+OAI.Problem160.properColoring_seven : OAI.Problem160.ProperColoring 7
+'OAI.Problem160.properColoring_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+@OAI.EuclideanFiveColor.proper_iff_weak : ∀ {k : ℕ} [NeZero.{0} k],
+  (∃ c, OAI.EuclideanFiveColor.ProperColoring k c) ↔ ∃ c, Measurable.{0, 0} c ∧ OAI.EuclideanFiveColor.WeakColoring k c
+'OAI.EuclideanFiveColor.proper_iff_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+OAI.Problem160.chromaticNumber_bounds : LE.le.{0} 6 OAI.Problem160.planeChromaticNumber ∧
+  LE.le.{0} OAI.Problem160.planeChromaticNumber 7
+'OAI.Problem160.chromaticNumber_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+@OAI.EuclideanFiveColor.not_proper_five_coloring_compl_null : ∀ {Z : Set.{0} ℂ},
+  Eq.{1} (MeasureTheory.volume.{0} Z) 0 →
+    ¬∃ c, ∀ x ∉ Z, ∀ y ∉ Z, Eq.{1} (norm.{0} (HSub.hSub.{0, 0, 0} x y)) 1 → Ne.{1} (c x) (c y)
+'OAI.EuclideanFiveColor.not_proper_five_coloring_compl_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+@OAI.EuclideanFiveColor.algebraic_colorable_iff : ∀ {k : ℕ} [NeZero.{0} k],
+  (∃ c, OAI.PlaneFiveColor.LabelModel.Proper k c) ↔ ∃ c, OAI.EuclideanFiveColor.ProperColoring k c
+'OAI.EuclideanFiveColor.algebraic_colorable_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+== frozen statement check ==
+PASS
+

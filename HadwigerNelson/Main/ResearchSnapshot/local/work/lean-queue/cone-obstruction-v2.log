@@ -1,0 +1,51 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: e27516b67eb70681d61893eee5b23df816f41a4565b35be7866f891954dd60ef
+Status: failed
+Exit code: 1
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\ConeObstruction.lean:127:32: error: Application type mismatch: The argument
+  hδd i (Finset.mem_univ i)
+has type
+  δ ≤ d i
+but is expected to have type
+  ?m.370 ≤ 1 + d i
+in the application
+  LT.lt.trans_le ?m.372 (hδd i (Finset.mem_univ i))
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\ConeObstruction.lean:128:4: error: linarith failed to find a contradiction
+ι : Type u_1
+inst✝ : Fintype ι
+x : ℂ
+φ : ℝ
+K : ι → Set ℂ
+α : ι → ℝ
+hK : (i : ι) → ApproachingContinuum x (K i) ↑(Circle.exp (α i))
+hα : ∀ (i : ι), α i ∈ Icc (φ - Real.pi / 6) (φ + Real.pi / 6)
+θ : ℝ
+hθ : θ ∈ Ioo (φ - Real.pi / 3) (φ + Real.pi / 3)
+d : ι → ℝ
+hd : ∀ (i : ι), d i > 0
+hs :
+  ∀ (i : ι) (e' : ℂ),
+    ‖e'‖ = 1 → dist e' ↑(Circle.exp θ) < d i → ∀ (r : ℝ), 1 < r → r < 1 + d i → x + ↑r * e' ∈ Straddle (K i)
+δ : ℝ
+hδ : δ > 0
+left✝ : δ ≤ 1
+hδd : ∀ i ∈ Finset.univ, δ ≤ d i
+hcont : Continuous fun β => dist ↑(Circle.exp β) ↑(Circle.exp θ)
+hn : ∀ᶠ (β : ℝ) in 𝓝 θ, dist ↑(Circle.exp β) ↑(Circle.exp θ) < δ
+η : ℝ
+hη : η > 0
+hηs : Metric.ball θ η ⊆ {x | (fun β => dist ↑(Circle.exp β) ↑(Circle.exp θ) < δ) x}
+β : ℝ
+hβ : |β - θ| < min δ η
+r : ℝ
+hr : 1 < r
+hrδ : r < 1 + min δ η
+i : ι
+a✝ : d i ≤ dist ↑(Circle.exp β) ↑(Circle.exp θ)
+⊢ False
+failed
+
+STDERR
+

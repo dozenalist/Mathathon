@@ -1,0 +1,71 @@
+[1/4] downloading lean 4.34.1
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0
+  0      0   0      0   0      0      0      0                              0 19 553.5M  19 110.4M   0      0 58.58M      0   00:09   00:01   00:08 110.0M 40 553.5M  40 222.4M   0      0 77.11M      0   00:07   00:02   00:05 111.0M 60 553.5M  60 332.5M   0      0 85.60M      0   00:06   00:03   00:03 110.7M 80 553.5M  80 444.4M   0      0 90.92M      0   00:06   00:04   00:02 110.9M100 553.5M 100 553.5M   0      0 94.43M      0   00:05   00:05         110.9M100 553.5M 100 553.5M   0      0 94.43M      0   00:05   00:05         110.9M100 553.5M 100 553.5M   0      0 94.43M      0   00:05   00:05         110.9M
+Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+[2/4] fetching mathlib at pinned commit
+[3/4] mathlib commit: d13f23b723b8a846827a245b89c10fc7d3f11612
+[4/4] lake exe cache get
+info: plausible: cloning https://github.com/leanprover-community/plausible
+info: plausible: checking out revision '118aa17ee84656b8bd727fef7c458ee8c833385c'
+info: LeanSearchClient: cloning https://github.com/leanprover-community/LeanSearchClient
+info: LeanSearchClient: checking out revision 'ddf04cf3949fa556442341e87d47f9f6e6074707'
+info: importGraph: cloning https://github.com/leanprover-community/import-graph
+info: importGraph: checking out revision 'e928b72544873815af278d38681b31c0293588e3'
+info: proofwidgets: cloning https://github.com/leanprover-community/ProofWidgets4
+info: proofwidgets: checking out revision '106ff4fafc74ef4ac99d81dbf3ab399118f497a5'
+info: aesop: cloning https://github.com/leanprover-community/aesop
+info: aesop: checking out revision '355695d523e41d0554926416cba2a2b3544fbbc9'
+info: Qq: cloning https://github.com/leanprover-community/quote4
+info: Qq: checking out revision '6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259'
+info: batteries: cloning https://github.com/leanprover-community/batteries
+info: batteries: checking out revision 'f2effa3d803fda822b1f97b806c47cf2adfbcbc2'
+info: Cli: cloning https://github.com/leanprover/lean4-cli
+info: Cli: checking out revision 'e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204'
+✔ [1/5] Built Cache.Cli (148ms)
+✔ [2/5] Built Cache.Lean (181ms)
+✔ [6/42] Built Cache.Env (173ms)
+✔ [7/42] Built Cache.Cli:c.o (113ms)
+✔ [8/42] Built Cache.Lean:c.o (87ms)
+✔ [9/42] Built Cache.Env:c.o (89ms)
+✔ [10/42] Built Cache.Infra (207ms)
+✔ [11/42] Built Batteries.Tactic.OpenPrivate (486ms)
+✔ [12/42] Built Cache.Infra:c.o (139ms)
+✔ [13/42] Built Cache.IO (690ms)
+✔ [14/42] Built Batteries.Tactic.OpenPrivate:c.o (641ms)
+✔ [15/42] Built Cache.Hashing (400ms)
+✔ [16/42] Built Cache.Hashing:c.o (228ms)
+✔ [17/42] Built Cache.IO:c.o (808ms)
+✔ [18/42] Built Cache.Requests (921ms)
+✔ [19/42] Built Cache.Marker (268ms)
+✔ [20/42] Built Cache.Marker:c.o (81ms)
+✔ [21/42] Built Cache.Upload.Dest (304ms)
+✔ [22/42] Built Cache.Upload.Dest:c.o (94ms)
+✔ [23/42] Built Cache.Query (462ms)
+✔ [24/42] Built Cache.Query:c.o (253ms)
+✔ [25/42] Built Cache.Upload.Curl (355ms)
+✔ [26/42] Built Cache.Upload.Rclone (528ms)
+✔ [27/42] Built Cache.Upload.Curl:c.o (104ms)
+✔ [28/42] Built Cache.Upload.Rclone:c.o (188ms)
+✔ [29/42] Built Cache.Warning (373ms)
+✔ [30/42] Built Cache.Upload.Azure (319ms)
+✔ [31/42] Built Cache.Requests:c.o (1.5s)
+✔ [32/42] Built Cache.Upload.Azure:c.o (104ms)
+✔ [33/42] Built Cache.Warning:c.o (202ms)
+✔ [34/42] Built Cache.Upload.S3 (411ms)
+✔ [35/42] Built Cache.Upload.S3:c.o (165ms)
+✔ [36/42] Built Cache.Upload.Defs (287ms)
+✔ [37/42] Built Cache.Upload.Defs:c.o (100ms)
+✔ [38/42] Built Cache.Upload (258ms)
+✔ [39/42] Built Cache.Upload:c.o (59ms)
+✔ [40/42] Built Cache.Main (547ms)
+✔ [41/42] Built Cache.Main:c.o (440ms)
+✔ [42/42] Built cache:exe (448ms)
+Current branch: HEAD
+Using cache from origin: (some leanprover-community/mathlib4)
+Decompressing 8907 already-cached file(s) (1 already decompressed)
+No files to download
+Decompressed 8907 already-cached file(s)
+Completed successfully in 20311 ms!
+DONE

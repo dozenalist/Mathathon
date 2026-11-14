@@ -1,0 +1,29 @@
+Mathathon progress — 14 November 2026, 10:25 Pacific
+Scheduled check triggered10:15:21Pacific. Evidence: work/openmath-supervisor/checkins/20261114T181521Z.
+
+OPEN MATH
+Eight actual two-member Ultramath swarms were launched previously on DeepSeekV4.1Flash/max. Latest collected status: the formal swarm is solved; seven others were last observed working. One member of the continuous-discovery swarm exhausted its step budget; its coordinator preserved its useful artifacts and continues with the other member. No new swarms or Astra assignments this check. Coordinator completion is tracked separately from swarm completion.
+
+MATHEMATICS AND CORRECTIONS
+The compiled OA120/CC60 theorem, concrete six-colour consumer, and standard-only axiom audit remain accepted; no repeat build.
+The geometry coordinator initially claimed the monochromatic-cone result also covered120degrees. Parent rejected its argument using an explicit open Reuleaux region with outer strips on an open60degree arc but NO unit-distance pair. The coordinator retracted its endpoint claim and its mistaken objection to compact strip uniformity.
+A separate universal bound on strip width was refuted by shrinking segments: K=[0,rho v] has outer-ray width at most rho, while <v,v>=1.
+Both corrections are fully written in outputs/MC120-ENDPOINT-CORRECTION.txt. They preserve strict MC120 and the equilateral collapse of actual three-paired-direction configurations. They do not themselves resolve the equilateral case or disprove a stronger endpoint theorem with additional hypotheses.
+No new global chromatic bound or global six-colouring has been established. Independent list-field and continuous-direction reviews remain in progress.
+
+SIMPLIFICATION BUILD
+The latest private packet was downloaded and frozen under work/lean-queue/threecentre-r1. Parent independently verified the reverse dependency closure and topological order:27 affected modules. All unchanged source hashes in that closure match the previously verified R4 baseline.
+The known unmatched end Generic in remote AvoidingTrace was corrected locally earlier; the frozen build preserves that passing local file. The remote formal swarm independently found and corrected the same defect.
+Fresh build progress at save: first FIVE modules passed—States, BoundaryTrace, AngularBoundary, Exclusion, AvoidingTrace. FourContinuity is running; remaining descendants and a final nine-root axiom audit are queued, serially. Do not start another runner.
+The candidate deletes198lines of the old strict-state branch. Including the entire237line new module and all five changed files, the current physical net is only24lines shorter. This is candidate accounting, not a completed integration claim. The formal coordinator is auditing separately whether three remaining unused helpers can be removed; current build sources stay frozen. Manuscript6.7 and indicator_inter_positive remain.
+
+CLAUDE
+Job06 on Opus5.5/MAX reached its900second limit with ZERO answer text. This is the second maximum-effort timeout; earlier high-effort requests completed. It is recorded as a timeout, not a mathematical result.
+Job07, claude-four-list-geometry-20261114-07, now runs Opus5.5/HIGH on a narrower deliverable: exact four-list cell geometry and one useful contact lemma. Same generated mathematical context, no new private source files.15minute/4GiB/tool-free bounds remain. No duplicate Claude process.
+
+USAGE
+Latest Codex35%used/65%remaining; tool reports zero resetcredits. OpenMath API weekly58.227750612/500 consumed, about88.35%remaining. Claude window telemetry is still unavailable for these runs; the separate five-minute watcher owns the already-reported visibility gap. No resets, purchases or paid extras used.
+
+NEXT
+Let the existing serialized rebuild progress; inspect failures before any retry, then verify final axioms and statement/dependency preservation. Collect existing swarms and Claude07. Judge exact proofs/counterexamples before accepting results. Independent chat history remains paginated at seq99231; preserve cursor and finish its tail before any new dispatch.
+Twenty-minute research reports and the separate five-minute usage watcher remain active through Nov15 09:35:13Pacific.

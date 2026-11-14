@@ -1,0 +1,72 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/Factors.lean	2026-11-13 19:09:13.640640361 +0000
++++ OAI/MeasureTheory/CompactFactors/Factors.lean	2026-11-13 19:52:57.617205976 +0000
+@@ -90,7 +90,7 @@
+ omit [MulAction K Y] [MeasurableSpace Y] in
+ lemma measurable_orbit [Countable K] [MeasurableConstSMul K X]
+     {H : X → ℂ} (hH : Measurable H) : Measurable (orbit (K := K) H) :=
+-  OrbitSpace.measurable_mk.comp (Measurable.of_eval fun k => hH.comp (measurable_const_smul k))
++  OrbitSpace.measurable_mk.comp (measurable_pi_lambda _ fun k => hH.comp (measurable_const_smul k))
+ 
+ omit [MulAction K Y] [MeasurableSpace X] [MeasurableSpace Y] in
+ lemma orbit_equivariant (H : X → ℂ) (k : K) (x : X) :
+@@ -137,7 +137,7 @@
+   have hHm := measurable_compactSigma hq hpres hH hc
+   have hpm : @Measurable X (K → ℂ) (compactSigma μ q hq hpres) inferInstance
+       (fun x k => H (k • x)) :=
+-    @Measurable.of_eval X K (fun _ => ℂ) (compactSigma μ q hq hpres) (fun _ => inferInstance) _ (fun k => hHm.comp (measurable_shift_compactSigma hq hpres k))
++    @measurable_pi_lambda X K (fun _ => ℂ) (compactSigma μ q hq hpres) (fun _ => inferInstance) _ (fun k => hHm.comp (measurable_shift_compactSigma hq hpres k))
+   exact (measurable_base_compactSigma hq hpres hqcov).prodMk
+     (OrbitSpace.measurable_mk.comp hpm)
+ 
+@@ -356,14 +356,14 @@
+ def truncate (n : ℕ) (y : ℕ → Y) : Fin n → Y := fun i => y i
+ 
+ lemma truncate_measurable (n : ℕ) : Measurable (truncate (Y := Y) n) :=
+-  Measurable.of_eval fun i => measurable_pi_apply (i : ℕ)
++  measurable_pi_lambda _ fun i => measurable_pi_apply (i : ℕ)
+ 
+ lemma truncate_mono : Monotone (fun n => (inferInstance : MeasurableSpace (Fin n → Y)).comap (truncate n)) := by
+   intro n m hnm
+   rw [← measurable_iff_comap_le]
+   have hm : Measurable[(inferInstance : MeasurableSpace (Fin m → Y)).comap (truncate m)]
+       (truncate (Y := Y) m) := Measurable.of_comap_le le_rfl
+-  refine @Measurable.of_eval (ℕ → Y) (Fin n) (fun _ => Y)
++  refine @measurable_pi_lambda (ℕ → Y) (Fin n) (fun _ => Y)
+     (MeasurableSpace.comap (truncate m) inferInstance) (fun _ => inferInstance) (truncate n) ?_
+   intro i
+   exact (measurable_pi_apply (⟨i, lt_of_lt_of_le i.isLt hnm⟩ : Fin m)).comp hm
+@@ -375,7 +375,7 @@
+       (truncate (Y := Y) n) := Measurable.of_comap_le (le_iSup (fun n => MeasurableSpace.comap (truncate (Y := Y) n) (inferInstance : MeasurableSpace (Fin n → Y))) n)
+   have hi : Measurable[⨆ n, (inferInstance : MeasurableSpace (Fin n → Y)).comap (truncate n)]
+       (id : (ℕ → Y) → (ℕ → Y)) := by
+-    refine @Measurable.of_eval (ℕ → Y) ℕ (fun _ => Y)
++    refine @measurable_pi_lambda (ℕ → Y) ℕ (fun _ => Y)
+       (⨆ n, MeasurableSpace.comap (truncate n) (inferInstance : MeasurableSpace (Fin n → Y)))
+       (fun _ => inferInstance) id ?_
+     intro n
+@@ -404,7 +404,7 @@
+ 
+ omit [StandardBorelSpace Y] [Nonempty Y] in
+ lemma joint_measurable (q : ℕ → X → Y) (hq : ∀ n, Measurable (q n)) : Measurable (joint q) :=
+-  Measurable.of_eval hq
++  measurable_pi_lambda _ hq
+ 
+ omit [Nonempty Y] [MulAction K Y] [MeasurableConstSMul K Y] in
+ lemma code_measurable (q : ℕ → X → Y) (hq : ∀ n, Measurable (q n)) : Measurable (code (K := K) q) :=
+@@ -470,6 +470,7 @@
+   have hJ := joint_measurable q hq
+   let E : (ℕ → Y) → OrbitSpace K := FactorCode.encode id
+   have hE : Measurable E := FactorCode.encode_measurable measurable_id
++  haveI : IsProbabilityMeasure (μ.map J) := Measure.isProbabilityMeasure_map hJ.aemeasurable
+   obtain ⟨n, Hn, hHn, hHnB, hi, he⟩ := CountableApprox.bounded_approximation (μ.map J)
+     m (H ∘ E) (hH.comp hE) C' hC' (fun y => (hC _).trans (le_max_left _ _)) ε hε
+   obtain ⟨j, hj⟩ := finite_upper μ q hc n
+@@ -477,7 +478,7 @@
+     FactorLp.factor_of_le μ (q i) (q j) (hq i) (hj i i.isLt)
+   choose r hr hre using hfac
+   let R : Y → Fin n → Y := fun y i => r i y
+-  have hR : Measurable R := Measurable.of_eval hr
++  have hR : Measurable R := measurable_pi_lambda _ hr
+   have hEq := FactorCode.encode_as_comp (K := K) μ J (joint_equivariant μ q hqe)
+   have hEq' : (fun x => dist ((H ∘ E) (J x)) (Hn (CountableApprox.truncate n (J x)))^2) =ᵐ[μ]
+       (fun x => dist (H (code q x)) ((Hn ∘ R) (q j x))^2) := by

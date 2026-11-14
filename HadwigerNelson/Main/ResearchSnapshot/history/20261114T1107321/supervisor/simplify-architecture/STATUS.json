@@ -1,0 +1,45 @@
+{
+ "updated_utc": "2026-11-14T12:55:00Z",
+ "status": "completed_block",
+ "summary": "Block 15: analysis only, R4 untouched. FIVE-CYCLE-INTERFACE.md isolates the smallest interface still blocking replacement of the Lemma 6.7 branch by the accepted finite asset. The branch's Lean form is five_support_step_ban (FiveSupport.lean:89), whose hypotheses are hw, hx : FiveCenter, two support-memberships at a base angle and state-adjacency, and whose conclusion forbids a state transition across sixty (60 degrees). The finite core already exists beside it (five_no_common_adj, five_forced_label, both by decide), and five_no_common_adj takes EXACTLY the validity hypothesis that the finite asset cannot supply. Hence the interface is positional validity at all six 60-degree positions, which today is available only via five_endpoint_no_common (CyclicCore.lean:25) and only with an extra centre-existence hypothesis FiveCenter c (x + direction a + direction b). Precise obstruction: nothing in the tree builds new five-cycle centres by adding two unit directions, and five_support_step_ban forbids a transition rather than transporting validity. Sharpest defensible form: (O'') the stateSupport_shift_relation instance at d = sixty with R = fiveAdj, strictly weaker than the step ban. No claim that the finite classification removes the analytic bridge; no line saving claimed; (O) (O') (O'') all open.",
+ "verified_results": [
+  "[read] five_support_step_ban at FiveSupport.lean:89 with hypotheses (hw : WeakColoring 5 c), (hx : FiveCenter c x), (hi : a in fiveSupport c hc x i), (hj : a in fiveSupport c hc x j), (hij : fiveAdj i j) and conclusion: a.e. t under angularMeasure, not (state t = i and state (t+sixty) = j) and not (state t = j and state (t + sixty) = i).",
+  "[read] five_support_trace (FiveSupport.lean:86): from a in fiveSupport i produces a TraceVector b with IsTrace c hc (x + direction a) b vanishing on fiveDiag i; this is the analytic support of the step ban.",
+  "[read] five_endpoint_no_common (CyclicCore.lean:25) with hypotheses (hab : Real.sin (b-a) != 0) and (hy : FiveCenter c (x + direction a + direction b)) concluding forall k, exists i, a in fiveSupport i and k notin fiveDiag i - i.e. it produces the validity fact, but only at one angle and only under a centre-existence hypothesis.",
+  "[read] five_no_common_adj (Exclusion.lean:24) and five_forced_label (Exclusion.lean:26), both proved by decide; the former's hypothesis '(forall k, exists i in I, k notin fiveDiag i)' is exactly the validity (V) that the finite asset needs and cannot supply.",
+  "[read] stateSupport_shift_relation (FiveSupport.lean:55) takes an a.e. relation hypothesis hR : forall^m t, R (f t) (f (t+d)) and returns support membership at t+d; FiveCenter (Accumulation.lean:358) is defined as forall i, TransitionEdge c i (i+1) x and is only ever assumed downstream.",
+  "[read] The finite asset FiveCycleResidues.lean: two-level relabelling (g_induces_h, label_transport), five_residues_reduce_to_two, the three residue collisions, h_fixes_anchor/pair24/swaps_allowed_pairs, and the three invariance families (valid/disjoint/neighbour_family_push). It is purely combinatorial: no plane, support or palette content.",
+  "[argued here] (I) positional validity at all six positions is the whole interface, and (O'') - the stateSupport_shift_relation instance at d = sixty with R = fiveAdj - is its weakest sufficient transport form, strictly weaker than the step ban. Not machine-checked; (O') (a.e. existence of a second five-cycle centre) is stated but not asserted true."
+ ],
+ "conjectures": [
+  "(O'') is the single lemma worth attacking: if supports move to adjacent states across the 60-degree step a.e., then (D) and (N) transport to all six positions and validity at position 1 follows from validity at position 0 via the finite asset's neighbour_family_push, which would let the 21-lemma asset replace the case split.",
+  "A single extra validity fact at position 1 (or 5) is enough: all eight models of the two-position system have S(1) = S(5) = {2,4}, and that pair fails validity because fiveDiag 2 and fiveDiag 4 meet in label 4."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/FIVE-CYCLE-INTERFACE.md (sha 824e771df1042f88; the 21-lemma finite asset summary, the exact Lemma 6.7 declaration and hypotheses, the proposed interface (I), the obstruction analysis, (O)/(O')/(O'') with derivation attempt, cost shape, grades)",
+  "read-only inputs cited: supervisor/simplify-verification/lean/FiveCycleResidues.lean; lean/OAI/Geometry/PlaneColoring/FiveSupport.lean (86, 89, 55), CyclicCore.lean (25), Exclusion.lean (24, 26), Accumulation.lean (358)",
+  "supervisor/simplify-architecture/encoding-core/integration/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean (R4 d26d569088faea89..., untouched)",
+  "supervisor/simplify-architecture/encoding-core/integration/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean (R4 24f89dd33533a0f6..., untouched)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "rg over supervisor/ and lean/OAI for the finite asset and the Lemma 6.7 machinery (read-only; whole-repo grep was killed at the 25 s limit, so scoped rg was used instead)",
+   "outcome": "asset located at supervisor/simplify-verification/lean/FiveCycleResidues.lean; branch located at Geometry/PlaneColoring/FiveSupport.lean:89."
+  },
+  {
+   "cmd": "sed reads of FiveSupport.lean 39-70 and 82-100, CyclicCore.lean 9-32, Exclusion.lean 24-30, Accumulation.lean 358-364",
+   "outcome": "exact declarations and hypotheses captured verbatim in the artifact."
+  },
+  {
+   "cmd": "no build, no cloud compute, no subagents, no messages; R4 and shared originals not modified",
+   "outcome": "analysis only."
+  }
+ ],
+ "failed_routes": [
+  "My earlier guess that the five-cycle step is 72 degrees was wrong for this indexing: six positions at r * 60 degrees (6*60 = 360) is consistent with sixty : Angles in five_support_step_ban; recorded in the artifact so the wrong reading is not reused.",
+  "Deriving (O) directly from five_endpoint_no_common fails: it needs FiveCenter at x + direction a' + direction b, and no lemma in the tree produces a new five-cycle centre from an old one by adding two unit directions. (O') states that existence but is not asserted true.",
+  "Not attempted: no restart of the M3/weak-mixing search, no implementation, no line-saving claim, no assertion that the finite classification removes the analytic bridge."
+ ],
+ "next_step": "One sharply stated obligation remains: attempt (O'') - for a.e. a, every state i with a in fiveSupport i has an adjacent state j with a + sixty in fiveSupport j - as the hR hypothesis of stateSupport_shift_relation at d = sixty. If it is proved, run the finite asset at all six positions; if it fails, the counterexample will be a configuration of supports across one 60-degree step, which is itself a precise statement of the analytic gap. Do not start it in a block that also touches R4.",
+ "escalation": null
+}

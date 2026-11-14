@@ -1,0 +1,52 @@
+
+=== A.  paper Lemma 7.8 fails on a punctured annulus ===
+PASS  A1  f = -i on the upper arc of |z-1|=1 (4 exact points)   [(pi/6, -I), (pi/3, -I), (pi/2, -I), (2*pi/3, -I)]
+PASS  A2a level set {f=-i} lies on the circle |z-1|=1   Re(z*conj(z-2)) = x**2 - 2*x + y**2
+PASS  A2b f=-i on the whole sampled upper arc, |z-1|=1, |z|>=1, |z|<=2   max|f+i|=3.3e-15  |z|max=1.999995
+PASS  A2c arc meets |z|=1 exactly at phi=2pi/3   z = 0.500000+0.866025i
+PASS  A2d the level set never meets the outer boundary |z|=3 (|z| <= 2)
+PASS  A3  deg(f on |z|=1) = +1 (inner boundary word = whole 5-cycle)   deg = 1.000000000
+PASS  A3' deg(f on |z-2|=1/4) = -1   deg = -1.000000000
+PASS  A4  every point of the level set is at distance >= 1 from |z|=3   min(3-|z|) = 1.015687 ; so no component meets both boundary circles
+PASS  A4' the level set ends on the hole |z-2| = 1/4   |z-2| = 0.250000000000
+      => g^{-1}(m) has one component: it joins |z|=1 to |z-2|=1/4 and
+         meets no other boundary; Lemma 7.8's conclusion fails.
+
+=== B.  the multiplicity-2 cover obstruction is sharp ===
+PASS  B1  Borel cover of B(0,R), multiplicity <= 2 on a 501x501 grid   uncovered=0  max multiplicity=1  (grid points 196321)
+PASS  B2  diam(A_0) <= R + 2 eps = 1.0200   diam = 1.010000000
+PASS  B3  diam(A_k) <= R for k = 2..5   diam = 1.000000000
+PASS  B3' mesh <= R + 2 eps -> R as eps -> 0   mesh = 1.010000
+      thickening: for a finite cover of a compact set by sets C_i let d_i(x) =
+      dist(x,C_i) and g(x) = the third smallest of the d_i.  Multiplicity <= 2
+      gives g > 0 everywhere, g is continuous, so g >= eps0 > 0; then
+      U_i = {x : d_i(x) < eps0/2} is a RELATIVELY OPEN cover with U_i sup C_i and
+      multiplicity <= 2.  Hence the relatively open form of paper Lemma 7.5 fails
+      at inradius = mesh, for every R and every m > R (take eps < (m-R)/2).
+PASS  B4  relatively open multiplicity-2 covers exist for mesh R + 2 eps, any eps > 0   so the threshold 'inradius > mesh' is exactly sharp
+
+=== C.  the perfect, 1-dense, zero-content locus ===
+PASS  C1  lattice (1/2)Z^2 is 1-dense (covering radius sqrt2/4)   covering radius = 0.353553
+PASS  C2  |N_delta(C x {0})|/delta -> 0 for the middle-thirds Cantor set (s=0.6309)   3^-1:3.33333  3^-2:2.22222  3^-3:1.48148  3^-4:0.98765  3^-5:0.65844  3^-6:0.43896  3^-7:0.29264  3^-8:0.19509  3^-9:0.13006  3^-10:0.08671  3^-11:0.05781
+PASS  C3  |N_delta(eps*C)|/delta -> 0 for the scaled copy (eps=2^-6)   0.05208  0.03472  0.02315  0.01543  0.01029  0.00686
+      L = union over lambda in (1/2)Z^2 of lambda + eps_lambda (C x {0}):
+      * locally finite family of compact sets => L closed;
+      * 0 in C => lambda in L, so L is 1-dense by C1;
+      * each piece is a scaled Cantor set, hence perfect, and every point of L
+        lies in such a piece => no isolated point: L is perfect;
+      * area of the delta-neighbourhood of a piece of size eps is
+        <= 2 delta * |N_{delta/eps}(C)| * eps  ~=  2 C1 delta^(2-s) eps^s,
+        so |N_delta(L cap K)|/delta <= C_K delta^(1-s) -> 0: zero upper
+        1-dimensional Minkowski content on every compact K.
+PASS  C4  exponent 1-s > 0 so the content vanishes   1-s = 0.3691
+
+=== D.  total-radius bookkeeping in the weakened Lemma 7.4 ===
+      |L0| = 1        printed bound |L0|*delta = 1/1000  (-> infinity with |L0|)
+      |L0| = 5        printed bound |L0|*delta = 1/200  (-> infinity with |L0|)
+      |L0| = 1000000  printed bound |L0|*delta = 1000  (-> infinity with |L0|)
+PASS  D1  a finite family of radii summing below delta=1/1000 exists   sum of 10 radii = 0.00049951171875
+PASS  D2  any prescribed total radius is attainable (geometric radii)   sum_{i<10} delta*2^-(i+2) = delta*(1-2^-10) 
+      the three inputs used downstream are exactly (i) holes cover L0,
+      (ii) total radius -> 0, (iii) finitely many disks per stage.
+
+ALL CHECKS PASSED

@@ -1,0 +1,178 @@
+INDEPENDENT REFEREE: GENERIC CC60 SHARPNESS
+14 November 2026
+
+VERDICT: ACCEPT at the paper-proof level, with the explicit conventions
+below. There is no substantive gap in Section 5 of
+ULTRA-CONE-NOVELTY-AUDIT.txt. Its construction gives actual spatial-support
+exclusions, not merely a combinatorial palette example. No Lean verification
+or novelty-priority claim is made.
+
+I read the complete audit, the accepted ASTRA-CONE-REFEREE.txt, and the
+original definitions of Straddle, ApproachingContinuum, spatialSupport,
+and WeakColoring. No applicable AGENTS.md was found in the output directory
+or its ancestors. Only this referee report was written.
+
+1. EXACT VERIFIED STATEMENT
+
+For every Delta with pi/3 < Delta < pi, there are two nondegenerate compact
+segments K_+,K_- containing the SAME centre 0, actual ApproachingContinuum
+0 K_+ v_+ and ApproachingContinuum 0 K_- v_- data, and a Borel pointwise
+proper unit-distance colouring c:C -> {0,...,19}, such that:
+
+  v_+ = exp(i Delta/2), v_- = exp(-i Delta/2);
+  H_+ = {2,...,10}, H_- = {11,...,19};
+  spatialSupport(c,j) intersect Straddle(K_+) = empty for every j in H_+;
+  spatialSupport(c,j) intersect Straddle(K_-) = empty for every j in H_-.
+
+The complement of H_+ union H_- in the declared palette is exactly {0,1}.
+Both residual colours actually occur on the common straddle region.
+The two signed directions have minimum containing cone aperture Delta.
+Consequently, for every A > pi/3, choosing Delta < min(A,pi) supplies a
+counterexample lying strictly inside a cone of aperture A.
+
+Thus pi/3 is optimal for the CC60 assertion quantified universally over
+finite palettes, already with the fixed palette size 20. This does NOT
+assert a counterexample for every prescribed k. In particular it proves
+neither sharpness nor failure of a stronger theorem at k=6, and does not
+supply the stronger interface-extraction hypotheses of the six-colour
+problem. "20-colouring" means a colouring into Fin 20, not a requirement
+that all twenty classes be nonempty.
+
+2. PARAMETERS AND HORN ESTIMATES
+
+Write d=Delta/2 and a=(pi-Delta)/2. Choose 0<rho<1/2 sufficiently small,
+and set epsilon=rho/(2(1-rho)), t=asin(epsilon). Require exactly the audit's
+strict conditions:
+
+  epsilon<1, Delta<2 acos(epsilon), a+t<pi/3,
+  2 rho + 2(1+rho) sin((a+t)/2) < 1,                    (I)
+  2 sin((Delta-t)/2) - 2 rho > 1.                       (II)
+
+Such rho exists: as rho tends to zero these reduce to Delta<pi,
+a<pi/3, 2 sin(a/2)<1, and 2 sin(Delta/2)>1. All hold strictly. In
+particular (II), with Delta<pi and t>0, implies Delta-t>pi/3.
+
+Let K_+=[0,rho v_+], K_-=[0,rho v_-], S_+=Straddle(K_+),
+S_-=Straddle(K_-), W=S_+ intersect S_-. These are the source's STRICT
+straddle sets, with one distance <1 and another >1. The two witnesses
+and the triangle inequality give 1-rho<|z|<1+rho for every z in W.
+
+Write z=r exp(i theta). If r>=1, an inside witness u v, 0<u<=rho,
+gives r^2-2u(z dot v)+u^2<1, hence z dot v>0. Applying this for both
+segments gives the positive horn |theta|<a, with theta centred at zero.
+
+If r<=1, an outside witness u v has u>0 and gives
+  z dot v < (r^2+u^2-1)/(2u) <= u/2 <= rho/2.
+Consequently exp(i theta) dot v < epsilon. For b=acos(epsilon), the
+forbidden arcs cos(theta-d)>=epsilon and cos(theta+d)>=epsilon overlap
+because Delta<2b. Their union is one arc, whose complement is exactly
+the single negative horn
+  circular_distance(theta,pi) < pi-d-b = a+t.
+This proves the claimed negative-horn containment. Extending this argument
+to r=1 also shows that W contains NO unit-circle points: the two horns
+are disjoint, since their angular gap is Delta-t>0.
+
+For two points in one half of either horn, the angular separation is at
+most a+t. Their distance is at most
+  2 rho + 2(1+rho) sin((a+t)/2) < 1.
+This is a bound strictly below one for the diameter, not merely a
+pointwise strict bound with supremum one. It remains valid on the
+splitting rays and even on the bounding angular/radial closures.
+
+The circular angular separation between opposite horns is at least
+pi-a-(a+t)=Delta-t. Hence any points in different horns have distance
+at least 2 sin((Delta-t)/2)-2 rho>1. This justifies sharing colours
+between opposite horns without introducing unit edges.
+
+3. CONNECTED COMPONENTS: AN OPTIONAL EXACT DESCRIPTION
+
+The horn containments suffice for the colouring. They need not be
+mistaken for equalities. In fact W does have exactly two components,
+one wholly outside and the other wholly inside the unit circle.
+
+For a unit v, put c_v(theta)=exp(i theta) dot v and define
+  T_v(theta,u)=u c_v(theta)+sqrt(1-u^2(1-c_v(theta)^2)),
+  F_v(theta)=max_{0<=u<=rho} T_v(theta,u).
+The lower root of |r exp(i theta)-u v|^2=1 is negative because u<1.
+Thus for r>0, |r exp(i theta)-u v|<1 iff r<T_v(theta,u).
+The functions T and F are continuous; continuity of F follows from a
+continuous maximum over the fixed compact interval [0,rho]. Moreover
+F_v(theta)>1 iff c_v(theta)>0 (use a sufficiently small u>0 for the
+forward construction). Therefore the outer component is precisely
+
+  W_out = {r exp(i theta): -a<theta<a,
+                       1<r<min(F_v+(theta),F_v-(theta))}.
+
+For r<1, the origin supplies the inside witness. The squared distance
+as a function of u is convex, so an outside witness exists iff the
+endpoint rho v has distance >1. Put t0=asin(rho/2). Since
+Delta<2 acos(epsilon)<2 acos(rho/2), the two endpoint angular conditions
+c_v+(theta)<rho/2 and c_v-(theta)<rho/2 intersect in one negative arc.
+Using theta=pi+phi, the inner component is precisely
+
+  W_in = {r exp(i(pi+phi)): |phi|<a+t0,
+             max(T_v+(pi+phi,rho),T_v-(pi+phi,rho))<r<1}.
+
+The lower radial bound here is positive and strictly below one throughout
+its angular interval. Each displayed set is homeomorphic to its angular
+interval times (0,1), by linear interpolation between its continuous
+radial bounds. Both are nonempty and path connected. They exhaust W,
+and the preceding distance estimate separates them by more than one.
+Thus they are exactly the two connected components. There is no hidden
+third component or bridge through |z|=1.
+
+4. COLOURING EVERY POINT, INCLUDING BOUNDARIES
+
+On W use the explicit convention
+  c(z)=0 if Im(z)>=0, and c(z)=1 if Im(z)<0.
+In each horn this bisects along its central ray. Points of one colour
+in the same horn have distance <1 by (I); points in opposite horns have
+distance >1 by (II). Therefore this is a Borel pointwise proper
+two-colouring of W. Both colours occur, for example in W_out at small
+positive and negative angles. Both central rays receive colour 0.
+
+Let p(x)=floor(5x/3) mod 3, taking residues in {0,1,2}, and put
+  f(x+iy)=p(x)+3p(y).
+The half-open grid cells have side 3/5 and diameter at most
+3 sqrt(2)/5<1. Distinct cells with the same residue pair have index
+difference at least three in some coordinate, hence coordinate
+separation at least 6/5>1. Thus f is Borel and pointwise proper on the
+entire plane, including cell boundaries and negative coordinates.
+
+Extend c by
+  c(z)=2+f(z)  for z outside S_+;
+  c(z)=11+f(z) for z in S_+ and outside S_-.
+Together with W these are three disjoint Borel cases covering every
+point. The palettes {0,1}, {2,...,10}, {11,...,19} are disjoint.
+Properness within each case follows from the preceding constructions;
+properness across cases follows from disjoint palettes. All boundary
+points are assigned by these literal cases. No null-set reassignment,
+unstated limiting convention, or extension theorem is needed.
+Borel pointwise properness immediately implies the source's WeakColoring.
+
+5. ACTUAL SUPPORT EXCLUSIONS AND APPROACH DATA
+
+Each H_+ colour class lies in the CLOSED set C minus S_+, and each
+H_- colour class lies in the CLOSED set C minus S_-. For any Borel
+class E, support(volume restricted to E) is contained in closure(E):
+outside closure(E) there is an open neighbourhood with zero restricted
+measure. The two required spatial-support exclusions therefore hold
+pointwise, even if class supports include straddle boundary points.
+Those boundaries are outside the corresponding OPEN straddle sets.
+
+The segments are compact, connected, nondegenerate, and both contain 0.
+For each sign set r_n=rho/(n+2), w_n=v_sign. These radii are positive,
+at most rho, and tend to zero; w_n has norm one and converges to v_sign;
+and 0+r_n w_n lies in K_sign. These supply every field of the actual
+ApproachingContinuum structure at the same centre 0, with the intended
+signed directions. There is no independent reversal of directions.
+
+CORRECTIONS/CLARIFICATIONS TO THE AUDITED SKETCH
+
+No mathematical reversal is required. State 0<rho<1/2 explicitly; use a
+literal boundary rule such as Im(z)>=0; distinguish horn containment
+from component equality; and read "generic optimality" as failure of
+an enlarged theorem universal in finite k, already at k=20. The exact
+two-component description above confirms the geometry independently.
+Neither a six-colour consequence nor a novelty-priority conclusion is
+licensed by this sharpness theorem.

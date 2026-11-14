@@ -1,0 +1,42 @@
+{
+ "updated_utc": "2026-11-14T07:45:00Z",
+ "status": "completed_block",
+ "summary": "Block 5, correction-only. Retracted five things: (R1) my block-4 claim that constant-modulus eigenfunctions with nontrivial unimodular eigenvalue must be tolerated is FALSE and reversed: a nonconstant eigenfunction f gives f(x)conj(f(y)) invariant and nonconstant on the self-product, so it obstructs weak mixing; my T^2 witness was an eigenfunction of the system, so it supported the obstruction, not toleration. (R2) Astra's Lemma A needs no repair: K-invariance transports the constant, so all c_u = c and c = c^2 gives c = 1; my homomorphism proof is kept as a valid variant. (R3) the tensor-correlation display was wrong - both factors transform; corrected form given, and the M3 implies ergodicity proof redone correctly and still valid. (R4) upper Banach density 1 is not density 1 along the fixed Folner sequence. (R5) the (U) implies M3 arrow is withdrawn: a bound away from 1 is compactness, not convergence. New checkable result: the convex mixture Leb + delta_0 on T^2 is invariant and pointwise strict while M3 fails by an explicit positive limit, so proving M3 from strictness must use ergodicity. Ledger in LEDGER.md. M3 and the tower simplification remain unproved; no escalation; Astra use stays 1.",
+ "verified_results": [
+  "[proved here] Arrow (A): if (D,mu) is ergodic and f is nonconstant with U_u f = chi(u) f and |chi| = 1, then |f| is invariant hence constant, f(x)conj(f(y)) is invariant, and it is nonconstant (else f would be constant a.e.); so mu x mu is not ergodic. Hence eigenfunction exclusion is NECESSARY for weak mixing.",
+  "[proved here] Arrow (B): M3 implies mu x mu is ergodic, with the corrected expansion <U_{u tensor u}G,G> = sum c conj(c) a_{z - u^{-1} z'} conj(a_{w - u^{-1} w'}) (both tensor factors transform). Each factor converges in mean square by M3 (including the diagonal case z = z', whose limit is |a_z|^2), so the product converges in mean; the limit is |integral G|^2 = 0, contradicting the invariance bound 4 eta^2.",
+  "[verified here] (R2): Astra's Lemma A proof is complete as written. Since mu is u-invariant, mu{psi_uz = c} = mu{psi_z = c} = 1, so every constant equals c before any homomorphism step; r+s = 1 with r,s in K then gives c = c^2, and span_Z(Kz) = E finishes. The homomorphism variant is also correct and is preserved.",
+  "[proved here] Mixture test: on T^2 with Z^2 acting by (x+m alpha, y+n beta), mu = lambda Leb + (1-lambda) delta_0 is invariant with a_(m,n) = 1 - lambda < 1 for all nonzero (m,n) (pointwise strictness holds), but with z = w = (1,0) the average |a_{uz-w} - a_z conj(a_w)|^2 tends to lambda^2 (1-lambda)^2 > 0, so M3 fails. The violated hypothesis is ergodicity; the paper's wildness condition is exactly what forbids the delta_0 component, so this separates the logic and is not a counterexample to M3 for the paper's mu.",
+  "[verified here] (R3) audit: the block-4 display omitted the u-dependence of the second factor; the corrected formula is derived and the consequence for the argument is favourable, not fatal.",
+  "[verified here] (R4) Upper Banach density 1 does not give density 1 along a fixed Folner sequence; only the latter enters a Folner average. (R5) a bound away from 1 constrains a compact set but implies no limit."
+ ],
+ "conjectures": [
+  "M3 (equivalently weak mixing of the paper's wild mu) remains unproved and no counterexample is known; the mixture test shows ergodicity must enter essentially, so the remaining gap is a convergence/equidistribution statement along K-orbits of frequencies, not a bound.",
+  "Whether (E1) is sufficient for weak mixing is unknown to me (no proof, no counterexample constructed); the ledger therefore treats eigenfunction exclusion as necessary only."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/LEDGER.md (THE deliverable of this block: nodes, kept arrows with complete proofs, withdrawn arrows, mixture test, grades)",
+  "supervisor/simplify-architecture/AUDIT.md (block-5 retraction banner at the head of the block-4 section; earlier blocks preserved)",
+  "supervisor/simplify-architecture/OBSTRUCTION.md (block-5 revision banner; Secs.1-8 preserved)",
+  "supervisor/simplify-architecture/STATUS.json"
+ ],
+ "tests_run": [
+  {
+   "cmd": "no computation run",
+   "outcome": "all five corrections and the mixture test are elementary and were settled by hand; the 60 s single-process allowance was not needed. No Lean, no search, no subagents, no messages."
+  },
+  {
+   "cmd": "re-read this directory's AUDIT.md/OBSTRUCTION.md/STATUS.json to place the retraction banners",
+   "outcome": "banners inserted without deleting prior text; all earlier claims remain legible with their new status."
+  }
+ ],
+ "failed_routes": [
+  "R1: 'constant-modulus eigenfunctions with nontrivial eigenvalue must be tolerated' - FALSE, retracted and reversed; they obstruct weak mixing.",
+  "R2: 'Astra's Lemma A ordering needed repair' - false, retracted.",
+  "R3: the block-4 tensor-correlation display - false, replaced by the correct two-factor expansion.",
+  "R4/R5: (U) with upper Banach density 1, and (U) implies M3 - withdrawn; moreover strictness plus invariance cannot imply M3 (mixture witness), so no repair of (U) along these lines is available.",
+  "Previously recorded and still withdrawn: P3 compaction propagation (block 2); coset-supported counterexample (closed by Lemma A); uncentered Avg|a_{uz-z}|^2 criterion; first-stage properness as a route to H2."
+ ],
+ "next_step": "Repair state is complete; nothing new is opened this block. The single remaining obligation is unchanged and now correctly scoped: prove (WM) for the paper's wild mu, for which the only analytic criterion in hand is M3, and M3 requires convergence of a along K-orbits of frequencies with ergodicity entering essentially (the mixture test forbids any route through pointwise strictness alone). The two admissible next moves, when a block is granted, are: (i) decide whether (E1) suffices for (WM) in this setting, i.e. whether the Kronecker part of (D,mu) can be excluded; (ii) attempt a proof of M3 for the single orbit z = w at a fixed z, which is the smallest nontrivial instance. No positivity or finite-search project until the supervisors accept this repair.",
+ "escalation": null
+}

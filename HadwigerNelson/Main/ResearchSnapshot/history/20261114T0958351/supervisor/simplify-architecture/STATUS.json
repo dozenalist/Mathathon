@@ -1,0 +1,52 @@
+{
+ "updated_utc": "2026-11-14T10:50:00Z",
+ "status": "completed_block",
+ "summary": "Block 11: adopted the three R3 syntax fixes verbatim and confirmed they reproduce the supervisor's private copy byte for byte - patched ConditionalSpectrum d26d569088faea89... and ConditionalLimits fed6e99a17a77232..., both matching the R3 values exactly, with no other change (statement delta still empty, net still -126, apply rc 0/0, shared originals still 6602b9d8 / ca74ba10). The three edits: omit ... in moved above the common theorem's doc comment (now lines 321-325), and exact added to both wrapper bodies (508 and 390), because the transplanted statement ends in := by so a bare term is not a tactic. Equivalence wording reconciled: the composite H i (S x) IS integrated; what is not done is deriving its regularity from S - integrability of the composite is a hypothesis of the encoding statement exactly as in both old definitions. The build recipe is now one cohesive private source tree plus one output root, explicitly without shared lean/build/lib, and without relying on per-file fallback once an OAI root is found. -126 stays textual: Spectrum passed locally, the other modules and axioms are still running.",
+ "verified_results": [
+  "[verified here, mechanical] Hash confirmation: regenerating from the frozen inputs plus the three syntax edits yields patched ConditionalSpectrum d26d569088faea89e5ae5cc2309809797fcbe76cf6d927f4484bc39db7880d48 and ConditionalLimits fed6e99a17a7723240f9b598b1967183b41c5800d23d789e41e020cfe3dffedf, identical to the supervisor's private R3 copy. My generator and the supervisor's hand edits are therefore the same revision.",
+  "[verified here, mechanical] The three edits are the only changes: statement delta still EMPTY for both public theorems, net line change still -126, patch apply check rc 0/0, and the two shared originals still hash 6602b9d8f20bbdfd... and ca74ba1033fead55...",
+  "[verified here, source reading] Edit 1 placed: in the patched file omit [StandardBorelSpace Y] [Nonempty Y] in is at line 321, the /-- Both uniform-precision ... -/ doc comment at 322-324, theorem uniform_precision_contradiction at 325, still after two_array_norm_bound (299) and simultaneous_test_budget (305).",
+  "[verified here, source reading] Edits 2 and 3 placed: exact at line 508 (finite wrapper body) and line 390 (ambient wrapper body). Reason recorded: the transplanted statement ends with := by, so the body is a tactic block in which a bare term is not a tactic; exact supplies it. This is a syntax defect in my block-9/10 output, not a mathematical change.",
+  "[verified here, mechanical] Patch hashes regenerated: 0001 a631dc3c0e49a1b4..., 0002 9f8a754b377b6860...; SOURCE-FREEZE.md now lists the R3 hashes as the post-patch values so the build target and the reviewed copy are the same revision.",
+  "[verified here, mechanical] Recipe updated to one cohesive private OAI tree: single private source tree (lean/OAI copied, two patched modules overwritten in place), single private output root, LEAN_PATH deliberately without shared lean/build/lib, and an explicit topological build loop. Recorded that a partially populated private root gives missing-olean errors even when the module exists elsewhere, so no per-file fallback may be assumed.",
+  "[verified here, source reading] EQUIVALENCE.md Secs.1 and 4 reconciled: the composite H i (S x) does appear inside the Integrable and integral terms, so S participates in integration; the point is that regularity of the composite is a hypothesis of the encoding statement, never derived from a property of S."
+ ],
+ "conjectures": [
+  "The local diagnostic's failure at line 323 and 508 is fully explained by the two syntax causes; no mathematical content of the transplant was implicated, and the corrected file compiles under Lean 4.34.1 locally (supervisor's report).",
+  "-126 remains textual until the remaining modules and the axiom/downstream checks pass; the five falsifiers in EQUIVALENCE.md Sec.6 stand unchanged."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/encoding-core/integration/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean (sha d26d569088faea89e5ae5cc2309809797fcbe76cf6d927f4484bc39db7880d48, matches R3)",
+  "supervisor/simplify-architecture/encoding-core/integration/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean (sha fed6e99a17a7723240f9b598b1967183b41c5800d23d789e41e020cfe3dffedf, matches R3)",
+  "supervisor/simplify-architecture/encoding-core/integration/0001-conditional-spectrum.patch (sha a631dc3c0e49a1b4...)",
+  "supervisor/simplify-architecture/encoding-core/integration/0002-conditional-limits.patch (sha 9f8a754b377b6860...)",
+  "supervisor/simplify-architecture/encoding-core/integration/INTEGRATION.md (Sec.7 one-cohesive-tree recipe, Sec.10 refreshed hashes, Sec.12 the three fixes with the hash table)",
+  "supervisor/simplify-architecture/encoding-core/integration/SOURCE-FREEZE.md (R3 post-patch hashes, 14-module closure, build-target rule)",
+  "supervisor/simplify-architecture/encoding-core/integration/META.json (all regenerated hashes, declaration-order audit, statement delta, net change)",
+  "supervisor/simplify-architecture/encoding-core/integration/APPLY-CHECK.txt (rc 0/0), SmokeFinite.lean, SmokeAmbient.lean",
+  "supervisor/simplify-architecture/encoding-core/EQUIVALENCE.md (sha 3b9087d03bba33a8; Secs.1 and 4 reconciled on S and integration)",
+  "supervisor/simplify-architecture/encoding-core/integrate.py, EncodingCore.lean (generator and review copy, both carrying the omit-before-docstring order)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "python3 integrate.py (regeneration with the three fixes; the block's single process)",
+   "outcome": "patched hashes d26d5690... and fed6e99a1... - both match the R3 values; statement delta empty; apply rc 0/0; declaration-order audit 0 forward references."
+  },
+  {
+   "cmd": "sha256sum on the two patched copies and on the two shared originals",
+   "outcome": "patched copies match R3; originals unchanged (6602b9d8..., ca74ba10...)."
+  },
+  {
+   "cmd": "no Lean build, no subagents, no messages",
+   "outcome": "the supervisor holds the successful local compile of the corrected Spectrum; the remaining modules and axioms are theirs to report."
+  }
+ ],
+ "failed_routes": [
+  "My block-9/10 output had two syntax defects, both mine: doc comment placed before omit ... in (the reviewer's diagnostic at line 323) and a bare term where a tactic block needed exact (lines 508/390). Fixed by adopting the supervisor's three edits; the modified generator now reproduces their copy exactly.",
+  "An earlier worry of mine, recorded in block 7, that omit ... in would not accept a following doc comment, was backwards in effect: it is the doc comment placed BEFORE omit that fails. Keeping the note so the order is not flipped again.",
+  "The initial R3 missing-olean error was a local search-root issue, not a source defect: fixed by placing all closure oleans in one private OAI root. My recipe now enforces that from the start.",
+  "Not attempted per instruction: no new abstraction work, no weak-mixing exploration, no Astra escalation."
+ ],
+ "next_step": "Await the local queue's completion on the R3 revision (d26d5690... / fed6e99a1...): the remaining closure modules, both smoke roots, and #print axioms for both public roots, uniform_precision_contradiction and the three consumers. Only when every line prints [propext, Classical.choice, Quot.sound] may -126 be promoted from textual candidate to compiled simplification. No source changes while the queue runs.",
+ "escalation": null
+}

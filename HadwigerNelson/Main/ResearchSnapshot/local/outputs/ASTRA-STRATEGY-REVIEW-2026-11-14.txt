@@ -1,0 +1,86 @@
+ASTRA STRATEGY REVIEW — 14 NOVEMBER 2026
+
+Recommendation: concentrate the existing six workers on TWO source-driven research programs, with Astra selecting and attacking the difficult mathematical interfaces. Stop treating a steady stream of checked small lemmas as evidence that the portfolio is approaching a competition result. Keep equal effort between solving and substantial simplification.
+
+This is an independent strategy review, not a new mathematical result. I read the overnight report, current supervisor guide/state, the previous Astra review, selected retired handoffs, and the actual supplied Lean sources. Worker-labelled proofs in old handoffs are not independently accepted here. No remote writes, research runs, new chats, credentials, or child agents were used.
+
+DIAGNOSIS
+
+The principal bottleneck is strategy plus mathematical depth. The system is choosing elementary, locally checkable work while the decisive analytic questions remain untouched. Supervision is the second bottleneck: too many 15–25-minute blocks terminate in corrections, new bookkeeping, or another seed without a mechanism. The supervisor's skepticism prevented false discoveries, but correctness review cannot substitute for research direction. Compute limits are unnecessarily restrictive for selected experiments; nevertheless, neither more CPU nor twelve more undirected chats fixes the mathematical problem. The reported Codex budget does not presently justify extreme Astra rationing, and it also does not imply unlimited reliable reasoning.
+
+The 126-line common-encoding refactor is a real preserved result. The 82-module closure, axiom checks and signatures are enough to bank it. Further repeated binder work and full rebuilding have sharply declining value. Competition criteria supplied by the supervisor emphasize correctness, clarity, motivation and interest; line count and Lean alone earn no credit. A useful submission needs a new argument or a substantially clearer conceptual organization with honest attribution.
+
+RANK 1 — SIX COLOURS: IDENTIFY AND ATTACK THE TERNARY-CENTRE FRONTIER
+
+Actual source facts:
+* Geometry/PlaneColoring/BorelTransfer.lean:439–450 already transfers a proper algebraic-plane k-colouring to a measurable weak k-colouring for every nonzero k. Re-proving this for six is not the new obstacle.
+* BinaryPalettes.lean:138ff proves separation/countability of binary centres for general k. Lines 252–269 exclude a triple palette at k=5 because its complement has TWO colours, yielding palette size at most two.
+* At k=6 that complement argument naturally addresses four-element palettes, leaving triples. Generalizing that easy bound is preparatory work, not the breakthrough.
+* Five.lean:24–98 constructs the covering obstruction from graph-valued maps. Multiplicity two comes from support on an edge, rather than from the numeral five. But FullApproximation.lean:12–47 needs eventual forests, and ContinuumLimits.lean:296–308 excludes common-interface cycles using specifically five-colour arguments. A graph-valued approximant at six is NOT supplied for free.
+
+Precise first target: define T_S(y), for a fixed three-element S contained in Fin 6, to mean that almost every angular palette at y meets S. This is the exact three-label analogue of BinaryCenter. Determine whether the source transport identities can prove
+  for every x and every such S, T_S(x + direction(t)) fails for almost every t.
+Combined with the licensed circle-complement exclusion and sampling facts, that would exclude triple palettes at six. It is a CONJECTURAL target, not an established extension of binary rigidity. A weaker, explicitly stated descent result at a genuine cyclic centre is acceptable only if a named downstream theorem consumes it.
+
+Before proof search, the lead must write the entire implication chain from the candidate lemma to a useful six-colour theorem, marking every remaining obligation. In particular, palette size at most two alone must not be advertised as chi >= 7: the cycle classification and core-filling steps still need review. The retired adversarial handoff reports satisfiable six-colour downstream palette relaxations; those reports are warnings to inspect their exact hypotheses, not settled impossibility theorems.
+
+First experiment: extract only source-licensed one-centre/two-centre transport relations for three-label states, and search for small periodic abstract models. Every constraint must cite its producer, including the centre and almost-everywhere quantifier. A model refutes the proposed finite implication, not the existence of a plane colouring. A finite contradiction earns mathematical value only after the analytic realization implication is proved. Do not keep adding unlicensed constraints until SAT becomes UNSAT.
+
+Six-hour success: a source-checked end-to-end frontier map and ONE of (a) a new ternary exclusion/descent lemma with proof, (b) a verified countermodel killing a precisely stated candidate implication, or (c) one substantially reduced analytic obligation with its exact consumer. Twelve-hour stretch: a new six-colour theorem with real content beyond the inherited bound. No promise of chi=7 is justified.
+
+Kill criteria: abandon the proposed finite relaxation immediately on a valid countermodel unless an already-available source constraint excludes it. After two hours, stop any target lacking a plausible downstream consumer. After six hours, no further expansion of the state system without a new proved relation. Do not spend the remaining day proving a local-finiteness statement that still leaves an unaddressed downstream obstruction.
+
+RANK 2 — A CONCEPTUAL ANGULAR SIMPLIFICATION, WITH THE HARD PREMISE VISIBLE
+
+The attempted Lemma 6.7 deletion currently moves between level sets, closed supports and different angular positions without a licensed bridge. The actual source is more informative than the summaries: FiveSupport.lean:55 gives existential support transport, while :138 proves five_support_no_sixty by invoking States.lean:704 strict_state_no_unit_support. Using that result cannot count as eliminating its analytic dependency.
+
+Concrete alternative: encode the WHOLE six-angle word
+  W(t) = (f(t), f(t+sixty), ..., f(t+5*sixty))
+and work with the measure supports of its finitely many level sets. Prove the generic finite-state facts once: projection recovers a marginal support as a finite union; angular shift rotates the word; almost-everywhere word constraints eliminate the corresponding word supports. This preserves simultaneous data without asserting that independently chosen support states occur together. These are proposed proof components, not checked new results in this review.
+
+Use that representation to ask ONE question: do the actual pre-Lemma-6.7 analytic premises already force the required contact contradiction? Explicitly forbid strict_state_no_unit_support and its descendants in a claimed elimination. Start by translating the eight known countermodels into the joint-word setting; determine which really satisfy all licensed premises. The raw word space has only 5^6 possibilities, so exact checking is modest. If the implication survives, extract a short human proof before Lean implementation.
+
+The useful fallback is not another list of 21 tiny lemmas. Produce a general finite-state theorem with an exact analytic input contract, and a short proof exposition showing how transport, finite combinatorics and the planar covering obstruction fit together. If the heavy analytic premise is still indispensable, say so, retain it, and explain its mathematical role. Count a dependency as removed only when the replacement avoids it transitively and the final theorem is applied with unchanged hypotheses.
+
+Six-hour success: the exact joint-state interface plus either a short replacement proof or an independently checked obstruction explaining why the shortcut fails. Twelve-hour stretch: an integrated, validated substantive replacement and a 4–6-page human-readable alternative argument. If no dependency is removed, the exposition must still identify a genuine unifying theorem or conceptual simplification; renaming existing steps is insufficient.
+
+Kill criteria: stop the deletion attempt after a correct countermodel under all licensed premises. Stop formalizing auxiliary lemmas until a complete paper-level consumer proof exists. By hour six, abandon the joint-state representation if it merely restates the original proof with no clearer theorem or reduced analytic burden.
+
+FOUR ASTRA ASSIGNMENTS, INCLUDING THIS REVIEW
+
+1. This strategy review: complete; bank its source findings and revise the portfolio.
+2. Solving lead: the ternary-centre frontier packet above. First output is the downstream dependency contract, followed by one hard proof attempt or decisive countermodel. It directs the three solving workers.
+3. Simplification lead: the joint-state/analytic-interface packet above. First reconcile the known countermodels and prohibited dependencies; then attempt one conceptual replacement. It directs the three simplification workers.
+4. Independent referee: after substantive candidates exist, challenge the strongest one or two claims using their exact source packets, with special attention to hidden hypotheses, circularity, centre changes and exceptional sets. It must not receive only the authors' summaries. If no candidate exists, adjudicate the failed reductions and select the next target; do not manufacture a positive verdict.
+
+Maximum two live Astra agents. Jobs 2 and 3 can run together; job 4 follows substantive handoffs. This is a bounded four-job tranche, not standing unlimited Astra use. Reassess at six hours before authorizing another tranche. Additional paid Claude access should serve as an independent referee or a differently framed proof attempt once available; it is not required for this plan and should not be bought merely to increase chat count.
+
+SIX DEEPSEEK WORKERS, THREE PER TRACK
+
+Solving geometry: derive the exact ternary transport relations and their hypotheses.
+Solving independent: attack the target with countermodels and check its downstream consumption.
+Solving graphs: implement the small certified finite-state experiments; retain exact geometry tools for a justified future seed.
+Simplification architecture: develop the joint-state theorem and human proof under the lead's contract.
+Simplification verification: independently audit the analytic premises and prohibited dependency closure.
+Simplification Lean: implement only approved complete proofs, prepare a minimal reproducible validation packet, and maintain submission compatibility.
+
+Give each worker a coherent 60–120-minute program, with 20-minute monitoring retained. Monitoring is not a reason to interrupt active work or invent a fresh task every check. Keep useful idle capacity rather than dispatching filler. After two material hypothesis/elementary errors in the same target, freeze that worker's proof claim and assign it source extraction or implementation until the lead has repaired the premise contract.
+
+STOP NOW
+
+* Reopening Heule553 or the translated 1048-vertex union; both pair searches are closed.
+* Arbitrary new placements justified only by overlap/edge counts. A forced-equal pair at FIVE colours produces at best a finite SIX-chromatic witness, which would be a valuable explicit certificate but repeats the supplied plane lower bound. It does not resolve six versus seven.
+* Searching for a six-colour forced-equal pair in a certified five-colourable graph: recolouring one endpoint with the spare sixth colour separates any distinct pair. A target-six forcing program needs a genuinely six-chromatic seed or a different mechanism.
+* Broad honeycomb exclusions, repeated binder tooling, re-audits of banked results, and a generic weak-mixing campaign. The previous Astra result gives pointwise Fourier strictness, not the required mixing/factor theorem. Reopen that route only with one exact consumer and a credible shorter proof strategy.
+
+COMPUTE AND DELIVERY
+
+Replace the universal 60-second ceiling with staged limits for selected jobs: a <=60-second smoke test, then one reviewed local exact/SAT computation up to ten minutes, extending to thirty minutes only when measured progress and a certificate plan justify it. Keep one heavy computation at a time; target <=4 GiB RAM and cap proof/log output. The supervisor reports 12 logical CPUs, 31.4 GiB RAM, about 13.3 GiB free RAM, but only about 5.9 GiB free disk locally. Preserve that disk margin; no new giant caches or unbounded proof traces. The shared remote 4-CPU/16-GiB VM should remain available for reasoning tools and light work. The first substantive tests here are small, not hardware-intensive.
+
+Use local Lean after the mathematics passes review. Rebuild the affected closure once; broaden only on an actual failure or dependency concern. The verified 4.34.1 refactor is not automatically a competition-ready formal submission: the supervisor reports official optional Lean requirements at 4.35.0 and restrictions on claiming the supplied proof as new formalization. Prepare the substantive human argument first, then a narrowly scoped compatibility plan without changing the user's global toolchain.
+
+At six hours report: accepted new mathematical claims, killed candidates, exact remaining obligations, and one selected delivery target. At twelve hours report: the reviewable argument/artifact and its validation, or a candid failure with the strongest reusable insight. Do not report activity volume as progress. Retain the November 15 08:54 Pacific research stop, leaving the supervisor-reported noon submission deadline buffer for exposition, attribution and packaging.
+
+Source root for citations above:
+C:/Users/jarom/Documents/Codex/2026-11-13/i/work/encoding-integration/full-original/OAI/
+Additional evidence: outputs/OVERNIGHT-REPORT-2026-11-14.txt; outputs/SUPERVISOR-GUIDE.txt; outputs/ASTRA-WILD-LAW-REVIEW.txt; work/openmath-supervisor/supervision-state.json; work/overnight-report-2026-11-14/chat-4ac4b34cf7-STATUS.json.

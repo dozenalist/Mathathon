@@ -1,0 +1,67 @@
+{
+  "updated_utc": "2026-11-14T10:48:00Z",
+  "status": "completed_block",
+  "summary": "Block 13: audited the top-level statement. Root is OAI.EuclideanFiveColor.no_proper_five_coloring : not exists c : C -> Fin 5, ProperColoring 5 c with ProperColoring k c := forall x y : C, ||x - y|| = 1 -> c x != c y: vertex domain is ALL of C, the edge predicate is distance exactly 1, the colouring is total and arbitrary, and the claim carries NO measurability, choice or conditional hypothesis -- measurability enters only via proper_to_borel_weak_algebraic and no_measurable_weak_five_coloring, both proof steps. The algebraic plane E is an intermediate used to obtain the contradiction (the map is a restriction, definitionally transparent) and is not in the claim. The bundle vocabulary Problem160.ProperColoring is PROVEN equivalent by planeProperColoring_iff, and chromaticNumber_bounds states 6 <= chi <= 7. No mismatch with unrestricted Hadwiger-Nelson found; two referee caveats recorded (Nat.sInf needs inhabitation; Fin 0 case). Resolved the signature-packet limitation with SignatureCheckFresh.lean: no section variables, Y's StandardBorelSpace and Nonempty as plain hypotheses that cannot be synthesized as instances, plus a letI positive control so a double failure is diagnosable. Nothing compiled; the claim is NOT reported as locally verified.",
+  "verified_results": [
+    "GRADE [R] Root statement: OAI.EuclideanFiveColor.no_proper_five_coloring : \u00ac \u2203 c : \u2102 \u2192 Fin 5, ProperColoring 5 c (Geometry/PlaneColoring/Five.lean:133), with ProperColoring (k : \u2115) (c : \u2102 \u2192 Fin k) : Prop := \u2200 x y : \u2102, \u2016x - y\u2016 = 1 \u2192 c x \u2260 c y (Coloring.lean:7).",
+    "GRADE [R] Vertex domain is the whole complex plane (all of \u211d\u00b2); the edge predicate is Euclidean distance EXACTLY 1; the colouring is a total arbitrary function into Fin 5. No measurability, boundedness, definability or a.e. reading appears in the claim.",
+    "GRADE [R] Measurability, choice and conditional hypotheses are proof-side only: proper_to_borel_weak_algebraic (BorelTransfer.lean:439) produces a measurable WeakColoring from a proper labelling of the algebraic plane, and no_measurable_weak_five_coloring (Five.lean:105) closes the argument. WeakColoring is defined at Coloring.lean:27 and is never mentioned in a public root statement.",
+    "GRADE [R] The algebraic plane E = algebraicClosure \u211a \u2102 (Analysis/PlaneSpectrum/Basic.lean:9) appears only as a proof intermediate via LabelModel.Proper (Representations.lean:55) and no_proper_five_coloring_algebraic (Five.lean:126). The passage to E in the root proof is a restriction, `\u27e8fun x => c x, fun x y h => hc x y h\u27e9`, definitionally transparent because the coercion sits outside the subtraction.",
+    "GRADE [R] The bundle vocabulary is PROVEN equivalent, not assumed: Problem160.planeProperColoring_iff (Chromatic.lean:92) gives ProperColoring k \u2194 \u2203 d : \u2102 \u2192 Fin k, EuclideanFiveColor.ProperColoring k d using toPlane/ofPlane and dist_ofPlane. Problem160.ProperColoring is \u2203 c : EuclideanSpace \u211d (Fin 2) \u2192 Fin k, \u2200 x y, dist x y = 1 \u2192 c x \u2260 c y (Basic.lean:26).",
+    "GRADE [R] The displayed inequality is chromaticNumber_bounds : 6 \u2264 planeChromaticNumber \u2227 planeChromaticNumber \u2264 7 (Chromatic.lean:136) with planeChromaticNumber := sInf {k | ProperColoring k} (Basic.lean:40).",
+    "GRADE [C] NO MISMATCH with unrestricted Hadwiger\u2013Nelson identified: full plane, exact unit distance, unrestricted total colouring, conclusion \u03c7 \u2265 6 and \u03c7 \u2264 7. Two referee caveats recorded rather than glossed: Nat.sInf needs the set inhabited for the numeric claim (discharged by properColoring_seven), and Fin 0 makes ProperColoring 0 false, covered by monotonicity.",
+    "GRADE [C] The encoding-core edits touch the PROOF route to no_proper_five_coloring (Five is reverse-dependent via Approximation \u2192 ConditionalSpectrum) but not its STATEMENT: no encoding predicate, IsWild or conditional kernel occurs in any of the three root statements.",
+    "GRADE [R] Signature-packet limitation RESOLVED by construction, not by argument: SignatureCheckFresh.lean declares no section variables, binds StandardBorelSpace Y and Nonempty Y as PLAIN hypotheses (never instance-implicit, so not in the instance cache), and applies each theorem with only explicit arguments. An added omitted-Y binder must then fail synthesis. A letI positive control distinguishes 'theorem regressed' from 'test file wrong'.",
+    "GRADE [S] Supervisor-reported and not re-run: R4 source hashes now match on both VM and local; SignatureEquivalence R4 is staged but uncompiled; the full 82 build is still running and no queue edits are allowed. The claim is therefore NOT reported as locally verified."
+  ],
+  "conjectures": [
+    "The claim is Hadwiger\u2013Nelson in the unrestricted sense, so any future readers' objection about measurability applies to the proof method, not to the theorem stated.",
+    "SignatureCheckFresh will pass for both theorems if the R3 omit move preserved the original omission; a fresh/control pair where fresh fails and control succeeds would be a definite statement regression and should block integration.",
+    "Because no root statement mentions the two def\u2192abbrev names, the integration cannot change what is certified \u2014 only whether the development still compiles."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/STATEMENT-AUDIT.md  <-- top-level statement audit, sections 1-6, with per-line citations. sha256 e9175fe334498165fe4c9219848c1608e45b7a5827be4ab9b03ff59f4a635a79",
+    "supervisor/simplify-lean/lean/SignatureCheckFresh.lean  <-- fresh-context signature test: 2 tests + 2 letI positive controls, autoImplicit false, no section variables, 4 axiom prints. sha256 5599ceb31bba262a191e48eb087ec95efaf5365bb14c658cfcef245d984667cd",
+    "supervisor/simplify-lean/lean/SignatureEquivalence.lean  <-- verbatim baseline predicates + Iff.rfl certificates + original statements (block 12) sha256 86331c2f835027cc0874b1ed9ed9395131dbab056efc09673cdb40dda602038e",
+    "supervisor/simplify-lean/lean/AxiomRoots.lean  <-- Part A 7 affected roots / Part B 2 unaffected sha256 726d1ae4ec8cea100c5203492d53523619ae12590713734379deef9e28b9caad",
+    "supervisor/simplify-lean/axiom_gate.py  <-- subset gate, required/optional split sha256 36bf7fecb22d154ec14ab7d0e77621020761ee2c6a5c2497963509a0e38ea535",
+    "supervisor/simplify-lean/recon/ConditionalLimits.R4-recon.lean (independent R4 reconstruction, sha 24f89dd3...) sha256 24f89dd33533a0f61b9f35940e43b3a26c2b27b00424949a92cfdafc8de60d9b",
+    "supervisor/simplify-lean/snapshots/integ-d26d569088faea89/ (frozen R3, SHA256SUMS.txt)",
+    "supervisor/simplify-lean/BUILD-PLAN.json (82-row closure), MANIFEST-full.json (83 modules), REVIEW-R3.md, REVIEW-R4.md, REVIEW-integration-final.md"
+  ],
+  "tests_run": [
+    "Source reads with line citations for: Five.lean:120-137, Coloring.lean:1-31, Basic.lean:1-45, Chromatic.lean:85-140, Representations.lean:50-58, BorelTransfer.lean:436-446, Analysis/PlaneSpectrum/Basic.lean:1-14.",
+    "rg for every declaration site used in the audit: ProperColoring (2 distinct definitions), planeChromaticNumber, LabelModel.Proper, WeakColoring, proper_to_borel_weak_algebraic, no_measurable_weak_five_coloring, E, Plane.",
+    "byte-count and structural check of SignatureCheckFresh.lean: 165 lines, autoImplicit false present, two 'fresh_' theorems with underscore-prefixed non-instance hypotheses, two 'control_' theorems binding them via letI.",
+    "sha256 over all deliverables, recorded in artifacts.",
+    "NO Lean build, no cloud/cache operation, no change to frozen R4 (analysis-only block, per instruction)."
+  ],
+  "failed_routes": [
+    "Not done and not claimed: local verification of no_proper_five_coloring or chromaticNumber_bounds. Requires the 82-module build to finish plus AxiomRoots printing a subset for the named root; neither has happened.",
+    "SignatureCheckFresh.lean is uncompiled, so the fresh/control pairing is a design, not a result; if both fail the hypothesis text is at fault and the file must be corrected before it can be read as evidence.",
+    "Did not attempt to resolve whether condDistrib needs [StandardBorelSpace Y] at statement level by reading Mathlib; the original files' own compiling `omit` is the evidence that it does not, which is why the fresh test is statable at all."
+  ],
+  "next_step": "Next verification step, one queue slot once the 82 build finishes: (1) elaborate SignatureCheckFresh.lean and read the fresh/control pair -- both pass means the omitted-Y binders are intact; fresh fails with control passing means a statement regression and integration must stop; (2) elaborate SignatureEquivalence.lean for the Iff.rfl definitional certificates; (3) run AxiomRoots.lean through axiom_gate.py and require the Part A roots, including no_proper_five_coloring, to be subsets of {propext, Classical.choice, Quot.sound} with no sorryAx. Only after (1)-(3) may the top-level claim be described as locally verified.",
+  "owned_agents": [
+    {
+      "swarm": "smwfy8rae",
+      "members": 3,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "state": "stopped",
+      "accepted": 0,
+      "note": "stopped in block 1; not restarted (single-agent blocks by instruction)."
+    }
+  ],
+  "escalation": null,
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "statement_audit": "supervisor/simplify-lean/STATEMENT-AUDIT.md",
+    "fresh_signature_test": "supervisor/simplify-lean/lean/SignatureCheckFresh.lean",
+    "signature_equivalence": "supervisor/simplify-lean/lean/SignatureEquivalence.lean",
+    "axiom_root_file": "supervisor/simplify-lean/lean/AxiomRoots.lean",
+    "axiom_gate": "supervisor/simplify-lean/axiom_gate.py",
+    "claim_status": "NOT locally verified: 82-module build still running, no axiom print for the root yet",
+    "root_statement": "OAI.EuclideanFiveColor.no_proper_five_coloring : \u00ac \u2203 c : \u2102 \u2192 Fin 5, ProperColoring 5 c , with ProperColoring k c := \u2200 x y : \u2102, \u2016x - y\u2016 = 1 \u2192 c x \u2260 c y",
+    "next_verification_step": "SignatureCheckFresh (fresh/control pair), then SignatureEquivalence Iff.rfl, then AxiomRoots via axiom_gate.py; only then call the claim locally verified."
+  }
+}

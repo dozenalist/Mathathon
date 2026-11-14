@@ -1,0 +1,48 @@
+paper hexagon circumradius a = r = 2/5 = 0.400000, lattice spacing a*sqrt3 = 0.692820
+a < 1/2 (cell diameter < 1)? True
+
+ring  N=|v|^2*3/a^2   |v|/(a)   dmin^2       dmax^2       forced?
+   0             0.0000     0.480000    0.640000   False   (1 vectors)
+   1             1.0000     0.000000    2.080000   True   (6 vectors)
+   3             1.7321     0.160000    4.000000   True   (6 vectors)
+   4             2.0000     0.480000    4.480000   True   (6 vectors)
+   7             2.6458     1.120000    6.880000   False   (12 vectors)
+   9             3.0000     1.920000    7.840000   False   (6 vectors)
+  12             3.4641     2.560000   10.240000   False   (6 vectors)
+  13             3.6056     3.040000   10.720000   False   (12 vectors)
+  16             4.0000     4.320000   12.160000   False   (6 vectors)
+  19             4.3589     4.960000   14.560000   False   (12 vectors)
+  21             4.5826     5.920000   15.520000   False   (12 vectors)
+  25             5.0000     7.680000   17.440000   False   (6 vectors)
+  27             5.1962     7.840000   19.360000   False   (6 vectors)
+  28             5.2915     8.320000   19.840000   False   (12 vectors)
+  31             5.5678     9.760000   21.280000   False   (12 vectors)
+  36             6.0000    12.000000   23.680000   False   (6 vectors)
+  37             6.0828    11.680000   25.120000   False   (12 vectors)
+  39             6.2450    12.640000   26.080000   False   (12 vectors)
+  43             6.5574    14.560000   28.000000   False   (12 vectors)
+  48             6.9282    16.000000   31.360000   False   (6 vectors)
+  49             7.0000    16.480000   31.840000   False   (18 vectors)
+  52             7.2111    17.920000   33.280000   False   (12 vectors)
+  57             7.5498    20.320000   35.680000   False   (12 vectors)
+[OK] ring 1 is the shared-edge ring (dmin = 0 exactly): the honeycomb orientation is right
+
+[OK] rings 1,3,4 forced; ring 7 not forced  ==> the forced set contains T^2 = {v : |v| <= 2s}
+[OK] 7 cells {0} u neighbourhood are pairwise forced  ==> k >= 7
+[OK] c(p,q) = p + 3q mod 7 is 0-free on every v with |v| <= 2s  ==> chi(T^2) = 7
+[OK] smallest same-colour lattice vector: Norm = 7 (=7, the index-7 sublattice)
+[OK] every same-colour pair has |v|^2 = 21a^2 = 3.3600 > (1+2a)^2 = 3.2400
+     ==> dmin > 1 for every same-colour pair ==> the 7-colouring of the family is proper
+     exact margin on that tight ring: dmin^2 in [(28/25)+(0)*r3, (28/25)+(0)*r3], all > 1
+
+exact a-ranges (a = hexagon circumradius, cells of the honeycomb tiling):
+  ring N=1: forced iff a >= 1/sqrt((13)+(0)*r3) = 0.277350  and  a <= inf
+  ring N=3: forced iff a >= 1/sqrt((25)+(0)*r3) = 0.200000  and  a <= 1.000000
+  ring N=4: forced iff a >= 1/sqrt((28)+(0)*r3) = 0.188982  and  a <= 0.577350
+  => ALL of rings 1,3,4 forced for  a in [1/sqrt((13)+(0)*r3), 1/sqrt((3)+(0)*r3)] = [0.277350, 0.577350]
+  and the cell diameter condition needs a < 1/2 = 0.500000, so the no-go covers
+  a in [1/sqrt13, 1/2) = [0.277350, 0.500000)  -- closed at the bottom: ring 1 is tangent-safe there
+  [OK] paper a = r = 2/5: rings 1,3,4 forced and diameter < 1 -> True
+  [OK] a = 0.45 (inside the window): rings 1,3,4 forced and diameter < 1 -> True
+  (at the boundary a = 1/sqrt13, ring 1 has dmax^2 = 13a^2 = 1 exactly: the two adjacent
+   hexagons do contain a pair of points at distance exactly 1, so they are still forced.)

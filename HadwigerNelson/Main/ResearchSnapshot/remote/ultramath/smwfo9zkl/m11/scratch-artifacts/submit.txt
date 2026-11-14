@@ -1,0 +1,9 @@
+k=6 palette fact: at every centre, three-label palettes occupy at most half the direction circle; plus a decided finite computation. Not a solution of the sprint problem.
+
+PROVED (k6-ternary-palette.md; core machine-checked in lean/K6Ternary.lean). (A) For k>=6 and every centre, sigma{e : |P_x| = k-3} <= 1/2; at k=6 that bounds three-label palettes by 1/2. Proof: (5.2) forbids P_x(e)|P_x(v) = I for a.e. pairs, (5.7) makes P_x(e), P_x(Re) disjoint, and at k=6 two disjoint ternary palettes are exactly complementary (2(k-3)=k). (B) For nonempty T, sigma{T subset P_x} <= 1/2, so no a.e.-constant palette; at a k=6 triangle centre the palette equals the full triangle on <= 1/2 of directions, hence meets the outsider triple on >= 1/2.
+
+DECIDED (verify/state_models.py, DFS and HiGHS ILP agreeing; k=5 triple-checked): all single-centre state systems at a k=6 cyclic centre, cycle lengths 3,4,5,6. Max ternary density exactly 1/2, so (A) is sharp there. Every length admits systems with no uniform binary pair, so the k=5 fixed-pair mechanism cannot transfer. The k=5 control reproduces Thm 6.5 (all 2600 systems binary for the outsider pair). verify/joint_centres.py: exact 7-centre certificate that 1/2 survives the two-centre exclusion at all twelve unit-separated pairs.
+
+NOT PROVED: |P| <= 2 at k=6, so no local finiteness, no §7 transfer, no chi(R^2) claim.
+
+Commands: python3 verify/state_models.py; python3 verify/joint_centres.py; lean lean/K6Ternary.lean; lean lean/K6Finite.lean (ok).

@@ -1,0 +1,38 @@
+{
+  "updated_utc": "2026-11-14T11:05:00Z",
+  "status": "completed_block",
+  "summary": "Two tasks. (1) Retracted Prop. 0 of TRACE-CONSTRAINT-W3.md: a plane-null set can contain an entire prescribed circle and circle measure is singular to plane area, so a.e.-in-centre typical sampling (and m10's Lemma 1) cannot be upgraded to every centre; Prop. A is now explicitly conditional and graded [P]-conditional. No compactness research. (2) Independently audited PATCH19. drat-trim, copied from supervisor/solve-graphs/tools (the producer said it was absent), verifies p19.cnf UNSAT against p19.drup in 2.63 s: s VERIFIED, 5144 of 6496 clauses in core, 36014 of 42110 lemmas, 0 RAT. Geometry re-derived by hand: forced set exactly N in {4,7,9,12,13}, |F| = 42 with multiplicities 6+12+6+6+12; strict inequality load-bearing at N=3 (distance 1 only at vertices), crude bound would wrongly add N=16; |P| = 73 by Eisenstein multiplicities. The rup.c defect is confirmed: nonfalse is assigned after both loops fill p, so both level-0 branches are dead and its rc 0 is no evidence. Accepted: the 73-cell patch has no proper 6-colouring, hence none constant on those cell interiors at a = 1/5. Not accepted: chi(G[P]) = 8, and any plane or other-a claim. Unverified: literal-level edge-clause correspondence.",
+  "verified_results": [
+    "GRADE [A] Certificate verification, independent: ./drat-trim p19.cnf p19.drup -> 's VERIFIED', 2.63 s real, backward checking, 5144 of 6496 input clauses in core, 36014 of 42110 lemmas in core, 0 RAT lemmas. Log audit19/drat_run.log; sha256 of drat-trim a9571deb08430a3d7f7a72074440f53e2ad48196dced50b146835052a18e9066, of p19.cnf 31f354668e946a3f61f0bab2d3c632792e1be6ff50979116971d3a2469823b69, of p19.drup f4ec9532ce13a46197ea71a489a9f451563da4b81c6f2aad3097439d23c1496e. This establishes UNSAT of the supplied CNF unconditionally, with no reliance on the producer's checker.",
+    "GRADE [P] Geometry: with circumradius a = 1/5, lattice spacing a*sqrt3, inradius 1/(2*sqrt3), a pair of cells at lattice offset v can realise distance t exactly when |v| - 2h < t < |v| + 2h with h the hexagon support function. This yields forced norms exactly {4,7,9,12,13}; N=3 is excluded because |v| + 2h = 1 exactly (vertex directions only, so no interior pair); N=16 (v=(4,0)) is excluded because |v| - 2h = 1.0392 > 1, which the crude bound |v| - 2a would wrongly include. Multiplicities 6,12,6,6,12 sum to 42 = |F|, matching the producer's assertion and the centre degree.",
+    "GRADE [P] |P| = 73 for {v : N(v) <= 19}: sum of Eisenstein representation counts over N in {0,1,3,4,7,9,12,13,16,19} is 1+6+6+6+12+6+6+12+6+12 = 73. Forcing requires |v| < 1 + 2a = 1.4, i.e. N < 16.33, so the producer's search window N <= 16 is sufficient.",
+    "GRADE [S] CNF mapping at count level: header 'p cnf 438 6496'; 438 = 73*6; 6496 = 73*16 + 888*6 = 1168 + 5328; first clauses match p19_gen.py's variable map v*6+c+1 with the at-least-one clause then the 15 at-most-one pairs. No symmetry breaking in the file, so UNSAT is not a normal-form statement.",
+    "GRADE [S] Producer checker defect confirmed at rup.c:46-56: the two loops fill p to n before 'int nonfalse=p', so nonfalse == n always; 'if(nonfalse==0)' (level-0 falsified clause -> conflict) and 'if(nonfalse==1)' (level-0 unit clause -> enqueue) are both dead. A clause falsified at level 0 is therefore added with two false watches, and a unit clause is never enqueued. Its rc 0 is consequently no evidence; propagate() returns conflict only on genuinely false remaining literals, so this is not evidence of unsoundness either.",
+    "GRADE [P] Scope: any colouring of the plane constant on the interiors of these cells restricts to a proper 6-colouring of G[P], which does not exist, so no such 6-colouring exists at a = 1/5. This is a no-go for one cell-constant family at one parameter; it says nothing about chi(R^2) and nothing at other a."
+  ],
+  "conjectures": [
+    "The literal-level correspondence between the 888 binary edge clauses and edges_indexed is very likely correct (the generator iterates C['edges_indexed'] directly and the counts match exactly), but it is the one remaining link between the verified UNSAT and the geometric claim; it should be checked by a separate cheap program in a later block rather than assumed.",
+    "chi(G[P]) = 8 is plausible (verified 8-colouring with colour classes 12,10,10,9,9,9,8,6 and 7-UNSAT from two CDCL solvers) but uncertified; a 7-UNSAT DRUP proof for this CNF is presumably short enough to generate in a later block with a longer cap, and would be a strictly stronger, still family-scoped no-go.",
+    "The strict-interior criterion at N=3 suggests a general remark worth recording: for lattice-cell families the boundary case |v| + 2h = 1 exactly contributes no edge, so any future enumeration that uses non-strict inequalities will over-constrain and may produce unsound UNSAT claims."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/PATCH19-AUDIT.md",
+    "supervisor/solve-geometry/audit19/drat_run.log",
+    "supervisor/solve-geometry/audit19/SHA256.txt",
+    "supervisor/solve-geometry/audit19/p19.cnf",
+    "supervisor/solve-geometry/audit19/p19.drup",
+    "supervisor/solve-geometry/TRACE-CONSTRAINT-W3.md",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "Single bounded computation of the block: ./drat-trim p19.cnf p19.drup in supervisor/solve-geometry/audit19 (drat-trim binary copied from supervisor/solve-graphs/tools, sources untouched; CNF and proof copied read-only). Result s VERIFIED, 2.63 s, well inside the 60 s budget. sha256 recorded in audit19/SHA256.txt; log in audit19/drat_run.log. No other computation was run; the geometry was re-derived by hand and the sources read."
+  ],
+  "failed_routes": [
+    "RETRACTED: Prop. 0 of TRACE-CONSTRAINT-W3.md (endpoint trace at every centre). The argument confused a.e.-in-centre typicality with per-centre admissibility; plane-null does not imply angular-null on a prescribed circle. Prop. A is now conditional on that lemma.",
+    "REJECTED as evidence: the producer's rup.c verification, because of the nonfalse assignment bug (both level-0 branches dead). Not rerun, not repaired, not trusted; replaced by drat-trim.",
+    "NOT accepted: chi(G[P]) = 8 (no 7-UNSAT certificate) and any statement about the plane or about other cell sizes.",
+    "NOT verified: literal-level edge-clause correspondence and the producer's vertex index ordering; would need a second program run, outside this block's single-computation budget."
+  ],
+  "next_step": "One cheap program in a later block: re-generate the CNF from patch19_cert.json independently and diff the clause sets against p19.cnf (this closes the only remaining gap between the verified UNSAT and the geometric claim). If that matches, the patch stands as certified. Optional afterwards: emit a 7-UNSAT DRUP proof and check it with drat-trim to upgrade chi(G[P]) = 8 from machine-decided to certified. Neither touches chi(R^2).",
+  "escalation": null
+}

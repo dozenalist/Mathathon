@@ -1,0 +1,11 @@
+import OAI.Geometry.PlaneColoring.Transfer
+import OAI.Geometry.PlaneColoring.NullSetRobust
+import OAI.Geometry.PlaneColoring.ConnectedUnitFree
+#print axioms OAI.EuclideanFiveColor.proper_iff_weak
+#print axioms OAI.EuclideanFiveColor.algebraic_colorable_iff
+#print axioms OAI.EuclideanFiveColor.not_proper_five_coloring_compl_null
+#print axioms OAI.EuclideanFiveColor.diam_le_one_of_preconnected_unitFree
+#print axioms OAI.EuclideanFiveColor.diam_le_one_connectedComponentIn_of_properColoring
+#check @OAI.EuclideanFiveColor.proper_iff_weak
+#check @OAI.EuclideanFiveColor.algebraic_colorable_iff
+#check @OAI.EuclideanFiveColor.not_proper_five_coloring_compl_null

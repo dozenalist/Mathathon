@@ -1,0 +1,11 @@
+dropped value-edges at 1 declaration(s)
+freed 189 of 3538 declarations, 2665 lines (126 of them with a source span)
+   445   18  OAI.Analysis.PlaneSpectrum.PhaseCollision
+   435   23  OAI.Analysis.PlaneSpectrum.ConditionalSpectrum
+   396   10  OAI.MeasureTheory.CompactFactors.ConditionalLimits
+   373   10  OAI.MeasureTheory.CompactFactors.Approximation
+   350   11  OAI.MeasureTheory.CompactFactors.ConditionalSelection
+   290   17  OAI.Analysis.PlaneSpectrum.SmallArcs
+   233   24  OAI.Analysis.PlaneSpectrum.PhaseEncoding
+   143   13  OAI.Analysis.PlaneSpectrum.Basic
+modules emptied: ['OAI.Analysis.PlaneSpectrum.PhaseCollision', 'OAI.Analysis.PlaneSpectrum.PhaseEncoding', 'OAI.Analysis.PlaneSpectrum.SmallArcs']

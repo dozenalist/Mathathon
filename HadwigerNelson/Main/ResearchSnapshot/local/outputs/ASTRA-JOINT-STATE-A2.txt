@@ -1,0 +1,113 @@
+ASTRA A2 SIMPLIFICATION — SUBSTANTIVE FIRST PACKET
+14 November 2026. Grade: complete lead paper proofs; independent review
+and local Lean validation pending. No original/shared proof changes.
+
+MAIN RESULT
+A three-centre palette argument proves the EXACT arbitrary-k statement
+of States.strict_state_no_unit_support without the strict-state sequence
+machinery. A closed-set extension also replaces the actual moving
+four_support_sequence_no_unit theorem with ALL original hypotheses
+unchanged. This goes beyond the already validated five-state pair-support
+replacement and addresses the remaining used strict-state consumers.
+
+THE CONCEPT
+For a fixed colour set K let Z_K be the set of plane centres admitting
+an actual trace whose coordinates in K vanish. This set is closed:
+TraceVector is compact, the trace graph is closed, and zero coordinates
+remain zero under weak limits. The existing support-to-avoiding-trace
+lemma puts every point x+direction(b), for b in a represented K-state's
+closed measure support, into Z_K.
+
+If a positive-measure state at x represents J and only colour X lies
+outside J union K, then Z_K intersect the unit circle at x has no unit
+pair. Suppose y,z were such a pair. Their K-avoiding traces imply their
+palettes are not contained in K. Neighbor-palette transport makes the
+three palettes at x,y,z pairwise disjoint for almost every common angle.
+Choose that angle in the positive J-state. Each neighbor palette must
+then contain X, contradicting their disjointness.
+
+This proof uses finite intersections of conull sets at THREE FIXED
+CENTRES. A is handled on R, so no periodicity assumption is added to the
+original fixed-state statement. No density-point approximation or
+varying-state L1 argument occurs in this proof.
+
+MOVING FOUR-STATE APPLICATION
+For x_n->x and supported K-state angles b_n->b,d_n->d, the target points
+x_n+direction(b_n), x_n+direction(d_n) lie in the SAME global closed Z_K.
+Their limits remain there. A positive complementary J-state AT x then
+excludes a unit limiting chord by the preceding argument.
+
+FourContinuity:441 already has x_n->x, FourCenter at every x_n and at x,
+and s!=0. The opposite nonzero state at x supplies J and positivity;
+the s-states at x_n supply K. Thus its original statement follows with
+no appeal to strict_state_sequence_false or four_realState_continuity.
+This does NOT assert a replacement of the more general arbitrary-centre
+strict_state_sequence_false contract; the actual consumer has the extra
+limit-centre premises needed here.
+
+INTERFACE APPLICATION / INVALID ALTERNATIVE
+Interfaces:266 interfaceStateSupport_no_unit has only the a.e. group
+inclusion hg, not FourCenter. Its existing support lifts, state
+representation and opposite-state positivity apply unchanged; replace
+its final call with the new fixed-state theorem of identical signature.
+The proposed bridge through FourTransport.four_support_no_sixty is not
+valid as an independent shortcut: it requires the absent FourCenter
+hypothesis and invokes the forbidden strict sequence theorem transitively.
+
+DEPENDENCY SCOPE
+Source-wide search finds the strict sequence theorem used only by its
+fixed-state wrapper, four_support_sequence_no_unit, and the generic
+strict_state_uniform_on_compact. That uniform theorem has no consumers
+in supplied OAI source. With A1's five-state proof and these two A2
+applications, every CURRENTLY USED path through the strict sequence
+chain appears removable. This still requires compiled declaration-level
+dependency confirmation before reporting global removal as accomplished.
+
+Keep the ordinary four-state L1 continuity / support-continuity proof,
+indicator_inter_positive (used at FourContinuity:326), older
+two_state_impossible, fixed-palette L1 transport, weak-trace compactness,
+spectral smoothing and manuscript Lemma 6.7. None is silently eliminated.
+
+GENERAL THEOREM AND LIMIT
+More generally, for a positive J-state at x, every finite unit-distance
+graph on Z_K intersect unitCircle(x) is colourable with the residual
+labels outside J union K. Choose a single good angle in the positive
+state, then select residual labels from the disjoint neighbor palettes.
+One residual colour gives the required edge exclusion. Two residual
+colours give only bipartiteness, already true for unit-chord graphs on
+one unit circle (subgraphs of 6-cycles). This identifies the exact reach
+of this reduction at six colours.
+
+ARTIFACTS
+  work/astra-joint-state/a2-fixed-state-proof.txt
+    Exact fixed theorem, full proof, exceptional sets, unchanged interface
+    application and source-order precautions.
+  work/astra-joint-state/a2-closed-carrier-proof.txt
+    Closedness proof, converging-centre theorem, unchanged four-support
+    application, consumer audit and finite-graph formulation.
+
+THREE EXECUTABLE TASKCARDS
+Architecture (60-90 min): independently prove the triangle forcing lemma,
+closedness of Z_K and the converging-centre theorem from exact source
+statements. Check the finite residual-colour formulation. Produce one
+short human proof linking both actual consumers; report any missing
+hypothesis before implementation.
+Verification (60-90 min): audit weak-closed zero coordinates, trace_limit,
+the six conull statements on R, and exact interface/four-support binders.
+Independently trace forbidden strict-chain references, including
+positivity's two_state_impossible. Confirm the unused status of
+strict_state_uniform_on_compact; do not infer compiler deadness only
+from an import list. Return claim-by-claim accepted/rejected verdicts.
+Formal (after paper review, serialized): privately validate the finite
+forcing fact, trace triangle exclusion, identical-signature fixed theorem
+and interface application first. Then validate the closed avoiding-trace
+set / sequence lemma and identical-signature four-support application.
+Only after those pass propose the small acyclic module move: general
+neighbor lemmas plus new results in a module importing BoundaryTrace;
+FourContinuity and Interfaces import it. Never import FiveSupport into
+FourContinuity (that creates a cycle through Accumulation/FourTransport).
+Supply minimal tests, standard-axiom logs and actual declaration dependency
+checks before changing originals or deleting old library declarations.
+
+No Lean, API writes, nested agents, installs or heavy computation were
+used in this Astra job. The earlier A1 Lean pass is separately banked.

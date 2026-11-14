@@ -1,0 +1,1286 @@
+diff -ruN lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/CircleOperator.lean
+--- lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean	2026-11-13 19:09:13.641017980 +0000
++++ sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/CircleOperator.lean	2026-11-14 04:44:49.069242844 +0000
+@@ -13,10 +13,6 @@
+   Integrable.of_bound ((planeTranslate_continuous g).comp direction_continuous).aestronglyMeasurable ‖g‖
+     (Eventually.of_forall fun t => (planeTranslate (direction t)).norm_map g |>.le)
+ def circleOperator (g : ComplexPlaneL2) : ComplexPlaneL2 := ∫ t, planeTranslate (direction t) g ∂angularMeasure
+-lemma circleOperator_norm_le (g : ComplexPlaneL2) : ‖circleOperator g‖≤‖g‖ := by
+-  simpa only [circleOperator,probReal_univ,mul_one] using norm_integral_le_of_norm_le_const
+-    (Eventually.of_forall fun t => (planeTranslate (direction t)).norm_map g |>.le :
+-      ∀ᵐ t ∂angularMeasure, ‖planeTranslate (direction t) g‖≤‖g‖)
+ lemma circleOperator_ae (g : ComplexPlaneL2) :
+     circleOperator g =ᵐ[volume] fun x => ∫ t, g (x+direction t) ∂angularMeasure := by
+   let F : ℂ × Angles → ℂ := fun p => g (p.1+direction p.2)
+@@ -248,20 +244,8 @@
+   exact circleOperator_toLp_ae (hf.sub hfh)
+ def colorMass {k : ℕ} (c : ℂ → Fin k) (i : Fin k) (q : ℂ) : ℝ :=
+   ∫ t, sampleFn c q 1 i t ∂angularMeasure
+-lemma colorMass_measurable {k : ℕ} (c : ℂ → Fin k) (hc : Measurable c) (i : Fin k) :
+-    Measurable (colorMass c i) := by
+-  have hm : StronglyMeasurable (fun p : ℂ × Angles => sampleFn c p.1 1 i p.2) := by
+-    simp only [sampleFn,Complex.ofReal_one,one_mul]
+-    exact (measurable_one.piecewise (measurableSet_eq_fun
+-      (hc.comp (measurable_fst.add (direction_continuous.measurable.comp measurable_snd))) measurable_const)
+-      measurable_zero).stronglyMeasurable
+-  exact hm.integral_prod_right'.measurable
+ lemma colorMass_nonneg {k : ℕ} (c : ℂ → Fin k) (i : Fin k) (q : ℂ) : 0≤colorMass c i q :=
+   integral_nonneg (sampleFn_nonneg c q 1 i)
+-lemma colorMass_le_one {k : ℕ} (c : ℂ → Fin k) (hc : Measurable c) (i : Fin k) (q : ℂ) :
+-    colorMass c i q≤1 := by
+-  exact (integral_mono ((sampleFn_memLp c hc q 1 i).integrable (by norm_num)) (integrable_const 1)
+-    (sampleFn_le_one c q 1 i)).trans_eq (by simp)
+ def colorCutoff {k : ℕ} (c : ℂ → Fin k) (i : Fin k) (x : ℂ) (R : ℝ) : ℂ → ℂ :=
+   (Metric.closedBall x (R+2)).indicator (fun q => if c q=i then 1 else 0)
+ lemma colorCutoff_memLp {k : ℕ} (c : ℂ → Fin k) (hc : Measurable c) (i : Fin k) (x : ℂ) (R : ℝ) :
+diff -ruN lean/OAI/Analysis/PlaneSpectrum/FourierTests.lean sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/FourierTests.lean
+--- lean/OAI/Analysis/PlaneSpectrum/FourierTests.lean	2026-11-13 19:09:13.640767128 +0000
++++ sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/FourierTests.lean	2026-11-14 04:44:49.068953591 +0000
+@@ -276,14 +276,6 @@
+   · exact Integrable.of_bound (hm.comp hdiv).aestronglyMeasurable 1
+       (Filter.Eventually.of_forall (fun _ => (Circle.norm_coe _).le))
+ 
+-lemma difference_coefficient_nonneg (hχ : Measurable (fun d => (χ d : ℂ))) (ν : Measure Y) [IsProbabilityMeasure ν]
+-    (κ : Kernel Y G) [IsMarkovKernel κ] :
+-    0 ≤ (∫ d, (χ d : ℂ) ∂differenceLaw ν κ).re := by
+-  rw [difference_coefficient χ hχ]
+-  simp only [Complex.ofReal_re]
+-  apply integral_nonneg
+-  intro y
+-  positivity
+ 
+ end EuclideanFiveColor.DifferenceFourier
+ 
+diff -ruN lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/InvariantMean.lean
+--- lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean	2026-11-13 19:09:13.640734947 +0000
++++ sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/InvariantMean.lean	2026-11-14 04:44:49.062123597 +0000
+@@ -548,13 +548,6 @@
+   change |mean (pairing V v)| ≤ mean (normFn V) * ‖v‖
+   simpa only [mul_comm] using pairing_mean_bound V v
+ 
+-lemma weakMean_add (V W : G →ᵇ H) : weakMean (V+W) = weakMean V + weakMean W := by
+-  apply ext_inner_right ℝ
+-  intro v
+-  rw [inner_add_left, weakMean_pair, weakMean_pair, weakMean_pair]
+-  have he : pairing (V+W) v = pairing V v + pairing W v := by
+-    ext x; simp [inner_add_right]
+-  rw [he, mean_add]
+ 
+ lemma weakMean_sub (V W : G →ᵇ H) : weakMean (V-W) = weakMean V - weakMean W := by
+   apply ext_inner_right ℝ
+@@ -673,11 +666,6 @@
+   · have hk' : (N : ℝ)+M+2 < (k : ℝ) := by exact_mod_cast hn
+     rw [abs_of_pos] <;> linarith
+ 
+-lemma periodSum_add {h j : AF → H} {N M : ℕ}
+-    (hh : ∀ t : AF, (N : ℝ) < |(t : ℝ)| → h t = 0)
+-    (hj : ∀ t : AF, (M : ℝ) < |(t : ℝ)| → j t = 0) (t : AF) :
+-    periodSum (h+j) t = periodSum h t + periodSum j t :=
+-  (period_summable hh t).tsum_add (period_summable hj t)
+ 
+ lemma periodSum_shift (h : AF → H) (s t : AF) :
+     periodSum (fun x => h (x+s)) t = periodSum h (t+s) := by
+@@ -710,27 +698,7 @@
+     (hs : ∀ t : AF, (N : ℝ) < |(t : ℝ)| → h t = 0)
+     (hb : ∀ t, ‖h t‖ ≤ B) : ℂ := cmean (periodBCF h hs hb)
+ 
+-lemma integralReal_nonneg (h : AF → ℝ) {N : ℕ} {B : ℝ}
+-    (hs : ∀ t : AF, (N : ℝ) < |(t : ℝ)| → h t = 0)
+-    (hb : ∀ t, ‖h t‖ ≤ B) (hp : ∀ t, 0 ≤ h t) : 0 ≤ integralReal h hs hb := by
+-  apply mean_nonneg
+-  intro x
+-  induction x using QuotientAddGroup.induction_on with
+-  | H t => exact tsum_nonneg (fun k => hp (t+k))
+ 
+-lemma integralReal_shift (h : AF → ℝ) (s : AF) {N M : ℕ} {B C : ℝ}
+-    (hs : ∀ t : AF, (N : ℝ) < |(t : ℝ)| → h t = 0)
+-    (hb : ∀ t, ‖h t‖ ≤ B)
+-    (hss : ∀ t : AF, (M : ℝ) < |(t : ℝ)| → h (t+s) = 0)
+-    (hbs : ∀ t, ‖h (t+s)‖ ≤ C) :
+-    integralReal (fun t => h (t+s)) hss hbs = integralReal h hs hb := by
+-  have he : periodBCF (fun t => h (t+s)) hss hbs =
+-      shift (G := PeriodGroup) (periodMk s) (periodBCF h hs hb) := by
+-    ext x
+-    induction x using QuotientAddGroup.induction_on with
+-    | H t => exact periodSum_shift h s t
+-  unfold integralReal
+-  rw [he, mean_shift]
+ 
+ lemma integralReal_mono (h j : AF → ℝ) {N M : ℕ} {B C : ℝ}
+     (hs : ∀ t : AF, (N : ℝ) < |(t : ℝ)| → h t = 0)
+@@ -751,18 +719,6 @@
+     (hs : ∀ t : AF, (N : ℝ) < |(t : ℝ)| → h t = 0)
+     (hb : ∀ t, ‖h t‖ ≤ B) : H := weakMean (periodBCF h hs hb)
+ 
+-lemma weakIntegral_pair (h : AF → H) {N M : ℕ} {B C : ℝ} (v : H)
+-    (hs : ∀ t : AF, (N : ℝ) < |(t : ℝ)| → h t = 0)
+-    (hb : ∀ t, ‖h t‖ ≤ B)
+-    (vs : ∀ t : AF, (M : ℝ) < |(t : ℝ)| → inner ℝ v (h t) = 0)
+-    (vb : ∀ t, ‖inner ℝ v (h t)‖ ≤ C) :
+-    inner ℝ (weakIntegral h hs hb) v = integralReal (fun t => inner ℝ v (h t)) vs vb := by
+-  rw [weakIntegral, weakMean_pair]
+-  unfold integralReal
+-  congr 1
+-  ext x
+-  induction x using QuotientAddGroup.induction_on with
+-  | H t => exact (innerSL ℝ v).map_tsum (period_summable hs t)
+ 
+ lemma weakIntegral_norm_bound (h : AF → H) {N : ℕ} {B : ℝ}
+     (hs : ∀ t : AF, (N : ℝ) < |(t : ℝ)| → h t = 0)
+diff -ruN lean/OAI/Analysis/PlaneSpectrum/Multipliers.lean sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/Multipliers.lean
+--- lean/OAI/Analysis/PlaneSpectrum/Multipliers.lean	2026-11-13 19:09:13.640753693 +0000
++++ sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/Multipliers.lean	2026-11-14 04:44:49.058754962 +0000
+@@ -89,20 +89,6 @@
+ lemma weight_ac (v : Lp ℂ 2 μ) : weight v ≪ μ :=
+   withDensity_absolutelyContinuous _ _
+ 
+-lemma weight_inner (h : X → ℂ) (hm : AEStronglyMeasurable h μ)
+-    (hn : ∀ x, ‖h x‖ = 1) (v : Lp ℂ 2 μ) :
+-    (∫ x, h x ∂weight v) = inner ℂ v (mul h hm hn v) := by
+-  rw [weight, integral_withDensity_eq_integral_toReal_smul₀ (weight_measurable v)
+-    (Eventually.of_forall (fun _ => ENNReal.ofReal_lt_top)), L2.inner_def]
+-  apply integral_congr_ae
+-  filter_upwards [mul_ae h hm hn v] with x hx
+-  rw [hx, ENNReal.toReal_ofReal (sq_nonneg _)]
+-  simp only [RCLike.inner_apply, Complex.real_smul]
+-  rw [← Complex.normSq_eq_norm_sq]
+-  have hh := Complex.mul_conj (v x)
+-  calc
+-    _ = (v x * conj (v x)) * h x := by rw [hh]
+-    _ = _ := by ring
+ 
+ lemma weight_eq_zero_iff (v : Lp ℂ 2 μ) : weight v = 0 ↔ v = 0 := by
+   constructor
+diff -ruN lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean
+--- lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean	2026-11-13 19:09:13.640849362 +0000
++++ sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean	2026-11-14 04:44:49.069551324 +0000
+@@ -390,72 +390,6 @@
+ open PhaseEncoding AverageErrors PhaseCollision
+ variable {Ω ι : Type*} [MeasurableSpace Ω] [Fintype ι] [Nonempty ι]
+ 
+-/-- This is the source's collision contradiction on one selected predecessor
+-fiber. The lists need not be measurably enumerated. Measurability is required
+-only of their symmetric encodings and the actual sampled phases. -/
+-theorem collision_from_close_encodings (μ : Measure Ω) [IsProbabilityMeasure μ]
+-    (m : ℕ) (hm : 0 < m) (ρ : ℝ) (hρ : 0 < ρ)
+-    (zp zm : Ω → ι → Fin m → Circle) (ap am : ι → Ω → Circle) (j₀ : ι)
+-    (hap : ∀ j, Measurable (ap j)) (ham : ∀ j, Measurable (am j))
+-    (hDp : ∀ j, Measurable (fun x => dist (encoding (zp x j)) (encoding (zp x j₀))))
+-    (hDm : ∀ j, Measurable (fun x => dist (encoding (zm x j)) (encoding (zm x j₀))))
+-    (hmem : ∀ᵐ x ∂μ, ∀ j, (∃ r, ap j x = zp x j r) ∧ (∃ r, am j x = zm x j r))
+-    (hi : ∀ j, Integrable (fun x =>
+-       dist (encoding (zp x j)) (encoding (zp x j₀))^2 +
+-       dist (encoding (zm x j)) (encoding (zm x j₀))^2) μ)
+-    (he : ∀ j, (∫ x,
+-       dist (encoding (zp x j)) (encoding (zp x j₀))^2 +
+-       dist (encoding (zm x j)) (encoding (zm x j₀))^2 ∂μ) <
+-       (ρ^m / m)^2 / 20)
+-    (hlarge : 10 * m^2 < Fintype.card ι) :
+-    ∃ i j : ι, i ≠ j ∧ 1/(4*(m : ℝ)^2) ≤ μ.real {x |
+-      dist ((ap i x : ℂ)*(am i x : ℂ)) ((ap j x : ℂ)*(am j x : ℂ)) ≤ 4*ρ} := by
+-  classical
+-  let δ : ℝ := ρ^m / m
+-  have hδ : 0 < δ := div_pos (pow_pos hρ _) (Nat.cast_pos.mpr hm)
+-  let e : ι → Ω → ℝ := fun j x =>
+-    dist (encoding (zp x j)) (encoding (zp x j₀))^2 +
+-    dist (encoding (zm x j)) (encoding (zm x j₀))^2
+-  have hem (i) : Measurable (e i) :=
+-    (hDp i |>.pow_const 2).add (hDm i |>.pow_const 2)
+-  have hen (x) (i) : 0 ≤ e i x := add_nonneg (sq_nonneg _) (sq_nonneg _)
+-  have havg := average_goodFraction μ e (δ^2) (sq_pos_of_pos hδ) hem hi
+-    (Filter.Eventually.of_forall hen) he
+-  let s : Ω → Finset ι := fun x => Finset.univ.filter (fun i => e i x < δ^2)
+-  let v : Ω → ι → ℂ := fun x i => (ap i x : ℂ)*(am i x : ℂ)
+-  let w : Ω → (Fin m × Fin m) → ℂ := fun x p =>
+-    (zp x j₀ p.1 : ℂ)*(zm x j₀ p.2 : ℂ)
+-  have hcover : ∀ᵐ x ∂μ, ∀ i ∈ s x, ∃ p, dist (v x i) (w x p) ≤ 2*ρ := by
+-    filter_upwards [hmem] with x hx
+-    intro i hi'
+-    have hie : e i x < δ^2 := (Finset.mem_filter.mp hi').2
+-    have hp : dist (encoding (zp x i)) (encoding (zp x j₀)) < δ := by
+-      dsimp [e] at hie
+-      nlinarith [sq_nonneg (dist (encoding (zm x i)) (encoding (zm x j₀))), dist_nonneg
+-        (x := encoding (zp x i)) (y := encoding (zp x j₀))]
+-    have hm' : dist (encoding (zm x i)) (encoding (zm x j₀)) < δ := by
+-      dsimp [e] at hie
+-      nlinarith [sq_nonneg (dist (encoding (zp x i)) (encoding (zp x j₀))), dist_nonneg
+-        (x := encoding (zm x i)) (y := encoding (zm x j₀))]
+-    obtain ⟨⟨rp, hrp⟩, ⟨rm, hrm⟩⟩ := hx i
+-    obtain ⟨cp, hcp⟩ := close_encoding_each_phase hm (zp x i) (zp x j₀) hρ hp rp
+-    obtain ⟨cm, hcm⟩ := close_encoding_each_phase hm (zm x i) (zm x j₀) hρ hm' rm
+-    refine ⟨(cp, cm), ?_⟩
+-    dsimp [v, w]
+-    rw [hrp, hrm]
+-    exact (circle_product_dist _ _ _ _).trans (by linarith)
+-  let : Nonempty (Fin m) := ⟨⟨0, hm⟩⟩
+-  have hv' (i j) : Measurable (fun x => dist (v x i) (v x j)) := by
+-    have hco : Continuous (fun z : Circle => (z : ℂ)) := continuous_subtype_val
+-    have hvm (i) : Measurable (fun x => v x i) :=
+-      (hco.measurable.comp (hap i)).mul (hco.measurable.comp (ham i))
+-    exact (hvm i).dist (hvm j)
+-  obtain ⟨i, j, hij, hc⟩ := average_exists_cover_forces_collision μ s v w (2*ρ)
+-    hcover hv' (measurable_goodFraction e (δ^2) hem)
+-    (by simpa only [Fintype.card_prod, Fintype.card_fin, pow_two] using hlarge) havg
+-  refine ⟨i, j, hij, ?_⟩
+-  simpa only [Fintype.card_prod, Fintype.card_fin, Nat.cast_mul, pow_two,
+-    v, show 2*(2*ρ)=4*ρ by ring] using hc
+ 
+ /-- This is the source's collision contradiction on one selected predecessor
+ fiber. The lists need not be measurably enumerated. Measurability is required
+diff -ruN lean/OAI/Analysis/PlaneSpectrum/Representations.lean sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/Representations.lean
+--- lean/OAI/Analysis/PlaneSpectrum/Representations.lean	2026-11-13 19:09:13.640880541 +0000
++++ sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/Representations.lean	2026-11-14 04:44:49.059429379 +0000
+@@ -149,8 +149,6 @@
+     simp only [he,Lp.compMeasurePreserving_id_apply]
+ def unitary (s : X ≃ᵐ X) (hs : MeasurePreserving s μ μ) : unitary (Lp ℂ 2 μ →L[ℂ] Lp ℂ 2 μ) :=
+   Unitary.linearIsometryEquiv.symm (isometry μ s hs)
+-lemma unitary_apply (s : X ≃ᵐ X) (hs : MeasurePreserving s μ μ) (v : Lp ℂ 2 μ) :
+-    (unitary μ s hs : Lp ℂ 2 μ →L[ℂ] Lp ℂ 2 μ) v = Lp.compMeasurePreserving s hs v := rfl
+ lemma nonlinear_commute (s : X → X) (hs : MeasurePreserving s μ μ)
+     {F : ℂ → ℂ} {c : ℝ≥0} (hF : LipschitzWith c F) (h0 : F 0 = 0) (v : Lp ℂ 2 μ) :
+     Lp.compMeasurePreserving s hs (hF.compLp h0 v) = hF.compLp h0 (Lp.compMeasurePreserving s hs v) := by
+@@ -240,9 +238,6 @@
+   Koopman.unitary (measure k ω) (transHomeo k a).toMeasurableEquiv (trans_preserving k ω a)
+ def rotation (b : K) : unitary (Hilbert k ω →L[ℂ] Hilbert k ω) :=
+   Koopman.unitary (measure k ω) (rotateHomeo k b).toMeasurableEquiv (rotate_preserving k ω b)
+-lemma translation_apply (a : E) (v : Hilbert k ω) :
+-    (translation k ω a : Hilbert k ω →L[ℂ] Hilbert k ω) v =
+-      Lp.compMeasurePreserving (trans k a) (trans_preserving k ω a) v := rfl
+ lemma rotation_apply (b : K) (v : Hilbert k ω) :
+     (rotation k ω b : Hilbert k ω →L[ℂ] Hilbert k ω) v =
+       Lp.compMeasurePreserving (rotate k b) (rotate_preserving k ω b) v := rfl
+diff -ruN lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean
+--- lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean	2026-11-13 19:09:13.640958217 +0000
++++ sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean	2026-11-14 04:44:49.058465769 +0000
+@@ -147,8 +147,6 @@
+       (gelfandStarTransform (algebra U) (generator U h) φ)
+     simp
+   continuous_toFun := continuous_of_discreteTopology
+-lemma character_apply (φ : Spectrum U) (g : G) :
+-    (character U φ g : ℂ) = gelfandStarTransform (algebra U) (generator U g) φ := rfl
+ lemma character_continuous : Continuous (character U) := by
+   apply ContinuousMonoidHom.isClosedEmbedding_coe.isEmbedding.isInducing.continuous_iff.mpr
+   apply continuous_pi; intro g
+diff -ruN lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/AngularBoundary.lean
+--- lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean	2026-11-13 19:09:13.641343321 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/AngularBoundary.lean	2026-11-14 04:44:49.092219905 +0000
+@@ -28,10 +28,6 @@
+ lemma four_word_has_outsider : ∀w : Fin 6 → Fin 3,FourWordValid w → ∃j,w j=0 := by
+   simp only [forall_six_word]
+   decide
+-lemma four_word_mixed_periodic : ∀w : Fin 6 → Fin 3,FourWordValid w → FourWordMixed w →
+-    (∀j,w (j+3)=w j) ∧ w 0≠w 1 ∧ w 1≠w 2 ∧ w 0≠w 2 := by
+-  simp only [forall_six_word]
+-  decide
+ lemma four_word_mixed_isolated : ∀w : Fin 6 → Fin 3,FourWordValid w → FourWordMixed w →
+     ∀u : Fin 6 → Fin 3,FourWordValid u → FourWordCross w u → u=w := by
+   simp only [forall_six_word]
+@@ -347,8 +343,6 @@
+   obtain ⟨u,hu,huab⟩ := Measure.exists_mem_of_measure_ne_zero_of_ae hpos.ne' (ae_restrict_of_ae (ha.and hb))
+   exact hab ((huab.1 hu.1).symm.trans (huab.2 hu.2))
+ def angleBoundary (s : Angles → Bool) : Set Angles := (⋃b,angleEssential s b)ᶜ
+-lemma angleBoundary_closed (s : Angles → Bool) : IsClosed (angleBoundary s) :=
+-  (isOpen_iUnion (angleEssential_open s)).isClosed_compl
+ lemma angleEssential_shift {s : Angles → Bool}
+     (hf : ∀ᵐt∂angularMeasure,s (t+(sixty : Angles))= !(s t)) (t : Angles) (b : Bool) :
+     t+(sixty : Angles)∈angleEssential s (!b) ↔ t∈angleEssential s b := by
+diff -ruN lean/OAI/Geometry/PlaneColoring/Basic.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Basic.lean
+--- lean/OAI/Geometry/PlaneColoring/Basic.lean	2026-11-13 19:09:13.641648014 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Basic.lean	2026-11-14 04:44:49.550153961 +0000
+@@ -20,22 +20,11 @@
+ def circleMeasure : Measure Plane :=
+   Measure.map circleDir normalizedAngleMeasure
+ 
+-def weakPairMeasure (R : ℝ) : Measure (Plane × Plane) :=
+-  (Measure.restrict volume (Metric.ball (0 : Plane) R)).prod circleMeasure
+ 
+ def ProperColoring (k : ℕ) : Prop :=
+   ∃ c : Plane → Fin k,
+     ∀ x y : Plane, dist x y = 1 → c x ≠ c y
+ 
+-def WeakMeasurableColoring (k : ℕ) : Prop :=
+-  ∃ c : Plane → Fin k,
+-    AEMeasurable c volume ∧
+-      ∀ R : ℝ, 0 < R →
+-        (∑ i : Fin k,
+-          (weakPairMeasure R)
+-            {p : Plane × Plane |
+-              c (Prod.fst p) = i ∧
+-              c (Prod.fst p + Prod.snd p) = i}) = 0
+ 
+ def planeChromaticNumber : ℕ :=
+   sInf {k : ℕ | ProperColoring k}
+diff -ruN lean/OAI/Geometry/PlaneColoring/BinaryPalettes.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/BinaryPalettes.lean
+--- lean/OAI/Geometry/PlaneColoring/BinaryPalettes.lean	2026-11-13 19:09:13.641299167 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/BinaryPalettes.lean	2026-11-14 04:44:49.070206263 +0000
+@@ -25,16 +25,6 @@
+       · exact hi ht' hpi
+       · exact hj ht hpj
+     · exact h.resolve_left
+-lemma binary_pair_distinct (hw : WeakColoring k c) {x : ℂ} {i j : Fin k}
+-    (hb : BinaryCenter c hc x i j) : i ≠ j := by
+-  intro hij
+-  subst j
+-  have h := binary_alternation c hc hw hb
+-  have hf : ∀ᵐ t ∂angularMeasure, False := by
+-    filter_upwards [h,hb] with t ht hb
+-    have hp := hb.elim id id
+-    exact (ht.2.mp hp) hp
+-  exact hf.exists.choose_spec
+ end EuclideanFiveColor
+ end
+ 
+diff -ruN lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/BorelTransfer.lean
+--- lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean	2026-11-13 19:21:50.113550655 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/BorelTransfer.lean	2026-11-14 04:44:49.098201075 +0000
+@@ -448,10 +448,6 @@
+ lemma proper_to_borel_weak {k : ℕ} [NeZero k] {c : ℂ → Fin k} (hc : ProperColoring k c) :
+     ∃ d : ℂ → Fin k, Measurable d ∧ WeakColoring k d :=
+   proper_to_borel_weak_algebraic (c := fun x => c x) fun x y h => hc x y h
+-lemma proper_to_weak {k : ℕ} [NeZero k] {c : ℂ → Fin k} (hc : ProperColoring k c) :
+-    ∃ d : ℂ → Fin k, WeakColoring k d := by
+-  obtain ⟨d,_,h⟩ := proper_to_borel_weak hc
+-  exact ⟨d,h⟩
+ end EuclideanFiveColor
+ end
+ 
+diff -ruN lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/BoundaryTrace.lean
+--- lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean	2026-11-13 19:09:13.641329685 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/BoundaryTrace.lean	2026-11-14 04:44:49.306280470 +0000
+@@ -314,53 +314,6 @@
+ open Set Filter Topology MeasureTheory
+ open scoped RealInnerProductSpace
+ namespace EuclideanFiveColor
+-/-- If two unit rays can never be simultaneously positive at a generic angle,
+-they are antipodal. This avoids any assumption about multiplicities of ray lines. -/
+-lemma unit_antipodes_of_no_positive {v w : ℂ} (hv : ‖v‖=1) (hw : ‖w‖=1)
+-    (h : ∀ᵐt∂angularMeasure,¬(0<⟪direction t,v⟫ ∧ 0<⟪direction t,w⟫)) : w= -v := by
+-  by_contra hne
+-  have hsum : v+w≠0 := by
+-    intro hz
+-    apply hne
+-    apply eq_neg_iff_add_eq_zero.mpr
+-    simpa only [add_comm] using hz
+-  have hvv : ⟪v,v⟫=(1:ℝ) := by rw [real_inner_self_eq_norm_sq,hv]; norm_num
+-  have hww : ⟪w,w⟫=(1:ℝ) := by rw [real_inner_self_eq_norm_sq,hw]; norm_num
+-  have hs : 0<⟪v+w,v+w⟫ := by
+-    rw [real_inner_self_eq_norm_sq]
+-    exact sq_pos_of_pos (norm_pos_iff.mpr hsum)
+-  have hc := real_inner_comm v w
+-  simp only [inner_add_left,inner_add_right,hvv,hww] at hs
+-  have hvpos : 0<⟪v+w,v⟫ := by rw [inner_add_left,hvv]; linarith
+-  have hwpos : 0<⟪v+w,w⟫ := by rw [inner_add_left,hww]; linarith
+-  let e : ℂ := ‖v+w‖⁻¹ • (v+w)
+-  have he : ‖e‖=1 := by
+-    simp only [e,norm_smul,Real.norm_eq_abs,abs_inv,abs_of_nonneg (norm_nonneg (v+w))]
+-    exact inv_mul_cancel₀ (norm_ne_zero_iff.mpr hsum)
+-  have hev : 0<⟪e,v⟫ := by
+-    change 0<⟪‖v+w‖⁻¹ • (v+w),_⟫
+-    rw [real_inner_smul_left]
+-    exact mul_pos (inv_pos.mpr (norm_pos_iff.mpr hsum)) hvpos
+-  have hew : 0<⟪e,w⟫ := by
+-    change 0<⟪‖v+w‖⁻¹ • (v+w),_⟫
+-    rw [real_inner_smul_left]
+-    exact mul_pos (inv_pos.mpr (norm_pos_iff.mpr hsum)) hwpos
+-  obtain ⟨t,ht⟩ := direction_exists he
+-  let U : Set Angles := {t | 0<⟪direction t,v⟫ ∧ 0<⟪direction t,w⟫}
+-  have hUv : IsOpen {t : Angles | 0<⟪direction t,v⟫} := isOpen_lt continuous_const (direction_continuous.inner continuous_const)
+-  have hUw : IsOpen {t : Angles | 0<⟪direction t,w⟫} := isOpen_lt continuous_const (direction_continuous.inner continuous_const)
+-  have hU : IsOpen U := hUv.inter hUw
+-  have htU : t∈U := by change _∧_; rw [ht]; exact ⟨hev,hew⟩
+-  have hpos := hU.measure_pos angularMeasure ⟨t,htU⟩
+-  obtain ⟨u,hu,hu'⟩ := Measure.exists_mem_of_measure_ne_zero_of_ae hpos.ne' (ae_restrict_of_ae h)
+-  exact hu' hu
+-/-- The source's all-generic split condition already forces opposite edge
+-positions to be actual antipodes; the collinear case is retained. -/
+-lemma four_split_antipodes (v : Fin 4 → ℂ) (hv : ∀i,‖v i‖=1)
+-    (hsplit : ∀ᵐt∂angularMeasure,∀i,¬(0<⟪direction t,v i⟫ ∧ 0<⟪direction t,v (i+2)⟫)) :
+-    ∀i,v (i+2)= -v i := by
+-  intro i
+-  exact unit_antipodes_of_no_positive (hv i) (hv (i+2)) (hsplit.mono fun _ ht => ht i)
+ end EuclideanFiveColor
+ end
+ 
+diff -ruN lean/OAI/Geometry/PlaneColoring/Compactness.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Compactness.lean
+--- lean/OAI/Geometry/PlaneColoring/Compactness.lean	2026-11-13 19:09:13.641212564 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Compactness.lean	2026-11-14 04:44:49.082073815 +0000
+@@ -127,26 +127,6 @@
+   rw [ht,h1]
+   simp only [ha,sampleFn]
+   simp
+-lemma sampling_weak_compact (hc : Measurable c) (y : ℕ → ℂ) (r : ℕ → ℝ) :
+-    ∃ b : Fin k → RealL2 angularMeasure, ∃ φ : ℕ → ℕ, StrictMono φ ∧
+-      (∀ i, 0 ≤ᵐ[angularMeasure] b i) ∧ (∀ i, b i ≤ᵐ[angularMeasure] (fun _ => (1 : ℝ))) ∧
+-      (∑ i, b i = oneL2 angularMeasure) ∧
+-      ∀ i v, Tendsto (fun n => ⟪sample c hc (y (φ n)) (r (φ n)) i,v⟫) atTop (𝓝 ⟪b i,v⟫) := by
+-  let : Fact ((2 : ENNReal) ≠ ⊤) := ⟨by norm_num⟩
+-  obtain ⟨b,φ,hφ,_,hb⟩ := exists_finite_weak_subseq
+-    (fun n i => sample c hc (y n) (r n) i) 1 (fun n i => sample_norm_le c hc (y n) (r n) i)
+-  refine ⟨b,φ,hφ,?_,?_,?_,hb⟩
+-  · intro i
+-    apply weak_limit_nonneg angularMeasure (hb i)
+-    intro n
+-    filter_upwards [sample_ae c hc (y (φ n)) (r (φ n)) i] with t ht
+-    simpa only [ht,Pi.zero_apply] using sampleFn_nonneg c _ _ i t
+-  · intro i
+-    apply weak_limit_le_one angularMeasure (hb i)
+-    intro n
+-    filter_upwards [sample_ae c hc (y (φ n)) (r (φ n)) i] with t ht
+-    simpa only [ht] using sampleFn_le_one c _ _ i t
+-  · exact weak_limit_sum angularMeasure hb (fun n => sample_sum c hc (y (φ n)) (r (φ n)))
+ end EuclideanFiveColor
+ end
+ 
+@@ -162,9 +142,6 @@
+   WeakDual.metrizable_of_isCompact ℝ E _ (WeakDual.isCompact_closedBall 0 1)
+ def value (a : Space E) : E := (InnerProductSpace.toDual ℝ E).symm (WeakDual.toStrongDual a.1)
+ omit [TopologicalSpace.SeparableSpace E] in
+-lemma value_norm (a : Space E) : ‖value E a‖ ≤ 1 := by
+-  simpa only [value,LinearIsometryEquiv.norm_map,Metric.mem_closedBall,dist_zero_right] using a.2
+-omit [TopologicalSpace.SeparableSpace E] in
+ lemma value_eval (a : Space E) (v : E) : ⟪value E a,v⟫ = a.1 v := by
+   simp only [value,InnerProductSpace.toDual_symm_apply,WeakDual.toStrongDual_apply]
+ def ofNorm (v : E) (hv : ‖v‖ ≤ 1) : Space E := ⟨weakHilbert v,by
+@@ -283,9 +260,6 @@
+   exact ⟨b,trace_of_realization c hc (fun n => hy (φ n)) (hyt.comp hφ.tendsto_atTop) tendsto_const_nhds hb⟩
+ lemma isClosed_traceGraph : IsClosed {p : ℂ × TraceVector k | IsTrace c hc p.1 p.2} := by
+   exact isClosed_closure.preimage (continuous_fst.prodMk (continuous_const.prodMk continuous_snd))
+-lemma isCompact_traces (x : ℂ) : IsCompact {b : TraceVector k | IsTrace c hc x b} := by
+-  apply IsClosed.isCompact
+-  exact isClosed_closure.preimage (continuous_const.prodMk (continuous_const.prodMk continuous_id))
+ lemma trace_limit {x : ℕ → ℂ} {b : ℕ → TraceVector k} {y : ℂ} {a : TraceVector k}
+     (h : ∀ n, IsTrace c hc (x n) (b n)) (hx : Tendsto x atTop (𝓝 y))
+     (hb : Tendsto b atTop (𝓝 a)) : IsTrace c hc y a :=
+diff -ruN lean/OAI/Geometry/PlaneColoring/ConnectedUnitFree.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/ConnectedUnitFree.lean
+--- lean/OAI/Geometry/PlaneColoring/ConnectedUnitFree.lean	2026-11-13 19:30:15.903480091 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/ConnectedUnitFree.lean	2026-11-14 04:44:49.090948518 +0000
+@@ -56,17 +56,6 @@
+   obtain ⟨q, hq, hq1⟩ := hone
+   exact h q hq hq1
+ 
+-/-- Consequence for colourings: the connected component of any point in a colour class of a
+-proper colouring is unit-free, hence has diameter at most one. -/
+-theorem diam_le_one_connectedComponentIn_of_properColoring {k : ℕ} {c : ℂ → Fin k}
+-    (hc : ∀ x y : ℂ, ‖x - y‖ = 1 → c x ≠ c y) {i : Fin k} {s : Set ℂ}
+-    (hs : ∀ x ∈ s, c x = i) (z : ℂ) :
+-    ∀ x ∈ connectedComponentIn s z, ∀ y ∈ connectedComponentIn s z, ‖x - y‖ ≤ 1 := by
+-  apply diam_le_one_of_preconnected_unitFree isPreconnected_connectedComponentIn
+-  intro x hx y hy hxy
+-  have hx' : c x = i := hs x (connectedComponentIn_subset s z hx)
+-  have hy' : c y = i := hs y (connectedComponentIn_subset s z hy)
+-  exact hc x y hxy (by rw [hx', hy'])
+ 
+ end EuclideanFiveColor
+ end
+diff -ruN lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/ContinuumLimits.lean
+--- lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean	2026-11-13 19:09:13.641527366 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/ContinuumLimits.lean	2026-11-14 04:44:49.069899467 +0000
+@@ -158,22 +158,6 @@
+     (hm : ∀ᶠn in l,((K n : Set X)∩F).Nonempty) : ((L : Set X)∩F).Nonempty :=
+   (NonemptyCompacts.isClosed_inter_nonempty_of_isClosed hF).mem_of_tendsto hK hm
+ 
+-/-- A finite family of nonempty compact continua in a compact metric space has
+-one common subsequence of connected compact limits. -/
+-theorem finite_continuum_subsequence {X : Type u} [MetricSpace X] [CompactSpace X]
+-    {J : Type v} [Finite J] (K : ℕ → J → NonemptyCompacts X)
+-    (hc : ∀n j,IsPreconnected (K n j : Set X)) :
+-    ∃L : J → NonemptyCompacts X, ∃φ : ℕ → ℕ, StrictMono φ ∧
+-      (∀j,Tendsto (fun n => K (φ n) j) atTop (𝓝 (L j))) ∧
+-      (∀j,IsPreconnected (L j : Set X)) := by
+-  obtain ⟨L,_,φ,hφ,hlim⟩ := (isCompact_univ : IsCompact (Set.univ : Set (J → NonemptyCompacts X))).tendsto_subseq (fun n => Set.mem_univ (K n))
+-  refine ⟨L,φ,hφ,?_,?_⟩
+-  · intro j
+-    exact (continuous_apply j).continuousAt.tendsto.comp hlim
+-  · intro j
+-    exact nonemptyCompacts_preconnected_limit
+-      ((continuous_apply j).continuousAt.tendsto.comp hlim)
+-      (Eventually.of_forall fun n => hc (φ n) j)
+ end EuclideanFiveColor
+ end
+ 
+diff -ruN lean/OAI/Geometry/PlaneColoring/CyclicCore.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/CyclicCore.lean
+--- lean/OAI/Geometry/PlaneColoring/CyclicCore.lean	2026-11-13 19:09:13.641431757 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/CyclicCore.lean	2026-11-14 04:44:49.072767151 +0000
+@@ -6,9 +6,6 @@
+ open Set Filter Topology MeasureTheory
+ namespace EuclideanFiveColor
+ variable (c : ℂ → Fin 5) (hc : Measurable c)
+-lemma five_ae_mem_support (x : ℂ) :
+-    ∀ᵐt : ℝ∂volume,t∈fiveSupport c hc x (fiveState c hc x (t : Angles)) :=
+-  ae_state_support ((fiveState_measurable c hc x).comp angleMk_quasiMeasurePreserving.measurable)
+ lemma five_real_diag (hw : WeakColoring 5 c) {x : ℂ} (hx : FiveCenter c x) :
+     ∀ᵐt : ℝ∂volume,palette c hc x (t : Angles)=fiveDiag (fiveState c hc x (t : Angles)) :=
+   angleMk_quasiMeasurePreserving.ae (fiveState_diag c hc hw hx)
+@@ -231,27 +228,6 @@
+   change ThreeCenter (e.symm ∘ c) x ∨ FourCenter (e.symm ∘ c) x ∨ FiveCenter (e.symm ∘ c) x
+   simp only [ThreeCenter,FourCenter,FiveCenter,transitionEdge_unlabel]
+   exact he
+-lemma cyclicCore_closed : IsClosed (CyclicCore c) := by
+-  rw [← isOpen_compl_iff]
+-  apply isOpen_iff_mem_nhds.mpr
+-  intro x hx
+-  have hx' : (transitionGraph c x).IsAcyclic := not_not.mp hx
+-  have he : ∀i j : Fin 5,∀ᶠ y in 𝓝 x,
+-      TransitionEdge c i j y → TransitionEdge c i j x := by
+-    intro i j
+-    by_cases hij : TransitionEdge c i j x
+-    · exact Filter.Eventually.of_forall fun _ _ => hij
+-    · have ho := (transitionEdge_closed c i j).isOpen_compl.mem_nhds hij
+-      exact Filter.Eventually.mono ho fun _ hy h => False.elim (hy h)
+-  have hall : ∀ᶠ y in 𝓝 x,∀i j : Fin 5,
+-      TransitionEdge c i j y → TransitionEdge c i j x :=
+-    (Filter.eventually_all.mpr fun i => Filter.eventually_all.mpr (he i))
+-  filter_upwards [hall] with y hy
+-  change ¬¬(transitionGraph c y).IsAcyclic
+-  exact not_not.mpr (hx'.anti (fun {i j} h => hy i j h))
+-lemma standardCore_closed (e : Equiv.Perm (Fin 5)) : IsClosed (StandardCore c e) :=
+-  (threeCenter_closed (e.symm ∘ c)).union
+-    ((fourCenter_closed (e.symm ∘ c)).union (fiveCenter_closed (e.symm ∘ c)))
+ include hc in
+ lemma standardCore_compact_finite (hw : WeakColoring 5 c) {K : Set ℂ} (hK : IsCompact K)
+     (e : Equiv.Perm (Fin 5)) : (K∩StandardCore c e).Finite := by
+diff -ruN lean/OAI/Geometry/PlaneColoring/DiskExtension.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/DiskExtension.lean
+--- lean/OAI/Geometry/PlaneColoring/DiskExtension.lean	2026-11-13 19:09:13.641539379 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/DiskExtension.lean	2026-11-14 04:44:49.087070918 +0000
+@@ -336,12 +336,6 @@
+ lemma graphDrop_edge {V : Type u} {v a b : V} (ha : a≠v) (hb : b≠v) (t : ℝ) :
+     graphDrop v (graphEdgePoint a b t)=graphEdgePoint (⟨a,ha⟩ : {i : V // i≠v}) ⟨b,hb⟩ t := by
+   ext i; simp [graphDrop,graphEdgePoint,graphVertex,Subtype.ext_iff]
+-lemma graphLift_vertex {V : Type u} (v : V) (a : {i : V // i≠v}) :
+-    graphLift v (graphVertex a)=graphVertex a.val := by
+-  ext i
+-  by_cases hi : i=v
+-  · subst i; simp [graphLift,graphVertex,Ne.symm a.property]
+-  · simp [graphLift,graphVertex,hi,Subtype.ext_iff]
+ lemma graphLift_edge {V : Type u} (v : V) (a b : {i : V // i≠v}) (t : ℝ) :
+     graphLift v (graphEdgePoint a b t)=graphEdgePoint a.val b.val t := by
+   ext i
+@@ -519,8 +513,6 @@
+ def coreHoles (S : Finset MarkedDisk) : Set ℂ := ⋃d∈S,⋃(_ : d.core=true),d.ball
+ lemma diskHoles_open (S : Finset MarkedDisk) : IsOpen (diskHoles S) :=
+   isOpen_iUnion fun _ => isOpen_iUnion fun _ => Metric.isOpen_ball
+-lemma coreHoles_open (S : Finset MarkedDisk) : IsOpen (coreHoles S) :=
+-  isOpen_iUnion fun _ => isOpen_iUnion fun _ => isOpen_iUnion fun _ => Metric.isOpen_ball
+ lemma mem_diskHoles {S : Finset MarkedDisk} {z : ℂ} : z∈diskHoles S ↔ ∃d∈S,z∈d.ball := by
+   simp [diskHoles]
+ lemma mem_coreHoles {S : Finset MarkedDisk} {z : ℂ} : z∈coreHoles S ↔ ∃d∈S,d.core=true ∧ z∈d.ball := by
+diff -ruN lean/OAI/Geometry/PlaneColoring/Expansion.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Expansion.lean
+--- lean/OAI/Geometry/PlaneColoring/Expansion.lean	2026-11-13 19:09:13.641104513 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Expansion.lean	2026-11-14 04:44:49.081201648 +0000
+@@ -43,16 +43,6 @@
+   intro t ht
+   rw [(hd t).deriv]
+   exact controlled_interval_derivative hlip hab he hmid (interior_subset ht)
+-lemma geometric_partial_sum {l : ℕ → ℝ} {q : ℝ} (_hq : 1 < q)
+-    (h0 : 0 ≤ l 0) (hstep : ∀ n, q*l n ≤ l (n+1)) (N : ℕ) :
+-    (q-1)*(∑ n ∈ Finset.range N, l n) ≤ l N := by
+-  have h : (q-1)*(∑ n ∈ Finset.range N, l n) ≤ l N-l 0 := by
+-    induction N with
+-    | zero => simp
+-    | succ n ih =>
+-      rw [Finset.sum_range_succ,mul_add]
+-      nlinarith [hstep n]
+-  linarith
+ end EuclideanFiveColor
+ end
+ 
+diff -ruN lean/OAI/Geometry/PlaneColoring/FiveSupport.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/FiveSupport.lean
+--- lean/OAI/Geometry/PlaneColoring/FiveSupport.lean	2026-11-13 19:09:13.641416868 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/FiveSupport.lean	2026-11-14 04:44:49.087389095 +0000
+@@ -81,8 +81,6 @@
+ variable (c : ℂ → Fin 5) (hc : Measurable c)
+ def fiveRealState (x : ℂ) (i : Fin 5) : Set ℝ := {t | fiveState c hc x (t : Angles)=i}
+ def fiveSupport (x : ℂ) (i : Fin 5) : Set ℝ := (volume.restrict (fiveRealState c hc x i)).support
+-lemma five_realState_measurable (x : ℂ) (i : Fin 5) : MeasurableSet (fiveRealState c hc x i) :=
+-  measurableSet_eq_fun ((fiveState_measurable c hc x).comp angleMk_quasiMeasurePreserving.measurable) measurable_const
+ lemma five_support_trace (hw : WeakColoring 5 c) {x : ℂ} (hx : FiveCenter c x) {a : ℝ} {i : Fin 5}
+     (ha : a∈fiveSupport c hc x i) :
+     ∃b : TraceVector 5,IsTrace c hc (x+direction (a : Angles)) b ∧ ∀j∈fiveDiag i,traceValue b j=0 :=
+diff -ruN lean/OAI/Geometry/PlaneColoring/FourContinuity.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/FourContinuity.lean
+--- lean/OAI/Geometry/PlaneColoring/FourContinuity.lean	2026-11-13 19:09:13.641373578 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/FourContinuity.lean	2026-11-14 04:44:49.082542305 +0000
+@@ -358,46 +358,6 @@
+ noncomputable section
+ open Set Filter Topology MeasureTheory
+ namespace EuclideanFiveColor
+-lemma strict_state_uniform_on_compact {k : ℕ} {c : ℂ → Fin k}
+-    (hc : Measurable c) (hw : WeakColoring k c)
+-    (x : ℕ → ℂ) (J K : Finset (Fin k)) (X : Fin k)
+-    (hlabels : ∀i, i∉J∪K ↔ i=X)
+-    (A B : ℕ → Set ℝ) (D : Set ℝ) (hD : MeasurableSet D) (hp : 0<volume D)
+-    (hA : ∀n,RealState hc (x n) (A n) J) (hB : ∀n,RealState hc (x n) (B n) K)
+-    (hL1 : ∀ E : Set ℝ, IsCompact E →
+-      Tendsto (fun n => ∫ v in E, ‖(A n).indicator (fun _ => (1:ℝ)) v-D.indicator (fun _ => (1:ℝ)) v‖)
+-        atTop (𝓝 0))
+-    {C : Set ℝ} (hC : IsCompact C) :
+-    ∃ ε>0, ∀ᶠ n in atTop, ∀b∈C, ∀d∈C,
+-      b∈(volume.restrict (B n)).support → d∈(volume.restrict (B n)).support →
+-      ε≤|‖direction (b : Angles)-direction (d : Angles)‖-1| := by
+-  by_contra! hbad
+-  have hex (N : ℕ) : ∃ n≥N, ∃ b∈C, ∃ d∈C,
+-      b∈(volume.restrict (B n)).support ∧ d∈(volume.restrict (B n)).support ∧
+-      |‖direction (b : Angles)-direction (d : Angles)‖-1|<1/(N+1) := by
+-    have hh := hbad (1/((N:ℝ)+1)) (by positivity)
+-    simpa only [and_assoc] using (frequently_atTop.mp hh) N
+-  choose f hf b hb d hd hbs hds hsmall using hex
+-  have hft : Tendsto f atTop atTop := tendsto_atTop_mono hf tendsto_id
+-  obtain ⟨q,_hq,φ,hφ,hqt⟩ := (hC.prod hC).isSeqCompact
+-    (fun n => show (b n,d n)∈C×ˢC from ⟨hb n,hd n⟩)
+-  have hqb : Tendsto (b∘φ) atTop (𝓝 q.1) := (continuous_fst.tendsto q).comp hqt
+-  have hqd : Tendsto (d∘φ) atTop (𝓝 q.2) := (continuous_snd.tendsto q).comp hqt
+-  have hdir : Continuous (fun v : ℝ => direction (v : Angles)) :=
+-    direction_continuous.comp (AddCircle.continuous_mk' (2*Real.pi))
+-  have he : ‖direction (q.1 : Angles)-direction (q.2 : Angles)‖=1 := by
+-    have hn : Tendsto (fun N => |‖direction (b N : Angles)-direction (d N : Angles)‖-1|) atTop (𝓝 0) := by
+-      exact squeeze_zero (fun _ => abs_nonneg _) (fun N => (hsmall N).le)
+-        tendsto_one_div_add_atTop_nhds_zero_nat
+-    have hl := (((hdir.tendsto q.1).comp hqb).sub ((hdir.tendsto q.2).comp hqd)).norm.sub_const 1 |>.abs
+-    have he := tendsto_nhds_unique hl (hn.comp hφ.tendsto_atTop)
+-    exact sub_eq_zero.mp (abs_eq_zero.mp he)
+-  apply strict_state_sequence_false hc hw (fun n => x (f (φ n))) J K X hlabels
+-    (fun n => A (f (φ n))) (fun n => B (f (φ n))) D hD hp
+-    (fun n => hA (f (φ n))) (fun n => hB (f (φ n)))
+-    (b∘φ) (d∘φ) q.1 q.2 hqb hqd (fun n => hbs (φ n)) (fun n => hds (φ n)) he
+-  intro E hE
+-  exact (hL1 E hE).comp (hft.comp hφ.tendsto_atTop)
+ end EuclideanFiveColor
+ end
+ 
+diff -ruN lean/OAI/Geometry/PlaneColoring/GraphCuts.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/GraphCuts.lean
+--- lean/OAI/Geometry/PlaneColoring/GraphCuts.lean	2026-11-13 19:09:13.641554037 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/GraphCuts.lean	2026-11-14 04:44:49.092493600 +0000
+@@ -216,10 +216,6 @@
+     (f : X → Y) (A B : Set X) (b : Y) : Prop :=
+   ∃K : Set X, IsCompact K ∧ IsConnected K ∧ K⊆f ⁻¹' {b} ∧
+     (K∩A).Nonempty ∧ (K∩B).Nonempty
+-lemma fiberCrosses_symm {X : Type u} {Y : Type v} [TopologicalSpace X]
+-    {f : X → Y} {A B : Set X} {b : Y} (h : FiberCrosses f A B b) : FiberCrosses f B A b := by
+-  obtain ⟨K,hK,hC,hf,hA,hB⟩ := h
+-  exact ⟨K,hK,hC,hf,hB,hA⟩
+ lemma compact_fiber_partition {X : Type u} {Y : Type v} [TopologicalSpace X]
+     [TopologicalSpace Y] [CompactSpace X] [T2Space X] [T1Space Y]
+     (f : C(X,Y)) {A B : Set X} (hA : IsClosed A) (hB : IsClosed B) (b : Y)
+diff -ruN lean/OAI/Geometry/PlaneColoring/GraphRealization.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/GraphRealization.lean
+--- lean/OAI/Geometry/PlaneColoring/GraphRealization.lean	2026-11-13 19:09:13.641471512 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/GraphRealization.lean	2026-11-14 04:44:49.087933278 +0000
+@@ -116,11 +116,6 @@
+     graphRealization G⊆graphRealization H := by
+   rintro p ⟨i,j,hij,t,ht,rfl⟩
+   exact ⟨i,j,hij.imp id (fun hh => h hh),t,ht,rfl⟩
+-lemma graphRealization_nonneg {V : Type u} {G : SimpleGraph V} {p : V → ℝ}
+-    (hp : p∈graphRealization G) (i : V) : 0≤p i := by
+-  obtain ⟨a,b,_,t,ht,rfl⟩ := hp
+-  rw [graphEdgePoint_apply]
+-  split_ifs <;> nlinarith [ht.1,ht.2]
+ lemma graphRealization_sum {V : Type u} [Fintype V] {G : SimpleGraph V} {p : V → ℝ}
+     (hp : p∈graphRealization G) : ∑ i,p i=1 := by
+   obtain ⟨a,b,_,t,_,rfl⟩ := hp
+diff -ruN lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/HoleApproximation.lean
+--- lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean	2026-11-13 19:09:13.641567703 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/HoleApproximation.lean	2026-11-14 04:44:49.073104705 +0000
+@@ -82,9 +82,6 @@
+   rw [Finset.sum_image (fun x _ y _ h => hi δ true h),Finset.sum_image (fun x _ y _ h => hi u false h),
+       Finset.sum_image (fun x _ y _ h => hi δ true h),Finset.sum_image (fun x _ y _ h => hi u false h)]
+   simp [noncoreCost]
+-lemma initial_core_cover (L C : Finset ℂ) (δ u : ℝ) {x z : ℂ} (hx : x∈L)
+-    (hz : z∈Metric.ball x δ) : z∈coreHoles (initialDisks L C δ u) := by
+-  exact mem_coreHoles.mpr ⟨⟨x,δ,true⟩,mem_initialDisks.mpr (Or.inl ⟨x,hx,rfl⟩),rfl,hz⟩
+ lemma initial_marked_cover (L C : Finset ℂ) (δ u : ℝ) {x z : ℂ} (hx : x∈C)
+     (hz : z∈Metric.ball x u) : z∈diskHoles (initialDisks L C δ u) := by
+   exact mem_diskHoles.mpr ⟨⟨x,u,false⟩,mem_initialDisks.mpr (Or.inr ⟨x,hx,rfl⟩),hz⟩
+@@ -211,8 +208,6 @@
+ def diskAnnulus (d : MarkedDisk) : Set ℂ :=
+   Metric.closedBall d.center (1+d.radius) \ Metric.ball d.center (1-d.radius)
+ def holeAnnuli (S : Finset MarkedDisk) : Set ℂ := ⋃d∈S,diskAnnulus d
+-lemma diskAnnulus_measurable (d : MarkedDisk) : MeasurableSet (diskAnnulus d) :=
+-  Metric.isClosed_closedBall.measurableSet.diff Metric.isOpen_ball.measurableSet
+ lemma unit_from_disk_mem_annulus {d : MarkedDisk} {z q : ℂ}
+     (hq : q∈d.closedBall) (hzq : dist z q=1) : z∈diskAnnulus d := by
+   have hq' : dist q d.center≤d.radius := hq
+diff -ruN lean/OAI/Geometry/PlaneColoring/Interfaces.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Interfaces.lean
+--- lean/OAI/Geometry/PlaneColoring/Interfaces.lean	2026-11-13 19:09:13.641485188 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Interfaces.lean	2026-11-14 04:44:49.075441723 +0000
+@@ -25,19 +25,9 @@
+       (if 4∈p then (0:Fin 3) else if 0∈p then 1 else 2)=interfaceFourDiagonal s := by
+   unfold InterfaceFourCompatible InterfaceFourSplit interfaceFourAllowed interfaceFourDiagonal
+   decide
+-lemma interface_four_split_neg (s : Fin 4 → Bool) :
+-    InterfaceFourSplit (fun i => !(s i)) ↔ InterfaceFourSplit s := by
+-  simp [InterfaceFourSplit]
+ lemma interface_four_diagonal_neg (s : Fin 4 → Bool) :
+     interfaceFourDiagonal (fun i => !(s i))=interfaceFourDiagonal s := by
+   simp [interfaceFourDiagonal]
+-lemma interface_four_diagonal_ne_zero (s : Fin 4 → Bool) : interfaceFourDiagonal s≠0 := by
+-  unfold interfaceFourDiagonal
+-  split <;> decide
+-lemma interface_four_split_no_opposite : ∀s : Fin 4 → Bool,
+-    InterfaceFourSplit s → ∀i,¬(s i=true ∧ s (i+2)=true) := by
+-  unfold InterfaceFourSplit
+-  decide
+ end EuclideanFiveColor
+ end
+ 
+diff -ruN lean/OAI/Geometry/PlaneColoring/Lattice.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Lattice.lean
+--- lean/OAI/Geometry/PlaneColoring/Lattice.lean	2026-11-13 19:09:13.641638776 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Lattice.lean	2026-11-14 04:44:49.091871812 +0000
+@@ -13,9 +13,6 @@
+ /-- The index-seven coloring of triangular-lattice sites. -/
+ def color (a b : ℤ) : ZMod 7 := (a : ZMod 7) + 3 * (b : ZMod 7)
+ 
+-lemma normSq_nonneg (a b : ℤ) : 0 ≤ normSq a b := by
+-  unfold normSq
+-  nlinarith [sq_nonneg (2 * a + b), sq_nonneg b]
+ 
+ lemma normSq_pos {a b : ℤ} (h : a ≠ 0 ∨ b ≠ 0) : 0 < normSq a b := by
+   unfold normSq
+diff -ruN lean/OAI/Geometry/PlaneColoring/MeasurableAssembly.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/MeasurableAssembly.lean
+--- lean/OAI/Geometry/PlaneColoring/MeasurableAssembly.lean	2026-11-13 19:09:13.641674712 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/MeasurableAssembly.lean	2026-11-14 04:44:49.431642066 +0000
+@@ -6,49 +6,6 @@
+ 
+ namespace Problem160
+ 
+-/-- A countable cover admits a measurable least-index choice, so separated
+-small cells give a measurable proper coloring, not merely an arbitrary one. -/
+-theorem exists_measurable_unit_distance_coloring_of_center_cover
+-    {X I : Type*} [PseudoMetricSpace X] [MeasurableSpace X] [BorelSpace X]
+-    [Countable I] [Nonempty I] {k : ℕ}
+-    (center : I → X) (color : I → Fin k) (r : ℝ)
+-    (hcover : ∀ x : X, ∃ i : I, dist x (center i) ≤ r)
+-    (hdiam : 2 * r < 1)
+-    (hsep : ∀ i j : I, i ≠ j → color i = color j →
+-      1 + 2 * r < dist (center i) (center j)) :
+-    ∃ c : X → Fin k, Measurable c ∧
+-      ∀ x y : X, dist x y = 1 → c x ≠ c y := by
+-  classical
+-  obtain ⟨e, he⟩ := exists_surjective_nat I
+-  have hcoverNat : ∀ x : X, ∃ n : ℕ, dist x (center (e n)) ≤ r := by
+-    intro x
+-    obtain ⟨i, hi⟩ := hcover x
+-    obtain ⟨n, rfl⟩ := he i
+-    exact ⟨n, hi⟩
+-  let pick : X → ℕ := fun x => Nat.find (hcoverNat x)
+-  have hpick : Measurable pick := by
+-    apply measurable_find hcoverNat
+-    intro n
+-    exact (isClosed_le (continuous_id.dist continuous_const) continuous_const).measurableSet
+-  let cell : X → I := fun x => e (pick x)
+-  have hcell (x : X) : dist x (center (cell x)) ≤ r := Nat.find_spec (hcoverNat x)
+-  refine ⟨fun x => color (cell x), ?_, ?_⟩
+-  · exact (measurable_of_countable (fun n => color (e n))).comp hpick
+-  · intro x y hdist hcolor
+-    by_cases hsame : cell x = cell y
+-    · have htriangle := dist_triangle x (center (cell x)) y
+-      have hx := hcell x
+-      have hy := hcell y
+-      rw [← hsame] at hy
+-      rw [dist_comm (center (cell x)) y] at htriangle
+-      linarith
+-    · have hfar := hsep (cell x) (cell y) hsame hcolor
+-      have htriangle₁ := dist_triangle (center (cell x)) x (center (cell y))
+-      have htriangle₂ := dist_triangle x y (center (cell y))
+-      have hx := hcell x
+-      have hy := hcell y
+-      rw [dist_comm (center (cell x)) x] at htriangle₁
+-      linarith
+ 
+ end Problem160
+ 
+diff -ruN lean/OAI/Geometry/PlaneColoring/MeasurableProper.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/MeasurableProper.lean
+--- lean/OAI/Geometry/PlaneColoring/MeasurableProper.lean	2026-11-13 19:09:13.641683419 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/MeasurableProper.lean	2026-11-14 04:44:49.551765876 +0000
+@@ -36,30 +36,8 @@
+     simp [circleDir, Fin.sum_univ_two]
+   nlinarith [norm_nonneg (circleDir t)]
+ 
+-theorem ae_circleMeasure_norm : ∀ᵐ u ∂circleMeasure, ‖u‖ = 1 := by
+-  unfold circleMeasure
+-  rw [ae_map_iff measurable_circleDir.aemeasurable]
+-  · exact Filter.Eventually.of_forall norm_circleDir
+-  · exact isClosed_eq continuous_norm continuous_const |>.measurableSet
+ 
+-theorem ae_weakPairMeasure_unit (R : ℝ) :
+-    ∀ᵐ p ∂weakPairMeasure R, ‖p.2‖ = 1 := by
+-  exact Measure.quasiMeasurePreserving_snd.ae ae_circleMeasure_norm
+ 
+-theorem weakMeasurableColoring_of_aemeasurable_proper {k : ℕ}
+-    (c : Plane → Fin k) (hc : AEMeasurable c volume)
+-    (hproper : ∀ x y : Plane, dist x y = 1 → c x ≠ c y) :
+-    WeakMeasurableColoring k := by
+-  refine ⟨c, hc, ?_⟩
+-  intro R hR
+-  apply Finset.sum_eq_zero
+-  intro i hi
+-  apply measure_mono_null (t := {p : Plane × Plane | ‖p.2‖ ≠ 1})
+-  · intro p hp hnorm
+-    have hd : dist p.1 (p.1 + p.2) = 1 := by
+-      simpa [dist_eq_norm] using hnorm
+-    exact hproper _ _ hd (hp.1.trans hp.2.symm)
+-  · exact ae_iff.mp (ae_weakPairMeasure_unit R)
+ 
+ end Problem160
+ 
+diff -ruN lean/OAI/Geometry/PlaneColoring/Moser.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Moser.lean
+--- lean/OAI/Geometry/PlaneColoring/Moser.lean	2026-11-13 19:09:13.641500305 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Moser.lean	2026-11-14 04:44:49.070496538 +0000
+@@ -39,9 +39,6 @@
+          have hpos : 0≤(x^2+y^2)^3*(1-(x^2+y^2)/4) :=
+            mul_nonneg (pow_nonneg (le_trans ha.le hl) _) (by linarith)
+          gcongr
+-lemma abs_le_of_bounds {x l u c h : ℝ} (hl : l≤x) (hu : x≤u)
+-    (hc1 : c-h≤l) (hc2 : u≤c+h) : |x-c|≤h := by
+-  rw [abs_le]; constructor <;> linarith
+ end EuclideanFiveColor
+ end
+ 
+diff -ruN lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/PaletteDensity.lean
+--- lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean	2026-11-13 19:09:13.641256607 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/PaletteDensity.lean	2026-11-14 04:44:49.308216866 +0000
+@@ -132,22 +132,6 @@
+   have hval : colorIndicator c i (angularSum x 1 p)=1 := by simp [colorIndicator,he]
+   rw [hval,mul_one] at hzero
+   exact (show 0 < traceValue b.1 i p.1 from hpos).ne' hzero
+-lemma palette_second_exclusion (hw : WeakColoring k c) (x : ℂ) (i : Fin k) :
+-    ∀ᵐ p ∂angularMeasure.prod angularMeasure,
+-      p.2 ∈ paletteSet c hc x i → c (angularSum x 1 p) ≠ i := by
+-  have h := (Measure.measurePreserving_swap (μ := angularMeasure) (ν := angularMeasure)).quasiMeasurePreserving.ae
+-    (palette_first_exclusion c hc hw x i)
+-  simp only [Prod.swap,angularSum,Complex.ofReal_one,one_mul] at h ⊢
+-  filter_upwards [h] with p hp
+-  convert hp using 1; rw [add_right_comm]
+-lemma palette_transfer_pair (hw : WeakColoring k c) (x : ℂ) :
+-    ∀ᵐ p ∂angularMeasure.prod angularMeasure,
+-      c (angularSum x 1 p) ∉ palette c hc x p.1 ∪ palette c hc x p.2 := by
+-  classical
+-  filter_upwards [ae_all_iff.mpr (fun i => (palette_first_exclusion c hc hw x i).and
+-    (palette_second_exclusion c hc hw x i))] with p hp
+-  simpa only [Finset.mem_union,mem_palette,not_or] using
+-    And.intro (fun h => (hp _).1 h rfl) (fun h => (hp _).2 h rfl)
+ end EuclideanFiveColor
+ 
+ end
+@@ -394,12 +378,6 @@
+   calc
+     _ ≤ volume.real B/(r^2*Real.pi) := div_le_div_of_nonneg_right (ENNReal.toReal_mono hfin hm) (by positivity)
+     _ = _ := by dsimp [B]; ring
+-lemma flat_density_not_one {A : Set ℂ} {z : ℂ}
+-    (h : FlatDensityZero (Complex.equivRealProdCLM.symm ⁻¹' A) (Complex.equivRealProdCLM z)) :
+-    ¬ DensityOne A z := by
+-  intro hd
+-  have he := tendsto_nhds_unique (flat_to_complex_densityZero h) hd
+-  exact zero_ne_one he
+ end EuclideanFiveColor
+ end
+ 
+diff -ruN lean/OAI/Geometry/PlaneColoring/Palettes.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Palettes.lean
+--- lean/OAI/Geometry/PlaneColoring/Palettes.lean	2026-11-13 19:09:13.641245487 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Palettes.lean	2026-11-14 04:44:49.087599901 +0000
+@@ -23,15 +23,6 @@
+ lemma tracePositive_le_palette (x : ℂ) (i : Fin k) (b : Traces c hc x) :
+     tracePositive c hc x i b ≤ᵐ[angularMeasure] paletteSet c hc x i :=
+   (exists_countable_essential_union angularMeasure (tracePositive c hc x i) (tracePositive_measurable c hc x i)).choose_spec.2 b
+-lemma paletteSet_minimal (x : ℂ) (i : Fin k) {A : Set Angles}
+-    (hA : ∀ b : Traces c hc x, tracePositive c hc x i b ≤ᵐ[angularMeasure] A) :
+-    paletteSet c hc x i ≤ᵐ[angularMeasure] A := by
+-  have hh : ∀ᵐ t ∂angularMeasure, ∀ b ∈ paletteGenerators c hc x i, t ∈ tracePositive c hc x i b → t ∈ A :=
+-    (ae_ball_iff (paletteGenerators_countable c hc x i)).mpr (fun b _ => hA b)
+-  filter_upwards [hh] with t ht
+-  intro hm
+-  rcases Set.mem_iUnion₂.mp hm with ⟨b,hb,hbt⟩
+-  exact ht b hb hbt
+ def palette (x : ℂ) (t : Angles) : Finset (Fin k) := by
+   classical
+   exact Finset.univ.filter (fun i => t ∈ paletteSet c hc x i)
+diff -ruN lean/OAI/Geometry/PlaneColoring/Sectors.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Sectors.lean
+--- lean/OAI/Geometry/PlaneColoring/Sectors.lean	2026-11-13 19:09:13.641513941 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Sectors.lean	2026-11-14 04:44:49.076767140 +0000
+@@ -119,8 +119,6 @@
+ def triangleState (c : ℂ → Fin 5) (hc : Measurable c) (x : ℂ) (t : Angles) : Bool := by
+   classical
+   exact if t∈paletteSet c hc x 3 then false else true
+-lemma triangleState_measurable (c : ℂ → Fin 5) (hc : Measurable c) (x : ℂ) :
+-    Measurable (triangleState c hc x) := Measurable.ite (paletteSet_measurable c hc x 3) measurable_const measurable_const
+ lemma triangleState_flip {c : ℂ → Fin 5} (hc : Measurable c) (hw : WeakColoring 5 c) {x : ℂ}
+     (hb : BinaryCenter c hc x 3 4) :
+     ∀ᵐt∂angularMeasure,triangleState c hc x (t+(sixty : Angles))= !(triangleState c hc x t) := by
+diff -ruN lean/OAI/Geometry/PlaneColoring/Seven.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Seven.lean
+--- lean/OAI/Geometry/PlaneColoring/Seven.lean	2026-11-13 19:09:13.641693338 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Seven.lean	2026-11-14 04:44:49.307868882 +0000
+@@ -36,30 +36,7 @@
+ theorem properColoring_seven : ProperColoring 7 :=
+   properColoring_seven_of_normalized_cover triangular_lattice_cover
+ 
+-/-- The seven-color construction admits a measurable choice on its boundary
+-points: select the first covering center in a countable enumeration. -/
+-theorem exists_measurable_proper_seven :
+-    ∃ c : Plane → Fin 7, Measurable c ∧
+-      ∀ x y : Plane, dist x y = 1 → c x ≠ c y := by
+-  apply exists_measurable_unit_distance_coloring_of_center_cover
+-    (fun p : ℤ × ℤ => triangularLattice p.1 p.2)
+-    (fun p : ℤ × ℤ => SevenLattice.colorFin p.1 p.2) (7 / 15 : ℝ)
+-  · intro x
+-    obtain ⟨a, b, hab⟩ := triangular_lattice_cover
+-      ((5 / 4 : ℝ) * x 0) ((5 / 4 : ℝ) * x 1)
+-    exact ⟨(a, b), dist_triangularLattice_le_of_coordinates x a b hab⟩
+-  · norm_num
+-  · intro i j hij hc
+-    have hq := SevenLattice.same_color_separation
+-      (SevenLattice.colorFin_injective_value hc) hij
+-    have hsep := triangularLattice_dist_gt_two i.1 i.2 j.1 j.2 hq
+-    linarith
+ 
+-/-- The classical measurable seven-color construction satisfies the exact
+-weak pair-measure condition. -/
+-theorem weakMeasurableColoring_seven : WeakMeasurableColoring 7 := by
+-  obtain ⟨c, hc, hproper⟩ := exists_measurable_proper_seven
+-  exact weakMeasurableColoring_of_aemeasurable_proper c hc.aemeasurable hproper
+ 
+ end Problem160
+ 
+diff -ruN lean/OAI/Geometry/PlaneColoring/WeakColoring.lean sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/WeakColoring.lean
+--- lean/OAI/Geometry/PlaneColoring/WeakColoring.lean	2026-11-13 19:09:13.641164425 +0000
++++ sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/WeakColoring.lean	2026-11-14 04:44:49.077420699 +0000
+@@ -14,8 +14,6 @@
+ lemma shiftL2_continuous (f : PlaneL2) : Continuous (fun z => shiftL2 z f) := by
+   let g : C(ℂ,C(ℂ,ℂ)) := (ContinuousMap.mk (fun p : ℂ × ℂ => p.2+p.1) (by fun_prop)).curry
+   exact continuous_const.compMeasurePreservingLp g.continuous (fun z => measurePreserving_add_right volume z) (by simp)
+-lemma correlation_continuous (f : PlaneL2) : Continuous (fun t : ℝ => ⟪f,shiftL2 (Circle.exp t : ℂ) f⟫) := by
+-  exact continuous_const.inner ((shiftL2_continuous f).comp (continuous_subtype_val.comp Circle.exp.continuous))
+ lemma product_zero_of_inner_zero (f g : PlaneL2) (hf : ∀ᵐ x ∂volume, 0 ≤ f x)
+     (hg : ∀ᵐ x ∂volume, 0 ≤ g x) (h : ⟪f,g⟫ = 0) :
+     ∀ᵐ x ∂volume, f x*g x=0 := by
+diff -ruN lean/OAI/MeasureTheory/CompactFactors/Amenability.lean sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/Amenability.lean
+--- lean/OAI/MeasureTheory/CompactFactors/Amenability.lean	2026-11-13 19:09:13.640426709 +0000
++++ sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/Amenability.lean	2026-11-14 04:44:49.112027557 +0000
+@@ -88,10 +88,6 @@
+ lemma vector_pair (V : G →ᵇ H) (v : H) :
+     inner ℝ (M.vector V) v = M.map (pairing V v) := InnerProductSpace.toDual_symm_apply
+ 
+-lemma vector_norm_le (V : G →ᵇ H) : ‖M.vector V‖ ≤ M.map (normFn V) := by
+-  rw [vector, LinearIsometryEquiv.norm_map]
+-  apply (M.pairingMap V).opNorm_le_bound (M.positive _ (fun x => by simp))
+-  exact M.pairing_bound V
+ 
+ lemma vector_add (V W : G →ᵇ H) : M.vector (V+W) = M.vector V + M.vector W := by
+   apply ext_inner_right ℝ; intro v
+@@ -397,12 +393,6 @@
+ 
+ variable [TopologicalSpace G] [DiscreteTopology G]
+ 
+-theorem vector_orbit_zero (M : Mean G) (v : Lp E 2 μ)
+-    (hv : ∫ x, v x ∂μ = 0) : M.vector (H := Lp E 2 μ) (Mean.orbit (action (G := G) (E := E) μ) v) = 0 :=
+-by
+-  apply M.vector_orbit_eq_zero (H := Lp E 2 μ) (action (G := G) (E := E) μ)
+-    (action_add (G := G) (E := E) μ) v
+-  exact inner_fixed_zero (G := G) (E := E) μ v hv
+ 
+ end EuclideanFiveColor.Amenable.Koopman
+ 
+diff -ruN lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean
+--- lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean	2026-11-13 19:09:13.640563676 +0000
++++ sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean	2026-11-14 04:44:49.312282599 +0000
+@@ -211,10 +211,6 @@
+       exact KernelCompact.norm_integral_sq _ f (integrable _ f) (integrable_norm_sq _ f)
+   nlinarith [norm_nonneg (l2 (μ.map q) (conditional μ q f)), norm_nonneg (l2 μ f)]
+ 
+-omit [StandardBorelSpace Y] [Nonempty Y] in
+-lemma project_eq_condexp (f : Func X) :
+-    project μ q hq f =ᵐ[μ] μ[(f : X → ℂ) | MeasurableSpace.comap q ‹MeasurableSpace Y›] :=
+-  (condExp_ae_eq_integral_condDistrib_id hq (integrable μ f)).symm
+ 
+ end EuclideanFiveColor.BoundedMeasurable
+ 
+diff -ruN lean/OAI/MeasureTheory/CompactFactors/Centers.lean sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/Centers.lean
+--- lean/OAI/MeasureTheory/CompactFactors/Centers.lean	2026-11-13 19:09:13.640478046 +0000
++++ sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/Centers.lean	2026-11-14 04:44:49.115130542 +0000
+@@ -108,8 +108,6 @@
+   apply (integrable_const ‖s‖).mono' (continuous_kernel s).aestronglyMeasurable
+   exact Eventually.of_forall fun t => by simpa using kernel_bound s t
+ 
+-theorem objective_zero (μ : Measure ℂ) : objective μ 0 = 0 := by
+-  simp [objective, kernel]
+ 
+ theorem objective_lipschitz (μ : Measure ℂ) [IsProbabilityMeasure μ] :
+     LipschitzWith 1 (objective μ) := by
+diff -ruN lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean
+--- lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean	2026-11-13 19:09:13.640526677 +0000
++++ sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean	2026-11-14 04:44:49.316899598 +0000
+@@ -215,43 +215,6 @@
+       exact le_max_right _ _
+   exact ⟨H, hH, ⟨max A 0, le_max_right _ _, hHbound⟩, hHB.mono fun y hy => ite_eq_left hy⟩
+ 
+-lemma finite_encoding_at_of_approximation
+-    (μ : Measure X) [IsProbabilityMeasure μ] [SMulInvariantMeasure K X μ]
+-    (p : X → Y) (q : Y → W) (b : X → D)
+-    (hp : Measurable p) (hb : Measurable b)
+-    (hpe : ∀ k : K, ∀ᵐ x ∂μ, p (k • x) = k • p x)
+-    (hbe : ∀ k : K, ∀ᵐ x ∂μ, b (k • x) = k • b x)
+-    (m : ℕ) (H : Y → Fin m → ℂ)
+-    (hHeq : H =ᵐ[μ.map p] PhaseEncoding.kernelEncoding (condDistrib b p μ) (fun d => (eval 1 d : ℂ)) m)
+-    (γ : ℝ) (ha : CompactApproximation.At (K := K) (μ.map p) q m H γ) :
+-    FiniteEncodingApproximationAt μ p q b m γ := by
+-  classical
+-  let : IsProbabilityMeasure (μ.map p) := inferInstance
+-  obtain ⟨r, B, C, Hf, hB, hC, _hHm, hHf, ha⟩ := ha
+-  refine ⟨r, B, C, Hf, hB, hC, hHf, ?_⟩
+-  intro k
+-  obtain ⟨a, _ham, hab, hai, hae⟩ := ha k
+-  have hker := KernelSupport.condDistrib_equivariant μ b p hb hp
+-    (MeasurableEquiv.smul k) (MeasurableEquiv.smul k) (fun d : D => k • d)
+-    (measurable_const_smul k) (measurePreserving_smul k μ) (hpe k) (hbe k)
+-  have hcov := PhaseEncoding.kernelEncoding_covariance (μ.map p) (condDistrib b p μ)
+-    (fun y : Y => k • y) (fun d : D => k • d) (measurable_const_smul k)
+-    (fun d => (eval 1 d : ℂ)) (measurable_eval_coe 1) m hker
+-  have heq : ∀ᵐ y ∂μ.map p, H (k • y) =
+-      PhaseEncoding.kernelEncoding (condDistrib b p μ) (fun d => (eval (kCoeff k) d : ℂ)) m y := by
+-    filter_upwards [(KernelSupport.factor_smul_preserving μ p hp hpe k).quasiMeasurePreserving.ae hHeq,
+-      hcov] with y hy hc'
+-    exact hy.trans (by simpa only [Function.comp_def, eval_smul_one] using hc')
+-  have he : (fun y => dist (H (k • y)) (∑ i, a (q y) i • Hf i y)^2) =ᵐ[μ.map p]
+-      (fun y => dist (PhaseEncoding.kernelEncoding (condDistrib b p μ)
+-        (fun d => (eval (kCoeff k) d : ℂ)) m y) (∑ i, a (q y) i • Hf i y)^2) := by
+-    filter_upwards [heq] with y hy
+-    rw [hy]
+-  have hai' := hai.congr he
+-  refine ⟨a, hab, hai'.comp_measurable hp, ?_⟩
+-  rw [← integral_map hp.aemeasurable hai'.aestronglyMeasurable,
+-    ← integral_congr_ae he]
+-  exact hae
+ 
+ end
+ 
+@@ -262,65 +225,6 @@
+   [MulAction K X] [MulAction K Y]
+   [MeasurableConstSMul K X] [MeasurableConstSMul K Y]
+ 
+-omit [StandardBorelSpace Y] [Nonempty Y] in
+-/-- The source limit implication: a generated increasing sequence of earlier
+-compact successor factors supplies the requisite single approximation precision.
+-The induction hypothesis is universal in the recentered wild map. -/
+-theorem relative_singularity_limit
+-    {Z W : ℕ → Type*} [∀ n, MeasurableSpace (Z n)] [∀ n, MeasurableSpace (W n)]
+-    [∀ n, StandardBorelSpace (W n)] [∀ n, Nonempty (W n)]
+-    [∀ n, MulAction K (Z n)] [∀ n, MulAction K (W n)]
+-    [∀ n, MeasurableConstSMul K (Z n)] [∀ n, MeasurableConstSMul K (W n)]
+-    (μ : Measure X) [IsProbabilityMeasure μ] [ErgodicSMul K X μ]
+-    (d : X → D) (p : X → Y) (v : ∀ n, Y → Z n) (q : ∀ n, Z n → W n)
+-    (hd : Measurable d) (hp : Measurable p)
+-    (hv : ∀ n, Measurable (v n)) (hq : ∀ n, Measurable (q n))
+-    (hde : ∀ k : K, ∀ᵐ x ∂μ, d (k • x) = k • d x)
+-    (hpe : ∀ k : K, ∀ᵐ x ∂μ, p (k • x) = k • p x)
+-    (hve : ∀ n, ∀ k : K, ∀ᵐ y ∂μ.map p, v n (k • y) = k • v n y)
+-    (hqe : ∀ n, ∀ k : K, ∀ᵐ z ∂(μ.map p).map (v n), q n (k • z) = k • q n z)
+-    (hmono : Monotone (fun n => (inferInstance : MeasurableSpace (Z n)).comap (v n)))
+-    (hgen : (⨆ n, (inferInstance : MeasurableSpace (Z n)).comap (v n)) = (inferInstance : MeasurableSpace Y))
+-    (hwild : IsWild (μ.map d))
+-    (hc : ∀ n, CompactApproximation.Scalar (K := K) ((μ.map p).map (v n)) (q n))
+-    (hprev : ∀ n, ∀ b : X → D, Measurable b →
+-      (∀ k : K, ∀ᵐ x ∂μ, b (k • x) = k • b x) → IsWild (μ.map b) →
+-      DifferenceFourier.differenceLaw (μ.map ((q n ∘ v n) ∘ p))
+-        (condDistrib b ((q n ∘ v n) ∘ p) μ) C = 0) :
+-    DifferenceFourier.differenceLaw (μ.map p) (condDistrib d p μ) C = 0 := by
+-  classical
+-  let : IsProbabilityMeasure (μ.map p) := inferInstance
+-  by_contra hn
+-  have hpos : 0 < RelativeCenters.differenceLaw (μ.map p) (condDistrib d p μ) C :=
+-    pos_iff_ne_zero.mpr hn
+-  obtain ⟨b, hb, hbe, hbw, a, ha, hf⟩ := exact_finite_center_reduction μ d p hd hp hde hpe hwild hpos
+-  obtain ⟨m, hm, g, hg⟩ := UniformEnumeration.constant_uniform_lists (μ.map p)
+-    (condDistrib b p μ) a ha (hf.mono fun y ⟨S, hS, hSa, hSupp, hcS, _⟩ =>
+-      ⟨S, hS, hSa, hSupp, hcS⟩)
+-  obtain ⟨ρ, c, N, hρ, hc', hN, harc⟩ := SmallArc.exists_small_arc_constants m hm
+-  let γ : ℝ := ((ρ^m/(m : ℝ))/100)/100
+-  have hγ : 0 < γ := by dsimp [γ]; positivity
+-  obtain ⟨H, hH, ⟨A, hA, hHB⟩, hHeq⟩ := bounded_phase_encoding μ p b m hm g hg
+-  obtain ⟨n, H₀, hH₀, hH₀B, hi, he⟩ := LimitDensity.generated_factor_approximation
+-    (μ.map p) v hv hmono hgen m H hH A hA hHB (γ/2) (by positivity)
+-  let : IsProbabilityMeasure ((μ.map p).map (v n)) := inferInstance
+-  have hvector := CompactApproximation.vector_of_scalar ((μ.map p).map (v n)) (q n) (hq n) (hc n)
+-  have happ := CompactApproximation.lift_at (μ.map p) (v n) (q n) (hv n) (hq n)
+-    (KernelSupport.factor_smul_preserving μ p hp hpe) (hve n) m H H₀ hH hH₀
+-    ⟨2*A, hH₀B⟩ γ hγ hi he hvector
+-  have henc := finite_encoding_at_of_approximation μ p (q n ∘ v n) b hp hb hpe hbe m H hHeq γ happ
+-  have heqv (k : K) : ∀ᵐ x ∂μ, ((q n ∘ v n) ∘ p) (k • x) = k • ((q n ∘ v n) ∘ p) x := by
+-    have hqp : ∀ᵐ y ∂μ.map p, q n (v n (k • y)) = k • q n (v n y) := by
+-      filter_upwards [hve n k, ae_of_ae_map (hv n).aemeasurable (hqe n k)] with y hy hz
+-      rw [hy, hz]
+-    filter_upwards [hpe k, ae_of_ae_map hp.aemeasurable hqp] with x hx hy
+-    simp only [Function.comp_def, hx, hy]
+-  have hpwild : IsWild (DifferenceFourier.differenceLaw (μ.map ((q n ∘ v n) ∘ p))
+-      (condDistrib b ((q n ∘ v n) ∘ p) μ)) :=
+-    ⟨relative_difference_invariant μ b ((q n ∘ v n) ∘ p) hb ((hq n).comp ((hv n).comp hp)) hbe heqv,
+-      hprev n b hb hbe hbw⟩
+-  exact finite_uniform_precision_contradiction μ p (q n ∘ v n) b hp ((hq n).comp (hv n)) hb m hm g hg
+-    hpwild ρ c N hρ hc' hN harc henc
+ 
+ end PlaneFiveColor.Spectral
+ 
+diff -ruN lean/OAI/MeasureTheory/CompactFactors/Factors.lean sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/Factors.lean
+--- lean/OAI/MeasureTheory/CompactFactors/Factors.lean	2026-11-13 19:09:13.640640361 +0000
++++ sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/Factors.lean	2026-11-14 04:44:49.112420564 +0000
+@@ -273,8 +273,6 @@
+ lemma encode_equivariant (p : X → Y) (k : K) (x : X) :
+     encode (K := K) p (k • x) = k • encode (K := K) p x := OrbitFactor.orbit_equivariant _ _ _
+ 
+-omit [Countable K] [MeasurableSpace X] [MeasurableConstSMul K X] in
+-lemma encode_bound (p : X → Y) (x : X) (k : K) : ‖(encode p x).val k‖ ≤ 2 := scalar_bound _
+ 
+ variable [Nonempty Y]
+ def decode : OrbitSpace K → Y := fun z => scalar_embedding.invFun (z.val 1)
+diff -ruN lean/OAI/MeasureTheory/CompactFactors/Functions.lean sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/Functions.lean
+--- lean/OAI/MeasureTheory/CompactFactors/Functions.lean	2026-11-13 19:09:13.640622367 +0000
++++ sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/Functions.lean	2026-11-14 04:44:49.111639437 +0000
+@@ -109,26 +109,6 @@
+     · simp
+     · simpa using sq_pos_of_pos hε
+ 
+-lemma compact_conj {μ : Measure X} {q : X → Y} {H : X → ℂ}
+-    (hH : Compact (K := K) μ q H) : Compact (K := K) μ q (fun x => star (H x)) := by
+-  intro ε hε
+-  obtain ⟨r, B, C, F, hB, hC, hm, hb, ha⟩ := hH ε hε
+-  refine ⟨r, B, C, fun i x => star (F i x), hB, hC,
+-    fun i => Complex.continuous_conj.measurable.comp (hm i), ?_, ?_⟩
+-  · intro x; simpa using hb x
+-  · intro k
+-    obtain ⟨a, ham, hab, hai, hae⟩ := ha k
+-    refine ⟨fun y i => star (a y i), (Measurable.of_eval (fun i => Complex.continuous_conj.measurable.comp ((measurable_pi_iff.mp ham) i))), ?_, ?_, ?_⟩
+-    · intro y
+-      rw [pi_norm_le_iff_of_nonneg hB]
+-      intro i
+-      simpa using (norm_le_pi_norm (a y) i).trans (hab y)
+-    · have hs (x : X) : (∑ i, star (a (q x) i) * star (F i x)) = star (∑ i, a (q x) i * F i x) := by
+-        simp only [star_sum, star_mul, mul_comm]
+-      simpa only [hs, dist_star_star] using hai
+-    · have hs (x : X) : (∑ i, star (a (q x) i) * star (F i x)) = star (∑ i, a (q x) i * F i x) := by
+-        simp only [star_sum, star_mul, mul_comm]
+-      simpa only [hs, dist_star_star] using hae
+ 
+ lemma compact_add {μ : Measure X} {q : X → Y} {H G : X → ℂ}
+     [MeasurableConstSMul K X] (hq : Measurable q) (hHm : Measurable H) (hGm : Measurable G)
+diff -ruN lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean
+--- lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean	2026-11-13 19:09:13.640495378 +0000
++++ sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean	2026-11-14 04:44:49.104006726 +0000
+@@ -97,16 +97,6 @@
+   filter_upwards [hs] with z hz
+   rw [e.preimage_center_singleton μ (by rw [hz]; exact ha.ne'), hz]
+ 
+-omit [MeasurableSingletonClass G] in
+-/-- Wildness survives the measurable recentering construction. -/
+-theorem center_law_ordinary (μ : ProbabilityMeasure G) :
+-    (μ.map (e.center μ) : Measure G) e.ordinary =
+-      (μ : Measure G) e.ordinary := by
+-  rw [ProbabilityMeasure.toMeasure_map,
+-    Measure.map_apply (e.measurable_center_fixed μ) e.measurableSet_ordinary]
+-  congr 1
+-  ext z
+-  exact e.center_mem_ordinary_iff μ z
+ 
+ end EuclideanFiveColor.CosetCenter.Embedding
+ 
+diff -ruN lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean
+--- lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean	2026-11-13 19:09:13.640577062 +0000
++++ sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean	2026-11-14 04:44:49.312038812 +0000
+@@ -85,14 +85,7 @@
+   [StandardBorelSpace X] [Nonempty X]
+ variable (μ : Measure X) [IsProbabilityMeasure μ] (q : X → Y) (hq : Measurable q)
+ 
+-def projectCLM : Lp ℂ 2 μ →L[ℝ] Lp ℂ 2 μ :=
+-  (lpMeas ℂ ℝ (MeasurableSpace.comap q ‹MeasurableSpace Y›) 2 μ).subtypeL.comp
+-    (condExpL2 ℂ ℝ hq.comap_le)
+ 
+-lemma projectCLM_l2 (f : Func X) : projectCLM μ q hq (l2 μ f) = l2 μ (project μ q hq f) := by
+-  apply Lp.ext
+-  exact ((memLp μ f 2).condExpL2_ae_eq_condExp (𝕜 := ℝ) hq.comap_le).trans
+-    ((project_eq_condexp μ q hq f).symm.trans (l2_ae μ (project μ q hq f)).symm)
+ 
+ lemma norm_project_l2 (f : Func X) :
+     ‖l2 μ (project μ q hq f)‖ = ‖l2 (μ.map q) (conditional μ q f)‖ := by
+@@ -264,12 +257,6 @@
+ lemma avg_pair (F : Family G X) (h : Lp ℂ 2 μ) :
+     inner ℝ (avg μ M F) h = M.map (Amenable.Mean.pairing (toL2 μ F) h) := M.vector_pair _ _
+ 
+-lemma avg_congr_ae {F H : Family G X} (he : ∀ g, F g =ᵐ[μ] H g) : avg μ M F = avg μ M H := by
+-  change M.vector (toL2 μ F) = M.vector (toL2 μ H)
+-  congr 1
+-  apply BoundedContinuousFunction.ext
+-  intro g
+-  exact (l2_eq_iff μ _ _).mpr (he g)
+ 
+ omit [TopologicalSpace G] [DiscreteTopology G]
+ variable [AddAction G X] [MeasurableConstVAdd G X]
+@@ -439,18 +426,6 @@
+   have hn : s.filter (fun i => ¬ i∈t) = s\t := by ext i; simp
+   rw [Finset.prod_ite, he, hn]
+ 
+-lemma linear_prod_replace (L : A →ₗ[R] H) (s : Finset ι) (f g : ι → A)
+-    (h : ∀ t ∈ s.powerset, t ≠ ∅ →
+-      L ((∏ i ∈ t, (f i - g i)) * ∏ i ∈ s\t, g i) = 0) :
+-    L (∏ i ∈ s, f i) = L (∏ i ∈ s, g i) := by
+-  have he := Finset.prod_add (fun i => f i - g i) g s
+-  simp only [sub_add_cancel] at he
+-  rw [he, map_sum]
+-  rw [Finset.sum_eq_single ∅]
+-  · simp
+-  · intro t ht hn
+-    exact h t ht hn
+-  · simp
+ end
+ variable {ι A H : Type*} [DecidableEq ι] [CommRing A] [AddCommMonoid H]
+ lemma add_prod_replace (L : A →+ H) (s : Finset ι) (f g : ι → A)
+diff -ruN lean/OAI/MeasureTheory/CompactFactors/Separability.lean sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/Separability.lean
+--- lean/OAI/MeasureTheory/CompactFactors/Separability.lean	2026-11-13 19:09:13.640591980 +0000
++++ sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/Separability.lean	2026-11-14 04:44:49.308589866 +0000
+@@ -49,11 +49,6 @@
+   change (∫ x, RCLike.re ((bmConj f * h) x) ∂μ) = _
+   exact integral_re (integrable μ (bmConj f * h))
+ 
+-omit [TopologicalSpace G] [DiscreteTopology G] in
+-lemma inner_act (g : G) (f h : Func X) :
+-    inner ℝ (l2 μ (act g f)) (l2 μ (act g h)) = inner ℝ (l2 μ f) (l2 μ h) := by
+-  rw [l2_act, l2_act]
+-  exact (Amenable.Koopman.action (E := ℂ) μ g).inner_map_map _ _
+ 
+ omit [TopologicalSpace G] [DiscreteTopology G] [IsProbabilityMeasure μ] in
+ lemma integral_act (g : G) (f : Func X) : ∫ x, act g f x ∂μ = ∫ x, f x ∂μ :=
+@@ -369,8 +364,6 @@
+   M.positive _ (fun g => by
+     change 0 ≤ ‖l2 μ (F g)‖
+     exact norm_nonneg _)
+-lemma meanNorm_mono {F H : Family G X} (h : ∀ g, ‖l2 μ (F g)‖ ≤ ‖l2 μ (H g)‖) :
+-    meanNorm μ M F ≤ meanNorm μ M H := M.mono _ _ h
+ lemma meanNorm_congr {F H : Family G X} (h : ∀ g, F g =ᵐ[μ] H g) :
+     meanNorm μ M F = meanNorm μ M H := by
+   apply congrArg M.map
+@@ -395,18 +388,6 @@
+   intro g
+   simpa only [Amenable.Mean.normFn_apply, BoundedContinuousFunction.add_apply,
+     toL2_apply, add_apply, map_add] using norm_add_le (l2 μ (F g)) (l2 μ (H g))
+-lemma meanNorm_neg (F : Family G X) : meanNorm μ M (-F) = meanNorm μ M F := by
+-  apply congrArg M.map
+-  apply BoundedContinuousFunction.ext
+-  intro g
+-  change ‖l2 μ (-(F g))‖ = ‖l2 μ (F g)‖
+-  rw [map_neg, norm_neg]
+-lemma meanNorm_sub_le (F H : Family G X) :
+-    meanNorm μ M (F-H) ≤ meanNorm μ M F + meanNorm μ M H := by
+-  have h := meanNorm_add_le μ M F (-H)
+-  rw [meanNorm_neg] at h
+-  change meanNorm μ M (F + -H) ≤ _
+-  exact h
+ lemma meanNorm_mul_le (F H : Family G X) {C : ℝ} (hC : ∀ g x, ‖H g x‖ ≤ C) :
+     meanNorm μ M (F*H) ≤ C * meanNorm μ M F := by
+   unfold meanNorm
+@@ -416,13 +397,6 @@
+       intro g
+       exact l2_mul_norm_le μ (F g) (H g) (hC g)
+     _ = _ := by rw [map_smul]; rfl
+-lemma meanNorm_const (f : Func X) : meanNorm μ M (const f : Family G X) = ‖l2 μ f‖ := by
+-  have he : Amenable.Mean.normFn (toL2 μ (const f : Family G X)) =
+-      BoundedContinuousFunction.const G ‖l2 μ f‖ := by
+-    ext g
+-    rfl
+-  unfold meanNorm
+-  rw [he, M.map_const]
+ lemma meanNorm_add_zero {F H : Family G X} (hF : meanNorm μ M F = 0) (hH : meanNorm μ M H = 0) :
+     meanNorm μ M (F+H) = 0 := by
+   have h := meanNorm_add_le μ M F H

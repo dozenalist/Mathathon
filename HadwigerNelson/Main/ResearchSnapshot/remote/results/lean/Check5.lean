@@ -1,0 +1,3 @@
+import OAI.Geometry.PlaneColoring.NullSetRobust
+#print axioms OAI.EuclideanFiveColor.not_proper_five_coloring_compl_null
+#check @OAI.EuclideanFiveColor.not_proper_five_coloring_compl_null

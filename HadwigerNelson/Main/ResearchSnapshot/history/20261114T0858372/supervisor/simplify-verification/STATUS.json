@@ -1,0 +1,98 @@
+{
+ "updated_utc": "2026-11-14T08:45:30Z",
+ "status": "completed_block",
+ "summary": [
+  "Block 8: finished the bounded definition/quantifier audit of the FullApprox.agrees interface (FULLAPPROX-AGREES-AUDIT.md sections 6.1-6.4). Definition level: thresholdMap c eps alpha q i = max(diskAverage-alpha,0)/sum_k max(diskAverage_k-alpha,0) is exactly the paper's q^eps_i(z) (7.4, p.44 l.2340-2346); the supporting lemmas match the paper's three claims one for one (thresholdTotal_pos = denominator positivity at alpha<1/5; thresholdMap_sum + thresholdMap_nonneg = 'continuous map into the simplex'; thresholdMap_pos = 'q_i>0 iff pi_i>alpha'); and 'G = one-skeleton' corresponds exactly to graphRealization of the complete graph, i.e. 'at most two positive coordinates' - which is the content of Lemma 7.3, carried in the tree by the codomain type GraphSpace. ONE sub-link left open and named: diskLaw eps must be the normalised uniform law on B(0,eps); I did not read diskLaw's definition. Quantifier level: paper Lemma 7.4 quantifies exists eps_n decreasing, exists H_n, then FOR EVENTUALLY ALL n; the Lean statement is for every t>0, Nonempty (FullApprox c alpha t) - one scale per budget, no eventual quantifier. The two are interchangeable: paper=>Lean is a cofinality argument ('eps_n -> 0, so eps_n < t for some n in the eventual set', no diagonal, no choice); Lean=>paper is countable choice with t_n = min(1/16,1/(n+1)), instantiated in the tree at Five.lean:105-113 and consumed by no_large_positive_sequence. Single recorded loss: the Lean form gives no MONOTONE decreasing eps_n; monotonicity is used nowhere in s7.2-7.4 and cannot be restored for free. Non-quantifier instance differences recorded: square Q/Q' versus closedBall 0 5/7/8. Nothing here is a gap; the bodies of small_hole_map, holeApprox_exists, eventually_fill_cores stay graded proved-in-tree-unaudited. hasNbr_image repair received by the supervisor as structurally correct, retry pending, not marked passed. No builds, no computation this block."
+ ],
+ "verified_results": [
+  {
+   "claim": "thresholdMap is the paper's q^eps at the definition level, including its three stated consequences and the 'takes values in G' reading",
+   "grade": "[S] definition and lemma statements read at GraphRealization.lean:93,243-248,249,257,260,265 and paper l.2340-2346; bodies not audited",
+   "status": "audited (definition level), one sub-link open"
+  },
+  {
+   "claim": "Open sub-link: `diskLaw eps` must be the normalised uniform law on B(0,eps) for diskAverage to be the paper's pi^eps",
+   "grade": "[S] not resolved - DiskAverages.lean:33 statement read, diskLaw's definition not read",
+   "status": "named, bounded"
+  },
+  {
+   "claim": "'takes values in G' (paper) = membership in graphRealization of the complete graph = at most two positive coordinates = content of the missing-edge overlap bound (Lemma 7.3)",
+   "grade": "[S] definitions compared; the discharge lives in small_hole_map, unaudited",
+   "status": "audited at definition level"
+  },
+  {
+   "claim": "Paper's 'for eventually all n' and Lean's per-budget Nonempty are interchangeable: cofinality one way, countable choice the other, already instantiated at Five.lean:105-113",
+   "grade": "[S] quantifier forms stated explicitly and the two implications written out",
+   "status": "confirmed as an implication, not merely a resemblance"
+  },
+  {
+   "claim": "Single loss: no monotone decreasing eps_n from the Lean form; monotonicity is unused in the argument and cannot be restored by shrinking eps",
+   "grade": "analysis, with the uses of eps_n enumerated ((a) eps_n -> 0, (b) eps_n <= t_n)",
+   "status": "extra hypothesis pinpointed"
+  },
+  {
+   "claim": "Non-quantifier instance differences: paper's square Q with boundary avoiding L and larger Q'; Lean's closedBall 0 5 with 0 7/0 8 for the core; L_0 = L cap Q' finite by Theorem 6.5 versus the Lean's L from cyclicCore_compact_finite",
+   "grade": "[S] statements compared",
+   "status": "recorded, harmless to the argument"
+  },
+  {
+   "claim": "hasNbr_image repair: structurally correct, local retry pending",
+   "grade": "supervisor's assessment; not marked passed",
+   "status": "pending local retry"
+  }
+ ],
+ "conjectures": [
+  {
+   "statement": "If diskLaw is the normalised uniform law on the ball and small_hole_map/eventually_fill_cores/connected_escape_holes match paper Lemmas 7.4(1)-(3) and 7.8 at the quantifiers now written out, then \u00a77's compiled chain certifies \u00a77 modulo the cover-obstruction wiring alone.",
+   "status": "conditional on those bounded statement-level comparisons",
+   "grade": "conditional"
+  }
+ ],
+ "artifacts": [
+  "supervisor/simplify-verification/AUDIT-FIVE-CYCLE.md",
+  "supervisor/simplify-verification/FULLAPPROX-AGREES-AUDIT.md",
+  "supervisor/simplify-verification/INTERFACE-WALL.md",
+  "supervisor/simplify-verification/LOCAL-CHECK-QUEUE.json",
+  "supervisor/simplify-verification/NOTES.md",
+  "supervisor/simplify-verification/STATUS.json",
+  "supervisor/simplify-verification/TOPOLOGY-CONE-MANIFEST.json",
+  "supervisor/simplify-verification/TRANSFER-LEDGER.md",
+  "supervisor/simplify-verification/checks/five_cycle_licence.py",
+  "supervisor/simplify-verification/lean/CheckFifth.lean",
+  "supervisor/simplify-verification/lean/FiveCycleResidues.lean"
+ ],
+ "tests_run": [
+  {
+   "cmd": "grep/sed statement reads: thresholdWeight/thresholdTotal/thresholdMap, thresholdTotal_pos, thresholdMap_nonneg, thresholdMap_sum, thresholdMap_pos, graphRealization, diskAverage; paper l.2330-2374",
+   "outcome": "formulas and quantifier shapes recorded verbatim in FULLAPPROX-AGREES-AUDIT.md s6.1-6.3."
+  },
+  {
+   "cmd": "grep for in-tree instantiation of the per-scale-to-sequence step",
+   "outcome": "Five.lean:105-113: t n = min (1/16) (1/(n+1)), Classical.choice over fullApprox_exists, consumed by no_large_positive_sequence with Tendsto t atTop 0 and t n <= 1/16."
+  },
+  {
+   "cmd": "Lean builds / computation",
+   "outcome": "NONE. No build, no numerical computation; the block was source review only."
+  }
+ ],
+ "failed_routes": [
+  "Seeking a countermodel with fewer than four relaxed positions: none exists (single relaxation already gives 0 solutions, and all eight relax all four).",
+  "Reading the drop-one runs as evidence of individual necessity: that is the reverse implication and is not established by them.",
+  "Treating the cover-obstruction substitution as an integration: it cannot be, because no module of lean/ imports supervisor/.",
+  "Expecting the mesh/diameter bound to be the \u00a77 gap: the Lean splits it into a dichotomy inside Five.lean, so it is not a hypothesis left open.",
+  "`h '' P j = P (h j)`: false at j=0; the correct general target is P(-j). Kept in the file header as a recorded trap.",
+  "My first block-6 check script applied the identity map instead of h and reported all identities false - a script bug, not a mathematical finding; corrected and re-run inside the same one-process budget.",
+  "`refine \u27e8membership-proof, ?_\u27e9` for a `Finset.Nonempty` goal: Nonempty is `\u2203 a, a \u2208 s`, so the witness must come first; the local run caught this at hasNbr_image and it also poisoned neighbour_family_push with sorryAx.",
+  "Restoring the paper's monotone eps_n from the Lean per-scale form: monotonicity cannot be obtained by replacing eps_n with min over k<=n, because shrinking eps changes pi^eps and hence the entire disk family and the agreement map; it would need the construction to be redone at the new scale. Recorded as the single loss of the interchange."
+ ],
+ "next_step": "(1) Resolve the one open sub-link: read diskLaw's definition and confirm the 1/(pi eps^2) normalisation. (2) Local retry of the repaired FiveCycleResidues.lean (transport interface) - the last unchecked item on the five-cycle side. (3) Then the statement-level comparisons of small_hole_map against Lemma 7.4(1)(2) and connected_escape_holes against Lemma 7.8 with the annulus radii. Cover-obstruction wiring remains separate.",
+ "escalation": {
+  "obstacle": "(NC-1), restated precisely: at an accumulation point x of a specified five-cycle locus, with a = lim h_n/|h_n| and R the rotation acting on directions, the list S(R a) = {i : R a lies in the closed essential support of state i at x} has no common label, i.e. the intersection of the diagonals D_i over i in S(R a) is empty.",
+  "definitions": "D_i = {i, i+2} in Z/5Z; state i at x = the set of directions whose palette is exactly D_i; closed essential support S_i = the closed set whose every neighbourhood meets state i in positive measure; S(u) = {i : u in S_i}.",
+  "hypotheses_available": "(6.6) a.e. transition rule at x; closedness and finiteness of the five supports; no-common-label at a and -a from the endpoint pair (a_n^+, a_n^-) and 'y_n in H_k for every label'; (D) disjointness of adjacent position lists; (N) neighbour existence in both directions.",
+  "attempted": "direct transport of the printed zero-area endpoint argument (needs a partner direction whose sum lies near a centre with all five edges present; none exists at r=1); derivation from V0,V3,D,N (fails: 8 countermodels, all relaxing 1,2,4,5); single-position weakening (fails: one relaxation never gives a model).",
+  "expected_useful_output": "Either a proof of (NC-1) \u2014 then FIVE-CYCLE-CORE's five-step elimination of Lemma 6.7 stands as a real simplification \u2014 or a construction of an accumulation configuration realising S(1) = {2,4}, which would prove Lemma 6.7 is not removable by support-list combinatorics alone."
+ },
+ "recovery_note": "2026-11-14 post-outage reconciliation: no jobs running (the only background job, jmwfyybqo, exited 0 long before the outage and its result is recorded); every artifact re-read and hash-checked; nothing re-run or duplicated. Latest instruction (block 3) was already complete at 06:16Z.",
+ "handoff": "Finished audit: FULLAPPROX-AGREES-AUDIT.md s6 (definition-level identity of thresholdMap with the paper's q^eps, one named open sub-link; explicit quantifier forms; the two-way selection argument, cofinality one way and countable choice the other with the in-tree instance at Five.lean:105-113; single recorded loss = monotonicity of eps_n, unused). Grades kept: proved-in-tree-unaudited for small_hole_map, holeApprox_exists, eventually_fill_cores, connected_escape_holes. hasNbr_image repair pending local retry. No builds, no computation, no NC-1 search, no 25-module compile, no new swarms."
+}

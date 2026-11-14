@@ -1,0 +1,46 @@
+{
+ "updated_utc": "2026-11-14T15:26:19Z",
+ "status": "completed_block",
+ "summary": "Block 17 (clock: 2026-11-14T15:26:19Z). Analysis only. Retracted the applicability of both block-16 countermodels (abstract data only: under Angles = AddCircle 2pi a state function must be 2pi-periodic, and the second model's closed-interval supports overlap at endpoints); only the quantifier observation survives. Corrected my own block-16 claim that nothing supplies clause (D): PaletteTransport.lean:450 palette_sixty_disjoint gives the one-centre two-angle palette form and Accumulation.lean:392 fiveState_adj gives the level-set form, so (D)'s palette and level-set versions ARE in the tree. FIVE-CYCLE-D.md then gives Steps 1-5 as a complete premise-cited derivation that the states at 60-degree separation are a.e. distinct (fiveAdj i i is false in Fin 5), and isolates the single missing inference Step 6: null intersection of a level set with its 60-shift does NOT give disjoint closed supports, witnessed by a thin-accumulation model on R. The obstruction is structural: fiveSupport is Measure.support, purely topological, with no density lower bound, and hx/transition_abundance/transitionEdge_closed/missing_edge_lim are all position-space statements. Smallest missing lemma (M) stated in the tree's own vocabulary; (D) neither proved nor refuted; bridge (B) still blocked.",
+ "verified_results": [
+  "[verified here] C1: FIVE-CYCLE-INTERFACE.md now carries a banner retracting the applicability of the block-16 models; they were stated over abstract (S : R -> Finset (Fin 5), theta : R -> Fin 5) data, whereas Angles = AddCircle (2*Real.pi) (Coloring.lean:16) forces 2pi-periodicity, which theta(t) = (g t + floor(t/60)) mod 5 violates (+6 = +1 mod 5 per turn), and the second model's closed-interval supports overlap at endpoints so its single-state premise fails.",
+  "[read] palette_sixty_disjoint (PaletteTransport.lean:450) with sixty := Real.pi/3 (PaletteTransport.lean:390) and angularMeasure := AddCircle.haarAddCircle (Coloring.lean:17): a.e. t, Disjoint (palette x t) (palette x (t + sixty)). This is the one-centre two-angle statement my block-16 text said was missing.",
+  "[read] fiveState_adj (Accumulation.lean:392): a.e. t, fiveAdj (fiveState x t) (fiveState x (t + sixty)); its proof is fiveState_diag twice plus palette_sixty_disjoint, so no premise beyond hw and hx.",
+  "[read + argued] Step 4 consequence: fiveAdj i j := i+1 = j or j+1 = i (Exclusion.lean:9), so fiveAdj i i is false in Fin 5; hence a.e. fiveState x t != fiveState x (t + sixty), i.e. the states at 60 degrees are a.e. distinct.",
+  "[proved here, abstract model] Step 5 does not imply Step 6: with Lebesgue measure on R and A = union over k of union over n of (60k + (0, eps_n)) with summable eps, A and A-60 are disjoint (so the null-intersection conclusion holds) while 0 and 60 both lie in supp A, so supp A meets supp A - 60. Thin accumulation is the mechanism. This models the inference only and asserts nothing about colourings.",
+  "[read] fiveSupport x i := (volume.restrict (fiveRealState x i)).support (FiveSupport.lean:83), a purely topological condition with no density lower bound; and hx speaks in position space (TransitionEdge via transitionRatio, Transitions.lean:21-23; transition_abundance Transitions.lean:25; transitionEdge_closed Accumulation.lean:197; missing_edge_lim Accumulation.lean:214), none of which mentions fiveSupport or angular density.",
+  "[argued here] Smallest missing lemma (M) = five_support_sixty_disjoint stated in the tree's vocabulary; consistent with the closed 6-step walk constraint (increments +-1 summing to 0 mod 5 forces three +1 and three -1, forbidding a repeat at step 1). (D) neither proved nor refuted this block."
+ ],
+ "conjectures": [
+  "(M) is plausible but not derivable from current lemmas: the missing ingredient is a lower-density statement for the level sets at points of their closed support, which nothing in the tree provides and which is not implied by the level-set disjointness at 60 degrees.",
+  "If (M) is false, the failure must be thin accumulation of a state near two angles 60 degrees apart; that is a concrete, searchable configuration of the palette function, not an abstract obstruction."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/FIVE-CYCLE-D.md (sha cb46a21ae8f6f385...; the (D) analysis: object table with line citations, Steps 1-5 with premises, the Step 5-to-6 gap with witness, smallest missing lemma (M), verdict, grades)",
+  "supervisor/simplify-architecture/FIVE-CYCLE-INTERFACE.md (sha a71e5ab4c15e2926...; block-17 corrections banner retracting model applicability and correcting the '(D) not available' claim)",
+  "read-only inputs cited: lean/OAI/Geometry/PlaneColoring/{Transitions.lean 9,21,23,25; Accumulation.lean 197,214,358,364,379,392; FiveSupport.lean 82,83,86,89; Exclusion.lean 8,9,20,24,26; PaletteTransport.lean 390,450; Coloring.lean 16,17}",
+  "supervisor/simplify-architecture/encoding-core/integration/ (frozen R4: d26d569088faea89... / 24f89dd33533a0f6..., untouched)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "date -u",
+   "outcome": "2026-11-14 15:24-15:26 UTC; timestamps in this STATUS are that clock."
+  },
+  {
+   "cmd": "sed/rg reads of Transitions.lean 1-40, Accumulation.lean 192-235 and 355-400, PaletteTransport.lean 390/450, Coloring.lean 16-17, Exclusion.lean 8-9",
+   "outcome": "exact statements and hypotheses captured and cited by line."
+  },
+  {
+   "cmd": "no build, no cloud compute, no agents, no solver runs; R4 and shared originals untouched",
+   "outcome": "source review and analysis only, per policy."
+  }
+ ],
+ "failed_routes": [
+  "RETRACTED: applicability of the block-16 countermodels to the actual Angles/hw/hx objects (abstract-only); the theta model is not 2pi-periodic and the second model's supports overlap at endpoints.",
+  "RETRACTED: my block-16 claim that nothing in the tree supplies (D) - the palette and level-set forms are available (PaletteTransport.lean:450, Accumulation.lean:392).",
+  "FAILED: deriving (D) from fiveState_adj, because null intersection of a level set with its 60-shift does not give disjoint closed supports; the thin-accumulation witness shows the inference is invalid.",
+  "Not attempted: no assumption of bridge (B), no second FiveCenter, no replacement of two-centre hypotheses by one-centre angle shifts, no compilation or refactor."
+ ],
+ "next_step": "(M) is the single target: prove or refute five_support_sixty_disjoint. A proof must supply a lower-density (or anti-thin-accumulation) property of the level sets at points of their closed support; if the tree has none, the honest next step is to look for the failure mode - a palette configuration creeping towards two angles 60 degrees apart - which is a concrete object to search for rather than an abstract obstruction. Do not proceed to clause (V) until (D) is decided.",
+ "escalation": null
+}

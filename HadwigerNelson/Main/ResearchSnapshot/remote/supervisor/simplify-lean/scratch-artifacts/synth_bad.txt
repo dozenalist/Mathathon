@@ -1,0 +1,18 @@
+DECL OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction thm
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 0 X implicit Type
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 1 Y implicit Type
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 2 W implicit Type
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 3 inst instance MeasurableSpace X
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 4 inst instance StandardBorelSpace X
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 5 inst instance Nonempty X
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 6 inst instance MeasurableSpace Y
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 7 inst instance StandardBorelSpace Y
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 8 inst instance Nonempty Y
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 9 inst instance PolishSpace Y
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 10 inst instance MeasurableSpace W
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 11 inst instance StandardBorelSpace W
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 12 inst instance Nonempty W
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 13 μ explicit Measure X
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 14 inst instance IsProbabilityMeasure μ
+MISSING OAI.PlaneFiveColor.Spectral.EncodingApproximationAt
+ERROR OAI.PlaneFiveColor.Spectral.AmbientEncodingAt elaboration failed

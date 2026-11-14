@@ -1,0 +1,135 @@
+ASTRA CONE FORMAL A4 -- LEAN-ELABORATED OA120 AND CC60
+14 November 2026
+
+STATUS
+
+OA120 and CC60 have now elaborated successfully in the parent's serial
+Lean queue. ConeGeometry v2 and ConeObstruction v3 both passed with exit 0,
+no warnings, and no errors. This includes the complete generic cardinal
+CC60 theorem, not merely an isolated geometry lemma. The direct actual-
+interface consumer for (0,0,1,3,3,4) also passed, Survivor v4, with exit 0
+and no warnings or errors. The declaration axiom audit passed, Audit v3.
+The complete assigned OA120/CC60 formalization is finished.
+
+All four audited declarations depend on exactly the standard Lean axioms
+  [propext, Classical.choice, Quot.sound].
+There is no sorryAx and no added mathematical axiom.
+
+No placeholder proofs, sorry, admit, or new axioms occur in the packet.
+This worker did not run Lean; the parent executed all serial checks.
+
+PACKET AND ORDER
+
+work/astra-cone-formal/manifest.json
+work/astra-cone-formal/OAI/Geometry/PlaneColoring/ConeGeometry.lean
+work/astra-cone-formal/OAI/Geometry/PlaneColoring/ConeObstruction.lean
+work/astra-cone-formal/OAI/Geometry/PlaneColoring/ConeSurvivor.lean
+work/astra-cone-formal/OAI/Geometry/PlaneColoring/ConeAudit.lean
+
+Stage these under their OAI module names and elaborate in the listed order
+against the parent's exact-source build, Lean 4.34.1/mathlib d13f23b.
+ConeGeometry imports original AngularBoundary and trig Inverse; the next
+three files import the preceding packet module. No original source was edited.
+
+VALIDATION AND SOURCE HASHES
+
+ConeGeometry.lean -- PASSED, work/lean-queue/cone-geometry-v2.log
+  12c254d0520f76235a3576bdb344378e885973ff3810911c7a3fee29d68b3b03
+ConeObstruction.lean -- PASSED, work/lean-queue/cone-obstruction-v3.log
+  41298784d3226ccdebe315dba22659672bc7d1f3aedf4acb647a82fb355e4a50
+ConeSurvivor.lean -- PASSED, work/lean-queue/cone-survivor-v4.log
+  527c74754eaa73c988929eceb0a194fbe6b2d98cc1a608660efc5b5a2f3a6ab2
+ConeAudit.lean -- PASSED, work/lean-queue/cone-audit-v3.log
+  cb06c0fb7f297b814662cc3ca238f7f6aac3fdda2b0de944b341e132ee887c54
+
+The audit prints the full signatures and axioms of
+outer_strip_actual_unit_neighbour, outer120_binary_impossible,
+closed60_exclusions_three_le, and cone_survivor_001334_impossible.
+Every list is exactly [propext, Classical.choice, Quot.sound].
+
+MAIN DECLARATIONS
+
+outer_strip_actual_unit_neighbour:
+  For 1<r<2, construct an actual point in any OUTER angular strip centered
+  at the circle-intersection direction, exactly unit distance from
+  x+r*exp(i*theta). Uses the explicit continuous family
+      g(s)=(r^2+s^2-1)/(2*r*s),
+      beta(s)=theta +/- arccos(g(s)), s>1 close to 1.
+  The proof includes the exact cosine law, continuity at s=1, the interval
+  -1<g(s)<1, and eventual membership in the actual outer strip.
+
+outer120_point_has_unit_neighbour:
+  At every angle in [phi-pi/6,phi+pi/6] and radius 1<r<2, the full open
+  120-degree outer-strip region has an actual unit neighbour. The sign is
+  selected according to theta>=phi. Strict arccos(r/2)<pi/3 is proved.
+
+outerAngularStrips_compact_radius:
+  A compact subarc of any open-strip angular domain has one radius 1<r<2
+  whose entire image lies in the region. A finite open subcover and the
+  source finite_positive_lower_bound give the width. No endpoint uniformity
+  on the original open arc is used.
+
+essentialLocalSet_no_unit_pair:
+  Fixed points of the same ambient essential colour cannot be distance 1.
+  Uses two translation pullbacks, positive area of their open intersection,
+  and the source ae_translated_unit_pair with measurable WeakColoring.
+
+binary_connected_unit_neighbour_obstruction:
+  A connected subset of one open a.e. binary region, with an actual unit
+  neighbour in that region at every point, cannot contain a unit pair.
+  Uses original open_two_unit_directions, binary_open_local_rigidity with
+  U=V=W, connected_local_ae_constant, and the preceding translated finish.
+
+outer120_binary_impossible:
+  The complete accepted OA120 contract. Measurable c, WeakColoring k c,
+  fixed a,b (not required distinct), W open and a.e. {a,b}-coloured, and
+  OUTER angular strips on (phi-pi/3,phi+pi/3) imply False.
+
+closed60_continua_outer_strips:
+  Finitely many actual ApproachingContinuum data at ONE center with signed
+  angle representatives in the CLOSED interval [phi-pi/6,phi+pi/6] give
+  OUTER strips in their common Straddle intersection on the open 120 arc.
+  Computes the real inner product as cos(theta-alpha), proves its strict
+  positivity including endpoint approach directions, takes finite minimum
+  widths, and converts Euclidean direction closeness into angle closeness.
+
+closed60_exclusions_not_binary:
+  Generic finite-continuum CC60 with actual spatialSupport exclusions and
+  residual labels covered by any fixed pair. Uses source
+  finite_support_exclusion_ae followed by OA120.
+
+closed60_exclusions_three_le:
+  Cardinal formulation: at least THREE labels remain outside all excluded
+  finite sets in such a closed signed cone. Handles residual cardinal 0,1,2
+  and all k; the colouring itself supplies a label if the residual is empty.
+
+cone_survivor_001334_impossible:
+  Direct actual-interface consumer with three continua, angles 0,0,pi/3,
+  exclusions {0,1},{1,2},{2,3}, and k=6. Their residual pair is {4,5}.
+  These are the first three edges of the requested tuple (0,0,1,3,3,4).
+  This does not substitute a finite palette word for actual interface data.
+
+FORMALIZATION SIMPLIFICATION
+
+The accepted paper proof used an open sector of width 90 degrees and an
+arcsin formula for its unit pair. The checked proof uses the source's stronger
+contract: connected_local_ae_constant does not require its set to be open.
+Consequently one fixed-radius CLOSED 60-degree subarc suffices. Its endpoint
+distance is r>1; the intermediate value theorem supplies a point at distance
+exactly 1 from the first endpoint. Local essential constancy still comes
+from ambient open W at EVERY point, so this is not a zero-area-a.e. shortcut.
+This removes unnecessary open-sector and arcsin bookkeeping while preserving
+the exact OA120 theorem and the closed CC60 endpoints.
+
+LIMITS AND COMPLETION
+
+The full mathematical theorem, direct survivor consumer, and declaration
+axiom audit all passed. No formalization obligation remains in this assignment.
+No new mathematical premise or target conclusion has been inserted as a
+hypothesis. An application must still supply the explicit actual continuum
+data and spatial support exclusions appearing in the checked signatures.
+
+No unsigned-axis extension, inner-arc theorem, trace-palette bound, BinaryCenter,
+finite search, general sharpness proof, or global colouring conclusion is
+claimed. No subagents, remote jobs, installs, Lean invocations, or queue
+mutations were performed by this worker.

@@ -1,0 +1,12 @@
+coeff_polyLinear
+shift_apply
+triangularLattice_zero
+triangularLattice_one
+triangular_rectangle_cover
+lift_snd
+lift_fst
+embed_mul
+embedF_mul
+circlePull_apply
+cshift_apply
+triangular_wedge_bound

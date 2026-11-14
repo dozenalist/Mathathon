@@ -1,0 +1,54 @@
+{
+ "updated_utc": "2026-11-14T11:20:00Z",
+ "status": "completed_block",
+ "summary": "Block 12: adopted R4's single downstream line and confirmed both hashes. ConditionalLimits is now 24f89dd33533a0f6... (= R4) after replacing, at patched line 457 in the conversion lemma At -> AmbientEncodingAt only, the closing term 'by rw [<- integral_congr_ae he]; exact hae' with 'by simpa only [id_eq] using ((integral_congr_ae he) :> hae)'. Spectrum unchanged at d26d569088faea89... (= R3). Nothing else altered: statement delta empty, net still -126 (one line for one line), apply rc 0/0, shared originals still 6602b9d8 / ca74ba10. The change is a real cost of the merge and is in the referee ledger: abbrev makes S := id visible in the goals it reaches, so exactly one downstream simpa is needed; no hypothesis, binder or statement moved. Corrected the blanket no-new-universe claim: the general core quantifies {Z : Type u} in a fresh universe while both public wrappers keep their signatures. Grades: the immediate 14-module closure and 4 axiom roots passed externally; the 82-module closure is running, so integrated -126 stays pending.",
+ "verified_results": [
+  "[verified here, mechanical] R4 adoption and hash match: regenerating from the frozen inputs with the three R3 syntax edits plus this one term replacement yields patched ConditionalLimits 24f89dd33533a0f61b9f35940e43b3a26c2b27b00424949a92cfdafc8de60d9b (identical to R4) and patched ConditionalSpectrum d26d569088faea89e5ae5cc2309809797fcbe76cf6d927f4484bc39db7880d48 (identical to R3, unchanged).",
+  "[verified here, mechanical] The replacement is confined to one site: the term occurs exactly once in the patched Limits text (line 457); the similar 'rw [integral_congr_ae he0]' at line 534 belongs to a different lemma and was not touched. Net line change still -126, statement delta still empty, apply check rc 0/0.",
+  "[verified here, source reading] Cause is the alias, not the transplant: with AmbientEncodingAt an abbrev to EncodingApproximationAt at S := id, the conversion lemma's goal is phrased with Hf i (id x) instead of Hf i x, so the old closing term cannot unify and simpa only [id_eq] is the minimal repair. Recorded in INTEGRATION.md Sec.13 and in EQUIVALENCE.md as a one-line downstream cost.",
+  "[verified here, mechanical] Patch 0002 hash changed accordingly (eab14daa47ba1b0d...); 0001 unchanged (a631dc3c0e49a1b4...). SOURCE-FREEZE.md now carries R4's Limits hash with the unchanged Spectrum hash, so build target and reviewed copy remain one revision.",
+  "[reported externally, not re-run here] Immediate 14-module closure VERIFIED by the supervisor's local Lean 4.34.1 build; both smoke roots pass with standard axioms and no sorryAx; four distinct theorems certified (shared core uniform_precision_contradiction, finite wrapper, ambient wrapper, finite successor).",
+  "[pending externally] The 82-module full closure is running serially, so integrated -126 is still not a verified simplification and is not claimed as one."
+ ],
+ "conjectures": [
+  "Line 457 should be the last downstream adaptation: the immediate closure covers all 14 modules and the only goal-shape change the alias induces is the S := id visibility. Any 82-module failure would come from modules outside the closure that consume one of the two public theorems; the three known call sites are the first places to look.",
+  "The general core's fresh Z universe is inert in practice: both instances instantiate Z at existing types, so no universe constraint is added to either public statement."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/encoding-core/integration/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean (sha 24f89dd33533a0f61b9f35940e43b3a26c2b27b00424949a92cfdafc8de60d9b, = R4)",
+  "supervisor/simplify-architecture/encoding-core/integration/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean (sha d26d569088faea89e5ae5cc2309809797fcbe76cf6d927f4484bc39db7880d48, = R3, unchanged)",
+  "supervisor/simplify-architecture/encoding-core/integration/0001-conditional-spectrum.patch (sha a631dc3c0e49a1b4...)",
+  "supervisor/simplify-architecture/encoding-core/integration/0002-conditional-limits.patch (sha eab14daa47ba1b0d...)",
+  "supervisor/simplify-architecture/encoding-core/integration/INTEGRATION.md (Sec.10 refreshed to R4; new Sec.13 on the one-line downstream cost with the hash table)",
+  "supervisor/simplify-architecture/encoding-core/integration/SOURCE-FREEZE.md (R4 post-patch hashes, 14-module closure, one-root build rule)",
+  "supervisor/simplify-architecture/encoding-core/integration/META.json (regenerated hashes, declaration-order audit, statement delta, net change, apply rc)",
+  "supervisor/simplify-architecture/encoding-core/integration/APPLY-CHECK.txt (rc 0/0), SmokeFinite.lean, SmokeAmbient.lean",
+  "supervisor/simplify-architecture/encoding-core/EQUIVALENCE.md (sha f07b6d3532e34a49; universe claim corrected, conversion-lemma cost added)",
+  "supervisor/simplify-architecture/encoding-core/integrate.py (carries the three R3 syntax edits and the R4 term replacement as asserted, count-checked substitutions)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "python3 integrate.py (regeneration with R3 + R4; the block's single process)",
+   "outcome": "Limits hash 24f89dd3... = R4; Spectrum hash d26d5690... = R3 unchanged; statement delta empty; apply rc 0/0; declaration-order audit 0 forward references."
+  },
+  {
+   "cmd": "sha256sum on the two patched copies and on the two shared originals",
+   "outcome": "patched copies match R3/R4; originals unchanged at 6602b9d8f20bbdfd... and ca74ba1033fead55..."
+  },
+  {
+   "cmd": "grep for the replaced term to prove uniqueness",
+   "outcome": "exactly one occurrence at patched line 457; the he0 variant at line 534 is a different lemma and was left alone."
+  },
+  {
+   "cmd": "no Lean build, no subagents, no messages",
+   "outcome": "the local queue owns compilation; nothing else was changed while it runs."
+  }
+ ],
+ "failed_routes": [
+  "R3 failed at ConditionalLimits line 457 in the conversion lemma At -> AmbientEncodingAt: the closing term 'by rw [<- integral_congr_ae he]; exact hae' could not match the alias-phrased goal 'Hf i (id x)'. Superseded by R4's simpa only [id_eq] form; this is a consequence of the abbrev, not of the proof transplant.",
+  "My blanket 'no new universes' claim was wrong and is corrected: the general core quantifies a fresh Z universe; only the public wrappers retain their signatures.",
+  "Not attempted per instruction: no new abstraction work, no weak-mixing exploration, no Astra escalation, no changes beyond the R4 line and the documentation it requires."
+ ],
+ "next_step": "Await the 82-module serial closure on the R4 revision (Spectrum d26d5690..., Limits 24f89dd3...). If it passes, integrated -126 moves from textual candidate to verified compiled simplification and the formal-dependency chat can be asked for the final interface verdict. If it fails, the failure will be in a module outside the 14-module closure consuming one of the two public theorems; the three known call sites are the first places to look.",
+ "escalation": null
+}

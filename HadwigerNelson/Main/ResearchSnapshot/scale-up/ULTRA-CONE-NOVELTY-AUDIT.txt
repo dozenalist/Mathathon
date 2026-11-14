@@ -1,0 +1,306 @@
+OA120 / CC60: INDEPENDENT NOVELTY AUDIT
+14 November 2026. Bounded mathematical and primary-literature review.
+
+VERDICT
+
+The supplied OA120 and CC60 arguments are mathematically sound at paper
+level under their stated hypotheses. Their public-literature novelty is
+NOT established. Classification: NEW CANDIDATE for the exact outer-side,
+open-120-degree endpoint statement and its signed closed-60-degree cone
+corollary; KNOWN for the underlying binary local-rigidity principle.
+The candidate is a focused geometric application of established methods,
+not a new general rigidity method or a new bound for the plane.
+
+The strongest defensible contribution is the explicit endpoint-sensitive
+geometric obstruction and its reusable label-union consequence, with no
+palette-cardinality assumption. The exact formulation was not located
+in the primary sources inspected. This is a bounded search, not an
+exhaustive priority check; absence from these sources is not proof of novelty.
+
+A particularly useful next result is sharpness of the 60-degree constant
+for arbitrary finite k. Section 5 gives a self-contained candidate proof
+with k=20. It is newly derived in this audit and still needs independent
+refereeing; it is not a literature-certified novelty claim. It would not
+establish optimality for the special six-color common-interface problem.
+
+1. WHAT WAS CHECKED AND WHERE THE SOURCE COMES FROM
+
+Read in full:
+  C:/Users/jarom/Documents/Codex/2026-11-13/i/outputs/ASTRA-NONALIGNED-A3.txt
+  C:/Users/jarom/Documents/Codex/2026-11-13/i/outputs/ASTRA-CONE-REFEREE.txt
+
+Also read the actual Straddle and ApproachingContinuum definitions,
+outer_strip, WeakColoring, and the four-edge local-rigidity proof in the
+original local source. The relevant declarations already occur publicly
+in OpenAI's repository at commit
+  adc7f1241b42e322a6451854ab7e4b4c146bf78a.
+See [S1], [S2]. They must be credited as prior source infrastructure.
+The public manuscript's section 8.4, Lemma 8.6, already presents local
+binary rigidity and explicitly points to Townsend's annulus argument.
+This audit does not independently verify that manuscript's main theorem.
+
+Official Caltech material confirms the November 13-15, 2026 Mathathon
+and describes its purpose as augmenting mathematical understanding [S3].
+The organizer's indexed page describes alternative proofs/expositions
+[S4]. I did not locate an official public Hadwiger-Nelson problem sheet
+or a competition rule establishing that this source or lemma is novel.
+Competition participation and mathematical priority are separate issues.
+
+2. THE CLOSEST PRIMARY PRIOR ART
+
+(a) Kruskal's binary rigidity is a direct predecessor.
+
+Clyde P. Kruskal, "The chromatic number of the plane: The bounded case,"
+Journal of Computer and System Sciences 74(4) (2008), 598-627,
+DOI 10.1016/j.jcss.2007.06.003. Author manuscript [S5], section 3,
+Lemmas 3.3 and 3.4, manuscript pages 3-4 (PDF pages 5-6).
+Lemma 3.3 says that if radius-epsilon disks around the ends of a unit
+segment lie in a properly two-colored region, radius-epsilon^2/8 disks
+around those endpoints are monochromatic. Lemma 3.4 propagates the
+endpoint colors during continuous motion of such a segment.
+
+Consequently the pointwise counterpart of the source's local binary
+rigidity is established prior work. The new role of OA120 is to supply
+the appropriate neighbors and connected region at the exact endpoint.
+
+(b) Townsend makes the inner/outer endpoint distinction unavoidable.
+
+S. P. Townsend, "Every 5-coloured map in the plane contains a monochrome
+unit," J. Combinatorial Theory A 30(1) (1981), 114-115,
+DOI 10.1016/0097-3165(81)90046-7 [S6]. This note explicitly constructs a
+proper two-coloring of an INNER annular sector subtending 2*pi/3, refuting
+the equality case of a claim used by Woodall. This is a counterexample to
+an undirected-side version of OA120, not to OA120 as stated.
+
+S. P. Townsend, "Colouring the plane with no monochrome units,"
+Geombinatorics 14(4) (2005), 184-193 [S7]. Definition 2 and Theorem 1,
+pages 186-189, concern a finitely disconnected unit annulus whose closure
+contains the whole unit circle and a cut-point-free arc longer than pi/3.
+Every two-coloring of that annulus has a monochromatic unit pair.
+OA120 does not assume such a full annulus, so this theorem is not a
+direct substitution proof of OA120. The shared exclusion/annulus method
+is nevertheless clear. Woodall's own publication list records Townsend's
+1981 note as the erratum to his 1973 paper [S8].
+
+(c) Related annular and measurable literature does not remove this gap.
+
+Jeremy F. Alm and Jacob Manske, "On radial colorings of annuli,"
+Australasian J. Combinatorics 60(3) (2014), 270-278 [S9], section 2,
+recall Kruskal's rod lemma and give ordinary non-two-colorability of
+positive-thickness annuli around radius 1/2, including an odd-cycle
+viewpoint. Their radial-coloring results address full annuli and a
+restricted coloring class, not OA120's variable-width outer arc.
+
+Michael S. Payne, "Unit distance graphs with ambiguous chromatic number,"
+Electronic J. Combinatorics 16 (2009), N31 [S10], section 2.1,
+Lemmas 1-4 and Proposition 1, develops density-point and finite-configuration
+methods extending Falconer's measurable-coloring argument. Its circle
+lemma requires a full circle and an irrational angular rotation condition;
+it is not the open 120-degree arc statement. It does show that moving
+finite configurations to avoid null exceptions is established machinery.
+
+Georgy Sokolov and Vsevolod Voronov, "On the chromatic number of the
+plane for map-type colorings," arXiv:2502.01958v1 (4 February 2025) [S11],
+Propositions 1-5 and Lemma 2, use boundary exclusions, binary arcs, and
+60-degree sectors. Their Jordan-map/local-finiteness assumptions and
+restrictions on unit-circle boundary arcs are stronger and different
+from the hypotheses of CC60. I found no direct equivalent there.
+
+3. MATHEMATICAL AUDIT AND A SIMPLIFICATION
+
+No counterexample or missing premise was found in the stated OA120/CC60.
+The substantive geometry is acos(r/2)<pi/3 for r>1. It puts the auxiliary
+unit neighbor strictly inside the supplied angular interval, even when
+the cone aperture is exactly pi/3. Compactness is used only on a strict
+90-degree subarc. Uniform widths near the missing endpoints are not needed.
+The sign choice in beta and the continuous q(s) construction are valid.
+
+Required hypotheses must remain explicit:
+  * one fixed pair of residual labels throughout W;
+  * openness and actual outer strips, not merely a boundary trace;
+  * finitely many support exclusions at one common center;
+  * signed approach directions in a closed cone, not independent axes;
+  * measurable weak properness and its all-fixed-directions consequence.
+
+The theorem does not follow from a palette word alone. Opposite approaches
+cannot be flipped independently to fit the cone. Townsend's example
+explains why changing OUTER to INNER at equality would also be unsafe.
+
+There is a shorter conceptual route that makes the prior-art relationship
+precise. First prove the purely graph-theoretic OA120:
+
+  Any open W with the stated outer strips has a non-bipartite induced
+  unit-distance graph, hence contains a finite odd unit-distance cycle.
+
+Indeed, suppose a pointwise proper two-coloring of W existed. Use the
+supplied geometric construction to give every p in the connected sector
+S a unit neighbor q in W. Small disks about p,q lie in W, so Kruskal's
+Lemma 3.3 makes the coloring locally constant at every p in S. Connectedness
+makes S monochromatic, contradicting the explicit unit pair in S.
+Non-bipartiteness gives a finite odd cycle by the standard parity-of-paths
+characterization. No measurability is needed in this part.
+
+Now transfer the finite cycle into the a.e. setting. Given its finitely
+many vertices z_j in open W, a small open ball of translations keeps every
+z_j+t in W. The a.e. two-label restriction excludes finitely many null
+translation sets. The all-directions weak-coloring lemma excludes another
+finite union, one for each fixed edge. A translation outside their union
+would properly two-color the odd cycle, a contradiction.
+
+Thus the weak/a.e. version follows from the ordinary geometric obstruction
+using standard finite-translation reasoning. It is valid but should not be
+advertised as a wholly new measurable-rigidity phenomenon. An explicit
+odd cycle would also provide a portable certificate independent of the
+source's larger analytical framework.
+
+4. SHARPNESS OF OA120 BELOW THE THRESHOLD
+
+This elementary comparison is independent reasoning, not an assertion of
+priority. If L<2*pi/3, a sufficiently thin open OUTER annular sector of
+angular width L admits a proper two-coloring: bisect its angular interval.
+Each half approaches a unit-circle arc of width L/2<pi/3, whose diameter
+is 2*sin(L/4)<1. For sufficiently small radial thickness both halves still
+have diameter strictly less than one, and can be assigned different colors.
+
+For example, for radial thickness eta, the bound
+  eta + 2*(1+eta)*sin(L/4) < 1
+suffices. The coloring is Borel. It can be extended to a finite measurable
+proper coloring of the whole plane using separate labels outside the sector.
+So no smaller universal arc-length threshold follows just from outer-strip
+geometry. Pairing this observation with OA120 would make a sharp geometric
+statement, but the sharper cone optimality below is more directly useful.
+
+5. FOCUSED NEXT LEMMA: GENERIC CC60 IS OPTIMAL
+
+Status: CANDIDATE THEOREM WITH COMPLETE PAPER-PROOF SKETCH; independently
+derived here, not yet independently refereed or formalized. Check these
+inequalities and the support bookkeeping before treating it as accepted.
+
+Claim. For every aperture A>pi/3 there exist two compact connected segments
+K_+,K_- approaching 0 in a cone of aperture less than A, a Borel proper
+20-coloring c of the whole plane, and support-excluded label sets H_+,H_-
+such that only two labels remain outside H_+ union H_-. Hence the universal
+finite-k version of CC60 cannot replace pi/3 by any larger aperture.
+
+Construction. Choose
+  pi/3 < Delta < min(A,pi),
+  a=(pi-Delta)/2 < pi/3,
+  v_+=exp(i*Delta/2), v_-=exp(-i*Delta/2),
+  K_+=[0,rho*v_+], K_-=[0,rho*v_-].
+Let S_+=Straddle(K_+), S_-=Straddle(K_-), W=S_+ intersection S_-.
+The actual approach data use r_n=rho/(n+2), w_n=v_+ or v_-.
+
+Choose rho>0 sufficiently small. Put
+  epsilon=rho/(2*(1-rho)), t=asin(epsilon).
+Impose epsilon<1, Delta<2*acos(epsilon), and
+  a+t < pi/3,
+  2*rho + 2*(1+rho)*sin((a+t)/2) < 1,                 (I)
+  2*sin((Delta-t)/2) - 2*rho > 1.                     (II)
+All hold for sufficiently small rho: their limiting strict inequalities
+are a<pi/3, 2*sin(a/2)<1, and 2*sin(Delta/2)>1.
+
+Geometry. Every z in W has 1-rho<|z|<1+rho, by the triangle inequality
+applied to its two strict straddle witnesses. Write z=r*exp(i*theta).
+If r>=1, the witness |z-u*v_+|<1 with 0<u<=rho forces z dot v_+>0,
+and similarly for v_-. Thus theta belongs to the positive horn |theta|<a.
+If r<1, a witness |z-u*v_+|>1 gives z dot v_+<u/2<=rho/2, and similarly
+for v_-. Hence exp(i*theta) dot v_+, exp(i*theta) dot v_- < epsilon.
+The condition Delta<2*acos(epsilon) makes the intersection of these two
+angular constraints the single negative horn
+  circular_distance(theta,pi) < a+t.
+Thus W is contained in two opposite horns, one of half-width a and the
+other of half-width a+t, in the stated thin radial band.
+
+Bisect each horn along its central ray. Every resulting half-horn has
+diameter less than one by (I): for two radii in the band, use
+  |r*e(theta)-s*e(psi)|
+    <= |r-s| + s*|e(theta)-e(psi)|
+    <= 2*rho + 2*(1+rho)*sin((a+t)/2).
+Every point in one horn is farther than one from every point in the other
+horn by (II), because their minimal circular angular separation is at least
+Delta-t and changing both radii from one costs at most 2*rho.
+Assign label 0 to one half of each horn and label 1 to the other half,
+assigning the splitting rays consistently. This is a Borel proper
+two-coloring of W. No distances between the two horns are unit distances.
+
+Self-contained extension and support exclusion. Let f be the nine-color
+square-grid coloring of the whole plane with cells of side 3/5 and label
+pair (floor(5*x/3) mod 3, floor(5*y/3) mod 3), identified with 0,...,8.
+Each cell has diameter 3*sqrt(2)/5<1; distinct cells with the same label
+are separated by at least 6/5 in some coordinate. Thus f is Borel proper.
+Define c by the preceding two-coloring on W and by
+  c(z)=2+f(z)   if z is outside S_+,
+  c(z)=11+f(z)  if z is in S_+ but outside S_-.
+These three cases partition the plane. Different cases use disjoint
+palettes, so c is a Borel proper 20-coloring, and hence a WeakColoring.
+
+Set H_+={2,...,10}, H_-={11,...,19}. Every H_+ color class is contained
+in the closed complement of the open set S_+, so its spatial support is
+disjoint from S_+. Every H_- color class is contained in the closed
+complement of S_-, giving the second exclusion. Their union leaves exactly
+the labels {0,1}. All hypotheses other than the 60-degree aperture are
+supplied by actual sets, not a finite palette relaxation.
+
+Using a standard Borel seven-coloring instead of the square-grid coloring
+would reduce 20 to 16, but no such reduction is necessary for optimality.
+This construction deliberately does not settle the k=6 case, nor show that
+the segments arise from the stronger interface-extraction mechanism.
+
+Recommended immediate task: independently referee and formalize this
+sharpness lemma, then package it with OA120/CC60 as a sharp local exclusion
+result with explicit attribution to Townsend and Kruskal. Only after a
+further targeted priority check should it be described as new mathematics.
+
+PRIMARY REFERENCES AND EXACT LINKS
+
+[S1] OpenAI, The Euclidean plane is not five-colorable, public manuscript,
+     source directory at the fixed release commit:
+     https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/The-Euclidean-plane-is-not-five-colorable-September-23-2026
+     Readable public version, section 8.4, Lemma 8.6:
+     https://hub.valency.io/works/W_bscdu74c
+
+[S2] Exact public source declarations inspected:
+     https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/Geometry/PlaneColoring/Rigidity.lean
+     https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean
+     Source-family scope/provenance:
+     https://raw.githubusercontent.com/openai/math/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/docs/158.md
+
+[S3] Caltech, official Mathathon event listing:
+     https://www.caltech.edu/campus-life-events/calendar/caltech-mathathon-challenge-1
+
+[S4] Organizer site (currently redirects to SAIR competition overview):
+     https://mathathonchallenge.com/
+     https://competition.sair.foundation/competitions/mathathon/overview
+
+[S5] C. P. Kruskal, author manuscript:
+     https://www.cs.umd.edu/users/kruskal/papers/color.pdf
+     Published article: https://doi.org/10.1016/j.jcss.2007.06.003
+
+[S6] S. P. Townsend, 1981 original note:
+     https://www.jennysteve.net/MapColouring/1981note.pdf
+     https://doi.org/10.1016/0097-3165(81)90046-7
+
+[S7] S. P. Townsend, 2005 full paper:
+     https://www.jennysteve.net/MapColouring/2005paper.pdf
+
+[S8] D. R. Woodall, author bibliography, research paper 7:
+     https://www.maths.nottingham.ac.uk/plp/pmadw/papers.html
+     Original paper DOI: https://doi.org/10.1016/0097-3165(73)90020-4
+     The original full text was not obtained; the endpoint correction
+     above is grounded in Townsend's primary paper, not an unseen proof.
+
+[S9] J. F. Alm and J. Manske, journal-hosted full text:
+     https://ajc.maths.uq.edu.au/pdf/60/ajc_v60_p270.pdf
+
+[S10] M. S. Payne, journal-hosted full text:
+     https://www.combinatorics.org/ojs/index.php/eljc/article/download/v16i1n31/pdf/
+     Falconer's original bibliographic record (full original proof not
+     obtained in this audit): https://doi.org/10.1016/0097-3165(81)90014-5
+
+[S11] G. Sokolov and V. Voronov, fixed original arXiv version:
+     https://arxiv.org/html/2502.01958v1
+
+All searches were read-only and used public materials. No private source
+was uploaded, no external person/forum contacted, no source or coordinator
+queue edited, and no heavy computation or Lean build performed. Applicable
+workspace/ancestor AGENTS.md files were checked; none were present.

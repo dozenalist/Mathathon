@@ -1,0 +1,26 @@
+import Robust
+import OAI.Geometry.PlaneColoring.Seven
+
+#print axioms OAI.EuclideanFiveColor.exists_translate_disjoint_null
+#print axioms OAI.EuclideanFiveColor.exists_translate_disjoint_isMeagre
+#print axioms OAI.EuclideanFiveColor.exists_translate_disjoint_countable
+#print axioms OAI.EuclideanFiveColor.exists_translate_disjoint_halfplane
+#print axioms OAI.EuclideanFiveColor.exists_translate_disjoint_finite
+#print axioms OAI.EuclideanFiveColor.exists_translate_disjoint_null_mem
+#print axioms OAI.EuclideanFiveColor.exists_translate_disjoint_card_lt
+#print axioms OAI.EuclideanFiveColor.not_properColoring_off_null
+#print axioms OAI.EuclideanFiveColor.not_properColoring_off_isMeagre
+#print axioms OAI.EuclideanFiveColor.not_properColoring_off_countable
+#print axioms OAI.EuclideanFiveColor.not_properColoring_off_halfplane
+#print axioms OAI.EuclideanFiveColor.not_properColoring_off_finite
+#print axioms OAI.EuclideanFiveColor.not_properColoring_off_card_lt
+#print axioms OAI.EuclideanFiveColor.no_five_coloring_off_null
+#print axioms OAI.EuclideanFiveColor.no_five_coloring_off_singleton
+#print axioms OAI.EuclideanFiveColor.no_five_coloring_off_isMeagre
+#print axioms OAI.EuclideanFiveColor.no_five_coloring_off_countable
+#print axioms OAI.EuclideanFiveColor.no_five_coloring_off_halfplane
+#print axioms OAI.EuclideanFiveColor.no_five_coloring_off_finite
+#print axioms OAI.EuclideanFiveColor.no_five_coloring_off_card_lt
+#print axioms OAI.EuclideanFiveColor.no_proper_five_coloring
+#print axioms OAI.EuclideanFiveColor.exists_properColoring_of_finset
+#print axioms OAI.Problem160.properColoring_seven

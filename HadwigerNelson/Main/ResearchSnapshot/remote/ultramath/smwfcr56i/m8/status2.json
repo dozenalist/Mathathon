@@ -1,0 +1,500 @@
+{
+"OAI.Analysis.PlaneSpectrum.Basic": {
+"ok": true,
+"err": "",
+"secs": 4.4,
+"t": 1794600097.1802948
+},
+"OAI.Analysis.PlaneSpectrum.Characters": {
+"ok": true,
+"err": "",
+"secs": 3.2,
+"t": 1794600100.3469477
+},
+"OAI.Analysis.PlaneSpectrum.Fourier": {
+"ok": true,
+"err": "",
+"secs": 4.5,
+"t": 1794600104.8290625
+},
+"OAI.Geometry.PlaneColoring.Coloring": {
+"ok": true,
+"err": "",
+"secs": 2.3,
+"t": 1794600107.0837457
+},
+"OAI.Analysis.PlaneSpectrum.CircleDecay": {
+"ok": true,
+"err": "",
+"secs": 3.2,
+"t": 1794600110.2813768
+},
+"OAI.Geometry.PlaneColoring.WeakColoring": {
+"ok": true,
+"err": "",
+"secs": 2.6,
+"t": 1794600112.8575912
+},
+"OAI.Geometry.PlaneColoring.Compactness": {
+"ok": true,
+"err": "",
+"secs": 4.0,
+"t": 1794600116.8236084
+},
+"OAI.Analysis.PlaneSpectrum.CircleOperator": {
+"ok": true,
+"err": "",
+"secs": 3.3,
+"t": 1794600120.107857
+},
+"OAI.Analysis.PlaneSpectrum.InvariantMean": {
+"ok": true,
+"err": "",
+"secs": 4.8,
+"t": 1794600124.8878658
+},
+"OAI.Analysis.PlaneSpectrum.Multipliers": {
+"ok": true,
+"err": "",
+"secs": 3.1,
+"t": 1794600127.993781
+},
+"OAI.Analysis.PlaneSpectrum.FourierTests": {
+"ok": true,
+"err": "",
+"secs": 2.5,
+"t": 1794600130.5436857
+},
+"OAI.Analysis.PlaneSpectrum.SmallArcs": {
+"ok": true,
+"err": "",
+"secs": 2.8,
+"t": 1794600133.3481174
+},
+"OAI.Analysis.PlaneSpectrum.PhaseEncoding": {
+"ok": true,
+"err": "",
+"secs": 2.5,
+"t": 1794600135.8098032
+},
+"OAI.Analysis.PlaneSpectrum.PhaseCollision": {
+"ok": true,
+"err": "",
+"secs": 3.0,
+"t": 1794600138.8053284
+},
+"OAI.MeasureTheory.CompactFactors.ConditionalSelection": {
+"ok": true,
+"err": "OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:198:17: warning: Variable name `hp` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _hp\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nOAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:329:2: warning: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n",
+"secs": 3.3,
+"t": 1794600142.129141
+},
+"OAI.Analysis.PlaneSpectrum.ConditionalSpectrum": {
+"ok": true,
+"err": "",
+"secs": 6.0,
+"t": 1794600148.1055145
+},
+"OAI.MeasureTheory.CompactFactors.Amenability": {
+"ok": true,
+"err": "",
+"secs": 3.6,
+"t": 1794600151.7044861
+},
+"OAI.MeasureTheory.CompactFactors.Centers": {
+"ok": true,
+"err": "OAI/MeasureTheory/CompactFactors/Centers.lean:525:0: warning: automatically included section variable(s) unused in theorem `OAI.EuclideanFiveColor.CosetCenter.Embedding.coset_mul_j`:\n  [MeasurableMul\u2082 G]\n  [MeasurableInv G]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [MeasurableMul\u2082 G] [MeasurableInv G] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nOAI/MeasureTheory/CompactFactors/Centers.lean:538:0: warning: automatically included section variable(s) unused in theorem `OAI.EuclideanFiveColor.CosetCenter.Embedding.coordinate_div_j`:\n  [MeasurableMul\u2082 G]\n  [MeasurableInv G]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [MeasurableMul\u2082 G] [MeasurableInv G] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nOAI/MeasureTheory/CompactFactors/Centers.lean:629:0: warning: automatically included section variable(s) unused in theorem `OAI.EuclideanFiveColor.CosetCenter.Embedding.equiv_mem_ordinary_iff`:\n  [MeasurableMul\u2082 G]\n  [MeasurableInv G]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [MeasurableMul\u2082 G] [MeasurableInv G] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nOAI/MeasureTheory/CompactFactors/Centers.lean:646:0: warning: automatically included section variable(s) unused in theorem `OAI.EuclideanFiveColor.CosetCenter.Embedding.coordinate_equiv`:\n  [MeasurableMul\u2082 G]\n  [MeasurableInv G]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [MeasurableMul\u2082 G] [MeasurableInv G] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n",
+"secs": 3.2,
+"t": 1794600154.8883388
+},
+"OAI.MeasureTheory.CompactFactors.RelativeCenters": {
+"ok": true,
+"err": "",
+"secs": 4.0,
+"t": 1794600158.8711987
+},
+"OAI.MeasureTheory.CompactFactors.Approximation": {
+"ok": true,
+"err": "OAI/MeasureTheory/CompactFactors/Approximation.lean:316:2: warning: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nOAI/MeasureTheory/CompactFactors/Approximation.lean:356:2: warning: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nOAI/MeasureTheory/CompactFactors/Approximation.lean:408:2: warning: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n",
+"secs": 3.9,
+"t": 1794600162.753605
+},
+"OAI.MeasureTheory.CompactFactors.ConditionalLimits": {
+"ok": true,
+"err": "",
+"secs": 6.8,
+"t": 1794600169.526738
+},
+"OAI.MeasureTheory.CompactFactors.Kernels": {
+"ok": true,
+"err": "",
+"secs": 4.0,
+"t": 1794600173.5759022
+},
+"OAI.MeasureTheory.CompactFactors.BoundedFunctions": {
+"ok": true,
+"err": "",
+"secs": 3.9,
+"t": 1794600177.4348128
+},
+"OAI.MeasureTheory.CompactFactors.RelativeProducts": {
+"ok": true,
+"err": "",
+"secs": 4.8,
+"t": 1794600182.1873083
+},
+"OAI.MeasureTheory.CompactFactors.Separability": {
+"ok": true,
+"err": "OAI/MeasureTheory/CompactFactors/Separability.lean:557:2: warning: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n",
+"secs": 5.3,
+"t": 1794600187.5148318
+},
+"OAI.MeasureTheory.CompactFactors.AlgebraModels": {
+"ok": true,
+"err": "",
+"secs": 5.8,
+"t": 1794600193.3511808
+},
+"OAI.MeasureTheory.CompactFactors.Functions": {
+"ok": true,
+"err": "",
+"secs": 4.6,
+"t": 1794600197.9760692
+},
+"OAI.MeasureTheory.CompactFactors.Factors": {
+"ok": true,
+"err": "OAI/MeasureTheory/CompactFactors/Factors.lean:473:2: warning: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n",
+"secs": 5.1,
+"t": 1794600203.1086426
+},
+"OAI.MeasureTheory.CompactFactors.Stationary": {
+"ok": true,
+"err": "",
+"secs": 3.3,
+"t": 1794600206.442674
+},
+"OAI.Analysis.PlaneSpectrum.Representations": {
+"ok": true,
+"err": "",
+"secs": 7.2,
+"t": 1794600213.6503472
+},
+"OAI.Analysis.PlaneSpectrum.Energy": {
+"ok": true,
+"err": "",
+"secs": 4.2,
+"t": 1794600217.900214
+},
+"OAI.Analysis.PlaneSpectrum.NumberFields": {
+"ok": true,
+"err": "",
+"secs": 3.5,
+"t": 1794600221.4123998
+},
+"OAI.Analysis.PlaneSpectrum.Selections": {
+"ok": true,
+"err": "",
+"secs": 3.8,
+"t": 1794600225.2345715
+},
+"OAI.Analysis.PlaneSpectrum.RadialEnergy": {
+"ok": true,
+"err": "OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:86:2: warning: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nOAI/Analysis/PlaneSpectrum/RadialEnergy.lean:390:2: warning: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nOAI/Analysis/PlaneSpectrum/RadialEnergy.lean:456:2: warning: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n",
+"secs": 8.9,
+"t": 1794600234.1121895
+},
+"OAI.Analysis.PlaneSpectrum.SpectralMeasure": {
+"ok": true,
+"err": "",
+"secs": 10.3,
+"t": 1794600244.388355
+},
+"OAI.Analysis.PlaneSpectrum.Ergodicity": {
+"ok": true,
+"err": "",
+"secs": 6.2,
+"t": 1794600250.554608
+},
+"OAI.Geometry.PlaneColoring.Expansion": {
+"ok": true,
+"err": "",
+"secs": 3.2,
+"t": 1794600253.7440472
+},
+"OAI.Geometry.PlaneColoring.BinaryDynamics": {
+"ok": true,
+"err": "",
+"secs": 4.3,
+"t": 1794600258.0868285
+},
+"OAI.Geometry.PlaneColoring.CircleMaps": {
+"ok": true,
+"err": "",
+"secs": 3.1,
+"t": 1794600261.2301683
+},
+"OAI.Geometry.PlaneColoring.CircleTransport": {
+"ok": true,
+"err": "",
+"secs": 3.8,
+"t": 1794600265.0455585
+},
+"OAI.Geometry.PlaneColoring.Transitions": {
+"ok": true,
+"err": "",
+"secs": 2.8,
+"t": 1794600267.8365197
+},
+"OAI.Geometry.PlaneColoring.Palettes": {
+"ok": true,
+"err": "",
+"secs": 2.5,
+"t": 1794600270.3598666
+},
+"OAI.Geometry.PlaneColoring.PaletteDensity": {
+"ok": true,
+"err": "",
+"secs": 2.8,
+"t": 1794600273.1378584
+},
+"OAI.Geometry.PlaneColoring.PaletteTransport": {
+"ok": true,
+"err": "",
+"secs": 2.6,
+"t": 1794600275.734612
+},
+"OAI.Geometry.PlaneColoring.Rigidity": {
+"ok": true,
+"err": "",
+"secs": 3.0,
+"t": 1794600278.7268171
+},
+"OAI.Geometry.PlaneColoring.BinaryPalettes": {
+"ok": true,
+"err": "",
+"secs": 3.2,
+"t": 1794600281.9629118
+},
+"OAI.Geometry.PlaneColoring.States": {
+"ok": true,
+"err": "",
+"secs": 3.2,
+"t": 1794600285.1900904
+},
+"OAI.Geometry.PlaneColoring.BoundaryTrace": {
+"ok": true,
+"err": "",
+"secs": 2.8,
+"t": 1794600288.0078223
+},
+"OAI.Geometry.PlaneColoring.AngularBoundary": {
+"ok": true,
+"err": "",
+"secs": 11.8,
+"t": 1794600299.7952058
+},
+"OAI.Geometry.PlaneColoring.Exclusion": {
+"ok": true,
+"err": "",
+"secs": 5.1,
+"t": 1794600304.8760233
+},
+"OAI.Geometry.PlaneColoring.FourContinuity": {
+"ok": true,
+"err": "",
+"secs": 2.8,
+"t": 1794600307.7258008
+},
+"OAI.Geometry.PlaneColoring.FourTransport": {
+"ok": true,
+"err": "",
+"secs": 2.7,
+"t": 1794600310.4351037
+},
+"OAI.Geometry.PlaneColoring.Accumulation": {
+"ok": true,
+"err": "",
+"secs": 2.6,
+"t": 1794600312.9911516
+},
+"OAI.Geometry.PlaneColoring.Assembly": {
+"ok": true,
+"err": "",
+"secs": 2.2,
+"t": 1794600315.2375083
+},
+"OAI.Geometry.PlaneColoring.Basic": {
+"ok": true,
+"err": "",
+"secs": 2.1,
+"t": 1794600317.354068
+},
+"OAI.Geometry.PlaneColoring.BorelTransfer": {
+"ok": true,
+"err": "",
+"secs": 3.9,
+"t": 1794600408.7734425
+},
+"OAI.Geometry.PlaneColoring.FiveSupport": {
+"ok": true,
+"err": "",
+"secs": 2.7,
+"t": 1794600323.698992
+},
+"OAI.Geometry.PlaneColoring.CyclicCore": {
+"ok": true,
+"err": "",
+"secs": 2.6,
+"t": 1794600326.262955
+},
+"OAI.Geometry.PlaneColoring.DiskAverages": {
+"ok": true,
+"err": "",
+"secs": 2.8,
+"t": 1794600329.0243742
+},
+"OAI.Geometry.PlaneColoring.PlanarCovers": {
+"ok": true,
+"err": "",
+"secs": 3.2,
+"t": 1794600332.2518418
+},
+"OAI.Geometry.PlaneColoring.GraphRealization": {
+"ok": true,
+"err": "",
+"secs": 3.2,
+"t": 1794600335.4282491
+},
+"OAI.Geometry.PlaneColoring.Interfaces": {
+"ok": true,
+"err": "",
+"secs": 3.4,
+"t": 1794600338.877474
+},
+"OAI.Geometry.PlaneColoring.Moser": {
+"ok": true,
+"err": "",
+"secs": 10.9,
+"t": 1794600349.7940102
+},
+"OAI.Geometry.PlaneColoring.Sectors": {
+"ok": true,
+"err": "",
+"secs": 2.8,
+"t": 1794600352.6396892
+},
+"OAI.Geometry.PlaneColoring.ContinuumLimits": {
+"ok": true,
+"err": "",
+"secs": 2.5,
+"t": 1794600355.1395955
+},
+"OAI.Geometry.PlaneColoring.DiskExtension": {
+"ok": true,
+"err": "",
+"secs": 3.1,
+"t": 1794600358.1923647
+},
+"OAI.Geometry.PlaneColoring.GraphCuts": {
+"ok": true,
+"err": "",
+"secs": 2.6,
+"t": 1794600360.7499483
+},
+"OAI.Geometry.PlaneColoring.HoleApproximation": {
+"ok": true,
+"err": "",
+"secs": 2.8,
+"t": 1794600363.597767
+},
+"OAI.Geometry.PlaneColoring.GraphPatches": {
+"ok": true,
+"err": "",
+"secs": 2.7,
+"t": 1794600366.2703557
+},
+"OAI.Geometry.PlaneColoring.FullApproximation": {
+"ok": true,
+"err": "",
+"secs": 3.1,
+"t": 1794600369.3722074
+},
+"OAI.Geometry.PlaneColoring.Mesh": {
+"ok": true,
+"err": "",
+"secs": 2.6,
+"t": 1794600371.952554
+},
+"OAI.Geometry.PlaneColoring.Five": {
+"ok": true,
+"err": "",
+"secs": 2.3,
+"t": 1794600411.1196728
+},
+"OAI.Geometry.PlaneColoring.Lattice": {
+"ok": true,
+"err": "",
+"secs": 2.3,
+"t": 1794600374.2621686
+},
+"OAI.Geometry.PlaneColoring.Metric": {
+"ok": true,
+"err": "",
+"secs": 2.5,
+"t": 1794600376.773824
+},
+"OAI.Geometry.PlaneColoring.Covering": {
+"ok": true,
+"err": "",
+"secs": 3.0,
+"t": 1794600379.7639902
+},
+"OAI.Geometry.PlaneColoring.MeasurableAssembly": {
+"ok": true,
+"err": "",
+"secs": 2.3,
+"t": 1794600382.018087
+},
+"OAI.Geometry.PlaneColoring.MeasurableProper": {
+"ok": true,
+"err": "",
+"secs": 2.3,
+"t": 1794600384.3510475
+},
+"OAI.Geometry.PlaneColoring.Seven": {
+"ok": true,
+"err": "",
+"secs": 2.2,
+"t": 1794600386.601711
+},
+"OAI.Geometry.PlaneColoring.Chromatic": {
+"ok": true,
+"err": "OAI/Geometry/PlaneColoring/Chromatic.lean:40:8: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n'OAI.Problem160.chromaticNumber_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'OAI.Problem160.six_le_planeChromaticNumber' depends on axioms: [propext, Classical.choice, Quot.sound]\n'OAI.Problem160.not_properColoring_five' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+"secs": 2.3,
+"t": 1794600413.4025185
+},
+"OAI.Geometry.PlaneColoring.ConnectedUnitFree": {
+"ok": true,
+"err": "",
+"secs": 2.3,
+"t": 1794600388.8600821
+},
+"OAI.Geometry.PlaneColoring.Converse": {
+"ok": true,
+"err": "",
+"secs": 2.3,
+"t": 1794600391.1731768
+},
+"OAI.Geometry.PlaneColoring.NullSetRobust": {
+"ok": true,
+"err": "",
+"secs": 2.3,
+"t": 1794600415.7244287
+},
+"OAI.Geometry.PlaneColoring.Transfer": {
+"ok": true,
+"err": "",
+"secs": 2.2,
+"t": 1794600417.918513
+}
+}

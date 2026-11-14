@@ -1,0 +1,1136 @@
+diff -ru lean/OAI/Analysis/PlaneSpectrum/Characters.lean sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Characters.lean
+--- lean/OAI/Analysis/PlaneSpectrum/Characters.lean	2026-11-13 19:09:13.640718617 +0000
++++ sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Characters.lean	2026-11-14 01:28:09.891592776 +0000
+@@ -5,7 +5,6 @@
+ noncomputable section
+ open scoped ComplexConjugate
+ 
+-noncomputable section
+ open scoped BigOperators
+ namespace PlaneFiveColor.ContinuousCharacters
+ 
+@@ -555,6 +554,5 @@
+ end PlaneFiveColor.Spectral
+ 
+ end
+-end
+ 
+ end OAI
+diff -ru lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean
+--- lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean	2026-11-13 19:09:13.640865082 +0000
++++ sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean	2026-11-14 01:28:09.901928459 +0000
+@@ -6,33 +6,14 @@
+ 
+ noncomputable section
+ 
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators BoundedContinuousFunction
+-open Filter Topology
+-open MeasureTheory Filter
++open scoped ComplexConjugate BigOperators BigOperators BoundedContinuousFunction
++open Filter Topology MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators
+-open Polynomial
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open MeasureTheory ProbabilityTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal BigOperators
++open MeasureTheory ProbabilityTheory Polynomial MeasureTheory MeasureTheory MeasureTheory MeasureTheory ProbabilityTheory MeasureTheory MeasureTheory ProbabilityTheory
+ namespace PlaneFiveColor.Spectral
+ 
+ section
+-open MeasureTheory ProbabilityTheory
+-open EuclideanFiveColor
++open MeasureTheory ProbabilityTheory EuclideanFiveColor
+ open scoped BigOperators ComplexConjugate
+ 
+ instance dualPolishSpace : PolishSpace D := by
+@@ -172,8 +153,7 @@
+ namespace PlaneFiveColor.Spectral
+ 
+ section
+-open MeasureTheory ProbabilityTheory
+-open EuclideanFiveColor
++open MeasureTheory ProbabilityTheory EuclideanFiveColor
+ open scoped BigOperators
+ local instance : MeasurableSpace Circle := borel Circle
+ local instance : BorelSpace Circle := ⟨rfl⟩
+diff -ru lean/OAI/Analysis/PlaneSpectrum/Energy.lean sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Energy.lean
+--- lean/OAI/Analysis/PlaneSpectrum/Energy.lean	2026-11-13 19:09:13.640895700 +0000
++++ sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Energy.lean	2026-11-14 01:28:09.903105139 +0000
+@@ -11,8 +11,7 @@
+ 
+ section
+ open PlaneFiveColor.InvariantMean
+-variable {G : Type*} [AddCommGroup G] [TopologicalSpace G] [DiscreteTopology G]
+-variable (b : Finset G × ℕ → G)
++variable {G : Type*} [AddCommGroup G] [TopologicalSpace G] [DiscreteTopology G] (b : Finset G × ℕ → G)
+ def approxAt (i : Finset G × ℕ) (f : G →ᵇ ℝ) : ℝ := cube i.1.toList i.2 f (b i)
+ lemma approx_norm_le (i : Finset G × ℕ) (f : G →ᵇ ℝ) : ‖approxAt b i f‖ ≤ ‖f‖ :=
+   ((cube i.1.toList i.2 f).norm_coe_le_norm (b i)).trans (cube_norm_le _ _ _)
+@@ -136,8 +135,7 @@
+ namespace EuclideanFiveColor.BoundedMeasurable
+ 
+ section
+-variable {G X : Type*} [AddCommGroup G] [TopologicalSpace G] [DiscreteTopology G] [MeasurableSpace X]
+-variable (μ : Measure X) [IsProbabilityMeasure μ]
++variable {G X : Type*} [AddCommGroup G] [TopologicalSpace G] [DiscreteTopology G] [MeasurableSpace X] (μ : Measure X) [IsProbabilityMeasure μ]
+ namespace Family
+ def energy (F : Family G X) : G →ᵇ ℝ := Amenable.Mean.squareNorm (toL2 μ F)
+ omit [AddCommGroup G] in
+@@ -306,8 +304,7 @@
+   (μ : Measure X) [IsProbabilityMeasure μ] [ErgodicVAdd G X μ]
+   (q : X → Y) (hq : Measurable q)
+   (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x))
+-variable [IsProbabilityMeasure (μ.map q)]
+-variable [ErgodicVAdd G (X×X) (RelativeProduct.law μ q hq)]
++variable [IsProbabilityMeasure (μ.map q)] [ErgodicVAdd G (X×X) (RelativeProduct.law μ q hq)]
+ include hq hqcov in
+ lemma conditional_pair_energy (M : Amenable.Mean G) (φ : G →+ G)
+     (hs : Function.Surjective φ) (f h : Func X) :
+@@ -379,8 +376,7 @@
+   exact Circle.coe_inv_eq_conj _
+ lemma char_act (g : Rot) (z : E) : act g (char z) = char (kCoeff (rotMul g)*z) := rfl
+ 
+-variable {Y : Type*} [MeasurableSpace Y]
+-variable (μ : Measure D) [IsProbabilityMeasure μ] (q : D → Y)
++variable {Y : Type*} [MeasurableSpace Y] (μ : Measure D) [IsProbabilityMeasure μ] (q : D → Y)
+ def projectedMass (z : E) : ℝ := ‖l2 (μ.map q) (conditional μ q (char z))‖^2
+ lemma projectedMass_nonneg (z : E) : 0 ≤ projectedMass μ q z := sq_nonneg _
+ lemma projected_char_bound (z : E) (y : Y) : ‖conditional μ q (char z) y‖ ≤ 1 :=
+@@ -414,8 +410,7 @@
+   congr 1
+   exact (norm_l2_sq (μ.map q) (conditional μ q (char z))).symm
+ 
+-variable [MulAction K Y] [MeasurableConstSMul K Y] [SMulInvariantMeasure K D μ]
+-variable (hqcov : ∀ k : K, ∀ᵐ d ∂μ, q (k • d) = k • q d)
++variable [MulAction K Y] [MeasurableConstSMul K Y] [SMulInvariantMeasure K D μ] (hqcov : ∀ k : K, ∀ᵐ d ∂μ, q (k • d) = k • q d)
+ include hq hqcov in
+ lemma projectedMass_rotation (u : K) (z : E) :
+     projectedMass μ q (kCoeff u*z) = projectedMass μ q z := by
+diff -ru lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Ergodicity.lean
+--- lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean	2026-11-13 19:09:13.640977033 +0000
++++ sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Ergodicity.lean	2026-11-14 01:28:09.910221635 +0000
+@@ -20,8 +20,7 @@
+   change 0 < ‖(z:ℂ)‖
+   exact norm_pos_iff.mpr (fun h => hz (Subtype.ext h))
+ 
+-variable {Y : Type*} [MeasurableSpace Y] [StandardBorelSpace Y] [Nonempty Y]
+-variable (μ : Measure D) [IsProbabilityMeasure μ] [ErgodicSMul K D μ]
++variable {Y : Type*} [MeasurableSpace Y] [StandardBorelSpace Y] [Nonempty Y] (μ : Measure D) [IsProbabilityMeasure μ] [ErgodicSMul K D μ]
+   (q : D → Y) (hq : Measurable q)
+   [MulAction K Y] [MeasurableConstSMul K Y]
+   (hqcov : ∀ k : K, ∀ᵐ d ∂μ, q (k • d) = k • q d)
+@@ -94,8 +93,7 @@
+   nonneg : ∀ i, 0 ≤ weight i
+   total : ∑ i, weight i = 1
+ namespace ConvexAverage
+-variable {G H : Type*}
+-variable [NormedAddCommGroup H] [NormedSpace ℝ H]
++variable {G H : Type*} [NormedAddCommGroup H] [NormedSpace ℝ H]
+ def apply (A : ConvexAverage G) (f : G → H) : H := ∑ i, A.weight i • f (A.pt i)
+ lemma norm_le (A : ConvexAverage G) (f : G → H) {C : ℝ} (hf : ∀ g, ‖f g‖ ≤ C) : ‖A.apply f‖ ≤ C := by
+   calc
+@@ -133,8 +131,6 @@
+ noncomputable section
+ open MeasureTheory Filter Topology
+ open scoped BoundedContinuousFunction RealInnerProductSpace
+-namespace EuclideanFiveColor
+-namespace ConvexAverage
+ open BoundedMeasurable
+ variable {G X : Type*} [AddCommGroup G] [MeasurableSpace X]
+   [AddAction G X] [MeasurableConstVAdd G X]
+@@ -232,8 +228,7 @@
+   ⟨(testSet X s).indicator (fun _ => 1),(measurable_const.indicator (measurable_testSet X s)),1,
+     fun x => by by_cases hx : x ∈ testSet X s <;> simp [hx]⟩
+ lemma test_apply (s : Finset ℕ) (x : X) : test X s x = (testSet X s).indicator (fun _ => (1:ℂ)) x := rfl
+-variable {X}
+-variable {G : Type*} [AddCommGroup G] [AddAction G X] [MeasurableConstVAdd G X]
++variable {X} {G : Type*} [AddCommGroup G] [AddAction G X] [MeasurableConstVAdd G X]
+   (μ : Measure X) [IsProbabilityMeasure μ] [VAddInvariantMeasure G X μ]
+ lemma ergodic_of_test_limits (A : Finset ℕ → ℕ → ConvexAverage G) (c : Finset ℕ → ℂ)
+     (hA : ∀ i, ∀ᵐ x ∂μ, Tendsto (fun n => (A i n).bm (test X i) x) atTop (𝓝 (c i))) :
+@@ -321,8 +316,7 @@
+ end
+ 
+ noncomputable section
+-open MeasureTheory ProbabilityTheory Filter
+-open EuclideanFiveColor
++open MeasureTheory ProbabilityTheory Filter EuclideanFiveColor
+ namespace PlaneFiveColor.Spectral
+ instance : Countable Rot := inferInstanceAs (Countable K)
+ lemma smul_ergodic_of_rot (μ : Measure D) [ErgodicVAdd Rot D μ] : ErgodicSMul K D μ := by
+diff -ru lean/OAI/Analysis/PlaneSpectrum/Fourier.lean sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Fourier.lean
+--- lean/OAI/Analysis/PlaneSpectrum/Fourier.lean	2026-11-13 19:09:13.640991340 +0000
++++ sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Fourier.lean	2026-11-14 01:28:09.927130532 +0000
+@@ -4,8 +4,6 @@
+ 
+ noncomputable section
+ open MeasureTheory Filter Topology FourierTransform
+-namespace EuclideanFiveColor
+-namespace Multiplier
+ variable {X : Type*} [MeasurableSpace X] (μ : Measure X)
+ def apply (f : X → ℂ) (hf : AEStronglyMeasurable f μ) {C : ℝ} (hbound : ∀ᵐ x ∂μ, ‖f x‖≤C)
+     (g : Lp ℂ 2 μ) : Lp ℂ 2 μ :=
+diff -ru lean/OAI/Analysis/PlaneSpectrum/FourierTests.lean sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/FourierTests.lean
+--- lean/OAI/Analysis/PlaneSpectrum/FourierTests.lean	2026-11-13 19:09:13.640767128 +0000
++++ sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/FourierTests.lean	2026-11-14 01:28:09.928138835 +0000
+@@ -4,12 +4,9 @@
+ 
+ noncomputable section
+ open scoped ComplexConjugate
+-noncomputable section
+ open scoped BigOperators
+-noncomputable section
+ open scoped BigOperators BoundedContinuousFunction
+ open Filter Topology
+-noncomputable section
+ open MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+ 
+@@ -288,8 +285,5 @@
+ end EuclideanFiveColor.DifferenceFourier
+ 
+ end
+-end
+-end
+-end
+ 
+ end OAI
+diff -ru lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/InvariantMean.lean
+--- lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean	2026-11-13 19:09:13.640734947 +0000
++++ sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/InvariantMean.lean	2026-11-14 01:28:09.930132259 +0000
+@@ -4,11 +4,9 @@
+ 
+ noncomputable section
+ open scoped ComplexConjugate
+-noncomputable section
+ open scoped BigOperators
+ /-! A discrete abelian invariant mean, constructed from weighted cube
+ averages. Repeated group elements keep their multiplicities. -/
+-noncomputable section
+ open scoped BigOperators BoundedContinuousFunction
+ open Filter Topology
+ namespace PlaneFiveColor.InvariantMean
+@@ -1072,7 +1070,5 @@
+ end Smoothing
+ end PlaneFiveColor.InvariantMean
+ end
+-end
+-end
+ 
+ end OAI
+diff -ru lean/OAI/Analysis/PlaneSpectrum/Multipliers.lean sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Multipliers.lean
+--- lean/OAI/Analysis/PlaneSpectrum/Multipliers.lean	2026-11-13 19:09:13.640753693 +0000
++++ sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Multipliers.lean	2026-11-14 01:28:09.934383313 +0000
+@@ -5,12 +5,9 @@
+ 
+ noncomputable section
+ open scoped ComplexConjugate
+-noncomputable section
+ open scoped BigOperators
+-noncomputable section
+ open scoped BigOperators BoundedContinuousFunction
+ open Filter Topology
+-noncomputable section
+ open MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+ namespace PlaneFiveColor.LpMultiplier
+@@ -307,8 +304,5 @@
+ 
+ end PlaneFiveColor.Spectral
+ end
+-end
+-end
+-end
+ 
+ end OAI
+diff -ru lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean
+--- lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean	2026-11-13 19:09:13.640849362 +0000
++++ sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean	2026-11-14 01:28:09.939566658 +0000
+@@ -4,16 +4,11 @@
+ 
+ noncomputable section
+ 
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators BoundedContinuousFunction
+-open Filter Topology
+-open MeasureTheory Filter
++open scoped ComplexConjugate BigOperators BigOperators BoundedContinuousFunction
++open Filter Topology MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+ open MeasureTheory ProbabilityTheory
+-open scoped ComplexConjugate
+ 
+-open scoped BigOperators
+ namespace EuclideanFiveColor.PhaseCollision
+ 
+ section
+@@ -133,8 +128,7 @@
+ open MeasureTheory
+ open scoped BigOperators
+ 
+-variable {Ω ι κ V : Type*} [MeasurableSpace Ω]
+-variable [Fintype ι] [Fintype κ] [Nonempty ι] [Nonempty κ] [PseudoMetricSpace V]
++variable {Ω ι κ V : Type*} [MeasurableSpace Ω] [Fintype ι] [Fintype κ] [Nonempty ι] [Nonempty κ] [PseudoMetricSpace V]
+ 
+ /-- Larger than 95 percent average phase coverage forces a colliding pair.
+ The bins and assignments may depend on the sampled point; no measurable
+@@ -238,20 +232,11 @@
+ 
+ end EuclideanFiveColor.PhaseCollision
+ 
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators BoundedContinuousFunction
+-open Filter Topology
+-open MeasureTheory Filter
++open scoped ComplexConjugate BigOperators BigOperators BoundedContinuousFunction
++open Filter Topology MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators
+-open Polynomial
++open MeasureTheory ProbabilityTheory Polynomial
+ 
+-open MeasureTheory
+-open scoped BigOperators
+ namespace EuclideanFiveColor.AverageErrors
+ variable {Ω ι : Type*} [MeasurableSpace Ω] [Fintype ι] [Nonempty ι]
+ 
+@@ -344,8 +329,7 @@
+ open MeasureTheory
+ open scoped BigOperators
+ 
+-variable {Ω ι κ V : Type*} [MeasurableSpace Ω]
+-variable [Fintype ι] [Fintype κ] [Nonempty ι] [Nonempty κ] [PseudoMetricSpace V]
++variable {Ω ι κ V : Type*} [MeasurableSpace Ω] [Fintype ι] [Fintype κ] [Nonempty ι] [Nonempty κ] [PseudoMetricSpace V]
+ 
+ /-- The assignment itself need not be measurable and may be chosen separately
+ at every sample. Only the phase distances and fraction are measured. -/
+diff -ru lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean
+--- lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean	2026-11-13 19:09:13.640836519 +0000
++++ sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean	2026-11-14 01:28:09.942084337 +0000
+@@ -4,17 +4,11 @@
+ 
+ noncomputable section
+ 
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators BoundedContinuousFunction
+-open Filter Topology
+-open MeasureTheory Filter
++open scoped ComplexConjugate BigOperators BigOperators BoundedContinuousFunction
++open Filter Topology MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+ open MeasureTheory ProbabilityTheory
+-open scoped ComplexConjugate
+-open scoped BigOperators
+ 
+-open scoped BigOperators
+ open Polynomial
+ namespace EuclideanFiveColor.PhaseEncoding
+ 
+diff -ru lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean
+--- lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean	2026-11-13 19:09:13.640943940 +0000
++++ sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean	2026-11-14 01:28:09.943057043 +0000
+@@ -40,8 +40,7 @@
+ open scoped ENNReal NNReal ComplexConjugate BoundedContinuousFunction
+ namespace PlaneFiveColor.Spectral
+ open EuclideanFiveColor.BoundedMeasurable
+-variable {Y : Type*} [MeasurableSpace Y] [StandardBorelSpace Y] [Nonempty Y]
+-variable (μ : Measure D) [IsProbabilityMeasure μ] [ErgodicSMul K D μ]
++variable {Y : Type*} [MeasurableSpace Y] [StandardBorelSpace Y] [Nonempty Y] (μ : Measure D) [IsProbabilityMeasure μ] [ErgodicSMul K D μ]
+   (q : D → Y) (hq : Measurable q)
+   [MulAction K Y] [MeasurableConstSMul K Y]
+   (hqcov : ∀ k : K, ∀ᵐ d ∂μ, q (k • d) = k • q d)
+@@ -134,8 +133,7 @@
+   change ‖((a : ℝ) : ℂ)‖ = _
+   rw [Complex.norm_real, Real.norm_eq_abs]
+ 
+-variable {Y : Type*} [MeasurableSpace Y] [StandardBorelSpace Y] [Nonempty Y]
+-variable (μ : Measure D) [IsProbabilityMeasure μ] [ErgodicSMul K D μ]
++variable {Y : Type*} [MeasurableSpace Y] [StandardBorelSpace Y] [Nonempty Y] (μ : Measure D) [IsProbabilityMeasure μ] [ErgodicSMul K D μ]
+   (q : D → Y) (hq : Measurable q)
+   [MulAction K Y] [MeasurableConstSMul K Y]
+   (hqcov : ∀ k : K, ∀ᵐ d ∂μ, q (k • d) = k • q d)
+@@ -364,8 +362,7 @@
+   apply Complex.ext <;> simp
+   ring
+ 
+-variable {Y : Type*} [MeasurableSpace Y] [StandardBorelSpace Y] [Nonempty Y]
+-variable (μ : Measure D) [IsProbabilityMeasure μ] [ErgodicSMul K D μ]
++variable {Y : Type*} [MeasurableSpace Y] [StandardBorelSpace Y] [Nonempty Y] (μ : Measure D) [IsProbabilityMeasure μ] [ErgodicSMul K D μ]
+   (q : D → Y) (hq : Measurable q)
+   [MulAction K Y] [MeasurableConstSMul K Y]
+   (hqcov : ∀ k : K, ∀ᵐ d ∂μ, q (k • d) = k • q d)
+@@ -410,8 +407,7 @@
+ open scoped ENNReal NNReal ComplexConjugate BoundedContinuousFunction
+ namespace PlaneFiveColor.Spectral
+ open EuclideanFiveColor.BoundedMeasurable
+-variable {Y : Type*} [MeasurableSpace Y] [StandardBorelSpace Y] [Nonempty Y]
+-variable (μ : Measure D) [IsProbabilityMeasure μ] [ErgodicSMul K D μ]
++variable {Y : Type*} [MeasurableSpace Y] [StandardBorelSpace Y] [Nonempty Y] (μ : Measure D) [IsProbabilityMeasure μ] [ErgodicSMul K D μ]
+   (q : D → Y) (hq : Measurable q)
+   [MulAction K Y] [MeasurableConstSMul K Y]
+   (hqcov : ∀ k : K, ∀ᵐ d ∂μ, q (k • d) = k • q d)
+diff -ru lean/OAI/Analysis/PlaneSpectrum/Selections.lean sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Selections.lean
+--- lean/OAI/Analysis/PlaneSpectrum/Selections.lean	2026-11-13 19:09:13.640926988 +0000
++++ sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Selections.lean	2026-11-14 01:28:09.951184718 +0000
+@@ -242,8 +242,7 @@
+ 
+ noncomputable section
+ namespace EuclideanFiveColor.CappedResidues
+-variable {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α]
+-variable (m : α → ℝ) (hm0 : m 0 = 1)
++variable {α : Type*} [Field α] [LinearOrder α] [IsStrictOrderedRing α] (m : α → ℝ) (hm0 : m 0 = 1)
+   (hd : ∀ a b : α, 0 ≤ a → 0 ≤ b → m a * m b ≤ m |a-b|)
+   (c : ℝ) (hc0 : 0 ≤ c) (hc1 : c ≤ 1)
+ 
+diff -ru lean/OAI/Analysis/PlaneSpectrum/SmallArcs.lean sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/SmallArcs.lean
+--- lean/OAI/Analysis/PlaneSpectrum/SmallArcs.lean	2026-11-13 19:09:13.640818335 +0000
++++ sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/SmallArcs.lean	2026-11-14 01:28:09.952230282 +0000
+@@ -4,31 +4,16 @@
+ 
+ noncomputable section
+ open scoped ComplexConjugate
+-noncomputable section
+ open scoped BigOperators
+-noncomputable section
+ open scoped BigOperators BoundedContinuousFunction
+ open Filter Topology
+-noncomputable section
+ open MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+ open MeasureTheory ProbabilityTheory
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators
+-open Polynomial
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open MeasureTheory ProbabilityTheory
+-open scoped BigOperators
++open scoped BigOperators BigOperators
++open Polynomial MeasureTheory MeasureTheory MeasureTheory MeasureTheory ProbabilityTheory
+ 
+-open MeasureTheory
+-open scoped BigOperators ComplexConjugate
+ namespace EuclideanFiveColor.SmallArc
+-noncomputable section
+ 
+ def phaseSum (z : ℂ) (N : ℕ) : ℂ := ∑ n ∈ Finset.range N, z ^ n
+ 
+@@ -227,7 +212,6 @@
+   field_simp
+   norm_num
+ 
+-end
+ end EuclideanFiveColor.SmallArc
+ 
+ /-! Fiberwise (possibly nonmeasurable) enumerations cause no measurability gap:
+@@ -235,7 +219,6 @@
+ open MeasureTheory ProbabilityTheory
+ open scoped ENNReal BigOperators
+ namespace EuclideanFiveColor.SampledAtoms
+-noncomputable section
+ variable {X Y G : Type*} [MeasurableSpace X] [MeasurableSpace Y]
+   [MeasurableSpace G] [MeasurableEq G]
+ 
+@@ -311,12 +294,8 @@
+   filter_upwards [hat, ae_of_ae_map hp.aemeasurable hg] with x hx hxl
+   exact in_list_of_positive_atom _ _ hxl hx
+ 
+-end
+ end EuclideanFiveColor.SampledAtoms
+ 
+ end
+-end
+-end
+-end
+ 
+ end OAI
+diff -ru lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean
+--- lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean	2026-11-13 19:09:13.640958217 +0000
++++ sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean	2026-11-14 01:28:09.954366673 +0000
+@@ -217,8 +217,7 @@
+ open MeasureTheory Filter Topology
+ open scoped ENNReal NNReal InnerProductSpace
+ namespace PlaneFiveColor.Spectral
+-open EuclideanFiveColor EuclideanFiveColor.BoundedMeasurable
+-open EuclideanFiveColor.VectorMeasure EuclideanFiveColor.CommutingSpectral
++open EuclideanFiveColor EuclideanFiveColor.BoundedMeasurable EuclideanFiveColor.VectorMeasure EuclideanFiveColor.CommutingSpectral
+ variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+   (U : DiscreteE →* unitary (H →L[ℂ] H)) (v : H)
+ def ordinaryIndicator : Func D :=
+diff -ru lean/OAI/Geometry/PlaneColoring/Chromatic.lean sprint/simplify/m16/OAI/Geometry/PlaneColoring/Chromatic.lean
+--- lean/OAI/Geometry/PlaneColoring/Chromatic.lean	2026-11-13 19:28:40.276303712 +0000
++++ sprint/simplify/m16/OAI/Geometry/PlaneColoring/Chromatic.lean	2026-11-14 01:28:09.973245620 +0000
+@@ -18,8 +18,6 @@
+ import OAI.Geometry.PlaneColoring.Seven
+ import OAI.Geometry.PlaneColoring.Basic
+ 
+-namespace OAI
+-namespace Problem160
+ 
+ noncomputable section
+ 
+diff -ru lean/OAI/Geometry/PlaneColoring/DiskExtension.lean sprint/simplify/m16/OAI/Geometry/PlaneColoring/DiskExtension.lean
+--- lean/OAI/Geometry/PlaneColoring/DiskExtension.lean	2026-11-13 19:09:13.641539379 +0000
++++ sprint/simplify/m16/OAI/Geometry/PlaneColoring/DiskExtension.lean	2026-11-14 01:28:10.004712699 +0000
+@@ -66,8 +66,6 @@
+ noncomputable section
+ open scoped Classical
+ open Set Topology
+-namespace EuclideanFiveColor
+-namespace MarkedDisk
+ lemma erased_pair_sum {D : Type*} [DecidableEq D] (S : Finset D) {a b : D}
+     (ha : a∈S) (hb : b∈S) (hab : a≠b) (f : D → ℝ) :
+     (∑x∈(S.erase a).erase b,f x)+f a+f b=∑x∈S,f x := by
+diff -ru lean/OAI/Geometry/PlaneColoring/FullApproximation.lean sprint/simplify/m16/OAI/Geometry/PlaneColoring/FullApproximation.lean
+--- lean/OAI/Geometry/PlaneColoring/FullApproximation.lean	2026-11-13 19:09:13.641592069 +0000
++++ sprint/simplify/m16/OAI/Geometry/PlaneColoring/FullApproximation.lean	2026-11-14 01:28:10.042288932 +0000
+@@ -162,8 +162,6 @@
+ noncomputable section
+ open scoped Classical
+ open Set Filter Topology MeasureTheory ContinuousMap
+-namespace EuclideanFiveColor
+-namespace HoleApprox
+ def annulusMap {c : ℂ → Fin 5} {α t R : ℝ} {L : Finset ℂ}
+     (a : HoleApprox c α L t) (hR : R<1) (htR : 2*t<R)
+     (hsep : ∀x∈L,∀y∈L,x≠y → 2*R<dist x y) {x : ℂ} (hx : x∈activeCenters L) :
+diff -ru lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean sprint/simplify/m16/OAI/Geometry/PlaneColoring/HoleApproximation.lean
+--- lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean	2026-11-13 19:09:13.641567703 +0000
++++ sprint/simplify/m16/OAI/Geometry/PlaneColoring/HoleApproximation.lean	2026-11-14 01:28:10.050385808 +0000
+@@ -5,8 +5,6 @@
+ noncomputable section
+ open scoped Classical
+ open Set Topology
+-namespace EuclideanFiveColor
+-namespace MarkedDisk
+ lemma radius_le_sum {S : Finset MarkedDisk} (hS : ∀d∈S,0≤d.radius) {d : MarkedDisk} (hd : d∈S) :
+     d.radius≤∑e∈S,e.radius := Finset.single_le_sum hS hd
+ lemma noncoreCost_nonneg {d : MarkedDisk} (hd : 0≤d.radius) : 0≤d.noncoreCost := by
+@@ -52,8 +50,6 @@
+ noncomputable section
+ open scoped Classical
+ open Set Topology
+-namespace EuclideanFiveColor
+-namespace MarkedDisk
+ def initialDisks (L C : Finset ℂ) (δ u : ℝ) : Finset MarkedDisk :=
+   L.image (fun x => ⟨x,δ,true⟩) ∪ C.image (fun x => ⟨x,u,false⟩)
+ lemma mem_initialDisks {L C : Finset ℂ} {δ u : ℝ} {d : MarkedDisk} :
+diff -ru lean/OAI/Geometry/PlaneColoring/Lattice.lean sprint/simplify/m16/OAI/Geometry/PlaneColoring/Lattice.lean
+--- lean/OAI/Geometry/PlaneColoring/Lattice.lean	2026-11-13 19:09:13.641638776 +0000
++++ sprint/simplify/m16/OAI/Geometry/PlaneColoring/Lattice.lean	2026-11-14 01:28:10.055233473 +0000
+@@ -4,8 +4,6 @@
+ 
+ /-! Integer arithmetic for the classical seven-color triangular lattice. -/
+ 
+-namespace Problem160
+-namespace SevenLattice
+ 
+ /-- Squared Euclidean norm in a triangular lattice of unit spacing. -/
+ def normSq (a b : ℤ) : ℤ := a ^ 2 + a * b + b ^ 2
+diff -ru lean/OAI/Geometry/PlaneColoring/Mesh.lean sprint/simplify/m16/OAI/Geometry/PlaneColoring/Mesh.lean
+--- lean/OAI/Geometry/PlaneColoring/Mesh.lean	2026-11-13 19:09:13.641605383 +0000
++++ sprint/simplify/m16/OAI/Geometry/PlaneColoring/Mesh.lean	2026-11-14 01:28:10.059638116 +0000
+@@ -68,8 +68,6 @@
+ noncomputable section
+ open scoped Classical
+ open Set Filter Topology MeasureTheory ContinuousMap
+-namespace EuclideanFiveColor
+-namespace FullApprox
+ lemma ε_tendsto {c : ℂ → Fin 5} {α : ℝ} {t : ℕ → ℝ}
+     (a : ∀n,FullApprox c α (t n)) (ht : Tendsto t atTop (𝓝 0)) :
+     Tendsto (fun n => (a n).ε) atTop (𝓝 0) :=
+diff -ru lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean
+--- lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean	2026-11-13 19:09:13.640606757 +0000
++++ sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean	2026-11-14 01:28:10.097895036 +0000
+@@ -5,30 +5,8 @@
+ noncomputable section
+ 
+ open MeasureTheory Filter
+-open scoped ENNReal NNReal
+-open scoped RealInnerProductSpace BoundedContinuousFunction
+-open MeasureTheory ProbabilityTheory Filter
+-open scoped ENNReal RealInnerProductSpace NNReal
+-open MeasureTheory Filter
+-open scoped ENNReal NNReal BoundedContinuousFunction RealInnerProductSpace
+-open MeasureTheory ProbabilityTheory Filter
+-open scoped ENNReal RealInnerProductSpace NNReal
+-open MeasureTheory ProbabilityTheory Filter
+-open scoped ENNReal RealInnerProductSpace NNReal BoundedContinuousFunction
+-open MeasureTheory ProbabilityTheory Filter
+-open scoped ENNReal NNReal BoundedContinuousFunction RealInnerProductSpace
+-open MeasureTheory ProbabilityTheory Filter
+-open scoped ENNReal NNReal BoundedContinuousFunction RealInnerProductSpace
+-open MeasureTheory ProbabilityTheory Filter
+-open scoped ENNReal NNReal BoundedContinuousFunction RealInnerProductSpace
+-open MeasureTheory ProbabilityTheory Filter
+-open scoped ENNReal NNReal BoundedContinuousFunction RealInnerProductSpace
+-open MeasureTheory ProbabilityTheory Filter
+-open scoped ENNReal NNReal BoundedContinuousFunction RealInnerProductSpace
+-open MeasureTheory ProbabilityTheory Filter
+-open scoped ENNReal NNReal BoundedContinuousFunction RealInnerProductSpace
+-open MeasureTheory ProbabilityTheory Filter
+-open scoped ENNReal NNReal BoundedContinuousFunction
++open scoped ENNReal NNReal RealInnerProductSpace BoundedContinuousFunction
++open MeasureTheory ProbabilityTheory Filter MeasureTheory Filter MeasureTheory ProbabilityTheory Filter MeasureTheory ProbabilityTheory Filter MeasureTheory ProbabilityTheory Filter MeasureTheory ProbabilityTheory Filter MeasureTheory ProbabilityTheory Filter MeasureTheory ProbabilityTheory Filter MeasureTheory ProbabilityTheory Filter MeasureTheory ProbabilityTheory Filter MeasureTheory ProbabilityTheory Filter
+ namespace EuclideanFiveColor.BoundedMeasurable
+ variable {G X Y : Type*} [AddCommGroup G] [MeasurableSpace X] [MeasurableSpace Y]
+   [StandardBorelSpace X] [Nonempty X] [StandardBorelSpace Y] [Nonempty Y]
+@@ -74,8 +52,7 @@
+         ‖l2 (μ.map q) (conditional μ q v * act (φ g) (conditional μ q w))‖ := norm_sub_le _ _
+     _ ≤ _ := by linarith
+ 
+-variable [VAddInvariantMeasure G X μ]
+-variable (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x))
++variable [VAddInvariantMeasure G X μ] (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x))
+ omit [StandardBorelSpace Y] [Nonempty Y] in
+ include hq hqcov in
+ lemma covariance_norm_right (φ : G →+ G) (v w : Func X) (g : G) :
+@@ -130,8 +107,7 @@
+ variable [StandardBorelSpace X] [Nonempty X] [StandardBorelSpace Y] [Nonempty Y]
+   [AddAction G X] [AddAction G Y] [MeasurableConstVAdd G X] [MeasurableConstVAdd G Y]
+   [VAddInvariantMeasure G X μ]
+-variable (q : X → Y) (hq : Measurable q) [IsProbabilityMeasure (μ.map q)]
+-variable (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x))
++variable (q : X → Y) (hq : Measurable q) [IsProbabilityMeasure (μ.map q)] (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x))
+ omit [StandardBorelSpace Y] [Nonempty Y] in
+ include hq hqcov in
+ lemma covariance_zero_of_dense (M : Amenable.Mean G) (S : Set (Func X))
+@@ -182,8 +158,7 @@
+   change ((κ ∘ₘ ν).map (fun x => (q x,id x))).fst = (ν ⊗ₘ κ).fst at he
+   simpa only [Measure.fst_map_prodMk hq measurable_id, Measure.fst_compProd] using he
+ 
+-variable [StandardBorelSpace X] [Nonempty X] [StandardBorelSpace Y] [Nonempty Y]
+-variable (μ : Measure X) [IsProbabilityMeasure μ] (q : X → Y) (hq : Measurable q)
++variable [StandardBorelSpace X] [Nonempty X] [StandardBorelSpace Y] [Nonempty Y] (μ : Measure X) [IsProbabilityMeasure μ] (q : X → Y) (hq : Measurable q)
+ 
+ include hq in
+ lemma square_fiber : ∀ᵐ y ∂μ.map q,
+@@ -486,8 +461,7 @@
+ 
+ variable [AddAction G X] [AddAction G Y] [MeasurableConstVAdd G X] [MeasurableConstVAdd G Y]
+   [VAddInvariantMeasure G X μ]
+-variable (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x))
+-variable [IsProbabilityMeasure (μ.map q)]
++variable (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x)) [IsProbabilityMeasure (μ.map q)]
+ include hqcov in
+ lemma centered_conditional_mean_zero (M : Amenable.Mean G) (hp : PairVanishing μ q hq M)
+     (s : Finset ι) (φ : ι → G →+ G) (θ : G →+ G) (f : ι → Func X)
+@@ -549,8 +523,7 @@
+ variable {G X Y : Type*} [AddCommGroup G] [TopologicalSpace G] [DiscreteTopology G]
+   [MeasurableSpace X] [MeasurableSpace Y] [StandardBorelSpace X] [Nonempty X]
+   [StandardBorelSpace Y] [Nonempty Y]
+-variable (μ : Measure X) [IsProbabilityMeasure μ] (q : X → Y) (hq : Measurable q)
+-variable {ι : Type*} [DecidableEq ι]
++variable (μ : Measure X) [IsProbabilityMeasure μ] (q : X → Y) (hq : Measurable q) {ι : Type*} [DecidableEq ι]
+ omit [AddCommGroup G] [TopologicalSpace G] [DiscreteTopology G] [StandardBorelSpace Y] [Nonempty Y] in
+ lemma Family.conditional_sum (s : Finset ι) (f : ι → Family G X) :
+     Family.conditional μ q (∑ i∈s, f i) = ∑ i∈s, Family.conditional μ q (f i) := by
+@@ -560,8 +533,7 @@
+ 
+ variable [AddAction G X] [AddAction G Y] [MeasurableConstVAdd G X] [MeasurableConstVAdd G Y]
+   [VAddInvariantMeasure G X μ]
+-variable (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x))
+-variable [IsProbabilityMeasure (μ.map q)]
++variable (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x)) [IsProbabilityMeasure (μ.map q)]
+ include hqcov in
+ lemma conditional_multiple_mean_zero (M : Amenable.Mean G) (hp : PairVanishing μ q hq M)
+     (s : Finset ι) (φ : ι → G →+ G) (θ : G →+ G) (f : ι → Func X)
+@@ -646,8 +618,7 @@
+   [AddAction G X] [AddAction G Y] [MeasurableConstVAdd G X] [MeasurableConstVAdd G Y]
+ variable (μ : Measure X) [IsProbabilityMeasure μ] [VAddInvariantMeasure G X μ]
+   (q : X → Y) (hq : Measurable q)
+-variable (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x))
+-variable [IsProbabilityMeasure (μ.map q)]
++variable (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x)) [IsProbabilityMeasure (μ.map q)]
+ include hqcov in
+ lemma conditional_integer_multiple_mean_zero
+     (hdiv : ∀ n : ℤ, n ≠ 0 → Function.Surjective (scaleHom (G := G) n))
+diff -ru lean/OAI/MeasureTheory/CompactFactors/Amenability.lean sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/Amenability.lean
+--- lean/OAI/MeasureTheory/CompactFactors/Amenability.lean	2026-11-13 19:09:13.640426709 +0000
++++ sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/Amenability.lean	2026-11-14 01:28:10.101972765 +0000
+@@ -145,9 +145,7 @@
+ 
+ section
+ open scoped BoundedContinuousFunction
+-variable {G : Type*} [AddCommGroup G] [TopologicalSpace G] [DiscreteTopology G]
+-variable (M : Mean G)
+-variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
++variable {G : Type*} [AddCommGroup G] [TopologicalSpace G] [DiscreteTopology G] (M : Mean G) {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
+ 
+ def cross (V W : G →ᵇ H) : G →ᵇ ℝ :=
+   BoundedContinuousFunction.ofNormedAddCommGroup (fun x => inner ℝ (V x) (W x))
+@@ -275,9 +273,7 @@
+ end
+ 
+ open scoped BoundedContinuousFunction
+-variable {G : Type*} [AddCommGroup G] [TopologicalSpace G] [DiscreteTopology G]
+-variable (M : Mean G)
+-variable {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
++variable {G : Type*} [AddCommGroup G] [TopologicalSpace G] [DiscreteTopology G] (M : Mean G) {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
+ 
+ def orbit (U : G → H ≃ₗᵢ[ℝ] H) (v : H) : G →ᵇ H :=
+   BoundedContinuousFunction.ofNormedAddCommGroup (fun g => U g v)
+diff -ru lean/OAI/MeasureTheory/CompactFactors/Approximation.lean sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/Approximation.lean
+--- lean/OAI/MeasureTheory/CompactFactors/Approximation.lean	2026-11-13 19:09:13.640510106 +0000
++++ sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/Approximation.lean	2026-11-14 01:28:10.104254860 +0000
+@@ -5,34 +5,11 @@
+ 
+ noncomputable section
+ 
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators BoundedContinuousFunction
+-open Filter Topology
+-open MeasureTheory Filter
++open scoped ComplexConjugate BigOperators BigOperators BoundedContinuousFunction
++open Filter Topology MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators
+-open Polynomial
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open MeasureTheory ProbabilityTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal BigOperators
+-open MeasureTheory Filter
+-open scoped Topology ENNReal NNReal
+-open MeasureTheory
+-open scoped ENNReal
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal
++open MeasureTheory ProbabilityTheory Polynomial MeasureTheory MeasureTheory MeasureTheory MeasureTheory ProbabilityTheory MeasureTheory MeasureTheory ProbabilityTheory MeasureTheory Filter
++open scoped Topology ENNReal NNReal ENNReal ENNReal
+ 
+ namespace EuclideanFiveColor.UniformEnumeration
+ open MeasureTheory ProbabilityTheory
+diff -ru lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean
+--- lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean	2026-11-13 19:09:13.640563676 +0000
++++ sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean	2026-11-14 01:28:10.106141323 +0000
+@@ -155,8 +155,7 @@
+     expect κ (bmConj f) = bmConj (expect κ f) := by
+   ext y; exact integral_conj
+ 
+-variable [StandardBorelSpace X] [Nonempty X] [StandardBorelSpace Y] [Nonempty Y]
+-variable (μ : Measure X) [IsProbabilityMeasure μ] (q : X → Y) (hq : Measurable q)
++variable [StandardBorelSpace X] [Nonempty X] [StandardBorelSpace Y] [Nonempty Y] (μ : Measure X) [IsProbabilityMeasure μ] (q : X → Y) (hq : Measurable q)
+ 
+ abbrev conditional (f : Func X) : Func Y := expect (condDistrib id q μ) f
+ 
+diff -ru lean/OAI/MeasureTheory/CompactFactors/Centers.lean sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/Centers.lean
+--- lean/OAI/MeasureTheory/CompactFactors/Centers.lean	2026-11-13 19:09:13.640478046 +0000
++++ sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/Centers.lean	2026-11-14 01:28:10.123056661 +0000
+@@ -4,30 +4,11 @@
+ 
+ noncomputable section
+ 
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators BoundedContinuousFunction
+-open Filter Topology
+-open MeasureTheory Filter
++open scoped ComplexConjugate BigOperators BigOperators BoundedContinuousFunction
++open Filter Topology MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators
+-open Polynomial
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open MeasureTheory ProbabilityTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal BigOperators
++open MeasureTheory ProbabilityTheory Polynomial MeasureTheory MeasureTheory MeasureTheory MeasureTheory ProbabilityTheory MeasureTheory MeasureTheory ProbabilityTheory
+ 
+-open MeasureTheory Filter
+ open scoped Topology ENNReal NNReal
+ 
+ namespace EuclideanFiveColor.Location
+diff -ru lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean
+--- lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean	2026-11-13 19:09:13.640526677 +0000
++++ sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean	2026-11-14 01:28:10.130867703 +0000
+@@ -4,35 +4,11 @@
+ 
+ noncomputable section
+ 
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators BoundedContinuousFunction
+-open Filter Topology
+-open MeasureTheory Filter
++open scoped ComplexConjugate BigOperators BigOperators BoundedContinuousFunction
++open Filter Topology MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators
+-open Polynomial
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open MeasureTheory ProbabilityTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal BigOperators
+-open MeasureTheory Filter
+-open scoped Topology ENNReal NNReal
+-open MeasureTheory
+-open scoped ENNReal
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal
+-open MeasureTheory ProbabilityTheory
++open MeasureTheory ProbabilityTheory Polynomial MeasureTheory MeasureTheory MeasureTheory MeasureTheory ProbabilityTheory MeasureTheory MeasureTheory ProbabilityTheory MeasureTheory Filter
++open scoped Topology ENNReal NNReal ENNReal ENNReal
+ 
+ /-! Bounded finite-dimensional L² approximation at a generated limit factor.
+ The filtration is the pullback of an increasing sequence of earlier factors;
+diff -ru lean/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean
+--- lean/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean	2026-11-13 19:09:13.640462106 +0000
++++ sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean	2026-11-14 01:28:10.132307707 +0000
+@@ -4,22 +4,11 @@
+ 
+ noncomputable section
+ 
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators BoundedContinuousFunction
+-open Filter Topology
+-open MeasureTheory Filter
++open scoped ComplexConjugate BigOperators BigOperators BoundedContinuousFunction
++open Filter Topology MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators
+-open Polynomial
+-open MeasureTheory
+-open scoped BigOperators
++open MeasureTheory ProbabilityTheory Polynomial MeasureTheory
+ 
+-open MeasureTheory
+-open scoped BigOperators
+ namespace EuclideanFiveColor.GoodFiber
+ 
+ variable {W ι T : Type*} [MeasurableSpace W] [Fintype ι] [Nonempty ι] [Fintype T]
+diff -ru lean/OAI/MeasureTheory/CompactFactors/Factors.lean sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/Factors.lean
+--- lean/OAI/MeasureTheory/CompactFactors/Factors.lean	2026-11-13 19:09:13.640640361 +0000
++++ sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/Factors.lean	2026-11-14 01:28:10.137195387 +0000
+@@ -4,38 +4,11 @@
+ 
+ noncomputable section
+ 
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators BoundedContinuousFunction
+-open Filter Topology
+-open MeasureTheory Filter
++open scoped ComplexConjugate BigOperators BigOperators BoundedContinuousFunction
++open Filter Topology MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators
+-open Polynomial
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open MeasureTheory ProbabilityTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal BigOperators
+-open MeasureTheory Filter
+-open scoped Topology ENNReal NNReal
+-open MeasureTheory
+-open scoped ENNReal
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal
+-open MeasureTheory ProbabilityTheory
+-open MeasureTheory ProbabilityTheory
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal
++open MeasureTheory ProbabilityTheory Polynomial MeasureTheory MeasureTheory MeasureTheory MeasureTheory ProbabilityTheory MeasureTheory MeasureTheory ProbabilityTheory MeasureTheory Filter
++open scoped Topology ENNReal NNReal ENNReal ENNReal ENNReal
+ namespace EuclideanFiveColor
+ open MeasureTheory
+ structure OrbitSpace (K : Type*) where
+diff -ru lean/OAI/MeasureTheory/CompactFactors/Functions.lean sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/Functions.lean
+--- lean/OAI/MeasureTheory/CompactFactors/Functions.lean	2026-11-13 19:09:13.640622367 +0000
++++ sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/Functions.lean	2026-11-14 01:28:10.140619829 +0000
+@@ -4,38 +4,11 @@
+ 
+ noncomputable section
+ 
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators BoundedContinuousFunction
+-open Filter Topology
+-open MeasureTheory Filter
++open scoped ComplexConjugate BigOperators BigOperators BoundedContinuousFunction
++open Filter Topology MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators
+-open Polynomial
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open MeasureTheory ProbabilityTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal BigOperators
+-open MeasureTheory Filter
+-open scoped Topology ENNReal NNReal
+-open MeasureTheory
+-open scoped ENNReal
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal
+-open MeasureTheory ProbabilityTheory
+-open MeasureTheory ProbabilityTheory
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal
++open MeasureTheory ProbabilityTheory Polynomial MeasureTheory MeasureTheory MeasureTheory MeasureTheory ProbabilityTheory MeasureTheory MeasureTheory ProbabilityTheory MeasureTheory Filter
++open scoped Topology ENNReal NNReal ENNReal ENNReal ENNReal
+ 
+ namespace EuclideanFiveColor.CompactFunctions
+ open MeasureTheory
+diff -ru lean/OAI/MeasureTheory/CompactFactors/Kernels.lean sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/Kernels.lean
+--- lean/OAI/MeasureTheory/CompactFactors/Kernels.lean	2026-11-13 19:09:13.640544811 +0000
++++ sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/Kernels.lean	2026-11-14 01:28:10.145056615 +0000
+@@ -4,35 +4,11 @@
+ 
+ noncomputable section
+ 
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators BoundedContinuousFunction
+-open Filter Topology
+-open MeasureTheory Filter
++open scoped ComplexConjugate BigOperators BigOperators BoundedContinuousFunction
++open Filter Topology MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators
+-open Polynomial
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open MeasureTheory ProbabilityTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal BigOperators
+-open MeasureTheory Filter
+-open scoped Topology ENNReal NNReal
+-open MeasureTheory
+-open scoped ENNReal
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal
+-open MeasureTheory ProbabilityTheory
++open MeasureTheory ProbabilityTheory Polynomial MeasureTheory MeasureTheory MeasureTheory MeasureTheory ProbabilityTheory MeasureTheory MeasureTheory ProbabilityTheory MeasureTheory Filter
++open scoped Topology ENNReal NNReal ENNReal ENNReal
+ 
+ /-! Bounded integral kernels yield finite-module orbit approximation.
+ This implements the compact-tower construction without spectral projections:
+diff -ru lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean
+--- lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean	2026-11-13 19:09:13.640495378 +0000
++++ sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean	2026-11-14 01:28:10.148979920 +0000
+@@ -5,34 +5,12 @@
+ 
+ noncomputable section
+ 
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators BoundedContinuousFunction
+-open Filter Topology
+-open MeasureTheory Filter
++open scoped ComplexConjugate BigOperators BigOperators BoundedContinuousFunction
++open Filter Topology MeasureTheory Filter
+ open scoped ENNReal ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ComplexConjugate
+-open scoped BigOperators
+-open scoped BigOperators
+-open Polynomial
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open MeasureTheory ProbabilityTheory
+-open scoped BigOperators
+-open MeasureTheory
+-open scoped BigOperators ComplexConjugate
+-open MeasureTheory ProbabilityTheory
+-open scoped ENNReal BigOperators
+-open MeasureTheory Filter
++open MeasureTheory ProbabilityTheory Polynomial MeasureTheory MeasureTheory MeasureTheory MeasureTheory ProbabilityTheory MeasureTheory MeasureTheory ProbabilityTheory MeasureTheory Filter
+ open scoped Topology ENNReal NNReal
+ 
+-open MeasureTheory
+-open scoped ENNReal
+-
+ namespace EuclideanFiveColor.UniformFibers
+ 
+ variable {X Q : Type*} [MeasurableSpace X]
+@@ -514,8 +492,7 @@
+ end EuclideanFiveColor.RelativeCenters
+ 
+ namespace PlaneFiveColor.Spectral
+-open MeasureTheory ProbabilityTheory
+-open EuclideanFiveColor.RelativeCenters
++open MeasureTheory ProbabilityTheory EuclideanFiveColor.RelativeCenters
+ 
+ instance dualStandardBorelSpace : StandardBorelSpace D := by
+   have : TopologicalSpace.IsCompletelyMetrizableSpace (DiscreteE → Circle) := inferInstance
+diff -ru lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean
+--- lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean	2026-11-13 19:09:13.640577062 +0000
++++ sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean	2026-11-14 01:28:10.151056602 +0000
+@@ -6,8 +6,7 @@
+ noncomputable section
+ 
+ open MeasureTheory Filter
+-open scoped ENNReal NNReal
+-open scoped RealInnerProductSpace BoundedContinuousFunction
++open scoped ENNReal NNReal RealInnerProductSpace BoundedContinuousFunction
+ 
+ namespace EuclideanFiveColor.RelativeProduct
+ open MeasureTheory ProbabilityTheory
+@@ -236,8 +235,7 @@
+   fun g x => by simpa using F.norm_le_bound g x⟩
+ @[simp] lemma conj_apply (F : Family G X) (g : G) : bmConj F g = BoundedMeasurable.bmConj (F g) := rfl
+ 
+-variable [TopologicalSpace G] [DiscreteTopology G]
+-variable (μ : Measure X) [IsProbabilityMeasure μ]
++variable [TopologicalSpace G] [DiscreteTopology G] (μ : Measure X) [IsProbabilityMeasure μ]
+ 
+ def toL2 (F : Family G X) : G →ᵇ Lp ℂ 2 μ :=
+   BoundedContinuousFunction.ofNormedAddCommGroup (fun g => l2 μ (F g))
+@@ -296,8 +294,7 @@
+ lemma tensor_conj (f : Func X) (g : Func Y) : tensor (bmConj f) (bmConj g) = bmConj (tensor f g) := by
+   ext z; simp only [tensor_apply, conj_apply, star_mul']
+ 
+-variable [StandardBorelSpace X] [Nonempty X] [StandardBorelSpace Y] [Nonempty Y]
+-variable (μ : Measure X) [IsProbabilityMeasure μ] (q : X → Y) (hq : Measurable q)
++variable [StandardBorelSpace X] [Nonempty X] [StandardBorelSpace Y] [Nonempty Y] (μ : Measure X) [IsProbabilityMeasure μ] (q : X → Y) (hq : Measurable q)
+ 
+ lemma integral_law (f : Func (X×X)) :
+     ∫ z, f z ∂(RelativeProduct.law μ q hq) =
+diff -ru lean/OAI/MeasureTheory/CompactFactors/Separability.lean sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/Separability.lean
+--- lean/OAI/MeasureTheory/CompactFactors/Separability.lean	2026-11-13 19:09:13.640591980 +0000
++++ sprint/simplify/m16/OAI/MeasureTheory/CompactFactors/Separability.lean	2026-11-14 01:28:10.155331078 +0000
+@@ -5,21 +5,10 @@
+ noncomputable section
+ 
+ open MeasureTheory Filter
+-open scoped ENNReal NNReal
+-open scoped RealInnerProductSpace BoundedContinuousFunction
+-open MeasureTheory ProbabilityTheory Filter
+-open scoped ENNReal RealInnerProductSpace NNReal
+-open MeasureTheory Filter
+-open scoped ENNReal NNReal BoundedContinuousFunction RealInnerProductSpace
+-open MeasureTheory ProbabilityTheory Filter
+-open scoped ENNReal RealInnerProductSpace NNReal
+-open MeasureTheory ProbabilityTheory Filter
+-open scoped ENNReal RealInnerProductSpace NNReal BoundedContinuousFunction
+-open MeasureTheory ProbabilityTheory Filter
+-open scoped ENNReal NNReal BoundedContinuousFunction RealInnerProductSpace
++open scoped ENNReal NNReal RealInnerProductSpace BoundedContinuousFunction
++open MeasureTheory ProbabilityTheory Filter MeasureTheory Filter MeasureTheory ProbabilityTheory Filter MeasureTheory ProbabilityTheory Filter MeasureTheory ProbabilityTheory Filter
+ namespace EuclideanFiveColor.Amenable.Mean
+-variable {G : Type*} [AddCommGroup G] [TopologicalSpace G] [DiscreteTopology G]
+-variable (M : EuclideanFiveColor.Amenable.Mean G)
++variable {G : Type*} [AddCommGroup G] [TopologicalSpace G] [DiscreteTopology G] (M : EuclideanFiveColor.Amenable.Mean G)
+ lemma vector_real (f : G →ᵇ ℝ) : M.vector f = M.map f := by
+   have h := M.vector_pair f 1
+   have he : pairing f 1 = f := by ext g; simp [pairing_apply]
+@@ -205,8 +194,7 @@
+ 
+ variable [AddAction G X] [MeasurableConstVAdd G X] [VAddInvariantMeasure G X μ]
+   [AddAction G Y] [MeasurableConstVAdd G Y]
+-variable (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x))
+-variable {ι : Type*} [DecidableEq ι]
++variable (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x)) {ι : Type*} [DecidableEq ι]
+ omit [StandardBorelSpace Y] [Nonempty Y] [TopologicalSpace G] [DiscreteTopology G]
+   [VAddInvariantMeasure G X μ] in
+ include hqcov in
+@@ -260,8 +248,7 @@
+     rw [he]
+     exact ha.2 i (Finset.mem_of_mem_erase hi) k (Finset.mem_of_mem_erase hk) hik
+ 
+-variable [AddAction G Y] [MeasurableConstVAdd G Y]
+-variable (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x))
++variable [AddAction G Y] [MeasurableConstVAdd G Y] (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x))
+ include hqcov in
+ /-- Centered multiple vector averages for every invariant mean. The proof only
+ uses the actual conditional pair criterion, never exchanges iterated means. -/
+@@ -518,8 +505,7 @@
+   unfold conditional
+   rw [ha, mul_add, expect_add, expect_add, hb, mul_add]
+   abel
+-variable [VAddInvariantMeasure G X μ]
+-variable (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x))
++variable [VAddInvariantMeasure G X μ] (hqcov : ∀ g : G, (fun x => q (g +ᵥ x)) =ᵐ[μ] (fun x => g +ᵥ q x))
+ omit [VAddInvariantMeasure G X μ] in
+ include hqcov in
+ lemma conditional_mul_project_act (g : G) (v w : Func X) :

@@ -1,0 +1,56 @@
+======================================================================
+(A) geometry with sympy root symbols
+  |0 -A |^2 - 1 simplifies to 0
+  |0 -B |^2 - 1 simplifies to 0
+  |A -B |^2 - 1 simplifies to 0
+  |T -A |^2 - 1 simplifies to 0
+  |T -B |^2 - 1 simplifies to 0
+  |0 -uA|^2 - 1 simplifies to 0
+  |0 -uB|^2 - 1 simplifies to 0
+  |uA-uB|^2 - 1 simplifies to 0
+  |uT-uA|^2 - 1 simplifies to 0
+  |uT-uB|^2 - 1 simplifies to 0
+  |T -uT|^2 - 1 simplifies to 0
+  11 edges unit: True
+  7 points pairwise distinct: True
+    |0|^2 = 0
+    |A|^2 = 1
+    |B|^2 = 1
+    |T|^2 = 3
+    |uA|^2 = 1
+    |uB|^2 = 1
+    |uT|^2 = 3
+    pairwise distinct abs values: 3 distinct of 7  (necessary, not sufficient)
+
+======================================================================
+(B1) chromatic polynomial via set partitions into independent sets
+  set partitions of 7 points enumerated: 877 (Bell(7) = 877)
+  a_j = #j proper independent-set partitions: {4: 16, 5: 26, 6: 10, 7: 1}
+  P_G(k) = k*(k - 3)*(k - 2)**2*(k - 1)*(k**2 - 3*k + 4)
+  expanded: k**7 - 11*k**6 + 51*k**5 - 129*k**4 + 188*k**3 - 148*k**2 + 48*k
+  brute force values P(0..5) = [0, 0, 0, 0, 384, 5040]
+  set-partition values      = [0, 0, 0, 0, 384, 5040]
+  AGREE: True
+  P(3) = 0, P(4) = 384
+
+======================================================================
+(B2) chromatic polynomial by deletion-contraction (exact int polys)
+  deletion-contraction gives: k*(k - 3)*(k - 2)**2*(k - 1)*(k**2 - 3*k + 4)
+  equals set-partition polynomial: True
+
+======================================================================
+(C) 3-colourings of G-e : brute force vs set-partition count, all 11
+      edge  brute  partitions*6  agree
+   0-A         12           12  True
+   0-B         12           12  True
+   A-B         12           12  True
+   T-A         12           12  True
+   T-B         12           12  True
+   0-uA        12           12  True
+   0-uB        12           12  True
+  uA-uB        12           12  True
+  uT-uA        12           12  True
+  uT-uB        12           12  True
+   T-uT        12           12  True
+  ALL AGREE: True
+  4-colourings of G: brute=384, 24*a_4=384 (a_4=16)

@@ -1,0 +1,14 @@
+OBSTRUCTION to R1 (d3) and to any "maximal/minimal factor + Theorem A" route: the natural terminal factor can be the whole system, where (H2) fails.
+
+X = D, mu = Haar_D, K acting by (u.d)(z) = d(uz), by automorphisms.
+(a) mu K-invariant ergodic: automorphisms preserve Haar; for f = sum c_z chi_z, U_u chi_z = chi_{u^-1 z}, and K acts FREELY on E\\{0} since ((3+4i)/5-1)z = 0 forces z = 0; so nonzero orbits are infinite and c_z = 0 off z = 0.
+(b) mu wild: C is a Borel subgroup of compact D, an injective continuous image of R^2, so not compact, not open, Haar-null.
+(c) The action is isometric, and every factor of an isometric system is a compact extension of the trivial factor, so Y* := join of all compact extensions of the trivial factor IS X.
+
+So X x_{Y*} X is a point (ergodic), yet the wild d = id is Y*-measurable: Theorem A is inapplicable at Y*, and R1's final step cannot give UniversalGood at Y* here.
+
+Current architecture handles it: K free on E^2 minus 0, so Haar x Haar is diagonally ergodic, the TRIVIAL factor has ergodic relative square, and UG holds there by relative_singularity_base (a K-fixed character is trivial, so wild d is never constant).
+
+For d6/d8: the radial layer needs of q exactly the instance ErgodicVAdd Rot (DxD) (RelativeProduct.law mu q hq) plus IsWild of the id relative difference law; at q = trivial the second is wild_independent_difference, the first is not free and is the whole content of exists_terminal_factor.
+
+Verdict: R1 dead as stated.

@@ -1,0 +1,15 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: 3ff5d5c86fd49e4252e2fbbbcd8fc05e6c909c165cb98d62f47da399f608a569
+Status: passed
+Exit code: 0
+
+STDOUT
+'WitnessSelection.pickAt_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WitnessSelection.stepF_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WitnessSelection.sel_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WitnessSelection.sel_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WitnessSelection.exists_strictAnti_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WitnessSelection.exists_strictAnti_scale'' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+STDERR
+

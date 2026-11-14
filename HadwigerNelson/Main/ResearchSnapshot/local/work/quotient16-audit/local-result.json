@@ -1,0 +1,11 @@
+{
+  "command": "py -3 verify_quotient16.py",
+  "cwd": "work/quotient16-audit",
+  "exitCode": 0,
+  "stdout": "checks run; failures = 0\nCERTIFICATE VALID\n",
+  "scope": "All120strict interior-edge witnesses and complete quotient K16 verified by the downloaded exact arithmetic checker. Only period4 honeycomb family; no whole-plane conclusion. The auxiliary6-subset predicate is not a general chromatic proof.",
+  "sha256": {
+    "quotient16_cert.json": "eb3a9f31a6c8652b2c6d14d7bbad58061cf676e34cd854e295e1d0b0ea4a7203",
+    "verify_quotient16.py": "d61543f768451fa8f16c2615df1bdb37140208a428c3cc5dd89c9fb0dbf335db"
+  }
+}

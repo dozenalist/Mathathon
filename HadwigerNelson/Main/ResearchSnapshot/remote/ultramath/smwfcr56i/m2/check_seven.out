@@ -1,0 +1,8 @@
+H1  r = 2/5 : 2r = 4/5 < 1 : True    inradius^2 = 3r^2/4 < 1/4 : True
+H2  (sqrt21-2) r > 1  <=>  2 sqrt21 > 9  <=>  84 > 81 : True
+H3  |2 - omega|^2 = 7 = 7 : True
+H4  Voronoi hexagons cover the plane; boundary points go to an incident
+    hexagon; H1 and H2 keep two same-coloured points away from distance 1.
+
+CONCLUSION: the paper's section-1 seven-colouring argument is correct as
+printed, with margins 2r = 0.8 and (sqrt21-2)r = 1.033030 > 1.

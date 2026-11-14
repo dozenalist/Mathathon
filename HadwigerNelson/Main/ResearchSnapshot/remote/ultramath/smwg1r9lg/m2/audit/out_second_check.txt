@@ -1,0 +1,25 @@
+independent grid scan (step 0.05 deg) of the six membership conditions
+TheoremC/m15 block ell=3             witnesses=3    lethal(|AuB|>=4)=YES
+        A=[0, 3]    B=[2, 5]    |AuB|=4  t = 0 deg = 0.000000
+        A=[1, 4]    B=[0, 3]    |AuB|=4  t = 40 deg = 40.000000
+TheoremC/m15 block ell=4             witnesses=3    lethal(|AuB|>=4)=YES
+        A=[0, 2]    B=[3, 5]    |AuB|=4  t = 0 deg = 0.000000
+        A=[1, 4]    B=[0, 2]    |AuB|=4  t = 40 deg = 40.000000
+TheoremC/m15 block ell=5             witnesses=3    lethal(|AuB|>=4)=YES
+        A=[0, 2]    B=[4, 5]    |AuB|=4  t = 0 deg = 0.000000
+        A=[1, 3]    B=[0, 2]    |AuB|=4  t = 40 deg = 40.000000
+TheoremC/m15 block ell=6             witnesses=3    lethal(|AuB|>=4)=YES
+        A=[0, 3]    B=[2, 5]    |AuB|=4  t = 0 deg = 0.000000
+        A=[1, 4]    B=[0, 3]    |AuB|=4  t = 40 deg = 40.000000
+FREE-LABEL block ell=3               witnesses=3    lethal(|AuB|>=4)=no
+FREE-LABEL block ell=4               witnesses=3    lethal(|AuB|>=4)=YES
+        A=[1, 3]    B=[0, 2]    |AuB|=4  t = 40 deg = 40.000000
+FREE-LABEL block ell=5               witnesses=3    lethal(|AuB|>=4)=YES
+        A=[1, 3]    B=[0, 2]    |AuB|=4  t = 40 deg = 40.000000
+FREE-LABEL ell=6 (current word)      witnesses=3    lethal(|AuB|>=4)=YES
+        A=[1, 3]    B=[2, 5]    |AuB|=4  t = 0 deg = 0.000000
+        A=[2, 4]    B=[1, 3]    |AuB|=4  t = 50 deg = 50.000000
+FREE-LABEL ell=6 (withdrawn word)    witnesses=2    lethal(|AuB|>=4)=YES
+        A=[1, 3]    B=[2, 4]    |AuB|=4  t = 90 deg = 90.000000
+        A=[2, 5]    B=[1, 3]    |AuB|=4  t = 20 deg = 20.000000
+m13 singleton triangle               witnesses=3    lethal(|AuB|>=4)=no

@@ -1,0 +1,78 @@
+{
+  "updated_utc": "2026-11-14T16:45:05Z",
+  "status": "completed_block",
+  "summary": "Block 20, source-only. Recorded the correction first: my block-19 module is SUPERSEDED and marked not-to-queue, because stateSupport_shift_relation (FiveSupport:55) already contains the support-extraction and translation machinery, so my three blockers were reconstructing what exists. Source-audited the parent's compact derivation: with R i j := Disjoint (S i) (S j) and d := sixty, the ban hypothesis gives the a.e. disjointness by a 5x5 by_cases over fiveAdj using fiveState_adj and step_ban plus the file's existing pull-back idiom, then one stateSupport_shift_relation application, then a one-line close. NO finite-union API blockers: no restrict_iUnion, no support_sum, no explicit support-of-translate. Delivered the minimal integration plan: statement verbatim unchanged, helper inserted between lines 137 and 138 (after five_support_prev, before the no_sixty header), exactly three consumer declarations (five_contact_next, five_contact_prev, five_opposite_contacts_false) with ZERO edits needed as compatibility tests. Interfaces second user analysed: carrier is not the obstacle, arbitrary-direction quantification is, and discharging it would relocate rather than remove strict_state_no_unit_support. No patch offered (parent holds the compiling source). No global States deletion claimed.",
+  "verified_results": [
+    "GRADE [C] CORRECTION: jointpair/JointPairSupport.lean is SUPERSEDED. Its three blockers (restrict of a finite disjoint union, support of a finite measure sum, translate of a support point) are unnecessary because FiveSupport.lean:55 stateSupport_shift_relation already performs that work for an arbitrary relation R, and fiveSupport is definitionally stateSupport of t |-> fiveState c hc x (t : Angles). The file is marked in place, not deleted, and must not be built.",
+    "GRADE [M]+[C] COMPACT DERIVATION AUDITED AND SOUND: for each of the 25 pairs, by_cases on fiveAdj i j gives the ban either from fiveState_adj (non-adjacent, pulled back along angleMk_quasiMeasurePreserving.ae exactly as five_support_next already does) or from five_support_step_ban at the support-intersection witness (adjacent); ae_all_iff over the finite product assembles them; one stateSupport_shift_relation application with R := fun i j => Disjoint (S i) (S j) and d := sixty yields the translate in a disjoint state; one line closes.",
+    "GRADE [C] NO FINITE-UNION API BLOCKERS: the derivation consumes ae_all_iff over a Fintype, the two existing a.e. pull-backs, by_cases on a decidable relation and Set.disjoint_left. It uses no Measure.restrict_iUnion, no support_sum and no support-of-translate lemma, because all three live inside stateSupport_shift_relation.",
+    "GRADE [S]/[C] The parent's report that the first failure needed only explicit R and d arguments is consistent with the source: stateSupport_shift_relation declares {R} and {d} as implicit binders, so both must be supplied by name.",
+    "GRADE [C] INTEGRATION ANCHOR: inside FiveSupport.lean, between five_support_prev (ends line 137) and the five_support_no_sixty header (line 138). Fixed by three constraints: it needs fiveState_adj, five_support_step_ban and stateSupport_shift_relation, all above; Lean has no forward references, so it must precede its caller; inserting later would force five_contact_next/prev to move for no benefit.",
+    "GRADE [C] CONSUMER COMPATIBILITY SET: five_support_no_sixty has exactly five call sites in exactly three declarations -- five_contact_next (FiveSupport:175; calls at 179,180), five_contact_prev (:185; calls at 190,193), five_opposite_contacts_false (:199; call at 216). ZERO edits required in any of them, because the statement is unchanged; they are the test set, not edit sites.",
+    "GRADE [M]+[C] INTERFACES SECOND USER: interfaceStateSupport_no_unit (Interfaces:266) needs the arbitrary-pair conclusion ||direction t - direction u|| != 1 on the angular support. Carrier is NOT the obstacle -- angle_support_lift (Interfaces:166) already transports to a real point and the existing proof uses it. The obstacle is quantification: fiveState_adj and step_ban give nullity only for the fixed shift sixty, and stateSupport_shift_relation is single-d. A parameterised interface would not be circular as a statement, but discharging its hypothesis for arbitrary d is exactly what strict_state_no_unit_support supplies, so reuse would relocate the obligation, not remove it.",
+    "GRADE [R] NAMING DISCIPLINE: step_ban (five_support_step_ban) is RETAINED and used; strict_state_no_unit_support STAYS in States.lean because the Interfaces chain depends on it (24 transitive users including no_proper_five_coloring). No claim of a global States deletion. Manuscript Lemma 6.7 numbering remains unresolved and is not cited either way.",
+    "GRADE [R] No patch delivered. The parent holds the locally compiling V1+V2; a second implementation would duplicate and could diverge. My contribution is the plan and the API audit.",
+    "GRADE [S] Parent-reported, not verified here: the 58-line V1+V2 source compiles locally; the Astra theorem is accepted by the referee at paper level for the local annulus / finite-witness scope. No accepted Lean result exists yet.",
+    "GRADE [R] Unchanged and not re-run: R4 82-module build, 9-root axiom checks, R5 packets, LOCAL 133-binder inspection, Converse no-useful-reduction verdict. Binder and extraction churn remain frozen; no old-Heule seeds, no broad refactors."
+  ],
+  "conjectures": [
+    "The proof shape gain is conceptual, not linear: one general contact-ban lemma plus the two existing bans replaces a bespoke two-palette argument at that site, while the statement and every consumer stay fixed. Net line count is not the measure of that.",
+    "A direction-uniform nullity statement (a ban for every d, not just sixty) is the missing ingredient for the Interfaces user; I have not found one in the tree, and without it strict_state_no_unit_support cannot be retired.",
+    "If the parent's V1+V2 compiles, the remaining integration risk is only the definitional identity fiveSupport = stateSupport (fun t => fiveState ... (t : Angles)), which the file already relies on for five_support_next."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/DOWNSTREAM-INTEGRATION-PLAN.md  <-- the minimal integration plan, compact-derivation audit, Interfaces analysis. sha256 7fa54d253699c4c646e9389dab80e1a1a9954def019522af1298c9f21db4b437",
+    "supervisor/simplify-lean/jointpair/JointPairSupport.lean  <-- SUPERSEDED, marked in place, must not be built. sha256 11c6ed3cf1e8a0df2440293bdac0e3e58b09bbefc86d84ae8d396d7967e6bc08",
+    "supervisor/simplify-lean/JOINT-PAIR-AUDIT.md  <-- block-19 mathematics audit (still valid; its \u00a72 proof of the lemma stands). sha256 cc2f9b6302fce14b092f1e7c0dede7afa57ffd0a7914e2890dfc41660e3a0c84",
+    "supervisor/simplify-lean/DEPENDENCY-LEDGER-converse.md  <-- Converse ledger (verdict accepted, frozen). sha256 a36305832dd1a7e1ffdf3f3acf1ae413c62304f09c6b5658463e9ebb65623a06",
+    "frozen: supervisor/simplify-lean/lean/BinderAudit.lean sha256 0efd3831cd8633818af24110d254e3ae8a1a34cc93a529a0de33b4d0ba4ee202, binder_expected.json sha256 19810d24f5c83db61e483f52f42c04260cff41c5e4e52e78c4846d991f2c30ad, binder_snapshot.py sha256 d96e317e91ac6672b05e34f02ecf83d7dd829f866ef46196e668508b47ecd423",
+    "retained: STATEMENT-AUDIT.md, REVIEW-instrument-v4.md, REVIEW-baseline-and-fresh.md, lean/SignatureEquivalence.lean, lean/SignatureCheckFresh.lean, lean/AxiomRoots.lean, axiom_gate.py, recon/ConditionalLimits.R4-recon.lean, snapshots/integ-d26d569088faea89/, BUILD-PLAN.json, MANIFEST-full.json, archive/"
+  ],
+  "tests_run": [
+    "Source reads: FiveSupport.lean 30-75 (stateSupport, stateSupport_shift_relation, stateSupport_nonempty_measure), 124-150 (five_support_next/prev/no_sixty), 165-225 (fiveSupportList, five_contact_next/prev, five_opposite_contacts_false); Interfaces.lean 250-285 (interfaceStateSet/Support, angle_support_lift, interfaceStateSupport_no_unit).",
+    "rg for all call sites of five_support_no_sixty -> 5 sites in 3 declarations (179,180,190,193,216).",
+    "Hand audit of the R-based derivation against the stateSupport_shift_relation signature, confirming {R} and {d} are implicit binders and that no restrict_iUnion/support_sum/support-of-translate lemma is required.",
+    "sha256 over the deliverables.",
+    "NO Lean build, no cloud operation, no compute beyond source reading (per policy; the shared slot belongs to the graph worker)."
+  ],
+  "failed_routes": [
+    "My block-19 plan (jointpair/JointPairSupport.lean) is WITHDRAWN as unnecessary: it rebuilt machinery already present in stateSupport_shift_relation. Marked superseded in place; not deleted, not queued, not duplicated.",
+    "A reusable contact-ban interface for the Interfaces second user is NOT available on present evidence: the obstruction is arbitrary-direction quantification, and any interface broad enough to cover it would take as hypothesis essentially what strict_state_no_unit_support proves.",
+    "Not attempted: writing a competing implementation of the parent's V1+V2, any build, any States deletion, any Lemma 6.7 naming claim."
+  ],
+  "next_step": "Await the parent's accepted Lean result, then apply the plan exactly as stated: helper between FiveSupport.lean lines 137 and 138, statement of five_support_no_sixty untouched, and check only that FiveSupport plus its reverse-dependent modules (Accumulation, CyclicCore, Interfaces, FullApproximation, Five) still compile. The open research question, if anyone wants to retire strict_state_no_unit_support, is whether a direction-uniform nullity statement exists; no such statement is in the tree today.",
+  "owned_agents": [
+    {
+      "swarm": "smwfy8rae",
+      "members": 3,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "state": "stopped",
+      "accepted": 0,
+      "note": "stopped in block 1; no new chats, swarms or nested agents this block (per policy)."
+    }
+  ],
+  "escalation": null,
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "this_block": "supervisor/simplify-lean/DOWNSTREAM-INTEGRATION-PLAN.md",
+    "superseded": "supervisor/simplify-lean/jointpair/JointPairSupport.lean (marked, not to be built)",
+    "integration": {
+      "statement": "unchanged verbatim",
+      "anchor": "FiveSupport.lean between lines 137 and 138",
+      "consumers": [
+        "five_contact_next (FiveSupport:175)",
+        "five_contact_prev (FiveSupport:185)",
+        "five_opposite_contacts_false (FiveSupport:199)"
+      ],
+      "consumer_edits": 0
+    },
+    "interfaces_second_user": "not reachable on present evidence; obstruction is arbitrary-direction quantification, not the carrier",
+    "not_claimed": [
+      "global States deletion",
+      "Lemma 6.7 deletion",
+      "any accepted Lean result"
+    ],
+    "scope": "6 <= chi(R^2) <= 7 unchanged; no new plane bound",
+    "next_verification_step": "on the parent's accepted result, apply the plan and check FiveSupport plus its five reverse-dependent modules compile."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "updated_utc": "2026-11-14T17:15:00Z",
+  "status": "completed_block",
+  "summary": "Analysis/source-only block: rewrote AMPLIFIER.md as a rigorous lower-bound theorem and removed every statement that was too strong, with the retractions kept visible as A1-A8. Corrections: only the distinguished chain vertices p+j(q-p) are forced equal, not whole copies; the chain count is an inequality |C_n| <= nV-(n-1) because non-consecutive copies can overlap; the induced edge set has no upper bound, so 2nE+1 counts only the selected generating-edge multiset; D = 1/2 is permitted (antipodal ends are distinct and one unit apart) and the argument restricts to each injectively embedded copy, so overlaps are harmless; the (H4) upper-bound theorem is withdrawn, and an exactly (k+1)-chromatic finite subset is obtained instead by vertex-minimality with no extra hypothesis; the displacement v = q-p is used directly, so the rotation coefficients depend only on D^2 = n^2||v||^2 and no square root of ||v||^2 is ever adjoined, giving the field K(sqrt(4n^2||v||^2-1)) of degree at most 2; the claims about hardness/equivalence with the plane upper bound and about non-reversibility are deleted. Validated by reproducing the Moser spindle at k=3 (diamond, ||v||^2=3, n=1, cos theta=5/6, field Q(sqrt3,sqrt11), at most 7 points and 11 generating unit edges). No forcing pair exists in the project's evidence and none is asserted.",
+  "verified_results": [
+    "GRADE [P] Theorem (lower bound): if G is a finite full induced unit-distance point graph with |P| = V, properly k-colourable, and p != q with c(p) = c(q) in every proper k-colouring, then for n with 4n^2||q-p||^2 >= 1 the induced unit-distance graph on X_n = (union_{j<n} P + j(q-p)) union R_theta(same) is not k-colourable. Proof: each isometric image P + jv is itself a copy of G (G being the full induced UDG), so the restricted colouring is a proper k-colouring and (H2) gives c(p+jv) = c(q+jv) = c(p+(j+1)v); induction makes the n+1 distinguished vertices monochromatic, and the two far ends nv and R_theta(nv) are distinct, at distance exactly 1.",
+    "GRADE [P] The rotation: with D = n||v|| and cos theta = 1 - 1/(2D^2), sin theta = sqrt(4D^2-1)/(2D^2), one has |nv - R_theta nv| = 2D sin(theta/2) = 1 exactly. Existence of a real theta is exactly D >= 1/2, i.e. 4n^2||v||^2 >= 1, an exact comparison in K; at D = 1/2 (theta = pi) the two ends are antipodal, distinct and one unit apart, so the boundary case is admissible.",
+    "GRADE [P] Corollary (exact chromatic number) via vertex-minimality: X_n is finite and not k-colourable, so a minimal subset Y with chi(Y) >= k+1 satisfies chi(Y-v) <= k for every v, hence chi(Y) <= k+1 and chi(Y) = k+1 exactly. No (H4)-type hypothesis and no claim that X_n itself is (k+1)-colourable.",
+    "GRADE [P] Counts and their direction: |C_n| <= nV - (n-1) and |X_n| <= 2nV - 2n + 1 (inequalities, since overlaps may occur); the generating edges form a multiset of exactly 2nE+1 entries whose distinct representatives number at most that, and the induced edge set is a superset of them, so no upper bound on |E(X_n)| is asserted. Size cost is O(V/||v||) points.",
+    "GRADE [P] Exact field: with P in K^2 and ||v||^2 in K, all chain coordinates lie in K^2 and the rotation coefficients lie in K(sqrt(4n^2||v||^2 - 1)), of degree at most 2 over K; no square root of ||v||^2 is needed because only D^2 = n^2||v||^2 is used. Every unit-distance and coincidence test is then an exact comparison in that field.",
+    "GRADE [P]+[C] Validation at k = 3: diamond with tips p = (1/2, sqrt3/2), q = (1/2, -sqrt3/2), ||v||^2 = 3 in Q, n = 1, cos theta = 5/6, sin theta = sqrt11/6, field Q(sqrt3, sqrt11) (the field of the record's exact spindle certificate), at most 7 points and 11 generating unit edges: the Moser spindle. The record certifies all eleven edges at squared length exactly 1 [C], so this instance has no accidental coincidence."
+  ],
+  "conjectures": [
+    "The amplifier is a one-way interface: a forcing pair at k = 6 in a 6-colourable finite unit-distance graph would yield, by the Theorem plus vertex-minimality, a finite point subset with chromatic number exactly 7. That is the only implication proved; no converse, hardness or equivalence statement is claimed.",
+    "The only non-local obligation for any concrete use is (H2) - a statement about every proper k-colouring rather than one - and no evidence on file discharges it at any k, so the amplifier currently has no instance to run on.",
+    "Accidental edges cannot be excluded by genericity at the final step because theta is fixed by the unit-edge condition; they only strengthen the lower bound but may destroy (k+1)-colourability, which is why the upper bound is now obtained by vertex-minimality rather than from a colouring hypothesis."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/AMPLIFIER.md",
+    "supervisor/solve-geometry/NEXT-PROBE-ANALYSIS.md",
+    "supervisor/solve-geometry/CELL-NOGO-V2-AUDIT.md",
+    "supervisor/solve-geometry/HONEYCOMB-FAMILY-CERTIFICATE.md",
+    "supervisor/solve-geometry/A-QUARTER-AUDIT.md",
+    "supervisor/solve-geometry/PATCH19-AUDIT.md",
+    "supervisor/solve-geometry/ARTIFACT-HASHES.txt",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "hashes_note": "SHA-256 of every analysis file except STATUS.json itself is recorded in ARTIFACT-HASHES.txt (a file cannot contain its own hash). Machine-certificate hashes retained from earlier blocks: p19.cnf 31f354668e946a3f61f0bab2d3c632792e1be6ff50979116971d3a2469823b69, p19.drup f4ec9532ce13a46197ea71a489a9f451563da4b81c6f2aad3097439d23c1496e, p25.cnf 4d5d07d62ddfb89db4706ad46ab7e68fac210f94c8399586f32e146d608e59ca, p25.drat 12a72a7ae61e50f40a0d9948b0d96fd906d25b1c04ec7a15294bfc7fc7b6549d, drat-trim a9571deb08430a3d7f7a72074440f53e2ad48196dced50b146835052a18e9066.",
+  "tests_run": [
+    "None: analysis/source-only block by instruction. All derivations in AMPLIFIER.md are hand arithmetic graded [P]; the only machine-checked inputs cited are the record's Moser spindle certificate and the two accepted honeycomb certificates [A]/[C]. The single command run was sha256sum over my own analysis files, recorded in ARTIFACT-HASHES.txt."
+  ],
+  "failed_routes": [
+    "Withdrawn from AMPLIFIER.md (kept visible as A1-A8): 'the whole chain is monochromatic'; the equality |C_n| = nV-(n-1); the upper bound |E(X)| <= 2nE+1 for the induced graph; the strictness requirement D > 1/2; the (H4) upper-bound theorem; the claim chi(X) = k+1; adjoining d before the rotation; and the hardness/equivalence and non-reversibility claims.",
+    "No forcing pair exists in the project's evidence; no finite unit-distance graph of chromatic number >= 7 is produced or implied; nothing here bears on chi(R^2)."
+  ],
+  "next_step": "If the graph chat produces an equality certificate, run AMPLIFIER.md section 9 in order: exact gadget coordinates and k-colouring, proof of (H2) for every proper k-colouring, the exact test 4n^2||v||^2 >= 1, the exact enumeration of generating and accidental edges in K(sqrt(4n^2||v||^2-1)), then the vertex-minimal subset of Corollary 4 and a verified (k+1)-colouring of it. Without such a certificate the amplifier has no instance.",
+  "escalation": null
+}

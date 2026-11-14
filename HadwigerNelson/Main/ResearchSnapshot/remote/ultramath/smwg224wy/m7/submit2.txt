@@ -1,0 +1,11 @@
+Resubmitted after review. Fix applied: `exists_measurable_proper_seven` and `weakMeasurableColoring_seven` restored; `Seven.lean`, `MeasurableAssembly.lean`, `MeasurableProper.lean`, `PlaneColoring/Basic.lean` are byte-identical to the baseline (diff-verified). The reviewer was right; the figure is 881.
+
+TREE `sprint/simplify/r1/m7/lean`: 84 modules, 30396 lines = 881 shorter than the 31277 baseline. Verified from scratch:
+- `hbuild.py --root sprint/simplify/r1/m7 --env $PWD/scripts/env4341.sh -j3 --fresh` -> 84/84 OK.
+- `certify.py` byte-identical to `sprint/simplify/m10/harness/BASELINE.cert` (same 7 statements, axioms [propext, Classical.choice, Quot.sound]).
+- stock Lean 4.33.1 via m4's d7.sh -> 84/84 OK, CheckBoth re-certifies all five statements.
+- 81 deleted declarations, all outside m10's closure (DELETED.txt); no sorry/axiom/opaque/native_decide.
+
+Reconciliation (REPORT.md §6): 669 dead declarations + 73 (`ConnectedUnitFree`, the only module removed) + 180 redundant `open` = 922 off the staged tree; that tree is +41 over the baseline, so 881 = the reviewer's 904 minus 23 (the five definitions `weakMeasurableColoring_seven` needs from `PlaneColoring/Basic`). Restoring `ConnectedUnitFree` gives 808.
+
+BLOCKER unchanged: the zone stops at `exists_terminal_factor`; the missing input is m6's `TerminalObligation` — one factor with (E) ergodic relative square and (H2) not on the diagonal — which needs (N). REPORT.md §3, §4.

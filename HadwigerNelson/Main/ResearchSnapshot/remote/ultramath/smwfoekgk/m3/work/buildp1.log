@@ -1,0 +1,59 @@
+48 modules to build (of 83)
+FAIL OAI.Geometry.PlaneColoring.WeakColoring
+FAIL OAI.Geometry.PlaneColoring.Compactness
+FAIL OAI.Analysis.PlaneSpectrum.CircleOperator
+ok   OAI.Analysis.PlaneSpectrum.InvariantMean
+FAIL OAI.Analysis.PlaneSpectrum.Multipliers
+FAIL OAI.Analysis.PlaneSpectrum.FourierTests
+ok   OAI.Analysis.PlaneSpectrum.SmallArcs
+ok   OAI.Analysis.PlaneSpectrum.PhaseEncoding
+FAIL OAI.Analysis.PlaneSpectrum.PhaseCollision
+FAIL OAI.MeasureTheory.CompactFactors.ConditionalSelection
+FAIL OAI.Analysis.PlaneSpectrum.ConditionalSpectrum
+ok   OAI.MeasureTheory.CompactFactors.Amenability
+ok   OAI.MeasureTheory.CompactFactors.Centers
+FAIL OAI.MeasureTheory.CompactFactors.RelativeCenters
+FAIL OAI.MeasureTheory.CompactFactors.Approximation
+FAIL OAI.MeasureTheory.CompactFactors.ConditionalLimits
+FAIL OAI.MeasureTheory.CompactFactors.Kernels
+FAIL OAI.MeasureTheory.CompactFactors.BoundedFunctions
+FAIL OAI.MeasureTheory.CompactFactors.RelativeProducts
+FAIL OAI.MeasureTheory.CompactFactors.Separability
+FAIL OAI.MeasureTheory.CompactFactors.AlgebraModels
+FAIL OAI.MeasureTheory.CompactFactors.Functions
+FAIL OAI.MeasureTheory.CompactFactors.Factors
+FAIL OAI.MeasureTheory.CompactFactors.Stationary
+FAIL OAI.Analysis.PlaneSpectrum.Representations
+FAIL OAI.Analysis.PlaneSpectrum.Energy
+FAIL OAI.Analysis.PlaneSpectrum.SpectralMeasure
+FAIL OAI.Analysis.PlaneSpectrum.Ergodicity
+ok   OAI.Geometry.PlaneColoring.Expansion
+FAIL OAI.Geometry.PlaneColoring.Palettes
+FAIL OAI.Geometry.PlaneColoring.PaletteDensity
+FAIL OAI.Geometry.PlaneColoring.BinaryPalettes
+FAIL OAI.Geometry.PlaneColoring.BoundaryTrace
+FAIL OAI.Geometry.PlaneColoring.AngularBoundary
+FAIL OAI.Geometry.PlaneColoring.Exclusion
+FAIL OAI.Geometry.PlaneColoring.FourContinuity
+FAIL OAI.Geometry.PlaneColoring.BorelTransfer
+FAIL OAI.Geometry.PlaneColoring.FiveSupport
+FAIL OAI.Geometry.PlaneColoring.CyclicCore
+FAIL OAI.Geometry.PlaneColoring.GraphRealization
+FAIL OAI.Geometry.PlaneColoring.Interfaces
+ok   OAI.Geometry.PlaneColoring.Moser
+FAIL OAI.Geometry.PlaneColoring.Sectors
+FAIL OAI.Geometry.PlaneColoring.ContinuumLimits
+FAIL OAI.Geometry.PlaneColoring.DiskExtension
+FAIL OAI.Geometry.PlaneColoring.GraphCuts
+FAIL OAI.Geometry.PlaneColoring.HoleApproximation
+ok   OAI.Geometry.PlaneColoring.Lattice
+done in 471s, 40 failures
+==================== OAI.Geometry.PlaneColoring.WeakColoring
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/Geometry/PlaneColoring/WeakColoring.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/build_p/OAI/Geometry/PlaneColoring/Coloring.olean' of module OAI.Geometry.PlaneColoring.Coloring does not exist
+
+==================== OAI.Geometry.PlaneColoring.Compactness
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/Geometry/PlaneColoring/Compactness.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/build_p/OAI/Geometry/PlaneColoring/WeakColoring.olean' of module OAI.Geometry.PlaneColoring.WeakColoring does not exist
+
+==================== OAI.Analysis.PlaneSpectrum.CircleOperator
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/build_p/OAI/Analysis/PlaneSpectrum/CircleDecay.olean' of module OAI.Analysis.PlaneSpectrum.CircleDecay does not exist
+

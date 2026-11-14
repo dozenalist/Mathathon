@@ -1,0 +1,751 @@
+{
+"OAI.Analysis.PlaneSpectrum.Basic": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"deps": [],
+"lines": 735,
+"code": 618,
+"bytes": 30123
+},
+"OAI.Analysis.PlaneSpectrum.Characters": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/Characters.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.Basic"
+],
+"lines": 560,
+"code": 493,
+"bytes": 24819
+},
+"OAI.Analysis.PlaneSpectrum.CircleDecay": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/CircleDecay.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.Fourier",
+"OAI.Geometry.PlaneColoring.Coloring"
+],
+"lines": 241,
+"code": 235,
+"bytes": 12884
+},
+"OAI.Analysis.PlaneSpectrum.CircleOperator": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.CircleDecay",
+"OAI.Geometry.PlaneColoring.Compactness"
+],
+"lines": 308,
+"code": 301,
+"bytes": 17561
+},
+"OAI.Analysis.PlaneSpectrum.ConditionalSpectrum": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.FourierTests",
+"OAI.Analysis.PlaneSpectrum.SmallArcs",
+"OAI.MeasureTheory.CompactFactors.ConditionalSelection"
+],
+"lines": 497,
+"code": 453,
+"bytes": 23172
+},
+"OAI.Analysis.PlaneSpectrum.Energy": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/Energy.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.Representations"
+],
+"lines": 453,
+"code": 417,
+"bytes": 21041
+},
+"OAI.Analysis.PlaneSpectrum.Ergodicity": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.RadialEnergy",
+"OAI.Analysis.PlaneSpectrum.SpectralMeasure"
+],
+"lines": 415,
+"code": 402,
+"bytes": 21649
+},
+"OAI.Analysis.PlaneSpectrum.Fourier": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/Fourier.lean",
+"deps": [],
+"lines": 163,
+"code": 157,
+"bytes": 9108
+},
+"OAI.Analysis.PlaneSpectrum.FourierTests": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/FourierTests.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.Multipliers"
+],
+"lines": 295,
+"code": 264,
+"bytes": 12049
+},
+"OAI.Analysis.PlaneSpectrum.InvariantMean": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"deps": [],
+"lines": 1078,
+"code": 902,
+"bytes": 45288
+},
+"OAI.Analysis.PlaneSpectrum.Multipliers": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/Multipliers.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.Characters",
+"OAI.Analysis.PlaneSpectrum.InvariantMean"
+],
+"lines": 314,
+"code": 272,
+"bytes": 13755
+},
+"OAI.Analysis.PlaneSpectrum.NumberFields": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean",
+"deps": [],
+"lines": 524,
+"code": 488,
+"bytes": 23306
+},
+"OAI.Analysis.PlaneSpectrum.PhaseCollision": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.PhaseEncoding"
+],
+"lines": 537,
+"code": 487,
+"bytes": 24280
+},
+"OAI.Analysis.PlaneSpectrum.PhaseEncoding": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean",
+"deps": [],
+"lines": 255,
+"code": 212,
+"bytes": 9756
+},
+"OAI.Analysis.PlaneSpectrum.RadialEnergy": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.Energy",
+"OAI.Analysis.PlaneSpectrum.Selections"
+],
+"lines": 472,
+"code": 449,
+"bytes": 21912
+},
+"OAI.Analysis.PlaneSpectrum.Representations": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/Representations.lean",
+"deps": [
+"OAI.MeasureTheory.CompactFactors.AlgebraModels",
+"OAI.MeasureTheory.CompactFactors.Stationary"
+],
+"lines": 477,
+"code": 463,
+"bytes": 24859
+},
+"OAI.Analysis.PlaneSpectrum.Selections": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/Selections.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.NumberFields"
+],
+"lines": 432,
+"code": 407,
+"bytes": 19396
+},
+"OAI.Analysis.PlaneSpectrum.SmallArcs": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/SmallArcs.lean",
+"deps": [],
+"lines": 322,
+"code": 292,
+"bytes": 12720
+},
+"OAI.Analysis.PlaneSpectrum.SpectralMeasure": {
+"path": "lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.Representations"
+],
+"lines": 388,
+"code": 378,
+"bytes": 19673
+},
+"OAI.Geometry.PlaneColoring.Accumulation": {
+"path": "lean/OAI/Geometry/PlaneColoring/Accumulation.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.Exclusion",
+"OAI.Geometry.PlaneColoring.FourTransport"
+],
+"lines": 401,
+"code": 389,
+"bytes": 19766
+},
+"OAI.Geometry.PlaneColoring.AngularBoundary": {
+"path": "lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.BoundaryTrace"
+],
+"lines": 503,
+"code": 486,
+"bytes": 24304
+},
+"OAI.Geometry.PlaneColoring.Assembly": {
+"path": "lean/OAI/Geometry/PlaneColoring/Assembly.lean",
+"deps": [],
+"lines": 43,
+"code": 35,
+"bytes": 1367
+},
+"OAI.Geometry.PlaneColoring.Basic": {
+"path": "lean/OAI/Geometry/PlaneColoring/Basic.lean",
+"deps": [],
+"lines": 47,
+"code": 32,
+"bytes": 1059
+},
+"OAI.Geometry.PlaneColoring.BinaryDynamics": {
+"path": "lean/OAI/Geometry/PlaneColoring/BinaryDynamics.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.Expansion"
+],
+"lines": 515,
+"code": 505,
+"bytes": 25370
+},
+"OAI.Geometry.PlaneColoring.BinaryPalettes": {
+"path": "lean/OAI/Geometry/PlaneColoring/BinaryPalettes.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.PaletteTransport"
+],
+"lines": 375,
+"code": 365,
+"bytes": 19699
+},
+"OAI.Geometry.PlaneColoring.BorelTransfer": {
+"path": "lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.Ergodicity",
+"OAI.Geometry.PlaneColoring.Coloring"
+],
+"lines": 458,
+"code": 443,
+"bytes": 24510
+},
+"OAI.Geometry.PlaneColoring.BoundaryTrace": {
+"path": "lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.Rigidity",
+"OAI.Geometry.PlaneColoring.States"
+],
+"lines": 367,
+"code": 356,
+"bytes": 19866
+},
+"OAI.Geometry.PlaneColoring.Chromatic": {
+"path": "lean/OAI/Geometry/PlaneColoring/Chromatic.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.Five",
+"OAI.Geometry.PlaneColoring.Seven",
+"OAI.Geometry.PlaneColoring.Basic"
+],
+"lines": 145,
+"code": 101,
+"bytes": 5735
+},
+"OAI.Geometry.PlaneColoring.CircleMaps": {
+"path": "lean/OAI/Geometry/PlaneColoring/CircleMaps.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.Coloring"
+],
+"lines": 517,
+"code": 505,
+"bytes": 27716
+},
+"OAI.Geometry.PlaneColoring.CircleTransport": {
+"path": "lean/OAI/Geometry/PlaneColoring/CircleTransport.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.BinaryDynamics",
+"OAI.Geometry.PlaneColoring.CircleMaps"
+],
+"lines": 336,
+"code": 326,
+"bytes": 18049
+},
+"OAI.Geometry.PlaneColoring.Coloring": {
+"path": "lean/OAI/Geometry/PlaneColoring/Coloring.lean",
+"deps": [],
+"lines": 34,
+"code": 26,
+"bytes": 1476
+},
+"OAI.Geometry.PlaneColoring.Compactness": {
+"path": "lean/OAI/Geometry/PlaneColoring/Compactness.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.WeakColoring"
+],
+"lines": 379,
+"code": 369,
+"bytes": 21070
+},
+"OAI.Geometry.PlaneColoring.ConnectedUnitFree": {
+"path": "lean/OAI/Geometry/PlaneColoring/ConnectedUnitFree.lean",
+"deps": [],
+"lines": 73,
+"code": 60,
+"bytes": 3505
+},
+"OAI.Geometry.PlaneColoring.ContinuumLimits": {
+"path": "lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.GraphRealization",
+"OAI.Geometry.PlaneColoring.Interfaces",
+"OAI.Geometry.PlaneColoring.Sectors"
+],
+"lines": 353,
+"code": 331,
+"bytes": 17849
+},
+"OAI.Geometry.PlaneColoring.Converse": {
+"path": "lean/OAI/Geometry/PlaneColoring/Converse.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.States"
+],
+"lines": 86,
+"code": 75,
+"bytes": 3547
+},
+"OAI.Geometry.PlaneColoring.Covering": {
+"path": "lean/OAI/Geometry/PlaneColoring/Covering.lean",
+"deps": [],
+"lines": 97,
+"code": 87,
+"bytes": 3157
+},
+"OAI.Geometry.PlaneColoring.CyclicCore": {
+"path": "lean/OAI/Geometry/PlaneColoring/CyclicCore.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.FiveSupport"
+],
+"lines": 280,
+"code": 272,
+"bytes": 14060
+},
+"OAI.Geometry.PlaneColoring.DiskAverages": {
+"path": "lean/OAI/Geometry/PlaneColoring/DiskAverages.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.Accumulation"
+],
+"lines": 333,
+"code": 327,
+"bytes": 17874
+},
+"OAI.Geometry.PlaneColoring.DiskExtension": {
+"path": "lean/OAI/Geometry/PlaneColoring/DiskExtension.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.GraphRealization"
+],
+"lines": 611,
+"code": 583,
+"bytes": 28346
+},
+"OAI.Geometry.PlaneColoring.Exclusion": {
+"path": "lean/OAI/Geometry/PlaneColoring/Exclusion.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.AngularBoundary"
+],
+"lines": 165,
+"code": 157,
+"bytes": 8526
+},
+"OAI.Geometry.PlaneColoring.Expansion": {
+"path": "lean/OAI/Geometry/PlaneColoring/Expansion.lean",
+"deps": [],
+"lines": 725,
+"code": 708,
+"bytes": 35621
+},
+"OAI.Geometry.PlaneColoring.Five": {
+"path": "lean/OAI/Geometry/PlaneColoring/Five.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.BorelTransfer",
+"OAI.Geometry.PlaneColoring.Mesh"
+],
+"lines": 139,
+"code": 126,
+"bytes": 6364
+},
+"OAI.Geometry.PlaneColoring.FiveSupport": {
+"path": "lean/OAI/Geometry/PlaneColoring/FiveSupport.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.Accumulation"
+],
+"lines": 376,
+"code": 363,
+"bytes": 20467
+},
+"OAI.Geometry.PlaneColoring.FourContinuity": {
+"path": "lean/OAI/Geometry/PlaneColoring/FourContinuity.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.States"
+],
+"lines": 551,
+"code": 540,
+"bytes": 30518
+},
+"OAI.Geometry.PlaneColoring.FourTransport": {
+"path": "lean/OAI/Geometry/PlaneColoring/FourTransport.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.FourContinuity"
+],
+"lines": 454,
+"code": 442,
+"bytes": 23765
+},
+"OAI.Geometry.PlaneColoring.FullApproximation": {
+"path": "lean/OAI/Geometry/PlaneColoring/FullApproximation.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.ContinuumLimits",
+"OAI.Geometry.PlaneColoring.GraphPatches"
+],
+"lines": 339,
+"code": 323,
+"bytes": 16738
+},
+"OAI.Geometry.PlaneColoring.GraphCuts": {
+"path": "lean/OAI/Geometry/PlaneColoring/GraphCuts.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.DiskExtension"
+],
+"lines": 314,
+"code": 300,
+"bytes": 14835
+},
+"OAI.Geometry.PlaneColoring.GraphPatches": {
+"path": "lean/OAI/Geometry/PlaneColoring/GraphPatches.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.GraphCuts",
+"OAI.Geometry.PlaneColoring.HoleApproximation"
+],
+"lines": 314,
+"code": 304,
+"bytes": 14290
+},
+"OAI.Geometry.PlaneColoring.GraphRealization": {
+"path": "lean/OAI/Geometry/PlaneColoring/GraphRealization.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.CyclicCore",
+"OAI.Geometry.PlaneColoring.PlanarCovers"
+],
+"lines": 415,
+"code": 395,
+"bytes": 19715
+},
+"OAI.Geometry.PlaneColoring.HoleApproximation": {
+"path": "lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.DiskExtension"
+],
+"lines": 328,
+"code": 317,
+"bytes": 16325
+},
+"OAI.Geometry.PlaneColoring.Interfaces": {
+"path": "lean/OAI/Geometry/PlaneColoring/Interfaces.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.AngularBoundary"
+],
+"lines": 527,
+"code": 509,
+"bytes": 29099
+},
+"OAI.Geometry.PlaneColoring.Lattice": {
+"path": "lean/OAI/Geometry/PlaneColoring/Lattice.lean",
+"deps": [],
+"lines": 66,
+"code": 47,
+"bytes": 2175
+},
+"OAI.Geometry.PlaneColoring.MeasurableAssembly": {
+"path": "lean/OAI/Geometry/PlaneColoring/MeasurableAssembly.lean",
+"deps": [],
+"lines": 57,
+"code": 49,
+"bytes": 2015
+},
+"OAI.Geometry.PlaneColoring.MeasurableProper": {
+"path": "lean/OAI/Geometry/PlaneColoring/MeasurableProper.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.Basic"
+],
+"lines": 68,
+"code": 53,
+"bytes": 2157
+},
+"OAI.Geometry.PlaneColoring.Mesh": {
+"path": "lean/OAI/Geometry/PlaneColoring/Mesh.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.FullApproximation"
+],
+"lines": 154,
+"code": 145,
+"bytes": 7916
+},
+"OAI.Geometry.PlaneColoring.Metric": {
+"path": "lean/OAI/Geometry/PlaneColoring/Metric.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.Basic"
+],
+"lines": 72,
+"code": 56,
+"bytes": 2550
+},
+"OAI.Geometry.PlaneColoring.Moser": {
+"path": "lean/OAI/Geometry/PlaneColoring/Moser.lean",
+"deps": [],
+"lines": 439,
+"code": 430,
+"bytes": 20219
+},
+"OAI.Geometry.PlaneColoring.NullSetRobust": {
+"path": "lean/OAI/Geometry/PlaneColoring/NullSetRobust.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.Converse",
+"OAI.Geometry.PlaneColoring.Five"
+],
+"lines": 67,
+"code": 59,
+"bytes": 2851
+},
+"OAI.Geometry.PlaneColoring.PaletteDensity": {
+"path": "lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.CircleTransport",
+"OAI.Geometry.PlaneColoring.Palettes"
+],
+"lines": 485,
+"code": 472,
+"bytes": 25127
+},
+"OAI.Geometry.PlaneColoring.PaletteTransport": {
+"path": "lean/OAI/Geometry/PlaneColoring/PaletteTransport.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.PaletteDensity"
+],
+"lines": 458,
+"code": 443,
+"bytes": 24025
+},
+"OAI.Geometry.PlaneColoring.Palettes": {
+"path": "lean/OAI/Geometry/PlaneColoring/Palettes.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.Transitions"
+],
+"lines": 124,
+"code": 120,
+"bytes": 6994
+},
+"OAI.Geometry.PlaneColoring.PlanarCovers": {
+"path": "lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.DiskAverages"
+],
+"lines": 402,
+"code": 394,
+"bytes": 18061
+},
+"OAI.Geometry.PlaneColoring.Rigidity": {
+"path": "lean/OAI/Geometry/PlaneColoring/Rigidity.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.PaletteTransport"
+],
+"lines": 443,
+"code": 424,
+"bytes": 23053
+},
+"OAI.Geometry.PlaneColoring.Sectors": {
+"path": "lean/OAI/Geometry/PlaneColoring/Sectors.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.AngularBoundary",
+"OAI.Geometry.PlaneColoring.Moser"
+],
+"lines": 453,
+"code": 440,
+"bytes": 22940
+},
+"OAI.Geometry.PlaneColoring.Seven": {
+"path": "lean/OAI/Geometry/PlaneColoring/Seven.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.Assembly",
+"OAI.Geometry.PlaneColoring.Lattice",
+"OAI.Geometry.PlaneColoring.Metric",
+"OAI.Geometry.PlaneColoring.Covering",
+"OAI.Geometry.PlaneColoring.MeasurableAssembly",
+"OAI.Geometry.PlaneColoring.MeasurableProper"
+],
+"lines": 68,
+"code": 54,
+"bytes": 2679
+},
+"OAI.Geometry.PlaneColoring.States": {
+"path": "lean/OAI/Geometry/PlaneColoring/States.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.BinaryPalettes"
+],
+"lines": 764,
+"code": 750,
+"bytes": 41724
+},
+"OAI.Geometry.PlaneColoring.Transfer": {
+"path": "lean/OAI/Geometry/PlaneColoring/Transfer.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.Converse",
+"OAI.Geometry.PlaneColoring.BorelTransfer"
+],
+"lines": 37,
+"code": 29,
+"bytes": 1199
+},
+"OAI.Geometry.PlaneColoring.Transitions": {
+"path": "lean/OAI/Geometry/PlaneColoring/Transitions.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.CircleOperator"
+],
+"lines": 150,
+"code": 146,
+"bytes": 8269
+},
+"OAI.Geometry.PlaneColoring.WeakColoring": {
+"path": "lean/OAI/Geometry/PlaneColoring/WeakColoring.lean",
+"deps": [
+"OAI.Geometry.PlaneColoring.Coloring"
+],
+"lines": 176,
+"code": 170,
+"bytes": 9513
+},
+"OAI.MeasureTheory.CompactFactors.AlgebraModels": {
+"path": "lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean",
+"deps": [
+"OAI.MeasureTheory.CompactFactors.Separability"
+],
+"lines": 664,
+"code": 620,
+"bytes": 33788
+},
+"OAI.MeasureTheory.CompactFactors.Amenability": {
+"path": "lean/OAI/MeasureTheory/CompactFactors/Amenability.lean",
+"deps": [],
+"lines": 411,
+"code": 346,
+"bytes": 17252
+},
+"OAI.MeasureTheory.CompactFactors.Approximation": {
+"path": "lean/OAI/MeasureTheory/CompactFactors/Approximation.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"OAI.MeasureTheory.CompactFactors.RelativeCenters"
+],
+"lines": 496,
+"code": 465,
+"bytes": 23925
+},
+"OAI.MeasureTheory.CompactFactors.BoundedFunctions": {
+"path": "lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean",
+"deps": [
+"OAI.MeasureTheory.CompactFactors.Kernels"
+],
+"lines": 223,
+"code": 175,
+"bytes": 9389
+},
+"OAI.MeasureTheory.CompactFactors.Centers": {
+"path": "lean/OAI/MeasureTheory/CompactFactors/Centers.lean",
+"deps": [],
+"lines": 703,
+"code": 596,
+"bytes": 29091
+},
+"OAI.MeasureTheory.CompactFactors.ConditionalLimits": {
+"path": "lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+"deps": [
+"OAI.MeasureTheory.CompactFactors.Approximation"
+],
+"lines": 701,
+"code": 663,
+"bytes": 35787
+},
+"OAI.MeasureTheory.CompactFactors.ConditionalSelection": {
+"path": "lean/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.PhaseCollision"
+],
+"lines": 442,
+"code": 402,
+"bytes": 20975
+},
+"OAI.MeasureTheory.CompactFactors.Factors": {
+"path": "lean/OAI/MeasureTheory/CompactFactors/Factors.lean",
+"deps": [
+"OAI.MeasureTheory.CompactFactors.Functions"
+],
+"lines": 586,
+"code": 509,
+"bytes": 26591
+},
+"OAI.MeasureTheory.CompactFactors.Functions": {
+"path": "lean/OAI/MeasureTheory/CompactFactors/Functions.lean",
+"deps": [
+"OAI.MeasureTheory.CompactFactors.Kernels"
+],
+"lines": 884,
+"code": 833,
+"bytes": 44391
+},
+"OAI.MeasureTheory.CompactFactors.Kernels": {
+"path": "lean/OAI/MeasureTheory/CompactFactors/Kernels.lean",
+"deps": [
+"OAI.MeasureTheory.CompactFactors.ConditionalLimits"
+],
+"lines": 774,
+"code": 711,
+"bytes": 36483
+},
+"OAI.MeasureTheory.CompactFactors.RelativeCenters": {
+"path": "lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+"deps": [
+"OAI.Analysis.PlaneSpectrum.Basic",
+"OAI.MeasureTheory.CompactFactors.Centers"
+],
+"lines": 598,
+"code": 521,
+"bytes": 26179
+},
+"OAI.MeasureTheory.CompactFactors.RelativeProducts": {
+"path": "lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean",
+"deps": [
+"OAI.MeasureTheory.CompactFactors.Amenability",
+"OAI.MeasureTheory.CompactFactors.BoundedFunctions"
+],
+"lines": 472,
+"code": 412,
+"bytes": 21376
+},
+"OAI.MeasureTheory.CompactFactors.Separability": {
+"path": "lean/OAI/MeasureTheory/CompactFactors/Separability.lean",
+"deps": [
+"OAI.MeasureTheory.CompactFactors.RelativeProducts"
+],
+"lines": 573,
+"code": 528,
+"bytes": 25674
+},
+"OAI.MeasureTheory.CompactFactors.Stationary": {
+"path": "lean/OAI/MeasureTheory/CompactFactors/Stationary.lean",
+"deps": [
+"OAI.MeasureTheory.CompactFactors.Factors"
+],
+"lines": 201,
+"code": 191,
+"bytes": 10362
+},
+"__total__": {
+"lines": 31277,
+"code": 29100
+}
+}

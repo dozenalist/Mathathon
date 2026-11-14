@@ -1,0 +1,7 @@
+{
+ "fails": [],
+ "secs": {
+  "OAI.Geometry.PlaneColoring.Coloring": 3.0739939212799072
+ },
+ "wall": 3.074371814727783
+}

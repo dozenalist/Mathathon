@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-14T18:12:06.950Z",
+  "status": "all_modules_consumer_and_axiom_audit_passed",
+  "lean": "4.34.1",
+  "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "originalsUnchanged": true,
+  "modules": [
+    "ConeGeometry.lean",
+    "ConeObstruction.lean",
+    "ConeSurvivor.lean"
+  ],
+  "hashes": {
+    "ConeGeometry.lean": "12c254d0520f76235a3576bdb344378e885973ff3810911c7a3fee29d68b3b03",
+    "ConeObstruction.lean": "41298784d3226ccdebe315dba22659672bc7d1f3aedf4acb647a82fb355e4a50",
+    "ConeSurvivor.lean": "527c74754eaa73c988929eceb0a194fbe6b2d98cc1a608660efc5b5a2f3a6ab2"
+  },
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "sorryAx": false,
+  "auditLog": "cone-audit-v3.log",
+  "finishedUtc": "2026-11-14T18:13:21.035Z"
+}

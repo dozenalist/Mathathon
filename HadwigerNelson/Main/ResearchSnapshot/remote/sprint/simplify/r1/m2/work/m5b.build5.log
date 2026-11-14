@@ -1,0 +1,246 @@
+OK   OAI.Analysis.PlaneSpectrum.Basic [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.DifferenceLaw [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.Fourier [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.InvariantMean [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.NumberFields [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.PhaseEncoding [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.SmallArcs [0.0s]
+OK   OAI.Geometry.PlaneColoring.Assembly [0.0s]
+OK   OAI.Geometry.PlaneColoring.Basic [0.0s]
+OK   OAI.Geometry.PlaneColoring.Coloring [0.0s]
+OK   OAI.Geometry.PlaneColoring.Covering [0.0s]
+OK   OAI.Geometry.PlaneColoring.Expansion [0.0s]
+OK   OAI.Geometry.PlaneColoring.Lattice [0.0s]
+OK   OAI.Geometry.PlaneColoring.Moser [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.Amenability [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.Centers [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.Characters [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.CircleDecay [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.PhaseCollision [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.Selections [0.0s]
+OK   OAI.Geometry.PlaneColoring.BinaryDynamics [0.0s]
+OK   OAI.Geometry.PlaneColoring.CircleMaps [0.0s]
+OK   OAI.Geometry.PlaneColoring.Metric [0.0s]
+OK   OAI.Geometry.PlaneColoring.WeakColoring [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.RelativeCenters [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.Multipliers [0.0s]
+OK   OAI.Geometry.PlaneColoring.CircleTransport [0.0s]
+OK   OAI.Geometry.PlaneColoring.Compactness [0.0s]
+FAIL OAI.Geometry.PlaneColoring.Seven [0.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/Seven.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/MeasurableProper.olean' of module OAI.Geometry.PlaneColoring.MeasurableProper does not exist
+
+OK   OAI.MeasureTheory.CompactFactors.ConditionalSelection [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.DifferenceInvariant [4.6s]
+OK   OAI.Analysis.PlaneSpectrum.CircleOperator [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.FourierTests [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.ConditionalSpectrum [0.0s]
+OK   OAI.Geometry.PlaneColoring.Transitions [0.0s]
+OK   OAI.Geometry.PlaneColoring.Palettes [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.Approximation [4.1s]
+OK   OAI.Geometry.PlaneColoring.PaletteDensity [3.8s]
+FAIL OAI.MeasureTheory.CompactFactors.ConditionalLimits [8.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:191:0: error: unexpected identifier; expected command
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:194:22: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace G
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:195:4: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace G
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:195:39: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace G
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:195:50: error: unsolved goals
+X : Type u_1
+Y : Type u_2
+inst✝⁶ : MeasurableSpace X
+inst✝⁵ : MeasurableSpace Y
+inst✝⁴ : MulAction (↥K) X
+inst✝³ : MulAction (↥K) Y
+inst✝² : MeasurableConstSMul (↥K) X
+inst✝¹ : MeasurableConstSMul (↥K) Y
+G : Type u_4
+μ : Measure X
+inst✝ : IsProbabilityMeasure μ
+b : X → G
+hb : sorry
+y₀ : Y
+⊢ sorry = sorry
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:201:22: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace G
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:202:6: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace G
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:202:39: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace G
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:203:7: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace G
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:205:24: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace G
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI
+OK   OAI.Geometry.PlaneColoring.PaletteTransport [3.2s]
+FAIL OAI.MeasureTheory.CompactFactors.Kernels [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/Kernels.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/MeasureTheory/CompactFactors/ConditionalLimits.olean' of module OAI.MeasureTheory.CompactFactors.ConditionalLimits does not exist
+
+OK   OAI.Geometry.PlaneColoring.BinaryPalettes [4.9s]
+FAIL OAI.Geometry.PlaneColoring.Rigidity [4.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/Rigidity.lean:386:17: error(lean.unknownIdentifier): Unknown identifier `mem_radialSide`
+
+FAIL OAI.MeasureTheory.CompactFactors.BoundedFunctions [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/MeasureTheory/CompactFactors/Kernels.olean' of module OAI.MeasureTheory.CompactFactors.Kernels does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.Functions [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/Functions.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/MeasureTheory/CompactFactors/Kernels.olean' of module OAI.MeasureTheory.CompactFactors.Kernels does not exist
+
+FAIL OAI.Geometry.PlaneColoring.States [3.8s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/States.lean:50:11: error(lean.invalidField): Invalid field `mono_ae`: The environment does not contain `Function.mono_ae`, so it is not possible to project the field `mono_ae` from an expression
+  ht
+of type
+  ∀ ⦃U : Set ℝ⦄, U ∈ 𝓝 0 → U ∈ map (fun r => volume.real (Aᶜ ∩ Metric.closedBall t r) / r) (𝓝[>] 0)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/States.lean:51:2: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/States.lean:62:10: error(lean.unknownIdentifier): Unknown constant `OAI.EuclideanFiveColor.DensityZero.biUnion_finset`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/States.lean:63:10: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/States.lean:71:13: error(lean.invalidField): Invalid field `compl`: The environment does not contain `Function.compl`, so it is not possible to project the field `compl` from an expression
+  hz
+of type
+  ?m.93 ∈ 𝓝 0 →
+    ?m.93 ∈
+      map
+        (fun r =>
+          volume ((⋃ i ∈ J ∪ K, {z | c z = i}) ∩ Metric.closedBall (angularSum x 1 (angleChart (t, u))) r) /
+            volume (Metric.closedBall (angularSum x 1 (angleChart (t, u))) r))
+        (𝓝[>] 0)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/States.lean:72:2: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/States.lean:88:10: error(lean.unknownIdentifier): Unknown constant `OAI.EuclideanFiveColor.DensityOne.iInter`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/States.lean:89:4: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/States.lean:105:72: error(lean.invalidField): Invalid field `measure_ne_zero`: The environment does not contain `Function.measure_ne_zero`, so it is not possible to project the field `measure_ne_zero` from an expression
+  hmem
+of type
+  ∀ ⦃U : Set ENNReal⦄,
+    U ∈ 𝓝 1 →
+      U ∈
+        map (fun r => volume ((⋂ v, {q | c (q + z v) ∈ J v}) ∩ Metric.closedBall 0 r) / volume (Metric.closedBall 0 r))
+          (𝓝[>] 0)
+
+FAIL OAI.MeasureTheory.CompactFactors.Factors [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/MeasureTheory/CompactFactors/Functions.olean' of module OAI.MeasureTheory.CompactFactors.Functions does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.RelativeProducts [0.7s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/MeasureTheory/CompactFactors/BoundedFunctions.olean' of module OAI.MeasureTheory.CompactFactors.BoundedFunctions does not exist
+
+FAIL OAI.Geometry.PlaneColoring.BoundaryTrace [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/Rigidity.olean' of module OAI.Geometry.PlaneColoring.Rigidity does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Converse [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/Converse.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/States.olean' of module OAI.Geometry.PlaneColoring.States does not exist
+
+FAIL OAI.Geometry.PlaneColoring.FourContinuity [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/States.olean' of module OAI.Geometry.PlaneColoring.States does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.Separability [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/MeasureTheory/CompactFactors/RelativeProducts.olean' of module OAI.MeasureTheory.CompactFactors.RelativeProducts does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.Stationary [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/MeasureTheory/CompactFactors/Factors.olean' of module OAI.MeasureTheory.CompactFactors.Factors does not exist
+
+FAIL OAI.Geometry.PlaneColoring.AngularBoundary [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/BoundaryTrace.olean' of module OAI.Geometry.PlaneColoring.BoundaryTrace does not exist
+
+FAIL OAI.Geometry.PlaneColoring.FourTransport [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/FourTransport.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/FourContinuity.olean' of module OAI.Geometry.PlaneColoring.FourContinuity does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.AlgebraModels [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/MeasureTheory/CompactFactors/Separability.olean' of module OAI.MeasureTheory.CompactFactors.Separability does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.Representations [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/MeasureTheory/CompactFactors/AlgebraModels.olean' of module OAI.MeasureTheory.CompactFactors.AlgebraModels does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Exclusion [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/Exclusion.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/AngularBoundary.olean' of module OAI.Geometry.PlaneColoring.AngularBoundary does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Interfaces [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/AngularBoundary.olean' of module OAI.Geometry.PlaneColoring.AngularBoundary does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Sectors [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/Sectors.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/AngularBoundary.olean' of module OAI.Geometry.PlaneColoring.AngularBoundary does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.Energy [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Analysis/PlaneSpectrum/Representations.olean' of module OAI.Analysis.PlaneSpectrum.Representations does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.SpectralMeasure [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Analysis/PlaneSpectrum/Representations.olean' of module OAI.Analysis.PlaneSpectrum.Representations does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Accumulation [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/Accumulation.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/Exclusion.olean' of module OAI.Geometry.PlaneColoring.Exclusion does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.RadialEnergy [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Analysis/PlaneSpectrum/Energy.olean' of module OAI.Analysis.PlaneSpectrum.Energy does not exist
+
+FAIL OAI.Geometry.PlaneColoring.DiskAverages [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/Accumulation.olean' of module OAI.Geometry.PlaneColoring.Accumulation does not exist
+
+FAIL OAI.Geometry.PlaneColoring.FiveSupport [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/Accumulation.olean' of module OAI.Geometry.PlaneColoring.Accumulation does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.Ergodicity [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Analysis/PlaneSpectrum/RadialEnergy.olean' of module OAI.Analysis.PlaneSpectrum.RadialEnergy does not exist
+
+FAIL OAI.Geometry.PlaneColoring.CyclicCore [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/CyclicCore.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/FiveSupport.olean' of module OAI.Geometry.PlaneColoring.FiveSupport does not exist
+
+FAIL OAI.Geometry.PlaneColoring.PlanarCovers [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/DiskAverages.olean' of module OAI.Geometry.PlaneColoring.DiskAverages does not exist
+
+FAIL OAI.Geometry.PlaneColoring.BorelTransfer [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Analysis/PlaneSpectrum/Ergodicity.olean' of module OAI.Analysis.PlaneSpectrum.Ergodicity does not exist
+
+FAIL OAI.Geometry.PlaneColoring.GraphRealization [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/CyclicCore.olean' of module OAI.Geometry.PlaneColoring.CyclicCore does not exist
+
+FAIL OAI.Geometry.PlaneColoring.ContinuumLimits [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/GraphRealization.olean' of module OAI.Geometry.PlaneColoring.GraphRealization does not exist
+
+FAIL OAI.Geometry.PlaneColoring.DiskExtension [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/GraphRealization.olean' of module OAI.Geometry.PlaneColoring.GraphRealization does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Transfer [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/Transfer.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/Converse.olean' of module OAI.Geometry.PlaneColoring.Converse does not exist
+
+FAIL OAI.Geometry.PlaneColoring.GraphCuts [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/DiskExtension.olean' of module OAI.Geometry.PlaneColoring.DiskExtension does not exist
+
+FAIL OAI.Geometry.PlaneColoring.HoleApproximation [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/DiskExtension.olean' of module OAI.Geometry.PlaneColoring.DiskExtension does not exist
+
+FAIL OAI.Geometry.PlaneColoring.GraphPatches [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/GraphPatches.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/GraphCuts.olean' of module OAI.Geometry.PlaneColoring.GraphCuts does not exist
+
+FAIL OAI.Geometry.PlaneColoring.FullApproximation [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/FullApproximation.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/ContinuumLimits.olean' of module OAI.Geometry.PlaneColoring.ContinuumLimits does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Mesh [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/Mesh.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/FullApproximation.olean' of module OAI.Geometry.PlaneColoring.FullApproximation does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Five [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/Five.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/BorelTransfer.olean' of module OAI.Geometry.PlaneColoring.BorelTransfer does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Chromatic [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/Chromatic.lean:17:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/Five.olean' of module OAI.Geometry.PlaneColoring.Five does not exist
+
+FAIL OAI.Geometry.PlaneColoring.NullSetRobust [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/OAI/Geometry/PlaneColoring/NullSetRobust.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m5b/lean/build/lib/OAI/Geometry/PlaneColoring/Converse.olean' of module OAI.Geometry.PlaneColoring.Converse does not exist
+
+
+39/82 modules OK in 30s (j=2); sum of module times 40s
+FAILED: OAI.Geometry.PlaneColoring.Seven, OAI.MeasureTheory.CompactFactors.ConditionalLimits, OAI.MeasureTheory.CompactFactors.Kernels, OAI.Geometry.PlaneColoring.Rigidity, OAI.MeasureTheory.CompactFactors.BoundedFunctions, OAI.MeasureTheory.CompactFactors.Functions, OAI.Geometry.PlaneColoring.States, OAI.MeasureTheory.CompactFactors.Factors, OAI.MeasureTheory.CompactFactors.RelativeProducts, OAI.Geometry.PlaneColoring.BoundaryTrace, OAI.Geometry.PlaneColoring.Converse, OAI.Geometry.PlaneColoring.FourContinuity, OAI.MeasureTheory.CompactFactors.Separability, OAI.MeasureTheory.CompactFactors.Stationary, OAI.Geometry.PlaneColoring.AngularBoundary, OAI.Geometry.PlaneColoring.FourTransport, OAI.MeasureTheory.CompactFactors.AlgebraModels, OAI.Analysis.PlaneSpectrum.Representations, OAI.Geometry.PlaneColoring.Exclusion, OAI.Geometry.PlaneColoring.Interfaces, OAI.Geometry.PlaneColoring.Sectors, OAI.Analysis.PlaneSpectrum.Energy, OAI.Analysis.PlaneSpectrum.SpectralMeasure, OAI.Geometry.PlaneColoring.Accumulation, OAI.Analysis.PlaneSpectrum.RadialEnergy, OAI.Geometry.PlaneColoring.DiskAverages, OAI.Geometry.PlaneColoring.FiveSupport, OAI.Analysis.PlaneSpectrum.Ergodicity, OAI.Geometry.PlaneColoring.CyclicCore, OAI.Geometry.PlaneColoring.PlanarCovers, OAI.Geometry.PlaneColoring.BorelTransfer, OAI.Geometry.PlaneColoring.GraphRealization, OAI.Geometry.PlaneColoring.ContinuumLimits, OAI.Geometry.PlaneColoring.DiskExtension, OAI.Geometry.PlaneColoring.Transfer, OAI.Geometry.PlaneColoring.GraphCuts, OAI.Geometry.PlaneColoring.HoleApproximation, OAI.Geometry.PlaneColoring.GraphPatches, OAI.Geometry.PlaneColoring.FullApproximation, OAI.Geometry.PlaneColoring.Mesh, OAI.Geometry.PlaneColoring.Five, OAI.Geometry.PlaneColoring.Chromatic, OAI.Geometry.PlaneColoring.NullSetRobust

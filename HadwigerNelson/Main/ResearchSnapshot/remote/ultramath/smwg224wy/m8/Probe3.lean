@@ -1,0 +1,9 @@
+import OAI.Analysis.PlaneSpectrum.Energy
+open MeasureTheory
+namespace OAI
+namespace PlaneFiveColor.Spectral
+#check @Measure.dirac_apply'
+#check @Measure.dirac_apply
+#check @MeasureTheory.BoundedMeasurable.measurable
+end PlaneFiveColor.Spectral
+end OAI

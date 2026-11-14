@@ -1,0 +1,2 @@
+# Preserve the exact bytes of frozen sources, certificates, and compiler logs.
+Main/ResearchSnapshot/** -text

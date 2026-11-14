@@ -1,0 +1,308 @@
+{
+ "schema": 4,
+ "frozen_from": "capture/real_summary.json (supervisor-verified local capture: 6 DECL, 133 BINDER, zero ERROR/MISSING, Lean exit 0)",
+ "frozen_at_utc": "2026-11-14T15:24Z",
+ "not_a_claim": "Supplementary inspection only. Exact binder identity is NOT part of the accepted integration evidence, which remains textual hypotheses + defeq + application compatibility (SignatureEquivalence R5, SignatureCheckFresh R5).",
+ "supersedes": {
+  "file": "archive/binder_expected.v2.FAILED.json",
+  "why": "v2 asserted StandardBorelSpace Y / Nonempty Y on the aliases; the real capture shows the theorems carry 8 instances without either, and the definitions carry 3."
+ },
+ "forbidden_all": [
+  "StandardBorelSpace Y",
+  "Nonempty Y"
+ ],
+ "theorems": {
+  "finite_uniform_precision_contradiction": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+   "total_binders": 31,
+   "type_binders": [
+    "X",
+    "Y",
+    "W"
+   ],
+   "type_binder_indices": {
+    "X": 0,
+    "Y": 1,
+    "W": 2
+   },
+   "type_binder_universes": {
+    "X": "Type u_1",
+    "Y": "Type u_2",
+    "W": "Type u_3"
+   },
+   "instance_allowed": [
+    "MeasurableSpace X",
+    "StandardBorelSpace X",
+    "Nonempty X",
+    "MeasurableSpace Y",
+    "MeasurableSpace W",
+    "StandardBorelSpace W",
+    "Nonempty W",
+    "MeasureTheory.IsProbabilityMeasure μ"
+   ],
+   "instance_count": 8,
+   "explicit_order": [
+    "μ",
+    "p",
+    "q",
+    "b",
+    "hp",
+    "hq",
+    "hb",
+    "m",
+    "hm",
+    "g",
+    "hg",
+    "hwild",
+    "ρ",
+    "c",
+    "N",
+    "hρ",
+    "hc",
+    "hN",
+    "harc",
+    "happrox"
+   ],
+   "unfrozen": false
+  },
+  "ambient_uniform_precision_contradiction": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+   "total_binders": 31,
+   "type_binders": [
+    "X",
+    "Y",
+    "W"
+   ],
+   "type_binder_indices": {
+    "X": 0,
+    "Y": 1,
+    "W": 2
+   },
+   "type_binder_universes": {
+    "X": "Type u_1",
+    "Y": "Type u_2",
+    "W": "Type u_3"
+   },
+   "instance_allowed": [
+    "MeasurableSpace X",
+    "StandardBorelSpace X",
+    "Nonempty X",
+    "MeasurableSpace Y",
+    "MeasurableSpace W",
+    "StandardBorelSpace W",
+    "Nonempty W",
+    "MeasureTheory.IsProbabilityMeasure μ"
+   ],
+   "instance_count": 8,
+   "explicit_order": [
+    "μ",
+    "p",
+    "q",
+    "b",
+    "hp",
+    "hq",
+    "hb",
+    "m",
+    "hm",
+    "g",
+    "hg",
+    "hwild",
+    "ρ",
+    "c",
+    "N",
+    "hρ",
+    "hc",
+    "hN",
+    "harc",
+    "happrox"
+   ],
+   "unfrozen": false
+  }
+ },
+ "definitions": {
+  "uniform_precision_contradiction": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+   "total_binders": 33,
+   "type_binders": [
+    "X",
+    "Y",
+    "W",
+    "Z"
+   ],
+   "type_binder_indices": {
+    "X": 0,
+    "Y": 1,
+    "W": 2,
+    "Z": 14
+   },
+   "type_binder_universes": {
+    "X": "Type u_1",
+    "Y": "Type u_2",
+    "W": "Type u_3",
+    "Z": "Type u_4"
+   },
+   "instance_allowed": [
+    "MeasurableSpace X",
+    "StandardBorelSpace X",
+    "Nonempty X",
+    "MeasurableSpace Y",
+    "MeasurableSpace W",
+    "StandardBorelSpace W",
+    "Nonempty W",
+    "MeasureTheory.IsProbabilityMeasure μ"
+   ],
+   "instance_count": 8,
+   "explicit_order": [
+    "μ",
+    "p",
+    "P",
+    "S",
+    "b",
+    "hp",
+    "hP",
+    "hb",
+    "m",
+    "hm",
+    "g",
+    "hg",
+    "hwild",
+    "ρ",
+    "c",
+    "N",
+    "hρ",
+    "hc",
+    "hN",
+    "harc",
+    "happrox"
+   ],
+   "unfrozen": false
+  },
+  "FiniteEncodingApproximationAt": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+   "total_binders": 12,
+   "type_binders": [
+    "X",
+    "Y",
+    "W"
+   ],
+   "type_binder_indices": {
+    "X": 0,
+    "Y": 1,
+    "W": 2
+   },
+   "type_binder_universes": {
+    "X": "Type u_1",
+    "Y": "Type u_2",
+    "W": "Type u_3"
+   },
+   "instance_allowed": [
+    "MeasurableSpace X",
+    "MeasurableSpace Y",
+    "MeasureTheory.IsProbabilityMeasure μ"
+   ],
+   "instance_count": 3,
+   "explicit_order": [
+    "μ",
+    "p",
+    "q",
+    "b",
+    "m",
+    "γ"
+   ],
+   "unfrozen": false
+  },
+  "AmbientEncodingAt": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+   "total_binders": 12,
+   "type_binders": [
+    "X",
+    "Y",
+    "W"
+   ],
+   "type_binder_indices": {
+    "X": 0,
+    "Y": 1,
+    "W": 2
+   },
+   "type_binder_universes": {
+    "X": "Type u_1",
+    "Y": "Type u_2",
+    "W": "Type u_3"
+   },
+   "instance_allowed": [
+    "MeasurableSpace X",
+    "MeasurableSpace Y",
+    "MeasureTheory.IsProbabilityMeasure μ"
+   ],
+   "instance_count": 3,
+   "explicit_order": [
+    "μ",
+    "p",
+    "q",
+    "b",
+    "m",
+    "γ"
+   ],
+   "unfrozen": false
+  },
+  "EncodingApproximationAt": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+   "total_binders": 14,
+   "type_binders": [
+    "X",
+    "Y",
+    "W",
+    "Z"
+   ],
+   "type_binder_indices": {
+    "X": 0,
+    "Y": 1,
+    "W": 2,
+    "Z": 9
+   },
+   "type_binder_universes": {
+    "X": "Type u_1",
+    "Y": "Type u_2",
+    "W": "Type u_3",
+    "Z": "Type u_4"
+   },
+   "instance_allowed": [
+    "MeasurableSpace X",
+    "MeasurableSpace Y",
+    "MeasureTheory.IsProbabilityMeasure μ"
+   ],
+   "instance_count": 3,
+   "explicit_order": [
+    "μ",
+    "p",
+    "P",
+    "S",
+    "b",
+    "m",
+    "γ"
+   ],
+   "unfrozen": false
+  }
+ },
+ "cross_checks": {
+  "total_binders": {
+   "finite_uniform_precision_contradiction": 31,
+   "ambient_uniform_precision_contradiction": 31,
+   "uniform_precision_contradiction": 33,
+   "FiniteEncodingApproximationAt": 12,
+   "AmbientEncodingAt": 12,
+   "EncodingApproximationAt": 14
+  },
+  "instance_counts": {
+   "finite_uniform_precision_contradiction": 8,
+   "ambient_uniform_precision_contradiction": 8,
+   "uniform_precision_contradiction": 8,
+   "FiniteEncodingApproximationAt": 3,
+   "AmbientEncodingAt": 3,
+   "EncodingApproximationAt": 3
+  },
+  "expected_theorem_instance_count": 8,
+  "expected_predicate_instance_count": 3,
+  "no_forbidden": true
+ }
+}

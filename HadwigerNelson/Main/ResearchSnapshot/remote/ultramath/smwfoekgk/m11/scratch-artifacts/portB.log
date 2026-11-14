@@ -1,0 +1,127 @@
+checking file OAI/Analysis/PlaneSpectrum/Basic.lean
+checking file OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean
+Hunk #1 succeeded at 102 (offset -23 lines).
+checking file OAI/Analysis/PlaneSpectrum/Energy.lean
+checking file OAI/Analysis/PlaneSpectrum/Ergodicity.lean
+checking file OAI/Analysis/PlaneSpectrum/Fourier.lean
+checking file OAI/Analysis/PlaneSpectrum/FourierTests.lean
+Hunk #1 succeeded at 233 (offset -5 lines).
+checking file OAI/Analysis/PlaneSpectrum/Multipliers.lean
+checking file OAI/Analysis/PlaneSpectrum/PhaseCollision.lean
+Hunk #1 succeeded at 342 (offset -23 lines).
+checking file OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean
+Hunk #1 succeeded at 106 (offset -9 lines).
+Hunk #2 succeeded at 195 (offset -12 lines).
+checking file OAI/Analysis/PlaneSpectrum/RadialEnergy.lean
+checking file OAI/Analysis/PlaneSpectrum/Representations.lean
+Hunk #1 succeeded at 314 (offset -6 lines).
+checking file OAI/Analysis/PlaneSpectrum/SmallArcs.lean
+Hunk #1 succeeded at 143 (offset -14 lines).
+Hunk #2 succeeded at 247 (offset -16 lines).
+checking file OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean
+checking file OAI/Geometry/PlaneColoring/Accumulation.lean
+checking file OAI/Geometry/PlaneColoring/BinaryPalettes.lean
+Hunk #1 succeeded at 198 (offset -10 lines).
+checking file OAI/Geometry/PlaneColoring/BorelTransfer.lean
+checking file OAI/Geometry/PlaneColoring/BoundaryTrace.lean
+checking file OAI/Geometry/PlaneColoring/Compactness.lean
+Hunk #1 succeeded at 201 (offset -20 lines).
+checking file OAI/Geometry/PlaneColoring/ContinuumLimits.lean
+checking file OAI/Geometry/PlaneColoring/DiskAverages.lean
+checking file OAI/Geometry/PlaneColoring/Expansion.lean
+Hunk #1 succeeded at 476 (offset -10 lines).
+checking file OAI/Geometry/PlaneColoring/GraphCuts.lean
+checking file OAI/Geometry/PlaneColoring/Interfaces.lean
+Hunk #1 succeeded at 295 (offset -11 lines).
+Hunk #2 succeeded at 308 (offset -11 lines).
+Hunk #3 succeeded at 476 (offset -11 lines).
+checking file OAI/Geometry/PlaneColoring/MeasurableProper.lean
+checking file OAI/Geometry/PlaneColoring/PaletteDensity.lean
+Hunk #1 succeeded at 162 (offset -16 lines).
+Hunk #2 succeeded at 455 (offset -22 lines).
+checking file OAI/Geometry/PlaneColoring/PlanarCovers.lean
+checking file OAI/Geometry/PlaneColoring/Transitions.lean
+checking file OAI/MeasureTheory/CompactFactors/AlgebraModels.lean
+Hunk #1 succeeded at 153 (offset -27 lines).
+checking file OAI/MeasureTheory/CompactFactors/Amenability.lean
+Hunk #1 succeeded at 8 with fuzz 2 (offset -1 lines).
+Hunk #2 succeeded at 408 (offset -8 lines).
+checking file OAI/MeasureTheory/CompactFactors/Approximation.lean
+Hunk #1 succeeded at 72 (offset -28 lines).
+Hunk #2 succeeded at 171 (offset -31 lines).
+Hunk #3 succeeded at 203 (offset -31 lines).
+Hunk #4 succeeded at 213 (offset -31 lines).
+Hunk #5 succeeded at 280 (offset -33 lines).
+Hunk #6 succeeded at 316 (offset -33 lines).
+Hunk #7 succeeded at 372 (offset -33 lines).
+checking file OAI/MeasureTheory/CompactFactors/Centers.lean
+Hunk #1 succeeded at 323 (offset -24 lines).
+Hunk #2 succeeded at 345 (offset -24 lines).
+Hunk #3 succeeded at 473 (offset -26 lines).
+Hunk #4 succeeded at 483 (offset -26 lines).
+Hunk #5 succeeded at 496 (offset -26 lines).
+Hunk #6 succeeded at 509 (offset -26 lines).
+Hunk #7 succeeded at 529 (offset -26 lines).
+Hunk #8 succeeded at 547 (offset -26 lines).
+Hunk #9 succeeded at 568 (offset -26 lines).
+Hunk #10 succeeded at 582 (offset -26 lines).
+Hunk #11 succeeded at 600 (offset -26 lines).
+Hunk #12 succeeded at 611 (offset -26 lines).
+Hunk #13 succeeded at 642 (offset -26 lines).
+checking file OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean
+Hunk #1 succeeded at 60 (offset -29 lines).
+Hunk #2 succeeded at 134 (offset -29 lines).
+Hunk #3 succeeded at 180 with fuzz 2 (offset -30 lines).
+Hunk #4 succeeded at 505 with fuzz 3 (offset 279 lines).
+Hunk #5 FAILED at 289.
+Hunk #6 FAILED at 303.
+Hunk #7 FAILED at 353.
+Hunk #8 FAILED at 399.
+Hunk #9 FAILED at 559.
+Hunk #10 FAILED at 636.
+Hunk #11 succeeded at 518 (offset -131 lines).
+6 out of 11 hunks FAILED
+checking file OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean
+Hunk #1 succeeded at 182 (offset -15 lines).
+Hunk #2 succeeded at 191 (offset -15 lines).
+Hunk #3 succeeded at 309 (offset -17 lines).
+checking file OAI/MeasureTheory/CompactFactors/Factors.lean
+Hunk #1 succeeded at 59 (offset -31 lines).
+Hunk #2 succeeded at 106 (offset -31 lines).
+Hunk #3 succeeded at 320 (offset -36 lines).
+Hunk #4 succeeded at 339 (offset -36 lines).
+Hunk #5 succeeded at 367 (offset -37 lines).
+Hunk #6 succeeded at 433 (offset -37 lines).
+Hunk #7 succeeded at 441 (offset -37 lines).
+checking file OAI/MeasureTheory/CompactFactors/Functions.lean
+Hunk #1 succeeded at 37 (offset -32 lines).
+Hunk #2 FAILED at 118.
+Hunk #3 succeeded at 98 (offset -52 lines).
+Hunk #4 succeeded at 157 (offset -52 lines).
+Hunk #5 succeeded at 389 (offset -55 lines).
+Hunk #6 succeeded at 491 (offset -57 lines).
+Hunk #7 succeeded at 528 (offset -57 lines).
+Hunk #8 succeeded at 671 (offset -59 lines).
+Hunk #9 succeeded at 747 (offset -62 lines).
+1 out of 9 hunks FAILED
+checking file OAI/MeasureTheory/CompactFactors/Kernels.lean
+Hunk #1 succeeded at 136 (offset -31 lines).
+Hunk #2 succeeded at 197 (offset -31 lines).
+Hunk #3 succeeded at 263 (offset -32 lines).
+Hunk #4 succeeded at 463 (offset -36 lines).
+Hunk #5 succeeded at 510 (offset -36 lines).
+checking file OAI/MeasureTheory/CompactFactors/RelativeCenters.lean
+Hunk #1 FAILED at 100.
+Hunk #2 succeeded at 81 (offset -37 lines).
+Hunk #3 succeeded at 120 (offset -37 lines).
+Hunk #4 succeeded at 152 (offset -39 lines).
+Hunk #5 succeeded at 178 (offset -39 lines).
+Hunk #6 succeeded at 250 (offset -41 lines).
+Hunk #7 succeeded at 282 (offset -41 lines).
+Hunk #8 succeeded at 332 (offset -41 lines).
+Hunk #9 succeeded at 370 (offset -41 lines).
+Hunk #10 succeeded at 431 (offset -41 lines).
+1 out of 10 hunks FAILED
+checking file OAI/MeasureTheory/CompactFactors/Separability.lean
+Hunk #1 succeeded at 299 (offset -14 lines).
+Hunk #2 succeeded at 513 (offset -39 lines).

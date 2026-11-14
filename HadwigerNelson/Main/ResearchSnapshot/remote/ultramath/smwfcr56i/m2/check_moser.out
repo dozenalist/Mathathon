@@ -1,0 +1,31 @@
+M1  unit edge lengths of (8.5), exact interval arithmetic
+    |0 - A|^2 in [1.000000000000,1.000000000000]   contains 1: True
+    |0 - B|^2 in [1.000000000000,1.000000000000]   contains 1: True
+    |A - B|^2 in [1.000000000000,1.000000000000]   contains 1: True
+    |T - A|^2 in [1.000000000000,1.000000000000]   contains 1: True
+    |T - B|^2 in [1.000000000000,1.000000000000]   contains 1: True
+    |uA - 0|^2 in [1.000000000000,1.000000000000]   contains 1: True
+    |uB - 0|^2 in [1.000000000000,1.000000000000]   contains 1: True
+    |uA - uB|^2 in [1.000000000000,1.000000000000]   contains 1: True
+    |uA - uT|^2 in [1.000000000000,1.000000000000]   contains 1: True
+    |uB - uT|^2 in [1.000000000000,1.000000000000]   contains 1: True
+    |T - uT|^2 in [1.000000000000,1.000000000000]   contains 1: True
+  all 11 unit edges verified: True
+
+M2  no proper 3-colouring of the Moser graph (exhaustive)
+  proper 3-colourings found: None
+
+M3  region (8.4) for the placed coordinates (8.6), interval arithmetic
+    (8.6) is  z_g = ((35+12i)/37) * (g + (-290+149i)/250): the shift
+    is INSIDE the bracket -- verified below against the paper's Table 1.
+  |(35+12i)/37|^2 = 1  (exactly 1)
+   g=0   z=(  -1.2906,  0.1876) table:True  l in [1.700816,1.700816] in(0,4):True  P_hi=0.866124 < P'_lo=1.38897: True
+   g=A   z=(  -0.6335,  0.9414) table:True  l in [1.287637,1.287637] in(0,4):True  P_hi=0.0895503 < P'_lo=0.119773: True
+   g=B   z=(  -0.3092, -0.0045) table:True  l in [0.095637,0.095637] in(0,4):True  P_hi=1.68999e-06 < P'_lo=0.00069832: True
+   g=T   z=(   0.3478,  0.7493) table:True  l in [0.682458,0.682458] in(0,4):True  P_hi=0.0221255 < P'_lo=0.0265819: True
+   g=uA  z=(  -1.1598,  1.1790) table:True  l in [2.735008,2.735008] in(0,4):True  P_hi=9.72524 < P'_lo=19.4763: True
+   g=uB  z=(  -0.3666,  0.5700) table:True  l in [0.459246,0.459246] in(0,4):True  P_hi=0.00199268 < P'_lo=0.025071: True
+   g=uT  z=(  -0.2358,  1.5614) table:True  l in [2.493438,2.493438] in(0,4):True  P_hi=12.5744 < P'_lo=13.0226: True
+  all seven vertices strictly inside (8.4): True
+
+SUMMARY: {'M1': True, 'M2': True, 'M3': True}

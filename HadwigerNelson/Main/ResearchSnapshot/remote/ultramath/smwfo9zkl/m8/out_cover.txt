@@ -1,0 +1,13 @@
+Section 7 covering step: multiplicity-3 open covers at bounded diameter
+all lengths are integers in units of 1/20 of the plane length
+
+L= 10 h=  5 eps=  1 half= 100 mu= 20 | members= 903 maxdiam^2=  193 mu^2=  400 | V1 cov=True mult=3 | V2 cov=True mult=3 | OK
+L= 20 h= 10 eps=  1 half= 100 mu= 40 | members= 253 maxdiam^2=  628 mu^2= 1600 | V1 cov=True mult=3 | V2 cov=True mult=3 | OK
+L= 20 h= 10 eps=  1 half= 200 mu= 40 | members= 903 maxdiam^2=  628 mu^2= 1600 | V1 cov=True mult=3 | V2 cov=True mult=3 | OK
+L= 10 h=  5 eps=  1 half= 200 mu= 40 | members=3403 maxdiam^2=  193 mu^2= 1600 | V1 cov=True mult=3 | V2 cov=True mult=3 | OK
+L= 40 h= 20 eps=  2 half= 100 mu= 80 | members=  78 maxdiam^2= 2512 mu^2= 6400 | V1 cov=True mult=3 | V2 cov=True mult=3 | OK
+
+every instance certified: True
+multiplicities found: [3]
+Statement A (multiplicity-3 open cover, mesh < half the side): True
+Statement B (the cover is not of multiplicity 2): True

@@ -1,0 +1,43 @@
+
+open Lean Elab Command Meta
+private def binderFlags : Expr → List BinderInfo
+  | .forallE _ _ b bi => bi :: binderFlags b
+  | _ => []
+run_cmd liftTermElabM do
+  let pairs := [(``OAI.EuclideanFiveColor.strict_state_no_unit_support,
+                 ``OAI.EuclideanFiveColor.fixed_state_no_unit_three_centres),
+                (``OAI.EuclideanFiveColor.four_support_sequence_no_unit,
+                 ``OAI.EuclideanFiveColor.four_support_sequence_no_unit_three_centres)]
+  for (oldName, newName) in pairs do
+    let oldInfo ← getConstInfo oldName
+    let newInfo ← getConstInfo newName
+    unless ← isDefEq oldInfo.type newInfo.type do
+      throwError "Statement differs: {newName}"
+    unless binderFlags oldInfo.type == binderFlags newInfo.type do
+      throwError "Binder flags differ: {newName}"
+    logInfo m!"STATEMENT_AND_BINDERS_PASS {newName}"
+
+run_cmd do
+  let env ← getEnv
+  let roots := [``OAI.EuclideanFiveColor.fixed_state_no_unit_three_centres,
+                ``OAI.EuclideanFiveColor.four_support_sequence_no_unit_three_centres]
+  let forbidden := [``OAI.EuclideanFiveColor.strict_state_sequence_local_false,
+                    ``OAI.EuclideanFiveColor.strict_state_sequence_false,
+                    ``OAI.EuclideanFiveColor.strict_state_no_unit_support,
+                    ``sorryAx]
+  for root in roots do
+    let mut seen : NameHashSet := {}
+    let mut pending : Array Name := #[root]
+    while !pending.isEmpty do
+      let n := pending.back!
+      pending := pending.pop
+      if seen.contains n then continue
+      seen := seen.insert n
+      if forbidden.contains n then throwError "Forbidden transitive dependency: {root} -> {n}"
+      match env.find? n with
+      | none => throwError "Missing dependency: {n}"
+      | some ci =>
+        pending := pending ++ ci.type.getUsedConstants
+        if let some value := ci.value? (allowOpaque := true) then
+          pending := pending ++ value.getUsedConstants
+    logInfo m!"TRANSITIVE_FORBIDDEN_PASS {root}; visited {seen.size} constants"

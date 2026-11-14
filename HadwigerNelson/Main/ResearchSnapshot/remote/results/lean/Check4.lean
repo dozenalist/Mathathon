@@ -1,0 +1,4 @@
+import OAI.Geometry.PlaneColoring.ConnectedUnitFree
+#print axioms OAI.EuclideanFiveColor.diam_le_one_of_preconnected_unitFree
+#print axioms OAI.EuclideanFiveColor.not_straddle_of_isPreconnected
+#check @OAI.EuclideanFiveColor.not_straddle_of_isPreconnected

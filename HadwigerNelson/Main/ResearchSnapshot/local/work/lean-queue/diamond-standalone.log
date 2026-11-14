@@ -1,0 +1,6 @@
+Toolchain: Lean (version 4.35.0, x86_64-w64-windows-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+Source SHA256: 67CDBC7BE0B14601122CA19FB426EA93BEF9F91C54FAD397C68EC3CB9C82DC8B
+'SimplifyAngular.three_color_diamond_omega' depends on axioms: [propext, Quot.sound]
+'SimplifyAngular.diamond_tips' depends on axioms: [propext, Quot.sound]
+
+

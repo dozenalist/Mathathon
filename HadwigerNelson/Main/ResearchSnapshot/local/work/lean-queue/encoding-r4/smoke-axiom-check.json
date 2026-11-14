@@ -1,0 +1,60 @@
+{
+  "at": "2026-11-14T09:50:17.820Z",
+  "records": [
+    {
+      "name": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.PlaneFiveColor.Spectral.finite_uniform_successor_contradiction",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.PlaneFiveColor.Spectral.finite_uniform_successor_contradiction",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "distinctTheorems": [
+    "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "OAI.PlaneFiveColor.Spectral.finite_uniform_successor_contradiction",
+    "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction"
+  ],
+  "scope": "Both14module edited roots and nearest finite consumer; full downstream roots not checked yet"
+}

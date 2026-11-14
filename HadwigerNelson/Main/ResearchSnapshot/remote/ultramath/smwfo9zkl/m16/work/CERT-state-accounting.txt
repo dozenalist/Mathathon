@@ -1,0 +1,13 @@
+k5_ell3: #occurring=8 bipartite=True #orbit_data=2600
+k5_ell4: odd cycle of length 3 verified edge by edge: [1, 3] - [4] - [0, 2] - [1, 3]
+k5_ell4: #occurring=7 bipartite=False #orbit_data=362
+k5_ell5: odd cycle of length 5 verified edge by edge: [2, 4] - [0, 3] - [1, 4] - [0, 2] - [1, 3] - [2, 4]
+k5_ell5: #occurring=5 bipartite=False #orbit_data=100
+k6_ell3: odd cycle of length 3 verified edge by edge: [1, 2, 5] - [3] - [4] - [1, 2, 5]
+k6_ell3: #occurring=35 bipartite=False #orbit_data=1118252
+k6_ell4: odd cycle of length 3 verified edge by edge: [1, 3, 5] - [4] - [0, 2] - [1, 3, 5]
+k6_ell4: #occurring=33 bipartite=False #orbit_data=463840
+k6_ell5: odd cycle of length 3 verified edge by edge: [1, 3, 4] - [5] - [0, 2] - [1, 3, 4]
+k6_ell5: #occurring=31 bipartite=False #orbit_data=164630
+k6_ell6: odd cycle of length 5 verified edge by edge: [2, 4, 5] - [0, 3] - [1, 4, 5] - [0, 2] - [1, 3] - [2, 4, 5]
+k6_ell6: #occurring=29 bipartite=False #orbit_data=50792

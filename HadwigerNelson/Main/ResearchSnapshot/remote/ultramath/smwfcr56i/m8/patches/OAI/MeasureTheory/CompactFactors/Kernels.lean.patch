@@ -1,0 +1,86 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/Kernels.lean	2026-11-13 19:09:13.640544811 +0000
++++ OAI/MeasureTheory/CompactFactors/Kernels.lean	2026-11-13 19:48:30.307729288 +0000
+@@ -167,7 +167,7 @@
+ 
+ lemma measurable_code (n : ℕ) : Measurable (code X n) := by
+   classical
+-  apply Measurable.of_eval
++  apply measurable_pi_lambda
+   intro i
+   exact measurable_const.piecewise (MeasurableSpace.measurableSet_natGeneratingSequence (α := X) i) measurable_const
+ 
+@@ -228,7 +228,7 @@
+       Integrable (fun z => ‖L z - a (pairCode n z)‖^2) ν ∧
+       (∫ z, ‖L z - a (pairCode n z)‖^2 ∂ν) < ε^2 := by
+   let H : X × Y → Fin 1 → ℂ := fun z _ => L z
+-  have hH : Measurable H := Measurable.of_eval fun _ => hL
++  have hH : Measurable H := measurable_pi_lambda _ fun _ => hL
+   have hHB (z : X × Y) : ‖H z‖ ≤ C := by
+     rw [pi_norm_le_iff_of_nonneg hC]; intro i; exact hLC z
+   obtain ⟨n, H₀, _, hB, hi, he⟩ := LimitDensity.generated_factor_approximation ν
+@@ -295,7 +295,7 @@
+     rw [norm_mul]
+     exact (mul_le_mul_of_nonneg_left (hfB x') (norm_nonneg _)).trans (by simpa using hB (e i, code X n x'))
+   have ha : Measurable a := by
+-    apply Measurable.of_eval
++    apply measurable_pi_lambda
+     intro i
+     exact (hm i).stronglyMeasurable.integral_kernel.measurable
+   have haB (y : Y) : ‖a y‖ ≤ 2*C := by
+@@ -499,6 +499,46 @@
+   apply hn
+   exact ⟨fun hs hi => h _ hs hi⟩
+ 
++lemma eventuallyConst_set_iff {X₀ : Type*} [MeasurableSpace X₀] {μ₀ : Measure X₀}
++    {s : Set X₀} :
++    EventuallyConst s (ae μ₀) ↔ (∀ᵐ x ∂μ₀, x ∈ s) ∨ (∀ᵐ x ∂μ₀, x ∉ s) := by
++  classical
++  constructor
++  · intro h
++    obtain ⟨u, hu, hus⟩ := h
++    have hu1 : s ⁻¹' u ∈ ae μ₀ := hu
++    have hu' : μ₀ (s ⁻¹' u)ᶜ = 0 := mem_ae_iff.mp hu1
++    rcases Set.eq_empty_or_nonempty (s ⁻¹' u) with hemp | hne
++    · left
++      rw [ae_iff]
++      refine measure_mono_null ?_ hu'
++      intro y hy hyu
++      rw [hemp] at hyu
++      exact hyu
++    · obtain ⟨x, hx⟩ := hne
++      have hxA : s x ∈ u := hx
++      by_cases hxs : x ∈ s
++      · left
++        rw [ae_iff]
++        refine measure_mono_null ?_ hu'
++        intro y hy hyu
++        have h1 : s y = s x := hus hyu hxA
++        exact hy (Eq.mp h1.symm hxs)
++      · right
++        rw [ae_iff]
++        refine measure_mono_null ?_ hu'
++        intro y hy hyu
++        have h1 : s y = s x := hus hyu hxA
++        have hy' : y ∈ s := by simpa using hy
++        exact hxs (Eq.mp h1 hy')
++  · rintro (hs | hs)
++    · refine ⟨(fun x => x ∈ s) '' {x | x ∈ s}, Filter.image_mem_map hs, ?_⟩
++      rintro p ⟨x, hx, rfl⟩ q ⟨y, hy, rfl⟩
++      exact propext ⟨fun _ => hy, fun _ => hx⟩
++    · refine ⟨(fun x => x ∈ s) '' {x | x ∉ s}, Filter.image_mem_map hs, ?_⟩
++      rintro p ⟨x, hx, rfl⟩ q ⟨y, hy, rfl⟩
++      exact propext ⟨fun h => absurd h hx, fun h => absurd h hy⟩
++
+ omit [MeasurableConstSMul K X] [MeasurableConstSMul K Y] in
+ lemma indicator_not_constant (ν : Measure (X × X)) (s : Set (X × X))
+     (hn : ¬ EventuallyConst s (ae ν)) (c : ℂ) :
+@@ -506,8 +546,7 @@
+   classical
+   intro he
+   apply hn
+-  change EventuallyEmptyOrUniv s (ae ν)
+-  rw [eventuallyEmptyOrUniv_iff]
++  rw [eventuallyConst_set_iff]
+   by_cases hc : c = 0
+   · right
+     filter_upwards [he] with x hx

@@ -1,0 +1,25 @@
+MC120 endpoint and strip-width corrections — 14 November2026
+Grade: complete elementary geometric argument; no Lean verification. This does not affect the compiled CC60 theorem.
+
+The open-arc outer-strip hypothesis alone DOES NOT make the 120-degree monochromatic cone endpoint valid.
+Let A=(sqrt(3)/2,-1/2), B=(sqrt(3)/2,1/2), C=(sqrt(3),0). They form a unit equilateral triangle.
+Let U=B(A,1) intersect B(B,1) intersect B(C,1), using OPEN balls, and W=U intersect {z:|z|>1}.
+The closed Reuleaux triangle has diameter1, and every pair in its interior is strictly closer than1. For the strict statement, extend the segment between any hypothetical unit-separated interior pair slightly within the open interior, contradicting diameter1. Thus W has no unit pair.
+For every theta in(-pi/6,pi/6), e(theta) lies in U:
+ |e(theta)-A|²=2-2cos(theta+pi/6)<1,
+ |e(theta)-B|²=2-2cos(theta-pi/6)<1,
+ |e(theta)-C|²=4-2sqrt(3)cos(theta)<1.
+Openness and continuity therefore supply a JOINT angular/radial neighbourhood with all points r e(beta), 1<r<1+delta, |beta-theta|<delta, in W.
+Consequently W has actual outer angular strips on an open60-degree arc, yet is unit-distance independent. It can be monochromatic.
+This is a counterexample to the proposed outer-strip-only endpoint argument. It is NOT a counterexample to a stronger theorem using additional actual continuum/support/colouring constraints.
+The erroneous argument selected the angular separation gamma(r)=2asin(1/(2r)) depending on r, then selected strip widths depending on those angles, without proving a compatible r exists.
+For strict cone aperture<120, choose a compact subarc of width>60 first. The angular-neighbourhood strips yield a uniform positive radial width by finite subcover. This compactness step is valid and its geometric helper has now also been checked by Lean.
+
+The equilateral collapse uses three BLOCKS of TWO edge exclusions each:
+ E0 union E1={0,1,2}; E2 union E3={2,3,4}; E4 union E5={4,5,0}.
+Each pair of blocks comprises FOUR continua and excludes five labels. No new single continuum with a three-label exclusion is assumed. MC120 applied to each four-continuum subfamily gives pairwise circular separation>=120; three directions therefore are exactly equilateral.
+
+A proposed UNIVERSAL width bound delta>=c<e,v> is false.
+Take K=[0,rho v], x=0, e=v, 0<rho<1. Along the ray r v with r>1, Straddle(K) is exactly1<r<1+rho: the far endpoint0 has distance r>1 and the nearest point rho v has distance r-rho<1 precisely in this interval.
+Thus every admissible outer radial strip has delta<=rho, whereas<e,v>=1. Choosing rho<c disproves any universal c>0.
+A bound whose constant depends on the actual continuum is different and has not been established here.

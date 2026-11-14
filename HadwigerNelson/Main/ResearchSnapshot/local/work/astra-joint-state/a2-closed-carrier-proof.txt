@@ -1,0 +1,190 @@
+A2 EXTENSION: A CLOSED SET OF CENTRES WITH AVOIDING TRACES
+14 November 2026. Complete lead paper derivation; independent review pending.
+This strengthens a2-fixed-state-proof.txt and reaches the actual moving
+four-support consumer. It does NOT prove the arbitrary-centre generic
+strict_state_sequence_false statement under its unchanged hypotheses.
+
+1. THE SINGLE CLOSED SET
+
+For fixed measurable c:C->Fin k and a label set K, define
+  Z_K = {y in C : there exists beta in TraceVector k,
+         IsTrace c hc y beta and traceValue(beta,i)=0 for every i in K}.
+Crucially this is a set in the PLANE depending only on c and K, not on a
+base centre or an angular state set.
+
+Z_K is closed. To prove sequential closedness, let y_n->y and choose a
+K-avoiding trace beta_n at y_n. Compactness of TraceVector gives a
+subsequence beta_{phi(n)}->beta in the weak trace topology.
+Compactness.lean:289 trace_limit, using isClosed_traceGraph:284, gives
+IsTrace at y. For i in K, test this weak convergence against traceValue
+beta i itself. Every inner product along the sequence is zero; the limit
+is <traceValue beta i,traceValue beta i>, hence traceValue beta i=0.
+Thus y belongs to Z_K. C is metrizable, so sequential closedness suffices.
+One may instead use that the projection of a closed subset of
+C x TraceVector along the compact second factor is closed.
+
+This is NOT a claim that arbitrary angular state supports vary upper
+semicontinuously with the base centre. The avoiding-trace set is a larger
+closed set that contains the relevant points, which is exactly what the
+argument needs.
+
+2. SUPPORTS MAP INTO THE CLOSED SET
+
+If B is a RealState at x represented by K, BoundaryTrace:24 gives
+  b in supp(volume|B) ==> x+direction(b) in Z_K.             (S)
+This follows directly from the existing support-to-avoiding-trace theorem.
+No quantitative density, state continuity or L1 convergence is used.
+
+3. THREE-CENTRE EXCLUSION ON Z_K
+
+Suppose A is a positive-measure RealState at x represented by J and the
+complement of J union K is exactly {X}. Then
+  y,z in Z_K, |y-x|=|z-x|=1 ==> |y-z| != 1.               (E)
+
+Proof: select the K-avoiding traces at y,z. They imply P_y,P_z are not
+subsets of K for almost every common angular parameter t. Neighbor
+palette transport makes P_x,P_y,P_z pairwise disjoint if all three
+distances equal one. Pull the five conull statements to R. On the
+positive-measure A, J is contained in P_x, so each of P_y,P_z must contain
+the unique colour X outside J union K. Contradiction. The full proof and
+exact exceptional-set contract are in a2-fixed-state-proof.txt.
+
+Thus Z_K intersect the unit circle at x is a compact unit-distance-free
+set whenever the indicated positive complementary state exists at x.
+This is a geometric property of one global closed set, not a finite
+selection from changing angular supports.
+
+4. CONVERGING-CENTRE THEOREM
+
+Fix measurable weak k-colouring c, label sets J,K with outside label X.
+Assume:
+  x_n -> x in C;
+  for every n, B_n is a RealState at x_n represented by K;
+  A is a RealState at x represented by J, and volume A>0;
+  b_n in supp(volume|B_n), d_n in supp(volume|B_n);
+  b_n -> b and d_n -> d in R.
+Then |direction(b)-direction(d)| != 1.
+
+Proof. By (S), y_n=x_n+direction(b_n) and z_n=x_n+direction(d_n) belong
+to Z_K. They converge to y=x+direction(b), z=x+direction(d). Closedness
+places y,z in Z_K. Both are at distance one from x. Apply (E). QED.
+
+The two avoiding traces at the limits may be obtained from DIFFERENT
+subsequences. No simultaneous realization is required: each is an actual
+trace at its stated limit centre, and the source palette is the essential
+union of all trace-positive supports. The source neighbor-palette theorem
+already applies to these two entire palettes. After choosing the two
+traces, only a finite intersection of their conull constraints is used.
+This is different from incorrectly selecting unrelated angular state
+values and claiming they form one joint word.
+
+Compared with the original generic strict-state sequence theorem, this
+contract ADDS convergence x_n->x and a positive represented J-state AT x.
+It REMOVES all A_n and their local L1 convergence assumptions. We do not
+claim these contracts equivalent in general. The new contract is exactly
+available at the actual four-state consumer.
+
+5. EXACT FOURCONTINUITY:441 APPLICATION
+
+Original four_support_sequence_no_unit has
+  hx_n: FourCenter c (x_n), hy: FourCenter c y, x_n->y,
+  s!=0, b_n->b0, d_n->d0,
+  b_n,d_n in fourSupport c hc (x_n) s.
+Set r=2 if s=1 and r=1 if s=2, K=fourGroup s, J=fourGroup r, X=4.
+Then:
+* finite arithmetic gives outside J union K = {4};
+* B_n=fourRealState c hc (x_n) s is represented by K through
+  States:333 fourState_represents (using hx_n);
+* A=fourRealState c hc y r is represented by J through the SAME theorem
+  at hy, and positive through FourContinuity:419 four_realState_positive;
+* the state-support definitions agree exactly with (S).
+The converging-centre theorem proves the original conclusion with EVERY
+original hypothesis and binder unchanged. It no longer consumes
+four_realState_continuity or strict_state_sequence_false.
+
+The positivity input uses States:351 fourState_diagonal_positive, whose
+proof uses the older two_state_impossible:243, NOT any strict-state
+sequence theorem. This older triangle/density argument is retained.
+The source's separate four_support_continuity theorem still uses L1
+continuity and indicator_inter_positive. We do not remove that machinery.
+
+6. DOWNSTREAM AND REMAINING CALLS
+
+Actual consumer path:
+  four_support_sequence_no_unit
+  -> FourTransport:218 four_support_no_sixty (constant sequence);
+  -> Accumulation:32 four_endpoint_sequence_false (direct call at :103);
+  -> four_normalized_sequence_false / four_sequence_no_accumulation;
+  -> four-centre discreteness / compact finiteness and CyclicCore.
+The SAME closed-set theorem supplies the fixed-state theorem used by
+Interfaces:266 interfaceStateSupport_no_unit, then its support margin,
+four_interface_word_data, no_four_interfaces and the forest argument.
+
+A source-wide exact-name audit found strict_state_sequence_false used
+only by States:704, FourContinuity:441, and
+FourContinuity:361 strict_state_uniform_on_compact. The last theorem has
+NO consumers in the supplied OAI source (only its own declaration).
+States:704 has exactly the fixed FiveSupport and Interfaces consumers.
+The earlier banked pair-support replacement already covers FiveSupport.
+
+Therefore, IF both new application proofs are independently accepted and
+validated, all currently used paths to the strict-state sequence chain
+can be removed. The unused uniform theorem would retain the old chain
+only as unused library content. This is a source-level candidate
+dependency reduction, not a completed compiler dependency audit.
+
+Do not delete indicator_inter_positive: FourContinuity:326 uses it in
+support_lower_semicontinuity. varying_pullback_L1 is used only by the
+strict-state local proof in the scanned source. Likewise
+circleEndpoint_identity_neighborhood, near_identity_circle_in,
+nonparallel_neighborhood, positive_state_support_point,
+support_density_direction and support_density_sequence currently feed
+only that strict-state branch. No deletion is performed in this packet.
+
+7. SOURCE ORDER
+
+For a private validation import the existing relevant modules and prove
+the new closed-set lemmas, fixed theorem and four-support application.
+For clean integration, place the general neighbor-palette results and
+the new avoiding-trace lemmas in a module importing BoundaryTrace, and
+make FourContinuity and Interfaces import it. BoundaryTrace imports
+States and Rigidity, but NOT FourContinuity, so this insertion is acyclic.
+FiveSupport can import the same module through the existing chain.
+Do not import FiveSupport into FourContinuity: FiveSupport imports
+Accumulation, which already imports FourTransport -> FourContinuity.
+
+8. PRACTICAL VALIDATION ORDER
+
+First validate the finite forcing lemma and the triangle exclusion from
+two actual avoiding traces. Then validate the fixed strict-state statement
+and unchanged Interfaces consumer. Next prove Z_K closed / its sequence
+version, and instantiate unchanged four_support_sequence_no_unit.
+Only after these pass should a dependency dump and a private source-order
+patch identify exactly which old declarations become unused. No broad
+build, new general support API or manuscript deletion claim is needed yet.
+
+9. THE GENERAL FINITE-GRAPH FORM
+
+The elementary forcing argument has a useful formulation for any k.
+Let L=Fin k\(J union K), and suppose a positive RealState at x represents
+J. For every FINITE family y_v of points in Z_K with |y_v-x|=1, the
+unit-distance graph on those points has a proper colouring by labels in L.
+
+Proof. Choose a K-avoiding trace at every y_v. For almost every common
+angular t, each P_{y_v}(t) is not a subset of K, is disjoint from P_x(t),
+and neighboring P_{y_v}(t),P_{y_w}(t) are disjoint. The finiteness of the
+vertex and edge sets allows a single conull intersection. Choose a real
+t in the positive J-state satisfying all these conditions. Every
+P_{y_v}(t) intersects L; choose a label from that intersection. Adjacent
+vertices cannot receive the same label, by palette disjointness. QED.
+
+For |L|=1 this is exactly (E): there can be no unit edge. Thus the fixed
+and converging four/five support exclusions are consequences of one
+closed-set / finite-graph transfer principle.
+For |L|=2 it yields only bipartiteness of finite unit graphs on this one
+circle. Such graphs are already bipartite: each orbit of angular rotation
+by pi/3 is a 6-cycle, and unit chords connect successive orbit points.
+Consequently the one-circle residual-colour argument by itself supplies
+no analogous six-colour contradiction when two residual labels remain.
+This is a precise limitation of the general principle, not a claim about
+the full six-colour problem or about transports between different circles.

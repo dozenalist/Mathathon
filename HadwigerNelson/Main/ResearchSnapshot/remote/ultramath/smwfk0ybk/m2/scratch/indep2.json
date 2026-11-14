@@ -1,0 +1,157 @@
+{
+ "3": {
+  "geometries": 36,
+  "sat4": 36,
+  "flips": 0,
+  "nontrivial": 0,
+  "all_models_trivial": 0,
+  "sat3": 36,
+  "witness": {
+   "cells": [
+    0,
+    0,
+    0
+   ],
+   "palettes": [
+    [
+     4
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ],
+    [
+     3
+    ]
+   ]
+  }
+ },
+ "4": {
+  "geometries": 216,
+  "sat4": 216,
+  "flips": 0,
+  "nontrivial": 118,
+  "all_models_trivial": 0,
+  "sat3": 216,
+  "witness": {
+   "cells": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "palettes": [
+    [
+     5
+    ],
+    [
+     4
+    ],
+    [
+     5
+    ],
+    [
+     4
+    ],
+    [
+     5
+    ],
+    [
+     4
+    ]
+   ]
+  }
+ },
+ "5": {
+  "geometries": 1296,
+  "sat4": 225,
+  "flips": 0,
+  "nontrivial": 225,
+  "all_models_trivial": 0,
+  "sat3": 225,
+  "witness": {
+   "cells": [
+    0,
+    0,
+    0,
+    3,
+    3
+   ],
+   "palettes": [
+    [
+     5
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     5
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     5
+    ],
+    [
+     1,
+     4
+    ]
+   ]
+  }
+ },
+ "6": {
+  "geometries": 7776,
+  "sat4": 177,
+  "flips": 0,
+  "nontrivial": 177,
+  "all_models_trivial": 0,
+  "sat3": 177,
+  "witness": {
+   "cells": [
+    0,
+    0,
+    0,
+    3,
+    3,
+    3
+   ],
+   "palettes": [
+    [
+     2,
+     5
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     1,
+     4
+    ]
+   ]
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "updated_utc": "2026-11-14T17:13:59Z",
+ "status": "completed_block",
+ "summary": "Block 22 (clock %s), human proof architecture, no compute. INTEGRATED-ARCHITECTURE.md gives ONE argument serving both consumers: the carrier Z_K of centres admitting a K-avoiding trace is closed (P1), supports map into it (P2, state_support_avoiding_trace), and triangle forcing (P3) excludes a unit edge among Z_K points on the unit circle about a positive J-state centre; the finite-graph form (P4) colours finite unit graphs on that circle by the residual labels, with the exact |L|=2 limitation (unit chords on one circle join 60-degree-separated angles, so the graph is a union of 6-cycles and bipartite: no six-colour contradiction from this principle). Both consumers are instances: Interfaces:266 at a fixed centre, FourContinuity:441 by applying P2 at each x_n and P1 at the limit, dropping four_realState_continuity and strict_state_sequence_false. Measured: strict_state_uniform_on_compact (FourContinuity:361) has NO consumers - single rg hit is its declaration - so the States:683 call at :395 is off the root path; but the distinction root-dependency versus build-dependency is made explicit and no deletion follows. Minimum acyclic move: relocate palette_neighbor_real/disjoint into a new module importing BoundaryTrace (verified: Rigidity -> PaletteTransport supplies palette_smooth_transport; must NOT import FiveSupport, which reaches FourContinuity). Preservation list includes indicator_inter_positive (still used at FourContinuity:326).",
+ "verified_results": [
+  "[measured here] strict_state_uniform_on_compact (FourContinuity.lean:361) has exactly one occurrence in lean/, its own declaration: no consumers. Its body is where the last remaining States:683 call sits (FourContinuity:395).",
+  "[measured here] four_support_sequence_no_unit (FourContinuity:441) has two consumers: FourTransport:222 (inside four_support_no_sixty, constant sequence) and Accumulation:103 (inside four_endpoint_sequence_false); the chain continues Accumulation:233 four_normalized_sequence_false -> :246 four_sequence_no_accumulation -> cyclic-locus discreteness.",
+  "[measured here] Interfaces chain: interfaceStateSupport_no_unit (:266) -> interfaceStateSupport_margin (:281) -> four_interface_word_data (:395, uses margin at :406) -> no_four_interfaces (:516, calls word_data at :520).",
+  "[measured here] Import edges: FourContinuity -> States; FourTransport -> FourContinuity; Accumulation -> Exclusion, FourTransport; FiveSupport -> Accumulation; BoundaryTrace -> Rigidity, States; Rigidity -> PaletteTransport; AngularBoundary -> BoundaryTrace; Interfaces -> AngularBoundary. Hence PaletteTransport is upstream of BoundaryTrace, and a module importing BoundaryTrace cannot reach FourContinuity.",
+  "[read] P2 is state_support_avoiding_trace (BoundaryTrace:24) verbatim: (hw) {x} {A} {J} (hA : RealState hc x A J) {a} (ha : a in support) yields a trace at x + direction a vanishing on J - no density, continuity or L1 input.",
+  "[read] P3 premises verified against source: avoiding_trace_palette (BoundaryTrace:53) gives non-containment; palette_neighbor_disjoint (FiveSupport:23) is general in k and the y-z instance needs direction_exists (WeakColoring:145); RealState (States:92) gives J subset palette a.e. on A; volume A > 0 is used exactly once, to pick a point of A inside the conull set.",
+  "[argued here] P1: Z_K closed via compact TraceVector (isCompact_univ, already used inside state_support_avoiding_trace), closed trace graph (isClosed_traceGraph, Compactness:284, mem_of_tendsto pattern at :292) and closed zero-coordinate conditions (traceCode_tendsto_iff). Not Lean-checked.",
+  "[argued here] P4 and the |L| = 2 limitation: unit chords on one circle exist exactly at 60-degree angular separation, so the unit graph is a disjoint union of 6-cycles and is bipartite; two residual labels therefore suffice and the principle gives no contradiction at that count. Explicitly scoped to this principle on one circle.",
+  "[argued here] Root versus build dependency: after both replacements no USED path reaches States:683 (its consumers are the unconsumed FourContinuity:395 and the replaced :452), while the declaration of strict_state_uniform_on_compact still elaborates and hence still needs States:683 to exist. No deletion is licensed by an unconsumed wrapper.",
+  "[read] indicator_inter_positive (States:415) retains a consumer at FourContinuity:326 inside support_lower_semicontinuity, so it is preserved; ordinary support continuity lemmas are preserved even where the new proof does not call them."
+ ],
+ "conjectures": [
+  "(P1)-(P4) look like the honest general form of the fixed and converging support exclusions: one closed carrier, one forcing step, and a finite-graph colouring by the residual label set. The |L|=2 bipartite boundary marks exactly where this technique stops, which is a useful negative datum for the six-colour question.",
+  "If the carrier/converging-centre lemmas are validated, the strict-sequence chain becomes root-unreachable; retiring the unused wrapper strict_state_uniform_on_compact would then be a build-level decision, not a root one."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/INTEGRATED-ARCHITECTURE.md (sha d49e31dd890ef205; P1-P4 with proofs, both consumer instances, measured statement chains, root-versus-build distinction, minimum acyclic module move, preservation list, grades)",
+  "supervisor/simplify-architecture/A2-AUDIT.md (block 21: statement match, five-premise audit, interface drop-in, Z_K contract, consumer measurement)",
+  "supervisor/simplify-architecture/FIVE-CYCLE-ARGUMENT.md, MANUSCRIPT-LEMMA67.txt, FIVE-CYCLE-D.md (five-cycle lineage, unchanged)",
+  "read-only inputs: lean/OAI/Geometry/PlaneColoring/{BoundaryTrace.lean 24,53; FiveSupport.lean 9-32,23; Interfaces.lean 266,277,281,395,406,516,520; FourContinuity.lean 326,361,395,419,441,452; FourTransport.lean 218,222; Accumulation.lean 32,103,233,241-246,267; States.lean 92,415,612; Compactness.lean 284,292; WeakColoring.lean 145}",
+  "supervisor/simplify-architecture/encoding-core/integration/ (frozen R4 d26d569088faea89... / 24f89dd33533a0f6..., untouched)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "rg/sed reads only: consumers of strict_state_uniform_on_compact, four_support_sequence_no_unit, the Accumulation chain, Interfaces chain, import edges of six modules, indicator_inter_positive",
+   "outcome": "all counts and edges recorded above; no build."
+  },
+  {
+   "cmd": "date -u",
+   "outcome": "2026-11-14T17:13:59Z"
+  },
+  {
+   "cmd": "no build, no compute, no agents; only files under this supervisor directory written",
+   "outcome": "architecture and audit only, per policy."
+  }
+ ],
+ "failed_routes": [
+  "Rejected as a generalisation: (P4) with two residual labels gives only bipartiteness, and unit graphs on one circle ARE bipartite, so nothing six-colour follows from this principle. Stated as a limitation, not a claim about the six-colour problem.",
+  "Rejected: treating an unconsumed wrapper as keeping the strict-sequence path alive at root level; but equally rejected the converse overclaim - the declaration still needs States:683 at build level, so no deletion is licensed.",
+  "Rejected: importing FiveSupport into the new carrier module - FiveSupport reaches FourContinuity through Accumulation and FourTransport, which would close a cycle.",
+  "Not attempted: no edits to originals, no builds, no manuscript or Lemma 6.7 changes."
+ ],
+ "next_step": "Validate in Lean, in A2's order: the finite forcing lemma and triangle exclusion from two actual avoiding traces; then the fixed strict-state statement and the unchanged Interfaces:277 consumer; then Z_K closedness and the unchanged FourContinuity:441 consumer. Only after those pass should a dependency dump and a private source-order patch (the AvoidingTrace module of \u00a75) identify which old declarations become unused. Lemma 6.7 and the five-cycle exposition remain untouched.",
+ "escalation": null
+}

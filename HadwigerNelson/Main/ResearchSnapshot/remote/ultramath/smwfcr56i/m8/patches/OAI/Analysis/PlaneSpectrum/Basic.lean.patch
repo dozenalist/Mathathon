@@ -1,0 +1,25 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/Basic.lean	2026-11-13 19:09:13.640702286 +0000
++++ OAI/Analysis/PlaneSpectrum/Basic.lean	2026-11-13 19:19:25.391992408 +0000
+@@ -408,13 +408,18 @@
+     · apply (isAlgebraic_algebraMap_iff (R := ℚ) (S := ℝ) (A := ℂ)
+         Complex.ofReal_injective).mp
+       have h := (hz.add hc).mul hhalf
+-      convert h using 1
+-      first | rfl | (apply Complex.ext <;> simp; ring)
++      rw [show (algebraMap ℝ ℂ) z.re = (z + (starRingEnd ℂ) z) * 2⁻¹ from by
++        show ((z.re : ℝ) : ℂ) = _
++        rw [Complex.re_eq_add_conj, div_eq_mul_inv]]
++      exact h
+     · apply (isAlgebraic_algebraMap_iff (R := ℚ) (S := ℝ) (A := ℂ)
+         Complex.ofReal_injective).mp
+       have h := ((hz.sub hc).mul hhalf).mul hi.inv
+-      convert h using 1
+-      first | rfl | (apply Complex.ext <;> simp; ring)
++      rw [show (algebraMap ℝ ℂ) z.im = (z - (starRingEnd ℂ) z) * 2⁻¹ * Complex.I⁻¹ from by
++        show ((z.im : ℝ) : ℂ) = _
++        rw [Complex.im_eq_sub_conj, div_eq_mul_inv]
++        simp [mul_assoc, mul_comm]]
++      exact h
+   · rintro ⟨hr, hi'⟩
+     have hr' : IsAlgebraic ℚ (z.re : ℂ) := hr.algebraMap
+     have hi'' : IsAlgebraic ℚ (z.im : ℂ) := hi'.algebraMap

@@ -1,0 +1,17 @@
+P4.lean:61:2: error: Type mismatch
+  Iff.rfl
+has type
+  ?m.25 ↔ ?m.25
+but is expected to have type
+  InClass μ hpres mY q ↔ Measurable q
+P4.lean:89:2: error: Type mismatch
+  measurable_id
+has type
+  @Measurable ?m.35 ?m.35 ?m.36 ?m.36 id
+but is expected to have type
+  @Measurable X X (topSigma μ hpres) inst✝² id
+'M4Probe.measurable_topSigma_of_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'M4Probe.compact_of_measurable_topSigma' depends on axioms: [propext, Classical.choice, Quot.sound]
+'M4Probe.compact_of_inClass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'M4Probe.join_inClass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'M4Probe.topSigma_inClass' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

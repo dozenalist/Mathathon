@@ -1,0 +1,35 @@
+{
+  "updated_utc": "2026-11-14T09:20:00Z",
+  "status": "completed_block",
+  "summary": "One obligation toward W3 in the singleton class S_1 at k=6. First compared the proposed two-triangle-centre problem at separation d in (1,2) with m10's two-centre CSP and dropped it: that CSP is at distance exactly 1 with conflict graph the unit-distance pullback, while d != 1 gives no properness link, uses the non-trivial angular diffeo of (5.3), and is not finite; its finite discretisation is the sector ansatz m10's Theorem 2 already kills. Chose instead the endpoint trace (A1), which palette models omit. Proved Prop. A: in S_1, at a centre whose transition graph holds a triangle with label set V, the unit circle is a.e. coloured in the complement triple; sharp in m3's k>=7 colouring. Proved Prop. 4: if triangle centres with fixed V accumulate at p, the two label sets satisfy V union V' != [6], excluding 20 of 400 pairs and nothing more. Recorded why the route to W3 fails: weak L2 limits of one-hot fields can be uniform, palettes are strong limits, so only one limit value enters P_p. G1 and G2 kept separate.",
+  "verified_results": [
+    "GRADE [P] Prop. A: for a weak measurable 6-colouring in S_1 and a centre x whose Gamma_x contains a triangle with label set V, c(x+e) lies in T = [6]-V for a.e. e, and P_x(e) = {c(x+e)} a.e. Proof from Lemma 6.2 (a singleton contained in an edge is impossible, so the singleton avoids V) plus the endpoint trace (A1). Explicit a.e. quantifiers; S_1 stated for every centre.",
+    "GRADE [C]+[A] Prop. A is sharp and non-vacuous: m3's proper measurable k>=7 colouring has triangle {0,2,3}, complement T = {1,4,5,6}, |T| = k-3 = 4, and its gadget lies within distance ~0.0071 of p_0 while the unit circle about q_n stays >= 0.993 from p_0, so the circle is background-coloured with exactly T. So the four-outer-label resource exists at k>=7 and the three-label resource at k=6 is the whole difference in this mechanism.",
+    "GRADE [P] Prop. 4: if x_n in T with x_n -> p, all with the same triangle label set V, then p is in T (the 3-cycle locus is closed) with some label set V', and [6]-(V union V') is non-empty. Proof: each singleton field b_{x_n} is T-valued a.e.; the set of a.e.-defined maps into the finite set T is compact for convergence in measure, so a subsequence converges pointwise a.e. to a T-valued b_inf; bounded pointwise convergence gives 1_{b_inf} as a trace at p (centres -> p, radius 1, a.e. typicality from Lemma 4.3); (C1) puts {b_inf(e)} inside P_p(e), and S_1 at p makes b_inf equal to p's own singleton field, which Lemma 6.2 confines to T'. Hence T cap T' is non-empty.",
+    "GRADE [A] Exact label counts: 20 triangle label sets on 6 labels; 20 of the 400 ordered pairs (V,V') have V union V' = [6] and are excluded by Prop. 4 (10 of 210 unordered); the remaining 380 are consistent with Prop. 4, including V = V'.",
+    "GRADE [A] Countermodel to the weakened form: on a 12-sector circle with T = {3,4,5}, the fields b_n(s) = 3 + ((s+n) mod 3) are all one-hot and T-valued with pairwise inner products 0 or 1, while the average of three consecutive distinct members is the uniform (1/3,1/3,1/3). So a weak L2 limit of one-hot fields need not be one-hot; since palettes are strong L2 limits (trace_realization), the inference 'singleton palettes pass to the limit' is invalid and only the weaker {b_inf} contained in P_p survives."
+  ],
+  "conjectures": [
+    "W3 remains open, and the exact residual duty is now a value-count statement: at an accumulation point one must force the limiting singleton field b_inf to take at least three distinct values on positive-measure sets (or force the label sets V and V' of Prop. 4 to have V union V' = [6]). Nothing in (6.2), (5.7) or (5.3) does either, and (5.7) gives only two values.",
+    "If W3 is provable in S_1 at all, the proof must use a scale-h (near-field) input rather than the radius-1 trace: by far-field decoupling the palette data at a centre is insensitive to a recolouring supported in a ball of radius < 1, so no radius-1 trace argument can see the transition graph at the same centre.",
+    "The two-triangle-centre problem at separation in (1,2) is a genuinely different relaxation from the m10 unit-distance pullback, but it is not finite; making it finite requires a sector ansatz that m10's Theorem 2 excludes, so pursuing it needs a centre-dependent, non-finitely-axiomatisable treatment and should not be attempted as a finite CSP."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/TRACE-CONSTRAINT-W3.md",
+    "supervisor/solve-geometry/checks/trace_limit.py",
+    "supervisor/solve-geometry/supervisor_checks.out",
+    "supervisor/solve-geometry/CORRECTED-DEPENDENCY-MAP.md",
+    "supervisor/solve-geometry/LEMMA-isolation-window.md",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "python3 supervisor/solve-geometry/checks/trace_limit.py (single process, ~20 ms, well under the 60 s cap) -> rc 0; appends sections [9]-[11] to supervisor_checks.out: the 12-sector weak-limit countermodel with exact inner products, the label counts 20 and 10 of 400/210, and the m3 k=7 consistency check. supervisor_checks.out is now 57 lines."
+  ],
+  "failed_routes": [
+    "Rejected for this block: the two-triangle-centre palette problem at separation in (1,2). Not the m10 CSP (different distance class, non-trivial angular diffeo), but not finite either, and its finite discretisation is the sector ansatz excluded by m10 Theorem 2.",
+    "Rejected on proof: deriving W3 from Prop. A via 'singleton palettes pass to the limit'. Invalid because palettes are strong L2 limits; exact countermodel to the weak-L2 version recorded.",
+    "Did not attempt a search over surviving label pairs of Prop. 4 (380 of 400): that would be the two-centre palette CSP at a non-unit distance in disguise, i.e. the route just rejected."
+  ],
+  "next_step": "Test the one remaining shape that could force |P_p| >= 3 at an accumulation point: whether a triangle centre admits a positive-measure set of directions where two distinct traces are supported (i.e. whether the palette is a singleton for a.e. e but the trace family W_p is not itself a singleton), since a genuinely multi-valued trace family at the accumulation point would supply the missing value count. If that fails too, the honest conclusion is that W3 needs a near-field input and the S_1 reduction is terminal for palette/trace methods.",
+  "escalation": null
+}

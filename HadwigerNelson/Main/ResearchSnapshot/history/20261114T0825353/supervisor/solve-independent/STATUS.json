@@ -1,0 +1,104 @@
+{
+ "updated_utc": "2026-11-14T08:14:07Z",
+ "status": "candidate_result",
+ "summary": "Exact open interval in a on which the same 42 offsets, hence the same 888 edges and identical 6-UNSAT certificate, apply: a in (1/sqrt28, 1/sqrt19) = (0.188982, 0.229416), containing 1/5 with margins 0.0110 and 0.0294; rational closed subinterval [0.19, 0.22] with exact integer margins (361*28 = 10108 > 10000; 484*19 = 9196 < 10000). Derivation: the configuration at a is the homothety image of that at a = 1, so dmin(v,a) = a*mu(v), dmax(v,a) = a*nu(v), and strict forcing is 1/nu(v) < a < 1/mu(v); intersecting over the 42 offsets gives (1/min nu, 1/max mu). Per-ring values exact in Q(sqrt3), constant per ring (checked): ring 4 gives nu^2 = 28 (lower endpoint), ring 13 gives mu^2 = 19 (upper). The 888 edges realise exactly these 42 offsets and the edge condition does not mention a, so the CNF and the 42109-step refutation are the same file throughout. Cross-checked WITHOUT homothety by direct recomputation at 0.188, 19/100, 1/5, 11/50, 0.23: fails just outside at exactly the ring-4 and ring-13 offsets. Endpoints excluded as tangencies. Strict interior distances avoid boundary ownership. Family exclusion at six colours only, not a chromatic bound; chi = 8 uncertified and unused.",
+ "verified_results": [
+  {
+   "statement": "STATUS OF THE UNDERLYING BOUND: the 73-cell 6-UNSAT at a = 1/5, and therefore everything in this block that reuses it, is CANDIDATE at supervisor level, pending the independent geometry audit. Nothing here is an accepted result yet.",
+   "grade": "scope/provenance marker"
+  },
+  {
+   "statement": "Homothety: dmin(v,a) = a*dmin(v,1) and dmax(v,a) = a*dmax(v,1); v strictly forced at a iff 1/nu(v) < a < 1/mu(v); all 42 offsets stay strictly forced exactly on the open interval (1/min nu, 1/max mu).",
+   "grade": "PROOF (homothety plus finite intersection of strict inequalities)"
+  },
+  {
+   "statement": "Exact per-ring values at a = 1 in Q(sqrt3), constant on each ring (verified, not assumed): N=4: mu^2=3, nu^2=28; N=7: 7,43; N=9: 12,49; N=12: 16,64; N=13: 19,67. Hence max mu^2 = 19 (ring 13) and min nu^2 = 28 (ring 4).",
+   "grade": "EXACT computation, one process, 0.92 s total"
+  },
+  {
+   "statement": "INTERVAL: a in (1/sqrt28, 1/sqrt19) = (0.188982237, 0.229415734); a = 1/5 lies inside (19 < 25 < 28). Rational closed subinterval [19/100, 11/50] lies strictly inside, margins exact integers.",
+   "grade": "EXACT (rational arithmetic and exact radicals)"
+  },
+  {
+   "statement": "The 888 recorded edges of the patch realise exactly 42 distinct offsets, equal to F; the edge condition is combinatorial and independent of a, so p19.cnf and p19.drup apply unchanged for every a in the interval.",
+   "grade": "EXACT computation from patch19_cert.json"
+  },
+  {
+   "statement": "Direct-geometry cross-check independent of homothety: all 42 strictly forced at a = 19/100, 1/5, 11/50; not all at a = 0.188 (ring-4 offsets fail) nor at a = 0.23 (ring-13 offsets fail).",
+   "grade": "EXACT computation, same process, direct point-to-segment distances at the scaled geometry"
+  },
+  {
+   "statement": "CONDITIONAL RESULT: for every a in (1/sqrt28, 1/sqrt19), and in particular every a in [0.19, 0.22], no colouring of the plane constant on the interiors of the honeycomb cells uses six colours.",
+   "grade": "CONDITIONAL on independent acceptance of the 73-cell 6-UNSAT certificate (p19.cnf/p19.drup/rup.c). CANDIDATE at supervisor level."
+  },
+  {
+   "statement": "Strict interior distances remove the boundary-ownership question: dmin < 1 < dmax is realised by interior points of both cells, which belong to their cells under every ownership rule. At the excluded endpoints the unit pair is realised only at tiling vertices.",
+   "grade": "PROOF (dense interiors, connected domain, interval image)"
+  },
+  {
+   "statement": "chi(G[P]) = 8 is uncertified and unnecessary; the family exclusion uses only the certified 6-UNSAT. Not used in INTERVAL.md.",
+   "grade": "explicit downgrade, banner added to PATCH19.md"
+  }
+ ],
+ "conjectures": [
+  "The interval is an artefact of the 42 offsets used: enlarging the patch would shrink it towards the true threshold where the smallest forced ring enters (ring 3 at a > 1/5, ring 1 at a > 1/sqrt13). Untested, and not attempted this block.",
+  "Since ring 3 becomes strictly forced for a > 1/5, the six-colour exclusion may well extend above 1/sqrt19; the upper endpoint 1/sqrt19 is a limit of THIS certificate, not of the method."
+ ],
+ "artifacts": [
+  "supervisor/solve-independent/INTERVAL.md",
+  "supervisor/solve-independent/interval_cert.json",
+  "supervisor/solve-independent/interval_a.py",
+  "supervisor/solve-independent/interval_a.out",
+  "supervisor/solve-independent/FAILED-RUNS.md",
+  "supervisor/solve-independent/PATCH19.md (scope banner added: chi=8 uncertified/unused)",
+  "supervisor/solve-independent/PATCH-PREREGISTRATION.md",
+  "supervisor/solve-independent/p19.cnf",
+  "supervisor/solve-independent/p19.drup",
+  "supervisor/solve-independent/rup.c",
+  "supervisor/solve-independent/rup_verify",
+  "supervisor/solve-independent/patch19_cert.json",
+  "supervisor/solve-independent/patch19.py",
+  "supervisor/solve-independent/quotient16_cert.json",
+  "supervisor/solve-independent/QUOTIENT16.md",
+  "supervisor/solve-independent/CELL-A-FIFTH.md",
+  "supervisor/solve-independent/CELL-NOGO-v2.md",
+  "supervisor/solve-independent/LEDGER.md",
+  "supervisor/solve-independent/STATUS.json"
+ ],
+ "tests_run": [
+  {
+   "command": "python3 interval_a.py",
+   "outcome": "rc 0, 0.92 s, ONE process: F(1/5) re-derived (42 offsets, rings 4,7,9,12,13); the 888 edges realise exactly those 42 offsets; per-ring mu^2/nu^2 exact and constant; max mu^2 = 19 (ring 13), min nu^2 = 28 (ring 4); interval (1/sqrt28, 1/sqrt19) printed; direct-geometry cross-check at five values of a including two just outside, all as expected; rational subinterval margins exact"
+  }
+ ],
+ "failed_routes": [
+  "My first sublattice enumeration used the lower-triangular HNF <(a,0),(b,c)>, which is NOT a complete list: it misses 6 of the 8 index-7 sublattices, including the paper's <(1,3),(0,7)>, and wrongly gave minimum index 8 at a = 2/5. Fixed to upper HNF <(a,b),(0,c)>; the control then gave 7 as it must.",
+  "The heuristic bound index >= ceil((1+D)^2/(3a^2)) = 17 at a = 1/5 was wrong (ring 16 escapes it); replaced by the multiplicative-norm argument giving 16, which the enumeration confirms.",
+  "A density argument (clusters of <= 4 separated by 1.3856) does not give a contradiction at six colours: 2.65 > 1.60. Recorded as a gap, not pursued further in this block.",
+  "A hand estimate that ring-16 cells could carry the N=16 forced offsets was wrong (ring 16 is unforced because dmin >= 1); it does not affect this block, where the window proof bounds N < 16.33 independently.",
+  "Carried forward and still relevant: the earlier lower-triangular HNF enumeration was incomplete (missed 6 of 8 index-7 sublattices); this block uses the upper HNF only, and the index-19 counts here are on that corrected enumeration.",
+  "p19_shrink.py: greedy UNSAT-core minimisation (73+ solver calls) exceeded the cap and produced no output; superseded, no core certificate.",
+  "k = 7 (i.e. chi = 8) DRUP certificate: generation exceeded 60 s; abandoned. The chi = 8 claim therefore rests on two CDCL decisions plus a verified 8-colouring, not on a proof.",
+  "rup.c first version had two real defects: clauses added with watches already false at level 0, and unit clauses enqueued but not propagated. The second produced a spurious RUP FAILURE; diagnosed with a naive independent propagation. Both fixed; the shipped checker is the fixed one.",
+  "patch19_proof.py: abandoned driver (pysat returns DIMACS strings, so its empty-clause assertion fired). Superseded by p19_gen.py.",
+  "Earlier in this block's lineage: the 'every 6-subset contains an edge' line in QUOTIENT16.md \u2014 retracted as a chromatic argument; K_16 is the valid one.",
+  "No SAT search, no core minimisation and no 7-UNSAT work in this block, per instruction; the earlier failures are retained and documented in FAILED-RUNS.md (RUP FAILURE at step 26154 caused by unpropagated units in my checker; shrink timeout; k=7 generation timeout; incomplete lower-HNF enumeration).",
+  "An earlier attempt to parse the exact per-ring values back from JSON strings failed (a hand-rolled parser); replaced by carrying the Q3 objects directly. No numerical claim changed."
+ ],
+ "next_step": "CANDIDATE pending the geometry audit; no further work on this line until it reports. If the 73-cell 6-UNSAT is accepted, the interval statement becomes unconditional and should be restated with its endpoint topology in the supervisor ledger. The one bounded extension worth a future block: ring 3 becomes strictly forced for a > 1/5, so test whether the same 73-cell patch with the enlarged offset set is still 6-UNSAT, which would push the upper endpoint from 1/sqrt19 towards the ring-3 threshold - but that is a NEW certificate and needs a fresh budget.",
+ "escalation": "Precise obstacle for the record: the interval (1/sqrt28, 1/sqrt19) is certified for the SAME 42 offsets, but its two endpoints are limits of that particular witness set, not of the phenomenon. Below 1/sqrt28 the ring-4 offsets stop being forced (dmax < 1, the cells drift apart); above 1/sqrt19 ring 13 stops being forced (dmin > 1). Extending the interval in either direction requires a different offset set, hence a fresh 6-colouring CNF and a fresh refutation, and the lower direction is the harder one: there the forced offsets are an annulus around distance 1 rather than a ball, which is exactly where the earlier census found the 7-clique method dead. Expected useful output: a 6-UNSAT patch at a parameter below 1/sqrt28, or a proof that no ball patch of <= 81 cells can be 6-UNSAT below that threshold.",
+ "recovery": {
+  "utc": "2026-11-14T06:46:58Z",
+  "jobs_running_at_recovery": 0,
+  "integrity": "re-ran forced_a1_5.py, verify_cell_nogo_v2.py, square_family.py, audit_rect.py: all rc 0; forced_a1_5.out and verify_cell_nogo_v2.out regenerate byte-identically, so no partial or duplicated write exists",
+  "work_lost": "none",
+  "note": "block was already completed and saved at updated_utc; no new research performed during recovery",
+  "artifacts_kept": [
+   "CELL-A-FIFTH.md",
+   "CELL-NOGO-v2.md",
+   "LEDGER.md",
+   "CELL-NOGO.md",
+   "RECOVERY.md"
+  ]
+ }
+}

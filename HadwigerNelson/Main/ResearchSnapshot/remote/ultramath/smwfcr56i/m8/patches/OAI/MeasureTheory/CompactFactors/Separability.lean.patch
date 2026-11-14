@@ -1,0 +1,30 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/Separability.lean	2026-11-13 19:09:13.640591980 +0000
++++ OAI/MeasureTheory/CompactFactors/Separability.lean	2026-11-13 19:51:35.777601075 +0000
+@@ -313,14 +313,14 @@
+         apply ih e he ψ _ had
+         obtain ⟨i,hit⟩ := Finset.nonempty_iff_ne_empty.mpr htn
+         refine ⟨i,hte hit, ?_⟩
+-        rw [ite_eq_left hit]
++        rw [if_pos hit]
+         exact center_project_l2 μ q hq (F h i)
+       let C : ℝ := ∏ i∈e, (bound (f i) : ℝ)^2
+       have hCb (h u : G) (x : X) :
+           ‖(∏ i∈e, Family.orbit (ψ i) (project μ q hq (F h i))) u x‖ ≤ C := by
+         simp only [Family.prod_apply, Family.orbit_apply, func_prod_apply]
+         rw [norm_prod]
+-        apply Finset.prod_le_prod₀ (fun index _ => norm_nonneg _)
++        apply Finset.prod_le_prod (fun index _ => norm_nonneg _)
+         intro i _
+         apply project_bound μ q hq
+         intro z
+@@ -552,7 +552,9 @@
+ include hqcov in
+ lemma covariance_mean_zero (M : Amenable.Mean G) (hp : PairVanishing μ q hq M)
+     (φ : G →+ G) (hs : Function.Surjective φ) (v w : Func X) :
+-    Family.meanNorm (μ.map q) M (covariance μ q φ v w) = 0 := by
++    (letI : IsProbabilityMeasure (μ.map q) := Measure.isProbabilityMeasure_map hq.aemeasurable
++     Family.meanNorm (μ.map q) M (covariance μ q φ v w)) = 0 := by
++  haveI : IsProbabilityMeasure (μ.map q) := Measure.isProbabilityMeasure_map hq.aemeasurable
+   rw [Family.meanNorm_congr (μ.map q) M (F := covariance μ q φ v w)
+     (H := Family.conditional μ q (Family.const v * Family.orbit φ (w-project μ q hq w)))
+     (fun g => by

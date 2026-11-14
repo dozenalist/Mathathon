@@ -1,0 +1,14 @@
+ell=6 k=6: satisfiable (label,cell) pairs 108
+   words of the per-cell system           : 3168
+   + ('L5',)                                  : 3168
+   + ('C1',)                                  : 3168
+   + ('MON',)                                  : 3168
+   + ('L5', 'C1', 'MON')                                  : 3168
+   + hexagon (TE)                         : 3168
+ell=5 k=6: satisfiable (label,cell) pairs 2880
+   words of the per-cell system           : 669960
+   + ('L5',)                                  : 669960
+   + ('C1',)                                  : 669960
+   + ('MON',)                                  : 669960
+   + ('L5', 'C1', 'MON')                                  : 669960
+   + hexagon (TE)                         : 669960

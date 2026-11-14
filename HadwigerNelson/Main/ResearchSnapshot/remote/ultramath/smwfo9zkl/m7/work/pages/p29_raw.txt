@@ -1,0 +1,43 @@
+The constants can depend on the fixed nonparallel pair. This establishes assertion 2 for each such
+v. It is a two-dimensional neighborhood argument and does not restrict (5.2) to a possibly excep-
+tional single-angle fiber.
+Finally fix the centers and representation in assertion 3, and work first on a smaller compact
+arc on which one inverse branch of the two-angle sum map is available. Let a trace b ∈ Wz be
+realized by (zn,rn). Applying this inverse branch to zn + rn f − x gives perturbed representations
+zn + rn f = x + sn(f) + tn(f),
+where sn,tn are nonparallel and converge to s,t in C1 on the smaller arc. Shrinking the arc if nec-
+essary, s is a diffeomorphism with derivative bounded away from zero, and the sn have uniformly
+bounded inverse derivatives for large n.
+For Di = Dx,i, these facts imply
+1Di
+(sn(f)) −→ 1Di
+(s(f)) in L1
+on the smaller arc. (5.6)
+To verify it, approximate 1Di
+on a common image interval by a continuous function in angular
+L1. Change of variables and the inverse-derivative bounds control the errors of composition uni-
+formly for sn and for s. Uniform convergence of sn handles the continuous approximant.
+Almost every f with sn(f) ∈ Di has sn(f) a density-one point of Di. Indeed the set of excep-
+tions in Di is angular null by differentiation, and sn pulls it back to a null set. Assertion 2 makes
+the density of Ai at zn +rn f zero for all these f. The sampling (zn,rn) is typical on its circle, so for
+almost every such f its actual color cannot be i. Consequently
+ai(zn + rn f)1Di
+(sn(f)) = 0 almost everywhere on the smaller arc.
+Use (5.6) to replace the second factor strongly in L1, and then use weak-* convergence of the first
+factor. Nonnegativity gives
+bi(f)1Di
+(s(f)) = 0 almost everywhere.
+Taking a countable generating family of traces at z and the five labels proves (5.3) on this arc. A
+countable cover by smaller arcs proves it on the stated domain.
+Remark 5.3. In assertion 3 of Lemma 5.2, the second endpoint map t may be constant. Nonparallel-
+ness makes the two-dimensional sum map invertible, while the local diffeomorphism requirement
+on s alone controls preimages of angular null sets. In particular, for any fixed direction a, the rep-
+resentation
+(x + a) + f = x + f + a
+is admissible off f = ±a. The proof applies at every fixed pair of centers and never needs a
+common exceptional angular set over an uncountable family of centers.
+Corollary 5.4 (Sixty-degree exclusion). At every fixed center x,
+Px(f) ∩ Px(Rf) = ∅ for almost every f ∈ S. (5.7)
+Proof. Use x + f = x + Rf + R−1 f in Lemma 5.2. The endpoint directions are nonparallel and the
+first endpoint map is a rotation.
+29

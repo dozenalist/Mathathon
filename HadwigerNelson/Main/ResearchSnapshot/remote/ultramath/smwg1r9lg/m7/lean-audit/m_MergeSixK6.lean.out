@@ -1,0 +1,11 @@
+'OAI.EuclideanFiveColor.exists_unit_pair_of_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.pair_transition_not_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+OAI.EuclideanFiveColor.pair_transition_not_null : ∀ (c : ℂ → Fin 6),
+  Measurable c →
+    OAI.EuclideanFiveColor.WeakColoring 6 c →
+      ∀ (i j : Fin 6),
+        i ≠ j →
+          ¬∀ᵐ (p : ℂ × OAI.EuclideanFiveColor.Angles) ∂MeasureTheory.volume.prod OAI.EuclideanFiveColor.angularMeasure,
+              ¬(c p.1 = i ∧ c (p.1 + OAI.EuclideanFiveColor.direction p.2) = j ∨
+                  c p.1 = j ∧ c (p.1 + OAI.EuclideanFiveColor.direction p.2) = i)
+TIME 19.53 s

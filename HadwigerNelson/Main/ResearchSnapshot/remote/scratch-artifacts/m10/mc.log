@@ -1,0 +1,3 @@
+FAIL OAI.Analysis.PlaneSpectrum.Basic
+FAIL OAI.Analysis.PlaneSpectrum.CircleOperator
+FAIL OAI.Analysis.PlaneSpectrum.ConditionalSpectrum

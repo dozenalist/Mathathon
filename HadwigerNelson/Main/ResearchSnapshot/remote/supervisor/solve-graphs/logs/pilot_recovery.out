@@ -1,0 +1,88 @@
+=== E1/E2 pilot: exact unit-distance graphs over Q(sqrt3,sqrt11) ===
+  [diamond] n=4 m=5 field=Q(sqrt[3, 11]) maxdev(edges)=0.00e+00 min|d2-1|(nonedges)=1.000 omega=3 distinct=True
+  [diamond] k=2: #colourings=0  cdcl={'cadical153': 'UNSAT', 'minisat22': 'UNSAT'} consistent=True
+  [diamond] k=3: #colourings=6  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [diamond] k=4: #colourings=48  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [diamond] k=5: #colourings=180  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [diamond] k=6: #colourings=480  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [diamond] k=3 forced pairs: equal=1 different=0 (of 1 non-adjacent pairs)
+  [diamond] k=4 forced pairs: equal=0 different=0 (of 1 non-adjacent pairs)
+  [diamond] k=5 forced pairs: equal=0 different=0 (of 1 non-adjacent pairs)
+  [diamond] k=6 forced pairs: equal=0 different=0 (of 1 non-adjacent pairs)
+  [diamond] exact tip-relation counts (tips are NON-adjacent, sqrt(3) apart):
+    k=3: #colourings with c(t0)=c(t1) is 6, with c(t0)!=c(t1) is 0
+    k=4: #colourings with c(t0)=c(t1) is 24, with c(t0)!=c(t1) is 24
+    k=5: #colourings with c(t0)=c(t1) is 60, with c(t0)!=c(t1) is 120
+    k=6: #colourings with c(t0)=c(t1) is 120, with c(t0)!=c(t1) is 360
+  [moser] n=7 m=11 field=Q(sqrt[3, 11]) maxdev(edges)=1.56e-61 min|d2-1|(nonedges)=0.457 omega=3 distinct=True
+  [moser] k=2: #colourings=0  cdcl={'cadical153': 'UNSAT', 'minisat22': 'UNSAT'} consistent=True
+  [moser] k=3: #colourings=0  cdcl={'cadical153': 'UNSAT', 'minisat22': 'UNSAT'} consistent=True
+  [moser] k=4: #colourings=384  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [moser] k=5: #colourings=5040  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [moser] k=6: #colourings=31680  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [moser] k=3 forced pairs: equal=0 different=0 (of 10 non-adjacent pairs)
+  [moser] k=4 forced pairs: equal=0 different=0 (of 10 non-adjacent pairs)
+  [moser] k=5 forced pairs: equal=0 different=0 (of 10 non-adjacent pairs)
+  [moser] k=6 forced pairs: equal=0 different=0 (of 10 non-adjacent pairs)
+  [spindle_triangle] n=7 m=11 field=Q(sqrt[3, 11]) maxdev(edges)=3.11e-61 min|d2-1|(nonedges)=0.457 omega=3 distinct=True
+  [spindle_triangle] k=2: #colourings=0  cdcl={'cadical153': 'UNSAT', 'minisat22': 'UNSAT'} consistent=True
+  [spindle_triangle] k=3: #colourings=0  cdcl={'cadical153': 'UNSAT', 'minisat22': 'UNSAT'} consistent=True
+  [spindle_triangle] k=4: #colourings=384  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [spindle_triangle] k=5: #colourings=5040  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [spindle_triangle] k=6: #colourings=31680  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [spindle_triangle] k=3 forced pairs: equal=0 different=0 (of 10 non-adjacent pairs)
+  [spindle_triangle] k=4 forced pairs: equal=0 different=0 (of 10 non-adjacent pairs)
+  [spindle_triangle] k=5 forced pairs: equal=0 different=0 (of 10 non-adjacent pairs)
+  [spindle_triangle] k=6 forced pairs: equal=0 different=0 (of 10 non-adjacent pairs)
+  [moser+d1] n=9 m=15 field=Q(sqrt[3, 11]) maxdev(edges)=2.33e-61 min|d2-1|(nonedges)=0.372 omega=3 distinct=True
+  [moser+d1] k=2: #colourings=0  cdcl={'cadical153': 'UNSAT', 'minisat22': 'UNSAT'} consistent=True
+  [moser+d1] k=3: #colourings=0  cdcl={'cadical153': 'UNSAT', 'minisat22': 'UNSAT'} consistent=True
+  [moser+d1] k=4: #colourings=1536  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [moser+d1] k=5: #colourings=45360  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [moser+d1] k=6: #colourings=506880  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [moser+d1] k=3 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [moser+d1] k=4 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [moser+d1] k=5 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [moser+d1] k=6 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [moser+d2] 2 coincident point(s) merged (construction reuses existing vertices)
+  [moser+d2] n=9 m=15 field=Q(sqrt[3, 11]) maxdev(edges)=2.33e-61 min|d2-1|(nonedges)=0.372 omega=3 distinct=True
+  [moser+d2] k=2: #colourings=0  cdcl={'cadical153': 'UNSAT', 'minisat22': 'UNSAT'} consistent=True
+  [moser+d2] k=3: #colourings=0  cdcl={'cadical153': 'UNSAT', 'minisat22': 'UNSAT'} consistent=True
+  [moser+d2] k=4: #colourings=1536  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [moser+d2] k=5: #colourings=45360  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [moser+d2] k=6: #colourings=506880  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [moser+d2] k=3 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [moser+d2] k=4 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [moser+d2] k=5 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [moser+d2] k=6 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [spindle_triangle+d1] n=9 m=15 field=Q(sqrt[3, 11]) maxdev(edges)=3.11e-61 min|d2-1|(nonedges)=0.372 omega=3 distinct=True
+  [spindle_triangle+d1] k=2: #colourings=0  cdcl={'cadical153': 'UNSAT', 'minisat22': 'UNSAT'} consistent=True
+  [spindle_triangle+d1] k=3: #colourings=0  cdcl={'cadical153': 'UNSAT', 'minisat22': 'UNSAT'} consistent=True
+  [spindle_triangle+d1] k=4: #colourings=1536  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [spindle_triangle+d1] k=5: #colourings=45360  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [spindle_triangle+d1] k=6: #colourings=506880  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [spindle_triangle+d1] k=3 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [spindle_triangle+d1] k=4 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [spindle_triangle+d1] k=5 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [spindle_triangle+d1] k=6 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [spindle_triangle+d2] 2 coincident point(s) merged (construction reuses existing vertices)
+  [spindle_triangle+d2] n=9 m=15 field=Q(sqrt[3, 11]) maxdev(edges)=3.11e-61 min|d2-1|(nonedges)=0.372 omega=3 distinct=True
+  [spindle_triangle+d2] k=2: #colourings=0  cdcl={'cadical153': 'UNSAT', 'minisat22': 'UNSAT'} consistent=True
+  [spindle_triangle+d2] k=3: #colourings=0  cdcl={'cadical153': 'UNSAT', 'minisat22': 'UNSAT'} consistent=True
+  [spindle_triangle+d2] k=4: #colourings=1536  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [spindle_triangle+d2] k=5: #colourings=45360  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [spindle_triangle+d2] k=6: #colourings=506880  cdcl={'cadical153': 'SAT', 'minisat22': 'SAT'} consistent=True
+  [spindle_triangle+d2] k=3 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [spindle_triangle+d2] k=4 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [spindle_triangle+d2] k=5 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+  [spindle_triangle+d2] k=6 forced pairs: equal=0 different=0 (of 21 non-adjacent pairs)
+wrote /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/supervisor/solve-graphs/certs/pilot.json
+| graph | n | m | omega | k=2 | k=3 | k=4 | k=5 | k=6 | forced pairs (eq/neq) |
+|---|---|---|---|---|---|---|---|---|---|
+| diamond | 4 | 5 | 3 | 0 | 6 | 48 | 180 | 480 | k3:1eq/0ne,k4:0eq/0ne,k5:0eq/0ne,k6:0eq/0ne |
+| moser | 7 | 11 | 3 | 0 | 0 | 384 | 5040 | 31680 | k3:0eq/0ne,k4:0eq/0ne,k5:0eq/0ne,k6:0eq/0ne |
+| spindle_triangle | 7 | 11 | 3 | 0 | 0 | 384 | 5040 | 31680 | k3:0eq/0ne,k4:0eq/0ne,k5:0eq/0ne,k6:0eq/0ne |
+| moser+d1 | 9 | 15 | 3 | 0 | 0 | 1536 | 45360 | 506880 | k3:0eq/0ne,k4:0eq/0ne,k5:0eq/0ne,k6:0eq/0ne |
+| moser+d2 | 9 | 15 | 3 | 0 | 0 | 1536 | 45360 | 506880 | k3:0eq/0ne,k4:0eq/0ne,k5:0eq/0ne,k6:0eq/0ne |
+| spindle_triangle+d1 | 9 | 15 | 3 | 0 | 0 | 1536 | 45360 | 506880 | k3:0eq/0ne,k4:0eq/0ne,k5:0eq/0ne,k6:0eq/0ne |
+| spindle_triangle+d2 | 9 | 15 | 3 | 0 | 0 | 1536 | 45360 | 506880 | k3:0eq/0ne,k4:0eq/0ne,k5:0eq/0ne,k6:0eq/0ne |

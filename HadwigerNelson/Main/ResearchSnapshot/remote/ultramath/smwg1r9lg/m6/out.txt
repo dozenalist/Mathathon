@@ -1,0 +1,5 @@
+checks: 1996 failures: 0
+ALL ASSERTIONS HOLD
+F: three Z^3-type centres at a unit triangle are simultaneously
+   realisable with pairwise disjoint singleton palettes (m9 count 3 <= 6)
+A': the k=7 orbit count is 732 = 3^6 + 3

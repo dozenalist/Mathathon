@@ -1,0 +1,103 @@
+{
+  "updated_utc": "2026-11-14T18:13:42Z",
+  "status": "swarm_running",
+  "summary": "Block 25. Ultramath swarm smwgpu5eh ACTIVE under the new 8-chat authorisation: 2 members (m1, m2), model deepseek/deepseek-v4.1-flash, reasoning_effort max, member_steps 60, 60 minutes, dir .ultramath/smwgpu5eh. m2 registered the assigned type/binder+consumer audit (d1); m1 registered a complementary third lane of its own choice, the logical validity of the three-centre argument, which is exactly the question that matters - whether the reroute silently needs a fact from the deleted 198 lines. Neither has submitted at hand-off. Meanwhile I built AFFECTED-MANIFEST.json: the reverse closure of the five changed modules is 27 of 84, topologically ordered (States first, AvoidingTrace fifth, Interfaces fourteenth, Five twenty-third), each row naming the file to use and carrying both the packet and original hash. I also verified independently that four_support_sequence_no_unit's signature is byte-identical to the original, that the trimmed States prefix 1-520 never mentions a deleted name, and that all five packet files are free of sorry/admit/native_decide/implemented_by/opaque/axiom. No build; no originals touched.",
+  "verified_results": [
+    "GRADE [C] SWARM smwgpu5eh LIVE with members m1 and m2, model deepseek/deepseek-v4.1-flash, reasoning_effort max, member_steps 60, minutes 60. Directions: m2 = d1 TYPE/BINDER + CONSUMER AUDIT; m1 = d2 LOGICAL VALIDITY OF THE THREE-CENTRE ARGUMENT (member-chosen, complementary: does the reroute need a fact that lived in the deleted 198 lines?). No submission had arrived at hand-off; a report will wake me for ultramath_verdict.",
+    "GRADE [C] four_support_sequence_no_unit: the packet's signature is identical to the original after whitespace normalisation (checked by extracting both headers). fixed_state_no_unit_three_centres carries the same binders as States:704 - k, c implicit (as section variables, hence not printed on the signature line), hc and hw explicit, then x, J, K, X, hlabels, A, B, hA, hB, hp, b, d, hb, hd with identical types and the same conclusion.",
+    "GRADE [C] SWARM ACTIVATED: ultramath_start returned swarm smwgpu5eh with members [m1, m2], model deepseek/deepseek-v4.1-flash, reasoning_effort max, member_steps 60, minutes 60, dir .ultramath/smwgpu5eh. These are the actual returned ids, not an intention.",
+    "GRADE [C] AFFECTED-MANIFEST.json built: reverse closure of the five changed modules is 27 of 84. Topological order: 1 States, 2 BoundaryTrace, 3 AngularBoundary, 4 Exclusion, 5 AvoidingTrace, 6 FourContinuity, 7 FourTransport, 8 Accumulation, 9 FiveSupport, 10 CyclicCore, 11 DiskAverages, 12 PlanarCovers, 13 GraphRealization, 14 Interfaces, 15 Sectors, 16 ContinuumLimits, 17 DiskExtension, 18 GraphCuts, 19 HoleApproximation, 20 GraphPatches, 21 FullApproximation, 22 Mesh, 23 Five, 24 Chromatic, 25 Converse, 26 NullSetRobust, 27 Transfer. Each row names the file to use (packet replacement or untouched original) and carries both the packet and original sha256.",
+    "GRADE [C] Trimmed States prefix check: lines 1-520 of integration/States.lean contain zero occurrences of strict_state_no_unit_support, strict_state_sequence_false, strict_state_sequence_local_false, nonparallel_neighborhood, positive_state_support_point, support_density_direction, support_density_sequence. So no retained declaration in the prefix refers to the deleted branch.",
+    "GRADE [C] Hole scan across all five packet files (AvoidingTrace, FiveSupport, Interfaces, FourContinuity, States), comment-stripped: zero occurrences of sorry, admit, native_decide, implemented_by, opaque, axiom in every file.",
+    "GRADE [C] Packet file hashes: AvoidingTrace e51502b2baf451936ef045eeabe655818e1f1b2708ae1cc9f8feffd81d0cb753; FiveSupport 89c93e0ebda452451b496bc9a3b759b498a03635f0262f01313515098050df2f; Interfaces 568fc119bee888946c7172992bcfd9796b5ffecc403007effa4ac049aa27f1ac; FourContinuity 8b24e593f6eb191378fc0953ce3bd66787a14c10f6b411c1cf40ef7ae6e84123; States 904ba7ca7462856079999a8e6aa80fb64d1231f744392f7cca15f6e7f3ecf567.",
+    "GRADE [C] Net line accounting unchanged from block 24: +235 (new module) -22 (FiveSupport) +1 (Interfaces) -42 (FourContinuity) -198 (States) = -27.",
+    "GRADE [C] Originals untouched: lean/OAI/Geometry/PlaneColoring/{States,FiveSupport,Interfaces,FourContinuity}.lean hashes recorded in AFFECTED-MANIFEST.json as sha256_original.",
+    "GRADE [S] Parent-reported and not re-verified here: AvoidingTrace importing BoundaryTrace only passed locally after the implicit-c helper repairs and section balancing; the fixed and moving replacements passed the original type/binder gates and full dependency traversal (51271/61231 constants, no strict chain, no sorryAx). No build was run in this block."
+  ],
+  "conjectures": [
+    "AvoidingTrace should now compile on its own against the 17-module closure(BoundaryTrace); the two remaining risks are the fixed FrechetUrysohnSpace instance and whether the moved neighbour lemmas need an open adjustment.",
+    "With both consumers rerouted, a compiler dependency dump over the integrated tree should show strict_state_sequence_false reachable only from the removed States:704, i.e. the branch as dead code.",
+    "The staged quartet (varying_pullback_L1, circleEndpoint_identity_neighborhood, near_identity_circle_in, and any helper between 389 and 527) would take the States reduction from -198 to a larger figure, but each needs its own neighbourhood audit."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/integration/AvoidingTrace.lean  <-- fixed. sha256 e51502b2baf451936ef045eeabe655818e1f1b2708ae1cc9f8feffd81d0cb753",
+    "supervisor/simplify-lean/integration/FiveSupport.lean  <-- moved lemmas + rerouted no_sixty. sha256 89c93e0ebda452451b496bc9a3b759b498a03635f0262f01313515098050df2f",
+    "supervisor/simplify-lean/integration/Interfaces.lean  <-- one identifier. sha256 568fc119bee888946c7172992bcfd9796b5ffecc403007effa4ac049aa27f1ac",
+    "supervisor/simplify-lean/integration/FourContinuity.lean  <-- body swap + uniform theorem removed. sha256 8b24e593f6eb191378fc0953ce3bd66787a14c10f6b411c1cf40ef7ae6e84123",
+    "supervisor/simplify-lean/integration/States.lean  <-- private copy, strict-state branch removed (198 lines). sha256 904ba7ca7462856079999a8e6aa80fb64d1231f744392f7cca15f6e7f3ecf567",
+    "supervisor/simplify-lean/INTEGRATION-PACKET.md  <-- diffs, acyclicity, corrected accounting, States removal evidence. sha256 197b9ba0b48f0a69a7f0aecbbb13ec0f7220d76a0b04e9046ecf4294e152052d",
+    "originals (unmodified): FiveSupport 6d54703f840a1b4d20b81f5f206b18d79a1fbacde9a481990049b3c41b9c4813, BoundaryTrace c3c0c75a0fb2e2184e8ff39562faac2c38e3d372864ddeca9eb942fa0f2a692f, Interfaces 47dd83f5591742eeabe2aab290f5a855115f0397c12f22b824e5c8047cd1e99e, FourContinuity 7ad20b81c0adf9186399aea794b9817020bfd8c14906e2a7ef12d66b4c173b88, States 941fcbdcd90fb50426d4588d62ea10f9bdc882d455f546f2095ead91a0439340",
+    "retained: threecentre/MovingThreeCentres.lean, threecentre/FixedStateThreeCentres.V1.lean, MOVING-EXTENSION-PLAN.md, THREE-CENTRE-PLAN.md, DOWNSTREAM-INTEGRATION-PLAN.md, JOINT-PAIR-AUDIT.md, STATEMENT-AUDIT.md, DEPENDENCY-LEDGER-converse.md, binder packet, lean/Signature*.lean, lean/AxiomRoots.lean, axiom_gate.py, recon/, snapshots/, BUILD-PLAN.json, MANIFEST-full.json, archive/"
+  ],
+  "tests_run": [
+    "ultramath_status polled three times: m1 registered d2, m2 registered d1, both running; .ultramath/smwgpu5eh/m1/check_end_balance.py created by m1.",
+    "ultramath_start (actual tool call) -> swarm smwgpu5eh, members [m1, m2], flash/max/60 steps/60 minutes.",
+    "python import-closure and topological sort over lean/OAI with the packet's edges (AvoidingTrace -> BoundaryTrace; FiveSupport, Interfaces, FourContinuity each + AvoidingTrace) -> 27 affected modules, acyclic, ordered.",
+    "python comment-stripped scan of the five packet files for sorry/admit/native_decide/implemented_by/opaque/axiom -> all zero.",
+    "python scan of the trimmed States prefix 1-520 for the seven deleted names -> all zero.",
+    "sha256 over the five packet files and the originals; written into AFFECTED-MANIFEST.json.",
+    "NO Lean build, no cloud operation, no installs, no background processes (per policy)."
+  ],
+  "failed_routes": [
+    "My block-23 net figure of -66 is withdrawn; the correct packet total is -27 because the new 235-line module was not counted.",
+    "The reported 'unmatched end Generic' does not occur in the delivered AvoidingTrace (sections balanced Neighbor/ThreeCentre); it was a property of MovingThreeCentres.lean. Recorded rather than silently 'fixed'.",
+    "Not removed: indicator_inter_positive, the ordinary continuity lemmas, complex_unit_orthogonal, ae_direction_nonorthogonal, and the staged quartet (varying_pullback_L1, circleEndpoint_identity_neighborhood, near_identity_circle_in). Not attempted: any deletion on a shared file, any compiler dependency dump, any build."
+  ],
+  "next_step": "Judge the two swarm reports as they arrive (ultramath_verdict, swarm smwgpu5eh). Fold any confirmed finding into the packet, then hand the parent AFFECTED-MANIFEST.json's order to build: States, BoundaryTrace, AngularBoundary, Exclusion, AvoidingTrace, FourContinuity, FourTransport, Accumulation, FiveSupport, CyclicCore, DiskAverages, PlanarCovers, GraphRealization, Interfaces, ... , Transfer. Cannot claim compilation before the parent reports.",
+  "owned_agents": [
+    {
+      "swarm": "smwgpu5eh",
+      "members": 2,
+      "member_ids": [
+        "m1",
+        "m2"
+      ],
+      "model": "deepseek/deepseek-v4.1-flash",
+      "reasoning_effort": "max",
+      "member_steps": 60,
+      "minutes": 60,
+      "dir": ".ultramath/smwgpu5eh",
+      "started_utc": "2026-11-14T18:06:12Z",
+      "state": "running",
+      "directions": {
+        "m1": "d2 LOGICAL VALIDITY OF THE THREE-CENTRE ARGUMENT (chosen by the member, complementary to the assigned lanes)",
+        "m2": "d1 TYPE/BINDER + CONSUMER AUDIT"
+      },
+      "task": "two independent audits of the private 3-centre integration packet: (A) type/binder equality and remaining consumers of the retired strict-state branch; (B) proof-term/dependency architecture, hidden chain references, sorry/axiom scan, import acyclicity, circularity",
+      "accepted": 0,
+      "note": "No submission yet at hand-off. Both members running with ~50 min left; m1 has written .ultramath/smwgpu5eh/m1/check_end_balance.py. I will be woken when a member submits and will judge it with ultramath_verdict."
+    }
+  ],
+  "escalation": null,
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "swarm": "smwgpu5eh (m1,m2; deepseek/deepseek-v4.1-flash; effort max; 60 steps; 60 min)",
+    "manifest": "supervisor/simplify-lean/AFFECTED-MANIFEST.json",
+    "files": {
+      "AvoidingTrace": "supervisor/simplify-lean/integration/AvoidingTrace.lean",
+      "FiveSupport": "supervisor/simplify-lean/integration/FiveSupport.lean",
+      "Interfaces": "supervisor/simplify-lean/integration/Interfaces.lean",
+      "FourContinuity": "supervisor/simplify-lean/integration/FourContinuity.lean",
+      "States": "supervisor/simplify-lean/integration/States.lean"
+    },
+    "plan": "supervisor/simplify-lean/INTEGRATION-PACKET.md",
+    "build_order_head": [
+      "States",
+      "BoundaryTrace",
+      "AngularBoundary",
+      "Exclusion",
+      "AvoidingTrace",
+      "FourContinuity"
+    ],
+    "affected": 27,
+    "tree_total": 84,
+    "not_claimed": [
+      "the packet compiles (no build run)",
+      "any chi(R^2) consequence",
+      "any shared-tree deletion"
+    ],
+    "next_verification_step": "judge the two swarm reports, then parent builds in AFFECTED-MANIFEST order.",
+    "swarm_state": "smwgpu5eh running: m1=d2, m2=d1, no submission yet at hand-off",
+    "manifest_sha256": "1d9b33d4264a32cc18845425721f81b914e2c0506204d267d6436782196d8cac"
+  }
+}

@@ -1,0 +1,96 @@
+{
+ "block": "adversarial-discovery",
+ "updated_utc": "2026-11-14T19:10:00Z",
+ "mode": "ACTUAL ULTRAMATH. One bounded swarm, two mathematical members, no recursive swarms, no coordinator chats.",
+ "swarm": {
+  "id": "smwgptxn1",
+  "dir": ".ultramath/smwgptxn1",
+  "members": [
+   "m1",
+   "m2"
+  ],
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reasoning_effort": "max",
+  "member_steps": 60,
+  "minutes_requested": 60,
+  "budget_field": 240,
+  "started_utc": "2026-11-14T18:04:50Z",
+  "deadline_utc": "2026-11-14T19:04:50Z",
+  "start_tool_result_verbatim": "{\"budget\":240,\"deadline_at_ms\":1794683090751,\"dir\":\".ultramath/smwgptxn1\",\"member_steps\":60,\"members\":[\"m1\",\"m2\"],\"model\":\"deepseek/deepseek-v4.1-flash\",\"reasoning_effort\":\"max\",\"swarm\":\"smwgptxn1\"}",
+  "status": "ended (solved); 2 accepted solutions; both members stopped; no member still running",
+  "member_roles": {
+   "m1": "NEW six-colour-specific strengthening of finite-support exclusions that rules out a surviving continuous 4/5/6-direction stratum, under actual WeakColoring / CommonInterface hypotheses (measure-theoretic, not cyclic-order topology)",
+   "m2": "adversarial: falsify each candidate including (MC120) and every sub-claim of its sketch; plus a distinct finite geometric producer from multi-centre compatible palettes"
+  },
+  "coordinator_note": "Coordinator reasoning effort max is NOT activation. Activation is the ultramath_start call above; the returned swarm id is smwgptxn1 with members m1,m2.",
+  "accepted_by_verdict": [
+   {
+    "member": "m1",
+    "direction": "d2",
+    "verdict": "accept",
+    "run": 1,
+    "accepted_content": [
+     "Theorem C: the k=5 engine five_strip_orbit_impossible has no k=6 analogue even at |P|<=2 -- explicit witness s=(+,+,+,---), P={1,4}/{2,5}; verified by hand and by 0 solutions at k=5 / 4 at k=6 in its search",
+     "Theorem B: the signed-palette constraints do not force pairwise >=120 deg -- exact witness with a 119.87 deg pair, <b1,b2> = -166901/335101 > -1/2",
+     "Theorem A: the six cycle directions are not contained in an open semicircle (graded an immediate two-sided corollary, not a new mechanism)"
+    ],
+    "correction_recorded": "rejected the framing 'sharp constant is 180 deg, not 120 deg': the two statements have different hypotheses/conclusions; its own 119.87 deg witness is excluded by MC120 via the subfamily {2,3,4,5}"
+   },
+   {
+    "member": "m2",
+    "direction": "d1",
+    "verdict": "accept",
+    "run": 2,
+    "accepted_content": [
+     "Lemma 1: exact sector-diameter criterion (unit pair iff max{d1,d2}>1) -- strictly better than the brief's chord step; folded into FINDINGS.md 1'",
+     "Lemma 2: an open set with a unit pair is not a.e. monochromatic (run on the open pair set in C x S^1)",
+     "Lemma 3: explicit uniform strip width delta_J = r_n c_J/2 on a closed subarc",
+     "Theorem 1 = MC120 (strict aperture < 120 deg)",
+     "Theorem 2: data-dependent aperture 180 - 2asin(1/(2+2*delta)), i.e. 120 deg is exactly the delta->0 uniform limit",
+     "Theorem 3: two-centre overlap rule (|R_x cap R_y| <= 1 plus a unit pair in W_x cap W_y) with the exact lens threshold delta > (sqrt6+sqrt2)/2 - 1"
+    ],
+    "correction_recorded": "first submission rejected for a non-sequitur in 7c (pairwise >= 120 deg / equilateral); corrected in run 2. One residual slip recorded in the verdict: at spread 120 deg the common-positive arc is NOT empty (it has width 60 deg); what fails is the absence of a closed subarc of width > 60 deg and the collapse of the strip widths."
+   }
+  ]
+ },
+ "target": {
+  "short": "(MC120) and the six-colour continuous-stratum question: do actual finite-support exclusions leaving <=1 colour force direction aperture >= 120 deg, and does that remove the surviving 4/5/6-direction stratum?",
+  "deliverable_rule": "Precise theorem or exact counterexample with a restricted-class scope, plus the exact unresolved obligation. No filler, no survey, no global chromatic bound, no 6-colour construction claim.",
+  "read_only_inputs": [
+   "lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:147 Straddle, :235 ApproachingContinuum, :244 outer_strip, :251 inner_strip, :317 finite_support_exclusion_ae, :260/:280 continuum_outer/inner_restriction",
+   "lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:182 outer_strip_trace, :231 inner_strip_trace, :159 trace_region_palette",
+   "lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean CommonInterface, commonInterface_graph_acyclic, continuum_limit_support_exclusion",
+   "lean/OAI/Geometry/PlaneColoring/Interfaces.lean:67 four_interface_compatible (signed split at one t)",
+   "lean/OAI/Geometry/PlaneColoring/Palettes.lean palette / paletteSet / palette_nonempty",
+   "lean/OAI/Geometry/PlaneColoring/Coloring.lean:27 WeakColoring, Rigidity.lean:171 ae_translated_unit_pair, :181 binary_open_local_rigidity",
+   "supervisor/solve-graphs/AC-CONE-SIX.md (six cone survivors; orbit A forces the three-disjoint-pair word, orbit B admits it)"
+  ],
+  "read_only_rule": "Shared originals, supervisor/* other blocks and .ultramath/* other runs are read-only. Coordinator writes only supervisor/adversarial-discovery/."
+ },
+ "containment": {
+  "heavy_compute": "none; no Lean builds, no installs, no cloud, no background processes, no sub-agents, no recursive swarms",
+  "member_rule": "member computations tiny exact checks only (<=1 s); larger computation is left for parent scheduling"
+ },
+ "coordinator_findings": {
+  "file": "FINDINGS.md",
+  "items": [
+   "Theorem A: co-size <=1 exclusion family + directions in an OPEN 120 deg cone => False (MC120 proved, strict form; the shape of the proof is compactness on a closed subarc + chord + Fubini)",
+   "Proposition B: the outer-strip mechanism provably produces no unit pair at spread exactly 120 deg; sup of achievable |p-q|^2 is 0.99970 < 1, slack factor sqrt(3) -- so the endpoint cannot be closed by sharpening this argument",
+   "The endpoint is decided by far-field/reach data, not by aperture: explicit unit pair in the FULL straddle intersection at the critical aperture for segments of length 1 (margins 0.19); and a reach threshold nested in (0.08,0.10) for the same instance with short segments",
+   "Theorem C: co-size 0 needs no aperture at all -- only nonemptiness of the intersection of the straddles; in particular if every K_i reaches past distance 1 from x, x itself is in the intersection and the family is contradictory. So six interfaces at one centre require at least one K_i inside the closed unit ball.",
+   "The brief's inference 'three directions must be exactly equilateral' is NOT established: the correct conclusion is spread >= 120 deg (largest gap <= 240 deg); countermodel {0,60,200}"
+  ],
+  "new_obligation": "(E) decide the orbit-A critical-aperture instance: is every admissible family of continua at a common centre contradictory? Needs a reach hypothesis forced by the k=6 hypotheses, or an explicit non-contradictory short-continuum realisation (a certified no-go)"
+ },
+ "post_close_audit": {
+  "note": "Three wake reminders replayed submissions after the swarm had already ended solved (state=solved, waiting_for_verdict=[]); both members were stopped, so no further ultramath_verdict is possible or needed. One claim in m2's accepted file that had not been checked at verdict time was audited afterwards.",
+  "m2_section_7d": {
+   "claim": "x=0, K_i=[0, v_i/2] with v_i = e(0),e(120),e(240): Straddle(K_1) cap Straddle(K_2) cap Straddle(K_3) cap B(0,1) = empty",
+   "conclusion": "TRUE (in fact the intersection is empty, not merely disjoint from B(0,1))",
+   "printed_proof": "FLAWED: the step '|z|^2 + s^2 - 1 <= |z|^2 - 3/4 < 0' needs |z| < sqrt(3)/2, which is not assumed, so the 'all three inner products < 0' step and the sum argument fail on sqrt(3)/2 <= |z| < 1",
+   "repair_recorded": "For |z| <= 1.15139 the far condition needs <z,v_i> < |z|^2 - 3/4 for all i, but max_i <z,v_i> >= |z|/2 (every direction is within 60 deg of some v_i), forcing |z| > (1/2 + sqrt(13)/2)/2 = 1.15139. For |z| > 1.15139 some v_i is at >= 120 deg, so dist(z,K_i) = |z| > 1 and the close condition fails. Hence empty; also verified on a 1500^2 grid (0 points).",
+   "significance": "an exact admissible no-go instance at the critical aperture for short strands (window empty, exclusions vacuous) -- the small-rho end of the reach threshold in FINDINGS.md 3'"
+  },
+  "run_1_of_m2": "rejected at the time (non-sequitur on pairwise >= 120 deg); superseded by run 2, which was accepted. The stale replay of run 1 needs no action."
+ }
+}

@@ -1,0 +1,101 @@
+### alpha_bounds.py  (Proposition 3.1: the two-angle maps and their deviation)
+=== (2ang) identity residual, float64 (formula sanity check) ===
+  d=0.001   sup residual = 7.850e-16
+  d=0.01    sup residual = 8.049e-16
+  d=0.05    sup residual = 7.712e-16
+  d=0.1     sup residual = 7.562e-16
+  d=0.25    sup residual = 7.918e-16
+  d=0.49    sup residual = 7.855e-16
+  worst: 8.049e-16  (float64 rounding only)
+
+=== deviation sup_t max_pm |alpha_pm - (t +/- kappa)|  (float64, fine grid) ===
+  d=0.0001    sup dev = 1.154720e-04   sup dev/d = 1.154720
+  d=0.001     sup dev = 1.154893e-03   sup dev/d = 1.154893
+  d=0.01      sup dev = 1.156638e-02   sup dev/d = 1.156638
+  d=0.02      sup dev = 2.317203e-02   sup dev/d = 1.158601
+  d=0.03      sup dev = 3.481775e-02   sup dev/d = 1.160592
+  d=0.05      sup dev = 5.823267e-02   sup dev/d = 1.164653
+  d=0.0873    sup dev = 1.023621e-01   sup dev/d = 1.172532
+  d=0.1       sup dev = 1.175309e-01   sup dev/d = 1.175309
+  d=0.2       sup dev = 2.398047e-01   sup dev/d = 1.199023
+  d=0.3       sup dev = 3.679713e-01   sup dev/d = 1.226571
+  d=0.4       sup dev = 5.035974e-01   sup dev/d = 1.258994
+  d=0.49      sup dev = 6.338721e-01   sup dev/d = 1.293617
+  worst sup(dev/d) = 1.293617   (bound of Prop 3.1: 4)
+
+=== independent path: mpmath.iv enclosures of dev at a coarse grid ===
+  d=0.01    max over grid of the certified upper bound = 1.156625e-02 at t=-2.104867;  dev/d <= 1.156625
+  d=0.05    max over grid of the certified upper bound = 5.823241e-02 at t=-2.120575;  dev/d <= 1.164648
+  d=0.49    max over grid of the certified upper bound = 6.338396e-01 at t=-2.419026;  dev/d <= 1.293550
+
+=== the three constants of the analytic proof (Prop 3.1) ===
+  (iii) sup_{rho in [1/2,3/2]} |arccos(rho/2)-kappa|/|rho-1| = 0.648927   (used: 0.8)
+  (ii)  sup |rho-1|/d            = 1.000000   (used: 2)
+  (i)   sup |arg(1+d e^-it)|/d   = 1.047196   (used: 2)
+
+  => sup dev/d <= (i) + M*(ii) = 1.0472 + 0.6489*1.0000 = 1.6961  <= 4   OK
+
+### model_check2.py  (Theorem 2: models (M') and (M), checks A-H)
+step index: two implementations agree: True
+s has period 2pi: True
+
+================ (M') T-ary pair model ================
+  D/E palette census: [([1, 4], 2, True, True), ([2, 5], 2, True, True), ([3, 6], 2, True, True)]   violations = 0
+  G traces (P5): nonempty P minus edge for all edges: violations = 0
+     trace data (palette, edge, support of the avoiding trace): [([1, 4], (1, 2), [4]), ([1, 4], (1, 3), [4]), ([1, 4], (2, 3), [1, 4]), ([2, 5], (1, 2), [5]), ([2, 5], (1, 3), [2, 5]), ([2, 5], (2, 3), [5]), ([3, 6], (1, 2), [3, 6]), ([3, 6], (1, 3), [6]), ([3, 6], (2, 3), [6])]
+  C  (5.7): 200000 directions, violations = 0
+  A  transport (general decomposition): 80000 checks, violations = 0, max|dev| = 0.0231
+  B  transport (paper alpha_pm):        60000 checks, violations = 0, max|dev| = 0.0231
+
+================ (M) singleton variant ================
+  D/E palette census: [([5], 1, False, True), ([6], 1, False, True), ([4], 1, False, True)]   violations = 0
+  G traces (P5): nonempty P minus edge for all edges: violations = 0
+     trace data (palette, edge, support of the avoiding trace): [([5], (1, 2), [5]), ([5], (1, 3), [5]), ([5], (2, 3), [5]), ([6], (1, 2), [6]), ([6], (1, 3), [6]), ([6], (2, 3), [6]), ([4], (1, 2), [4]), ([4], (1, 3), [4]), ([4], (2, 3), [4])]
+  C  (5.7): 200000 directions, violations = 0
+  A  transport (general decomposition): 80000 checks, violations = 0, max|dev| = 0.0231
+  B  transport (paper alpha_pm):        60000 checks, violations = 0, max|dev| = 0.0231
+
+  F  exact rational band check: beta range [1.384811, 1.615238], violations = 0
+  H  k = 5 analogue fails: max agreement measure = 0.5491; grid hits s2(t)=s2(t+pi/3): 6666/20000
+
+### structural_check.py  (S1-S5: k=5 census, k=6 palette census, candidate hypotheses)
+S1  k = 5 palettes (1 <= |P| <= 2, not inside a triangle edge):
+    admissible = 9;  with NO outsider = 0  (must be 0);  with outsider = 9
+    => every triangle centre is binary for {4,5} at k = 5, so Lemma 5.5 applies.
+
+S2  k = 6 palettes (1 <= |P| <= 3, not inside a triangle edge):
+    admissible = 35   by size = {1: 3, 2: 12, 3: 20}
+    pairs of complementary triples among them = 20  (these are exactly the
+    pairs excluded by the k = 6 form of (5.2))
+
+S3  candidate extra hypotheses versus the two models:
+    hypothesis                             (M) singleton     (M') T-ary pairs
+    P meets T={1,2,3}                      kills (M)         survives (M')
+    P meets O={4,5,6}                      survives (M)      survives (M')
+    |P| >= 2                               kills (M)         survives (M')
+    |P| <= 2                               survives (M)      survives (M')
+    |P| = 2                                kills (M)         survives (M')
+    P not a singleton of O                 kills (M)         survives (M')
+    P not a subset of O                    kills (M)         survives (M')
+    P meets T and meets O                  kills (M)         survives (M')
+    P = T                                  kills (M)         kills (M')
+    |P| = 3                                kills (M)         kills (M')
+    P not one of {1,4},{2,5},{3,6}         survives (M)      kills (M')
+    P is not a 2-element matching pair     survives (M)      kills (M')
+
+S4  forbidden sets of model (M) at one centre, over all decompositions:
+    labels of O forbidden at x = 0 by some pair (e,v): [4, 5, 6]
+    witnesses (j_deg, k_deg, forbidden set): [(0, 1, [4]), (0, 40, [4, 5]), (0, 80, [4, 6])]
+    Labels of T are never forbidden by model (M), so (M) satisfies (5.2) with c = 1;
+    see S4b for the correct statement (and for the T-ary model (M'), which fails).
+
+S4b (P7): forbidden sets at ONE point when the centres fill a neighbourhood of it
+    (M) singletons: realised forbidden sets = [(4,), (4, 5), (4, 6), (5,), (5, 6), (6,)]
+        union = [4, 5, 6];  labels available at that point = [1, 2, 3]
+    (M') T-ary pairs: realised forbidden sets = [(1, 2, 4, 5), (1, 3, 4, 6), (1, 4), (2, 3, 5, 6), (2, 5), (3, 6)]
+        union = [1, 2, 3, 4, 5, 6];  labels available at that point = []
+
+S5  finite shadow over 4 centres x 720 directions:
+    satisfied constraints = 8640;  violations = 0
+
+### all checks done

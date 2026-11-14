@@ -1,0 +1,11 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: 67cdbc7be0b14601122ca19fb426ea93bef9f91c54fad397c68ec3cb9c82dc8b
+Status: passed
+Exit code: 0
+
+STDOUT
+'SimplifyAngular.three_color_diamond_omega' depends on axioms: [propext, Quot.sound]
+'SimplifyAngular.diamond_tips' depends on axioms: [propext, Quot.sound]
+
+STDERR
+

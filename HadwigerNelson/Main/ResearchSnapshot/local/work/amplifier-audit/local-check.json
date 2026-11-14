@@ -1,0 +1,39 @@
+{
+  "at": "2026-11-14T10:47:28.870Z",
+  "certificateSha256": "5d6436b55e8b9a1a783754e707fc4f3d18b8f8f16034cb05edee2e3400c5aa8d",
+  "independentMethod": "BigInt rational arithmetic, XOR-basis biquadratic multiplication, every pair and exhaustive coloring enumeration",
+  "scope": "Three small positive controls only, not a target k=5 or k=6 forcing gadget or new plane bound; generic constructor not validated.",
+  "passed": true,
+  "instances": [
+    {
+      "name": "k2-path-n3",
+      "vertices": 13,
+      "edges": 13,
+      "k": 2,
+      "assignmentsChecked": 8192,
+      "properColorings": 0,
+      "exactUnitDistances": true,
+      "allInducedEdgesMatch": true
+    },
+    {
+      "name": "k2-path-n2-D-half",
+      "vertices": 9,
+      "edges": 9,
+      "k": 2,
+      "assignmentsChecked": 512,
+      "properColorings": 0,
+      "exactUnitDistances": true,
+      "allInducedEdgesMatch": true
+    },
+    {
+      "name": "k3-diamond-n1",
+      "vertices": 7,
+      "edges": 11,
+      "k": 3,
+      "assignmentsChecked": 2187,
+      "properColorings": 0,
+      "exactUnitDistances": true,
+      "allInducedEdgesMatch": true
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+tree: 83 modules, 31277 lines
+asset closure (5 headline roots): 82 modules, 31204 lines
+outside every asset closure: [('Geometry/PlaneColoring/ConnectedUnitFree.lean', 73)]
+rigidity block of Theorem 2.3 (paths from Five that pass through Ergodicity):
+  30 modules, 15482 lines  (49.5% of the tree)
+  DEL MeasureTheory/CompactFactors/Centers.lean               703
+  DEL MeasureTheory/CompactFactors/Factors.lean               586
+  DEL Analysis/PlaneSpectrum/Characters.lean                  560
+  DEL Analysis/PlaneSpectrum/ConditionalSpectrum.lean         497
+  DEL Analysis/PlaneSpectrum/FourierTests.lean                295
+  DEL Analysis/PlaneSpectrum/Multipliers.lean                 314
+  DEL Analysis/PlaneSpectrum/SmallArcs.lean                   322
+  DEL MeasureTheory/CompactFactors/ConditionalSelection.lean    442
+  DEL Analysis/PlaneSpectrum/PhaseCollision.lean              537
+  DEL Analysis/PlaneSpectrum/PhaseEncoding.lean               255
+
+R4 / R11 style — Theorem A replaces the propagation tower: partially deletable
+  module                                                lines   kept   saved
+  MeasureTheory/CompactFactors/RelativeCenters.lean       598     93     505   [lines 113-131, 136-209] ae_eq_const_of_invariant + condDistrib_comp_equiv + condDistrib_equivariant: used by Kernels, Ergodicity, RelativeProducts
+  MeasureTheory/CompactFactors/Approximation.lean         496     80     416   [lines 108-147, 280-296, 298-320] DifferenceInvariant.invariant, KernelSupport.factor_smul_preserving, relative_difference_invariant: the last is used by Ergodicity and needs the other two
+  MeasureTheory/CompactFactors/ConditionalLimits.lean     701    138     563   [lines 40-177] EuclideanFiveColor.LimitDensity (clip..generated_factor_approximation): used by Kernels:234
+  MeasureTheory/CompactFactors/Stationary.lean            201    108      93   [lines 1-108] EuclideanFiveColor.StationaryMean only: used by Representations
+  TOTAL (saved)                                                          419
+
+  R4/R11 GROSS SAVING = 4511 (10 whole modules) + 1577 (residues) = 6088 lines
+  R4/R11 NET = 6088 - (cost of Theorem A in Lean, not measured here)
+
+R2 / R5 / R6 — replace only the maximality device
+  module                                                lines   kept   saved
+  MeasureTheory/CompactFactors/Factors.lean               586     50     536   [lines 496-545] SeparableZorn.countable_cover / exists_maximal
+  MeasureTheory/CompactFactors/Factors.lean               586     37     549   [lines 546-582] CodedMax.Model / CodedMax.exists_maximal
+  MeasureTheory/CompactFactors/Stationary.lean            201     93     108   [lines 110-201] hbase / hjoin / hug: the maximality + propagation argument
+  TOTAL (saved)                                                          180
+
+  R2/R5/R6 GROSS CEILING = 87 lines (SeparableZorn 50 + CodedMax 37), 0.28% of the tree;
+    each of R2, R5, R6 must then write an ordinal / countably-generated /
+    fixed-point recursion of comparable size, and R2/R5/R6 keep
+    relative_singularity_approximation, ChainJoin.approximation and
+    strict_compact_successor unchanged. Net saving is O(0); none of the
+    three can reach the 1500-line target.
+
+R8 verdict: Theorem A removes 6088 of the rigidity block's 15482 lines;
+  9394 lines of ingredients 1b/1d/1e (InvariantMean, Amenability, Representations, Energy, RadialEnergy, Selections, NumberFields, SpectralMeasure, Basic, Ergodicity) are untouched, so R8
+  cannot halve the development: at best it removes 19.5% of the tree.

@@ -1,0 +1,11 @@
+SHARPEN of Theorem 1.1: chi(R^2) >= 6 is deletion-stable. Complete proof + Lean check.
+
+Theorem C. Let Z ⊆ C be null, or meagre, or of cardinality < c, or of finite outer measure, or contained in a closed half-plane. Then C∖Z is k-colourable iff C is; hence chi(C∖Z) = chi(C).
+Proof: Theorem 1.1 + de Bruijn–Erdős (Lemma B) give a finite non-5-colourable unit-distance graph W. For such Z the bad translations ∪_{w∈W}(Z−w) are not all of C, so a translate W+t avoids Z, and any colouring of C∖Z pulls back to one of W: contradiction.
+
+Corollaries: (i) chi(C∖Z) ∈ {6,7} for such Z — the plane minus a point, a countable set (Q^2, the algebraic plane), a line, a half-plane, any bounded, null or meagre set is not 5-colourable. (ii) Any 5-colourable S has S^c non-null, non-meagre, of cardinality c, of infinite outer measure, not in a half-plane. (iii) chi(B_R∖Z) >= 6 for all R >= R_0.
+Sharpness: Z_0 = C∖B(0,2/5), Z_1 = C∖∪_n B(10n,1/4) violate all five clauses yet have chi = 1; Z_0 is σ-finite, so no relaxation to σ-finite/arbitrary Z; no translate of {0,1} avoids Z_0.
+
+Files: robustness.md (proofs), Robust.lean (20 declarations: all five cases of Lemma A + robustness + 5-colour corollaries), Check.lean, lean-log.txt.
+Check: from .ultramath/smwfcr56i/m9, source ../../../scripts/env4341.sh, export LEAN_PATH=$PWD:$LEAN_PATH, then lean Robust.lean && lean Check.lean.
+Result: exit 0; #print axioms = [propext, Classical.choice, Quot.sound] throughout.

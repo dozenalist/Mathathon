@@ -1,0 +1,37 @@
+[0] F at a=1/5 re-derived exactly: |F| = 42, rings [4, 7, 9, 12, 13]  (0.14s)
+[1] distinct offsets realised by the 888 recorded edges: 42; equals F? True
+    -> the certificate p19.cnf is the 6-colouring CNF of the graph whose edge set is
+       {(u,w) in P^2 : w-u in F}, a combinatorial condition that does not mention 'a'.
+       So keeping these 42 offsets strictly forced keeps the SAME 888 edges and the SAME CNF.
+
+[2] exact per-ring values at a = 1 (mu = dmin, nu = dmax).  Constant on a ring? (D6 symmetry)
+      N   mu^2 (dmin^2)      nu^2 (dmax^2)     #vectors   constant?
+       4   ['(3)+(0)r3']   ['(28)+(0)r3']     6        True
+       7   ['(7)+(0)r3']   ['(43)+(0)r3']    12        True
+       9   ['(12)+(0)r3']   ['(49)+(0)r3']     6        True
+      12   ['(16)+(0)r3']   ['(64)+(0)r3']     6        True
+      13   ['(19)+(0)r3']   ['(67)+(0)r3']    12        True
+
+[3] max_v mu^2 = (19)+(0)r3 at ring N=13   ->  upper endpoint  a < 1/sqrt((19)+(0)r3)
+    min_v nu^2 = (28)+(0)r3 at ring N=4   ->  lower endpoint  a > 1/sqrt((28)+(0)r3)
+    INTERVAL:  a in ( 1/sqrt(28) , 1/sqrt(19) ) = ( 0.188982237 , 0.229415734 )
+    a = 1/5 = 0.2 inside?  1/28 < 1/25 < 1/19  <=>  19 < 25 < 28 : True
+
+[4] cross-check NOT using homothety: recompute every offset's (dmin^2,dmax^2) directly at each a
+    a = 47/250 (~0.188000) [just outside, below] : all 42 strictly forced = False   ; failing offsets: [(-2, 0), (-2, 2), (0, -2), (0, 2)] ...
+    a = 19/100 (~0.190000) [closed endpoint (rational subinterval)] : all 42 strictly forced = True
+    a = 1/5 (~0.200000) [a = 1/5] : all 42 strictly forced = True
+    a = 11/50 (~0.220000) [closed endpoint (rational subinterval)] : all 42 strictly forced = True
+    a = 23/100 (~0.230000) [just outside, above] : all 42 strictly forced = False   ; failing offsets: [(-4, 1), (-4, 3), (-3, -1), (-3, 4)] ...
+    -> the direct computation agrees with the homothety-derived interval at both ends.
+
+[5] modest RATIONAL closed subinterval  [19/100, 11/50]  = [0.19, 0.22]
+    lower margin:  (19/100)^2 = 361/10000 vs 1/28 = 1/28 -> 361*28 = 10108 > 10000  True
+    upper margin:  (22/100)^2 = 484/10000 vs 1/19      -> 484*19 = 9196 < 10000  True
+    both strict in exact integer arithmetic, so [19/100, 22/100] lies strictly inside the open interval.
+
+CONCLUSION (conditional on the 73-cell 6-UNSAT certificate being independently accepted):
+  for EVERY a in (1/sqrt28, 1/sqrt19) = (0.188982, 0.229416), and in particular for every
+  a in [0.19, 0.22], no colouring of the plane constant on honeycomb cell interiors uses six
+  colours.  Same 42 offsets, same 888 edges, same CNF, same refutation; the interval is
+  non-empty and open, with 1/sqrt28 and 1/sqrt19 the exact binding endpoints.

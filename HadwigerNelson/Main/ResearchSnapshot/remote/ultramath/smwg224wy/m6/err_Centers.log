@@ -1,0 +1,87 @@
+OAI/MeasureTheory/CompactFactors/Centers.lean:37:36: error: Function expected at
+  lift
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  z
+
+Hint: The identifier `lift` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/MeasureTheory/CompactFactors/Centers.lean:38:36: error: Function expected at
+  lift
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  z
+
+Hint: The identifier `lift` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/MeasureTheory/CompactFactors/Centers.lean:47:43: error(lean.unknownIdentifier): Unknown identifier `lift`
+OAI/MeasureTheory/CompactFactors/Centers.lean:47:60: error(lean.unknownIdentifier): Unknown identifier `lift`
+OAI/MeasureTheory/CompactFactors/Centers.lean:56:62: error: unsolved goals
+μ : Measure ℂ
+⊢ ∫ (t : ℂ), sorry 0 t ∂μ = 0
+OAI/MeasureTheory/CompactFactors/Centers.lean:57:19: warning: declaration uses `sorry`
+OAI/MeasureTheory/CompactFactors/Centers.lean:71:3: error(lean.unknownIdentifier): Unknown identifier `exists_unique_minimizer`
+OAI/MeasureTheory/CompactFactors/Centers.lean:103:14: error: Function expected at
+  Embedding
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  G
+OAI/MeasureTheory/CompactFactors/Centers.lean:114:18: warning: declaration uses `sorry`
+OAI/MeasureTheory/CompactFactors/Centers.lean:123:18: warning: declaration uses `sorry`
+OAI/MeasureTheory/CompactFactors/Centers.lean:123:52: warning: Variable name `z` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _z
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+OAI/MeasureTheory/CompactFactors/Centers.lean:124:36: warning: Variable name `d` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _d
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+OAI/MeasureTheory/CompactFactors/Centers.lean:136:18: warning: declaration uses `sorry`
+OAI/MeasureTheory/CompactFactors/Centers.lean:136:59: warning: Variable name `z` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _z
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+OAI/MeasureTheory/CompactFactors/Centers.lean:141:44: warning: Variable name `d` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _d
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+OAI/MeasureTheory/CompactFactors/Centers.lean:150:18: warning: declaration uses `sorry`
+OAI/MeasureTheory/CompactFactors/Centers.lean:150:26: warning: Variable name `μ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _μ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+OAI/MeasureTheory/CompactFactors/Centers.lean:163:30: warning: Variable name `t` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _t
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+OAI/MeasureTheory/CompactFactors/Centers.lean:176:0: error: Unexpected name `Embedding` after `end`: The current section is unnamed
+
+Hint: Delete the name `Embedding` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵m̵b̵e̵d̵d̵i̵n̵g̵
+OAI/MeasureTheory/CompactFactors/Centers.lean:177:0: error: Invalid name after `end`: Expected `CosetCenter.Embedding`, but found `EuclideanFiveColor.CosetCenter`
+
+Hint: If you meant to end the outer scope(s) `EuclideanFiveColor.CosetCenter`, you must end all the intervening scopes `EuclideanFiveColor.CosetCenter.Embedding`:
+  end EuclideanFiveColor.CosetCenter.̲E̲m̲b̲e̲d̲d̲i̲n̲g̲
+OAI/MeasureTheory/CompactFactors/Centers.lean:179:0: error: Missing name after `end`: Expected the current scope name `Embedding`
+
+Hint: To end the current scope `Embedding`, specify its name:
+  end ̲E̲m̲b̲e̲d̲d̲i̲n̲g̲
+OAI/MeasureTheory/CompactFactors/Centers.lean:181:0: error: Invalid name after `end`: Expected `Embedding`, but found `OAI`
+
+Note: The current scopes are `EuclideanFiveColor.CosetCenter.Embedding`

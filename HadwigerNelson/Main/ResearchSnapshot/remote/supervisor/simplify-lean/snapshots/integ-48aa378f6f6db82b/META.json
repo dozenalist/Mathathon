@@ -1,0 +1,81 @@
+{
+ "generated_utc_note": "uncompiled textual candidate; no build in this block",
+ "input_sha256": {
+  "lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean": "6602b9d8f20bbdfd447f2f3fcfa523f2c33d09c247e3d2983be7503df9f2dc9b",
+  "lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean": "ca74ba1033fead55133670218739a36b4c75173d9b04d765affd19da9d215cc0"
+ },
+ "post_patch_sha256": {
+  "lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean": "48aa378f6f6db82bfeb0e65920ec2606507364541e72bf77ab969c6c87895dd1",
+  "lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean": "58707f0495837a89b58d5ac7d131ee855220c74cba28851474489b7a8cdd9e0d"
+ },
+ "patch_sha256": {
+  "0001-conditional-spectrum.patch": "87236acd52ff01691a9ecb6b998802b9fe9559b5861dc09f61987e131a4970f7",
+  "0002-conditional-limits.patch": "64b657d3159ade3728464c92200dde906379969aea3c0c16b5f2ce56a5ae66be"
+ },
+ "smoke_sha256": {
+  "SmokeAmbient.lean": "ff8500961ace7c3dda431485bac90ff46b4946a32046190ca136f8c62065e58a",
+  "SmokeFinite.lean": "5d7d963d934c010ffce3796bb717d749e5f096edb68ceea9415ab68703c52b89"
+ },
+ "source_freeze_entry_count": 14,
+ "input_lines": {
+  "ConditionalSpectrum": 497,
+  "ConditionalLimits": 701
+ },
+ "output_lines": {
+  "ConditionalSpectrum": 530,
+  "ConditionalLimits": 542
+ },
+ "added_lines": {
+  "ConditionalSpectrum": 191,
+  "ConditionalLimits": 6
+ },
+ "removed_lines": {
+  "ConditionalSpectrum": 158,
+  "ConditionalLimits": 165
+ },
+ "net_line_change": {
+  "ConditionalSpectrum": 33,
+  "ConditionalLimits": -159,
+  "total": -126
+ },
+ "statement_delta": {
+  "finite_uniform_precision_contradiction": {
+   "identical": true,
+   "sha": "2dde28358ab09934"
+  },
+  "ambient_uniform_precision_contradiction": {
+   "identical": true,
+   "sha": "ab6dd548d3a6bb53"
+  }
+ },
+ "declaration_order_audit": {
+  "ConditionalSpectrum": {
+   "label": "ConditionalSpectrum",
+   "anchors": {
+    "EncodingApproximationAt": 267,
+    "uniform_precision_contradiction": 321,
+    "FiniteEncodingApproximationAt": 289
+   },
+   "forward_refs": [],
+   "ok": true
+  },
+  "ConditionalLimits": {
+   "label": "ConditionalLimits",
+   "anchors": {
+    "AmbientEncodingAt": 369
+   },
+   "forward_refs": [],
+   "ok": true
+  }
+ },
+ "apply_check_rc": [
+  0,
+  0
+ ],
+ "checks": {
+  "no_import_added": true,
+  "no_sorry": true,
+  "body_present": true,
+  "helpers_before_common_theorem": true
+ }
+}

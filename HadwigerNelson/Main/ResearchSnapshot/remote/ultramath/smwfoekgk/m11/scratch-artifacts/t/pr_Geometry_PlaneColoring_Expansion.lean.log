@@ -1,0 +1,26 @@
+.scratch/t/pr_Geometry_PlaneColoring_Expansion.lean:59:0: warning: 
+'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by
+
+import Mathlib.Basic.Real.Basic
+.scratch/t/pr_Geometry_PlaneColoring_Expansion.lean:180:2: error: linarith failed to find a contradiction
+f' : ℝ → ℝ
+K : ℝ≥0
+a b e : ℝ
+hlip : LipschitzWith K f'
+_hab : a ≤ b
+he : ↑K * (b - a) ≤ e
+hmid : 1 + e ≤ f' ((a + b) / 2)
+t : ℝ
+ht : t ∈ Icc a b
+hdist : |t - (a + b) / 2| ≤ (b - a) / 2
+h : |f' t - f' ((a + b) / 2)| ≤ ↑K * |t - (a + b) / 2|
+hm : ↑K * |t - (a + b) / 2| ≤ ↑K * ((b - a) / 2)
+hn : -(f' t - f' ((a + b) / 2)) ≤ |f' t - f' ((a + b) / 2)|
+a✝ : f' t < 1 + e / 2
+⊢ False
+failed
+.scratch/t/pr_Geometry_PlaneColoring_Expansion.lean:516:26: error(lean.invalidField): Invalid field `exists_boundedContinuous_integral_sub_le`: The environment does not contain `And.exists_boundedContinuous_integral_sub_le`, so it is not possible to project the field `exists_boundedContinuous_integral_sub_le` from an expression
+  hf
+of type
+  AEStronglyMeasurable f ν ∧ HasFiniteIntegral f ν
+.scratch/t/pr_Geometry_PlaneColoring_Expansion.lean:516:9: error: Tactic `rcases` failed: `x✝ : ?m.124` is not an inductive datatype

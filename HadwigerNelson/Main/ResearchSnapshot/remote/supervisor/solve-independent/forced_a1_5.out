@@ -1,0 +1,65 @@
+a = 1/5 : hexagon circumradius 0.2, cell diameter D = 0.4, lattice spacing a*sqrt3 = 0.346410
+
+ring  N   |v|     forced/total   note
+    1  0.3464    0/ 6   
+    3  0.6000    0/ 6   
+    4  0.6928    6/ 6   
+    7  0.9165   12/12   
+    9  1.0392    6/ 6   
+   12  1.2000    6/ 6   
+   13  1.2490   12/12   
+   16  1.3856    0/ 6   
+   19  1.5100    0/12   
+   21  1.5875    0/12   
+
+|F| = 42 forced offsets out of 84 vectors with N <= 24; N range of F: [4, 13]
+ENDPOINT EXCEPTIONS (dmax^2 == 1 exactly, tangency, not forced): [(-2, 1), (-1, -1), (-1, 2), (1, -2), (1, 1), (2, -1)]
+ENDPOINT EXCEPTIONS (dmin^2 == 1 exactly): []
+
+Periodic/coset test: a colouring periodic with period Lambda_p must have F and Lambda_p disjoint
+(cells in one coset share a colour).  Enumerating all sublattices of index d:
+  index  2:  0 avoiding   
+  index  3:  0 avoiding   
+  index  4:  0 avoiding   
+  index  5:  0 avoiding   
+  index  6:  0 avoiding   
+  index  7:  0 avoiding   
+  index  8:  0 avoiding   
+  index  9:  0 avoiding   
+  index 10:  0 avoiding   
+  index 11:  0 avoiding   
+  index 12:  0 avoiding   
+  index 13:  0 avoiding   
+  index 14:  0 avoiding   
+  index 15:  0 avoiding   
+  index 16:  1 avoiding   e.g. HNF (4, 0, 4)
+  index 17:  0 avoiding   
+  index 18:  0 avoiding   
+  index 19:  2 avoiding   e.g. HNF (1, 7, 19)
+  index 20: 12 avoiding   e.g. HNF (1, 4, 20)
+  index 21:  5 avoiding   e.g. HNF (1, 4, 21)
+  index 22:  6 avoiding   e.g. HNF (1, 4, 22)
+  index 23:  6 avoiding   e.g. HNF (1, 4, 23)
+  index 24: 21 avoiding   e.g. HNF (1, 4, 24)
+  index 25: 13 avoiding   e.g. HNF (1, 4, 25)
+
+MINIMUM avoiding index at a = 1/5: 16   (witness HNF basis (4, 0, 4))
+  witness sublattice has no vector with N in [4, 7, 9, 12, 13] ; its N values <= 60: [16, 48]
+  [OK] coset colouring on this sublattice is proper on cell INTERIORS (not yet on the 1-skeleton)
+
+Corrected derivation (proof, not search).  The Eisenstein norm N is multiplicative and
+N(k*lambda) = k^2 N(lambda), so a sublattice containing lambda contains 2*lambda, 3*lambda, ...
+Avoidance therefore needs N(lambda) and 4N(lambda) and 9N(lambda) all outside F_N.
+At a = 1/5, F_N = {4,7,9,12,13}: n = 1 gives 4 in F_N, n = 3 gives 12 in F_N, and
+n in {4,7,9,12,13} are themselves forbidden, so N(lambda) >= 16 for every nonzero lambda.
+Packing bound: covolume >= (sqrt3/2)*min|lambda|^2, and index = covolume/((sqrt3/2)*3a^2)
+  = min|lambda|^2/(3a^2) = min N  ->  index >= 16.
+Attained by 4*T = 4Z x 4Z (index 16), whose norms are all multiples of 16: 0 forced offsets.
+
+(The earlier heuristic '|lambda| > 1+D forces index >= ceil((1+D)^2/(3a^2)) = 17' was WRONG:
+ring 16 has |lambda| = 1.3856 < 1+D = 1.4 and is unforced, because dmin >= 1 there (the two
+cells are far apart in a direction where the hexagon is thin).  The bound is 16, not 17.)
+
+CONTROL a = 2/5 (paper's 7-colouring): minimum avoiding index = 7; bound ceil((1.8)^2/(3*0.16))
+  = 6.7500 -> >= 7.  Bound SHARP there, so the 7-colouring is the minimal-index
+  periodic colouring at a = 2/5.

@@ -1,0 +1,16 @@
+  -  117  OAI.Analysis.PlaneSpectrum.Basic
+  -  416  OAI.Analysis.PlaneSpectrum.ConditionalSpectrum
+  -   72  OAI.Analysis.PlaneSpectrum.PhaseCollision
+  -   73  OAI.Analysis.PlaneSpectrum.PhaseEncoding
+  -  320  OAI.Analysis.PlaneSpectrum.SmallArcs
+  !! OAI.MeasureTheory.CompactFactors.Approximation: 4/14 names unmatched
+  -  368  OAI.MeasureTheory.CompactFactors.Approximation
+  -  329  OAI.MeasureTheory.CompactFactors.Centers
+  -  363  OAI.MeasureTheory.CompactFactors.ConditionalLimits
+  -  339  OAI.MeasureTheory.CompactFactors.ConditionalSelection
+  -  451  OAI.MeasureTheory.CompactFactors.Factors
+  -  802  OAI.MeasureTheory.CompactFactors.Functions
+  -  524  OAI.MeasureTheory.CompactFactors.Kernels
+  -  319  OAI.MeasureTheory.CompactFactors.RelativeCenters
+  -   73  OAI.MeasureTheory.CompactFactors.Stationary
+TOTAL lines removed: 4566

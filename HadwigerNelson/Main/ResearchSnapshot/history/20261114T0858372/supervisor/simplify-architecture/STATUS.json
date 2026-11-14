@@ -1,0 +1,52 @@
+{
+ "updated_utc": "2026-11-14T09:25:00Z",
+ "status": "completed_block",
+ "summary": "Block 8: the EXACT integration patch is prepared under encoding-core/integration/, shared originals untouched. Two unified diffs, plus patched copies for reading; both apply cleanly (patch -p1 --dry-run rc 0 on frozen copies). 0001 inserts EncodingApproximationAt and uniform_precision_contradiction (full transplanted body) before the old def, turns FiniteEncodingApproximationAt into an abbrev alias with identical binders, and replaces the 153-line body by a two-line call; 0002 does the same for AmbientEncodingAt and the ambient theorem. No import is added, so no wrapper can be proved by importing a theorem of its name, and the review-only _core copies are excluded. Statement delta is EMPTY for both public theorems (identical statement sha). Measured net line change -126 (Spectrum +33, Limits -159; earlier ~150 projection superseded). Both Circle local-instance pairs precede both edit sites, so no instance is added. Two narrow smoke roots plus axioms/check lines for both roots, the successor theorem and the deep consumer. Input hashes frozen. UNCOMPILED: the saving is not verified.",
+ "verified_results": [
+  "[verified here, mechanical] Patch application: patch -p1 --dry-run on frozen copies of both modules returns rc 0 (APPLY-CHECK.txt). integrate.py refuses to run if either input sha256 moves.",
+  "[verified here, mechanical] Statement delta EMPTY: statement text re-extracted from original and patched copy is byte-identical for both public theorems (sha 2dde28358ab09934 for finite, ab6dd548d3a6bb53 for ambient).",
+  "[verified here, mechanical] Measured line change: ConditionalSpectrum 497 -> 530 (158 removed, 191 added), ConditionalLimits 701 -> 542 (165 removed, 6 added); net -126 across the two modules. The single-process check that caught a real error this block: my first generated patch had omitted the proof body entirely (0 occurrences of bounded_coefficient_bins) and the line arithmetic exposed it.",
+  "[verified here, source reading] Circle local instances: Spectrum declares MeasurableSpace/BorelSpace Circle at 43-44, 178-179, 260-261 and the insertion point is after 260-261; Limits declares them at 363-364, before both edit sites (369 and 385). No new instance is introduced by either patch, which is what keeps the two harc hypotheses the same proposition.",
+  "[verified here, source reading] Downstream consumers are positional calls and therefore real signature checks: ConditionalSpectrum:479 (successor), Approximation.lean:414 (deep consumer), ConditionalLimits:322 (cross-module call of the finite theorem), ConditionalLimits:660 (ambient theorem). Statement preservation keeps all four elaborating; a build of ConditionalLimits and Approximation is the strongest available statement-preservation test.",
+  "[verified here, source reading] No import is added by either patch (no_import_added: true); the alias right-hand side is a definition; the shared theorem is defined once, above both call sites; so neither wrapper can be closed by importing a theorem of its own name.",
+  "[delivered, UNCOMPILED] SmokeFinite.lean and SmokeAmbient.lean with #print axioms / #check for uniform_precision_contradiction, both public roots, finite_uniform_successor_contradiction and both encoding definitions; expected axioms [propext, Classical.choice, Quot.sound]."
+ ],
+ "conjectures": [
+  "After integration the measured net change is -126 lines across the two modules, not the ~150 projected; it is UNVERIFIED until the local build and axiom run pass.",
+  "The != 0 risk in the build is the abbrev aliases being accepted inside refine <...> at ConditionalLimits:592 (the existential arity r, B, C, H is preserved because S and P are parameters) and the S := id defeq for H i (id x) vs H i x."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/encoding-core/integration/0001-conditional-spectrum.patch (+33 net; sha d9b56eac3d65...)",
+  "supervisor/simplify-architecture/encoding-core/integration/0002-conditional-limits.patch (-159 net; sha 64b657d3159a...)",
+  "supervisor/simplify-architecture/encoding-core/integration/OAI/... (patched copies of both modules, readable without applying)",
+  "supervisor/simplify-architecture/encoding-core/integration/INTEGRATION.md (apply order, per-anchor description, circularity guard, consumers, measured counts, smoke commands, build-only uncertainties)",
+  "supervisor/simplify-architecture/encoding-core/integration/META.json (frozen input/output/patch/smoke sha256, statement delta, line counts, apply-check rc)",
+  "supervisor/simplify-architecture/encoding-core/integration/SmokeFinite.lean, SmokeAmbient.lean",
+  "supervisor/simplify-architecture/encoding-core/integration/APPLY-CHECK.txt",
+  "supervisor/simplify-architecture/encoding-core/integrate.py (asserting generator: input-hash freeze, body-presence assertion, statement-delta computation)",
+  "supervisor/simplify-architecture/encoding-core/EncodingCore.lean, Wrappers.lean (block-7 review copies; redundant after integration)",
+  "supervisor/simplify-architecture/LEDGER.md (D-based mixture retained as a logical counterexample to strictness alone)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "python3 integrate.py (patch generation + measurement; the block's single process)",
+   "outcome": "two patches, two patched copies, META.json; assertions on body presence and statement identity pass after one fix (see verified_results)."
+  },
+  {
+   "cmd": "patch -p1 --dry-run on frozen copies of both modules",
+   "outcome": "rc 0 and rc 0; logged in APPLY-CHECK.txt."
+  },
+  {
+   "cmd": "no lean / lake / remote build; no subagents; no messages to other chats",
+   "outcome": "compile and axiom commands are handed to the local queue in INTEGRATION.md Sec.7."
+  }
+ ],
+ "failed_routes": [
+  "First generated patch omitted the 151-line proof body entirely (a missing GEN_THM term in the concatenation); caught by the line arithmetic (497 -> 359 instead of ~530) and by a bounded_coefficient_bins presence assertion now built into integrate.py. Recorded because it shows the measured counts, not the plan, are the check.",
+  "Review-only circularity hazard: Wrappers.lean imports the originals and therefore needs _core-suffixed names plus Iff.rfl certificates. That design is deliberately NOT carried into the patch, where the alias makes the certificates unnecessary; importing the originals into the patched files would be circular and is excluded (no_import_added).",
+  "Not attempted, per instruction: duplicating the formal-dependency chat's independent audit and its local build packet; no remote build; no new weak-mixing work; no Astra escalation.",
+  "Still withdrawn and untouched: P3 compaction propagation; coset counterexample; uncentered Fourier decay; first-stage properness; (U) implies M3."
+ ],
+ "next_step": "Local integration check, in the order of INTEGRATION.md Sec.7-8: apply 0001 and 0002, source scripts/env4341.sh, python3 scripts/build_lean.py, then lean both smoke roots. Confirm in this order: the inserted block elaborates at its anchor; both abbrev aliases are accepted where the defs were (including inside refine at ConditionalLimits:592); S := id reduces; the four change lines and hbins re-elaborate; and #print axioms is [propext, Classical.choice, Quot.sound] for both roots and all three consumers. Only then re-measure lines and record -126 as verified. If the formal-dependency chat's packet lands first, use its commands and do not duplicate the audit.",
+ "escalation": null
+}

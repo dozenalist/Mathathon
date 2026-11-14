@@ -1,0 +1,17 @@
+{
+  "validColourings": 9,
+  "distinctPartitions": 8,
+  "baselineEqualNonedges": 30739,
+  "survivors": 30395,
+  "eliminated": 344,
+  "testedPair": [
+    0,
+    50
+  ],
+  "testedPairNonedge": true,
+  "testedPairColours": [
+    1,
+    0
+  ],
+  "certificateSha256": "746933a738e56a3f5eac9e3bdaacb361287feff1589e38ecffe0f2815d4752ab"
+}

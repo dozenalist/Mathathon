@@ -1,0 +1,91 @@
+=== 1. exact values at the seven raw vertices (field Q(sqrt3,sqrt11)) ===
+0   x = 0
+    y = 0
+    r2 = 0   y2 = 0   3x2-y2 = 0
+    r2 is rational? True   r2 == 0 ? True   r2 == 1 ? False
+A   x = 1/2*s3
+    y = 1/2
+    r2 = 1   y2 = 1/4   3x2-y2 = 2
+    r2 is rational? True   r2 == 0 ? False   r2 == 1 ? True
+B   x = 1/2*s3
+    y = -1/2
+    r2 = 1   y2 = 1/4   3x2-y2 = 2
+    r2 is rational? True   r2 == 0 ? False   r2 == 1 ? True
+T   x = 1*s3
+    y = 0
+    r2 = 3   y2 = 0   3x2-y2 = 9
+    r2 is rational? True   r2 == 0 ? False   r2 == 1 ? False
+uA  x = 5/12*s3 + -1/12*s11
+    y = 5/12 + 1/12*s33
+    r2 = 1   y2 = 29/72 + 5/72*s33   3x2-y2 = 25/18 + -5/18*s33
+    r2 is rational? True   r2 == 0 ? False   r2 == 1 ? True
+uB  x = 5/12*s3 + 1/12*s11
+    y = -5/12 + 1/12*s33
+    r2 = 1   y2 = 29/72 + -5/72*s33   3x2-y2 = 25/18 + 5/18*s33
+    r2 is rational? True   r2 == 0 ? False   r2 == 1 ? True
+uT  x = 5/6*s3
+    y = 1/6*s33
+    r2 = 3   y2 = 11/12   3x2-y2 = 16/3
+    r2 is rational? True   r2 == 0 ? False   r2 == 1 ? False
+
+=== 2. same values through exact rational interval arithmetic only ===
+    sqrt3 in [1.73205,1.73206], sqrt11 in [3.31662,3.31663]  (the repo's radical_bounds)
+0   r2 in [0.000000000000,0.000000000000] away from 1
+    y2 in [0.000000000000,0.000000000000]   3x2-y2 in [0.000000000000,0.000000000000]   => H needs >= 0.000000000
+A   r2 in [1.000000000000,1.000000000000] contains 1 as endpoint
+    y2 in [0.250000000000,0.250000000000]   3x2-y2 in [2.000000000000,2.000000000000]   => H needs >= 2.000000000
+B   r2 in [1.000000000000,1.000000000000] contains 1 as endpoint
+    y2 in [0.250000000000,0.250000000000]   3x2-y2 in [2.000000000000,2.000000000000]   => H needs >= 2.000000000
+T   r2 in [3.000000000000,3.000000000000] away from 1
+    y2 in [0.000000000000,0.000000000000]   3x2-y2 in [9.000000000000,9.000000000000]   => H needs >= 9.000000000
+uA  r2 in [1.000000000000,1.000000000000] contains 1 as endpoint
+    y2 in [0.801704977153,0.801708483181]   3x2-y2 in [-0.206833932722,-0.206819908611]   => H needs >= 0.206833933
+uB  r2 in [1.000000000000,1.000000000000] contains 1 as endpoint
+    y2 in [0.003847072375,0.003850578403]   3x2-y2 in [2.984597686389,2.984611710500]   => H needs >= 2.984611710
+uT  r2 in [3.000000000000,3.000000000000] away from 1
+    y2 in [0.916666666667,0.916666666667]   3x2-y2 in [5.333333333333,5.333333333333]   => H needs >= 5.333333333
+
+=== 3. the lemma's hypothesis list, decided exactly ===
+  -- the vertices that DO admit the list --
+  T   (a,b,Y,H,d) = (3,3,0,9,2)
+      exact r2=3  y2=0  3x2-y2=9  |r2-1|=2
+      Y*H^2 = 0 < a^3(1-b/4)d^2 = 27 : True   (slack 27)
+      all hypotheses hold: True   failures: []
+  uT  (a,b,Y,H,d) = (3,3,11/12,16/3,2)
+      exact r2=3  y2=11/12  3x2-y2=16/3  |r2-1|=2
+      Y*H^2 = 704/27 < a^3(1-b/4)d^2 = 27 : True   (slack 25/27)
+      all hypotheses hold: True   failures: []
+  every vertex admits the list? True <- answer to the claim under test
+
+  -- the vertices where the list is UNSATISFIABLE, with the exact reason --
+  0  : r2 = 0 exactly, so a <= r2 = 0 contradicts 0 < a.
+       (ThreeLabelRegion is false here too: 0 < x^2+y^2 fails.)
+  A  : r2 = 1 exactly, so 0 <= d and d <= |r2-1| = 0 force d = 0;
+       then Y*H^2 < a^3(1-b/4)*0 = 0 <= Y*H^2 is a contradiction.
+       (ThreeLabelRegion is false here too: y2*(3x2-y2)^2 = 1 is not < r2^3(1-r2/4)(r2-1)^2 = 0.)
+  B  : r2 = 1 exactly, so 0 <= d and d <= |r2-1| = 0 force d = 0;
+       then Y*H^2 < a^3(1-b/4)*0 = 0 <= Y*H^2 is a contradiction.
+       (ThreeLabelRegion is false here too: y2*(3x2-y2)^2 = 1 is not < r2^3(1-r2/4)(r2-1)^2 = 0.)
+  uA : r2 = 1 exactly, so 0 <= d and d <= |r2-1| = 0 force d = 0;
+       then Y*H^2 < a^3(1-b/4)*0 = 0 <= Y*H^2 is a contradiction.
+       (ThreeLabelRegion is false here too: y2*(3x2-y2)^2 = 25/729 is not < r2^3(1-r2/4)(r2-1)^2 = 0.)
+  uB : r2 = 1 exactly, so 0 <= d and d <= |r2-1| = 0 force d = 0;
+       then Y*H^2 < a^3(1-b/4)*0 = 0 <= Y*H^2 is a contradiction.
+       (ThreeLabelRegion is false here too: y2*(3x2-y2)^2 = 25/729 is not < r2^3(1-r2/4)(r2-1)^2 = 0.)
+
+=== 4. cross-check of the repo's own placedMoser certificates (seven_point_certificate) ===
+  placedMoser 0: box residual <= 11/100000 : True   full certificate: True   failures: []   (Y*H^2=0.869487 < 1.378219)   exact r2=106301/62500
+      exact y2=120409/3422500  3x2-y2=424537307/85562500  |r2-1|=43801/62500
+  placedMoser 1: box residual <= 11/100000 : True   full certificate: True   failures: []   (Y*H^2=0.090262 < 0.111392)   exact r2=206051/62500 + -29/25*s3
+      exact y2=440821/855625 + 7332/34225*s3  3x2-y2=669923057/85562500 + -148431/34225*s3  |r2-1|=143551/62500 + -29/25*s3
+  placedMoser 2: box residual <= 11/100000 : True   full certificate: True   failures: []   (Y*H^2=0.000002 < 0.000684)   exact r2=131551/62500 + -29/25*s3
+      exact y2=3708/23125 + -3168/34225*s3  3x2-y2=13118961/2312500 + -106431/34225*s3  |r2-1|=-69051/62500 + 29/25*s3
+  placedMoser 3: box residual <= 11/100000 : True   full certificate: True   failures: []   (Y*H^2=0.022256 < 0.026434)   exact r2=293801/62500 + -58/25*s3
+      exact y2=1200409/3422500 + 4164/34225*s3  3x2-y2=1086599807/85562500 + -254862/34225*s3  |r2-1|=-231301/62500 + 58/25*s3
+  placedMoser 4: box residual <= 11/100000 : True   full certificate: True   failures: []   (Y*H^2=9.746193 < 19.181859)   exact r2=149882/46875 + -29/30*s3 + 29/150*s11 + 149/1500*s33
+      exact y2=37349237/61605000 + 2266/20535*s3 + 3334/102675*s11 + 41599/492840*s33  3x2-y2=2759661319/385031250 + -137231/41070*s3 + 92431/205350*s11 + -244121/6160500*s33  |r2-1|=103007/46875 + -29/30*s3 + 29/150*s11 + 149/1500*s33
+  placedMoser 5: box residual <= 11/100000 : True   full certificate: True   failures: []   (Y*H^2=0.002035 < 0.024956)   exact r2=206639/93750 + -29/30*s3 + -29/150*s11 + 149/1500*s33
+      exact y2=19131737/61605000 + -184/20535*s3 + 5416/102675*s11 + -12451/492840*s33  3x2-y2=1033852847/192515625 + -117631/41070*s3 + -162431/205350*s11 + 2458379/6160500*s33  |r2-1|=-112889/93750 + 29/30*s3 + 29/150*s11 + -149/1500*s33
+  placedMoser 6: box residual <= 11/100000 : True   full certificate: True   failures: []   (Y*H^2=12.606331 < 12.994601)   exact r2=293801/62500 + -29/15*s3 + 149/750*s33
+      exact y2=5516551/5133750 + 694/6845*s3 + 350/1369*s11 + 2429/41070*s33  3x2-y2=2516611921/256687500 + -42477/6845*s3 + -1400/1369*s11 + 369043/1026750*s33  |r2-1|=231301/62500 + -29/15*s3 + 149/750*s33
+  ALL seven placedMoser certificates verify exactly: True

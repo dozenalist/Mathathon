@@ -1,0 +1,25 @@
+== 1. copy sprint/simplify/r1/m7/lean -> sprint/simplify/r1/m7/port433
+== 2. port to 4.33.1 (content-addressed, trim-tolerant)
+109 hunks; APPLIED=104, OBSOLETE=5
+  obsolete: OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean @@ -289,7 +289,7 @@ :: ['  let : IsProbabilityMeasure (μ.map p) := inferInstance']
+  obsolete: OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean @@ -303,7 +303,8 @@ :: ['  let : IsProbabilityMeasure ((μ.map p).map (v n)) := inferInstance']
+  obsolete: OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean @@ -636,7 +637,7 @@ :: ['  let : IsProbabilityMeasure (μ.map p) := inferInstance']
+  obsolete: OAI/MeasureTheory/CompactFactors/Functions.lean @@ -118,7 +118,7 @@ :: ['    refine ⟨fun y i => star (a y i), (Measurable.of_eval (fun i => Complex.continuous_conj.measurable.comp ((measurable_pi_iff.mp ham) i))), ?_, ?_, ?_⟩']
+  obsolete: OAI/MeasureTheory/CompactFactors/RelativeCenters.lean @@ -100,7 +100,7 @@ :: ['    (μ.map (e.center μ) : Measure G) e.ordinary =']
+== 3. build under stock Lean (Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release))
+OK   OAI.Geometry.PlaneColoring.Mesh [3s]
+OK   OAI.Geometry.PlaneColoring.Five [3s]
+OK   OAI.Geometry.PlaneColoring.NullSetRobust [8s]
+OK   OAI.Geometry.PlaneColoring.Chromatic [8s]
+done: 84/84 ok, 0 failed
+== 4. certificate
+'OAI.Problem160.chromaticNumber_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.algebraic_colorable_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+OAI.Problem160.chromaticNumber_bounds : 6 ≤ OAI.Problem160.planeChromaticNumber ∧
+  OAI.Problem160.planeChromaticNumber ≤ 7
+'OAI.EuclideanFiveColor.no_proper_five_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.properColoring_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.proper_iff_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+OAI.EuclideanFiveColor.no_proper_five_coloring : ¬∃ c, OAI.EuclideanFiveColor.ProperColoring 5 c
+== 5. line count
+84 modules, 30534 lines

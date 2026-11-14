@@ -1,0 +1,83 @@
+{
+ "updated_utc": "2026-11-14T08:13:56Z",
+ "status": "completed_block",
+ "summary": "Block 6. (1) Accepted the correction: `h_image_P` as `P (h j)` was FALSE - at j=0, h''P0 = {2,4} but P(h 0) = P1 = {0,3}. Correct target `P (-j)`; at j=1 it gives P(-1)=P4={1,3}, the only case the argument uses, so the pairing (g,h)=(3-k,1-i) stands and only one generalised conclusion was wrong. Recorded with the counterexample in the file header and AUDIT 0b. Companion identities verified correct: h''Nb i = Nb(h i) and g''D i = D(h i). (2) Closed the symmetry-transport interface: (V) 'no common label', (D) 'adjacent lists disjoint', (N) 'neighbour existence both ways' are now stated as Lean predicates at the paper's own quantifiers (NotCommon, Disjoint, HasNbr) and transported along (g,h) by three short proofs, plus configuration-level versions on ZMod 6 -> Finset (ZMod 5) with positions unchanged (push S r = (S r).image h). Proofs use only involutivity and g''D=D(h i) / h''Nb=Nb(h i); no enumeration of six lists, no case split on r. (3) Retained: Lemma 6.7 at a and -a, the eight licensed-hypothesis countermodels, and the (NC-1) gap - explicitly NOT assumed as a premise and NOT used to infer any analytic accumulation statement. Source delivered unbuilt: seven new declarations, same three imports. One computation, under 1 s.",
+ "verified_results": [
+  {
+   "claim": "`h_image_P : h '' P j = P (h j)` is FALSE; correct form is `P (-j)`",
+   "grade": "hand counterexample (j=0: {2,4} vs {0,3}) plus exhaustive 5-case check in one under-1 s process",
+   "status": "retracted and corrected",
+   "detail": "At j=1 the corrected form gives P(-1)=P4={1,3}, which is exactly h_swaps_allowed_pairs, so the application is unaffected; the generalised P(h j) form would have been wrong if used at j=0."
+  },
+  {
+   "claim": "Companion identities h''Nb i = Nb(h i) and g''D i = D(h i); h fixes {0,1} and {2,4}; h(i+1) = h i - 1",
+   "grade": "exhaustive 5-case check, one process",
+   "status": "confirmed"
+  },
+  {
+   "claim": "(V), (D), (N) transport along (g,h) at fixed positions, at the paper's quantifiers",
+   "grade": "Lean source written, UNBUILT (short proofs from involutivity, g_induces_h, nb_image)",
+   "status": "delivered, local build pending",
+   "detail": "notCommon_image (apply the hypothesis to g k; move the failure back through g''D(h i)=D i and h(h i)=i); disjoint_image (injectivity of h); hasNbr_image (h''Nb i = Nb(h i), absorbing the order reversal). Configuration level: valid_family_push, disjoint_family_push, neighbour_family_push with push S r = (S r).image h."
+  },
+  {
+   "claim": "Upstream: the block-5 file compiled locally after the single statement correction, exit 0, 14 theorems",
+   "grade": "reported by the supervisor; I did not re-run it",
+   "status": "remote evidence, consistent with my sources",
+   "detail": "my block-6 file changes that statement to P(-j) and adds seven declarations (nb_image, NotCommon, Nb, HasNbr, push, three transport proofs, three family lemmas) whose sources are unbuilt."
+  },
+  {
+   "claim": "Lemma 6.7 and the eight licensed-hypothesis countermodels are retained; (NC-1) is not assumed",
+   "grade": "records check",
+   "status": "confirmed",
+   "detail": "AUDIT 4b/4c/4d keep 6.7 at a and -a and state that the transport supplies no no-common-label at position 1."
+  }
+ ],
+ "conjectures": [
+  {
+   "statement": "If the local build passes, the six-step argument needs no further relabelling check: the residue count, the state reflection and the three list conditions are all finite and formalised.",
+   "status": "conditional on the local build of FiveCycleResidues.lean",
+   "grade": "conditional"
+  }
+ ],
+ "artifacts": [
+  "supervisor/simplify-verification/AUDIT-FIVE-CYCLE.md",
+  "supervisor/simplify-verification/INTERFACE-WALL.md",
+  "supervisor/simplify-verification/LOCAL-CHECK-QUEUE.json",
+  "supervisor/simplify-verification/NOTES.md",
+  "supervisor/simplify-verification/STATUS.json",
+  "supervisor/simplify-verification/TOPOLOGY-CONE-MANIFEST.json",
+  "supervisor/simplify-verification/TRANSFER-LEDGER.md",
+  "supervisor/simplify-verification/checks/five_cycle_licence.py",
+  "supervisor/simplify-verification/lean/CheckFifth.lean",
+  "supervisor/simplify-verification/lean/FiveCycleResidues.lean"
+ ],
+ "tests_run": [
+  {
+   "cmd": "python3, one process, under 1 s: 5-case check that h''P j = P(-j), h''Nb i = Nb(h i), g''D i = D(h i), h fixes {0,1}/{2,4}, h(i+1)=h i-1; and that h''P j = P(h j) fails",
+   "outcome": "the four identities true for all five residues; the P(h j) form false, counterexample at j=0 confirming {2,4} vs {0,3}. A first run of the script had a bug in my own helper (it applied the identity map instead of h) and was corrected within the same budget."
+  },
+  {
+   "cmd": "Lean builds",
+   "outcome": "NONE (policy). The block-6 revision of FiveCycleResidues.lean is queue item 6, unbuilt."
+  }
+ ],
+ "failed_routes": [
+  "Seeking a countermodel with fewer than four relaxed positions: none exists (single relaxation already gives 0 solutions, and all eight relax all four).",
+  "Reading the drop-one runs as evidence of individual necessity: that is the reverse implication and is not established by them.",
+  "Treating the cover-obstruction substitution as an integration: it cannot be, because no module of lean/ imports supervisor/.",
+  "Expecting the mesh/diameter bound to be the \u00a77 gap: the Lean splits it into a dichotomy inside Five.lean, so it is not a hypothesis left open.",
+  "`h '' P j = P (h j)`: false at j=0; the correct general target is P(-j). Kept in the file header as a recorded trap.",
+  "My first block-6 check script applied the identity map instead of h and reported all identities false - a script bug, not a mathematical finding; corrected and re-run inside the same one-process budget."
+ ],
+ "next_step": "Local: rebuild item 6 (seven new declarations unbuilt); then CheckFifth, the 25-source cone, the trim rebuild. Mathematical: (NC-1), the only remaining finite gap. The transport interface is closed if that build passes.",
+ "escalation": {
+  "obstacle": "(NC-1), restated precisely: at an accumulation point x of a specified five-cycle locus, with a = lim h_n/|h_n| and R the rotation acting on directions, the list S(R a) = {i : R a lies in the closed essential support of state i at x} has no common label, i.e. the intersection of the diagonals D_i over i in S(R a) is empty.",
+  "definitions": "D_i = {i, i+2} in Z/5Z; state i at x = the set of directions whose palette is exactly D_i; closed essential support S_i = the closed set whose every neighbourhood meets state i in positive measure; S(u) = {i : u in S_i}.",
+  "hypotheses_available": "(6.6) a.e. transition rule at x; closedness and finiteness of the five supports; no-common-label at a and -a from the endpoint pair (a_n^+, a_n^-) and 'y_n in H_k for every label'; (D) disjointness of adjacent position lists; (N) neighbour existence in both directions.",
+  "attempted": "direct transport of the printed zero-area endpoint argument (needs a partner direction whose sum lies near a centre with all five edges present; none exists at r=1); derivation from V0,V3,D,N (fails: 8 countermodels, all relaxing 1,2,4,5); single-position weakening (fails: one relaxation never gives a model).",
+  "expected_useful_output": "Either a proof of (NC-1) \u2014 then FIVE-CYCLE-CORE's five-step elimination of Lemma 6.7 stands as a real simplification \u2014 or a construction of an accumulation configuration realising S(1) = {2,4}, which would prove Lemma 6.7 is not removable by support-list combinatorics alone."
+ },
+ "recovery_note": "2026-11-14 post-outage reconciliation: no jobs running (the only background job, jmwfyybqo, exited 0 long before the outage and its result is recorded); every artifact re-read and hash-checked; nothing re-run or duplicated. Latest instruction (block 3) was already complete at 06:16Z.",
+ "handoff": "Source: lean/FiveCycleResidues.lean now carries the P(-j) correction with its counterexample, the two-level (g,h) identity, the three transports at the paper's quantifiers, and configuration-level versions with positions fixed. Records: AUDIT-FIVE-CYCLE.md 0b (both corrections) and 4d (transport table plus what it does NOT supply), LOCAL-CHECK-QUEUE.json item 6 (21 theorems, fallbacks). Retained: Lemma 6.7, eight countermodels, the (NC-1) gap. No builds; one under-1 s computation."
+}

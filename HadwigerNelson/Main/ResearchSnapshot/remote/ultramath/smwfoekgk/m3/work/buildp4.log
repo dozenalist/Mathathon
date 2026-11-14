@@ -1,0 +1,26 @@
+24 modules to build (of 83)
+ok   OAI.Analysis.PlaneSpectrum.Representations
+ok   OAI.Analysis.PlaneSpectrum.Energy
+ok   OAI.Analysis.PlaneSpectrum.SpectralMeasure
+ok   OAI.Analysis.PlaneSpectrum.Ergodicity
+ok   OAI.Geometry.PlaneColoring.Expansion
+ok   OAI.Geometry.PlaneColoring.Palettes
+ok   OAI.Geometry.PlaneColoring.PaletteDensity
+ok   OAI.Geometry.PlaneColoring.BinaryPalettes
+ok   OAI.Geometry.PlaneColoring.BoundaryTrace
+ok   OAI.Geometry.PlaneColoring.AngularBoundary
+ok   OAI.Geometry.PlaneColoring.Exclusion
+ok   OAI.Geometry.PlaneColoring.FourContinuity
+ok   OAI.Geometry.PlaneColoring.BorelTransfer
+ok   OAI.Geometry.PlaneColoring.FiveSupport
+ok   OAI.Geometry.PlaneColoring.CyclicCore
+ok   OAI.Geometry.PlaneColoring.GraphRealization
+ok   OAI.Geometry.PlaneColoring.Interfaces
+ok   OAI.Geometry.PlaneColoring.Moser
+ok   OAI.Geometry.PlaneColoring.Sectors
+ok   OAI.Geometry.PlaneColoring.ContinuumLimits
+ok   OAI.Geometry.PlaneColoring.DiskExtension
+ok   OAI.Geometry.PlaneColoring.GraphCuts
+ok   OAI.Geometry.PlaneColoring.HoleApproximation
+ok   OAI.Geometry.PlaneColoring.Lattice
+done in 383s, 0 failures

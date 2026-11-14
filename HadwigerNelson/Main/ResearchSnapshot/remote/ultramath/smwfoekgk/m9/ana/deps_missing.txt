@@ -1,0 +1,4 @@
+OAI.EuclideanFiveColor.graphTree_contractible_aux
+OAI.EuclideanFiveColor.pickSupport
+OAI.Problem160.triangular_rectangle_cover
+OAI.Problem160.triangular_wedge_bound

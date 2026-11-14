@@ -1,0 +1,36 @@
+{
+  "basis": "physical lines including new module and its2auditprints; no compile acceptance implied",
+  "files": [
+    {
+      "module": "OAI.Geometry.PlaneColoring.AvoidingTrace",
+      "oldLines": 0,
+      "newLines": 237,
+      "delta": 237
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.FiveSupport",
+      "oldLines": 376,
+      "newLines": 354,
+      "delta": -22
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.Interfaces",
+      "oldLines": 527,
+      "newLines": 528,
+      "delta": 1
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.FourContinuity",
+      "oldLines": 551,
+      "newLines": 509,
+      "delta": -42
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.States",
+      "oldLines": 764,
+      "newLines": 566,
+      "delta": -198
+    }
+  ],
+  "netDelta": -24
+}

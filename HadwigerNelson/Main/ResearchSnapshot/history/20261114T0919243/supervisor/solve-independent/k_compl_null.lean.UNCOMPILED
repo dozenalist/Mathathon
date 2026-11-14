@@ -1,0 +1,69 @@
+/-
+  SOURCE PACKET - NOT COMPILED, NOT CHECKED, NO AUTHORITY.
+  Proposed k-generic null-set transfer lemma, to sit beside
+  `not_proper_five_coloring_compl_null` in
+  lean/OAI/Geometry/PlaneColoring/NullSetRobust.lean
+  (whose `hfin` block this transcribes with Fin 5 -> Fin k).
+
+  Status: sketch. The body is elided at `...`. Do not cite as a theorem.
+-/
+import OAI.Geometry.PlaneColoring.Converse   -- provides exists_properColoring_of_finset
+                                              -- (Five.lean is deliberately NOT imported)
+
+namespace OAI
+noncomputable section
+open MeasureTheory
+namespace EuclideanFiveColor
+
+/-- **Null-set transfer, upper-bound direction.** A proper `k`-colouring of the complement of a
+Lebesgue-null set extends to a proper `k`-colouring of the whole plane. (The existing
+`not_proper_five_coloring_compl_null` is the `k = 5` lower-bound counterpart of the same mechanism:
+every finite configuration translates off `Z` because the bad translations form a finite union of
+null sets.) -/
+theorem exists_properColoring_of_compl_null {k : ℕ} [NeZero k] {Z : Set ℂ}
+    (hZ : volume Z = 0) (c : ℂ → Fin k)
+    (hc : ∀ x ∉ Z, ∀ y ∉ Z, ‖x - y‖ = 1 → c x ≠ c y) :
+    ∃ d : ℂ → Fin k, ProperColoring k d := by
+  classical
+  -- transcribe `hsingle` / `hbad` / `hne` / `hv` from `not_proper_five_coloring_compl_null`
+  refine exists_properColoring_of_finset (fun F => ?_)
+  have hsingle : ∀ x : ℂ, volume ((fun z : ℂ => z - x) '' Z) = 0 := by
+    intro x
+    have heq : (fun z : ℂ => z - x) '' Z = (fun w : ℂ => w + x) ⁻¹' Z := by
+      ext w
+      simp only [Set.mem_image, Set.mem_preimage]
+      constructor
+      · rintro ⟨z, hz, rfl⟩; simpa using hz
+      · intro h; exact ⟨w + x, h, by ring⟩
+    rw [heq, measure_preimage_add_right]
+    exact hZ
+  have hbad : volume (⋃ x ∈ (F : Set ℂ), (fun z : ℂ => z - x) '' Z) = 0 := by
+    induction F using Finset.induction_on with
+    | empty => simp
+    | insert a s ha ih =>
+      rw [Finset.coe_insert, Set.biUnion_insert]
+      exact measure_union_null (hsingle a) ih
+  have hne : (⋃ x ∈ (F : Set ℂ), (fun z : ℂ => z - x) '' Z) ≠ Set.univ := by
+    intro hall
+    have hzero : volume (Set.univ : Set ℂ) = 0 := by rw [← hall]; exact hbad
+    have hpos : 0 < volume (Metric.ball (0 : ℂ) 1) := Metric.measure_ball_pos volume 0 zero_lt_one
+    have hle : volume (Metric.ball (0 : ℂ) 1) ≤ volume (Set.univ : Set ℂ) :=
+      measure_mono (Set.subset_univ _)
+    rw [hzero] at hle
+    exact hpos.ne' (le_antisymm hle (by positivity))
+  obtain ⟨v, hv⟩ : ∃ v, v ∉ ⋃ x ∈ (F : Set ℂ), (fun z : ℂ => z - x) '' Z := by
+    by_contra h
+    exact hne (Set.eq_univ_of_forall fun v => by by_contra hv; exact h ⟨v, hv⟩)
+  refine ⟨fun x => c (x + v), ?_⟩
+  intro x hx y hy hxy
+  have hxZ : x + v ∉ Z := by
+    intro hmem
+    exact hv (Set.mem_biUnion hx ⟨x + v, hmem, by ring⟩)
+  have hyZ : y + v ∉ Z := by
+    intro hmem
+    exact hv (Set.mem_biUnion hy ⟨y + v, hmem, by ring⟩)
+  exact hc (x + v) hxZ (y + v) hyZ (by simpa only [add_sub_add_right_eq_sub] using hxy)
+
+end EuclideanFiveColor
+end
+end OAI

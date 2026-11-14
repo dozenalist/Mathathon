@@ -1,0 +1,49 @@
+{
+  "updated_utc": "2026-11-14T06:46:46Z",
+  "status": "block complete (re-verified after the Open Math OS outage); one exact negative result for a delimited family; residual region open",
+  "summary": "Decided one exact family for the six-colour side, independent of the cyclic-locus and finite-graph routes: colourings of the plane constant on the cells of a rectangular lattice tiling sZ x tZ (0<s<=t, s^2+t^2<1). Proved the exact criterion: such a colouring is proper iff no colour class contains a difference v with dmin(v)<=1<=dmax(v), the endpoints of the (closed) distance interval of the cell pair; so the family is equivalent to 6-colourability of a Cayley graph of Z^2, and a 7-clique of pairwise-forced offsets refutes 6 colours. Certified in exact integer arithmetic, over a declared 1401-box cover of the whole open region, that every box with s>13/30 plus 16 further anisotropic boxes admit NO proper 6-colouring (681 boxes; all witnesses re-verified in exact rational arithmetic). The remaining 720 boxes have clique number <=6, so this certificate cannot decide them; that region is where a 6-colouring of this family, hence of the plane, would have to live.",
+  "verified_results": [
+    "Lemma (interval): the distance set of two closed lattice rectangles is [dmin,dmax], both ends attained; a same-coloured pair of cells is legal iff 1 is NOT in [dmin,dmax] (tangency = illegal). Proved; boundary cases dmin=1, dmax=1 handled with closed inequalities.",
+    "Lemma (equivalence): for 0<s,t, s^2+t^2<1, a proper 6-colouring of the PLANE constant on cells exists iff Cay(Z^2,{v forced}) is 6-colourable. Exact, no measurability needed; edge sets are measure zero and harmless.",
+    "Lemma (finite space): forced implies |v| <= 1+sqrt(s^2+t^2), giving explicit windows |p|<=1+60/i0; all tests reduce to integer comparisons with common denominator 60.",
+    "CERTIFIED NEGATIVE RESULT: 681 of the 1401 boxes of the grid (i/60,(i+1)/60]x(j/60,(j+1)/60], 1<=i<=j<=59, i^2+j^2<3600, contain a 7-clique among guaranteed-forced differences (monotone box test); hence no proper 6-colouring for ANY (s,t) in them. This includes EVERY box with i>=26, i.e. every s>13/30 with s<=t, s^2+t^2<1, plus 16 anisotropic boxes listed in FINDINGS.md.",
+    "Verification: scripts/cells.py selftest (integer test == independent Fraction test on 7 shapes; every guaranteed-box member forced at all 4 corners) -> 'selftest passed: True'; scripts/verify_witness.py re-checks all 681 recorded cliques at 6 sample points each (4086 checks) -> 0 failures.",
+    "Sharpness: on the 720 undecided boxes a bounded exact clique search found no 7-clique (maximum 6), so the K_7 certificate provably cannot decide them.",
+    "LIMIT LEMMA for the K_7 certificate (proved by me this block, paper-level, not machine-checked): if 7 planar points have all pairwise distances in [a,b] then b >= (sqrt7-1)a [7 disjoint disks of radius a/2 lie in the (a/2)-neighbourhood of the hull: 7 pi a^2/4 <= area(hull) + perim(hull) a/2 + pi a^2/4 with area <= pi b^2/4 (isodiametric) and perim <= pi b (Barbier)]. A forced difference has |v| in [1-D, 1+D], D = cell diameter, so a 7-clique of cells forces D >= 1 - 2/sqrt7 = 0.2441. Consequence: the K_7 method provably cannot decide any tiling with cell diameter below 0.2441; it is a limit on my own method, not a statement about chi(R^2). (The claim surfaced in a refused duplicate proposal of my swarm; I re-derived it rather than trust it.)"
+  ],
+  "conjectures": [
+    "The rectangular cell family admits no proper 6-colouring for ANY (s,t) in the open region; on the undecided boxes the K_7 obstruction would need a non-clique argument (odd wheel / measure-density argument on the forced Cayley graph).",
+    "If a 6-colouring of the plane exists, it is not constant on the cells of a rectangular lattice tiling with min side > 13/30 (now a theorem), and plausibly not on any rectangular tiling."
+  ],
+  "artifacts": [
+    "supervisor/solve-six-colouring/FINDINGS.md",
+    "supervisor/solve-six-colouring/scripts/cells.py",
+    "supervisor/solve-six-colouring/scripts/cover.py",
+    "supervisor/solve-six-colouring/scripts/verify_witness.py",
+    "supervisor/solve-six-colouring/out/cover.json",
+    "supervisor/solve-six-colouring/logs/cover.log"
+  ],
+  "tests_run": [
+    "cd supervisor/solve-six-colouring && python3 scripts/cells.py   # selftest passed: True (0 mismatches)",
+    "cd supervisor/solve-six-colouring && python3 -u scripts/cover.py   # 1401 boxes, certified=681 undecided=720, 17.3 s",
+    "cd supervisor/solve-six-colouring && python3 scripts/verify_witness.py   # 681/681 boxes, 4086 point-checks, 0 failures"
+  ],
+  "failed_routes": [
+    "First implementation had two defects that would have produced a FALSE positive: sq() was fed signed coordinates so the |q| term vanished for q<0, and the window bound used M=3600 where sqrt(M)=60 was meant. Both fixed; the brute-force Fraction reference in cells.py catches this class of error.",
+    "K_7-clique certification does not extend to the small-cell / anisotropic region (clique number <= 6 there); no tooling yet decides 6-colourability of a Cayley graph of Z^2 with a large connection set."
+  ],
+  "next_step": "STEP 1 (no agents, no solver install needed): independent re-derivation of ONE certified box by hand, from FINDINGS.md SS1 only - box (30,42), i.e. s=1/2, t=7/10, clique offsets (0,0),(+-1,0),(0,+-1),(-1,-1),(-1,1): check with a pen that all 21 pairwise differences satisfy dmin<=1<=dmax at that (s,t). This is the cheapest possible independent review of the 681-box result and is the gate before quoting it anywhere. STEP 2: derive a diameter bound that beats the K_7 limit D >= 1-2/sqrt7 = 0.2441 (STATUS.verified_results, last entry) or prove none exists in this form, so that the method's reach is stated as a theorem rather than a surprise. STEP 3 (serial local check, no parallel subagents while the recovery instruction stands): decide 6-colourability of Cay(Z^2,F) on the 720 undecided boxes by periodic CSP f(i,j)=g(i mod N, j mod N) with exact certificates; a SAT witness would be a proper 6-colouring of the plane and needs exact verification plus independent review before any announcement. STEP 4: extend to rational-parallelogram cells.",
+  "owned_agents": [
+    {
+      "swarm": "smwfyb45o",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "members": 3,
+      "minutes": 18,
+      "state": "ENDED AT DEADLINE (not stopped by me): 79 model calls, 0 findings, 0 submissions, 0 accepted. One usable by-product: a refused duplicate proposal (m1, seq 18) suggested the equidistant-set/diameter lemma, which I then proved and recorded above. Registered directions: d1 parallelogram cells (parallelogram dmin/dmax in exact Fractions), d2 attaining 7 via lattice homomorphisms c=(Ap+Bq) mod 7 plus the honeycomb c=p+3q mod 7 check, d3 equilateral-triangle cells of side l in Z[sqrt3]. Five further proposals were refused as duplicates of d1/d2, so the round-disc shard was under-covered; the open shard for the next block is: periodic CSP 6-colourability of Cay(Z^2,F) on the 720 undecided boxes.",
+      "dirs": ".ultramath/smwfyb45o/m1,m2,m3 (repo root, outside my directory; nothing integrated or relied on)"
+    }
+  ],
+  "escalation": null,
+  "recovery_note_utc": "2026-11-14T06:46:46Z",
+  "recovery_note": "Resumed after the Open Math OS outage: no jobs were running and every artifact was intact; scripts re-run and identical (selftest passed True, 681 certified / 720 undecided, 4086 witness checks 0 failures, out/cover.json md5 a600fbce41cb1b9ac8501d306bd7ef2b). No new subagents or swarms launched; swarm smwfyb45o already ended at deadline."
+}

@@ -1,0 +1,11 @@
+STEP 1 DECIDED INDEPENDENTLY: THE TIGHTENING IS VACUOUS.
+
+Theorem. At k=6 the interface CSP with (C1)-(C3) and with (C1)-(C5) have EXACTLY THE SAME satisfiable ray geometries: for every l in {3,4,5,6} and every one of the 6^l sign words satisfiability is unchanged. (C4) (no complementary 3-sets) and (C5) (at most three ternary) remove no instance at all.
+
+Tightened counts at k=6 (8s): l=3 216/216; l=4 1296/1296; l=5 1350/7776; l=6 1062/46656. Modulo the pi/3 rotation symmetry: 36/36, 216/216, 225/1296, 177/7776 — EXACTLY the prior run's untightened table (m5/INTERFACE-NOGO.md Thm 1), which is both the agreement check and the vacuity statement. Non-vacuity calibration, same code: k=4 l=3 0/216, k=4 l=4 0/1296, k=5 l=5 0/7776 UNSAT.
+
+Witness for EVERY sign word at l=3: outsiders {3,4,5}; P_0=P_2=P_4={3}, P_1=P_3=P_5={4} (l=4: {4},{5}). Outsiders lie in BOTH allowed sets of Lemma 8.1; all palettes are singletons, so only (C3) is live and (C4),(C5) have nothing to see. First l=6 witness: cells (0,0,0,3,3,3), palettes {1,4},{2,5},{1,4},{2,5},{1,4},{2,5}.
+
+Consequences. (i) No UNSAT certificate exists: this route cannot prove chi(R^2)>=7 at any l, mesh or constants. (ii) The INDUCTION LEMMA is moot for the lower bound — there is nothing to refute, so proving or disproving the bridge changes no conclusion. (iii) d1's search is pre-empted: report the witness, not the table.
+
+Checks: compare.py ; csp_nogo.py ; step1_vacuity.py in .ultramath/smwfk0ybk/m5/.

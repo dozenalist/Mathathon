@@ -1,0 +1,79 @@
+{
+ "updated_utc": "2026-11-14T05:53:18Z",
+ "status": "completed_block",
+ "summary": "Scope/boundary audit; no new search. Deliverables: corrected cell-family theorem (CELL-NOGO-v2.md) and a three-source claims ledger (LEDGER.md). Three substantive corrections. (1) Boundary ownership: a function cannot be constant on two closed cells sharing an edge, so the convention-free criterion is STRICT dmin < 1 < dmax (dense interiors, interval image); the weak form holds only for closed cells, which no colouring uses. (2) My v1 claim that the forced set is exactly N in {1,3,4} on [1/sqrt13,1/2) is FALSE at the small end: N=7 is forced on (1/sqrt43,1/sqrt7) and N=9 on (1/7,1/sqrt12), so at a=0.28 the set is {1,3,4,7,9}. The >=7 conclusion survives, and the range is now (1/sqrt13,1/2]: open at the bottom (tangency pair is vertex-only, certified), including 1/2 (a cell's unit pair is boundary-only). (3) 'A six-colouring must be cell-free' is withdrawn. Rectangle worker audited: counts 1401/681 correct, all 14301 witness pairs valid, but 174 need corner equalities (open boxes only) and full coverage is false - 0<s<=1/60 is uncovered. Its iff, tangency convention, s^2+t^2=1 exclusion and boundary step are overbroad/unverified. Graph worker's diamond<=4 claim not inherited; only its pilot counts and compactness corollary retained.",
+ "verified_results": [
+  {
+   "statement": "Lemma 1 (boundary ownership): for cells whose interiors partition the plane and a colouring constant on interiors, dmin < 1 < dmax forces the two cells to differ; dmin = 1 or dmax = 1 is boundary-only hence convention-dependent; dmin > 1 or dmax < 1 is impossible.",
+   "grade": "proof (dense interiors; connected domain; interval image)"
+  },
+  {
+   "statement": "Honeycomb exact forced set as a function of a: {1,3,4,7,9} on (1/sqrt13,1/sqrt12), {1,3,4,7} on (1/sqrt12,1/sqrt7), {1,3,4} on (1/sqrt7,1/2]; per-ring endpoints in verify_cell_nogo_v2.out (N=1: a>1/sqrt13, N=3: (1/5,1), N=4: (1/sqrt28,1/sqrt3), N=7: (1/sqrt43,1/sqrt7), N=9: (1/7,1/sqrt12)).",
+   "grade": "exact computation in Q(sqrt3) plus a window-sufficiency argument: forced at a>=1/sqrt13 forces 3N <= 31.4, so only N in {1,3,4,7,9} can occur"
+  },
+  {
+   "statement": "N=7 tested at the small end as instructed: at a = 0.28 the forced rings are [1,3,4,7,9], so v1's 'exactly {1,3,4}' fails on (1/sqrt13,1/sqrt7).",
+   "grade": "exact computation"
+  },
+  {
+   "statement": "Theorem 2: for every a > 1/sqrt13 (vacuous for a > 1/2), every colouring of the plane constant on honeycomb cell interiors uses >= 7 colours; attained at a = 2/5. Range (1/sqrt13, 1/2] with both endpoints certified.",
+   "grade": "proof, finite exact certificate"
+  },
+  {
+   "statement": "Lower endpoint: at a = 1/sqrt13 the ring-1 maximum distance 1 is attained at a pair of hexagon vertices, so by Lemma 1(2) the tangent cells are NOT forced; range is open there.",
+   "grade": "exact computation, maximiser equals a vertex of 2V (asserted)"
+  },
+  {
+   "statement": "Upper endpoint: at a = 1/2 a single cell's diameter 1 is attained only at two opposite vertices, so its interior distance set is (0,1) and the parameter is admissible; rings 1,3,4 are still strictly forced and the 7-colouring is still proper (dmin^2 = 7a^2 = 1.75).",
+   "grade": "exact computation"
+  },
+  {
+   "statement": "Rectangle worker audit: 1401 boxes and 681 certified recorded correctly; all 14301 witness pairs pass the closed and the open-box criteria (0 failures); 174 pairs use an equality at a closed corner, so the certification is for open boxes only.",
+   "grade": "independent exact Fraction recomputation from out/cover.json (audit_rect.py)"
+  },
+  {
+   "statement": "Rectangle worker coverage claim is false: the 1401 half-open boxes have i >= 1, hence miss 0 < s <= 1/60 and s = 1/60 exactly; probes (1/120,1/2), (1/60,1/2), (1/200,99/100) are in the family and uncovered.",
+   "grade": "exact computation"
+  },
+  {
+   "statement": "K_7 diameter limit (imported and independently re-derived): 7 points with all pairwise distances in [A,B] force B >= (sqrt7-1)A, so D >= 1 - 2/sqrt7 = 0.24407; for the honeycomb no 7-clique below a = 0.12204.",
+   "grade": "proof (disjoint disks + isodiametric + Barbier)"
+  }
+ ],
+ "conjectures": [
+  "The honeycomb Cayley graph on a in [0.12204, 0.27735) is either 6-colourable by a periodic labelling (a genuine six-colouring of the plane, since cells tile) or contains a finite 7-chromatic subgraph that is not a clique; not decided.",
+  "Every cell-family no-go (honeycomb, square) is confined to cell diameter >~ 0.24-0.55, which suggests the small-cell regime is the only place a six-colouring of a cell family could live - no evidence either way."
+ ],
+ "artifacts": [
+  "supervisor/solve-independent/CELL-NOGO-v2.md",
+  "supervisor/solve-independent/LEDGER.md",
+  "supervisor/solve-independent/verify_cell_nogo_v2.py",
+  "supervisor/solve-independent/verify_cell_nogo_v2.out",
+  "supervisor/solve-independent/audit_rect.py",
+  "supervisor/solve-independent/square_family.py",
+  "supervisor/solve-independent/CELL-NOGO.md (v1, superseded; kept as changed evidence)",
+  "supervisor/solve-independent/STATUS.json"
+ ],
+ "tests_run": [
+  {
+   "command": "python3 verify_cell_nogo_v2.py",
+   "outcome": "exit 0; per-ring strict a-intervals; forced set on the three subintervals of (1/sqrt13,1/2); N=7 forced at a=0.28; 7-clique strictly forced and chi(T^2)=7 at a=2/5 with margin 28/25; tangency maximiser is a vertex of 2V; a=1/2 admissible"
+  },
+  {
+   "command": "python3 audit_rect.py",
+   "outcome": "exit 0; 1401 boxes and 681 certified confirmed; 14301 witness pairs, 0 failures closed and 0 failures open-box; 174 corner-equality pairs; coverage probes (1/120,1/2), (1/60,1/2), (1/200,99/100) all uncovered"
+  },
+  {
+   "command": "python3 square_family.py",
+   "outcome": "exit 0 after switching to the strict criterion; all 21 pairs of the 7 square cells still forced at c = 3/5"
+  }
+ ],
+ "failed_routes": [
+  "v1's weak criterion and its 'exactly {1,3,4}' forced-set claim (corrected here; the latter is false on (1/sqrt13,1/sqrt7)).",
+  "v1's closed range [1/sqrt13, 1/2): both endpoints were wrong, in opposite directions.",
+  "Two bugs of my own in the v2 script: I first used the ring-3 vector (2,-1) as the 'smallest same-colour witness' (the true witness is (-3,1), N=7), and my critical-point range test for the a-subintervals was inverted; both fixed before any number was quoted.",
+  "Attempting to certify the rectangle family by re-running its clique search was not needed: re-verifying its recorded witnesses plus the monotone-box argument is cheaper and stronger."
+ ],
+ "next_step": "Bounded, well-posed: decide honeycomb 6-colourability on a in [0.12204, 0.27735) - search for a periodic labelling of the forced-offset Cayley graph (positive outcome = plane six-colouring) or a finite non-clique 7-chromatic subgraph (negative). Second: extend the rectangle worker's certification to the uncovered strip 0 < s <= 1/60 and to the grid walls 60s or 60t in Z, by running their test at the wall parameters (a finite 1-D computation).",
+ "escalation": "Precise obstacle for the record: the entire cell-family programme is confined to cell diameter >= ~0.244 by the K_7 diameter lemma, and both certified families stop at diameter ~0.55; the small-cell regime is not approachable by clique certificates or by monotone box covers, and a positive six-colouring there would need an explicit periodic labelling whose consistency with (possibly unbounded) forced offset sets must be established directly. Definitions: cells = Voronoi cells of a lattice, dmin/dmax as in Lemma 1, forced = dmin < 1 < dmax, D = cell diameter. Attempted: clique certificates (closed below D = 0.244), monotone box covers (closed above D ~ 0.55 for honeycomb, i0 = 60 grid for rectangles), residue/ring analysis in a. Expected useful output: either an explicit periodic 6-labelling of Cay(Lambda, F_a) for some a in [0.12204, 0.27735), or a proof that no colouring constant on cell interiors exists in that regime."
+}

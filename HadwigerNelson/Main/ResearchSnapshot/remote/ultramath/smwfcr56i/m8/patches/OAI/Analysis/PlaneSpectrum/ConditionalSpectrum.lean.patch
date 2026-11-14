@@ -1,0 +1,18 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean	2026-11-13 19:09:13.640865082 +0000
++++ OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean	2026-11-13 19:40:40.765454873 +0000
+@@ -125,12 +125,13 @@
+     exact mem_algebraicClosure_iff.mp (x / 2 : F).property
+   have hsAlg : IsAlgebraic ℚ s := IsAlgebraic.of_pow (by norm_num : 0 < 2) (by
+     rw [hs]; exact isAlgebraic_one.sub (hrAlg.pow 2))
++  have hI : IsAlgebraic ℚ Complex.I := mem_algebraicClosure_iff.mp imagUnit.property
+   have huAlg : IsAlgebraic ℚ ((r : ℂ) + Complex.I * s) :=
+     (hrAlg.algebraMap (A := ℂ)).add
+-      ((isAlgebraic_iff_isIntegral.mpr (Complex.isIntegral_I ℚ)).mul (hsAlg.algebraMap (A := ℂ)))
++      (hI.mul (hsAlg.algebraMap (A := ℂ)))
+   have hvAlg : IsAlgebraic ℚ ((r : ℂ) - Complex.I * s) :=
+     (hrAlg.algebraMap (A := ℂ)).sub
+-      ((isAlgebraic_iff_isIntegral.mpr (Complex.isIntegral_I ℚ)).mul (hsAlg.algebraMap (A := ℂ)))
++      (hI.mul (hsAlg.algebraMap (A := ℂ)))
+   have huNorm : ‖(r : ℂ)+Complex.I*s‖ = 1 := by
+     rw [← sq_eq_sq₀ (norm_nonneg _) zero_le_one]
+     rw [← Complex.normSq_eq_norm_sq]

@@ -1,0 +1,11 @@
+BUILDING certified tree, 846 lines shorter than the 31277 baseline, independent of R1.
+
+`sprint/simplify/r1/m7/lean`: 82 modules, 30431 lines (-846 vs baseline 31277, -887 vs staged). hbuild 82/82 OK; certify.py output byte-identical to m10/harness/BASELINE.cert (same statements, axioms [propext, Classical.choice, Quot.sound], frozen check PASS).
+
+Method (reusable, no R1): `tools/prune_dead.py`. Candidate = declaration not a node of DECLGRAPH.log's closure, no attribute, not an instance; dropped if its unqualified name occurs in a kept declaration's comment-stripped body (`.` allowed before, so `Ns.name` counts); deleted as a trimmed block (stop at first top-level structural command or next declaration keyword; extend up over `omit ... in`, `@[...]`, doc comments).
+
+Removed 73 decls / 662 lines, plus 3 consumerless modules (ConnectedUnitFree, MeasurableAssembly, MeasurableProper = 198) and the 2 Seven.lean decls using them. ConditionalLimits -98 (`relative_singularity_limit`, `finite_encoding_at_of_approximation` — dead R1 leftovers), PhaseCollision -67, InvariantMean -49, BoundaryTrace -47.
+
+Check: python3 sprint/simplify/m10/harness/hbuild.py --root sprint/simplify/r1/m7 --env $PWD/scripts/env4341.sh -j3; then certify.py likewise and diff vs BASELINE.cert.
+
+NOTE: `.scratch/mathlib4` was left half-rebuilt (Mathlib oleans deleted), breaking the pinned env for everyone; I restored it with `lake exe cache get`. On "incompatible header" re-run that, do not rebuild mathlib.

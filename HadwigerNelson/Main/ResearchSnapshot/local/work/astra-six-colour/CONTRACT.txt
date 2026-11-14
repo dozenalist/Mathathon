@@ -1,0 +1,97 @@
+SIX-COLOUR FIRST-PACKET CONTRACT — 2026-11-14
+
+Source root: work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/
+All source references below are to files in that directory.
+
+The supplied endpoint is Five.lean:105,125,133: no measurable weak 5-colouring,
+no proper 5-colouring of the algebraic plane, no proper 5-colouring of C.
+It supplies lower bound 6, not lower bound 7. No fresh Lean check was run here.
+
+PROPOSED GLOBAL LEMMA
+c:C->Fin 6 is measurable and WeakColoring 6 c, where WeakColoring is plane x
+angular product-a.e. unit-distance inequality (Coloring.lean:27).
+P_x(t) is the actual source palette, the essential union of positive supports
+of ALL limiting typical circle traces at x (Compactness:261, Palettes:10-40).
+For fixed S subset Fin 6 of size 3, T_S(y) means
+    for angular-a.e. u, P_y(u) intersect S is nonempty.
+Candidate T6: for EVERY fixed x and S, for angular-a.e. t,
+    not T_S(x+direction(t)).
+Do not exchange 'for every centre, angular-a.e.' for 'plane-a.e. centre'.
+
+LICENSED CONSEQUENCE OF T6
+BinaryPalettes:211-233 give, for every fixed x, for angular-a.e. t,
+  (a) for angular-a.e. u, c(x+e(t)+e(u)) not in P_x(t), and
+  (b) TypicalSampling c (x+e(t)) 1.
+The typical sampling theorem puts the actual sampled colour in P_(x+e(t))(u)
+for angular-a.e. u. If A subset P_x(t), |A|=3, the sampled colour belongs to
+S=Fin 6 minus A. Thus T_S(x+e(t)), contradicting T6 at that t. Intersect the
+finitely many exceptional sets for A. Conclusion: for every x,
+  for angular-a.e. t, 1 <= |P_x(t)| <= 2.
+The existing binary theorem similarly gives |P_x(t)|<=3 at six colours:
+take A of size 4, whose complement has size 2. This is a routine consequence,
+not a claimed new frontier result.
+
+TEST 1: LOCAL TWO-CENTRE TRANSPORT
+At fixed centres x,z, actual source transport has the geometric identity
+  z + e(a(r)) = x + e(s(r)) + e(t(r)).
+PaletteTransport:362 requires differentiability of a,s,t, a'>=1/2,
+s' nonzero, and sin(t-s) nonzero, and concludes for line-a.e. r
+  P_z(a(r)) intersect P_x(s(r)) = empty.
+With the swapped branch and t' nonzero it also gives
+  P_z(a(r)) intersect P_x(t(r)) = empty.
+BinaryPalettes:76-115 combines these with a fixed TWO-label hitting cover
+at both centres to identify the source branch states. That identification
+does not follow for THREE labels: source labels 0 and 2 can both avoid
+target label 1.
+
+The annulus construction in the lead report is a measurable six-label map
+whose local unit edges and actual palettes at centres |x|<1/200 satisfy
+these conclusions, all sixty-degree exclusions, and T_{0,1,2}(x) throughout
+that open ball. Its outside extension violates global WeakColoring.
+Thus it refutes only a LOCAL transport-to-ternary-separation implication.
+It is not a counterexample to T6 under global WeakColoring.
+
+TEST 2: COMMON-INTERFACE SIX-POSITION RELAXATION
+Fix one centre x, a cycle length m in {3,4,5,6}, edges E_i={i,i+1 mod m},
+and actual unit approach vectors v_i. In the analytic input each edge has
+an approaching continuum K_i at x whose straddling set excludes both
+endpoint spatial supports (CommonInterface, ContinuumLimits:228).
+For a nonexceptional direction t set s_i(t)=sign <e(t),v_i> and
+  A_b(s)=Fin 6 minus union {E_i : s_i=b}.
+AngularBoundary:259,279 give, for angular-a.e. t,
+  P_x(t) intersects A_true(s(t)), and
+  P_x(t) intersects A_false(s(t)).
+These are INTERSECTIONS, not inclusions in both allowed sets.
+Their derivation uses the same centre x and actual inner/outer strips.
+Finite orthogonality exceptions and six angular shifts are removed together.
+PaletteTransport:450 gives disjoint palettes at successive sixty shifts.
+
+The exact tested finite signature, at t_j=t_0+j*pi/3, j mod 6, is:
+  R1: nonempty P_j subset {0,...,5};
+  R2: |P_j|<=2, CONDITIONALLY GRANTED from proposed T6;
+  R3: P_j intersect P_(j+1)=empty;
+  R4: s_(j+3),i = opposite s_j,i;
+  R5: P_j intersects A_true(s_j) and A_false(s_j);
+  R6: P_j is not contained in any E_i.
+R6 follows already from R5 by choosing b=s_j,i; no transition edge is
+silently inferred from CommonInterface. Actual v_i=e(q_i*pi/3) produce
+every sign in the certificate. Inner products are exactly +/-1 or +/-1/2.
+
+exact_obstacles.mjs verifies SAT witnesses for all m=3..6, using integers.
+This refutes R1-R6 => no m-cycle. It does not refute a stronger analytic
+common-interface theorem or a plane-colouring theorem. It does not impose
+trace consistency across different base angles, support closure, or the
+entire family of transports between spatial centres.
+
+Known omitted source input matters: States:243 two_state_impossible is
+generic in k. A measurable two-state whole-circle field, represented by
+J,K, flipping at pi/3, with |Fin k minus (J union K)|<=2 is impossible
+under the source colouring hypotheses. For example the m=6 finite
+witness alternates {0,2} and {3,5}; its naive global two-state extension
+is already excluded by that theorem. Do not promote the finite witness
+to an analytically realizable angular field without checking this input.
+
+No retired-worker label, claimed SAT result, or claimed sector experiment
+was accepted as a proof. The old STATUS.json was read, but its referenced
+remote scripts were not present in the inspected local files. The narrow
+SAT conclusion above was reconstructed independently from current source.

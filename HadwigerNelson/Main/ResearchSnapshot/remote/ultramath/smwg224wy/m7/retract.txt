@@ -1,0 +1,12 @@
+WITHDRAWAL of my finding f2 ((N)-lite "without F3") and of REPORT.md §4: both are WRONG. The error, from `OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:39`:
+
+  def eval (a : E) : D →* Circle := ⟨fun d => d (Multiplicative.ofAdd a), ...⟩
+
+so `eval z d` is a CIRCLE NUMBER (value of the additive character d at z), not the character `scalar z d`. Hence
+
+1. `phi z = 0` only says `d z = 1` a.e. — d kills the cyclic subgroup Z·z — not `d = 1`, so not `mu = delta_1`. My step (3) used the character reading; invalid.
+2. Uniform discreteness also fails: for k ≠ k' the distance is `phi((k-k')z)`, and `(k-k')z` is not a K-multiple of z, so `phi((k-k')z) = phi z` is unjustified, and there is no uniform lower bound.
+
+What survives: `phi(k z) = phi z` for k = kCoeff u (change of variables + eval_scalar), and with (F3) `phi(v w z) <= L(v)*phi(w z)`. But that gives, for each epsilon, a w_epsilon with `Re muhat(v w_epsilon z) > 1 - (L epsilon)^2/2` — not `muhat(y) = 1` for a fixed y. Exactly m8's critique of N-proof.md §2, and it is correct: epsilon and the epsilon-dependent w do not commute.
+
+Consequence: (N) is OPEN; m8's abandonment of d3 stands; REPORT.md §4 must not be used. (E) needs FZ structure theory, (H2) needs (N); neither is available. The rest of the delivery (certified 30221-line tree, -1056, both toolchains) is unaffected — no new mathematics is used there.

@@ -1,0 +1,127 @@
+{
+ "updated_utc": "2026-11-14T09:26:51Z",
+ "status": "completed_block",
+ "summary": "Analysis and source work only; no Lean, no computation. Three corrections to NULL-TRANSFER.md. (1) The claimed iff between 'chi(R^2) <= chi(C\\Z)' and EMBEDDABILITY of every finite unit-distance graph is FALSE in the necessity direction: a chromatic supremum does not recover subgraphs. Replaced by the k-dependent criterion: chi(R^2) <= k iff every finite plane unit-distance graph is k-colourable. H is only a sufficient geometric translation criterion; chi(C\\Z) = chi(R^2) under H survives as a chromatic statement, not an embedding one. (2) The conclusion produces SOME global colouring and need not extend the supplied one pointwise. (3) A chain is not a strip obstruction - it can be laid flat. Corrected to the fixed strip direction: F translates into a width-w strip iff its perpendicular extent is <= w, and the real obstruction is a RIGID triangulated triangular-lattice patch of side n, every realisation of which contains an equilateral triangle of side n with minimum width n*sqrt3/2. Source packet finished: k_generic_transfer.lean is COMPLETE source (0 elisions), two edits only (Fin 5 -> Fin k; final exact line), imports Converse only (Five unreached), ends with #print axioms. UNCOMPILED, no authority. Accepted family no-go updated to (1/sqrt28, 1/2] per geometry's K7 audit, properness explicit.",
+ "verified_results": [
+  {
+   "statement": "Correction: the criterion is k-dependent and about colouring, not embedding. chi(R^2) <= k iff every finite unit-distance graph realisable in R^2 is k-colourable (de Bruijn-Erdos, both directions in ZFC). Embeddability of all finite graphs into Gamma(C\\Z) is sufficient for 'chi(R^2) <= chi(C\\Z)' but NOT necessary, so the earlier iff is withdrawn.",
+   "grade": "PROOF; self-correction of an error in the previous block's STATUS"
+  },
+  {
+   "statement": "H is only a sufficient geometric criterion, used for exactly one job: making the translation into C\\Z work. It is not necessary for the colouring conclusion, and it is not the content of the theorem.",
+   "grade": "PROOF / scope correction"
+  },
+  {
+   "statement": "What the conclusion is not: the global colouring produced by the compactness step need not agree with the supplied colouring on C\\Z. The lemma asserts existence, not extension.",
+   "grade": "PROOF (inspection of the argument)"
+  },
+  {
+   "statement": "Strip correction: a configuration F translates into the fixed strip |Im z| <= w/2 iff its perpendicular extent is <= w. A polygonal chain is NOT an obstruction (lay it flat along the axis). The genuine obstruction is a rigid triangulated triangular-lattice patch of side n: it is rigid so all realisations are congruent, each contains an equilateral triangle of side n whose minimum width is n*sqrt3/2, so every realisation has perpendicular extent >= n*sqrt3/2 > w once n > 2w/sqrt3.",
+   "grade": "PROOF; replaces the false diameter-based justification"
+  },
+  {
+   "statement": "Source packet completed: k_generic_transfer.lean holds a complete k-generic statement exists_properColoring_of_compl_null with the hfin block transcribed verbatim except Fin 5 -> Fin k, a full proof body with no elisions (verified mechanically: 0 occurrences of '...' between theorem header and end EuclideanFiveColor), imports only OAI.Geometry.PlaneColoring.Converse so Five is not reached, and ends with #print axioms.",
+   "grade": "NEW UNCOMPILED SOURCE - complete but never elaborated; no authority until a build reports"
+  },
+  {
+   "statement": "API/binder checks done by source reading only: ProperColoring at Coloring.lean:7 is the c : C -> Fin k form needed (not Basic.lean:26 on Plane); exists_properColoring_of_finset at Converse.lean:33 has exactly the hypothesis shape of hfin and supplies [NeZero k]; c is total so the witness fun x => c (x + v) is total; measure_preimage_add_right and the Set/Finset lemmas are used unqualified in the source under the same opens and the same pinned mathlib d13f23b.",
+   "grade": "SOURCE READ, NOT COMPILED"
+  },
+  {
+   "statement": "The body of the original hfin never mentions Fin, and every closure (by ring, by positivity, by simpa only [add_sub_add_right_eq_sub]) is k-free, so the transcription's Fin 5 -> Fin k edit touches only the statement - this is why the edit is low-risk.",
+   "grade": "SOURCE READ"
+  },
+  {
+   "statement": "Accepted honeycomb family no-go is now (1/sqrt28, 1/2] = (0.188982, 0.5]: the two certified 73-cell patches cover (1/sqrt28, 1/sqrt12) and geometry's K7 audit, with properness explicit, covers the rest through 1/2. Above 1/2 the family is vacuous.",
+   "grade": "ACCEPTED (per supervisor; the K7 audit is geometry's, not mine - I have not re-derived it)"
+  },
+  {
+   "statement": "No numerical bound on chi(R^2) is established or changed by this block.",
+   "grade": "scope statement"
+  }
+ ],
+ "conjectures": [
+  "For a domain D the operative sufficient criterion is (H); the sharp question is its failure. For a strip of width w, (H) holds iff every finite unit-distance graph has a realisation of perpendicular extent <= w, which fails first for rigid 2-dimensional patches, not for chains.",
+  "chi(C\\Z) = chi(R^2) for every null Z is expected (trivial <=, plus <= in the other direction from the transfer under (H)); this is a chromatic equality and involves no embeddability claim."
+ ],
+ "artifacts": [
+  "supervisor/solve-independent/k_generic_transfer.lean",
+  "supervisor/solve-independent/KGENERIC-PACKET.md",
+  "supervisor/solve-independent/NULL-TRANSFER.md",
+  "supervisor/solve-independent/CELL-NOGO-v2.md",
+  "supervisor/solve-independent/RECOVERY.md",
+  "supervisor/solve-independent/INTERVAL.md",
+  "supervisor/solve-independent/A-QUARTER.md",
+  "supervisor/solve-independent/p25.cnf",
+  "supervisor/solve-independent/p25.drat",
+  "supervisor/solve-independent/tools/drat-trim",
+  "supervisor/solve-independent/STATUS.json"
+ ],
+ "tests_run": [
+  {
+   "command": "(no Lean, no computation, as instructed)",
+   "outcome": "source reads and proof work only"
+  },
+  {
+   "command": "python check on k_generic_transfer.lean",
+   "outcome": "proof body: 46 lines, 0 occurrences of '...', final line 'exact exists_properColoring_of_finset hfin', single import 'OAI.Geometry.PlaneColoring.Converse'"
+  },
+  {
+   "command": "sha256sum k_generic_transfer.lean KGENERIC-PACKET.md NULL-TRANSFER.md",
+   "outcome": "hashes recorded in artifacts_hashes"
+  }
+ ],
+ "failed_routes": [
+  "My first sublattice enumeration used the lower-triangular HNF <(a,0),(b,c)>, which is NOT a complete list: it misses 6 of the 8 index-7 sublattices, including the paper's <(1,3),(0,7)>, and wrongly gave minimum index 8 at a = 2/5. Fixed to upper HNF <(a,b),(0,c)>; the control then gave 7 as it must.",
+  "The heuristic bound index >= ceil((1+D)^2/(3a^2)) = 17 at a = 1/5 was wrong (ring 16 escapes it); replaced by the multiplicative-norm argument giving 16, which the enumeration confirms.",
+  "A density argument (clusters of <= 4 separated by 1.3856) does not give a contradiction at six colours: 2.65 > 1.60. Recorded as a gap, not pursued further in this block.",
+  "A hand estimate that ring-16 cells could carry the N=16 forced offsets was wrong (ring 16 is unforced because dmin >= 1); it does not affect this block, where the window proof bounds N < 16.33 independently.",
+  "Carried forward and still relevant: the earlier lower-triangular HNF enumeration was incomplete (missed 6 of 8 index-7 sublattices); this block uses the upper HNF only, and the index-19 counts here are on that corrected enumeration.",
+  "p19_shrink.py: greedy UNSAT-core minimisation (73+ solver calls) exceeded the cap and produced no output; superseded, no core certificate.",
+  "k = 7 (i.e. chi = 8) DRUP certificate: generation exceeded 60 s; abandoned. The chi = 8 claim therefore rests on two CDCL decisions plus a verified 8-colouring, not on a proof.",
+  "rup.c first version had two real defects: clauses added with watches already false at level 0, and unit clauses enqueued but not propagated. The second produced a spurious RUP FAILURE; diagnosed with a naive independent propagation. Both fixed; the shipped checker is the fixed one.",
+  "patch19_proof.py: abandoned driver (pysat returns DIMACS strings, so its empty-clause assertion fired). Superseded by p19_gen.py.",
+  "Earlier in this block's lineage: the 'every 6-subset contains an edge' line in QUOTIENT16.md \u2014 retracted as a chromatic argument; K_16 is the valid one.",
+  "No SAT search, no core minimisation and no 7-UNSAT work in this block, per instruction; the earlier failures are retained and documented in FAILED-RUNS.md (RUP FAILURE at step 26154 caused by unpropagated units in my checker; shrink timeout; k=7 generation timeout; incomplete lower-HNF enumeration).",
+  "An earlier attempt to parse the exact per-ring values back from JSON strings failed (a hand-rolled parser); replaced by carrying the Q3 objects directly. No numerical claim changed.",
+  "Nothing failed in this block's single experiment. Recorded for continuity: pysat's cadical153 with_proof must NOT be used for DRAT here (its writer mangles the proof, per supervisor/solve-graphs/certs/shard_b_summary.md); the cadical binary was used instead, and my own rup.c was not used at all.",
+  "The earlier blanket requirement (boundary ownership must be constructed before any 6-upper-bound consequence, stated in CELL-NOGO-v2.md section 1 and RECOVERY.md) is RETRACTED as wrong; it treated as necessary a step that the null-set transfer lemma shows does not exist.",
+  "A single global translation avoiding B does not exist (it would require B empty), so the compactness step cannot be replaced by a global translate; any future argument that tries to pick one t for the whole plane is invalid.",
+  "RETRACTED (supervisor-caught): the claim that (H) is necessary. (H) is sufficient only; the exact criterion is embeddability of every finite unit-distance graph.",
+  "RETRACTED (supervisor-caught): the claim that a half-plane is killed by the diameter objection. A half-plane satisfies (H); the objection applies only to bounded regions and fixed-width strips.",
+  "CORRECTED (supervisor-caught): an arbitrary colouring of all cell interiors is not thereby cell-constant; the Cayley-graph equivalence needs that hypothesis stated.",
+  "CORRECTED (supervisor-caught): compactness is used in this proof but was wrongly graded indispensable to all proofs.",
+  "RETRACTED (supervisor-caught): the iff 'chi(R^2) <= chi(C\\Z) <=> every finite unit-distance graph embeds in Gamma(C\\Z)'. Necessity is false; chromatic suprema do not recover embeddings. Replaced by the k-colourability criterion.",
+  "CORRECTED: the conclusion of the transfer lemma does not extend the supplied colouring pointwise; only existence is asserted.",
+  "CORRECTED (supervisor-caught): the diameter argument for fixed-width strips is invalid, because a chain can be laid flat along the strip. Replaced by a perpendicular-extent criterion with a rigid triangular patch as the obstruction.",
+  "REMOVED: the stale 'body elided at ...' label on the source packet, after mechanically verifying the body has no elision."
+ ],
+ "next_step": "When the frozen-tree dependency build completes, elaborate k_generic_transfer.lean in the serial local check workflow (pinned env4341), read the one-line #print axioms output, and record it here. If it fails, the likely causes are the Set.mem_biUnion elaboration under fresh section variables or a mathlib rename; both are mechanical. No further conceptual work is needed on the transfer lemma itself.",
+ "escalation": "None blocking. The one open dependency is external: elaboration of k_generic_transfer.lean awaits the frozen tree's build. The mathematical content of the block is settled and its antecedent (a positive global 6-colouring on a domain) still has no candidate, the accepted no-go interval being (1/sqrt28, 1/2].",
+ "recovery": {
+  "utc": "2026-11-14T06:46:58Z",
+  "jobs_running_at_recovery": 0,
+  "integrity": "re-ran forced_a1_5.py, verify_cell_nogo_v2.py, square_family.py, audit_rect.py: all rc 0; forced_a1_5.out and verify_cell_nogo_v2.out regenerate byte-identically, so no partial or duplicated write exists",
+  "work_lost": "none",
+  "note": "block was already completed and saved at updated_utc; no new research performed during recovery",
+  "artifacts_kept": [
+   "CELL-A-FIFTH.md",
+   "CELL-NOGO-v2.md",
+   "LEDGER.md",
+   "CELL-NOGO.md",
+   "RECOVERY.md"
+  ]
+ },
+ "artifacts_hashes": {
+  "k_generic_transfer.lean": "8a8fc2cb095321cd0d93a0f0aea6e0240bc9098362478e4ddf4f448876272af7",
+  "KGENERIC-PACKET.md": "c3b552965b94a12c8aa1332fcd262fb590977b6493ae6e507250f22848548636",
+  "NULL-TRANSFER.md": "6e0242cd27187198c3312ac5613c55d68d2b99ab7652d8fd5c65c85699c6195e",
+  "lean/OAI/Geometry/PlaneColoring/Converse.lean": "5bde95d2ec3cb518a2ece36f544b69eb25f550f3f2f231a7df5c8a9ba4098248",
+  "lean/OAI/Geometry/PlaneColoring/NullSetRobust.lean": "887a6bbe6b83f87a3baf60823cf586a4b2f9539e3549697caa9732942d627cc9",
+  "lean/OAI/Geometry/PlaneColoring/States.lean": "941fcbdcd90fb50426d4588d62ea10f9bdc882d455f546f2095ead91a0439340",
+  "lean/OAI/Geometry/PlaneColoring/Coloring.lean": "70a2f493ed99008d6a6c37da50c32c22461832469773352406178790fa078898",
+  "p25.cnf": "4d5d07d62ddfb89db4706ad46ab7e68fac210f94c8399586f32e146d608e59ca",
+  "p25.drat": "12a72a7ae61e50f40a0d9948b0d96fd906d25b1c04ec7a15294bfc7fc7b6549d",
+  "tools/drat-trim": "a9571deb08430a3d7f7a72074440f53e2ad48196dced50b146835052a18e9066"
+ }
+}

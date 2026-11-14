@@ -1,0 +1,251 @@
+(A) Fourier uniqueness, exact finite shadow in Z[x]/(Phi_n)
+  PASS  n= 2 j= 0 : sum_k omega^{jk} = n
+  PASS  n= 2 j= 1 : sum_k omega^{jk} = 0
+  PASS  n= 3 j= 0 : sum_k omega^{jk} = n
+  PASS  n= 3 j= 1 : sum_k omega^{jk} = 0
+  PASS  n= 3 j= 2 : sum_k omega^{jk} = 0
+  PASS  n= 4 j= 0 : sum_k omega^{jk} = n
+  PASS  n= 4 j= 1 : sum_k omega^{jk} = 0
+  PASS  n= 4 j= 2 : sum_k omega^{jk} = 0
+  PASS  n= 4 j= 3 : sum_k omega^{jk} = 0
+  PASS  n= 5 j= 0 : sum_k omega^{jk} = n
+  PASS  n= 5 j= 1 : sum_k omega^{jk} = 0
+  PASS  n= 5 j= 2 : sum_k omega^{jk} = 0
+  PASS  n= 5 j= 3 : sum_k omega^{jk} = 0
+  PASS  n= 5 j= 4 : sum_k omega^{jk} = 0
+  PASS  n= 6 j= 0 : sum_k omega^{jk} = n
+  PASS  n= 6 j= 1 : sum_k omega^{jk} = 0
+  PASS  n= 6 j= 2 : sum_k omega^{jk} = 0
+  PASS  n= 6 j= 3 : sum_k omega^{jk} = 0
+  PASS  n= 6 j= 4 : sum_k omega^{jk} = 0
+  PASS  n= 6 j= 5 : sum_k omega^{jk} = 0
+  PASS  n= 7 j= 0 : sum_k omega^{jk} = n
+  PASS  n= 7 j= 1 : sum_k omega^{jk} = 0
+  PASS  n= 7 j= 2 : sum_k omega^{jk} = 0
+  PASS  n= 7 j= 3 : sum_k omega^{jk} = 0
+  PASS  n= 7 j= 4 : sum_k omega^{jk} = 0
+  PASS  n= 7 j= 5 : sum_k omega^{jk} = 0
+  PASS  n= 7 j= 6 : sum_k omega^{jk} = 0
+  PASS  n= 8 j= 0 : sum_k omega^{jk} = n
+  PASS  n= 8 j= 1 : sum_k omega^{jk} = 0
+  PASS  n= 8 j= 2 : sum_k omega^{jk} = 0
+  PASS  n= 8 j= 3 : sum_k omega^{jk} = 0
+  PASS  n= 8 j= 4 : sum_k omega^{jk} = 0
+  PASS  n= 8 j= 5 : sum_k omega^{jk} = 0
+  PASS  n= 8 j= 6 : sum_k omega^{jk} = 0
+  PASS  n= 8 j= 7 : sum_k omega^{jk} = 0
+  PASS  n= 9 j= 0 : sum_k omega^{jk} = n
+  PASS  n= 9 j= 1 : sum_k omega^{jk} = 0
+  PASS  n= 9 j= 2 : sum_k omega^{jk} = 0
+  PASS  n= 9 j= 3 : sum_k omega^{jk} = 0
+  PASS  n= 9 j= 4 : sum_k omega^{jk} = 0
+  PASS  n= 9 j= 5 : sum_k omega^{jk} = 0
+  PASS  n= 9 j= 6 : sum_k omega^{jk} = 0
+  PASS  n= 9 j= 7 : sum_k omega^{jk} = 0
+  PASS  n= 9 j= 8 : sum_k omega^{jk} = 0
+  PASS  n=10 j= 0 : sum_k omega^{jk} = n
+  PASS  n=10 j= 1 : sum_k omega^{jk} = 0
+  PASS  n=10 j= 2 : sum_k omega^{jk} = 0
+  PASS  n=10 j= 3 : sum_k omega^{jk} = 0
+  PASS  n=10 j= 4 : sum_k omega^{jk} = 0
+  PASS  n=10 j= 5 : sum_k omega^{jk} = 0
+  PASS  n=10 j= 6 : sum_k omega^{jk} = 0
+  PASS  n=10 j= 7 : sum_k omega^{jk} = 0
+  PASS  n=10 j= 8 : sum_k omega^{jk} = 0
+  PASS  n=10 j= 9 : sum_k omega^{jk} = 0
+  PASS  n=11 j= 0 : sum_k omega^{jk} = n
+  PASS  n=11 j= 1 : sum_k omega^{jk} = 0
+  PASS  n=11 j= 2 : sum_k omega^{jk} = 0
+  PASS  n=11 j= 3 : sum_k omega^{jk} = 0
+  PASS  n=11 j= 4 : sum_k omega^{jk} = 0
+  PASS  n=11 j= 5 : sum_k omega^{jk} = 0
+  PASS  n=11 j= 6 : sum_k omega^{jk} = 0
+  PASS  n=11 j= 7 : sum_k omega^{jk} = 0
+  PASS  n=11 j= 8 : sum_k omega^{jk} = 0
+  PASS  n=11 j= 9 : sum_k omega^{jk} = 0
+  PASS  n=11 j=10 : sum_k omega^{jk} = 0
+  PASS  n=12 j= 0 : sum_k omega^{jk} = n
+  PASS  n=12 j= 1 : sum_k omega^{jk} = 0
+  PASS  n=12 j= 2 : sum_k omega^{jk} = 0
+  PASS  n=12 j= 3 : sum_k omega^{jk} = 0
+  PASS  n=12 j= 4 : sum_k omega^{jk} = 0
+  PASS  n=12 j= 5 : sum_k omega^{jk} = 0
+  PASS  n=12 j= 6 : sum_k omega^{jk} = 0
+  PASS  n=12 j= 7 : sum_k omega^{jk} = 0
+  PASS  n=12 j= 8 : sum_k omega^{jk} = 0
+  PASS  n=12 j= 9 : sum_k omega^{jk} = 0
+  PASS  n=12 j=10 : sum_k omega^{jk} = 0
+  PASS  n=12 j=11 : sum_k omega^{jk} = 0
+  PASS  n=13 j= 0 : sum_k omega^{jk} = n
+  PASS  n=13 j= 1 : sum_k omega^{jk} = 0
+  PASS  n=13 j= 2 : sum_k omega^{jk} = 0
+  PASS  n=13 j= 3 : sum_k omega^{jk} = 0
+  PASS  n=13 j= 4 : sum_k omega^{jk} = 0
+  PASS  n=13 j= 5 : sum_k omega^{jk} = 0
+  PASS  n=13 j= 6 : sum_k omega^{jk} = 0
+  PASS  n=13 j= 7 : sum_k omega^{jk} = 0
+  PASS  n=13 j= 8 : sum_k omega^{jk} = 0
+  PASS  n=13 j= 9 : sum_k omega^{jk} = 0
+  PASS  n=13 j=10 : sum_k omega^{jk} = 0
+  PASS  n=13 j=11 : sum_k omega^{jk} = 0
+  PASS  n=13 j=12 : sum_k omega^{jk} = 0
+  PASS  n=14 j= 0 : sum_k omega^{jk} = n
+  PASS  n=14 j= 1 : sum_k omega^{jk} = 0
+  PASS  n=14 j= 2 : sum_k omega^{jk} = 0
+  PASS  n=14 j= 3 : sum_k omega^{jk} = 0
+  PASS  n=14 j= 4 : sum_k omega^{jk} = 0
+  PASS  n=14 j= 5 : sum_k omega^{jk} = 0
+  PASS  n=14 j= 6 : sum_k omega^{jk} = 0
+  PASS  n=14 j= 7 : sum_k omega^{jk} = 0
+  PASS  n=14 j= 8 : sum_k omega^{jk} = 0
+  PASS  n=14 j= 9 : sum_k omega^{jk} = 0
+  PASS  n=14 j=10 : sum_k omega^{jk} = 0
+  PASS  n=14 j=11 : sum_k omega^{jk} = 0
+  PASS  n=14 j=12 : sum_k omega^{jk} = 0
+  PASS  n=14 j=13 : sum_k omega^{jk} = 0
+  PASS  n=15 j= 0 : sum_k omega^{jk} = n
+  PASS  n=15 j= 1 : sum_k omega^{jk} = 0
+  PASS  n=15 j= 2 : sum_k omega^{jk} = 0
+  PASS  n=15 j= 3 : sum_k omega^{jk} = 0
+  PASS  n=15 j= 4 : sum_k omega^{jk} = 0
+  PASS  n=15 j= 5 : sum_k omega^{jk} = 0
+  PASS  n=15 j= 6 : sum_k omega^{jk} = 0
+  PASS  n=15 j= 7 : sum_k omega^{jk} = 0
+  PASS  n=15 j= 8 : sum_k omega^{jk} = 0
+  PASS  n=15 j= 9 : sum_k omega^{jk} = 0
+  PASS  n=15 j=10 : sum_k omega^{jk} = 0
+  PASS  n=15 j=11 : sum_k omega^{jk} = 0
+  PASS  n=15 j=12 : sum_k omega^{jk} = 0
+  PASS  n=15 j=13 : sum_k omega^{jk} = 0
+  PASS  n=15 j=14 : sum_k omega^{jk} = 0
+  PASS  n=16 j= 0 : sum_k omega^{jk} = n
+  PASS  n=16 j= 1 : sum_k omega^{jk} = 0
+  PASS  n=16 j= 2 : sum_k omega^{jk} = 0
+  PASS  n=16 j= 3 : sum_k omega^{jk} = 0
+  PASS  n=16 j= 4 : sum_k omega^{jk} = 0
+  PASS  n=16 j= 5 : sum_k omega^{jk} = 0
+  PASS  n=16 j= 6 : sum_k omega^{jk} = 0
+  PASS  n=16 j= 7 : sum_k omega^{jk} = 0
+  PASS  n=16 j= 8 : sum_k omega^{jk} = 0
+  PASS  n=16 j= 9 : sum_k omega^{jk} = 0
+  PASS  n=16 j=10 : sum_k omega^{jk} = 0
+  PASS  n=16 j=11 : sum_k omega^{jk} = 0
+  PASS  n=16 j=12 : sum_k omega^{jk} = 0
+  PASS  n=16 j=13 : sum_k omega^{jk} = 0
+  PASS  n=16 j=14 : sum_k omega^{jk} = 0
+  PASS  n=16 j=15 : sum_k omega^{jk} = 0
+  PASS  Z/3 x Z/4 : sum_{a,b} omega^{(a c)/3 + (b d)/4} = 12*[3|c][4|d]  (c=0,d=0)
+  PASS  Z/3 x Z/4 : sum_{a,b} omega^{(a c)/3 + (b d)/4} = 12*[3|c][4|d]  (c=0,d=1)
+  PASS  Z/3 x Z/4 : sum_{a,b} omega^{(a c)/3 + (b d)/4} = 12*[3|c][4|d]  (c=0,d=2)
+  PASS  Z/3 x Z/4 : sum_{a,b} omega^{(a c)/3 + (b d)/4} = 12*[3|c][4|d]  (c=0,d=3)
+  PASS  Z/3 x Z/4 : sum_{a,b} omega^{(a c)/3 + (b d)/4} = 12*[3|c][4|d]  (c=1,d=0)
+  PASS  Z/3 x Z/4 : sum_{a,b} omega^{(a c)/3 + (b d)/4} = 12*[3|c][4|d]  (c=1,d=1)
+  PASS  Z/3 x Z/4 : sum_{a,b} omega^{(a c)/3 + (b d)/4} = 12*[3|c][4|d]  (c=1,d=2)
+  PASS  Z/3 x Z/4 : sum_{a,b} omega^{(a c)/3 + (b d)/4} = 12*[3|c][4|d]  (c=1,d=3)
+  PASS  Z/3 x Z/4 : sum_{a,b} omega^{(a c)/3 + (b d)/4} = 12*[3|c][4|d]  (c=2,d=0)
+  PASS  Z/3 x Z/4 : sum_{a,b} omega^{(a c)/3 + (b d)/4} = 12*[3|c][4|d]  (c=2,d=1)
+  PASS  Z/3 x Z/4 : sum_{a,b} omega^{(a c)/3 + (b d)/4} = 12*[3|c][4|d]  (c=2,d=2)
+  PASS  Z/3 x Z/4 : sum_{a,b} omega^{(a c)/3 + (b d)/4} = 12*[3|c][4|d]  (c=2,d=3)
+(B) tangent half-angle parametrisation gives algebraic unit vectors
+  PASS  ((1-t^2)/(1+t^2))^2 + (2t/(1+t^2))^2 == 1 identically
+  PASS  coordinates are rational functions of t (hence rational, hence algebraic, at t in Q)
+  PASS  t=0 gives an exact unit vector
+  PASS  t=1 gives an exact unit vector
+  PASS  t=-1 gives an exact unit vector
+  PASS  t=3/2 gives an exact unit vector
+(C) hexagonal 7-colouring: semi-algebraic data and exact properness
+  PASS  |2 - omega|^2 = 7 (from omega + conj(omega) = -1)
+  PASS  r^2 = 2/5, d^2 = 3 r^2 = 6/5
+  PASS  squared separation of equal-coloured cell centres >= 7 * 6/5 = 42/5
+  PASS  |v| > 2r: equal-coloured cells are at positive distance
+  PASS  exact form of sqrt(42/5) > 2 sqrt(2/5) + 1 : 841 > 160
+  PASS  hence same-coloured cells are more than 1 apart, i.e. the 7-colouring is proper
+(D) Proposition 2.2: label arithmetic is consistent in the Haar case
+  PASS  k=2: sum_{i<j} int p_i p_j = (1/2) sum_i m_i
+  PASS  k=2: sum_i ||p_i||^2 + 2 sum_{i<j} int p_i p_j = 1
+  PASS  k=2: Gram matrix of (p_i) is positive semidefinite
+  PASS  k=2: sum_i m_i = 1/2 <= 1
+  PASS  k=3: sum_{i<j} int p_i p_j = (1/2) sum_i m_i
+  PASS  k=3: sum_i ||p_i||^2 + 2 sum_{i<j} int p_i p_j = 1
+  PASS  k=3: Gram matrix of (p_i) is positive semidefinite
+  PASS  k=3: sum_i m_i = 1/2 <= 1
+  PASS  k=4: sum_{i<j} int p_i p_j = (1/2) sum_i m_i
+  PASS  k=4: sum_i ||p_i||^2 + 2 sum_{i<j} int p_i p_j = 1
+  PASS  k=4: Gram matrix of (p_i) is positive semidefinite
+  PASS  k=4: sum_i m_i = 1/2 <= 1
+  PASS  k=5: sum_{i<j} int p_i p_j = (1/2) sum_i m_i
+  PASS  k=5: sum_i ||p_i||^2 + 2 sum_{i<j} int p_i p_j = 1
+  PASS  k=5: Gram matrix of (p_i) is positive semidefinite
+  PASS  k=5: sum_i m_i = 1/2 <= 1
+  PASS  k=6: sum_{i<j} int p_i p_j = (1/2) sum_i m_i
+  PASS  k=6: sum_i ||p_i||^2 + 2 sum_{i<j} int p_i p_j = 1
+  PASS  k=6: Gram matrix of (p_i) is positive semidefinite
+  PASS  k=6: sum_i m_i = 1/2 <= 1
+  PASS  k=7: sum_{i<j} int p_i p_j = (1/2) sum_i m_i
+  PASS  k=7: sum_i ||p_i||^2 + 2 sum_{i<j} int p_i p_j = 1
+  PASS  k=7: Gram matrix of (p_i) is positive semidefinite
+  PASS  k=7: sum_i m_i = 1/2 <= 1
+(E) citations in the extracted paper text
+  PASS  quoted text present: 'If it is nonzero, normalize it and apply Theorem 2.3'
+  PASS  quoted text present: 'The scalar spectral measure is therefore a multiple '
+  PASS  quoted text present: 'The Fourier coefficients of Haar probability vanish '
+  PASS  quoted text present: 'A proper five-coloring would give a weak measurable '
+  PASS  'apply Theorem 2.3' occurs exactly once (line [1263])
+(F) (R_unit) => (R): the two algebraic facts, verified in the finite model F_8
+  PASS  F_8: psi_1 and phi_1 commute
+  PASS  F_8: psi_2 and phi_1 commute
+  PASS  F_8: psi_3 and phi_1 commute
+  PASS  F_8: psi_4 and phi_1 commute
+  PASS  F_8: psi_5 and phi_1 commute
+  PASS  F_8: psi_6 and phi_1 commute
+  PASS  F_8: psi_7 and phi_1 commute
+  PASS  F_8: psi_1 and phi_2 commute
+  PASS  F_8: psi_2 and phi_2 commute
+  PASS  F_8: psi_3 and phi_2 commute
+  PASS  F_8: psi_4 and phi_2 commute
+  PASS  F_8: psi_5 and phi_2 commute
+  PASS  F_8: psi_6 and phi_2 commute
+  PASS  F_8: psi_7 and phi_2 commute
+  PASS  F_8: psi_1 and phi_3 commute
+  PASS  F_8: psi_2 and phi_3 commute
+  PASS  F_8: psi_3 and phi_3 commute
+  PASS  F_8: psi_4 and phi_3 commute
+  PASS  F_8: psi_5 and phi_3 commute
+  PASS  F_8: psi_6 and phi_3 commute
+  PASS  F_8: psi_7 and phi_3 commute
+  PASS  F_8: psi_1 and phi_4 commute
+  PASS  F_8: psi_2 and phi_4 commute
+  PASS  F_8: psi_3 and phi_4 commute
+  PASS  F_8: psi_4 and phi_4 commute
+  PASS  F_8: psi_5 and phi_4 commute
+  PASS  F_8: psi_6 and phi_4 commute
+  PASS  F_8: psi_7 and phi_4 commute
+  PASS  F_8: psi_1 and phi_5 commute
+  PASS  F_8: psi_2 and phi_5 commute
+  PASS  F_8: psi_3 and phi_5 commute
+  PASS  F_8: psi_4 and phi_5 commute
+  PASS  F_8: psi_5 and phi_5 commute
+  PASS  F_8: psi_6 and phi_5 commute
+  PASS  F_8: psi_7 and phi_5 commute
+  PASS  F_8: psi_1 and phi_6 commute
+  PASS  F_8: psi_2 and phi_6 commute
+  PASS  F_8: psi_3 and phi_6 commute
+  PASS  F_8: psi_4 and phi_6 commute
+  PASS  F_8: psi_5 and phi_6 commute
+  PASS  F_8: psi_6 and phi_6 commute
+  PASS  F_8: psi_7 and phi_6 commute
+  PASS  F_8: psi_1 and phi_7 commute
+  PASS  F_8: psi_2 and phi_7 commute
+  PASS  F_8: psi_3 and phi_7 commute
+  PASS  F_8: psi_4 and phi_7 commute
+  PASS  F_8: psi_5 and phi_7 commute
+  PASS  F_8: psi_6 and phi_7 commute
+  PASS  F_8: psi_7 and phi_7 commute
+  PASS  F_8: f_{(phi_a)_* nu}(1) = f_nu(a) for all 2-valued nu and all a != 0
+  PASS  F_8: phi_a preserves K-invariance (9 K-invariant nu tested)
+  PASS  F_8: for K-invariant nu, f_nu(u) = f_nu(1) for all u in K
+  PASS  F_8: (R_unit) => (R) for every K-invariant nu
+  PASS  F_8: Haar is K-invariant with f = 0 off 0
+  PASS  F_8: delta_0 is K-invariant but violates (R_unit) (f(1)=1)
+
+ALL 243 CHECKS PASSED

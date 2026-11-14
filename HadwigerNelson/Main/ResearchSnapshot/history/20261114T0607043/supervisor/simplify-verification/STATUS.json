@@ -1,0 +1,116 @@
+{
+ "updated_utc": "2026-11-14T05:59:54Z",
+ "status": "completed_block",
+ "summary": "Block 2 (audit). (1) AUDIT of supervisor/simplify-angular/FIVE-CYCLE-CORE.md: the answer to the brief's central question is that (N) is sound \u2014 it is a pointwise fact about the closed essential supports, proved by approximating each direction with generic directions and passing to the closed support, so (6.6) is never applied at the specific direction and there is no simultaneous-exceptional-set problem \u2014 but the advertised elimination of Lemma 6.7 is NOT valid: steps 3 and 4 use the validity fact (V) at positions 1,2,4,5, while the paper proves no-common-label only at positions 0 and 3, by a mechanism that needs the endpoint pair and the five cycle edges at y_n. Exhaustive check: (V) at all six positions + (D)+(N)+(R) is unsatisfiable (confirms their finite lemma, 0 solutions, two independent programs), but (V) only at 0,3 has exactly 8 solutions, e.g. S(0)={0,1}, S(1)={2,4}, S(2)={0,3}, S(3)={1,2}, S(4)={0,3}, S(5)={2,4}. All eight die from (NC-1) alone, so the minimal repair is one extra direction fact, not four. (2) TRANSFER-LEDGER.md consolidates topology's Lemma 7.5 substitution and exposition's palette bridge with explicit compiled/source-read grades. (3) LOCAL-CHECK-QUEUE.json gives the serial local queue with toolchain and mathlib commit read from the actual manifest. (4) NOTES.md corrections: deletion-only is not signature identity; pairwise < 1 versus diam = 1 distinguished. No Lean was built in this block.",
+ "verified_results": [
+  {
+   "claim": "(N) holds at every direction, both ways, for the closed essential supports; it does not lift the a.e. rule (6.6) to the fixed direction",
+   "grade": "proof written out from the paper's text (paper p.41 l.2135-2137); paper-level, not formalised",
+   "artifacts": [
+    "supervisor/simplify-verification/AUDIT-FIVE-CYCLE.md"
+   ],
+   "detail": "Take G = conull set of (6.6). For i in S(a) and each n pick a_n in S_i cap G cap RG cap B(a,1/n) (positive measure since a is in the closed essential support). Then w(Ra_n)=i+1 on a subsequence, Ra_n in S_{i+1}, Ra_n -> Ra, S_{i+1} closed. The inverse direction uses (6.6) at R^{-1}a_n, i.e. a_n in RG. One fixed null set, used only to select approximants; each position gets an independent proof, so no simultaneous exceptional sets."
+  },
+  {
+   "claim": "FIVE-CYCLE-CORE's finite lemma (V at all six positions + (D) + (N) + (R) unsatisfiable) is TRUE",
+   "grade": "exact exhaustive computation, two independent implementations",
+   "artifacts": [
+    "supervisor/simplify-verification/checks/five_cycle_licence.py",
+    "supervisor/simplify-angular/checks/five_cycle_full.py"
+   ],
+   "detail": "my search over 21 valid lists x 6 positions: 0 solutions; their five_cycle_full.py re-run rc 0, ALL CHECKS PASS. Their '21 valid lists' count confirmed."
+  },
+  {
+   "claim": "The paper's licensed hypotheses do NOT suffice: (V) at positions 0,3 only + (D)+(N)+(R) has exactly 8 solutions",
+   "grade": "exact exhaustive computation",
+   "artifacts": [
+    "supervisor/simplify-verification/checks/five_cycle_licence.py"
+   ],
+   "detail": "countermodel: S(0)={0,1}, S(1)={2,4}, S(2)={0,3}, S(3)={1,2}, S(4)={0,3}, S(5)={2,4}. Every one of positions 1,2,4,5 is individually load-bearing (dropping validity at any single one still gives 0 solutions); adding (NC) at position 1 alone, or at 5 alone, kills all eight."
+  },
+  {
+   "claim": "(V)/no-common-label is proved in the paper only at the two endpoint directions a and -a",
+   "grade": "paper text, read on the pdftoppm render of p.42 and pdftotext -layout",
+   "detail": "l.2163-2178: zero-area argument for the endpoint pairs (a_n^+, a_n^-), using y_n in H_k for every label because all five cycle edges are present at y_n; 'The no-common-label property passes to a and -a'. No statement or proof for any other direction."
+  },
+  {
+   "claim": "Lemma 6.7 occurs exactly twice in the manuscript",
+   "grade": "grep on pdftotext -layout output",
+   "detail": "statement at l.2139, single use at l.2196. Confirms FIVE-CYCLE-CORE's bibliographic claim."
+  },
+  {
+   "claim": "palette_cardinality has exactly five consumers (exposition's load-bearing claim)",
+   "grade": "rg over lean/OAI",
+   "detail": "6 hits = definition BinaryPalettes.lean:260 plus Accumulation.lean:161,361, Interfaces.lean:78, Exclusion.lean:130, States.lean:319. Confirmed."
+  },
+  {
+   "claim": "Environment the whole project assumes, read from the actual files",
+   "grade": "file inspection",
+   "detail": "lean-toolchain leanprover/lean4:v4.34.1; binary 4.34.1 commit 5045d0056413266e57c625dcd7c365b10e377c52; mathlib .git HEAD d13f23b723b8a846827a245b89c10fc7d3f11612; package revs from lake-manifest.json (batteries f2effa3d, Qq 6a489d9a, aesop 355695d5, proofwidgets 106ff4fa, importGraph e928b725, LeanSearchClient ddf04cf3, plausible 118aa17e, Cli e92c9f15)."
+  }
+ ],
+ "conjectures": [
+  {
+   "statement": "The five-cycle accumulation contradiction can be completed without Lemma 6.7 if one proves no-common-label at position 1 (or 5) as well as at 0,3.",
+   "status": "finite part machine-checked; the extra direction fact is unproved",
+   "grade": "conditional"
+  },
+  {
+   "statement": "Validity (no common label) at a general direction does not follow from the printed machinery, because the zero-area argument needs a partner direction whose sum is near a centre where all five edges are present.",
+   "status": "my reading of the proof structure; not a theorem",
+   "grade": "paper argument / projection"
+  },
+  {
+   "statement": "topology's compact_cover_obstruction_gen compiles under the pinned environment (owner's log says rc 0, axioms clean) but I have not re-run it.",
+   "status": "unverified by me",
+   "grade": "projection"
+  }
+ ],
+ "artifacts": [
+  "supervisor/simplify-verification/AUDIT-FIVE-CYCLE.md",
+  "supervisor/simplify-verification/TRANSFER-LEDGER.md",
+  "supervisor/simplify-verification/LOCAL-CHECK-QUEUE.json",
+  "supervisor/simplify-verification/NOTES.md",
+  "supervisor/simplify-verification/checks/five_cycle_licence.py",
+  "supervisor/simplify-verification/STATUS.json",
+  "supervisor/simplify-verification/lean/ConnectedSetExclusion.lean"
+ ],
+ "tests_run": [
+  {
+   "cmd": "python3 supervisor/simplify-verification/checks/five_cycle_licence.py",
+   "outcome": "rc 0. [A] validity at all six positions + (D)+(N)+(R): 0 solutions. [B] validity at 0,3 only: 8 solutions. [C] validity at 0 only: 78 solutions. [F] validity at all but r: 0 solutions for r in {1,2,4,5}. Extra: validity sets {0,1,3}, {0,3,5}, {0,1,3,5}, {0,1,2,3}, {0,2,3,4} all 0 solutions."
+  },
+  {
+   "cmd": "python3 supervisor/simplify-angular/checks/five_cycle_full.py",
+   "outcome": "rc 0, ALL CHECKS PASS, solutions=0 (their own check of the finite core, re-run on the shared sources)."
+  },
+  {
+   "cmd": "pdftotext -layout attachments/here-are-three-files-ni5n/paper.pdf; grep -n 'Lemma 6.7' / '(6.6)'",
+   "outcome": "Lemma 6.7 at l.2139 and l.2196 (2 hits); (6.6) at l.2118 statement, used at l.2130, l.2136 ((N)), l.2198 (nullness)."
+  },
+  {
+   "cmd": "rg -n palette_cardinality lean/OAI",
+   "outcome": "6 hits: 1 definition + 5 consumers, as the exposition claims."
+  },
+  {
+   "cmd": "python3 (import cone of OAI.Geometry.PlaneColoring.PlanarCovers)",
+   "outcome": "25 OAI modules: the topology substitution is NOT a Mathlib-only artifact, contrary to a casual reading of its report."
+  },
+  {
+   "cmd": "Lean builds",
+   "outcome": "NONE in this block, per the policy: no cloud builds, local serial queue prepared instead (LOCAL-CHECK-QUEUE.json)."
+  }
+ ],
+ "failed_routes": [
+  "Trying to read (V) as a general fact: the paper's only general list statement (l.2180-2183) is a consequence of validity, not a route to it, and I found no proof of validity at a general direction.",
+  "Weakening one position instead of proving it: dropping validity at a single one of positions 1,2,4,5 still leaves 0 solutions, so there is no cheaper patch than an extra direction fact."
+ ],
+ "next_step": "Hand LOCAL-CHECK-QUEUE.json to the serial local queue (item 1 then 3 then 5, item 4 last). Ask simplify-angular to restate FIVE-CYCLE-CORE with (NC-1) or (NC-5) explicit and to drop the 'elimination of Lemma 6.7' claim until one of them is proved; the j-split removal is retained as a valid simplification.",
+ "escalation": {
+  "obstacle": "(NC-1): at the accumulation point x of a five-cycle locus, with a = lim h_n/|h_n|, the list S(Ra) has no common label (equivalently, is valid).",
+  "definitions": "S(u) = {i in Z/5Z : u is in the closed essential support of state i at x}; state i is the set of directions whose palette is the diagonal D_i = {i,i+2}; the five-cycle locus is the set of centres where the transition graph Gamma_x contains the five-cycle.",
+  "hypotheses_available": "(6.6) a.e. transition rule; closedness and finiteness of the essential supports; the endpoint argument already gives no-common-label at a and -a; (D) S(u) cap S(Ru) = empty; (N) neighbour existence, both ways.",
+  "attempted": "direct application of the printed endpoint zero-area argument (fails: no partner direction u' with u+u' near a centre, and no centre whose five edges are known); derivation from validity at 0,3 plus (D)+(N) (fails: 8 countermodels); weakening to fewer positions (fails: each position individually necessary).",
+  "expected_useful_output": "either a proof that S(Ra) has no common label (then the finite core of FIVE-CYCLE-CORE applies as written and Lemma 6.7 is genuinely dead), or an argument that some accumulation configuration realises S(1) = {2,4} (then Lemma 6.7 is not removable and the replacement must keep it)."
+ }
+}

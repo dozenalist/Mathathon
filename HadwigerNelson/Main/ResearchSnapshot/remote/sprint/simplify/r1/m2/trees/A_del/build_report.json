@@ -1,0 +1,15 @@
+{
+ "fails": [
+  "OAI.Geometry.PlaneColoring.Seven"
+ ],
+ "secs": {
+  "OAI.Geometry.PlaneColoring.Assembly": 0.0,
+  "OAI.Geometry.PlaneColoring.Basic": 0.0,
+  "OAI.Geometry.PlaneColoring.Covering": 0.0,
+  "OAI.Geometry.PlaneColoring.Lattice": 0.0,
+  "OAI.Geometry.PlaneColoring.MeasurableAssembly": 0.0,
+  "OAI.Geometry.PlaneColoring.MeasurableProper": 0.0,
+  "OAI.Geometry.PlaneColoring.Seven": 2.0930356979370117
+ },
+ "wall": 2.1084554195404053
+}

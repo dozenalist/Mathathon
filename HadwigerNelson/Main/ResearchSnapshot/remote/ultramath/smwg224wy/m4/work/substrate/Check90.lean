@@ -1,0 +1,10 @@
+import OAI.MeasureTheory.CompactFactors.TowerMax
+import OAI.Analysis.PlaneSpectrum.TerminalGlue
+import OAI.Analysis.PlaneSpectrum.RelativeSingularityTheorem
+import OAI.Geometry.PlaneColoring.Chromatic
+import OAI.Geometry.PlaneColoring.Transfer
+#print axioms OAI.PlaneFiveColor.Spectral.exists_terminal_factor_of_tower_good
+#print axioms OAI.PlaneFiveColor.Spectral.exists_ergodic_factor
+#print axioms OAI.PlaneFiveColor.Spectral.terminalObligation_of_exists_terminal_factor
+#print axioms OAI.EuclideanFiveColor.no_proper_five_coloring
+#print axioms OAI.Problem160.properColoring_seven

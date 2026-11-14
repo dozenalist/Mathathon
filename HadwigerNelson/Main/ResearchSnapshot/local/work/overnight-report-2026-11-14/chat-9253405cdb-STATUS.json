@@ -1,0 +1,103 @@
+{
+  "updated_utc": "2026-11-14T06:47:00Z",
+  "status": "block-complete (reconciled after Open Math OS outage)",
+  "summary": "§7's only topological statement, paper Lemma 7.5 (closed square of side ten has no relatively open cover of multiplicity <= 2 and mesh <= 2), is machine-checked in the repo as PlanarCover.compact_open_cover_impossible for any compact Q containing ball 0 5 with member diameters <= 2. I re-derived the whole chain with the constants symbolic (lean/CoverObstruction.lean, compiles clean under Lean 4.34.1 + mathlib d13f23b, axioms [propext, Classical.choice, Quot.sound]) and obtained: (i) the paper's statement itself as an instance paper_lemma_7_5; (ii) the honest interface compact_cover_obstruction_gen — compact Q with ball 0 R subset Q and mesh bound d < R is impossible — so the paper's (side 10, mesh 2) has no hidden sharpness (side > 4 or closedBall 0 3 suffice); (iii) the audit finding that the printed proof's Brouwer fixed point is replaced in Lean by a mathlib covering-space lift (Complex.exists_continuousOn_eqOn_exp_comp), and that Q need not be convex or a square. The §7.4 constants chain was checked: mesh argument gives 3/2 <= diam, Five.lean gives 2 < diam, obstruction consumes diam <= 2 with R = 5, strictness respected. §6 (Theorem 6.5), Lemma 7.7 content and Lemma 7.8's annulus/Fubini material are NOT audited this block.",
+  "verified_results": [
+    {
+      "id": "M1",
+      "grade": "machine-checked this block",
+      "claim": "For compact Q subset C, ball 0 R subset Q, 0 <= d < R, no relatively open cover of Q has pointwise multiplicity <= 2 and all member diameters <= d.",
+      "lean": "OAI.PlanarCover.compact_cover_obstruction_gen",
+      "file": "supervisor/simplify-topology/lean/CoverObstruction.lean",
+      "axioms": "[propext, Classical.choice, Quot.sound]"
+    },
+    {
+      "id": "M2",
+      "grade": "machine-checked this block",
+      "claim": "Paper Lemma 7.5 verbatim for the closed axis-parallel square of side ten (relatively open cover, multiplicity <= 2, mesh <= 2).",
+      "lean": "OAI.PlanarCover.paper_lemma_7_5",
+      "notes": "instance of M1 at R=5, d=2; square10 compact, ball 0 5 subset square10"
+    },
+    {
+      "id": "M3",
+      "grade": "machine-checked this block",
+      "claim": "The square/radius-5 domain is not used: the same contradiction holds for Q = closedBall 0 3 with diameter bound 2.",
+      "lean": "OAI.PlanarCover.disk3_cover_obstruction"
+    },
+    {
+      "id": "M4",
+      "grade": "machine-checked this block",
+      "claim": "Hitting lemma with symbolic constants: F continuous on ball y c with ||F z - z|| <= d and 0 <= d < c hits y inside ball y c.",
+      "lean": "OAI.PlanarCover.hit_center_gen",
+      "notes": "replaces paper's Brouwer step; proof is the winding/exp-lift argument of PlanarCovers.hit_center (c=4,d=2) with rho=(d+c)/2"
+    },
+    {
+      "id": "A1",
+      "grade": "audit finding",
+      "claim": "The only topological input of §7.3's obstruction is mathlib's Complex.exists_continuousOn_eqOn_exp_comp (Mathlib/Analysis/Complex/BranchLogRoot.lean:37); no Brouwer fixed point theorem is used, and no convexity of Q is needed. Remaining ingredients (partition of unity, convexity of a segment, nullity of an affine line) are standard.",
+      "evidence": "read lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:180-401; grep for Brouwer in /opt/mathlib/Mathlib returns lattice-theory hits only"
+    },
+    {
+      "id": "A2",
+      "grade": "audit finding",
+      "claim": "§7.4 supplies 3/2 <= dist (a n) (b n) (Mesh.lean:no_large_positive_sequence) and Five.lean:graph_map_large_positive supplies 2 < dist x y; the obstruction consumes diam <= 2 with R = 5, so strictness is respected with slack. The mesh hypothesis in Five.lean is stated for arbitrary preconnected K but is implied componentwise, since a preconnected subset of an open set lies in one connected component.",
+      "evidence": "read Five.lean:22-115, Mesh.lean:92-140"
+    },
+    {
+      "id": "P1",
+      "grade": "prior verified work (read, not re-run in this block)",
+      "claim": "PlanarCover.compact_open_cover_impossible is the machine-checked Lemma 7.5 for Q superset ball 0 5, diam <= 2 (PlanarCovers.lean:374), built and axiom-clean in the repo's 78-module build."
+    }
+  ],
+  "conjectures": [
+    "The true threshold for multiplicity-2 relatively open covers of a compact Q is governed by the Lebesgue/hex covering-dimension constant, strictly larger than 'R > d'; so the paper's constants are not sharp but the route does not need sharpness.",
+    "Weakening Five.lean's domain from closedBall 0 5 to closedBall 0 3 would relax the geometric constants of §7.1-7.2 (FullApprox / HoleApproximation); whether those modules bake in the radius 5 is unchecked."
+  ],
+  "artifacts": [
+    "supervisor/simplify-topology/SECTION7-TOPOLOGY-SUBSTITUTION.md (referee note: statement table, dependency audit, substitution, constants, scope)",
+    "supervisor/simplify-topology/lean/CoverObstruction.lean (225 lines)",
+    "supervisor/simplify-topology/lean/CoverObstruction.olean, .ilean",
+    "supervisor/simplify-topology/lean/Check.lean (axiom certificate)",
+    "supervisor/simplify-topology/checks/lean-build3.log, checks/axioms.log",
+    "supervisor/simplify-topology/checks/lean-build.log, lean-build2.log (failed first attempts, kept as iteration evidence)",
+    "supervisor/simplify-topology/notes/paper.txt (pdftotext -layout of the paper)"
+  ],
+  "tests_run": [
+    {
+      "cmd": "source scripts/env4341.sh && cd supervisor/simplify-topology/lean && lean -o CoverObstruction.olean -i CoverObstruction.ilean CoverObstruction.lean",
+      "result": "exit 0, no diagnostics",
+      "log": "checks/lean-build3.log (BUILD_EXIT=0)"
+    },
+    {
+      "cmd": "lean Check.lean",
+      "result": "#print axioms paper_lemma_7_5 / compact_cover_obstruction_gen / hit_center_gen / disk3_cover_obstruction all: [propext, Classical.choice, Quot.sound]",
+      "log": "checks/axioms.log"
+    },
+    {
+      "cmd": "lean CoverObstruction.lean (attempts 1-2)",
+      "result": "failed: names unqualified (missing namespace OAI), missing open MeasureTheory / scoped Classical, one dist/norm mismatch; all fixed",
+      "log": "checks/lean-build.log, checks/lean-build2.log"
+    }
+  ],
+  "failed_routes": [
+    "Covering-dimension route: mathlib has no covering dimension theory (grep for coveringDim/topologicalDim over /opt/mathlib/Mathlib returns nothing), so a 'standard covering-dimension lemma' is not available off the shelf; the degree/winding route already in the repo is the cheapest standard substitution.",
+    "Not attempted: replacing the partition-of-unity step; it is already a single mathlib lemma and nothing shorter is available without losing the finite-cover reduction.",
+    "Not attempted: sharp multiplicity-2 cover threshold (would need the hex lemma or an equivalent discrete enumeration); not needed by §7."
+  ],
+  "next_step": "Audit the largest remaining topological item of §7: Lemma 7.8 (a connected component of a midpoint preimage crosses the annulus) together with the annulus-cleanness that lets g_n be defined on a whole annulus, and check that this is where Theorem 6.5's local finiteness is consumed (CyclicCore.lean -> HoleApproximation.lean -> ContinuumLimits.lean). Then check whether the radius-5 domain in Five.lean can be weakened to closedBall 0 3, which would relax §7.1-7.2 constants.",
+  "owned_agents": [],
+  "escalation": {
+    "lemma": "Lemma 7.8 (five-colour proof, §7.4). Let B be an open disk containing a point m (the midpoint of an edge of a reduced closed graph word W in G = the geometric realisation of K_5), let g : B minus holes -> G be continuous and equal to q_eps outside all hole disks, and suppose a connected component C of g^{-1}(m) meets both the inner and outer boundary circles of an annulus A about a cyclic centre x. Then C contains a compact connected set crossing A from the inner to the outer boundary, disjoint from the holes, on which the edge labels of the reduced word are locally constant.",
+    "why_hard": "The printed proof assumes g is defined on the whole annulus A; at a non-isolated cyclic centre every annulus meets further holes, so the annulus must first be made hole-free, which is what Theorem 6.5 (local finiteness of cyclic centres) supplies. The interface between Lemma 7.4's hole families, Theorem 6.5, and the annulus coordinates is exactly where this block stopped.",
+    "attempted": "Read only: statement and printed proof of Lemma 7.8 (paper pp. 48-50), and the Lean modules HoleApproximation/ContinuumLimits/GraphCuts were located but not audited.",
+    "desired_output": "A referee-checkable lemma list with explicit dependencies: (1) hole-free annulus from local finiteness, (2) connected preimage crossing (Fubini/straddle step), (3) label constancy of the crossing set, each with the exact hypotheses discharged by Theorem 6.5 and Lemma 7.4, plus a machine-checked statement of whichever of the three is currently only a paper argument."
+  },
+  "reconciliation_2026_11_14T0647Z": {
+    "trigger": "Jarom's one-time recovery prompt after the outage",
+    "jobs": "all three owned background jobs (jmwfytim1, jmwfzgrtx, jmwfzjk7n) are exited; none running; no duplication needed",
+    "artifacts": "unchanged since 05:51Z; CoverObstruction.olean (05:49:18) is newer than CoverObstruction.lean (05:48:56), source sha256 605e42d363da11137827b5b5749ee9a5a2e4e8ab6b6dc2ba671c457158f7db2d",
+    "uncertain_writes": "none: BUILD_EXIT=0 and the four axiom lines are on disk in checks/lean-build3.log and checks/axioms.log",
+    "action_taken": "read-only reconciliation; no rebuild, no new subagents or swarms, no edits outside supervisor/simplify-topology/",
+    "conclusion": "latest instruction (sections 6-7 topology/interface substitution) is complete; next concrete step unchanged"
+  }
+}

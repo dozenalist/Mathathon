@@ -1,0 +1,85 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: 5d7d963d934c010ffce3796bb717d749e5f096edb68ceea9415ab68703c52b89
+Status: passed
+Exit code: 0
+
+STDOUT
+'OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction' depends on axioms: [propext, Classical.choice, Quot.sound]
+@uniform_precision_contradiction : ∀ {X : Type u_1} {Y : Type u_2} {W : Type u_3} [inst : MeasurableSpace X]
+  [StandardBorelSpace X] [Nonempty X] [inst_3 : MeasurableSpace Y] [inst_4 : MeasurableSpace W] [StandardBorelSpace W]
+  [Nonempty W] (μ : MeasureTheory.Measure X) [inst_7 : MeasureTheory.IsProbabilityMeasure μ] (p : X → Y) (P : X → W)
+  {Z : Type u_4} (S : X → Z) (b : X → D),
+  Measurable p →
+    Measurable P →
+      Measurable b →
+        ∀ (m : ℕ),
+          0 < m →
+            ∀ (g : Y → Fin m → D),
+              (∀ᵐ (y : Y) ∂MeasureTheory.Measure.map p μ,
+                  (ProbabilityTheory.condDistrib b p μ) y = (↑m)⁻¹ • ∑ i, MeasureTheory.Measure.dirac (g y i)) →
+                IsWild
+                    (OAI.EuclideanFiveColor.DifferenceFourier.differenceLaw (MeasureTheory.Measure.map P μ)
+                      (ProbabilityTheory.condDistrib b P μ)) →
+                  ∀ (ρ c : ℝ) (N : ℕ),
+                    0 < ρ →
+                      0 < c →
+                        0 < N →
+                          (∀ (ω : MeasureTheory.Measure Circle) [MeasureTheory.IsProbabilityMeasure ω],
+                              (∀ (n : ℕ), 0 < n → n ≤ N → ‖∫ (w : Circle), ↑w ^ n ∂ω‖ < c) →
+                                ω.real {w | ‖↑w - 1‖ ≤ 4 * ρ} < 1 / (4 * ↑m ^ 2)) →
+                            EncodingApproximationAt μ p P S b m (ρ ^ m / ↑m / 100 / 100) → False
+'OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@finite_uniform_precision_contradiction : ∀ {X : Type u_1} {Y : Type u_2} {W : Type u_3} [inst : MeasurableSpace X]
+  [StandardBorelSpace X] [Nonempty X] [inst_3 : MeasurableSpace Y] [inst_4 : MeasurableSpace W] [StandardBorelSpace W]
+  [Nonempty W] (μ : MeasureTheory.Measure X) [inst_7 : MeasureTheory.IsProbabilityMeasure μ] (p : X → Y) (q : Y → W)
+  (b : X → D),
+  Measurable p →
+    Measurable q →
+      Measurable b →
+        ∀ (m : ℕ),
+          0 < m →
+            ∀ (g : Y → Fin m → D),
+              (∀ᵐ (y : Y) ∂MeasureTheory.Measure.map p μ,
+                  (ProbabilityTheory.condDistrib b p μ) y = (↑m)⁻¹ • ∑ i, MeasureTheory.Measure.dirac (g y i)) →
+                IsWild
+                    (OAI.EuclideanFiveColor.DifferenceFourier.differenceLaw (MeasureTheory.Measure.map (q ∘ p) μ)
+                      (ProbabilityTheory.condDistrib b (q ∘ p) μ)) →
+                  ∀ (ρ c : ℝ) (N : ℕ),
+                    0 < ρ →
+                      0 < c →
+                        0 < N →
+                          (∀ (ω : MeasureTheory.Measure Circle) [MeasureTheory.IsProbabilityMeasure ω],
+                              (∀ (n : ℕ), 0 < n → n ≤ N → ‖∫ (w : Circle), ↑w ^ n ∂ω‖ < c) →
+                                ω.real {w | ‖↑w - 1‖ ≤ 4 * ρ} < 1 / (4 * ↑m ^ 2)) →
+                            FiniteEncodingApproximationAt μ p q b m (ρ ^ m / ↑m / 100 / 100) → False
+'OAI.PlaneFiveColor.Spectral.finite_uniform_successor_contradiction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@finite_uniform_successor_contradiction : ∀ {X : Type u_1} {Y : Type u_2} {W : Type u_3} [inst : MeasurableSpace X]
+  [StandardBorelSpace X] [Nonempty X] [inst_3 : MeasurableSpace Y] [inst_4 : MeasurableSpace W] [StandardBorelSpace W]
+  [Nonempty W] (μ : MeasureTheory.Measure X) [inst_7 : MeasureTheory.IsProbabilityMeasure μ] (p : X → Y) (q : Y → W)
+  (b : X → D),
+  Measurable p →
+    Measurable q →
+      Measurable b →
+        ∀ (m : ℕ),
+          0 < m →
+            ∀ (g : Y → Fin m → D),
+              (∀ᵐ (y : Y) ∂MeasureTheory.Measure.map p μ,
+                  (ProbabilityTheory.condDistrib b p μ) y = (↑m)⁻¹ • ∑ i, MeasureTheory.Measure.dirac (g y i)) →
+                IsWild
+                    (OAI.EuclideanFiveColor.DifferenceFourier.differenceLaw (MeasureTheory.Measure.map (q ∘ p) μ)
+                      (ProbabilityTheory.condDistrib b (q ∘ p) μ)) →
+                  FiniteEncodingApproximation μ p q b m → False
+@FiniteEncodingApproximationAt : {X : Type u_1} →
+  {Y : Type u_2} →
+    {W : Type u_3} →
+      [inst : MeasurableSpace X] →
+        [MeasurableSpace Y] →
+          (μ : MeasureTheory.Measure X) →
+            [MeasureTheory.IsProbabilityMeasure μ] → (X → Y) → (Y → W) → (X → D) → ℕ → ℝ → Prop
+
+STDERR
+

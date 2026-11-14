@@ -1,0 +1,305 @@
+ASTRA NONALIGNED A3 — CLOSED SIXTY-DEGREE CONE EXCLUSION
+14 November 2026. Bounded solving assignment 11.
+
+RESULT AND GRADE
+
+The proposed AC-axis argument is INVALID: one spatial strip cannot use
+different radial sides for different continua in the same intersection.
+Signed directions must be retained.
+
+A different, source-licensed argument gives a stronger positive theorem:
+  If a finite family of common-exclusion continua approaches one centre
+  in directions contained in a CLOSED cone of angular width at most 60
+  degrees, the union of its excluded labels cannot leave only two labels.
+
+The equality case at 60 degrees is included. The key is to work at actual
+points OUTSIDE the unit circle, where the relevant intersection angle is
+strictly less than 60 degrees, rather than relying on a count of angular
+boundary points. The complete proof below uses existing generic local
+binary rigidity and an explicit new geometric lemma.
+
+This excludes the requested survivor q=(0,0,1,3,3,4), because its first
+three edges have directions 0,0,60 degrees and jointly exclude 0,1,2,3.
+The result does not assume palette cardinality <=2, T6, or cyclic-core
+local finiteness.
+
+Grade: COMPLETE PAPER-LEVEL ARGUMENT, ACCEPTED by independent referee
+/root/astra_reboot_referee after source-level audit, including equality
+at 60 degrees, compact sector width, and the translated a.e. finish.
+No Lean elaboration. The referee also independently checked all 168
+finite exclusions and the six survivors. The resulting finite filter
+takes the corrected 174 witnesses to six.
+This concerns the declared six-direction grid only, not arbitrary directions
+or the existence of a global weak six-colouring.
+
+SOURCE ROOT
+work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/
+
+Essential inspected producers:
+  AngularBoundary.lean:235 ApproachingContinuum;
+  :244 outer_strip, :251 inner_strip;
+  :317 finite_support_exclusion_ae.
+  Rigidity.lean:171 ae_translated_unit_pair;
+  :179 binary_open_local_rigidity;
+  :226 open_two_unit_directions;
+  :400 essentialLocalSet; :418 connected_local_ae_constant.
+  BoundaryTrace.lean:248 binary_strip_rigidity and :280 palette version.
+The proof below goes directly through Rigidity:179 and does not require
+the palette version or the supplied five-colour cycle classifications.
+
+1. THE AC-AXIS ERROR, EXHIBITED GEOMETRICALLY
+
+Take x=0, K+=[0,rho], K-=[-rho,0], 0<rho<1/10, on the real axis.
+They approach x in directions +1 and -1 respectively.
+On the positive real ray near radius one, the exact Straddle definition
+gives
+  Straddle(K+) intersect R_positive = (1,1+rho),
+  Straddle(K-) intersect R_positive = (1-rho,1).
+Their intersection contains neither radial side. Choosing OUTER for K+
+and INNER for K- does not put any common strip in their intersection.
+
+BoundaryTrace.binary_strip_palette_rigidity permits independent sides
+bu,bv at two DIFFERENT angular locations, for its sets U and V. It does
+not permit per-continuum side choices inside U=intersection Straddle(K_i).
+Thus replacing equal directed vectors by a common unoriented axis is
+not a valid extension of AC. This observation does not itself disprove
+some other axis theorem; it disproves the stated strip-producing proof.
+
+2. WHAT EXCEPTIONAL-SET COUNTING REALLY SAYS
+
+Suppose a global binary palette cover has ALREADY been validly produced,
+with Boolean state s flipping at tau=pi/3. Let B be a finite antipodal set,
+and suppose s is essentially locally constant whenever t and t+tau both
+avoid B. The essential boundary D then lies in B union (B-tau).
+
+Since D is nonempty and tau-invariant, it contains a whole six-point orbit
+O. More precisely, B intersect O must be an antipodal vertex cover of the
+cycle C6, hence has at least FOUR points. This is exactly the finite step
+six_antipodal_vertex_cover used inside AngularBoundary.angleBoundary_one_orbit
+at lines 448-477. The conclusion is stronger than |B|>=3 or |D|<=2|B|:
+four exceptional points must belong to ONE common sixty-degree orbit.
+
+For B formed from perpendiculars to approach axes, this requires at least
+two distinct axes in the same sixty-degree orbit (an angle difference of
+60 or 120 degrees modulo 180). Generic unrelated axes would not suffice.
+But this argument requires the global binary cover and local-rigidity
+hypotheses first. Arbitrary nonaligned continua do not automatically supply
+them; mixed radial sides cannot be used to invent them.
+
+Four exceptional points CAN suffice at the angular level. For example,
+B={30,90,210,270 degrees} is antipodal and
+B union (B-60 degrees) is the entire orbit {30+60*j:j=0,...,5}.
+The Boolean function alternating on consecutive 60-degree sectors with
+those orbit boundaries flips at 60 degrees and is locally constant
+outside that union. Therefore the count |B|<=2m cannot rule out all m>=2.
+
+3. NEW GEOMETRIC LEMMA: AN OUTER 120-DEGREE ARC CANNOT BE TWO-COLOURED
+
+Let c:C-plane->Fin k be measurable with WeakColoring k c. Fix x and an
+open set W which is two-coloured almost everywhere:
+  for plane-a.e. z, z in W implies c(z) in {a,b}.
+Fix a real angle phi. Assume that for EVERY theta in
+  I=(phi-pi/3, phi+pi/3)
+there are positive angular/radial widths such that W contains an OUTER
+strip near x+e(theta). One convenient exact formulation is
+  for every theta in I, there exists delta>0 such that
+  |theta'-theta|<delta and 1<r<1+delta imply x+r*e(theta') in W.
+The source's Euclidean-direction-neighbourhood formulation implies this
+by continuity of e. Widths may depend on theta and need not be bounded
+away from zero near the two endpoints of I.
+
+THEOREM OA120: these hypotheses imply False.
+
+Proof step 1: produce a genuine connected sector with uniform width.
+The closed angular interval
+  I0=[phi-pi/4, phi+pi/4]
+lies strictly inside I. Its compactness gives a finite cover by the angular
+neighbourhoods in the outer-strip assumption. Taking a positive minimum
+of their radial widths gives eta>0 such that
+  1<r<1+eta, theta in I0 => x+r*e(theta) in W.
+Decrease eta so eta<1/2. Put
+  S={x+r*e(theta):1<r<1+eta, phi-pi/4<theta<phi+pi/4}.
+This is a nonempty connected open polar sector contained in W. It has
+angular width 90 degrees, not a limiting zero-width curve. No unproved
+uniformity near the endpoints of the original 120-degree arc is used.
+
+Proof step 2: every p in S has an actual unit-distance neighbour in W.
+Write p=x+r*e(theta), 1<r<1+eta<2, and put
+  alpha=arccos(r/2).
+Then 0<alpha<pi/3, STRICTLY, because r>1. Choose
+  beta=theta-alpha if theta>=phi,
+  beta=theta+alpha if theta<phi.
+In either case beta belongs to I. The point q0=x+e(beta) obeys
+  |p-q0|^2=r^2+1-2*r*cos(alpha)=1.
+Although q0 itself need not belong to W, its nearby unit neighbours on the
+OUTER side do. Here is an explicit construction, avoiding a tangency guess.
+For s>1 sufficiently close to 1 define
+  g(s)=(r^2+s^2-1)/(2*r*s),
+  beta(s)=theta-alpha(s) or theta+alpha(s),
+  alpha(s)=arccos(g(s)),
+using the same sign as above. At s=1, g(1)=r/2 is strictly between -1 and 1,
+so beta(s) is continuous near 1 and tends to beta. Therefore the assumed
+outer strip at beta contains q(s)=x+s*e(beta(s)) for all sufficiently
+small s-1>0. Direct substitution gives |p-q(s)|=1 exactly. Choose one such
+q in W. The construction is pointwise in p; no uniform neighbour radius
+or derivative lower bound is being asserted.
+
+Proof step 3: apply the ACTUAL generic binary rigidity theorem.
+Let v=q-p, a genuine unit vector. Since W is open and p+v belongs to W,
+Rigidity.open_two_unit_directions gives a second unit w with p+w in W and
+transverseDet(v,w) nonzero. Now apply binary_open_local_rigidity with
+  U=V=W, hp:p in W, hpv:p+v in W, hpw:p+w in W,
+  the same a.e. two-colour restriction for U and V.
+Every required hypothesis is present. It follows that p belongs to
+essentialLocalSet(c,i_p) for some label i_p.
+
+This holds at EVERY p in S. Rigidity.connected_local_ae_constant applies
+to the connected set S, yielding one i with
+  S subset essentialLocalSet(c,i).
+In particular this is ambient local essential constancy, not just a colour
+assignment on a zero-area arc.
+
+Proof step 4: S contains a unit pair, contradicting weak colouring.
+Take r0=1+eta/2 and lambda=arcsin(1/(2*r0)). Then 0<lambda<pi/6<pi/4.
+Both
+  p+=x+r0*e(phi+lambda), p-=x+r0*e(phi-lambda)
+belong to S, and |p+-p-|=2*r0*sin(lambda)=1. They have the same essential
+local colour i. Choose open neighbourhoods of p+ and p- on which c=i a.e.
+Their common translation pullback contains an open neighbourhood of zero,
+hence has positive area. But ae_translated_unit_pair says that for a.e.
+translation u, c(u+p+) differs from c(u+p-). Intersecting these conull
+statements on that positive-area neighbourhood is a contradiction.
+This proves OA120.
+
+WHY THE ENDPOINT CASE WORKS.
+At radius r=1 the neighbour angle would be exactly 60 degrees and could
+land on a missing endpoint of I. At every r>1 it is STRICTLY less than
+60 degrees. The pointwise outer strip at the now-interior beta then supplies
+a real unit neighbour. This is the additional geometric coupling absent
+from a boundary-cardinality argument on the unit circle alone.
+
+4. CLOSED SIXTY-DEGREE CONE EXCLUSION (CC60)
+
+Assume a finite family K_i, one centre x, unit approach vectors v_i, and
+actual ApproachingContinuum x K_i v_i data. Let H_i be finite excluded
+label sets with
+  Disjoint(spatialSupport c j, Straddle(K_i)) for every j in H_i.
+Suppose ALL v_i have real angle representatives in
+  [phi-pi/6, phi+pi/6],
+and the complement of union_i H_i has at most two labels.
+Then False under Measurable c and WeakColoring k c.
+
+Proof. Set W=intersection_i Straddle(K_i), which is open. By the generic
+finite_support_exclusion_ae, for a.e. z in W the colour is outside every
+H_i, so it lies in some pair {a,b} covering the complement. If fewer than
+two colours remain, the same conclusion holds; the argument does not
+need a and b distinct.
+
+For every theta in (phi-pi/3,phi+pi/3) and every i,
+  |theta-arg(v_i)|<pi/2,
+so <e(theta),v_i>>0. AngularBoundary.ApproachingContinuum.outer_strip
+gives an actual OUTER strip at that direction inside Straddle(K_i).
+All these sides agree. Finiteness allows taking their minimum widths,
+giving an outer strip inside W. Thus OA120 applies.
+
+No palette-size premise is used. No inner/outer signs are mixed inside W.
+The excluded label sets may belong to different continua, but every
+continuum approaches the SAME centre, and their SIGNED directions must
+lie in the indicated closed 60-degree cone. Exact boundary directions are
+permitted because the common positive arc is open.
+
+EQUIVALENT NECESSARY CONDITION.
+For any actual finite common-interface configuration at one centre and
+any closed angular arc J of length 60 degrees,
+  |union {H_i : arg(v_i) in J}| <= k-3.
+This is a geometric label-union constraint with a direct source consumer.
+It strictly strengthens AC, which uses only an arc of length zero.
+
+5. SIX-COLOUR CYCLE CONSUMER AND THE GIVEN SURVIVOR
+
+For the six-cycle E_i={i,i+1 mod 6}, if its approach directions in some
+closed 60-degree cone cover at least four labels, CC60 forbids the actual
+common interfaces. In particular:
+  * two nonadjacent cycle edges cannot have approach directions separated
+    by at most 60 degrees, since their four endpoints are distinct;
+  * any three distinct cycle edges cannot all lie in one such cone.
+Adjacent edges may share a direction or a small cone: they exclude only
+three labels, so this theorem does not apply to them alone.
+
+For q=(0,0,1,3,3,4), directions are q_i*pi/3. The selected edges 0,1,2
+have directions 0,0,pi/3 and union {0,1,2,3}. Their straddling intersection
+is a.e. {4,5}-coloured and has outer strips on the 120-degree common
+positive arc (-pi/6,pi/2). OA120 yields a contradiction. This excludes
+the DIRECTION configuration itself under actual source hypotheses; it
+does not depend on which finite palette word the search selected.
+
+6. PRECISE FINITE CONSEQUENCE OF CC60
+
+The parent corrected the earlier enumeration: 7776 grid direction tuples
+with q0=0, 1420 passing AC, and 174 passing AC plus the stated six-position
+palette relaxation. The reported 95 was a false-negative count caused by
+greedy witness reconstruction; it is not used here.
+
+I read the corrected ac-independent-audit.json and independently checked
+every one of its 174 explicit words for nonempty palettes of size <=2,
+successive disjointness, cycle-edge noncontainment, and both side-allowed
+intersections, with signs reconstructed by exact cosine residue arithmetic.
+I did not independently re-enumerate all 7776 candidates in this assignment.
+
+CC60 gives a precise integer filter on this grid: for every d mod 6,
+the edges with q_i in {d,d+1} must cover at most three labels. Applying it
+to the checked 174 words excludes 168 and leaves SIX:
+  (0,0,2,2,4,4), (0,0,4,4,2,2),
+  (0,1,2,3,4,5), (0,2,2,4,4,0),
+  (0,4,4,2,2,0), (0,5,4,3,2,1).
+The parent independently obtained the same six with a separate filter.
+
+Up to evident cycle symmetries and reflection, these exhibit two geometries:
+  the six equally spaced directed rays;
+  three 120-degree-separated rays, each assigned to two consecutive edges.
+Their supplied six-position words use the three disjoint opposite-label
+pairs {0,3},{1,4},{2,5}, each repeated after 180 degrees. This describes
+the supplied witnesses. It does not assert that every admissible word or
+every whole-circle state map has exactly that form.
+
+The new theorem and the finite filter passed independent review. The
+finite result remains CONDITIONAL on the palette assumptions of the
+input relaxation; CC60 itself needs no palette bound. Discrete grid
+survivors neither prove existence nor classify arbitrary continuous
+direction configurations. Generic small perturbations and all-angle
+trace constraints still require mathematical treatment.
+
+7. NEXT WORK WITH A FIXED CONSUMER
+
+Geometry: independently audit OA120 and CC60. The most important checks
+are the compact angular interval producing a positive uniform strip width,
+the explicit q(s) unit neighbour, and U=V=W in binary_open_local_rigidity.
+Keep the closed-cone endpoint case: weakening to strictly <60 degrees
+would fail to exclude the requested grid survivor. Do not revive AC-axis.
+
+Independent: check the entire no-monochromatic-unit-pair finish using
+essentialLocalSet and translated weak properness. Once accepted, record
+CC60 as a new source-derived constraint for the common-interface consumer,
+with no B2 premise. Verify the signed-direction and single-centre quantifiers.
+
+Graphs: use the 174 corrected certificates, not the old 95. The exact new
+filter is the label union over {d,d+1}, not an unoriented-axis union.
+The saved certificate lists an excluded cone and endpoint union for every
+removed tuple. Any claimed further reduction must have a new producer.
+The next analytic target is the remaining three-palette whole-circle
+coupling already being studied independently, not another unlicensed
+finite constraint or a claim that these six grid tuples exhaust geometry.
+
+ARTIFACTS AND LIMITS
+
+  work/astra-six-colour/a3-cone-filter.txt:
+    full 174-input filter certificate, 168 exclusions and six survivors.
+    One standard-library Node process, exit 0, modest output and memory.
+  work/astra-six-colour/a3-worker-contract.txt:
+    compact theorem and worker handoff.
+
+No original source modified, no agents spawned, no remote jobs or API
+writes, no installs or heavy computation, and no Lean queue use.
+Theorem novelty beyond this source-driven research programme is unassessed.
+No full common-interface acyclicity theorem or numerical colouring result
+is claimed.

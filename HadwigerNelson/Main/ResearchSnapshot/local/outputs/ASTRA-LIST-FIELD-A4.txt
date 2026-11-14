@@ -1,0 +1,279 @@
+ASTRA LIST FIELD A4 — AN EXACT COLOURING OF THE ENTIRE TWO-LIST LOCUS
+14 November 2026. Paper proof; no Lean elaboration or numerical search.
+
+RESULT AND SCOPE
+
+For the explicit palette
+  P(t)=A_(floor((t+pi/6)/(pi/3)) mod 3),
+  A0={1,4}, A1={2,5}, A2={0,3},
+the ENTIRE subset of the radius-two disk on which the one-centre list
+field L has size two has a concrete measurable proper L-colouring.
+In particular, NO finite obstruction using only two-list vertices exists.
+This proves the tentative bipartition in Claude's report, including its
+previously unchecked global inter-piece distances. It is a positive
+boundary result, not an exclusion of P.
+
+The four-list vertices are not coloured here. The existence of an
+L-colouring on the whole disk, or a finite obstruction involving those
+vertices, remains unresolved. Nor is a global WeakColoring 6 constructed.
+The explicit family below is not asserted to exhaust all possible
+colourings, even of the two-list locus.
+
+Source audit: States.lean:92,95,106,173,203,243,704;
+Palettes.lean:9-38; Compactness.lean:82-97,253-280,292-336, in
+  work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/.
+Original Lean files were not changed. No build, external service, large
+computation, or subagent was used.
+
+1. EXACT DOMAIN AND EXPLICIT MAP
+
+Translate the original centre to 0. Write e(t)=exp(it), and let
+  S_m=((m-1/2)pi/3,(m+1/2)pi/3), modulo 2pi.
+Let G consist of 0<|z|<2, with the six circles |z-e(pi/6+k*pi/3)|=1
+removed. For z in G its unordered representation z=e(a)+e(b), with
+the smaller angular gap in (0,pi), is unique, and both directions are
+interior to sectors. Set
+  L(z)={0,1,2,3,4,5}\(P(a) union P(b)).
+Let T={z in G: |L(z)|=2}, and R_j={z in G: L(z)=A_j}.
+
+Define the following OPEN sets (the plus sign denotes Minkowski sum):
+  V=e((-pi/2,-pi/6)) + e((pi/6,pi/2)),
+  H=e((pi/6,pi/2)) + e((pi/2,5pi/6)).
+Then, exactly,
+  R_0=V union (-V) union H union (-H),
+  R_j=e(j*pi/3) R_0, j=1,2,
+  T=R_0 disjoint-union R_1 disjoint-union R_2.
+
+Indeed, the endpoints must use A1 and A2 to leave A0. The two sectors
+for A1 are S1,S4 and those for A2 are S2,S5. The four combinations
+give H,-V,V,-H respectively. Every displayed sum uses nonparallel
+interior directions. Uniqueness of the unordered representation shows
+that none lies on one of the removed boundary circles. Rotation shifts
+all sector indices and therefore shifts the residual palette index.
+
+On R0 define a bit b(z) by the following disjoint rules:
+  z in V:   b(z)=0 if |z|<=1, and b(z)=1 if |z|>1;
+  z in -V:  b(z)=1 if |z|<=1, and b(z)=0 if |z|>1;
+  z in H or -H: b(z)=0 if Re(z)>=0, and b(z)=1 if Re(z)<0.
+Give bit 0 label 1 and bit 1 label 4.
+For z in R_j first rotate to w=e(-j*pi/3)z and use b(w), with
+  (bit 0,bit 1) labels (1,4), (2,5), (0,3) for j=0,1,2.
+This is the promised proper L-colouring of T.
+
+The axis and radius-one conventions are arbitrary: those points have
+NO unit-distance neighbour within their own R_j, as proved below.
+All pieces are defined by continuous inequalities, so the map is Borel.
+
+2. ELEMENTARY REULEAUX-TRIANGLE FACT
+
+If A,B,C are the vertices of a unit equilateral triangle, then
+  K=closedBall(A,1) intersect closedBall(B,1) intersect closedBall(C,1)
+has diameter 1. If p and q both belong to all three OPEN balls, then
+|p-q|<1.
+
+For completeness, its boundary consists of the three minor 60-degree
+arcs BC about A, CA about B, and AB about C. Fix q in K and consider
+the first arc, taking A=0, B=1, C=e(pi/3). The two inequalities
+|q-B|<=1 and |q-C|<=1 give q dot B>=0 and q dot C>=0. If q is nonzero,
+its argument therefore lies in [-pi/6,pi/2]. On theta in [0,pi/3],
+the function |e(theta)-q| cannot have an interior maximum: such a
+maximum would require theta to point directly opposite q, which is
+outside this interval. Its maximum is consequently at B or C, where
+it is at most 1. The same argument holds for all three arcs. The
+maximum of distance from q on the compact convex K is attained on
+its boundary, proving the claim. If q is in all three open balls,
+the endpoint distances are strictly below 1, so this proof also gives
+strict inequality for every p in K. (The q=A special case is immediate.)
+
+3. USEFUL EXACT GEOMETRIC BOUNDS
+
+Put s=sqrt(3)/2, A=(s,1/2), B=(s,-1/2), C=(0,1),
+D=(-s,1/2), Q=(s,3/2), E=(0,2).
+
+For p=(x,y) in V:
+  0<x<sqrt(3), -1/2<y<1/2, 0<|p|<sqrt(3),
+  |arg p|<pi/6,
+  |p-A|<1, |p-B|<1, |p-C|>1, |p+C|>1.             (V)
+
+For q=(u,v) in H:
+  -s<u<s, 1<v<2,
+  |q-C|<1, |q-A|>1, |q-D|>1.                       (H)
+
+Here are direct verifications of the circle inequalities, to avoid
+relying on a picture. Write p=e(alpha)+e(beta), with
+alpha in (-pi/2,-pi/6), beta in (pi/6,pi/2).
+The chord e(beta)-C has direction (beta-pi/2)/2 in (-pi/6,0),
+which makes an angle strictly less than pi/2 with e(alpha). Hence
+|p-C|>1. Reflection gives |p+C|>1.
+For |p-A|, the chord e(beta)-A has length
+  d=2 sin((beta-pi/6)/2) in (0,1)
+and direction (beta+pi/6)/2+pi/2. Its scalar product with e(alpha)
+is -d sin((beta+pi/6)/2-alpha), where the sine is at least 1/2
+(its argument lies between pi/3 and 5pi/6). Thus
+  |p-A|^2 <= 1+d^2-d <1.
+Reflection proves |p-B|<1. The other V bounds follow immediately
+from the sum formula and the endpoint intervals.
+
+For H, write q=e(alpha)+e(beta), alpha in (pi/6,pi/2),
+beta in (pi/2,5pi/6). The chord e(alpha)-A has direction in
+(2pi/3,5pi/6); its scalar product with e(beta) is positive, so
+|q-A|>1. Reflection about the imaginary axis gives |q-D|>1.
+For |q-C|<1, rotate by -pi/2 and put a=alpha-pi/2 in (-pi/3,0),
+b=beta-pi/2 in (0,pi/3). With delta=(b-a)/2 and m=(a+b)/2,
+  |e(a)+e(b)-1|^2-1=4 cos(delta)(cos(delta)-cos(m))<0,
+because 0<=|m|<delta<pi/3. The remaining H bounds are immediate.
+
+Consequently every p=(x,y) in V lies strictly BELOW
+  f(x)=1-sqrt(1-x^2),                  0<x<=s;
+  f(x)=-1/2+sqrt(1-(x-s)^2),           s<=x<sqrt(3).
+For x<=s this follows from |p-C|>1 and y<1/2; for x>=s it follows
+from |p-B|<1. The two formulas agree at x=s.
+Every q=(u,v) in H with 0<=u<s lies strictly ABOVE
+  g(u)=1/2+sqrt(1-(u-s)^2),
+by |q-A|>1 and v>1. Also, by concavity of this arc above its chord,
+  v>1+u/sqrt(3).                                      (W)
+
+4. THE INDIVIDUAL COLOUR PIECES HAVE NO UNIT PAIRS
+
+4a. V inside the closed unit disk.
+If p,q in V have radii r,t<=1, their angular separation is less
+than pi/3. Since r,t>0,
+  |p-q|^2 < r^2+t^2-r*t <=1.
+The last inequality follows by maximizing this convex quadratic on
+the unit square: the four corner values are 0,1,1,1.
+
+4b. V outside, INCLUDING its radius-one arc.
+For p in V with r=|p|>=1, the angular bound gives x>s*r. Hence
+  |p-(sqrt(3),0)|^2 < r^2+3-3*r <=1,
+because 1<=r<sqrt(3)<2 and (r-1)(r-2)<=0.
+Together with (V), this puts p in all three open unit balls centred
+at A, B, and (sqrt(3),0), a unit equilateral triangle. Section 2
+shows that this entire piece has all pairwise distances strictly <1.
+
+4c. Each half of H, INCLUDING the imaginary axis.
+Take q=(u,v) in H with u>=0. It lies in the open unit ball at C.
+It also lies in the open unit ball at Q, because
+  |q-Q|^2=(u-s)^2+(v-3/2)^2 < 3/4+1/4=1.
+Finally it lies in the open unit ball at E. If v>=3/2, then
+  |q-E|^2=|q-C|^2+3-2v <1.
+If 1<v<=3/2, (W) yields
+  |q-E|^2 < 3(v-1)^2+(v-2)^2
+            =1+2(2v-3)(v-1) <=1.
+The centres C,Q,E form a unit equilateral triangle. Section 2 proves
+all distances in H intersect {Re>=0} are <1. Reflection proves the
+same statement for H intersect {Re<=0}. Negation handles -H.
+
+5. THE GLOBAL V--H SEPARATION: ALL DISTANCES ARE STRICTLY >1
+
+This is the missing global check in the earlier tentative argument.
+Let p=(x,y) in V and q=(u,v) in H.
+
+If u<=0 then x>0 and v>1 give
+  |p-q|^2 >= x^2+(v-y)^2 > x^2+(1-y)^2 = |p-C|^2 >1.
+
+Suppose u>0. Replace p by p0=(x,f(x)) and q by q0=(u,g(u)).
+Their horizontal difference stays fixed, whereas the positive vertical
+gap STRICTLY decreases, since y<f(x)<=1/2 and v>g(u)>=1. Therefore
+  |p-q|^2 > |p0-q0|^2.
+Write q0=A+e(beta), beta in [pi/2,5pi/6]. There are two cases.
+
+Case I: 0<x<=s. Write p0=C+e(gamma), gamma in [-pi/2,-pi/6].
+After rotating the difference q0-p0 by pi/6 it is
+  1+e(D0)-e(E0),
+where D0=beta+pi/6 in [2pi/3,pi] and
+E0=gamma+pi/6 in [-pi/3,0]. Exact expansion gives
+  |1+e(D0)-e(E0)|^2-1
+    =-8 sin((D0-E0)/2) cos(D0/2) sin(E0/2) >=0.
+Each factor has the indicated fixed sign on these closed intervals.
+
+Case II: s<=x<sqrt(3). Write p0=B+e(alpha), alpha in [pi/6,pi/2].
+Then q0-p0=i+e(beta)-e(alpha), and exact expansion gives
+  |i+e(beta)-e(alpha)|^2-1
+    =8 sin((beta-alpha)/2)
+       * sin((pi/2-alpha)/2) * cos((beta-pi/2)/2) >=0.
+
+Both cases give |p0-q0|>=1, so the original strict vertical gap
+gives |p-q|>1. Reflection in the real axis preserves V and carries
+H to -H. Negation then proves all four separations
+  dist(point of +/-V, point of +/-H)>1.
+This is a pointwise statement about every pair, not only corners or
+first-order tangent cones.
+
+6. ALL REMAINING SAME-COLOUR PAIRS
+
+H and -H have imaginary coordinates respectively >1 and <-1,
+so their mutual distances are >2.
+
+For the assigned common bit on V intersect {|z|<=1} and
+(-V) intersect {|z|>1}, write the two points p and -q, p,q in V,
+with |q|>1. Their angular separation is <pi/3, so p dot q>0 and
+  |p-(-q)|^2=|p+q|^2>|q|^2>1.
+The other common-bit pair V outside and -V inside is identical.
+
+Sections 4-6 cover every pair of points assigned the same label in R0:
+within a piece the distance is <1; between the relevant distinct pieces
+it is >1. Thus the bit map is a proper 2-colouring of its unit graph.
+Rotating proves the same for R1,R2. Since A0,A1,A2 are disjoint,
+edges between different R_j cannot be monochromatic. This completes
+the proof of the map in Section 1 on ALL of T.
+
+For the advertised harmless boundary conventions: a point of V on
+|z|=1 has distance <1 to every point of V, using 4a or 4b; it has
+distance >1 to every point of -V by the positive-dot-product argument;
+and distance >1 to +/-H by Section 5. Hence it has no unit neighbour
+in R0. A point on the imaginary axis in H belongs to both independent
+halves in 4c, and the remaining components are >1 away. The other
+claims follow by symmetry.
+
+The graph is not edgeless. Explicit examples are the pairs
+  1/2 and -1/2; 1/2 and 3/2; 1/2+3i/2 and -1/2+3i/2.
+They lie in the asserted open pieces and are unit pairs of opposite bits.
+
+7. OPTIONAL FLIPS AND THE EXACT OBSTRUCTION BOUNDARY
+
+One may independently interchange the two labels on V union (-V),
+on H, and on -H. These sets have no unit edges between them.
+Doing this independently after the three rotations gives a concrete
+family of 2^9 proper list maps on T. This is a SUFFICIENT family;
+there is no completeness assertion or licensed reduction of the full
+four-list problem to 512 cases.
+
+For any finite F contained in T, restricting any displayed map to F
+is an explicit proper L-colouring. Therefore every finite obstruction
+to the full one-centre list field must include at least one four-list
+vertex. Unit triangles, odd cycles, or more complicated configurations
+lying entirely in the two-list locus cannot work. In particular the
+pure-two-list search suggested in Section 5 of Claude's report has a
+negative answer, without interval arithmetic or a finite mesh.
+
+8. WHAT IS AND IS NOT LICENSED BY THE LEAN SOURCE
+
+States.states_densityOne does license the list L at every z in G under
+the asserted almost-everywhere centre-palette hypothesis. Open sector
+lifts give RealState and complement density zero at each interior angle.
+Nonparallelity follows from 0<|z|<2. States.finite_density_realization
+then implies that a finite non-L-colourable configuration in G would
+contradict measurable WeakColoring. These are actual source consumers.
+
+The present construction proves only that such a configuration cannot
+be supported in T. It does not supply the four-list extension, and it
+does not assert that every contradiction available from the full source
+must be a finite obstruction of this particular list field. Claude's
+phrases "strongest thing", "exactly everything", and the unrestricted
+"if and only if" require a separately defined proof system and an
+exhaustiveness proof; they are not declarations in the inspected source.
+Limits, other centres, trace positivity, and generic binary rigidity
+cannot simply be declared absent because the selected density lemma
+has only one unordered angular representation at a given point.
+
+The displayed source statements also use the exact hypotheses:
+  two_state_impossible: (univ \ (J union K)).card <=2;
+  strict_state_no_unit_support: for every i,
+                               i notin J union K iff i=X.
+For six labels these correspond to a residual set of size at most two
+and exactly one, respectively; the latter is not merely an informal
+cardinality condition unless the residual label X is supplied.
+
+STATUS: Complete exact paper proof for the whole two-list locus.
+UNRESOLVED: the four-list extension / a finite obstruction using it,
+and any global weak-colouring or palette-impossibility consequence.

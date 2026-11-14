@@ -1,0 +1,11 @@
+d3. 33 machine checks: `cd .ultramath/smwfwi7rh/m4 && python3 verify.py` exits 0.
+
+1) Thm 1 (Lemma 5.2(3)+Remark 5.3): every weak measurable k-colouring, centre x, unit a, a.e. f: P_{x+a}(f) cap P_x(f) = empty. Cor 2: no nonempty palette field independent of the centre satisfies (5.3). Both accepted countermodels ARE centre-independent (functions of the direction only), so both violate the paper's OWN (5.3) at distance 1; their transport was claimed only locally. So REPORT's "exact frontier" is incomplete and the six-cycle sector search answers NO trivially.
+
+2) m3's gadget needs THREE labels absent from the square's shadow, not four (m3's Lemma C / Cor 3 D). At k=6 exactly three are available: no label-count obstruction, so d4's premise as stated is false and the k=6 boundary is purely the chromatic wall.
+
+3) Thm 3: for 6-colourings with a.e.-singleton palettes no 5- or 6-cycle lies in any Gamma_x and the 4-cycle locus is locally finite (binary outsider pair + paper Lemma 5.5), so L is locally finite iff the 3-cycle locus is; sharp: m3's k>=7 example accumulates at 3-cycle points.
+
+4) Decided: 6-cycle orbit system = exactly 510 pointwise words (DFS + exact DP, both = sprint/k6's 510), nothing excluded; 24 are 2-valued, not 6. Shadow annulus is 3-colourable (exact certificate): no geometric obstruction to m3's k=6 condition. Global palette system at k=6 is SAT on a triangular lattice: no finite palette argument decides k=6.
+
+Not done: (W) itself.

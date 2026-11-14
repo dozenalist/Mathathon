@@ -1,0 +1,46 @@
+OPEN MATH OS RESOURCE AUDIT
+Snapshot: November13,2026,10:01PM Pacific.
+Official API version0.56.1; live BYU-team metadata inspected. No settings changed.
+
+CONFIRMED SCOPE AND ALLOCATION
+Chats and projects are created in the TEAM'S VM. Thus chats within this project and other projects in the same BYU team share that VM's resource allocation. A new project is not an additional VM.
+Your team's current tier: normal.
+CPU allocation: 4.
+Memory: memory_mb=16384 (approximately16GiB using1024MB/GiB).
+Disk allocation: disk_mb=262144 (approximately256GiB using1024MB/GiB).
+Target resize: null. These are allocated totals, not current free memory/disk.
+Source: live POST /v1/orgs. Public schema: components.schemas.Size, VmSize, VmStatus; paths /v1/chat_create, /v1/project_create, /v1/org_projects.
+https://os.openmathmodel.org/v1/openapi.json
+https://os.openmathmodel.org/v1/doc
+
+MODELS AND LIMITS
+Live model_catalog lists8enabled model choices. This is NOT a count of inference slots.
+It lists2models eligible for swarms: DeepSeek V4.1 Flash and Muse Spark Open. That is also not a concurrency allowance.
+No explicit concurrent-model-request cap, RPM limit, TPM limit or per-chat slot count was found in the public schema or catalog.
+The team's model-usage accounting is shared. Reported5h/week windows are spending counters, not execution slots. Latest check at approximately9:38PM reported$10.9412spent against$500 in each window. The event allocation and UI interpretation are separate; those rows alone do not explain the observed failures.
+
+OBSERVED OR REPORTED, NOT A DOCUMENTED LIMIT
+Remote workers reported16/16command slots occupied. We have not independently established whether that cap is perVM, perprocess, perruntime or perchat, nor whether it counts running jobs, open terminals or another resource. Do not describe this as16model slots.
+Workers reported Mathlib-only Lean checks taking7m48s,15m23s and10m30s, plus600s timeouts. One oversized palette enumeration was reportedly killed for memory use. Final Lean logs were retrieved, but a system-level resource snapshot/kernelOOMlog was not.
+These symptoms are consistent with tool/CPU/memory contention. Attribution to any single cause remains an inference.
+
+TROUBLESHOOTING PRACTICE
+Keep the four automated chats and one local Lean check at a time for now. Human/team jobs share the remote resources, so a supervisor limit alone cannot reserve the whole VM.
+A serial queue limits simultaneous builds and makes individual timeouts/logs attributable. It does not guarantee that a difficult proof terminates.
+For the next failure, retain its timestamp, operation/model, project/chat, HTTP status and safe error code, time to failure, and whether model streaming or just a shell command stalled. Avoid logging credentials or request headers.
+Official error categories distinguish resource_exhausted(413/429), unavailable(502/503), deadline_exceeded(504), and asleep(409). A timeout alone is not evidence of exhausted model credits.
+A lightweight VM snapshot can inspect nproc, free -h, df -h, running-process CPU/RSS and documented job/terminal listings. Compare before/after a single controlled job; do not deliberately saturate the team's VM.
+Stop completed jobs only after verifying their ownership and status; do not restart/update the shared VM to clear contention while teammates work. No VM restart, resize, quota reset or toolchain change was performed.
+Ask platform support to confirm the precise scope/counting/release rules for command slots and simultaneous inference calls if these limits are not exposed by the app/runtime.
+
+LOCAL RELIEF ALREADY WORKING
+The first serial local Lean4.35.0/coreOmega check passed in47seconds with no sorryAx.
+Pinned4.34.1/Mathlib integration awaits a reviewed manifest/source packet; installing an isolated matching environment is authorized.
+Existing local defaults are unchanged.
+
+The user-requested audit agent completed its independent source review. Official runtime architecture also describes each team's Linux VM and project processes under the shared projects Linux account, in project cgroups, without isolation between projects. The per-project cgroup limits are not established here. README describes one agent per chat and memory consolidated per project across sessions. These are source-level architecture statements; the live orgs response is the deployment-specific allocation evidence.
+Sources:
+https://github.com/openmathmodel/open-math-harness/blob/main/AGENTS.md
+https://github.com/openmathmodel/open-math-harness#what-it-runs
+https://github.com/openmathmodel/open-math-harness#memory
+No additional numerical slot cap was independently established. The audit performed no remote mutations or paid model calls.

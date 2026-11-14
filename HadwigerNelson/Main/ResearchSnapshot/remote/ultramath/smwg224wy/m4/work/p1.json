@@ -1,0 +1,1088 @@
+[
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/Basic.lean",
+  "line": 0,
+  "core": [
+   "      convert h using 1",
+   "      first | rfl | (apply Complex.ext <;> simp; ring)"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/Basic.lean",
+  "hunk": "@@ -408,13 +408,18 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean",
+  "line": 0,
+  "core": [
+   "  have huAlg : IsAlgebraic \u211a ((r : \u2102) + Complex.I * s) :=",
+   "    (hrAlg.algebraMap (A := \u2102)).add"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean",
+  "hunk": "@@ -125,12 +125,13 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/Energy.lean",
+  "line": 0,
+  "core": [
+   "  have hc : EventuallyEmptyOrUniv (q \u207b\u00b9' s) (ae \u03bc) := by",
+   "    apply ErgodicVAdd.aeconst_of_forall_preimage_vadd_ae_eq (G := G) (hs.preimage hq)"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/Energy.lean",
+  "hunk": "@@ -283,14 +283,15 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/Ergodicity.lean",
+  "line": 0,
+  "core": [
+   "  rw [eventuallyEmptyOrUniv_iff]"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/Ergodicity.lean",
+  "hunk": "@@ -263,7 +263,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/Ergodicity.lean",
+  "line": 0,
+  "core": [
+   "  Measurable.of_eval (fun i => InvariantSequence.limit_measurable \u03bc M (test X i))"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/Ergodicity.lean",
+  "hunk": "@@ -289,7 +289,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/Fourier.lean",
+  "line": 0,
+  "core": [
+   "  ((memLp_top_of_bound hf C hbound).fun_mul (Lp.memLp g)).toLp (fun x => f x*g x)",
+   "lemma apply_ae (f : X \u2192 \u2102) (hf : AEStronglyMeasurable f \u03bc) {C : \u211d} (hbound : \u2200\u1d50 x \u2202\u03bc, \u2016f x\u2016\u2264C)"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/Fourier.lean",
+  "hunk": "@@ -9,9 +9,12 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/Fourier.lean",
+  "line": 0,
+  "core": [
+   "  SchwartzMap.compCLMOfAntilipschitz \u2102",
+   "    (Function.HasTemperateGrowth.id.add (Function.HasTemperateGrowth.const h)) (isometry_add_right h).antilipschitzWith"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/Fourier.lean",
+  "hunk": "@@ -56,10 +59,10 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 555,
+  "context": 1,
+  "src": "OAI/Analysis/PlaneSpectrum/FourierTests.lean",
+  "hunk": "@@ -238,7 +238,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/Multipliers.lean",
+  "line": 0,
+  "core": [
+   "  apply eLpNorm_congr_norm_ae (Lp.aestronglyMeasurable (mul h hm hn v))",
+   "    (Lp.aestronglyMeasurable v)"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/Multipliers.lean",
+  "hunk": "@@ -35,8 +35,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/PhaseCollision.lean",
+  "line": 0,
+  "core": [
+   "  rw [dite_eq_left (hx i hi)]"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/PhaseCollision.lean",
+  "hunk": "@@ -365,7 +365,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean",
+  "line": 0,
+  "core": [
+   "      _ \u2264 _ := Finset.prod_le_prod\u2080 (fun _ _ => h\u03c1.le) (fun j _ => by"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean",
+  "hunk": "@@ -115,7 +115,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean",
+  "line": 0,
+  "core": [
+   "  apply Measurable.of_eval"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean",
+  "hunk": "@@ -207,7 +207,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/RadialEnergy.lean",
+  "line": 85,
+  "context": 1,
+  "src": "OAI/Analysis/PlaneSpectrum/RadialEnergy.lean",
+  "hunk": "@@ -83,6 +83,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/RadialEnergy.lean",
+  "line": 390,
+  "context": 1,
+  "src": "OAI/Analysis/PlaneSpectrum/RadialEnergy.lean",
+  "hunk": "@@ -386,6 +387,7 @@"
+ },
+ {
+  "status": "APPLIED-AMBIGUOUS",
+  "file": "OAI/Analysis/PlaneSpectrum/RadialEnergy.lean",
+  "line": 459,
+  "hits": 19,
+  "context": 1,
+  "src": "OAI/Analysis/PlaneSpectrum/RadialEnergy.lean",
+  "hunk": "@@ -451,6 +453,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/Representations.lean",
+  "line": 0,
+  "core": [
+   "  simpa only [one_mul,Function.comp_def] using Complex.isometry_ofReal.lipschitzWith.comp ((hr.const_min 1).const_max 0)"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/Representations.lean",
+  "hunk": "@@ -320,7 +320,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/SmallArcs.lean",
+  "line": 0,
+  "core": [
+   "          rw [Finset.sum_add_distrib, Finset.sum_ite_eq, ite_eq_left hi])]"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/SmallArcs.lean",
+  "hunk": "@@ -157,7 +157,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/SmallArcs.lean",
+  "line": 0,
+  "core": [
+   "  rw [compProd_map_condDistrib hp.aemeasurable hb.aemeasurable] at he"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/SmallArcs.lean",
+  "hunk": "@@ -263,7 +263,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
+  "line": 0,
+  "core": [
+   "  ((memLp \u03bc f \u221e).fun_mul (Lp.memLp g)).toLp (fun point => f point * g point)",
+   "lemma mulLp_ae (f : Func X) (g : Lp \u2102 2 \u03bc) :"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
+  "hunk": "@@ -61,9 +61,13 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
+  "line": 0,
+  "core": [
+   "  apply StarAlgebra.isMulCommutative_adjoin",
+   "  \u00b7 rintro _ \u27e8element,rfl\u27e9"
+  ],
+  "src": "OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
+  "hunk": "@@ -106,19 +110,17 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/Accumulation.lean",
+  "line": 0,
+  "core": [
+   "    simp only [vn,dite_eq_left hn])"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/Accumulation.lean",
+  "hunk": "@@ -99,7 +99,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/BinaryPalettes.lean",
+  "line": 0,
+  "core": [
+   "  rw [one_mul,ite_eq_left hcolor]"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/BinaryPalettes.lean",
+  "hunk": "@@ -208,7 +208,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/BorelTransfer.lean",
+  "line": 284,
+  "context": 1,
+  "src": "OAI/Geometry/PlaneColoring/BorelTransfer.lean",
+  "hunk": "@@ -282,6 +282,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/BorelTransfer.lean",
+  "line": 0,
+  "core": [
+   "    simp only [positiveSelect,pickSupport,dite_eq_left hn]"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/BorelTransfer.lean",
+  "hunk": "@@ -391,7 +392,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/BoundaryTrace.lean",
+  "line": 0,
+  "core": [
+   "    simp only [sampleFn,Complex.ofReal_one,one_mul,ite_eq_right hne,Pi.zero_apply]"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/BoundaryTrace.lean",
+  "hunk": "@@ -39,7 +39,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/Compactness.lean",
+  "line": 0,
+  "core": [
+   "      \u2190 eLpNorm_one_eq_lintegral_enorm (hv.sub hgi).aestronglyMeasurable]"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/Compactness.lean",
+  "hunk": "@@ -221,7 +221,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/ContinuumLimits.lean",
+  "line": 0,
+  "core": [
+   "  have hh := (NonemptyCompacts.lipschitz_infDist.continuous.tendsto (y,L)).comp (hx.prodMk_nhds hK)",
+   "  have h0 : (fun n => Metric.infDist (x n) (K n : Set X)) =\u1da0[l] fun _ => 0 :="
+  ],
+  "src": "OAI/Geometry/PlaneColoring/ContinuumLimits.lean",
+  "hunk": "@@ -144,12 +144,20 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/DiskAverages.lean",
+  "line": 0,
+  "core": [
+   "      \u00b7 simp only [colorFn,ite_eq_left h1,ite_eq_right h2,mul_zero]; exact Set.indicator_nonneg (fun _ _ => zero_le_one) _",
+   "    \u00b7 simp only [colorFn,ite_eq_right h1,zero_mul]; exact Set.indicator_nonneg (fun _ _ => zero_le_one) _"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/DiskAverages.lean",
+  "hunk": "@@ -223,8 +223,8 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/Expansion.lean",
+  "line": 0,
+  "core": [
+   "    ((isometry_subtype_coe : Isometry (Subtype.val : {x : \u211d // x \u2208 (univ : Set \u211d)} \u2192 \u211d)).antilipschitzWith)"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/Expansion.lean",
+  "hunk": "@@ -486,7 +486,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/GraphCuts.lean",
+  "line": 0,
+  "core": [
+   "  rw [graphCutRetract,dite_eq_right hp]"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/GraphCuts.lean",
+  "hunk": "@@ -65,7 +65,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/Interfaces.lean",
+  "line": 310,
+  "context": 0,
+  "src": "OAI/Geometry/PlaneColoring/Interfaces.lean",
+  "hunk": "@@ -306,10 +306,12 @@"
+ },
+ {
+  "status": "APPLIED-AMBIGUOUS",
+  "file": "OAI/Geometry/PlaneColoring/Interfaces.lean",
+  "line": 322,
+  "hits": 2,
+  "context": 0,
+  "src": "OAI/Geometry/PlaneColoring/Interfaces.lean",
+  "hunk": "@@ -317,8 +319,10 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/Interfaces.lean",
+  "line": 0,
+  "core": [
+   "    simpa only [p,dite_eq_left ht] using (hpar t ht).choose_spec"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/Interfaces.lean",
+  "hunk": "@@ -483,7 +487,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/MeasurableProper.lean",
+  "line": 0,
+  "core": [
+   "  inferInstanceAs (IsProbabilityMeasure (Measure.map circleDir normalizedAngleMeasure))"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/MeasurableProper.lean",
+  "hunk": "@@ -27,7 +27,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+  "line": 0,
+  "core": [
+   "  convert QuasiMeasurePreserving.prodMap angleMk_quasiMeasurePreserving",
+   "    angleMk_quasiMeasurePreserving using 1; rfl"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+  "hunk": "@@ -178,8 +178,8 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+  "line": 0,
+  "core": [
+   "    simp only [sampleFn,ite_eq_right hi,zero_mul]"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+  "hunk": "@@ -477,7 +477,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/PlanarCovers.lean",
+  "line": 0,
+  "core": [
+   "  have ge (z : \u2102) (hz : z\u2208Q) : g z=F \u27e8z,hz\u27e9 := dite_eq_left hz"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/PlanarCovers.lean",
+  "hunk": "@@ -254,7 +254,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/PlanarCovers.lean",
+  "line": 0,
+  "core": [
+   "      rw [dite_eq_left \u27e8z,hzu\u27e9]"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/PlanarCovers.lean",
+  "hunk": "@@ -368,7 +368,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/Transitions.lean",
+  "line": 0,
+  "core": [
+   "  simp only [sampleFn,Complex.ofReal_one,one_mul,ite_eq_right hn,Pi.zero_apply]"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/Transitions.lean",
+  "hunk": "@@ -48,7 +48,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/AlgebraModels.lean",
+  "line": 0,
+  "core": [
+   "  simpa only [Measure.fst_map_prodMk hq measurable_id, Measure.fst_compProd] using he"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/AlgebraModels.lean",
+  "hunk": "@@ -180,7 +180,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Amenability.lean",
+  "line": 11,
+  "context": 1,
+  "src": "OAI/MeasureTheory/CompactFactors/Amenability.lean",
+  "hunk": "@@ -9,6 +9,40 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Amenability.lean",
+  "line": 0,
+  "core": [
+   "  exact eventuallyEmptyOrUniv_iff.mp this"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Amenability.lean",
+  "hunk": "@@ -382,7 +416,10 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "line": 0,
+  "core": [
+   "  simpa only [g, dite_eq_left hy] using hy.choose_spec"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "hunk": "@@ -100,7 +100,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "line": 0,
+  "core": [
+   "    apply Measurable.of_eval"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "hunk": "@@ -202,7 +202,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "line": 0,
+  "core": [
+   "      apply Measurable.of_eval"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "hunk": "@@ -234,7 +234,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "line": 0,
+  "core": [
+   "      apply Measurable.of_eval"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "hunk": "@@ -244,7 +244,7 @@"
+ },
+ {
+  "status": "APPLIED-AMBIGUOUS",
+  "file": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "line": 293,
+  "hits": 4,
+  "context": 1,
+  "src": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "hunk": "@@ -313,6 +313,8 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "line": 0,
+  "core": [
+   "    \u00b7 simpa only [H, ite_eq_left hy] using hy",
+   "    \u00b7 simp only [H, ite_eq_right hy, norm_zero]"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "hunk": "@@ -347,10 +349,12 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 295,
+  "context": 5,
+  "src": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "hunk": "@@ -401,6 +405,8 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 0,
+  "core": [
+   "    center (\u03bc.map (fun point => point + v)) = center \u03bc + v := by"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -347,7 +347,8 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 0,
+  "core": [
+   "    center (\u03bc.map O) = O (center \u03bc) := by"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -368,7 +369,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 0,
+  "core": [
+   "      inferInstance\u27e9"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -498,7 +499,8 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 0,
+  "core": [
+   "    exact Measure.map_smul ((\u03bc : Measure G) (e.coset z))\u207b\u00b9",
+   "      (e.measurable_coordinate.comp (measurable_id.div_const z)).aemeasurable"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -507,8 +509,6 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/DifferenceLaw.lean",
+  "line": 30,
+  "context": 0,
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -522,7 +522,6 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 0,
+  "core": [
+   "omit [MeasurableMul\u2082 G] [MeasurableInv G] in"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -536,7 +535,6 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 0,
+  "core": [
+   "      (e.frequencyLaw \u03bc z).map (fun point => point + -v) := by",
+   "  apply Subtype.ext"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -557,14 +555,14 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 0,
+  "core": [
+   "omit [MeasurableMul\u2082 G] [MeasurableInv G] in"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -575,7 +573,6 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 0,
+  "core": [
+   "omit [MeasurableMul\u2082 G] [MeasurableInv G] in"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -597,7 +594,6 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 0,
+  "core": [
+   "omit [MeasurableMul\u2082 G] [MeasurableInv G] in"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -612,7 +608,6 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 0,
+  "core": [
+   "omit [MeasurableMul\u2082 G] [MeasurableInv G] in"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -631,7 +626,6 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 0,
+  "core": [
+   "omit [MeasurableMul\u2082 G] [MeasurableInv G] in",
+   "theorem preimage_coset_equiv (z : G) : T \u207b\u00b9' e.coset (T z) = e.coset z := by"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -643,14 +637,12 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 0,
+  "core": [
+   "    e.frequencyLaw (\u03bc.map T) (T z) =",
+   "      (e.frequencyLaw \u03bc z).map O := by"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -676,22 +668,22 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 0,
+  "core": [
+   "    apply Measurable.of_eval"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -89,7 +89,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 0,
+  "core": [
+   "    \u00b7 simpa only [H\u2080, ite_eq_left hz] using hz",
+   "    \u00b7 simp only [H\u2080, ite_eq_right hz, norm_zero]; positivity"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -163,13 +163,13 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 0,
+  "core": [
+   "    \u00b7 simpa only [H, ite_eq_left hy] using hy",
+   "    \u00b7 simp only [H, ite_eq_right hy, norm_zero]"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -210,10 +210,10 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 0,
+  "core": [
+   "  let : IsProbabilityMeasure (\u03bc.map p) := inferInstance"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -226,7 +226,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 0,
+  "core": [
+   "  let : IsProbabilityMeasure (\u03bc.map p) := inferInstance"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -289,7 +289,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 0,
+  "core": [
+   "  let : IsProbabilityMeasure ((\u03bc.map p).map (v n)) := inferInstance"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -303,7 +303,8 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 0,
+  "core": [
+   "  let : IsProbabilityMeasure (\u03bc.map b) := inferInstance"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -353,7 +354,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 0,
+  "core": [
+   "  let : IsProbabilityMeasure (\u03bc.map P) := inferInstance"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -399,7 +400,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 0,
+  "core": [
+   "  refine \u27e8fun y _ => H (k \u2022 y), Measurable.of_eval (fun _ => hH.comp (measurable_const_smul k)),"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -559,7 +560,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 0,
+  "core": [
+   "  let : IsProbabilityMeasure (\u03bc.map p) := inferInstance"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -636,7 +637,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 0,
+  "core": [
+   "  let : IsProbabilityMeasure (\u03bc.map q) := inferInstance"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -649,7 +650,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean",
+  "line": 0,
+  "core": [
+   "  filter_upwards [condDistrib_comp hp"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean",
+  "hunk": "@@ -197,7 +197,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean",
+  "line": 0,
+  "core": [
+   "    condDistrib_self hp.aemeasurable] with w hw hs"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean",
+  "hunk": "@@ -206,7 +206,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean",
+  "line": 331,
+  "context": 1,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean",
+  "hunk": "@@ -326,6 +326,8 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "line": 0,
+  "core": [
+   "  OrbitSpace.measurable_mk.comp (Measurable.of_eval fun k => hH.comp (measurable_const_smul k))"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "hunk": "@@ -90,7 +90,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "line": 0,
+  "core": [
+   "    @Measurable.of_eval X K (fun _ => \u2102) (compactSigma \u03bc q hq hpres) (fun _ => inferInstance) _ (fun k => hHm.comp (measurable_shift_compactSigma hq hpres k))"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "hunk": "@@ -137,7 +137,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "line": 0,
+  "core": [
+   "  Measurable.of_eval fun i => measurable_pi_apply (i : \u2115)",
+   ""
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "hunk": "@@ -356,14 +356,14 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "line": 0,
+  "core": [
+   "    refine @Measurable.of_eval (\u2115 \u2192 Y) \u2115 (fun _ => Y)"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "hunk": "@@ -375,7 +375,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "line": 0,
+  "core": [
+   "  Measurable.of_eval hq"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "hunk": "@@ -404,7 +404,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "line": 472,
+  "context": 1,
+  "src": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "hunk": "@@ -470,6 +470,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "line": 0,
+  "core": [
+   "  have hR : Measurable R := Measurable.of_eval hr"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "hunk": "@@ -477,7 +478,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 0,
+  "core": [
+   "    refine \u27e8fun y i => a y (e i), Measurable.of_eval (fun i => (measurable_pi_iff.mp ham) (e i)), ?_, ?_, ?_\u27e9"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -69,7 +69,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 0,
+  "core": [
+   "    refine \u27e8fun y i => star (a y i), (Measurable.of_eval (fun i => Complex.continuous_conj.measurable.comp ((measurable_pi_iff.mp ham) i))), ?_, ?_, ?_\u27e9"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -118,7 +118,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 0,
+  "core": [
+   "      apply Measurable.of_eval"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -150,7 +150,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 0,
+  "core": [
+   "    have hAm : Measurable A := Measurable.of_eval (fun i =>"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -209,7 +209,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 0,
+  "core": [
+   "    have hAm : Measurable A := Measurable.of_eval (fun i =>"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -444,7 +444,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 0,
+  "core": [
+   "    have h := Complex.isometry_ofReal.lipschitzWith.comp",
+   "      (NNReal.isometry_coe.lipschitzWith.comp (lipschitzWith_thickenedIndicator (h\u03b4 n) t))"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -548,8 +548,8 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 0,
+  "core": [
+   "  have h := compact_lipschitz hq hm hc (fun z : \u2102 => -z) 1 isometry_neg.lipschitzWith"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -585,7 +585,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 0,
+  "core": [
+   "    refine \u27e8fun y _ => b (k \u2022 y), Measurable.of_eval (fun _ => hbm.comp (measurable_const_smul k)), ?_, ?_, ?_\u27e9"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -730,7 +730,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 0,
+  "core": [
+   "  let : IsProbabilityMeasure \u03bd := inferInstance"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -809,7 +809,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "line": 0,
+  "core": [
+   "  apply Measurable.of_eval"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "hunk": "@@ -167,7 +167,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "line": 0,
+  "core": [
+   "  have hH : Measurable H := Measurable.of_eval fun _ => hL"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "hunk": "@@ -228,7 +228,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "line": 0,
+  "core": [
+   "    apply Measurable.of_eval"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "hunk": "@@ -295,7 +295,7 @@"
+ },
+ {
+  "status": "APPLIED-AMBIGUOUS",
+  "file": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "line": 473,
+  "hits": 4,
+  "context": 2,
+  "src": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "hunk": "@@ -499,6 +499,46 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "line": 0,
+  "core": [
+   "  change EventuallyEmptyOrUniv s (ae \u03bd)",
+   "  rw [eventuallyEmptyOrUniv_iff]"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "hunk": "@@ -506,8 +546,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 0,
+  "core": [
+   "    (\u03bc.map (e.center \u03bc) : Measure G) e.ordinary ="
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -100,7 +100,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 120,
+  "context": 1,
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -118,6 +118,37 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 0,
+  "core": [
+   "  exact eventuallyEmptyOrUniv_iff.mp h"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -126,7 +157,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 0,
+  "core": [
+   "    compProd_map_condDistrib hp.aemeasurable hf.aemeasurable,"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -160,7 +191,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 0,
+  "core": [
+   "  have he := condDistrib_comp (\u03bc := \u03bc) hp.aemeasurable hf.aemeasurable hT"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -186,7 +217,9 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 0,
+  "core": [
+   "  rw [differenceLaw_ordinary, compProd_map_condDistrib hp.aemeasurable hd.aemeasurable,"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -258,7 +291,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 0,
+  "core": [
+   "    rw [compProd_map_condDistrib hp.aemeasurable hd.aemeasurable]"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -290,7 +323,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 0,
+  "core": [
+   "omit [MeasurableMul\u2082 G] [MeasurableInv G] in"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -340,7 +373,6 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 0,
+  "core": [
+   "        (fun point : G => k \u2022 point) := by"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -379,7 +411,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 0,
+  "core": [
+   "    (measurable_fiberCenter e _), compProd_map_condDistrib hp.aemeasurable hd.aemeasurable,"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -440,7 +472,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Separability.lean",
+  "line": 0,
+  "core": [
+   "        rw [ite_eq_left hit]",
+   "        exact center_project_l2 \u03bc q hq (F h i)"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Separability.lean",
+  "hunk": "@@ -313,14 +313,14 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/MeasureTheory/CompactFactors/Separability.lean",
+  "line": 0,
+  "core": [
+   "    Family.meanNorm (\u03bc.map q) M (covariance \u03bc q \u03c6 v w) = 0 := by"
+  ],
+  "src": "OAI/MeasureTheory/CompactFactors/Separability.lean",
+  "hunk": "@@ -552,7 +552,9 @@"
+ }
+]

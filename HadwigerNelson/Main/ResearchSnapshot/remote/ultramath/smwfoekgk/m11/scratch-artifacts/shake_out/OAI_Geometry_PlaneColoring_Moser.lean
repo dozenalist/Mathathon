@@ -1,0 +1,30 @@
+SHAKE_BEGIN own=65 nmods=28 used=136
+IMPORT Mathlib.Algebra.Group.DivInvMonoid
+IMPORT Mathlib.Algebra.Group.Monoid
+IMPORT Mathlib.Algebra.Group.Submonoid.Defs
+IMPORT Mathlib.Algebra.GroupWithZero.Defs
+IMPORT Mathlib.Algebra.Order.Group.Unbundled.Abs
+IMPORT Mathlib.Algebra.Order.Ring.Unbundled.Rat
+IMPORT Mathlib.Algebra.Ring.Defs
+IMPORT Mathlib.Analysis.Complex.Basic
+IMPORT Mathlib.Analysis.Complex.Circle
+IMPORT Mathlib.Analysis.Complex.Norm
+IMPORT Mathlib.Analysis.Complex.Trigonometric
+IMPORT Mathlib.Analysis.Normed.Field.Basic
+IMPORT Mathlib.Analysis.Normed.Field.UnitBall
+IMPORT Mathlib.Analysis.Normed.Group.Defs
+IMPORT Mathlib.Analysis.Normed.Ring.Basic
+IMPORT Mathlib.Analysis.Real.Sqrt
+IMPORT Mathlib.Basic.Complex.Basic
+IMPORT Mathlib.Basic.Real.Basic
+IMPORT Mathlib.Data.Fin.VecNotation
+IMPORT Mathlib.Data.Finset.Defs
+IMPORT Mathlib.Data.Finset.Insert
+IMPORT Mathlib.Data.FunLike.Basic
+IMPORT Mathlib.Data.Nat.Cast.Defs
+IMPORT Mathlib.Data.Nat.Init
+IMPORT Mathlib.Data.SetLike.Basic
+IMPORT Mathlib.Topology.ContinuousMap.Defs
+IMPORT Mathlib.Topology.MetricSpace.Pseudo.Defs
+IMPORT Mathlib.Topology.UniformSpace.Defs
+SHAKE_END

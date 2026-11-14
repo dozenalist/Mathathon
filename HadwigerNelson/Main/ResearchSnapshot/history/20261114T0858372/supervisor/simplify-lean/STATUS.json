@@ -1,0 +1,70 @@
+{
+  "updated_utc": "2026-11-14T08:57:00Z",
+  "status": "completed_block",
+  "summary": "Block 8: independent review of the architecture worker's EncodingApproximationAt common core, on a hash-frozen snapshot. Public statements: byte-identical to both originals (delta = empty). Import direction acyclic as claimed (ConditionalLimits -> ConditionalSpectrum; reverse false). The abstraction needs NO Measurable S: common_fiber_contradiction demands measurability only of Hp/Hm, and Integrable of Ap/Am comes from happrox. harc's Measure Circle is safe: no Mathlib global instance competes. hwild stays a hypothesis at P. Found: EncodingCore.lean cannot compile standalone -- 13 identifiers its body uses are defined only inside ConditionalSpectrum.lean, which its 3 imports do not reach (9-module closure). Integration is unaffected. Also corrected PLAN section 6: 8 edit sites, not 7. Delivered the local build/validation packet: 14-module root-closed dependency list with sha256 and topological compile order, verified Lean/Mathlib pins, axiom-check commands. Nothing compiled this block.",
+  "verified_results": [
+    "GRADE [C] EncodingCore.lean (snapshot sha256 feb15b727d97c29c...) cannot compile as a standalone module: of the identifiers its transplanted body uses, 13 are defined only in ConditionalSpectrum.lean (eval:47, measurable_eval:56, predecessor_moment_sq:85, MomentTest:181, two_array_norm_bound:286, simultaneous_test_budget:292, plus eval_add, integrable_predecessor_moment_sq, measurable_eval_coe, momentArgument, pair_collision_upper, real_algebraic_sum_two_rotations, exists_simultaneous_moment_parameter) and ConditionalSpectrum is NOT in the 9-module closure of its three imports. Command: python3 supervisor/simplify-lean/.scratch/check_scope.py (0.3 s, rc 0).",
+    "GRADE [C] Public statements are byte-identical to the originals: the theorem statements extracted from Wrappers.lean compare equal, after whitespace normalisation, to ConditionalSpectrum.lean:310 and ConditionalLimits.lean:385, with the only diff being the script's own trailing ':= by' strip. Statement delta = empty.",
+    "GRADE [C] Import direction is acyclic: ConditionalLimits imports ConditionalSpectrum (True); ConditionalSpectrum imports ConditionalLimits (False). Plan's placement (core in ConditionalSpectrum, ambient wrapper in ConditionalLimits) is valid.",
+    "GRADE [R] No Measurable S is needed, and this is a property of the consumer, not luck: FiniteModule.common_fiber_contradiction (ConditionalSelection.lean:259-271) requires hHp/hHm measurable for Hp/Hm only, and hIp/hIm Integrable are supplied by happrox. Ap/Am carry all occurrences of H i (S x). Cited at the signature.",
+    "GRADE [R] harc's 'Measure Circle' cannot resolve differently across the three files: Mathlib/Analysis/Complex/Circle.lean declares no MeasurableSpace or BorelSpace for Circle, so the six identical local 'borel Circle' declarations are the only candidates. Verified by rg against the pinned mathlib source.",
+    "GRADE [R] hwild is carried as a hypothesis at P and is neither derived nor smuggled; at P := fun x => q (p x) it delta-reduces to the finite statement's differenceLaw (mu.map (q o p)), at P := q it is the ambient one. No weak-mixing, (W) or tower assumption is introduced.",
+    "GRADE [C] PLAN section 6 miscounts the transplant: 6 rewritten occurrences + 2 deleted bindings = 8 edit sites, not 7 (its own item 7 says 4 occurrences in the two change lines). Documentation defect only; the delivered source rewrites consistently.",
+    "GRADE [C] Verified pins on this VM: Lean 4.34.1 commit 5045d0056413266e57c625dcd7c365b10e377c52 (lean --version) and Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612 (git rev-parse HEAD). Both match the brief exactly.",
+    "GRADE [C] Root-closed closure of the two theorem modules is 14 OAI modules / 7,533 lines, with per-module sha256 and a topological compile order; a change to the core at position 10 invalidates positions 11-14 (2,338 lines), a wrapper-only change invalidates position 14 only. Command: python3 supervisor/simplify-lean/.scratch/closure_order.py.",
+    "RETAINED from block 1: census of 2038 declarations; rigidity-half textual duplication capped at ~70 lines; the two 150-line contradiction theorems are the only large redundancy.",
+    "RETAINED from the recovery pass: 'have : ErgodicVAdd G Y (mu.map q)' is a local instance (letI), so the pair/triple energy lemmas cannot be thinned by deleting it (compiler-refuted, rc 1)."
+  ],
+  "conjectures": [
+    "The merge is mechanically sound: the exported statements do not change, so the only build risks are alias transparency (abbrev vs def), the IsProbabilityMeasure route, and Iff.rfl at S := id. Ranked in REVIEW section F9 with the test that settles each.",
+    "Because the core accepts any measurable P (not only q or q o p), it is strictly more general than either original; that generality is free and is the only mathematical content added.",
+    "A future 'twin pair' hunt should expect this shape (same conclusion, hypotheses differing by a read-out map) rather than textual duplication: the census shows textual duplication in this tree is thin."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/PACKET-encoding-core.md  <-- LOCAL build/validation packet (dependency list, manifest, compile order, signatures, axiom commands)",
+    "supervisor/simplify-lean/REVIEW-encoding-core.md  <-- independent review, findings F1-F10 with citations",
+    "supervisor/simplify-lean/snapshots/enc-feb15b727d97c29c/  <-- frozen snapshot (EncodingCore.lean, Wrappers.lean, PLAN.md, MANIFEST.md) + SHA256SUMS.txt + FROZEN_AT.txt",
+    "supervisor/simplify-lean/.scratch/check_scope.py, .scratch/closure_order.py, .scratch/closure.json, .scratch/order.txt",
+    "supervisor/simplify-lean/CENSUS.md, supervisor/simplify-lean/EnergyShort.log, EnergyShort-diagnosis.txt"
+  ],
+  "tests_run": [
+    "python3 supervisor/simplify-lean/.scratch/check_scope.py -> rc 0, 0.3 s: import-direction facts, 9-module closure, 15 unreachable identifiers (13 real; 'apply' and 'comp' are a tactic and Function.comp false positives).",
+    "python3 supervisor/simplify-lean/.scratch/closure_order.py -> rc 0, prints 14 modules / 7,533 lines with sha256 and topological order; matches the packet's table.",
+    "statement-diff script (inline, this block) comparing originals to Wrappers.lean -> identical modulo whitespace for both roots.",
+    "rg over the frozen .lean files for sorry/admit/axiom/native_decide/implemented_by/opaque -> no match.",
+    "lean --version and git -C .scratch/mathlib4 rev-parse HEAD -> match the brief's pins.",
+    "NO Lean build was run this block (instruction). Every Lean claim in the packet is labelled UNCOMPILED."
+  ],
+  "failed_routes": [
+    "Not attempted: building the merged core (instruction: no Lean/lake builds). Also not attempted: re-implementing the merge, which is the architecture worker's assigned task; this block reviews and specifies, it does not duplicate.",
+    "EncodingCore.lean as a standalone preview module is a dead end as packaged (F1). Repairing it by importing ConditionalSpectrum is only valid if the module is NOT then also merged into that file; the clean options are a preview module importing ConditionalSpectrum, or copying the two helper lemmas in.",
+    "The earlier pair/triple-energy inlining route stays closed (compiler-refuted in the recovery pass)."
+  ],
+  "next_step": "ONE verification step, to be run by whoever holds the serial build queue: apply the integration patch (core inside ConditionalSpectrum.lean immediately before finite_uniform_precision_contradiction; the two bodies replaced by wrapper calls; ambient alias kept in ConditionalLimits.lean), then run the FULL 83-module build with the pinned toolchain and, only if rc 0, the CheckCore.lean axiom dump in PACKET section 5. Pass condition: 83/83 rc 0, both roots plus uniform_precision_contradiction depend on exactly [propext, Classical.choice, Quot.sound], and the statement diff of section 4 still empty. Do NOT accept a 14-module-only build: alias transparency reaches downstream declarations.",
+  "owned_agents": [
+    {
+      "swarm": "smwfy8rae",
+      "members": 3,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "state": "stopped",
+      "accepted": 0,
+      "note": "stopped in block 1; not restarted (this block is single-agent by instruction). Partial artifacts remain in .ultramath/smwfy8rae/m{1,2,3}/; m1/HitA.lean uncompiled."
+    }
+  ],
+  "escalation": {
+    "obstacle": "Not a mathematical escalation this block. The single open item is mechanical: confirm the merged core compiles with identical public statements and the standard axiom set, which requires the serial Lean queue that this block was told not to use.",
+    "definitions": "EncodingApproximationAt (see PACKET section 3 for the exact Lean statement); the two roots finite_uniform_precision_contradiction and ambient_uniform_precision_contradiction.",
+    "hypotheses": "Unchanged from the originals; hwild stays a hypothesis at P, harc stays a hypothesis.",
+    "attempted_approaches": "Read-and-diff the two 153-line bodies (architecture worker); independent statement diff, import-closure and identifier-scope analysis (this block). No elaboration attempted.",
+    "expected_useful_output": "A build log with rc 0 over 83 modules, the three #print axioms lines, and the two #check outputs showing the same Measure Circle binder as before the change."
+  },
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "packet_paths": [
+      "supervisor/simplify-lean/PACKET-encoding-core.md",
+      "supervisor/simplify-lean/REVIEW-encoding-core.md",
+      "supervisor/simplify-lean/snapshots/enc-feb15b727d97c29c/SHA256SUMS.txt"
+    ],
+    "next_verification_step": "Apply the integration patch and run the full 83-module build with the pinned toolchain (Lean 4.34.1 @5045d005..., Mathlib @d13f23b...), then the CheckCore.lean axiom dump; pass = 83/83 rc 0 AND all three axioms exactly [propext, Classical.choice, Quot.sound] AND the section-4 statement diff still empty."
+  }
+}

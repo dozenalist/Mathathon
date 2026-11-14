@@ -1,0 +1,15 @@
+OAI/MeasureTheory/CompactFactors/Functions.lean:53:18: error: Invalid argument name `K` for function
+OAI/MeasureTheory/CompactFactors/Functions.lean:53:44: error: Invalid argument name `K` for function
+OAI/MeasureTheory/CompactFactors/Functions.lean:54:8: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+X : Type u_2
+Y : Type u_3
+inst✝¹ : MeasurableSpace X
+inst✝ : MeasurableSpace Y
+x✝ : Sort u_4
+Compact : x✝
+μ : Measure X
+q : X → Y
+H : X → ℂ
+hH : sorry
+⊢ sorry

@@ -1,0 +1,20 @@
+.ultramath/smwfwi7rh/m14/lean/SectorGadget.lean:36:28: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+.ultramath/smwfwi7rh/m14/lean/SectorGadget.lean:59:15: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+.ultramath/smwfwi7rh/m14/lean/SectorGadget.lean:53:47: warning: Variable name `hcd` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hcd
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+.ultramath/smwfwi7rh/m14/lean/SectorGadget.lean:73:47: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+.ultramath/smwfwi7rh/m14/lean/SectorGadget.lean:90:24: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+.ultramath/smwfwi7rh/m14/lean/SectorGadget.lean:97:17: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+.ultramath/smwfwi7rh/m14/lean/SectorGadget.lean:149:67: warning: This simp argument is unused:
+  Complex.mul_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.sub_im, Complex.add_im, Complex.mul_im, Complex.ofReal_im, Complex.ofReal_re, Complex.I_re,
+    Complex.I_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+.ultramath/smwfwi7rh/m14/lean/SectorGadget.lean:267:32: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead

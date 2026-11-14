@@ -1,0 +1,500 @@
+{
+"OAI.Analysis.PlaneSpectrum.Basic": {
+"ok": true,
+"err": "",
+"secs": 5.9,
+"t": 1794638885.1012855
+},
+"OAI.Analysis.PlaneSpectrum.Characters": {
+"ok": true,
+"err": "",
+"secs": 3.5,
+"t": 1794638888.646303
+},
+"OAI.Analysis.PlaneSpectrum.Fourier": {
+"ok": true,
+"err": "",
+"secs": 7.2,
+"t": 1794638895.8958757
+},
+"OAI.Geometry.PlaneColoring.Coloring": {
+"ok": true,
+"err": "",
+"secs": 3.1,
+"t": 1794638898.9962308
+},
+"OAI.Analysis.PlaneSpectrum.CircleDecay": {
+"ok": true,
+"err": "",
+"secs": 3.9,
+"t": 1794638902.853526
+},
+"OAI.Geometry.PlaneColoring.WeakColoring": {
+"ok": true,
+"err": "",
+"secs": 3.1,
+"t": 1794638905.9486701
+},
+"OAI.Geometry.PlaneColoring.Compactness": {
+"ok": true,
+"err": "",
+"secs": 5.0,
+"t": 1794638910.967304
+},
+"OAI.Analysis.PlaneSpectrum.CircleOperator": {
+"ok": true,
+"err": "",
+"secs": 6.0,
+"t": 1794638916.9212475
+},
+"OAI.Analysis.PlaneSpectrum.InvariantMean": {
+"ok": true,
+"err": "",
+"secs": 5.9,
+"t": 1794638922.80171
+},
+"OAI.Analysis.PlaneSpectrum.Multipliers": {
+"ok": true,
+"err": "",
+"secs": 6.0,
+"t": 1794638928.8230343
+},
+"OAI.Analysis.PlaneSpectrum.FourierTests": {
+"ok": true,
+"err": "",
+"secs": 3.4,
+"t": 1794638932.2218978
+},
+"OAI.Analysis.PlaneSpectrum.SmallArcs": {
+"ok": true,
+"err": "",
+"secs": 3.2,
+"t": 1794638935.468621
+},
+"OAI.Analysis.PlaneSpectrum.PhaseEncoding": {
+"ok": true,
+"err": "",
+"secs": 3.2,
+"t": 1794638938.65517
+},
+"OAI.Analysis.PlaneSpectrum.PhaseCollision": {
+"ok": true,
+"err": "",
+"secs": 4.0,
+"t": 1794638942.606861
+},
+"OAI.MeasureTheory.CompactFactors.ConditionalSelection": {
+"ok": true,
+"err": "",
+"secs": 3.7,
+"t": 1794638946.3110008
+},
+"OAI.Analysis.PlaneSpectrum.ConditionalSpectrum": {
+"ok": true,
+"err": "",
+"secs": 7.1,
+"t": 1794638953.4349918
+},
+"OAI.MeasureTheory.CompactFactors.Amenability": {
+"ok": true,
+"err": "",
+"secs": 4.1,
+"t": 1794638957.5121741
+},
+"OAI.MeasureTheory.CompactFactors.Centers": {
+"ok": true,
+"err": "",
+"secs": 3.6,
+"t": 1794638961.1318448
+},
+"OAI.MeasureTheory.CompactFactors.RelativeCenters": {
+"ok": true,
+"err": "",
+"secs": 4.1,
+"t": 1794638965.2697036
+},
+"OAI.MeasureTheory.CompactFactors.Approximation": {
+"ok": true,
+"err": "",
+"secs": 4.4,
+"t": 1794638969.6791153
+},
+"OAI.MeasureTheory.CompactFactors.ConditionalLimits": {
+"ok": true,
+"err": "",
+"secs": 7.8,
+"t": 1794638977.4345224
+},
+"OAI.MeasureTheory.CompactFactors.Kernels": {
+"ok": true,
+"err": "",
+"secs": 4.6,
+"t": 1794638982.044737
+},
+"OAI.MeasureTheory.CompactFactors.BoundedFunctions": {
+"ok": true,
+"err": "",
+"secs": 4.5,
+"t": 1794638986.5881698
+},
+"OAI.MeasureTheory.CompactFactors.RelativeProducts": {
+"ok": true,
+"err": "",
+"secs": 6.1,
+"t": 1794638992.6575494
+},
+"OAI.MeasureTheory.CompactFactors.Separability": {
+"ok": true,
+"err": "",
+"secs": 6.8,
+"t": 1794638999.4586139
+},
+"OAI.MeasureTheory.CompactFactors.AlgebraModels": {
+"ok": true,
+"err": "",
+"secs": 7.8,
+"t": 1794639007.2423568
+},
+"OAI.MeasureTheory.CompactFactors.Functions": {
+"ok": true,
+"err": "",
+"secs": 5.5,
+"t": 1794639012.7373188
+},
+"OAI.MeasureTheory.CompactFactors.Factors": {
+"ok": true,
+"err": "",
+"secs": 5.4,
+"t": 1794639018.1440136
+},
+"OAI.MeasureTheory.CompactFactors.Stationary": {
+"ok": true,
+"err": "",
+"secs": 4.1,
+"t": 1794639022.2215257
+},
+"OAI.Analysis.PlaneSpectrum.Representations": {
+"ok": true,
+"err": "",
+"secs": 9.2,
+"t": 1794639031.3758554
+},
+"OAI.Analysis.PlaneSpectrum.Energy": {
+"ok": true,
+"err": "",
+"secs": 5.5,
+"t": 1794639036.9115186
+},
+"OAI.Analysis.PlaneSpectrum.NumberFields": {
+"ok": true,
+"err": "",
+"secs": 4.3,
+"t": 1794639041.1643386
+},
+"OAI.Analysis.PlaneSpectrum.Selections": {
+"ok": true,
+"err": "",
+"secs": 5.1,
+"t": 1794639046.2361085
+},
+"OAI.Analysis.PlaneSpectrum.RadialEnergy": {
+"ok": true,
+"err": "",
+"secs": 12.7,
+"t": 1794639058.9021206
+},
+"OAI.Analysis.PlaneSpectrum.SpectralMeasure": {
+"ok": true,
+"err": "",
+"secs": 13.4,
+"t": 1794639072.29285
+},
+"OAI.Analysis.PlaneSpectrum.Ergodicity": {
+"ok": true,
+"err": "",
+"secs": 7.3,
+"t": 1794639079.57687
+},
+"OAI.Geometry.PlaneColoring.Expansion": {
+"ok": true,
+"err": "",
+"secs": 4.3,
+"t": 1794639083.9165373
+},
+"OAI.Geometry.PlaneColoring.BinaryDynamics": {
+"ok": true,
+"err": "",
+"secs": 5.6,
+"t": 1794639089.5002787
+},
+"OAI.Geometry.PlaneColoring.CircleMaps": {
+"ok": true,
+"err": "",
+"secs": 4.2,
+"t": 1794639093.7151194
+},
+"OAI.Geometry.PlaneColoring.CircleTransport": {
+"ok": true,
+"err": "",
+"secs": 5.0,
+"t": 1794639098.7092977
+},
+"OAI.Geometry.PlaneColoring.Transitions": {
+"ok": true,
+"err": "",
+"secs": 3.5,
+"t": 1794639102.1607482
+},
+"OAI.Geometry.PlaneColoring.Palettes": {
+"ok": true,
+"err": "",
+"secs": 2.9,
+"t": 1794639105.0735445
+},
+"OAI.Geometry.PlaneColoring.PaletteDensity": {
+"ok": true,
+"err": "",
+"secs": 3.8,
+"t": 1794639108.8365014
+},
+"OAI.Geometry.PlaneColoring.PaletteTransport": {
+"ok": true,
+"err": "",
+"secs": 3.4,
+"t": 1794639112.2560303
+},
+"OAI.Geometry.PlaneColoring.Rigidity": {
+"ok": true,
+"err": "",
+"secs": 4.3,
+"t": 1794639116.5609474
+},
+"OAI.Geometry.PlaneColoring.BinaryPalettes": {
+"ok": true,
+"err": "",
+"secs": 4.6,
+"t": 1794639121.1598003
+},
+"OAI.Geometry.PlaneColoring.States": {
+"ok": true,
+"err": "",
+"secs": 5.4,
+"t": 1794639126.6024237
+},
+"OAI.Geometry.PlaneColoring.BoundaryTrace": {
+"ok": true,
+"err": "",
+"secs": 4.2,
+"t": 1794639130.7783396
+},
+"OAI.Geometry.PlaneColoring.AngularBoundary": {
+"ok": true,
+"err": "",
+"secs": 17.6,
+"t": 1794639148.3443034
+},
+"OAI.Geometry.PlaneColoring.Exclusion": {
+"ok": true,
+"err": "",
+"secs": 5.5,
+"t": 1794639153.8895783
+},
+"OAI.Geometry.PlaneColoring.FourContinuity": {
+"ok": true,
+"err": "",
+"secs": 3.0,
+"t": 1794639156.8648593
+},
+"OAI.Geometry.PlaneColoring.FourTransport": {
+"ok": true,
+"err": "",
+"secs": 3.4,
+"t": 1794639160.2554777
+},
+"OAI.Geometry.PlaneColoring.Accumulation": {
+"ok": true,
+"err": "",
+"secs": 3.0,
+"t": 1794639163.2142756
+},
+"OAI.Geometry.PlaneColoring.Assembly": {
+"ok": true,
+"err": "",
+"secs": 2.5,
+"t": 1794639165.6797495
+},
+"OAI.Geometry.PlaneColoring.Basic": {
+"ok": true,
+"err": "",
+"secs": 2.4,
+"t": 1794639168.1089983
+},
+"OAI.Geometry.PlaneColoring.BorelTransfer": {
+"ok": true,
+"err": "",
+"secs": 4.8,
+"t": 1794639172.926381
+},
+"OAI.Geometry.PlaneColoring.FiveSupport": {
+"ok": true,
+"err": "",
+"secs": 3.2,
+"t": 1794639176.1447544
+},
+"OAI.Geometry.PlaneColoring.CyclicCore": {
+"ok": true,
+"err": "",
+"secs": 3.0,
+"t": 1794639179.1356652
+},
+"OAI.Geometry.PlaneColoring.DiskAverages": {
+"ok": true,
+"err": "",
+"secs": 3.3,
+"t": 1794639182.479224
+},
+"OAI.Geometry.PlaneColoring.PlanarCovers": {
+"ok": true,
+"err": "",
+"secs": 3.8,
+"t": 1794639186.3013742
+},
+"OAI.Geometry.PlaneColoring.GraphRealization": {
+"ok": true,
+"err": "",
+"secs": 4.6,
+"t": 1794639190.8588686
+},
+"OAI.Geometry.PlaneColoring.Interfaces": {
+"ok": true,
+"err": "",
+"secs": 4.3,
+"t": 1794639195.1769018
+},
+"OAI.Geometry.PlaneColoring.Moser": {
+"ok": true,
+"err": "",
+"secs": 13.0,
+"t": 1794639208.2053373
+},
+"OAI.Geometry.PlaneColoring.Sectors": {
+"ok": true,
+"err": "",
+"secs": 3.7,
+"t": 1794639211.8909233
+},
+"OAI.Geometry.PlaneColoring.ContinuumLimits": {
+"ok": true,
+"err": "",
+"secs": 3.1,
+"t": 1794639214.9823196
+},
+"OAI.Geometry.PlaneColoring.DiskExtension": {
+"ok": true,
+"err": "",
+"secs": 4.3,
+"t": 1794639219.3171806
+},
+"OAI.Geometry.PlaneColoring.GraphCuts": {
+"ok": true,
+"err": "",
+"secs": 3.3,
+"t": 1794639222.6181488
+},
+"OAI.Geometry.PlaneColoring.HoleApproximation": {
+"ok": true,
+"err": "",
+"secs": 3.7,
+"t": 1794639226.2811325
+},
+"OAI.Geometry.PlaneColoring.GraphPatches": {
+"ok": true,
+"err": "",
+"secs": 3.4,
+"t": 1794639229.639715
+},
+"OAI.Geometry.PlaneColoring.FullApproximation": {
+"ok": true,
+"err": "",
+"secs": 4.0,
+"t": 1794639233.6436884
+},
+"OAI.Geometry.PlaneColoring.Mesh": {
+"ok": true,
+"err": "",
+"secs": 3.1,
+"t": 1794639236.7286716
+},
+"OAI.Geometry.PlaneColoring.Five": {
+"ok": true,
+"err": "",
+"secs": 2.7,
+"t": 1794639239.4645855
+},
+"OAI.Geometry.PlaneColoring.Lattice": {
+"ok": true,
+"err": "",
+"secs": 2.7,
+"t": 1794639242.129729
+},
+"OAI.Geometry.PlaneColoring.Metric": {
+"ok": true,
+"err": "",
+"secs": 2.7,
+"t": 1794639244.849659
+},
+"OAI.Geometry.PlaneColoring.Covering": {
+"ok": true,
+"err": "",
+"secs": 3.5,
+"t": 1794639248.3888586
+},
+"OAI.Geometry.PlaneColoring.MeasurableAssembly": {
+"ok": true,
+"err": "",
+"secs": 2.5,
+"t": 1794639250.9318874
+},
+"OAI.Geometry.PlaneColoring.MeasurableProper": {
+"ok": true,
+"err": "",
+"secs": 2.6,
+"t": 1794639253.5410938
+},
+"OAI.Geometry.PlaneColoring.Seven": {
+"ok": true,
+"err": "",
+"secs": 2.6,
+"t": 1794639256.093216
+},
+"OAI.Geometry.PlaneColoring.Chromatic": {
+"ok": true,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/Chromatic.lean:40:8: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n'OAI.Problem160.chromaticNumber_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'OAI.Problem160.six_le_planeChromaticNumber' depends on axioms: [propext, Classical.choice, Quot.sound]\n'OAI.Problem160.not_properColoring_five' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+"secs": 2.5,
+"t": 1794639258.6127312
+},
+"OAI.Geometry.PlaneColoring.ConnectedUnitFree": {
+"ok": true,
+"err": "",
+"secs": 2.5,
+"t": 1794639261.1074674
+},
+"OAI.Geometry.PlaneColoring.Converse": {
+"ok": true,
+"err": "",
+"secs": 2.5,
+"t": 1794639263.6517165
+},
+"OAI.Geometry.PlaneColoring.NullSetRobust": {
+"ok": true,
+"err": "",
+"secs": 2.6,
+"t": 1794639266.2882147
+},
+"OAI.Geometry.PlaneColoring.Transfer": {
+"ok": true,
+"err": "",
+"secs": 2.5,
+"t": 1794639268.7569351
+}
+}

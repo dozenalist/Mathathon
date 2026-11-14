@@ -1,0 +1,37 @@
+{
+  "updated_utc": "2026-11-14T15:26:00Z",
+  "status": "completed_block",
+  "summary": "Analysis-only block. Corrected GLUING-CORRECTED.md: the N/N row is unconstrained only for k >= 3, since at k = 2 a type-N vertex is pinned to the single other colour, so two N-vertices are forced EQUAL (E/E, E/N and F* rows unchanged). Then wrote PREREG-S2.md: the 60-degree rotation of the Moser spindle about its hub, an isometry with a fixed point, hence not a translation. Proved exactly in Q(sqrt3,sqrt11): the overlap is exactly {K, A1, B-}, non-clique since |A1 - B-| = 1/sqrt3 exactly while both are unit from K, and at least one cross edge exists - the rotated C1 at unit distance from A1, because 4 - 2*sqrt3*cos30 = 1 exactly. Stated the colouring obligation (three overlap equations sharing one boundary datum, two internal inequalities, cross-edge inequalities to be enumerated in 49 exact comparisons), the pre-run falsifiers, and the limit: verifiability, fixed-point isometry and proved overlap are justified, but not improved odds of a forced pair - at 11 vertices nothing can force at k = 5. Added a separation trichotomy: a family that separates a pair cannot force it equal, which explains the closed seed structurally and requires any new seed to leave a nonedge unseparated.",
+  "verified_results": [
+    "GRADE [P] Correction to GLUING-CORRECTED.md: at k = 2 a type-N vertex has R_a[alpha] = {beta} with beta the other colour, so two N-vertices share the same singleton and are forced EQUAL; the N/N row therefore requires k >= 3. The E/E (forced equal), E/N (forced different) and all F* rows (nothing) are unchanged at k = 2.",
+    "GRADE [P] Separation trichotomy: if some proper k-colouring of G gives a and b different colours, then a and b are not a forced-equal pair at k; hence a graph whose colouring family separates every nonedge has no forced-equal pair at k. Applied to the closed seed (34 five-colourings separating all 1048 vertices and all 543141 nonedges, cited externally), the absence of a forced-equal pair is structural, not accidental, and the design constraint for any new seed is that some nonedge must remain unseparated.",
+    "GRADE [P] PREREG-S2 overlap, proved exactly: with rho the rotation by 60 degrees about the origin, rho fixes the hub K, sends the apex A2 (radius 1, angle -30) to A1 (radius 1, angle 30) and sends B+ (radius 1, angle theta_c - 30) to B- (radius 1, angle theta_c + 30) where cos theta_c = 5/6, and no other vertex image lands on a vertex. So the overlap is exactly {K, A1, B-}: three points.",
+    "GRADE [P] The overlap is non-clique with an exact metric: |K - A1| = |K - B-| = 1, while |A1 - B-| = 2 sin(theta_c/2) = 1/sqrt3 exactly (since sin(theta_c/2) = sqrt((1-5/6)/2) = 1/(2 sqrt3)); so the overlap pattern is the path A1 - K - B-, which is precisely the non-clique case GLUING-CORRECTED.md section 4 identifies as informative.",
+    "GRADE [P] At least one cross edge, proved: |rho(C1) - A1|^2 = 3 + 1 - 2*sqrt3*cos(30 degrees) = 4 - 3 = 1 exactly, so rho(C1) is at unit distance from A1. General reusable rule for the worker's enumeration: radii sqrt3 and 1 with angle difference 30 degrees always give a unit pair.",
+    "GRADE [P] The compatibility obligation, stated: a colouring of S2 is a pair of proper colourings of M agreeing on the three overlap points (one common boundary datum), subject to c(K) != c(A1), c(K) != c(B-) from the overlap's own edges, c(A1) free against c(B-) because |A1 - B-| = 1/sqrt3, plus the cross-edge inequalities. Only one cross edge is proved by hand; the full set needs 49 exact comparisons in Q(sqrt3,sqrt11), which is what the graph worker's slot should report.",
+    "GRADE [P] Abstract versus realizable: the abstract gadget K5 with one edge subdivided by a new vertex is 5-colourable, its plus-edge is not, so the pair is forced equal at k = 5 - but it contains a K4, and no four planar points are pairwise at unit distance, so that gadget has no induced unit-distance realization. This is why a realizable forcing gadget must build its exclusions from triangles and cross-copy constraints rather than from cliques."
+  ],
+  "conjectures": [
+    "S2 at 11 vertices will be 5-colourable with a separating colouring family, so it will have no forced-equal pair; the informative outcome would then be that a non-clique three-point overlap alone supplies no forcing at k = 5, redirecting effort to mechanisms that supply four simultaneous exclusions at planar cost.",
+    "The separation trichotomy is the sharpest available filter for seed design: it turns 'no forced pair' into a checkable property of the colouring family (some nonedge unseparated), which is cheaper to test than scanning all nonedges for forcing.",
+    "A realizable k = 5 forced-equality gadget needs four exclusions for the pair; two can come from the plane (common neighbours of a non-adjacent pair, capped at 2), so any successful design must supply two more through cross edges, which is exactly the channel S2 begins to calibrate."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/PREREG-S2.md",
+    "supervisor/solve-geometry/GLUING-CORRECTED.md",
+    "supervisor/solve-geometry/SEED-DESIGN-TAU.md",
+    "supervisor/solve-geometry/ARTIFACT-HASHES.txt",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "None: analysis-only block by instruction; the graph worker holds the only compute slot. All arithmetic in PREREG-S2.md (the vertex-by-vertex rotation table, |A1 - B-| = 1/sqrt3, |rho(C1) - A1| = 1) was done by hand in Q(sqrt3,sqrt11) and graded [P]. The counts 1048 vertices / 34 colourings / 543141 separated nonedges are cited from the supervisor's verification as [C] and not re-derived here."
+  ],
+  "failed_routes": [
+    "The translate-glued Heule seed is closed: by the separation trichotomy a fully separating colouring family admits no forced-equal pair, so no amount of cross-edge counting on that union could have produced one.",
+    "The abstract K5-with-subdivided-edge gadget is recorded as unrealizable: it needs a K4, and the plane has no four pairwise unit-distance points.",
+    "Not attempted: any run, any solver, any search over translates or rotations, any claim that S2 forces a pair or is non-colourable, any palette or plane-level conclusion.",
+    "Not justified and explicitly disclaimed: that S2 improves the odds of a forced pair. It is a calibration object and a check of my own arithmetic, not a forcing candidate."
+  ],
+  "next_step": "If the graph worker takes S2: build V(M) and its 60-degree rotation about the hub in Q(sqrt3,sqrt11), assert the overlap is exactly {K, A1, B-} with |A1-B-| = 1/sqrt3, enumerate the cross edges (49 exact comparisons, expect at least rho(C1)-A1), report the joint colouring count at k = 4 and k = 5 and whether the colouring family separates all nonedges; that last bit decides the falsifier in PREREG-S2.md section 5.",
+  "escalation": null
+}

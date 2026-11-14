@@ -1,0 +1,49 @@
+{
+ "updated_utc": "2026-11-14T17:00:07Z",
+ "status": "completed_block",
+ "summary": "Block 21 (clock 2026-11-14T17:00:07Z), source audit only, no compute. A2-AUDIT.md: the three-centre proof of States.lean:704 is SOUND at paper level. Statement is identical to strict_state_no_unit_support for arbitrary k, keeping 'no positivity of B' and adding no FourCenter/FiveCenter. Each of the five analytic premises exists with the needed hypotheses: state_support_avoiding_trace (BoundaryTrace:24, general in k, takes RealState plus support membership) gives traces at y and z avoiding K; avoiding_trace_palette (:53) gives the two non-containment facts; palette_neighbor_disjoint (FiveSupport:23, general in k) gives the three disjointness facts, the y-z one via direction_exists (WeakColoring:145) and the unit triangle. The finite-label forcing is correct for arbitrary label cardinality with no J-K disjointness. Three mechanical ingredients are present and precedented (direction_exists, liftPalette-to-palette, angularMeasure-to-volume as in FiveSupport:128-137). Interface claim verified: Interfaces:277 is the single call site and hg gives no FourCenter. Z_K closedness contract checked: compact TraceVector via isCompact_univ, graph closed via isClosed_traceGraph (Compactness:284, pattern at :292), zero conditions closed via traceCode_tendsto_iff; this covers FourContinuity:441 with no A_n-L1 input. Consumer measurement: States:704 has two fixed-state consumers (both replaceable), but States:683 keeps consumer FourContinuity:395, so NO global States deletion. Lemma 6.7 retained. No machine verification.",
+ "verified_results": [
+  "[read] Statement identity: A2's target is States.lean:704 verbatim for arbitrary k, with hlabels : forall i, i notin J union K iff i = X, hA/hB RealState, hp : 0 < volume A, two support memberships in the B-state, and conclusion ||direction b - direction d|| != 1; no positivity of B, no FourCenter/FiveCenter.",
+  "[read] RealState (States.lean:92) = MeasurableSet A and forall i in J, A <= ae liftPalette x i, so 't in A implies J subset palette x t' is exactly the finite ae_all_iff step A2 describes.",
+  "[read] state_support_avoiding_trace (BoundaryTrace.lean:24) is general in k and takes (hw) {x} {A} {J} (hA : RealState hc x A J) {a} (ha : a in (volume.restrict A).support), concluding a trace at x + direction a vanishing on J - exactly A2's step 1, applied twice.",
+  "[read] avoiding_trace_palette (BoundaryTrace.lean:53) takes IsTrace and the vanishing condition and returns ae not palette x t subset J - exactly A2's step 2.",
+  "[read] palette_neighbor_disjoint (FiveSupport.lean:23) is general in k and gives ae Disjoint (palette (x + direction a) t) (palette x t); the y-z use needs direction alpha = z - y, supplied by direction_exists (WeakColoring.lean:145) since ||z - y|| = 1. All three centres are fixed before taking exceptional sets, so the five conull statements intersect.",
+  "[audited here] The finite-label fact: from i in Q minus K, Q disjoint P and J subset P we get i notin J, hence i in (J union K) complement = {X}; valid for any finite label type, no cardinality bound, no J-K disjointness.",
+  "[read] Interface application: Interfaces.lean:266 interfaceStateSupport_no_unit has hypotheses only hw, hg (ae fourGroup (fourState x t) subset palette x t) and s != 0 - no FourCenter; its proof's only strict_state call is at :277 with arguments that are exactly A2's hypothesis list, so the replacement is a drop-in. The FourTransport:218 route is not independent: it takes FourCenter and its downstream calls States:683 at FourContinuity:452.",
+  "[argued here] Z_K = {x | exists b, IsTrace c hc x b and forall i in K, traceValue b i = 0} is closed: TraceVector k is compact (isCompact_univ, the device used inside state_support_avoiding_trace), the graph is closed (isClosed_traceGraph, Compactness.lean:284, with the mem_of_tendsto pattern already at :292), and the zero conditions are closed preimages under the continuous maps b |-> traceValue b i (traceCode_tendsto_iff).",
+  "[argued here] The extension yields FourContinuity.lean:441 four_support_sequence_no_unit: y_n := x_n + direction b_n and z_n := x_n + direction d_n lie in Z_K by applying state_support_avoiding_trace at each x_n, so their limits y, z lie in Z_K by closedness; then A2's steps 2-5 run at the fixed triple x, y, z with the limit state's RealState and its positivity. No A_n-L1 input and no strict_state_sequence_false.",
+  "[measured here] Consumers: strict_state_no_unit_support <- FiveSupport.lean:144 and Interfaces.lean:277 (both fixed-state); strict_state_sequence_false <- FourContinuity.lean:395 and :452; strict_state_sequence_local_false only inside States. Hence no global States deletion is justified."
+ ],
+ "conjectures": [
+  "A2 plus the Z_K extension would leave States:704 unused and halve the consumers of States:683, but FourContinuity:395 keeps :683 alive; a full retirement would need that consumer handled too.",
+  "The Z_K trick is the reusable idea: support membership at a limit is not available, but trace existence is, and it is closed under limits - so the fixed-state argument can be run at the limit once the two limit points are shown to be K-avoiding trace centres."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/A2-AUDIT.md (sha 6f91c209a593c9c4; statement match, step-by-step audit with line citations, retained vs removed dependencies, interface drop-in check, Z_K closedness contract and extension to FourContinuity:441, consumer measurement, grades)",
+  "supervisor/simplify-architecture/FIVE-CYCLE-ARGUMENT.md (block 20: Theorem T, five-cycle branch, contract C0-C4) - unchanged",
+  "supervisor/simplify-architecture/MANUSCRIPT-LEMMA67.txt (verbatim Lemma 6.7, p.41) - unchanged",
+  "read-only inputs: lean/OAI/Geometry/PlaneColoring/{States.lean 92,547,683,704; BoundaryTrace.lean 24,53; FiveSupport.lean 23,128-137,144; Interfaces.lean 266,277; FourContinuity.lean 395,441,452; FourTransport.lean 218; Compactness.lean 284,292; WeakColoring.lean 145}",
+  "supervisor/simplify-architecture/encoding-core/integration/ (frozen R4 d26d569088faea89... / 24f89dd33533a0f6..., untouched)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "rg/sed reads only (RealState, BoundaryTrace 20-60, Interfaces 262-300, FourContinuity 436-460, Compactness/WeakColoring trace lemmas, consumer grep)",
+   "outcome": "all cited statements captured verbatim; consumer counts measured."
+  },
+  {
+   "cmd": "date -u",
+   "outcome": "2026-11-14T17:00:07Z"
+  },
+  {
+   "cmd": "no build, no compute, no agents, no solver runs; only files under this supervisor directory written",
+   "outcome": "audit only, per policy."
+  }
+ ],
+ "failed_routes": [
+  "Rejected as non-independent (confirming A2): the FourTransport:218 four_support_no_sixty route assumes FourCenter, which Interfaces' hg does not supply, and its downstream calls strict_state_sequence_false at FourContinuity:452.",
+  "Not claimed: no global States deletion (FourContinuity:395 still consumes States:683); no analysis-free proof; no source-order refactor necessity judgement.",
+  "Previously retracted and untouched: the null dense-set support model; the 'no proper weakening' claim; the abstract countermodels' applicability."
+ ],
+ "next_step": "Validate A2 and the Z_K extension in Lean, in this order: (1) the fixed-state theorem as a standalone lemma in a private module importing BoundaryTrace and FiveSupport, replacing States:704's call at Interfaces:277; (2) the Z_K closedness lemma plus the limit argument, aimed at FourContinuity:441. Then audit the remaining consumer FourContinuity:395 before any statement about retiring States:683. Lemma 6.7 and the five-cycle exposition stay untouched.",
+ "escalation": null
+}

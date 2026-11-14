@@ -1,0 +1,48 @@
+{
+ "note": "candidate only; UNCOMPILED; no cloud build",
+ "original_sha256": {
+  "lean/OAI/MeasureTheory/CompactFactors/Kernels.lean": "8665ae62def8d70befc2929f9ae787f15b68e5c007a95c3257c011823059fe89",
+  "lean/OAI/Analysis/PlaneSpectrum/Fourier.lean": "315079396f8612ab5dea11fe22913e20a73e780862fba140148dd57ad4655a05"
+ },
+ "candidate_sha256": {
+  "lean/OAI/MeasureTheory/CompactFactors/Kernels.lean": "050bb27408fa871c3026bf0529b18283c299c5f89c3a09db3c131f5b71eac623"
+ },
+ "duplicate_block": {
+  "file": "lean/OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "lines": [
+   45,
+   62
+  ],
+  "n_lines": 18
+ },
+ "wrapper_lines": 5,
+ "import_added": "import OAI.Analysis.PlaneSpectrum.Fourier",
+ "line_delta": -12,
+ "patch_sha256": "680879c3b05869ca6203995cfdab169bcb1a53518d2101970c6982c5012561a9",
+ "consumers": [
+  {
+   "file": "lean/OAI/MeasureTheory/CompactFactors/Kernels.lean",
+   "line": 101,
+   "enclosing": "fiberMean_l2_bound"
+  },
+  {
+   "file": "lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean",
+   "line": 211,
+   "enclosing": "conditional_norm_l2_le"
+  },
+  {
+   "file": "lean/OAI/MeasureTheory/CompactFactors/Functions.lean",
+   "line": 875,
+   "enclosing": "compact_descend"
+  }
+ ],
+ "closure_size_kernels": 15,
+ "reverse_closure_size": 17,
+ "umbrella_mathlib_importers": [
+  "OAI.Analysis.PlaneSpectrum.SmallArcs",
+  "OAI.Analysis.PlaneSpectrum.InvariantMean",
+  "OAI.MeasureTheory.CompactFactors.Centers",
+  "OAI.Analysis.PlaneSpectrum.Basic",
+  "OAI.Analysis.PlaneSpectrum.PhaseEncoding"
+ ]
+}

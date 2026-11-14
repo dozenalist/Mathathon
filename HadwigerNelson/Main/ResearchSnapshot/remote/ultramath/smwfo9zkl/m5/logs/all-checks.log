@@ -1,0 +1,221 @@
+==========================================================================
+checks for K6-CYCLIC-LOCUS.md
+==========================================================================
+[1] clique step of Lemma 7.4, exhaustive
+    n = 1: 1 graphs, 1 forests, all forests have clique number <= 2
+    n = 2: 2 graphs, 2 forests, all forests have clique number <= 2
+    n = 3: 8 graphs, 7 forests, all forests have clique number <= 2
+    n = 4: 64 graphs, 38 forests, all forests have clique number <= 2
+    n = 5: 1024 graphs, 291 forests, all forests have clique number <= 2
+    n = 6: 32768 graphs, 2932 forests, all forests have clique number <= 2
+  [ok] exhaustive over 33867 graphs on <= 6 vertices
+[2] (7.4) denominator: alpha < 1/6 at k = 6, exact rationals
+  [ok] k=6, alpha=1/5, p uniform: denominator = 0  (7.4 undefined)  value = 0
+  [ok] k=5, alpha=1/5 exactly, p uniform: denominator = 0 as well, so the printed constant 1/5 is exactly 1/k and is used strictly  value = 0
+  [ok] k=5, alpha = 1/5 - 1/1000: denominator > 0  value = 1/200
+  [ok] k=6, alpha = 1/6 - 1/100: bound 1 - 6 alpha = 3/50 > 0
+  [ok] k=6, alpha = 1/6 - 1/1000: bound 1 - 6 alpha = 3/500 > 0
+  [ok] k=6, alpha = 1/6 - 1/1000000: bound 1 - 6 alpha = 3/500000 > 0
+  [ok] 400 random probability vectors, alpha=1/7: min denominator = 1/7 > 0
+  [ok] midpoint coordinate 1/2 > alpha for every alpha < 1/2 (used in Prop 7.1)
+[3] Theorem 3.1 geometry and constants
+  [ok] identity {y in Q : dist(y,dQ) > m} = open concentric square of side s-2m
+  [ok] s=10 > 2m=4 would be needed for the paper's Lemma 7.5 instance: 10 <= 4 is false
+  [ok] mesh bound 1 + o(1) gives s <= 2 + o(1): a square of side 2.01 is excluded
+[4] a finite union of closed segments is null (grid sampling)
+    eps = 0.020 : 21602 of 160000 grid points within eps of a segment
+    eps = 0.010 : 11255 of 160000 grid points within eps of a segment
+    eps = 0.005 : 5755 of 160000 grid points within eps of a segment
+    count shrinks like eps, consistent with area 0; no exact certificate claimed
+  [ok] numerical only, no exact claim
+[5] disk/square and the density constant
+  [ok] closed disk of radius r contains a closed square of side s iff s <= r*sqrt2
+  [ok] s = r*sqrt2 has circumradius r
+  [ok] rho > sqrt2  <=>  rho*sqrt2 > 2  (Theorem 4.1 gives density sqrt2)
+[6] strictness: sqrt2-density does not imply meeting every square of side > 2
+  [ok] no sampled point is farther than h/2 = 1.414214 from L  max sampled 1.395847
+  [ok] the cell centre is at distance exactly h/2 = 1.414214 from L, so every disk of radius > sqrt2 meets L and no smaller radius suffices  dc = 1.414214, sqrt2 = 1.414214
+  [ok] closed square [0.3642,2.4642]^2 of side 2.1 misses L
+  [ok] a closed square of side s > h has projection length s > h on both axes, so it crosses a line of L
+==========================================================================
+ALL CHECKS PASSED
+==========================================================================
+exit=0
+hexagonal 7-colouring: r = 2/5, triangular lattice spacing 0.692820
+
+[0] exact consistency of the colouring rule
+    centre (0,0): colour 0, six neighbour colours [1, 2, 3, 4, 5, 6], all distinct: True
+    centre (1,2): colour 5, six neighbour colours [0, 1, 2, 3, 4, 6], all distinct: True
+    centre (3,-1): colour 1, six neighbour colours [0, 2, 3, 4, 5, 6], all distinct: True
+    centre (2,5): colour 5, six neighbour colours [0, 1, 2, 3, 4, 6], all distinct: True
+    min distance between equal-colour centres 1.8330; points of two such
+    hexagons are >= 1.0330 > 1 apart => proper 7-colouring
+
+[1] a Voronoi vertex (circumcentre of three mutually adjacent centres)
+    centres 0, 1, -w : mutual distances [0.69282]
+    vertex (0.3464101615137755-0.19999999999999998j), |.| = 0.400000 (= r = 0.400), cell colours [0, 1, 5]
+    |h| = 0.0200: 3 edges, triangle present: True
+    |h| = 0.0100: 3 edges, triangle present: True
+    |h| = 0.0050: 3 edges, triangle present: True
+    |h| = 0.0025: 3 edges, triangle present: True
+    ratios: (0, 1):0.050, (0, 5):0.028, (1, 5):0.029
+
+[2] centre of hexagon (0,0)
+    edges of Gamma: [] (expect none)
+
+[3] midpoint of the side shared by cells (0,0) and (1,0)
+    colours 0|1, edges of Gamma: ['(0, 1):0.098'] (expect exactly one edge)
+
+[4] points at distance 0.2 from a centre, ball radius 0.05 < inradius 0.346
+    x = (0.793+0.173j): 0 edges
+    x = (0.693+0.2j): 0 edges
+
+conclusion: Gamma_x has a triangle exactly at the Voronoi vertices, none
+at cell centres or side midpoints.  L_7 = the vertex lattice: discrete,
+locally finite, mesh 0.693.  Theorem A predicts L_7 meets every closed
+square of side ten: TRUE with a large margin.  So the section-7 machine
+is not killed by the known k = 7 colouring.
+exit=0
+========================================================================
+[independent count] brute force 9, inclusion-exclusion 9, agree: True
+k = 5 : labels [0, 1, 2, 3, 4], triangle T = [0, 1, 2], outsiders [3, 4]
+  palette bound 1 <= |P| <= 2 ; pairs of T = [(0, 1), (0, 2), (1, 2)]
+  admissible palettes (9):
+     P = (3,)             |P|=1  outsider part A = (3,) (|A|=1)
+     P = (4,)             |P|=1  outsider part A = (4,) (|A|=1)
+     P = (0, 3)           |P|=2  outsider part A = (3,) (|A|=1)
+     P = (0, 4)           |P|=2  outsider part A = (4,) (|A|=1)
+     P = (1, 3)           |P|=2  outsider part A = (3,) (|A|=1)
+     P = (1, 4)           |P|=2  outsider part A = (4,) (|A|=1)
+     P = (2, 3)           |P|=2  outsider part A = (3,) (|A|=1)
+     P = (2, 4)           |P|=2  outsider part A = (4,) (|A|=1)
+     P = (3, 4)           |P|=2  outsider part A = (3, 4) (|A|=2)
+  outsider parts that occur: [(3,), (3, 4), (4,)]
+  every admissible palette meets the outsider set (3, 4): YES
+  => A(e) = P_x(e) cap (I\T) is nonempty for a.e. e, and (5.7)
+     makes it a singleton alternating under R: x is BINARY for
+     the fixed pair (3, 4).  Lemma 5.5 applies and the triangle
+     locus is locally finite.  (This is the paper's argument.)
+========================================================================
+[independent count] brute force 35, inclusion-exclusion 35, agree: True
+k = 6 : labels [0, 1, 2, 3, 4, 5], triangle T = [0, 1, 2], outsiders [3, 4, 5]
+  palette bound 1 <= |P| <= 3 ; pairs of T = [(0, 1), (0, 2), (1, 2)]
+  admissible palettes (35):
+     P = (3,)             |P|=1  outsider part A = (3,) (|A|=1)
+     P = (4,)             |P|=1  outsider part A = (4,) (|A|=1)
+     P = (5,)             |P|=1  outsider part A = (5,) (|A|=1)
+     P = (0, 3)           |P|=2  outsider part A = (3,) (|A|=1)
+     P = (0, 4)           |P|=2  outsider part A = (4,) (|A|=1)
+     P = (0, 5)           |P|=2  outsider part A = (5,) (|A|=1)
+     P = (1, 3)           |P|=2  outsider part A = (3,) (|A|=1)
+     P = (1, 4)           |P|=2  outsider part A = (4,) (|A|=1)
+     P = (1, 5)           |P|=2  outsider part A = (5,) (|A|=1)
+     P = (2, 3)           |P|=2  outsider part A = (3,) (|A|=1)
+     P = (2, 4)           |P|=2  outsider part A = (4,) (|A|=1)
+     P = (2, 5)           |P|=2  outsider part A = (5,) (|A|=1)
+     P = (3, 4)           |P|=2  outsider part A = (3, 4) (|A|=2)
+     P = (3, 5)           |P|=2  outsider part A = (3, 5) (|A|=2)
+     P = (4, 5)           |P|=2  outsider part A = (4, 5) (|A|=2)
+     P = (0, 1, 2)        |P|=3  outsider part A = () (|A|=0)
+     P = (0, 1, 3)        |P|=3  outsider part A = (3,) (|A|=1)
+     P = (0, 1, 4)        |P|=3  outsider part A = (4,) (|A|=1)
+     P = (0, 1, 5)        |P|=3  outsider part A = (5,) (|A|=1)
+     P = (0, 2, 3)        |P|=3  outsider part A = (3,) (|A|=1)
+     P = (0, 2, 4)        |P|=3  outsider part A = (4,) (|A|=1)
+     P = (0, 2, 5)        |P|=3  outsider part A = (5,) (|A|=1)
+     P = (0, 3, 4)        |P|=3  outsider part A = (3, 4) (|A|=2)
+     P = (0, 3, 5)        |P|=3  outsider part A = (3, 5) (|A|=2)
+     P = (0, 4, 5)        |P|=3  outsider part A = (4, 5) (|A|=2)
+     P = (1, 2, 3)        |P|=3  outsider part A = (3,) (|A|=1)
+     P = (1, 2, 4)        |P|=3  outsider part A = (4,) (|A|=1)
+     P = (1, 2, 5)        |P|=3  outsider part A = (5,) (|A|=1)
+     P = (1, 3, 4)        |P|=3  outsider part A = (3, 4) (|A|=2)
+     P = (1, 3, 5)        |P|=3  outsider part A = (3, 5) (|A|=2)
+     P = (1, 4, 5)        |P|=3  outsider part A = (4, 5) (|A|=2)
+     P = (2, 3, 4)        |P|=3  outsider part A = (3, 4) (|A|=2)
+     P = (2, 3, 5)        |P|=3  outsider part A = (3, 5) (|A|=2)
+     P = (2, 4, 5)        |P|=3  outsider part A = (4, 5) (|A|=2)
+     P = (3, 4, 5)        |P|=3  outsider part A = (3, 4, 5) (|A|=3)
+  outsider parts that occur: [(), (3,), (3, 4), (3, 4, 5), (3, 5), (4,), (4, 5), (5,)]
+  every admissible palette meets the outsider set (3, 4, 5): no
+  palettes with |A| = 2 exist: YES
+  palettes equal to the whole outsider set exist: YES
+  a fixed pair {X,Y} with every P intersecting it: no
+  => P_x(e) = T itself is admissible, so A(e) may be EMPTY; and
+     when nonempty it may have 1, 2 or 3 elements.  No fixed pair
+     and no fixed outsider is forced.  Lemma 5.5 (binary-centre
+     separation) gets no input, so the printed triangle case of
+     Theorem 6.5 has no k = 6 analogue.  The k = 6 problem is a
+     finiteness statement about L, not a binarity statement.
+========================================================================
+Both enumerations are exact and exhaustive over all subsets; the only
+inputs are (6.2) of the paper and the palette bound.  Script: this file.
+exit=0
+==============================================================================
+palette strata at a cyclic centre: (6.2) + palette bound 1 <= |P| <= k-3
+==============================================================================
+
+k = 5, cycle length ell = 3  (V(C) = 0..2, extras [3, 4])
+  admissible: 9 [brute force] vs 9 [formula], agree: True
+    singletons: 2  [(3,), (4,)]
+    2-element : 7  [(0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]
+    3-element : 0  (never excluded: an edge has 2 endpoints)
+
+k = 5, cycle length ell = 4  (V(C) = 0..3, extras [4])
+  admissible: 7 [brute force] vs 7 [formula], agree: True
+    singletons: 1  [(4,)]
+    2-element : 6  [(0, 2), (0, 4), (1, 3), (1, 4), (2, 4), (3, 4)]
+    3-element : 0  (never excluded: an edge has 2 endpoints)
+
+k = 5, cycle length ell = 5  (V(C) = 0..4, extras [])
+  admissible: 5 [brute force] vs 5 [formula], agree: True
+    singletons: 0  []
+    2-element : 5  [(0, 2), (0, 3), (1, 3), (1, 4), (2, 4)]
+    3-element : 0  (never excluded: an edge has 2 endpoints)
+    note: the cycle spans every label, so no palette of size 3 is
+          excluded and (6.2) constrains only palettes of size <= 2.
+
+k = 6, cycle length ell = 3  (V(C) = 0..2, extras [3, 4, 5])
+  admissible: 35 [brute force] vs 35 [formula], agree: True
+    singletons: 3  [(3,), (4,), (5,)]
+    2-element : 12  [(0, 3), (0, 4), (0, 5), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+    3-element : 20  (never excluded: an edge has 2 endpoints)
+
+k = 6, cycle length ell = 4  (V(C) = 0..3, extras [4, 5])
+  admissible: 33 [brute force] vs 33 [formula], agree: True
+    singletons: 2  [(4,), (5,)]
+    2-element : 11  [(0, 2), (0, 4), (0, 5), (1, 3), (1, 4), (1, 5), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+    3-element : 20  (never excluded: an edge has 2 endpoints)
+
+k = 6, cycle length ell = 5  (V(C) = 0..4, extras [5])
+  admissible: 31 [brute force] vs 31 [formula], agree: True
+    singletons: 1  [(5,)]
+    2-element : 10  [(0, 2), (0, 3), (0, 5), (1, 3), (1, 4), (1, 5), (2, 4), (2, 5), (3, 5), (4, 5)]
+    3-element : 20  (never excluded: an edge has 2 endpoints)
+
+k = 6, cycle length ell = 6  (V(C) = 0..5, extras [])
+  admissible: 29 [brute force] vs 29 [formula], agree: True
+    singletons: 0  []
+    2-element : 9  [(0, 2), (0, 3), (0, 4), (1, 3), (1, 4), (1, 5), (2, 4), (2, 5), (3, 5)]
+    3-element : 20  (never excluded: an edge has 2 endpoints)
+    note: the cycle spans every label, so no palette of size 3 is
+          excluded and (6.2) constrains only palettes of size <= 2.
+
+==============================================================================
+Consequences for the k = 6 cycle cases (single-centre content only):
+  * A palette of size 3 is compatible with a cycle through ANY pair of
+    labels, so at k = 6 no palette bound can forbid a cycle of any length.
+    The single-centre constraints are powerless at every cyclic centre,
+    consistently with the 'powerless class' theorem cited in the brief.
+  * For ell = 6 the admissible 2-element palettes are exactly the 15 - 6 = 9
+    diagonals of C_6 (6 at distance 2, 3 at distance 3); every singleton is
+    excluded.  A 6-cycle at k = 6 therefore leaves a 3-periodic structure:
+    distances 2 and 3 along C_6 are the two orbits of the dihedral group.
+  * For ell = 5, k = 6: the admissible pairs are the 5 diagonals {i,i+2} and
+    the 5 pairs {i,X} with the single extra label X.
+  * For ell = 4, k = 6: the admissible pairs are the 2 diagonals, the 8 pairs
+    {i,X},{i,Y} with the two extra labels, and {X,Y}.
+  * For ell = 3, k = 6: 35 admissible palettes, including P = T (see
+    triangle_stratum.py for the full table and its discussion).
+==============================================================================
+exit=0

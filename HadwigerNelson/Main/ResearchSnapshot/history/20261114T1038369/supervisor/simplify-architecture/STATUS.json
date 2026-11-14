@@ -1,0 +1,48 @@
+{
+ "updated_utc": "2026-11-14T11:50:00Z",
+ "status": "completed_block",
+ "summary": "Block 13: analysis only, R4 untouched (Spectrum d26d5690..., Limits 24f89dd3... both re-hashed unchanged; shared originals still 6602b9d8 / ca74ba10). Proposed ONE further extraction in NEXT-CANDIDATE.md, kept separate from the R4 deliverable: the lemma norm_integral_sq is duplicated byte for byte at Analysis/PlaneSpectrum/Fourier.lean:96-113 and MeasureTheory/CompactFactors/Kernels.lean:45-62 (18 lines each, identical text, hypotheses and conclusion - so at the deleted copy's three call sites no hypothesis moves; the no-strengthening claim is an identity, not an argument). Measured the cycle question rather than assuming it: Fourier imports Mathlib only, its OAI closure is empty, and neither module currently sees the other, so a single Kernels -> Fourier import edge cannot cycle, which refutes CENSUS's 'cannot be fixed by one import'. Expected textual net -17 (variant 1: delete 18, add import + open) or -10 (variant 2: new leaf module, 82 -> 83). Also recorded a rejection: the Energy pair/triple lemmas are not duplicates of each other and already delegate to the general integer-multiple lemma with the same hdiv. Nothing implemented, nothing built, no saving claimed.",
+ "verified_results": [
+  "[verified here, mechanical] The duplication is byte-identical: Fourier.lean:96-113 and Kernels.lean:45-62 are both 18 lines and the extracted texts compare equal (texts identical: True), including hypotheses (Integrable f mu, Integrable (norm f)^2) and conclusion (norm of integral squared <= integral of norm squared).",
+  "[verified here, mechanical] Cycle analysis by import closure: closure(Fourier) is empty (Fourier imports Mathlib only), closure(Kernels) has 14 modules and does not contain Fourier; conversely closure(Fourier) does not contain Kernels. Hence adding the single edge Kernels -> Fourier cannot create a cycle, since a cycle would need a path Fourier -> ... -> Kernels.",
+  "[verified here, mechanical] Use sites of the Kernels copy by grep -rn: Kernels.lean:101 (bare apply inside its namespace), BoundedFunctions.lean:211 and Functions.lean:875 (both KernelCompact.norm_integral_sq). All three are applications, so replacing the callee preserves each term's type exactly. Fourier's own use at :131 is unaffected.",
+  "[verified here, source reading] Rejected candidate: conditional_integer_pair_energy (Energy.lean:323-340) and conditional_integer_triple_energy (Energy.lean:342-357) are not copies of each other (different conclusions) and both already call conditional_integer_multiple_mean_zero (AlgebraModels.lean:652) with the same hdiv hypothesis; they are thin single-use wrappers differing in the Fin.prod_univ_two vs _three expansion. Factoring there is already done.",
+  "[verified here, mechanical] Frozen R4 untouched and re-confirmed: patched Spectrum d26d569088faea89..., patched Limits 24f89dd33533a0f6..., shared originals 6602b9d8... and ca74ba10...; no file under encoding-core/integration was written this block.",
+  "[reported externally, not re-run here] Full build progressing without new failures, 55 of 82 modules at last snapshot including 14 reused; signature-fidelity packet staged; main public root checks pending."
+ ],
+ "conjectures": [
+  "norm_integral_sq is the only byte-identical duplicate lemma in the tree reachable without a new module; its extraction would cost one import edge because Fourier is a leaf, which is why CENSUS's cycle objection does not hold there.",
+  "Variant 1 (-17) is preferable to variant 2 (-10 plus a new module) unless the Analysis and MeasureTheory halves are later separated, in which case the leaf module is the principled home for the lemma and for ProbabilityL2's generic content."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/NEXT-CANDIDATE.md (sha b62e56bd3734f823...; the proposal: two locations, common statement, hypothesis-identity table, three call sites, measured cycle analysis, expected net -17 / -10, exposition rationale, rejected Energy candidate, falsifiers)",
+  "supervisor/simplify-architecture/encoding-core/integration/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean (R4 deliverable, sha d26d569088faea89..., untouched)",
+  "supervisor/simplify-architecture/encoding-core/integration/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean (R4 deliverable, sha 24f89dd33533a0f6..., untouched)",
+  "read-only inputs for the proposal: lean/OAI/Analysis/PlaneSpectrum/Fourier.lean (315079396f8612ab5dea...), lean/OAI/MeasureTheory/CompactFactors/Kernels.lean (8665ae62def8d70befc2...), BoundedFunctions.lean (e7acbec9b3d2d8c91a91...), Functions.lean (53ed391142b8388df9ad...)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "python3 (single process, <0.1 s): import-closure BFS plus grep over lean/OAI for the four lemma names",
+   "outcome": "closure(Fourier)=0 modules and Fourier not in closure(Kernels); 4 use sites of norm_integral_sq; pair/triple/mean_zero use sites as recorded."
+  },
+  {
+   "cmd": "python3 span/identity check on the two norm_integral_sq copies",
+   "outcome": "18 lines each, texts equal, Fourier imports ['Mathlib'], Kernels imports ['...ConditionalLimits']."
+  },
+  {
+   "cmd": "sha256sum on the four read-only inputs and on the two R4 outputs",
+   "outcome": "R4 outputs unchanged at d26d5690.../24f89dd3...; shared originals unchanged at 6602b9d8.../ca74ba10..."
+  },
+  {
+   "cmd": "no build, no patch, no subagents, no messages",
+   "outcome": "analysis only, as instructed; R4 not modified."
+  }
+ ],
+ "failed_routes": [
+  "CENSUS result 1's claim that the norm_integral_sq duplicate 'cannot be fixed by one import' is refuted by measurement: Fourier is a leaf with empty OAI closure, so one import edge suffices and no cycle is possible. Only a layering objection remains.",
+  "CENSUS's other cluster (Energy pair/triple) is rejected as a duplication: the two lemmas have different conclusions and both already delegate to the general Finset-indexed lemma with the same hdiv hypothesis.",
+  "Not attempted per instruction: no new wildness or weak-mixing speculation, no implementation, no modification of the frozen R4 patch while the build runs."
+ ],
+ "next_step": "If the supervisor wants a second extractable item after R4's closure finishes: implement variant 1 of NEXT-CANDIDATE.md as a reviewable patch in its own directory (delete Kernels.lean:45-62, add the Fourier import and the ProbabilityL2 open, rename two call sites), then build the affected modules and re-run axioms. Do not start it while the 82-module queue is running; and do not bundle it with R4.",
+ "escalation": null
+}

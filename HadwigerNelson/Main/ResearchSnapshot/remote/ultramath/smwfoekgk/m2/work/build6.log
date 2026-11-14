@@ -1,0 +1,738 @@
+OK   OAI.Analysis.PlaneSpectrum.Basic (122.6s)
+OK   OAI.Analysis.PlaneSpectrum.Characters (210.8s)
+OK   OAI.Analysis.PlaneSpectrum.Fourier (221.1s)
+OK   OAI.Geometry.PlaneColoring.Coloring (208.4s)
+OK   OAI.Analysis.PlaneSpectrum.CircleDecay (340.6s)
+FAIL OAI.Geometry.PlaneColoring.WeakColoring (334.6s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/WeakColoring.lean:60:0: error: Unexpected name `EuclideanFiveColor` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/WeakColoring.lean:61:0: error: Missing name after `end`: Expected the current scope name `EuclideanFiveColor`
+
+Hint: To end the current scope `EuclideanFiveColor`, specify its name:
+  end ̲E̲u̲c̲l̲i̲d̲e̲a̲n̲F̲i̲v̲e̲C̲o̲l̲o̲r̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/WeakColoring.lean:69:0: error: Invalid name after `end`: Expected `EuclideanFiveColor`, but found `OAI`
+
+FAIL OAI.Geometry.PlaneColoring.Compactness (132.5s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/Compactness.lean:51:61: error: Function expected at
+  RealL2
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  angularMeasure
+
+Hint: The identifier `RealL2` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/Compactness.lean:52:3: error(lean.unknownIdentifier): Unknown identifier `sampleFn_memLp`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/Compactness.lean:70:61: error: Function expected at
+  ofNorm
+but this term has type
+  ?m.5
+
+Note: Expected a function because this term is being applied to the argument
+  E
+
+Hint: The identifier `ofNorm` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/Compactness.lean:71:19: error: Invalid argument: Variable `ofNorm` is not a proposition or let-declaration
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/Compactness.lean:70:83: error: unsolved goals
+E : Type u_1
+inst✝² : NormedAddCommGroup E
+inst✝¹ : InnerProductSpace ℝ E
+inst✝ : CompleteSpace E
+x✝ : Sort u_2
+ofNorm : x✝
+v : E
+hv : ‖v‖ ≤ 1
+⊢ (InnerProductSpace.toDual ℝ E).symm (WeakDual.toStrongDual ↑sorry) = v
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/Compactness.lean:71:26: warning: This simp argument is unused:
+  weakHilbert
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [value, ofNorm, StrongDual.toStrongDual_toWeakDual, LinearIsometryEquiv.symm_apply_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/Compactness.lean:71:38: warning: This simp argument is unused:
+  StrongDual.toStrongDual_toWeakDual
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [value, ofNorm, weakHilbert, LinearIsometryEquiv.symm_apply_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/Compactness.lean:71:73: warning: This simp argument is unused:
+  LinearIsometryEquiv.symm_apply_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [value, ofNorm, weakHilbert, StrongDual.toStrongDual_toWeakDual]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/Compactness.lean:74:0: error: Unexpected name `EuclideanFiveColor.WeakBall` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor.WeakBall` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵W̵e̵a̵k̵B̵a̵l̵l̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/Compactness.lean:75:0: error: Missing name after `end`: Expected the current scope name `WeakBall`
+
+Hint: To end the current scope `WeakBall`, specify its name:
+  end ̲W̲e̲a̲k̲B̲a̲l̲l̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/Compactness.lean:92:4: error: Function expected at
+  traceValue
+but this term has type
+  ?m.9
+
+Note: Expected a function because this term is being applied to the argument
+  (sampleCode c hc y r)
+
+Hint: The identifier `traceValue` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Geometry/PlaneColoring/Compactness.lean:103:0: error: Invalid name after `end`: Expected `WeakBall`, but found `OAI`
+
+Note: The current scopes are `EuclideanFiveColor.WeakBall`
+
+FAIL OAI.Analysis.PlaneSpectrum.CircleOperator (32.0s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:36:12: error(lean.unknownIdentifier): Unknown identifier `ProbabilityL2.average_toLp_integral`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:17:83: error: unsolved goals
+g : ↥ComplexPlaneL2
+F : ℂ × Angles → ℂ := fun p => ↑↑g (p.1 + direction p.2)
+hF : StronglyMeasurable F
+hg2 : Integrable (fun x => ‖↑↑g x‖ ^ 2) volume
+hi : Integrable (fun p => ‖F p‖ ^ 2) (volume.prod angularMeasure)
+⊢ ↑↑(circleOperator g) =ᵐ[volume] fun x => ∫ (t : Angles), ↑↑g (x + direction t) ∂angularMeasure
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:42:40: error: typeclass instance problem is stuck
+  MeasurableSpace ?m.6
+
+Note: Lean will not try to resolve this typeclass instance problem because the type argument to `MeasurableSpace` is a metavariable. This argument must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:49:24: error(lean.unknownIdentifier): Unknown identifier `circleSymbol`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:49:37: error(lean.unknownIdentifier): Unknown identifier `circleSymbol_stronglyMeasurable.aestronglyMeasurable`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:50:26: error(lean.unknownIdentifier): Unknown identifier `circleSymbol_norm_le_one`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:52:43: error: Function expected at
+  circleSymbol
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  x
+
+Hint: The identifier `circleSymbol` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:51:0: error: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:71:12: error(lean.unknownIdentifier): Unknown identifier `ProbabilityL2.average_toLp_integral`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:53:101: error: unsolved goals
+g : ↥ComplexPlaneL2
+F : ℂ × Angles → ℂ := fun p => planePhase (direction p.2) p.1 * ↑↑(𝓕 g) p.1
+hF : StronglyMeasurable F
+hi : Integrable (fun p => ‖F p‖ ^ 2) (volume.prod angularMeasure)
+hG : Integrable (fun t => 𝓕 ((planeTranslate (direction t)) g)) angularMeasure
+⊢ 𝓕 (circleOperator g) = circleMultiplier (𝓕 g)
+
+FAIL OAI.Analysis.PlaneSpectrum.InvariantMean (24.7s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:44:82: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g x : G
+n : ℕ
+f : G →ᵇ ℝ
+⊢ ∑ c ∈ Finset.range (n + 1), (shift (c • g) f) x = ∑ k ∈ Finset.range (n + 1), f (x + k • g) ∨ ↑n + 1 = 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:75:27: error(lean.unknownIdentifier): Unknown identifier `shift_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:77:2: error: Tactic `apply` failed: could not unify the conclusion of `Finset.sum_congr rfl`
+  Finset.sum ?m.55 ?m.52 = Finset.sum ?m.55 ?m.53
+with the goal
+  ∑ k ∈ Finset.range (n + 1), (shift h f) (x + k • g) =
+    (∑ k ∈ Finset.range (n + 1), shift (k • g) f).toContinuousMap ({ toFun := fun x => x + h, continuous_toFun := ⋯ } x)
+
+Note: The full type of `Finset.sum_congr rfl` is
+  (∀ x ∈ ?m.55, ?m.52 x = ?m.53 x) → Finset.sum ?m.55 ?m.52 = Finset.sum ?m.55 ?m.53
+
+case e_a
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g h : G
+n : ℕ
+f : G →ᵇ ℝ
+x : G
+⊢ ∑ k ∈ Finset.range (n + 1), (shift h f) (x + k • g) =
+    (∑ k ∈ Finset.range (n + 1), shift (k • g) f).toContinuousMap ({ toFun := fun x => x + h, continuous_toFun := ⋯ } x)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:103:52: error(lean.unknownIdentifier): Unknown identifier `shift_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:102:39: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g x : G
+n : ℕ
+f : G →ᵇ ℝ
+k : ℕ
+⊢ (shift g f) (x + k • g) - f (x + k • g) = f (x + (k • g + g)) - f (x + k • g)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:103:87: warning: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [BoundedContinuousFunction.sub_apply, shift_apply, add_nsmul, one_nsmul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+
+OK   OAI.Analysis.PlaneSpectrum.Multipliers (16.0s)
+OK   OAI.Analysis.PlaneSpectrum.FourierTests (12.5s)
+OK   OAI.Analysis.PlaneSpectrum.SmallArcs (13.0s)
+OK   OAI.Analysis.PlaneSpectrum.PhaseEncoding (12.4s)
+OK   OAI.Analysis.PlaneSpectrum.PhaseCollision (18.5s)
+OK   OAI.MeasureTheory.CompactFactors.ConditionalSelection (16.4s)
+FAIL OAI.Analysis.PlaneSpectrum.ConditionalSpectrum (52.3s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:211:31: error(lean.unknownIdentifier): Unknown identifier `lineFourier_eq`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:211:19: error: Type mismatch: After simplification, term
+  hn (momentArgument z * ofF t)
+ has type
+  @LE.le ℝ Real.instLE 0 (∫ (d : D), ↑((eval (momentArgument z * ofF t)) d) ∂ν).re
+but is expected to have type
+  @LE.le ℝ Real.instLE 0 (lineFourier ν (momentArgument z) t).re
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:381:20: error(lean.unknownIdentifier): Unknown identifier `SampledAtoms.ae_sampled_list`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:382:11: error: Tactic `rcases` failed: `hx : ?m.1057 x` is not an inductive datatype
+
+FAIL OAI.MeasureTheory.CompactFactors.Amenability (39.6s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Amenability.lean:394:0: error: unexpected token 'by'; expected command
+
+OK   OAI.MeasureTheory.CompactFactors.Centers (40.3s)
+FAIL OAI.MeasureTheory.CompactFactors.RelativeCenters (203.9s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:102:0: error: Unexpected name `EuclideanFiveColor.CosetCenter.Embedding` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor.CosetCenter.Embedding` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵C̵o̵s̵e̵t̵C̵e̵n̵t̵e̵r̵.̵E̵m̵b̵e̵d̵d̵i̵n̵g̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:112:8: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.ErgodicSupport.ae_eq_const_of_invariant`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:131:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.compProd_map_base`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:145:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.condDistrib_comp_equiv`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:160:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.condDistrib_equivariant`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:209:18: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.probabilityKernel`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:213:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.measurable_probabilityKernel`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:216:18: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.cosetMass`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:219:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.measurable_cosetMass`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:226:18: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.differenceLaw`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:229:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.differenceLaw_ordinary`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:247:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.sampledMass_integral`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:258:8: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.positive_mass_finite_centers`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:297:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.Re
+OK   OAI.MeasureTheory.CompactFactors.Approximation (231.9s)
+FAIL OAI.MeasureTheory.CompactFactors.ConditionalLimits (147.8s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:229:0: error: Unexpected name `PlaneFiveColor.Spectral` after `end`: The current section is unnamed
+
+Hint: Delete the name `PlaneFiveColor.Spectral` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵P̵l̵a̵n̵e̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵S̵p̵e̵c̵t̵r̵a̵l̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:256:6: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.relative_singularity_base`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:267:6: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.instMeasurableSpaceCircle_oAI`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:268:6: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.instBorelSpaceCircle_oAI`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:273:4: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.AmbientEncodingAt`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:362:20: error(lean.unknownIdentifier): Unknown identifier `SampledAtoms.ae_sampled_list`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:363:11: error: Tactic `rcases` failed: `hx : ?m.1034 x` is not an inductive datatype
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:289:8: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:460:47: error: Invalid argument name `K` for function
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:461:8: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+Y : Type u_4
+inst✝ : MeasurableSpace Y
+x✝ : Sort u_5
+Scalar : x✝
+ν : Measure Y
+⊢ sorry
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:487:6: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.ambient_encoding_of_at`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:560:44: error: Invalid argument name `K` for function `CompactApproximation.scalar_identity`
+
+Hint: Perhaps you meant one of the following parameter names:
+  • `Y`: K̵Y̲
+  • `Scalar`: K̵S̲c̲a̲l̲a̲r̲
+  • `ν`: K̵ν̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:526:8: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.relative_singularity_approximation`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:573:4: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.UniversalGood`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:577:6: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.universalGood_of_factor`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:603:0: error: Missing name after `end`: Expected the current scope name `Spectral`
+
+Hint: To end the current s
+OK   OAI.MeasureTheory.CompactFactors.Kernels (173.2s)
+FAIL OAI.MeasureTheory.CompactFactors.BoundedFunctions (44.7s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:216:0: error: Unexpected name `EuclideanFiveColor.BoundedMeasurable` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor.BoundedMeasurable` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵B̵o̵u̵n̵d̵e̵d̵M̵e̵a̵s̵u̵r̵a̵b̵l̵e̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:218:0: error: Missing name after `end`: Expected the current scope name `BoundedMeasurable`
+
+Hint: To end the current scope `BoundedMeasurable`, specify its name:
+  end ̲B̲o̲u̲n̲d̲e̲d̲M̲e̲a̲s̲u̲r̲a̲b̲l̲e̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:220:0: error: Invalid name after `end`: Expected `BoundedMeasurable`, but found `OAI`
+
+Note: The current scopes are `EuclideanFiveColor.BoundedMeasurable`
+
+FAIL OAI.MeasureTheory.CompactFactors.RelativeProducts (64.8s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:224:52: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace G
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:224:59: error: Application type mismatch: The argument
+  F
+has type
+  Family G X
+of sort `Type (max u_1 u_2)` but is expected to have type
+  Func G
+of sort `Type u_1` in the application
+  bmConj F
+
+FAIL OAI.MeasureTheory.CompactFactors.Separability (17.5s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Separability.lean:126:33: error(lean.unknownIdentifier): Unknown identifier `conj_conj`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Separability.lean:125:28: error: unsolved goals
+X : Type u_3
+inst✝¹ : MeasurableSpace X
+μ : Measure X
+inst✝ : IsProbabilityMeasure μ
+f h : Func X
+⊢ (∫ (x : X), ↑(bmConj (bmConj h) * f) x ∂μ).re = (∫ (x : X), ↑(f * h) x ∂μ).re
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Separability.lean:144:8: error(lean.unknownIdentifier): Unknown identifier `conj_conj`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Separability.lean:137:60: error: unsolved goals
+case e_6
+ι : Type u_1
+G : Type u_2
+X : Type u_3
+inst✝⁸ : DecidableEq ι
+inst✝⁷ : AddCommGroup G
+inst✝⁶ : MeasurableSpace X
+inst✝⁵ : AddAction G X
+inst✝⁴ : MeasurableConstVAdd G X
+μ : Measure X
+inst✝³ : IsProbabilityMeasure μ
+inst✝² : VAddInvariantMeasure G X μ
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+M : Amenable.Mean G
+s : Finset ι
+j : ι
+hj : j ∈ s
+φ : ι → G →+ G
+f : ι → Func X
+h u : G
+⊢ ⟪(l2 μ) (∏ i ∈ s, act ((φ i) (u + h)) (f i)), (l2 μ) (∏ i ∈ s, act ((φ i) u) (f i))⟫ =
+    ⟪(l2 μ) (∏ i ∈ s.erase j, act ((φ i - φ j) u) (act ((φ i) h) (f i) * bmConj (f i))),
+      (l2 μ) (bmConj (act ((φ j) h) (f j) * bmConj (f j)))⟫
+
+OK   OAI.MeasureTheory.CompactFactors.AlgebraModels (18.0s)
+OK   OAI.MeasureTheory.CompactFactors.Functions (13.6s)
+FAIL OAI.MeasureTheory.CompactFactors.Factors (10.9s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Factors.lean:279:42: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Nonempty Y
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Factors.lean:282:2: error: Type mismatch
+  Measurable.comp (MeasurableEmbedding.measurable_invFun scalar_embedding)
+    (Measurable.comp (measurable_pi_apply 1) OrbitSpace.measurable_val)
+has type
+  Measurable (⋯.invFun ∘ (fun f => f 1) ∘ OrbitSpace.val)
+but is expected to have type
+  Measurable decode
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Factors.lean:285:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Factors.lean:288:2: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Factors.lean:287:2: warning: Unused tactic linter: `rw [OrbitFactor.orbit_one]` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Factors.lean:288:2: warning: Unused tactic linter: `exact scalar_embedding.leftInverse_invFun _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Factors.lean:290:0: error: `[Nonempty Y]` did not match any variables in the current scope
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Factors.lean:291:0: warning: automatically included section variable(s) unused in theorem `OAI.EuclideanFiveColor.FactorCode.encode_as_comp`:
+  [MeasurableConstSMul K X]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableConstSMul K X] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Factors.lean:417:0: warning: automatically included section variable(s) unused in theorem `OAI.EuclideanFiveColor.ChainJoin.le_code`:
+  [Nonempty Y]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Nonempty Y] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/MeasureTheory/CompactFactors/Factors.lean:480:14: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableConstSMul K X
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+
+OK   OAI.MeasureTheory.CompactFactors.Stationary (8.0s)
+FAIL OAI.Analysis.PlaneSpectrum.Representations (186.6s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:55:34: error(lean.unknownIdentifier): Unknown identifier `Proper`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:56:48: error: Function expected at
+  Proper
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  k
+
+Hint: The identifier `Proper` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:57:9: error: Tactic `unfold` failed: Local variable `Proper` has no definition
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:62:68: error: don't know how to synthesize implicit argument `Proper`
+  @closed_proper k (?m.13 k instCompactSpaceSpace) (?m.14 k instCompactSpaceSpace)
+context:
+k : ℕ
+⊢ ?m.13 k instCompactSpaceSpace
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:62:68: error: don't know how to synthesize implicit argument
+  @closed_proper k (?m.13 k instCompactSpaceSpace) (?m.14 k instCompactSpaceSpace)
+context:
+k : ℕ
+⊢ Sort ?u.5
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:64:8: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+k : ℕ
+a : ↥E
+ω : Space k
+⊢ sorry
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:68:41: error: Function expected at
+  rotate
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  k
+
+Hint: The identifier `rotate` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:68:61: error: unsolved goals
+k : ℕ
+x✝ : Sort u_1
+rotate : x✝
+ω : Space k
+x : ↥E
+h1 : kCoeff 1 = 1
+⊢ ↑(sorry ()) x = ↑ω x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:72:8: warning: This simp argument is unused:
+  h1
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:73:60: error: Function expected at
+  rotate
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  k
+
+Hint: The identifier `rotate` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:73:76: error: Function expected at
+  rotate
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  k
+
+Hint: The identifier `rotate` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:76:13: error(lean.unknownIdentifier): Unknown identifier `trans_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:76:25: error(lean.unknownIdentifier): Unknown identifier `rotate_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:77:12: error: type expected, got
+  (Trans : (?m.1 → ?m.2 → Sort ?u.8) →
+  (?m.2 → ?m.3 → Sort ?u.7) →
+    outParam (?m.1 → ?m.3 → Sort ?u.6) → Sort (max (max (max (max (max (max 1 ?u.8) ?u.5) ?u.4) ?u.3) ?u.7) ?u.6))
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:78:40: error(lean.unknownIdentifier): Unknown identifier `rotate`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Representations.lean:79:92: error(lean.unknownIdentifier): Unknown identifier `tr`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd7
+OK   OAI.Analysis.PlaneSpectrum.Energy (205.9s)
+FAIL OAI.Analysis.PlaneSpectrum.NumberFields (170.0s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/NumberFields.lean:161:27: error: Function expected at
+  realSlice
+but this term has type
+  ?m.4
+
+Note: Expected a function because this term is being applied to the argument
+  N
+
+Hint: The identifier `realSlice` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/NumberFields.lean:161:44: error: Function expected at
+  asN
+but this term has type
+  ?m.5
+
+Note: Expected a function because this term is being applied to the argument
+  N
+
+Hint: The identifier `asN` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/NumberFields.lean:166:35: error: Function expected at
+  realSlice
+but this term has type
+  ?m.10
+
+Note: Expected a function because this term is being applied to the argument
+  N
+
+Hint: The identifier `realSlice` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/NumberFields.lean:166:35: error: Function expected at
+  realSlice
+but this term has type
+  ?m.10
+
+Note: Expected a function because this term is being applied to the argument
+  N
+
+Hint: The identifier `realSlice` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/NumberFields.lean:166:50: error: Function expected at
+  realLine
+but this term has type
+  ?m.11
+
+Note: Expected a function because this term is being applied to the argument
+  N
+
+Hint: The identifier `realLine` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/NumberFields.lean:166:83: error: Invalid argument: Variable `realLine` is not a proposition or let-declaration
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/NumberFields.lean:166:74: error: unsolved goals
+x✝¹ : Sort u_1
+realSlice : x✝¹
+x✝ : Sort u_2
+realLine : x✝
+a : sorry
+b : sorry
+⊢ sorry () = a
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/NumberFields.lean:168:0: error: Unexpected name `EuclideanFiveColor.AlgebraicCayley` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor.AlgebraicCayley` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵A̵l̵g̵e̵b̵r̵a̵i̵c̵C̵a̵y̵l̵e̵y̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/NumberFields.lean:169:0: error: Missing name after `end`: Expected the current scope name `AlgebraicCayley`
+
+Hint: To end the current scope `AlgebraicCayley`, specify its name:
+  end ̲A̲l̲g̲e̲b̲r̲a̲i̲c̲C̲a̲y̲l̲e̲y̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/NumberFields.lean:178:0: error: Unexpected name `EuclideanFiveColor.GeneralPosition` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor.GeneralPosition` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵G̵e̵n̵e̵r̵a̵l̵P̵o̵s̵i̵t̵i̵o̵n̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/NumberFields.lean:179:0: error: Missing name after `end`: Expected the current scope name `GeneralPosition`
+
+Hint: To end the current scope `GeneralPosition`, specify its name:
+  end ̲G̲e̲n̲e̲r̲a̲l̲P̲o̲s̲i̲t̲i̲o̲n̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/NumberFields.lean:188:0: error: Invalid name after `end`: Expected `GeneralPosition`, but found `OAI`
+
+Note: The current scopes are `EuclideanFiveColor.GeneralPosition`
+
+FAIL OAI.Analysis.PlaneSpectrum.Selections (585.6s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:73:0: error: invalid 'include', variable `hp` has not been declared in the current scope
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:75:0: error: invalid 'include', variable `hp` has not been declared in the current scope
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:77:0: error: invalid 'include', variable `hp` has not been declared in the current scope
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:79:0: error: invalid 'include', variable `hp` has not been declared in the current scope
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:80:0: error: Unexpected name `EuclideanFiveColor.CappedResidues` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor.CappedResidues` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵C̵a̵p̵p̵e̵d̵R̵e̵s̵i̵d̵u̵e̵s̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:81:0: error: Missing name after `end`: Expected the current scope name `CappedResidues`
+
+Hint: To end the current scope `CappedResidues`, specify its name:
+  end ̲C̲a̲p̲p̲e̲d̲R̲e̲s̲i̲d̲u̲e̲s̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:87:51: error: Function expected at
+  signedList
+but this term has type
+  ?m.39
+
+Note: Expected a function because this term is being applied to the argument
+  a
+
+Hint: The identifier `signedList` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:88:20: error: Invalid argument: Variable `signedList` is not a proposition or let-declaration
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:88:20: error: Invalid argument: Variable `signedList` is not a proposition or let-declaration
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:87:88: error: unsolved goals
+case ofNat
+α : Type u_2
+inst✝ : Field α
+x✝ : Sort u_3
+signedList : x✝
+x : α
+a✝ : ℕ
+⊢ sorry () = a✝
+
+case negSucc
+α : Type u_2
+inst✝ : Field α
+x✝ : Sort u_3
+signedList : x✝
+x : α
+a✝ : ℕ
+⊢ sorry () = a✝ + 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:87:14: warning: The namespaces `EuclideanFiveColor` and `CappedResidues` are duplicated in the declaration `OAI.EuclideanFiveColor.CappedResidues.EuclideanFiveColor.CappedResidues.signedList_length`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:90:48: error: Function expected at
+  signedList
+but this term has type
+  ?m.39
+
+Note: Expected a function because this term is being applied to the argument
+  a
+
+Hint: The identifier `signedList` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:91:20: error: Invalid argument: Variable `signedList` is not a proposition or let-declaration
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:91:20: error: Invalid argument: Variable `signedList` is not a proposition or let-declaration
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:90:79: error: unsolved goals
+case ofNat
+α : Type u_2
+inst✝ : Field α
+x✝ : Sort u_3
+signedList : x✝
+x : α
+a✝ : ℕ
+⊢ sorry () = ↑a✝ * x
+
+case negSucc
+α : Type u_2
+inst✝ : Field α
+x✝ : Sort u_3
+signedList : x✝
+x : α
+a✝ : ℕ
+⊢ sorry () = (-1 + -↑a✝) * x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/Selections.lean:90:14: warning: The namespaces `EuclideanFiveColor` and `CappedResidues` are duplicated in the declaration `OAI.EuclideanFiveColor.CappedResidues.EuclideanFiveColor.CappedResidues.signedList_sum`.
+
+Note: This linter can be disabled with `s
+FAIL OAI.Analysis.PlaneSpectrum.RadialEnergy (155.4s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:53:0: error: Unexpected name `PlaneFiveColor.Spectral` after `end`: The current section is unnamed
+
+Hint: Delete the name `PlaneFiveColor.Spectral` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵P̵l̵a̵n̵e̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵S̵p̵e̵c̵t̵r̵a̵l̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:54:0: error: Missing name after `end`: Expected the current scope name `Spectral`
+
+Hint: To end the current scope `Spectral`, specify its name:
+  end ̲S̲p̲e̲c̲t̲r̲a̲l̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:73:0: error: Unexpected name `PlaneFiveColor.Spectral` after `end`: The current section is unnamed
+
+Hint: Delete the name `PlaneFiveColor.Spectral` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵P̵l̵a̵n̵e̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵S̵p̵e̵c̵t̵r̵a̵l̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:74:0: error: Missing name after `end`: Expected the current scope name `Spectral`
+
+Hint: To end the current scope `Spectral`, specify its name:
+  end ̲S̲p̲e̲c̲t̲r̲a̲l̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:105:4: error: Function expected at
+  radiusFamily
+but this term has type
+  ?m.115
+
+Note: Expected a function because this term is being applied to the argument
+  μ
+
+Hint: The identifier `radiusFamily` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:105:30: error: Function expected at
+  massReal
+but this term has type
+  ?m.116
+
+Note: Expected a function because this term is being applied to the argument
+  μ
+
+Hint: The identifier `massReal` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:108:0: error: Unexpected name `PlaneFiveColor.Spectral` after `end`: The current section is unnamed
+
+Hint: Delete the name `PlaneFiveColor.Spectral` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵P̵l̵a̵n̵e̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵S̵p̵e̵c̵t̵r̵a̵l̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:109:0: error: Missing name after `end`: Expected the current scope name `Spectral`
+
+Hint: To end the current scope `Spectral`, specify its name:
+  end ̲S̲p̲e̲c̲t̲r̲a̲l̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:126:0: error: Unexpected name `PlaneFiveColor.Spectral` after `end`: The current section is unnamed
+
+Hint: Delete the name `PlaneFiveColor.Spectral` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵P̵l̵a̵n̵e̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵S̵p̵e̵c̵t̵r̵a̵l̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:127:0: error: Missing name after `end`: Expected the current scope name `Spectral`
+
+Hint: To end the current scope `Spectral`, specify its name:
+  end ̲S̲p̲e̲c̲t̲r̲a̲l̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:129:0: error: Invalid name after `end`: Expected `Spectral`, but found `OAI`
+
+Note: The current scopes are `PlaneFiveColor.Spectral`
+
+FAIL OAI.Analysis.PlaneSpectrum.SpectralMeasure (238.5s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:72:36: error: Function expected at
+  algebra
+but this term has type
+  ?m.19
+
+Note: Expected a function because this term is being applied to the argument
+  U
+
+Hint: The identifier `algebra` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:75:38: error: Function expected at
+  algebra
+but this term has type
+  ?m.19
+
+Note: Expected a function because this term is being applied to the argument
+  U
+
+Hint: The identifier `algebra` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:76:9: error(lean.unknownIdentifier): Unknown identifier `adjoin_comm`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:78:47: error: Function expected at
+  algebra
+but this term has type
+  ?m.19
+
+Note: Expected a function because this term is being applied to the argument
+  U
+
+Hint: The identifier `algebra` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:78:58: error: Fields missing: `norm`, `zero`, `add`, `add_assoc`, `zero_add`, `add_zero`, `nsmul`, `add_comm`, `one`, `mul`, `mul_assoc`, `one_mul`, `mul_one`, `zero_mul`, `mul_zero`, `left_distrib`, `right_distrib`, `neg`, `zsmul`, `neg_add_cancel`, `dist`, `dist_self`, `dist_comm`, `dist_triangle`, `eq_of_dist_eq_zero`, `dist_eq`, `norm_mul_le`, `mul_comm`, `star`, `star_involutive`, `star_mul`, `star_add`, `complete`, `norm_mul_self_le`, `smul`, `algebraMap`, `commutes'`, `smul_def'`, `norm_smul_le`, `star_smul`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:78:58: error: could not synthesize default value for field 'nsmul_zero' of 'CommCStarAlgebra' using tactics
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:78:58: error: could not synthesize default value for field 'nsmul_succ' of 'CommCStarAlgebra' using tactics
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:78:58: error: could not synthesize default value for field 'npow_zero' of 'CommCStarAlgebra' using tactics
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:78:58: error: could not synthesize default value for field 'npow_succ' of 'CommCStarAlgebra' using tactics
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:78:58: error: could not synthesize default value for field 'natCast_zero' of 'CommCStarAlgebra' using tactics
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:78:58: error: could not synthesize default value for field 'natCast_succ' of 'CommCStarAlgebra' using tactics
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:78:58: error: could not synthesize default value for field 'sub_eq_add_neg' of 'CommCStarAlgebra' using tactics
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:78:58: error: could not synthesize default value for field 'zsmul_zero'' of 'CommCStarAlgebra' using tactics
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:78:58: error: could not synthesize default value for field 'zsmul_succ'' of 'CommCStarAlgebra' using tactics
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:78:58: error: could not synthesize default value for field 'zsmul_neg'' of 'CommCStarAlgebra' using tactics
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:78:58: error: could not synthesize default value for field 'intCast_ofNat' of 'CommCStarAlgebra' using tactics
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim6/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:78:58: error: could not synthesize default value for field

@@ -1,0 +1,8 @@
+CoverObstruction.lean:126:30: error: Application type mismatch: The argument
+  hz
+has type
+  dist z y < c
+but is expected to have type
+  ‖z - y‖ < c
+in the application
+  add_lt_add hz

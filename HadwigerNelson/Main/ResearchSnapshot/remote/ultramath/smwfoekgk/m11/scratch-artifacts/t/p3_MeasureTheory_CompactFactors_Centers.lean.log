@@ -1,0 +1,4 @@
+.scratch/t/p3_MeasureTheory_CompactFactors_Centers.lean:83:0: warning: 
+'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by
+
+import Mathlib.Basic.Real.Basic

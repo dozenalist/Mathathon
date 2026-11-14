@@ -1,0 +1,10 @@
+CHECK 0  paper definition of O,I vs m5/m2 formula: mismatches over all instances = 0
+CHECK 1  rotation invariance of the C1-C3 decision: violations = 0
+CHECK 2  instances compared = 55944; disagreements (m5 DP vs my DFS vs size<=2 DP) = 0
+CHECK 4  l=3: C1-C3 SAT = 216/216; models with all |P_i| <= 2 = 216/216
+CHECK 4  l=4: C1-C3 SAT = 1296/1296; models with all |P_i| <= 2 = 1296/1296
+CHECK 4  l=5: C1-C3 SAT = 1350/7776; models with all |P_i| <= 2 = 1350/7776
+CHECK 4  l=6: C1-C3 SAT = 1062/46656; models with all |P_i| <= 2 = 1062/46656
+CHECK 3  two-outsider alternating singleton model, l=3,4, all geometries: failures = 0
+CHECK 5  DFS(size<=2) counts [216, 1296, 1350, 1062] agree with DP: True
+CHECK 5  no-pruning product enumeration on 120 random satisfiable instances: failures = 0

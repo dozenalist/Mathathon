@@ -1,0 +1,268 @@
+seeded 70 oleans from /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/build/lib
+FAIL OAI.Analysis.PlaneSpectrum.Basic [38.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:373:6: error: Type mismatch: After simplification, term
+  ht
+ has type
+  Circle.exp (ξ.re * ((↑imagUnit).re * ↑q)) * Circle.exp (ξ.im * ((↑imagUnit).im * ↑q)) = 1
+but is expected to have type
+  Circle.exp (ξ.im * ↑q) = 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:601:81: error: unsolved goals
+case e_6
+d : D
+h1 : d ∈ L 1
+hi : d ∈ L imagUnit
+l : ℝ
+hl : jF l = restrictLine 1 d
+e : ℝ
+he : jF e = restrictLine imagUnit d
+z : DiscreteE
+hr : ∀ (t : ↥F), d (Multiplicative.ofAdd (ofF t)) = Circle.exp (l * ↑t)
+hi' : ∀ (t : ↥F), d (Multiplicative.ofAdd (imagUnit * ofF t)) = Circle.exp (e * ↑t)
+hd :
+  d z =
+    d (Multiplicative.ofAdd (ofF (reF (Multiplicative.toAdd z)))) *
+      d (Multiplicative.ofAdd (imagUnit * ofF (imF (Multiplicative.toAdd z))))
+⊢ l * (↑(Multiplicative.toAdd z)).re + e * (↑(Multiplicative.toAdd z)).im =
+    l * ↑(reF (Multiplicative.toAdd z)) + e * ↑(imF (Multiplicative.toAdd z))
+
+FAIL OAI.Analysis.PlaneSpectrum.Fourier [37.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:38:0: error: Unexpected name `Multiplier` after `end`: The current section is unnamed
+
+Hint: Delete the name `Multiplier` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵M̵u̵l̵t̵i̵p̵l̵i̵e̵r̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:52:2: error(lean.unknownIdentifier): Unknown identifier `Multiplier.clm`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:55:66: error(lean.unknownIdentifier): Unknown identifier `Multiplier.clm_ae`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:87:0: error: Unexpected name `EuclideanFiveColor` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵
+
+FAIL OAI.Analysis.PlaneSpectrum.InvariantMean [50.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:296:56: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+f h : G →ᵇ ℂ
+x : G
+⊢ (realPart (f + h)) x = (realPart f) x + (realPart h) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:297:56: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+f h : G →ᵇ ℂ
+hr : realPart (f + h) = realPart f + realPart h
+x : G
+⊢ (imagPart (f + h)) x = (imagPart f) x + (imagPart h) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:302:72: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+c : ℂ
+f : G →ᵇ ℂ
+x : G
+⊢ (realPart (c • f)) x = c.re * (realPart f) x - c.im * (imagPart f) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:304:72: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+c : ℂ
+f : G →ᵇ ℂ
+hr : realPart (c • f) = c.re • realPart f - c.im • imagPart f
+x : G
+⊢ (imagPart (c • f)) x = c.re * (imagPart f) x + c.im * (realPart f) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:303:17: warning: This simp argument is unused:
+  Complex.mul_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:305:17: warning: This simp argument is unused:
+  Complex.mul_im
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:422:19: error(lean.unknownIdentifier): Unknown identifier `circleMean_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:419:6: error: unsolved goals
+case pos
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+ρ : G →+ UnitAddCircle
+hρ : ∀ (n : ℤ), n ≠ 0 → ∃ g, ρ g = ↑(1 / 2 / ↑n)
+f : C(UnitAddCircle, ℂ)
+hp : circlePull ρ (fourier 0) = BoundedContinuousFunction.const G 1
+⊢ (circleMean ρ) (fourier 0) = 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:422:37: warning: This simp argument is unused:
+  hp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [circleMean_apply, cmean_const, circleIntegral_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:422:41: warning: This simp argument is unused:
+  cmean_const
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [circleMean_apply, hp, circleIntegral_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:497:0: error: cannot omit referenced section variable `inst✝⁵`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/Pl
+OK   OAI.Analysis.PlaneSpectrum.NumberFields [32.9s]
+OK   OAI.Analysis.PlaneSpectrum.PhaseEncoding [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.SmallArcs [0.0s]
+OK   OAI.Geometry.PlaneColoring.Assembly [0.0s]
+OK   OAI.Geometry.PlaneColoring.Basic [17.5s]
+OK   OAI.Geometry.PlaneColoring.Coloring [0.0s]
+OK   OAI.Geometry.PlaneColoring.Covering [0.0s]
+OK   OAI.Geometry.PlaneColoring.Expansion [26.9s]
+FAIL OAI.Geometry.PlaneColoring.Lattice [19.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Lattice.lean:58:0: error: Invalid name after `end`: Expected `OAI`, but found `SevenLattice`
+
+Hint: Use current scope name `OAI`:
+  end S̵e̵v̵e̵n̵L̵a̵t̵t̵i̵c̵e̵O̲A̲I̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Lattice.lean:59:0: error: Invalid name after `end`: Expected `OAI`, but found `Problem160`
+
+Hint: Use current scope name `OAI`:
+  end P̵r̵o̵b̵l̵e̵m̵1̵6̵0̵O̲A̲I̲
+
+OK   OAI.Geometry.PlaneColoring.Moser [124.0s]
+FAIL OAI.MeasureTheory.CompactFactors.Amenability [32.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:70:2: error: Type mismatch: After simplification, term
+  norm_inner_le_norm (V x) v
+ has type
+  @LE.le ℝ Real.instLE |⟪V x, v⟫| (‖v‖ * ‖V x‖)
+but is expected to have type
+  @LE.le ℝ Real.instLE |⟪V x, v⟫| (‖v‖ * (normFn V) x)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:118:82: error: unsolved goals
+G : Type u_1
+inst✝¹ : TopologicalSpace G
+H : Type u_2
+inst✝ : NormedAddCommGroup H
+V : G →ᵇ H
+x : G
+⊢ (normFn V) x * (normFn V) x = ‖V x‖ * ‖V x‖
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:159:76: error: unsolved goals
+G : Type u_1
+inst✝² : TopologicalSpace G
+H : Type u_2
+inst✝¹ : NormedAddCommGroup H
+inst✝ : InnerProductSpace ℝ H
+V W : G →ᵇ H
+x : G
+⊢ ‖V x‖ ^ 2 + ⟪V x, W x⟫ * 2 + ‖W x‖ ^ 2 = ‖V x‖ ^ 2 + ‖W x‖ ^ 2 + (cross V W) x * 2
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:162:42: warning: This simp argument is unused:
+  cross_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [squareNorm_apply, BoundedContinuousFunction.add_apply, BoundedContinuousFunction.smul_apply,
+    smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:186:69: error: unsolved goals
+case e_6
+G : Type u_1
+inst✝⁴ : AddCommGroup G
+inst✝³ : TopologicalSpace G
+inst✝² : DiscreteTopology G
+M : Mean G
+H : Type u_2
+inst✝¹ : NormedAddCommGroup H
+inst✝ : InnerProductSpace ℝ H
+V W Z : G →ᵇ H
+g x : G
+⊢ (cross (shift G g V) (W + Z)) x = (cross (shift G g V) W) x + (cross (shift G g V) Z) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:191:13: warning: This simp argument is unused:
+  cross_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [BoundedContinuousFunction.add_apply, inner_add_right]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:191:63: warning: This simp argument is unused:
+  inner_add_right
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [cross_apply, BoundedContinuousFunction.add_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:197:52: error: unsolved goals
+G : Type u_1
+inst✝⁴ : AddCommGroup G
+inst✝³ : TopologicalSpace G
+inst✝² : DiscreteTopology G
+M : Mean G
+H : Type u_2
+inst✝¹ : NormedAddCommGroup H
+inst✝ : InnerProductSpace ℝ H
+V : G →ᵇ H
+g x✝ : G
+⊢ (cross (shift G g V) 0) x✝ = 0
+Try this:
+  [apply] abel_nf
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:209:14: error: `abel_nf` made no progress on the goal
+Try this:
+  [apply] abel_nf
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:202:72: error: unsolved goals
+case e_6.e_6
+
+OK   OAI.MeasureTheory.CompactFactors.Centers [100.8s]
+OK   OAI.Analysis.PlaneSpectrum.Characters [89.8s]
+OK   OAI.Analysis.PlaneSpectrum.CircleDecay [89.9s]
+OK   OAI.Analysis.PlaneSpectrum.PhaseCollision [63.2s]
+OK   OAI.Analysis.PlaneSpectrum.Selections [77.9s]
+OK   OAI.Geometry.PlaneColoring.BinaryDynamics [89.5s]
+OK   OAI.Geometry.PlaneColoring.CircleMaps [0.0s]
+OK   OAI.Geometry.PlaneColoring.Metric [167.7s]
+OK   OAI.Geometry.PlaneColoring.WeakColoring [171.4s]
+FAIL OAI.MeasureTheory.CompactFactors.RelativeCenters [133.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:80:0: error: Unexpected name `EuclideanFiveColor.CosetCenter.Embedding` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor.CosetCenter.Embedding` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵C̵o̵s̵e̵t̵C̵e̵n̵t̵e̵r̵.̵E̵m̵b̵e̵d̵d̵i̵n̵g̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:90:8: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.ErgodicSupport.ae_eq_const_of_invariant`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:109:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.compProd_map_base`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:123:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.condDistrib_comp_equiv`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:138:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.condDistrib_equivariant`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:187:18: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.probabilityKernel`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:191:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.measurable_probabilityKernel`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:194:18: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.cosetMass`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:197:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.measurable_cosetMass`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Rela
+OK   OAI.Analysis.PlaneSpectrum.Multipliers [190.8s]
+OK   OAI.Geometry.PlaneColoring.CircleTransport [191.2s]
+OK   OAI.Geometry.PlaneColoring.Compactness [76.9s]
+OK   OAI.Geometry.PlaneColoring.Seven [54.5s]
+OK   OAI.MeasureTheory.CompactFactors.ConditionalSelection [99.9s]
+OK   OAI.Analysis.PlaneSpectrum.CircleOperator [88.5s]
+OK   OAI.Analysis.PlaneSpectrum.FourierTests [105.5s]

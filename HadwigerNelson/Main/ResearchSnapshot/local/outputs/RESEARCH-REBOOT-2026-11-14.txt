@@ -1,0 +1,80 @@
+MATHATHON RESEARCH REBOOT — NOVEMBER 14, 2026
+Owner: Codex supervisor. Start: approximately 08:10 Pacific.
+Authority: user explicitly requested more Astra involvement, still bounded, and effective use of a forthcoming Claude subscription. Retain equal effort on solving and substantial simplification, six Open Math OS chats, and twenty-minute reports.
+
+DECISION
+Put Astra in charge of the mathematical bottlenecks from the beginning. Keep Open Math OS as the main execution team. Use Claude, once authenticated, for independent derivations and adversarial review. Success means a new useful theorem or a substantially clearer proof with a complete justification; activity, line count, and compiled auxiliary lemmas are not success metrics.
+
+The initial tranche is FOUR NEW Astra assignments: the completed strategy review, two principal attack leads, and one independent referee. Including the earlier wild-law audit, that is five assignments in this research window. At most TWO Astra agents are active simultaneously. Use Ultra for these difficult mathematical jobs, not routine supervision. Do not launch further assignments automatically after this tranche; assess evidence and remaining reported usage at the six-hour checkpoint. No quota reset, purchase, or extra-usage setting is authorized by this plan.
+
+PROGRAM A — SIX-COLOUR FRONTIER (HALF THE EFFORT)
+Goal: find a real obstruction to six colours, with an explicit path from the new lemma to its final theorem. First investigate ternary centres: the supplied binary-palette argument obtains two-element support at five colours, but leaves three-element palettes at six. The generic measurable transfer already works for k; duplicating it is not progress.
+
+Astra lead output: source-checked statement of the proposed ternary exclusion/descent lemma, all hypotheses and almost-everywhere quantifiers, and the COMPLETE downstream chain. Audit the cycle/forest and core-filling stages independently: excluding triple palettes alone does not establish the final six-colour contradiction. If there are multiple independent hard gaps, rank them and reject any claimed one-lemma completion.
+
+First falsification test: a small exact finite-state relaxation using only transport constraints actually provided by the source. Each constraint has a source and a quantifier. A model kills that proposed finite implication, not the plane-colouring problem. UNSAT needs both a checkable certificate and a proved connection to the analytic hypotheses.
+
+Open Math workers after their current turns finish:
+* Geometry (chat-b9bfdf6c4a): source extraction and exact ternary transport identities.
+* Independent (chat-ed83956872): adversarial countermodels and downstream implication audit.
+* Graphs (chat-9da30bd8a3): finite-state/SAT implementation and certificates under the lead's contract.
+
+Stop arbitrary Heule gluing and closed pair searches. A forced-equal pair at five colours can lead to an explicit six-chromatic graph, which could be an interesting alternative proof, but it does not resolve six versus seven. A certified five-colourable seed has no forced-equal pair at six colours: recolour either endpoint with the spare colour. Reopen finite geometry only with a mathematically justified mechanism and a clear deliverable.
+
+PROGRAM B — SUBSTANTIAL PROOF SIMPLIFICATION (HALF THE EFFORT)
+Goal: replace a heavy argument with a short general theorem and an understandable proof, or expose a genuinely useful conceptual organization. Bank the verified 126-line refactor and stop repeated instrumentation around it.
+
+Primary experiment: encode the full six-angle word W(t)=(f(t),f(t+60 degrees),...,f(t+300 degrees)). Keep joint correlations rather than combining independently selected marginal support states. Derive projection, rotation and forbidden-word support rules from exact pre-existing premises. Then ask whether these suffice for the desired contact contradiction without the heavy analytic dependency.
+
+The no-sixty result in FiveSupport invokes strict_state_no_unit_support in States. A claimed deletion must avoid that theorem and its descendants transitively; citing it under another name is circular. Audit the eight historical countermodels against the actual joint-state premises. There are 5^6 raw words, but analytic realizability is a separate obligation; finite enumeration alone is not a proof of the analytic step.
+
+Open Math workers after their current turns finish:
+* Architecture (chat-58183f820b): joint-state theorem and complete human proof.
+* Verification (chat-ce79eb30e7): independent premise, exceptional-set and dependency audit.
+* Formal (chat-ec6b8bbaa4): Lean only after a complete mathematical argument; prepare minimal validation and submission-compatibility packets.
+
+OPERATING RULES
+Give each worker one coherent 60–120-minute program with explicit intermediate artifacts. A twenty-minute report is a monitoring point, not a reason to interrupt or replace sound active work. At most one follow-up per completed turn after reconciling the actual history tail. Prefer useful idle capacity to filler tasks. Two material hypothesis errors on a target trigger reassignment to extraction/implementation until a lead repairs the premise contract.
+
+The supervisor consumes lead packets and assigns specific subproblems; agents do not directly write to Open Math chats or human files. Six retired chats and human chats remain read-only. No nested agents. Keep all mathematical claims graded: proposed, paper-reviewed, computationally certified, or Lean-checked, with the exact statement and limitations.
+
+For selected local computations: <=60-second smoke test, then a reviewed <=10-minute run; extend to <=30 minutes only with observed progress and a certificate plan. One heavy computation at a time initially, target <=4 GiB RAM, bounded logs/proof traces, hard timeout and saved checkpoint. Local Lean remains serialized through its existing queue. Remote VM stays light and follows its existing 60-second compute limit unless specifically reviewed. The machine has about 31.4 GiB RAM and 12 logical CPUs but only about 5.9 GiB free C: disk; defer new large caches/traces until space is available.
+
+CLAUDE ROLE AND SETUP
+Use a Claude Code account login under the user's subscription. No API key is needed for this route, and no credential belongs in chat. Claude Code is not currently installed/on PATH and no connected Claude plugin was found.
+1. User installs the official CLI in PowerShell: winget install Anthropic.ClaudeCode
+2. Open a new terminal, run claude, and complete the browser sign-in with the subscribed Claude account. Then tell Codex the local login is complete.
+3. Codex verifies authentication without printing credentials and runs a small bounded noninteractive smoke test. Use normal subscription mode, not --bare or an assumed API key.
+4. Initially one Claude job at a time. First independent derivation sees the original statement/source, not Astra's proposed proof; second pass receives the candidate and tries to break it. Give it bounded local task packets and its own output directory; no automatic extra-usage billing or remote chat control.
+5. Select the strongest model actually available in the account after checking the installed CLI. Do not guess a model version or assume unlimited usage. Subscription usage and any API credits are separate.
+
+The $100/month tier is currently called Max. Official documentation says Claude Code is included. It also describes monthly API credits after seven days of eligible membership; that bonus is not a dependable way to fund this weekend if the subscription is new. The account-login CLI route is the immediate integration.
+
+MILESTONES AND STOP RULES
+By approximately 10:10 Saturday (2h): both precise theorem contracts, downstream gap maps, first falsifying experiments, and specific worker assignments. Stop any proposed target without a useful downstream consumer.
+By approximately 14:10 Saturday (6h): at least one independently reviewed nontrivial lemma, real dependency replacement, or checked countermodel that decisively kills a named route. Select the strongest delivery target and reassess Astra spending. No new state-space expansion without a new proved relation.
+By approximately 20:10 Saturday (12h): a reviewable mathematical argument and artifact, ideally a 4–6-page explanation. If the attack failed, say so and concentrate on the strongest genuinely new insight. No unsupported claims of a solution.
+Research stop remains Sunday November 15 at 08:54 Pacific. The published submission deadline is NOON Pacific; preserve the remaining three hours for exposition, attribution, slides and packaging. The user/team owns the final submission unless explicitly delegated.
+
+Every twenty-minute report answers: what claim advanced, what was independently checked, what failed, what exact obstacle remains, and what happens next. Include resource/agent status, but do not substitute message counts for progress. Report interruptions honestly. Keep the computer on power, awake and online for the local supervisor; the previous Windows-update gap demonstrates why this matters.
+
+JUDGING AND LEAN
+Official judging prioritizes correctness, clarity, motivation and interest, with novelty and attribution in the written-report rubric. Lean and line count have no automatic bonus. An optional Lean submission is pinned to Lean/mathlib 4.35.0; the existing 4.34.1 validation is not automatically submission-ready. Do not claim the supplied Lean proof as a new formalization. Prefer a substantive human proof and a narrow formal certificate for the NEW result over spending the research window migrating inherited files.
+
+USER SETUP NEEDED
+* Set this chat to Ultra if desired; the two principal Astra leads are explicitly launched at Ultra through their agent settings.
+* Install Claude Code and complete its private browser login as above. No key in chat.
+* Free roughly 20–30 GB on C: or identify another drive for larger caches/certificates. No automatic deletion.
+* Leave the computer awake on power with internet. No additional paid compute is presently necessary for the proposed small-state experiments.
+
+REFERENCES
+Independent source-based strategy: outputs/ASTRA-STRATEGY-REVIEW-2026-11-14.txt
+Original source: work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/
+Judging: https://github.com/SAIRcompetition/mathathon-judge/blob/main/rules/judge-guidelines.md
+Deadline: https://github.com/SAIRcompetition/mathathon-judge/blob/main/rules/participant-rules.md
+Submission requirements: https://github.com/SAIRcompetition/mathathon-judge/blob/main/rules/submission-guidelines.md
+Claude Max: https://support.claude.com/en/articles/11049741-what-is-the-max-plan
+Claude installation: https://code.claude.com/docs/en/setup
+Claude authentication: https://code.claude.com/docs/en/authentication
+Claude noninteractive use: https://code.claude.com/docs/en/headless
+Eligible API credits: https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-ultra-and-team-plans

@@ -1,0 +1,665 @@
+FAIL OAI.Analysis.PlaneSpectrum.Basic [8.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:71:14: error: unsolved goals
+ξ : ℂ
+⊢ Circle.exp ((embed 1).re * ξ.re) * Circle.exp ((embed 1).im * ξ.im) = 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:72:32: error(lean.unknownIdentifier): Unknown identifier `embed_mul`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:72:21: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:365:6: error: Type mismatch: After simplification, term
+  ht
+ has type
+  Circle.exp (ξ.re * ((↑imagUnit).re * ↑q)) * Circle.exp (ξ.im * ((↑imagUnit).im * ↑q)) = 1
+but is expected to have type
+  Circle.exp (ξ.im * ↑q) = 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:396:4: error: unsolved goals
+case e'_6
+z : ℂ
+hi : IsAlgebraic ℚ Complex.I
+hhalf : IsAlgebraic ℚ 2⁻¹
+hz : IsAlgebraic ℚ z
+hc : IsAlgebraic ℚ ((starRingEnd ℂ) z)
+h : IsAlgebraic ℚ ((z + (starRingEnd ℂ) z) * 2⁻¹)
+⊢ (algebraMap ℝ ℂ) z.re = (z + (starRingEnd ℂ) z) * 2⁻¹
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:401:4: error: unsolved goals
+case e'_6
+z : ℂ
+hi : IsAlgebraic ℚ Complex.I
+hhalf : IsAlgebraic ℚ 2⁻¹
+hz : IsAlgebraic ℚ z
+hc : IsAlgebraic ℚ ((starRingEnd ℂ) z)
+h : IsAlgebraic ℚ ((z - (starRingEnd ℂ) z) * 2⁻¹ * Complex.I⁻¹)
+⊢ (algebraMap ℝ ℂ) z.im = (z - (starRingEnd ℂ) z) * 2⁻¹ * Complex.I⁻¹
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:495:17: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:496:32: error(lean.unknownIdentifier): Unknown identifier `embedF_mul`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:496:21: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:586:81: error: unsolved goals
+case e_6
+d : D
+h1 : d ∈ L 1
+hi : d ∈ L imagUnit
+l : ℝ
+hl : jF l = restrictLine 1 d
+e : ℝ
+he : jF e = restrictLine imagUnit d
+z : DiscreteE
+hr : ∀ (t : ↥F), d (Multiplicative.ofAdd (ofF t)) = Circle.exp (l * ↑t)
+hi' : ∀ (t : ↥F), d (Multiplicative.ofAdd (imagUnit * ofF t)) = Circle.exp (e * ↑t)
+hd :
+  d z =
+    d (Multiplicative.ofAdd (ofF (reF (Multiplicative.toAdd z)))) *
+      d (Multiplicative.ofAdd (imagUnit * ofF (imF (Multiplicative.toAdd z))))
+⊢ l * (↑(Multiplicative.toAdd z)).re + e * (↑(Multiplicative.toAdd z)).im =
+    l * ↑(reF (Multiplicative.toAdd z)) + e * ↑(imF (Multiplicative.toAdd z))
+
+FAIL OAI.Analysis.PlaneSpectrum.DifferenceLaw [4.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/DifferenceLaw.lean:21:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsProbabilityMeasure (Measure.map (fun p => p.1 / p.2) (⇑(κ ×ₖ κ) ∘ₘ ν))
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/DifferenceLaw.lean:59:0: error: Invalid name after `end`: Expected `DifferenceFourier`, but found `OAI`
+
+Note: The current scopes are `EuclideanFiveColor.DifferenceFourier`
+
+OK   OAI.Analysis.PlaneSpectrum.Fourier [0.0s]
+FAIL OAI.Analysis.PlaneSpectrum.InvariantMean [7.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:44:82: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g x : G
+n : ℕ
+f : G →ᵇ ℝ
+⊢ ∑ c ∈ Finset.range (n + 1), (shift (c • g) f) x = ∑ k ∈ Finset.range (n + 1), f (x + k • g) ∨ ↑n + 1 = 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:75:27: error(lean.unknownIdentifier): Unknown identifier `shift_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:77:2: error: Tactic `apply` failed: could not unify the conclusion of `Finset.sum_congr rfl`
+  Finset.sum ?m.55 ?m.52 = Finset.sum ?m.55 ?m.53
+with the goal
+  ∑ k ∈ Finset.range (n + 1), (shift h f) (x + k • g) =
+    (∑ k ∈ Finset.range (n + 1), shift (k • g) f).toContinuousMap ({ toFun := fun x => x + h, continuous_toFun := ⋯ } x)
+
+Note: The full type of `Finset.sum_congr rfl` is
+  (∀ x ∈ ?m.55, ?m.52 x = ?m.53 x) → Finset.sum ?m.55 ?m.52 = Finset.sum ?m.55 ?m.53
+
+case e_a
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g h : G
+n : ℕ
+f : G →ᵇ ℝ
+x : G
+⊢ ∑ k ∈ Finset.range (n + 1), (shift h f) (x + k • g) =
+    (∑ k ∈ Finset.range (n + 1), shift (k • g) f).toContinuousMap ({ toFun := fun x => x + h, continuous_toFun := ⋯ } x)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:103:52: error(lean.unknownIdentifier): Unknown identifier `shift_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:102:39: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g x : G
+n : ℕ
+f : G →ᵇ ℝ
+k : ℕ
+⊢ (shift g f) (x + k • g) - f (x + k • g) = f (x + (k • g + g)) - f (x + k • g)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:103:87: warning: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [BoundedContinuousFunction.sub_apply, shift_apply, add_nsmul, one_nsmul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:291:56: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+f h : G →ᵇ ℂ
+x : G
+⊢ (realPart (f + h)) x = (realPart f) x + (realPart h) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:292:56: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+f h : G →ᵇ ℂ
+hr : realPart (f + h) = realPart f + realPart h
+x : G
+⊢ (imagPart (f + h)) x = (imagPart f) x + (imagPart h) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:297:72: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+c : ℂ
+f : G →ᵇ ℂ
+x : G
+⊢ (realPart (c • f)) x = c.re * (realPart f) x - c.im * (imagPart f) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:299:72: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+c :
+FAIL OAI.Analysis.PlaneSpectrum.NumberFields [5.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:61:13: error(lean.unknownIdentifier): Unknown identifier `coeff_polyLinear`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:59:60: error: unsolved goals
+L : Type u_1
+inst✝¹ : Field L
+inst✝ : Algebra ℚ L
+ℓ : L →ₗ[ℚ] ℚ
+p q : L[X]
+n : ℕ
+⊢ (polyLinear ℓ (p + q)).coeff n = (polyLinear ℓ p).coeff n + (polyLinear ℓ q).coeff n
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:61:42: warning: This simp argument is unused:
+  map_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [coeff_polyLinear, coeff_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:65:13: error(lean.unknownIdentifier): Unknown identifier `coeff_polyLinear`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:66:16: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:66:16: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:118:16: error(lean.unknownIdentifier): Unknown identifier `coeff_polyLinear`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:118:4: error: Type mismatch: After simplification, term
+  he
+ has type
+  (polyLinear ℓ (R + C b * R * X)).coeff 0 = 0
+but is expected to have type
+  ℓ 1 = 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:121:16: error(lean.unknownIdentifier): Unknown identifier `coeff_polyLinear`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:121:4: error: Type mismatch: After simplification, term
+  he
+ has type
+  (polyLinear ℓ (R + C b * R * X)).coeff 1 = 0
+but is expected to have type
+  ℓ (R.coeff 1) + ℓ b = 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:125:16: error(lean.unknownIdentifier): Unknown identifier `coeff_polyLinear`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:125:4: error: Type mismatch: After simplification, term
+  he
+ has type
+  (polyLinear ℓ (R + C b * R * X)).coeff 2 = 0
+but is expected to have type
+  ℓ (R.coeff 2) + ℓ (b * R.coeff 1) = 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:240:26: error(lean.unknownIdentifier): Unknown identifier `hi`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:241:14: error: Function expected at
+  iN N
+but this term has type
+  ↥N
+
+Note: Expected a function because this term is being applied to the argument
+  hi
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:241:36: error: No applicable extensionality theorem found for type
+  ℤ
+
+Note: Extensionality theore
+OK   OAI.Analysis.PlaneSpectrum.PhaseEncoding [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.SmallArcs [0.0s]
+OK   OAI.Geometry.PlaneColoring.Assembly [0.0s]
+OK   OAI.Geometry.PlaneColoring.Basic [2.9s]
+OK   OAI.Geometry.PlaneColoring.Coloring [0.0s]
+FAIL OAI.Geometry.PlaneColoring.Covering [3.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Covering.lean:34:9: error(lean.unknownIdentifier): Unknown identifier `triangular_rectangle_cover`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Covering.lean:34:70: error: Tactic `rcases` failed: `x✝ : ?m.454` is not an inductive datatype
+
+FAIL OAI.Geometry.PlaneColoring.Expansion [4.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Expansion.lean:472:89: error(lean.invalidField): Invalid field `antilipschitzWith`: The environment does not contain `Function.antilipschitzWith`, so it is not possible to project the field `antilipschitzWith` from an expression
+  isometry_subtype_coe
+of type
+  ∀ (x1 x2 : { x // x ∈ univ }), edist ↑x1 ↑x2 = edist x1 x2
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Expansion.lean:470:84: error: unsolved goals
+f D : ℝ → ℝ
+hd : ∀ (x : ℝ), HasDerivAt f (D x) x
+hp : ∀ (x : ℝ), 1 / 2 ≤ D x
+⊢ Measure.QuasiMeasurePreserving f volume volume
+
+OK   OAI.Geometry.PlaneColoring.Lattice [3.7s]
+FAIL OAI.Geometry.PlaneColoring.Moser [21.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Moser.lean:130:94: error: unsolved goals
+case inl
+h3 : √3 ^ 2 = 3
+h11 : √11 ^ 2 = 11
+⊢ -((moserPoint 0).re * (moserPoint 1).re * 2) + (moserPoint 0).re ^ 2 + (moserPoint 1).re ^ 2 -
+          (moserPoint 0).im * (moserPoint 1).im * 2 +
+        (moserPoint 0).im ^ 2 +
+      (moserPoint 1).im ^ 2 =
+    1
+
+case inr.inl
+h3 : √3 ^ 2 = 3
+h11 : √11 ^ 2 = 11
+⊢ -((moserPoint 0).re * (moserPoint 2).re * 2) + (moserPoint 0).re ^ 2 + (moserPoint 2).re ^ 2 -
+          (moserPoint 0).im * (moserPoint 2).im * 2 +
+        (moserPoint 0).im ^ 2 +
+      (moserPoint 2).im ^ 2 =
+    1
+
+case inr.inr.inl
+h3 : √3 ^ 2 = 3
+h11 : √11 ^ 2 = 11
+⊢ -((moserPoint 1).re * (moserPoint 2).re * 2) + (moserPoint 1).re ^ 2 + (moserPoint 2).re ^ 2 -
+          (moserPoint 1).im * (moserPoint 2).im * 2 +
+        (moserPoint 1).im ^ 2 +
+      (moserPoint 2).im ^ 2 =
+    1
+
+case inr.inr.inr.inl
+h3 : √3 ^ 2 = 3
+h11 : √11 ^ 2 = 11
+⊢ -((moserPoint 3).re * (moserPoint 1).re * 2) + (moserPoint 3).re ^ 2 + (moserPoint 1).re ^ 2 -
+          (moserPoint 3).im * (moserPoint 1).im * 2 +
+        (moserPoint 3).im ^ 2 +
+      (moserPoint 1).im ^ 2 =
+    1
+
+case inr.inr.inr.inr.inl
+h3 : √3 ^ 2 = 3
+h11 : √11 ^ 2 = 11
+⊢ -((moserPoint 3).re * (moserPoint 2).re * 2) + (moserPoint 3).re ^ 2 + (moserPoint 2).re ^ 2 -
+          (moserPoint 3).im * (moserPoint 2).im * 2 +
+        (moserPoint 3).im ^ 2 +
+      (moserPoint 2).im ^ 2 =
+    1
+
+case inr.inr.inr.inr.inr.inl
+h3 : √3 ^ 2 = 3
+h11 : √11 ^ 2 = 11
+⊢ -((moserPoint 0).re * (moserPoint 4).re * 2) + (moserPoint 0).re ^ 2 + (moserPoint 4).re ^ 2 -
+          (moserPoint 0).im * (moserPoint 4).im * 2 +
+        (moserPoint 0).im ^ 2 +
+      (moserPoint 4).im ^ 2 =
+    1
+
+case inr.inr.inr.inr.inr.inr.inl
+h3 : √3 ^ 2 = 3
+h11 : √11 ^ 2 = 11
+⊢ -((moserPoint 0).re * (moserPoint 5).re * 2) + (moserPoint 0).re ^ 2 + (moserPoint 5).re ^ 2 -
+          (moserPoint 0).im * (moserPoint 5).im * 2 +
+        (moserPoint 0).im ^ 2 +
+      (moserPoint 5).im ^ 2 =
+    1
+
+case inr.inr.inr.inr.inr.inr.inr.inl
+h3 : √3 ^ 2 = 3
+h11 : √11 ^ 2 = 11
+⊢ -((moserPoint 4).re * (moserPoint 5).re * 2) + (moserPoint 4).re ^ 2 + (moserPoint 5).re ^ 2 -
+          (moserPoint 4).im * (moserPoint 5).im * 2 +
+        (moserPoint 4).im ^ 2 +
+      (moserPoint 5).im ^ 2 =
+    1
+
+case inr.inr.inr.inr.inr.inr.inr.inr.inl
+h3 : √3 ^ 2 = 3
+h11 : √11 ^ 2 = 11
+⊢ -((moserPoint 6).re * (moserPoint 4).re * 2) + (moserPoint 6).re ^ 2 + (moserPoint 4).re ^ 2 -
+          (moserPoint 6).im * (moserPoint 4).im * 2 +
+        (moserPoint 6).im ^ 2 +
+      (moserPoint 4).im ^ 2 =
+    1
+
+case inr.inr.inr.inr.inr.inr.inr.inr.inr.inl
+h3 : √3 ^ 2 = 3
+h11 : √11 ^ 2 = 11
+⊢ -((moserPoint 6).re * (moserPoint 5).re * 2) + (moserPoint 6).re ^ 2 + (moserPoint 5).re ^ 2 -
+          (moserPoint 6).im * (moserPoint 5).im * 2 +
+        (moserPoint 6).im ^ 2 +
+      (moserPoint 5).im ^ 2 =
+    1
+
+case inr.inr.inr.inr.inr.inr.inr.inr.inr.inr
+h3 : √3 ^ 2 = 3
+h11 : √11 ^ 2 = 11
+⊢ -((moserPoint 3).re * (moserPoint 6).re * 2) + (moserPoint 3).re ^ 2 + (moserPoint 6).re ^ 2 -
+          (moserPoint 3).im * (moserPoint 6).im * 2 +
+        (moserPoint 3).im ^ 2 +
+      (moserPoint 6).im ^ 2 =
+    1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Moser.lean:186:57: error: unsolved goals
+ha : 1.73205 < √3
+hb : √3 < 1.73206
+hc : 3.31662 < √11
+hd : √11 < 3.31663
+hp : 1.73205 * 3.31662 ≤ √3 * √11
+hq : √3 * √11 ≤ 1.73206 * 3.31663
+⊢ |35 / 37 * ((moserPoint 0).re + -(29 / 25)) - 12 / 37 * ((moserPoint 0).im + 149 / 250) + 6453 / 5000| ≤ 11 / 100000 ∧
+    |35 / 37 * ((moserPoint 0).im + 149 / 250) + 12 / 37 * ((moserPoint 0).re + -(29 / 25)) - 469 / 2500| ≤ 11 / 100000
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Moser.lean:202
+FAIL OAI.MeasureTheory.CompactFactors.Amenability [6.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:65:2: error: Type mismatch: After simplification, term
+  norm_inner_le_norm (V x) v
+ has type
+  @LE.le ℝ Real.instLE |⟪V x, v⟫| (‖v‖ * ‖V x‖)
+but is expected to have type
+  @LE.le ℝ Real.instLE |⟪V x, v⟫| (‖v‖ * (normFn V) x)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:112:82: error: unsolved goals
+G : Type u_1
+inst✝¹ : TopologicalSpace G
+H : Type u_2
+inst✝ : NormedAddCommGroup H
+V : G →ᵇ H
+x : G
+⊢ (normFn V) x * (normFn V) x = ‖V x‖ * ‖V x‖
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:153:76: error: unsolved goals
+G : Type u_1
+inst✝² : TopologicalSpace G
+H : Type u_2
+inst✝¹ : NormedAddCommGroup H
+inst✝ : InnerProductSpace ℝ H
+V W : G →ᵇ H
+x : G
+⊢ ‖V x‖ ^ 2 + ⟪V x, W x⟫ * 2 + ‖W x‖ ^ 2 = ‖V x‖ ^ 2 + ‖W x‖ ^ 2 + (cross V W) x * 2
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:156:42: warning: This simp argument is unused:
+  cross_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [squareNorm_apply, BoundedContinuousFunction.add_apply, BoundedContinuousFunction.smul_apply,
+    smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:180:69: error: unsolved goals
+case e_6
+G : Type u_1
+inst✝⁴ : AddCommGroup G
+inst✝³ : TopologicalSpace G
+inst✝² : DiscreteTopology G
+M : Mean G
+H : Type u_2
+inst✝¹ : NormedAddCommGroup H
+inst✝ : InnerProductSpace ℝ H
+V W Z : G →ᵇ H
+g x : G
+⊢ (cross (shift G g V) (W + Z)) x = (cross (shift G g V) W) x + (cross (shift G g V) Z) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:185:13: warning: This simp argument is unused:
+  cross_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [BoundedContinuousFunction.add_apply, inner_add_right]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:185:63: warning: This simp argument is unused:
+  inner_add_right
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [cross_apply, BoundedContinuousFunction.add_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:191:52: error: unsolved goals
+G : Type u_1
+inst✝⁴ : AddCommGroup G
+inst✝³ : TopologicalSpace G
+inst✝² : DiscreteTopology G
+M : Mean G
+H : Type u_2
+inst✝¹ : NormedAddCommGroup H
+inst✝ : InnerProductSpace ℝ H
+V : G →ᵇ H
+g x✝ : G
+⊢ (cross (shift G g V) 0) x✝ = 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:202:13: error(lean.unknownIdentifier): Unknown identifier `shift_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactor
+FAIL OAI.MeasureTheory.CompactFactors.Centers [9.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:39:45: error: unsolved goals
+z : ℂ
+h : lift z = 0
+this : WithLp.fst (lift z) = 0
+⊢ False
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:44:66: error: unsolved goals
+z : ℂ
+⊢ √(WithLp.fst (lift z) ^ 2 + ‖WithLp.snd (lift z)‖ ^ 2) = √(1 + ‖z‖ ^ 2)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:58:4: error: Type mismatch: After simplification, term
+  Eq.symm hab
+ has type
+  1 = a + b
+but is expected to have type
+  WithLp.fst (lift (↑a * z + ↑b * w)) = a * WithLp.fst (lift z) + b * WithLp.fst (lift w)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:70:30: error(lean.unknownIdentifier): Unknown identifier `lift_fst`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:71:30: error(lean.unknownIdentifier): Unknown identifier `lift_snd`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:72:45: error: Application type mismatch: The argument
+  hsnd
+has type
+  (r * a) • WithLp.snd (lift z) = b • WithLp.snd (lift w)
+but is expected to have type
+  (fun x => b • x) z = (fun x => b • x) w
+in the application
+  smul_right_injective ℂ (LT.lt.ne' hb) hsnd
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:70:53: warning: This simp argument is unused:
+  mul_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [WithLp.smul_fst, lift_fst, smul_eq_mul] at hfst
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:71:51: warning: This simp argument is unused:
+  hfst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [WithLp.smul_snd, lift_snd, smul_smul] at hsnd
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:344:18: error: Application type mismatch: The argument
+  fun point => point + v
+has type
+  ℂ → ℂ
+of sort `Type` but is expected to have type
+  AEMeasurable ?m.6 ↑μ
+of sort `Prop` in the application
+  μ.map fun point => point + v
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:365:18: error: Application type mismatch: The argument
+  O
+has type
+  ℂ ≃ₗᵢ[ℝ] ℂ
+of sort `Type` but is expected to have type
+  AEMeasurable ?m.18 ↑μ
+of sort `Prop` in the application
+  μ.map O
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:492:6: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsProbabilityMeasure (Measure.map (fun d => e.coordinate (d / z)) (↑μ)[|e.coset z])
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:501:4: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OA
+OK   OAI.Analysis.PlaneSpectrum.Characters [0.0s]
+FAIL OAI.Analysis.PlaneSpectrum.CircleDecay [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/CircleDecay.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Analysis/PlaneSpectrum/Fourier.olean', incompatible header
+
+FAIL OAI.Analysis.PlaneSpectrum.PhaseCollision [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Analysis/PlaneSpectrum/PhaseEncoding.olean', incompatible header
+
+OK   OAI.Analysis.PlaneSpectrum.Selections [0.0s]
+OK   OAI.Geometry.PlaneColoring.BinaryDynamics [0.0s]
+FAIL OAI.Geometry.PlaneColoring.CircleMaps [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/CircleMaps.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/Coloring.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.Metric [4.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Metric.lean:18:31: error(lean.unknownIdentifier): Unknown identifier `triangularLattice_zero`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Metric.lean:18:55: error(lean.unknownIdentifier): Unknown identifier `triangularLattice_one`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Metric.lean:16:61: error: unsolved goals
+a b : ℤ
+⊢ (triangularLattice a b).ofLp 0 ^ 2 + (triangularLattice a b).ofLp 1 ^ 2 =
+    ↑a * ↑b * (16 / 25) + ↑a ^ 2 * (16 / 25) + ↑b ^ 2 * (16 / 25)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Metric.lean:50:47: error(lean.unknownIdentifier): Unknown identifier `triangularLattice_zero`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Metric.lean:51:4: error(lean.unknownIdentifier): Unknown identifier `triangularLattice_one`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Metric.lean:48:57: error: unsolved goals
+x : Plane
+a b : ℤ
+⊢ -(x.ofLp 0 * (triangularLattice a b).ofLp 0 * 2) + x.ofLp 0 ^ 2 + (triangularLattice a b).ofLp 0 ^ 2 -
+          x.ofLp 1 * (triangularLattice a b).ofLp 1 * 2 +
+        x.ofLp 1 ^ 2 +
+      (triangularLattice a b).ofLp 1 ^ 2 =
+    x.ofLp 0 * ↑a * (-8 / 5) + x.ofLp 0 * ↑b * (-4 / 5) + x.ofLp 0 ^ 2 + x.ofLp 1 * ↑b * √3 * (-4 / 5) + x.ofLp 1 ^ 2 +
+            ↑a * ↑b * (16 / 25) +
+          ↑a ^ 2 * (16 / 25) +
+        ↑b ^ 2 * (4 / 25) +
+      ↑b ^ 2 * √3 ^ 2 * (4 / 25)
+
+FAIL OAI.Geometry.PlaneColoring.WeakColoring [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/WeakColoring.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/Coloring.olean', incompatible header
+
+FAIL OAI.MeasureTheory.CompactFactors.RelativeCenters [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Analysis/PlaneSpectrum/Basic.olean', incompatible header
+
+FAIL OAI.Analysis.PlaneSpectrum.Multipliers [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/Multipliers.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Analysis/PlaneSpectrum/Characters.olean', incompatible header
+
+OK   OAI.Geometry.PlaneColoring.CircleTransport [0.0s]
+FAIL OAI.Geometry.PlaneColoring.Compactness [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Compactness.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/WeakColoring.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.Seven [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Seven.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/Assembly.olean', incompatible header
+
+OK   OAI.MeasureTheory.CompactFactors.ConditionalSelection [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.DifferenceInvariant [0.0s]
+FAIL OAI.Analysis.PlaneSpectrum.CircleOperator [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Analysis/PlaneSpectrum/CircleDecay.olean', incompatible header
+
+FAIL OAI.Analysis.PlaneSpectrum.FourierTests [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/FourierTests.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Analysis/PlaneSpectrum/Multipliers.olean', incompatible header
+
+FAIL OAI.Analysis.PlaneSpectrum.ConditionalSpectrum [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Analysis/PlaneSpectrum/FourierTests.olean', incompatible header
+
+OK   OAI.Geometry.PlaneColoring.Transitions [0.0s]
+FAIL OAI.Geometry.PlaneColoring.Palettes [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Palettes.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/Transitions.olean', incompatible header
+
+FAIL OAI.MeasureTheory.CompactFactors.Approximation [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Approximation.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.PaletteDensity [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/CircleTransport.olean', incompatible header
+
+FAIL OAI.MeasureTheory.CompactFactors.ConditionalLimits [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/MeasureTheory/CompactFactors/Approximation.olean', incompatible header
+
+OK   OAI.Geometry.PlaneColoring.PaletteTransport [0.0s]
+FAIL OAI.MeasureTheory.CompactFactors.Kernels [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Kernels.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/MeasureTheory/CompactFactors/ConditionalLimits.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.BinaryPalettes [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/PaletteTransport.olean', incompatible header
+
+OK   OAI.Geometry.PlaneColoring.Rigidity [0.0s]
+FAIL OAI.MeasureTheory.CompactFactors.BoundedFunctions [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/MeasureTheory/CompactFactors/Kernels.olean', incompatible header
+
+FAIL OAI.MeasureTheory.CompactFactors.Functions [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Functions.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/MeasureTheory/CompactFactors/Kernels.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.States [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/States.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/BinaryPalettes.olean', incompatible header
+
+FAIL OAI.MeasureTheory.CompactFactors.Factors [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/MeasureTheory/CompactFactors/Functions.olean', incompatible header
+
+FAIL OAI.MeasureTheory.CompactFactors.RelativeProducts [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/MeasureTheory/CompactFactors/Amenability.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.BoundaryTrace [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/Rigidity.olean', incompatible header
+
+OK   OAI.Geometry.PlaneColoring.Converse [0.0s]
+FAIL OAI.Geometry.PlaneColoring.FourContinuity [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/States.olean', incompatible header
+
+FAIL OAI.MeasureTheory.CompactFactors.Separability [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/MeasureTheory/CompactFactors/RelativeProducts.olean', incompatible header
+
+OK   OAI.MeasureTheory.CompactFactors.Stationary [0.0s]
+FAIL OAI.Geometry.PlaneColoring.AngularBoundary [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/BoundaryTrace.olean', incompatible header
+
+OK   OAI.Geometry.PlaneColoring.FourTransport [0.0s]
+FAIL OAI.MeasureTheory.CompactFactors.AlgebraModels [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/MeasureTheory/CompactFactors/Separability.olean', incompatible header
+
+FAIL OAI.Analysis.PlaneSpectrum.Representations [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/MeasureTheory/CompactFactors/AlgebraModels.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.Exclusion [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Exclusion.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/AngularBoundary.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.Interfaces [0.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/AngularBoundary.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.Sectors [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Sectors.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/AngularBoundary.olean', incompatible header
+
+FAIL OAI.Analysis.PlaneSpectrum.Energy [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Analysis/PlaneSpectrum/Representations.olean', incompatible header
+
+FAIL OAI.Analysis.PlaneSpectrum.SpectralMeasure [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Analysis/PlaneSpectrum/Representations.olean', incompatible header
+
+OK   OAI.Geometry.PlaneColoring.Accumulation [0.0s]
+FAIL OAI.Analysis.PlaneSpectrum.RadialEnergy [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Analysis/PlaneSpectrum/Energy.olean', incompatible header
+
+OK   OAI.Geometry.PlaneColoring.DiskAverages [0.0s]
+FAIL OAI.Geometry.PlaneColoring.FiveSupport [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/Accumulation.olean', incompatible header
+
+FAIL OAI.Analysis.PlaneSpectrum.Ergodicity [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Analysis/PlaneSpectrum/RadialEnergy.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.CyclicCore [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/CyclicCore.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/FiveSupport.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.PlanarCovers [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/DiskAverages.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.BorelTransfer [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Analysis/PlaneSpectrum/Ergodicity.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.GraphRealization [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/CyclicCore.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.ContinuumLimits [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/GraphRealization.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.DiskExtension [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/GraphRealization.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.Transfer [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Transfer.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/Converse.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.GraphCuts [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/DiskExtension.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.HoleApproximation [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/DiskExtension.olean', incompatible header
+
+OK   OAI.Geometry.PlaneColoring.GraphPatches [0.0s]
+OK   OAI.Geometry.PlaneColoring.FullApproximation [0.0s]
+OK   OAI.Geometry.PlaneColoring.Mesh [0.0s]
+FAIL OAI.Geometry.PlaneColoring.Five [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Five.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/BorelTransfer.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.Chromatic [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/Chromatic.lean:17:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/Five.olean', incompatible header
+
+FAIL OAI.Geometry.PlaneColoring.NullSetRobust [0.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/OAI/Geometry/PlaneColoring/NullSetRobust.lean:1:0: error: failed to read file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m3/tree/lean/build/lib/OAI/Geometry/PlaneColoring/Converse.olean', incompatible header
+
+
+24/82 modules OK in 47s (j=2); sum of module times 87s
+FAILED: OAI.Analysis.PlaneSpectrum.Basic, OAI.Analysis.PlaneSpectrum.DifferenceLaw, OAI.Analysis.PlaneSpectrum.InvariantMean, OAI.Analysis.PlaneSpectrum.NumberFields, OAI.Geometry.PlaneColoring.Covering, OAI.Geometry.PlaneColoring.Expansion, OAI.Geometry.PlaneColoring.Moser, OAI.MeasureTheory.CompactFactors.Amenability, OAI.MeasureTheory.CompactFactors.Centers, OAI.Analysis.PlaneSpectrum.CircleDecay, OAI.Analysis.PlaneSpectrum.PhaseCollision, OAI.Geometry.PlaneColoring.CircleMaps, OAI.Geometry.PlaneColoring.Metric, OAI.Geometry.PlaneColoring.WeakColoring, OAI.MeasureTheory.CompactFactors.RelativeCenters, OAI.Analysis.PlaneSpectrum.Multipliers, OAI.Geometry.PlaneColoring.Compactness, OAI.Geometry.PlaneColoring.Seven, OAI.Analysis.PlaneSpectrum.CircleOperator, OAI.Analysis.PlaneSpectrum.FourierTests, OAI.Analysis.PlaneSpectrum.ConditionalSpectrum, OAI.Geometry.PlaneColoring.Palettes, OAI.MeasureTheory.CompactFactors.Approximation, OAI.Geometry.PlaneColoring.PaletteDensity, OAI.MeasureTheory.CompactFactors.ConditionalLimits, OAI.MeasureTheory.CompactFactors.Kernels, OAI.Geometry.PlaneColoring.BinaryPalettes, OAI.MeasureTheory.CompactFactors.BoundedFunctions, OAI.MeasureTheory.CompactFactors.Functions, OAI.Geometry.PlaneColoring.States, OAI.MeasureTheory.CompactFactors.Factors, OAI.MeasureTheory.CompactFactors.RelativeProducts, OAI.Geometry.PlaneColoring.BoundaryTrace, OAI.Geometry.PlaneColoring.FourContinuity, OAI.MeasureTheory.CompactFactors.Separability, OAI.Geometry.PlaneColoring.AngularBoundary, OAI.MeasureTheory.CompactFactors.AlgebraModels, OAI.Analysis.PlaneSpectrum.Representations, OAI.Geometry.PlaneColoring.Exclusion, OAI.Geometry.PlaneColoring.Interfaces, OAI.Geometry.PlaneColoring.Sectors, OAI.Analysis.PlaneSpectrum.Energy, OAI.Analysis.PlaneSpectrum.SpectralMeasure, OAI.Analysis.PlaneSpectrum.RadialEnergy, OAI.Geometry.PlaneColoring.FiveSupport, OAI.Analysis.PlaneSpectrum.Ergodicity, OAI.Geometry.PlaneColoring.CyclicCore, OAI.Geometry.PlaneColoring.PlanarCovers, OAI.Geometry.PlaneColoring.BorelTransfer, OAI.Geometry.PlaneColoring.GraphRealization, OAI.Geometry.PlaneColoring.ContinuumLimits, OAI.Geometry.PlaneColoring.DiskExtension, OAI.Geometry.PlaneColoring.Transfer, OAI.Geometry.PlaneColoring.GraphCuts, OAI.Geometry.PlaneColoring.HoleApproximation, OAI.Geometry.PlaneColoring.Five, OAI.Geometry.PlaneColoring.Chromatic, OAI.Geometry.PlaneColoring.NullSetRobust

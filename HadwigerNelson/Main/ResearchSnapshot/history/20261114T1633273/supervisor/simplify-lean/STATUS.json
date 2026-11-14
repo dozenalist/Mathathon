@@ -1,0 +1,74 @@
+{
+  "updated_utc": "2026-11-14T16:18:40Z",
+  "status": "completed_block",
+  "summary": "Block 19, source-only. Independently audited the Astra joint-pair lemma. MATHEMATICS: correct, verified by hand step by step; finite I is essential (the support-union identity fails for infinite I); d = 0 is harmless. APPLICATION: valid -- with f = fiveState, d = sixty, fiveState_adj supplies the premise for non-adjacent pairs and five_support_step_ban for adjacent ones, so it proves five_support_no_sixty. DEPENDENCY AUDIT (the decisive finding): strict_state_no_unit_support has TWO direct users, not one -- five_support_no_sixty (FiveSupport:138) and interfaceStateSupport_no_unit (Interfaces:266) -- and 24 transitive users including no_proper_five_coloring. Rerouting one of the two does NOT remove the theorem, so this is not a simplification and must not be called a Lemma 6.7 deletion. Line accounting is net +100 to +150 with no theorem removed. Delivered the generic Lean module as a PLAN with three named blockers and no admission tactic, plus the exact replacement proof outline, the ledger, and a 4.34.1/4.35 note. Nothing compiled; no claim of verification.",
+  "verified_results": [
+    "GRADE [M] The Astra joint-pair lemma is TRUE as stated: {f=i} = disjoint union_j Q_ij; S_i = union_j supp(volume|Q_ij) using restrict-additivity over a finite disjoint family and support of a finite measure sum; pick j with a in supp Q_ij; translation invariance of Lebesgue measure plus openness of t -> t+d gives a+d in S_j; if a+d in S_i then the contact premise makes Q_ij null, so its restricted measure is zero and its support empty, contradicting a's membership.",
+    "GRADE [M] The finite index hypothesis is ESSENTIAL, not a convenience: for infinite I a countable union of null joint-pair sets can carry full measure, so the support-union identity fails. d = 0 is harmless (the premise then forces the support empty).",
+    "GRADE [M] The application is valid: at iota = Fin 5, f t = fiveState c hc x (t : Angles), d = sixty, the joint-pair set is exactly {t | fiveState t = i and fiveState (t+sixty) = j}; fiveState_adj (Accumulation:390) gives the premise for non-adjacent pairs after pulling back along angleMk_quasiMeasurePreserving, and five_support_step_ban (FiveSupport:91) gives it for adjacent pairs whose supports meet. Conclusion a in fiveSupport i implies a+sixty not in fiveSupport i is exactly five_support_no_sixty (FiveSupport:138).",
+    "GRADE [C] DECISIVE DEPENDENCY FINDING: strict_state_no_unit_support (States:704) has exactly two direct users -- five_support_no_sixty (FiveSupport.lean:138) and interfaceStateSupport_no_unit (Interfaces.lean:266). Its transitive user set has 24 declarations, including interfaceStateSupport_margin, four_interface_word_data, no_four_interfaces, commonInterface_graph_acyclic, five_sequence_no_accumulation, cyclicCore_compact_finite, fullApprox_exists, no_measurable_weak_five_coloring, no_proper_five_coloring_algebraic and no_proper_five_coloring itself.",
+    "GRADE [C] Therefore the proposal removes ONE OF TWO uses and does not delete strict_state_no_unit_support from the development; the Interfaces/CyclicCore/FullApproximation chain still needs it for the main theorem. Net cost is +100 to +150 lines against ~4 deleted lines, with no theorem removed. This is NOT a simplification and must not be described as a Lemma 6.7 deletion (manuscript naming unresolved, and on this evidence no deletion occurs).",
+    "GRADE [P] Delivered ONE minimal Lean module jointpair/JointPairSupport.lean (117 lines) stating the generic theorem over real Lebesgue measure with Fintype iota and Measurable f, reusing the development's own stateSupport (FiveSupport:38). It is a PLAN: three named blockers B1 (restrict of a finite disjoint union), B2 (support of a finite sum), B3 (translate of a support point), each with candidate Mathlib names, plus a caveat that the closing proof's rewrites are unchecked. No admission tactic appears; the blockers are undefined constants so the file cannot compile and cannot be mistaken for a proof.",
+    "GRADE [P] Exact replacement proof of five_support_no_sixty sketched in section 4 of the audit with the two premise cases and the retained/dropped lemma list.",
+    "GRADE [R] Toolchain: pinned Lean 4.34.1 commit 5045d0056413266e57c625dcd7c365b10e377c52 with Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612, which any first check should use. 4.35 compatibility flagged separately: Measure.restrict_iUnion* and support_sum are exactly the names with a history of renaming, i.e. B1/B2 are the most likely adjustment points. No toolchain change proposed.",
+    "GRADE [R] Unchanged and not re-run: R4 82-module build, 9-root axiom checks, R5 SignatureEquivalence and SignatureCheckFresh, LOCAL 133-binder inspection. Binder and extraction churn frozen as instructed; Converse no-useful-reduction verdict accepted and not revisited.",
+    "GRADE [R] Scope unchanged: 6 <= chi(R^2) <= 7; nothing here creates a new plane bound."
+  ],
+  "conjectures": [
+    "The Astra route would become a genuine simplification only if interfaceStateSupport_no_unit and its 24-descendant chain could also be rerouted to a support-based argument; no evidence for that exists, and it is a much larger project than the one lemma.",
+    "Conversely, if the joint-pair lemma is proved, it is a reusable finite-to-infinite support tool in its own right and may help elsewhere; that is a separate claim from removing strict_state_no_unit_support.",
+    "The three blockers are library-shape questions, not mathematical ones; B1 and B2 are the likely 4.35 breakages."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/JOINT-PAIR-AUDIT.md  <-- audit, ledger, verdict, replacement outline, blockers, toolchain note. sha256 cc2f9b6302fce14b092f1e7c0dede7afa57ffd0a7914e2890dfc41660e3a0c84",
+    "supervisor/simplify-lean/jointpair/JointPairSupport.lean  <-- the minimal generic module, PLAN with BLOCKER_1..3. sha256 027e6892cc8cee4d7637132c62866a0e7fb676694e1e68a7f51cb59a254fd093",
+    "supervisor/simplify-lean/DEPENDENCY-LEDGER-converse.md  <-- previous block's Converse ledger (verdict accepted). sha256 a36305832dd1a7e1ffdf3f3acf1ae413c62304f09c6b5658463e9ebb65623a06",
+    "frozen: supervisor/simplify-lean/lean/BinderAudit.lean sha256 0efd3831cd8633818af24110d254e3ae8a1a34cc93a529a0de33b4d0ba4ee202, binder_expected.json sha256 19810d24f5c83db61e483f52f42c04260cff41c5e4e52e78c4846d991f2c30ad, binder_snapshot.py sha256 d96e317e91ac6672b05e34f02ecf83d7dd829f866ef46196e668508b47ecd423",
+    "retained: STATEMENT-AUDIT.md, REVIEW-instrument-v4.md, REVIEW-baseline-and-fresh.md, lean/SignatureEquivalence.lean, lean/SignatureCheckFresh.lean, lean/AxiomRoots.lean, axiom_gate.py, recon/ConditionalLimits.R4-recon.lean, snapshots/integ-d26d569088faea89/, BUILD-PLAN.json, MANIFEST-full.json, archive/"
+  ],
+  "tests_run": [
+    "Source reads with line citations: FiveSupport.lean 1-20, 30-75, 80-100, 125-160; States.lean 700-730; Interfaces.lean 258-285; Accumulation.lean 390-396.",
+    "python reverse-dependency scan over lean/OAI: direct users of strict_state_no_unit_support = 2 (five_support_no_sixty, interfaceStateSupport_no_unit); transitive users = 24, enumerated with file:line.",
+    "Hand verification of the six proof steps of the Astra lemma (section 2 of the audit), including the two edge cases d = 0 and infinite I.",
+    "grep confirming the Lean module contains zero sorry/admit and exactly three BLOCKER_n holes.",
+    "sha256 over the deliverables.",
+    "NO Lean build, no cloud operation, no heavy compute (per policy; the shared compute slot belongs to the graph worker)."
+  ],
+  "failed_routes": [
+    "The claim that this replacement removes strict_state_no_unit_support is FALSE and is not reported as true: the second direct user interfaceStateSupport_no_unit and its 23 descendants keep it. The proposal is therefore not delivered as a simplification.",
+    "The Lean module is a plan, not a proof: B1-B3 unresolved and the closing rewrites unverified. It cannot be compiled as delivered and is not presented as compileable.",
+    "Not attempted: any formalisation of the Interfaces-side reroute, any build, any toolchain change."
+  ],
+  "next_step": "Decide whether the joint-pair lemma is worth proving for its own sake: as a standalone reusable support tool it needs only B1-B3 resolved, which is a bounded local task on the pinned 4.34.1. If the goal is instead to retire strict_state_no_unit_support, the next question is whether interfaceStateSupport_no_unit (Interfaces:266) can be rerouted the same way -- that is the only path to a deletion, and it should be scoped before any Lean work.",
+  "owned_agents": [
+    {
+      "swarm": "smwfy8rae",
+      "members": 3,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "state": "stopped",
+      "accepted": 0,
+      "note": "stopped in block 1; no new chats, swarms or nested agents this block (per policy)."
+    }
+  ],
+  "escalation": null,
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "this_block": [
+      "supervisor/simplify-lean/JOINT-PAIR-AUDIT.md",
+      "supervisor/simplify-lean/jointpair/JointPairSupport.lean"
+    ],
+    "verdict": "lemma mathematically correct and applicable, but NOT a simplification: strict_state_no_unit_support survives via interfaceStateSupport_no_unit and 23 further descendants",
+    "grades": {
+      "mathematics": "M verified by hand",
+      "dependency ledger": "C computed from source",
+      "lean module": "P proposed, plan with BLOCKER_1..3, no admission tactic"
+    },
+    "toolchain": "Lean 4.34.1 @5045d005... + Mathlib @d13f23b... for a first check; 4.35 compatibility a separate pass, no change proposed",
+    "frozen": [
+      "binder instrument packet",
+      "Converse no-useful-reduction verdict"
+    ],
+    "scope": "6 <= chi(R^2) <= 7 unchanged; no new plane bound",
+    "next_verification_step": "either prove B1-B3 to get the standalone lemma, or scope the Interfaces-side reroute before any Lean work."
+  }
+}

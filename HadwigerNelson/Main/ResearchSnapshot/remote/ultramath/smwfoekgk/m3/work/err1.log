@@ -1,0 +1,169 @@
+==== OAI.Analysis.PlaneSpectrum.Basic rc=1
+tree/OAI/Analysis/PlaneSpectrum/Basic.lean:74:14: error: unsolved goals
+ξ : ℂ
+⊢ Circle.exp ((embed 1).re * ξ.re) * Circle.exp ((embed 1).im * ξ.im) = 1
+tree/OAI/Analysis/PlaneSpectrum/Basic.lean:368:6: error: Type mismatch: After simplification, term
+  ht
+ has type
+  Circle.exp (ξ.re * ((↑imagUnit).re * ↑q)) * Circle.exp (ξ.im * ((↑imagUnit).im * ↑q)) = 1
+but is expected to have type
+  Circle.exp (ξ.im * ↑q) = 1
+tree/OAI/Analysis/PlaneSpectrum/Basic.lean:399:4: error: unsolved goals
+case e'_6
+z : ℂ
+hi : IsAlgebraic ℚ Complex.I
+hhalf : IsAlgebraic ℚ 2⁻¹
+hz : IsAlgebraic ℚ z
+hc : IsAlgebraic ℚ ((starRingEnd ℂ) z)
+h : IsAlgebraic ℚ ((z + (starRingEnd ℂ) z) * 2⁻¹)
+⊢ (algebraMap ℝ ℂ) z.re = (z + (starRingEnd ℂ) z) * 2⁻¹
+tree/OAI/Analysis/PlaneSpectrum/Basic.lean:404:4: error: unsolved goals
+case e'_6
+z : ℂ
+hi : IsAlgebraic ℚ Complex.I
+hhalf : IsAlgebraic ℚ 2⁻¹
+hz : IsAlgebraic ℚ z
+hc : IsAlgebraic ℚ ((starRingEnd ℂ) z)
+h : IsAlgebraic ℚ ((z - (starRingEnd ℂ) z) * 2⁻¹ * Complex.I⁻¹)
+⊢ (algebraMap ℝ ℂ) z.im = (z - (starRingEnd ℂ) z) * 2⁻¹ * Complex.I⁻¹
+tree/OAI/Analysis/PlaneSpectrum/Basic.lean:501:17: error: `simp` made no progress
+tree/OAI/Analysis/PlaneSpectrum/Basic.lean:592:81: error: unsolved goals
+case e_6
+d : D
+h1 : d ∈ L 1
+hi : d ∈ L imagUnit
+l : ℝ
+hl : jF l = restrictLine 1 d
+e : ℝ
+he : jF e = restrictLine imagUnit d
+z : DiscreteE
+hr : ∀ (t : ↥F), d (Multiplicative.ofAdd (ofF t)) = Circle.exp (l * ↑t)
+hi' : ∀ (t : ↥F), d (Multiplicative.ofAdd (imagUnit * ofF t)) = Circle.exp (e * ↑t)
+hd :
+  d z =
+    d (Multiplicative.ofAdd (ofF (reF (Multiplicative.toAdd z)))) *
+      d (Multiplicative.ofAdd (imagUnit * ofF (imF (Multiplicative.toAdd z))))
+⊢ l * (↑(Multiplicative.toAdd z)).re + e * (↑(Multiplicative.toAdd z)).im =
+    l * ↑(reF (Multiplicative.toAdd z)) + e * ↑(imF (Multiplicative.toAdd z))
+tree/OAI/Analysis/PlaneSpectrum/Basic.lean:664:69: error: unsolved goals
+a : ↥E
+ha : a ≠ 0
+u v : ↥K
+huv : u ^ 2 ≠ v ^ 2
+h : imF ((a * kCoeff u)⁻¹ * (a * kCoeff v)) = 0
+⊢ (kCoeff u)⁻¹ = kCoeff u⁻¹
+
+==== OAI.Geometry.PlaneColoring.Compactness rc=1
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:129:32: error(lean.unknownIdentifier): Unknown identifier `E`
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:130:25: error: Function expected at
+  Space
+but this term has type
+  Type ?u.7
+
+Note: Expected a function because this term is being applied to the argument
+  E
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:131:45: error: Function expected at
+  Space
+but this term has type
+  Type ?u.7
+
+Note: Expected a function because this term is being applied to the argument
+  E
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:132:37: error(lean.unknownIdentifier): Unknown identifier `E`
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:133:15: error: Function expected at
+  Space
+but this term has type
+  Type ?u.7
+
+Note: Expected a function because this term is being applied to the argument
+  E
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:133:32: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  NormedAddCommGroup E
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:134:38: error(lean.unknownIdentifier): Unknown identifier `E`
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:135:22: error: Function expected at
+  Space
+but this term has type
+  Type ?u.7
+
+Note: Expected a function because this term is being applied to the argument
+  E
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:135:34: error: Function expected at
+  value E
+but this term has type
+  ?m.5
+
+Note: Expected a function because this term is being applied to the argument
+  a
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:136:14: warning: declaration uses `sorry`
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:138:53: error: expected token
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:140:25: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Norm E
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:140:36: error: Function expected at
+  Space
+but this term has type
+  Type ?u.14
+
+Note: Expected a function because this term is being applied to the argument
+  E
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:143:38: error(lean.unknownIdentifier): Unknown identifier `E`
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:144:41: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Norm E
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:145:19: warning: declaration uses `sorry`
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:147:75: error: expected token
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:152:67: error: expected token
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:156:0: error
+==== OAI.Analysis.PlaneSpectrum.CircleOperator rc=1
+tree/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:1:0: error: object file 'build/OAI/Analysis/PlaneSpectrum/CircleDecay.olean' of module OAI.Analysis.PlaneSpectrum.CircleDecay does not exist
+
+==== OAI.Analysis.PlaneSpectrum.SmallArcs rc=1
+tree/OAI/Analysis/PlaneSpectrum/SmallArcs.lean:146:57: error(lean.unknownIdentifier): Unknown identifier `ite_eq_left`
+tree/OAI/Analysis/PlaneSpectrum/SmallArcs.lean:145:46: error: unsolved goals
+X : Type u_1
+inst✝¹ : MeasurableSpace X
+μ : Measure X
+inst✝ : IsProbabilityMeasure μ
+z : X → ℂ
+hz : Measurable z
+hu : ∀ (x : X), ‖z x‖ = 1
+N : ℕ
+c : ℝ
+hc : 0 ≤ c
+hm : ∀ (n : ℕ), 0 < n → n < N → ‖∫ (x : X), z x ^ n ∂μ‖ ≤ c
+i : ℕ
+hi : i ∈ Finset.range N
+⊢ (if i ∈ Finset.range N then 1 else 0) + ∑ x ∈ Finset.range N, c = ?m.285 i
+tree/OAI/Analysis/PlaneSpectrum/SmallArcs.lean:147:8: error: `simp` made no progress
+tree/OAI/Analysis/PlaneSpectrum/SmallArcs.lean:252:6: error: Function expected at
+  compProd_map_condDistrib (Measurable.aemeasurable hp)
+but this term has type
+  Measure.map ?m.204 ?m.212 ⊗ₘ condDistrib p ?m.204 ?m.212 = Measure.map (fun a => (?m.204 a, p a)) ?m.212
+
+Note: Expected a function because this term is being applied to the argument
+  hb.aemeasurable
+tree/OAI/Analysis/PlaneSpectrum/SmallArcs.lean:247:50: error: unsolved goals
+X : Type u_1
+Y : Type u_2
+G : Type u_3
+inst✝⁶ : MeasurableSpace X
+inst✝⁵ : MeasurableSpace Y
+inst✝⁴ : MeasurableSpace G
+inst✝³ : MeasurableEq G
+inst✝² : StandardBorelSpace G
+inst✝¹ : Nonempty G
+μ : Measure X
+inst✝ : IsFiniteMeasure μ
+p : X → Y
+b : X → G
+hp : Measurable p
+hb : Measurable b
+ha : ∀ᵐ (y : Y) ∂Measure.map p μ, ∀ᵐ (d : G) ∂(condDistrib b p μ) y, 0 < ((condDistrib b p μ) y) {d}
+hm : MeasurableSet {z | 0 < ((condDistrib b p μ) z.1) {z.2}}
+he : ∀ᵐ (z : Y × G) ∂Measure.map p μ ⊗ₘ condDistrib b p μ, 0 < ((condDistrib b p μ) z.1) {z.2}
+⊢ ∀ᵐ (x : X) ∂μ, 0 < ((condDistrib b p μ) (p x)) {b x}
+

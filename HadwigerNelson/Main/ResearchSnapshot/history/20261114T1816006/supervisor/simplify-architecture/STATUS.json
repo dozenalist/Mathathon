@@ -1,0 +1,56 @@
+{
+ "updated_utc": "2026-11-14T18:05:38Z",
+ "status": "swarm_running",
+ "summary": "Block 25 (clock 2026-11-14T18:05:38Z): Ultramath swarm ACTIVATED for real. ultramath_start returned swarm id smwgpubt5, members m1 and m2, model deepseek/deepseek-v4.1-flash, reasoning_effort max, member_steps 60, minutes 60, budget 240, working directory .ultramath/smwgpubt5. Two complementary directions were put in the shared task: (A) declaration-level removal budget for the strict-state branch from the private integration packet, with all surviving consumers named by source dependency and an honest NET DIFF counting the added module lines; (B) a further conceptual collapse from the joint-support/contact-ban and three-centre machinery, stated with the exact original theorem contract. Constraints given to the members: no Lean builds, no lake, no cloud, no background processes, tiny exact checks under one second only, writes confined to each member's own .ultramath directory. Preservation list given: indicator_inter_positive, ordinary four-state support continuity, two_state_impossible, manuscript Lemma 6.7 = five_support_step_ban. Swarm runs on its own; I now wait for member reports to judge.",
+ "verified_results": [
+  "[verified here] ultramath_start returned successfully: swarm smwgpubt5, members m1 and m2, model deepseek/deepseek-v4.1-flash, reasoning_effort max, member_steps 60, minutes 60, budget 240, dir .ultramath/smwgpubt5, deadline 1794683109115 ms. This is an actual activation, not a claim.",
+  "[carried forward] Banked constraints given to the swarm verbatim: CC60 closed-cone exclusion (paper accepted, Lean ongoing); sharpness of the generic 60-degree statement via Borel 20-colour counterexamples at every wider aperture, which does not settle k = 6; q_i are the fixed cycle EDGE directions E_i = {i, i+1} and BinaryCenter HITS a pair rather than being a subset statement; the A4 candidate MC120 (strict aperture < 120, endpoint 120 not claimed) and the consequence that three distinct edge-pair-carrying directions must be exactly equilateral; the warning that pure CC60 alone admits 57/60 cyclic orders and continuous families, so six grid cases do not exhaust actual angles.",
+  "[carried forward] Preservation constraints: manuscript Lemma 6.7 = five_support_step_ban stays; indicator_inter_positive, ordinary four-state support continuity and two_state_impossible are to be preserved with named consumers; no global chromatic bound and no six-colour construction are claimed.",
+  "[carried forward] Honest accounting rule imposed on the swarm: count ALL newly added module lines, comments separated from code, and report NET DIFF = additions minus removals; a reduction that omits the added module is rejected. Reference figures from block 24: current packet net +170 (236-line AvoidingTrace module minus 66 lines of diffs), conditional strict-branch budget 277 declaration lines in States.lean with exact ranges, giving about -107 once both stages integrate."
+ ],
+ "conjectures": [
+  "The defensible end-state figure is about -107 lines once both stages integrate, not -288 and not -66; the largest single block is strict_state_sequence_local_false at 89 lines.",
+  "If the emptied sections around States:639-720 lose their scaffolding, another ~6 lines go; if any of the retained positivity or indicator lemmas turn out to need the branch, the budget shrinks accordingly, which is why the dependency dump is still owed."
+ ],
+ "artifacts": [
+  "swarm smwgpubt5 (live): .ultramath/smwgpubt5/ with member directories m1 and m2 (their writes only)",
+  "supervisor/simplify-architecture/INTEGRATION-MAP.md (sha 74889d96c237b591; corrected accounting +170, 277-line measured budget, conceptual simplification Sec.3ter)",
+  "supervisor/simplify-architecture/MANUSCRIPT-REPLACEMENT.md (sha bfdca6f8a7222229; section 6.3.3bis plus accounting note)",
+  "read-only inputs referenced by the swarm task: supervisor/simplify-lean/INTEGRATION-PACKET.md and supervisor/simplify-lean/integration/{AvoidingTrace,FiveSupport,FourContinuity,Interfaces}.lean; lean/OAI/Geometry/PlaneColoring/{States,FiveSupport,FourContinuity,Interfaces,BoundaryTrace,Compactness,FourTransport,Accumulation}.lean",
+  "supervisor/simplify-architecture/{A2-AUDIT.md, INTEGRATED-ARCHITECTURE.md, MANUSCRIPT-LEMMA67.txt, FIVE-CYCLE-ARGUMENT.md, FIVE-CYCLE-D.md} (retained)",
+  "supervisor/simplify-architecture/encoding-core/integration/ (frozen R4 d26d569088faea89... / 24f89dd33533a0f6..., untouched)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "ultramath_start members=2 member_steps=60 minutes=60 model=deepseek/deepseek-v4.1-flash reasoning_effort=max",
+   "outcome": "swarm smwgpubt5 started; members m1, m2; budget 240; deadline_at_ms 1794683109115."
+  },
+  {
+   "cmd": "date -u",
+   "outcome": "2026-11-14T18:05:38Z"
+  }
+ ],
+ "failed_routes": [
+  "Withdrawn (block 24, unchanged): my -288 estimate and the worker's -66 headline are both rejected as net figures; the honest current packet is +170 and the projected end state about -107.",
+  "Not attempted by the coordinator this block: no builds, no compute, no edits to originals; the swarm's members are bound by the same restrictions plus a one-second cap per exact check."
+ ],
+ "next_step": "Wait for member reports from swarm smwgpubt5 and judge them: for (A) check that every surviving consumer is named by dependency and that the net diff includes the 236-line module; for (B) check the proof against the exact original theorem contract, and check the finite claims with an independent tiny computation. Judge with ultramath_verdict only after reading the submitted files.",
+ "escalation": null,
+ "swarm_activation": {
+  "tool": "ultramath_start",
+  "returned": true,
+  "swarm": "smwgpubt5",
+  "members": [
+   "m1",
+   "m2"
+  ],
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reasoning_effort": "max",
+  "member_steps": 60,
+  "minutes": 60,
+  "budget": 240,
+  "dir": ".ultramath/smwgpubt5",
+  "deadline_at_ms": 1794683109115,
+  "prior_swarm_for_reference": "smwgphe8q (discover-cone)"
+ }
+}

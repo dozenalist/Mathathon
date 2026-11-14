@@ -1,0 +1,452 @@
+{
+"OAI.Analysis.PlaneSpectrum.Basic": {
+"ok": true,
+"err": "",
+"secs": 11.7
+},
+"OAI.Analysis.PlaneSpectrum.Characters": {
+"ok": true,
+"err": "",
+"secs": 10.9
+},
+"OAI.Analysis.PlaneSpectrum.Fourier": {
+"ok": true,
+"err": "",
+"secs": 9.3
+},
+"OAI.Geometry.PlaneColoring.Coloring": {
+"ok": true,
+"err": "",
+"secs": 4.0
+},
+"OAI.Analysis.PlaneSpectrum.CircleDecay": {
+"ok": true,
+"err": "",
+"secs": 10.7
+},
+"OAI.Geometry.PlaneColoring.WeakColoring": {
+"ok": true,
+"err": "",
+"secs": 10.5
+},
+"OAI.Geometry.PlaneColoring.Compactness": {
+"ok": true,
+"err": "",
+"secs": 9.5
+},
+"OAI.Analysis.PlaneSpectrum.CircleOperator": {
+"ok": true,
+"err": "",
+"secs": 9.2
+},
+"OAI.Analysis.PlaneSpectrum.InvariantMean": {
+"ok": true,
+"err": "",
+"secs": 11.6
+},
+"OAI.Analysis.PlaneSpectrum.Multipliers": {
+"ok": true,
+"err": "",
+"secs": 7.5
+},
+"OAI.Analysis.PlaneSpectrum.DifferenceLaw": {
+"ok": true,
+"err": "",
+"secs": 5.4
+},
+"OAI.Analysis.PlaneSpectrum.FourierTests": {
+"ok": true,
+"err": "",
+"secs": 4.0
+},
+"OAI.Analysis.PlaneSpectrum.SmallArcs": {
+"ok": true,
+"err": "",
+"secs": 6.7
+},
+"OAI.Analysis.PlaneSpectrum.PhaseEncoding": {
+"ok": true,
+"err": "",
+"secs": 5.7
+},
+"OAI.Analysis.PlaneSpectrum.PhaseCollision": {
+"ok": true,
+"err": "",
+"secs": 9.8
+},
+"OAI.MeasureTheory.CompactFactors.ConditionalSelection": {
+"ok": true,
+"err": "",
+"secs": 14.3
+},
+"OAI.Analysis.PlaneSpectrum.ConditionalSpectrum": {
+"ok": true,
+"err": "",
+"secs": 16.9
+},
+"OAI.MeasureTheory.CompactFactors.Amenability": {
+"ok": true,
+"err": "",
+"secs": 16.0
+},
+"OAI.MeasureTheory.CompactFactors.Centers": {
+"ok": true,
+"err": "",
+"secs": 19.8
+},
+"OAI.MeasureTheory.CompactFactors.RelativeCenters": {
+"ok": true,
+"err": "",
+"secs": 14.4
+},
+"OAI.MeasureTheory.CompactFactors.DifferenceInvariant": {
+"ok": true,
+"err": "",
+"secs": 14.3
+},
+"OAI.MeasureTheory.CompactFactors.Approximation": {
+"ok": true,
+"err": "",
+"secs": 25.4
+},
+"OAI.MeasureTheory.CompactFactors.ConditionalLimits": {
+"ok": true,
+"err": "",
+"secs": 70.9
+},
+"OAI.MeasureTheory.CompactFactors.Kernels": {
+"ok": true,
+"err": "",
+"secs": 19.4
+},
+"OAI.MeasureTheory.CompactFactors.BoundedFunctions": {
+"ok": true,
+"err": "",
+"secs": 15.4
+},
+"OAI.MeasureTheory.CompactFactors.RelativeProducts": {
+"ok": true,
+"err": "",
+"secs": 17.7
+},
+"OAI.MeasureTheory.CompactFactors.Separability": {
+"ok": true,
+"err": "",
+"secs": 17.2
+},
+"OAI.MeasureTheory.CompactFactors.AlgebraModels": {
+"ok": true,
+"err": "",
+"secs": 29.8
+},
+"OAI.MeasureTheory.CompactFactors.Functions": {
+"ok": true,
+"err": "",
+"secs": 14.1
+},
+"OAI.MeasureTheory.CompactFactors.Factors": {
+"ok": true,
+"err": "",
+"secs": 16.8
+},
+"OAI.MeasureTheory.CompactFactors.Stationary": {
+"ok": true,
+"err": "",
+"secs": 8.8
+},
+"OAI.Analysis.PlaneSpectrum.Representations": {
+"ok": true,
+"err": "",
+"secs": 22.1
+},
+"OAI.Analysis.PlaneSpectrum.Energy": {
+"ok": true,
+"err": "",
+"secs": 18.4
+},
+"OAI.Analysis.PlaneSpectrum.NumberFields": {
+"ok": true,
+"err": "",
+"secs": 11.7
+},
+"OAI.Analysis.PlaneSpectrum.Selections": {
+"ok": true,
+"err": "",
+"secs": 23.8
+},
+"OAI.Analysis.PlaneSpectrum.RadialEnergy": {
+"ok": true,
+"err": "",
+"secs": 35.3
+},
+"OAI.Analysis.PlaneSpectrum.SpectralMeasure": {
+"ok": true,
+"err": "",
+"secs": 40.3
+},
+"OAI.Analysis.PlaneSpectrum.Ergodicity": {
+"ok": true,
+"err": "",
+"secs": 25.1
+},
+"OAI.Analysis.PlaneSpectrum.TerminalGlue": {
+"ok": true,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/Analysis/PlaneSpectrum/TerminalGlue.lean:67:2: warning: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/Analysis/PlaneSpectrum/TerminalGlue.lean:75:2: warning: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n'OAI.PlaneFiveColor.Spectral.ergodic_wild_fourier_of_goodId' depends on axioms: [propext, Classical.choice, Quot.sound]\n'OAI.PlaneFiveColor.Spectral.ergodic_wild_fourier_of_terminalObligation' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'OAI.PlaneFiveColor.Spectral.terminalObligation_of_exists_terminal_factor' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+"secs": 9.2
+},
+"OAI.Geometry.PlaneColoring.Expansion": {
+"ok": true,
+"err": "",
+"secs": 12.6
+},
+"OAI.Geometry.PlaneColoring.BinaryDynamics": {
+"ok": true,
+"err": "",
+"secs": 21.4
+},
+"OAI.Geometry.PlaneColoring.CircleMaps": {
+"ok": true,
+"err": "",
+"secs": 10.7
+},
+"OAI.Geometry.PlaneColoring.CircleTransport": {
+"ok": true,
+"err": "",
+"secs": 9.7
+},
+"OAI.Geometry.PlaneColoring.Transitions": {
+"ok": true,
+"err": "",
+"secs": 4.9
+},
+"OAI.Geometry.PlaneColoring.Palettes": {
+"ok": true,
+"err": "",
+"secs": 5.8
+},
+"OAI.Geometry.PlaneColoring.PaletteDensity": {
+"ok": true,
+"err": "",
+"secs": 7.4
+},
+"OAI.Geometry.PlaneColoring.PaletteTransport": {
+"ok": true,
+"err": "",
+"secs": 6.7
+},
+"OAI.Geometry.PlaneColoring.Rigidity": {
+"ok": true,
+"err": "",
+"secs": 8.5
+},
+"OAI.Geometry.PlaneColoring.BinaryPalettes": {
+"ok": true,
+"err": "",
+"secs": 6.6
+},
+"OAI.Geometry.PlaneColoring.States": {
+"ok": true,
+"err": "",
+"secs": 8.3
+},
+"OAI.Geometry.PlaneColoring.BoundaryTrace": {
+"ok": true,
+"err": "",
+"secs": 6.1
+},
+"OAI.Geometry.PlaneColoring.AngularBoundary": {
+"ok": true,
+"err": "",
+"secs": 35.1
+},
+"OAI.Geometry.PlaneColoring.Exclusion": {
+"ok": true,
+"err": "",
+"secs": 15.9
+},
+"OAI.Geometry.PlaneColoring.FourContinuity": {
+"ok": true,
+"err": "",
+"secs": 9.4
+},
+"OAI.Geometry.PlaneColoring.FourTransport": {
+"ok": true,
+"err": "",
+"secs": 5.6
+},
+"OAI.Geometry.PlaneColoring.Accumulation": {
+"ok": true,
+"err": "",
+"secs": 6.3
+},
+"OAI.Geometry.PlaneColoring.Assembly": {
+"ok": true,
+"err": "",
+"secs": 3.8
+},
+"OAI.Geometry.PlaneColoring.Basic": {
+"ok": true,
+"err": "",
+"secs": 3.7
+},
+"OAI.Geometry.PlaneColoring.BorelTransfer": {
+"ok": true,
+"err": "",
+"secs": 21.2
+},
+"OAI.Geometry.PlaneColoring.FiveSupport": {
+"ok": true,
+"err": "",
+"secs": 10.1
+},
+"OAI.Geometry.PlaneColoring.CyclicCore": {
+"ok": true,
+"err": "",
+"secs": 7.5
+},
+"OAI.Geometry.PlaneColoring.DiskAverages": {
+"ok": true,
+"err": "",
+"secs": 9.5
+},
+"OAI.Geometry.PlaneColoring.PlanarCovers": {
+"ok": true,
+"err": "",
+"secs": 6.6
+},
+"OAI.Geometry.PlaneColoring.GraphRealization": {
+"ok": true,
+"err": "",
+"secs": 7.7
+},
+"OAI.Geometry.PlaneColoring.Interfaces": {
+"ok": true,
+"err": "",
+"secs": 9.1
+},
+"OAI.Geometry.PlaneColoring.Moser": {
+"ok": true,
+"err": "",
+"secs": 40.6
+},
+"OAI.Geometry.PlaneColoring.Sectors": {
+"ok": true,
+"err": "",
+"secs": 7.6
+},
+"OAI.Geometry.PlaneColoring.ContinuumLimits": {
+"ok": true,
+"err": "",
+"secs": 9.8
+},
+"OAI.Geometry.PlaneColoring.DiskExtension": {
+"ok": true,
+"err": "",
+"secs": 12.5
+},
+"OAI.Geometry.PlaneColoring.GraphCuts": {
+"ok": true,
+"err": "",
+"secs": 7.7
+},
+"OAI.Geometry.PlaneColoring.HoleApproximation": {
+"ok": true,
+"err": "",
+"secs": 9.1
+},
+"OAI.Geometry.PlaneColoring.GraphPatches": {
+"ok": true,
+"err": "",
+"secs": 7.2
+},
+"OAI.Geometry.PlaneColoring.FullApproximation": {
+"ok": true,
+"err": "",
+"secs": 6.9
+},
+"OAI.Geometry.PlaneColoring.Mesh": {
+"ok": true,
+"err": "",
+"secs": 5.7
+},
+"OAI.Geometry.PlaneColoring.Five": {
+"ok": true,
+"err": "",
+"secs": 7.4
+},
+"OAI.Geometry.PlaneColoring.Lattice": {
+"ok": true,
+"err": "",
+"secs": 8.3
+},
+"OAI.Geometry.PlaneColoring.Metric": {
+"ok": true,
+"err": "",
+"secs": 9.0
+},
+"OAI.Geometry.PlaneColoring.Covering": {
+"ok": true,
+"err": "",
+"secs": 8.6
+},
+"OAI.Geometry.PlaneColoring.MeasurableAssembly": {
+"ok": true,
+"err": "",
+"secs": 5.4
+},
+"OAI.Geometry.PlaneColoring.MeasurableProper": {
+"ok": true,
+"err": "",
+"secs": 6.8
+},
+"OAI.Geometry.PlaneColoring.Seven": {
+"ok": true,
+"err": "",
+"secs": 6.0
+},
+"OAI.Geometry.PlaneColoring.Chromatic": {
+"ok": true,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/Geometry/PlaneColoring/Chromatic.lean:40:8: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n'OAI.Problem160.chromaticNumber_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]\n'OAI.Problem160.six_le_planeChromaticNumber' depends on axioms: [propext, Classical.choice, Quot.sound]\n'OAI.Problem160.not_properColoring_five' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+"secs": 10.0
+},
+"OAI.Geometry.PlaneColoring.ConnectedUnitFree": {
+"ok": true,
+"err": "",
+"secs": 7.0
+},
+"OAI.Geometry.PlaneColoring.Converse": {
+"ok": true,
+"err": "",
+"secs": 4.8
+},
+"OAI.Geometry.PlaneColoring.NullSetRobust": {
+"ok": true,
+"err": "",
+"secs": 5.8
+},
+"OAI.Geometry.PlaneColoring.Transfer": {
+"ok": true,
+"err": "",
+"secs": 5.4
+},
+"OAI.MeasureTheory.CompactFactors.OrbitBridge": {
+"ok": true,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/MeasureTheory/CompactFactors/OrbitBridge.lean:45:0: warning: automatically included section variable(s) unused in theorem `OAI.PlaneFiveColor.Spectral.pointFactor_apply`:\n  [MeasurableSpace X]\n  [StandardBorelSpace X]\n  [Nonempty X]\n  [MulAction (\u21a5K) X]\n  [MeasurableConstSMul (\u21a5K) X]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [MeasurableSpace\n  X] [StandardBorelSpace X] [Nonempty X] [MulAction (\u21a5K) X] [MeasurableConstSMul (\u21a5K) X] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/MeasureTheory/CompactFactors/OrbitBridge.lean:66:2: warning: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/MeasureTheory/CompactFactors/OrbitBridge.lean:94:25: warning: This simp argument is unused:\n  hS\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hconst] at he\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/MeasureTheory/CompactFactors/OrbitBridge.lean:129:25: warning: This simp argument is unused:\n  hS\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hconst] at hi\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n",
+"secs": 9.9
+},
+"OAI.MeasureTheory.CompactFactors.TowerAudit": {
+"ok": true,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/MeasureTheory/CompactFactors/TowerAudit.lean:105:0: warning: automatically included section variable(s) unused in theorem `OAI.PlaneFiveColor.Spectral.tower_max_all_factorizable`:\n  [StandardBorelSpace X]\n  [Nonempty X]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [StandardBorelSpace X] [Nonempty X] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/MeasureTheory/CompactFactors/TowerAudit.lean:157:0: warning: automatically included section variable(s) unused in theorem `OAI.PlaneFiveColor.Spectral.exists_tower_maximal`:\n  [Nonempty X]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Nonempty X] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/MeasureTheory/CompactFactors/TowerAudit.lean:233:2: warning: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/MeasureTheory/CompactFactors/TowerAudit.lean:296:45: warning: Variable name `h\u03bc` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _h\u03bc\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n",
+"secs": 7.8
+},
+"OAI.MeasureTheory.CompactFactors.TowerCorrect": {
+"ok": true,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/MeasureTheory/CompactFactors/TowerCorrect.lean:60:0: warning: automatically included section variable(s) unused in theorem `OAI.PlaneFiveColor.Spectral.TowerC.toTower`:\n  [StandardBorelSpace X]\n  [Nonempty X]\n  [MeasurableConstSMul (\u21a5K) X]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [StandardBorelSpace X] [Nonempty X] [MeasurableConstSMul (\u21a5K) X] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/MeasureTheory/CompactFactors/TowerCorrect.lean:68:0: warning: automatically included section variable(s) unused in theorem `OAI.PlaneFiveColor.Spectral.exists_towerC_maximal`:\n  [Nonempty X]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Nonempty X] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n",
+"secs": 9.3
+},
+"OAI.MeasureTheory.CompactFactors.WeakMixingTerminal": {
+"ok": true,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/MeasureTheory/CompactFactors/WeakMixingTerminal.lean:51:6: warning: Unused tactic linter: `change Measure.bind (Measure.dirac y\u2080) \u21d1\u03ba = \u03ba y\u2080` does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree/OAI/MeasureTheory/CompactFactors/WeakMixingTerminal.lean:56:6: warning: Unused tactic linter: `change Measure.bind (Measure.dirac y\u2080) \u21d1(\u03ba \u00d7\u2096 \u03ba) = (\u03ba \u00d7\u2096 \u03ba) y\u2080` does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n",
+"secs": 4.9
+}
+}

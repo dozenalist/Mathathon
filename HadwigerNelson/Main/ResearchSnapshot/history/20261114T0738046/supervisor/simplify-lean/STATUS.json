@@ -1,0 +1,57 @@
+{
+  "updated_utc": "2026-11-14T06:50:00Z",
+  "status": "completed_block",
+  "summary": "Block 1 plus post-outage recovery pass. Census of all 2038 theorem/lemma declarations in lean/OAI stands (scripts in .scratch/): the rigidity half has exactly two cross-file duplicate-conclusion clusters totalling ~70 body lines, so textual duplication there is capped. The real target remains the two near-verbatim 150-line contradiction theorems (ConditionalSpectrum:310 finite_uniform_precision_contradiction; ConditionalLimits:385 ambient_uniform_precision_contradiction), identical except in the encoding space and which difference law is wild. NEW this pass: the proposed cheap win was refuted by the compiler. `have : ErgodicVAdd G Y (mu.map q)` inside conditional_integer_pair_energy is a local instance (letI), not dead text -- deleting it fails with 'failed to synthesize ErgodicVAdd G Y (Measure.map q mu)' (rc 1, ~8 s, idle VM). So the pair/triple energy lemmas cannot be thinned that way; inlining them into RadialEnergy needs the instance discharged at two call sites, net ~20 lines not 34. No swarm ran this pass; smwfy8rae stayed stopped. Recovery pass changed no shared file.",
+  "verified_results": [
+    "GRADE [A] machine-checked (pinned Lean 4.34.1 + mathlib d13f23b, `source scripts/env4341.sh && lean EnergyShort.lean`, rc 1 in ~8 s): the local hypothesis `have : ErgodicVAdd G Y (mu.map q) := factor_ergodic \u2026` inside conditional_integer_pair_energy is a LOCAL INSTANCE (letI), not dead text. Deleting it gives exactly `EnergyShort.lean:337:2: error: failed to synthesize ErgodicVAdd G Y (Measure.map q mu)`. Therefore the pair/triple energy lemmas cannot be thinned by deleting those lines, and inlining them into RadialEnergy requires discharging the instance at the two call sites.",
+    "GRADE [A] machine-computed, reproducible: lean/OAI has 83 modules / 31,277 lines; 2038 theorem+lemma declarations parsed (rg gives 1861 at line start with the standard modifier prefixes). Command: python3 supervisor/simplify-lean/.scratch/census.py (226 ms, rc 0).",
+    "GRADE [A] machine-computed: restricted to Analysis/PlaneSpectrum + MeasureTheory/CompactFactors, exactly two cross-file duplicate-conclusion clusters exist, of total body size 41 and 30 lines. So textual duplication in the rigidity half is capped at ~70 lines. Command: python3 supervisor/simplify-lean/.scratch/dup2.py (113 s, rc 0).",
+    "GRADE [A] rg-verified usage: conditional_integer_pair_energy and conditional_integer_triple_energy (Energy.lean:323,:342) are each used exactly once, at RadialEnergy.lean:97 and :395, and each is a Fin.prod_univ_two/three expansion of conditional_integer_multiple_mean_zero (AlgebraModels.lean:652), whose statement is already general over s : Finset \u03b9, n : \u03b9 -> Z. So the pair/triple lemmas add no mathematical content; deleting them costs two call-site rewrites.",
+    "GRADE [A] import-direction facts relevant to the norm_integral_sq duplicate: Fourier.lean imports only Mathlib; Kernels.lean imports CompactFactors.ConditionalLimits; 2 Analysis modules import CompactFactors and 3 CompactFactors modules import Analysis. A one-import dedup is therefore impossible; a shared low-level module is required.",
+    "GRADE [A] statement comparison (read, not compiled): finite_uniform_precision_contradiction (ConditionalSpectrum.lean:310, 155 proof lines) and ambient_uniform_precision_contradiction (ConditionalLimits.lean:385, 153 proof lines) conclude False from the same 8 hypotheses up to two changes: FiniteEncodingApproximationAt with H : Fin r -> Y -> Fin m -> C versus AmbientEncodingAt with H : Fin r -> X -> Fin m -> C, and the wild hypothesis on differenceLaw (mu.map (q o p)) versus differenceLaw (mu.map q). Neither is literally an instance of the other."
+  ],
+  "conjectures": [
+    "A common core lemma for the two 150-line contradiction theorems can be stated with the encoding as an abstract predicate plus an interface that both FiniteEncodingApproximationAt and AmbientEncodingAt satisfy, removing roughly 250-280 lines net; this is the largest declaration-level reduction available and is not attempted yet.",
+    "Deleting conditional_integer_pair_energy / conditional_integer_triple_energy and inlining at RadialEnergy.lean:97,:395 removes 34 proof lines for about 10 added lines at two call sites; net ~25 lines, no dependency change. Low value, low risk.",
+    "The two norm_integral_sq copies are the same 17-line proof; the honest fix is a shared low-level module imported by both halves, which is architecture's call, not a declaration deletion.",
+    "SUPERSEDED (compiled, post-outage recovery block): the pair/triple energy lemmas cannot be thinned by deleting their `have : ErgodicVAdd G Y (mu.map q)` lines -- that is a local instance (letI) consumed by the body; deleting it fails with 'failed to synthesize ErgodicVAdd G Y (Measure.map q mu)'. Inlining is still possible but needs the instance discharged at the two RadialEnergy call sites, so the net saving is ~20 lines, not 34. See CENSUS.md 'REFUTED'."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/CENSUS.md",
+    "supervisor/simplify-lean/.scratch/census.py",
+    "supervisor/simplify-lean/.scratch/dup2.py",
+    "supervisor/simplify-lean/.scratch/decls.json",
+    "supervisor/simplify-lean/lean/EnergyShort.lean (restored to a byte-identical copy of OAI/Analysis/PlaneSpectrum/Energy.lean; kept only as the input whose shortened variant refuted the 'dead have' claim)",
+    "supervisor/simplify-lean/EnergyShort.log (the rc-1 diagnostic), supervisor/simplify-lean/EnergyShort-diagnosis.txt"
+  ],
+  "tests_run": [
+    "python3 supervisor/simplify-lean/.scratch/census.py -> rc 0, prints 2038 decls and the first 18 cross-file duplicate-conclusion clusters.",
+    "python3 supervisor/simplify-lean/.scratch/dup2.py -> rc 0, prints the rigidity-half clusters with usage counts.",
+    "source scripts/env4341.sh && cd supervisor/simplify-lean/lean && lean EnergyShort.lean -> TIMED OUT at 400 s with no output (command killed with its child). 4-core VM shared with 5 other coordinator sessions and 3 swarm members; not a Lean error, no diagnostic obtained.",
+    "RECOVERY BLOCK (2026-11-14T06:46Z, VM idle, load avg 0.09): the same command re-run serially -> rc 1 in ~7-8 s with the synthesise-failure above. Two earlier log reads were stale (the `>` redirect had truncated a log a lingering lean was still writing); the result was confirmed on a third, clean run."
+  ],
+  "failed_routes": [
+    "Compiling a shortened copy of Energy.lean did not complete inside the block (CPU contention, 400 s wall, 16/16 shell slots busy). No build evidence for any edit this block.",
+    "Swarm smwfy8rae (3 members, deepseek-v4.1-flash, 20 min): all three still running at the deadline, no submitted report, no accepted verdict. m1 wrote .ultramath/smwfy8rae/m1/HitA.lean deriving each norm_integral_sq from the other in one line, but its lean_out.txt is EMPTY, so the hit is uncompiled and may not even parse (it imports both halves; whether that import pair is acyclic is unchecked). Treat as a lead only.",
+    "Assumed for the first 10 minutes that a large textual duplicate block existed in the rigidity half; the census refuted it, which is why no big dedup patch was produced."
+  ],
+  "next_step": "Next concrete step, unchanged in target but with the cheap option closed: state the common core lemma for the two uniform-precision contradictions. Extract from the two 150-line proofs exactly which facts about the encoding they consume (kernel-encoding distance bound, mean-zero from the arc hypothesis, the collision/averaging step), state them as one abstract EncodingPredicate with those three or four fields, prove contradiction_from_encoding once against it, then derive both theorems as 3-line wrappers. Serial build order (one lean at a time, idle VM, each ~10-20 s once mathlib oleans are warm): (1) compile the new module importing only Mathlib + the two lemmas it needs; (2) compile the two modified modules; (3) `#print axioms` both root statements and diff against [propext, Classical.choice, Quot.sound]. Do NOT start from the EnergyShort route again -- that hypothesis is refuted.",
+  "owned_agents": [
+    {
+      "swarm": "smwfy8rae",
+      "members": 3,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "state": "stopped",
+      "accepted": 0,
+      "note": "stopped at the block-1 deadline with no submitted report; not restarted in the recovery pass (instruction: no new swarms). Partial artifacts in .ultramath/smwfy8rae/m{1,2,3}/; m1/HitA.lean still uncompiled"
+    }
+  ],
+  "escalation": {
+    "obstacle": "Factor two near-verbatim 150-line contradiction theorems in different halves of the tree (ConditionalSpectrum.finite_uniform_precision_contradiction and ConditionalLimits.ambient_uniform_precision_contradiction) into one common core lemma, preserving both statements and the axiom set [propext, Classical.choice, Quot.sound].",
+    "definitions": "mu a probability measure on a standard Borel X, p : X -> Y, q : Y -> W (finite version) or q : X -> W (ambient version), b : X -> D with D the Pontryagin dual, g : Y -> Fin m -> D a finite encoding of the conditional kernel: condDistrib b p mu y = (m : ENNReal)^{-1} * sum_i dirac (g y i) a.e. FiniteEncodingApproximationAt mu p q b m gamma: exists r, B, C, H : Fin r -> Y -> Fin m -> C with sum_i ||H i y|| <= C and for every k in K a coefficient family coeff : W -> Fin r -> C, ||coeff w|| <= B, with integral of dist(kernelEncoding (condDistrib b p mu) (fun d => eval (kCoeff k) d) m (p x), sum_i coeff (q (p x)) i * H i (p x))^2 below gamma^2. AmbientEncodingAt is the same with H : Fin r -> X -> Fin m -> C and q : X -> W. Both theorems assume hwild: IsWild of the corresponding differenceLaw, an arc-separation hypothesis with parameters rho, c, N, and conclude False for gamma = ((rho^m/m)/100)/100.",
+    "hypotheses": "StandardBorel X, Y, W, nonempty; mu probability; p, q, b measurable; m > 0; rho, c > 0; N > 0; the arc hypothesis for every probability measure on the circle; IsWild difference law.",
+    "attempted_approaches": "Read both proofs; they run the same five steps (kernel-encoding distance bound, measurability of the encoding map, mean-zero from the arc hypothesis, phase-collision/averaging, contradiction) with only the domain of H and the space of the wild law changed. Not yet attempted: extracting the used interface, since it needs a compile budget of one module per half (~500 s each) and this block had none.",
+    "expected_useful_output": "A Lean file that declares an abstract encoding predicate E with the three or four properties the proofs consume, proves contradiction_from_encoding once (~150 lines), and derives both existing statements as 3-line wrappers; plus the measured line delta and a compile log for the two modified modules."
+  },
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched."
+}

@@ -1,0 +1,167 @@
+[
+ {
+  "k": 5,
+  "cycle": [
+   0,
+   1,
+   2
+  ],
+  "n_allowed": 9,
+  "n_allowed_heavy": 7,
+  "n_models": 2600,
+  "max_heavy": 6,
+  "best_heavy_example": [
+   "0b1001",
+   "0b10010",
+   "0b1001",
+   "0b10010",
+   "0b1001",
+   "0b10010"
+  ],
+  "n_no_hit": 0,
+  "no_hit_example": null,
+  "max_class_over_directions": {
+   "0b1000": 3,
+   "0b1001": 3,
+   "0b1010": 3,
+   "0b1100": 3,
+   "0b10000": 3,
+   "0b10001": 3,
+   "0b10010": 3,
+   "0b10100": 3
+  },
+  "cross_checked_bruteforce": 2600
+ },
+ {
+  "k": 6,
+  "cycle": [
+   0,
+   1,
+   2
+  ],
+  "n_allowed": 35,
+  "n_allowed_heavy": 20,
+  "n_models": 967464,
+  "max_heavy": 3,
+  "best_heavy_example": [
+   "0b111",
+   "0b1000",
+   "0b111",
+   "0b1000",
+   "0b111",
+   "0b1000"
+  ],
+  "n_no_hit": 587712,
+  "no_hit_example": [
+   "0b111",
+   "0b1000",
+   "0b111",
+   "0b1000",
+   "0b111",
+   "0b10000"
+  ]
+ },
+ {
+  "k": 6,
+  "cycle": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "n_allowed": 33,
+  "n_allowed_heavy": 20,
+  "n_models": 388796,
+  "max_heavy": 3,
+  "best_heavy_example": [
+   "0b101",
+   "0b11010",
+   "0b101",
+   "0b11010",
+   "0b101",
+   "0b11010"
+  ],
+  "n_no_hit": 192348,
+  "no_hit_example": [
+   "0b101",
+   "0b1010",
+   "0b101",
+   "0b1010",
+   "0b101",
+   "0b10000"
+  ]
+ },
+ {
+  "k": 6,
+  "cycle": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "n_allowed": 31,
+  "n_allowed_heavy": 20,
+  "n_models": 131790,
+  "max_heavy": 3,
+  "best_heavy_example": [
+   "0b101",
+   "0b11010",
+   "0b101",
+   "0b11010",
+   "0b101",
+   "0b11010"
+  ],
+  "n_no_hit": 54180,
+  "no_hit_example": [
+   "0b101",
+   "0b1010",
+   "0b101",
+   "0b1010",
+   "0b101",
+   "0b100000"
+  ]
+ },
+ {
+  "k": 6,
+  "cycle": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "n_allowed": 29,
+  "n_allowed_heavy": 20,
+  "n_models": 36228,
+  "max_heavy": 3,
+  "best_heavy_example": [
+   "0b101",
+   "0b11010",
+   "0b101",
+   "0b11010",
+   "0b101",
+   "0b11010"
+  ],
+  "n_no_hit": 9372,
+  "no_hit_example": [
+   "0b101",
+   "0b1010",
+   "0b101",
+   "0b10010",
+   "0b101",
+   "0b101000"
+  ]
+ },
+ {
+  "k": 7,
+  "cycle": [
+   0,
+   1,
+   2
+  ],
+  "n_allowed": 92,
+  "milp_max_heavy": 3
+ }
+]

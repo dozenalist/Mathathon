@@ -1,0 +1,11 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/Accumulation.lean	2026-11-13 19:09:13.641403053 +0000
++++ OAI/Geometry/PlaneColoring/Accumulation.lean	2026-11-13 19:41:57.362599775 +0000
+@@ -99,7 +99,7 @@
+     · exact (four_support_nonempty c hc hw (hyn n) ht).choose_spec
+   have hvlim : Tendsto vn atTop (𝓝 a) := hcn.congr' (by
+     filter_upwards [hcT] with n hn
+-    simp only [vn,dite_eq_left hn])
++    simp only [vn,dif_pos hn])
+   exact four_support_sequence_no_unit c hc hw hyn hx hy ht hvlim hdt hvn hdn (direction_sixty_unit_real a)
+ end EuclideanFiveColor
+ end

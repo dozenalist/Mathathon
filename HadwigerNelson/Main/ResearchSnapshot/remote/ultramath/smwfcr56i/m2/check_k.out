@@ -1,0 +1,58 @@
+============================================================================
+C1  four-cycle locus (paper 6.3.1): palettes made of cycle labels only
+============================================================================
+ k=5, palette bound 2: 7 admissible palettes, 2 of them cycle-label only:
+   [0, 2]:  U={0,2} part [0, 2], V={1,3} part []
+   [1, 3]:  U={0,2} part [], V={1,3} part [1, 3]
+ k=6, palette bound 3: 33 admissible palettes, 6 of them cycle-label only:
+   [0, 2]:  U={0,2} part [0, 2], V={1,3} part []
+   [1, 3]:  U={0,2} part [], V={1,3} part [1, 3]
+   [0, 1, 2]:  U={0,2} part [0, 2], V={1,3} part [1]
+   [0, 1, 3]:  U={0,2} part [0], V={1,3} part [1, 3]
+   [0, 2, 3]:  U={0,2} part [0, 2], V={1,3} part [3]
+   [1, 2, 3]:  U={0,2} part [2], V={1,3} part [1, 3]
+============================================================================
+C1b  palette {0,2,4} at the k=6 four-cycle locus (ambiguity witness)
+============================================================================
+ k=5: palette {0,2,4} admissible = False (|P|=3 vs bound 2); contains state X={4}: True, contains state U={0,2}: True
+ k=6: palette {0,2,4} admissible = True (|P|=3 vs bound 3); contains state X={4}: True, contains state U={0,2}: True
+============================================================================
+C2  external alphabet at a TRIANGLE interface (Theorem B) and the disjointness graph (paper (5.7))
+============================================================================
+ k=4: |Sigma| = 0   bipartite = True   states = []
+ k=5: |Sigma| = 2   bipartite = True   states = [[3], [4]]
+ k=6: |Sigma| = 6   bipartite = False   states = [[3], [4], [5], [3, 4], [3, 5], [4, 5]]
+      odd cycle: [[3], [4], [5]]
+============================================================================
+C3  admissible palette counts (bound k-3)
+============================================================================
+ k=4 (bound 1): l=3:1  l=4:0  l=5:0
+ k=5 (bound 2): l=3:9  l=4:7  l=5:5
+ k=6 (bound 3): l=3:35  l=4:33  l=5:31
+============================================================================
+C4  five-cycle step arithmetic of paper 8.2 (k=5), exhaustive
+============================================================================
+ admissible six-step sequences: 0   (paper: none)
+============================================================================
+C5  five-cycle diagonals D_i = {i,i+2} (paper 6.3.3)
+============================================================================
+ D_a cap D_b empty <=> b-a = +-1 mod 5, for all 10 pairs: True
+============================================================================
+C6  colouring certificates
+============================================================================
+ unit equilateral triangle properly 3-coloured with labels 4,5,6: True {0: 4, 1: 5, 2: 6}
+ 4-edge unit path, proper 3-colouring, endpoints differ:        True {0: 4, 1: 5, 2: 6, 3: 4, 4: 5}
+============================================================================
+C7  four-cycle splits (Proposition B4): outsider-free palettes per split
+============================================================================
+  k=5, split with middles (0, 2): 1 palettes [[0, 2]]
+  k=5, split with middles (1, 3): 1 palettes [[1, 3]]
+  k=6, split with middles (0, 2): 3 palettes [[0, 2], [0, 1, 2], [0, 2, 3]]
+  k=6, split with middles (1, 3): 3 palettes [[1, 3], [0, 1, 3], [1, 2, 3]]
+============================================================================
+C8  a k=6 triangle-interface model with |A| = 2 (constraint level)
+============================================================================
+   arcs D_0..D_5, R(D_k) = D_(k+1): [[3, 4], [5], [3, 4], [5], [3, 4], [5]]
+   1 <= |A| <= 2 : True   A cap A(R.) = empty : True   A subset of T^c : True
+   arcs with |A| = 2 : [0, 2, 4], total angular measure 1*pi = 1.0*pi
+   palette constraints: 1<=|P|<=3 True, P cap P(R.)=empty True, not inside a cycle edge True, meets T^c (hence O and I) True

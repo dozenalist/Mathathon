@@ -1,0 +1,484 @@
+[
+ {
+  "k": 6,
+  "ell": 3,
+  "geometries": 36,
+  "base_sat": 36,
+  "tight_sat": 36,
+  "first_tight_witness": {
+   "cells": [
+    0,
+    0,
+    0
+   ],
+   "palettes": [
+    [
+     3
+    ],
+    [
+     4
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "k": 6,
+  "ell": 4,
+  "geometries": 216,
+  "base_sat": 216,
+  "tight_sat": 216,
+  "first_tight_witness": {
+   "cells": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "palettes": [
+    [
+     4
+    ],
+    [
+     5
+    ],
+    [
+     4
+    ],
+    [
+     5
+    ],
+    [
+     4
+    ],
+    [
+     5
+    ]
+   ]
+  }
+ },
+ {
+  "k": 6,
+  "ell": 5,
+  "geometries": 1296,
+  "base_sat": 225,
+  "tight_sat": 225,
+  "first_tight_witness": {
+   "cells": [
+    0,
+    0,
+    0,
+    3,
+    3
+   ],
+   "palettes": [
+    [
+     5
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     5
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     5
+    ],
+    [
+     1,
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "k": 6,
+  "ell": 6,
+  "geometries": 7776,
+  "base_sat": 177,
+  "tight_sat": 177,
+  "first_tight_witness": {
+   "cells": [
+    0,
+    0,
+    0,
+    3,
+    3,
+    3
+   ],
+   "palettes": [
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     5
+    ]
+   ]
+  }
+ },
+ {
+  "k": 7,
+  "ell": 3,
+  "geometries": 36,
+  "base_sat": 36,
+  "tight_sat": 36,
+  "first_tight_witness": {
+   "cells": [
+    0,
+    0,
+    0
+   ],
+   "palettes": [
+    [
+     3
+    ],
+    [
+     4
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "k": 7,
+  "ell": 4,
+  "geometries": 216,
+  "base_sat": 216,
+  "tight_sat": 216,
+  "first_tight_witness": {
+   "cells": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "palettes": [
+    [
+     4
+    ],
+    [
+     5
+    ],
+    [
+     4
+    ],
+    [
+     5
+    ],
+    [
+     4
+    ],
+    [
+     5
+    ]
+   ]
+  }
+ },
+ {
+  "k": 7,
+  "ell": 5,
+  "geometries": 1296,
+  "base_sat": 1296,
+  "tight_sat": 1296,
+  "first_tight_witness": {
+   "cells": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "palettes": [
+    [
+     5
+    ],
+    [
+     6
+    ],
+    [
+     5
+    ],
+    [
+     6
+    ],
+    [
+     5
+    ],
+    [
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "k": 7,
+  "ell": 6,
+  "geometries": 7776,
+  "base_sat": 2593,
+  "tight_sat": 2593,
+  "first_tight_witness": {
+   "cells": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    3
+   ],
+   "palettes": [
+    [
+     6
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     6
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     6
+    ],
+    [
+     1,
+     5
+    ]
+   ]
+  }
+ },
+ {
+  "k": 7,
+  "ell": 7,
+  "geometries": 46656,
+  "base_sat": 4109,
+  "tight_sat": 4109,
+  "first_tight_witness": {
+   "cells": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    3,
+    3
+   ],
+   "palettes": [
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "k": 8,
+  "ell": 3,
+  "geometries": 36,
+  "base_sat": 36,
+  "tight_sat": 36,
+  "first_tight_witness": {
+   "cells": [
+    0,
+    0,
+    0
+   ],
+   "palettes": [
+    [
+     3
+    ],
+    [
+     4
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "k": 8,
+  "ell": 4,
+  "geometries": 216,
+  "base_sat": 216,
+  "tight_sat": 216,
+  "first_tight_witness": {
+   "cells": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "palettes": [
+    [
+     4
+    ],
+    [
+     5
+    ],
+    [
+     4
+    ],
+    [
+     5
+    ],
+    [
+     4
+    ],
+    [
+     5
+    ]
+   ]
+  }
+ },
+ {
+  "k": 8,
+  "ell": 5,
+  "geometries": 1296,
+  "base_sat": 1296,
+  "tight_sat": 1296,
+  "first_tight_witness": {
+   "cells": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "palettes": [
+    [
+     5
+    ],
+    [
+     6
+    ],
+    [
+     5
+    ],
+    [
+     6
+    ],
+    [
+     5
+    ],
+    [
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "k": 8,
+  "ell": 6,
+  "geometries": 7776,
+  "base_sat": 7776,
+  "tight_sat": 7776,
+  "first_tight_witness": {
+   "cells": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "palettes": [
+    [
+     6
+    ],
+    [
+     7
+    ],
+    [
+     6
+    ],
+    [
+     7
+    ],
+    [
+     6
+    ],
+    [
+     7
+    ]
+   ]
+  }
+ }
+]

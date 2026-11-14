@@ -1,0 +1,20 @@
+{
+  "verifiedUtc": "2026-11-14T10:23:26.922Z",
+  "vertices": 553,
+  "edges": 2722,
+  "nonadjacentPairs": 149906,
+  "validColourings": 34,
+  "distinctSignatures": 553,
+  "unseparatedPairs": 0,
+  "claim": "Every distinct vertex pair is separated in some proper5colouring; hence no forced-equal pair for any k>=5 on this graph.",
+  "limits": "Combinatorial certificate for fixed graph only; no plane chromatic bound, no higher-arity flexibility claim; k4notapplicable sincegraphnot4colourable.",
+  "edgeSha256": "b339b6a75575152d8bf2efc9ca1a178d2df15a2f9590b752de4f8ebc4a63e466",
+  "certificateSha256": "9ab71b7aec712709517d8260adf646fab21b3bf8379304ebc4354b6c39978e6a",
+  "secondChecker": {
+    "language": "Python3.12",
+    "command": "C:\\WINDOWS\\py.exe -3.12 outputs\\Verify-HeuleNoForcing.py",
+    "exitCode": 0,
+    "result": "PASS",
+    "note": "WindowsStorePythonrequiredapprovedoutside-sandboxlaunch; noinstallationorconfigurationchange"
+  }
+}

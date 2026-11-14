@@ -1,0 +1,77 @@
+{
+ "input_sha256": {
+  "lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean": "6602b9d8f20bbdfd447f2f3fcfa523f2c33d09c247e3d2983be7503df9f2dc9b",
+  "lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean": "ca74ba1033fead55133670218739a36b4c75173d9b04d765affd19da9d215cc0"
+ },
+ "input_lines": {
+  "ConditionalSpectrum": 497,
+  "ConditionalLimits": 701
+ },
+ "output_lines": {
+  "ConditionalSpectrum": 530,
+  "ConditionalLimits": 542
+ },
+ "added_lines": {
+  "ConditionalSpectrum": 191,
+  "ConditionalLimits": 6
+ },
+ "removed_lines": {
+  "ConditionalSpectrum": 158,
+  "ConditionalLimits": 165
+ },
+ "statement_delta": {
+  "finite_uniform_precision_contradiction": {
+   "identical": true,
+   "sha_orig": "2dde28358ab09934",
+   "sha_patched": "2dde28358ab09934"
+  },
+  "ambient_uniform_precision_contradiction": {
+   "identical": true,
+   "sha_orig": "ab6dd548d3a6bb53",
+   "sha_patched": "ab6dd548d3a6bb53"
+  }
+ },
+ "definition_change": {
+  "FiniteEncodingApproximationAt": {
+   "old": "def (explicit body)",
+   "new": "abbrev (alias to EncodingApproximationAt)",
+   "binders_preserved": true
+  },
+  "AmbientEncodingAt": {
+   "old": "def (explicit body)",
+   "new": "abbrev (alias to EncodingApproximationAt)",
+   "binders_preserved": true
+  }
+ },
+ "comments_only_checks": {
+  "no_sorry_in_patch": true,
+  "core_inserted_in_spectrum": true,
+  "ambient_calls_core": true,
+  "no_import_added": true,
+  "no_new_hypothesis": true
+ },
+ "patch_sha256": {
+  "0001-conditional-spectrum.patch": "d9b56eac3d65678a911eb866231f158a110d5b97b23b9c7eab91e02f494adad8",
+  "0002-conditional-limits.patch": "64b657d3159ade3728464c92200dde906379969aea3c0c16b5f2ce56a5ae66be"
+ },
+ "patched_copy_sha256": {
+  "OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean": "d123de9bc689a01c6d175eaa6737ee931d1426bf0df5dff549f3e1e524d3a46f",
+  "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean": "58707f0495837a89b58d5ac7d131ee855220c74cba28851474489b7a8cdd9e0d"
+ },
+ "smoke_sha256": {
+  "SmokeAmbient.lean": "ff8500961ace7c3dda431485bac90ff46b4946a32046190ca136f8c62065e58a",
+  "SmokeFinite.lean": "5d7d963d934c010ffce3796bb717d749e5f096edb68ceea9415ab68703c52b89"
+ },
+ "apply_check": {
+  "tool": "patch -p1 --dry-run on frozen copies",
+  "rc": [
+   0,
+   0
+  ]
+ },
+ "net_line_change": {
+  "ConditionalSpectrum": 33,
+  "ConditionalLimits": -159,
+  "total": -126
+ }
+}

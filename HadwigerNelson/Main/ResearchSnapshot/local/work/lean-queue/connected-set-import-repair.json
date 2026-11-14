@@ -1,0 +1,18 @@
+{
+  "previousAttempt": {
+    "sourceSha256": "9993d3589bbfa369ccf7526f08bdbf9754124c68fc168c3afe2690cdc26c13a4",
+    "exitCode": 1,
+    "error": "Missing ContinuousSub E at the two continuous subtraction uses. Failed elaboration contained sorryAx; never accepted."
+  },
+  "repair": "Added Mathlib.Analysis.Normed.Group.Uniform, preserving theorem statements and bodies.",
+  "result": {
+    "id": "connected-set-minimal",
+    "status": "passed",
+    "sourceSha256": "c243da2d52bba6b22d0df2ff15fcbcd22c2478387131a33c74263082ac5e325a",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  }
+}

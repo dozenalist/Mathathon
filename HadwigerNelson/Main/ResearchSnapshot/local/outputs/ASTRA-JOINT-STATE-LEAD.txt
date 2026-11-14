@@ -1,0 +1,94 @@
+ASTRA JOINT-STATE LEAD — FIRST SUBSTANTIVE HANDOFF
+14 November 2026. Grade: complete lead paper proof, independent review pending.
+
+RESULT
+A general finite-state theorem gives a short replacement proof of
+FiveSupport.lean:138 five_support_no_sixty. It avoids
+States.lean:704 strict_state_no_unit_support and all of its descendants.
+The six-angle experiment reduces to JOINT PAIRS, so there is no need to
+formalize the 15,625-word space.
+
+THEOREM AND PROOF
+For measurable finite-valued f:R->I and translation d, let
+S_i=supp(Lebesgue restricted to {f=i}) and
+Q_ij={t:f(t)=i,f(t+d)=j}.
+Assume S_i intersects S_j implies Lebesgue(Q_ij)=0 for every ordered pair.
+Then a in S_i implies a+d not in S_i, for EVERY a.
+Proof: S_i is the finite union over j of supp(Lebesgue restricted to Q_ij).
+Choose j whose joint support contains a. Translation continuity and
+preservation of null sets put a+d in S_j. If a+d were also in S_i, the
+contact hypothesis would make Q_ij null, contradicting its support. QED.
+
+EXACT SOURCE CONTRACT
+Fix the same centre x, a measurable weak 5-colouring, and FiveCenter x.
+For f(t)=fiveState x (t:Angles), d=pi/3:
+* Accumulation:390 fiveState_adj makes every nonadjacent Q_ij null.
+* FiveSupport:90 five_support_step_ban makes Q_ij null when adjacent
+  states i,j have intersecting closed supports.
+These two facts prove the theorem's entire hypothesis. Finite intersection
+over the 25 ordered pairs controls exceptional sets; no uncountable
+intersection or simultaneous marginal selection is used.
+The existing stateSupport_shift_relation can formalize the same proof
+with R(i,j)=Disjoint(S_i,S_j), without introducing joint tuple types.
+
+RETAINED AND REMOVED DEPENDENCIES
+The five_support_no_sixty statement stays unchanged. Its proof retains
+five_support_step_ban and the latter's weak-trace/neighbor-palette
+argument; it removes the strict-state density/L1/circle-transport call.
+Its downstream consumer five_opposite_contacts_false and CyclicCore's
+five-centre discreteness argument can stay unchanged.
+This does NOT remove States.lean or its strict-state lemmas globally:
+the four-state / four-interface branch still uses them.
+The FullApproximation forest argument has a separate common-interface
+cycle exclusion; this packet does not claim to replace that branch.
+
+NAMING CAUTION
+Exact manuscript Lemma 6.7 text is being retrieved by the existing
+architecture worker. Historic descriptions suggest 6.7 may actually be
+the step-ban lemma, which this proof RETAINS. Do not report 'Lemma 6.7
+deleted'. The precise claim is the declaration-level replacement above.
+
+HISTORIC COUNTERMODELS — EXACT RECONSTRUCTION
+A tiny standard-library Node run reconstructed all eight normalized
+V0,V3,D,N list models. All eight have exact projections of genuine closed
+C5 six-words: joint correlations alone eliminate NONE of them.
+Their compatible joint-word counts are 3,8,3,8,8,22,8,22.
+Imposing the actual global contact bans leaves 1,5,1,5,5,18,5,18 words,
+but in every case destroys exact support projections. Thus none is a
+countermodel to the new theorem's full premise. Do not misreport zero
+surviving words or claim plane-colouring realizability.
+This also isolates the contact-ban premise as genuinely used, rather
+than silently adding no-common-label validity at four extra directions.
+
+CORRECT SUPPORT COUNTEREXAMPLE
+The derivation also constructs a Borel 2pi-periodic angular f taking only
+states 0,1, with f(t+pi/3)=1-f(t) pointwise but S_0=S_1=R. Choose a Borel
+partition of a 60-degree interval whose two parts each have positive
+measure in every open subinterval, and alternate their labels between
+successive sectors. Hence even full joint correlations plus adjacency
+do not upgrade level-set disjointness to AE support disjointness.
+Unlike the historic examples this uses positive measure, correct
+periodicity and a positive-measure failure set. It fails the contact-ban
+premise and is explicitly only an angular model, not a plane colouring.
+
+ARTIFACTS
+Full derivation, source contract, dependency map, caveats and three exact
+worker taskcards:
+  work/astra-joint-state/PAIR-SUPPORT-THEOREM.txt
+Reproducible small check:
+  node work/astra-joint-state/audit-joint-words.mjs
+Detailed exact finite output:
+  work/astra-joint-state/joint-word-audit.json
+
+NEXT THREE WORKER CARDS (full executable contracts in the derivation)
+Architecture: transcribe manuscript 6.7 and independently write the short
+joint-support proof/application, explicitly naming the retained analytic
+lemma. Verification: audit finite-support projection, translation,
+exceptional sets and declaration dependency closure; independently check
+the eight models and their projection failures. Formal: after paper
+acceptance, prepare ONE generic theorem plus the unchanged-statement
+five_support_no_sixty proof replacement in a private patch; use the
+existing serialized queue, no broad refactor rebuild.
+
+No original proof edits, Lean runs, Open Math calls, credentials, installs,
+child agents, heavy computation, or new paid activity were performed.

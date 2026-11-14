@@ -1,0 +1,89 @@
+{
+  "updated_utc": "2026-11-14T15:15:00Z",
+  "status": "completed_block",
+  "summary": "Block 16, source-only recovery. BinderAudit v2 FAILED to compile locally; its exact source is preserved under archive/ with hashes. v3 repairs the three diagnostics: the mutable counter moved inside the forallTelescopeReducing callback; types rendered with the monadic MessageData.toString instead of a ToString instance; BinderInfo matched on 'default' since the enum has no '.explicit'. The run_cmd placeholder hazard is now a stated rule -- a capture is void if lean reports any error for the file -- and no unsafe/#eval route is used. Substantive correction: v2 had asserted the predicate aliases retain StandardBorelSpace Y and Nonempty Y, which the accepted #check contradicts (only MeasurableSpace X, MeasurableSpace Y and IsProbabilityMeasure mu, three type parameters); the error was reading the variable block instead of the declaration header. The definitions are now FROZEN against the actual header, while the two theorems are deliberately UNFROZEN: they print a FREEZE-CANDIDATE instance multiset rather than being judged against a second guess. Accepted R4/V4/R5 results unchanged and not re-run; 82-build not redone. Comparator exercised on synthetic captures only.",
+  "verified_results": [
+    "GRADE [C] v2's failure is preserved and hash-pinned: archive/BinderAudit.v2.FAILED.lean sha256 648afda2bd84f73169d26d5e2ccd2886803d46df9ea599cf39d2ddf3a0a06049, archive/binder_expected.v2.FAILED.json sha256 fb575764b0d145e7e95b926258d27bbe74669b869946af45c2e1c30cef6e9f88, archive/binder_snapshot.v2.FAILED.py sha256 977878b409010c8182f428b66aadf5b2d4838d0f4556b5488795ceb5abc7ebc5. Nothing was overwritten.",
+    "GRADE [C] E1 repaired: the mutable index counter is declared inside the forallTelescopeReducing callback, so the mutation is local to the closure that owns it.",
+    "GRADE [C] E2 repaired: types are rendered by renderType using the monadic MessageData.toString in CoreM and lifted; there is no ToString-instance dependency anywhere in the file.",
+    "GRADE [C] E3 repaired: BinderInfo is matched as default|implicit|strictImplicit|instImplicit with 'default' reported as explicit; '.explicit' no longer appears.",
+    "GRADE [C] The run_cmd placeholder hazard is now an operating rule in the file header: a capture is valid only if lean reported NO error for BinderAudit.lean, because elaboration errors leave placeholders and a green parse can hide an audit that never ran. No unsafe or #eval path is used to force execution.",
+    "GRADE [C] SUBSTANTIVE CORRECTION: v2 asserted the predicate aliases retain StandardBorelSpace Y and Nonempty Y. The accepted #check shows FiniteEncodingApproximationAt carries only MeasurableSpace X, MeasurableSpace Y and IsProbabilityMeasure mu with three type parameters. The root cause is structural -- the instance set was read off the variable block instead of the declaration header; Lean keeps only what the declaration needs, and W is needed by none because it occurs only through coeff : W -> Fin r -> C.",
+    "GRADE [C] binder_expected.json schema 3: the three definitions are FROZEN to {MeasurableSpace X, MeasurableSpace Y, IsProbabilityMeasure mu}, type binders X Y W (plus Z for EncodingApproximationAt), explicit mu p q b m gamma (mu p P S b m gamma for the core). The two theorems are UNFROZEN: enforced are only the forbidden StandardBorelSpace Y / Nonempty Y, the type binders X Y W and the 20-name explicit sequence; the instance multiset is printed as FREEZE-CANDIDATE for a one-time freeze.",
+    "GRADE [C] Comparator v3 supports both modes: frozen declarations get multiset equality against instance_allowed with UNKNOWN EXTRA INSTANCE and ABSENT required instance as FAILs; unfrozen ones print their observed instance multiset and pass unless a forbidden entry, a strict binder, a type-binder mismatch or an explicit-sequence mismatch occurs. Absent declarations and ERROR lines remain fail-closed in both modes.",
+    "GRADE [C] COMPARATOR EXERCISED ON SYNTHETIC CAPTURES ONLY: a capture built to the actual definition header gives SUMMARY fails=0 with FREEZE-CANDIDATE instances [MeasurableSpace X, MeasurableSpace Y, MeasurableSpace W, IsProbabilityMeasure mu] for both theorems and correct Z placement for EncodingApproximationAt; a negative capture gives FORBIDDEN on StandardBorelSpace Y and Nonempty Y, UNKNOWN INSTANCE on PolishSpace Y against a frozen definition, ABSENT (fail closed) for MISSING and FAIL for ERROR. This validates the comparator, not the tree.",
+    "GRADE [S] Accepted integration evidence, reported earlier and NOT re-run or reopened here: R4 82-module build PASS, 9 exported-root axiom checks PASS, R5 SignatureEquivalence and SignatureCheckFresh PASS with 4+4 standard axiom prints and no sorry.",
+    "GRADE [R] Scope unchanged: certifying the supplied OpenAI proof yields chi(R^2) >= 6 as already stated; it creates no new plane bound, and chi(R^2) in {6,7} remains open."
+  ],
+  "conjectures": [
+    "The flip of 'default' to explicit is the most likely remaining compile risk, since the enum has exactly four constructors and the match is now exhaustive.",
+    "If MessageData.toString turns out to be IO-based rather than CoreM-based, liftCoreM becomes liftIO; that is a one-token change in a 102-line file.",
+    "The theorem instance multisets will most likely be {MeasurableSpace X, MeasurableSpace Y, MeasurableSpace W, IsProbabilityMeasure mu}; whether MeasurableSpace W is genuinely a binder is exactly what the freeze step decides, and it is not worth guessing again."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/REVIEW-instrument-v3.md  <-- repair table, the correction, freeze protocol, residual uncertainty. sha256 8b6222e4f67e34d72ef0bff78ff2dd0881581d0f26b1dcdcf4ddc5afb4718661",
+    "supervisor/simplify-lean/lean/BinderAudit.lean  <-- v3, 102 lines, ready to queue. sha256 de6d516257562feeac0c2d71e62ecd5d79fb54def93cf7471e5b9457099b1db6",
+    "supervisor/simplify-lean/binder_expected.json  <-- schema 3, frozen definitions + unfrozen theorems. sha256 b33af38bec694a04151a926cd3a01b8130247ea533bddf90f597c16d52e7af86",
+    "supervisor/simplify-lean/binder_snapshot.py  <-- comparator v3 with frozen/unfrozen modes. sha256 f581287b13a3d3425bb08628feff09520c4926d594d5adede856707dcceb88dc",
+    "supervisor/simplify-lean/archive/BinderAudit.v2.FAILED.lean  <-- failed v2 (E1/E2/E3). sha256 648afda2bd84f73169d26d5e2ccd2886803d46df9ea599cf39d2ddf3a0a06049",
+    "supervisor/simplify-lean/archive/binder_expected.v2.FAILED.json  <-- v2's wrong instance assumption. sha256 fb575764b0d145e7e95b926258d27bbe74669b869946af45c2e1c30cef6e9f88",
+    "supervisor/simplify-lean/archive/binder_snapshot.v2.FAILED.py  <-- v2 comparator. sha256 977878b409010c8182f428b66aadf5b2d4838d0f4556b5488795ceb5abc7ebc5",
+    "supervisor/simplify-lean/.scratch/synth_v3_ok.txt  <-- SYNTHETIC capture, actual-header definitions. sha256 e426502cbe7f6d9745f0aa94b7a3f699c8234465b877fe3864b59555081b6998",
+    "supervisor/simplify-lean/.scratch/synth_v3_bad.txt  <-- SYNTHETIC negative capture. sha256 bc632dd74a85be672e439515ee66e2111a519fb6c16dca226d4e75b1eac08a31",
+    "retained: STATEMENT-AUDIT.md, REVIEW-baseline-and-fresh.md, lean/SignatureEquivalence.lean, lean/SignatureCheckFresh.lean, lean/AxiomRoots.lean, axiom_gate.py, recon/ConditionalLimits.R4-recon.lean, snapshots/, BUILD-PLAN.json, MANIFEST-full.json"
+  ],
+  "tests_run": [
+    "python ast.parse on binder_snapshot.py v3 -> parses.",
+    "python3 binder_snapshot.py on .scratch/synth_v3_ok.txt -> SUMMARY fails=0; both theorems print FREEZE-CANDIDATE instances; three definitions pass frozen checks; Z placed correctly for EncodingApproximationAt.",
+    "python3 binder_snapshot.py on .scratch/synth_v3_bad.txt -> FORBIDDEN x2, UNKNOWN INSTANCE on a frozen definition, ABSENT (fail closed), ERROR -> FAIL; non-zero exit.",
+    "json.load on binder_expected.json schema 3 -> valid; 3 frozen definitions, 2 unfrozen theorems.",
+    "sha256 over every artefact including the three archived failures.",
+    "NO Lean, no cloud build, no heavy computation, no writes outside supervisor/simplify-lean (per instruction)."
+  ],
+  "failed_routes": [
+    "BinderAudit v2 FAILED to compile (three errors). Kept as archive/BinderAudit.v2.FAILED.lean for the record rather than deleted.",
+    "v2's expected-type design was itself wrong, not merely its Lean syntax: it asserted StandardBorelSpace Y and Nonempty Y on the aliases. That assumption is retracted and the file archived.",
+    "Did not attempt to guess the theorems' instance sets a second time. Guessing twice is how the first error happened; the freeze protocol replaces the guess."
+  ],
+  "next_step": "Ready to queue: compile supervisor/simplify-lean/lean/BinderAudit.lean against the R4 oleans, save the capture, and run python3 binder_snapshot.py CAPTURE. If lean reports ANY error the capture is void. Read a clean run as supplementary: pass means the three frozen definitions match their actual header and the two theorems show no forbidden instance with the right explicit sequence; the printed FREEZE-CANDIDATE multisets are then pasted into binder_expected.json to freeze the theorems for subsequent runs. No 82-module rebuild.",
+  "owned_agents": [
+    {
+      "swarm": "smwfy8rae",
+      "members": 3,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "state": "stopped",
+      "accepted": 0,
+      "note": "stopped in block 1; no new chats, swarms or nested agents this block (per instruction)."
+    }
+  ],
+  "escalation": null,
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "review": "supervisor/simplify-lean/REVIEW-instrument-v3.md",
+    "ready_to_queue": [
+      "supervisor/simplify-lean/lean/BinderAudit.lean",
+      "supervisor/simplify-lean/binder_snapshot.py",
+      "supervisor/simplify-lean/binder_expected.json"
+    ],
+    "archived_failures": [
+      "supervisor/simplify-lean/archive/BinderAudit.v2.FAILED.lean",
+      "supervisor/simplify-lean/archive/binder_expected.v2.FAILED.json",
+      "supervisor/simplify-lean/archive/binder_snapshot.v2.FAILED.py"
+    ],
+    "hashes": {
+      "BinderAudit_v3": "de6d516257562feeac0c2d71e62ecd5d79fb54def93cf7471e5b9457099b1db6",
+      "binder_expected_v3": "b33af38bec694a04151a926cd3a01b8130247ea533bddf90f597c16d52e7af86",
+      "binder_snapshot_v3": "f581287b13a3d3425bb08628feff09520c4926d594d5adede856707dcceb88dc",
+      "BinderAudit_v2_FAILED": "648afda2bd84f73169d26d5e2ccd2886803d46df9ea599cf39d2ddf3a0a06049"
+    },
+    "accepted_unchanged": [
+      "R4 82-module build PASS",
+      "9 root axiom checks PASS",
+      "R5 SignatureEquivalence PASS",
+      "R5 SignatureCheckFresh PASS (4+4 standard axiom prints, no sorry)"
+    ],
+    "scope": "supplementary inspection; exact binder identity not claimed; 6 <= chi(R^2) <= 7 unchanged, no new bound",
+    "validity_rule": "a capture is void if lean reports any error for BinderAudit.lean",
+    "next_verification_step": "compile BinderAudit v3, capture, run comparator v3; freeze the printed theorem instance multisets into binder_expected.json."
+  }
+}

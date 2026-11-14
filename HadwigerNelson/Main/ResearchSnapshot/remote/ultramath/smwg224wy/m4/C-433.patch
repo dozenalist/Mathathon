@@ -1,0 +1,38 @@
+--- C.lean	2026-11-14 08:02:51.955380357 +0000
++++ C_433.lean	2026-11-14 08:09:47.787215450 +0000
+@@ -76,9 +76,13 @@
+     (hd.comp measurable_fst).div (hd.comp measurable_snd)
+   set ν : Measure Y := μ.map q with hν
+   set κ : Kernel Y X := condDistrib id q μ with hκ
++  haveI hνp : IsProbabilityMeasure ν := by
++    rw [hν]; exact Measure.isProbabilityMeasure_map hq.aemeasurable
++  haveI hκmk : IsMarkovKernel κ := by rw [hκ]; infer_instance
+   have hκd : ∀ᵐ y ∂ν, condDistrib d q μ y = (κ y).map d := by
+-    have h := condDistrib_comp (μ := μ) (X := q) (Y := (id : X → X)) (f := d)
+-      hq.aemeasurable aemeasurable_id hd
++    have h : condDistrib (d ∘ (id : X → X)) q μ =ᵐ[μ.map q]
++        (condDistrib (id : X → X) q μ).map d :=
++      condDistrib_comp (X := q) (Y := (id : X → X)) (f := d) aemeasurable_id hd
+     filter_upwards [h] with y hy
+     rw [Kernel.map_apply (condDistrib id q μ) hd y] at hy
+     simpa [hκ, Function.comp_def] using hy
+@@ -131,6 +135,9 @@
+   classical
+   set ν : Measure Y := μ.map q with hν
+   set κ : Kernel Y X := condDistrib id q μ with hκ
++  haveI hνp : IsProbabilityMeasure ν := by
++    rw [hν]; exact Measure.isProbabilityMeasure_map hq.aemeasurable
++  haveI hκmk : IsMarkovKernel κ := by rw [hκ]; infer_instance
+   set μR : Measure (X × X) := EuclideanFiveColor.RelativeProduct.law μ q hq with hμR
+   have hmix : μR = (κ.prod κ) ∘ₘ ν := by
+     rw [hμR, hκ, hν]; exact EuclideanFiveColor.RelativeProduct.law_eq_mixture μ q hq
+@@ -357,7 +364,8 @@
+     have hpre : (A r \ ⋃ m, U m) = ratio ⁻¹' SphD := by
+       simp only [hSphD, hU, hA, Set.preimage_sdiff, Set.preimage_iUnion]
+     set lam : Measure D := (κ y).map d with hlam
+-    haveI hlamP : IsProbabilityMeasure lam := by rw [hlam]; infer_instance
++    haveI hlamP : IsProbabilityMeasure lam := by
++      rw [hlam]; exact Measure.isProbabilityMeasure_map hd.aemeasurable
+     have hmain : lam.prod lam {p : D × D | p.1 / p.2 ∈ SphD} = 1 := by
+       have hset : MeasurableSet {p : D × D | p.1 / p.2 ∈ SphD} :=
+         hSphDm.preimage (measurable_fst.div measurable_snd)

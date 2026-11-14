@@ -1,0 +1,18 @@
+OAI/MeasureTheory/CompactFactors/Factors.lean:63:23: error: No applicable extensionality theorem found for type
+  OrbitSpace K
+
+Note: Extensionality theorems can be registered by marking them with the `[ext]` attribute
+OAI/MeasureTheory/CompactFactors/Factors.lean:62:19: error: No applicable extensionality theorem found for type
+  OrbitSpace K
+
+Note: Extensionality theorems can be registered by marking them with the `[ext]` attribute
+OAI/MeasureTheory/CompactFactors/Factors.lean:69:29: error(lean.unknownIdentifier): Unknown identifier `continuous_mk.comp`
+OAI/MeasureTheory/CompactFactors/Factors.lean:115:51: error: Function expected at
+  encode
+but this term has type
+  ?m.5
+
+Note: Expected a function because this term is being applied to the argument
+  p
+
+Hint: The identifier `encode` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.

@@ -1,0 +1,100 @@
+{
+ "updated_utc": "2026-11-14T06:46:40Z",
+ "status": "block 1 complete (delivered 05:46Z); recovery pass reconciled artifacts: palette_field_check(partially) (0-byte output removed), failed axiom-certificate attempt removed, no jobs were running, no subagents started",
+ "summary": "Exposition module 1: the palette bridge, i.e. why a maximal palette of a weak measurable 5-colouring has at most two labels, with a hypothesis ledger and a dependency diagram. Audited the paper (Sec.5.3-5.4) against the Lean sources rather than summaries: 'binary' = MEETS a fixed pair (confirmed at BinaryPalettes.lean:9), and the formal Lemma 5.5 uses a different proof route than the paper's six-map expansion, so the paper's constants delta_*, c0, C0 are not certified. Verified that palette_cardinality has exactly five consumers (States, Interfaces, Accumulation x2, Exclusion), so the bridge is where the number 5 enters. Exact exhaustive checks: with T a pair the palette field is rigid (2 fields, both the paper's alternation (5.8)); with T a triple it is not (234 fields at period 6, 132 non-binary). Retracted my own candidate 'triple forces a 3-cycle' claim on that evidence. Sharpened the k=6 hole to a single-centre lemma (M6). RECOVERY (post-outage): artifacts reconciled; the 0-byte palette_field_check.json (OOM kill) and the failed lean/ AxiomsPalette attempt were removed so nothing reads as a pending result; the axiom certificate for palette_cardinality is UNOBTAINED, not failed.",
+ "verified_results": [
+  {
+   "claim": "palette_cardinality (Prop 5.6: 1 <= |P_x(e)| <= 2 a.e.) is machine-checked and is consumed exactly at States.lean:319, Interfaces.lean:78, Accumulation.lean:161,361, Exclusion.lean:130",
+   "grade": "machine-checked (source read) + grep",
+   "evidence": "rg -n 'palette_cardinality' lean/OAI"
+  },
+  {
+   "claim": "Lean's BinaryCenter is the paper's 'meets the fixed pair a.e.', not 'contained in the pair'; so the paper's 'even if other traces add further labels' caveat is honoured",
+   "grade": "machine-checked (statement read)",
+   "evidence": "lean/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:9"
+  },
+  {
+   "claim": "At k=5 with T a pair, nonemptiness + (5.7) force the 2-periodic alternation; exactly 2 such fields of period 6, both binary",
+   "grade": "exact exhaustive computation",
+   "evidence": "supervisor/simplify-exposition/checks/triple_dichotomy.json -> k5_pair_analogue"
+  },
+  {
+   "claim": "At k=6 with T a triple, the constraint level is NOT rigid: 234 T-confined fields of period 6, 132 non-binary, only 6 three-cycles; N=12 gives 54756/50880/36",
+   "grade": "exact exhaustive computation",
+   "evidence": "supervisor/simplify-exposition/checks/triple_dichotomy.json"
+  },
+  {
+   "claim": "T-confined fields with all palettes of size >= 2 do not exist (pigeonhole: two 2-subsets of a 3-set intersect)",
+   "grade": "exact exhaustive computation",
+   "evidence": "checks/triple_dichotomy.json, spaces with sizes (2,3)/(2,)/(3/) have 0 fields"
+  },
+  {
+   "claim": "General-k palette bound 1 <= |P| <= k-3 (re-derived; no gap found); at k=6 it is empty for |P| <= 2",
+   "grade": "candidate, elementary (agrees with results/K6-BARRIER.md Sec.1)",
+   "evidence": "PALETTE-BRIDGE.md Sec.5"
+  }
+ ],
+ "conjectures": [
+  {
+   "id": "M6",
+   "statement": "For every weak measurable 6-colouring, every centre y and every 3-element label set T, at least one of {v : P_y(v) cap T = {l}} (l in T) is angular-null; equivalently a centre cannot meet a fixed triple on a full-measure set of directions without being binary for some pair in T.",
+   "why_it_matters": "This is exactly the missing step that would give |P| <= 2 at k=6 by the printed route (Prop 5.6 with |A|=3 instead of a triple in a 5-set). Narrower than 'prove the palette bound': it is a one-centre, one-circle statement.",
+   "status": "open; not implied by (5.7) alone and not by |P| <= 3 (132 exact witnesses respect both)"
+  },
+  {
+   "id": "M6'",
+   "statement": "If M6 fails, the residual object at y is a measurable field S: circle -> nonempty subsets of a 3-set with S(v) cap S(v+60deg) = empty; classify which such fields are realisable by a weak measurable 6-colouring.",
+   "status": "candidate direction; the combinatorial class is large (132 period-6 examples), so any closure must use colouring-level input, not palette combinatorics"
+  }
+ ],
+ "artifacts": [
+  "supervisor/simplify-exposition/PALETTE-BRIDGE.md (module 1: exposition + hypothesis ledger + transfer ledger)",
+  "supervisor/simplify-exposition/artifacts/palette-bridge.dot + .svg (dependency diagram)",
+  "supervisor/simplify-exposition/checks/triple_dichotomy.py + triple_dichotomy.json (exact exhaustive checks)",
+  "supervisor/simplify-exposition/checks/palette_field_check.py (earlier OOM-killed draft; superseded by triple_dichotomy.py, kept for the record; its .json output was a 0-byte artifact of the kill and has been removed)",
+  "supervisor/simplify-exposition/notes/paper.txt (pdftotext scratch copy of the paper, kept private to this directory)",
+  "REMOVED during recovery: checks/palette_field_check.json (0 bytes, artifact of the OOM kill) and lean/{AxiomsPalette.lean,run_axioms.sh} (attempt that timed out). No evidence was lost: palette_field_check.py is retained as the record of the draft that was superseded."
+ ],
+ "tests_run": [
+  {
+   "cmd": "python3 checks/triple_dichotomy.py",
+   "rc": 0,
+   "result": "k=6,T=3-set: N=6 234/132/6; N=12 54756/50880/36; k=5,T=pair: 2/0; sizes>=2: 0 fields"
+  },
+  {
+   "cmd": "rg -n 'palette_cardinality' lean/OAI",
+   "rc": 0,
+   "result": "5 call sites: Accumulation.lean:161,361; Interfaces.lean:78; Exclusion.lean:130; States.lean:319"
+  },
+  {
+   "cmd": "(none) axiom certificate for palette_cardinality",
+   "rc": null,
+   "result": "NOT OBTAINED. Earlier attempt timed out at 600 s with no output and has been deleted so it cannot be mistaken for a pending job. Any future attempt: source scripts/env4341.sh, LEAN_PATH must include lean/build/lib, run in the background as the single CPU-heavy job, and first record lean --version and the mathlib hash."
+  }
+ ],
+ "failed_routes": [
+  "Candidate claim retracted this block: 'at k=6 the triple case forces a canonical 3-cycle singleton selection l(v+180)=l(v), l(v+60)!=l(v)'. False: (5.7) constrains S(v) vs S(v+60) only, so S(v) and S(v+120) may overlap and 2-element values occur; 132 non-binary period-6 fields, only 6 are 3-cycles. Do not build on it.",
+  "First exact-check script (palette_field_check.py) enumerated too large a space and was OOM-killed; rewritten as constrained DFS over declared spaces (triple_dichotomy.py).",
+  "Axiom certificate for palette_cardinality was attempted twice-ish and never produced: first run failed on a wrong project-root cd (script bug, fixed), second timed out at 600 s with no output. Treated as NOT OBTAINED, not as failed; the script has been deleted during recovery, see tests_run."
+ ],
+ "next_step": "Block 2 (serial, this chat): (1) run the axiom certificate for palette_cardinality + binary_centers_separated as the single backgrounded Lean job (source scripts/env4341.sh; LEAN_PATH=lean/build/lib; record lean --version and mathlib hash; <=25 min cap); (2) write module 2 of the exposition, the transfer Sec.4 (proper <-> weak measurable colouring), with its own hypothesis ledger and an exact finite counterexample for each hypothesis it uses; (3) fold M6's two untried handles (translation exclusion at a triple centre; separation of T-meeting centres) into the M6 escalation text. No subagents in this block per the recovery instruction.",
+ "owned_agents": [],
+ "owned_agents_note": "No subagents started this block: the 25-minute budget went to source audit + the two exact checks, and the instruction requires collecting/stopping owned agents before concluding a block, which a swarm started at T+20min cannot satisfy. Subagent plan is written into next_step so block 2 can start it first.",
+ "escalation": {
+  "title": "M6: a centre cannot meet a fixed triple on the whole circle (k=6 palette bound)",
+  "definitions": {
+   "weak measurable k-colouring": "c : R^2 -> Fin k measurable, such that for the density points: every colour class has the property that a.e. point of the class is a density point, and a.e. unit pair has different colours (paper Def 1.2 / Lean WeakColoring k c).",
+   "palette": "P_x(e) = {i : e in D_{x,i}}, where D_{x,i} is the essential union, over all circle traces b at x (weak-* limits of typical radius-1 circle samplings at centres -> x), of {e : b_i(e) > 0}; defined up to angular null sets (paper Def 5.1; Lean paletteSet/palette).",
+   "binary centre": "y is binary for the pair {i,j} when P_y(v) cap {i,j} is nonempty for a.e. direction v (paper Sec.5.3; Lean BinaryCenter)."
+  },
+  "hypotheses": "k = 6; c weak measurable; y a centre; T a 3-element subset of the 6 labels; P_y(v) cap T nonempty for a.e. v (this is what the circle-complement argument delivers when a triple sits in P_x(e)).",
+  "goal": "Show that some pair {i,j} <= T satisfies P_y(v) cap {i,j} nonempty for a.e. v; equivalently that not all three sets {v : P_y(v) cap T = {l}} can be non-null. Then the printed Prop 5.6 argument transfers verbatim to k = 6 and gives |P| <= 2.",
+  "attempted": [
+   "Palette combinatorics alone: refuted here. (5.7) + nonemptiness + |P| <= 3 admit 132 non-binary T-confined period-6 fields (checks/triple_dichotomy.json).",
+   "Canonical 3-cycle reduction: refuted (retracted).",
+   "Not yet tried: two-centre translation exclusion P_{y+u}(f) cap P_y(f) = empty (paper 5.2(3), Lean-verified) applied at u = the unit vector of direction v; it forbids P_y(v) from containing a label present at the neighbouring centre in direction f, which may kill the 'singleton cycle' configurations.",
+   "Not yet tried: a Lemma-5.5 analogue for T-meeting centres, i.e. whether centres meeting a fixed triple are uniformly separated (if yes, the section 5 compactness step closes without M6)."
+  ],
+  "desired_output": "Either a proof of M6 under the stated hypotheses, or an explicit weak measurable 6-colouring (or a rigorous reduction showing such a colouring exists iff chi(R^2) <= 6) exhibiting a centre y and triple T with all three singleton sets non-null. A no-go must state its class and be tested for vacuity."
+ }
+}

@@ -1,0 +1,13 @@
+d3 (two-centre CSP at k=6): negative theorem + decided computations. Proof in REDUCTION.md.
+
+SETUP. Colour nodes ('c',p) (singletons), palette nodes ('p',x,e) (centre x, unit direction e; nonempty label set, size<=k-3); adjacent iff |pi(u)-pi(w)|=1, pi(x,e)=x+e, pi(p)=p; adjacent nodes get disjoint labels.
+
+A. A finite probe is satisfiable iff its conflict graph is k-colourable (min-map; converse by singletons). So palette sizes 1,2,3 give the same verdict; this subsumes m16's shrink lemma.
+B. The conflict graph is the plane's unit-distance graph pulled back along pi, so its chromatic number is chi(R^2); the pointwise system is satisfiable iff chi(R^2)<=k.
+C. A finite probe is UNSAT at level k iff chi(R^2)>=k+1 (de Bruijn-Erdos). So a finite two-centre CSP UNSAT at k=6 exists iff a 7-chromatic finite unit-distance graph exists: none known. Step 3 pointwise is the problem, not a relaxation; no measure hypothesis is used.
+
+Every paper exclusion is an instance of the rule; (5.3)'s non-parallelism follows from the unit gap and its local-diffeomorphism hypothesis was audited per edge (min 0.5). Only non-exclusion palette facts: Def 5.1 containments, (6.2) at Gamma_x edges (area measure), Lemma 8.1 sectors.
+
+COMPUTED exactly, two procedures agreeing: Moser spindle chi=4 (UNSAT k=3, SAT k=4); Lemma 6.4 triad, Lemma 5.5 pair, hex patch, interface palettes SAT at k=6; 27 two-centre probes bipartite; 900 random probes clean.
+
+CHECK: cd .ultramath/smwfo9zkl/m10; run probes.py, sweep2.py, validate_theorem.py, lemma64_diag.py, branch_audit.py, independent_check.py.

@@ -1,0 +1,145 @@
+{
+  "createdUtc": "2026-11-14T18:19:43.476Z",
+  "baseline": "encoding-r4 verified",
+  "copiedBaselineOleansNotValidation": true,
+  "affectedCount": 27,
+  "parentIndependentlyCheckedClosure": true,
+  "localRepair": "Preserved passing AvoidingTrace; remote unmatched end Generic removed and existing axiom prints retained",
+  "order": [
+    {
+      "module": "OAI.Geometry.PlaneColoring.States",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/States.lean",
+      "sha256": "904ba7ca7462856079999a8e6aa80fb64d1231f744392f7cca15f6e7f3ecf567"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.BoundaryTrace",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/BoundaryTrace.lean",
+      "sha256": "c3c0c75a0fb2e2184e8ff39562faac2c38e3d372864ddeca9eb942fa0f2a692f"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.AngularBoundary",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/AngularBoundary.lean",
+      "sha256": "560b3951728a403bc7aa35f42c5e3dbb343e75746109053f6c8fd94aa9749871"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.Exclusion",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/Exclusion.lean",
+      "sha256": "4b0a981cb31fa1cb095f758e721a54866cc2a298bbc492227237b4262651d2a6"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.AvoidingTrace",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/AvoidingTrace.lean",
+      "sha256": "442686edc8e5b95c9e6781a8ec6b3e84faa07597f8ec168c6635bd6e04e9c786"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.FourContinuity",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/FourContinuity.lean",
+      "sha256": "8b24e593f6eb191378fc0953ce3bd66787a14c10f6b411c1cf40ef7ae6e84123"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.FourTransport",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/FourTransport.lean",
+      "sha256": "c9b8af1a459b9cf0624a528be8568e255dc0a21e0fc3fd16b35b34e319692090"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.Accumulation",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/Accumulation.lean",
+      "sha256": "9ce956ea280b7eddab8c1f903c0b489c96678ed244b59c0f6d147c888e06d5d0"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.FiveSupport",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/FiveSupport.lean",
+      "sha256": "89c93e0ebda452451b496bc9a3b759b498a03635f0262f01313515098050df2f"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.CyclicCore",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/CyclicCore.lean",
+      "sha256": "35976a5b09d04a6cae71f1a1b8e15ecb6a9587c114c1e033f1b78acd81acaf43"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.DiskAverages",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/DiskAverages.lean",
+      "sha256": "5545ba34d956a96958f01dc30204fc9dd338aac73221caeaddb4c6a9afcb435f"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.PlanarCovers",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/PlanarCovers.lean",
+      "sha256": "9d4aa090cf4ee5059718a65eaaf8ff4b7c3109ebfd2fdb2e513def1353f33d47"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.GraphRealization",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/GraphRealization.lean",
+      "sha256": "a0adb6f48ff9ae57547a4a05246804a613ee51c2dba2fc5f5d05ac5bfd82a0dc"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.Interfaces",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/Interfaces.lean",
+      "sha256": "568fc119bee888946c7172992bcfd9796b5ffecc403007effa4ac049aa27f1ac"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.Sectors",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/Sectors.lean",
+      "sha256": "c90ce4393ebe75b48f4ef4921cad1d0d98ddd9af3b5e240385368e3fff53c7bd"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.ContinuumLimits",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/ContinuumLimits.lean",
+      "sha256": "9dbc8bd1ea66d17652b64f98de2d2bbd6919fbbd8967bad36c84c08e15ba5ed3"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.DiskExtension",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/DiskExtension.lean",
+      "sha256": "fe534cdbc024f0a9323d5a927a5242459e02d3ba06495d473854e4453e1dc609"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.GraphCuts",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/GraphCuts.lean",
+      "sha256": "541f06fe98de43ca470b4258798d0685de2ffb99626822e6982b59a609ed6bd3"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.HoleApproximation",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/HoleApproximation.lean",
+      "sha256": "eae78479d7a443844a41fdd3bc509019b18b7c4c59e9918100a269c62f468fde"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.GraphPatches",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/GraphPatches.lean",
+      "sha256": "5c29ae6acfa0868df4b791dd54514c0d1aaf26d5e5901c4a58e154ae13f1986d"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.FullApproximation",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/FullApproximation.lean",
+      "sha256": "a9d170e253708ded472c858cc34fcba5c56db4263dff97981ae9f6f8989741c2"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.Mesh",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/Mesh.lean",
+      "sha256": "72b37edd188838984f85fbdde4ffed966a765eaea3e61386e04e95b7c615cb83"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.Five",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/Five.lean",
+      "sha256": "1501dc05d43d6b425b94b3bb4556493524b6877810c3c9c9d8ac5513adf16246"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.Chromatic",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/Chromatic.lean",
+      "sha256": "55a2f2bef340156617f0679f65813d952f19c876e975399463b5bdcd4002127b"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.Converse",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/Converse.lean",
+      "sha256": "5bde95d2ec3cb518a2ece36f544b69eb25f550f3f2f231a7df5c8a9ba4098248"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.NullSetRobust",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/NullSetRobust.lean",
+      "sha256": "887a6bbe6b83f87a3baf60823cf586a4b2f9539e3549697caa9732942d627cc9"
+    },
+    {
+      "module": "OAI.Geometry.PlaneColoring.Transfer",
+      "source": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/Transfer.lean",
+      "sha256": "5873693afeb24b1896a745b43c87b26ef30ec1ae110a67b1f537a3a6d4af5600"
+    }
+  ]
+}

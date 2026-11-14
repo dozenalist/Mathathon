@@ -1,0 +1,11 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/BinaryPalettes.lean	2026-11-13 19:09:13.641299167 +0000
++++ OAI/Geometry/PlaneColoring/BinaryPalettes.lean	2026-11-13 19:39:42.947830198 +0000
+@@ -208,7 +208,7 @@
+   apply ht.1
+   rw [ht.2]
+   change 0 < if c (y+(1:ℂ)*direction t)=i then (1:ℝ) else 0
+-  rw [one_mul,ite_eq_left hcolor]
++  rw [one_mul,if_pos hcolor]
+   exact zero_lt_one
+ lemma typical_sample_palette {k : ℕ} (c : ℂ → Fin k) (hc : Measurable c) {y : ℂ}
+     (hy : TypicalSampling c y 1) :

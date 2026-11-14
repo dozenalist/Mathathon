@@ -1,0 +1,64 @@
+q φ ⟨val, property⟩ ⟨val_1, property_1⟩ + covariance μ q φ ⟨val, property⟩ ⟨val_2, property_2⟩
+work/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:528:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:527:55: error: unsolved goals
+G : Type u_1
+X : Type u_2
+Y : Type u_3
+inst : AddCommGroup G
+inst_1 : MeasurableSpace X
+inst_2 : MeasurableSpace Y
+inst_3 : StandardBorelSpace X
+inst_4 : Nonempty X
+inst_5 : StandardBorelSpace Y
+inst_6 : Nonempty Y
+μ : Measure X
+inst_7 : IsProbabilityMeasure μ
+q : X → Y
+hq : Measurable q
+inst_8 : AddAction G X
+inst_9 : AddAction G Y
+inst_10 : MeasurableConstVAdd G X
+inst_11 : MeasurableConstVAdd G Y
+hqcov : ∀ (g : G), (fun x => q (g +ᵥ x)) =ᵐ[μ] fun x => g +ᵥ q x
+g : G
+val : X → ℂ
+property : val ∈ algebra X
+val_1 : X → ℂ
+property_1 : val_1 ∈ algebra X
+⊢ ↑(conditional μ q (⟨val, property⟩ * act g (project μ q hq ⟨val_1, property_1⟩))) =ᵐ[Measure.map q μ]
+    ↑(conditional μ q ⟨val, property⟩) * ↑(act g (conditional μ q ⟨val_1, property_1⟩))
+work/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:539:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:538:60: error: unsolved goals
+G : Type u_1
+X : Type u_2
+Y : Type u_3
+inst : AddCommGroup G
+inst_1 : MeasurableSpace X
+inst_2 : MeasurableSpace Y
+inst_3 : StandardBorelSpace X
+inst_4 : Nonempty X
+inst_5 : StandardBorelSpace Y
+inst_6 : Nonempty Y
+μ : Measure X
+inst_7 : IsProbabilityMeasure μ
+q : X → Y
+hq : Measurable q
+inst_8 : AddAction G X
+inst_9 : AddAction G Y
+inst_10 : MeasurableConstVAdd G X
+inst_11 : MeasurableConstVAdd G Y
+hqcov : ∀ (g : G), (fun x => q (g +ᵥ x)) =ᵐ[μ] fun x => g +ᵥ q x
+φ : G →+ G
+g : G
+val : X → ℂ
+property : val ∈ algebra X
+val_1 : X → ℂ
+property_1 : val_1 ∈ algebra X
+⊢ ↑(conditional μ q (⟨val, property⟩ * act (φ g) ⟨val_1, property_1⟩)) -
+      ↑(conditional μ q ⟨val, property⟩) * ↑(act (φ g) (conditional μ q ⟨val_1, property_1⟩)) =ᵐ[Measure.map q μ]
+    ↑(conditional μ q (⟨val, property⟩ * act (φ g) (⟨val_1, property_1⟩ - project μ q hq ⟨val_1, property_1⟩)))
+work/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:556:18: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.

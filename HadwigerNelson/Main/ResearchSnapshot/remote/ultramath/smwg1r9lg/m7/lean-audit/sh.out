@@ -1,0 +1,5 @@
+'clique_le_two_sharp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'union_eq_three_disjoint_sharp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'no_free_label_triangle_sharp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'sector_two_valued_is_sharp' depends on axioms: [propext, Classical.choice, Quot.sound]
+TIME 0.71 s

@@ -1,0 +1,9 @@
+.scratch/t/p2_Analysis_PlaneSpectrum_Basic.lean:71:0: warning: 
+'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by
+
+import Mathlib.Basic.Real.Basic
+.scratch/t/p2_Analysis_PlaneSpectrum_Basic.lean:582:4: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  SimplyConnectedSpace ℝ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+.scratch/t/p2_Analysis_PlaneSpectrum_Basic.lean:581:9: error: Tactic `rcases` failed: `x✝ : ?m.96` is not an inductive datatype

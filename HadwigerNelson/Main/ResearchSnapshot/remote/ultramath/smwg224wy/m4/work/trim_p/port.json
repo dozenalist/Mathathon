@@ -1,0 +1,880 @@
+[
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/Basic.lean",
+  "line": 409,
+  "context": 5,
+  "src": "OAI/Analysis/PlaneSpectrum/Basic.lean",
+  "hunk": "@@ -408,13 +408,18 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean",
+  "line": 126,
+  "context": 5,
+  "src": "OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean",
+  "hunk": "@@ -125,12 +125,13 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/Energy.lean",
+  "line": 284,
+  "context": 5,
+  "src": "OAI/Analysis/PlaneSpectrum/Energy.lean",
+  "hunk": "@@ -283,14 +283,15 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/Ergodicity.lean",
+  "line": 265,
+  "context": 6,
+  "src": "OAI/Analysis/PlaneSpectrum/Ergodicity.lean",
+  "hunk": "@@ -263,7 +263,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/Ergodicity.lean",
+  "line": 292,
+  "context": 5,
+  "src": "OAI/Analysis/PlaneSpectrum/Ergodicity.lean",
+  "hunk": "@@ -289,7 +289,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/Fourier.lean",
+  "line": 9,
+  "context": 6,
+  "src": "OAI/Analysis/PlaneSpectrum/Fourier.lean",
+  "hunk": "@@ -9,9 +9,12 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/Fourier.lean",
+  "line": 60,
+  "context": 5,
+  "src": "OAI/Analysis/PlaneSpectrum/Fourier.lean",
+  "hunk": "@@ -56,10 +59,10 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/DifferenceLaw.lean",
+  "line": 19,
+  "context": 5,
+  "src": "OAI/Analysis/PlaneSpectrum/FourierTests.lean",
+  "hunk": "@@ -238,7 +238,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/Multipliers.lean",
+  "line": 36,
+  "context": 5,
+  "src": "OAI/Analysis/PlaneSpectrum/Multipliers.lean",
+  "hunk": "@@ -35,8 +35,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/PhaseCollision.lean",
+  "line": 366,
+  "context": 5,
+  "src": "OAI/Analysis/PlaneSpectrum/PhaseCollision.lean",
+  "hunk": "@@ -365,7 +365,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean",
+  "line": 115,
+  "context": 6,
+  "src": "OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean",
+  "hunk": "@@ -115,7 +115,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean",
+  "line": 208,
+  "context": 5,
+  "src": "OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean",
+  "hunk": "@@ -207,7 +207,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/RadialEnergy.lean",
+  "line": 83,
+  "context": 6,
+  "src": "OAI/Analysis/PlaneSpectrum/RadialEnergy.lean",
+  "hunk": "@@ -83,6 +83,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/RadialEnergy.lean",
+  "line": 387,
+  "context": 6,
+  "src": "OAI/Analysis/PlaneSpectrum/RadialEnergy.lean",
+  "hunk": "@@ -386,6 +387,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/RadialEnergy.lean",
+  "line": 454,
+  "context": 5,
+  "src": "OAI/Analysis/PlaneSpectrum/RadialEnergy.lean",
+  "hunk": "@@ -451,6 +453,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/Representations.lean",
+  "line": 321,
+  "context": 5,
+  "src": "OAI/Analysis/PlaneSpectrum/Representations.lean",
+  "hunk": "@@ -320,7 +320,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/SmallArcs.lean",
+  "line": 157,
+  "context": 6,
+  "src": "OAI/Analysis/PlaneSpectrum/SmallArcs.lean",
+  "hunk": "@@ -157,7 +157,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/SmallArcs.lean",
+  "line": 264,
+  "context": 5,
+  "src": "OAI/Analysis/PlaneSpectrum/SmallArcs.lean",
+  "hunk": "@@ -263,7 +263,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
+  "line": 61,
+  "context": 6,
+  "src": "OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
+  "hunk": "@@ -61,9 +61,13 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
+  "line": 111,
+  "context": 5,
+  "src": "OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
+  "hunk": "@@ -106,19 +110,17 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/Accumulation.lean",
+  "line": 99,
+  "context": 7,
+  "src": "OAI/Geometry/PlaneColoring/Accumulation.lean",
+  "hunk": "@@ -99,7 +99,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/BinaryPalettes.lean",
+  "line": 209,
+  "context": 5,
+  "src": "OAI/Geometry/PlaneColoring/BinaryPalettes.lean",
+  "hunk": "@@ -208,7 +208,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/BorelTransfer.lean",
+  "line": 282,
+  "context": 6,
+  "src": "OAI/Geometry/PlaneColoring/BorelTransfer.lean",
+  "hunk": "@@ -282,6 +282,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/BorelTransfer.lean",
+  "line": 393,
+  "context": 5,
+  "src": "OAI/Geometry/PlaneColoring/BorelTransfer.lean",
+  "hunk": "@@ -391,7 +392,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/BoundaryTrace.lean",
+  "line": 40,
+  "context": 5,
+  "src": "OAI/Geometry/PlaneColoring/BoundaryTrace.lean",
+  "hunk": "@@ -39,7 +39,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/Compactness.lean",
+  "line": 222,
+  "context": 5,
+  "src": "OAI/Geometry/PlaneColoring/Compactness.lean",
+  "hunk": "@@ -221,7 +221,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/ContinuumLimits.lean",
+  "line": 145,
+  "context": 5,
+  "src": "OAI/Geometry/PlaneColoring/ContinuumLimits.lean",
+  "hunk": "@@ -144,12 +144,20 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/DiskAverages.lean",
+  "line": 224,
+  "context": 5,
+  "src": "OAI/Geometry/PlaneColoring/DiskAverages.lean",
+  "hunk": "@@ -223,8 +223,8 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/Expansion.lean",
+  "line": 487,
+  "context": 5,
+  "src": "OAI/Geometry/PlaneColoring/Expansion.lean",
+  "hunk": "@@ -486,7 +486,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/GraphCuts.lean",
+  "line": 66,
+  "context": 5,
+  "src": "OAI/Geometry/PlaneColoring/GraphCuts.lean",
+  "hunk": "@@ -65,7 +65,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/Interfaces.lean",
+  "line": 306,
+  "context": 6,
+  "src": "OAI/Geometry/PlaneColoring/Interfaces.lean",
+  "hunk": "@@ -306,10 +306,12 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/Interfaces.lean",
+  "line": 319,
+  "context": 6,
+  "src": "OAI/Geometry/PlaneColoring/Interfaces.lean",
+  "hunk": "@@ -317,8 +319,10 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/Interfaces.lean",
+  "line": 488,
+  "context": 5,
+  "src": "OAI/Geometry/PlaneColoring/Interfaces.lean",
+  "hunk": "@@ -483,7 +487,7 @@"
+ },
+ {
+  "status": "OBSOLETE",
+  "file": "OAI/Geometry/PlaneColoring/MeasurableProper.lean",
+  "line": 0,
+  "core": [
+   "  inferInstanceAs (IsProbabilityMeasure (Measure.map circleDir normalizedAngleMeasure))"
+  ],
+  "src": "OAI/Geometry/PlaneColoring/MeasurableProper.lean",
+  "hunk": "@@ -27,7 +27,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+  "line": 178,
+  "context": 6,
+  "src": "OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+  "hunk": "@@ -178,8 +178,8 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+  "line": 477,
+  "context": 7,
+  "src": "OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+  "hunk": "@@ -477,7 +477,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/PlanarCovers.lean",
+  "line": 254,
+  "context": 6,
+  "src": "OAI/Geometry/PlaneColoring/PlanarCovers.lean",
+  "hunk": "@@ -254,7 +254,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/PlanarCovers.lean",
+  "line": 369,
+  "context": 5,
+  "src": "OAI/Geometry/PlaneColoring/PlanarCovers.lean",
+  "hunk": "@@ -368,7 +368,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/Geometry/PlaneColoring/Transitions.lean",
+  "line": 49,
+  "context": 5,
+  "src": "OAI/Geometry/PlaneColoring/Transitions.lean",
+  "hunk": "@@ -48,7 +48,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/AlgebraModels.lean",
+  "line": 180,
+  "context": 7,
+  "src": "OAI/MeasureTheory/CompactFactors/AlgebraModels.lean",
+  "hunk": "@@ -180,7 +180,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Amenability.lean",
+  "line": 9,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Amenability.lean",
+  "hunk": "@@ -9,6 +9,40 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Amenability.lean",
+  "line": 417,
+  "context": 5,
+  "src": "OAI/MeasureTheory/CompactFactors/Amenability.lean",
+  "hunk": "@@ -382,7 +416,10 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "line": 101,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "hunk": "@@ -100,7 +100,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "line": 163,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "hunk": "@@ -202,7 +202,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "line": 195,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "hunk": "@@ -234,7 +234,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "line": 205,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "hunk": "@@ -244,7 +244,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/DifferenceInvariant.lean",
+  "line": 86,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "hunk": "@@ -313,6 +313,8 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "line": 276,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "hunk": "@@ -347,10 +349,12 @@"
+ },
+ {
+  "status": "APPLIED-HELD",
+  "file": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "line": 333,
+  "hits": [
+   "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+   "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean"
+  ],
+  "context": 5,
+  "src": "OAI/MeasureTheory/CompactFactors/Approximation.lean",
+  "hunk": "@@ -401,6 +405,8 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 347,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -347,7 +347,8 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 369,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -368,7 +369,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 499,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -498,7 +499,8 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 509,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -507,8 +509,6 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 522,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -522,7 +522,6 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 535,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -536,7 +535,6 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 555,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -557,14 +555,14 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 573,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -575,7 +573,6 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 594,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -597,7 +594,6 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 608,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -612,7 +608,6 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 626,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -631,7 +626,6 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 637,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -643,14 +637,12 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "line": 669,
+  "context": 5,
+  "src": "OAI/MeasureTheory/CompactFactors/Centers.lean",
+  "hunk": "@@ -676,22 +668,22 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 89,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -89,7 +89,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 163,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -163,13 +163,13 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 210,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -210,10 +210,10 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 226,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -226,7 +226,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 289,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -289,7 +289,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 303,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -303,7 +303,8 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 354,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -353,7 +354,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 400,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -399,7 +400,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 560,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -559,7 +560,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 637,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -636,7 +637,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "line": 651,
+  "context": 5,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+  "hunk": "@@ -649,7 +650,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean",
+  "line": 197,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean",
+  "hunk": "@@ -197,7 +197,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean",
+  "line": 206,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean",
+  "hunk": "@@ -206,7 +206,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean",
+  "line": 327,
+  "context": 5,
+  "src": "OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean",
+  "hunk": "@@ -326,6 +326,8 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "line": 90,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "hunk": "@@ -90,7 +90,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "line": 137,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "hunk": "@@ -137,7 +137,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "line": 356,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "hunk": "@@ -356,14 +356,14 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "line": 375,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "hunk": "@@ -375,7 +375,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "line": 404,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "hunk": "@@ -404,7 +404,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "line": 470,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "hunk": "@@ -470,6 +470,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "line": 479,
+  "context": 5,
+  "src": "OAI/MeasureTheory/CompactFactors/Factors.lean",
+  "hunk": "@@ -477,7 +478,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 69,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -69,7 +69,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 118,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -118,7 +118,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 150,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -150,7 +150,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 209,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -209,7 +209,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 444,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -444,7 +444,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 548,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -548,8 +548,8 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 585,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -585,7 +585,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 730,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -730,7 +730,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "line": 810,
+  "context": 5,
+  "src": "OAI/MeasureTheory/CompactFactors/Functions.lean",
+  "hunk": "@@ -809,7 +809,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "line": 167,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "hunk": "@@ -167,7 +167,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "line": 228,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "hunk": "@@ -228,7 +228,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "line": 295,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "hunk": "@@ -295,7 +295,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "line": 499,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "hunk": "@@ -499,6 +499,46 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "line": 547,
+  "context": 5,
+  "src": "OAI/MeasureTheory/CompactFactors/Kernels.lean",
+  "hunk": "@@ -506,8 +546,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 100,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -100,7 +100,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 118,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -118,6 +118,37 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 157,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -126,7 +157,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 191,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -160,7 +191,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 217,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -186,7 +217,9 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 291,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -258,7 +291,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 323,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -290,7 +323,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 373,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -340,7 +373,6 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 411,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -379,7 +411,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "line": 473,
+  "context": 5,
+  "src": "OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+  "hunk": "@@ -440,7 +472,7 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Separability.lean",
+  "line": 313,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Separability.lean",
+  "hunk": "@@ -313,14 +313,14 @@"
+ },
+ {
+  "status": "APPLIED",
+  "file": "OAI/MeasureTheory/CompactFactors/Separability.lean",
+  "line": 552,
+  "context": 6,
+  "src": "OAI/MeasureTheory/CompactFactors/Separability.lean",
+  "hunk": "@@ -552,7 +552,9 @@"
+ }
+]

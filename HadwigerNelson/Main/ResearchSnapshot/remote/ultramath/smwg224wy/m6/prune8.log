@@ -1,0 +1,239 @@
+no span (kept in source): OAI.EuclideanFiveColor.AverageErrors.average_goodFraction._simp_1_1
+no span (kept in source): OAI.EuclideanFiveColor.ChainJoin.code._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.CodedMax.Model.equivariant
+no span (kept in source): OAI.EuclideanFiveColor.CodedMax.Model.good
+no span (kept in source): OAI.EuclideanFiveColor.CodedMax.Model.map
+no span (kept in source): OAI.EuclideanFiveColor.CodedMax.Model.measurable
+no span (kept in source): OAI.EuclideanFiveColor.CodedMax.Model.mk
+no span (kept in source): OAI.EuclideanFiveColor.CodedMax.instPreorderModel
+no span (kept in source): OAI.EuclideanFiveColor.CodedMax.instPreorderModel._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.CodedMax.instPreorderModel._proof_2
+no span (kept in source): OAI.EuclideanFiveColor.CodedMax.instPreorderModel._proof_3
+no span (kept in source): OAI.EuclideanFiveColor.CodedMax.instPreorderModel._proof_4
+no span (kept in source): OAI.EuclideanFiveColor.CodedMax.instPreorderModel._proof_5
+no span (kept in source): OAI.EuclideanFiveColor.CodedMax.instPreorderModel._proof_6
+no span (kept in source): OAI.EuclideanFiveColor.CodedMax.instPreorderModel._proof_7
+no span (kept in source): OAI.EuclideanFiveColor.CodedMax.instPreorderModel._proof_8
+no span (kept in source): OAI.EuclideanFiveColor.CompactFunctions.compactSigma._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.CompactFunctions.compactSigma._proof_2
+no span (kept in source): OAI.EuclideanFiveColor.CompactFunctions.compactSigma._proof_3
+no span (kept in source): OAI.EuclideanFiveColor.CompactFunctions.compact_mul._simp_1_1
+no span (kept in source): OAI.EuclideanFiveColor.CosetCenter.Embedding.center.eq_1
+no span (kept in source): OAI.EuclideanFiveColor.CosetCenter.Embedding.frequencyLaw._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.CosetCenter.Embedding.frequencyLaw._proof_2
+no span (kept in source): OAI.EuclideanFiveColor.CosetCenter.Embedding.frequencyMeasure.eq_1
+no span (kept in source): OAI.EuclideanFiveColor.CosetCenter.Embedding.frequencyMeasure_apply._simp_1_2
+no span (kept in source): OAI.EuclideanFiveColor.CosetCenter.Embedding.frequencyMeasure_apply._simp_1_3
+no span (kept in source): OAI.EuclideanFiveColor.CosetCenter.Embedding.hom
+no span (kept in source): OAI.EuclideanFiveColor.CosetCenter.Embedding.measurableEmbedding
+no span (kept in source): OAI.EuclideanFiveColor.CosetCenter.Embedding.mk
+no span (kept in source): OAI.EuclideanFiveColor.CosetCenter.Embedding.parameterKernel._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.DifferenceInvariant.differenceLaw.eq_1
+no span (kept in source): OAI.EuclideanFiveColor.EncodedCollision.instBorelSpaceCircle_oAI
+no span (kept in source): OAI.EuclideanFiveColor.EncodedCollision.instMeasurableSpaceCircle_oAI
+no span (kept in source): OAI.EuclideanFiveColor.FactorCode.scalar.eq_1
+no span (kept in source): OAI.EuclideanFiveColor.FactorLp.space._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.FiniteModule.instMeasurableSpaceCircle_oAI
+no span (kept in source): OAI.EuclideanFiveColor.GoodFiber.fraction_lower_bound._simp_1_1
+no span (kept in source): OAI.EuclideanFiveColor.Location.Ambient._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.Location.center._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.Location.center_translate._abel_1_1
+no span (kept in source): OAI.EuclideanFiveColor.Location.kernel_strict_convex._abel_1_1
+no span (kept in source): OAI.EuclideanFiveColor.Location.kernel_translate._abel_1_1
+no span (kept in source): OAI.EuclideanFiveColor.Location.kernel_translate._abel_1_2
+no span (kept in source): OAI.EuclideanFiveColor.Location.minValue._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.Location.objective.eq_1
+no span (kept in source): OAI.EuclideanFiveColor.Location.universalKernel._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.casesOn
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.equiv._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.equiv._proof_2
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.instBorelSpace
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.instContinuousConstSMul
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.instInhabited
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.instMeasurableConstSMul
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.instMeasurableSpace
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.instMulAction
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.instMulAction._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.instMulAction._proof_2
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.instPolishSpaceOfCountable
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.instTopologicalSpace
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.mk
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.rec
+no span (kept in source): OAI.EuclideanFiveColor.OrbitSpace.val
+no span (kept in source): OAI.EuclideanFiveColor.PhaseCollision.close_pair_lower_bound._simp_1_2
+no span (kept in source): OAI.EuclideanFiveColor.PhaseCollision.close_pair_lower_bound._simp_1_3
+no span (kept in source): OAI.EuclideanFiveColor.PhaseCollision.close_pair_lower_bound._simp_1_5
+no span (kept in source): OAI.EuclideanFiveColor.PhaseCollision.instDecidableEq_oAI_1
+no span (kept in source): OAI.EuclideanFiveColor.PhaseCollision.sameBin_card._simp_1_1
+no span (kept in source): OAI.EuclideanFiveColor.PhaseCollision.sameBin_card._simp_1_2
+no span (kept in source): OAI.EuclideanFiveColor.PhaseCollision.sameBin_card_eq._simp_1_2
+no span (kept in source): OAI.EuclideanFiveColor.PhaseCollision.sameBin_card_eq._simp_1_3
+no span (kept in source): OAI.EuclideanFiveColor.PhaseCollision.sameBin_card_eq._simp_1_4
+no span (kept in source): OAI.EuclideanFiveColor.PhaseCollision.sameBin_card_eq._simp_1_5
+no span (kept in source): OAI.EuclideanFiveColor.PhaseEncoding.filtered_antidiagonal_sum._simp_1_1
+no span (kept in source): OAI.EuclideanFiveColor.PhaseEncoding.fromPowers._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.PhaseEncoding.fromPowers.eq_1
+no span (kept in source): OAI.EuclideanFiveColor.PhaseEncoding.fromPowers.eq_2
+no span (kept in source): OAI.EuclideanFiveColor.PhaseEncoding.fromPowers.eq_def
+no span (kept in source): OAI.EuclideanFiveColor.PhaseEncoding.fromPowers.match_1
+no span (kept in source): OAI.EuclideanFiveColor.PhaseEncoding.phasePolynomial.eq_1
+no span (kept in source): OAI.EuclideanFiveColor.Quantize.compact_quantization._simp_1_1
+no span (kept in source): OAI.EuclideanFiveColor.Quantize.finite_measurable_choice._simp_1_1
+no span (kept in source): OAI.EuclideanFiveColor.Quantize.finite_measurable_choice._simp_1_2
+no span (kept in source): OAI.EuclideanFiveColor.Quantize.finite_measurable_choice._simp_1_3
+no span (kept in source): OAI.EuclideanFiveColor.Quantize.finite_measurable_choice._simp_1_4
+no span (kept in source): OAI.EuclideanFiveColor.Quantize.finite_measurable_choice._simp_1_5
+no span (kept in source): OAI.EuclideanFiveColor.RelativeCenters.centerKernel.eq_1
+no span (kept in source): OAI.EuclideanFiveColor.RelativeCenters.centerMap._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.RelativeCenters.centerMap._proof_2
+no span (kept in source): OAI.EuclideanFiveColor.RelativeCenters.centerMap._proof_3
+no span (kept in source): OAI.EuclideanFiveColor.RelativeCenters.differenceLaw.eq_1
+no span (kept in source): OAI.EuclideanFiveColor.RelativeCenters.probabilityKernel._proof_1
+no span (kept in source): OAI.EuclideanFiveColor.SampledAtoms.measurable_atom_mass._simp_1_1
+no span (kept in source): OAI.EuclideanFiveColor.SampledAtoms.uniform_list_positive_atoms._simp_1_1
+no span (kept in source): OAI.EuclideanFiveColor.SmallArc.instBorelSpaceCircle_oAI
+no span (kept in source): OAI.EuclideanFiveColor.SmallArc.instMeasurableSpaceCircle_oAI
+no span (kept in source): OAI.EuclideanFiveColor.SmallArc.pair_moment_bound._proof_1_1
+no span (kept in source): OAI.EuclideanFiveColor.SmallArc.pair_moment_bound._proof_1_2
+no span (kept in source): OAI.EuclideanFiveColor.SmallArc.pair_moment_bound._proof_1_3
+no span (kept in source): OAI.EuclideanFiveColor.SmallArc.pair_moment_bound._proof_1_4
+no span (kept in source): OAI.EuclideanFiveColor.SmallArc.pair_moment_bound._proof_1_5
+no span (kept in source): OAI.EuclideanFiveColor.UniformFibers.finite_uniform_fibers
+no span (kept in source): OAI.PlaneFiveColor.Spectral.AmbientEncodingAt._proof_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.AmbientEncodingAt._proof_2
+no span (kept in source): OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt._proof_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt._proof_2
+no span (kept in source): OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt._proof_3
+no span (kept in source): OAI.PlaneFiveColor.Spectral.UniversalGood._proof_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.UniversalGood._proof_2
+no span (kept in source): OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction._proof_1_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction._proof_1_2
+no span (kept in source): OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction._proof_1_3
+no span (kept in source): OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction._proof_1_4
+no span (kept in source): OAI.PlaneFiveColor.Spectral.cosetScalar._proof_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.cosetScalar._proof_2
+no span (kept in source): OAI.PlaneFiveColor.Spectral.dualMulDistribAction._proof_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.dualMulDistribAction._proof_2
+no span (kept in source): OAI.PlaneFiveColor.Spectral.dualMulDistribAction._proof_3
+no span (kept in source): OAI.PlaneFiveColor.Spectral.exists_simultaneous_moment_parameter._proof_1_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction._proof_1_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction._proof_1_2
+no span (kept in source): OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction._proof_1_3
+no span (kept in source): OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction._proof_1_4
+no span (kept in source): OAI.PlaneFiveColor.Spectral.fixed_of_positive_fiber._simp_1_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.fixed_of_positive_fiber._simp_1_2
+no span (kept in source): OAI.PlaneFiveColor.Spectral.frequencyIsometry._proof_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.frequencyIsometry._proof_2
+no span (kept in source): OAI.PlaneFiveColor.Spectral.frequencyIsometry._proof_3
+no span (kept in source): OAI.PlaneFiveColor.Spectral.frequencyRotation._proof_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.instBorelSpaceCircle_oAI
+no span (kept in source): OAI.PlaneFiveColor.Spectral.instBorelSpaceCircle_oAI_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.instMeasurableSpaceCircle_oAI
+no span (kept in source): OAI.PlaneFiveColor.Spectral.instMeasurableSpaceCircle_oAI_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.instMeasurableSpaceCircle_oAI_2
+no span (kept in source): OAI.PlaneFiveColor.Spectral.instMeasurableSpaceCircle_oAI_3
+no span (kept in source): OAI.PlaneFiveColor.Spectral.instMulActionSubtypeCircleMemSubgroupKCosets
+no span (kept in source): OAI.PlaneFiveColor.Spectral.instMulActionSubtypeCircleMemSubgroupKCosets._proof_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.instMulActionSubtypeCircleMemSubgroupKCosets._proof_2
+no span (kept in source): OAI.PlaneFiveColor.Spectral.momentArgument._proof_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.momentArgument._proof_2
+no span (kept in source): OAI.PlaneFiveColor.Spectral.momentArgument._proof_3
+no span (kept in source): OAI.PlaneFiveColor.Spectral.momentTest_nonempty._proof_1_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.momentTest_nonempty._proof_1_2
+no span (kept in source): OAI.PlaneFiveColor.Spectral.relative_singularity_approximation.match_1_1
+no span (kept in source): OAI.PlaneFiveColor.Spectral.relative_singularity_successor.match_1_1
+nodes 3538  type-edges 7910  value-edges 15036
+nodes with a source span: 2350/3538
+  unmatched (first 5): ['OAI.EuclideanFiveColor.AlgebraReplacement.mixed_prod._simp_1_1', 'OAI.EuclideanFiveColor.AlgebraicCayley.asN._proof_1', 'OAI.EuclideanFiveColor.AlgebraicCayley.asN._proof_10', 'OAI.EuclideanFiveColor.AlgebraicCayley.asN._proof_11', 'OAI.EuclideanFiveColor.AlgebraicCayley.asN._proof_2']
+declaration lines inside the closure: 28539
+   969 OAI.Analysis.PlaneSpectrum.InvariantMean
+   819 OAI.MeasureTheory.CompactFactors.Functions
+   752 OAI.Geometry.PlaneColoring.States
+   725 OAI.MeasureTheory.CompactFactors.Kernels
+   703 OAI.Analysis.PlaneSpectrum.Basic
+   700 OAI.Geometry.PlaneColoring.Expansion
+   660 OAI.MeasureTheory.CompactFactors.Centers
+   625 OAI.MeasureTheory.CompactFactors.AlgebraModels
+   549 OAI.Analysis.PlaneSpectrum.Characters
+   544 OAI.MeasureTheory.CompactFactors.ConditionalLimits
+   528 OAI.MeasureTheory.CompactFactors.Factors
+   518 OAI.MeasureTheory.CompactFactors.Separability
+   510 OAI.Analysis.PlaneSpectrum.NumberFields
+   509 OAI.Geometry.PlaneColoring.CircleMaps
+   508 OAI.Geometry.PlaneColoring.BinaryDynamics
+   500 OAI.Geometry.PlaneColoring.Interfaces
+   497 OAI.Geometry.PlaneColoring.FourContinuity
+   490 OAI.Geometry.PlaneColoring.AngularBoundary
+   485 OAI.MeasureTheory.CompactFactors.RelativeCenters
+   461 OAI.Analysis.PlaneSpectrum.RadialEnergy
+   453 OAI.MeasureTheory.CompactFactors.Approximation
+   451 OAI.Analysis.PlaneSpectrum.ConditionalSpectrum
+   451 OAI.Geometry.PlaneColoring.PaletteTransport
+   446 OAI.Geometry.PlaneColoring.FourTransport
+   445 OAI.Analysis.PlaneSpectrum.PhaseCollision
+   443 OAI.Analysis.PlaneSpectrum.Representations
+   442 OAI.Geometry.PlaneColoring.Sectors
+   438 OAI.Geometry.PlaneColoring.BorelTransfer
+   435 OAI.Geometry.PlaneColoring.Rigidity
+   434 OAI.Geometry.PlaneColoring.PaletteDensity
+   427 OAI.Analysis.PlaneSpectrum.Energy
+   422 OAI.Analysis.PlaneSpectrum.Selections
+   418 OAI.Geometry.PlaneColoring.Moser
+   415 OAI.MeasureTheory.CompactFactors.ConditionalSelection
+   402 OAI.Geometry.PlaneColoring.DiskExtension
+   400 OAI.Analysis.PlaneSpectrum.Ergodicity
+   394 OAI.Geometry.PlaneColoring.PlanarCovers
+   393 OAI.Geometry.PlaneColoring.Accumulation
+   382 OAI.MeasureTheory.CompactFactors.RelativeProducts
+   380 OAI.Geometry.PlaneColoring.GraphRealization
+   368 OAI.MeasureTheory.CompactFactors.Amenability
+   366 OAI.Analysis.PlaneSpectrum.SpectralMeasure
+   365 OAI.Geometry.PlaneColoring.FiveSupport
+   351 OAI.Geometry.PlaneColoring.BinaryPalettes
+   329 OAI.Geometry.PlaneColoring.Compactness
+   328 OAI.Geometry.PlaneColoring.FullApproximation
+   326 OAI.Geometry.PlaneColoring.CircleTransport
+   325 OAI.Geometry.PlaneColoring.DiskAverages
+   321 OAI.Geometry.PlaneColoring.ContinuumLimits
+   314 OAI.Geometry.PlaneColoring.HoleApproximation
+   308 OAI.Geometry.PlaneColoring.BoundaryTrace
+   302 OAI.Geometry.PlaneColoring.GraphPatches
+   301 OAI.Geometry.PlaneColoring.GraphCuts
+   290 OAI.Analysis.PlaneSpectrum.SmallArcs
+   284 OAI.Analysis.PlaneSpectrum.CircleOperator
+   281 OAI.Analysis.PlaneSpectrum.Multipliers
+   259 OAI.Analysis.PlaneSpectrum.FourierTests
+   247 OAI.Geometry.PlaneColoring.CyclicCore
+   233 OAI.Analysis.PlaneSpectrum.PhaseEncoding
+   233 OAI.Analysis.PlaneSpectrum.CircleDecay
+   186 OAI.MeasureTheory.CompactFactors.Stationary
+   182 OAI.MeasureTheory.CompactFactors.BoundedFunctions
+   166 OAI.Geometry.PlaneColoring.WeakColoring
+   156 OAI.Geometry.PlaneColoring.Exclusion
+   154 OAI.Analysis.PlaneSpectrum.Fourier
+   143 OAI.Geometry.PlaneColoring.Mesh
+   142 OAI.Geometry.PlaneColoring.Transitions
+   130 OAI.Geometry.PlaneColoring.Five
+   112 OAI.Geometry.PlaneColoring.Chromatic
+   107 OAI.Geometry.PlaneColoring.Palettes
+    74 OAI.Geometry.PlaneColoring.Converse
+    57 OAI.Geometry.PlaneColoring.Metric
+    52 OAI.Geometry.PlaneColoring.Lattice
+    51 OAI.Geometry.PlaneColoring.Covering
+    48 OAI.Geometry.PlaneColoring.NullSetRobust
+    32 OAI.Geometry.PlaneColoring.Assembly
+    28 OAI.Geometry.PlaneColoring.Coloring
+    26 OAI.Geometry.PlaneColoring.Transfer
+    25 OAI.Geometry.PlaneColoring.Seven
+    14 OAI.Geometry.PlaneColoring.Basic
+362 declarations, 5820 lines -> .ultramath/smwg224wy/m6/PRUNE8.json
+DROPPED OAI.EuclideanFiveColor.FactorLp.space
+DROPPED OAI.EuclideanFiveColor.FactorLp.exists_rep
+kept    OAI.EuclideanFiveColor.RelativeProduct.law
+kept    OAI.EuclideanFiveColor.RelativeProduct.law_eq_mixture
+kept    OAI.EuclideanFiveColor.RelativeProduct
+kept    OAI.EuclideanFiveColor.IsWild
+DROPPED OAI.PlaneFiveColor.Spectral.exists_terminal_factor
+DROPPED OAI.PlaneFiveColor.Spectral.UniversalGood
+kept    OAI.PlaneFiveColor.Spectral.ergodic_wild_fourier
+kept    OAI.PlaneFiveColor.Spectral.fourier_vanish_of_terminal

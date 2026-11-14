@@ -1,0 +1,74 @@
+
+=== A. unique unit decomposition of z (Lemma 1) ===
+PASS   A.(Fraction(3, 5), Fraction(4, 5)) |s_+|^2 = 1 exactly (rational identity) 
+PASS   A.(Fraction(3, 5), Fraction(4, 5)) s_+ + s_- = z exactly   
+PASS   A.(Fraction(3, 5), Fraction(4, 5)) two distinct solutions (r<2) 
+PASS   A.(Fraction(1, 2), Fraction(0, 1)) |s_+|^2 = 1 exactly (rational identity) 
+PASS   A.(Fraction(1, 2), Fraction(0, 1)) s_+ + s_- = z exactly   
+PASS   A.(Fraction(1, 2), Fraction(0, 1)) two distinct solutions (r<2) 
+PASS   A.(Fraction(-7, 25), Fraction(24, 25)) |s_+|^2 = 1 exactly (rational identity) 
+PASS   A.(Fraction(-7, 25), Fraction(24, 25)) s_+ + s_- = z exactly 
+PASS   A.(Fraction(-7, 25), Fraction(24, 25)) two distinct solutions (r<2) 
+PASS   A.(Fraction(9, 10), Fraction(-1, 3)) |s_+|^2 = 1 exactly (rational identity) 
+PASS   A.(Fraction(9, 10), Fraction(-1, 3)) s_+ + s_- = z exactly 
+PASS   A.(Fraction(9, 10), Fraction(-1, 3)) two distinct solutions (r<2) 
+PASS   A.r=2 gives s=t (degenerate, one unordered pair)           
+PASS   A.r>2 gives no unit decomposition                          
+
+=== B. the three identities of the k=5 calibration ===
+PASS   B1 sin3(phi-d) sin3(phi+d) = sin^2 3phi - sin^2 3delta     
+PASS   B2 sin^2 3phi = ups^2 (3xi^2-ups^2)^2 / l^3                
+PASS   B3 sin 3delta = 3s - 4s^3 = s (4cos^2 delta - 1)           
+PASS   B3' = sqrt(1-l/4)(l-1) with l = r^2                        
+
+=== C. k=5 calibration: (8.4) <=> both outsiders excluded ===
+PASS   C0 |(35+12i)/37| = 1 (35^2+12^2 = 37^2)                    
+PASS   C0b all eleven drawn Moser edges have length exactly one   
+PASS   C0c |T - uT| = 1 exactly (the Moser contradiction edge)    
+PASS   C1.0  0 < |z_g|^2 = l < 4  (both procedures)               
+PASS   C2.0  P < P'  (the paper's (8.4); both procedures)         PROC-2 +1  PROC-1 +1
+PASS   C1.A  0 < |z_g|^2 = l < 4  (both procedures)               
+PASS   C2.A  P < P'  (the paper's (8.4); both procedures)         PROC-2 +1  PROC-1 +1
+PASS   C1.B  0 < |z_g|^2 = l < 4  (both procedures)               
+PASS   C2.B  P < P'  (the paper's (8.4); both procedures)         PROC-2 +1  PROC-1 +1
+PASS   C1.T  0 < |z_g|^2 = l < 4  (both procedures)               
+PASS   C2.T  P < P'  (the paper's (8.4); both procedures)         PROC-2 +1  PROC-1 +1
+PASS   C1.uA  0 < |z_g|^2 = l < 4  (both procedures)              
+PASS   C2.uA  P < P'  (the paper's (8.4); both procedures)        PROC-2 +1  PROC-1 +1
+PASS   C1.uB  0 < |z_g|^2 = l < 4  (both procedures)              
+PASS   C2.uB  P < P'  (the paper's (8.4); both procedures)        PROC-2 +1  PROC-1 +1
+PASS   C1.uT  0 < |z_g|^2 = l < 4  (both procedures)              
+PASS   C2.uT  P < P'  (the paper's (8.4); both procedures)        PROC-2 +1  PROC-1 +1
+PASS   C6 literal (8.6) at g=0: P > P' (inner point), so (8.4) FAILS (parenthesisation erratum) 
+
+=== D. exclusion capacity: at most 2 labels at any point != centre ===
+PASS   D1 at most two palette values are available at z != x      
+PASS   D2.equal-thirds max |excluded set| = 2                     histogram {2: 479799, 1: 239600}
+PASS   D2.equal-thirds every value survives somewhere             survivors [0, 1, 2]
+PASS   D2.m13 max |excluded set| = 2                              histogram {2: 479796, 1: 239603}
+PASS   D2.m13 every value survives somewhere                      survivors [0, 1, 2]
+
+=== E. R-orbit words at k=6, triangle centres (S_1) ===
+PASS   E1 number of R-alternating 3-valued orbit words = 66       got 66
+PASS   E2 words attaining all three outsider values: 60           got 60
+PASS   E3 2-valued words: 6 (3 pairs x 2 phases)                  got 6
+PASS   E4 equal-thirds word satisfies the bound 1/2 per value     
+PASS   E5 a 2-valued word is binary for its own pair              
+
+=== F. vacuity tests on the recorded countermodels ===
+PASS   F1 m13's field violates the endpoint trace (1 not in {4,5,6}) 
+PASS   F2 a nonempty centre-independent field cannot satisfy (5.3) 
+PASS   F3.k=4 outsiders k-3=1, capacity 2: sufficient             
+PASS   F3.k=5 outsiders k-3=2, capacity 2: sufficient             
+PASS   F3.k=6 outsiders k-3=3, capacity 2: one label SHORT        
+PASS   F3.k=7 outsiders k-3=4, capacity 2: one label SHORT        
+PASS   F4 one accumulation point => (W) still holds (proof.md Prop. 7) 
+
+=== G. no 3-colour equality-forcing gadget (Proposition 8) ===
+PASS   G1 cos Delta in [0.492824, 0.507025]                       exact bounds 48585041/98585041 < cos Delta < 51425041/101425041
+PASS   G2 the 40-degree 3-arc colouring is proper across (40,80)  0 violations
+PASS   G3 the annulus contains a unit pair (radius 1, 60 degrees) 
+PASS   G4 the 4-edge path forces equality with 2 colours, not with 3 
+PASS   G5 no W fitting in A can be 3-colour equality-forcing (Prop. 8) 
+
+58 checks, 0 failed

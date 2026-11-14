@@ -1,0 +1,713 @@
+[
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
+"kind": "lemma",
+"name": "generator_one",
+"line": 126,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
+"kind": "lemma",
+"name": "boundedCM_apply",
+"line": 181,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/Multipliers.lean",
+"kind": "lemma",
+"name": "weight_inner",
+"line": 92,
+"span": 14,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/Representations.lean",
+"kind": "lemma",
+"name": "rot_vadd",
+"line": 22,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/Representations.lean",
+"kind": "lemma",
+"name": "translation_apply",
+"line": 243,
+"span": 2,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"kind": "lemma",
+"name": "realPart_apply",
+"line": 296,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"kind": "lemma",
+"name": "cmeanCLM_apply",
+"line": 343,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"kind": "lemma",
+"name": "fieldCircle_apply",
+"line": 454,
+"span": 2,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"kind": "lemma",
+"name": "periodLift_mk",
+"line": 609,
+"span": 4,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"kind": "lemma",
+"name": "periodSum_add",
+"line": 676,
+"span": 5,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"kind": "lemma",
+"name": "integralReal_nonneg",
+"line": 713,
+"span": 7,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"kind": "lemma",
+"name": "integralReal_shift",
+"line": 721,
+"span": 13,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"kind": "lemma",
+"name": "weakIntegral_pair",
+"line": 754,
+"span": 12,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/FourierTests.lean",
+"kind": "lemma",
+"name": "difference_coefficient_nonneg",
+"line": 279,
+"span": 17,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"kind": "theorem",
+"name": "embed_one",
+"line": 69,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"kind": "theorem",
+"name": "scalar_apply",
+"line": 139,
+"span": 2,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"kind": "theorem",
+"name": "kCoeff_one",
+"line": 226,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"kind": "theorem",
+"name": "kCoeff_minusOne",
+"line": 288,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"kind": "theorem",
+"name": "coe_imagUnit",
+"line": 363,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"kind": "theorem",
+"name": "coe_reF",
+"line": 581,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/Energy.lean",
+"kind": "lemma",
+"name": "char_neg",
+"line": 376,
+"span": 3,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean",
+"kind": "lemma",
+"name": "circleOperator_norm_le",
+"line": 16,
+"span": 3,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean",
+"kind": "lemma",
+"name": "colorMass_measurable",
+"line": 251,
+"span": 7,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean",
+"kind": "lemma",
+"name": "colorMass_le_one",
+"line": 261,
+"span": 3,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/Selections.lean",
+"kind": "lemma",
+"name": "signedList_length",
+"line": 367,
+"span": 2,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean",
+"kind": "theorem",
+"name": "collision_from_close_encodings",
+"line": 396,
+"span": 66,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean",
+"kind": "theorem",
+"name": "finite_continuum_subsequence",
+"line": 163,
+"span": 20,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/BinaryPalettes.lean",
+"kind": "lemma",
+"name": "binary_pair_distinct",
+"line": 28,
+"span": 15,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Exclusion.lean",
+"kind": "lemma",
+"name": "five_diag_nonempty",
+"line": 21,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Exclusion.lean",
+"kind": "lemma",
+"name": "five_diag_unique",
+"line": 22,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Moser.lean",
+"kind": "lemma",
+"name": "abs_le_of_bounds",
+"line": 42,
+"span": 7,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Moser.lean",
+"kind": "lemma",
+"name": "moserPoint_0",
+"line": 133,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/CyclicCore.lean",
+"kind": "lemma",
+"name": "five_ae_mem_support",
+"line": 9,
+"span": 2,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/CyclicCore.lean",
+"kind": "lemma",
+"name": "standardCore_closed",
+"line": 252,
+"span": 3,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean",
+"kind": "lemma",
+"name": "diskAnnulus_measurable",
+"line": 214,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Interfaces.lean",
+"kind": "lemma",
+"name": "interface_four_split_neg",
+"line": 28,
+"span": 2,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Interfaces.lean",
+"kind": "lemma",
+"name": "interface_four_split_no_opposite",
+"line": 37,
+"span": 10,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Interfaces.lean",
+"kind": "lemma",
+"name": "interfaceFourEdge_eq",
+"line": 50,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Sectors.lean",
+"kind": "lemma",
+"name": "triangleState_measurable",
+"line": 122,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean",
+"kind": "lemma",
+"name": "four_split_antipodes",
+"line": 359,
+"span": 9,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Expansion.lean",
+"kind": "lemma",
+"name": "geometric_partial_sum",
+"line": 46,
+"span": 16,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Compactness.lean",
+"kind": "lemma",
+"name": "weakHilbert_apply",
+"line": 13,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Compactness.lean",
+"kind": "lemma",
+"name": "value_norm",
+"line": 165,
+"span": 2,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Compactness.lean",
+"kind": "lemma",
+"name": "isCompact_traces",
+"line": 286,
+"span": 2,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/FourContinuity.lean",
+"kind": "lemma",
+"name": "strict_state_uniform_on_compact",
+"line": 361,
+"span": 45,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/DiskExtension.lean",
+"kind": "lemma",
+"name": "coreHoles_open",
+"line": 522,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Transfer.lean",
+"kind": "theorem",
+"name": "proper_iff_weak",
+"line": 12,
+"span": 11,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Transfer.lean",
+"kind": "theorem",
+"name": "algebraic_colorable_iff",
+"line": 24,
+"span": 14,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/NullSetRobust.lean",
+"kind": "theorem",
+"name": "not_proper_five_coloring_compl_null",
+"line": 20,
+"span": 48,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/FiveSupport.lean",
+"kind": "lemma",
+"name": "five_realState_measurable",
+"line": 84,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Palettes.lean",
+"kind": "lemma",
+"name": "paletteSet_minimal",
+"line": 26,
+"span": 8,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/GraphRealization.lean",
+"kind": "lemma",
+"name": "graphRealization_nonneg",
+"line": 119,
+"span": 4,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/ConnectedUnitFree.lean",
+"kind": "theorem",
+"name": "not_straddle_of_isPreconnected",
+"line": 45,
+"span": 15,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/ConnectedUnitFree.lean",
+"kind": "theorem",
+"name": "diam_le_one_connectedComponentIn_of_properColoring",
+"line": 61,
+"span": 13,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Lattice.lean",
+"kind": "lemma",
+"name": "normSq_nonneg",
+"line": 16,
+"span": 3,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean",
+"kind": "lemma",
+"name": "angleBoundary_closed",
+"line": 350,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/GraphCuts.lean",
+"kind": "lemma",
+"name": "fiberCrosses_symm",
+"line": 219,
+"span": 3,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/Seven.lean",
+"kind": "theorem",
+"name": "weakMeasurableColoring_seven",
+"line": 60,
+"span": 9,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean",
+"kind": "lemma",
+"name": "proper_to_weak",
+"line": 451,
+"span": 8,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/Separability.lean",
+"kind": "lemma",
+"name": "inner_act",
+"line": 53,
+"span": 5,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/Separability.lean",
+"kind": "lemma",
+"name": "meanNorm_mono",
+"line": 372,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/Separability.lean",
+"kind": "lemma",
+"name": "meanNorm_zero",
+"line": 384,
+"span": 5,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/Separability.lean",
+"kind": "lemma",
+"name": "meanNorm_sub_le",
+"line": 404,
+"span": 5,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/Separability.lean",
+"kind": "lemma",
+"name": "meanNorm_const",
+"line": 419,
+"span": 6,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean",
+"kind": "lemma",
+"name": "projectCLM_l2",
+"line": 92,
+"span": 4,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean",
+"kind": "lemma",
+"name": "avg_congr_ae",
+"line": 267,
+"span": 8,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean",
+"kind": "lemma",
+"name": "pairSequence_apply",
+"line": 391,
+"span": 3,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean",
+"kind": "lemma",
+"name": "project_apply",
+"line": 166,
+"span": 4,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+"kind": "theorem",
+"name": "center_law_ordinary",
+"line": 102,
+"span": 18,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+"kind": "theorem",
+"name": "ordinaryEmbedding_j",
+"line": 535,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+"kind": "theorem",
+"name": "frequencyRotation_apply",
+"line": 549,
+"span": 2,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+"kind": "theorem",
+"name": "relative_singularity_limit",
+"line": 269,
+"span": 61,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/Amenability.lean",
+"kind": "lemma",
+"name": "vector_norm_le",
+"line": 91,
+"span": 4,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/Amenability.lean",
+"kind": "lemma",
+"name": "action_apply",
+"line": 357,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/Amenability.lean",
+"kind": "theorem",
+"name": "vector_orbit_zero",
+"line": 400,
+"span": 12,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/Factors.lean",
+"kind": "lemma",
+"name": "smul_val",
+"line": 73,
+"span": 14,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/Factors.lean",
+"kind": "lemma",
+"name": "encode_bound",
+"line": 277,
+"span": 2,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/Centers.lean",
+"kind": "theorem",
+"name": "range_j",
+"line": 409,
+"span": 1,
+"total": 1,
+"attr": false
+},
+{
+"file": "lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean",
+"kind": "lemma",
+"name": "scaleHom_apply",
+"line": 620,
+"span": 1,
+"total": 1,
+"attr": false
+}
+]

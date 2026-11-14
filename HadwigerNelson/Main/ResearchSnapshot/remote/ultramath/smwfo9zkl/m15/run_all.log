@@ -1,0 +1,157 @@
+
+########## python3 -u construction.py ##########
+=== the uniform construction, exact integer checks ===
+ell=3 m= 6 n= 36 L= 4  values=[(3,), (4,), (5,)]  |D|=6  violations=0
+ell=3 m= 9 n= 54 L= 6  values=[(3,), (4,), (5,)]  |D|=6  violations=0
+ell=3 m=12 n= 72 L= 8  values=[(3,), (4,), (5,)]  |D|=6  violations=0
+ell=3 m=15 n= 90 L=10  values=[(3,), (4,), (5,)]  |D|=6  violations=0
+ell=3 m=21 n=126 L=14  values=[(3,), (4,), (5,)]  |D|=6  violations=0
+ell=3 m=30 n=180 L=20  values=[(3,), (4,), (5,)]  |D|=6  violations=0
+ell=3 m=60 n=360 L=40  values=[(3,), (4,), (5,)]  |D|=6  violations=0
+ell=3 m=201 n=1206 L=134  values=[(3,), (4,), (5,)]  |D|=6  violations=0
+ell=3 m=600 n=3600 L=400  values=[(3,), (4,), (5,)]  |D|=6  violations=0
+ell=4 m= 6 n= 36 L= 4  values=[(0, 2), (4,), (5,)]  |D|=6  violations=0
+ell=4 m= 9 n= 54 L= 6  values=[(0, 2), (4,), (5,)]  |D|=6  violations=0
+ell=4 m=12 n= 72 L= 8  values=[(0, 2), (4,), (5,)]  |D|=6  violations=0
+ell=4 m=15 n= 90 L=10  values=[(0, 2), (4,), (5,)]  |D|=6  violations=0
+ell=4 m=21 n=126 L=14  values=[(0, 2), (4,), (5,)]  |D|=6  violations=0
+ell=4 m=30 n=180 L=20  values=[(0, 2), (4,), (5,)]  |D|=6  violations=0
+ell=4 m=60 n=360 L=40  values=[(0, 2), (4,), (5,)]  |D|=6  violations=0
+ell=4 m=201 n=1206 L=134  values=[(0, 2), (4,), (5,)]  |D|=6  violations=0
+ell=4 m=600 n=3600 L=400  values=[(0, 2), (4,), (5,)]  |D|=6  violations=0
+ell=5 m= 6 n= 36 L= 4  values=[(0, 2), (1, 3), (5,)]  |D|=6  violations=0
+ell=5 m= 9 n= 54 L= 6  values=[(0, 2), (1, 3), (5,)]  |D|=6  violations=0
+ell=5 m=12 n= 72 L= 8  values=[(0, 2), (1, 3), (5,)]  |D|=6  violations=0
+ell=5 m=15 n= 90 L=10  values=[(0, 2), (1, 3), (5,)]  |D|=6  violations=0
+ell=5 m=21 n=126 L=14  values=[(0, 2), (1, 3), (5,)]  |D|=6  violations=0
+ell=5 m=30 n=180 L=20  values=[(0, 2), (1, 3), (5,)]  |D|=6  violations=0
+ell=5 m=60 n=360 L=40  values=[(0, 2), (1, 3), (5,)]  |D|=6  violations=0
+ell=5 m=201 n=1206 L=134  values=[(0, 2), (1, 3), (5,)]  |D|=6  violations=0
+ell=5 m=600 n=3600 L=400  values=[(0, 2), (1, 3), (5,)]  |D|=6  violations=0
+ell=6 m= 6 n= 36 L= 4  values=[(0, 3), (1, 4), (2, 5)]  |D|=6  violations=0
+ell=6 m= 9 n= 54 L= 6  values=[(0, 3), (1, 4), (2, 5)]  |D|=6  violations=0
+ell=6 m=12 n= 72 L= 8  values=[(0, 3), (1, 4), (2, 5)]  |D|=6  violations=0
+ell=6 m=15 n= 90 L=10  values=[(0, 3), (1, 4), (2, 5)]  |D|=6  violations=0
+ell=6 m=21 n=126 L=14  values=[(0, 3), (1, 4), (2, 5)]  |D|=6  violations=0
+ell=6 m=30 n=180 L=20  values=[(0, 3), (1, 4), (2, 5)]  |D|=6  violations=0
+ell=6 m=60 n=360 L=40  values=[(0, 3), (1, 4), (2, 5)]  |D|=6  violations=0
+ell=6 m=201 n=1206 L=134  values=[(0, 3), (1, 4), (2, 5)]  |D|=6  violations=0
+ell=6 m=600 n=3600 L=400  values=[(0, 3), (1, 4), (2, 5)]  |D|=6  violations=0
+
+block conditions m/2 < 2m/3 <= m-1 hold exactly for m >= 3: True
+
+=== admissibility of the three palettes, and their disjointness ===
+  ell=3  A=[[3], [4], [5]]  admissible=yes  pairwise disjoint=yes  max clique of the 35-value disjointness graph = 4
+  ell=4  A=[[0, 2], [4], [5]]  admissible=yes  pairwise disjoint=yes  max clique of the 33-value disjointness graph = 4
+  ell=5  A=[[0, 2], [1, 3], [5]]  admissible=yes  pairwise disjoint=yes  max clique of the 31-value disjointness graph = 3
+  ell=6  A=[[0, 3], [1, 4], [2, 5]]  admissible=yes  pairwise disjoint=yes  max clique of the 29-value disjointness graph = 3
+
+TOTAL VIOLATIONS: 0
+
+########## python3 -u verify.py ##########
+=== PART 1: exact re-check of the construction (independent code) ===
+  ell=3  n=1800 L=200  forced offsets [299, 300, 301, 1499, 1500, 1501]  OK
+  ell=4  n=1800 L=200  forced offsets [299, 300, 301, 1499, 1500, 1501]  OK
+  ell=5  n=1800 L=200  forced offsets [299, 300, 301, 1499, 1500, 1501]  OK
+  ell=6  n=1800 L=200  forced offsets [299, 300, 301, 1499, 1500, 1501]  OK
+
+=== PART 2: Lemma G in exact rational arithmetic ===
+  m=  6  d0=0.058201  Delta=0.174533  C=1.595  C*d0=0.09283 < Delta  deriv bound=0.652 < 0.66
+  m= 12  d0=0.029101  Delta=0.087266  C=1.589  C*d0=0.04624 < Delta  deriv bound=0.614 < 0.66
+  m= 60  d0=0.005820  Delta=0.017453  C=1.584  C*d0=0.00922 < Delta  deriv bound=0.585 < 0.66
+  m=600  d0=0.000582  Delta=0.001745  C=1.583  C*d0=0.00092 < Delta  deriv bound=0.579 < 0.66
+  floating-point sanity check (m=6): sup |arg s - (theta+-kappa)|/d0 = 1.1663   (rigorous bound 1.5950)
+
+=== PART 3: the accumulating centre set ===
+  m= 6  d0=0.05818  64 centres y_k=(d0/3)2^-k, y_63=2.103e-21, diameter 1.939e-02 <= d0
+  m=12  d0=0.02909  64 centres y_k=(d0/3)2^-k, y_63=1.051e-21, diameter 9.696e-03 <= d0
+
+ALL CHECKS PASSED
+
+########## python3 -u nonvacuity.py ##########
+=== no other (k, cycle length) has a 2-type at k = 5 or 6 ===
+  k=5  C_3 : 9 admissible, 8 occurrable, 2-types = ['{3,4}']
+  k=5  C_4 : 7 admissible, 7 occurrable, 2-types = []
+  k=5  C_5 : 5 admissible, 5 occurrable, 2-types = []
+  k=6  C_3 : 35 admissible, 35 occurrable, 2-types = []
+  k=6  C_4 : 33 admissible, 33 occurrable, 2-types = []
+  k=6  C_5 : 31 admissible, 31 occurrable, 2-types = []
+  k=6  C_6 : 29 admissible, 29 occurrable, 2-types = []
+
+=== the three steps of Lemma 3, verified arithmetically ===
+  m even -> Step 2 applies; m odd -> orbit length 6m/gcd(m-1,6m) is odd for all 2 <= m < 40
+  (gcd(m-1,6m) = gcd(m-1,6) is 2 or 6 when m is odd)
+
+=== machine decision: k=5 triangle UNSAT, k=6 all lengths SAT ===
+  k=5 C_3 m= 2 n= 12 |V|=9  CaDiCaL=UNSAT independent-DPLL=UNSAT
+  k=5 C_3 m= 3 n= 18 |V|=9  CaDiCaL=UNSAT independent-DPLL=UNSAT
+  k=5 C_3 m= 4 n= 24 |V|=9  CaDiCaL=UNSAT independent-DPLL=UNSAT
+  k=5 C_3 m= 6 n= 36 |V|=9  CaDiCaL=UNSAT independent-DPLL=UNSAT
+  k=5 C_3 m= 9 n= 54 |V|=9  CaDiCaL=UNSAT
+  k=5 C_3 m=12 n= 72 |V|=9  CaDiCaL=UNSAT
+  k=5 C_3 m=18 n=108 |V|=9  CaDiCaL=UNSAT
+  k=5 C_3 m=30 n=180 |V|=9  CaDiCaL=UNSAT
+  k=5 C_3 m=60 n=360 |V|=9  CaDiCaL=UNSAT
+  k=6 C_3 m= 6 n= 36 |V|=35  CaDiCaL=SAT
+  k=6 C_4 m= 6 n= 36 |V|=33  CaDiCaL=SAT
+  k=6 C_5 m= 6 n= 36 |V|=31  CaDiCaL=SAT
+  k=6 C_6 m= 6 n= 36 |V|=29  CaDiCaL=SAT
+
+DONE
+
+########## python3 -u k5_control.py ##########
+  k=5 ell=3 m= 2 n= 12 |V|=9  SAT=False (expected False) OK
+  k=5 ell=3 m= 3 n= 18 |V|=9  SAT=False (expected False) OK
+  k=5 ell=3 m= 4 n= 24 |V|=9  SAT=False (expected False) OK
+  k=5 ell=3 m= 6 n= 36 |V|=9  SAT=False (expected False) OK
+  k=5 ell=3 m= 9 n= 54 |V|=9  SAT=False (expected False) OK
+  k=5 ell=3 m=12 n= 72 |V|=9  SAT=False (expected False) OK
+  k=5 ell=3 m=18 n=108 |V|=9  SAT=False (expected False) OK
+  k=5 ell=3 m=30 n=180 |V|=9  SAT=False (expected False) OK
+  k=5 ell=3 m=60 n=360 |V|=9  SAT=False (expected False) OK
+  k=5 ell=4 m= 3 n= 18 |V|=7  SAT=False (expected False) OK
+  k=5 ell=4 m= 6 n= 36 |V|=7  SAT=True  (expected True ) OK
+  k=5 ell=4 m=12 n= 72 |V|=7  SAT=True  (expected True ) OK
+  k=5 ell=4 m=24 n=144 |V|=7  SAT=True  (expected True ) OK
+  k=5 ell=5 m= 3 n= 18 |V|=5  SAT=False (expected False) OK
+  k=5 ell=5 m= 6 n= 36 |V|=5  SAT=False (expected False) OK
+  k=5 ell=5 m= 9 n= 54 |V|=5  SAT=False (expected False) OK
+  k=5 ell=5 m=10 n= 60 |V|=5  SAT=True  (expected True ) OK
+  k=5 ell=5 m=11 n= 66 |V|=5  SAT=True  (expected True ) OK
+  k=5 ell=5 m=12 n= 72 |V|=5  SAT=True  (expected True ) OK
+  k=5 ell=5 m=24 n=144 |V|=5  SAT=True  (expected True ) OK
+mismatches: 0
+
+########## python3 -u step_relation.py ##########
+=== (a) k=6, six-cycle: the whole 29-value space is realised ===
+values: 29  sectors: 36  offsets: [5, 6, 7, 29, 30, 31]
+  values with a model: 29 / 29
+  ordered disjoint pairs: 128  realised: 108
+  unrealised: 20  and all of them are complementary triples: True
+  -> the R-step relation at a six-cycle centre is exactly
+     {(v,w) : v cap w = empty, v,w admissible, not both triples complementary}.
+     (the complementary-triple exclusion is (P3), i.e. paper (5.2)).
+
+=== (b) k=5, three-cycle: UNSAT (see WRITEUP.md Lemma 3 for the hand proof) ===
+  m= 6  values=9  CaDiCaL SAT=False  independent DPLL model=None
+  m= 9  values=9  CaDiCaL SAT=False  independent DPLL model=skipped
+  m=12  values=9  CaDiCaL SAT=False  independent DPLL model=skipped
+  m=18  values=9  CaDiCaL SAT=False  independent DPLL model=skipped
+  m=30  values=9  CaDiCaL SAT=False  independent DPLL model=skipped
+
+=== (c) k=5, five-cycle: the step relation is the C5 adjacency ===
+  values: [(0, 2), (0, 3), (1, 3), (1, 4), (2, 4)]
+    (0, 2) -> [(1, 3), (1, 4)]
+    (0, 3) -> [(1, 4), (2, 4)]
+    (1, 3) -> [(0, 2), (2, 4)]
+    (1, 4) -> [(0, 2), (0, 3)]
+    (2, 4) -> [(0, 3), (1, 3)]
+
+########## python3 -u make_witnesses.py ##########
+k=6 ell=3 m=12 n=72 : witness with 72 sectors, values [(3,), (4,), (5,)]
+k=6 ell=4 m=12 n=72 : witness with 72 sectors, values [(0, 2), (4,), (5,)]
+k=6 ell=5 m=12 n=72 : witness with 72 sectors, values [(0, 2), (1, 3), (5,)]
+k=6 ell=6 m=12 n=72 : witness with 72 sectors, values [(0, 2), (1, 4), (3, 4, 5), (3, 5)]
+written to witnesses_k6.json
+
+=== ALL CHECKS PASSED ===

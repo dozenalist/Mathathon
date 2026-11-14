@@ -1,0 +1,50 @@
+.
+work/lean/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:399:70: error: unsolved goals
+d δ : ℝ
+hd : 0 < d
+t : ℝ
+hδ : δ ≤ 4⁻¹
+hdδ : d < δ
+hM : ∀ (s : ℝ), |s| < δ → ∀ (t : ℝ), |binaryM s t - binaryM 0 t| < 8⁻¹
+ht : 4⁻¹ ≤ binaryM 0 t
+⊢ t + d / 8 ≤ binaryCircleMap d t
+work/lean/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:417:76: error: unsolved goals
+⊢ ∃ δ,
+    0 < δ ∧
+      ∀ (d : ℝ),
+        0 < d →
+          d < δ →
+            ∃ C,
+              0 < C ∧
+                ∃ x,
+                  0 < x ∧
+                    C * d ≤ x / 2 ∧
+                      (∀ (n : ℕ) (t : ℝ), 2⁻¹ ≤ 1 + d * binaryB d (t + ↑n * (Real.pi / 3))) ∧
+                        (∀ (n : ℕ) (t : ℝ), 1 + d * binaryB d (t + ↑n * (Real.pi / 3)) ≤ 2) ∧
+                          (∀ (n : ℕ),
+                              LipschitzWith (d * C).toNNReal fun t => 1 + d * binaryB d (t + ↑n * (Real.pi / 3))) ∧
+                            (∀ (t : ℝ), ∃ n, d / 8 ≤ d * binaryB d (t + ↑n * (Real.pi / 3))) ∧
+                              (∀ (t : ℝ), ∃ n, t + d / 8 ≤ binaryConjugate d n t) ∧
+                                (∀ (n : ℕ) (t : ℝ), binaryConjugate d n t ≤ t + C * d) ∧ d * C * x ≤ d / 8 ∧ d < 2⁻¹
+work/lean/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:479:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+work/lean/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:489:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:488:68: error: unsolved goals
+d : ℝ
+A : Set ℝ
+hq : ∀ (n : ℕ), Measure.QuasiMeasurePreserving (binaryConjugate d n) volume volume
+hF : ∀ᵐ (x : ℝ), x ∈ A ↔ binaryCircleMap d x ∈ A
+halt : ∀ᵐ (x : ℝ), x + Real.pi / 3 ∈ A ↔ x ∉ A
+n : ℕ
+⊢ ∀ᵐ (x : ℝ), x ∈ A ↔ binaryConjugate d n x ∈ A
+work/lean/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:502:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:501:67: error: unsolved goals
+⊢ ∃ δ,
+    0 < δ ∧
+      ∀ (d : ℝ),
+        0 < d →
+          d < δ →
+            ∀ (A : Set ℝ),
+              MeasurableSet A →
+                (∀ (n : ℤ) (x : ℝ), x + ↑n * (2 * Real.pi) ∈ A ↔ x ∈ A) →
+                  (∀ᵐ (x : ℝ), x + Real.pi / 3 ∈ A ↔ x ∉ A) → ∃ᵐ (x : ℝ), ¬(x ∈ A ↔ binaryCircleMap d x ∈ A)

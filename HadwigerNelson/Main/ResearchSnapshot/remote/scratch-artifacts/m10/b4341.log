@@ -1,0 +1,533 @@
+FAIL OAI.Analysis.PlaneSpectrum.Basic [20.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:73:14: error: unsolved goals
+ξ : ℂ
+⊢ Circle.exp ((embed 1).re * ξ.re) * Circle.exp ((embed 1).im * ξ.im) = 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:74:32: error(lean.unknownIdentifier): Unknown identifier `embed_mul`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:74:21: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:371:6: error: Type mismatch: After simplification, term
+  ht
+ has type
+  Circle.exp (ξ.re * ((↑imagUnit).re * ↑q)) * Circle.exp (ξ.im * ((↑imagUnit).im * ↑q)) = 1
+but is expected to have type
+  Circle.exp (ξ.im * ↑q) = 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:504:17: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:505:32: error(lean.unknownIdentifier): Unknown identifier `embedF_mul`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:505:21: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:597:81: error: unsolved goals
+case e_6
+d : D
+h1 : d ∈ L 1
+hi : d ∈ L imagUnit
+l : ℝ
+hl : jF l = restrictLine 1 d
+e : ℝ
+he : jF e = restrictLine imagUnit d
+z : DiscreteE
+hr : ∀ (t : ↥F), d (Multiplicative.ofAdd (ofF t)) = Circle.exp (l * ↑t)
+hi' : ∀ (t : ↥F), d (Multiplicative.ofAdd (imagUnit * ofF t)) = Circle.exp (e * ↑t)
+hd :
+  d z =
+    d (Multiplicative.ofAdd (ofF (reF (Multiplicative.toAdd z)))) *
+      d (Multiplicative.ofAdd (imagUnit * ofF (imF (Multiplicative.toAdd z))))
+⊢ l * (↑(Multiplicative.toAdd z)).re + e * (↑(Multiplicative.toAdd z)).im =
+    l * ↑(reF (Multiplicative.toAdd z)) + e * ↑(imF (Multiplicative.toAdd z))
+
+FAIL OAI.Analysis.PlaneSpectrum.Fourier [18.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:38:0: error: Unexpected name `Multiplier` after `end`: The current section is unnamed
+
+Hint: Delete the name `Multiplier` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵M̵u̵l̵t̵i̵p̵l̵i̵e̵r̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:52:2: error(lean.unknownIdentifier): Unknown identifier `Multiplier.clm`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:55:66: error(lean.unknownIdentifier): Unknown identifier `Multiplier.clm_ae`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:87:0: error: Unexpected name `EuclideanFiveColor` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵
+
+FAIL OAI.Analysis.PlaneSpectrum.InvariantMean [19.7s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:44:82: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g x : G
+n : ℕ
+f : G →ᵇ ℝ
+⊢ ∑ c ∈ Finset.range (n + 1), (shift (c • g) f) x = ∑ k ∈ Finset.range (n + 1), f (x + k • g) ∨ ↑n + 1 = 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:75:27: error(lean.unknownIdentifier): Unknown identifier `shift_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:77:2: error: Tactic `apply` failed: could not unify the conclusion of `Finset.sum_congr rfl`
+  Finset.sum ?m.55 ?m.52 = Finset.sum ?m.55 ?m.53
+with the goal
+  ∑ k ∈ Finset.range (n + 1), (shift h f) (x + k • g) =
+    (∑ k ∈ Finset.range (n + 1), shift (k • g) f).toContinuousMap ({ toFun := fun x => x + h, continuous_toFun := ⋯ } x)
+
+Note: The full type of `Finset.sum_congr rfl` is
+  (∀ x ∈ ?m.55, ?m.52 x = ?m.53 x) → Finset.sum ?m.55 ?m.52 = Finset.sum ?m.55 ?m.53
+
+case e_a
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g h : G
+n : ℕ
+f : G →ᵇ ℝ
+x : G
+⊢ ∑ k ∈ Finset.range (n + 1), (shift h f) (x + k • g) =
+    (∑ k ∈ Finset.range (n + 1), shift (k • g) f).toContinuousMap ({ toFun := fun x => x + h, continuous_toFun := ⋯ } x)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:103:52: error(lean.unknownIdentifier): Unknown identifier `shift_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:102:39: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g x : G
+n : ℕ
+f : G →ᵇ ℝ
+k : ℕ
+⊢ (shift g f) (x + k • g) - f (x + k • g) = f (x + (k • g + g)) - f (x + k • g)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:103:87: warning: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [BoundedContinuousFunction.sub_apply, shift_apply, add_nsmul, one_nsmul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:295:56: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+f h : G →ᵇ ℂ
+x : G
+⊢ (realPart (f + h)) x = (realPart f) x + (realPart h) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:296:56: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+f h : G →ᵇ ℂ
+hr : realPart (f + h) = realPart f + realPart h
+x : G
+⊢ (imagPart (f + h)) x = (imagPart f) x + (imagPart h) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:301:72: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+c : ℂ
+f : G →ᵇ ℂ
+x : G
+⊢ (realPart (c • f)) x = c.re * (realPart f) x - c.im * (imagPart f) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:303:72: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+c : ℂ
+f : G →ᵇ ℂ
+hr : realPart (c • f) = c.re • realPart f - c.im • imagPart f
+x : G
+⊢ (imagPart (c • f
+FAIL OAI.Analysis.PlaneSpectrum.NumberFields [15.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:61:13: error(lean.unknownIdentifier): Unknown identifier `coeff_polyLinear`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:59:60: error: unsolved goals
+L : Type u_1
+inst✝¹ : Field L
+inst✝ : Algebra ℚ L
+ℓ : L →ₗ[ℚ] ℚ
+p q : L[X]
+n : ℕ
+⊢ (polyLinear ℓ (p + q)).coeff n = (polyLinear ℓ p).coeff n + (polyLinear ℓ q).coeff n
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:61:42: warning: This simp argument is unused:
+  map_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [coeff_polyLinear, coeff_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:65:13: error(lean.unknownIdentifier): Unknown identifier `coeff_polyLinear`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:66:16: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:66:16: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:118:16: error(lean.unknownIdentifier): Unknown identifier `coeff_polyLinear`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:118:4: error: Type mismatch: After simplification, term
+  he
+ has type
+  DFunLike.coe.{1, 1, 1} (polyLinear ℓ (R + C b * R * X)).coeff 0 = 0
+but is expected to have type
+  DFunLike.coe.{u_1 + 1, u_1 + 1, 1} ℓ 1 = 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:121:16: error(lean.unknownIdentifier): Unknown identifier `coeff_polyLinear`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:121:4: error: Type mismatch: After simplification, term
+  he
+ has type
+  (polyLinear ℓ (R + C b * R * X)).coeff 1 = 0
+but is expected to have type
+  ℓ (R.coeff 1) + ℓ b = 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:125:16: error(lean.unknownIdentifier): Unknown identifier `coeff_polyLinear`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:125:4: error: Type mismatch: After simplification, term
+  he
+ has type
+  (polyLinear ℓ (R + C b * R * X)).coeff 2 = 0
+but is expected to have type
+  ℓ (R.coeff 2) + ℓ (b * R.coeff 1) = 0
+
+OK   OAI.Analysis.PlaneSpectrum.PhaseEncoding [9.0s]
+OK   OAI.Analysis.PlaneSpectrum.SmallArcs [8.3s]
+OK   OAI.Geometry.PlaneColoring.Assembly [5.1s]
+OK   OAI.Geometry.PlaneColoring.Basic [4.2s]
+OK   OAI.Geometry.PlaneColoring.Coloring [0.0s]
+FAIL OAI.Geometry.PlaneColoring.Covering [8.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Covering.lean:38:9: error(lean.unknownIdentifier): Unknown identifier `triangular_rectangle_cover`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Covering.lean:38:70: error: Tactic `rcases` failed: `x✝ : ?m.454` is not an inductive datatype
+
+OK   OAI.Geometry.PlaneColoring.Expansion [11.4s]
+FAIL OAI.Geometry.PlaneColoring.Lattice [5.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Lattice.lean:58:0: error: Invalid name after `end`: Expected `OAI`, but found `SevenLattice`
+
+Hint: Use current scope name `OAI`:
+  end S̵e̵v̵e̵n̵L̵a̵t̵t̵i̵c̵e̵O̲A̲I̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Lattice.lean:59:0: error: Invalid name after `end`: Expected `OAI`, but found `Problem160`
+
+Hint: Use current scope name `OAI`:
+  end P̵r̵o̵b̵l̵e̵m̵1̵6̵0̵O̲A̲I̲
+
+OK   OAI.Geometry.PlaneColoring.Moser [65.8s]
+FAIL OAI.MeasureTheory.CompactFactors.Amenability [9.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:68:2: error: Type mismatch: After simplification, term
+  norm_inner_le_norm (V x) v
+ has type
+  @LE.le ℝ Real.instLE |⟪V x, v⟫| (‖v‖ * ‖V x‖)
+but is expected to have type
+  @LE.le ℝ Real.instLE |⟪V x, v⟫| (‖v‖ * (normFn V) x)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:116:82: error: unsolved goals
+G : Type u_1
+inst✝¹ : TopologicalSpace G
+H : Type u_2
+inst✝ : NormedAddCommGroup H
+V : G →ᵇ H
+x : G
+⊢ (normFn V) x * (normFn V) x = ‖V x‖ * ‖V x‖
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:157:76: error: unsolved goals
+G : Type u_1
+inst✝² : TopologicalSpace G
+H : Type u_2
+inst✝¹ : NormedAddCommGroup H
+inst✝ : InnerProductSpace ℝ H
+V W : G →ᵇ H
+x : G
+⊢ ‖V x‖ ^ 2 + ⟪V x, W x⟫ * 2 + ‖W x‖ ^ 2 = ‖V x‖ ^ 2 + ‖W x‖ ^ 2 + (cross V W) x * 2
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:160:42: warning: This simp argument is unused:
+  cross_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [squareNorm_apply, BoundedContinuousFunction.add_apply, BoundedContinuousFunction.smul_apply,
+    smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:184:69: error: unsolved goals
+case e_6
+G : Type u_1
+inst✝⁴ : AddCommGroup G
+inst✝³ : TopologicalSpace G
+inst✝² : DiscreteTopology G
+M : Mean G
+H : Type u_2
+inst✝¹ : NormedAddCommGroup H
+inst✝ : InnerProductSpace ℝ H
+V W Z : G →ᵇ H
+g x : G
+⊢ (cross (shift G g V) (W + Z)) x = (cross (shift G g V) W) x + (cross (shift G g V) Z) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:189:13: warning: This simp argument is unused:
+  cross_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [BoundedContinuousFunction.add_apply, inner_add_right]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:189:63: warning: This simp argument is unused:
+  inner_add_right
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [cross_apply, BoundedContinuousFunction.add_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:195:52: error: unsolved goals
+G : Type u_1
+inst✝⁴ : AddCommGroup G
+inst✝³ : TopologicalSpace G
+inst✝² : DiscreteTopology G
+M : Mean G
+H : Type u_2
+inst✝¹ : NormedAddCommGroup H
+inst✝ : InnerProductSpace ℝ H
+V : G →ᵇ H
+g x✝ : G
+⊢ (cross (shift G g V) 0) x✝ = 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:206:13: error(lean.unknownIdentifier): Unknown identifier `shift_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:206:2: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e28498
+FAIL OAI.MeasureTheory.CompactFactors.Centers [18.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:21:45: error: unsolved goals
+z : ℂ
+h : lift z = 0
+this : WithLp.fst (lift z) = 0
+⊢ False
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:26:66: error: unsolved goals
+z : ℂ
+⊢ √(WithLp.fst (lift z) ^ 2 + ‖WithLp.snd (lift z)‖ ^ 2) = √(1 + ‖z‖ ^ 2)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:40:4: error: Type mismatch: After simplification, term
+  Eq.symm hab
+ has type
+  1 = a + b
+but is expected to have type
+  WithLp.fst (lift (↑a * z + ↑b * w)) = a * WithLp.fst (lift z) + b * WithLp.fst (lift w)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:52:30: error(lean.unknownIdentifier): Unknown identifier `lift_fst`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:53:30: error(lean.unknownIdentifier): Unknown identifier `lift_snd`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:54:45: error: Application type mismatch: The argument
+  hsnd
+has type
+  (r * a) • WithLp.snd (lift z) = b • WithLp.snd (lift w)
+but is expected to have type
+  (fun x => b • x) z = (fun x => b • x) w
+in the application
+  smul_right_injective ℂ (LT.lt.ne' hb) hsnd
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:52:53: warning: This simp argument is unused:
+  mul_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [WithLp.smul_fst, lift_fst, smul_eq_mul] at hfst
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:53:51: warning: This simp argument is unused:
+  hfst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [WithLp.smul_snd, lift_snd, smul_smul] at hsnd
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+
+FAIL OAI.Analysis.PlaneSpectrum.Characters [0.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Characters.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/Basic.olean' of module OAI.Analysis.PlaneSpectrum.Basic does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.CircleDecay [0.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/CircleDecay.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/Fourier.olean' of module OAI.Analysis.PlaneSpectrum.Fourier does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.PhaseCollision [62.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:379:67: error: unexpected token '/--'; expected 'lemma'
+
+FAIL OAI.Analysis.PlaneSpectrum.Selections [0.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Selections.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/NumberFields.olean' of module OAI.Analysis.PlaneSpectrum.NumberFields does not exist
+
+OK   OAI.Geometry.PlaneColoring.BinaryDynamics [90.7s]
+OK   OAI.Geometry.PlaneColoring.CircleMaps [69.9s]
+FAIL OAI.Geometry.PlaneColoring.Metric [34.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Metric.lean:20:31: error(lean.unknownIdentifier): Unknown identifier `triangularLattice_zero`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Metric.lean:20:55: error(lean.unknownIdentifier): Unknown identifier `triangularLattice_one`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Metric.lean:18:61: error: unsolved goals
+a b : ℤ
+⊢ (triangularLattice a b).ofLp 0 ^ 2 + (triangularLattice a b).ofLp 1 ^ 2 =
+    ↑a * ↑b * (16 / 25) + ↑a ^ 2 * (16 / 25) + ↑b ^ 2 * (16 / 25)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Metric.lean:52:47: error(lean.unknownIdentifier): Unknown identifier `triangularLattice_zero`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Metric.lean:53:4: error(lean.unknownIdentifier): Unknown identifier `triangularLattice_one`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Metric.lean:50:57: error: unsolved goals
+x : Plane
+a b : ℤ
+⊢ -(x.ofLp 0 * (triangularLattice a b).ofLp 0 * 2) + x.ofLp 0 ^ 2 + (triangularLattice a b).ofLp 0 ^ 2 -
+          x.ofLp 1 * (triangularLattice a b).ofLp 1 * 2 +
+        x.ofLp 1 ^ 2 +
+      (triangularLattice a b).ofLp 1 ^ 2 =
+    x.ofLp 0 * ↑a * (-8 / 5) + x.ofLp 0 * ↑b * (-4 / 5) + x.ofLp 0 ^ 2 + x.ofLp 1 * ↑b * √3 * (-4 / 5) + x.ofLp 1 ^ 2 +
+            ↑a * ↑b * (16 / 25) +
+          ↑a ^ 2 * (16 / 25) +
+        ↑b ^ 2 * (4 / 25) +
+      ↑b ^ 2 * √3 ^ 2 * (4 / 25)
+
+OK   OAI.Geometry.PlaneColoring.WeakColoring [22.3s]
+FAIL OAI.MeasureTheory.CompactFactors.RelativeCenters [1.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/Basic.olean' of module OAI.Analysis.PlaneSpectrum.Basic does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.Multipliers [0.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Multipliers.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/Characters.olean' of module OAI.Analysis.PlaneSpectrum.Characters does not exist
+
+OK   OAI.Geometry.PlaneColoring.CircleTransport [32.5s]
+OK   OAI.Geometry.PlaneColoring.Compactness [34.2s]
+FAIL OAI.Geometry.PlaneColoring.Seven [4.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Seven.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/Lattice.olean' of module OAI.Geometry.PlaneColoring.Lattice does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.ConditionalSelection [0.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/PhaseCollision.olean' of module OAI.Analysis.PlaneSpectrum.PhaseCollision does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.CircleOperator [0.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/CircleDecay.olean' of module OAI.Analysis.PlaneSpectrum.CircleDecay does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.FourierTests [0.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/FourierTests.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/Multipliers.olean' of module OAI.Analysis.PlaneSpectrum.Multipliers does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.ConditionalSpectrum [0.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/FourierTests.olean' of module OAI.Analysis.PlaneSpectrum.FourierTests does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Transitions [0.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Transitions.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/CircleOperator.olean' of module OAI.Analysis.PlaneSpectrum.CircleOperator does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Palettes [0.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Palettes.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/Transitions.olean' of module OAI.Geometry.PlaneColoring.Transitions does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.Approximation [0.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Approximation.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.olean' of module OAI.Analysis.PlaneSpectrum.ConditionalSpectrum does not exist
+
+FAIL OAI.Geometry.PlaneColoring.PaletteDensity [7.8s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/Palettes.olean' of module OAI.Geometry.PlaneColoring.Palettes does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.ConditionalLimits [0.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/MeasureTheory/CompactFactors/Approximation.olean' of module OAI.MeasureTheory.CompactFactors.Approximation does not exist
+
+FAIL OAI.Geometry.PlaneColoring.PaletteTransport [0.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/PaletteTransport.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/PaletteDensity.olean' of module OAI.Geometry.PlaneColoring.PaletteDensity does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.Kernels [0.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Kernels.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/MeasureTheory/CompactFactors/ConditionalLimits.olean' of module OAI.MeasureTheory.CompactFactors.ConditionalLimits does not exist
+
+FAIL OAI.Geometry.PlaneColoring.BinaryPalettes [0.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/PaletteTransport.olean' of module OAI.Geometry.PlaneColoring.PaletteTransport does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Rigidity [0.8s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Rigidity.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/PaletteTransport.olean' of module OAI.Geometry.PlaneColoring.PaletteTransport does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.BoundedFunctions [0.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/MeasureTheory/CompactFactors/Kernels.olean' of module OAI.MeasureTheory.CompactFactors.Kernels does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.Functions [0.7s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Functions.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/MeasureTheory/CompactFactors/Kernels.olean' of module OAI.MeasureTheory.CompactFactors.Kernels does not exist
+
+FAIL OAI.Geometry.PlaneColoring.States [0.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/States.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/BinaryPalettes.olean' of module OAI.Geometry.PlaneColoring.BinaryPalettes does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.Factors [0.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/MeasureTheory/CompactFactors/Functions.olean' of module OAI.MeasureTheory.CompactFactors.Functions does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.RelativeProducts [0.7s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/MeasureTheory/CompactFactors/Amenability.olean' of module OAI.MeasureTheory.CompactFactors.Amenability does not exist
+
+FAIL OAI.Geometry.PlaneColoring.BoundaryTrace [0.8s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/Rigidity.olean' of module OAI.Geometry.PlaneColoring.Rigidity does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Converse [0.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Converse.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/States.olean' of module OAI.Geometry.PlaneColoring.States does not exist
+
+FAIL OAI.Geometry.PlaneColoring.FourContinuity [0.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/States.olean' of module OAI.Geometry.PlaneColoring.States does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.Separability [0.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/MeasureTheory/CompactFactors/RelativeProducts.olean' of module OAI.MeasureTheory.CompactFactors.RelativeProducts does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.Stationary [0.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/MeasureTheory/CompactFactors/Factors.olean' of module OAI.MeasureTheory.CompactFactors.Factors does not exist
+
+FAIL OAI.Geometry.PlaneColoring.AngularBoundary [1.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/BoundaryTrace.olean' of module OAI.Geometry.PlaneColoring.BoundaryTrace does not exist
+
+FAIL OAI.Geometry.PlaneColoring.FourTransport [1.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/FourTransport.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/FourContinuity.olean' of module OAI.Geometry.PlaneColoring.FourContinuity does not exist
+
+FAIL OAI.MeasureTheory.CompactFactors.AlgebraModels [0.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/MeasureTheory/CompactFactors/Separability.olean' of module OAI.MeasureTheory.CompactFactors.Separability does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.Representations [0.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/MeasureTheory/CompactFactors/AlgebraModels.olean' of module OAI.MeasureTheory.CompactFactors.AlgebraModels does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Exclusion [1.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Exclusion.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/AngularBoundary.olean' of module OAI.Geometry.PlaneColoring.AngularBoundary does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Interfaces [0.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/AngularBoundary.olean' of module OAI.Geometry.PlaneColoring.AngularBoundary does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Sectors [0.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Sectors.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/AngularBoundary.olean' of module OAI.Geometry.PlaneColoring.AngularBoundary does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.Energy [0.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/Representations.olean' of module OAI.Analysis.PlaneSpectrum.Representations does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.SpectralMeasure [0.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/Representations.olean' of module OAI.Analysis.PlaneSpectrum.Representations does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Accumulation [0.7s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Accumulation.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/Exclusion.olean' of module OAI.Geometry.PlaneColoring.Exclusion does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.RadialEnergy [2.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/Energy.olean' of module OAI.Analysis.PlaneSpectrum.Energy does not exist
+
+FAIL OAI.Geometry.PlaneColoring.DiskAverages [2.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/Accumulation.olean' of module OAI.Geometry.PlaneColoring.Accumulation does not exist
+
+FAIL OAI.Geometry.PlaneColoring.FiveSupport [3.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/Accumulation.olean' of module OAI.Geometry.PlaneColoring.Accumulation does not exist
+
+FAIL OAI.Analysis.PlaneSpectrum.Ergodicity [0.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/RadialEnergy.olean' of module OAI.Analysis.PlaneSpectrum.RadialEnergy does not exist
+
+FAIL OAI.Geometry.PlaneColoring.CyclicCore [0.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/CyclicCore.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/FiveSupport.olean' of module OAI.Geometry.PlaneColoring.FiveSupport does not exist
+
+FAIL OAI.Geometry.PlaneColoring.PlanarCovers [0.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/DiskAverages.olean' of module OAI.Geometry.PlaneColoring.DiskAverages does not exist
+
+FAIL OAI.Geometry.PlaneColoring.BorelTransfer [0.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Analysis/PlaneSpectrum/Ergodicity.olean' of module OAI.Analysis.PlaneSpectrum.Ergodicity does not exist
+
+FAIL OAI.Geometry.PlaneColoring.GraphRealization [0.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/CyclicCore.olean' of module OAI.Geometry.PlaneColoring.CyclicCore does not exist
+
+FAIL OAI.Geometry.PlaneColoring.ContinuumLimits [0.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/GraphRealization.olean' of module OAI.Geometry.PlaneColoring.GraphRealization does not exist
+
+FAIL OAI.Geometry.PlaneColoring.DiskExtension [0.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/GraphRealization.olean' of module OAI.Geometry.PlaneColoring.GraphRealization does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Transfer [0.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Transfer.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/Converse.olean' of module OAI.Geometry.PlaneColoring.Converse does not exist
+
+FAIL OAI.Geometry.PlaneColoring.GraphCuts [0.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/DiskExtension.olean' of module OAI.Geometry.PlaneColoring.DiskExtension does not exist
+
+FAIL OAI.Geometry.PlaneColoring.HoleApproximation [0.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/DiskExtension.olean' of module OAI.Geometry.PlaneColoring.DiskExtension does not exist
+
+FAIL OAI.Geometry.PlaneColoring.GraphPatches [0.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/GraphPatches.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/GraphCuts.olean' of module OAI.Geometry.PlaneColoring.GraphCuts does not exist
+
+FAIL OAI.Geometry.PlaneColoring.FullApproximation [0.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/FullApproximation.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/ContinuumLimits.olean' of module OAI.Geometry.PlaneColoring.ContinuumLimits does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Mesh [0.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Mesh.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/FullApproximation.olean' of module OAI.Geometry.PlaneColoring.FullApproximation does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Five [0.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Five.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/BorelTransfer.olean' of module OAI.Geometry.PlaneColoring.BorelTransfer does not exist
+
+FAIL OAI.Geometry.PlaneColoring.Chromatic [0.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Chromatic.lean:17:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/Five.olean' of module OAI.Geometry.PlaneColoring.Five does not exist
+
+FAIL OAI.Geometry.PlaneColoring.NullSetRobust [0.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/NullSetRobust.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/build/lib/OAI/Geometry/PlaneColoring/Converse.olean' of module OAI.Geometry.PlaneColoring.Converse does not exist
+
+
+12/80 modules OK in 341s (j=2); sum of module times 612s
+FAILED: OAI.Analysis.PlaneSpectrum.Basic, OAI.Analysis.PlaneSpectrum.Fourier, OAI.Analysis.PlaneSpectrum.InvariantMean, OAI.Analysis.PlaneSpectrum.NumberFields, OAI.Geometry.PlaneColoring.Covering, OAI.Geometry.PlaneColoring.Lattice, OAI.MeasureTheory.CompactFactors.Amenability, OAI.MeasureTheory.CompactFactors.Centers, OAI.Analysis.PlaneSpectrum.Characters, OAI.Analysis.PlaneSpectrum.CircleDecay, OAI.Analysis.PlaneSpectrum.PhaseCollision, OAI.Analysis.PlaneSpectrum.Selections, OAI.Geometry.PlaneColoring.Metric, OAI.MeasureTheory.CompactFactors.RelativeCenters, OAI.Analysis.PlaneSpectrum.Multipliers, OAI.Geometry.PlaneColoring.Seven, OAI.MeasureTheory.CompactFactors.ConditionalSelection, OAI.Analysis.PlaneSpectrum.CircleOperator, OAI.Analysis.PlaneSpectrum.FourierTests, OAI.Analysis.PlaneSpectrum.ConditionalSpectrum, OAI.Geometry.PlaneColoring.Transitions, OAI.Geometry.PlaneColoring.Palettes, OAI.MeasureTheory.CompactFactors.Approximation, OAI.Geometry.PlaneColoring.PaletteDensity, OAI.MeasureTheory.CompactFactors.ConditionalLimits, OAI.Geometry.PlaneColoring.PaletteTransport, OAI.MeasureTheory.CompactFactors.Kernels, OAI.Geometry.PlaneColoring.BinaryPalettes, OAI.Geometry.PlaneColoring.Rigidity, OAI.MeasureTheory.CompactFactors.BoundedFunctions, OAI.MeasureTheory.CompactFactors.Functions, OAI.Geometry.PlaneColoring.States, OAI.MeasureTheory.CompactFactors.Factors, OAI.MeasureTheory.CompactFactors.RelativeProducts, OAI.Geometry.PlaneColoring.BoundaryTrace, OAI.Geometry.PlaneColoring.Converse, OAI.Geometry.PlaneColoring.FourContinuity, OAI.MeasureTheory.CompactFactors.Separability, OAI.MeasureTheory.CompactFactors.Stationary, OAI.Geometry.PlaneColoring.AngularBoundary, OAI.Geometry.PlaneColoring.FourTransport, OAI.MeasureTheory.CompactFactors.AlgebraModels, OAI.Analysis.PlaneSpectrum.Representations, OAI.Geometry.PlaneColoring.Exclusion, OAI.Geometry.PlaneColoring.Interfaces, OAI.Geometry.PlaneColoring.Sectors, OAI.Analysis.PlaneSpectrum.Energy, OAI.Analysis.PlaneSpectrum.SpectralMeasure, OAI.Geometry.PlaneColoring.Accumulation, OAI.Analysis.PlaneSpectrum.RadialEnergy, OAI.Geometry.PlaneColoring.DiskAverages, OAI.Geometry.PlaneColoring.FiveSupport, OAI.Analysis.PlaneSpectrum.Ergodicity, OAI.Geometry.PlaneColoring.CyclicCore, OAI.Geometry.PlaneColoring.PlanarCovers, OAI.Geometry.PlaneColoring.BorelTransfer, OAI.Geometry.PlaneColoring.GraphRealization, OAI.Geometry.PlaneColoring.ContinuumLimits, OAI.Geometry.PlaneColoring.DiskExtension, OAI.Geometry.PlaneColoring.Transfer, OAI.Geometry.PlaneColoring.GraphCuts, OAI.Geometry.PlaneColoring.HoleApproximation, OAI.Geometry.PlaneColoring.GraphPatches, OAI.Geometry.PlaneColoring.FullApproximation, OAI.Geometry.PlaneColoring.Mesh, OAI.Geometry.PlaneColoring.Five, OAI.Geometry.PlaneColoring.Chromatic, OAI.Geometry.PlaneColoring.NullSetRobust

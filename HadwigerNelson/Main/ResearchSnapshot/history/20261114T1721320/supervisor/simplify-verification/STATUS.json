@@ -1,0 +1,163 @@
+{
+ "updated_utc": "2026-11-14T17:13:48Z",
+ "status": "completed_block",
+ "summary": [
+  "Block 22. (0) Accepted the topology correction and RETRACTED my earlier justification: traceValue into norm-L2 is not continuous in general in the weak trace topology, so the zero-on-K carrier must be closed via evaluations - isClosed_traceGraph (Compactness:284) plus trace_limit (:289) for the limit trace, then for i in K the vectors traceValue beta_n i = 0 give zero inner products for every test, and taking the single test v = traceValue beta i yields <traceValue beta i, traceValue beta i> = 0 hence traceValue beta i = 0 by inner_self_eq_zero. The closedness conclusion survives; the stated reason does not. (1) Audited A2-ext claim by claim (12 claims): Z_K is a plane-level closed set depending only on c and K (TRUE, and correctly not a claim of upper semicontinuity of angular supports); (S) is verbatim state_support_avoiding_trace (BoundaryTrace:24); (E) is TRUE and its proof-by-contradiction is what supplies the third UNIT displacement z-y needed by palette_neighbor_disjoint at base y; the converging-centre theorem is TRUE, and the two limit traces may come from different subsequences because each is an actual trace at its own centre with only finite intersections afterwards; the contract change is honestly stated (adds convergence and a positive J-state at the limit, removes all A_n and their L1 convergence, no equivalence claimed); the FourContinuity:441 instance maps binder-for-binder, with fourState_represents (States:333) for B_n and A and four_realState_positive (FourContinuity:419) for positivity; positivity routes through fourState_diagonal_positive (States:351) whose proof uses two_state_impossible (States:243, hypothesis card(univ minus J union K) <= 2) - the one place a transitive check was genuinely needed, and it passes; the finite-graph form is TRUE including the limitation for |L| = 2, since rotation orbits by pi/3 are 6-cycles and C6 is bipartite. (2) Declaration-level audit: States:683 has exactly three call sites (States:713, FourContinuity:395, FourContinuity:452), States:704 exactly two (Interfaces:277, FiveSupport:144); strict_state_uniform_on_compact has no consumers; FourCenter occurs 0 times in Interfaces.lean, so interfaceStateSupport_no_unit genuinely assumes none and the FourTransport route was never available there. (3) Gave the minimal constant list for a compiler dependency gate: three forbidden names, nine allowed inputs, five roots to re-print. No builds, no computation, no deletions."
+ ],
+ "verified_results": [
+  {
+   "claim": "RETRACTION: my 'traceValue is entrywise continuous' justification for the closed carrier is wrong; the correct route is evaluation continuity plus trace_limit and the test v = traceValue beta i",
+   "grade": "correction accepted; [S] Compactness.lean:284, :289 read",
+   "status": "retracted and replaced"
+  },
+  {
+   "claim": "Z_K is closed and depends only on c and K; (S) and (E) hold as stated, including the unit displacement needed at base y",
+   "grade": "[S+]/[P-v] claim-by-claim in A2-CLOSED-CARRIER-AUDIT.md s1",
+   "status": "verified as a paper argument"
+  },
+  {
+   "claim": "The converging-centre theorem is valid with different subsequences for the two limit traces",
+   "grade": "[P-v] checked: each trace is at its own centre, only finite intersections afterwards",
+   "status": "verified"
+  },
+  {
+   "claim": "The FourContinuity:441 instance adds no hypothesis: binders map one-for-one, with fourState_represents and four_realState_positive supplying the RealState and positivity data",
+   "grade": "[S+] States:333, States:351, FourContinuity:419 read",
+   "status": "verified"
+  },
+  {
+   "claim": "Positivity does not pass through any strict-state sequence theorem: fourState_diagonal_positive uses two_state_impossible (card(univ minus J union K) <= 2)",
+   "grade": "[S] States:243, :351 read",
+   "status": "the one needed transitive check passes"
+  },
+  {
+   "claim": "States:683 has three call sites and States:704 two; strict_state_uniform_on_compact is unused; FourCenter occurs 0 times in Interfaces.lean",
+   "grade": "[S] exact-name grep over lean/OAI",
+   "status": "verified"
+  },
+  {
+   "claim": "The finite-graph form and its |L| = 2 limitation are correct (pi/3 orbits are 6-cycles, C6 bipartite)",
+   "grade": "[P-v] checked",
+   "status": "verified"
+  },
+  {
+   "claim": "Minimal dependency-gate constant list: 3 forbidden names, 9 allowed inputs, 5 roots",
+   "grade": "[S] derived from the grep table",
+   "status": "provided"
+  }
+ ],
+ "conjectures": [
+  {
+   "statement": "If both application proofs are accepted, every currently used path to the strict-state sequence chain can be removed, leaving only the unused uniform theorem.",
+   "status": "source-level candidate, explicitly not a compiler dependency audit",
+   "grade": "[C]"
+  },
+  {
+   "statement": "The new module must sit between BoundaryTrace and FourContinuity/Interfaces to stay acyclic (BoundaryTrace imports States and Rigidity, not FourContinuity).",
+   "status": "source-order claim, not checked against the full import graph",
+   "grade": "[C]"
+  }
+ ],
+ "artifacts": [
+  "supervisor/simplify-verification/A2-CLOSED-CARRIER-AUDIT.md",
+  "supervisor/simplify-verification/A2-THREE-CENTRE-AUDIT.md",
+  "supervisor/simplify-verification/AUDIT-FIVE-CYCLE.md",
+  "supervisor/simplify-verification/CHAIN-POSITIVE-AVERAGE-AUDIT.md",
+  "supervisor/simplify-verification/FIVE-DICHOTOMY-AUDIT.md",
+  "supervisor/simplify-verification/FULLAPPROX-AGREES-AUDIT.md",
+  "supervisor/simplify-verification/INTERFACE-WALL.md",
+  "supervisor/simplify-verification/JOINT-PAIR-SUPPORT-AUDIT.md",
+  "supervisor/simplify-verification/LEMMA78-COMPARISON.md",
+  "supervisor/simplify-verification/LOCAL-CHECK-QUEUE.json",
+  "supervisor/simplify-verification/NOTES.md",
+  "supervisor/simplify-verification/STATUS.json",
+  "supervisor/simplify-verification/TOPOLOGY-CONE-MANIFEST.json",
+  "supervisor/simplify-verification/TRANSFER-LEDGER.md",
+  "supervisor/simplify-verification/VALID-CONSUMER-AUDIT.md",
+  "supervisor/simplify-verification/checks/five_cycle_licence.py",
+  "supervisor/simplify-verification/lean/CheckFifth.lean",
+  "supervisor/simplify-verification/lean/ConnectedSetExclusion.lean",
+  "supervisor/simplify-verification/lean/FiveCycleResidues.lean",
+  "supervisor/simplify-verification/lean/WitnessSelection.lean",
+  "supervisor/simplify-verification/move_audit.py",
+  "supervisor/simplify-verification/trim_audit.py"
+ ],
+ "tests_run": [
+  {
+   "cmd": "grep/sed: Compactness.lean:284-292; States.lean:243,333,351,704-713; FourContinuity.lean:361,395,419,441-452; FiveSupport.lean:144; Interfaces.lean:277; grep -c FourCenter in Interfaces.lean; exact-name grep for the four strict_state declarations",
+   "outcome": "every call site and signature quoted in the audit read at its line; the two consumer counts confirmed (3 and 2), the unused uniform theorem confirmed, and FourCenter absent from Interfaces."
+  },
+  {
+   "cmd": "date -u",
+   "outcome": "2026-11-14T17:13:48Z (real clock)."
+  },
+  {
+   "cmd": "Lean build / computation",
+   "outcome": "NONE. No remote compute slot used; no solver, no experiment, no build."
+  }
+ ],
+ "failed_routes": [
+  "Seeking a countermodel with fewer than four relaxed positions: none exists (single relaxation already gives 0 solutions, and all eight relax all four).",
+  "Reading the drop-one runs as evidence of individual necessity: that is the reverse implication and is not established by them.",
+  "Treating the cover-obstruction substitution as an integration: it cannot be, because no module of lean/ imports supervisor/.",
+  "Expecting the mesh/diameter bound to be the \u00a77 gap: the Lean splits it into a dichotomy inside Five.lean, so it is not a hypothesis left open.",
+  "`h '' P j = P (h j)`: false at j=0; the correct general target is P(-j). Kept in the file header as a recorded trap.",
+  "My first block-6 check script applied the identity map instead of h and reported all identities false - a script bug, not a mathematical finding; corrected and re-run inside the same one-process budget.",
+  "`refine \u27e8membership-proof, ?_\u27e9` for a `Finset.Nonempty` goal: Nonempty is `\u2203 a, a \u2208 s`, so the witness must come first; the local run caught this at hasNbr_image and it also poisoned neighbour_family_push with sorryAx.",
+  "Restoring the paper's monotone eps_n from the Lean per-scale form: monotonicity cannot be obtained by replacing eps_n with min over k<=n, because shrinking eps changes pi^eps and hence the entire disk family and the agreement map; it would need the construction to be redone at the new scale. Recorded as the single loss of the interchange.",
+  "My earlier claim that monotonicity of eps_n cannot be restored: wrong, and now retracted with two explicit constructions. The error was conflating 'modifying a witness' (blocked, since shrinking eps changes pi^eps) with 'selecting among witnesses' (free, and carries all indexed data).",
+  "WitnessSelection V1: failed locally at four points - uninferable positivity for the let-bound budget, equation-compiler unfolding of sel, a denominator mismatch k+1 vs k+1+1, and an undecomposed \u2200n,True conjunct. Only pickAt_lt was accepted; the three dependent theorems carried sorryAx. V2 replaces each failing construction rather than patching it.",
+  "V2 (staged, uncompiled) used Tendsto/atTop with no Filter namespace open and kept the `pickAt_lt ... _ _` positivity placeholder in sel_step_lt; V3 replaces both.",
+  "Selecting on epsilon instead of the budget: epsilon -> 0 leaves t and the radii sum free, since FullApprox gives only epsilon < t and sum rad < t.",
+  "Describing Route B's rule as if it were Route A's: with scale := t the next budget depends on the previous t, so epsilon's monotonicity is not obtained that way; the two routes must be kept separate, as s8 now does.",
+  "Route B (select on epsilon, assume per-index budget s/2): invalid because Classical.choose discards the exhibited witness's budget; retracted with two salvage paths recorded.",
+  "Reading `d.core = true` as the paper's core disk B_{n,x}: wrong in the tree - centerDisks (the fixed disks around cyclic centres) carry core := false.",
+  "V3 (open Filter alone) failed locally only on the unknown \ud835\udcdd notation; V4 adds Topology and passes - recorded so the V3 failure is not mistaken for a mathematical one.",
+  "My earlier statement that the Lean's core flag 'is not the paper's core disk' was too broad: it is correct for centerDisks but wrong for initialDisks' L-part, which is exactly the paper's core family.",
+  "Calling connected_escape_holes the tree's Lemma 7.8: they share only the word 'holes'. The comparison as posed was unanswerable; the useful question (is 7.8 needed at all?) is answered instead.",
+  "Reading the module name ContinuumLimits as evidence of a formalised Proposition 7.1: it holds a.e./support lemmas only.",
+  "My description of diskAnnulus as 'ball(c,r+1) minus closedBall(c,r)' - wrong at both endpoints; corrected to closedBall(c,1+r) minus ball(c,1-r) with area 4*pi*r.",
+  "Treating the absence of winding/reducedWord names as proof that the paper's \u00a77.4 is fully covered: absence of names is not an argument; the replacement is the dichotomy, and its equivalence to the paper's step is a [P] mapping I did not verify.",
+  "Searching for a SmallArcs -> FullApprox consumer: none exists, because SmallArcs belongs to the spectral/rigidity modules and is not imported by FullApproximation.",
+  "Reading the joint-pair supports as ordinary closures: refuted by f = 1_Q with d = 1, where the premise holds and the conclusion fails. Any future formalisation must use the positive support (as the Lean does).",
+  "Citing 'shiftedAEfacts': no such declaration exists in the tree or in the supervisor records I can read.",
+  "The closure counterexample (f = 1_Q, d = 1): invalid, since R minus Q is conull; retracted with the corrected supports.",
+  "Saying States:704 is 'reached through retained input' of the new route: it is not; the new route's inputs are independent of it, and the surviving consumer is Interfaces:277.",
+  "My s8.2 FourSupport route: invalid on both type-level (needs FourCenter) and dependency-level (reaches States:683) grounds.",
+  "The closure counterexample line of argument: withdrawn together with the strict-inclusion claim; the closure reading is open.",
+  "Justifying the closed carrier by continuity of traceValue into norm L2: wrong in the weak topology; replaced by the evaluation-based argument with the test v = traceValue beta i."
+ ],
+ "next_step": "If a compiler gate is wanted, it is exactly the finite list in s3: dump the proof-term dependencies of the five roots and check the three forbidden names are absent. Mathematically the next unchecked item is the source-order/import-graph verification for the proposed module (s7 of A2-ext), which needs the real import graph rather than a claim.",
+ "escalation": {
+  "obstacle": "(NC-1), restated precisely: at an accumulation point x of a specified five-cycle locus, with a = lim h_n/|h_n| and R the rotation acting on directions, the list S(R a) = {i : R a lies in the closed essential support of state i at x} has no common label, i.e. the intersection of the diagonals D_i over i in S(R a) is empty.",
+  "definitions": "D_i = {i, i+2} in Z/5Z; state i at x = the set of directions whose palette is exactly D_i; closed essential support S_i = the closed set whose every neighbourhood meets state i in positive measure; S(u) = {i : u in S_i}.",
+  "hypotheses_available": "(6.6) a.e. transition rule at x; closedness and finiteness of the five supports; no-common-label at a and -a from the endpoint pair (a_n^+, a_n^-) and 'y_n in H_k for every label'; (D) disjointness of adjacent position lists; (N) neighbour existence in both directions.",
+  "attempted": "direct transport of the printed zero-area endpoint argument (needs a partner direction whose sum lies near a centre with all five edges present; none exists at r=1); derivation from V0,V3,D,N (fails: 8 countermodels, all relaxing 1,2,4,5); single-position weakening (fails: one relaxation never gives a model).",
+  "expected_useful_output": "Either a proof of (NC-1) \u2014 then FIVE-CYCLE-CORE's five-step elimination of Lemma 6.7 stands as a real simplification \u2014 or a construction of an accumulation configuration realising S(1) = {2,4}, which would prove Lemma 6.7 is not removable by support-list combinatorics alone."
+ },
+ "recovery_note": "2026-11-14 post-outage reconciliation: no jobs running (the only background job, jmwfyybqo, exited 0 long before the outage and its result is recorded); every artifact re-read and hash-checked; nothing re-run or duplicated. Latest instruction (block 3) was already complete at 06:16Z.",
+ "handoff": "Correction accepted: the closed carrier needs evaluations, not continuity of traceValue (retracted my earlier reason; the conclusion stands via isClosed_traceGraph/trace_limit and the test v = traceValue beta i). A2-ext audited claim by claim (12 claims): Z_K closed at plane level, (S) verbatim, (E) valid with the third unit displacement supplied by proof-by-contradiction, converging-centre theorem valid with different subsequences, four-continuity instantiation binder-for-binder with no added hypothesis, positivity via fourState_diagonal_positive and the older two_state_impossible - the one transitive check that mattered and it passes; finite-graph form and its |L| = 2 limitation correct (6-cycles are bipartite). Declaration-level: States:683 has 3 call sites, States:704 has 2, the uniform theorem is unused, and FourCenter occurs 0 times in Interfaces.lean. Provided the minimal 3-forbidden/9-allowed/5-root constant list for a compiler gate. No builds, no deletions, no global claims.",
+ "artifact_hashes": {
+  "AUDIT-FIVE-CYCLE.md": "9fe1ca44daca711f0fb705ea38ea01e490c36adcc08e14d441bfe318e720484c",
+  "FULLAPPROX-AGREES-AUDIT.md": "2de570609f994c3ba0979830b3e68e5545ab2ac6e91a97efc834f07586562c16",
+  "INTERFACE-WALL.md": "d87c5d510b58798fce8445688f8ff958250fa09c4d8ba0e2fca77256afd2945f",
+  "LOCAL-CHECK-QUEUE.json": "cf566c8a96e2fd2ae50d24baa1d3999f8c1bab8d6481dea411172f6d6730bd1e",
+  "NOTES.md": "cd53abfa9912fbd28f113a4ebf20f95b9f39606fc1532ad5001c756d25dc8f39",
+  "TOPOLOGY-CONE-MANIFEST.json": "0be1f96e92e26a8fdc05875703a87bad9c63ac930ca445c2229eaf22aaa7462c",
+  "TRANSFER-LEDGER.md": "7f8b32948490030b523c228bdb4abedfbd925ebe0191b2c9b5f8451dceb6da04",
+  "checks/five_cycle_licence.py": "1fa619d857ec753381f30b27034abc5c6f4073022298572079dffbd22e460360",
+  "lean/ConnectedSetExclusion.lean": "84b6111a0bcf4f1a3f6db5806ed1c3dcbf298d317bf2398448b2a69a8679b144",
+  "lean/FiveCycleResidues.lean": "70452746c5ea999de6156cdee1e16639e6c563670e066288d45355ca9a17ead5",
+  "lean/CheckFifth.lean": "4cebfd5f28cf196e7247247e6fc40719b88c61b3c2f7184b3ff135cf6e7c14f9",
+  "trim_audit.py": "b462805f264b010a12f89ead087bc85c16c038295f6fb314419561aa77a70103",
+  "move_audit.py": "f5afca70b6ae72a19ea334c61b5bdfc49b890b344cb2650068b66cb0ad542b11",
+  "lean/WitnessSelection.lean": "3ff5d5c86fd49e4252e2fbbbcd8fc05e6c909c165cb98d62f47da399f608a569",
+  "VALID-CONSUMER-AUDIT.md": "7f79630d74ff18567786556698cf08f111b01274e36b59f1191eff8637165c8b",
+  "LEMMA78-COMPARISON.md": "f301f806aeda6e06a655a547e5523b34ca8fb3a327664f081ec106a717e5c9dd",
+  "FIVE-DICHOTOMY-AUDIT.md": "264ad03e75b9f10df61800e4ed13c61e092b4a90e5e96eefe46ccb3a759e30e3",
+  "CHAIN-POSITIVE-AVERAGE-AUDIT.md": "65f82a2d84a960f6d6f844d2b21413660e28732e3a0f9b8c6afc8ac64c6885b4",
+  "JOINT-PAIR-SUPPORT-AUDIT.md": "4e9f4fdb521246027a524f742cfe8246ae3653418d8d64e88248fdee3337380c",
+  "A2-THREE-CENTRE-AUDIT.md": "e61b3c14167b9b3c87cfe04795ea95e9475c5a177217e94e5637c8e1b4075380",
+  "A2-CLOSED-CARRIER-AUDIT.md": "ee3dbc824acce534c5a4835e0f397312b2e990d246abbe933efdd4c826380cfa"
+ }
+}

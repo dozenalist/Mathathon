@@ -1,0 +1,173 @@
+{
+ "updated_utc": "2026-11-14T16:18:30Z",
+ "status": "completed_block",
+ "summary": "Adversarial source audit of the six-colour chain; no compute. ARROW 1 (ternary -> |P|<=2) is machine-checked as palette_triple_null -> palette_cardinality (BinaryPalettes.lean:252,260), but both are Fin 5 and the proof needs the complement of the 3-set to be a PAIR (Finset.card_eq_two :256) plus ae_not_binary_circle :258. At k=6 the complement is a triple, so the proof cannot transfer even though the arrow's SHAPE is k-insensitive. Five consumers named. ARROW 2: Prop 7.1 is stated for l in {3,4,5}; consumer fullApprox_exists {c : C -> Fin 5} (FullApproximation.lean:330). The alpha threshold is located exactly: Lemma 7.4 (COMPRESSED-PROOF:986) has denominator >= 1 - 5*alpha > 0, so the condition is alpha < 1/k, i.e. arithmetic not geometry; at k=6 it is 1/6 and every downstream constant needs re-derivation. ARROW 3: the finite objects are Fin 5 / Fin 4->Bool, decide-verified (Exclusion.lean:17-24, Interfaces.lean:19-37); no 6-cycle counterpart exists. ARROW 4 is genuinely k-generic, so conditional on arrow 1 it is free. CONCLUSION: two arrows are blocked by their proofs, not their statements; ternary exclusion at k=6 does NOT give chi>=7. Three missing lemmas named with consuming declarations; one falsifying instance narrowed to the centre-dependent class. Packet banked, not run.",
+ "verified_results": [
+  {
+   "statement": "Arrow 1 is a machine-checked implication palette_triple_null (BinaryPalettes.lean:252) -> palette_cardinality (:260), both Fin 5, the latter concluding 1 <= |P| and |P| <= 2; its five consumers are Exclusion.lean:130, Interfaces.lean:78, States.lean:319, Accumulation.lean:161 and :361.",
+   "grade": "computational (machine-checked in the tree); consumer list from grep, not from any summary"
+  },
+  {
+   "statement": "The proof of palette_triple_null cannot transfer to k=6: it computes (univ \\ S).card = 2 (:255), applies Finset.card_eq_two (:256) and invokes ae_not_binary_circle (:258), a TWO-label statement. At k=6 the complement of a 3-set has 3 elements, so both decisive steps fail. The arrow's shape (exclude |P|>=3 -> |P|<=2) is nonetheless k-insensitive.",
+   "grade": "paper-reviewed + computational (source reading of the proof body)"
+  },
+  {
+   "statement": "Alpha threshold located exactly: Lemma 7.4 (COMPRESSED-PROOF:986) requires 0 < alpha < 1/5 because its normalisation has denominator >= 1 - 5*alpha > 0, and targets the complete graph on five vertices. Hence the condition is alpha < 1/k, i.e. alpha < 1/6 at k=6, and all downstream constants (mesh <= 2, rho, eps_n) must be re-derived for the smaller alpha.",
+   "grade": "paper-reviewed (the compression states it); the 1/k reading is my own arithmetic"
+  },
+  {
+   "statement": "Proposition 7.1 is stated for l in {3,4,5} only, and the tree's consumer fullApprox_exists is hard-wired to Fin 5 (FullApproximation.lean:330, finite-core variant :268). There is no l=6 argument anywhere in the sources.",
+   "grade": "paper-reviewed + computational"
+  },
+  {
+   "statement": "Arrow 3's finite objects are k=5-specific and decide-verified: Exclusion.lean:17-24 (five_admissible_diag, five_diag_disjoint/nonempty/unique, five_adj_four, five_no_common_adj) on Fin 5, and Interfaces.lean:19-37 (interface_four_*) on Fin 4 -> Bool. A 6-cycle interface has no counterpart, and the paper's length-4 and length-5 exclusion arguments use devices (a two-diagonal parity rule; a one-positive-one-negative sign run) that do not extend to length 6.",
+   "grade": "computational + paper-reviewed"
+  },
+  {
+   "statement": "Arrow 4 is genuinely k-generic: Lemma 7.5 (COMPRESSED-PROOF:997) needs only multiplicity <= 2 and mesh <= 2, and PlanarCover.compact_open_cover_impossible (PlanarCovers.lean:374) is proved for a general constant R. Conditional on arrow 1 supplying |P| <= 2, this arrow costs nothing extra.",
+   "grade": "computational (from a prior audit of the topology section; not re-verified this block)"
+  },
+  {
+   "statement": "Conclusion: two of the four arrows are blocked by their PROOFS rather than their statements; ternary exclusion at k=6 would give |P| <= 2 but does NOT give chi >= 7, since L2, L3 and the alpha < 1/6 constants pass are still required, together with the independent local-finiteness hypothesis (W) of section 7.",
+   "grade": "proposed (my synthesis; each ingredient graded above)"
+  },
+  {
+   "statement": "L1 (highest value): palette_triple_null at Fin 6, consuming a Fin 6 palette_cardinality. Its statement already transfers; only the proof is missing.",
+   "grade": "proposed lemma, unconsumed, unproved"
+  },
+  {
+   "statement": "L2: the l=6 case of Proposition 7.1 at alpha < 1/6, consuming a Fin 6 fullApprox_exists. L3: the l=6 common-interface cycle exclusion, consuming the k=6 analogue of the five_* / interface_four_* layer.",
+   "grade": "proposed lemmas, unproved"
+  },
+  {
+   "statement": "Proposed falsifying instance for L1: a measurable weak 6-colouring with a 3-set inside a palette on a positive-measure direction set. It must be CENTRE-DEPENDENT, because on a centre-independent field the record's unit-triangle bound gives 3|P| <= 6, i.e. |P| <= 2, which is why the 36-sector ternary word was withdrawn. Not constructed.",
+   "grade": "proposed, unconstructed; the centre-dependence narrowing is paper-reviewed"
+  },
+  {
+   "statement": "Exact SAT-relaxation constraints read from the record with their labels: (5.2) colouring axiom, (5.3) two-centre transport, (5.7) sixty-degree exclusion P_x(f) cap P_x(Rf) = empty, Lemma 6.2 / (6.2) cycle edge exclusions, Lemma 5.5 binary-centre separation, (8.4) region inequality; the record's own verdict is that (T), (SA), (5.2), (5.7) are satisfiable at every cycle length and that no palette axiom proves (W) at k=6 without proving the problem.",
+   "grade": "paper-reviewed (the record's findings, which I did not re-derive)"
+  },
+  {
+   "statement": "The source-only witness-combination packet is banked unchanged (combine/combine_witnesses.py, fixtures.json, README.md); no benchmark was run and the closed seed was not rerun.",
+   "grade": "status statement; the packet was syntax-checked only, one block earlier"
+  }
+ ],
+ "conjectures": [
+  "L1 is plausibly the only genuinely hard arrow: arrows 2-4 look like a finite re-computation plus a constants pass once a k=6 ternary exclusion exists, whereas L1's existing proof is structurally tied to a two-element complement. If the whole chain is to be extended, L1 is where the effort should go.",
+  "Since any falsifier of L1 must be centre-dependent, and the record already shows centre-independent fields admit no ternary palette, the search for a ternary-palette 6-colouring is confined to the same centre-dependent class where (W) is undecided. That coincidence suggests the two questions may be equivalent rather than independent."
+ ],
+ "artifacts": [
+  "supervisor/solve-independent/audit-amplifier/SIX-COLOUR-CHAIN-AUDIT.md",
+  "supervisor/solve-independent/audit-amplifier/WITNESS-COMBINATION.md",
+  "supervisor/solve-independent/combine/combine_witnesses.py",
+  "supervisor/solve-independent/combine/fixtures.json",
+  "supervisor/solve-independent/combine/README.md",
+  "supervisor/solve-independent/audit-amplifier/GLUING-AUDIT.md",
+  "supervisor/solve-independent/audit-amplifier/SPARE-COLOUR.md",
+  "supervisor/solve-independent/audit-amplifier/COMPOSITION.md",
+  "supervisor/solve-independent/audit-amplifier/AUDIT.md",
+  "supervisor/solve-independent/STATUS.json"
+ ],
+ "tests_run": [
+  {
+   "command": "(no computation; no solver, no Lean, per instruction)",
+   "outcome": "source reading and grep only: declaration text, proof bodies, consumer lists"
+  },
+  {
+   "command": "grep for palette_triple_null / palette_cardinality and their consumers",
+   "outcome": "proof body located at BinaryPalettes.lean:252-260; five consumers listed"
+  },
+  {
+   "command": "grep for fullApprox_exists and the five_* / interface_four_* layers",
+   "outcome": "FullApproximation.lean:268,330; Exclusion.lean:17-24; Interfaces.lean:19-37"
+  },
+  {
+   "command": "sed of COMPRESSED-PROOF.md Lemma 7.4 / 7.5 / Proposition 7.1",
+   "outcome": "alpha < 1/5 with denominator >= 1 - 5*alpha; multiplicity <= 2 and mesh <= 2; Prop 7.1 for l in {3,4,5}"
+  },
+  {
+   "command": "date -u at block start and end",
+   "outcome": "2026-11-14T16:15:53Z and 2026-11-14T16:18:11Z; updated_utc taken from the clock"
+  }
+ ],
+ "failed_routes": [
+  "My first sublattice enumeration used the lower-triangular HNF <(a,0),(b,c)>, which is NOT a complete list: it misses 6 of the 8 index-7 sublattices, including the paper's <(1,3),(0,7)>, and wrongly gave minimum index 8 at a = 2/5. Fixed to upper HNF <(a,b),(0,c)>; the control then gave 7 as it must.",
+  "The heuristic bound index >= ceil((1+D)^2/(3a^2)) = 17 at a = 1/5 was wrong (ring 16 escapes it); replaced by the multiplicative-norm argument giving 16, which the enumeration confirms.",
+  "A density argument (clusters of <= 4 separated by 1.3856) does not give a contradiction at six colours: 2.65 > 1.60. Recorded as a gap, not pursued further in this block.",
+  "A hand estimate that ring-16 cells could carry the N=16 forced offsets was wrong (ring 16 is unforced because dmin >= 1); it does not affect this block, where the window proof bounds N < 16.33 independently.",
+  "Carried forward and still relevant: the earlier lower-triangular HNF enumeration was incomplete (missed 6 of 8 index-7 sublattices); this block uses the upper HNF only, and the index-19 counts here are on that corrected enumeration.",
+  "p19_shrink.py: greedy UNSAT-core minimisation (73+ solver calls) exceeded the cap and produced no output; superseded, no core certificate.",
+  "k = 7 (i.e. chi = 8) DRUP certificate: generation exceeded 60 s; abandoned. The chi = 8 claim therefore rests on two CDCL decisions plus a verified 8-colouring, not on a proof.",
+  "rup.c first version had two real defects: clauses added with watches already false at level 0, and unit clauses enqueued but not propagated. The second produced a spurious RUP FAILURE; diagnosed with a naive independent propagation. Both fixed; the shipped checker is the fixed one.",
+  "patch19_proof.py: abandoned driver (pysat returns DIMACS strings, so its empty-clause assertion fired). Superseded by p19_gen.py.",
+  "Earlier in this block's lineage: the 'every 6-subset contains an edge' line in QUOTIENT16.md \u2014 retracted as a chromatic argument; K_16 is the valid one.",
+  "No SAT search, no core minimisation and no 7-UNSAT work in this block, per instruction; the earlier failures are retained and documented in FAILED-RUNS.md (RUP FAILURE at step 26154 caused by unpropagated units in my checker; shrink timeout; k=7 generation timeout; incomplete lower-HNF enumeration).",
+  "An earlier attempt to parse the exact per-ring values back from JSON strings failed (a hand-rolled parser); replaced by carrying the Q3 objects directly. No numerical claim changed.",
+  "Nothing failed in this block's single experiment. Recorded for continuity: pysat's cadical153 with_proof must NOT be used for DRAT here (its writer mangles the proof, per supervisor/solve-graphs/certs/shard_b_summary.md); the cadical binary was used instead, and my own rup.c was not used at all.",
+  "The earlier blanket requirement (boundary ownership must be constructed before any 6-upper-bound consequence, stated in CELL-NOGO-v2.md section 1 and RECOVERY.md) is RETRACTED as wrong; it treated as necessary a step that the null-set transfer lemma shows does not exist.",
+  "A single global translation avoiding B does not exist (it would require B empty), so the compactness step cannot be replaced by a global translate; any future argument that tries to pick one t for the whole plane is invalid.",
+  "RETRACTED (supervisor-caught): the claim that (H) is necessary. (H) is sufficient only; the exact criterion is embeddability of every finite unit-distance graph.",
+  "RETRACTED (supervisor-caught): the claim that a half-plane is killed by the diameter objection. A half-plane satisfies (H); the objection applies only to bounded regions and fixed-width strips.",
+  "CORRECTED (supervisor-caught): an arbitrary colouring of all cell interiors is not thereby cell-constant; the Cayley-graph equivalence needs that hypothesis stated.",
+  "CORRECTED (supervisor-caught): compactness is used in this proof but was wrongly graded indispensable to all proofs.",
+  "RETRACTED (supervisor-caught): the iff 'chi(R^2) <= chi(C\\Z) <=> every finite unit-distance graph embeds in Gamma(C\\Z)'. Necessity is false; chromatic suprema do not recover embeddings. Replaced by the k-colourability criterion.",
+  "CORRECTED: the conclusion of the transfer lemma does not extend the supplied colouring pointwise; only existence is asserted.",
+  "CORRECTED (supervisor-caught): the diameter argument for fixed-width strips is invalid, because a chain can be laid flat along the strip. Replaced by a perpendicular-extent criterion with a rigid triangular patch as the obstruction.",
+  "REMOVED: the stale 'body elided at ...' label on the source packet, after mechanically verifying the body has no elision.",
+  "WITHDRAWN: the claim that a triangulated triangular-lattice disk has only congruent unit-distance realisations (used to argue a strip obstruction). Unsupported and unnecessary.",
+  "RETRACTED: the whole 'can a realisation of the graph fit in the strip' framing. H is about translating a fixed point set, so the strip fails on the two-point set {0,(w+1)i}.",
+  "My own hand estimate that the k=2,n=3 chain contains an accidental cross-copy unit edge p_i--r_{i-1} was WRONG - the exact computation showed the six edges are exactly the six within-copy edges. Recorded because it is precisely the trap the file's section 5 warns about; I corrected the claim before writing it up.",
+  "No solver or Lean build this block, per instruction; the (H4) upper bound for the new instance is argued from (H4) plus an exact edge-count equality rather than by finding a colouring algorithmically.",
+  "Not attempted by design: no SAT run, no arithmetic check of W_6 (it is hand-verified only, and flagged as such), and no recomputation of the census numbers max_cn = 2 / triangles = 1093.",
+  "Rejected as too weak: stating the certificate's content as 'no forcing at k >= 5' without the k = 4 vacuity caveat, and treating absence of a pattern in the 34 witnesses as impossibility.",
+  "WITHDRAWN: 'an anti-rainbow triple cannot be explained at arity 2 at all / is a genuine three-way phenomenon'. Every constraint is binary; the correct statement is joint unsatisfiability with satisfiable pair projections.",
+  "WITHDRAWN: the inference from max common neighbours = 2 to a mechanism classification. Relies only on the verified (Sep) now.",
+  "CORRECTED: form (C) as stated admitted contradictory relation sets; replaced by the extension property for locally consistent partial assignments.",
+  "NOT DONE: no attempt to realise (M), and no attempt to show (M) impossible; both would be new work and neither is claimed.",
+  "WITHDRAWN: the k=6 instance of the arity-3 route on G_553. By Lemma S plus (Sep_5), G_553 admits no NR-6 triple at all - not 'none found'.",
+  "WITHDRAWN: 'a 5-level non-rainbow triple buys nothing'. The lower bound chi >= 6 is proved analytically over 62 pages; an explicit finite certificate would shorten it, which is worth more than the phrase 'already proved' conveyed.",
+  "CORRECTED: 'the terminal minimum is 4 colours'. It is 3, since a witness may share alpha with u,v unless an explicit edge forbids it.",
+  "NOT DONE: no search for an NR-5 triple, no gadget construction, no amplifier re-derivation beyond citing the audited Theorem A.",
+  "The worker's (C1) is void twice over: the (0,10) translate gives an EMPTY overlap (D2), and its 'tips' are adjacent so they are forced different, not equal (D3). Both independently fatal; recorded rather than repaired in place since the target is read-only for me.",
+  "No certified elimination of any of the 1145 pairs could be produced from existing data; I record that as a negative result with its reason rather than proposing a test that would not be sound.",
+  "The permutation refutation test of section 7(c) is sound but weak: with 184 cross inequalities the surviving permutation group is typically trivial. Stated as a limitation, not offered as a solution.",
+  "WITHDRAWN (three of mine): the degree-3 gluing counterexample (W1); the spindle-minus-closing-edge realisation and its 'no accidental unit pair' claim (W2); the claim that pair-separation gives surjective pair projections or near-rigidity (W3).",
+  "The union forcing question is closed and I did not reopen it: 34 witnesses with 1048 distinct signatures leave no pair pinned, so the 1145 survivors are obsolete.",
+  "The witness-combination method fails whenever the sampled families cannot be matched; that failure is recorded as a property of the sample, never as non-colourability of the union.",
+  "WITHDRAWN: the equlity-based normalisation statement; replaced by invariance of J under simultaneous relabelling.",
+  "WITHDRAWN: the 60-second runtime claim for thousands of witnesses; the family product is not reduced by either acceleration.",
+  "REMOVED: the pending-queue language for the generic null transfer, which has passed locally with standard axioms.",
+  "Not attempted: running the packet. Syntax-checked only, per the instruction that no worker except graph may use compute.",
+  "I did not find any k=6 version of palette_triple_null, Prop 7.1 with l=6, or a 6-cycle interface object in the tree; absence is reported as absence, not as a gap I filled.",
+  "The proposed falsifying instance for L1 is NOT constructed. I record only the narrowing (it must be centre-dependent) and the reason (the unit-triangle bound kills the centre-independent case).",
+  "No claim is made that any subset of L1-L3 proves chi >= 7: arrow 2 also needs the independent local-finiteness hypothesis (W), which no palette argument supplies."
+ ],
+ "next_step": "L1 is the single highest-value target and the cheapest to state: a Fin 6 palette_triple_null. Two concrete routes worth trying, neither started: (i) rule out a ternary palette by a k=6 unit-triangle or transport argument instead of the complement-pair route; (ii) show that a ternary palette forces a centre-dependent structure that the record's (T)+(5.7) collapse already forbids. Work on L2/L3 is premature until L1 has a proof. The alpha < 1/6 constants pass can be started independently of all three and is pure arithmetic bookkeeping.",
+ "escalation": "Exact obstacle, one line: arrow 1's proof needs the complement of the excluded 3-set to be a 2-element set, so at k=6 it needs a genuinely new argument, and until that exists the other three arrows cannot even be stated at k=6. Definitions: palette P_x(e) as in the paper's Definition 5.1; (W) the local finiteness of the cyclic locus L; alpha the normalisation threshold of Lemma 7.4. Attempted here: source-level verification of each arrow and location of every Fin 5 hard-wiring. Expected useful output: a k=6 ternary exclusion, or a proof that a ternary palette forces centre-dependence incompatible with (5.7).",
+ "recovery": {
+  "utc": "2026-11-14T06:46:58Z",
+  "jobs_running_at_recovery": 0,
+  "integrity": "re-ran forced_a1_5.py, verify_cell_nogo_v2.py, square_family.py, audit_rect.py: all rc 0; forced_a1_5.out and verify_cell_nogo_v2.out regenerate byte-identically, so no partial or duplicated write exists",
+  "work_lost": "none",
+  "note": "block was already completed and saved at updated_utc; no new research performed during recovery",
+  "artifacts_kept": [
+   "CELL-A-FIFTH.md",
+   "CELL-NOGO-v2.md",
+   "LEDGER.md",
+   "CELL-NOGO.md",
+   "RECOVERY.md"
+  ]
+ },
+ "artifacts_hashes": {
+  "audit-amplifier/SIX-COLOUR-CHAIN-AUDIT.md": "369ab717d23dec75",
+  "audit-amplifier/WITNESS-COMBINATION.md": "82c3dece84bbc138",
+  "combine/combine_witnesses.py": "aa6d3d5561bbfbfe",
+  "combine/fixtures.json": "f6d4a2d22ddcb38a",
+  "combine/README.md": "a5ab2c6519187c01",
+  "audit-amplifier/GLUING-AUDIT.md": "4cfaa597ddea6599",
+  "audit-amplifier/SPARE-COLOUR.md": "3c9b65be8525af919b3b232c5078e7d43db66d09d603333c1fb5df72b52198d0",
+  "audit-amplifier/AUDIT.md": "e53234f41f2b389be0e45b19db8769a9dcdadc88a89ac94383ec720264c596f3",
+  "lean/OAI/Geometry/PlaneColoring/BinaryPalettes.lean": "read-only source cited, not hashed here",
+  "results/COMPRESSED-PROOF.md": "read-only source cited, not hashed here"
+ }
+}

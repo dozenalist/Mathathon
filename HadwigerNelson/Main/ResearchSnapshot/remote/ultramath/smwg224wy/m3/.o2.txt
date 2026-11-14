@@ -1,0 +1,14 @@
+drop 2 decl(s); freed 438 decls / 4863 lines
+   660   90  OAI.MeasureTheory.CompactFactors.Centers
+   584   22  OAI.MeasureTheory.CompactFactors.Kernels
+   504   49  OAI.MeasureTheory.CompactFactors.Factors
+   445   18  OAI.Analysis.PlaneSpectrum.PhaseCollision
+   435   23  OAI.Analysis.PlaneSpectrum.ConditionalSpectrum
+   399   32  OAI.MeasureTheory.CompactFactors.RelativeCenters
+   396   10  OAI.MeasureTheory.CompactFactors.ConditionalLimits
+   373   10  OAI.MeasureTheory.CompactFactors.Approximation
+   350   11  OAI.MeasureTheory.CompactFactors.ConditionalSelection
+   290   17  OAI.Analysis.PlaneSpectrum.SmallArcs
+   233   24  OAI.Analysis.PlaneSpectrum.PhaseEncoding
+   194   19  OAI.Analysis.PlaneSpectrum.Basic
+modules emptied: ['OAI.Analysis.PlaneSpectrum.PhaseCollision', 'OAI.Analysis.PlaneSpectrum.PhaseEncoding', 'OAI.Analysis.PlaneSpectrum.SmallArcs', 'OAI.MeasureTheory.CompactFactors.Centers']

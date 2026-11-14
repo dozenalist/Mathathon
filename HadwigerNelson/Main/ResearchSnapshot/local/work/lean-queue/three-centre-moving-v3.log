@@ -1,0 +1,17 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: 202c841bdb0ebe0c451eaf7c1bc74d586ed42bc1e493faa6aea7ca2e890195aa
+Status: passed
+Exit code: 0
+
+STDOUT
+'OAI.EuclideanFiveColor.triangle_no_unit_of_avoiding_traces' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.fixed_state_no_unit_three_centres' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.strict_state_sequence_no_unit_three_centres' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.EuclideanFiveColor.four_support_sequence_no_unit_three_centres' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+STDERR
+

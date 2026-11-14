@@ -1,0 +1,52 @@
+{
+  "updated_utc": "2026-11-14T18:08:32Z",
+  "status": "completed_block",
+  "summary": "Ultramath swarm STARTED and running: ultramath_start returned swarm smwgpu16s, members m1 and m2, model deepseek/deepseek-v4.1-flash, effort max, member_steps 60, minutes 60, dir .ultramath/smwgpu16s; status confirms both members running, m2 on direction d1 (the three quantitative hinges of MC120), m1 still registering. Then refereed both claims independently. MC120 accepted and strengthened: the common-positive set I is the open arc of width 180 - a; the empty residual forces W empty, and for residual size 1 it suffices to pick two directions in I separated by gamma(r) = 2 arcsin(1/(2r)) < 60 degrees for some r > 1 with r - 1 below the strip widths there, giving two points in W at distance exactly 1, which contradicts a.e. monochromaticity of W against weak properness on a positive angular arc. Two corrections: the uniform-width step is neither in the source nor needed (widths are pointwise), and 120 degrees is sufficient rather than sharp - since gamma(r) < 60 strictly, the endpoint a = 120 is covered too and the true criterion is quantitative. Equilateral collapse: the transmitted arithmetic fails for 2-element blocks (their union is at most 4) and holds for 3-element vertex blocks {i-1,i,i+1}, where union >= 5 iff the indices differ by 2 or 3 mod 6; under that hypothesis MC120 gives pairwise separation >= 120 and three arcs summing to 360 force exactly equilateral.",
+  "swarm": {
+    "id": "smwgpu16s",
+    "members": [
+      "m1",
+      "m2"
+    ],
+    "model": "deepseek/deepseek-v4.1-flash",
+    "reasoning_effort": "max",
+    "member_steps": 60,
+    "minutes": 60,
+    "dir": ".ultramath/smwgpu16s",
+    "state": "running",
+    "m1_assignment": "uniform strip / open-set / a.e. argument plus every endpoint and empty-residual case",
+    "m2_assignment": "a strictly stronger six-colour-specific geometric obstruction for the equilateral paired case",
+    "verdicts_issued": 0
+  },
+  "verified_results": [
+    "GRADE [P] Theorem MC120-prime: let c be measurable and weak, x a centre, K_i a finite family with ApproachingContinuum x (K i) v i whose directions lie in a closed cone of aperture a <= 120 degrees, H_i the excluded label sets, J = [k] minus the union of the H_i. If |J| <= 1 and W = intersection_i Straddle (K i) is nonempty, then False. Proof: I = {t : all inner products with v i positive} is the open arc of width 180 - a >= 60 degrees; pick beta' in I and r > 1 with r - 1 < delta(beta'); since gamma(r) = 2 arcsin(1/(2r)) < 60 degrees strictly, choose beta in I at angular separation gamma(r); the two points x + r e(beta) and x + r e(beta') are exactly unit apart by the chord formula and both lie in W (each in its own one-sided strip); a.e. points of W have colour j by the support exclusions, while weak properness gives different colours for a.e. point of the unit circle about a.e. point of W, and the circle meets W in a positive angular arc. Contradiction.",
+    "GRADE [P] Empty and singleton residual cases: if J is empty then no point of the nonempty open W can have a colour, so W = empty; the theorem must therefore carry W nonempty (or conclude W = empty). If |J| = 1 the argument above applies verbatim.",
+    "GRADE [P] Correction 1: the source supplies the outer-strip width delta pointwise (finite_positive_lower_bound is applied at a fixed direction inside ae_of_locally_ae) with no continuity in the direction, so a uniform positive width over a compact subarc is not established; the proof needs only positivity at the two chosen directions, and choosing r close to 1 makes the requirement r - 1 < delta satisfiable for both.",
+    "GRADE [P] Correction 2: the aperture 120 degrees is a sufficient bound, not the threshold. Since gamma(r) < 60 degrees strictly for every r > 1, the endpoint a = 120 is covered as well, and more generally a contradiction follows whenever some admissible radius r satisfies gamma(r) < 180 - a. So the sharp statement is quantitative rather than an aperture inequality.",
+    "GRADE [P] Correction 3 (equilateral collapse): two adjacent 2-element label blocks {i,i+1}, {j,j+1} have union size 4 - |intersection| <= 4, so they cannot cover 5 labels; the transmitted arithmetic is false for edge blocks and correct for 3-element VERTEX blocks B_i = {i-1, i, i+1}, where |B_s union B_t| >= 5 iff the vertex indices differ by 2 or 3 mod 6.",
+    "GRADE [P] Theorem EC-prime (equilateral collapse, corrected): for a measurable weak 6-colouring, three continua at a common centre whose excluded sets are vertex blocks with pairwise union of size at least 5 have pairwise direction separation at least 120 degrees, and hence their three directions are exactly 120 degrees apart. Proof: MC120-prime applied to each pair, then three consecutive arcs summing to 360 degrees with each at least 120 forces each to equal 120.",
+    "GRADE [C] Bank facts used without re-derivation: CC60 (closed 60-degree cone cannot leave at most 2 colours; paper accepted, Lean ongoing) and the sharpness of the generic finite-k angle-60 statement (accepted Borel 20-colour counterexamples for wider apertures, which do not settle k = 6). R4 and the fixed/moving three-centre replacements pass local Lean; full integration pending; no global chromatic bound and no 6-colouring."
+  ],
+  "conjectures": [
+    "The equilateral configuration of three vertex-block continua is rigid but not excluded by CC60 plus MC120; a six-colour-specific obstruction would have to use the actual angular positions of the three blocks relative to the cycle labels, since equilateral leaves no slack in the direction parameter.",
+    "The sharp MC120 criterion is a comparison between the chord length at an admissible radius and the width of the common-positive arc, so any improvement must come from lower-bounding the strip widths delta, which in turn depends on how the K_i approach x (the size of the r_n and the deviation of w_n from v i).",
+    "If the endpoint and quantitative refinements hold up under review, the CC60 plus MC120 pair covers every configuration whose direction spread is at most 120 degrees with at most 1 residual label, and the remaining six-colour cases are exactly the three-block equilateral ones and the 2-residual families."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/MC120-REFEREE.md",
+    "supervisor/solve-geometry/CONE-AUDIT.md",
+    "supervisor/solve-geometry/SIGNED-DOMAIN-AUDIT.md",
+    "supervisor/solve-geometry/ARTIFACT-HASHES.txt",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "ultramath_start called with members=2, member_steps=60, minutes=60, model=deepseek/deepseek-v4.1-flash, reasoning_effort=max; it returned swarm smwgpu16s with members m1 and m2 and dir .ultramath/smwgpu16s. ultramath_status confirms state running, m2 on d1 and m1 running. No other computation: all referee work is hand proof and source review, as required (no heavy compute, no Lean, no background processes)."
+  ],
+  "failed_routes": [
+    "Not pursued by instruction: widening the generic 60-degree cone result, refuted for wider apertures by accepted Borel 20-colour counterexamples.",
+    "Corrected rather than repeated: the transmitted MC120 proof's uniformity step and its 120-degree threshold claim; the transmitted equilateral-collapse arithmetic for 2-element blocks.",
+    "Not claimed: any global chromatic bound, any 6-colouring, any exclusion of the equilateral configuration, or that six discrete direction cases exhaust actual angles."
+  ],
+  "next_step": "Await the two swarm members' reports (m1 on the strip and endpoint cases, m2 on the equilateral six-colour obstruction), then issue verdicts with ultramath_verdict after independently checking each: for m1 the pointwise-versus-uniform width issue and the empty-residual case; for m2 whether the proposed obstruction consumes only source-licensed hypotheses and has a real consumer.",
+  "escalation": null
+}

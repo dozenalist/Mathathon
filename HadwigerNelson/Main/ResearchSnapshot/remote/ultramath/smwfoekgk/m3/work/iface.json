@@ -1,0 +1,145 @@
+{
+ "OAI.Analysis.PlaneSpectrum.InvariantMean": {
+  "mean": [
+   "OAI.Analysis.PlaneSpectrum.Energy",
+   "OAI.Analysis.PlaneSpectrum.FourierTests",
+   "OAI.MeasureTheory.CompactFactors.Separability",
+   "OAI.MeasureTheory.CompactFactors.Stationary"
+  ],
+  "single_apply": [
+   "OAI.Analysis.PlaneSpectrum.Energy"
+  ],
+  "cube": [
+   "OAI.Analysis.PlaneSpectrum.Energy"
+  ],
+  "cube_norm_le": [
+   "OAI.Analysis.PlaneSpectrum.Energy"
+  ],
+  "cube_add": [
+   "OAI.Analysis.PlaneSpectrum.Energy"
+  ],
+  "cube_sub": [
+   "OAI.Analysis.PlaneSpectrum.Energy"
+  ],
+  "cube_smul": [
+   "OAI.Analysis.PlaneSpectrum.Energy"
+  ],
+  "cube_const": [
+   "OAI.Analysis.PlaneSpectrum.Energy"
+  ],
+  "cube_nonneg": [
+   "OAI.Analysis.PlaneSpectrum.Energy"
+  ],
+  "cube_coboundary_norm": [
+   "OAI.Analysis.PlaneSpectrum.Energy"
+  ],
+  "averagingUF": [
+   "OAI.Analysis.PlaneSpectrum.Energy"
+  ],
+  "eventually_mem": [
+   "OAI.Analysis.PlaneSpectrum.Energy"
+  ],
+  "tendsto_boundary": [
+   "OAI.Analysis.PlaneSpectrum.Energy"
+  ]
+ },
+ "OAI.MeasureTheory.CompactFactors.ConditionalSelection": {
+  "ae_fiber_of_ae": [
+   "OAI.MeasureTheory.CompactFactors.Functions",
+   "OAI.MeasureTheory.CompactFactors.Kernels"
+  ],
+  "ae_in_own_fiber": [
+   "OAI.MeasureTheory.CompactFactors.Functions",
+   "OAI.MeasureTheory.CompactFactors.Kernels"
+  ]
+ },
+ "OAI.MeasureTheory.CompactFactors.Factors": {
+  "[Countable": [
+   "OAI.Analysis.PlaneSpectrum.Ergodicity"
+  ]
+ },
+ "OAI.MeasureTheory.CompactFactors.RelativeCenters": {},
+ "OAI.MeasureTheory.CompactFactors.Approximation": {
+  "invariant": [
+   "OAI.Analysis.PlaneSpectrum.Energy",
+   "OAI.Analysis.PlaneSpectrum.Ergodicity",
+   "OAI.MeasureTheory.CompactFactors.Factors",
+   "OAI.MeasureTheory.CompactFactors.Functions",
+   "OAI.MeasureTheory.CompactFactors.Kernels",
+   "OAI.MeasureTheory.CompactFactors.Separability"
+  ],
+  "relative_difference_invariant": [
+   "OAI.Analysis.PlaneSpectrum.Ergodicity",
+   "OAI.MeasureTheory.CompactFactors.ConditionalLimits"
+  ]
+ },
+ "OAI.MeasureTheory.CompactFactors.Centers": {
+  "coordinate": [
+   "OAI.Geometry.PlaneColoring.Five",
+   "OAI.MeasureTheory.CompactFactors.Factors"
+  ],
+  "kernel": [
+   "OAI.MeasureTheory.CompactFactors.Factors",
+   "OAI.MeasureTheory.CompactFactors.Functions",
+   "OAI.MeasureTheory.CompactFactors.Kernels"
+  ]
+ },
+ "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum": {
+  "eval": [
+   "OAI.Analysis.PlaneSpectrum.Energy",
+   "OAI.Analysis.PlaneSpectrum.Ergodicity",
+   "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
+   "OAI.MeasureTheory.CompactFactors.Approximation",
+   "OAI.MeasureTheory.CompactFactors.ConditionalLimits"
+  ],
+  "measurable_eval_coe": [
+   "OAI.Analysis.PlaneSpectrum.Energy",
+   "OAI.MeasureTheory.CompactFactors.Approximation",
+   "OAI.MeasureTheory.CompactFactors.ConditionalLimits"
+  ],
+  "eval_add": [
+   "OAI.Analysis.PlaneSpectrum.Energy",
+   "OAI.MeasureTheory.CompactFactors.ConditionalLimits"
+  ],
+  "eval_neg": [
+   "OAI.Analysis.PlaneSpectrum.Energy"
+  ],
+  "lineFourier_eq": [
+   "OAI.Analysis.PlaneSpectrum.RadialEnergy"
+  ]
+ },
+ "OAI.Analysis.PlaneSpectrum.FourierTests": {
+  "exists_small_wild_parameter": [
+   "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+   "OAI.Analysis.PlaneSpectrum.RadialEnergy"
+  ]
+ },
+ "OAI.MeasureTheory.CompactFactors.ConditionalLimits": {},
+ "OAI.Analysis.PlaneSpectrum.PhaseEncoding": {},
+ "OAI.Analysis.PlaneSpectrum.SmallArcs": {},
+ "OAI.MeasureTheory.CompactFactors.Functions": {},
+ "OAI.Analysis.PlaneSpectrum.PhaseCollision": {},
+ "OAI.Analysis.PlaneSpectrum.Characters": {},
+ "OAI.MeasureTheory.CompactFactors.Stationary": {
+  "inner": [
+   "OAI.Analysis.PlaneSpectrum.Energy",
+   "OAI.Analysis.PlaneSpectrum.SpectralMeasure"
+  ],
+  "exists_terminal_factor": [
+   "OAI.Analysis.PlaneSpectrum.Ergodicity"
+  ],
+  "integral": [
+   "OAI.Analysis.PlaneSpectrum.RadialEnergy"
+  ]
+ },
+ "OAI.Analysis.PlaneSpectrum.Multipliers": {
+  "lineFourier": [
+   "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+   "OAI.Analysis.PlaneSpectrum.FourierTests",
+   "OAI.Analysis.PlaneSpectrum.RadialEnergy"
+  ],
+  "weight": [
+   "OAI.Analysis.PlaneSpectrum.Ergodicity"
+  ]
+ }
+}

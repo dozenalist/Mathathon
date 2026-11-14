@@ -1,0 +1,20 @@
+'OAI.EuclideanFiveColor.k6_graph_map_large_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.k6_card_le_two_of_isClique_of_acyclic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.EuclideanFiveColor.graphRealization_positive_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.graph_map_large_positive_generic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.K6.thresholdTotal_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.K6.thresholdMap_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.K6.threshold_support_card_le_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+@graph_map_large_positive_generic : ∀ {V : Type u_1} [Fintype V] (F : C(↑(Metric.closedBall 0 5), GraphSpace ⊤)),
+  ∃ i K,
+    IsPreconnected K ∧
+      K ⊆ Metric.closedBall 0 5 ∧
+        (∀ (z : ↑(Metric.closedBall 0 5)), ↑z ∈ K → 0 < ↑(F z) i) ∧ ∃ x ∈ K, ∃ y ∈ K, 2 < dist x y
+@K6.threshold_support_card_le_two : ∀ {c : ℂ → Fin 6} {ε α : ℝ} {G : SimpleGraph (Fin 6)},
+  G.IsAcyclic →
+    ∀ (q : ℂ),
+      (∀ (i : Fin 6), α < diskAverage c ε i q → ∀ (j : Fin 6), α < diskAverage c ε j q → i ≠ j → G.Adj i j) →
+        {i | α < diskAverage c ε i q}.card ≤ 2
+TIME 2.45 s

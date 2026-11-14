@@ -1,0 +1,18 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: d8be2596893b593d2785d7ab918b076d2e5ee1a9b3fe815119517c954def7d92
+Status: passed
+Exit code: 0
+
+STDOUT
+'FiveCycleResidues.five_residues_reduce_to_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.refl_image_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.refl_swaps_the_two_allowed_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.residue_zero_collides' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.residue_two_collides' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.residue_three_collides' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.refl_involutive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.refl_fixes_anchor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.refl_fixes_pair24' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+STDERR
+

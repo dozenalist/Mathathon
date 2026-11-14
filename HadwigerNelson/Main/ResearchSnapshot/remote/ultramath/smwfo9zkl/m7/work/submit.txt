@@ -1,0 +1,13 @@
+d7, four-cycle stratum of Thm 6.5 at k=6. Result: §6.3 is a k<=5 argument; both thresholds proved and certified, plus a new k-general lemma and explicit models.
+
+(1) Thm 1 (§2). §6.3.1's state reduction needs no palette to carry two distinct state groups, i.e. k <= 5. At k=6, 2 of 33 palettes are ambiguous: {0,2,X}, {1,3,X}.
+
+(2) Thm 2 (new; k-general Lemma 6.4). Disjoint palette groups G1,G2 at the angles t+2j*kappa and t+pi+gamma+2j*kappa force k-|G1uG2| >= 3: the three sums form a unit equilateral triangle and three typical points need three labels. So a 2-valued palette map has |A|+|B| <= k-3; at k=6 a six-cycle centre admits none and a four-cycle centre has 13 of 110 disjoint pairs escaping, all "outsider singleton + set of size <= 2".
+
+(3) Thm 3 (§4). §6.3.2 needs ONE label outside the two state groups; Lemma 5.2(2) gives only their complement, of size k-4 = 2 at k=6. A label-count deficit: it survives palettes of size 2, so no palette hypothesis repairs §6.3.
+
+(4) Thms 4/4' (§5). The constraint level is satisfiable at k=6, including (5.3) at distance 1 on the seven vertices of the Moser spindle.
+
+(5) Thm 5 (§6). An explicit proper measurable 6-colouring of a strip whose four-cycle locus is a lattice of cell corners: the stratum is non-empty.
+
+Files: RESULT.md, AUDIT.md, verify.py + verify_indep.py (two independent implementations, 82 checks pass), README.md. Not claimed: local finiteness of L at k=6 or its negation; no new bound on chi(R^2).

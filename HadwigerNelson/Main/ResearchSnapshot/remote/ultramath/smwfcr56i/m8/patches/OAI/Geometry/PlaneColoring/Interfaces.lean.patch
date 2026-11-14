@@ -1,0 +1,35 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/Interfaces.lean	2026-11-13 19:09:13.641485188 +0000
++++ OAI/Geometry/PlaneColoring/Interfaces.lean	2026-11-13 19:43:47.381530324 +0000
+@@ -306,10 +306,12 @@
+   by_cases h0 : 0<⟪direction t,v 0⟫ <;> by_cases h1 : 0<⟪direction t,v 1⟫
+   · simp only [interfaceFourDiagonal,fourInterfaceSign,h0,h1] at hd
+     norm_num at hd
++    exact absurd hd (by decide)
+   · exact mul_neg_of_pos_of_neg h0 (lt_of_le_of_ne (le_of_not_gt h1) (hn 1))
+   · exact mul_neg_of_neg_of_pos (lt_of_le_of_ne (le_of_not_gt h0) (hn 0)) h1
+   · simp only [interfaceFourDiagonal,fourInterfaceSign,h0,h1] at hd
+     norm_num at hd
++    exact absurd hd (by decide)
+ lemma four_diagonal_product_pos {v : Fin 4 → ℂ} {t : Angles}
+     (hn : ∀i,⟪direction t,v i⟫≠0) (hd : interfaceFourDiagonal (fourInterfaceSign v t)=2) :
+     0<⟪direction t,v 0⟫*⟪direction t,v 1⟫ := by
+@@ -317,8 +319,10 @@
+   · exact mul_pos h0 h1
+   · simp only [interfaceFourDiagonal,fourInterfaceSign,h0,h1,decide_true,decide_false] at hd
+     norm_num at hd
++    exact absurd hd (by decide)
+   · simp only [interfaceFourDiagonal,fourInterfaceSign,h0,h1,decide_true,decide_false] at hd
+     norm_num at hd
++    exact absurd hd (by decide)
+   · exact mul_pos_of_neg_of_neg (lt_of_le_of_ne (le_of_not_gt h0) (hn 0))
+       (lt_of_le_of_ne (le_of_not_gt h1) (hn 1))
+ lemma four_diagonal_orbit_half {v : Fin 4 → ℂ} {t : Angles} {j : Fin 6}
+@@ -483,7 +487,7 @@
+   have hpar (t : Angles) (ht : t∈G) := four_word_parity (w t) (hw t ht) (hnomix t ht)
+   let p : Angles → Fin 2 := fun t => if ht : t∈G then (hpar t ht).choose else 0
+   have hp (t : Angles) (ht : t∈G) : ∀j,w t j=0 → j.val%2=(p t).val := by
+-    simpa only [p,dite_eq_left ht] using (hpar t ht).choose_spec
++    simpa only [p,dif_pos ht] using (hpar t ht).choose_spec
+   have hclose (t : Angles) (ht : t∈G) (u : Angles) (hu : u∈G) (htu : dist t u<ε) : p t=p u := by
+     by_contra hne
+     have hcases : (p t=0 ∧ p u=1) ∨ (p t=1 ∧ p u=0) :=

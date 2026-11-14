@@ -1,0 +1,7 @@
+Final tree: `sprint/simplify/r1/m7/lean`, 82 modules / 30221 lines (-1056 vs baseline; -990 code lines), certified from scratch.
+- pinned 4.34.1: hbuild --fresh 82/82 OK; certify.py byte-identical to BASELINE.cert, axioms [propext, Classical.choice, Quot.sound].
+- stock 4.33.1 via m4's d7.sh: 103 APPLIED / 6 OBSOLETE hunks, 82/82 OK, CheckBoth re-certifies all five statements, 30359 lines. First non-staged shape through that harness.
+- no sorry/native_decide/opaque/implemented_by/axiom; the 99 deleted declarations all lie outside DECLGRAPH.log's closure (DELETED.txt).
+Saturation: only 125 declarations / 470 lines now lie outside the headline closure and each is named by live code, so declaration-level deletion is exhausted (m2's 1477 is m10's `free` upper bound, cf. m6's f29).
+R1 does not close. Blocking statement = TerminalObligation (m6/Residual.lean): one factor with (E) ergodic relative square + (H2) not on the diagonal. REPORT.md §3: no maximality principle supplies it, incl. the counterexample `Y' x {1,2} x Z` with the action trivial on {1,2} — the max factor with L2 ⊆ A is proper yet its relative square has four components, so (E) needs FZ structure theory, not maximality.
+REPORT.md §4 gives the corrected proof of (N), fixing the gap m8's d3 died on: the orbit of eval z is infinite with ALL pairwise distances c = ‖eval z - 1‖ > 0, hence uniformly discrete, not precompact.

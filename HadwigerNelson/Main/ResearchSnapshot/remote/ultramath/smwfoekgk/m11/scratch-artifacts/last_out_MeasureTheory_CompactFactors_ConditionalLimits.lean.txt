@@ -1,0 +1,67 @@
+t_9 : MulAction (↥K) W
+inst_10 : MeasurableConstSMul (↥K) X
+inst_11 : MeasurableConstSMul (↥K) Y
+inst_12 : MeasurableConstSMul (↥K) W
+μ : Measure X
+inst_13 : IsProbabilityMeasure μ
+inst_14 : ErgodicSMul (↥K) X μ
+d : X → D
+p : X → Y
+hd : Measurable d
+hp : Measurable p
+hde : ∀ (a : Circle) (b : a ∈ K), ∀ᵐ (x : X) ∂μ, d (⟨a, b⟩ • x) = ⟨a, b⟩ • d x
+hpe : ∀ (a : Circle) (b : a ∈ K), ∀ᵐ (x : X) ∂μ, p (⟨a, b⟩ • x) = ⟨a, b⟩ • p x
+hwild : IsWild (Measure.map d μ)
+ha :
+  ∀ (m : ℕ) (H : Y → Fin m → ℂ),
+    Measurable H →
+      ∀ (x : ℝ),
+        (∀ (y : Y), ‖H y‖ ≤ x) →
+          ∀ (ε : ℝ),
+            0 < ε →
+              ∃ q,
+                Measurable q ∧
+                  (∀ (a : Circle) (b : a ∈ K), ∀ᵐ (x : X) ∂μ, q (⟨a, b⟩ • x) = ⟨a, b⟩ • q x) ∧
+                    (∀ (b : X → D),
+                        Measurable b →
+                          (∀ (a : Circle) (b_1 : a ∈ K), ∀ᵐ (x : X) ∂μ, b (⟨a, b_1⟩ • x) = ⟨a, b_1⟩ • b x) →
+                            IsWild (Measure.map b μ) →
+                              (DifferenceFourier.differenceLaw (Measure.map q μ) (condDistrib b q μ)) ↑C = 0) ∧
+                      ∃ H₀,
+                        Measurable H₀ ∧
+                          (∃ A, ∀ (w : W), ‖H₀ w‖ ≤ A) ∧
+                            Integrable (fun x => dist (H (p x)) (H₀ (q x)) ^ 2) μ ∧
+                              ∫ (x : X), dist (H (p x)) (H₀ (q x)) ^ 2 ∂μ < ε ^ 2
+⊢ (DifferenceFourier.differenceLaw (Measure.map p μ) (condDistrib d p μ)) ↑C = 0
+work/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:681:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:680:73: error: unsolved goals
+X : Type u_1
+Y : Type u_2
+W : Type u_3
+inst : MeasurableSpace X
+inst_1 : MeasurableSpace Y
+inst_2 : MeasurableSpace W
+inst_3 : MulAction (↥K) X
+inst_4 : MulAction (↥K) Y
+inst_5 : MulAction (↥K) W
+inst_6 : MeasurableConstSMul (↥K) X
+inst_7 : MeasurableConstSMul (↥K) Y
+inst_8 : MeasurableConstSMul (↥K) W
+inst_9 : StandardBorelSpace X
+inst_10 : Nonempty X
+inst_11 : StandardBorelSpace W
+inst_12 : Nonempty W
+μ : Measure X
+inst_13 : IsProbabilityMeasure μ
+inst_14 : ErgodicSMul (↥K) X μ
+p : X → Y
+q : X → W
+r : W → Y
+hp : Measurable p
+hq : Measurable q
+hr : Measurable r
+hpe : ∀ (a : Circle) (b : a ∈ K), ∀ᵐ (x : X) ∂μ, p (⟨a, b⟩ • x) = ⟨a, b⟩ • p x
+hqe : ∀ (a : Circle) (b : a ∈ K), ∀ᵐ (x : X) ∂μ, q (⟨a, b⟩ • x) = ⟨a, b⟩ • q x
+he : p =ᵐ[μ] r ∘ q
+hg : UniversalGood μ q
+⊢ UniversalGood μ p

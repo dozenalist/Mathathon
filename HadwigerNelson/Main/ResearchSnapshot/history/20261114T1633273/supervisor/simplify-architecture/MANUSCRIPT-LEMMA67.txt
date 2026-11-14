@@ -1,0 +1,79 @@
+MANUSCRIPT LEMMA 6.7 — verbatim extraction
+===========================================
+
+Source file : attachments/here-are-three-files-ni5n/paper.pdf
+sha256      : 607c2601b5ae655c7c116272840e260f71f637aacf611453186e0a1c65111d36
+Bytes       : 450880
+Extractor   : pdftotext -layout (poppler), line numbers are 1-based over the extraction
+PDF metadata: Title "The Euclidean plane is not five-colorable"
+              Subject "The Hadwiger–Nelson problem, arbitrary colorings, spectral rigidity,
+              and measurable geometric obstructions"
+              Author "OpenAI"; CreationDate 2026-09-23 00:00:00 UTC (Producer pdfTeX-1.40.29)
+Pages       : 62
+Location    : page 41 of 62, extraction lines 2139-2157 (section 6.3.3, immediately before
+              section 6.3.4 "Five-cycles: the accumulation contradiction" at line 2159)
+
+------------------------------------------------------------------------------------------
+VERBATIM (page 41)
+------------------------------------------------------------------------------------------
+Lemma 6.7 (A support contact bans an angular step). If i, i + 1 ∈ S( a) at any direction a, then the
+transitions i → i + 1 and i + 1 → i under R are absent almost everywhere on the entire angular circle at x.
+
+Proof. Set z = x + a. There is a trace in Wz avoiding Di . In fact, in each neighborhood of a the state-
+i set has positive measure. By (5.2), the two-angle sum map, and Fubini, almost every direction
+in this set has a typical actual unit-circle sampling at the center x plus that direction, avoiding Di
+almost everywhere. Choose such directions tending to a and pass to a weak-* limit. The same
+construction gives, separately, a trace at z avoiding Di+1 . Consequently, almost everywhere,
+
+                                    Pz ( f ) ̸⊂ Di ,        Pz ( f ) ̸⊂ Di+1 .
+
+On the other hand, (5.3) applied to z + f = x + f + a gives Pz ( f ) ∩ Px ( f ) = ∅ almost everywhere.
+Its first endpoint map is f 7→ f , a local angular diffeomorphism; its second endpoint is constant,
+which is permitted. The excluded parallel directions f = ± a form a null set.
+     Let X be the label outside Di ∪ Di+1 . Whenever wx ( f ) = i, disjointness from Px ( f ) = Di leaves
+only Di+1 ∪ { X } available to Pz ( f ), and the avoiding trace for Di+1 forces X ∈ Pz ( f ). The same
+reasoning applies when wx ( f ) = i + 1. A step in either order between these states would therefore
+put X into both Pz ( f ) and Pz ( R f ), contrary to (5.7). The statements used hold on a common conull
+set, also after pulling back by R, proving the global step ban.
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+VERBATIM: the only place Lemma 6.7 is applied, page 42, lines 2196-2200
+------------------------------------------------------------------------------------------
+     If j = 1, the adjacent pairs at a and − a are {0, 1} and {1, 2}, so Lemma 6.7 bans both possible
+steps from state 1. If j = 4, the pairs are {0, 1} and {4, 0}, banning both steps from state 0. In either
+case (6.6) makes the shared state null, contradicting its membership in S(0) . Only the step bans at
+the two fixed directions a, − a have been used, so no union of exceptional null sets over arbitrary
+directions is involved. This rules out accumulation in the five-cycle locus.
+------------------------------------------------------------------------------------------
+
+IDENTIFICATION AGAINST THE LEAN TREE
+-----------------------------------
+Manuscript Lemma 6.7 == `five_support_step_ban`
+  lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:89
+
+  lemma five_support_step_ban (hw : WeakColoring 5 c) {x : ℂ} (hx : FiveCenter c x) {a : ℝ} {i j : Fin 5}
+      (hi : a ∈ fiveSupport c hc x i) (hj : a ∈ fiveSupport c hc x j) (hij : fiveAdj i j) :
+      ∀ᵐ t ∂angularMeasure, ¬(fiveState c hc x t = i ∧ fiveState c hc x (t + (sixty : Angles)) = j) ∧
+        ¬(fiveState c hc x t = j ∧ fiveState c hc x (t + (sixty : Angles)) = i)
+
+  Correspondence, clause by clause:
+    "i, i + 1 ∈ S(a) at any direction a"                 <-> hi, hj, hij : fiveAdj i j
+                                                             (fiveAdj i j := i+1 = j ∨ j+1 = i, Exclusion.lean:9)
+    "the transitions i -> i+1 and i+1 -> i under R"      <-> the two conjuncts (both orientations are named)
+    "absent almost everywhere on the entire angular
+     circle at x"                                        <-> ∀ᵐ t ∂angularMeasure
+  Only difference: the manuscript writes the pair as (i, i+1), the Lean as any fiveAdj pair; since
+  fiveAdj is symmetric by definition, these agree.
+
+Manuscript Lemma 6.7 is NOT `strict_state_no_unit_support`
+  lean/OAI/Geometry/PlaneColoring/States.lean:704
+  That lemma states: for two label sets J, K with a distinguished label X outside J ∪ K, two points
+  b, d in the support of the SAME RealState set B cannot be at unit distance
+  (‖direction b - direction d‖ ≠ 1). It is a *two-support no-unit-distance* statement, with no
+  angular step and no "i, i+1 ∈ S(a)" hypothesis. Its use in the tree is inside
+  `five_support_no_sixty` (FiveSupport.lean:138), which is the lemma that the Astra candidate below
+  would re-derive without it.
+
+Naming rule (supervisor instruction): this candidate must NOT be called a "Lemma 6.7 deletion".
+Lemma 6.7 = five_support_step_ban is RETAINED and is *used* by the candidate.

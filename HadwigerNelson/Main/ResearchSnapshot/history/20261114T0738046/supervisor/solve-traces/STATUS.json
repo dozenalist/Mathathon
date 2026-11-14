@@ -1,0 +1,102 @@
+{
+ "updated_utc": "2026-11-14T06:04Z",
+ "supervisor": "solve-traces",
+ "role": "Solve - trace and measure constraints",
+ "status": "block complete (P1). One proven lemma + one no-go corollary + its sharpness threshold + exact verification of the recorded k>=7 mechanism. Owned swarm smwfyhztv stopped at handoff; its three artifacts were read and its main sharpness result independently checked here.",
+ "summary": "Read the palette object off the Lean source: P_x(e) is a RADIUS-ONE cluster trace (sampleFn samples c(y + r*direction t); IsTrace is the closure at (y,r) -> (x,1)), not a small-scale self-correlation; the recorded m10 endpoint trace and the paper's Lemma 5.2(2)/5.3 agree with this reading. Proved Lemma D (far-field decoupling): if two measurable colourings agree off the open ball B(x0, 1-eps), eps in (0,1], then their palettes at x0 agree in a.e. direction - no exceptional set is spent and nothing depends on k. Verified exactly (Fractions) that m3's k>=7 gadget satisfies max_{z in W} |z - q_n| <= 0.008004 < 1/2, so Lemma D DERIVES the recorded palette {1,4,5,6} at q_n rather than reading it off the gadget. Corollary D2 (no-go): the palette at x cannot constrain the near-field germ at x (Gamma_x, cyclicity), so no argument infers x in L or any cycle in Gamma_x from P_x; palette data at a cyclic centre constrains only its unit annulus. The k=6 obstruction is therefore exactly the chromatic wall.",
+ "verified_results": [
+  {
+   "grade": "S (source-checked)",
+   "claim": "The palette is a radius-one cluster trace: i in P_x(e) iff there are y_n -> x, r_n -> 1 and a positive-angular-measure set T of directions near e with c(y_n + r_n u) = i for large n, u in T.",
+   "evidence": "lean/OAI/Geometry/PlaneColoring/Compactness.lean:97 (sampleFn), 111 (sample), 255-262 (sampleCode, sampleSet, IsTrace := (x,1,b) in closure sampleSet), 262-272 (trace_realization / trace_of_realization); Palettes.lean:9-45 (tracePositive, paletteGenerators countable essential union, paletteSet, palette). Corroboration at paper level: .ultramath/smwfwi7rh/m10/proof.md (C1) Definition 5.1 and (C3) Lemma 5.2(2), where the spatial density of A_i is zero at x+e+v - i.e. the palette is tied to the point x+e at distance exactly 1."
+  },
+  {
+   "grade": "P (proof written this block)",
+   "claim": "Lemma D (far-field decoupling). c, c' : C -> Fin k measurable, x0 in C, 0 < eps <= 1, c = c' off B(x0, 1-eps) => P^c_{x0}(e) = P^{c'}_{x0}(e) for a.e. direction e.",
+   "evidence": "supervisor/solve-traces/NOTE-far-field.md section 2. Proof: a trace at x0 is realised by (y_n,r_n) -> (x0,1); for large n every sample point y_n + r_n u lies outside B(x0,1-eps), where the two colourings agree, so sampleCode c' (y_n) (r_n) = sampleCode c (y_n) (r_n) and the same b is a trace of c'. The exceptional set is empty. Agreement off B(x0,R) for any R < 1 suffices; R = 1 does not. Properness and k are not used."
+  },
+  {
+   "grade": "A (exact arithmetic)",
+   "claim": "m3's k>=7 gadget satisfies the hypothesis of Lemma D with eps = 1/2, so the palettes at the accumulating cyclic centres q_n are background palettes.",
+   "evidence": "supervisor/solve-traces/checks/decouple_arith.py + .out: p0=(1/55,18/55), ell=1/100, W=p0+[-ell/2,ell/2]^2, q_n=p0+(ell 2^(-n-3),0); max_{z in W}|z-q_n| = 2001/250000 = 0.008004 at n=0 (decreasing to 0.007078 at n=7), so W is in B(q_n,1/2). All trace points satisfy |y+ru-p0| in (0.498750, 1.501250) at n=0, which contains m3's certified annulus A = {1-71/10000 <= |q-p0| <= 1+71/10000}; on A the background meets no hexagon of colour 0, 2 or 3."
+  },
+  {
+   "grade": "P (corollary)",
+   "claim": "Corollary D2 (no-go for a style of argument): the palette at x is unchanged by an arbitrary recolouring supported in B(x, 1-eps), so no property of the near-field germ at x - in particular x in L, x notin L, or the presence of a cycle in Gamma_x - follows from P_x.",
+   "evidence": "NOTE-far-field.md section 4b. Consequence: palette information about a cyclic centre constrains only its unit annulus, so any k = 6 argument using palettes must apply them at centres at distance about 1 from the cyclic centres."
+  },
+  {
+   "grade": "S (record consistency)",
+   "claim": "The reading reproduces the two colours the project owns: hexagonal 7-colouring has P_x(e) = {c0(x+e)} (singleton) and no cycle in Gamma_x; m3's colouring has P_{q_n} = {1,4,5,6} (outsiders) with the triangle {0,2,3} in Gamma_{q_n}.",
+   "evidence": "sprint/k6/PHASE-TRANSITION.md Part 3 together with the arithmetic in checks/decouple_arith.out."
+  },
+  {
+   "grade": "P (proof and counterexample read in .ultramath/smwfyhztv/m1/sharpness.md and checked here)",
+   "claim": "The constant 1 in Lemma D is a genuine threshold and is not attained: with x0 = 0, k = 2, c_1 = 0 on {|z|<1} and 1 on {|z|>=1}, c'_1 = 1, the two colourings agree on {|z| >= 1} (off the OPEN unit ball) while 0 lies in P^{c_1}_0(e) and not in P^{c'_1}_0(e) for a.e. e; both palettes are computed from constant sample codes along circles r_n < 1 (inside the disc, all points interior to class 0) and r_n > 1. Hence P^{c_1}_0 = {0,1} and P^{c'_1}_0 = {1} on a set of directions of FULL angular measure.",
+   "evidence": "NOTE-far-field.md section 4c; .ultramath/smwfyhztv/m1/sharpness.md sections 4.1-4.3. Consequence: Corollary D2 must be read with eps > 0, and the gadget hypothesis 'diameter < 1' cannot be weakened to 'supported in B(q_n,1)'."
+  },
+  {
+   "grade": "P (paper-level, from the owned swarm, checked for scope only)",
+   "claim": "Null-set robustness: if c' = c off a Lebesgue-null set then the trace sets at every x agree, hence P^{c'}_x = P^c_x for a.e. direction. Key step (their Theorem 1): at a point where two colourings differing on a null set disagree, at most one of them is a density-one point of its own class, so no trace is lost.",
+   "evidence": ".ultramath/smwfyhztv/m3/report.md. Not line-by-line audited by me; graded as a swarm result, not as my own proof. Its largest claim (exact trace-set equality) I did not re-derive."
+  },
+  {
+   "grade": "P (verdict delivered post-hoc; the swarm had already ended so ultramath_verdict was rejected with 'swarm smwfyhztv has ended'; the verdict is recorded here instead)",
+   "claim": "m3's direction d3 is ACCEPTED with one correction. Theorems 1-2 of .ultramath/smwfyhztv/m3/report.md are rigorous: (1) if c' = c off a null set Z, then at z in Z' = {c' != c} the two typicalities are mutually exclusive (densities of the disjoint classes sum to <= 1 and each class of one colouring is contained in the corresponding class of the other plus Z); (2) if (y,r) is TypicalSampling for BOTH colourings then {t : c'(z_t) != c(z_t)} is angular-null, so the sample functions agree a.e. and the L2 classes coincide - the mechanism is density-point creation, not the circle meeting the null set. Theorem 3 and the stated case of Theorem 4 follow.",
+   "evidence": "Read and re-derived from .ultramath/smwfyhztv/m3/report.md sections Theorem 1-5 against Compactness.lean / Palettes.lean / WeakColoring.lean:119. Correction carried: Theorem 4's 'paletteSet is literally the same set' should read 'equal up to an angular null set', because paletteGenerators is a Classical.choose witness and the selected countable essential covers need not be syntactically identical; both are minimal essential upper bounds of the same direction set. Open case stated by m3 and not covered: a recolouring that CREATES density points (z in Z' with dens{c = i'}(z) = 1); no counterexample found by m3 and none by me."
+  }
+ ],
+ "conjectures": [
+  "NOT VERIFIED: m2's numerical check of the palettes at x0 for a disc recolouring with rho = 0.99 (expect equality) versus rho = 1.3 (expect difference). Its files (.ultramath/smwfyhztv/m2/numerics.py, numerics.out with 0 bytes) were still in progress at handoff and no output was produced; treat as unfinished, not as evidence.",
+  "The palette is a measure-class invariant: c' = c off a global Lebesgue-null set implies P^c_x = P^{c'}_x for every x and a.e. e. Attacked by owned swarm member m3 (direction d3); not decided at handoff.",
+  "The axiom set (A1) endpoint trace + (A2) two-centre disjointness + (A3) far-field decoupling + (A4) sum rule, with all a.e. quantifiers, does NOT decide (W) at k = 6 - because (A1)+(A2) already give properness (recorded m10 Thm 4, m4 Cor. 2) and (A3) forbids P from seeing the near field. No countermodel constructed; this is a reading of the record, not a theorem proved here."
+ ],
+ "artifacts": [
+  "supervisor/solve-traces/NOTE-far-field.md - the block's report: the object-system reading, Lemma D, Corollaries D1 and D2, the exact k>=7 check, and the frontier restatement.",
+  "supervisor/solve-traces/checks/decouple_arith.py and .out - Fractions arithmetic for the k>=7 decoupling.",
+  ".ultramath/smwfyhztv/ - owned swarm working directories (3 members)."
+ ],
+ "tests_run": [
+  "python3 supervisor/solve-traces/checks/decouple_arith.py -> exit 0, output in checks/decouple_arith.out (corner-distance bounds for n=0..7; annulus containment checked with asserts; both assertions passed).",
+  "Source reads (no build): sed on lean/OAI/Geometry/PlaneColoring/{Compactness,Palettes,Transitions}.lean and rg for IsTrace/sampleFn; nothing in lean/ was modified or rebuilt by me.",
+  "No Lean compilation was run in this block: Lemma D is proved at paper level against the Lean definition, not formalised. That is the main gap for the next block (see next_step)."
+ ],
+ "failed_routes": [
+  "My first candidate lemma - 'unconditional self-avoidance: c(x) notin P_x(e) a.e. for every x' - was killed during the block. The proposed proof needed x and x+e to BOTH be density points of the same class; the palette is a far-field object, so the correlation is at distance ~1, not at scale h -> 0. Refuted concretely by the hexagonal colouring, where P_x(e) = {c0(x+e)} for a.e. x,e, so the centre colour can reappear in the palette. Do not re-attempt this in the 'self-containment' form.",
+  "The Steinhaus step 'a measurable set avoiding distance exactly 1 has measure zero' is FALSE: measurable unit-free sets can have positive measure and unbounded diameter (two far-apart small disks). Only connected unit-free sets have diameter <= 1 (the paper's section 7 fact). Do not use Steinhaus to bound colour classes."
+ ],
+ "next_step": [
+  "0. m3's open case is the next concrete sub-target: does a recolouring that CREATES density points (z in Z' with dens{c = i'}(z) = 1, c' z = i' != c z) leave the palette at nearby centres unchanged? If yes, the palette becomes a full measure-class invariant with no hypotheses; if no, the counterexample is the first genuine 'measure-class-sensitive' palette phenomenon and would need to be checked against the far-field reading.",
+  "1. Audit the load-bearing fidelity point: paper Definition 5.1's circle traces use radius exactly 1 (Lean: closure at r -> 1). Read the rendered page (pdftoppm, not pdftotext) of pp. 26-27; if the paper allows r -> 0 as well, Lemma D is void and the palette becomes a near-field object - the whole frontier reading changes.",
+  "2. Formalise Lemma D in Lean against Compactness.lean's IsTrace (statement fidelity: agreement off B(x0,1-eps), conclusion a.e. direction). Expected effort: moderate, since trace_realization already gives the sequence form.",
+  "3. Use Corollary D2 to re-scope any (W) attempt: palette constraints must be applied at centres at distance about 1 from the cyclic centres. The remaining genuine question this suggests: can the trace at radius 1 be iterated across two centres at distance 1 to constrain a nested pair of annuli (the only place a local-to-global implication can still bite)?",
+  "4. Collect or restart the owned swarm smwfyhztv (deadline 2026-11-14T05:44:47Z) - its three directions (sharpness at R=1, tight proof, measure-class invariance) were still running at handoff."
+ ],
+ "owned_agents": [
+  {
+   "swarm": "smwfyhztv",
+   "members": [
+    "m1",
+    "m2",
+    "m3"
+   ],
+   "model": "deepseek/deepseek-v4.1-flash",
+   "reasoning_effort": "max",
+   "started_utc": "2026-11-14T05:19:47Z",
+   "deadline_utc": "2026-11-14T05:44:47Z",
+   "state_at_handoff": "STOPPED by me; m3 then submitted post-stop, so the verdict could not be sent through ultramath_verdict ('swarm smwfyhztv has ended') and is recorded in verified_results instead: d3 ACCEPTED with the a.e.-vs-literal correction.",
+   "directions": {
+    "d1 (m2)": "tight proof of Lemma D plus the exact gadget check",
+    "d2 (m1)": "sharpness: explicit c, c' agreeing off the open unit ball with differing palettes (R = 1 boundary)",
+    "d3 (m3)": "measure-class invariance of the palette (null-set changes do not change P)"
+   },
+   "note": "All files under .ultramath/smwfyhztv/. Nothing outside supervisor/solve-traces/ and that folder was written.",
+   "outcome": "m1 (d2, sharpness at R = 1): SUCCEEDED and is recorded in verified_results. m3 (d3, measure-class invariance): wrote a plausible proof, recorded as a swarm result with scope noted. m2 (d1, tight proof + numerics): no output at handoff; its direction is already covered by my own proof of Lemma D."
+  }
+ ],
+ "escalation": {
+  "kind": "resolved in this block",
+  "statement": "The R = 1 sharpness question I intended to escalate was answered by the owned swarm (see verified_results: k = 2 counterexample, full-measure direction set). Nothing is escalated.",
+  "desired_output": "If a future block wants the remaining gap formalised: state and prove Lemma D in Lean against Compactness.lean's IsTrace (hypothesis c = c' off B(x0,1-eps), conclusion P^c_x0 = P^c'_x0 a.e. direction), and prove the R = 1 counterexample in the same file to certify that the hypothesis is not over-strong."
+ }
+}

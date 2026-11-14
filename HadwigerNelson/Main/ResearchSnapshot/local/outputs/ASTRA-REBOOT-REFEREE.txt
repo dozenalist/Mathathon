@@ -1,0 +1,365 @@
+INDEPENDENT ASTRA REBOOT REFEREE — 14 NOVEMBER 2026
+
+DECISION
+
+ACCEPT the finite pair-support theorem and its proposed application to the
+UNCHANGED statement FiveSupport.five_support_no_sixty at paper level.
+A minimal private Lean replacement is worth validating. No mathematical
+objection was found in support projection, translation, or exceptional sets.
+Fresh Lean elaboration / compiled declaration-dependency validation is still
+required; this referee did not run Lean or alter the original proof.
+
+ACCEPT the six-colour packet as a collection of narrowly scoped local and
+finite obstructions, with the qualifications below. It does not establish a
+global six-colouring, disprove the full ternary-centre conjecture, or improve
+the supplied numerical bound. The recommended whole-circle coupling target
+is mathematically relevant, but remains an unproved research task.
+
+The exact manuscript excerpt now identifies Lemma 6.7 with
+five_support_step_ban. The candidate USES AND RETAINS Lemma 6.7.
+Any description of this candidate as a Lemma 6.7 deletion is REJECTED.
+
+SOURCE BASIS AND LIMITS
+
+All Lean references below refer to:
+work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/.
+I read actual statements and proof bodies in FiveSupport, Accumulation,
+States, BoundaryTrace, Palettes, PaletteDensity, PaletteTransport,
+Compactness, Transitions, Exclusion, CyclicCore, Interfaces, FourContinuity,
+AngularBoundary, ContinuumLimits, FullApproximation, Five and Mesh.
+There is no TraceExclusion.lean in this original tree; the relevant trace
+exclusion proofs are PaletteDensity.trace_pair_disjoint and
+palette_first_exclusion, and BoundaryTrace.state_support_avoiding_trace.
+This is a source-level dependency audit, not a freshly elaborated Lean
+dependency dump or an independent re-verification of every upstream theorem.
+
+The manuscript identification was checked against the supplied local
+extraction work/openmath-supervisor/checkins/20261114T163226Z/
+MANUSCRIPT-LEMMA67.txt. Its page-41 statement and proof match
+FiveSupport:90-114, including the separate avoiding traces, the neighbour
+palette transport with one constant endpoint, and the global step ban.
+
+1. INDEPENDENT PROOF OF THE PRIMARY RESULT
+
+Let I be finite with measurable singleton fibres, let f:R->I be measurable,
+and fix d in R. Write A_i={t:f(t)=i}, S_i=supp(volume restricted to A_i),
+Q_ij=A_i intersect {t:f(t+d)=j}, and K_ij=supp(volume restricted to Q_ij).
+Assume for every ordered pair that S_i intersect S_j nonempty implies
+volume(Q_ij)=0. Then S_i intersect {a:a+d in S_i} is empty for every i.
+
+Proof of projection. The Q_ij form a finite measurable partition of A_i.
+Every K_ij is contained in S_i by monotonicity of restricted measures.
+Conversely, if a is in no K_ij, choose an open neighbourhood U_j of a
+with volume(U_j intersect Q_ij)=0 for each j. The FINITE intersection U
+of these neighbourhoods is open and contains a, and
+volume(U intersect A_i) <= sum_j volume(U_j intersect Q_ij)=0.
+Thus a is not in S_i. Hence S_i=union_j K_ij, without taking a closure.
+
+Proof of transport. If a is in K_ij and a+d is not in S_j, there is an
+open neighbourhood V of a+d with volume(V intersect A_j)=0. Translation
+preserves null sets, and Q_ij intersect (V-d) is contained in
+(V intersect A_j)-d. This contradicts a in K_ij. Therefore a+d is in S_j.
+
+Now suppose a and a+d both belong to S_i. The projection identity chooses
+one j with a in K_ij. Transport gives a+d in S_j, so S_i and S_j meet.
+The hypothesis makes Q_ij null and K_ij empty, contradiction.
+
+This proof explicitly uses joint fibres, not an independent choice from
+two marginal support lists. Its conclusion is POINTWISE. No density-point
+upgrade of a pointwise level-set statement is being smuggled into it.
+
+An equally valid and much smaller formal route already exists in the source.
+Set R(i,j)=Disjoint(S_i,S_j). The contact hypothesis says that every pair
+with not R(i,j) occurs on a null set. A finite union over ordered pairs gives
+R(f(t),f(t+d)) almost everywhere. FiveSupport:55-69,
+stateSupport_shift_relation, then gives j with R(i,j) and a+d in S_j
+whenever a in S_i. Membership of a+d in S_i contradicts disjointness.
+The existing lemma's proof uses a finite closed union and pullback of the
+almost-everywhere support-membership statement by translation. Its exact
+hypotheses fit the proposed use. No joint-tuple library is necessary.
+
+2. ORIGINAL-SOURCE INSTANTIATION
+
+Fix ONE centre x, measurable c:C->Fin 5, WeakColoring 5 c, and FiveCenter c x.
+Use f(t)=fiveState c hc x (t:Angles), d=sixty=pi/3.
+
+Measurability is Accumulation:373-377 composed with
+angleMk_quasiMeasurePreserving.measurable. FiveSupport:82-83 gives exactly
+the restricted-Lebesgue support used above; the support is on R, not a
+counting-measure support and not the closure of all pointwise state values.
+
+For i,j with intersecting supports, choose one witness a.
+If fiveAdj i j, FiveSupport:90-114 applied to a bans BOTH orientations
+almost everywhere on the entire angular circle at x. Its first conjunct
+bans Q_ij after pullback by angleMk_quasiMeasurePreserving.
+If not fiveAdj i j, Accumulation:390-397 bans Q_ij by almost-everywhere
+adjacency. This includes self-pairs. The coercion identity is the same
+AddCircle.coe_add identity already used in FiveSupport:124-127.
+
+There are 25 ordered pairs. One may choose one intersection witness for
+each intersecting pair and combine these finitely many conull statements.
+There is no union of exceptions over all support points or all centres.
+Alternatively, the direct joint-support proof uses just the pair selected
+for its contradiction. Both arguments are legitimate.
+
+The resulting conclusion is precisely FiveSupport:138-139. Its statement
+and the statements of five_contact_next, five_contact_prev,
+five_opposite_contacts_false and the CyclicCore consumers can stay unchanged.
+
+3. WHAT DISAPPEARS, AND WHAT DOES NOT
+
+The old five_support_no_sixty body at FiveSupport:140-145 invokes
+States.strict_state_no_unit_support:704. That invokes
+strict_state_sequence_false:683, which invokes
+strict_state_sequence_local_false:547. The latter constructs near-identity
+circle endpoint maps at :569, uses varying_pullback_L1 at :601 for the
+varying state sets A_n, obtains positive overlaps and density points, and
+derives a monochromatic unit-pair contradiction at :625-630.
+
+The proposed replacement eliminates that chain from the five-centre proof
+branch. This is a conceptual simplification: after the retained global
+contact ban, same-state return exclusion is a finite support-transport
+fact. It no longer needs the general moving-state sequence machinery to
+prove this particular fixed-centre assertion. It is more than a cosmetic
+shortening, but its scope is one branch.
+
+I checked the retained inputs transitively at the source level:
+
+* five_support_step_ban -> five_support_trace ->
+  BoundaryTrace.state_support_avoiding_trace:24-52. This uses only the
+  RealState interface, typical actual sampling, the source's palette
+  exclusion, support_good_sequence, weak compactness and trace realization.
+  It does not call a strict-state theorem or a descendant of one.
+* avoiding_trace_palette:53-72 uses trace_bounds and
+  tracePositive_le_palette from upstream Compactness/Palettes.
+* fiveState_represents -> fiveState_diag -> five_palette_admissible uses
+  palette_nonempty, palette_cardinality and edge_palette_not_pair.
+  It does not use the earlier four-centre accumulation theorems merely
+  because they share the Accumulation file.
+* palette_neighbor_disjoint uses palette_smooth_transport, while the final
+  forced-label contradiction uses palette_sixty_disjoint. These are in
+  modules upstream of States. Exclusion:17,20,23,26 are finite facts.
+* The generic stateSupport_shift_relation uses measure support, a finite
+  closed union, and measure-preserving translation. It contains no
+  colouring or strict-state analytic input.
+
+However, the new branch is NOT L1-free, density-free, spectral-free, or
+circle-transport-free. Important surviving paths are:
+
+* palette_neighbor_disjoint -> palette_smooth_transport ->
+  palette_transport_real:286 -> palette_branch_local ->
+  palette_trace_branch:145. The latter explicitly calls
+  line_indicator_pullback_L1 at PaletteTransport:176. This is transport
+  of a fixed palette indicator, distinct from the removed varying-state
+  L1 argument.
+* state_support_avoiding_trace -> ae_circle_palette_exclusion ->
+  palette_first_exclusion -> trace_pair_disjoint. At PaletteDensity:119
+  the last theorem explicitly uses angularSum_tendsto_L1, together with
+  weak/strong limit disjointness and weak-density properness.
+* five_palette_admissible -> edge_palette_not_pair ->
+  transition_avoiding_trace -> transition_small_mass. Transitions:81-83,
+  110-117 retains circle_smoothing_L2, an upstream spectral input.
+* palette_cardinality retains the binary-centre exclusion and its
+  transport/dynamical proof.
+
+Thus only the SPECIFIC strict-state sequence burden disappears from this
+branch. Do not claim removal of all density/L1/circle analysis.
+
+Nor can States:704 or its supporting machinery be deleted globally:
+Interfaces:266-280 still calls :704 to prove interfaceStateSupport_no_unit,
+feeding the four-interface margin and cycle argument.
+FourContinuity:395 and :452 independently call strict_state_sequence_false
+for moving four-state supports. The complete CyclicCore theorem still has
+its four-centre branch. FullApproximation:12-44 also uses
+ContinuumLimits.commonInterface_graph_acyclic, whose four-cycle branch
+retains the interface argument. The five-common-interface branch instead
+uses Exclusion.no_five_exclusion_continua and is a separate six-angle strip
+argument, not the five-centre return-exclusion consumer.
+
+The retained States import is therefore unsurprising. A complete compiled
+dependency audit should distinguish (a) the changed declaration, (b) the
+five-centre branch, and (c) the full theorem. Merely grepping a new proof
+body for the name strict_state_no_unit_support is insufficient.
+
+4. PRIMARY COUNTERMODEL AND FINITE-CERTIFICATE AUDIT
+
+ACCEPT the packet's periodic positive-measure angular countermodel to the
+weaker premise 'adjacency plus joint six-angle correlations'. The proposed
+construction of B in (0,d) is sound: recursively choose two disjoint
+positive-measure compact nowhere-dense sets in every rational interval,
+avoiding all earlier choices, and let B be the union of the first family.
+Both B and its complement have positive measure in every open interval.
+Alternating their labels in successive d-sectors gives a Borel 6d-periodic
+f with f(t+d)=1-f(t) but S_0=S_1=R. It violates the CONTACT BAN and is not
+a counterexample to the accepted theorem or a constructed plane colouring.
+
+The indicator of the rationals with d=1 is NOT an alternative counterexample
+to the theorem: the irrational state has full-measure self-joint Q and
+full support, so the hypothesis fails. Dense null sets have empty
+restricted-Lebesgue support. No density-of-point-set argument can replace
+positive measure in this audit.
+
+I independently enumerated all 5^6 words, obtaining exactly 100 closed C5
+walks, then checked the eight SUPPLIED normalized model rows. All have
+exact coordinate projections before contact bans. Their counts are
+3,8,3,8,8,22,8,22. The ban-filtered counts are
+1,5,1,5,5,18,5,18, and each filtered family loses at least one required
+support membership. In particular, the claim is NOT zero surviving words.
+I did not independently prove exhaustiveness of the lead's model-search
+normalization; the certificate check verifies the eight provided rows.
+
+5. SIX-COLOUR LOCAL ANNULUS — ACCEPTED WITH LOCAL SCOPE
+
+For A={.99<|z|<1.01}, nine half-open sectors of angle 40 degrees, coloured
+cyclically 0,1,2, form a proper colouring of the unit-distance pairs whose
+two endpoints lie in A.
+
+In one sector the angular separation is less than 40 degrees and
+cos(delta)>2/3. Therefore squared distance is less than
+(1/50)^2+(2/3)(101/100)^2=10207/15000<1.
+Distinct sectors of the same colour have circular angular separation at
+least 80 degrees, so cos(delta)<1/3 and squared distance is greater than
+(4/3)(99/100)^2=3267/2500>1. Half-open endpoint conventions do not destroy
+these strict margins. The trigonometric comparisons with 45 and 75
+degrees stated by the lead are correct.
+
+The claim about ACTUAL palettes is also sound. For |x|<1/200, the unit
+circle at x lies a positive distance inside A. For every y_n->x and r_n->1,
+all sufficiently late circles lie in A. The limiting circle meets each
+sector boundary ray finitely often. Away from those finitely many angles,
+all colour indicators on y_n+r_n e(t) converge pointwise to those on
+x+e(t). Their boundedness gives strong L2 convergence. By
+Compactness.trace_realization:262 every actual trace at x has precisely
+this vector as its L2 value. Palettes.paletteSet_minimal:26 and
+tracePositive_le_palette:23 then give the asserted singleton palette
+almost everywhere. This argument handles the actual essential union of
+ALL traces; it does not freely assign palette lists.
+
+Consequently the same three labels hit the palette at every centre of an
+open ball. For fixed x,z in that ball, every source-admissible smooth
+transport branch has all three relevant points in A, and both relevant
+target/source distances are one. Their singleton palettes are disjoint
+almost everywhere along the branch. Source nonzero-derivative hypotheses
+prevent a positive-measure parameter set from lying on the finitely many
+exceptional angular rays. Sixty-degree disjointness also holds.
+
+The eta,d example is correct. Set eta=pi/10000 and
+d=2cos(pi/3-eta)-1. Then 0<d<2eta<1/200, and
+e(eta)+e(2pi/3-eta)=(1+d)e(pi/3).
+The source labels are 0 and 2; the target label is 1. These are interior
+sector points. The sum-map Jacobian is nonzero. Varying the target angle
+near pi/3 with fixed centre z=d e(pi/3) gives smooth source branches;
+at the displayed point both source angular derivatives are 1/(1+d)>0.
+Thus this is an admissible open-parameter obstruction to forcing equality
+of the two source states from a ternary hitting palette.
+
+The extension by a constant outside A is emphatically NOT WeakColoring.
+For example, far from A both q and q+e(t) have that same constant label
+for an open positive-area set of q and every t. The global density-unit
+exclusion also fails at the two density points 10 and 11 on the real axis.
+The construction refutes the asserted inference from the LOCAL transport
+conclusions to ternary-centre separation/countability. It does not refute
+T6 under the full global weak-colouring hypothesis.
+
+6. ACTUAL LOCAL INTERFACES AND TRANSITIONS — ACCEPTED
+
+Colour A with 3,4,5. For K=[0,rho v], |v|=1 and 0<rho<1/200,
+the actual source Straddle definition at AngularBoundary:147 implies
+1-rho<|z|<1+rho for every z in Straddle(K). Hence Straddle(K) lies in A.
+The spatial supports of labels 0,1,2 can all be excluded from it. The
+segment supplies the actual ApproachingContinuum data at 0. Thus all
+three endpoint exclusions of a common-interface triangle are present.
+CommonInterface itself does not assert a transition edge, and it is
+important not to conflate these objects.
+
+The additional inner-disk construction supplies actual transition edges
+as well. In B(0,rho), insert disjoint disks with centres
+q_n=rho*2^(-n), n>=1, radii rho*2^(-n-3), and three 120-degree sectors
+labelled 0,1,2 in each disk. The stated disks are disjoint and contained
+in B(0,rho). Their union with A is properly six-coloured: the inner disk
+has diameter below one, and its labels differ from every annular label.
+
+For each q_n, each label pair meets on an interface ray. In every ball
+B(q_n,R), choose a positive-length interface segment away from the vertex,
+other rays and the disk boundary. A narrow rectangle about it has only
+the two relevant colours. Translating normally by h produces transition
+area at least L|h| for some fixed L>0 and all sufficiently small h along
+that normal direction. This proves positive limsup of transitionRatio
+under the exact punctured-neighbourhood definition in Transitions:21-24.
+It is stronger and more precise than just saying the ratio fails to tend
+to zero. Thus every q_n has the transition triangle. Closedness puts the
+same edges at 0. All nearby-centre unit-circle palettes still come from
+A and are singleton almost everywhere.
+
+This is a valid local realization of accumulating transition triangles,
+not a counterexample to L6 for global weak colourings. The spatial-support
+exclusions for the short radial continua survive adding the inner disk.
+
+7. SIX-POSITION CONSTRAINTS AND THE NEXT TARGET
+
+AngularBoundary:259 and :279 give intersections of palettes with the two
+allowed label sets, not inclusion of a palette in both sets. The packet's
+R5 correctly encodes these statements. Its R6 follows because an entire
+cycle edge is excluded from the allowed set on the side of that edge.
+No TransitionEdge premise is needed for this finite deduction.
+
+My independent checker accepted the four stated m=3,4,5,6 certificates.
+It reconstructed each sign as sign(cos((j-q_i)pi/3)), checked the opposite
+rows, nonempty palettes of size at most two, successive disjointness,
+both allowed-set intersections, and noncontainment in each cycle edge.
+There is no orthogonality at the six sampled positions. Strict signs
+persist on a neighbourhood of each sampled base angle, so the geometric
+sign certificate is not an isolated exceptional-angle artefact.
+
+These witnesses reject ONLY 'R1-R6 imply no cycle'. They omit actual trace
+compatibility across base angles, support closure and general transports
+between centres. They cannot establish SAT for a global weak colouring.
+
+States.two_state_impossible:243-307 is indeed generic in k. In the m=6
+witness J={0,2}, K={3,5}, the omitted labels are {1,4}. Any measurable
+whole-circle Boolean state represented by these J,K and flipping at pi/3
+would satisfy its cardinality premise and be impossible under the actual
+global weak-colouring hypothesis. Its proof crucially also uses the
+triangleAngle shift, density transport and a unit triangle; the six fixed
+orbit positions contain no substitute for that coupling.
+
+It is therefore sensible to test whether the full six-cycle interface
+data force such a global two-state representation. The finite witness
+does NOT prove that reduction, and the theorem cannot be applied just
+because one six-position word alternates two palettes. A surviving
+multi-state whole-circle field would also have to satisfy all represented
+state and transport premises. This is an appropriate bounded next target,
+not a positive six-colour result.
+
+The conditional roadmap separates two genuine obligations: local
+finiteness of transition cycles (L6), and acyclicity of actual common
+interfaces (F6). The source supports their distinct roles. Once suitable
+finite-label generalizations are proved, L6 supplies the finite core and
+F6 supplies forest fillings. Five:22-100 and Mesh:92-149 then use graph
+realizations, finite coordinates, connectedness and unit-distance average
+exclusion, without a five-label enumeration in that final obstruction.
+However the current Lean declarations are still specialized to Fin 5.
+Calling their generalization plausible implementation work is reasonable;
+calling the entire six-colour chain already formalized would be false.
+No implication from B2 alone to either L6 or F6 has been proved here.
+
+8. RECOMMENDATION AND VALIDATION LEDGER
+
+Proceed with ONE private proof-body replacement using the existing
+stateSupport_shift_relation and the disjoint-support relation. Preserve
+the original statement and the retained step ban. The formal review
+should check successful elaboration, standard axioms, and the changed
+declaration's transitive dependencies; then check its unchanged consumers.
+Do not delete States, weaken support conclusions to almost everywhere,
+or expand this patch into a six-word infrastructure project.
+
+Independent artifact:
+  work/astra-referee/verify-certificates.mjs
+  work/astra-referee/certificate-check.json
+Executed once with standard-library Node. Result PASS, 17 ms.
+The verifier does not import the lead's producer/search code. It verifies
+certificates, not plane-colouring realizability or search completeness.
+
+No agent was spawned. No Open Math API call, install, credential access,
+heavy computation, original-proof edit or Lean execution was performed.
+All referee writes are confined to work/astra-referee/ and this report.

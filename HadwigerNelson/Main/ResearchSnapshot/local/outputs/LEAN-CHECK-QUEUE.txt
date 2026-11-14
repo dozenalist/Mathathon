@@ -1,0 +1,113 @@
+LOCAL LEAN CHECK QUEUE
+Updated November13,2026,approximately10:15PM Pacific.
+
+SERIAL EXECUTION
+One setup or proof-check job at a time, protected by work/lean-queue/queue.lock.
+Queue manifest: work/lean-queue/queue.json.
+Runner: outputs/RunLeanQueue.ps1.
+Setup: outputs/SetupLeanEnvironment.ps1; authoritative status: work/lean-env/setup-status.json.
+Do not start a second runner when setup or a check holds the lock. Completed jobs do not rerun automatically.
+
+PASSED: diamond equality lemmas.
+Lean4.35.0, coreOmega import replacing original Mathlib import, identical theorem bodies.
+Exit0,47seconds, both axioms[propext,Quot.sound], no sorryAx.
+Source SHA256:67CDBC7BE0B14601122CA19FB426EA93BEF9F91C54FAD397C68EC3CB9C82DC8B.
+This validates standalone lemmas, not pinned-project integration.
+
+ENVIRONMENT PREPARATION
+Exact remote manifest saved as work/lean-queue/remote-check-manifest.json.
+Lean4.34.1 installed in isolated work/lean-env/elan; Windows binary commit5045d0056413266e57c625dcd7c365b10e377c52 verified.
+Mathlib pin d13f23b723b8a846827a245b89c10fc7d3f11612; source checkout and all8dependency revisions verified at10:15:24PM. Setup status sources_ready_cache_pending.
+Official pinned lean-toolchain independently matches4.34.1.
+No global default or existing toolchain changed.
+Next after sources_ready_cache_pending: fetch the matching official cached artifacts (do not silently switch versions), then configure the proof runner's native executable and LEAN_PATH. This setup has not yet run candidate checks or a full Mathlib build.
+
+WAITING: ConnectedSetExclusion.
+Original reviewed source downloaded to work/lean-queue/ConnectedSetExclusion.lean. Mathlib-only; no OAI dependency.
+Remote run produced four standard-axiom lines. Packet mistakenly expected five: include the derived corollary's missing axiom print in an audited check copy before final acceptance.
+
+WAITING: original diamond Mathlib imports under pinned environment.
+Standalone result remains useful; full integration is separate.
+
+WITHHELD: five-cycle shortcut.
+The stronger finite lemma is true, but proposed source application uses unproved validity at extra directions.
+Independent enumeration:21valid lists,0solutions with allV,8withVonly0/3; addingV1orV5 gives0.
+No Lean-paper-replacement job until an extra source hypothesis is proved or Lemma6.7 is retained.
+
+WAITING FOR SOURCE/DEPENDENCIES: topology and encoding factoring.
+Topology needs a25-module OAI source cone; cloud oleans are not a ready-made local dependency. Minimal source/hash packet requested.
+Common encoding core remains a proposal.
+Full83-module trim rebuild and signature/axiom comparison stays last, after minimal checks and complete sources.
+
+Logs and exact hashes stay with each job. Local/remote compilation and statement fidelity remain distinct evidence grades.
+
+CURRENT ADDENDUM — November13 approximately11:10PM Pacific. This supersedes earlier setup-pending and Astra0 statements. Matching minimal cache is ready, pinned diamond passed; connected-set narrowed-import check failed on ContinuousSub and is not accepted (sorryAx in failed elaboration). Diagnose imports next check; no runner active. Astra1 of3used, completed and relayed; see ASTRA-WILD-LAW-REVIEW.txt. One-time all14 resume was explicitly user-authorized and all writes accepted. Four-chat policy and normal transport guards restored. Read remaining recovery replies without reinitiating retired/human chats. State and queue JSON are authoritative. User expects temporary local internet loss while traveling; no extra network work at wrap-up.
+
+CURRENT VERIFIED UPDATE — November13,11:44PM Pacific. Ten-root matching cache READY. Connected-set minimal check PASSED after adding Mathlib.Analysis.Normed.Group.Uniform; all5theorems print [propext,Classical.choice,Quot.sound], no sorryAx, source SHA256 c243da2d52bba6b22d0df2ff15fcbcd22c2478387131a33c74263082ac5e325a. FiveCycleResidues PASSED all9theorems with the same standard axiom set, source SHA256 d8be2596893b593d2785d7ab918b076d2e5ee1a9b3fe815119517c954def7d92. Both use pinned Lean4.34.1 and Mathlib d13f23b. Original theorem bodies unchanged; imports/axiom-print audits only. No local runner active. These standalone checks do not establish the paper application or full-project integration. Verifier now audits state-index map i->1-i versus vertex-label map k->3-k; relay successful local results at its NEXT idle assignment, not by interrupting current work.
+
+CURRENT UPDATE — Nov14,12:14AM Pacific. Revised two-level reflection source passed14finite lemmas locally, standard axioms/no sorryAx, SHA256 9bb5a4f214dd5a421c683421d1321972dd04a626c5a76b3075e32372512612e9. One false remote statement h_image_P was corrected locally to P(-j); original preserved as FiveCycleResiduesV2Remote.lean and correction relayed. No local runner active. Candidate73cell6-UNSAT certificate in work/patch19-audit awaits independent RUP verification by geometry; graph/CNF/8colouring checks passed locally, not the UNSAT proof. Four new blocks accepted; no extra Astra. Keep the eight retired chats read-only without routine polling. Next verifier block supplies V/D/N transport; next architecture block targets common encoding lemma rather than another speculative weak-mixing shortcut.
+
+EARLY CHECK UPDATE Nov14,00:32Pacific: allfourcontinuingchats confirmed ACTIVE after new assignments. Honeycomb interval (1/sqrt28,1/sqrt19) accepted as a restricted-family exclusion via hash-bound independent remote DRAT plus local exact graph/CNF/interval verification. This is not unrestricted-plane progress. New21theorem FiveCycleResiduesV3 failed neighbour Nonempty witness construction; do not treat its sorryAx output as a proof. Repair assigned; prior14theorem version remains verified. No local runner active. Architecture now preparing full common encoding proof with dependency packet; its SCAFFOLD contains sorry and must not be queued as verified. Astra1used. Eightretiredchats remain read-only.
+
+
+2026-11-14 01:10 Pacific: FiveCycleResiduesV4 PASSED (21 theorem axiom reports, no sorryAx); log work/lean-queue/five-cycle-residues-v4.log. No proof process running. Full-cache setup started 09:02:24Z, process 29404/child37600, under shared queue.lock. Setup status work/lean-env/setup-status.json is authoritative; do not start duplicate setup or compile while lock held. FullCache requires 12GiB before starting, aborts its own process below3GiB, timeout20min. Last observed free space about8GiB while running. Fourteen OAI original modules downloaded and SHA-verified at work/encoding-integration/original; proposed refactor NOT compiled, declaration-order bug sent back. Next reconcile cache; fetch frozen repaired patches plus full downstream manifest; stage a serial isolated project build with correct output/import paths. Smoke14 is not full83 validation. Preserve globals and originals.
+
+FINAL SETUP UPDATE 2026-11-14T09:08:25.9298942Z: full pinned Mathlib cache completed successfully (full_mathlib_cache_ready). No setup/Lean job remains running. Next check may stage corrected integrated sources serially after reconciling lock. No project compilation has occurred.
+
+
+2026-11-14 01:27Pacific: Full pinned Mathlib READY. New frozen integration tree work/lean-queue/encoding-r2 contains14reviewed source modules and2smoke roots. All proposed/input/smoke hashes checked. Runner now supports validated workspace-only module output/working directories, frozen source hashes and dependsOn with fail-closed blocking. Initial unchanged Basic.lean encoding-r2-01 timed out120s with empty stdout/stderr; log preserved. One longer attempt encoding-r2-01-long began09:24:22Z, PID40388 at observation, max600s. Unified exec session78410. Remaining modules are serial dependencies,600s each; smoke180s. DO NOT edit queue.json while runner operates or start another runner. Check process, status and logs next turn. Basic process observed usingCPU and about2.55GB RAM; not assumed hung. Next if complete: check patched modules and smoke axioms; if failed: diagnose, no blind retries. All83original sources additionally staged/hash-verified at work/encoding-integration/full-original for later full downstream validation. No old OAI oleans visible to new14build.
+
+FINAL BUILD UPDATE: longer Basic.lean attempt PASSED, followed by Characters and InvariantMean. First3modules passed; Multipliers running at final snapshot. The serial queue continues automatically; do not restart. Initial120stimeout is preserved history, not a current blocker. Patched modules/smoke axioms/full downstream integration remain pending.
+
+CURRENT HANDOFF — 2026-11-14 01:52 Pacific
+Six prior blocks completed; six follow-ups accepted and all six observed active, cursors saved to their actual fetched ends. Graph is the sole remote compute worker this block.
+Local R4 immediate 14-module build and both smoke roots PASSED. Four distinct theorem axiom sets contain only standard axioms, no sorryAx. Spectrum SHA d26d569088faea89e5ae5cc2309809797fcbe76cf6d927f4484bc39db7880d48; Limits SHA 24f89dd33533a0f61b9f35940e43b3a26c2b27b00424949a92cfdafc8de60d9b. Record work/lean-queue/encoding-r4/smoke-axiom-check.json.
+FULL DOWNSTREAM BUILD RUNNING: session 48771, outputs/RunLeanQueue.ps1, one job at a time, 600 seconds per module. The 82-module import-closed affected build reuses 14 verified modules and queues 68 originals, then encoding-r4-axiomroots (9 roots), then k-generic-transfer-v1 (depends on Converse). Plan: work/lean-queue/encoding-r4/full-build-plan.json. Reconcile queue/process/logs; DO NOT start duplicate runner or rewrite queue.json while active. The unaffected ConnectedUnitFree module is excluded. Full-root checks remain pending; no whole-project success claim.
+At NEXT idle assignment relay R3 ambient error and accepted local R4 fix to architecture/formal workers. They currently only know/adopt R3 syntax fixes. R4 replaces the final integral-bound proof with: by simpa only [id_eq] using ((integral_congr_ae he) ▸ hae). Original R3 error at ConditionalLimits line457 was rw failing on Hf i (id x). Ask for regenerated remote freeze and independent review of this exact proof-term change; do not interrupt current blocks.
+WitnessSelectionV1 failed: positivity placeholder, sel unfolding, denominator n+1 vs n+2, extra True conjunct; repair including Tendsto assigned. Null-transfer worker preparing a reduced packet while existing candidate is queued. Graph ensemble local check: 344 eliminated, 30395 survivors, pair(0,50) ruled out. Geometry is deriving a finite forced-equality amplifier; no honeycomb experiment.
+Astra 1 used, none active. Full report at 07:30 Pacific unchanged.
+
+CURRENT HANDOFF — 2026-11-14 02:06 Pacific
+Six completed prior blocks; six follow-ups accepted and all six observed active. Current cursors are saved actual fetched ends, with lastCompletedCursor separate. Graph is the sole remote computation worker (adaptive targets from current survivor classes, max16 and one process60seconds).
+
+FULL LOCAL BUILD STILL RUNNING, session48771. Last snapshot32of82modules passed(14reused+18new); encoding-r4-full-33 / Selections running, PID12452 at observation;49newmodules remain. No new failures. Then encoding-r4-axiomroots prints9roots and k-generic-transfer-v1 runs after its Converse dependency. Do not duplicate/interfere with runner or rewrite queue.json while active. Reconcile process/logs on next check. Plan: work/lean-queue/encoding-r4/full-build-plan.json. Immediate14module build and4distincttheorem standard-axiom checks already passed; full roots still pending.
+
+Architecture now has the exact localR4Limits fix/hash and is regenerating remote sources; formal worker independently reviews R4 and prepares SignatureEquivalence.lean for declaration fidelity. Spectrum hash d26d569088faea89e5ae5cc2309809797fcbe76cf6d927f4484bc39db7880d48; Limits24f89dd33533a0f61b9f35940e43b3a26c2b27b00424949a92cfdafc8de60d9b. Read actual queue/state before claiming integrated126-line reduction.
+
+New candidates staged ONLY in work/lean-queue/inbox: WitnessSelectionV2 and CheckNullTransferV1. V2source concerns(Filter namespace, positivity placeholder) sent back for stableV3; author also checking whether controlling epsilon alone preserves t/radius convergence. Existing larger genericnullcandidate is already queued, so avoid redundant concurrent jobs. Minimal packet imports Coloring only and is uncompiled.
+
+Graph chase independently verified all18colourings and3949->491survivors. Last2static targets were already eliminated; adaptive selection assigned.491pairs form24signature classes. Geometry and independent solving chats are now independently repairing/auditing the forced-equality amplifier; do not accept draft upper-bound/count assertions. No actual forcing pair or new plane bound.
+
+Astra1used, none active. Reports every20minutes; full07:30Pacific report remains scheduled. All human/shared originals remain unchanged.
+
+CURRENT HANDOFF — 2026-11-14 02:30 Pacific
+Six priorblockscompleted;6followupsaccepted;6active at fetchedcurrentends. Cursors/state saved. Geometry owns thisblock sole60second remotecompute slot for exactamplifier positivecontrols; graph is analysis-only preparing a newseed.
+
+IMPORTANT REQUEST-ID RULE: Starting NEXT check, include full UTC DATE and checktimestamp in everyrequestID, e.g.20261114T103811Z-followup-0. Prior HHMM-only IDs will recur onNov15 and the runner would replay olddone writes. Do not reuse them acrossdates; existingdone/pendingguardsstayenabled.
+
+FULL LOCAL BUILD RUNNING session48771. Lastsnapshot61of82passed(14reused+47new), encoding-r4-full-62 Interfaces/PID21272running,20newmodulesqueued. No newfailures. Then encoding-r4-axiomroots(9roots) and k-generic-transfer-v1. Do notduplicate runner orrewritequeue.json whileactive. Reconcileactualprocess/logs nextcheck. Immediate14modules/4distincttheorem standardaxioms alreadyaccepted; fullpublicrootsstillpending.
+Afterqueuefinishes, stagedinbox WitnessSelectionV3.lean and SignatureEquivalenceR4.lean need review/queueing; formalworker is auditing top-levelclaimandpreparing fresh-instance-contextsignaturechecks. Existinggenericnullv1alreadyqueued; reducedpacketnotneededunlessdiagnosticjustifiesit. ArchitecturehasadoptedR4andremoteMETAhashesmatchlocal: Spectrum d26d569088faea89e5ae5cc2309809797fcbe76cf6d927f4484bc39db7880d48; Limits24f89dd33533a0f61b9f35940e43b3a26c2b27b00424949a92cfdafc8de60d9b. Leavefrozenpatchunchanged.
+
+HEULE553 PAIR SEARCH CLOSED atk>=5:34valid5colourings separateeverydistinctpair. JSandPythonchecksPASS; certificateandchecker savedinoutputs. Graphworkerproposedk4onthisseed; explicitlyrejectedbecause4-UNSATwouldmakeforcingvacuous. Graphnowpreparesnewexactseedanalysis; independentrouteexamineshigher-arityrelations withoutoverreadingpairseparability.
+Correctedamplifierlowerboundproofaccepted with independentreview, no actualtarget-kforcingpair. Exactpositivecontrolsbeingprepared. V3selectionstaged; budget t monotonicity doesnot implyepsilonmonotonicity, so verifiernowgivescorrectbudget-convergence then epsilon-subsequence argument.
+Python launcher: ordinary WindowsStorepython blockedinside sandbox; approved exact C:\WINDOWS\py.exe -3.12 outputs/Verify-HeuleNoForcing.py worked andPASS. Noinstallation/configurationchange.
+Astra1used/noneactive. Full07:30Pacific reportunchanged; continue20minuteupdates. No newunrestricted-plane bound.
+
+
+2026-11-14 02:51 Pacific — check 20261114T103812Z
+FULL R4 BUILD: all82 affected-closure modules PASS, comprising14 prior verified modules and68new modules, all frozen hashes checked. Nine root axiom sets exactly {propext,Classical.choice,Quot.sound}; no sorryAx. Spectrum497->530lines, Limits701->542lines: net -126. This verifies supplied-proof integration, not a new bound. Declaration-fidelity packets are separately pending repairs.
+GENERIC NULL TRANSFER: exists_properColoring_of_compl_null passes isolated Lean4.34.1/mathlib d13f23b...; source SHA8a8fc2cb095321cd0d93a0f0aea6e0240bc9098362478e4ddf4f448876272af7. k>0, volume Z=0, total c proper on complement -> some global proper k-coloring, with no extension/agreement promise. Imports Converse, not Five; standard axioms only.
+AMPLIFIER CONTROLS: independent BigInt rational biquadratic calculation verifies deduplication, every exact induced unit edge and exhaustive non-k-colorability for (nvertices,edges,k)=(13,13,2),(9,9,2),(7,11,3); 8192/512/2187 assignments respectively. Certificate SHA5d6436b55e8b9a1a783754e707fc4f3d18b8f8f16034cb05edee2e3400c5aa8d. Generic constructor not certified, squarefree denominator routine needs review; no target-k forcing pair.
+AUXILIARY FAILURES RETAINED: WitnessSelectionV3 missing Topology for neighborhood notation; subsequent sorryAx results rejected. SignatureEquivalenceR4 baseline iff helper accidentally retains Y instances, causing call failures; predicates themselves elaborate by Iff.rfl. SignatureFreshR4 missing Spectral namespace, D/IsWild unknown. Narrow local V4/R5 packet repairs queued serially, not changes to R4 implementation.
+
+Repair runner session53845; reconcile currentqueue before edits.
+
+
+FINAL UPDATE — 2026-11-14 02:52 Pacific
+All3 auxiliary repairs PASS: WitnessSelectionV4 (6printed lemmas), SignatureEquivalenceR5 (2baseline theorem wrappers +2definitional iff checks), SignatureFreshR5 (4control/fresh applications). All14 printed sets contain only propext/Classical.choice/Quot.sound; no sorryAx. Note axiom-output parser must allow an apostrophe within the theorem name (exists_strictAnti_scale').
+Original finite/ambient predicate bodies match copied baseline definitions after whitespace normalization. Both public precision-contra theorem headers and both baseline headers match original hypotheses after whitespace/name normalization. Baseline Iff.rfl and fresh contexts pass. This, full82module build,9rootaxioms and unchanged frozen hashes complete local validation of the -126line R4 refactor. Exact stronger binder introspection can remain supplementary; no whole baseline rebuild needed.
+Session53845 exited0; queue now idle. No running/queued jobs. Preserve failed V3/R4 tests as historical failures, superseded by V4/R5 success. Nextcheck relay these local fixes/results to verifier/formal/architecture before further assignments; own remote artifacts may still be old. Local repair sources and evidence: work/lean-queue/encoding-r4/src/{WitnessSelectionV4,SignatureEquivalenceR5,SignatureCheckFreshR5}.lean and fidelity-check.json.
+
+2026-11-14 03:09Pacific: binder-audit-v2 failed; queueidle, session77281finished. Supplementaryinstrumentonly, acceptedR4/V4/R5proofchecksunchanged. Diagnostics: mutablei capturedbylambda; ToStringMessageData unavailable; BinderInfo.explicit unknown. Preservelog,repairnextblock. No unsafe evaluation.
+
+2026-11-14 07:09Pacific: binder-audit-v3-local PASS; 6declarations133binders,noERROR/MISSING; localstrictstructuralgatePASS. Session41976finished;queueidle. RemoteV3rendering adaptedto actualinstalledLeanAPI, originalretained. Seeencoding-r4/binder-inspection-check.json.

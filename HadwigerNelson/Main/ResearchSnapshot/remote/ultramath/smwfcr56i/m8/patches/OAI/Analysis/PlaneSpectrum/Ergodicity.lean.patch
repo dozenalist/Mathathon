@@ -1,0 +1,20 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean	2026-11-13 19:09:13.640977033 +0000
++++ OAI/Analysis/PlaneSpectrum/Ergodicity.lean	2026-11-13 19:59:09.890740325 +0000
+@@ -263,7 +263,7 @@
+     rcases mul_eq_zero.mp hh with h | h
+     · exact Or.inl h
+     · exact Or.inr (by linarith)
+-  rw [eventuallyEmptyOrUniv_iff]
++  rw [EuclideanFiveColor.KernelCompact.eventuallyConst_set_iff]
+   rcases hz with h | h
+   · right
+     rw [ae_iff]
+@@ -289,7 +289,7 @@
+ def code (x : X) : Finset ℕ → ℂ := fun i => InvariantSequence.limit μ M (test X i) x
+ omit [Countable G] [Nonempty X] in
+ lemma code_measurable : Measurable (code μ M) :=
+-  Measurable.of_eval (fun i => InvariantSequence.limit_measurable μ M (test X i))
++  measurable_pi_lambda _ (fun i => InvariantSequence.limit_measurable μ M (test X i))
+ omit [Countable G] [Nonempty X] in
+ lemma code_fixed (g : G) : (fun x => code μ M (g +ᵥ x)) =ᵐ[μ] code μ M := by
+   have h := (ae_all_iff.mpr (fun i => InvariantSequence.limit_fixed μ M (test X i) g))

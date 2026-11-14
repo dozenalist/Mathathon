@@ -1,0 +1,102 @@
+{
+ "updated_utc": "2026-11-14T07:02:39Z",
+ "status": "completed_block",
+ "summary": "Block 4. (1) One small Lean file for the finite content of my six-step five-cycle argument, written but deliberately NOT built: `lean/FiveCycleResidues.lean`, 9 theorems, every proof `by decide` on a closed statement over ZMod 5 / Fin 5, no sorry/axiom/native_decide, exact import list Mathlib.Data.ZMod.Basic + Mathlib.Data.Finset.Image + Mathlib.Data.Fintype.Basic (smallest set carrying ZMod numerals+Fintype, Finset.image, Fin.fintype). It proves: the five residues j reduce to exactly j=1 and j=4 (the two distance-2 pairs avoiding {2,4}); for the three excluded residues the colliding label is exhibited (2, 4, 2); the label reflection k->1-k is involutive, fixes the anchor pair {0,1} and {2,4} setwise, swaps P1={0,3} with P4={1,3}, and carries every diagonal D_i to D_(4-i) -- which is what makes it a legitimate relabelling rather than an ad hoc permutation. Each statement is mapped to its paper line in the header. (2) INTERFACE-WALL.md identifies where the \u00a77 topology substitution stops being evidence: structurally, nothing in lean/ references the new lemmas (Five.lean:54 still applies the in-tree PlanarCover.compact_open_cover_impossible), so compilation is a parallel statement, not integration; analytically, the earliest wall is upstream, at the agreement interface FullApprox.agrees (FullApproximation.lean:255-265, hypothesis `hf` at :71), whose paper sources are Lemmas 7.4 and 7.8 -- not the cover obstruction. Also recorded: straddle_connected_unit IS proved (AngularBoundary.lean:156), so the Fubini/annulus straddle is not the gap. (3) No NC-1 search attempted, as instructed. No Lean built; no new searches beyond named rg/grep checks.",
+ "verified_results": [
+  {
+   "claim": "The five pairs {j-1,j+2} reduce to j=1 and j=4; the excluded residues collide at an exhibited label",
+   "grade": "written, not compiled (all `by decide`, closed over Fin 5 / ZMod 5); independently confirmed earlier by checks/five_cycle_licence.py",
+   "status": "source delivered, build queued as item 6"
+  },
+  {
+   "claim": "The reflection k->1-k is an automorphism of the diagonal system: D_i image = D_(4-i), P1 <-> P4, {0,1} and {2,4} fixed setwise",
+   "grade": "written, not compiled; previously verified numerically (list-level) in the block-3 computation",
+   "status": "source delivered, build queued as item 6"
+  },
+  {
+   "claim": "The topology substitution is not integrated: zero references to paper_lemma_7_5 / compact_cover_obstruction_gen anywhere in lean/",
+   "grade": "exact rg over lean/",
+   "status": "confirmed"
+  },
+  {
+   "claim": "The earliest analytic interface upstream of the cover obstruction is FullApprox.agrees (FullApproximation.lean:255-265), discharged by fullApprox_exists (:330) via fullApprox_exists_of_finite_core (:268); paper sources Lemmas 7.4 and 7.8",
+   "grade": "source-read [S]; proof body not audited",
+   "status": "identified, not verified"
+  },
+  {
+   "claim": "straddle_connected_unit is a proved lemma (AngularBoundary.lean:156), so the connected-straddling/Fubini step is compiled",
+   "grade": "source-read",
+   "status": "confirmed (existence), content not audited"
+  },
+  {
+   "claim": "graph_map_small_mesh_impossible's mesh hypothesis is not assumed in the end: graph_map_large_positive (Five.lean:94) splits the argument, and Mesh.no_large_positive_sequence covers the other branch",
+   "grade": "source-read",
+   "status": "confirmed"
+  }
+ ],
+ "conjectures": [
+  {
+   "statement": "If FullApprox.agrees is derived at exactly the paper's strength (agreement off the holes, with the paper's threshold parameters), then \u00a77's compiled chain certifies \u00a77 up to Lemma 7.4/7.8 content only.",
+   "status": "open; needs a statement-level audit of FullApproximation.lean",
+   "grade": "projection"
+  },
+  {
+   "statement": "The six-step argument plus FiveCycleResidues covers every residue enumeration in \u00a76.3.4, so no further finite check is needed there if (NC-1) or the retained Lemma 6.7 is used.",
+   "status": "conditional on the build",
+   "grade": "conditional"
+  }
+ ],
+ "artifacts": [
+  "supervisor/simplify-verification/AUDIT-FIVE-CYCLE.md",
+  "supervisor/simplify-verification/INTERFACE-WALL.md",
+  "supervisor/simplify-verification/LOCAL-CHECK-QUEUE.json",
+  "supervisor/simplify-verification/STATUS.json",
+  "supervisor/simplify-verification/TOPOLOGY-CONE-MANIFEST.json",
+  "supervisor/simplify-verification/TRANSFER-LEDGER.md",
+  "supervisor/simplify-verification/checks/five_cycle_licence.py",
+  "supervisor/simplify-verification/lean/CheckFifth.lean",
+  "supervisor/simplify-verification/lean/FiveCycleResidues.lean"
+ ],
+ "tests_run": [
+  {
+   "cmd": "rg -n 'compact_cover_obstruction_gen|paper_lemma_7_5' lean/",
+   "outcome": "zero hits: the substitution is not referenced by the development."
+  },
+  {
+   "cmd": "rg -n 'compact_open_cover_impossible' lean/OAI",
+   "outcome": "PlanarCovers.lean:374 (definition), Five.lean:54 (sole consumer)."
+  },
+  {
+   "cmd": "rg -ln fiveCenter_compact_finite lean/OAI",
+   "outcome": "CyclicCore.lean only (local-finiteness chain; not in the 25-module topology cone)."
+  },
+  {
+   "cmd": "rg -n 'straddle_connected_unit' lean/OAI",
+   "outcome": "AngularBoundary.lean:156 (proved), used at Mesh.lean:140 and ContinuumLimits.lean:213."
+  },
+  {
+   "cmd": "rg for FullApprox fields / fullApprox_exists",
+   "outcome": "structure at FullApproximation.lean:255-265; agrees-hypothesis at :71; producer chain :268 and :330-335."
+  },
+  {
+   "cmd": "Lean builds",
+   "outcome": "NONE. FiveCycleResidues.lean is delivered unbuilt by design; local serial queue item 6."
+  }
+ ],
+ "failed_routes": [
+  "Seeking a countermodel with fewer than four relaxed positions: none exists (single relaxation already gives 0 solutions, and all eight relax all four).",
+  "Reading the drop-one runs as evidence of individual necessity: that is the reverse implication and is not established by them.",
+  "Treating the cover-obstruction substitution as an integration: it cannot be, because no module of lean/ imports supervisor/.",
+  "Expecting the mesh/diameter bound to be the \u00a77 gap: the Lean splits it into a dichotomy inside Five.lean, so it is not a hypothesis left open."
+ ],
+ "next_step": "On the local PC, serially: item 6 (FiveCycleResidues.lean - smallest cone, fastest), item 1's second command (CheckFifth.lean), item 3 (the 25 cone sources from TOPOLOGY-CONE-MANIFEST.json), item 4 (m6 trim rebuild plus signature/axiom comparison). Mathematically: audit FullApproximation.lean's `agrees` derivation for statement fidelity (INTERFACE-WALL.md \u00a73).",
+ "escalation": {
+  "obstacle": "(NC-1), restated precisely: at an accumulation point x of a specified five-cycle locus, with a = lim h_n/|h_n| and R the rotation acting on directions, the list S(R a) = {i : R a lies in the closed essential support of state i at x} has no common label, i.e. the intersection of the diagonals D_i over i in S(R a) is empty.",
+  "definitions": "D_i = {i, i+2} in Z/5Z; state i at x = the set of directions whose palette is exactly D_i; closed essential support S_i = the closed set whose every neighbourhood meets state i in positive measure; S(u) = {i : u in S_i}.",
+  "hypotheses_available": "(6.6) a.e. transition rule at x; closedness and finiteness of the five supports; no-common-label at a and -a from the endpoint pair (a_n^+, a_n^-) and 'y_n in H_k for every label'; (D) disjointness of adjacent position lists; (N) neighbour existence in both directions.",
+  "attempted": "direct transport of the printed zero-area endpoint argument (needs a partner direction whose sum lies near a centre with all five edges present; none exists at r=1); derivation from V0,V3,D,N (fails: 8 countermodels, all relaxing 1,2,4,5); single-position weakening (fails: one relaxation never gives a model).",
+  "expected_useful_output": "Either a proof of (NC-1) \u2014 then FIVE-CYCLE-CORE's five-step elimination of Lemma 6.7 stands as a real simplification \u2014 or a construction of an accumulation configuration realising S(1) = {2,4}, which would prove Lemma 6.7 is not removable by support-list combinatorics alone."
+ },
+ "recovery_note": "2026-11-14 post-outage reconciliation: no jobs running (the only background job, jmwfyybqo, exited 0 long before the outage and its result is recorded); every artifact re-read and hash-checked; nothing re-run or duplicated. Latest instruction (block 3) was already complete at 06:16Z.",
+ "handoff": "Delivered: lean/FiveCycleResidues.lean (9 `by decide` theorems, unbuilt, exact 3-import list), INTERFACE-WALL.md, LOCAL-CHECK-QUEUE.json item 6. Preserved: AUDIT-FIVE-CYCLE.md (corrections C1-C3, classification, six-step proof keeping Lemma 6.7), TRANSFER-LEDGER.md, TOPOLOGY-CONE-MANIFEST.json (25 sources, hashes verified), ConnectedSetExclusion.lean (4 axioms printed), CheckFifth.lean (unrun). Open: (NC-1)/(NC-5); FullApprox.agrees fidelity."
+}

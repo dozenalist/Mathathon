@@ -1,0 +1,24 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/Five.lean	2026-11-13 19:22:02.634561790 +0000
++++ OAI/Geometry/PlaneColoring/Five.lean	2026-11-13 19:14:18.055662598 +0000
+@@ -120,19 +120,11 @@
+   exact FullApprox.no_large_positive_sequence hc hw (by norm_num) (by norm_num)
+     (fun n => F (φ n)) (ht.comp hφ.tendsto_atTop) (fun n => hsmall (φ n)) i hφbad
+ 
+-/-- The algebraic plane `E = algebraicClosure ℚ ℂ` already needs six colours: there is no
+-proper five-labelling of the countable unit-distance graph on `E`. -/
+-theorem no_proper_five_coloring_algebraic :
+-    ¬ ∃ c : PlaneFiveColor.Spectral.E → Fin 5,
+-      PlaneFiveColor.LabelModel.Proper 5 c := by
+-  rintro ⟨c,hc⟩
+-  obtain ⟨d,hd,hw⟩ := proper_to_borel_weak_algebraic hc
+-  exact no_measurable_weak_five_coloring hd hw
+-
+ /-- No unrestricted five-coloring separates all unit-distance pairs in the Euclidean plane. -/
+ theorem no_proper_five_coloring : ¬ ∃ c : ℂ → Fin 5, ProperColoring 5 c := by
+   rintro ⟨c,hc⟩
+-  exact no_proper_five_coloring_algebraic ⟨fun x => c x, fun x y h => hc x y h⟩
++  obtain ⟨d,hd,hw⟩ := proper_to_borel_weak hc
++  exact no_measurable_weak_five_coloring hd hw
+ end EuclideanFiveColor
+ end
+ 

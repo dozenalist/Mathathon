@@ -1,0 +1,4 @@
+'OAI.EuclideanFiveColor.exists_unit_pair_of_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+OAI.EuclideanFiveColor.exists_unit_pair_of_pair : ∀ (c : ℂ → Fin 6),
+  OAI.EuclideanFiveColor.ProperColoring 6 c → ∀ (i j : Fin 6), i ≠ j → ∃ x y, ‖x - y‖ = 1 ∧ c x = i ∧ c y = j
+TIME 83.92 s

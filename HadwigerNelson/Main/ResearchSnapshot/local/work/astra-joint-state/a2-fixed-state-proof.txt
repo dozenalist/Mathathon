@@ -1,0 +1,129 @@
+A2: A THREE-CENTRE PROOF OF FIXED-STATE SUPPORT EXCLUSION
+14 November 2026. Lead paper proof; independent review and Lean pending.
+
+TARGET: preserve ALL hypotheses and the conclusion of States.lean:704
+strict_state_no_unit_support, for arbitrary k, not just the four-state
+application. Avoid strict_state_sequence_local_false (:547),
+strict_state_sequence_false (:683), strict_state_no_unit_support (:704),
+and their descendants as proof inputs.
+
+EXACT STATEMENT
+Let c:C->Fin k be measurable, hw:WeakColoring k c. Fix x:C,
+J,K subsets of Fin k, X:Fin k, and assume
+  for every i, i not in J union K iff i=X.
+Let A,B subsets of R with
+  hA: RealState hc x A J,
+  hB: RealState hc x B K,
+  0 < volume A.
+If b,d belong to supp(volume restricted to B), then
+  |direction(b)-direction(d)| != 1.
+No FourCenter, FiveCenter, interface data, positivity of B, or finite-state
+encoding is added. A need not be periodic. This is exactly the original
+fixed-state contract.
+
+PROOF
+Suppose |direction(b)-direction(d)|=1. Set
+  y=x+direction(b), z=x+direction(d).
+Thus x,y,z form an equilateral unit triangle.
+
+BoundaryTrace:24 state_support_avoiding_trace, applied to hB at b and d,
+gives one trace at y and one at z, each identically zero on every label
+in K. BoundaryTrace:53 avoiding_trace_palette therefore gives
+  P_y(t) is not a subset of K,
+  P_z(t) is not a subset of K,
+for almost every angular t.
+
+FiveSupport:23 palette_neighbor_disjoint (general in k) gives, for almost
+every angular t,
+  P_y(t) disjoint P_x(t),
+  P_z(t) disjoint P_x(t),
+  P_y(t) disjoint P_z(t).
+For the third use, choose an angle alpha with direction(alpha)=z-y;
+this is possible because |z-y|=1, and apply the same theorem at y.
+All three centres and angles are fixed before taking exceptional sets.
+
+Pull these five conull statements to R by angleMk_quasiMeasurePreserving.
+From hA, after one FINITE intersection over labels in J,
+  t in A implies J subset P_x(t)
+for almost every real t. Because volume A>0, choose a t in A satisfying
+all six statements. Select i in P_y(t)\K. Disjointness from P_x(t) and
+J subset P_x(t) show i not in J. Hence i=X, and X belongs to P_y(t).
+The same argument gives X in P_z(t). This contradicts disjointness of
+P_y(t),P_z(t). QED.
+
+FINITE LABEL FACT USED
+For any finite label universe, if the complement of J union K is {X},
+J subset P, Q disjoint P, and Q not subset K, then X belongs to Q.
+Proof: choose i in Q\K, use disjointness to exclude i in J, then use the
+complement identity. No palette cardinality bound or disjointness J,K
+is required. This is the general-label version of the forcing step in
+FiveSupport.five_support_step_ban.
+
+DEPENDENCY CHECK
+The three actual ingredients are:
+1. state_support_avoiding_trace (BoundaryTrace:24-52).
+   Uses RealState, typical sampling, ae_circle_palette_exclusion,
+   support_good_sequence, TraceVector compactness and trace_of_realization.
+2. avoiding_trace_palette (BoundaryTrace:53-72).
+   Uses trace_bounds and tracePositive_le_palette.
+3. palette_neighbor_disjoint (FiveSupport:23-32).
+   Uses palette_neighbor_real (:9), hence palette_smooth_transport in
+   PaletteTransport, plus the null exceptional parallel directions.
+None of those declarations calls States:547, :683, :704 or descendants.
+BoundaryTrace IMPORTS States for the RealState API; importing a module is
+not invoking all its declarations. The strict-sequence chain remains
+outside this replacement's declaration-level dependencies.
+
+This proof RETAINS upstream weak-trace compactness, fixed-palette L1
+transport, spectral smoothing and the general weak-colouring assumptions.
+It removes the specific moving-state L1/density-point sequence machinery
+from the fixed-state theorem. It does not claim an analysis-free proof.
+
+INTERFACE APPLICATION
+Interfaces:266 interfaceStateSupport_no_unit assumes only
+  hg: a.e. t, fourGroup(fourState x t) subset palette x t,
+and s!=0. It does NOT assume FourCenter.
+The existing proof chooses the opposite nonzero r; proves complement of
+fourGroup r union fourGroup s is {4}; lifts the two angular support points
+using angle_support_lift; derives RealState using
+four_state_represents_of_group; and obtains positive measure of the r-state
+using four_state_diagonal_positive_of_group + angle_state_preimage_positive.
+All those exact existing arguments remain valid. Replace only the final
+call to States:704 by the theorem just proved. Its statement is identical.
+
+The proposed alternate route through FourTransport:218 four_support_no_sixty
+is NOT an independent replacement. It assumes FourCenter, which hg does
+not provide, and invokes four_support_sequence_no_unit, which calls
+States:683 strict_state_sequence_false in FourContinuity:452. A chord-angle
+converse or support-lift lemma cannot repair either issue.
+
+SOURCE ORDER / MINIMAL IMPLEMENTATION
+palette_neighbor_real and palette_neighbor_disjoint currently live at the
+top of FiveSupport, which imports Accumulation. Interfaces currently
+imports AngularBoundary. For a PRIVATE validation file importing both
+Interfaces and FiveSupport, the proof is straightforward and does not
+change originals. For integration, put the two general neighbor lemmas
+plus this general fixed-state theorem in a small module importing
+BoundaryTrace (which already supplies palette transport upstream), then
+let FiveSupport and Interfaces import that module. Alternatively add the
+general neighbor lemmas to BoundaryTrace, since they have no five-state
+dependency. Avoid making Interfaces import all of FiveSupport as the
+default architecture; inspect module cycles first.
+
+Literal replacement of the theorem BODY inside States is a separate
+source-order refactor: BoundaryTrace imports States to obtain RealState,
+so importing BoundaryTrace back into States would create a cycle. Either
+move the primitive RealState API earlier or leave the old theorem present
+but unused by the two fixed-state consumers. No such refactor is needed
+to validate the mathematics and unchanged consumer statements.
+
+MOVING-STATE LIMIT AND THE A2 EXTENSION
+This does not replace the unchanged generic strict_state_sequence_false:
+in that theorem the two neighbouring centres only APPROACH unit distance
+and their base x_n need not converge. The exact third neighbor-palette
+disjointness used above is unavailable at finite n. However, the separate
+extension a2-closed-carrier-proof.txt proves closedness of the set of
+K-avoiding trace centres. That DOES cover the actual FourContinuity
+consumer, whose hypotheses explicitly include converging base centres
+and a positive complementary state at the limit. See that packet before
+treating the four-support call as an unavoidable residual dependency.

@@ -1,0 +1,11 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/Transitions.lean	2026-11-13 19:09:13.641231140 +0000
++++ OAI/Geometry/PlaneColoring/Transitions.lean	2026-11-13 19:29:50.493296593 +0000
+@@ -48,7 +48,7 @@
+       simp only [sub_add_cancel_left,norm_neg]
+       exact Circle.norm_coe _
+     exact weak_density_proper c hc hw (c q) hd hq (by simpa only [Typical,he] using ht)
+-  simp only [sampleFn,Complex.ofReal_one,one_mul,ite_eq_right hn,Pi.zero_apply]
++  simp only [sampleFn,Complex.ofReal_one,one_mul,if_neg hn,Pi.zero_apply]
+ lemma exists_energy_small {X : Type*} [MeasurableSpace X] (μ : Measure X)
+     {T : Set X} (hT : MeasurableSet T) (hfin : μ T < ⊤) {E : X → ℝ}
+     (hE : Integrable E μ) (hn : ∀ᵐ q ∂μ, 0≤E q) {P : X → Prop} (hP : ∀ᵐ q ∂μ, P q)

@@ -1,0 +1,75 @@
+{
+ "schema": 3,
+ "not_a_claim": "Supplementary inspection only. The accepted evidence for the integration is textual hypotheses + defeq + application compatibility (SignatureEquivalence R5, SignatureCheckFresh R5). Exact binder identity is NOT claimed by the integration.",
+ "supersedes": {
+  "file": "archive/binder_expected.v2.FAILED.json",
+  "sha256": "fb575764b0d145e7e95b926258d27bbe74669b869946af45c2e1c30cef6e9f88",
+  "why": "v2 asserted that the predicate aliases retain StandardBorelSpace Y and Nonempty Y. The accepted #check shows FiniteEncodingApproximationAt carries only MeasurableSpace X, MeasurableSpace Y and IsProbabilityMeasure mu, with three type parameters. v2's instance sets were invented from the variable block instead of read from the declaration header."
+ },
+ "provenance": {
+  "definitions": "ACTUAL accepted #check headers, as reported after the local run: FiniteEncodingApproximationAt carries exactly {MeasurableSpace X, MeasurableSpace Y, IsProbabilityMeasure mu} with 3 type parameters (X, Y, W; W occurs through q : Y -> W) and the 6 explicit arguments mu, p, q, b, m, gamma.",
+  "theorems": "NOT YET FROZEN. Only what is justified from the sources is enforced: the two omitted instances are forbidden, the type parameters are X, Y, W, and the explicit sequence is read off the source binder lists. The instance set is left unfrozen on purpose rather than guessed a second time; the first real capture is to be frozen.",
+  "note": "The v2 failure was exactly this: guessing an instance set from the `variable` block. Lean keeps only the instances the declaration actually needs, and those are visible only in the header."
+ },
+ "common": {
+  "type_binders": ["X", "Y", "W"],
+  "instance_forbidden_theorems": ["StandardBorelSpace Y", "Nonempty Y"],
+  "freeze_protocol": "On the first real capture, copy the printed instance multiset for each unfrozen declaration into `instance_allowed` here and set `unfrozen: false`. From then on an unknown extra instance is a FAIL."
+ },
+ "theorems": {
+  "finite_uniform_precision_contradiction": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+   "type_binders": ["X", "Y", "W"],
+   "instance_forbidden": ["StandardBorelSpace Y", "Nonempty Y"],
+   "unfrozen": true,
+   "instance_allowed": null,
+   "explicit_order": ["μ","p","q","b","hp","hq","hb","m","hm","g","hg","hwild","ρ","c","N","hρ","hc","hN","harc","happrox"],
+   "no_total_check": true
+  },
+  "ambient_uniform_precision_contradiction": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+   "type_binders": ["X", "Y", "W"],
+   "instance_forbidden": ["StandardBorelSpace Y", "Nonempty Y"],
+   "unfrozen": true,
+   "instance_allowed": null,
+   "explicit_order": ["μ","p","q","b","hp","hq","hb","m","hm","g","hg","hwild","ρ","c","N","hρ","hc","hN","harc","happrox"],
+   "no_total_check": true
+  }
+ },
+ "definitions": {
+  "FiniteEncodingApproximationAt": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+   "type_binders": ["X", "Y", "W"],
+   "instance_forbidden": [],
+   "unfrozen": false,
+   "instance_allowed": ["MeasurableSpace X", "MeasurableSpace Y", "IsProbabilityMeasure μ"],
+   "explicit_order": ["μ","p","q","b","m","γ"]
+  },
+  "AmbientEncodingAt": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+   "type_binders": ["X", "Y", "W"],
+   "instance_forbidden": [],
+   "unfrozen": false,
+   "instance_allowed": ["MeasurableSpace X", "MeasurableSpace Y", "IsProbabilityMeasure μ"],
+   "explicit_order": ["μ","p","q","b","m","γ"]
+  },
+  "EncodingApproximationAt": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+   "type_binders": ["X", "Y", "W", "Z"],
+   "instance_forbidden": [],
+   "unfrozen": false,
+   "instance_allowed": ["MeasurableSpace X", "MeasurableSpace Y", "IsProbabilityMeasure μ"],
+   "explicit_order": ["μ","p","P","S","b","m","γ"],
+   "note": "Z is a value binder whose type is Type, counted among the type binders. Instance set taken from the same header family as FiniteEncodingApproximationAt; if the real capture differs, this entry is the one to correct first."
+  }
+ },
+ "comparator_rules": [
+  "absent declaration or ERROR line -> FAIL (fail closed)",
+  "type binders: exact names in order",
+  "instance binders: if `unfrozen` is true, print the observed multiset and emit FREEZE-CANDIDATE, failing only on a forbidden entry; if false, multiset equality with `instance_allowed`, unknown type -> UNKNOWN EXTRA INSTANCE -> FAIL",
+  "forbidden instance present -> FAIL, named individually",
+  "strict-implicit binder -> FAIL, counted separately from explicit",
+  "explicit binder name sequence must match exactly",
+  "total binder count is checked only where the declaration is frozen"
+ ]
+}

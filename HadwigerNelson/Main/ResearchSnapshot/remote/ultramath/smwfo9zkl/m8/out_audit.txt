@@ -1,0 +1,19 @@
+Section 7 extracted: 471 lines, 29844 characters
+
+(1) Section 5 citations and palette-cardinality language inside Section 7:
+   total: 0 (expected 0)
+
+(2) every occurrence of 'five' in Section 7, and its shape:
+   line    1: Continue to assume that a weak measurable five-coloring is given. We retain the labels I and their   [CHECK BY HAND]
+   line   19: Proposition 7.1 (A cycle of common exclusion continua). For the weak measurable five-coloring under   [CHECK BY HAND]
+   line  147: The denominator is positive because the five probabilities sum to one. Thus qϵ is a continuous map   [allowed]
+   line  149: the complete graph on its five vertices. In particular, qiϵ (z) > 0 if and only if piϵ (z) > α.   [allowed]
+   line  422: simple cycles in the complete graph on five vertices. Pass to a subsequence with one chosen cy-   [allowed]
+   total: 5 
+
+(3) the three k-dependent constants of Section 7:
+   alpha bound    ['ated with missing edges. Fix 0 < α < 1/5, and define']
+   G = K_k        ['the complete graph on its five vertices. In particular, qiϵ (z) > 0 if and only if piϵ (z) > α.']
+   range of ell   ['cle, of length ℓ ∈ {3, 4, 5}, and label its vertices i0 , . . . , iℓ−1 in cyclic order. For each of its edge']
+
+audit passes: True

@@ -1,0 +1,81 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: 5599ceb31bba262a191e48eb087ec95efaf5365bb14c658cfcef245d984667cd
+Status: failed
+Exit code: 1
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:62:37: error(lean.unknownIdentifier): Unknown identifier `D`
+
+Note: It is not possible to treat `D` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:64:42: error(lean.unknownIdentifier): Unknown identifier `D`
+
+Note: It is not possible to treat `D` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:67:13: error(lean.unknownIdentifier): Unknown identifier `IsWild`
+
+Note: It is not possible to treat `IsWild` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:75:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:76:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:91:37: error(lean.unknownIdentifier): Unknown identifier `D`
+
+Note: It is not possible to treat `D` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:93:42: error(lean.unknownIdentifier): Unknown identifier `D`
+
+Note: It is not possible to treat `D` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:96:13: error(lean.unknownIdentifier): Unknown identifier `IsWild`
+
+Note: It is not possible to treat `IsWild` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:117:37: error(lean.unknownIdentifier): Unknown identifier `D`
+
+Note: It is not possible to treat `D` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:119:42: error(lean.unknownIdentifier): Unknown identifier `D`
+
+Note: It is not possible to treat `D` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:122:13: error(lean.unknownIdentifier): Unknown identifier `IsWild`
+
+Note: It is not possible to treat `IsWild` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:130:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:131:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:140:37: error(lean.unknownIdentifier): Unknown identifier `D`
+
+Note: It is not possible to treat `D` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:142:42: error(lean.unknownIdentifier): Unknown identifier `D`
+
+Note: It is not possible to treat `D` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:145:13: error(lean.unknownIdentifier): Unknown identifier `IsWild`
+
+Note: It is not possible to treat `IsWild` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:158:14: error(lean.unknownIdentifier): Unknown constant `SignatureFresh.control_finite`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:159:14: error(lean.unknownIdentifier): Unknown constant `SignatureFresh.fresh_finite`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:160:14: error(lean.unknownIdentifier): Unknown constant `SignatureFresh.control_ambient`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureCheckFresh.lean:161:14: error(lean.unknownIdentifier): Unknown constant `SignatureFresh.fresh_ambient`
+
+STDERR
+

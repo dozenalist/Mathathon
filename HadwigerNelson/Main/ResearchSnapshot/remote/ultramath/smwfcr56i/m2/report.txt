@@ -1,0 +1,9 @@
+F: k=6 analogue. Earlier §1 "defect" withdrawn (paper has r=2/5). File k6_nogo.md. Checks: python3 check_k.py, check_gadget.py, check_moser.py, check_seven.py.
+
+1. THM A (general-k palette bound, proved). Every weak measurable k-colouring, centre x: |P_x(e)|<=k-3 a.e. A fixed (k-2)-subset A lies in P_x(e) on a positive-measure set E; B=I\A has |B|=2 (the only label-count input); (5.2) makes the circle sample at x+e avoid A; typicality makes it a trace in W_{x+e} supported in B, so x+e is binary for the pair B; Lemma 5.5 separates {x+e: e in E} by delta_* > 0, contradicting compactness of x+S. k=5 gives 2 (the paper's Prop 5.6), k=6 gives 3.
+
+2. THM B (derived). At a length-3 interface, T the cycle labels, |T^c|=k-3, A(e)=P_x(e) cap T^c: 1 <= |A(e)| <= k-4 and A(e) cap A(Re)=empty. Lower: two of the three signs agree, so O(e)=T^c or I(e)=T^c, and (8.1) gives 1<=|A|. Upper: A(e)=T^c gives A(Re)=empty by (5.7), contradicting the lower bound at Re. Unique outsider iff k=5.
+
+3. k=6: the state is set-valued (1 or 2 of 3 labels), six states; disjointness graph has a triangle; |A|=2 is not excluded by the palette-level hypotheses (model with |A|=2 on a set of measure pi, C8). Prop 7.1 also gives cycle length 6, untreated.
+
+4. Naive k=6 substitutes fail, certified: unit triangle 3-coloured 4,5,6; 4-edge path 3-coloured with distinct endpoints; palette {0,2,4} admissible at the k=6 four-cycle locus. Region (8.4)+Moser verified; §8.3 splits partly transfer.

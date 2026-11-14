@@ -1,0 +1,217 @@
+OK   OAI.Analysis.PlaneSpectrum.Basic (0.0s)
+OK   OAI.Analysis.PlaneSpectrum.Characters (0.0s)
+FAIL OAI.Analysis.PlaneSpectrum.Fourier (211.5s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/Fourier.lean:102:5: error: Function expected at
+  average_memLp
+but this term has type
+  ?m.7
+
+Note: Expected a function because this term is being applied to the argument
+  μ
+
+Hint: The identifier `average_memLp` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/Fourier.lean:115:40: error: Function expected at
+  average_memLp
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  μ
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/Fourier.lean:118:22: error(lean.unknownIdentifier): Unknown identifier `fiber_memLp`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/Fourier.lean:119:29: error(lean.invalidField): Invalid field notation: Type of
+  hx
+is not known; cannot resolve field `integrable`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `BoundedContinuousFunction.integrable`
+  • `BoundedVariationOn.integrable`
+  • `CompactlySupportedContinuousMap.integrable`
+  • `ContDiffBump.integrable`
+  • `ContDiffMapSupportedIn.integrable`
+  • `SchwartzMap.integrable`
+  • `TestFunction.integrable`
+  • `Asymptotics.IsBigO.integrable`
+  • `BoxIntegral.HasIntegral.integrable`
+  • `ConvolutionExistsAt.integrable`
+  • `IntegrableOn.integrable`
+  • `Martingale.integrable`
+  • `MemLp.integrable`
+  • `Submartingale.integrable`
+  • `Supermartingale.integrable`
+  • `Polynomial.toAddCircle.integrable`
+  • `ProbabilityTheory.HasGaussianLaw.integrable`
+  • `ProbabilityTheory.HasLaw.integrable`
+  • `ProbabilityTheory.HasSubgaussianMGF.integrable`
+  • `ProbabilityTheory.IsCondKernelCDF.integrable`
+  • `ProbabilityTheory.IsRatCondKernelCDF.integrable`
+  • `ProbabilityTheory.IsRatCondKernelCDFAux.integrable`
+  • `L1.SimpleFunc.integrable`
+  • `SimpleFunc.FinMeasSupp.integrable`
+  • `ProbabilityTheory.Kernel.IsFiniteKernel.integrable`
+  • `ProbabilityTheory.Kernel.IsMarkovKernel.integrable`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/Fourier.lean:102:67: error: unsolved goals
+X : Type u_1
+Ω : Type u_2
+inst✝³ : MeasurableSpace X
+inst✝² : MeasurableSpace Ω
+μ : Measure X
+inst✝¹ : SFinite μ
+ν : Measure Ω
+inst✝ : IsProbabilityMeasure ν
+x✝ : Sort u_3
+average_memLp : x✝
+F : X × Ω → ℂ
+hF : StronglyMeasurable F
+hF2 : Integrable (fun z => ‖F z‖ ^ 2) (μ.prod ν)
+G : Ω → ↥(Lp ℂ 2 μ)
+hG : Integrable G ν
+hrep : ∀ᵐ (ω : Ω) ∂ν, ↑↑(G ω) =ᵐ[μ] fun x => F (x, ω)
+g : ↥(Lp ℂ 2 μ)
+hg2 : Integrable (fun z => ‖↑↑g z.1‖ ^ 2) (μ.prod ν)
+hpair : Integrable (fun z => inner ℂ (↑↑g z.1) (F z)) (μ.prod ν)
+⊢ ∫ (a : X), inner ℂ (↑↑g a) (↑↑sorry a) ∂μ = ∫ (x : Ω), inner ℂ g (G x) ∂ν
+
+OK   OAI.Geometry.PlaneColoring.Coloring (0.0s)
+OK   OAI.Analysis.PlaneSpectrum.CircleDecay (408.1s)
+OK   OAI.Geometry.PlaneColoring.WeakColoring (408.0s)
+FAIL OAI.Geometry.PlaneColoring.Compactness (669.7s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Geometry/PlaneColoring/Compactness.lean:55:24: error(lean.unknownIdentifier): Unknown identifier `sampleFn_measurable`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Geometry/PlaneColoring/Compactness.lean:56:77: error(lean.unknownIdentifier): Unknown identifier `sampleFn_nonneg`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Geometry/PlaneColoring/Compactness.lean:56:38: error: unsolved goals
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+y : ℂ
+r : ℝ
+i : Fin k
+t : Angles
+⊢ |sampleFn c y r i t| ≤ 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Geometry/PlaneColoring/Compactness.lean:57:61: error: Function expected at
+  RealL2
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  angularMeasure
+
+Hint: The identifier `RealL2` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Geometry/PlaneColoring/Compactness.lean:74:61: error: Function expected at
+  ofNorm
+but this term has type
+  ?m.5
+
+Note: Expected a function because this term is being applied to the argument
+  E
+
+Hint: The identifier `ofNorm` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Geometry/PlaneColoring/Compactness.lean:75:19: error: Invalid argument: Variable `ofNorm` is not a proposition or let-declaration
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Geometry/PlaneColoring/Compactness.lean:74:83: error: unsolved goals
+E : Type u_1
+inst✝² : NormedAddCommGroup E
+inst✝¹ : InnerProductSpace ℝ E
+inst✝ : CompleteSpace E
+x✝ : Sort u_2
+ofNorm : x✝
+v : E
+hv : ‖v‖ ≤ 1
+⊢ (InnerProductSpace.toDual ℝ E).symm (WeakDual.toStrongDual ↑sorry) = v
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Geometry/PlaneColoring/Compactness.lean:75:26: warning: This simp argument is unused:
+  weakHilbert
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [value, ofNorm, StrongDual.toStrongDual_toWeakDual, LinearIsometryEquiv.symm_apply_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Geometry/PlaneColoring/Compactness.lean:75:38: warning: This simp argument is unused:
+  StrongDual.toStrongDual_toWeakDual
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [value, ofNorm, weakHilbert, LinearIsometryEquiv.symm_apply_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Geometry/PlaneColoring/Compactness.lean:75:73: warning: This simp argument is unused:
+  LinearIsometryEquiv.symm_apply_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [value, ofNorm, weakHilbert, StrongDual.toStrongDual_toWeakDual]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Geometry/PlaneColoring/Compactness.lean:94:4: error: Function expected at
+  traceValue
+but this term has type
+  ?m.5
+
+Note: Expected a function because this term is being applied to the argument
+  (sampleCode c hc y r)
+
+Hint: The identifier `traceValue` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+
+FAIL OAI.Analysis.PlaneSpectrum.CircleOperator (906.2s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:36:12: error(lean.unknownIdentifier): Unknown identifier `ProbabilityL2.average_toLp_integral`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:17:83: error: unsolved goals
+g : ↥ComplexPlaneL2
+F : ℂ × Angles → ℂ := fun p => ↑↑g (p.1 + direction p.2)
+hF : StronglyMeasurable F
+hg2 : Integrable (fun x => ‖↑↑g x‖ ^ 2) volume
+hi : Integrable (fun p => ‖F p‖ ^ 2) (volume.prod angularMeasure)
+⊢ ↑↑(circleOperator g) =ᵐ[volume] fun x => ∫ (t : Angles), ↑↑g (x + direction t) ∂angularMeasure
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:71:12: error(lean.unknownIdentifier): Unknown identifier `ProbabilityL2.average_toLp_integral`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:53:101: error: unsolved goals
+g : ↥ComplexPlaneL2
+F : ℂ × Angles → ℂ := fun p => planePhase (direction p.2) p.1 * ↑↑(𝓕 g) p.1
+hF : StronglyMeasurable F
+hi : Integrable (fun p => ‖F p‖ ^ 2) (volume.prod angularMeasure)
+hG : Integrable (fun t => 𝓕 ((planeTranslate (direction t)) g)) angularMeasure
+⊢ 𝓕 (circleOperator g) = circleMultiplier (𝓕 g)
+
+FAIL OAI.Analysis.PlaneSpectrum.InvariantMean (959.4s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:44:82: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g x : G
+n : ℕ
+f : G →ᵇ ℝ
+⊢ ∑ c ∈ Finset.range (n + 1), (shift (c • g) f) x = ∑ k ∈ Finset.range (n + 1), f (x + k • g) ∨ ↑n + 1 = 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:75:27: error(lean.unknownIdentifier): Unknown identifier `shift_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:77:2: error: Tactic `apply` failed: could not unify the conclusion of `Finset.sum_congr rfl`
+  Finset.sum ?m.55 ?m.52 = Finset.sum ?m.55 ?m.53
+with the goal
+  ∑ k ∈ Finset.range (n + 1), (shift h f) (x + k • g) =
+    (∑ k ∈ Finset.range (n + 1), shift (k • g) f).toContinuousMap ({ toFun := fun x => x + h, continuous_toFun := ⋯ } x)
+
+Note: The full type of `Finset.sum_congr rfl` is
+  (∀ x ∈ ?m.55, ?m.52 x = ?m.53 x) → Finset.sum ?m.55 ?m.52 = Finset.sum ?m.55 ?m.53
+
+case e_a
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g h : G
+n : ℕ
+f : G →ᵇ ℝ
+x : G
+⊢ ∑ k ∈ Finset.range (n + 1), (shift h f) (x + k • g) =
+    (∑ k ∈ Finset.range (n + 1), shift (k • g) f).toContinuousMap ({ toFun := fun x => x + h, continuous_toFun := ⋯ } x)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:103:52: error(lean.unknownIdentifier): Unknown identifier `shift_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:102:39: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g x : G
+n : ℕ
+f : G →ᵇ ℝ
+k : ℕ
+⊢ (shift g f) (x + k • g) - f (x + k • g) = f (x + (k • g + g)) - f (x + k • g)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim7/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:103:87: warning: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [BoundedContinuousFunction.sub_apply, shift_apply, add_nsmul, one_nsmul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+
+OK   OAI.Analysis.PlaneSpectrum.Multipliers (354.0s)

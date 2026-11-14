@@ -1,0 +1,23 @@
+import Mathlib
+open MeasureTheory Filter Topology Set
+#check @Real.volume_Ioo
+#check @volume_pi_Ioo
+#check @Real.volume_pi_Ioo
+#check @volume_Icc_pi
+#check @Complex.volume_preserving_equiv_real_prod
+#check @Complex.measurableEquivRealProd
+#check @MeasurePreserving.measure_preimage
+#check @MeasurePreserving.measure_preimage_equiv
+#check @MeasurePreserving.measure_image_equiv
+#check @le_limsup_of_frequently_le
+#check @Filter.limsup
+#check @SimpleGraph.IsAcyclic
+#check @SimpleGraph.Walk.IsCycle
+#check @LinearIsometryEquiv.measurePreserving
+#check @Complex.volume_ball
+#check @Metric.mem_nhdsWithin_iff
+#check @ENNReal.ofReal_le_ofReal
+#check @ENNReal.lt_div_iff_mul_lt
+#check @MeasureTheory.measure_mono
+#check @Complex.normSq
+#check @Complex.sq_norm

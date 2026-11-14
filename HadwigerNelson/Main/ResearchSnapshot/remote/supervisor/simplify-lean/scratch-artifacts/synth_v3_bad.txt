@@ -1,0 +1,24 @@
+DECL OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction thm
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 0 X implicit Type
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 1 Y implicit Type
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 2 W implicit Type
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 3 inst instance MeasurableSpace Y
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 4 inst instance StandardBorelSpace Y
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 5 inst instance Nonempty Y
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 6 μ explicit Measure X
+DECL OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt def
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 0 X implicit Type
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 1 Y implicit Type
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 2 W implicit Type
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 3 inst instance MeasurableSpace X
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 4 inst instance MeasurableSpace Y
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 5 inst instance PolishSpace Y
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 6 μ explicit Measure X
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 7 inst instance IsProbabilityMeasure μ
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 8 p explicit X → Y
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 9 q explicit Y → W
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 10 b explicit X → D
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 11 m explicit ℕ
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 12 γ explicit ℝ
+MISSING OAI.PlaneFiveColor.Spectral.EncodingApproximationAt
+ERROR OAI.PlaneFiveColor.Spectral.AmbientEncodingAt boom

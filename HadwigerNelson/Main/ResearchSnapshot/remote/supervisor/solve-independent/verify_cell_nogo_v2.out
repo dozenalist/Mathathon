@@ -1,0 +1,52 @@
+A. strict-forced a-interval per ring N (a = hexagon circumradius, cells of the honeycomb)
+   N     mu^2_max (=dmin^2 at a=1)      nu^2_min (=dmax^2 at a=1)     forced for a in
+    1   (0)+(0)r3                  (13)+(0)r3                 (0.277350, inf)
+    3   (1)+(0)r3                  (25)+(0)r3                 (0.200000, 1.000000)
+    4   (3)+(0)r3                  (28)+(0)r3                 (0.188982, 0.577350)
+    7   (7)+(0)r3                  (43)+(0)r3                 (0.152499, 0.377964)
+    9   (12)+(0)r3                 (49)+(0)r3                 (0.142857, 0.288675)
+   12   (16)+(0)r3                 (64)+(0)r3                 (0.125000, 0.250000)
+   13   (19)+(0)r3                 (67)+(0)r3                 (0.122169, 0.229416)
+   16   (27)+(0)r3                 (76)+(0)r3                 (0.114708, 0.192450)
+   19   (31)+(0)r3                 (91)+(0)r3                 (0.104828, 0.179605)
+   21   (37)+(0)r3                 (97)+(0)r3                 (0.101535, 0.164399)
+   25   (48)+(0)r3                 (109)+(0)r3                (0.095783, 0.144338)
+
+B. the actual forced set on subintervals of (1/sqrt13, 1/2) = (0.277350, 0.500000)
+   (window sufficiency: forced at a >= 1/sqrt13 forces dmin^2(a=1) <= 13, i.e. 3N <= 31.4,
+    so only rings N in {1,3,4,7,9} can occur -- all inside the computed window)
+   a^2 in (0.076923, 0.083333) = (a_lo, a_hi) with a in (0.277350, 0.288675)  ->  forced rings [1, 3, 4, 7, 9]
+   a^2 in (0.083333, 0.142857) = (a_lo, a_hi) with a in (0.288675, 0.377964)  ->  forced rings [1, 3, 4, 7]
+   a^2 in (0.142857, 0.250000) = (a_lo, a_hi) with a in (0.377964, 0.500000)  ->  forced rings [1, 3, 4]
+   ==> on the WHOLE open range the forced set contains {1,3,4}; its exact value is
+       {1,3,4,7,9} on (1/sqrt13,1/sqrt12), {1,3,4,7} on (1/sqrt12,1/sqrt7), {1,3,4} on (1/sqrt7,1/2).
+
+C. at a = 0.28 (just above 1/sqrt13): forced rings = [1, 3, 4, 7, 9]
+   ==> N=7 IS forced at the small end; the v1 claim 'forced set is exactly N in {1,3,4}'
+       is FALSE on (1/sqrt13, 1/sqrt7) = (0.277350, 0.378000).  It is true on (1/sqrt7, 1/2).
+
+D. a = 2/5: the 7 cells {0} u N(0) are pairwise STRICTLY forced: True
+   chi(T^2) = 7 : the 7-colouring p+3q mod 7 is 0-free on all 18 vectors with N <= 4 : True
+   smallest nonzero same-colour vector has N = 7; witness (p,q) = (-3, 1);
+   its strict margin dmin^2 = (28/25)+(0)r3 = 1.1200 > 1  (paper's cruder bound (sqrt21-2)*2/5 squared = 1.0672)
+   crude check: min same-colour |v|^2 = 21a^2 = 3.36 > (1+2a)^2 = 3.24
+
+E. tangency audit at the lower endpoint.  Take a^2 = 1/13 exactly (a = 1/sqrt13), ring N=1.
+   dmax^2 for a tangent pair = 13 a^2 = 1 exactly, so the unit pair exists only at the
+   distance maximum, which is attained at a VERTEX of 2V:
+   dmin^2 = (0)+(0)r3, dmax^2 = (13)+(0)r3 (should be 13), maximiser z = ((0)+(2)r3, (1)+(0)r3)
+   z is a vertex of 2V, so p and q are vertices of the two hexagons, on the tiling's
+   1-skeleton.  Under any partition (boundary-ownership) rule such a point belongs to
+   exactly one cell, and need not belong to either of the two tangent cells -- so the
+   pair is NOT forced, and the criterion must be strict.  Hence the range is OPEN at 1/sqrt13.
+   relative maximiser z - v = ((0)+(1)r3, (1)+(0)r3), one of the six vertices of 2V: confirmed exactly
+   [checked: the maximiser is one of the six vertices of 2V]
+
+F. upper endpoint a = 1/2 exactly.  Cell diameter is 2a = 1, so a cell contains a unit pair
+   only on its boundary: dmax^2 of one cell = (1)+(0)r3 = 1 exactly, maximiser ((0)+(1/2)r3, (1/2)+(0)r3)
+   and the maximiser is a pair of opposite VERTICES, so no unit pair lies in the open cell:
+   the interior distance set is (0,1), 1 not attained.  Hence a = 1/2 is admissible.
+   rings 1,3,4 are still STRICTLY forced at a = 1/2 (spot check on all ring classes): True
+   same-colour ring N=7: dmin^2 = 7a^2 = 1.75 > 1, so the index-7 colouring is proper at a = 1/2
+   ==> corrected range: (1/sqrt13, 1/2];  for a > 1/2 the family is empty (a cell
+       contains a unit pair in its interior), so the statement holds vacuously there.

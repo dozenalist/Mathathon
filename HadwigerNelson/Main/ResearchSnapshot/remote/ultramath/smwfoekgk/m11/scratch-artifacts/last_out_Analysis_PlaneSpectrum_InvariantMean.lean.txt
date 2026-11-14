@@ -1,0 +1,45 @@
+ean:895:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+work/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:907:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+work/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:932:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:931:51: error: unsolved goals
+H : Type u_2
+inst : NormedAddCommGroup H
+inst_1 : InnerProductSpace ℝ H
+inst_2 : CompleteSpace H
+h j : ↥AF → H
+N M : ℕ
+B C : ℝ
+hs : ∀ (t : ↥AF), ↑N < |↑t| → h t = 0
+hb : ∀ (t : ↥AF), ‖h t‖ ≤ B
+js : ∀ (t : ↥AF), ↑M < |↑t| → j t = 0
+jb : ∀ (t : ↥AF), ‖j t‖ ≤ C
+he : ∀ (a : ℝ) (b : a ∈ AF), h ⟨a, b⟩ = j ⟨a, b⟩
+⊢ weakIntegral h hs hb = weakIntegral j js jb
+work/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:938:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+work/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:982:10: error: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+work/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:1042:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:1041:53: error: unsolved goals
+H : Type u_2
+inst : NormedAddCommGroup H
+inst_1 : InnerProductSpace ℝ H
+inst_2 : CompleteSpace H
+U : ↥AF → H ≃ₗᵢ[ℝ] H
+φ : ℝ → ℝ
+N : ℕ
+B : ℝ
+hφ : ∀ (t : ℝ), ↑N < |t| → φ t = 0
+hb : ∀ (t : ℝ), |φ t| ≤ B
+v : H
+hu : ∀ (a : ℝ) (b : a ∈ AF) (a_1 : ℝ) (b_1 : a_1 ∈ AF) (v : H), (U ⟨a, b⟩) ((U ⟨a_1, b_1⟩) v) = (U ⟨a + a_1, ⋯⟩) v
+hc : UniformContinuous φ
+⊢ Tendsto (fun s => (U s) (smoothedVector U (fun t => φ ↑t) ⋯ ⋯ v)) (𝓝 0) (𝓝 (smoothedVector U (fun t => φ ↑t) ⋯ ⋯ v))

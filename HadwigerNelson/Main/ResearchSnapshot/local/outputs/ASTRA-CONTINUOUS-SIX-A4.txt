@@ -1,0 +1,355 @@
+ASTRA CONTINUOUS SIX A4 — EXACT CONE CLASSIFICATION AND PAIRED RIGIDITY
+14 November 2026. Continuous-direction assignment.
+
+RESULT
+
+There are two distinct results, with different hypotheses.
+
+1. The CLOSED-60-degree necessary condition CC60 has a complete continuous
+   classification. It is equivalent to requiring circular distance >60
+   degrees between every two NONADJACENT cycle-edge indices. Among six
+   distinct directions, 57 of the 60 unoriented cyclic orders are feasible.
+   Every partition into adjacent coincident pairs and remaining singletons
+   is feasible; with 3, 4, or 5 distinct directions, every order of its
+   blocks is feasible. Exact gap inequalities below describe every angle,
+   including all equalities and coincidences. Thus the six grid survivors
+   do NOT classify the continuous CC60 problem.
+
+2. Actual measurable weak colouring supplies an additional elementary
+   obstruction: directions in a cone of aperture STRICTLY LESS THAN 120
+   degrees cannot jointly exclude all but ONE label. Applying this to two
+   coincident adjacent-edge pairs proves that any three-paired-direction
+   configuration must be EXACTLY equilateral: its three rays are separated
+   by 120 degrees. This collapses that entire continuous stratum to the
+   already known paired grid geometry, without a palette cardinality bound.
+   The equilateral paired geometry is not excluded by this proof.
+
+Topology alone does not discretize the remaining directions. An explicit
+measurable NONweak colouring below has exact common-interface support
+exclusions on six compact radial segments, pairwise disjoint off their
+centre, for a full open family of perturbations of the regular six rays.
+It satisfies every CommonInterface requirement except WeakColoring. This
+is a precise limitation of a topological shortcut, not a colouring model.
+
+Grade: complete paper proofs below; no Lean elaboration or independent
+referee verdict is claimed. No source edits, subagents, heavy computation,
+remote jobs, installs, or Lean builds were used.
+
+SOURCE BASIS
+
+Read outputs/ASTRA-NONALIGNED-A3.txt and ASTRA-CONE-REFEREE.txt in full.
+The accepted CC60 contract retains signed directions, one common centre,
+and actual support exclusions. Original source root, read only:
+  work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/
+Inspected declarations/proofs relevant here:
+  AngularBoundary.lean:147 Straddle; :149 straddle_isOpen;
+    :235 ApproachingContinuum; :244 outer_strip;
+    :307-317 spatial support and finite exclusions.
+  ContinuumLimits.lean:86 support_disjoint_open_of_ae;
+    :200 continuum_limit_support_exclusion;
+    :228 CommonInterface; :246 commonInterface_of_continuum;
+    :318 commonInterface_of_compact_sequence.
+The accepted referee supplies the generic translated weak-properness
+consumer Rigidity.ae_translated_unit_pair at line 171. No five-colour
+state classification is used in the new proofs.
+
+1. EXACT REFORMULATION OF CC60
+
+Indices are i in Z/6; E_i={i,i+1} is the fixed cycle edge. Write alpha_i
+for its assigned direction on R/(360 degrees Z). Let d be circular angular
+distance, taking values in [0,180 degrees]. The following are equivalent:
+
+  (C) In every CLOSED 60-degree arc, the union of the endpoints of the
+      assigned cycle edges contained in that arc has at most three labels.
+
+  (D) d(alpha_i,alpha_j)>60 degrees whenever
+      j is not i, i-1, or i+1 modulo six.
+
+Proof C=>D. Nonadjacent cycle edges have four distinct endpoints. If their
+directions have distance <=60, some closed 60-degree arc contains both,
+violating C. The strict inequality includes the endpoint case.
+
+Proof D=>C. Every three distinct vertices in the edge-index cycle C6
+include a nonadjacent pair, because C6 has no triangle. Thus an arc of
+length 60 cannot contain three assigned edges. If it contains two, their
+indices must be adjacent by D; their endpoint union then has size three.
+One or zero edges is harmless. This proves the equivalence.
+
+In particular, the separate condition 'no three directions in a closed
+60-degree cone' is redundant once all nine nonadjacent-pair inequalities
+are imposed. The directions are directed rays, not axes.
+
+2. AN EXACT GAP THEOREM, INCLUDING ALL DEGENERACIES
+
+Normalize 60 degrees to one, so the circle has circumference six. Choose
+a cyclic listing sigma_0,...,sigma_5 of the six distinct edge INDICES in
+nondecreasing angular order. Indices at the same direction can be listed
+in either order. Let g_r>=0 be the forward angular gap from sigma_r to
+sigma_(r+1), with cyclic indices; sum_r g_r=6.
+
+THEOREM G. This angle assignment satisfies CC60 if and only if:
+
+  G1. g_r>1 whenever sigma_r and sigma_(r+1) are nonadjacent in C6;
+  G2. g_r+g_(r+1)>1 for every r;
+  G3. g_r>=0 for every r and sum_r g_r=6.
+
+Proof. G1 follows from (D). For G2, the three indices at the endpoints of
+two consecutive gaps include a nonadjacent pair. A two-gap sum <=1 would
+put that pair in a forbidden arc. Conversely, consider any nonadjacent
+index pair. If it is consecutive in the spatial cyclic listing, its short
+listing arc has length >1 by G1, and its other arc contains a consecutive
+two-gap sum >1 by G2. If it is not consecutive, both arcs between it contain
+at least two consecutive gaps and so have length >1. Thus its circular
+distance is >1, proving (D). G3 only records the circle geometry.
+
+This is a complete classification by explicit linear inequalities: for
+each cyclic order, it is a convex relatively open region of the gap simplex,
+with permitted zero gaps recorded by G3. No unmentioned generic-position
+assumption or numerical angular mesh is used.
+
+Consequences for ties:
+  * At most two indices have one direction; if two do, they are adjacent
+    in C6. Thus tied pairs form a matching in the edge-index cycle.
+  * Three or more indices cannot coincide. Two zero gaps cannot be adjacent.
+  * Each direction containing a tied pair is more than 60 degrees from
+    EVERY other direction: one member of the tied pair is nonadjacent to
+    any specified outside index.
+  * There are at least three distinct directions.
+
+3. WHICH CYCLIC ORDERS AND COINCIDENCE PARTITIONS EXIST?
+
+THEOREM O, SIX DISTINCT DIRECTIONS. A cyclic order of the six indices is
+CC60-feasible if and only if at least one of its consecutive pairs is an
+edge of the index cycle C6.
+
+Necessity. If no consecutive pair is adjacent in C6, G1 gives six gaps
+strictly larger than one, contradicting their sum six.
+
+Sufficiency, explicitly. Select one consecutive C6-neighbor pair. Give
+its gap length 1-5 epsilon, and every other gap length 1+epsilon, where
+0<epsilon<1/5. The sum is six and every gap is positive. For any
+nonadjacent index pair, each of the two arcs joining it contains at least
+one of the long gaps; the only arc without a long gap joins the selected
+adjacent pair. Therefore all nonadjacent circular distances exceed one.
+Equivalently G1-G3 hold. Small perturbations preserve the strict
+inequalities, so every such order has a full-dimensional feasible region.
+
+There are (6-1)!/2=60 cyclic orders modulo spatial rotation and reflection,
+with labels fixed. Exactly THREE have no C6 adjacency, leaving FIFTY-SEVEN.
+For a paper count, the complement of C6 is the triangular prism: triangles
+{0,2,4} and {1,3,5}, with matching edges 03,25,41. A Hamiltonian cycle in
+this prism crosses between the triangles an even number of times; with
+only three matching edges it uses exactly two. Choosing those two edges
+determines the Hamiltonian paths through both triangles, hence one cycle.
+There are three choices. Canonical representatives of the forbidden orders:
+  (0,2,4,1,5,3), (0,2,5,3,1,4), (0,3,1,5,2,4).
+A tiny enumeration of the 60 orders independently checked this count.
+
+Example far from the two grid geometries. In spatial order
+  (0,1,3,5,2,4),
+put the directions at
+  (0,30,96,162,228,294) degrees respectively.
+The selected gap is 30; the other five are 66. Every nonadjacent pair of
+cycle indices is farther than 60 degrees. This is a CC60 model only: for
+example edges 0,2,4 fit in a 132-degree arc and cover all six labels, so
+the elementary empty-residual actual-interface obstruction in section 5
+already forbids its realization by a weak colouring.
+
+THEOREM O, COINCIDENT DIRECTIONS. For m=3,4,5 distinct directions, first
+partition the six indices into m blocks of size one or two, requiring that
+every two-element block be an adjacent pair in C6. EVERY cyclic order of
+these blocks is feasible. Place the blocks at the vertices of a regular
+m-gon: its minimum circular separation is 360/m>60 degrees. All forbidden
+index pairs therefore have distance >60, and the only equal directions
+are licensed adjacent pairs. Conversely every coincident CC60 assignment
+has exactly such a matching partition by section 2. Actual angles are
+then classified by Theorem G, or directly by (D).
+
+In particular, the three-direction stratum has exactly the two perfect
+matchings of C6 as its blocks. After choosing the matching (01),(23),(45),
+it consists of
+  alpha=(a,a,b,b,c,c),
+where the three successive circular gaps are ALL >60 degrees and sum to
+360 degrees. For example gaps 100,130,130 satisfy CC60. There is no
+equilateral conclusion from CC60 alone.
+
+4. A NEW ACTUAL-INTERFACE CONSUMER: ONE RESIDUAL COLOUR
+
+THEOREM MC120 (strict aperture). Let c:C->Fin k be measurable and satisfy
+WeakColoring k c. Suppose finitely many K_i approach one centre x in unit
+directions v_i, with actual ApproachingContinuum data, and have finite
+excluded label sets H_i satisfying
+  Disjoint(spatialSupport(c,j), Straddle(K_i)) for j in H_i.
+If the complement of union_i H_i has at most ONE label, their directions
+cannot all lie in a cone of aperture STRICTLY LESS THAN 120 degrees.
+
+Proof. If the complement is empty, the same argument can use any label
+c(x) as a vacuous singleton cover. Otherwise call the residual label a.
+Set W=intersection_i Straddle(K_i). This is open, and finite support
+exclusion makes c=a almost everywhere on W. Suppose the angular span of
+the directions is L<120 degrees. The common positive directions form an
+open arc I of length 180-L>60 degrees. At EVERY angle of I, the source
+outer_strip theorem supplies an outer strip in each Straddle(K_i); the
+finite minimum supplies an outer strip in W.
+
+Choose a compact angular interval strictly inside I with length B>60
+degrees. A finite strip cover gives eta>0 such that W contains its open
+polar sector with 1<r<1+eta. At r0=1+eta/2, take two angles symmetric
+about the sector centre, with half-separation
+  lambda=arcsin(1/(2*r0))<30 degrees<B/2.
+Their two points p,q are in W and satisfy |p-q|=1. Since W is open and
+c=a almost everywhere there, fixed small neighborhoods of p and q have
+the same essential colour. The common translation pullback of those
+neighborhoods is open and has positive area. Translation invariance gives
+c(p+u)=a=c(q+u) for almost every u there, contradicting
+Rigidity.ae_translated_unit_pair. This proves MC120.
+
+The aperture inequality is STRICT. At aperture exactly 120, the common
+positive arc has length exactly 60; pointwise outer-strip widths can
+collapse at its endpoints. One cannot select a compact subarc wider than
+60 or assume uniform radial width up to those endpoints. The accepted
+OA120 proof repairs a different binary situation using local rigidity;
+it does not license closing MC120's endpoint. No closed-120 claim is made.
+
+No palette cardinality premise, same-direction axis reversal, limiting
+pointwise colouring assertion, or uncountable intersection of conull
+sets occurs in this proof.
+
+5. CONSEQUENCES FOR ACTUAL SIX-EDGE CONFIGURATIONS
+
+Together with the accepted CC60 and the trivial empty-residual argument,
+actual same-centre interfaces obey the following table for any subfamily:
+
+  Excluded endpoint union       Forbidden containing cone aperture
+  at least four labels         <=60 degrees                 (CC60)
+  at least five labels          <120 degrees                 (MC120)
+  all six labels                <180 degrees                 (empty residual)
+
+For the last row, a containing cone of width <180 gives a common positive
+direction and hence a nonempty open straddling intersection. Exclusion of
+all colours almost everywhere on a nonempty open set is impossible.
+
+COROLLARY P, COMPLETE THREE-DIRECTION RIGIDITY. If actual six-cycle
+interfaces have only three distinct directions, their pairs are one of
+the two perfect matchings of the edge-index C6, and their three directions
+are exactly 120 degrees apart.
+
+Proof. The matching form follows from CC60. Use (01),(23),(45), the other
+matching being a cyclic relabeling. The three blocks exclude respectively
+  A={0,1,2}, B={2,3,4}, C={4,5,0}.
+The union of any two blocks contains five labels. If any two block
+directions had circular separation <120, those four actual continua would
+contradict MC120. Thus all three pairwise circular distances are >=120.
+List the three directions around the circle. Each successive gap is at
+least120 (because its circular distance is at least120), and their sum is
+360. All three gaps therefore equal120. QED.
+
+This excludes, for example, the continuous CC60 family with three gaps
+100,130,130. It reduces ALL three-direction actual survivors to the paired
+grid geometry, without assuming B2. It does not exclude that geometry.
+
+Two useful partial restrictions on the four-direction stratum also follow.
+If two coincident blocks, up to relabeling, are (01) and (23), their
+directions must be separated by at least120, since their exclusions cover
+five labels. If they are (01) and (34), their exclusions cover ALL SIX
+labels; the two directions must be exactly antipodal by the last table
+row. These two cases exhaust the relative positions of two disjoint
+adjacent pairs in C6. No exhaustive four-, five-, or six-direction actual
+realizability classification is claimed.
+
+6. WHAT THE SOURCE TOPOLOGY DOES AND DOES NOT SAY
+
+The definition CommonInterface at ContinuumLimits:228 packages one K,
+one unit direction, ApproachingContinuum, and two support exclusions.
+For a family of interfaces it does not say that the K_i are faces of a
+cell decomposition, that they bound colour regions, that there is only
+one branch of each interface, or that their cyclic order agrees with the
+label cycle. It does not even require distinct K_i to be disjoint.
+The actual compact-sequence producer supplies compact connected continua
+reaching the centre and a fixed outer sphere. It supplies their support
+exclusions analytically. It does not add a simultaneous cyclic-order rule.
+
+One can see that the missing order rule is substantive, rather than a
+minor topological omission, in the following exact construction.
+
+NONWEAK TOPOLOGICAL/SUPPORT MODEL. Fix phi, 0<eta<30 degrees, and independent
+perturbations |delta_i|<eta. Put
+  alpha_i=phi+60*i+delta_i,
+  v_i=e(alpha_i),
+  kappa=cos(60 degrees+eta)>0.
+These directions satisfy CC60: nonadjacent regular rays are at least120
+degrees apart, so after perturbation their separation is >120-2eta>60.
+They retain the cyclic index order and form a full open five-dimensional
+family modulo common rotation.
+
+For every unit e, there is an index j such that BOTH
+  <e,v_(j-1)> >= kappa and <e,v_j> >= kappa.              (positive pair)
+Indeed take the two regular adjacent rays bracketing e; each is at most
+60 degrees from e before perturbation. Apply the same assertion to -e to
+obtain an adjacent pair with both inner products <=-kappa. (negative pair)
+
+Choose 0<rho<min(1/4,kappa), let x=0, and set
+  K_i={t*v_i:0<=t<=rho}.
+These are compact connected arcs, pairwise disjoint except at0. They have
+the required approach data with r_n=rho/(n+1), w_n=v_i. Define a Borel
+colouring c:C->Fin6 by the least qualifying index in the finite choices:
+  - if |z|<=1-rho or |z|>=2, set c(z)=0;
+  - if 1-rho<|z|<=1, choose j from the positive-pair rule for e=z/|z|;
+  - if 1<|z|<2, choose j from the negative-pair rule for e=z/|z|.
+All selection conditions are Borel; choices exist as just proved.
+
+Claim: c(z)=j implies z is in neither Straddle(K_(j-1)) nor Straddle(K_j).
+For |z|<=1-rho, all distances to all K_i are <=|z|+rho<=1; for |z|>=2,
+all are >=|z|-rho>1. Neither regime can straddle.
+In the middle inner regime write z=r*e. For either selected ray and
+0<=t<=rho,
+  |r*e-t*v_i|^2=r^2+t^2-2*r*t*<e,v_i>
+                <=r^2+t*(t-2*r*kappa)<=r^2<=1,
+since r>1-rho>3/4 and rho<kappa<2*r*kappa.
+Thus neither selected segment has a point farther than1.
+In the middle outer regime, its negative-pair selection gives
+  |r*e-t*v_i|^2>=r^2>=1,
+so neither segment has a point closer than1. The claim follows.
+
+Consequently each open Straddle(K_i) contains NO point of colour i or
+i+1. An open set on which a colour is absent is disjoint from that colour's
+essential spatial support (source support_disjoint_open_of_ae). Hence ALL
+six exact common-interface support exclusions hold, not merely formal
+direction signs or invented palettes.
+
+This c is emphatically NOT a WeakColoring: it is constantly0 on the open
+exterior |z|>2, which has a positive-measure family of monochromatic unit
+edges. The construction proves only that compactness, connectedness,
+disjoint branches, measurability, and the exact support-exclusion topology
+do not discretize the directions or by themselves exclude this continuous
+family. Any exclusion of these configurations must use the global weak
+colouring hypothesis (or another additional analytic condition). It does
+not refute F6 or construct an actual weak six-colouring.
+
+7. ONE EXACT NEXT GEOMETRIC OBLIGATION
+
+The new paired rigidity theorem reduces the entire three-direction
+stratum to the following fixed statement:
+
+  PAIRED-EQUILATERAL-EXCLUSION:
+  Let c:C->Fin6 be measurable and WeakColoring6. There do not exist one
+  centre x and six K_i with actual ApproachingContinuum data and the
+  endpoint support exclusions for E_i={i,i+1}, with signed directions
+    v_0=v_1=e(phi),
+    v_2=v_3=e(phi+120 degrees),
+    v_4=v_5=e(phi+240 degrees).
+
+Proving this exact assertion, combined with Corollary P, would eliminate
+every actual six-cycle having only three distinct approach directions.
+It would not handle four, five, or six distinct directions. No assertion
+that these six continua coincide within their direction pairs is licensed.
+The finite paired palette witness is not an actual colouring and cannot
+stand in for these hypotheses. Conversely, the nonpartition witnesses of
+the six-distinct grid geometry prevent assuming that every survivor has
+one fixed three-palette partition. This report makes no such assumption.
+
+The remaining obligation is analytic at the exact 120-degree equality
+configuration. Merely relaxing strict MC120 to a closed cone would require
+a new proof and cannot be inferred by a limiting argument with uncontrolled
+strip widths. The pure continuous CC60 classification is complete; the
+actual WeakColoring realizability problem is not.

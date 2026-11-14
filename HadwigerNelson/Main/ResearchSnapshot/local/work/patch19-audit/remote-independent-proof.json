@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-14T08:25:35.3866000+00:00",
+  "bindings": {
+    "p19.cnf": {
+      "sha256": "31f354668e946a3f61f0bab2d3c632792e1be6ff50979116971d3a2469823b69",
+      "matchesRemote": true
+    },
+    "p19.drup": {
+      "sha256": "f4ec9532ce13a46197ea71a489a9f451563da4b81c6f2aad3097439d23c1496e",
+      "matchesRemote": true
+    }
+  },
+  "log": "\rc parsing input formula with 438 variables and 6496 clauses\n\rc finished parsing\n\rc detected empty clause; start verification via backward checking\n\rc 5144 of 6496 clauses in core                            \n\rc 36014 of 42110 lemmas in core using 1143424 resolution steps\n\rc 0 RAT lemmas in core; 58061 redundant literals in core lemmas\n\rs VERIFIED\n\rc verification time: 2.631 seconds\n\nreal\t0m2.637s\nuser\t0m1.738s\nsys\t0m0.130s\n",
+  "checkerHashes": "a9571deb08430a3d7f7a72074440f53e2ad48196dced50b146835052a18e9066  drat-trim\n31f354668e946a3f61f0bab2d3c632792e1be6ff50979116971d3a2469823b69  p19.cnf\nf4ec9532ce13a46197ea71a489a9f451563da4b81c6f2aad3097439d23c1496e  p19.drup\n",
+  "scope": "Independent remote drat-trim check; binds to CNF and proof locally archived and structurally checked."
+}

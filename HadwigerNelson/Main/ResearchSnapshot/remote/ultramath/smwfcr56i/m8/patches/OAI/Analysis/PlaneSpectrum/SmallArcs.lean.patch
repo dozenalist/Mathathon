@@ -1,0 +1,20 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/SmallArcs.lean	2026-11-13 19:09:13.640818335 +0000
++++ OAI/Analysis/PlaneSpectrum/SmallArcs.lean	2026-11-13 19:23:00.091164976 +0000
+@@ -157,7 +157,7 @@
+           (Finset.mem_range.mp hj)
+       _ = _ := by
+         rw [Finset.sum_congr rfl (fun i hi => by
+-          rw [Finset.sum_add_distrib, Finset.sum_ite_eq, ite_eq_left hi])]
++          rw [Finset.sum_add_distrib, Finset.sum_ite_eq, if_pos hi])]
+         simp only [Finset.sum_const, Finset.card_range, nsmul_eq_mul]
+         ring
+   · intro i _
+@@ -263,7 +263,7 @@
+     measurableSet_lt measurable_const (measurable_atom_mass _)
+   have he : ∀ᵐ z ∂μ.map p ⊗ₘ condDistrib b p μ,
+       0 < condDistrib b p μ z.1 {z.2} := (Measure.ae_compProd_iff hm).mpr ha
+-  rw [compProd_map_condDistrib hp.aemeasurable hb.aemeasurable] at he
++  rw [compProd_map_condDistrib hb.aemeasurable] at he
+   exact ae_of_ae_map (hp.prodMk hb).aemeasurable he
+ 
+ omit [StandardBorelSpace G] [Nonempty G] in

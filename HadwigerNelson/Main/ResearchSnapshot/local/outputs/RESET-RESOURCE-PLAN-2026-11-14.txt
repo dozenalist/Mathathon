@@ -1,0 +1,129 @@
+MATHATHON: RESET, USAGE, AND RESOURCE PLAN
+Prepared November 14, 2026, approximately 08:40 Pacific.
+Research cutoff: Sunday November 15, 08:54 Pacific (16:54 UTC).
+Submission deadline: Sunday noon Pacific. Protect 08:54–12:00 for final verification, exposition, attribution, and packaging.
+
+DECISION FOR THE SUPERVISOR
+Use the available reasoning allowance on valuable work now. Keep SIX Open Math OS chats, three solving and three simplifying. Extra allowance buys further carefully scoped reasoning turns; it does not justify extra compute workers. Recommend the NEXT Astra tranche as TWO assignments, contingent on consuming the running referee's packet and naming the next bottlenecks. Do not wait until 14:10 merely because the original plan named a six-hour checkpoint: a useful independently reviewed result can justify an earlier tranche under the user's new direction. The parent supervisor makes and records that incremental decision. Maximum two Astra agents active; no nested agents.
+
+Start the newly authenticated Claude account with ONE independent derivation using a curated source packet, then ONE adversarial review after the derivation is saved. Launch the first useful packet as soon as the parent finishes the safe CLI smoke test. Keep Claude jobs serial initially. These are concrete research tasks, not an open-ended background conversation. No reset is performed by this planning packet.
+
+WHAT IS KNOWN AND WHAT IS NOT
+* OpenMath: user reports THREE reset tokens. Their expiry, affected meter, scope (user/team/model), eligibility, and redemption behavior have NOT been verified. Inventory is a user report, not a platform inspection. Do not multiply the $500 API rows by three and call it available budget.
+* Codex: user says reset tokens are available; TWO were previously reported. Current available count, expiry, plan, coverage, usage meter, and assistant-redemption permission remain unverified. Five Astra assignments used is an assignment count, not a subscription usage percentage; four are complete and the fifth referee is running in the inspected state.
+* Claude: parent reports local verification of loggedIn=true, authMethod=claude.ai, subscriptionType=max. Parent is preparing a bounded restricted run using an available Opus option at maximum reasoning with tools disabled. This plan does not independently inspect authentication. Any Claude reset inventory remains UNKNOWN, even though official documentation confirms that eligible offers exist.
+* Team VM: 4 CPUs, memory_mb=16384, disk_mb=262144 allocated to the whole team, not just these chats. Free memory/disk is not established by those totals. Other teammates/projects share it. Numerical model-inference concurrency is UNKNOWN. Eight catalog models are eight choices, not eight slots; the reported 16/16 command-slot symptom is not an inference-slot limit.
+* Local Windows: last reported 12 logical CPUs, 31.4 GiB RAM, about 13 GiB free RAM, and only about 6 GiB free C: disk. Cleanup is not rechecked. Treat all free-resource figures as stale until a fresh lightweight snapshot.
+
+USAGE LEDGER: KEEP EACH METER SEPARATE
+Latest parent-provided OpenMath snapshot, November 14 approximately 08:33 Pacific:
+  TEAM API 5h row: spent $5.954967726 / $500 = 1.19% used, 98.81% remaining.
+  TEAM API week row: spent $52.591132362 / $500 = 10.52% used, 89.48% remaining.
+The saved 08:13 snapshot separately recorded a 5h reset at November 14 11:00:39 Pacific and a weekly reset at November 20 20:00:27 Pacific. Refresh the current reset timestamps; do not silently attach old timestamps to a new meter observation.
+
+These rows are shared team accounting. They are not the supervised six chats' isolated cost, an OpenAI API balance, a Codex allowance, or inference concurrency. A GUI label such as "weekly 99% remaining" is a different observation until its exact product/account/workspace, window, label, units, and timestamp are captured. Do not substitute the nearly 99%-remaining 5h row for the roughly 89.5%-remaining week row. Do not average conflicting meters or invent a conversion. With these API rows alone, no immediate OpenMath reset is justified.
+
+At each 20-minute check, retain one compact record per actual allowance:
+  observed_at; product/surface; account/workspace scope (safe label only);
+  exact meter label; used_or_remaining; amount and units; denominator;
+  reset_at with timezone; stale/fresh; source; reset_inventory/type/expiry;
+  active assignment IDs; owned heavy jobs; latest meaningful result.
+For a redemption add before/after meter, inventory decrement, actual next reset time, target tranche, and observed success. Never retain credentials, auth headers, or raw account secrets.
+
+MODEL ROLES AND DELIVERABLES
+OpenMath/DeepSeek, six continuing chats:
+  Solve geometry: exact source hypotheses, ternary transport, local/global distinction.
+  Solve independent: attack the complete implication chain; enumerate genuinely missing bridges.
+  Solve graphs: smallest source-licensed finite test and checkable witness/certificate; sole remote compute owner when assigned.
+  Simplify architecture: exact manuscript/Lean theorem identification and general proof structure.
+  Simplify verification: measure/support semantics, exceptional sets, circular dependencies, counterexamples.
+  Simplify formal: validate only complete candidate mathematics, prepare local serial Lean inputs and submission compatibility.
+Give one coherent 60–120-minute block per worker. A check-in observes progress; it does not restart a sound turn. One follow-up per completed turn after reading its tail. Two material hypothesis errors on a target downgrade that worker to source extraction until a lead repairs the contract. Retired and human chats stay read-only.
+
+Astra: hard conceptual bridges and difficult independent refereeing. The next two-job tranche should ordinarily be ONE six-colour/global-coupling attack and ONE decisive simplification or counterexample task, selected after the referee. If one program has no valid ready target, use its slot for a new falsification question or exact hypothesis audit; never repeat a failed prompt just to spend quota. Prefer concise source packets over full historical transcripts. Ultra is reserved for these hard jobs, not polling, file copying, or status synthesis. Use the normal response speed unless the parent has a separately justified reason for a faster paid/allowance multiplier.
+
+Claude: an independent mathematical voice. First pass sees the statement, original definitions, exact permitted premises, and desired consumer but no Astra proof; save its answer. Second pass sees both proofs and tries to produce a counterexample, locate a hidden premise, or verify the argument line by line. For the current joint-pair support candidate, keep the exact finite-union/support identities and the distinction between replacing no-sixty and deleting step_ban explicit. Parent owns the exact packet and current integration. Avoid assigning the same full history to every model.
+
+Codex supervisor: source reconciliation, concise synthesis, job admission, artifacts, and serial validation. Use existing workhorse capacity for routine work; route a genuinely unresolved mathematical bottleneck to the strongest available model rather than escalating every administrative turn. Research effort remains approximately equal across solving and simplification through the 20:10 milestone; review is charged to the program it serves. Thereafter the delivery candidate follows evidence, with the other program retaining a small source-audit lane when useful.
+
+REMAINING-DAY TRANCHES (PROPOSALS, NOT AUTOMATIC LAUNCHES)
+Now–10:10 Saturday:
+  Consume initial Astra referee; complete precise theorem contracts and failure maps.
+  Claude tranche C1: one independent derivation plus one fresh adversarial pass, serial.
+  If a repaired concrete bottleneck is already ready, parent may release Astra tranche A2 of TWO jobs before 10:10. Otherwise prepare the packets and release when ready; do not force a launch at the clock boundary.
+10:10–14:10:
+  Complete A2 if admitted; six OS workers develop its exact implications in 60–120-minute blocks.
+  Permit ONE additional Claude task if C1 produces a specific unresolved objection or distinct six-colour target. No duplicate reviewer chatter.
+  At 14:10 require a reviewed nontrivial lemma, genuine dependency replacement, or checked countermodel that decisively kills a named route. A killed route counts as useful evidence, not as a theorem solving the original problem.
+14:10–20:10:
+  Parent may release Astra A3: TWO jobs (one attack/repair, one independent referee) and Claude C2: TWO serial jobs focused on the best remaining exact questions.
+  Reuse a completed lead only for a clearly new downstream task. Preserve independent review before calling a result established.
+  By 20:10 produce a reviewable mathematical argument and artifact, ideally a 4–6-page explanation; choose the strongest deliverable based on correctness and substance.
+20:10–Sunday 02:00:
+  One final exploratory Astra tranche of at most TWO jobs only if an exact gap has a credible route and can be independently reviewed before cutoff. Use up to TWO serial Claude tasks for an independent proof, adversarial audit, or clear exposition.
+  If exploration no longer has a credible consumer, spend available reasoning on strengthening the actual deliverable: missing proof details, hypothesis minimization with proof, dependency audit, or sharper negative statement. Do not invent busywork to exhaust allowances.
+Sunday 02:00–06:00:
+  Finish the strongest candidate. No new unbounded state-space search. An additional strong-model task is justified by a named defect in the reviewable argument and a bounded repair plan, not by spare tokens alone.
+Sunday 06:00–08:54:
+  Final independent referee plus reproducibility/source/attribution review. Only bounded repairs to the chosen result. No speculative new program.
+Sunday 08:54–12:00:
+  Research frozen. Exposition, figures/slides if needed, exact claims and limitations, Lean version check when relevant, packaging, and submission preparation. Submission remains with the user/team unless delegated.
+
+The numerical tranches are decision units, not promised message capacities. At every completed tranche, record which mathematical obstacle moved, observed allowance spent, and the next exact task. A reset may fund daytime A2/A3 or C1/C2 as soon as the trigger below is met. There is no rule reserving all resets for Sunday, and no need to use every reset if useful work fits the ordinary allowance.
+
+RESET DECISION RULE: PREPARE AT 30%, REDEEM AT A VERIFIED NEED
+The following thresholds are operational recommendations, not claims about platform eligibility.
+1. Before a substantial tranche, inspect the applicable live meter and reset inventory. Verify covered window(s), plan, scope, expiry, redemption conditions, and whether consuming it shifts the next natural reset. Meter must be fresh within 10 minutes; a stale or unavailable read means UNKNOWN, not zero. Prepare a 60–120-minute worthwhile task with a concrete artifact and review path.
+2. At <=30% remaining in a relevant window, prepare the next reset decision and reduce duplicate context; do not reduce useful research merely because the warning threshold was crossed.
+3. At <=15%, admit one bounded task at a time unless measured comparable tasks show that a pair fits. Use the maximum observed allowance change across the last two comparable tasks, plus 50% headroom, as a rough admission estimate. If estimates are unavailable, use a single pilot task. Team-wide deltas are noisy and must not be presented as isolated task costs.
+4. Redeem ONE verified eligible saved reset when (a) a binding covered allowance is <=10% or exhausted, (b) a prepared valuable tranche needs that allowance, and (c) the natural refresh is more than 45 minutes away or waiting would materially endanger review/cutoff. If the next natural refresh is within 45 minutes, use another provider's independent ready task or finish source/compute work meanwhile. The parent can choose earlier eligible MANUAL redemption for an expiring reset or a task demonstrably too large for the remaining window; record why. Do not evade an assistant eligibility gate through another route.
+5. After redemption, refresh once after normal propagation and confirm what changed. If uncertain, inspect history/state rather than consuming a second reset as a test. Recalculate the next refresh time from the UI, not the old schedule. Admit the already-prepared tranche. Re-evaluate each later reset separately.
+6. Use earlier reset capacity when it buys an extra completed, reviewed daytime tranche. Preserve capacity for one final referee through ordinary remaining allowance, an independently metered provider, or a verified unspent reset. This is a functional coverage requirement, not a fixed percentage hoard or a ban on spending the last reset on a valuable earlier task.
+
+Provider-specific gates:
+  CODEX: Official docs say assistant redemption requires the account's "Allow your assistant to use resets" setting and a main five-hour or weekly allowance at <=10% remaining. Manual Usage redemption requires at least one covered allowance below 80%. Full reset coverage depends on plan; Pro tiers currently cover the weekly allowance, while Plus/Business Standard cover five-hour and weekly. A reset can change the next refresh time. Check the available inventory and expiry in Usage, not merely a historical "received" entry. The parent's authorization does not substitute for account/tool eligibility. No reset tool has yet been discovered in this task. [1]
+  OPENMATH: There is no verified redemption contract in the materials inspected. Read the official account's reset offer/API documentation or platform confirmation before any use. In particular establish whether the user-reported tokens affect the exact team meter that is binding and whether they change the weekly/5h schedule. Ordinary CPU contention, unavailable errors, timeouts, and command-slot saturation do not justify a quota reset. Current reported API rows are far from a binding allowance.
+  CLAUDE: Official documentation describes occasional five-hour, weekly, and model-specific reset offers; inspect the exact type and expiry. A reset is irreversible and the usual weekly reset schedule remains unchanged. Redemption currently lives in web/Desktop/Mobile Usage controls, not the Claude Code terminal/IDE. Account-wide restored usage also applies to Code. Claude inventory is still unknown; do not include it as guaranteed capacity. [2]
+
+QUOTA IS NOT HARDWARE, CONTEXT, OR INFERENCE CONCURRENCY
+A usage reset replenishes the covered allowance. It does not add RAM, CPUs, disk, context length, tools, model access, or documented inference slots; it does not clear a congested terminal queue. A fresh conversation can improve relevance/context size but does not reset the provider's account usage. Resetting a local session-cost display is also not quota restoration. Where several allowance windows apply, any binding relevant window can block work. Codex task count and reasoning effort are not fixed token entitlements. [3]
+
+COMPUTE ADMISSION: PROTECT TEAMMATES FIRST
+Remote team VM:
+  Retain one owned heavy job maximum, only when explicitly assigned; target hard RSS/process-tree limit <=4 GiB and initially one CPU thread (never consume all four team CPUs). No cloud Lean builds. Existing remote 60-second timeout stands; a longer remote run requires separate review.
+  Before admission inspect MemAvailable, disk free, CPU/process usage, and owned active jobs. Proposed conservative gate: >=8 GiB MemAvailable before a planned 4 GiB job, leaving >=4 GiB headroom; otherwise use a much smaller justified task or defer. These are supervisor guardrails, not reservations against teammates.
+  Do not launch while known team contention persists, a teammate reports interference, or previous ownership/slot state is unknown. On MemAvailable <3 GiB for two samples approximately 15 seconds apart, or the owned tree exceeding its 4 GiB cap, checkpoint/stop that owned job and investigate. Do not kill another user's process or reset/restart/resize the VM. Stop new admissions immediately on a credible teammate impact report; drain owned work safely.
+Local Windows:
+  One heavy job at a time across Lean/SAT/enumeration; existing Lean queue remains maxParallel=1. Default <=4 GiB RAM and at most two CPU threads per admitted job. Lightweight model reasoning/CLI waits may overlap if observed memory remains healthy and tools cannot spawn extra computations.
+  Before admission refresh free RAM and disk. Require >=8 GiB free RAM before a 4 GiB job; preserve >=4 GiB OS headroom, stop/adjust the owned job if free memory drops below that floor. A greater job limit needs a new explicit resource review, not a reset.
+  With roughly 6 GiB disk still unverified, allow only small outputs (<=64 MiB per admitted job), bounded logs (<=16 MiB), and existing caches. No new large cache, proof trace, toolchain, or dataset. If free disk <5 GiB, do not start write-heavy jobs. After cleanup, aim for >=20 GiB free before larger artifacts; parent rechecks, no automatic deletion.
+  Smoke test <=60 seconds; reviewed run <=10 minutes; extend up to 30 minutes only with demonstrated progress, known memory/output bounds, a checkpoint, and certificate/validation plan. A new search dimension requires a new mathematical constraint.
+Reasoning may continue while compute is queued. Spend stronger-model allowance on proof design, independent derivation, or review that needs little local compute. This is the main way to push harder under the RAM constraint.
+
+CLAUDE ACCOUNT ROUTE AND METER INTERPRETATION
+Use the parent-verified claude.ai subscription login. Do not assume API billing or add an API key. Official authentication documentation supports subscription sign-in; API/Console/cloud-provider routes are different. [4]
+Read the installed CLI's actual model selector/status and record the resolved model in the artifact. An alias or available option is not proof of a particular model version or unlimited allowance. Parent's currently verified available choice outranks names guessed from web examples. The CLI documents /model and explicit model configuration. [5]
+For subscription usage use /usage plan bars or account Usage, with freshness noted. Its session dollar figure is a locally computed token-price estimate, not the subscriber's invoice; /clear resetting that figure does not restore subscription quota. The CLI may display cached usage with an age when a usage request fails; such a display is not fresh. [6]
+Claude's account usage is shared across its supported surfaces, so simultaneous browser/Code work is not separate free capacity. Five-hour and weekly behavior must be read from the actual account/plan. [7] No extra-usage enablement, credit purchase, API balance assumption, account setting change, or reset is authorized by this plan packet. Parent handles actual integration.
+
+EXACT CHANGE SIGNALS FOR THE 20-MINUTE REPORT
+Report: new claim/lemma advanced; independent check; failure/counterexample; exact obstacle; next task; active model jobs; owned heavy job; fresh quota readings; reset inventory status.
+Escalate mathematics: reviewer confirms a nontrivial candidate but isolates ONE missing bridge; a source-licensed counterexample kills a route; two independent derivations disagree on a named premise.
+Reassign/stop route: two premise errors, no new source fact/constraint after two substantive blocks, or no downstream consumer. A usage reset is not a reason to revive it.
+Escalate resource diagnosis: model streaming works but shell stalls; explicit OOM/owned RSS cap; persistent VM load; slot saturation; disk floor; teammate contention. These point to compute/resource handling, not automatic reset.
+Escalate quota: exact limit-specific error agrees with a fresh relevant meter. Generic HTTP429/resource_exhausted, HTTP502/503, deadline errors, or a usage-endpoint read failure do not by themselves identify exhausted research allowance.
+Quiet continuation: a sound 60–120-minute task remains active with healthy resources. No duplicate prompt solely to fill a 20-minute report.
+
+SOURCES AND LIMITS OF THIS PLAN
+Local sources read: outputs/RESEARCH-REBOOT-2026-11-14.txt; outputs/OPENMATH-RESOURCE-AUDIT.txt; compact top-level state in work/openmath-supervisor/supervision-state.json. Parent supplied newer 08:33 quota and Claude authentication facts. No authenticated account inspection or reset was performed by this agent. Public OpenMath /v1/doc and /v1/openapi.json were inaccessible through the web tool; no public reset semantics were established. The source audit remains authoritative for the captured allocation, with free resources still requiring a fresh snapshot.
+[1] https://help.openai.com/en/articles/20001498-how-resets-work-in-codex
+[2] https://support.claude.com/en/articles/17007452-what-is-a-limit-reset
+[3] https://help.openai.com/en/articles/20001516-managing-usage-with-gpt-6-astra-in-work-and-codex
+[4] https://code.claude.com/docs/en/authentication
+[5] https://code.claude.com/docs/en/model-config
+[6] https://code.claude.com/docs/en/costs
+[7] https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work
+Official pages checked November 14, 2026. Account-specific terms and fresh meters govern any actual redemption.
+
+LIVE POLICY ADDENDUM 2026-11-14T16:51:57.929Z
+UseraskeduseClaudeandresetallowanceswisely. ClaudeMaxloginverified; exact7proofsourceexportapprovedafterautoreviewblock, firsttool-freeOpusmaxjobrunning at work/claude-supervisor/job.json, unifiedexecsession82171, hard15min/4GiBcap. NoAPIkeyorpaidextras. Preserveapprovalscopeandjobstatus; neverduplicatequeued/runningrequest. InitialAstra4new+1prior complete; A2TWOnewassignmentsnowrunning inexistingjointstate/sixcolouragents, cumulative7,max2active. Read outputs/ASTRA-REBOOT-REFEREE.txt and latestA2reports whenpresent. LocalJointPairSupportV2PASS, standardaxioms; originalproofunchanged, notglobalStatesdeletion. Lemma6.7=step_ban retained. Seeoutputs/RESET-RESOURCE-PLAN-2026-11-14.txt; latestappmeter overrideshistoricalinventory: Codex20%used,80%remaining,0availablebankedresets, weeklyreset2026-11-21T04:10:29Z. OpenMathweek89.48%remaining;3resetsuserreported,redemptionunverified. Claudeinventoryunknown. Noresetperformed. SixOSchats5active1completedatconfirmation;verifyhistorybeforefollowup. Verifiersecond-useFourSupportbridgeUNACCEPTED: A2leadfindsFourCenterhypothesisabsent andforbiddenstrictsequencestillused. Verifieralsoincorrectlyclaimedfiniteclosureunioncouldbestrict; finiteclosureunionequalityholds. Do notpromotethatclaim. NewA2three-centretraceargumentcandidatebeingdeveloped, notaccepted.

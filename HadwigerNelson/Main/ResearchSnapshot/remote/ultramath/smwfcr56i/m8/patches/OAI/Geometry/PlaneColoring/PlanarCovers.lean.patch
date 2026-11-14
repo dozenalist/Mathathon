@@ -1,0 +1,20 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean	2026-11-13 19:09:13.641459399 +0000
++++ OAI/Geometry/PlaneColoring/PlanarCovers.lean	2026-11-13 19:44:49.760742478 +0000
+@@ -254,7 +254,7 @@
+     y ∈ Set.range F := by
+   classical
+   let g : ℂ → ℂ := fun z => if hz:z∈Q then F ⟨z,hz⟩ else 0
+-  have ge (z : ℂ) (hz : z∈Q) : g z=F ⟨z,hz⟩ := dite_eq_left hz
++  have ge (z : ℂ) (hz : z∈Q) : g z=F ⟨z,hz⟩ := dif_pos hz
+   have hgc : ContinuousOn g (Metric.ball y 4) := by
+     rw [continuousOn_iff_continuous_domRestrict]
+     have hh := hc.comp (continuous_subtype_val.subtype_mk (fun z : Metric.ball y 4 => hQ z.property))
+@@ -368,7 +368,7 @@
+     have hzu : z∈U i := hw i (subset_closure hz)
+     have hp : p i∈U i := by
+       dsimp [p]
+-      rw [dite_eq_left ⟨z,hzu⟩]
++      rw [dif_pos ⟨z,hzu⟩]
+       exact Classical.choose_spec _
+     exact hd i _ hp z hzu
+ lemma compact_open_cover_impossible {ι : Type*} {Q : Set ℂ}

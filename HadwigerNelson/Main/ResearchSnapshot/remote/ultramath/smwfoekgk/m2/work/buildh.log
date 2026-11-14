@@ -1,0 +1,1595 @@
+OK   OAI.Analysis.PlaneSpectrum.Basic (16.2s)
+OK   OAI.Analysis.PlaneSpectrum.Characters (13.4s)
+OK   OAI.Analysis.PlaneSpectrum.Fourier (16.6s)
+OK   OAI.Geometry.PlaneColoring.Coloring (9.6s)
+OK   OAI.Analysis.PlaneSpectrum.CircleDecay (10.5s)
+OK   OAI.Geometry.PlaneColoring.WeakColoring (9.5s)
+FAIL OAI.Geometry.PlaneColoring.Compactness (14.4s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:143:53: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:153:67: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:162:58: error: invalid binder annotation, type is not a class instance
+  ?m.4
+
+Note: Use the command `set_option checkBinderAnnotations false` to disable the check
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:163:47: error: Function expected at
+  AEStronglyMeasurable
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  f
+
+Hint: The identifier `AEStronglyMeasurable` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:164:37: error: Function expected at
+  Integrable
+but this term has type
+  ?m.4
+
+Note: Expected a function because this term is being applied to the argument
+  v
+
+Hint: The identifier `Integrable` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:164:59: error: Function expected at
+  Integrable
+but this term has type
+  ?m.4
+
+Note: Expected a function because this term is being applied to the argument
+  g
+
+Hint: The identifier `Integrable` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:166:13: error(lean.unknownIdentifier): Unknown identifier `MemLp`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:166:28: error(lean.unknownIdentifier): Unknown identifier `MemLp.of_bound`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:167:13: error: Function expected at
+  Integrable
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (fun x => f x * v x)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:168:13: error: Function expected at
+  Integrable
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (fun x => f x * g x)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:169:21: error(lean.unknownIdentifier): Unknown identifier `integral_sub`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:165:68: error: unsolved goals
+X : Type u_1
+x✝¹ : Sort u_2
+AEStronglyMeasurable : x✝¹
+inst✝ : MeasurableSpace X
+μ : MeasureTheory.Measure X
+x✝ : Sort u_3
+Integrable : x✝
+f v g : X → ℝ
+hf : sorry
+hfb : ∀ᵐ (x : X) ∂μ, ‖f x‖ ≤ 1
+hv : sorry
+hg : sorry
+hft : sorry
+hiv : sorry
+hig : sorry
+⊢ ‖∫ (x : X), f x * v x ∂μ - ∫ (x : X), f x * g x ∂μ‖ ≤ ∫ (x : X), ‖v x - g x‖ ∂μ
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:180:50: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:231:6: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.5
+
+Note: Expected a function because this term is being applied to the argument
+  y
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Compactness.lean:231:30: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.5
+
+Note: Expected a function because this term is being applied to the argument
+  r
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` 
+OK   OAI.Analysis.PlaneSpectrum.CircleOperator (13.4s)
+FAIL OAI.Analysis.PlaneSpectrum.InvariantMean (21.1s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:44:82: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g x : G
+n : ℕ
+f : G →ᵇ ℝ
+⊢ ∑ c ∈ Finset.range (n + 1), (shift (c • g) f) x = ∑ k ∈ Finset.range (n + 1), f (x + k • g) ∨ ↑n + 1 = 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:75:27: error(lean.unknownIdentifier): Unknown identifier `shift_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:77:2: error: Tactic `apply` failed: could not unify the conclusion of `Finset.sum_congr rfl`
+  Finset.sum ?m.55 ?m.52 = Finset.sum ?m.55 ?m.53
+with the goal
+  ∑ k ∈ Finset.range (n + 1), (shift h f) (x + k • g) =
+    (∑ k ∈ Finset.range (n + 1), shift (k • g) f).toContinuousMap ({ toFun := fun x => x + h, continuous_toFun := ⋯ } x)
+
+Note: The full type of `Finset.sum_congr rfl` is
+  (∀ x ∈ ?m.55, ?m.52 x = ?m.53 x) → Finset.sum ?m.55 ?m.52 = Finset.sum ?m.55 ?m.53
+
+case e_a
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g h : G
+n : ℕ
+f : G →ᵇ ℝ
+x : G
+⊢ ∑ k ∈ Finset.range (n + 1), (shift h f) (x + k • g) =
+    (∑ k ∈ Finset.range (n + 1), shift (k • g) f).toContinuousMap ({ toFun := fun x => x + h, continuous_toFun := ⋯ } x)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:103:52: error(lean.unknownIdentifier): Unknown identifier `shift_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:102:39: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+g x : G
+n : ℕ
+f : G →ᵇ ℝ
+k : ℕ
+⊢ (shift g f) (x + k • g) - f (x + k • g) = f (x + (k • g + g)) - f (x + k • g)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:103:87: warning: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [BoundedContinuousFunction.sub_apply, shift_apply, add_nsmul, one_nsmul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+
+OK   OAI.Analysis.PlaneSpectrum.Multipliers (11.5s)
+OK   OAI.Analysis.PlaneSpectrum.FourierTests (11.7s)
+OK   OAI.Analysis.PlaneSpectrum.SmallArcs (13.3s)
+OK   OAI.Analysis.PlaneSpectrum.PhaseEncoding (8.8s)
+OK   OAI.Analysis.PlaneSpectrum.PhaseCollision (10.6s)
+OK   OAI.MeasureTheory.CompactFactors.ConditionalSelection (7.7s)
+OK   OAI.Analysis.PlaneSpectrum.ConditionalSpectrum (36.5s)
+FAIL OAI.MeasureTheory.CompactFactors.Amenability (21.0s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/Amenability.lean:394:0: error: unexpected token 'by'; expected command
+
+OK   OAI.MeasureTheory.CompactFactors.Centers (19.3s)
+OK   OAI.MeasureTheory.CompactFactors.RelativeCenters (18.2s)
+OK   OAI.MeasureTheory.CompactFactors.Approximation (20.0s)
+OK   OAI.MeasureTheory.CompactFactors.ConditionalLimits (36.0s)
+OK   OAI.MeasureTheory.CompactFactors.Kernels (27.8s)
+OK   OAI.MeasureTheory.CompactFactors.BoundedFunctions (29.2s)
+OK   OAI.MeasureTheory.CompactFactors.RelativeProducts (50.9s)
+FAIL OAI.MeasureTheory.CompactFactors.Separability (45.5s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/Separability.lean:116:33: error(lean.unknownIdentifier): Unknown identifier `conj_conj`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/Separability.lean:115:28: error: unsolved goals
+X : Type u_3
+inst✝¹ : MeasurableSpace X
+μ : Measure X
+inst✝ : IsProbabilityMeasure μ
+f h : Func X
+⊢ (∫ (x : X), ↑(bmConj (bmConj h) * f) x ∂μ).re = (∫ (x : X), ↑(f * h) x ∂μ).re
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/Separability.lean:133:23: error(lean.unknownIdentifier): Unknown constant `OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/Separability.lean:134:8: error(lean.unknownIdentifier): Unknown identifier `conj_conj`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/Separability.lean:127:60: error: unsolved goals
+case e_6
+ι : Type u_1
+G : Type u_2
+X : Type u_3
+inst✝⁸ : DecidableEq ι
+inst✝⁷ : AddCommGroup G
+inst✝⁶ : MeasurableSpace X
+inst✝⁵ : AddAction G X
+inst✝⁴ : MeasurableConstVAdd G X
+μ : Measure X
+inst✝³ : IsProbabilityMeasure μ
+inst✝² : VAddInvariantMeasure G X μ
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+M : Amenable.Mean G
+s : Finset ι
+j : ι
+hj : j ∈ s
+φ : ι → G →+ G
+f : ι → Func X
+h u : G
+⊢ ⟪(l2 μ) (∏ i ∈ s, ↑(Family.orbit (φ i) (f i)) (u + h)), (l2 μ) (∏ i ∈ s, ↑(Family.orbit (φ i) (f i)) u)⟫ =
+    ⟪(l2 μ) (∏ i ∈ s.erase j, ↑(Family.orbit (φ i - φ j) (act ((φ i) h) (f i) * bmConj (f i))) u),
+      (l2 μ) (bmConj (act ((φ j) h) (f j) * bmConj (f j)))⟫
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/Separability.lean:303:38: error(lean.unknownIdentifier): Unknown constant `OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/Separability.lean:325:43: error(lean.unknownIdentifier): Unknown constant `OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/Separability.lean:325:12: error: Type mismatch: After simplification, term
+  hx
+ has type
+  @Eq ℂ (∏ i ∈ e, ↑(act ((ψ i) u) (project μ q hq (F h i))) x)
+    (↑(comp (∏ i ∈ e, act ((ψ i) u) (conditional μ q (F h i))) q hq) x)
+but is expected to have type
+  @Eq ℂ (∏ i ∈ e, ↑(↑(Family.orbit (ψ i) (project μ q hq (F h i))) u) x)
+    (↑(comp (∏ i ∈ e, act ((ψ i) u) (conditional μ q (F h i))) q hq) x)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/Separability.lean:516:82: error(lean.unknownIdentifier): Unknown constant `OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/Separability.lean:516:6: error: Type mismatch: After simplification, term
+  covariance_center μ q hq hqcov φ v w g
+ has type
+  @EventuallyEq Y ℂ (ae (Measure.map q μ)) ↑(↑(covariance μ q φ v w) g)
+    ↑(conditional μ q (v * act (φ g) (w - project μ q hq w)))
+but is expected to have type
+  @EventuallyEq Y ℂ (ae (Measure.map q μ)) ↑(↑(covariance μ q φ v w) g)
+    ↑(conditional μ q (v * ↑(Family.orbit φ (w - project μ q hq w)) g))
+
+FAIL OAI.MeasureTheory.CompactFactors.AlgebraModels (68.6s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:238:24: error(lean.unknownIdentifier): Unknown constant `OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_apply`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:226:101: error: unsolved goals
+G : Type u_1
+X : Type u_2
+Y : Type u_3
+inst✝¹² : AddCommGroup G
+inst✝¹¹ : MeasurableSpace X
+inst✝¹⁰ : MeasurableSpace Y
+inst✝⁹ : StandardBorelSpace X
+inst✝⁸ : Nonempty X
+inst✝⁷ : StandardBorelSpace Y
+inst✝⁶ : Nonempty Y
+μ : Measure X
+inst✝⁵ : IsProbabilityMeasure μ
+q : X → Y
+hq : Measurable q
+inst✝⁴ : AddAction G X
+inst✝³ : AddAction G Y
+inst✝² : MeasurableConstVAdd G X
+inst✝¹ : MeasurableConstVAdd G Y
+inst✝ : VAddInvariantMeasure G X μ
+hqcov : ∀ (g : G), (fun x => q (g +ᵥ x)) =ᵐ[μ] fun x => g +ᵥ q x
+φ : G →+ G
+a₁ a₂ b₁ b₂ : Func X
+g : G
+ht : tensor a₁ a₂ * act (φ g) (tensor b₁ b₂) = tensor (a₁ * act (φ g) b₁) (a₂ * act (φ g) b₂)
+h₁ :
+  ↑(conditional (RelativeProduct.law μ q hq) (q ∘ Prod.fst) (tensor a₁ a₂)) =ᵐ[Measure.map q μ]
+    ↑(conditional μ q a₁) * ↑(conditional μ q a₂)
+h₂ :
+  ∀ᵐ (x : Y) ∂Measure.map q μ,
+    ↑(conditional (RelativeProduct.law μ q hq) (q ∘ Prod.fst) (tensor b₁ b₂)) (φ g +ᵥ x) =
+      (↑(conditional μ q b₁) * ↑(conditional μ q b₂)) (φ g +ᵥ x)
+h₃ :
+  ↑(conditional (RelativeProduct.law μ q hq) (q ∘ Prod.fst)
+        (tensor (a₁ * act (φ g) b₁) (a₂ * act (φ g) b₂))) =ᵐ[Measure.map q μ]
+    ↑(conditional μ q (a₁ * act (φ g) b₁)) * ↑(conditional μ q (a₂ * act (φ g) b₂))
+y : Y
+hy₁ :
+  ↑(conditional (RelativeProduct.law μ q hq) (q ∘ Prod.fst) (tensor a₁ a₂)) y =
+    (↑(conditional μ q a₁) * ↑(conditional μ q a₂)) y
+hy₂ :
+  ↑(conditional (RelativeProduct.law μ q hq) (q ∘ Prod.fst) (tensor b₁ b₂)) (φ g +ᵥ y) =
+    (↑(conditional μ q b₁) * ↑(conditional μ q b₂)) (φ g +ᵥ y)
+hy₃ :
+  ↑(conditional (RelativeProduct.law μ q hq) (q ∘ Prod.fst) (tensor (a₁ * act (φ g) b₁) (a₂ * act (φ g) b₂))) y =
+    (↑(conditional μ q (a₁ * act (φ g) b₁)) * ↑(conditional μ q (a₂ * act (φ g) b₂))) y
+⊢ ↑(conditional μ q (a₁ * act (φ g) b₁)) y * ↑(conditional μ q (a₂ * act (φ g) b₂)) y -
+      ↑(conditional μ q a₁) y * ↑(conditional μ q a₂) y * ↑(conditional μ q b₁) (φ g +ᵥ y) *
+        ↑(conditional μ q b₂) (φ g +ᵥ y) =
+    -(↑(conditional μ q a₁) y * ↑(conditional μ q a₂) y * ↑(↑(Family.orbit φ (conditional μ q b₁)) g) y *
+          ↑(↑(Family.orbit φ (conditional μ q b₂)) g) y) +
+      ↑(conditional μ q (a₁ * ↑(Family.orbit φ b₁) g)) y * ↑(conditional μ q (a₂ * ↑(Family.orbit φ b₂) g)) y
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:486:70: error(lean.unknownIdentifier): Unknown constant `OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:544:34: error(lean.unknownIdentifier): Unknown constant `OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_apply`
+
+OK   OAI.MeasureTheory.CompactFactors.Functions (57.4s)
+OK   OAI.MeasureTheory.CompactFactors.Factors (121.1s)
+OK   OAI.MeasureTheory.CompactFactors.Stationary (74.6s)
+FAIL OAI.Analysis.PlaneSpectrum.Representations (552.7s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Representations.lean:135:46: error: Function expected at
+  Measure
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  X
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Representations.lean:136:32: error: Function expected at
+  MeasurePreserving
+but this term has type
+  ?m.4
+
+Note: Expected a function because this term is being applied to the argument
+  s
+
+Hint: The identifier `MeasurePreserving` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Representations.lean:136:59: error: Function expected at
+  Lp
+but this term has type
+  ?m.5
+
+Note: Expected a function because this term is being applied to the argument
+  ℂ
+
+Hint: The identifier `Lp` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Representations.lean:136:75: error: Function expected at
+  Lp
+but this term has type
+  ?m.5
+
+Note: Expected a function because this term is being applied to the argument
+  ℂ
+
+Hint: The identifier `Lp` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Representations.lean:137:8: error(lean.invalidField): Invalid field notation: Field projection operates on types of the form `C ...` where C is a constant. The expression
+  Lp
+has type `x✝` which does not have the necessary form.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Representations.lean:136:84: error: expected structure
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Representations.lean:149:31: error: Function expected at
+  MeasurePreserving
+but this term has type
+  ?m.4
+
+Note: Expected a function because this term is being applied to the argument
+  s
+
+Hint: The identifier `MeasurePreserving` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Representations.lean:149:67: error: Function expected at
+  Lp
+but this term has type
+  ?m.5
+
+Note: Expected a function because this term is being applied to the argument
+  ℂ
+
+Hint: The identifier `Lp` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Representations.lean:149:82: error: Function expected at
+  Lp
+but this term has type
+  ?m.5
+
+Note: Expected a function because this term is being applied to the argument
+  ℂ
+
+Hint: The identifier `Lp` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Representations.lean:150:36: error(lean.unknownIdentifier): Unknown identifier `isometry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Representations.lean:151:42: error: Function expected at
+  MeasurePreserving
+but this term has type
+  ?m.4
+
+Note: Expected a function because this term is being applied to the argument
+  s
+
+Hint: The identifier `MeasurePreserving` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Representations.lean:152:71: error: Function expected at
+  Lp
+but this term has type
+  ?m.5
+
+Note: Expected a function because this term is being a
+FAIL OAI.Analysis.PlaneSpectrum.Energy (65.8s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Energy.lean:245:65: error: unsolved goals
+G : Type u_1
+X : Type u_2
+inst✝⁷ : AddCommGroup G
+inst✝⁶ : TopologicalSpace G
+inst✝⁵ : DiscreteTopology G
+inst✝⁴ : MeasurableSpace X
+inst✝³ : AddAction G X
+inst✝² : MeasurableConstVAdd G X
+μ : Measure X
+inst✝¹ : IsProbabilityMeasure μ
+inst✝ : VAddInvariantMeasure G X μ
+φ θ : G →+ G
+f h : Func X
+g : G
+he : act (φ g) f * act (θ g) h = act (φ g) (f * act ((θ - φ) g) h)
+⊢ ‖lp μ 2 (f * act (θ g - φ g) h)‖ = ‖lp μ 2 (f * ↑(Family.orbit (θ - φ) h) g)‖
+
+FAIL OAI.Analysis.PlaneSpectrum.NumberFields (56.3s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:312:23: error(lean.invalidField): Invalid field notation: Field projection operates on types of the form `C ...` where C is a constant. The expression
+  Q
+has type `?m.34.1 ℚ X ?m.35` which does not have the necessary form.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:313:6: error(lean.invalidField): Invalid field notation: Field projection operates on types of the form `C ...` where C is a constant. The expression
+  P
+has type `?m.27.1 ℚ X ?m.28` which does not have the necessary form.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:313:17: error(lean.invalidField): Invalid field notation: Field projection operates on types of the form `C ...` where C is a constant. The expression
+  Q
+has type `?m.34.1 ℚ X ?m.35` which does not have the necessary form.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:312:12: error: failed to prove index is valid, possible solutions:
+  - Use `have`-expressions to prove the index is valid
+  - Use `a[i]!` notation instead, runtime check is performed, and 'Panic' error message is produced if index is not valid
+  - Use `a[i]?` notation instead, result is an `Option` type
+  - Use `a[i]'h` notation instead, where `h` is a proof that index is valid
+N : IntermediateField ℚ ℂ
+hi : Complex.I ∈ N
+inst✝ : FiniteDimensional ℚ ↥N
+X : ?m.10
+a b : ↥(realSlice N)
+ℓ : ↥N →ₗ[ℚ] ℚ
+⊢ ?m.26 ℚ X
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:312:12: error: failed to prove index is valid, possible solutions:
+  - Use `have`-expressions to prove the index is valid
+  - Use `a[i]!` notation instead, runtime check is performed, and 'Panic' error message is produced if index is not valid
+  - Use `a[i]?` notation instead, result is an `Option` type
+  - Use `a[i]'h` notation instead, where `h` is a proof that index is valid
+N : IntermediateField ℚ ℂ
+hi : Complex.I ∈ N
+inst✝ : FiniteDimensional ℚ ↥N
+X : ?m.10
+a b : ↥(realSlice N)
+ℓ : ↥N →ₗ[ℚ] ℚ
+P : ℚ[X]
+⊢ ?m.53 P ℚ X
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:335:40: error(lean.unknownIdentifier): Unknown identifier `cayley_line_polynomials`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:431:4: error: Function expected at
+  conj
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  z
+
+Hint: The identifier `conj` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:443:17: error: unsolved goals
+case algebraMap
+x✝ : Sort u_1
+conj : x✝
+s : Finset ℂ
+z : ℂ
+r : ℚ
+⊢ sorry () ∈ generatedField s
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:447:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:452:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:480:31: error: Function expected at
+  finrank
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  ℚ
+
+Hint: The identifier `finrank` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:481:16: error: Function expected at
+  finrank
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  ℚ
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:481:31: error(lean.unknownIdentifier): Unknown identifier `finrank_pos`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:483:12: error: Function expected at
+  finrank
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  ℚ
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/NumberFields.lean:480:46: error: unsolved goals
+x✝ : Sort u_1
+finrank : x✝
+N : IntermediateField ℚ ℂ
+inst✝ : FiniteDimensional ℚ ↥N
+hi : Complex.I ∈ N
+hp : 0 < sorry
+hh : sorry < 2
+he : sorry = 1
+q : ?m.56
+hq : q • 1 = iN N hi
+hqc : (↑(q • 1)).im = 1
+⊢ False
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/r
+OK   OAI.Analysis.PlaneSpectrum.Selections (82.2s)
+FAIL OAI.Analysis.PlaneSpectrum.RadialEnergy (447.8s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:67:51: error(lean.unknownIdentifier): Unknown constant `OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:66:42: error: unsolved goals
+a b : ↥E
+g : Rot
+⊢ char a * ↑(Family.orbit (scaleHom 2) (char b)) g = char a * char (kCoeff (rotMul g) ^ 2 * b)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:67:71: warning: This simp argument is unused:
+  char_act
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Family.mul_apply, Family.const_apply, Family.orbit_apply, kCoeff_scale_two, char_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:68:4: warning: This simp argument is unused:
+  kCoeff_scale_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Family.mul_apply, Family.const_apply, Family.orbit_apply, char_act, char_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:73:31: error(lean.unknownIdentifier): Unknown constant `OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:72:60: error: unsolved goals
+case e_a.e_a
+a b c : ↥E
+g : Rot
+⊢ ↑(Family.orbit (scaleHom 1) (char b)) g = char (kCoeff (rotMul g) * b)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:73:51: warning: This simp argument is unused:
+  char_act
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Family.mul_apply, Family.orbit_apply, kCoeff_scale_one, kCoeff_scale_two, char_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:73:61: warning: This simp argument is unused:
+  kCoeff_scale_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Family.mul_apply, Family.orbit_apply, char_act, kCoeff_scale_two, char_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:73:79: warning: This simp argument is unused:
+  kCoeff_scale_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Family.mul_apply, Family.orbit_apply, char_act, kCoeff_scale_one, char_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:102:56: error(lean.unknownIdentifier): Unknown constant `OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:136:26: error: invalid binder annotation, type is not a class instance
+  ?m.5
+
+Note: Use the command `set_option checkBinderAnnotations false` to disable the check
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:141:42: error(lean.unknownIdentifier): Unknown identifier `μ`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:141:44: error(lean.unknownIdentifier): Unknown identifier `q`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:142:0: error: invalid 'include', variable `hq` has not been declared in the current scope
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:143:65: error(lean.unknownIdentifier): Unknown identifier `RelativeProduct.law`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:144:34: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasureTheory.IsProbabilityMeasure μ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:144:59: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasureTheory.IsProbabilityMeasure μ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:145:33: error(lean.unknownIdentifier): Unknown identifier `hq`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/RadialEn
+FAIL OAI.Analysis.PlaneSpectrum.SpectralMeasure (483.9s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:180:38: error: invalid binder annotation, type is not a class instance
+  ?m.31
+
+Note: Use the command `set_option checkBinderAnnotations false` to disable the check
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:187:8: error(lean.unknownIdentifier): Unknown identifier `boundedCM_toLp`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:186:52: error: unsolved goals
+X : Type u_1
+H : Type u_2
+inst✝⁷ : TopologicalSpace X
+inst✝⁶ : CompactSpace X
+inst✝⁵ : T2Space X
+inst✝⁴ : MeasurableSpace X
+inst✝³ : BorelSpace X
+inst✝² : NormedAddCommGroup H
+inst✝¹ : InnerProductSpace ℂ H
+inst✝ : CompleteSpace H
+Φ : C(X, ℂ) →⋆ₐ[ℂ] H →L[ℂ] H
+v : H
+f g : C(X, ℂ)
+⊢ (mulLpCLM (measure Φ v) (boundedCM f)) ((ContinuousMap.toLp 2 (measure Φ v) ℂ) g) =
+    (ContinuousMap.toLp 2 (measure Φ v) ℂ) (f * g)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:189:38: error: Function expected at
+  Lp
+but this term has type
+  ?m.28
+
+Note: Expected a function because this term is being applied to the argument
+  ℂ
+
+Hint: The identifier `Lp` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:198:9: error(lean.unknownIdentifier): Unknown identifier `boundedCM_toLp`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:196:73: error: unsolved goals
+X : Type u_1
+H : Type u_2
+inst✝⁷ : TopologicalSpace X
+inst✝⁶ : CompactSpace X
+inst✝⁵ : T2Space X
+inst✝⁴ : MeasurableSpace X
+inst✝³ : BorelSpace X
+inst✝² : NormedAddCommGroup H
+inst✝¹ : InnerProductSpace ℂ H
+inst✝ : CompleteSpace H
+Φ : C(X, ℂ) →⋆ₐ[ℂ] H →L[ℂ] H
+v : H
+he : 1 = boundedCM 1
+⊢ (cyclicMap Φ v) ((l2 (measure Φ v)) (boundedCM 1)) = v
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:200:29: error: Function expected at
+  Lp
+but this term has type
+  ?m.28
+
+Note: Expected a function because this term is being applied to the argument
+  ℂ
+
+Hint: The identifier `Lp` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:200:29: error: Function expected at
+  Lp
+but this term has type
+  ?m.28
+
+Note: Expected a function because this term is being applied to the argument
+  ℂ
+
+Hint: The identifier `Lp` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:206:6: error(lean.unknownIdentifier): Unknown identifier `cyclicMap_inner`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:204:72: error: unsolved goals
+X : Type u_1
+H : Type u_2
+inst✝⁷ : TopologicalSpace X
+inst✝⁶ : CompactSpace X
+inst✝⁵ : T2Space X
+inst✝⁴ : MeasurableSpace X
+inst✝³ : BorelSpace X
+inst✝² : NormedAddCommGroup H
+inst✝¹ : InnerProductSpace ℂ H
+inst✝ : CompleteSpace H
+Φ : C(X, ℂ) →⋆ₐ[ℂ] H →L[ℂ] H
+v : H
+f : Func X
+⊢ ⟪(cyclicMap Φ v) ((l2 (measure Φ v)) 1), (cyclicMap Φ v) ((l2 (measure Φ v)) f)⟫_ℂ = ∫ (x : X), ↑f x ∂measure Φ v
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:271:19: error(lean.unknownIdentifier): Unknown identifier `cyclicMap_mul`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:287:30: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:287:27: error: Application type mismatch: The argument
+  U
+has type
+  DiscreteE →* { x : H →L[ℂ] H // x ∈ unitary (H →L[ℂ] H) }
+but is expected to have type
+  DiscreteE →*
+    { x : ((i : ?m.104) → ?m.99 i) →L[ℂ] (i : ?m.104) → ?m.99 i //
+      x ∈ unitary (((i : ?m.104) → ?m.99 i) →L[ℂ] (i : ?m.104) → ?m.99 i) }
+in the application
+  ordinaryVector U
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:287:12: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  InnerProductSpace ℂ ((i : ?m.104) → ?m.99 i)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstanc
+FAIL OAI.Analysis.PlaneSpectrum.Ergodicity (101.0s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:144:26: error: invalid binder annotation, type is not a class instance
+  ?m.7
+
+Note: Use the command `set_option checkBinderAnnotations false` to disable the check
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:146:4: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasureTheory.IsFiniteMeasure μ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:146:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasureTheory.IsFiniteMeasure μ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:146:38: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasureTheory.VAddInvariantMeasure G X μ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:146:79: error: unsolved goals
+G : Type u_1
+X : Type u_2
+inst✝³ : AddCommGroup G
+inst✝² : MeasurableSpace X
+inst✝¹ : AddAction G X
+inst✝ : MeasurableConstVAdd G X
+μ : MeasureTheory.Measure X
+A : ConvexAverage G
+f : Func X
+⊢ sorry = ∑ x, A.weight x • sorry
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:147:13: warning: This simp argument is unused:
+  bm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [apply, map_sum, map_smul, l2_act]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:147:22: warning: This simp argument is unused:
+  map_sum
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [bm, apply, map_smul, l2_act]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:147:30: warning: This simp argument is unused:
+  map_smul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [bm, apply, map_sum, l2_act]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:147:39: warning: This simp argument is unused:
+  l2_act
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [bm, apply, map_sum, map_smul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:153:19: error: invalid binder annotation, type is not a class instance
+  ?m.8
+
+Note: Use the command `set_option checkBinderAnnotations false` to disable the check
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:155:15: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace X
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:155:25: error: Function expected at
+  Lp
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  ℂ
+
+Hint: The identifier `Lp` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:155:37: error(lean.unknownIdentifier): Unknown identifier `M.vector`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:156:28: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace X
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:156:38: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace X
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:156:75: error(lean.unknownIdentifier): Unknown identifier `Lp.strong
+FAIL OAI.Geometry.PlaneColoring.Expansion (93.4s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Expansion.lean:188:63: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Expansion.lean:188:65: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Expansion.lean:197:12: error: Function expected at
+  Icc
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  a
+
+Hint: The identifier `Icc` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Expansion.lean:197:27: error: Function expected at
+  Icc
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  a
+
+Hint: The identifier `Icc` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Expansion.lean:200:2: error: Tactic `clear` failed: target depends on 'hlarge'
+
+x✝ : Sort u_2
+Icc : x✝
+ι : Type u_1
+F D : ι → ℝ → ℝ
+K : sorry
+e U L a b : ℝ
+hd : ∀ (j : ι) (x : ℝ), HasDerivAt (F j) (D j x) x
+hp : ∀ (j : ι) (x : ℝ), 1 / 2 ≤ D j x
+hup : ∀ (j : ι) (x : ℝ), D j x ≤ U
+hK : ∀ (j : ι), LipschitzWith sorry (D j)
+hlarge : ∀ (x : ℝ), ∃ j, 1 + e ≤ D j x
+he : 0 < e
+hKL : sorry * L ≤ e
+hU : 0 ≤ U
+hab : a < b
+hsmall : b - a < L
+j : ℝ → ι
+⊢ (∀ (x : ℝ), 1 + e ≤ D (j x) x) →
+    ∃ w N,
+      L ≤ iterComposition (fun n => F (w n)) N b - iterComposition (fun n => F (w n)) N a ∧
+        iterComposition (fun n => F (w n)) N b - iterComposition (fun n => F (w n)) N a ≤ U * L ∧
+          ∀ x ∈ ?m.96,
+            ∀ y ∈ ?m.101,
+              iterDerivative (fun n => F (w n)) (fun n => D (w n)) N x ≤
+                Real.exp (4 * sorry * U * L / e) * iterDerivative (fun n => F (w n)) (fun n => D (w n)) N y
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Expansion.lean:292:64: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Expansion.lean:292:66: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Expansion.lean:294:4: error: Function expected at
+  volume
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (F ⁻¹' A ∩ s)
+
+Hint: The identifier `volume` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Expansion.lean:294:43: error: Function expected at
+  volume
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  A
+
+Hint: The identifier `volume` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Expansion.lean:303:9: error(lean.unknownIdentifier): Unknown identifier `hausdorffMeasure_real`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Expansion.lean:294:55: error: unsolved goals
+x✝ : Sort u_1
+volume : x✝
+F : ℝ → ℝ
+s : Set ℝ
+K : sorry
+hF : AntilipschitzWith sorry (s.domRestrict F)
+A : Set ℝ
+he : Subtype.val '' s.dom
+FAIL OAI.Geometry.PlaneColoring.BinaryDynamics (23.9s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:209:7: error(lean.unknownIdentifier): Unknown identifier `Icc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:209:29: error(lean.unknownIdentifier): Unknown identifier `Icc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:213:7: error(lean.unknownIdentifier): Unknown identifier `Icc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:213:29: error(lean.unknownIdentifier): Unknown identifier `Icc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:217:7: error(lean.unknownIdentifier): Unknown identifier `Icc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:217:29: error(lean.unknownIdentifier): Unknown identifier `Icc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:242:18: error(lean.unknownIdentifier): Unknown identifier `Icc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:242:90: error(lean.unknownIdentifier): Unknown identifier `Icc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:241:37: error: unsolved goals
+d δ C : ℝ
+hd : 0 ≤ d
+hδ : δ < 1 / 2
+hdδ : d ≤ δ
+hM : ∀ (s : ℝ), |s| ≤ δ → ∀ (t : ℝ), |binaryM s t| ≤ C
+t : ℝ
+⊢ |binaryCircleMap d t - t| ≤ C * d
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:480:19: error(lean.unknownIdentifier): Unknown identifier `Measure.QuasiMeasurePreserving`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:486:12: error: Type mismatch: After simplification, term
+  hF
+ has type
+  @Filter.Eventually ℝ (fun x => x ∈ A ↔ binaryCircleMap d x ∈ A) (MeasureTheory.ae volume)
+but is expected to have type
+  @Filter.Eventually ℝ (fun x => x ∈ A ↔ binaryCircleMap d x ∈ A) (MeasureTheory.ae volume)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:488:20: error(lean.unknownIdentifier): Unknown identifier `measurePreserving_add_right`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:495:5: error: typeclass instance problem is stuck
+  MeasureTheory.OuterMeasureClass ?m.1 ℝ
+
+Note: Lean will not try to resolve this typeclass instance problem because the first and third type arguments to `MeasureTheory.OuterMeasureClass` contain metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+
+FAIL OAI.Geometry.PlaneColoring.CircleMaps (20.4s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:237:12: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:237:14: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:249:12: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:249:14: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:248:10: error: Function expected at
+  Ioc
+but this term has type
+  ?m.8
+
+Note: Expected a function because this term is being applied to the argument
+  (a - Real.pi)
+
+Hint: The identifier `Ioc` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:257:20: error(lean.unknownIdentifier): Unknown identifier `𝓝`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:258:32: error(lean.unknownIdentifier): Unknown identifier `𝓝`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:263:20: error(lean.unknownIdentifier): Unknown identifier `𝓝`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:270:20: error(lean.unknownIdentifier): Unknown identifier `𝓝`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:344:4: error: Function expected at
+  volume
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (F ⁻¹' A ∩ s)
+
+Hint: The identifier `volume` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:344:45: error: Function expected at
+  volume
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  A
+
+Hint: The identifier `volume` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:353:9: error(lean.unknownIdentifier): Unknown identifier `hausdorffMeasure_prod_real`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:344:57: error: unsolved goals
+x✝ : Sort u_1
+volume : x✝
+F : ℝ × ℝ → ℝ × ℝ
+s : Set (ℝ × ℝ)
+K : ℝ≥0
+hF : AntilipschitzWith K (s.domRestrict F)
+A : Set (ℝ × ℝ)
+he : Subtype.val '' s.domRestrict F ⁻¹' A = F ⁻¹' A ∩ s
+hi :
+  (MeasureTheory.Measure.hausdorffMeasure 2) (F ⁻¹' A ∩ s) =
+    (MeasureTheory.Measure.hausdorffMeasure 2) (s.domRestrict F ⁻¹' A)
+ha :
+  (MeasureTheory.Measure.hausdorffMeasure 2) (s.domRestrict F ⁻¹' A) ≤
+    ↑K ^ 2 * (MeasureTheory.Measure.hausdorffMeasure 2) A
+⊢ sorry ≤ ↑K ^ 2 * sorry
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:359:58: error(lean.unknownIdentifier): Unknown identifier `volume.restrict`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleMaps.lean:358:59: error: Function expected at
+  MapsTo
+but this term has type
+  ?m.1
+
+Note: Expe
+FAIL OAI.Geometry.PlaneColoring.CircleTransport (29.0s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleTransport.lean:142:4: error(lean.unknownIdentifier): Unknown identifier `Measure.QuasiMeasurePreserving`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleTransport.lean:143:15: error(lean.unknownIdentifier): Unknown identifier `Measure.QuasiMeasurePreserving`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleTransport.lean:146:8: error(lean.unknownIdentifier): Unknown identifier `measurePreserving_add_left`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleTransport.lean:149:6: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleTransport.lean:162:10: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  r
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleTransport.lean:162:39: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  y
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleTransport.lean:164:4: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (fun n => ∫ p, ‖f (angularSum (y n) (r n) p) - f (angularSum x 1 p)‖ ∂angularMeasure.prod angularMeasure)
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/CircleTransport.lean:165:58: error: unsolved goals
+x✝ : Sort u_1
+Tendsto : x✝
+r : ℕ → ℝ
+y : ℕ → ℂ
+x : ℂ
+hr : sorry
+hy : sorry
+f : ℂ → ℝ
+hf : Measurable f
+hfb : ∀ (z : ℂ), 0 ≤ f z ∧ f z ≤ 1
+⊢ sorry
+
+OK   OAI.Geometry.PlaneColoring.Transitions (27.9s)
+OK   OAI.Geometry.PlaneColoring.Palettes (16.4s)
+FAIL OAI.Geometry.PlaneColoring.PaletteDensity (9.0s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteDensity.lean:253:41: error: Function expected at
+  𝓝
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  p
+
+Hint: The identifier `𝓝` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteDensity.lean:266:31: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteDensity.lean:266:31: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteDensity.lean:266:33: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteDensity.lean:266:33: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteDensity.lean:267:33: error: Function expected at
+  𝓝
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (F p)
+
+Hint: The identifier `𝓝` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteDensity.lean:271:12: error: Function expected at
+  volume
+but this term has type
+  F✝
+
+Note: Expected a function because this term is being applied to the argument
+  N
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteDensity.lean:271:26: error(lean.unknownIdentifier): Unknown identifier `measure_eq_zero_iff_ae_notMem.mpr`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteDensity.lean:272:14: error: Function expected at
+  volume
+but this term has type
+  F✝
+
+Note: Expected a function because this term is being applied to the argument
+  (F '' N)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteDensity.lean:273:51: error: Function expected at
+  volume
+but this term has type
+  F✝
+
+Note: Expected a function because this term is being applied to the argument
+  (F '' N)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteDensity.lean:276:2: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteDensity.lean:302:11: error: typeclass instance problem is stuck
+  MeasureTheory.OuterMeasureClass ?m.1 RealPlane
+
+Note: Lean will not try to resolve this typeclass instance problem because the first and third type arguments to `MeasureTheory.OuterMeasureClass` are metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteDensity.lean:341:9: error: unexpected token '>'; expected ':' or term
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteDensity.lean:374:4: error: typeclass instance problem is stuck
+  MeasureTheory.OuterMeasureClass ?m.1 ℝ
+
+Note: Lean will not try to resolve this typeclass instance problem because the first and third type arguments to `MeasureTheory.OuterMeasureClass` are metavariables. These arguments mu
+FAIL OAI.Geometry.PlaneColoring.PaletteTransport (10.7s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:214:16: error(lean.unknownIdentifier): Unknown identifier `volume.restrict`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:218:22: error(lean.unknownIdentifier): Unknown identifier `volume.restrict`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:215:106: error: unsolved goals
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+hw : WeakColoring k c
+x z : ℂ
+t u a : ℝ
+h : Real.sin (u - t) ≠ 0
+he : circleTarget (samplingParameter x z 1, a) = circleSum 1 (t, u)
+ha : Real.sin (a - u) ≠ 0
+P : Set CircleParameter
+I : Set ℝ
+hP : IsOpen P
+hp : samplingParameter x z 1 ∈ P
+hI : IsOpen I
+haI : a ∈ I
+hIa : I ⊆ Set.Ioc (a - Real.pi) (a - Real.pi + 2 * Real.pi)
+K : NNReal
+hA : ∀ q ∈ P, AntilipschitzWith K (I.domRestrict fun v => circleEndpoint h (q, v))
+hB :
+  ∀ q ∈ P,
+    ∀ v ∈ I,
+      circleTarget (q, v) ∈ (circleInverseHomeo h).target ∧
+        Real.sin ((circleInverse h (circleTarget (q, v))).2 - (circleInverse h (circleTarget (q, v))).1) ≠ 0 ∧
+          circleEndpoint h (q, v) ∈ Metric.closedBall t 1
+i : Fin k
+⊢ ∀ᵐ (f : ℝ) ∂sorry, f ∈ liftPalette c hc z i → circleEndpoint h (samplingParameter x z 1, f) ∉ liftPalette c hc x i
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:257:29: error: Function expected at
+  Measure
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  X
+
+Hint: The identifier `Measure` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:268:44: error: Function expected at
+  Measure
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  X
+
+Hint: The identifier `Measure` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:272:9: error(lean.unknownIdentifier): Unknown identifier `ae_restrict_iff'`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:273:8: error(lean.unknownIdentifier): Unknown identifier `ae_of_locally_ae`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:274:8: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+⊢ Sort u_2
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:288:14: error(lean.unknownIdentifier): Unknown identifier `volume.restrict`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:291:26: error(lean.unknownIdentifier): Unknown identifier `palette_branch_local`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:291:9: error: Tactic `rcases` failed: `x✝ : ?m.95` is not an inductive datatype
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:346:14: error(lean.unknownIdentifier): Unknown identifier `volume.restrict`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:372:12: error(lean.unknownIdentifier): Unknown identifier `palette_smooth_transport`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:364:81: error: unsolved goals
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+hw : WeakColoring k c
+x z : ℂ
+a s t Da Ds Dt : ℝ → ℝ
+ha : ∀ (r : ℝ), HasDerivAt a (Da r) r
+hpos : ∀ (r : ℝ), 1 / 2 ≤ Da r
+hs : ∀ (r : ℝ), HasDerivAt s (Ds r) r
+ht : ∀ (r : ℝ), HasDerivAt t (Dt r) r
+hDs : ∀ (r : ℝ), Ds r ≠ 0
+hnp : ∀ (r : ℝ), Real.sin (t r - s r) ≠ 0
+he : ∀ (r : ℝ), circleTarget (samplingParameter x z 1, a r) = circleSum 1 (s r, t r)
+i : Fin k
+e : ℝ ≃o ℝ := derivLowerOrderIso ha hpos
+heq : ∀ (r : ℝ), e r = a r
+hinv : ∀ (y : ℝ), HasDerivAt (⇑e.symm) (Da (e.symm y))⁻¹ y
+⊢ ∀ᵐ (r : ℝ), a r ∈ liftPalette c hc z i → s r ∉ liftPalette c hc x i
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/PaletteTransport.lean:406:9: error: typeclass instance problem is stuck
+  MeasureTheory.OuterMeasureClass ?m.1 ℝ
+
+Note: Lean will not try to resolve this typeclass instance problem because the first and third type arguments to `MeasureTheory.OuterMeasureClass` are metavariables. These arguments must be fully determined befo
+FAIL OAI.Geometry.PlaneColoring.Rigidity (13.2s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Rigidity.lean:171:32: error: typeclass instance problem is stuck
+  MeasureTheory.OuterMeasureClass ?m.1 ℂ
+
+Note: Lean will not try to resolve this typeclass instance problem because the first and third type arguments to `MeasureTheory.OuterMeasureClass` are metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Rigidity.lean:180:11: error: typeclass instance problem is stuck
+  MeasureTheory.OuterMeasureClass ?m.1 ℂ
+
+Note: Lean will not try to resolve this typeclass instance problem because the first and third type arguments to `MeasureTheory.OuterMeasureClass` are metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Rigidity.lean:281:42: error: unexpected token '>'; expected ':' or term
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Rigidity.lean:271:19: error(lean.unknownIdentifier): Unknown identifier `𝓝`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Rigidity.lean:272:21: error(lean.unknownIdentifier): Unknown identifier `𝓝`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Rigidity.lean:272:84: error: unsolved goals
+x e : ℂ
+he : ‖e‖ = 1
+δ : ℝ
+hδ : 0 < δ
+V : Set ℂ
+b : Bool
+hstrip :
+  ∀ (e' : ℂ),
+    ‖e'‖ = 1 →
+      dist e' (e * ↑(Circle.exp (Real.pi / 3))) < δ →
+        ∀ (r : ℝ), 0 < r → |r - 1| < δ → (if b = true then 1 < r else r < 1) → x + ↑r * e' ∈ V
+a : ℝ := Real.pi / 3
+r : ℝ → ℝ := fun t => 2 * Real.cos t
+E : ℝ → ℂ := fun t => e * ↑(Circle.exp t)
+hr : Continuous r
+hE : Continuous E
+hra : r a = 1
+ha : 0 < a ∧ a < Real.pi
+⊢ ?m.262 < 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Rigidity.lean:281:40: error(lean.unknownIdentifier): Unknown identifier `𝓝`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Rigidity.lean:278:91: error: unsolved goals
+case true
+x e : ℂ
+he : ‖e‖ = 1
+δ : ℝ
+hδ : 0 < δ
+V : Set ℂ
+a : ℝ := Real.pi / 3
+r : ℝ → ℝ := fun t => 2 * Real.cos t
+E : ℝ → ℂ := fun t => e * ↑(Circle.exp t)
+hr : Continuous r
+hE : Continuous E
+hra : r a = 1
+ha : 0 < a ∧ a < Real.pi
+hn : ∀ᶠ (t : ℝ) in sorry, 0 < r t ∧ |r t - 1| < δ ∧ dist (E t) (E a) < δ ∧ 0 < t ∧ t < Real.pi
+hstrip :
+  ∀ (e' : ℂ),
+    ‖e'‖ = 1 →
+      dist e' (e * ↑(Circle.exp (Real.pi / 3))) < δ →
+        ∀ (r : ℝ), 0 < r → |r - 1| < δ → (if true = true then 1 < r else r < 1) → x + ↑r * e' ∈ V
+⊢ ∃ t, (0 < r t ∧ |r t - 1| < δ ∧ dist (E t) (E a) < δ) ∧ if true = true then 1 < r t else r t < 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Rigidity.lean:263:32: error: unsolved goals
+x e : ℂ
+he : ‖e‖ = 1
+δ : ℝ
+hδ : 0 < δ
+V : Set ℂ
+b : Bool
+hstrip :
+  ∀ (e' : ℂ),
+    ‖e'‖ = 1 →
+      dist e' (e * ↑(Circle.exp (Real.pi / 3))) < δ →
+        ∀ (r : ℝ), 0 < r → |r - 1| < δ → (if b = true then 1 < r else r < 1) → x + ↑r * e' ∈ V
+a : ℝ := Real.pi / 3
+r : ℝ → ℝ := fun t => 2 * Real.cos t
+E : ℝ → ℂ := fun t => e * ↑(Circle.exp t)
+hr : Continuous r
+hE : Continuous E
+hra : r a = 1
+ha : 0 < a ∧ a < Real.pi
+hn : ∀ᶠ (t : ℝ) in sorry, 0 < r t ∧ |r t - 1| < δ ∧ dist (E t) (E a) < δ ∧ 0 < t ∧ t < Real.pi
+hex : ∃ t, (0 < r t ∧ |r t - 1| < δ ∧ dist (E t) (E a) < δ) ∧ if b = true then 1 < r t else r t < 1
+⊢ ∃ v, ‖v‖ = 1 ∧ x + e + v ∈ V
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Rigidity.lean:313:55: error(lean.unknownIdentifier): Unknown identifier `Ioo`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Rigidity.lean:313:72: error(lean.unknownIdentifier): Unknown identifier `Ioo`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Rigidity.lean:316:23: error(lean.unknownIdentifier): Unknown identifier `Ioo`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Rigidity.lean:317:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/Rigidity.lean:317:47: warning: Variable name `hε` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hε
+
+Note: This linter can be disabled with `set_opti
+FAIL OAI.Geometry.PlaneColoring.BinaryPalettes (12.5s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:69:4: error: typeclass instance problem is stuck
+  MeasureTheory.OuterMeasureClass ?m.1 ℝ
+
+Note: Lean will not try to resolve this typeclass instance problem because the first and third type arguments to `MeasureTheory.OuterMeasureClass` are metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:130:10: error(lean.unknownIdentifier): Unknown identifier `binary_transport_invariant`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:131:4: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:176:9: error(lean.unknownIdentifier): Unknown identifier `measure_eq_zero_iff_ae_notMem`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:203:9: error(lean.unknownIdentifier): Unknown identifier `ae_all_iff.mpr`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:209:13: error(lean.unknownIdentifier): Unknown identifier `Measure.ae_ae_of_ae_prod`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:208:58: error: unsolved goals
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+hw : WeakColoring k c
+x : ℂ
+⊢ ∀ᵐ (t : Angles) (v : Angles) ∂angularMeasure, c (x + direction t + direction v) ∉ palette c hc x t
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:218:15: error(lean.unknownIdentifier): Unknown identifier `Measure.ae_ae_of_ae_prod`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:217:65: error: unsolved goals
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+x : ℂ
+⊢ ∀ᵐ (t : Angles) ∂angularMeasure, TypicalSampling c (x + direction t) 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:249:42: error(lean.unknownIdentifier): Unknown identifier `ae_all_iff.mpr`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:254:8: error: Function expected at
+  htriple
+but this term has type
+  t ∈ ?m.33
+
+Note: Expected a function because this term is being applied to the argument
+  S
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:283:21: error(lean.unknownIdentifier): Unknown identifier `measure_eq_zero_iff_ae_notMem.mp`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:286:15: error(lean.unknownIdentifier): Unknown identifier `measurePreserving_add_right`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean:279:65: error: unsolved goals
+s : Angles → Bool
+hs : Measurable s
+hflip : ∀ᵐ (t : Angles) ∂angularMeasure, s (t + ↑(Real.pi / 3)) = !s t
+hz : ¬0 < angularMeasure {t | s t = s (t + ↑triangleAngle)}
+hz' : angularMeasure {t | s t = s (t + ↑triangleAngle)} = 0
+hf : ∀ᵐ (t : Angles) ∂angularMeasure, s (t + ↑triangleAngle) = !s t
+⊢ False
+
+FAIL OAI.Geometry.PlaneColoring.States (43.4s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:135:14: error(lean.unknownIdentifier): Unknown identifier `volume`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:136:67: error(lean.unknownIdentifier): Unknown identifier `measure_mono`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:130:24: error: unsolved goals
+A : Set ℂ
+x : ℂ
+hA : MeasurableSet A
+h : DensityOne A x
+ht :
+  Filter.Tendsto
+    (fun a => 1 - MeasureTheory.volume (A ∩ Metric.closedBall x a) / MeasureTheory.volume (Metric.closedBall x a))
+    (nhdsWithin 0 (Set.Ioi 0)) (nhds 0)
+r : ℝ
+hr : r ∈ Set.Ioi 0
+⊢ 1 - MeasureTheory.volume (A ∩ Metric.closedBall x r) / MeasureTheory.volume (Metric.closedBall x r) =
+    MeasureTheory.volume (Aᶜ ∩ Metric.closedBall x r) / MeasureTheory.volume (Metric.closedBall x r)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:146:76: error: Function expected at
+  volume
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  A
+
+Hint: The identifier `volume` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:148:25: error: Function expected at
+  volume
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (A ∩ Metric.closedBall x r)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:148:58: error: Function expected at
+  volume
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (Metric.closedBall x r)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:150:8: error(lean.unknownIdentifier): Unknown identifier `measure_mono_null`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:151:9: error(lean.unknownIdentifier): Unknown identifier `Tendsto`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:157:13: error(lean.unknownIdentifier): Unknown identifier `univ_inter`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:157:2: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:182:27: error(lean.unknownIdentifier): Unknown identifier `preimage_ofPred_eq`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:182:6: error: Type mismatch: After simplification, term
+  densityOne_translate.mpr (Eq.mpr (id (congrArg (DensityOne {q | c q ∈ J v}) (zero_add (z v)))) (hz v))
+ has type
+  DensityOne ((fun z_1 => z_1 + z v) ⁻¹' {q | c q ∈ J v}) 0
+but is expected to have type
+  DensityOne {q | c (q + z v) ∈ J v} 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:183:27: error(lean.unknownIdentifier): Unknown identifier `volume`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:176:49: error: unsolved goals
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+hw : WeakColoring k c
+ι : Type u_1
+inst✝ : Finite ι
+z : ι → ℂ
+J : ι → Finset (Fin k)
+hz : ∀ (v : ι), DensityOne {q | c q ∈ J v} (z v)
+hmem : DensityOne (⋂ v, {q | c (q + z v) ∈ J v}) 0
+⊢ ∃ q, (∀ (v : ι), c (q + z v) ∈ J v) ∧ ∀ (v w : ι), ‖z v - z w‖ = 1 → c (q + z v) ≠ c (q + z w)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:216:39: error: typeclass instance problem is stuck
+  MeasureTheory.OuterMeasureClass ?m.1 ℝ
+
+Note: Lean will not try to resolve this typeclass instance problem because the first and third type arguments to `MeasureTheory.OuterMeasureClass` are metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/States.lean:222:9: error: typeclass instance problem is stuck
+  MeasureTheory.OuterMeasureClass ?m.1 ℝ
+
+Note: Lean will not try to resolve this typeclass instance problem because the first and third type arguments to `MeasureTheory.OuterMeasureClass` are metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to 
+FAIL OAI.Geometry.PlaneColoring.BoundaryTrace (43.1s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:249:11: error: typeclass instance problem is stuck
+  MeasureTheory.OuterMeasureClass ?m.1 ℂ
+
+Note: Lean will not try to resolve this typeclass instance problem because the first and third type arguments to `MeasureTheory.OuterMeasureClass` are metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:281:11: error: typeclass instance problem is stuck
+  MeasureTheory.OuterMeasureClass ?m.1 ℂ
+
+Note: Lean will not try to resolve this typeclass instance problem because the first and third type arguments to `MeasureTheory.OuterMeasureClass` are metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+
+FAIL OAI.Geometry.PlaneColoring.AngularBoundary (191.8s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/AngularBoundary.lean:145:24: error(lean.unknownIdentifier): Unknown identifier `mem_iUnion`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/AngularBoundary.lean:145:35: error(lean.unknownIdentifier): Unknown identifier `mem_ofPred_eq`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/AngularBoundary.lean:143:66: error: unsolved goals
+K : Set ℂ
+z : ℂ
+⊢ z ∈ {z | ∃ p ∈ K, ∃ q ∈ K, dist z p < 1 ∧ 1 < dist z q} ↔ z ∈ ⋃ p ∈ K, ⋃ q ∈ K, {z | dist z p < 1 ∧ 1 < dist z q}
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/AngularBoundary.lean:145:49: warning: This simp argument is unused:
+  exists_prop
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Straddle, mem_iUnion, mem_ofPred_eq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/AngularBoundary.lean:155:27: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  r
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/AngularBoundary.lean:156:11: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  w
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/AngularBoundary.lean:158:12: error: Function expected at
+  Tendsto
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (fun n => 2 * ⟪e, w n⟫ - r n)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/AngularBoundary.lean:159:34: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  RCLike ℕ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/AngularBoundary.lean:157:40: error: unsolved goals
+x✝ : Sort u_1
+Tendsto : x✝
+atTop : Filter ℕ
+r : ℕ → ℝ
+w : ℕ → ℂ
+v e : ℂ
+hr : ∀ (n : ℕ), 0 < r n
+hr0 : sorry
+hw : ∀ (n : ℕ), ‖w n‖ = 1
+hwv : sorry
+he : ‖e‖ = 1
+hv : 0 < ⟪e, v⟫
+ht : sorry
+n : ℕ
+hn : n ∈ fun n => Real.lt✝ 0 (?m.229 n)
+heq : ‖e - ↑(r n) * w n‖ ^ 2 = 1 - 2 * r n * ⟪e, w n⟫ + r n ^ 2
+⊢ ‖e - ↑(r n) * w n‖ < 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/AngularBoundary.lean:168:27: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  r
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/AngularBoundary.lean:169:11: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  w
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/AngularBoundary.lean:171:12: error: Function expected at
+  Tendsto
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (fun n => 2 * ⟪e, w n⟫ - r n)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/AngularBoundary.lean:172:34: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  RCLike ℕ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/AngularBoundary.lean:170:40: error: unsolved goals
+x✝ : Sort u_1
+Tendsto : x✝
+atTop : Filter ℕ
+r : ℕ → ℝ
+w : ℕ 
+OK   OAI.Geometry.PlaneColoring.Exclusion (86.3s)
+FAIL OAI.Geometry.PlaneColoring.FourContinuity (82.4s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourContinuity.lean:152:60: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourContinuity.lean:224:11: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.7
+
+Note: Expected a function because this term is being applied to the argument
+  x
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourContinuity.lean:225:33: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.7
+
+Note: Expected a function because this term is being applied to the argument
+  (fun n => fourStateDistance c hc (x (φ n)) y s)
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourContinuity.lean:226:78: error(lean.unknownIdentifier): Unknown identifier `hc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourContinuity.lean:246:11: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.7
+
+Note: Expected a function because this term is being applied to the argument
+  x
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourContinuity.lean:247:4: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.7
+
+Note: Expected a function because this term is being applied to the argument
+  (fun n => fourStateDistance c hc (x n) y s)
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourContinuity.lean:264:16: error(lean.unknownIdentifier): Unknown identifier `volume.restrict`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourContinuity.lean:265:57: error(lean.unknownIdentifier): Unknown identifier `Ioo`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourContinuity.lean:266:38: error(lean.unknownIdentifier): Unknown identifier `mem_iUnion.mpr`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourContinuity.lean:268:12: error(lean.unknownIdentifier): Unknown identifier `Measure.le_iff.mpr`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourContinuity.lean:269:6: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourContinuity.lean:292:13: error: Function expected at
+  Integrable
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (f n)
+
+Hint: The identifier `Integrable` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourContinuity.lean:292:52: error: Function expected at
+  Integrable
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  g
+
+Hint: The identifier `Integrable` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourContinuity.lean:293:10: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  (fun n => ∫ t, ‖f n t - g t‖ ∂angularMeasure)
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an u
+FAIL OAI.Geometry.PlaneColoring.FourTransport (18.6s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourTransport.lean:136:31: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourTransport.lean:136:33: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourTransport.lean:166:48: error: Type mismatch
+  univ
+has type
+  ?m.1
+but is expected to have type
+  Set X
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourTransport.lean:174:37: error: Function expected at
+  Ioo
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  a
+
+Hint: The identifier `Ioo` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourTransport.lean:175:26: error(lean.unknownIdentifier): Unknown identifier `Icc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourTransport.lean:176:26: error(lean.unknownIdentifier): Unknown identifier `Icc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourTransport.lean:190:10: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  u
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourTransport.lean:191:10: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (fun n => (u n - a) / δ n)
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourTransport.lean:192:21: error: Function expected at
+  Ioo
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  a
+
+Hint: The identifier `Ioo` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourTransport.lean:194:8: error: Invalid `⟨...⟩` notation: The expected type
+  (?m.30 hab hδ hv hu hs n).1 ?m.22 (u n)
+is not an inductive type
+
+Note: This notation can only be used when the expected type is an inductive type with a single constructor
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourTransport.lean:209:8: error(lean.unknownIdentifier): Unknown identifier `Measure.nonempty_support`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourTransport.lean:210:8: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourTransport.lean:222:2: error(lean.unknownIdentifier): Unknown identifier `two_closed_shift_separated_not_cover`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/final2/OAI/Geometry/PlaneColoring/FourTransport.lean:227:4: error: typeclass instance problem is stuck
+  MeasureTheory.OuterMeasureClass ?m.7 ℝ
+
+Note: Lean will not try to resolve this typeclass instance problem because the first and third type arguments to `MeasureTheory.OuterMeasureClass` are metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, bu

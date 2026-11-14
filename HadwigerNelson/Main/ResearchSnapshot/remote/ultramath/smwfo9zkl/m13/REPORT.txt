@@ -1,0 +1,11 @@
+k=6 triangle case of Thm 6.5: it is NOT derivable at k=6 from the hypotheses it uses; the printed dependence on |P|<=2 is essential.
+
+Files: no-go.md (theorems+proofs), alpha_bounds.py, model_check2.py, structural_check.py, run_all.sh, run_all.log. Check: cd .ultramath/smwfo9zkl/m13 && bash run_all.sh (~90 s, all zero violations).
+
+Class P(k,eps): (6.2) for the three edges of T, 1<=|P|<=k-3, (5.7), the exact (5.3) transport for all pairs at distance<=eps, Lemma 6.2 traces, (5.2) with an unconstrained c.
+
+Thm 1 (k=5): members of P(5,eps) have their triangle centres min(delta_*,eps)-separated. That is exactly the printed proof (binarity for the outsider pair + Lemma 5.5), so the class is non-vacuous.
+
+Thm 2 (k=6): s(t)=floor(9t/2pi) mod 3, Q_0={1,4},Q_1={2,5},Q_2={3,6}. (M'): Z=R^2, P_z(e^{it})=Q_{s(t)} is in P(6,1/50) with EVERY point of the plane a T-ary triangle centre: no separation, no local finiteness. (M): P_z(e^{it})={4+s(t)} is in P(6,1/50) and satisfies (5.2) itself with c=1. So (N1) of smwfcr56i/m2 fails at the palette level, and no palette-level condition (|P|>=2, P meets T, P meets O, ternary bound) repairs it; only maximality of palettes is unmet.
+
+Inputs: |alpha_pm(t)-(t±pi/3)|<=4d, and 9b/2pi in (1,2)u(-2,-1) => s(t+b)!=s(t) for every t, so transport holds exactly (exact rational check).

@@ -1,0 +1,100 @@
+83 modules, 83 with modified sources
+SKIP OAI.Analysis.PlaneSpectrum.Basic (olean newer)
+SKIP OAI.Analysis.PlaneSpectrum.Characters (olean newer)
+FAIL OAI.Analysis.PlaneSpectrum.Fourier (20s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Fourier.lean:87:0: error: Invalid name after `end`: Expected `Multiplier`, but found `EuclideanFiveColor`
+
+Hint: If you meant to end the outer scope(s) `EuclideanFiveColor`, you must end all the intervening scopes `EuclideanFiveColor.Multiplier`:
+  end EuclideanFiveColor.̲M̲u̲l̲t̲i̲p̲l̲i̲e̲r̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Fourier.lean:88:0: error: Missing name after `end`: Expected the current scope name `Multiplier`
+
+Hint: To end the current scope `Multiplier`, specify its name:
+  end ̲M̲u̲l̲t̲i̲p̲l̲i̲e̲r̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Fourier.lean:94:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.Multiplier.EuclideanFiveColor.ProbabilityL2.norm_integral_sq`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Fourier.lean:114:4: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.Multiplier.EuclideanFiveColor.ProbabilityL2.average`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Fourier.lean:115:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.Multiplier.EuclideanFiveColor.ProbabilityL2.average_measurable`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Fourier.lean:117:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.Multiplier.EuclideanFiveColor.ProbabilityL2.fiber_memLp`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Fourier.lean:123:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.Multiplier.EuclideanFiveColor.ProbabilityL2.average_memLp`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Fourier.lean:130:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.Multiplier.EuclideanFiveColor.ProbabilityL2.average_toLp_integral`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Analysis/PlaneSpectrum/Fourier.lean:161:0: error: Invalid name after `end`: Expected `Multiplier`, but found `OAI`
+
+Note: The current scopes are `EuclideanFiveColor.Multiplier`
+
+FAIL OAI.Geometry.PlaneColoring.Coloring (8s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Geometry/PlaneColoring/Coloring.lean:11:9: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.EuclideanFiveColor.anglePeriodPositive`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Geometry/PlaneColoring/Coloring.lean:12:7: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.EuclideanFiveColor.Angles`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Geometry/PlaneColoring/Coloring.lean:13:4: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.EuclideanFiveColor.angularMeasure`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Geometry/PlaneColoring/Coloring.lean:14:4: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.EuclideanFiveColor.direction`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Geometry/PlaneColoring/Coloring.lean:15:0: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.EuclideanFiveColor.instIsProbabilityMeasureAnglesAngularMeasure`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Geometry/PlaneColoring/Coloring.lean:16:0: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.EuclideanFiveColor.instIsAddHaarMeasureAnglesAngularMeasure`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Geometry/PlaneColoring/Coloring.lean:17:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.EuclideanFiveColor.direction_continuous`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Geometry/PlaneColoring/Coloring.lean:18:14: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.EuclideanFiveColor.direction_norm`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Geometry/PlaneColoring/Coloring.lean:19:14: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.EuclideanFiveColor.direction_real`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Geometry/PlaneColoring/Coloring.lean:23:4: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.EuclideanFiveColor.WeakColoring`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/OAI/Geometry/PlaneColoring/Coloring.lean:30:0: error: Invalid name after `end`: Expected `EuclideanFiveColor`, but found `OAI`
+
+Hint: If you meant to end the outer scope(s) `OAI`, you must end all the intervening scopes `OAI.EuclideanFiveColor`:
+  end OAI.̲E̲u̲c̲l̲i̲d̲e̲a̲n̲F̲i̲v̲e̲C̲o̲l̲o̲r̲
+SKIP OAI.Analysis.PlaneSpectrum.CircleDecay (olean newer)
+SKIP OAI.Geometry.PlaneColoring.WeakColoring (olean newer)
+SKIP OAI.Geometry.PlaneColoring.Compactness (olean newer)
+SKIP OAI.Analysis.PlaneSpectrum.CircleOperator (olean newer)
+SKIP OAI.Analysis.PlaneSpectrum.InvariantMean (olean newer)
+SKIP OAI.Analysis.PlaneSpectrum.Multipliers (olean newer)
+SKIP OAI.Analysis.PlaneSpectrum.FourierTests (olean newer)
+SKIP OAI.Analysis.PlaneSpectrum.SmallArcs (olean newer)
+SKIP OAI.Analysis.PlaneSpectrum.PhaseEncoding (olean newer)
+SKIP OAI.Analysis.PlaneSpectrum.PhaseCollision (olean newer)
+SKIP OAI.MeasureTheory.CompactFactors.ConditionalSelection (olean newer)
+OK   OAI.Analysis.PlaneSpectrum.ConditionalSpectrum (105s)
+OK   OAI.MeasureTheory.CompactFactors.Amenability (485s)
+OK   OAI.MeasureTheory.CompactFactors.Centers (497s)
+OK   OAI.MeasureTheory.CompactFactors.RelativeCenters (42s)
+OK   OAI.MeasureTheory.CompactFactors.Approximation (226s)
+OK   OAI.MeasureTheory.CompactFactors.ConditionalLimits (380s)
+OK   OAI.MeasureTheory.CompactFactors.Kernels (91s)
+OK   OAI.MeasureTheory.CompactFactors.BoundedFunctions (29s)
+OK   OAI.MeasureTheory.CompactFactors.RelativeProducts (27s)
+OK   OAI.MeasureTheory.CompactFactors.Separability (33s)
+OK   OAI.MeasureTheory.CompactFactors.AlgebraModels (51s)
+OK   OAI.MeasureTheory.CompactFactors.Functions (228s)
+OK   OAI.MeasureTheory.CompactFactors.Factors (241s)
+OK   OAI.MeasureTheory.CompactFactors.Stationary (138s)
+OK   OAI.Analysis.PlaneSpectrum.Representations (201s)
+OK   OAI.Analysis.PlaneSpectrum.Energy (69s)
+OK   OAI.Analysis.PlaneSpectrum.NumberFields (16s)
+OK   OAI.Analysis.PlaneSpectrum.Selections (10s)
+OK   OAI.Analysis.PlaneSpectrum.RadialEnergy (21s)
+OK   OAI.Analysis.PlaneSpectrum.SpectralMeasure (75s)

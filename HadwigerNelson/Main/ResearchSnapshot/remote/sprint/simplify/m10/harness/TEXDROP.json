@@ -1,0 +1,1486 @@
+{
+"OAI.PlaneFiveColor.Spectral.embed_one": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"line": 69,
+"end": 69,
+"lines": 1,
+"kind": "theorem"
+},
+"OAI.PlaneFiveColor.Spectral.scalar_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"line": 139,
+"end": 141,
+"lines": 3,
+"kind": "theorem"
+},
+"OAI.PlaneFiveColor.Spectral.kCoeff_one": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"line": 226,
+"end": 226,
+"lines": 1,
+"kind": "theorem"
+},
+"OAI.PlaneFiveColor.Spectral.kCoeff_minusOne": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"line": 288,
+"end": 289,
+"lines": 2,
+"kind": "theorem"
+},
+"OAI.PlaneFiveColor.Spectral.coe_imagUnit": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"line": 363,
+"end": 364,
+"lines": 2,
+"kind": "theorem"
+},
+"OAI.PlaneFiveColor.Spectral.coe_ofF": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"line": 496,
+"end": 497,
+"lines": 2,
+"kind": "theorem"
+},
+"OAI.PlaneFiveColor.Spectral.embedF_one": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"line": 507,
+"end": 507,
+"lines": 1,
+"kind": "theorem"
+},
+"OAI.PlaneFiveColor.Spectral.jF_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"line": 517,
+"end": 519,
+"lines": 3,
+"kind": "theorem"
+},
+"OAI.PlaneFiveColor.Spectral.coe_reF": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"line": 581,
+"end": 581,
+"lines": 1,
+"kind": "theorem"
+},
+"OAI.PlaneFiveColor.Spectral.coe_imF": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"line": 582,
+"end": 583,
+"lines": 2,
+"kind": "theorem"
+},
+"OAI.EuclideanFiveColor.circleOperator_norm_le": {
+"mod": "OAI.Analysis.PlaneSpectrum.CircleOperator",
+"line": 16,
+"end": 19,
+"lines": 4,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.colorMass_measurable": {
+"mod": "OAI.Analysis.PlaneSpectrum.CircleOperator",
+"line": 251,
+"end": 258,
+"lines": 8,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.colorMass_le_one": {
+"mod": "OAI.Analysis.PlaneSpectrum.CircleOperator",
+"line": 261,
+"end": 264,
+"lines": 4,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.Spectral.eval_scalar": {
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"line": 73,
+"end": 73,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.Spectral.lineFourier_eq": {
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"line": 77,
+"end": 84,
+"lines": 8,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.MovingMean.meanCLM_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Energy",
+"line": 80,
+"end": 81,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.Spectral.char_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Energy",
+"line": 370,
+"end": 370,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.Spectral.char_neg": {
+"mod": "OAI.Analysis.PlaneSpectrum.Energy",
+"line": 376,
+"end": 379,
+"lines": 4,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.Spectral.char_act": {
+"mod": "OAI.Analysis.PlaneSpectrum.Energy",
+"line": 380,
+"end": 383,
+"lines": 4,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.ErgodicCriterion.test_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Ergodicity",
+"line": 234,
+"end": 237,
+"lines": 4,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.DifferenceFourier.difference_coefficient_nonneg": {
+"mod": "OAI.Analysis.PlaneSpectrum.FourierTests",
+"line": 279,
+"end": 295,
+"lines": 17,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.shift_comm": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 26,
+"end": 29,
+"lines": 4,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.meanCLM_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 289,
+"end": 290,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.realPart_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 296,
+"end": 297,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.imagPart_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 298,
+"end": 300,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.cmeanCLM_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 343,
+"end": 344,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.circleMean_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 384,
+"end": 387,
+"lines": 4,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.fieldCircle_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 454,
+"end": 456,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.pairing_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 507,
+"end": 509,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.weakMean_add": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 551,
+"end": 558,
+"lines": 8,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.periodLift_mk": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 609,
+"end": 613,
+"lines": 5,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.periodSum_add": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 676,
+"end": 681,
+"lines": 6,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.periodBCF_mk": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 689,
+"end": 693,
+"lines": 5,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.integralReal_nonneg": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 713,
+"end": 720,
+"lines": 8,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.integralReal_shift": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 721,
+"end": 734,
+"lines": 14,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.InvariantMean.weakIntegral_pair": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"line": 754,
+"end": 766,
+"lines": 13,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.LpMultiplier.weight_inner": {
+"mod": "OAI.Analysis.PlaneSpectrum.Multipliers",
+"line": 92,
+"end": 106,
+"lines": 15,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.AlgebraicCayley.coe_asN": {
+"mod": "OAI.Analysis.PlaneSpectrum.NumberFields",
+"line": 242,
+"end": 243,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.AlgebraicCayley.coe_iN": {
+"mod": "OAI.Analysis.PlaneSpectrum.NumberFields",
+"line": 245,
+"end": 245,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.EncodedCollision.collision_from_close_encodings": {
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"line": 396,
+"end": 462,
+"lines": 67,
+"kind": "theorem"
+},
+"OAI.PlaneFiveColor.Spectral.radiusFamily_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.RadialEnergy",
+"line": 384,
+"end": 386,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.Spectral.rotMul_mulRot": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"line": 16,
+"end": 16,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.Spectral.mulRot_rotMul": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"line": 17,
+"end": 17,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.Spectral.rot_vadd": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"line": 22,
+"end": 23,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.LabelModel.trans_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"line": 74,
+"end": 74,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.LabelModel.rotate_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"line": 75,
+"end": 75,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.Koopman.unitary_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"line": 152,
+"end": 153,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.ContinuousVectors.mem_space": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"line": 193,
+"end": 193,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.LabelModel.translation_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"line": 243,
+"end": 245,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.VectorMeasure.realCM_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"line": 405,
+"end": 405,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.VectorMeasure.realCM_one": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"line": 409,
+"end": 411,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.VectorMeasure.measure_univ": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"line": 470,
+"end": 477,
+"lines": 8,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.CommutingSpectral.character_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
+"line": 150,
+"end": 151,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.VectorMeasure.boundedCM_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
+"line": 181,
+"end": 182,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.Spectral.ordinaryIndicator_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
+"line": 227,
+"end": 227,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.CompactIntegral.apply_clm": {
+"mod": "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
+"line": 368,
+"end": 372,
+"lines": 5,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.four_word_mixed_periodic": {
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"line": 31,
+"end": 34,
+"lines": 4,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.angleBoundary_closed": {
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"line": 350,
+"end": 351,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.Problem160.circleDir": {
+"mod": "OAI.Geometry.PlaneColoring.Basic",
+"line": 13,
+"end": 15,
+"lines": 3,
+"kind": "def"
+},
+"OAI.Problem160.normalizedAngleMeasure": {
+"mod": "OAI.Geometry.PlaneColoring.Basic",
+"line": 16,
+"end": 19,
+"lines": 4,
+"kind": "def"
+},
+"OAI.Problem160.circleMeasure": {
+"mod": "OAI.Geometry.PlaneColoring.Basic",
+"line": 20,
+"end": 22,
+"lines": 3,
+"kind": "def"
+},
+"OAI.Problem160.weakPairMeasure": {
+"mod": "OAI.Geometry.PlaneColoring.Basic",
+"line": 23,
+"end": 25,
+"lines": 3,
+"kind": "def"
+},
+"OAI.Problem160.WeakMeasurableColoring": {
+"mod": "OAI.Geometry.PlaneColoring.Basic",
+"line": 30,
+"end": 39,
+"lines": 10,
+"kind": "def"
+},
+"OAI.EuclideanFiveColor.binary_pair_distinct": {
+"mod": "OAI.Geometry.PlaneColoring.BinaryPalettes",
+"line": 28,
+"end": 43,
+"lines": 16,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.pickSupport": {
+"mod": "OAI.Geometry.PlaneColoring.BorelTransfer",
+"line": 380,
+"end": 380,
+"lines": 1,
+"kind": "def"
+},
+"OAI.EuclideanFiveColor.proper_to_weak": {
+"mod": "OAI.Geometry.PlaneColoring.BorelTransfer",
+"line": 451,
+"end": 458,
+"lines": 8,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.unit_antipodes_of_no_positive": {
+"mod": "OAI.Geometry.PlaneColoring.BoundaryTrace",
+"line": 319,
+"end": 358,
+"lines": 40,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.four_split_antipodes": {
+"mod": "OAI.Geometry.PlaneColoring.BoundaryTrace",
+"line": 359,
+"end": 367,
+"lines": 9,
+"kind": "lemma"
+},
+"OAI.Problem160.toPlane_zero": {
+"mod": "OAI.Geometry.PlaneColoring.Chromatic",
+"line": 34,
+"end": 34,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.Problem160.toPlane_one": {
+"mod": "OAI.Geometry.PlaneColoring.Chromatic",
+"line": 35,
+"end": 35,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.Problem160.ofPlane_re": {
+"mod": "OAI.Geometry.PlaneColoring.Chromatic",
+"line": 36,
+"end": 36,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.Problem160.ofPlane_im": {
+"mod": "OAI.Geometry.PlaneColoring.Chromatic",
+"line": 37,
+"end": 38,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.weakHilbert_apply": {
+"mod": "OAI.Geometry.PlaneColoring.Compactness",
+"line": 13,
+"end": 13,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.sampling_weak_compact": {
+"mod": "OAI.Geometry.PlaneColoring.Compactness",
+"line": 130,
+"end": 158,
+"lines": 29,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.WeakBall.value_norm": {
+"mod": "OAI.Geometry.PlaneColoring.Compactness",
+"line": 165,
+"end": 167,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.WeakBall.continuous_eval": {
+"mod": "OAI.Geometry.PlaneColoring.Compactness",
+"line": 177,
+"end": 180,
+"lines": 4,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.isCompact_traces": {
+"mod": "OAI.Geometry.PlaneColoring.Compactness",
+"line": 286,
+"end": 288,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.diam_le_one_of_preconnected_unitFree": {
+"mod": "OAI.Geometry.PlaneColoring.ConnectedUnitFree",
+"line": 18,
+"end": 44,
+"lines": 27,
+"kind": "theorem"
+},
+"OAI.EuclideanFiveColor.not_straddle_of_isPreconnected": {
+"mod": "OAI.Geometry.PlaneColoring.ConnectedUnitFree",
+"line": 45,
+"end": 60,
+"lines": 16,
+"kind": "theorem"
+},
+"OAI.EuclideanFiveColor.diam_le_one_connectedComponentIn_of_properColoring": {
+"mod": "OAI.Geometry.PlaneColoring.ConnectedUnitFree",
+"line": 61,
+"end": 73,
+"lines": 13,
+"kind": "theorem"
+},
+"OAI.EuclideanFiveColor.finite_continuum_subsequence": {
+"mod": "OAI.Geometry.PlaneColoring.ContinuumLimits",
+"line": 163,
+"end": 183,
+"lines": 21,
+"kind": "theorem"
+},
+"OAI.EuclideanFiveColor.five_ae_mem_support": {
+"mod": "OAI.Geometry.PlaneColoring.CyclicCore",
+"line": 9,
+"end": 11,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.cyclicCore_closed": {
+"mod": "OAI.Geometry.PlaneColoring.CyclicCore",
+"line": 234,
+"end": 251,
+"lines": 18,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.standardCore_closed": {
+"mod": "OAI.Geometry.PlaneColoring.CyclicCore",
+"line": 252,
+"end": 255,
+"lines": 4,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphLeafMove": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 258,
+"end": 259,
+"lines": 2,
+"kind": "def"
+},
+"OAI.EuclideanFiveColor.continuous_graphLeafMove": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 260,
+"end": 265,
+"lines": 6,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphLeafMove_zero": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 266,
+"end": 267,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphLeafMove_of_zero": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 268,
+"end": 269,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphLeafMove_edge": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 270,
+"end": 277,
+"lines": 8,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphLeafMove_vertex": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 278,
+"end": 280,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphLeafMove_mem": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 281,
+"end": 307,
+"lines": 27,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphLeafMove_one_at": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 308,
+"end": 311,
+"lines": 4,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphDrop": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 312,
+"end": 313,
+"lines": 2,
+"kind": "def"
+},
+"OAI.EuclideanFiveColor.graphLift": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 314,
+"end": 315,
+"lines": 2,
+"kind": "def"
+},
+"OAI.EuclideanFiveColor.continuous_graphDrop": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 316,
+"end": 317,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.continuous_graphLift": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 318,
+"end": 323,
+"lines": 6,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphLift_drop": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 324,
+"end": 329,
+"lines": 6,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphDrop_lift": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 330,
+"end": 332,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphDrop_vertex": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 333,
+"end": 335,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphDrop_edge": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 336,
+"end": 338,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphLift_vertex": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 339,
+"end": 344,
+"lines": 6,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphLift_edge": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 345,
+"end": 350,
+"lines": 6,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphLift_mem": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 351,
+"end": 355,
+"lines": 5,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphDrop_mem": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 356,
+"end": 387,
+"lines": 32,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphLeafRetraction": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 388,
+"end": 396,
+"lines": 9,
+"kind": "def"
+},
+"OAI.EuclideanFiveColor.graphLeafInclusion": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 397,
+"end": 401,
+"lines": 5,
+"kind": "def"
+},
+"OAI.EuclideanFiveColor.graphLeafHomotopy": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 402,
+"end": 415,
+"lines": 14,
+"kind": "def"
+},
+"OAI.EuclideanFiveColor.graphTree_contractible_aux": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 416,
+"end": 456,
+"lines": 41,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.coreHoles_open": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"line": 522,
+"end": 523,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.five_diag_nonempty": {
+"mod": "OAI.Geometry.PlaneColoring.Exclusion",
+"line": 21,
+"end": 21,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.five_diag_unique": {
+"mod": "OAI.Geometry.PlaneColoring.Exclusion",
+"line": 22,
+"end": 22,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.geometric_partial_sum": {
+"mod": "OAI.Geometry.PlaneColoring.Expansion",
+"line": 46,
+"end": 62,
+"lines": 17,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.five_realState_measurable": {
+"mod": "OAI.Geometry.PlaneColoring.FiveSupport",
+"line": 84,
+"end": 85,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.FiveComb.neighbors": {
+"mod": "OAI.Geometry.PlaneColoring.FiveSupport",
+"line": 159,
+"end": 159,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.strict_state_uniform_on_compact": {
+"mod": "OAI.Geometry.PlaneColoring.FourContinuity",
+"line": 361,
+"end": 406,
+"lines": 46,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.fiberCrosses_symm": {
+"mod": "OAI.Geometry.PlaneColoring.GraphCuts",
+"line": 219,
+"end": 222,
+"lines": 4,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphEdgePoint_one": {
+"mod": "OAI.Geometry.PlaneColoring.GraphRealization",
+"line": 100,
+"end": 101,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphRealization_nonneg": {
+"mod": "OAI.Geometry.PlaneColoring.GraphRealization",
+"line": 119,
+"end": 123,
+"lines": 5,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.graphSpace_compact": {
+"mod": "OAI.Geometry.PlaneColoring.GraphRealization",
+"line": 142,
+"end": 143,
+"lines": 2,
+"kind": "instance"
+},
+"OAI.EuclideanFiveColor.graphRealization_singleton": {
+"mod": "OAI.Geometry.PlaneColoring.GraphRealization",
+"line": 144,
+"end": 159,
+"lines": 16,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.MarkedDisk.initial_core_cover": {
+"mod": "OAI.Geometry.PlaneColoring.HoleApproximation",
+"line": 85,
+"end": 87,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.diskAnnulus_measurable": {
+"mod": "OAI.Geometry.PlaneColoring.HoleApproximation",
+"line": 214,
+"end": 215,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.interface_four_split_neg": {
+"mod": "OAI.Geometry.PlaneColoring.Interfaces",
+"line": 28,
+"end": 30,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.interface_four_diagonal_ne_zero": {
+"mod": "OAI.Geometry.PlaneColoring.Interfaces",
+"line": 34,
+"end": 36,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.interface_four_split_no_opposite": {
+"mod": "OAI.Geometry.PlaneColoring.Interfaces",
+"line": 37,
+"end": 47,
+"lines": 11,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.interfaceFourEdge_eq": {
+"mod": "OAI.Geometry.PlaneColoring.Interfaces",
+"line": 50,
+"end": 50,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.Problem160.SevenLattice.normSq_nonneg": {
+"mod": "OAI.Geometry.PlaneColoring.Lattice",
+"line": 16,
+"end": 19,
+"lines": 4,
+"kind": "lemma"
+},
+"OAI.Problem160.exists_measurable_unit_distance_coloring_of_center_cover": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableAssembly",
+"line": 11,
+"end": 57,
+"lines": 47,
+"kind": "theorem"
+},
+"OAI.Problem160.continuous_circleDir": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"line": 12,
+"end": 16,
+"lines": 5,
+"kind": "theorem"
+},
+"OAI.Problem160.measurable_circleDir": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"line": 17,
+"end": 19,
+"lines": 3,
+"kind": "theorem"
+},
+"OAI.Problem160.normalizedAngleMeasure_isProbabilityMeasure": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"line": 20,
+"end": 28,
+"lines": 9,
+"kind": "instance"
+},
+"OAI.Problem160.circleMeasure_isProbabilityMeasure": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"line": 29,
+"end": 32,
+"lines": 4,
+"kind": "instance"
+},
+"OAI.Problem160.norm_circleDir": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"line": 33,
+"end": 38,
+"lines": 6,
+"kind": "theorem"
+},
+"OAI.Problem160.ae_circleMeasure_norm": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"line": 39,
+"end": 44,
+"lines": 6,
+"kind": "theorem"
+},
+"OAI.Problem160.ae_weakPairMeasure_unit": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"line": 45,
+"end": 48,
+"lines": 4,
+"kind": "theorem"
+},
+"OAI.Problem160.weakMeasurableColoring_of_aemeasurable_proper": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"line": 49,
+"end": 68,
+"lines": 20,
+"kind": "theorem"
+},
+"OAI.EuclideanFiveColor.abs_le_of_bounds": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"line": 42,
+"end": 49,
+"lines": 8,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.moserPoint_0": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"line": 133,
+"end": 133,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.moserPoint_1": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"line": 134,
+"end": 134,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.moserPoint_2": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"line": 135,
+"end": 135,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.moserPoint_3": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"line": 136,
+"end": 136,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.moserPoint_4": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"line": 137,
+"end": 137,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.moserPoint_5": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"line": 138,
+"end": 138,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.moserPoint_6": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"line": 139,
+"end": 139,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.palette_second_exclusion": {
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"line": 135,
+"end": 142,
+"lines": 8,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.palette_transfer_pair": {
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"line": 143,
+"end": 157,
+"lines": 15,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.FlatDensityZero.mono_ae": {
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"line": 212,
+"end": 219,
+"lines": 8,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.flat_density_not_one": {
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"line": 397,
+"end": 408,
+"lines": 12,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.paletteSet_minimal": {
+"mod": "OAI.Geometry.PlaneColoring.Palettes",
+"line": 26,
+"end": 34,
+"lines": 9,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.triangleState_measurable": {
+"mod": "OAI.Geometry.PlaneColoring.Sectors",
+"line": 122,
+"end": 123,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.Problem160.exists_measurable_proper_seven": {
+"mod": "OAI.Geometry.PlaneColoring.Seven",
+"line": 41,
+"end": 59,
+"lines": 19,
+"kind": "theorem"
+},
+"OAI.Problem160.weakMeasurableColoring_seven": {
+"mod": "OAI.Geometry.PlaneColoring.Seven",
+"line": 60,
+"end": 68,
+"lines": 9,
+"kind": "theorem"
+},
+"OAI.EuclideanFiveColor.DensityZero.mono": {
+"mod": "OAI.Geometry.PlaneColoring.States",
+"line": 52,
+"end": 56,
+"lines": 5,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.correlation_continuous": {
+"mod": "OAI.Geometry.PlaneColoring.WeakColoring",
+"line": 17,
+"end": 18,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.scaleHom_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.AlgebraModels",
+"line": 620,
+"end": 620,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.Amenable.Mean.normFn_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.Amenability",
+"line": 54,
+"end": 55,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.Amenable.Mean.vector_norm_le": {
+"mod": "OAI.MeasureTheory.CompactFactors.Amenability",
+"line": 91,
+"end": 95,
+"lines": 5,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.Amenable.Mean.cross_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.Amenability",
+"line": 159,
+"end": 161,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.Amenable.Mean.orbit_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.Amenability",
+"line": 287,
+"end": 288,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.Amenable.Koopman.action_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.Amenability",
+"line": 357,
+"end": 358,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.Amenable.Koopman.vector_orbit_zero": {
+"mod": "OAI.MeasureTheory.CompactFactors.Amenability",
+"line": 400,
+"end": 411,
+"lines": 12,
+"kind": "theorem"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.add_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+"line": 37,
+"end": 37,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.sub_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+"line": 39,
+"end": 39,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.smul_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+"line": 42,
+"end": 42,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.real_smul_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+"line": 43,
+"end": 44,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.conj_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+"line": 47,
+"end": 48,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.comp_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+"line": 51,
+"end": 55,
+"lines": 5,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.expect_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+"line": 133,
+"end": 135,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.project_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+"line": 166,
+"end": 170,
+"lines": 5,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.project_eq_condexp": {
+"mod": "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+"line": 215,
+"end": 223,
+"lines": 9,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.Location.objective_zero": {
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"line": 111,
+"end": 113,
+"lines": 3,
+"kind": "theorem"
+},
+"OAI.EuclideanFiveColor.CosetCenter.Embedding.j_zero": {
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"line": 396,
+"end": 396,
+"lines": 1,
+"kind": "theorem"
+},
+"OAI.EuclideanFiveColor.CosetCenter.Embedding.range_j": {
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"line": 409,
+"end": 410,
+"lines": 2,
+"kind": "theorem"
+},
+"OAI.PlaneFiveColor.Spectral.finite_encoding_at_of_approximation": {
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"line": 218,
+"end": 268,
+"lines": 51,
+"kind": "lemma"
+},
+"OAI.PlaneFiveColor.Spectral.relative_singularity_limit": {
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"line": 269,
+"end": 330,
+"lines": 62,
+"kind": "theorem"
+},
+"OAI.EuclideanFiveColor.OrbitSpace.smul_val": {
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"line": 73,
+"end": 87,
+"lines": 15,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.FactorCode.encode_bound": {
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"line": 277,
+"end": 279,
+"lines": 3,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.CompactFunctions.compact_conj": {
+"mod": "OAI.MeasureTheory.CompactFactors.Functions",
+"line": 112,
+"end": 132,
+"lines": 21,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.RelativeProduct.law_probability": {
+"mod": "OAI.MeasureTheory.CompactFactors.Kernels",
+"line": 658,
+"end": 662,
+"lines": 5,
+"kind": "instance"
+},
+"OAI.EuclideanFiveColor.CosetCenter.Embedding.center_law_ordinary": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"line": 102,
+"end": 120,
+"lines": 19,
+"kind": "theorem"
+},
+"OAI.PlaneFiveColor.Spectral.ordinaryEmbedding_j": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"line": 535,
+"end": 535,
+"lines": 1,
+"kind": "theorem"
+},
+"OAI.PlaneFiveColor.Spectral.ordinaryEmbedding_ordinary": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"line": 536,
+"end": 537,
+"lines": 2,
+"kind": "theorem"
+},
+"OAI.PlaneFiveColor.Spectral.frequencyRotation_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"line": 549,
+"end": 551,
+"lines": 3,
+"kind": "theorem"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.projectCLM": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 88,
+"end": 91,
+"lines": 4,
+"kind": "def"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.projectCLM_l2": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 92,
+"end": 96,
+"lines": 5,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.act_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 112,
+"end": 112,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.add_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 217,
+"end": 217,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.mul_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 218,
+"end": 218,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.sub_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 219,
+"end": 219,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.zero_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 220,
+"end": 220,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.one_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 221,
+"end": 221,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.real_smul_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 222,
+"end": 222,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.complex_smul_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 223,
+"end": 223,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.const_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 233,
+"end": 234,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.bmConj": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 235,
+"end": 236,
+"lines": 2,
+"kind": "def"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.conj_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 237,
+"end": 241,
+"lines": 5,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.avg_congr_ae": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 267,
+"end": 275,
+"lines": 9,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 279,
+"end": 279,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_add": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 280,
+"end": 280,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_sub": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 281,
+"end": 290,
+"lines": 10,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.tensor_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 293,
+"end": 293,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.tensor_conj": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 296,
+"end": 301,
+"lines": 6,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.pairSequence_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 391,
+"end": 394,
+"lines": 4,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.AlgebraReplacement.linear_prod_replace": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"line": 442,
+"end": 455,
+"lines": 14,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.inner_act": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"line": 53,
+"end": 58,
+"lines": 6,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.conj_mul": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"line": 96,
+"end": 96,
+"lines": 1,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.act_zero": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"line": 106,
+"end": 107,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.meanNorm_mono": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"line": 372,
+"end": 373,
+"lines": 2,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.meanNorm_neg": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"line": 398,
+"end": 403,
+"lines": 6,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.meanNorm_sub_le": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"line": 404,
+"end": 409,
+"lines": 6,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.meanNorm_const": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"line": 419,
+"end": 425,
+"lines": 7,
+"kind": "lemma"
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.conditional_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"line": 473,
+"end": 475,
+"lines": 3,
+"kind": "lemma"
+}
+}

@@ -1,0 +1,55 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean	2026-11-13 19:09:13.640426709 +0000
++++ OAI/MeasureTheory/CompactFactors/Amenability.lean	2026-11-13 19:28:22.962110876 +0000
+@@ -9,6 +9,40 @@
+ 
+ open scoped RealInnerProductSpace BoundedContinuousFunction
+ namespace EuclideanFiveColor.Amenable
++
++/-- For a probability measure, `EventuallyConst s (ae μ)` forces `s` to be a.e. everything or
++a.e. nothing: in this Mathlib version `Filter.EventuallyConst f l` means `(map f l).Subsingleton`,
++i.e. some `l`-set has subsingleton image, and for `s : Set X` that image is `{⊤}`, `{⊥}` or `∅`. -/
++lemma ae_or_ae_not_of_eventuallyConst {X : Type*} [MeasurableSpace X] {μ : Measure X}
++    {s : Set X} (h : EventuallyConst s (ae μ)) :
++    (∀ᵐ x ∂μ, x ∈ s) ∨ (∀ᵐ x ∂μ, x ∉ s) := by
++  classical
++  obtain ⟨u, hu, hus⟩ := h
++  have hu1 : s ⁻¹' u ∈ ae μ := hu
++  have hu' : μ (s ⁻¹' u)ᶜ = 0 := mem_ae_iff.mp hu1
++  rcases Set.eq_empty_or_nonempty (s ⁻¹' u) with hemp | hne
++  · left
++    rw [ae_iff]
++    refine measure_mono_null ?_ hu'
++    intro y hy hyu
++    rw [hemp] at hyu
++    exact hyu
++  · obtain ⟨x, hx⟩ := hne
++    have hxA : s x ∈ u := hx
++    by_cases hxs : x ∈ s
++    · left
++      rw [ae_iff]
++      refine measure_mono_null ?_ hu'
++      intro y hy hyu
++      have h1 : s y = s x := hus hyu hxA
++      exact hy (Eq.mp h1.symm hxs)
++    · right
++      rw [ae_iff]
++      refine measure_mono_null ?_ hu'
++      intro y hy hyu
++      have h1 : s y = s x := hus hyu hxA
++      have hy' : y ∈ s := by simpa using hy
++      exact hxs (Eq.mp h1 hy')
+ variable (G : Type*) [AddCommGroup G] [TopologicalSpace G] [DiscreteTopology G]
+ 
+ def shift {E : Type*} [PseudoMetricSpace E] (g : G) (f : G →ᵇ E) : G →ᵇ E :=
+@@ -382,7 +416,10 @@
+       rw [hf g] at ha
+       exact ha.symm.mono (fun x hx =>
+         propext (show f (g +ᵥ x) ∈ A ↔ f x ∈ A by change f (g +ᵥ x) = f x at hx; rw [hx])))
+-  exact eventuallyEmptyOrUniv_iff.mp this
++  have hconst : EventuallyConst {x : X | f x ∈ A} (ae μ) := this
++  rcases ae_or_ae_not_of_eventuallyConst (μ := μ) hconst with h1 | h2
++  · exact Or.inl h1
++  · exact Or.inr h2
+ 
+ lemma inner_fixed_zero (v : Lp E 2 μ)
+     (hv : ∫ x, v x ∂μ = 0) (w : Lp E 2 μ) (hw : ∀ g : G, action μ g w = w) :

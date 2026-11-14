@@ -1,0 +1,48 @@
+removed module OAI.Geometry.PlaneColoring.ConnectedUnitFree
+removed module OAI.Geometry.PlaneColoring.MeasurableAssembly
+removed module OAI.Geometry.PlaneColoring.MeasurableProper
+   16 lines from OAI.Analysis.PlaneSpectrum.CircleOperator
+    1 lines from OAI.Analysis.PlaneSpectrum.ConditionalSpectrum
+   13 lines from OAI.Analysis.PlaneSpectrum.DifferenceLaw
+    4 lines from OAI.Analysis.PlaneSpectrum.Energy
+   53 lines from OAI.Analysis.PlaneSpectrum.InvariantMean
+   15 lines from OAI.Analysis.PlaneSpectrum.Multipliers
+   70 lines from OAI.Analysis.PlaneSpectrum.PhaseCollision
+    6 lines from OAI.Analysis.PlaneSpectrum.Representations
+    2 lines from OAI.Analysis.PlaneSpectrum.SpectralMeasure
+    6 lines from OAI.Geometry.PlaneColoring.AngularBoundary
+   23 lines from OAI.Geometry.PlaneColoring.Basic
+   16 lines from OAI.Geometry.PlaneColoring.BinaryPalettes
+    7 lines from OAI.Geometry.PlaneColoring.BorelTransfer
+   50 lines from OAI.Geometry.PlaneColoring.BoundaryTrace
+   35 lines from OAI.Geometry.PlaneColoring.Compactness
+   23 lines from OAI.Geometry.PlaneColoring.ContinuumLimits
+   12 lines from OAI.Geometry.PlaneColoring.Covering
+   25 lines from OAI.Geometry.PlaneColoring.CyclicCore
+  184 lines from OAI.Geometry.PlaneColoring.DiskExtension
+    2 lines from OAI.Geometry.PlaneColoring.Exclusion
+   17 lines from OAI.Geometry.PlaneColoring.Expansion
+    2 lines from OAI.Geometry.PlaneColoring.FiveSupport
+   46 lines from OAI.Geometry.PlaneColoring.FourContinuity
+    4 lines from OAI.Geometry.PlaneColoring.GraphCuts
+   21 lines from OAI.Geometry.PlaneColoring.GraphRealization
+    5 lines from OAI.Geometry.PlaneColoring.HoleApproximation
+   18 lines from OAI.Geometry.PlaneColoring.Interfaces
+    4 lines from OAI.Geometry.PlaneColoring.Lattice
+    8 lines from OAI.Geometry.PlaneColoring.Moser
+   35 lines from OAI.Geometry.PlaneColoring.PaletteDensity
+    9 lines from OAI.Geometry.PlaneColoring.Palettes
+    2 lines from OAI.Geometry.PlaneColoring.Sectors
+   29 lines from OAI.Geometry.PlaneColoring.Seven
+    2 lines from OAI.Geometry.PlaneColoring.WeakColoring
+   16 lines from OAI.MeasureTheory.CompactFactors.Amenability
+    8 lines from OAI.MeasureTheory.CompactFactors.BoundedFunctions
+    5 lines from OAI.MeasureTheory.CompactFactors.Centers
+  113 lines from OAI.MeasureTheory.CompactFactors.ConditionalLimits
+    3 lines from OAI.MeasureTheory.CompactFactors.Factors
+   21 lines from OAI.MeasureTheory.CompactFactors.Functions
+   34 lines from OAI.MeasureTheory.CompactFactors.RelativeCenters
+   38 lines from OAI.MeasureTheory.CompactFactors.RelativeProducts
+   29 lines from OAI.MeasureTheory.CompactFactors.Separability
+total lines removed from declaration spans: 1032
+dropped 2 import line(s) in Seven.lean

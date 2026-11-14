@@ -1,0 +1,8 @@
+{
+  "remoteSha256": "de6d516257562feeac0c2d71e62ecd5d79fb54def93cf7471e5b9457099b1db6",
+  "localSha256": "ca6ee63dd737fc7095ee82e35c5d702d90c203721ad92e00757d706e7b9a9304",
+  "changes": [
+    "Render ppExpr Format using its ToString instance",
+    "Lift BaseIO MessageData.toString via ordinary monadic bind, not Command.liftCoreM"
+  ]
+}

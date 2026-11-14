@@ -1,0 +1,33 @@
+Mathathon progress — 14 November 2026, current research check
+Triggered 09:45:26 Pacific; extended to complete the authorized eight-chat scale-up and cone proof verification.
+
+EXECUTION
+All EIGHT Open Math coordinators have real, distinct ultramath_start tool results, each launching TWO members. Model deepseek/deepseek-v4.1-flash, effort max. This is actual Ultramath orchestration, not a prompt label or the unsupported API effort string. Sixteen members launched. Exact IDs and source records are in supervision-state.json and checkins/20261114T174526Z.
+User signed into Open Math in the ChatGPT Browser; browser-control tools are still not exposed here. API-based actual swarm operation is working, so no further browser setup is needed for the current work.
+One heavy remote process at a time; no swarm heavy computation or builds authorized. Local Lean serialized. Human and retired chats untouched.
+The research automation remains every20minutes through Nov15 09:35:13Pacific. The separate five-minute usage watcher remains owned by the Scale Open Math OS chat; no duplicate watcher.
+
+SOLVING
+The full OA120/CC60 core has PASSED Lean4.34.1 with matching mathlibd13f23b. It proves that actual same-centre support exclusions with SIGNED approach directions in a CLOSED60degree cone leave at least THREE colours. No palette-cardinality/BinaryCenter hypothesis. Equality60 is included. ConeGeometry and ConeObstruction compiled without warnings; the concrete six-colour consumer and final axiom audit also PASSED. All four printed declarations use only propext, Classical.choice and Quot.sound; no sorryAx. Published sources/logs: outputs/cone/.
+Astra A4 also gives a complete paper classification of the continuous CC60 constraints:57 of60 six-distinct cyclic orders survive. Thus the six discrete-grid survivors do not exhaust continuous possibilities.
+A further actual-interface paper theorem forbids exclusions leaving only one label in a STRICTLY narrower-than120degree cone. It forces EVERY three-paired-direction configuration to be exactly equilateral120. The equilateral case and4–6distinct directions remain unresolved; independent source referee is running.
+The other chat's independent Ultra referee ACCEPTED the generic20-colour sharpness construction for every aperture above60. This closes widening CC60 for arbitrary finite palettes. It is not six-colour sharpness, a global six-colouring, or a verified novelty-priority claim.
+
+CLAUDE AND ASTRA
+Astra proved an explicit Borel proper colouring of the ENTIRE two-list locus in Claude's canonical one-centre list field. The full distance/boundary proof is outputs/ASTRA-LIST-FIELD-A4.txt; independent geometric referee is running. Every finite obstruction must therefore use four-list vertices, subject to referee confirmation. No full-disk extension was claimed.
+Claude job06, claude-four-list-extension-20261114-06, is running through the existing Max login on claude-opus-5-5 at supported MAX effort. Its narrow target is the four-list extension or exact obstruction. The prompt contains generated mathematical summaries only, no new private source files.15minute/4GiB limits, tools disabled.
+The three A4 Astra tasks were explicitly launched gpt-6-astra/ultra. All three mathematical assignments completed: two paper reports and a fully compiled cone proof packet. No additional Astra task admitted this check.
+
+SIMPLIFICATION
+Previously passed fixed/moving three-centre replacements and acyclic AvoidingTrace remain valid. Full private affected-module integration/deletion is still pending; the new formal and architecture swarms audit the concrete packet. No extra net-line saving claimed before all added modules and consumer rebuilds are included. Manuscript6.7=five_support_step_ban retained.
+
+USAGE AND LIMITS
+Latest Codex33%used/67%remaining; no reset credits currently reported by its tool. OpenMath API weekly57.22275384/500 consumed, approximately88.55%remaining. Claude native quota observation09:40 is stale, and current job06 has no rate_limit_event yet; the separate watcher has reported this visibility gap once. No reset/purchase/paid extras performed. User controls resets.
+One geometry history-tail read had a transient local_or_connection error; the verified swarm activation and prior cursor were preserved. No duplicate write or swarm launched.
+
+NEXT
+Collect and judge EXISTING swarms before creating any successors; coordinator turn_complete does not mean its swarm finished. Inspect Claude06 and independent list/MC120 reviews. Cone consumer/axioms are complete. Compile the three-centre integration closure next. Preserve mathematical hypothesis/verification grades. No new unrestricted chromatic bound or global six-colouring is established.
+
+SavedUTC 2026-11-14T18:11:39.963Z
+
+FINAL CONE GATE 2026-11-14T18:13:21.042Z: Geometryv2, Obstructionv3, Survivorv4, Auditv3 all PASS; standard axioms only.

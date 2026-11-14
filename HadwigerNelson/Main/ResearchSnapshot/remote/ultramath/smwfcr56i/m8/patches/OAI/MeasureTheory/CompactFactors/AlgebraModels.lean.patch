@@ -1,0 +1,11 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean	2026-11-13 19:09:13.640606757 +0000
++++ OAI/MeasureTheory/CompactFactors/AlgebraModels.lean	2026-11-13 19:52:57.617452229 +0000
+@@ -180,7 +180,7 @@
+     (κ ∘ₘ ν).map q = ν := by
+   have he := congrArg Measure.fst (graph_mixture ν κ q hq hf)
+   change ((κ ∘ₘ ν).map (fun x => (q x,id x))).fst = (ν ⊗ₘ κ).fst at he
+-  simpa only [Measure.fst_map_prodMk hq measurable_id, Measure.fst_compProd] using he
++  simpa only [Measure.fst_map_prodMk (X := q) measurable_id, Measure.fst_compProd] using he
+ 
+ variable [StandardBorelSpace X] [Nonempty X] [StandardBorelSpace Y] [Nonempty Y]
+ variable (μ : Measure X) [IsProbabilityMeasure μ] (q : X → Y) (hq : Measurable q)

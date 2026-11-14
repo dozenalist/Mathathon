@@ -1,0 +1,38 @@
+{
+ "3": {
+  "sat_C13": 36,
+  "sat_C15": 36,
+  "sat_pair": 36,
+  "eq_13_15": true,
+  "eq_15_pair": true,
+  "diff_15_minus_pair": [],
+  "diff_pair_minus_15": []
+ },
+ "4": {
+  "sat_C13": 216,
+  "sat_C15": 216,
+  "sat_pair": 216,
+  "eq_13_15": true,
+  "eq_15_pair": true,
+  "diff_15_minus_pair": [],
+  "diff_pair_minus_15": []
+ },
+ "5": {
+  "sat_C13": 225,
+  "sat_C15": 225,
+  "sat_pair": 225,
+  "eq_13_15": true,
+  "eq_15_pair": true,
+  "diff_15_minus_pair": [],
+  "diff_pair_minus_15": []
+ },
+ "6": {
+  "sat_C13": 177,
+  "sat_C15": 177,
+  "sat_pair": 177,
+  "eq_13_15": true,
+  "eq_15_pair": true,
+  "diff_15_minus_pair": [],
+  "diff_pair_minus_15": []
+ }
+}

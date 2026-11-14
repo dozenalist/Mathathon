@@ -1,0 +1,108 @@
+By (5.2) and Fubini, for almost every e ∈ B, the actual coloring on the circle
+v 7−→ x + e + v
+uses only the complementary pair {1,...,5}\A almost everywhere. For almost every such e, this
+exact radius-one circle sampling is also typical. Indeed the map (e,v) 7→ x + e + v is nonsingular
+off a product-null set, so the inverse image of the plane-null set of atypical points is product-null;
+Fubini then gives the asserted slices.
+For each of these e, the actual sampling at center x + e, radius exactly one, is itself a trace in
+Wx+e, using a constant sequence. Its coordinates sum to one and are supported in the complemen-
+tary pair. Hence the maximal palette at x + e intersects that pair almost everywhere. By (5.7), it
+has a unique member of the pair almost everywhere, alternating at an R-step. Thus x +e is binary
+for that same fixed pair, even if other traces add further labels to the maximal palette.
+Thegoodanglesstillhavepositivemeasure, sotheygiveinfinitelymanydistinctbinarycenters
+on the compact circle x + S. Lemma 5.5 makes these centers uniformly separated. A uniformly
+separated subset of a compact metric space is finite, by a finite cover with sufficiently small balls.
+This contradiction proves the upper bound.
+6 Transitions and local finiteness of cyclic centers
+Continue to assume that a weak measurable five-coloring is given, with the notation and null-set
+conventions of Section 5. Write I for the five-element label set. As before, Hi is the closed spatial
+essential support of Ai, and Px is defined at every center x, modulo angular null sets. We first use
+transitions between two colors to obtain circle traces that avoid both labels. The resulting angular
+restrictions show that centers whose transition graphs contain a cycle form a locally finite set. In
+Section 7 we construct a continuous graph-valued map on a square after removing small disks
+about these centers.
+6.1 Transition graphs and avoiding traces
+For distinct i, j ∈ I, a bounded ball B ⊂ R2, and h ∈ R2, define
+Dij(B,h) = {q ∈ B : (c(q),c(q + h)) ∈ {(i, j),(j,i)}} ,
+where vertical bars on a plane set denote Lebesgue area. The second endpoint q + h is not re-
+quired to belong to B. The normalization by |h| below is chosen to match the circle-averaging
+estimate used in Lemma 6.2: transition sets of area comparable to |h| will yield traces avoiding
+both endpoint labels.
+Definition 6.1 (Transition graph). For x ∈ R2, let Γx be the simple graph on I in which ij is an
+edge precisely when, for every ball B centered at x with positive finite radius,
+limsup
+h→0
+h̸=0
+Dij(B,h)
+|h|
+> 0. (6.1)
+For each fixed pair ij, its edge-presence locus is closed. Indeed, a ball centered at a limit of
+points of that locus contains a smaller ball centered at one of those points, and Dij is monotone in
+its ball argument. Moreover,
+ij ∈ Γx =⇒ x ∈ Hi ∩ Hj.
+34To check this in any neighborhood of x, use a smaller ball and then choose h small enough that
+both endpoints of every transition under consideration remain in the neighborhood. A positive-
+area transition set gives positive area of each endpoint color there; translation preserves area.
+Lemma 6.2 (An edge has an avoiding trace). If ij ∈ Γx, there is a trace bij ∈ Wx with b
+ij
+i = b
+ij
+j = 0
+almost everywhere. Consequently,
+Px(e) ̸⊂ {i, j} for almost every e ∈ S, ij ∈ Γx. (6.2)
+Proof. Write
+Sg(q) =
+Z
+S
+g(q + e)dσ(e).
+The estimate we need, for every fixed bounded ball B and every label s, is
+S as − as(· + h)
+
+L2(B)
+= o
+q
+|h|
+
+(h → 0). (6.3)
+Here and in (6.1), the vector h may approach zero in any direction.
+Choose a boundedly supported g ∈ L2(R2) agreeing with as on a ball containing B + S + h
+for all sufficiently small h, as well as B + S. The Fourier transform of normalized circle measure
+satisfies
+|b σ(ξ)| ≤ C(1 + |ξ|)−1/2
+.
+For completeness, after rotating coordinates the relevant integral is a constant multiple of
+R 2π
+0
+exp(ircost)dt, where r is proportional to |ξ|. For r ≥ 1, removing the arcs on which
+|sint| ≤ r−1/2 costs O(r−1/2). On each remaining interval, integration by parts using the deriva-
+tive −irsint gives endpoint terms O(r−1/2), while the integral of |cost|/(rsin2
+t) is also O(r−1/2).
+The bound for r ≤ 1 is immediate.
+By Plancherel, the square of the global L2 norm of S(g − g(· + h)), divided by |h|, is bounded
+by the integral of |b g(ξ)|2 times
+C
+1 + |ξ|
+min{C|h|2|ξ|2,4}
+|h|
+.
+This multiplier is uniformly bounded: split at |ξ| = |h|−1. For each fixed ξ it tends to zero as
+h → 0. Dominated convergence therefore proves (6.3); the cutoff is fixed before h tends to zero.
+For a fixed displacement h, almost every root q has both q,q + h typical, and both exact unit-
+circle samplings centered at these points typical on their circles. At a transition from color s to
+color t, the first circle avoids s and the second avoids t, by properness of the coloring on typical
+points. Thus the mass of color t on the first circle equals S(at − at(· + h))(q). For a transition
+between i and j in either order, the first-circle mass of these two colors together is consequently
+bounded by
+S(ai − ai(· + h))(q) + S(aj − aj(· + h))(q) .
+Fix a ball B about x. Since ij ∈ Γx, there is a constant cB > 0 and arbitrarily small nonzero h
+for which the transition set in B has area at least cB|h|. Cauchy–Schwarz and (6.3) show that the
+average of the preceding mass over this transition set is at most
+o(
+p
+|h|)
+p
+cB|h|
+= o(1).
+Now take balls Bm of radii tending to zero about x. After fixing Bm and its constant cBm, choose
+hm sufficiently small and then a transition root qm ∈ Bm from the preceding full-measure set,
+35

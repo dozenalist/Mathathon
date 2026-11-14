@@ -1,0 +1,14 @@
+[1] exact forced set at a = 1/4: |F| = 30, rings N = [3, 4, 7, 9]  (0.08s)
+    matches the pre-registered analytic derivation {3,4,7,9}? True
+[2] G[P]: 73 cells, 723 edges, degree 12..30 (centre 30, |F| = 30)
+[3] max clique = 4  witness [(0, 0), (-2, 1), (-1, -1), (-1, 2)]
+[4] CNF: 438 vars, 5506 clauses -> p25.cnf   (0.10s)
+[5] cadical exit=20 (10=SAT, 20=UNSAT)  (1.64s)
+    stdout tail: ['s UNSATISFIABLE']
+    -> UNSAT
+[6] UNSAT: proof p25.drat = 3425541 bytes; verifying with drat-trim
+    drat-trim| c 32677 of 41772 lemmas in core using 842488 resolution steps
+    drat-trim| c 0 RAT lemmas in core; 7111 redundant literals in core lemmas
+    drat-trim| s VERIFIED
+    drat-trim| c verification time: 1.324 seconds
+    VERIFIED? True

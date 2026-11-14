@@ -1,0 +1,42 @@
+cluster: 16 modules, 8469 lines
+--- 1078 Analysis.PlaneSpectrum.InvariantMean  exports 13 decls used outside:
+      averagingUF                                   <- Energy
+      cube                                          <- Energy
+      cube_add                                      <- Energy
+      cube_coboundary_norm                          <- Energy
+      cube_const                                    <- Energy
+      cube_nonneg                                   <- Energy
+      cube_norm_le                                  <- Energy
+      cube_smul                                     <- Energy
+      cube_sub                                      <- Energy
+      eventually_mem                                <- Energy
+      mean                                          <- Energy, Separability
+      single_apply                                  <- Energy
+      tendsto_boundary                              <- Energy
+---  703 MeasureTheory.CompactFactors.Centers  exports 2 decls used outside:
+      coordinate                                    <- Five
+      kernel                                        <- Kernels
+---  586 MeasureTheory.CompactFactors.Factors  exports 1 decls used outside:
+      [Countable                                    <- Ergodicity
+---  497 Analysis.PlaneSpectrum.ConditionalSpectrum  exports 5 decls used outside:
+      eval                                          <- Energy, Ergodicity, SpectralMeasure
+      eval_add                                      <- Energy
+      eval_neg                                      <- Energy
+      lineFourier_eq                                <- RadialEnergy
+      measurable_eval_coe                           <- Energy
+---  496 MeasureTheory.CompactFactors.Approximation  exports 2 decls used outside:
+      invariant                                     <- Energy, Ergodicity, Kernels, Separability
+      relative_difference_invariant                 <- Ergodicity
+---  442 MeasureTheory.CompactFactors.ConditionalSelection  exports 2 decls used outside:
+      ae_fiber_of_ae                                <- Kernels
+      ae_in_own_fiber                               <- Kernels
+---  314 Analysis.PlaneSpectrum.Multipliers  exports 2 decls used outside:
+      lineFourier                                   <- RadialEnergy
+      weight                                        <- Ergodicity
+---  295 Analysis.PlaneSpectrum.FourierTests  exports 1 decls used outside:
+      exists_small_wild_parameter                   <- RadialEnergy
+---  201 MeasureTheory.CompactFactors.Stationary  exports 3 decls used outside:
+      exists_terminal_factor                        <- Ergodicity
+      inner                                         <- Energy, SpectralMeasure
+      integral                                      <- RadialEnergy
+total exported declarations: 31

@@ -1,0 +1,4 @@
+rc_dropin=0
+@three_color_diamond : ∀ {a b p q : Fin 3}, a ≠ b → p ≠ a → p ≠ b → q ≠ a → q ≠ b → p = q
+'OAI.EuclideanFiveColor.three_color_diamond' depends on axioms: [propext, Quot.sound]
+DropInCheck.lean:5:14: error(lean.unknownIdentifier): Unknown constant `OAI.EuclideanFiveColor.moser_not_three_colorable`

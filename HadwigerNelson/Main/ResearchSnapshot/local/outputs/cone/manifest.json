@@ -1,0 +1,56 @@
+{
+  "packet": "OA120 and CC60 completed formal proof packet A4",
+  "date": "2026-11-14",
+  "status": "COMPLETE: OA120, CC60, concrete survivor, and axiom audit all passed",
+  "lean": "4.34.1",
+  "mathlib_revision_prefix": "d13f23b",
+  "source_originals": "work/encoding-integration/full-original/OAI/Geometry/PlaneColoring",
+  "source_originals_modified": false,
+  "worker_ran_lean": false,
+  "worker_spawned_subagents": false,
+  "compile_order": [
+    "OAI/Geometry/PlaneColoring/ConeGeometry.lean",
+    "OAI/Geometry/PlaneColoring/ConeObstruction.lean",
+    "OAI/Geometry/PlaneColoring/ConeSurvivor.lean",
+    "OAI/Geometry/PlaneColoring/ConeAudit.lean"
+  ],
+  "external_imports": [
+    "OAI.Geometry.PlaneColoring.AngularBoundary",
+    "Mathlib.Analysis.SpecialFunctions.Trigonometric.Inverse"
+  ],
+  "main_declarations": [
+    "OAI.EuclideanFiveColor.outer_strip_actual_unit_neighbour",
+    "OAI.EuclideanFiveColor.outer120_point_has_unit_neighbour",
+    "OAI.EuclideanFiveColor.outerAngularStrips_compact_radius",
+    "OAI.EuclideanFiveColor.essentialLocalSet_no_unit_pair",
+    "OAI.EuclideanFiveColor.binary_connected_unit_neighbour_obstruction",
+    "OAI.EuclideanFiveColor.outer120_binary_impossible",
+    "OAI.EuclideanFiveColor.closed60_continua_outer_strips",
+    "OAI.EuclideanFiveColor.closed60_exclusions_not_binary",
+    "OAI.EuclideanFiveColor.closed60_exclusions_three_le",
+    "OAI.EuclideanFiveColor.cone_survivor_001334_impossible"
+  ],
+  "geometry": "Explicit radial cosine-law unit-neighbour family. Compactness produces one radius on a closed 60-degree subarc; connectedness and IVT supply its unit pair.",
+  "closed_cone_endpoints": true,
+  "unsigned_axes_or_inner_arc_generalization": false,
+  "palettes_or_binary_center_premises": false,
+  "forbidden_proof_tokens_found": false,
+  "source_sha256": {
+    "ConeGeometry.lean": "12c254d0520f76235a3576bdb344378e885973ff3810911c7a3fee29d68b3b03",
+    "ConeObstruction.lean": "41298784d3226ccdebe315dba22659672bc7d1f3aedf4acb647a82fb355e4a50",
+    "ConeSurvivor.lean": "527c74754eaa73c988929eceb0a194fbe6b2d98cc1a608660efc5b5a2f3a6ab2",
+    "ConeAudit.lean": "cb06c0fb7f297b814662cc3ca238f7f6aac3fdda2b0de944b341e132ee887c54"
+  },
+  "validation": {
+    "ConeGeometry.lean": {"status": "passed", "exit_code": 0, "log": "work/lean-queue/cone-geometry-v2.log", "warnings": false},
+    "ConeObstruction.lean": {"status": "passed", "exit_code": 0, "log": "work/lean-queue/cone-obstruction-v3.log", "warnings": false},
+    "ConeSurvivor.lean": {"status": "passed", "exit_code": 0, "log": "work/lean-queue/cone-survivor-v4.log", "warnings": false},
+    "ConeAudit.lean": {"status": "passed", "exit_code": 0, "log": "work/lean-queue/cone-audit-v3.log", "warnings": false}
+  },
+  "axiom_audit": {
+    "declarations": ["outer_strip_actual_unit_neighbour", "outer120_binary_impossible", "closed60_exclusions_three_le", "cone_survivor_001334_impossible"],
+    "exact_axioms_for_each": ["propext", "Classical.choice", "Quot.sound"],
+    "sorryAx": false
+  },
+  "remaining_obligation": "None for this formalization assignment. Applications still need the stated actual continuum and spatial-support-exclusion hypotheses."
+}

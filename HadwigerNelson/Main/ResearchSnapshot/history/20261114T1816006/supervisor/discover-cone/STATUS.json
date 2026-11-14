@@ -1,0 +1,54 @@
+{
+ "block": "discover-cone",
+ "updated_utc": "2026-11-14T18:09:30Z",
+ "mode": "ACTUAL ULTRAMATH (not prompting-only). One bounded swarm, two mathematical members, no recursive swarms.",
+ "swarm": {
+  "id": "smwgphe8q",
+  "dir": ".ultramath/smwgphe8q",
+  "members": ["m1", "m2"],
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reasoning_effort": "max",
+  "member_steps": 60,
+  "minutes_requested": 60,
+  "started_utc": "2026-11-14T17:55:05Z",
+  "deadline_utc": "2026-11-14T18:55:05Z",
+  "status": "running (same swarm kept; no second swarm created)",
+  "directions": {
+   "m1": "d1 continuous circular combinatorics (ACTIVE, one finding f1)",
+   "m2": "d2 analytic layer: null exceptional sets and dual-arc strip geometry (ACTIVE, one finding f2)"
+  },
+  "accepted_by_verdict": [],
+  "coordinator_note": "Coordinator reasoning effort is max; that alone does not activate Ultramath. Activation is the ultramath_start call returning smwgphe8q."
+ },
+ "conveyance": {
+  "asked": "deliver the Astra/MC120 updates to the running members through the actual swarm communication tool",
+  "actual_channel": "Ultramath exposes no broadcast or inbox operation. The only member-facing write is ultramath_verdict, which requires a submitted report; ultramath_status reports waiting_for_verdict = [] and submission = null for both directions.",
+  "action_taken": "No verdict was issued and none was fabricated. The update was written to the swarm's shared directory .ultramath/smwgphe8q/COORDINATOR-UPDATES.md and mirrored to supervisor/discover-cone/UPDATES.md; it is delivered at the next verdict boundary or the members' next run, whichever comes first.",
+  "not_done": "I did not send a synthetic rejection to force delivery: a rejection is recorded as a judgement of a submission, and no submission exists, so that would put a false entry in the record."
+ },
+ "verification_by_coordinator": [
+  {"claim": "m1 f1 Step 1: |union_{i in S} E_i| <= 3 iff S lies in two cyclically consecutive slots", "check": "exhaustive over all 64 subsets S of Z/6, exact integers", "result": "0 mismatches"},
+  {"claim": "m1 f1 witness v* = (9,45,126,162,252,288) deg satisfies all 9 non-adjacent constraints", "check": "exact Fractions, circular distance", "result": "min non-adjacent distance 117 deg > 60; margin 57 > 2*19, so the 19 deg sup-box is inside the survivor set"},
+  {"claim": "cone filter over all 7776 words q with q0=0 gives exactly six survivors", "check": "exact recomputation", "result": "6, matching supervisor/solve-graphs/AC-CONE-SIX.md"},
+  {"claim": "q=(0,0,1,3,3,4) excluded by edges 0,1,2", "check": "exact recomputation", "result": "rejected at d=0 by edges 0,1,2 (labels 0,1,2,3) AND at d=3 by edges 3,4,5 (labels 0,3,4,5) — two independent exclusions, stronger than the brief states"}
+ ],
+ "external_results_do_not_duplicate": [
+  "Astra CC60 continuous classification: CC60-arc iff non-adjacent edge-index pair distances > 60 deg; gap form g_r > 60 for non-adjacent consecutive indices and g_r + g_{r+1} > 60; 57/60 six-distinct cyclic orders feasible.",
+  "MC120: excluded-label union >= 5 cannot fit a STRICT cone of width < 120 deg; a common positive outer arc > 60 deg gives a monochromatic open region with a unit pair; with empty-residual prohibition at < 180 deg, all actual three-paired-direction configurations force exact equilateral 120 deg.",
+  "Angular-inequality classification: another graph swarm. Canonical palette producer: another independent swarm. Neither is this block's target."
+ ],
+ "target_now": {
+  "short": "4/5/6 DISTINCT signed directions at one shared centre: a geometric source-compatible obstruction, or the actual equilateral paired exclusion, or a certified surviving family.",
+  "excluded": ["restating CC60", "re-deriving the Astra classification", "angular-inequality tables", "canonical palette producer", "global plane claims", "chi(R^2) claims"]
+ },
+ "containment": {
+  "heavy_compute": "none; global heavy compute remains serialized",
+  "no": ["Lean builds", "cloud Lean", "downloads", "solver installs", "background processes", "sub-agents", "recursive swarms", "second swarm"]
+ },
+ "corrections_this_block": [
+  "Retracted my OA120 objection: q(s) = x + s*exp(i*beta) has modulus exactly s > 1, so the outer strip applies at every s; no segment must stay in W; the second nonparallel unit neighbour comes from perturbing q inside the open W.",
+  "Straddle (AngularBoundary.lean:147) is {z | exists p,q in K, dist z p < 1 and 1 < dist z q}."
+ ],
+ "missing_artifact": "outputs/ASTRA-NONALIGNED-A3.txt was cited in the brief but no such file exists anywhere in the tree.",
+ "research_until_utc": "2026-11-15T17:35:13Z"
+}

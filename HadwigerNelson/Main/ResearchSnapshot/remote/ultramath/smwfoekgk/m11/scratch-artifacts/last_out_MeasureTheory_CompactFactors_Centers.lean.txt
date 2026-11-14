@@ -1,0 +1,73 @@
+= e.center μ z
+work/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:608:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:607:53: error: unsolved goals
+case mp
+G : Type u_1
+inst : CommGroup G
+inst_1 : MeasurableSpace G
+e : Embedding G
+inst_2 : MeasurableMul₂ G
+inst_3 : MeasurableInv G
+μ : ProbabilityMeasure G
+z z' : G
+hz : ¬↑μ (e.coset z) = 0
+a : e.center μ z' = e.center μ z
+⊢ z' ∈ e.coset z
+
+case mpr
+G : Type u_1
+inst : CommGroup G
+inst_1 : MeasurableSpace G
+e : Embedding G
+inst_2 : MeasurableMul₂ G
+inst_3 : MeasurableInv G
+μ : ProbabilityMeasure G
+z z' : G
+hz : ¬↑μ (e.coset z) = 0
+a : z' ∈ e.coset z
+⊢ e.center μ z' = e.center μ z
+work/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:636:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:635:78: error: unsolved goals
+case mp
+G : Type u_1
+inst : CommGroup G
+inst_1 : MeasurableSpace G
+e : Embedding G
+T : G ≃* G
+O : ℂ ≃ₗᵢ[ℝ] ℂ
+he : ∀ (t : ℂ), T (e.j t) = e.j (O t)
+d : G
+a : T d ∈ e.ordinary
+⊢ d ∈ e.ordinary
+
+case mpr
+G : Type u_1
+inst : CommGroup G
+inst_1 : MeasurableSpace G
+e : Embedding G
+T : G ≃* G
+O : ℂ ≃ₗᵢ[ℝ] ℂ
+he : ∀ (t : ℂ), T (e.j t) = e.j (O t)
+d : G
+a : d ∈ e.ordinary
+⊢ T d ∈ e.ordinary
+work/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:648:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+work/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:662:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+work/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:681:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:680:36: error: unsolved goals
+G : Type u_1
+inst : CommGroup G
+inst_1 : MeasurableSpace G
+e : Embedding G
+inst_2 : MeasurableMul₂ G
+inst_3 : MeasurableInv G
+T : G ≃* G
+O : ℂ ≃ₗᵢ[ℝ] ℂ
+hT : Measurable ⇑T
+he : ∀ (t : ℂ), T (e.j t) = e.j (O t)
+μ : ProbabilityMeasure G
+z : G
+hz : ¬↑μ (e.coset z) = 0
+⊢ e.frequencyLaw (μ.map ⇑T) (T z) = (e.frequencyLaw μ z).map ⇑O

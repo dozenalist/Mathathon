@@ -1,0 +1,59 @@
+39 changed modules
+OK   Analysis/PlaneSpectrum/CircleOperator.lean
+OK   Analysis/PlaneSpectrum/FourierTests.lean
+OK   Analysis/PlaneSpectrum/InvariantMean.lean
+OK   Analysis/PlaneSpectrum/Multipliers.lean
+FAIL Analysis/PlaneSpectrum/PhaseCollision.lean
+sprint/simplify/m6/E1/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:395:67: error: unexpected token '/--'; expected 'lemma'
+
+OK   Analysis/PlaneSpectrum/Representations.lean
+OK   Analysis/PlaneSpectrum/SpectralMeasure.lean
+OK   Geometry/PlaneColoring/AngularBoundary.lean
+OK   Geometry/PlaneColoring/BinaryPalettes.lean
+OK   Geometry/PlaneColoring/BorelTransfer.lean
+FAIL Geometry/PlaneColoring/BoundaryTrace.lean
+sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:358:68: error: unexpected token 'end'; expected 'lemma'
+
+OK   Geometry/PlaneColoring/Compactness.lean
+FAIL Geometry/PlaneColoring/ConnectedUnitFree.lean
+sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/ConnectedUnitFree.lean:44:68: error: unexpected token '/--'; expected 'lemma'
+sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/ConnectedUnitFree.lean:47:65: error: unexpected token 'end'; expected 'lemma'
+
+FAIL Geometry/PlaneColoring/ContinuumLimits.lean
+sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/ContinuumLimits.lean:162:54: error: unexpected token 'end'; expected 'lemma'
+
+OK   Geometry/PlaneColoring/CyclicCore.lean
+OK   Geometry/PlaneColoring/DiskExtension.lean
+OK   Geometry/PlaneColoring/Expansion.lean
+OK   Geometry/PlaneColoring/FiveSupport.lean
+OK   Geometry/PlaneColoring/FourContinuity.lean
+OK   Geometry/PlaneColoring/GraphCuts.lean
+OK   Geometry/PlaneColoring/GraphRealization.lean
+OK   Geometry/PlaneColoring/HoleApproximation.lean
+OK   Geometry/PlaneColoring/Interfaces.lean
+OK   Geometry/PlaneColoring/Lattice.lean
+OK   Geometry/PlaneColoring/Moser.lean
+FAIL Geometry/PlaneColoring/NullSetRobust.lean
+sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/NullSetRobust.lean:19:29: error: unexpected token 'end'; expected 'lemma'
+
+OK   Geometry/PlaneColoring/PaletteDensity.lean
+OK   Geometry/PlaneColoring/Palettes.lean
+OK   Geometry/PlaneColoring/Sectors.lean
+FAIL Geometry/PlaneColoring/Seven.lean
+sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Seven.lean:59:31: error: unexpected token 'end'; expected 'lemma'
+
+FAIL Geometry/PlaneColoring/Transfer.lean
+sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Transfer.lean:11:23: error: unexpected token '/--'; expected 'lemma'
+sprint/simplify/m6/E1/OAI/Geometry/PlaneColoring/Transfer.lean:14:42: error: unexpected token 'end'; expected 'lemma'
+
+OK   Geometry/PlaneColoring/WeakColoring.lean
+OK   MeasureTheory/CompactFactors/Amenability.lean
+OK   MeasureTheory/CompactFactors/Centers.lean
+FAIL MeasureTheory/CompactFactors/ConditionalLimits.lean
+sprint/simplify/m6/E1/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:268:68: error: unexpected token 'end'; expected 'lemma'
+
+OK   MeasureTheory/CompactFactors/Functions.lean
+OK   MeasureTheory/CompactFactors/RelativeCenters.lean
+OK   MeasureTheory/CompactFactors/RelativeProducts.lean
+OK   MeasureTheory/CompactFactors/Separability.lean
+failures: 8

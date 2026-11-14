@@ -1,0 +1,53 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: ff8500961ace7c3dda431485bac90ff46b4946a32046190ca136f8c62065e58a
+Status: passed
+Exit code: 0
+
+STDOUT
+'OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@ambient_uniform_precision_contradiction : ∀ {X : Type u_1} {Y : Type u_2} {W : Type u_3} [inst : MeasurableSpace X]
+  [StandardBorelSpace X] [Nonempty X] [inst_3 : MeasurableSpace Y] [inst_4 : MeasurableSpace W] [StandardBorelSpace W]
+  [Nonempty W] (μ : MeasureTheory.Measure X) [inst_7 : MeasureTheory.IsProbabilityMeasure μ] (p : X → Y) (q : X → W)
+  (b : X → D),
+  Measurable p →
+    Measurable q →
+      Measurable b →
+        ∀ (m : ℕ),
+          0 < m →
+            ∀ (g : Y → Fin m → D),
+              (∀ᵐ (y : Y) ∂MeasureTheory.Measure.map p μ,
+                  (ProbabilityTheory.condDistrib b p μ) y = (↑m)⁻¹ • ∑ i, MeasureTheory.Measure.dirac (g y i)) →
+                IsWild
+                    (OAI.EuclideanFiveColor.DifferenceFourier.differenceLaw (MeasureTheory.Measure.map q μ)
+                      (ProbabilityTheory.condDistrib b q μ)) →
+                  ∀ (ρ c : ℝ) (N : ℕ),
+                    0 < ρ →
+                      0 < c →
+                        0 < N →
+                          (∀ (ω : MeasureTheory.Measure Circle) [MeasureTheory.IsProbabilityMeasure ω],
+                              (∀ (n : ℕ), 0 < n → n ≤ N → ‖∫ (w : Circle), ↑w ^ n ∂ω‖ < c) →
+                                ω.real {w | ‖↑w - 1‖ ≤ 4 * ρ} < 1 / (4 * ↑m ^ 2)) →
+                            AmbientEncodingAt μ p q b m (ρ ^ m / ↑m / 100 / 100) → False
+'OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction' depends on axioms: [propext, Classical.choice, Quot.sound]
+@FiniteEncodingApproximationAt : {X : Type u_1} →
+  {Y : Type u_2} →
+    {W : Type u_3} →
+      [inst : MeasurableSpace X] →
+        [MeasurableSpace Y] →
+          (μ : MeasureTheory.Measure X) →
+            [MeasureTheory.IsProbabilityMeasure μ] → (X → Y) → (Y → W) → (X → D) → ℕ → ℝ → Prop
+@AmbientEncodingAt : {X : Type u_1} →
+  {Y : Type u_2} →
+    {W : Type u_3} →
+      [inst : MeasurableSpace X] →
+        [MeasurableSpace Y] →
+          (μ : MeasureTheory.Measure X) →
+            [MeasureTheory.IsProbabilityMeasure μ] → (X → Y) → (X → W) → (X → D) → ℕ → ℝ → Prop
+'OAI.PlaneFiveColor.Spectral.finite_uniform_successor_contradiction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+STDERR
+

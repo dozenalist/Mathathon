@@ -1,0 +1,10 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: 442686edc8e5b95c9e6781a8ec6b3e84faa07597f8ec168c6635bd6e04e9c786
+Status: failed
+Exit code: 1
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\AvoidingTrace.lean:1:0: error: object file 'C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\build\OAI\Geometry\PlaneColoring\BoundaryTrace.olean' of module OAI.Geometry.PlaneColoring.BoundaryTrace does not exist
+
+STDERR
+

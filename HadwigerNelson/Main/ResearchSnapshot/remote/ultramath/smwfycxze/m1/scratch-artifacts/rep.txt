@@ -1,0 +1,9 @@
+Proof in proof.md; verify.py: 58 exact checks, exit 0.
+
+1. NO-GO, EXACT BOUND (unconditional). The (5.2) two-term sum exclusion at one centre excludes at most 2 labels at any point: for 0<|z|<2 the unit decomposition z=s+t is unique (Lemma 1; z=0 is degenerate, so self-avoidance is not an instance). So §8.5's step, which must exclude the k-3 outsiders to reach a 3-label region, works exactly for k<=5; at k=6 it is one label short. The other single-centre rule (Lemma 6.3) needs palette groups of total size k-1, unavailable at a singleton triangle centre at k=6.
+
+2. CALIBRATION + COMPUTATION. At k=5 the same count gives exactly the paper's region (8.4), and the seven placed Moser vertices lie strictly inside it; re-derived in Q(sqrt3,sqrt11,sqrt33) with two independent exact sign procedures. Erratum: (8.6) as displayed fails (8.4) at g=0; Table 1 matches ((35+12i)/37)(g+(-290+149i)/250).
+
+3. REDUCTION + MISSING LEMMA. S_1 at k=6: the one-centre picture at a triangle centre (outer strip O-valued, survivor determined; inner strip 2-valued; 3-valued centres carry a triangle label, no unit partner) gives (W) iff the 3-valued triangle locus is finite in ONE ball of radius >1. Prop. 7: m3's k>=7 model has one accumulation point, so satisfies (W); local finiteness does not transfer. Prop. 8: no finite unit-distance gadget forces colour equality at 3 labels, so §8.4's constancy repair fails at k=6. (S) stated exactly; Thm 6: (S) => (W).
+
+Not claimed: (W), (S), chi(R^2).

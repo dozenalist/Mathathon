@@ -1,0 +1,6 @@
+import OAI.MeasureTheory.CompactFactors.Stationary
+#check @OAI.EuclideanFiveColor.CompactFunctions.compactSigma
+#check @OAI.EuclideanFiveColor.CompactFunctions.compact_of_measurable_compactSigma
+#check @OAI.EuclideanFiveColor.CompactFunctions.measurable_compactSigma
+#check @OAI.EuclideanFiveColor.CompactFunctions.compact_of_bounded_pointwise_limit
+#check @OAI.PlaneFiveColor.Spectral.exists_terminal_factor

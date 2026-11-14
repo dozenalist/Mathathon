@@ -1,0 +1,13 @@
+m4, d5 (L5 irreducibility + k-dependence for L4). CORE.md + 4 exact scripts.
+
+(1) Palette-level no-go for Section 8. Prop 8.2 IS the palette level at (k,l)=(5,5): of 5^6 +-1 walks in Z/5, 100 survive with the option sets free, 0 with the antipodal linkage s_{j+3}=-s_j. At k=6 the system is satisfiable geometrically: rays (in pi) (6/5,1/3,103/300,97/300,4/3), signs -+++-/+---+, palettes {5},{0,2} alternating. No palette-level argument excludes k=6; not a straw man: published success at k=5.
+
+(2) Palette level for k=3..6, l=3..k: UNSAT for k<=4 and (5,5); SAT at k=6 for every l, realised for l=3,4,5. Also SAT at (5,4) (800 models) and (5,3): Props 8.5, 8.10 need their geometric layers even at k=5.
+
+(3) Calibration exact. l=4: 34 of 3^6 words survive, 6 three-periodic, each isolated by the cross-word restriction; 3 projective points spaced pi/3 need an arc > 2pi/3, so 2*(2pi/3)>pi finishes. l=3: sector count + 8.8/8.9 + Moser.
+
+(4) Irreducibility: every named input deleted in turn with an explicit model of the rest (8.2 x4 + antipodal half of (G), 8.5 x6, 8.10 x6). 7: multiplicity <=2 is in the core (12/25<1<27/25), mesh 2 is not (R4 gives <5).
+
+(5) 8.6 verified exactly: Tables 1-2 and the residual identity; Moser 11 unit edges in Q(sqrt3,sqrt11), 0 of 3^7 3-colourings; Lemma 8.9 exact for all 7 points. (8.6) reads z_g=((35+12i)/37)(g+(-290+149i)/250); flat reading makes 8.9 false at g=0.
+
+Check: for f in m4_*.py; do python3 $f; done   (4 files, each under a second)

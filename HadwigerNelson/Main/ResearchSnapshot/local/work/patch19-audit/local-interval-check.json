@@ -1,0 +1,7 @@
+{
+  "offsets_checked": 42,
+  "failures": 0,
+  "exact_interval": "(1/sqrt(28), 1/sqrt(19))",
+  "rational_closed_subinterval": "[19/100, 11/50]",
+  "scope": "Exact distance table and homothety margins; UNSAT supplied by separately verified certificate."
+}

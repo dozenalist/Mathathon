@@ -1,0 +1,59 @@
+{
+  "updated_utc": "2026-11-14T18:20:17Z",
+  "status": "completed_block",
+  "summary": "No new swarm: smwgpu16s continues (m1 on d2 direction-packing, m2 on d1, both running, waiting_for_verdict empty, accepted 0). My three v1 corrections are RETRACTED with reasons. R1: uniform strip width on a compact subarc does follow, by nesting of angular and radial ranges plus lower semicontinuity and compactness, and the parent compiled outerAngularStrips_compact_radius in ConeGeometry with standard axioms. R2: my endpoint extension to aperture 120 is circular and is refuted by the Reuleaux example A=(sqrt3/2,-1/2), B=(sqrt3/2,1/2), C=(sqrt3,0) with W = the three open unit balls intersect |z|>1: W lies in the interior of a Reuleaux triangle of width 1, so it contains no unit pair, yet every direction in the open 60-degree arc carries a genuine outer strip. I verified the sharp reason: the maximal half-angle inside the disk about A at radius r equals arccos(r/2)-30 degrees, identically equal to the unit-pair half-angle arcsin(1/(2r)), so at 60 degrees the pair sits exactly on the boundary and there is no slack; MC120 keeps STRICT < 120. R3: my 2-element-block objection was a misreading - a paired block is two adjacent edge exclusions combined (three labels), two blocks are four continua covering at least five labels, and the transmitted arithmetic was correct. Recorded final forms: MC120 strict; EC for {0,1,2},{2,3,4},{4,5,0}, where every pair leaves exactly one label so the directions are exactly equilateral; adjacent-block pairs leave two labels and admit continuous families. Relay: no message channel exists while members run, so the corrections will be attached to the first ultramath_verdict and are not claimed as delivered.",
+  "swarm": {
+    "id": "smwgpu16s",
+    "members": [
+      "m1",
+      "m2"
+    ],
+    "model": "deepseek/deepseek-v4.1-flash",
+    "reasoning_effort": "max",
+    "member_steps": 60,
+    "minutes": 60,
+    "dir": ".ultramath/smwgpu16s",
+    "state": "running",
+    "m1_assignment": "uniform strip / open-set / a.e. argument plus every endpoint and empty-residual case",
+    "m2_assignment": "a strictly stronger six-colour-specific geometric obstruction for the equilateral paired case",
+    "verdicts_issued": 0,
+    "directions": {
+      "m1": "d2 direction-packing theorem on S1",
+      "m2": "d1 the three quantitative hinges of MC120"
+    },
+    "relay_status": "not yet relayed: ultramath_status shows waiting_for_verdict empty; the only relay path is the reason field of ultramath_verdict, available on a member's submission; the R1-R3 retractions will be attached to the first verdict"
+  },
+  "verified_results": [
+    "GRADE [P] RETRACTION R1: uniform outer-strip width on a compact subarc does follow. If the strip at base direction e of width delta lies in the open set S, then for dist(e',e) < delta/2 the strip at e' of width delta/2 is contained in the strip at e (the angular and radial ranges nest), hence in S; so the set of (e', delta) admitting a strip is open in the base direction and the supremum width is positive and lower semicontinuous, giving a positive minimum on a compact subarc. The parent has compiled this as outerAngularStrips_compact_radius in ConeGeometry with standard axioms, together with OA120/CC60 and a concrete consumer.",
+    "GRADE [P] RETRACTION R2, with the counterexample verified: A = (sqrt3/2,-1/2), B = (sqrt3/2,1/2), C = (sqrt3,0) are unit vectors at angles -30, +30, 0 degrees and pairwise unit apart. W = (open unit balls about A, B, C) intersected with {|z| > 1} is contained in the interior of the Reuleaux triangle of width 1, whose interior has all pairwise distances below 1, so W contains no unit pair; yet every theta in the open arc (-30,30) degrees has e(theta) strictly inside all three balls, and by openness a radial range (1, 1+delta(theta)) also lies in W, so a genuine outer strip of full width 60 degrees exists there. Hence an open 60-degree outer arc can be monochromatic with no unit pair, and my endpoint extension is dead.",
+    "GRADE [P] The sharp reason for R2, verified by identity: at radius r the maximal half-angle of a point still inside the disk about A is arccos(r/2) - 30 degrees (attained on the Reuleaux arc), and the half-angle needed for a unit pair at radius r is arcsin(1/(2r)); these coincide because sin(arccos(r/2) - 30 deg) = (sqrt3/2)*sqrt(1 - r^2/4) - r/4 = 1/(2r). So at an arc width of exactly 60 degrees the pair lies exactly on the boundary of W and there is no slack, which is precisely why MC120 must keep strict < 120 degrees.",
+    "GRADE [P] RETRACTION R3: a paired block is two adjacent edge exclusions combined, E_2k union E_(2k+1), giving three labels (for example {0,1} union {1,2} = {0,1,2}); two blocks are four continua and cover at least five labels. My 2-element-block objection was a misreading of the transmitted statement, and the transmitted arithmetic needs no repair.",
+    "GRADE [P] Final EC: for blocks at vertices pairwise at cyclic distance at least 2 (the only family being {0,1,2}, {2,3,4}, {4,5,0}), every pair leaves exactly one label, so MC120 gives pairwise direction separation at least 120 degrees, and three gaps summing to 360 degrees with each at least 120 are all equal to 120: the triple is exactly equilateral. Blocks at adjacent vertices leave two labels, so only CC60's strict > 60 degrees applies and continuous families survive.",
+    "GRADE [P] A member's proposed counterexample 0/120/250 degrees does not refute EC: its circular separations are 120, 130 and 110 degrees, and 110 is below 120, so the hypothesis fails; with circular (shorter-arc) separations the three-gap argument is valid because a gap above 180 degrees forces another gap below 90. It does correctly warn that linear differences in a fixed coordinate are the wrong reading.",
+    "GRADE [S] Bank and parent facts used without re-derivation: CC60 (closed 60-degree cone cannot leave at most 2 colours) with Lean ongoing; the sharpness of the generic finite-k angle-60 statement via accepted Borel 20-colour counterexamples for wider apertures, which does not settle k = 6; R4 and the fixed/moving three-centre replacements passing local Lean with full integration pending; Lemma 6.7 = five_support_step_ban retained."
+  ],
+  "conjectures": [
+    "The equilateral configuration of three vertex-block continua is rigid but not excluded by CC60 plus MC120; a six-colour-specific obstruction would have to use the actual angular positions of the three blocks relative to the cycle labels, since equilateral leaves no slack in the direction parameter.",
+    "The sharp MC120 criterion is a comparison between the chord length at an admissible radius and the width of the common-positive arc, so any improvement must come from lower-bounding the strip widths delta, which in turn depends on how the K_i approach x (the size of the r_n and the deviation of w_n from v i).",
+    "If the endpoint and quantitative refinements hold up under review, the CC60 plus MC120 pair covers every configuration whose direction spread is at most 120 degrees with at most 1 residual label, and the remaining six-colour cases are exactly the three-block equilateral ones and the 2-residual families."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/MC120-REFEREE.md",
+    "supervisor/solve-geometry/CONE-AUDIT.md",
+    "supervisor/solve-geometry/SIGNED-DOMAIN-AUDIT.md",
+    "supervisor/solve-geometry/ARTIFACT-HASHES.txt",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "ultramath_start called with members=2, member_steps=60, minutes=60, model=deepseek/deepseek-v4.1-flash, reasoning_effort=max; it returned swarm smwgpu16s with members m1 and m2 and dir .ultramath/smwgpu16s. ultramath_status confirms state running, m2 on d1 and m1 running. No other computation: all referee work is hand proof and source review, as required (no heavy compute, no Lean, no background processes)."
+  ],
+  "failed_routes": [
+    "RETRACTED R1: 'uniform strip width is not established and not needed' - it is established by nesting plus compactness and the parent has compiled it as outerAngularStrips_compact_radius.",
+    "RETRACTED R2: the endpoint extension of MC120 to aperture 120 degrees - circular as argued and refuted by the Reuleaux configuration, where an open 60-degree outer arc is monochromatic with no unit pair in W.",
+    "RETRACTED R3: the 2-element-block objection to the equilateral arithmetic - a paired block is two adjacent edge exclusions combined and the transmitted arithmetic was already correct.",
+    "Not attempted: launching another swarm (explicitly forbidden), any compute, any widening of the generic 60-degree cone result, any global chromatic conclusion.",
+    "Not claimed: that the R1-R3 retractions have been relayed to m1/m2 (no message channel exists while they are running; the relay will be attached to the first verdict)."
+  ],
+  "next_step": "Wait for m1 and m2 to submit, then issue ultramath_verdict with the R1-R3 retractions attached as the reason (they are the corrections the members must not build on), judging each submission on its own merits: for m1 whether the direction-packing theorem is correctly stated (it must use circular separations, not linear differences) and whether the equilateral collapse is derived rather than assumed; for m2 whether the three hinges are discharged with the compiled outerAngularStrips_compact_radius and whether the empty-residual and aperture-120 cases are treated as the Reuleaux example requires (strict < 120).",
+  "escalation": null
+}

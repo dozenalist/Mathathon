@@ -1,0 +1,267 @@
+{
+ "generated_utc": "2026-11-14T18:06:00Z",
+ "purpose": "topologically sorted affected-module manifest for the parent's local build of the private 3-centre integration packet",
+ "toolchain": {
+  "lean": "4.34.1",
+  "lean_commit": "5045d0056413266e57c625dcd7c365b10e377c52",
+  "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+ },
+ "changed_modules": [
+  "OAI.Geometry.PlaneColoring.AvoidingTrace",
+  "OAI.Geometry.PlaneColoring.FiveSupport",
+  "OAI.Geometry.PlaneColoring.Interfaces",
+  "OAI.Geometry.PlaneColoring.FourContinuity",
+  "OAI.Geometry.PlaneColoring.States"
+ ],
+ "counts": {
+  "affected": 27,
+  "tree_total": 84,
+  "new_module": "AvoidingTrace"
+ },
+ "build_rule": "compile in this order; each row's path is the file to use. Rows with source=packet replace the corresponding original. No other module changes.",
+ "order": [
+  {
+   "step": 1,
+   "module": "OAI.Geometry.PlaneColoring.States",
+   "path": "supervisor/simplify-lean/integration/States.lean",
+   "source": "packet",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/States.lean",
+   "sha256_packet": "904ba7ca7462856079999a8e6aa80fb64d1231f744392f7cca15f6e7f3ecf567",
+   "sha256_original": "941fcbdcd90fb50426d4588d62ea10f9bdc882d455f546f2095ead91a0439340"
+  },
+  {
+   "step": 2,
+   "module": "OAI.Geometry.PlaneColoring.BoundaryTrace",
+   "path": "lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean",
+   "sha256_packet": null,
+   "sha256_original": "c3c0c75a0fb2e2184e8ff39562faac2c38e3d372864ddeca9eb942fa0f2a692f"
+  },
+  {
+   "step": 3,
+   "module": "OAI.Geometry.PlaneColoring.AngularBoundary",
+   "path": "lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean",
+   "sha256_packet": null,
+   "sha256_original": "560b3951728a403bc7aa35f42c5e3dbb343e75746109053f6c8fd94aa9749871"
+  },
+  {
+   "step": 4,
+   "module": "OAI.Geometry.PlaneColoring.Exclusion",
+   "path": "lean/OAI/Geometry/PlaneColoring/Exclusion.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/Exclusion.lean",
+   "sha256_packet": null,
+   "sha256_original": "4b0a981cb31fa1cb095f758e721a54866cc2a298bbc492227237b4262651d2a6"
+  },
+  {
+   "step": 5,
+   "module": "OAI.Geometry.PlaneColoring.AvoidingTrace",
+   "path": "supervisor/simplify-lean/integration/AvoidingTrace.lean",
+   "source": "packet",
+   "original_path": null,
+   "sha256_packet": "e51502b2baf451936ef045eeabe655818e1f1b2708ae1cc9f8feffd81d0cb753",
+   "sha256_original": null
+  },
+  {
+   "step": 6,
+   "module": "OAI.Geometry.PlaneColoring.FourContinuity",
+   "path": "supervisor/simplify-lean/integration/FourContinuity.lean",
+   "source": "packet",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/FourContinuity.lean",
+   "sha256_packet": "8b24e593f6eb191378fc0953ce3bd66787a14c10f6b411c1cf40ef7ae6e84123",
+   "sha256_original": "7ad20b81c0adf9186399aea794b9817020bfd8c14906e2a7ef12d66b4c173b88"
+  },
+  {
+   "step": 7,
+   "module": "OAI.Geometry.PlaneColoring.FourTransport",
+   "path": "lean/OAI/Geometry/PlaneColoring/FourTransport.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/FourTransport.lean",
+   "sha256_packet": null,
+   "sha256_original": "c9b8af1a459b9cf0624a528be8568e255dc0a21e0fc3fd16b35b34e319692090"
+  },
+  {
+   "step": 8,
+   "module": "OAI.Geometry.PlaneColoring.Accumulation",
+   "path": "lean/OAI/Geometry/PlaneColoring/Accumulation.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/Accumulation.lean",
+   "sha256_packet": null,
+   "sha256_original": "9ce956ea280b7eddab8c1f903c0b489c96678ed244b59c0f6d147c888e06d5d0"
+  },
+  {
+   "step": 9,
+   "module": "OAI.Geometry.PlaneColoring.FiveSupport",
+   "path": "supervisor/simplify-lean/integration/FiveSupport.lean",
+   "source": "packet",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/FiveSupport.lean",
+   "sha256_packet": "89c93e0ebda452451b496bc9a3b759b498a03635f0262f01313515098050df2f",
+   "sha256_original": "6d54703f840a1b4d20b81f5f206b18d79a1fbacde9a481990049b3c41b9c4813"
+  },
+  {
+   "step": 10,
+   "module": "OAI.Geometry.PlaneColoring.CyclicCore",
+   "path": "lean/OAI/Geometry/PlaneColoring/CyclicCore.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/CyclicCore.lean",
+   "sha256_packet": null,
+   "sha256_original": "35976a5b09d04a6cae71f1a1b8e15ecb6a9587c114c1e033f1b78acd81acaf43"
+  },
+  {
+   "step": 11,
+   "module": "OAI.Geometry.PlaneColoring.DiskAverages",
+   "path": "lean/OAI/Geometry/PlaneColoring/DiskAverages.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/DiskAverages.lean",
+   "sha256_packet": null,
+   "sha256_original": "5545ba34d956a96958f01dc30204fc9dd338aac73221caeaddb4c6a9afcb435f"
+  },
+  {
+   "step": 12,
+   "module": "OAI.Geometry.PlaneColoring.PlanarCovers",
+   "path": "lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean",
+   "sha256_packet": null,
+   "sha256_original": "9d4aa090cf4ee5059718a65eaaf8ff4b7c3109ebfd2fdb2e513def1353f33d47"
+  },
+  {
+   "step": 13,
+   "module": "OAI.Geometry.PlaneColoring.GraphRealization",
+   "path": "lean/OAI/Geometry/PlaneColoring/GraphRealization.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/GraphRealization.lean",
+   "sha256_packet": null,
+   "sha256_original": "a0adb6f48ff9ae57547a4a05246804a613ee51c2dba2fc5f5d05ac5bfd82a0dc"
+  },
+  {
+   "step": 14,
+   "module": "OAI.Geometry.PlaneColoring.Interfaces",
+   "path": "supervisor/simplify-lean/integration/Interfaces.lean",
+   "source": "packet",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/Interfaces.lean",
+   "sha256_packet": "568fc119bee888946c7172992bcfd9796b5ffecc403007effa4ac049aa27f1ac",
+   "sha256_original": "47dd83f5591742eeabe2aab290f5a855115f0397c12f22b824e5c8047cd1e99e"
+  },
+  {
+   "step": 15,
+   "module": "OAI.Geometry.PlaneColoring.Sectors",
+   "path": "lean/OAI/Geometry/PlaneColoring/Sectors.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/Sectors.lean",
+   "sha256_packet": null,
+   "sha256_original": "c90ce4393ebe75b48f4ef4921cad1d0d98ddd9af3b5e240385368e3fff53c7bd"
+  },
+  {
+   "step": 16,
+   "module": "OAI.Geometry.PlaneColoring.ContinuumLimits",
+   "path": "lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean",
+   "sha256_packet": null,
+   "sha256_original": "9dbc8bd1ea66d17652b64f98de2d2bbd6919fbbd8967bad36c84c08e15ba5ed3"
+  },
+  {
+   "step": 17,
+   "module": "OAI.Geometry.PlaneColoring.DiskExtension",
+   "path": "lean/OAI/Geometry/PlaneColoring/DiskExtension.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/DiskExtension.lean",
+   "sha256_packet": null,
+   "sha256_original": "fe534cdbc024f0a9323d5a927a5242459e02d3ba06495d473854e4453e1dc609"
+  },
+  {
+   "step": 18,
+   "module": "OAI.Geometry.PlaneColoring.GraphCuts",
+   "path": "lean/OAI/Geometry/PlaneColoring/GraphCuts.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/GraphCuts.lean",
+   "sha256_packet": null,
+   "sha256_original": "541f06fe98de43ca470b4258798d0685de2ffb99626822e6982b59a609ed6bd3"
+  },
+  {
+   "step": 19,
+   "module": "OAI.Geometry.PlaneColoring.HoleApproximation",
+   "path": "lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean",
+   "sha256_packet": null,
+   "sha256_original": "eae78479d7a443844a41fdd3bc509019b18b7c4c59e9918100a269c62f468fde"
+  },
+  {
+   "step": 20,
+   "module": "OAI.Geometry.PlaneColoring.GraphPatches",
+   "path": "lean/OAI/Geometry/PlaneColoring/GraphPatches.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/GraphPatches.lean",
+   "sha256_packet": null,
+   "sha256_original": "5c29ae6acfa0868df4b791dd54514c0d1aaf26d5e5901c4a58e154ae13f1986d"
+  },
+  {
+   "step": 21,
+   "module": "OAI.Geometry.PlaneColoring.FullApproximation",
+   "path": "lean/OAI/Geometry/PlaneColoring/FullApproximation.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/FullApproximation.lean",
+   "sha256_packet": null,
+   "sha256_original": "a9d170e253708ded472c858cc34fcba5c56db4263dff97981ae9f6f8989741c2"
+  },
+  {
+   "step": 22,
+   "module": "OAI.Geometry.PlaneColoring.Mesh",
+   "path": "lean/OAI/Geometry/PlaneColoring/Mesh.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/Mesh.lean",
+   "sha256_packet": null,
+   "sha256_original": "72b37edd188838984f85fbdde4ffed966a765eaea3e61386e04e95b7c615cb83"
+  },
+  {
+   "step": 23,
+   "module": "OAI.Geometry.PlaneColoring.Five",
+   "path": "lean/OAI/Geometry/PlaneColoring/Five.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/Five.lean",
+   "sha256_packet": null,
+   "sha256_original": "1501dc05d43d6b425b94b3bb4556493524b6877810c3c9c9d8ac5513adf16246"
+  },
+  {
+   "step": 24,
+   "module": "OAI.Geometry.PlaneColoring.Chromatic",
+   "path": "lean/OAI/Geometry/PlaneColoring/Chromatic.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/Chromatic.lean",
+   "sha256_packet": null,
+   "sha256_original": "55a2f2bef340156617f0679f65813d952f19c876e975399463b5bdcd4002127b"
+  },
+  {
+   "step": 25,
+   "module": "OAI.Geometry.PlaneColoring.Converse",
+   "path": "lean/OAI/Geometry/PlaneColoring/Converse.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/Converse.lean",
+   "sha256_packet": null,
+   "sha256_original": "5bde95d2ec3cb518a2ece36f544b69eb25f550f3f2f231a7df5c8a9ba4098248"
+  },
+  {
+   "step": 26,
+   "module": "OAI.Geometry.PlaneColoring.NullSetRobust",
+   "path": "lean/OAI/Geometry/PlaneColoring/NullSetRobust.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/NullSetRobust.lean",
+   "sha256_packet": null,
+   "sha256_original": "887a6bbe6b83f87a3baf60823cf586a4b2f9539e3549697caa9732942d627cc9"
+  },
+  {
+   "step": 27,
+   "module": "OAI.Geometry.PlaneColoring.Transfer",
+   "path": "lean/OAI/Geometry/PlaneColoring/Transfer.lean",
+   "source": "original (unchanged)",
+   "original_path": "lean/OAI/Geometry/PlaneColoring/Transfer.lean",
+   "sha256_packet": null,
+   "sha256_original": "5873693afeb24b1896a745b43c87b26ef30ec1ae110a67b1f537a3a6d4af5600"
+  }
+ ]
+}

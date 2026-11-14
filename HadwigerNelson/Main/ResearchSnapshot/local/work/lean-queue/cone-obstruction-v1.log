@@ -1,0 +1,62 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: f2e0d76159b4d34e1b79bffd91b6265e6697ee7dad14422bfa2326c0def9a73d
+Status: failed
+Exit code: 1
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\ConeObstruction.lean:65:29: error: Type mismatch
+  IsConnected.image hJ ?m.291
+has type
+  ContinuousOn ?m.291 J → IsConnected (?m.291 '' J)
+but is expected to have type
+  IsConnected S
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\ConeObstruction.lean:65:38: error: Application type mismatch: The argument
+  Continuous.continuousOn hF
+has type
+  ContinuousOn F ?m.289
+of sort `Prop` but is expected to have type
+  ℝ → ?m.280
+of sort `Type (max ?u.134 0)` in the application
+  IsConnected.image hJ (Continuous.continuousOn hF)
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\ConeObstruction.lean:125:17: error: unexpected token '('; expected ')', ',' or ':'
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\ConeObstruction.lean:124:19: error: Type mismatch: After simplification, term
+  LT.lt.trans_le hβ
+ has type
+  min δ η ≤ ?m.341 → |β - θ| < ?m.341
+but is expected to have type
+  |?m.334 - θ| < η
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\ConeObstruction.lean:105:83: error: unsolved goals
+ι : Type u_1
+inst✝ : Fintype ι
+x : ℂ
+φ : ℝ
+K : ι → Set ℂ
+α : ι → ℝ
+hK : (i : ι) → ApproachingContinuum x (K i) ↑(Circle.exp (α i))
+hα : ∀ (i : ι), α i ∈ Icc (φ - Real.pi / 6) (φ + Real.pi / 6)
+θ : ℝ
+hθ : θ ∈ Ioo (φ - Real.pi / 3) (φ + Real.pi / 3)
+d : ι → ℝ
+hd : ∀ (i : ι), d i > 0
+hs :
+  ∀ (i : ι) (e' : ℂ),
+    ‖e'‖ = 1 → dist e' ↑(Circle.exp θ) < d i → ∀ (r : ℝ), 1 < r → r < 1 + d i → x + ↑r * e' ∈ Straddle (K i)
+δ : ℝ
+hδ : δ > 0
+left✝ : δ ≤ 1
+hδd : ∀ i ∈ Finset.univ, δ ≤ d i
+hcont : Continuous fun β => dist ↑(Circle.exp β) ↑(Circle.exp θ)
+hn : ∀ᶠ (β : ℝ) in 𝓝 θ, dist ↑(Circle.exp β) ↑(Circle.exp θ) < δ
+η : ℝ
+hη : η > 0
+hηs : Metric.ball θ η ⊆ {x | (fun β => dist ↑(Circle.exp β) ↑(Circle.exp θ) < δ) x}
+β : ℝ
+hβ : |β - θ| < min δ η
+r : ℝ
+hr : 1 < r
+hrδ : r < 1 + min δ η
+i : ι
+⊢ dist ↑(Circle.exp β) ↑(Circle.exp θ) < d i
+
+STDERR
+

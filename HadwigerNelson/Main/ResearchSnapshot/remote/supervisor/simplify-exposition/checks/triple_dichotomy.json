@@ -1,0 +1,162 @@
+{
+ "T": [
+  0,
+  1,
+  2
+ ],
+ "cycle_branch": {
+  "consecutive_distinct_holds": true,
+  "example": [
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    2
+   ]
+  ],
+  "period_180_holds": true
+ },
+ "k5_pair_analogue": {
+  "all_alternate_2periodically": true,
+  "all_are_binary_for_the_pair": true,
+  "fields_with_nonempty_pair_meet": 2
+ },
+ "spaces": [
+  {
+   "N": 6,
+   "dichotomy_holds": false,
+   "fields": 234,
+   "nonbinary": 132,
+   "nonbinary_and_3cycle": 6,
+   "sizes": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "N": 6,
+   "dichotomy_holds": true,
+   "fields": 0,
+   "nonbinary": 0,
+   "nonbinary_and_3cycle": 0,
+   "sizes": [
+    2,
+    3
+   ]
+  },
+  {
+   "N": 6,
+   "dichotomy_holds": false,
+   "fields": 66,
+   "nonbinary": 60,
+   "nonbinary_and_3cycle": 6,
+   "sizes": [
+    1
+   ]
+  },
+  {
+   "N": 6,
+   "dichotomy_holds": true,
+   "fields": 0,
+   "nonbinary": 0,
+   "nonbinary_and_3cycle": 0,
+   "sizes": [
+    2
+   ]
+  },
+  {
+   "N": 6,
+   "dichotomy_holds": true,
+   "fields": 0,
+   "nonbinary": 0,
+   "nonbinary_and_3cycle": 0,
+   "sizes": [
+    3
+   ]
+  },
+  {
+   "N": 12,
+   "dichotomy_holds": false,
+   "fields": 54756,
+   "nonbinary": 50880,
+   "nonbinary_and_3cycle": 36,
+   "sizes": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "N": 12,
+   "dichotomy_holds": true,
+   "fields": 0,
+   "nonbinary": 0,
+   "nonbinary_and_3cycle": 0,
+   "sizes": [
+    2,
+    3
+   ]
+  },
+  {
+   "N": 12,
+   "dichotomy_holds": false,
+   "fields": 4356,
+   "nonbinary": 4344,
+   "nonbinary_and_3cycle": 36,
+   "sizes": [
+    1
+   ]
+  },
+  {
+   "N": 12,
+   "dichotomy_holds": true,
+   "fields": 0,
+   "nonbinary": 0,
+   "nonbinary_and_3cycle": 0,
+   "sizes": [
+    2
+   ]
+  },
+  {
+   "N": 12,
+   "dichotomy_holds": true,
+   "fields": 0,
+   "nonbinary": 0,
+   "nonbinary_and_3cycle": 0,
+   "sizes": [
+    3
+   ]
+  }
+ ]
+}

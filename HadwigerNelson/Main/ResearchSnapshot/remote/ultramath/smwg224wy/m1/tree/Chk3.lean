@@ -1,0 +1,5 @@
+import OAI.MeasureTheory.CompactFactors.WeakMixingTerminal
+#print axioms OAI.PlaneFiveColor.Spectral.law_const
+#print axioms OAI.PlaneFiveColor.Spectral.terminalObligation_of_pointFactor_ergodic
+#print axioms OAI.PlaneFiveColor.Spectral.terminalObligation_of_square_ergodic
+#check @OAI.PlaneFiveColor.Spectral.terminalObligation_of_square_ergodic

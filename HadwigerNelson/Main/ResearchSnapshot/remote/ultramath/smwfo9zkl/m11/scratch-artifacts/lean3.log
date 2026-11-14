@@ -1,0 +1,3 @@
+lean/K6Ternary.lean:60:19: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+lean/K6Ternary.lean:61:37: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+lean/K6Ternary.lean:66:52: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead

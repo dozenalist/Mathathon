@@ -1,0 +1,324 @@
+ASTRA SIX-COLOUR A2 — LOCALIZED TWO-STATE ATTEMPT AND A FIXED CONSUMER
+14 November 2026. Bounded second solving assignment.
+
+RESULT
+
+The source two-state proof localizes to a NULL-RETURN THEOREM, not presently
+to impossibility on every positive-measure invariant set. The missing
+step is exactly a same-phase return after gamma=arccos(5/6). Positive
+measure, even arbitrarily close to full measure, does not force that
+return. A finite partition into orbit types does not fix the problem.
+
+An explicit four-state whole-circle field refutes the proposed orbitwise-
+to-global reduction and satisfies the new triangle-return constraint.
+It is an angular model, NOT an actual measurable weak six-colouring.
+Consequently this packet does NOT disprove the full colouring-level
+localized statement. That stronger statement remains unproved here.
+
+There IS a complete better fixed-consumer argument from existing source:
+  finitely many common-exclusion continua approaching the SAME centre in
+  the SAME unit direction cannot jointly exclude all but TWO labels.
+At six colours this excludes three consecutive cycle interfaces having
+one common approach direction. In particular it kills the precise
+q=(0,3,3,3,0,0) configuration behind the four-state angular model.
+The proof uses generic binary strip rigidity and the essential boundary,
+not a false positive-measure recurrence claim and not palette size <=2.
+
+Grades: the new null-return and aligned-exclusion statements have complete
+source-based paper arguments below, not fresh Lean compilation or an
+independent referee verdict. The finite four-state checks ran successfully
+with integers. No improved numerical plane-chromatic bound is claimed.
+
+SOURCE BASIS
+
+Read outputs/ASTRA-REBOOT-REFEREE.txt first. All Lean references below are
+under work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/.
+The relevant bodies were inspected, not inferred from worker summaries.
+  States:92 RealState; :106 states_densityOne;
+  :173 finite_density_realization; :198 two_label_triangle_impossible;
+  :243-307 two_state_impossible.
+  BinaryPalettes:291 equal_triangleAngle_positive; :343 sourceTriangle_pair.
+  PaletteDensity:409 ae_lineDensityZero_compl.
+  BoundaryTrace:248 binary_strip_rigidity; :280 binary_strip_palette_rigidity.
+  AngularBoundary:235 ApproachingContinuum; :244,:251 radial strips;
+  :259,:279 continuum palette restrictions;
+  :334 angleEssential; :349 angleBoundary; :370 angleBoundary_shift;
+  :381 angleBoundary_nonempty; :419 sixty_order; :425 sixAngle_injective;
+  :435 angleBoundary_six.
+
+1. EXACT LOCALIZED STATEMENT THAT THE SOURCE DOES PROVE
+
+Use normalized angular Haar measure mu, tau=pi/3, gamma=arccos(5/6).
+Let c:C-plane->Fin k be measurable and WeakColoring k c. Fix ONE centre x,
+fixed label sets J,K with |Fin k minus (J union K)|<=2, and measurable
+angular sets B0,B1. Write their real lifts as tilde(B0), tilde(B1).
+Assume
+  RealState hc x tilde(B0) J,
+  RealState hc x tilde(B1) K,
+  1_B0(t+tau)=1_B1(t), 1_B1(t+tau)=1_B0(t), for mu-a.e. t.
+For the intended partial-state interpretation B0,B1 are disjoint and
+A=B0 union B1 has positive measure. Disjointness and positivity of A are
+not needed for the following null-return conclusion itself.
+
+THEOREM NR:
+  mu(B0 intersect (B0-gamma))=0,
+  mu(B1 intersect (B1-gamma))=0.
+Here B-gamma={t:t+gamma in B}. All centres and label sets stay fixed.
+
+Proof. Suppose E=B_b intersect (B_b-gamma) has positive measure. The
+sixty-degree swapping law, iterated finitely many times, gives for almost
+every t in E and j=0,1,2:
+  a_j=t+2*j*tau is in B_b,
+  b_j=t+(2*j+3)*tau+gamma is in B_(1-b).
+Apply Lebesgue differentiation to the RESTRICTED state sets B0 and B1,
+not merely to fibres of a Boolean function defined outside A. Remove the
+finite union of shifted non-density exceptional sets. The positive-measure
+set E still contains t for which each a_j,b_j is a density point of its
+stated state set. Angular-to-real lifting uses the same quasi-measure-
+preserving map as in the source proof.
+
+Set z_j=x+e(a_j)+e(b_j). States.states_densityOne gives density one of the
+S-coloured set at EACH z_j, where S=Fin k minus (J union K). The two
+RealState inputs are exchanged when b=1. The Jacobian condition is valid:
+sin(b_j-a_j)=sin(pi+gamma) is nonzero. The source identity gives
+  z_j=x+e(t+2*j*tau)*(1-e(gamma)),
+and |1-e(gamma)|=1/sqrt(3). Thus z_0,z_1,z_2 form a unit equilateral
+triangle (BinaryPalettes.sourceTriangle_pair). States.two_label_triangle_
+impossible contradicts |S|<=2. This proves both null statements.
+
+The genuinely minimal geometric input is even smaller: ONE t with the six
+required density-point memberships suffices. Positive measure of E is a
+convenient, source-licensed way to choose that t despite a.e. exceptions.
+One can also replace the swapping law by a positive-measure set of exactly
+those six memberships. Nothing requires A to be the whole circle at this
+stage.
+
+For A measurable and tau-invariant modulo null sets, with a Boolean s
+flipping by tau on A, use B_b=A intersect {s=b}. NR becomes
+  mu{t in A: t+gamma in A and s(t)=s(t+gamma)}=0.
+It does NOT state mu(A)=0.
+
+2. PRECISE AUDIT OF THE ORIGINAL WHOLE-CIRCLE STEP
+
+States:243-307 first uses hflip to obtain equality at even tau shifts and
+complementation at pi. It uses measurability for a.e. density points and
+finitely many fixed translates. Those steps all work on B0,B1 as above.
+
+The only indispensable WHOLE-CIRCLE step is the invocation of
+BinaryPalettes.equal_triangleAngle_positive at States:289. If a Boolean
+state has no same-phase gamma return on the whole circle, then
+  s(t+gamma)=not s(t) a.e. on the WHOLE circle.
+Applying this twice yields invariance under 2*gamma. That rotation is
+ergodic because gamma/pi is irrational. Hence s is a.e. constant,
+contradicting the tau flip.
+
+On a partial A, absence of same-phase returns gives an anti-flip only on
+A intersect (A-gamma). No relation is available when one endpoint is
+outside A. The proof cannot iterate it through a gap. Poincare recurrence
+gives some integer multiple of gamma, not the particular gamma that makes
+the displayed unit triangle. Substituting n*gamma changes its side length.
+
+An additional gamma-invariance hypothesis on A would suffice, but is a
+substantive new input: an irrational rotation makes a positive invariant
+A conull. Similarly a direct positive same-phase gamma-return hypothesis
+is sufficient by NR. Neither follows from tau-invariance or a finite
+partition into tau-orbit types.
+
+3. AN EVEN STRONGER SOURCE-LICENSED TRIANGLE CONSTRAINT
+
+Let I be finite, f:Angles->I measurable, and L_i fixed label sets. Suppose
+every real fibre {t:f(t)=i} is a RealState at the SAME centre x representing
+L_i, and f(t+2*tau)=f(t) a.e. Then
+  for mu-a.e. t,
+  |Fin k minus (L_(f(t)) union L_(f(t+pi+gamma)))| >= 3.              (TC)
+
+Proof. Remove the finitely many fibre-density and shift exceptions. For
+such t, the three angles t+2*j*tau have the same state f(t), and the other
+three angles t+(2*j+3)*tau+gamma have the same state f(t+pi+gamma).
+Use exactly the density-one triangle argument in section 1. A common
+remaining list of size at most two cannot colour that unit triangle.
+
+For actual palettes that are 120-degree periodic, this is the concrete
+necessary condition
+  |P_x(t) union P_x(t+pi+gamma)| <= k-3 a.e.
+At six colours the bound is THREE. The fibres of the finite palette map
+are measurable and represent their own palette labels, so this is a
+legitimate consuming interface. It does not require global two-state
+collapse. For partial B0,B1, introduce a third state outside A representing
+the empty label set; its 120-degree-periodic state map recovers NR from TC.
+
+TC is a useful constraint for existing whole-circle experiments. It still
+does not by itself prove that the four-state model below is unrealizable.
+
+4. EXACT FOUR-STATE COUNTERMODEL TO THE FINITE-PARTITION REDUCTION
+
+Put h=pi/6 and f(t)=floor(t/h) mod 4. This is well-defined and measurable
+on the angular circle because 2*pi=12*h and 4 divides 12. Set
+  P0={0,2}, P1={0,3}, P2={3,5}, P3={2,5},  P(t)=P_(f(t)).
+Use half-open sectors at boundaries; all analytic claims are a.e.
+
+Then f(t+tau)=f(t)+2 mod 4 and f(t+2*tau)=f(t). Thus every individual
+sixty-degree orbit alternates exactly ONE complementary pair:
+  type A0={t:f(t) even}: 02 <-> 35,
+  type A1={t:f(t) odd}:  03 <-> 25.
+Both A0,A1 are tau-invariant, have measure 1/2, and together cover the
+whole circle. There are nevertheless FOUR palettes globally. The choice
+of pair depends on the angular phase. A finite 4^6 enumeration cannot
+identify these two orbit types globally without an additional theorem.
+
+This field satisfies the actual geometric SIGN pattern used in the m=6
+finite certificate. Set the unit approach vectors to
+  (v0,...,v5)=(1,-1,-1,-1,1,1).
+At nonorthogonal t with cos(t)>0, positive edges are E0,E4,E5 and negative
+edges are E1,E2,E3. Their allowed label sets are respectively {2,3} and
+{0,5}; when cos(t)<0 these sets swap. Every P_r contains one label from
+each pair. It therefore satisfies both radial-side palette intersections,
+noncontainment in every cycle edge, and disjointness at sixty degrees.
+
+The gamma bound is EXACT:
+  pi/6 < arccos(5/6) < pi/3,
+because cos(pi/6)=sqrt(3)/2>5/6>1/2=cos(pi/3).
+Consequently f(t+gamma)-f(t) is either 1 or 2 modulo 4. It is never zero.
+Whenever t,t+gamma belong to the same A_i, the increment is 2 and their
+Boolean phases are opposite. Thus BOTH types satisfy NR with zero
+same-phase gamma-return measure. Positive measure of one orbit type gives
+no contradiction.
+
+The model satisfies the stronger TC as well. Adding pi increments f by 2
+modulo 4, so f(t+pi+gamma)-f(t) is 3 or 0. Consecutive palettes around
+the displayed four-state cycle share one label, and equal palettes have
+two labels. Hence |P(t) union P(t+pi+gamma)| is 3 or 2, as TC requires.
+
+This is a countermodel to a NAMED reduction using measurable finite angular
+states, orbitwise alternation, strip-side compatibility, and the localized
+triangle-return rule. It is not a countermodel to any theorem assuming
+that these are actual traces of a global WeakColoring 6 c. The stronger
+source binary strip input in section 6 in fact excludes its fixed geometry.
+
+5. POSITIVITY CANNOT BE REPAIRED BY A UNIFORM MEASURE THRESHOLD
+
+For every epsilon>0 there are purely angular partial-state examples with
+mu(A)>1-epsilon and no same-phase gamma returns. Thus no threshold below
+one, based just on mu(A), tau-invariance and partial flip, repairs the step.
+
+Choose an odd multiple n=3*(2m+1) such that n*gamma is arbitrarily close
+to pi modulo 2*pi. Such choices exist because gamma/pi is irrational.
+Write n*gamma=pi+delta mod 2*pi, with |delta|<eta. Let
+  s(t)=sign(cos(n*t)) as a Boolean,
+  A={t:distance(n*t, pi/2+pi*Z)>eta}.
+Then A is tau-invariant, s(t+tau)=not s(t), and
+mu(A)=1-2*eta/pi. For t in A, the perturbation delta cannot cross a cosine
+zero; therefore s(t+gamma)=not s(t). In particular, there is no same-phase
+return with both endpoints in A. Taking eta arbitrarily small gives the
+claim. The equality events required by the original whole-circle theorem
+are confined to the omitted small bands; no source theorem is contradicted.
+
+This is an angular recurrence countermodel, not asserted RealState
+realizability. The full colouring-level statement 'every positive A is
+impossible' remains outside what these examples settle.
+
+6. A BETTER FIXED CONSUMER: ALIGNED EXCLUSION CONTINUA
+
+THEOREM AC (paper-level source corollary).
+Let c:C-plane->Fin k be measurable and weak, x one fixed centre, v one
+fixed unit vector, and K_i a finite family with ApproachingContinuum x K_i v
+for EVERY i. Suppose each K_i excludes a specified finite label set H_i:
+  Disjoint(spatialSupport c j, Straddle K_i), for j in H_i.
+If the union of the H_i leaves at most two possible labels a,b, then False.
+The K_i need not coincide. Their approach DIRECTIONS must coincide.
+This is not a statement about approximately aligned vectors.
+
+Proof, with every analytic input retained.
+
+(a) Put W=intersection_i Straddle(K_i). This is open. Finite support
+exclusion implies c(z) in {a,b} for plane-a.e. z in W. For every unit e
+with <e,v> nonzero, the actual ApproachingContinuum strip lemmas give
+a one-sided radial strip around x+e contained in W. Choose the OUTER side
+when <e,v>>0 and INNER side when <e,v><0. Finiteness lets us take the
+minimum of the positive widths. The only exceptional directions are the
+two perpendiculars, a two-point angular set B.
+
+(b) One-sided trace production (inner_strip_trace or outer_strip_trace)
+puts a or b in P_x(t) on an angular neighbourhood of each t outside B,
+almost everywhere there. The locally-a.e. gluing lemma and nullness of B
+give BinaryCenter c hc x a b. If a=b, binary_pair_distinct already gives
+a contradiction; otherwise continue. Set s(t)=false when a is in P_x(t),
+true otherwise. BinaryPalettes.binary_alternation gives
+  s(t+tau)=not s(t) a.e.,
+and membership of b is equivalent a.e. to nonmembership of a.
+
+(c) If t and t+tau are outside B, W contains the required two one-sided
+strips at these equilateral-neighbour directions. The radial sides may be
+chosen independently, exactly as permitted by
+BoundaryTrace.binary_strip_palette_rigidity:280. Apply it with U=V=W and
+the SAME pair {a,b}. It gives one fixed label i in {a,b} belonging to
+P_x(u) for a.e. u in an open neighbourhood of t. Binary alternation then
+makes s essentially constant on that neighbourhood, whether i=a or i=b.
+This is precisely membership in angleEssential s false or true.
+
+(d) Let D=angleBoundary s, the complement of the two essential-constancy
+regions. We have D subset B union (B-tau), so D has at most FOUR points.
+But angleBoundary_nonempty:381 makes D nonempty, and angleBoundary_six:435
+makes it contain a full sixty-degree orbit. Those SIX points are distinct
+by sixAngle_injective:425. Contradiction.
+
+The proof works with global WeakColoring only through the source binary
+transport/rigidity inputs. It does not assume palette size <=2, triple
+exclusion, local finiteness of the cyclic core, or a global two-state
+classification. No exceptional sets are unioned over uncountably many
+centres. The source local-a.e. gluing lemma handles the angular cover.
+
+SIX-COLOUR CONSUMER.
+For a six-cycle of common interfaces at x, if three consecutive edges
+have a common unit approach direction, their four endpoint labels are
+excluded on the intersection of their straddling sets. Only two labels
+remain, so AC rules this out. Arbitrary relabelling and a common rotation
+do not affect the argument.
+
+In particular q=(0,3,3,3,0,0) has edges E1={1,2}, E2={2,3}, E3={3,4}
+all approaching in direction -1. Their union excludes {1,2,3,4}, leaving
+{0,5}. Hence this exact configuration is impossible for ACTUAL common
+interfaces. The four-state angular model is still a valid counterexample
+to the weaker orbitwise/recurrence reduction, but cannot pass this stronger
+source input. At t=0 its {0,5} choice jumps from 5 to 0, whereas the two
+same-pair strips at 0 and 60 degrees force essential local constancy there.
+
+AC supplies a specific, checkable new exclusion for the six-colour
+common-interface stage. It is not the full F6 theorem: general direction
+configurations, including nonaligned vectors, remain. Its novelty relative
+to unpublished worker work or the literature has not been investigated.
+
+7. NEXT ACTIONS FOR THE EXISTING WORKERS
+
+Geometry: independently verify AC, especially U=V=W, the independent radial
+side choices, the finite minima and conversion from fixed local label to
+essential Boolean constancy. Refute it if any hypothesis is missing.
+If accepted, extract a minimal generic theorem and instantiate it for
+three consecutive six-cycle edges. Do not weaken exact direction equality
+to approximate alignment without a separate proof.
+
+Independent: audit NR/TC and explicitly distinguish their a.e. null-return
+conclusions from mu(A)=0. Check the four-state model and its failure under
+AC. The strongest useful next deliverable is a justified source coupling
+for the remaining nonaligned geometries, not another assertion that one
+pair per orbit implies one pair globally.
+
+Graphs: retain the four-state field as a regression test for any recurrence
+encoding. Raw orbit, side, NR and TC constraints MUST accept it. A stronger
+encoding may reject its exact q only after AC is independently accepted and
+its producer hypotheses are carried along. Each finite sign certificate
+must continue to include actual approach directions. No unsourced boundary
+or continuity constraint should be inserted to obtain UNSAT.
+
+VALIDATION AND SCOPE
+
+work/astra-six-colour/a2-exact-field-check.txt contains the exact four-state
+table checked by a single standard-library Node process, exit 0. The eight
+rows cover every state and both possible gamma sector increments. Its
+rational comparisons certify the stated gamma interval; the written proof
+supplies the elementary trigonometric interpretation. No floating-point
+geometry, solver, install, child agent, API write or heavy computation.
+
+The complete mathematical claims here are NR, TC and AC, at paper level.
+The stronger blanket positive-measure localized theorem is NOT settled.
+No actual global six-colouring is constructed. No claim of chi>=7 follows.

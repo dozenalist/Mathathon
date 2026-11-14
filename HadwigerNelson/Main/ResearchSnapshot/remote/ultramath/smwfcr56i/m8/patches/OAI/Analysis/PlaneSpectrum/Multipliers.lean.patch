@@ -1,0 +1,12 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/Multipliers.lean	2026-11-13 19:09:13.640753693 +0000
++++ OAI/Analysis/PlaneSpectrum/Multipliers.lean	2026-11-13 19:22:33.295525299 +0000
+@@ -35,8 +35,7 @@
+     ‖mul h hm hn v‖ = ‖v‖ := by
+   simp only [Lp.norm_def]
+   congr 1
+-  apply eLpNorm_congr_norm_ae (Lp.aestronglyMeasurable (mul h hm hn v))
+-    (Lp.aestronglyMeasurable v)
++  apply eLpNorm_congr_norm_ae
+   filter_upwards [mul_ae h hm hn v] with x hx
+   simp [hx, hn]
+ 

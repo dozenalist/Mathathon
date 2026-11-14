@@ -1,0 +1,55 @@
+For a triangle, (6.2) for its three edges and Proposition 5.6 force Px(e) to intersect the pair of
+outside labels almost everywhere. Indeed, a nonempty subset of the three triangle labels of size at
+most two lies in some triangle edge, which is forbidden. By (5.7) the intersection with the outside
+pair is unique almost everywhere and alternates under R. Thus every such x is binary for that
+fixed pair. Lemma 5.5 proves local finiteness of the triangle locus.
+6.3.1 Four-cycles: continuity of states
+Fix a four-cycle and relabel its vertices 0,1,2,3 in cyclic order, with fifth label X. Let L be its closed
+locus and write
+U = {0,2}, V = {1,3}.
+For x ∈ L define the canonical state wx(e) as follows: it is X if X ∈ Px(e), and otherwise it is U
+or V according to which of these two pairs equals Px(e). This is exhaustive almost everywhere.
+A palette not containing X has size at most two, and (6.2) excludes every singleton and every
+adjacentpairofthefour-cycle, leavingpreciselythe twodiagonals. Thestates represent thegroups
+{X},U,V contained in their palettes, and (5.7) gives
+wx(e) ̸= wx(Re) almost everywhere.
+Both diagonal states have positive angular measure. If either were null, the other and X would
+give the impossible alternation of Lemma 6.4.
+Lemma 6.6 (Continuity of four-cycle states). For each s ∈ {X,U,V}, the map x 7→ 1{wx=s} is contin-
+uous from L into L1(S).
+Proof. At each y ∈ L choose an avoiding trace b
+ij
+y for each of its four specified edges. If k belongs
+to the group represented by a state s, then
+1{wy=s} ≤ ∑
+ij in the four-cycle
+b
+ij
+y,k almost everywhere. (6.5)
+To see this, fix a generic direction in state s. If the palette has another member besides k, some cycle
+edge contains that member but does not contain k. For a diagonal state, choose an edge incident
+to its other member; for k = X, choose an edge incident to the possible additional label. If no other
+member exists, any cycle edge suffices. The corresponding trace avoids its edge endpoints and is
+supported within the palette, so its k-coordinate equals one. There are only finitely many chosen
+traces, allowing one common conull set of directions for this argument.
+Let yn → x in L. Along any subsequence, pass further to weak-* limits of the three state
+indicators and all four chosen traces. Denote the former limits by fX, fU, fV. The trace limits
+belong to Wx by its closed-graph property. Inequality (6.5) passes to the weak-* limits, and its
+nonnegative right-hand side shows that wherever fs > 0, every label represented by s belongs
+to Px, almost everywhere. Two different state groups would require at least three palette labels,
+contradicting Proposition 5.6. Since the fs are nonnegative and sum to one, exactly one equals
+one at almost every direction. Its group determines precisely the canonical state wx: a diagonal
+already fills both palette slots, while a positive singleton state requires X ∈ Px. Thus fs = 1{wx=s}
+almost everywhere.
+Weak-* convergence of indicators to an indicator implies L1 convergence: for indicators fn, f,
+test against 1 and f in
+R
+|fn − f| =
+R
+fn +
+R
+f − 2
+R
+fn f. Every subsequence has a further subse-
+quence with this same L1 limit, which proves the claimed continuity.
+38

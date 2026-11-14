@@ -1,0 +1,8 @@
+import D
+#print axioms OAI.PlaneFiveColor.Spectral.RelativeSingularity.relative_singularity_of_ergodic
+#print axioms OAI.PlaneFiveColor.Spectral.RelativeSingularity.differenceLaw_eq_law
+#print axioms OAI.PlaneFiveColor.Spectral.RelativeSingularity.differenceLaw_id_C_eq_zero_of_ergodic
+#print axioms OAI.PlaneFiveColor.Spectral.RelativeSingularity.differenceLaw_C_eq_one_of_diag
+#print axioms RelativeSingularity.exists_four_pairwise
+#print axioms RelativeSingularity.measure_eq_zero_or_univ_of_ae_invariant
+#print axioms RelativeSingularity.no_four_points

@@ -1,0 +1,71 @@
+{
+  "updated_utc": "2026-11-14T15:27:34Z",
+  "status": "SEED union_tau CLOSED and verified; SEED S2 run and its purpose FAILED (clique-sum, proved). One 60 s job, 0.63 s used: exact induced certificate for 1105 vertices / 5444 edges over all 609960 pairs, verified proper 5-colouring. S2 adds no constraint; cause is my design error (R90 fixes a vertex).",
+  "summary": "Seed S2 = H union R90(H) was chosen and stated before computing, then run as the single 60 s job in 0.63 s. It produced a genuine exact induced-edge certificate: 1105 vertices, 5444 edges decided over ALL 609960 pairs by an int64 bilinear form (no floating prefilter, so completeness is by construction, not asserted), every edge re-verified by the independent Field path with 0 failures, the 2722 frozen H-edges reproduced exactly, and a proper 5-colouring that checks out with 0 monochromatic edges. But the seed FAILED its purpose and I say so plainly: the rotation centre (0,0) is a vertex of H, so R90 fixes it, the overlap is exactly 1 point, and there are ZERO edges between the two sides' interiors. S2 is a clique-sum with a one-point clique interface, so by Theorem A chi(S2) = max(5,5) = 5 and it adds nothing. A validation bug (OR instead of AND across basis components) was caught and fixed inside the same job. The earlier count of 38/76 'new edges' is an artifact of the shared origin, corrected to 0.",
+  "verified_results": [
+    "GRADE [A] Exact induced-edge certificate for S2: 1105 distinct vertices (1106 raw, overlap 1), denominator lcm 288, all 609960 pairs decided exactly by an int64 bilinear form, 5444 induced edges. No floating prefilter anywhere, so induced completeness holds by construction. certs/seed_s2.json sha256 b83a4e017ba81bbc230ceba413041873d8ae90cd9f12ec9eaff9503597f6aafa.",
+    "GRADE [A] Edge validation inside the same job: all 5444 edges re-verified by the independent udg.exact.Field implementation, 0 failures; the 2722 frozen H-edges reproduced exactly with 0 missed and 0 extra edges inside H (this is what would expose a wrong multiplication table).",
+    "GRADE [A] Proper 5-colouring of S2 found and edge-checked: 0 monochromatic edges of 5444. certs/seed_s2_witness.txt sha256 80c1b0957f9fc5e8474344ab51709c8ac51bf96a0b4892b991ed03fc63b8b7d8.",
+    "GRADE [A]+[P] STRUCTURAL VERDICT: S2 is a clique-sum. Recounted proper categories: A-side 2684, B-side 2684, genuine A-only-to-B-only cross edges 0, total 5444. The interface is the single point (0,0), a clique of size 1, with no edges between interiors. By Theorem A chi(S2) = max(chi H, chi H) = 5, matching the witnessed colouring. So S2 cannot raise the chromatic number and is a failed seed by design.",
+    "GRADE [A] Cause identified: vertex 0 of refs/heule_553.vtx is (0,0), which R90 fixes, forcing overlap exactly 1. A rotation about a NON-vertex centre is required for a non-clique interface.",
+    "GRADE [A] Count correction: the job's new_edges=38 and a later recount of 76 are both artifacts of the single shared point (origin has provenance A|B, so its 38 H-edges and their 38 R90-images are misread as cross edges). Correct value 0. Both figures retained in the record with the correction attached.",
+    "GRADE [A] A real bug was caught by the in-job validation and fixed: per-basis-component conditions were OR'd instead of AND'd, initially claiming all 609960 pairs as edges. The Field re-check refused the result before anything was published.",
+    "GRADE [P] Retained from before: Theorems A/B/C; the monotonicity retraction (non-forcing carries up in k, forcing does not); the corrected restriction-map direction (forced in H implies forced in G)."
+  ],
+  "conjectures": [
+    "Clique-sum seeds are worthless by Theorem A, and a rotation centred at a vertex of H is automatically a clique-sum because that vertex is fixed. Any future rotation seed must rotate about a non-vertex centre (for example (1/2,0) or a point at distance sqrt3/2 from a vertex) so the overlap is either empty or a non-clique pair.",
+    "An empty overlap is NOT automatically interesting either: with no overlap the graph is a disjoint union and Theorem A's clique interface is vacuous but so is every constraint between the copies unless cross edges appear. The quantity that matters is the number of genuine cross edges, and S2 has 0.",
+    "Neither cross-edge count nor chromatic order is a proven rigidity criterion; both remain heuristics about where a forced pair might be found."
+  ],
+  "artifacts": [
+    "supervisor/solve-graphs/CERTIFICATE-union-no-forcing.md  sha256 95298a2be3b567ad618de1888d2f2307ae8a15428ec77f4902e166f331450280  (statement, proof from the certificate, verification performed, reconciliation, scope)",
+    "supervisor/solve-graphs/certs/refine2_witnesses.txt  sha256 c1a28bc69519ebdffe5a752feb004690cc97a56a7a8ee5a1bb18df912b84560e  (34 proper 5-colourings = certificate body)",
+    "supervisor/solve-graphs/certs/refine2_k5.json  sha256 dbf2520947d1b6d386c0b7dcfbff2fd3cd573f0749b8d3c1bf9fb07fd6ddf434  (all 17 steps before/after, witnesses, empty survivor set)",
+    "supervisor/solve-graphs/certs/refine2_survivors.txt  sha256 7d8c243398919ae46b94199fc3ab239b9c7df1a782f630467d716cb489c06bc7  (empty; header only)",
+    "supervisor/solve-graphs/certs/union_tau.json  sha256 cd3f9ff3a47f93d5ebb25946924531f0170a1b3fd22e1d41fcc59fd013ff7124  (construction; induced completeness VERIFIED)",
+    "supervisor/solve-graphs/certs/union_tau_edges.txt  sha256 59b66e51318c88dc7157401bc61c03a67e499d9d11f205673875b900ca7a85ca  (5487 edges)",
+    "supervisor/solve-graphs/certs/union_tau_points.txt  sha256 4b70ea022ecb59e906b88c5d2049c039fa7d334f2263ad557a0550b760f08615  (1048 points: provenance, source index, exact coefficients)",
+    "supervisor/solve-graphs/certs/union_tau_witness.txt  sha256 dc3e57f9a2dd03e1a05cff884c083236e62a2dccdee3d97ebb0a49ad4ce49980  (frozen initial 5-colouring)",
+    "supervisor/solve-graphs/CERTIFICATE-union-tau.md  sha256 cd93a884b0bf63c7a0612766eab43562215c61a73628e14d9a04e5c52e0b5346  (chi=5 certificate; pending qualifier now lifted)",
+    "supervisor/solve-graphs/REFINE2-PREREG.md  sha256 adae37cac28844e9f3d76a80f98b3d550a412c741567a3adc4c3b5d0d0206aff",
+    "supervisor/solve-graphs/refine2.py  sha256 653113ad8df892227bf1ae6800522f0040729fc4e539f809eb31b1d3385cb226",
+    "supervisor/solve-graphs/CERTIFICATE-k5-no-forcing.md  sha256 a88373acc5bd46ec191db324d7f3a59c53cd7bf280d6e61ea2c87f54e97fdff3  (the Heule553 k>=5 no-forcing certificate, preserved)",
+    "supervisor/solve-graphs/certs/adaptive_k5.json  sha256 9ab71b7aec712709517d8260adf646fab21b3bf8379304ebc4354b6c39978e6a  (34 witnesses for H)",
+    "supervisor/solve-graphs/certs/heule553_k4.drat  sha256 f13f9ed62623a9f8edc783a48db52d5d0832ca285824d2c94240e88c3c8c6e59  (4-UNSAT certificate for H)",
+    "supervisor/solve-graphs/refs/heule_553.vtx  sha256 7e43a0250f4e54f362ffec98dcc0d364edd06d3d0963931b1ec7c32cc846d4fb  (third-party, unmodified)",
+    "supervisor/solve-graphs/refs/heule_553.edge  sha256 b339b6a75575152d8bf2efc9ca1a178d2df15a2f9590b752de4f8ebc4a63e466  (third-party, unmodified)",
+    "supervisor/solve-graphs/SEED-S2-PREREG.md  sha256 fe25f789e420370da00bd5145010c388f24a05a2059ef78666cc04666968c968  (seed choice and method, written before computing)",
+    "supervisor/solve-graphs/seed_s2.py  sha256 c9fd573e3f78179e427727ad2b5fec355ae52f1d990e719f5c9d8619dc290d36  (the single 60 s job)",
+    "supervisor/solve-graphs/CERTIFICATE-seed-s2.md  sha256 e8b6cbd852385f10c204c8dccdb1a5b29b74f079d553ad90ff2d7b5b933aa94d  (certificate, clique-sum verdict, count correction)",
+    "supervisor/solve-graphs/certs/seed_s2.json  sha256 b83a4e017ba81bbc230ceba413041873d8ae90cd9f12ec9eaff9503597f6aafa  (counts, method, elapsed, witness, corrections)",
+    "supervisor/solve-graphs/certs/seed_s2_points.txt  sha256 5af3a1aa0be775b009e54fa950cdbdc20baffe8964bc324abdc7c4a485298862  (1105 points: provenance, source index, exact coefficients)",
+    "supervisor/solve-graphs/certs/seed_s2_edges.txt  sha256 e162ef8ccbdeca9174a962e18467d0df8bc2642086c769a87254320d1e4a95e2  (5444 induced edges)",
+    "supervisor/solve-graphs/certs/seed_s2_witness.txt  sha256 80c1b0957f9fc5e8474344ab51709c8ac51bf96a0b4892b991ed03fc63b8b7d8  (verified proper 5-colouring)"
+  ],
+  "tests_run": [
+    "Independent verification of the union certificate, read-only, no solver: 34 witnesses, 0 with a monochromatic edge of 5487; 1048 of 1048 signatures distinct; 0 classes of size >1; 0 of 543141 non-adjacent pairs unseparated. CERTIFICATE HOLDS True.",
+    "Reconciliation by direct computation: 177 / 112 / 65 as recorded above.",
+    "refine2.py ran as the single 60 s job earlier at 3.65 s, no UNSAT, survivors driven to 0.",
+    "No Lean build, no cloud build, no agents or swarms. Other workers' files and human originals read-only.",
+    "seed_s2.py -> rc 0 in 0.63 s (the block's single job, 60 s cap): built S2, decided all 609960 pairs exactly, re-verified every edge by the Field path, reproduced the frozen H edge set, found and checked a 5-colouring. No UNSAT, so no CNF or proof was needed.",
+    "Post-run recount from saved files only (no solver): categories A-side 2684, B-side 2684, cross 0. This is what revealed the clique-sum verdict and the 38/76 artifact."
+  ],
+  "failed_routes": [
+    "CLOSED SEED: H union (H+tau) with tau=(3/2,sqrt3/2) is exhausted as a source of forced-equal pairs at k>=5. It is not to be revisited.",
+    "Earlier closed: the Heule553 seed itself (34-witness certificate, no forced pair at k>=5).",
+    "Withdrawn earlier: the k=4 test on Heule553 (vacuous, graph is not 4-colourable); the backwards restriction-map implication; the 'forcedness monotone upward' claim; the claim that a 4-colourable seed could reach a k=5 forced pair.",
+    "Not attempted: any translation sweep over tau; any second seed within this block beyond the one chosen.",
+    "SEED S2 FAILED ITS PURPOSE: it is a clique-sum with a one-point interface because R90 fixes the vertex (0,0). It is closed, not to be revisited. The lesson is concrete: rotating about a vertex of H cannot produce a non-clique interface.",
+    "A validation bug (OR instead of AND across basis components) was caught in-job and fixed before publication; the first attempt claimed all 609960 pairs as edges.",
+    "new_edges=38 (and 76) in the run record are artifacts of the shared origin; corrected to 0."
+  ],
+  "next_step": "Next seed must be a rotation about a NON-vertex centre so the interface is non-clique, or a construction with a guaranteed positive genuine cross-edge count stated before computing. Concretely: R180 about (1/2,0) or about a point at distance sqrt3/2 from a vertex gives no fixed vertex; the job should report the genuine cross-edge count (A-only to B-only) as the primary structural number, and treat 0 as an automatic Theorem A failure. Reuse seed_s2.py unchanged apart from the centre and the cross-edge classifier. No forced-pair search until a seed with positive genuine cross edges exists.",
+  "owned_agents": [],
+  "escalation": {
+    "obstacle": "Find a unit-distance graph with a genuine forced-equal distinct pair at k=5 (which by the corrected lemma requires chi>=5). Two seeds are now excluded by certificate. The open question is what structural feature makes the 5-colouring space rigid on a pair, given that richness of the colouring space defeated both seeds.",
+    "definitions": "Unit-distance graph: finite graph with an injection into R^2 such that uv is an edge iff |u-v| = 1. Proper k-colouring: c(u) != c(v) on every edge. Forced equal at k: G is k-colourable and G plus the edge pq is not; the added edge is a combinatorial disequality constraint and is never a unit edge for a non-adjacent pair. Coordinates in Q(sqrt3,sqrt5,sqrt11), basis {1,3,5,11,15,33,55,165}, denominators dividing 288.",
+    "hypotheses": "Exact real-algebraic coordinates; induced (all-pairs) edge set verified; k = 5; chi(G) >= 5 required for non-vacuity.",
+    "attempted_approaches": "Common-neighbour palette excluders (Theorem B caps at 2 colours); clique-sum gluing (Theorem A); complete no-forcing certificates for H (553 vertices, 34 witnesses) and for H union (H+tau) (1048 vertices, 34 witnesses, 1048 unique signatures); adaptive equal-signature refinement driving survival sets to zero twice.",
+    "expected_useful_output": "Either a forced-equal pair at k=5 with exact coordinates and a validated proof certificate, or a third seed that also resists, in which case the informative quantity is which invariant of the surviving classes differs between seeds; neither cross-edge count nor chromatic order has been shown to control rigidity."
+  }
+}

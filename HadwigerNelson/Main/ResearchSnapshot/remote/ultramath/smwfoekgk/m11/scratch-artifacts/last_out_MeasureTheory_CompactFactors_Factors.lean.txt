@@ -1,0 +1,51 @@
+finitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+work/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:465:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:464:60: error: unsolved goals
+K : Type u_1
+X : Type u_2
+Y : Type u_3
+inst : Group K
+inst_1 : Countable K
+inst_2 : MeasurableSpace X
+inst_3 : MeasurableSpace Y
+inst_4 : StandardBorelSpace Y
+inst_5 : Nonempty Y
+inst_6 : MulAction K X
+inst_7 : MulAction K Y
+inst_8 : MeasurableConstSMul K Y
+μ : Measure X
+inst_9 : IsProbabilityMeasure μ
+q : ℕ → X → Y
+hq : ∀ (n : ℕ), Measurable (q n)
+hqe : ∀ (n : ℕ) (k : K), ∀ᵐ (x : X) ∂μ, q n (k • x) = k • q n x
+hc : ∀ (i j : ℕ), FactorLp.space μ (q i) ≤ FactorLp.space μ (q j) ∨ FactorLp.space μ (q j) ≤ FactorLp.space μ (q i)
+m : ℕ
+H : OrbitSpace K → Fin m → ℂ
+hH : Measurable H
+ε : ℝ
+hε : 0 < ε
+w : ℝ
+h : ∀ (z : OrbitSpace K), ‖H z‖ ≤ w
+⊢ ∃ j H₀,
+    Measurable H₀ ∧
+      (∃ C, ∀ (y : Y), ‖H₀ y‖ ≤ C) ∧
+        Integrable (fun x => dist (H (code q x)) (H₀ (q j x)) ^ 2) μ ∧
+          ∫ (x : X), dist (H (code q x)) (H₀ (q j x)) ^ 2 ∂μ < ε ^ 2
+work/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:503:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+work/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:528:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:527:47: error: unsolved goals
+E : Type u_1
+inst : NormedAddCommGroup E
+inst_1 : NormedSpace ℂ E
+inst_2 : SecondCountableTopology E
+A : Type u_2
+inst_3 : Preorder A
+inst_4 : Nonempty A
+F : A → Submodule ℂ E
+hF : ∀ (a : A), IsClosed[PseudoMetricSpace.toUniformSpace.toTopologicalSpace] ↑(F a)
+hord : ∀ (a b : A), a ≤ b ↔ F a ≤ F b
+hseq : ∀ (p : ℕ → A), (∀ (i j : ℕ), F (p i) ≤ F (p j) ∨ F (p j) ≤ F (p i)) → ∃ a, ∀ (i : ℕ), F (p i) ≤ F a
+⊢ ∃ a, IsMax a
+work/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:569:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.

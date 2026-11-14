@@ -1,0 +1,591 @@
+8     Angular obstructions and the final contradiction
+We now show that none of the three cycle lengths supplied by Proposition 7.1 is possible. Fix its
+common center x, cyclically index the cycle labels by j, and let edge j join labels j and j + 1. Write
+K j for its continuum and v j for its limiting unit direction. Thus there are points
+
+             q j,n = x + r j,n w j,n ∈ K j ,     r j,n > 0,      r j,n −→ 0,     w j,n ∈ S,   w j,n −→ v j .
+
+The rays used below record only these selected limiting directions v j ; no straight ray segment is
+assumed to lie in K j . All palettes in this section are at this fixed center. As before, R rotates by
+κ = π/3, and J by π/2.
+
+8.1   Restrictions on the two sides of the unit circle
+The one-sided strips below are a counterpart of the complementary-color strips in Sokolov and
+Voronov [25, Proposition 9]. Related circle and complementary-arc arguments also occur in
+Voronov [30, Sections 3–5], for a positive interval of forbidden distances. We use only the single
+forbidden distance one; the input is the exclusion continua just extracted.
+      Let B ⊂ S be the finite, antipodally symmetric set of directions perpendicular to at least one
+v j . At e ∈
+           / B , give edge j sign + or − according as e · v j is positive or negative. Let O(e) be the
+set of labels remaining after the endpoints of every positive edge are removed, and let I (e) be the
+set remaining after the endpoints of every negative edge are removed. Labels outside the cycle
+belong to both sets.
+
+Lemma 8.1 (One-sided strip restrictions). Both O(e) and I (e) are nonempty for every e ∈  / B . On an
+angular neighborhood of e, an open strip just outside radius one uses only O(e), and an open strip just
+inside radius one uses only I (e), in both cases up to plane-null sets. Moreover,
+
+                 Px (e) ∩ O(e) ̸= ∅,            Px (e) ∩ I (e) ̸= ∅      for almost every e ∈ S \ B .          (8.1)
+
+Proof. For a positive edge sign, the identity
+
+                                    | x + e − q j,n |2 = 1 + r2j,n − 2r j,n (e · w j,n )
+
+is strictly less than one for some sufficiently large fixed n. By continuity, the strict inequality holds
+when e varies in a small angular neighborhood and its radius increases slightly above one. Such
+points have distance greater than one from x ∈ K j and less than one from q j,n ∈ K j ; they lie in
+∆(K j ). Proposition 7.1 excludes both endpoint essential supports there. If the sign is negative,
+the displayed distance is greater than one for large n, and the same argument at radii slightly
+below one gives the inner strip. There are finitely many edges, so the angular neighborhoods and
+positive radial widths can be intersected. An empty allowed set would exclude every color from
+a nonempty open strip, contrary to the measurable partition.
+     Cover S \ B by countably many smaller arcs on each of which all signs are constant and both
+strip restrictions hold with positive widths. For each such arc, polar-coordinate Fubini gives the
+relevant restriction almost everywhere angularly for almost every radius in its permitted interval.
+
+                                                            51
+Impose no condition from that arc outside its permitted interval; its failures then exclude only
+a null set from the whole radial half-line. Intersect these countably many full-measure radial
+conditions with the full-measure condition of typical sampling at center x. Choose radii from
+this intersection tending to one from above. For each fixed arc the outer restriction eventually
+holds along the entire sequence. A weak-* subsequential trace in W x has zero coordinates for the
+excluded labels on that arc. Its coordinates sum to one, and its positive coordinates belong to Px
+almost everywhere, so it supplies an outer allowed palette member. Countably many arcs suffice.
+A separate sequence tending to one from below proves the inner assertion. The two sides need
+not use the same trace.
+
+8.2   Exclusion of a five-cycle
+Proposition 8.2. The extracted interface cycle cannot have length five.
+
+Proof. Index its five labels modulo five. A label belongs to I (e) exactly when its two incident signs
+are positive, and to O(e) exactly when both are negative. Their nonemptiness requires a pair of
+consecutive signs of each kind. If there were two or more runs of each kind, the two required runs
+of length at least two and the other two nonempty runs would occupy at least six positions. Thus
+the five signs consist of one positive run and one negative run, of lengths two and three in some
+order.
+     The allowed sets are the internal vertices of these runs, of sizes one and two. They are disjoint.
+The palette size bound (5.12) and (8.1) imply that almost every palette is a pair, containing one
+vertex from each allowed set. Put Di = {i, i + 2}. After a cyclic relabeling, the length-two run
+occupies edges 0, 1, with middle vertex 1, and the length-three run occupies edges 2, 3, 4, with
+internal vertices 3, 4. The two possible palettes are therefore D1 = {1, 3} and D4 = {4, 1}, whose
+indices differ by two modulo five. Reversing every sign interchanges the two allowed sets and
+preserves these options. Consequently the palette options at antipodal directions are identical.
+     Choose a direction on a full six-position R-orbit for which all the preceding almost-everywhere
+assertions and (5.7) hold. Write p j ∈ Z/5Z for the index of its palette D p j at R j e. Two diagonals
+Da , Db are disjoint exactly when b − a = ±1 modulo five. Thus successive indices make steps
+ε j ∈ {1, −1}, including the closing step from position five to position zero. For antipodal positions
+j, j + 3, the common two-element option set allows index difference only 0 or ±2. But the possible
+sums of three steps are −3, −1, 1, 3; none is zero modulo five, and a sum is ±2 modulo five only
+if all three steps have the same sign. Every consecutive triple of steps must therefore be constant.
+Overlapping triples force all six signs to agree, whereas six equal steps do not close modulo five.
+This is the desired contradiction.
+
+8.3   Four-cycle words and projective ray geometry
+Suppose next that the cycle labels are 0, 1, 2, 3, with outsider X, and put U = {0, 2}, V = {1, 3}. If
+X∈ / Px (e), the two requirements in (8.1) force a consecutive pair of positive signs and a consecutive
+pair of negative signs. Hence the four signs are a cyclic run of two of each sign, which we call a
+split. The two allowed sets, after removing X, are the opposite middle vertices of the runs. They
+determine a diagonal d(e) ∈ {U, V }, and d(−e) = d(e).
+    Define the effective state p(e) to be X whenever X ∈ Px (e), and otherwise to be the forced
+diagonal d(e). The group represented by this state is contained in the palette: it is the singleton
+{ X } in the first case and the entire diagonal in the second. Consequently,
+
+  p(e) ̸= p( Re),     p(e) = p(−e) if both states are different from X,    almost everywhere. (8.2)
+
+                                                   52
+If a diagonal occurs only on a null set, the remaining singleton-versus-pair state system contra-
+dicts Lemma 6.4; a single remaining state already contradicts the first assertion in (8.2). We may
+therefore suppose that both diagonal states have positive angular measure.
+    For a nonparallel pair of density-one directions of the U and V state sets, the density conclusion
+of Lemma 5.2 excludes all four cycle labels at their sum with x. That sum has density one of X.
+Lemma 6.3 now applies to these three represented groups. If FU , FV denote the compact angular
+essential supports of the diagonal state sets, then
+
+                                   FD ∩ RFD = ∅        ( D = U, V ).
+
+The same holds for R−1 . Compactness provides a common positive angular separation margin.
+    Choose a dense conull set G of angular parameters, invariant under addition of κ, on which all
+six orbit positions avoid B , satisfy the state rules, and belong to FU or FV whenever the respective
+state occurs. Define
+                              w(t) j = p(ei(t+ jκ ) ),  j ∈ Z/6Z, t ∈ G.
+There exists η > 0 such that whenever t, t′ ∈ G have circular angular distance less than η, a
+diagonal at any position of w(t) cannot equal a diagonal at an adjacent position of w(t′ ). Indeed,
+such equality would give points of the same compact essential support at angular distance less
+than the margin from an R- or R−1 -pair. We refer to this as the cross-word restriction.
+
+Lemma 8.3 (Six-position word alternatives). Every word w(t) contains X, and all its X positions have
+the same parity. Every direction outside B is split.
+
+Proof. A word without X alternates U, V by adjacent inequality, contradicting the antipodal equal-
+ity in (8.2). Suppose that X occurs on both parities. Any pair of its opposite-parity positions must
+be antipodal, since otherwise they are adjacent on the six-cycle. There are exactly two such occur-
+rences: fixing one on each parity prevents any additional occurrence on either parity. Cyclically
+shift them to positions zero and three. Positions one and two are distinct non-X states, and their
+antipodes four and five have the same respective values. Thus the word is a three-periodic per-
+mutation of X, U, V.
+    Such a word is isolated under the cross-word restriction. In any compatible nearby word, each
+of its positions zero and three has neighbors U, V in the original word; it must therefore be X. The
+remaining four positions are non-X by their own adjacent inequality. If the original positions one
+and two are U, V, the cross-word restrictions against position two and position one, respectively,
+force the new positions one and two to be U, V; the other block is forced in the same way. Hence
+the new word is identical.
+    Any two points of a dense subset of the circle can be joined by a finite chain within that subset
+whose steps have angular distance less than η: subdivide a connecting arc into steps smaller than
+η/3 and approximate its intermediate vertices by points of the dense set. Isolation would therefore
+propagate this word throughout G. But w(t + κ ) j = w(t) j+1 , and a three-periodic permutation
+word is not equal to its one-position shift. Since G is shift invariant, this is impossible.
+    It follows that the nonempty set of X positions has a unique parity, denoted h(t) ∈ Z/2Z. The
+three positions of the other parity are non-X, hence split. They contain one representative from
+each antipodal pair of positions. Since splitting is antipodally invariant, all six positions are split.
+In particular almost every direction is split. Signs are locally constant outside the finite set B . A
+nonsplit direction there would have a nonsplit open neighborhood of positive measure, which is
+impossible.
+
+
+
+                                                  53
+Lemma 8.4 (Geometry of four split rays). Under the conclusions of Lemma 8.3, the four rays consist of
+two distinct antipodal pairs. Opposite directions occupy opposite edge positions. On the projective angular
+circle of circumference π, the forced diagonal d equals U on one open arc and V on its complementary open
+arc. One of these arcs has length at most π/2.
+
+Proof. Every generic open semicircle {v : e · v > 0} selects exactly two rays, counted with mul-
+tiplicity, and the selected edge positions are adjacent. At a boundary perpendicular to one un-
+oriented ray line, cross the boundary without crossing any other such boundary. The selected
+multiplicity on that line changes from the number of its rays in one direction to the number in
+the opposite direction; all other selections stay fixed. Equality of the total count before and after
+shows that these two multiplicities coincide. Thus all rays are antipodally paired.
+     If only one unoriented line occurs, it has two rays in each direction. The selected edge positions
+are a fixed adjacent pair or its complement. These two split patterns give the same diagonal. The
+other diagonal could not occur on a set of positive measure, contrary to our assumption. There
+are therefore two distinct lines, with one ray in each of their two directions.
+     A specified ray on one line can be positive simultaneously with either ray on the other line:
+the corresponding two nonopposite unit directions fit in an open semicircle. Its edge position is
+consequently adjacent to both positions from the other line. In a four-cycle the remaining position
+is its opposite, so its antipodal ray occupies the opposite edge position. This applies to both lines.
+     Modulo antipodes, the two perpendicular boundaries divide the angular circle into two open
+arcs. The signs, up to global reversal, are constant on each arc. Crossing a boundary replaces
+one selected edge by its opposite while keeping the selected edge from the other line. The two
+middle vertices of the resulting split are the other diagonal. Thus the forced diagonal takes the
+two different values on the two arcs. Their lengths sum to π, which proves the last assertion.
+
+Proposition 8.5. The extracted interface cycle cannot have length four.
+
+Proof. Suppose t, t′ ∈ G are less than η apart and h(t) ̸= h(t′ ). Select the three positions opposite
+to the X parity in w(t), and the other three positions opposite to the X parity in w(t′ ). All selected
+states are diagonals; around the six positions they alternate between the two words. Cross-word
+adjacent states differ. Since only U, V are available, all three selected entries of the first word have
+one diagonal value, and all three of the second have the other value.
+    For either word the three selected directions, projected modulo antipodes, are spaced equally
+by κ. Each is a non-X direction, so the forced diagonal there is its selected value. Both of the open
+diagonal arcs in Lemma 8.4 would therefore contain three equally spaced projective positions. An
+open arc containing such three positions has length greater than 2π/3: its closed complementary
+arc avoids the three points, so lies strictly inside one of the three gaps and has length less than
+π/3. This contradicts the diagonal arc of length at most π/2.
+    Thus h agrees at all sufficiently close points of G. The dense-set chain argument from
+Lemma 8.3 makes it constant on G. Yet shifting by κ shifts every word by one position and
+reverses this parity. The shift invariance of G gives a contradiction.
+
+8.4   Triangle interfaces force alternating sectors
+It remains to consider a triangle cycle. Call its labels the triangle labels, and write X, Y for the
+outsiders. At every e ∈/ B , two of the three edge signs agree. Those two edges cover all three
+triangle labels. Lemma 8.1 therefore provides an open strip on an angular neighborhood of e,
+approaching radius one from one side, which uses only X, Y almost everywhere. Equation (8.1)
+
+
+
+                                                    54
+gives an outsider in Px (e) almost everywhere. There cannot be two outsiders in such a palette,
+since (5.7) would leave no outsider at Re. We obtain a measurable binary state
+                        s(e) ∈ { X, Y },      s( Re) ̸= s(e)   almost everywhere.
+    The use of two complementary colors near a unit circle has a predecessor in Townsend’s annu-
+lus argument [28, Theorems 1 and 4]; here the restrictions hold almost everywhere and need not
+form an annulus. The next lemma extracts local constancy directly from the open strips.
+Lemma 8.6 (Local binary rigidity). If e0 , Re0 ∈
+                                               / B , then s is almost everywhere constant on an angular
+neighborhood of e0 .
+Proof. Let U , V be the open strips restricted to X, Y near e0 , Re0 , respectively. Each approaches
+radius one from its prescribed side, and these sides may differ. Put z0 = x + e0 . There are two
+nonparallel unit directions v1′ , v2′ such that z0 + v′j ∈ V . To verify this, rotate so e0 = 1 and consider
+
+                                   F (r, θ ) = |reiθ − 1|2 − 1 = r2 − 2r cos θ.
+                                      √
+At (1, π/3), F = 0 and ∂θ F = 3 ̸= 0. The implicit function theorem permits r to move onto
+either desired radial side while θ stays in the angular arc of V . This gives a point strictly inside V
+at unit distance from z0 . Openness then gives an open set of such unit directions, containing two
+nonparallel choices.
+     Choose a smaller connected polar product strip U ′ ⊂ U , still approaching radius one on an
+angular neighborhood of e0 , close enough to z0 that q + v1′ , q + v2′ ∈ V for every q ∈ U ′ . We claim
+that c is almost everywhere constant on U ′ .
+     Fix a point of U ′ . On a sufficiently small ball around it, all starting points q and sufficiently
+small shifts h admit the following construction inside U and V . Since Jv1′ , Jv2′ form a basis, write
+h = t1 Jv1′ + t2 Jv2′ , with coefficients linear in h. Move first by t1 Jv1′ and then by t2 Jv2′ . For either
+move, starting at q′ and using t = t j , v′ = v′j , its two endpoints in U have the common unit
+neighbor
+                                               t       p
+                                         q′ + Jv′ + 1 − t2 /4 v′ ∈ V .                                   (8.3)
+                                              2
+The two distances are one because v′ and Jv′ are orthogonal unit vectors. Smallness keeps |t| < 2
+and every constructed point in the stated open set. The combined path has four unit edges, with
+repetitions allowed.
+     Fix such an h. Every vertex of the path is a translation of q, so for almost every starting point
+all five vertices are typical and have colors in { X, Y }. Typical-point properness makes the colors
+alternate along the path. Consequently c(q) = c(q + h) for almost every q in the small ball, for
+each fixed permissible h. All path maps are jointly measurable in (q, h): the coefficients are linear
+and the square-root terms continuous. Fubini gives this equality for almost every (q, h). In a still
+smaller ball, every ordered pair (q, q′ ) has q′ − q within the permissible shift range; the invertible
+change (q, h) 7→ (q, q + h) shows that almost every pair in that ball has equal colors. Choosing one
+typical first point by Fubini proves local essential constancy of c.
+     The sets of points of U ′ with local essential color X, or local essential color Y, are disjoint open
+sets covering U ′ ; they are disjoint because overlapping open neighborhoods have positive area.
+Connectedness forces just one of these sets to be nonempty. A countable subcover of monochro-
+matic neighborhoods then shows that U ′ uses one color almost everywhere.
+     Finally choose typical radial samplings at x tending to one from the side of U ′ . Polar Fubini
+ensures that the samples equal this color almost everywhere on its angular arc. A weak-* trace
+puts that outsider in Px almost everywhere on the arc. It is the unique outsider there, so s is
+essentially constant near e0 , as asserted.
+
+                                                     55
+Lemma 8.7 (The boundary is one orbit). The essential boundary of s consists of exactly one six-position
+R-orbit. Its complementary sectors have angle π/3, with alternating essential values X, Y.
+
+Proof. Let Es be the set of directions at which s is not almost everywhere constant on any open
+neighborhood. Its complement is open, so Es is closed. If it were empty, local essential constancy
+and connectedness of the circle, followed by a countable subcover, would make s globally constant
+almost everywhere. The flip under R excludes this. That same almost-everywhere flip transports
+local essential constancy in both directions, so Es is R-invariant.
+     Consider any six-position orbit contained in Es . By Lemma 8.6, every consecutive pair in it has
+at least one vertex in B . Because B is antipodally symmetric, project the orbit modulo antipodes.
+Its three positions form a triangle, and every edge has an endpoint among the projective classes
+of B . At least two such classes are needed. There are at most three projective classes in B , one
+for each interface ray. Distinct R-orbits have disjoint projective positions: a shared class means a
+shared direction or its antipode, and the antipode is already the third rotation in the orbit. Thus
+two distinct boundary orbits would require at least four projective classes in B . There can be at
+most one orbit, and nonemptiness supplies exactly one.
+     On each of the six complementary open sectors, local essential constancy and connectedness
+give one essential value. Rotation maps each sector to the next and flips that value, proving the
+assertion.
+
+8.5     An open three-label region and the triangle contradiction
+Rotate coordinates about x so that the sector boundaries of Lemma 8.7 have angles that are multi-
+ples of π/3. The outsider state is then determined by the sign of sin(3θ ), in one of the two possible
+orders of X, Y.
+
+Lemma 8.8 (Polynomial three-label region). Put z = ξ + iυ, l = ξ 2 + υ2 . If 0 < l < 4 and
+
+                              P := υ2 (3ξ 2 − υ2 )2 < P′ := l 3 (1 − l/4)(l − 1)2 ,                      (8.4)
+
+then a neighborhood of x + z uses only the three triangle labels up to a plane-null set.
+
+Proof. Write z = reiϕ , with 0 < r < 2, and let δ = arccos(r/2) ∈ (0, π/2). The unit directions with
+angles ϕ − δ and ϕ + δ sum to z, and they are nonparallel. Triple-angle identities give
+
+                         υ2 (3ξ 2 − υ2 )2                                         √
+           sin2 (3ϕ) =                    ,   sin(3δ) = sin δ (4 cos2 δ − 1) =        1 − l/4 (l − 1).
+                                l3
+Also,
+                            sin 3(ϕ − δ) sin 3(ϕ + δ) = sin2 (3ϕ) − sin2 (3δ).
+                                                    
+
+Equation (8.4) makes this product negative. Both endpoints therefore lie strictly inside sectors,
+with opposite outsider values. Take open arc neighborhoods of the endpoints staying in their re-
+spective sectors. Their palettes contain the respective outsiders almost everywhere. Equation (5.2)
+excludes both outsiders at almost every sum of the two directions. The sum map is a local dif-
+feomorphism at this nonparallel pair, with Jacobian sin(2δ) ̸= 0. On a smaller coordinate neigh-
+borhood its image is open and contains z, and change of variables transports the product-null
+exceptions to a spatial null set. Translating by x gives the claim.
+
+
+
+
+                                                       56
+   The following coordinates realize the seven-vertex obstruction of Moser and Moser [19], a
+unit-distance graph that cannot be colored with three labels:
+                                        √               √                         √
+                                          3+i             3−i      √         5 + i 11
+  G = {0, A, B, T, uA, uB, uT },   A=          , B=           , T = 3, u =            . (8.5)
+                                           2              2                      6
+Indeed, 0, A, B and T, A, B are unit equilateral triangles sharing AB. In any proper three-coloring,
+the third vertices 0, T have the same color. Since |u|2 = (25 + 11)/36 = 1, their rotated copies
+similarly force 0, uT to have the same color. But
+
+                                                                1 + 11
+                                 | T − uT |2 = 3|1 − u|2 = 3           = 1,
+                                                                  36
+which is incompatible with those two forced equalities.
+  We place this graph using
+
+                                            −290 + 149i
+                                                       
+                              35 + 12i
+                        zg =             g+               ,               g ∈ G.                 (8.6)
+                                 37             250
+
+The multiplier has norm one because 352 + 122 = 372 , so this is a rotation followed by a translation
+in the sector coordinates. Figure 3 shows the placed graph, with all seven vertices in the three-label
+region, and its two forced equal-color pairs.
+
+
+
+                                                          zuT
+
+
+
+
+                              zuA                                     1
+                                               zA
+
+
+                                                                              zT
+
+                                                         zuB
+
+
+                            z0
+
+
+                                                         zB
+
+
+Figure 3: The Moser graph in the placement z g . All eleven drawn edges have unit length. The
+two triangles sharing z A z B force z0 , z T to have the same color in any proper three-coloring; the
+dashed diamond forces z0 , zuT to have the same color. The highlighted edge z T zuT contradicts
+these equalities. The shading gives a cropped view of the open region (8.4), using sampled analytic
+boundaries; the boundaries and radii zero, one, and two are excluded. Dotted rays mark the sector
+boundaries at multiples of π/3. The rational certificate in Section 8.6 proves strict membership of
+every vertex in that region, which is restricted almost everywhere to three labels.
+
+   The following certificate gives the strict membership needed to finish the geometric argument.
+
+                                                    57
+Lemma 8.9 (Seven-point certificate). Every z g in (8.6) satisfies 0 < |z g |2 < 4 and (8.4).
+
+   The full rational verification is given in Section 8.6. We first use the certificate to finish the
+geometric argument.
+
+Proposition 8.10. The extracted interface cycle cannot have length three.
+
+Proof. Lemmas 8.8 and 8.9 give, for each of the seven points x + z g , an open neighborhood re-
+stricted almost everywhere to the triangle labels. Choose ρ > 0 so that each point remains in its
+corresponding neighborhood after any common translation t ∈ B(0, ρ). For each vertex, the trans-
+lations that put it outside the typical set, or in the null subset where a nontriangle label occurs,
+form a null set. The union of these seven exceptional translation sets is null. Choose t outside
+that union. All seven translated vertices are then typical and use the three triangle labels. Their
+unit edges are preserved by the placement and common translation, and typical-point properness
+gives a proper three-coloring of the graph in (8.5). The two shared-edge triangle pairs proved that
+this graph has no such coloring.
+
+Proof of Theorem 1.4. If a weak measurable five-coloring existed, Proposition 7.1 would produce an
+interface cycle of length three, four, or five with the common-center and exclusion properties used
+above. Propositions 8.2, 8.5, and 8.10 exclude all three possibilities. Thus no weak measurable
+five-coloring exists.
+
+8.6   Rational verification of the seven-point certificate
+All terminating decimals in this verification denote exact rational numbers.
+
+Proof of Lemma 8.9. Table 1 gives coordinate centers (ξ 0 , υ0 ), each within h = 0.00011 of the corre-
+sponding exact coordinate of z g , and strict upper and lower polynomial bounds.
+
+                             g           ξ0          υ0         P+          P−′
+                             0     −1.2906     0.1876          0.90       1.35
+                             A     −0.6335     0.9414        0.095      0.110
+                             B     −0.3092    −0.0045     0.000002    0.00065
+                             T      0.3478     0.7493         0.023      0.026
+                            uA     −1.1598     1.1790           9.8       19.0
+                            uB     −0.3666     0.5700       0.0022      0.024
+                            uT     −0.2358     1.5614        12.65        12.9
+
+                     Table 1: Coordinate boxes and bounds P < P+ < P−′ < P′ .
+
+   Here are explicit checks of the boxes and polynomial bounds. Squaring rational endpoints
+proves                         √                          √
+                    1.73205 < 3 < 1.73206,      3.31662 < 11 < 3.31663.
+Put a∗ = 1.732055, b∗ = 3.316625, and ϵ = 0.000005. Replacing the two radicals by these midpoints
+changes their product by less than
+
+                            ( a∗ + b∗ )ϵ + ϵ2 = 0.000025243425 < 0.000026.
+
+
+
+
+                                                    58
+The coordinates of the three products in (8.5) are
+                                                      √     √     √        !
+                                                     5 3 − 11       33 + 5
+                                           uA =                ,             ,
+                                                         12          12
+                                                      √     √     √        !
+                                                     5 3 + 11       33 − 5
+                                           uB =                ,             ,
+                                                         12          12
+                                                      √ √ !
+                                                     5 3    33
+                                           uT =          ,       .
+                                                      6     6
+
+For each coordinate of every g, the midpoint substitution therefore has error at most ϵ: the largest
+product error is less than 0.000026/6 < ϵ, and the other coefficients give this bound directly. The
+rotation in (8.6) has absolute row sum 47/37. For an exact check of the displayed centers, let zeg
+denote the placed point after this rational midpoint substitution. Direct substitution gives the
+residuals
+                                                      g             dx            dy
+                                                      0      3840000 −23040000
+                                                      A −29520000         10176000
+                                        d x + idy     B −12240000 −22464000
+                zeg − (ξ 0 + iυ0 ) =              ,
+                                     710400000000     T     25440000      10752000
+                                                     uA     32043244 −19212795
+                                                     uB      4763244 −27212795
+                                                     uT     32966488 −23385590
+Every residual numerator has magnitude less than 35520000 = 710400000000/20000, proving that
+the midpoint-substituted coordinates have the stated four-decimal roundings, with error less than
+0.00005. Thus every final coordinate error is bounded by
+
+                                            47
+                                               ϵ + 0.00005 < 0.00011 = h.
+                                            37
+   For completeness, the remaining interval calculations reduce to the small rational factors in
+Table 2. Define
+
+                 xl = (|ξ 0 | − h)2 ,                                                 xu = (|ξ 0 | + h)2 ,
+                 yl = (|υ0 | − h)2 ,                                                  yu = (|υ0 | + h)2 ,
+                  ll = x l + y l ,                                                     lu = x u + yu ,
+                 H = max(|3xl − yu |, |3xu − yl |).
+
+All listed absolute coordinate centers exceed h, so these intervals enclose ξ 2 , υ2 , l. In each row the
+factors in the second table satisfy
+
+                                 y u < by ,           H < bH ,          a < ll ≤ lu < b.
+
+These claims require only squaring integers: with M = 105 , m = M |ξ 0 |, n = M |υ0 |, the four
+squared-coordinate endpoints are
+
+                                            1              2              2              2              2
+                                                                                                          
+                 ( xl , xu , yl , yu ) =        ( m − 11 )   , ( m + 11 )   , ( n − 11 )   , ( n + 11 )     .
+                                           1010
+
+
+                                                               59
+                                  g            by      bH        a           b
+                                  0       0.0353    4.963     1.70     1.71
+                                  A        0.887    0.319     1.28     1.29
+                                  B    0.000022     0.287    0.095    0.096
+                                  T        0.562    0.199    0.682    0.683
+                                 uA        1.391    2.647     2.73     2.74
+                                 uB        0.326    0.079    0.459     0.46
+                                 uT         2.44    2.273    2.493    2.495
+
+                 Table 2: Rational factors bounding the squared-coordinate boxes.
+
+Thus every entry is verifiable using the displayed coordinate integers, without evaluation of an
+irrational number.
+    Every interval ( a, b) lies in (0, 4) and avoids one. The polynomial factors are therefore bounded
+by
+
+                             P ≤ yu H 2 < by b2H < P+ ,
+                             P′ ≥ ll3 (1 − lu /4) min(|ll − 1|, |lu − 1|)2
+                                > a3 (1 − b/4) min(| a − 1|, |b − 1|)2 > P−′ .
+The last inequalities are direct rational products of the second table, with the target bounds in the
+first. For example, its final row gives
+
+                  2.44(2.273)2 < 12.65,        (2.493)3 (1 − 2.495/4)(1.493)2 > 12.9.
+The other six rows give the corresponding displayed strict bounds by the same two products. The
+squared-radius intervals also lie respectively in
+
+    (1.70, 1.71), (1.28, 1.29), (0.095, 0.096), (0.68, 0.69), (2.73, 2.74), (0.459, 0.46), (2.49, 2.50).
+Finally P+ < P−′ in every row of Table 1. This proves (8.4) and the radius conditions for all seven
+vertices.
+
+
+References
+ [1] B. Bekka, P. de la Harpe, and A. Valette. Kazhdan’s Property (T), volume 11 of New
+     Mathematical Monographs. Cambridge University Press, 2008. doi:
+     10.1017/CBO9780511542749. URL
+     https://ncatlab.org/nlab/files/BekkaHarpeValetteOnKashdanPropertyT.pdf. Theorem
+     locators refer to the author manuscript dated February 23, 2007.
+ [2] T. Bourgeat, M. Heinrich, P. Melotti, and J.-M. Robert. A probabilistic Hadwiger–Nelson
+     problem, 2015. URL https://arxiv.org/abs/1501.02441v1.
+ [3] M. M. Crum. On positive-definite functions. Proceedings of the London Mathematical Society, 6
+     (4):548–560, 1956. doi: 10.1112/plms/s3-6.4.548.
+ [4] N. G. de Bruijn and P. Erdős. A colour problem for infinite graphs and a problem in the
+     theory of relations. Indagationes Mathematicae, 13:371–373, 1951. URL
+     https://users.renyi.hu/~p_erdos/1951-01.pdf.
+
+                                                     60
+ [5] A. D. N. J. de Grey. The chromatic number of the plane is at least 5. Geombinatorics, 28(1):
+     18–31, 2018. URL https://arxiv.org/abs/1804.02385v3.
+ [6] B. Deroin, V. Kleptsyn, and A. Navas. On the question of ergodicity for minimal group
+     actions on the circle, 2008. URL https://arxiv.org/abs/0806.1974v1.
+     https://arxiv.org/abs/0806.1974v1.
+ [7] G. Exoo and D. Ismailescu. The chromatic number of the plane is at least 5: A new proof.
+     Discrete & Computational Geometry, 64:216–226, 2020. doi: 10.1007/s00454-019-00058-1. URL
+     https://arxiv.org/abs/1805.00157v1.
+ [8] K. J. Falconer. The realization of distances in measurable subsets covering Rn . Journal of
+     Combinatorial Theory, Series A, 31(2):184–189, 1981. doi: 10.1016/0097-3165(81)90014-5.
+ [9] E. Følner. On groups with full Banach mean value. Mathematica Scandinavica, 3:243–254,
+     1955. doi: 10.7146/math.scand.a-10442.
+[10] H. Furstenberg. Ergodic behavior of diagonal measures and a theorem of Szemerédi on
+     arithmetic progressions. Journal d’Analyse Mathématique, 31:204–256, 1977. doi:
+     10.1007/BF02813304.
+[11] T. Gneiting and Z. Sasvári. The characterization problem for isotropic covariance functions.
+     Mathematical Geology, 31(1):105–111, 1999. doi: 10.1023/A:1007597415185.
+[12] H. Gwyn and J. Stavrianos. A finite graph approach to the probabilistic Hadwiger–Nelson
+     problem. Geombinatorics, 32(1):5–28, 2022. URL https://arxiv.org/abs/2008.07987v1.
+     Definition and theorem locators refer to arXiv version 1, August 18, 2020.
+[13] H. Hadwiger. Ungelöste Probleme Nr. 40. Elemente der Mathematik, 16:103–104, 1961. URL
+     https://www.e-periodica.ch/cntmng?pid=edm-001%3A1961%3A16%3A%3A215.
+[14] A. Hatcher. Algebraic Topology. Cambridge University Press, Cambridge, 2002. URL
+     https://pi.math.cornell.edu/~hatcher/AT/AT.pdf.
+[15] M. J. H. Heule. Computing small unit-distance graphs with chromatic number 5.
+     Geombinatorics, 28(1):32–50, 2018. URL https://arxiv.org/abs/1805.12181.
+[16] A. Jamneshan. An uncountable Furstenberg–Zimmer structure theory. Ergodic Theory and
+     Dynamical Systems, 43(7):2404–2436, 2023. doi: 10.1017/etds.2022.43.
+[17] A. Jamneshan. An uncountable Furstenberg–Zimmer structure theory—Corrigendum.
+     Ergodic Theory and Dynamical Systems, 46(1):211–217, 2026. doi: 10.1017/etds.2025.10214.
+[18] M. Matolcsi, I. Z. Ruzsa, D. Varga, and P. Zsámboki. The fractional chromatic number of the
+     plane is at least 4, 2025. URL https://arxiv.org/abs/2311.10069v4. Version 4, March 27,
+     2025; first submitted November 16, 2023.
+[19] L. Moser and W. Moser. Solution to problem 10. Canadian Mathematical Bulletin, 4(2):187–189,
+     1961. doi: 10.1017/S0008439500025765. Within the journal’s Solutions section, pp. 187–194.
+[20] J. Parts. The chromatic number of the plane is at least 5—a human-verifiable proof.
+     Geombinatorics, 30(2):77–102, 2020. URL https://arxiv.org/abs/2010.12661.
+[21] J. Parts. Graph minimization, focusing on the example of 5-chromatic unit-distance graphs
+     in the plane. Geombinatorics, 29(4):137–166, 2020. URL https://arxiv.org/abs/2010.12665v2.
+[22] M. S. Payne. Unit distance graphs with ambiguous chromatic number. The Electronic Journal
+     of Combinatorics, 16(1):N31, 2009. doi: 10.37236/269.
+
+
+                                                 61
+[23] J. f (n). Reed. The Hadwiger–Nelson problem: Formal verification of the 7-color chromatic
+     number of the plane via toroidal projection and the irrationality of 2π. Public manuscript,
+     May 14 version, 2026. Public manuscript version present May 14, 2026.
+[24] A. Soifer. The 50th anniversary of one problem: The chromatic number of the plane & its
+     relatives. part 1. Mathematics Competitions, 16(1):9–41, 2003. URL
+     https://www.wfnmc.org/Journal%202003%201.pdf.
+[25] G. Sokolov and V. Voronov. On the chromatic number of the plane for map-type colorings,
+     2025. URL https://arxiv.org/abs/2502.01958v1. Version 1, submitted February 4, 2025.
+[26] T. Tao. 254A, lecture 9: Ergodicity, 2008. URL
+     https://terrytao.wordpress.com/2008/02/04/254a-lecture-9-ergodicity/. February 4;
+     Theorem 4 and Remark 5.
+[27] S. P. Townsend. Every 5-coloured map in the plane contains a monochrome unit. Journal of
+     Combinatorial Theory, Series A, 30(1):114–115, 1981. doi: 10.1016/0097-3165(81)90046-7. URL
+     https://www.jennysteve.net/MapColouring/1981note.pdf.
+[28] S. P. Townsend. Colouring the plane with no monochrome units. Geombinatorics, 14(4):
+     184–193, 2005. URL https://www.jennysteve.net/MapColouring/2005paper.pdf.
+[29] J. von Neumann. Zur allgemeinen Theorie des Masses. Fundamenta Mathematicae, 13:73–116,
+     1929. doi: 10.4064/fm-13-1-73-116.
+[30] V. Voronov. The chromatic number of the plane with an interval of forbidden distances is at
+     least 7, 2025. URL https://arxiv.org/abs/2304.10163v3. Version 3, submitted April 13, 2025;
+     first version April 20, 2023.
+[31] D. R. Woodall. Distances realized by sets covering the plane. Journal of Combinatorial Theory,
+     Series A, 14(2):187–200, 1973. doi: 10.1016/0097-3165(73)90020-4.
+[32] R. J. Zimmer. Ergodic actions with generalized discrete spectrum. Illinois Journal of
+     Mathematics, 20(4):555–588, 1976. doi: 10.1215/ijm/1256049648.
+[33] R. J. Zimmer. Extensions of ergodic group actions. Illinois Journal of Mathematics, 20(3):
+     373–409, 1976. doi: 10.1215/ijm/1256049780.
+
+
+
+
+                                                 62

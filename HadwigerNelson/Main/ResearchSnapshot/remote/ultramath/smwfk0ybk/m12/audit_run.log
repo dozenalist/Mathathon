@@ -1,0 +1,158 @@
+===== part 1: exact bundle toolchain (Lean 4.34.1 + pinned Mathlib), oleans in /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/build/lib
+---- exact: Audit1.lean
+'OAI.EuclideanFiveColor.no_proper_five_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_proper_five_coloring_algebraic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_measurable_weak_five_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.chromaticNumber_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+OAI.EuclideanFiveColor.no_proper_five_coloring : ¬∃ c, OAI.EuclideanFiveColor.ProperColoring 5 c
+@OAI.EuclideanFiveColor.no_measurable_weak_five_coloring : ∀ {c : ℂ → Fin 5},
+  Measurable c → OAI.EuclideanFiveColor.WeakColoring 5 c → False
+'OAI.EuclideanFiveColor.graph_map_large_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+---- exact: Audit2.lean
+'Audit.weakColoring_seven_inhabited' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Audit.weakColoring_five_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.proper_to_borel_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.proper_to_borel_weak_algebraic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.sample_field' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.PlaneFiveColor.LabelModel.exists_label_field' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.properColoring_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.exists_measurable_proper_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.weakMeasurableColoring_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+---- exact: Audit4.lean
+'OAI.EuclideanFiveColor.properColoring_of_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.exists_properColoring_of_finset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.finite_config_proper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.proper_to_borel_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.weakMeasurableColoring_of_aemeasurable_proper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@OAI.EuclideanFiveColor.properColoring_of_weak : ∀ {k : ℕ} [NeZero k] {c : ℂ → Fin k},
+  Measurable c → OAI.EuclideanFiveColor.WeakColoring k c → ∃ d, OAI.EuclideanFiveColor.ProperColoring k d
+@OAI.EuclideanFiveColor.proper_iff_weak : ∀ {k : ℕ} [NeZero k],
+  (∃ c, OAI.EuclideanFiveColor.ProperColoring k c) ↔ ∃ c, Measurable c ∧ OAI.EuclideanFiveColor.WeakColoring k c
+@OAI.Problem160.weakMeasurableColoring_of_aemeasurable_proper : ∀ {k : ℕ} (c : OAI.Problem160.Plane → Fin k),
+  AEMeasurable c MeasureTheory.volume →
+    (∀ (x y : OAI.Problem160.Plane), dist x y = 1 → c x ≠ c y) → OAI.Problem160.WeakMeasurableColoring k
+---- exact: Audit5.lean
+'OAI.EuclideanFiveColor.proper_iff_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.algebraic_colorable_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.not_proper_five_coloring_compl_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.diam_le_one_of_preconnected_unitFree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.diam_le_one_connectedComponentIn_of_properColoring' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@OAI.EuclideanFiveColor.proper_iff_weak : ∀ {k : ℕ} [NeZero k],
+  (∃ c, OAI.EuclideanFiveColor.ProperColoring k c) ↔ ∃ c, Measurable c ∧ OAI.EuclideanFiveColor.WeakColoring k c
+@OAI.EuclideanFiveColor.algebraic_colorable_iff : ∀ {k : ℕ} [NeZero k],
+  (∃ c, OAI.PlaneFiveColor.LabelModel.Proper k c) ↔ ∃ c, OAI.EuclideanFiveColor.ProperColoring k c
+@OAI.EuclideanFiveColor.not_proper_five_coloring_compl_null : ∀ {Z : Set ℂ},
+  MeasureTheory.volume Z = 0 → ¬∃ c, ∀ x ∉ Z, ∀ y ∉ Z, ‖x - y‖ = 1 → c x ≠ c y
+---- exact: Audit6.lean
+'Audit.weakChromaticNumber_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Audit.no_weak_of_le_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+---- exact: CollapseW1.lean
+'PaletteCollapse.exists_coloring_of_palette' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaletteCollapse.six_coloring_of_palette_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaletteCollapse.five_coloring_of_palette_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaletteCollapse.exists_unit_avoiding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaletteCollapse.no_palette_five_of_no_five_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaletteCollapse.no_palette_five_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaletteCollapse.exists_coloring_of_palette' depends on axioms: [propext, Classical.choice, Quot.sound]
+== exact: PASS
+
+===== part 2: stock VM toolchain (Lean 4.33.1 + /opt/mathlib) on the ported tree in ./portlib
+---- stock: Audit3.lean
+'OAI.EuclideanFiveColor.no_proper_five_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.properColoring_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.chromaticNumber_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+OAI.EuclideanFiveColor.no_proper_five_coloring : ¬∃ c, OAI.EuclideanFiveColor.ProperColoring 5 c
+OAI.Problem160.chromaticNumber_bounds : 6 ≤ OAI.Problem160.planeChromaticNumber ∧
+  OAI.Problem160.planeChromaticNumber ≤ 7
+---- stock: Audit2.lean
+'Audit.weakColoring_seven_inhabited' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Audit.weakColoring_five_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.proper_to_borel_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.proper_to_borel_weak_algebraic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.sample_field' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.PlaneFiveColor.LabelModel.exists_label_field' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.properColoring_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.exists_measurable_proper_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.weakMeasurableColoring_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+---- stock: Audit4.lean
+'OAI.EuclideanFiveColor.properColoring_of_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.exists_properColoring_of_finset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.finite_config_proper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.proper_to_borel_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.weakMeasurableColoring_of_aemeasurable_proper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@OAI.EuclideanFiveColor.properColoring_of_weak : ∀ {k : ℕ} [NeZero k] {c : ℂ → Fin k},
+  Measurable c → OAI.EuclideanFiveColor.WeakColoring k c → ∃ d, OAI.EuclideanFiveColor.ProperColoring k d
+@OAI.EuclideanFiveColor.proper_iff_weak : ∀ {k : ℕ} [NeZero k],
+  (∃ c, OAI.EuclideanFiveColor.ProperColoring k c) ↔ ∃ c, Measurable c ∧ OAI.EuclideanFiveColor.WeakColoring k c
+@OAI.Problem160.weakMeasurableColoring_of_aemeasurable_proper : ∀ {k : ℕ} (c : OAI.Problem160.Plane → Fin k),
+  AEMeasurable c MeasureTheory.volume →
+    (∀ (x y : OAI.Problem160.Plane), dist x y = 1 → c x ≠ c y) → OAI.Problem160.WeakMeasurableColoring k
+---- stock: Audit6.lean
+'Audit.weakChromaticNumber_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Audit.no_weak_of_le_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+---- stock: CollapseW1.lean
+'PaletteCollapse.exists_coloring_of_palette' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaletteCollapse.six_coloring_of_palette_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaletteCollapse.five_coloring_of_palette_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaletteCollapse.exists_unit_avoiding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaletteCollapse.no_palette_five_of_no_five_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaletteCollapse.no_palette_five_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaletteCollapse.exists_coloring_of_palette' depends on axioms: [propext, Classical.choice, Quot.sound]
+== stock-ported: PASS
+
+===== part 3: the k=6 certificate (independent of m6 shrinking theorem)
+'InterfaceStates.tightened_sat_k6_ell3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'InterfaceStates.tightened_sat_k6_ell4' depends on axioms: [propext, Classical.choice, Quot.sound]
+== tight: PASS
+
+===== part 4: fresh-copy audit of this swarm own Lean deliverables
+---- stock: Indep.lean
+'PaletteIndep.card_ternary_le_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaletteIndep.card_ternary_le_three_union_form' depends on axioms: [propext, Classical.choice, Quot.sound]
+---- stock: Shrink.lean
+---- stock: Core.lean
+'SwarmM11.gram_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SwarmM11.no_four_points' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SwarmM11.no_measure_fixed_difference_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+---- stock: TightCore.lean
+'TightCSP.state_level_silent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TightCSP.k6_silent_three_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TightCSP.model_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TightCSP.model_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TightCSP.O5_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TightCSP.I6_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TightCSP.tight_of_plain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TightCSP.sat_tight_iff_sat_plain' depends on axioms: [propext, Classical.choice, Quot.sound]
+---- stock: M5Interface.lean
+---- stock: PaletteShrink.lean
+PaletteShrink.lean:33:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+PaletteShrink.lean:29:5: warning: Variable name `hP` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hP
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+PaletteShrink.lean:104:32: warning: Variable name `hub` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hub
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+---- stock: Tightened.lean
+'InterfaceStates.tightened_silent_at_six' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PaletteShrink.neutral_of_pair_satisfied' depends on axioms: [propext, Classical.choice, Quot.sound]
+== swarm: PASS
+
+ALL CHECKS PASSED

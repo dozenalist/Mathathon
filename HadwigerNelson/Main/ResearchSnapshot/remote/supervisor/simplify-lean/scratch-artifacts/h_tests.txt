@@ -1,0 +1,12 @@
+DECL OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt def
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 0 inst instance MeasurableSpace X
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 1 inst instance MeasurableSpace Y
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 2 inst instance MeasureTheory.IsProbabilityMeasure μ
+ERROR OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt boom
+BINDER onlyfourfields 0 X
+DECL OAI.PlaneFiveColor.Spectral.EncodingApproximationAt def
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 0 Q implicit Fin 2
+DECL OAI.PlaneFiveColor.Spectral.AmbientEncodingAt def
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 0 inst instance MeasurableSpace X
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 1 inst instance MeasurableSpace X
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 2 inst instance MeasureTheory.IsProbabilityMeasure μ

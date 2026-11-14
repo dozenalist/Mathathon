@@ -1,0 +1,31 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean	2026-11-13 19:09:13.640991340 +0000
++++ OAI/Analysis/PlaneSpectrum/Fourier.lean	2026-11-13 19:22:16.927203118 +0000
+@@ -9,9 +9,12 @@
+ variable {X : Type*} [MeasurableSpace X] (μ : Measure X)
+ def apply (f : X → ℂ) (hf : AEStronglyMeasurable f μ) {C : ℝ} (hbound : ∀ᵐ x ∂μ, ‖f x‖≤C)
+     (g : Lp ℂ 2 μ) : Lp ℂ 2 μ :=
+-  ((memLp_top_of_bound hf C hbound).fun_mul (Lp.memLp g)).toLp (fun x => f x*g x)
++  (MemLp.mul' (memLp_top_of_bound hf C hbound) (Lp.memLp g)).toLp (fun x => g x*f x)
+ lemma apply_ae (f : X → ℂ) (hf : AEStronglyMeasurable f μ) {C : ℝ} (hbound : ∀ᵐ x ∂μ, ‖f x‖≤C)
+-    (g : Lp ℂ 2 μ) : apply μ f hf hbound g =ᵐ[μ] fun x => f x*g x := MemLp.coeFn_toLp _
++    (g : Lp ℂ 2 μ) : apply μ f hf hbound g =ᵐ[μ] fun x => f x*g x := by
++  filter_upwards [MemLp.coeFn_toLp (MemLp.mul' (hpqr := ENNReal.HolderTriple.instInfty 2)
++    (memLp_top_of_bound hf C hbound) (Lp.memLp g))] with x hx
++  exact hx.trans (mul_comm _ _)
+ def linear (f : X → ℂ) (hf : AEStronglyMeasurable f μ) {C : ℝ} (hbound : ∀ᵐ x ∂μ, ‖f x‖≤C) :
+     Lp ℂ 2 μ →ₗ[ℂ] Lp ℂ 2 μ where
+   toFun := apply μ f hf hbound
+@@ -56,10 +59,10 @@
+ lemma phaseMultiplier_ae (h : ℂ) (g : ComplexPlaneL2) :
+     phaseMultiplier h g =ᵐ[volume] fun ξ => planePhase h ξ*g ξ := Multiplier.clm_ae _ _ _ _ _
+ def schwartzTranslate (h : ℂ) : SchwartzMap ℂ ℂ →L[ℂ] SchwartzMap ℂ ℂ :=
+-  SchwartzMap.compCLMOfAntilipschitz ℂ
+-    (Function.HasTemperateGrowth.id.add (Function.HasTemperateGrowth.const h)) (isometry_add_right h).antilipschitzWith
++  SchwartzMap.compSubConstCLM ℂ (-h)
+ lemma schwartzTranslate_apply (h : ℂ) (f : SchwartzMap ℂ ℂ) (x : ℂ) :
+-    schwartzTranslate h f x = f (x+h) := rfl
++    schwartzTranslate h f x = f (x+h) := by
++  simp [schwartzTranslate]
+ lemma schwartzTranslate_toLp (h : ℂ) (f : SchwartzMap ℂ ℂ) :
+     (schwartzTranslate h f).toLp 2 = planeTranslate h (f.toLp 2) := by
+   apply Lp.ext

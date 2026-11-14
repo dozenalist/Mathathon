@@ -1,0 +1,68 @@
+==============================================================================
+ANNULUS 3-COLOURING: EXACT VERIFIER
+==============================================================================
+annulus  0.99 < |z| < 1.01   (open, exact endpoints 99/100, 101/100)
+
+[1] bracket for cos 40 deg via  f(c) = 8c^3 - 6c + 1
+  PASS  c > 1/2 so f is strictly increasing there (f'(c)=24c^2-6 > 0 for c in [C_LO,C_HI])   f'(C_LO)=252567/31250
+  PASS  f(1/2) < 0 < f(1)  (unique root of f in (1/2,1))   f(1/2)=-1, f(1)=3
+  PASS  f(383/500) < 0  =>  cos 40 > 383/500   f=-5613/15625000
+  PASS  f(767/1000) > 0  =>  cos 40 < 767/1000   f=967663/125000000
+  PASS  so  C_LO < cos 40 < C_HI  (rigorous, by monotonicity of f)
+
+    1 - cos40 <= 1 - C_LO = 117/500   (exact 0.234000000000)
+    1 - cos80 >= 2 - 2*C_HI^2 = 411711/500000   (exact 0.823422000000)
+
+[2] sector combinatorics: every same-colour ordered pair (k,l), k != l
+      k=0 l=3 m=3  colour 0=0   Delta in (80.0, 160.0)    >=80? True
+      k=0 l=6 m=6  colour 0=0   Delta in (80.0, 160.0)    >=80? True
+      k=1 l=4 m=3  colour 1=1   Delta in (80.0, 160.0)    >=80? True
+      k=1 l=7 m=6  colour 1=1   Delta in (80.0, 160.0)    >=80? True
+      k=2 l=5 m=3  colour 2=2   Delta in (80.0, 160.0)    >=80? True
+      k=2 l=8 m=6  colour 2=2   Delta in (80.0, 160.0)    >=80? True
+      k=3 l=0 m=6  colour 0=0   Delta in (80.0, 160.0)    >=80? True
+      k=3 l=6 m=3  colour 0=0   Delta in (80.0, 160.0)    >=80? True
+      k=4 l=1 m=6  colour 1=1   Delta in (80.0, 160.0)    >=80? True
+      k=4 l=7 m=3  colour 1=1   Delta in (80.0, 160.0)    >=80? True
+      k=5 l=2 m=6  colour 2=2   Delta in (80.0, 160.0)    >=80? True
+      k=5 l=8 m=3  colour 2=2   Delta in (80.0, 160.0)    >=80? True
+      k=6 l=0 m=3  colour 0=0   Delta in (80.0, 160.0)    >=80? True
+      k=6 l=3 m=6  colour 0=0   Delta in (80.0, 160.0)    >=80? True
+      k=7 l=1 m=3  colour 1=1   Delta in (80.0, 160.0)    >=80? True
+      k=7 l=4 m=6  colour 1=1   Delta in (80.0, 160.0)    >=80? True
+      k=8 l=2 m=3  colour 2=2   Delta in (80.0, 160.0)    >=80? True
+      k=8 l=5 m=6  colour 2=2   Delta in (80.0, 160.0)    >=80? True
+  PASS  every same-colour DISTINCT-sector pair has Delta >= 80 deg   18 ordered pairs
+  PASS  same-sector pairs have Delta in [0,40)  (half-open, so Delta < 40)   S_k = [40k,40k+40) => separation strictly < 40
+  PASS  no same-colour pair lands in the forbidden band (40,80)
+  PASS  the two Delta-regimes are exactly [0,40) and (80,180] - they do not meet
+
+[3] CASE A  (same sector, Delta < 40 deg): want |z1-z2| < 1
+      |z1-z2|^2 <= (r1-r2)^2 + 2 r1 r2 (1-cos40)
+                <= (101/100-99/100)^2 + 2*(101/100)^2*(1-383/500) = 1194517/2500000  = 0.477806800
+  PASS  CASE A: max |z1-z2|^2 < 1   0.477807 < 1
+  PASS  CASE A: hence |z1-z2| < 1 for ALL Delta in [0,40] and all r1,r2
+
+[4] CASE B  (distinct same-colour sectors, Delta in (80,160)): want |z1-z2| > 1
+      |z1-z2|^2 = (r1-r2)^2 + 2 r1 r2 (1-cosDelta) >= 2 r1 r2 (1-cos80)
+                >= 2*(99/100)^2*(2-2*(767/1000)^2) = 4035179511/2500000000  = 1.614071804
+  PASS  CASE B: min |z1-z2|^2 > 1   1.614072 > 1
+  PASS  CASE B: hence |z1-z2| > 1 for ALL Delta in [80,180] and all r1,r2
+
+      margins:  Case A  1 - 0.477807 = 0.522193
+                Case B  1.614072 - 1 = 0.614072
+
+[5] sampling-circle containment: |x| < 0.005, |r-1| <= 0.005  =>  circle in annulus
+      reverse triangle inequality:  r - |x| <= |z| <= r + |x|
+      |z| >= r - |x| > 0.995 - 0.005 = 99/100   (strict: |x| < 0.005)
+      |z| <= r + |x| < 1.005 + 0.005 = 101/100   (strict: |x| < 0.005)
+  PASS  inner boundary: r - |x| > LOW   99/100 == 99/100, strict via |x| < 0.005
+  PASS  outer boundary: r + |x| < HIGH   101/100 == 101/100, strict via |x| < 0.005
+  PASS  unit circle (r=1) about any |x|<0.005 lies in the annulus   |z| in (0.995, 1.005) is a subset of (0.99, 1.01)
+      loss of slack caused by |x|<=0.005 and |r-1|<=0.005: 0.005 + 0.005 = 0.01,
+      which is exactly the annulus half-width 1.01 - 1.0 = 0.01, so the two margins
+      meet: the lemma is TIGHT and needs both inequalities strict.
+
+==============================================================================
+RESULT: ALL CHECKS PASS
+==============================================================================

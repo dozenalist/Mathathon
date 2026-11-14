@@ -1,0 +1,19 @@
+def OAI.EuclideanFiveColor.ProperColoring : (k : ℕ) → (ℂ → Fin k) → Prop :=
+fun k c => ∀ (x y : ℂ), Eq.{1} (norm.{0} (HSub.hSub.{0, 0, 0} x y)) 1 → Ne.{1} (c x) (c y)
+def OAI.EuclideanFiveColor.WeakColoring : (k : ℕ) → (ℂ → Fin k) → Prop :=
+fun k c =>
+  AEMeasurable.{0, 0} c MeasureTheory.volume.{0} ∧
+    ∀ᵐ (p :
+      Prod.{0, 0} ℂ
+        OAI.EuclideanFiveColor.Angles) ∂MeasureTheory.Measure.prod.{0, 0} MeasureTheory.volume.{0}
+        OAI.EuclideanFiveColor.angularMeasure,
+      Ne.{1} (c p.1) (c (HAdd.hAdd.{0, 0, 0} p.1 (OAI.EuclideanFiveColor.direction p.2)))
+def OAI.PlaneFiveColor.LabelModel.Proper : (k : ℕ) → (↥OAI.PlaneFiveColor.Spectral.E → Fin k) → Prop :=
+fun k ω =>
+  ∀ (x y : ↥OAI.PlaneFiveColor.Spectral.E), Eq.{1} (norm.{0} (HSub.hSub.{0, 0, 0} ↑x ↑y)) 1 → Ne.{1} (ω x) (ω y)
+@[reducible] def OAI.PlaneFiveColor.Spectral.E : IntermediateField.{0, 0} ℚ ℂ :=
+algebraicClosure.{0, 0} ℚ ℂ
+def OAI.Problem160.ProperColoring : ℕ → Prop :=
+fun k => ∃ c, ∀ (x y : OAI.Problem160.Plane), Eq.{1} (dist.{0} x y) 1 → Ne.{1} (c x) (c y)
+def OAI.Problem160.planeChromaticNumber : ℕ :=
+sInf.{0} (Set.ofPred.{0} fun k => OAI.Problem160.ProperColoring k)

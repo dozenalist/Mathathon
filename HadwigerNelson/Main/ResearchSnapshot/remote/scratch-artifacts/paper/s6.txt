@@ -1,0 +1,585 @@
+   Finally, for u ∈ K, covariance gives
+
+                                  ∥ Tz Vu v − Vu v∥2 = ∥ Tu−1 z v − v∥2 −→ 0.
+
+Thus rotations preserve Hc ; their inverses do as well, so its orthogonal projection commutes with
+them.
+
+Proposition 4.2 (From proper to weak measurable colorings). Let k be a positive integer. If the plane
+admits an unrestricted proper k-coloring, then it admits a weak measurable k-coloring.
+
+Proof. An invariant law on proper labelings. Restrict the given coloring to E. In the compact metriz-
+able space {1, . . . , k } E , let Ω be the closed set of proper labelings of the unit-distance graph on E.
+It is nonempty. The countable group E ⋊ K acts continuously on Ω; translations and rotations pre-
+serve the unit-edge constraints. This group is amenable, being an extension of two abelian groups
+[1, Theorem G.2.1 and Proposition G.2.2(ii)]. The Følner criterion [1, Theorem G.5.1], applied to
+successive finite subsets of this countable group, gives a finite-set Følner sequence. Averages of
+a point mass over a finite-set Følner sequence have a weakly convergent subsequence, and every
+limit is invariant. This gives an invariant Borel probability µ on Ω.
+     Let f i be the indicator that the origin has label i. Choose the translation convention so Tz f i is
+the indicator of label i at z. The rotations about the origin fix each f i , and properness gives
+                                 Z
+                                         f i Tu f i dµ = 0       (u ∈ K, 1 ≤ i ≤ k).                  (4.1)
+                                     Ω
+
+The continuous factor and zero correlations. Use Lemma 4.1 to write
+
+                                         p i = E( f i | F c ),      bi = f i − p i .
+
+Then 0 ≤ pi ≤ 1 and ∑i pi = 1. Both pi and bi are rotation-fixed. The scalar translation spectral
+measure of bi is K-invariant: covariance gives equality of its Fourier coefficients at z and uz, and
+Fourier uniqueness gives invariance of the measure. It gives C measure zero, by the spectral-
+subspace assertion of the lemma. If it is nonzero, normalize it and apply Theorem 2.3. The scalar
+spectral measure is therefore a multiple of Haar measure, including the zero multiple. It follows
+that
+                                 ⟨bi , Tz bi ⟩ = 0  (z ∈ E \ {0}).
+The subspace Hc and its orthogonal complement are translation invariant, so both cross terms in
+(4.1) vanish. Consequently      Z
+                                                pi Tu pi dµ = 0        ( u ∈ K ).
+                                            Ω
+The algebraic unit directions are dense in the usual unit circle, as is seen already from the rational
+tangent-half-angle parametrization. Strong continuity of the extended operators therefore gives
+this identity for every usual unit direction u ∈ S1 . For every x ∈ R2 , unitarity and the group law
+then give              Z
+                            ( Tx pi )( Tx+u pi ) dµ = ⟨ Tx pi , Tx Tu pi ⟩ = ⟨ pi , Tu pi ⟩ = 0.      (4.2)
+                        Ω
+The functions here are nonnegative equivalence classes. This calculation uses no pointwise real-
+ization or multiplicativity of the extended R2 action.
+A measurable sample. The continuous map x 7→ Tx pi takes values in the separable space L2 (µ).
+On a bounded spatial domain, approximate it by finite-valued simple maps in the L2 (µ) norm,
+
+                                                             24
+choosing the integrals of their squared approximation errors to be summable. Choose measurable
+representatives for their finitely many values. The resulting jointly measurable functions converge
+in the product L2 space. A subsequence converges in L2 (µ) for almost every x, so its product-
+space limit represents Tx pi at almost every x. Applying this on a countable exhaustion, or on its
+disjoint measurable annuli, gives a jointly measurable field Hi ( x, ω ) on R2 × Ω, correct as an L2 (µ)
+representative for almost every x. Since the probability model is standard, Borel versions may be
+used. Taking real parts and clamping each Hi to [0, 1] preserves this representation property and
+makes all the fields everywhere nonnegative.
+    There is a plane-null set N outside which all these representations are correct. For almost every
+x, their sum is one for µ-almost every ω. Moreover, on every bounded spatial domain,
+                               Z Z                           
+                                     1 N ( x ) + 1 N ( x + u) dσ (u) dx = 0.
+                                         S1
+The assertion about x + u follows by translation invariance of Lebesgue measure for each fixed u,
+followed by Fubini. Thus (4.2) applies to the chosen representatives for almost every pair ( x, u).
+Tonelli gives, for every positive integer m,
+                      Z      k   Z        Z
+                            ∑
+                          Ω i =1 B(0,m)       S1
+                                                   Hi ( x, ω ) Hi ( x + u, ω ) dσ (u) dx dµ(ω ) = 0.
+
+Choose one sample ω for which all the inner integrals vanish, and for which ∑i Hi ( x, ω ) = 1 for
+almost every x. There are only countably many conditions here. At every point where the sum is
+one, assign the least index with positive field; on the remaining plane-null set assign any index.
+This is measurable. A same-color pair outside that null set would have positive product of the
+corresponding fields, which occurs only on a dx dσ(u)-null set. Hitting the spatial exceptional set
+at either endpoint is also a product-null event. This proves the weak measurable condition.
+
+4.2   Density points and the converse transfer
+The next argument is a version of the density-point method used by Falconer [8] and Payne [22,
+Lemma 1 and Proposition 1]. Here the hypothesis excludes unit pairs only in product measure, so
+we first show directly that density-one points still form independent sets.
+Lemma 4.3 (Density-point properness). In a weak measurable k-coloring with classes A1 , . . . , Ak , the
+full-density-point set of each Ai contains no unit pair. These density-point sets are disjoint and their union
+is conull.
+Proof. Suppose x and y = x + u, with |u| = 1, both have density one of Ai . For h > 0 small, choose
+x ′ uniformly in B( x, h) and independently choose u′ uniformly on an arc of positive angular mea-
+sure satisfying |u′ − u| < h. Density at x gives P( x ′ ∈
+                                                        / Ai ) = o (1) as h ↓ 0. The distribution of
+  ′    ′
+x + u is a mixture of translated uniform disk distributions. Its density is bounded by 1/(πh2 ),
+and its support is in B(y, 2h). Therefore
+                                                   | B(y, 2h) \ Ai |
+                                     P( x ′ + u ′ ∈
+                                                  / Ai ) ≤           = o (1).
+                                                         πh2
+For small h the probability that both points lie in Ai is positive. But the pair-parameter distribution
+is absolutely continuous with respect to dx dσ (u), and the two points have distance one. This
+contradicts the weak condition.
+    Lebesgue differentiation makes the union of the density-point sets conull. Two different color
+classes, being disjoint up to null sets, cannot both have density one at the same point, so these sets
+are disjoint.
+
+                                                                25
+Proof of Theorem 1.3. The forward implication is Proposition 4.2. For the reverse implication,
+Lemma 4.3 gives a conull set partitioned into strictly unit-independent density-point classes. Any
+fixed finite configuration of plane points has a translate entirely inside that conull set: the permis-
+sible translation vectors are a finite intersection of conull sets. Its unit-distance graph therefore
+has a proper k-coloring.
+    In the compact product space {1, . . . , k }R , each unit-edge condition is closed and depends on
+                                                 2
+
+
+two coordinates. Every finite family of these conditions involves a finite configuration and is sat-
+isfiable by the preceding paragraph. The finite intersection property, using product compactness
+in ZFC, produces a coloring satisfying every unit-edge condition. This is the graph compactness
+principle of [4, Theorem 1]; the argument just given specifies its application to the unrestricted
+plane. It proves (1.1).
+
+
+5     Circle palettes and their cardinality
+We now assume a weak measurable five-coloring and develop angular palettes at every center.
+Their labels record all possible limiting circle samples. The main result of this section is that
+almost every palette contains at most two labels, at every fixed center. We obtain this bound from
+exclusions between circle samples and a separation property for centers whose palettes meet one
+fixed pair of labels.
+
+5.1   Typical samples, traces, and maximal palettes
+For this section and the subsequent contradiction, the label set is {1, . . . , 5}; write Ai for the classes,
+ai = 1 Ai , and c for the coloring. We choose Borel representatives forming a partition. Changing a
+coloring on a plane-null set leaves the weak condition unchanged, because that set is hit at either
+endpoint only on a dx dσ (u)-null set.
+    Call a point typical if it has density one of its actual color. Typical points form a conull set. By
+Lemma 4.3, any unit pair of typical points has different colors. The same lemma applies to two
+density-one points of a class regardless of the values assigned to the coloring at those individual
+points. For each label let
+
+                           Hi = {q ∈ R2 : | Ai ∩ B(q, r )| > 0 for every r > 0}
+
+be its closed spatial essential support.
+    Let S = S1 carry uniform angular probability σ. Let R denote rotation by κ = π/3, and J
+rotation by π/2. We identify unit directions with angles modulo 2π. Two directions are called
+parallel if they are equal or opposite; all angular density and essential-support statements refer to
+angular Lebesgue measure.
+    Call (y, r ), with y ∈ R2 and r > 0, a typical circle sampling if y + re is typical for almost every
+e ∈ S. For each fixed r, this holds for almost every y by Fubini and translation invariance of plane
+measure. For each fixed y, it holds for almost every r > 0 by polar coordinates and Fubini.
+
+Definition 5.1 (Circle traces and maximal palettes). For each fixed center x, let W x be the family
+of vector functions in L∞ (S; R5 ) that can be obtained as
+
+                        b = w∗ − lim ( ai (yn + rn e))5i=1 ,    yn → x,    rn → 1,
+                                   n→∞
+
+
+
+
+                                                      26
+where every (yn , rn ) is a typical circle sampling. Constant sequences are permitted. For a label i,
+form the essential measurable union
+                                     Dx,i = ess union{e : bi (e) > 0}.
+                                                 b∈W x
+
+The maximal palette is the measurable set-valued function
+                                           Px (e) = {i : e ∈ Dx,i },
+defined up to angular null sets.
+    Here are the compactness and countability facts in this definition. Typical samplings with
+radius one can be chosen at centers approaching any prescribed x. Their bounded vectors have
+weak-* convergent subsequences, since L1 (S) is separable and the bounded ball of its dual is weak-
+* compact and metrizable. Thus W x is nonempty. Every b ∈ W x has nonnegative coordinates and
+∑i bi = 1 almost everywhere, since these assertions pass to a weak-* limit by integration against
+nonnegative test functions.
+    The family also has the following closure under varying centers:
+                           xn → x,     b n ∈ W xn ,      bn ⇀∗ b   =⇒      b ∈ Wx .                       (5.1)
+To see this, fix a metric for the bounded-ball weak-* topology. From a sequence realizing bn , choose
+one sample within 1/n of bn in that metric, with center within 1/n of xn and radius within 1/n of
+one. These chosen samples realize b at x. In particular W x is compact.
+    For completeness, the essential union for a fixed label can always be taken over a countable
+subfamily. Let Mi be the supremum of the measures of finite unions of the sets {bi > 0}. Choose
+finite unions approaching Mi , and let Dx,i be their countable union. Its measure is Mi . If another
+member {bi > 0} had positive measure outside this union, adjoining it to sufficiently large finite
+partial unions would contradict the definition of Mi . This proves that every individual trace has its
+positive coordinates in the palette almost everywhere. It also gives nonemptiness of Px (e) almost
+everywhere, by using any one trace and its sum-one property.
+    The null set in the last assertion may depend on the individual trace, and the angular null sets
+may depend on x. We shall use countable generating trace families whenever a conclusion is to be
+asserted for the whole palette. No joint measurability of Px in its center is assumed.
+
+5.2   Exclusion, density, and smooth transport
+Lemma 5.2 (Palette transfer). The following assertions hold at every fixed center x.
+   1. For almost every independent-angle pair (e, v) ∈ S × S,
+                                           c( x + e + v) ∈
+                                                         / Px (e) ∪ Px (v).                               (5.2)
+
+   2. If e is an angular density-one point of Dx,i = {e′ : i ∈ Px (e′ )}, then for each v nonparallel to e, the
+      spatial density of Ai at x + e + v is zero.
+   3. Let z be any fixed center, possibly z = x. Suppose on an open angular arc, or locally on a union of
+      such arcs, there is a smooth representation
+                                  z + f = x + s ( f ) + t ( f ),   s( f ), t( f ) ∈ S,
+      with s( f ), t( f ) nonparallel and s a local diffeomorphism in the angular coordinate. Then almost
+      everywhere on that domain,
+                                               Pz ( f ) ∩ Px (s( f )) = ∅.                           (5.3)
+
+                                                         27
+Each assertion permits an exceptional angular set depending on the fixed centers and on the specified maps.
+Proof. Fix b ∈ W x , with realizing samplings (yn , rn ). For every n, the point yn + rn e is typical for
+almost every e. The second point yn + rn e + v is typical for almost every pair (e, v): in angular
+coordinates the map
+                                       Gn (e, v) = yn + rn e + v
+has Jacobian of absolute value rn |sin(arg v − arg e)|, which is nonsingular off a product-null set.
+On countably many smaller coordinate patches away from that set, change of variables pulls back
+any plane-null set to a product-null set. The two typical points have distance one. Lemma 4.3
+therefore gives
+                     ai (yn + rn e) ai (yn + rn e + v) = 0 for almost every (e, v).            (5.4)
+   We need the following strong convergence for the second factor:
+
+                          ai (yn + rn e + v) −→ ai ( x + e + v)            in L1 (S × S).             (5.5)
+
+Here is a change-of-variables proof which also covers arbitrary measurable color boundaries. For
+δ > 0, discard the angular pairs with |sin(arg v − arg e)| ≤ δ. Their measure tends to zero with δ.
+On the remaining set, for large n, the Jacobian is bounded below by δ/2. The multiplicity of Gn
+there is at most two: an inverse image of a specified sum amounts to an intersection of the circle
+of radius rn with a translated circle of radius one. A coincident-circle case can occur only at the
+antiparallel, hence discarded, directions. The same assertions hold for G (e, v) = x + e + v. Their
+images lie in one fixed compact plane region for all large n.
+    It follows that on the retained angular set the pushforwards of angular product measure have
+densities bounded by a constant depending only on δ, uniformly in n. Approximate ai on a com-
+pact neighborhood of those images by a continuous function taking values in [0, 1], in plane L1 .
+The density bounds control its composition errors uniformly. For the continuous approximant the
+compositions converge uniformly, since yn → x and rn → 1. First making the approximation error
+small, then letting n → ∞, and finally letting δ ↓ 0, proves (5.5).
+    Set Bn (e) = ai (yn + rn e) and Q(e, v) = ai ( x + e + v). The error in replacing the second factor of
+(5.4) by Q, after integration,   is at most the L1 error in (5.5). Weak-* convergence of Bn then applies
+               1
+                         R
+to the fixed L (S) test S Q(e, v) dσ (v). We obtain
+                                Z
+                                          bi (e) ai ( x + e + v) dσ (e) dσ (v) = 0.
+                                    S×S
+
+Both factors are nonnegative, so their product is zero almost everywhere. Taking the countable
+generating trace families in Definition 5.1, for all five labels, proves exclusion of Px (e). Inter-
+changing e, v proves exclusion of Px (v), and gives (5.2). In particular this passage used a strongly
+convergent factor against a weak-* limit, not a product of two weak-* limits.
+   Next fix an angular density-one point e of Dx,i and any nonparallel direction v. The map
+
+                                              (e′ , v′ ) 7−→ x + e′ + v′
+
+is a smooth local diffeomorphism near (e, v). Choose real angular coordinates near e, v and an
+inverse branch on a plane neighborhood of x + e + v. For small h, the inverse image under this
+branch of B( x + e + v, h) lies in a product of angular intervals of length O(h) about e, v, and its
+change-of-variables factors are bounded. On this branch, (5.2) implies that a point of Ai has first
+coordinate outside Dx,i , apart from a spatial null set. Therefore
+
+                     | Ai ∩ B( x + e + v, h)| ≤ Ch |[e − Ch, e + Ch] \ Dx,i | = o (h2 ).
+
+                                                          28
+The constants can depend on the fixed nonparallel pair. This establishes assertion 2 for each such
+v. It is a two-dimensional neighborhood argument and does not restrict (5.2) to a possibly excep-
+tional single-angle fiber.
+    Finally fix the centers and representation in assertion 3, and work first on a smaller compact
+arc on which one inverse branch of the two-angle sum map is available. Let a trace b ∈ Wz be
+realized by (zn , rn ). Applying this inverse branch to zn + rn f − x gives perturbed representations
+
+                                         z n + r n f = x + s n ( f ) + t n ( f ),
+
+where sn , tn are nonparallel and converge to s, t in C1 on the smaller arc. Shrinking the arc if nec-
+essary, s is a diffeomorphism with derivative bounded away from zero, and the sn have uniformly
+bounded inverse derivatives for large n.
+   For Di = Dx,i , these facts imply
+
+                           1 Di (sn ( f )) −→ 1 Di (s( f ))       in L1 on the smaller arc.              (5.6)
+
+To verify it, approximate 1 Di on a common image interval by a continuous function in angular
+L1 . Change of variables and the inverse-derivative bounds control the errors of composition uni-
+formly for sn and for s. Uniform convergence of sn handles the continuous approximant.
+     Almost every f with sn ( f ) ∈ Di has sn ( f ) a density-one point of Di . Indeed the set of excep-
+tions in Di is angular null by differentiation, and sn pulls it back to a null set. Assertion 2 makes
+the density of Ai at zn + rn f zero for all these f . The sampling (zn , rn ) is typical on its circle, so for
+almost every such f its actual color cannot be i. Consequently
+
+                 ai (zn + rn f )1 Di (sn ( f )) = 0   almost everywhere on the smaller arc.
+
+Use (5.6) to replace the second factor strongly in L1 , and then use weak-* convergence of the first
+factor. Nonnegativity gives
+
+                                 bi ( f )1 Di (s( f )) = 0    almost everywhere.
+
+Taking a countable generating family of traces at z and the five labels proves (5.3) on this arc. A
+countable cover by smaller arcs proves it on the stated domain.
+
+Remark 5.3. In assertion 3 of Lemma 5.2, the second endpoint map t may be constant. Nonparallel-
+ness makes the two-dimensional sum map invertible, while the local diffeomorphism requirement
+on s alone controls preimages of angular null sets. In particular, for any fixed direction a, the rep-
+resentation
+                                     ( x + a) + f = x + f + a
+is admissible off f = ± a. The proof applies at every fixed pair of centers and never needs a
+common exceptional angular set over an uncountable family of centers.
+
+Corollary 5.4 (Sixty-degree exclusion). At every fixed center x,
+
+                              Px ( f ) ∩ Px ( R f ) = ∅           for almost every f ∈ S.                (5.7)
+
+Proof. Use x + f = x + R f + R−1 f in Lemma 5.2. The endpoint directions are nonparallel and the
+first endpoint map is a rotation.
+
+
+
+
+                                                             29
+5.3   Separation of binary centers
+Fix two distinct labels i+ , i− . Call a center x binary for {i+ , i− } if
+
+                             Px (e) ∩ {i+ , i− } ̸= ∅         for almost every e ∈ S.
+
+The exclusion (5.7) makes this intersection a singleton almost everywhere. Indeed, at almost every
+e, the intersections at e and Re are nonempty disjoint subsets of a two-element set; they must
+therefore be the two different singletons. Thus there is a unique measurable selection from this
+pair, up to a null set, and it alternates under R. Conversely, the existence of an alternating selection
+from the pair plainly implies the displayed intersection condition.
+    Write this selection as a measurable 2π-periodic sign function s x : R → {−1, 1}, assigning the
+signs +1, −1 to i+ , i− respectively and choosing arbitrary values on the exceptional null set. With
+κ = π/3, it satisfies
+                                s x (t + κ ) = −s x (t) for almost every t.                         (5.8)
+In particular, either sign occupies angular measure π in a period.
+
+Lemma 5.5 (Binary-center separation). There is an absolute constant δ∗ > 0 such that, for every fixed
+pair of labels, any two distinct centers binary for that pair are at distance at least δ∗ .
+
+Proof. Suppose that x, y are distinct binary centers for the same pair, and put d = |y − x |. We will
+derive a contradiction whenever 0 < d < δ∗ , with δ∗ chosen below independently of the coloring,
+the pair, and the centers. Rotate angular coordinates so that y − x = d lies on the positive real axis.
+The maps forced by palette transport. For d < 1/2, the vector d + eit has length strictly between zero
+and two. Define real lifts
+                                   Θd (t) = t + Im log(1 + de−it ),
+                                   α± (t) = Θd (t) ± arccos |d + eit |/2 ,
+                                                                        
+
+where the logarithm is the branch near 1. These formulas give the exact representation
+
+                                        y + eit = x + eiα+ (t) + eiα− (t) .
+
+Its two unit directions are nonparallel. Their angular difference is twice an angle strictly between
+zero and π/2, and stays away from both parallel cases for sufficiently small d.
+     The functions α± are smooth degree-one lifts: α± (t + 2π ) = α± (t) + 2π. Their derivatives
+converge uniformly to 1 as d → 0, so for small d they induce orientation-preserving circle diffeo-
+morphisms. We may therefore apply Lemma 5.2 locally, with either endpoint as its first direction,
+and cover the angular circle by finitely many such domains. It follows that
+
+                             Py (eit ) ∩ Px (eiα± (t) ) = ∅      for almost every t.
+
+Both binary selections belong to the same fixed pair of labels. Consequently,
+
+                         s x (α+ (t)) = s x (α− (t)) = −sy (t)       for almost every t.
+
+Since α− is nonsingular for angular Lebesgue measure, s x is invariant almost everywhere under
+H = α+ ◦ α−  1
+           − .
+   By (5.8), s x is also invariant under translation by 2κ. Define
+
+                      F (t) = H (t) − 2κ,        Fj (t) = jκ + F (t − jκ ),     0 ≤ j ≤ 5.
+
+                                                         30
+Then s x ◦ F = s x almost everywhere. More generally, (5.8) gives s x (t + jκ ) = (−1) j s x (t) almost
+everywhere, and hence
+
+                       s x ( Fj (t)) = (−1) j s x ( F (t − jκ )) = (−1)2j s x (t) = s x (t)
+
+almost everywhere. The changes of variables in these identities are legitimate because all the maps
+involved are diffeomorphisms.
+Uniform expansions of the six maps. For a periodic function, an OC2 (d2 ) remainder means that its
+value and its first two derivatives in t are bounded by a fixed constant times d2 , uniformly in t.
+Taylor expansion gives
+
+                      Im log(1 + de−it ) = −d sin t + OC2 (d2 ),
+                                  |d + eit | = 1 + d cos t + OC2 (d2 ),
+                                                                  d
+                                    α± (t) = t ± κ − d sin t ∓ √ cos t + OC2 (d2 ).
+                                                                   3
+All the bounds are uniform: the logarithm, square root, and arccosine in these formulas range in
+fixed smooth domains for d < 1/2. The inverse maps also depend smoothly on d, with uniformly
+bounded derivatives on a period.
+    For the composition, put
+                                                      1
+                                   a± (t) = − sin t ∓ √ cos t.
+                                                       3
+Then
+                                 α− 1                                      2
+                                  − ( t ) = t + κ − da− ( t + κ ) + OC2 ( d ),
+
+and therefore
+
+                           F ( t ) = t + d a + ( t + κ ) − a − ( t + κ ) + OC 2 ( d 2 )
+                                                                        
+
+                                          2d
+                                   = t − √ cos(t + κ ) + OC2 (d2 )
+                                           3                                                      (5.9)
+                                          2d
+                                   = t + √ sin(t − π/6) + OC2 (d2 ).
+                                           3
+Thus
+                                          2d
+                             Fj (t) = t + √ sin(t − jκ − π/6) + OC2 (d2 ).
+                                           3
+Among
+√      six phases spaced by π/3, the maximum sine and the maximum cosine are each at least
+  3/2. Absorbing the quadratic remainders, we obtain absolute constants c0 , C0 , d1 > 0, with
+d1 < 1/2, such that whenever 0 < d < d1 , for every t,
+
+                                             max ( Fj (t) − t) ≥ c0 d,
+                                            0≤ j ≤5
+
+                                                      max Fj′ (t) ≥ 1 + c0 d,                    (5.10)
+                                                   0≤ j ≤5
+
+                     | Fj (t) − t|,   | Fj′ (t) − 1|,    | Fj′′ (t)| ≤ C0 d     (0 ≤ j ≤ 5).
+
+The map attaining the first maximum need not attain the second. We will use the derivative
+maximum to enlarge small intervals, and the displacement maximum later to extend a conull
+interval.
+
+                                                          31
+   Choose once and for all
+
+                 0 < L ≤ min{c0 /C0 , π/4},              δ∗ = min{d1 , (2C0 )−1 , L/(2C0 )},
+
+and assume 0 < d < δ∗ . In particular every Fj and its inverse is Lipschitz, since
+
+                                                 1        3
+                                                   ≤ Fj′ ≤ .
+                                                 2        2
+Enlarging density intervals with bounded distortion. This is an adaptation of Sullivan’s expanding-
+action and bounded-distortion strategy; see Deroin–Kleptsyn–Navas [6, Section 2.1]. The argu-
+ment below replaces the usual minimality step by explicit small-displacement overlap propaga-
+tion when extending the conull interval. Let
+
+                                       A = { t ∈ R : s x ( t ) = 1}.
+
+It is measurable and 2π-periodic, and has measure π in every period. The identities already
+proved say that Fj−1 ( A) and A differ by a null set. Because Fj and its inverse preserve null sets, the
+same holds for Fj ( A) and A, and for every finite composition of the maps. There is no difficulty
+from choosing the compositions adaptively: there are only countably many finite words in the six
+maps and their inverses. Equivalently, one may discard the union of the images of the finitely
+many exceptional null sets under this countable group, obtaining a common invariant conull set
+on which all the membership identities hold.
+    Take an interval I0 of positive length ℓ0 < L. Given Ir with length ℓr < L, choose Fjr whose
+derivative at the midpoint of Ir is at least 1 + c0 d, and put Ir+1 = Fjr ( Ir ). For every t ∈ Ir ,
+
+                                                     1            1
+                                Fj′r (t) ≥ 1 + c0 d − C0 dℓr ≥ 1 + c0 d.
+                                                     2            2
+Writing λ = 1 + c0 d/2 > 1, we therefore have ℓr+1 ≥ λℓr . The process stops after finitely many
+steps, at the first N for which ℓ N ≥ L, and
+
+                                            L ≤ ℓ N ≤ (1 + C0 d) L.
+
+   Let G = FjN −1 ◦ · · · ◦ Fj0 . For each elementary map,
+
+                                                           Fj′′
+                                      |(log Fj′ )′ | =            ≤ 2C0 d.
+                                                           Fj′
+
+Applying the chain rule at two points of I0 , whose images before step r lie in Ir , gives
+                                                                   N −1
+                                      osc I0 log G ′ ≤ 2C0 d ∑ ℓr .
+                                                                   r =0
+
+The geometric growth bounds the sum independently of N:
+                                    N −1             N
+                                                                      ℓN
+                                     ∑ ℓr ≤ ℓ N ∑ λ − q ≤            λ−1
+                                                                         .
+                                     r =0           q =1
+
+Consequently,
+                                                  4C0 (1 + C0 d) L   6C0 L
+                               osc I0 log G ′ ≤                    ≤       .                      (5.11)
+                                                         c0           c0
+
+                                                      32
+In particular,
+                            sup I0 G ′
+                                           ≤ Ddist ,     Ddist = exp(6C0 L/c0 ),
+                             inf I0 G ′
+uniformly in the initial interval, the number of steps, and 0 < d < δ∗ .
+   The invariance of A, together with preservation of null sets, implies that G ( I0 ) \ A and G ( I0 \
+A) differ by a null set. Change of variables and the distortion bound therefore give
+
+                            | IN \ A|   sup I0 G ′ | I0 \ A|         | I0 \ A|
+                                      ≤          ′
+                                                             ≤ Ddist           .
+                               | IN |   inf I0 G      | I0 |            | I0 |
+This is the only measure comparison needed; the maps need not preserve Lebesgue measure.
+    Since A has positive measure, choose a Lebesgue density point of A and a sequence of centered
+intervals shrinking to it. Their relative complements in A tend to zero. Apply the construction to
+each interval. The resulting intervals Jn have lengths in [ L, (1 + C0 d) L], and
+
+                                                 | Jn \ A| −→ 0.
+
+Translate Jn by an integer multiple of 2π so that its left endpoint lies in [0, 2π ). This leaves the
+preceding measure statement unchanged. Passing to a subsequence, their two endpoints converge
+to those of an interval J = [ a, b] of length at least L. Endpoint convergence gives | Jn △ J | → 0, and
+hence
+                                    | J \ A| ≤ | J △ Jn | + | Jn \ A| −→ 0.
+We have obtained an interval of fixed positive length on which A is conull.
+Extending a conull interval. Suppose A is conull on [ a, b], with b − a ≥ L. By the first inequality in
+(5.10), choose j so that
+                                          Fj (b) ≥ b + c0 d.
+The image Fj ([ a, b]) is also conull in A. Moreover,
+
+                                          Fj ( a) ≤ a + C0 d < a + L ≤ b.
+
+Thus this image overlaps [ a, b], and their union contains [ a, Fj (b)], on which A is conull. Its right
+endpoint has advanced by at least c0 d. This argument concerns geometric endpoints only; no
+membership in A is asserted at either endpoint.
+    Repeat, retaining the left endpoint a. After finitely many steps the conull interval has length
+at least 2π. Periodicity then forces A to have full measure in a period, contrary to the measure π
+forced by (5.8). This contradiction excludes 0 < |y − x | < δ∗ and proves the lemma.
+
+5.4   At most two labels in an angular palette
+Proposition 5.6 (Palette cardinality). For every center x ∈ R2 ,
+
+                              1 ≤ | Px (e)| ≤ 2         for almost every e ∈ S.                   (5.12)
+
+The angular exceptional set may depend on x.
+Proof. Nonemptiness follows from any one trace in W x , whose coordinates are nonnegative and
+sum to one. Suppose the upper bound fails on a positive-measure set of angles. There are only
+finitely many triples of labels, so some fixed triple A ⊂ {1, . . . , 5} is contained in Px (e) on a
+positive-measure angular set B.
+
+                                                        33
+      By (5.2) and Fubini, for almost every e ∈ B, the actual coloring on the circle
+
+                                                v 7−→ x + e + v
+
+uses only the complementary pair {1, . . . , 5} \ A almost everywhere. For almost every such e, this
+exact radius-one circle sampling is also typical. Indeed the map (e, v) 7→ x + e + v is nonsingular
+off a product-null set, so the inverse image of the plane-null set of atypical points is product-null;
+Fubini then gives the asserted slices.
+    For each of these e, the actual sampling at center x + e, radius exactly one, is itself a trace in
+W x+e , using a constant sequence. Its coordinates sum to one and are supported in the complemen-
+tary pair. Hence the maximal palette at x + e intersects that pair almost everywhere. By (5.7), it
+has a unique member of the pair almost everywhere, alternating at an R-step. Thus x + e is binary
+for that same fixed pair, even if other traces add further labels to the maximal palette.
+    The good angles still have positive measure, so they give infinitely many distinct binary centers
+on the compact circle x + S. Lemma 5.5 makes these centers uniformly separated. A uniformly
+separated subset of a compact metric space is finite, by a finite cover with sufficiently small balls.
+This contradiction proves the upper bound.
+
+
+6     Transitions and local finiteness of cyclic centers
+Continue to assume that a weak measurable five-coloring is given, with the notation and null-set
+conventions of Section 5. Write I for the five-element label set. As before, Hi is the closed spatial
+essential support of Ai , and Px is defined at every center x, modulo angular null sets. We first use
+transitions between two colors to obtain circle traces that avoid both labels. The resulting angular
+restrictions show that centers whose transition graphs contain a cycle form a locally finite set. In
+Section 7 we construct a continuous graph-valued map on a square after removing small disks
+about these centers.
+
+6.1     Transition graphs and avoiding traces
+For distinct i, j ∈ I , a bounded ball B ⊂ R2 , and h ∈ R2 , define
+
+                         Dij ( B, h) = {q ∈ B : (c(q), c(q + h)) ∈ {(i, j), ( j, i )}} ,
+
+where vertical bars on a plane set denote Lebesgue area. The second endpoint q + h is not re-
+quired to belong to B. The normalization by |h| below is chosen to match the circle-averaging
+estimate used in Lemma 6.2: transition sets of area comparable to |h| will yield traces avoiding
+both endpoint labels.
+Definition 6.1 (Transition graph). For x ∈ R2 , let Γ x be the simple graph on I in which ij is an
+edge precisely when, for every ball B centered at x with positive finite radius,
+
+                                                       Dij ( B, h)
+                                           lim sup                 > 0.                          (6.1)
+                                              h →0         |h|
+                                              h ̸ =0
+
+    For each fixed pair ij, its edge-presence locus is closed. Indeed, a ball centered at a limit of
+points of that locus contains a smaller ball centered at one of those points, and Dij is monotone in
+its ball argument. Moreover,
+                                    ij ∈ Γ x =⇒ x ∈ Hi ∩ Hj .
+
+                                                        34
+

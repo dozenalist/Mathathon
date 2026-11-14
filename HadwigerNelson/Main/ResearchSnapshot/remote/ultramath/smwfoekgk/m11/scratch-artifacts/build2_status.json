@@ -1,0 +1,152 @@
+{
+"OAI.Analysis.PlaneSpectrum.Basic": {
+"ok": true,
+"secs": 118.2,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:73:0: warning: \n'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by\n\nimport Mathlib.Basic.Real.Basic\n"
+},
+"OAI.Analysis.PlaneSpectrum.Characters": {
+"ok": false,
+"secs": 56.4,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/Characters.lean:92:13: error(lean.unknownIdentifier): Unknown constant `Real.cos_le_one_sub_mul_cos_sq`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/Characters.lean:89:59: error: unsolved goals\nz : Circle\nha : |(\u2191z).arg| \u2264 Real.pi\n\u22a2 2 / Real.pi * |(\u2191z).arg| \u2264 \u2016\u2191z - 1\u2016\n"
+},
+"OAI.Analysis.PlaneSpectrum.Fourier": {
+"ok": true,
+"secs": 160.7,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:65:0: warning: \n'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by\n\nimport Mathlib.Basic.Real.Basic\n"
+},
+"OAI.Geometry.PlaneColoring.Coloring": {
+"ok": true,
+"secs": 158.3,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Geometry/PlaneColoring/Coloring.lean:30:0: warning: \n'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by\n\nimport Mathlib.Basic.Real.Basic\n"
+},
+"OAI.Analysis.PlaneSpectrum.CircleDecay": {
+"ok": false,
+"secs": 90.1,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/CircleDecay.lean:109:41: error(lean.unknownIdentifier): Unknown constant `Real.pi_gt_three`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/CircleDecay.lean:216:45: error(lean.unknownIdentifier): Unknown constant `Real.pi_gt_three`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/CircleDecay.lean:228:26: error(lean.unknownIdentifier): Unknown constant `Real.pi_lt_four`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/CircleDecay.lean:230:44: error(lean.unknownIdentifier): Unknown constant `Real.pi_gt_three.le`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/CircleDecay.lean:237:13: error(lean.unknownIdentifier): Unknown constant `Real.pi_gt_three`\n"
+},
+"OAI.Geometry.PlaneColoring.WeakColoring": {
+"ok": false,
+"secs": 51.7,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Geometry/PlaneColoring/WeakColoring.lean:16:25: error(lean.invalidField): Invalid field `compMeasurePreservingLp`: The environment does not contain `Continuous.compMeasurePreservingLp`, so it is not possible to project the field `compMeasurePreservingLp` from an expression\n  continuous_const\nof type\n  Continuous[?m.99, ?m.100] fun x => ?m.101\n"
+},
+"OAI.Geometry.PlaneColoring.Compactness": {
+"ok": false,
+"secs": 18.1,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Geometry/PlaneColoring/Compactness.lean:19:27: error(lean.unknownIdentifier): Unknown constant `WeakDual.isCompact_closedBall`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Geometry/PlaneColoring/Compactness.lean:21:46: error(lean.unknownIdentifier): Unknown constant `WeakDual.metrizable_of_isCompact`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Geometry/PlaneColoring/Compactness.lean:51:8: error(lean.unknownIdentifier): Unknown identifier `ae_nonneg_of_forall_setIntegral_nonneg`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Geometry/PlaneColoring/Compactness.lean:52:8: error: No goals to be solved\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Geometry/PlaneColoring/Compactness.lean:136:26: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  TopologicalSpace.SeparableSpace \u21a5(RealL2 angularMeasure)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Geometry/PlaneColoring/Compactness.lean:136:9: error: Tactic `rcases` failed: `x\u271d : ?m.95` is not an inductive datatype\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Geometry/PlaneColoring/Compactness.lean:160:68: error(lean.unknownIdentifier): Unknown constant `WeakDual.isCompact_closedBall`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Geometry/PlaneColoring/Compactness.lean:162:2: error(lean.unknownIdentifier): "
+},
+"OAI.Analysis.PlaneSpectrum.CircleOperator": {
+"ok": false,
+"secs": 13.3,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:11:25: error(lean.invalidField): Invalid field `compMeasurePreservingLp`: The environment does not contain `Continuous.compMeasurePreservingLp`, so it is not possible to project the field `compMeasurePreservingLp` from an expression\n  continuous_const\nof type\n  Continuous[?m.100, ?m.101] fun x => ?m.102\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:104:35: error(lean.unknownIdentifier): Unknown constant `Real.pi_lt_four`\n"
+},
+"OAI.Analysis.PlaneSpectrum.InvariantMean": {
+"ok": false,
+"secs": 18.2,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:104:0: warning: \n'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by\n\nimport Mathlib.Basic.Real.Basic\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:610:71: error(lean.invalidField): Invalid field `integrable`: The environment does not contain `BoundedContinuousFunction.integrable`, so it is not possible to project the field `integrable` from an expression\n  BoundedContinuousFunction.mkOfCompact f\nof type `UnitAddCircle \u2192\u1d47 \u2102`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:611:54: error(lean.invalidField): Invalid field `integrable`: The environment does not contain `BoundedContinuousFunction.integrable`, so it is not possible to project the field `integrable` from an expression\n  BoundedContinuousFunction.mkOfCompact h\nof type `UnitAddCircle \u2192\u1d47 \u2102`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:617:50: error(lean.invalidField): Invalid field `norm_integral_le_norm`: The environment does not contain `BoundedContinuousFunction.norm_integral_le_norm`, so it is not possible to project the field `norm_integral_le_norm` from an expression\n  BoundedContinuousFunction.mkOfCompact f\nof type `UnitAddCircle \u2192\u1d47 \u2102`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:1074:6: error(lean.invalidField): Invalid field `periodic_tsum_comp_add_zsmul`: The environment does not contain `ContinuousMap.periodic_tsum_comp_add_zsmul`, so it is not possible to project the field `periodic_tsum_comp_add_z"
+},
+"OAI.Analysis.PlaneSpectrum.Multipliers": {
+"ok": true,
+"secs": 17.6,
+"err": ""
+},
+"OAI.Analysis.PlaneSpectrum.FourierTests": {
+"ok": true,
+"secs": 13.9,
+"err": ""
+},
+"OAI.Analysis.PlaneSpectrum.SmallArcs": {
+"ok": true,
+"secs": 8.1,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/SmallArcs.lean:47:0: warning: \n'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by\n\nimport Mathlib.Basic.Real.Basic\n"
+},
+"OAI.Analysis.PlaneSpectrum.PhaseEncoding": {
+"ok": false,
+"secs": 7.5,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean:56:0: warning: \n'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by\n\nimport Mathlib.Basic.Real.Basic\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean:120:25: error: unknown namespace `BoundedContinuousFunction`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean:269:5: error(lean.unknownIdentifier): Unknown constant `MvPolynomial.mul_esymm_eq_sum`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean:267:60: error: unsolved goals\nm : \u2115\nz : Fin m \u2192 Circle\nk : \u2115\n\u22a2 \u2191k * elem z k = (-1) ^ (k + 1) * \u2211 a \u2208 Finset.antidiagonal k with a.1 < k, (-1) ^ a.1 * elem z a.1 * \u2211 i, \u2191(z i) ^ a.2\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean:325:46: error(lean.invalidField): Invalid field `integral_kernel`: The environment does not contain `Exists.integral_kernel`, so it is not possible to project the field `integral_kernel` from an expression\n  Measurable.stronglyMeasurable (Measurable.pow_const h\u03c7 n)\nof type\n  \u2203 fs, \u2200 (x : G), Tendsto (fun n => (fs n) x) atTop (\ud835\udcdd ((fun x => \u03c7 x ^ n) x))\n"
+},
+"OAI.Analysis.PlaneSpectrum.PhaseCollision": {
+"ok": true,
+"secs": 12.8,
+"err": ""
+},
+"OAI.MeasureTheory.CompactFactors.ConditionalSelection": {
+"ok": true,
+"secs": 14.5,
+"err": ""
+},
+"OAI.Analysis.PlaneSpectrum.ConditionalSpectrum": {
+"ok": true,
+"secs": 19.3,
+"err": ""
+},
+"OAI.MeasureTheory.CompactFactors.Amenability": {
+"ok": true,
+"secs": 9.0,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:63:0: warning: \n'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by\n\nimport Mathlib.Basic.Real.Basic\n"
+},
+"OAI.MeasureTheory.CompactFactors.Centers": {
+"ok": true,
+"secs": 4.9,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:83:0: warning: \n'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by\n\nimport Mathlib.Basic.Real.Basic\n"
+},
+"OAI.MeasureTheory.CompactFactors.RelativeCenters": {
+"ok": false,
+"secs": 8.1,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:116:19: error: invalid binder annotation, type is not a class instance\n  ?m.3\n\nNote: Use the command `set_option checkBinderAnnotations false` to disable the check\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:121:38: error: type expected, got\n  (X : ?m.4[X])\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:270:46: error: invalid binder annotation, type is not a class instance\n  ?m.13\n\nNote: Use the command `set_option checkBinderAnnotations false` to disable the check\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:462:46: error: invalid binder annotation, type is not a class instance\n  ?m.23\n\nNote: Use the command `set_option checkBinderAnnotations false` to disable the check\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m11/work/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:574:46: error: invalid binder annotation, type is not a class instance\n  ?m.11\n\nNote: Use the command `set_option checkBinderAnnotations false` to disable the check\n"
+},
+"OAI.MeasureTheory.CompactFactors.Approximation": {
+"ok": true,
+"secs": 28.0,
+"err": ""
+},
+"OAI.MeasureTheory.CompactFactors.ConditionalLimits": {
+"ok": true,
+"secs": 77.7,
+"err": ""
+},
+"OAI.MeasureTheory.CompactFactors.Kernels": {
+"ok": true,
+"secs": 85.2,
+"err": ""
+},
+"OAI.MeasureTheory.CompactFactors.BoundedFunctions": {
+"ok": true,
+"secs": 30.6,
+"err": ""
+},
+"OAI.MeasureTheory.CompactFactors.RelativeProducts": {
+"ok": true,
+"secs": 51.1,
+"err": ""
+},
+"OAI.MeasureTheory.CompactFactors.Separability": {
+"ok": true,
+"secs": 65.6,
+"err": ""
+},
+"OAI.MeasureTheory.CompactFactors.AlgebraModels": {
+"ok": true,
+"secs": 46.2,
+"err": ""
+},
+"OAI.MeasureTheory.CompactFactors.Functions": {
+"ok": true,
+"secs": 149.0,
+"err": ""
+},
+"OAI.MeasureTheory.CompactFactors.Factors": {
+"ok": true,
+"secs": 157.4,
+"err": ""
+},
+"OAI.MeasureTheory.CompactFactors.Stationary": {
+"ok": true,
+"secs": 896.1,
+"err": ""
+},
+"OAI.Analysis.PlaneSpectrum.Representations": {
+"ok": true,
+"secs": 686.4,
+"err": ""
+}
+}

@@ -1,0 +1,72 @@
+{
+  "updated_utc": "2026-11-14T09:42:00Z",
+  "status": "completed_block",
+  "summary": "Block 10: reviewed the corrected frozen integration. Both hashes match the supervisor's values. ConditionalLimits is byte-identical to block 9, so the repair touched one file and was a single 32-line block move; nothing was retyped, and the resulting order reproduces the original relative order of the four helpers with the new core appended after them. Forward-reference audit on the corrected file: ZERO remaining (core at 325, latest same-file dep simultaneous_test_budget at 305, 14 used / 14 satisfied). Interface, namespace/visibility, omissions, assumptions and no-new-import all confirmed; no sorry, admit, custom axiom, native_decide, implemented_by, opaque or unsafe in either file. Two corrections to my own earlier claims: (1) a 14-module build proves TYPE-CHECKING, not parsing; a full build checks downstream elaboration, not identical meanings; (2) the blast radius is 19 modules, not 69 -- 62 modules depend on neither edit, and Seven is outside it, so chi<=7 is provably untouched. Delivered the axiom-root file (9 roots, exact FQNs) and a verified subset-based gate. Nothing compiled.",
+  "verified_results": [
+    "GRADE [C] Corrected files match the supplied hashes exactly: ConditionalSpectrum.lean sha256 48aa378f6f6db82bfeb0e65920ec2606507364541e72bf77ab969c6c87895dd1, ConditionalLimits.lean sha256 58707f0495837a89b58d5ac7d131ee855220c74cba28851474489b7a8cdd9e0d. Frozen at supervisor/simplify-lean/snapshots/integ-48aa378f6f6db82b/ with SHA256SUMS.txt.",
+    "GRADE [C] SOURCE CHANGE FLAG: only ConditionalSpectrum.lean changed; ConditionalLimits.lean is byte-identical to the block-9 frozen version. The change is one 32-line block moved verbatim (diff hunks 288a289,320 and 459,490d490), containing abbrev FiniteEncodingApproximationAt, def FiniteEncodingApproximation, lemma two_array_norm_bound, lemma simultaneous_test_budget. No declaration text altered.",
+    "GRADE [C] FORWARD REFERENCES: ZERO in the corrected file. Declaration order 273 EncodingApproximationAt, 291 abbrev, 295 FiniteEncodingApproximation, 299 two_array_norm_bound, 305 simultaneous_test_budget, 325 uniform_precision_contradiction, 494 finite_uniform_precision_contradiction, 512 successor. All 14 same-file identifiers used by the core are declared before it.",
+    "GRADE [C] REVERSE DEPENDENCIES measured from MANIFEST-full.json: the edited pair has 19 reverse-dependent modules out of 83, not 69. 62 modules depend on neither edit. Exactly two direct importers: OAI.MeasureTheory.CompactFactors.Approximation (imports ConditionalSpectrum, order 20) and OAI.MeasureTheory.CompactFactors.Kernels (imports ConditionalLimits, order 22).",
+    "GRADE [C] Exact consumer FQNs: OAI.PlaneFiveColor.Spectral.finite_uniform_successor_contradiction (ConditionalSpectrum.lean:512); OAI.PlaneFiveColor.Spectral.relative_singularity_successor (Approximation.lean:384, call at 413-414); OAI.PlaneFiveColor.Spectral.relative_singularity_approximation (ConditionalLimits.lean:463, call at 501).",
+    "GRADE [C] Blast radius on the headline roots: OAI.EuclideanFiveColor.no_proper_five_coloring (Five.lean:133) IS inside the 19; OAI.Problem160.properColoring_seven (Seven.lean:36) and weakMeasurableColoring_seven (Seven.lean:60) are OUTSIDE it, since Seven is not in the reverse closure. The chi <= 7 half cannot be affected by this edit.",
+    "GRADE [R] Interface/abstraction fidelity unchanged from block 8: no edit inside EncodingApproximationAt, the core statement, or its 151-line body. No Measurable S needed (common_fiber_contradiction requires measurability only of Hp/Hm; Integrable of Ap/Am comes from happrox). harc's Measure Circle has no competing Mathlib instance. hwild stays a hypothesis at P. S := p / S := id aliases unchanged. UNCOMPILED.",
+    "GRADE [R] Namespace/visibility: namespace PlaneFiveColor.Spectral opens at 172, section closes at 256, so the block at 273 is at namespace level with variable {X Y Z} at 263 in scope; nothing new is private, as required for the cross-module use in ConditionalLimits. omit [StandardBorelSpace Y] [Nonempty Y] retained on the core.",
+    "GRADE [R] No custom axioms or sorry in either corrected file: rg for sorry, admit, ^axiom, native_decide, @[implemented_by], opaque, unsafe returns no match.",
+    "GRADE [C] axiom_gate.py verified on a synthetic sample: a 2-element axiom set PASSes (subsets accepted per the corrected policy), a Lean-wrapped 3-element set PASSes, and absent roots produce GATE: FAIL with rc 2. Not yet run on real output (no build).",
+    "RETAINED: block-8 packet (pins Lean 4.34.1 @5045d005..., Mathlib @d13f23b..., 14-module closure with sha256); the census of 2038 declarations; the compiler-refuted 'dead instance' claim."
+  ],
+  "conjectures": [
+    "The integration will typecheck: the corrected order closes the only defect, the interface was already confirmed sound in block 8, and the two helpers moved are Mathlib-only lemmas with no OAI dependencies.",
+    "The residual risk is confined to abbrev transparency and the S := id instantiation, both inside the 14-module closure; the 5 additional modules needed to reach Karl's roots (Approximation, Five, Seven, Chromatic, ...) test positionality, not the abstraction.",
+    "Because Seven is outside the reverse closure, a failure anywhere in the 19 modules cannot invalidate the chi <= 7 root; only the chi >= 6 root needs re-certifying."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/REVIEW-integration-final.md  <-- final review, sections 1-8 with citations. sha256 94cb56be44023340b2f4d64fc667d197e275a90b7397685f4cd7b636b6a88381",
+    "supervisor/simplify-lean/lean/AxiomRoots.lean  <-- axiom-root file: 9 #print axioms + 3 #check, imports exactly the five declaring modules. sha256 cac851851383970f3d33e42c8bf4ae4ce5963059f43c44328f12542bbf96f26d",
+    "supervisor/simplify-lean/axiom_gate.py  <-- subset-based gate over the printed axiom sets. sha256 517e71545e98675e411c8a289c29d940d201c4c8081b86ca9b0825b6765119e0",
+    "supervisor/simplify-lean/snapshots/integ-48aa378f6f6db82b/  <-- frozen corrected revision (sources, patches, smoke roots, SOURCE-FREEZE.md, SHA256SUMS.txt); ConditionalSpectrum.lean sha256 48aa378f6f6db82b..., ConditionalLimits.lean sha256 58707f0495837a89...",
+    "supervisor/simplify-lean/.scratch/revdeps.json  <-- the 19/62 partition, two direct importers, topological orders. sha256 7e5e641870508a3039baffb166ef7163291beb6efb6c0397b898c8ab501f75f1",
+    "supervisor/simplify-lean/MANIFEST-full.json (block 9, 83 modules, unchanged; lean/OAI not modified)",
+    "supervisor/simplify-lean/BUILD-NOTES-full.md, REVIEW-encoding-core.md, PACKET-encoding-core.md, CENSUS.md (retained)"
+  ],
+  "tests_run": [
+    "sha256sum of both corrected files vs the supplied values -> exact match.",
+    "diff of block-9 vs block-10 frozen ConditionalSpectrum.lean -> two hunks, one 32-line block move; ConditionalLimits.lean diff empty (identical hash).",
+    "Forward-reference audit (python, 0.04 s) on the corrected frozen file -> zero forward references, 14 of 14 same-file deps satisfied, core at 325.",
+    "Reverse-dependency closure computed from MANIFEST-full.json -> 19 dependent, 62 independent, 2 direct importers.",
+    "rg for sorry/admit/axiom/native_decide/implemented_by/opaque/unsafe over both corrected files -> no match.",
+    "python3 axiom_gate.py on a synthetic 2-root sample -> rc 2 with 2 PASS and 7 MISSING, confirming subset acceptance and the wrapped-line parser.",
+    "NO Lean build and no cloud/cache operation (instruction: analysis/source-review block)."
+  ],
+  "failed_routes": [
+    "My block-9 claim that 'only the full 83-module build certifies the integration claim because 69 modules sit outside the smoke closure' is WITHDRAWN: 62 modules depend on neither edit, so the relevant build is the 19-module reverse closure plus the roots, and the full build is needed only to certify the tree, not the edit.",
+    "My block-9 phrasing 'a 14-module build proves the definitions parse' is WITHDRAWN: it proves type-checking of the edited modules at their real types; parsing is much weaker.",
+    "Not attempted: applying patches or any build; editing architect files or the shared tree."
+  ],
+  "next_step": "Next verification step, in the private 14-module build that is already running: on its success, (1) build the 19-module reverse closure in topological order (Approximation(20) is the first module after the edited pair, then Kernels(22) ... Transfer(83)) into the same private olean dir, (2) elaborate supervisor/simplify-lean/lean/AxiomRoots.lean against that dir, (3) pipe the output through axiom_gate.py and require GATE: PASS. Expect subsets, not always all three axioms. If SmokeFinite/SmokeAmbient already pass, the marginal cost is the 19-module build only.",
+  "owned_agents": [
+    {
+      "swarm": "smwfy8rae",
+      "members": 3,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "state": "stopped",
+      "accepted": 0,
+      "note": "stopped in block 1; not restarted (single-agent blocks by instruction)."
+    }
+  ],
+  "escalation": null,
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "review": "supervisor/simplify-lean/REVIEW-integration-final.md",
+    "axiom_root_file": "supervisor/simplify-lean/lean/AxiomRoots.lean",
+    "axiom_gate": "supervisor/simplify-lean/axiom_gate.py",
+    "frozen_snapshot": "supervisor/simplify-lean/snapshots/integ-48aa378f6f6db82b/SHA256SUMS.txt",
+    "reviewed_hashes": {
+      "ConditionalSpectrum.lean": "48aa378f6f6db82bfeb0e65920ec2606507364541e72bf77ab969c6c87895dd1",
+      "ConditionalLimits.lean": "58707f0495837a89b58d5ac7d131ee855220c74cba28851474489b7a8cdd9e0d"
+    },
+    "reverse_closure_size": 19,
+    "axiom_policy": "subset of {propext, Classical.choice, Quot.sound}; sorryAx or any other name fails",
+    "next_verification_step": "19-module reverse-closure build into the private olean dir, then lean AxiomRoots.lean, then axiom_gate.py must print GATE: PASS."
+  }
+}

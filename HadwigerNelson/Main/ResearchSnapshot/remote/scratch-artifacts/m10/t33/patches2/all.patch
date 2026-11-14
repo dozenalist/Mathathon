@@ -1,0 +1,1359 @@
+--- a/OAI/Analysis/PlaneSpectrum/Basic.lean
++++ b/OAI/Analysis/PlaneSpectrum/Basic.lean
+@@ -408,13 +408,18 @@
+     · apply (isAlgebraic_algebraMap_iff (R := ℚ) (S := ℝ) (A := ℂ)
+         Complex.ofReal_injective).mp
+       have h := (hz.add hc).mul hhalf
+-      convert h using 1
+-      first | rfl | (apply Complex.ext <;> simp; ring)
++      rw [show (algebraMap ℝ ℂ) z.re = (z + (starRingEnd ℂ) z) * 2⁻¹ from by
++        show ((z.re : ℝ) : ℂ) = _
++        rw [Complex.re_eq_add_conj, div_eq_mul_inv]]
++      exact h
+     · apply (isAlgebraic_algebraMap_iff (R := ℚ) (S := ℝ) (A := ℂ)
+         Complex.ofReal_injective).mp
+       have h := ((hz.sub hc).mul hhalf).mul hi.inv
+-      convert h using 1
+-      first | rfl | (apply Complex.ext <;> simp; ring)
++      rw [show (algebraMap ℝ ℂ) z.im = (z - (starRingEnd ℂ) z) * 2⁻¹ * Complex.I⁻¹ from by
++        show ((z.im : ℝ) : ℂ) = _
++        rw [Complex.im_eq_sub_conj, div_eq_mul_inv]
++        simp [mul_assoc, mul_comm]]
++      exact h
+   · rintro ⟨hr, hi'⟩
+     have hr' : IsAlgebraic ℚ (z.re : ℂ) := hr.algebraMap
+     have hi'' : IsAlgebraic ℚ (z.im : ℂ) := hi'.algebraMap
+
+--- a/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean
++++ b/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean
+@@ -125,12 +125,13 @@
+     exact mem_algebraicClosure_iff.mp (x / 2 : F).property
+   have hsAlg : IsAlgebraic ℚ s := IsAlgebraic.of_pow (by norm_num : 0 < 2) (by
+     rw [hs]; exact isAlgebraic_one.sub (hrAlg.pow 2))
++  have hI : IsAlgebraic ℚ Complex.I := mem_algebraicClosure_iff.mp imagUnit.property
+   have huAlg : IsAlgebraic ℚ ((r : ℂ) + Complex.I * s) :=
+     (hrAlg.algebraMap (A := ℂ)).add
+-      ((isAlgebraic_iff_isIntegral.mpr (Complex.isIntegral_I ℚ)).mul (hsAlg.algebraMap (A := ℂ)))
++      (hI.mul (hsAlg.algebraMap (A := ℂ)))
+   have hvAlg : IsAlgebraic ℚ ((r : ℂ) - Complex.I * s) :=
+     (hrAlg.algebraMap (A := ℂ)).sub
+-      ((isAlgebraic_iff_isIntegral.mpr (Complex.isIntegral_I ℚ)).mul (hsAlg.algebraMap (A := ℂ)))
++      (hI.mul (hsAlg.algebraMap (A := ℂ)))
+   have huNorm : ‖(r : ℂ)+Complex.I*s‖ = 1 := by
+     rw [← sq_eq_sq₀ (norm_nonneg _) zero_le_one]
+     rw [← Complex.normSq_eq_norm_sq]
+
+--- a/OAI/Analysis/PlaneSpectrum/Energy.lean
++++ b/OAI/Analysis/PlaneSpectrum/Energy.lean
+@@ -283,14 +283,15 @@
+   have : VAddInvariantMeasure G Y (μ.map q) := ⟨fun g s hs => (hp g).measure_preimage hs.nullMeasurableSet⟩
+   constructor
+   intro s hs hinv
+-  have hc : EventuallyEmptyOrUniv (q ⁻¹' s) (ae μ) := by
++  have hc' : EventuallyConst (q ⁻¹' s) (ae μ) := by
+     apply ErgodicVAdd.aeconst_of_forall_preimage_vadd_ae_eq (G := G) (hs.preimage hq)
+     intro g
+     filter_upwards [ae_of_ae_map hq.aemeasurable (hinv g), hqcov g] with x hx he
+     change (q (g +ᵥ x) ∈ s) = (q x ∈ s)
+     rw [he]
+     exact hx
+-  rw [eventuallyEmptyOrUniv_iff] at hc ⊢
++  have hc := EuclideanFiveColor.KernelCompact.eventuallyConst_set_iff.mp hc'
++  rw [EuclideanFiveColor.KernelCompact.eventuallyConst_set_iff]
+   rcases hc with hc | hc
+   · exact Or.inl ((ae_map_iff hq.aemeasurable hs).mpr hc)
+   · exact Or.inr ((ae_map_iff hq.aemeasurable hs.compl).mpr hc)
+
+--- a/OAI/Analysis/PlaneSpectrum/Ergodicity.lean
++++ b/OAI/Analysis/PlaneSpectrum/Ergodicity.lean
+@@ -263,7 +263,7 @@
+     rcases mul_eq_zero.mp hh with h | h
+     · exact Or.inl h
+     · exact Or.inr (by linarith)
+-  rw [eventuallyEmptyOrUniv_iff]
++  rw [EuclideanFiveColor.KernelCompact.eventuallyConst_set_iff]
+   rcases hz with h | h
+   · right
+     rw [ae_iff]
+@@ -289,7 +289,7 @@
+ def code (x : X) : Finset ℕ → ℂ := fun i => InvariantSequence.limit μ M (test X i) x
+ omit [Countable G] [Nonempty X] in
+ lemma code_measurable : Measurable (code μ M) :=
+-  Measurable.of_eval (fun i => InvariantSequence.limit_measurable μ M (test X i))
++  measurable_pi_lambda _ (fun i => InvariantSequence.limit_measurable μ M (test X i))
+ omit [Countable G] [Nonempty X] in
+ lemma code_fixed (g : G) : (fun x => code μ M (g +ᵥ x)) =ᵐ[μ] code μ M := by
+   have h := (ae_all_iff.mpr (fun i => InvariantSequence.limit_fixed μ M (test X i) g))
+
+--- a/OAI/Analysis/PlaneSpectrum/Fourier.lean
++++ b/OAI/Analysis/PlaneSpectrum/Fourier.lean
+@@ -9,9 +9,12 @@
+ variable {X : Type*} [MeasurableSpace X] (μ : Measure X)
+ def apply (f : X → ℂ) (hf : AEStronglyMeasurable f μ) {C : ℝ} (hbound : ∀ᵐ x ∂μ, ‖f x‖≤C)
+     (g : Lp ℂ 2 μ) : Lp ℂ 2 μ :=
+-  ((memLp_top_of_bound hf C hbound).fun_mul (Lp.memLp g)).toLp (fun x => f x*g x)
++  (MemLp.mul' (memLp_top_of_bound hf C hbound) (Lp.memLp g)).toLp (fun x => g x*f x)
+ lemma apply_ae (f : X → ℂ) (hf : AEStronglyMeasurable f μ) {C : ℝ} (hbound : ∀ᵐ x ∂μ, ‖f x‖≤C)
+-    (g : Lp ℂ 2 μ) : apply μ f hf hbound g =ᵐ[μ] fun x => f x*g x := MemLp.coeFn_toLp _
++    (g : Lp ℂ 2 μ) : apply μ f hf hbound g =ᵐ[μ] fun x => f x*g x := by
++  filter_upwards [MemLp.coeFn_toLp (MemLp.mul' (hpqr := ENNReal.HolderTriple.instInfty 2)
++    (memLp_top_of_bound hf C hbound) (Lp.memLp g))] with x hx
++  exact hx.trans (mul_comm _ _)
+ def linear (f : X → ℂ) (hf : AEStronglyMeasurable f μ) {C : ℝ} (hbound : ∀ᵐ x ∂μ, ‖f x‖≤C) :
+     Lp ℂ 2 μ →ₗ[ℂ] Lp ℂ 2 μ where
+   toFun := apply μ f hf hbound
+@@ -56,10 +59,10 @@
+ lemma phaseMultiplier_ae (h : ℂ) (g : ComplexPlaneL2) :
+     phaseMultiplier h g =ᵐ[volume] fun ξ => planePhase h ξ*g ξ := Multiplier.clm_ae _ _ _ _ _
+ def schwartzTranslate (h : ℂ) : SchwartzMap ℂ ℂ →L[ℂ] SchwartzMap ℂ ℂ :=
+-  SchwartzMap.compCLMOfAntilipschitz ℂ
+-    (Function.HasTemperateGrowth.id.add (Function.HasTemperateGrowth.const h)) (isometry_add_right h).antilipschitzWith
++  SchwartzMap.compSubConstCLM ℂ (-h)
+ lemma schwartzTranslate_apply (h : ℂ) (f : SchwartzMap ℂ ℂ) (x : ℂ) :
+-    schwartzTranslate h f x = f (x+h) := rfl
++    schwartzTranslate h f x = f (x+h) := by
++  simp [schwartzTranslate]
+ lemma schwartzTranslate_toLp (h : ℂ) (f : SchwartzMap ℂ ℂ) :
+     (schwartzTranslate h f).toLp 2 = planeTranslate h (f.toLp 2) := by
+   apply Lp.ext
+
+--- a/OAI/Analysis/PlaneSpectrum/FourierTests.lean
++++ b/OAI/Analysis/PlaneSpectrum/FourierTests.lean
+@@ -238,7 +238,7 @@
+ instance differenceLaw_probability (ν : Measure Y) [IsProbabilityMeasure ν]
+     (κ : Kernel Y G) [IsMarkovKernel κ] : IsProbabilityMeasure (differenceLaw ν κ) := by
+   unfold differenceLaw
+-  infer_instance
++  exact Measure.isProbabilityMeasure_map (measurable_fst.div measurable_snd).aemeasurable
+ 
+ variable (χ : G →* Circle)
+ 
+
+--- a/OAI/Analysis/PlaneSpectrum/Multipliers.lean
++++ b/OAI/Analysis/PlaneSpectrum/Multipliers.lean
+@@ -35,8 +35,7 @@
+     ‖mul h hm hn v‖ = ‖v‖ := by
+   simp only [Lp.norm_def]
+   congr 1
+-  apply eLpNorm_congr_norm_ae (Lp.aestronglyMeasurable (mul h hm hn v))
+-    (Lp.aestronglyMeasurable v)
++  apply eLpNorm_congr_norm_ae
+   filter_upwards [mul_ae h hm hn v] with x hx
+   simp [hx, hn]
+ 
+
+--- a/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean
++++ b/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean
+@@ -365,7 +365,7 @@
+   filter_upwards [hcov] with x hx
+   intro i hi
+   dsimp [f]
+-  rw [dite_eq_left (hx i hi)]
++  rw [dif_pos (hx i hi)]
+   exact (hx i hi).choose_spec
+ 
+ omit [MeasurableSpace Ω] [Fintype ι] [Fintype κ] [Nonempty ι] [Nonempty κ]
+
+--- a/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean
++++ b/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean
+@@ -115,7 +115,7 @@
+     rw [norm_prod]
+     calc
+       ρ ^ m = ∏ _j : Fin m, ρ := by simp
+-      _ ≤ _ := Finset.prod_le_prod₀ (fun _ _ => hρ.le) (fun j _ => by
++      _ ≤ _ := Finset.prod_le_prod (fun _ _ => hρ.le) (fun j _ => by
+         simpa only [dist_eq_norm] using h j)
+   have hu := eval_difference_bound z w (z i)
+   rw [eval_at_phase, sub_zero] at hu
+@@ -207,7 +207,7 @@
+ theorem measurable_kernelEncoding (β : Kernel Y G) [IsMarkovKernel β]
+     (χ : G → ℂ) (hχ : Measurable χ) (m : ℕ) :
+     Measurable (kernelEncoding β χ m) := by
+-  apply Measurable.of_eval
++  apply measurable_pi_lambda
+   intro i
+   apply measurable_fromPowers
+   intro n
+
+--- a/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean
++++ b/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean
+@@ -83,6 +83,7 @@
+     (hn : ∀ u : K, ‖((a + kCoeff u^2*b : E) : ℂ)‖ =
+       ‖((l+kCoeff u*h+kCoeff u^2*k : E) : ℂ)‖) :
+     projectedMass μ q a * projectedMass μ q b ≤ projectedMass μ q h := by
++  haveI : IsProbabilityMeasure (μ.map q) := Measure.isProbabilityMeasure_map hq.aemeasurable
+   let : ErgodicVAdd Rot Y (μ.map q) := factor_ergodic μ q hq (fun g : Rot => hqcov (rotMul g))
+   let M : Amenable.Mean Rot := MovingMean.toMean (fun _ => 0)
+   have he : Family.energy (μ.map q) (Family.conditional μ q
+@@ -386,6 +387,7 @@
+ include hq hqcov in
+ lemma radiusFamily_mean (r : F) (M : Amenable.Mean Rot) :
+     M.map (radiusFamily μ q hq r) = massReal μ q r ^2 := by
++  haveI : IsProbabilityMeasure (μ.map q) := Measure.isProbabilityMeasure_map hq.aemeasurable
+   have he : radiusFamily μ q hq r = Family.energy (μ.map q) (Family.conditional μ q
+       (Family.orbit (scaleHom (G := Rot) 1) (char (ofF r)) *
+         Family.orbit (scaleHom (G := Rot) (-1)) (char (ofF r)))) := by
+@@ -451,6 +453,7 @@
+ include hq hqcov in
+ lemma massReal_vanish (hw : IsWild (DifferenceFourier.differenceLaw (μ.map q) (condDistrib id q μ)))
+     (r : F) (hr : 0 < r) : massReal μ q r = 0 := by
++  haveI : IsProbabilityMeasure (μ.map q) := Measure.isProbabilityMeasure_map hq.aemeasurable
+   by_contra hn
+   obtain ⟨δ,hδ,ε,hε,hε1,hpos⟩ := radial_positive_near_zero μ q hq hqcov r hr hn
+   let ν := DifferenceFourier.differenceLaw (μ.map q) (condDistrib id q μ)
+
+--- a/OAI/Analysis/PlaneSpectrum/Representations.lean
++++ b/OAI/Analysis/PlaneSpectrum/Representations.lean
+@@ -320,7 +320,7 @@
+     intro a b
+     simpa only [NNReal.coe_one,one_mul,Real.dist_eq,dist_eq_norm,Real.norm_eq_abs,← Complex.sub_re] using Complex.abs_re_le_norm (a-b)
+   change LipschitzWith 1 (fun z : ℂ => ((max 0 (min 1 z.re) : ℝ) : ℂ))
+-  simpa only [one_mul,Function.comp_def] using Complex.isometry_ofReal.lipschitzWith.comp ((hr.const_min 1).const_max 0)
++  simpa only [one_mul,Function.comp_def] using Complex.isometry_ofReal.lipschitz.comp ((hr.const_min 1).const_max 0)
+ @[simp] lemma clamp_zero : clamp 0 = 0 := by simp [clamp]
+ lemma clamp_range (z : ℂ) : (clamp z).im = 0 ∧ 0 ≤ (clamp z).re ∧ (clamp z).re ≤ 1 := by
+   change (0 : ℝ) = 0 ∧ 0 ≤ max 0 (min 1 z.re) ∧ max 0 (min 1 z.re) ≤ 1
+
+--- a/OAI/Analysis/PlaneSpectrum/SmallArcs.lean
++++ b/OAI/Analysis/PlaneSpectrum/SmallArcs.lean
+@@ -157,7 +157,7 @@
+           (Finset.mem_range.mp hj)
+       _ = _ := by
+         rw [Finset.sum_congr rfl (fun i hi => by
+-          rw [Finset.sum_add_distrib, Finset.sum_ite_eq, ite_eq_left hi])]
++          rw [Finset.sum_add_distrib, Finset.sum_ite_eq, if_pos hi])]
+         simp only [Finset.sum_const, Finset.card_range, nsmul_eq_mul]
+         ring
+   · intro i _
+@@ -263,7 +263,7 @@
+     measurableSet_lt measurable_const (measurable_atom_mass _)
+   have he : ∀ᵐ z ∂μ.map p ⊗ₘ condDistrib b p μ,
+       0 < condDistrib b p μ z.1 {z.2} := (Measure.ae_compProd_iff hm).mpr ha
+-  rw [compProd_map_condDistrib hp.aemeasurable hb.aemeasurable] at he
++  rw [compProd_map_condDistrib hb.aemeasurable] at he
+   exact ae_of_ae_map (hp.prodMk hb).aemeasurable he
+ 
+ omit [StandardBorelSpace G] [Nonempty G] in
+
+--- a/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean
++++ b/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean
+@@ -61,9 +61,13 @@
+ namespace EuclideanFiveColor.BoundedMeasurable
+ variable {X : Type*} [MeasurableSpace X] (μ : Measure X) [IsFiniteMeasure μ]
+ def mulLp (f : Func X) (g : Lp ℂ 2 μ) : Lp ℂ 2 μ :=
+-  ((memLp μ f ∞).fun_mul (Lp.memLp g)).toLp (fun point => f point * g point)
++  (MemLp.mul' (hpqr := ENNReal.HolderTriple.instInfty 2) (memLp μ f ∞)
++    (Lp.memLp g)).toLp (fun point => g point * f point)
+ lemma mulLp_ae (f : Func X) (g : Lp ℂ 2 μ) :
+-    mulLp μ f g =ᵐ[μ] fun x => f x * g x := MemLp.coeFn_toLp _
++    mulLp μ f g =ᵐ[μ] fun x => f x * g x := by
++  filter_upwards [MemLp.coeFn_toLp (MemLp.mul' (hpqr := ENNReal.HolderTriple.instInfty 2)
++    (memLp μ f ∞) (Lp.memLp g))] with x hx
++  exact hx.trans (mul_comm _ _)
+ def mulLpLinear (f : Func X) : Lp ℂ 2 μ →ₗ[ℂ] Lp ℂ 2 μ where
+   toFun := mulLp μ f
+   map_add' g h := by
+@@ -106,19 +110,17 @@
+ instance algebra_closed : IsClosed (algebra U : Set (H →L[ℂ] H)) :=
+   StarSubalgebra.isClosed_topologicalClosure _
+ lemma adjoin_comm : IsMulCommutative (StarAlgebra.adjoin ℂ (Set.range (fun g => (U g : H →L[ℂ] H)))) := by
+-  apply StarAlgebra.isMulCommutative_adjoin
+-  · rintro _ ⟨element,rfl⟩
+-    infer_instance
+-  · rintro _ ⟨left,rfl⟩ _ ⟨right,rfl⟩ _
++  apply StarAlgebra.isMulCommutative_adjoin ℂ
++  · rintro _ ⟨left,rfl⟩ _ ⟨right,rfl⟩
+     change ((U left * U right : unitary _) : H →L[ℂ] H) = ((U right * U left : unitary _) : H →L[ℂ] H)
+     rw [← map_mul,← map_mul,mul_comm]
+-  · rintro _ ⟨left,rfl⟩ _ ⟨right,rfl⟩ _
++  · rintro _ ⟨left,rfl⟩ _ ⟨right,rfl⟩
+     change ((U left * (U right)⁻¹ : unitary _) : H →L[ℂ] H) = (((U right)⁻¹ * U left : unitary _) : H →L[ℂ] H)
+     rw [← map_inv,← map_mul,← map_mul,mul_comm]
+ open scoped IsMulCommutative in
+ instance algebra_commRing : CommRing (algebra U) :=
+-  let := adjoin_comm U
+-  inferInstance
++  letI := adjoin_comm U
++  StarSubalgebra.commRingTopologicalClosure _ (fun x y => mul_comm x y)
+ instance algebra_commCStar : CommCStarAlgebra (algebra U) where
+ 
+ def generator (g : G) : algebra U :=
+
+--- a/OAI/Geometry/PlaneColoring/Accumulation.lean
++++ b/OAI/Geometry/PlaneColoring/Accumulation.lean
+@@ -99,7 +99,7 @@
+     · exact (four_support_nonempty c hc hw (hyn n) ht).choose_spec
+   have hvlim : Tendsto vn atTop (𝓝 a) := hcn.congr' (by
+     filter_upwards [hcT] with n hn
+-    simp only [vn,dite_eq_left hn])
++    simp only [vn,dif_pos hn])
+   exact four_support_sequence_no_unit c hc hw hyn hx hy ht hvlim hdt hvn hdn (direction_sixty_unit_real a)
+ end EuclideanFiveColor
+ end
+
+--- a/OAI/Geometry/PlaneColoring/BinaryPalettes.lean
++++ b/OAI/Geometry/PlaneColoring/BinaryPalettes.lean
+@@ -208,7 +208,7 @@
+   apply ht.1
+   rw [ht.2]
+   change 0 < if c (y+(1:ℂ)*direction t)=i then (1:ℝ) else 0
+-  rw [one_mul,ite_eq_left hcolor]
++  rw [one_mul,if_pos hcolor]
+   exact zero_lt_one
+ lemma typical_sample_palette {k : ℕ} (c : ℂ → Fin k) (hc : Measurable c) {y : ℂ}
+     (hy : TypicalSampling c y 1) :
+
+--- a/OAI/Geometry/PlaneColoring/BorelTransfer.lean
++++ b/OAI/Geometry/PlaneColoring/BorelTransfer.lean
+@@ -282,6 +282,7 @@
+   have hs : Summable (fun n => ‖g n‖) := summable_geometric_two.of_nonneg_of_le (fun n => norm_nonneg _) (fun n => by simpa only [g,dist_eq_norm] using (index_bound μ f hf n t).le)
+   have ha : ∀ᵐ x ∂μ, Summable (fun n => ‖g n x‖) := by
+     apply summable_norm_of_tsum_eLpNorm_ne_top (by norm_num : (1:ℝ≥0∞) ≤ 2)
++      (f := fun n => (g n : X → ℂ)) (fun n => Lp.aestronglyMeasurable (g n))
+     simpa only [← Lp.enorm_def] using (tsum_enorm_ne_top_iff_summable_norm.mpr hs)
+   have he : ∀ᵐ x ∂μ, ∀ n, g n x = approxField μ f hf n (t,x)-f t x :=
+     ae_all_iff.mpr fun n => Lp.coeFn_sub _ _
+@@ -391,7 +392,7 @@
+     obtain ⟨i,hi⟩ := hex
+     exact ⟨i,Finset.mem_filter.mpr ⟨Finset.mem_univ _,hi⟩⟩
+   have hmem : positiveSelect f x ∈ positiveSupport f x := by
+-    simp only [positiveSelect,pickSupport,dite_eq_left hn]
++    simp only [positiveSelect,pickSupport,dif_pos hn]
+     exact hn.choose_spec
+   exact (Finset.mem_filter.mp hmem).2
+ end EuclideanFiveColor
+
+--- a/OAI/Geometry/PlaneColoring/BoundaryTrace.lean
++++ b/OAI/Geometry/PlaneColoring/BoundaryTrace.lean
+@@ -39,7 +39,7 @@
+       apply he
+       rw [hh]
+       exact (mem_palette c hc x (t : Angles) i).mpr (hJ i hi hta)
+-    simp only [sampleFn,Complex.ofReal_one,one_mul,ite_eq_right hne,Pi.zero_apply]
++    simp only [sampleFn,Complex.ofReal_one,one_mul,if_neg hne,Pi.zero_apply]
+   obtain ⟨t,ht,hp⟩ := support_good_sequence ha hp
+   obtain ⟨b,_,φ,hφ,hb⟩ := (isCompact_univ : IsCompact (Set.univ : Set (TraceVector k))).isSeqCompact.subseq_of_frequently_in
+     (Eventually.frequently (Eventually.of_forall fun n => Set.mem_univ (sampleCode c hc (x+direction (t n : Angles)) 1)))
+
+--- a/OAI/Geometry/PlaneColoring/Compactness.lean
++++ b/OAI/Geometry/PlaneColoring/Compactness.lean
+@@ -221,7 +221,7 @@
+   have herr : (∫ x, ‖v x-g x‖ ∂μ) < ε/3 := by
+     change (∫ x, ‖(v - (fun x => g x)) x‖ ∂μ) < ε/3
+     rw [integral_norm_eq_lintegral_enorm (hv.sub hgi).aestronglyMeasurable,
+-      ← eLpNorm_one_eq_lintegral_enorm (hv.sub hgi).aestronglyMeasurable]
++      ← eLpNorm_one_eq_lintegral_enorm]
+     exact (ENNReal.toReal_lt_toReal (ne_top_of_lt hg) ENNReal.ofReal_ne_top).mpr hg |>.trans_eq (ENNReal.toReal_ofReal (by positivity))
+   have he (w : Lp ℝ 2 μ) : ⟪w,hg2.toLp g⟫ = ∫ x, w x*g x ∂μ := by
+     rw [L2.inner_def]
+
+--- a/OAI/Geometry/PlaneColoring/ContinuumLimits.lean
++++ b/OAI/Geometry/PlaneColoring/ContinuumLimits.lean
+@@ -144,12 +144,20 @@
+     {K : ι → NonemptyCompacts X} {L : NonemptyCompacts X} {x : ι → X} {y : X}
+     (hK : Tendsto K l (𝓝 L)) (hx : Tendsto x l (𝓝 y))
+     (hm : ∀ᶠn in l,x n∈K n) : y∈L := by
+-  have hh := (NonemptyCompacts.lipschitz_infDist.continuous.tendsto (y,L)).comp (hx.prodMk_nhds hK)
+-  have h0 : (fun n => Metric.infDist (x n) (K n : Set X)) =ᶠ[l] fun _ => 0 :=
+-    hm.mono fun n hn => Metric.infDist_zero_of_mem hn
+-  have he : Metric.infDist y (L : Set X)=0 := tendsto_nhds_unique hh
+-    (tendsto_const_nhds.congr' h0.symm)
+-  exact (L.isCompact.isClosed.mem_iff_infDist_zero L.nonempty).mpr he
++  have hball : ∀ ε > 0, ((L : Set X) ∩ Metric.closedBall y ε).Nonempty := by
++    intro ε hε
++    have hcl : IsClosed (Metric.closedBall y ε) := Metric.isClosed_closedBall
++    have hev : ∀ᶠ n in l, ((K n : Set X) ∩ Metric.closedBall y ε).Nonempty := by
++      filter_upwards [hm, hx.eventually (Metric.closedBall_mem_nhds y hε)] with n hn hxn
++      exact ⟨x n, hn, hxn⟩
++    exact (NonemptyCompacts.isClosed_inter_nonempty_of_isClosed hcl).mem_of_tendsto hK hev
++  change y ∈ (L : Set X)
++  rw [← L.isCompact.isClosed.closure_eq]
++  refine Metric.mem_closure_iff.mpr (fun ε hε => ?_)
++  obtain ⟨z, hzL, hz⟩ := hball (ε/2) (by linarith)
++  refine ⟨z, hzL, ?_⟩
++  have h2 : dist y z ≤ ε/2 := by simpa [Metric.mem_closedBall, dist_comm] using hz
++  linarith
+ 
+ lemma nonemptyCompacts_inter_closed_limit {X : Type u} [TopologicalSpace X]
+     {ι : Type v} {l : Filter ι} [NeBot l]
+
+--- a/OAI/Geometry/PlaneColoring/DiskAverages.lean
++++ b/OAI/Geometry/PlaneColoring/DiskAverages.lean
+@@ -223,8 +223,8 @@
+             exact (norm_add_le _ _).trans_lt (by linarith)
+           · convert h2 using 1; congr 1; ring
+         simp [colorFn,h1,h2,Set.indicator_of_mem hmem]
+-      · simp only [colorFn,ite_eq_left h1,ite_eq_right h2,mul_zero]; exact Set.indicator_nonneg (fun _ _ => zero_le_one) _
+-    · simp only [colorFn,ite_eq_right h1,zero_mul]; exact Set.indicator_nonneg (fun _ _ => zero_le_one) _
++      · simp only [colorFn,if_pos h1,if_neg h2,mul_zero]; exact Set.indicator_nonneg (fun _ _ => zero_le_one) _
++    · simp only [colorFn,if_neg h1,zero_mul]; exact Set.indicator_nonneg (fun _ _ => zero_le_one) _
+   apply hle.trans
+   calc
+     (∫ q in Metric.ball x r, T.indicator (fun _ => (1:ℝ)) (q+h₁)) ≤
+
+--- a/OAI/Geometry/PlaneColoring/Expansion.lean
++++ b/OAI/Geometry/PlaneColoring/Expansion.lean
+@@ -486,7 +486,7 @@
+ lemma deriv_lower_qmp {f D : ℝ → ℝ} (hd : ∀ x, HasDerivAt f (D x) x)
+     (hp : ∀ x, (1/2 : ℝ) ≤ D x) : Measure.QuasiMeasurePreserving f volume volume := by
+   have hA := (deriv_lower_antilipschitz hd hp).comp
+-    ((isometry_subtype_coe : Isometry (Subtype.val : {x : ℝ // x ∈ (univ : Set ℝ)} → ℝ)).antilipschitzWith)
++    ((isometry_subtype_coe : Isometry (Subtype.val : {x : ℝ // x ∈ (univ : Set ℝ)} → ℝ)).antilipschitz)
+   simpa only [Measure.restrict_univ] using
+     (line_antilipschitz_qmp (I := univ) (continuous_iff_continuousAt.mpr (fun x => (hd x).continuousAt)).measurable hA)
+ lemma iterComposition_invariant {f : ℕ → ℝ → ℝ} {A : Set ℝ}
+
+--- a/OAI/Geometry/PlaneColoring/GraphCuts.lean
++++ b/OAI/Geometry/PlaneColoring/GraphCuts.lean
+@@ -65,7 +65,7 @@
+   simp [graphCutRetract,hp]
+ lemma graphCutRetract_dominant {V : Type u} {T : SimpleGraph V} (p : GraphCutSpace T)
+     (hp : p.val∉graphRealization T) {i : V} (hi : 1/2<p.val i) : graphCutRetract T p=graphVertex i := by
+-  rw [graphCutRetract,dite_eq_right hp]
++  rw [graphCutRetract,dif_neg hp]
+   congr 1
+   exact graphCut_dominant_unique p.property (graphCut_dominant p.property hp).choose_spec hi
+ lemma graphCutRetract_mem {V : Type u} (T : SimpleGraph V) (p : GraphCutSpace T) :
+
+--- a/OAI/Geometry/PlaneColoring/Interfaces.lean
++++ b/OAI/Geometry/PlaneColoring/Interfaces.lean
+@@ -306,10 +306,12 @@
+   by_cases h0 : 0<⟪direction t,v 0⟫ <;> by_cases h1 : 0<⟪direction t,v 1⟫
+   · simp only [interfaceFourDiagonal,fourInterfaceSign,h0,h1] at hd
+     norm_num at hd
++    exact absurd hd (by decide)
+   · exact mul_neg_of_pos_of_neg h0 (lt_of_le_of_ne (le_of_not_gt h1) (hn 1))
+   · exact mul_neg_of_neg_of_pos (lt_of_le_of_ne (le_of_not_gt h0) (hn 0)) h1
+   · simp only [interfaceFourDiagonal,fourInterfaceSign,h0,h1] at hd
+     norm_num at hd
++    exact absurd hd (by decide)
+ lemma four_diagonal_product_pos {v : Fin 4 → ℂ} {t : Angles}
+     (hn : ∀i,⟪direction t,v i⟫≠0) (hd : interfaceFourDiagonal (fourInterfaceSign v t)=2) :
+     0<⟪direction t,v 0⟫*⟪direction t,v 1⟫ := by
+@@ -317,8 +319,10 @@
+   · exact mul_pos h0 h1
+   · simp only [interfaceFourDiagonal,fourInterfaceSign,h0,h1,decide_true,decide_false] at hd
+     norm_num at hd
++    exact absurd hd (by decide)
+   · simp only [interfaceFourDiagonal,fourInterfaceSign,h0,h1,decide_true,decide_false] at hd
+     norm_num at hd
++    exact absurd hd (by decide)
+   · exact mul_pos_of_neg_of_neg (lt_of_le_of_ne (le_of_not_gt h0) (hn 0))
+       (lt_of_le_of_ne (le_of_not_gt h1) (hn 1))
+ lemma four_diagonal_orbit_half {v : Fin 4 → ℂ} {t : Angles} {j : Fin 6}
+@@ -483,7 +487,7 @@
+   have hpar (t : Angles) (ht : t∈G) := four_word_parity (w t) (hw t ht) (hnomix t ht)
+   let p : Angles → Fin 2 := fun t => if ht : t∈G then (hpar t ht).choose else 0
+   have hp (t : Angles) (ht : t∈G) : ∀j,w t j=0 → j.val%2=(p t).val := by
+-    simpa only [p,dite_eq_left ht] using (hpar t ht).choose_spec
++    simpa only [p,dif_pos ht] using (hpar t ht).choose_spec
+   have hclose (t : Angles) (ht : t∈G) (u : Angles) (hu : u∈G) (htu : dist t u<ε) : p t=p u := by
+     by_contra hne
+     have hcases : (p t=0 ∧ p u=1) ∨ (p t=1 ∧ p u=0) :=
+
+--- a/OAI/Geometry/PlaneColoring/MeasurableProper.lean
++++ b/OAI/Geometry/PlaneColoring/MeasurableProper.lean
+@@ -27,7 +27,7 @@
+       ENNReal.ofReal_ne_top
+ 
+ instance circleMeasure_isProbabilityMeasure : IsProbabilityMeasure circleMeasure :=
+-  inferInstanceAs (IsProbabilityMeasure (Measure.map circleDir normalizedAngleMeasure))
++  Measure.isProbabilityMeasure_map measurable_circleDir.aemeasurable
+ 
+ @[simp]
+ theorem norm_circleDir (t : ℝ) : ‖circleDir t‖ = 1 := by
+
+--- a/OAI/Geometry/PlaneColoring/PaletteDensity.lean
++++ b/OAI/Geometry/PlaneColoring/PaletteDensity.lean
+@@ -178,8 +178,8 @@
+ lemma anglePair_quasiMeasurePreserving :
+     Measure.QuasiMeasurePreserving (fun p : ℝ × ℝ => ((p.1 : Angles),(p.2 : Angles)))
+       volume (angularMeasure.prod angularMeasure) := by
+-  convert QuasiMeasurePreserving.prodMap angleMk_quasiMeasurePreserving
+-    angleMk_quasiMeasurePreserving using 1; rfl
++  exact QuasiMeasurePreserving.prodMap angleMk_quasiMeasurePreserving
++    angleMk_quasiMeasurePreserving
+ end EuclideanFiveColor
+ end
+ 
+@@ -477,7 +477,7 @@
+       apply hzero
+       rw [← he f hf]
+       simpa only [Typical,hi] using hft
+-    simp only [sampleFn,ite_eq_right hi,zero_mul]
++    simp only [sampleFn,if_neg hi,zero_mul]
+   · rw [indicator_of_notMem hs,mul_zero]
+ end EuclideanFiveColor
+ end
+
+--- a/OAI/Geometry/PlaneColoring/PlanarCovers.lean
++++ b/OAI/Geometry/PlaneColoring/PlanarCovers.lean
+@@ -254,7 +254,7 @@
+     y ∈ Set.range F := by
+   classical
+   let g : ℂ → ℂ := fun z => if hz:z∈Q then F ⟨z,hz⟩ else 0
+-  have ge (z : ℂ) (hz : z∈Q) : g z=F ⟨z,hz⟩ := dite_eq_left hz
++  have ge (z : ℂ) (hz : z∈Q) : g z=F ⟨z,hz⟩ := dif_pos hz
+   have hgc : ContinuousOn g (Metric.ball y 4) := by
+     rw [continuousOn_iff_continuous_domRestrict]
+     have hh := hc.comp (continuous_subtype_val.subtype_mk (fun z : Metric.ball y 4 => hQ z.property))
+@@ -368,7 +368,7 @@
+     have hzu : z∈U i := hw i (subset_closure hz)
+     have hp : p i∈U i := by
+       dsimp [p]
+-      rw [dite_eq_left ⟨z,hzu⟩]
++      rw [dif_pos ⟨z,hzu⟩]
+       exact Classical.choose_spec _
+     exact hd i _ hp z hzu
+ lemma compact_open_cover_impossible {ι : Type*} {Q : Set ℂ}
+
+--- a/OAI/Geometry/PlaneColoring/Transitions.lean
++++ b/OAI/Geometry/PlaneColoring/Transitions.lean
+@@ -48,7 +48,7 @@
+       simp only [sub_add_cancel_left,norm_neg]
+       exact Circle.norm_coe _
+     exact weak_density_proper c hc hw (c q) hd hq (by simpa only [Typical,he] using ht)
+-  simp only [sampleFn,Complex.ofReal_one,one_mul,ite_eq_right hn,Pi.zero_apply]
++  simp only [sampleFn,Complex.ofReal_one,one_mul,if_neg hn,Pi.zero_apply]
+ lemma exists_energy_small {X : Type*} [MeasurableSpace X] (μ : Measure X)
+     {T : Set X} (hT : MeasurableSet T) (hfin : μ T < ⊤) {E : X → ℝ}
+     (hE : Integrable E μ) (hn : ∀ᵐ q ∂μ, 0≤E q) {P : X → Prop} (hP : ∀ᵐ q ∂μ, P q)
+
+--- a/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean
++++ b/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean
+@@ -180,7 +180,7 @@
+     (κ ∘ₘ ν).map q = ν := by
+   have he := congrArg Measure.fst (graph_mixture ν κ q hq hf)
+   change ((κ ∘ₘ ν).map (fun x => (q x,id x))).fst = (ν ⊗ₘ κ).fst at he
+-  simpa only [Measure.fst_map_prodMk hq measurable_id, Measure.fst_compProd] using he
++  simpa only [Measure.fst_map_prodMk (X := q) measurable_id, Measure.fst_compProd] using he
+ 
+ variable [StandardBorelSpace X] [Nonempty X] [StandardBorelSpace Y] [Nonempty Y]
+ variable (μ : Measure X) [IsProbabilityMeasure μ] (q : X → Y) (hq : Measurable q)
+
+--- a/OAI/MeasureTheory/CompactFactors/Amenability.lean
++++ b/OAI/MeasureTheory/CompactFactors/Amenability.lean
+@@ -9,6 +9,40 @@
+ 
+ open scoped RealInnerProductSpace BoundedContinuousFunction
+ namespace EuclideanFiveColor.Amenable
++
++/-- For a probability measure, `EventuallyConst s (ae μ)` forces `s` to be a.e. everything or
++a.e. nothing: in this Mathlib version `Filter.EventuallyConst f l` means `(map f l).Subsingleton`,
++i.e. some `l`-set has subsingleton image, and for `s : Set X` that image is `{⊤}`, `{⊥}` or `∅`. -/
++lemma ae_or_ae_not_of_eventuallyConst {X : Type*} [MeasurableSpace X] {μ : Measure X}
++    {s : Set X} (h : EventuallyConst s (ae μ)) :
++    (∀ᵐ x ∂μ, x ∈ s) ∨ (∀ᵐ x ∂μ, x ∉ s) := by
++  classical
++  obtain ⟨u, hu, hus⟩ := h
++  have hu1 : s ⁻¹' u ∈ ae μ := hu
++  have hu' : μ (s ⁻¹' u)ᶜ = 0 := mem_ae_iff.mp hu1
++  rcases Set.eq_empty_or_nonempty (s ⁻¹' u) with hemp | hne
++  · left
++    rw [ae_iff]
++    refine measure_mono_null ?_ hu'
++    intro y hy hyu
++    rw [hemp] at hyu
++    exact hyu
++  · obtain ⟨x, hx⟩ := hne
++    have hxA : s x ∈ u := hx
++    by_cases hxs : x ∈ s
++    · left
++      rw [ae_iff]
++      refine measure_mono_null ?_ hu'
++      intro y hy hyu
++      have h1 : s y = s x := hus hyu hxA
++      exact hy (Eq.mp h1.symm hxs)
++    · right
++      rw [ae_iff]
++      refine measure_mono_null ?_ hu'
++      intro y hy hyu
++      have h1 : s y = s x := hus hyu hxA
++      have hy' : y ∈ s := by simpa using hy
++      exact hxs (Eq.mp h1 hy')
+ variable (G : Type*) [AddCommGroup G] [TopologicalSpace G] [DiscreteTopology G]
+ 
+ def shift {E : Type*} [PseudoMetricSpace E] (g : G) (f : G →ᵇ E) : G →ᵇ E :=
+@@ -382,7 +416,10 @@
+       rw [hf g] at ha
+       exact ha.symm.mono (fun x hx =>
+         propext (show f (g +ᵥ x) ∈ A ↔ f x ∈ A by change f (g +ᵥ x) = f x at hx; rw [hx])))
+-  exact eventuallyEmptyOrUniv_iff.mp this
++  have hconst : EventuallyConst {x : X | f x ∈ A} (ae μ) := this
++  rcases ae_or_ae_not_of_eventuallyConst (μ := μ) hconst with h1 | h2
++  · exact Or.inl h1
++  · exact Or.inr h2
+ 
+ lemma inner_fixed_zero (v : Lp E 2 μ)
+     (hv : ∫ x, v x ∂μ = 0) (w : Lp E 2 μ) (hw : ∀ g : G, action μ g w = w) :
+
+--- a/OAI/MeasureTheory/CompactFactors/Approximation.lean
++++ b/OAI/MeasureTheory/CompactFactors/Approximation.lean
+@@ -100,7 +100,7 @@
+       κ y = (m : ℝ≥0∞)⁻¹ • ∑ i, Measure.dirac (g i) then h.choose else fun _ => Classical.choice inferInstance
+   refine ⟨m, hm, g, ?_⟩
+   filter_upwards [hlist] with y hy
+-  simpa only [g, dite_eq_left hy] using hy.choose_spec
++  simpa only [g, dif_pos hy] using hy.choose_spec
+ 
+ end EuclideanFiveColor.UniformEnumeration
+ 
+@@ -202,7 +202,7 @@
+   let e : Fin (Fintype.card I) ≃ I := (Fintype.equivFin I).symm
+   let V : I → Y → Fin m → ℂ := fun s y => Pi.single s.1 (Hf s.1 s.2 y)
+   have hV (s : I) : Measurable (V s) := by
+-    apply Measurable.of_eval
++    apply measurable_pi_lambda
+     intro j
+     by_cases h : s.1 = j
+     · subst j
+@@ -234,7 +234,7 @@
+       exact ((norm_le_pi_norm (a (e i).1 w) (e i).2).trans (hab (e i).1 w)).trans
+         (Finset.single_le_sum (fun j _ => hB j) (Finset.mem_univ _))
+     have ham' : Measurable (fun w i => a' w (e i)) := by
+-      apply Measurable.of_eval
++      apply measurable_pi_lambda
+       intro i
+       exact (measurable_pi_iff.mp (ham (e i).1)) (e i).2
+     let A : Y → Fin m → ℂ := fun y => ∑ s : I, a' (q y) s • V s y
+@@ -244,7 +244,7 @@
+       rw [Fintype.sum_sigma]
+       simp [a', V, Pi.single_apply]
+     have hAm : Measurable A := by
+-      apply Measurable.of_eval
++      apply measurable_pi_lambda
+       intro j
+       simp_rw [hAeq]
+       exact Finset.measurable_sum _ (fun i _ => ((measurable_pi_iff.mp (ham j)) i |>.comp hq).mul (hHm j i))
+@@ -313,6 +313,8 @@
+   have he := KernelSupport.condDistrib_equivariant μ b p hb hp
+     (MeasurableEquiv.smul k) (MeasurableEquiv.smul k) (fun d : D => k • d)
+     (measurable_const_smul k) (measurePreserving_smul k μ) (hpe k) (hbe k)
++  haveI : IsProbabilityMeasure (Measure.map p μ) :=
++    Measure.isProbabilityMeasure_map hp.aemeasurable
+   exact DifferenceInvariant.invariant (μ.map p) (condDistrib b p μ)
+     (fun y : Y => k • y) (KernelSupport.factor_smul_preserving μ p hp hpe k)
+     (scalarHom (kCoeff k)) (measurable_const_smul k) he
+@@ -347,10 +349,12 @@
+   have hHbound : ∀ y, ‖H y‖ ≤ max A 0 := by
+     intro y
+     by_cases hy : ‖H₀ y‖ ≤ max A 0
+-    · simpa only [H, ite_eq_left hy] using hy
+-    · simp only [H, ite_eq_right hy, norm_zero]
++    · simpa only [H, if_pos hy] using hy
++    · simp only [H, if_neg hy, norm_zero]
+       exact le_max_right _ _
+-  have hHeq : H =ᵐ[μ.map p] H₀ := hHB.mono fun y hy => ite_eq_left hy
++  have hHeq : H =ᵐ[μ.map p] H₀ := hHB.mono fun y hy => if_pos hy
++  haveI : IsProbabilityMeasure (Measure.map p μ) :=
++    Measure.isProbabilityMeasure_map hp.aemeasurable
+   have hv := CompactApproximation.vector_of_scalar (μ.map p) q hq hc
+   intro γ hγ
+   obtain ⟨r, B, C, Hf, hB, hC, _hHm, hHf, ha⟩ := hv m H hH ⟨max A 0, hHbound⟩ γ hγ
+@@ -401,6 +405,8 @@
+   have hpos : 0 < RelativeCenters.differenceLaw (μ.map p) (condDistrib d p μ) C :=
+     pos_iff_ne_zero.mpr hn
+   obtain ⟨b, hb, hbe, hbw, a, ha, hf⟩ := exact_finite_center_reduction μ d p hd hp hde hpe hwild hpos
++  haveI : IsProbabilityMeasure (Measure.map p μ) :=
++    Measure.isProbabilityMeasure_map hp.aemeasurable
+   obtain ⟨m, hm, g, hg⟩ := UniformEnumeration.constant_uniform_lists (μ.map p)
+     (condDistrib b p μ) a ha (hf.mono fun y ⟨S, hS, hSa, hSupp, hcS, _⟩ =>
+       ⟨S, hS, hSa, hSupp, hcS⟩)
+
+--- a/OAI/MeasureTheory/CompactFactors/Centers.lean
++++ b/OAI/MeasureTheory/CompactFactors/Centers.lean
+@@ -347,7 +347,8 @@
+   exact integral_sub (integrable_kernel _ _) (integrable_kernel _ _)
+ 
+ theorem center_translate (μ : ProbabilityMeasure ℂ) (v : ℂ) :
+-    center (μ.map (fun point => point + v)) = center μ + v := by
++    center (μ.map (f := fun point => point + v) ((continuous_id.add_const v).aemeasurable)) =
++      center μ + v := by
+   apply Eq.symm
+   apply center_unique
+   intro t
+@@ -368,7 +369,7 @@
+   simp only [kernel_orthogonal, objective]
+ 
+ theorem center_orthogonal (μ : ProbabilityMeasure ℂ) (O : ℂ ≃ₗᵢ[ℝ] ℂ) :
+-    center (μ.map O) = O (center μ) := by
++    center (μ.map (f := O) O.continuous.aemeasurable) = O (center μ) := by
+   apply Eq.symm
+   apply center_unique
+   intro t
+@@ -498,7 +499,8 @@
+     letI : IsProbabilityMeasure ((μ : Measure G)[|e.coset z]) :=
+       cond_isProbabilityMeasure h
+     ⟨((μ : Measure G)[|e.coset z]).map (fun d => e.coordinate (d / z)),
+-      inferInstance⟩
++      Measure.isProbabilityMeasure_map
++        (e.measurable_coordinate.comp (measurable_id.div_const z)).aemeasurable⟩
+ 
+ theorem frequencyLaw_measure (μ : ProbabilityMeasure G) (z : G) :
+     (e.frequencyLaw μ z : Measure ℂ) =
+@@ -507,8 +509,6 @@
+   split_ifs with h
+   · simp [frequencyLaw, h]
+   · simp [frequencyLaw, h, ProbabilityTheory.cond, frequencyMeasure]
+-    exact Measure.map_smul ((μ : Measure G) (e.coset z))⁻¹
+-      (e.measurable_coordinate.comp (measurable_id.div_const z)).aemeasurable
+ 
+ theorem measurable_frequencyLaw :
+     Measurable (fun p : ProbabilityMeasure G × G => e.frequencyLaw p.1 p.2) := by
+@@ -522,7 +522,6 @@
+     exact e.measurable_mass.inv.mul ((Measure.measurable_coe hs).comp e.measurable_frequencyMeasure)
+   exact hm.subtype_mk
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem coset_mul_j (z : G) (v : ℂ) : e.coset (z * e.j v) = e.coset z := by
+   ext d
+   have hj : e.j v ∈ e.ordinary := ⟨_, rfl⟩
+@@ -536,7 +535,6 @@
+     convert e.ordinary.div_mem h hj using 1
+     simp [div_eq_mul_inv, mul_assoc, mul_comm]
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem coordinate_div_j {d : G} (hd : d ∈ e.ordinary) (v : ℂ) :
+     e.coordinate (d / e.j v) = e.coordinate d - v := by
+   rw [← e.j_coordinate hd, ← e.j_sub, e.coordinate_j, e.coordinate_j]
+@@ -557,14 +555,14 @@
+ theorem frequencyLaw_shift (μ : ProbabilityMeasure G) (z : G) (v : ℂ)
+     (h : (μ : Measure G) (e.coset z) ≠ 0) :
+     e.frequencyLaw μ (z * e.j v) =
+-      (e.frequencyLaw μ z).map (fun point => point + -v) := by
++      (e.frequencyLaw μ z).map (f := fun point => point + -v)
++        ((continuous_id.add_const (-v)).aemeasurable) := by
+   apply Subtype.ext
+   change (e.frequencyLaw μ (z * e.j v) : Measure ℂ) =
+     Measure.map (fun t => t + -v) (e.frequencyLaw μ z : Measure ℂ)
+   rw [e.frequencyLaw_measure, e.frequencyLaw_measure, e.coset_mul_j]
+-  simp only [ite_eq_right h]
+-  rw [Measure.map_smul ((μ : Measure G) (e.coset z))⁻¹
+-    (f := fun point : ℂ => point + -v) (continuous_id.add_const (-v)).aemeasurable,
++  simp only [if_neg h]
++  rw [Measure.map_smul ((μ : Measure G) (e.coset z))⁻¹ (f := fun point : ℂ => point + -v),
+     ← e.frequencyMeasure_shift]
+ 
+ noncomputable def center (μ : ProbabilityMeasure G) (z : G) : G :=
+@@ -575,7 +573,6 @@
+   measurable_snd.mul (e.measurable_j.comp
+     (Location.measurable_center.comp e.measurable_frequencyLaw))
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem center_mem_coset (μ : ProbabilityMeasure G) (z : G) :
+     e.center μ z ∈ e.coset z := by
+   change z * e.j _ / z ∈ e.ordinary
+@@ -597,7 +594,6 @@
+   rw [he]
+   exact e.center_mul_j μ z v hz
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem quotient_center (μ : ProbabilityMeasure G) (z : G) :
+     (QuotientGroup.mk (e.center μ z) : G ⧸ e.ordinary) = QuotientGroup.mk z :=
+   QuotientGroup.eq_iff_div_mem.mpr (e.center_mem_coset μ z)
+@@ -612,7 +608,6 @@
+     rw [← e.quotient_center μ z', ← e.quotient_center μ z, h]
+   · exact e.center_eq_of_mem_coset μ hz
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem center_mem_ordinary_iff (μ : ProbabilityMeasure G) (z : G) :
+     e.center μ z ∈ e.ordinary ↔ z ∈ e.ordinary := by
+   rw [← QuotientGroup.eq_one_iff, e.quotient_center, QuotientGroup.eq_one_iff]
+@@ -631,7 +626,6 @@
+ 
+ include he
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem equiv_mem_ordinary_iff (d : G) : T d ∈ e.ordinary ↔ d ∈ e.ordinary := by
+   constructor
+   · rintro ⟨t, ht⟩
+@@ -643,14 +637,12 @@
+   · rintro ⟨t, rfl⟩
+     exact (e.mem_ordinary_iff _).mpr ⟨O (Multiplicative.toAdd t), (he _).symm⟩
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem preimage_coset_equiv (z : G) : T ⁻¹' e.coset (T z) = e.coset z := by
+   ext d
+   change T d / T z ∈ e.ordinary ↔ d / z ∈ e.ordinary
+   rw [← T.map_div]
+   exact e.equiv_mem_ordinary_iff T O he _
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem coordinate_equiv {d : G} (hd : d ∈ e.ordinary) :
+     e.coordinate (T d) = O (e.coordinate d) := by
+   obtain ⟨t, rfl⟩ := (e.mem_ordinary_iff d).mp hd
+@@ -676,22 +668,22 @@
+ include hT in
+ theorem frequencyLaw_equiv (μ : ProbabilityMeasure G) (z : G)
+     (hz : (μ : Measure G) (e.coset z) ≠ 0) :
+-    e.frequencyLaw (μ.map T) (T z) =
+-      (e.frequencyLaw μ z).map O := by
++    e.frequencyLaw (μ.map (f := T) hT.aemeasurable) (T z) =
++      (e.frequencyLaw μ z).map (f := O) O.continuous.aemeasurable := by
+   apply Subtype.ext
+-  change (e.frequencyLaw (μ.map T) (T z) : Measure ℂ) =
++  change (e.frequencyLaw (μ.map (f := T) hT.aemeasurable) (T z) : Measure ℂ) =
+     Measure.map O (e.frequencyLaw μ z : Measure ℂ)
+   rw [e.frequencyLaw_measure, e.frequencyLaw_measure, ProbabilityMeasure.toMeasure_map,
+     Measure.map_apply hT (e.measurableSet_coset _), e.preimage_coset_equiv T O he,
+     ]
+-  simp only [ite_eq_right hz]
+-  rw [Measure.map_smul _ O.continuous.aemeasurable,
++  simp only [if_neg hz]
++  rw [Measure.map_smul _ (f := O),
+     e.frequencyMeasure_equiv T O hT he]
+ 
+ include hT in
+ theorem center_equivariant (μ : ProbabilityMeasure G) (z : G)
+     (hz : (μ : Measure G) (e.coset z) ≠ 0) :
+-    e.center (μ.map T) (T z) = T (e.center μ z) := by
++    e.center (μ.map (f := T) hT.aemeasurable) (T z) = T (e.center μ z) := by
+   rw [center, e.frequencyLaw_equiv T O hT he μ z hz, Location.center_orthogonal,
+     center, T.map_mul, he]
+ 
+
+--- a/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean
++++ b/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean
+@@ -89,7 +89,7 @@
+     (clip C ((ν[R j | ℱ n]) y) : ℂ) + Complex.I * (clip C ((ν[I j | ℱ n]) y) : ℂ)
+   have hHn (n : ℕ) : Measurable[ℱ n] (Hn n) := by
+     let : MeasurableSpace Y := ℱ n
+-    apply Measurable.of_eval
++    apply measurable_pi_lambda
+     intro j
+     exact ((Complex.measurable_ofReal.comp ((continuous_clip C).measurable.comp
+       stronglyMeasurable_condExp.measurable))).add
+@@ -163,13 +163,13 @@
+   have hH₀ : Measurable H₀ := hH'.piecewise (measurableSet_le hH'.norm measurable_const) measurable_const
+   have hB₀ (z : Z n) : ‖H₀ z‖ ≤ 2*C := by
+     by_cases hz : ‖H' z‖ ≤ 2*C
+-    · simpa only [H₀, ite_eq_left hz] using hz
+-    · simp only [H₀, ite_eq_right hz, norm_zero]; positivity
++    · simpa only [H₀, if_pos hz] using hz
++    · simp only [H₀, if_neg hz, norm_zero]; positivity
+   have heq₀ (y : Y) : H₀ (p n y) = Hn n y := by
+     have hy := congrFun heq y
+     simp only [Function.comp_apply] at hy
+     have hb : ‖H' (p n y)‖ ≤ 2*C := hy ▸ hBn n y
+-    simpa only [H₀, ite_eq_left hb] using hy.symm
++    simpa only [H₀, if_pos hb] using hy.symm
+   refine ⟨n, H₀, hH₀, hB₀, ?_, ?_⟩
+   · simpa only [heq₀] using hint n
+   · simpa only [heq₀] using hn
+@@ -210,10 +210,10 @@
+   have hHbound : ∀ y, ‖H y‖ ≤ max A 0 := by
+     intro y
+     by_cases hy : ‖H₀ y‖ ≤ max A 0
+-    · simpa only [H, ite_eq_left hy] using hy
+-    · simp only [H, ite_eq_right hy, norm_zero]
++    · simpa only [H, if_pos hy] using hy
++    · simp only [H, if_neg hy, norm_zero]
+       exact le_max_right _ _
+-  exact ⟨H, hH, ⟨max A 0, le_max_right _ _, hHbound⟩, hHB.mono fun y hy => ite_eq_left hy⟩
++  exact ⟨H, hH, ⟨max A 0, le_max_right _ _, hHbound⟩, hHB.mono fun y hy => if_pos hy⟩
+ 
+ lemma finite_encoding_at_of_approximation
+     (μ : Measure X) [IsProbabilityMeasure μ] [SMulInvariantMeasure K X μ]
+@@ -226,7 +226,7 @@
+     (γ : ℝ) (ha : CompactApproximation.At (K := K) (μ.map p) q m H γ) :
+     FiniteEncodingApproximationAt μ p q b m γ := by
+   classical
+-  let : IsProbabilityMeasure (μ.map p) := inferInstance
++  let : IsProbabilityMeasure (μ.map p) := Measure.isProbabilityMeasure_map (by fun_prop)
+   obtain ⟨r, B, C, Hf, hB, hC, _hHm, hHf, ha⟩ := ha
+   refine ⟨r, B, C, Hf, hB, hC, hHf, ?_⟩
+   intro k
+@@ -289,7 +289,7 @@
+         (condDistrib b ((q n ∘ v n) ∘ p) μ) C = 0) :
+     DifferenceFourier.differenceLaw (μ.map p) (condDistrib d p μ) C = 0 := by
+   classical
+-  let : IsProbabilityMeasure (μ.map p) := inferInstance
++  let : IsProbabilityMeasure (μ.map p) := Measure.isProbabilityMeasure_map (by fun_prop)
+   by_contra hn
+   have hpos : 0 < RelativeCenters.differenceLaw (μ.map p) (condDistrib d p μ) C :=
+     pos_iff_ne_zero.mpr hn
+@@ -303,7 +303,8 @@
+   obtain ⟨H, hH, ⟨A, hA, hHB⟩, hHeq⟩ := bounded_phase_encoding μ p b m hm g hg
+   obtain ⟨n, H₀, hH₀, hH₀B, hi, he⟩ := LimitDensity.generated_factor_approximation
+     (μ.map p) v hv hmono hgen m H hH A hA hHB (γ/2) (by positivity)
+-  let : IsProbabilityMeasure ((μ.map p).map (v n)) := inferInstance
++  let : IsProbabilityMeasure ((μ.map p).map (v n)) :=
++    Measure.isProbabilityMeasure_map (hv n).aemeasurable
+   have hvector := CompactApproximation.vector_of_scalar ((μ.map p).map (v n)) (q n) (hq n) (hc n)
+   have happ := CompactApproximation.lift_at (μ.map p) (v n) (q n) (hv n) (hq n)
+     (KernelSupport.factor_smul_preserving μ p hp hpe) (hve n) m H H₀ hH hH₀
+@@ -353,7 +354,7 @@
+     (b : X → D) (hb : Measurable b) (y₀ : Y) (hw : IsWild (μ.map b)) :
+     DifferenceFourier.differenceLaw (μ.map (fun _ : X => y₀))
+       (condDistrib b (fun _ : X => y₀) μ) C = 0 := by
+-  let : IsProbabilityMeasure (μ.map b) := inferInstance
++  let : IsProbabilityMeasure (μ.map b) := Measure.isProbabilityMeasure_map (by fun_prop)
+   rw [DifferenceFourier.differenceLaw, ConditionalBase.prod_given_const μ b hb y₀,
+     Measure.map_apply (f := fun p : D × D => p.1 / p.2) (measurable_fst.div measurable_snd) measurableSet_C]
+   exact wild_independent_difference (μ.map b) hw
+@@ -399,7 +400,7 @@
+   classical
+   let P : X → W := q
+   have hP : Measurable P := hq
+-  let : IsProbabilityMeasure (μ.map P) := inferInstance
++  let : IsProbabilityMeasure (μ.map P) := Measure.isProbabilityMeasure_map (by fun_prop)
+   let ν := DifferenceFourier.differenceLaw (μ.map P) (condDistrib b P μ)
+   let : IsProbabilityMeasure ν := inferInstance
+   have hn (a : E) : 0 ≤ (∫ d, (eval a d : ℂ) ∂ν).re := by
+@@ -559,7 +560,7 @@
+   refine ⟨1, max 0 B, 1, fun _ _ => 1, le_max_left _ _, by norm_num,
+     fun _ => measurable_const, fun _ => by simp, ?_⟩
+   intro k
+-  refine ⟨fun y _ => H (k • y), Measurable.of_eval (fun _ => hH.comp (measurable_const_smul k)),
++  refine ⟨fun y _ => H (k • y), measurable_pi_lambda _ (fun _ => hH.comp (measurable_const_smul k)),
+     fun y => ?_, ?_, ?_⟩
+   · rw [pi_norm_le_iff_of_nonneg (le_max_left _ _)]
+     exact fun _ => (hB _).trans (le_max_right _ _)
+@@ -636,7 +637,7 @@
+           Integrable (fun x => dist (H (p x)) (H₀ (q x))^2) μ ∧
+           (∫ x, dist (H (p x)) (H₀ (q x))^2 ∂μ) < ε^2) :
+     DifferenceFourier.differenceLaw (μ.map p) (condDistrib d p μ) C = 0 := by
+-  let : IsProbabilityMeasure (μ.map p) := inferInstance
++  let : IsProbabilityMeasure (μ.map p) := Measure.isProbabilityMeasure_map (by fun_prop)
+   by_contra hn
+   have hpos : 0 < RelativeCenters.differenceLaw (μ.map p) (condDistrib d p μ) C :=
+     pos_iff_ne_zero.mpr hn
+@@ -649,7 +650,7 @@
+   have hγ : 0 < γ := by dsimp [γ]; positivity
+   obtain ⟨H, hH, ⟨A, _hA, hHB⟩, hHeq⟩ := bounded_phase_encoding μ p b m hm g hg
+   obtain ⟨q, hq, hqe, hprev, H₀, hH₀, hH₀B, hi, he⟩ := ha m H hH ⟨A,hHB⟩ (γ/2) (by positivity)
+-  let : IsProbabilityMeasure (μ.map q) := inferInstance
++  let : IsProbabilityMeasure (μ.map q) := Measure.isProbabilityMeasure_map (by fun_prop)
+   have happ := CompactApproximation.lift_at μ q id hq measurable_id
+     (fun k => measurePreserving_smul k μ) hqe m (H ∘ p) H₀ (hH.comp hp) hH₀ hH₀B γ hγ hi he
+     (CompactApproximation.vector_of_scalar (μ.map q) id measurable_id
+
+--- a/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean
++++ b/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean
+@@ -197,7 +197,7 @@
+ lemma map_identity_fiber (μ : Measure X) [IsFiniteMeasure μ]
+     (p : X → W) (hp : AEMeasurable p μ) (b : X → G) (hb : Measurable b) :
+     ∀ᵐ w ∂μ.map p, (condDistrib id p μ w).map b = condDistrib b p μ w := by
+-  filter_upwards [condDistrib_comp hp
++  filter_upwards [condDistrib_comp (X := p)
+     (measurable_id.aemeasurable (μ := μ)) hb] with w hw
+   simpa [Kernel.map_apply _ hb] using hw.symm
+ 
+@@ -206,7 +206,7 @@
+     (μ : Measure X) [IsFiniteMeasure μ] (p : X → W) (hp : Measurable p) :
+     ∀ᵐ w ∂μ.map p, ∀ᵐ x ∂condDistrib id p μ w, p x = w := by
+   filter_upwards [map_identity_fiber μ p hp.aemeasurable p hp,
+-    condDistrib_self hp.aemeasurable] with w hw hs
++    condDistrib_self p] with w hw hs
+   have he : (condDistrib id p μ w).map p = Measure.dirac w := by
+     rw [hw, hs]; rfl
+   apply ae_of_ae_map (p := fun z : W => z = w) hp.aemeasurable
+@@ -326,6 +326,8 @@
+     filter_upwards [ae_fiber_of_ae μ p hp henc, ae_fiber_of_ae μ p hp hmem,
+       hcondp, hcondm, hbin, hupper] with w h₁ h₂ h₃ h₄ h₅ h₆
+     exact ⟨h₁, h₂, h₃, h₄, h₅, h₆⟩
++  haveI : IsProbabilityMeasure (Measure.map p μ) :=
++    Measure.isProbabilityMeasure_map hp.aemeasurable
+   obtain ⟨w, ⟨hwenc, hwmem, hwIp, hwIm, hwbin, hwup⟩, hwf, hmany⟩ :=
+     GoodFiber.simultaneous_good_fiber (μ.map p) f e c (τ^2) hc (sq_pos_of_pos hτ)
+       hf he hf0 (Filter.Eventually.of_forall he0) hbudget' P hP
+
+--- a/OAI/MeasureTheory/CompactFactors/Factors.lean
++++ b/OAI/MeasureTheory/CompactFactors/Factors.lean
+@@ -90,7 +90,7 @@
+ omit [MulAction K Y] [MeasurableSpace Y] in
+ lemma measurable_orbit [Countable K] [MeasurableConstSMul K X]
+     {H : X → ℂ} (hH : Measurable H) : Measurable (orbit (K := K) H) :=
+-  OrbitSpace.measurable_mk.comp (Measurable.of_eval fun k => hH.comp (measurable_const_smul k))
++  OrbitSpace.measurable_mk.comp (measurable_pi_lambda _ fun k => hH.comp (measurable_const_smul k))
+ 
+ omit [MulAction K Y] [MeasurableSpace X] [MeasurableSpace Y] in
+ lemma orbit_equivariant (H : X → ℂ) (k : K) (x : X) :
+@@ -137,7 +137,7 @@
+   have hHm := measurable_compactSigma hq hpres hH hc
+   have hpm : @Measurable X (K → ℂ) (compactSigma μ q hq hpres) inferInstance
+       (fun x k => H (k • x)) :=
+-    @Measurable.of_eval X K (fun _ => ℂ) (compactSigma μ q hq hpres) (fun _ => inferInstance) _ (fun k => hHm.comp (measurable_shift_compactSigma hq hpres k))
++    @measurable_pi_lambda X K (fun _ => ℂ) (compactSigma μ q hq hpres) (fun _ => inferInstance) _ (fun k => hHm.comp (measurable_shift_compactSigma hq hpres k))
+   exact (measurable_base_compactSigma hq hpres hqcov).prodMk
+     (OrbitSpace.measurable_mk.comp hpm)
+ 
+@@ -356,14 +356,14 @@
+ def truncate (n : ℕ) (y : ℕ → Y) : Fin n → Y := fun i => y i
+ 
+ lemma truncate_measurable (n : ℕ) : Measurable (truncate (Y := Y) n) :=
+-  Measurable.of_eval fun i => measurable_pi_apply (i : ℕ)
++  measurable_pi_lambda _ fun i => measurable_pi_apply (i : ℕ)
+ 
+ lemma truncate_mono : Monotone (fun n => (inferInstance : MeasurableSpace (Fin n → Y)).comap (truncate n)) := by
+   intro n m hnm
+   rw [← measurable_iff_comap_le]
+   have hm : Measurable[(inferInstance : MeasurableSpace (Fin m → Y)).comap (truncate m)]
+       (truncate (Y := Y) m) := Measurable.of_comap_le le_rfl
+-  refine @Measurable.of_eval (ℕ → Y) (Fin n) (fun _ => Y)
++  refine @measurable_pi_lambda (ℕ → Y) (Fin n) (fun _ => Y)
+     (MeasurableSpace.comap (truncate m) inferInstance) (fun _ => inferInstance) (truncate n) ?_
+   intro i
+   exact (measurable_pi_apply (⟨i, lt_of_lt_of_le i.isLt hnm⟩ : Fin m)).comp hm
+@@ -375,7 +375,7 @@
+       (truncate (Y := Y) n) := Measurable.of_comap_le (le_iSup (fun n => MeasurableSpace.comap (truncate (Y := Y) n) (inferInstance : MeasurableSpace (Fin n → Y))) n)
+   have hi : Measurable[⨆ n, (inferInstance : MeasurableSpace (Fin n → Y)).comap (truncate n)]
+       (id : (ℕ → Y) → (ℕ → Y)) := by
+-    refine @Measurable.of_eval (ℕ → Y) ℕ (fun _ => Y)
++    refine @measurable_pi_lambda (ℕ → Y) ℕ (fun _ => Y)
+       (⨆ n, MeasurableSpace.comap (truncate n) (inferInstance : MeasurableSpace (Fin n → Y)))
+       (fun _ => inferInstance) id ?_
+     intro n
+@@ -404,7 +404,7 @@
+ 
+ omit [StandardBorelSpace Y] [Nonempty Y] in
+ lemma joint_measurable (q : ℕ → X → Y) (hq : ∀ n, Measurable (q n)) : Measurable (joint q) :=
+-  Measurable.of_eval hq
++  measurable_pi_lambda _ hq
+ 
+ omit [Nonempty Y] [MulAction K Y] [MeasurableConstSMul K Y] in
+ lemma code_measurable (q : ℕ → X → Y) (hq : ∀ n, Measurable (q n)) : Measurable (code (K := K) q) :=
+@@ -470,6 +470,7 @@
+   have hJ := joint_measurable q hq
+   let E : (ℕ → Y) → OrbitSpace K := FactorCode.encode id
+   have hE : Measurable E := FactorCode.encode_measurable measurable_id
++  haveI : IsProbabilityMeasure (μ.map J) := Measure.isProbabilityMeasure_map hJ.aemeasurable
+   obtain ⟨n, Hn, hHn, hHnB, hi, he⟩ := CountableApprox.bounded_approximation (μ.map J)
+     m (H ∘ E) (hH.comp hE) C' hC' (fun y => (hC _).trans (le_max_left _ _)) ε hε
+   obtain ⟨j, hj⟩ := finite_upper μ q hc n
+@@ -477,7 +478,7 @@
+     FactorLp.factor_of_le μ (q i) (q j) (hq i) (hj i i.isLt)
+   choose r hr hre using hfac
+   let R : Y → Fin n → Y := fun y i => r i y
+-  have hR : Measurable R := Measurable.of_eval hr
++  have hR : Measurable R := measurable_pi_lambda _ hr
+   have hEq := FactorCode.encode_as_comp (K := K) μ J (joint_equivariant μ q hqe)
+   have hEq' : (fun x => dist ((H ∘ E) (J x)) (Hn (CountableApprox.truncate n (J x)))^2) =ᵐ[μ]
+       (fun x => dist (H (code q x)) ((Hn ∘ R) (q j x))^2) := by
+
+--- a/OAI/MeasureTheory/CompactFactors/Functions.lean
++++ b/OAI/MeasureTheory/CompactFactors/Functions.lean
+@@ -69,7 +69,7 @@
+   · intro k
+     obtain ⟨a, ham, hab, hai, hae⟩ := ha k
+     have hs (x : X) : (∑ i, a (q x) (e i) * Hf (e i) x) = ∑ i, a (q x) i * Hf i x := e.sum_comp (fun i => a (q x) i * Hf i x)
+-    refine ⟨fun y i => a y (e i), Measurable.of_eval (fun i => (measurable_pi_iff.mp ham) (e i)), ?_, ?_, ?_⟩
++    refine ⟨fun y i => a y (e i), measurable_pi_lambda _ (fun i => (measurable_pi_iff.mp ham) (e i)), ?_, ?_, ?_⟩
+     · intro y
+       rw [pi_norm_le_iff_of_nonneg hB]
+       exact fun i => (norm_le_pi_norm (a y) (e i)).trans (hab y)
+@@ -118,7 +118,7 @@
+   · intro x; simpa using hb x
+   · intro k
+     obtain ⟨a, ham, hab, hai, hae⟩ := ha k
+-    refine ⟨fun y i => star (a y i), (Measurable.of_eval (fun i => Complex.continuous_conj.measurable.comp ((measurable_pi_iff.mp ham) i))), ?_, ?_, ?_⟩
++    refine ⟨fun y i => star (a y i), (measurable_pi_lambda _ (fun i => Complex.continuous_conj.measurable.comp ((measurable_pi_iff.mp ham) i))), ?_, ?_, ?_⟩
+     · intro y
+       rw [pi_norm_le_iff_of_nonneg hB]
+       intro i
+@@ -150,7 +150,7 @@
+     obtain ⟨b, hbm, hbb, hbi, hbe⟩ := hd k
+     let A : Y → Fin r ⊕ Fin s → ℂ := fun y => Sum.elim (a y) (b y)
+     have hAm : Measurable A := by
+-      apply Measurable.of_eval
++      apply measurable_pi_lambda
+       intro i
+       cases i with
+       | inl i => exact (measurable_pi_iff.mp ham) i
+@@ -209,7 +209,7 @@
+     obtain ⟨a, ham, hab, hai, hae⟩ := ha k
+     obtain ⟨b, hbm, hbb, hbi, hbe⟩ := hd k
+     let A : Y → Fin r × Fin s → ℂ := fun y i => a y i.1 * b y i.2
+-    have hAm : Measurable A := Measurable.of_eval (fun i =>
++    have hAm : Measurable A := measurable_pi_lambda _ (fun i =>
+       ((measurable_pi_iff.mp ham) i.1).mul ((measurable_pi_iff.mp hbm) i.2))
+     have hAb (y : Y) : ‖A y‖ ≤ B*D := by
+       rw [pi_norm_le_iff_of_nonneg (mul_nonneg hB hD)]
+@@ -444,7 +444,7 @@
+     obtain ⟨a, ham, hab, hai, hae⟩ := ha k
+     obtain ⟨b, hbm, hbd⟩ := hquant a ham hab
+     let A : Y → Fin n → ℂ := fun y i => if b y = i then 1 else 0
+-    have hAm : Measurable A := Measurable.of_eval (fun i =>
++    have hAm : Measurable A := measurable_pi_lambda _ (fun i =>
+       measurable_const.piecewise (hbm (measurableSet_singleton i)) measurable_const)
+     have hAb (y : Y) : ‖A y‖ ≤ 1 := by
+       rw [pi_norm_le_iff_of_nonneg (by norm_num)]
+@@ -548,8 +548,8 @@
+   have hδ (n : ℕ) : 0 < δ n := by dsimp [δ]; positivity
+   let f : ℕ → ℂ → ℂ := fun n z => ((thickenedIndicator (hδ n) t z : ℝ) : ℂ)
+   have hf (n : ℕ) : LipschitzWith ((δ n).toNNReal⁻¹) (f n) := by
+-    have h := Complex.isometry_ofReal.lipschitzWith.comp
+-      (NNReal.isometry_coe.lipschitzWith.comp (lipschitzWith_thickenedIndicator (hδ n) t))
++    have h := Complex.isometry_ofReal.lipschitz.comp
++      (NNReal.isometry_coe.lipschitz.comp (lipschitzWith_thickenedIndicator (hδ n) t))
+     simpa only [one_mul, Function.comp_def] using h
+   have hfb (n : ℕ) (z : ℂ) : ‖f n z‖ ≤ 1 := by
+     dsimp [f]
+@@ -585,7 +585,7 @@
+     [MeasurableConstSMul K X]
+     (hq : Measurable q) (hm : Measurable H) (hc : Compact (K := K) μ q H) :
+     Compact (K := K) μ q (fun x => -H x) := by
+-  have h := compact_lipschitz hq hm hc (fun z : ℂ => -z) 1 isometry_neg.lipschitzWith
++  have h := compact_lipschitz hq hm hc (fun z : ℂ => -z) 1 isometry_neg.lipschitz
+   exact h
+ 
+ omit [MeasurableSpace X] in
+@@ -730,7 +730,7 @@
+   apply at_of_finite (I := Unit) B 1 (fun _ _ => 1) hB (by norm_num) (fun _ => measurable_const)
+   · intro x; simp
+   · intro k
+-    refine ⟨fun y _ => b (k • y), Measurable.of_eval (fun _ => hbm.comp (measurable_const_smul k)), ?_, ?_, ?_⟩
++    refine ⟨fun y _ => b (k • y), measurable_pi_lambda _ (fun _ => hbm.comp (measurable_const_smul k)), ?_, ?_, ?_⟩
+     · intro y; simpa using hb (k • y)
+     · apply (integrable_zero X ℝ μ).congr
+       filter_upwards [hqcov k] with x hx
+@@ -809,7 +809,7 @@
+     Compact (K := K) (μ.map π) p H := by
+   let κ := condDistrib id π μ
+   let ν := μ.map π
+-  let : IsProbabilityMeasure ν := inferInstance
++  let : IsProbabilityMeasure ν := Measure.isProbabilityMeasure_map (by fun_prop)
+   intro ε hε
+   obtain ⟨r, B, C, F, hB, hC, hFm, hFb, ha⟩ := hc ε hε
+   have hFC (i : Fin r) (x : X) : ‖F i x‖ ≤ C :=
+
+--- a/OAI/MeasureTheory/CompactFactors/Kernels.lean
++++ b/OAI/MeasureTheory/CompactFactors/Kernels.lean
+@@ -167,7 +167,7 @@
+ 
+ lemma measurable_code (n : ℕ) : Measurable (code X n) := by
+   classical
+-  apply Measurable.of_eval
++  apply measurable_pi_lambda
+   intro i
+   exact measurable_const.piecewise (MeasurableSpace.measurableSet_natGeneratingSequence (α := X) i) measurable_const
+ 
+@@ -228,7 +228,7 @@
+       Integrable (fun z => ‖L z - a (pairCode n z)‖^2) ν ∧
+       (∫ z, ‖L z - a (pairCode n z)‖^2 ∂ν) < ε^2 := by
+   let H : X × Y → Fin 1 → ℂ := fun z _ => L z
+-  have hH : Measurable H := Measurable.of_eval fun _ => hL
++  have hH : Measurable H := measurable_pi_lambda _ fun _ => hL
+   have hHB (z : X × Y) : ‖H z‖ ≤ C := by
+     rw [pi_norm_le_iff_of_nonneg hC]; intro i; exact hLC z
+   obtain ⟨n, H₀, _, hB, hi, he⟩ := LimitDensity.generated_factor_approximation ν
+@@ -295,7 +295,7 @@
+     rw [norm_mul]
+     exact (mul_le_mul_of_nonneg_left (hfB x') (norm_nonneg _)).trans (by simpa using hB (e i, code X n x'))
+   have ha : Measurable a := by
+-    apply Measurable.of_eval
++    apply measurable_pi_lambda
+     intro i
+     exact (hm i).stronglyMeasurable.integral_kernel.measurable
+   have haB (y : Y) : ‖a y‖ ≤ 2*C := by
+@@ -499,6 +499,46 @@
+   apply hn
+   exact ⟨fun hs hi => h _ hs hi⟩
+ 
++lemma eventuallyConst_set_iff {X₀ : Type*} [MeasurableSpace X₀] {μ₀ : Measure X₀}
++    {s : Set X₀} :
++    EventuallyConst s (ae μ₀) ↔ (∀ᵐ x ∂μ₀, x ∈ s) ∨ (∀ᵐ x ∂μ₀, x ∉ s) := by
++  classical
++  constructor
++  · intro h
++    obtain ⟨u, hu, hus⟩ := h
++    have hu1 : s ⁻¹' u ∈ ae μ₀ := hu
++    have hu' : μ₀ (s ⁻¹' u)ᶜ = 0 := mem_ae_iff.mp hu1
++    rcases Set.eq_empty_or_nonempty (s ⁻¹' u) with hemp | hne
++    · left
++      rw [ae_iff]
++      refine measure_mono_null ?_ hu'
++      intro y hy hyu
++      rw [hemp] at hyu
++      exact hyu
++    · obtain ⟨x, hx⟩ := hne
++      have hxA : s x ∈ u := hx
++      by_cases hxs : x ∈ s
++      · left
++        rw [ae_iff]
++        refine measure_mono_null ?_ hu'
++        intro y hy hyu
++        have h1 : s y = s x := hus hyu hxA
++        exact hy (Eq.mp h1.symm hxs)
++      · right
++        rw [ae_iff]
++        refine measure_mono_null ?_ hu'
++        intro y hy hyu
++        have h1 : s y = s x := hus hyu hxA
++        have hy' : y ∈ s := by simpa using hy
++        exact hxs (Eq.mp h1 hy')
++  · rintro (hs | hs)
++    · refine ⟨(fun x => x ∈ s) '' {x | x ∈ s}, Filter.image_mem_map hs, ?_⟩
++      rintro p ⟨x, hx, rfl⟩ q ⟨y, hy, rfl⟩
++      exact propext ⟨fun _ => hy, fun _ => hx⟩
++    · refine ⟨(fun x => x ∈ s) '' {x | x ∉ s}, Filter.image_mem_map hs, ?_⟩
++      rintro p ⟨x, hx, rfl⟩ q ⟨y, hy, rfl⟩
++      exact propext ⟨fun h => absurd h hx, fun h => absurd h hy⟩
++
+ omit [MeasurableConstSMul K X] [MeasurableConstSMul K Y] in
+ lemma indicator_not_constant (ν : Measure (X × X)) (s : Set (X × X))
+     (hn : ¬ EventuallyConst s (ae ν)) (c : ℂ) :
+@@ -506,8 +546,7 @@
+   classical
+   intro he
+   apply hn
+-  change EventuallyEmptyOrUniv s (ae ν)
+-  rw [eventuallyEmptyOrUniv_iff]
++  rw [eventuallyConst_set_iff]
+   by_cases hc : c = 0
+   · right
+     filter_upwards [he] with x hx
+
+--- a/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean
++++ b/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean
+@@ -100,7 +100,7 @@
+ omit [MeasurableSingletonClass G] in
+ /-- Wildness survives the measurable recentering construction. -/
+ theorem center_law_ordinary (μ : ProbabilityMeasure G) :
+-    (μ.map (e.center μ) : Measure G) e.ordinary =
++    (μ.map (f := e.center μ) (e.measurable_center_fixed μ).aemeasurable : Measure G) e.ordinary =
+       (μ : Measure G) e.ordinary := by
+   rw [ProbabilityMeasure.toMeasure_map,
+     Measure.map_apply (e.measurable_center_fixed μ) e.measurableSet_ordinary]
+@@ -118,6 +118,37 @@
+ 
+ /-- The invariant-function consequence of group-action ergodicity,
+ with an individual almost-everywhere identity for each group element. -/
++lemma ae_or_ae_not_of_eventuallyConst {Ω₀ : Type*} [MeasurableSpace Ω₀]
++    {μ₀ : Measure Ω₀} {s : Set Ω₀} (h : EventuallyConst s (ae μ₀)) :
++    (∀ᵐ x ∂μ₀, x ∈ s) ∨ (∀ᵐ x ∂μ₀, x ∉ s) := by
++  classical
++  obtain ⟨u, hu, hus⟩ := h
++  have hu1 : s ⁻¹' u ∈ ae μ₀ := hu
++  have hu' : μ₀ (s ⁻¹' u)ᶜ = 0 := mem_ae_iff.mp hu1
++  rcases Set.eq_empty_or_nonempty (s ⁻¹' u) with hemp | hne
++  · left
++    rw [ae_iff]
++    refine measure_mono_null ?_ hu'
++    intro y hy hyu
++    rw [hemp] at hyu
++    exact hyu
++  · obtain ⟨x, hx⟩ := hne
++    have hxA : s x ∈ u := hx
++    by_cases hxs : x ∈ s
++    · left
++      rw [ae_iff]
++      refine measure_mono_null ?_ hu'
++      intro y hy hyu
++      have h1 : s y = s x := hus hyu hxA
++      exact hy (Eq.mp h1.symm hxs)
++    · right
++      rw [ae_iff]
++      refine measure_mono_null ?_ hu'
++      intro y hy hyu
++      have h1 : s y = s x := hus hyu hxA
++      have hy' : y ∈ s := by simpa using hy
++      exact hxs (Eq.mp h1 hy')
++
+ theorem ae_eq_const_of_invariant {f : X → V} (hf : Measurable f)
+     (hi : ∀ k : K, ∀ᵐ x ∂μ, f (k • x) = f x) :
+     ∃ v : V, f =ᵐ[μ] (fun _ => v) := by
+@@ -126,7 +157,7 @@
+   have h := ErgodicSMul.aeconst_of_forall_preimage_smul_ae_eq (G := K)
+     (hf hA) (fun k => (hi k).mono (fun x hx => by
+       exact propext (show f (k • x) ∈ A ↔ f x ∈ A by rw [hx])))
+-  exact eventuallyEmptyOrUniv_iff.mp h
++  exact ae_or_ae_not_of_eventuallyConst h
+ 
+ end EuclideanFiveColor.ErgodicSupport
+ 
+@@ -160,7 +191,7 @@
+   apply condDistrib_ae_eq_of_measure_eq_compProd_of_measurable
+     (R.measurable.comp hp) hf
+   rw [← Measure.map_map R.measurable hp, compProd_map_base,
+-    compProd_map_condDistrib hp.aemeasurable hf.aemeasurable,
++    compProd_map_condDistrib hf.aemeasurable,
+     Measure.map_map (R.measurable.prodMap measurable_id) (hp.prodMk hf)]
+   rfl
+ 
+@@ -186,7 +217,9 @@
+   have hh : μ.map (R ∘ p) = μ.map p := by
+     rw [← Measure.map_map R.measurable hp, hR]
+   rw [hh] at hc
+-  have he := condDistrib_comp (μ := μ) hp.aemeasurable hf.aemeasurable hT
++  have he : ⇑(condDistrib (T ∘ f) p μ) =ᵐ[Measure.map p μ]
++      ⇑((condDistrib f p μ).map T) :=
++    condDistrib_comp (μ := μ) (X := p) hf.aemeasurable hT
+   have hcomp : ∀ᵐ y ∂μ.map p,
+       condDistrib f p μ y = (condDistrib f p μ (R.symm y)).map T := by
+     have he' : ∀ᵐ y ∂μ.map p,
+@@ -258,7 +291,7 @@
+     (d : X → G) (p : X → Y) (hd : Measurable d) (hp : Measurable p) :
+     differenceLaw (μ.map p) (condDistrib d p μ) e.ordinary =
+       ∫⁻ x, cosetMass e (condDistrib d p μ) (p x, d x) ∂μ := by
+-  rw [differenceLaw_ordinary, compProd_map_condDistrib hp.aemeasurable hd.aemeasurable,
++  rw [differenceLaw_ordinary, compProd_map_condDistrib hd.aemeasurable,
+     lintegral_map (measurable_cosetMass e _) (hp.prodMk hd)]
+ 
+ /-- Positive relative mass and ergodicity force a fixed positive mass for almost
+@@ -290,7 +323,7 @@
+   refine ⟨a, hapos, ha, ?_⟩
+   have hpair : ∀ᵐ q ∂(μ.map p) ⊗ₘ condDistrib d p μ,
+       cosetMass e (condDistrib d p μ) q = a := by
+-    rw [compProd_map_condDistrib hp.aemeasurable hd.aemeasurable]
++    rw [compProd_map_condDistrib hd.aemeasurable]
+     exact (ae_map_iff (hp.prodMk hd).aemeasurable
+       (measurableSet_eq_fun (measurable_cosetMass e _) measurable_const)).mpr ha
+   have hany := Measure.ae_ae_of_ae_compProd hpair
+@@ -340,7 +373,6 @@
+     Measurable (centerMap e μ d p) :=
+   e.measurable_center.comp (((measurable_probabilityKernel _).comp hp).prodMk hd)
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ lemma centerMap_mem_ordinary_iff [StandardBorelSpace G]
+     (μ : Measure X) [IsProbabilityMeasure μ] (d : X → G) (p : X → Y) (x : X) :
+     centerMap e μ d p x ∈ e.ordinary ↔ d x ∈ e.ordinary :=
+@@ -379,7 +411,7 @@
+   filter_upwards [hxk, hde k, hpe k, ha] with x hx hd' hp' ha'
+   have hprob : probabilityKernel (condDistrib d p μ) (k • p x) =
+       (probabilityKernel (condDistrib d p μ) (p x)).map
+-        (fun point : G => k • point) := by
++        (f := fun point : G => k • point) (measurable_const_smul k).aemeasurable := by
+     apply Subtype.ext
+     exact hx
+   change e.center (probabilityKernel (condDistrib d p μ) (p (k • x))) (d (k • x)) = _
+@@ -440,7 +472,7 @@
+   apply condDistrib_ae_eq_of_measure_eq_compProd_of_measurable
+     hp (measurable_centerMap e μ d p hd hp)
+   rw [centerKernel, compProd_dependentMap (μ.map p) (condDistrib d p μ) _
+-    (measurable_fiberCenter e _), compProd_map_condDistrib hp.aemeasurable hd.aemeasurable,
++    (measurable_fiberCenter e _), compProd_map_condDistrib hd.aemeasurable,
+     Measure.map_map (measurable_fst.prodMk (measurable_fiberCenter e _)) (hp.prodMk hd)]
+   rfl
+ 
+
+--- a/OAI/MeasureTheory/CompactFactors/Separability.lean
++++ b/OAI/MeasureTheory/CompactFactors/Separability.lean
+@@ -313,14 +313,14 @@
+         apply ih e he ψ _ had
+         obtain ⟨i,hit⟩ := Finset.nonempty_iff_ne_empty.mpr htn
+         refine ⟨i,hte hit, ?_⟩
+-        rw [ite_eq_left hit]
++        rw [if_pos hit]
+         exact center_project_l2 μ q hq (F h i)
+       let C : ℝ := ∏ i∈e, (bound (f i) : ℝ)^2
+       have hCb (h u : G) (x : X) :
+           ‖(∏ i∈e, Family.orbit (ψ i) (project μ q hq (F h i))) u x‖ ≤ C := by
+         simp only [Family.prod_apply, Family.orbit_apply, func_prod_apply]
+         rw [norm_prod]
+-        apply Finset.prod_le_prod₀ (fun index _ => norm_nonneg _)
++        apply Finset.prod_le_prod (fun index _ => norm_nonneg _)
+         intro i _
+         apply project_bound μ q hq
+         intro z
+@@ -552,7 +552,9 @@
+ include hqcov in
+ lemma covariance_mean_zero (M : Amenable.Mean G) (hp : PairVanishing μ q hq M)
+     (φ : G →+ G) (hs : Function.Surjective φ) (v w : Func X) :
+-    Family.meanNorm (μ.map q) M (covariance μ q φ v w) = 0 := by
++    (letI : IsProbabilityMeasure (μ.map q) := Measure.isProbabilityMeasure_map hq.aemeasurable
++     Family.meanNorm (μ.map q) M (covariance μ q φ v w)) = 0 := by
++  haveI : IsProbabilityMeasure (μ.map q) := Measure.isProbabilityMeasure_map hq.aemeasurable
+   rw [Family.meanNorm_congr (μ.map q) M (F := covariance μ q φ v w)
+     (H := Family.conditional μ q (Family.const v * Family.orbit φ (w-project μ q hq w)))
+     (fun g => by

@@ -1,0 +1,110 @@
+{
+ "updated_utc": "2026-11-14T08:46:57Z",
+ "status": "completed_block",
+ "summary": "Analysis block, no computation. The null-set transfer lemma is VALID. If Z satisfies 'for every finite F there is t with (F+t) cap Z = empty' (implied by Z null, with a conull set of good t) and C\\Z has a proper k-colouring, then chi(R^2) <= k: each finite configuration is translated off Z and inherits a colouring, so every finite subgraph is k-colourable, and de Bruijn-Erdos/Tychonoff finishes (machine-checked as exists_properColoring_of_finset). A single global translate would need Z empty, so compactness is essential. Necessity: Z = C with k = 1 is a counterexample. Applied to the honeycomb skeleton B: C\\B is the disjoint union of cell interiors, so a colouring of it is a cell assignment. Proved: cell-constant gamma is proper on C\\B iff diam(C) <= 1 and gamma separates the STRICT pairs dmin < 1 < dmax only; tangency edges impose nothing. Hence a SAT periodic quotient (all cells) gives chi(R^2) <= 6 outright, while a SAT finite patch suffices for nothing (a graph of larger diameter cannot be translated into it). The blanket requirement that boundary ownership precede any upper-bound consequence is WITHDRAWN (banners in CELL-NOGO-v2.md, RECOVERY.md). Asymmetry: UNSAT says nothing, SAT gives the full bound.",
+ "verified_results": [
+  {
+   "statement": "Lemma (null-set transfer): if Z satisfies (H) 'for every finite F there is t with (F+t) cap Z = empty' and c is a proper k-colouring of C\\Z, then chi(R^2) <= k.",
+   "grade": "PROOF (elementary, three steps); Step 3 is Tychonoff/de Bruijn-Erdos in ZFC, the only use of choice"
+  },
+  {
+   "statement": "(H) holds whenever Z is Lebesgue-null, and the set of good translations is conull (finite union of null sets is null). Null is the operative hypothesis: it also holds for Z = Q^2, so neither closedness nor thinness is needed.",
+   "grade": "PROOF"
+  },
+  {
+   "statement": "(H) is necessary: with k = 1 and Z = C the hypothesis of properness holds vacuously (C\\Z is empty) but the conclusion chi(R^2) <= 1 is false ({0,1} is a unit edge).",
+   "grade": "PROOF (counterexample)"
+  },
+  {
+   "statement": "Applied to the honeycomb skeleton B (null, countable union of closed segments): a proper 6-colouring of C\\B implies chi(R^2) <= 6. C\\B equals the disjoint union of all cell interiors, so such a colouring is exactly an assignment of colours to cells constant on interiors.",
+   "grade": "PROOF"
+  },
+  {
+   "statement": "Equivalence: a cell-constant gamma with k >= 2 is proper on C\\B iff (i) diam(C) <= 1 (2a <= 1 for hexagons; a = 1/2 admissible since the interior distance set is then (0,1)) and (ii) gamma separates every pair with dmin < 1 < dmax strictly. Hence the constraint graph is exactly Cay(Z^2, F_strict), the one used by every certificate in this directory.",
+   "grade": "PROOF (uses the interval-image fact of CELL-NOGO-v2.md Lemma 1(1), whose endpoint behaviour was certified computationally earlier)"
+  },
+  {
+   "statement": "Non-strict tangency edges (dmin = 1 or dmax = 1) impose no constraint, since their unit pairs lie only on the uncoloured skeleton; the weak closed-cell criterion would over-constrain. At a = 1/5 this is ring 3 (N = 3, dmax = 1). Our certificates already use the strict graph, so nothing needs re-deriving.",
+   "grade": "PROOF + consistency check against existing certificates"
+  },
+  {
+   "statement": "Distinction: a colouring of ALL cells (e.g. a genuinely SAT periodic quotient, which colours every coset) gives chi(R^2) <= 6 outright; a SAT colouring of one finite patch gives nothing, because Step 1 needs F+t inside the coloured region and unit-distance graphs of arbitrarily large diameter exist. Same objection applies to a strip or half-plane.",
+   "grade": "PROOF"
+  },
+  {
+   "statement": "Asymmetry: an UNSAT (family-exclusion) result says nothing about chi(R^2), but a SAT result would give the full upper bound. So the honeycomb family is a SUFFICIENT (not necessary) family for chi(R^2) <= 6.",
+   "grade": "consequence of the lemma"
+  },
+  {
+   "statement": "REPAIR: the earlier blanket requirement that boundary ownership must be constructed before any 6-upper-bound consequence is withdrawn; banners inserted in CELL-NOGO-v2.md (section 1) and RECOVERY.md.",
+   "grade": "self-repair, in place"
+  },
+  {
+   "statement": "Existing tree already contains both halves, wired for the LOWER bound: Converse.lean exists_properColoring_of_finset (the compactness step, at full generality) and NullSetRobust.lean not_proper_five_coloring_compl_null, whose proof contains the translate-off-the-null-set step contrapositively. The lemma is those two re-assembled with the contradiction removed and Fin 5 replaced by Fin k.",
+   "grade": "SOURCE READ this block (not built, not re-checked line by line, no axiom claim beyond results/VERIFICATION.md)"
+  },
+  {
+   "statement": "No numerical bound on chi(R^2) is established or changed by this block. There is no positive 6-colouring candidate, and the certificates in this directory exclude a in (1/sqrt28, 1/2].",
+   "grade": "scope statement"
+  }
+ ],
+ "conjectures": [
+  "The only range where the honeycomb family can now yield a positive result is a <= 1/sqrt28; by the transfer lemma such a colouring would settle chi(R^2) <= 6, which is why that sliver is worth a search despite the thinning graph there.",
+  "Because (H) holds for any null Z, the lemma also says chi(R^2) = chi(R^2 \\ Z) for null Z in both directions; the lower direction is already machine-checked (T2), so the pair together says the chromatic number is null-set invariant."
+ ],
+ "artifacts": [
+  "supervisor/solve-independent/NULL-TRANSFER.md",
+  "supervisor/solve-independent/CELL-NOGO-v2.md (repair banner in section 1)",
+  "supervisor/solve-independent/RECOVERY.md (repair banner)",
+  "supervisor/solve-independent/INTERVAL.md",
+  "supervisor/solve-independent/A-QUARTER.md",
+  "supervisor/solve-independent/PREREG-A-QUARTER.md",
+  "supervisor/solve-independent/p25.cnf",
+  "supervisor/solve-independent/p25.drat",
+  "supervisor/solve-independent/tools/drat-trim",
+  "supervisor/solve-independent/STATUS.json"
+ ],
+ "tests_run": [
+  {
+   "command": "(no computation this block, as instructed)",
+   "outcome": "analysis and source review only"
+  },
+  {
+   "command": "read lean/OAI/Geometry/PlaneColoring/Converse.lean and NullSetRobust.lean",
+   "outcome": "confirmed exists_properColoring_of_finset is exactly the de Bruijn-Erdos/Tychonoff step at full k-generality, and that not_proper_five_coloring_compl_null contains the translate-off-null-set mechanism used contrapositively for the lower bound"
+  }
+ ],
+ "failed_routes": [
+  "My first sublattice enumeration used the lower-triangular HNF <(a,0),(b,c)>, which is NOT a complete list: it misses 6 of the 8 index-7 sublattices, including the paper's <(1,3),(0,7)>, and wrongly gave minimum index 8 at a = 2/5. Fixed to upper HNF <(a,b),(0,c)>; the control then gave 7 as it must.",
+  "The heuristic bound index >= ceil((1+D)^2/(3a^2)) = 17 at a = 1/5 was wrong (ring 16 escapes it); replaced by the multiplicative-norm argument giving 16, which the enumeration confirms.",
+  "A density argument (clusters of <= 4 separated by 1.3856) does not give a contradiction at six colours: 2.65 > 1.60. Recorded as a gap, not pursued further in this block.",
+  "A hand estimate that ring-16 cells could carry the N=16 forced offsets was wrong (ring 16 is unforced because dmin >= 1); it does not affect this block, where the window proof bounds N < 16.33 independently.",
+  "Carried forward and still relevant: the earlier lower-triangular HNF enumeration was incomplete (missed 6 of 8 index-7 sublattices); this block uses the upper HNF only, and the index-19 counts here are on that corrected enumeration.",
+  "p19_shrink.py: greedy UNSAT-core minimisation (73+ solver calls) exceeded the cap and produced no output; superseded, no core certificate.",
+  "k = 7 (i.e. chi = 8) DRUP certificate: generation exceeded 60 s; abandoned. The chi = 8 claim therefore rests on two CDCL decisions plus a verified 8-colouring, not on a proof.",
+  "rup.c first version had two real defects: clauses added with watches already false at level 0, and unit clauses enqueued but not propagated. The second produced a spurious RUP FAILURE; diagnosed with a naive independent propagation. Both fixed; the shipped checker is the fixed one.",
+  "patch19_proof.py: abandoned driver (pysat returns DIMACS strings, so its empty-clause assertion fired). Superseded by p19_gen.py.",
+  "Earlier in this block's lineage: the 'every 6-subset contains an edge' line in QUOTIENT16.md \u2014 retracted as a chromatic argument; K_16 is the valid one.",
+  "No SAT search, no core minimisation and no 7-UNSAT work in this block, per instruction; the earlier failures are retained and documented in FAILED-RUNS.md (RUP FAILURE at step 26154 caused by unpropagated units in my checker; shrink timeout; k=7 generation timeout; incomplete lower-HNF enumeration).",
+  "An earlier attempt to parse the exact per-ring values back from JSON strings failed (a hand-rolled parser); replaced by carrying the Q3 objects directly. No numerical claim changed.",
+  "Nothing failed in this block's single experiment. Recorded for continuity: pysat's cadical153 with_proof must NOT be used for DRAT here (its writer mangles the proof, per supervisor/solve-graphs/certs/shard_b_summary.md); the cadical binary was used instead, and my own rup.c was not used at all.",
+  "The earlier blanket requirement (boundary ownership must be constructed before any 6-upper-bound consequence, stated in CELL-NOGO-v2.md section 1 and RECOVERY.md) is RETRACTED as wrong; it treated as necessary a step that the null-set transfer lemma shows does not exist.",
+  "A single global translation avoiding B does not exist (it would require B empty), so the compactness step cannot be replaced by a global translate; any future argument that tries to pick one t for the whole plane is invalid."
+ ],
+ "next_step": "No number changes. The one place the lemma could be used is a <= 1/sqrt28, where the forced graph is still un-decided: a 6-colouring of ALL cells there would give chi(R^2) <= 6 by this lemma with no further work. That is a new search (fresh certificate, new budget, and the graph is a thin annulus graph there, which the earlier census found hard). Alternatively a formalisation of the lemma: a short corollary reusing exists_properColoring_of_finset and the translate-off-null-set step from NullSetRobust.lean, needing a serial local Lean build under the existing pinned toolchain.",
+ "escalation": "Precise obstacle, one line: the lemma reduces the upper bound to colouring C\\B for the honeycomb, but for a in (1/sqrt28, 1/2] that colouring provably does not exist (our certificates), and below 1/sqrt28 the forced graph degenerates to an annulus around lattice distance 1 in which ring 1 (the six edge-neighbours) is not forced at all, so a colouring may be constant on cell plus neighbours and the graph thins exactly where colourings need room. Expected useful output: either a 6-colouring of the forced graph at some a <= 1/sqrt28 (which would settle the upper bound via this lemma), or a proof that no such a exists, which would close the honeycomb family entirely without touching chi(R^2).",
+ "recovery": {
+  "utc": "2026-11-14T06:46:58Z",
+  "jobs_running_at_recovery": 0,
+  "integrity": "re-ran forced_a1_5.py, verify_cell_nogo_v2.py, square_family.py, audit_rect.py: all rc 0; forced_a1_5.out and verify_cell_nogo_v2.out regenerate byte-identically, so no partial or duplicated write exists",
+  "work_lost": "none",
+  "note": "block was already completed and saved at updated_utc; no new research performed during recovery",
+  "artifacts_kept": [
+   "CELL-A-FIFTH.md",
+   "CELL-NOGO-v2.md",
+   "LEDGER.md",
+   "CELL-NOGO.md",
+   "RECOVERY.md"
+  ]
+ }
+}

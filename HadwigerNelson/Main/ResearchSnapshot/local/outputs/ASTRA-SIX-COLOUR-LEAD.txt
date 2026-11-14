@@ -1,0 +1,330 @@
+ASTRA SIX-COLOUR LEAD — FIRST SUBSTANTIVE PACKET
+14 November 2026. Source-checked mathematics; no claimed solution of six versus seven.
+
+DECISION
+
+The proposed direct ternary analogue of binary-centre separation has a real
+local geometric obstruction. A thin annulus has a proper three-colouring
+by nine sectors; the actual palettes at every nearby centre are singleton
+and hit the same triple. Hence ternary centres fill an OPEN BALL in a local
+model satisfying the exact two-centre unit-distance transport conclusions.
+The global weak-colouring hypothesis fails outside the annulus, so the full
+ternary-centre conjecture is not disproved. A successful proof must use
+global information that the binary separation mechanism does not need.
+
+There are also two independent downstream obligations: local finiteness of
+transition cycles, and exclusion of common-interface cycles for core filling.
+Even granting palette size <=2, the source-derived six-position interface
+relaxations have exact models for EACH cycle length 3,4,5,6. These models
+refute a finite combinatorial shortcut, not the stronger analytic statements.
+
+Recommendation: do not spend the next block seeking a one-lemma completion
+by generic ternary separation. Give the solving team one bounded global
+interface program: identify and test the missing analytic coupling beyond
+the locally realizable annulus and beyond the six-position strip rules.
+The most useful source-driven target is a specific six-colour common-interface
+cycle obstruction (or a sharply delimited obstruction to it), incorporating
+the already generic States.two_state_impossible before inventing new finite
+constraints. Finite-core regularity alone still cannot finish the argument.
+
+1. WHAT THE SUPPLIED PROOF ACTUALLY PROVES
+
+Source root for all references in this report:
+work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/
+
+Five.lean:105 proves:
+  for measurable c:C->Fin 5, WeakColoring 5 c implies False.
+Five.lean:125 and :133 then rule out a proper 5-colouring of the algebraic
+plane and of C respectively. This is the lower bound 6. The supplied
+seven-colour upper construction gives the remaining upper bound 7.
+The existing Chromatic.lean contains an additional explicitly attributed
+worker integration packaging 6<=chi<=7; it is not evidence for chi>=7.
+
+WeakColoring (Coloring.lean:27) is AEMeasurability plus inequality of colours
+for plane x angular product-almost every unit edge. The measurable
+representative used subsequently is an explicit extra hypothesis.
+BorelTransfer.lean:439-450 ALREADY supplies measurable weak k-colourings
+from proper algebraic-plane or plane k-colourings for every nonzero k.
+No new transfer theorem is needed at k=6.
+
+I read the declarations and proof bodies. I did not rebuild their Lean
+dependency closure, and do not relabel source inspection as fresh compilation.
+
+2. THE PRECISE TERNARY TARGET AND ITS ACTUAL CONSUMER
+
+Let C={0,...,5}, e(t)=exp(it), and P_x(t) be the ACTUAL palette in the source:
+the essential union of positive-coordinate sets of all limiting typical
+circle traces at centre x. Compactness.lean:261 and Palettes.lean:10-40
+specify these objects. They are not arbitrary independently chosen lists.
+
+For fixed S subset C, |S|=3, define
+  T_S(y) : for angular-almost every u, P_y(u) intersects S.
+The proposed lemma is
+  T6: for EVERY x in C-plane and EVERY three-element S subset C,
+      for angular-almost every t, not T_S(x+e(t)).
+Its hypotheses are c:C-plane->Fin 6, Measurable c, WeakColoring 6 c.
+The exceptional set may depend on x,S. No simultaneous conull set over
+uncountably many centres is asserted or needed for the following deduction.
+
+For each fixed x, BinaryPalettes.lean:211-233 gives, for a.e. t, both:
+  (i) for a.e. u, c(x+e(t)+e(u)) is not in P_x(t);
+  (ii) TypicalSampling c (x+e(t)) 1.
+The typical sampling palette inclusion says that, for a.e. u, that actual
+sampled colour belongs to P_(x+e(t))(u). If a fixed three-element A is
+contained in P_x(t), all those colours lie in S=C minus A. Thus T_S(x+e(t)).
+T6 excludes this. There are only finitely many A, so intersect their conull
+sets. Together with palette_nonempty this proves
+  B2: for every x, for a.e. t, 1 <= |P_x(t)| <= 2.
+This is a complete valid implication T6 => B2.
+
+The same existing binary argument at k=6 already excludes four-element
+palettes, since their complements have two elements. Thus |P|<=3 is a
+routine source consequence. It is useful preparation, not a breakthrough.
+
+Countability of each T_S-centre set would suffice for T6 because t->x+e(t)
+is injective and angular Haar measure has no atoms. Uniform separation
+would suffice for countability. The annulus below defeats a proof of either
+of these stronger statements from the LOCAL transport conclusions alone.
+
+3. COMPLETE CONDITIONAL CHAIN TO A SIX-COLOUR CONTRADICTION
+
+There is no established arrow from B2 to either L6 or F6 below.
+
+L6, transition-core obligation:
+  Under measurable weak six-colouring, for every compact K, the set of
+  x in K where the ACTUAL transition graph Gamma_x has a cycle is finite.
+At k=5 this is CyclicCore.lean:269. It assembles 3-,4-,5-cycle cases via
+permutations. At k=6 one must handle all lengths 3,4,5,6. Triangle centres
+at k=5 are binary centres because B2 plus avoiding each triangle edge
+forces hitting the TWO outsiders (Accumulation.lean:157). At k=6 it forces
+hitting THREE outsiders, and B2 alone gives no isolation. The four-/five-
+cycle classifications also change: there are respectively two/one outside
+labels at six colours, and a new spanning six-cycle. The existing five-
+colour finite classifications cannot simply be retyped.
+
+Given L6, choose a finite set L covering the cyclic core in the radius-8
+disk. The proof of HoleApproximation.lean:115,291 constructs continuous
+graph-valued maps outside tiny core holes, agreeing with the thresholded
+disk-average map away from all exceptional disks. Its theorem hypotheses
+are measurability, a positive threshold alpha<1/5, and that finite-core
+condition; weak colouring and B2 are not additional inputs there. At six
+replace alpha<1/5 by alpha<1/6. Generalizing the finite label type and the
+associated finite sums is implementation work, not a new analytic theorem.
+
+F6, common-interface obligation:
+  For every x, the graph on six labels whose edge ij has a common
+  approaching continuum K with BOTH spatialSupport(c,i) and
+  spatialSupport(c,j) disjoint from Straddle(K) is acyclic.
+The continuum approaches the SAME x in a unit direction. Different edges
+may use different continua and directions. There is no assertion that a
+CommonInterface is the same object as a TransitionEdge.
+At k=5 this is ContinuumLimits.lean:296, proved using separate triangle,
+four-cycle and five-cycle exclusion arguments. Six colours need lengths
+3 through 6. B2 does not supply these exclusions; see the certificates below.
+
+Given F6, actual compact midpoint bridges in annuli produce common
+interfaces in a limit: ContinuumLimits.lean:318. This compactness and support
+exclusion step is colour-uniform in substance (its core support-exclusion
+theorem at :200 is already generic in k). F6 then makes sufficiently fine
+crossing graphs forests (FullApproximation.lean:12,64). The forest-extension
+theorem fills all core disks; finite pasting preserves agreement outside
+the disks (FullApproximation.lean:175,206). Together with L6 this gives
+arbitrarily fine FullApprox_6 (the analogue of :268,330).
+
+Precisely, for fixed alpha in (0,1/6) and every t>0 it produces epsilon in
+(0,t), finitely many disjoint exceptional closed disks with total radii<t,
+and a continuous F:closedBall(0,5)->|K_6| agreeing outside these disks with
+the normalized positive parts max(diskAverage_i-alpha,0).
+
+Such FullApprox_6 is impossible. Every point in a graph realization has
+at most two positive coordinates, so the open components of its positive
+coordinate sets form a cover of multiplicity at most two. The planar
+covering obstruction forces a positive-coordinate connected set of
+diameter>2 (Five.lean:22,94). Applying this at t_n->0, taking a repeatedly
+occurring label, and using Mesh.lean:92 rules out that sequence. That mesh
+argument uses unit-pair disk averages, vanishing exceptional annuli,
+compactness and connectedness; it does not use a five-label enumeration.
+
+Therefore the honest sufficient chain is
+  proper six-colouring -> measurable weak six-colouring
+  + L6 + F6 -> FullApprox_6 -> planar-cover/mesh contradiction.
+T6 => B2 is a proposed route toward parts of L6/F6, not a replacement for
+them. Even a direct proof of both L6 and F6 would not need T6 as a separate
+input. At present this route has multiple independent hard gaps.
+
+4. A GENUINE LOCAL GEOMETRIC COUNTERMODEL TO TERNARY SEPARATION
+
+Let A={z:99/100<|z|<101/100}. Partition its angles into nine half-open
+sectors I_j=[2*pi*j/9,2*pi*(j+1)/9), j=0,...,8. Give sector I_j colour
+j mod 3. Extend measurably outside A by colour 3, viewed in Fin 6.
+This extension is NOT a weak colouring of the whole plane.
+
+Claim A: all unit-distance pairs contained in A have different colours.
+For points with radii r,s and circular angular separation delta,
+  |z-w|^2=(r-s)^2+2*r*s*(1-cos(delta)).
+If they are in the same sector, delta<40 degrees and cos(delta)>2/3:
+  |z-w|^2 < (1/50)^2 + (2/3)*(101/100)^2
+            = 10207/15000 < 1.
+If they are in distinct same-colour sectors, delta>=80 degrees and
+cos(delta)<1/3:
+  |z-w|^2 > (4/3)*(99/100)^2 = 3267/2500 > 1.
+The trigonometric bounds follow from 40<45 and 80>75 degrees,
+cos45>2/3, cos75<1/3. The latter radical inequality follows from
+sqrt(3)>14/9. Half-open boundaries obey the same strict distance margins;
+there is no hidden monochromatic unit pair on a sector boundary.
+
+Claim B: for every centre x with |x|<1/200, P_x(t) is the singleton
+{c(x+e(t))} for angular-a.e. t, and hence T_{0,1,2}(x) holds.
+All unit circles and sufficiently close sampling circles around such x
+remain inside A. The limiting circle meets each radial sector boundary
+in finitely many points. Away from those angles, c(y_n+r_n*e(t)) converges
+pointwise to c(x+e(t)) whenever y_n->x and r_n->1. Dominated convergence
+gives strong L2 convergence of every colour indicator. Therefore every
+actual source trace has this same indicator vector, by trace_realization
+(Compactness.lean:262) and uniqueness of its weak limit. Palette minimality
+and existence/nonemptiness yield the claimed singleton palette a.e.
+This checks the REAL source trace definition, not just arbitrary lists.
+
+Claim C: for all fixed x,z in this small ball and every admissible smooth
+transport branch z+e(a(r))=x+e(s(r))+e(t(r)), the source conclusions
+P_z(a(r)) disjoint P_x(s(r)) and P_z(a(r)) disjoint P_x(t(r)) hold a.e.
+All three relevant points are in A and target-source distances are exactly
+one. Claim A gives the inequalities; the branch nondegeneracy hypotheses
+preserve the null sets in Claim B. The same argument gives the sixty-degree
+palette disjointness at every such centre. Consequently all these exact
+local transport rules coexist with an open ball of ternary centres.
+
+The failure occurs at the central binary inference, before dynamics.
+Let eta=pi/10000, d=2*cos(pi/3-eta)-1, x=0, z=d*e(pi/3).
+Then 0<d<2*eta<1/200, and
+  e(eta)+e(2*pi/3-eta)=z+e(pi/3).
+The two source endpoints have colours 0 and 2, while the target has colour
+1. All points are in the interiors of their sectors. Thus the geometry
+persists on an open set of parameter values: this is not a null-angle
+exception. The target avoids both source colours without forcing the two
+source states to agree. BinaryPalettes:76-115 uses exactly that agreement
+for a TWO-label hitting cover. Three labels remove it.
+
+This local model also shows why the common-interface triangle argument is
+different at six colours. Relabel the annulus colours as 3,4,5. Put any
+three short radial continua K_i=[0,rho*v_i], 0<rho<1/200, at the origin.
+Their straddling sets lie in A, so both endpoint spatial supports of every
+triangle edge among 0,1,2 are excluded there. Thus actual local triangle
+interface data and singleton palettes coexist. Outside A the extension
+again violates WeakColoring. A global input is indispensable.
+
+One can also include ACTUAL accumulating transition triangles in this local
+model, rather than merely naming edges. In B(0,rho), use colours 0,1,2;
+keep the annulus coloured 3,4,5. Their union is properly six-coloured:
+the inner disk has diameter<1 and its labels are disjoint from the annulus
+labels. Choose disjoint disks centred at q_n=rho*2^(-n), n>=1, of radii
+rho*2^(-n-3). Partition each into three 120-degree sectors with labels
+0,1,2; fill the remainder of the inner disk with 0. Every q_n has all
+three transition edges in the SOURCE definition. In every ball about q_n,
+a short piece of each interface ray has an adjacent two-colour strip;
+translations normal to that ray give transition area at least a positive
+constant times the translation length. Hence the ratio cannot tend to
+zero. The q_n accumulate at 0; transition-edge closedness also puts the
+same triangle at 0. Palettes at all centres |x|<1/200 still come solely
+from the annulus and are singleton a.e. This does not violate L6 because
+the global extension is not weak. It shows that even actual local
+transition abundance plus local unit exclusions do not force L6.
+
+Grades: claims A-C and the explicit transport failure have a complete
+paper-level argument here; their rational constants/finite sector incidence
+are machine checked. This is not Lean-checked and not an independent referee
+verdict. It refutes the named local implication, not T6 with its full global
+hypotheses, and not the existence/nonexistence of a six-colouring.
+
+5. EXACT DOWNSTREAM FINITE TEST, WITH THE MISSING INPUT VISIBLE
+
+The full quantified contract is work/astra-six-colour/CONTRACT.txt.
+At one centre x with m common interfaces, put E_i={i,i+1 mod m} and
+  A_b(s)=C minus union of E_i for which s_i=b.
+The source inner/outer strip theorems give, a.e. in the SAME angular
+variable, P_x(t) intersect A_true nonempty and P_x(t) intersect A_false
+nonempty. They do not put P_x(t) inside both sets.
+Intersect finitely many conull sets and their six sixty-degree translates.
+
+I tested nonempty P_j, |P_j|<=2 (granting B2), P_j disjoint P_(j+1),
+opposite signs at j+3, both allowed-set intersections, and noncontainment
+of P_j in every cycle edge. The last condition already follows from the
+two side restrictions; it does not assume a transition edge.
+Signs are ACTUAL geometric signs of v_i=e(q_i*pi/3), with no orthogonality.
+
+Machine-certified witnesses, with palettes alternating J,K six times:
+  m=3: q=(0,0,0),             J={3},   K={4};
+  m=4: q=(0,0,0,0),           J={4},   K={5};
+  m=5: q=(0,3,3,0,0),         J={0,2}, K={5};
+  m=6: q=(0,3,3,3,0,0),       J={0,2}, K={3,5}.
+The certificate includes all six sign rows. Exact integer verification and
+search took 19 ms in Node; maximum run bound in the script is 45 seconds.
+No solver, install, external library or floating-point geometry was used.
+
+Interpretation: these premises do not imply the no-cycle conclusion, even
+after triple palettes have been excluded. This precisely corroborates one
+narrow warning in the retired STATUS.json. Its broader suggestion that
+all downstream six-colour analysis is thereby impossible is unjustified.
+
+In particular States.lean:243 two_state_impossible is ALREADY generic in k.
+If a whole-circle measurable state s flips at sixty degrees, and its two
+states are represented by J,K with at most two labels outside J union K,
+it derives a contradiction using actual two-state density transport and a
+unit triangle. The naive whole-circle extension of the m=6 witness is
+therefore impossible under the full source hypotheses. A finite six-word
+model is not an analytically realizable trace field. This is exactly the
+next coupling a serious experiment must confront.
+
+6. THREE EXECUTABLE TASK CARDS FOR THE EXISTING SOLVING WORKERS
+
+GEOMETRY — 60-90 minutes, local-versus-global contract.
+Independently prove Claims A-C against Compactness.trace_realization,
+Palettes.paletteSet_minimal and PaletteTransport.palette_transport_param.
+Check the translated circles, finite ray intersections, a.e. pullbacks and
+the explicit eta,d branch. Then identify the FIRST additional global source
+statement that fails for the extension outside A. Give its exact centre,
+quantifiers, and a concrete violating configuration or proof. Deliver one
+complete lemma whose hypothesis cannot be satisfied merely by this local
+annulus; do not propose ternary separation from the same local transport.
+Success: independent accepted obstruction plus a licensed global input and
+named consumer. Stop if the claimed input just restates WeakColoring without
+providing a usable new relation.
+
+INDEPENDENT — 90 minutes, downstream and new target audit.
+Verify the L6/F6 sufficient chain and distinguish transition cycles from
+common-interface cycles. Check all four finite witnesses directly. Audit
+the actual premise set of the retired SAT claims, rejecting conclusions
+about global colourings. For the m=6 witness, show explicitly why
+States.two_state_impossible excludes its naive global extension. Then
+formulate one coherent whole-circle state problem using ONLY proved
+source transport/density facts. The first desired target is whether every
+six-cycle interface satisfying B2 forces a two-state representation with
+at most two omitted colours, or identify a precise surviving multi-state
+obstacle. No claim of a new numerical bound without L6 and the other F6
+cycle lengths. Success: a complete conditional theorem or a rigorous
+countermodel to a named reduction, with the analytic realization limit.
+
+GRAPHS — 60-90 minutes reasoning; each initial process <=60 seconds.
+Independently verify the rational annulus constants and all JSON witnesses,
+using a separately written checker rather than trusting the search code.
+Keep integer/set representations and actual geometric sign words. Then
+implement only the geometry/independent worker's agreed whole-circle
+contract; maintain a producer/source/quantifier column for EVERY constraint.
+Use the existing m=6 witness as a regression test: the raw finite system
+must accept it, while a proven two-state whole-circle rule may reject its
+specific global completion. Return model/certificate and a human-readable
+explanation. Do not add support, cross-centre, or independence constraints
+merely to make the search UNSAT. No Heule gluing or forced-equal searches.
+
+7. ARTIFACTS AND VALIDATION LEDGER
+
+Written only to this authorized report and work/astra-six-colour/.
+  CONTRACT.txt — quantified source/constraint contract.
+  exact_obstacles.mjs — executed integer search/checker; exit 0, 19 ms.
+  exact-obstacles.json — its complete modest certificate.
+  exact_obstacles.py — optional standard-library equivalent, NOT executed:
+    installed Windows Store Python aliases were inaccessible. Node supplied
+    the successful exact run. No install or permission escalation attempted.
+
+No original proof file modified. No Open Math calls, child agents, credentials,
+heavy computation, or Lean queue use. No new plane-colouring bound claimed.

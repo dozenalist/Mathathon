@@ -1,0 +1,103 @@
+== 1. palettes as bitmasks ==
+  OK  |palettes| k=5 ell=3: got 9  want 9
+  OK  |palettes| k=5 ell=4: got 7  want 7
+  OK  |palettes| k=5 ell=5: got 5  want 5
+  OK  |palettes| k=6 ell=3: got 35  want 35
+  OK  |palettes| k=6 ell=4: got 33  want 33
+  OK  |palettes| k=6 ell=5: got 31  want 31
+  OK  |palettes| k=6 ell=6: got 29  want 29
+  OK  |palettes| k=7 ell=3: got 92  want 92
+  OK  |palettes| k=7 ell=4: got 90  want 90
+  OK  |palettes| k=7 ell=5: got 88  want 88
+  OK  |palettes| k=7 ell=6: got 86  want 86
+  OK  |palettes| k=7 ell=7: got 84  want 84
+
+== 2. singleton palettes = the outsider singletons ==
+  OK  singletons k=5 ell=3: got [3, 4]  want [3, 4]
+  OK  singletons k=5 ell=4: got [4]  want [4]
+  OK  singletons k=5 ell=5: got []  want []
+  OK  singletons k=6 ell=3: got [3, 4, 5]  want [3, 4, 5]
+  OK  singletons k=6 ell=4: got [4, 5]  want [4, 5]
+  OK  singletons k=6 ell=5: got [5]  want [5]
+  OK  singletons k=6 ell=6: got []  want []
+  OK  singletons k=7 ell=3: got [3, 4, 5, 6]  want [3, 4, 5, 6]
+  OK  singletons k=7 ell=4: got [4, 5, 6]  want [4, 5, 6]
+  OK  singletons k=7 ell=5: got [5, 6]  want [5, 6]
+  OK  singletons k=7 ell=6: got [6]  want [6]
+  OK  singletons k=7 ell=7: got []  want []
+
+== 3. how many admissible palettes carry two 6.3.1 state groups ==
+  OK  ambiguous palettes k=5: got 0  want 0
+  OK  ambiguous palettes k=6: got 2  want 2
+  OK  ambiguous palettes k=7: got 11  want 11
+
+== 4. disjoint pairs and the K_3 threshold ==
+  OK  disjoint pairs (5,4): got (7, 0)  want (7, 0)
+  OK  disjoint pairs (5,5): got (5, 0)  want (5, 0)
+  OK  disjoint pairs (6,4): got (110, 13)  want (110, 13)
+  OK  disjoint pairs (6,5): got (85, 5)  want (85, 5)
+  OK  disjoint pairs (6,6): got (64, 0)  want (64, 0)
+  OK  disjoint pairs (5,3): got (13, 1)  want (13, 1)
+  OK  disjoint pairs (6,3): got (139, 24)  want (139, 24)
+
+== 5. the escaping pairs at k=6, ell=4, built directly ==
+  OK  number of escaping pairs (6,4): got 13  want 13
+  OK  every escaping pair contains an outsider singleton: got True  want True
+
+== 6. the k=6 pointwise model, re-checked on all six sectors ==
+  OK  A admissible: got True  want True
+  OK  B admissible: got True  want True
+  OK  A,B disjoint: got 0  want 0
+  OK  A|B != I: got True  want True
+  OK  |A|+|B| < k-2 (mechanism silent): got True  want True
+  OK  (5.7) on all six sectors: got True  want True
+
+== 7. the strip colouring, conditions re-derived with sympy ==
+  OK  m=0 sup^2 < 1: got True  want True
+  OK  m=1: min |x| = 2a > 1: got True  want True
+  OK  m=2: min |x| = 5a > 1: got True  want True
+  OK  m=1: unit circle misses the rectangle: got True  want True
+  OK  m=-1: unit circle misses the rectangle: got True  want True
+  OK  m=2: unit circle misses the rectangle: got True  want True
+  OK  m=-2: unit circle misses the rectangle: got True  want True
+  OK  m=3: unit circle misses the rectangle: got True  want True
+  OK  m=-3: unit circle misses the rectangle: got True  want True
+  OK  -500<=m<=500 all safe: got True  want True
+  OK  m=0 sup^2 < 1: got True  want True
+  OK  strip width 2b < sqrt(3): got True  want True
+  OK  strip width 2b < 2 (cannot hold a unit circle): got True  want True
+
+== 8. Gamma_x at a corner: four distinct colours, four adjacencies ==
+  OK  four distinct colours at a corner: got 4  want 4
+  OK  the four adjacencies are distinct: got 4  want 4
+  OK  every colour has degree 2 (a 4-cycle): got [2, 2, 2, 2]  want [2, 2, 2, 2]
+  OK  the 4-cycle uses all four colours: got 4  want 4
+
+== 9. the mechanism constants, re-derived ==
+  OK  cos(2 arcsin(1/(2 sqrt3))) = 5/6: got 0  want 0
+  OK  2 sin(g/2) = 1/sqrt3  (half-angle identity): got 0  want 0
+  OK  2 sin(kappa) * 2 sin(g/2) = 1 (triangle side): got 0  want 0
+
+== 10. the two-centre Moser-spindle model, re-checked with bitmasks ==
+  OK  centre 0: admissibility, (5.7), (5.2), mechanism: got True  want True
+  OK  centre 1: admissibility, (5.7), (5.2), mechanism: got True  want True
+  OK  centre 2: admissibility, (5.7), (5.2), mechanism: got True  want True
+  OK  centre 3: admissibility, (5.7), (5.2), mechanism: got True  want True
+  OK  centre 4: admissibility, (5.7), (5.2), mechanism: got True  want True
+  OK  centre 5: admissibility, (5.7), (5.2), mechanism: got True  want True
+  OK  centre 6: admissibility, (5.7), (5.2), mechanism: got True  want True
+  OK  unit pair 0-1 sector-wise disjoint: got True  want True
+  OK  unit pair 0-2 sector-wise disjoint: got True  want True
+  OK  unit pair 1-2 sector-wise disjoint: got True  want True
+  OK  unit pair 1-3 sector-wise disjoint: got True  want True
+  OK  unit pair 2-3 sector-wise disjoint: got True  want True
+  OK  unit pair 3-4 sector-wise disjoint: got True  want True
+  OK  unit pair 3-5 sector-wise disjoint: got True  want True
+  OK  unit pair 4-5 sector-wise disjoint: got True  want True
+  OK  unit pair 4-6 sector-wise disjoint: got True  want True
+  OK  unit pair 5-6 sector-wise disjoint: got True  want True
+  OK  unit pair 0-6 sector-wise disjoint: got True  want True
+  OK  proper 3-colourings of the Moser spindle: got 0  want 0
+  OK  proper 4-colourings exist: got True  want True
+
+ALL INDEPENDENT CHECKS PASSED

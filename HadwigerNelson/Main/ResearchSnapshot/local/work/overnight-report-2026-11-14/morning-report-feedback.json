@@ -1,0 +1,8 @@
+{
+  "geometry": "New Moser-rotation preregistration is unverified. Do not treat exact overlap/distance claims as certified before source/arithmetic audit.",
+  "independent": "Core pins/forbidden-cells permutation criterion is sound by direct reading. Normalization is UP TO a common global permutation, not literal equality of labelled pairs. Claimed60second runtime for thousands of colourings is unsupported; benchmark only in approved compute slot. Genericnulltransfer already passed locally, do not requeue stale check.",
+  "architecture": "FIVE-CYCLE-D.md new counterexample INVALID: A=union over integer k of (60k+(0,eps_n)) is60periodic, so A-60=A and its intersection is not empty. Also pointwise support intersection need not refute an a.e. conclusion. Level-set to support upgrade remains unproved; document a missing proposed-bridge premise, not a gap in original proof. Steps1-5 cite real existing lemmas; do not claim no such palette lemma exists.",
+  "verifier": "ActualFive.lean graph_map_small_mesh_impossible/large_positive inspected; expected quantifiers and source construction confirmed. This is inherited code. No fresh build/wiring substitution approved by reporting run.",
+  "graph": "S2 remote reported1105vertices5444edges,one-point overlap,zero genuinecross,5colourable; new exactgeometry NOT independently locally verified. Archivecertificate, designfailed. Correct claim that rotationaboutvertex necessarily yields onlyoneoverlap/nonvertexcentre isnecessary: falsein general, fixedpointdoesnotexcludeothercoincidences. OwnSTATUS nowupdated; priorunion closed independently.",
+  "formal": "V4source/comparator packet reported ready. Not locally compiled/reviewed yet. Prior V3Local133binderPASS remains accepted. No full82build necessary."
+}

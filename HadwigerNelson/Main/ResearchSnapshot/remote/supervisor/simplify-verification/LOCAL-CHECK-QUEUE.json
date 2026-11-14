@@ -1,0 +1,241 @@
+{
+ "schema": "local-check-queue/1",
+ "note": "For Jarom's PC, SERIAL (one Lean process at a time), no cloud builds, no full builds unless the item says so, no copying olean trees. Paths are repo-relative. Every item names the exact sources and the exact command. Sources are preserved; where a dependency cone is not available locally, a source manifest with hashes is supplied instead of a build-dir pointer.",
+ "environment": {
+  "lean_toolchain_file": "leanprover/lean4:v4.34.1",
+  "lean_binary_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "mathlib_commit": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "mathlib_source": ".scratch/mathlib4 (.git HEAD); on the local PC use the same commit",
+  "pinned_dependency_revs": {
+   "batteries": "f2effa3d803fda822b1f97b806c47cf2adfbcbc2",
+   "Qq": "6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259",
+   "aesop": "355695d523e41d0554926416cba2a2b3544fbbc9",
+   "proofwidgets": "106ff4fafc74ef4ac99d81dbf3ab399118f497a5",
+   "importGraph": "e928b72544873815af278d38681b31c0293588e3",
+   "LeanSearchClient": "ddf04cf3949fa556442341e87d47f9f6e6074707",
+   "plausible": "118aa17ee84656b8bd727fef7c458ee8c833385c",
+   "Cli": "e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204"
+  },
+  "entry_point": "source scripts/env4341.sh  (sets PATH and LEAN_PATH to lean/build/lib + the pinned mathlib and its packages)",
+  "verified_from": [
+   "lean-toolchain",
+   ".scratch/toolchain/bin/lean --version",
+   ".scratch/mathlib4/.git HEAD",
+   ".scratch/mathlib4/lake-manifest.json"
+  ]
+ },
+ "items": [
+  {
+   "id": 1,
+   "name": "ConnectedSetExclusion (verification block 2)",
+   "grade_expected": "compiled + axiom-clean",
+   "sources": [
+    "supervisor/simplify-verification/lean/ConnectedSetExclusion.lean"
+   ],
+   "imports": [
+    "Mathlib"
+   ],
+   "lean_deps_on_development": [],
+   "theorems": [
+    "SupervisorVerify.preconnected_forall_lt_or_forall_gt",
+    "SupervisorVerify.unitFree_not_straddle",
+    "SupervisorVerify.unitFree_pairwise_lt",
+    "SupervisorVerify.diam_le_one_of_preconnected_unitFree'",
+    "SupervisorVerify.unitFree_sharp"
+   ],
+   "commands": [
+    "source scripts/env4341.sh",
+    "cd supervisor/simplify-verification/lean",
+    "lean ConnectedSetExclusion.lean",
+    "lean CheckFifth.lean"
+   ],
+   "expected_output": "`ConnectedSetExclusion.lean` prints FOUR axiom lines (preconnected_forall_lt_or_forall_gt, unitFree_not_straddle, unitFree_pairwise_lt, unitFree_sharp), all `[propext, Classical.choice, Quot.sound]`, plus one harmless `push_neg` deprecation warning, rc 0. `CheckFifth.lean` then prints the FIFTH axiom line for `diam_le_one_of_preconnected_unitFree'` (a one-line corollary of unitFree_pairwise_lt that the shipped file does not print), expected to be `[propext, Classical.choice, Quot.sound]`. Total: 5 axiom lines over 2 commands. Earlier wording of this queue said 5 lines from one command; that was wrong.",
+   "status": "ALREADY VERIFIED here 2026-11-14T05:42Z for the four printed lemmas (rc 0, 10m30s wall on the shared box); the fifth (CheckFifth.lean) has NOT been run and is the only outstanding part of this item",
+   "cost_hint": "one Mathlib import; ~2-3 min warm, up to 15 min if Mathlib oleans are cold",
+   "import_note": "the shipped file says `import Mathlib`, which is much wider than needed. The local runner found that the moduli depend on `Mathlib.Analysis.Normed.Group.Uniform` (for `ContinuousSub`, used by `continuous_fst.sub continuous_snd`), which is why that cache is being fetched. A narrower explicit list is plausible (`Mathlib.Analysis.Normed.Group.Uniform`, `Mathlib.Topology.Order.IntermediateValue`, `Mathlib.Topology.Connected.Basic`, plus a tactic import for `linarith`/`nlinarith`), but it is UNTESTED and I am not asserting it."
+  },
+  {
+   "id": 2,
+   "name": "Five-cycle candidate (simplify-angular) - WITHHELD, do not put in the Lean queue",
+   "grade_expected": "rejected as advertised",
+   "reason": "the finite lemma is true but its hypotheses are not the paper's: (V) is used at positions 1,2,4,5 where the paper proves no-common-label only at positions 0 and 3. The paper-live replacement keeps Lemma 6.7 (AUDIT-FIVE-CYCLE.md section 4b). Withheld as a paper replacement, not as a false combinatorial fact.",
+   "finite_check_to_keep": {
+    "sources": [
+     "supervisor/simplify-verification/checks/five_cycle_licence.py",
+     "supervisor/simplify-angular/checks/five_cycle_full.py"
+    ],
+    "commands": [
+     "python3 supervisor/simplify-verification/checks/five_cycle_licence.py",
+     "python3 supervisor/simplify-angular/checks/five_cycle_full.py"
+    ],
+    "expected": "licence script: [A] 0 solutions (V at all six positions), [B] 8 solutions (V at 0,3 only), [C] 78 (V at 0 only), [F] 0 for each single relaxation, and 0 for validity sets {0,1,3}, {0,3,5}; all eight solutions are invalid at ALL FOUR of 1,2,4,5 (not two); their script: all checks PASS, solutions=0",
+    "status": "both already rc 0 here; no Lean needed"
+   },
+   "revive_condition": "a proof of (NC-1) or (NC-5) as defined in AUDIT-FIVE-CYCLE.md section 4; then the theorem bodies are worth a Lean check of the 21-list case analysis"
+  },
+  {
+   "id": 3,
+   "name": "Topology's isolated lemma (Lemma 7.5 substitution)",
+   "grade_expected": "compiled + axiom-clean (owner's log says so; MY re-run pending)",
+   "sources": [
+    "supervisor/simplify-topology/lean/CoverObstruction.lean",
+    "supervisor/simplify-topology/lean/Check.lean"
+   ],
+   "imports": [
+    "Mathlib",
+    "OAI.Geometry.PlaneColoring.PlanarCovers"
+   ],
+   "lean_deps_on_development": {
+    "count": 25,
+    "manifest": "supervisor/simplify-verification/TOPOLOGY-CONE-MANIFEST.json",
+    "note": "the 25 OAI sources are enumerated there with repo-relative paths, line counts and sha256 hashes (9,369 lines total), so a local machine can copy the SOURCES and elaborate them from scratch. Do NOT rely on, copy or point LEAN_PATH at the cloud build directory: those oleans are not present locally and must not be transferred.",
+    "build_order": "the manifest's modules are import-closed; elaborate in topological order (any order that respects the imports, e.g. the order produced by the queue's build script), then CoverObstruction.lean last"
+   },
+   "theorems": [
+    "OAI.PlanarCover.paper_lemma_7_5",
+    "OAI.PlanarCover.compact_cover_obstruction_gen",
+    "OAI.PlanarCover.hit_center_gen",
+    "OAI.PlanarCover.disk3_cover_obstruction"
+   ],
+   "commands": [
+    "source scripts/env4341.sh",
+    "cd supervisor/simplify-topology/lean",
+    "# 1) copy the 25 sources from TOPOLOGY-CONE-MANIFEST.json into a local lean/ tree (paths are given), no oleans",
+    "# 2) elaborate them in import order into a fresh local build dir with: lean -o <build>/<Module>.olean <src>/<Module>.lean",
+    "# 3) export LEAN_PATH=<build>:$LEAN_PATH, then:",
+    "lean -o CoverObstruction.olean -i CoverObstruction.ilean CoverObstruction.lean",
+    "lean Check.lean"
+   ],
+   "expected_output": "rc 0 both; axiom lines = [propext, Classical.choice, Quot.sound]",
+   "status": "compiled by its owner under the pinned env (checks/lean-build3.log BUILD_EXIT=0, checks/axioms.log); I read the logs only. The 25-source cone is NOT available locally, so this item now carries a source manifest instead of an instruction to reuse a build directory.",
+   "cost_hint": "single file, but a large import cone; run after item 1, serial"
+  },
+  {
+   "id": 4,
+   "name": "m6 trim rebuild + signature/axiom comparison (the wording correction matters here)",
+   "grade_expected": "build + identical elaborated signatures and identical axiom sets for the six roots",
+   "sources": [
+    "sprint/simplify/m6/E1/OAI/** (83 modules)",
+    "sprint/simplify/m6/build.py",
+    "results/lean/Check3.lean"
+   ],
+   "commands": [
+    "source scripts/env4341.sh",
+    "JOBS=2 python3 sprint/simplify/m6/build.py sprint/simplify/m6/E1 <fresh-build-dir>",
+    "LEAN_PATH=<fresh-build-dir>:$LEAN_PATH lean results/lean/Check3.lean",
+    "diff <(axiom lines from the pristine build) <(axiom lines from the trimmed build)"
+   ],
+   "why_signature_check": "deletion-only at the source level proves that surviving DECLARATION TEXT is byte-identical. It does NOT prove identical elaborated types (implicit binders can be inferred differently if a section variable, open or instance changed) nor identical axiom dependencies (a deleted lemma could have been a simp-set member or an unnamed instance; the 74-name/0-occurrence and no-attribute/no-instance checks make that unlikely but are not a proof). The comparison is part of the item, not optional.",
+   "status": "outstanding; this is the only unclosed obligation of the m6 work",
+   "cost_hint": "83 modules; budget a long serial run, JOBS=2, no other Lean at the same time"
+  },
+  {
+   "id": 5,
+   "name": "Diamond.lean re-check under the PINNED environment (optional)",
+   "grade_expected": "compiled + axiom-clean under 4.34.1 + Mathlib d13f23b",
+   "sources": [
+    "supervisor/simplify-angular/lean/Diamond.lean"
+   ],
+   "imports": [
+    "Mathlib (as written)"
+   ],
+   "theorems": [
+    "SimplifyAngular.three_color_diamond_omega",
+    "SimplifyAngular.diamond_tips"
+   ],
+   "commands": [
+    "source scripts/env4341.sh",
+    "cd supervisor/simplify-angular/lean",
+    "lean Diamond.lean"
+   ],
+   "note": "the existing local result is from NATIVE Lean 4.35.0 with only `import Lean.Elab.Tactic.Omega`, exit 0, axioms [propext, Quot.sound], source sha256 67cdbc7be0b14601122ca19fb426ea93bef9f91c54fad397c68ec3cb9c82dc8b. That is a different toolchain and a different import graph from the pinned 4.34.1 + Mathlib development, so it is evidence about the lemma, not integration into the development.",
+   "status": "re-run under the pinned env pending; the statement itself is a Fin 3 counting fact and is not in doubt"
+  },
+  {
+   "id": 6,
+   "name": "FiveCycleResidues - finite residue reduction, two-level (g,h) identity, and transport of (V)/(D)/(N) at fixed positions",
+   "grade_expected": "compiled + axiom-clean, no sorry/native_decide",
+   "sources": [
+    "supervisor/simplify-verification/lean/FiveCycleResidues.lean"
+   ],
+   "imports": [
+    "Mathlib.Data.ZMod.Basic",
+    "Mathlib.Data.Finset.Image",
+    "Mathlib.Data.Fintype.Basic"
+   ],
+   "import_cone_note": "chosen to be the smallest set that carries (a) ZMod 5 with its ring structure and its Fintype instance (ZMod.Defs), (b) Finset.image, (c) Fin.fintype plus Fintype.decidableForallFintype for `by decide` on `\u2200 j : Fin 5`. All three files exist at mathlib d13f23b.",
+   "lean_deps_on_development": [],
+   "theorems": [
+    "FiveCycleResidues.g_induces_h",
+    "FiveCycleResidues.one_minus_k_induces_four_minus_i",
+    "FiveCycleResidues.g_involutive",
+    "FiveCycleResidues.h_involutive",
+    "FiveCycleResidues.label_transport",
+    "FiveCycleResidues.five_residues_reduce_to_two",
+    "FiveCycleResidues.residue_zero_collides",
+    "FiveCycleResidues.residue_two_collides",
+    "FiveCycleResidues.residue_three_collides",
+    "FiveCycleResidues.h_reverses_step",
+    "FiveCycleResidues.h_image_P",
+    "FiveCycleResidues.h_fixes_anchor",
+    "FiveCycleResidues.h_fixes_pair24",
+    "FiveCycleResidues.h_swaps_allowed_pairs",
+    "FiveCycleResidues.nb_image",
+    "FiveCycleResidues.notCommon_image",
+    "FiveCycleResidues.disjoint_image",
+    "FiveCycleResidues.hasNbr_image",
+    "FiveCycleResidues.valid_family_push",
+    "FiveCycleResidues.disjoint_family_push",
+    "FiveCycleResidues.neighbour_family_push"
+   ],
+   "commands": [
+    "source scripts/env4341.sh",
+    "cd supervisor/simplify-verification/lean",
+    "lean FiveCycleResidues.lean"
+   ],
+   "expected_output": "rc 0; five #print axioms lines, expected [propext] only (every proof is `by decide` on a closed decidable statement). The load-bearing ones are `g_induces_h` (vertex map 3-k induces state map 1-i) and `label_transport`; `one_minus_k_induces_four_minus_i` is kept as a guard against re-introducing the wrong pairing.",
+   "status": "Local run of the 21-theorem file FAILED at hasNbr_image only (all other 19 axiom lines standard; the 14-theorem version is banked). Cause: `Nonempty` needs the witness before the intersection is split, and the intersection order is `Nb (h i) \u2229 M.image h`. Proof repaired in place with no change to statement or hypotheses; dependent neighbour_family_push is expected to close (its sorryAx came from this failed elaboration). Source delivered UNBUILT for local retry.",
+   "if_it_fails": "Report the first error verbatim. The three known-risk points are: (i) `Fintype (Fin 5)` not in scope -> the import list already carries Mathlib.Data.Fintype.Basic; (ii) the `{i, i+2}` Finset literal needing a `DecidableEq` instance -> ZMod 5 has one; (iii) `decide` needing `Fintype (ZMod 5)` only if a `\u2200 i : ZMod 5` is added later (the file today quantifies only over `Fin 5`). None of these is a mathematical issue. New risk introduced in the block-5 revision: the statements now quantify over `ZMod 5`, so `decide` needs `Fintype (ZMod 5)` (instance `ZMod.fintype`, requires `[NeZero 5]`). If that instance is missing, restate the affected theorems over `Fin 5` with `((j : \u2115) : ZMod 5)` in the body (the block-4 version of this file did exactly that and its count theorem is unchanged) - a notation change, not a mathematical one. New in block 6: the transport proofs use `Finset.mem_image`, `Finset.disjoint_left`, `Finset.mem_inter`. If `Finset.disjoint_left` is missing under this import cone, the fallback is a direct elementwise proof from `Finset.mem_image.mp` plus `h_involutive`; no mathematics changes. `notCommon_image`'s rewrite `g_induces_h` then `h_involutive` may need `simp only [...]` instead of `rwa`. If hasNbr_image still fails: the remaining risk is `Finset.mem_inter.mp`/`.mpr` naming under this import cone (they are `Finset.mem_inter` iff-lemmas; `open Finset` is in scope) and `rwa [nb_image] at hmem` - replace the latter by `simpa only [nb_image] using hmem`.",
+   "cost_hint": "three small Mathlib imports, no OAI cone: should be a couple of minutes even cold"
+  },
+  {
+   "id": 7,
+   "name": "WitnessSelection - monotone witness selection (abstract W, scale, extra predicate P)",
+   "grade_expected": "compiled + standard axioms only; no sorry/admit/native_decide",
+   "sources": [
+    "supervisor/simplify-verification/lean/WitnessSelection.lean"
+   ],
+   "imports": [
+    "Mathlib.Tactic",
+    "Mathlib.Topology.MetricSpace.Pseudo.Lemmas",
+    "Mathlib.Analysis.SpecificLimits.Basic"
+   ],
+   "import_cone_note": "both named lemmas verified present in the pinned sources: squeeze_zero at Mathlib/Topology/MetricSpace/Pseudo/Lemmas.lean:38 (signature (hf : \u2200 t, 0 \u2264 f t) (hft : \u2200 t, f t \u2264 g t) (h : Tendsto g t\u2080 (\ud835\udcdd 0)), matching the tree's own usage at Mesh.lean) and tendsto_one_div_add_atTop_nhds_zero_nat at Mathlib/Analysis/SpecificLimits/Basic.lean:71 (polymorphic over \ud835\udd5c; \u211d instance is what is used).",
+   "lean_deps_on_development": [],
+   "theorems": [
+    "WitnessSelection.pickAt_lt",
+    "WitnessSelection.stepF_lt",
+    "WitnessSelection.sel_bound",
+    "WitnessSelection.sel_tendsto",
+    "WitnessSelection.exists_strictAnti_scale",
+    "WitnessSelection.exists_strictAnti_scale'"
+   ],
+   "commands": [
+    "source scripts/env4341.sh",
+    "cd supervisor/simplify-verification/lean",
+    "lean WitnessSelection.lean"
+   ],
+   "expected_output": "rc 0; six #print axioms lines, expected [propext, Classical.choice, Quot.sound]",
+   "status": "V4 PASSED locally: the only change from V3 is `open Filter Topology` (V3 failed solely on the unknown `\ud835\udcdd` notation). My V4 is byte-identical to the passing file: sha256 3ff5d5c86fd49e4252e2fbbbcd8fc05e6c909c165cb98d62f47da399f608a569. All six printed lemmas use only [propext, Classical.choice, Quot.sound]; no sorryAx. The generic null-transfer check also passed.",
+   "if_it_fails": "Residual risks in V3, in likely order: (i) `sel_step_lt`'s `rw [sel_succ]` then `exact stepF_lt ...` needs `sel_succ`'s RHS to be recognised as `stepF ... n (sel ... n)` \u2014 it is stated that way and proved by rfl, so this should hold; if not, `simp only [sel_succ]` then `exact stepF_lt ...`. (ii) `stepF_lt`'s `exact pickAt_lt ... (lt_min (half_pos prev.2.2) (by positivity))` needs stepF's body to be defeq to that pickAt application; if not, `show` the pickAt form first or add `simp only [stepF]`. (iii) base case `simpa using pickAt_lt scale P hsmall 1 one_pos` needs 1/((0:\u211d)+1) to reduce to 1; prepend `norm_num` if not. (iv) `squeeze_zero` may need `(f := fun n => scale ((sel scale P hsmall n).1))`. None is mathematical.",
+   "cost_hint": "three small imports, no OAI cone",
+   "status_grade": "PASSED (local pinned Lean 4.34.1/Mathlib), source hash reproduced by me exactly"
+  }
+ ],
+ "ordering_and_rules": [
+  "Serial: never two Lean processes at once (item 1 then 3 then 5, then 4 last since it is the long one).",
+  "Do not copy olean trees between machines or directories; point LEAN_PATH at the existing lean/build/lib.",
+  "No cloud Lean builds; no full 83-module builds other than item 4.",
+  "Item 2 is NOT a Lean item; keep the two Python checks as the record of why the candidate is withheld."
+ ]
+}

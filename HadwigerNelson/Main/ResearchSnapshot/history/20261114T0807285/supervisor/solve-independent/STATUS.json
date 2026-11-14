@@ -1,0 +1,104 @@
+{
+ "updated_utc": "2026-11-14T07:48:44Z",
+ "status": "candidate_result",
+ "summary": "Switched from periodic quotients to one induced subgraph of the infinite forced-offset Cayley graph at a = 1/5, pre-registered before computation: P = {v : N(v) <= 19}, 73 cells (N <= 21 would be 85 > 81, so this is the cap-respecting ball), 888 edges, max clique 4. CERTIFIED: the induced subgraph has no proper 6-colouring, so NO colouring of the plane constant on those honeycomb cells uses six colours - a whole-family no-go at this parameter, not a single-period one. Certificate: plain 6-colouring CNF (438 vars, 6496 clauses, no symmetry breaking), 42109-step DRUP proof, verified step by step by my own two-watched-literal RUP checker (rup.c/rup_verify, no drat-trim available), rc 0, empty clause derived. Also machine-decided: chi(G[P]) = 8 (two CDCL solvers 7-UNSAT; explicit 8-colouring with 0/888 monochromatic edges), so the family needs at least 8 colours at a = 1/5 - more than the plane's 7. The k=7 proof certificate exceeded the 60 s cap and was abandoned, so that stronger claim is uncertified. Two of my own tooling bugs found and fixed (watch invariant; unpropagated units). Retraction banner added to QUOTIENT16.md: the 'every 6-subset contains an edge' line is true but is NOT a chromatic obstruction; K_16 the clique is the valid argument.",
+ "verified_results": [
+  {
+   "statement": "At a = 1/5, forced offsets are exactly F = {v : N(v) in {4,7,9,12,13}}, |F| = 42 (re-verified exactly in Q(sqrt3) at the start of this block).",
+   "grade": "EXACT computation, third independent re-derivation in this directory"
+  },
+  {
+   "statement": "P = {v : N(v) <= 19} has 73 cells; G[P] has 888 edges, degrees 16..42 (centre degree 42 = |F|), max clique exactly 4 with witness {(0,0),(-2,0),(-2,2),(0,2)}.",
+   "grade": "EXACT computation (patch19.py, patch19_cert.json)"
+  },
+  {
+   "statement": "THEOREM (certified): G[P] has no proper 6-colouring. Hence no plane colouring constant on the interiors of these honeycomb cells at a = 1/5 uses six colours; every one needs >= 7.",
+   "grade": "PROOF by machine certificate: plain CNF without symmetry breaking, 42109-step DRUP refutation ending in the empty clause, verified independently by a purpose-written RUP checker (rc 0). Producer and checker share no code."
+  },
+  {
+   "statement": "chi(G[P]) = 8 (lower: 7-UNSAT by Cadical153 and Glucose3; upper: explicit colouring, classes 12,10,10,9,9,9,8,6, 0/888 monochromatic edges).",
+   "grade": "MACHINE-DECIDED, NO PROOF CERTIFICATE: the k=7 DRUP generation exceeded the 60 s single-process cap and was abandoned. Treat as a strong computational result, not a certified theorem."
+  },
+  {
+   "statement": "No plane-colouring conclusion follows in either direction from this block; it is a no-go for one cell-constant family at one parameter.",
+   "grade": "scope statement"
+  },
+  {
+   "statement": "Retraction: in QUOTIENT16.md the check that every 6-subset of the 16 cosets contains an edge is a true but insufficient statement (it gives only chi >= 16/5), not a chromatic obstruction; the valid argument there is the K_16 clique.",
+   "grade": "self-retraction, banner inserted at the top of QUOTIENT16.md"
+  }
+ ],
+ "conjectures": [
+  "chi(Cay(Z^2, F)) at a = 1/5 may be exactly 8, in which case no cell-constant colouring of the plane exists at this parameter at all (8 > 7 = chi(R^2) upper bound). Unresolved: needs either a k=7 certificate or a direct argument.",
+  "The cellular families excluded so far (hexagons for a in (1/sqrt13,1/2] and at a=1/5; squares at c=3/5) suggest small cells are the only place a cell-constant six-colouring could live, and that at very small cells the required colour count grows rather than falls."
+ ],
+ "artifacts": [
+  "supervisor/solve-independent/PATCH-PREREGISTRATION.md",
+  "supervisor/solve-independent/PATCH19.md",
+  "supervisor/solve-independent/patch19_cert.json",
+  "supervisor/solve-independent/patch19.py",
+  "supervisor/solve-independent/patch19.out",
+  "supervisor/solve-independent/p19_gen.py",
+  "supervisor/solve-independent/p19.cnf",
+  "supervisor/solve-independent/p19.drup",
+  "supervisor/solve-independent/rup.c",
+  "supervisor/solve-independent/rup_verify",
+  "supervisor/solve-independent/QUOTIENT16.md (retraction banner added)",
+  "supervisor/solve-independent/quotient16_cert.json",
+  "supervisor/solve-independent/verify_quotient16.py",
+  "supervisor/solve-independent/CELL-A-FIFTH.md",
+  "supervisor/solve-independent/CELL-NOGO-v2.md",
+  "supervisor/solve-independent/LEDGER.md",
+  "supervisor/solve-independent/STATUS.json"
+ ],
+ "tests_run": [
+  {
+   "command": "python3 patch19.py",
+   "outcome": "rc 0, 0.3 s: |F|=42 re-verified; |P|=73; 888 edges; max clique 4; k=4,5,6,7 UNSAT and k=8 SAT (model verified edge-by-edge, 0 monochromatic of 888); chi=8"
+  },
+  {
+   "command": "python3 p19_gen.py + export -> p19.cnf, p19.drup",
+   "outcome": "rc 0: plain CNF 6496 clauses / 438 vars; Glucose3 UNSAT; 72699 raw proof lines -> 42109 kept after dropping deletions and tautologies, empty clause last"
+  },
+  {
+   "command": "gcc -O2 -o rup_verify rup.c && ./rup_verify p19.cnf p19.drup",
+   "outcome": "rc 0: 'RUP VERIFIED: 42109 steps, each unit-propagation refuting; empty clause DERIVED -> UNSAT' (~20 s)"
+  },
+  {
+   "command": "python3 (naive independent propagation on the failing step 26154)",
+   "outcome": "confirmed the step WAS RUP, localising my checker's bug rather than a defective proof"
+  },
+  {
+   "command": "k=7 DRUP generation",
+   "outcome": "TIMEOUT at the 60 s single-process cap; no certificate; partial exports deleted, not kept as evidence"
+  }
+ ],
+ "failed_routes": [
+  "My first sublattice enumeration used the lower-triangular HNF <(a,0),(b,c)>, which is NOT a complete list: it misses 6 of the 8 index-7 sublattices, including the paper's <(1,3),(0,7)>, and wrongly gave minimum index 8 at a = 2/5. Fixed to upper HNF <(a,b),(0,c)>; the control then gave 7 as it must.",
+  "The heuristic bound index >= ceil((1+D)^2/(3a^2)) = 17 at a = 1/5 was wrong (ring 16 escapes it); replaced by the multiplicative-norm argument giving 16, which the enumeration confirms.",
+  "A density argument (clusters of <= 4 separated by 1.3856) does not give a contradiction at six colours: 2.65 > 1.60. Recorded as a gap, not pursued further in this block.",
+  "A hand estimate that ring-16 cells could carry the N=16 forced offsets was wrong (ring 16 is unforced because dmin >= 1); it does not affect this block, where the window proof bounds N < 16.33 independently.",
+  "Carried forward and still relevant: the earlier lower-triangular HNF enumeration was incomplete (missed 6 of 8 index-7 sublattices); this block uses the upper HNF only, and the index-19 counts here are on that corrected enumeration.",
+  "p19_shrink.py: greedy UNSAT-core minimisation (73+ solver calls) exceeded the cap and produced no output; superseded, no core certificate.",
+  "k = 7 (i.e. chi = 8) DRUP certificate: generation exceeded 60 s; abandoned. The chi = 8 claim therefore rests on two CDCL decisions plus a verified 8-colouring, not on a proof.",
+  "rup.c first version had two real defects: clauses added with watches already false at level 0, and unit clauses enqueued but not propagated. The second produced a spurious RUP FAILURE; diagnosed with a naive independent propagation. Both fixed; the shipped checker is the fixed one.",
+  "patch19_proof.py: abandoned driver (pysat returns DIMACS strings, so its empty-clause assertion fired). Superseded by p19_gen.py.",
+  "Earlier in this block's lineage: the 'every 6-subset contains an edge' line in QUOTIENT16.md \u2014 retracted as a chromatic argument; K_16 is the valid one."
+ ],
+ "next_step": "Two options, both bounded: (a) certify the k = 7 UNSAT for the same patch by shrinking to a smaller 7-UNSAT core first so the proof fits the cap \u2014 this would upgrade 'chi = 8' from machine-decided to certified; (b) apply the same 73-cell-patch method to one more a (the method is parameter-generic: rebuild F for that a, take the same ball, 6-UNSAT test plus DRUP certificate). Option (a) is preferable: it closes the only uncertified headline claim of this block.",
+ "escalation": "Precise obstacle: the certified statement is 6-UNSAT on 73 cells, but the interesting claim (chi(G[P]) = 8, i.e. the family at a = 1/5 admits no 7-colouring and so no cell-constant colouring at all, since the plane's bound is 7) has no certificate because the k = 7 refutation is large. Definitions: G[P] the induced subgraph of Cay(Z^2,F) on P = {N <= 19}; F = {N in {4,7,9,12,13}}. Attempted: full-patch DRUP at k = 7 (exceeded 60 s), greedy core minimisation (exceeded cap), symmetry-broken CNF (valid reduction but shifts the proof burden onto a renaming lemma). Expected useful output: a 7-UNSAT core of <= 40 cells, or a symmetry-breaking lemma stated and proved so the smaller proof is admissible, either of which certifies chi = 8 within the cap.",
+ "recovery": {
+  "utc": "2026-11-14T06:46:58Z",
+  "jobs_running_at_recovery": 0,
+  "integrity": "re-ran forced_a1_5.py, verify_cell_nogo_v2.py, square_family.py, audit_rect.py: all rc 0; forced_a1_5.out and verify_cell_nogo_v2.out regenerate byte-identically, so no partial or duplicated write exists",
+  "work_lost": "none",
+  "note": "block was already completed and saved at updated_utc; no new research performed during recovery",
+  "artifacts_kept": [
+   "CELL-A-FIFTH.md",
+   "CELL-NOGO-v2.md",
+   "LEDGER.md",
+   "CELL-NOGO.md",
+   "RECOVERY.md"
+  ]
+ }
+}

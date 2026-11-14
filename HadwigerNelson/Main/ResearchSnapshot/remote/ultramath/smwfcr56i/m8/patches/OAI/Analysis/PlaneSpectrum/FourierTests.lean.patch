@@ -1,0 +1,11 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/FourierTests.lean	2026-11-13 19:09:13.640767128 +0000
++++ OAI/Analysis/PlaneSpectrum/FourierTests.lean	2026-11-13 19:29:50.493140068 +0000
+@@ -238,7 +238,7 @@
+ instance differenceLaw_probability (ν : Measure Y) [IsProbabilityMeasure ν]
+     (κ : Kernel Y G) [IsMarkovKernel κ] : IsProbabilityMeasure (differenceLaw ν κ) := by
+   unfold differenceLaw
+-  infer_instance
++  exact Measure.isProbabilityMeasure_map (measurable_fst.div measurable_snd).aemeasurable
+ 
+ variable (χ : G →* Circle)
+ 

@@ -1,0 +1,66 @@
+s
+a : ‖Complex.exp (↑b₀ * Complex.I) - Complex.exp (↑d₀ * Complex.I)‖ = 1
+⊢ False
+work/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:468:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+work/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:474:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+work/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:501:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:500:76: error: unsolved goals
+case left
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+hw : WeakColoring k c
+x y : ℂ
+A B C : Set ℝ
+J K : Finset (Fin k)
+X : Fin k
+hA : RealState hc x A J
+hB : RealState hc x B K
+hC : RealState hc y C {X}
+a b : ℝ
+F : RealPlane → RealPlane
+V : Set RealPlane
+L : ℝ≥0
+hlabels : ∀ (i : Fin k), i ∉ J ∧ i ∉ K ↔ i = X
+ha : a ∈ (volume.restrict A).support
+hb : b ∈ (volume.restrict B).support
+hF : Measurable F
+hFc : ContinuousAt F (a, b)
+hV : IsOpen V
+hab : (a, b) ∈ V
+hL : AntilipschitzWith L (V.domRestrict F)
+hi : ∀ (a b : ℝ), (a, b) ∈ V → ¬Real.sin (b - a) = 0
+ho : ∀ (a b : ℝ), (a, b) ∈ V → ¬Real.sin ((F (a, b)).2 - (F (a, b)).1) = 0
+heq : ∀ (a b : ℝ), (a, b) ∈ V → angularSum x 1 (angleChart (a, b)) = angularSum y 1 (angleChart (F (a, b)))
+⊢ (F (a, b)).1 ∈ (volume.restrict Cᶜ).support
+
+case right
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+hw : WeakColoring k c
+x y : ℂ
+A B C : Set ℝ
+J K : Finset (Fin k)
+X : Fin k
+hA : RealState hc x A J
+hB : RealState hc x B K
+hC : RealState hc y C {X}
+a b : ℝ
+F : RealPlane → RealPlane
+V : Set RealPlane
+L : ℝ≥0
+hlabels : ∀ (i : Fin k), i ∉ J ∧ i ∉ K ↔ i = X
+ha : a ∈ (volume.restrict A).support
+hb : b ∈ (volume.restrict B).support
+hF : Measurable F
+hFc : ContinuousAt F (a, b)
+hV : IsOpen V
+hab : (a, b) ∈ V
+hL : AntilipschitzWith L (V.domRestrict F)
+hi : ∀ (a b : ℝ), (a, b) ∈ V → ¬Real.sin (b - a) = 0
+ho : ∀ (a b : ℝ), (a, b) ∈ V → ¬Real.sin ((F (a, b)).2 - (F (a, b)).1) = 0
+heq : ∀ (a b : ℝ), (a, b) ∈ V → angularSum x 1 (angleChart (a, b)) = angularSum y 1 (angleChart (F (a, b)))
+⊢ (F (a, b)).2 ∈ (volume.restrict Cᶜ).support

@@ -1,0 +1,11 @@
+STEP 1 DECIDED, NEGATIVELY. At k=6 the tightened CSP (C1)-(C5) is SAT at EVERY length, so it cannot give chi>=7. Counts (normalised): l=3 36/36, l=4 216/216, l=5 225/1296, l=6 177/7776 SAT; SAT sets = m5's (C1)-(C3).
+
+A machine-checked theorem, not an observation: for every k>=5, l and sign matrix, (C1)-(C5) is satisfiable iff (C1)-(C3) is, and a (C1)-(C3) model shrinks coordinatewise to one with all |P_i|<=2, where (C4),(C5) are vacuous (TightCore.lean: sat_tight_iff_sat_plain, tight_of_plain, exists_small_subset; axioms [propext, Classical.choice, Quot.sound]). So no ternary-only constraint can decide k=6 at this level.
+
+Verification: two independent procedures (Python DFS; C forward DP over (last palette, used-triple mask), O/I from actual ray angles) agree on all 9324 instances; a third check re-derives O/I at three interior angles per cell and re-verifies all 654 witnesses; calibration reproduces k=4 all-UNSAT, Prop 8.2 (k=5,l=5) UNSAT, and m5's table.
+
+Also: INDUCTION LEMMA proved (INDUCTION.md), with the defect that its premise (H7), Prop 7.1's cycle extraction, is NOT available at k=6 (§6 needs |P|<=2; §7's cover obstruction is multiplicity-2, m3). The obvious (C6) is dead: cross-centre disjointness (5.3b) at one and two further centres stays SAT for all 654.
+
+Terminal outcome: none of L1-L5; supplies L4's 3rd ingredient.
+
+Check: cd .ultramath/smwfk0ybk/m6 && python3 tight_csp.py && python3 compare_ab.py && python3 verify_tight.py && lean TightCore.lean

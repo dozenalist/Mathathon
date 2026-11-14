@@ -1,0 +1,100 @@
+## 1. line counts (wc -l semantics)
+   FiveSupport.lean         376
+   Interfaces.lean          527
+   FourContinuity.lean      551
+   States.lean              764
+   AvoidingTrace.lean       235
+   FiveSupport.lean         354
+   FourContinuity.lean      509
+   Interfaces.lean          528
+   States.lean              566
+
+## 2. exact edit script (1-based, inclusive)
+   FiveSupport.lean     insert   old 1-0 (0)  new 1-1 (1)
+   FiveSupport.lean     delete   old 9-31 (23)  new 10-9 (0)
+   FiveSupport.lean     replace  old 144-144 (1)  new 122-122 (1)
+   Interfaces.lean      insert   old 1-0 (0)  new 1-1 (1)
+   Interfaces.lean      replace  old 277-277 (1)  new 278-278 (1)
+   FourContinuity.lean  insert   old 1-0 (0)  new 1-1 (1)
+   FourContinuity.lean  delete   old 361-400 (40)  new 362-361 (0)
+   FourContinuity.lean  replace  old 451-457 (7)  new 412-415 (4)
+   States.lean          delete   old 525-722 (198)  new 525-524 (0)
+
+## 3. removed States block: per-declaration budget
+   nonparallel_neighborhood            527- 539    13
+   strict_state_sequence_local_false   547- 635    89
+   positive_state_support_point        642- 657    16
+   support_density_direction           664- 671     8
+   support_density_sequence            672- 682    11
+   strict_state_sequence_false         683- 703    21
+   strict_state_no_unit_support        704- 718    15
+   declaration lines                              173
+   structural lines                                21   [525, 526, 540, 541, 543, 544, 545, 546, 636, 637, 639, 640, 641, 658, 659, 661, 662, 663, 719, 720, 722]
+   blank lines                                      4
+   total 198 (expect 198)
+
+## 4. classification of every added / removed region
+   AvoidingTrace.lean    {'total': 235, 'code': 189, 'comment': 26, 'blank': 20}
+   States 525-722        {'total': 198, 'code': 194, 'comment': 0, 'blank': 4}
+   FiveSupport 9-31      {'total': 23, 'code': 23, 'comment': 0, 'blank': 0}
+   FourContinuity 361-400 {'total': 40, 'code': 40, 'comment': 0, 'blank': 0}
+   FourContinuity 451-457 {'total': 7, 'code': 7, 'comment': 0, 'blank': 0}
+   FourContinuity 412-415 {'total': 4, 'code': 4, 'comment': 0, 'blank': 0}
+
+## 5. net diff
+   additions 244  removals 270  net -26   (AvoidingTrace +235)
+   with the spurious `end Generic` (AvoidingTrace:230) deleted: net -27
+
+## 6. consumers of the seven removed names, whole lean/ tree
+   nonparallel_neighborhood:
+      lean/OAI/Geometry/PlaneColoring/States.lean:527  in nonparallel_neighborhood (decl 527)
+      lean/OAI/Geometry/PlaneColoring/States.lean:567  in strict_state_sequence_local_false (decl 547)
+      lean/OAI/Geometry/PlaneColoring/States.lean:568  in strict_state_sequence_local_false (decl 547)
+   strict_state_sequence_local_false:
+      lean/OAI/Geometry/PlaneColoring/States.lean:547  in strict_state_sequence_local_false (decl 547)
+      lean/OAI/Geometry/PlaneColoring/States.lean:702  in strict_state_sequence_false (decl 683)
+   positive_state_support_point:
+      lean/OAI/Geometry/PlaneColoring/States.lean:642  in positive_state_support_point (decl 642)
+      lean/OAI/Geometry/PlaneColoring/States.lean:701  in strict_state_sequence_false (decl 683)
+   support_density_direction:
+      lean/OAI/Geometry/PlaneColoring/States.lean:664  in support_density_direction (decl 664)
+      lean/OAI/Geometry/PlaneColoring/States.lean:677  in support_density_sequence (decl 672)
+   support_density_sequence:
+      lean/OAI/Geometry/PlaneColoring/States.lean:672  in support_density_sequence (decl 672)
+      lean/OAI/Geometry/PlaneColoring/States.lean:697  in strict_state_sequence_false (decl 683)
+      lean/OAI/Geometry/PlaneColoring/States.lean:698  in strict_state_sequence_false (decl 683)
+   strict_state_sequence_false:
+      lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:395  in strict_state_uniform_on_compact (decl 361)
+      lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:452  in four_support_sequence_no_unit (decl 441)
+      lean/OAI/Geometry/PlaneColoring/States.lean:683  in strict_state_sequence_false (decl 683)
+      lean/OAI/Geometry/PlaneColoring/States.lean:713  in strict_state_no_unit_support (decl 704)
+   strict_state_no_unit_support:
+      lean/OAI/Geometry/PlaneColoring/Interfaces.lean:277  in interfaceStateSupport_no_unit (decl 266)
+      lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:144  in five_support_no_sixty (decl 138)
+      lean/OAI/Geometry/PlaneColoring/States.lean:704  in strict_state_no_unit_support (decl 704)
+
+## 7. consumers of the preserved declarations
+   indicator_inter_positive: lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:326 in support_lower_semicontinuity; lean/OAI/Geometry/PlaneColoring/States.lean:415 in indicator_inter_positive; lean/OAI/Geometry/PlaneColoring/States.lean:612 in strict_state_sequence_local_false
+   two_state_impossible: lean/OAI/Geometry/PlaneColoring/Interfaces.lean:139 in four_state_diagonal_positive_of_group; lean/OAI/Geometry/PlaneColoring/States.lean:243 in two_state_impossible; lean/OAI/Geometry/PlaneColoring/States.lean:378 in fourState_diagonal_positive
+   four_realState_continuity: lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:423 in four_realState_continuity; lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:440 in four_support_continuity; lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:457 in four_support_sequence_no_unit
+   four_support_continuity: lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:432 in four_support_continuity; lean/OAI/Geometry/PlaneColoring/Accumulation.lean:59 in four_endpoint_sequence_false; lean/OAI/Geometry/PlaneColoring/Accumulation.lean:60 in four_endpoint_sequence_false
+   four_support_sequence_no_unit: lean/OAI/Geometry/PlaneColoring/FourTransport.lean:222 in four_support_no_sixty; lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:441 in four_support_sequence_no_unit; lean/OAI/Geometry/PlaneColoring/Accumulation.lean:103 in four_endpoint_sequence_false
+   five_support_step_ban: lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:90 in five_support_step_ban; lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:220 in five_opposite_contacts_false; lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:221 in five_opposite_contacts_false
+
+## 8. section/namespace balance
+   FiveSupport.lean       unclosed=0 []  errors=[]
+   Interfaces.lean        unclosed=0 []  errors=[]
+   FourContinuity.lean    unclosed=0 []  errors=[]
+   States.lean            unclosed=0 []  errors=[]
+   AvoidingTrace.lean     unclosed=0 []  errors=[(230, 'end Generic matches nothing; top=ThreeCentre')]
+   FiveSupport.lean       unclosed=0 []  errors=[]
+   FourContinuity.lean    unclosed=0 []  errors=[]
+   Interfaces.lean        unclosed=0 []  errors=[]
+   States.lean            unclosed=0 []  errors=[]
+
+## 9. module closure
+   closure(BoundaryTrace) = 18 modules
+      contains OAI.Geometry.PlaneColoring.FiveSupport? False
+      contains OAI.Geometry.PlaneColoring.Interfaces? False
+      contains OAI.Geometry.PlaneColoring.FourContinuity? False
+      contains OAI.Geometry.PlaneColoring.Accumulation? False

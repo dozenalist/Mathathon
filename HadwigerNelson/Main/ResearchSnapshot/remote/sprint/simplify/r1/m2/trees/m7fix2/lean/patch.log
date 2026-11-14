@@ -1,0 +1,5 @@
+patching file OAI/Analysis/PlaneSpectrum/FourierTests.lean
+patching file OAI/Analysis/PlaneSpectrum/Ergodicity.lean
+patching file OAI/MeasureTheory/CompactFactors/Approximation.lean
+patching file OAI/Analysis/PlaneSpectrum/DifferenceLaw.lean
+patching file OAI/MeasureTheory/CompactFactors/DifferenceInvariant.lean

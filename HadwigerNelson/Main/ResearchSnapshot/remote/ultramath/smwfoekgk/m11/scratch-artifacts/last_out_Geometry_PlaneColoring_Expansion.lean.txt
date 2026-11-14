@@ -1,0 +1,57 @@
+/Expansion.lean:596:18: warning: aesop: failed to prove the goal. Some goals were not explored because the maximum rule application depth (30) was reached. Set option 'maxRuleApplicationDepth' to increase the limit.
+work/lean/OAI/Geometry/PlaneColoring/Expansion.lean:595:70: error: unsolved goals
+A : Set ℝ
+hA : MeasurableSet A
+L ε : ℝ
+hpos : ¬volume A = 0
+hL : 0 < L
+hε : 0 < ε
+⊢ ∃ a b, a < b ∧ b - a < L ∧ volume (Icc a b \ A) ≤ ENNReal.ofReal ε * ENNReal.ofReal (b - a)
+work/lean/OAI/Geometry/PlaneColoring/Expansion.lean:630:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/Expansion.lean:629:68: error: unsolved goals
+ι : Type u_1
+F D : ι → ℝ → ℝ
+K : ℝ≥0
+e U L : ℝ
+A : Set ℝ
+hd : ∀ (j : ι) (x : ℝ), HasDerivAt (F j) (D j x) x
+ε : ℝ
+hp : ∀ (j : ι) (x : ℝ), 2⁻¹ ≤ D j x
+hup : ∀ (j : ι) (x : ℝ), D j x ≤ U
+hK : ∀ (j : ι), LipschitzWith K (D j)
+hlarge : ∀ (x : ℝ), ∃ j, 1 + e ≤ D j x
+he : 0 < e
+hKL : ↑K * L ≤ e
+hU : 0 < U
+hL : 0 < L
+hinv : ∀ (j : ι), ∀ᵐ (x : ℝ), x ∈ A ↔ F j x ∈ A
+hA : MeasurableSet A
+hpos : ¬volume A = 0
+hε : 0 < ε
+⊢ ∃ a b, L ≤ b - a ∧ volume (Icc a b \ A) ≤ ENNReal.ofReal ε
+work/lean/OAI/Geometry/PlaneColoring/Expansion.lean:652:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/Expansion.lean:651:51: error: unsolved goals
+ι : Type u_1
+F D : ι → ℝ → ℝ
+K : ℝ≥0
+e U L P : ℝ
+A : Set ℝ
+hd : ∀ (j : ι) (x : ℝ), HasDerivAt (F j) (D j x) x
+hp : ∀ (j : ι) (x : ℝ), 2⁻¹ ≤ D j x
+hup : ∀ (j : ι) (x : ℝ), D j x ≤ U
+hK : ∀ (j : ι), LipschitzWith K (D j)
+hlarge : ∀ (x : ℝ), ∃ j, 1 + e ≤ D j x
+he : 0 < e
+hKL : ↑K * L ≤ e
+hU : 0 < U
+hL : 0 < L
+hP : 0 < P
+hinv : ∀ (j : ι), ∀ᵐ (x : ℝ), x ∈ A ↔ F j x ∈ A
+hA : MeasurableSet A
+hpos : ¬volume A = 0
+hper : ∀ (n : ℤ) (x : ℝ), x + ↑n * P ∈ A ↔ x ∈ A
+⊢ ∃ a b, b - a = L / 2 ∧ volume (Icc a b \ A) = 0
+work/lean/OAI/Geometry/PlaneColoring/Expansion.lean:681:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+work/lean/OAI/Geometry/PlaneColoring/Expansion.lean:704:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.

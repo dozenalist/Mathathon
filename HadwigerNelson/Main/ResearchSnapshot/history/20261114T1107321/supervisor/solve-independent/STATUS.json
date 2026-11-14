@@ -1,0 +1,152 @@
+{
+ "updated_utc": "2026-11-14T11:03:26Z",
+ "status": "completed_block",
+ "summary": "Analysis only; no solver, no Lean. Three scope corrections to Lemma C: terminal satisfiability is not global k-colourability; w_i need not differ from alpha, so the terminal minimum is 3 colours, not 4; and level 5 is NOT useless - an explicit finite non-5-colourable unit-distance graph would replace a 62-page analytic argument by a finite certificate. MAIN RESULT, Lemma S (spare colour): if G is (k-1)-colourable and T is NR-k, then T is MONOCHROMATIC in every proper (k-1)-colouring. The proof turns on k being fresh, hence colliding with nothing; the monochromatic case is sharp, since one spare colour cannot make a monochromatic triple rainbow (checked at k=5,6). Corollary 1: if G is (k-1)-colourable and every pair is separable at level k-1, G has NO NR-k triple, so G_553 admits no NR-6 triple anywhere - closed there. Corollary 2, stronger and needing no separation: no (k-1)-colourable graph has u,v with three pairwise-adjacent witnesses each NR-k. At k=6 that rules out any 5-colourable carrier, so the composition needs an explicitly 6-chromatic finite UDG - the level-5 route's own target. Level 6 presupposes level 5; Heule 553 certifies only chi >= 5. Specification (S) for composing three NR gadgets given in full.",
+ "verified_results": [
+  {
+   "statement": "Correction: colouring the five terminals shows only terminal-level satisfiability, not that G is k-colourable. In Lemma C, Omega_k(G) nonempty is a global hypothesis, separate from any terminal colouring.",
+   "grade": "self-correction of scope"
+  },
+  {
+   "statement": "Correction: with c(u)=c(v)=alpha, w_i may also take alpha unless an explicit edge u w_i (or v w_i) forbids it. Terminal-level minimum is 3 colours (three pairwise-adjacent witnesses, one of which may be alpha); 4 only when u or v is adjacent to all three witnesses. The earlier claim of 4 is withdrawn.",
+   "grade": "self-correction; PROOF of the corrected count"
+  },
+  {
+   "statement": "Correction of scope: level 5 is valuable. An explicit exactly coordinated finite non-5-colourable unit-distance graph would give a short, finite, machine-checkable proof of chi(R^2) >= 6 in place of the 62-page analytic argument, which serves the simplification objective even though it does not decide 6 vs 7.",
+   "grade": "self-correction; the implication chain itself is PROOF (Lemma C + audited amplifier)"
+  },
+  {
+   "statement": "Lemma S (spare colour): if G is (k-1)-colourable and T = {a,b,c} is NR-k, then T is monochromatic in every proper (k-1)-colouring of G.",
+   "grade": "PROOF (three cases; the only ingredient is that colour k is fresh, so recolouring one vertex to it stays proper)"
+  },
+  {
+   "statement": "Sharpness of Lemma S: the monochromatic case genuinely survives, because a single spare colour cannot turn a monochromatic triple rainbow (two fresh colours would be needed). Enumerated over patterns (1,1,1),(1,1,2),(1,2,3) and all three recolourings, k=5 and k=6: only (1,1,1) fails to reach rainbow. So Lemma S is necessary, not sufficient, i.e. a filter.",
+   "grade": "EXACT pattern enumeration; no graph, no solver"
+  },
+  {
+   "statement": "Corollary 1: if G is (k-1)-colourable and every pair is separated by some proper (k-1)-colouring, then G has no NR-k triple.",
+   "grade": "PROOF (Lemma S gives monochromaticity; pair separation contradicts it)"
+  },
+  {
+   "statement": "Specialisation: G_553 is 5-colourable and (Sep_5) is verified by the 34-witness chase, so G_553 admits NO NR-6 triple anywhere. This closes condition (M4) of COMPOSITION.md on Heule 553, and with it the k=6 instance of the arity-3 route on that graph.",
+   "grade": "PROOF given G_553's 5-colourability and the supervisor-verified (Sep); those two inputs are inherited, not re-derived here"
+  },
+  {
+   "statement": "Corollary 2: in ANY (k-1)-colourable graph there do not exist u,v and pairwise-adjacent w_1,w_2,w_3 with each {u,v,w_i} NR-k. Proof: every (k-1)-colouring makes each T_i monochromatic, hence all five terminals share one colour, contradicting pairwise adjacency of the w_i. No pair separation is used.",
+   "grade": "PROOF"
+  },
+  {
+   "statement": "Consequence at k=6: the three-witness composition cannot live in any 5-colourable graph, so realising it requires a finite unit-distance graph that is 6-colourable and not 5-colourable, i.e. exactly 6-chromatic. Since G_553 is 5-chromatic (certifying only chi >= 5) and the paper's chi >= 6 is analytic with no graph exhibited, the k=6 arity-3 route presupposes the level-5 target.",
+   "grade": "PROOF of the dependency; the non-existence of an explicit 6-chromatic finite UDG is cited from the project record, not re-verified"
+  },
+  {
+   "statement": "Level-5 route is live: Lemma S does not apply at k=5 on G_553 because G_553 is not 4-colourable, so NR-5 triples are not excluded. Such a triple feeds Lemma C at k=5, giving a forced-equal pair, and the audited amplifier then yields a finite non-5-colourable graph with coordinates in K(sqrt(4n^2 d^2 - 1)) and at most 2nV-2n+1 vertices.",
+   "grade": "PROOF of the chain; existence of an NR-5 triple is OPEN and not claimed"
+  },
+  {
+   "statement": "Monotonicity (MON): NR is preserved under adding vertices and edges, since every k-colouring of the extension restricts to one of the subgraph. So gluing gadgets cannot destroy an NR fact; what gluing can destroy is global colourability, which is the mirror image and is why (S6) is a separate obligation.",
+   "grade": "PROOF"
+  },
+  {
+   "statement": "Specification (S) for composing three NR gadgets with common u,v and unit triangle w_1,w_2,w_3, in seven clauses: exact coordinates in a number field; the unit triangle; u,v distinct and non-adjacent; each {u,v,w_i} NR-k in its sub-gadget and transported by (MON); an accident audit covering coincidences, accidental cross-gadget and gadget-terminal unit edges, and accidental formation of a triangle; global Omega_k(G) nonempty as a separate obligation; and E(G) taken as the full induced unit-distance graph, not a selected subset.",
+   "grade": "specification, not an instance; satisfiability of (S) is the open problem"
+  },
+  {
+   "statement": "No new forcing is claimed. No NR-5 or NR-6 triple is asserted to exist; no gadget is exhibited.",
+   "grade": "scope statement"
+  }
+ ],
+ "conjectures": [
+  "An NR-5 triple in G_553 is the single live seed in this line. If one exists, Lemma C at k=5 plus the amplifier gives an explicit 6-chromatic finite unit-distance graph - a shortening of the lower bound rather than a solution of 6 vs 7.",
+  "By Corollary 2 the level-6 composition needs an explicitly 6-chromatic graph, so it cannot be cheaper than the level-5 route; any future block should treat it as strictly downstream."
+ ],
+ "artifacts": [
+  "supervisor/solve-independent/audit-amplifier/SPARE-COLOUR.md",
+  "supervisor/solve-independent/audit-amplifier/COMPOSITION.md (repair banner added)",
+  "supervisor/solve-independent/audit-amplifier/TERMINAL-RELATIONS.md",
+  "supervisor/solve-independent/audit-amplifier/AUDIT.md",
+  "supervisor/solve-independent/audit-amplifier/adaptive_k5.frozen.json",
+  "supervisor/solve-independent/audit-amplifier/census_heule553.frozen.json",
+  "supervisor/solve-independent/audit-amplifier/AMPLIFIER.frozen.md",
+  "supervisor/solve-independent/check_null_transfer.lean",
+  "supervisor/solve-independent/STATUS.json"
+ ],
+ "tests_run": [
+  {
+   "command": "python pattern enumeration: 3 colour patterns x 3 candidate recolourings x k in {5,6}",
+   "outcome": "(1,1,1) never reaches rainbow with one fresh recolour; (1,1,2) reaches (k,1,2); (1,2,3) already rainbow. Confirms Lemma S is necessary-not-sufficient and that the monochromatic case is sharp. No graph, no solver, milliseconds."
+  },
+  {
+   "command": "sha256sum on the new and edited artifacts",
+   "outcome": "hashes recorded in artifacts_hashes"
+  }
+ ],
+ "failed_routes": [
+  "My first sublattice enumeration used the lower-triangular HNF <(a,0),(b,c)>, which is NOT a complete list: it misses 6 of the 8 index-7 sublattices, including the paper's <(1,3),(0,7)>, and wrongly gave minimum index 8 at a = 2/5. Fixed to upper HNF <(a,b),(0,c)>; the control then gave 7 as it must.",
+  "The heuristic bound index >= ceil((1+D)^2/(3a^2)) = 17 at a = 1/5 was wrong (ring 16 escapes it); replaced by the multiplicative-norm argument giving 16, which the enumeration confirms.",
+  "A density argument (clusters of <= 4 separated by 1.3856) does not give a contradiction at six colours: 2.65 > 1.60. Recorded as a gap, not pursued further in this block.",
+  "A hand estimate that ring-16 cells could carry the N=16 forced offsets was wrong (ring 16 is unforced because dmin >= 1); it does not affect this block, where the window proof bounds N < 16.33 independently.",
+  "Carried forward and still relevant: the earlier lower-triangular HNF enumeration was incomplete (missed 6 of 8 index-7 sublattices); this block uses the upper HNF only, and the index-19 counts here are on that corrected enumeration.",
+  "p19_shrink.py: greedy UNSAT-core minimisation (73+ solver calls) exceeded the cap and produced no output; superseded, no core certificate.",
+  "k = 7 (i.e. chi = 8) DRUP certificate: generation exceeded 60 s; abandoned. The chi = 8 claim therefore rests on two CDCL decisions plus a verified 8-colouring, not on a proof.",
+  "rup.c first version had two real defects: clauses added with watches already false at level 0, and unit clauses enqueued but not propagated. The second produced a spurious RUP FAILURE; diagnosed with a naive independent propagation. Both fixed; the shipped checker is the fixed one.",
+  "patch19_proof.py: abandoned driver (pysat returns DIMACS strings, so its empty-clause assertion fired). Superseded by p19_gen.py.",
+  "Earlier in this block's lineage: the 'every 6-subset contains an edge' line in QUOTIENT16.md \u2014 retracted as a chromatic argument; K_16 is the valid one.",
+  "No SAT search, no core minimisation and no 7-UNSAT work in this block, per instruction; the earlier failures are retained and documented in FAILED-RUNS.md (RUP FAILURE at step 26154 caused by unpropagated units in my checker; shrink timeout; k=7 generation timeout; incomplete lower-HNF enumeration).",
+  "An earlier attempt to parse the exact per-ring values back from JSON strings failed (a hand-rolled parser); replaced by carrying the Q3 objects directly. No numerical claim changed.",
+  "Nothing failed in this block's single experiment. Recorded for continuity: pysat's cadical153 with_proof must NOT be used for DRAT here (its writer mangles the proof, per supervisor/solve-graphs/certs/shard_b_summary.md); the cadical binary was used instead, and my own rup.c was not used at all.",
+  "The earlier blanket requirement (boundary ownership must be constructed before any 6-upper-bound consequence, stated in CELL-NOGO-v2.md section 1 and RECOVERY.md) is RETRACTED as wrong; it treated as necessary a step that the null-set transfer lemma shows does not exist.",
+  "A single global translation avoiding B does not exist (it would require B empty), so the compactness step cannot be replaced by a global translate; any future argument that tries to pick one t for the whole plane is invalid.",
+  "RETRACTED (supervisor-caught): the claim that (H) is necessary. (H) is sufficient only; the exact criterion is embeddability of every finite unit-distance graph.",
+  "RETRACTED (supervisor-caught): the claim that a half-plane is killed by the diameter objection. A half-plane satisfies (H); the objection applies only to bounded regions and fixed-width strips.",
+  "CORRECTED (supervisor-caught): an arbitrary colouring of all cell interiors is not thereby cell-constant; the Cayley-graph equivalence needs that hypothesis stated.",
+  "CORRECTED (supervisor-caught): compactness is used in this proof but was wrongly graded indispensable to all proofs.",
+  "RETRACTED (supervisor-caught): the iff 'chi(R^2) <= chi(C\\Z) <=> every finite unit-distance graph embeds in Gamma(C\\Z)'. Necessity is false; chromatic suprema do not recover embeddings. Replaced by the k-colourability criterion.",
+  "CORRECTED: the conclusion of the transfer lemma does not extend the supplied colouring pointwise; only existence is asserted.",
+  "CORRECTED (supervisor-caught): the diameter argument for fixed-width strips is invalid, because a chain can be laid flat along the strip. Replaced by a perpendicular-extent criterion with a rigid triangular patch as the obstruction.",
+  "REMOVED: the stale 'body elided at ...' label on the source packet, after mechanically verifying the body has no elision.",
+  "WITHDRAWN: the claim that a triangulated triangular-lattice disk has only congruent unit-distance realisations (used to argue a strip obstruction). Unsupported and unnecessary.",
+  "RETRACTED: the whole 'can a realisation of the graph fit in the strip' framing. H is about translating a fixed point set, so the strip fails on the two-point set {0,(w+1)i}.",
+  "My own hand estimate that the k=2,n=3 chain contains an accidental cross-copy unit edge p_i--r_{i-1} was WRONG - the exact computation showed the six edges are exactly the six within-copy edges. Recorded because it is precisely the trap the file's section 5 warns about; I corrected the claim before writing it up.",
+  "No solver or Lean build this block, per instruction; the (H4) upper bound for the new instance is argued from (H4) plus an exact edge-count equality rather than by finding a colouring algorithmically.",
+  "Not attempted by design: no SAT run, no arithmetic check of W_6 (it is hand-verified only, and flagged as such), and no recomputation of the census numbers max_cn = 2 / triangles = 1093.",
+  "Rejected as too weak: stating the certificate's content as 'no forcing at k >= 5' without the k = 4 vacuity caveat, and treating absence of a pattern in the 34 witnesses as impossibility.",
+  "WITHDRAWN: 'an anti-rainbow triple cannot be explained at arity 2 at all / is a genuine three-way phenomenon'. Every constraint is binary; the correct statement is joint unsatisfiability with satisfiable pair projections.",
+  "WITHDRAWN: the inference from max common neighbours = 2 to a mechanism classification. Relies only on the verified (Sep) now.",
+  "CORRECTED: form (C) as stated admitted contradictory relation sets; replaced by the extension property for locally consistent partial assignments.",
+  "NOT DONE: no attempt to realise (M), and no attempt to show (M) impossible; both would be new work and neither is claimed.",
+  "WITHDRAWN: the k=6 instance of the arity-3 route on G_553. By Lemma S plus (Sep_5), G_553 admits no NR-6 triple at all - not 'none found'.",
+  "WITHDRAWN: 'a 5-level non-rainbow triple buys nothing'. The lower bound chi >= 6 is proved analytically over 62 pages; an explicit finite certificate would shorten it, which is worth more than the phrase 'already proved' conveyed.",
+  "CORRECTED: 'the terminal minimum is 4 colours'. It is 3, since a witness may share alpha with u,v unless an explicit edge forbids it.",
+  "NOT DONE: no search for an NR-5 triple, no gadget construction, no amplifier re-derivation beyond citing the audited Theorem A."
+ ],
+ "next_step": "Level 5 is the only live and economical target: decide whether G_553 (or another 5-chromatic pair-separating finite UDG) has an NR-5 triple. If one exists, Lemma C plus the amplifier gives an explicit 6-chromatic finite unit-distance graph, i.e. a short computational proof of chi(R^2) >= 6. Level 6 should be considered strictly downstream: by Corollary 2 it needs an explicitly 6-chromatic graph first. Also still queued: check_null_transfer.lean for the serial local Lean build.",
+ "escalation": "Precise obstacle: the spare-colour obstruction makes NR-k incompatible with (k-1)-colourability plus pair-separation, so the arity-3 relation is available only at the level just above the graph's chromatic number. Concretely G_553 is 5-chromatic, so it can host NR-5 triples (nothing excludes them; Lemma S is silent because G_553 is not 4-colourable) but can host no NR-6 triple. Since a level-5 forced pair yields an explicit 6-chromatic finite UDG - the object needed to even attempt level 6 - the whole line is bottlenecked on one question: does a 5-chromatic pair-separating finite unit-distance graph admit a triple that no 5-colouring makes rainbow? Expected useful output: either such a triple (giving a short finite lower-bound certificate) or a proof that none exists (closing the arity-3 route entirely).",
+ "recovery": {
+  "utc": "2026-11-14T06:46:58Z",
+  "jobs_running_at_recovery": 0,
+  "integrity": "re-ran forced_a1_5.py, verify_cell_nogo_v2.py, square_family.py, audit_rect.py: all rc 0; forced_a1_5.out and verify_cell_nogo_v2.out regenerate byte-identically, so no partial or duplicated write exists",
+  "work_lost": "none",
+  "note": "block was already completed and saved at updated_utc; no new research performed during recovery",
+  "artifacts_kept": [
+   "CELL-A-FIFTH.md",
+   "CELL-NOGO-v2.md",
+   "LEDGER.md",
+   "CELL-NOGO.md",
+   "RECOVERY.md"
+  ]
+ },
+ "artifacts_hashes": {
+  "audit-amplifier/SPARE-COLOUR.md": "3c9b65be8525af919b3b232c5078e7d43db66d09d603333c1fb5df72b52198d0",
+  "audit-amplifier/COMPOSITION.md": "9547457de8f477c073dfc583451c6c0d7ae48e2f42341b74ba5d40d69e066aee",
+  "audit-amplifier/TERMINAL-RELATIONS.md": "9592434c89f4011c3a10c63c3327fa8fd2b02537e03fcbb691e7cbc07b73751d",
+  "audit-amplifier/AUDIT.md": "e53234f41f2b389be0e45b19db8769a9dcdadc88a89ac94383ec720264c596f3",
+  "audit-amplifier/adaptive_k5.frozen.json": "9ab71b7aec712709517d8260adf646fab21b3bf8379304ebc4354b6c39978e6a",
+  "audit-amplifier/census_heule553.frozen.json": "98f25ec54b289e31d4fad7b41fb964b9f77ebb7ef8756c9fd99b227bf9674fd3",
+  "audit-amplifier/AMPLIFIER.frozen.md": "492bcae49c35dc268a7e87ce546da05ef394e261263a59631d4925b0c89c689a",
+  "check_null_transfer.lean": "682c2c0acfbca85a94e05d3f3e93f766c656b8c0c77b5f7f5fc288f359b0994d",
+  "p25.cnf": "4d5d07d62ddfb89db4706ad46ab7e68fac210f94c8399586f32e146d608e59ca",
+  "p25.drat": "12a72a7ae61e50f40a0d9948b0d96fd906d25b1c04ec7a15294bfc7fc7b6549d",
+  "tools/drat-trim": "a9571deb08430a3d7f7a72074440f53e2ad48196dced50b146835052a18e9066"
+ }
+}

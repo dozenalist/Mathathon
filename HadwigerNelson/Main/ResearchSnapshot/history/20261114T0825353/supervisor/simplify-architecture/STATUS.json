@@ -1,0 +1,49 @@
+{
+ "updated_utc": "2026-11-14T08:20:00Z",
+ "status": "completed_block",
+ "summary": "Block 6, two parts. (1) Mixture example repaired as instructed: Leb+delta_0 on T^2 under irrational translations was doubly invalid (delta_0 is not translation-invariant; translation does not act on frequency indices). Replaced by mu_lambda = lambda*m_D + (1-lambda)*delta_{1_D} on the actual D with K's automorphism action: both components invariant, a_0 = 1 and a_z = 1-lambda for nonzero z, so pointwise strictness holds, while for z=w!=0 the centered coefficient is lambda(1-lambda) off the single exceptional u=1, giving mean square lambda^2(1-lambda)^2 > 0: M3 fails. It violates ergodicity and wildness (mu_lambda(C) = 1-lambda since 1_D = j(0) is in C), so it is a logical counterexample to strictness alone, not to M3 for the paper's mu. Sign/action convention audited: U_u psi_z = psi_{uz}, index z -> uz. I was also wrong to claim (U) implies M3; withheld. (2) The CENSUS twin pair is settled at source level: the two 153-line proofs differ in exactly 6 lines, and the merge is one general definition plus one theorem plus two wrappers, with no statement change and no new premise. Scaffold uncompiled. Module placement measured: ConditionalLimits already imports ConditionalSpectrum.",
+ "verified_results": [
+  "[proved here] Corrected mixture: m_D invariant (Haar under a continuous automorphism) and delta_{1_D} invariant (u.1_D = 1_D); a_z = 1-lambda for z != 0 since Haar's nontrivial characters integrate to 0 and psi_z(1_D) = 1; mutatis mutandis a_0 = 1. For z = w != 0, a_{uz-w} = 1 exactly at the unique u with uz = w (u = 1 when z = w) and 1-lambda elsewhere, so the centered difference is lambda(1-lambda) off one point and the Folner average tends to lambda^2(1-lambda)^2 > 0: M3 fails while |a_z| < 1 for all nonzero z.",
+  "[verified here] The corrected example violates ergodicity (mutually singular invariant m_D and delta_{1_D}, with m_D({1_D}) = 0) and wildness (mu_lambda(C) = 1-lambda, because 1_D = j(0) in C). Hence it separates pointwise strictness from M3 logically, and is NOT a counterexample to M3 for the paper's mu; ergodicity must enter any proof of M3 essentially.",
+  "[verified here] Action/sign audit: paper (ad)(z) = d(az) gives (u.d)(z) = d(uz); hence U_u psi_z = psi_{uz}; a_{uz} = a_z under invariance; and a_{-w} = conj(a_w) makes the z = 0 and w = 0 cases of M3 cancel identically.",
+  "[verified here] Retraction: block 5's toy (Leb + delta_0 on T^2, Z^2 translations) was invalid on two counts - delta_0 is not invariant under irrational translations and translation is not the automorphism action on frequencies. Its numerical conclusion survives only in the corrected D-form.",
+  "[verified here, source reading] The CENSUS twin pair: diff of ConditionalSpectrum.lean:324-476 against ConditionalLimits.lean:399-551 (153 lines each) shows exactly 6 differing lines: the P definition (q circ p vs q), the hP proof, the IsProbabilityMeasure (mu.map P) instance route (explicit .map vs inferInstance), and 4 occurrences of H ?_ (p x) vs H ?_ x in Ap, Am, the hbins application and the two change lines. Everything else is line-for-line identical, including the wildness use and the final contradiction.",
+  "[verified here, measured] Transitive import closure of lean/OAI: ConditionalSpectrum is in closure(ConditionalLimits) but not conversely, so the shared definition and theorem must live in ConditionalSpectrum and the ambient wrapper in ConditionalLimits. Neither identifier has any consumer outside its own module (grep across lean/).",
+  "[planned, uncompiled] Common interface: EncodingApproximationAt mu p P S b m gamma, with S := p (Z := Y) reproducing FiniteEncodingApproximationAt and S := id (Z := X) reproducing AmbientEncodingAt definitionally, so both become abbrev aliases and both wrappers are single-line calls. 7 edit sites listed. Saving about 150 lines across two modules with the two public statements unchanged."
+ ],
+ "conjectures": [
+  "The two uniform-precision theorems are one theorem; the only structural content of the 'finite' version is that the approximating family is read through p. If the transplant compiles, the pair contributes about 150 lines to the Track A target without touching any statement.",
+  "An alternative abstraction by an ambient family Kf : Fin r -> X -> Fin m -> C would be strictly weaker than the finite hypothesis (exists Kf does not imply exists H factoring through p) and would need a conversion prologue in each wrapper; rejected in favour of the S-parametrisation."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/LEDGER.md (Sec.5 rewritten: corrected mixture on D, sign/action audit 5b, retraction 5c)",
+  "supervisor/simplify-architecture/encoding-core/PLAN.md (interface, diff evidence, assumption-to-use table, 7 edit sites, wrappers, placement, risks, preserved compiler-refuted deletion)",
+  "supervisor/simplify-architecture/encoding-core/SCAFFOLD.lean (UNCOMPILED, one labelled sorry standing for the verbatim transplant; not part of any build)",
+  "supervisor/simplify-architecture/AUDIT.md, OBSTRUCTION.md (block-5 banners retained)",
+  "supervisor/simplify-architecture/STATUS.json"
+ ],
+ "tests_run": [
+  {
+   "cmd": "diff of the two proof bodies (sed ranges 324-476 and 399-551, then diff)",
+   "outcome": "6 differing lines, listed in PLAN.md Sec.1; all other lines identical."
+  },
+  {
+   "cmd": "python3 BFS over ^import lines of lean/OAI (the block's single computation, ~0.09 s)",
+   "outcome": "Spectrum in Limits-closure: True; Limits in Spectrum-closure: False. Placement fixed accordingly."
+  },
+  {
+   "cmd": "no Lean build, no elaboration, no #check; no subagents; no messages",
+   "outcome": "the scaffold is explicitly uncompiled and contains one labelled sorry."
+  }
+ ],
+ "failed_routes": [
+  "Block-5 mixture (Leb + delta_0 on T^2 with irrational translations): INVALID - delta_0 not translation-invariant, and no automorphism action on frequency indices. Retracted in LEDGER Sec.5c; replaced by LEDGER Sec.5a.",
+  "(U) implies M3: withdrawn in block 5 and not reinstated; the corrected mixture shows strictness plus invariance cannot give M3 at all (ergodicity is essential), so no repair along that line exists.",
+  "Abstraction by an ambient family Kf without the read-out map S: rejected - exists Kf is strictly weaker than the finite hypothesis, so no definitional alias and each wrapper would need an unpacking prologue.",
+  "Placing the common lemma in ConditionalLimits: impossible, since ConditionalSpectrum is in its import closure.",
+  "Still withdrawn from earlier blocks: P3 compaction propagation; coset-supported counterexample (closed by Lemma A); uncentered Avg|a_{uz-z}|^2 criterion; first-stage properness as a route to H2; the claim that Astra's Lemma A needed repair.",
+  "Preserved correction from the retired sprint: the proposed deletion of allegedly dead instances in this region was REFUTED BY THE COMPILER; this block proposes a merge, not a deletion."
+ ],
+ "next_step": "When a build block is granted (serial local-check workflow, one job): place EncodingApproximationAt and uniform_precision_contradiction in ConditionalSpectrum.lean, transplant the body with the 7 edits, replace the two defs with abbrev aliases, rebuild both modules and the 83-module tree, and re-run the axiom certificate on the two wrappers and on finite_uniform_successor_contradiction. Confirm three things the scaffold cannot: the IsProbabilityMeasure (mu.map P) instance route in both modules, that S := id makes H i (id x) defeq H i x by rfl, and that the two change-lines and the hbins application survive at S. No new mathematics is proposed; M3 and the tower simplification remain unproved and untouched this block.",
+ "escalation": null
+}

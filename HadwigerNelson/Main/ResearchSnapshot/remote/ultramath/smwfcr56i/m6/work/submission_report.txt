@@ -1,0 +1,12 @@
+Audited sections 5-8 against their own statements: no defect in the finite core; both computations the paper delegates are now done.
+
+Files in .ultramath/smwfcr56i/m6/work/:
+* OAI_Audit_Moser.lean - Lean 4.33.1+Mathlib, no sorry/axiom/native_decide; axioms only propext/Classical.choice/Quot.sound. Proves, for the 7-vertex Moser graph of (8.5) with exact coordinates in Q(sqrt3,sqrt11) AND for the placed points z_g of (8.6): the 11 edges have length exactly 1, no other pair does, the 7 vertices are distinct, and there is no proper 3-colouring. 7 s.
+* verify_sec8.py - exact Q(sqrt3,sqrt11) arithmetic: exactly 11 unit pairs; the other 10 squared distances 3,3,1/3,1/3,7/6+-sqrt33/6,(3/2+-sqrt33/6)x2; all 3^7 colourings checked, none proper; (8.6) read as ((35+12i)/37)(g+(-290+149i)/250) reproduces all seven printed residuals exactly; the Lemma 8.9 region certificate verified for ALL SEVEN vertices (the paper prints one row and delegates six).
+* exact_certificate.py - decimal-free rational certificate for Lemma 8.9.
+* verify_53.py - sympy proof of (5.9),(5.10); a_+(t)-a_-(t+kappa)=0 identically, so the printed a_+(t+kappa) is essential.
+* verify_combinatorics.py - exhaustive checks of the word/cycle lemmas of 8.2, 8.3/8.5, 6.3.4.
+* audit_sections5to8.md - verdicts, exact tables, 3 cosmetic errata, prose steps accepted by hand only.
+
+Check: sh run_all.sh (exits 0; writes run_all.log).
+Consequence: given section 7's length-3 interface cycle, Prop. 8.10 is sound.

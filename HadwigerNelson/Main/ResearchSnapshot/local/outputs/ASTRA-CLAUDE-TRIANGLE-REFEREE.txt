@@ -1,0 +1,293 @@
+INDEPENDENT REFEREE: CLAUDE'S VARIABLE-TRIANGLE OBSTRUCTION
+14 November 2026
+
+VERDICT
+
+ACCEPT the main geometric theorem, including its stronger closure version,
+for the SPECIFIED half-open four-state angular palette. I give a complete
+analytic proof below using conservative rational bounds; the large proposed
+grid is unnecessary and was not run.
+
+Several subsidiary statements need correction:
+  * the unrestricted oriented-difference list omits (270 degrees,330 degrees);
+  * the exact inner-spike condition is half-open, not a strict absolute-value
+    inequality;
+  * the half-open good set itself need not be reflection-invariant on its
+    boundary, though its closure is;
+  * arbitrary null-set changes can create isolated pointwise good triangles.
+    They cannot create the density-point/open-margin data needed by this
+    argument. The raw closure theorem is representative-specific;
+  * using different base centres does not require a new general density
+    lemma: the existing source already permits the three density arguments
+    to have different centres. What is missing is a producer of compatible
+    actual state data and triangle geometry across those centres.
+
+No plane-colouring theorem or numerical chromatic bound follows. This is
+an obstruction to a particular fixed-base, partner-pair triangle method.
+
+1. EXACT OBJECT BEING AUDITED
+
+I read both outputs/CLAUDE-VARIABLE-TRIANGLE-2026-11-14.txt and the preceding
+outputs/CLAUDE-FIRST-RESEARCH-2026-11-14.txt to recover the actual palette.
+Put h=pi/6 and
+  f(t)=floor(t/h) modulo 4,
+  P_0={0,3}, P_1={0,4}, P_2={1,4}, P_3={1,3}.
+The rule is well-defined on the angular circle because 2pi=12h.
+Two palette values are disjoint exactly when their indices differ by 2
+modulo 4. Both partner pairs have union {0,1,3,4}, leaving {2,5}.
+
+For base centre zero, let G be the set of z=e(a)+e(b) for which P(a),P(b)
+are partners, using exactly these half-open fibres. For every nonzero z
+with |z|<=2, its unordered pair of unit summands is unique:
+  a=psi-gamma, b=psi+gamma,
+  psi=arg(z), gamma=arccos(|z|/2) in [0,pi/2).
+For |z|>2 there is no such pair. At z=0 antipodal summands are not unique;
+they are all partners for this word. Including zero is conservative,
+since these antipodal pairs fail the nonparallelism needed by the source
+density lemma.
+
+The theorem is: no triple of points in closure(G) has all three pairwise
+distances equal to one. It allows EVERY translation and rotation of the
+unit equilateral triangle relative to this single fixed base centre.
+
+2. GOOD-SET DERIVATION AND BOUNDARY CORRECTIONS
+
+Use a representative psi in [n h,(n+1)h) and set
+  delta=psi-(n+1/2)h, so -h/2<=delta<h/2.
+The slot-index difference is
+  N=floor((psi+gamma)/h)-floor((psi-gamma)/h).
+For 0<|z|<=2, one has 0<=N<=6. Goodness means N=2 or N=6.
+
+The exact nonzero cases are:
+
+OUTER: h/2<gamma<3h/2 and
+  -w<=delta<w,  w=min(gamma-h/2,3h/2-gamma).
+
+INNER: 5h/2<gamma<3h and
+  -(gamma-5h/2)<=delta<gamma-5h/2.
+
+These follow directly from the two floor inequalities. In particular the
+inner lower endpoint is INCLUDED. For example gamma=80 degrees,
+psi=10 degrees gives summands -70 and 90 degrees, whose slot indices are
+-3 and 3, a difference of six. Its delta is -5 degrees, so Claude's
+asserted strict |delta|<gamma-75 degrees wrongly excludes this point.
+
+Reflection also exposes the boundary asymmetry. Reflect that point to
+psi=-10 degrees with the same gamma. The summands are -90 and 70 degrees,
+with indices -3 and 2, a difference of five; it is not good. The familiar
+reflection formula floor(-t/h)=-floor(t/h)-1 fails when t/h is an integer.
+Rotation by h does preserve G exactly. Reflection and twelve-fold rotation
+both preserve its closure.
+
+For a raw oriented separation d modulo 360 degrees the possible projected
+windows are (30,90), (150,210), AND (270,330) degrees. Equivalently, its
+shortest circular separation belongs to (30,90) union (150,180] degrees.
+The latter convention is appropriate for the unique pair with separation
+2gamma. The radial ranges quoted by Claude remain correct despite the
+omitted raw window:
+  |z| in [0,R) union (sqrt(2),U),
+  R=2sin(15 degrees)=sqrt(2-sqrt(3)),
+  U=2cos(15 degrees)=sqrt(2+sqrt(3)).
+
+For the theorem it suffices to use the following CLOSED SUPERSET H of G:
+  inner points: |z|<=R, with no angular restriction at all;
+  outer points: sqrt(2)<=r<=U and, for some half-slot centre c_n,
+    circular_distance(psi,c_n)<=45 degrees-arccos(r/2).
+This set is closed: its inner disk is closed, and its outer part is a finite
+union of closed angular/radial constraints away from zero. Thus it contains
+closure(G). It deliberately discards the inner-star constraint and the
+other outer-width bound gamma-15 degrees. Proving that H contains no unit
+triangle proves the advertised closure result with room to spare.
+
+3. THREE OUTER VERTICES: EXACT PROOF
+
+Let g be the centroid, D=|g|. A unit equilateral triangle has circumradius
+1/sqrt(3), so for suitable tau
+  r_j^2=D^2+1/3+(2D/sqrt(3))cos(tau+2pi*j/3).
+
+For these three cosines, the minimum is at most -1/2 and the spread is at
+least 3/2. For the spread, rotation/permutation and reflection reduce tau
+to [0,pi/3]; then the spread equals
+  cos(tau)-cos(tau+2pi/3)=sqrt(3)sin(tau+pi/3)>=3/2.
+
+The squared outer radii lie in [2,2+sqrt(3)], of width sqrt(3).
+Their spread is at least sqrt(3)D, so D<=1. But then
+  min_j r_j^2 <= D^2-D/sqrt(3)+1/3 <= 4/3 < 2,
+contradicting the outer lower bound. This avoids every decimal and the
+unnecessary convex-quadratic numerical maximum in Claude's version.
+
+4. AT LEAST TWO INNER VERTICES: EXACT PROOF
+
+Let p_1,p_2 be inner vertices a unit distance apart and m their midpoint.
+The parallelogram identity gives
+  |m|^2=(|p_1|^2+|p_2|^2)/2-1/4
+        <=7/4-sqrt(3)=(1-sqrt(3)/2)^2.
+The third vertex q has |q-m|=sqrt(3)/2. Consequently
+  sqrt(3)-1 <= |q| <= 1.
+The lower endpoint equals sqrt(2)R, which is strictly greater than R;
+the upper endpoint is strictly less than sqrt(2). Thus q belongs to
+neither permitted radial range. This also excludes three inner vertices.
+
+5. ONE INNER AND TWO OUTER VERTICES: CONSERVATIVE EXACT PROOF
+
+Write the inner vertex as p, rho=|p|<=R, and the outer vertices as
+q_i=p+u_i, |u_i|=1. Since |q_1-q_2|=1, |u_1+u_2|=sqrt(3).
+If rho=0, both outer radii would be one, already impossible. Otherwise
+the smaller real projection of u_1,u_2 in the direction of p is at most
+sqrt(3)/2, by taking the average and using |u_1+u_2|. Ordering the outer
+radii as r_1<=r_2 gives
+  r_1^2 <=1+rho^2+sqrt(3)rho,
+  r_2 <=1+rho.
+This derivation avoids any choice of wrapped relative angles.
+
+The simple exact bounds
+  173/100<sqrt(3)<7/4,
+  R^2<27/100 and R<13/25
+give
+  r_1^2 <1+27/100+(7/4)(13/25)=109/50<(37/25)^2,
+  r_2 <38/25.
+Thus r_1<1.48 and r_2<1.52, while both radii are at least sqrt(2).
+
+The elementary trigonometric certificate in section 6 proves
+  cos(42 degrees)>37/50,
+  cos(40 degrees)>19/25.
+Hence gamma_1=arccos(r_1/2)>42 degrees and gamma_2>40 degrees.
+The CLOSED outer lobe constraint still yields STRICT bounds
+  |delta_1|<3 degrees, |delta_2|<5 degrees.
+Their principal angular separation theta therefore satisfies
+  distance(theta,30 degrees*Z)<8 degrees.                 (A)
+
+The cosine law for |q_1-q_2|=1 is
+  cos(theta)=(r_1^2+r_2^2-1)/(2r_1r_2).
+Its derivative in r_1 has numerator r_1^2+1-r_2^2, and similarly in r_2.
+On [sqrt(2),38/25]^2 these are positive, since
+  r_i^2+1-r_j^2 >=3-(38/25)^2>0.
+Both the UPPER and LOWER radius bounds are used here; an upper bound on
+r_i^2 alone would not justify Claude's monotonicity sentence.
+
+Therefore
+  3/4 <= cos(theta) <=
+  ((37/25)^2+(38/25)^2-1)/(2*(37/25)*(38/25))
+  =547/703 <39/50.
+The certificate also gives cos(38 degrees)>39/50 and cos(42 degrees)<3/4.
+Since cosine decreases on [0,pi],
+  38 degrees<theta<42 degrees.
+Its closest multiple of 30 degrees is 30 degrees, at distance greater
+than eight degrees. This contradicts (A).
+
+These three cases prove the theorem for the closed superset H and hence
+for closure(G). No inner angular constraint or floating-point estimate
+has been used.
+
+6. EXACT SMALL TRIGONOMETRIC CERTIFICATE
+
+Use the classical rational bounds 157/50<pi<22/7 and, for 0<=x<=1, the
+alternating Taylor estimates
+  L(x)=1-x^2/2+x^4/24-x^6/720 <= cos(x)
+  <= U4(x)=1-x^2/2+x^4/24.
+Monotonicity of cosine then reduces the four comparisons to rational
+arithmetic:
+
+  L(11/15)-37/50
+    =24155189/8201250000 >0;
+  L(44/63)-19/25
+    =82470925006/14067787997025 >0;
+  L(209/315)-39/50
+    =5518405786116509/703389399851250000 >0;
+  3/4-U4(1099/1500)
+    =776843744399/121500000000000 >0.
+
+The arguments correspond respectively to upper bounds for 42,40,38
+degrees and a lower bound for 42 degrees. For example
+7pi/30<11/15 and 7pi/30>1099/1500. Also
+  39/50-547/703=67/35150>0,
+  (37/25)^2-109/50=13/1250>0.
+These exact rational identities were independently evaluated with BigInt
+arithmetic in a tiny local tool cell. No sampling, numerical solver,
+installation, or remote computation was used. The proof can equally be
+checked by integer multiplication.
+
+Claude's sharper decimal figures and claimed approximately 2.3-degree
+smallest slack are not needed and are not certified by this report.
+There is no remaining quantitative obligation for the stated no-triangle
+theorem. A requested optimal margin, an explicit tolerance for perturbed
+unit distances, or a Lean certificate would be separate work. Compactness
+of H already gives a qualitative positive tolerance against sufficiently
+small simultaneous perturbations of the three target edge lengths.
+
+7. NULL SETS, DENSITY POINTS AND THE MEANING OF FIXED BASE
+
+The closure theorem concerns the specified representative of P. It is
+NOT invariant under arbitrary pointwise changes on null sets. For a
+concrete illustration, take the unit equilateral triangle
+  z_j=(1/sqrt(3))*exp(2pi*i*j/3).
+Its six decomposition angles are 2pi*j/3 plus or minus
+gamma_0=arccos(1/(2sqrt(3))). They are distinct. Reassign P at those six
+angles, three to P_0 and their partners to P_2. This changes P on a finite
+null set and makes the three vertices pointwise good, although their
+radius 1/sqrt(3) lies in the original forbidden radial gap.
+
+This does NOT defeat the density obstruction. Null changes do not alter
+the density of any fibre at any angular point. A newly assigned isolated
+value is not a density-one occurrence of that state. For the original
+step-function palette, density-one occurrences of each state lie inside
+its sector intervals; sector endpoints have the wrong densities. Thus
+every pair usable in states_densityOne remains governed by the same
+partner-pair geometry, regardless of null-set edits. Such edits also
+cannot fill a new open two-dimensional region of good sums: pairs using
+an exceptional angle form a product-null set, and the smooth/Lipschitz
+sum map sends that set to a planar null set.
+
+For any single fixed base centre x, the good-vertex set is x+G. Translating
+the whole configuration by -x reduces it to the audited case. Changing
+the one common base centre while retaining the same angular rule, rotating
+the whole rule, or consistently relabelling its colours therefore supplies
+no escape. The theorem already quantifies over all triangle locations and
+orientations relative to that centre. It does not constrain a family of
+genuinely different palettes at different centres.
+
+The exact method ruled out is this: all three vertices are produced from
+two unit directions at ONE common base, each pair is one of this word's
+two partner pairs, and the density triangle is forced into their common
+residual pair {2,5}. The theorem does not rule out other finite unit graphs,
+other residual-list arguments, or other constructions of density data.
+
+8. SMALLEST MEANINGFUL ESCAPES
+
+Different actual base centres are the most direct change to the producer.
+One could seek
+  z_j=x_j+direction(a_j)+direction(b_j),
+with the z_j forming a unit triangle and the represented palette pairs at
+x_j all forcing the same residual colour set of size at most two.
+This needs actual compatibility between centres, not freely assigned
+angular lists. But no new general density lemma is needed:
+States.states_densityOne already accepts an arbitrary centre on each
+application, and States.two_label_triangle_impossible already accepts an
+arbitrary map Fin 3->C with verified unit distances. The missing result
+is the geometric/analytic producer of those three compatible instances.
+
+Alternatively, change the angular rule genuinely. The two-valued rule
+P=J={0,3} on [0,60 degrees)+120 degrees*Z and P=K={1,4} on the complementary
+60-degree sectors admits the standard triangle: for any
+0<t<60 degrees-gamma, a_j=t+120 degrees*j lies in a J-sector while
+b_j=a_j+180 degrees+gamma lies in a K-sector. Their sums are the source
+unit triangle. This is a different angular word, not a colour relabelling
+or phase shift of the four-state countermodel. The source already excludes
+its actual realization via two_state_impossible. It illustrates why
+Claude's obstruction cannot be promoted to a general triangle impossibility
+for finite palettes.
+
+The previously accepted aligned-continuum argument is another independent
+source constraint on Countermodel C's coincident directions; this geometric
+triangle obstruction does not invalidate that argument or make the model
+an actual weak colouring.
+
+VALIDATION / ACTION
+
+Bank the no-triangle result with the corrected representative and density
+scope. Do not run the billion-scale sanity grid to prove a statement now
+proved analytically. If pursuing triangles further, require a concrete
+cross-centre producer or a genuinely changed angular rule before searching.
+
+No subagents, remote chats, original-source edits or heavy computations
+were used. Only this referee report was written during the assignment.

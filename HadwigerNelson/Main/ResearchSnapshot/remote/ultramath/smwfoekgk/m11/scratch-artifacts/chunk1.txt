@@ -1,0 +1,9 @@
+.scratch/shk/OAI_Analysis_PlaneSpectrum_Basic.lean
+.scratch/shk/OAI_Analysis_PlaneSpectrum_Fourier.lean
+.scratch/shk/OAI_Analysis_PlaneSpectrum_InvariantMean.lean
+.scratch/shk/OAI_Analysis_PlaneSpectrum_NumberFields.lean
+.scratch/shk/OAI_Analysis_PlaneSpectrum_PhaseEncoding.lean
+.scratch/shk/OAI_Analysis_PlaneSpectrum_SmallArcs.lean
+.scratch/shk/OAI_Geometry_PlaneColoring_Assembly.lean
+.scratch/shk/OAI_Geometry_PlaneColoring_Basic.lean
+.scratch/shk/OAI_Geometry_PlaneColoring_Coloring.lean

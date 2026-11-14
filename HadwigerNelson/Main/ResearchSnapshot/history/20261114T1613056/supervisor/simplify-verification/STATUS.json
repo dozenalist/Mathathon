@@ -1,0 +1,135 @@
+{
+ "updated_utc": "2026-11-14T15:46:48Z",
+ "status": "completed_block",
+ "summary": [
+  "Block 18 (source-level only, no builds, no computation). (0) Factual correction to the brief: there is no SmallArcs -> FullApprox chain - SmallArcs lives at Analysis/PlaneSpectrum/SmallArcs.lean (rigidity side) and FullApproximation imports only ContinuumLimits and GraphPatches. The chain audited is the Exclusion-type one, the smallest substantive unaudited link in the FullApprox consumption path. (1) Chain fixed with declarations and lines: FullApprox.agrees (FullApproximation.lean:264-265, pointwise off diskHoles at the witness's own eps) -> thresholdMap_pos (GraphRealization.lean:265, needing 0<eps and alpha<1/5 through thresholdTotal_pos) -> FullApprox.positive_average (Mesh.lean:83-88) -> support_of_positive_diskAverage_limit (Mesh.lean:37-, Tendsto eps->0 and a n -> x give x in spatialSupport c i via Measure.mem_support_iff_forall and diskAverage_area) -> diskAverage_unit_pair (DiskAverages.lean:63-69, a.e. weak colouring) -> the goal diskAverage_i(z) <= 1 - alpha at Mesh.lean:142 -> Disjoint of spatialSupport and ball p.1 1/8 -> contradiction at :147 with Metric.mem_ball_self. (2) Inequality ledger given: 0<eps from eps_pos; alpha<1/5 strict (for 1-5alpha>0) supplied as 1/10 by norm_num at Five.lean:105-107; positivity of the i-th coordinate from the large-region hypothesis; q not in diskHoles from unit_from_hole_mem_annuli; the unit-pair sum <= 1 from the weak colouring. Quantifier discipline recorded: steps 1-3 pointwise (one centre, one label, one witness, one eps, no a.e.); the only a.e. input is the weak colouring inside diskAverage_unit_pair, pushed to the law diskLaw eps via diskLaw_absolutelyContinuous; step 4 is a Tendsto in N. Centre/scale discipline: the same eps on both sides, no scale shift. The annuli enter only at :141 via unit_from_hole_mem_annuli, and diskAnnulus = closedBall c (1+r)\\ball c (1-r) with area 4*pi*r is used for the measure estimate only, never pointwise. (3) No unsupported premise; two named boundary conditions are hypotheses met in the chain (positivity at EVERY n, and the per-witness exceptional set). Verdict: chain sound at source level, entirely inherited source, no new topological result. Retained: initialDisks L-part core := true vs centerDisks core := false; WitnessSelectionV4 passed and frozen."
+ ],
+ "verified_results": [
+  {
+   "claim": "No SmallArcs -> FullApprox chain exists; SmallArcs is in Analysis/PlaneSpectrum and FullApproximation imports only ContinuumLimits and GraphPatches",
+   "grade": "[S] file locations and the import block read",
+   "status": "corrected"
+  },
+  {
+   "claim": "positive_average is pointwise and needs only agrees, 0<eps, Measurable c and alpha<1/5; conclusion alpha < diskAverage c a.eps i q at the same centre and scale",
+   "grade": "[S+] Mesh.lean:83-88 with GraphRealization.lean:265 and :249",
+   "status": "confirmed"
+  },
+  {
+   "claim": "The support step needs positivity at every index and a Tendsto pair (eps->0, a n->x); it uses Measure.mem_support_iff_forall plus diskAverage_area, not a.e. reasoning on the plane",
+   "grade": "[S+] Mesh.lean:37-60",
+   "status": "confirmed"
+  },
+  {
+   "claim": "The final inequality is diskAverage_i(z) <= 1 - alpha obtained by linarith from the unit-pair bound and alpha < diskAverage_i(q), reaching Disjoint (spatialSupport c i) (ball p.1 1/8) and the contradiction at Mesh.lean:147",
+   "grade": "[S+] Mesh.lean:118-147",
+   "status": "confirmed"
+  },
+  {
+   "claim": "The annuli (closedBall c (1+r) minus ball c (1-r), area 4*pi*r) enter only through unit_from_hole_mem_annuli for the measure estimate, not for any pointwise claim",
+   "grade": "[S] Mesh.lean:141 and HoleApproximation.lean:210-232",
+   "status": "confirmed"
+  },
+  {
+   "claim": "No genuinely unsupported premise in this chain; two boundary conditions are hypotheses met in the chain (positivity at every n; per-witness exceptional set)",
+   "grade": "[S+] premise-by-premise trace",
+   "status": "chain sound at source level, inherited work only"
+  }
+ ],
+ "conjectures": [
+  {
+   "statement": "The same chain would still work if positivity were only eventual, after restricting to a tail.",
+   "status": "not needed by the tree; not attempted",
+   "grade": "[C] my reading"
+  }
+ ],
+ "artifacts": [
+  "supervisor/simplify-verification/AUDIT-FIVE-CYCLE.md",
+  "supervisor/simplify-verification/CHAIN-POSITIVE-AVERAGE-AUDIT.md",
+  "supervisor/simplify-verification/FIVE-DICHOTOMY-AUDIT.md",
+  "supervisor/simplify-verification/FULLAPPROX-AGREES-AUDIT.md",
+  "supervisor/simplify-verification/INTERFACE-WALL.md",
+  "supervisor/simplify-verification/LEMMA78-COMPARISON.md",
+  "supervisor/simplify-verification/LOCAL-CHECK-QUEUE.json",
+  "supervisor/simplify-verification/NOTES.md",
+  "supervisor/simplify-verification/STATUS.json",
+  "supervisor/simplify-verification/TOPOLOGY-CONE-MANIFEST.json",
+  "supervisor/simplify-verification/TRANSFER-LEDGER.md",
+  "supervisor/simplify-verification/VALID-CONSUMER-AUDIT.md",
+  "supervisor/simplify-verification/checks/five_cycle_licence.py",
+  "supervisor/simplify-verification/lean/CheckFifth.lean",
+  "supervisor/simplify-verification/lean/ConnectedSetExclusion.lean",
+  "supervisor/simplify-verification/lean/FiveCycleResidues.lean",
+  "supervisor/simplify-verification/lean/WitnessSelection.lean",
+  "supervisor/simplify-verification/move_audit.py",
+  "supervisor/simplify-verification/trim_audit.py"
+ ],
+ "tests_run": [
+  {
+   "cmd": "sed of Mesh.lean:34-60, :83-88, :118-150; grep of DiskAverages.lean:63-69 and :79-81; grep of FullApproximation.lean:264-265; find for SmallArcs.lean/Exclusion.lean",
+   "outcome": "every declaration in the chain read at its source line and quoted in the audit; the SmallArcs location confirmed outside the chain."
+  },
+  {
+   "cmd": "date -u",
+   "outcome": "2026-11-14T15:46:48Z (real clock, used for updated_utc)."
+  },
+  {
+   "cmd": "Lean build / computation",
+   "outcome": "NONE. The graph worker holds the only compute slot; this block was source reading only."
+  }
+ ],
+ "failed_routes": [
+  "Seeking a countermodel with fewer than four relaxed positions: none exists (single relaxation already gives 0 solutions, and all eight relax all four).",
+  "Reading the drop-one runs as evidence of individual necessity: that is the reverse implication and is not established by them.",
+  "Treating the cover-obstruction substitution as an integration: it cannot be, because no module of lean/ imports supervisor/.",
+  "Expecting the mesh/diameter bound to be the \u00a77 gap: the Lean splits it into a dichotomy inside Five.lean, so it is not a hypothesis left open.",
+  "`h '' P j = P (h j)`: false at j=0; the correct general target is P(-j). Kept in the file header as a recorded trap.",
+  "My first block-6 check script applied the identity map instead of h and reported all identities false - a script bug, not a mathematical finding; corrected and re-run inside the same one-process budget.",
+  "`refine \u27e8membership-proof, ?_\u27e9` for a `Finset.Nonempty` goal: Nonempty is `\u2203 a, a \u2208 s`, so the witness must come first; the local run caught this at hasNbr_image and it also poisoned neighbour_family_push with sorryAx.",
+  "Restoring the paper's monotone eps_n from the Lean per-scale form: monotonicity cannot be obtained by replacing eps_n with min over k<=n, because shrinking eps changes pi^eps and hence the entire disk family and the agreement map; it would need the construction to be redone at the new scale. Recorded as the single loss of the interchange.",
+  "My earlier claim that monotonicity of eps_n cannot be restored: wrong, and now retracted with two explicit constructions. The error was conflating 'modifying a witness' (blocked, since shrinking eps changes pi^eps) with 'selecting among witnesses' (free, and carries all indexed data).",
+  "WitnessSelection V1: failed locally at four points - uninferable positivity for the let-bound budget, equation-compiler unfolding of sel, a denominator mismatch k+1 vs k+1+1, and an undecomposed \u2200n,True conjunct. Only pickAt_lt was accepted; the three dependent theorems carried sorryAx. V2 replaces each failing construction rather than patching it.",
+  "V2 (staged, uncompiled) used Tendsto/atTop with no Filter namespace open and kept the `pickAt_lt ... _ _` positivity placeholder in sel_step_lt; V3 replaces both.",
+  "Selecting on epsilon instead of the budget: epsilon -> 0 leaves t and the radii sum free, since FullApprox gives only epsilon < t and sum rad < t.",
+  "Describing Route B's rule as if it were Route A's: with scale := t the next budget depends on the previous t, so epsilon's monotonicity is not obtained that way; the two routes must be kept separate, as s8 now does.",
+  "Route B (select on epsilon, assume per-index budget s/2): invalid because Classical.choose discards the exhibited witness's budget; retracted with two salvage paths recorded.",
+  "Reading `d.core = true` as the paper's core disk B_{n,x}: wrong in the tree - centerDisks (the fixed disks around cyclic centres) carry core := false.",
+  "V3 (open Filter alone) failed locally only on the unknown \ud835\udcdd notation; V4 adds Topology and passes - recorded so the V3 failure is not mistaken for a mathematical one.",
+  "My earlier statement that the Lean's core flag 'is not the paper's core disk' was too broad: it is correct for centerDisks but wrong for initialDisks' L-part, which is exactly the paper's core family.",
+  "Calling connected_escape_holes the tree's Lemma 7.8: they share only the word 'holes'. The comparison as posed was unanswerable; the useful question (is 7.8 needed at all?) is answered instead.",
+  "Reading the module name ContinuumLimits as evidence of a formalised Proposition 7.1: it holds a.e./support lemmas only.",
+  "My description of diskAnnulus as 'ball(c,r+1) minus closedBall(c,r)' - wrong at both endpoints; corrected to closedBall(c,1+r) minus ball(c,1-r) with area 4*pi*r.",
+  "Treating the absence of winding/reducedWord names as proof that the paper's \u00a77.4 is fully covered: absence of names is not an argument; the replacement is the dichotomy, and its equivalence to the paper's step is a [P] mapping I did not verify.",
+  "Searching for a SmallArcs -> FullApprox consumer: none exists, because SmallArcs belongs to the spectral/rigidity modules and is not imported by FullApproximation."
+ ],
+ "next_step": "Candidate next smallest link, if another block is assigned: diskAverage_support_exclusion (GraphGame? see Mesh.lean:125 caller) - the statement that turns positive disk averages near a point into a support-exclusion ball of radius 1/8, whose proof is the block just read; or the analogous Exclusion.lean:130 use of palette_cardinality on the colouring side. Neither is needed for the reports already delivered; no wiring change is proposed.",
+ "escalation": {
+  "obstacle": "(NC-1), restated precisely: at an accumulation point x of a specified five-cycle locus, with a = lim h_n/|h_n| and R the rotation acting on directions, the list S(R a) = {i : R a lies in the closed essential support of state i at x} has no common label, i.e. the intersection of the diagonals D_i over i in S(R a) is empty.",
+  "definitions": "D_i = {i, i+2} in Z/5Z; state i at x = the set of directions whose palette is exactly D_i; closed essential support S_i = the closed set whose every neighbourhood meets state i in positive measure; S(u) = {i : u in S_i}.",
+  "hypotheses_available": "(6.6) a.e. transition rule at x; closedness and finiteness of the five supports; no-common-label at a and -a from the endpoint pair (a_n^+, a_n^-) and 'y_n in H_k for every label'; (D) disjointness of adjacent position lists; (N) neighbour existence in both directions.",
+  "attempted": "direct transport of the printed zero-area endpoint argument (needs a partner direction whose sum lies near a centre with all five edges present; none exists at r=1); derivation from V0,V3,D,N (fails: 8 countermodels, all relaxing 1,2,4,5); single-position weakening (fails: one relaxation never gives a model).",
+  "expected_useful_output": "Either a proof of (NC-1) \u2014 then FIVE-CYCLE-CORE's five-step elimination of Lemma 6.7 stands as a real simplification \u2014 or a construction of an accumulation configuration realising S(1) = {2,4}, which would prove Lemma 6.7 is not removable by support-list combinatorics alone."
+ },
+ "recovery_note": "2026-11-14 post-outage reconciliation: no jobs running (the only background job, jmwfyybqo, exited 0 long before the outage and its result is recorded); every artifact re-read and hash-checked; nothing re-run or duplicated. Latest instruction (block 3) was already complete at 06:16Z.",
+ "handoff": "Source-level block. Corrected the brief: no SmallArcs -> FullApprox chain (SmallArcs is in Analysis/PlaneSpectrum); audited the Exclusion-type chain instead: agrees -> thresholdMap_pos -> positive_average -> support_of_positive_diskAverage_limit -> diskAverage_unit_pair -> the <= 1 - alpha goal -> Disjoint support/ball -> contradiction. Evidence table with declarations and lines in CHAIN-POSITIVE-AVERAGE-AUDIT.md; concluded statement stated explicitly; inequality ledger and a.e./pointwise discipline recorded; no unsupported premise, two boundary conditions named as hypotheses met in the chain. Everything is inherited source; no new topological claim. Retained: core := true for the initialDisks L-part, separate centerDisks with core := false, diskAnnulus = closedBall c (1+r)\\ball c (1-r) of area 4*pi*r. WitnessSelectionV4 passed and frozen; no builds; no wiring changes.",
+ "artifact_hashes": {
+  "AUDIT-FIVE-CYCLE.md": "9fe1ca44daca711f0fb705ea38ea01e490c36adcc08e14d441bfe318e720484c",
+  "FULLAPPROX-AGREES-AUDIT.md": "2de570609f994c3ba0979830b3e68e5545ab2ac6e91a97efc834f07586562c16",
+  "INTERFACE-WALL.md": "d87c5d510b58798fce8445688f8ff958250fa09c4d8ba0e2fca77256afd2945f",
+  "LOCAL-CHECK-QUEUE.json": "cf566c8a96e2fd2ae50d24baa1d3999f8c1bab8d6481dea411172f6d6730bd1e",
+  "NOTES.md": "cd53abfa9912fbd28f113a4ebf20f95b9f39606fc1532ad5001c756d25dc8f39",
+  "TOPOLOGY-CONE-MANIFEST.json": "0be1f96e92e26a8fdc05875703a87bad9c63ac930ca445c2229eaf22aaa7462c",
+  "TRANSFER-LEDGER.md": "7f8b32948490030b523c228bdb4abedfbd925ebe0191b2c9b5f8451dceb6da04",
+  "checks/five_cycle_licence.py": "1fa619d857ec753381f30b27034abc5c6f4073022298572079dffbd22e460360",
+  "lean/ConnectedSetExclusion.lean": "84b6111a0bcf4f1a3f6db5806ed1c3dcbf298d317bf2398448b2a69a8679b144",
+  "lean/FiveCycleResidues.lean": "70452746c5ea999de6156cdee1e16639e6c563670e066288d45355ca9a17ead5",
+  "lean/CheckFifth.lean": "4cebfd5f28cf196e7247247e6fc40719b88c61b3c2f7184b3ff135cf6e7c14f9",
+  "trim_audit.py": "b462805f264b010a12f89ead087bc85c16c038295f6fb314419561aa77a70103",
+  "move_audit.py": "f5afca70b6ae72a19ea334c61b5bdfc49b890b344cb2650068b66cb0ad542b11",
+  "lean/WitnessSelection.lean": "3ff5d5c86fd49e4252e2fbbbcd8fc05e6c909c165cb98d62f47da399f608a569",
+  "VALID-CONSUMER-AUDIT.md": "7f79630d74ff18567786556698cf08f111b01274e36b59f1191eff8637165c8b",
+  "LEMMA78-COMPARISON.md": "f301f806aeda6e06a655a547e5523b34ca8fb3a327664f081ec106a717e5c9dd",
+  "FIVE-DICHOTOMY-AUDIT.md": "264ad03e75b9f10df61800e4ed13c61e092b4a90e5e96eefe46ccb3a759e30e3",
+  "CHAIN-POSITIVE-AVERAGE-AUDIT.md": "65f82a2d84a960f6d6f844d2b21413660e28732e3a0f9b8c6afc8ac64c6885b4"
+ }
+}

@@ -1,0 +1,191 @@
+{
+ "schema": 2,
+ "purpose": "Exhaustive expected binder record for the R4 exports, derived by reading the FROZEN ORIGINAL sources. Consumed by binder_snapshot.py. The comparator FAILS CLOSED: any binder it cannot place -- an unknown extra instance, an absent required binder, a strict-implicit binder, a type mismatch -- is a FAIL, not a warning.",
+ "not_a_claim": "This file is a specification for an inspection tool. The accepted evidence for the integration remains textual hypotheses + defeq + application compatibility (SignatureEquivalence R5, SignatureCheckFresh R5). Exact binder identity is not claimed by the integration; a PASS here is supplementary.",
+ "derived_from": {
+  "variable_block": "lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:262-264 (identical block in ConditionalLimits.lean:365-367)",
+  "finite": "ConditionalSpectrum.lean:266-280 (def) and 308-323 (theorem, with `omit [StandardBorelSpace Y] [Nonempty Y]`)",
+  "ambient": "ConditionalLimits.lean:369-382 (def) and 385-400 (theorem, same omit)",
+  "rule": "`omit` removes exactly StandardBorelSpace Y and Nonempty Y from the theorem telescopes; every other instance in the block is retained because the statement uses X (the measure space) and W (the factor space), and uses Y through p and g."
+ },
+ "common": {
+  "type_binders": [
+   "X",
+   "Y",
+   "W"
+  ],
+  "type_binder_kind": "implicit",
+  "instance_allowed": [
+   "MeasurableSpace X",
+   "StandardBorelSpace X",
+   "Nonempty X",
+   "MeasurableSpace Y",
+   "MeasurableSpace W",
+   "StandardBorelSpace W",
+   "Nonempty W",
+   "IsProbabilityMeasure \u03bc"
+  ],
+  "instance_forbidden": [
+   "StandardBorelSpace Y",
+   "Nonempty Y"
+  ],
+  "rule_unknown_instance": "any instance binder whose normalised type is not in instance_allowed is an UNKNOWN EXTRA INSTANCE -> FAIL"
+ },
+ "theorems": {
+  "finite_uniform_precision_contradiction": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+   "explicit_order": [
+    "\u03bc",
+    "p",
+    "q",
+    "b",
+    "hp",
+    "hq",
+    "hb",
+    "m",
+    "hm",
+    "g",
+    "hg",
+    "hwild",
+    "\u03c1",
+    "c",
+    "N",
+    "h\u03c1",
+    "hc",
+    "hN",
+    "harc",
+    "happrox"
+   ],
+   "expected_total_binders": 31
+  },
+  "ambient_uniform_precision_contradiction": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+   "explicit_order": [
+    "\u03bc",
+    "p",
+    "q",
+    "b",
+    "hp",
+    "hq",
+    "hb",
+    "m",
+    "hm",
+    "g",
+    "hg",
+    "hwild",
+    "\u03c1",
+    "c",
+    "N",
+    "h\u03c1",
+    "hc",
+    "hN",
+    "harc",
+    "happrox"
+   ],
+   "expected_total_binders": 31
+  }
+ },
+ "definitions": {
+  "FiniteEncodingApproximationAt": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+   "type_binders": [
+    "X",
+    "Y",
+    "W"
+   ],
+   "instance_allowed": [
+    "MeasurableSpace X",
+    "StandardBorelSpace X",
+    "Nonempty X",
+    "MeasurableSpace Y",
+    "StandardBorelSpace Y",
+    "Nonempty Y",
+    "MeasurableSpace W",
+    "StandardBorelSpace W",
+    "Nonempty W",
+    "IsProbabilityMeasure \u03bc"
+   ],
+   "instance_forbidden": [],
+   "explicit_order": [
+    "\u03bc",
+    "p",
+    "q",
+    "b",
+    "m",
+    "\u03b3"
+   ],
+   "note": "a def, so no omit: it keeps all nine block instances plus IsProbabilityMeasure \u03bc"
+  },
+  "AmbientEncodingAt": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+   "type_binders": [
+    "X",
+    "Y",
+    "W"
+   ],
+   "instance_allowed": [
+    "MeasurableSpace X",
+    "StandardBorelSpace X",
+    "Nonempty X",
+    "MeasurableSpace Y",
+    "StandardBorelSpace Y",
+    "Nonempty Y",
+    "MeasurableSpace W",
+    "StandardBorelSpace W",
+    "Nonempty W",
+    "IsProbabilityMeasure \u03bc"
+   ],
+   "instance_forbidden": [],
+   "explicit_order": [
+    "\u03bc",
+    "p",
+    "q",
+    "b",
+    "m",
+    "\u03b3"
+   ]
+  },
+  "EncodingApproximationAt": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+   "type_binders": [
+    "X",
+    "Y",
+    "W",
+    "Z"
+   ],
+   "instance_allowed": [
+    "MeasurableSpace X",
+    "StandardBorelSpace X",
+    "Nonempty X",
+    "MeasurableSpace Y",
+    "StandardBorelSpace Y",
+    "Nonempty Y",
+    "MeasurableSpace W",
+    "StandardBorelSpace W",
+    "Nonempty W",
+    "IsProbabilityMeasure \u03bc"
+   ],
+   "instance_forbidden": [],
+   "explicit_order": [
+    "\u03bc",
+    "p",
+    "P",
+    "S",
+    "b",
+    "m",
+    "\u03b3"
+   ],
+   "note": "Z is a value binder whose type is Type, so it is counted among the type binders; the comparator requires it explicitly rather than treating it as unknown"
+  }
+ },
+ "comparator_rules": [
+  "absent declaration -> FAIL (fail closed), never inconclusive-pass",
+  "implicit binders: exactly the three type binders, in order, names compared",
+  "instance binders: multiset equality with instance_allowed; an unseen instance type is UNKNOWN EXTRA INSTANCE -> FAIL",
+  "forbidden instance present -> FAIL, named individually",
+  "strict-implicit binder present -> FAIL (counted separately, never folded into explicit)",
+  "explicit binders: exact name sequence",
+  "total binder count must equal expected_total_binders where given",
+  "a type string that differs from expectation is reported as TYPE-MISMATCH with both strings; it is a FAIL for instance binders and a warning for explicit ones, because pretty-printing of hypotheses varies with pp options"
+ ]
+}

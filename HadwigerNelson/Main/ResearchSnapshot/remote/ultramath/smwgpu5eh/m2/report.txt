@@ -1,0 +1,7 @@
+[A] TYPE/BINDER + CONSUMER AUDIT. Detail: .ultramath/smwgpu5eh/m2/FINDINGS-A.md. No build run.
+
+1. integration/AvoidingTrace.lean:148 fixed_state_no_unit_three_centres is binder-identical to States.lean:704 strict_state_no_unit_support: python3 normalised header compare prints "MATCH with section prefix {k}{c}(hc): True" (AvoidingTrace:46 `variable {k:ℕ}{c:ℂ→Fin k}(hc:Measurable c)` expands to exactly the original prefix; c implicit, hc explicit and first). Both call sites change one identifier only: lean-vs-packet diff of FiveSupport has hunks `10,32d9` (moved lemmas) and `145c122`; Interfaces has a single `278c278`.
+2. four_support_sequence_no_unit (integration/FourContinuity.lean:402) signature byte-equal to FourContinuity.lean:441, explicit c kept; diff has only `362,401d361` (40 lines) and `452,458c412,415` (body 7->4). Consumers Accumulation:103, FourTransport:222 unaffected.
+3. No missed consumer. rg over all 83 modules of lean/OAI -> 20 hits for the 8 names; each is a decl, a use inside a deleted decl, or one of the 4 rerouted sites. strict_state_uniform_on_compact: 0 consumers. Elsewhere docs only; harness supervisor/simplify-lean/lean/*.lean has none.
+4. diff <(sed '524,721d' States.lean) integration/States.lean = IDENTICAL; 524-721 is four self-balanced section blocks holding exactly the 7 declarations.
+Not tested: proof-term elaboration. AvoidingTrace:230 `end Generic` flagged once as known; nothing above depends on it.

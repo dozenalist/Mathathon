@@ -1,0 +1,2 @@
+109 hunks; APPLIED=107, APPLIED-HELD=1, OBSOLETE=1
+  obsolete: OAI/Geometry/PlaneColoring/MeasurableProper.lean @@ -27,7 +27,7 @@ :: ['  inferInstanceAs (IsProbabilityMeasure (Measure.map circleDir normalizedAngleMeasure))']

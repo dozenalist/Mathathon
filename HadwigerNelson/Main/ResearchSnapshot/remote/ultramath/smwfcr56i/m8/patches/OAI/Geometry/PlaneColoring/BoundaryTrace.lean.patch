@@ -1,0 +1,11 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean	2026-11-13 19:09:13.641329685 +0000
++++ OAI/Geometry/PlaneColoring/BoundaryTrace.lean	2026-11-13 19:40:40.765279273 +0000
+@@ -39,7 +39,7 @@
+       apply he
+       rw [hh]
+       exact (mem_palette c hc x (t : Angles) i).mpr (hJ i hi hta)
+-    simp only [sampleFn,Complex.ofReal_one,one_mul,ite_eq_right hne,Pi.zero_apply]
++    simp only [sampleFn,Complex.ofReal_one,one_mul,if_neg hne,Pi.zero_apply]
+   obtain ⟨t,ht,hp⟩ := support_good_sequence ha hp
+   obtain ⟨b,_,φ,hφ,hb⟩ := (isCompact_univ : IsCompact (Set.univ : Set (TraceVector k))).isSeqCompact.subseq_of_frequently_in
+     (Eventually.frequently (Eventually.of_forall fun n => Set.mem_univ (sampleCode c hc (x+direction (t n : Angles)) 1)))

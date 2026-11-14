@@ -1,0 +1,65 @@
+{
+  "updated_utc": "2026-11-14T06:56:00Z",
+  "status": "completed_block_pilot_plus_shardB",
+  "summary": "Recovered after the outage: no jobs were running, pilot re-ran bit-identically. Then completed shard B, the positive control that was the declared next step. Heule's published 553-vertex 5-chromatic unit-distance graph was re-parsed into our own exact field Q(sqrt3,sqrt5,sqrt11) and validated internally: all 2722 edges exactly unit distance, no hidden unit pair off the edge list, 553 distinct vertices. Its 4-colourability is UNSAT by two independent solvers and by a DRAT proof verified with drat-trim (s VERIFIED). The pipeline is therefore calibrated at the 5-chromatic level, where the negative result actually means something. The earlier spindle-family negative (nothing forced at k>=4, diamond forces equality iff k=3) stands as a proved mechanism obstruction. No 6-chromatic graph and no statement about chi(R^2).",
+  "verified_results": [
+    "GRADE [A] Shard B positive control: Heule's 553-vertex graph (arXiv:1805.12181, data vtx/553.vtx + edge/553.edge) re-parsed independently into Q(sqrt3,sqrt5,sqrt11); all 2722 edges satisfy d^2=1 exactly (0 failures), all 553 vertices distinct, and no non-edge is at unit distance (0 hidden unit pairs), so the edge list is the complete unit-distance graph of those points. k=4 is UNSAT by cadical153 and minisat22, and by a 1,318,521-line DRAT proof accepted by drat-trim -f (s VERIFIED, 563,423/665,255 lemmas in core, 43,903,463 resolution steps). This calibrates the exact pipeline at the 5-chromatic level.",
+    "GRADE [A] Recovery check: pilot.py re-ran after the outage and its output is byte-identical to the pre-outage run (diff of logs/pilot_recovery.out against logs/pilot_final.out is empty), so the block-1 counts, witnesses and the iff-k=3 diamond proposition are reproducible, not stale artifacts.",
+    "GRADE [A] exact constructions: diamond 4v/5e, Moser spindle 7v/11e, double-lens 9v/15e, all realised in Q(sqrt3,sqrt11) with all edges satisfying d^2=1 as exact field identities (numeric deviation < 3.2e-61 at 60 digits) and the closest non-edge at |d^2-1| >= 0.372, so no near-miss unit distances. All three are K_4-free (max clique 3, exact).",
+    "GRADE [A] complete colouring counts (no cap, exhaustive backtracking with witnesses re-verified): diamond 0/6/48/180/480 for k=2..6; Moser spindle 0/0/384/5040/31680; double-lens 0/0/1536/45360/506880. Every cell independently decided by cadical153 and minisat22 with no disagreement. Hence chi(diamond)=3 and chi(Moser)=chi(double-lens)=4, each certified by a 3-UNSAT count plus a saved explicit 4-colouring (certs/*.colouring.json).",
+    "GRADE [A]+[P] Proposition (mechanism obstruction): in a proper k-colouring of the diamond (edge ab, common unit neighbours t1,t2 with |t1-t2|=sqrt3), c(t1)=c(t2) is forced iff k=3; for k>=4 both relations are realised (exact counts 24/24 at k=4, 60/120 at k=5, 120/360 at k=6). Proof: c(a),c(b) are distinct, so t1,t2 use the remaining k-2 colours; forced equality iff k-2=1. Consequence: no graph built from diamonds and unit edges is 5-chromatic, so the spindle-chain amplification mechanism cannot reach k=6. This is a complete (not search-scoped) statement about the mechanism.",
+    "GRADE [A] Involution fact: the map (p,q) -> the two common unit neighbours is an involution up to the pair. Applying it to the Moser spindle's closing edge and again to the resulting sqrt3 pair reproduces the two original points exactly (2 coincident points detected and merged by the canonicalisation), so '+d2' is the same graph as '+d1'. Local gadget stacking cannot be iterated to accumulate constraints.",
+    "GRADE [A] Exhaustive forced-pair census (declared scope: the 3 distinct graphs above, all their non-adjacent pairs, k=3,4,5,6): at k>=4 no pair is forced equal or forced different in any of them; the diamond's tips at k=3 are the only forced pair in the whole family. Each reported forced relation was re-derived by a complete count and required to be 0.",
+    "GRADE [C] Accounting: the 'spindle triangle' construction is isomorphic to the Moser spindle (degree sequence (4,3,3,3,3,3,3), same 11 edges through the degree-4 hub); it is a correctness check on the chain reading, not a new graph. The double-lens (9v/15e) is the only new graph in the family."
+  ],
+  "conjectures": [
+    "Any finite unit-distance graph reaching chi=6 must contain a forcing gadget whose palette at a marked point has size k-1=5 against the k-2 available colours; the diamond supplies palette size 2 (k-2 for k=4), which is exactly why it dies at k=4. The searchable form: for k=6 there must be a finite unit-distance graph with two non-adjacent marks whose common colour is forced, and the census machinery here (contract vs add-edge, exact) is the right test.",
+    "Closure growth from the double-lens under the common-unit-neighbour operation will keep producing 4-chromatic graphs and will not produce a forced pair at k=6 (predicted, not tested beyond generation 1).",
+    "A published 5-chromatic unit-distance graph, re-derived exactly in Q(sqrt3,sqrt11), will validate and certify 4-UNSAT with this pipeline; that is the cheapest way to get a positive control at k=5-chromatic level."
+  ],
+  "artifacts": [
+    "supervisor/solve-graphs/REPORT.md",
+    "supervisor/solve-graphs/udg/exact.py",
+    "supervisor/solve-graphs/udg/graph.py",
+    "supervisor/solve-graphs/udg/build.py",
+    "supervisor/solve-graphs/pilot.py",
+    "supervisor/solve-graphs/certs/pilot.json (all counts, forced-pair census, validation records)",
+    "supervisor/solve-graphs/certs/table.md",
+    "supervisor/solve-graphs/certs/*.colouring.json (21 explicit witness colourings, k=3..6)",
+    "supervisor/solve-graphs/logs/pilot.out",
+    "supervisor/solve-graphs/shard_b.py",
+    "supervisor/solve-graphs/shard_b_proof.py",
+    "supervisor/solve-graphs/udg/heule.py",
+    "supervisor/solve-graphs/refs/heule_553.vtx",
+    "supervisor/solve-graphs/refs/heule_553.edge",
+    "supervisor/solve-graphs/refs/heule_check_dist_one.py",
+    "supervisor/solve-graphs/certs/heule553_4col.json",
+    "supervisor/solve-graphs/certs/heule553_k4.cnf",
+    "supervisor/solve-graphs/certs/heule553_k4.drat (139 MB, DRAT, verified)",
+    "supervisor/solve-graphs/certs/shard_b_summary.md",
+    "supervisor/solve-graphs/tools/drat-trim (built from drat-trim.c)"
+  ],
+  "tests_run": [
+    "python3 shard_b.py -> rc 0: 553 vertices / 2722 edges loaded into Q(sqrt3,sqrt5,sqrt11); 0 edges not unit; 0 unit pairs missing from the edge file; k=4 UNSAT by cadical153 and minisat22 (2212 vars, 11441 clauses).",
+    "python3 shard_b_proof.py then ./tools/drat-trim certs/heule553_k4.cnf certs/heule553_k4.drat -f -> 's VERIFIED' (forward checking, 47 s). Note: the first proof attempt via pysat's cadical153 binding was REJECTED by drat-trim (mangled clause-offset format); the writer was switched to cadical195 rather than the rejection being discounted.",
+    "python3 pilot.py (from supervisor/solve-graphs) -> rc 0, ~8 s, log logs/pilot.out: for each of 7 constructed graphs, exact edge validation + 60-digit cross-check + K_4 check + exhaustive colouring counts for k=2..6 + two-solver CDCL agreement + witness verification + forced-pair census; diamond tip-relation counts 6/0, 24/24, 60/120, 120/360.",
+    "Independent numeric guard: 60-digit mpmath evaluation of every pairwise distance; max |d^2-1| on claimed edges < 3.2e-61 and min |d^2-1| on non-edges >= 0.372, i.e. the exact field tests and the numeric tests agree and the graphs are not near-degenerate.",
+    "Cross-check of every UNSAT claim by complete enumeration (no cap) and by two independent CDCL solvers (cadical153, minisat22); every SAT cell has a witness colouring re-verified edge by edge by verify_colouring."
+  ],
+  "failed_routes": [
+    "pysat `cadical153` with_proof=True does not yield usable DRAT text in this pysat build (internal clause-offset format); drat-trim fails at proof line 1. Use cadical195 for proofs, cadical153 for decisions. Recorded because the failure looks like a mathematical UNSAT rejection if misread.",
+    "The equality probe on the closing pair of the spindle is meaningless: those marks are at unit distance, so c(p)=c(q) is impossible in any proper colouring and the contracted-graph count measures the relaxation of that edge instead. Replaced by the forced-pair census on non-adjacent pairs.",
+    "Decorating the closing edge with a second stacked diamond adds no constraint: the operation is an involution (points coincide), so the intended 'lens stack' amplification is vacuous. Recorded as a geometric fact rather than repaired.",
+    "The 'spindle triangle' was intended as a second member of a spindle-chain family, but it is isomorphic to the Moser spindle, so the enumerated family has only 3 distinct graphs. A genuine family needs a different generator (a longer chain with a non-collinear first step and an exact closure), which needs a general square-root extraction in the field; postponed.",
+    "No subagents were launched: the block's own rule is pilot-before-scale, the pilot's answer was a complete negative (the mechanism dies at k=4 by a two-line proof), and a swarm started at 05:50 UTC could not be collected before the block ended."
+  ],
+  "next_step": "Shards A and C of REPORT.md section 6 are now cheap and meaningful because the pipeline is calibrated: (C) lattice-ball scale test (Z^2 cap [-12,12]^2, triangular-lattice ball radius 8) with explicit 6-colourings and a forced-pair census; (A) closure growth under the common-unit-neighbour operation from the double-lens to 60 points with per-generation k=6 decisions and the k=6 forced-pair census, since a pair forced at k=6 would be the first genuine 6-colour forcing gadget. Both are one-CPU, checkpointed, under 25 minutes. Do not scale to a 6-chromatic hunt: the declared escalation (a finite equality-forcing gadget at k=6) is where new mathematics would have to enter.",
+  "owned_agents": [],
+  "escalation": {
+    "obstacle": "Construct a finite unit-distance graph, with two non-adjacent marked vertices p,q at distance d != 1, such that EVERY 6-colouring of it has c(p)=c(q) (an equality-forcing gadget at 6 colours), or prove no such graph of size <= N exists for a stated N. Such a gadget is what any spindle-style amplification to 6 colours needs; it is dead for k=4 by the diamond argument, and nothing in the tested family has a forced pair at k>=4.",
+    "definitions": "A unit-distance graph is a finite graph with an injection into R^2 such that uv is an edge iff |u-v| = 1. A proper k-colouring assigns c(v) in {1..k} with c(u) != c(v) on every edge. The diamond D is K_4 minus an edge: vertices a,b,t1,t2, edges ab, at1, at2, bt1, bt2; |t1-t2| = sqrt3.",
+    "hypotheses": "Exact coordinates (a real algebraic number field), a complete finite graph, no measurability or a.e. hypotheses, no restriction to lattice coordinates.",
+    "attempted_approaches": "Spindle chains (fails: the diamond forces equality iff k=3, proved); local stacking of common unit neighbour gadgets (fails: the operation is an involution); exhaustive forced-pair census on the small family (nothing forced at k>=4); palette-level constraints at k=6 (blocked upstream in the printed architecture, see results/K6-BARRIER.md).",
+    "expected_useful_output": "Either an explicit exact-coordinate graph of size <= 40 with an equality-forcing pair at k=6 (then the paper's palette framework has a finite counterpart at k=6 and the search for a 6-chromatic graph becomes a directed construction), or a rigorous obstruction showing that in the class 'graphs whose vertices lie in Q(sqrt3,sqrt11) within a ball of radius R' no such pair exists, together with the exact radius where the enumeration stops being feasible."
+  }
+}

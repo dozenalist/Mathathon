@@ -1,0 +1,38 @@
+Lean: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+mathlib: d13f23b723b8a846827a245b89c10fc7d3f11612
+
+== Def12.lean ==
+../.ultramath/smwfcr56i/m1/Def12.lean:46:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+../.ultramath/smwfcr56i/m1/Def12.lean:50:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+../.ultramath/smwfcr56i/m1/Def12.lean:110:35: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+../.ultramath/smwfcr56i/m1/Def12.lean:115:33: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+lean exit = 0
+
+== ChromaticNumber.lean ==
+../.ultramath/smwfcr56i/m1/ChromaticNumber.lean:39:8: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'OAI.Problem160.chromaticNumber_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.six_le_planeChromaticNumber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.not_properColoring_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean exit = 0
+
+== verify_seven.py ==
+OK   centroid equidistant, |(1/2,sqrt3/6)|^2 = 1/3
+OK   max |p|^2 on the wedge {0<=x<=1/2, 0<=y, sqrt3 y<=1-x} is 1/3 (grid, exact)
+OK   the bound 1/3 is attained at the centroid (x=1/2, y=sqrt3/6, i.e. t=1/2)
+OK   min norm^2 over the kernel of a+3b mod 7 is 7
+OK   witness: (a,b) = (-3,1) has a+3b = 0 mod 7 and norm^2 = 7
+OK   |2-w|^2 = 7  <=>  N(2-w) = 7
+OK   paper: 2r = 4/5 < 1
+OK   paper: (sqrt21 - 2) r > 1  <=>  sqrt21 > 9/2  <=>  21 > 81/4
+OK   paper: sqrt21 - 2 > 5/2 numerically consistent (21 > 20.25)
+OK   lean: 2r = 14/15 < 1
+OK   lean: 4/(5 sqrt3) <= 7/15  <=>  144 <= 147
+OK   lean: (4/5) sqrt7 > 29/15  <=>  1008 > 841
+OK   lean: (4/5) sqrt7 > 2  <=>  112 > 100
+     index-6 threshold d > 1.1830 but 2r<1 needs d < 0.8660  -> fails
+OK   index-6: 1/(2 - 2/sqrt3) > sqrt3/2  <=>  (2 - 2/sqrt3)*(sqrt3/2) < 1  <=>  sqrt3 - 1 < 1  <=>  3 < 4
+
+all exact checks passed
+py exit = 0

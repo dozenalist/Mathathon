@@ -1,0 +1,155 @@
+{
+  "schema": "local-check-queue/1",
+  "note": "For Jarom's PC, SERIAL (one Lean process at a time), no cloud builds, no full builds unless the item says so, no copying olean trees. Paths are repo-relative. Every item names the exact sources and the exact command.",
+  "environment": {
+    "lean_toolchain_file": "leanprover/lean4:v4.34.1",
+    "lean_binary_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+    "mathlib_commit": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "mathlib_source": ".scratch/mathlib4 (.git HEAD); on the local PC use the same commit",
+    "pinned_dependency_revs": {
+      "batteries": "f2effa3d803fda822b1f97b806c47cf2adfbcbc2",
+      "Qq": "6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259",
+      "aesop": "355695d523e41d0554926416cba2a2b3544fbbc9",
+      "proofwidgets": "106ff4fafc74ef4ac99d81dbf3ab399118f497a5",
+      "importGraph": "e928b72544873815af278d38681b31c0293588e3",
+      "LeanSearchClient": "ddf04cf3949fa556442341e87d47f9f6e6074707",
+      "plausible": "118aa17ee84656b8bd727fef7c458ee8c833385c",
+      "Cli": "e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204"
+    },
+    "entry_point": "source scripts/env4341.sh  (sets PATH and LEAN_PATH to lean/build/lib + the pinned mathlib and its packages)",
+    "verified_from": [
+      "lean-toolchain",
+      ".scratch/toolchain/bin/lean --version",
+      ".scratch/mathlib4/.git HEAD",
+      ".scratch/mathlib4/lake-manifest.json"
+    ]
+  },
+  "items": [
+    {
+      "id": 1,
+      "name": "ConnectedSetExclusion (verification block 2)",
+      "grade_expected": "compiled + axiom-clean",
+      "sources": [
+        "supervisor/simplify-verification/lean/ConnectedSetExclusion.lean"
+      ],
+      "imports": [
+        "Mathlib"
+      ],
+      "lean_deps_on_development": [],
+      "theorems": [
+        "SupervisorVerify.preconnected_forall_lt_or_forall_gt",
+        "SupervisorVerify.unitFree_not_straddle",
+        "SupervisorVerify.unitFree_pairwise_lt",
+        "SupervisorVerify.diam_le_one_of_preconnected_unitFree'",
+        "SupervisorVerify.unitFree_sharp"
+      ],
+      "commands": [
+        "source scripts/env4341.sh",
+        "cd supervisor/simplify-verification/lean",
+        "lean ConnectedSetExclusion.lean"
+      ],
+      "expected_output": "rc 0; each of the five #print axioms lines = [propext, Classical.choice, Quot.sound]; one push_neg deprecation warning is expected and harmless",
+      "status": "ALREADY VERIFIED here 2026-11-14T05:42Z, rc 0, 10m30s wall on the shared box; include only if a local re-run is wanted",
+      "cost_hint": "one Mathlib import; ~2-3 min warm, up to 15 min if Mathlib oleans are cold"
+    },
+    {
+      "id": 2,
+      "name": "Five-cycle candidate (simplify-angular) - WITHHELD, do not put in the Lean queue",
+      "grade_expected": "rejected as advertised",
+      "reason": "the finite lemma is true but its hypotheses are not the paper's: (V) is used at positions 1,2,4,5 where the paper proves no-common-label only at positions 0 and 3. See AUDIT-FIVE-CYCLE.md; eight countermodels to the licensed hypothesis set.",
+      "finite_check_to_keep": {
+        "sources": [
+          "supervisor/simplify-verification/checks/five_cycle_licence.py",
+          "supervisor/simplify-angular/checks/five_cycle_full.py"
+        ],
+        "commands": [
+          "python3 supervisor/simplify-verification/checks/five_cycle_licence.py",
+          "python3 supervisor/simplify-angular/checks/five_cycle_full.py"
+        ],
+        "expected": "licence script: [A] 0 solutions, [B] 8 solutions, [C] 78, [F] 0 for each single drop, and 0 for validity sets {0,1,3}, {0,3,5}; their script: all checks PASS, solutions=0",
+        "status": "both already rc 0 here; no Lean needed"
+      },
+      "revive_condition": "a proof of (NC-1) or (NC-5) as defined in AUDIT-FIVE-CYCLE.md section 4; then the theorem bodies are worth a Lean check of the 21-list case analysis"
+    },
+    {
+      "id": 3,
+      "name": "Topology's isolated lemma (Lemma 7.5 substitution)",
+      "grade_expected": "compiled + axiom-clean (owner's log says so; MY re-run pending)",
+      "sources": [
+        "supervisor/simplify-topology/lean/CoverObstruction.lean",
+        "supervisor/simplify-topology/lean/Check.lean"
+      ],
+      "imports": [
+        "Mathlib",
+        "OAI.Geometry.PlaneColoring.PlanarCovers"
+      ],
+      "lean_deps_on_development": {
+        "count": 25,
+        "note": "transitive OAI cone of PlanarCovers: Accumulation, AngularBoundary, BinaryDynamics, BinaryPalettes, BoundaryTrace, CircleMaps, CircleTransport, Coloring, Compactness, DiskAverages, Exclusion, Expansion, FourContinuity, FourTransport, PaletteDensity, PaletteTransport, Palettes, PlanarCovers, Rigidity, States, Transitions, WeakColoring, plus PlaneSpectrum CircleDecay, CircleOperator, Fourier",
+        "oleans": "lean/build/lib/OAI/** (already present from the prior 78-module build; do NOT copy trees, just point LEAN_PATH at the existing build dir)"
+      },
+      "theorems": [
+        "OAI.PlanarCover.paper_lemma_7_5",
+        "OAI.PlanarCover.compact_cover_obstruction_gen",
+        "OAI.PlanarCover.hit_center_gen",
+        "OAI.PlanarCover.disk3_cover_obstruction"
+      ],
+      "commands": [
+        "source scripts/env4341.sh",
+        "cd supervisor/simplify-topology/lean",
+        "lean -o CoverObstruction.olean -i CoverObstruction.ilean CoverObstruction.lean",
+        "lean Check.lean"
+      ],
+      "expected_output": "rc 0 both; axiom lines = [propext, Classical.choice, Quot.sound]",
+      "status": "compiled by its owner under the pinned env (checks/lean-build3.log BUILD_EXIT=0, checks/axioms.log); I read the logs only. Needs the 25-module cone oleans present.",
+      "cost_hint": "single file, but a large import cone; run after item 1, serial"
+    },
+    {
+      "id": 4,
+      "name": "m6 trim rebuild + signature/axiom comparison (the wording correction matters here)",
+      "grade_expected": "build + identical elaborated signatures and identical axiom sets for the six roots",
+      "sources": [
+        "sprint/simplify/m6/E1/OAI/** (83 modules)",
+        "sprint/simplify/m6/build.py",
+        "results/lean/Check3.lean"
+      ],
+      "commands": [
+        "source scripts/env4341.sh",
+        "JOBS=2 python3 sprint/simplify/m6/build.py sprint/simplify/m6/E1 <fresh-build-dir>",
+        "LEAN_PATH=<fresh-build-dir>:$LEAN_PATH lean results/lean/Check3.lean",
+        "diff <(axiom lines from the pristine build) <(axiom lines from the trimmed build)"
+      ],
+      "why_signature_check": "deletion-only at the source level proves that surviving DECLARATION TEXT is byte-identical. It does NOT prove identical elaborated types (implicit binders can be inferred differently if a section variable's usage changed) nor identical axiom dependencies (a deleted lemma could have been an unnamed instance or a simp-set member; the 74-name/0-occurrence check makes that unlikely but it is not a proof). So the comparison above is part of the item, not optional.",
+      "status": "outstanding; this is the only unclosed obligation of the m6 work",
+      "cost_hint": "83 modules; budget a long serial run, JOBS=2, no other Lean at the same time"
+    },
+    {
+      "id": 5,
+      "name": "Diamond.lean re-check under the PINNED environment (optional)",
+      "grade_expected": "compiled + axiom-clean under 4.34.1 + Mathlib d13f23b",
+      "sources": [
+        "supervisor/simplify-angular/lean/Diamond.lean"
+      ],
+      "imports": [
+        "Mathlib (as written)"
+      ],
+      "theorems": [
+        "SimplifyAngular.three_color_diamond_omega",
+        "SimplifyAngular.diamond_tips"
+      ],
+      "commands": [
+        "source scripts/env4341.sh",
+        "cd supervisor/simplify-angular/lean",
+        "lean Diamond.lean"
+      ],
+      "note": "the existing local result is from NATIVE Lean 4.35.0 with only `import Lean.Elab.Tactic.Omega`, exit 0, axioms [propext, Quot.sound], source sha256 67cdbc7be0b14601122ca19fb426ea93bef9f91c54fad397c68ec3cb9c82dc8b. That is a different toolchain and a different import graph from the pinned 4.34.1 + Mathlib development, so it is evidence about the lemma, not integration into the development.",
+      "status": "re-run under the pinned env pending; the statement itself is a Fin 3 counting fact and is not in doubt"
+    }
+  ],
+  "ordering_and_rules": [
+    "Serial: never two Lean processes at once (item 1 then 3 then 5, then 4 last since it is the long one).",
+    "Do not copy olean trees between machines or directories; point LEAN_PATH at the existing lean/build/lib.",
+    "No cloud Lean builds; no full 83-module builds other than item 4.",
+    "Item 2 is NOT a Lean item; keep the two Python checks as the record of why the candidate is withheld."
+  ]
+}

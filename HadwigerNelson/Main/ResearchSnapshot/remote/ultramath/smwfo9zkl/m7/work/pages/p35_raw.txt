@@ -1,0 +1,66 @@
+To check this in any neighborhood of x, use a smaller ball and then choose h small enough that
+both endpoints of every transition under consideration remain in the neighborhood. A positive-
+area transition set gives positive area of each endpoint color there; translation preserves area.
+Lemma 6.2 (An edge has an avoiding trace). If ij ∈ Γx, there is a trace bij ∈ Wx with b
+ij
+i = b
+ij
+j = 0
+almost everywhere. Consequently,
+Px(e) ̸⊂ {i, j} for almost every e ∈ S, ij ∈ Γx. (6.2)
+Proof. Write
+Sg(q) =
+Z
+S
+g(q + e)dσ(e).
+The estimate we need, for every fixed bounded ball B and every label s, is
+S as − as(· + h)
+
+L2(B)
+= o
+q
+|h|
+
+(h → 0). (6.3)
+Here and in (6.1), the vector h may approach zero in any direction.
+Choose a boundedly supported g ∈ L2(R2) agreeing with as on a ball containing B + S + h
+for all sufficiently small h, as well as B + S. The Fourier transform of normalized circle measure
+satisfies
+|b σ(ξ)| ≤ C(1 + |ξ|)−1/2
+.
+For completeness, after rotating coordinates the relevant integral is a constant multiple of
+R 2π
+0
+exp(ircost)dt, where r is proportional to |ξ|. For r ≥ 1, removing the arcs on which
+|sint| ≤ r−1/2 costs O(r−1/2). On each remaining interval, integration by parts using the deriva-
+tive −irsint gives endpoint terms O(r−1/2), while the integral of |cost|/(rsin2
+t) is also O(r−1/2).
+The bound for r ≤ 1 is immediate.
+By Plancherel, the square of the global L2 norm of S(g − g(· + h)), divided by |h|, is bounded
+by the integral of |b g(ξ)|2 times
+C
+1 + |ξ|
+min{C|h|2|ξ|2,4}
+|h|
+.
+This multiplier is uniformly bounded: split at |ξ| = |h|−1. For each fixed ξ it tends to zero as
+h → 0. Dominated convergence therefore proves (6.3); the cutoff is fixed before h tends to zero.
+For a fixed displacement h, almost every root q has both q,q + h typical, and both exact unit-
+circle samplings centered at these points typical on their circles. At a transition from color s to
+color t, the first circle avoids s and the second avoids t, by properness of the coloring on typical
+points. Thus the mass of color t on the first circle equals S(at − at(· + h))(q). For a transition
+between i and j in either order, the first-circle mass of these two colors together is consequently
+bounded by
+S(ai − ai(· + h))(q) + S(aj − aj(· + h))(q) .
+Fix a ball B about x. Since ij ∈ Γx, there is a constant cB > 0 and arbitrarily small nonzero h
+for which the transition set in B has area at least cB|h|. Cauchy–Schwarz and (6.3) show that the
+average of the preceding mass over this transition set is at most
+o(
+p
+|h|)
+p
+cB|h|
+= o(1).
+Now take balls Bm of radii tending to zero about x. After fixing Bm and its constant cBm, choose
+hm sufficiently small and then a transition root qm ∈ Bm from the preceding full-measure set,
+35

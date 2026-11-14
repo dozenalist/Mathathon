@@ -1,0 +1,124 @@
+{
+ "updated_utc": "2026-11-14T11:02:00Z",
+ "status": "completed_block",
+ "summary": [
+  "Block 15. (1) Rebuilt my copy of V4 by the single one-line change `open Filter` -> `open Filter Topology` (V3's only failure was the unknown \ud835\udcdd notation) and its sha256 is 3ff5d5c86fd49e4252e2fbbbcd8fc05e6c909c165cb98d62f47da399f608a569 - byte-identical to the locally PASSING file. So the pass is attributed to exactly my source: six printed lemmas, only [propext, Classical.choice, Quot.sound], no sorryAx. (2) Producer-side paper 7.4 item (1) comparison completed (VALID-CONSUMER-AUDIT.md s5). initialDisks L C \u03b4 u = L.image (x |-> <x,\u03b4,true>) \u222a C.image (x |-> <x,u,false>); small_hole_map returns e>0 and, for every \u03b5 \u2208 (0,e), a disk family S together with a continuous graph-valued map on closedBall 0 7 minus coreHoles S that equals thresholdMap off diskHoles S, with the radius sum below t. Against that construction the paper's clauses hold: one disk per point, containing its own point (mem_ball_self, used inside initialDisks_valid), and different points giving different disks (Finset.image injectivity plus mem_initialDisks) - all structural, none assumed from Valid. The Q-containment clause is SUBSTITUTED (ambient balls 7/5, activeCenters cut at dist<=6, \u03b4<=t/2, containment preserved by separate), not stated. Corrected my previous over-broad 'core flag' warning: the paper's core disks correspond to the L-part of initialDisks, which does carry core := true; it is centerDisks (an extra family over the same index set, built with core := false and charged to the budget) that is not the paper's core disk. The formal development deliberately proves the weaker sufficient interface; nothing downstream needs the paper's stronger wording. Remaining item (1) obligation is a DERIVED containment statement (dist x 0 + \u03b4 <= 7), needed by no current proof. Wiring to Five.lean unchanged: the only structural step left is re-pointing Five.lean:54 at the substitution. No builds, no computation."
+ ],
+ "verified_results": [
+  {
+   "claim": "V4 source identity: my one-line repair reproduces the passing file exactly",
+   "grade": "sha256 3ff5d5c86fd49e4252e2fbbbcd8fc05e6c909c165cb98d62f47da399f608a569 computed by me; local PASS reported by the supervisor",
+   "status": "PASSED locally, six lemmas standard axioms, no sorryAx"
+  },
+  {
+   "claim": "Producer construction: initialDisks's L-part is L.image (x |-> <x,\u03b4,true>), C-part is C.image (x |-> <x,u,false>)",
+   "grade": "[S] HoleApproximation.lean:59-70",
+   "status": "read and quoted"
+  },
+  {
+   "claim": "Paper item (1) uniqueness, 'contains its own point', and injectivity hold by construction, not via Valid",
+   "grade": "[S+] Finset.image injectivity + mem_initialDisks + mem_ball_self inside initialDisks_valid",
+   "status": "discharged"
+  },
+  {
+   "claim": "Q-containment/outside-Q has no Lean counterpart as a statement; it is substituted by ambient balls 7/5, activeCenters (dist<=6) and \u03b4<=t/2, with disk containment preserved by separate",
+   "grade": "[S] construction read; equivalence with the paper clause is [C]",
+   "status": "substituted, weakest link named"
+  },
+  {
+   "claim": "Correction to the earlier core-flag warning: paper core disk <-> L-part of initialDisks (core := true); centerDisks is a separate extra family with core := false",
+   "grade": "[S] HoleApproximation.lean:60 vs GraphPatches.lean:245",
+   "status": "corrected"
+  },
+  {
+   "claim": "small_hole_map's exact conclusion (HoleApproximation.lean:115-125) matches the paper's items (1)-(3) shape with 'for all \u03b5 in (0,e)' in place of a designated sequence",
+   "grade": "[S] statement quoted",
+   "status": "compared"
+  }
+ ],
+ "conjectures": [
+  {
+   "statement": "The missing Q-containment statement is unreachable as a problem because the map's domain is defined by coreHoles rather than by a geometric condition on Q.",
+   "status": "my reading [C]",
+   "grade": "projection"
+  }
+ ],
+ "artifacts": [
+  "supervisor/simplify-verification/AUDIT-FIVE-CYCLE.md",
+  "supervisor/simplify-verification/FULLAPPROX-AGREES-AUDIT.md",
+  "supervisor/simplify-verification/INTERFACE-WALL.md",
+  "supervisor/simplify-verification/LOCAL-CHECK-QUEUE.json",
+  "supervisor/simplify-verification/NOTES.md",
+  "supervisor/simplify-verification/STATUS.json",
+  "supervisor/simplify-verification/TOPOLOGY-CONE-MANIFEST.json",
+  "supervisor/simplify-verification/TRANSFER-LEDGER.md",
+  "supervisor/simplify-verification/VALID-CONSUMER-AUDIT.md",
+  "supervisor/simplify-verification/checks/five_cycle_licence.py",
+  "supervisor/simplify-verification/lean/CheckFifth.lean",
+  "supervisor/simplify-verification/lean/ConnectedSetExclusion.lean",
+  "supervisor/simplify-verification/lean/FiveCycleResidues.lean",
+  "supervisor/simplify-verification/lean/WitnessSelection.lean",
+  "supervisor/simplify-verification/move_audit.py",
+  "supervisor/simplify-verification/trim_audit.py"
+ ],
+ "tests_run": [
+  {
+   "cmd": "sed -i one-line edit + sha256sum",
+   "outcome": "open Filter -> open Filter Topology; hash 3ff5d5c86fd49e4252e2fbbbcd8fc05e6c909c165cb98d62f47da399f608a569, identical to the locally passing file."
+  },
+  {
+   "cmd": "sed/grep of HoleApproximation.lean:59-70 and :115-125",
+   "outcome": "initialDisks, mem_initialDisks, initialDisks_valid and the full small_hole_map statement read and quoted in the audit."
+  },
+  {
+   "cmd": "Lean build / computation",
+   "outcome": "NONE (analysis-only block)."
+  }
+ ],
+ "failed_routes": [
+  "Seeking a countermodel with fewer than four relaxed positions: none exists (single relaxation already gives 0 solutions, and all eight relax all four).",
+  "Reading the drop-one runs as evidence of individual necessity: that is the reverse implication and is not established by them.",
+  "Treating the cover-obstruction substitution as an integration: it cannot be, because no module of lean/ imports supervisor/.",
+  "Expecting the mesh/diameter bound to be the \u00a77 gap: the Lean splits it into a dichotomy inside Five.lean, so it is not a hypothesis left open.",
+  "`h '' P j = P (h j)`: false at j=0; the correct general target is P(-j). Kept in the file header as a recorded trap.",
+  "My first block-6 check script applied the identity map instead of h and reported all identities false - a script bug, not a mathematical finding; corrected and re-run inside the same one-process budget.",
+  "`refine \u27e8membership-proof, ?_\u27e9` for a `Finset.Nonempty` goal: Nonempty is `\u2203 a, a \u2208 s`, so the witness must come first; the local run caught this at hasNbr_image and it also poisoned neighbour_family_push with sorryAx.",
+  "Restoring the paper's monotone eps_n from the Lean per-scale form: monotonicity cannot be obtained by replacing eps_n with min over k<=n, because shrinking eps changes pi^eps and hence the entire disk family and the agreement map; it would need the construction to be redone at the new scale. Recorded as the single loss of the interchange.",
+  "My earlier claim that monotonicity of eps_n cannot be restored: wrong, and now retracted with two explicit constructions. The error was conflating 'modifying a witness' (blocked, since shrinking eps changes pi^eps) with 'selecting among witnesses' (free, and carries all indexed data).",
+  "WitnessSelection V1: failed locally at four points - uninferable positivity for the let-bound budget, equation-compiler unfolding of sel, a denominator mismatch k+1 vs k+1+1, and an undecomposed \u2200n,True conjunct. Only pickAt_lt was accepted; the three dependent theorems carried sorryAx. V2 replaces each failing construction rather than patching it.",
+  "V2 (staged, uncompiled) used Tendsto/atTop with no Filter namespace open and kept the `pickAt_lt ... _ _` positivity placeholder in sel_step_lt; V3 replaces both.",
+  "Selecting on epsilon instead of the budget: epsilon -> 0 leaves t and the radii sum free, since FullApprox gives only epsilon < t and sum rad < t.",
+  "Describing Route B's rule as if it were Route A's: with scale := t the next budget depends on the previous t, so epsilon's monotonicity is not obtained that way; the two routes must be kept separate, as s8 now does.",
+  "Route B (select on epsilon, assume per-index budget s/2): invalid because Classical.choose discards the exhibited witness's budget; retracted with two salvage paths recorded.",
+  "Reading `d.core = true` as the paper's core disk B_{n,x}: wrong in the tree - centerDisks (the fixed disks around cyclic centres) carry core := false.",
+  "V3 (open Filter alone) failed locally only on the unknown \ud835\udcdd notation; V4 adds Topology and passes - recorded so the V3 failure is not mistaken for a mathematical one.",
+  "My earlier statement that the Lean's core flag 'is not the paper's core disk' was too broad: it is correct for centerDisks but wrong for initialDisks' L-part, which is exactly the paper's core family."
+ ],
+ "next_step": "(1) connected_escape_holes vs paper Lemma 7.8 with the annulus radii - the last uncompared \u00a77 statement. (2) Optionally write the derived containment lemma (dist x 0 + \u03b4 <= 7 for active centres) if a referee wants item (1)'s Q clause stated. (3) The single structural wiring step: re-point Five.lean:54 at paper_lemma_7_5/compact_cover_obstruction_gen and rebuild the 25-module cone locally.",
+ "escalation": {
+  "obstacle": "(NC-1), restated precisely: at an accumulation point x of a specified five-cycle locus, with a = lim h_n/|h_n| and R the rotation acting on directions, the list S(R a) = {i : R a lies in the closed essential support of state i at x} has no common label, i.e. the intersection of the diagonals D_i over i in S(R a) is empty.",
+  "definitions": "D_i = {i, i+2} in Z/5Z; state i at x = the set of directions whose palette is exactly D_i; closed essential support S_i = the closed set whose every neighbourhood meets state i in positive measure; S(u) = {i : u in S_i}.",
+  "hypotheses_available": "(6.6) a.e. transition rule at x; closedness and finiteness of the five supports; no-common-label at a and -a from the endpoint pair (a_n^+, a_n^-) and 'y_n in H_k for every label'; (D) disjointness of adjacent position lists; (N) neighbour existence in both directions.",
+  "attempted": "direct transport of the printed zero-area endpoint argument (needs a partner direction whose sum lies near a centre with all five edges present; none exists at r=1); derivation from V0,V3,D,N (fails: 8 countermodels, all relaxing 1,2,4,5); single-position weakening (fails: one relaxation never gives a model).",
+  "expected_useful_output": "Either a proof of (NC-1) \u2014 then FIVE-CYCLE-CORE's five-step elimination of Lemma 6.7 stands as a real simplification \u2014 or a construction of an accumulation configuration realising S(1) = {2,4}, which would prove Lemma 6.7 is not removable by support-list combinatorics alone."
+ },
+ "recovery_note": "2026-11-14 post-outage reconciliation: no jobs running (the only background job, jmwfyybqo, exited 0 long before the outage and its result is recorded); every artifact re-read and hash-checked; nothing re-run or duplicated. Latest instruction (block 3) was already complete at 06:16Z.",
+ "handoff": "V4 PASSED and byte-identical to my source (sha256 3ff5d5c8..., one-line `open Filter Topology`; six lemmas, standard axioms, no sorryAx). Producer-side item (1) audit complete in VALID-CONSUMER-AUDIT.md s5: uniqueness, containment-of-own-point and injectivity hold by construction in initialDisks; Q-containment is substituted by the ambient balls and activeCenters, not stated, and the paper's stronger wording is deliberately not imposed. Corrected the core-flag note (paper core disk = initialDisks L-part, core := true). Five.lean untouched; the only remaining wiring is Five.lean:54 -> paper_lemma_7_5 plus a 25-module rebuild. No builds, no computation, no new agents.",
+ "artifact_hashes": {
+  "AUDIT-FIVE-CYCLE.md": "9fe1ca44daca711f0fb705ea38ea01e490c36adcc08e14d441bfe318e720484c",
+  "FULLAPPROX-AGREES-AUDIT.md": "da10b89a90a30ebe65afb1397f481bdfd420103cd3e7533da2c88b6f04565b30",
+  "INTERFACE-WALL.md": "db640ce31e1b6b618b0bba166b7d6ca81c5d2f9de18e969fb913b3e4c34c1306",
+  "LOCAL-CHECK-QUEUE.json": "cf566c8a96e2fd2ae50d24baa1d3999f8c1bab8d6481dea411172f6d6730bd1e",
+  "NOTES.md": "cd53abfa9912fbd28f113a4ebf20f95b9f39606fc1532ad5001c756d25dc8f39",
+  "TOPOLOGY-CONE-MANIFEST.json": "0be1f96e92e26a8fdc05875703a87bad9c63ac930ca445c2229eaf22aaa7462c",
+  "TRANSFER-LEDGER.md": "7f8b32948490030b523c228bdb4abedfbd925ebe0191b2c9b5f8451dceb6da04",
+  "checks/five_cycle_licence.py": "1fa619d857ec753381f30b27034abc5c6f4073022298572079dffbd22e460360",
+  "lean/ConnectedSetExclusion.lean": "84b6111a0bcf4f1a3f6db5806ed1c3dcbf298d317bf2398448b2a69a8679b144",
+  "lean/FiveCycleResidues.lean": "70452746c5ea999de6156cdee1e16639e6c563670e066288d45355ca9a17ead5",
+  "lean/CheckFifth.lean": "4cebfd5f28cf196e7247247e6fc40719b88c61b3c2f7184b3ff135cf6e7c14f9",
+  "trim_audit.py": "b462805f264b010a12f89ead087bc85c16c038295f6fb314419561aa77a70103",
+  "move_audit.py": "f5afca70b6ae72a19ea334c61b5bdfc49b890b344cb2650068b66cb0ad542b11",
+  "lean/WitnessSelection.lean": "3ff5d5c86fd49e4252e2fbbbcd8fc05e6c909c165cb98d62f47da399f608a569",
+  "VALID-CONSUMER-AUDIT.md": "7f79630d74ff18567786556698cf08f111b01274e36b59f1191eff8637165c8b"
+ }
+}

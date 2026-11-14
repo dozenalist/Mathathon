@@ -1,0 +1,2515 @@
+[
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"name": "fixed_of_finite_orbit",
+"start": 109,
+"end": 117,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"name": "fixed_of_positive_fiber",
+"start": 189,
+"end": 223,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"name": "measurableSet_coset",
+"start": 261,
+"end": 271,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"name": "coset_fixed_minusOne",
+"start": 290,
+"end": 299,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"name": "wild_coset_null",
+"start": 304,
+"end": 318,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"name": "wild_div_mem_null",
+"start": 319,
+"end": 325,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"name": "wild_independent_difference",
+"start": 326,
+"end": 336,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"name": "frequency_zero_of_rational_tests",
+"start": 341,
+"end": 357,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"name": "j_eq_one_iff",
+"start": 365,
+"end": 381,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"name": "j_injective",
+"start": 388,
+"end": 393,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"name": "j_measurableEmbedding",
+"start": 394,
+"end": 398,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"name": "dense_F",
+"start": 454,
+"end": 459,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"name": "continuous_jF",
+"start": 522,
+"end": 527,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"name": "measurableSet_CF",
+"start": 528,
+"end": 534,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.CircleOperator",
+"name": "circleOperator_norm_le",
+"start": 16,
+"end": 19,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.CircleOperator",
+"name": "circleSymbol_stronglyMeasurable",
+"start": 46,
+"end": 51,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.CircleOperator",
+"name": "colorMass_measurable",
+"start": 251,
+"end": 258,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.CircleOperator",
+"name": "colorMass_le_one",
+"start": 261,
+"end": 264,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "measurable_eval",
+"start": 56,
+"end": 56,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "eval_nat_mul",
+"start": 68,
+"end": 72,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "eval_scalar",
+"start": 73,
+"end": 73,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "eval_smul_one",
+"start": 74,
+"end": 76,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "predecessor_moment_sq",
+"start": 85,
+"end": 98,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "integrable_predecessor_moment_sq",
+"start": 99,
+"end": 115,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "real_algebraic_sum_two_rotations",
+"start": 116,
+"end": 159,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "kernelEncoding_covariance",
+"start": 160,
+"end": 180,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "MomentTest",
+"start": 181,
+"end": 182,
+"kind": "abbrev"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "momentArgument",
+"start": 183,
+"end": 185,
+"kind": "def"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "momentArgument_ne_zero",
+"start": 186,
+"end": 194,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "momentTest_nonempty",
+"start": 195,
+"end": 203,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "exists_simultaneous_moment_parameter",
+"start": 204,
+"end": 217,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "eval_dist",
+"start": 218,
+"end": 227,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "pair_collision_upper",
+"start": 228,
+"end": 266,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "FiniteEncodingApproximationAt",
+"start": 267,
+"end": 281,
+"kind": "def"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "FiniteEncodingApproximation",
+"start": 282,
+"end": 285,
+"kind": "def"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "two_array_norm_bound",
+"start": 286,
+"end": 291,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "simultaneous_test_budget",
+"start": 292,
+"end": 309,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "finite_uniform_precision_contradiction",
+"start": 310,
+"end": 478,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"name": "finite_uniform_successor_contradiction",
+"start": 479,
+"end": 498,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Energy",
+"name": "char_neg",
+"start": 376,
+"end": 379,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Ergodicity",
+"name": "vectorMeasure_invariant",
+"start": 383,
+"end": 402,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.FourierTests",
+"name": "difference_coefficient_nonneg",
+"start": 279,
+"end": 296,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"name": "shift_comm",
+"start": 26,
+"end": 29,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"name": "weakMean_add",
+"start": 551,
+"end": 558,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"name": "periodSum_add",
+"start": 676,
+"end": 681,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"name": "integralReal_nonneg",
+"start": 713,
+"end": 720,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"name": "integralReal_shift",
+"start": 721,
+"end": 734,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"name": "weakIntegral_pair",
+"start": 754,
+"end": 766,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Multipliers",
+"name": "weight_inner",
+"start": 92,
+"end": 106,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.NumberFields",
+"name": "General.spans",
+"start": 404,
+"end": 418,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "repeatedPairs",
+"start": 26,
+"end": 30,
+"kind": "def"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "sameBin_card",
+"start": 31,
+"end": 47,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "sameBin_card_eq",
+"start": 48,
+"end": 67,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "repeated_bin_lower_bound",
+"start": 68,
+"end": 86,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "closePairs",
+"start": 87,
+"end": 90,
+"kind": "def"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "close_pair_lower_bound",
+"start": 91,
+"end": 118,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "normalized_close_pair_lower_bound",
+"start": 119,
+"end": 141,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "average_cover_forces_collision",
+"start": 142,
+"end": 258,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "goodFraction",
+"start": 259,
+"end": 263,
+"kind": "def"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "goodFraction_eq_sum",
+"start": 264,
+"end": 269,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "measurable_goodFraction",
+"start": 270,
+"end": 278,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "goodFraction_nonneg",
+"start": 279,
+"end": 282,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "goodFraction_le_one",
+"start": 283,
+"end": 288,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "integrable_goodFraction",
+"start": 289,
+"end": 297,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "average_goodFraction",
+"start": 298,
+"end": 351,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "average_exists_cover_forces_collision",
+"start": 352,
+"end": 372,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "circle_product_dist",
+"start": 373,
+"end": 395,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "collision_from_close_encodings",
+"start": 396,
+"end": 462,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"name": "collision_from_measurable_encodings",
+"start": 463,
+"end": 538,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "encoding",
+"start": 29,
+"end": 31,
+"kind": "def"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "elem_eq_sum",
+"start": 41,
+"end": 45,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "continuous_encoding",
+"start": 46,
+"end": 51,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "polynomial_expansion",
+"start": 52,
+"end": 60,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "eval_expansion",
+"start": 67,
+"end": 74,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "eval_difference",
+"start": 75,
+"end": 86,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "eval_difference_bound",
+"start": 87,
+"end": 104,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "close_encoding_each_phase",
+"start": 105,
+"end": 129,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "fromPowers",
+"start": 130,
+"end": 138,
+"kind": "def"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "measurable_fromPowers",
+"start": 139,
+"end": 152,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "newton_elem",
+"start": 153,
+"end": 162,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "filtered_antidiagonal_sum",
+"start": 163,
+"end": 172,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "fromPowers_eq_elem",
+"start": 173,
+"end": 203,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "kernelEncoding",
+"start": 204,
+"end": 206,
+"kind": "def"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "measurable_kernelEncoding",
+"start": 207,
+"end": 215,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "moments_uniform_list",
+"start": 216,
+"end": 230,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "kernelEncoding_eq_encoding",
+"start": 231,
+"end": 246,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+"name": "exists_encoding_bound",
+"start": 247,
+"end": 256,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"name": "unitary_apply",
+"start": 152,
+"end": 153,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"name": "mem_space",
+"start": 193,
+"end": 193,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"name": "translation_apply",
+"start": 243,
+"end": 245,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "phaseSum",
+"start": 33,
+"end": 34,
+"kind": "def"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "pow_sub_one_bound",
+"start": 35,
+"end": 48,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "phaseSum_sub_bound",
+"start": 49,
+"end": 63,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "phaseSum_lower",
+"start": 64,
+"end": 78,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "phase_energy",
+"start": 79,
+"end": 91,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "pow_mul_conj_pow",
+"start": 92,
+"end": 101,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "integrable_pair",
+"start": 102,
+"end": 106,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "pair_moment_bound",
+"start": 107,
+"end": 133,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "phase_energy_integral_bound",
+"start": 134,
+"end": 165,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "integrable_energy",
+"start": 166,
+"end": 177,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "small_arc_bound",
+"start": 178,
+"end": 205,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "exists_small_arc_constants",
+"start": 206,
+"end": 241,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "measurable_atom_mass",
+"start": 242,
+"end": 257,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "ae_sampled_positive_atom",
+"start": 258,
+"end": 269,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "uniform_list_positive_atoms",
+"start": 270,
+"end": 291,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "in_list_of_positive_atom",
+"start": 292,
+"end": 302,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+"name": "ae_sampled_list",
+"start": 303,
+"end": 323,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
+"name": "character_apply",
+"start": 150,
+"end": 151,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
+"name": "star_evaluation",
+"start": 314,
+"end": 318,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
+"name": "evaluation_span_dense",
+"start": 323,
+"end": 357,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
+"name": "apply_clm",
+"start": 368,
+"end": 372,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
+"name": "measure_eq_of_fourier",
+"start": 373,
+"end": 389,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"name": "four_word_mixed_periodic",
+"start": 31,
+"end": 34,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"name": "sixty_six",
+"start": 92,
+"end": 97,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"name": "approaching_direction_inside",
+"start": 160,
+"end": 172,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"name": "approaching_direction_outside",
+"start": 173,
+"end": 185,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"name": "outer_straddle_strip",
+"start": 186,
+"end": 199,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"name": "inner_straddle_strip",
+"start": 200,
+"end": 220,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"name": "ApproachingContinuum.outer_strip",
+"start": 244,
+"end": 250,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"name": "ApproachingContinuum.inner_strip",
+"start": 251,
+"end": 258,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"name": "angleBoundary_closed",
+"start": 350,
+"end": 351,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"name": "sixAngle_add",
+"start": 408,
+"end": 417,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"name": "sixAngleHom",
+"start": 430,
+"end": 433,
+"kind": "def"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Basic",
+"name": "weakPairMeasure",
+"start": 23,
+"end": 25,
+"kind": "def"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Basic",
+"name": "WeakMeasurableColoring",
+"start": 30,
+"end": 39,
+"kind": "def"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.BinaryDynamics",
+"name": "binaryQ_contDiff",
+"start": 148,
+"end": 150,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.BinaryPalettes",
+"name": "binary_pair_distinct",
+"start": 28,
+"end": 43,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.BinaryPalettes",
+"name": "triangleAngle_ratio_irrational",
+"start": 279,
+"end": 284,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.BinaryPalettes",
+"name": "triangle_rotation_ergodic",
+"start": 285,
+"end": 290,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.BorelTransfer",
+"name": "proper_to_weak",
+"start": 451,
+"end": 459,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.BoundaryTrace",
+"name": "unit_antipodes_of_no_positive",
+"start": 319,
+"end": 358,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.BoundaryTrace",
+"name": "four_split_antipodes",
+"start": 359,
+"end": 368,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.CircleMaps",
+"name": "realDirection_lipschitz",
+"start": 60,
+"end": 68,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.CircleMaps",
+"name": "circleTarget_continuous",
+"start": 196,
+"end": 198,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.CircleMaps",
+"name": "angleChart_preserving",
+"start": 307,
+"end": 313,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Compactness",
+"name": "sampling_weak_compact",
+"start": 130,
+"end": 158,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Compactness",
+"name": "value_norm",
+"start": 165,
+"end": 167,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Compactness",
+"name": "tendsto_iff",
+"start": 181,
+"end": 193,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Compactness",
+"name": "isCompact_traces",
+"start": 286,
+"end": 288,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Compactness",
+"name": "traceCode_tendsto_iff",
+"start": 293,
+"end": 296,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.ContinuumLimits",
+"name": "finite_continuum_subsequence",
+"start": 163,
+"end": 183,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.ContinuumLimits",
+"name": "CommonInterface.symm",
+"start": 231,
+"end": 234,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.ContinuumLimits",
+"name": "spatialSupport_perm",
+"start": 235,
+"end": 240,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.ContinuumLimits",
+"name": "CommonInterface.perm",
+"start": 241,
+"end": 245,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.CyclicCore",
+"name": "five_ae_mem_support",
+"start": 9,
+"end": 11,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.CyclicCore",
+"name": "cyclicCore_closed",
+"start": 234,
+"end": 251,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.CyclicCore",
+"name": "standardCore_closed",
+"start": 252,
+"end": 255,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"name": "graphLift_vertex",
+"start": 339,
+"end": 344,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"name": "graphLeafHomotopy",
+"start": 402,
+"end": 415,
+"kind": "def"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"name": "coreHoles_open",
+"start": 522,
+"end": 523,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"name": "mem_coreHoles",
+"start": 526,
+"end": 531,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Exclusion",
+"name": "fiveEdge",
+"start": 11,
+"end": 11,
+"kind": "def"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Exclusion",
+"name": "five_diag_nonempty",
+"start": 21,
+"end": 21,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Exclusion",
+"name": "five_diag_unique",
+"start": 22,
+"end": 22,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Expansion",
+"name": "geometric_partial_sum",
+"start": 46,
+"end": 62,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.FiveSupport",
+"name": "fiveSupport",
+"start": 83,
+"end": 83,
+"kind": "def"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.FiveSupport",
+"name": "five_realState_measurable",
+"start": 84,
+"end": 85,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.FiveSupport",
+"name": "neighbors",
+"start": 159,
+"end": 159,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.FourContinuity",
+"name": "strict_state_uniform_on_compact",
+"start": 361,
+"end": 406,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.GraphCuts",
+"name": "graphMidpoint_coord_le",
+"start": 143,
+"end": 146,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.GraphCuts",
+"name": "graph_dominant_mem_cut",
+"start": 147,
+"end": 154,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.GraphCuts",
+"name": "graphEdgePoint_lerp_vertex",
+"start": 155,
+"end": 159,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.GraphCuts",
+"name": "graphCut_lerp_mem",
+"start": 160,
+"end": 177,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.GraphCuts",
+"name": "graphCutHomotopy",
+"start": 185,
+"end": 196,
+"kind": "def"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.GraphCuts",
+"name": "fiberCrosses_symm",
+"start": 219,
+"end": 222,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.GraphPatches",
+"name": "mem_planeAnnulus",
+"start": 171,
+"end": 172,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.GraphPatches",
+"name": "mem_centerDisks",
+"start": 246,
+"end": 247,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.GraphPatches",
+"name": "mem_center_holes",
+"start": 265,
+"end": 273,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.GraphRealization",
+"name": "graphRealization_nonneg",
+"start": 119,
+"end": 123,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.HoleApproximation",
+"name": "mem_initialDisks",
+"start": 59,
+"end": 61,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.HoleApproximation",
+"name": "initial_core_cover",
+"start": 85,
+"end": 87,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.HoleApproximation",
+"name": "diskAnnulus_measurable",
+"start": 214,
+"end": 215,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Interfaces",
+"name": "interfaceFourEdge",
+"start": 10,
+"end": 11,
+"kind": "def"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Interfaces",
+"name": "interface_four_split_neg",
+"start": 28,
+"end": 30,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Interfaces",
+"name": "interface_four_diagonal_ne_zero",
+"start": 34,
+"end": 36,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Interfaces",
+"name": "interface_four_split_no_opposite",
+"start": 37,
+"end": 47,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Interfaces",
+"name": "interfaceFourEdge_eq",
+"start": 50,
+"end": 50,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Lattice",
+"name": "normSq_nonneg",
+"start": 16,
+"end": 19,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Lattice",
+"name": "color_eq_iff_dvd",
+"start": 39,
+"end": 48,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.MeasurableAssembly",
+"name": "exists_measurable_unit_distance_coloring_of_center_cover",
+"start": 11,
+"end": 58,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"name": "continuous_circleDir",
+"start": 12,
+"end": 16,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"name": "measurable_circleDir",
+"start": 17,
+"end": 19,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"name": "norm_circleDir",
+"start": 33,
+"end": 38,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"name": "ae_circleMeasure_norm",
+"start": 39,
+"end": 44,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"name": "ae_weakPairMeasure_unit",
+"start": 45,
+"end": 48,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"name": "weakMeasurableColoring_of_aemeasurable_proper",
+"start": 49,
+"end": 69,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"name": "abs_le_of_bounds",
+"start": 42,
+"end": 49,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"name": "palette_second_exclusion",
+"start": 135,
+"end": 142,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"name": "palette_transfer_pair",
+"start": 143,
+"end": 157,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"name": "angleMk_quasiMeasurePreserving",
+"start": 158,
+"end": 177,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"name": "anglePair_quasiMeasurePreserving",
+"start": 178,
+"end": 189,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"name": "volume_image_bound",
+"start": 194,
+"end": 211,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"name": "FlatDensityZero.mono_ae",
+"start": 212,
+"end": 219,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"name": "tendsto_pos_mul_nhdsWithin",
+"start": 233,
+"end": 239,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"name": "FlatDensityZero.image",
+"start": 240,
+"end": 277,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"name": "FlatDensityZero.of_locally_le",
+"start": 278,
+"end": 290,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"name": "FlatDensityZero.transport",
+"start": 291,
+"end": 313,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"name": "circleSum_one_lipschitz",
+"start": 314,
+"end": 327,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"name": "flat_density_not_one",
+"start": 397,
+"end": 408,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Palettes",
+"name": "paletteSet_minimal",
+"start": 26,
+"end": 34,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Rigidity",
+"name": "mem_radialSide",
+"start": 325,
+"end": 328,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Sectors",
+"name": "ApproachingContinuum.side_strip",
+"start": 16,
+"end": 31,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Sectors",
+"name": "triangleState_measurable",
+"start": 122,
+"end": 123,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Seven",
+"name": "exists_measurable_proper_seven",
+"start": 41,
+"end": 59,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.Seven",
+"name": "weakMeasurableColoring_seven",
+"start": 60,
+"end": 69,
+"kind": "theorem"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.States",
+"name": "LineDensityZero.mono_ae",
+"start": 39,
+"end": 48,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.States",
+"name": "DensityZero.mono",
+"start": 52,
+"end": 56,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.States",
+"name": "DensityZero.union",
+"start": 57,
+"end": 65,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.States",
+"name": "DensityZero.compl",
+"start": 78,
+"end": 91,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.States",
+"name": "DensityOne.compl",
+"start": 130,
+"end": 142,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.States",
+"name": "DensityOne.inter",
+"start": 143,
+"end": 146,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.States",
+"name": "DensityOne.measure_ne_zero",
+"start": 147,
+"end": 154,
+"kind": "lemma"
+},
+{
+"mod": "OAI.Geometry.PlaneColoring.WeakColoring",
+"name": "correlation_continuous",
+"start": 17,
+"end": 18,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Amenability",
+"name": "vector_norm_le",
+"start": 91,
+"end": 95,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Amenability",
+"name": "vector_orbit_zero",
+"start": 400,
+"end": 412,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Approximation",
+"name": "list_of_uniform_atoms",
+"start": 44,
+"end": 68,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Approximation",
+"name": "constant_uniform_lists",
+"start": 69,
+"end": 111,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Approximation",
+"name": "Scalar",
+"start": 156,
+"end": 163,
+"kind": "def"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Approximation",
+"name": "Vector",
+"start": 164,
+"end": 172,
+"kind": "def"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Approximation",
+"name": "pi_dist_sq_le_sum",
+"start": 173,
+"end": 184,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Approximation",
+"name": "vector_of_scalar",
+"start": 185,
+"end": 283,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Approximation",
+"name": "factor_smul_preserving",
+"start": 284,
+"end": 304,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Approximation",
+"name": "relative_difference_invariant",
+"start": 305,
+"end": 319,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Approximation",
+"name": "finite_encoding_approximation_of_compact",
+"start": 320,
+"end": 383,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Approximation",
+"name": "relative_singularity_successor",
+"start": 384,
+"end": 424,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Approximation",
+"name": "lift_at",
+"start": 432,
+"end": 497,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+"name": "project_eq_condexp",
+"start": 215,
+"end": 224,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "lift_ne_zero",
+"start": 42,
+"end": 46,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "lift_affine",
+"start": 57,
+"end": 63,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "not_sameRay_smul_lift",
+"start": 64,
+"end": 76,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "strictConvex_norm_lift",
+"start": 77,
+"end": 85,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "objective_zero",
+"start": 111,
+"end": 113,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "center_minimizes",
+"start": 258,
+"end": 261,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "center_unique",
+"start": 262,
+"end": 265,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "universalKernel",
+"start": 266,
+"end": 268,
+"kind": "def"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "measurable_objective",
+"start": 269,
+"end": 273,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "denseSeq_inf_eq_min",
+"start": 274,
+"end": 284,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "minValue",
+"start": 285,
+"end": 287,
+"kind": "def"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "measurable_minValue",
+"start": 288,
+"end": 290,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "minValue_eq",
+"start": 291,
+"end": 294,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "exists_min_on_closed",
+"start": 295,
+"end": 303,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "measurable_center",
+"start": 304,
+"end": 332,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "kernel_translate",
+"start": 333,
+"end": 339,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "objective_translate",
+"start": 340,
+"end": 348,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "center_translate",
+"start": 349,
+"end": 359,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "kernel_orthogonal",
+"start": 360,
+"end": 363,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "objective_orthogonal",
+"start": 364,
+"end": 369,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "center_orthogonal",
+"start": 370,
+"end": 385,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "j_injective",
+"start": 401,
+"end": 402,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "measurable_j",
+"start": 403,
+"end": 404,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "mem_ordinary_iff",
+"start": 407,
+"end": 408,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "range_j",
+"start": 409,
+"end": 410,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "measurableSet_ordinary",
+"start": 411,
+"end": 413,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "measurable_coordinate",
+"start": 416,
+"end": 418,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "j_coordinate",
+"start": 422,
+"end": 427,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "measurableSet_coset",
+"start": 430,
+"end": 432,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "measurable_frequencyMeasure",
+"start": 462,
+"end": 486,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "measurable_mass",
+"start": 487,
+"end": 494,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "frequencyLaw_measure",
+"start": 503,
+"end": 512,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "measurable_frequencyLaw",
+"start": 513,
+"end": 525,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "coset_mul_j",
+"start": 526,
+"end": 539,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "coordinate_div_j",
+"start": 540,
+"end": 543,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "frequencyMeasure_shift",
+"start": 544,
+"end": 556,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "frequencyLaw_shift",
+"start": 557,
+"end": 569,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "measurable_center",
+"start": 573,
+"end": 578,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "center_mem_coset",
+"start": 579,
+"end": 584,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "center_mul_j",
+"start": 585,
+"end": 591,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "center_eq_of_mem_coset",
+"start": 592,
+"end": 600,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "quotient_center",
+"start": 601,
+"end": 604,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "center_eq_iff",
+"start": 605,
+"end": 615,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "center_mem_ordinary_iff",
+"start": 616,
+"end": 619,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "preimage_center_singleton",
+"start": 620,
+"end": 625,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "measurable_center_fixed",
+"start": 626,
+"end": 634,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "equiv_mem_ordinary_iff",
+"start": 635,
+"end": 646,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "preimage_coset_equiv",
+"start": 647,
+"end": 653,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "coordinate_equiv",
+"start": 654,
+"end": 659,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "frequencyMeasure_equiv",
+"start": 660,
+"end": 676,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "frequencyLaw_equiv",
+"start": 677,
+"end": 691,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"name": "center_equivariant",
+"start": 692,
+"end": 704,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"name": "bounded_phase_encoding",
+"start": 189,
+"end": 217,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"name": "finite_encoding_at_of_approximation",
+"start": 218,
+"end": 268,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"name": "relative_singularity_limit",
+"start": 269,
+"end": 330,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"name": "condDistrib_given_const",
+"start": 331,
+"end": 337,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"name": "prod_given_const",
+"start": 338,
+"end": 351,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"name": "relative_singularity_base",
+"start": 352,
+"end": 368,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"name": "AmbientEncodingAt",
+"start": 369,
+"end": 384,
+"kind": "def"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"name": "ambient_uniform_precision_contradiction",
+"start": 385,
+"end": 555,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"name": "scalar_identity",
+"start": 556,
+"end": 582,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"name": "ambient_encoding_of_at",
+"start": 583,
+"end": 621,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"name": "relative_singularity_approximation",
+"start": 622,
+"end": 668,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"name": "UniversalGood",
+"start": 669,
+"end": 672,
+"kind": "def"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"name": "universalGood_of_factor",
+"start": 673,
+"end": 702,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalSelection",
+"name": "exists_lt_on_conull",
+"start": 28,
+"end": 38,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalSelection",
+"name": "fraction_lower_bound",
+"start": 39,
+"end": 60,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalSelection",
+"name": "simultaneous_good_fiber",
+"start": 61,
+"end": 111,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalSelection",
+"name": "large_common_bin",
+"start": 112,
+"end": 131,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalSelection",
+"name": "dist_sq_four_points",
+"start": 132,
+"end": 148,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalSelection",
+"name": "integrated_distance_bound",
+"start": 149,
+"end": 185,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalSelection",
+"name": "integrable_ae_fiber",
+"start": 229,
+"end": 236,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalSelection",
+"name": "common_fiber_contradiction",
+"start": 259,
+"end": 376,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalSelection",
+"name": "compact_bins",
+"start": 377,
+"end": 400,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalSelection",
+"name": "linear_combination_dist_bound",
+"start": 401,
+"end": 416,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalSelection",
+"name": "bounded_coefficient_bins",
+"start": 417,
+"end": 443,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "continuous_mk",
+"start": 63,
+"end": 64,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "measurable_val",
+"start": 65,
+"end": 65,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "measurable_mk",
+"start": 66,
+"end": 67,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "scalar_injective",
+"start": 249,
+"end": 254,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "scalar_embedding",
+"start": 255,
+"end": 257,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "encode_equivariant",
+"start": 273,
+"end": 276,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "encode_bound",
+"start": 277,
+"end": 279,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "decode",
+"start": 280,
+"end": 281,
+"kind": "def"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "decode_measurable",
+"start": 282,
+"end": 285,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "decode_encode",
+"start": 286,
+"end": 291,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "le_of_factor",
+"start": 326,
+"end": 333,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "code_equivariant",
+"start": 414,
+"end": 417,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "le_code",
+"start": 418,
+"end": 428,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "countable_cover",
+"start": 500,
+"end": 522,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "exists_maximal",
+"start": 523,
+"end": 550,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"name": "exists_maximal",
+"start": 562,
+"end": 587,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Functions",
+"name": "compact_conj",
+"start": 112,
+"end": 132,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "finite_uniform_fibers",
+"start": 40,
+"end": 88,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "finite_uniform_centers",
+"start": 89,
+"end": 101,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "center_law_ordinary",
+"start": 102,
+"end": 120,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "cosetMass",
+"start": 225,
+"end": 227,
+"kind": "def"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "measurable_cosetMass",
+"start": 228,
+"end": 234,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "differenceLaw_ordinary",
+"start": 238,
+"end": 255,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "sampledMass_integral",
+"start": 256,
+"end": 266,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "positive_mass_finite_centers",
+"start": 267,
+"end": 305,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "sampledMass_invariant",
+"start": 306,
+"end": 332,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "centerMap",
+"start": 333,
+"end": 336,
+"kind": "def"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "measurable_centerMap",
+"start": 337,
+"end": 343,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "centerMap_mem_ordinary_iff",
+"start": 344,
+"end": 348,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "centerMap_law_ordinary",
+"start": 349,
+"end": 364,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "centerMap_equivariant",
+"start": 365,
+"end": 395,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "dependentMapKernel_apply",
+"start": 396,
+"end": 403,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "compProd_dependentMap",
+"start": 404,
+"end": 418,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "centerKernel_apply",
+"start": 431,
+"end": 434,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "condDistrib_centerMap",
+"start": 435,
+"end": 448,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "centerKernel_comp_map",
+"start": 449,
+"end": 460,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "finite_center_reduction",
+"start": 461,
+"end": 519,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "ordinaryEmbedding",
+"start": 532,
+"end": 534,
+"kind": "def"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "action_ordinaryEmbedding",
+"start": 552,
+"end": 559,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "wild_map_of_equivariant",
+"start": 560,
+"end": 572,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"name": "exact_finite_center_reduction",
+"start": 573,
+"end": 599,
+"kind": "theorem"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"name": "projectCLM",
+"start": 88,
+"end": 91,
+"kind": "def"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"name": "projectCLM_l2",
+"start": 92,
+"end": 96,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"name": "avg_congr_ae",
+"start": 267,
+"end": 275,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"name": "orbit_add",
+"start": 280,
+"end": 280,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"name": "tensor_conj",
+"start": 296,
+"end": 301,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"name": "linear_prod_replace",
+"start": 442,
+"end": 455,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"name": "inner_act",
+"start": 53,
+"end": 58,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"name": "conj_mul",
+"start": 96,
+"end": 96,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"name": "act_zero",
+"start": 106,
+"end": 107,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"name": "Admissible.erase_diff",
+"start": 252,
+"end": 267,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"name": "meanNorm_mono",
+"start": 372,
+"end": 373,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"name": "meanNorm_neg",
+"start": 398,
+"end": 403,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"name": "meanNorm_sub_le",
+"start": 404,
+"end": 409,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"name": "meanNorm_const",
+"start": 419,
+"end": 425,
+"kind": "lemma"
+},
+{
+"mod": "OAI.MeasureTheory.CompactFactors.Stationary",
+"name": "exists_terminal_factor",
+"start": 126,
+"end": 202,
+"kind": "theorem"
+}
+]

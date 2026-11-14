@@ -1,0 +1,178 @@
+# Six-label three-palette field at one centre: what the source lemmas can and cannot exclude
+
+**Verdict.** None of the one-centre necessary conditions in the supplied source excludes this field.
+
+- I prove that the strongest thing the source's density lemmas can extract at the centre x is an explicit list field L on the open disk of radius 2 around x.
+- Excluding P from one centre is exactly equivalent to finding a finite unit-distance configuration that cannot be coloured from those lists.
+- I did not find such a configuration. Hand checks lean towards the lists being colourable.
+
+All computations below are by hand. Nothing was searched for or formally verified.
+
+**Notation.**
+- σ(s) = ⌊(s+π/6)/(π/3)⌋ mod 3, so P(s) = A_{σ(s)}. "Sector m" means the open arc ((m−½)π/3, (m+½)π/3), with m taken mod 6.
+- ω_k = e^{i(2k+1)π/6}. These are the six sector-boundary directions.
+- C_k is the circle of radius 1 centred at x+ω_k.
+- **Hypothesis (H):** c is Measurable, WeakColoring 6 c holds, and palette c hc x t = P(t) for almost every t. Only the inclusion ⊇ is needed, except in Part 2(a).
+
+---
+
+## 1. Strongest rigorous result: the exact one-centre list field
+
+### Theorem
+
+Assume (H). Let G = {y : 0 < |y−x| < 2} with the circles C_0,…,C_5 removed.
+
+Every y in G can be written uniquely as y − x = e^{it} + e^{iu} with t < u < t+π. Define
+
+  L(y) = Fin 6 \ (P(t) ∪ P(u)).
+
+Then DensityOne {z | c z ∈ L(y)} holds at y.
+
+Moreover, L is exactly everything that `states_densityOne` can produce at the centre x.
+
+### Proof
+
+1. **Uniqueness of the representation.** Write r = |y−x|. Then u−t = 2·arccos(r/2), which lies in (0, π). So sin(u−t) > 0, and this also supplies the hypothesis `hne`.
+
+2. **Boundaries are the six circles.** t lies on a sector boundary π/6 + kπ/3 exactly when y − x − ω_k = e^{iu}, i.e. when y ∈ C_k. The same holds for u. So y ∈ G means both t and u are interior to their sectors.
+
+3. **Real states.** For each sector m, let A^m ⊂ ℝ be the open periodic lift of sector m.
+   - A^m is measurable.
+   - (H), pulled back by `angleMk_quasiMeasurePreserving`, gives A^m ≤ᵐ `liftPalette` c hc x i for every i in A_{m mod 3}.
+   - So RealState hc x A^m A_{m mod 3} holds.
+
+4. **Density points.** If t is interior to A^m, then (A^m)ᶜ ∩ closedBall t r = ∅ for small r. Hence LineDensityZero (A^m)ᶜ t holds at every interior t, not just almost every t.
+
+5. **Conclusion.** `states_densityOne` now gives DensityOne {c ∉ A_{σ(t)} ∪ A_{σ(u)}} at `angularSum` x 1 (t,u) = x + e^{it} + e^{iu}.
+
+**Why L is exhaustive.**
+- Any RealState (A, J) with LineDensityZero Aᶜ t needs J ⊆ P(s) for almost every s in A.
+- If t is interior to a sector, this forces J ⊆ A_{σ(t)}.
+- If t is a sector boundary, A must charge both neighbouring sectors. Since adjacent palettes are disjoint, J = ∅.
+- Points with sin(u−t) = 0 are excluded by the lemma itself.
+- `DensityOne.inter` cannot shrink L, because the unordered pair {t, u} is unique.
+
+### Explicit form of L
+
+Polar coordinates are taken about x. Lists are written by palette index.
+
+| Region | Directions (t, u) in sectors | List | Where it lies |
+|---|---|---|---|
+| V_m | m−1 and m+1 | A_m | ray mπ/3, 0 < r < √3 |
+| H_m | m and m+1 | A_{m+2} | ray (m+½)π/3, 1 < r < 2 |
+| O_m | m and m | complement of A_m (4 labels) | ray mπ/3, √3 < r < 2 |
+| I_m | m−1 and m+2 | A_m ∪ A_{m+1} (4 labels) | ray (m+½)π/3, r < 1 |
+
+Spot checks (hand):
+- y−x = 1/2 gives sectors 5 and 1 (palettes A_2, A_1), so L = A_0. ✓
+- y−x = 1.5i gives sectors 1 and 2, so L = A_0. ✓
+- On the circle r = 1, L(y) = P(arg(y−x)). This is consistent with the palette itself.
+
+### Corollary (exact criterion)
+
+Under (H), a contradiction is reachable from `states_densityOne`, `DensityOne.inter`/`iInter`, `finite_density_realization` and `two_label_triangle_impossible` at the single centre x **if and only if** the following holds:
+
+**(M1)** There is a finite set F ⊂ G whose unit-distance graph has no proper colouring with colour(y) ∈ L(y) for every y in F.
+
+- **(M1) gives a contradiction.** Apply `finite_density_realization` with z_v = y_v and J_v = L(y_v). The resulting translate q + F is properly L-coloured, which (M1) rules out.
+- **Every contradiction gives (M1).** Those lemmas only ever consume DensityOne sets at finitely many points of G.
+
+---
+
+## 2. Audit of the source's existing mechanisms
+
+All three findings below are rigorous.
+
+### (a) `two_state_impossible` cannot be instantiated for any s
+
+- The flip hypothesis forces μ{s=false} = μ{s=true} = ½.
+- `hcard` requires |J∪K| ≥ 4. Both J and K sit inside 2-label palettes on positive-measure sets, so J and K must be distinct palettes A_a and A_b.
+- Then {s=false} ⊆ σ⁻¹(a) almost everywhere and {s=true} ⊆ σ⁻¹(b) almost everywhere.
+- That contradicts μ(σ⁻¹(c)) = 1/3 for the third index c.
+
+There is also a structural reason: no Boolean function of the 3-cycle of states can flip at every 60° step.
+
+### (b) `strict_state_no_unit_support` cannot be instantiated
+
+`hlabels` needs |J∪K| = 5. Here |J∪K| ≤ 4.
+
+The Fin 5 lemmas do not type-check for k = 6: `palette_cardinality`, the `FourCenter`/interface lemmas, `no_five_exclusion_continua`.
+
+### (c) The sourceTriangle geometry gives no contradiction for any t
+
+- Vertex j of sourceTriangle uses directions α_j = t + 2jπ/3 and α_j + π + θ.
+- Their palette indices are (a+2j, b+2j), because a shift of π is three sectors.
+- If a ≠ b, the three vertices carry the lists A_c, A_{c+2}, A_{c+1}. These are pairwise disjoint, so the triangle is trivially colourable.
+- If a = b, all three lists are 4-lists, and distinct colours exist.
+
+The general reason: rotating by 2π/3 about x shifts L by +2. So no equilateral triangle centred at x is ever obstructed. This is the exact point where the earlier argument used period 2π/3 invariance, which this field does not have.
+
+The field also satisfies `palette_nonempty` and `palette_sixty_disjoint`.
+
+---
+
+## 3. Geometry of the 2-list region (hand calculation, not a proof)
+
+A colour 1 or 4 forced into the list {1,4} can only come from the region where L = A_0. That region is R_0 = V_0 ∪ V_3 ∪ H_1 ∪ H_4.
+
+For the pure 2-list part, (M1) reduces to this question: **is the unit-distance graph on R_0 non-bipartite?** (Equivalently for R_1 and R_2 by rotation.)
+
+### Structure
+
+- All region boundaries are arcs of C_0,…,C_5.
+- Every corner is a point of the unit triangular lattice through ω_k: the points 0, ω_k, √3e^{ikπ/3} and 2ω_k.
+- At each such lattice corner two circles cross, with tangent lines at 60° to each other.
+- **No single piece contains a unit equilateral triangle**, so `two_label_triangle_impossible` fails piece by piece.
+  - Each piece's closure has diameter-1 pairs only at corners.
+  - The wedge directions at those corners are mismatched.
+
+### Genuine unit edges inside R_0
+
+- V_0∩{r<1} to V_3∩{r<1}: for example x ± ½.
+- V_m∩{r<1} to V_m∩{r>1}.
+- The two halves of H_m, split along its axis.
+
+### Edges between V_0 and H_1 near corners: none
+
+| Closure pair at distance 1 | V_0 wedge | H_1 wedge | First-order separation |
+|---|---|---|---|
+| (x+ω_0, x+√3e^{iπ/3}) | (300°, 360°) | (120°, 180°) | > 0 |
+| (x+ω_0, x+i) | (240°, 360°) | (60°, 120°) | > 0 |
+| (x, x+i) | cusp near x | wedge at i | distance > 1 |
+
+At the origin, V_0 is a cusp lying outside C_1 and C_4. Combined with H_1 sitting above i, this gives |y−z|² > |y−i|² > 1.
+
+### Tentative bipartition
+
+- Colour 1 on V_0∩{r<1} and on V_3∩{r>1}.
+- Colour 4 on V_0∩{r>1} and on V_3∩{r<1}.
+- Split H_1 and H_4 along their axes.
+
+I checked the corner pairs above, but I did not check non-corner pairs globally. So this is evidence that (M1) fails, not a proof.
+
+---
+
+## 4. The missing lemma, stated sharply
+
+**(M1), the one-centre gap.** Stated in §1. If it holds, P is excluded using only actual source lemmas at the single centre x, with no cross-centre input.
+
+**(M2), the cross-centre interface, needed exactly when (M1) fails.** I flag this as not in the supplied source.
+
+> **Palette locality.** Let z be any centre and W an open set with c ∈ L a.e. on W. Then for almost every v with z + e^{iv} ∈ W,
+> palette c hc z v ⊆ L(z + e^{iv}).
+
+- **Plausible route to a proof.** Every trace at z should be a limit of sampling codes taken at nearby centres q. The colour-i component of such a code vanishes on v-intervals where q + e^{iv} ∈ W and i ∉ L. `paletteSet_minimal` would then give the inclusion. This depends on the definition of IsTrace, which is not shown.
+- **Why it is the right interface.** It gives actual upper bounds on neighbouring-centre palettes derived from c, not assumed ones. For a small displacement η, it forces palette(x+η, ·) ⊆ A_{k+2} on an O(|η|) interval of directions wherever the circle around x+η crosses an H_k wedge.
+- **What it does not do yet.** By itself it does not produce a contradiction. My hand checks of sixty-disjointness for these restricted palettes found no conflict.
+
+---
+
+## 5. Next task
+
+Decide (M1) for the 2-list part by rigorous interval arithmetic.
+
+1. Each piece of R_0 is the image of an open box in (t, u). Use the 4 pieces, so 10 unordered piece pairs including self-pairs.
+2. For each pair, decide whether |(e^{it}+e^{iu}) − (e^{it'}+e^{iu'})| = 1 is attained, and record the resulting edge graph between piece-halves.
+3. If that graph is non-bipartite, extract an explicit odd cycle. That proves (M1) and excludes P via `finite_density_realization`.
+4. If it is bipartite, extend the check to the 4-list regions O_m and I_m.
+5. If everything is colourable, formalise (M2) as the next cross-centre lemma.

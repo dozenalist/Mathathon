@@ -1,0 +1,83 @@
+{
+  "updated_utc": "2026-11-14T17:15:05Z",
+  "status": "completed_block",
+  "summary": "Block 22, no Lean run. Built the moving-extension private packet threecentre/MovingThreeCentres.lean (259 lines, sha256 bfed2bad...): (1) avoidingTraceCentre Z_K, (2) triangle_no_unit_of_avoiding_traces as the factorised core taking two ACTUAL K-avoiding traces, (3) fixed_state_no_unit_three_centres reduced to a 5-line wrapper, (4) Z_K sequentially closed via the isSeqCompact subsequence + trace_limit + traceCode_tendsto_iff-at-the-limit-coordinate idiom, with NO continuity of traceValue asserted and no projection API, (5) strict_state_sequence_no_unit_three_centres for converging centres, (6) four_support_sequence_no_unit with every original hypothesis and binder unchanged, consuming neither four_realState_continuity nor strict_state_sequence_false. V1 preserved byte-identically as FixedStateThreeCentres.V1.lean; V2 uses the three repaired API idioms (RealState hc with c implicit, QuotientAddGroup.mk_surjective for a real angle, frequently_ae_mem_iff for the positive-AE witness). Comment-stripped hole scan all zero. No deletion performed or claimed; the closed-set result is not a state-continuity claim and nothing is a global colouring conclusion.",
+  "verified_results": [
+    "GRADE [C] New module supervisor/simplify-lean/threecentre/MovingThreeCentres.lean, 259 lines, sha256 bfed2bad744e08156e8a26a4009220e01826c78e4556ea3ce9135fe1af30ede9. Imports FiveSupport, BoundaryTrace, FourContinuity; no shared file edited.",
+    "GRADE [C] V1 PRESERVED byte-identically as threecentre/FixedStateThreeCentres.V1.lean, sha256 af45ff16cfe059ce3534a8c3362ec941211ea0cc15e6d30503e558371364135b (unchanged from the version that passed locally after the three API repairs).",
+    "GRADE [C] FACTORISATION DONE: the core is triangle_no_unit_of_avoiding_traces, taking an actual K-avoiding trace at x + direction a_y and another at x + direction a_z plus a positive-measure J-state at x; fixed_state_no_unit_three_centres is now a five-line wrapper that obtains the two traces from state_support_avoiding_trace.",
+    "GRADE [C] HOLE SCAN on the new module after stripping comments: sorry 0, admit 0, BLOCKER 0, sorryAx 0; sections balanced (Generic, FourState). No admitted goal and no named hole.",
+    "GRADE [M] SEQUENTIAL CLOSURE IMPLEMENTED AS SPECIFIED: isSeqCompact.subseq_of_frequently_in gives a convergent trace subsequence; trace_limit gives IsTrace at the limit; for each i in K the convergence is tested with traceCode_tendsto_iff at the limit coordinate traceValue beta0 i, every inner product along the sequence is zero so tendsto_nhds_unique gives inner_self_eq_zero. No continuity of traceValue is asserted and no projection API is used; IsSeqClosed.isClosed closes.",
+    "GRADE [M] CONVERGING-CENTRE THEOREM: x_n -> y, B_n a K-state at x_n, A a positive J-state at y, b_n -> b0 and d_n -> d0 inside the supports, conclusion identical. The two limiting traces may come from different subsequences, which is legitimate because each is an actual trace at its own limit centre and only a finite intersection of their conull constraints is used afterwards.",
+    "GRADE [C] FOUR-SUPPORT INSTANTIATION: r = if s = 1 then 2 else 1, K = fourGroup s, J = fourGroup r, X = 4; labels from the same by decide computation; RealState from fourState_represents at hx n and at hy; positivity from four_realState_positive (which goes through fourState_diagonal_positive and two_state_impossible, NOT the strict-state chain); supports definitionally fourSupport. Every original hypothesis and binder unchanged; neither four_realState_continuity nor strict_state_sequence_false is consumed.",
+    "GRADE [P] UNCOMPILED. Four named places a first local run may need adjustment, in likelihood order: the choose over a forall-exists hypothesis in avoidingTraceCentre_seqClosed; the FrechetUrysohnSpace instance needed by IsSeqClosed.isClosed; the traceCode_tendsto_iff argument order; the Tendsto.add on coercions in the limit computation. Each is a name or instance question failing at one line, not a mathematical gap.",
+    "GRADE [R] SCOPE GUARDS: the V2 contract ADDS x_n -> y and a positive J-state at y and REMOVES the A_n and their L1 convergence; the two contracts are not claimed equivalent, and the arbitrary-centre strict_state_sequence_false is not claimed under its unchanged hypotheses. Z_K closedness is a property of one global closed set, explicitly NOT an upper-semicontinuity claim about angular state supports. No deletion is performed or claimed; indicator_inter_positive must not be deleted (FourContinuity:326 uses it in support_lower_semicontinuity).",
+    "GRADE [S] Parent-reported, not verified here: the fixed module passed locally after three API repairs with standard axioms, source hash b812e7222f6a7dd8e548235aba58e354e871726293915e5ecc3b18b501e4af66; the earlier banked contact-ban pair passed on 4.34.1 with hash 9a904d4d7165889a5b12c77ea4e1646e436a0f5de4d4d057e2ee20d5e6f82ba1; originals unchanged and 6.7 retained.",
+    "GRADE [C] MANIFEST: FiveSupport 6d54703f840a1b4d20b81f5f206b18d79a1fbacde9a481990049b3c41b9c4813; BoundaryTrace c3c0c75a0fb2e2184e8ff39562faac2c38e3d372864ddeca9eb942fa0f2a692f; States 941fcbdcd90fb50426d4588d62ea10f9bdc882d455f546f2095ead91a0439340; FourContinuity 7ad20b81c0adf9186399aea794b9817020bfd8c14906e2a7ef12d66b4c173b88. Toolchain Lean 4.34.1 @5045d0056413266e57c625dcd7c365b10e377c52 + Mathlib @d13f23b723b8a846827a245b89c10fc7d3f11612.",
+    "GRADE [R] Dependency-reduction status kept as a CANDIDATE: the A2 note's claim that all used paths to the strict-state chain can be removed needs both application proofs accepted. This packet supplies the four-support one; the banked pair covers FiveSupport; strict_state_uniform_on_compact has no consumers in the source and would retain the chain only as unused library content. No compiler dependency audit has been run."
+  ],
+  "conjectures": [
+    "The moving packet should compile after at most the four name/instance adjustments listed, because every construction mirrors an idiom already present in BoundaryTrace:24-52 or in the original four-support proof.",
+    "If both application proofs are accepted, the remaining used paths to strict_state_sequence_false are exactly the two the A2 audit named, so a compiler dependency dump should show the chain alive only through the unused uniform theorem.",
+    "The general finite-graph form (|L| labels on one circle) gives only bipartiteness when |L| = 2, so the one-circle residual-colour argument cannot by itself produce a six-colour contradiction; that is a limitation of the principle, not a result about the plane."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/threecentre/MovingThreeCentres.lean  <-- V2, the moving-extension packet. sha256 bfed2bad744e08156e8a26a4009220e01826c78e4556ea3ce9135fe1af30ede9",
+    "supervisor/simplify-lean/threecentre/FixedStateThreeCentres.V1.lean  <-- V1 preserved. sha256 af45ff16cfe059ce3534a8c3362ec941211ea0cc15e6d30503e558371364135b",
+    "supervisor/simplify-lean/MOVING-EXTENSION-PLAN.md  <-- packet description, closure proof, four-support instantiation, likely fixes, manifest, scope. sha256 0b317e61980d625d17783684123c8fc9d9f9641d74b75f3c4bf8e59033641f3b",
+    "supervisor/simplify-lean/threecentre/FixedStateThreeCentres.lean  <-- the original V1 delivery, kept as delivered (pre-repair). sha256 af45ff16cfe059ce3534a8c3362ec941211ea0cc15e6d30503e558371364135b",
+    "retained: THREE-CENTRE-PLAN.md, DOWNSTREAM-INTEGRATION-PLAN.md, JOINT-PAIR-AUDIT.md, jointpair/ (superseded), STATEMENT-AUDIT.md, DEPENDENCY-LEDGER-converse.md, REVIEW-instrument-v4.md, lean/BinderAudit.lean, binder_expected.json, binder_snapshot.py, capture/, lean/SignatureEquivalence.lean, lean/SignatureCheckFresh.lean, lean/AxiomRoots.lean, axiom_gate.py, recon/, snapshots/, BUILD-PLAN.json, MANIFEST-full.json, archive/"
+  ],
+  "tests_run": [
+    "Source reads: Compactness.lean 284-296 (isClosed_traceGraph, trace_limit, traceCode_tendsto_iff); FourContinuity.lean 414-470 (fourRealState, fourSupport, four_realState_positive, four_support_sequence_no_unit); States.lean 8 (fourGroup), 315 (FourCenter), 333 (fourState_represents), 704 (strict_state_no_unit_support); BoundaryTrace.lean 24-72; FiveSupport.lean 23-32; Palettes.lean 19-40; PaletteDensity.lean 431-434; WeakColoring.lean 145.",
+    "Comment-stripped hole scan of the new module: sorry/admit/BLOCKER/sorryAx all zero; section/end balance checked.",
+    "sha256 of the module, V1, the plan, and the four imported/affected source files.",
+    "NO Lean run, no cloud operation, no heavy compute (per policy; the shared compute slot belongs to the graph worker)."
+  ],
+  "failed_routes": [
+    "V1 as first delivered (threecentre/FixedStateThreeCentres.lean) did not compile: RealState takes c implicitly, direction_exists returns an Angles so a real angle needs QuotientAddGroup.mk_surjective, and the positive-AE witness is better done with frequently_ae_mem_iff. V2 applies all three; V1 kept unedited for the record.",
+    "Not attempted: any deletion of strict_state_sequence_false or its ancestors, any compiler dependency audit, any build, any edit to the shared tree, and any manuscript Lemma 6.7 claim.",
+    "The moving extension does NOT prove the arbitrary-centre strict_state_sequence_false under its original hypotheses; the added convergence and positive limit state are essential to the argument, and the two contracts are not claimed equivalent."
+  ],
+  "next_step": "Queue supervisor/simplify-lean/threecentre/MovingThreeCentres.lean locally on Lean 4.34.1 + Mathlib d13f23b and report the compile output; if it elaborates, read the four #print axioms lines and require subsets of {propext, Classical.choice, Quot.sound}. Only after that: a private copy of FourContinuity with four_support_sequence_no_unit's body replaced, then Interfaces' one-identifier swap, then a compiler dependency dump to identify which old declarations became unused. No deletion until that dump is reviewed.",
+  "owned_agents": [
+    {
+      "swarm": "smwfy8rae",
+      "members": 3,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "state": "stopped",
+      "accepted": 0,
+      "note": "stopped in block 1; no new chats, swarms or nested agents this block (per policy)."
+    }
+  ],
+  "escalation": null,
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "module": "supervisor/simplify-lean/threecentre/MovingThreeCentres.lean (sha256 bfed2bad744e08156e8a26a4009220e01826c78e4556ea3ce9135fe1af30ede9)",
+    "v1_preserved": "supervisor/simplify-lean/threecentre/FixedStateThreeCentres.V1.lean (sha256 af45ff16cfe059ce3534a8c3362ec941211ea0cc15e6d30503e558371364135b)",
+    "plan": "supervisor/simplify-lean/MOVING-EXTENSION-PLAN.md",
+    "grades": {
+      "paper argument and closure lemma": "M checked",
+      "scans and manifest": "C computed",
+      "module": "P proposed, uncompiled",
+      "local passes and parent hashes": "S reported"
+    },
+    "contents": [
+      "avoidingTraceCentre Z_K",
+      "triangle_no_unit_of_avoiding_traces core",
+      "fixed_state_no_unit_three_centres wrapper",
+      "Z_K sequentially closed",
+      "strict_state_sequence_no_unit_three_centres",
+      "four_support_sequence_no_unit unchanged statement"
+    ],
+    "not_claimed": [
+      "equivalence of the old and new sequence contracts",
+      "arbitrary-centre strict_state_sequence_false",
+      "upper semicontinuity of angular state supports",
+      "any deletion",
+      "any global colouring conclusion"
+    ],
+    "scope": "fixed and converging centres, local/angular model; no global weak-colouring conclusion; 6 <= chi(R^2) <= 7 unchanged",
+    "next_verification_step": "local compile of MovingThreeCentres.lean, then the four axiom prints, then the private FourContinuity body replacement."
+  }
+}

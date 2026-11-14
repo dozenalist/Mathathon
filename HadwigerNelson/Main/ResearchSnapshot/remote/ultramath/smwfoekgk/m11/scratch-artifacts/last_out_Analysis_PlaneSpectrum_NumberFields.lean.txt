@@ -1,0 +1,52 @@
+goal after exhaustive search.
+work/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:314:68: error: unsolved goals
+N : IntermediateField ℚ ℂ
+hi : Complex.I ∈ N
+inst : FiniteDimensional ℚ ↥N
+ℓ : ↥N →ₗ[ℚ] ℚ
+val : ℝ
+property : val ∈ realSlice N
+val_1 : ℝ
+property_1 : val_1 ∈ realSlice N
+⊢ ∃ P Q,
+    ∀ (t : ℚ),
+      ¬eval t Q = 0 ∧ eval t P = eval t Q * ℓ (realCayley N hi (realLine N ⟨val, property⟩ ⟨val_1, property_1⟩ t))
+work/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:355:37: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  a ≥ 2
+where
+ a := ↑(finrank ℚ V)
+work/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:406:37: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  a ≥ 0
+where
+ a := ↑(finrank ℚ V)
+work/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:442:18: error: Tactic `simp` failed with a nested error:
+(deterministic) timeout at `simp`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+work/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:464:18: error: Tactic `simp` failed with a nested error:
+(deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+work/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:471:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+work/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:491:37: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  0 ≤ a ≤ 1
+where
+ a := ↑(finrank ℚ ↥N)
+work/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:503:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:502:45: error: unsolved goals
+N : IntermediateField ℚ ℂ
+inst : FiniteDimensional ℚ ↥N
+hi : Complex.I ∈ N
+P : Finset (Submodule ℚ ↥N)
+hre : ∀ a ∈ N, ↑a.re ∈ N
+him : ∀ a ∈ N, ↑a.im ∈ N
+hP : ∀ p ∈ P, p < ⊤
+⊢ ∃ a, ‖a‖ = 1 ∧ ∃ (x : a ∈ N), ∀ p ∈ P, ⟨a, ⋯⟩ ∉ p

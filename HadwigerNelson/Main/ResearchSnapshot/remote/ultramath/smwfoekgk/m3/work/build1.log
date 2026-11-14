@@ -1,0 +1,9 @@
+66 modules to build (of 83)
+FAIL OAI.Analysis.PlaneSpectrum.Basic
+ok   OAI.Geometry.PlaneColoring.WeakColoring
+FAIL OAI.Geometry.PlaneColoring.Compactness
+FAIL OAI.Analysis.PlaneSpectrum.CircleOperator
+ok   OAI.Analysis.PlaneSpectrum.InvariantMean
+FAIL OAI.Analysis.PlaneSpectrum.Multipliers
+FAIL OAI.Analysis.PlaneSpectrum.FourierTests
+FAIL OAI.Analysis.PlaneSpectrum.SmallArcs

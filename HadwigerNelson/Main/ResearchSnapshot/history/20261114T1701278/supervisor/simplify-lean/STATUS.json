@@ -1,0 +1,76 @@
+{
+  "updated_utc": "2026-11-14T17:01:07Z",
+  "status": "completed_block",
+  "summary": "Block 21, source/verification only, no Lean run. Wrote the private three-centre module threecentre/FixedStateThreeCentres.lean (193 lines) importing only FiveSupport and BoundaryTrace, proving the EXACT statement of States:704 strict_state_no_unit_support under the same binders and hypotheses, with zero calls to States:547, States:683, States:704 or their descendants and no sorry/admit/placeholder (comment-stripped scan: all zero). Checked the A2 paper argument line by line: sound, and the one place it could silently fail is angle fixing -- alpha is chosen from direction_exists before any a.e. statement, so the five conull sets intersect legitimately. Noted that positivity of volume B is not needed. Interfaces call-replacement audited: the binder list is identical in kind, order and implicitness, so the patch is ONE identifier with every argument unchanged. Manifest with sha256 for the module, both imports, States and Interfaces, plus the local build command and the four most likely name-level fixes. No cloud build; no global States deletion claimed; moving-centre extension not attempted.",
+  "verified_results": [
+    "GRADE [C] New module supervisor/simplify-lean/threecentre/FixedStateThreeCentres.lean, 193 lines, sha256 af45ff16cfe059ce3534a8c3362ec941211ea0cc15e6d30503e558371364135b. Imports exactly OAI.Geometry.PlaneColoring.FiveSupport and OAI.Geometry.PlaneColoring.BoundaryTrace.",
+    "GRADE [C] FORBIDDEN-DEPENDENCY CHECK: the module's proof text contains zero occurrences of strict_state_sequence_local_false, strict_state_sequence_false or strict_state_no_unit_support. The three ingredients actually used are state_support_avoiding_trace (BoundaryTrace:24), avoiding_trace_palette (BoundaryTrace:53) and palette_neighbor_disjoint (FiveSupport:23).",
+    "GRADE [C] HOLE SCAN: after stripping block and line comments, the module contains 0 sorry, 0 admit, 0 BLOCKER and 0 sorryAx. The proof is complete; the only occurrence of the word survives inside the header comment that states there is none.",
+    "GRADE [C] STATEMENT FIDELITY: the theorem fixed_state_no_unit_three_centres reproduces the binder list of States:704 exactly -- {k} {c} implicit, (hc) (hw) explicit, {x} {J K} {X}, (hlabels), {A B}, (hA) (hB), (hp), {b d}, (hb) (hd), conclusion ||direction(b) - direction(d)|| != 1 -- so it is a drop-in replacement at any call site.",
+    "GRADE [M] A2 PAPER ARGUMENT CHECKED: correct. The critical point is that z - y has norm 1 so direction_exists yields alpha with direction alpha = z - y BEFORE any exceptional set is taken; palette_neighbor_disjoint at centre y with that alpha gives the third disjointness, and y + direction alpha = z. If alpha were chosen inside the a.e. argument the five conull sets could not be intersected. The finite label fact needs no cardinality bound and no disjointness of J and K.",
+    "GRADE [M] Positivity of volume B is NOT required by the argument and is not used; only 0 < volume A appears. The contract is therefore exactly the original one, with no added hypothesis.",
+    "GRADE [C] INTERFACES CALL-REPLACEMENT AUDIT: interfaceStateSupport_no_unit (Interfaces:266) ends in a single call whose arguments match the new theorem's binders one for one; the replacement is one identifier with every argument unchanged, and angle_support_lift, four_state_represents_of_group, four_state_diagonal_positive_of_group and angle_state_preimage_positive are untouched.",
+    "GRADE [P] UNCOMPILED. A first local run may need name-level fixes at four places, listed in plan section 5 in likelihood order: ae_iff.mp, Finset.not_subset/Finset.disjoint_left, ae_all_iff.mpr over Fin k, and the angleMk_quasiMeasurePreserving.ae argument order. Each is a compile error pointing at one line, not a gap in the argument.",
+    "GRADE [C] MANIFEST: FiveSupport 6d54703f840a1b4d20b81f5f206b18d79a1fbacde9a481990049b3c41b9c4813; BoundaryTrace c3c0c75a0fb2e2184e8ff39562faac2c38e3d372864ddeca9eb942fa0f2a692f; States 941fcbdcd90fb50426d4588d62ea10f9bdc882d455f546f2095ead91a0439340; Interfaces 47dd83f5591742eeabe2aab290f5a855115f0397c12f22b824e5c8047cd1e99e. Toolchain Lean 4.34.1 @5045d0056413266e57c625dcd7c365b10e377c52 + Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612.",
+    "GRADE [S] Parent-reported and not verified here: the generic contact-ban theorem and five_support_no_sixty_joint_pair passed locally on 4.34.1 with standard axioms, source sha256 9a904d4d7165889a5b12c77ea4e1646e436a0f5de4d4d057e2ee20d5e6f82ba1; the original files were left unchanged and 6.7 is retained.",
+    "GRADE [R] SCOPE: this is a fixed-state, local/angular-model statement. It says nothing about global weak colourings beyond WeakColoring k c, nothing about weakly mixing colourings, and nothing about the plane at large. No global States deletion is claimed; the original States:704 declaration stays."
+  ],
+  "conjectures": [
+    "The module will compile after at most a handful of name-level adjustments, because every step uses an idiom already present in the two imported files (the a.e. pull-back, the ae_all_iff over Fin k, the Finset disjointness reasoning) rather than a new measure-theory device.",
+    "Once accepted, the Interfaces patch is one identifier, which makes it a cheap and low-risk test of the three-centre route against a real consumer.",
+    "The moving-centre extension is a genuinely different problem: at finite n the third disjointness (palette at y versus palette at z) has no exact unit-distance triangle to stand on, so the closed-carrier packet must supply something this proof does not."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/threecentre/FixedStateThreeCentres.lean  <-- THE MODULE for the parent's local queue. sha256 af45ff16cfe059ce3534a8c3362ec941211ea0cc15e6d30503e558371364135b",
+    "supervisor/simplify-lean/THREE-CENTRE-PLAN.md  <-- paper-argument check, Interfaces call-replacement audit, manifest, likely fixes, scope. sha256 490c9b3a9c3cffd8f3c6ae685e50b4565f697d8aef9b3f1b5864dcbed68bb562",
+    "frozen/retained: DOWNSTREAM-INTEGRATION-PLAN.md sha256 7fa54d253699c4c646e9389dab80e1a1a9954def019522af1298c9f21db4b437, JOINT-PAIR-AUDIT.md sha256 cc2f9b6302fce14b092f1e7c0dede7afa57ffd0a7914e2890dfc41660e3a0c84, jointpair/JointPairSupport.lean (superseded) sha256 11c6ed3cf1e8a0df2440293bdac0e3e58b09bbefc86d84ae8d396d7967e6bc08",
+    "frozen: lean/BinderAudit.lean, binder_expected.json, binder_snapshot.py, capture/",
+    "retained: STATEMENT-AUDIT.md, DEPENDENCY-LEDGER-converse.md, REVIEW-instrument-v4.md, REVIEW-baseline-and-fresh.md, lean/SignatureEquivalence.lean, lean/SignatureCheckFresh.lean, lean/AxiomRoots.lean, axiom_gate.py, recon/ConditionalLimits.R4-recon.lean, snapshots/integ-d26d569088faea89/, BUILD-PLAN.json, MANIFEST-full.json, archive/"
+  ],
+  "tests_run": [
+    "Source reads: BoundaryTrace.lean 1-80 (state_support_avoiding_trace, avoiding_trace_palette); FiveSupport.lean 1-32 (palette_neighbor_real, palette_neighbor_disjoint); Palettes.lean 19-40 (paletteSet, palette, mem_palette); PaletteDensity.lean 431-434 (liftPalette); States.lean 92-93 (RealState), 704-720 (strict_state_no_unit_support); WeakColoring.lean 145-148 (direction_exists); Coloring.lean 18-23 (direction, direction_norm); Interfaces.lean 250-285 (interfaceStateSet/Support, angle_support_lift, interfaceStateSupport_no_unit).",
+    "Comment-stripped scan of the new module for sorry/admit/BLOCKER/sorryAx -> all zero.",
+    "Name scan of the new module for the three forbidden declarations -> zero hits.",
+    "sha256 of the module, its two imports, States and Interfaces; recorded above.",
+    "NO Lean run, no cloud operation, no heavy compute (per policy)."
+  ],
+  "failed_routes": [
+    "My block-19/20 joint-pair module stays superseded and unqueueable; the parent's generic jointSupport V2 already passes locally, so it is not revisited.",
+    "The moving-centre extension is NOT attempted: A2's closed-carrier packet has not been seen, and the fixed-state proof above explicitly does not cover it. Nothing here should be cited as progress on FourContinuity's consumer.",
+    "No attempt to relocate the theorem body into States.lean: BoundaryTrace imports States, so importing BoundaryTrace back into States would be a cycle. The old declaration stays present and unchanged; only the Interfaces call is redirected, after acceptance."
+  ],
+  "next_step": "Queue supervisor/simplify-lean/threecentre/FixedStateThreeCentres.lean locally on Lean 4.34.1 + Mathlib d13f23b and report the compile output; if it elaborates, read #print axioms fixed_state_no_unit_three_centres and require a subset of {propext, Classical.choice, Quot.sound}. Only then apply the one-identifier Interfaces patch in a private copy and check that Interfaces.lean still compiles. The moving-centre extension comes after that, from the A2 closed-carrier packet.",
+  "owned_agents": [
+    {
+      "swarm": "smwfy8rae",
+      "members": 3,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "state": "stopped",
+      "accepted": 0,
+      "note": "stopped in block 1; no new chats, swarms or nested agents this block (per policy)."
+    }
+  ],
+  "escalation": null,
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "module": "supervisor/simplify-lean/threecentre/FixedStateThreeCentres.lean (sha256 af45ff16cfe059ce3534a8c3362ec941211ea0cc15e6d30503e558371364135b)",
+    "plan": "supervisor/simplify-lean/THREE-CENTRE-PLAN.md",
+    "grades": {
+      "paper argument": "M checked",
+      "dependency and hole scans": "C computed",
+      "module": "P proposed, uncompiled",
+      "parent results": "S reported"
+    },
+    "forbidden_calls_used": "none of States:547, :683, :704 or descendants",
+    "interfaces_patch": "one identifier, all arguments unchanged; apply only after the module is accepted",
+    "toolchain": "Lean 4.34.1 @5045d005... + Mathlib @d13f23b...",
+    "not_claimed": [
+      "global States deletion",
+      "Lemma 6.7 deletion",
+      "moving-centre/FourContinuity coverage",
+      "any accepted Lean result"
+    ],
+    "scope": "fixed-state, local/angular model only; no conclusion about global weak colourings",
+    "next_verification_step": "local compile of the module, then #print axioms, then the one-identifier Interfaces patch in a private copy."
+  }
+}

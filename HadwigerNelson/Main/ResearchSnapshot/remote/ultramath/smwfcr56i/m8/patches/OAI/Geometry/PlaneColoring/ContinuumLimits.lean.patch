@@ -1,0 +1,29 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean	2026-11-13 19:09:13.641527366 +0000
++++ OAI/Geometry/PlaneColoring/ContinuumLimits.lean	2026-11-13 19:48:53.622629504 +0000
+@@ -144,12 +144,20 @@
+     {K : ι → NonemptyCompacts X} {L : NonemptyCompacts X} {x : ι → X} {y : X}
+     (hK : Tendsto K l (𝓝 L)) (hx : Tendsto x l (𝓝 y))
+     (hm : ∀ᶠn in l,x n∈K n) : y∈L := by
+-  have hh := (NonemptyCompacts.lipschitz_infDist.continuous.tendsto (y,L)).comp (hx.prodMk_nhds hK)
+-  have h0 : (fun n => Metric.infDist (x n) (K n : Set X)) =ᶠ[l] fun _ => 0 :=
+-    hm.mono fun n hn => Metric.infDist_zero_of_mem hn
+-  have he : Metric.infDist y (L : Set X)=0 := tendsto_nhds_unique hh
+-    (tendsto_const_nhds.congr' h0.symm)
+-  exact (L.isCompact.isClosed.mem_iff_infDist_zero L.nonempty).mpr he
++  have hball : ∀ ε > 0, ((L : Set X) ∩ Metric.closedBall y ε).Nonempty := by
++    intro ε hε
++    have hcl : IsClosed (Metric.closedBall y ε) := Metric.isClosed_closedBall
++    have hev : ∀ᶠ n in l, ((K n : Set X) ∩ Metric.closedBall y ε).Nonempty := by
++      filter_upwards [hm, hx.eventually (Metric.closedBall_mem_nhds y hε)] with n hn hxn
++      exact ⟨x n, hn, hxn⟩
++    exact (NonemptyCompacts.isClosed_inter_nonempty_of_isClosed hcl).mem_of_tendsto hK hev
++  change y ∈ (L : Set X)
++  rw [← L.isCompact.isClosed.closure_eq]
++  refine Metric.mem_closure_iff.mpr (fun ε hε => ?_)
++  obtain ⟨z, hzL, hz⟩ := hball (ε/2) (by linarith)
++  refine ⟨z, hzL, ?_⟩
++  have h2 : dist y z ≤ ε/2 := by simpa [Metric.mem_closedBall, dist_comm] using hz
++  linarith
+ 
+ lemma nonemptyCompacts_inter_closed_limit {X : Type u} [TopologicalSpace X]
+     {ι : Type v} {l : Filter ι} [NeBot l]

@@ -1,0 +1,427 @@
+6     Transitions and local finiteness of cyclic centers
+Continue to assume that a weak measurable five-coloring is given, with the notation and null-set
+conventions of Section 5. Write I for the five-element label set. As before, Hi is the closed spatial
+essential support of Ai , and Px is defined at every center x, modulo angular null sets. We first use
+transitions between two colors to obtain circle traces that avoid both labels. The resulting angular
+restrictions show that centers whose transition graphs contain a cycle form a locally finite set. In
+Section 7 we construct a continuous graph-valued map on a square after removing small disks
+about these centers.
+
+6.1     Transition graphs and avoiding traces
+For distinct i, j ∈ I , a bounded ball B ⊂ R2 , and h ∈ R2 , define
+
+                         Dij ( B, h) = {q ∈ B : (c(q), c(q + h)) ∈ {(i, j), ( j, i )}} ,
+
+where vertical bars on a plane set denote Lebesgue area. The second endpoint q + h is not re-
+quired to belong to B. The normalization by |h| below is chosen to match the circle-averaging
+estimate used in Lemma 6.2: transition sets of area comparable to |h| will yield traces avoiding
+both endpoint labels.
+Definition 6.1 (Transition graph). For x ∈ R2 , let Γ x be the simple graph on I in which ij is an
+edge precisely when, for every ball B centered at x with positive finite radius,
+
+                                                       Dij ( B, h)
+                                           lim sup                 > 0.                          (6.1)
+                                              h →0         |h|
+                                              h ̸ =0
+
+    For each fixed pair ij, its edge-presence locus is closed. Indeed, a ball centered at a limit of
+points of that locus contains a smaller ball centered at one of those points, and Dij is monotone in
+its ball argument. Moreover,
+                                    ij ∈ Γ x =⇒ x ∈ Hi ∩ Hj .
+
+                                                        34
+To check this in any neighborhood of x, use a smaller ball and then choose h small enough that
+both endpoints of every transition under consideration remain in the neighborhood. A positive-
+area transition set gives positive area of each endpoint color there; translation preserves area.
+                                                                                                ij    ij
+Lemma 6.2 (An edge has an avoiding trace). If ij ∈ Γ x , there is a trace bij ∈ W x with bi = b j = 0
+almost everywhere. Consequently,
+
+                           Px (e) ̸⊂ {i, j}   for almost every e ∈ S,         ij ∈ Γ x .                   (6.2)
+
+Proof. Write                                       Z
+                                        S g(q) =           g(q + e) dσ (e).
+                                                       S
+The estimate we need, for every fixed bounded ball B and every label s, is
+                                                          q 
+                         S a s − a s ( · + h ) L2 ( B ) = o | h | ( h → 0).                                (6.3)
+
+Here and in (6.1), the vector h may approach zero in any direction.
+    Choose a boundedly supported g ∈ L2 (R2 ) agreeing with as on a ball containing B + S + h
+for all sufficiently small h, as well as B + S. The Fourier transform of normalized circle measure
+satisfies
+                                         σ (ξ )| ≤ C (1 + |ξ |)−1/2 .
+                                        |b
+For completeness, after rotating coordinates the relevant integral is a constant multiple of
+R 2π
+  0
+     exp(ir cos t) dt, where r is proportional to |ξ |. For r ≥ 1, removing the arcs on which
+| sin t| ≤ r−1/2 costs O(r −1/2 ). On each remaining interval, integration by parts using the deriva-
+tive −ir sin t gives endpoint terms O(r −1/2 ), while the integral of | cos t|/(r sin2 t) is also O(r −1/2 ).
+The bound for r ≤ 1 is immediate.
+     By Plancherel, the square of the global L2 norm of S( g − g( · + h)), divided by |h|, is bounded
+by the integral of | gb(ξ )|2 times
+                                          C min{C |h|2 |ξ |2 , 4}
+                                                                  .
+                                        1 + |ξ |      |h|
+This multiplier is uniformly bounded: split at |ξ | = |h|−1 . For each fixed ξ it tends to zero as
+h → 0. Dominated convergence therefore proves (6.3); the cutoff is fixed before h tends to zero.
+    For a fixed displacement h, almost every root q has both q, q + h typical, and both exact unit-
+circle samplings centered at these points typical on their circles. At a transition from color s to
+color t, the first circle avoids s and the second avoids t, by properness of the coloring on typical
+points. Thus the mass of color t on the first circle equals S( at − at ( · + h))(q). For a transition
+between i and j in either order, the first-circle mass of these two colors together is consequently
+bounded by
+                              S( ai − ai ( · + h))(q) + S( a j − a j ( · + h))(q) .
+    Fix a ball B about x. Since ij ∈ Γ x , there is a constant c B > 0 and arbitrarily small nonzero h
+for which the transition set in B has area at least c B |h|. Cauchy–Schwarz and (6.3) show that the
+average of the preceding mass over this transition set is at most
+                                                p
+                                             o ( |h|)
+                                             p          = o (1).
+                                                c B |h|
+Now take balls Bm of radii tending to zero about x. After fixing Bm and its constant c Bm , choose
+hm sufficiently small and then a transition root qm ∈ Bm from the preceding full-measure set,
+
+                                                           35
+whose first-circle mass of i, j is less than 1/m. This order of choice requires no lower bound on c Bm
+uniform in m. The circle samples at qm have radius one; a weak-* subsequential limit belongs to
+W x and has zero mass in the two specified coordinates. Since it is nonnegative, sums to one, and
+is supported within Px almost everywhere, it also proves (6.2).
+
+6.2   Two angular state lemmas
+A state at a center x will mean a measurable angular set together with a specified nonempty group
+of labels contained in Px (e) almost everywhere on that set. For a measurable set A ⊂ S, its closed
+essential support is
+
+                   ess suppS A = { a ∈ S : σ ( A ∩ I ) > 0 for every open arc I ∋ a}.
+
+It is empty exactly when A is null. Almost every point of A is both a density-one direction for A
+and a member of this support. Changing the representative of a state on a null set changes neither
+its support nor any assertion below.
+
+Lemma 6.3 (Strict state separation). Suppose A, B ⊂ S are states at x representing disjoint label groups
+whose union is I \ { X }, for a fixed label X. At any nonparallel density-one directions a of A and b of B,
+the point x + a + b has spatial density one of X.
+    If σ ( A) > 0, the closed essential support of B contains no pair at chordal distance one. In particular,
+it has a strict angular separation from its image under R and under R−1 , with the empty-support case
+interpreted vacuously.
+    The separation is uniform along a sequence of centers and states ( xn , An , Bn ) with the same represented
+groups, provided 1 An → 1 A in L1 (S) for a set A of positive measure. More precisely, for all sufficiently
+large n, angular differences between two points of ess suppS Bn stay a fixed positive distance from both κ
+and −κ modulo 2π.
+
+Proof. The density conclusion of Lemma 5.2, following (5.2), gives density zero of each of the
+four represented labels at the nonparallel sum. Their complement, the singleton X, therefore has
+density one there.
+    We prove the uniform assertion by contradiction; the fixed-center case follows by using a con-
+stant sequence. If it fails, choose pairs in the supports of Bn with chordal distances tending to one.
+Each support point is approximable by density-one directions of Bn . We may thus choose density
+directions bn , dn in those states such that, after a subsequence,
+
+                  bn → b,       dn → d,       wn = bn − dn → w = b − d,            |w| = 1.
+
+Choose a small angular interval I with σ ( A ∩ I ) > 0, whose closure is separated from the direc-
+tions parallel to any of w, b, d. Such an interval exists because only finitely many directions are
+excluded and A has positive measure.
+    For a ∈ I, the implicit function theorem gives a unit direction cn ( a), smoothly depending on a,
+with
+                            |wn + a − cn ( a)| = 1,  cn −→ id in C1 ( I ).
+Indeed, at wn = w and cn ( a) = a the squared-length equation is satisfied and its derivative in the
+angle of cn ( a) is −2w · Ja ̸= 0. Shrinking I around a density point of A if necessary makes this
+construction uniform on its closure.
+     The maps cn have uniformly bounded inverse derivatives. It follows that 1 An ◦ cn → 1 A in
+L1 ( I ): the difference between 1 An ◦ cn and 1 A ◦ cn is controlled by the L1 convergence under change
+
+                                                      36
+of variables; continuous approximation of 1 A and cn → id treat the remaining difference. Together
+with 1 An → 1 A on I, this shows that the set of a ∈ I for which both a and cn ( a) lie in An has
+positive measure for large n. Excluding null sets, choose such an a for which both are density-one
+directions. The choice of I ensures that ( a, bn ) and (cn ( a), dn ) are nonparallel. The points
+
+                                      x n + a + bn ,      xn + cn ( a) + dn
+
+both have density one of color X, yet their distance is |wn + a − cn ( a)| = 1. This contradicts
+properness of density-one points. At a single center, compactness of the support turns exclusion
+of distance-one pairs into the asserted strict margin.
+
+Lemma 6.4 (Singleton–pair alternation is impossible). At a fixed center, there is no measurable state
+function with only the two values X, D, representing respectively a singleton { X } and a fixed disjoint pair
+D, and changing state under R almost everywhere.
+
+Proof. Put
+                                                  1                        5
+                                     γ = 2 arcsin √ ,            cos γ =     .
+                                                 2 3                       6
+The ratio γ/π is irrational. Otherwise eiγ would be a root of unity, making 2 cos γ = 5/3 a rational
+algebraic integer, hence an integer, a contradiction.
+    There is a positive-measure set of angles t whose states at t and t + γ are equal. If not, the state
+would flip almost everywhere under γ, and hence be invariant under 2γ. A measurable function
+invariant under an irrational circle rotation is constant almost everywhere: its nonconstant Fourier
+coefficients vanish, since the corresponding rotation eigenvalues differ from one. This would
+contradict the flip under κ.
+    Choose t from the positive-measure equality set, also imposing all finitely many needed R-
+alternation identities and density-direction conditions. For j = 0, 1, 2, form the points
+
+                        z j = x + ei(t+2jκ ) + ei(t+π +γ+2jκ ) = x + ei(t+2jκ ) (1 − eiγ ).
+                                   √
+They have distance |1 − eiγ | = 1/ 3 from x and form an equilateral triangle of side one. In each
+sum the two nonparallel endpoints have opposite states: 2κ preserves the state and π = 3κ flips
+it. The density consequence of Lemma 5.2 therefore gives density one at each z j to the union of
+the two labels outside { X } ∪ D. A uniform common translation in a sufficiently small disk puts
+all three vertices in that union and in the typical set with positive probability; the three failure
+probabilities tend to zero by density one. The resulting unit equilateral triangle would be properly
+colored with two labels, a contradiction.
+
+6.3   The cyclic-center locus
+Theorem 6.5 (Local finiteness of cyclic centers). The set
+
+                                     L = { x ∈ R2 : Γ x contains a cycle}                               (6.4)
+
+is closed and locally finite: it has finite intersection with every compact subset of the plane.
+
+   For any specified simple label cycle, its locus is the intersection of its finitely many closed
+edge-presence loci, hence is closed. There are only finitely many simple cycles on five labels. It
+therefore suffices to prove local finiteness separately for each triangle, four-cycle, and five-cycle.
+
+
+                                                        37
+    For a triangle, (6.2) for its three edges and Proposition 5.6 force Px (e) to intersect the pair of
+outside labels almost everywhere. Indeed, a nonempty subset of the three triangle labels of size at
+most two lies in some triangle edge, which is forbidden. By (5.7) the intersection with the outside
+pair is unique almost everywhere and alternates under R. Thus every such x is binary for that
+fixed pair. Lemma 5.5 proves local finiteness of the triangle locus.
+
+6.3.1   Four-cycles: continuity of states
+Fix a four-cycle and relabel its vertices 0, 1, 2, 3 in cyclic order, with fifth label X. Let L be its closed
+locus and write
+                                      U = {0, 2},         V = {1, 3}.
+For x ∈ L define the canonical state wx (e) as follows: it is X if X ∈ Px (e), and otherwise it is U
+or V according to which of these two pairs equals Px (e). This is exhaustive almost everywhere.
+A palette not containing X has size at most two, and (6.2) excludes every singleton and every
+adjacent pair of the four-cycle, leaving precisely the two diagonals. The states represent the groups
+{ X }, U, V contained in their palettes, and (5.7) gives
+
+                                  wx (e) ̸= wx ( Re)              almost everywhere.
+
+Both diagonal states have positive angular measure. If either were null, the other and X would
+give the impossible alternation of Lemma 6.4.
+
+Lemma 6.6 (Continuity of four-cycle states). For each s ∈ { X, U, V }, the map x 7→ 1{wx =s} is contin-
+uous from L into L1 (S).
+                                                                  ij
+Proof. At each y ∈ L choose an avoiding trace by for each of its four specified edges. If k belongs
+to the group represented by a state s, then
+
+                                                   ∑
+                                                                       ij
+                          1 { wy = s } ≤                          by,k      almost everywhere.          (6.5)
+                                           ij in the four-cycle
+
+To see this, fix a generic direction in state s. If the palette has another member besides k, some cycle
+edge contains that member but does not contain k. For a diagonal state, choose an edge incident
+to its other member; for k = X, choose an edge incident to the possible additional label. If no other
+member exists, any cycle edge suffices. The corresponding trace avoids its edge endpoints and is
+supported within the palette, so its k-coordinate equals one. There are only finitely many chosen
+traces, allowing one common conull set of directions for this argument.
+     Let yn → x in L. Along any subsequence, pass further to weak-* limits of the three state
+indicators and all four chosen traces. Denote the former limits by f X , f U , f V . The trace limits
+belong to W x by its closed-graph property. Inequality (6.5) passes to the weak-* limits, and its
+nonnegative right-hand side shows that wherever f s > 0, every label represented by s belongs
+to Px , almost everywhere. Two different state groups would require at least three palette labels,
+contradicting Proposition 5.6. Since the f s are nonnegative and sum to one, exactly one equals
+one at almost every direction. Its group determines precisely the canonical state wx : a diagonal
+already fills both palette slots, while a positive singleton state requires X ∈ Px . Thus f s = 1{wx =s}
+almost everywhere.
+                                                                       1
+     Weak-* convergenceR of indicators  R to anRindicator R implies L convergence: for indicators f n , f ,
+test against 1 and f in | f n − f | = f n + f − 2 f n f . Every subsequence has a further subse-
+quence with this same L1 limit, which proves the claimed continuity.
+
+                                                              38
+    Let SU,x , SV,x be the closed essential supports of the two diagonal states, and put Nx = SU,x ∪
+SV,x . Both supports are nonempty. Across their nonparallel density directions, the four repre-
+sented labels force singleton density one of X. Lemma 6.3 therefore gives a strict margin between
+each support and its own R-shift. These margins are uniform along any convergent sequence
+in L, by Lemma 6.6 and positivity of both limiting diagonal states. We also have the following
+consequence of that continuity:
+
+             b ∈ Ss,x ,     yn → x in L          =⇒     there are bn ∈ Ss,yn with bn → b    (s = U, V ).
+
+Indeed, every neighborhood of b has positive limiting state measure, hence positive state measure
+at all sufficiently large n. Successively smaller neighborhoods give the sequence.
+    The set Nx is a proper subset of S. Otherwise a point in the intersection of the two supports
+would rotate under R outside both, by their strict separations. The two nonempty supports would
+therefore have to be disjoint and cover the connected circle, which is impossible. On every com-
+ponent gap of S \ Nx the state is X almost everywhere. Such a gap has angular length at most
+κ, since an interval of greater length overlaps its R-translate in an open interval, contrary to the
+state-change rule.
+
+6.3.2     Four-cycles: transport and the accumulation contradiction
+For nonparallel a, b ∈ S and h sufficiently small, the local inverse of the sum map defines
+
+                          Th ( a, b) = (c, d),        c + d = a + b − h,    (c, d) near ( a, b).
+
+It is smooth in the two angular variables and in h, and for fixed h it is a local diffeomorphism of
+the angular pair. Its branch at h = 0 is the identity.
+     We will use the following support transport rule. If y = x + h ∈ L and a ∈ SU,x , b ∈ SV,x are
+nonparallel, then
+                                          Th ( a, b) ∈ Ny × Ny
+whenever the indicated nearby branch is defined. In arbitrarily small product neighborhoods of
+( a, b) there is a positive-measure set of pairs of density directions for U, V at x. The spatial sums of
+every such nonparallel pair have density one of X. The local diffeomorphism Th permits removal
+of all null sets needed to make both output directions density directions of their states at y and
+members of the corresponding essential supports. Neither output state can be X: the density
+consequence of Lemma 5.2 at y would then give density zero of X at the same spatial sum. Both
+outputs consequently belong to Ny . Approximating the initial support pair by these generic pairs
+and using closedness proves the rule. It also holds with U, V interchanged, and in the reverse
+direction under T−h . All null sets here concern the two fixed centers in a single application; no
+joint measurability in the center is used.
+     Suppose now that distinct points yn = x + hn of L tend to x. After a subsequence, write
+
+                                    δn = |hn | > 0,         Hn = hn /δn −→ H ∈ S.
+
+Take any endpoint a of a gap of Nx , first with the gap just to its right in real angular coordinates. It
+belongs to at least one diagonal support, say SU,x ; the other case is symmetric. Assume H · a ̸= 0.
+   The first output angle of Th ( a, b) has directional velocity
+
+                         H·b
+        VH ( a; b) = −       = − H · Ja − ( H · a) cot(arg b − arg a),           a × b = sin(arg b − arg a).
+                         a×b
+
+                                                             39
+Indeed, differentiating c + d = a + b − h at h = 0 in direction H gives Ja θ̇ + Jb ϕ̇ = − H; take the
+dot product with b. Since H · a ̸= 0, this velocity takes different values at projectively different
+nonparallel directions b. The positive measure of the V state allows choices b, b′ ∈ SV,x , neither
+parallel to a, with VH ( a; b) > VH ( a; b′ ).
+   Set cn = Th1n ( a, b). By support transport, cn ∈ Nyn , and smoothness gives
+
+                                 arg cn = arg a + δn VH ( a; b) + o (δn ).
+
+If cn ∈ SU,yn along an infinite subsequence, choose bn′ ∈ SV,yn with bn′ → b′ . Transporting (cn , bn′ )
+back by T−hn gives a first endpoint in Nx whose angle is
+
+                               arg a + δn VH ( a; b) − VH ( a; b′ ) + o (δn ).
+                                                                   
+
+
+This lies strictly inside the gap for large n, a contradiction. To justify the error term without any
+convergence rate for bn′ , let τ (h, θ, β) be a real lift of the first output angle on a fixed branch near
+(0, arg a, arg b′ ). The identity τ (0, θ, β) = θ gives, uniformly on a smaller neighborhood,
+
+                               τ (h, θ, β) = θ + Dh τ (0, θ, β)h + O(|h|2 ).
+
+Thus the change in the auxiliary angle β affects only the coefficient multiplied by h. Continuity of
+that coefficient, cn → a, bn′ → b′ , and Hn → H give the claimed o (δn ) remainder.
+    It follows that cn ∈ SV,yn for all large n. The strict separation for U leaves a neighborhood of Ra
+free of SU,x . Immediately to the right of a the state is X almost everywhere, so immediately to the
+right of Ra it is non-X almost everywhere. It must therefore be V on a one-sided neighborhood of
+Ra, giving Ra ∈ SV,x . There are points of SV,yn tending to Ra. Together with cn → a, these violate
+the uniform strict separation of SV,yn from its own R-shift.
+    For a gap lying to the left of a, choose VH ( a; b) < VH ( a; b′ ) and repeat the argument on that
+side. Thus every gap endpoint would have to satisfy H · a = 0. There are only two such directions,
+and they are antipodal. A nonempty gap has distinct endpoints and length at most κ < π, so its
+two endpoints cannot both be these directions. This contradiction rules out accumulation in L and
+proves local finiteness for the specified four-cycle.
+
+6.3.3   Five-cycles: support lists and a global step ban
+Fix a five-cycle, labeled in cyclic order by Z/5Z, and a center x in its locus. By (6.2) and Proposi-
+tion 5.6, almost every palette is exactly one of its diagonals
+
+                                    Di = {i, i + 2},           i ∈ Z/5Z.
+
+Write wx (e) = i for this state. Two such diagonals are disjoint exactly when their indices differ by
+one, so
+                        wx ( Re) = wx (e) ± 1 (mod 5) almost everywhere.                         (6.6)
+Let Si be the closed essential support of state i, and let
+
+                                    S ( a ) = { i : a ∈ Si }     ( a ∈ S)
+
+be its support list. Every list is nonempty, since the finitely many supports cover the circle: an
+uncovered direction would have a neighborhood on which all five state sets were null.
+
+
+
+                                                      40
+    Every nonempty Si has strict separation from its own R-shift. Indeed, state i then has positive
+measure, and (6.6) forces at least one of its adjacent states to have positive measure. Their two
+disjoint diagonals cover four labels, so Lemma 6.3 applies. It follows that, for every direction a,
+
+                                            S( a) ∩ S( Ra) = ∅.
+
+Also, each i ∈ S( a) has an index adjacent to it in each of S( Ra) and S( R−1 a). Approach a by
+generic directions of state i, use (6.6), and pass to a constant adjacent index along a subsequence
+and then to its closed support.
+
+Lemma 6.7 (A support contact bans an angular step). If i, i + 1 ∈ S( a) at any direction a, then the
+transitions i → i + 1 and i + 1 → i under R are absent almost everywhere on the entire angular circle at x.
+
+Proof. Set z = x + a. There is a trace in Wz avoiding Di . In fact, in each neighborhood of a the state-
+i set has positive measure. By (5.2), the two-angle sum map, and Fubini, almost every direction
+in this set has a typical actual unit-circle sampling at the center x plus that direction, avoiding Di
+almost everywhere. Choose such directions tending to a and pass to a weak-* limit. The same
+construction gives, separately, a trace at z avoiding Di+1 . Consequently, almost everywhere,
+
+                                    Pz ( f ) ̸⊂ Di ,        Pz ( f ) ̸⊂ Di+1 .
+
+On the other hand, (5.3) applied to z + f = x + f + a gives Pz ( f ) ∩ Px ( f ) = ∅ almost everywhere.
+Its first endpoint map is f 7→ f , a local angular diffeomorphism; its second endpoint is constant,
+which is permitted. The excluded parallel directions f = ± a form a null set.
+     Let X be the label outside Di ∪ Di+1 . Whenever wx ( f ) = i, disjointness from Px ( f ) = Di leaves
+only Di+1 ∪ { X } available to Pz ( f ), and the avoiding trace for Di+1 forces X ∈ Pz ( f ). The same
+reasoning applies when wx ( f ) = i + 1. A step in either order between these states would therefore
+put X into both Pz ( f ) and Pz ( R f ), contrary to (5.7). The statements used hold on a common conull
+set, also after pulling back by R, proving the global step ban.
+
+6.3.4   Five-cycles: the accumulation contradiction
+Suppose distinct centers yn = x + hn of this same five-cycle locus tend to x. Pass to a subsequence
+with hn /| hn | → H ∈ S. For large n, write
+                                                          r
+                                        −            h n         | h n |2 h n
+                        yn = x + a+n + an ,    a±
+                                                n =      ± 1−            J        .
+                                                     2              4      | hn |
+These are unit directions and are nonparallel for each large n, although their limits are the antipo-
+dal pair a = JH and − a.
+     For either endpoint s = a+             −
+                                  n or s = an , the diagonals in S ( s ) have no common label. Suppose
+instead that every Di with i ∈ S(s) contained a label k. The finitely many closed supports not
+containing s can be excluded by a sufficiently small neighborhood of s. Almost every direction
+in that neighborhood therefore has k ∈ Px . In a product neighborhood of the nonparallel pair
+( a+    −
+   n , an ), (5.2) and the local diffeomorphism of the sum map now imply that Ak has zero area in
+an open spatial neighborhood of yn . This contradicts yn ∈ Hk , which holds for every label because
+all five cycle edges are present at yn . The neighborhoods in this argument may depend on n; no
+uniform nonparallelness of the endpoint pairs is needed.
+     The no-common-label property passes to a and − a. In fact, for any fixed direction u, finiteness
+and closedness of the supports give S(v) ⊂ S(u) for every v in some neighborhood of u. Thus
+
+                                                       41
+eventually S( a+n ) ⊂ S ( a ), and intersecting the diagonals over the larger list S ( a ) still gives the
+empty set; likewise at − a. A nonempty index list whose diagonals have empty intersection con-
+tains adjacent indices. Otherwise it is an independent set in the index five-cycle, of size at most
+two, and any two nonadjacent diagonals have a common label.
+    Let S(r) = S( Rr a) for r ∈ Z/6Z. Both S(0) and S(3) contain adjacent index pairs. Rotate the
+label indices so that 0, 1 ∈ S(0) . Then
+
+                                                  2, 4 ∈ S(1) ∩ S(5) :
+
+these lists must avoid 0, 1 and must contain a neighbor of each, forcing 4 for 0 and 2 for 1. If
+j, j + 1 ∈ S(3) , the same argument gives j − 1, j + 2 ∈ S(2) ∩ S(4) . Adjacent position lists are disjoint,
+so neither of j − 1, j + 2 can be 2 or 4. Checking the five possible residues of j leaves only j = 1 or
+j = 4: their pairs { j − 1, j + 2} are respectively {0, 3} and {3, 1}; each of j = 0, 2, 3 contains 2 or 4.
+     If j = 1, the adjacent pairs at a and − a are {0, 1} and {1, 2}, so Lemma 6.7 bans both possible
+steps from state 1. If j = 4, the pairs are {0, 1} and {4, 0}, banning both steps from state 0. In either
+case (6.6) makes the shared state null, contradicting its membership in S(0) . Only the step bans at
+the two fixed directions a, − a have been used, so no union of exceptional null sets over arbitrary
+directions is involved. This rules out accumulation in the five-cycle locus.
+     Each specified simple-cycle locus is closed and has no accumulation point. Its intersection with
+a compact set is therefore finite, by compactness. Taking the finite union over all specified simple
+cycles proves Theorem 6.5.
+
+
+7     Extraction of common exclusion continua
+Continue to assume that a weak measurable five-coloring is given. We retain the labels I and their
+closed essential supports Hi . Section 6 supplies the transition graphs Γ x and the closed locally
+finite set L of centers where those graphs contain a cycle. We now construct a simple label cycle
+and one compact connected exclusion set for each edge. The distance exclusions will hold for both

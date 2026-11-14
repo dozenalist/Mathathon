@@ -1,0 +1,115 @@
+==============================================================================
+H1  separation identity  (exact, mpmath)
+==============================================================================
+  r= 1.0000001  sigma=59.999993384054 deg   |z1-z2| = 1.000000000000000   err=0.00e+00
+  r=     1.001  sigma=59.933917623156 deg   |z1-z2| = 1.000000000000000   err=1.15e-41
+  r=      1.01  sigma=59.346029604948 deg   |z1-z2| = 1.000000000000000   err=0.00e+00
+  r=       1.1  sigma=54.071383578825 deg   |z1-z2| = 1.000000000000000   err=0.00e+00
+  r=         2  sigma=28.955024371860 deg   |z1-z2| = 1.000000000000000   err=0.00e+00
+  r=        10  sigma=5.731967965198 deg   |z1-z2| = 1.000000000000000   err=0.00e+00
+  r=       1e6  sigma=0.000057295780 deg   |z1-z2| = 1.000000000000000   err=0.00e+00
+  sympy: 2*r*sin(asin(1/(2r))) simplifies to 2*r*sin(asin(1/(2*r))/2)   (symbolic, all r>0)
+
+==============================================================================
+H2  sigma strictly decreasing, limits, and sigma(r) < 60 deg for r>1
+==============================================================================
+  d/dr sigma = -2/(r*sqrt(4*r**2 - 1))
+           = -2/(r*sqrt(4*r**2 - 1))
+  sign for r>1/2 : -2/(r*sqrt(4*r**2 - 1))
+  sigma(1)      (limit) = 60.0000000000 deg
+  sigma( 1.0001) = 59.9933848250 deg     (< 60 : True)
+  sigma(   1.01) = 59.3460296049 deg     (< 60 : True)
+  sigma(    1.1) = 54.0713835788 deg     (< 60 : True)
+  sigma(    1.5) = 38.9424412690 deg     (< 60 : True)
+  sigma(      3) = 19.1881364537 deg     (< 60 : True)
+  sigma(    100) = 0.5729601825 deg     (< 60 : True)
+  sigma(1+g) - 60deg, g small:  slope = -66.159467 deg per unit g
+     g=    1e-6: 60 - sigma(1+g) = 0.0000661594 deg ; predicted 0.0000661595 deg
+     g=    1e-4: 60 - sigma(1+g) = 0.0066151750 deg ; predicted 0.0066159467 deg
+     g=    0.01: 60 - sigma(1+g) = 0.6539703951 deg ; predicted 0.6615946745 deg
+     g=     0.1: 60 - sigma(1+g) = 5.9286164212 deg ; predicted 6.6159467451 deg
+
+==============================================================================
+H3  width of common-positive direction set = 180 deg - aperture
+==============================================================================
+  aperture=115.544 deg -> width formula =  64.456 deg,  sampled measure of Theta =  64.456 deg   (180 - aperture =  64.456)
+  aperture= 26.146 deg -> width formula = 153.854 deg,  sampled measure of Theta = 153.854 deg   (180 - aperture = 153.854)
+  aperture=141.991 deg -> width formula =  38.009 deg,  sampled measure of Theta =  38.010 deg   (180 - aperture =  38.009)
+  aperture=110.995 deg -> width formula =  69.005 deg,  sampled measure of Theta =  69.005 deg   (180 - aperture =  69.005)
+
+==============================================================================
+H4  sector lemma, no uniformity needed.  Quantified form:
+    A > 60deg , G>0 on the arc, theta1 in (a, b-60deg), r close to 1
+    => exists unit pair in W.
+==============================================================================
+  A =  60.0001 deg : slack over 60 deg = 0.000100 deg ; admissible r range = (max(1,0.9999984894), inf) intersect (1, 1+G)
+  A =       61 deg : slack over 60 deg = 1.000000 deg ; admissible r range = (max(1,0.9851472064), inf) intersect (1, 1+G)
+  A =       75 deg : slack over 60 deg = 15.000000 deg ; admissible r range = (max(1,0.8213398164), inf) intersect (1, 1+G)
+  A =       90 deg : slack over 60 deg = 30.000000 deg ; admissible r range = (max(1,0.7071067815), inf) intersect (1, 1+G)
+  A =      120 deg : slack over 60 deg = 60.000000 deg ; admissible r range = (max(1,0.5773502694), inf) intersect (1, 1+G)
+  A =      170 deg : slack over 60 deg = 110.000000 deg ; admissible r range = (max(1,0.5019099188), inf) intersect (1, 1+G)
+
+==============================================================================
+H5  endpoint A = 60 deg (aperture exactly 120 deg): if the window is positive at the TWO
+    directions used, r-1 < min(G1,G2) and sigma(r) < A hold for r close to 1. No rate
+    comparison is needed. The rate comparison only appears if one first truncates the
+    arc: using the compact subarc [a+eta, b-eta] of width A' = A - 2eta forces
+    sigma(1+G_eta) < A - 2eta, i.e.  66.14 deg * G_eta > 2 eta.  Show the numbers.
+==============================================================================
+  eta= 0.01 deg: truncated width=59.980000 deg, need G_eta > 0.00030241  (= 0.017327 deg of arc-equivalent)
+  eta=  0.1 deg: truncated width=59.800000 deg, need G_eta > 0.00303370  (= 0.173818 deg of arc-equivalent)
+  eta=  1.0 deg: truncated width=58.000000 deg, need G_eta > 0.03133267  (= 1.795230 deg of arc-equivalent)
+  eta=  5.0 deg: truncated width=50.000000 deg, need G_eta > 0.18310079  (= 10.490903 deg of arc-equivalent)
+  -> with truncation the required window tends to 0 linearly: no uniform statement survives
+     without extra input; without truncation (closed-arc window) nothing is needed.
+
+==============================================================================
+H6  counterexample: open W, positive window at every direction of an OPEN arc, but
+    infimum 0 on a compact subarc.  W = {1<|z|<2} minus closed radial slits
+    at angles theta_n -> theta_0, from radius 1+delta_n to 2, delta_n -> 0.
+==============================================================================
+  slit start radii delta_n: ['5.000e-01', '2.500e-01', '1.250e-01', '6.250e-02', '3.125e-02'] ... -> 0
+  window G(theta_n) = delta_n > 0 for every n, G(theta_0) = 1 (no slit there),
+  inf over the compact subarc containing theta_0 = 0.
+  W is open (open minus closed). So 'window > 0 at every direction' does NOT imply
+  'uniformly positive on compact subarcs'.       [this is what hinge (1) needs]
+
+==============================================================================
+verdict of the checks
+==============================================================================
+  H1 exact.  H2 exact (sigma<60deg strictly for r>1).  H3 exact.
+  H4: unit pair exists from POINTWISE positivity on an arc of width > 60deg;
+      uniformity of the window is never used.
+  H5: at A = 60deg the closed-arc version also works; the truncated version needs a rate
+      comparison 66.14deg * G_eta > 2eta that the source does not supply.
+  H6: the uniform-width claim, as a consequence of pointwise positivity, is FALSE.
+  => hinge (1) should be deleted; hinges (2),(3) are the whole argument.
+
+==============================================================================
+H7  sharp sector threshold tau(g)  [deg]:  numeric bisection vs closed form
+==============================================================================
+  g=    1e-6: tau_numeric= 59.999934  tau_closed= 59.999934  |diff|=0.00e+00
+  g=    1e-4: tau_numeric= 59.993385  tau_closed= 59.993385  |diff|=0.00e+00
+  g=    1e-3: tau_numeric= 59.933918  tau_closed= 59.933918  |diff|=0.00e+00
+  g=    0.01: tau_numeric= 59.346030  tau_closed= 59.346030  |diff|=0.00e+00
+  g=    0.05: tau_numeric= 56.873780  tau_closed= 56.873780  |diff|=0.00e+00
+  g=     0.1: tau_numeric= 54.071384  tau_closed= 54.071384  |diff|=3.33e-16
+  g=     0.3: tau_numeric= 45.239730  tau_closed= 45.239730  |diff|=0.00e+00
+  g=     0.5: tau_numeric= 38.942441  tau_closed= 38.942441  |diff|=0.00e+00
+  g=     0.8: tau_numeric= 25.841933  tau_closed= 25.841933  |diff|=0.00e+00
+  g=    0.95: tau_numeric= 12.838568  tau_closed= 12.838568  |diff|=0.00e+00
+  g=1.0    : tau_closed = 0.000000 deg (radial segment of length 1 fits)
+  => MC120's 120 deg (arc width 60 deg) is the g -> 0+ limit, i.e. the WORST case.
+     A thicker window excludes strictly larger apertures by the same argument.
+
+==============================================================================
+H8  explicit instance: A = 65 deg > 60 deg, window g = 0.05, centre x = 0
+==============================================================================
+  r = 1+g/2 = 1.025 ; sigma(r) = 58.392808819264324 deg ; need sigma < A = 65 deg : True
+  both radii in the window (1, 1+g): True and True
+  theta1 = 0 deg, theta2 = 58.392808819264324 deg, both inside (0,65): True
+  z1 = (1.025, 0.0)
+  z2 = (0.537195121951, 0.87295269113)
+  |z1 - z2| = 1.0   (= 1 to 25 digits: True)
+  both points lie in the sector {r u(t): 1<r<1.05, 0<t<65deg} in W, so W contains a unit pair;
+  Lemma T then contradicts a.e. monochromaticity on W.

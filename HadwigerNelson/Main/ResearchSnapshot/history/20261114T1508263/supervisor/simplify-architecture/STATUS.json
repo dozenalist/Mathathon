@@ -1,0 +1,44 @@
+{
+ "updated_utc": "2026-11-14T13:35:00Z",
+ "status": "completed_block",
+ "summary": "Block 16, analysis only. (1) Withdrew the dedup smoke test's rfl claim: proof irrelevance makes any two proofs of one proposition definitionally equal, so it certifies nothing about implementation identity; only same-type plus the source fact that the wrapper body is the leaf lemma applied remain. (2) Audited (O'') and RETRACTED 'strictly weaker than the step ban', with quantifier analysis and two countermodels on the abstract data (S, theta): one where (O'') holds while adjacent transitions occur a.e. so the ban fails; one with disjoint supports where the ban holds vacuously and (O'') fails at a = 0. They are incomparable; O' and O'' are withdrawn as bridges. Replacement is (B): for a.e. a the six lists S r satisfy (R), (D), (N), (V) over existing predicates, which is exactly the 21-lemma asset's hypothesis set. Availability: (R) is normalisation, (N) needs (D)-grade input, (D) is NOT palette_neighbor_disjoint (two centres at one angle, versus one centre at two angles), and (V) has one producer, five_endpoint_no_common, needing a second FiveCenter that no lemma constructs. The obstruction is a missing construction, not a missing estimate.",
+ "verified_results": [
+  "[verified here, by definition] The rfl correction: Lean proof irrelevance makes any two proofs of the same proposition definitionally equal, so 'KernelCompact.norm_integral_sq ... = ProbabilityL2.norm_integral_sq ... := rfl' holds for every pair of proofs of that statement and says nothing about implementation identity. SmokeNames.lean and dedup-norm-integral-sq/CANDIDATE.md corrected accordingly; the remaining claims are same-type plus the source reading of the wrapper body.",
+  "[proved here] Countermodel 1 ((O'') holds, step ban fails): with g 60-periodic with dense level sets and theta t = (g t + floor(t/60)) mod 5, every level set is dense so every fiveSupport is R and S a = Fin 5 for all a, giving (O'') trivially, while theta(t+60) = theta t + 1 a.e. produces adjacent transitions on a full-measure set, which is what the step ban forbids.",
+  "[proved here] Countermodel 2 (step ban holds, (O'') fails): with supp i = union over n of [5n+i, 5n+i+1], supports are pairwise disjoint so the step ban's hypotheses are never met and it holds vacuously, while at a = 0 the state 0 is present and 60 lies only in supp 0, so no adjacent witness exists in Nb 0 = {1,4} and (O'') fails.",
+  "[concluded here] (O'') and the step ban are incomparable on the data they quantify over (support sets versus theta values); the claim 'strictly weaker' in block 15 is retracted, and (O') (a.e. second-centre existence) is withdrawn as unmotivated.",
+  "[read] The replacement bridge (B): for a.e. a the lists S r = {i : a + r*sixty in fiveSupport i}, r : Fin 6, satisfy (R) up to relabelling, (D) disjoint successor, (N) neighbour, (V) NotCommon; these are exactly the hypothesis families the 21-lemma asset proves invariant (valid_family_push, disjoint_family_push, neighbour_family_push), so (B) plus the asset gives False.",
+  "[read] Availability: (V) is produced only by five_endpoint_no_common (CyclicCore.lean:25) and only under hy : FiveCenter c (x + direction a + direction b); FiveCenter (Accumulation.lean:358) is defined as forall i, TransitionEdge c i (i+1) x and appears downstream only in hypothesis position, so no lemma constructs a centre from an existing one.",
+  "[read] (D) is not palette_neighbor_disjoint (FiveSupport.lean:23): that lemma compares the palettes of two different centres x and x + direction a at one a.e. angle t, whereas (D) compares one centre at two angles 60 degrees apart. The tempting identification is invalid and nothing else in the tree supplies (D); a derivation would need transition_abundance plus transitionEdge_closed with fiveState_diag.",
+  "[read] five_support_trace gives, per state i, a trace vector vanishing on fiveDiag i; (V) is a joint statement about the union of the D_i for i in S r, and no lemma converts individual trace vectors into a jointly missing label. The only conversion route (five_local_palette, palette_open_exclusion, transitionEdge_no_open_exclusion) consumes hy."
+ ],
+ "conjectures": [
+  "(B) is the right target and it is not reachable by lookup: of its four clauses, (R) is normalisation, (N) needs (D)-grade input, (D) needs a genuine transition-limit argument (transition_abundance + transitionEdge_closed + fiveState_diag), and (V) needs the missing centre construction. A future block should attack (D) first, since it has all ingredients in the tree, and only then (V).",
+  "If a five-cycle centre could be produced at x + direction a + direction b for a.e. a and some b with sin(b-a) != 0, five_endpoint_no_common would give (V) at the endpoint, but nothing in the tree suggests such a construction, and it is not assumed anywhere in this artifact."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/FIVE-CYCLE-INTERFACE.md (sha c549cac44997d15d...; new Sec.9 retraction with both countermodels and the quantifier analysis, new Sec.10 bridge (B), availability analysis and grades)",
+  "supervisor/simplify-architecture/dedup-norm-integral-sq/SmokeNames.lean (sha 672950419c88d8ba...; rfl claim withdrawn, replaced by same-type plus source reading)",
+  "supervisor/simplify-architecture/dedup-norm-integral-sq/CANDIDATE.md (sha 4ef004881711ed7d...; Sec.6 smoke-check paragraph corrected)",
+  "read-only inputs cited this block: lean/OAI/Geometry/PlaneColoring/FiveSupport.lean (9, 23, 55, 86, 89), CyclicCore.lean (25), Accumulation.lean (358, 378, 381), Exclusion.lean (24, 26), supervisor/simplify-verification/lean/FiveCycleResidues.lean",
+  "supervisor/simplify-architecture/encoding-core/integration/ (R4 frozen: d26d569088faea89... / 24f89dd33533a0f6..., untouched this block)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "sed reads of FiveSupport.lean 1-38 (palette_neighbor_real, palette_neighbor_disjoint), 39-100; rg for fiveState_diag, fiveState_represents",
+   "outcome": "exact statements captured; (D) confirmed not to be palette_neighbor_disjoint."
+  },
+  {
+   "cmd": "no build, no cloud compute, no subagents, no messages; R4 and shared originals untouched",
+   "outcome": "analysis only; the only files written are under this supervisor directory."
+  }
+ ],
+ "failed_routes": [
+  "RETRACTED: block 15's 'strictly weaker than the step ban' for (O''), refuted by two countermodels showing incomparability; and (O') a.e. second-centre existence, withdrawn as unmotivated.",
+  "RETRACTED: the rfl-based 'same proof object' claim in the dedup smoke test; proof irrelevance makes it vacuous.",
+  "Rejected this block: identifying (D) with palette_neighbor_disjoint - different centres at one angle versus one centre at two angles.",
+  "Not attempted: no new obligation beyond (B), no assumption of new FiveCenter existence, no M3/weak-mixing work, no implementation, no line-saving claim."
+ ],
+ "next_step": "One target: prove clause (D) of (B), i.e. for a.e. a, the state sets at a and a+60 are disjoint over the existing predicates. All ingredients are already in the tree (transition_abundance, transitionEdge_closed, fiveState_diag, five_ae_mem_support); this is the first of the two genuinely analytic clauses and it needs no new centre. Only after (D) should (V) be revisited, where the obstruction is the missing construction of a second five-cycle centre, not an estimate. Do not assume that construction.",
+ "escalation": null
+}

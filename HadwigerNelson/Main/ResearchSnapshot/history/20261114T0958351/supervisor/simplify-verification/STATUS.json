@@ -1,0 +1,101 @@
+{
+ "updated_utc": "2026-11-14T09:46:28Z",
+ "status": "completed_block",
+ "summary": [
+  "Block 11: repaired WitnessSelection after the local V1 failure and added the Tendsto conclusion in the same file. Four exact repairs, each matching a diagnostic: (1) successor budget is now 1/(n+2) with the positivity proof supplied explicitly (half_pos for scale/2, positivity for the reciprocal) and the budget written inline as pickAt's argument, so no placeholder can go uninferred; (2) `sel` is now Nat.rec applied to a named step function stepF, with sel_zero and sel_succ as rfl lemmas, so no unfolding heuristic is needed; (3) the step bound is stated with 1/((k:\u211d)+2) and the succ goal is reached by heq : ((k+1:\u2115):\u211d)+1 = (k:\u211d)+2 proved by push_cast; ring, then rw [heq]; (4) the plain corollary destructures the main theorem with obtain, dropping the vacuous \u2200n,True. Public interface preserved: bound 1/(n+1), whole-witness predicate P at every index, strict decrease, plus Tendsto (fun n => scale (w n)) atTop (\ud835\udcdd 0) now proved with squeeze_zero and tendsto_one_div_add_atTop_nhds_zero_nat - both names verified in the pinned sources (Pseudo/Lemmas.lean:38, SpecificLimits/Basic.lean:71) and both already used by the development's own Lean, so this is no longer a deferral. Nine theorems + one def + two helpers; five public axiom prints; three exact imports. Lemma 6.7 untouched, no OAI dependency. Source unbuilt here per policy; queue item 7 updated with the residual risks."
+ ],
+ "verified_results": [
+  {
+   "claim": "The four V1 diagnostics are each addressed by a specific change, listed line by line in the file header",
+   "grade": "[S] source read against the four diagnostics; UNBUILT",
+   "status": "repaired, local retry pending"
+  },
+  {
+   "claim": "Public interface preserved: scale (w n) < 1/(n+1), whole-witness P at every index, strict decrease, and now Tendsto to 0",
+   "grade": "[S] statement read",
+   "status": "delivered"
+  },
+  {
+   "claim": "squeeze_zero and tendsto_one_div_add_atTop_nhds_zero_nat exist with the needed signatures in the pinned Mathlib",
+   "grade": "[S] grepped: Mathlib/Topology/MetricSpace/Pseudo/Lemmas.lean:38 and Mathlib/Analysis/SpecificLimits/Basic.lean:71; the second is also used in-tree at Five.lean:107",
+   "status": "confirmed"
+  },
+  {
+   "claim": "V1's failure mode is recorded: only pickAt_lt accepted, sorryAx in the three dependent theorems",
+   "grade": "local run, reported",
+   "status": "recorded as the failed route"
+  }
+ ],
+ "conjectures": [
+  {
+   "statement": "If V2 passes, the recursive-budget step in FULLAPPROX-AGREES-AUDIT s7.2(b) has a machine-checked witness (not a formalized analytic bridge by itself).",
+   "status": "conditional on queue item 7",
+   "grade": "conditional"
+  }
+ ],
+ "artifacts": [
+  "supervisor/simplify-verification/AUDIT-FIVE-CYCLE.md",
+  "supervisor/simplify-verification/FULLAPPROX-AGREES-AUDIT.md",
+  "supervisor/simplify-verification/INTERFACE-WALL.md",
+  "supervisor/simplify-verification/LOCAL-CHECK-QUEUE.json",
+  "supervisor/simplify-verification/NOTES.md",
+  "supervisor/simplify-verification/STATUS.json",
+  "supervisor/simplify-verification/TOPOLOGY-CONE-MANIFEST.json",
+  "supervisor/simplify-verification/TRANSFER-LEDGER.md",
+  "supervisor/simplify-verification/checks/five_cycle_licence.py",
+  "supervisor/simplify-verification/lean/CheckFifth.lean",
+  "supervisor/simplify-verification/lean/ConnectedSetExclusion.lean",
+  "supervisor/simplify-verification/lean/FiveCycleResidues.lean",
+  "supervisor/simplify-verification/lean/WitnessSelection.lean",
+  "supervisor/simplify-verification/move_audit.py",
+  "supervisor/simplify-verification/trim_audit.py"
+ ],
+ "tests_run": [
+  {
+   "cmd": "grep of pinned Mathlib for the two lemma names",
+   "outcome": "squeeze_zero at Mathlib/Topology/MetricSpace/Pseudo/Lemmas.lean:38 with signature (hf : \u2200 t, 0 \u2264 f t) (hft : \u2200 t, f t \u2264 g t); tendsto_one_div_add_atTop_nhds_zero_nat at Mathlib/Analysis/SpecificLimits/Basic.lean:71."
+  },
+  {
+   "cmd": "Lean build",
+   "outcome": "NONE (policy). V2 is unbuilt; no cloud work."
+  }
+ ],
+ "failed_routes": [
+  "Seeking a countermodel with fewer than four relaxed positions: none exists (single relaxation already gives 0 solutions, and all eight relax all four).",
+  "Reading the drop-one runs as evidence of individual necessity: that is the reverse implication and is not established by them.",
+  "Treating the cover-obstruction substitution as an integration: it cannot be, because no module of lean/ imports supervisor/.",
+  "Expecting the mesh/diameter bound to be the \u00a77 gap: the Lean splits it into a dichotomy inside Five.lean, so it is not a hypothesis left open.",
+  "`h '' P j = P (h j)`: false at j=0; the correct general target is P(-j). Kept in the file header as a recorded trap.",
+  "My first block-6 check script applied the identity map instead of h and reported all identities false - a script bug, not a mathematical finding; corrected and re-run inside the same one-process budget.",
+  "`refine \u27e8membership-proof, ?_\u27e9` for a `Finset.Nonempty` goal: Nonempty is `\u2203 a, a \u2208 s`, so the witness must come first; the local run caught this at hasNbr_image and it also poisoned neighbour_family_push with sorryAx.",
+  "Restoring the paper's monotone eps_n from the Lean per-scale form: monotonicity cannot be obtained by replacing eps_n with min over k<=n, because shrinking eps changes pi^eps and hence the entire disk family and the agreement map; it would need the construction to be redone at the new scale. Recorded as the single loss of the interchange.",
+  "My earlier claim that monotonicity of eps_n cannot be restored: wrong, and now retracted with two explicit constructions. The error was conflating 'modifying a witness' (blocked, since shrinking eps changes pi^eps) with 'selecting among witnesses' (free, and carries all indexed data).",
+  "WitnessSelection V1: failed locally at four points - uninferable positivity for the let-bound budget, equation-compiler unfolding of sel, a denominator mismatch k+1 vs k+1+1, and an undecomposed \u2200n,True conjunct. Only pickAt_lt was accepted; the three dependent theorems carried sorryAx. V2 replaces each failing construction rather than patching it."
+ ],
+ "next_step": "Local: queue item 7 retry (V2, five axiom prints), then item 6 retry and CheckFifth. Audit: the two remaining statement-level comparisons (small_hole_map vs Lemma 7.4(1)(2); connected_escape_holes vs Lemma 7.8 with annulus radii), then the cover-obstruction wiring at Five.lean:54.",
+ "escalation": {
+  "obstacle": "(NC-1), restated precisely: at an accumulation point x of a specified five-cycle locus, with a = lim h_n/|h_n| and R the rotation acting on directions, the list S(R a) = {i : R a lies in the closed essential support of state i at x} has no common label, i.e. the intersection of the diagonals D_i over i in S(R a) is empty.",
+  "definitions": "D_i = {i, i+2} in Z/5Z; state i at x = the set of directions whose palette is exactly D_i; closed essential support S_i = the closed set whose every neighbourhood meets state i in positive measure; S(u) = {i : u in S_i}.",
+  "hypotheses_available": "(6.6) a.e. transition rule at x; closedness and finiteness of the five supports; no-common-label at a and -a from the endpoint pair (a_n^+, a_n^-) and 'y_n in H_k for every label'; (D) disjointness of adjacent position lists; (N) neighbour existence in both directions.",
+  "attempted": "direct transport of the printed zero-area endpoint argument (needs a partner direction whose sum lies near a centre with all five edges present; none exists at r=1); derivation from V0,V3,D,N (fails: 8 countermodels, all relaxing 1,2,4,5); single-position weakening (fails: one relaxation never gives a model).",
+  "expected_useful_output": "Either a proof of (NC-1) \u2014 then FIVE-CYCLE-CORE's five-step elimination of Lemma 6.7 stands as a real simplification \u2014 or a construction of an accumulation configuration realising S(1) = {2,4}, which would prove Lemma 6.7 is not removable by support-list combinatorics alone."
+ },
+ "recovery_note": "2026-11-14 post-outage reconciliation: no jobs running (the only background job, jmwfyybqo, exited 0 long before the outage and its result is recorded); every artifact re-read and hash-checked; nothing re-run or duplicated. Latest instruction (block 3) was already complete at 06:16Z.",
+ "handoff": "Repaired source: lean/WitnessSelection.lean V2, sha256 214b064e395d4d9203cac1da03721d78de71c2840cabdb6923923b76eacbedc0, 151 lines, 9 theorems, 3 imports, unbuilt, queue item 7. Changes: budget 1/(n+2) + explicit positivity; sel as Nat.rec over stepF with rfl sel_zero/sel_succ; step bound via 1/((k:\u211d)+2) and heq by push_cast;ring; plain corollary destructured; Tendsto added in-file via squeeze_zero + tendsto_one_div_add_atTop_nhds_zero_nat (both names verified in the pinned sources). Lemma 6.7 untouched; no NC-1 work; no builds.",
+ "artifact_hashes": {
+  "AUDIT-FIVE-CYCLE.md": "9fe1ca44daca711f0fb705ea38ea01e490c36adcc08e14d441bfe318e720484c",
+  "FULLAPPROX-AGREES-AUDIT.md": "dc721ad8ca6ccfca92f666f484181b707e3635c5fc6e8658eec7e0e8ab7de564",
+  "INTERFACE-WALL.md": "db640ce31e1b6b618b0bba166b7d6ca81c5d2f9de18e969fb913b3e4c34c1306",
+  "LOCAL-CHECK-QUEUE.json": "f577646780d622b353c5275385009773d61a74829c808458ea7e6cd5b991e02e",
+  "NOTES.md": "cd53abfa9912fbd28f113a4ebf20f95b9f39606fc1532ad5001c756d25dc8f39",
+  "TOPOLOGY-CONE-MANIFEST.json": "0be1f96e92e26a8fdc05875703a87bad9c63ac930ca445c2229eaf22aaa7462c",
+  "TRANSFER-LEDGER.md": "7f8b32948490030b523c228bdb4abedfbd925ebe0191b2c9b5f8451dceb6da04",
+  "checks/five_cycle_licence.py": "1fa619d857ec753381f30b27034abc5c6f4073022298572079dffbd22e460360",
+  "lean/ConnectedSetExclusion.lean": "84b6111a0bcf4f1a3f6db5806ed1c3dcbf298d317bf2398448b2a69a8679b144",
+  "lean/FiveCycleResidues.lean": "70452746c5ea999de6156cdee1e16639e6c563670e066288d45355ca9a17ead5",
+  "lean/CheckFifth.lean": "4cebfd5f28cf196e7247247e6fc40719b88c61b3c2f7184b3ff135cf6e7c14f9",
+  "trim_audit.py": "b462805f264b010a12f89ead087bc85c16c038295f6fb314419561aa77a70103",
+  "move_audit.py": "f5afca70b6ae72a19ea334c61b5bdfc49b890b344cb2650068b66cb0ad542b11",
+  "lean/WitnessSelection.lean": "214b064e395d4d9203cac1da03721d78de71c2840cabdb6923923b76eacbedc0"
+ }
+}

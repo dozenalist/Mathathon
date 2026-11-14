@@ -1,0 +1,37 @@
+{
+  "updated_utc": "2026-11-14T10:05:00Z",
+  "status": "completed_block",
+  "summary": "Audited and repaired TRACE-CONSTRAINT-W3.md; six retractions are bannered at the top of that file: compactness of finite-valued maps in measure (false), Proposition 4 with its 20-of-400 label-pair count (withdrawn), 'limits of one-hot need not be one-hot' (false for strong L2), the 3-periodic sector sequence as a weak-limit model (replaced by Rademacher), 'three labels imply |P_p| >= 3' (the palette is per-direction), and the half-wrong licensing claim. A source audit of Compactness.lean and Palettes.lean fixed the quantifiers: IsTrace is norm-closure at radius exactly 1, ae_typicalSampling is a.e.-in-centre, trace_bounds is proved from weak limits. Prop. 0 repairs licensing: the endpoint trace holds at EVERY centre, since the non-typical set is plane-null and the circle is an isometry of angular measure (paper-level, not Lean's a.e. statement). Prop. 1 is the Rademacher counterexample to the abstract compactness substitute. Prop. 2 and its corollary show the trace-limit route to W3 is incapable, not just blocked: in S_1 every trace is one-hot and strong limits of one-hot are one-hot, so no value count of 3 can arise. Prop. A is kept as a conditional complement-triple claim.",
+  "verified_results": [
+    "GRADE [A] Prop. 1 (Rademacher): on Omega = {0,1}^N with product measure, u_k = e_1 on {omega_k = 0} and e_2 otherwise gives ||u_k - u_l||^2_{L2} = 2*P(omega_k != omega_l) = 1 and P(||u_k-u_l|| >= 1) = 1/2 for all k != l, so there is no Cauchy subsequence in L2 or in measure. Checked exactly on the finite model {0,1}^3 for all three pairs. Hence the set of one-hot fields is not compact, and closed-and-bounded in L0 does not give compactness on a nonatomic space; the compactness step used by the retracted Proposition 4 is false.",
+    "GRADE [S] Source audit: Typical z = DensityOne {w | c w = c z} z; TypicalSampling c y r = 0 < r and a.e. t, Typical (y + r*direction t) (Compactness.lean 83-86); ae_typicalSampling is a.e.-in-centre at fixed radius (87-96); sampleCode at 255; sampleSet at 259; IsTrace x b := (x,1,b) in closure (sampleSet) at 261, i.e. closure at radius exactly 1 in the norm topology; trace_realization at 262; trace_limit at 289 (traces pass to limits jointly in centre and trace); trace_bounds at 297 proved from weak limits via traceCode_tendsto_iff plus weak_limit_nonneg, weak_limit_le_one, weak_limit_sum; paletteSet and tracePositive_le_palette in Palettes.lean 9-45.",
+    "GRADE [P] Prop. 0: for every centre x and a.e. direction e, c(x+e) is in P_x(e). Proof: the non-typical set N is plane-null, e -> x+e is an isometry of the circle with angular measure, so x+e is typical for a.e. e, hence (x,1,sampleCode) is in sampleSet and its code is a trace at x; tracePositive_le_palette then puts its label into the palette. This is the same argument as m10's Lemma 1 and is paper-level: Lean supplies only the a.e.-in-centre form, so the per-centre form must not be cited as machine-checked.",
+    "GRADE [P] Prop. 2 and corollary: in S_1 every trace at every centre is one-hot a.e. (two positive coordinates at a direction would put two labels in a singleton palette; sum of coordinates is 1), and a norm limit of one-hot fields is one-hot (coordinates are indicators, limits of indicators are indicators). Therefore the accumulation-limit argument cannot produce |P_p(e)| >= 3 in S_1: the limit is again one-hot. This closes the trace-limit route to W3 specifically, and nothing else.",
+    "GRADE [P] Prop. A retained, hypothesis checked: in S_1 at a centre whose transition graph contains a triangle with label set V, the unit circle is a.e. coloured in T = [6]-V, using Lemma 6.2 on the three edges plus Prop. 0 at the prescribed centre. Sharp in m3's k>=7 colouring where T has k-3 = 4 labels. It yields no finiteness, no separation and no excluded label pair."
+  ],
+  "conjectures": [
+    "The one genuinely missing object is a compactness/admissibility lemma for the prescribed sequence of trace codes at triangle centres: that sampleCode c x_n 1 has a norm-convergent subsequence when the x_n are triangle centres sharing a label set. Prop. 0 supplies the admissibility half (per-centre circle typicality); Prop. 1 shows the abstract compactness half is false, so any such lemma must use the specific geometry of the label sets and cannot follow from measurability alone.",
+    "Even if that compactness were available, the route cannot contradict S_1 (Prop. 2). So the accumulation-limit mechanism is closed independently of the compactness question; what remains for W3 is a non-limit input, most plausibly from the near field (transition supports at scale h) rather than from radius-1 traces.",
+    "Prop. A suggests the useful k=3 complement structure is per-centre and three-valued, which is consistent with m10 Theorem 2 (no centre-independent field), so any label-count argument at k=6 has to be centre-dependent and cannot be discretised."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/TRACE-CONSTRAINT-W3.md",
+    "supervisor/solve-geometry/checks/onehot_limit.py",
+    "supervisor/solve-geometry/supervisor_checks.out",
+    "supervisor/solve-geometry/CORRECTED-DEPENDENCY-MAP.md",
+    "supervisor/solve-geometry/LEMMA-isolation-window.md",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "python3 supervisor/solve-geometry/checks/onehot_limit.py (single process, ~20 ms, under the 60 s cap) -> rc 0; appends sections [13]-[14] to supervisor_checks.out: Rademacher pairwise distances 1 and 1/2 on the exact {0,1}^3 model for all three pairs, plus the admissibility bookkeeping against the Lean definitions. supervisor_checks.out is now 72 lines."
+  ],
+  "failed_routes": [
+    "RETRACTED Proposition 4 and everything downstream of it (excluded label pairs 20 of 400 and 10 of 210): the compactness of finite-valued measurable maps in convergence-in-measure is false (Rademacher).",
+    "RETRACTED the 12-sector 3-periodic sequence as a weak-limit countermodel: it has no weak limit and a constant subsequence exists; it only shows the convex hull of one-hot fields contains non-one-hot elements.",
+    "RETRACTED the inference 'b_inf takes three values implies |P_p| >= 3': the palette is per-direction, and one-hot at each direction means cardinality 1.",
+    "CLOSED (narrowly) the trace-limit route to W3 in S_1: by Prop. 2 the limit object is again one-hot, so no value count >= 3 can arise; this is a statement about that route only, not about every method.",
+    "Retired sources NOTE-far-field.md and notes/LEMMA-D-REPAIRED.md were not relied on for any claim in this block; their broad no-go wording is not adopted."
+  ],
+  "next_step": "If a further block is assigned: state the compactness lemma precisely as 'sampleCode c x_n 1 has a norm-convergent subsequence for triangle centres x_n sharing a label set V' and try to prove it from the specific geometry (the circles S(x_n,1) converge to S(p,1) and the label sets are fixed), or else search for a Rademacher-type family of 6-colourings realising oscillation, which would refute the lemma; given Prop. 2, do this only if the intended conclusion is a statement about the codes rather than about |P_p|.",
+  "escalation": null
+}

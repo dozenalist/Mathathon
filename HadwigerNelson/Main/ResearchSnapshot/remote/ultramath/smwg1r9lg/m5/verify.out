@@ -1,0 +1,69 @@
+========================================================================================
+Section 1. Moser spindle in Q(sqrt3,sqrt11): 7 vertices, 11 unit edges, chi = 4
+========================================================================================
+PASS  1.1 the 21 pairwise squared distances are nonzero exactly on 11 pairs   [unit edges: [('A', 'P1'), ('A', 'Q1'), ('A', 'P2'), ('A', 'Q2'), ('B', 'C'), ('B', 'P1'), ('B', 'Q1'), ('C', 'P2'), ('C', 'Q2'), ('P1', 'Q1'), ('P2', 'Q2')]]
+PASS  1.2 the long diagonals are NOT unit (|A-B|^2 = 3)
+PASS  1.3 the hinge edge |B-C| = 1 (this is the spindle's closing condition)
+PASS  1.4 every listed edge really has squared distance exactly 1 (no float used)
+PASS  1.5 the spindle is 4-colourable (backtracking)   [['A:0', 'B:0', 'C:1', 'P1:1', 'Q1:2', 'P2:2', 'Q2:3']]
+PASS  1.6 the spindle is 4-colourable (independent full enumeration, same count of colours)
+PASS  1.7 the spindle is NOT 3-colourable (backtracking)
+PASS  1.8 the spindle is NOT 3-colourable (full enumeration of all 3^7 assignments)
+PASS  1.9 chi(spindle) = 4 exactly (3-colourable false, 4-colourable true)
+PASS  1.10 set-valued form of (TE): no palette assignment on nonempty subsets of [3] is
+PASS  1.11   disjoint along all 11 unit edges (direct exhaustive check, 7^7 assignments)   [exactly the content of Theorem B: (TE) on the spindle forces 3 colours, which do not exist]
+
+========================================================================================
+Section 2. The map (e,v) -> e+v has Jacobian sin(phi-theta) resp. 2 sin(phi-theta)
+========================================================================================
+PASS  2.1 angle chart: det d(e+v)/d(theta,phi) = sin(phi - theta)   [sin(phi - theta)]
+PASS  2.2 (u,w) chart: det = 2 sin(2w) = 2 sin(theta - phi)   [2*sin(2*w)]
+PASS  2.3 complex form: det[Je,Jv] = Im(conj(Je) Jv) = sin(phi - theta)   [sin(phi - theta)]
+PASS  2.4 the Jacobian vanishes exactly on the diagonal e = +-v (parallel directions)
+PASS  2.5 summary: (e,v) -> x+e+v is nonsingular off the null set {e = +-v}
+
+========================================================================================
+Section 3. m13's models: s(t)=floor(9t/2pi) mod 3, (M), (M')
+========================================================================================
+PASS  3.1 s(t+pi/3) - s(t) mod 3 is 1 or 2, never 0 (grid of 1000 exact rationals)   [shifts = [-2, -1, 1, 2]]
+PASS  3.2 exact: floor(x+3/2)-floor(x) is 1 iff frac(x)<1/2, else 2 (three exact grids)
+PASS  3.3 s has period 2pi/3 exactly (shift of q by 2/3 changes 9q by 6)
+PASS  3.4 (5.7) for (M') and (M): Q_s and Q_{s'} are disjoint whenever s' != s mod 3
+PASS  3.5 (M): every palette avoids label 1, so c = 1 satisfies (5.2) and fails (T)
+PASS  3.6 (M'): Q_0 u Q_1 u Q_2 = [6], so (SA) fails for every label at every centre
+PASS  3.7 (M'): label 1 lies in Q_0, so (5.2) fails for c = 1 on the positive-measure set {s = 0}
+PASS  3.8 frozen fields fail (TE): for every palette value of (M) and (M'), P cap P = P != empty
+
+========================================================================================
+Section 4. The 3-colouring c_0 : R^2 -> {1,2,3} (circle 2-coloured by parity of
+           floor(3 arg / pi), off-circle = 3) satisfies the four axioms at 0
+========================================================================================
+PASS  4.1 e^{i(theta-pi/3)} + e^{i(theta+pi/3)} = e^{i theta} (equilateral case)   [2cos(pi/3)-1 = 0]
+PASS  4.2 |e+v|^2 = 2 + 2 cos(theta-phi), so |e+v| = 1 <=> cos(delta) = -1/2
+PASS  4.3 at delta = 2pi/3 the modulus is 1 and the argument is (theta+phi)/2
+PASS  4.4 floor(3(theta+pi/3)/pi) = floor(3theta/pi) + 1, so R flips the parity
+PASS  4.5 exact grid: c_0(e) != c_0(Re) for all 600 rational directions (5.7 at 0)
+PASS  4.6 exact grid: in the equilateral case both directions have parity opposite to e+v (5.2)
+PASS  4.7 (SA) at 0: c_0(0) = 3 and the palettes on the circle are {1,2}
+PASS  4.8 (T) at 0: c_0(e) in {c_0(e)} trivially (singleton palettes)
+PASS  4.9 |e - Re| = |1 - e^{i pi/3}| = 1 (the paper's |1-R| = 1), exact
+PASS  4.10 {0, e, Re} is a unit triangle, so chi(H_0) >= 3
+PASS  4.11 chord of length 1 on S^1 subtends pi/3: 2 sin(delta/2) = 1 <=> delta = pi/3
+PASS  4.12 c_0 is proper on H_0 (circle 2-coloured by parity, everything else colour 3)
+
+========================================================================================
+Section 5. An explicit countably infinite X with an accumulation point, whose
+           unit-distance graph is the spindle (chi = 4), so (TE) holds at k = 6
+========================================================================================
+PASS  5.1 every spindle vertex has |q|^2 < 4 (exact rational enclosure)   [max upper bound 3]
+PASS  5.2 every spiral point is at distance > 7 from every spindle vertex (no unit pair)   [min lower bound on the squared distance = 906408007/13286025]
+PASS  5.3 distinct spiral points are at distance < 1 (exact rationals)
+PASS  5.4 G[X] = spindle + isolated vertices, so chi(G[X]) = 4 <= 6
+PASS  5.5 (TE) on X holds at k = 6, and X is countable with accumulation point p
+PASS  5.6 tau is a fixed-point-free permutation of S u {M} = {0,1,2,3,4}
+PASS  5.7 (5.7) for the phase field: phase(Rf) = 1 - phase(f), so the two palettes are distinct
+PASS  5.8 (TE) for the phase field: i and tau o i are proper on all 11 unit edges of the spindle   [colour classes of i: [0, 1, 2, 3]]
+
+========================================================================================
+TOTAL: 44 checks, 44 passed, 0 failed
+========================================================================================

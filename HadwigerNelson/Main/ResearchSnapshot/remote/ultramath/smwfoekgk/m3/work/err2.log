@@ -1,0 +1,84 @@
+==== OAI.Analysis.PlaneSpectrum.InvariantMean rc=0
+==== OAI.MeasureTheory.CompactFactors.Amenability rc=1
+tree/OAI/MeasureTheory/CompactFactors/Amenability.lean:377:8: error(lean.unknownIdentifier): Unknown identifier `eventuallyEmptyOrUniv_iff.mp`
+
+==== OAI.MeasureTheory.CompactFactors.RelativeProducts rc=1
+tree/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:1:0: error: object file 'build/OAI/MeasureTheory/CompactFactors/Amenability.olean' of module OAI.MeasureTheory.CompactFactors.Amenability does not exist
+
+==== OAI.MeasureTheory.CompactFactors.Separability rc=1
+tree/OAI/MeasureTheory/CompactFactors/Separability.lean:1:0: error: object file 'build/OAI/MeasureTheory/CompactFactors/RelativeProducts.olean' of module OAI.MeasureTheory.CompactFactors.RelativeProducts does not exist
+
+==== OAI.Geometry.PlaneColoring.Compactness rc=1
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:145:53: error: expected token
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:154:75: error: expected token
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:159:67: error: expected token
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:168:58: error: invalid binder annotation, type is not a class instance
+  ?m.4
+
+Note: Use the command `set_option checkBinderAnnotations false` to disable the check
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:169:47: error: Function expected at
+  AEStronglyMeasurable
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  f
+
+Hint: The identifier `AEStronglyMeasurable` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:170:37: error: Function expected at
+  Integrable
+but this term has type
+  ?m.4
+
+Note: Expected a function because this term is being applied to the argument
+  v
+
+Hint: The identifier `Integrable` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:170:59: error: Function expected at
+  Integrable
+but this term has type
+  ?m.4
+
+Note: Expected a function because this term is being applied to the argument
+  g
+
+Hint: The identifier `Integrable` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:172:13: error(lean.unknownIdentifier): Unknown identifier `MemLp`
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:172:28: error(lean.unknownIdentifier): Unknown identifier `MemLp.of_bound`
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:173:13: error: Function expected at
+  Integrable
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (fun x => f x * v x)
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:174:13: error: Function expected at
+  Integrable
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (fun x => f x * g x)
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:175:21: error(lean.unknownIdentifier): Unknown identifier `integral_sub`
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:1
+==== OAI.Geometry.PlaneColoring.CyclicCore rc=1
+tree/OAI/Geometry/PlaneColoring/CyclicCore.lean:1:0: error: object file 'build/OAI/Geometry/PlaneColoring/FiveSupport.olean' of module OAI.Geometry.PlaneColoring.FiveSupport does not exist
+
+==== OAI.Geometry.PlaneColoring.PaletteDensity rc=1
+tree/OAI/Geometry/PlaneColoring/PaletteDensity.lean:1:0: error: object file 'build/OAI/Geometry/PlaneColoring/CircleTransport.olean' of module OAI.Geometry.PlaneColoring.CircleTransport does not exist
+
+==== OAI.Analysis.PlaneSpectrum.PhaseCollision rc=1
+tree/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:1:0: error: object file 'build/OAI/Analysis/PlaneSpectrum/PhaseEncoding.olean' of module OAI.Analysis.PlaneSpectrum.PhaseEncoding does not exist
+
+==== OAI.MeasureTheory.CompactFactors.Functions rc=1
+tree/OAI/MeasureTheory/CompactFactors/Functions.lean:1:0: error: object file 'build/OAI/MeasureTheory/CompactFactors/Kernels.olean' of module OAI.MeasureTheory.CompactFactors.Kernels does not exist
+
+==== OAI.MeasureTheory.CompactFactors.ConditionalLimits rc=1
+tree/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:1:0: error: object file 'build/OAI/MeasureTheory/CompactFactors/Approximation.olean' of module OAI.MeasureTheory.CompactFactors.Approximation does not exist
+
+==== OAI.Geometry.PlaneColoring.FourContinuity rc=1
+tree/OAI/Geometry/PlaneColoring/FourContinuity.lean:1:0: error: object file 'build/OAI/Geometry/PlaneColoring/States.olean' of module OAI.Geometry.PlaneColoring.States does not exist
+
+==== OAI.Geometry.PlaneColoring.BoundaryTrace rc=1
+tree/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:1:0: error: object file 'build/OAI/Geometry/PlaneColoring/Rigidity.olean' of module OAI.Geometry.PlaneColoring.Rigidity does not exist
+

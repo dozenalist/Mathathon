@@ -1,0 +1,42 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: 3add7c9e73fab7d16e780cfb451943e8a461e568ae6e24fc3e77368386957d3e
+Status: failed
+Exit code: 1
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\WitnessSelectionV3.lean:139:63: error: Function expected at
+  𝓝
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  0
+
+Hint: The identifier `𝓝` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\WitnessSelectionV3.lean:150:44: error: Function expected at
+  𝓝
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  0
+
+Hint: The identifier `𝓝` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\WitnessSelectionV3.lean:159:85: error: Function expected at
+  𝓝
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  0
+
+Hint: The identifier `𝓝` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+'WitnessSelection.pickAt_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WitnessSelection.stepF_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WitnessSelection.sel_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WitnessSelection.sel_tendsto' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WitnessSelection.exists_strictAnti_scale' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WitnessSelection.exists_strictAnti_scale'' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+
+STDERR
+

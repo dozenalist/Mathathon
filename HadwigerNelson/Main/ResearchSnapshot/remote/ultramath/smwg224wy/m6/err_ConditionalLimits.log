@@ -1,0 +1,43 @@
+OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:198:4: error: Function expected at
+  FiniteEncodingApproximationAt
+but this term has type
+  ?m.7
+
+Note: Expected a function because this term is being applied to the argument
+  μ
+
+Hint: The identifier `FiniteEncodingApproximationAt` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:201:9: error(nested.lean.propRecLargeElim): Tactic `cases` failed with a nested error:
+Tactic `induction` failed: recursor `Exists.casesOn` can only eliminate into `Prop`
+
+X : Type u_1
+Y : Type u_2
+W : Type u_3
+inst✝⁸ : MeasurableSpace X
+inst✝⁷ : MeasurableSpace Y
+inst✝⁶ : MeasurableSpace W
+inst✝⁵ : MulAction (↥K) X
+inst✝⁴ : MulAction (↥K) Y
+inst✝³ : MeasurableConstSMul (↥K) X
+inst✝² : MeasurableConstSMul (↥K) Y
+x✝ : Sort u_4
+FiniteEncodingApproximationAt : x✝
+μ : Measure X
+inst✝¹ : IsProbabilityMeasure μ
+inst✝ : SMulInvariantMeasure (↥K) X μ
+p : X → Y
+q : Y → W
+b : X → D
+hp : Measurable p
+hb : Measurable b
+hpe : ∀ (k : ↥K), ∀ᵐ (x : X) ∂μ, p (k • x) = k • p x
+hbe : ∀ (k : ↥K), ∀ᵐ (x : X) ∂μ, b (k • x) = k • b x
+m : ℕ
+H : Y → Fin m → ℂ
+hHeq : H =ᵐ[Measure.map p μ] PhaseEncoding.kernelEncoding (condDistrib b p μ) (fun d => ↑((eval 1) d)) m
+γ : ℝ
+this : IsProbabilityMeasure (Measure.map p μ) := inferInstance
+ha : CompactApproximation.At (Measure.map p μ) q m H γ
+⊢ sorry
+OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:270:41: error(lean.unknownIdentifier): Unknown identifier `SmallArc.exists_small_arc_constants`
+OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:270:9: error: Tactic `rcases` failed: `x✝ : ?m.467` is not an inductive datatype

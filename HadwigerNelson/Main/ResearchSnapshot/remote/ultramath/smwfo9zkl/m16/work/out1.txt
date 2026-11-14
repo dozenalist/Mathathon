@@ -1,0 +1,9 @@
+key        #occ   bip  #orbits  E1_pairs        E2    E3   groups / odd-cycle-witness
+k5_ell3       8  True     2600  [[3, 4]]        False False groups=[[3], [4]]
+k5_ell4       7 False      362  []              None  None  odd cycle: [1, 3] - [4] - [0, 2] - [1, 3]
+k5_ell5       5 False      100  []              None  None  odd cycle: [2, 4] - [0, 3] - [1, 4] - [0, 2] - [1, 3] - [2, 4]
+k6_ell3      35 False  1118252  []              None  None  odd cycle: [1, 2, 5] - [3] - [4] - [1, 2, 5]
+k6_ell4      33 False   463840  []              None  None  odd cycle: [1, 3, 5] - [4] - [0, 2] - [1, 3, 5]
+k6_ell5      31 False   164630  []              None  None  odd cycle: [1, 3, 4] - [5] - [0, 2] - [1, 3, 4]
+k6_ell6      29 False    50792  []              None  None  odd cycle: [2, 4, 5] - [0, 3] - [1, 4, 5] - [0, 2] - [1, 3] - [2, 4, 5]
+SHA256 of canonical json: a83e6d562699e56a1f5691bf38e0ae98664c879b9a0fdceb261e3f5cdb229609

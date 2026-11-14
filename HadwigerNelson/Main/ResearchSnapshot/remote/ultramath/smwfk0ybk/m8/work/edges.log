@@ -1,0 +1,362 @@
+@@@OAI.Analysis.PlaneSpectrum.Basic	0	[]
+@@@OAI.Analysis.PlaneSpectrum.Characters	1	[OAI.Analysis.PlaneSpectrum.Basic]
+@@@OAI.Analysis.PlaneSpectrum.Fourier	0	[]
+@@@OAI.Geometry.PlaneColoring.Coloring	0	[]
+@@@OAI.Analysis.PlaneSpectrum.CircleDecay	2	[OAI.Analysis.PlaneSpectrum.Fourier, OAI.Geometry.PlaneColoring.Coloring]
+@@@OAI.Geometry.PlaneColoring.WeakColoring	1	[OAI.Geometry.PlaneColoring.Coloring]
+@@@OAI.Geometry.PlaneColoring.Compactness	2	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.WeakColoring]
+@@@OAI.Analysis.PlaneSpectrum.CircleOperator	4	[OAI.Analysis.PlaneSpectrum.Fourier,
+ OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Analysis.PlaneSpectrum.CircleDecay,
+ OAI.Geometry.PlaneColoring.Compactness]
+@@@OAI.Analysis.PlaneSpectrum.InvariantMean	0	[]
+@@@OAI.Analysis.PlaneSpectrum.Multipliers	3	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.Analysis.PlaneSpectrum.Characters,
+ OAI.Analysis.PlaneSpectrum.InvariantMean]
+@@@OAI.Analysis.PlaneSpectrum.FourierTests	4	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.Analysis.PlaneSpectrum.Characters,
+ OAI.Analysis.PlaneSpectrum.InvariantMean,
+ OAI.Analysis.PlaneSpectrum.Multipliers]
+@@@OAI.Analysis.PlaneSpectrum.SmallArcs	0	[]
+@@@OAI.Analysis.PlaneSpectrum.PhaseEncoding	0	[]
+@@@OAI.Analysis.PlaneSpectrum.PhaseCollision	1	[OAI.Analysis.PlaneSpectrum.PhaseEncoding]
+@@@OAI.MeasureTheory.CompactFactors.ConditionalSelection	2	[OAI.Analysis.PlaneSpectrum.PhaseEncoding,
+ OAI.Analysis.PlaneSpectrum.PhaseCollision]
+@@@OAI.Analysis.PlaneSpectrum.ConditionalSpectrum	6	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.Analysis.PlaneSpectrum.Multipliers,
+ OAI.Analysis.PlaneSpectrum.FourierTests,
+ OAI.Analysis.PlaneSpectrum.SmallArcs,
+ OAI.Analysis.PlaneSpectrum.PhaseEncoding,
+ OAI.MeasureTheory.CompactFactors.ConditionalSelection]
+@@@OAI.MeasureTheory.CompactFactors.Amenability	0	[]
+@@@OAI.MeasureTheory.CompactFactors.Centers	0	[]
+@@@OAI.MeasureTheory.CompactFactors.RelativeCenters	2	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.MeasureTheory.CompactFactors.Centers]
+@@@OAI.MeasureTheory.CompactFactors.Approximation	5	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.Analysis.PlaneSpectrum.FourierTests,
+ OAI.Analysis.PlaneSpectrum.PhaseEncoding,
+ OAI.Analysis.PlaneSpectrum.ConditionalSpectrum,
+ OAI.MeasureTheory.CompactFactors.RelativeCenters]
+@@@OAI.MeasureTheory.CompactFactors.ConditionalLimits	8	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.Analysis.PlaneSpectrum.FourierTests,
+ OAI.Analysis.PlaneSpectrum.SmallArcs,
+ OAI.Analysis.PlaneSpectrum.PhaseEncoding,
+ OAI.MeasureTheory.CompactFactors.ConditionalSelection,
+ OAI.Analysis.PlaneSpectrum.ConditionalSpectrum,
+ OAI.MeasureTheory.CompactFactors.RelativeCenters,
+ OAI.MeasureTheory.CompactFactors.Approximation]
+@@@OAI.MeasureTheory.CompactFactors.Kernels	3	[OAI.MeasureTheory.CompactFactors.ConditionalSelection,
+ OAI.MeasureTheory.CompactFactors.RelativeCenters,
+ OAI.MeasureTheory.CompactFactors.ConditionalLimits]
+@@@OAI.MeasureTheory.CompactFactors.BoundedFunctions	2	[OAI.MeasureTheory.CompactFactors.ConditionalSelection,
+ OAI.MeasureTheory.CompactFactors.Kernels]
+@@@OAI.MeasureTheory.CompactFactors.RelativeProducts	4	[OAI.MeasureTheory.CompactFactors.Amenability,
+ OAI.MeasureTheory.CompactFactors.RelativeCenters,
+ OAI.MeasureTheory.CompactFactors.Kernels,
+ OAI.MeasureTheory.CompactFactors.BoundedFunctions]
+@@@OAI.MeasureTheory.CompactFactors.Separability	4	[OAI.MeasureTheory.CompactFactors.Amenability,
+ OAI.MeasureTheory.CompactFactors.Kernels,
+ OAI.MeasureTheory.CompactFactors.BoundedFunctions,
+ OAI.MeasureTheory.CompactFactors.RelativeProducts]
+@@@OAI.MeasureTheory.CompactFactors.AlgebraModels	6	[OAI.MeasureTheory.CompactFactors.ConditionalSelection,
+ OAI.MeasureTheory.CompactFactors.Amenability,
+ OAI.MeasureTheory.CompactFactors.Kernels,
+ OAI.MeasureTheory.CompactFactors.BoundedFunctions,
+ OAI.MeasureTheory.CompactFactors.RelativeProducts,
+ OAI.MeasureTheory.CompactFactors.Separability]
+@@@OAI.MeasureTheory.CompactFactors.Functions	2	[OAI.MeasureTheory.CompactFactors.ConditionalSelection,
+ OAI.MeasureTheory.CompactFactors.Kernels]
+@@@OAI.MeasureTheory.CompactFactors.Factors	3	[OAI.MeasureTheory.CompactFactors.ConditionalLimits,
+ OAI.MeasureTheory.CompactFactors.Kernels,
+ OAI.MeasureTheory.CompactFactors.Functions]
+@@@OAI.MeasureTheory.CompactFactors.Stationary	9	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.Analysis.PlaneSpectrum.InvariantMean,
+ OAI.Analysis.PlaneSpectrum.FourierTests,
+ OAI.MeasureTheory.CompactFactors.RelativeCenters,
+ OAI.MeasureTheory.CompactFactors.Approximation,
+ OAI.MeasureTheory.CompactFactors.ConditionalLimits,
+ OAI.MeasureTheory.CompactFactors.Kernels,
+ OAI.MeasureTheory.CompactFactors.Functions,
+ OAI.MeasureTheory.CompactFactors.Factors]
+@@@OAI.Analysis.PlaneSpectrum.Representations	3	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.MeasureTheory.CompactFactors.AlgebraModels,
+ OAI.MeasureTheory.CompactFactors.Stationary]
+@@@OAI.Analysis.PlaneSpectrum.Energy	12	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.Analysis.PlaneSpectrum.InvariantMean,
+ OAI.Analysis.PlaneSpectrum.FourierTests,
+ OAI.Analysis.PlaneSpectrum.ConditionalSpectrum,
+ OAI.MeasureTheory.CompactFactors.Amenability,
+ OAI.MeasureTheory.CompactFactors.RelativeCenters,
+ OAI.MeasureTheory.CompactFactors.Kernels,
+ OAI.MeasureTheory.CompactFactors.BoundedFunctions,
+ OAI.MeasureTheory.CompactFactors.RelativeProducts,
+ OAI.MeasureTheory.CompactFactors.Separability,
+ OAI.MeasureTheory.CompactFactors.AlgebraModels,
+ OAI.Analysis.PlaneSpectrum.Representations]
+@@@OAI.Analysis.PlaneSpectrum.NumberFields	0	[]
+@@@OAI.Analysis.PlaneSpectrum.Selections	1	[OAI.Analysis.PlaneSpectrum.NumberFields]
+@@@OAI.Analysis.PlaneSpectrum.RadialEnergy	14	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.Analysis.PlaneSpectrum.Multipliers,
+ OAI.Analysis.PlaneSpectrum.FourierTests,
+ OAI.Analysis.PlaneSpectrum.ConditionalSpectrum,
+ OAI.MeasureTheory.CompactFactors.Amenability,
+ OAI.MeasureTheory.CompactFactors.RelativeCenters,
+ OAI.MeasureTheory.CompactFactors.Kernels,
+ OAI.MeasureTheory.CompactFactors.BoundedFunctions,
+ OAI.MeasureTheory.CompactFactors.RelativeProducts,
+ OAI.MeasureTheory.CompactFactors.Separability,
+ OAI.MeasureTheory.CompactFactors.AlgebraModels,
+ OAI.Analysis.PlaneSpectrum.Representations,
+ OAI.Analysis.PlaneSpectrum.Energy,
+ OAI.Analysis.PlaneSpectrum.Selections]
+@@@OAI.Analysis.PlaneSpectrum.SpectralMeasure	4	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.Analysis.PlaneSpectrum.ConditionalSpectrum,
+ OAI.MeasureTheory.CompactFactors.BoundedFunctions,
+ OAI.Analysis.PlaneSpectrum.Representations]
+@@@OAI.Analysis.PlaneSpectrum.Ergodicity	17	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.Analysis.PlaneSpectrum.FourierTests,
+ OAI.MeasureTheory.CompactFactors.ConditionalSelection,
+ OAI.Analysis.PlaneSpectrum.ConditionalSpectrum,
+ OAI.MeasureTheory.CompactFactors.Amenability,
+ OAI.MeasureTheory.CompactFactors.RelativeCenters,
+ OAI.MeasureTheory.CompactFactors.Approximation,
+ OAI.MeasureTheory.CompactFactors.ConditionalLimits,
+ OAI.MeasureTheory.CompactFactors.Kernels,
+ OAI.MeasureTheory.CompactFactors.BoundedFunctions,
+ OAI.MeasureTheory.CompactFactors.RelativeProducts,
+ OAI.MeasureTheory.CompactFactors.Factors,
+ OAI.MeasureTheory.CompactFactors.Stationary,
+ OAI.Analysis.PlaneSpectrum.Representations,
+ OAI.Analysis.PlaneSpectrum.Energy,
+ OAI.Analysis.PlaneSpectrum.RadialEnergy,
+ OAI.Analysis.PlaneSpectrum.SpectralMeasure]
+@@@OAI.Geometry.PlaneColoring.Expansion	0	[]
+@@@OAI.Geometry.PlaneColoring.BinaryDynamics	1	[OAI.Geometry.PlaneColoring.Expansion]
+@@@OAI.Geometry.PlaneColoring.CircleMaps	1	[OAI.Geometry.PlaneColoring.Coloring]
+@@@OAI.Geometry.PlaneColoring.CircleTransport	4	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.Expansion,
+ OAI.Geometry.PlaneColoring.BinaryDynamics,
+ OAI.Geometry.PlaneColoring.CircleMaps]
+@@@OAI.Geometry.PlaneColoring.Transitions	5	[OAI.Analysis.PlaneSpectrum.Fourier,
+ OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.WeakColoring,
+ OAI.Geometry.PlaneColoring.Compactness,
+ OAI.Analysis.PlaneSpectrum.CircleOperator]
+@@@OAI.Geometry.PlaneColoring.Palettes	4	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.Compactness,
+ OAI.Analysis.PlaneSpectrum.CircleOperator,
+ OAI.Geometry.PlaneColoring.Transitions]
+@@@OAI.Geometry.PlaneColoring.PaletteDensity	6	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.WeakColoring,
+ OAI.Geometry.PlaneColoring.Compactness,
+ OAI.Geometry.PlaneColoring.CircleMaps,
+ OAI.Geometry.PlaneColoring.CircleTransport,
+ OAI.Geometry.PlaneColoring.Palettes]
+@@@OAI.Geometry.PlaneColoring.PaletteTransport	7	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.Compactness,
+ OAI.Geometry.PlaneColoring.Expansion,
+ OAI.Geometry.PlaneColoring.CircleMaps,
+ OAI.Geometry.PlaneColoring.CircleTransport,
+ OAI.Geometry.PlaneColoring.Palettes,
+ OAI.Geometry.PlaneColoring.PaletteDensity]
+@@@OAI.Geometry.PlaneColoring.Rigidity	3	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.WeakColoring,
+ OAI.Geometry.PlaneColoring.PaletteTransport]
+@@@OAI.Geometry.PlaneColoring.BinaryPalettes	10	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.WeakColoring,
+ OAI.Geometry.PlaneColoring.Compactness,
+ OAI.Geometry.PlaneColoring.Expansion,
+ OAI.Geometry.PlaneColoring.BinaryDynamics,
+ OAI.Geometry.PlaneColoring.CircleMaps,
+ OAI.Geometry.PlaneColoring.CircleTransport,
+ OAI.Geometry.PlaneColoring.Palettes,
+ OAI.Geometry.PlaneColoring.PaletteDensity,
+ OAI.Geometry.PlaneColoring.PaletteTransport]
+@@@OAI.Geometry.PlaneColoring.States	10	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.WeakColoring,
+ OAI.Geometry.PlaneColoring.Expansion,
+ OAI.Geometry.PlaneColoring.CircleMaps,
+ OAI.Geometry.PlaneColoring.CircleTransport,
+ OAI.Geometry.PlaneColoring.Transitions,
+ OAI.Geometry.PlaneColoring.Palettes,
+ OAI.Geometry.PlaneColoring.PaletteDensity,
+ OAI.Geometry.PlaneColoring.PaletteTransport,
+ OAI.Geometry.PlaneColoring.BinaryPalettes]
+@@@OAI.Geometry.PlaneColoring.BoundaryTrace	8	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.WeakColoring,
+ OAI.Geometry.PlaneColoring.Compactness,
+ OAI.Geometry.PlaneColoring.Palettes,
+ OAI.Geometry.PlaneColoring.PaletteDensity,
+ OAI.Geometry.PlaneColoring.Rigidity,
+ OAI.Geometry.PlaneColoring.BinaryPalettes,
+ OAI.Geometry.PlaneColoring.States]
+@@@OAI.Geometry.PlaneColoring.AngularBoundary	4	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.Palettes,
+ OAI.Geometry.PlaneColoring.PaletteTransport,
+ OAI.Geometry.PlaneColoring.BoundaryTrace]
+@@@OAI.Geometry.PlaneColoring.Exclusion	6	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.Palettes,
+ OAI.Geometry.PlaneColoring.PaletteTransport,
+ OAI.Geometry.PlaneColoring.BinaryPalettes,
+ OAI.Geometry.PlaneColoring.States,
+ OAI.Geometry.PlaneColoring.AngularBoundary]
+@@@OAI.Geometry.PlaneColoring.FourContinuity	11	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.WeakColoring,
+ OAI.Geometry.PlaneColoring.Compactness,
+ OAI.Geometry.PlaneColoring.Expansion,
+ OAI.Geometry.PlaneColoring.CircleMaps,
+ OAI.Geometry.PlaneColoring.CircleTransport,
+ OAI.Geometry.PlaneColoring.Transitions,
+ OAI.Geometry.PlaneColoring.Palettes,
+ OAI.Geometry.PlaneColoring.PaletteDensity,
+ OAI.Geometry.PlaneColoring.PaletteTransport,
+ OAI.Geometry.PlaneColoring.States]
+@@@OAI.Geometry.PlaneColoring.FourTransport	7	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.CircleMaps,
+ OAI.Geometry.PlaneColoring.CircleTransport,
+ OAI.Geometry.PlaneColoring.PaletteDensity,
+ OAI.Geometry.PlaneColoring.PaletteTransport,
+ OAI.Geometry.PlaneColoring.States,
+ OAI.Geometry.PlaneColoring.FourContinuity]
+@@@OAI.Geometry.PlaneColoring.Accumulation	11	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.CircleMaps,
+ OAI.Geometry.PlaneColoring.Transitions,
+ OAI.Geometry.PlaneColoring.Palettes,
+ OAI.Geometry.PlaneColoring.PaletteDensity,
+ OAI.Geometry.PlaneColoring.PaletteTransport,
+ OAI.Geometry.PlaneColoring.BinaryPalettes,
+ OAI.Geometry.PlaneColoring.States,
+ OAI.Geometry.PlaneColoring.Exclusion,
+ OAI.Geometry.PlaneColoring.FourContinuity,
+ OAI.Geometry.PlaneColoring.FourTransport]
+@@@OAI.Geometry.PlaneColoring.Assembly	0	[]
+@@@OAI.Geometry.PlaneColoring.Basic	0	[]
+@@@OAI.Geometry.PlaneColoring.BorelTransfer	4	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Analysis.PlaneSpectrum.Representations,
+ OAI.Analysis.PlaneSpectrum.Ergodicity]
+@@@OAI.Geometry.PlaneColoring.FiveSupport	13	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.Compactness,
+ OAI.Geometry.PlaneColoring.CircleMaps,
+ OAI.Geometry.PlaneColoring.CircleTransport,
+ OAI.Geometry.PlaneColoring.Transitions,
+ OAI.Geometry.PlaneColoring.Palettes,
+ OAI.Geometry.PlaneColoring.PaletteDensity,
+ OAI.Geometry.PlaneColoring.PaletteTransport,
+ OAI.Geometry.PlaneColoring.States,
+ OAI.Geometry.PlaneColoring.BoundaryTrace,
+ OAI.Geometry.PlaneColoring.Exclusion,
+ OAI.Geometry.PlaneColoring.FourTransport,
+ OAI.Geometry.PlaneColoring.Accumulation]
+@@@OAI.Geometry.PlaneColoring.CyclicCore	9	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.Transitions,
+ OAI.Geometry.PlaneColoring.Palettes,
+ OAI.Geometry.PlaneColoring.PaletteDensity,
+ OAI.Geometry.PlaneColoring.PaletteTransport,
+ OAI.Geometry.PlaneColoring.States,
+ OAI.Geometry.PlaneColoring.Exclusion,
+ OAI.Geometry.PlaneColoring.Accumulation,
+ OAI.Geometry.PlaneColoring.FiveSupport]
+@@@OAI.Geometry.PlaneColoring.DiskAverages	4	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.WeakColoring,
+ OAI.Geometry.PlaneColoring.Transitions,
+ OAI.Geometry.PlaneColoring.Accumulation]
+@@@OAI.Geometry.PlaneColoring.PlanarCovers	2	[OAI.Geometry.PlaneColoring.Transitions,
+ OAI.Geometry.PlaneColoring.DiskAverages]
+@@@OAI.Geometry.PlaneColoring.GraphRealization	5	[OAI.Geometry.PlaneColoring.Transitions,
+ OAI.Geometry.PlaneColoring.AngularBoundary,
+ OAI.Geometry.PlaneColoring.CyclicCore,
+ OAI.Geometry.PlaneColoring.DiskAverages,
+ OAI.Geometry.PlaneColoring.PlanarCovers]
+@@@OAI.Geometry.PlaneColoring.Interfaces	7	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.Palettes,
+ OAI.Geometry.PlaneColoring.PaletteDensity,
+ OAI.Geometry.PlaneColoring.PaletteTransport,
+ OAI.Geometry.PlaneColoring.BinaryPalettes,
+ OAI.Geometry.PlaneColoring.States,
+ OAI.Geometry.PlaneColoring.AngularBoundary]
+@@@OAI.Geometry.PlaneColoring.Moser	0	[]
+@@@OAI.Geometry.PlaneColoring.Sectors	12	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.WeakColoring,
+ OAI.Geometry.PlaneColoring.CircleMaps,
+ OAI.Geometry.PlaneColoring.CircleTransport,
+ OAI.Geometry.PlaneColoring.Palettes,
+ OAI.Geometry.PlaneColoring.PaletteDensity,
+ OAI.Geometry.PlaneColoring.PaletteTransport,
+ OAI.Geometry.PlaneColoring.BinaryPalettes,
+ OAI.Geometry.PlaneColoring.States,
+ OAI.Geometry.PlaneColoring.BoundaryTrace,
+ OAI.Geometry.PlaneColoring.AngularBoundary,
+ OAI.Geometry.PlaneColoring.Moser]
+@@@OAI.Geometry.PlaneColoring.ContinuumLimits	10	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.States,
+ OAI.Geometry.PlaneColoring.AngularBoundary,
+ OAI.Geometry.PlaneColoring.Exclusion,
+ OAI.Geometry.PlaneColoring.Accumulation,
+ OAI.Geometry.PlaneColoring.CyclicCore,
+ OAI.Geometry.PlaneColoring.DiskAverages,
+ OAI.Geometry.PlaneColoring.GraphRealization,
+ OAI.Geometry.PlaneColoring.Interfaces,
+ OAI.Geometry.PlaneColoring.Sectors]
+@@@OAI.Geometry.PlaneColoring.DiskExtension	1	[OAI.Geometry.PlaneColoring.GraphRealization]
+@@@OAI.Geometry.PlaneColoring.GraphCuts	2	[OAI.Geometry.PlaneColoring.GraphRealization,
+ OAI.Geometry.PlaneColoring.DiskExtension]
+@@@OAI.Geometry.PlaneColoring.HoleApproximation	3	[OAI.Geometry.PlaneColoring.CyclicCore,
+ OAI.Geometry.PlaneColoring.GraphRealization,
+ OAI.Geometry.PlaneColoring.DiskExtension]
+@@@OAI.Geometry.PlaneColoring.GraphPatches	4	[OAI.Geometry.PlaneColoring.GraphRealization,
+ OAI.Geometry.PlaneColoring.DiskExtension,
+ OAI.Geometry.PlaneColoring.GraphCuts,
+ OAI.Geometry.PlaneColoring.HoleApproximation]
+@@@OAI.Geometry.PlaneColoring.FullApproximation	9	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.CyclicCore,
+ OAI.Geometry.PlaneColoring.DiskAverages,
+ OAI.Geometry.PlaneColoring.GraphRealization,
+ OAI.Geometry.PlaneColoring.ContinuumLimits,
+ OAI.Geometry.PlaneColoring.DiskExtension,
+ OAI.Geometry.PlaneColoring.GraphCuts,
+ OAI.Geometry.PlaneColoring.HoleApproximation,
+ OAI.Geometry.PlaneColoring.GraphPatches]
+@@@OAI.Geometry.PlaneColoring.Mesh	8	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.AngularBoundary,
+ OAI.Geometry.PlaneColoring.DiskAverages,
+ OAI.Geometry.PlaneColoring.GraphRealization,
+ OAI.Geometry.PlaneColoring.ContinuumLimits,
+ OAI.Geometry.PlaneColoring.DiskExtension,
+ OAI.Geometry.PlaneColoring.HoleApproximation,
+ OAI.Geometry.PlaneColoring.FullApproximation]
+@@@OAI.Geometry.PlaneColoring.Five	8	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Analysis.PlaneSpectrum.Representations,
+ OAI.Geometry.PlaneColoring.BorelTransfer,
+ OAI.Geometry.PlaneColoring.PlanarCovers,
+ OAI.Geometry.PlaneColoring.GraphRealization,
+ OAI.Geometry.PlaneColoring.FullApproximation,
+ OAI.Geometry.PlaneColoring.Mesh]
+@@@OAI.Geometry.PlaneColoring.Lattice	0	[]
+@@@OAI.Geometry.PlaneColoring.Metric	1	[OAI.Geometry.PlaneColoring.Basic]
+@@@OAI.Geometry.PlaneColoring.Covering	0	[]
+@@@OAI.Geometry.PlaneColoring.MeasurableAssembly	0	[]
+@@@OAI.Geometry.PlaneColoring.MeasurableProper	1	[OAI.Geometry.PlaneColoring.Basic]
+@@@OAI.Geometry.PlaneColoring.Seven	7	[OAI.Geometry.PlaneColoring.Assembly,
+ OAI.Geometry.PlaneColoring.Basic,
+ OAI.Geometry.PlaneColoring.Lattice,
+ OAI.Geometry.PlaneColoring.Metric,
+ OAI.Geometry.PlaneColoring.Covering,
+ OAI.Geometry.PlaneColoring.MeasurableAssembly,
+ OAI.Geometry.PlaneColoring.MeasurableProper]
+@@@OAI.Geometry.PlaneColoring.Chromatic	4	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.Basic,
+ OAI.Geometry.PlaneColoring.Five,
+ OAI.Geometry.PlaneColoring.Seven]
+@@@OAI.Geometry.PlaneColoring.ConnectedUnitFree	0	[]
+@@@OAI.Geometry.PlaneColoring.Converse	3	[OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Geometry.PlaneColoring.WeakColoring,
+ OAI.Geometry.PlaneColoring.States]
+@@@OAI.Geometry.PlaneColoring.NullSetRobust	2	[OAI.Geometry.PlaneColoring.Five, OAI.Geometry.PlaneColoring.Converse]
+@@@OAI.Geometry.PlaneColoring.Transfer	5	[OAI.Analysis.PlaneSpectrum.Basic,
+ OAI.Geometry.PlaneColoring.Coloring,
+ OAI.Analysis.PlaneSpectrum.Representations,
+ OAI.Geometry.PlaneColoring.BorelTransfer,
+ OAI.Geometry.PlaneColoring.Converse]

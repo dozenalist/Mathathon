@@ -1,0 +1,134 @@
+{
+ "updated_utc": "2026-11-14T10:31:54Z",
+ "status": "completed_block",
+ "summary": "Analysis only; no computation, no solver, no Lean. The Heule-553 certificate (adaptive_k5.json: 16-step adaptive chase, 34 witnesses, final_survivors 0) establishes (Sep): for every pair there is A colouring separating it. Its form is 'for all pairs exists colouring', which does not commute with 'exists colouring realising all requested relations'. It gives no simultaneous pattern, no completeness (the 34 are a targeted subset, not an enumeration), no merging information, and nothing at arity >= 3. Separations proved: (A) vs (B) trivially (B needs an injective 5-colouring of 553 vertices); (A) vs (D) by W_6 = centre plus hexagon (7 vertices, 12 edges, induced, Q(sqrt3)) at k = 4, where every pair is separable yet the locally consistent prescription c(0)=1,c(1)=2,c(2)=3,c(3)=4 has no extension because the hub starves. One higher-arity relation proposed: R3 = an independent triple forced non-rainbow at k = 5. Not an edge (independence), and not an arity-2 palette argument, because every such device here forces a pair equal and the certificate refutes that for every pair (census: max common neighbours 2). A deterministic selection rule S and the exact 19708-clause CNF are specified. NOT run. No forcing is claimed.",
+ "verified_results": [
+  {
+   "statement": "The certificate is an adaptive chase artifact: n=553, m=2722, n_witnesses=34, verified_witnesses=18, 16 steps all SAT, baseline 491 = sum_choose2, final_survivors 0; each witness a 553-vector over {0,1,2,3,4}; witness 1 class sizes [129,116,115,103,90].",
+   "grade": "READ from supervisor/solve-graphs/certs/adaptive_k5.json (frozen copy, hash-identical); witness verification itself is the supervisor's, not re-run by me"
+  },
+  {
+   "statement": "(Sep) holds: for every distinct pair there is a witness separating it. Consequence: no pair is forced equal in every proper k-colouring for any k >= 5, since a proper 5-colouring is a proper k-colouring.",
+   "grade": "valid consequence of the artifact; PROOF of the implication, artifact data inherited"
+  },
+  {
+   "statement": "Vacuity caveat: at k = 4 the graph has no proper 4-colouring, so 'equal in every 4-colouring' is true of every pair; the forcing question is meaningful only where colourings exist (k >= 5 here).",
+   "grade": "PROOF"
+  },
+  {
+   "statement": "Logical forms are distinct: (A) forall pairs exists colouring [verified], (B) exists colouring forall pairs [false: needs an injective 5-colouring of 553 vertices], (C) forall relation-sets exists colouring [open], (D) exists colouring realising all requested relations [open]. (A) implies none of the simultaneous forms.",
+   "grade": "PROOF (quantifier reasoning)"
+  },
+  {
+   "statement": "Concrete induced unit-distance example of (Sep) without arbitrary precolouring extension: W_6 (centre + regular hexagon, 7 vertices, 12 edges, exactly the unit pairs, coordinates in Q(sqrt3)) at k = 4 has every one of its 21 pairs separable, yet the locally consistent prescription c(0)=1,c(1)=2,c(2)=3,c(3)=4 has no extension, since the hub is adjacent to all six rim vertices and needs a fifth colour. Verified by hand with explicit colourings for the two non-adjacent-pair cases.",
+   "grade": "PROOF, hand-checked; not machine-verified this block"
+  },
+  {
+   "statement": "Contrast: at k = 3 the same W_6 fails (Sep) - the rim must be properly 2-coloured and the hub takes the third colour, so c(0)=c(2) always. W_6 at k=3 is therefore another (H2)-type forced-equal gadget (p=0, q=2, distance sqrt3); it is not minimal and is not claimed to be new.",
+   "grade": "PROOF, hand-checked"
+  },
+  {
+   "statement": "R3 (anti-rainbow triple at k=5): an independent triple with no proper 5-colouring giving it three distinct colours. Not an edge (independence is automatic inside a colour class). Not reducible to arity 2: a forced-equal pair in T would explain it, but (Sep) refutes forced equality for every pair; a forced-different pair would push towards rainbow, not away. The census reports max common neighbours = 2, so the only common-neighbour palette device available is the diamond type, which forces a pair equal.",
+   "grade": "PROOF given (Sep) plus the census; census inherited, not recomputed"
+  },
+  {
+   "statement": "Rule S (deterministic selection): take witness 1, a largest colour class C (ties to smallest label), sort C by index, form the first 30 lexicographic triples, compute r(T) = number of witnesses rainbow on T, take the first with r(T)=0; if none of the 30 has r(T)=0, stop with no SAT run. r(T) >= 1 is conclusive that T is NOT forced; r(T) = 0 is only a filter and licenses nothing on its own.",
+   "grade": "specification; NOT executed"
+  },
+  {
+   "statement": "Exact SAT encoding for the one bounded test: 2765 variables x[v][c]; at-least-one (553 clauses of width 5), at-most-one (5530 binary), edge-difference (13610 binary, 5 per edge), and rainbow (15 binary on T). 19708 clauses total, no auxiliary variables.",
+   "grade": "specification; NOT run"
+  },
+  {
+   "statement": "No new forcing is claimed and no forcing pair or anti-rainbow triple is asserted to exist. This is a possible alternate use of the seed, not evidence.",
+   "grade": "scope statement"
+  }
+ ],
+ "conjectures": [
+  "An anti-rainbow independent triple may well not exist at k = 5, in which case the probe returns SAT-for-rainbow and the arity-3 question stays open for the remaining ~2.8e7 triples; the value of the single test is to fix a cheap, pre-registered first datum rather than to settle the question.",
+  "If R3 is forced for some triple, it is the first relation in this project not reducible to arity 2, and the natural successor is the amplifier question at arity 3: whether a forced anti-rainbow triple can be broken by one extra colour, in the way (H4) breaks a forced-equal pair."
+ ],
+ "artifacts": [
+  "supervisor/solve-independent/audit-amplifier/TERMINAL-RELATIONS.md",
+  "supervisor/solve-independent/audit-amplifier/adaptive_k5.frozen.json",
+  "supervisor/solve-independent/audit-amplifier/census_heule553.frozen.json",
+  "supervisor/solve-independent/audit-amplifier/AUDIT.md",
+  "supervisor/solve-independent/audit-amplifier/AMPLIFIER.frozen.md",
+  "supervisor/solve-independent/audit-amplifier/chain_k2_n3.py",
+  "supervisor/solve-independent/check_null_transfer.lean",
+  "supervisor/solve-independent/STATUS.json"
+ ],
+ "tests_run": [
+  {
+   "command": "(no computation, no solver, no Lean - analysis only as instructed)",
+   "outcome": "artifact reads and proof work only"
+  },
+  {
+   "command": "sha256sum on the two frozen artifacts vs the originals",
+   "outcome": "identical: adaptive_k5 9ab71b7a..., census_heule553 98f25ec5..."
+  },
+  {
+   "command": "python (read only) to print the artifact's field structure",
+   "outcome": "n_witnesses 34, verified_witnesses 18, 16 steps all SAT, final_survivors 0, witness length 553, labels {0..4}, witness-1 class sizes [129,116,115,103,90]"
+  }
+ ],
+ "failed_routes": [
+  "My first sublattice enumeration used the lower-triangular HNF <(a,0),(b,c)>, which is NOT a complete list: it misses 6 of the 8 index-7 sublattices, including the paper's <(1,3),(0,7)>, and wrongly gave minimum index 8 at a = 2/5. Fixed to upper HNF <(a,b),(0,c)>; the control then gave 7 as it must.",
+  "The heuristic bound index >= ceil((1+D)^2/(3a^2)) = 17 at a = 1/5 was wrong (ring 16 escapes it); replaced by the multiplicative-norm argument giving 16, which the enumeration confirms.",
+  "A density argument (clusters of <= 4 separated by 1.3856) does not give a contradiction at six colours: 2.65 > 1.60. Recorded as a gap, not pursued further in this block.",
+  "A hand estimate that ring-16 cells could carry the N=16 forced offsets was wrong (ring 16 is unforced because dmin >= 1); it does not affect this block, where the window proof bounds N < 16.33 independently.",
+  "Carried forward and still relevant: the earlier lower-triangular HNF enumeration was incomplete (missed 6 of 8 index-7 sublattices); this block uses the upper HNF only, and the index-19 counts here are on that corrected enumeration.",
+  "p19_shrink.py: greedy UNSAT-core minimisation (73+ solver calls) exceeded the cap and produced no output; superseded, no core certificate.",
+  "k = 7 (i.e. chi = 8) DRUP certificate: generation exceeded 60 s; abandoned. The chi = 8 claim therefore rests on two CDCL decisions plus a verified 8-colouring, not on a proof.",
+  "rup.c first version had two real defects: clauses added with watches already false at level 0, and unit clauses enqueued but not propagated. The second produced a spurious RUP FAILURE; diagnosed with a naive independent propagation. Both fixed; the shipped checker is the fixed one.",
+  "patch19_proof.py: abandoned driver (pysat returns DIMACS strings, so its empty-clause assertion fired). Superseded by p19_gen.py.",
+  "Earlier in this block's lineage: the 'every 6-subset contains an edge' line in QUOTIENT16.md \u2014 retracted as a chromatic argument; K_16 is the valid one.",
+  "No SAT search, no core minimisation and no 7-UNSAT work in this block, per instruction; the earlier failures are retained and documented in FAILED-RUNS.md (RUP FAILURE at step 26154 caused by unpropagated units in my checker; shrink timeout; k=7 generation timeout; incomplete lower-HNF enumeration).",
+  "An earlier attempt to parse the exact per-ring values back from JSON strings failed (a hand-rolled parser); replaced by carrying the Q3 objects directly. No numerical claim changed.",
+  "Nothing failed in this block's single experiment. Recorded for continuity: pysat's cadical153 with_proof must NOT be used for DRAT here (its writer mangles the proof, per supervisor/solve-graphs/certs/shard_b_summary.md); the cadical binary was used instead, and my own rup.c was not used at all.",
+  "The earlier blanket requirement (boundary ownership must be constructed before any 6-upper-bound consequence, stated in CELL-NOGO-v2.md section 1 and RECOVERY.md) is RETRACTED as wrong; it treated as necessary a step that the null-set transfer lemma shows does not exist.",
+  "A single global translation avoiding B does not exist (it would require B empty), so the compactness step cannot be replaced by a global translate; any future argument that tries to pick one t for the whole plane is invalid.",
+  "RETRACTED (supervisor-caught): the claim that (H) is necessary. (H) is sufficient only; the exact criterion is embeddability of every finite unit-distance graph.",
+  "RETRACTED (supervisor-caught): the claim that a half-plane is killed by the diameter objection. A half-plane satisfies (H); the objection applies only to bounded regions and fixed-width strips.",
+  "CORRECTED (supervisor-caught): an arbitrary colouring of all cell interiors is not thereby cell-constant; the Cayley-graph equivalence needs that hypothesis stated.",
+  "CORRECTED (supervisor-caught): compactness is used in this proof but was wrongly graded indispensable to all proofs.",
+  "RETRACTED (supervisor-caught): the iff 'chi(R^2) <= chi(C\\Z) <=> every finite unit-distance graph embeds in Gamma(C\\Z)'. Necessity is false; chromatic suprema do not recover embeddings. Replaced by the k-colourability criterion.",
+  "CORRECTED: the conclusion of the transfer lemma does not extend the supplied colouring pointwise; only existence is asserted.",
+  "CORRECTED (supervisor-caught): the diameter argument for fixed-width strips is invalid, because a chain can be laid flat along the strip. Replaced by a perpendicular-extent criterion with a rigid triangular patch as the obstruction.",
+  "REMOVED: the stale 'body elided at ...' label on the source packet, after mechanically verifying the body has no elision.",
+  "WITHDRAWN: the claim that a triangulated triangular-lattice disk has only congruent unit-distance realisations (used to argue a strip obstruction). Unsupported and unnecessary.",
+  "RETRACTED: the whole 'can a realisation of the graph fit in the strip' framing. H is about translating a fixed point set, so the strip fails on the two-point set {0,(w+1)i}.",
+  "My own hand estimate that the k=2,n=3 chain contains an accidental cross-copy unit edge p_i--r_{i-1} was WRONG - the exact computation showed the six edges are exactly the six within-copy edges. Recorded because it is precisely the trap the file's section 5 warns about; I corrected the claim before writing it up.",
+  "No solver or Lean build this block, per instruction; the (H4) upper bound for the new instance is argued from (H4) plus an exact edge-count equality rather than by finding a colouring algorithmically.",
+  "Not attempted by design: no SAT run, no arithmetic check of W_6 (it is hand-verified only, and flagged as such), and no recomputation of the census numbers max_cn = 2 / triangles = 1093.",
+  "Rejected as too weak: stating the certificate's content as 'no forcing at k >= 5' without the k = 4 vacuity caveat, and treating absence of a pattern in the 34 witnesses as impossibility."
+ ],
+ "next_step": "If authorised: execute Rule S as a pure filter (read the 34 witnesses, report r(T) for the first 30 candidates), then, only if r(T) = 0, run the single 19708-clause cadical call and record the pre-registered outcome. One triple, one run. Separately, check_null_transfer.lean is still queued for the serial local Lean build.",
+ "escalation": "None blocking. The open mathematical question is unchanged and is not addressed by this block: no forcing pair is known at k = 6, and the arity-3 analogue (R3) is untested. The structural obstacle to anything stronger is that the certificate is (Sep) only - a forall-exists statement about pairs - so every simultaneous-pattern claim needs a separate query, and there are ~2.8e7 triples, which is why the rule pre-registers exactly one.",
+ "recovery": {
+  "utc": "2026-11-14T06:46:58Z",
+  "jobs_running_at_recovery": 0,
+  "integrity": "re-ran forced_a1_5.py, verify_cell_nogo_v2.py, square_family.py, audit_rect.py: all rc 0; forced_a1_5.out and verify_cell_nogo_v2.out regenerate byte-identically, so no partial or duplicated write exists",
+  "work_lost": "none",
+  "note": "block was already completed and saved at updated_utc; no new research performed during recovery",
+  "artifacts_kept": [
+   "CELL-A-FIFTH.md",
+   "CELL-NOGO-v2.md",
+   "LEDGER.md",
+   "CELL-NOGO.md",
+   "RECOVERY.md"
+  ]
+ },
+ "artifacts_hashes": {
+  "audit-amplifier/TERMINAL-RELATIONS.md": "0a2d4e7ab380baa9c69442436cb2be1d45fcb2da34b2088cc93fde9127cdca34",
+  "audit-amplifier/adaptive_k5.frozen.json": "9ab71b7aec712709517d8260adf646fab21b3bf8379304ebc4354b6c39978e6a",
+  "audit-amplifier/census_heule553.frozen.json": "98f25ec54b289e31d4fad7b41fb964b9f77ebb7ef8756c9fd99b227bf9674fd3",
+  "audit-amplifier/AUDIT.md": "e53234f41f2b389be0e45b19db8769a9dcdadc88a89ac94383ec720264c596f3",
+  "audit-amplifier/chain_k2_n3.py": "b9a5811d97d64c1dbefbcae2fb9ae18b45eb1eab7128091f80579675ef8eeba6",
+  "audit-amplifier/AMPLIFIER.frozen.md": "492bcae49c35dc268a7e87ce546da05ef394e261263a59631d4925b0c89c689a",
+  "check_null_transfer.lean": "682c2c0acfbca85a94e05d3f3e93f766c656b8c0c77b5f7f5fc288f359b0994d",
+  "p25.cnf": "4d5d07d62ddfb89db4706ad46ab7e68fac210f94c8399586f32e146d608e59ca",
+  "p25.drat": "12a72a7ae61e50f40a0d9948b0d96fd906d25b1c04ec7a15294bfc7fc7b6549d",
+  "tools/drat-trim": "a9571deb08430a3d7f7a72074440f53e2ad48196dced50b146835052a18e9066"
+ }
+}

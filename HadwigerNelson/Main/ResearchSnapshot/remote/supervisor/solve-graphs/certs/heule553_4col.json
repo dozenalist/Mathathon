@@ -1,0 +1,18 @@
+{
+ "benchmark": "Heule 553-vertex 5-chromatic unit-distance graph",
+ "source": "arXiv:1805.12181 / github.com/marijnheule/CNP-SAT (vtx/553.vtx, edge/553.edge)",
+ "field": "Q(sqrt3,sqrt5,sqrt11)",
+ "n": 553,
+ "m": 2722,
+ "edges_not_unit": 0,
+ "duplicate_vertices": 0,
+ "unit_pairs_missing_from_edge_file": 0,
+ "cnf_vars": 2212,
+ "cnf_clauses": 11441,
+ "verdicts": {
+  "cadical153": "UNSAT",
+  "minisat22": "UNSAT"
+ },
+ "model": null,
+ "seconds": 166.41
+}

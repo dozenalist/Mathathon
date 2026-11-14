@@ -1,0 +1,9 @@
+The palette class of sections 5-7 is equivalent to the problem at every k, so no L4 no-go exists for it. I prove the missing direction for the a.e.-in-angle form the paper proves. Files: l4_obstruction.md, check_l4.py (exit 0).
+
+Theorem A. For k>=4 a palette system with (H1) 1<=|P_x(e)|<=k-3 and (H2) the transport exclusion (5.3) as printed (a.e. in angle, exceptional set per centre pair) exists iff chi(R^2)<=k. (<=) palettes of a colouring. (=>) at a unit-distance pair the only admissible instance of (5.3) is the translation one (x+d)+f=x+f+d (paper Remark 5.3), unique since the two-unit-vector decomposition is; so P_x(e) cap P_{x+d}(e)=empty a.e. e. E (algebraic plane) and K (algebraic units, the unit-edge directions of E) are countable, so the union of exceptions is null: ONE direction e gives disjointness at every unit pair of E at once, and one label per palette is then a proper k-colouring of E, so chi<=k (R1).
+
+So UNSAT(C_6) iff chi>=7 and SAT(C_6) iff chi=6: the brief's natural L4 route IS the problem. m7's d1 f13 derives only a weaker Fubini consequence of (P2)=(H2) and its CHECK 5 violates (P0), so that class is not open.
+
+Exact: at k=6 all-ternary palettes are impossible (a (6:3)-colouring has fractional weight 2 while chi_f>=7/alpha(spindle)=7/2), so route B's pair-forcing is necessary.
+
+Specification: (H1)+(H2)+M contradictory forces chi>=7, hence a finite 7-chromatic unit-distance graph; closing the method at k=6 is L2's lower half. Check: python3 check_l4.py

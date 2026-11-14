@@ -1,0 +1,75 @@
+ib b p μ))
+work/lean/OAI/MeasureTheory/CompactFactors/Approximation.lean:333:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/MeasureTheory/CompactFactors/Approximation.lean:332:45: error: unsolved goals
+X : Type u_1
+Y : Type u_2
+W : Type u_3
+inst : MeasurableSpace X
+inst_1 : MeasurableSpace Y
+inst_2 : MeasurableSpace W
+inst_3 : MulAction (↥K) X
+inst_4 : MulAction (↥K) Y
+inst_5 : MeasurableConstSMul (↥K) X
+inst_6 : MeasurableConstSMul (↥K) Y
+inst_7 : StandardBorelSpace X
+inst_8 : Nonempty X
+inst_9 : StandardBorelSpace Y
+inst_10 : Nonempty Y
+inst_11 : StandardBorelSpace W
+inst_12 : Nonempty W
+μ : Measure X
+inst_13 : IsProbabilityMeasure μ
+inst_14 : SMulInvariantMeasure (↥K) X μ
+p : X → Y
+q : Y → W
+b : X → D
+hp : Measurable p
+hq : Measurable q
+hb : Measurable b
+m : ℕ
+g : Y → Fin m → D
+hpe : ∀ (a : Circle) (b : a ∈ K), ∀ᵐ (x : X) ∂μ, p (⟨a, b⟩ • x) = ⟨a, b⟩ • p x
+hbe : ∀ (a : Circle) (b_1 : a ∈ K), ∀ᵐ (x : X) ∂μ, b (⟨a, b_1⟩ • x) = ⟨a, b_1⟩ • b x
+hm : 0 < m
+hg : ∀ᵐ (y : Y) ∂Measure.map p μ, (condDistrib b p μ) y = (↑m)⁻¹ • ∑ i, Measure.dirac (g y i)
+hc : CompactApproximation.Scalar (Measure.map p μ) q
+⊢ FiniteEncodingApproximation μ p q b m
+work/lean/OAI/MeasureTheory/CompactFactors/Approximation.lean:400:18: error: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+work/lean/OAI/MeasureTheory/CompactFactors/Approximation.lean:445:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/MeasureTheory/CompactFactors/Approximation.lean:444:72: error: unsolved goals
+K : Type u_1
+Y : Type u_2
+Z : Type u_3
+W : Type u_4
+inst : SMul K Y
+inst_1 : SMul K Z
+inst_2 : MeasurableSpace Y
+inst_3 : MeasurableSpace Z
+inst_4 : MeasurableSpace W
+ν : Measure Y
+inst_5 : IsProbabilityMeasure ν
+p : Y → Z
+q : Z → W
+hp : Measurable p
+hq : Measurable q
+inst_6 : MeasurableConstSMul K Y
+inst_7 : MeasurableConstSMul K Z
+hpres : ∀ (k : K), MeasurePreserving (fun y => k • y) ν ν
+hpe : ∀ (k : K), ∀ᵐ (y : Y) ∂ν, p (k • y) = k • p y
+m : ℕ
+H : Y → Fin m → ℂ
+H₀ : Z → Fin m → ℂ
+hH : Measurable H
+hH₀ : Measurable H₀
+ε : ℝ
+hε : 0 < ε
+hi : Integrable (fun y => dist (H y) (H₀ (p y)) ^ 2) ν
+he : ∫ (y : Y), dist (H y) (H₀ (p y)) ^ 2 ∂ν < (ε / 2) ^ 2
+hc : Vector (Measure.map p ν) q
+w : ℝ
+h : ∀ (z : Z), ‖H₀ z‖ ≤ w
+⊢ At ν (q ∘ p) m H ε

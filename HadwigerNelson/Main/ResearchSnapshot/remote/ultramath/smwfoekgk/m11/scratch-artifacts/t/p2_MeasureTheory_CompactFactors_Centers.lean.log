@@ -1,0 +1,8 @@
+.scratch/t/p2_MeasureTheory_CompactFactors_Centers.lean:82:0: warning: 
+'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by
+
+import Mathlib.Basic.Real.Basic
+.scratch/t/p2_MeasureTheory_CompactFactors_Centers.lean:260:10: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  StrictConvexSpace ℝ Ambient
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.

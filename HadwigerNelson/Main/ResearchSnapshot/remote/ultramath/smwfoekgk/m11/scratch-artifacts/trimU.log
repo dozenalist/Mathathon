@@ -1,0 +1,87 @@
+patching file OAI/Analysis/PlaneSpectrum/CircleOperator.lean
+patching file OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean
+Hunk #3 succeeded at 132 (offset 1 line).
+Hunk #4 succeeded at 149 (offset 1 line).
+Hunk #5 succeeded at 231 (offset 1 line).
+patching file OAI/Analysis/PlaneSpectrum/Energy.lean
+Hunk #1 succeeded at 297 (offset 1 line).
+Hunk #2 succeeded at 373 (offset 1 line).
+patching file OAI/Analysis/PlaneSpectrum/Ergodicity.lean
+patching file OAI/Analysis/PlaneSpectrum/FourierTests.lean
+patching file OAI/Analysis/PlaneSpectrum/InvariantMean.lean
+patching file OAI/Analysis/PlaneSpectrum/Multipliers.lean
+Hunk #1 succeeded at 88 (offset -1 lines).
+Hunk #2 succeeded at 131 (offset -1 lines).
+Hunk #3 succeeded at 206 (offset -1 lines).
+Hunk #4 succeeded at 228 (offset -1 lines).
+patching file OAI/Analysis/PlaneSpectrum/PhaseCollision.lean
+patching file OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean
+patching file OAI/Analysis/PlaneSpectrum/Representations.lean
+patching file OAI/Analysis/PlaneSpectrum/SmallArcs.lean
+patching file OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean
+Hunk #1 succeeded at 149 (offset 2 lines).
+Hunk #2 succeeded at 217 (offset 2 lines).
+patching file OAI/Geometry/PlaneColoring/AngularBoundary.lean
+patching file OAI/Geometry/PlaneColoring/BinaryPalettes.lean
+patching file OAI/Geometry/PlaneColoring/BorelTransfer.lean
+Hunk #1 succeeded at 449 (offset 1 line).
+patching file OAI/Geometry/PlaneColoring/BoundaryTrace.lean
+patching file OAI/Geometry/PlaneColoring/Compactness.lean
+patching file OAI/Geometry/PlaneColoring/ContinuumLimits.lean
+Hunk #1 succeeded at 166 (offset 8 lines).
+patching file OAI/Geometry/PlaneColoring/CyclicCore.lean
+patching file OAI/Geometry/PlaneColoring/DiskExtension.lean
+patching file OAI/Geometry/PlaneColoring/Exclusion.lean
+patching file OAI/Geometry/PlaneColoring/Expansion.lean
+patching file OAI/Geometry/PlaneColoring/FiveSupport.lean
+patching file OAI/Geometry/PlaneColoring/FourContinuity.lean
+patching file OAI/Geometry/PlaneColoring/GraphCuts.lean
+patching file OAI/Geometry/PlaneColoring/GraphRealization.lean
+patching file OAI/Geometry/PlaneColoring/HoleApproximation.lean
+patching file OAI/Geometry/PlaneColoring/Interfaces.lean
+patching file OAI/Geometry/PlaneColoring/Lattice.lean
+patching file OAI/Geometry/PlaneColoring/Moser.lean
+patching file OAI/Geometry/PlaneColoring/PaletteDensity.lean
+patching file OAI/Geometry/PlaneColoring/Palettes.lean
+patching file OAI/Geometry/PlaneColoring/Sectors.lean
+patching file OAI/Geometry/PlaneColoring/WeakColoring.lean
+patching file OAI/MeasureTheory/CompactFactors/AlgebraModels.lean
+patching file OAI/MeasureTheory/CompactFactors/Amenability.lean
+Hunk #1 succeeded at 5 with fuzz 2.
+Hunk #2 succeeded at 121 (offset 34 lines).
+Hunk #3 succeeded at 173 (offset 34 lines).
+Hunk #4 succeeded at 302 (offset 34 lines).
+Hunk #5 succeeded at 350 (offset 34 lines).
+Hunk #6 succeeded at 426 (offset 37 lines).
+patching file OAI/MeasureTheory/CompactFactors/Approximation.lean
+Hunk #6 succeeded at 390 (offset 6 lines).
+patching file OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean
+patching file OAI/MeasureTheory/CompactFactors/Centers.lean
+Hunk #3 succeeded at 356 (offset 1 line).
+Hunk #4 succeeded at 382 (offset 1 line).
+patching file OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean
+Hunk #3 FAILED at 185.
+Hunk #4 succeeded at 330 (offset 1 line).
+Hunk #5 succeeded at 521 (offset 1 line).
+Hunk #6 succeeded at 540 (offset 1 line).
+1 out of 6 hunks FAILED -- saving rejects to file OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean.rej
+patching file OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean
+Hunk #5 succeeded at 354 (offset 2 lines).
+patching file OAI/MeasureTheory/CompactFactors/Factors.lean
+Hunk #7 succeeded at 508 (offset 1 line).
+patching file OAI/MeasureTheory/CompactFactors/Functions.lean
+Hunk #2 FAILED at 77.
+1 out of 8 hunks FAILED -- saving rejects to file OAI/MeasureTheory/CompactFactors/Functions.lean.rej
+patching file OAI/MeasureTheory/CompactFactors/Kernels.lean
+Hunk #7 succeeded at 522 (offset 39 lines).
+Hunk #8 succeeded at 611 (offset 39 lines).
+Hunk #9 succeeded at 644 (offset 39 lines).
+patching file OAI/MeasureTheory/CompactFactors/RelativeCenters.lean
+Hunk #3 FAILED at 71.
+Hunk #4 succeeded at 135 (offset 31 lines).
+Hunk #5 succeeded at 214 (offset 33 lines).
+Hunk #6 succeeded at 516 (offset 32 lines).
+1 out of 6 hunks FAILED -- saving rejects to file OAI/MeasureTheory/CompactFactors/RelativeCenters.lean.rej
+patching file OAI/MeasureTheory/CompactFactors/RelativeProducts.lean
+patching file OAI/MeasureTheory/CompactFactors/Separability.lean
+patching file OAI/MeasureTheory/CompactFactors/Stationary.lean

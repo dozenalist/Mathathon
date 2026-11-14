@@ -1,0 +1,154 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: ca6ee63dd737fc7095ee82e35c5d702d90c203721ad92e00757d706e7b9a9304
+Status: passed
+Exit code: 0
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\BinderAuditV3Local.lean:48:42: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+DECL OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction thm
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 0 X implicit Type u_1
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 1 Y implicit Type u_2
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 2 W implicit Type u_3
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 3 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.5 instance MeasurableSpace X
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 4 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.8 instance StandardBorelSpace X
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 5 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.11 instance Nonempty X
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 6 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.14 instance MeasurableSpace Y
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 7 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.23 instance MeasurableSpace W
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 8 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.26 instance StandardBorelSpace W
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 9 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.29 instance Nonempty W
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 10 μ explicit MeasureTheory.Measure X
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 11 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.34 instance MeasureTheory.IsProbabilityMeasure μ
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 12 p explicit X → Y
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 13 q explicit Y → W
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 14 b explicit X → OAI.PlaneFiveColor.Spectral.D
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 15 hp explicit Measurable p
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 16 hq explicit Measurable q
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 17 hb explicit Measurable b
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 18 m explicit ℕ
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 19 hm explicit 0 < m
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 20 g explicit Y → Fin m → OAI.PlaneFiveColor.Spectral.D
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 21 hg explicit ∀ᵐ (y : Y) ∂MeasureTheory.Measure.map p μ,   (ProbabilityTheory.condDistrib b p μ) y = (↑m)⁻¹ • ∑ i, MeasureTheory.Measure.dirac (g y i)
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 22 hwild explicit OAI.PlaneFiveColor.Spectral.IsWild   (OAI.EuclideanFiveColor.DifferenceFourier.differenceLaw (MeasureTheory.Measure.map (q ∘ p) μ)     (ProbabilityTheory.condDistrib b (q ∘ p) μ))
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 23 ρ explicit ℝ
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 24 c explicit ℝ
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 25 N explicit ℕ
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 26 hρ explicit 0 < ρ
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 27 hc explicit 0 < c
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 28 hN explicit 0 < N
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 29 harc explicit ∀ (ω : MeasureTheory.Measure Circle) [MeasureTheory.IsProbabilityMeasure ω],   (∀ (n : ℕ), 0 < n → n ≤ N → ‖∫ (w : Circle), ↑w ^ n ∂ω‖ < c) → ω.real {w | ‖↑w - 1‖ ≤ 4 * ρ} < 1 / (4 * ↑m ^ 2)
+BINDER OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction 30 happrox explicit OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt μ p q b m (ρ ^ m / ↑m / 100 / 100)
+DECL OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction thm
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 0 X implicit Type u_1
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 1 Y implicit Type u_2
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 2 W implicit Type u_3
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 3 inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.5 instance MeasurableSpace X
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 4 inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.8 instance StandardBorelSpace X
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 5 inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.11 instance Nonempty X
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 6 inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.14 instance MeasurableSpace Y
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 7 inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.23 instance MeasurableSpace W
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 8 inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.26 instance StandardBorelSpace W
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 9 inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.29 instance Nonempty W
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 10 μ explicit MeasureTheory.Measure X
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 11 inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.34 instance MeasureTheory.IsProbabilityMeasure μ
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 12 p explicit X → Y
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 13 q explicit X → W
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 14 b explicit X → OAI.PlaneFiveColor.Spectral.D
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 15 hp explicit Measurable p
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 16 hq explicit Measurable q
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 17 hb explicit Measurable b
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 18 m explicit ℕ
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 19 hm explicit 0 < m
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 20 g explicit Y → Fin m → OAI.PlaneFiveColor.Spectral.D
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 21 hg explicit ∀ᵐ (y : Y) ∂MeasureTheory.Measure.map p μ,   (ProbabilityTheory.condDistrib b p μ) y = (↑m)⁻¹ • ∑ i, MeasureTheory.Measure.dirac (g y i)
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 22 hwild explicit OAI.PlaneFiveColor.Spectral.IsWild   (OAI.EuclideanFiveColor.DifferenceFourier.differenceLaw (MeasureTheory.Measure.map q μ)     (ProbabilityTheory.condDistrib b q μ))
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 23 ρ explicit ℝ
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 24 c explicit ℝ
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 25 N explicit ℕ
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 26 hρ explicit 0 < ρ
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 27 hc explicit 0 < c
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 28 hN explicit 0 < N
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 29 harc explicit ∀ (ω : MeasureTheory.Measure Circle) [MeasureTheory.IsProbabilityMeasure ω],   (∀ (n : ℕ), 0 < n → n ≤ N → ‖∫ (w : Circle), ↑w ^ n ∂ω‖ < c) → ω.real {w | ‖↑w - 1‖ ≤ 4 * ρ} < 1 / (4 * ↑m ^ 2)
+BINDER OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction 30 happrox explicit OAI.PlaneFiveColor.Spectral.AmbientEncodingAt μ p q b m (ρ ^ m / ↑m / 100 / 100)
+DECL OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction thm
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 0 X implicit Type u_1
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 1 Y implicit Type u_2
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 2 W implicit Type u_3
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 3 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.5 instance MeasurableSpace X
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 4 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.8 instance StandardBorelSpace X
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 5 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.11 instance Nonempty X
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 6 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.14 instance MeasurableSpace Y
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 7 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.23 instance MeasurableSpace W
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 8 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.26 instance StandardBorelSpace W
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 9 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.29 instance Nonempty W
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 10 μ explicit MeasureTheory.Measure X
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 11 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.34 instance MeasureTheory.IsProbabilityMeasure μ
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 12 p explicit X → Y
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 13 P explicit X → W
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 14 Z implicit Type u_4
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 15 S explicit X → Z
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 16 b explicit X → OAI.PlaneFiveColor.Spectral.D
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 17 hp explicit Measurable p
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 18 hP explicit Measurable P
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 19 hb explicit Measurable b
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 20 m explicit ℕ
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 21 hm explicit 0 < m
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 22 g explicit Y → Fin m → OAI.PlaneFiveColor.Spectral.D
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 23 hg explicit ∀ᵐ (y : Y) ∂MeasureTheory.Measure.map p μ,   (ProbabilityTheory.condDistrib b p μ) y = (↑m)⁻¹ • ∑ i, MeasureTheory.Measure.dirac (g y i)
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 24 hwild explicit OAI.PlaneFiveColor.Spectral.IsWild   (OAI.EuclideanFiveColor.DifferenceFourier.differenceLaw (MeasureTheory.Measure.map P μ)     (ProbabilityTheory.condDistrib b P μ))
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 25 ρ explicit ℝ
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 26 c explicit ℝ
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 27 N explicit ℕ
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 28 hρ explicit 0 < ρ
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 29 hc explicit 0 < c
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 30 hN explicit 0 < N
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 31 harc explicit ∀ (ω : MeasureTheory.Measure Circle) [MeasureTheory.IsProbabilityMeasure ω],   (∀ (n : ℕ), 0 < n → n ≤ N → ‖∫ (w : Circle), ↑w ^ n ∂ω‖ < c) → ω.real {w | ‖↑w - 1‖ ≤ 4 * ρ} < 1 / (4 * ↑m ^ 2)
+BINDER OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction 32 happrox explicit OAI.PlaneFiveColor.Spectral.EncodingApproximationAt μ p P S b m (ρ ^ m / ↑m / 100 / 100)
+DECL OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt def
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 0 X implicit Type u_1
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 1 Y implicit Type u_2
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 2 W implicit Type u_3
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 3 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2599005850._hygCtx._hyg.5 instance MeasurableSpace X
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 4 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2599005850._hygCtx._hyg.14 instance MeasurableSpace Y
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 5 μ explicit MeasureTheory.Measure X
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 6 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2599005850._hygCtx._hyg.34 instance MeasureTheory.IsProbabilityMeasure μ
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 7 p explicit X → Y
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 8 q explicit Y → W
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 9 b explicit X → OAI.PlaneFiveColor.Spectral.D
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 10 m explicit ℕ
+BINDER OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt 11 γ explicit ℝ
+DECL OAI.PlaneFiveColor.Spectral.AmbientEncodingAt def
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 0 X implicit Type u_1
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 1 Y implicit Type u_2
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 2 W implicit Type u_3
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 3 inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2568253221._hygCtx._hyg.5 instance MeasurableSpace X
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 4 inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2568253221._hygCtx._hyg.14 instance MeasurableSpace Y
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 5 μ explicit MeasureTheory.Measure X
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 6 inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2568253221._hygCtx._hyg.34 instance MeasureTheory.IsProbabilityMeasure μ
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 7 p explicit X → Y
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 8 q explicit X → W
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 9 b explicit X → OAI.PlaneFiveColor.Spectral.D
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 10 m explicit ℕ
+BINDER OAI.PlaneFiveColor.Spectral.AmbientEncodingAt 11 γ explicit ℝ
+DECL OAI.PlaneFiveColor.Spectral.EncodingApproximationAt def
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 0 X implicit Type u_1
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 1 Y implicit Type u_2
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 2 W implicit Type u_3
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 3 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3521740239._hygCtx._hyg.5 instance MeasurableSpace X
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 4 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3521740239._hygCtx._hyg.14 instance MeasurableSpace Y
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 5 μ explicit MeasureTheory.Measure X
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 6 inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3521740239._hygCtx._hyg.34 instance MeasureTheory.IsProbabilityMeasure μ
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 7 p explicit X → Y
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 8 P explicit X → W
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 9 Z implicit Type u_4
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 10 S explicit X → Z
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 11 b explicit X → OAI.PlaneFiveColor.Spectral.D
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 12 m explicit ℕ
+BINDER OAI.PlaneFiveColor.Spectral.EncodingApproximationAt 13 γ explicit ℝ
+
+STDERR
+

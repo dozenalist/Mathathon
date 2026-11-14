@@ -1,0 +1,43 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: 648afda2bd84f73169d26d5e2ccd2886803d46df9ea599cf39d2ddf3a0a06049
+Status: failed
+Exit code: 1
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\BinderAuditV2.lean:50:23: warning: `String.trim` has been deprecated: Use `String.trimAscii` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\BinderAuditV2.lean:84:12: error: Variable `i` cannot be mutated. Only variables declared using `let mut` can be mutated.
+      If you did not intend to mutate but define `i`, consider using `let i` instead
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\BinderAuditV2.lean:87:32: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  ToString MessageData
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\BinderAuditV2.lean:78:16: error(lean.unknownIdentifier): Unknown constant `Lean.BinderInfo.explicit`
+
+Note: Inferred this name from the expected resulting type of `.explicit`:
+  BinderInfo
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\BinderAuditV2.lean:90:0: error: Aborting evaluation since the expression depends on the 'sorry' axiom, which can lead to runtime instability and crashes.
+
+To attempt to evaluate anyway despite the risks, use the '#eval!' command.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\BinderAuditV2.lean:91:0: error: Aborting evaluation since the expression depends on the 'sorry' axiom, which can lead to runtime instability and crashes.
+
+To attempt to evaluate anyway despite the risks, use the '#eval!' command.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\BinderAuditV2.lean:94:0: error: Aborting evaluation since the expression depends on the 'sorry' axiom, which can lead to runtime instability and crashes.
+
+To attempt to evaluate anyway despite the risks, use the '#eval!' command.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\BinderAuditV2.lean:95:0: error: Aborting evaluation since the expression depends on the 'sorry' axiom, which can lead to runtime instability and crashes.
+
+To attempt to evaluate anyway despite the risks, use the '#eval!' command.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\BinderAuditV2.lean:96:0: error: Aborting evaluation since the expression depends on the 'sorry' axiom, which can lead to runtime instability and crashes.
+
+To attempt to evaluate anyway despite the risks, use the '#eval!' command.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\BinderAuditV2.lean:97:0: error: Aborting evaluation since the expression depends on the 'sorry' axiom, which can lead to runtime instability and crashes.
+
+To attempt to evaluate anyway despite the risks, use the '#eval!' command.
+
+STDERR
+

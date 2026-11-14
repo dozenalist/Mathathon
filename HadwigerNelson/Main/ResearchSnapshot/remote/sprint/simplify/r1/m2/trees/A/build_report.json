@@ -1,0 +1,11 @@
+{
+ "fails": [
+  "OAI.Geometry.PlaneColoring.Basic",
+  "OAI.Geometry.PlaneColoring.Metric"
+ ],
+ "secs": {
+  "OAI.Geometry.PlaneColoring.Basic": 0.1936018466949463,
+  "OAI.Geometry.PlaneColoring.Metric": 0.10642600059509277
+ },
+ "wall": 0.3010518550872803
+}

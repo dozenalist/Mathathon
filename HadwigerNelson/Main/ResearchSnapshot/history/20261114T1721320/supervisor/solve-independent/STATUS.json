@@ -1,0 +1,189 @@
+{
+ "updated_utc": "2026-11-14T17:15:32Z",
+ "status": "completed_block",
+ "summary": "Five retractions plus a source audit of Theorem AC; no compute, no Lean. RETRACTIONS: BinaryCenter means the palette HITS the fixed pair, not contains it; the four-state field DOES hit {0,5} a.e., so my inapplicability claim was false; B2 means each palette card<=2, not all palettes in one 2-set; Bool coarsenings of 4 states number 16, so my 'no Bool coarsening satisfies RealState' proposition is FALSE - s=[f in {0,1}] gives RealState with J={0}, K={5} and does flip, and hcard is what fails (univ\\({0}u{5}) has 4 > 2 elements); and a model omitting a hypothesis does not refute the theorem assuming it, so 'the field refutes (MS)' and all broad no-go sentences are withdrawn.  AUDIT: all eight of AC's citations resolve (ApproachingContinuum AngularBoundary:235 with a common v; Straddle :147; spatialSupport :308; outer/inner_strip :244,:252; continuum_outer/inner_restriction :259,:279 concluding a HIT; binary_strip_palette_rigidity BoundaryTrace:280 with independent side bools; angleBoundary_nonempty :381, angleBoundary_six :435, sixAngle_injective :423). Steps (a)-(d) are supported, one flagged place: collapsing the per-index H i into a single J. The field lacks all four strip data AC needs and fails exactly at t=0, where its {0,5} choice jumps 5 to 0 - the essential local constancy rigidity forces. Consumer: q=(0,3,3,3,0,0) has v1=v2=v3=-1, one common direction, leaving {0,5}. AC is not F6.",
+ "verified_results": [
+  {
+   "statement": "RETRACTION R1: BinaryCenter c hc x i j := for a.e. t, t in paletteSet x i OR t in paletteSet x j (BinaryPalettes.lean:9), i.e. the palette HITS the pair. My 'palette contained in the pair' reading is withdrawn.",
+   "grade": "self-retraction, source-read"
+  },
+  {
+   "statement": "RETRACTION R2: the four-state field satisfies BinaryCenter x 0 5 a.e., since {0,2} and {0,3} contain 0 and {3,5} and {2,5} contain 5. So my claim that no BinaryCenter pair exists and binary_centers_separated is inapplicable is FALSE and withdrawn.",
+   "grade": "self-retraction, checked by inspection"
+  },
+  {
+   "statement": "RETRACTION R3: B2 means each palette has cardinality <= 2 (satisfied by the field at every direction), not that all palettes lie in a single 2-set. Conflation withdrawn; the 'no 2-set contains all four palettes' test tested the wrong property.",
+   "grade": "self-retraction"
+  },
+  {
+   "statement": "RETRACTION R4: the previous block's proposition 'no Bool coarsening of the field satisfies both RealState premises' is FALSE. There are 16 Bool maps on four states; s = [f in {0,1}] gives RealState with J={0} (intersection of palettes {0,2},{0,3}) and K={5} (intersection of {3,5},{2,5}), and it does flip at 60 degrees since f -> f+2 maps {0,1} to {2,3}. The premise that fails is hcard: univ \\({0}u{5}) = {1,2,3,4} has cardinality 4 > 2. In general distinct palettes here share at most one label, so every RealState level set admits at most one label and |J u K| <= 2. The binding premise is hcard, not RealState.",
+   "grade": "self-retraction; the corrected analysis is PROOF by inspection of the four palettes"
+  },
+  {
+   "statement": "RETRACTION R5: 'the multi-state candidate (MS) is REFUTED by Astra's field' is withdrawn, since the field omits the state-determination hypothesis and therefore is not a counterexample to (MS). All broad no-go sentences of the previous block are frozen and withdrawn as statements ('no purely state-theoretic generalisation can close the gap', 'every licensed relation is inapplicable or slack'). Individual premise-level observations survive.",
+   "grade": "self-retraction"
+  },
+  {
+   "statement": "THEOREM AC stated exactly: for c measurable weak k-colouring, centre x, unit v, finite index type iota, sets K : iota -> Set C, label sets H : iota -> Finset (Fin k), with (H1) every K i is an ApproachingContinuum x (K i) v with the SAME v, (H2) Disjoint (spatialSupport c j) (Straddle (K i)) for j in H i, (H3) (univ \\ union H i).card <= 2, the conclusion is False.",
+   "grade": "candidate (paper-level source corollary, not Lean-checked)"
+  },
+  {
+   "statement": "AC's eight source citations all resolve: ApproachingContinuum (AngularBoundary:235, common v with r->0+, w->v, point_mem), Straddle (:147), spatialSupport (:308), outer/inner_strip (:244,:252 giving direction-neighbourhood AND radial window), continuum_outer/inner_restriction (:259,:279, used at Exclusion:128-129 and Interfaces:75-76 with E s true / E s false), binary_alternation (BinaryPalettes:11), binary_pair_distinct (:28), binary_strip_palette_rigidity (BoundaryTrace:280, with TWO INDEPENDENT side Bools bu bv and strips at t and t*exp(i pi/3)), outer/inner_strip_trace (:182,:210), angleEssential (:334), angleBoundary (:349), angleBoundary_nonempty (:381, via isPreconnected_univ), angleBoundary_six (:435), sixAngle_injective (:423).",
+   "grade": "source-read with line numbers; the only line-number drift is two lines on sixAngle_injective"
+  },
+  {
+   "statement": "AC's steps (a)-(d) audited: (a) finite minimum of the strip widths is legitimate via finite_positive_lower_bound as used in continuum_outer_restriction, exceptional set the two perpendiculars; (b) outer for positive and inner for negative scalar product, glued by ae_of_locally_ae, giving BinaryCenter then the flip by binary_alternation; (c) binary_strip_palette_rigidity gives one fixed label in {a,b} on an open angular neighbourhood with independently chosen sides; (d) D subset B u (B - tau) has at most 4 points while angleBoundary_nonempty makes it nonempty and angleBoundary_six puts a six-orbit of distinct points inside it.",
+   "grade": "PROOF-level audit against the sources"
+  },
+  {
+   "statement": "Flagged place where care is needed: continuum_*_restriction takes a SINGLE label set J while (H2) gives a different H i per index. Collapsing requires J := intersection over i of (univ \\ H i), which under (H3) is {a,b}, and then the hypothesis becomes 'a.e. z in all Straddle (K i) has c z in {a,b}'. That discharges from (H2), but it is the one step a Lean implementation must handle explicitly.",
+   "grade": "PROOF (mine), flagged as the implementation risk"
+  },
+  {
+   "statement": "What the four-state field lacks, precisely: an actual colouring c : C -> Fin k with WeakColoring; for each i a set K i with a full ApproachingContinuum witness (not just a direction); the a.e. exclusions Disjoint (spatialSupport c j) (Straddle (K i)); and finiteness of the index family. The field supplies none of the four, so it cannot even state AC's hypotheses.",
+   "grade": "PROOF"
+  },
+  {
+   "statement": "The field's failure is visible exactly where AC bites: step (c) forces one fixed label of {a,b} on an open angular neighbourhood, and the field violates this at t=0, where the label of {0,5} present jumps from 5 (palette {2,5}) to 0 (palette {0,2}). So the field is not a source-level trace field, and its counterexample status is confined to the weaker orbitwise/recurrence reduction.",
+   "grade": "PROOF by inspection"
+  },
+  {
+   "statement": "Consumer checked: q=(0,3,3,3,0,0) gives v_1=v_2=v_3=e^{i pi}=-1, so edges E1={1,2}, E2={2,3}, E3={3,4} share one approach direction as (H1) requires; their endpoints union to {1,2,3,4}, leaving {0,5} of cardinality 2, so AC applies with a=0, b=5 and excludes that configuration for ACTUAL common interfaces.",
+   "grade": "PROOF by inspection of the q-vector"
+  },
+  {
+   "statement": "Scope: AC is not F6. General direction configurations, including non-aligned vectors, remain open. AC is a paper-level candidate pending independent and Lean review, and its novelty relative to unpublished worker work or the literature has not been investigated.",
+   "grade": "scope statement, matching Astra's own caveat"
+  },
+  {
+   "statement": "Bank recorded as given: generic contact-ban theorem plus five_support_no_sixty_joint_pair passed Lean 4.34.1/mathlib d13f23b with standard axioms, source SHA 9a904d4d7165889a5b12c77ea4e1646e436a0f5de4d4d057e2ee20d5e6f82ba1; originals unchanged, Lemma 6.7 retained. Not in my read scope; not verified here. The larger three-centre replacement remains a paper candidate.",
+   "grade": "given (supervisor relay)"
+  }
+ ],
+ "conjectures": [
+  "The H i-to-J collapse is the only place AC's Lean implementation could fail, and it is worth pre-checking by hand before any formalisation: the point is that (H3) gives a GLOBAL surviving pair {a,b}, so the per-index label sets can be replaced by their common complement without loss.",
+  "AC's hypothesis (H1) forces all approach directions to coincide, which is exactly the alignment the m6 q-vector provides for E1,E2,E3. So the natural next step is to characterise which q-vectors give three consecutive interfaces with a common direction, since only those are touched by AC; all others need an argument that does not assume alignment."
+ ],
+ "artifacts": [
+  "supervisor/solve-independent/audit-amplifier/AC-AUDIT.md",
+  "supervisor/solve-independent/audit-amplifier/FOUR-PALETTE-MODEL.md (five retractions inserted)",
+  "supervisor/solve-independent/audit-amplifier/F6-SIX-CYCLE.md",
+  "supervisor/solve-independent/audit-amplifier/SIX-COLOUR-CHAIN-AUDIT.md",
+  "supervisor/solve-independent/audit-amplifier/WITNESS-COMBINATION.md",
+  "supervisor/solve-independent/combine/combine_witnesses.py",
+  "supervisor/solve-independent/combine/fixtures.json",
+  "supervisor/solve-independent/STATUS.json"
+ ],
+ "tests_run": [
+  {
+   "command": "(no computation, no solver, no Lean - source only)",
+   "outcome": "declaration reads with line numbers plus hand inspection of the four palettes"
+  },
+  {
+   "command": "sed of BinaryPalettes.lean:7-14",
+   "outcome": "BinaryCenter defined as a palette HIT; binary_alternation statement"
+  },
+  {
+   "command": "sed of AngularBoundary.lean:235-300, 375-400, 435-440",
+   "outcome": "ApproachingContinuum structure, outer/inner_strip, continuum_outer/inner_restriction, angleBoundary_nonempty, angleBoundary_six"
+  },
+  {
+   "command": "sed of BoundaryTrace.lean:280-300",
+   "outcome": "binary_strip_palette_rigidity with two independent side Bools and strips at t and t*exp(i pi/3)"
+  },
+  {
+   "command": "date -u at block start and end",
+   "outcome": "2026-11-14T17:13:10Z and 2026-11-14T17:14:59Z; updated_utc from the clock"
+  }
+ ],
+ "failed_routes": [
+  "My first sublattice enumeration used the lower-triangular HNF <(a,0),(b,c)>, which is NOT a complete list: it misses 6 of the 8 index-7 sublattices, including the paper's <(1,3),(0,7)>, and wrongly gave minimum index 8 at a = 2/5. Fixed to upper HNF <(a,b),(0,c)>; the control then gave 7 as it must.",
+  "The heuristic bound index >= ceil((1+D)^2/(3a^2)) = 17 at a = 1/5 was wrong (ring 16 escapes it); replaced by the multiplicative-norm argument giving 16, which the enumeration confirms.",
+  "A density argument (clusters of <= 4 separated by 1.3856) does not give a contradiction at six colours: 2.65 > 1.60. Recorded as a gap, not pursued further in this block.",
+  "A hand estimate that ring-16 cells could carry the N=16 forced offsets was wrong (ring 16 is unforced because dmin >= 1); it does not affect this block, where the window proof bounds N < 16.33 independently.",
+  "Carried forward and still relevant: the earlier lower-triangular HNF enumeration was incomplete (missed 6 of 8 index-7 sublattices); this block uses the upper HNF only, and the index-19 counts here are on that corrected enumeration.",
+  "p19_shrink.py: greedy UNSAT-core minimisation (73+ solver calls) exceeded the cap and produced no output; superseded, no core certificate.",
+  "k = 7 (i.e. chi = 8) DRUP certificate: generation exceeded 60 s; abandoned. The chi = 8 claim therefore rests on two CDCL decisions plus a verified 8-colouring, not on a proof.",
+  "rup.c first version had two real defects: clauses added with watches already false at level 0, and unit clauses enqueued but not propagated. The second produced a spurious RUP FAILURE; diagnosed with a naive independent propagation. Both fixed; the shipped checker is the fixed one.",
+  "patch19_proof.py: abandoned driver (pysat returns DIMACS strings, so its empty-clause assertion fired). Superseded by p19_gen.py.",
+  "Earlier in this block's lineage: the 'every 6-subset contains an edge' line in QUOTIENT16.md \u2014 retracted as a chromatic argument; K_16 is the valid one.",
+  "No SAT search, no core minimisation and no 7-UNSAT work in this block, per instruction; the earlier failures are retained and documented in FAILED-RUNS.md (RUP FAILURE at step 26154 caused by unpropagated units in my checker; shrink timeout; k=7 generation timeout; incomplete lower-HNF enumeration).",
+  "An earlier attempt to parse the exact per-ring values back from JSON strings failed (a hand-rolled parser); replaced by carrying the Q3 objects directly. No numerical claim changed.",
+  "Nothing failed in this block's single experiment. Recorded for continuity: pysat's cadical153 with_proof must NOT be used for DRAT here (its writer mangles the proof, per supervisor/solve-graphs/certs/shard_b_summary.md); the cadical binary was used instead, and my own rup.c was not used at all.",
+  "The earlier blanket requirement (boundary ownership must be constructed before any 6-upper-bound consequence, stated in CELL-NOGO-v2.md section 1 and RECOVERY.md) is RETRACTED as wrong; it treated as necessary a step that the null-set transfer lemma shows does not exist.",
+  "A single global translation avoiding B does not exist (it would require B empty), so the compactness step cannot be replaced by a global translate; any future argument that tries to pick one t for the whole plane is invalid.",
+  "RETRACTED (supervisor-caught): the claim that (H) is necessary. (H) is sufficient only; the exact criterion is embeddability of every finite unit-distance graph.",
+  "RETRACTED (supervisor-caught): the claim that a half-plane is killed by the diameter objection. A half-plane satisfies (H); the objection applies only to bounded regions and fixed-width strips.",
+  "CORRECTED (supervisor-caught): an arbitrary colouring of all cell interiors is not thereby cell-constant; the Cayley-graph equivalence needs that hypothesis stated.",
+  "CORRECTED (supervisor-caught): compactness is used in this proof but was wrongly graded indispensable to all proofs.",
+  "RETRACTED (supervisor-caught): the iff 'chi(R^2) <= chi(C\\Z) <=> every finite unit-distance graph embeds in Gamma(C\\Z)'. Necessity is false; chromatic suprema do not recover embeddings. Replaced by the k-colourability criterion.",
+  "CORRECTED: the conclusion of the transfer lemma does not extend the supplied colouring pointwise; only existence is asserted.",
+  "CORRECTED (supervisor-caught): the diameter argument for fixed-width strips is invalid, because a chain can be laid flat along the strip. Replaced by a perpendicular-extent criterion with a rigid triangular patch as the obstruction.",
+  "REMOVED: the stale 'body elided at ...' label on the source packet, after mechanically verifying the body has no elision.",
+  "WITHDRAWN: the claim that a triangulated triangular-lattice disk has only congruent unit-distance realisations (used to argue a strip obstruction). Unsupported and unnecessary.",
+  "RETRACTED: the whole 'can a realisation of the graph fit in the strip' framing. H is about translating a fixed point set, so the strip fails on the two-point set {0,(w+1)i}.",
+  "My own hand estimate that the k=2,n=3 chain contains an accidental cross-copy unit edge p_i--r_{i-1} was WRONG - the exact computation showed the six edges are exactly the six within-copy edges. Recorded because it is precisely the trap the file's section 5 warns about; I corrected the claim before writing it up.",
+  "No solver or Lean build this block, per instruction; the (H4) upper bound for the new instance is argued from (H4) plus an exact edge-count equality rather than by finding a colouring algorithmically.",
+  "Not attempted by design: no SAT run, no arithmetic check of W_6 (it is hand-verified only, and flagged as such), and no recomputation of the census numbers max_cn = 2 / triangles = 1093.",
+  "Rejected as too weak: stating the certificate's content as 'no forcing at k >= 5' without the k = 4 vacuity caveat, and treating absence of a pattern in the 34 witnesses as impossibility.",
+  "WITHDRAWN: 'an anti-rainbow triple cannot be explained at arity 2 at all / is a genuine three-way phenomenon'. Every constraint is binary; the correct statement is joint unsatisfiability with satisfiable pair projections.",
+  "WITHDRAWN: the inference from max common neighbours = 2 to a mechanism classification. Relies only on the verified (Sep) now.",
+  "CORRECTED: form (C) as stated admitted contradictory relation sets; replaced by the extension property for locally consistent partial assignments.",
+  "NOT DONE: no attempt to realise (M), and no attempt to show (M) impossible; both would be new work and neither is claimed.",
+  "WITHDRAWN: the k=6 instance of the arity-3 route on G_553. By Lemma S plus (Sep_5), G_553 admits no NR-6 triple at all - not 'none found'.",
+  "WITHDRAWN: 'a 5-level non-rainbow triple buys nothing'. The lower bound chi >= 6 is proved analytically over 62 pages; an explicit finite certificate would shorten it, which is worth more than the phrase 'already proved' conveyed.",
+  "CORRECTED: 'the terminal minimum is 4 colours'. It is 3, since a witness may share alpha with u,v unless an explicit edge forbids it.",
+  "NOT DONE: no search for an NR-5 triple, no gadget construction, no amplifier re-derivation beyond citing the audited Theorem A.",
+  "The worker's (C1) is void twice over: the (0,10) translate gives an EMPTY overlap (D2), and its 'tips' are adjacent so they are forced different, not equal (D3). Both independently fatal; recorded rather than repaired in place since the target is read-only for me.",
+  "No certified elimination of any of the 1145 pairs could be produced from existing data; I record that as a negative result with its reason rather than proposing a test that would not be sound.",
+  "The permutation refutation test of section 7(c) is sound but weak: with 184 cross inequalities the surviving permutation group is typically trivial. Stated as a limitation, not offered as a solution.",
+  "WITHDRAWN (three of mine): the degree-3 gluing counterexample (W1); the spindle-minus-closing-edge realisation and its 'no accidental unit pair' claim (W2); the claim that pair-separation gives surjective pair projections or near-rigidity (W3).",
+  "The union forcing question is closed and I did not reopen it: 34 witnesses with 1048 distinct signatures leave no pair pinned, so the 1145 survivors are obsolete.",
+  "The witness-combination method fails whenever the sampled families cannot be matched; that failure is recorded as a property of the sample, never as non-colourability of the union.",
+  "WITHDRAWN: the equlity-based normalisation statement; replaced by invariance of J under simultaneous relabelling.",
+  "WITHDRAWN: the 60-second runtime claim for thousands of witnesses; the family product is not reduced by either acceleration.",
+  "REMOVED: the pending-queue language for the generic null transfer, which has passed locally with standard axioms.",
+  "Not attempted: running the packet. Syntax-checked only, per the instruction that no worker except graph may use compute.",
+  "I did not find any k=6 version of palette_triple_null, Prop 7.1 with l=6, or a 6-cycle interface object in the tree; absence is reported as absence, not as a gap I filled.",
+  "The proposed falsifying instance for L1 is NOT constructed. I record only the narrowing (it must be centre-dependent) and the reason (the unit-triangle bound kills the centre-independent case).",
+  "No claim is made that any subset of L1-L3 proves chi >= 7: arrow 2 also needs the independent local-finiteness hypothesis (W), which no palette argument supplies.",
+  "The sign-bit compatibility of the proposed 3-palette obstacle (section 4) is NOT established: it needs the graph worker's licensed checker over q in {0..5}^6, and I ran nothing.",
+  "I did not attempt to prove or refute the multi-state analogue (MS); its absence from the tree is recorded, not its truth value.",
+  "No attempt at L6, and no claim that the F6 reduction here composes with anything about other cycle lengths.",
+  "WITHDRAWN: my claim that finite m6 is not the restriction of any whole-circle trace field; only the naive fixed-J,K extension was refuted.",
+  "WITHDRAWN: my proposed 6-word with the palette {1,4}; it violates the licensed side-allowed sets {2,3} and {0,5} for the fixed m6 q.",
+  "REFUTED: the multi-state analogue (MS) I formulated. Astra's four-palette field satisfies its state family, rotation law and count bound while making the triangle shift state-indeterminate, so no purely state-theoretic generalisation of two_state_impossible can work.",
+  "INAPPLICABLE: binary_centers_separated, because the field admits no BinaryCenter pair - no 2-set contains all four palettes.",
+  "WITHDRAWN (five): the 'contained' reading of BinaryCenter; the claim that no BinaryCenter pair exists for the field; the B2 conflation; the proposition that no Bool coarsening satisfies RealState (hcard is the binding premise); and the claim that the field refutes the multi-state candidate.",
+  "FROZEN: all broad no-go statements from the previous block, including 'no purely state-theoretic generalisation can close the gap' and 'every licensed relation is inapplicable or slack'.",
+  "Not attempted: any Lean formalisation of AC, any numerical or computational check, and any investigation of AC's novelty relative to unpublished worker work or the literature."
+ ],
+ "next_step": "AC is now stated exactly with a source hypothesis table and is ready for independent review. The two things worth a future block, in order: (i) hand-check the H i-to-J collapse in step (a), the single flagged implementation risk; (ii) characterise which q-vectors give three consecutive interfaces with a common approach direction, since only those are touched by AC and every other direction configuration still needs an argument that does not assume alignment. Formalisation of AC should wait for the independent paper-level review.",
+ "escalation": "Exact obstacle: AC closes only the ALIGNED case, where three consecutive interfaces share one approach direction v, because ApproachingContinuum fixes a single v and continuum_*_restriction's side condition is a condition on the single direction v. The m6 q-vector (0,3,3,3,0,0) is aligned, so AC excludes it for actual common interfaces; a q-vector whose three consecutive edges have distinct approach directions is untouched. Definitions used: ApproachingContinuum (AngularBoundary:235), Straddle (:147), spatialSupport (:308), BinaryCenter (BinaryPalettes:9). Expected useful output: either an alignment-free replacement for AC, or a proof that the unaligned case cannot occur for a genuine six-cycle of common interfaces.",
+ "recovery": {
+  "utc": "2026-11-14T06:46:58Z",
+  "jobs_running_at_recovery": 0,
+  "integrity": "re-ran forced_a1_5.py, verify_cell_nogo_v2.py, square_family.py, audit_rect.py: all rc 0; forced_a1_5.out and verify_cell_nogo_v2.out regenerate byte-identically, so no partial or duplicated write exists",
+  "work_lost": "none",
+  "note": "block was already completed and saved at updated_utc; no new research performed during recovery",
+  "artifacts_kept": [
+   "CELL-A-FIFTH.md",
+   "CELL-NOGO-v2.md",
+   "LEDGER.md",
+   "CELL-NOGO.md",
+   "RECOVERY.md"
+  ]
+ },
+ "artifacts_hashes": {
+  "audit-amplifier/AC-AUDIT.md": "884a02bcdbabd941",
+  "audit-amplifier/FOUR-PALETTE-MODEL.md": "87358452ca2fb0fb",
+  "audit-amplifier/F6-SIX-CYCLE.md": "85a40e45750ce7d5",
+  "audit-amplifier/SIX-COLOUR-CHAIN-AUDIT.md": "369ab717d23dec75",
+  "audit-amplifier/WITNESS-COMBINATION.md": "82c3dece84bbc138",
+  "combine/combine_witnesses.py": "aa6d3d5561bbfbfe",
+  "combine/fixtures.json": "f6d4a2d22ddcb38a",
+  "lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean": "read-only source cited",
+  "lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean": "read-only source cited",
+  "lean/OAI/Geometry/PlaneColoring/BinaryPalettes.lean": "read-only source cited"
+ }
+}

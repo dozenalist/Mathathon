@@ -1,0 +1,6 @@
+E1  3-vertex 3-equality gadgets: []
+E2  diamond squared edge lengths: {('p', 'q'): '1', ('p', 'c'): '1', ('q', 'c'): '1', ('p', 'r'): '1', ('q', 'r'): '1', ('c', 'r'): '3'}
+    proper 3-colourings of the diamond (p,q,c,r): 6
+    all of them give c and r the same colour: True
+    apices separated by sqrt(3), squared: 3
+E3  two-colour gadget (common unit neighbour) forces equality: True

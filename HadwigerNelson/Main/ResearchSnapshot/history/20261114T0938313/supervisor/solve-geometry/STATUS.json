@@ -1,0 +1,42 @@
+{
+  "updated_utc": "2026-11-14T15:10:00Z",
+  "status": "completed_block",
+  "summary": "Analysis-only block. Corrected four write-up errors in CELL-NOGO-V2-AUDIT.md, original wording kept visible: properness must be assumed (a constant colouring is interior-constant and uses one colour); the 21 pairs of the K_7 witness split N=1 twelve times, N=3 six, N=4 three; p+3q mod 7 takes all of 1..6 on the 18 offsets including 5, never 0; and a = 1/sqrt13 is not an open endpoint since it lies inside the accepted (1/5,1/sqrt12) interval, so only the K_7 witness disappears. Derived without experiment a rigorous window: an offset can be strictly forced only if (1/a-2)^2 < 3N < (1/a+2)^2, giving N in {7,9,12,13,16,19,21} at a = 1/6; the window grows like 1/a^2, so the bottom sliver has infinitely many ring regimes and no finite set of patch certificates closes it. Specified the next probe: a = 1/6, patch {N <= 25} (91 cells), 546 variables, |F| 36 to 66, edges ~950-1750, clauses ~7200-12000, with exit criteria in both outcomes; argued it beats another periodic quotient because it is decisive in both directions, transfers over an interval, and the periodic direction is already where the positive results live. No unrestricted-plane claim, no chi = 8.",
+  "verified_results": [
+    "GRADE [A] The K_7 obstruction: S = {(0,0),(1,0),(0,1),(-1,1),(-1,0),(0,-1),(1,-1)}; all 21 pairwise differences have Eisenstein norm N = p^2+pq+q^2 in {1,3,4} (norms realised exactly {1,3,4}). Hence the seven cells at offsets a*sqrt3*S are pairwise strictly forced and need 7 distinct colours. Verified by exhaustive exact integer check, not sampled.",
+    "GRADE [A] Sharpness of 7: (p,q) -> (p+3q) mod 7 is zero-free on all 18 vectors with 0 < N <= 4 (the values 1,2,3,4,6 occur; 0 and 5 never), so the induced Cayley graph is 7-colourable and chi(Cay(Z^2,{1,3,4})) = 7 exactly. Both directions are closed-form; no solver.",
+    "GRADE [A] Per-ring forcing windows recomputed from the independent a=1 extrema: N=1 (mu^2,nu^2) = (0,13) -> (1/sqrt13, inf); N=3 (1,25) -> (1/5,1); N=4 (3,28) -> (1/sqrt28,1/sqrt3); N=7 (7,43); N=9 (12,49); N=12 (16,64) -> (1/8,1/4); N=13 (19,67) -> (1/sqrt67,1/sqrt19). These reproduce CELL-NOGO-v2's table exactly and are consistent with the rings used by the two accepted certificates.",
+    "GRADE [A] Window sufficiency: a ring forced at a >= 1/sqrt13 satisfies mu^2 < 13, and among representable norms only N in {1,3,4,7,9} have mu^2 in {0,1,3,7,12} (N=12 has 16), so no ring with N >= 12 is forced in the range and the enumeration is complete.",
+    "GRADE [A] Endpoint a = 1/2: rings 1, 3, 4 are all still strictly forced (mu^2 < 4 < nu^2 for 0, 1, 3), so the K_7 argument applies at a = 1/2 itself. This is not the vacuous case: vacuity begins at a > 1/2, where a cell interior has diameter 2a > 1 and contains a unit pair. At a = 1/2 the interior diameter is 1 as a supremum between opposite vertices, not attained by interior points.",
+    "GRADE [A] Endpoint a = 1/sqrt13 excluded: ring 1 has nu^2 = 13, so 1/nu = 1/sqrt13 exactly and the offset's open distance window (0,1) realises no interior unit pair; the K_7 does not exist there. Rings 3 and 4 remain forced, so the endpoint is open rather than empty.",
+    "GRADE [P] Union: (1/sqrt28, 1/sqrt19) and (1/5, 1/sqrt12) from the two accepted machine certificates, together with (1/sqrt13, 1/2] from Theorem 2, overlap since 1/sqrt13 = 0.2773501 < 0.2886751 = 1/sqrt12; hence for every a in (1/sqrt28, 1/2] no colouring constant on the honeycomb cell interiors is proper with six colours. Unconditional within the cell-constant family; no plane-level statement and no chi = 8 claim.",
+    "GRADE [P] Correction to the projection aside: |v| + 2h(vhat) = max_{w in 2H} <v+w, vhat> is a lower bound for dmax, and a lower bound above 1 does certify dmax > 1; only the earlier word 'upper' was wrong. The exact polygon formulas remain the computational method and nothing in the certificate depends on the estimate."
+  ],
+  "conjectures": [
+    "At a = 1/sqrt13 exactly, the forced set is {3,4,7,9}-part without ring 1, and the K_7 fails; whether some other finite 7-chromatic subgraph exists there is open. It is the natural next target for the bottom sliver, together with (0, 1/sqrt28] where no patch has been certified.",
+    "Because containment (not equality) of the forced set suffices, any future patch certified at one a certifies the whole interval on which its offsets stay forced; the binding quantities are always max mu^2 (upper end) and min nu^2 (lower end) over the offsets used.",
+    "The whole cell-constant honeycomb programme now covers (1/sqrt28, 1/2] and is vacuous above 1/2, so the family is closed except the bottom sliver; nothing in it can bear on chi(R^2) because a plane colouring need not be constant on cells."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/CELL-NOGO-V2-AUDIT.md",
+    "supervisor/solve-geometry/NEXT-PROBE-ANALYSIS.md",
+    "supervisor/solve-geometry/HONEYCOMB-FAMILY-CERTIFICATE.md",
+    "supervisor/solve-geometry/A-QUARTER-AUDIT.md",
+    "supervisor/solve-geometry/PATCH19-AUDIT.md",
+    "supervisor/solve-geometry/checks/cellnogo2.py",
+    "supervisor/solve-geometry/supervisor_checks.out",
+    "supervisor/solve-geometry/audit25/SHA256.txt",
+    "supervisor/solve-geometry/audit25/drat_run.log",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "None: analysis-only block, no computation, no solver, no Lean, by instruction (the graph chat holds the sole remote compute slot). All arithmetic in this block was done by hand and is marked [P]."
+  ],
+  "failed_routes": [
+    "Not attempted: any search for a 7-chromatic subgraph at a = 1/sqrt13 (would be a new computational route, outside this block and not needed for the audit); any patch for the bottom sliver (0, 1/sqrt28].",
+    "Not claimed: chi = 8 at either patch, any k >= 7 colouring statement, any unrestricted-plane bound.",
+    "Corrected and withdrawn: the blanket sentence that |v| + 2h(vhat) cannot certify dmax > 1. It can (a lower bound above 1 suffices); the error was labelling it an upper bound. Fixed in both documents, with the exact polygon formulas retained."
+  ],
+  "next_step": "Hand the probe specification to whoever holds the compute slot: a = 1/6, patch {N <= 25} (91 cells), exact forced-set determination first (rings 19 and 21 are candidates), then one plain 6-colouring CNF and one DRAT run with the established drat-trim; UNSAT extends the family result to (1/sqrt43, 1/2], SAT yields an explicit cell-constant 6-colouring at a = 1/6.",
+  "escalation": null
+}

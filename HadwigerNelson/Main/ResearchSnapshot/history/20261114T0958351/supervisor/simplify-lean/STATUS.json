@@ -1,0 +1,79 @@
+{
+  "updated_utc": "2026-11-14T10:02:00Z",
+  "status": "completed_block",
+  "summary": "Block 11: reviewed the R3 syntax fixes against the R2 bytes I hold, and built the minimal build closure. Both R2 failure diagnoses reproduce exactly: the /-- doc comment immediately before omit at ConditionalSpectrum:322-324 commits the parser to a declaration, and the wrapper bodies at ConditionalSpectrum:509 and ConditionalLimits:390 contain a bare term inside a by block. The three described changes are syntax-only in intent and nothing else in either file matches that pattern. R3 bytes are absent from this VM, so the R3 hashes are recorded as supervisor-reported, not verified. Closure: descendants-only 19, union-with-edits 21, complete ancestor closure from scratch 82, unaffected 1 (ConnectedUnitFree). The 19 are not import-closed: they dangle on 10 direct imports. Correction to my own block-10 advice: 19 is the affected set, 82 is the build requirement, and they answer different questions. Reuse accounting flagged: 12 non-edit ancestors, not 9. AxiomRoots split into affected Part A (7 roots, required) and unaffected upper-bound Part B (2 roots, optional); gate updated and re-verified. Nothing compiled.",
+  "verified_results": [
+    "GRADE [C] R2 failure 1 reproduces: in the frozen R2 ConditionalSpectrum.lean, lines 322-324 are a /-- d oc comment immediately followed by 'omit [StandardBorelSpace Y] [Nonempty Y] in'. A doc comment attaches to a declaration, so the following omit modifier is rejected. The same deployment elsewhere in the file (lines 492, 511) has omit followed directly by 'theorem' and is unaffected, which matches 'exactly 3 syntax changes'.",
+    "GRADE [C] R2 failure 2 reproduces at exactly two sites: ConditionalSpectrum.lean:508-509 and ConditionalLimits.lean:389-390 both open a proof with ': False := by' and then a bare application of uniform_precision_contradiction. No third site exists (finite_uniform_successor_contradiction is the untouched original). Adding 'exact' is the correct minimal fix.",
+    "GRADE [C] MINIMAL BUILD CLOSURE from MANIFEST-full.json: descendants-only 19; union-with-edits 21; complete ancestor closure from scratch 82; unaffected 1. Roles in BUILD-PLAN.json: 2 edited, 19 descendant, 61 ancestor_only.",
+    "GRADE [C] The 19 descendants are NOT import-closed: they have 10 direct imports outside the set, including ConditionalSpectrum, Selections, Geometry.PlaneColoring.Basic/Coloring/Converse/Mesh. So 19 answers 'what can be affected' and 82 answers 'what must be built from scratch'.",
+    "GRADE [C] The single unaffected module is OAI.Geometry.PlaneColoring.ConnectedUnitFree (build order 80): it neither reaches the edits nor is reached by them. Every other module must be present in a from-scratch build.",
+    "GRADE [C] Diamond found and explained: ConditionalLimits imports Approximation, which imports ConditionalSpectrum, so Approximation is at once a descendant of the Spectrum edit and an ancestor of the Limits edit. This is why the 14-module smoke closure already contains the deep consumer, and why the two edits are not comparable.",
+    "GRADE [C] Reuse accounting mismatch flagged, not resolved: the supervisor reports nine unchanged dependencies compiled locally; the manifest gives twelve non-edit ancestors in the smoke closure (Basic 1, Characters 2, InvariantMean 9, Multipliers 10, FourierTests 11, SmallArcs 12, PhaseEncoding 13, PhaseCollision 14, ConditionalSelection 15, Centers 18, RelativeCenters 19, Approximation 20). All twelve are flagged reused_candidate in BUILD-PLAN.json for the operator to mark.",
+    "GRADE [C] Needed-to-build differs from affected: OAI.Geometry.PlaneColoring.Seven (order 78) is not a descendant of the edits, yet is required in a from-scratch build because Chromatic (order 79, a descendant) imports it. AxiomRoots therefore prints the chi<=7 roots in a separate optional Part B.",
+    "GRADE [C] axiom_gate.py updated and re-verified on synthetic input: [propext] alone PASSes; a wrapped three-element set PASSes; an absent Part B root prints 'absent (optional, unaffected)' and does not fail; [propext, sorryAx] FAILs with 'sorryAx present -- transplanted body not substituted'; a missing required root exits 2.",
+    "GRADE [S] R3Spectrum sha256 d26d569088faea89e5ae5cc2309809797fcbe76cf6d927f4484bc39db7880d48 is reported PASSED locally; R3Limits sha256 fed6e99a17a7723240f9b598b1967183b41c5800d23d789e41e020cfe3dffedf is pending. Neither hash exists anywhere on this VM (searched), so neither is verified here.",
+    "RETAINED: block-10 confirmed that R2's repair was one 32-line block move and that ConditionalLimits was byte-identical across blocks 9-10; block-8 interface findings (no Measurable S; no competing Measure Circle instance; hwild at P); the 2038-declaration census."
+  ],
+  "conjectures": [
+    "R3 will compile and both roots will be within the standard axiom set; the residual risk is not elaboration but signature drift from the omit move, which pp.explicit #check diffing must settle rather than a green build.",
+    "If the omit move did change the printed binders, the affected statement is the new uniform_precision_contradiction only (it is the declaration the omit is attached to); the two public roots' statements were already verified byte-identical in block 8 and would remain so.",
+    "The from-scratch closure being 82 not 21 means the honest headline for the integration is 'a whole-tree rebuild plus re-certification of one public root', not 'a 19-module incremental check'."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/REVIEW-R3.md  <-- R3 review, sections 1-6. sha256 3e97b207d4d1146799d741c882c64fe340dd23337ad342de8614221335789cd0",
+    "supervisor/simplify-lean/BUILD-PLAN.json  <-- build plan: 82 rows in topological order with path/sha256/lines/role/reused_candidate/imports, the four counts, the edited-module hashes (R2+R3), the not-import-closed witness, the reuse mismatch. sha256 9baa54a4a3dd7bcbb122977071341e85929af212a53bf9868f76a49e39654e75",
+    "supervisor/simplify-lean/lean/AxiomRoots.lean  <-- split axiom-root file: Part A affected (7 roots, required) + statement-preservation #checks; Part B unaffected upper bound (2 roots, optional). sha256 726d1ae4ec8cea100c5203492d53523619ae12590713734379deef9e28b9caad",
+    "supervisor/simplify-lean/axiom_gate.py  <-- subset gate with required/optional split. sha256 36bf7fecb22d154ec14ab7d0e77621020761ee2c6a5c2497963509a0e38ea535",
+    "supervisor/simplify-lean/.scratch/closure-sets.json  <-- the set algebra output (ancestors, descendants, union, closure, unaffected, missing imports). sha256 e434de9c29c54e869c28ff72204362d82b70a53a638ccbad3b6163951dc5ff26",
+    "supervisor/simplify-lean/MANIFEST-full.json (83 modules, unchanged; the basis for all counts)",
+    "supervisor/simplify-lean/snapshots/integ-48aa378f6f6db82b/ (frozen R2, the object the diff review is against)",
+    "retained: REVIEW-integration-final.md, BUILD-NOTES-full.md, REVIEW-encoding-core.md, PACKET-encoding-core.md, CENSUS.md"
+  ],
+  "tests_run": [
+    "grep -B2 -A2 '^omit ' on the frozen R2 ConditionalSpectrum.lean -> shows the doc-comment adjacency at 322-324 and the two clean omit-to-theorem sites at 492/511.",
+    "sed reads of ConditionalSpectrum.lean:505-515 and ConditionalLimits.lean:386-394 -> bare applications inside by blocks confirmed.",
+    "python set-algebra over MANIFEST-full.json (0.11 s) -> 13 ancestors of the pair (12 non-edit), 19 descendants, 21 union, 82 closure, 1 unaffected, 10 dangling imports.",
+    "python3 supervisor/simplify-lean/axiom_gate.py on three synthetic samples -> subset PASS, optional-absent tolerated, sorryAx FAIL, missing-required rc 2.",
+    "ast.parse on axiom_gate.py after the edit -> parses.",
+    "NO Lean build, no cloud/cache operation (analysis-only block)."
+  ],
+  "failed_routes": [
+    "Could not review the R3 bytes: neither R3 hash exists on this VM (searched the whole repo). Review is of the described diff against R2, with the R3 hashes recorded as supervisor-reported.",
+    "Could not reconcile 'nine unchanged dependencies' with the twelve non-edit ancestors the manifest gives; flagged in BUILD-PLAN.json for the operator instead of guessing.",
+    "WITHDRAWN (my block-10 next step): 'build the 19-module reverse closure' as if it were self-contained. It is not import-closed; the correct incremental build is the 2 edited modules plus re-elaboration of the 19, and the from-scratch requirement is 82."
+  ],
+  "next_step": "Next verification step: when R3Limits lands, (1) confirm both R3 hashes, (2) run AxiomRoots.lean against the private olean dir and pipe through axiom_gate.py -- require GATE: PASS with every Part A root within {propext, Classical.choice, Quot.sound} and no sorryAx, (3) diff the three pp.explicit/pp.universes #check outputs against the pre-patch build to certify statement preservation, which the omit move does not guarantee, (4) only then run the 19-descendant re-elaboration; a from-scratch rebuild is 82 modules and is a separate, larger claim.",
+  "owned_agents": [
+    {
+      "swarm": "smwfy8rae",
+      "members": 3,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "state": "stopped",
+      "accepted": 0,
+      "note": "stopped in block 1; not restarted (single-agent blocks by instruction)."
+    }
+  ],
+  "escalation": null,
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "review": "supervisor/simplify-lean/REVIEW-R3.md",
+    "build_plan": "supervisor/simplify-lean/BUILD-PLAN.json",
+    "axiom_root_file": "supervisor/simplify-lean/lean/AxiomRoots.lean",
+    "axiom_gate": "supervisor/simplify-lean/axiom_gate.py",
+    "closure_sets": "supervisor/simplify-lean/.scratch/closure-sets.json",
+    "hashes": {
+      "R2_spectrum_frozen": "48aa378f6f6db82bfeb0e65920ec2606507364541e72bf77ab969c6c87895dd1",
+      "R2_limits_frozen": "58707f0495837a89b58d5ac7d131ee855220c74cba28851474489b7a8cdd9e0d",
+      "R3_spectrum_reported_passed": "d26d569088faea89e5ae5cc2309809797fcbe76cf6d927f4484bc39db7880d48",
+      "R3_limits_pending": "fed6e99a17a7723240f9b598b1967183b41c5800d23d789e41e020cfe3dffedf"
+    },
+    "counts": {
+      "descendants_only": 19,
+      "union_with_edits": 21,
+      "complete_ancestor_closure": 82,
+      "unaffected": 1
+    },
+    "next_verification_step": "Confirm R3Limits hash, run AxiomRoots.lean + axiom_gate.py (GATE: PASS), diff pp.explicit #checks for statement preservation, then the 19-descendant re-elaboration."
+  }
+}

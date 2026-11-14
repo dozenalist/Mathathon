@@ -1,0 +1,25 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: 282e4fa05ef5c021566b5ac7765f045e225cf9f9987aad3e748a17a0081a6b12
+Status: failed
+Exit code: 1
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\jointpair\JointPairSupportV1.lean:28:55: error: Application type mismatch: The argument
+  hR
+has type
+  ∀ᵐ (t : ℝ), Disjoint (stateSupport f (f t)) (stateSupport f (f (t + d)))
+but is expected to have type
+  ∀ᵐ (t : ℝ), ?m.170 (f t) (f (t + ?m.171))
+in the application
+  @stateSupport_shift_relation ι inst✝² inst✝¹ inst✝ f hf ?m.170 ?m.171 hR
+'OAI.EuclideanFiveColor.stateSupport_no_shift_of_contact_ban' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'OAI.EuclideanFiveColor.five_support_no_sixty_joint_pair' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+
+STDERR
+

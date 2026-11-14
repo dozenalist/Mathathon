@@ -1,0 +1,9 @@
+STEP 2 (d5): the transfer's cost is ONE theorem consumed ONCE; route (a) is circular.
+
+1. MEASUREMENT (closure_measure.py): Lean Prop 4.2 = 32 modules/16006 lines; 29 modules/15096 (94.3%) reachable ONLY via Analysis.PlaneSpectrum.Ergodicity = Theorem 2.3 (rigidity). Transfer proper 3/910; backward half 5853. The heavy layer is consumed via ONE lemma at ONE site: residual_fourier (Ergodicity.lean:403) at BorelTransfer.lean:61, and it cannot be weakened on that class (z=1 equivalent to all z). So route (e) has no interface move.
+
+2. ROUTE (a) IS CIRCULAR, provably. Theorem A-meas: a JOINTLY MEASURABLE palette field with (H1)+(H2) yields a weak measurable k-colouring with NO spectral theory: N(x,d)={e:P_x(e) and P_(x+d)(e) meet} is angular-null (Remark 5.3) and Borel in (x,d), so a.e. e has null section; q(x)=min P_x(e) is Borel and a.e. proper; Fubini gives Definition 1.2. So the collapse yields the transfer's CONCLUSION from a measurable field - but Def 5.1 builds palettes from circle averages of Borel colour classes, so the field exists only AFTER measurability. Theorem 2.3 buys exactly measurability in x.
+
+3. (b),(c),(d) dead, reasons in the audit: the tower IS the FZ relatively-weak-mixing factor; Tarski-Seidenberg is fully consumed at R1; amenability is already used and cheap (412 of 15096 lines).
+
+4. Negative check: Theorem 2.3's ergodic step is consistent (K divisible => orbits in E infinite => Haar is K-ergodic). No defect.

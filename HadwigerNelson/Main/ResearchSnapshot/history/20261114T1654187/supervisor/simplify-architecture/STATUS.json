@@ -1,0 +1,46 @@
+{
+ "updated_utc": "2026-11-14T16:44:47Z",
+ "status": "completed_block",
+ "summary": "Block 20 (clock %s), source/analysis only. FIVE-CYCLE-ARGUMENT.md delivers the requested reusable theorem: instantiate the existing stateSupport_shift_relation (FiveSupport.lean:55) with R i j := Disjoint (S i) (S j) to get the contact/shift theorem T - if a.e. Disjoint (S (f t)) (S (f (t+d))) then a in S i implies a+d not in S i - in one step, with no finite-sum support identity. Its adjacency instance is exactly five_support_next/prev, so (D) and (N) become two instances of one statement. T's hypothesis is discharged in the tree by a FINITE union of null sets over the pairs with S i cap S j nonempty: non-adjacent pairs (including i = j) are null by fiveState_adj, adjacent pairs by Lemma 6.7 (five_support_step_ban) exactly when the contact exists. This proves clause (D) using only fiveState_adj + Lemma 6.7 + stateSupport_shift_relation, avoiding both Astra's finite-sum identity and the varying-state strict-sequence machinery. The five-cycle branch is rewritten in six steps with an input contract C0-C4; graph structure alone is shown insufficient, with the finite-layer model i = j = 0 as countermodel. Lemma 6.7 retained and used twice; no States deletion; no (V) licence at extra angles.",
+ "verified_results": [
+  "[proved here] Theorem T: stateSupport_shift_relation (FiveSupport.lean:55) with R i j := Disjoint (S i) (S j) and hR the a.e. disjointness hypothesis yields exists j, Disjoint (S i) (S j) and a+d in S j; if also a+d in S i then a+d lies in the intersection, contradicting disjointness. No new machinery; stateSupport (FiveSupport.lean:39) is syntactically fiveSupport (FiveSupport.lean:83) unfolded with f := fun t => fiveState x (t : Angles).",
+  "[read] Corollary T' with R := fiveAdj is exactly five_support_next (FiveSupport.lean:124) and five_support_prev (:128), both proved that way in the tree - so the neighbour and no-self-contact facts are two instances of one theorem.",
+  "[argued here] (H) discharged by a finite union of null sets: E = {t : not Disjoint (S (f t)) (S (f (t+sixty)))} = union over pairs with S i cap S j nonempty of Q_ij; non-adjacent pairs (including i = j, since fiveAdj i i is false in Fin 5) are null by fiveState_adj (Accumulation.lean:392); adjacent pairs are null by five_support_step_ban (FiveSupport.lean:89, = manuscript Lemma 6.7 p.41) precisely when the contact exists. Thus volume E = 0.",
+  "[read] Input contract of the five-cycle branch: C0 adjacency (fiveState_adj), C1 contact propagation (five_contact_next :171 / five_contact_prev :185, using five_support_next/prev, (D) and FiveComb.contact_neighbors), C2 no-60-degree self-contact (D) - now Theorem T instead of five_support_no_sixty via strict_state_no_unit_support (States.lean:704), C3 finite FiveComb arithmetic (opposite_contacts :156, two_bans :160, contact_neighbors :153, neighbors :159, all by decide), C4 Lemma 6.7 for closing.",
+  "[read + rewritten] Six-step branch: contacts at a (pair i, i+1) and at b = a + 3*sixty (pair j, j+1) force {i-1,i+2} into S(a+sixty) and {j-1,j+2} into S(a+2*sixty); a state k in both would put a+sixty and a+2*sixty in S k, contradicting (D), so the two 2-element lists are disjoint; opposite_contacts then gives j = i+1 or j+1 = i, two_bans gives a state s with all steps banned, and Lemma 6.7 closes. Faithful to five_opposite_contacts_false (FiveSupport.lean:199) and its use at CyclicCore.lean:119.",
+  "[argued here, finite layer only] Graph structure alone is insufficient: opposite_contacts TAKES Disjoint ({i-1,i+2}) ({j-1,j+2}) as a hypothesis (FiveSupport.lean:156). Model showing the gap: contacts of the SAME pair i = j = 0 at a and a+180; all FiveComb facts remain satisfiable (Adj is still the 5-cycle) but Disjoint ({4,2}) ({4,2}) is false, so no contradiction is derivable without (D). This is a model of the finite layer, not a colouring.",
+  "[retained / removed ledger] Retained: Lemma 6.7 five_support_step_ban (used twice), five_support_trace, the transport pattern in five_support_prev (:128-137), the FiveComb layer, five_opposite_contacts_false and all CyclicCore consumers. Removed from THIS branch only: strict_state_no_unit_support (States.lean:704) and its strict_state_sequence_* support. No global States deletion."
+ ],
+ "conjectures": [
+  "With (D) proved via T, the five-cycle branch depends on exactly one non-finite input per contact step plus Lemma 6.7; bridge (B) is therefore blocked only at clause (V), whose obstruction (no construction of a second five-cycle centre) is unchanged.",
+  "Theorem T looks like the honest general form of the paper's merge of (5.3)/(5.7) with the support-shift bookkeeping: it needs no finiteness of the label type for the statement, only for discharging (H) as a finite union of nulls."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/FIVE-CYCLE-ARGUMENT.md (sha 7d1341e34cbe4c7d; Theorem T + corollary T', (H) by finite union of nulls, six-step five-cycle branch, input contract C0-C4, retained/removed ledger, graph-alone countermodel, grades, non-licences)",
+  "supervisor/simplify-architecture/FIVE-CYCLE-D.md (block-19/20 state: Sec.6 retracted, Sec.8 Astra candidate audited as a valid alternative route to (D))",
+  "supervisor/simplify-architecture/MANUSCRIPT-LEMMA67.txt (verbatim Lemma 6.7, p.41, with identification vs five_support_step_ban)",
+  "read-only inputs cited: lean/OAI/Geometry/PlaneColoring/{FiveSupport.lean 39,55,83,86,89,124,128-137,138,150-163,171,185,199; Accumulation.lean 392; CyclicCore.lean 25,119; States.lean 704; PaletteTransport.lean 390; Coloring.lean 17}",
+  "supervisor/simplify-architecture/encoding-core/integration/ (frozen R4 d26d569088faea89... / 24f89dd33533a0f6..., untouched)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "rg/sed reads of FiveSupport.lean 150-220, FiveComb namespace, five_opposite_contacts_false, CyclicCore.lean:119",
+   "outcome": "exact statements of the finite layer, contact propagation, opposite contacts and the closing step captured with line numbers."
+  },
+  {
+   "cmd": "date -u",
+   "outcome": "2026-11-14T16:44:47Z"
+  },
+  {
+   "cmd": "no build, no compute, no agents, no solver runs; only files under this supervisor directory written",
+   "outcome": "source and proof analysis only, per policy."
+  }
+ ],
+ "failed_routes": [
+  "Previously retracted and not revived: the null dense-set support model (volume.restrict of a null set has empty support); the claim that no proper weakening of (D) works.",
+  "Rejected this block: taking the finite layer (FiveComb) as sufficient for the opposite-contact contradiction - disproved by the i = j model, since opposite_contacts consumes disjointness as a hypothesis.",
+  "Not attempted: no (V) claim at extra angles, no second-five-cycle-centre construction, no States deletion, no build."
+ ],
+ "next_step": "Formalise Theorem T and its corollary as two short lemmas next to stateSupport_shift_relation (FiveSupport.lean, after line 70), then re-derive five_support_no_sixty from fiveState_adj + five_support_step_ban through T and delete strict_state_no_unit_support from that path only. The angularMeasure-to-volume transport must be written explicitly, following five_support_prev (:128-137). This needs a build slot; it is bookkeeping, not new mathematics. Clause (V) remains the only open input of bridge (B).",
+ "escalation": null
+}

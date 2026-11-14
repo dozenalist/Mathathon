@@ -1,0 +1,50 @@
+{
+ "updated_utc": "2026-11-14T16:17:44Z",
+ "status": "completed_block",
+ "summary": "Block 19 (clock 2026-11-14T16:17:44Z), source extraction under the lead contract. (1) RETRACTED \u00a76 of FIVE-CYCLE-D: the countable dense construction is invalid because fiveSupport is (volume.restrict fiveRealState).support and the support of a null restricted measure is empty, not closure(A); not replaced by another model. Also retracted the unproved claim that no proper weakening works. (2) Paper located and extracted verbatim: MANUSCRIPT-LEMMA67.txt holds Lemma 6.7 (A support contact bans an angular step), page 41 of 62, lines 2139-2157, with the PDF sha256, OpenAI 2026-09-23 metadata, and its only application on page 42 lines 2196-2200. Identification: Lemma 6.7 is five_support_step_ban (FiveSupport.lean:89) clause by clause; it is NOT strict_state_no_unit_support (States.lean:704), which is a two-support no-unit-distance statement used by five_support_no_sixty. (3) Astra's candidate audited independently and found VALID: with I finite, f measurable, mu translation-invariant, the finite-union support identity plus translation continuity gives S_i intersecting T^{-1}(S_i) = empty from the joint-pair premise; every step checked, finiteness of I identified as essential. Applied to the tree, the premise holds exactly: non-adjacent pairs are null by fiveState_adj, adjacent pairs with a contact by Lemma 6.7 itself. This proves clause (D) and would drop strict_state_no_unit_support; Lemma 6.7 is retained, so it is not a 6.7 deletion. One flagged step: Haar-to-volume transport. Nothing machine-checked.",
+ "verified_results": [
+  "[verified here] \u00a76 of FIVE-CYCLE-D is retracted: fiveSupport x i := (volume.restrict (fiveRealState x i)).support (FiveSupport.lean:83); for null A, volume.restrict A = 0 and (0).support = empty, so the constructed A had empty support and no point of support intersection. The construction is withdrawn and not replaced by another model.",
+  "[verified here] The unproved minimality sentence in \u00a77 ('no proper weakening works') is retracted; only the positive identification stands, that the finite argument's step 1 consumes full disjointness.",
+  "[verified here, extraction] Manuscript Lemma 6.7 located at page 41 of 62, extraction lines 2139-2157, in 'The Euclidean plane is not five-colorable' (OpenAI, PDF CreationDate 2026-09-23), sha256 607c2601b5ae655c... - 'A support contact bans an angular step': if i, i+1 in S(a) at any direction a then the transitions i->i+1 and i+1->i under R are absent almost everywhere on the entire angular circle at x. Verbatim text plus the only application (page 42, lines 2196-2200) written to MANUSCRIPT-LEMMA67.txt.",
+  "[verified here, identification] Lemma 6.7 == five_support_step_ban (FiveSupport.lean:89), clause by clause: hypotheses hi, hj, hij (fiveAdj i j := i+1 = j or j+1 = i) match 'i, i+1 in S(a)'; the two conjuncts match 'both transitions'; forall^m t over angularMeasure matches 'almost everywhere on the entire angular circle'. It is NOT strict_state_no_unit_support (States.lean:704), which is a two-support no-unit-distance statement (RealState sets J, K and a distinguished X, with the conclusion ||direction b - direction d|| != 1) and is used by five_support_no_sixty (FiveSupport.lean:138).",
+  "[audited here, proof level] Astra's candidate is VALID. Steps: (1) {f=i} = union_j Q_ij exactly; (2) mu.restrict {f=i} = sum_j mu.restrict Q_ij, needing Q_ij measurable (A_i cap (A_j - d)); (3) support of a FINITE sum = union of supports, with finiteness essential (countable counterexample 2^-n delta_{x_n} with x_n -> x); (4) a in supp(mu.restrict Q_ij) implies a+d in S_j, via U-d open and translation invariance, using Q_ij subset A_j - d; (5) choosing j at a in S_i and using the hypothesis a+d in S_i gives S_i cap S_j nonempty, so the joint-pair premise makes Q_ij null, contradicting a in its support.",
+  "[read] Premise (PA) holds exactly in the tree with d = 60 degrees: non-adjacent (i,j) including i = j are null by fiveState_adj (Accumulation.lean:392); adjacent pairs are null by five_support_step_ban precisely when S_i cap S_j is nonempty - which is exactly (PA)'s hypothesis - and vacuous otherwise. So the candidate proves clause (D) in the pointwise form a in S_i -> a+d not in S_i, which is the shape of five_support_no_sixty, without strict_state_no_unit_support.",
+  "[read] One flagged technical step: fiveState_adj and five_support_step_ban are a.e. w.r.t. angularMeasure on Angles while fiveSupport uses volume on R; the transport is precedented at five_support_prev (FiveSupport.lean:128-137) via angleMk_quasiMeasurePreserving and measurePreserving_add_right, and is required before (PA) can be used."
+ ],
+ "conjectures": [
+  "With the candidate accepted, clause (D) of bridge (B) is settled and only clause (V) remains, whose obstruction is the missing construction of a second five-cycle centre. No claim is made that (V) is reachable.",
+  "The candidate's finiteness requirement suggests it is the honest form of the paper's Lemma 6.7 plus (5.7) mechanism, not a new idea: it factors Lemma 6.7 into a finite-support identity and a translation-continuity step."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/MANUSCRIPT-LEMMA67.txt (sha 40dc2441cf4c283c; verbatim Lemma 6.7 with page/line/version/path and sha256, its only application, and the clause-by-clause identification with five_support_step_ban vs strict_state_no_unit_support)",
+  "supervisor/simplify-architecture/FIVE-CYCLE-D.md (sha 7bb8b2cf9070c5e8; block-19 retraction banner withdrawing \u00a76 and the minimality sentence, new \u00a78 with the audited Astra candidate, (PA) verification, the transport note, and grades)",
+  "read-only inputs: lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:83,89,128-152; Accumulation.lean:392; States.lean:704; Exclusion.lean:9; attachments/here-are-three-files-ni5n/paper.pdf (sha256 607c2601b5ae655c...)",
+  "supervisor/simplify-architecture/encoding-core/integration/ (frozen R4 d26d569088faea89... / 24f89dd33533a0f6..., untouched)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "pdfinfo + pdftotext -layout with page-boundary counting (single process, <1 s)",
+   "outcome": "Lemma 6.7 at page 41 lines 2139-2157; application at page 42 lines 2196-2200; PDF 62 pages, OpenAI, 2026-09-23."
+  },
+  {
+   "cmd": "sed reads of FiveSupport.lean 128-152 and States.lean 696-716",
+   "outcome": "five_support_no_sixty depends on strict_state_no_unit_support via five_support_next, five_adj_four, stateSupport_nonempty_measure and direction_sixty_unit_real; exact hypotheses captured."
+  },
+  {
+   "cmd": "date -u",
+   "outcome": "2026-11-14T16:17:44Z"
+  },
+  {
+   "cmd": "no build, no agents, no solver runs; only files under this supervisor directory written",
+   "outcome": "source extraction and proof audit only, per policy."
+  }
+ ],
+ "failed_routes": [
+  "RETRACTED: FIVE-CYCLE-D \u00a76 (countable dense set as a support-level obstruction) - volume.restrict of a null set is the zero measure and its support is empty.",
+  "RETRACTED: the claim that no proper weakening of (D) suffices - asserted, never proved.",
+  "Earlier blocks' support-level models that identified support with closure: unusable for support conclusions; the abstract-only labelling already applied, now extended.",
+  "Not attempted: no replacement model, no '6.7 deletion' framing, no (V) work, no build."
+ ],
+ "next_step": "Write the candidate up against the tree: state the finite-union support lemma and the translation-continuity step as two standalone Lean lemmas (in the FiveSupport module's style), then derive five_support_no_sixty from fiveState_adj + five_support_step_ban and drop strict_state_no_unit_support from that path. The transport from angularMeasure on Angles to volume on R must be done explicitly, following five_support_prev (FiveSupport.lean:128-137). This is a formalisation task, not new mathematics, and requires a build slot.",
+ "escalation": null
+}

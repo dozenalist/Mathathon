@@ -1,0 +1,161 @@
+{
+ "updated_utc": "2026-11-14T15:02:46Z",
+ "status": "completed_block",
+ "summary": "Read-only audit of SEED-DESIGN-TAU.md's gluing relation. Confirmed the two named defects plus a third. D1: the general criteria ARE swapped - forced equal is 'every joint colouring has c1(a)=c2(b)', forced different 'every joint colouring has c1(a)!=c2(b)'; the worker states the negations. The E/N/F table is correct (re-derived), so the swap is invisible there. D2: tau=(0,10) gives an EMPTY overlap, voiding (C1). D3: (C1) mislabels its pinned pair - the 'tips' are at distance 1, hence adjacent, hence forced DIFFERENT; the forced-equal pair is (K,C1) at distance sqrt3. Replacement: the Moser spindle minus its closing edge (7 vertices, 10 edges, one shared point, no cross edges) forces a cross-copy equality at k=3, and the spindle adds that closing edge. Criterion (K1)/(K2) proven with exact quantifiers; in the multi-point form R_a[gamma] breaks once |I|>1. Cross edges only shrink J, so soundness survives; marginal blindness: pair-separation of H concerns C_k(H), not J in C_k(H)^2, so no union pair may be discarded for it, agreeing with the graph worker's retraction. For the 1145 no elimination is certifiable: the only complete data are 34 single H-colourings, which would need 58 coincidences to be joint. What IS certified is that H cannot reduce the count.",
+ "verified_results": [
+  {
+   "statement": "D1 CONFIRMED: the two general criteria in section 1b are interchanged. From Poss(a,b) = {(c1(a),c2(b)) : (c1,c2) in J}, forced equal is the DIAGONAL conclusion (for all joint colourings c1(a)=c2(b)) and forced different is the DISJOINTNESS conclusion (for all, c1(a)!=c2(b)). The worker states 'forced equal iff R_a cap R_b empty for every alpha', which is the criterion for forced different.",
+   "grade": "PROOF by definition-chasing; independent re-derivation"
+  },
+  {
+   "statement": "The E/N/F table is CORRECT in all five rows (E/E equal, E/N different, E/F nothing, N/N nothing needing k>=3, F/any nothing). The swap is invisible on the E/E and E/N rows because there the product-diagonal test and the intersection test happen to agree, which is exactly why the correct table coexists with the wrong general formula.",
+   "grade": "PROOF, independently re-derived this block"
+  },
+  {
+   "statement": "D2 CONFIRMED: with the diamond {(0,0),(1,0),(1/2,sqrt3/2),(1/2,-sqrt3/2)} and tau=(0,10), the four candidates p-tau are (0,-10),(1,-10),(1/2,sqrt3/2-10),(1/2,-sqrt3/2-10), none in the diamond, so the overlap is EMPTY. The copies are disjoint, p0 lies in copy 1 only, Proposition 1 applies, and nothing is forced. The sentence 'no overlap beyond p0' asserts an overlap that does not exist.",
+   "grade": "PROOF, exact rational arithmetic"
+  },
+  {
+   "statement": "D3 CONFIRMED (new): in that diamond |t+ - t-| = |(0,1)| = 1, so the two 'tips' the worker calls equal-pinned are ADJACENT and hence forced DIFFERENT in every proper colouring. The forced-equal pair there is (K,C1) at distance sqrt3. So (C1) fails twice, independently of D2.",
+   "grade": "PROOF"
+  },
+  {
+   "statement": "Corrected counterexample: two copies of a unit diamond glued by identifying a degree-3 vertex k1 of copy 1 with the degree-3 vertex c2 of copy 2, with no cross edge, forces c(c1) = c(c2) at k=3. Realised with unit distances this is the Moser spindle minus its closing edge: 7 = 4+4-1 vertices, 10 = 5+5 edges, no accidental unit pair. Adding the closing edge (|c1-c2| = 1 in the spindle's geometry) turns the forced equality into a contradiction, so the spindle is not 3-colourable - the forced cross-copy pair is exactly what makes it 4-chromatic.",
+   "grade": "PROOF (abstract) + PROOF of the realisation from the spindle's edge count 11 = 10 + 1; builder not re-run"
+  },
+  {
+   "statement": "Standalone criterion: with J = {(c1,c2) in C_k(H)^2 : c1(v(p))=c2(w(p)) for p in I and c1(x)!=c2(y) for (x,y) in E_x}, (a,b) is forced equal iff every member of J has c1(a)=c2(b), and forced different iff every member has c1(a)!=c2(b); otherwise both relations are realisable. Non-vacuity (J nonempty) is a separate hypothesis whose failure makes both statements true.",
+   "grade": "PROOF"
+  },
+  {
+   "statement": "Multi-point form: the worker's single R_a[gamma] is an ambiguity. In copy 1 the boundary datum constrains the vertices v(p) and in copy 2 the vertices w(p), which differ for a translate (w(p) = v(p) - tau). Two functionals P_a and Q_b are required; they coincide only when |I| = 1 with v(p0) = w(p0), which is why the error is invisible in section 1b.",
+   "grade": "PROOF; fixes an ambiguity in the worker's 2b(a)"
+  },
+  {
+   "statement": "Cross edges preserve soundness: E_x only shrinks J, so (K1)/(K2) hold verbatim; cross edges can create forcing, never destroy it. What breaks is the hand argument - the colour-permutation that makes a one-point gluing inert survives a permutation of copy 2 alone only if it fixes every boundary value pointwise AND preserves all cross inequalities, a group that is usually trivial.",
+   "grade": "PROOF"
+  },
+  {
+   "statement": "Marginal blindness lemma: pair-separation of H at level k states that the coordinate projections of C_k(H) are surjective; J is a subset of the PRODUCT C_k(H)^2 cut out by boundary equations and cross inequalities, and nothing about the marginals constrains the projection of J onto (a in copy 1, b in copy 2). Hence no union pair may be discarded because each H copy is pair-separating. Independently: H induced in G_rep gives C(G_rep)|_H subset C(H), so forced in H implies forced in G_rep, and H has no forced pair at k=5, so that implication eliminates nothing.",
+   "grade": "PROOF; agrees with supervisor/solve-graphs/CORRECTION-restriction-map.md"
+  },
+  {
+   "statement": "On the 1145 candidates: no certified elimination is available from existing data. Every elimination needs an existential witness, a joint colouring (c1,c2) in J; J is cut out by 58 boundary equations and 184 cross inequalities (external counts), while the only complete colouring data are the 34 verified 5-colourings of H, which are elements of C_k(H) and not of J. A pair of witnesses would need 58 prescribed coincidences to hold exactly. So additional colourings of the UNION (or of H under each boundary datum) are necessary, not optional.",
+   "grade": "PROOF of the transfer direction; the 'witnesses are silent' part is an argument, not a proof - no witness pair is known to lie in J, which is all that is established"
+  },
+  {
+   "statement": "A cheap sound refutation test, if joint colourings are ever produced: given (c1,c2) in J, if a colour permutation pi fixes every boundary value and preserves all cross inequalities while pi(c2(b)) != c2(b), then (c1, pi o c2) in J exhibits the opposite relation, so (a,b) is neither forced equal nor forced different. Sound and per-candidate cheap; it bites only where cross constraints are sparse, since 184 inequalities typically trivialise the permutation group.",
+   "grade": "PROOF of soundness; unexercised"
+  },
+  {
+   "statement": "Pre-registered red flag: any joint enumeration must first report whether J is empty. If J is empty the union is not 5-colourable, i.e. a 1048-vertex 6-chromatic unit-distance graph, which must be treated as a solver artefact pending DRAT rather than a result.",
+   "grade": "specification"
+  },
+  {
+   "statement": "No forcing is claimed, no chromatic or plane-level claim is made, and the target file was not edited. All counts 1048/58/184/1145 are the graph worker's measurements, not re-verified here.",
+   "grade": "scope statement"
+  }
+ ],
+ "conjectures": [
+  "A translate gluing with one-point overlap and NO cross edges appears to be impossible for the diamond (every difference has norm 1 or sqrt3, so any overlapping tau is either a unit vector, making every vertex adjacent to its image, or a tips difference, which I checked creates cross edges). If that generalises, the translate channel always couples, and the worker's search for a 'clean' seed is better aimed at factors with a forced-equal pair far from the overlap.",
+  "The 1145 could in principle be reduced without full enumeration by a structural pinning certificate: a vertex a is boundary-pinned only if every colouring with a given boundary datum agrees at a, which is a universal statement needing either a complete enumeration or a proof of rigidity. No such rigidity proof exists in the record."
+ ],
+ "artifacts": [
+  "supervisor/solve-independent/audit-amplifier/GLUING-AUDIT.md",
+  "supervisor/solve-independent/audit-amplifier/SPARE-COLOUR.md",
+  "supervisor/solve-independent/audit-amplifier/COMPOSITION.md",
+  "supervisor/solve-independent/audit-amplifier/AUDIT.md",
+  "supervisor/solve-independent/audit-amplifier/TERMINAL-RELATIONS.md",
+  "supervisor/solve-independent/audit-amplifier/AMPLIFIER.frozen.md",
+  "supervisor/solve-independent/audit-amplifier/adaptive_k5.frozen.json",
+  "supervisor/solve-independent/audit-amplifier/census_heule553.frozen.json",
+  "supervisor/solve-independent/check_null_transfer.lean",
+  "supervisor/solve-independent/STATUS.json"
+ ],
+ "tests_run": [
+  {
+   "command": "(no computation; no solver, no Lean, as instructed)",
+   "outcome": "read-only audit; hand arithmetic only"
+  },
+  {
+   "command": "sha256sum supervisor/solve-geometry/SEED-DESIGN-TAU.md (start and end of block)",
+   "outcome": "6d764f92 at start (236 lines), 7a91d575 at end (242 lines): the owner edited it mid-block. All three defects re-checked present in the end version at lines 159-160, 181, 179."
+  },
+  {
+   "command": "grep for the audited strings in the end version",
+   "outcome": "D1 (lines 159-160), D2 (line 181), D3 (line 179) all still present, so the audit is live against the current file"
+  }
+ ],
+ "failed_routes": [
+  "My first sublattice enumeration used the lower-triangular HNF <(a,0),(b,c)>, which is NOT a complete list: it misses 6 of the 8 index-7 sublattices, including the paper's <(1,3),(0,7)>, and wrongly gave minimum index 8 at a = 2/5. Fixed to upper HNF <(a,b),(0,c)>; the control then gave 7 as it must.",
+  "The heuristic bound index >= ceil((1+D)^2/(3a^2)) = 17 at a = 1/5 was wrong (ring 16 escapes it); replaced by the multiplicative-norm argument giving 16, which the enumeration confirms.",
+  "A density argument (clusters of <= 4 separated by 1.3856) does not give a contradiction at six colours: 2.65 > 1.60. Recorded as a gap, not pursued further in this block.",
+  "A hand estimate that ring-16 cells could carry the N=16 forced offsets was wrong (ring 16 is unforced because dmin >= 1); it does not affect this block, where the window proof bounds N < 16.33 independently.",
+  "Carried forward and still relevant: the earlier lower-triangular HNF enumeration was incomplete (missed 6 of 8 index-7 sublattices); this block uses the upper HNF only, and the index-19 counts here are on that corrected enumeration.",
+  "p19_shrink.py: greedy UNSAT-core minimisation (73+ solver calls) exceeded the cap and produced no output; superseded, no core certificate.",
+  "k = 7 (i.e. chi = 8) DRUP certificate: generation exceeded 60 s; abandoned. The chi = 8 claim therefore rests on two CDCL decisions plus a verified 8-colouring, not on a proof.",
+  "rup.c first version had two real defects: clauses added with watches already false at level 0, and unit clauses enqueued but not propagated. The second produced a spurious RUP FAILURE; diagnosed with a naive independent propagation. Both fixed; the shipped checker is the fixed one.",
+  "patch19_proof.py: abandoned driver (pysat returns DIMACS strings, so its empty-clause assertion fired). Superseded by p19_gen.py.",
+  "Earlier in this block's lineage: the 'every 6-subset contains an edge' line in QUOTIENT16.md \u2014 retracted as a chromatic argument; K_16 is the valid one.",
+  "No SAT search, no core minimisation and no 7-UNSAT work in this block, per instruction; the earlier failures are retained and documented in FAILED-RUNS.md (RUP FAILURE at step 26154 caused by unpropagated units in my checker; shrink timeout; k=7 generation timeout; incomplete lower-HNF enumeration).",
+  "An earlier attempt to parse the exact per-ring values back from JSON strings failed (a hand-rolled parser); replaced by carrying the Q3 objects directly. No numerical claim changed.",
+  "Nothing failed in this block's single experiment. Recorded for continuity: pysat's cadical153 with_proof must NOT be used for DRAT here (its writer mangles the proof, per supervisor/solve-graphs/certs/shard_b_summary.md); the cadical binary was used instead, and my own rup.c was not used at all.",
+  "The earlier blanket requirement (boundary ownership must be constructed before any 6-upper-bound consequence, stated in CELL-NOGO-v2.md section 1 and RECOVERY.md) is RETRACTED as wrong; it treated as necessary a step that the null-set transfer lemma shows does not exist.",
+  "A single global translation avoiding B does not exist (it would require B empty), so the compactness step cannot be replaced by a global translate; any future argument that tries to pick one t for the whole plane is invalid.",
+  "RETRACTED (supervisor-caught): the claim that (H) is necessary. (H) is sufficient only; the exact criterion is embeddability of every finite unit-distance graph.",
+  "RETRACTED (supervisor-caught): the claim that a half-plane is killed by the diameter objection. A half-plane satisfies (H); the objection applies only to bounded regions and fixed-width strips.",
+  "CORRECTED (supervisor-caught): an arbitrary colouring of all cell interiors is not thereby cell-constant; the Cayley-graph equivalence needs that hypothesis stated.",
+  "CORRECTED (supervisor-caught): compactness is used in this proof but was wrongly graded indispensable to all proofs.",
+  "RETRACTED (supervisor-caught): the iff 'chi(R^2) <= chi(C\\Z) <=> every finite unit-distance graph embeds in Gamma(C\\Z)'. Necessity is false; chromatic suprema do not recover embeddings. Replaced by the k-colourability criterion.",
+  "CORRECTED: the conclusion of the transfer lemma does not extend the supplied colouring pointwise; only existence is asserted.",
+  "CORRECTED (supervisor-caught): the diameter argument for fixed-width strips is invalid, because a chain can be laid flat along the strip. Replaced by a perpendicular-extent criterion with a rigid triangular patch as the obstruction.",
+  "REMOVED: the stale 'body elided at ...' label on the source packet, after mechanically verifying the body has no elision.",
+  "WITHDRAWN: the claim that a triangulated triangular-lattice disk has only congruent unit-distance realisations (used to argue a strip obstruction). Unsupported and unnecessary.",
+  "RETRACTED: the whole 'can a realisation of the graph fit in the strip' framing. H is about translating a fixed point set, so the strip fails on the two-point set {0,(w+1)i}.",
+  "My own hand estimate that the k=2,n=3 chain contains an accidental cross-copy unit edge p_i--r_{i-1} was WRONG - the exact computation showed the six edges are exactly the six within-copy edges. Recorded because it is precisely the trap the file's section 5 warns about; I corrected the claim before writing it up.",
+  "No solver or Lean build this block, per instruction; the (H4) upper bound for the new instance is argued from (H4) plus an exact edge-count equality rather than by finding a colouring algorithmically.",
+  "Not attempted by design: no SAT run, no arithmetic check of W_6 (it is hand-verified only, and flagged as such), and no recomputation of the census numbers max_cn = 2 / triangles = 1093.",
+  "Rejected as too weak: stating the certificate's content as 'no forcing at k >= 5' without the k = 4 vacuity caveat, and treating absence of a pattern in the 34 witnesses as impossibility.",
+  "WITHDRAWN: 'an anti-rainbow triple cannot be explained at arity 2 at all / is a genuine three-way phenomenon'. Every constraint is binary; the correct statement is joint unsatisfiability with satisfiable pair projections.",
+  "WITHDRAWN: the inference from max common neighbours = 2 to a mechanism classification. Relies only on the verified (Sep) now.",
+  "CORRECTED: form (C) as stated admitted contradictory relation sets; replaced by the extension property for locally consistent partial assignments.",
+  "NOT DONE: no attempt to realise (M), and no attempt to show (M) impossible; both would be new work and neither is claimed.",
+  "WITHDRAWN: the k=6 instance of the arity-3 route on G_553. By Lemma S plus (Sep_5), G_553 admits no NR-6 triple at all - not 'none found'.",
+  "WITHDRAWN: 'a 5-level non-rainbow triple buys nothing'. The lower bound chi >= 6 is proved analytically over 62 pages; an explicit finite certificate would shorten it, which is worth more than the phrase 'already proved' conveyed.",
+  "CORRECTED: 'the terminal minimum is 4 colours'. It is 3, since a witness may share alpha with u,v unless an explicit edge forbids it.",
+  "NOT DONE: no search for an NR-5 triple, no gadget construction, no amplifier re-derivation beyond citing the audited Theorem A.",
+  "The worker's (C1) is void twice over: the (0,10) translate gives an EMPTY overlap (D2), and its 'tips' are adjacent so they are forced different, not equal (D3). Both independently fatal; recorded rather than repaired in place since the target is read-only for me.",
+  "No certified elimination of any of the 1145 pairs could be produced from existing data; I record that as a negative result with its reason rather than proposing a test that would not be sound.",
+  "The permutation refutation test of section 7(c) is sound but weak: with 184 cross inequalities the surviving permutation group is typically trivial. Stated as a limitation, not offered as a solution."
+ ],
+ "next_step": "Nothing further from this chat on the gluing question without new data: the criterion is settled and the obstacle is that no joint colouring of the union is known to exist. The single useful thing the graph worker's 60-second slot could produce is one verified member of J (a joint 5-colouring of G_rep satisfying the 58 boundary equations and 184 cross inequalities) - with J nonempty, section 7(c)'s permutation test becomes runnable against all 1145 candidates. Also still queued: check_null_transfer.lean for the serial local Lean build.",
+ "escalation": "Precise obstacle: every criterion for a forced cross-copy relation is a universal statement over J, and J is known only by its defining constraints (58 equations, 184 inequalities) - no member has been exhibited. Certifying forcing therefore needs a complete enumeration of the relevant colourings, while refuting needs a single member; neither is available from the 34 verified colourings of H, which are single objects that would have to meet 58 prescribed coincidences to lie in J. Expected useful output: one verified element of J, or a proof that J is empty (which would be a 1048-vertex 6-chromatic graph and must be DRAT-checked before being believed).",
+ "recovery": {
+  "utc": "2026-11-14T06:46:58Z",
+  "jobs_running_at_recovery": 0,
+  "integrity": "re-ran forced_a1_5.py, verify_cell_nogo_v2.py, square_family.py, audit_rect.py: all rc 0; forced_a1_5.out and verify_cell_nogo_v2.out regenerate byte-identically, so no partial or duplicated write exists",
+  "work_lost": "none",
+  "note": "block was already completed and saved at updated_utc; no new research performed during recovery",
+  "artifacts_kept": [
+   "CELL-A-FIFTH.md",
+   "CELL-NOGO-v2.md",
+   "LEDGER.md",
+   "CELL-NOGO.md",
+   "RECOVERY.md"
+  ]
+ },
+ "artifacts_hashes": {
+  "audit-amplifier/GLUING-AUDIT.md": "543a8df57449265978613abdee638f70500485e6cbaa5210c3f3f7f16b1f202b",
+  "audit-amplifier/SPARE-COLOUR.md": "3c9b65be8525af919b3b232c5078e7d43db66d09d603333c1fb5df72b52198d0",
+  "audit-amplifier/COMPOSITION.md": "9547457de8f477c073dfc583451c6c0d7ae48e2f42341b74ba5d40d69e066aee",
+  "audit-amplifier/AUDIT.md": "e53234f41f2b389be0e45b19db8769a9dcdadc88a89ac94383ec720264c596f3",
+  "audit-amplifier/TERMINAL-RELATIONS.md": "9592434c89f4011c3a10c63c3327fa8fd2b02537e03fcbb691e7cbc07b73751d",
+  "audit-amplifier/AMPLIFIER.frozen.md": "492bcae49c35dc268a7e87ce546da05ef394e261263a59631d4925b0c89c689a",
+  "audit-amplifier/adaptive_k5.frozen.json": "9ab71b7aec712709517d8260adf646fab21b3bf8379304ebc4354b6c39978e6a",
+  "audit-amplifier/census_heule553.frozen.json": "98f25ec54b289e31d4fad7b41fb964b9f77ebb7ef8756c9fd99b227bf9674fd3",
+  "check_null_transfer.lean": "682c2c0acfbca85a94e05d3f3e93f766c656b8c0c77b5f7f5fc288f359b0994d",
+  "p25.cnf": "4d5d07d62ddfb89db4706ad46ab7e68fac210f94c8399586f32e146d608e59ca",
+  "p25.drat": "12a72a7ae61e50f40a0d9948b0d96fd906d25b1c04ec7a15294bfc7fc7b6549d",
+  "tools/drat-trim": "a9571deb08430a3d7f7a72074440f53e2ad48196dced50b146835052a18e9066"
+ }
+}

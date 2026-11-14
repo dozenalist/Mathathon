@@ -1,0 +1,16 @@
+=== toolchain ===
+Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+
+=== forbidden-token scan of OAI_Audit_Moser.lean ===
+12:  Mathlib and with no `sorry`, no `axiom`, no `native_decide`:
+
+=== lean OAI_Audit_Moser.lean ===
+'OAI.Audit.Moser.edges_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Audit.Moser.nonedges_not_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Audit.Moser.P_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Audit.Moser.not_three_colorable' depends on axioms: [propext]
+
+real	0m6.495s
+user	0m10.362s
+sys	0m0.830s
+exit=0

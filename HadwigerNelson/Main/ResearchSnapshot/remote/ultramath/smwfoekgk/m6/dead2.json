@@ -1,0 +1,386 @@
+[
+{
+"file": "Analysis/PlaneSpectrum/SpectralMeasure.lean",
+"name": "character_apply",
+"kind": "lemma",
+"lines": 2
+},
+{
+"file": "Analysis/PlaneSpectrum/Multipliers.lean",
+"name": "weight_inner",
+"kind": "lemma",
+"lines": 14
+},
+{
+"file": "Analysis/PlaneSpectrum/Representations.lean",
+"name": "unitary_apply",
+"kind": "lemma",
+"lines": 2
+},
+{
+"file": "Analysis/PlaneSpectrum/Representations.lean",
+"name": "translation_apply",
+"kind": "lemma",
+"lines": 3
+},
+{
+"file": "Analysis/PlaneSpectrum/InvariantMean.lean",
+"name": "weakMean_add",
+"kind": "lemma",
+"lines": 7
+},
+{
+"file": "Analysis/PlaneSpectrum/InvariantMean.lean",
+"name": "periodSum_add",
+"kind": "lemma",
+"lines": 5
+},
+{
+"file": "Analysis/PlaneSpectrum/InvariantMean.lean",
+"name": "integralReal_nonneg",
+"kind": "lemma",
+"lines": 7
+},
+{
+"file": "Analysis/PlaneSpectrum/InvariantMean.lean",
+"name": "integralReal_shift",
+"kind": "lemma",
+"lines": 13
+},
+{
+"file": "Analysis/PlaneSpectrum/InvariantMean.lean",
+"name": "weakIntegral_pair",
+"kind": "lemma",
+"lines": 12
+},
+{
+"file": "Analysis/PlaneSpectrum/FourierTests.lean",
+"name": "difference_coefficient_nonneg",
+"kind": "lemma",
+"lines": 8
+},
+{
+"file": "Analysis/PlaneSpectrum/CircleOperator.lean",
+"name": "circleOperator_norm_le",
+"kind": "lemma",
+"lines": 4
+},
+{
+"file": "Analysis/PlaneSpectrum/CircleOperator.lean",
+"name": "colorMass_measurable",
+"kind": "lemma",
+"lines": 8
+},
+{
+"file": "Analysis/PlaneSpectrum/CircleOperator.lean",
+"name": "colorMass_le_one",
+"kind": "lemma",
+"lines": 4
+},
+{
+"file": "Analysis/PlaneSpectrum/PhaseCollision.lean",
+"name": "collision_from_close_encodings",
+"kind": "theorem",
+"lines": 63
+},
+{
+"file": "Geometry/PlaneColoring/ContinuumLimits.lean",
+"name": "finite_continuum_subsequence",
+"kind": "theorem",
+"lines": 14
+},
+{
+"file": "Geometry/PlaneColoring/BinaryPalettes.lean",
+"name": "binary_pair_distinct",
+"kind": "lemma",
+"lines": 10
+},
+{
+"file": "Geometry/PlaneColoring/Moser.lean",
+"name": "abs_le_of_bounds",
+"kind": "lemma",
+"lines": 3
+},
+{
+"file": "Geometry/PlaneColoring/CyclicCore.lean",
+"name": "five_ae_mem_support",
+"kind": "lemma",
+"lines": 3
+},
+{
+"file": "Geometry/PlaneColoring/CyclicCore.lean",
+"name": "cyclicCore_closed",
+"kind": "lemma",
+"lines": 18
+},
+{
+"file": "Geometry/PlaneColoring/CyclicCore.lean",
+"name": "standardCore_closed",
+"kind": "lemma",
+"lines": 3
+},
+{
+"file": "Geometry/PlaneColoring/HoleApproximation.lean",
+"name": "initial_core_cover",
+"kind": "lemma",
+"lines": 3
+},
+{
+"file": "Geometry/PlaneColoring/HoleApproximation.lean",
+"name": "diskAnnulus_measurable",
+"kind": "lemma",
+"lines": 2
+},
+{
+"file": "Geometry/PlaneColoring/Interfaces.lean",
+"name": "interface_four_split_neg",
+"kind": "lemma",
+"lines": 3
+},
+{
+"file": "Geometry/PlaneColoring/Interfaces.lean",
+"name": "interface_four_diagonal_ne_zero",
+"kind": "lemma",
+"lines": 3
+},
+{
+"file": "Geometry/PlaneColoring/Interfaces.lean",
+"name": "interface_four_split_no_opposite",
+"kind": "lemma",
+"lines": 4
+},
+{
+"file": "Geometry/PlaneColoring/Sectors.lean",
+"name": "triangleState_measurable",
+"kind": "lemma",
+"lines": 2
+},
+{
+"file": "Geometry/PlaneColoring/BoundaryTrace.lean",
+"name": "four_split_antipodes",
+"kind": "lemma",
+"lines": 5
+},
+{
+"file": "Geometry/PlaneColoring/WeakColoring.lean",
+"name": "correlation_continuous",
+"kind": "lemma",
+"lines": 2
+},
+{
+"file": "Geometry/PlaneColoring/Expansion.lean",
+"name": "geometric_partial_sum",
+"kind": "lemma",
+"lines": 10
+},
+{
+"file": "Geometry/PlaneColoring/Compactness.lean",
+"name": "sampling_weak_compact",
+"kind": "lemma",
+"lines": 20
+},
+{
+"file": "Geometry/PlaneColoring/Compactness.lean",
+"name": "value_norm",
+"kind": "lemma",
+"lines": 2
+},
+{
+"file": "Geometry/PlaneColoring/Compactness.lean",
+"name": "isCompact_traces",
+"kind": "lemma",
+"lines": 3
+},
+{
+"file": "Geometry/PlaneColoring/FourContinuity.lean",
+"name": "strict_state_uniform_on_compact",
+"kind": "lemma",
+"lines": 40
+},
+{
+"file": "Geometry/PlaneColoring/DiskExtension.lean",
+"name": "graphLift_vertex",
+"kind": "lemma",
+"lines": 6
+},
+{
+"file": "Geometry/PlaneColoring/DiskExtension.lean",
+"name": "coreHoles_open",
+"kind": "lemma",
+"lines": 2
+},
+{
+"file": "Geometry/PlaneColoring/Transfer.lean",
+"name": "proper_iff_weak",
+"kind": "theorem",
+"lines": 9
+},
+{
+"file": "Geometry/PlaneColoring/Transfer.lean",
+"name": "algebraic_colorable_iff",
+"kind": "theorem",
+"lines": 9
+},
+{
+"file": "Geometry/PlaneColoring/NullSetRobust.lean",
+"name": "not_proper_five_coloring_compl_null",
+"kind": "theorem",
+"lines": 43
+},
+{
+"file": "Geometry/PlaneColoring/FiveSupport.lean",
+"name": "five_realState_measurable",
+"kind": "lemma",
+"lines": 2
+},
+{
+"file": "Geometry/PlaneColoring/Palettes.lean",
+"name": "paletteSet_minimal",
+"kind": "lemma",
+"lines": 9
+},
+{
+"file": "Geometry/PlaneColoring/GraphRealization.lean",
+"name": "graphRealization_nonneg",
+"kind": "lemma",
+"lines": 5
+},
+{
+"file": "Geometry/PlaneColoring/ConnectedUnitFree.lean",
+"name": "not_straddle_of_isPreconnected",
+"kind": "theorem",
+"lines": 13
+},
+{
+"file": "Geometry/PlaneColoring/ConnectedUnitFree.lean",
+"name": "diam_le_one_connectedComponentIn_of_properColoring",
+"kind": "theorem",
+"lines": 9
+},
+{
+"file": "Geometry/PlaneColoring/Lattice.lean",
+"name": "normSq_nonneg",
+"kind": "lemma",
+"lines": 3
+},
+{
+"file": "Geometry/PlaneColoring/AngularBoundary.lean",
+"name": "four_word_mixed_periodic",
+"kind": "lemma",
+"lines": 4
+},
+{
+"file": "Geometry/PlaneColoring/AngularBoundary.lean",
+"name": "angleBoundary_closed",
+"kind": "lemma",
+"lines": 2
+},
+{
+"file": "Geometry/PlaneColoring/GraphCuts.lean",
+"name": "fiberCrosses_symm",
+"kind": "lemma",
+"lines": 4
+},
+{
+"file": "Geometry/PlaneColoring/Seven.lean",
+"name": "weakMeasurableColoring_seven",
+"kind": "theorem",
+"lines": 3
+},
+{
+"file": "Geometry/PlaneColoring/PaletteDensity.lean",
+"name": "palette_transfer_pair",
+"kind": "lemma",
+"lines": 8
+},
+{
+"file": "Geometry/PlaneColoring/PaletteDensity.lean",
+"name": "flat_density_not_one",
+"kind": "lemma",
+"lines": 6
+},
+{
+"file": "Geometry/PlaneColoring/BorelTransfer.lean",
+"name": "proper_to_weak",
+"kind": "lemma",
+"lines": 4
+},
+{
+"file": "MeasureTheory/CompactFactors/Separability.lean",
+"name": "inner_act",
+"kind": "lemma",
+"lines": 4
+},
+{
+"file": "MeasureTheory/CompactFactors/Separability.lean",
+"name": "meanNorm_mono",
+"kind": "lemma",
+"lines": 2
+},
+{
+"file": "MeasureTheory/CompactFactors/Separability.lean",
+"name": "meanNorm_sub_le",
+"kind": "lemma",
+"lines": 6
+},
+{
+"file": "MeasureTheory/CompactFactors/Separability.lean",
+"name": "meanNorm_const",
+"kind": "lemma",
+"lines": 7
+},
+{
+"file": "MeasureTheory/CompactFactors/RelativeProducts.lean",
+"name": "projectCLM_l2",
+"kind": "lemma",
+"lines": 4
+},
+{
+"file": "MeasureTheory/CompactFactors/RelativeProducts.lean",
+"name": "avg_congr_ae",
+"kind": "lemma",
+"lines": 6
+},
+{
+"file": "MeasureTheory/CompactFactors/RelativeProducts.lean",
+"name": "linear_prod_replace",
+"kind": "lemma",
+"lines": 12
+},
+{
+"file": "MeasureTheory/CompactFactors/RelativeCenters.lean",
+"name": "center_law_ordinary",
+"kind": "theorem",
+"lines": 9
+},
+{
+"file": "MeasureTheory/CompactFactors/ConditionalLimits.lean",
+"name": "relative_singularity_limit",
+"kind": "theorem",
+"lines": 55
+},
+{
+"file": "MeasureTheory/CompactFactors/Functions.lean",
+"name": "compact_conj",
+"kind": "lemma",
+"lines": 20
+},
+{
+"file": "MeasureTheory/CompactFactors/Amenability.lean",
+"name": "vector_norm_le",
+"kind": "lemma",
+"lines": 4
+},
+{
+"file": "MeasureTheory/CompactFactors/Amenability.lean",
+"name": "vector_orbit_zero",
+"kind": "theorem",
+"lines": 6
+},
+{
+"file": "MeasureTheory/CompactFactors/Centers.lean",
+"name": "objective_zero",
+"kind": "theorem",
+"lines": 2
+}
+]

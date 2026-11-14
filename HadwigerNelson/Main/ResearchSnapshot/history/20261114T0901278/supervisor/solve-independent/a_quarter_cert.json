@@ -1,0 +1,150 @@
+{
+ "a": "1/4",
+ "patch": "N <= 19",
+ "n": 73,
+ "edges": 723,
+ "K": 6,
+ "forced_rings": [
+  3,
+  4,
+  7,
+  9
+ ],
+ "forced_offsets": [
+  [
+   -3,
+   0
+  ],
+  [
+   -3,
+   1
+  ],
+  [
+   -3,
+   2
+  ],
+  [
+   -3,
+   3
+  ],
+  [
+   -2,
+   -1
+  ],
+  [
+   -2,
+   0
+  ],
+  [
+   -2,
+   1
+  ],
+  [
+   -2,
+   2
+  ],
+  [
+   -2,
+   3
+  ],
+  [
+   -1,
+   -2
+  ],
+  [
+   -1,
+   -1
+  ],
+  [
+   -1,
+   2
+  ],
+  [
+   -1,
+   3
+  ],
+  [
+   0,
+   -3
+  ],
+  [
+   0,
+   -2
+  ],
+  [
+   0,
+   2
+  ],
+  [
+   0,
+   3
+  ],
+  [
+   1,
+   -3
+  ],
+  [
+   1,
+   -2
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   2
+  ],
+  [
+   2,
+   -3
+  ],
+  [
+   2,
+   -2
+  ],
+  [
+   2,
+   -1
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   2,
+   1
+  ],
+  [
+   3,
+   -3
+  ],
+  [
+   3,
+   -2
+  ],
+  [
+   3,
+   -1
+  ],
+  [
+   3,
+   0
+  ]
+ ],
+ "max_clique": 4,
+ "result": "UNSAT",
+ "sha256": {
+  "cnf": "4d5d07d62ddfb89db4706ad46ab7e68fac210f94c8399586f32e146d608e59ca",
+  "drat": "12a72a7ae61e50f40a0d9948b0d96fd906d25b1c04ec7a15294bfc7fc7b6549d",
+  "drat_trim": "a9571deb08430a3d7f7a72074440f53e2ad48196dced50b146835052a18e9066"
+ },
+ "drat_verified": true,
+ "drat_tail": [
+  "c 32677 of 41772 lemmas in core using 842488 resolution steps",
+  "c 0 RAT lemmas in core; 7111 redundant literals in core lemmas",
+  "s VERIFIED",
+  "c verification time: 1.324 seconds"
+ ],
+ "elapsed_s": 3.02
+}

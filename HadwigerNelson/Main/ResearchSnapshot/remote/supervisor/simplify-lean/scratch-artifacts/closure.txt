@@ -1,0 +1,14 @@
+OAI.Analysis.PlaneSpectrum.Basic
+OAI.Analysis.PlaneSpectrum.Characters
+OAI.Analysis.PlaneSpectrum.ConditionalSpectrum
+OAI.Analysis.PlaneSpectrum.FourierTests
+OAI.Analysis.PlaneSpectrum.InvariantMean
+OAI.Analysis.PlaneSpectrum.Multipliers
+OAI.Analysis.PlaneSpectrum.PhaseCollision
+OAI.Analysis.PlaneSpectrum.PhaseEncoding
+OAI.Analysis.PlaneSpectrum.SmallArcs
+OAI.MeasureTheory.CompactFactors.Approximation
+OAI.MeasureTheory.CompactFactors.Centers
+OAI.MeasureTheory.CompactFactors.ConditionalLimits
+OAI.MeasureTheory.CompactFactors.ConditionalSelection
+OAI.MeasureTheory.CompactFactors.RelativeCenters

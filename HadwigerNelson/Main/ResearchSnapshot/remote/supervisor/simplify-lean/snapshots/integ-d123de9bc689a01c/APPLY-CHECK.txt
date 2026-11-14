@@ -1,0 +1,4 @@
+checking file lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean
+rc1=0
+checking file lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean
+rc2=0

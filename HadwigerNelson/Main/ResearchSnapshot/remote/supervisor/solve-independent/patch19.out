@@ -1,0 +1,15 @@
+[0] forced set re-verified exactly: |F| = 42, rings [4, 7, 9, 12, 13]  (0.1s)
+[1] patch P = {v : N(v) <= 19} : |P| = 73 <= 81  : True
+[2] G[P]: 73 vertices, 888 edges, degrees min 16 max 42 mean 24.3  (0.1s)
+[3] max clique of G[P]: size 4  witness cells [(0, 0), (-2, 0), (-2, 2), (0, 2)]
+     -> chi(G[P]) >= 4
+[4] greedy (degree order) gives chi(G[P]) <= 11
+[5] k=4: UNSAT   (0.2s)
+[5] k=5: UNSAT   (0.2s)
+[5] k=6: UNSAT   (0.2s)
+[5] k=7: UNSAT   (0.3s)
+[5] k=8: SAT   (0.3s)
+     model verified edge-by-edge: 0 monochromatic edges out of 888
+[6] chi(G[P]) = 8  (lower bound 4 from the clique, upper bound 8)
+     colour class sizes: [12, 10, 10, 9, 9, 9, 8, 6]
+     6-colourable: False

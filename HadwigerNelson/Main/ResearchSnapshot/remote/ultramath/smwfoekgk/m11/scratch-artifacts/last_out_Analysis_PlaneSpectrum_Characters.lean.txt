@@ -1,0 +1,53 @@
+neSpectrum/Characters.lean:435:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Analysis/PlaneSpectrum/Characters.lean:434:68: error: unsolved goals
+Ω : Type u_1
+inst : MeasurableSpace Ω
+μ : Measure Ω
+inst_1 : IsFiniteMeasure μ
+χ : Ω → Multiplicative ↥F →* Circle
+r : ℕ → ↥F
+hχ : ∀ (a : ℝ) (b : a ∈ F), Measurable fun x => ↑((χ x) (Multiplicative.ofAdd ⟨a, b⟩))
+hc : ContinuousAt (coeff μ χ) 0
+val : ℝ
+property : val ∈ F
+hr : Filter.Tendsto r Filter.atTop (nhds ⟨val, property⟩)
+⊢ TendstoInMeasure μ (fun n x => ↑((χ x) (Multiplicative.ofAdd (r n)))) Filter.atTop fun x =>
+    ↑((χ x) (Multiplicative.ofAdd ⟨val, property⟩))
+work/lean/OAI/Analysis/PlaneSpectrum/Characters.lean:473:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Analysis/PlaneSpectrum/Characters.lean:472:93: error: unsolved goals
+χ : Multiplicative ↥F →* Circle
+l : ℝ
+hl : ∀ (n : ℕ), χ (Multiplicative.ofAdd (2 ^ n)⁻¹) = Circle.exp (l / 2 ^ n)
+n : ℕ
+val : ℝ
+property : val ∈ F
+⊢ χ (Multiplicative.ofAdd (dyadicApprox ⟨val, property⟩ n)) = Circle.exp (l * ↑(dyadicApprox ⟨val, property⟩ n))
+work/lean/OAI/Analysis/PlaneSpectrum/Characters.lean:488:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Analysis/PlaneSpectrum/Characters.lean:487:63: error: unsolved goals
+Ω : Type u_1
+inst : MeasurableSpace Ω
+μ : Measure Ω
+inst_1 : IsFiniteMeasure μ
+χ : Ω → Multiplicative ↥F →* Circle
+hχ : ∀ (a : ℝ) (b : a ∈ F), Measurable fun x => ↑((χ x) (Multiplicative.ofAdd ⟨a, b⟩))
+hc : ContinuousAt (coeff μ χ) 0
+⊢ ∀ᵐ (x : Ω) ∂μ, ∃ l, ∀ (a : ℝ) (b : a ∈ F), (χ x) (Multiplicative.ofAdd ⟨a, b⟩) = Circle.exp (l * a)
+work/lean/OAI/Analysis/PlaneSpectrum/Characters.lean:527:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Analysis/PlaneSpectrum/Characters.lean:526:82: error: unsolved goals
+val : ℂ
+property : val ∈ E
+val_1 : ℝ
+property_1 : val_1 ∈ F
+⊢ Measurable fun d => ↑((lineCharacter ⟨val, property⟩ d) (Multiplicative.ofAdd ⟨val_1, property_1⟩))
+work/lean/OAI/Analysis/PlaneSpectrum/Characters.lean:537:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Analysis/PlaneSpectrum/Characters.lean:536:86: error: unsolved goals
+ν μ : Measure D
+inst : IsProbabilityMeasure ν
+inst_1 : IsFiniteMeasure μ
+hν : IsWild ν
+hμ : μ ≪ ν
+val : ℂ
+property : val ∈ E
+ha : ¬⟨val, property⟩ = 0
+hc : ContinuousAt (ContinuousCharacters.coeff μ (lineCharacter ⟨val, property⟩)) 0
+⊢ μ = 0

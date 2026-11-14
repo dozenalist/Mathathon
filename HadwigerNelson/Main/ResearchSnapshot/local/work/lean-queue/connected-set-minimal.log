@@ -1,0 +1,21 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: c243da2d52bba6b22d0df2ff15fcbcd22c2478387131a33c74263082ac5e325a
+Status: passed
+Exit code: 0
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\ConnectedSetExclusionMinimal.lean:35:2: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+'SupervisorVerify.preconnected_forall_lt_or_forall_gt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SupervisorVerify.unitFree_not_straddle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SupervisorVerify.unitFree_pairwise_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SupervisorVerify.unitFree_sharp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SupervisorVerify.diam_le_one_of_preconnected_unitFree'' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+STDERR
+

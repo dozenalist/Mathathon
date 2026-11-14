@@ -1,0 +1,35 @@
+{
+  "updated_utc": "2026-11-14T06:22:00Z",
+  "status": "completed_block",
+  "summary": "One consolidation block, no new research route. Retracted three of my own claims and fixed the isolation convention: with B open, the isolation radius of a lattice aZ^2 is a, not a/2 (3/5 was the packing radius). Corrected consequences: (6/5)Z^2 therefore satisfies ISO(r) for r in (1,6/5] and refutes only the r>sqrt2 hypothesis actually printed in WEAKEST.md; the separate claim that local finiteness plus 1-density gives SOME gap >1 is refuted by Z^2 instead (r*=1, covering radius 0.7071). Retracted the (W)/(W2) 'same hypothesis' reading: (W2) implies (W), not conversely, with a closed 0.75-dense counterexample, so (W) is the minimal input and (W2) is unneeded extra strength. Consolidated the far-field decoupling note, the ledger and the repaired self-avoidance lemma into the corrected cyclic-locus map, flagging the two different 'Lemma D's. Independent scrutiny: far-field decoupling gives no no-go for proper colourings, since its perturbation class breaks properness and any palette-only no-go would decide chi>6; the surviving asymmetry is near-field-to-far-field, not the reverse.",
+  "verified_results": [
+    "GRADE [A] Isolation convention (corrected): for L = aZ^2 with B open, max{r : L cap B(x,r) = {x}} = a. a=1: r*=1, covering radius 0.7071 <= 1, so (LF) + 1-density does NOT imply ISO(r) for any r > 1. a=6/5: r*=1.2, covering radius 0.8486, so it satisfies ISO(r) for r in (1,1.2] and does not refute ISO with gap > 1 — it refutes only r > 6/5, which covers WEAKEST.md's printed r > sqrt2 = 1.4142. Both statements are about closed, locally finite, 1-dense sets and say nothing about colourings.",
+    "GRADE [A] (W) does not imply (W2). L = {0} union the circles S(0,3k/2), k >= 1, is closed, 0.75-dense, has |L cap B(0,1.2)| = 1 (so (W) with R = 1.2) and |L cap B(y,2)| infinite for every y (every radius-2 ball cuts one of the 1.5-spaced circles in an arc). Hence (W2) is strictly stronger, not equivalent; only (W) is needed by the transfer.",
+    "GRADE [P]+[C] Consolidated minimal dependency proposition: (W_R) with R > 1 implies Prop. 7.1 at k=6, via the disk B(y,rho) with rho in (1,R) chosen off the finitely many radii |p-y| (so boundary-avoidance is derived, not assumed), inradius rho > 1 >= mesh, L_0 finite and non-empty. (LF) + L non-empty implies (W_R) for every R. (Iso_r) with r > 1 implies (W_R) for every R < r. Nothing in the record implies (W) or its negation.",
+    "GRADE [C]+[P]+[A] Proposition 1 survives the convention fix: if x in L and L cap B(x,rho) = {x} then rho <= 2, since a radius-r>1 disk avoiding x fits inside B(x,rho) once rho > 2, contradicting m12's density theorem. The usable isolation window is 1 < rho <= 2.",
+    "GRADE [S]+[P] Consolidated and checked for internal consistency: far-field decoupling (c = c' off B(x,1-eps) implies equal palettes at x a.e., sharp at eps = 0), the repaired self-avoidance lemma (recorded proof invalid; valid proof via (5.2) plus the sector Jacobian, deficit >= |D|/2pi), the ledger's R1/R2/R3/R5/R6. Flagged that the record contains two distinct lemmas both called 'Lemma D'."
+  ],
+  "conjectures": [
+    "No-go reading of far-field decoupling: it does not imply any obstruction for the class of proper or weak proper 6-colourings. Insensitivity of P_x to a recolouring supported in a ball of radius < 1 is a statement about all measurable colourings; an arbitrary such recolouring breaks properness (a disk of radius > 1/2 contains unit pairs), and a palette-only inconsistency would by m10 T3 prove chi(R^2) > 6. So far-field decoupling is methodological: it forbids arguments, not colourings.",
+    "The surviving direction is near-field to far-field: self-avoidance derives i notin P_x(e) from density one of the colour class at x. 'P_x does not determine Gamma_x' is the faithful form of the decoupling claim; 'P and Gamma are independent' is too strong.",
+    "The k=6 obstruction at the accumulation site is a label-resource count, not a decoupling statement: m3's gadget of radius 1/100 has no unit pair, so internal properness is free and the whole obligation is the shell condition (gadget labels {0,2,3} avoided by annulus colours), which has four labels at k>=7 and three at k=6."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/CORRECTED-DEPENDENCY-MAP.md",
+    "supervisor/solve-geometry/LEMMA-isolation-window.md",
+    "supervisor/solve-geometry/checks/constants.py",
+    "supervisor/solve-geometry/supervisor_checks.out",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "python3 supervisor/solve-geometry/checks/constants.py -> rc 0, sections [1]-[7]: square-in-ball threshold sqrt2*r and the inconsistency of '4 < s < r/sqrt2'; disk inradius threshold; the rho <= 2 window; (6/5)Z^2 with r* = 1.2 and covering radius 0.8486; Z^2 with r* = 1 and covering radius 0.7071; the concentric-circle (W)/(W2) example. Output saved in supervisor_checks.out (36 lines)."
+  ],
+  "failed_routes": [
+    "My earlier claim that (6/5)Z^2 refutes ISO for every gap > 1: wrong (wrong convention, used the packing radius). Retracted; Z^2 replaces it for that claim.",
+    "My earlier display of (W) and (W2) as the same hypothesis when R >= 2: retracted; only the implication (W2) => (W) holds, with a counterexample to the converse.",
+    "Upgrading far-field decoupling to a no-go for proper colourings: not possible, for the four reasons recorded in section 6 of the map. Recorded as a closed route, not as an open one.",
+    "No heavy computation, no Lean build, no swarm, no search: single-agent block, arithmetic only."
+  ],
+  "next_step": "If another block is assigned: check the one live item, ledger R3's residual case in the singleton class S_1 at k = 6 (is a 3-cycle centre ever an accumulation point of 3-cycle centres?), which is the only recorded reformulation of (W) that is both sharp and phrased without a colouring. That item is [X] in the ledger and I have not verified its three inputs.",
+  "escalation": null
+}

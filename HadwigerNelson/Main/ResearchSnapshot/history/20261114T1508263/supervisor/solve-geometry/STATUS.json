@@ -1,0 +1,36 @@
+{
+  "updated_utc": "2026-11-15T07:20:00Z",
+  "status": "completed_block",
+  "summary": "Analysis-only repair block. Wrote GLUING-CORRECTED.md, superseding SEED-DESIGN-TAU.md sections 1b-3b, with the retraction table. R1: the two criteria were reversed - disjoint fibres at every feasible alpha mean forced DIFFERENT, identical singleton fibres mean forced EQUAL; the Poss(a,b) formula itself and the E/N table were correct. R2: the translate (0,10) counterexample is self-contradictory, since translating the second copy moves the shared point and empties the intersection; replaced by two abstract-graph examples with no isometry asserted. R3: the 34 separating witnesses do not imply near-rigidity. Added a classification removing the vague free case: colour symmetry R_a[sigma(alpha)] = sigma(R_a[alpha]) forces R_a[alpha_0] to be invariant under the stabiliser of alpha_0, whose only invariant subsets of the other k-1 colours are empty or all, so every vertex is exactly E ({alpha}), N ([k]-{alpha}) or F* ([k]); hence E/E forced equal, E/N forced different, every other row nothing. Also stated why multi-boundary products need one common feasible boundary datum, and why cross edges constrain the pair of colourings jointly rather than either factor.",
+  "verified_results": [
+    "GRADE [P] The corrected criteria, for one shared vertex p0 and no cross edges: with R_a[alpha] = {beta : some proper k-colouring has c(p0)=alpha and c(a)=beta}, the realisable colour pairs are Poss(a,b) = union over alpha of R_a[alpha] x R_b[alpha]; a and b are forced DIFFERENT iff R_a[alpha] and R_b[alpha] are disjoint for every alpha, and forced EQUAL iff for every alpha both are the same singleton. Every alpha is feasible, by colour transitivity.",
+    "GRADE [P] Classification replacing the vague free case: the identity R_a[sigma(alpha)] = sigma(R_a[alpha]) holds for every colour permutation, so R_a[alpha_0] is invariant under the stabiliser of alpha_0, i.e. under the full symmetric group on the remaining k-1 >= 2 colours, whose only invariant subsets are empty and all. Hence every vertex is exactly one of E (R = {alpha}), N (R = [k]-{alpha}) or F* (R = [k]), and the table follows: E/E forced equal, E/N forced different, all rows involving F* force nothing.",
+    "GRADE [P] Abstract example A1 (forced equality across a one-vertex gluing, no geometry): D on {p0,b1,b2,a} with edges p0b1, p0b2, b1b2, ab1, ab2; at k=3 a and p0 both take the third colour, so a is E, and gluing two copies of D at p0 forces the two a-vertices equal by the E/E row.",
+    "GRADE [P] Abstract example A2 (forced difference): copy 1 = D with a of type E, copy 2 = the single edge {p0,u} whose u is of type N; gluing at p0 forces a != u by the E/N row.",
+    "GRADE [P] What a geometric realisation would additionally need: an exact verification that the two point sets meet in exactly the intended point and that the cross-edge set is exactly the claimed one; neither may be assumed. This is precisely where the retracted (0,10) example failed, since translating the second copy moves p0 and empties the intersection.",
+    "GRADE [P] Multi-point boundaries: with boundary datum gamma = c restricted to the overlap I, the realisable pairs are those for which ONE common gamma is extendible in both copies, so products over different boundary data are inadmissible; and a cross edge requires c1(x) != c2(y), a condition on the pair of colourings that no per-factor R-set can express, so cross edges cut the joint set and can destroy the feasibility of a boundary datum that each factor admits alone.",
+    "GRADE [P] Retraction of the rigidity inference: 34 witnesses separating all 553 vertices only show that no two vertices share a colour-signature across the witness set; they do not bound the number of 5-colourings nor show that a 58-point boundary pins the rest. Boundary rigidity is exactly what the R-sets measure and must be computed."
+  ],
+  "conjectures": [
+    "Because every vertex is E, N or F*, the cross-copy relations in a gluing at one vertex are fully determined by the three-way type, and no subtler one-point analysis is needed; all remaining content of a multi-point seed is in the joint feasibility of the boundary data plus the cross edges.",
+    "For the Heule union the practical consequence is that only E- and N-type vertices can enter a forced relation through the overlap alone, while cross edges can force relations even between F* vertices - which is a reason the 184 cross edges matter independently of the 58 overlaps.",
+    "The three-type classification is a statement about the relation to a single point only; whether it can be extended to a classification relative to a boundary subset (a partition of vertices by their R-sets over [k]^I) is open and would need the extension structure of H, not just colour symmetry."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/GLUING-CORRECTED.md",
+    "supervisor/solve-geometry/SEED-DESIGN-TAU.md",
+    "supervisor/solve-geometry/ARTIFACT-HASHES.txt",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "None: analysis-only block by instruction (no search, no computation, no solver). Every statement in GLUING-CORRECTED.md is hand-derived and graded [P]; the counts 1048/58/184 quoted from the graph worker are graded [C-external] and not verified here."
+  ],
+  "failed_routes": [
+    "RETRACTED (R1): the two bullets stating that disjoint fibres force equality and identical singletons force difference - both reversed; the Poss formula and the E/N table were correct.",
+    "RETRACTED (R2): the geometric counterexample at translate (0,10), which does not preserve a shared point and therefore has empty intersection; replaced by abstract examples A1 and A2 with no isometry claim.",
+    "RETRACTED (R3): the near-rigidity inference from the 34 separating witnesses.",
+    "Not attempted: any geometric seed proposal, any isometry, any run, any colourability or forcing claim."
+  ],
+  "next_step": "Hand GLUING-CORRECTED.md to the independent auditor; if it passes, the graph worker can use the three-way E/N/F* typing as a cheap first filter over the 1048 vertices, then test only E/N-typed pairs for overlap-forced relations and treat cross-edge-forced relations separately as joint constraints.",
+  "escalation": null
+}

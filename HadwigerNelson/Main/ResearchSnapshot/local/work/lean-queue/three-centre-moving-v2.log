@@ -1,0 +1,33 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: f3692a88b1d6907880c5372c7a51a14356839199d37d67d788f34704222548b8
+Status: failed
+Exit code: 1
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre\MovingThreeCentresV2.lean:125:9: error: Tactic `rcases` failed: `right✝ : t ∈ A →
+  (∀ i ∈ J, i ∈ palette c hc x ↑t) ∧
+    ¬palette c hc (x + direction ↑ay) ↑t ⊆ K ∧
+      ¬palette c hc (x + direction ↑az) ↑t ⊆ K ∧
+        Disjoint (palette c hc (x + direction ↑ay) ↑t) (palette c hc x ↑t) ∧
+          Disjoint (palette c hc (x + direction ↑az) ↑t) (palette c hc x ↑t) ∧
+            Disjoint (palette c hc (x + direction ↑ay) ↑t)
+              (palette c hc (x + direction ↑az) ↑t)` is not an inductive datatype
+'OAI.EuclideanFiveColor.triangle_no_unit_of_avoiding_traces' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'OAI.EuclideanFiveColor.fixed_state_no_unit_three_centres' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'OAI.EuclideanFiveColor.strict_state_sequence_no_unit_three_centres' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'OAI.EuclideanFiveColor.four_support_sequence_no_unit_three_centres' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+
+STDERR
+

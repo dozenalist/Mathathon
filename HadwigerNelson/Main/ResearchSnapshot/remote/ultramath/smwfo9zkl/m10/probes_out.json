@@ -1,0 +1,1459 @@
+[
+ {
+  "probe": "moser-spindle",
+  "k": 2,
+  "n_nodes": 7,
+  "n_edges": 11,
+  "min_separation_margin": 0.4574271077563381,
+  "csp_search": false,
+  "sat_colouring": false,
+  "agree": true
+ },
+ {
+  "probe": "moser-spindle",
+  "k": 3,
+  "n_nodes": 7,
+  "n_edges": 11,
+  "min_separation_margin": 0.4574271077563381,
+  "csp_search": false,
+  "sat_colouring": false,
+  "agree": true
+ },
+ {
+  "probe": "moser-spindle",
+  "k": 4,
+  "n_nodes": 7,
+  "n_edges": 11,
+  "min_separation_margin": 0.4574271077563381,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    3
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ },
+ {
+  "probe": "moser-spindle",
+  "k": 5,
+  "n_nodes": 7,
+  "n_edges": 11,
+  "min_separation_margin": 0.4574271077563381,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    3
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ },
+ {
+  "probe": "moser-spindle",
+  "k": 6,
+  "n_nodes": 7,
+  "n_edges": 11,
+  "min_separation_margin": 0.4574271077563381,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    3
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ },
+ {
+  "probe": "lemma64-gamma-triad",
+  "k": 4,
+  "n_nodes": 39,
+  "n_edges": 129,
+  "min_separation_margin": 0.4574271077563381,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    3
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ },
+ {
+  "probe": "lemma64-gamma-triad",
+  "k": 5,
+  "n_nodes": 39,
+  "n_edges": 129,
+  "min_separation_margin": 0.4574271077563381,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    2
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    2
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    2
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ },
+ {
+  "probe": "lemma64-gamma-triad",
+  "k": 6,
+  "n_nodes": 39,
+  "n_edges": 129,
+  "min_separation_margin": 0.4574271077563381,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    2
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    2
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    2
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ },
+ {
+  "probe": "lemma55-pair-d=1/2",
+  "k": 4,
+  "n_nodes": 18,
+  "n_edges": 20,
+  "min_separation_margin": 0.028719917549536348,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ },
+ {
+  "probe": "lemma55-pair-d=1/2",
+  "k": 5,
+  "n_nodes": 18,
+  "n_edges": 20,
+  "min_separation_margin": 0.028719917549536348,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ },
+ {
+  "probe": "lemma55-pair-d=1/2",
+  "k": 6,
+  "n_nodes": 18,
+  "n_edges": 20,
+  "min_separation_margin": 0.028719917549536348,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    0
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ },
+ {
+  "probe": "hex-patch-R1",
+  "k": 4,
+  "n_nodes": 63,
+  "n_edges": 276,
+  "min_separation_margin": 1.0,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ },
+ {
+  "probe": "hex-patch-R1",
+  "k": 5,
+  "n_nodes": 63,
+  "n_edges": 276,
+  "min_separation_margin": 1.0,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ },
+ {
+  "probe": "hex-patch-R1",
+  "k": 6,
+  "n_nodes": 63,
+  "n_edges": 276,
+  "min_separation_margin": 1.0,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ },
+ {
+  "probe": "interface-six-palettes",
+  "k": 4,
+  "n_nodes": 6,
+  "n_edges": 6,
+  "min_separation_margin": 2.0,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ },
+ {
+  "probe": "interface-six-palettes",
+  "k": 5,
+  "n_nodes": 6,
+  "n_edges": 6,
+  "min_separation_margin": 2.0,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ },
+ {
+  "probe": "interface-six-palettes",
+  "k": 6,
+  "n_nodes": 6,
+  "n_edges": 6,
+  "min_separation_margin": 2.0,
+  "csp_search": true,
+  "sat_colouring": true,
+  "agree": true,
+  "model_verified": true,
+  "model_check": "ok",
+  "model": [
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    0
+   ],
+   [
+    1
+   ]
+  ],
+  "min_map_is_proper": true,
+  "min_map_check": "ok"
+ }
+]

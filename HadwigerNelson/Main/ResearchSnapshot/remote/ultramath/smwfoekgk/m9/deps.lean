@@ -1,0 +1,112 @@
+import OAI.Analysis.PlaneSpectrum.Basic
+import OAI.Analysis.PlaneSpectrum.Characters
+import OAI.Analysis.PlaneSpectrum.CircleDecay
+import OAI.Analysis.PlaneSpectrum.CircleOperator
+import OAI.Analysis.PlaneSpectrum.ConditionalSpectrum
+import OAI.Analysis.PlaneSpectrum.Energy
+import OAI.Analysis.PlaneSpectrum.Ergodicity
+import OAI.Analysis.PlaneSpectrum.Fourier
+import OAI.Analysis.PlaneSpectrum.FourierTests
+import OAI.Analysis.PlaneSpectrum.InvariantMean
+import OAI.Analysis.PlaneSpectrum.Multipliers
+import OAI.Analysis.PlaneSpectrum.NumberFields
+import OAI.Analysis.PlaneSpectrum.PhaseCollision
+import OAI.Analysis.PlaneSpectrum.PhaseEncoding
+import OAI.Analysis.PlaneSpectrum.RadialEnergy
+import OAI.Analysis.PlaneSpectrum.Representations
+import OAI.Analysis.PlaneSpectrum.Selections
+import OAI.Analysis.PlaneSpectrum.SmallArcs
+import OAI.Analysis.PlaneSpectrum.SpectralMeasure
+import OAI.Geometry.PlaneColoring.Accumulation
+import OAI.Geometry.PlaneColoring.AngularBoundary
+import OAI.Geometry.PlaneColoring.Assembly
+import OAI.Geometry.PlaneColoring.Basic
+import OAI.Geometry.PlaneColoring.BinaryDynamics
+import OAI.Geometry.PlaneColoring.BinaryPalettes
+import OAI.Geometry.PlaneColoring.BorelTransfer
+import OAI.Geometry.PlaneColoring.BoundaryTrace
+import OAI.Geometry.PlaneColoring.Chromatic
+import OAI.Geometry.PlaneColoring.CircleMaps
+import OAI.Geometry.PlaneColoring.CircleTransport
+import OAI.Geometry.PlaneColoring.Coloring
+import OAI.Geometry.PlaneColoring.Compactness
+import OAI.Geometry.PlaneColoring.ConnectedUnitFree
+import OAI.Geometry.PlaneColoring.ContinuumLimits
+import OAI.Geometry.PlaneColoring.Converse
+import OAI.Geometry.PlaneColoring.Covering
+import OAI.Geometry.PlaneColoring.CyclicCore
+import OAI.Geometry.PlaneColoring.DiskAverages
+import OAI.Geometry.PlaneColoring.DiskExtension
+import OAI.Geometry.PlaneColoring.Exclusion
+import OAI.Geometry.PlaneColoring.Expansion
+import OAI.Geometry.PlaneColoring.Five
+import OAI.Geometry.PlaneColoring.FiveSupport
+import OAI.Geometry.PlaneColoring.FourContinuity
+import OAI.Geometry.PlaneColoring.FourTransport
+import OAI.Geometry.PlaneColoring.FullApproximation
+import OAI.Geometry.PlaneColoring.GraphCuts
+import OAI.Geometry.PlaneColoring.GraphPatches
+import OAI.Geometry.PlaneColoring.GraphRealization
+import OAI.Geometry.PlaneColoring.HoleApproximation
+import OAI.Geometry.PlaneColoring.Interfaces
+import OAI.Geometry.PlaneColoring.Lattice
+import OAI.Geometry.PlaneColoring.MeasurableAssembly
+import OAI.Geometry.PlaneColoring.MeasurableProper
+import OAI.Geometry.PlaneColoring.Mesh
+import OAI.Geometry.PlaneColoring.Metric
+import OAI.Geometry.PlaneColoring.Moser
+import OAI.Geometry.PlaneColoring.NullSetRobust
+import OAI.Geometry.PlaneColoring.PaletteDensity
+import OAI.Geometry.PlaneColoring.PaletteTransport
+import OAI.Geometry.PlaneColoring.Palettes
+import OAI.Geometry.PlaneColoring.PlanarCovers
+import OAI.Geometry.PlaneColoring.Rigidity
+import OAI.Geometry.PlaneColoring.Sectors
+import OAI.Geometry.PlaneColoring.Seven
+import OAI.Geometry.PlaneColoring.States
+import OAI.Geometry.PlaneColoring.Transfer
+import OAI.Geometry.PlaneColoring.Transitions
+import OAI.Geometry.PlaneColoring.WeakColoring
+import OAI.MeasureTheory.CompactFactors.AlgebraModels
+import OAI.MeasureTheory.CompactFactors.Amenability
+import OAI.MeasureTheory.CompactFactors.Approximation
+import OAI.MeasureTheory.CompactFactors.BoundedFunctions
+import OAI.MeasureTheory.CompactFactors.Centers
+import OAI.MeasureTheory.CompactFactors.ConditionalLimits
+import OAI.MeasureTheory.CompactFactors.ConditionalSelection
+import OAI.MeasureTheory.CompactFactors.Factors
+import OAI.MeasureTheory.CompactFactors.Functions
+import OAI.MeasureTheory.CompactFactors.Kernels
+import OAI.MeasureTheory.CompactFactors.RelativeCenters
+import OAI.MeasureTheory.CompactFactors.RelativeProducts
+import OAI.MeasureTheory.CompactFactors.Separability
+import OAI.MeasureTheory.CompactFactors.Stationary
+
+open Lean Elab Command
+
+run_cmd do
+  let txt ← IO.FS.readFile "ana/names.txt"
+  let names := txt.splitOn "\n"
+  let env ← getEnv
+  let mut out : Array String := #[]
+  let mut missing : Array String := #[]
+  for n in names do
+    if n == "" then continue
+    let nm := n.toName
+    match env.find? nm with
+    | none => missing := missing.push n
+    | some ci =>
+      let mut acc : Array Name := #[]
+      acc := acc ++ ci.type.getUsedConstants
+      match ci with
+      | .thmInfo ti => acc := acc ++ ti.value.getUsedConstants
+      | .defnInfo di => acc := acc ++ di.value.getUsedConstants
+      | .opaqueInfo oi => acc := acc ++ oi.value.getUsedConstants
+      | .inductInfo ii => acc := acc ++ ii.type.getUsedConstants
+      | .ctorInfo cti => acc := acc ++ cti.type.getUsedConstants
+      | .recInfo ri => for r in ri.rules do acc := acc ++ r.rhs.getUsedConstants
+      | .axiomInfo ai => acc := acc ++ ai.type.getUsedConstants
+      | .quotInfo _ => pure ()
+      out := out.push (n ++ "\t" ++ String.intercalate " " (acc.toList.map toString))
+  IO.FS.writeFile "ana/deps.txt" (String.intercalate "\n" out.toList ++ "\n")
+  IO.FS.writeFile "ana/deps_missing.txt" (String.intercalate "\n" missing.toList ++ "\n")

@@ -1,0 +1,20 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/Energy.lean	2026-11-13 19:09:13.640895700 +0000
++++ OAI/Analysis/PlaneSpectrum/Energy.lean	2026-11-13 19:54:56.470854027 +0000
+@@ -283,14 +283,15 @@
+   have : VAddInvariantMeasure G Y (μ.map q) := ⟨fun g s hs => (hp g).measure_preimage hs.nullMeasurableSet⟩
+   constructor
+   intro s hs hinv
+-  have hc : EventuallyEmptyOrUniv (q ⁻¹' s) (ae μ) := by
++  have hc' : EventuallyConst (q ⁻¹' s) (ae μ) := by
+     apply ErgodicVAdd.aeconst_of_forall_preimage_vadd_ae_eq (G := G) (hs.preimage hq)
+     intro g
+     filter_upwards [ae_of_ae_map hq.aemeasurable (hinv g), hqcov g] with x hx he
+     change (q (g +ᵥ x) ∈ s) = (q x ∈ s)
+     rw [he]
+     exact hx
+-  rw [eventuallyEmptyOrUniv_iff] at hc ⊢
++  have hc := EuclideanFiveColor.KernelCompact.eventuallyConst_set_iff.mp hc'
++  rw [EuclideanFiveColor.KernelCompact.eventuallyConst_set_iff]
+   rcases hc with hc | hc
+   · exact Or.inl ((ae_map_iff hq.aemeasurable hs).mpr hc)
+   · exact Or.inr ((ae_map_iff hq.aemeasurable hs.compl).mpr hc)

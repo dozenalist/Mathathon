@@ -1,0 +1,30 @@
+    223     213     -10  OAI.MeasureTheory.CompactFactors.BoundedFunctions
+    255     246      -9  OAI.Analysis.PlaneSpectrum.PhaseEncoding
+    124     115      -9  OAI.Geometry.PlaneColoring.Palettes
+    477     470      -7  OAI.Analysis.PlaneSpectrum.Representations
+    503     497      -6  OAI.Geometry.PlaneColoring.AngularBoundary
+    388     383      -5  OAI.Analysis.PlaneSpectrum.SpectralMeasure
+    415     410      -5  OAI.Geometry.PlaneColoring.GraphRealization
+    328     323      -5  OAI.Geometry.PlaneColoring.HoleApproximation
+    472     468      -4  OAI.Analysis.PlaneSpectrum.RadialEnergy
+    458     454      -4  OAI.Geometry.PlaneColoring.BorelTransfer
+    314     310      -4  OAI.Geometry.PlaneColoring.GraphCuts
+     66      62      -4  OAI.Geometry.PlaneColoring.Lattice
+    439     436      -3  OAI.Geometry.PlaneColoring.Moser
+    376     374      -2  OAI.Geometry.PlaneColoring.FiveSupport
+    453     451      -2  OAI.Geometry.PlaneColoring.Sectors
+    176     174      -2  OAI.Geometry.PlaneColoring.WeakColoring
+    415     414      -1  OAI.Analysis.PlaneSpectrum.Ergodicity
+    524     523      -1  OAI.Analysis.PlaneSpectrum.NumberFields
+    432     431      -1  OAI.Analysis.PlaneSpectrum.Selections
+    145     144      -1  OAI.Geometry.PlaneColoring.Chromatic
+      0      62     +62  OAI.Analysis.PlaneSpectrum.DifferenceLaw  [added]
+      0      96     +96  OAI.MeasureTheory.CompactFactors.DifferenceInvariant  [added]
+  31277   29987   -1290  TOTAL (83 -> 82 modules)
+code-lines 29100 -> 27876 (-1224)
+
+
+SAVING: 1290 raw lines, target 1500: NOT MET
+
+
+VERDICT: FAIL  (13/82 built, certify=None, deffreeze=None, linecount_rc=1)

@@ -1,0 +1,1 @@
+SUPERSEDED: this first attempt has two defects (sq() fed SIGNED coordinates, so the |q| term vanished for q<0 and fabricated 7-cliques; window bound used M where sqrt(M) was meant). Kept only as a record of the failed route. Use cells.py + cover.py.

@@ -1,0 +1,4 @@
+EnergyShort.lean:337:2: error: failed to synthesize
+  ErgodicVAdd G Y (Measure.map q μ)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.

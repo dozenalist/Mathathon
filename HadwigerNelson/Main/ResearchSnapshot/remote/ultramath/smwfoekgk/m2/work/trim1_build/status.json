@@ -1,0 +1,13 @@
+{
+ "built": 1,
+ "fail": [
+  "OAI.Analysis.PlaneSpectrum.Characters"
+ ],
+ "status": {
+  "OAI.Analysis.PlaneSpectrum.Characters": {
+   "ok": false,
+   "secs": 1.2,
+   "err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim1/OAI/Analysis/PlaneSpectrum/Characters.lean:1:0: error: object file '/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m2/work/trim1_build/lib/OAI/Analysis/PlaneSpectrum/Basic.olean' of module OAI.Analysis.PlaneSpectrum.Basic does not exist\n"
+  }
+ }
+}

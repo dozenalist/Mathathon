@@ -1,0 +1,11 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: 9a904d4d7165889a5b12c77ea4e1646e436a0f5de4d4d057e2ee20d5e6f82ba1
+Status: passed
+Exit code: 0
+
+STDOUT
+'OAI.EuclideanFiveColor.stateSupport_no_shift_of_contact_ban' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.five_support_no_sixty_joint_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+STDERR
+

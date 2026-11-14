@@ -1,0 +1,119 @@
+48 modules to build (of 83)
+ok   OAI.Geometry.PlaneColoring.WeakColoring
+ok   OAI.Geometry.PlaneColoring.Compactness
+ok   OAI.Analysis.PlaneSpectrum.CircleOperator
+ok   OAI.Analysis.PlaneSpectrum.InvariantMean
+ok   OAI.Analysis.PlaneSpectrum.Multipliers
+ok   OAI.Analysis.PlaneSpectrum.FourierTests
+ok   OAI.Analysis.PlaneSpectrum.SmallArcs
+ok   OAI.Analysis.PlaneSpectrum.PhaseEncoding
+ok   OAI.Analysis.PlaneSpectrum.PhaseCollision
+ok   OAI.MeasureTheory.CompactFactors.ConditionalSelection
+ok   OAI.Analysis.PlaneSpectrum.ConditionalSpectrum
+ok   OAI.MeasureTheory.CompactFactors.Amenability
+ok   OAI.MeasureTheory.CompactFactors.Centers
+FAIL OAI.MeasureTheory.CompactFactors.RelativeCenters
+ok   OAI.MeasureTheory.CompactFactors.Approximation
+FAIL OAI.MeasureTheory.CompactFactors.ConditionalLimits
+ok   OAI.MeasureTheory.CompactFactors.Kernels
+ok   OAI.MeasureTheory.CompactFactors.BoundedFunctions
+ok   OAI.MeasureTheory.CompactFactors.RelativeProducts
+ok   OAI.MeasureTheory.CompactFactors.Separability
+ok   OAI.MeasureTheory.CompactFactors.AlgebraModels
+ok   OAI.MeasureTheory.CompactFactors.Functions
+ok   OAI.MeasureTheory.CompactFactors.Factors
+ok   OAI.MeasureTheory.CompactFactors.Stationary
+ok   OAI.Analysis.PlaneSpectrum.Representations
+ok   OAI.Analysis.PlaneSpectrum.Energy
+ok   OAI.Analysis.PlaneSpectrum.SpectralMeasure
+ok   OAI.Analysis.PlaneSpectrum.Ergodicity
+ok   OAI.Geometry.PlaneColoring.Expansion
+ok   OAI.Geometry.PlaneColoring.Palettes
+ok   OAI.Geometry.PlaneColoring.PaletteDensity
+ok   OAI.Geometry.PlaneColoring.BinaryPalettes
+ok   OAI.Geometry.PlaneColoring.BoundaryTrace
+ok   OAI.Geometry.PlaneColoring.AngularBoundary
+ok   OAI.Geometry.PlaneColoring.Exclusion
+ok   OAI.Geometry.PlaneColoring.FourContinuity
+ok   OAI.Geometry.PlaneColoring.BorelTransfer
+ok   OAI.Geometry.PlaneColoring.FiveSupport
+ok   OAI.Geometry.PlaneColoring.CyclicCore
+ok   OAI.Geometry.PlaneColoring.GraphRealization
+ok   OAI.Geometry.PlaneColoring.Interfaces
+ok   OAI.Geometry.PlaneColoring.Moser
+ok   OAI.Geometry.PlaneColoring.Sectors
+ok   OAI.Geometry.PlaneColoring.ContinuumLimits
+ok   OAI.Geometry.PlaneColoring.DiskExtension
+ok   OAI.Geometry.PlaneColoring.GraphCuts
+ok   OAI.Geometry.PlaneColoring.HoleApproximation
+ok   OAI.Geometry.PlaneColoring.Lattice
+done in 2116s, 2 failures
+==================== OAI.MeasureTheory.CompactFactors.RelativeCenters
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:76:0: error: Unexpected name `EuclideanFiveColor.CosetCenter.Embedding` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor.CosetCenter.Embedding` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵C̵o̵s̵e̵t̵C̵e̵n̵t̵e̵r̵.̵E̵m̵b̵e̵d̵d̵i̵n̵g̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:85:8: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.ErgodicSupport.ae_eq_const_of_invariant`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:102:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.compProd_map_base`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:116:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.condDistrib_comp_equiv`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:131:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.condDistrib_equivariant`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:178:18: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.probabilityKernel`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:182:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.measurable_probabilityKernel`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:185:18: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.cosetMass`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:188:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.measurable_cosetMass`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfo
+==================== OAI.MeasureTheory.CompactFactors.ConditionalLimits
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:199:0: error: Unexpected name `PlaneFiveColor.Spectral` after `end`: The current section is unnamed
+
+Hint: Delete the name `PlaneFiveColor.Spectral` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵P̵l̵a̵n̵e̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵S̵p̵e̵c̵t̵r̵a̵l̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:225:6: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.relative_singularity_base`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:235:6: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.instMeasurableSpaceCircle_tree`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:236:6: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.instBorelSpaceCircle_tree`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:241:4: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.AmbientEncodingAt`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:257:8: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:427:47: error: Invalid argument name `K` for function
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:428:8: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+Y : Type u_4
+inst✝ : MeasurableSpace Y
+x✝ : Sort u_5
+Scalar : x✝
+ν : Measure Y
+⊢ sorry
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:453:6: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.ambient_encoding_of_at`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekgk/m3/tree/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:526:44: error: Invalid argument name `K` for function `CompactApproximation.scalar_identity`
+
+Hint: Perhaps you meant one of the following parameter names:
+  • `Y`: K̵Y̲
+  • `Scalar`: K̵S̲c̲a̲l̲a̲r̲
+  • `ν`: K̵ν̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfoekg

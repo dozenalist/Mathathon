@@ -1,0 +1,16 @@
+{
+ "k6_ell5": {
+  "sat_geometries": 225,
+  "total_pair_models": 35320,
+  "min": 4,
+  "median": 40,
+  "max": 688
+ },
+ "k6_ell6": {
+  "sat_geometries": 177,
+  "total_pair_models": 1728,
+  "min": 1,
+  "median": 6,
+  "max": 36
+ }
+}

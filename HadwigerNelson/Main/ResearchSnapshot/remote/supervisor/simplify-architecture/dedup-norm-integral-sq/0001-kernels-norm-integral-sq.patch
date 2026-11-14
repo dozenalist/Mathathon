@@ -1,0 +1,32 @@
+--- a/lean/OAI/MeasureTheory/CompactFactors/Kernels.lean
++++ b/lean/OAI/MeasureTheory/CompactFactors/Kernels.lean
+@@ -1,4 +1,5 @@
+ import OAI.MeasureTheory.CompactFactors.ConditionalLimits
++import OAI.Analysis.PlaneSpectrum.Fourier
+ 
+ namespace OAI
+ 
+@@ -45,21 +46,8 @@
+ lemma norm_integral_sq (μ : Measure X) [IsProbabilityMeasure μ]
+     (f : X → ℂ) (hf : Integrable f μ)
+     (hf₂ : Integrable (fun x => ‖f x‖^2) μ) :
+-    ‖∫ x, f x ∂μ‖^2 ≤ ∫ x, ‖f x‖^2 ∂μ := by
+-  let a := ∫ x, ‖f x‖ ∂μ
+-  have ha : 0 ≤ a := integral_nonneg fun _ => norm_nonneg _
+-  have hvar : 0 ≤ (∫ x, ‖f x‖^2 ∂μ) - a^2 := by
+-    have h : (0 : ℝ) ≤ ∫ x, (‖f x‖-a)^2 ∂μ :=
+-      integral_nonneg (fun x => sq_nonneg (‖f x‖-a))
+-    have he : (fun x => (‖f x‖-a)^2) = fun x => ‖f x‖^2 - (2*a)*‖f x‖ + a^2 := by
+-      funext x; ring
+-    rw [he, integral_add (f := fun x => ‖f x‖^2 - (2*a)*‖f x‖) (g := fun _ => a^2) (hf₂.sub (hf.norm.const_mul (2*a))) (integrable_const (a^2)),
+-      integral_sub (f := fun x => ‖f x‖^2) (g := fun x => (2*a)*‖f x‖) hf₂ (hf.norm.const_mul (2*a)), integral_const_mul] at h
+-    simp only [integral_const, probReal_univ, one_smul] at h
+-    change 0 ≤ (∫ x, ‖f x‖^2 ∂μ) - (2*a)*a + a^2 at h
+-    nlinarith
+-  have hn : ‖∫ x, f x ∂μ‖ ≤ a := norm_integral_le_integral_norm f
+-  nlinarith [norm_nonneg (∫ x, f x ∂μ)]
++    ‖∫ x, f x ∂μ‖^2 ≤ ∫ x, ‖f x‖^2 ∂μ :=
++  EuclideanFiveColor.ProbabilityL2.norm_integral_sq μ f hf hf₂
+ 
+ def fiberMean (κ : Kernel X Y) (F : X × Y → ℂ) (x : X) : ℂ :=
+   ∫ y, F (x,y) ∂κ x

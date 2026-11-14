@@ -1,0 +1,13 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean	2026-11-13 19:09:13.641444471 +0000
++++ OAI/Geometry/PlaneColoring/DiskAverages.lean	2026-11-13 19:44:49.760572538 +0000
+@@ -223,8 +223,8 @@
+             exact (norm_add_le _ _).trans_lt (by linarith)
+           · convert h2 using 1; congr 1; ring
+         simp [colorFn,h1,h2,Set.indicator_of_mem hmem]
+-      · simp only [colorFn,ite_eq_left h1,ite_eq_right h2,mul_zero]; exact Set.indicator_nonneg (fun _ _ => zero_le_one) _
+-    · simp only [colorFn,ite_eq_right h1,zero_mul]; exact Set.indicator_nonneg (fun _ _ => zero_le_one) _
++      · simp only [colorFn,if_pos h1,if_neg h2,mul_zero]; exact Set.indicator_nonneg (fun _ _ => zero_le_one) _
++    · simp only [colorFn,if_neg h1,zero_mul]; exact Set.indicator_nonneg (fun _ _ => zero_le_one) _
+   apply hle.trans
+   calc
+     (∫ q in Metric.ball x r, T.indicator (fun _ => (1:ℝ)) (q+h₁)) ≤

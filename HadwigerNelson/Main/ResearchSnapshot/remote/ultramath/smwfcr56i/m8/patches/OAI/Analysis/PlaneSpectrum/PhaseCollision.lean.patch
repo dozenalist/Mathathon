@@ -1,0 +1,11 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean	2026-11-13 19:09:13.640849362 +0000
++++ OAI/Analysis/PlaneSpectrum/PhaseCollision.lean	2026-11-13 19:36:32.900935196 +0000
+@@ -365,7 +365,7 @@
+   filter_upwards [hcov] with x hx
+   intro i hi
+   dsimp [f]
+-  rw [dite_eq_left (hx i hi)]
++  rw [dif_pos (hx i hi)]
+   exact (hx i hi).choose_spec
+ 
+ omit [MeasurableSpace Ω] [Fintype ι] [Fintype κ] [Nonempty ι] [Nonempty κ]

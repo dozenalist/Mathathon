@@ -1,0 +1,15 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: 55a2f2bef340156617f0679f65813d952f19c876e975399463b5bdcd4002127b
+Status: passed
+Exit code: 0
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\OAI\Geometry\PlaneColoring\Chromatic.lean:40:8: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'OAI.Problem160.chromaticNumber_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.six_le_planeChromaticNumber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.not_properColoring_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+STDERR
+

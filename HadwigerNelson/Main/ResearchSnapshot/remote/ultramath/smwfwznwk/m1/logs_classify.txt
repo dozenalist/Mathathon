@@ -1,0 +1,26 @@
+--- k=6, C_6, free label 0, palette sizes (2,)   (pairs only)
+   m  n=6m  explicit word  exhaustive DFS   CaDiCaL  DFS nodes
+   2    12             no           UNSAT     UNSAT          1
+   3    18             no           UNSAT     UNSAT          1
+   4    24             no           UNSAT     UNSAT          3
+   5    30            yes             SAT       SAT          3
+   6    36            yes             SAT       SAT          7
+   7    42            yes             SAT       SAT         10
+   8    48            yes             SAT       SAT         16
+   9    54            yes             SAT       SAT         20
+  10    60            yes             SAT       SAT         24
+  11    66            yes             SAT       SAT         28
+  12    72            yes             SAT       SAT         32
+
+--- k=6, C_6, free label 0, palette sizes (2, 3)   (pairs and triples)
+   m  n=6m  explicit word  exhaustive DFS   CaDiCaL  DFS nodes
+   2    12             no           UNSAT     UNSAT          1
+   3    18             no           UNSAT     UNSAT          1
+   4    24             no           UNSAT     UNSAT          3
+   5    30             no             SAT       SAT          3
+   6    36             no             SAT       SAT          7
+   7    42             no             SAT       SAT         10
+   8    48             no             SAT       SAT         16
+   9    54             no             SAT       SAT         20
+  10    60             no             SAT       SAT         24
+exit=0

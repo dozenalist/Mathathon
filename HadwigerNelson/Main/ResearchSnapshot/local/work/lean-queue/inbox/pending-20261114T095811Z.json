@@ -1,0 +1,16 @@
+{
+  "state": "staged_only_not_queued",
+  "reason": "Existing serial fullbuildmustfinish;do noteditrunningqueue",
+  "sources": [
+    {
+      "source": "WitnessSelectionV2.lean",
+      "sha256": "214b064e395d4d9203cac1da03721d78de71c2840cabdb6923923b76eacbedc0",
+      "review": "No executable commands or customaxioms;potentialFilter namespace andhεplaceholder issues requireauthorreview"
+    },
+    {
+      "source": "CheckNullTransferV1.lean",
+      "sha256": "682c2c0acfbca85a94e05d3f3e93f766c656b8c0c77b5f7f5fc288f359b0994d",
+      "review": "Minimal extraction importsColoringonly;existingfullnullcandidatealreadyqueued"
+    }
+  ]
+}

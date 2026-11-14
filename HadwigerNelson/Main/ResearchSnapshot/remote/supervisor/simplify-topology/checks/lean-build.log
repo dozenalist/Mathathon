@@ -1,0 +1,90 @@
+CoverObstruction.lean:17:5: error(lean.unknownIdentifier): Unknown identifier `ball_simplyConnected`
+CoverObstruction.lean:78:52: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+CoverObstruction.lean:119:25: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  dist ?a 0
+in the target expression
+  dist z y < c
+
+ι : Type u_1
+inst✝ : Fintype ι
+Q : Set ℂ
+R d : ℝ
+hQ : ball 0 R ⊆ Q
+hd : 0 ≤ d
+hRd : d < R
+p : ι → ℂ
+w : ι → C(↑Q, ℝ)
+hn : ∀ (i : ι) (z : ↑Q), 0 ≤ (w i) z
+hs : ∀ (z : ↑Q), ∑ i, (w i) z = 1
+hm : ∀ (z : ↑Q), {i | (w i) z ≠ 0}.card ≤ 2
+hpd : ∀ (i : ι) (z : ↑Q), (w i) z ≠ 0 → ‖p i - ↑z‖ ≤ d
+c : ℝ := (d + R) / 2
+hcdef : c = (d + R) / 2
+r : ℝ := (R - d) / 2
+hrdef : r = (R - d) / 2
+hdc : d < c
+hrpos : 0 < r
+F : ↑Q → ℂ := fun z => ∑ i, (w i) z • p i
+Fc : Continuous F
+Fb : ∀ (z : ↑Q), ‖F z - ↑z‖ ≤ d
+y : ℂ
+hy : y ∈ ball 0 r
+hy' : ‖y‖ < r
+z : ℂ
+hz : dist z y < c
+⊢ dist z 0 < R
+CoverObstruction.lean:125:15: error(lean.unknownIdentifier): Unknown identifier `volume`
+CoverObstruction.lean:126:4: error(lean.unknownIdentifier): Unknown identifier `measure_iUnion_null`
+CoverObstruction.lean:129:10: error(lean.unknownIdentifier): Unknown identifier `barycenter_two`
+CoverObstruction.lean:130:13: error(lean.unknownIdentifier): Unknown identifier `measure_mono_null`
+CoverObstruction.lean:92:60: error: unsolved goals
+ι : Type u_1
+inst✝ : Fintype ι
+Q : Set ℂ
+R d : ℝ
+hQ : ball 0 R ⊆ Q
+hd : 0 ≤ d
+hRd : d < R
+p : ι → ℂ
+w : ι → C(↑Q, ℝ)
+hn : ∀ (i : ι) (z : ↑Q), 0 ≤ (w i) z
+hs : ∀ (z : ↑Q), ∑ i, (w i) z = 1
+hm : ∀ (z : ↑Q), {i | (w i) z ≠ 0}.card ≤ 2
+hpd : ∀ (i : ι) (z : ↑Q), (w i) z ≠ 0 → ‖p i - ↑z‖ ≤ d
+c : ℝ := (d + R) / 2
+hcdef : c = (d + R) / 2
+r : ℝ := (R - d) / 2
+hrdef : r = (R - d) / 2
+hdc : d < c
+hrpos : 0 < r
+F : ↑Q → ℂ := fun z => ∑ i, (w i) z • p i
+Fc : Continuous F
+Fb : ∀ (z : ↑Q), ‖F z - ↑z‖ ≤ d
+hsub : ball 0 r ⊆ range F
+hnull : sorry = 0
+hfsub : range F ⊆ ⋃ a, ⋃ b, ↑line[ℝ, p a, p b]
+⊢ False
+CoverObstruction.lean:136:20: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  DecidablePred fun i => z ∈ U i
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+CoverObstruction.lean:180:6: error: `simp` made no progress
+CoverObstruction.lean:201:27: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+CoverObstruction.lean:204:53: error: `fun_prop` was unable to prove `Continuous fun p => { re := p.1, im := p.2 }`
+
+Issues:
+  No theorems found for `Complex.mk` in order to prove `Continuous fun p => { re := p.1, im := p.2 }`
+CoverObstruction.lean:201:41: warning: This simp argument is unused:
+  Complex.ofReal_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [square10, mem_setOf_eq, Complex.ofReal_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+CoverObstruction.lean:201:60: warning: This simp argument is unused:
+  Complex.ofReal_im
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [square10, mem_setOf_eq, Complex.ofReal_re]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

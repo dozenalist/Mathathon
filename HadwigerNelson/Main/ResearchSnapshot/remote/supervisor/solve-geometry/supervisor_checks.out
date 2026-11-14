@@ -1,0 +1,153 @@
+[1] square-in-ball containment (circumradius s/sqrt2)
+    r=1.500000: admissible 2 < s < sqrt2*r = (2, 2.121320) -> NONEMPTY
+    r=1.414214: admissible 2 < s < sqrt2*r = (2, 2.000000) -> NONEMPTY
+    r=2.000000: admissible 2 < s < sqrt2*r = (2, 2.828427) -> NONEMPTY
+    r=4.000000: admissible 2 < s < sqrt2*r = (2, 5.656854) -> NONEMPTY
+    WEAKEST.md's printed '4 < s < r/sqrt2' needs r > 4*sqrt2 = 5.656854, contradicting its own r > sqrt2 = 1.414214; correct line is '2 < s < sqrt2*r'
+[2] disk form: needed inradius = component-cover mesh = 1+o(1), so the radius threshold is 1
+    (paper's rounded mesh 2 would give 2; m12 Lemma 5.1 states inradius(Q) > mesh)
+[3] Prop. 1 window: a disk of radius r>1 avoiding x fits in B(x,rho) iff 2r < rho
+    rho=1.5000: no contradiction -> rho <= 2
+    rho=1.9990: no contradiction -> rho <= 2
+    rho=2.0000: no contradiction -> rho <= 2
+    rho=2.0010: CONTRADICTION with density -> rho <= 2
+[4] L = (6/5)Z^2   [OPEN-ball convention, corrected this block]
+    covering radius a/sqrt2 = 0.848528137 <= 1 -> 1-dense (density theorem not violated)
+    nearest-neighbour distance = 1.2; isolation radius r* = 1.2 (= a, NOT a/2 = 0.6)
+    (ISO)(r) holds for r <= 6/5, fails for r > 6/5; it refutes r > sqrt2 = 1.4142 since 6/5 < sqrt2: True
+    exact: (6/5)^2 = 36/25 <= 2 : True
+[5] L = {0,(1/50,0)}: |L cap B(0,1.5)| = 2 finite -> (W); isolation radii 1/100
+    -> (W) is strictly weaker than 'isolated point with gap > 1'
+[6] lattice r* = a (open ball excludes the neighbours at distance exactly a)
+    L = 1.0Z^2: r* = 1.0, packing radius 0.5, covering radius 0.707107 -> 1-dense True
+    L = 1.2Z^2: r* = 1.2, packing radius 0.6, covering radius 0.848528 -> 1-dense True
+    L = 1.5Z^2: r* = 1.5, packing radius 0.75, covering radius 1.060660 -> 1-dense False
+    a = 1  : r* = 1   -> (ISO)(r) FAILS for every r > 1 while 1-dense (refutes gap>1)
+    a = 6/5: r* = 1.2 -> (ISO)(r) HOLDS for r in (1,6/5]; refutes only r > 6/5, e.g. r > sqrt2
+[7] L = {0} u U_k S(0, 3k/2): (W) holds, (W2) fails
+    |L cap B(0,1.2)| = 1 (nearest circle at radius 1.5) -> (W) with R = 1.2
+      |y|=0.0: dist(y,L)=0.000 <= 1 (1-dense); nearest circle within 2 -> |L cap B(y,2)| infinite
+      |y|=0.3: dist(y,L)=0.300 <= 1 (1-dense); nearest circle within 2 -> |L cap B(y,2)| infinite
+      |y|=0.74: dist(y,L)=0.740 <= 1 (1-dense); nearest circle within 2 -> |L cap B(y,2)| infinite
+      |y|=1.0: dist(y,L)=0.500 <= 1 (1-dense); nearest circle within 2 -> |L cap B(y,2)| infinite
+      |y|=2.3: dist(y,L)=0.700 <= 1 (1-dense); nearest circle within 2 -> |L cap B(y,2)| infinite
+      |y|=7.7: dist(y,L)=0.200 <= 1 (1-dense); nearest circle within 2 -> |L cap B(y,2)| infinite
+    radii are 1.5 apart, so every y lies within 0.75 of a circle and every radius-2 ball cuts
+    one in an arc => (W2) FAILS for every y, while (W) holds
+[9] weak-limit countermodel (12 sectors, T = {3,4,5})
+    <b_0,b_1> = 0/12 = 0; || b_0 - b_1 ||^2 = 2 - 2*0 = 2
+    <b_0,b_2> = 0/12 = 0; || b_0 - b_2 ||^2 = 2 - 2*0 = 2
+    <b_0,b_3> = 12/12 = 1; || b_0 - b_3 ||^2 = 2 - 2*1 = 0
+    => the family has only 3 distinct members, so a constant (hence L^2-Cauchy) subsequence
+       exists; the illustration is about the INFERENCE below, not about non-compactness
+    convex average of 3 consecutive = (1/3,1/3,1/3); all three coordinates > 0,
+    so a WEAK limit would have |P| >= 3 at the accumulation point. Traces are STRONG
+    limits (trace_realization: sampleCode -> b in L^2), so this inference is invalid.
+    => 'singleton palettes pass to the limit' is false; only 'the limit singleton is IN the palette'
+[10] Prop. 4 conclusion, as a label statement
+    V=[0, 1, 2] V'=[0, 1, 2]: T cap T' = [3, 4, 5] (nonempty -> OK)
+    V=[0, 1, 2] V'=[3, 4, 5]: T cap T' = [] -> EMPTY, excluded by Prop. 4
+    equivalently V u V' != [6]: a missing label is shared by the two triangles
+    ordered pairs (V,V') with V u V' = [6]: 20 of 400 = 1/20
+    unordered such pairs: 10 of 210
+[11] m3 (k=7) consistency check of Prop. A
+    triangle labels {0,2,3}, complement T = [1, 4, 5, 6], |T| = 4 = k-3 = 4
+    m3: the unit circle about q_n lies outside the gadget W (radius ~1/2 about q_n in the
+    far field), so its colours are the four background labels {1,4,5,6} = T. Prop. A holds
+    with equality, and this is exactly why k >= 7 can carry four outsiders and k = 6 cannot.
+[13] Rademacher counterexample (Omega = {0,1}^3, uniform)
+    k=0, l=1: P(u_k != u_l) = 4/8 = 1/2; ||u_k-u_l||^2 = 2*1/2 = 1; P(|u_k-u_l| >= 1) = 1/2
+    k=0, l=2: P(u_k != u_l) = 4/8 = 1/2; ||u_k-u_l||^2 = 2*1/2 = 1; P(|u_k-u_l| >= 1) = 1/2
+    k=1, l=2: P(u_k != u_l) = 4/8 = 1/2; ||u_k-u_l||^2 = 2*1/2 = 1; P(|u_k-u_l| >= 1) = 1/2
+    => pairwise L^2 distance 1 for every pair, and L^0 distance 1/2: no Cauchy subsequence.
+    So the set of one-hot (T-valued) fields is NOT compact in L^2 or in measure:
+    'closed and bounded in L^0' does not give compactness on a nonatomic space.
+[14] admissibility bookkeeping
+    Lean: TypicalSampling c y r := 0 < r and (for ae t) Typical (y + r*direction t),
+    Typical z := DensityOne {w : c w = c z} z.  IsTrace x b := (x,1,b) in closure(sampleSet).
+    Lean has ae_typicalSampling: for fixed r > 0, a.e. y is admissible (a.e.-in-CENTRE).
+    The per-centre form needed here is different: the non-typical set N is plane-null and
+    the circle is an isometry of angular measure, so (x,1) is admissible for EVERY x.
+    That is paper-level (Lemma 4.3 + absolute continuity), not the Lean a.e. statement.
+    Hence admissibility is NOT the gap; convergence of the codes is.
+[15] per-offset extrema at a=1 recomputed exactly in Q(sqrt3), 42 offsets
+     mismatches vs interval_cert.json: 38 [([-4, 1], (Fraction(20, 1), Fraction(-5, 1)), (Fraction(49, 1), Fraction(0, 1)), 19, 67), ([-4, 2], (Fraction(17, 1), Fraction(-4, 1)), (Fraction(52, 1), Fraction(0, 1)), 16, 64)]
+     distinct min^2 [Fraction(41, 13), Fraction(4, 1), Fraction(7, 1), Fraction(8, 1), Fraction(605, 52), Fraction(13, 1), Fraction(16, 1), Fraction(215, 13), Fraction(17, 1), Fraction(19, 1), Fraction(20, 1), Fraction(25, 1), Fraction(28, 1), Fraction(31, 1), Fraction(37, 1)]; distinct max^2 [Fraction(16, 1), Fraction(28, 1), Fraction(29, 1), Fraction(31, 1), Fraction(37, 1), Fraction(38, 1), Fraction(43, 1), Fraction(44, 1), Fraction(49, 1), Fraction(50, 1), Fraction(52, 1), Fraction(61, 1), Fraction(62, 1), Fraction(64, 1), Fraction(65, 1), Fraction(67, 1), Fraction(68, 1)]
+     contact realising the minimum: {'V': 34, 'E': 8}  (E = edge interior, V = polygon vertex)
+     binding: max min^2 = 37 (upper bound 1/sqrt37), min max^2 = 16 (lower bound 1/sqrt16)
+     interval (1/sqrt16, 1/sqrt37) = (0.250000000, 0.164398987)
+     rational subinterval [19/100, 22/100]: (19/100)^2 > 1/16: False; (22/100)^2 < 1/37: False
+     a = 1/5 inside: False
+[15] per-offset extrema at a=1, recomputed exactly in Q(sqrt3): 42 offsets
+     mismatches vs interval_cert.json (mu2, nu2): 0  []
+     distinct min^2 [Fraction(3, 1), Fraction(7, 1), Fraction(12, 1), Fraction(16, 1), Fraction(19, 1)]; distinct max^2 [Fraction(28, 1), Fraction(43, 1), Fraction(49, 1), Fraction(64, 1), Fraction(67, 1)]
+     contacts realising the minimum: {'V': 30, 'E': 12}   (E = edge interior, V = polygon vertex)
+     binding: largest min^2 = 19 (=> a < 1/sqrt19); smallest max^2 = 28 (=> a > 1/sqrt28)
+     interval (1/sqrt28, 1/sqrt19) = (0.188982237, 0.229415734)
+     [19/100, 22/100] inside: True;  a = 1/5 inside: False
+[15] per-offset extrema at a=1, recomputed exactly in Q(sqrt3): 42 offsets
+     mismatches vs interval_cert.json (mu2, nu2): 0  []
+     distinct min^2 [Fraction(3, 1), Fraction(7, 1), Fraction(12, 1), Fraction(16, 1), Fraction(19, 1)]; distinct max^2 [Fraction(28, 1), Fraction(43, 1), Fraction(49, 1), Fraction(64, 1), Fraction(67, 1)]
+     contacts realising the minimum: {'V': 30, 'E': 12}   (E = edge interior, V = polygon vertex)
+     binding: largest min^2 = 19 (=> a < 1/sqrt19); smallest max^2 = 28 (=> a > 1/sqrt28)
+     interval (1/sqrt28, 1/sqrt19) = (0.188982237, 0.229415734)
+     [19/100, 22/100] inside: True;  a = 1/5 inside: True  (1/5 > 1/sqrt28 iff 28>25; 1/5 < 1/sqrt19 iff 25>19)
+[16] F(1/4) recovered from the a=1 exact extrema: 30 offsets, rings [3, 4, 7, 9]
+     patch {N <= 19}: 73 cells
+     G[P]: 1446 directed-edge count -> 723 undirected edges; degrees 24..60, centre degree 60
+     p25.cnf: 5506 clauses parsed
+     clause types: at-least-one 73, same-cell pairs 1095, cross-cell pairs 4338
+     decoded edge pairs: 723; expected 723; sets equal: True
+     clause count identity 73 + 73*15 + 6*723 = 5506 (file: 5506)
+     at a=1 over F(1/4): max mu^2 = 12, min nu^2 = 25  -> interval (1/sqrt25, 1/sqrt12) = (0.200000000, 0.288675135)
+     a=1/4 inside: True; endpoints excluded by tangency: 1/25 exact=True, 1/sqrt12 exact=True
+     (accepted interval (1/sqrt28,1/sqrt19) = (0.188982,0.229416) overlaps the new one on (1/5,1/sqrt19): non-empty since 1/5 < 1/sqrt19 (5>sqrt19: True))
+[16] F(1/4) recovered from the a=1 exact extrema: 30 offsets, rings [3, 4, 7, 9]
+     patch {N <= 19}: 73 cells
+     G[P]: 1446 directed-edge count -> 723 undirected edges; degrees 24..60, centre degree 60
+     p25.cnf: 5506 clauses parsed
+     clause types: at-least-one 73, same-cell pairs 1095, cross-cell pairs 4338
+     decoded edge pairs: 723; expected 723; sets equal: True
+     clause count identity 73 + 73*15 + 6*723 = 5506 (file: 5506)
+     at a=1 over F(1/4): max mu^2 = 12, min nu^2 = 25  -> interval (1/sqrt25, 1/sqrt12) = (0.200000000, 0.288675135)
+     a=1/4 inside: True; endpoints excluded by tangency: 1/25 exact=True, 1/sqrt12 exact=True
+     (accepted interval (1/sqrt28,1/sqrt19) = (0.188982,0.229416) overlaps the new one on (1/5,1/sqrt19): non-empty since 1/5 < 1/sqrt19 (5>sqrt19: True))
+[17] exact CNF regeneration in the producer's vertex order
+     regenerated 5506 clauses; file 5506; equal as multisets: True
+     clauses differing in multiplicity: 0 []
+[16] F(1/4) recovered from the a=1 exact extrema: 30 offsets, rings [3, 4, 7, 9]
+     patch {N <= 19}: 73 cells
+     G[P]: 1446 directed-edge count -> 723 undirected edges; degrees 24..60, centre degree 60
+     p25.cnf: 5506 clauses parsed
+     clause types: at-least-one 73, same-cell pairs 1095, cross-cell pairs 4338
+     decoded edge pairs: 723; expected 723; sets equal: True
+     clause count identity 73 + 73*15 + 6*723 = 5506 (file: 5506)
+     at a=1 over F(1/4): max mu^2 = 12, min nu^2 = 25  -> interval (1/sqrt25, 1/sqrt12) = (0.200000000, 0.288675135)
+     a=1/4 inside: True; endpoints excluded by tangency: 1/25 exact=True, 1/sqrt12 exact=True
+     (accepted interval (1/sqrt28,1/sqrt19) = (0.188982,0.229416) overlaps the new one on (1/5,1/sqrt19): non-empty since 1/5 < 1/sqrt19 (5>sqrt19: True))
+
+[18] CELL-NOGO-v2 Theorem 2: the 7-clique in the N in {1,3,4} Cayley graph
+     S = centre + six ring-1 neighbours: [(0, 0), (1, 0), (0, 1), (-1, 1), (-1, 0), (0, -1), (1, -1)]
+     all 21 pairwise differences have Eisenstein norm in [1, 3, 4]  (subset of {1,3,4}: True)
+     => S is a K_7 in Cay(Z^2, {N in {1,3,4}}), so chi >= 7
+     the 18 vectors with 0 < N <= 4 (18 expected): True, norms [1, 3, 4]
+     colouring (p,q) -> p+3q mod 7: vectors hit by 0 = 0 (need 0) -> chi <= 7
+     combined: chi(Cay(Z^2, N in {1,3,4})) = 7
+[19] per-ring windows (1/nu, 1/mu), exact endpoints
+     N= 1: mu^2= 0, nu^2=13 -> forced on (1/sqrt13 = 0.277350, inf)
+     N= 3: mu^2= 1, nu^2=25 -> forced on (1/sqrt25 = 0.200000, 1/1)
+     N= 4: mu^2= 3, nu^2=28 -> forced on (1/sqrt28 = 0.188982, 1/1.732051)
+     N= 7: mu^2= 7, nu^2=43 -> forced on (1/sqrt43 = 0.152499, 1/2.645751)
+     N= 9: mu^2=12, nu^2=49 -> forced on (1/sqrt49 = 0.142857, 1/3.464102)
+     N=12: mu^2=16, nu^2=64 -> forced on (1/sqrt64 = 0.125000, 1/4)
+     N=13: mu^2=19, nu^2=67 -> forced on (1/sqrt67 = 0.122169, 1/4.358899)
+[20] endpoints, decided by exact integer comparisons
+     a = 1/2, ring 1: forced = True  (mu^2<4<nu^2: 0<4<13)
+     a = 1/2, ring 3: forced = True  (mu^2<4<nu^2: 1<4<25)
+     a = 1/2, ring 4: forced = True  (mu^2<4<nu^2: 3<4<28)
+     a = 1/sqrt13, ring 1: 1/nu = 1/sqrt13 exactly (nu^2 = 13) -> NOT strictly forced: False
+     a = 1/sqrt13, rings 3 and 4 still forced: True, True  (mu^2 < 13 < nu^2 with a^2 = 1/13)
+     => at a = 1/2 the K_7 argument applies (not merely vacuity);
+        at a = 1/sqrt13 ring 1 is a tangency, so the K_7 fails there: the endpoint is open
+[21] window sufficiency: a ring forced at a >= 1/sqrt13 has mu^2(a=1) <= 13
+     rings with mu^2 <= 13: [1, 3, 4, 7, 9] (N=12 has mu^2=16, so excluded); matches the producer's {1,3,4,7,9}: True

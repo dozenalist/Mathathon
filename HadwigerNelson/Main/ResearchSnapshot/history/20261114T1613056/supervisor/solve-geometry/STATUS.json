@@ -1,0 +1,35 @@
+{
+  "updated_utc": "2026-11-14T15:47:05Z",
+  "status": "completed_block",
+  "summary": "Repaired PREREG-S2.md with four retractions, then designed one new exact placement. Retractions: rho(C1)-A1 is not a genuine cross edge, since A1 = rho(A2) makes it the transport of the internal edge C1-A2 (B-internal); the K5-with-subdivided-edge example is false (4-colourable, and adding uv keeps it 5-colourable) - the correct gadget is K6 minus an edge, unrealizable since it contains K4; 'a fixed-point rotation prevents pair separation' has no proof and is withdrawn; overlap indexing corrected to c1(A1) = c2(A2), c1(B-) = c2(B+) with preimage map rho-inverse. Then PREREG-S3.md: for an edge {a,b} of H and any vertex r, with d1 = a-r, d2 = b-r and n the unit perpendicular of b-a (unit because a,b are adjacent), tau = (d1+d2)/2 + s(sqrt3/2)n is the apex of the equilateral triangle on d1d2, so |a-(r+tau)| = |b-(r+tau)| = 1 by equilateral closure, all in K(sqrt3) - two cross edges by construction, genuine only if the exact tests tau not in D(H) and a-tau, b-tau not in V(H) pass. Stated the missing condition (G4): a k=5 pair needs four exclusions, at most two from the common-neighbour channel, so two more must attach to the same pair; S3 does not achieve this and I say so rather than overselling it.",
+  "verified_results": [
+    "GRADE [P] Retraction C1 of PREREG-S2.md: the pair (rho(C1), A1) is not a new constraint. Because A1 = rho(A2), the pair is the rho-image of the internal edge C1-A2 and is therefore internal to copy B. A genuine cross edge requires one endpoint in V(M)\\I and the other in rho(V(M))\\I; section 3 of S2 exhibits none, so S2's claimed cross-edge mechanism is void.",
+    "GRADE [P] Retraction C2: the abstract example 'K5 with edge uv subdivided by w' is false. The subdivided graph is 4-colourable (u and v share a colour, the other three take three colours, w reuses one) and adding uv is still 5-colourable (w is not adjacent to those three, so it may reuse a colour). The correct standard gadget is K6 minus one edge: 5-colourable with u,v sharing a colour, and adding uv gives K6, which is not 5-colourable. It is geometrically unrealizable because u together with three others forms a K4.",
+    "GRADE [P] Retraction C3: nothing proves that a fixed-point isometry prevents the union's colouring family from separating pairs; the only defensible differences from a translation are bookkeeping (overlap size, preimage map). Separation must be measured.",
+    "GRADE [P] Retraction C4 / corrected invariants: with c2 indexed by original M-vertices the overlap equations are c1(K)=c2(K), c1(A1)=c2(A2), c1(B-)=c2(B+), and the shared-vertex preimage map is rho-inverse restricted to the overlap: K to K, A1 to A2, B- to B+.",
+    "GRADE [P] PREREG-S3 construction: for an edge {a,b} of H and a vertex r, with d1=a-r, d2=b-r and n = R90(b-a) a unit vector, tau = (d1+d2)/2 + s(sqrt3/2)n satisfies |tau - d1| = |tau - d2| = 1 (equilateral triangle on d1d2), hence |a-(r+tau)| = |b-(r+tau)| = 1. Coordinates lie in K(sqrt3); the construction is exact, needs no search, and exhibits two unit pairs whose membership in class 'genuine cross' is decided by two exact tests.",
+    "GRADE [P] The class decomposition and the missing condition: unit pairs of a translate-glued union split into A-internal, B-internal, overlap-incidence and genuine cross; only the last couples the two colourings, and overlap incidence is inherited. (G4) is stated: at k=5 forcing a pair equal needs four excluded colours, at most two come from the common-neighbour channel (capped at two vertices in the plane), so a translation must supply two further exclusions for the same pair. S3 supplies two cross edges at one translated vertex and therefore does not meet (G4); this is stated rather than glossed."
+  ],
+  "conjectures": [
+    "The closed 1048-vertex union's 184 cross edges were never split by class, so part of that budget may have been overlap incidence; the split is the first thing any re-analysis of it should report.",
+    "Two isolated cross edges cannot meet (G4), which asks for four exclusions attached to one pair; the next design should therefore aim at a small, exactly-checkable configuration where a single cross vertex is simultaneously at unit distance from four vertices of the other copy whose colours are forced distinct - the planar cap (no K4) means those four must be spread across two copies.",
+    "If S3's exact tests pass and its colouring family still separates every nonedge, the informative negative is that guaranteed cross edges of the 'equilateral apex' type are too sparse to force; the natural next step is a symmetric placement gluing at two apexes at once so that a pair receives two exclusions from each side."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/PREREG-S3.md",
+    "supervisor/solve-geometry/PREREG-S2.md",
+    "supervisor/solve-geometry/GLUING-CORRECTED.md",
+    "supervisor/solve-geometry/ARTIFACT-HASHES.txt",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "None: analysis-only block by instruction; the graph worker holds the only compute slot. Every construction in PREREG-S3.md is hand arithmetic over field elements and graded [P]; H553's counts (1048 vertices, 58 overlaps, 184 cross edges, 34 colourings, 543141 separated nonedges) are cited as [C] and not re-derived here."
+  ],
+  "failed_routes": [
+    "RETRACTED: S2's cross-edge mechanism (the exhibited pair is B-internal), the K5-subdivision abstract gadget, the fixed-point-removes-separation claim, and the overlap indexing.",
+    "The toy-rotation calibration route is closed by instruction: a 11-vertex spindle gluing cannot add any target-colour constraint at k=5, so it should not consume a compute slot.",
+    "Not attempted: any run, any solver, any search over translates, any claim that S3 forces a pair or is non-colourable, any palette or plane-level conclusion, and no claim that S3 is closer to forcing than the closed translate."
+  ],
+  "next_step": "If the graph worker has a free slot after its own job: instantiate S3 with one specific H edge and vertex r from the builder, run the two exact existence tests (tau not in D(H), a-tau and b-tau not in V(H)), then report the class-split cross census and the joint colouring count at k=5. If the slot is scarce, S3 should be skipped: (G4) is unmet by construction and I have no hand argument that it improves on the closed translate.",
+  "escalation": null
+}

@@ -1,0 +1,274 @@
+WARN OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:308[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of finite_uniform_precision_contradiction
+WARN OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:478[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of finite_uniform_successor_contradiction
+WARN OAI/Analysis/PlaneSpectrum/Energy.lean:143[omit [AddCommGroup G] in] inside block of energy_apply
+WARN OAI/Analysis/PlaneSpectrum/Energy.lean:274[omit [IsProbabilityMeasure μ] in] inside block of factor_ergodic
+WARN OAI/Analysis/PlaneSpectrum/Energy.lean:275[include hq hqcov in] inside block of factor_ergodic
+WARN OAI/Analysis/PlaneSpectrum/Energy.lean:311[include hq hqcov in] inside block of conditional_pair_energy
+WARN OAI/Analysis/PlaneSpectrum/Energy.lean:322[include hq hqcov in] inside block of conditional_integer_pair_energy
+WARN OAI/Analysis/PlaneSpectrum/Energy.lean:341[include hq hqcov in] inside block of conditional_integer_triple_energy
+WARN OAI/Analysis/PlaneSpectrum/Energy.lean:389[include hq in] inside block of projectedMass_le_one
+WARN OAI/Analysis/PlaneSpectrum/Energy.lean:396[include hq in] inside block of projectedMass_zero
+WARN OAI/Analysis/PlaneSpectrum/Energy.lean:407[include hq in] inside block of differenceFourier_projectedMass
+WARN OAI/Analysis/PlaneSpectrum/Energy.lean:419[include hq hqcov in] inside block of projectedMass_rotation
+WARN OAI/Analysis/PlaneSpectrum/Energy.lean:431[include hq hqcov in] inside block of projectedMass_radial
+WARN OAI/Analysis/PlaneSpectrum/Ergodicity.lean:29[include hq hqcov in] inside block of projectedMass_vanish
+WARN OAI/Analysis/PlaneSpectrum/Ergodicity.lean:36[include hq hqcov in] inside block of fourier_vanish_of_terminal
+WARN OAI/Analysis/PlaneSpectrum/Ergodicity.lean:290[omit [Countable G] [Nonempty X] in] inside block of code_measurable
+WARN OAI/Analysis/PlaneSpectrum/Ergodicity.lean:293[omit [Countable G] [Nonempty X] in] inside block of code_fixed
+WARN OAI/Analysis/PlaneSpectrum/FourierTests.lean:245[omit [MeasurableSpace G] [MeasurableMul₂] inside block of coe_character_div
+WARN OAI/Analysis/PlaneSpectrum/FourierTests.lean:250[omit [MeasurableMul₂ G] [MeasurableInv G] inside block of independent_coefficient
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:198[omit [TopologicalSpace G] [DiscreteTopol] inside block of averagingUF_le
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:246[omit [TopologicalSpace G] [DiscreteTopol] inside block of eventually_mem
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:254[omit [TopologicalSpace G] [DiscreteTopol] inside block of tendsto_index
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:263[omit [DiscreteTopology G] in] inside block of tendsto_boundary
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:295[omit [AddCommGroup G] [DiscreteTopology ] inside block of realPart_apply
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:295[omit [AddCommGroup G] [DiscreteTopology ] inside block of imagPart_apply
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:297[omit [AddCommGroup G] [DiscreteTopology ] inside block of imagPart_apply
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:295[omit [AddCommGroup G] [DiscreteTopology ] inside block of cmean
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:297[omit [AddCommGroup G] [DiscreteTopology ] inside block of cmean
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:318[omit [AddCommGroup G] [DiscreteTopology ] inside block of realPart_norm_le
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:324[omit [AddCommGroup G] [DiscreteTopology ] inside block of imagPart_norm_le
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:500[omit [AddCommGroup G] [InnerProductSpace] inside block of normFn_apply
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:500[omit [AddCommGroup G] [InnerProductSpace] inside block of pairing
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:506[omit [AddCommGroup G] [DiscreteTopology ] inside block of pairing_apply
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:506[omit [AddCommGroup G] [DiscreteTopology ] inside block of pairing_mean_bound
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:509[omit [CompleteSpace H] in] inside block of pairing_mean_bound
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:952[omit [CompleteSpace H] in] inside block of smoothed_support
+WARN OAI/Analysis/PlaneSpectrum/InvariantMean.lean:959[omit [CompleteSpace H] in] inside block of smoothed_bound
+WARN OAI/Analysis/PlaneSpectrum/NumberFields.lean:308[omit [FiniteDimensional ℚ N] in] inside block of realLine_zero
+WARN OAI/Analysis/PlaneSpectrum/NumberFields.lean:308[omit [FiniteDimensional ℚ N] in] inside block of realLine_one
+WARN OAI/Analysis/PlaneSpectrum/NumberFields.lean:310[omit [FiniteDimensional ℚ N] in] inside block of realLine_one
+WARN OAI/Analysis/PlaneSpectrum/NumberFields.lean:308[omit [FiniteDimensional ℚ N] in] inside block of cayley_line_polynomials
+WARN OAI/Analysis/PlaneSpectrum/NumberFields.lean:310[omit [FiniteDimensional ℚ N] in] inside block of cayley_line_polynomials
+WARN OAI/Analysis/PlaneSpectrum/NumberFields.lean:349[omit [FiniteDimensional ℚ V] in] inside block of exists_general
+WARN OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:30[omit [Fintype ι] in] inside block of sameBin_card
+WARN OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:47[omit [Fintype ι] [Fintype κ] in] inside block of sameBin_card_eq
+WARN OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:67[omit [Fintype ι] in] inside block of repeated_bin_lower_bound
+WARN OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:263[omit [MeasurableSpace Ω] [Nonempty ι] in] inside block of goodFraction_eq_sum
+WARN OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:269[omit [Nonempty ι] in] inside block of measurable_goodFraction
+WARN OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:278[omit [MeasurableSpace Ω] [Nonempty ι] in] inside block of goodFraction_nonneg
+WARN OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:282[omit [MeasurableSpace Ω] in] inside block of goodFraction_le_one
+WARN OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:50[include hq hqcov in] inside block of projectedMass_pair_mean
+WARN OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:81[include hq hqcov in] inside block of quadratic_mass_inequality
+WARN OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:144[include hq hqcov in] inside block of projectedMass_neg
+WARN OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:145[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of projectedMass_neg
+WARN OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:149[include hq hqcov in] inside block of massReal_abs
+WARN OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:150[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of massReal_abs
+WARN OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:156[include hq hqcov in] inside block of massReal_difference
+WARN OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:386[include hq hqcov in] inside block of radiusFamily_mean
+WARN OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:398[include hq hqcov in] inside block of radius_syndetic
+WARN OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:420[include hq hqcov in] inside block of radial_positive_near_zero
+WARN OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:451[include hq hqcov in] inside block of massReal_vanish
+WARN OAI/Analysis/PlaneSpectrum/Representations.lean:411[omit [CompactSpace X] [T2Space X] [Measu] inside block of real_nonneg
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:251[include hc0 hc1 in] inside block of good_mono
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:252[omit [Field α] [LinearOrder α] [IsStrict] inside block of good_mono
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:255[include hm0 hc0 hc1 in] inside block of good_zero
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:256[omit [LinearOrder α] [IsStrictOrderedRin] inside block of good_zero
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:261[include hd hc0 in] inside block of good_diff
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:262[omit [IsStrictOrderedRing α] in] inside block of good_diff
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:270[include hd hc0 hc1 hp hpG in] inside block of add_residues
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:298[include hm0 hd hc0 hc1 hp hpG in] inside block of input_residue
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:317[include hm0 hd hc0 hc1 hp hpG in] inside block of list_residue
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:333[include hm0 hd hc0 hc1 hp hpG in] inside block of list_cap
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:366[omit [LinearOrder α] [IsStrictOrderedRin] inside block of signedList_length
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:369[omit [LinearOrder α] [IsStrictOrderedRin] inside block of signedList_sum
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:373[omit [IsStrictOrderedRing α] in] inside block of signedList_mem
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:379[omit [IsStrictOrderedRing α] in] inside block of integer_list
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:401[include hm0 hd hc0 hc1 hp hpG in] inside block of integer_cap
+WARN OAI/Analysis/PlaneSpectrum/Selections.lean:413[include hm0 hd hc0 hc1 hp hpG in] inside block of integer_abs_cap
+WARN OAI/Analysis/PlaneSpectrum/SmallArcs.lean:106[omit hz in] inside block of pair_moment_bound
+WARN OAI/Analysis/PlaneSpectrum/SmallArcs.lean:204[omit [MeasurableSpace X] hz hu in] inside block of exists_small_arc_constants
+WARN OAI/Analysis/PlaneSpectrum/SmallArcs.lean:269[omit [StandardBorelSpace G] [Nonempty G]] inside block of uniform_list_positive_atoms
+WARN OAI/Analysis/PlaneSpectrum/SmallArcs.lean:291[omit [MeasurableSpace X] [MeasurableSpac] inside block of in_list_of_positive_atom
+WARN OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:180[omit [T2Space X] in] inside block of boundedCM_apply
+WARN OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:180[omit [T2Space X] in] inside block of boundedCM_toLp
+WARN OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:182[omit [T2Space X] in] inside block of boundedCM_toLp
+WARN OAI/Geometry/PlaneColoring/Accumulation.lean:269[omit hc in] inside block of fourCenter_closed
+WARN OAI/Geometry/PlaneColoring/Accumulation.lean:328[include hc in] inside block of three_sequence_no_accumulation
+WARN OAI/Geometry/PlaneColoring/Accumulation.lean:338[include hc in] inside block of threeCenter_discrete
+WARN OAI/Geometry/PlaneColoring/Accumulation.lean:347[include hc in] inside block of threeCenter_compact_finite
+WARN OAI/Geometry/PlaneColoring/BorelTransfer.lean:255[omit [MeasurableSpace T] [BorelSpace T] ] inside block of dense_approx
+WARN OAI/Geometry/PlaneColoring/BorelTransfer.lean:267[omit [MeasurableSpace T] [BorelSpace T] ] inside block of index_bound
+WARN OAI/Geometry/PlaneColoring/BorelTransfer.lean:278[omit [MeasurableSpace T] [BorelSpace T] ] inside block of approxField_tendsto
+WARN OAI/Geometry/PlaneColoring/BorelTransfer.lean:374[omit [NeZero k] in] inside block of positiveSupport_measurable
+WARN OAI/Geometry/PlaneColoring/BorelTransfer.lean:384[omit [MeasurableSpace X] in] inside block of positiveSelect_pos
+WARN OAI/Geometry/PlaneColoring/BoundaryTrace.lean:92[include hc in] inside block of sampling_near_region
+WARN OAI/Geometry/PlaneColoring/CircleMaps.lean:121[omit [CompleteSpace E] in] inside block of triangular_injective
+WARN OAI/Geometry/PlaneColoring/CircleMaps.lean:136[omit [CompleteSpace E] in] inside block of triangular_surjective
+WARN OAI/Geometry/PlaneColoring/Compactness.lean:12[omit [TopologicalSpace.SeparableSpace E]] inside block of weakHilbert_apply
+WARN OAI/Geometry/PlaneColoring/Compactness.lean:12[omit [TopologicalSpace.SeparableSpace E]] inside block of exists_finite_weak_subseq
+WARN OAI/Geometry/PlaneColoring/Compactness.lean:164[omit [TopologicalSpace.SeparableSpace E]] inside block of value_norm
+WARN OAI/Geometry/PlaneColoring/Compactness.lean:167[omit [TopologicalSpace.SeparableSpace E]] inside block of value_eval
+WARN OAI/Geometry/PlaneColoring/Compactness.lean:173[omit [TopologicalSpace.SeparableSpace E]] inside block of value_ofNorm
+WARN OAI/Geometry/PlaneColoring/Compactness.lean:176[omit [TopologicalSpace.SeparableSpace E]] inside block of continuous_eval
+WARN OAI/Geometry/PlaneColoring/Compactness.lean:180[omit [TopologicalSpace.SeparableSpace E]] inside block of tendsto_iff
+WARN OAI/Geometry/PlaneColoring/CyclicCore.lean:98[include hc in] inside block of five_sequence_small_no_accumulation
+WARN OAI/Geometry/PlaneColoring/CyclicCore.lean:120[include hc in] inside block of five_sequence_no_accumulation
+WARN OAI/Geometry/PlaneColoring/CyclicCore.lean:135[include hc in] inside block of fiveCenter_discrete
+WARN OAI/Geometry/PlaneColoring/CyclicCore.lean:144[include hc in] inside block of fiveCenter_compact_finite
+WARN OAI/Geometry/PlaneColoring/CyclicCore.lean:255[include hc in] inside block of standardCore_compact_finite
+WARN OAI/Geometry/PlaneColoring/CyclicCore.lean:268[include hc in] inside block of cyclicCore_compact_finite
+WARN OAI/Geometry/PlaneColoring/Exclusion.lean:140[include hc in] inside block of no_five_exclusion_continua
+WARN OAI/Geometry/PlaneColoring/Expansion.lean:343[omit [TopologicalSpace Y] [NormalSpace Y] inside block of integrable_comp_of_map_le
+WARN OAI/Geometry/PlaneColoring/Expansion.lean:349[omit [TopologicalSpace Y] [NormalSpace Y] inside block of integral_norm_comp_le
+WARN OAI/Geometry/PlaneColoring/FiveSupport.lean:70[omit [Fintype ι] [MeasurableSpace ι] [Me] inside block of stateSupport_nonempty_measure
+WARN OAI/Geometry/PlaneColoring/FullApproximation.lean:329[local-finiteness theorem; no regularity ] inside block of fullApprox_exists
+WARN OAI/Geometry/PlaneColoring/PaletteDensity.lean:81[include hc in] inside block of colorIndicator_measurable
+WARN OAI/Geometry/PlaneColoring/PaletteDensity.lean:86[include hc in] inside block of sample_pair_disjoint
+WARN OAI/Geometry/PlaneColoring/Rigidity.lean:123[local essential constancy. This is the F] inside block of local_ae_translation_constant
+WARN OAI/Geometry/PlaneColoring/Transitions.lean:109[include hc in] inside block of transition_small_mass
+WARN OAI/Geometry/PlaneColoring/WeakColoring.lean:64[omit hc in] inside block of truncatedClass_finite
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:38[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of covariance_sub_left
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:47[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of covariance_sub_right
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:57[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of covariance_norm_left
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:58[include hq in] inside block of covariance_norm_left
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:79[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of covariance_norm_right
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:80[include hq hqcov in] inside block of covariance_norm_right
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:135[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of covariance_zero_of_dense
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:136[include hq hqcov in] inside block of covariance_zero_of_dense
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:188[include hq in] inside block of square_fiber
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:220[omit [AddCommGroup G] [TopologicalSpace ] inside block of conditional_tensor
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:234[include hq hqcov in] inside block of factor_preserving
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:242[omit [TopologicalSpace G] [DiscreteTopol] inside block of covariance_tensor
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:243[include hqcov in] inside block of covariance_tensor
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:265[include hqcov in] inside block of covariance_tensor_mean_zero
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:367[include hqcov in] inside block of pairVanishing_of_covariance
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:402[include hqcov in] inside block of square_equivariant
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:411[include hqcov in] inside block of covariance_finiteTensor_mean_zero
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:428[include hqcov in] inside block of square_pairVanishing
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:455[omit [AddCommGroup G] [TopologicalSpace ] inside block of square_tensor_centered
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:491[include hqcov in] inside block of centered_conditional_mean_zero
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:554[omit [AddCommGroup G] [TopologicalSpace ] inside block of Family.conditional_sum
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:565[include hqcov in] inside block of conditional_multiple_mean_zero
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:624[omit [DecidableEq ι] in] inside block of shifted_admissible
+WARN OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:651[include hqcov in] inside block of conditional_integer_multiple_mean_zero
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:53[omit [AddCommGroup G] [DiscreteTopology ] inside block of normFn_apply
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:53[omit [AddCommGroup G] [DiscreteTopology ] inside block of pairing
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:60[omit [AddCommGroup G] [DiscreteTopology ] inside block of pairing_apply
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:60[omit [AddCommGroup G] [DiscreteTopology ] inside block of pairing_bound
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:63[omit [CompleteSpace H] in] inside block of pairing_bound
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:122[omit [AddCommGroup G] [DiscreteTopology ] inside block of squareNorm_apply
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:158[omit [AddCommGroup G] [DiscreteTopology ] inside block of cross_apply
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:158[omit [AddCommGroup G] [DiscreteTopology ] inside block of cross_comm
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:161[omit [AddCommGroup G] [DiscreteTopology ] inside block of cross_comm
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:165[omit [AddCommGroup G] [DiscreteTopology ] inside block of squareNorm_add
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:173[omit [InnerProductSpace ℝ H] [CompleteSp] inside block of squareNorm_shift
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:188[omit [CompleteSpace H] in] inside block of correlation_apply
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:192[omit [CompleteSpace H] in] inside block of correlation_add
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:201[omit [CompleteSpace H] in] inside block of correlation_zero
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:208[omit [CompleteSpace H] in] inside block of correlation_shift
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:286[omit [AddCommGroup G] [CompleteSpace H] ] inside block of orbit_apply
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:286[omit [AddCommGroup G] [CompleteSpace H] ] inside block of vector_orbit_invariant
+WARN OAI/MeasureTheory/CompactFactors/Amenability.lean:374[omit [IsProbabilityMeasure μ] [CompleteS] inside block of ae_eq_const_of_fixed
+WARN OAI/MeasureTheory/CompactFactors/Approximation.lean:43[omit [Nonempty G] in] inside block of list_of_uniform_atoms
+WARN OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:165[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of project_apply
+WARN OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:169[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of conditional_integral
+WARN OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:170[include hq in] inside block of conditional_integral
+WARN OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:174[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of project_integral
+WARN OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:194[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of conditional_congr
+WARN OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:195[include hq in] inside block of conditional_congr
+WARN OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:200[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of conditional_norm_l2_le
+WARN OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:201[include hq in] inside block of conditional_norm_l2_le
+WARN OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:214[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of project_eq_condexp
+WARN OAI/MeasureTheory/CompactFactors/Centers.lean:525[omit [MeasurableMul₂ G] [MeasurableInv G] inside block of coset_mul_j
+WARN OAI/MeasureTheory/CompactFactors/Centers.lean:539[omit [MeasurableMul₂ G] [MeasurableInv G] inside block of coordinate_div_j
+WARN OAI/MeasureTheory/CompactFactors/Centers.lean:578[omit [MeasurableMul₂ G] [MeasurableInv G] inside block of center_mem_coset
+WARN OAI/MeasureTheory/CompactFactors/Centers.lean:600[omit [MeasurableMul₂ G] [MeasurableInv G] inside block of quotient_center
+WARN OAI/MeasureTheory/CompactFactors/Centers.lean:615[omit [MeasurableMul₂ G] [MeasurableInv G] inside block of center_mem_ordinary_iff
+WARN OAI/MeasureTheory/CompactFactors/Centers.lean:634[omit [MeasurableMul₂ G] [MeasurableInv G] inside block of equiv_mem_ordinary_iff
+WARN OAI/MeasureTheory/CompactFactors/Centers.lean:646[omit [MeasurableMul₂ G] [MeasurableInv G] inside block of preimage_coset_equiv
+WARN OAI/MeasureTheory/CompactFactors/Centers.lean:653[omit [MeasurableMul₂ G] [MeasurableInv G] inside block of coordinate_equiv
+WARN OAI/MeasureTheory/CompactFactors/Centers.lean:659[include hT in] inside block of frequencyMeasure_equiv
+WARN OAI/MeasureTheory/CompactFactors/Centers.lean:676[include hT in] inside block of frequencyLaw_equiv
+WARN OAI/MeasureTheory/CompactFactors/Centers.lean:691[include hT in] inside block of center_equivariant
+WARN OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:188[omit [MulAction K X] [MulAction K Y] [Me] inside block of bounded_phase_encoding
+WARN OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:265[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of relative_singularity_limit
+WARN OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:384[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of ambient_uniform_precision_contradiction
+WARN OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:618[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of relative_singularity_approximation
+WARN OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:27[omit [Fintype ι] [Nonempty ι] [Fintype T] inside block of exists_lt_on_conull
+WARN OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:38[omit [MeasurableSpace W] [Fintype T] in] inside block of fraction_lower_bound
+WARN OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:110[omit [MeasurableSpace W] [Fintype T] [No] inside block of large_common_bin
+WARN OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:131[omit [MeasurableSpace X] in] inside block of dist_sq_four_points
+WARN OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:185[omit [MeasurableSpace G] [StandardBorelS] inside block of comp_identity_fiber
+WARN OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:191[omit [MeasurableSpace G] [StandardBorelS] inside block of ae_fiber_of_ae
+WARN OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:204[omit [MeasurableSpace G] [StandardBorelS] inside block of ae_in_own_fiber
+WARN OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:217[omit [MeasurableSpace G] [StandardBorelS] inside block of integral_fiber
+WARN OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:228[omit [MeasurableSpace G] [StandardBorelS] inside block of integrable_ae_fiber
+WARN OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:236[omit [MeasurableSpace G] [StandardBorelS] inside block of integrable_fiber_integral
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:90[omit [MulAction K Y] [MeasurableSpace Y]] inside block of measurable_orbit
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:95[omit [MulAction K Y] [MeasurableSpace X]] inside block of orbit_equivariant
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:103[omit [MulAction K Y] in] inside block of measurable_extend
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:108[omit [MeasurableSpace Y] in] inside block of extend_equivariant
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:115[omit [MeasurableSpace X] in] inside block of orbit_one
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:129[omit [StandardBorelSpace X] [Nonempty X]] inside block of measurable_extend_compactSigma
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:172[omit [MeasurableConstSMul K Y] in] inside block of compact_applyKernel
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:272[omit [Countable K] [MeasurableSpace X] [] inside block of encode_equivariant
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:276[omit [Countable K] [MeasurableSpace X] [] inside block of encode_bound
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:285[omit [Countable K] [MeasurableSpace X] [] inside block of decode_encode
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:291[omit [Nonempty Y] [MeasurableConstSMul K] inside block of encode_as_comp
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:308[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of isClosed
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:313[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of exists_rep
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:320[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of mem_of_rep
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:325[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of le_of_factor
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:405[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of joint_measurable
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:409[omit [Nonempty Y] [MulAction K Y] [Measu] inside block of code_measurable
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:413[omit [Countable K] [MeasurableSpace X] [] inside block of code_equivariant
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:417[omit [MulAction K Y] [MeasurableConstSMu] inside block of le_code
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:428[omit [Countable K] [MeasurableSpace Y] [] inside block of joint_equivariant
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:435[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of finite_upper
+WARN OAI/MeasureTheory/CompactFactors/Factors.lean:454[omit [MeasurableConstSMul K X] in] inside block of approximation
+WARN OAI/MeasureTheory/CompactFactors/Functions.lean:591[omit [MeasurableSpace X] in] inside block of indicator_one_bound
+WARN OAI/MeasureTheory/CompactFactors/Functions.lean:752[omit [MulAction K Y] in] inside block of compact_shift
+WARN OAI/MeasureTheory/CompactFactors/Functions.lean:762[omit [MulAction K Y] in] inside block of measurable_shift_compactSigma
+WARN OAI/MeasureTheory/CompactFactors/Kernels.lean:357[omit [MeasurableConstSMul K Y] in] inside block of applyKernel_covariance
+WARN OAI/MeasureTheory/CompactFactors/Kernels.lean:474[omit [MeasurableConstSMul K X] [Measurab] inside block of measurable_applyKernel
+WARN OAI/MeasureTheory/CompactFactors/Kernels.lean:480[omit [MeasurableConstSMul K X] [Measurab] inside block of applyKernel_bound
+WARN OAI/MeasureTheory/CompactFactors/Kernels.lean:491[omit [MeasurableConstSMul K X] [Measurab] inside block of exists_invariant_set
+WARN OAI/MeasureTheory/CompactFactors/Kernels.lean:502[omit [MeasurableConstSMul K X] [Measurab] inside block of indicator_not_constant
+WARN OAI/MeasureTheory/CompactFactors/Kernels.lean:527[omit [MeasurableConstSMul K Y] in] inside block of row_constant
+WARN OAI/MeasureTheory/CompactFactors/Kernels.lean:553[omit [MeasurableConstSMul K Y] in] inside block of centered_kernel
+WARN OAI/MeasureTheory/CompactFactors/Kernels.lean:662[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of conditional_covariance
+WARN OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:100[omit [MeasurableSingletonClass G] in] inside block of center_law_ordinary
+WARN OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:221[omit [CommGroup G] [MeasurableMul₂ G] [M] inside block of measurable_probabilityKernel
+WARN OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:343[omit [MeasurableMul₂ G] [MeasurableInv G] inside block of centerMap_mem_ordinary_iff
+WARN OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:395[omit [CommGroup G] [MeasurableMul₂ G] [M] inside block of dependentMapKernel_apply
+WARN OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:403[omit [CommGroup G] [MeasurableMul₂ G] [M] inside block of compProd_dependentMap
+WARN OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:23[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of conditional_covariance_add
+WARN OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:132[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of project_sub
+WARN OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:136[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of project_bound
+WARN OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:162[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of conditional_act
+WARN OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:163[include hq hqcov in] inside block of conditional_act
+WARN OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:174[include hqcov in] inside block of act_lift
+WARN OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:180[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of project_act
+WARN OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:181[include hqcov in] inside block of project_act
+WARN OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:390[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of pairSequence_apply
+WARN OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:394[omit [TopologicalSpace G] [DiscreteTopol] inside block of tensor_act
+WARN OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:400[include hq in] inside block of pair_mean_sq_zero
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:52[omit [TopologicalSpace G] [DiscreteTopol] inside block of inner_act
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:58[omit [TopologicalSpace G] [DiscreteTopol] inside block of integral_act
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:131[omit [DecidableEq ι] in] inside block of l2_inner_mul
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:165[omit [MeasurableSpace Y] [StandardBorelS] inside block of norm_l2_conj
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:212[include hqcov in] inside block of prod_act_project_lift
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:237[omit [VAddInvariantMeasure G X μ] in] inside block of pairVanishing_of_ergodic
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:251[omit [TopologicalSpace G] [DiscreteTopol] inside block of Admissible.erase_diff
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:265[include hqcov in] inside block of avg_product_zero_of_pair
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:468[omit [AddCommGroup G] [StandardBorelSpac] inside block of conditional
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:472[omit [AddCommGroup G] [StandardBorelSpac] inside block of conditional_apply
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:475[omit [AddCommGroup G] [StandardBorelSpac] inside block of conditional_add
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:479[omit [AddCommGroup G] [StandardBorelSpac] inside block of conditional_sub
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:489[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of covariance_apply
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:494[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of covariance_add_left
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:507[omit [StandardBorelSpace Y] [Nonempty Y]] inside block of covariance_add_right
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:523[omit [VAddInvariantMeasure G X μ] in] inside block of conditional_mul_project_act
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:524[include hqcov in] inside block of conditional_mul_project_act
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:534[omit [VAddInvariantMeasure G X μ] in] inside block of covariance_center
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:535[include hqcov in] inside block of covariance_center
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:551[omit [VAddInvariantMeasure G X μ] in] inside block of covariance_mean_zero
+WARN OAI/MeasureTheory/CompactFactors/Separability.lean:552[include hqcov in] inside block of covariance_mean_zero
+WARN OAI/MeasureTheory/CompactFactors/Stationary.lean:19[omit [AddCommGroup A] [AddCommGroup B] [] inside block of inner_norm
+WARN OAI/MeasureTheory/CompactFactors/Stationary.lean:26[omit [AddCommGroup A] [AddCommGroup B] [] inside block of inner_add
+WARN OAI/MeasureTheory/CompactFactors/Stationary.lean:28[omit [AddCommGroup A] [AddCommGroup B] [] inside block of inner_smul
+WARN OAI/MeasureTheory/CompactFactors/Stationary.lean:30[omit [AddCommGroup B] in] inside block of outer_add
+WARN OAI/MeasureTheory/CompactFactors/Stationary.lean:34[omit [AddCommGroup B] in] inside block of outer_smul
+blocks 2643
+deleting 143 decls 999 lines

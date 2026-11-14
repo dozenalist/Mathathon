@@ -1,0 +1,39 @@
+{
+  "updated_utc": "2026-11-14T13:05:00Z",
+  "status": "completed_block",
+  "summary": "Independently audited the a=1/4 result and accepted it link by link. Reconstructed exactly in Q(sqrt3): forced set {N in {3,4,7,9}} with 30 offsets from the a=1 extrema by mu < 4 < nu; the 73-cell patch; 723 edges with degrees 12..30 and centre degree 30; and the whole CNF, regenerated in the producer's vertex order (a_quarter.py:75, key=(Norm(v),v)) and identical to p25.cnf as a clause multiset with 0 differing multiplicities (5506 clauses = 73 + 73*15 + 6*723, types 73/1095/4338, no symmetry breaking). One combined bounded run with the accepted drat-trim on hash-matched files (cnf 4d5d07d6, drat 12a72a7a, checker a9571deb) returned s VERIFIED in 0.98 s with 3209 of 5506 clauses in core and 0 RAT lemmas, reproducing the producer's tail exactly. The persistence interval was validated exactly: (1/5, 1/sqrt12) from max mu^2 = 12 and min nu^2 = 25, both endpoints excluded by genuine tangencies (ring 3 at 1/5, ring 9 at 1/sqrt12), and it overlaps the accepted (1/sqrt28, 1/sqrt19) on (0.2, 0.229416). The union through 1/2 is left conditional on auditing CELL-NOGO-v2. Corrected the max-projection sentence in both documents.",
+  "verified_results": [
+    "GRADE [A] Forced set at a=1/4: recomputed exactly from the a=1 extrema in Q(sqrt3) with the criterion mu < 4 < nu (strict); 30 offsets with rings {3,4,7,9} and multiplicities 6+6+12+6, matching a_quarter_cert.json's forced_offsets list. Ring 12 excluded by exact tangency (mu^2 = 16), ring 13 by mu^2 = 19 > 16, ring 1 by nu^2 = 13 < 16.",
+    "GRADE [A] Patch and graph: {N <= 19} has 73 cells in the producer's ordering key=(Norm(v), v); the edge set built from the 30 offsets has 723 undirected edges; degrees 12..30 and centre degree 30 = |F| (my log prints doubled values 24..60 because each undirected edge increments both endpoints). Decoded from p25.cnf independently: 723 edge pairs, identical to the reconstructed set once the producer's vertex order is used.",
+    "GRADE [A] CNF: header p cnf 438 5506; 5506 = 73 + 73*15 + 6*723; clause population 73 at-least-one, 1095 same-cell at-most-one, 4338 cross-cell (= 6 per edge, all six colours); my independent regeneration equals the file's clause multiset exactly, with zero clauses differing in multiplicity. Hence the CNF is a 6-colouring encoding of exactly the reconstructed graph, with no symmetry breaking or normal-form clauses.",
+    "GRADE [A] Certificate: drat-trim (sha256 a9571deb...e9066, the same binary as in the accepted a=1/5 audit) on p25.cnf (4d5d07d6...e59ca) and p25.drat (12a72a7a...549d) -> 'p cnf 438 5506', 'detected empty clause; start verification via backward checking', '3209 of 5506 clauses in core', '32677 of 41772 lemmas in core using 842488 resolution steps', '0 RAT lemmas in core', 's VERIFIED', 0.98 s. Log audit25/drat_run.log, hashes audit25/SHA256.txt. Reproduces the producer's reported tail exactly, independently of their pipeline.",
+    "GRADE [A]+[P] Interval: with dmin(v,a) = a*mu(v) and dmax(v,a) = a*nu(v), all 30 offsets stay strictly forced exactly on (max_v 1/nu, min_v 1/mu) = (1/sqrt25, 1/sqrt12) = (0.2, 0.2886751), because max mu^2 = 12 (ring 9) and min nu^2 = 25 (ring 3). Both endpoints are real tangencies (at a = 1/5 ring 3 has dmax = 1 exactly; at a = 1/sqrt12 ring 9 has dmin = 1 exactly), so the interval is open and a = 1/4 is interior with margins 0.05 and 0.038675. No floating point enters: 12 and 25 are exact.",
+    "GRADE [A] Overlap: (1/5, 1/sqrt12) meets the accepted (1/sqrt28, 1/sqrt19) in (0.2, 0.229416), non-empty since 1/5 < 1/sqrt19 (25 > 19). So the union of the two independently accepted machine certificates is the single interval (1/sqrt28, 1/sqrt12) = (0.188982, 0.288675).",
+    "GRADE [P] Correction: |v| + 2h(vhat) equals max_{w in 2H} <v+w, vhat>, the maximum projection onto vhat, hence a LOWER bound for max_w |v+w| (since |x| >= <x,vhat>), not an upper bound; it cannot be used to certify dmax > 1. Fixed in HONEYCOMB-FAMILY-CERTIFICATE.md and PATCH19-AUDIT.md, which use only the exact polygon formulas."
+  ],
+  "conjectures": [
+    "The union (1/sqrt28, 1/2] is very likely correct but stays conditional in my record until CELL-NOGO-v2 Thm 2 is audited: its family must be the same one (Voronoi hexagons, cell-constant, interior contact), its forced set for a >= 1/sqrt13 must be exactly {1,3,4}, and the 7-colour step must use chi(Cay(Z^2,{1,3,4})) = 7 rather than any plane-level statement.",
+    "The four ring thresholds (1/5 for ring 3, 1/sqrt12... ) structure the whole family: ring 12 exits at a = 1/4 exactly, ring 13 at 1/sqrt19, ring 1 enters at 1/sqrt13, ring 3 enters at 1/5. Two machine certificates plus the T^2 leg cover (1/sqrt28, 1/2]; the bottom sliver (0, 1/sqrt28] is where a smaller patch or a different patch shape would be needed.",
+    "No certificate in this family can exceed the scope of cell-constant colourings: a hypothetical 6-colouring of the plane need not be constant on any cell, so nothing here bears on chi(R^2)."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/A-QUARTER-AUDIT.md",
+    "supervisor/solve-geometry/checks/audit_a_quarter.py",
+    "supervisor/solve-geometry/supervisor_checks.out",
+    "supervisor/solve-geometry/audit25/drat_run.log",
+    "supervisor/solve-geometry/audit25/SHA256.txt",
+    "supervisor/solve-geometry/HONEYCOMB-FAMILY-CERTIFICATE.md",
+    "supervisor/solve-geometry/PATCH19-AUDIT.md",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "One combined bounded verification, single process at a time, total under 5 s of the 60 s budget: (a) python3 checks/audit_a_quarter.py - exact Q(sqrt3) recomputation of the 30 forced offsets, the 73 cells, 723 edges, CNF decode and full clause-multiset regeneration in the producer's vertex order (5506 clauses, 0 differences), interval endpoints and overlap; output as sections [16]-[17] of supervisor_checks.out; (b) ./drat-trim p25.cnf p25.drat on hash-matched copies in audit25/ -> s VERIFIED in 0.98 s. No other computation; no Lean, no solvers, no new searches."
+  ],
+  "failed_routes": [
+    "My first reconstruction attempt mis-ordered the vertices (lexicographic instead of the producer's key=(Norm(v),v)), which made the decoded edge set differ although both had 723 edges; resolved by reading a_quarter.py:75 rather than by search, and the CNF then matched exactly. A WL-refinement isomorphism test was attempted and abandoned: the graph has only 10 refined classes, so it gives no bijection, and the order was recoverable from the source.",
+    "Not verified in this block: max clique 4 (not recomputed, not load-bearing); the cadical generation step (only the outcome is checked); CELL-NOGO-v2's scope, so the union through 1/2 stays conditional.",
+    "Not claimed: chi(G[P]) = 8, any k >= 7 statement, any unrestricted-plane statement."
+  ],
+  "next_step": "Audit CELL-NOGO-v2.md Thm 2 against its exact scope (same cell family, forced set {1,3,4} for a >= 1/sqrt13, 7-colour step via chi(Cay(Z^2,{1,3,4})) = 7, vacuity at a = 1/2); if it passes, the union (1/sqrt28, 1/2] becomes unconditional and the honeycomb family is closed except the bottom sliver (0, 1/sqrt28].",
+  "escalation": null
+}

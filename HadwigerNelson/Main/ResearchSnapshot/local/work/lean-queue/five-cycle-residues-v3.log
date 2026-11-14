@@ -1,0 +1,43 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: de738b384e28b47e9569971ed9566b5fadc85a7a64437bed3587c258d84329a7
+Status: failed
+Exit code: 1
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\FiveCycleResiduesV3.lean:198:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?m.70 ∈ ?m.71 ∩ ?m.72
+in the target expression
+  (Nb (h i) ∩ image h M).Nonempty
+
+L M : Finset (ZMod 5)
+hLM : HasNbr L M
+i : ZMod 5
+hi : i ∈ L
+hx : h i ∈ image h L
+m : ZMod 5
+hm : m ∈ Nb i ∧ m ∈ M
+⊢ (Nb (h i) ∩ image h M).Nonempty
+'FiveCycleResidues.g_induces_h' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.label_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.five_residues_reduce_to_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.h_swaps_allowed_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.notCommon_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.h_image_P' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.one_minus_k_induces_four_minus_i' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.g_involutive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.h_involutive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.residue_zero_collides' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.residue_two_collides' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.residue_three_collides' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.h_reverses_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.h_fixes_anchor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.h_fixes_pair24' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.nb_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.disjoint_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.hasNbr_image' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FiveCycleResidues.valid_family_push' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.disjoint_family_push' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FiveCycleResidues.neighbour_family_push' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+
+STDERR
+

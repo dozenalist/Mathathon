@@ -1,0 +1,20 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean	2026-11-13 19:09:13.640836519 +0000
++++ OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean	2026-11-13 19:29:14.717380767 +0000
+@@ -115,7 +115,7 @@
+     rw [norm_prod]
+     calc
+       ρ ^ m = ∏ _j : Fin m, ρ := by simp
+-      _ ≤ _ := Finset.prod_le_prod₀ (fun _ _ => hρ.le) (fun j _ => by
++      _ ≤ _ := Finset.prod_le_prod (fun _ _ => hρ.le) (fun j _ => by
+         simpa only [dist_eq_norm] using h j)
+   have hu := eval_difference_bound z w (z i)
+   rw [eval_at_phase, sub_zero] at hu
+@@ -207,7 +207,7 @@
+ theorem measurable_kernelEncoding (β : Kernel Y G) [IsMarkovKernel β]
+     (χ : G → ℂ) (hχ : Measurable χ) (m : ℕ) :
+     Measurable (kernelEncoding β χ m) := by
+-  apply Measurable.of_eval
++  apply measurable_pi_lambda
+   intro i
+   apply measurable_fromPowers
+   intro n

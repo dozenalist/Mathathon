@@ -1,0 +1,17 @@
+{
+  "normCounts": {
+    "1": 12,
+    "3": 6,
+    "4": 3
+  },
+  "mod7Values": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "properHypothesisRequired": true,
+  "endpointSqrt13CoveredByQuarterCertificate": true
+}

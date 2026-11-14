@@ -1,0 +1,46 @@
+{
+  "block": "adversarial-discovery",
+  "updated_utc": "2026-11-14T18:13:27Z",
+  "mode": "ACTUAL ULTRAMATH. One bounded swarm, two mathematical members, no recursive swarms, no coordinator chats.",
+  "swarm": {
+    "id": "smwgptxn1",
+    "dir": ".ultramath/smwgptxn1",
+    "members": ["m1", "m2"],
+    "model": "deepseek/deepseek-v4.1-flash",
+    "reasoning_effort": "max",
+    "member_steps": 60,
+    "minutes_requested": 60,
+    "budget_field": 240,
+    "started_utc": "2026-11-14T18:04:50Z",
+    "deadline_utc": "2026-11-14T19:04:50Z",
+    "start_tool_result_verbatim": "{\"budget\":240,\"deadline_at_ms\":1794683090751,\"dir\":\".ultramath/smwgptxn1\",\"member_steps\":60,\"members\":[\"m1\",\"m2\"],\"model\":\"deepseek/deepseek-v4.1-flash\",\"reasoning_effort\":\"max\",\"swarm\":\"smwgptxn1\"}",
+    "status": "running",
+    "member_roles": {
+      "m1": "NEW six-colour-specific strengthening of finite-support exclusions that rules out a surviving continuous 4/5/6-direction stratum, under actual WeakColoring / CommonInterface hypotheses (measure-theoretic, not cyclic-order topology)",
+      "m2": "adversarial: falsify each candidate including (MC120) and every sub-claim of its sketch; plus a distinct finite geometric producer from multi-centre compatible palettes"
+    },
+    "coordinator_note": "Coordinator reasoning effort max is NOT activation. Activation is the ultramath_start call above; the returned swarm id is smwgptxn1 with members m1,m2.",
+    "accepted_by_verdict": []
+  },
+  "target": {
+    "short": "(MC120) and the six-colour continuous-stratum question: do actual finite-support exclusions leaving <=1 colour force direction aperture >= 120 deg, and does that remove the surviving 4/5/6-direction stratum?",
+    "deliverable_rule": "Precise theorem or exact counterexample with a restricted-class scope, plus the exact unresolved obligation. No filler, no survey, no global chromatic bound, no 6-colour construction claim.",
+    "read_only_inputs": [
+      "lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:147 Straddle, :235 ApproachingContinuum, :244 outer_strip, :251 inner_strip, :317 finite_support_exclusion_ae, :260/:280 continuum_outer/inner_restriction",
+      "lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:182 outer_strip_trace, :231 inner_strip_trace, :159 trace_region_palette",
+      "lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean CommonInterface, commonInterface_graph_acyclic, continuum_limit_support_exclusion",
+      "lean/OAI/Geometry/PlaneColoring/Interfaces.lean:67 four_interface_compatible (signed split at one t)",
+      "lean/OAI/Geometry/PlaneColoring/Palettes.lean palette / paletteSet / palette_nonempty",
+      "lean/OAI/Geometry/PlaneColoring/Coloring.lean:27 WeakColoring, Rigidity.lean:171 ae_translated_unit_pair, :181 binary_open_local_rigidity",
+      "supervisor/solve-graphs/AC-CONE-SIX.md (six cone survivors; orbit A forces the three-disjoint-pair word, orbit B admits it)"
+    ],
+    "read_only_rule": "Shared originals, supervisor/* other blocks and .ultramath/* other runs are read-only. Coordinator writes only supervisor/adversarial-discovery/."
+  },
+  "containment": {
+    "heavy_compute": "none; no Lean builds, no installs, no cloud, no background processes, no sub-agents, no recursive swarms",
+    "member_rule": "member computations tiny exact checks only (<=1 s); larger computation is left for parent scheduling"
+  },
+  "coordinator_findings": {
+    "pending": "written to FINDINGS.md in this directory; see that file for the 120-degree theorem, the sharpness computation and the exact unresolved obligation"
+  }
+}

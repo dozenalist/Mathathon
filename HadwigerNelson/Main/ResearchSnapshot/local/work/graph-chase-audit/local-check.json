@@ -1,0 +1,101 @@
+{
+  "colouringsVerified": 18,
+  "edgeCount": 2722,
+  "baseline": 3949,
+  "finalSurvivors": 491,
+  "eliminated": 3458,
+  "steps": [
+    {
+      "pair": [
+        0,
+        64
+      ],
+      "stillCandidateBeforeStep": true,
+      "survivors": 1799
+    },
+    {
+      "pair": [
+        0,
+        91
+      ],
+      "stillCandidateBeforeStep": true,
+      "survivors": 1213
+    },
+    {
+      "pair": [
+        0,
+        100
+      ],
+      "stillCandidateBeforeStep": true,
+      "survivors": 983
+    },
+    {
+      "pair": [
+        0,
+        110
+      ],
+      "stillCandidateBeforeStep": true,
+      "survivors": 897
+    },
+    {
+      "pair": [
+        0,
+        128
+      ],
+      "stillCandidateBeforeStep": true,
+      "survivors": 532
+    },
+    {
+      "pair": [
+        0,
+        171
+      ],
+      "stillCandidateBeforeStep": true,
+      "survivors": 491
+    },
+    {
+      "pair": [
+        0,
+        208
+      ],
+      "stillCandidateBeforeStep": false,
+      "survivors": 491
+    },
+    {
+      "pair": [
+        0,
+        255
+      ],
+      "stillCandidateBeforeStep": false,
+      "survivors": 491
+    }
+  ],
+  "classSizes": [
+    19,
+    17,
+    14,
+    9,
+    6,
+    5,
+    4,
+    4,
+    3,
+    3,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "classPairCount": 491,
+  "certificateSha256": "9e21caf2761616a66465721d68753bb90774b29e8d62bfa6087af4cc634e4bf7"
+}

@@ -1,0 +1,17 @@
+tree /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/A: 85 modules
+
+BUILD: 5/5 modules OK in 36s
+ before   after   delta  module
+    496     425     -71  OAI.MeasureTheory.CompactFactors.Approximation
+    295     235     -60  OAI.Analysis.PlaneSpectrum.FourierTests
+    415     417      +2  OAI.Analysis.PlaneSpectrum.Ergodicity
+      0      72     +72  OAI.Analysis.PlaneSpectrum.DifferenceLaw  [added]
+      0      98     +98  OAI.MeasureTheory.CompactFactors.DifferenceInvariant  [added]
+  31277   31318     +41  TOTAL (83 -> 85 modules)
+code-lines 29100 -> 29125 (+25)
+
+
+SAVING: -41 raw lines, target 1500: NOT MET
+
+
+VERDICT: PASS  (5/5 built, certify=None, deffreeze=None, linecount_rc=1)

@@ -1,0 +1,96 @@
+=== 1. unit-chord bound: |y-y'|=1 and |y-x|,|y'-x| >= r  =>  separation <= 2asin(1/(2r)) ===
+  r=1.0      bound=60.0000000000 deg   <60deg? False   =60deg? True
+  r=1.0001   bound=59.9933848250 deg   <60deg? True   =60deg? False
+  r=1.01     bound=59.3460296049 deg   <60deg? True   =60deg? False
+  r=1.1      bound=54.0713835788 deg   <60deg? True   =60deg? False
+  r=1.5      bound=38.9424412690 deg   <60deg? True   =60deg? False
+  r=2.0      bound=28.9550243719 deg   <60deg? True   =60deg? False
+  r=10.0     bound=5.7319679652 deg   <60deg? True   =60deg? False
+  r=100.0    bound=0.5729601825 deg   <60deg? True   =60deg? False
+  sharpness: radii both = r, separation = the bound, chord comes out 1:
+    r=1.0   chord=1.000000000000000   |chord-1|=0.00e+00
+    r=1.1   chord=1.000000000000000   |chord-1|=0.00e+00
+    r=2.0   chord=1.000000000000000   |chord-1|=0.00e+00
+    r=10.0  chord=1.000000000000000   |chord-1|=4.44e-16
+  converse (strictness): at separation = bound + 1e-6 deg, min chord over radii >= r is > 1:
+    r=1.1: min chord=1.000000017101   >1? True
+    r=2.0: min chord=1.000000033798   >1? True
+
+=== 2. packing theorem on S1: gaps g1+g2+g3 = 360, all gaps in [120,240] => all = 120 ===
+  1-deg grid, WLOG theta_1 = 0: triples with all pairwise circular distances >= 120 deg: 1
+  max |gap - 120deg| among them: 0.000000 deg  (bounded by grid resolution)
+  same grid, 4 directions with all pairwise circular distances >= 120 deg: 0
+  counterexample to the LINEAR (ordered-difference) reading: 0, 120, 250 degrees
+    gaps (deg) = [120.0, 130.0, 110.0]   all gaps >= 120? False
+    ordered differences (deg) = [120, 130, 250]   all >= 120? True
+    circular distances (deg) = [120.0, 110.0, 130.0]
+    minimal containing arc (deg) = 230.000000
+  equilateral triple {0,120,240}: gaps = [120.0, 120.0, 120.0], minimal containing arc = 240.000000 deg
+
+=== 3. aperture = max pairwise circular distance, and is attained by a pair (A < 180) ===
+  aperture equals max pairwise circular distance and is attained by a pair of directions: True
+
+=== 4. covering arithmetic for k = 6 ===
+  size-2 blocks: intersection sizes admitting residual <= 1: []
+  size-3 blocks: intersection sizes admitting residual <= 1: [0, 1]
+  two size-2 blocks cover at most 4 < 5 labels: residual >= 2 always
+  ordered pairs of size-3 blocks by |B1 cap B2|: {0: 20, 1: 180, 2: 180, 3: 20}  (total 400)
+  residual exactly 1 (union = 5): 180 ordered pairs; residual 0 (union = 6): 20
+  ordered triples of size-3 blocks pairwise sharing exactly one label with union >= 5: 720
+
+=== 5. sector engine: width needed for a positive circle-section ===
+  r1=1.1 r2=5.0 w= 60.0 deg   threshold w > 2atan(1/sqrt(r2^2-1)) = 23.073918 deg   exceeds? True   section length = 6.283185 rad
+  r1=1.1 r2=5.0 w= 20.0 deg   threshold w > 2atan(1/sqrt(r2^2-1)) = 23.073918 deg   exceeds? False   section length = 2.191407 rad
+  r1=1.1 r2=5.0 w=  5.0 deg   threshold w > 2atan(1/sqrt(r2^2-1)) = 23.073918 deg   exceeds? False   section length = 0.524863 rad
+  r1=1.1 r2=5.0 w=  1.0 deg   threshold w > 2atan(1/sqrt(r2^2-1)) = 23.073918 deg   exceeds? False   section length = 0.104772 rad
+  r1=1.1 r2=5.0 w=  0.1 deg   threshold w > 2atan(1/sqrt(r2^2-1)) = 23.073918 deg   exceeds? False   section length = 0.010524 rad
+  r1=1.1 r2=200.0 w=  1.0 deg   threshold w > 2atan(1/sqrt(r2^2-1)) = 0.572960 deg   exceeds? True   section length = 4.282064 rad
+  (S) is NOT automatic: for W = union of open disks of radius 0.01 whose centres are
+  pairwise >= 2.1 apart, any two points of W are either <= 0.02 or >= 2.08 apart, so W
+  contains no unit pair and every section is empty, while W is open with |W| = infinity.
+
+=== 6. L1 endpoint: at r = 1 the bound 60 deg is attained (equilateral triple) ===
+  radii = [1.0, 1.0, 1.0]
+  |p0-p1| = 1.000000000000  |p1-p2| = 1.000000000000
+
+=== 7. three size-3 blocks: pairwise |Bi cap Bj| <= 1 forces union = ALL SIX labels ===
+  |B1 cup B2 cup B3| distribution: {6: 720}
+  |B1 cap B2 cap B3| distribution: {0: 720}
+  => residual J = [6] \ (B1 cup B2 cup B3) is ALWAYS empty; no triple leaves a label over
+  inclusion-exclusion check: 9 - (sum of pairwise) + triple = 9 - 3 + 0 = 6
+  for size-4 blocks, achievable |union| of three blocks: [4, 5, 6]  (so a residual can survive)
+
+=== 8. duality: aperture A (A<180) => common-negative directions form an open arc of width 180-A ===
+  directions [0.0, 90.0] deg: aperture=90.0000 deg, common-negative arc width=90.0000 deg, 180-A=90.0000 deg, match? True
+  directions [0.0, 60.0] deg: aperture=60.0000 deg, common-negative arc width=120.0050 deg, 180-A=120.0000 deg, match? True
+  directions [10.0, 50.0, 130.0] deg: aperture=120.0000 deg, common-negative arc width=60.0000 deg, 180-A=60.0000 deg, match? True
+  directions [0.0, 119.0] deg: aperture=119.0000 deg, common-negative arc width=61.0000 deg, 180-A=61.0000 deg, match? True
+  boundary case aperture exactly 120 deg: width = 60 deg exactly
+    aperture=120.000000, width=60.000000
+
+=== 9. exact sector threshold: required width = 2*psi*(t) with psi*(t) = 2 asin(1/(2t)) ===
+   psi*(t) = atan( sqrt(4t^2-1)/(2t^2-1) )  should equal  2 asin(1/(2t))
+   t=1.0001       psi*=59.9933848250 deg 2asin=59.9933848250 deg match=True   required w=119.986770 deg   aperture excluded up to 60.013230 deg
+   t=1.5          psi*=38.9424412690 deg 2asin=38.9424412690 deg match=True   required w=77.884883 deg   aperture excluded up to 102.115117 deg
+   t=1.9318517    psi*=29.9999992463 deg 2asin=29.9999992463 deg match=True   required w=59.999998 deg   aperture excluded up to 120.000002 deg
+   t=2.0          psi*=28.9550243719 deg 2asin=28.9550243719 deg match=True   required w=57.910049 deg   aperture excluded up to 122.089951 deg
+   t=3.0          psi*=19.1881364537 deg 2asin=19.1881364537 deg match=True   required w=38.376273 deg   aperture excluded up to 141.623727 deg
+   t=5.0          psi*=11.4783409545 deg 2asin=11.4783409545 deg match=True   required w=22.956682 deg   aperture excluded up to 157.043318 deg
+   t=100.0        psi*=0.5729601825 deg 2asin=0.5729601825 deg match=True   required w=1.145920 deg   aperture excluded up to 178.854080 deg
+   t=200.0        psi*=0.2864791960 deg 2asin=0.2864791960 deg match=True   required w=0.572958 deg   aperture excluded up to 179.427042 deg
+   t such that required w = 60 deg: w = 4 asin(1/(2t)) = 60 => t = 0.5 csc(15 deg) = 1.9318516525781368
+   section positivity at t0 = 2 (r1 = 1.1, r2 = 5) just below and just above the threshold:
+   w=57.4100 deg (threshold 57.9100): section length at z=(2,0) = 4.505681 rad
+   w=57.8600 deg (threshold 57.9100): section length at z=(2,0) = 4.609353 rad
+   w=57.9600 deg (threshold 57.9100): section length at z=(2,0) = 4.633857 rad
+   w=58.4100 deg (threshold 57.9100): section length at z=(2,0) = 4.751792 rad
+   w=60.0000 deg (threshold 57.9100): section length at z=(2,0) = 5.632188 rad
+
+=== 10. vacuity is exactly at uniform block size 3: exhaustive over triples of subsets of [6] ===
+  block sizes         >= 2: triples by |union| = {5: 5856, 6: 50887}
+  block sizes         >= 3: triples by |union| = {5: 4236, 6: 36712}
+  block sizes         >= 4: triples by |union| = {5: 816, 6: 8872}
+  block sizes         >= 5: triples by |union| = {5: 6, 6: 337}
+  block sizes    exactly 3: triples by |union| = {6: 720}
+  => uniform size 3: union is ALWAYS 6 (residual empty, vacuous claim).
+  => size >= 4: union 5 occurs, e.g. {1,2,3,4},{1,2,3,5},{1,2,4,5} -> union {1,2,3,4,5}, J = {6}.

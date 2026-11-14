@@ -1,0 +1,38 @@
+{
+ "purpose": "Expected binder signatures for the R4 exports, derived by reading the FROZEN ORIGINAL sources (lean/OAI, unmodified). Consumed by binder_snapshot.py. The strong assertions are the forbidden ones: the two omitted Y instances must NOT appear.",
+ "derived_from": {
+   "finite": "lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:262-280 (variable block 262-264, def 266-280) and theorem at 308-323 with `omit [StandardBorelSpace Y] [Nonempty Y]`",
+   "ambient": "lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:363-382 and theorem at 385-400 with the same omit"
+ },
+ "common": {
+   "type_binders": [["X","implicit"],["Y","implicit"],["W","implicit"]],
+   "forbidden_instance_types": ["StandardBorelSpace Y", "Nonempty Y"],
+   "required_instance_types": ["MeasurableSpace Y"],
+   "note_XY_instances": "MeasurableSpace X, StandardBorelSpace X, Nonempty X, MeasurableSpace W, StandardBorelSpace W, Nonempty W are all retained: X is the measure space, W the factor space."
+ },
+ "finite_uniform_precision_contradiction": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+   "explicit_order": ["μ","p","q","b","hp","hq","hb","m","hm","g","hg","hwild","ρ","c","N","hρ","hc","hN","harc","happrox"],
+   "explicit_count": 20,
+   "extra_instance_expected": ["IsProbabilityMeasure μ"]
+ },
+ "ambient_uniform_precision_contradiction": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+   "explicit_order": ["μ","p","q","b","hp","hq","hb","m","hm","g","hg","hwild","ρ","c","N","hρ","hc","hN","harc","happrox"],
+   "explicit_count": 20,
+   "extra_instance_expected": ["IsProbabilityMeasure μ"]
+ },
+ "uniform_precision_contradiction": {
+   "fqn": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+   "explicit_order": ["μ","p","P","S","b","hp","hP","hb","m","hm","g","hg","hwild","ρ","c","N","hρ","hc","hN","harc","happrox"],
+   "explicit_count": 21,
+   "extra_instance_expected": ["IsProbabilityMeasure μ"],
+   "extra_implicit_expected": ["Z"]
+ },
+ "definitions": {
+  "FiniteEncodingApproximationAt": {"explicit_order": ["μ","p","q","b","m","γ"], "extra_instance_expected": ["IsProbabilityMeasure μ"]},
+  "AmbientEncodingAt": {"explicit_order": ["μ","p","q","b","m","γ"], "extra_instance_expected": ["IsProbabilityMeasure μ"]},
+  "EncodingApproximationAt": {"explicit_order": ["μ","p","P","S","b","m","γ"], "extra_instance_expected": ["IsProbabilityMeasure μ"], "extra_implicit_expected": ["Z"]}
+ },
+ "harness_rule": "A run that reports MISSING for a name is INCONCLUSIVE for that name and must not be read as PASS. Subset/list matching is reported binder by binder so a partial capture still yields partial evidence."
+}

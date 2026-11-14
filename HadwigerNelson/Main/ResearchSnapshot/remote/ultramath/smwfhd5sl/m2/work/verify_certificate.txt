@@ -1,0 +1,66 @@
+== 1. the allowed-set cardinality formula ==
+  |O| = k-l + #{j : both incident edges negative},  |I| = k-l + #{j : both positive}
+  for a non-constant word these are e_s - r_s.  checked 8104 cases (3<=k<=11, 3<=l<=k): 0 failures
+
+== 2. sliver sizes: min(|O|,|I|) over the two sides ==
+  k=4 l=3 m=1: min = 1, max = 1, words with BOTH sides of size 2: 0/8
+  k=4 l=4 m=0: min = 0, max = 1, words with BOTH sides of size 2: 0/16
+  k=5 l=3 m=2: min = 2, max = 2, words with BOTH sides of size 2: 0/8
+  k=5 l=4 m=1: min = 1, max = 2, words with BOTH sides of size 2: 4/16  [++-- ...]
+  k=5 l=5 m=0: min = 0, max = 1, words with BOTH sides of size 2: 0/32
+  k=6 l=3 m=3: min = 3, max = 3, words with BOTH sides of size 2: 0/8
+  k=6 l=4 m=2: min = 2, max = 3, words with BOTH sides of size 2: 2/16  [+-+- ...]
+  k=6 l=5 m=1: min = 1, max = 2, words with BOTH sides of size 2: 0/32
+  k=6 l=6 m=0: min = 0, max = 2, words with BOTH sides of size 2: 6/64  [+++--- ...]
+  k=7 l=3 m=4: min = 4, max = 4, words with BOTH sides of size 2: 0/8
+  k=7 l=4 m=3: min = 3, max = 4, words with BOTH sides of size 2: 0/16
+  k=7 l=5 m=2: min = 2, max = 3, words with BOTH sides of size 2: 0/32
+  k=7 l=6 m=1: min = 1, max = 3, words with BOTH sides of size 2: 12/64  [++-+-- ...]
+  k=7 l=7 m=0: min = 0, max = 2, words with BOTH sides of size 2: 0/128
+
+== 3. k=6, l=3 (triangle interface): every sign word ==
+  +++: O=[3, 4, 5]  I=[0, 1, 2, 3, 4, 5]  min=3
+  ++-: O=[3, 4, 5]  I=[1, 3, 4, 5]  min=3
+  +-+: O=[3, 4, 5]  I=[0, 3, 4, 5]  min=3
+  +--: O=[2, 3, 4, 5]  I=[3, 4, 5]  min=3
+  -++: O=[3, 4, 5]  I=[2, 3, 4, 5]  min=3
+  -+-: O=[0, 3, 4, 5]  I=[3, 4, 5]  min=3
+  --+: O=[1, 3, 4, 5]  I=[3, 4, 5]  min=3
+  ---: O=[0, 1, 2, 3, 4, 5]  I=[3, 4, 5]  min=3
+  => min(|O|,|I|) >= 3 for EVERY direction; the sliver carries at least 3 labels.
+== 3'. k=5, l=3 (the paper's interface): every sign word ==
+  +++: O=[3, 4]  I=[0, 1, 2, 3, 4]  min=2
+  ++-: O=[3, 4]  I=[1, 3, 4]  min=2
+  +-+: O=[3, 4]  I=[0, 3, 4]  min=2
+  +--: O=[2, 3, 4]  I=[3, 4]  min=2
+  -++: O=[3, 4]  I=[2, 3, 4]  min=2
+  -+-: O=[0, 3, 4]  I=[3, 4]  min=2
+  --+: O=[1, 3, 4]  I=[3, 4]  min=2
+  ---: O=[0, 1, 2, 3, 4]  I=[3, 4]  min=2
+  => min(|O|,|I|) = 2 for EVERY direction: a 2-element sliver always.
+
+== 4. k=6, l=5 (one outsider 5): words with both slivers of size 2 ==
+  each such word is constant on an open arc of directions: positive measure.
+
+== 5. k=6, l=4 (two outsiders): words with both slivers of size 2 ==
+  +-+-: O=[4, 5]  I=[4, 5]  (alternating: a null set of e)
+  -+-+: O=[4, 5]  I=[4, 5]  (alternating: a null set of e)
+
+== 6. k=6, l=6 (no outsiders): count of words with both slivers of size 2 ==
+  6 of 64 (each constant on an open arc, so positive measure)
+
+== 7. Sections 5-6 constraint system at a k=6 triangle interface ==
+  variables P_0..P_5 (R-orbit of directions), 1<=|P_i|<=3, P_i meets {3,4,5},
+  and P_i cap P_(i+1) = empty cyclically (five explicit plus the closing one)
+  number of solutions: 1004940;  distinct outsider-size patterns: 18
+  pattern (2,2,2,2,2,2) (all palettes with a 2-element outsider part): realised? False
+  pattern (1,1,1,1,1,1) (all singleton outsider parts = route B's conclusion): realised? True
+  => Sections 5-6 admit the singleton conclusion but do not force it. |A_i|=2 is
+     compatible with every constraint, so no argument from these constraints derives |A_i|=1.
+  explicit all-singleton witness: [[3], [4], [3], [4], [3], [4]]
+
+== 8. gadget certificate: the four-unit-edge exchange path is P_5 ==
+  proper 2-colourings: 2, endpoints equal in all: True
+  proper 3-colourings: 48, of which endpoints differ: 30, e.g. (0, 1, 0, 1, 2)
+  => local rigidity from the exchange gadget is a 2-label phenomenon; with 3 labels
+     available the gadget forces nothing. (Lemma 8.6 needs exactly two labels.)

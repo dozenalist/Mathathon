@@ -1,0 +1,1055 @@
+[
+{
+"name": "collision_from_close_encodings",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean",
+"line": 396,
+"n": 67,
+"prev": "only of their symmetric encodings and the actual sampled phases. -/"
+},
+{
+"name": "relative_singularity_limit",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+"line": 269,
+"n": 62,
+"prev": "The induction hypothesis is universal in the recentered wild map. -/"
+},
+{
+"name": "strict_state_uniform_on_compact",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/FourContinuity.lean",
+"line": 361,
+"n": 46,
+"prev": "namespace EuclideanFiveColor"
+},
+{
+"name": "FlatDensityZero.image",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+"line": 240,
+"n": 38,
+"prev": "    exact mul_pos ha hr"
+},
+{
+"name": "sampling_weak_compact",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Compactness.lean",
+"line": 130,
+"n": 29,
+"prev": "  simp"
+},
+{
+"name": "FlatDensityZero.transport",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+"line": 291,
+"n": 23,
+"prev": "    exact \u27e8hq \u27e8hqa.1,hs\u03b4 (Metric.closedBall_subset_ball hr hqa.2)\u27e9,hqa.2\u27e9"
+},
+{
+"name": "finite_continuum_subsequence",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean",
+"line": 163,
+"n": 21,
+"prev": "one common subsequence of connected compact limits. -/"
+},
+{
+"name": "compact_conj",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/Functions.lean",
+"line": 112,
+"n": 21,
+"prev": ""
+},
+{
+"name": "center_law_ordinary",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+"line": 102,
+"n": 19,
+"prev": "/-- Wildness survives the measurable recentering construction. -/"
+},
+{
+"name": "cyclicCore_closed",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/CyclicCore.lean",
+"line": 234,
+"n": 18,
+"prev": "  exact he"
+},
+{
+"name": "difference_coefficient_nonneg",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/FourierTests.lean",
+"line": 279,
+"n": 17,
+"prev": ""
+},
+{
+"name": "geometric_partial_sum",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Expansion.lean",
+"line": 46,
+"n": 17,
+"prev": "  exact controlled_interval_derivative hlip hab he hmid (interior_subset ht)"
+},
+{
+"name": "binary_pair_distinct",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/BinaryPalettes.lean",
+"line": 28,
+"n": 16,
+"prev": "    \u00b7 exact h.resolve_left"
+},
+{
+"name": "ApproachingContinuum.side_strip",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Sectors.lean",
+"line": 16,
+"n": 16,
+"prev": "    \u2200j : Fin 5,(\u2200i : Fin 3,s i=b \u2192 j\u2209triangleEdge i) \u2192 j=3 \u2228 j=4 := by decide"
+},
+{
+"name": "not_straddle_of_isPreconnected",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/ConnectedUnitFree.lean",
+"line": 45,
+"n": 16,
+"prev": "`C = K_j` and `z` a point carrying an endpoint label of edge `j`. -/"
+},
+{
+"name": "weight_inner",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Multipliers.lean",
+"line": 92,
+"n": 15,
+"prev": ""
+},
+{
+"name": "General.spans",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean",
+"line": 404,
+"n": 15,
+"prev": ""
+},
+{
+"name": "palette_transfer_pair",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+"line": 143,
+"n": 15,
+"prev": "  convert hp using 1; rw [add_right_comm]"
+},
+{
+"name": "integralReal_shift",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"line": 721,
+"n": 14,
+"prev": ""
+},
+{
+"name": "DensityZero.compl",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/States.lean",
+"line": 78,
+"n": 14,
+"prev": "      (ih (fun j hj => hA j (Finset.mem_insert_of_mem hj)))"
+},
+{
+"name": "linear_prod_replace",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean",
+"line": 442,
+"n": 14,
+"prev": ""
+},
+{
+"name": "weakIntegral_pair",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"line": 754,
+"n": 13,
+"prev": ""
+},
+{
+"name": "DensityOne.compl",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/States.lean",
+"line": 130,
+"n": 13,
+"prev": "namespace EuclideanFiveColor"
+},
+{
+"name": "diam_le_one_connectedComponentIn_of_properColoring",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/ConnectedUnitFree.lean",
+"line": 61,
+"n": 13,
+"prev": "proper colouring is unit-free, hence has diameter at most one. -/"
+},
+{
+"name": "FlatDensityZero.of_locally_le",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+"line": 278,
+"n": 13,
+"prev": "namespace EuclideanFiveColor"
+},
+{
+"name": "DensityOne.iInter",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/States.lean",
+"line": 161,
+"n": 12,
+"prev": "    (isCompact_closedBall x r).measure_ne_top).symm"
+},
+{
+"name": "flat_density_not_one",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+"line": 397,
+"n": 12,
+"prev": "    _ = _ := by dsimp [B]; ring"
+},
+{
+"name": "l2Linear",
+"kind": "def",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean",
+"line": 247,
+"n": 12,
+"prev": ""
+},
+{
+"name": "vector_orbit_zero",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/Amenability.lean",
+"line": 400,
+"n": 12,
+"prev": ""
+},
+{
+"name": "interface_four_split_no_opposite",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Interfaces.lean",
+"line": 37,
+"n": 11,
+"prev": "  split <;> decide"
+},
+{
+"name": "LineDensityZero.mono_ae",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/States.lean",
+"line": 39,
+"n": 10,
+"prev": "namespace EuclideanFiveColor"
+},
+{
+"name": "four_split_antipodes",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean",
+"line": 359,
+"n": 9,
+"prev": "positions to be actual antipodes; the collinear case is retained. -/"
+},
+{
+"name": "paletteSet_minimal",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Palettes.lean",
+"line": 26,
+"n": 9,
+"prev": "  (exists_countable_essential_union angularMeasure (tracePositive c hc x i) (tracePositive_measurable c hc x i)).choose_spec.2 b"
+},
+{
+"name": "DensityZero.union",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/States.lean",
+"line": 57,
+"n": 9,
+"prev": "  exact ENNReal.div_le_div_right (measure_mono (inter_subset_inter_left _ hAB)) _"
+},
+{
+"name": "DensityZero.biUnion_finset",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/States.lean",
+"line": 69,
+"n": 9,
+"prev": "  exact tendsto_const_nhds"
+},
+{
+"name": "weakMeasurableColoring_seven",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Seven.lean",
+"line": 60,
+"n": 9,
+"prev": "weak pair-measure condition. -/"
+},
+{
+"name": "avg_congr_ae",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean",
+"line": 267,
+"n": 9,
+"prev": ""
+},
+{
+"name": "FiniteTensor.sum",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean",
+"line": 296,
+"n": 9,
+"prev": ""
+},
+{
+"name": "weakMean_add",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"line": 551,
+"n": 8,
+"prev": ""
+},
+{
+"name": "integralReal_nonneg",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"line": 713,
+"n": 8,
+"prev": ""
+},
+{
+"name": "colorMass_measurable",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean",
+"line": 251,
+"n": 8,
+"prev": "  \u222b t, sampleFn c q 1 i t \u2202angularMeasure"
+},
+{
+"name": "abs_le_of_bounds",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Moser.lean",
+"line": 42,
+"n": 8,
+"prev": "         gcongr"
+},
+{
+"name": "DensityOne.measure_ne_zero",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/States.lean",
+"line": 147,
+"n": 8,
+"prev": "  simpa using hh"
+},
+{
+"name": "ApproachingContinuum.inner_strip",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean",
+"line": 251,
+"n": 8,
+"prev": "  simpa only [dist_eq_norm,add_sub_add_left_eq_sub] using hn"
+},
+{
+"name": "FlatDensityZero.mono_ae",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean",
+"line": 212,
+"n": 8,
+"prev": "  rwa [\u2190 hi] at ha"
+},
+{
+"name": "proper_to_weak",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean",
+"line": 451,
+"n": 8,
+"prev": "  proper_to_borel_weak_algebraic (c := fun x => c x) fun x y h => hc x y h"
+},
+{
+"name": "ApproachingContinuum.outer_strip",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean",
+"line": 244,
+"n": 7,
+"prev": "  point_mem : \u2200n,x+(r n : \u2102)*w n\u2208K"
+},
+{
+"name": "meanNorm_const",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/Separability.lean",
+"line": 419,
+"n": 7,
+"prev": "    _ = _ := by rw [map_smul]; rfl"
+},
+{
+"name": "periodSum_add",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"line": 676,
+"n": 6,
+"prev": ""
+},
+{
+"name": "graphLift_vertex",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/DiskExtension.lean",
+"line": 339,
+"n": 6,
+"prev": "  ext i; simp [graphDrop,graphEdgePoint,graphVertex,Subtype.ext_iff]"
+},
+{
+"name": "meanNorm_zero",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/Separability.lean",
+"line": 384,
+"n": 6,
+"prev": "  exact M.mono _ _ h"
+},
+{
+"name": "meanNorm_sub_le",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/Separability.lean",
+"line": 404,
+"n": 6,
+"prev": "  rw [map_neg, norm_neg]"
+},
+{
+"name": "tensor_conj",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean",
+"line": 296,
+"n": 6,
+"prev": "  ext z; simp only [tensor_apply, mul_apply]; ring"
+},
+{
+"name": "periodLift_mk",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"line": 609,
+"n": 5,
+"prev": ""
+},
+{
+"name": "kCoeff_inv",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"line": 662,
+"n": 5,
+"prev": ""
+},
+{
+"name": "CommonInterface.perm",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean",
+"line": 241,
+"n": 5,
+"prev": "  simp only [spatialSupport,he]"
+},
+{
+"name": "graphRealization_nonneg",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/GraphRealization.lean",
+"line": 119,
+"n": 5,
+"prev": "  exact \u27e8i,j,hij.imp id (fun hh => h hh),t,ht,rfl\u27e9"
+},
+{
+"name": "DensityZero.mono",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/States.lean",
+"line": 52,
+"n": 5,
+"prev": "    (\ud835\udcdd[>] 0) (\ud835\udcdd (0:ENNReal))"
+},
+{
+"name": "projectCLM_l2",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean",
+"line": 92,
+"n": 5,
+"prev": ""
+},
+{
+"name": "vector_norm_le",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/Amenability.lean",
+"line": 91,
+"n": 5,
+"prev": ""
+},
+{
+"name": "FiniteTensor.zero",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean",
+"line": 291,
+"n": 5,
+"prev": ""
+},
+{
+"name": "shift_comm",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"line": 26,
+"n": 4,
+"prev": ""
+},
+{
+"name": "char_neg",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Energy.lean",
+"line": 376,
+"n": 4,
+"prev": "  exact congrArg (fun a : Circle => (a : \u2102)) (eval_add z w d)"
+},
+{
+"name": "circleOperator_norm_le",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean",
+"line": 16,
+"n": 4,
+"prev": "def circleOperator (g : ComplexPlaneL2) : ComplexPlaneL2 := \u222b t, planeTranslate (direction t) g \u2202angularMeasure"
+},
+{
+"name": "colorMass_le_one",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean",
+"line": 261,
+"n": 4,
+"prev": "  integral_nonneg (sampleFn_nonneg c q 1 i)"
+},
+{
+"name": "CommonInterface.symm",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean",
+"line": 231,
+"n": 4,
+"prev": "    Disjoint (spatialSupport c i) (Straddle K) \u2227 Disjoint (spatialSupport c j) (Straddle K)"
+},
+{
+"name": "standardCore_closed",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/CyclicCore.lean",
+"line": 252,
+"n": 4,
+"prev": "  exact not_not.mpr (hx'.anti (fun {i j} h => hy i j h))"
+},
+{
+"name": "DensityOne.inter",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/States.lean",
+"line": 143,
+"n": 4,
+"prev": "    ENNReal.sub_div (fun _ _ => hp),ENNReal.div_self hp (isCompact_closedBall x r).measure_ne_top]"
+},
+{
+"name": "normSq_nonneg",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Lattice.lean",
+"line": 16,
+"n": 4,
+"prev": ""
+},
+{
+"name": "four_word_mixed_periodic",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean",
+"line": 31,
+"n": 4,
+"prev": "  decide"
+},
+{
+"name": "fiberCrosses_symm",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/GraphCuts.lean",
+"line": 219,
+"n": 4,
+"prev": "    (K\u2229A).Nonempty \u2227 (K\u2229B).Nonempty"
+},
+{
+"name": "translation_apply",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Representations.lean",
+"line": 243,
+"n": 3,
+"prev": "  Koopman.unitary (measure k \u03c9) (rotateHomeo k b).toMeasurableEquiv (rotate_preserving k \u03c9 b)"
+},
+{
+"name": "fieldCircle_apply",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"line": 454,
+"n": 3,
+"prev": ""
+},
+{
+"name": "scalar_apply",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"line": 139,
+"n": 3,
+"prev": ""
+},
+{
+"name": "jF_apply",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"line": 517,
+"n": 3,
+"prev": ""
+},
+{
+"name": "initial_core_cover",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean",
+"line": 85,
+"n": 3,
+"prev": "  simp [noncoreCost]"
+},
+{
+"name": "interface_four_split_neg",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Interfaces.lean",
+"line": 28,
+"n": 3,
+"prev": "  decide"
+},
+{
+"name": "interface_four_diagonal_ne_zero",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Interfaces.lean",
+"line": 34,
+"n": 3,
+"prev": "  simp [interfaceFourDiagonal]"
+},
+{
+"name": "continuous_evenOffset",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Rigidity.lean",
+"line": 31,
+"n": 3,
+"prev": "    rw [he,evenOffset,norm_mul,norm_even_wing (by simpa only [abs_neg] using ht),hv,mul_one]"
+},
+{
+"name": "isCompact_traces",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Compactness.lean",
+"line": 286,
+"n": 3,
+"prev": "  exact isClosed_closure.preimage (continuous_fst.prodMk (continuous_const.prodMk continuous_snd))"
+},
+{
+"name": "graphDrop_lift",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/DiskExtension.lean",
+"line": 330,
+"n": 3,
+"prev": "  \u00b7 simp [graphLift,graphDrop,hi]"
+},
+{
+"name": "frequencyRotation_apply",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+"line": 549,
+"n": 3,
+"prev": ""
+},
+{
+"name": "smul_val",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/Factors.lean",
+"line": 73,
+"n": 3,
+"prev": ""
+},
+{
+"name": "objective_zero",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/Centers.lean",
+"line": 111,
+"n": 3,
+"prev": ""
+},
+{
+"name": "character_apply",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
+"line": 150,
+"n": 2,
+"prev": "  continuous_toFun := continuous_of_discreteTopology"
+},
+{
+"name": "rot_vadd",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Representations.lean",
+"line": 22,
+"n": 2,
+"prev": "  add_vadd g h x := mul_smul (rotMul g) (rotMul h) x"
+},
+{
+"name": "unitary_apply",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Representations.lean",
+"line": 152,
+"n": 2,
+"prev": "  Unitary.linearIsometryEquiv.symm (isometry \u03bc s hs)"
+},
+{
+"name": "cmeanCLM_apply",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+"line": 343,
+"n": 2,
+"prev": ""
+},
+{
+"name": "kCoeff_minusOne",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"line": 288,
+"n": 2,
+"prev": ""
+},
+{
+"name": "coe_imagUnit",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"line": 363,
+"n": 2,
+"prev": ""
+},
+{
+"name": "coe_ofF",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"line": 496,
+"n": 2,
+"prev": ""
+},
+{
+"name": "coe_asN",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean",
+"line": 242,
+"n": 2,
+"prev": "  map_mul' _ _ := by ext; simp"
+},
+{
+"name": "diskAnnulus_measurable",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean",
+"line": 214,
+"n": 2,
+"prev": "def holeAnnuli (S : Finset MarkedDisk) : Set \u2102 := \u22c3d\u2208S,diskAnnulus d"
+},
+{
+"name": "triangleState_measurable",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Sectors.lean",
+"line": 122,
+"n": 2,
+"prev": "  exact if t\u2208paletteSet c hc x 3 then false else true"
+},
+{
+"name": "correlation_continuous",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/WeakColoring.lean",
+"line": 17,
+"n": 2,
+"prev": "  exact continuous_const.compMeasurePreservingLp g.continuous (fun z => measurePreserving_add_right volume z) (by simp)"
+},
+{
+"name": "coreHoles_open",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/DiskExtension.lean",
+"line": 522,
+"n": 2,
+"prev": "  isOpen_iUnion fun _ => isOpen_iUnion fun _ => Metric.isOpen_ball"
+},
+{
+"name": "five_realState_measurable",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/FiveSupport.lean",
+"line": 84,
+"n": 2,
+"prev": "def fiveSupport (x : \u2102) (i : Fin 5) : Set \u211d := (volume.restrict (fiveRealState c hc x i)).support"
+},
+{
+"name": "angleBoundary_closed",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean",
+"line": 350,
+"n": 2,
+"prev": "def angleBoundary (s : Angles \u2192 Bool) : Set Angles := (\u22c3b,angleEssential s b)\u1d9c"
+},
+{
+"name": "act_zero",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/Separability.lean",
+"line": 106,
+"n": 2,
+"prev": "    act g (\u220f i \u2208 s, f i) = \u220f i \u2208 s, act g (f i) := by ext x; simp"
+},
+{
+"name": "meanNorm_mono",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/Separability.lean",
+"line": 372,
+"n": 2,
+"prev": "    exact norm_nonneg _)"
+},
+{
+"name": "action_apply",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/Amenability.lean",
+"line": 357,
+"n": 2,
+"prev": ""
+},
+{
+"name": "range_j",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/Centers.lean",
+"line": 409,
+"n": 2,
+"prev": ""
+},
+{
+"name": "generator_one",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
+"line": 126,
+"n": 1,
+"prev": "  \u27e8U g,StarSubalgebra.le_topologicalClosure _ (StarAlgebra.subset_adjoin \u2102 _ (Set.mem_range_self g))\u27e9"
+},
+{
+"name": "rotMul_mulRot",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Representations.lean",
+"line": 16,
+"n": 1,
+"prev": "def mulRot (k : K) : Rot := Additive.ofMul k"
+},
+{
+"name": "mem_space",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Representations.lean",
+"line": 193,
+"n": 1,
+"prev": "    simpa only [map_smul] using hv.const_smul c"
+},
+{
+"name": "eval_scalar",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean",
+"line": 73,
+"n": 1,
+"prev": "      eval_add, ih, pow_succ]"
+},
+{
+"name": "embed_one",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"line": 69,
+"n": 1,
+"prev": ""
+},
+{
+"name": "kCoeff_one",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"line": 226,
+"n": 1,
+"prev": ""
+},
+{
+"name": "embedF_one",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"line": 507,
+"n": 1,
+"prev": "def embedF (t : DiscreteF) : \u211d := (Multiplicative.toAdd t : F)"
+},
+{
+"name": "coe_reF",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+"line": 581,
+"n": 1,
+"prev": ""
+},
+{
+"name": "coe_iN",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean",
+"line": 245,
+"n": 1,
+"prev": "def iN : N := \u27e8Complex.I, hi\u27e9"
+},
+{
+"name": "five_diag_nonempty",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Exclusion.lean",
+"line": 21,
+"n": 1,
+"prev": "lemma five_diag_disjoint : \u2200i j : Fin 5, Disjoint (fiveDiag i) (fiveDiag j) \u2194 fiveAdj i j := by decide"
+},
+{
+"name": "five_diag_unique",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Exclusion.lean",
+"line": 22,
+"n": 1,
+"prev": "lemma five_diag_nonempty (i : Fin 5) : (fiveDiag i).Nonempty := \u27e8i,Finset.mem_insert_self _ _\u27e9"
+},
+{
+"name": "moserPoint_0",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Moser.lean",
+"line": 133,
+"n": 1,
+"prev": "def moserPoint : Fin 7 \u2192 \u2102 := ![0,moserA,moserB,moserT,moserU*moserA,moserU*moserB,moserU*moserT]"
+},
+{
+"name": "interfaceFourEdge_eq",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/Geometry/PlaneColoring/Interfaces.lean",
+"line": 50,
+"n": 1,
+"prev": "  decide (0<\u27eadirection t,v i\u27eb)"
+},
+{
+"name": "ordinaryEmbedding_j",
+"kind": "theorem",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+"line": 535,
+"n": 1,
+"prev": ""
+},
+{
+"name": "scaleHom_apply",
+"kind": "lemma",
+"attrs": "",
+"file": "../../../lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean",
+"line": 620,
+"n": 1,
+"prev": "def scaleHom (n : \u2124) : G \u2192+ G := n \u2022 AddMonoidHom.id G"
+}
+]

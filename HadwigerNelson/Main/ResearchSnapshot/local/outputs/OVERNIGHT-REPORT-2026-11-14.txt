@@ -1,0 +1,88 @@
+Overnight Mathathon report — November 14, 2026
+
+**We obtained a verified 126-line simplification of the supplied Lean proof, but did not resolve Hadwiger–Nelson.** The solving work produced independently checked negative certificates for two specific graph searches and an exclusion of a restricted honeycomb colouring family. No six-colouring of the plane or proof excluding six colours was found.
+
+Coverage runs from setup around 8:54 PM November 13 through the remote snapshot at **7:30:48 AM Pacific November 14**. This report was assembled afterward. The supplied project's six-colour lower bound and seven-colour construction predate our work; rebuilding their formal dependency chain is verification, not an overnight discovery.
+
+**The strongest deliverable is ready for review.** Two duplicated conditional-encoding contradiction arguments now share a common theorem, retaining the original public statements. ConditionalSpectrum grew from 497 to 530 lines; ConditionalLimits shrank from 701 to 542: **126 lines removed overall**. The candidate files are [ConditionalSpectrum.lean](C:/Users/jarom/Documents/Codex/2026-11-13/i/outputs/encoding-refactor/ConditionalSpectrum.lean) and [ConditionalLimits.lean](C:/Users/jarom/Documents/Codex/2026-11-13/i/outputs/encoding-refactor/ConditionalLimits.lean). Shared originals were preserved.
+
+Validation went beyond successful compilation:
+
+- All **82 modules in the affected dependency closure** passed: 14 previously checked modules plus 68 downstream modules, with frozen source hashes checked.
+- Nine theorem roots—including the supplied no-proper-five-colouring theorem and seven-colouring constructions—reported only propext, Classical.choice and Quot.sound; no sorryAx.
+- Baseline predicate comparisons, definitional-equivalence checks, unchanged public hypotheses and fresh-context applications passed.
+- Supplementary inspection checked **133 binders across six declarations**, confirming argument order, type parameters and instance requirements.
+
+The [validation record](C:/Users/jarom/Documents/Codex/2026-11-13/i/outputs/ENCODING-REFACTOR-VALIDATION.txt) contains hashes and logs. This establishes a preserved formal refactor, not an independent line-by-line certification of every paper assertion. Checks used isolated Lean 4.34.1 and Mathlib d13f23b723b8a846827a245b89c10fc7d3f11612; your global toolchain was retained.
+
+**Supporting proof work produced reusable lemmas.** The locally checked [null-set transfer theorem](C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/encoding-r4/src/KGenericTransfer.lean) says: for k>0, if Z is Lebesgue-null and a labelling separates every unit pair outside Z, then some proper k-colouring of the whole plane exists. Every finite configuration translates off Z, followed by finite-graph compactness. The resulting colouring need not agree with the original.
+
+The locally checked [witness-selection lemma](C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/encoding-r4/src/WitnessSelectionV4.lean) says: if witnesses satisfying P exist at arbitrarily small positive scales, one can select whole witnesses w_n retaining P, with strictly decreasing positive scales below 1/(n+1), tending to zero. Any auxiliary budget must be included in P; choice does not preserve unstated properties.
+
+Two diamond lemmas, five connected-set lemmas, and **21 finite five-cycle reflection/transport lemmas** also passed local checks. The angular worker's remote Moser rebuild had standard axiom logs; independent enumeration confirmed 384 labelled four-colourings, correcting an earlier count of 12. These are component results: the finite five-cycle work has **not eliminated Lemma 6.7**.
+
+The topology worker generalized the cover obstruction: a compact Q containing B(0,R) admits no relatively open cover of multiplicity at most two with member diameters at most d, where 0≤d<R. Source and remote compilation/axiom logs were inspected; this generalized module was not independently rebuilt locally. It yields the paper's square case and a radius-three disk case. The latest source audit also clarified the inherited graph-map argument producing a positive-coordinate connected region containing points more than two units apart. That argument predates our chats; our contribution is interface clarification.
+
+**The graph searches have definite stopping points.** A forced-equal pair means two distinct vertices receive the same colour in every proper k-colouring, with colourability checked to avoid vacuity.
+
+For Heule553, **34 proper five-colourings separate every vertex pair**. Every colouring was checked against all 2,722 edges, with independent JavaScript and Python verification. Thus this graph has no forced-equal pair at any k≥5. Its [certificate](C:/Users/jarom/Documents/Codex/2026-11-13/i/outputs/HEULE553-NO-FORCING-CERTIFICATE.json) closes that search.
+
+For H ∪ (H+(3/2,√3/2)), independent exact arithmetic established **1,048 vertices, 5,487 induced unit edges and 58 overlapping vertices**, checking all 548,628 pairs without a floating-point exclusion filter. A further 34-colouring certificate gives every vertex a distinct colour signature: all **543,141 nonadjacent pairs** are separated. The 1,145 candidates remaining before the update were eliminated after recovery. The [union certificate](C:/Users/jarom/Documents/Codex/2026-11-13/i/outputs/HEULE-UNION-NO-FORCING.json) proves no forced-equal pair exists here for any k≥5. Neither result excludes other graphs or higher-arity constraints.
+
+The newest worker-reported seed, H ∪ R90(H), also failed its purpose: two copies reportedly meet at one vertex with no genuine cross edges. Its reported 1,105-vertex certificate is archived but has not received the same independent all-pairs audit. The worker's generalization that rotating about a vertex necessarily gives only that overlap is unjustified.
+
+A corrected **conditional amplifier** remains useful: given a finite k-colourable unit-distance point set with a distinct forced-equal pair, chaining and rotating copies produces a finite non-k-colourable point set; a vertex-minimal such subset has chromatic number k+1. Its lower-bound argument was reviewed, and three small controls passed exact geometry and exhaustive colouring checks. No target-colour input gadget was found; the generic implementation is not fully validated.
+
+**The honeycomb result is rigorous but restricted.** No proper six-colouring constant on regular honeycomb cell interiors exists for circumradius **1/√28 < a ≤ 1/2**. Two finite cell-conflict graphs supplied independently checked drat-trim certificates. Exact geometry and interval calculations, plus a seven-cell clique, connect the ranges. Hashes bind the remote proof checks to archived inputs.
+
+These graphs encode conflicts between whole cells, not single point configurations, so the result does not exclude arbitrary plane six-colourings. Earlier rectangular-grid claims had uncovered parameter ranges and boundary defects; they were not accepted as a complete family theorem.
+
+**Several attractive shortcuts failed review.** The five-cycle shortcut assumed no-common-label validity at more directions than the source supplied; independent enumeration found eight countermodels under the licensed finite assumptions. A newer proposal needs to upgrade almost-everywhere separation of angular level sets to separation of their closed supports. That upgrade is unproved. Its latest supporting counterexample is also invalid: the constructed set is periodic under the shift claimed to make it disjoint. It therefore establishes no refutation either. These are obstacles to proposed simplifications, not established gaps in the supplied proof.
+
+Other preserved corrections include:
+
+- Compact extensions do not compose in general.
+- Plane-null sets need not be null on a prescribed circle.
+- Sampled colourings do not establish general extension freedom; forcing need not survive extra colours.
+- Removing a graph edge does not remove the corresponding geometric unit pair.
+- Lean proof equality by rfl does not certify identical implementation.
+
+Failed builds and candidate versions were retained. An unvalidated 718-line deletion proposal and a separate 12-line cleanup were not counted as savings.
+
+**All twelve coordinators contributed.** “Continuing” means eligible for the next scheduled assignment; all six continuing chats had finished their latest blocks by the report snapshot.
+
+| Coordinator | Contribution and qualification | Role |
+|---|---|---|
+| Geometric obstruction | Dependency corrections, honeycomb audit, conditional amplifier; new seed unverified | Continuing |
+| Independent constructions | Honeycomb certificates, null transfer, spare-colour obstruction, witness-combination specification | Continuing |
+| Exact graph certificates | Two verified separating-colouring certificates; newest rotation seed failed | Continuing |
+| Six-colour constructions | Cell-family pilots; broad coverage claim rejected | Retired |
+| Trace/measure constraints | Radius-one palette and far-field analysis; properness/null-set qualifications remain | Retired |
+| Adversarial synthesis | Challenged six-colour extrapolations; repaired self-avoidance argument remains paper-level | Retired |
+| Proof architecture | Common-encoding refactor; corrected failed extension and angular proposals | Continuing |
+| Independent verification | Hypothesis audits, connected-set/witness lemmas, topology comparison | Continuing |
+| Angular finite core | Diamond/Moser checks and finite enumeration; paper shortcut withheld | Retired |
+| Topology/interfaces | General cover-obstruction module; substitution not integrated | Retired |
+| Formal dependencies | Build manifests, axiom/signature audits, binder tools | Continuing |
+| Exposition/audit | Palette hypothesis ledger and abstract countermodels; withdrew triple-implies-cycle claim | Retired |
+
+Five documented early Open Math OS swarms contained 17 members. Angular members supplied independent Moser geometry/counts and finite-core checks; trace members investigated sharpness and qualified null-set invariance; synthesis supplied arithmetic corroboration. Cell and formal-dependency swarms reported no accepted submissions. Some subsidiary claims remain coordinator-reported rather than independently audited; swarm endorsement alone did not earn verification. New swarms were subsequently disabled.
+
+**One Astra mathematical escalation was used.** For a K-invariant probability on the relevant compact character group, it proved that a nonzero Fourier coefficient of modulus one forces the point mass at the trivial character. Wild laws therefore have pointwise modulus strictly below one. This supplies neither a uniform gap nor weak mixing nor the missing factor hypothesis. The corrected centered criterion and precise setting are in the [Astra review](C:/Users/jarom/Documents/Codex/2026-11-13/i/outputs/ASTRA-WILD-LAW-REVIEW.txt). A separate infrastructure agent audited resources. No Astra agent is active.
+
+**Operation was interrupted.** We expanded four coordinators to twelve, contracted to four at your request, then expanded to six around 12:44 AM with twenty-minute checks. An earlier service outage produced HTTP 502. Your explicit one-time instruction resumed all fourteen project chats, including the two human chats; those human chats received no continuing automated assignments.
+
+After the successful check around **3:09 AM**, there was no new supervised-chat activity or dispatch until recovery around **6:59 AM**, following the Windows update. Saved results survived; no local Lean job was stranded. The recovery assignments and next scheduled block completed. At the report cutoff: **six completed, zero active, zero blocked**; local Lean idle. The regular twenty-minute supervisor remains unchanged.
+
+The recorded team VM allocation is **4 CPUs, 16 GiB RAM and 256 GiB disk**, shared across the team's projects and chats. Model concurrency remains unknown: eight model choices and reported 16/16 command-slot saturation are not established inference-slot counts. Slow cloud builds and a reported memory-killed enumeration motivated serial local Lean and one bounded remote computation at a time.
+
+Team weekly API spending rose from approximately **$7.88 at 9:18 PM to $49.96 at 7:30 AM**. This includes teammates' activity, so it is not an isolated bill for our chats. API accounting windows do not establish a GUI-enforced five-hour limit. Details are in the [resource audit](C:/Users/jarom/Documents/Codex/2026-11-13/i/outputs/OPENMATH-RESOURCE-AUDIT.txt).
+
+**My priorities for your morning work are:**
+
+1. Review and integrate the two-file, 126-line refactor into the matching project snapshot. This is the most concrete deliverable; shared originals remain untouched.
+2. Keep Lemma 6.7 until its replacement's analytic hypotheses are proved. Focus the next audit on angular supports and correct the invalid counterexample first.
+3. Require a structural reason for each new graph seed—verified overlap and genuine cross constraints—before another search. Do not reopen the two closed pair searches. Colour-permutation matching may generate useful witnesses, but its implementation and runtime claims remain untested.
+4. Continue six balanced chats with serial verification. Reserve further Astra work for a precise obstacle whose hypotheses and prior attempts have been checked.
+
+The [progress history](C:/Users/jarom/Documents/Codex/2026-11-13/i/outputs/PROGRESS-LOG.txt) and twelve archived handoffs preserve the detailed record. Report evidence is under work/overnight-report-2026-11-14/. This reporting run launched no research, agents or builds and interrupted no work.

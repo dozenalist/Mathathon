@@ -1,0 +1,16 @@
+.scratch/t/pr_MeasureTheory_CompactFactors_Centers.lean:81:0: warning: 
+'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by
+
+import Mathlib.Basic.Real.Basic
+.scratch/t/pr_MeasureTheory_CompactFactors_Centers.lean:259:10: error(lean.unknownIdentifier): Unknown identifier `norm_add_lt_of_not_sameRay`
+.scratch/t/pr_MeasureTheory_CompactFactors_Centers.lean:254:86: error: unsolved goals
+z : ℂ
+a✝¹ : z ∈ Set.univ
+w : ℂ
+a✝ : w ∈ Set.univ
+hzw : z ≠ w
+a b : ℝ
+ha : 0 < a
+hb : 0 < b
+hab : a + b = 1
+⊢ ‖a • lift z + b • lift w‖ < a • ‖lift z‖ + b • ‖lift w‖

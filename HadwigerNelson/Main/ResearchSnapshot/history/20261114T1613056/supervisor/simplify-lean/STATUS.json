@@ -1,0 +1,75 @@
+{
+  "updated_utc": "2026-11-14T15:46:56Z",
+  "status": "completed_block",
+  "summary": "Block 18, source-only. Traced the generic null-transfer/compactness upper bound. exists_properColoring_of_finset (Converse.lean:33) has ONE OAI dependency, ProperColoring (Coloring.lean:7); everything else in its proof is Mathlib. Converse's 16-module closure excludes Five, BorelTransfer, ConditionalSpectrum and Approximation, so the compactness argument cannot reach the five-colour impossibility at declaration, module or logical level; the two meet only at NullSetRobust:62, where no_proper_five_coloring is applied to the compactness lemma's OUTPUT. [NeZero k] is load-bearing (nonemptiness for IsCompact.inter_iInter_nonempty), so assumptions stand. VERDICT: no useful reduction. Extracting the lemma into a Coloring-only module is re-layering, not simplification: the only external consumer (NullSetRobust) also imports Five, whose 69-module closure already contains States, so closure(NullSetRobust) goes 71 -> 71 and the split costs one module. Converse cannot shed States either (finite_config_proper needs DensityOne and finite_density_re alization). No candidate packet delivered, by design. Binder packet frozen; no further instrument work.",
+  "verified_results": [
+    "GRADE [C] Declaration-level ledger: exists_properColoring_of_finset uses exactly one OAI-defined identifier, ProperColoring (PlaneColoring/Coloring.lean:7); the rest of its proof term (Pi.compactSpace, isClosed_discrete, isCompact_univ, IsCompact.inter_iInter_nonempty) is Mathlib. finite_config_proper uses DensityOne and finite_density_realization from States.lean; properColoring_of_weak uses ProperColoring and WeakColoring from Coloring.lean plus the two same-file theorems.",
+    "GRADE [C] Module-level ledger: closure(Converse) = 16 modules and contains none of Five, BorelTransfer, ConditionalSpectrum, Approximation. closure(Coloring) = 0 OAI modules (Mathlib only). closure(States) = 15. closure(Five) = 69 and DOES contain States.",
+    "GRADE [C] ANSWER: the upper-bound compactness argument does not depend on the supplied five-colour impossibility theorem, on three independent readings (declaration surface; module closure; direction of use). The single composition point is NullSetRobust.lean:62, 'exact no_proper_five_coloring (exists_properColoring_of_finset hfin)', which applies the lower bound to the compactness lemma's output.",
+    "GRADE [C] [NeZero k] is not removable: the proof extracts a point from IsCompact.inter_iInter_nonempty applied to Set.univ, which requires \u2102 \u2192 Fin k to be nonempty, i.e. Fin k nonempty. Assumptions preserved as instructed.",
+    "GRADE [C] NO USEFUL REDUCTION, measured: the only external consumer of exists_properColoring_of_finset is NullSetRobust, which also imports Five; since States is in closure(Five) and closure(Five) is 69, replacing the Converse import with a Coloring-only module leaves closure(NullSetRobust) at 71. Saving = 0 modules, cost = 1 new module plus a moved 40-line proof.",
+    "GRADE [C] Converse.lean cannot shed its States import: finite_config_proper needs DensityOne and finite_density_realization, both defined in States.",
+    "GRADE [C] Consumers of Converse are exactly NullSetRobust and Transfer; consumers of exists_properColoring_of_finset are properColoring_of_weak (same file) and NullSetRobust:62; Transfer uses properColoring_of_weak at :20 and :30.",
+    "GRADE [S] Supervisor-reported, not re-run and not locatable here: KGenericTransfer.lean and its local PASS (generic theorem, nonzero k, nullZ, proper unit pairs outside Z imply some global proper k-colouring, with NO agreement guarantee). No such file exists anywhere in this repository, so this review is against the in-tree Converse.lean source and makes no claim about the supervisor's file.",
+    "GRADE [R] Binder instrument: V4 comparator defects were accepted as addressed; the packet is frozen this block and no further instrument work was done. The prior LOCAL 133-binder inspection stands as PASS; the new V4 source was not rerun locally.",
+    "GRADE [R] Scope unchanged: 6 <= chi(R^2) <= 7; nothing in this block creates a new plane bound."
+  ],
+  "conjectures": [
+    "The compactness lemma is the natural home for any future finite-to-infinite transfer on this side of the argument, and its minimal surface (ProperColoring + Mathlib) is why it exports cleanly to the supervisor's KGenericTransfer statement.",
+    "A saving would appear only if some future module needed the compactness lemma WITHOUT the density machinery and WITHOUT the lower bound; no such module exists today, which is why the extraction is currently pure cost.",
+    "If NullSetRobust were ever refactored so its use of Five disappears, the split would then save 69 - 16 = 53 modules for that file. That is the condition under which the re-layering would become a real simplification."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/DEPENDENCY-LEDGER-converse.md  <-- the exact dependency ledger, closure numbers and the no-reduction verdict. sha256 a36305832dd1a7e1ffdf3f3acf1ae413c62304f09c6b5658463e9ebb65623a06",
+    "FROZEN this block (unchanged, kept for the record): supervisor/simplify-lean/lean/BinderAudit.lean sha256 0efd3831cd8633818af24110d254e3ae8a1a34cc93a529a0de33b4d0ba4ee202, binder_expected.json sha256 19810d24f5c83db61e483f52f42c04260cff41c5e4e52e78c4846d991f2c30ad, binder_snapshot.py sha256 d96e317e91ac6672b05e34f02ecf83d7dd829f866ef46196e668508b47ecd423",
+    "supervisor/simplify-lean/capture/real_summary.json sha256 86cfe723368c6a72efd127f20c1881ee10692dbbfda465ed1a629c02566d1ad9, capture/BinderAudit.real_capture.txt sha256 65c9549ec5f2f4d698ee61fba13ecb81d43f3ac47f10dc5606d36e0b282e8e59",
+    "archived: archive/BinderAudit.v2.FAILED.lean sha256 648afda2bd84f73169d26d5e2ccd2886803d46df9ea599cf39d2ddf3a0a06049, archive/binder_expected.v2.FAILED.json sha256 fb575764b0d145e7e95b926258d27bbe74669b869946af45c2e1c30cef6e9f88, archive/binder_snapshot.v2.FAILED.py sha256 977878b409010c8182f428b66aadf5b2d4838d0f4556b5488795ceb5abc7ebc5, archive/BinderAudit.v3.UNCOMPILED.lean sha256 de6d516257562feeac0c2d71e62ecd5d79fb54def93cf7471e5b9457099b1db6",
+    "retained: STATEMENT-AUDIT.md, REVIEW-instrument-v4.md, REVIEW-baseline-and-fresh.md, lean/SignatureEquivalence.lean, lean/SignatureCheckFresh.lean, lean/AxiomRoots.lean, axiom_gate.py, recon/ConditionalLimits.R4-recon.lean, snapshots/integ-d26d569088faea89/, BUILD-PLAN.json, MANIFEST-full.json"
+  ],
+  "tests_run": [
+    "python import-closure over lean/OAI: closure(Converse)=16, closure(States)=15, closure(Coloring)=0, closure(Five)=69 with States inside it, closure(NullSetRobust)=71; presence checks for Five/BorelTransfer/ConditionalSpectrum/Approximation in closure(Converse) all False.",
+    "python proof-block name scan on Converse.lean for the three theorems, mapping each OAI identifier to its defining module (false positives F/apply/mono/closedBall discarded).",
+    "rg for consumers of exists_properColoring_of_finset, finite_config_proper, properColoring_of_weak, and for importers of Converse.",
+    "find for KGenericTransfer.lean across the repository: not present.",
+    "sha256 over the deliverable and the frozen packet.",
+    "NO Lean build, no cloud operation, no heavy compute (per instruction; the single 60 s graph slot belongs to another worker)."
+  ],
+  "failed_routes": [
+    "The proposed extraction (exists_properColoring_of_finset into a Coloring-only module) was evaluated and REJECTED as a net cost: 0 modules saved, +1 module, proof moved for no consumer benefit. Not delivered as a candidate, per the instruction to report the conclusion instead of manufacturing one.",
+    "Could not review KGenericTransfer.lean: the file is not in this repository. Nothing in this block should be read as a verification of it.",
+    "No further work on the binder inspection instrument, per instruction: the V4 packet is frozen and the prior 133-binder local inspection stands."
+  ],
+  "next_step": "Nothing queued from this block. If a later block wants the re-layering after all, the trigger is a module that needs the compactness lemma WITHOUT the lower bound or the density machinery -- no such module exists today. Otherwise the natural next source-review target on this side is Transfer.lean, which uses properColoring_of_weak twice (:20, :30) and is the only consumer that would notice a change in the upper-bound interface.",
+  "owned_agents": [
+    {
+      "swarm": "smwfy8rae",
+      "members": 3,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "state": "stopped",
+      "accepted": 0,
+      "note": "stopped in block 1; no new chats, swarms or nested agents this block (per instruction)."
+    }
+  ],
+  "escalation": null,
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "this_block": "supervisor/simplify-lean/DEPENDENCY-LEDGER-converse.md",
+    "verdict": "no useful import reduction; compactness argument independent of the five-colour impossibility on declaration, module and logical readings",
+    "candidate_packet": "none (deliberate)",
+    "frozen_binder_packet": [
+      "supervisor/simplify-lean/lean/BinderAudit.lean",
+      "supervisor/simplify-lean/binder_expected.json",
+      "supervisor/simplify-lean/binder_snapshot.py",
+      "supervisor/simplify-lean/capture/real_summary.json"
+    ],
+    "accepted_unchanged": [
+      "R4 82-module build PASS",
+      "9 root axiom checks PASS",
+      "R5 SignatureEquivalence PASS",
+      "R5 SignatureCheckFresh PASS (4+4 standard axiom prints, no sorry)",
+      "LOCAL 133-binder inspection PASS"
+    ],
+    "scope": "6 <= chi(R^2) <= 7 unchanged; no new plane bound; exact binder identity remains supplementary",
+    "next_verification_step": "none from this block; Transfer.lean is the next source-review target on the upper-bound side if wanted."
+  }
+}

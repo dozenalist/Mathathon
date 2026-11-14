@@ -1,0 +1,546 @@
+{
+"OAI.EuclideanFiveColor.AlgebraReplacement.linear_prod_replace": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"lines": 14
+},
+"OAI.EuclideanFiveColor.AlgebraicCayley.coe_asN": {
+"mod": "OAI.Analysis.PlaneSpectrum.NumberFields",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.AlgebraicCayley.coe_iN": {
+"mod": "OAI.Analysis.PlaneSpectrum.NumberFields",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.Amenable.Koopman.action_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.Amenability",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.Amenable.Koopman.vector_orbit_zero": {
+"mod": "OAI.MeasureTheory.CompactFactors.Amenability",
+"lines": 12
+},
+"OAI.EuclideanFiveColor.Amenable.Mean.vector_norm_le": {
+"mod": "OAI.MeasureTheory.CompactFactors.Amenability",
+"lines": 5
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.avg_congr_ae": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"lines": 9
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.complex_smul_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.meanNorm_const": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"lines": 7
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.meanNorm_mono": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.meanNorm_neg": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"lines": 6
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.meanNorm_sub_le": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"lines": 6
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_add": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.Family.real_smul_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.act_zero": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.conj_mul": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.inner_act": {
+"mod": "OAI.MeasureTheory.CompactFactors.Separability",
+"lines": 6
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.pairSequence_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"lines": 4
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.projectCLM": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"lines": 4
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.projectCLM_l2": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"lines": 5
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.project_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+"lines": 5
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.project_eq_condexp": {
+"mod": "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+"lines": 9
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.real_smul_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.scaleHom_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.AlgebraModels",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.BoundedMeasurable.tensor_conj": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+"lines": 6
+},
+"OAI.EuclideanFiveColor.CommutingSpectral.character_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.CompactFunctions.compact_conj": {
+"mod": "OAI.MeasureTheory.CompactFactors.Functions",
+"lines": 21
+},
+"OAI.EuclideanFiveColor.ContinuousVectors.mem_space": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.CosetCenter.Embedding.center_law_ordinary": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"lines": 19
+},
+"OAI.EuclideanFiveColor.CosetCenter.Embedding.range_j": {
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.EncodedCollision.collision_from_close_encodings": {
+"mod": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+"lines": 67
+},
+"OAI.EuclideanFiveColor.FactorCode.encode_bound": {
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"lines": 3
+},
+"OAI.EuclideanFiveColor.FiveComb.neighbors": {
+"mod": "OAI.Geometry.PlaneColoring.FiveSupport",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.Koopman.unitary_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.Location.objective_zero": {
+"mod": "OAI.MeasureTheory.CompactFactors.Centers",
+"lines": 3
+},
+"OAI.EuclideanFiveColor.MarkedDisk.initial_core_cover": {
+"mod": "OAI.Geometry.PlaneColoring.HoleApproximation",
+"lines": 3
+},
+"OAI.EuclideanFiveColor.MovingMean.meanCLM_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Energy",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.OrbitSpace.smul_val": {
+"mod": "OAI.MeasureTheory.CompactFactors.Factors",
+"lines": 15
+},
+"OAI.EuclideanFiveColor.VectorMeasure.boundedCM_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.WeakBall.value_norm": {
+"mod": "OAI.Geometry.PlaneColoring.Compactness",
+"lines": 3
+},
+"OAI.EuclideanFiveColor.abs_le_of_bounds": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"lines": 8
+},
+"OAI.EuclideanFiveColor.angleBoundary_closed": {
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.binary_pair_distinct": {
+"mod": "OAI.Geometry.PlaneColoring.BinaryPalettes",
+"lines": 16
+},
+"OAI.EuclideanFiveColor.circleOperator_norm_le": {
+"mod": "OAI.Analysis.PlaneSpectrum.CircleOperator",
+"lines": 4
+},
+"OAI.EuclideanFiveColor.colorMass_le_one": {
+"mod": "OAI.Analysis.PlaneSpectrum.CircleOperator",
+"lines": 4
+},
+"OAI.EuclideanFiveColor.colorMass_measurable": {
+"mod": "OAI.Analysis.PlaneSpectrum.CircleOperator",
+"lines": 8
+},
+"OAI.EuclideanFiveColor.coreHoles_open": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.correlation_continuous": {
+"mod": "OAI.Geometry.PlaneColoring.WeakColoring",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.cyclicCore_closed": {
+"mod": "OAI.Geometry.PlaneColoring.CyclicCore",
+"lines": 18
+},
+"OAI.EuclideanFiveColor.diam_le_one_connectedComponentIn_of_properColoring": {
+"mod": "OAI.Geometry.PlaneColoring.ConnectedUnitFree",
+"lines": 13
+},
+"OAI.EuclideanFiveColor.diam_le_one_of_preconnected_unitFree": {
+"mod": "OAI.Geometry.PlaneColoring.ConnectedUnitFree",
+"lines": 27
+},
+"OAI.EuclideanFiveColor.diskAnnulus_measurable": {
+"mod": "OAI.Geometry.PlaneColoring.HoleApproximation",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.fiberCrosses_symm": {
+"mod": "OAI.Geometry.PlaneColoring.GraphCuts",
+"lines": 4
+},
+"OAI.EuclideanFiveColor.finite_continuum_subsequence": {
+"mod": "OAI.Geometry.PlaneColoring.ContinuumLimits",
+"lines": 21
+},
+"OAI.EuclideanFiveColor.five_ae_mem_support": {
+"mod": "OAI.Geometry.PlaneColoring.CyclicCore",
+"lines": 3
+},
+"OAI.EuclideanFiveColor.five_diag_nonempty": {
+"mod": "OAI.Geometry.PlaneColoring.Exclusion",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.five_diag_unique": {
+"mod": "OAI.Geometry.PlaneColoring.Exclusion",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.five_realState_measurable": {
+"mod": "OAI.Geometry.PlaneColoring.FiveSupport",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.flat_density_not_one": {
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"lines": 12
+},
+"OAI.EuclideanFiveColor.four_split_antipodes": {
+"mod": "OAI.Geometry.PlaneColoring.BoundaryTrace",
+"lines": 9
+},
+"OAI.EuclideanFiveColor.four_word_mixed_periodic": {
+"mod": "OAI.Geometry.PlaneColoring.AngularBoundary",
+"lines": 4
+},
+"OAI.EuclideanFiveColor.geometric_partial_sum": {
+"mod": "OAI.Geometry.PlaneColoring.Expansion",
+"lines": 17
+},
+"OAI.EuclideanFiveColor.graphDrop_lift": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"lines": 3
+},
+"OAI.EuclideanFiveColor.graphLift_vertex": {
+"mod": "OAI.Geometry.PlaneColoring.DiskExtension",
+"lines": 6
+},
+"OAI.EuclideanFiveColor.graphRealization_nonneg": {
+"mod": "OAI.Geometry.PlaneColoring.GraphRealization",
+"lines": 5
+},
+"OAI.EuclideanFiveColor.interfaceFourEdge_eq": {
+"mod": "OAI.Geometry.PlaneColoring.Interfaces",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.interface_four_diagonal_ne_zero": {
+"mod": "OAI.Geometry.PlaneColoring.Interfaces",
+"lines": 3
+},
+"OAI.EuclideanFiveColor.interface_four_split_neg": {
+"mod": "OAI.Geometry.PlaneColoring.Interfaces",
+"lines": 3
+},
+"OAI.EuclideanFiveColor.interface_four_split_no_opposite": {
+"mod": "OAI.Geometry.PlaneColoring.Interfaces",
+"lines": 11
+},
+"OAI.EuclideanFiveColor.isCompact_traces": {
+"mod": "OAI.Geometry.PlaneColoring.Compactness",
+"lines": 3
+},
+"OAI.EuclideanFiveColor.moserPoint_0": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.moserPoint_1": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.moserPoint_2": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.moserPoint_3": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.moserPoint_4": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.moserPoint_5": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.moserPoint_6": {
+"mod": "OAI.Geometry.PlaneColoring.Moser",
+"lines": 1
+},
+"OAI.EuclideanFiveColor.not_straddle_of_isPreconnected": {
+"mod": "OAI.Geometry.PlaneColoring.ConnectedUnitFree",
+"lines": 16
+},
+"OAI.EuclideanFiveColor.paletteSet_minimal": {
+"mod": "OAI.Geometry.PlaneColoring.Palettes",
+"lines": 9
+},
+"OAI.EuclideanFiveColor.palette_second_exclusion": {
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"lines": 8
+},
+"OAI.EuclideanFiveColor.palette_transfer_pair": {
+"mod": "OAI.Geometry.PlaneColoring.PaletteDensity",
+"lines": 15
+},
+"OAI.EuclideanFiveColor.proper_to_weak": {
+"mod": "OAI.Geometry.PlaneColoring.BorelTransfer",
+"lines": 8
+},
+"OAI.EuclideanFiveColor.sampling_weak_compact": {
+"mod": "OAI.Geometry.PlaneColoring.Compactness",
+"lines": 29
+},
+"OAI.EuclideanFiveColor.standardCore_closed": {
+"mod": "OAI.Geometry.PlaneColoring.CyclicCore",
+"lines": 4
+},
+"OAI.EuclideanFiveColor.strict_state_uniform_on_compact": {
+"mod": "OAI.Geometry.PlaneColoring.FourContinuity",
+"lines": 46
+},
+"OAI.EuclideanFiveColor.triangleState_measurable": {
+"mod": "OAI.Geometry.PlaneColoring.Sectors",
+"lines": 2
+},
+"OAI.EuclideanFiveColor.unit_antipodes_of_no_positive": {
+"mod": "OAI.Geometry.PlaneColoring.BoundaryTrace",
+"lines": 40
+},
+"OAI.EuclideanFiveColor.weakHilbert_apply": {
+"mod": "OAI.Geometry.PlaneColoring.Compactness",
+"lines": 1
+},
+"OAI.PlaneFiveColor.InvariantMean.cmeanCLM_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"lines": 2
+},
+"OAI.PlaneFiveColor.InvariantMean.fieldCircle_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"lines": 3
+},
+"OAI.PlaneFiveColor.InvariantMean.imagPart_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"lines": 3
+},
+"OAI.PlaneFiveColor.InvariantMean.integralReal_nonneg": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"lines": 8
+},
+"OAI.PlaneFiveColor.InvariantMean.integralReal_shift": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"lines": 14
+},
+"OAI.PlaneFiveColor.InvariantMean.meanCLM_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"lines": 2
+},
+"OAI.PlaneFiveColor.InvariantMean.periodLift_mk": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"lines": 5
+},
+"OAI.PlaneFiveColor.InvariantMean.periodSum_add": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"lines": 6
+},
+"OAI.PlaneFiveColor.InvariantMean.realPart_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"lines": 2
+},
+"OAI.PlaneFiveColor.InvariantMean.shift_comm": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"lines": 4
+},
+"OAI.PlaneFiveColor.InvariantMean.weakIntegral_pair": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"lines": 13
+},
+"OAI.PlaneFiveColor.InvariantMean.weakMean_add": {
+"mod": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+"lines": 8
+},
+"OAI.PlaneFiveColor.LabelModel.translation_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"lines": 3
+},
+"OAI.PlaneFiveColor.LpMultiplier.weight_inner": {
+"mod": "OAI.Analysis.PlaneSpectrum.Multipliers",
+"lines": 15
+},
+"OAI.PlaneFiveColor.Spectral.char_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Energy",
+"lines": 1
+},
+"OAI.PlaneFiveColor.Spectral.char_neg": {
+"mod": "OAI.Analysis.PlaneSpectrum.Energy",
+"lines": 4
+},
+"OAI.PlaneFiveColor.Spectral.coe_imF": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"lines": 2
+},
+"OAI.PlaneFiveColor.Spectral.coe_imagUnit": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"lines": 2
+},
+"OAI.PlaneFiveColor.Spectral.coe_ofF": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"lines": 2
+},
+"OAI.PlaneFiveColor.Spectral.coe_reF": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"lines": 1
+},
+"OAI.PlaneFiveColor.Spectral.embedF_one": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"lines": 1
+},
+"OAI.PlaneFiveColor.Spectral.embed_one": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"lines": 1
+},
+"OAI.PlaneFiveColor.Spectral.eval_scalar": {
+"mod": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+"lines": 1
+},
+"OAI.PlaneFiveColor.Spectral.finite_encoding_at_of_approximation": {
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"lines": 51
+},
+"OAI.PlaneFiveColor.Spectral.frequencyRotation_apply": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"lines": 3
+},
+"OAI.PlaneFiveColor.Spectral.jF_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"lines": 3
+},
+"OAI.PlaneFiveColor.Spectral.kCoeff_minusOne": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"lines": 2
+},
+"OAI.PlaneFiveColor.Spectral.kCoeff_one": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"lines": 1
+},
+"OAI.PlaneFiveColor.Spectral.mulRot_rotMul": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"lines": 1
+},
+"OAI.PlaneFiveColor.Spectral.ordinaryEmbedding_j": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"lines": 1
+},
+"OAI.PlaneFiveColor.Spectral.ordinaryEmbedding_ordinary": {
+"mod": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+"lines": 2
+},
+"OAI.PlaneFiveColor.Spectral.relative_singularity_limit": {
+"mod": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+"lines": 62
+},
+"OAI.PlaneFiveColor.Spectral.rotMul_mulRot": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"lines": 1
+},
+"OAI.PlaneFiveColor.Spectral.rot_vadd": {
+"mod": "OAI.Analysis.PlaneSpectrum.Representations",
+"lines": 2
+},
+"OAI.PlaneFiveColor.Spectral.scalar_apply": {
+"mod": "OAI.Analysis.PlaneSpectrum.Basic",
+"lines": 3
+},
+"OAI.Problem160.SevenLattice.normSq_nonneg": {
+"mod": "OAI.Geometry.PlaneColoring.Lattice",
+"lines": 4
+},
+"OAI.Problem160.WeakMeasurableColoring": {
+"mod": "OAI.Geometry.PlaneColoring.Basic",
+"lines": 10
+},
+"OAI.Problem160.ae_circleMeasure_norm": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"lines": 6
+},
+"OAI.Problem160.ae_weakPairMeasure_unit": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"lines": 4
+},
+"OAI.Problem160.continuous_circleDir": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"lines": 5
+},
+"OAI.Problem160.exists_measurable_proper_seven": {
+"mod": "OAI.Geometry.PlaneColoring.Seven",
+"lines": 19
+},
+"OAI.Problem160.exists_measurable_unit_distance_coloring_of_center_cover": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableAssembly",
+"lines": 47
+},
+"OAI.Problem160.measurable_circleDir": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"lines": 3
+},
+"OAI.Problem160.ofPlane_im": {
+"mod": "OAI.Geometry.PlaneColoring.Chromatic",
+"lines": 2
+},
+"OAI.Problem160.ofPlane_re": {
+"mod": "OAI.Geometry.PlaneColoring.Chromatic",
+"lines": 1
+},
+"OAI.Problem160.weakMeasurableColoring_of_aemeasurable_proper": {
+"mod": "OAI.Geometry.PlaneColoring.MeasurableProper",
+"lines": 20
+},
+"OAI.Problem160.weakMeasurableColoring_seven": {
+"mod": "OAI.Geometry.PlaneColoring.Seven",
+"lines": 9
+},
+"OAI.Problem160.weakPairMeasure": {
+"mod": "OAI.Geometry.PlaneColoring.Basic",
+"lines": 3
+}
+}

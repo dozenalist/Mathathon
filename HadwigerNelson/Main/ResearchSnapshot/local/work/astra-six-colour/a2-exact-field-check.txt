@@ -1,0 +1,174 @@
+{
+  "scope": "Four-state angular model; no actual weak plane colouring asserted",
+  "sectorWidth": "pi/6",
+  "paletteOrder": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      2,
+      5
+    ]
+  ],
+  "approachVectorAnglesInUnitsPiOver3": [
+    0,
+    3,
+    3,
+    3,
+    0,
+    0
+  ],
+  "gammaInterval": "pi/6 < arccos(5/6) < pi/3",
+  "checks": "PASS: sixty-disjointness, both strip sides, cycle-edge avoidance, no same-phase gamma returns, and generalized triangle union bound",
+  "rows": [
+    {
+      "state": 0,
+      "palette": [
+        0,
+        2
+      ],
+      "gammaStep": 1,
+      "gammaState": 1,
+      "piGammaPalette": [
+        2,
+        5
+      ],
+      "union": [
+        0,
+        2,
+        5
+      ]
+    },
+    {
+      "state": 0,
+      "palette": [
+        0,
+        2
+      ],
+      "gammaStep": 2,
+      "gammaState": 2,
+      "piGammaPalette": [
+        0,
+        2
+      ],
+      "union": [
+        0,
+        2
+      ]
+    },
+    {
+      "state": 1,
+      "palette": [
+        0,
+        3
+      ],
+      "gammaStep": 1,
+      "gammaState": 2,
+      "piGammaPalette": [
+        0,
+        2
+      ],
+      "union": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "state": 1,
+      "palette": [
+        0,
+        3
+      ],
+      "gammaStep": 2,
+      "gammaState": 3,
+      "piGammaPalette": [
+        0,
+        3
+      ],
+      "union": [
+        0,
+        3
+      ]
+    },
+    {
+      "state": 2,
+      "palette": [
+        3,
+        5
+      ],
+      "gammaStep": 1,
+      "gammaState": 3,
+      "piGammaPalette": [
+        0,
+        3
+      ],
+      "union": [
+        0,
+        3,
+        5
+      ]
+    },
+    {
+      "state": 2,
+      "palette": [
+        3,
+        5
+      ],
+      "gammaStep": 2,
+      "gammaState": 0,
+      "piGammaPalette": [
+        3,
+        5
+      ],
+      "union": [
+        3,
+        5
+      ]
+    },
+    {
+      "state": 3,
+      "palette": [
+        2,
+        5
+      ],
+      "gammaStep": 1,
+      "gammaState": 0,
+      "piGammaPalette": [
+        3,
+        5
+      ],
+      "union": [
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "state": 3,
+      "palette": [
+        2,
+        5
+      ],
+      "gammaStep": 2,
+      "gammaState": 1,
+      "piGammaPalette": [
+        2,
+        5
+      ],
+      "union": [
+        2,
+        5
+      ]
+    }
+  ]
+}

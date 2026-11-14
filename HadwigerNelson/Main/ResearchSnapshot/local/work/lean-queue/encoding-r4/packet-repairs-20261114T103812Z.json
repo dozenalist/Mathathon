@@ -1,0 +1,20 @@
+[
+  {
+    "id": "witness-selection-v4",
+    "source": "WitnessSelectionV4.lean",
+    "sha256": "3ff5d5c86fd49e4252e2fbbbcd8fc05e6c909c165cb98d62f47da399f608a569",
+    "purpose": "V3 repair only: open Topology to resolve neighborhood notation; preserve V3 failed log"
+  },
+  {
+    "id": "signature-equivalence-r5",
+    "source": "SignatureEquivalenceR5.lean",
+    "sha256": "bbc58eac177e99a2ad26b8f6b89473692f5cfadf992c06e638769c54814b4323",
+    "purpose": "Definitional conversion directly, avoiding unnecessary instances accidentally captured by helper iff theorem"
+  },
+  {
+    "id": "signature-fresh-r5",
+    "source": "SignatureCheckFreshR5.lean",
+    "sha256": "b0853a037a55d465a80606a711b4e3d2ca56d251a53b2415befbe362a98e455a",
+    "purpose": "Fresh signature packet repair only: open namespace defining D and IsWild"
+  }
+]

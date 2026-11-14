@@ -1,0 +1,11 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/MeasurableProper.lean	2026-11-13 19:09:13.641683419 +0000
++++ OAI/Geometry/PlaneColoring/MeasurableProper.lean	2026-11-13 19:14:57.441426685 +0000
+@@ -27,7 +27,7 @@
+       ENNReal.ofReal_ne_top
+ 
+ instance circleMeasure_isProbabilityMeasure : IsProbabilityMeasure circleMeasure :=
+-  inferInstanceAs (IsProbabilityMeasure (Measure.map circleDir normalizedAngleMeasure))
++  Measure.isProbabilityMeasure_map measurable_circleDir.aemeasurable
+ 
+ @[simp]
+ theorem norm_circleDir (t : ℝ) : ‖circleDir t‖ = 1 := by

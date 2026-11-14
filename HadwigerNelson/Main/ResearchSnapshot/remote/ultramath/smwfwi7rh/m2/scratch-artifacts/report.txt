@@ -1,0 +1,29 @@
+AUDIT of the k=6 palette layer (d10). Not a resolution of (W): a verified map of the layer, two
+sharpened constants, one frontier correction.
+
+Theorem R (new). At k=6, at a typical centre of a weak measurable 6-colouring whose Gamma_x has a
+cycle, the nine necessary conditions the sprint uses ((SA),(PB),(T),(EDG),(SIN),(SA2),(C1),(C2),
+(MON)) are EQUIVALENT, on the admissible alphabet, to (T) alone. Each of the five extras is a
+theorem; (MON) is vacuously implied because a ternary palette pins both neighbours exactly. So no
+single-centre constraint beyond (PB)+(EDG)+(T) exists, and the four orbit rows are exactly tr(A^6).
+
+Decided finite computations, three independent exact procedures: rows
+70194/11888/18746/2164/3720/380/510 confirmed; ablation: dropping (EDG) gives 446960 for every ell,
+tightening |P|<=2 gives 150 at ell=6. Paper Lemma 8.9 and Table 1 verified exactly in
+Q(sqrt3,sqrt11); printed (8.6) is ambiguous and one reading fails (8.4) at 3 of 7 vertices.
+
+Constants: alpha<1/6 in section 7 is exactly optimal (the uniform vector kills the denominator for
+alpha>=1/k); the cover lemma "side ten, mesh two" sharpens to "inradius > mesh" (side > 4), and (W)
+with R>1 needs its DISK form, since a ball of radius < sqrt2 holds no side-2 square.
+
+Frontier correction (confirms d18/m1): (5.3) at centre distance exactly 1 gives
+P_{x+a}(f) cap P_x(f) = empty (Remark 5.3), not an instance of the (P3) the countermodels satisfy
+(|z-z'| <= d_0). So every palette countermodel in the record is inadmissible and REPORT sections 4-5's
+frontier is superseded. Seven errata, incl. a wrong number in REPORT section 6 (354 -> 348).
+
+Files in .ultramath/smwfwi7rh/m2/: AUDIT.md, certify_orbit.py, certify_8_9.py, calibrate_k5.py,
+README.md. Check: cd .ultramath/smwfwi7rh/m2 && python3 certify_orbit.py && python3 certify_8_9.py
+&& python3 calibrate_k5.py (~85 s).
+
+Not done: paper sections 2-4; m3's k>=7 construction (d4's object); k6_orbit_count.lean is
+UNCHECKED (Mathlib import did not finish under load).

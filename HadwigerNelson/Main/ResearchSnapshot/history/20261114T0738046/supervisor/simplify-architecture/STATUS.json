@@ -1,0 +1,48 @@
+{
+ "updated_utc": "2026-11-14T07:20:00Z",
+ "status": "completed_block",
+ "summary": "Block 4. Integrated Astra's review. Lemma A independently verified (repo proof in AUDIT.md Sec.9): for any K-invariant mu (no ergodicity) and z != 0, |a_z| = 1 forces mu = delta_trivial, since span_Z K = E, the constants assemble into a homomorphism, so mu is a point mass, and -1 = (r-1)+(s-1) kills it. Hence a wild mu has |a_z| < 1 for every nonzero z, so the coset-supported counterexample branch is closed, not merely stalled. Corrections accepted: ann(z) is not K-stable (no quotient action); C meets a coset in countably many parallel lines; the uncentered Avg|a(uz-z)|^2 is the wrong object (it tends to |a_z|^4 and equals 1 at z=0) - the correct criterion M3 uses centered characters and coincides with weak mixing; first-stage properness does not give terminal properness. One targeted finite-character argument tested: it PROVES M3 implies diagonal ergodicity (Stone-Weierstrass density plus finitely many pairs, no Haar, no tower), and its remaining gap is exactly a uniform deficit (U) for coefficients a_{z-u^{-1}z'} along K-orbits, which pointwise strictness cannot supply. Also shown: constant-modulus eigenfunctions with nontrivial eigenvalue must NOT be excluded (witness on T^2), so the target is invariant functions only. No tower claims; no builds.",
+ "verified_results": [
+  "[verified here] Lemma A (Astra): for K-invariant mu and z != 0, |a_z| = 1 => a_z = 1 and mu = delta_{1_D}; so wild mu has |a_z| < 1 for all z != 0. Proof chain checked step by step: span_Z K = E via t = n(u+v); Cauchy-Schwarz equality; K-countability; homomorphism of constants; mu = delta_{d_0}; K-invariance kills (K-1)E; (r-1)+(s-1) = -1 with r = (1+sqrt3 i)/2; hence trivial. One compressed step in Astra's writeup (identifying the constants c_u = c) needed the homomorphism step first; repaired.",
+  "[verified here] u . ann(z) = ann(uz), so ann(z) is K-stable only if Z uz = Z z for all u in K, false: no quotient action on D/H_z.",
+  "[verified here] C cap (a . ann(z)) = union over k in Z of {xi : xi.(Re z, Im z) = theta_0 + 2 pi k}, countably many parallel affine lines, not one line.",
+  "[verified here] with h_z = psi_z - a_z and a_{uz} = a_z: <U_u h_z, h_w> = a_{uz-w} - a_z conj(a_w). So M3 is the centered criterion and it vanishes identically if z = 0 or w = 0. The uncentered Avg|a_{uz-z}|^2 is wrong: it tends to |a_z|^4 and equals 1 at z = 0.",
+  "[proved here] M3 implies mu x mu is ergodic under the diagonal action: for invariant F with mean 0 and norm 1, take a finite character polynomial G with ||F-G|| <= eta and mean 0; invariance gives ||U G - G|| <= 2 eta for all u, while M3 makes avg_u ||U G - G||^2 -> 2||G||^2 >= 2(1-eta)^2. Uses only Stone-Weierstrass density and M3 at finitely many pairs; no Haar orthogonality, no compact tower.",
+  "[proved here] the target must be restricted to nonconstant INVARIANT functions: Z acting on T^2 by (R_alpha, R_beta) with 1, alpha, beta Q-independent is ergodic on the diagonal, yet F = psi_1 tensor psi_1 is a nonconstant eigenfunction of modulus 1 with eigenvalue exp(2 pi i (alpha+beta)) != 1. So constant-modulus eigenfunctions with nontrivial eigenvalue coexist with ergodicity and must be tolerated.",
+  "[proved here] the exact failure point of the finite-character argument: with G = sum_z psi_z tensor f_z, the u-dependence is entirely in lambda_{z,z'}(u) = a_{z-u^{-1}z'}, and a contradiction needs a uniform deficit (U): for every finite Z and delta_0 there are delta > 0 and a density-1 set of u with |a_{z-u^{-1}z'}| <= 1 - delta. Lemma A gives only pointwise strictness, and at z = u^{-1}z' the coefficient is a_0 = 1, so no strictness holds there. (U) implies M3 strictly, so it is a harder statement than the paper's own Sec.3."
+ ],
+ "conjectures": [
+  "M3 holds for the paper's wild mu (equivalently (D,mu) is weakly mixing), but proving it looks strictly harder than needed: the paper's Theorem 2.3 is a stronger conclusion reached by different means, and (W-style) routes through pointwise strictness are closed.",
+  "A cheaper substitute for M3 would be a decay statement only for pairs (z,w) that arise from a finite character approximant of a hypothetical invariant function, with the deficit allowed to depend on the approximant's frequency window; that weaker form may be provable from PD/positivity constraints alone. Untested."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/AUDIT.md (v4: Secs.9-11 added - Lemma A verified, Astra's corrections, the finite-character argument and its exact gap)",
+  "supervisor/simplify-architecture/OBSTRUCTION.md (v2: revision banner plus Secs.6-8 - coset branch closed, superseded-statement table, corrected target M3 and the uniformity gap (U))",
+  "supervisor/simplify-architecture/STATUS.json"
+ ],
+ "tests_run": [
+  {
+   "cmd": "no computation run",
+   "outcome": "every claim in this block is elementary and settled by hand; the 60 s single-process allowance was not needed. No Lean, no search, no subagents, no messages."
+  },
+  {
+   "cmd": "read: prior AUDIT.md/OBSTRUCTION.md/STATUS.json in this directory; Astra's correction text",
+   "outcome": "all reconciled; previous blocks preserved with retractions marked in place."
+  }
+ ],
+ "failed_routes": [
+  "coset-supported counterexample to (M''') (block 3's only surviving candidate): CLOSED by Lemma A - it would need |a_z| = 1, which forces mu = delta_trivial and hence mu(C) = 1.",
+  "quotient action of K on D/ann(z): does not exist (ann(z) not K-stable). Do not reuse.",
+  "uncentered decay Avg|a_{uz-z}|^2 -> 0 as a criterion: wrong object; it converges to |a_z|^4 and is 1 at z = 0.",
+  "first-stage properness as a route to H2: insufficient (stages increase).",
+  "excluding all nonconstant joint eigenfunctions: too strong and false as a goal (T^2 witness); only invariant functions, or eigenfunctions of non-constant modulus, obstruct.",
+  "P3 (block 2, withdrawn) and the generic skew-shift tower (block 2) remain withdrawn / non-evidence about (D,mu)."
+ ],
+ "next_step": "Prove the reduced lemma (U) or find the weaker substitute: (i) test whether a POSITIVITY (positive-definiteness) argument supplies the uniform deficit for the finitely many pairs arising from one approximant - i.e. use sum_{i,j} c_i conj(c_j) a_{w_i - w_j} >= 0 over the frequencies {z - u^{-1}z'} to rule out all of them sitting near 1 simultaneously; (ii) if positivity is insufficient, state the exact finite configuration (which frequencies, which coefficients) that a counterexample would have to realise. Build-free; one block.",
+ "escalation": {
+  "obstacle": "M3 (equivalently weak mixing of a wild law) is the exact hypothesis the compact-tower simplification needs, and the only route from Astra's pointwise strictness |a_z| < 1 to M3 is the uniform deficit (U), which is strictly stronger than M3. No counterexample exists any more (Lemma A closed the coset branch), so this is a proof gap, not a consistency problem.",
+  "definitions": "E = F(i), F = Qbar cap R, discrete; K = {u in E : |u| = 1}; D = E-hat; a_z = int psi_z dmu; (M3) for all z,w: avg_{u in Phi_n} |a_{uz-w} - a_z conj(a_w)|^2 -> 0 along a fixed F\u00f8lner sequence; (U) for every finite Z and delta_0 there are delta > 0 and D subset K of upper Banach density 1 with |a_{z - u^{-1}z'}| <= 1 - delta for all u in D, z != z' in Z.",
+  "attempted": "point spectrum / coset support (closed by Lemma A); uncentered Fourier decay (wrong object); finite-character approximation (proves M3 => ergodicity, cannot prove M3); uniform deficit (U) from pointwise strictness (no mechanism).",
+  "expected_useful_output": "Either a positivity-based proof of a uniform deficit for the finite frequency configurations that an invariant-function approximant produces (which would prove the simplification and let Sec.2.4 and Sec.3.1 be deleted), or a precise statement of the finite configuration a counterexample must realise, which is then a finite search problem rather than an ergodic-theoretic one."
+ }
+}

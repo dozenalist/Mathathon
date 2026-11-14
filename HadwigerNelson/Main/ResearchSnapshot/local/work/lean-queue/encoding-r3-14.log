@@ -1,0 +1,96 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: fed6e99a17a7723240f9b598b1967183b41c5800d23d789e41e020cfe3dffedf
+Status: failed
+Exit code: 1
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r3\src\OAI\MeasureTheory\CompactFactors\ConditionalLimits.lean:457:38: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∫ (a_1 : X),
+    dist (PhaseEncoding.kernelEncoding (condDistrib b p μ) (fun d => ↑((eval (kCoeff k)) d)) m (p a_1))
+        (∑ i, a (q a_1) i • Hf i a_1) ^
+      2 ∂μ
+in the target expression
+  ∫ (x : X),
+      dist (PhaseEncoding.kernelEncoding (condDistrib b p μ) (fun d => ↑((eval (kCoeff k)) d)) m (p x))
+          (∑ i, a (q x) i • Hf i (id x)) ^
+        2 ∂μ <
+    γ ^ 2
+
+X : Type u_1
+Y : Type u_2
+W : Type u_3
+inst✝⁸ : MeasurableSpace X
+inst✝⁷ : MeasurableSpace Y
+inst✝⁶ : MeasurableSpace W
+inst✝⁵ : MulAction (↥K) X
+inst✝⁴ : MulAction (↥K) Y
+inst✝³ : MeasurableConstSMul (↥K) X
+inst✝² : MeasurableConstSMul (↥K) Y
+μ : Measure X
+inst✝¹ : IsProbabilityMeasure μ
+inst✝ : ErgodicSMul (↥K) X μ
+p : X → Y
+q : X → W
+b : X → D
+hp : Measurable p
+hb : Measurable b
+hpe : ∀ (k : ↥K), ∀ᵐ (x : X) ∂μ, p (k • x) = k • p x
+hbe : ∀ (k : ↥K), ∀ᵐ (x : X) ∂μ, b (k • x) = k • b x
+m : ℕ
+H : Y → Fin m → ℂ
+hHeq : H =ᵐ[Measure.map p μ] PhaseEncoding.kernelEncoding (condDistrib b p μ) (fun d => ↑((eval 1) d)) m
+γ : ℝ
+r : ℕ
+B C : ℝ
+Hf : Fin r → X → Fin m → ℂ
+hB : 0 ≤ B
+hC : 0 ≤ C
+_hHm : ∀ (i : Fin r), Measurable (Hf i)
+hHf : ∀ (y : X), ∑ i, ‖Hf i y‖ ≤ C
+ha :
+  ∀ (k : ↥K),
+    ∃ a,
+      Measurable a ∧
+        (∀ (w : W), ‖a w‖ ≤ B) ∧
+          Integrable (fun y => dist ((H ∘ p) (k • y)) (∑ i, a (q y) i • Hf i y) ^ 2) μ ∧
+            ∫ (y : X), dist ((H ∘ p) (k • y)) (∑ i, a (q y) i • Hf i y) ^ 2 ∂μ < γ ^ 2
+k : ↥K
+a : W → Fin r → ℂ
+_ham : Measurable a
+hab : ∀ (w : W), ‖a w‖ ≤ B
+hai : Integrable (fun y => dist ((H ∘ p) (k • y)) (∑ i, a (q y) i • Hf i y) ^ 2) μ
+hae : ∫ (y : X), dist ((H ∘ p) (k • y)) (∑ i, a (q y) i • Hf i y) ^ 2 ∂μ < γ ^ 2
+hker :
+  ∀ᵐ (y : Y) ∂Measure.map p μ,
+    (condDistrib b p μ) ((MeasurableEquiv.smul k) y) = Measure.map (fun d => k • d) ((condDistrib b p μ) y)
+hcov :
+  ∀ᵐ (y : Y) ∂Measure.map p μ,
+    PhaseEncoding.kernelEncoding (condDistrib b p μ) (fun d => ↑((eval 1) d)) m (k • y) =
+      PhaseEncoding.kernelEncoding (condDistrib b p μ) ((fun d => ↑((eval 1) d)) ∘ fun d => k • d) m y
+heq :
+  ∀ᵐ (x : X) ∂μ,
+    (H ∘ p) (k • x) = PhaseEncoding.kernelEncoding (condDistrib b p μ) (fun d => ↑((eval (kCoeff k)) d)) m (p x)
+he :
+  (fun x => dist ((H ∘ p) (k • x)) (∑ i, a (q x) i • Hf i x) ^ 2) =ᵐ[μ] fun x =>
+    dist (PhaseEncoding.kernelEncoding (condDistrib b p μ) (fun d => ↑((eval (kCoeff k)) d)) m (p x))
+        (∑ i, a (q x) i • Hf i x) ^
+      2
+⊢ ∫ (x : X),
+      dist (PhaseEncoding.kernelEncoding (condDistrib b p μ) (fun d => ↑((eval (kCoeff k)) d)) m (p x))
+          (∑ i, a (q x) i • Hf i (id x)) ^
+        2 ∂μ <
+    γ ^ 2
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    (eval (kCoeff k)) d
+  has type
+    Circle
+  but is expected to have type
+    ↥(Submonoid.unitSphere ℂ)
+  in the application
+    ↑((eval (kCoeff k)) d)
+
+STDERR
+

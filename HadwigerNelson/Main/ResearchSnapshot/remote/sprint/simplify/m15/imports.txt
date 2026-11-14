@@ -1,0 +1,83 @@
+OAI.Analysis.PlaneSpectrum.Basic lean/OAI/Analysis/PlaneSpectrum/Basic.lean Mathlib
+OAI.Analysis.PlaneSpectrum.Characters lean/OAI/Analysis/PlaneSpectrum/Characters.lean OAI.Analysis.PlaneSpectrum.Basic
+OAI.Analysis.PlaneSpectrum.CircleDecay lean/OAI/Analysis/PlaneSpectrum/CircleDecay.lean OAI.Analysis.PlaneSpectrum.Fourier OAI.Geometry.PlaneColoring.Coloring
+OAI.Analysis.PlaneSpectrum.CircleOperator lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean OAI.Analysis.PlaneSpectrum.CircleDecay OAI.Geometry.PlaneColoring.Compactness
+OAI.Analysis.PlaneSpectrum.ConditionalSpectrum lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean OAI.Analysis.PlaneSpectrum.FourierTests OAI.Analysis.PlaneSpectrum.SmallArcs OAI.MeasureTheory.CompactFactors.ConditionalSelection
+OAI.Analysis.PlaneSpectrum.Energy lean/OAI/Analysis/PlaneSpectrum/Energy.lean OAI.Analysis.PlaneSpectrum.Representations
+OAI.Analysis.PlaneSpectrum.Ergodicity lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean OAI.Analysis.PlaneSpectrum.RadialEnergy OAI.Analysis.PlaneSpectrum.SpectralMeasure
+OAI.Analysis.PlaneSpectrum.Fourier lean/OAI/Analysis/PlaneSpectrum/Fourier.lean Mathlib
+OAI.Analysis.PlaneSpectrum.FourierTests lean/OAI/Analysis/PlaneSpectrum/FourierTests.lean OAI.Analysis.PlaneSpectrum.Multipliers
+OAI.Analysis.PlaneSpectrum.InvariantMean lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean Mathlib
+OAI.Analysis.PlaneSpectrum.Multipliers lean/OAI/Analysis/PlaneSpectrum/Multipliers.lean OAI.Analysis.PlaneSpectrum.Characters OAI.Analysis.PlaneSpectrum.InvariantMean
+OAI.Analysis.PlaneSpectrum.NumberFields lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean Mathlib
+OAI.Analysis.PlaneSpectrum.PhaseCollision lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean OAI.Analysis.PlaneSpectrum.PhaseEncoding
+OAI.Analysis.PlaneSpectrum.PhaseEncoding lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean Mathlib
+OAI.Analysis.PlaneSpectrum.RadialEnergy lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean OAI.Analysis.PlaneSpectrum.Energy OAI.Analysis.PlaneSpectrum.Selections
+OAI.Analysis.PlaneSpectrum.Representations lean/OAI/Analysis/PlaneSpectrum/Representations.lean OAI.MeasureTheory.CompactFactors.AlgebraModels OAI.MeasureTheory.CompactFactors.Stationary
+OAI.Analysis.PlaneSpectrum.Selections lean/OAI/Analysis/PlaneSpectrum/Selections.lean OAI.Analysis.PlaneSpectrum.NumberFields
+OAI.Analysis.PlaneSpectrum.SmallArcs lean/OAI/Analysis/PlaneSpectrum/SmallArcs.lean Mathlib
+OAI.Analysis.PlaneSpectrum.SpectralMeasure lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean OAI.Analysis.PlaneSpectrum.Representations
+OAI.Geometry.PlaneColoring.Accumulation lean/OAI/Geometry/PlaneColoring/Accumulation.lean OAI.Geometry.PlaneColoring.Exclusion OAI.Geometry.PlaneColoring.FourTransport
+OAI.Geometry.PlaneColoring.AngularBoundary lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean OAI.Geometry.PlaneColoring.BoundaryTrace
+OAI.Geometry.PlaneColoring.Assembly lean/OAI/Geometry/PlaneColoring/Assembly.lean Mathlib
+OAI.Geometry.PlaneColoring.Basic lean/OAI/Geometry/PlaneColoring/Basic.lean Mathlib
+OAI.Geometry.PlaneColoring.BinaryDynamics lean/OAI/Geometry/PlaneColoring/BinaryDynamics.lean OAI.Geometry.PlaneColoring.Expansion
+OAI.Geometry.PlaneColoring.BinaryPalettes lean/OAI/Geometry/PlaneColoring/BinaryPalettes.lean OAI.Geometry.PlaneColoring.PaletteTransport
+OAI.Geometry.PlaneColoring.BorelTransfer lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean OAI.Analysis.PlaneSpectrum.Ergodicity OAI.Geometry.PlaneColoring.Coloring
+OAI.Geometry.PlaneColoring.BoundaryTrace lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean OAI.Geometry.PlaneColoring.Rigidity OAI.Geometry.PlaneColoring.States
+OAI.Geometry.PlaneColoring.Chromatic lean/OAI/Geometry/PlaneColoring/Chromatic.lean OAI.Geometry.PlaneColoring.Five OAI.Geometry.PlaneColoring.Seven OAI.Geometry.PlaneColoring.Basic
+OAI.Geometry.PlaneColoring.CircleMaps lean/OAI/Geometry/PlaneColoring/CircleMaps.lean OAI.Geometry.PlaneColoring.Coloring
+OAI.Geometry.PlaneColoring.CircleTransport lean/OAI/Geometry/PlaneColoring/CircleTransport.lean OAI.Geometry.PlaneColoring.BinaryDynamics OAI.Geometry.PlaneColoring.CircleMaps
+OAI.Geometry.PlaneColoring.Coloring lean/OAI/Geometry/PlaneColoring/Coloring.lean Mathlib
+OAI.Geometry.PlaneColoring.Compactness lean/OAI/Geometry/PlaneColoring/Compactness.lean OAI.Geometry.PlaneColoring.WeakColoring
+OAI.Geometry.PlaneColoring.ConnectedUnitFree lean/OAI/Geometry/PlaneColoring/ConnectedUnitFree.lean Mathlib
+OAI.Geometry.PlaneColoring.ContinuumLimits lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean OAI.Geometry.PlaneColoring.GraphRealization OAI.Geometry.PlaneColoring.Interfaces OAI.Geometry.PlaneColoring.Sectors
+OAI.Geometry.PlaneColoring.Converse lean/OAI/Geometry/PlaneColoring/Converse.lean OAI.Geometry.PlaneColoring.States
+OAI.Geometry.PlaneColoring.Covering lean/OAI/Geometry/PlaneColoring/Covering.lean Mathlib
+OAI.Geometry.PlaneColoring.CyclicCore lean/OAI/Geometry/PlaneColoring/CyclicCore.lean OAI.Geometry.PlaneColoring.FiveSupport
+OAI.Geometry.PlaneColoring.DiskAverages lean/OAI/Geometry/PlaneColoring/DiskAverages.lean OAI.Geometry.PlaneColoring.Accumulation
+OAI.Geometry.PlaneColoring.DiskExtension lean/OAI/Geometry/PlaneColoring/DiskExtension.lean OAI.Geometry.PlaneColoring.GraphRealization
+OAI.Geometry.PlaneColoring.Exclusion lean/OAI/Geometry/PlaneColoring/Exclusion.lean OAI.Geometry.PlaneColoring.AngularBoundary
+OAI.Geometry.PlaneColoring.Expansion lean/OAI/Geometry/PlaneColoring/Expansion.lean Mathlib
+OAI.Geometry.PlaneColoring.Five lean/OAI/Geometry/PlaneColoring/Five.lean OAI.Geometry.PlaneColoring.BorelTransfer OAI.Geometry.PlaneColoring.Mesh
+OAI.Geometry.PlaneColoring.FiveSupport lean/OAI/Geometry/PlaneColoring/FiveSupport.lean OAI.Geometry.PlaneColoring.Accumulation
+OAI.Geometry.PlaneColoring.FourContinuity lean/OAI/Geometry/PlaneColoring/FourContinuity.lean OAI.Geometry.PlaneColoring.States
+OAI.Geometry.PlaneColoring.FourTransport lean/OAI/Geometry/PlaneColoring/FourTransport.lean OAI.Geometry.PlaneColoring.FourContinuity
+OAI.Geometry.PlaneColoring.FullApproximation lean/OAI/Geometry/PlaneColoring/FullApproximation.lean OAI.Geometry.PlaneColoring.ContinuumLimits OAI.Geometry.PlaneColoring.GraphPatches
+OAI.Geometry.PlaneColoring.GraphCuts lean/OAI/Geometry/PlaneColoring/GraphCuts.lean OAI.Geometry.PlaneColoring.DiskExtension
+OAI.Geometry.PlaneColoring.GraphPatches lean/OAI/Geometry/PlaneColoring/GraphPatches.lean OAI.Geometry.PlaneColoring.GraphCuts OAI.Geometry.PlaneColoring.HoleApproximation
+OAI.Geometry.PlaneColoring.GraphRealization lean/OAI/Geometry/PlaneColoring/GraphRealization.lean OAI.Geometry.PlaneColoring.CyclicCore OAI.Geometry.PlaneColoring.PlanarCovers
+OAI.Geometry.PlaneColoring.HoleApproximation lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean OAI.Geometry.PlaneColoring.DiskExtension
+OAI.Geometry.PlaneColoring.Interfaces lean/OAI/Geometry/PlaneColoring/Interfaces.lean OAI.Geometry.PlaneColoring.AngularBoundary
+OAI.Geometry.PlaneColoring.Lattice lean/OAI/Geometry/PlaneColoring/Lattice.lean Mathlib
+OAI.Geometry.PlaneColoring.MeasurableAssembly lean/OAI/Geometry/PlaneColoring/MeasurableAssembly.lean Mathlib
+OAI.Geometry.PlaneColoring.MeasurableProper lean/OAI/Geometry/PlaneColoring/MeasurableProper.lean OAI.Geometry.PlaneColoring.Basic
+OAI.Geometry.PlaneColoring.Mesh lean/OAI/Geometry/PlaneColoring/Mesh.lean OAI.Geometry.PlaneColoring.FullApproximation
+OAI.Geometry.PlaneColoring.Metric lean/OAI/Geometry/PlaneColoring/Metric.lean OAI.Geometry.PlaneColoring.Basic
+OAI.Geometry.PlaneColoring.Moser lean/OAI/Geometry/PlaneColoring/Moser.lean Mathlib
+OAI.Geometry.PlaneColoring.NullSetRobust lean/OAI/Geometry/PlaneColoring/NullSetRobust.lean OAI.Geometry.PlaneColoring.Converse OAI.Geometry.PlaneColoring.Five
+OAI.Geometry.PlaneColoring.PaletteDensity lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean OAI.Geometry.PlaneColoring.CircleTransport OAI.Geometry.PlaneColoring.Palettes
+OAI.Geometry.PlaneColoring.PaletteTransport lean/OAI/Geometry/PlaneColoring/PaletteTransport.lean OAI.Geometry.PlaneColoring.PaletteDensity
+OAI.Geometry.PlaneColoring.Palettes lean/OAI/Geometry/PlaneColoring/Palettes.lean OAI.Geometry.PlaneColoring.Transitions
+OAI.Geometry.PlaneColoring.PlanarCovers lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean OAI.Geometry.PlaneColoring.DiskAverages
+OAI.Geometry.PlaneColoring.Rigidity lean/OAI/Geometry/PlaneColoring/Rigidity.lean OAI.Geometry.PlaneColoring.PaletteTransport
+OAI.Geometry.PlaneColoring.Sectors lean/OAI/Geometry/PlaneColoring/Sectors.lean OAI.Geometry.PlaneColoring.AngularBoundary OAI.Geometry.PlaneColoring.Moser
+OAI.Geometry.PlaneColoring.Seven lean/OAI/Geometry/PlaneColoring/Seven.lean OAI.Geometry.PlaneColoring.Assembly OAI.Geometry.PlaneColoring.Lattice OAI.Geometry.PlaneColoring.Metric OAI.Geometry.PlaneColoring.Covering OAI.Geometry.PlaneColoring.MeasurableAssembly OAI.Geometry.PlaneColoring.MeasurableProper
+OAI.Geometry.PlaneColoring.States lean/OAI/Geometry/PlaneColoring/States.lean OAI.Geometry.PlaneColoring.BinaryPalettes
+OAI.Geometry.PlaneColoring.Transfer lean/OAI/Geometry/PlaneColoring/Transfer.lean OAI.Geometry.PlaneColoring.Converse OAI.Geometry.PlaneColoring.BorelTransfer
+OAI.Geometry.PlaneColoring.Transitions lean/OAI/Geometry/PlaneColoring/Transitions.lean OAI.Analysis.PlaneSpectrum.CircleOperator
+OAI.Geometry.PlaneColoring.WeakColoring lean/OAI/Geometry/PlaneColoring/WeakColoring.lean OAI.Geometry.PlaneColoring.Coloring
+OAI.MeasureTheory.CompactFactors.AlgebraModels lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean OAI.MeasureTheory.CompactFactors.Separability
+OAI.MeasureTheory.CompactFactors.Amenability lean/OAI/MeasureTheory/CompactFactors/Amenability.lean Mathlib
+OAI.MeasureTheory.CompactFactors.Approximation lean/OAI/MeasureTheory/CompactFactors/Approximation.lean OAI.Analysis.PlaneSpectrum.ConditionalSpectrum OAI.MeasureTheory.CompactFactors.RelativeCenters
+OAI.MeasureTheory.CompactFactors.BoundedFunctions lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean OAI.MeasureTheory.CompactFactors.Kernels
+OAI.MeasureTheory.CompactFactors.Centers lean/OAI/MeasureTheory/CompactFactors/Centers.lean Mathlib
+OAI.MeasureTheory.CompactFactors.ConditionalLimits lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean OAI.MeasureTheory.CompactFactors.Approximation
+OAI.MeasureTheory.CompactFactors.ConditionalSelection lean/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean OAI.Analysis.PlaneSpectrum.PhaseCollision
+OAI.MeasureTheory.CompactFactors.Factors lean/OAI/MeasureTheory/CompactFactors/Factors.lean OAI.MeasureTheory.CompactFactors.Functions
+OAI.MeasureTheory.CompactFactors.Functions lean/OAI/MeasureTheory/CompactFactors/Functions.lean OAI.MeasureTheory.CompactFactors.Kernels
+OAI.MeasureTheory.CompactFactors.Kernels lean/OAI/MeasureTheory/CompactFactors/Kernels.lean OAI.MeasureTheory.CompactFactors.ConditionalLimits
+OAI.MeasureTheory.CompactFactors.RelativeCenters lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean OAI.Analysis.PlaneSpectrum.Basic OAI.MeasureTheory.CompactFactors.Centers
+OAI.MeasureTheory.CompactFactors.RelativeProducts lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean OAI.MeasureTheory.CompactFactors.Amenability OAI.MeasureTheory.CompactFactors.BoundedFunctions
+OAI.MeasureTheory.CompactFactors.Separability lean/OAI/MeasureTheory/CompactFactors/Separability.lean OAI.MeasureTheory.CompactFactors.RelativeProducts
+OAI.MeasureTheory.CompactFactors.Stationary lean/OAI/MeasureTheory/CompactFactors/Stationary.lean OAI.MeasureTheory.CompactFactors.Factors

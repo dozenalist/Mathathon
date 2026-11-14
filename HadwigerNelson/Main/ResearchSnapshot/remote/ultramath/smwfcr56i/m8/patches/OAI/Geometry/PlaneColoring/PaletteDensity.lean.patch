@@ -1,0 +1,22 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean	2026-11-13 19:09:13.641256607 +0000
++++ OAI/Geometry/PlaneColoring/PaletteDensity.lean	2026-11-13 19:36:32.901440777 +0000
+@@ -178,8 +178,8 @@
+ lemma anglePair_quasiMeasurePreserving :
+     Measure.QuasiMeasurePreserving (fun p : ℝ × ℝ => ((p.1 : Angles),(p.2 : Angles)))
+       volume (angularMeasure.prod angularMeasure) := by
+-  convert QuasiMeasurePreserving.prodMap angleMk_quasiMeasurePreserving
+-    angleMk_quasiMeasurePreserving using 1; rfl
++  exact QuasiMeasurePreserving.prodMap angleMk_quasiMeasurePreserving
++    angleMk_quasiMeasurePreserving
+ end EuclideanFiveColor
+ end
+ 
+@@ -477,7 +477,7 @@
+       apply hzero
+       rw [← he f hf]
+       simpa only [Typical,hi] using hft
+-    simp only [sampleFn,ite_eq_right hi,zero_mul]
++    simp only [sampleFn,if_neg hi,zero_mul]
+   · rw [indicator_of_notMem hs,mul_zero]
+ end EuclideanFiveColor
+ end

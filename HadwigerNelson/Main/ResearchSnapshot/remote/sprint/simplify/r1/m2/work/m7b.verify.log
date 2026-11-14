@@ -1,0 +1,66 @@
+tree /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m2/trees/m7b: 82 modules
+TEXTSCAN: 0 hits (clean)
+wiped build/lib
+  ... 10 ok, 0 pending/failed
+  ... 20 ok, 0 pending/failed
+  ... 30 ok, 0 pending/failed
+  ... 40 ok, 0 pending/failed
+  ... 50 ok, 0 pending/failed
+  ... 60 ok, 0 pending/failed
+  ... 70 ok, 0 pending/failed
+  ... 80 ok, 0 pending/failed
+
+BUILD: 82/82 modules OK in 252s
+ty
+    598     556     -42  OAI.MeasureTheory.CompactFactors.RelativeCenters
+    664     624     -40  OAI.MeasureTheory.CompactFactors.AlgebraModels
+    586     547     -39  OAI.MeasureTheory.CompactFactors.Factors
+    774     736     -38  OAI.MeasureTheory.CompactFactors.Kernels
+     68      41     -27  OAI.Geometry.PlaneColoring.Seven
+    379     353     -26  OAI.Geometry.PlaneColoring.Compactness
+    280     256     -24  OAI.Geometry.PlaneColoring.CyclicCore
+     47      24     -23  OAI.Geometry.PlaneColoring.Basic
+    703     680     -23  OAI.MeasureTheory.CompactFactors.Centers
+    497     475     -22  OAI.Analysis.PlaneSpectrum.ConditionalSpectrum
+    485     463     -22  OAI.Geometry.PlaneColoring.PaletteDensity
+    314     294     -20  OAI.Analysis.PlaneSpectrum.Multipliers
+    411     392     -19  OAI.MeasureTheory.CompactFactors.Amenability
+    353     336     -17  OAI.Geometry.PlaneColoring.ContinuumLimits
+    308     292     -16  OAI.Analysis.PlaneSpectrum.CircleOperator
+    322     308     -14  OAI.Analysis.PlaneSpectrum.SmallArcs
+    442     428     -14  OAI.MeasureTheory.CompactFactors.ConditionalSelection
+    611     600     -11  OAI.Geometry.PlaneColoring.DiskExtension
+    453     443     -10  OAI.Analysis.PlaneSpectrum.Energy
+    375     365     -10  OAI.Geometry.PlaneColoring.BinaryPalettes
+    725     715     -10  OAI.Geometry.PlaneColoring.Expansion
+    527     517     -10  OAI.Geometry.PlaneColoring.Interfaces
+    223     213     -10  OAI.MeasureTheory.CompactFactors.BoundedFunctions
+    124     115      -9  OAI.Geometry.PlaneColoring.Palettes
+    255     247      -8  OAI.Analysis.PlaneSpectrum.PhaseEncoding
+    477     470      -7  OAI.Analysis.PlaneSpectrum.Representations
+    503     497      -6  OAI.Geometry.PlaneColoring.AngularBoundary
+    388     383      -5  OAI.Analysis.PlaneSpectrum.SpectralMeasure
+    415     410      -5  OAI.Geometry.PlaneColoring.GraphRealization
+    328     323      -5  OAI.Geometry.PlaneColoring.HoleApproximation
+    472     468      -4  OAI.Analysis.PlaneSpectrum.RadialEnergy
+    458     454      -4  OAI.Geometry.PlaneColoring.BorelTransfer
+    314     310      -4  OAI.Geometry.PlaneColoring.GraphCuts
+     66      62      -4  OAI.Geometry.PlaneColoring.Lattice
+    439     436      -3  OAI.Geometry.PlaneColoring.Moser
+    376     374      -2  OAI.Geometry.PlaneColoring.FiveSupport
+    453     451      -2  OAI.Geometry.PlaneColoring.Sectors
+    176     174      -2  OAI.Geometry.PlaneColoring.WeakColoring
+    415     414      -1  OAI.Analysis.PlaneSpectrum.Ergodicity
+    524     523      -1  OAI.Analysis.PlaneSpectrum.NumberFields
+    432     431      -1  OAI.Analysis.PlaneSpectrum.Selections
+    145     144      -1  OAI.Geometry.PlaneColoring.Chromatic
+      0      62     +62  OAI.Analysis.PlaneSpectrum.DifferenceLaw  [added]
+      0      96     +96  OAI.MeasureTheory.CompactFactors.DifferenceInvariant  [added]
+  31277   30008   -1269  TOTAL (83 -> 82 modules)
+code-lines 29100 -> 27897 (-1203)
+
+
+SAVING: 1269 raw lines, target 1500: NOT MET
+
+
+VERDICT: PASS  (82/82 built, certify=None, deffreeze=None, linecount_rc=1)

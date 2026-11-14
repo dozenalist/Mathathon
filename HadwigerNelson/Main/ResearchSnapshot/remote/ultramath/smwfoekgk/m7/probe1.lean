@@ -1,0 +1,9 @@
+import OAI.MeasureTheory.CompactFactors.Approximation
+#check @OAI.PlaneFiveColor.Spectral.exists_terminal_factor
+#check @OAI.PlaneFiveColor.Spectral.UniversalGood
+#check @OAI.PlaneFiveColor.Spectral.relative_singularity_approximation
+#check @OAI.PlaneFiveColor.Spectral.relative_singularity_successor
+#check @OAI.PlaneFiveColor.Spectral.relative_singularity_limit
+#check @OAI.EuclideanFiveColor.CompactTower.strict_compact_successor
+#check @OAI.EuclideanFiveColor.CompactApproximation.Scalar
+#check @OAI.EuclideanFiveColor.CompactFunctions.Compact

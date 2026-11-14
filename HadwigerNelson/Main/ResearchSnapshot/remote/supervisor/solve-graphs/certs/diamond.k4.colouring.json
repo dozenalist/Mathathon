@@ -1,0 +1,12 @@
+{
+ "graph": "diamond",
+ "n": 4,
+ "k": 4,
+ "colouring": [
+  2,
+  2,
+  0,
+  1
+ ],
+ "edges_checked": 5
+}

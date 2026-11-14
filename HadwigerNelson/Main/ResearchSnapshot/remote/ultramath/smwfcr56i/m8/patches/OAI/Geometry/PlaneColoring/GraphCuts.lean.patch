@@ -1,0 +1,11 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean	2026-11-13 19:09:13.641554037 +0000
++++ OAI/Geometry/PlaneColoring/GraphCuts.lean	2026-11-13 19:44:49.760900134 +0000
+@@ -65,7 +65,7 @@
+   simp [graphCutRetract,hp]
+ lemma graphCutRetract_dominant {V : Type u} {T : SimpleGraph V} (p : GraphCutSpace T)
+     (hp : p.val∉graphRealization T) {i : V} (hi : 1/2<p.val i) : graphCutRetract T p=graphVertex i := by
+-  rw [graphCutRetract,dite_eq_right hp]
++  rw [graphCutRetract,dif_neg hp]
+   congr 1
+   exact graphCut_dominant_unique p.property (graphCut_dominant p.property hp).choose_spec hi
+ lemma graphCutRetract_mem {V : Type u} (T : SimpleGraph V) (p : GraphCutSpace T) :

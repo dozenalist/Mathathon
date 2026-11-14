@@ -1,0 +1,51 @@
+ls.lean:431:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+work/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:460:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:459:38: error: unsolved goals
+X : Type u_2
+Y : Type u_3
+inst : MeasurableSpace X
+inst_1 : MeasurableSpace Y
+inst_2 : StandardBorelSpace X
+inst_3 : Nonempty X
+inst_4 : StandardBorelSpace Y
+inst_5 : Nonempty Y
+μ : Measure X
+inst_6 : IsProbabilityMeasure μ
+q : X → Y
+hq : Measurable q
+val : X → ℂ
+property : val ∈ algebra X
+hf : lp μ 2 (project μ q hq ⟨val, property⟩) = 0
+⊢ lp (RelativeProduct.law μ q hq) 2
+      (project (RelativeProduct.law μ q hq) (q ∘ Prod.fst) ⋯ (tensor ⟨val, property⟩ (bmConj ⟨val, property⟩))) =
+    0
+work/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:497:18: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+work/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:540:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:539:43: error: unsolved goals
+ι : Type u_1
+A : Type u_2
+inst : DecidableEq ι
+inst_1 : CommRing A
+s : Finset ι
+f g : ι → A
+⊢ ∏ i ∈ s, f i = ∑ t ∈ s.powerset, (∏ i ∈ t, (f i - g i)) * ∏ i ∈ s \ t, g i
+work/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:571:18: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+work/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:628:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:627:77: error: unsolved goals
+G : Type u_1
+inst : AddCommGroup G
+ι : Type u_2
+s : Finset ι
+n : ι → ℤ
+hdiv : ∀ (n : ℤ), ¬n = 0 → Function.Surjective ⇑(scaleHom n)
+hn : Set.InjOn n ↑s
+⊢ ∃ m, Admissible s fun i => scaleHom m + scaleHom (n i)

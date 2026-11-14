@@ -1,0 +1,132 @@
+# No good unit triangle exists for the explicit palette
+
+**Result.** There is an actual obstruction. For x = 0 and the stated palette, no unit equilateral triangle, at any translation or rotation, has all three vertices good. This holds even with closed boundary inequalities. So the closure of the good set already fails, and there is no open-margin candidate at all.
+
+The consequence is that a variable-triangle Lemma A′ with a fixed base point x cannot exclude Countermodel C. Nothing here concerns plane colourings or chromatic bounds.
+
+## 1. Radial ranges, re-derived
+
+Write z = e^{ia} + e^{ib} = 2cos(d/2)·e^{i(a+b)/2}, where d = b − a. For r = |z| > 0, the unordered pair {a, b} mod 2π is unique: it equals {ψ − γ, ψ + γ}, with ψ = arg z and γ = arccos(r/2) ∈ [0°, 90°). So "good" is a well-defined property of z.
+
+**Slot condition.** Slots are S_m = [30m, 30m+30). Twelve slots fill 360° and 12 ≡ 0 mod 4, so f is well defined mod 360°.
+- If a ∈ S_m and b ∈ S_n, then d ∈ (30(n−m) − 30, 30(n−m) + 30), which is open.
+- Requiring n − m ≡ 2 (mod 4) gives |d| mod 360° ∈ (30°, 90°) ∪ (150°, 210°).
+
+**Radii.** This gives r ∈ [0, 2 sin 15°) ∪ (√2, 2 cos 15°).
+- 2 sin 15° = (√6 − √2)/2 ≈ 0.517638, and its square is 2 − √3.
+- 2 cos 15° ≈ 1.931852, and its square is 2 + √3.
+- r = 0 is good: any antipodal pair has slot difference 6 ≡ 2.
+
+The previous ranges were correct.
+
+**Exact angular description.** Work in slot units ψ′ = ψ/30° and γ′ = γ/30°. Then f(ψ+γ) − f(ψ−γ) counts the integers N in (ψ′ − γ′, ψ′ + γ′]. Write δ = ψ − (30n + 15°) for the deviation from the nearest half-slot centre. Then:
+
+- **Outer lobes** (γ ∈ (15°, 45°)): we need N = 2. Solving the four floor inequalities gives
+  δ ∈ [max(15° − γ, γ − 45°), min(γ − 15°, 45° − γ)).
+  In particular, **|δ| ≤ 45° − γ**. This gives twelve diamonds centred at r = √3 and angles 15° + 30n, each of half-width at most 15°.
+- **Inner star** (γ ∈ (75°, 90°)): we need N = 6, which gives |δ| < γ − 75°. These are twelve spikes at angles 15° + 30n, plus the origin.
+
+The good set G has D₁₂ symmetry. Rotation by 30° swaps the partner classes {0,2} and {1,3}, and reflection t ↦ −t maps slot m to slot −m−1, which also maps partner classes to partner classes.
+
+Check: z = √3·e^{i15°} has unit vectors at −15° and 45°. These lie in slots 3 and 1, so P = {1,3} and {0,4}, which are disjoint. ✓
+
+## 2. Theorem (no good unit triangle)
+
+Let z₀, z₁, z₂ have pairwise distance 1. Then at least one of them lies outside the closure of G.
+
+Call a vertex **inner** if r ≤ 2 sin 15° and **outer** if √2 ≤ r ≤ 2 cos 15°. The proof splits by how many vertices are inner.
+
+### Case 3 outer
+
+Let g be the centroid, D = |g|, and τ_j = τ + 120°j. Then
+
+r_j² = D² + 1/3 + (2D/√3)·cos τ_j.
+
+Two facts about the three cosines cos τ_j:
+- Their max minus min is at least 3/2. This is the minimal width of an equilateral triangle with circumradius 1.
+- Their minimum is at most −1/2, because one τ_j lies in [120°, 240°].
+
+Apply these:
+1. The spread of r_j² is at least √3·D. All r_j² must lie in [2, 2 + √3], so √3·D ≤ √3, giving D ≤ 1.
+2. Then min r_j² ≤ D² − D/√3 + 1/3. This expression is convex in D, so on [0, 1] it is at most 1 − 0.57735 + 0.33333 = 0.756 < 2.
+
+This is a contradiction.
+
+### Case ≥ 2 inner
+
+Take two inner vertices p₁ and p₂. By the parallelogram law,
+
+|m|² = (r₁² + r₂²)/2 − 1/4 ≤ (2 − √3) − 1/4 ≈ 0.01795, so |m| ≤ 0.1340,
+
+where m is the midpoint of p₁p₂. The third vertex q satisfies |q − m| = √3/2, so
+
+0.732 ≤ |q| ≤ 1.0000 < √2.
+
+So q is neither inner (0.732 > 0.5176) nor outer. This also covers the case of three inner vertices.
+
+### Case 1 inner (p), 2 outer (q₁, q₂)
+
+Let ρ = |p| ≤ 0.517638. Write q_i = p + e^{iφ_i} relative to the direction of p, with |φ₁ − φ₂| = 60°. Then
+
+|q_i|² = ρ² + 1 + 2ρ·cos φ_i.
+
+**Radius bounds.** One of the |φ_i| is at least 30°, so:
+- min |q|² ≤ ρ² + 1 + √3·ρ ≤ (2 − √3) + 1 + √3·0.517638 = 2.164524. So r₁ ≤ 1.471232.
+- max |q| ≤ 1 + ρ, so r₂ ≤ 1.517638.
+
+**Lobe widths.** The bound 45° − γ increases with r, so:
+- |δ₁| ≤ 45° − arccos(0.735616) ≈ 45° − 42.64° = 2.36°.
+- |δ₂| ≤ 45° − arccos(0.758819) ≈ 45° − 40.64° = 4.36°.
+
+**Angle subtended.** Let θ = ∠q₁0q₂. The directions of q₁ and q₂ are 30n_i + 15° + δ_i, so
+
+dist(θ, 30ℤ) ≤ |δ₁| + |δ₂| < 6.72°.
+
+On the other hand, 1 = r₁² + r₂² − 2r₁r₂·cos θ. Differentiating gives ∂cos θ/∂r₂ ∝ r₂² + 1 − r₁² > 0, since all r² < 2.31. So θ decreases in each radius, and therefore:
+- θ ≥ θ(1.471232, 1.517638). Here cos θ = 3.467749/4.465596 = 0.776545, so θ ≥ 39.05°.
+- θ ≤ θ(√2, √2) = 2·arcsin(1/(2√2)) = 41.41°.
+
+Thus dist(θ, 30ℤ) ≥ min(9.05°, 18.59°) = 9.05° > 6.72°, a contradiction. ∎
+
+**Robustness.** Every inequality above was used in closed form, and the smallest slack is about 2.3° in the last case. So the obstruction also holds for the closure of G.
+
+The density argument needs vertices with open margins, that is, interior points of G for some representative of P. Changing P on a null set cannot create such points. The inner-spike angular constraint was never used, so only the radial ranges and the outer-lobe width 45° − γ matter.
+
+## 3. Consequences
+
+- In model C, no single-base-point triangle z_j = x + e^{iθ_j} + e^{iφ_j} has all three partner pairs. The "Next task" route of the previous response is therefore closed. A variable-shape `sourceTriangle_pair` would be sound but has nothing to apply to.
+- The three-outer and two-inner cases use only the radial ranges. They therefore exclude good triangles for **any** palette whose disjoint pairs force d ∈ ±(30°, 90°) ∪ (150°, 210°). Only the mixed case used the specific slot word.
+- Other kinds of triangle are not excluded by this argument and remain unexamined:
+  - vertices using different base points x_j;
+  - longer sums such as e^{ia} + e^{ib} + e^{ic};
+  - vertices whose good pairs come from a palette at a different scale.
+
+  Any of these needs its own density lemma. None is supplied, and I make no claim about them.
+
+## 4. Verification spec for the compute worker
+
+The task is to confirm the obstruction, not to search for a triangle.
+
+**(a) Interval-arithmetic certificate.** Use mpmath.iv or Arb with at least 50 bits. Check each of the following:
+1. (2 − √3) + 1 + √3·(√6 − √2)/2 < 2.16453, and its square root is < 1.47124.
+2. 1 + (√6 − √2)/2 < 1.51764.
+3. arccos(1.47124/2) > 42.63° and arccos(1.51764/2) > 40.63°. These give lobe widths below 2.37° and 4.37°.
+4. arccos((1.47124² + 1.51764² − 1)/(2·1.47124·1.51764)) > 39.0°.
+5. 2·arcsin(1/(2√2)) < 41.5°.
+6. The derivative condition r₂² + 1 − r₁² > 0 holds on [√2, 1.51764]².
+7. (2 − √3) − 1/4 < 0.018, and √0.018 + √3/2 < √2, and √3/2 − √0.018 > (√6 − √2)/2.
+8. max over D ∈ [0, 1] of D² − D/√3 + 1/3 < 2.
+
+**(b) Independent sanity sweep (no proof weight).**
+- **Grid.** Centroid g on [−2.6, 2.6]² with step 0.005; rotation τ ∈ [0°, 120°) with step 0.1°. Vertices are g + e^{i(τ + 120°j)}/√3.
+- **Exact goodness test.** Let r = |z|. If r = 0, the vertex is good. Otherwise set γ = arccos(r/2), take a = arg z − γ and b = arg z + γ, and test (⌊b/30°⌋ − ⌊a/30°⌋) mod 4 = 2. Use rational degrees or exact floor near boundaries.
+- **Margin.** Define the signed margin as follows, then take M = max over the grid of the minimum over j of the margin.
+  - In the outer annulus: min(γ − 15°, 45° − γ) − |δ|.
+  - In the inner disk: γ − 75° − |δ|.
+  - Elsewhere: minus the radial distance to the nearest range.
+- **Expected output.**
+  - Zero triangles with three good vertices.
+  - M < 0.
+  - The near-misses should cluster in the 1-inner/2-outer configuration with θ ≈ 39–41°.
+
+  Report M, the arg-max configuration, and the hit count. Any hit would contradict §2 and should be rechecked in exact arithmetic before being trusted.

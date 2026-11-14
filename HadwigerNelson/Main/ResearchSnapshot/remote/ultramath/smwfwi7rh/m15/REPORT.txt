@@ -1,0 +1,7 @@
+Solved: the exact k=6 boundary, rigorously.
+MAIN THEOREM. The paper's trace relation (T) c(x+e) in P_x(e) a.e. (printed in 5.1), with its 60-degree exclusion (5.7), already forces c a.e. proper, hence chi(R^2) <= k. Proof: |1-R| = 1, so every unit pair (y,y') is (x+Re, x+e), x = y-Re; (T) puts c(y) in P_x(Re) and c(y') in P_x(e), disjoint by (5.7). Hence trace-consistency EQUALS the six-colouring problem: (T)+(5.7) <=> chi <= k, so no palette axiom can prove (W) at k=6 without proving chi >= 7.
+COROLLARY. Necessary condition (HIT): for a.e. y the palettes at the unit circle around y, pointing at y, share c(y). Any field failing (HIT) is no colouring's palette field. Every sprint countermodel is centre-independent, so its intersection is over all values, empty by (5.7): one line, certified for the three m15 block models, the free-label l=6 word and m13's singleton. This also kills my own d14 (scale gluing).
+ALSO: palettes lie in the support field (reverse needs a density hypothesis, flagged, unused); selection form (nonempty unit-disjoint set-valued F <=> chi <= k); given the point-field identity, (5.2),(5.3) follow from (5.7); m11's heavy-direction hint corrected (distances 1,1,sqrt3); exact Moser spindle and wheel W6 decisions.
+FILES: .ultramath/smwfwi7rh/m15/POINT-FIELD.md, verify.py, verify.out.
+CHECK: cd .ultramath/smwfwi7rh/m15 && python3 verify.py (34 exact checks, all pass, exit 0).
+NOT done: k=6 undecided; the note proves the palette route cannot decide it.

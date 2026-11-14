@@ -1,0 +1,11 @@
+Route (d) (amenability/quasi-tiling instead of the FZ tower) is DEAD, with certificate; the transfer's rigidity target is reduced. Files: .ultramath/smwfk0ybk/m14/route-d.md, barrier_check.py. Check: cd .ultramath/smwfk0ybk/m14 && python3 barrier_check.py.
+
+(1) Audit: amenability is used five times, four INSIDE Theorem 2.3 (Foelner measure L1245; mean on F/Z, Lemma 2.5; Foelner in K, Lemmas 3.2, 3.3; syndeticity L1078). Route (d) proposes what the paper already does; the tower converts a mean into a pointwise statement. A one-level truncation is also impossible (skew product).
+
+(2) Barrier: X={0,1}^Z, Bernoulli, shift S, graph x--Sx has chi=2 but no measurable proper 2-colouring: h=(-1)^c in L^2 with h(Sx)=-h(x) forces c_{S+1}=-c_S on Fourier coefficients, whose orbits are infinite, so sum|c_S|^2 is infinite unless h=0; every finite truncation is solvable (checked exactly). The Foelner construction of Prop 4.2 applies verbatim, so amenability of the acting group cannot give the transfer.
+
+(3) Reduction (R): Prop 4.2 consumes Theorem 2.3 only at |z|=1: every K-invariant wild lambda has hat-lambda(u)=0 for u in K, i.e. m(1)=0 in section 3, strictly weaker than m=0 off 0; Lemmas 3.4/3.5 stay necessary, so a smaller statement, not yet a smaller proof. Lean: sole consumer BorelTransfer.lean:61 at z=kCoeff b.
+
+(4) Partial: hat-lambda(1)=lambda({d:d(v)=1}) for v in K; the only K-fixed point of D is 0.
+
+Not claimed: transfer proved/refuted; Step 1 untouched (m6 reports SAT).

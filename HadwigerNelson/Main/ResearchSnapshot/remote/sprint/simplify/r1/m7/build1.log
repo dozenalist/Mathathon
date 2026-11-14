@@ -1,0 +1,629 @@
+OK   OAI.Analysis.PlaneSpectrum.Basic [46.8s]
+OK   OAI.Analysis.PlaneSpectrum.DifferenceLaw [28.5s]
+OK   OAI.Analysis.PlaneSpectrum.Fourier [46.8s]
+OK   OAI.Analysis.PlaneSpectrum.InvariantMean [34.5s]
+OK   OAI.Analysis.PlaneSpectrum.NumberFields [50.4s]
+OK   OAI.Analysis.PlaneSpectrum.PhaseEncoding [44.1s]
+OK   OAI.Analysis.PlaneSpectrum.SmallArcs [28.1s]
+OK   OAI.Geometry.PlaneColoring.Assembly [35.5s]
+OK   OAI.Geometry.PlaneColoring.Basic [28.5s]
+OK   OAI.Geometry.PlaneColoring.Coloring [29.2s]
+OK   OAI.Geometry.PlaneColoring.Covering [165.2s]
+OK   OAI.Geometry.PlaneColoring.Expansion [162.4s]
+OK   OAI.Geometry.PlaneColoring.Lattice [155.7s]
+OK   OAI.Geometry.PlaneColoring.Moser [193.2s]
+OK   OAI.MeasureTheory.CompactFactors.Amenability [162.3s]
+OK   OAI.MeasureTheory.CompactFactors.Centers [156.2s]
+OK   OAI.Analysis.PlaneSpectrum.Characters [17.5s]
+OK   OAI.Analysis.PlaneSpectrum.CircleDecay [18.4s]
+FAIL OAI.Analysis.PlaneSpectrum.PhaseCollision [16.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:395:67: error: unexpected token '/--'; expected 'lemma'
+
+OK   OAI.Analysis.PlaneSpectrum.Selections [17.8s]
+OK   OAI.Geometry.PlaneColoring.BinaryDynamics [23.3s]
+OK   OAI.Geometry.PlaneColoring.CircleMaps [18.0s]
+OK   OAI.Geometry.PlaneColoring.Metric [12.0s]
+FAIL OAI.Geometry.PlaneColoring.WeakColoring [11.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/WeakColoring.lean:17:2: error: No goals to be solved
+
+FAIL OAI.MeasureTheory.CompactFactors.RelativeCenters [11.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:101:65: error: unexpected token '/--'; expected 'lemma'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:105:38: error: type expected, got
+  (X : ?m.11[X])
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:115:0: error: Invalid name after `end`: Expected `CosetCenter.Embedding`, but found `EuclideanFiveColor.ErgodicSupport`
+
+Note: The current scopes are `EuclideanFiveColor.CosetCenter.Embedding`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:124:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.compProd_map_base`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:138:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.condDistrib_comp_equiv`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:153:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.condDistrib_equivariant`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:202:18: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.probabilityKernel`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:206:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.measurable_probabilityKernel`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:209:18: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.cosetMass`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:212:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.measurable_cosetMass`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:219:18: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveC
+OK   OAI.Analysis.PlaneSpectrum.Multipliers [8.9s]
+OK   OAI.Geometry.PlaneColoring.CircleTransport [9.9s]
+FAIL OAI.Geometry.PlaneColoring.Compactness [10.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Compactness.lean:264:2: error: No goals to be solved
+
+OK   OAI.Geometry.PlaneColoring.Seven [3.9s]
+OK   OAI.MeasureTheory.CompactFactors.ConditionalSelection [6.7s]
+OK   OAI.MeasureTheory.CompactFactors.DifferenceInvariant [6.0s]
+FAIL OAI.Analysis.PlaneSpectrum.CircleOperator [8.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:16:4: error: Application type mismatch: The argument
+  Eventually.of_forall fun t => Eq.le (LinearIsometry.norm_map (planeTranslate (direction t)) g)
+has type
+  ∀ᵐ (x : Angles) ∂angularMeasure, ‖(planeTranslate (direction x)) g‖ ≤ ‖g‖
+of sort `Prop` but is expected to have type
+  Set Angles
+of sort `Type` in the application
+  angularMeasure ⋯
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:41:138: error: Type mismatch
+  Eq.symm h
+has type
+  ∫ (ω : Angles), (planeTranslate (direction ω)) g ∂angularMeasure =
+    MemLp.toLp (ProbabilityL2.average angularMeasure F) ⋯
+but is expected to have type
+  circleOperator g = MemLp.toLp (ProbabilityL2.average angularMeasure F) ⋯
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:79:2: error: 'change' tactic failed, pattern
+  ∫ (t : Angles), 𝓕 ((planeTranslate (direction t)) g) ∂angularMeasure = 𝓕 (circleOperator g)
+is not definitionally equal to target
+  ∫ (x : Angles), ↑↑(Lp.fourierTransformₗᵢ ℂ ℂ) ((planeTranslate (direction x)) g) ∂angularMeasure =
+    ↑↑(Lp.fourierTransformₗᵢ ℂ ℂ) (∫ (x : Angles), (planeTranslate (direction x)) g ∂angularMeasure)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:249:2: error(lean.unknownIdentifier): Unknown identifier `exact`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:251:2: error: Function expected at
+  integral_nonneg ?m.20
+but this term has type
+  0 ≤ ∫ (x : ?m.6), ?m.16 x ∂?m.11
+
+Note: Expected a function because this term is being applied to the argument
+  exact
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:251:18: error: Application type mismatch: The argument
+  sampleFn_nonneg c q 1 i
+has type
+  ∀ (t : Angles), 0 ≤ sampleFn c q 1 i t
+but is expected to have type
+  0 ≤ ?m.16
+in the application
+  integral_nonneg (sampleFn_nonneg c q 1 i)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/CircleOperator.lean:293:2: error: Tactic `rfl` failed: The left-hand side
+  ↑(∫ (a : Angles), sampleFn c q 1 i a ∂angularMeasure - ∫ (a : Angles), sampleFn c (q + h) 1 i a ∂angularMeasure)
+is not definitionally equal to the right-hand side
+  ↑(colorMass c i q - colorMass c i (q + h))
+
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+i : Fin k
+x q h : ℂ
+R : ℝ
+hq : q ∈ Metric.ball x R
+hh : ‖h‖ < 1
+he :
+  ∀ (t : Angles),
+    colorCutoff c i x R (q + direction t) - colorCutoff c i x R (q + direction t + h) =
+      ↑(sampleFn c q 1 i t - sampleFn c (q + h) 1 i t)
+⊢ ↑(∫ (a : Angles), sampleFn c q 1 i a ∂angularMeasure - ∫ (a : Angles), sampleFn c (q + h) 1 i a ∂angularMeasure) =
+    ↑(colorMass c i q - colorMass c i (q + h))
+
+OK   OAI.Analysis.PlaneSpectrum.FourierTests [6.9s]
+OK   OAI.Analysis.PlaneSpectrum.ConditionalSpectrum [13.3s]
+OK   OAI.Geometry.PlaneColoring.Transitions [7.0s]
+FAIL OAI.Geometry.PlaneColoring.Palettes [7.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Palettes.lean:25:2: error: Function expected at
+  (Exists.choose_spec
+        (exists_countable_essential_union angularMeasure (tracePositive c hc x i)
+          (tracePositive_measurable c hc x i))).right
+    b
+but this term has type
+  tracePositive c hc x i b ≤ᵐ[angularMeasure] ⋃ j ∈ ⋯.choose, tracePositive c hc x i j
+
+Note: Expected a function because this term is being applied to the argument
+  exact
+
+OK   OAI.MeasureTheory.CompactFactors.Approximation [10.1s]
+FAIL OAI.Geometry.PlaneColoring.PaletteDensity [6.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean:135:2: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean:197:2: error: No goals to be solved
+
+FAIL OAI.MeasureTheory.CompactFactors.ConditionalLimits [12.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:222:68: error: unexpected token 'end'; expected 'lemma'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:224:0: error: Unexpected name `PlaneFiveColor.Spectral` after `end`: The current section is unnamed
+
+Hint: Delete the name `PlaneFiveColor.Spectral` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵P̵l̵a̵n̵e̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵S̵p̵e̵c̵t̵r̵a̵l̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:251:6: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.relative_singularity_base`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:262:6: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.instMeasurableSpaceCircle_oAI`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:263:6: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.instBorelSpaceCircle_oAI`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:268:4: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.AmbientEncodingAt`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:284:8: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:455:47: error: Invalid argument name `K` for function
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:456:8: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+Y : Type u_5
+inst✝ : MeasurableSpace Y
+x✝ : Sort u_6
+Scalar : x✝
+ν : Measure Y
+⊢ sorry
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:482:6: warning: The namespaces `PlaneFiveColor` and `Spectral` are duplicated in the declaration `OAI.PlaneFiveColor.Spectral.PlaneFiveColor.Spectral.ambient_encoding_of_at`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:555:44: error: Invalid argument name `K` for function `CompactApproximation.scalar_identity`
+
+Hint: Perhaps you mea
+OK   OAI.Geometry.PlaneColoring.PaletteTransport [5.5s]
+OK   OAI.MeasureTheory.CompactFactors.Kernels [7.5s]
+OK   OAI.Geometry.PlaneColoring.BinaryPalettes [11.1s]
+OK   OAI.Geometry.PlaneColoring.Rigidity [8.4s]
+FAIL OAI.MeasureTheory.CompactFactors.BoundedFunctions [11.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:216:0: error: Unexpected name `EuclideanFiveColor.BoundedMeasurable` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor.BoundedMeasurable` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵B̵o̵u̵n̵d̵e̵d̵M̵e̵a̵s̵u̵r̵a̵b̵l̵e̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:218:0: error: Missing name after `end`: Expected the current scope name `BoundedMeasurable`
+
+Hint: To end the current scope `BoundedMeasurable`, specify its name:
+  end ̲B̲o̲u̲n̲d̲e̲d̲M̲e̲a̲s̲u̲r̲a̲b̲l̲e̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:220:0: error: Invalid name after `end`: Expected `BoundedMeasurable`, but found `OAI`
+
+Note: The current scopes are `EuclideanFiveColor.BoundedMeasurable`
+
+OK   OAI.MeasureTheory.CompactFactors.Functions [11.8s]
+OK   OAI.Geometry.PlaneColoring.States [10.1s]
+FAIL OAI.MeasureTheory.CompactFactors.Factors [14.7s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:279:42: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Nonempty Y
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:282:2: error: Type mismatch
+  Measurable.comp (MeasurableEmbedding.measurable_invFun scalar_embedding)
+    (Measurable.comp (measurable_pi_apply 1) OrbitSpace.measurable_val)
+has type
+  Measurable (⋯.invFun ∘ (fun f => f 1) ∘ OrbitSpace.val)
+but is expected to have type
+  Measurable decode
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:285:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:288:2: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:287:2: warning: Unused tactic linter: `rw [OrbitFactor.orbit_one]` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:288:2: warning: Unused tactic linter: `exact scalar_embedding.leftInverse_invFun _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:290:0: error: `[Nonempty Y]` did not match any variables in the current scope
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:291:0: warning: automatically included section variable(s) unused in theorem `OAI.EuclideanFiveColor.FactorCode.encode_as_comp`:
+  [MeasurableConstSMul K X]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableConstSMul K X] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:417:0: warning: automatically included section variable(s) unused in theorem `OAI.EuclideanFiveColor.ChainJoin.le_code`:
+  [Nonempty Y]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Nonempty Y] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:480:14: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableConstSMul K X
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+
+OK   OAI.MeasureTheory.CompactFactors.RelativeProducts [15.1s]
+FAIL OAI.Geometry.PlaneColoring.BoundaryTrace [30.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:318:84: error: unexpected token '/--'; expected 'lemma'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:320:68: error: unexpected token 'end'; expected 'lemma'
+
+OK   OAI.Geometry.PlaneColoring.Converse [30.8s]
+OK   OAI.Geometry.PlaneColoring.FourContinuity [30.9s]
+FAIL OAI.MeasureTheory.CompactFactors.Separability [30.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:364:2: error: Function expected at
+  M.positive ?m.24 fun g => ?m.26
+but this term has type
+  0 ≤ M.map ?m.24
+
+Note: Expected a function because this term is being applied to the argument
+  meanNorm
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:367:34: error(lean.unknownIdentifier): Unknown identifier `H`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:365:4: error: 'change' tactic failed, pattern
+  0 ≤ ‖(l2 μ) (↑F g)‖
+is not definitionally equal to target
+  0 ≤ ?m.24 g
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:367:36: error: unexpected token ':='; expected command
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:392:6: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:403:6: error: No goals to be solved
+
+OK   OAI.MeasureTheory.CompactFactors.Stationary [26.0s]
+FAIL OAI.Geometry.PlaneColoring.AngularBoundary [33.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:31:2: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:347:2: error: Application type mismatch: The argument
+  IsOpen.isClosed_compl (isOpen_iUnion (angleEssential_open s))
+has type
+  IsClosed (⋃ i, angleEssential s i)ᶜ
+of sort `Prop` but is expected to have type
+  Angles
+of sort `Type` in the application
+  (⋃ b, angleEssential s b)ᶜ ⋯
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:371:12: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case mp
+s : Angles → Bool
+hf : ∀ᵐ (t : Angles) ∂angularMeasure, s (t + ↑sixty) = !s t
+t : Angles
+h : t + ↑sixty ∈ sorry
+⊢ t ∈ sorry
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:373:12: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case mpr
+s : Angles → Bool
+hf : ∀ᵐ (t : Angles) ∂angularMeasure, s (t + ↑sixty) = !s t
+t : Angles
+h : t ∈ sorry
+⊢ t + ↑sixty ∈ sorry
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:369:13: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:369:27: warning: This simp argument is unused:
+  mem_compl_iff
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [angleBoundary, mem_iUnion, not_exists]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:369:41: warning: This simp argument is unused:
+  mem_iUnion
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [angleBoundary, mem_compl_iff, not_exists]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:369:52: warning: This simp argument is unused:
+  not_exists
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [angleBoundary, mem_compl_iff, mem_iUnion]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:383:15: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:377:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:383:29: warning: This simp argument is unused:
+  mem_compl_iff
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [angleBoundary, not_not, mem_iUnion] at ht
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:383:43: warning: This simp argument is unused:
+  not_not
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [angleBoundary, mem_compl_iff, mem_iUnion] at ht
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e28
+OK   OAI.Geometry.PlaneColoring.FourTransport [9.8s]
+OK   OAI.MeasureTheory.CompactFactors.AlgebraModels [23.9s]
+FAIL OAI.Analysis.PlaneSpectrum.Representations [24.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:151:2: error: Function expected at
+  Unitary.linearIsometryEquiv.symm (isometry μ s hs)
+but this term has type
+  ↥(_root_.unitary (↥(Lp ℂ 2 μ) →L[ℂ] ↥(Lp ℂ 2 μ)))
+
+Note: Expected a function because this term is being applied to the argument
+  (unitary μ s hs : Lp ℂ 2 μ →L[ℂ] Lp ℂ 2 μ)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:152:81: error(lean.unknownIdentifier): Unknown identifier `v`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:152:83: error: unexpected token ':='; expected command
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:241:2: error: Function expected at
+  Koopman.unitary (measure k ω) (rotateHomeo k b).toMeasurableEquiv ⋯
+but this term has type
+  ↥(unitary (↥(Lp ℂ 2 (measure k ω)) →L[ℂ] ↥(Lp ℂ 2 (measure k ω))))
+
+Note: Expected a function because this term is being applied to the argument
+  Lp.compMeasurePreserving
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:242:70: error: unexpected token ':='; expected command
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:243:0: error: Not a definitional equality: the left-hand side
+  ↑(rotation k ω b) v
+is not definitionally equal to the right-hand side
+  (Lp.compMeasurePreserving (rotate k b) ⋯) v
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:245:75: error: Type mismatch
+  rfl
+has type
+  ?m.27 = ?m.27
+but is expected to have type
+  ↑(rotation k ω b) v = (Lp.compMeasurePreserving (rotate k b) ⋯) v
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:252:4: error: 'change' tactic failed, pattern
+  (Lp.compMeasurePreserving (trans k 0) ⋯) v = v
+is not definitionally equal to target
+  ↑(translation k ω (Multiplicative.toAdd 1)) v = ↑1 v
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:259:4: error: 'change' tactic failed, pattern
+  (Lp.compMeasurePreserving (trans k (Multiplicative.toAdd a + Multiplicative.toAdd b)) ?m.106) v =
+    (Lp.compMeasurePreserving (trans k (Multiplicative.toAdd a)) ?m.119)
+      ((Lp.compMeasurePreserving (trans k (Multiplicative.toAdd b)) ?m.132) v)
+is not definitionally equal to target
+  ↑(translation k ω (Multiplicative.toAdd (a * b))) v =
+    ↑(translation k ω (Multiplicative.toAdd a) * translation k ω (Multiplicative.toAdd b)) v
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:265:0: error: Not a definitional equality: the left-hand side
+  (op (representation k ω) a) v
+is not definitionally equal to the right-hand side
+  (Lp.compMeasurePreserving (trans k a) ⋯) v
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:266:71: error: Type mismatch
+  rfl
+has type
+  ?m.22 = ?m.22
+but is expected to have type
+  (op (representation k ω) a) v = (Lp.compMeasurePreserving (trans k a) ⋯) v
+
+OK   OAI.Geometry.PlaneColoring.Exclusion [19.4s]
+FAIL OAI.Geometry.PlaneColoring.Interfaces [11.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:28:2: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:32:2: error: No goals to be solved
+
+FAIL OAI.Geometry.PlaneColoring.Sectors [10.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:121:49: error: Function expected at
+  true
+but this term has type
+  Bool
+
+Note: Expected a function because this term is being applied to the argument
+  Measurable
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:122:38: error: unexpected token ':='; expected command
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:128:2: error: unsolved goals
+case pos
+c : ℂ → Fin 5
+hc : Measurable c
+hw : WeakColoring 5 c
+x : ℂ
+hb : BinaryCenter c hc x 3 4
+t : Angles
+ht : (t + ↑sixty ∈ paletteSet c hc x 3 ↔ t ∉ paletteSet c hc x 3) ∧ (t ∈ paletteSet c hc x 4 ↔ t ∉ paletteSet c hc x 3)
+hp : t ∈ paletteSet c hc x 3
+hn : t + ↑sixty ∉ paletteSet c hc x 3
+⊢ sorry = true
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:130:2: error: unsolved goals
+case neg
+c : ℂ → Fin 5
+hc : Measurable c
+hw : WeakColoring 5 c
+x : ℂ
+hb : BinaryCenter c hc x 3 4
+t : Angles
+ht : (t + ↑sixty ∈ paletteSet c hc x 3 ↔ t ∉ paletteSet c hc x 3) ∧ (t ∈ paletteSet c hc x 4 ↔ t ∉ paletteSet c hc x 3)
+hp : t ∉ paletteSet c hc x 3
+hn : t + ↑sixty ∈ paletteSet c hc x 3
+⊢ false = !sorry
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:129:15: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:131:54: warning: This simp argument is unused:
+  Bool.not_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [triangleState, hp, hn, ite_true, ite_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:145:2: error: unsolved goals
+c : ℂ → Fin 5
+hc : Measurable c
+hw : WeakColoring 5 c
+x : ℂ
+K : Fin 3 → Set ℂ
+v : Fin 3 → ℂ
+hv : ∀ (i : Fin 3), ‖v i‖ = 1
+hK : (i : Fin 3) → ApproachingContinuum x (K i) (v i)
+hH : ∀ (i : Fin 3), ∀ j ∈ triangleEdge i, Disjoint (spatialSupport c j) (Straddle (K i))
+t : Angles
+hn : ∀ (i : Fin 3), ⟪direction t, v i⟫ ≠ 0
+hnR : ∀ (i : Fin 3), ⟪direction t * ↑(Circle.exp (Real.pi / 3)), v i⟫ ≠ 0
+A : Set Angles
+hA : IsOpen A
+htA : t ∈ A
+hb :
+  ∀ᵐ (t : ℝ ⧸ AddSubgroup.zmultiples (2 * Real.pi)) ∂angularMeasure,
+    (t + ↑sixty ∈ paletteSet c hc x 3 ↔ t ∉ paletteSet c hc x 3) ∧ (t ∈ paletteSet c hc x 4 ↔ t ∉ paletteSet c hc x 3)
+hae : ∀ᵐ (u : Angles) ∂angularMeasure, u ∈ A → 4 ∈ palette c hc x u
+u : Angles
+hu : u ∈ A → 4 ∈ palette c hc x u
+hu' : (u + ↑sixty ∈ paletteSet c hc x 3 ↔ u ∉ paletteSet c hc x 3) ∧ (u ∈ paletteSet c hc x 4 ↔ u ∉ paletteSet c hc x 3)
+hAu : u ∈ A
+hp : u ∉ paletteSet c hc x 3
+⊢ sorry = true
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:144:15: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:418:15: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:410:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:419:4: warning: Unused tactic linter: `exact Bool.noConfusion he` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+
+FAIL OAI.Analysis.PlaneSpectrum.Energy [14.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:376:2: error: No goals to be solved
+
+FAIL OAI.Analysis.PlaneSpectrum.SpectralMeasure [24.7s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:149:22: error: Function expected at
+  continuous_of_discreteTopology
+but this term has type
+  Continuous ?m.65
+
+Note: Expected a function because this term is being applied to the argument
+  (character U φ g : ℂ)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:150:74: error(lean.unknownIdentifier): Unknown identifier `g`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:150:79: error: unexpected token ':='; expected command
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:382:14: error(lean.unknownIdentifier): Unknown identifier `CompactIntegral.apply_clm`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:382:2: error: Type mismatch: After simplification, term
+  hh
+ has type
+  ((CompactIntegral.clm μ) { toFun := fun d => ↑(f d), continuous_toFun := ⋯ }).re =
+    ((CompactIntegral.clm ν) { toFun := fun d => ↑(f d), continuous_toFun := ⋯ }).re
+but is expected to have type
+  ∫ (x : PontryaginDual G), f x ∂μ = ∫ (x : PontryaginDual G), f x ∂ν
+
+OK   OAI.Geometry.PlaneColoring.Accumulation [9.6s]
+OK   OAI.Analysis.PlaneSpectrum.RadialEnergy [25.4s]
+OK   OAI.Geometry.PlaneColoring.DiskAverages [10.8s]
+FAIL OAI.Geometry.PlaneColoring.FiveSupport [10.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:84:2: error: Application type mismatch: The argument
+  measurableSet_eq_fun
+has type
+  Measurable ?m.21 → Measurable ?m.22 → MeasurableSet {x | ?m.21 x = ?m.22 x}
+of sort `Prop` but is expected to have type
+  ℝ
+of sort `Type` in the application
+  (volume.restrict (fiveRealState c hc x i)).support ⋯
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:86:24: error: Application type mismatch: The argument
+  c
+has type
+  ℂ → Fin 5
+but is expected to have type
+  ℂ
+in the application
+  fiveSupport c
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:90:24: error: Application type mismatch: The argument
+  c
+has type
+  ℂ → Fin 5
+but is expected to have type
+  ℂ
+in the application
+  fiveSupport c
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:90:54: error: Application type mismatch: The argument
+  c
+has type
+  ℂ → Fin 5
+but is expected to have type
+  ℂ
+in the application
+  fiveSupport c
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:93:25: error(lean.unknownIdentifier): Unknown identifier `five_support_trace`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:93:9: error: Tactic `rcases` failed: `x✝ : ?m.44` is not an inductive datatype
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:121:60: error: Application type mismatch: The argument
+  c
+has type
+  ℂ → Fin 5
+but is expected to have type
+  ℂ
+in the application
+  fiveSupport c
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:122:44: error(lean.unknownIdentifier): Unknown identifier `c`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:122:46: error(lean.unknownIdentifier): Unknown identifier `hc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:124:24: error: Application type mismatch: The argument
+  c
+has type
+  ℂ → Fin 5
+but is expected to have type
+  ℂ
+in the application
+  fiveSupport c
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:124:73: error: Application type mismatch: The argument
+  c
+has type
+  ℂ → Fin 5
+but is expected to have type
+  ℂ
+in the application
+  fiveSupport c
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:125:61: error(lean.unknownIdentifier): Unknown identifier `hc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:128:24: error: Application type mismatch: The argument
+  c
+has type
+  ℂ → Fin 5
+but is expected to have type
+  ℂ
+in the application
+  fiveSupport c
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:128:73: error: Application type mismatch: The argument
+  c
+has type
+  ℂ → Fin 5
+but is expected to have type
+  ℂ
+in the application
+  fiveSupport c
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FiveSupport.lean:129:61: error(
+OK   OAI.Analysis.PlaneSpectrum.Ergodicity [19.2s]
+FAIL OAI.Geometry.PlaneColoring.CyclicCore [10.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CyclicCore.lean:9:2: error: unexpected identifier; expected command
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CyclicCore.lean:232:2: error: No goals to be solved
+
+OK   OAI.Geometry.PlaneColoring.PlanarCovers [13.7s]
+OK   OAI.Geometry.PlaneColoring.BorelTransfer [11.3s]
+FAIL OAI.Geometry.PlaneColoring.GraphRealization [9.8s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:119:2: error: No goals to be solved
+
+FAIL OAI.Geometry.PlaneColoring.ContinuumLimits [6.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean:162:54: error: unexpected token 'end'; expected 'lemma'
+
+FAIL OAI.Geometry.PlaneColoring.DiskExtension [8.8s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:339:2: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:516:48: error: Function expected at
+  Metric.isOpen_ball
+but this term has type
+  IsOpen[PseudoMetricSpace.toUniformSpace.toTopologicalSpace] (Metric.ball ?m.15 ?m.16)
+
+Note: Expected a function because this term is being applied to the argument
+  isOpen_iUnion
+
+OK   OAI.Geometry.PlaneColoring.Transfer [6.6s]
+FAIL OAI.Geometry.PlaneColoring.GraphCuts [4.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:218:21: error: Function expected at
+  (K ∩ B).Nonempty
+but this term has type
+  Prop
+
+Note: Expected a function because this term is being applied to the argument
+  exact
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:220:6: warning: declaration uses `sorry`
+
+FAIL OAI.Geometry.PlaneColoring.HoleApproximation [6.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:85:2: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:212:2: error: Application type mismatch: The argument
+  MeasurableSet.diff (IsClosed.measurableSet Metric.isClosed_closedBall)
+has type
+  MeasurableSet ?m.21 → MeasurableSet (Metric.closedBall ?m.11 ?m.12 \ ?m.21)
+of sort `Prop` but is expected to have type
+  ℂ
+of sort `Type` in the application
+  diskAnnulus d ⋯
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:241:57: error: Type mismatch
+  measure_biUnion_finset_le S ?m.53
+has type
+  ?m.52 (⋃ i ∈ S, ?m.53 i) ≤ ∑ i ∈ S, ?m.52 (?m.53 i)
+but is expected to have type
+  volume (holeAnnuli S) ≤ ∑ d ∈ S, volume (diskAnnulus d)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:249:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:250:26: warning: Variable name `hzq` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hzq
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+
+OK   OAI.Geometry.PlaneColoring.GraphPatches [4.7s]
+OK   OAI.Geometry.PlaneColoring.FullApproximation [5.3s]
+OK   OAI.Geometry.PlaneColoring.Mesh [4.2s]
+OK   OAI.Geometry.PlaneColoring.Five [4.3s]
+OK   OAI.Geometry.PlaneColoring.Chromatic [5.9s]
+OK   OAI.Geometry.PlaneColoring.NullSetRobust [7.0s]
+
+57/82 modules OK in 870s (j=3); sum of module times 2232s
+FAILED: OAI.Analysis.PlaneSpectrum.PhaseCollision, OAI.Geometry.PlaneColoring.WeakColoring, OAI.MeasureTheory.CompactFactors.RelativeCenters, OAI.Geometry.PlaneColoring.Compactness, OAI.Analysis.PlaneSpectrum.CircleOperator, OAI.Geometry.PlaneColoring.Palettes, OAI.Geometry.PlaneColoring.PaletteDensity, OAI.MeasureTheory.CompactFactors.ConditionalLimits, OAI.MeasureTheory.CompactFactors.BoundedFunctions, OAI.MeasureTheory.CompactFactors.Factors, OAI.Geometry.PlaneColoring.BoundaryTrace, OAI.MeasureTheory.CompactFactors.Separability, OAI.Geometry.PlaneColoring.AngularBoundary, OAI.Analysis.PlaneSpectrum.Representations, OAI.Geometry.PlaneColoring.Interfaces, OAI.Geometry.PlaneColoring.Sectors, OAI.Analysis.PlaneSpectrum.Energy, OAI.Analysis.PlaneSpectrum.SpectralMeasure, OAI.Geometry.PlaneColoring.FiveSupport, OAI.Geometry.PlaneColoring.CyclicCore, OAI.Geometry.PlaneColoring.GraphRealization, OAI.Geometry.PlaneColoring.ContinuumLimits, OAI.Geometry.PlaneColoring.DiskExtension, OAI.Geometry.PlaneColoring.GraphCuts, OAI.Geometry.PlaneColoring.HoleApproximation

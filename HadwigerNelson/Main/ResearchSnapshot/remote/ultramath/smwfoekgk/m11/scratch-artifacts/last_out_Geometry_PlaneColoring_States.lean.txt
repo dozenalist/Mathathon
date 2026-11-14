@@ -1,0 +1,62 @@
+ication, division, and modular remainder by constants.
+work/lean/OAI/Geometry/PlaneColoring/States.lean:676:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+work/lean/OAI/Geometry/PlaneColoring/States.lean:697:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/States.lean:696:32: error: unsolved goals
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+hw : WeakColoring k c
+x : ℕ → ℂ
+J K : Finset (Fin k)
+X : Fin k
+A B : ℕ → Set ℝ
+D : Set ℝ
+b d : ℕ → ℝ
+b₀ d₀ : ℝ
+hlabels : ∀ (i : Fin k), i ∉ J ∧ i ∉ K ↔ i = X
+hD : MeasurableSet D
+hp : 0 < volume D
+hA : ∀ (n : ℕ), RealState hc (x n) (A n) J
+hB : ∀ (n : ℕ), RealState hc (x n) (B n) K
+hb : Tendsto b atTop (𝓝 b₀)
+hd : Tendsto d atTop (𝓝 d₀)
+hbs : ∀ (n : ℕ), b n ∈ (volume.restrict (B n)).support
+hds : ∀ (n : ℕ), d n ∈ (volume.restrict (B n)).support
+hu : ‖Complex.exp (↑b₀ * Complex.I) - Complex.exp (↑d₀ * Complex.I)‖ = 1
+hL1 :
+  ∀ (E : Set ℝ),
+    IsCompact E →
+      Tendsto (fun n => ∫ (v : ℝ) in E, |(A n).indicator (fun x => 1) v - D.indicator (fun x => 1) v|) atTop (𝓝 0)
+⊢ False
+work/lean/OAI/Geometry/PlaneColoring/States.lean:712:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/States.lean:711:57: error: unsolved goals
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+hw : WeakColoring k c
+x : ℂ
+J K : Finset (Fin k)
+X : Fin k
+A B : Set ℝ
+b d : ℝ
+hlabels : ∀ (i : Fin k), i ∉ J ∧ i ∉ K ↔ i = X
+hA : RealState hc x A J
+hB : RealState hc x B K
+hp : 0 < volume A
+hb : b ∈ (volume.restrict B).support
+hd : d ∈ (volume.restrict B).support
+a : ‖Complex.exp (↑b * Complex.I) - Complex.exp (↑d * Complex.I)‖ = 1
+⊢ False
+work/lean/OAI/Geometry/PlaneColoring/States.lean:728:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/States.lean:727:39: error: unsolved goals
+e v : ℂ
+he : ‖e‖ = 1
+hv : ‖v‖ = 1
+h : v.re * e.re + v.im * e.im = 0
+⊢ e = Complex.I * v ∨ e = -(Complex.I * v)
+work/lean/OAI/Geometry/PlaneColoring/States.lean:754:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/States.lean:753:44: error: unsolved goals
+v : ℂ
+hv : ‖v‖ = 1
+⊢ ∀ᵐ (t : Angles) ∂angularMeasure, ¬v.re * (direction t).re + v.im * (direction t).im = 0

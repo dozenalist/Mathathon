@@ -1,0 +1,4 @@
+.scratch/t/p3_Geometry_PlaneColoring_Expansion.lean:61:0: warning: 
+'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by
+
+import Mathlib.Basic.Real.Basic

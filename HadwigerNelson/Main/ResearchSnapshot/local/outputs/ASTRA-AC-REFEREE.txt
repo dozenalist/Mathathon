@@ -1,0 +1,292 @@
+INDEPENDENT AC REFEREE — 14 NOVEMBER 2026
+
+VERDICT
+
+ACCEPT AC at paper level. The aligned-continuum data really do contradict
+measurable WeakColoring when their excluded labels leave at most two
+colours. The critical binary-strip lemma permits U=V, requires no
+disjointness of the two open regions, and explicitly allows independent
+inner/outer choices. Its actual proof supports those advertised hypotheses.
+No missing mathematical premise or counterexample was found.
+
+ACCEPT its stated six-colour consumer: three consecutive cycle edges
+with one common ORIENTED approach direction exclude their four endpoint
+labels, leaving two. In particular AC excludes actual witness data with
+q=(0,3,3,3,0,0), using edges 1,2,3 and direction -1.
+
+ACCEPT NR and TC as the stated null-return/necessary-condition theorems.
+They do not establish impossibility of every positive-measure partial
+two-state field. The four-state and near-full-measure constructions are
+valid ANGULAR countermodels to the stronger recurrence inference, not
+actual global colourings.
+
+No six-colour impossibility, general nonaligned interface exclusion,
+novelty claim, or fresh Lean pass follows from this review. Private
+formal validation of AC and its exact consumer is warranted.
+
+SOURCE REVIEW
+
+All Lean references below are under
+work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/.
+I read the exact bodies of BoundaryTrace.binary_strip_rigidity and
+binary_strip_palette_rigidity; their geometric and binary-rigidity inputs
+in Rigidity; the actual approaching-strip, support-exclusion and essential
+boundary lemmas in AngularBoundary; BinaryPalettes.binary_alternation;
+and the analogous existing construction in Sectors:16-202. I also checked
+the density-triangle inputs for NR/TC in States and BinaryPalettes.
+This is independent paper/source review, not fresh Lean compilation.
+
+1. PRECISE GENERIC AC CONTRACT
+
+A convenient exact formulation is as follows. Let c:C->Fin k be measurable
+and WeakColoring k c. Fix a finite index set I, a centre x, a vector v with
+norm v=1, sets K_i and finite label sets H_i. Assume
+  ApproachingContinuum x K_i v for every i;
+  Disjoint(spatialSupport c j, Straddle K_i) for every j in H_i;
+  fixed a,b:Fin k such that every label other than a,b belongs to some H_i.
+Then False.
+
+The last assumption can equivalently be obtained from a residual label
+set of cardinality at most two. The pair may repeat. If the residual set
+is empty, choose any padding colour, available as c(0); if it is a
+singleton, repeat that colour. No k>=2 assumption is necessary. The
+empty-family case, if admitted, reduces to the impossibility of the
+corresponding globally at-most-two-coloured weak map; empty finite minima
+can simply be replaced by any positive width.
+
+The proof does not need a palette-cardinality bound, transition edges,
+cyclic-core regularity, FourCenter or FiveCenter. It uses the source's
+actual spatial supports and actual traces. The approach direction must
+be the same vector, not merely the same unoriented line. Opposite vectors
+may demand opposite radial sides at one angle, so their strips cannot be
+intersected in the same way. Approximate alignment is not covered here.
+
+2. OPEN REGION AND UNIFORM LOCAL STRIPS
+
+Put W=intersection_i Straddle(K_i). AngularBoundary:147-155 makes each
+Straddle open for arbitrary K_i, so W is open by finiteness. The support
+exclusions give, for plane-a.e. z in W, c(z) outside every H_i, hence
+c(z)=a or c(z)=b. This is exactly finite_support_exclusion_ae:317-327,
+followed by the finite label-cover assumption. It does not presume that
+pointwise colour classes equal their essential spatial supports.
+
+For a unit vector e with nonzero inner product against v, all K_i provide
+the SAME radial side:
+  positive inner product: outer strip, AngularBoundary:244-250;
+  negative inner product: inner strip, AngularBoundary:251-257.
+Each strip has a positive width controlling both angular distance of e'
+from e and radial distance from one. A finite positive minimum gives a
+whole one-sided strip contained in W. No width uniform over all angles
+is required. The conversions to the binary-strip interface are valid:
+  |r-1|<delta and r>1 imply r<1+delta;
+  |r-1|<delta and r<1 imply r>1-delta;
+and the required r>0 is retained explicitly.
+Sectors.ApproachingContinuum.side_strip:16-29 already performs precisely
+these conversions with a Boolean choosing the radial side.
+
+Let B={t: inner product(direction t,v)=0}. Since v is unit, B consists of
+the two directions Iv and -Iv, represented by an angle beta and beta+pi.
+The direction map is injective on Angles. Hence B is a measurable null
+set of cardinality two. No additional exceptional geometric directions
+are needed for this strip-production step.
+
+3. BINARYCENTER MEANS A HITTING PAIR
+
+At each t outside B, outer_strip_trace:182-209 or
+inner_strip_trace:210-239 produces an open angular neighbourhood on which
+P_x(u) meets {a,b} almost everywhere. The actual theorem does NOT say
+P_x(u) is contained in {a,b}. The proposed argument uses only intersection,
+which is correct.
+
+PaletteTransport.ae_of_locally_ae:258 supplies the needed countable-cover
+gluing on the second-countable angular circle. Combining it with the
+nullity of B yields BinaryCenter c hc x a b as defined in
+BinaryPalettes:9-10. This is not an intersection of uncountably many
+conull sets and does not require selecting one trace for every angle on
+a common exceptional set.
+
+BinaryPalettes.binary_alternation:11-27 applies at arbitrary k. It gives
+both
+  a in P_x(t+tau) iff a notin P_x(t),
+  b in P_x(t) iff a notin P_x(t)
+almost everywhere, where tau=pi/3. Thus exactly one of a,b occurs almost
+everywhere; other colours may also occur and are irrelevant. If a=b,
+binary_pair_distinct:28-37 already contradicts BinaryCenter.
+
+Define s(t)=false when a is in P_x(t), and true otherwise. PaletteSet
+measurability makes s measurable, and alternation gives s(t+tau)=not s(t)
+almost everywhere. Nothing asserts that s records the entire palette.
+
+4. THE CRITICAL U=V=W APPLICATION IS VALID
+
+BoundaryTrace.binary_strip_palette_rigidity:280-290 has EXACTLY these
+relevant premises:
+  arbitrary k, measurable c, WeakColoring k c;
+  two open regions U,V, each a.e. coloured from the SAME pair a,b;
+  one positive common width;
+  independently specified booleans bu,bv;
+  a bu-side strip near direction t in U;
+  a bv-side strip near direction t*exp(i*pi/3) in V.
+There is NO premise U!=V, Disjoint U V, bu=bv, or bu!=bv. Therefore
+U=V=W is a direct legitimate specialization.
+
+For t and t+tau outside B, obtain their separate strips in W and shrink
+to the minimum of the two widths. The identity
+direction(t+tau)=direction(t)*exp(i*pi/3), stated at Sectors:152-156,
+matches the second-strip premise exactly. Choose bu and bv from their
+respective inner-product signs, independently.
+
+I checked the proof rather than relying only on its signature:
+
+* Rigidity.radial_unit_contact:261-309 shows that the unit circle centred
+  at x+e enters EITHER prescribed side near x+e*exp(i*pi/3). Its explicit
+  parameterization is radius 2cos(theta), direction e*exp(i*theta),
+  with theta on the chosen side of pi/3. The displacement from x+e is
+  e*exp(2i*theta), of norm one.
+* Openness of V then gives two nonparallel unit vectors from that first
+  endpoint into V, via open_two_unit_directions:226-244.
+* A small connected polar box on the bu side lies in U and in the region
+  where both translated endpoints lie in V. The first endpoint x+e
+  itself need not belong to U. polarBox_small and polarBox_contains_strip
+  explicitly handle this boundary-point issue.
+* binary_open_local_rigidity:179-206 uses genuine four-edge paths, two
+  colours, and a.e. inequalities for fixed unit directions. Its Fin 5
+  indexing is the FIVE PATH VERTICES, not a five-colour restriction.
+  U and V may overlap or coincide throughout this construction.
+* connected_local_ae_constant fixes one essential colour on the connected
+  polar box. One-sided weak-trace production then puts this fixed colour
+  in P_x(u) a.e. on an angular neighbourhood of t.
+
+Accordingly, for every t with t,t+tau outside B, a fixed i in {a,b} occurs
+locally a.e. in the palette. If i=a, s is locally essentially false.
+If i=b, the second equivalence in binary_alternation makes s locally
+essentially true. One intersects the local conull statement with this
+one global conull equivalence; no stronger palette containment is used.
+
+5. THE BOUNDARY COUNT IS POINTWISE AND HAS THE CORRECT SHIFT
+
+angleEssential s b, AngularBoundary:334-335, is exactly the existence of
+an open neighbourhood on which s=b almost everywhere. The preceding
+step therefore proves, for EVERY t outside
+  F=B union {t:t+tau belongs to B}=B union (B-tau),
+that t belongs to one of the two essential-constancy regions. Hence
+  D=angleBoundary s is a subset of F POINTWISE,
+not merely almost everywhere. The sign of the shifted exceptional set
+is minus tau because it is the preimage of B under t->t+tau.
+F has at most four points.
+
+The source boundary argument applies without a finite-boundary assumption:
+angleBoundary_nonempty:381-407 uses connectedness of the angular circle,
+disjoint open essential-constancy regions, and the almost-everywhere flip
+to prove D nonempty. angleBoundary_shift:370-380 upgrades the a.e. flip
+to exact invariance of D under tau. angleBoundary_six:435-443 gives the
+entire six-point orbit of any point of D, and sixAngle_injective:423-429
+makes those six points distinct. Six points cannot fit into F. This proves
+AC. There is no limit, measurable-selection, or uncountable-null-set gap
+in this last step.
+
+The proof keeps the actual global weak-colouring inputs behind the binary
+transport and local rigidity theorems. It is not a consequence of assigning
+arbitrary palette lists satisfying only the finite strip-side intersections.
+Weak trace production, the existing palette transport analysis and the
+measure-theoretic fixed-direction unit inequalities remain source inputs.
+
+6. EXACT SIX-COLOUR CONSUMER AND ITS SCOPE
+
+For cycle labels modulo six, edges E1={1,2}, E2={2,3}, E3={3,4} exclude
+{1,2,3,4}. If their ACTUAL common-exclusion continua at the same centre
+all approach in direction -1, AC applies with residual pair {0,5}.
+This is exactly the selected subfamily in q=(0,3,3,3,0,0).
+Relabelling the cycle or rotating all directions preserves the argument.
+
+The original Lean CommonInterface declaration is specialized to Fin 5;
+one should instantiate AC from the six-colour witness data directly, or
+introduce a generic interface definition, rather than pretend that this
+old declaration already has k=6 as a parameter. This is an implementation
+typing issue, not a missing premise in the stated mathematical consumer.
+
+For the four-state angular model P=(02,03,35,25) in pi/6 sectors, its
+choice from {0,5} jumps from 5 to 0 at t=0. Both 0 and tau are outside
+the perpendicular set for v=-1, so AC's two-strip step would force
+essential constancy on a neighbourhood of zero. The jump occurs on
+positive-measure intervals on both sides and cannot be repaired by
+changing the value at zero. Thus the model cannot be realized by actual
+weak-colouring common-interface data with this exact geometry.
+
+No general six-cycle exclusion follows: nonaligned witness directions
+remain outside this proof. In particular, finite sign lists alone do not
+authorize this new constraint unless the common continuum, spatial-support
+exclusion, common-centre and aligned-direction producers are retained.
+
+7. SECONDARY NR/TC AUDIT
+
+NR is valid. For a positive-measure same-phase gamma return in B_b,
+the a.e. tau-swapping law produces, for j=0,1,2, memberships in B_b at
+t+2j*tau and in B_(1-b) at t+(2j+3)*tau+gamma. Differentiate the ACTUAL
+restricted state sets, using PaletteDensity.ae_lineDensityZero_compl:409,
+and remove only finitely many translated exceptional sets. The resulting
+six density memberships let States.states_densityOne:106-123 force the
+same residual set outside J union K at all three sourceTriangle points.
+The angle difference pi+gamma is nonparallel. sourceTriangle_pair:343
+gives their unit triangle, and two_label_triangle_impossible:198 excludes
+residual cardinality at most two. Thus each same-phase return set is null.
+Disjointness of B0,B1 is not needed for this deduction itself.
+
+One formal precision is worth retaining: quasiMeasurePreserving alone
+does not imply that the preimage of a positive-measure set has positive
+measure. For a contradiction based on positive ANGULAR return measure,
+use the source angle_preimage_positive / fundamental-domain measure
+preservation, or prove the real-a.e. statement first and transfer it to
+angles using ae_angular_of_ae_line. The necessary source facts exist; this
+does not add a mathematical hypothesis.
+
+TC is also valid. For a finite measurable represented state map with
+f(t+2tau)=f(t) a.e., remove all fibre-density exceptions and the finitely
+many shifts needed for the three endpoint pairs. The first three endpoints
+then share f(t), and the other three share f(t+pi+gamma). If their common
+residual label set had cardinality at most two, the same triangle argument
+would contradict it. Hence its size is at least three a.e. For actual
+120-degree-periodic palettes, finite palette fibres are measurable and
+represent their own labels, giving the stated union-size bound. A generic
+finite-palette measurability proof may need to be written: the existing
+Accumulation.palette_eq_measurable declaration is typed for Fin 5, though
+its finite-intersection proof generalizes directly.
+
+NR does NOT imply measure(B0 union B1)=0. The whole-circle theorem invokes
+equal_triangleAngle_positive:291, which uses ergodicity of rotation by
+2gamma. A partial set provides no gamma relation when either endpoint
+falls into a gap; ordinary recurrence at some multiple of gamma does not
+give the particular unit triangle required here.
+
+The regression field f(t)=floor(t/(pi/6)) mod 4 has tau increment 2 and
+2tau increment 0. Its even/odd orbit types each have measure one half.
+Since pi/6<gamma<pi/3, a gamma increment is 1 or 2, so equal orbit types
+have opposite phases. A pi+gamma increment is 3 or 0, and the palette
+union has size three or two. Its side intersections for the given actual
+sign vectors and its sixty-degree disjointness also check directly.
+Thus it satisfies the named finite/NR/TC relaxations while remaining
+four-state globally.
+
+The near-full-measure example is valid as well: odd multiples n of three
+can make n*gamma arbitrarily close to pi modulo 2pi, since gamma/pi is
+irrational. Remove width-eta bands about the cosine zeros in phase n*t.
+The remaining A is tau-invariant, has measure 1-2eta/pi, and a gamma shift
+reverses its cosine sign if the phase error is smaller than eta. This
+precludes same-phase returns even with measure(A) arbitrarily close to one.
+It is a purely angular counterexample; no RealState realization by a
+global weak colouring is asserted.
+
+RECOMMENDATION AND LIMITS
+
+Proceed with a generic AC theorem in the explicit residual-pair form and
+one six-colour aligned-edge corollary. Reuse the existing binary-strip
+lemma with independent sides; do not add an unnecessary disjoint-region
+hypothesis or a palette-size premise. Preserve the exact pointwise boundary
+containment and the minus-tau shift. Validate the finite complement-count
+corollary separately if useful. Keep the four-state field as a regression
+example for weaker recurrence constraints, while marking its aligned
+actual-interface realization excluded by AC.
+
+No agents were spawned. No API writes, installations, credential access,
+original-proof edits, Lean runs or heavy computations occurred. This report
+is the only artifact written during this bounded review.

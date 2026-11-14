@@ -1,0 +1,88 @@
+{
+ "updated_utc": "2026-11-14T07:01:21Z",
+ "status": "completed_block",
+ "summary": "Decided six-colourability of ONE periodic quotient at a = 1/5, the period lattice 4Z^2 (index 16). Result: UNSAT, sharply - the quotient is K_16, so this period needs all 16 colours. Exact Q(sqrt3), one process, under 2 s. (i) Window completeness by proof: forcedness forces 3 < N < 16.33, so F is exhausted by N in {4,7,9,12,13,16}; |F| = 42 on rings 6,12,6,6,12 with ring 16 empty, matching the saved artifact. (ii) No self-loops: F misses 4Z^2, whose nonzero norms are multiples of 16. (iii) The connection set S = F mod 4 is all 15 nonzero residues of (Z/4)^2, so the graph is complete. (iv) Independent adjacency check that never reads the list F: all 120 coset pairs scanned over their whole difference class with the strict criterion evaluated directly - 120/120 adjacent, 0 missing. (v) chi = 16; 6-colour backtracking with symmetry breaking is UNSAT, and all 8008 six-subsets of the 16 cosets contain an edge. Scope: this period and periods containing it only; the interior problem is already unsatisfiable, so no boundary rule or ring-3 tangency pair is involved; no other period swept; nothing bounds chi(R^2). Consequence without further search: every periodic proper colouring at a = 1/5 has index >= 19.",
+ "verified_results": [
+  {
+   "statement": "Reduction: a colouring constant on the cosets of 4Z^2 is proper on cell interiors only if the induced map (Z/4)^2 -> colours properly colours Cay((Z/4)^2, S), S = F mod 4. Converse also holds given F \u2229 4Z^2 = empty.",
+   "grade": "PROOF (pigeonhole on two cosets of one colour class plus an explicit forced witness in their difference class)"
+  },
+  {
+   "statement": "Window completeness: forcedness implies |v| in (1-2a, 1+2a) = (0.6, 1.4), i.e. 3 < N < 16.3333, so enumerating N <= 16 is exhaustive.",
+   "grade": "PROOF (dmin >= |v| - 2a, dmax <= |v| + 2a)"
+  },
+  {
+   "statement": "|F| = 42 at a = 1/5, rings N = 4,7,9,12,13 with 6,12,6,6,12 vectors, ring 16 empty; regenerates the earlier block's forced_a1_5.out exactly.",
+   "grade": "EXACT computation in Q(sqrt3), two independent paths (producer + checker reading only the JSON), and agreement with the saved artifact"
+  },
+  {
+   "statement": "F \u2229 4Z^2 = empty, so the quotient has no self-loops.",
+   "grade": "EXACT computation (nonzero norms of 4Z^2 are multiples of 16; ring 16 unforced)"
+  },
+  {
+   "statement": "S = F mod 4 equals all 15 nonzero residues of (Z/4)^2, each hit by 2 to 4 forced offsets; hence the quotient is K_16.",
+   "grade": "EXACT computation, plus an independent per-pair scan of all 120 coset pairs over their whole difference class (120/120 adjacent, 0 missing) that does not use the list F"
+  },
+  {
+   "statement": "The index-16 period admits NO 6-colouring: chi(quotient) = 16. Backtracking with symmetry breaking colour(0,0)=0 is UNSAT; every one of the 8008 six-subsets of the 16 cosets contains an edge.",
+   "grade": "PROOF from the checked K_16 fact; bounded exhaustive search agrees"
+  },
+  {
+   "statement": "Every periodic proper colouring at a = 1/5 has period index >= 19: index 16 has exactly one avoiding sublattice (4Z^2) which is excluded here, indices 17 and 18 admit none, per the complete upper-HNF enumeration re-run in-process (31/18/39/20 sublattices at indices 16/17/18/19).",
+   "grade": "conditional on this block's certificate plus the previous block's proved index bound; enumeration exact"
+  }
+ ],
+ "conjectures": [
+  "At a = 1/5 the two index-19 avoiding sublattices, HNF (1,7,19) and (1,11,19), are the first candidates for a periodic six-colouring; whether either quotient is 6-colourable is not examined.",
+  "The pattern 'minimum-index period forces the maximum number of colours' is a feature of extremal (triangular-shaped) sublattices; if it persists, larger indices will be the only viable ones, which suggests periodic six-colourings at a = 1/5, if any, have large period."
+ ],
+ "artifacts": [
+  "supervisor/solve-independent/QUOTIENT16.md",
+  "supervisor/solve-independent/quotient16_cert.json",
+  "supervisor/solve-independent/quotient16.py",
+  "supervisor/solve-independent/quotient16.out",
+  "supervisor/solve-independent/verify_quotient16.py",
+  "supervisor/solve-independent/CELL-A-FIFTH.md",
+  "supervisor/solve-independent/CELL-NOGO-v2.md",
+  "supervisor/solve-independent/LEDGER.md",
+  "supervisor/solve-independent/RECOVERY.md",
+  "supervisor/solve-independent/STATUS.json"
+ ],
+ "tests_run": [
+  {
+   "command": "python3 quotient16.py",
+   "outcome": "rc 0, <2 s, one process: |F| = 42 (rings 4,7,9,12,13 = 6,12,6,6,12; ring 16 empty); F \u2229 4Z^2 = empty; S = all 15 nonzero residues; independent per-pair scan 120/120 adjacent, 0 missing, 0 witness cross-check failures; DSATUR finds 16 colours; exhaustive 6-colour attempt UNSAT; sublattice counts 31/18/39/20 at indices 16/17/18/19"
+  },
+  {
+   "command": "python3 verify_quotient16.py",
+   "outcome": "rc 0: reads quotient16_cert.json only, re-derives the geometry in Q(sqrt3); 0 failures over forced-set identity, 42 offsets, all 120 edge witnesses (membership, residue, strict criterion), edge-list completeness, S = 15 residues, and all 8008 six-subsets; prints CERTIFICATE VALID"
+  },
+  {
+   "command": "python3 forced_a1_5.py / verify_cell_nogo_v2.py / square_family.py / audit_rect.py (recovery re-run)",
+   "outcome": "all rc 0; forced_a1_5.out and verify_cell_nogo_v2.out regenerate byte-identically"
+  }
+ ],
+ "failed_routes": [
+  "My first sublattice enumeration used the lower-triangular HNF <(a,0),(b,c)>, which is NOT a complete list: it misses 6 of the 8 index-7 sublattices, including the paper's <(1,3),(0,7)>, and wrongly gave minimum index 8 at a = 2/5. Fixed to upper HNF <(a,b),(0,c)>; the control then gave 7 as it must.",
+  "The heuristic bound index >= ceil((1+D)^2/(3a^2)) = 17 at a = 1/5 was wrong (ring 16 escapes it); replaced by the multiplicative-norm argument giving 16, which the enumeration confirms.",
+  "A density argument (clusters of <= 4 separated by 1.3856) does not give a contradiction at six colours: 2.65 > 1.60. Recorded as a gap, not pursued further in this block.",
+  "A hand estimate that ring-16 cells could carry the N=16 forced offsets was wrong (ring 16 is unforced because dmin >= 1); it does not affect this block, where the window proof bounds N < 16.33 independently.",
+  "Carried forward and still relevant: the earlier lower-triangular HNF enumeration was incomplete (missed 6 of 8 index-7 sublattices); this block uses the upper HNF only, and the index-19 counts here are on that corrected enumeration."
+ ],
+ "next_step": "Two index-19 avoiding sublattices exist at a = 1/5, HNF (1,7,19) and (1,11,19); decide six-colourability of ONE of them, then, if SAT, run the boundary programme (ownership rule, exact unit-pair check on a fundamental domain, and the six ring-3 tangency vectors). Do not sweep further periods before that.",
+ "escalation": "Precise obstacle: at a = 1/5 every period of index < 19 is now excluded, but exclusion at index 16 was by completeness of the quotient (K_16), a mechanism that weakens as the index grows - the quotient has more vertices and the same 15-residue connection set spread over them. No argument yet separates 'large index' from 'six-colourable', so the periodic route either needs a uniform obstruction (e.g. a counting or packing lemma valid for all period lattices, not a clique) or must accept that periodic candidates of large period cannot be excluded by quotient completeness. Expected useful output: a uniform lower bound on the chromatic number of Cay(Lambda, F) for all sublattice quotients at a = 1/5, or an explicit 6-colouring of one index-19 quotient with the full boundary check.",
+ "recovery": {
+  "utc": "2026-11-14T06:46:58Z",
+  "jobs_running_at_recovery": 0,
+  "integrity": "re-ran forced_a1_5.py, verify_cell_nogo_v2.py, square_family.py, audit_rect.py: all rc 0; forced_a1_5.out and verify_cell_nogo_v2.out regenerate byte-identically, so no partial or duplicated write exists",
+  "work_lost": "none",
+  "note": "block was already completed and saved at updated_utc; no new research performed during recovery",
+  "artifacts_kept": [
+   "CELL-A-FIFTH.md",
+   "CELL-NOGO-v2.md",
+   "LEDGER.md",
+   "CELL-NOGO.md",
+   "RECOVERY.md"
+  ]
+ }
+}

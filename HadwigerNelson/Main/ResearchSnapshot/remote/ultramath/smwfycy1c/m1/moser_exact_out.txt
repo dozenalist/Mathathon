@@ -1,0 +1,96 @@
+========================================================================
+1. COORDINATES  (over Q + Q*r3 + Q*r11 + Q*r3*r11)
+========================================================================
+  0  : x = 0                                              y = 0
+  A  : x = 1/2*r3                                         y = 1/2
+  B  : x = 1/2*r3                                         y = -1/2
+  T  : x = 1*r3                                           y = 0
+  uA : x = 5/12*r3 + -1/12*r11                            y = 5/12 + 1/12*r33
+  uB : x = 5/12*r3 + 1/12*r11                             y = -5/12 + 1/12*r33
+  uT : x = 5/6*r3                                         y = 1/6*r33
+
+========================================================================
+2. SQUARED EDGE LENGTHS  (must all be exactly 1)
+========================================================================
+  |0 -A |^2 = 1                      == 1 ? True
+  |0 -B |^2 = 1                      == 1 ? True
+  |A -B |^2 = 1                      == 1 ? True
+  |T -A |^2 = 1                      == 1 ? True
+  |T -B |^2 = 1                      == 1 ? True
+  |0 -uA|^2 = 1                      == 1 ? True
+  |0 -uB|^2 = 1                      == 1 ? True
+  |uA-uB|^2 = 1                      == 1 ? True
+  |uT-uA|^2 = 1                      == 1 ? True
+  |uT-uB|^2 = 1                      == 1 ? True
+  |T -uT|^2 = 1                      == 1 ? True
+
+  ALL ELEVEN EDGES HAVE SQUARED LENGTH EXACTLY 1: True
+  number of edges = 11, distinct undirected pairs = 11
+
+========================================================================
+3. PAIRWISE DISTINCTNESS OF THE SEVEN POINTS
+========================================================================
+  #distinct points = 7 (expect 7)
+  ALL SEVEN POINTS PAIRWISE DISTINCT: True
+
+========================================================================
+4. WHICH PAIRS ARE AT UNIT DISTANCE (among all 21 pairs)
+========================================================================
+  unit-distance pairs found: 11
+  [('0', 'A'), ('0', 'B'), ('0', 'uA'), ('0', 'uB'), ('A', 'B'), ('A', 'T'), ('B', 'T'), ('T', 'uT'), ('uA', 'uB'), ('uA', 'uT'), ('uB', 'uT')]
+  equals the 11-edge list as a set: True
+
+========================================================================
+5. PROPER COLOURINGS  (complete enumeration, exact)
+========================================================================
+  full 11-edge graph, proper 3-colourings: 0
+  full 11-edge graph, proper 4-colourings: 384
+    of which modulo colour permutation:  16
+
+  chromatic polynomial at k (full graph):
+    P(0) = 0
+    P(1) = 0
+    P(2) = 0
+    P(3) = 0
+    P(4) = 384
+    P(5) = 5040
+    P(6) = 31680
+    P(7) = 134400
+
+========================================================================
+6. SINGLE-EDGE DELETIONS: proper 3-colourings of G - e
+========================================================================
+      edge e | 3-colourings of G-e | modulo colour perm
+   0-A       |                  12 |                  2
+   0-B       |                  12 |                  2
+   A-B       |                  12 |                  2
+   T-A       |                  12 |                  2
+   T-B       |                  12 |                  2
+   0-uA      |                  12 |                  2
+   0-uB      |                  12 |                  2
+  uA-uB      |                  12 |                  2
+  uT-uA      |                  12 |                  2
+  uT-uB      |                  12 |                  2
+   T-uT      |                  12 |                  2
+
+  number of edges whose deletion makes G 3-colourable: 11 / 11
+  redundant edges (G-e still not 3-colourable): []
+  EDGE-MINIMAL FOR NON-3-COLOURABILITY (every deletion 3-colourable): True
+
+  full graph 4-colourable: True; full graph 3-colourable: False
+  chi(G) = 4 and chi(G-e) = 3 for every e  =>  G is 4-critical: True
+
+========================================================================
+7. THE 3-COLOURINGS OF G - e, LISTED (up to colour permutation)
+========================================================================
+  G - (0,A): 12 colourings = 2 up to perm, [{'0': 0, 'A': 0, 'B': 1, 'T': 2, 'uA': 1, 'uB': 2, 'uT': 0}, {'0': 0, 'A': 0, 'B': 1, 'T': 2, 'uA': 2, 'uB': 1, 'uT': 0}]
+  G - (0,B): 12 colourings = 2 up to perm, [{'0': 0, 'A': 1, 'B': 0, 'T': 2, 'uA': 1, 'uB': 2, 'uT': 0}, {'0': 0, 'A': 1, 'B': 0, 'T': 2, 'uA': 2, 'uB': 1, 'uT': 0}]
+  G - (A,B): 12 colourings = 2 up to perm, [{'0': 0, 'A': 1, 'B': 1, 'T': 2, 'uA': 1, 'uB': 2, 'uT': 0}, {'0': 0, 'A': 1, 'B': 1, 'T': 2, 'uA': 2, 'uB': 1, 'uT': 0}]
+  G - (T,A): 12 colourings = 2 up to perm, [{'0': 0, 'A': 1, 'B': 2, 'T': 1, 'uA': 1, 'uB': 2, 'uT': 0}, {'0': 0, 'A': 1, 'B': 2, 'T': 1, 'uA': 2, 'uB': 1, 'uT': 0}]
+  G - (T,B): 12 colourings = 2 up to perm, [{'0': 0, 'A': 1, 'B': 2, 'T': 2, 'uA': 1, 'uB': 2, 'uT': 0}, {'0': 0, 'A': 1, 'B': 2, 'T': 2, 'uA': 2, 'uB': 1, 'uT': 0}]
+  G - (0,uA): 12 colourings = 2 up to perm, [{'0': 0, 'A': 1, 'B': 2, 'T': 0, 'uA': 0, 'uB': 1, 'uT': 2}, {'0': 0, 'A': 1, 'B': 2, 'T': 0, 'uA': 0, 'uB': 2, 'uT': 1}]
+  G - (0,uB): 12 colourings = 2 up to perm, [{'0': 0, 'A': 1, 'B': 2, 'T': 0, 'uA': 1, 'uB': 0, 'uT': 2}, {'0': 0, 'A': 1, 'B': 2, 'T': 0, 'uA': 2, 'uB': 0, 'uT': 1}]
+  G - (uA,uB): 12 colourings = 2 up to perm, [{'0': 0, 'A': 1, 'B': 2, 'T': 0, 'uA': 1, 'uB': 1, 'uT': 2}, {'0': 0, 'A': 1, 'B': 2, 'T': 0, 'uA': 2, 'uB': 2, 'uT': 1}]
+  G - (uT,uA): 12 colourings = 2 up to perm, [{'0': 0, 'A': 1, 'B': 2, 'T': 0, 'uA': 1, 'uB': 2, 'uT': 1}, {'0': 0, 'A': 1, 'B': 2, 'T': 0, 'uA': 2, 'uB': 1, 'uT': 2}]
+  G - (uT,uB): 12 colourings = 2 up to perm, [{'0': 0, 'A': 1, 'B': 2, 'T': 0, 'uA': 1, 'uB': 2, 'uT': 2}, {'0': 0, 'A': 1, 'B': 2, 'T': 0, 'uA': 2, 'uB': 1, 'uT': 1}]
+  G - (T,uT): 12 colourings = 2 up to perm, [{'0': 0, 'A': 1, 'B': 2, 'T': 0, 'uA': 1, 'uB': 2, 'uT': 0}, {'0': 0, 'A': 1, 'B': 2, 'T': 0, 'uA': 2, 'uB': 1, 'uT': 0}]

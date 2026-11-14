@@ -1,0 +1,155 @@
+{
+  "verifiedAtUtc": "2026-11-14T18:10:18.5878674+00:00",
+  "deadlineUtc": "2026-11-15T17:35:13Z",
+  "authorizedResearchChats": 8,
+  "verifiedUltramathSwarms": [
+    {
+      "toolCallId": "call_91e427806104449bafed45bc",
+      "members": [
+        "m1",
+        "m2"
+      ],
+      "chat": "chat-b9bfdf6c4a",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "evidence": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\openmath-supervisor\\checkins\\20261114T174526Z\\eight-swarm-evidence.json",
+      "swarm": "smwgpu16s",
+      "reasoningEffort": "max",
+      "directory": "supervisor/solve-geometry"
+    },
+    {
+      "toolCallId": "call_fd5cffa0de904c9fb56a0f3a",
+      "members": [
+        "m1",
+        "m2"
+      ],
+      "chat": "chat-ed83956872",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "evidence": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\openmath-supervisor\\checkins\\20261114T174526Z\\full-swarm-tail-and-quota.json",
+      "swarm": "smwgpvm6o",
+      "reasoningEffort": "max",
+      "directory": "supervisor/solve-independent"
+    },
+    {
+      "toolCallId": "call_5941116d1d2548bf821c5013",
+      "members": [
+        "m1",
+        "m2"
+      ],
+      "chat": "chat-58183f820b",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "evidence": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\openmath-supervisor\\checkins\\20261114T174526Z\\eight-swarm-evidence.json",
+      "swarm": "smwgpubt5",
+      "reasoningEffort": "max",
+      "directory": "supervisor/simplify-architecture"
+    },
+    {
+      "toolCallId": "call_aecd39b27ed6414ba8612062",
+      "members": [
+        "m1",
+        "m2"
+      ],
+      "chat": "chat-ce79eb30e7",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "evidence": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\openmath-supervisor\\checkins\\20261114T174526Z\\eight-swarm-evidence.json",
+      "swarm": "smwgpu5j9",
+      "reasoningEffort": "max",
+      "directory": "supervisor/simplify-verification"
+    },
+    {
+      "toolCallId": "call_c3c1954dd0d746b696aa1c36",
+      "members": [
+        "m1",
+        "m2"
+      ],
+      "chat": "chat-9da30bd8a3",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "evidence": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\openmath-supervisor\\checkins\\20261114T174526Z\\eight-swarm-evidence.json",
+      "swarm": "smwgpud7u",
+      "reasoningEffort": "max",
+      "directory": "supervisor/solve-graphs"
+    },
+    {
+      "toolCallId": "call_ec74c8980de64b3da7f35c76",
+      "members": [
+        "m1",
+        "m2"
+      ],
+      "chat": "chat-ec6b8bbaa4",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "evidence": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\openmath-supervisor\\checkins\\20261114T174526Z\\eight-swarm-evidence.json",
+      "swarm": "smwgpu5eh",
+      "reasoningEffort": "max",
+      "directory": "supervisor/simplify-lean"
+    },
+    {
+      "toolCallId": "call_153a7c963a534831acb495ef",
+      "members": [
+        "m1",
+        "m2"
+      ],
+      "chat": "chat-7ce3c3466d",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "evidence": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\openmath-supervisor\\checkins\\20261114T174526Z\\ultramath-probe-history.json",
+      "swarm": "smwgphe8q",
+      "reasoningEffort": "max",
+      "directory": "supervisor/discover-cone"
+    },
+    {
+      "toolCallId": "call_fa6f1b4a4c8044b88d561e3b",
+      "members": [
+        "m1",
+        "m2"
+      ],
+      "chat": "chat-2345d7f398",
+      "model": "deepseek/deepseek-v4.1-flash",
+      "evidence": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\openmath-supervisor\\checkins\\20261114T174526Z\\eight-swarm-evidence.json",
+      "swarm": "smwgptxn1",
+      "reasoningEffort": "max",
+      "directory": "supervisor/adversarial-discovery"
+    }
+  ],
+  "launchedUltramathMembers": 16,
+  "activation": "Actual ultramath_start tool results matched by call ID; UI selector was not used",
+  "claude": {
+    "job": "claude-four-list-extension-20261114-06",
+    "model": "claude-opus-5-5",
+    "effort": "max",
+    "status": "running",
+    "startedUtc": "2026-11-14T18:02:15.5918863Z"
+  },
+  "additionalAstra": {
+    "requestedModel": "gpt-6-astra",
+    "localCompletedAgents": [
+      "/root/cone_novelty_audit",
+      "/root/cone_sharpness_referee"
+    ],
+    "requestedEffort": "ultra",
+    "coordinatorAgents": [
+      "/root/astra_cone_formal_lead"
+    ]
+  },
+  "schedules": {
+    "research": {
+      "status": "ACTIVE",
+      "id": "mathathon-research-supervisor",
+      "intervalMinutes": 20
+    },
+    "usage": {
+      "resets": "User-controlled",
+      "status": "ACTIVE",
+      "intervalMinutes": 5,
+      "urgentRemainingPercent": 15,
+      "id": "mathathon-usage-alerts",
+      "earlyRemainingPercent": 30
+    }
+  },
+  "mathematics": {
+    "report": "ULTRA-CONE-NOVELTY-AUDIT.txt",
+    "verdict": "Generic finite-palette CC60 sharpness accepted at paper-proof level",
+    "sixColorResult": false,
+    "novelty": "Priority remains unverified",
+    "independentReview": "ULTRA-SHARPNESS-REFEREE.txt"
+  },
+  "monitoringCaveat": "Claude telemetry updates only when the existing CLI emits rate_limit_event; stale or missing data triggers a visibility-gap alert",
+  "computerUse": "Stopped on physical Escape; no subsequent UI actions taken in this chat"
+}

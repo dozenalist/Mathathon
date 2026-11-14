@@ -1,0 +1,359 @@
+{
+"OAI.Geometry.PlaneColoring.Coloring": {
+"ok": true,
+"secs": 2.8
+},
+"OAI.Analysis.PlaneSpectrum.Basic": {
+"ok": true,
+"secs": 9.4
+},
+"OAI.Analysis.PlaneSpectrum.Fourier": {
+"ok": true,
+"secs": 9.4
+},
+"OAI.Geometry.PlaneColoring.WeakColoring": {
+"ok": true,
+"secs": 6.6
+},
+"OAI.Analysis.PlaneSpectrum.CircleDecay": {
+"ok": true,
+"secs": 6.7
+},
+"OAI.Analysis.PlaneSpectrum.Characters": {
+"ok": true,
+"secs": 7.1
+},
+"OAI.Geometry.PlaneColoring.Compactness": {
+"ok": true,
+"secs": 7.8
+},
+"OAI.Analysis.PlaneSpectrum.DifferenceLaw": {
+"ok": true,
+"secs": 3.7
+},
+"OAI.Analysis.PlaneSpectrum.CircleOperator": {
+"ok": true,
+"secs": 6.7
+},
+"OAI.Analysis.PlaneSpectrum.InvariantMean": {
+"ok": true,
+"secs": 8.7
+},
+"OAI.Analysis.PlaneSpectrum.SmallArcs": {
+"ok": true,
+"secs": 5.9
+},
+"OAI.Analysis.PlaneSpectrum.PhaseEncoding": {
+"ok": true,
+"secs": 3.7
+},
+"OAI.Analysis.PlaneSpectrum.Multipliers": {
+"ok": true,
+"secs": 4.5
+},
+"OAI.MeasureTheory.CompactFactors.Amenability": {
+"ok": true,
+"secs": 6.6
+},
+"OAI.Analysis.PlaneSpectrum.PhaseCollision": {
+"ok": true,
+"secs": 5.7
+},
+"OAI.Analysis.PlaneSpectrum.FourierTests": {
+"ok": true,
+"secs": 4.2
+},
+"OAI.MeasureTheory.CompactFactors.Centers": {
+"ok": true,
+"secs": 6.0
+},
+"OAI.MeasureTheory.CompactFactors.ConditionalSelection": {
+"ok": true,
+"secs": 6.3
+},
+"OAI.Analysis.PlaneSpectrum.NumberFields": {
+"ok": true,
+"secs": 6.7
+},
+"OAI.MeasureTheory.CompactFactors.RelativeCenters": {
+"ok": true,
+"secs": 7.9
+},
+"OAI.Analysis.PlaneSpectrum.Selections": {
+"ok": true,
+"secs": 6.7
+},
+"OAI.Analysis.PlaneSpectrum.ConditionalSpectrum": {
+"ok": true,
+"secs": 10.1
+},
+"OAI.MeasureTheory.CompactFactors.DifferenceInvariant": {
+"ok": true,
+"secs": 4.4
+},
+"OAI.Geometry.PlaneColoring.Expansion": {
+"ok": true,
+"secs": 4.7
+},
+"OAI.Geometry.PlaneColoring.CircleMaps": {
+"ok": true,
+"secs": 5.7
+},
+"OAI.MeasureTheory.CompactFactors.Approximation": {
+"ok": true,
+"secs": 7.3
+},
+"OAI.Geometry.PlaneColoring.BinaryDynamics": {
+"ok": true,
+"secs": 8.2
+},
+"OAI.Geometry.PlaneColoring.Transitions": {
+"ok": true,
+"secs": 6.3
+},
+"OAI.Geometry.PlaneColoring.CircleTransport": {
+"ok": true,
+"secs": 8.3
+},
+"OAI.Geometry.PlaneColoring.Palettes": {
+"ok": true,
+"secs": 6.8
+},
+"OAI.MeasureTheory.CompactFactors.ConditionalLimits": {
+"ok": true,
+"secs": 17.3
+},
+"OAI.Geometry.PlaneColoring.Assembly": {
+"ok": true,
+"secs": 14.4
+},
+"OAI.Geometry.PlaneColoring.PaletteDensity": {
+"ok": true,
+"secs": 15.0
+},
+"OAI.MeasureTheory.CompactFactors.Kernels": {
+"ok": true,
+"secs": 9.8
+},
+"OAI.Geometry.PlaneColoring.Basic": {
+"ok": true,
+"secs": 3.7
+},
+"OAI.Geometry.PlaneColoring.PaletteTransport": {
+"ok": true,
+"secs": 4.3
+},
+"OAI.MeasureTheory.CompactFactors.BoundedFunctions": {
+"ok": true,
+"secs": 20.3
+},
+"OAI.MeasureTheory.CompactFactors.Functions": {
+"ok": true,
+"secs": 24.0
+},
+"OAI.Geometry.PlaneColoring.Rigidity": {
+"ok": true,
+"secs": 55.8
+},
+"OAI.MeasureTheory.CompactFactors.RelativeProducts": {
+"ok": true,
+"secs": 45.6
+},
+"OAI.MeasureTheory.CompactFactors.Factors": {
+"ok": true,
+"secs": 102.0
+},
+"OAI.Geometry.PlaneColoring.BinaryPalettes": {
+"ok": true,
+"secs": 134.4
+},
+"OAI.MeasureTheory.CompactFactors.Separability": {
+"ok": true,
+"secs": 137.1
+},
+"OAI.MeasureTheory.CompactFactors.Stationary": {
+"ok": true,
+"secs": 120.8
+},
+"OAI.Geometry.PlaneColoring.States": {
+"ok": true,
+"secs": 146.9
+},
+"OAI.MeasureTheory.CompactFactors.AlgebraModels": {
+"ok": true,
+"secs": 148.9
+},
+"OAI.Geometry.PlaneColoring.Moser": {
+"ok": true,
+"secs": 186.8
+},
+"OAI.Geometry.PlaneColoring.BoundaryTrace": {
+"ok": true,
+"secs": 152.1
+},
+"OAI.Geometry.PlaneColoring.FourContinuity": {
+"ok": true,
+"secs": 125.4
+},
+"OAI.Analysis.PlaneSpectrum.Representations": {
+"ok": true,
+"secs": 228.8
+},
+"OAI.Geometry.PlaneColoring.AngularBoundary": {
+"ok": true,
+"secs": 155.3
+},
+"OAI.Geometry.PlaneColoring.FourTransport": {
+"ok": true,
+"secs": 96.9
+},
+"OAI.Analysis.PlaneSpectrum.Energy": {
+"ok": true,
+"secs": 114.4
+},
+"OAI.Geometry.PlaneColoring.Exclusion": {
+"ok": true,
+"secs": 82.6
+},
+"OAI.Analysis.PlaneSpectrum.SpectralMeasure": {
+"ok": true,
+"secs": 119.3
+},
+"OAI.Geometry.PlaneColoring.Accumulation": {
+"ok": true,
+"secs": 114.3
+},
+"OAI.Analysis.PlaneSpectrum.RadialEnergy": {
+"ok": true,
+"secs": 190.2
+},
+"OAI.Geometry.PlaneColoring.Interfaces": {
+"ok": true,
+"secs": 138.9
+},
+"OAI.Geometry.PlaneColoring.FiveSupport": {
+"ok": true,
+"secs": 93.0
+},
+"OAI.Geometry.PlaneColoring.DiskAverages": {
+"ok": true,
+"secs": 126.1
+},
+"OAI.Analysis.PlaneSpectrum.Ergodicity": {
+"ok": true,
+"secs": 164.3
+},
+"OAI.Geometry.PlaneColoring.CyclicCore": {
+"ok": true,
+"secs": 193.1
+},
+"OAI.Geometry.PlaneColoring.PlanarCovers": {
+"ok": true,
+"secs": 188.4
+},
+"OAI.Analysis.PlaneSpectrum.TerminalGlue": {
+"ok": true,
+"secs": 244.6
+},
+"OAI.Geometry.PlaneColoring.BorelTransfer": {
+"ok": true,
+"secs": 272.6
+},
+"OAI.Geometry.PlaneColoring.GraphRealization": {
+"ok": true,
+"secs": 322.0
+},
+"OAI.Geometry.PlaneColoring.Sectors": {
+"ok": true,
+"secs": 306.9
+},
+"OAI.Geometry.PlaneColoring.Lattice": {
+"ok": true,
+"secs": 240.4
+},
+"OAI.Geometry.PlaneColoring.Metric": {
+"ok": true,
+"secs": 15.3
+},
+"OAI.Geometry.PlaneColoring.ContinuumLimits": {
+"ok": true,
+"secs": 66.9
+},
+"OAI.Geometry.PlaneColoring.DiskExtension": {
+"ok": true,
+"secs": 126.7
+},
+"OAI.Geometry.PlaneColoring.MeasurableAssembly": {
+"ok": true,
+"secs": 68.6
+},
+"OAI.Geometry.PlaneColoring.GraphCuts": {
+"ok": true,
+"secs": 69.7
+},
+"OAI.Geometry.PlaneColoring.Covering": {
+"ok": true,
+"secs": 72.4
+},
+"OAI.Geometry.PlaneColoring.MeasurableProper": {
+"ok": true,
+"secs": 9.1
+},
+"OAI.Geometry.PlaneColoring.ConnectedUnitFree": {
+"ok": true,
+"secs": 8.0
+},
+"OAI.Geometry.PlaneColoring.HoleApproximation": {
+"ok": true,
+"secs": 12.0
+},
+"OAI.Geometry.PlaneColoring.Seven": {
+"ok": true,
+"secs": 6.3
+},
+"OAI.Geometry.PlaneColoring.Converse": {
+"ok": true,
+"secs": 7.3
+},
+"OAI.Geometry.PlaneColoring.GraphPatches": {
+"ok": true,
+"secs": 7.3
+},
+"OAI.Geometry.PlaneColoring.Transfer": {
+"ok": true,
+"secs": 4.8
+},
+"OAI.MeasureTheory.CompactFactors.OrbitBridge": {
+"ok": true,
+"secs": 9.4
+},
+"OAI.Geometry.PlaneColoring.FullApproximation": {
+"ok": true,
+"secs": 8.0
+},
+"OAI.MeasureTheory.CompactFactors.TowerAudit": {
+"ok": false,
+"err": "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree433/OAI/MeasureTheory/CompactFactors/TowerAudit.lean:105:0: warning: automatically included section variable(s) unused in theorem `OAI.PlaneFiveColor.Spectral.tower_max_all_factorizable`:\n  [StandardBorelSpace X]\n  [Nonempty X]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [StandardBorelSpace X] [Nonempty X] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree433/OAI/MeasureTheory/CompactFactors/TowerAudit.lean:157:0: warning: automatically included section variable(s) unused in theorem `OAI.PlaneFiveColor.Spectral.exists_tower_maximal`:\n  [Nonempty X]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Nonempty X] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree433/OAI/MeasureTheory/CompactFactors/TowerAudit.lean:233:48: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  IsProbabilityMeasure (Measure.map p \u03bc)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree433/OAI/MeasureTheory/CompactFactors/TowerAudit.lean:233:2: warning: Try this: \n  haveI\u0335\n\nThe goal is a proposition, so `have` is preferred over `haveI`.\nThe difference between `have` and `haveI` is that `haveI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree433/OAI/MeasureTheory/CompactFactors/TowerAudit.lean:245:4: error: Type mismatch\n  condDistrib_ae_eq_of_measure_eq_compProd ?m.210 (Measurable.aemeasurable measurable_id) ?m.221\nhas type\n  \u21d1(condDistrib id ?m.210 ?m.218) =\u1d50[Measure.map ?m.210 ?m.218] \u21d1?m.219\nbut is expected to have type\n  \u21d1(condDistrib id p \u03bc) =\u1d50[\u03bd] \u21d1(Kernel.deterministic b hb)\n/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg224wy/m1/tree433/OAI/MeasureTheory/CompactFactors/TowerAudit.lean:296:45: warning: Variable name `h\u03bc` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _h\u03bc\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n",
+"secs": 8.5
+},
+"OAI.MeasureTheory.CompactFactors.WeakMixingTerminal": {
+"ok": true,
+"secs": 6.3
+},
+"OAI.Geometry.PlaneColoring.Mesh": {
+"ok": true,
+"secs": 6.1
+},
+"OAI.Geometry.PlaneColoring.Five": {
+"ok": true,
+"secs": 129.0
+},
+"OAI.Geometry.PlaneColoring.NullSetRobust": {
+"ok": true,
+"secs": 75.6
+},
+"OAI.Geometry.PlaneColoring.Chromatic": {
+"ok": true,
+"secs": 75.9
+}
+}

@@ -1,0 +1,132 @@
+{
+  "updated_utc": "2026-11-14T15:25:11Z",
+  "status": "completed_block",
+  "summary": [
+    "Block 17 (analysis only; timestamps read from the clock). (0) Corrected the diskAnnulus description: it is closedBall d.center (1 + d.radius) \\ ball d.center (1 - d.radius) (HoleApproximation.lean:210-211), area 4*pi*r for 0 <= r <= 1 by volume_diskAnnulus (pi(1+r)^2 - pi(1-r)^2); my earlier 'ball(c,r+1) minus closedBall(c,r)' was wrong at BOTH endpoints. Its role is the exception set for exact unit distances, certified by unit_from_disk_mem_annulus (q in d.closedBall and dist z q = 1 gives z in diskAnnulus d). (1) Audited the Five.lean dichotomy from source. graph_map_small_mesh_impossible takes one continuous F : closedBall 0 5 -> GraphSpace K5 plus hmesh, which is uniform in BOTH the label and the set (for every i and every preconnected K inside the domain with positive i-th coordinate, all pairs are within distance 2); graph_map_large_positive is its negation in the used direction and is proved in two lines by by_contra!. The cover is built from positive-coordinate components: coverage from graphRealization_sum (coordinates of a realization point sum to 1, so one is positive), multiplicity <= 2 from graphRealization_positive_three (a graphEdgePoint is supported on two labels) plus equality of components at a shared point, member diameter from hmesh, then PlanarCover.compact_open_cover_impossible with Q = closedBall 0 5. Boundary cases checked: boundary of Q covered, single-positive-coordinate points, nonempty components, and the dist_eq_norm bridge to the obstruction's norm bound. (2) No unsupported premise: hmesh is discharged by graph_map_large_positive, positivity and multiplicity are proved, continuity is the codomain, and the numeric side is supplied at Five.lean:105-107. Both lemmas are pure topology - no colouring, no measurability - so the graph map is not smuggling colouring data. (3) Fidelity table: Lemma 7.5 -> compact_open_cover_impossible (existing, PlanarCovers.lean:374); paper's mesh extraction -> graph_map_small_mesh_impossible; shrinking-budget contradiction -> no_large_positive_sequence + connected_escape_holes; the dichotomy itself has NO paper counterpart; Proposition 7.1 and 7.6-7.8 -> none (replaced). Stated that the Lean route is a differing argument for the same statement, and that every component predates this chat, so nothing here is an overnight simplification. No builds, no computation, no wiring change."
+  ],
+  "verified_results": [
+    {
+      "claim": "diskAnnulus is closedBall c (1+r) minus ball c (1-r), area 4*pi*r for 0<=r<=1, and is the exact-unit-distance exception set",
+      "grade": "[S+] HoleApproximation.lean:210-232 (definition, unit_from_disk_mem_annulus, volume_diskAnnulus)",
+      "status": "corrected and confirmed"
+    },
+    {
+      "claim": "graph_map_small_mesh_impossible's hmesh is uniform in label and set; graph_map_large_positive is its negation in the used direction",
+      "grade": "[S] statements read verbatim at Five.lean:29-36 and :94-98",
+      "status": "confirmed"
+    },
+    {
+      "claim": "Coverage, multiplicity<=2 and member diameter in the small-mesh proof come respectively from graphRealization_sum, graphRealization_positive_three, and hmesh",
+      "grade": "[S+] body read at Five.lean:38-92",
+      "status": "confirmed"
+    },
+    {
+      "claim": "No unsupported premise: the mesh bound is discharged by graph_map_large_positive, positivity and multiplicity are proved, continuity is the codomain type, the numeric side is supplied at Five.lean:105-107",
+      "grade": "[S+] each premise traced to its supplier",
+      "status": "confirmed"
+    },
+    {
+      "claim": "Both lemmas are pure topology (continuous map into the realization of K5), with no colouring or measurability hypothesis",
+      "grade": "[S] statements read",
+      "status": "confirmed"
+    },
+    {
+      "claim": "The Lean's §7 route is Lemma 7.5 + a dichotomy, not the paper's continuum extraction; every component already existed in the tree",
+      "grade": "[S] dependency table plus earlier import-cone work",
+      "status": "stated without claiming a new simplification"
+    }
+  ],
+  "conjectures": [
+    {
+      "statement": "The paper's §7.4 mesh step and the Lean dichotomy prove the same intermediate statement in different ways.",
+      "status": "paper-level mapping, not verifiable by source reading",
+      "grade": "[P] projectional"
+    }
+  ],
+  "artifacts": [
+    "supervisor/simplify-verification/AUDIT-FIVE-CYCLE.md",
+    "supervisor/simplify-verification/FIVE-DICHOTOMY-AUDIT.md",
+    "supervisor/simplify-verification/FULLAPPROX-AGREES-AUDIT.md",
+    "supervisor/simplify-verification/INTERFACE-WALL.md",
+    "supervisor/simplify-verification/LEMMA78-COMPARISON.md",
+    "supervisor/simplify-verification/LOCAL-CHECK-QUEUE.json",
+    "supervisor/simplify-verification/NOTES.md",
+    "supervisor/simplify-verification/STATUS.json",
+    "supervisor/simplify-verification/TOPOLOGY-CONE-MANIFEST.json",
+    "supervisor/simplify-verification/TRANSFER-LEDGER.md",
+    "supervisor/simplify-verification/VALID-CONSUMER-AUDIT.md",
+    "supervisor/simplify-verification/checks/five_cycle_licence.py",
+    "supervisor/simplify-verification/lean/CheckFifth.lean",
+    "supervisor/simplify-verification/lean/ConnectedSetExclusion.lean",
+    "supervisor/simplify-verification/lean/FiveCycleResidues.lean",
+    "supervisor/simplify-verification/lean/WitnessSelection.lean",
+    "supervisor/simplify-verification/move_audit.py",
+    "supervisor/simplify-verification/trim_audit.py"
+  ],
+  "tests_run": [
+    {
+      "cmd": "sed of HoleApproximation.lean:209-232 and Five.lean:46-95 (source reading, not grep inference)",
+      "outcome": "diskAnnulus corrected with its volume lemma; both Five.lean statements and the small-mesh body read line by line."
+    },
+    {
+      "cmd": "date -u",
+      "outcome": "2026-11-14T15:25:11Z (real clock, used for updated_utc)."
+    },
+    {
+      "cmd": "Lean build / computation",
+      "outcome": "NONE. The graph worker holds the only remote slot this block; no search or solver runs here."
+    }
+  ],
+  "failed_routes": [
+    "Seeking a countermodel with fewer than four relaxed positions: none exists (single relaxation already gives 0 solutions, and all eight relax all four).",
+    "Reading the drop-one runs as evidence of individual necessity: that is the reverse implication and is not established by them.",
+    "Treating the cover-obstruction substitution as an integration: it cannot be, because no module of lean/ imports supervisor/.",
+    "Expecting the mesh/diameter bound to be the §7 gap: the Lean splits it into a dichotomy inside Five.lean, so it is not a hypothesis left open.",
+    "`h '' P j = P (h j)`: false at j=0; the correct general target is P(-j). Kept in the file header as a recorded trap.",
+    "My first block-6 check script applied the identity map instead of h and reported all identities false - a script bug, not a mathematical finding; corrected and re-run inside the same one-process budget.",
+    "`refine ⟨membership-proof, ?_⟩` for a `Finset.Nonempty` goal: Nonempty is `∃ a, a ∈ s`, so the witness must come first; the local run caught this at hasNbr_image and it also poisoned neighbour_family_push with sorryAx.",
+    "Restoring the paper's monotone eps_n from the Lean per-scale form: monotonicity cannot be obtained by replacing eps_n with min over k<=n, because shrinking eps changes pi^eps and hence the entire disk family and the agreement map; it would need the construction to be redone at the new scale. Recorded as the single loss of the interchange.",
+    "My earlier claim that monotonicity of eps_n cannot be restored: wrong, and now retracted with two explicit constructions. The error was conflating 'modifying a witness' (blocked, since shrinking eps changes pi^eps) with 'selecting among witnesses' (free, and carries all indexed data).",
+    "WitnessSelection V1: failed locally at four points - uninferable positivity for the let-bound budget, equation-compiler unfolding of sel, a denominator mismatch k+1 vs k+1+1, and an undecomposed ∀n,True conjunct. Only pickAt_lt was accepted; the three dependent theorems carried sorryAx. V2 replaces each failing construction rather than patching it.",
+    "V2 (staged, uncompiled) used Tendsto/atTop with no Filter namespace open and kept the `pickAt_lt ... _ _` positivity placeholder in sel_step_lt; V3 replaces both.",
+    "Selecting on epsilon instead of the budget: epsilon -> 0 leaves t and the radii sum free, since FullApprox gives only epsilon < t and sum rad < t.",
+    "Describing Route B's rule as if it were Route A's: with scale := t the next budget depends on the previous t, so epsilon's monotonicity is not obtained that way; the two routes must be kept separate, as s8 now does.",
+    "Route B (select on epsilon, assume per-index budget s/2): invalid because Classical.choose discards the exhibited witness's budget; retracted with two salvage paths recorded.",
+    "Reading `d.core = true` as the paper's core disk B_{n,x}: wrong in the tree - centerDisks (the fixed disks around cyclic centres) carry core := false.",
+    "V3 (open Filter alone) failed locally only on the unknown 𝓝 notation; V4 adds Topology and passes - recorded so the V3 failure is not mistaken for a mathematical one.",
+    "My earlier statement that the Lean's core flag 'is not the paper's core disk' was too broad: it is correct for centerDisks but wrong for initialDisks' L-part, which is exactly the paper's core family.",
+    "Calling connected_escape_holes the tree's Lemma 7.8: they share only the word 'holes'. The comparison as posed was unanswerable; the useful question (is 7.8 needed at all?) is answered instead.",
+    "Reading the module name ContinuumLimits as evidence of a formalised Proposition 7.1: it holds a.e./support lemmas only.",
+    "My description of diskAnnulus as 'ball(c,r+1) minus closedBall(c,r)' - wrong at both endpoints; corrected to closedBall(c,1+r) minus ball(c,1-r) with area 4*pi*r.",
+    "Treating the absence of winding/reducedWord names as proof that the paper's §7.4 is fully covered: absence of names is not an argument; the replacement is the dichotomy, and its equivalence to the paper's step is a [P] mapping I did not verify."
+  ],
+  "next_step": "Only remaining §7 item that is neither compared nor audited: statement fidelity of SmallArcs/Exclusion-type lemmas if a later block needs them (not now). Immediate: when the queue frees, compile nothing new - V4 is passed and frozen; the outstanding structural step is still re-pointing Five.lean:54 at paper_lemma_7_5 plus a 25-module rebuild, which needs the owner's schedule, not this chat.",
+  "escalation": {
+    "obstacle": "(NC-1), restated precisely: at an accumulation point x of a specified five-cycle locus, with a = lim h_n/|h_n| and R the rotation acting on directions, the list S(R a) = {i : R a lies in the closed essential support of state i at x} has no common label, i.e. the intersection of the diagonals D_i over i in S(R a) is empty.",
+    "definitions": "D_i = {i, i+2} in Z/5Z; state i at x = the set of directions whose palette is exactly D_i; closed essential support S_i = the closed set whose every neighbourhood meets state i in positive measure; S(u) = {i : u in S_i}.",
+    "hypotheses_available": "(6.6) a.e. transition rule at x; closedness and finiteness of the five supports; no-common-label at a and -a from the endpoint pair (a_n^+, a_n^-) and 'y_n in H_k for every label'; (D) disjointness of adjacent position lists; (N) neighbour existence in both directions.",
+    "attempted": "direct transport of the printed zero-area endpoint argument (needs a partner direction whose sum lies near a centre with all five edges present; none exists at r=1); derivation from V0,V3,D,N (fails: 8 countermodels, all relaxing 1,2,4,5); single-position weakening (fails: one relaxation never gives a model).",
+    "expected_useful_output": "Either a proof of (NC-1) — then FIVE-CYCLE-CORE's five-step elimination of Lemma 6.7 stands as a real simplification — or a construction of an accumulation configuration realising S(1) = {2,4}, which would prove Lemma 6.7 is not removable by support-list combinatorics alone."
+  },
+  "recovery_note": "2026-11-14 post-outage reconciliation: no jobs running (the only background job, jmwfyybqo, exited 0 long before the outage and its result is recorded); every artifact re-read and hash-checked; nothing re-run or duplicated. Latest instruction (block 3) was already complete at 06:16Z.",
+  "handoff": "Analysis-only block. Corrected diskAnnulus (closedBall c (1+r) minus ball c (1-r), area 4*pi*r; unit-distance exception set, via unit_from_disk_mem_annulus). Audited the Five.lean dichotomy from source: hmesh is uniform in label and set, graph_map_large_positive is its negation and is proved, coverage comes from graphRealization_sum, multiplicity<=2 from graphRealization_positive_three, the diameter from hmesh, then compact_open_cover_impossible on closedBall 0 5; boundary cases and the dist_eq_norm bridge checked. No unsupported premise. Fidelity table shows Lemma 7.5 -> the existing PlanarCovers lemma, the paper's mesh extraction -> graph_map_small_mesh_impossible, the shrinking-budget step -> no_large_positive_sequence, the dichotomy with no paper counterpart, and Proposition 7.1/7.6-7.8 replaced. Nothing claimed as a new simplification. Retained: initialDisks L-part core := true vs centerDisks core := false. No builds; real clock timestamp in STATUS.",
+  "artifact_hashes": {
+    "AUDIT-FIVE-CYCLE.md": "9fe1ca44daca711f0fb705ea38ea01e490c36adcc08e14d441bfe318e720484c",
+    "FULLAPPROX-AGREES-AUDIT.md": "2de570609f994c3ba0979830b3e68e5545ab2ac6e91a97efc834f07586562c16",
+    "INTERFACE-WALL.md": "d87c5d510b58798fce8445688f8ff958250fa09c4d8ba0e2fca77256afd2945f",
+    "LOCAL-CHECK-QUEUE.json": "cf566c8a96e2fd2ae50d24baa1d3999f8c1bab8d6481dea411172f6d6730bd1e",
+    "NOTES.md": "cd53abfa9912fbd28f113a4ebf20f95b9f39606fc1532ad5001c756d25dc8f39",
+    "TOPOLOGY-CONE-MANIFEST.json": "0be1f96e92e26a8fdc05875703a87bad9c63ac930ca445c2229eaf22aaa7462c",
+    "TRANSFER-LEDGER.md": "7f8b32948490030b523c228bdb4abedfbd925ebe0191b2c9b5f8451dceb6da04",
+    "checks/five_cycle_licence.py": "1fa619d857ec753381f30b27034abc5c6f4073022298572079dffbd22e460360",
+    "lean/ConnectedSetExclusion.lean": "84b6111a0bcf4f1a3f6db5806ed1c3dcbf298d317bf2398448b2a69a8679b144",
+    "lean/FiveCycleResidues.lean": "70452746c5ea999de6156cdee1e16639e6c563670e066288d45355ca9a17ead5",
+    "lean/CheckFifth.lean": "4cebfd5f28cf196e7247247e6fc40719b88c61b3c2f7184b3ff135cf6e7c14f9",
+    "trim_audit.py": "b462805f264b010a12f89ead087bc85c16c038295f6fb314419561aa77a70103",
+    "move_audit.py": "f5afca70b6ae72a19ea334c61b5bdfc49b890b344cb2650068b66cb0ad542b11",
+    "lean/WitnessSelection.lean": "3ff5d5c86fd49e4252e2fbbbcd8fc05e6c909c165cb98d62f47da399f608a569",
+    "VALID-CONSUMER-AUDIT.md": "7f79630d74ff18567786556698cf08f111b01274e36b59f1191eff8637165c8b",
+    "LEMMA78-COMPARISON.md": "f301f806aeda6e06a655a547e5523b34ca8fb3a327664f081ec106a717e5c9dd",
+    "FIVE-DICHOTOMY-AUDIT.md": "264ad03e75b9f10df61800e4ed13c61e092b4a90e5e96eefe46ccb3a759e30e3"
+  }
+}

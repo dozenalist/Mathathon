@@ -1,0 +1,86 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: f46cc18eb101913d63757ce7fe796665f25968945ada315525ddcde2a3d2bfe8
+Status: failed
+Exit code: 1
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\ConeSurvivor.lean:24:51: error: Tactic `constructor` failed: target is not an inductive datatype
+
+case «0»
+c : ℂ → Fin 6
+hc : Measurable c
+hw : WeakColoring 6 c
+x : ℂ
+K : Fin 3 → Set ℂ
+hK : (i : Fin 3) → ApproachingContinuum x (K i) ↑(Circle.exp (coneSurvivorAngles i))
+hexcl : ∀ (i : Fin 3), ∀ j ∈ coneSurvivorExclusions i, Disjoint (spatialSupport c j) (Straddle (K i))
+⊢ (∀ (i : Fin 3), 0 ∉ coneSurvivorExclusions i) → 0 = 4 ∨ 0 = 5
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\ConeSurvivor.lean:24:51: error: Tactic `constructor` failed: target is not an inductive datatype
+
+case «1»
+c : ℂ → Fin 6
+hc : Measurable c
+hw : WeakColoring 6 c
+x : ℂ
+K : Fin 3 → Set ℂ
+hK : (i : Fin 3) → ApproachingContinuum x (K i) ↑(Circle.exp (coneSurvivorAngles i))
+hexcl : ∀ (i : Fin 3), ∀ j ∈ coneSurvivorExclusions i, Disjoint (spatialSupport c j) (Straddle (K i))
+⊢ (∀ (i : Fin 3), 1 ∉ coneSurvivorExclusions i) → 1 = 4 ∨ 1 = 5
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\ConeSurvivor.lean:24:51: error: Tactic `constructor` failed: target is not an inductive datatype
+
+case «2»
+c : ℂ → Fin 6
+hc : Measurable c
+hw : WeakColoring 6 c
+x : ℂ
+K : Fin 3 → Set ℂ
+hK : (i : Fin 3) → ApproachingContinuum x (K i) ↑(Circle.exp (coneSurvivorAngles i))
+hexcl : ∀ (i : Fin 3), ∀ j ∈ coneSurvivorExclusions i, Disjoint (spatialSupport c j) (Straddle (K i))
+⊢ (∀ (i : Fin 3), 2 ∉ coneSurvivorExclusions i) → 2 = 4 ∨ 2 = 5
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\ConeSurvivor.lean:24:51: error: Tactic `constructor` failed: target is not an inductive datatype
+
+case «3»
+c : ℂ → Fin 6
+hc : Measurable c
+hw : WeakColoring 6 c
+x : ℂ
+K : Fin 3 → Set ℂ
+hK : (i : Fin 3) → ApproachingContinuum x (K i) ↑(Circle.exp (coneSurvivorAngles i))
+hexcl : ∀ (i : Fin 3), ∀ j ∈ coneSurvivorExclusions i, Disjoint (spatialSupport c j) (Straddle (K i))
+⊢ (∀ (i : Fin 3), 3 ∉ coneSurvivorExclusions i) → 3 = 4 ∨ 3 = 5
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\ConeSurvivor.lean:24:51: error: Tactic `constructor` failed: target is not an inductive datatype
+
+case «4»
+c : ℂ → Fin 6
+hc : Measurable c
+hw : WeakColoring 6 c
+x : ℂ
+K : Fin 3 → Set ℂ
+hK : (i : Fin 3) → ApproachingContinuum x (K i) ↑(Circle.exp (coneSurvivorAngles i))
+hexcl : ∀ (i : Fin 3), ∀ j ∈ coneSurvivorExclusions i, Disjoint (spatialSupport c j) (Straddle (K i))
+⊢ (∀ (i : Fin 3), 4 ∉ coneSurvivorExclusions i) → 4 = 4 ∨ 4 = 5
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\ConeSurvivor.lean:24:51: error: Tactic `constructor` failed: target is not an inductive datatype
+
+case «5»
+c : ℂ → Fin 6
+hc : Measurable c
+hw : WeakColoring 6 c
+x : ℂ
+K : Fin 3 → Set ℂ
+hK : (i : Fin 3) → ApproachingContinuum x (K i) ↑(Circle.exp (coneSurvivorAngles i))
+hexcl : ∀ (i : Fin 3), ∀ j ∈ coneSurvivorExclusions i, Disjoint (spatialSupport c j) (Straddle (K i))
+⊢ (∀ (i : Fin 3), 5 ∉ coneSurvivorExclusions i) → 5 = 4 ∨ 5 = 5
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-integration\src\OAI\Geometry\PlaneColoring\ConeSurvivor.lean:25:12: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+c : ℂ → Fin 6
+hc : Measurable c
+hw : WeakColoring 6 c
+x : ℂ
+K : Fin 3 → Set ℂ
+hK : (i : Fin 3) → ApproachingContinuum x (K i) ↑(Circle.exp (coneSurvivorAngles i))
+hexcl : ∀ (i : Fin 3), ∀ j ∈ coneSurvivorExclusions i, Disjoint (spatialSupport c j) (Straddle (K i))
+j : Fin 3
+⊢ coneSurvivorAngles j ∈ Icc (Real.pi / 6 - Real.pi / 6) (Real.pi / 6 + Real.pi / 6)
+
+STDERR
+

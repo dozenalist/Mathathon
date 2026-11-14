@@ -1,0 +1,30 @@
+gamma in degrees  (33.557309761920713, 33.557309761920713)
+psi = 180+gamma   (213.557309761920720, 213.557309761920720)   width 2.87e-68
+
+model                        vals periodic   status
+m15 uniform blocks, ell=3    3    True       ELIMINATED
+      A=[0, 3]    B=[1, 4]    role B->A  t = 40.0000 deg  T' = 2
+      A=[0, 3]    B=[2, 5]    role A->B  t = 0.0000 deg  T' = 2
+m15 uniform blocks, ell=4    3    True       ELIMINATED
+      A=[0, 2]    B=[1, 4]    role B->A  t = 40.0000 deg  T' = 2
+      A=[0, 2]    B=[3, 5]    role A->B  t = 0.0000 deg  T' = 2
+m15 uniform blocks, ell=5    3    True       ELIMINATED
+      A=[0, 2]    B=[1, 3]    role B->A  t = 40.0000 deg  T' = 2
+      A=[0, 2]    B=[4, 5]    role A->B  t = 0.0000 deg  T' = 2
+m15 uniform blocks, ell=6    3    True       ELIMINATED
+      A=[0, 3]    B=[1, 4]    role B->A  t = 40.0000 deg  T' = 2
+      A=[0, 3]    B=[2, 5]    role A->B  t = 0.0000 deg  T' = 2
+FREE-LABEL, ell=3            3    True       survives
+FREE-LABEL, ell=4            3    True       ELIMINATED
+      A=[0, 2]    B=[1, 3]    role B->A  t = 40.0000 deg  T' = 2
+FREE-LABEL, ell=5            3    True       ELIMINATED
+      A=[0, 2]    B=[1, 3]    role B->A  t = 40.0000 deg  T' = 2
+FREE-LABEL, ell=6            6    False      ELIMINATED
+      A=[1, 3]    B=[2, 4]    role A->B  t = 90.0000 deg  T' = 2
+      A=[1, 3]    B=[2, 5]    role B->A  t = 20.0000 deg  T' = 2
+m13 singleton triangle       3    True       survives
+
+eliminated 7 of 9 ; survivors ['FREE-LABEL, ell=3', 'm13 singleton triangle']
+
+arc-sum disc bound (strictly stronger than the gamma criterion):
+  delta*sigma - delta^2 = 0.717177  >=  1/sqrt3 = 0.577350 : True

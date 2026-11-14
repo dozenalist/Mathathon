@@ -1,0 +1,933 @@
+[
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 0,
+    "name": "X",
+    "kind": "implicit",
+    "type": "Type u_1"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 1,
+    "name": "Y",
+    "kind": "implicit",
+    "type": "Type u_2"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 2,
+    "name": "W",
+    "kind": "implicit",
+    "type": "Type u_3"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 3,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.5",
+    "kind": "instance",
+    "type": "MeasurableSpace X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 4,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.8",
+    "kind": "instance",
+    "type": "StandardBorelSpace X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 5,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.11",
+    "kind": "instance",
+    "type": "Nonempty X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 6,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.14",
+    "kind": "instance",
+    "type": "MeasurableSpace Y"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 7,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.23",
+    "kind": "instance",
+    "type": "MeasurableSpace W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 8,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.26",
+    "kind": "instance",
+    "type": "StandardBorelSpace W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 9,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.29",
+    "kind": "instance",
+    "type": "Nonempty W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 10,
+    "name": "μ",
+    "kind": "explicit",
+    "type": "MeasureTheory.Measure X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 11,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3371097691._hygCtx._hyg.34",
+    "kind": "instance",
+    "type": "MeasureTheory.IsProbabilityMeasure μ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 12,
+    "name": "p",
+    "kind": "explicit",
+    "type": "X → Y"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 13,
+    "name": "q",
+    "kind": "explicit",
+    "type": "Y → W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 14,
+    "name": "b",
+    "kind": "explicit",
+    "type": "X → OAI.PlaneFiveColor.Spectral.D"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 15,
+    "name": "hp",
+    "kind": "explicit",
+    "type": "Measurable p"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 16,
+    "name": "hq",
+    "kind": "explicit",
+    "type": "Measurable q"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 17,
+    "name": "hb",
+    "kind": "explicit",
+    "type": "Measurable b"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 18,
+    "name": "m",
+    "kind": "explicit",
+    "type": "ℕ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 19,
+    "name": "hm",
+    "kind": "explicit",
+    "type": "0 < m"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 20,
+    "name": "g",
+    "kind": "explicit",
+    "type": "Y → Fin m → OAI.PlaneFiveColor.Spectral.D"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 21,
+    "name": "hg",
+    "kind": "explicit",
+    "type": "∀ᵐ (y : Y) ∂MeasureTheory.Measure.map p μ,   (ProbabilityTheory.condDistrib b p μ) y = (↑m)⁻¹ • ∑ i, MeasureTheory.Measure.dirac (g y i)"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 22,
+    "name": "hwild",
+    "kind": "explicit",
+    "type": "OAI.PlaneFiveColor.Spectral.IsWild   (OAI.EuclideanFiveColor.DifferenceFourier.differenceLaw (MeasureTheory.Measure.map (q ∘ p) μ)     (ProbabilityTheory.condDistrib b (q ∘ p) μ))"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 23,
+    "name": "ρ",
+    "kind": "explicit",
+    "type": "ℝ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 24,
+    "name": "c",
+    "kind": "explicit",
+    "type": "ℝ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 25,
+    "name": "N",
+    "kind": "explicit",
+    "type": "ℕ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 26,
+    "name": "hρ",
+    "kind": "explicit",
+    "type": "0 < ρ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 27,
+    "name": "hc",
+    "kind": "explicit",
+    "type": "0 < c"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 28,
+    "name": "hN",
+    "kind": "explicit",
+    "type": "0 < N"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 29,
+    "name": "harc",
+    "kind": "explicit",
+    "type": "∀ (ω : MeasureTheory.Measure Circle) [MeasureTheory.IsProbabilityMeasure ω],   (∀ (n : ℕ), 0 < n → n ≤ N → ‖∫ (w : Circle), ↑w ^ n ∂ω‖ < c) → ω.real {w | ‖↑w - 1‖ ≤ 4 * ρ} < 1 / (4 * ↑m ^ 2)"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+    "index": 30,
+    "name": "happrox",
+    "kind": "explicit",
+    "type": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt μ p q b m (ρ ^ m / ↑m / 100 / 100)"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 0,
+    "name": "X",
+    "kind": "implicit",
+    "type": "Type u_1"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 1,
+    "name": "Y",
+    "kind": "implicit",
+    "type": "Type u_2"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 2,
+    "name": "W",
+    "kind": "implicit",
+    "type": "Type u_3"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 3,
+    "name": "inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.5",
+    "kind": "instance",
+    "type": "MeasurableSpace X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 4,
+    "name": "inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.8",
+    "kind": "instance",
+    "type": "StandardBorelSpace X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 5,
+    "name": "inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.11",
+    "kind": "instance",
+    "type": "Nonempty X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 6,
+    "name": "inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.14",
+    "kind": "instance",
+    "type": "MeasurableSpace Y"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 7,
+    "name": "inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.23",
+    "kind": "instance",
+    "type": "MeasurableSpace W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 8,
+    "name": "inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.26",
+    "kind": "instance",
+    "type": "StandardBorelSpace W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 9,
+    "name": "inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.29",
+    "kind": "instance",
+    "type": "Nonempty W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 10,
+    "name": "μ",
+    "kind": "explicit",
+    "type": "MeasureTheory.Measure X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 11,
+    "name": "inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2548330605._hygCtx._hyg.34",
+    "kind": "instance",
+    "type": "MeasureTheory.IsProbabilityMeasure μ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 12,
+    "name": "p",
+    "kind": "explicit",
+    "type": "X → Y"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 13,
+    "name": "q",
+    "kind": "explicit",
+    "type": "X → W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 14,
+    "name": "b",
+    "kind": "explicit",
+    "type": "X → OAI.PlaneFiveColor.Spectral.D"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 15,
+    "name": "hp",
+    "kind": "explicit",
+    "type": "Measurable p"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 16,
+    "name": "hq",
+    "kind": "explicit",
+    "type": "Measurable q"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 17,
+    "name": "hb",
+    "kind": "explicit",
+    "type": "Measurable b"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 18,
+    "name": "m",
+    "kind": "explicit",
+    "type": "ℕ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 19,
+    "name": "hm",
+    "kind": "explicit",
+    "type": "0 < m"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 20,
+    "name": "g",
+    "kind": "explicit",
+    "type": "Y → Fin m → OAI.PlaneFiveColor.Spectral.D"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 21,
+    "name": "hg",
+    "kind": "explicit",
+    "type": "∀ᵐ (y : Y) ∂MeasureTheory.Measure.map p μ,   (ProbabilityTheory.condDistrib b p μ) y = (↑m)⁻¹ • ∑ i, MeasureTheory.Measure.dirac (g y i)"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 22,
+    "name": "hwild",
+    "kind": "explicit",
+    "type": "OAI.PlaneFiveColor.Spectral.IsWild   (OAI.EuclideanFiveColor.DifferenceFourier.differenceLaw (MeasureTheory.Measure.map q μ)     (ProbabilityTheory.condDistrib b q μ))"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 23,
+    "name": "ρ",
+    "kind": "explicit",
+    "type": "ℝ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 24,
+    "name": "c",
+    "kind": "explicit",
+    "type": "ℝ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 25,
+    "name": "N",
+    "kind": "explicit",
+    "type": "ℕ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 26,
+    "name": "hρ",
+    "kind": "explicit",
+    "type": "0 < ρ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 27,
+    "name": "hc",
+    "kind": "explicit",
+    "type": "0 < c"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 28,
+    "name": "hN",
+    "kind": "explicit",
+    "type": "0 < N"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 29,
+    "name": "harc",
+    "kind": "explicit",
+    "type": "∀ (ω : MeasureTheory.Measure Circle) [MeasureTheory.IsProbabilityMeasure ω],   (∀ (n : ℕ), 0 < n → n ≤ N → ‖∫ (w : Circle), ↑w ^ n ∂ω‖ < c) → ω.real {w | ‖↑w - 1‖ ≤ 4 * ρ} < 1 / (4 * ↑m ^ 2)"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+    "index": 30,
+    "name": "happrox",
+    "kind": "explicit",
+    "type": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt μ p q b m (ρ ^ m / ↑m / 100 / 100)"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 0,
+    "name": "X",
+    "kind": "implicit",
+    "type": "Type u_1"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 1,
+    "name": "Y",
+    "kind": "implicit",
+    "type": "Type u_2"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 2,
+    "name": "W",
+    "kind": "implicit",
+    "type": "Type u_3"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 3,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.5",
+    "kind": "instance",
+    "type": "MeasurableSpace X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 4,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.8",
+    "kind": "instance",
+    "type": "StandardBorelSpace X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 5,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.11",
+    "kind": "instance",
+    "type": "Nonempty X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 6,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.14",
+    "kind": "instance",
+    "type": "MeasurableSpace Y"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 7,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.23",
+    "kind": "instance",
+    "type": "MeasurableSpace W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 8,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.26",
+    "kind": "instance",
+    "type": "StandardBorelSpace W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 9,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.29",
+    "kind": "instance",
+    "type": "Nonempty W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 10,
+    "name": "μ",
+    "kind": "explicit",
+    "type": "MeasureTheory.Measure X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 11,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2552128194._hygCtx._hyg.34",
+    "kind": "instance",
+    "type": "MeasureTheory.IsProbabilityMeasure μ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 12,
+    "name": "p",
+    "kind": "explicit",
+    "type": "X → Y"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 13,
+    "name": "P",
+    "kind": "explicit",
+    "type": "X → W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 14,
+    "name": "Z",
+    "kind": "implicit",
+    "type": "Type u_4"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 15,
+    "name": "S",
+    "kind": "explicit",
+    "type": "X → Z"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 16,
+    "name": "b",
+    "kind": "explicit",
+    "type": "X → OAI.PlaneFiveColor.Spectral.D"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 17,
+    "name": "hp",
+    "kind": "explicit",
+    "type": "Measurable p"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 18,
+    "name": "hP",
+    "kind": "explicit",
+    "type": "Measurable P"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 19,
+    "name": "hb",
+    "kind": "explicit",
+    "type": "Measurable b"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 20,
+    "name": "m",
+    "kind": "explicit",
+    "type": "ℕ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 21,
+    "name": "hm",
+    "kind": "explicit",
+    "type": "0 < m"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 22,
+    "name": "g",
+    "kind": "explicit",
+    "type": "Y → Fin m → OAI.PlaneFiveColor.Spectral.D"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 23,
+    "name": "hg",
+    "kind": "explicit",
+    "type": "∀ᵐ (y : Y) ∂MeasureTheory.Measure.map p μ,   (ProbabilityTheory.condDistrib b p μ) y = (↑m)⁻¹ • ∑ i, MeasureTheory.Measure.dirac (g y i)"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 24,
+    "name": "hwild",
+    "kind": "explicit",
+    "type": "OAI.PlaneFiveColor.Spectral.IsWild   (OAI.EuclideanFiveColor.DifferenceFourier.differenceLaw (MeasureTheory.Measure.map P μ)     (ProbabilityTheory.condDistrib b P μ))"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 25,
+    "name": "ρ",
+    "kind": "explicit",
+    "type": "ℝ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 26,
+    "name": "c",
+    "kind": "explicit",
+    "type": "ℝ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 27,
+    "name": "N",
+    "kind": "explicit",
+    "type": "ℕ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 28,
+    "name": "hρ",
+    "kind": "explicit",
+    "type": "0 < ρ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 29,
+    "name": "hc",
+    "kind": "explicit",
+    "type": "0 < c"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 30,
+    "name": "hN",
+    "kind": "explicit",
+    "type": "0 < N"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 31,
+    "name": "harc",
+    "kind": "explicit",
+    "type": "∀ (ω : MeasureTheory.Measure Circle) [MeasureTheory.IsProbabilityMeasure ω],   (∀ (n : ℕ), 0 < n → n ≤ N → ‖∫ (w : Circle), ↑w ^ n ∂ω‖ < c) → ω.real {w | ‖↑w - 1‖ ≤ 4 * ρ} < 1 / (4 * ↑m ^ 2)"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+    "index": 32,
+    "name": "happrox",
+    "kind": "explicit",
+    "type": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt μ p P S b m (ρ ^ m / ↑m / 100 / 100)"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+    "index": 0,
+    "name": "X",
+    "kind": "implicit",
+    "type": "Type u_1"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+    "index": 1,
+    "name": "Y",
+    "kind": "implicit",
+    "type": "Type u_2"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+    "index": 2,
+    "name": "W",
+    "kind": "implicit",
+    "type": "Type u_3"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+    "index": 3,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2599005850._hygCtx._hyg.5",
+    "kind": "instance",
+    "type": "MeasurableSpace X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+    "index": 4,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2599005850._hygCtx._hyg.14",
+    "kind": "instance",
+    "type": "MeasurableSpace Y"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+    "index": 5,
+    "name": "μ",
+    "kind": "explicit",
+    "type": "MeasureTheory.Measure X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+    "index": 6,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.2599005850._hygCtx._hyg.34",
+    "kind": "instance",
+    "type": "MeasureTheory.IsProbabilityMeasure μ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+    "index": 7,
+    "name": "p",
+    "kind": "explicit",
+    "type": "X → Y"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+    "index": 8,
+    "name": "q",
+    "kind": "explicit",
+    "type": "Y → W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+    "index": 9,
+    "name": "b",
+    "kind": "explicit",
+    "type": "X → OAI.PlaneFiveColor.Spectral.D"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+    "index": 10,
+    "name": "m",
+    "kind": "explicit",
+    "type": "ℕ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+    "index": 11,
+    "name": "γ",
+    "kind": "explicit",
+    "type": "ℝ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+    "index": 0,
+    "name": "X",
+    "kind": "implicit",
+    "type": "Type u_1"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+    "index": 1,
+    "name": "Y",
+    "kind": "implicit",
+    "type": "Type u_2"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+    "index": 2,
+    "name": "W",
+    "kind": "implicit",
+    "type": "Type u_3"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+    "index": 3,
+    "name": "inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2568253221._hygCtx._hyg.5",
+    "kind": "instance",
+    "type": "MeasurableSpace X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+    "index": 4,
+    "name": "inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2568253221._hygCtx._hyg.14",
+    "kind": "instance",
+    "type": "MeasurableSpace Y"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+    "index": 5,
+    "name": "μ",
+    "kind": "explicit",
+    "type": "MeasureTheory.Measure X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+    "index": 6,
+    "name": "inst._@.OAI.MeasureTheory.CompactFactors.ConditionalLimits.2568253221._hygCtx._hyg.34",
+    "kind": "instance",
+    "type": "MeasureTheory.IsProbabilityMeasure μ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+    "index": 7,
+    "name": "p",
+    "kind": "explicit",
+    "type": "X → Y"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+    "index": 8,
+    "name": "q",
+    "kind": "explicit",
+    "type": "X → W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+    "index": 9,
+    "name": "b",
+    "kind": "explicit",
+    "type": "X → OAI.PlaneFiveColor.Spectral.D"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+    "index": 10,
+    "name": "m",
+    "kind": "explicit",
+    "type": "ℕ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+    "index": 11,
+    "name": "γ",
+    "kind": "explicit",
+    "type": "ℝ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+    "index": 0,
+    "name": "X",
+    "kind": "implicit",
+    "type": "Type u_1"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+    "index": 1,
+    "name": "Y",
+    "kind": "implicit",
+    "type": "Type u_2"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+    "index": 2,
+    "name": "W",
+    "kind": "implicit",
+    "type": "Type u_3"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+    "index": 3,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3521740239._hygCtx._hyg.5",
+    "kind": "instance",
+    "type": "MeasurableSpace X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+    "index": 4,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3521740239._hygCtx._hyg.14",
+    "kind": "instance",
+    "type": "MeasurableSpace Y"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+    "index": 5,
+    "name": "μ",
+    "kind": "explicit",
+    "type": "MeasureTheory.Measure X"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+    "index": 6,
+    "name": "inst._@.OAI.Analysis.PlaneSpectrum.ConditionalSpectrum.3521740239._hygCtx._hyg.34",
+    "kind": "instance",
+    "type": "MeasureTheory.IsProbabilityMeasure μ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+    "index": 7,
+    "name": "p",
+    "kind": "explicit",
+    "type": "X → Y"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+    "index": 8,
+    "name": "P",
+    "kind": "explicit",
+    "type": "X → W"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+    "index": 9,
+    "name": "Z",
+    "kind": "implicit",
+    "type": "Type u_4"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+    "index": 10,
+    "name": "S",
+    "kind": "explicit",
+    "type": "X → Z"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+    "index": 11,
+    "name": "b",
+    "kind": "explicit",
+    "type": "X → OAI.PlaneFiveColor.Spectral.D"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+    "index": 12,
+    "name": "m",
+    "kind": "explicit",
+    "type": "ℕ"
+  },
+  {
+    "decl": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+    "index": 13,
+    "name": "γ",
+    "kind": "explicit",
+    "type": "ℝ"
+  }
+]

@@ -1,0 +1,11 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/Expansion.lean	2026-11-13 19:09:13.641104513 +0000
++++ OAI/Geometry/PlaneColoring/Expansion.lean	2026-11-13 19:29:50.493588692 +0000
+@@ -486,7 +486,7 @@
+ lemma deriv_lower_qmp {f D : ℝ → ℝ} (hd : ∀ x, HasDerivAt f (D x) x)
+     (hp : ∀ x, (1/2 : ℝ) ≤ D x) : Measure.QuasiMeasurePreserving f volume volume := by
+   have hA := (deriv_lower_antilipschitz hd hp).comp
+-    ((isometry_subtype_coe : Isometry (Subtype.val : {x : ℝ // x ∈ (univ : Set ℝ)} → ℝ)).antilipschitzWith)
++    ((isometry_subtype_coe : Isometry (Subtype.val : {x : ℝ // x ∈ (univ : Set ℝ)} → ℝ)).antilipschitz)
+   simpa only [Measure.restrict_univ] using
+     (line_antilipschitz_qmp (I := univ) (continuous_iff_continuousAt.mpr (fun x => (hd x).continuousAt)).measurable hA)
+ lemma iterComposition_invariant {f : ℕ → ℝ → ℝ} {A : Set ℝ}

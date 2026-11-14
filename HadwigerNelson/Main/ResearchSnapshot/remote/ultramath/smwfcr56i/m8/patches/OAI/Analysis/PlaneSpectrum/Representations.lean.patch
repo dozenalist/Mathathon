@@ -1,0 +1,11 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/Representations.lean	2026-11-13 19:09:13.640880541 +0000
++++ OAI/Analysis/PlaneSpectrum/Representations.lean	2026-11-13 19:53:42.093857948 +0000
+@@ -320,7 +320,7 @@
+     intro a b
+     simpa only [NNReal.coe_one,one_mul,Real.dist_eq,dist_eq_norm,Real.norm_eq_abs,← Complex.sub_re] using Complex.abs_re_le_norm (a-b)
+   change LipschitzWith 1 (fun z : ℂ => ((max 0 (min 1 z.re) : ℝ) : ℂ))
+-  simpa only [one_mul,Function.comp_def] using Complex.isometry_ofReal.lipschitzWith.comp ((hr.const_min 1).const_max 0)
++  simpa only [one_mul,Function.comp_def] using Complex.isometry_ofReal.lipschitz.comp ((hr.const_min 1).const_max 0)
+ @[simp] lemma clamp_zero : clamp 0 = 0 := by simp [clamp]
+ lemma clamp_range (z : ℂ) : (clamp z).im = 0 ∧ 0 ≤ (clamp z).re ∧ (clamp z).re ≤ 1 := by
+   change (0 : ℝ) = 0 ∧ 0 ≤ max 0 (min 1 z.re) ∧ max 0 (min 1 z.re) ≤ 1

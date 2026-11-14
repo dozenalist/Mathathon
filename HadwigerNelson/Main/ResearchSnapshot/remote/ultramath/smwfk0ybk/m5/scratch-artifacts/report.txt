@@ -1,0 +1,8 @@
+Two certifications.
+
+
+(1) STEP 1 IS VOID, proved not searched. At k=6 the tightened interface CSP (C1)-(C5) has EXACTLY the same satisfiable ray geometries as (C1)-(C3): for every l in {3,4,5,6} and every one of the 6^l words, (C4) (no complementary 3-sets) and (C5) (at most three ternary) remove nothing. Tightened counts 36/36, 216/216, 225/1296, 177/7776 (up to pi/3 symmetry) equal the prior run's untightened table exactly (55,944 instances, exact bitmasks; same code reproduces the prior calibration k=4: 0/216, k=5,l=5: 0/7776). Witness for every word at l=3: outsiders {3,4,5}, P_even={3}, P_odd={4}; outsiders lie in both Lemma 8.1 allowed sets, and singletons defeat (C4),(C5). Hence no UNSAT certificate exists, the route cannot prove chi>=7 at any l or constants, and the INDUCTION LEMMA is moot.
+
+(2) STEP 2 AUDIT: the transfer's cost is ONE theorem consumed ONCE. Lean Prop 4.2 = 32 modules/16006 lines, of which 29 modules/15096 (94.3%) are reachable only through Analysis.PlaneSpectrum.Ergodicity (Theorem 2.3), via one lemma (residual_fourier) at one site (BorelTransfer.lean:61); transfer proper 3/910. Route (a) is circular as a theorem: a jointly measurable palette field with (H1)+(H2) yields weak measurability by Fubini and least-element selection, no spectral theory; but Definition 5.1 presupposes a measurable colouring. Routes (b),(c),(d) killed with reasons.
+
+Files: TRANSFER-AUDIT.md, compare.py, csp_nogo.py, step1_vacuity.py, closure_measure.py.

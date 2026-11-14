@@ -1,0 +1,9 @@
+m16's Corollary 3.1 (k=6 four-cycle) repaired.
+GAP: its proof assumes E={P_x <= {0,1,2,3}} is conull; it gives sigma(E)<2pi, not sigma(E)=0.
+THM R1 (proved; m16's Thm A is the case E=S): A,B disjoint nonempty, |A|+|B|>=k-2; E<=S, A_0<=E measurable, A<=P_x on A_0, B<=P_x on E\A_0, 1_{A_0}(t+k)=1-1_{A_0}(t) a.e. on E n (E-k). Then {t in A_0: t+2k,t+4k in A_0, t+pi+g+2jk in E\A_0 (j<3)} is null; g=2arcsin(1/(2sqrt3)).
+R3 (sharpness): the shift is forced (|1+v|^2=1/3 <=> Re v=-5/6) and one fixed endpoint never gives a unit triangle (circumradius 1/sqrt3), so R1 is the engine's exact reach.
+COUNTEREXAMPLE: the 36-sector 2-valued alternation {0,2}/{1,3} has E=S (measure 2pi), satisfies (5.7),(6.2) (ell=4,5,6), has two free labels, and violates R1 (sigma(G)=pi-3g~1.385): only properness separates it.
+FINITE COMPUTATION (2 implementations): 2-valued sector fields satisfy (5.7)+(6.2) (up to 26112 words, m<=8, ell<=6, free 0,4,5) and NONE survives the transport (5.3) (Lemma R5, Lean: all n,m); 3- and 6-valued free-label models do. So free-label witnesses at k=6 need >=3 values.
+LEAN 4.34.1, clean axioms: no_proper_two_colouring, rigidity, no_two_valued_sector_field, dist_z01/12/02.
+Files (dir=.ultramath/smwfwi7rh/m8): REPORT.md, verify_geom.py, verify_sector.py, CERT-sector-decision.json, lean/repair31.lean. Checks: python3 dir/verify_geom.py; python3 dir/verify_sector.py; source scripts/env4341.sh && (cd dir/lean && lean repair31.lean).
+Not proved: sigma(E)=0 at k=6; (W); chi(R^2).

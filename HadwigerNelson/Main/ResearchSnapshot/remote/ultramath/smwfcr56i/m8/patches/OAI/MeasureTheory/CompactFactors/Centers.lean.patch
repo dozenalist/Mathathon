@@ -1,0 +1,151 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/Centers.lean	2026-11-13 19:09:13.640478046 +0000
++++ OAI/MeasureTheory/CompactFactors/Centers.lean	2026-11-13 19:34:46.045329365 +0000
+@@ -347,7 +347,8 @@
+   exact integral_sub (integrable_kernel _ _) (integrable_kernel _ _)
+ 
+ theorem center_translate (μ : ProbabilityMeasure ℂ) (v : ℂ) :
+-    center (μ.map (fun point => point + v)) = center μ + v := by
++    center (μ.map (f := fun point => point + v) ((continuous_id.add_const v).aemeasurable)) =
++      center μ + v := by
+   apply Eq.symm
+   apply center_unique
+   intro t
+@@ -368,7 +369,7 @@
+   simp only [kernel_orthogonal, objective]
+ 
+ theorem center_orthogonal (μ : ProbabilityMeasure ℂ) (O : ℂ ≃ₗᵢ[ℝ] ℂ) :
+-    center (μ.map O) = O (center μ) := by
++    center (μ.map (f := O) O.continuous.aemeasurable) = O (center μ) := by
+   apply Eq.symm
+   apply center_unique
+   intro t
+@@ -498,7 +499,8 @@
+     letI : IsProbabilityMeasure ((μ : Measure G)[|e.coset z]) :=
+       cond_isProbabilityMeasure h
+     ⟨((μ : Measure G)[|e.coset z]).map (fun d => e.coordinate (d / z)),
+-      inferInstance⟩
++      Measure.isProbabilityMeasure_map
++        (e.measurable_coordinate.comp (measurable_id.div_const z)).aemeasurable⟩
+ 
+ theorem frequencyLaw_measure (μ : ProbabilityMeasure G) (z : G) :
+     (e.frequencyLaw μ z : Measure ℂ) =
+@@ -507,8 +509,6 @@
+   split_ifs with h
+   · simp [frequencyLaw, h]
+   · simp [frequencyLaw, h, ProbabilityTheory.cond, frequencyMeasure]
+-    exact Measure.map_smul ((μ : Measure G) (e.coset z))⁻¹
+-      (e.measurable_coordinate.comp (measurable_id.div_const z)).aemeasurable
+ 
+ theorem measurable_frequencyLaw :
+     Measurable (fun p : ProbabilityMeasure G × G => e.frequencyLaw p.1 p.2) := by
+@@ -522,7 +522,6 @@
+     exact e.measurable_mass.inv.mul ((Measure.measurable_coe hs).comp e.measurable_frequencyMeasure)
+   exact hm.subtype_mk
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem coset_mul_j (z : G) (v : ℂ) : e.coset (z * e.j v) = e.coset z := by
+   ext d
+   have hj : e.j v ∈ e.ordinary := ⟨_, rfl⟩
+@@ -536,7 +535,6 @@
+     convert e.ordinary.div_mem h hj using 1
+     simp [div_eq_mul_inv, mul_assoc, mul_comm]
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem coordinate_div_j {d : G} (hd : d ∈ e.ordinary) (v : ℂ) :
+     e.coordinate (d / e.j v) = e.coordinate d - v := by
+   rw [← e.j_coordinate hd, ← e.j_sub, e.coordinate_j, e.coordinate_j]
+@@ -557,14 +555,14 @@
+ theorem frequencyLaw_shift (μ : ProbabilityMeasure G) (z : G) (v : ℂ)
+     (h : (μ : Measure G) (e.coset z) ≠ 0) :
+     e.frequencyLaw μ (z * e.j v) =
+-      (e.frequencyLaw μ z).map (fun point => point + -v) := by
++      (e.frequencyLaw μ z).map (f := fun point => point + -v)
++        ((continuous_id.add_const (-v)).aemeasurable) := by
+   apply Subtype.ext
+   change (e.frequencyLaw μ (z * e.j v) : Measure ℂ) =
+     Measure.map (fun t => t + -v) (e.frequencyLaw μ z : Measure ℂ)
+   rw [e.frequencyLaw_measure, e.frequencyLaw_measure, e.coset_mul_j]
+-  simp only [ite_eq_right h]
+-  rw [Measure.map_smul ((μ : Measure G) (e.coset z))⁻¹
+-    (f := fun point : ℂ => point + -v) (continuous_id.add_const (-v)).aemeasurable,
++  simp only [if_neg h]
++  rw [Measure.map_smul ((μ : Measure G) (e.coset z))⁻¹ (f := fun point : ℂ => point + -v),
+     ← e.frequencyMeasure_shift]
+ 
+ noncomputable def center (μ : ProbabilityMeasure G) (z : G) : G :=
+@@ -575,7 +573,6 @@
+   measurable_snd.mul (e.measurable_j.comp
+     (Location.measurable_center.comp e.measurable_frequencyLaw))
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem center_mem_coset (μ : ProbabilityMeasure G) (z : G) :
+     e.center μ z ∈ e.coset z := by
+   change z * e.j _ / z ∈ e.ordinary
+@@ -597,7 +594,6 @@
+   rw [he]
+   exact e.center_mul_j μ z v hz
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem quotient_center (μ : ProbabilityMeasure G) (z : G) :
+     (QuotientGroup.mk (e.center μ z) : G ⧸ e.ordinary) = QuotientGroup.mk z :=
+   QuotientGroup.eq_iff_div_mem.mpr (e.center_mem_coset μ z)
+@@ -612,7 +608,6 @@
+     rw [← e.quotient_center μ z', ← e.quotient_center μ z, h]
+   · exact e.center_eq_of_mem_coset μ hz
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem center_mem_ordinary_iff (μ : ProbabilityMeasure G) (z : G) :
+     e.center μ z ∈ e.ordinary ↔ z ∈ e.ordinary := by
+   rw [← QuotientGroup.eq_one_iff, e.quotient_center, QuotientGroup.eq_one_iff]
+@@ -631,7 +626,6 @@
+ 
+ include he
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem equiv_mem_ordinary_iff (d : G) : T d ∈ e.ordinary ↔ d ∈ e.ordinary := by
+   constructor
+   · rintro ⟨t, ht⟩
+@@ -643,14 +637,12 @@
+   · rintro ⟨t, rfl⟩
+     exact (e.mem_ordinary_iff _).mpr ⟨O (Multiplicative.toAdd t), (he _).symm⟩
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem preimage_coset_equiv (z : G) : T ⁻¹' e.coset (T z) = e.coset z := by
+   ext d
+   change T d / T z ∈ e.ordinary ↔ d / z ∈ e.ordinary
+   rw [← T.map_div]
+   exact e.equiv_mem_ordinary_iff T O he _
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ theorem coordinate_equiv {d : G} (hd : d ∈ e.ordinary) :
+     e.coordinate (T d) = O (e.coordinate d) := by
+   obtain ⟨t, rfl⟩ := (e.mem_ordinary_iff d).mp hd
+@@ -676,22 +668,22 @@
+ include hT in
+ theorem frequencyLaw_equiv (μ : ProbabilityMeasure G) (z : G)
+     (hz : (μ : Measure G) (e.coset z) ≠ 0) :
+-    e.frequencyLaw (μ.map T) (T z) =
+-      (e.frequencyLaw μ z).map O := by
++    e.frequencyLaw (μ.map (f := T) hT.aemeasurable) (T z) =
++      (e.frequencyLaw μ z).map (f := O) O.continuous.aemeasurable := by
+   apply Subtype.ext
+-  change (e.frequencyLaw (μ.map T) (T z) : Measure ℂ) =
++  change (e.frequencyLaw (μ.map (f := T) hT.aemeasurable) (T z) : Measure ℂ) =
+     Measure.map O (e.frequencyLaw μ z : Measure ℂ)
+   rw [e.frequencyLaw_measure, e.frequencyLaw_measure, ProbabilityMeasure.toMeasure_map,
+     Measure.map_apply hT (e.measurableSet_coset _), e.preimage_coset_equiv T O he,
+     ]
+-  simp only [ite_eq_right hz]
+-  rw [Measure.map_smul _ O.continuous.aemeasurable,
++  simp only [if_neg hz]
++  rw [Measure.map_smul _ (f := O),
+     e.frequencyMeasure_equiv T O hT he]
+ 
+ include hT in
+ theorem center_equivariant (μ : ProbabilityMeasure G) (z : G)
+     (hz : (μ : Measure G) (e.coset z) ≠ 0) :
+-    e.center (μ.map T) (T z) = T (e.center μ z) := by
++    e.center (μ.map (f := T) hT.aemeasurable) (T z) = T (e.center μ z) := by
+   rw [center, e.frequencyLaw_equiv T O hT he μ z hz, Location.center_orthogonal,
+     center, T.map_mul, he]
+ 

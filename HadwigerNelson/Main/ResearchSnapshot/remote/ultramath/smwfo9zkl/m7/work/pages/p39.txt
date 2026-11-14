@@ -1,0 +1,52 @@
+    Let SU,x , SV,x be the closed essential supports of the two diagonal states, and put Nx = SU,x ∪
+SV,x . Both supports are nonempty. Across their nonparallel density directions, the four repre-
+sented labels force singleton density one of X. Lemma 6.3 therefore gives a strict margin between
+each support and its own R-shift. These margins are uniform along any convergent sequence
+in L, by Lemma 6.6 and positivity of both limiting diagonal states. We also have the following
+consequence of that continuity:
+
+             b ∈ Ss,x ,     yn → x in L          =⇒     there are bn ∈ Ss,yn with bn → b    (s = U, V ).
+
+Indeed, every neighborhood of b has positive limiting state measure, hence positive state measure
+at all sufficiently large n. Successively smaller neighborhoods give the sequence.
+    The set Nx is a proper subset of S. Otherwise a point in the intersection of the two supports
+would rotate under R outside both, by their strict separations. The two nonempty supports would
+therefore have to be disjoint and cover the connected circle, which is impossible. On every com-
+ponent gap of S \ Nx the state is X almost everywhere. Such a gap has angular length at most
+κ, since an interval of greater length overlaps its R-translate in an open interval, contrary to the
+state-change rule.
+
+6.3.2     Four-cycles: transport and the accumulation contradiction
+For nonparallel a, b ∈ S and h sufficiently small, the local inverse of the sum map defines
+
+                          Th ( a, b) = (c, d),        c + d = a + b − h,    (c, d) near ( a, b).
+
+It is smooth in the two angular variables and in h, and for fixed h it is a local diffeomorphism of
+the angular pair. Its branch at h = 0 is the identity.
+     We will use the following support transport rule. If y = x + h ∈ L and a ∈ SU,x , b ∈ SV,x are
+nonparallel, then
+                                          Th ( a, b) ∈ Ny × Ny
+whenever the indicated nearby branch is defined. In arbitrarily small product neighborhoods of
+( a, b) there is a positive-measure set of pairs of density directions for U, V at x. The spatial sums of
+every such nonparallel pair have density one of X. The local diffeomorphism Th permits removal
+of all null sets needed to make both output directions density directions of their states at y and
+members of the corresponding essential supports. Neither output state can be X: the density
+consequence of Lemma 5.2 at y would then give density zero of X at the same spatial sum. Both
+outputs consequently belong to Ny . Approximating the initial support pair by these generic pairs
+and using closedness proves the rule. It also holds with U, V interchanged, and in the reverse
+direction under T−h . All null sets here concern the two fixed centers in a single application; no
+joint measurability in the center is used.
+     Suppose now that distinct points yn = x + hn of L tend to x. After a subsequence, write
+
+                                    δn = |hn | > 0,         Hn = hn /δn −→ H ∈ S.
+
+Take any endpoint a of a gap of Nx , first with the gap just to its right in real angular coordinates. It
+belongs to at least one diagonal support, say SU,x ; the other case is symmetric. Assume H · a ̸= 0.
+   The first output angle of Th ( a, b) has directional velocity
+
+                         H·b
+        VH ( a; b) = −       = − H · Ja − ( H · a) cot(arg b − arg a),           a × b = sin(arg b − arg a).
+                         a×b
+
+                                                             39
+

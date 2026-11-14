@@ -1,0 +1,6 @@
+   [E6] labels carried on arcs of the unit circle about a cell centre: [1, 2, 3, 4, 5, 6] ; one certified direction (t = tan(theta/2)) for each: {6: Fraction(-200, 3), 3: Fraction(-493, 60), 4: Fraction(-3, 1), 2: Fraction(-79, 60), 5: Fraction(-3, 4), 1: Fraction(-7, 60)}
+   [E7] Gamma_x = empty at a hexagon centre: the colour is constant on B(x, apothem)
+        (E5), so D_ij(B,h) = empty for every small ball B about x and all small h.
+   [F1] strip colouring labels on the circle: [0, 1, 2] | Gamma = empty at x = 1/20 (colour constant on the strip)
+
+55/55 checks passed

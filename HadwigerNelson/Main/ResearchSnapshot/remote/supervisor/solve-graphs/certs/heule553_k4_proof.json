@@ -1,0 +1,10 @@
+{
+ "cnf": "heule553_k4.cnf",
+ "nclauses": 11441,
+ "nvars": 2212,
+ "drat": "heule553_k4.drat",
+ "drat_lines": 1318521,
+ "solver": "cadical195",
+ "seconds": 35.94,
+ "size_bytes": 139029217
+}

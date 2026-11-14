@@ -1,0 +1,85 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/Functions.lean	2026-11-13 19:09:13.640622367 +0000
++++ OAI/MeasureTheory/CompactFactors/Functions.lean	2026-11-13 19:50:21.406723890 +0000
+@@ -69,7 +69,7 @@
+   · intro k
+     obtain ⟨a, ham, hab, hai, hae⟩ := ha k
+     have hs (x : X) : (∑ i, a (q x) (e i) * Hf (e i) x) = ∑ i, a (q x) i * Hf i x := e.sum_comp (fun i => a (q x) i * Hf i x)
+-    refine ⟨fun y i => a y (e i), Measurable.of_eval (fun i => (measurable_pi_iff.mp ham) (e i)), ?_, ?_, ?_⟩
++    refine ⟨fun y i => a y (e i), measurable_pi_lambda _ (fun i => (measurable_pi_iff.mp ham) (e i)), ?_, ?_, ?_⟩
+     · intro y
+       rw [pi_norm_le_iff_of_nonneg hB]
+       exact fun i => (norm_le_pi_norm (a y) (e i)).trans (hab y)
+@@ -118,7 +118,7 @@
+   · intro x; simpa using hb x
+   · intro k
+     obtain ⟨a, ham, hab, hai, hae⟩ := ha k
+-    refine ⟨fun y i => star (a y i), (Measurable.of_eval (fun i => Complex.continuous_conj.measurable.comp ((measurable_pi_iff.mp ham) i))), ?_, ?_, ?_⟩
++    refine ⟨fun y i => star (a y i), (measurable_pi_lambda _ (fun i => Complex.continuous_conj.measurable.comp ((measurable_pi_iff.mp ham) i))), ?_, ?_, ?_⟩
+     · intro y
+       rw [pi_norm_le_iff_of_nonneg hB]
+       intro i
+@@ -150,7 +150,7 @@
+     obtain ⟨b, hbm, hbb, hbi, hbe⟩ := hd k
+     let A : Y → Fin r ⊕ Fin s → ℂ := fun y => Sum.elim (a y) (b y)
+     have hAm : Measurable A := by
+-      apply Measurable.of_eval
++      apply measurable_pi_lambda
+       intro i
+       cases i with
+       | inl i => exact (measurable_pi_iff.mp ham) i
+@@ -209,7 +209,7 @@
+     obtain ⟨a, ham, hab, hai, hae⟩ := ha k
+     obtain ⟨b, hbm, hbb, hbi, hbe⟩ := hd k
+     let A : Y → Fin r × Fin s → ℂ := fun y i => a y i.1 * b y i.2
+-    have hAm : Measurable A := Measurable.of_eval (fun i =>
++    have hAm : Measurable A := measurable_pi_lambda _ (fun i =>
+       ((measurable_pi_iff.mp ham) i.1).mul ((measurable_pi_iff.mp hbm) i.2))
+     have hAb (y : Y) : ‖A y‖ ≤ B*D := by
+       rw [pi_norm_le_iff_of_nonneg (mul_nonneg hB hD)]
+@@ -444,7 +444,7 @@
+     obtain ⟨a, ham, hab, hai, hae⟩ := ha k
+     obtain ⟨b, hbm, hbd⟩ := hquant a ham hab
+     let A : Y → Fin n → ℂ := fun y i => if b y = i then 1 else 0
+-    have hAm : Measurable A := Measurable.of_eval (fun i =>
++    have hAm : Measurable A := measurable_pi_lambda _ (fun i =>
+       measurable_const.piecewise (hbm (measurableSet_singleton i)) measurable_const)
+     have hAb (y : Y) : ‖A y‖ ≤ 1 := by
+       rw [pi_norm_le_iff_of_nonneg (by norm_num)]
+@@ -548,8 +548,8 @@
+   have hδ (n : ℕ) : 0 < δ n := by dsimp [δ]; positivity
+   let f : ℕ → ℂ → ℂ := fun n z => ((thickenedIndicator (hδ n) t z : ℝ) : ℂ)
+   have hf (n : ℕ) : LipschitzWith ((δ n).toNNReal⁻¹) (f n) := by
+-    have h := Complex.isometry_ofReal.lipschitzWith.comp
+-      (NNReal.isometry_coe.lipschitzWith.comp (lipschitzWith_thickenedIndicator (hδ n) t))
++    have h := Complex.isometry_ofReal.lipschitz.comp
++      (NNReal.isometry_coe.lipschitz.comp (lipschitzWith_thickenedIndicator (hδ n) t))
+     simpa only [one_mul, Function.comp_def] using h
+   have hfb (n : ℕ) (z : ℂ) : ‖f n z‖ ≤ 1 := by
+     dsimp [f]
+@@ -585,7 +585,7 @@
+     [MeasurableConstSMul K X]
+     (hq : Measurable q) (hm : Measurable H) (hc : Compact (K := K) μ q H) :
+     Compact (K := K) μ q (fun x => -H x) := by
+-  have h := compact_lipschitz hq hm hc (fun z : ℂ => -z) 1 isometry_neg.lipschitzWith
++  have h := compact_lipschitz hq hm hc (fun z : ℂ => -z) 1 isometry_neg.lipschitz
+   exact h
+ 
+ omit [MeasurableSpace X] in
+@@ -730,7 +730,7 @@
+   apply at_of_finite (I := Unit) B 1 (fun _ _ => 1) hB (by norm_num) (fun _ => measurable_const)
+   · intro x; simp
+   · intro k
+-    refine ⟨fun y _ => b (k • y), Measurable.of_eval (fun _ => hbm.comp (measurable_const_smul k)), ?_, ?_, ?_⟩
++    refine ⟨fun y _ => b (k • y), measurable_pi_lambda _ (fun _ => hbm.comp (measurable_const_smul k)), ?_, ?_, ?_⟩
+     · intro y; simpa using hb (k • y)
+     · apply (integrable_zero X ℝ μ).congr
+       filter_upwards [hqcov k] with x hx
+@@ -809,7 +809,7 @@
+     Compact (K := K) (μ.map π) p H := by
+   let κ := condDistrib id π μ
+   let ν := μ.map π
+-  let : IsProbabilityMeasure ν := inferInstance
++  let : IsProbabilityMeasure ν := Measure.isProbabilityMeasure_map (by fun_prop)
+   intro ε hε
+   obtain ⟨r, B, C, F, hB, hC, hFm, hFb, ha⟩ := hc ε hε
+   have hFC (i : Fin r) (x : X) : ‖F i x‖ ≤ C :=

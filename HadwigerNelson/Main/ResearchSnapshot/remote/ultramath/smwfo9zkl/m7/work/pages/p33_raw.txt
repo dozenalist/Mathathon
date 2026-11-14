@@ -1,0 +1,53 @@
+In particular,
+supI0
+G′
+infI0
+G′
+≤ Ddist, Ddist = exp(6C0L/c0),
+uniformly in the initial interval, the number of steps, and 0 < d < δ∗.
+The invariance of A, together with preservation of null sets, implies that G(I0) \ A and G(I0 \
+A) differ by a null set. Change of variables and the distortion bound therefore give
+|IN \ A|
+|IN|
+≤
+supI0
+G′
+infI0
+G′
+|I0 \ A|
+|I0|
+≤ Ddist
+|I0 \ A|
+|I0|
+.
+This is the only measure comparison needed; the maps need not preserve Lebesgue measure.
+Since A has positive measure, choose a Lebesgue density point of A and a sequence of centered
+intervals shrinking to it. Their relative complements in A tend to zero. Apply the construction to
+each interval. The resulting intervals Jn have lengths in [L,(1 + C0d)L], and
+|Jn \ A| −→ 0.
+Translate Jn by an integer multiple of 2π so that its left endpoint lies in [0,2π). This leaves the
+preceding measure statement unchanged. Passing to a subsequence, their two endpoints converge
+to those of an interval J = [a,b] of length at least L. Endpoint convergence gives |Jn △ J| → 0, and
+hence
+|J \ A| ≤ |J △ Jn| + |Jn \ A| −→ 0.
+We have obtained an interval of fixed positive length on which A is conull.
+Extending a conull interval. Suppose A is conull on [a,b], with b − a ≥ L. By the first inequality in
+(5.10), choose j so that
+Fj(b) ≥ b + c0d.
+The image Fj([a,b]) is also conull in A. Moreover,
+Fj(a) ≤ a + C0d < a + L ≤ b.
+Thus this image overlaps [a,b], and their union contains [a, Fj(b)], on which A is conull. Its right
+endpoint has advanced by at least c0d. This argument concerns geometric endpoints only; no
+membership in A is asserted at either endpoint.
+Repeat, retaining the left endpoint a. After finitely many steps the conull interval has length
+at least 2π. Periodicity then forces A to have full measure in a period, contrary to the measure π
+forced by (5.8). This contradiction excludes 0 < |y − x| < δ∗ and proves the lemma.
+5.4 At most two labels in an angular palette
+Proposition 5.6 (Palette cardinality). For every center x ∈ R2,
+1 ≤ |Px(e)| ≤ 2 for almost every e ∈ S. (5.12)
+The angular exceptional set may depend on x.
+Proof. Nonemptiness follows from any one trace in Wx, whose coordinates are nonnegative and
+sum to one. Suppose the upper bound fails on a positive-measure set of angles. There are only
+finitely many triples of labels, so some fixed triple A ⊂ {1,...,5} is contained in Px(e) on a
+positive-measure angular set B.
+33

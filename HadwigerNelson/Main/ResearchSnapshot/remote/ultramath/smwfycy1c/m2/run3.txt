@@ -1,0 +1,63 @@
+=== 1. exact values at the seven raw vertices (field Q(sqrt3,sqrt11)) ===
+0   x = 0
+    y = 0
+    r2 = 0   y2 = 0   3x2-y2 = 0
+    r2 is rational? True   r2 == 0 ? True   r2 == 1 ? False
+A   x = 1/2*s3
+    y = 1/2
+    r2 = 1   y2 = 1/4   3x2-y2 = 2
+    r2 is rational? True   r2 == 0 ? False   r2 == 1 ? True
+B   x = 1/2*s3
+    y = -1/2
+    r2 = 1   y2 = 1/4   3x2-y2 = 2
+    r2 is rational? True   r2 == 0 ? False   r2 == 1 ? True
+T   x = 1*s3
+    y = 0
+    r2 = 3   y2 = 0   3x2-y2 = 9
+    r2 is rational? True   r2 == 0 ? False   r2 == 1 ? False
+uA  x = 5/12*s3 + -1/12*s11
+    y = 5/12 + 1/12*s33
+    r2 = 1   y2 = 29/72 + 5/72*s33   3x2-y2 = 25/18 + -5/18*s33
+    r2 is rational? True   r2 == 0 ? False   r2 == 1 ? True
+uB  x = 5/12*s3 + 1/12*s11
+    y = -5/12 + 1/12*s33
+    r2 = 1   y2 = 29/72 + -5/72*s33   3x2-y2 = 25/18 + 5/18*s33
+    r2 is rational? True   r2 == 0 ? False   r2 == 1 ? True
+uT  x = 5/6*s3
+    y = 1/6*s33
+    r2 = 3   y2 = 11/12   3x2-y2 = 16/3
+    r2 is rational? True   r2 == 0 ? False   r2 == 1 ? False
+
+=== 2. same values through exact rational interval arithmetic only ===
+    sqrt3 in [1.73205,1.73206], sqrt11 in [3.31662,3.31663]  (the repo's radical_bounds)
+0   r2 in [0.000000000000,0.000000000000] away from 1
+    y2 in [0.000000000000,0.000000000000]   3x2-y2 in [0.000000000000,0.000000000000]   => H needs >= 0.000000000
+A   r2 in [1.000000000000,1.000000000000] contains 1 as endpoint
+    y2 in [0.250000000000,0.250000000000]   3x2-y2 in [2.000000000000,2.000000000000]   => H needs >= 2.000000000
+B   r2 in [1.000000000000,1.000000000000] contains 1 as endpoint
+    y2 in [0.250000000000,0.250000000000]   3x2-y2 in [2.000000000000,2.000000000000]   => H needs >= 2.000000000
+T   r2 in [3.000000000000,3.000000000000] away from 1
+    y2 in [0.000000000000,0.000000000000]   3x2-y2 in [9.000000000000,9.000000000000]   => H needs >= 9.000000000
+uA  r2 in [1.000000000000,1.000000000000] contains 1 as endpoint
+    y2 in [0.801704977153,0.801708483181]   3x2-y2 in [-0.206833932722,-0.206819908611]   => H needs >= 0.206833933
+uB  r2 in [1.000000000000,1.000000000000] contains 1 as endpoint
+    y2 in [0.003847072375,0.003850578403]   3x2-y2 in [2.984597686389,2.984611710500]   => H needs >= 2.984611710
+uT  r2 in [3.000000000000,3.000000000000] away from 1
+    y2 in [0.916666666667,0.916666666667]   3x2-y2 in [5.333333333333,5.333333333333]   => H needs >= 5.333333333
+
+=== 3. the lemma's hypothesis list, decided exactly ===
+  -- the vertices that DO admit the list --
+Traceback (most recent call last):
+  File "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfycy1c/m2/moser_bounds.py", line 166, in <module>
+    allok &= check(nm, x, y, *cert[nm])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfycy1c/m2/moser_bounds.py", line 151, in check
+    "|3x2-y2|<=H": not (B(H) < absB(t)),
+                        ^^^^^^^^^^^^^^
+  File "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfycy1c/m2/moser_bounds.py", line 44, in __lt__
+    return _sign_exact(d.c) < 0
+           ^^^^^^^^^^^^^^^^
+  File "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfycy1c/m2/moser_bounds.py", line 92, in _sign_exact
+    assert lo > 0 or hi < 0, "enclosure too coarse to decide sign"
+           ^^^^^^^^^^^^^^^^
+AssertionError: enclosure too coarse to decide sign

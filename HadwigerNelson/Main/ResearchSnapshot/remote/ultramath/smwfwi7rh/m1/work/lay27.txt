@@ -1,0 +1,47 @@
+where every (yn , rn ) is a typical circle sampling. Constant sequences are permitted. For a label i,
+form the essential measurable union
+                                     Dx,i = ess union{e : bi (e) > 0}.
+                                                 b∈W x
+
+The maximal palette is the measurable set-valued function
+                                           Px (e) = {i : e ∈ Dx,i },
+defined up to angular null sets.
+    Here are the compactness and countability facts in this definition. Typical samplings with
+radius one can be chosen at centers approaching any prescribed x. Their bounded vectors have
+weak-* convergent subsequences, since L1 (S) is separable and the bounded ball of its dual is weak-
+* compact and metrizable. Thus W x is nonempty. Every b ∈ W x has nonnegative coordinates and
+∑i bi = 1 almost everywhere, since these assertions pass to a weak-* limit by integration against
+nonnegative test functions.
+    The family also has the following closure under varying centers:
+                           xn → x,     b n ∈ W xn ,      bn ⇀∗ b   =⇒      b ∈ Wx .                       (5.1)
+To see this, fix a metric for the bounded-ball weak-* topology. From a sequence realizing bn , choose
+one sample within 1/n of bn in that metric, with center within 1/n of xn and radius within 1/n of
+one. These chosen samples realize b at x. In particular W x is compact.
+    For completeness, the essential union for a fixed label can always be taken over a countable
+subfamily. Let Mi be the supremum of the measures of finite unions of the sets {bi > 0}. Choose
+finite unions approaching Mi , and let Dx,i be their countable union. Its measure is Mi . If another
+member {bi > 0} had positive measure outside this union, adjoining it to sufficiently large finite
+partial unions would contradict the definition of Mi . This proves that every individual trace has its
+positive coordinates in the palette almost everywhere. It also gives nonemptiness of Px (e) almost
+everywhere, by using any one trace and its sum-one property.
+    The null set in the last assertion may depend on the individual trace, and the angular null sets
+may depend on x. We shall use countable generating trace families whenever a conclusion is to be
+asserted for the whole palette. No joint measurability of Px in its center is assumed.
+
+5.2   Exclusion, density, and smooth transport
+Lemma 5.2 (Palette transfer). The following assertions hold at every fixed center x.
+   1. For almost every independent-angle pair (e, v) ∈ S × S,
+                                           c( x + e + v) ∈
+                                                         / Px (e) ∪ Px (v).                               (5.2)
+
+   2. If e is an angular density-one point of Dx,i = {e′ : i ∈ Px (e′ )}, then for each v nonparallel to e, the
+      spatial density of Ai at x + e + v is zero.
+   3. Let z be any fixed center, possibly z = x. Suppose on an open angular arc, or locally on a union of
+      such arcs, there is a smooth representation
+                                  z + f = x + s ( f ) + t ( f ),   s( f ), t( f ) ∈ S,
+      with s( f ), t( f ) nonparallel and s a local diffeomorphism in the angular coordinate. Then almost
+      everywhere on that domain,
+                                               Pz ( f ) ∩ Px (s( f )) = ∅.                           (5.3)
+
+                                                         27
+

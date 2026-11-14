@@ -1,0 +1,58 @@
+{
+  "checkedAtUtc": "2026-11-14T18:58:13.466Z",
+  "status": "passed",
+  "snapshotIntegrity": {
+    "files": 11556,
+    "bytes": 358349948,
+    "algorithm": "SHA-256"
+  },
+  "frozenLeanSources": {
+    "cone": true,
+    "encodingR4": true,
+    "movingThreeCentres": true,
+    "priorConeAxiomAudit": true
+  },
+  "heule553": {
+    "vertices": 553,
+    "edges": 2722,
+    "properFiveColourings": 34,
+    "distinctSignatures": 553
+  },
+  "heule1048": {
+    "vertices": 1048,
+    "edges": 5487,
+    "properFiveColourings": 34,
+    "distinctSignatures": 1048
+  },
+  "exactUnionGeometry": {
+    "at": "2026-11-14T18:58:13.378Z",
+    "passed": true,
+    "method": "Independent strict expression parser, exact multiquadratic arithmetic; all pairs tested, no distance prefilter; safe integer bound proved with BigInt",
+    "coordinateSha256": "7e43a0250f4e54f362ffec98dcc0d364edd06d3d0963931b1ec7c32cc846d4fb",
+    "certificateSha256": "cd3f9ff3a47f93d5ebb25946924531f0170a1b3fd22e1d41fcc59fd013ff7124",
+    "basis": [
+      "1",
+      "3",
+      "5",
+      "15",
+      "11",
+      "33",
+      "55",
+      "165"
+    ],
+    "commonDenominator": "288",
+    "maximumAbsoluteIntermediateBound": "5632740",
+    "pairsTested": 548628,
+    "nonconstantTests": 6081,
+    "vertices": 1048,
+    "edges": 5487,
+    "overlap": 58,
+    "internalA": 2722,
+    "internalB": 2722,
+    "newEdges": 184,
+    "overlapClique": false,
+    "properFiveColoring": true,
+    "scope": "Exact induced unit-distance graph and explicit5coloring. Lower bound5 uses the independently certified embedded Heule553 subgraph; this program does not recheck its4UNSAT proof. No forcing pair or new plane bound."
+  },
+  "scope": "Archive integrity, recorded-source fidelity, and fresh finite graph/certificate checks. Existing Lean validation logs are preserved; no fresh complete Lean rebuild or new plane bound is claimed."
+}

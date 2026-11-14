@@ -1,0 +1,53 @@
+warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/Moser.lean:210:57: error: unsolved goals
+case left
+⊢ |(placedMoser 1).re - certificateX 1| ≤ 11e-5
+
+case right
+⊢ |(placedMoser 1).im - certificateY 1| ≤ 11e-5
+work/lean/OAI/Geometry/PlaneColoring/Moser.lean:221:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/Moser.lean:220:57: error: unsolved goals
+case left
+⊢ |(placedMoser 2).re - certificateX 2| ≤ 11e-5
+
+case right
+⊢ |(placedMoser 2).im - certificateY 2| ≤ 11e-5
+work/lean/OAI/Geometry/PlaneColoring/Moser.lean:231:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/Moser.lean:230:57: error: unsolved goals
+case left
+⊢ |(placedMoser 3).re - certificateX 3| ≤ 11e-5
+
+case right
+⊢ |(placedMoser 3).im - certificateY 3| ≤ 11e-5
+work/lean/OAI/Geometry/PlaneColoring/Moser.lean:241:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/Moser.lean:240:57: error: unsolved goals
+case left
+⊢ |(placedMoser 4).re - certificateX 4| ≤ 11e-5
+
+case right
+⊢ |(placedMoser 4).im - certificateY 4| ≤ 11e-5
+work/lean/OAI/Geometry/PlaneColoring/Moser.lean:251:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/Moser.lean:250:57: error: unsolved goals
+case left
+⊢ |(placedMoser 5).re - certificateX 5| ≤ 11e-5
+
+case right
+⊢ |(placedMoser 5).im - certificateY 5| ≤ 11e-5
+work/lean/OAI/Geometry/PlaneColoring/Moser.lean:261:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/Moser.lean:260:57: error: unsolved goals
+case left
+⊢ |(placedMoser 6).re - certificateX 6| ≤ 11e-5
+
+case right
+⊢ |(placedMoser 6).im - certificateY 6| ≤ 11e-5
+work/lean/OAI/Geometry/PlaneColoring/Moser.lean:271:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/Moser.lean:270:57: error: unsolved goals
+case left
+i : Fin 7
+⊢ |(placedMoser i).re - certificateX i| ≤ 11e-5
+
+case right
+i : Fin 7
+⊢ |(placedMoser i).im - certificateY i| ≤ 11e-5
+work/lean/OAI/Geometry/PlaneColoring/Moser.lean:287:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.

@@ -1,0 +1,160 @@
+FAIL OAI.Analysis.PlaneSpectrum.Basic [25.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:370:6: error: Type mismatch: After simplification, term
+  ht
+ has type
+  Circle.exp (ξ.re * ((↑imagUnit).re * ↑q)) * Circle.exp (ξ.im * ((↑imagUnit).im * ↑q)) = 1
+but is expected to have type
+  Circle.exp (ξ.im * ↑q) = 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:597:81: error: unsolved goals
+case e_6
+d : D
+h1 : d ∈ L 1
+hi : d ∈ L imagUnit
+l : ℝ
+hl : jF l = restrictLine 1 d
+e : ℝ
+he : jF e = restrictLine imagUnit d
+z : DiscreteE
+hr : ∀ (t : ↥F), d (Multiplicative.ofAdd (ofF t)) = Circle.exp (l * ↑t)
+hi' : ∀ (t : ↥F), d (Multiplicative.ofAdd (imagUnit * ofF t)) = Circle.exp (e * ↑t)
+hd :
+  d z =
+    d (Multiplicative.ofAdd (ofF (reF (Multiplicative.toAdd z)))) *
+      d (Multiplicative.ofAdd (imagUnit * ofF (imF (Multiplicative.toAdd z))))
+⊢ (↑(Multiplicative.toAdd z)).im = ↑(imF (Multiplicative.toAdd z)) ∨ e = 0
+
+OK   OAI.Analysis.PlaneSpectrum.DifferenceLaw [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.Fourier [0.0s]
+FAIL OAI.Analysis.PlaneSpectrum.InvariantMean [25.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:293:56: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+f h : G →ᵇ ℂ
+x : G
+⊢ (realPart (f + h)) x = (realPart f) x + (realPart h) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:294:56: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+f h : G →ᵇ ℂ
+hr : realPart (f + h) = realPart f + realPart h
+x : G
+⊢ (imagPart (f + h)) x = (imagPart f) x + (imagPart h) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:299:72: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+c : ℂ
+f : G →ᵇ ℂ
+x : G
+⊢ (realPart (c • f)) x = c.re * (realPart f) x - c.im * (imagPart f) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:301:72: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+c : ℂ
+f : G →ᵇ ℂ
+hr : realPart (c • f) = c.re • realPart f - c.im • imagPart f
+x : G
+⊢ (imagPart (c • f)) x = c.re * (imagPart f) x + c.im * (realPart f) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:300:17: warning: This simp argument is unused:
+  Complex.mul_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:302:17: warning: This simp argument is unused:
+  Complex.mul_im
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+
+OK   OAI.Analysis.PlaneSpectrum.NumberFields [20.1s]
+OK   OAI.Analysis.PlaneSpectrum.PhaseEncoding [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.SmallArcs [0.0s]
+OK   OAI.Geometry.PlaneColoring.Assembly [0.0s]
+OK   OAI.Geometry.PlaneColoring.Basic [0.0s]
+OK   OAI.Geometry.PlaneColoring.Coloring [0.0s]
+OK   OAI.Geometry.PlaneColoring.Covering [0.0s]
+OK   OAI.Geometry.PlaneColoring.Expansion [0.0s]
+OK   OAI.Geometry.PlaneColoring.Lattice [0.0s]
+OK   OAI.Geometry.PlaneColoring.Moser [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.Amenability [12.5s]
+OK   OAI.MeasureTheory.CompactFactors.Centers [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.Characters [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.CircleDecay [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.PhaseCollision [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.Selections [12.9s]
+OK   OAI.Geometry.PlaneColoring.BinaryDynamics [0.0s]
+OK   OAI.Geometry.PlaneColoring.CircleMaps [0.0s]
+OK   OAI.Geometry.PlaneColoring.Metric [0.0s]
+OK   OAI.Geometry.PlaneColoring.WeakColoring [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.RelativeCenters [14.2s]
+OK   OAI.Analysis.PlaneSpectrum.Multipliers [0.0s]
+OK   OAI.Geometry.PlaneColoring.CircleTransport [0.0s]
+OK   OAI.Geometry.PlaneColoring.Compactness [0.0s]
+OK   OAI.Geometry.PlaneColoring.Seven [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.ConditionalSelection [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.DifferenceInvariant [6.4s]
+OK   OAI.Analysis.PlaneSpectrum.CircleOperator [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.FourierTests [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.ConditionalSpectrum [0.0s]
+OK   OAI.Geometry.PlaneColoring.Transitions [0.0s]
+OK   OAI.Geometry.PlaneColoring.Palettes [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.Approximation [7.9s]
+OK   OAI.Geometry.PlaneColoring.PaletteDensity [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.ConditionalLimits [15.7s]
+OK   OAI.Geometry.PlaneColoring.PaletteTransport [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.Kernels [17.7s]
+OK   OAI.Geometry.PlaneColoring.BinaryPalettes [0.0s]
+OK   OAI.Geometry.PlaneColoring.Rigidity [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.BoundedFunctions [13.1s]
+OK   OAI.MeasureTheory.CompactFactors.Functions [14.5s]
+OK   OAI.Geometry.PlaneColoring.States [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.Factors [11.3s]
+OK   OAI.MeasureTheory.CompactFactors.RelativeProducts [14.3s]
+OK   OAI.Geometry.PlaneColoring.BoundaryTrace [0.0s]
+OK   OAI.Geometry.PlaneColoring.Converse [0.0s]
+OK   OAI.Geometry.PlaneColoring.FourContinuity [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.Separability [21.1s]
+OK   OAI.MeasureTheory.CompactFactors.Stationary [15.0s]
+OK   OAI.Geometry.PlaneColoring.AngularBoundary [0.0s]
+OK   OAI.Geometry.PlaneColoring.FourTransport [0.0s]
+OK   OAI.MeasureTheory.CompactFactors.AlgebraModels [21.9s]
+OK   OAI.Analysis.PlaneSpectrum.Representations [21.6s]
+OK   OAI.Geometry.PlaneColoring.Exclusion [0.0s]
+OK   OAI.Geometry.PlaneColoring.Interfaces [0.0s]
+OK   OAI.Geometry.PlaneColoring.Sectors [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.Energy [16.9s]
+OK   OAI.Analysis.PlaneSpectrum.SpectralMeasure [34.2s]
+OK   OAI.Geometry.PlaneColoring.Accumulation [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.RadialEnergy [27.3s]
+OK   OAI.Geometry.PlaneColoring.DiskAverages [0.0s]
+OK   OAI.Geometry.PlaneColoring.FiveSupport [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.Ergodicity [16.0s]
+OK   OAI.Geometry.PlaneColoring.CyclicCore [0.0s]
+OK   OAI.Geometry.PlaneColoring.PlanarCovers [0.0s]
+OK   OAI.Geometry.PlaneColoring.BorelTransfer [11.6s]
+OK   OAI.Geometry.PlaneColoring.GraphRealization [0.0s]
+OK   OAI.Geometry.PlaneColoring.ContinuumLimits [0.0s]
+OK   OAI.Geometry.PlaneColoring.DiskExtension [9.6s]
+OK   OAI.Geometry.PlaneColoring.Transfer [7.7s]
+OK   OAI.Geometry.PlaneColoring.GraphCuts [6.5s]
+OK   OAI.Geometry.PlaneColoring.HoleApproximation [7.2s]
+OK   OAI.Geometry.PlaneColoring.GraphPatches [5.7s]
+OK   OAI.Geometry.PlaneColoring.FullApproximation [7.6s]
+OK   OAI.Geometry.PlaneColoring.Mesh [5.1s]
+OK   OAI.Geometry.PlaneColoring.Five [5.3s]
+OK   OAI.Geometry.PlaneColoring.Chromatic [4.2s]
+OK   OAI.Geometry.PlaneColoring.NullSetRobust [4.6s]
+
+80/82 modules OK in 322s (j=3); sum of module times 460s
+FAILED: OAI.Analysis.PlaneSpectrum.Basic, OAI.Analysis.PlaneSpectrum.InvariantMean

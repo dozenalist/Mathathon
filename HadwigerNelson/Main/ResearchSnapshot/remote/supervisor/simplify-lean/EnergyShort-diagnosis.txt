@@ -1,0 +1,9 @@
+=== EnergyShort.lean vs OAI/Analysis/PlaneSpectrum/Energy.lean (exact diff)
+316d315
+<   have : ErgodicVAdd G Y (μ.map q) := factor_ergodic μ q hq hqcov
+317a317
+>   have : ErgodicVAdd G Y (μ.map q) := factor_ergodic μ q hq hqcov
+329d328
+<   have : ErgodicVAdd G Y (μ.map q) := factor_ergodic μ q hq hqcov
+349a349
+>   have : ErgodicVAdd G Y (μ.map q) := factor_ergodic μ q hq hqcov

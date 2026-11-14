@@ -1,0 +1,2 @@
+'SimplifyAngular.three_color_diamond_omega' depends on axioms: [propext, Quot.sound]
+'SimplifyAngular.diamond_tips' depends on axioms: [propext, Quot.sound]

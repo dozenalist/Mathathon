@@ -1,0 +1,16 @@
+MeasureTheory/CompactFactors/Functions.lean                  ok cands=24 body=600 savable=0 closed=0
+MeasureTheory/CompactFactors/Kernels.lean                    ok cands=19 body=436 savable=0 closed=0
+Geometry/PlaneColoring/Expansion.lean                        ok cands=31 body=434 savable=0 closed=0
+MeasureTheory/CompactFactors/ConditionalLimits.lean          ok cands=11 body=404 savable=0 closed=0
+Analysis/PlaneSpectrum/Basic.lean                            ok cands=34 body=353 savable=4 closed=1
+Geometry/PlaneColoring/DiskExtension.lean                    ok cands=17 body=349 savable=0 closed=0
+Geometry/PlaneColoring/FourContinuity.lean                   ok cands=20 body=341 savable=0 closed=0
+Geometry/PlaneColoring/BinaryDynamics.lean                   ok cands=25 body=339 savable=3 closed=1
+Analysis/PlaneSpectrum/Characters.lean                       ok cands=27 body=327 savable=0 closed=0
+MeasureTheory/CompactFactors/AlgebraModels.lean              ok cands=25 body=321 savable=3 closed=1
+Geometry/PlaneColoring/Moser.lean                            ok cands=16 body=319 savable=0 closed=0
+MeasureTheory/CompactFactors/Centers.lean                    ok cands=33 body=313 savable=0 closed=0
+Analysis/PlaneSpectrum/NumberFields.lean                     ok cands=17 body=311 savable=0 closed=0
+MeasureTheory/CompactFactors/Approximation.lean              ok cands=10 body=296 savable=0 closed=0
+MeasureTheory/CompactFactors/Factors.lean                    ok cands=16 body=191 savable=0 closed=0
+MeasureTheory/CompactFactors/Separability.lean               ok cands=27 body=278 savable=0 closed=0

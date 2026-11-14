@@ -1,0 +1,122 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean	2026-11-13 19:09:13.640495378 +0000
++++ OAI/MeasureTheory/CompactFactors/RelativeCenters.lean	2026-11-13 19:38:27.337542205 +0000
+@@ -100,7 +100,7 @@
+ omit [MeasurableSingletonClass G] in
+ /-- Wildness survives the measurable recentering construction. -/
+ theorem center_law_ordinary (μ : ProbabilityMeasure G) :
+-    (μ.map (e.center μ) : Measure G) e.ordinary =
++    (μ.map (f := e.center μ) (e.measurable_center_fixed μ).aemeasurable : Measure G) e.ordinary =
+       (μ : Measure G) e.ordinary := by
+   rw [ProbabilityMeasure.toMeasure_map,
+     Measure.map_apply (e.measurable_center_fixed μ) e.measurableSet_ordinary]
+@@ -118,6 +118,37 @@
+ 
+ /-- The invariant-function consequence of group-action ergodicity,
+ with an individual almost-everywhere identity for each group element. -/
++lemma ae_or_ae_not_of_eventuallyConst {Ω₀ : Type*} [MeasurableSpace Ω₀]
++    {μ₀ : Measure Ω₀} {s : Set Ω₀} (h : EventuallyConst s (ae μ₀)) :
++    (∀ᵐ x ∂μ₀, x ∈ s) ∨ (∀ᵐ x ∂μ₀, x ∉ s) := by
++  classical
++  obtain ⟨u, hu, hus⟩ := h
++  have hu1 : s ⁻¹' u ∈ ae μ₀ := hu
++  have hu' : μ₀ (s ⁻¹' u)ᶜ = 0 := mem_ae_iff.mp hu1
++  rcases Set.eq_empty_or_nonempty (s ⁻¹' u) with hemp | hne
++  · left
++    rw [ae_iff]
++    refine measure_mono_null ?_ hu'
++    intro y hy hyu
++    rw [hemp] at hyu
++    exact hyu
++  · obtain ⟨x, hx⟩ := hne
++    have hxA : s x ∈ u := hx
++    by_cases hxs : x ∈ s
++    · left
++      rw [ae_iff]
++      refine measure_mono_null ?_ hu'
++      intro y hy hyu
++      have h1 : s y = s x := hus hyu hxA
++      exact hy (Eq.mp h1.symm hxs)
++    · right
++      rw [ae_iff]
++      refine measure_mono_null ?_ hu'
++      intro y hy hyu
++      have h1 : s y = s x := hus hyu hxA
++      have hy' : y ∈ s := by simpa using hy
++      exact hxs (Eq.mp h1 hy')
++
+ theorem ae_eq_const_of_invariant {f : X → V} (hf : Measurable f)
+     (hi : ∀ k : K, ∀ᵐ x ∂μ, f (k • x) = f x) :
+     ∃ v : V, f =ᵐ[μ] (fun _ => v) := by
+@@ -126,7 +157,7 @@
+   have h := ErgodicSMul.aeconst_of_forall_preimage_smul_ae_eq (G := K)
+     (hf hA) (fun k => (hi k).mono (fun x hx => by
+       exact propext (show f (k • x) ∈ A ↔ f x ∈ A by rw [hx])))
+-  exact eventuallyEmptyOrUniv_iff.mp h
++  exact ae_or_ae_not_of_eventuallyConst h
+ 
+ end EuclideanFiveColor.ErgodicSupport
+ 
+@@ -160,7 +191,7 @@
+   apply condDistrib_ae_eq_of_measure_eq_compProd_of_measurable
+     (R.measurable.comp hp) hf
+   rw [← Measure.map_map R.measurable hp, compProd_map_base,
+-    compProd_map_condDistrib hp.aemeasurable hf.aemeasurable,
++    compProd_map_condDistrib hf.aemeasurable,
+     Measure.map_map (R.measurable.prodMap measurable_id) (hp.prodMk hf)]
+   rfl
+ 
+@@ -186,7 +217,9 @@
+   have hh : μ.map (R ∘ p) = μ.map p := by
+     rw [← Measure.map_map R.measurable hp, hR]
+   rw [hh] at hc
+-  have he := condDistrib_comp (μ := μ) hp.aemeasurable hf.aemeasurable hT
++  have he : ⇑(condDistrib (T ∘ f) p μ) =ᵐ[Measure.map p μ]
++      ⇑((condDistrib f p μ).map T) :=
++    condDistrib_comp (μ := μ) (X := p) hf.aemeasurable hT
+   have hcomp : ∀ᵐ y ∂μ.map p,
+       condDistrib f p μ y = (condDistrib f p μ (R.symm y)).map T := by
+     have he' : ∀ᵐ y ∂μ.map p,
+@@ -258,7 +291,7 @@
+     (d : X → G) (p : X → Y) (hd : Measurable d) (hp : Measurable p) :
+     differenceLaw (μ.map p) (condDistrib d p μ) e.ordinary =
+       ∫⁻ x, cosetMass e (condDistrib d p μ) (p x, d x) ∂μ := by
+-  rw [differenceLaw_ordinary, compProd_map_condDistrib hp.aemeasurable hd.aemeasurable,
++  rw [differenceLaw_ordinary, compProd_map_condDistrib hd.aemeasurable,
+     lintegral_map (measurable_cosetMass e _) (hp.prodMk hd)]
+ 
+ /-- Positive relative mass and ergodicity force a fixed positive mass for almost
+@@ -290,7 +323,7 @@
+   refine ⟨a, hapos, ha, ?_⟩
+   have hpair : ∀ᵐ q ∂(μ.map p) ⊗ₘ condDistrib d p μ,
+       cosetMass e (condDistrib d p μ) q = a := by
+-    rw [compProd_map_condDistrib hp.aemeasurable hd.aemeasurable]
++    rw [compProd_map_condDistrib hd.aemeasurable]
+     exact (ae_map_iff (hp.prodMk hd).aemeasurable
+       (measurableSet_eq_fun (measurable_cosetMass e _) measurable_const)).mpr ha
+   have hany := Measure.ae_ae_of_ae_compProd hpair
+@@ -340,7 +373,6 @@
+     Measurable (centerMap e μ d p) :=
+   e.measurable_center.comp (((measurable_probabilityKernel _).comp hp).prodMk hd)
+ 
+-omit [MeasurableMul₂ G] [MeasurableInv G] in
+ lemma centerMap_mem_ordinary_iff [StandardBorelSpace G]
+     (μ : Measure X) [IsProbabilityMeasure μ] (d : X → G) (p : X → Y) (x : X) :
+     centerMap e μ d p x ∈ e.ordinary ↔ d x ∈ e.ordinary :=
+@@ -379,7 +411,7 @@
+   filter_upwards [hxk, hde k, hpe k, ha] with x hx hd' hp' ha'
+   have hprob : probabilityKernel (condDistrib d p μ) (k • p x) =
+       (probabilityKernel (condDistrib d p μ) (p x)).map
+-        (fun point : G => k • point) := by
++        (f := fun point : G => k • point) (measurable_const_smul k).aemeasurable := by
+     apply Subtype.ext
+     exact hx
+   change e.center (probabilityKernel (condDistrib d p μ) (p (k • x))) (d (k • x)) = _
+@@ -440,7 +472,7 @@
+   apply condDistrib_ae_eq_of_measure_eq_compProd_of_measurable
+     hp (measurable_centerMap e μ d p hd hp)
+   rw [centerKernel, compProd_dependentMap (μ.map p) (condDistrib d p μ) _
+-    (measurable_fiberCenter e _), compProd_map_condDistrib hp.aemeasurable hd.aemeasurable,
++    (measurable_fiberCenter e _), compProd_map_condDistrib hd.aemeasurable,
+     Measure.map_map (measurable_fst.prodMk (measurable_fiberCenter e _)) (hp.prodMk hd)]
+   rfl
+ 

@@ -1,0 +1,18 @@
+digraph palette_bridge {
+  rankdir=LR; node [shape=box, fontsize=10];
+  A  [label="A  Def 5.1 palettes\n(M) Palettes.lean:10-40"];
+  B  [label="B  (5.2) two-direction exclusion\n(M) PaletteDensity.lean:121-158"];
+  C  [label="C  (5.7) 60-degree exclusion\n(M) PaletteTransport.lean:444"];
+  D  [label="D  binary selection, alternation (5.8)\n(M) BinaryPalettes.lean:11"];
+  E  [label="E  Lemma 5.5: delta_* separation\n(M) BinaryPalettes.lean:123"];
+  F  [label="F  compact circle => finitely many\n(P) paper 5.4"];
+  G  [label="G  Prop 5.6: 1 <= |P| <= 2\n(M) BinaryPalettes.lean:260"];
+  H1 [label="H1 weak measurability", style=dashed];
+  H3 [label="H3 |I| = 5\n(complement of triple = pair)", style=dashed, color=red];
+  X  [label="k=6: |I\\A| = 3\nnot binarity  (C)", color=red];
+  A -> B -> C -> D -> E -> F -> G;
+  H1 -> A; H1 -> B;
+  H3 -> D [label="arity"];
+  D -> X [style=dotted, color=red, label="fails at k=6"];
+  E -> G;
+}

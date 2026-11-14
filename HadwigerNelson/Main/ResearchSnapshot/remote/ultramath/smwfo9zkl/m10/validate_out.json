@@ -1,0 +1,9002 @@
+[
+ {
+  "trial": 0,
+  "n": 4,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 0,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 0,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 0,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 0,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 0,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 1,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 1,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 1,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 1,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 1,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 1,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 2,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 2,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 2,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 2,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 2,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 2,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 3,
+  "n": 9,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 3,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 3,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 3,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 3,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 3,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 4,
+  "n": 6,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 4,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 4,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 4,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 4,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 4,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 5,
+  "n": 10,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 5,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 5,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 5,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 5,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 5,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 6,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 6,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 6,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 6,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 6,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 6,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 7,
+  "n": 4,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 7,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 7,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 7,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 7,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 7,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 8,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 8,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 8,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 8,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 8,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 8,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 9,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 9,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 9,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 9,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 9,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 9,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 10,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 10,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 10,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 10,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 10,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 10,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 11,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 11,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 11,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 11,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 11,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 11,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 12,
+  "n": 9,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 12,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 12,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 12,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 12,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 12,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 13,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 13,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 13,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 13,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 13,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 13,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 14,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 14,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 14,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 14,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 14,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 14,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 15,
+  "n": 9,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 15,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 15,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 15,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 15,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 15,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 16,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 16,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 16,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 16,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 16,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 16,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 17,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 17,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 17,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 17,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 17,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 17,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 18,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 18,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 18,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 18,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 18,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 18,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 19,
+  "n": 9,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 19,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 19,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 19,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 19,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 19,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 20,
+  "n": 10,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 20,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 20,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 20,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 20,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 20,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 21,
+  "n": 14,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 21,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 21,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 21,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 21,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 21,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 22,
+  "n": 11,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 22,
+  "n": 11,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 22,
+  "n": 11,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 22,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 22,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 22,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 23,
+  "n": 4,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 23,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 23,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 23,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 23,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 23,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 24,
+  "n": 12,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 24,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 24,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 24,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 24,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 24,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 25,
+  "n": 6,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 25,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 25,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 25,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 25,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 25,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 26,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 26,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 26,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 26,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 26,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 26,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 27,
+  "n": 12,
+  "edges": 1,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 27,
+  "n": 12,
+  "edges": 1,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 27,
+  "n": 12,
+  "edges": 1,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 27,
+  "n": 12,
+  "edges": 1,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 27,
+  "n": 12,
+  "edges": 1,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 27,
+  "n": 12,
+  "edges": 1,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 28,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 28,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 28,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 28,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 28,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 28,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 29,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 29,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 29,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 29,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 29,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 29,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 30,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 30,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 30,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 30,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 30,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 30,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 31,
+  "n": 10,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 31,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 31,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 31,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 31,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 31,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 32,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 32,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 32,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 32,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 32,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 32,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 33,
+  "n": 12,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 33,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 33,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 33,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 33,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 33,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 34,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 34,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 34,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 34,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 34,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 34,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 35,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 35,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 35,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 35,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 35,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 35,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 36,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 36,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 36,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 36,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 36,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 36,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 37,
+  "n": 14,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 37,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 37,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 37,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 37,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 37,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 38,
+  "n": 4,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 38,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 38,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 38,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 38,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 38,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 39,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 39,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 39,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 39,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 39,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 39,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 40,
+  "n": 6,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 40,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 40,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 40,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 40,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 40,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 41,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 41,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 41,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 41,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 41,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 41,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 42,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 42,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 42,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 42,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 42,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 42,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 43,
+  "n": 11,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 43,
+  "n": 11,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 43,
+  "n": 11,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 43,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 43,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 43,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 44,
+  "n": 6,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 44,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 44,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 44,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 44,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 44,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 45,
+  "n": 4,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 45,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 45,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 45,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 45,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 45,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 46,
+  "n": 10,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 46,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 46,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 46,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 46,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 46,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 47,
+  "n": 4,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 47,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 47,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 47,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 47,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 47,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 48,
+  "n": 10,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 48,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 48,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 48,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 48,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 48,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 49,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 49,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 49,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 49,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 49,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 49,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 50,
+  "n": 4,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 50,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 50,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 50,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 50,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 50,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 51,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 51,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 51,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 51,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 51,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 51,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 52,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 52,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 52,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 52,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 52,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 52,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 53,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 53,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 53,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 53,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 53,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 53,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 54,
+  "n": 9,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 54,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 54,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 54,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 54,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 54,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 55,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 55,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 55,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 55,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 55,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 55,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 56,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 56,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 56,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 56,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 56,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 56,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 57,
+  "n": 14,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 57,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 57,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 57,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 57,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 57,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 58,
+  "n": 9,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 58,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 58,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 58,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 58,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 58,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 59,
+  "n": 9,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 59,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 59,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 59,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 59,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 59,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 60,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 60,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 60,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 60,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 60,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 60,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 61,
+  "n": 14,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 61,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 61,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 61,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 61,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 61,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 62,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 62,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 62,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 62,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 62,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 62,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 63,
+  "n": 14,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 63,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 63,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 63,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 63,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 63,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 64,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 64,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 64,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 64,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 64,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 64,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 65,
+  "n": 10,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 65,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 65,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 65,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 65,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 65,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 66,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 66,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 66,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 66,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 66,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 66,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 67,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 67,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 67,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 67,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 67,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 67,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 68,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 68,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 68,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 68,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 68,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 68,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 69,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 69,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 69,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 69,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 69,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 69,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 70,
+  "n": 11,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 70,
+  "n": 11,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 70,
+  "n": 11,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 70,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 70,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 70,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 71,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 71,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 71,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 71,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 71,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 71,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 72,
+  "n": 6,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 72,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 72,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 72,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 72,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 72,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 73,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 73,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 73,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 73,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 73,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 73,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 74,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 74,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 74,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 74,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 74,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 74,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 75,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 75,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 75,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 75,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 75,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 75,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 76,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 76,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 76,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 76,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 76,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 76,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 77,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 77,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 77,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 77,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 77,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 77,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 78,
+  "n": 6,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 78,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 78,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 78,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 78,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 78,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 79,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 79,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 79,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 79,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 79,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 79,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 80,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 80,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 80,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 80,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 80,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 80,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 81,
+  "n": 12,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 81,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 81,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 81,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 81,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 81,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 82,
+  "n": 10,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 82,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 82,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 82,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 82,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 82,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 83,
+  "n": 10,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 83,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 83,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 83,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 83,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 83,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 84,
+  "n": 4,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 84,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 84,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 84,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 84,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 84,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 85,
+  "n": 4,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 85,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 85,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 85,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 85,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 85,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 86,
+  "n": 10,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 86,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 86,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 86,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 86,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 86,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 87,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 87,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 87,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 87,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 87,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 87,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 88,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 88,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 88,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 88,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 88,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 88,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 89,
+  "n": 10,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 89,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 89,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 89,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 89,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 89,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 90,
+  "n": 11,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 90,
+  "n": 11,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 90,
+  "n": 11,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 90,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 90,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 90,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 91,
+  "n": 12,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 91,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 91,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 91,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 91,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 91,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 92,
+  "n": 12,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 92,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 92,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 92,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 92,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 92,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 93,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 93,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 93,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 93,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 93,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 93,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 94,
+  "n": 12,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 94,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 94,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 94,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 94,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 94,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 95,
+  "n": 12,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 95,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 95,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 95,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 95,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 95,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 96,
+  "n": 14,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 96,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 96,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 96,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 96,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 96,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 97,
+  "n": 14,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 97,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 97,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 97,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 97,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 97,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 98,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 98,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 98,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 98,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 98,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 98,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 99,
+  "n": 11,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 99,
+  "n": 11,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 99,
+  "n": 11,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 99,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 99,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 99,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 100,
+  "n": 6,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 100,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 100,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 100,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 100,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 100,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 101,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 101,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 101,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 101,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 101,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 101,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 102,
+  "n": 4,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 102,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 102,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 102,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 102,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 102,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 103,
+  "n": 10,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 103,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 103,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 103,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 103,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 103,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 104,
+  "n": 14,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 104,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 104,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 104,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 104,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 104,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 105,
+  "n": 9,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 105,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 105,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 105,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 105,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 105,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 106,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 106,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 106,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 106,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 106,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 106,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 107,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 107,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 107,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 107,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 107,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 107,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 108,
+  "n": 9,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 108,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 108,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 108,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 108,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 108,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 109,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 109,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 109,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 109,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 109,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 109,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 110,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 110,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 110,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 110,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 110,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 110,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 111,
+  "n": 11,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 111,
+  "n": 11,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 111,
+  "n": 11,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 111,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 111,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 111,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 112,
+  "n": 9,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 112,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 112,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 112,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 112,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 112,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 113,
+  "n": 9,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 113,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 113,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 113,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 113,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 113,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 114,
+  "n": 6,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 114,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 114,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 114,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 114,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 114,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 115,
+  "n": 4,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 115,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 115,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 115,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 115,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 115,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 116,
+  "n": 10,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 116,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 116,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 116,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 116,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 116,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 117,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 117,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 117,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 117,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 117,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 117,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 118,
+  "n": 12,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 118,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 118,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 118,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 118,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 118,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 119,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 119,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 119,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 119,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 119,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 119,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 120,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 120,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 120,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 120,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 120,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 120,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 121,
+  "n": 7,
+  "edges": 1,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 121,
+  "n": 7,
+  "edges": 1,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 121,
+  "n": 7,
+  "edges": 1,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 121,
+  "n": 7,
+  "edges": 1,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 121,
+  "n": 7,
+  "edges": 1,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 121,
+  "n": 7,
+  "edges": 1,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 122,
+  "n": 6,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 122,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 122,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 122,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 122,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 122,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 123,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 123,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 123,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 123,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 123,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 123,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 124,
+  "n": 14,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 124,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 124,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 124,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 124,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 124,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 125,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 125,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 125,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 125,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 125,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 125,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 126,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 126,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 126,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 126,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 126,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 126,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 127,
+  "n": 11,
+  "edges": 1,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 127,
+  "n": 11,
+  "edges": 1,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 127,
+  "n": 11,
+  "edges": 1,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 127,
+  "n": 11,
+  "edges": 1,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 127,
+  "n": 11,
+  "edges": 1,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 127,
+  "n": 11,
+  "edges": 1,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 128,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 128,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 128,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 128,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 128,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 128,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 129,
+  "n": 9,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 129,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 129,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 129,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 129,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 129,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 130,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 130,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 130,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 130,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 130,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 130,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 131,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 131,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 131,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 131,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 131,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 131,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 132,
+  "n": 4,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 132,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 132,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 132,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 132,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 132,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 133,
+  "n": 9,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 133,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 133,
+  "n": 9,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 133,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 133,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 133,
+  "n": 9,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 134,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 134,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 134,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 134,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 134,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 134,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 135,
+  "n": 11,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 135,
+  "n": 11,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 135,
+  "n": 11,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 135,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 135,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 135,
+  "n": 11,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 136,
+  "n": 6,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 136,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 136,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 136,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 136,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 136,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 137,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 137,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 137,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 137,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 137,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 137,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 138,
+  "n": 7,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 138,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 138,
+  "n": 7,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 138,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 138,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 138,
+  "n": 7,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 139,
+  "n": 12,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 139,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 139,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 139,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 139,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 139,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 140,
+  "n": 4,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 140,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 140,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 140,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 140,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 140,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 141,
+  "n": 12,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 141,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 141,
+  "n": 12,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 141,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 141,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 141,
+  "n": 12,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 142,
+  "n": 8,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 142,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 142,
+  "n": 8,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 142,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 142,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 142,
+  "n": 8,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 143,
+  "n": 6,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 143,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 143,
+  "n": 6,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 143,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 143,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 143,
+  "n": 6,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 144,
+  "n": 5,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 144,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 144,
+  "n": 5,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 144,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 144,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 144,
+  "n": 5,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 145,
+  "n": 4,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 145,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 145,
+  "n": 4,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 145,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 145,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 145,
+  "n": 4,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 146,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 146,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 146,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 146,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 146,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 146,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 147,
+  "n": 13,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 147,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 147,
+  "n": 13,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 147,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 147,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 147,
+  "n": 13,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 148,
+  "n": 10,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 148,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 148,
+  "n": 10,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 148,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 148,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 148,
+  "n": 10,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 149,
+  "n": 14,
+  "edges": 0,
+  "k": 4,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 149,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 149,
+  "n": 14,
+  "edges": 0,
+  "k": 5,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 149,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 1,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 149,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 2,
+  "A": true,
+  "B": true,
+  "agree": true
+ },
+ {
+  "trial": 149,
+  "n": 14,
+  "edges": 0,
+  "k": 6,
+  "md": 3,
+  "A": true,
+  "B": true,
+  "agree": true
+ }
+]

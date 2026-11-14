@@ -1,0 +1,36 @@
+{
+  "updated_utc": "2026-11-14T20:30:00Z",
+  "status": "completed_block",
+  "summary": "Analysis-only block. Retracted Proposition 2 of SEED-DESIGN-TAU.md (a one-point gluing without cross edges does NOT force no cross-copy relation) and scoped its section 3 to the 7-vertex spindle, not transferable to Heule553. Replacement: with R_a[alpha] the colours a can take when c(p0) = alpha, a and b are forced equal iff the sets are disjoint for every alpha, and forced different iff for every alpha both are the same singleton. With equal-pinned, different-pinned and free vertices this gives E/E forced equal, E/N forced different, and nothing when a free vertex is involved. Two exact counterexamples: the diamond sharing a tip, tracked vertex at the other tip, translate (0,10) - no overlap beyond p0, no cross edges, yet the tracked vertices are forced equal; add a unit edge at p0 and they are forced different. Multi-point non-clique overlaps make the constraint a fibre product over the whole intersection with boundary data gamma, so per-factor pinning no longer suffices and clique overlaps are degenerate - non-clique is the informative case. For the Heule union (1048 vertices, 58 overlaps, 184 cross edges, external) that is 58 equations and 184 inequalities between two different 5-colourings of H, with a pinning filter cutting the ~5.5e5 cross pairs to the pinned ones.",
+  "verified_results": [
+    "GRADE [P] Retraction R1: the old Proposition 2 is false. Colour permutations fixing c2(p0) preserve the value at p0, so they cannot move a vertex forced equal to p0 and cannot merge colours forced different from p0; hence a vertex equal-pinned in one copy and equal-pinned in the other are forced equal to each other, and equal-pinned with different-pinned is forced different. Only the colourability half survives: the union is k-colourable if the factor is, by colour-permutation gluing.",
+    "GRADE [P] The exact one-point formula: with R_a[alpha] = {beta : some proper k-colouring of the factor has c(p0) = alpha and c(a) = beta}, the possible colour pairs for (a,b) from the two copies are exactly {(beta,beta') : exists alpha with beta in R_a[alpha] and beta' in R_b[alpha]}. Hence forced equality iff all R_a[alpha] and R_b[alpha] are disjoint, and forced difference iff for every alpha both are the same singleton. Every alpha occurs because colour permutations act transitively.",
+    "GRADE [P] Pinning classification and table: a is equal-pinned iff R_a[alpha] = {alpha} for all alpha; different-pinned iff R_a[alpha] = [k] minus {alpha} for all alpha (needs k >= 3); free otherwise. Then E/E forces equality, E/N forces difference, and any pair involving a free vertex forces nothing (equality realisable for one alpha, inequality for another).",
+    "GRADE [P] Counterexample C1 (forced equality with a single shared point and no cross edges): factor = diamond on {(0,0),(1,0),(1/2,+-sqrt3/2)} at k = 3, whose tips are forced equal; shared point p0 = (1/2,sqrt3/2), tracked vertex a = (1/2,-sqrt3/2), second copy translated by tau = (0,10) so all cross distances exceed 1. The two copies' tracked vertices are then forced equal to each other, contradicting the retracted proposition.",
+    "GRADE [P] Counterexample C2 (forced inequality): same copy 1, copy 2 the unit edge {p0, u} with u = (1/2, sqrt3/2 + 1) at distance > 1 from all other points, so u is different-pinned and a is forced different from u.",
+    "GRADE [P] Multi-point non-clique overlaps: colourings of the union are pairs agreeing on the whole intersection, so the constraint is a fibre product over [k]^I with boundary datum gamma; the one-point formula generalises by replacing alpha with gamma and requires pinning uniformly over the extensions of each boundary datum, so per-factor types no longer suffice. A clique overlap is degenerate (size >= k+1 immediately non-colourable, size <= k injective), so non-clique is where freedom, and therefore content, lives.",
+    "GRADE [C-external] The Heule union H + (H+(3/2,sqrt3/2)) has 1048 vertices, 58 overlaps and 184 new cross edges per the graph worker; I did not verify these counts. Read structurally: the union's colouring set is pairs of 5-colourings satisfying 58 cross equalities and 184 cross inequalities, and a practical pinning filter reduces the ~5.5e5 cross pairs to those with a pin."
+  ],
+  "conjectures": [
+    "The multi-point overlap is the channel through which Heule553's near-rigidity (34 witnesses separating all 553 vertices) becomes a coupling between two copies, since 58 identifications constrain a large part of the pattern; this is a reason to look there rather than a claim that a relation exists.",
+    "Only pinned candidates can be forced, so the existing equality pipeline should be extended with a pinning tabulation against the 58 boundary coordinates instead of scanning all cross pairs; that is a filter, not a search for a new seed.",
+    "If the 58 equations and 184 inequalities are jointly inconsistent the union is not 5-colourable, which would be extraordinary at 1048 vertices and must be treated as a solver artefact pending a DRAT check, exactly as the graph worker's stage-3 protocol prescribes."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/SEED-DESIGN-TAU.md",
+    "supervisor/solve-geometry/checks/amp_cert.py",
+    "supervisor/solve-geometry/AMPLIFIER.md",
+    "supervisor/solve-geometry/ARTIFACT-HASHES.txt",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "None: analysis-only block by instruction. All formulas and counterexamples in SEED-DESIGN-TAU.md sections 1b-3b are hand-derived over exact coordinates and graded [P]. checks/amp_cert.py keeps the corrected squarefree routine (odd-denominator fix) in the unrerun state requested; its three controls were independently validated elsewhere and its own recorded certificates predate the fix and are unaffected."
+  ],
+  "failed_routes": [
+    "RETRACTED: Proposition 2 of SEED-DESIGN-TAU.md, with two exact counterexamples now recorded in place of it; and the implication that cross edges are the only informative channel (overlaps create relations through pinning).",
+    "RETRACTED IN SCOPE: the four Q(sqrt3) difference channels computed for the 7-vertex Moser spindle are a statement about that spindle only and are not transferred to Heule553, whose channel structure is a different question. No further spindle-axis guesses were made.",
+    "Not attempted: any run, any search for a translate of Heule553, any colourability decision, any forcing claim, any palette or chromatic claim."
+  ],
+  "next_step": "Hand the graph worker the pinning filter of SEED-DESIGN-TAU.md section 2b(c): tabulate, over the union's admissible joint colourings, the per-vertex extension sets R_a[gamma] against the 58 boundary coordinates, discard every candidate with a free vertex, and test only the pinned pairs for forced equality/inequality; report the counts before any interpretation.",
+  "escalation": null
+}

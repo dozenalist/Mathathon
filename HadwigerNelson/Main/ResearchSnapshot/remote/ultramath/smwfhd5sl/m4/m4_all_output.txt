@@ -1,0 +1,384 @@
+=== m4_s8_core.py
+==============================================================================
+PART 1   Proposition 8.2 (no five-cycle): k = 5, cycle 0-1-2-3-4
+==============================================================================
+
+1.1  sign patterns -> palette options      [exhaustive: 2^5 = 32 patterns]
+    10 of 32 patterns have O and I both non-empty.  In each: exactly two admissible
+    palettes, both diagonals D_i = {i,i+2}, indices differing by +-2 mod 5; and
+    Opt(-s) = Opt(s), because O(-s) = I(s) and I(-s) = O(s).
+    Consequence: at every position the palette is D_p and, by (5.7), consecutive
+    palettes are disjoint, i.e. p_{j+1} - p_j = +-1 in Z/5.
+
+1.2  the six-position orbit    [exhaustive: 5^6 = 15625 assignments]
+    (P)+(S)+(R) and 6-periodicity, six option sets FREE:   100 assignments
+    the same with the antipodal linkage s_(j+3) = -s_j:    0 assignments
+    The antipodal step is NOT redundant: closed +-1 walks of length 6 in Z/5 exist
+    (three +1 and three -1 steps close), and it is the linkage that kills them.
+    But it is not a separate hypothesis: it is the part of (G) that says R^3 = -id,
+    and it forces Opt(R^(j+3) e) = Opt(R^j e).
+
+1.3  a geometrically realised model of the same system at k = 6
+     (palette bound k-3 = 3; five-cycle 0-1-2-3-4 and one outsider label 5)
+     exact ray directions, in units of pi:  v = ['6/5', '1/3', '103/300', '97/300', '4/3']
+     sign vectors at R^j e, and the palettes:
+       j=0  theta=0/3  s = -+++-   O={0,5}  I={2,3,5}  P={5}
+       j=1  theta=1/3  s = -+++-   O={0,5}  I={2,3,5}  P={0,2}
+       j=2  theta=2/3  s = -+++-   O={0,5}  I={2,3,5}  P={5}
+       j=3  theta=3/3  s = +---+   O={2,3,5}  I={0,5}  P={0,2}
+       j=4  theta=4/3  s = +---+   O={2,3,5}  I={0,5}  P={5}
+       j=5  theta=5/3  s = +---+   O={2,3,5}  I={0,5}  P={0,2}
+     (P), (S), (R) all hold.  So the five-cycle exclusion is a k = 5 statement.
+
+1.4  the inputs of Prop 8.2, deleted one at a time
+     (P) Prop 5.6 1<=|P|<=k-3   (S) Lemma 8.1 P meets O(e),I(e)
+     (R) (5.7) P(e) cap P(Re)=0  (Z) R^6 = id
+     (A) is not an input: Opt(-e) = Opt(e) follows from O(-e)=I(e), I(-e)=O(e)
+         together with s_(j+3) = -s_j, which is part of (G).
+     delete (P): the k = 6 datum of 1.3 (palette bound 3)                        SAT
+     delete (S): P_j = {0},{1},{0},{1},{0},{1} meets (P),(R),(Z)                 SAT
+     delete (R): sign pattern +++-- everywhere, Opt = {D_1,D_4};
+                 P_j = D_1 = {1,3} for all j meets (P),(S),(Z)                    SAT
+     delete (Z): P_j = D_{j mod 5}, j = 0..5: steps +1, but P_6 != P_0              SAT
+     delete the antipodal part of (G): 100 of the 15625 walks of 1.2 survive      SAT
+     All four inputs and the antipodal part of (G) are used.
+
+==============================================================================
+PART 2   Proposition 8.5 (no four-cycle): k = 5, cycle 0-1-2-3 and outsider X = 4
+==============================================================================
+
+The state of (8.2): p(e) = X if X is in the palette, else the forced diagonal d(e) in {U,V},
+U = {0,2}, V = {1,3}.  The group represented by the state sits inside the palette, so
+    (8.2a)  p(e) != p(Re)                     [from (5.7)]
+    (8.2b)  p(e) = p(-e) whenever both != X   [d(-e) = d(e)]
+The six-position word is w(t)_j = p(e^{i(t + j pi/3)}).
+
+2.1  six-position words over {X,U,V}          [exhaustive: 3^6 = 729 words]
+    words satisfying (8.2a) and (8.2b):  34
+    of these, words with no X:           0     (a word without X alternates U,V,
+      which violates (8.2b) at antipodal positions)
+    words with X on both parities:       6
+      XUVXUV    3-periodic: True
+      XVUXVU    3-periodic: True
+      UXVUXV    3-periodic: True
+      UVXUVX    3-periodic: True
+      VXUVXU    3-periodic: True
+      VUXVUX    3-periodic: True
+    remaining words carry a single X-parity h(w): 28 words
+
+2.2  the cross-word restriction (8.3) isolates every 3-periodic word
+    w = XUVXUV   compatible neighbours: ['XUVXUV']
+    w = XVUXVU   compatible neighbours: ['XVUXVU']
+    w = UXVUXV   compatible neighbours: ['UXVUXV']
+    w = UVXUVX   compatible neighbours: ['UVXUVX']
+    w = VXUVXU   compatible neighbours: ['VXUVXU']
+    w = VUXVUX   compatible neighbours: ['VUXVUX']
+    every 3-periodic word is isolated: True
+    With G an eta-chain-connected dense set of parameters invariant under +kappa,
+    isolation propagates: w is constant on G; but w(t+kappa)_j = w(t)_{j+1}, and a
+    3-periodic word is not equal to its one-position shift.  So no 3-periodic word
+    occurs, and h : G -> Z/2 is well defined.
+
+2.3  the complementary-arc count behind Prop 8.5
+    Three projective positions spaced pi/3 on a circle of circumference pi cannot lie in
+    an open arc shorter than pi - pi/3 = 2pi/3.  Lemma 8.4 puts the diagonal U on one open
+    projective arc and V on the complementary arc; Prop 8.5 produces three equally spaced
+    positions valued D = U or V in each.  Both arcs then exceed 2pi/3 while their lengths
+    sum to pi:  4pi/3 > pi.  The sharper 'one arc <= pi/2' is not needed.
+
+2.4  at k = 6 the four-cycle state is no longer binary
+    labels 0..3 on the cycle, outsiders 4,5; sign ++--
+    O={3,4,5}  I={1,4,5}   palettes ['{4}', '{5}', '{4}', '{5}', '{4}', '{5}']
+    (P),(S),(R) hold at k = 6: the two outsiders alternate.  This is W6's state set.
+
+==============================================================================
+PART 3   Proposition 8.10 (no three-cycle): k = 5, cycle 0-1-2 and outsiders 3, 4
+==============================================================================
+
+3.1  binary state.  Lemma 8.1 + (8.1) put an outsider in P_x(e) a.e.; (5.7) forbids two
+     outsiders in one palette (the antipodal palette would have none); so a.e. s(e) in {X,Y}
+     with s(Re) != s(e).  Lemma 8.6: s is locally essentially constant.  Lemma 8.7: the
+     essential boundary is exactly one six-position R-orbit.  The count is finite: each boundary
+     point e has e in B or Re in B (else 8.6 makes s constant there); the three interface rays
+     give at most three projective classes in B; one R-orbit uses exactly three; and distinct
+     R-orbits have disjoint projective classes.  So at most one orbit, and nonemptiness gives one.
+3.2  hence the outsider state is X on three alternate sectors and Y on the other three, i.e. it
+     is read off from the sign of sin(3 theta), with sector boundaries at multiples of pi/3.
+3.3  Lemma 8.8: for 0 < |z|^2 < 4 and  ups^2 (3 xi^2 - ups^2)^2 < l^3 (1 - l/4)(l-1)^2,
+     l = xi^2 + ups^2, a neighbourhood of x+z uses only the three triangle labels a.e.
+3.4  Lemma 8.9: all seven points z_g = ((35+12i)/37)(g + (-290+149i)/250), g in the Moser
+     graph (8.5), satisfy that certificate.   [verified exactly in m4_moser.py]
+3.5  the seven points, placed at x + z_g and moved by a generic small translation, carry the
+     eleven exact unit edges of the Moser-Moser graph, which has no proper 3-colouring
+     (0 of 3^7 assignments over Q(sqrt3, sqrt11)).  Contradiction.
+
+3.6  at k = 6 the three-cycle state is not binary
+    outsiders 3,4,5 lie in O(e) and I(e) for EVERY sign pattern; O={3,4,5} I={1,3,4,5}
+    palettes ['{3}', '{4}', '{3}', '{4}', '{3}', '{4}'] alternate and satisfy (P),(S),(R) at k = 6
+    So a length-three interface is not excluded at k = 6 by (P),(S),(R): W6's six states.
+
+==============================================================================
+PART 4   length six at k = 6: the case the paper does not have
+==============================================================================
+    admissible sign patterns on a six-cycle at k = 6: 30 of 64
+    alternating model: s=----++  O={1,2,3}  I={5}  P={1,5}
+                       s=---++-  O={0,1,2}  I={4}  P={0,4}
+    (P),(S),(R) hold at k = 6 with length six: the missing case is not an obstruction.
+
+==============================================================================
+PART 5   the six named inputs of Prop 8.5, deleted one at a time
+==============================================================================
+     (J1) (8.2a) p(e) != p(Re)              [from (5.7)]
+     (J2) (8.2b) p(e) = p(-e) when both != X [d(-e) = d(e)]
+     (J3) cross-word restriction (8.3)      [Lemma 5.2 + 6.3 + compactness]
+     (J4) kappa-shift on a chain-connected G [R acts by a one-position shift]
+     (J5) Lemma 8.4: U on one open projective arc, V on the complementary one
+     (J6) three projective positions spaced pi/3 need an arc longer than 2pi/3
+
+     delete (J1): 'UUUUUU' satisfies (J2): True                    SAT
+     delete (J2): 'UVUVUV' satisfies (J1): True          SAT (32 words satisfy (J1) alone)
+     delete (J3): the 6 3-periodic words of 2.1 are then not isolated      SAT
+     delete (J4): a 3-periodic word constant on G is not equal to its shift: True  SAT
+     delete (J5): without d = U / V on complementary arcs, both values may occupy
+                  one arc, and the 2pi/3 count does not contradict anything          SAT
+     delete (J6): if the three positions were clustered instead of spaced pi/3,
+                  one arc of length <= pi could hold all three                       SAT
+
+     Each of (J1),(J2),(J3),(J4) is refuted by an explicit printed word; (J5),(J6)
+     are the two geometric count statements, verified as counts in 2.3.
+
+==============================================================================
+PART 6   the six named inputs of Prop 8.10, deleted one at a time
+==============================================================================
+     (G1) s(e) in {X,Y}, s(Re) != s(e)          [Lemma 8.1 + (5.7)]
+     (G2) Lemma 8.6, local essential constancy of s
+     (G3) Lemma 8.7, the essential boundary is exactly one six-position R-orbit
+     (G4) Lemma 8.8, the polynomial three-label region (8.4)
+     (G5) Lemma 8.9, the seven placed points lie in that region
+     (G6) the seven-vertex graph (8.5) has no proper 3-colouring
+
+     delete (G1): s = X identically satisfies (G2),(G3),(G4),(G5),(G6)      SAT
+     delete (G2): any measurable s with s(Re) != s(e) a.e. serves; no sector
+                  structure is forced, so (8.4) proves nothing              SAT
+     delete (G3): two boundary orbits give twelve sectors; the outsider state
+                  is still alternating and consistent, but is no longer the
+                  sign of sin(3 theta), so Lemma 8.8 does not apply         SAT
+     delete (G4): a five-label region constrains nothing; the seven Moser
+                  points are 5-colourable (their graph has chi = 4)          SAT
+     delete (G5): membership is not automatic -- Table 1 is tight for g = B
+                  (P = 0.000002 against P+' = 0.00065, a ratio of 325)       SAT
+     delete (G6): the Moser graph is the only 4-chromatic ingredient here;
+                  a 3-colouring would end the contradiction (0 of 3^7 exist)  SAT
+     All six are used.
+
+==============================================================================
+PART 7   the k = 6 models for lengths 4 and 3, geometrically realised
+==============================================================================
+
+Construction.  Let R = rotation by pi/3 and e = 1.  A ray v whose angle beta (in units of pi)
+lies in the open window (1/6, 1/2) has sign + at e, Re, R^2 e simultaneously; a ray with beta
+in (7/6, 3/2) has sign - at those three positions.  (Signs at R^{j+3}e are then the negations.)
+So a sign vector constant on the three consecutive positions is realisable.
+
+  length 4: rays at (units of pi) ['1/3', '103/300', '5/4', '63/50']
+    j=0  s = ++--
+    j=1  s = ++--
+    j=2  s = ++--
+    j=3  s = --++
+    j=4  s = --++
+    j=5  s = --++
+    palettes ['{4}', '{5}', '{4}', '{5}', '{4}', '{5}'] alternate; (P),(S),(R) hold at k = 6,
+    with the sign vectors geometrically realised.  So length 4 is not excluded at k = 6.
+  length 3: rays at (units of pi) ['1/3', '103/300', '5/4']
+    j=0  s = ++-
+    j=1  s = ++-
+    j=2  s = ++-
+    j=3  s = --+
+    j=4  s = --+
+    j=5  s = --+
+    palettes ['{3}', '{4}', '{3}', '{4}', '{3}', '{4}'] alternate; (P),(S),(R) hold at k = 6,
+    with the sign vectors geometrically realised.  So length 3 is not excluded at k = 6.
+
+==============================================================================
+PART 8   verification of the five-cycle deletion models (CORE.md 5.1)
+==============================================================================
+  sign family from rays ['1/3', '103/300', '5/4', '63/50', '51/40'] (units of pi):
+    j=0  s = ++---
+    j=1  s = ++---
+    j=2  s = ++---
+    j=3  s = --+++
+    j=4  s = --+++
+    j=5  s = --+++
+  positions 0,1,2:  O={3,4}  I={1}  Opt=['{1,3}', '{1,4}']
+  positions 3,4,5:  O={1}  I={3,4}  Opt=['{1,3}', '{1,4}']
+  (G)-compatible deletion model for (R):  P = D1,D1,D1,D4,D4,D4
+    (P) holds, (S) holds, (A) holds -- P_(j+3) and P_j both in Opt; (R) fails at j=2: D1 cap D4 = {1}
+  (S) deleted:  P = {0},{1},{0},{1},{0},{1}
+    (P) and (R) hold; (S) and (A) are not enforceable without it
+  (P) deleted:  the k = 6 datum of PART 1.3
+  antipodal half of (G) deleted:  100 of the 15625 closed walks
+  all five-cycle deletion models verified.
+=== m4_palette_level.py
+==============================================================================
+palette level of Section 8: satisfiable?   (UNSAT by relaxation, SAT by model)
+==============================================================================
+
+ k  l   (P),(S),(R),(B),(Z)              + (A) at l=k=5
+ 3  3   UNSAT                          
+ 4  3   UNSAT                          
+ 4  4   UNSAT                          
+ 5  3   SAT                            
+        model:  s = ['---', '---', '---', '+++', '+++', '+++']
+                P = ['{3}', '{4}', '{3}', '{4}', '{3}', '{4}']
+ 5  4   SAT                            
+        model:  s = ['----', '--++', '-++-', '++++', '++--', '+--+']
+                P = ['{4}', '{1,3}', '{0,2}', '{4}', '{1,3}', '{0,2}']
+ 5  5   UNSAT                          
+ 6  3   SAT                            
+        model:  s = ['---', '---', '---', '+++', '+++', '+++']
+                P = ['{3}', '{4}', '{3}', '{4}', '{3}', '{4}']
+ 6  4   SAT                            
+        model:  s = ['----', '----', '----', '++++', '++++', '++++']
+                P = ['{4}', '{5}', '{4}', '{5}', '{4}', '{5}']
+ 6  5   SAT                            
+        model:  s = ['-----', '---++', '--++-', '+++++', '+++--', '++--+']
+                P = ['{5}', '{1,4}', '{0,3}', '{5}', '{1,4}', '{0,3}']
+ 6  6   SAT                            
+        model:  s = ['----++', '---++-', '--++--', '++++--', '+++--+', '++--++']
+                P = ['{1,5}', '{0,4}', '{1,3}', '{2,5}', '{1,4}', '{0,3}']
+
+Read-off.
+ * k = 3: (P) is 1 <= |P| <= 0, unsatisfiable outright.
+ * k = 4: the palette level is unsatisfiable at both lengths -- with |P| = 1 the
+   outsider (there is exactly one for l = 3) has to serve every position, and (R) kills it.
+ * k = 5, l = 5: unsatisfiable at the palette level, and the paper's Prop 8.2 is exactly
+   this (Section 3.1 of CORE.md).
+ * k = 5, l = 4 and l = 3: SATISFIABLE at the palette level.  So Propositions 8.5 and 8.10
+   need their geometric layers (the four-ray diagonal geometry; the sector structure and
+   the polynomial three-label region).  Those layers are k-blind, but the state spaces they
+   act on are not: at k = 6 they are the six-state systems of W6.
+ * k = 6: satisfiable at every length.  This is the sharpness statement of CORE.md Sec. 4.
+
+==============================================================================
+k = 5, l = 4: which state words survive the palette level?
+==============================================================================
+
+  palette-level solutions at k = 5, l = 4: 800
+  distribution of state words p_0..p_5 (X = outsider 4 present, U = {0,2}, V = {1,3}):
+    UVUXVX       8 palette data   three-periodic: False
+    UVXUVX      64 palette data   three-periodic: True
+    UVXUXV       8 palette data   three-periodic: False
+    UXUXUX       8 palette data   three-periodic: False
+    UXUXVX      24 palette data   three-periodic: False
+    UXVUVX       8 palette data   three-periodic: False
+    UXVUXV      64 palette data   three-periodic: True
+    UXVXUV       8 palette data   three-periodic: False
+    UXVXUX      24 palette data   three-periodic: False
+    UXVXVX      24 palette data   three-periodic: False
+    VUVXUX       8 palette data   three-periodic: False
+    VUXVUX      64 palette data   three-periodic: True
+    VUXVXU       8 palette data   three-periodic: False
+    VXUVUX       8 palette data   three-periodic: False
+    VXUVXU      64 palette data   three-periodic: True
+    VXUXUX      24 palette data   three-periodic: False
+    VXUXVU       8 palette data   three-periodic: False
+    VXUXVX      24 palette data   three-periodic: False
+    VXVXUX      24 palette data   three-periodic: False
+    VXVXVX       8 palette data   three-periodic: False
+    XUVUXV       8 palette data   three-periodic: False
+    XUVXUV      64 palette data   three-periodic: True
+    XUXUXU       8 palette data   three-periodic: False
+    XUXUXV      24 palette data   three-periodic: False
+    XUXVUV       8 palette data   three-periodic: False
+    XUXVXU      24 palette data   three-periodic: False
+    XUXVXV      24 palette data   three-periodic: False
+    XVUVXU       8 palette data   three-periodic: False
+    XVUXVU      64 palette data   three-periodic: True
+    XVXUVU       8 palette data   three-periodic: False
+    XVXUXU      24 palette data   three-periodic: False
+    XVXUXV      24 palette data   three-periodic: False
+    XVXVXU      24 palette data   three-periodic: False
+    XVXVXV       8 palette data   three-periodic: False
+
+  800 palette-level solutions, 34 distinct state words.  All of them satisfy
+  (8.2a)+(8.2b), so they are among the 34 words of m4_s8_core.py 2.1: the 6 three-periodic
+  permutations and the 28 words with a well-defined parity h.  So the palette level of
+  Proposition 8.5 is satisfiable and excludes nothing on its own at k = 5.  The exclusion is
+  two-staged and both stages are needed: Lemma 8.3's cross-word restriction removes the six
+  three-periodic words, and the cross-word plus complementary-arc count removes the 28
+  parity words.  (A single word may mix U and V on its non-X parity; the "all three selected
+  entries agree" step of 8.5 is a statement about a *pair* of nearby words.)
+=== m4_moser.py
+=== Moser spindle, exact ===
+11 edges, all |z_a - z_b|^2 = 1 exactly (in Q(sqrt3,sqrt11))
+proper 3-colourings of the 7-vertex graph: 0  (3^7 = 2187 tested)
+non-edges: 10
+forced: any proper 3-colouring of {0,A,B,T,uA,uB,uT} has c(0)=c(T) and c(0)=c(uT), but |T-uT|=1
+
+=== placement certificate (8.6), exact ===
+|35+12i|^2 = 1369  37^2 = 1369
+placed graph: 11 unit edges still exactly unit
+  g               xi              ups                  l verdict
+  0        -1.290595         0.187568 (1.700816,1.700816)  P<P': True   0<l<4: True  l!=1: True
+  A        -0.633544         0.941414 (1.287637,1.287637)  P<P': True   0<l<4: True  l!=1: True
+  B        -0.309219        -0.004532 (0.095637,0.095637)  P<P': True   0<l<4: True  l!=1: True
+  T         0.347832         0.749314 (0.682458,0.682458)  P<P': True   0<l<4: True  l!=1: True
+ uA        -1.159756         1.178971 (2.735008,2.735008)  P<P': True   0<l<4: True  l!=1: True
+ uB        -0.366595         0.569960 (0.459246,0.459246)  P<P': True   0<l<4: True  l!=1: True
+ uT        -0.235756         1.561364 (2.493438,2.493438)  P<P': True   0<l<4: True  l!=1: True
+Lemma 8.9 verified exactly for all seven placed points.
+
+=== check of the paper's decimal table (Table 1) ===
+  g   xi0(pap)   xi0(ours)  ups0(pap)  ups0(ours)      |dx|      |dy|         P+    P-prime  h=1.1e-4 ok?
+  0    -1.2906   -1.290595     0.1876    0.187568  0.000005  0.000032        0.9       1.35           yes
+  A    -0.6335   -0.633544     0.9414    0.941414  0.000044  0.000014      0.095       0.11           yes
+  B    -0.3092   -0.309219    -0.0045   -0.004532  0.000019  0.000032      2e-06    0.00065           yes
+  T     0.3478    0.347832     0.7493    0.749314  0.000032  0.000014      0.023      0.026           yes
+ uA    -1.1598   -1.159756     1.1790    1.178971  0.000044  0.000029        9.8         19           yes
+ uB    -0.3666   -0.366595     0.5700    0.569960  0.000005  0.000040     0.0022      0.024           yes
+ uT    -0.2358   -0.235756     1.5614    1.561364  0.000044  0.000036      12.65       12.9           yes
+worst deviation from the paper's rounded centres: 0.000044   (claimed h = 0.00011)
+=== m4_tables.py
+==============================================================================
+(A)  Lemma 7.5 and its two constants
+==============================================================================
+
+  covering radius: (s/sqrt3)^2 = s^2/3 = 12/25 < 1 : True
+  second-neighbour distance: (sqrt3 s/2)^2 = 3 s^2/4 = 27/25 > 1 : True
+  disc diameter = 2 = the mesh bound of Lemma 7.5, multiplicity exactly 3 at the
+  Delaunay centroids.  So multiplicity 2 cannot be relaxed: [W4], re-derived in two
+  exact rational inequalities.
+
+  mesh constant: R4 records that the cover lemma holds for every mesh d < 5, so the
+  constant 2 of Lemma 7.5 is NOT needed at 2; the sharp form is 'multiplicity <= 2 and
+  mesh < 5'.  In the core, only the multiplicity bound is load-bearing.
+
+==============================================================================
+(B)  the paper's own rational certificate for Lemma 8.9 (Section 8.6)
+==============================================================================
+
+  g   yu<by    H<bH    a<ll    lu<b   P+>yubH2  P-<a3()(1-b/4)(..)2   P+<P-
+  0    True    True    True    True       True                 True    True
+  A    True    True    True    True       True                 True    True
+  B    True    True    True    True       True                 True    True
+  T    True    True    True    True       True                 True    True
+ uA    True    True    True    True       True                 True    True
+ uB    True    True    True    True       True                 True    True
+ uT    True    True    True    True       True                 True    True
+
+  every strict rational inequality of Section 8.6 holds: True
+
+  residual identity of Section 8.6 (exact, rational midpoint substitution)
+    g= 0  residual*scale = (     3840000.00,   -23040000.00)   printed (3840000,-23040000)   match: True
+    g= A  residual*scale = (   -29520000.00,    10176000.00)   printed (-29520000,10176000)   match: True
+    g= B  residual*scale = (   -12240000.00,   -22464000.00)   printed (-12240000,-22464000)   match: True
+    g= T  residual*scale = (    25440000.00,    10752000.00)   printed (25440000,10752000)   match: True
+    g=uA  residual*scale = (    32043244.00,   -19212795.00)   printed (32043244,-19212795)   match: True
+    g=uB  residual*scale = (     4763244.00,   -27212795.00)   printed (4763244,-27212795)   match: True
+    g=uT  residual*scale = (    32966488.00,   -23385590.00)   printed (32966488,-23385590)   match: True
+
+  residual identity reproduced exactly for all seven points: True
+  (This also fixes the reading of (8.6): the printed display must be read as
+   z_g = ((35+12i)/37)(g + (-290+149i)/250).  Under the flat reading
+   z_g = ((35+12i)/37)g + (-290+149i)/250 the seven points are not the ones tabulated
+   and Lemma 8.9 fails at g = 0; the Table 1 numbers decide it.)

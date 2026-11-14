@@ -1,0 +1,26 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean	2026-11-13 19:09:13.640943940 +0000
++++ OAI/Analysis/PlaneSpectrum/RadialEnergy.lean	2026-11-13 19:57:27.591642813 +0000
+@@ -83,6 +83,7 @@
+     (hn : ∀ u : K, ‖((a + kCoeff u^2*b : E) : ℂ)‖ =
+       ‖((l+kCoeff u*h+kCoeff u^2*k : E) : ℂ)‖) :
+     projectedMass μ q a * projectedMass μ q b ≤ projectedMass μ q h := by
++  haveI : IsProbabilityMeasure (μ.map q) := Measure.isProbabilityMeasure_map hq.aemeasurable
+   let : ErgodicVAdd Rot Y (μ.map q) := factor_ergodic μ q hq (fun g : Rot => hqcov (rotMul g))
+   let M : Amenable.Mean Rot := MovingMean.toMean (fun _ => 0)
+   have he : Family.energy (μ.map q) (Family.conditional μ q
+@@ -386,6 +387,7 @@
+ include hq hqcov in
+ lemma radiusFamily_mean (r : F) (M : Amenable.Mean Rot) :
+     M.map (radiusFamily μ q hq r) = massReal μ q r ^2 := by
++  haveI : IsProbabilityMeasure (μ.map q) := Measure.isProbabilityMeasure_map hq.aemeasurable
+   have he : radiusFamily μ q hq r = Family.energy (μ.map q) (Family.conditional μ q
+       (Family.orbit (scaleHom (G := Rot) 1) (char (ofF r)) *
+         Family.orbit (scaleHom (G := Rot) (-1)) (char (ofF r)))) := by
+@@ -451,6 +453,7 @@
+ include hq hqcov in
+ lemma massReal_vanish (hw : IsWild (DifferenceFourier.differenceLaw (μ.map q) (condDistrib id q μ)))
+     (r : F) (hr : 0 < r) : massReal μ q r = 0 := by
++  haveI : IsProbabilityMeasure (μ.map q) := Measure.isProbabilityMeasure_map hq.aemeasurable
+   by_contra hn
+   obtain ⟨δ,hδ,ε,hε,hε1,hpos⟩ := radial_positive_near_zero μ q hq hqcov r hr hn
+   let ν := DifferenceFourier.differenceLaw (μ.map q) (condDistrib id q μ)

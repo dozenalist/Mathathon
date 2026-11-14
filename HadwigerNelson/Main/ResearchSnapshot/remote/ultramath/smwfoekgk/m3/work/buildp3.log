@@ -1,0 +1,25 @@
+48 modules to build (of 83)
+ok   OAI.Geometry.PlaneColoring.WeakColoring
+ok   OAI.Geometry.PlaneColoring.Compactness
+ok   OAI.Analysis.PlaneSpectrum.CircleOperator
+ok   OAI.Analysis.PlaneSpectrum.InvariantMean
+ok   OAI.Analysis.PlaneSpectrum.Multipliers
+ok   OAI.Analysis.PlaneSpectrum.FourierTests
+ok   OAI.Analysis.PlaneSpectrum.SmallArcs
+ok   OAI.Analysis.PlaneSpectrum.PhaseEncoding
+ok   OAI.Analysis.PlaneSpectrum.PhaseCollision
+ok   OAI.MeasureTheory.CompactFactors.ConditionalSelection
+ok   OAI.Analysis.PlaneSpectrum.ConditionalSpectrum
+ok   OAI.MeasureTheory.CompactFactors.Amenability
+ok   OAI.MeasureTheory.CompactFactors.Centers
+ok   OAI.MeasureTheory.CompactFactors.RelativeCenters
+ok   OAI.MeasureTheory.CompactFactors.Approximation
+ok   OAI.MeasureTheory.CompactFactors.ConditionalLimits
+ok   OAI.MeasureTheory.CompactFactors.Kernels
+ok   OAI.MeasureTheory.CompactFactors.BoundedFunctions
+ok   OAI.MeasureTheory.CompactFactors.RelativeProducts
+ok   OAI.MeasureTheory.CompactFactors.Separability
+ok   OAI.MeasureTheory.CompactFactors.AlgebraModels
+ok   OAI.MeasureTheory.CompactFactors.Functions
+ok   OAI.MeasureTheory.CompactFactors.Factors
+ok   OAI.MeasureTheory.CompactFactors.Stationary

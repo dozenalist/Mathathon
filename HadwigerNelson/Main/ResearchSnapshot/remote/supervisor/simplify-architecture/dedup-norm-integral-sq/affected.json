@@ -1,0 +1,50 @@
+{
+ "kernel_closure": [
+  "OAI.Analysis.PlaneSpectrum.Basic",
+  "OAI.Analysis.PlaneSpectrum.Characters",
+  "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+  "OAI.Analysis.PlaneSpectrum.FourierTests",
+  "OAI.Analysis.PlaneSpectrum.InvariantMean",
+  "OAI.Analysis.PlaneSpectrum.Multipliers",
+  "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+  "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+  "OAI.Analysis.PlaneSpectrum.SmallArcs",
+  "OAI.MeasureTheory.CompactFactors.Approximation",
+  "OAI.MeasureTheory.CompactFactors.Centers",
+  "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+  "OAI.MeasureTheory.CompactFactors.ConditionalSelection",
+  "OAI.MeasureTheory.CompactFactors.Kernels",
+  "OAI.MeasureTheory.CompactFactors.RelativeCenters"
+ ],
+ "umbrella_mathlib_importers_in_closure": [
+  "OAI.Analysis.PlaneSpectrum.SmallArcs",
+  "OAI.Analysis.PlaneSpectrum.InvariantMean",
+  "OAI.MeasureTheory.CompactFactors.Centers",
+  "OAI.Analysis.PlaneSpectrum.Basic",
+  "OAI.Analysis.PlaneSpectrum.PhaseEncoding"
+ ],
+ "fourier_imports": [
+  "Mathlib"
+ ],
+ "fourier_lines": 163,
+ "reverse_closure": [
+  "OAI.Analysis.PlaneSpectrum.Energy",
+  "OAI.Analysis.PlaneSpectrum.Ergodicity",
+  "OAI.Analysis.PlaneSpectrum.RadialEnergy",
+  "OAI.Analysis.PlaneSpectrum.Representations",
+  "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
+  "OAI.Geometry.PlaneColoring.BorelTransfer",
+  "OAI.Geometry.PlaneColoring.Chromatic",
+  "OAI.Geometry.PlaneColoring.Five",
+  "OAI.Geometry.PlaneColoring.NullSetRobust",
+  "OAI.Geometry.PlaneColoring.Transfer",
+  "OAI.MeasureTheory.CompactFactors.AlgebraModels",
+  "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+  "OAI.MeasureTheory.CompactFactors.Factors",
+  "OAI.MeasureTheory.CompactFactors.Functions",
+  "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+  "OAI.MeasureTheory.CompactFactors.Separability",
+  "OAI.MeasureTheory.CompactFactors.Stationary"
+ ],
+ "reverse_closure_size": 17
+}

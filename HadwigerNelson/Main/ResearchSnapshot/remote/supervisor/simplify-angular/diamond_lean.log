@@ -1,0 +1,17 @@
+rc_diamond=0
+Check.lean:1:0: error: unknown module prefix 'Diamond'
+
+No directory 'Diamond' or file 'Diamond.olean' in the search path entries:
+/opt/mathlib/.lake/packages/Cli/.lake/build/lib/lean
+/opt/mathlib/.lake/packages/batteries/.lake/build/lib/lean
+/opt/mathlib/.lake/packages/Qq/.lake/build/lib/lean
+/opt/mathlib/.lake/packages/aesop/.lake/build/lib/lean
+/opt/mathlib/.lake/packages/proofwidgets/.lake/build/lib/lean
+/opt/mathlib/.lake/packages/importGraph/.lake/build/lib/lean
+/opt/mathlib/.lake/packages/LeanSearchClient/.lake/build/lib/lean
+/opt/mathlib/.lake/packages/plausible/.lake/build/lib/lean
+/opt/mathlib/.lake/packages/mathlib/.lake/build/lib/lean
+/opt/mathlib/.lake/build/lib/lean
+/opt/cslib/.lake/build/lib/lean
+/opt/lean/lib/lean
+/opt/lean/lib/lean

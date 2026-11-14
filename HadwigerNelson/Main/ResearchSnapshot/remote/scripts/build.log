@@ -1,0 +1,199 @@
+FAIL OAI.Analysis.PlaneSpectrum.Basic [4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:408:4: error: unsolved goals
+case e'_6
+z : ℂ
+hi : IsAlgebraic ℚ Complex.I
+hhalf : IsAlgebraic ℚ 2⁻¹
+hz : IsAlgebraic ℚ z
+hc : IsAlgebraic ℚ ((starRingEnd ℂ) z)
+h : IsAlgebraic ℚ ((z + (starRingEnd ℂ) z) * 2⁻¹)
+⊢ (algebraMap ℝ ℂ) z.re = (z + (starRingEnd ℂ) z) * 2⁻¹
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:413:4: error: unsolved goals
+case e'_6
+z : ℂ
+hi : IsAlgebraic ℚ Complex.I
+hhalf : IsAlgebraic ℚ 2⁻¹
+hz : IsAlgebraic ℚ z
+hc : IsAlgebraic ℚ ((starRingEnd ℂ) z)
+h : IsAlgebraic ℚ ((z - (starRingEnd ℂ) z) * 2⁻¹ * Complex.I⁻¹)
+⊢ (algebraMap ℝ ℂ) z.im = (z - (starRingEnd ℂ) z) * 2⁻¹ * Complex.I⁻¹
+
+SKIP OAI.Analysis.PlaneSpectrum.Characters (deps ['OAI.Analysis.PlaneSpectrum.Basic'])
+FAIL OAI.Analysis.PlaneSpectrum.Fourier [5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:12:36: error(lean.invalidField): Invalid field `fun_mul`: The environment does not contain `And.fun_mul`, so it is not possible to project the field `fun_mul` from an expression
+  memLp_top_of_bound hf C hbound
+of type
+  AEStronglyMeasurable f μ ∧ eLpNorm f ⊤ μ < ⊤
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:14:69: error: Type mismatch
+  MemLp.coeFn_toLp ?m.46
+has type
+  ↑↑(MemLp.toLp ?m.45 ?m.46) =ᵐ[?m.43] ?m.45
+but is expected to have type
+  ↑↑(apply μ f hf hbound g) =ᵐ[μ] fun x => f x * ↑↑g x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:60:102: error(lean.invalidField): Invalid field `antilipschitzWith`: The environment does not contain `Function.antilipschitzWith`, so it is not possible to project the field `antilipschitzWith` from an expression
+  isometry_add_right h
+of type
+  ∀ (x1 x2 : ℂ), edist ((fun x => x + h) x1) ((fun x => x + h) x2) = edist x1 x2
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:61:0: error: Not a definitional equality: the left-hand side
+  ((schwartzTranslate h) f) x
+is not definitionally equal to the right-hand side
+  f (x + h)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/
+OK   OAI.Geometry.PlaneColoring.Coloring (cached)
+SKIP OAI.Analysis.PlaneSpectrum.CircleDecay (deps ['OAI.Analysis.PlaneSpectrum.Fourier'])
+OK   OAI.Geometry.PlaneColoring.WeakColoring (cached)
+FAIL OAI.Geometry.PlaneColoring.Compactness [4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/Compactness.lean:224:8: error: Function expected at
+  eLpNorm_one_eq_lintegral_enorm
+but this term has type
+  eLpNorm ?m.306 1 ?m.305 = ∫⁻ (x : ?m.301), ‖?m.306 x‖ₑ ∂?m.305
+
+Note: Expected a function because this term is being applied to the argument
+  (hv.sub hgi).aestronglyMeasurable
+
+SKIP OAI.Analysis.PlaneSpectrum.CircleOperator (deps ['OAI.Analysis.PlaneSpectrum.CircleDecay', 'OAI.Geometry.PlaneColoring.Compactness'])
+OK   OAI.Analysis.PlaneSpectrum.InvariantMean (cached)
+SKIP OAI.Analysis.PlaneSpectrum.Multipliers (deps ['OAI.Analysis.PlaneSpectrum.Characters'])
+SKIP OAI.Analysis.PlaneSpectrum.FourierTests (deps ['OAI.Analysis.PlaneSpectrum.Multipliers'])
+FAIL OAI.Analysis.PlaneSpectrum.SmallArcs [3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/SmallArcs.lean:160:57: error(lean.unknownIdentifier): Unknown identifier `ite_eq_left`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/SmallArcs.lean:159:46: error: unsolved goals
+X : Type u_1
+inst✝¹ : MeasurableSpace X
+μ : Measure X
+inst✝ : IsProbabilityMeasure μ
+z : X → ℂ
+hz : Measurable z
+hu : ∀ (x : X), ‖z x‖ = 1
+N : ℕ
+c : ℝ
+hc : 0 ≤ c
+hm : ∀ (n : ℕ), 0 < n → n < N → ‖∫ (x : X), z x ^ n ∂μ‖ ≤ c
+i : ℕ
+hi : i ∈ Finset.range N
+⊢ (if i ∈ Finset.range N then 1 else 0) + ∑ x ∈ Finset.range N, c = ?m.285 i
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/SmallArcs.lean:161:8: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/SmallArcs.lean:266:6: error: Function expected at
+  compProd_map_condDistrib (Measurable.aemeasurable hp)
+but this term has type
+  Measure.map ?m.204 ?m.212 ⊗ₘ condDistrib p ?m.204 ?m.212 = Measure.map (fun a => (?m.204 a, p a)) ?m.212
+
+Note: Expected a function because this term is being applied to the argument
+  hb.aemeasurable
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/SmallArcs.lean:261:50: error: unsolved goals
+X : Type u_1
+Y : Type u_2
+G : Type u_3
+inst✝⁶ : MeasurableSpace X
+inst✝⁵ : Measurabl
+FAIL OAI.Analysis.PlaneSpectrum.PhaseEncoding [2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean:118:15: error(lean.unknownIdentifier): Unknown constant `Finset.prod_le_prod₀`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean:210:8: error(lean.unknownIdentifier): Unknown constant `Measurable.of_eval`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean:211:8: error: No goals to be solved
+
+SKIP OAI.Analysis.PlaneSpectrum.PhaseCollision (deps ['OAI.Analysis.PlaneSpectrum.PhaseEncoding'])
+SKIP OAI.MeasureTheory.CompactFactors.ConditionalSelection (deps ['OAI.Analysis.PlaneSpectrum.PhaseCollision'])
+SKIP OAI.Analysis.PlaneSpectrum.ConditionalSpectrum (deps ['OAI.Analysis.PlaneSpectrum.FourierTests', 'OAI.Analysis.PlaneSpectrum.SmallArcs', 'OAI.MeasureTheory.CompactFactors.ConditionalSelection'])
+FAIL OAI.MeasureTheory.CompactFactors.Amenability [3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:385:8: error(lean.unknownIdentifier): Unknown identifier `eventuallyEmptyOrUniv_iff.mp`
+
+FAIL OAI.MeasureTheory.CompactFactors.Centers [3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:350:18: error: Application type mismatch: The argument
+  fun point => point + v
+has type
+  ℂ → ℂ
+of sort `Type` but is expected to have type
+  AEMeasurable ?m.6 ↑μ
+of sort `Prop` in the application
+  μ.map fun point => point + v
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:371:18: error: Application type mismatch: The argument
+  O
+has type
+  ℂ ≃ₗᵢ[ℝ] ℂ
+of sort `Type` but is expected to have type
+  AEMeasurable ?m.18 ↑μ
+of sort `Prop` in the application
+  μ.map O
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:501:6: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsProbabilityMeasure (Measure.map (fun d => e.coordinate (d / z)) (↑μ)[|e.coset z])
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:510:4: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:508:10: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Mea
+SKIP OAI.MeasureTheory.CompactFactors.RelativeCenters (deps ['OAI.Analysis.PlaneSpectrum.Basic', 'OAI.MeasureTheory.CompactFactors.Centers'])
+SKIP OAI.MeasureTheory.CompactFactors.Approximation (deps ['OAI.Analysis.PlaneSpectrum.ConditionalSpectrum', 'OAI.MeasureTheory.CompactFactors.RelativeCenters'])
+SKIP OAI.MeasureTheory.CompactFactors.ConditionalLimits (deps ['OAI.MeasureTheory.CompactFactors.Approximation'])
+SKIP OAI.MeasureTheory.CompactFactors.Kernels (deps ['OAI.MeasureTheory.CompactFactors.ConditionalLimits'])
+SKIP OAI.MeasureTheory.CompactFactors.BoundedFunctions (deps ['OAI.MeasureTheory.CompactFactors.Kernels'])
+SKIP OAI.MeasureTheory.CompactFactors.RelativeProducts (deps ['OAI.MeasureTheory.CompactFactors.Amenability', 'OAI.MeasureTheory.CompactFactors.BoundedFunctions'])
+SKIP OAI.MeasureTheory.CompactFactors.Separability (deps ['OAI.MeasureTheory.CompactFactors.RelativeProducts'])
+SKIP OAI.MeasureTheory.CompactFactors.AlgebraModels (deps ['OAI.MeasureTheory.CompactFactors.Separability'])
+SKIP OAI.MeasureTheory.CompactFactors.Functions (deps ['OAI.MeasureTheory.CompactFactors.Kernels'])
+SKIP OAI.MeasureTheory.CompactFactors.Factors (deps ['OAI.MeasureTheory.CompactFactors.Functions'])
+SKIP OAI.MeasureTheory.CompactFactors.Stationary (deps ['OAI.MeasureTheory.CompactFactors.Factors'])
+SKIP OAI.Analysis.PlaneSpectrum.Representations (deps ['OAI.MeasureTheory.CompactFactors.AlgebraModels', 'OAI.MeasureTheory.CompactFactors.Stationary'])
+SKIP OAI.Analysis.PlaneSpectrum.Energy (deps ['OAI.Analysis.PlaneSpectrum.Representations'])
+OK   OAI.Analysis.PlaneSpectrum.NumberFields (cached)
+OK   OAI.Analysis.PlaneSpectrum.Selections (cached)
+SKIP OAI.Analysis.PlaneSpectrum.RadialEnergy (deps ['OAI.Analysis.PlaneSpectrum.Energy'])
+SKIP OAI.Analysis.PlaneSpectrum.SpectralMeasure (deps ['OAI.Analysis.PlaneSpectrum.Representations'])
+SKIP OAI.Analysis.PlaneSpectrum.Ergodicity (deps ['OAI.Analysis.PlaneSpectrum.RadialEnergy', 'OAI.Analysis.PlaneSpectrum.SpectralMeasure'])
+FAIL OAI.Geometry.PlaneColoring.Expansion [3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/Expansion.lean:489:89: error(lean.invalidField): Invalid field `antilipschitzWith`: The environment does not contain `Function.antilipschitzWith`, so it is not possible to project the field `antilipschitzWith` from an expression
+  isometry_subtype_coe
+of type
+  ∀ (x1 x2 : { x // x ∈ univ }), edist ↑x1 ↑x2 = edist x1 x2
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/Expansion.lean:487:84: error: unsolved goals
+f D : ℝ → ℝ
+hd : ∀ (x : ℝ), HasDerivAt f (D x) x
+hp : ∀ (x : ℝ), 1 / 2 ≤ D x
+⊢ Measure.QuasiMeasurePreserving f volume volume
+
+SKIP OAI.Geometry.PlaneColoring.BinaryDynamics (deps ['OAI.Geometry.PlaneColoring.Expansion'])
+OK   OAI.Geometry.PlaneColoring.CircleMaps (cached)
+SKIP OAI.Geometry.PlaneColoring.CircleTransport (deps ['OAI.Geometry.PlaneColoring.BinaryDynamics'])
+SKIP OAI.Geometry.PlaneColoring.Transitions (deps ['OAI.Analysis.PlaneSpectrum.CircleOperator'])
+SKIP OAI.Geometry.PlaneColoring.Palettes (deps ['OAI.Geometry.PlaneColoring.Transitions'])
+SKIP OAI.Geometry.PlaneColoring.PaletteDensity (deps ['OAI.Geometry.PlaneColoring.CircleTransport', 'OAI.Geometry.PlaneColoring.Palettes'])
+SKIP OAI.Geometry.PlaneColoring.PaletteTransport (deps ['OAI.Geometry.PlaneColoring.PaletteDensity'])
+SKIP OAI.Geometry.PlaneColoring.Rigidity (deps ['OAI.Geometry.PlaneColoring.PaletteTransport'])
+SKIP OAI.Geometry.PlaneColoring.BinaryPalettes (deps ['OAI.Geometry.PlaneColoring.PaletteTransport'])
+SKIP OAI.Geometry.PlaneColoring.States (deps ['OAI.Geometry.PlaneColoring.BinaryPalettes'])
+SKIP OAI.Geometry.PlaneColoring.BoundaryTrace (deps ['OAI.Geometry.PlaneColoring.Rigidity', 'OAI.Geometry.PlaneColoring.States'])
+SKIP OAI.Geometry.PlaneColoring.AngularBoundary (deps ['OAI.Geometry.PlaneColoring.BoundaryTrace'])
+SKIP OAI.Geometry.PlaneColoring.Exclusion (deps ['OAI.Geometry.PlaneColoring.AngularBoundary'])
+SKIP OAI.Geometry.PlaneColoring.FourContinuity (deps ['OAI.Geometry.PlaneColoring.States'])
+SKIP OAI.Geometry.PlaneColoring.FourTransport (deps ['OAI.Geometry.PlaneColoring.FourContinuity'])
+SKIP OAI.Geometry.PlaneColoring.Accumulation (deps ['OAI.Geometry.PlaneColoring.Exclusion', 'OAI.Geometry.PlaneColoring.FourTransport'])
+OK   OAI.Geometry.PlaneColoring.Assembly (cached)
+OK   OAI.Geometry.PlaneColoring.Basic (cached)
+SKIP OAI.Geometry.PlaneColoring.BorelTransfer (deps ['OAI.Analysis.PlaneSpectrum.Ergodicity'])
+SKIP OAI.Geometry.PlaneColoring.FiveSupport (deps ['OAI.Geometry.PlaneColoring.Accumulation'])
+SKIP OAI.Geometry.PlaneColoring.CyclicCore (deps ['OAI.Geometry.PlaneColoring.FiveSupport'])
+SKIP OAI.Geometry.PlaneColoring.DiskAverages (deps ['OAI.Geometry.PlaneColoring.Accumulation'])
+SKIP OAI.Geometry.PlaneColoring.PlanarCovers (deps ['OAI.Geometry.PlaneColoring.DiskAverages'])
+SKIP OAI.Geometry.PlaneColoring.GraphRealization (deps ['OAI.Geometry.PlaneColoring.CyclicCore', 'OAI.Geometry.PlaneColoring.PlanarCovers'])
+SKIP OAI.Geometry.PlaneColoring.Interfaces (deps ['OAI.Geometry.PlaneColoring.AngularBoundary'])
+OK   OAI.Geometry.PlaneColoring.Moser [11s]
+SKIP OAI.Geometry.PlaneColoring.Sectors (deps ['OAI.Geometry.PlaneColoring.AngularBoundary'])
+SKIP OAI.Geometry.PlaneColoring.ContinuumLimits (deps ['OAI.Geometry.PlaneColoring.GraphRealization', 'OAI.Geometry.PlaneColoring.Interfaces', 'OAI.Geometry.PlaneColoring.Sectors'])
+OK   OAI.Geometry.PlaneColoring.Covering [3s]
+SKIP OAI.Geometry.PlaneColoring.DiskExtension (deps ['OAI.Geometry.PlaneColoring.GraphRealization'])
+SKIP OAI.Geometry.PlaneColoring.GraphCuts (deps ['OAI.Geometry.PlaneColoring.DiskExtension'])
+SKIP OAI.Geometry.PlaneColoring.HoleApproximation (deps ['OAI.Geometry.PlaneColoring.DiskExtension'])
+SKIP OAI.Geometry.PlaneColoring.GraphPatches (deps ['OAI.Geometry.PlaneColoring.GraphCuts', 'OAI.Geometry.PlaneColoring.HoleApproximation'])
+SKIP OAI.Geometry.PlaneColoring.FullApproximation (deps ['OAI.Geometry.PlaneColoring.ContinuumLimits', 'OAI.Geometry.PlaneColoring.GraphPatches'])
+SKIP OAI.Geometry.PlaneColoring.Mesh (deps ['OAI.Geometry.PlaneColoring.FullApproximation'])
+SKIP OAI.Geometry.PlaneColoring.Five (deps ['OAI.Geometry.PlaneColoring.BorelTransfer', 'OAI.Geometry.PlaneColoring.Mesh'])
+OK   OAI.Geometry.PlaneColoring.Lattice [2s]
+OK   OAI.Geometry.PlaneColoring.MeasurableAssembly [2s]
+FAIL OAI.Geometry.PlaneColoring.MeasurableProper [2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/MeasurableProper.lean:30:2: error: failed to synthesize
+  IsProbabilityMeasure (Measure.map circleDir normalizedAngleMeasure)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+
+OK   OAI.Geometry.PlaneColoring.Metric [3s]
+SKIP OAI.Geometry.PlaneColoring.Seven (deps ['OAI.Geometry.PlaneColoring.MeasurableProper'])
+done

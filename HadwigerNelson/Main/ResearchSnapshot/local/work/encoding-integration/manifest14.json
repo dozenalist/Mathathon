@@ -1,0 +1,104 @@
+{
+  "lean": "4.34.1",
+  "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "modules": [
+    {
+      "order": 1,
+      "module": "OAI.Analysis.PlaneSpectrum.Basic",
+      "path": "lean/OAI/Analysis/PlaneSpectrum/Basic.lean",
+      "lines": 735,
+      "sha256": "6db8eef0290bb1962405e338d049d19a1a77ff9e58a50251ca0aa6835c2b3d16"
+    },
+    {
+      "order": 2,
+      "module": "OAI.Analysis.PlaneSpectrum.Characters",
+      "path": "lean/OAI/Analysis/PlaneSpectrum/Characters.lean",
+      "lines": 560,
+      "sha256": "3879bd9d07340af833a1350db7add3ab03d856af920410ce7bb9c24dc17d5f07"
+    },
+    {
+      "order": 3,
+      "module": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+      "path": "lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean",
+      "lines": 1078,
+      "sha256": "33798cddc6dc5be9c3f2c963d393da2b4b5274f45f0f255dcb9b36c565f4b84b"
+    },
+    {
+      "order": 4,
+      "module": "OAI.Analysis.PlaneSpectrum.Multipliers",
+      "path": "lean/OAI/Analysis/PlaneSpectrum/Multipliers.lean",
+      "lines": 314,
+      "sha256": "6bc285bc0da10d8ed7875b03f8ca49a6d2c8fa19a4597b1bb09b01018bf8c092"
+    },
+    {
+      "order": 5,
+      "module": "OAI.Analysis.PlaneSpectrum.FourierTests",
+      "path": "lean/OAI/Analysis/PlaneSpectrum/FourierTests.lean",
+      "lines": 295,
+      "sha256": "f3625fb3399e28a5db3f531b7d2ac602988a8656fb28e6dd0747167a4be1393c"
+    },
+    {
+      "order": 6,
+      "module": "OAI.Analysis.PlaneSpectrum.SmallArcs",
+      "path": "lean/OAI/Analysis/PlaneSpectrum/SmallArcs.lean",
+      "lines": 322,
+      "sha256": "9c317fcfa15cf19a00aef927007704e78cf33269bb82d45065cb8a95160fe690"
+    },
+    {
+      "order": 7,
+      "module": "OAI.Analysis.PlaneSpectrum.PhaseEncoding",
+      "path": "lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean",
+      "lines": 255,
+      "sha256": "e941182ef95925e8472e94f79b1cc8adce7ee289f626d87f06d6d8092270ec54"
+    },
+    {
+      "order": 8,
+      "module": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+      "path": "lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean",
+      "lines": 537,
+      "sha256": "10d6acf8d99c8209f225e9b35d1cbb4e4ab0738840b481bf7f72739534bb2627"
+    },
+    {
+      "order": 9,
+      "module": "OAI.MeasureTheory.CompactFactors.ConditionalSelection",
+      "path": "lean/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean",
+      "lines": 442,
+      "sha256": "2f19feac00b8ec75d265e04707bdda09aecb6bfb44965d34646f568743ca8e66"
+    },
+    {
+      "order": 10,
+      "module": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+      "path": "lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean",
+      "lines": 497,
+      "sha256": "6602b9d8f20bbdfd447f2f3fcfa523f2c33d09c247e3d2983be7503df9f2dc9b"
+    },
+    {
+      "order": 11,
+      "module": "OAI.MeasureTheory.CompactFactors.Centers",
+      "path": "lean/OAI/MeasureTheory/CompactFactors/Centers.lean",
+      "lines": 703,
+      "sha256": "de094ea004737839cae2ce4829db40c78a2f1da8031459188ad5c271a7d98634"
+    },
+    {
+      "order": 12,
+      "module": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+      "path": "lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean",
+      "lines": 598,
+      "sha256": "cae5e5e4cca54436788e66ea37b0a8818ef1156d8ccbbcb443bf7884169f7577"
+    },
+    {
+      "order": 13,
+      "module": "OAI.MeasureTheory.CompactFactors.Approximation",
+      "path": "lean/OAI/MeasureTheory/CompactFactors/Approximation.lean",
+      "lines": 496,
+      "sha256": "f6adcc691c345ddbe4fad40746f2e0da11be96b961c528f49af01e9ea8e5c30d"
+    },
+    {
+      "order": 14,
+      "module": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+      "path": "lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean",
+      "lines": 701,
+      "sha256": "ca74ba1033fead55133670218739a36b4c75173d9b04d765affd19da9d215cc0"
+    }
+  ]
+}

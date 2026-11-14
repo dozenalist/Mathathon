@@ -1,0 +1,51 @@
+==============================================================================
+1.  FIVE-CYCLE SIGNS (Section 8.2)
+==============================================================================
+  sign patterns: 32.
+  (a) '[I, O both nonempty]  <=>  [one + run, one - run, lengths 2 and 3]': OK   (10 patterns qualify)
+  (b) options(sigma) = options(-sigma) for every qualifying pattern: OK
+  (c) every option is a diagonal D_x = {x, x+2}: OK
+  (d) run shapes of qualifying patterns: [((-1, 2), (1, 3)), ((-1, 3), (1, 2))]   (lengths 2 and 3, as the paper says)
+  (e) index differences inside an option set: [2, 3]  (i.e. +/-2 mod 5)
+
+==============================================================================
+2.  FIVE-CYCLE SIX-POSITION WORD (Section 8.2, final step)
+==============================================================================
+  steps p_{j+1}-p_j = +-1 (5.7, disjointness),
+  antipodal p_{j+3}-p_j in {0,+-2} (identical option sets at e and -e).
+  solutions among all 5^6 = 15625 words: 0 OK
+  the excluded configurations are exactly the 'sum of three steps' one:
+    possible sums of three steps in {-1,+1}: [-3, -1, 1, 3] ; mod 5: [1, 2, 3, 4]
+    none is 0 mod 5; +-2 mod 5 forces sum +-3, i.e. all three signs equal: True
+
+==============================================================================
+3.  FOUR-CYCLE SIX-POSITION WORDS (Lemmas 8.3, 8.4, Prop. 8.5)
+==============================================================================
+  pointwise-legal words (adjacency inequality + antipodal equality): 34
+  (a) every such word contains X: OK
+  (b) words with X on BOTH parities: 6 -> [('X', 'U', 'V', 'X', 'U', 'V'), ('X', 'V', 'U', 'X', 'V', 'U'), ('U', 'X', 'V', 'U', 'X', 'V'), ('U', 'V', 'X', 'U', 'V', 'X'), ('V', 'X', 'U', 'V', 'X', 'U'), ('V', 'U', 'X', 'V', 'U', 'X')]
+      each is 3-periodic of the form (X,A,B,X,A,B) with A != B: OK
+  (c) cross-word restriction: a diagonal at a position of w cannot equal a
+      diagonal at an ADJACENT position of a compatible nearby word w'.
+      every compatible nearby word equals it (isolation): OK 
+  (d) a 3-periodic word (X,A,B,X,A,B) is not equal to its 1-position shift:
+       OK
+  (e) Prop 8.5 arc count: 3 points equally spaced by pi/3 on a circle of
+      circumference pi; an open arc containing all three has length > 2pi/3 > pi/2.
+      complements: the 3 gaps each have length pi/3, so the closed complementary
+      arc lies in one gap and has length < pi/3;  pi - pi/3 = 2pi/3 > pi/2 : OK
+
+==============================================================================
+4.  FIVE-CYCLE ACCUMULATION (Section 6.3.4)
+==============================================================================
+  j with {j-1, j+2} disjoint from {2,4}: [1, 4] OK
+    j=1: adjacent pairs at a and -a are {0,1} and [0, 3]
+        -> the two steps from state 1 are banned;
+    j=4: adjacent pairs at a and -a are {0,1} and [1, 3]
+        -> the two steps from state 0 are banned;
+  conclusion: the shared state is null, contradicting its membership in S(0).
+  Verified by the five-residue check above.
+
+==============================================================================
+ALL CHECKS PASSED
+==============================================================================

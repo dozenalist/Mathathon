@@ -1,0 +1,78 @@
+{
+  "updated_utc": "2026-11-14T11:28:00Z",
+  "status": "completed_block",
+  "summary": "Block 15, source-only. Repaired the four reported BinderAudit defects and four further comparator defects into a self-contained supplementary packet. Lean side v2 now imports both OAI modules (targets no longer absent), builds names at runtime from strings so a miss reaches MISSING instead of aborting at parse time, replaces the non-existent ci.ctorName with an explicit match over ConstantInfo, wraps each target in try/catch, and flattens every type to one line. Comparator now checks definitions as well as theorems, rejects unknown extra instances and missing required ones, fails closed on absent declarations and ERROR lines, separates strictImplicit from explicit, verifies the type binders and the exact explicit sequence and a total binder count of 31, and honours per-declaration forbidden lists -- a real bug found while testing (the definitions legitimately retain the two Y instances). Exercised only on SYNTHETIC captures: faithful -> fails=0; forbidden plus PolishSpace Y -> flagged and FAIL; MISSING and ERROR -> fail closed. That validates the comparator, not the tree. Accepted evidence unchanged: textual hypotheses + defeq + compatibility (R5). Binder identity not claimed. No new bound.",
+  "verified_results": [
+    "GRADE [C] BinderAudit.lean v2 is self-contained: it imports OAI.Analysis.PlaneSpectrum.ConditionalSpectrum and OAI.MeasureTheory.CompactFactors.ConditionalLimits, so the six targets are resolvable; the block-14 version imported only Lean and would have printed MISSING for all of them.",
+    "GRADE [C] Robust target naming: names are built at runtime by mkName from plain strings; there are no double-backtick quotations, so a wrong or absent name reaches the find? none branch and prints MISSING instead of aborting the file during elaboration.",
+    "GRADE [C] ci.ctorName removed: kindOf matches all eight ConstantInfo constructors explicitly. Each target is wrapped in try/catch, printing ERROR <fqn> <message> and continuing, so one failure cannot suppress the others.",
+    "GRADE [C] Every printed type is flattened to one line, so a multi-line pretty-print cannot split a binder across records.",
+    "GRADE [C] Comparator checks all five declarations (2 theorems + 3 definitions), verifies each instance binder's normalised type against instance_allowed, rejects any unseen instance as UNKNOWN EXTRA INSTANCE, requires every allowed instance present, fails closed on an absent declaration or an ERROR line, counts strictImplicit separately and fails on it, pins the implicit Type binders to X,Y,W (plus Z for EncodingApproximationAt, a value binder of type Type), pins the 20-name explicit sequence, and asserts expected_total_binders = 31 for both theorems.",
+    "GRADE [C] Real bug found and fixed while testing v2: the first version applied the theorems' forbidden-instance list to the definitions, which legitimately retain StandardBorelSpace Y and Nonempty Y. instance_forbidden is now read per declaration.",
+    "GRADE [C] COMPARATOR EXERCISED ON SYNTHETIC CAPTURES ONLY: a faithful 31-binder capture of both theorems and all three definitions gives SUMMARY fails=0; a capture carrying StandardBorelSpace Y, Nonempty Y and PolishSpace Y is flagged inline as FORBIDDEN x2 and UNKNOWN INSTANCE with FAILs on explicit sequence and total count; MISSING and ERROR lines both yield ABSENT from capture (fail closed) with a non-zero exit. This is evidence about the comparator, not about the R4 tree.",
+    "GRADE [S] Supervisor-reported, not re-run here: R4 full 82-module build and 9 exported-root axiom checks PASS; the R5 packets repair both SignatureEquivalence calls ('baseline_*_iff ... |>.mp happrox' replaced by happrox directly, exploiting defeq and removing the helper-captured Y instances), print both iff axioms, and FreshR5 adds 'open PlaneFiveColor.Spectral' for D/IsWild, giving 4+4 standard axiom prints with no sorry.",
+    "GRADE [C] RETAINED from block 14: the Baseline definitions are character-identical to the frozen originals after renaming, and both public theorem headers are identical after whitespace normalisation.",
+    "GRADE [R] Accepted evidence unchanged and explicitly bounded: preserved textual hypotheses + defeq + application compatibility. Exact binder identity is NOT claimed by the integration; this packet is supplementary inspection.",
+    "GRADE [R] Scope unchanged: certifying the supplied OpenAI proof gives chi(R^2) >= 6 as already stated, no new plane bound; chi(R^2) in {6,7} remains open."
+  ],
+  "conjectures": [
+    "A real BinderAudit capture will most likely total 31 binders for each theorem with no forbidden instance; if it totals more, the extra binder is either an instance the sources do not show or an argument unrelated to the omit question, and the comparator will say which.",
+    "The four flagged Lean-side uncertainties (liftTermElabM, forallTelescopeReducing context, toString on MessageData, flat collapsing) are compile-level, so a failure there costs one edit, not a wrong audit.",
+    "A FAIL from this instrument should not be read as a defect without checking whether Lean discharged a binder by unification; the check is deliberately fail-closed, so it over-reports rather than under-reports."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/REVIEW-instrument-v2.md  <-- defect table, comparator repairs, what was exercised, residual uncertainty, limitations. sha256 8fab4ccf912f4bfdbf4be1372f73202dec58c319ba205c859c6c22d8aa50e8b0",
+    "supervisor/simplify-lean/lean/BinderAudit.lean  <-- v2, 99 lines, both OAI imports, runtime names, match-based kindOf, per-target try/catch. sha256 648afda2bd84f73169d26d5e2ccd2886803d46df9ea599cf39d2ddf3a0a06049",
+    "supervisor/simplify-lean/binder_expected.json  <-- schema 2, exhaustive binder record for 2 theorems + 3 definitions. sha256 fb575764b0d145e7e95b926258d27bbe74669b869946af45c2e1c30cef6e9f88",
+    "supervisor/simplify-lean/binder_snapshot.py  <-- strict, fail-closed comparator. sha256 977878b409010c8182f428b66aadf5b2d4838d0f4556b5488795ceb5abc7ebc5",
+    "supervisor/simplify-lean/.scratch/synth_ok.txt  <-- SYNTHETIC faithful capture used to exercise the comparator (not tree evidence). sha256 ee41b3382ba04b6beff327688fb2583a80903e0e0171bae10250908884a6d05d",
+    "supervisor/simplify-lean/.scratch/synth_bad.txt  <-- SYNTHETIC negative capture (forbidden, unknown instance, MISSING, ERROR). sha256 f13d7832568b96455d02e74752fac07171a342f1085428c30f28859195b25aed",
+    "supervisor/simplify-lean/REVIEW-baseline-and-fresh.md, STATEMENT-AUDIT.md, lean/SignatureEquivalence.lean, lean/SignatureCheckFresh.lean, lean/AxiomRoots.lean, axiom_gate.py (retained)",
+    "supervisor/simplify-lean/recon/ConditionalLimits.R4-recon.lean (R4 reconstruction, sha 24f89dd3...), snapshots/integ-d26d569088faea89/, BUILD-PLAN.json, MANIFEST-full.json"
+  ],
+  "tests_run": [
+    "python ast.parse on binder_snapshot.py -> parses.",
+    "python3 binder_snapshot.py on the SYNTHETIC faithful capture -> SUMMARY fails=0 across 5 declarations.",
+    "python3 binder_snapshot.py on the SYNTHETIC negative capture -> FORBIDDEN x2 and UNKNOWN INSTANCE flagged inline, explicit-sequence and total-count FAILs, ABSENT-from-capture for the MISSING and ERROR targets, non-zero exit.",
+    "json.load on binder_expected.json (schema 2) -> valid; 2 theorems, 3 definitions.",
+    "sha256 over every deliverable, recorded above.",
+    "NO Lean, no cloud build, no git, no writes outside supervisor/simplify-lean (per instruction)."
+  ],
+  "failed_routes": [
+    "The comparator cannot be validated against the real tree from here: that needs a real BinderAudit capture, which needs a Lean run. Treating the synthetic PASS as if it were a capture would be exactly the overclaim the supervisor warned against.",
+    "BinderAudit v2 remains uncompiled; four specific compile-level uncertainties are listed in REVIEW-instrument-v2.md section 4. A failure there is an edit in a 99-line file, not a wrong audit.",
+    "The instrument cannot certify that a binder is used as the original used it; it reports the declaration's telescope only. Statement preservation stays with the textual + defeq evidence."
+  ],
+  "next_step": "Next step when a queue slot is free: compile lean/BinderAudit.lean against the R4 oleans, save the capture, and run python3 binder_snapshot.py <capture>. Read it as supplementary: fails=0 means no forbidden or unknown instance and an exact explicit sequence; any FAIL must first be checked against whether Lean discharged a binder by unification before being called a defect. Do not reopen the accepted R5 evidence on the strength of this instrument in either direction.",
+  "owned_agents": [
+    {
+      "swarm": "smwfy8rae",
+      "members": 3,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "state": "stopped",
+      "accepted": 0,
+      "note": "stopped in block 1; no new chats, swarms or nested agents this block (per instruction)."
+    }
+  ],
+  "escalation": null,
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "review": "supervisor/simplify-lean/REVIEW-instrument-v2.md",
+    "instrument": [
+      "supervisor/simplify-lean/lean/BinderAudit.lean",
+      "supervisor/simplify-lean/binder_expected.json",
+      "supervisor/simplify-lean/binder_snapshot.py"
+    ],
+    "synthetic_fixtures": [
+      "supervisor/simplify-lean/.scratch/synth_ok.txt",
+      "supervisor/simplify-lean/.scratch/synth_bad.txt"
+    ],
+    "accepted_evidence_unchanged": [
+      "supervisor/simplify-lean/lean/SignatureEquivalence.lean (R5)",
+      "supervisor/simplify-lean/lean/SignatureCheckFresh.lean (R5)"
+    ],
+    "scope_of_this_packet": "supplementary binder inspection only; exact binder identity not claimed; synthetic PASS is not tree evidence",
+    "claim_status": "6 <= chi(R^2) <= 7 as before; certifying the supplied proof creates no new bound",
+    "next_verification_step": "compile BinderAudit.lean against R4 oleans, capture, run binder_snapshot.py; treat any FAIL first as a possible unification-dispatched binder, not a defect."
+  }
+}

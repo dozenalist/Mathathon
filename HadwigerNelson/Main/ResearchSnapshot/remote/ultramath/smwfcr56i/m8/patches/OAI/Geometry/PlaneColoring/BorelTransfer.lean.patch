@@ -1,0 +1,43 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean	2026-11-13 19:21:50.113550655 +0000
++++ OAI/Geometry/PlaneColoring/BorelTransfer.lean	2026-11-13 19:59:48.520943616 +0000
+@@ -282,6 +282,7 @@
+   have hs : Summable (fun n => ‖g n‖) := summable_geometric_two.of_nonneg_of_le (fun n => norm_nonneg _) (fun n => by simpa only [g,dist_eq_norm] using (index_bound μ f hf n t).le)
+   have ha : ∀ᵐ x ∂μ, Summable (fun n => ‖g n x‖) := by
+     apply summable_norm_of_tsum_eLpNorm_ne_top (by norm_num : (1:ℝ≥0∞) ≤ 2)
++      (f := fun n => (g n : X → ℂ)) (fun n => Lp.aestronglyMeasurable (g n))
+     simpa only [← Lp.enorm_def] using (tsum_enorm_ne_top_iff_summable_norm.mpr hs)
+   have he : ∀ᵐ x ∂μ, ∀ n, g n x = approxField μ f hf n (t,x)-f t x :=
+     ae_all_iff.mpr fun n => Lp.coeFn_sub _ _
+@@ -391,7 +392,7 @@
+     obtain ⟨i,hi⟩ := hex
+     exact ⟨i,Finset.mem_filter.mpr ⟨Finset.mem_univ _,hi⟩⟩
+   have hmem : positiveSelect f x ∈ positiveSupport f x := by
+-    simp only [positiveSelect,pickSupport,dite_eq_left hn]
++    simp only [positiveSelect,pickSupport,dif_pos hn]
+     exact hn.choose_spec
+   exact (Finset.mem_filter.mp hmem).2
+ end EuclideanFiveColor
+@@ -433,21 +434,14 @@
+ noncomputable section
+ open MeasureTheory
+ namespace EuclideanFiveColor
+-/-- The transfer uses the colouring only on the algebraic plane `E = algebraicClosure ℚ ℂ`:
+-a proper `k`-labelling of `E` already produces a measurable almost-everywhere proper
+-`k`-colouring of the whole plane. This is the form proved by the construction below. -/
+-lemma proper_to_borel_weak_algebraic {k : ℕ} [NeZero k]
+-    {c : PlaneFiveColor.Spectral.E → Fin k} (hc : PlaneFiveColor.LabelModel.Proper k c) :
++lemma proper_to_borel_weak {k : ℕ} [NeZero k] {c : ℂ → Fin k} (hc : ProperColoring k c) :
+     ∃ d : ℂ → Fin k, Measurable d ∧ WeakColoring k d := by
+-  let ω : PlaneFiveColor.LabelModel.Space k := ⟨c,hc⟩
++  let ω : PlaneFiveColor.LabelModel.Space k := ⟨fun x => c x,fun x y h => hc x y h⟩
+   obtain ⟨H,hm,hp,ho⟩ := PlaneFiveColor.LabelModel.exists_label_field k ω
+   obtain ⟨d,hd,hunit⟩ := sample_field (PlaneFiveColor.LabelModel.measure k ω) angularMeasure
+     direction direction_continuous.measurable
+     H hm hp (fun x t => ho x (AddCircle.toCircle t))
+   exact ⟨d,hd,hd.aemeasurable,hunit⟩
+-lemma proper_to_borel_weak {k : ℕ} [NeZero k] {c : ℂ → Fin k} (hc : ProperColoring k c) :
+-    ∃ d : ℂ → Fin k, Measurable d ∧ WeakColoring k d :=
+-  proper_to_borel_weak_algebraic (c := fun x => c x) fun x y h => hc x y h
+ lemma proper_to_weak {k : ℕ} [NeZero k] {c : ℂ → Fin k} (hc : ProperColoring k c) :
+     ∃ d : ℂ → Fin k, WeakColoring k d := by
+   obtain ⟨d,_,h⟩ := proper_to_borel_weak hc

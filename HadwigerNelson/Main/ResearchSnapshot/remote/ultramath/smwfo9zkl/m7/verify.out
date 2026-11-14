@@ -1,0 +1,210 @@
+
+==============================================================================
+A. Constants of the Lemma 6.4 mechanism (exact)
+==============================================================================
+gamma := 2 arcsin(1/(2 sqrt 3))
+  cos(gamma)      = cos(2*asin(sqrt(3)/6))    [paper: 5/6]  ok: True
+  sin(gamma)      = sin(2*asin(sqrt(3)/6))  = sqrt(11)/6 ? True
+  |1-exp(i gamma)|= sqrt(3)/3  = 1/sqrt3 ? True
+  triangle side   = 1  = 1 ? True
+  gamma/pi irrational: gamma/pi rational => exp(i gamma) a root of unity =>
+  2cos(gamma)=5/3 a rational algebraic integer => an integer: contradiction.
+  summands nonparallel: angular difference pi+gamma is not a multiple of pi.
+
+==============================================================================
+B. Admissible palettes at a centre whose Gamma_x contains a simple cycle
+==============================================================================
+  k=5 ell=3: |P|=  9  size distribution {1: 2, 2: 7}  singleton palettes (= outsider singletons) [[3], [4]]
+  k=5 ell=4: |P|=  7  size distribution {1: 1, 2: 6}  singleton palettes (= outsider singletons) [[4]]
+  k=5 ell=5: |P|=  5  size distribution {2: 5}  singleton palettes (= outsider singletons) []
+  k=6 ell=3: |P|= 35  size distribution {1: 3, 2: 12, 3: 20}  singleton palettes (= outsider singletons) [[3], [4], [5]]
+  k=6 ell=4: |P|= 33  size distribution {1: 2, 2: 11, 3: 20}  singleton palettes (= outsider singletons) [[4], [5]]
+  k=6 ell=5: |P|= 31  size distribution {1: 1, 2: 10, 3: 20}  singleton palettes (= outsider singletons) [[5]]
+  k=6 ell=6: |P|= 29  size distribution {2: 9, 3: 20}  singleton palettes (= outsider singletons) []
+  k=7 ell=3: |P|= 92  size distribution {1: 4, 2: 18, 3: 35, 4: 35}  singleton palettes (= outsider singletons) [[3], [4], [5], [6]]
+  k=7 ell=4: |P|= 90  size distribution {1: 3, 2: 17, 3: 35, 4: 35}  singleton palettes (= outsider singletons) [[4], [5], [6]]
+  k=7 ell=5: |P|= 88  size distribution {1: 2, 2: 16, 3: 35, 4: 35}  singleton palettes (= outsider singletons) [[5], [6]]
+  k=7 ell=6: |P|= 86  size distribution {1: 1, 2: 15, 3: 35, 4: 35}  singleton palettes (= outsider singletons) [[6]]
+  k=7 ell=7: |P|= 84  size distribution {2: 14, 3: 35, 4: 35}  singleton palettes (= outsider singletons) []
+
+==============================================================================
+C. The state-reduction threshold of section 6.3.1
+==============================================================================
+Four-cycle centre, cycle labels 0,1,2,3; state groups {X}, U={0,2}, V={1,3}.
+
+  k=5: palette bound |P| <= k-3 = 2; a palette carrying two state
+         groups needs |P| >= |{X} u U| = 3.
+         palettes carrying >=2 distinct groups: 0
+         => the palette determines the state: True   (equiv. 3 > k-3, i.e. k <= 5)
+
+  k=6: palette bound |P| <= k-3 = 3; a palette carrying two state
+         groups needs |P| >= |{X} u U| = 3.
+         palettes carrying >=2 distinct groups: 2
+             ([0, 2, 4], ['{X}', 'U'])
+             ([1, 3, 4], ['{X}', 'V'])
+         => the palette determines the state: False   (equiv. 3 > k-3, i.e. k <= 5)
+
+  k=7: palette bound |P| <= k-3 = 4; a palette carrying two state
+         groups needs |P| >= |{X} u U| = 3.
+         palettes carrying >=2 distinct groups: 11
+             ([0, 2, 4], ['{X}', 'U'])
+             ([1, 3, 4], ['{X}', 'V'])
+             ([0, 1, 2, 3], ['U', 'V'])
+             ([0, 1, 2, 4], ['{X}', 'U'])
+         => the palette determines the state: False   (equiv. 3 > k-3, i.e. k <= 5)
+
+==============================================================================
+D. The K_3 mechanism and the disjoint-palette pairs that escape it
+==============================================================================
+Mechanism (RESULT.md, Lemma 3): let G1,G2 be disjoint label groups occurring
+in the palette at the directions exp(i(t+2j kappa)) and exp(i(t+pi+gamma+2j kappa))
+for j=0,1,2, on a set of t of positive measure.  Then each of the three points
+z_j = x + exp(i(t+2j kappa)) + exp(i(t+pi+gamma+2j kappa)) has density one of the
+label set T = I \ (G1 u G2), and the z_j form a unit equilateral triangle.
+A proper colouring of that triangle needs 3 distinct labels, so |T| <= 2 is a
+contradiction.  Hence  |G1| + |G2| >= k-2  is impossible.
+At a centre where the palette map is 2-valued the angle condition is automatic
+(2 kappa preserves the value, pi = 3 kappa flips it), so a 2-valued palette map
+requires two DISJOINT palettes A,B with |A|+|B| <= k-3.
+
+  k=5 ell=3: disjoint palette pairs  13; escaping (|A|+|B| <= k-3 = 2): 1
+        [3] [4]  sum 2
+
+  k=5 ell=4: disjoint palette pairs   7; escaping (|A|+|B| <= k-3 = 2): 0
+        (none -> NO 2-valued palette map at this stratum)
+
+  k=5 ell=5: disjoint palette pairs   5; escaping (|A|+|B| <= k-3 = 2): 0
+        (none -> NO 2-valued palette map at this stratum)
+
+  k=6 ell=3: disjoint palette pairs 139; escaping (|A|+|B| <= k-3 = 3): 24
+
+  k=6 ell=4: disjoint palette pairs 110; escaping (|A|+|B| <= k-3 = 3): 13
+        [4] [5]  sum 2
+        [4] [0, 2]  sum 3
+        [4] [0, 5]  sum 3
+        [4] [1, 3]  sum 3
+        [4] [1, 5]  sum 3
+        [4] [2, 5]  sum 3
+        [4] [3, 5]  sum 3
+        [5] [0, 2]  sum 3
+        [5] [0, 4]  sum 3
+        [5] [1, 3]  sum 3
+        [5] [1, 4]  sum 3
+        [5] [2, 4]  sum 3
+        [5] [3, 4]  sum 3
+
+  k=6 ell=5: disjoint palette pairs  85; escaping (|A|+|B| <= k-3 = 3): 5
+        [5] [0, 2]  sum 3
+        [5] [0, 3]  sum 3
+        [5] [1, 3]  sum 3
+        [5] [1, 4]  sum 3
+        [5] [2, 4]  sum 3
+
+  k=6 ell=6: disjoint palette pairs  64; escaping (|A|+|B| <= k-3 = 3): 0
+        (none -> NO 2-valued palette map at this stratum)
+
+==============================================================================
+E. The k=6 pointwise model at a four-cycle centre (satisfiability certificate)
+==============================================================================
+  values: [4] (outsider singleton) [0, 2] (a diagonal)
+  palette bound           : True
+  (6.2) not inside an edge: True
+  (5.7) A cap B = empty   : True
+  (5.2) unions != I       : True
+  mechanism needs |A|+|B| >= k-2 = 4; here it is 3 -> silent: True
+  6-sector realisation (R advances the sector by one):
+    sectors 0,2,4 -> [4]  sectors 1,3,5 -> [0, 2]
+    P(e) cap P(Re) = empty on every sector: True
+  => the pointwise system of 6.3.1 at k=6 is SATISFIABLE (and has 2 values)
+  => is 2-valued: yes.  Hence no pointwise argument at a four-cycle centre
+     at k=6 can exclude 2-valued palette maps.
+
+==============================================================================
+F. An explicit proper measurable 6-colouring of a strip with four-cycle centres
+==============================================================================
+  cells [ia,(i+1)a) x [jb,(j+1)b), i in Z, j in {0,1}; colour (i mod 3, j)
+  a = 51/100, b = 43/50, strip width W = 2b = 43/25 = 1.720000
+  Same-colour pairs: x-diff in [3am-a,3am+a], y-diff in (-b,b).  By cases:
+   (the intervals are centred at 3am with half-width a, so they leave gaps:)
+    m = 0 : sup distance^2 = a^2+b^2      = 9997/10000  < 1   : True
+    m = 1 : inf |x-diff| = 2a             = 51/50   > 1   : True
+   |m|>=2 : inf |x-diff| >= 5a           = 51/20   > 1   : True
+  => no two same-coloured points are at distance exactly 1: the colouring is proper.
+  Redundant exact scan over 81x81 periods (interval bounding boxes):
+    same-colour cell pairs whose bounding box straddles the unit circle: 0
+  At a corner x=(ia,b) the four incident cells have colours
+    [(0, 0), (0, 1), (2, 0), (2, 1)]  (4 distinct)
+  At a corner x=(ia,b) the four incident cells have four distinct colours, so
+  the four interfaces through x carry the four edges of a 4-cycle (section G).
+
+==============================================================================
+G. Exact transition areas at a corner: the four edges of Gamma_x
+==============================================================================
+  At the corner x=(ia,b), put B = B(x,rho) with 0<rho<=min(a,b).
+  For h = (-t,0) with 0<t<<rho, the set {q : c(q)=(i,0), c(q+h)=(i-1,0)}
+  inside B is  [ia,ia+t) x [b-rho,b)  up to null sets, of area t*min(rho,b).
+  Hence  area(D_(i,0),(i-1,0)(B,h)) / |h| = min(rho,b) > 0  for every such h,
+  so the limsup in Definition 6.1 is positive: that edge is present.
+  The same computation in the other three quadrants gives the edges
+      ((i-1)%3,0)-((i,0)),   ((i,0),((i,1))),   (((i,1)),((i-1)%3,1)),
+      (((i-1)%3,1),((i-1)%3,0)),
+  i.e. exactly a 4-cycle on the four colours.  Non-adjacent colour pairs have
+  transition sets empty for all sufficiently small h (they meet only at x).
+  Off the corners Gamma_x is empty (cell interior) or a single edge (interface).
+  min(rho,b) for rho=b is 51/100 = 0.510000 > 0.
+  Hence L = {(ia,b) : i in Z}: nonempty, locally finite.
+
+  LIMIT.  A palette at x is built from traces on circles of radius ~1 about x,
+  so it needs the colouring on an annulus about x, hence on a set of width >= 2.
+  The construction has W = 2b = 1.72 < sqrt(3) < 2.  For the rectangular family
+  (p columns x q rows, p*q = 6, colour (i mod p, j mod q)) the four cases are:
+    p=1 q=6 and p=2 q=3 : the x-difference intervals [p*a*m-a, p*a*m+a] have
+      half-width a and consecutive centres at distance p*a; for p=1,2 they
+      overlap or touch, so 1 lies in one of them for EVERY (a,b) and the
+      colouring is improper.  No safe parameters exist.
+    p=6 q=1 : W = b < sqrt(1-a^2) subject to 5a > 1, so W < 0.98.
+    p=3 q=2 : m=1 gives [2a,4a]; safety requires 2a > 1 (then every |m|>=1 is
+      safe) or 4a < 1 together with 16a^2+b^2 < 1 (then W < 6/5).  The first
+      branch gives W = 2b < 2*sqrt(1-a^2) < sqrt(3), approached as a -> 1/2.
+  So the family caps at sqrt(3) = 1.732 < 2: this route cannot reach a unit circle.
+  More strongly: if EVERY strip were 6-colourable then every finite unit-distance
+  graph would be 6-colourable (it fits in a strip of its own diameter), so by
+  de Bruijn-Erdos chi(R^2) <= 6.  Deciding strip 6-colourability in general is
+  therefore equivalent to chi(R^2) <= 6: the counterexample route at k=6 is not
+  independent of the original problem.
+
+END of exact checks.
+
+==============================================================================
+H. The two-centre constraint at k=6: a Moser-spindle configuration of four-cycle centres
+==============================================================================
+Class: sector palette systems.  At each centre the palette map is constant on the six
+sectors [j*kappa,(j+1)*kappa) of its R-orbit, values from the 33 admissible palettes.
+Constraints at every centre: palette bound; (6.2) for the four cycle edges; (5.7)
+(consecutive sectors disjoint); (5.2) (no two values with union I); and the K_3 mechanism
+at the sector offsets 3 and 4 (a pair there that is disjoint must have |A|+|B| <= k-3).
+Between two centres at distance exactly 1: the palettes at the same sector are disjoint
+((5.3) with s = f, i.e. P_y(f) cap P_x(f) = empty).
+The class is a SUBCLASS of all palette systems, so a model here is a model of the
+constraint level itself.
+
+  centre : even-sector palette   odd-sector palette
+    0    : [4]                    [0, 2]
+    1    : [5]                    [1, 3]
+    2    : [0, 2]                    [4]
+    3    : [4]                    [5]
+    4    : [5]                    [0, 2]
+    5    : [0, 2]                    [4]
+    6    : [1, 3]                    [5]
+  centre 0: admissible, (6.2), (5.7), (5.2), mechanism : True
+  centre 1: admissible, (6.2), (5.7), (5.2), mechanism : True
+  centre 2: admissible, (6.2), (5.7), (5.2), mechanism : True
+  centre 3: admissible, (6.2), (5.7), (5.2), mechanism : True
+  centre 4: admissible, (6.2), (5.7), (5.2), mechanism : True
+  centre 5: admissible, (6.2), (5.7), (5.2), mechanism : True
+  centre 6: admissible, (6.2), (5.7), (5.2), mechanism : True
+  all 11 Moser-spindle unit pairs have sector-wise disjoint palettes: True
+  Moser spindle is 4-chromatic (verified by brute force over all 3-colourings): True
+  => the pointwise system TOGETHER WITH the distance-1 two-centre exclusion is
+     satisfiable at k=6 on a 4-chromatic unit-distance configuration of 7 four-cycle
+     centres.  Hence no argument from these constraints can give the k=6 four-cycle case.

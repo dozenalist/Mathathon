@@ -1,0 +1,220 @@
+dead decls in surviving modules: 213  (1314 span lines)
+SAFE   (no occurrence inside any live declaration span): 157, 1099 lines
+REVIEW (mentioned inside a live declaration):           56, 215 lines
+
+-- REVIEW, largest first --
+    41  OAI.EuclideanFiveColor.graphTree_contractible_aux   <- in ['OAI.EuclideanFiveColor.graphTree_contractible']
+    26  OAI.Problem160.triangular_rectangle_cover   <- in ['OAI.Problem160.triangular_lattice_cover']
+    10  OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_sub   <- in ['OAI.EuclideanFiveColor.BoundedMeasurable.avg_product_zero_of_pair']
+     8  OAI.PlaneFiveColor.Spectral.lineFourier_eq   <- in ['OAI.PlaneFiveColor.Spectral.exists_simultaneous_moment_parameter', 'OAI.PlaneFiveColor.Spectral.massReal_vanish']
+     8  OAI.EuclideanFiveColor.VectorMeasure.measure_univ   <- in ['OAI.EuclideanFiveColor.ConditionalBase.condDistrib_given_const', 'OAI.EuclideanFiveColor.ConditionalBase.prod_given_const', 'OAI.EuclideanFiveColor.Location.exists_ball_mass']
+     8  OAI.EuclideanFiveColor.FlatDensityZero.mono_ae   <- in ['OAI.EuclideanFiveColor.LineDensityZero.mono_ae', 'OAI.EuclideanFiveColor.state_densityZero']
+     5  OAI.PlaneFiveColor.InvariantMean.periodBCF_mk   <- in ['OAI.PlaneFiveColor.InvariantMean.integralReal_congr', 'OAI.PlaneFiveColor.InvariantMean.integralReal_sum']
+     5  OAI.EuclideanFiveColor.CompactIntegral.apply_clm   <- in ['OAI.EuclideanFiveColor.CommutingSpectral.measure_eq_of_fourier']
+     5  OAI.EuclideanFiveColor.DensityZero.mono   <- in ['OAI.EuclideanFiveColor.Amenable.Koopman.ae_eq_const_of_fixed', 'OAI.EuclideanFiveColor.Amenable.Koopman.inner_fixed_zero', 'OAI.EuclideanFiveColor.Amenable.Mean.abs_le']
+     5  OAI.EuclideanFiveColor.BoundedMeasurable.comp_apply   <- in ['OAI.EuclideanFiveColor.Amenable.Koopman.linear_add', 'OAI.EuclideanFiveColor.BoundedMeasurable.act_lift', 'OAI.EuclideanFiveColor.ChainJoin.le_code']
+     5  OAI.EuclideanFiveColor.BoundedMeasurable.Family.conj_apply   <- in ['OAI.EuclideanFiveColor.BoundedMeasurable.avg_product_zero_of_pair', 'OAI.EuclideanFiveColor.BoundedMeasurable.inner_tensor', 'OAI.EuclideanFiveColor.BoundedMeasurable.integral_tensor_self']
+     4  OAI.PlaneFiveColor.Spectral.char_act   <- in ['OAI.PlaneFiveColor.Spectral.char_symmetric', 'OAI.PlaneFiveColor.Spectral.char_three_term', 'OAI.PlaneFiveColor.Spectral.char_two_term']
+     4  OAI.EuclideanFiveColor.ErgodicCriterion.test_apply   <- in ['OAI.EuclideanFiveColor.ErgodicCriterion.ergodic_of_test_limits']
+     4  OAI.PlaneFiveColor.InvariantMean.circleMean_apply   <- in ['OAI.PlaneFiveColor.InvariantMean.circleMean_eq_integral']
+     4  OAI.EuclideanFiveColor.WeakBall.continuous_eval   <- in ['OAI.PlaneFiveColor.Spectral.continuous_eval', 'OAI.PlaneFiveColor.Spectral.measurable_eval', 'OAI.PlaneFiveColor.Spectral.measurable_eval_coe']
+     4  OAI.EuclideanFiveColor.Amenable.shift_apply   <- in ['OAI.EuclideanFiveColor.Amenable.Mean.correlation_shift', 'OAI.EuclideanFiveColor.BoundedMeasurable.correlation_product', 'OAI.PlaneFiveColor.InvariantMean.single_shift']
+     3  OAI.PlaneFiveColor.Spectral.embed_mul   <- in ['OAI.PlaneFiveColor.Spectral.j']
+     3  OAI.PlaneFiveColor.Spectral.embedF_mul   <- in ['OAI.PlaneFiveColor.Spectral.jF']
+     3  OAI.PlaneFiveColor.InvariantMean.circlePull_apply   <- in ['OAI.PlaneFiveColor.InvariantMean.circleMean_fourier_nonzero']
+     3  OAI.PlaneFiveColor.InvariantMean.pairing_apply   <- in ['OAI.EuclideanFiveColor.Amenable.Mean.jensen', 'OAI.EuclideanFiveColor.Amenable.Mean.pairing_apply', 'OAI.EuclideanFiveColor.Amenable.Mean.vector_mem_closedConvexHull']
+     3  OAI.PlaneFiveColor.Spectral.radiusFamily_apply   <- in ['OAI.PlaneFiveColor.Spectral.radiusFamily_mean']
+     3  OAI.Problem160.triangularLattice_zero   <- in ['OAI.Problem160.dist_triangularLattice_sq', 'OAI.Problem160.triangularLattice_norm_sq']
+     3  OAI.Problem160.triangularLattice_one   <- in ['OAI.Problem160.dist_triangularLattice_sq', 'OAI.Problem160.triangularLattice_norm_sq']
+     3  OAI.EuclideanFiveColor.Amenable.Mean.cross_apply   <- in ['OAI.EuclideanFiveColor.Amenable.Mean.correlation_add', 'OAI.EuclideanFiveColor.Amenable.Mean.correlation_shift', 'OAI.EuclideanFiveColor.Amenable.Mean.squareNorm_add']
+     3  OAI.EuclideanFiveColor.BoundedMeasurable.expect_apply   <- in ['OAI.EuclideanFiveColor.BoundedMeasurable.expect_bound']
+     3  OAI.EuclideanFiveColor.BoundedMeasurable.Family.conditional_apply   <- in ['OAI.EuclideanFiveColor.BoundedMeasurable.centered_conditional_mean_zero', 'OAI.EuclideanFiveColor.BoundedMeasurable.conditional_multiple_mean_zero', 'OAI.EuclideanFiveColor.BoundedMeasurable.covariance_mean_zero']
+     2  OAI.PlaneFiveColor.InvariantMean.shift_apply   <- in ['OAI.EuclideanFiveColor.Amenable.Mean.correlation_shift', 'OAI.EuclideanFiveColor.BoundedMeasurable.correlation_product', 'OAI.PlaneFiveColor.InvariantMean.single_shift']
+     2  OAI.PlaneFiveColor.InvariantMean.cshift_apply   <- in ['OAI.PlaneFiveColor.InvariantMean.circleMean_fourier_nonzero']
+     2  OAI.EuclideanFiveColor.AlgebraicCayley.coeff_polyLinear   <- in ['OAI.EuclideanFiveColor.AlgebraicCayley.cayley_annihilation', 'OAI.EuclideanFiveColor.AlgebraicCayley.polyLinear_add', 'OAI.EuclideanFiveColor.AlgebraicCayley.polyLinear_monomial']
+     2  OAI.EuclideanFiveColor.Amenable.Mean.normFn_apply   <- in ['OAI.EuclideanFiveColor.Amenable.Mean.norm_mean_zero_of_square', 'OAI.EuclideanFiveColor.BoundedMeasurable.Family.energy_mean_eq_of_meanNorm_zero', 'OAI.EuclideanFiveColor.BoundedMeasurable.Family.meanNorm_add_le']
+     2  OAI.EuclideanFiveColor.Amenable.Mean.orbit_apply   <- in ['OAI.EuclideanFiveColor.BoundedMeasurable.avg_product_zero_of_pair', 'OAI.EuclideanFiveColor.BoundedMeasurable.centered_conditional_mean_zero', 'OAI.EuclideanFiveColor.BoundedMeasurable.conditional_multiple_mean_zero']
+     2  OAI.EuclideanFiveColor.BoundedMeasurable.conj_apply   <- in ['OAI.EuclideanFiveColor.BoundedMeasurable.avg_product_zero_of_pair', 'OAI.EuclideanFiveColor.BoundedMeasurable.inner_tensor', 'OAI.EuclideanFiveColor.BoundedMeasurable.integral_tensor_self']
+     2  OAI.EuclideanFiveColor.Location.lift_snd   <- in ['OAI.EuclideanFiveColor.Location.not_sameRay_smul_lift']
+     2  OAI.EuclideanFiveColor.BoundedMeasurable.Family.const_apply   <- in ['OAI.EuclideanFiveColor.Amenable.Mean.jensen', 'OAI.EuclideanFiveColor.BoundedMeasurable.covariance_mean_zero', 'OAI.EuclideanFiveColor.BoundedMeasurable.covariance_tensor']
+     2  OAI.EuclideanFiveColor.BoundedMeasurable.Family.bmConj   <- in ['OAI.EuclideanFiveColor.BoundedMeasurable.act_conj', 'OAI.EuclideanFiveColor.BoundedMeasurable.avg_product_zero_of_pair', 'OAI.EuclideanFiveColor.BoundedMeasurable.avg_project_bound']
+     1  OAI.PlaneFiveColor.LabelModel.trans_apply   <- in ['OAI.PlaneFiveColor.LabelModel.color_unit_correlation', 'OAI.PlaneFiveColor.LabelModel.covariance']
+     1  OAI.PlaneFiveColor.LabelModel.rotate_apply   <- in ['OAI.PlaneFiveColor.LabelModel.color_rotation_fixed', 'OAI.PlaneFiveColor.LabelModel.covariance']
+     1  OAI.EuclideanFiveColor.VectorMeasure.realCM_apply   <- in ['OAI.EuclideanFiveColor.VectorMeasure.integral_complex', 'OAI.EuclideanFiveColor.VectorMeasure.real_nonneg']
+     1  OAI.PlaneFiveColor.Spectral.ordinaryIndicator_apply   <- in ['OAI.PlaneFiveColor.Spectral.measure_ordinary_zero_of_orthogonal', 'OAI.PlaneFiveColor.Spectral.ordinary_difference_tendsto']
+     1  OAI.EuclideanFiveColor.pickSupport   <- in ['OAI.EuclideanFiveColor.positiveSelect', 'OAI.EuclideanFiveColor.positiveSelect_measurable', 'OAI.EuclideanFiveColor.positiveSelect_pos']
+     1  OAI.Problem160.toPlane_zero   <- in ['OAI.Problem160.sq_norm_toPlane']
+     1  OAI.Problem160.toPlane_one   <- in ['OAI.Problem160.sq_norm_toPlane']
+     1  OAI.EuclideanFiveColor.FiveComb.neighbors   <- in ['OAI.EuclideanFiveColor.inner_strip_trace']
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.add_apply   <- in ['OAI.EuclideanFiveColor.Amenable.Mean.correlation_add', 'OAI.EuclideanFiveColor.Amenable.Mean.jensen', 'OAI.EuclideanFiveColor.Amenable.Mean.squareNorm_add']
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.sub_apply   <- in ['OAI.EuclideanFiveColor.Amenable.Mean.jensen', 'OAI.EuclideanFiveColor.BoundedMeasurable.Family.energy_mean_eq_of_meanNorm_zero', 'OAI.EuclideanFiveColor.BoundedMeasurable.conditional_multiple_mean_zero']
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.smul_apply   <- in ['OAI.EuclideanFiveColor.Amenable.Mean.jensen', 'OAI.EuclideanFiveColor.Amenable.Mean.squareNorm_add', 'OAI.EuclideanFiveColor.BoundedMeasurable.Family.energy_mean_eq_of_meanNorm_zero']
+     1  OAI.EuclideanFiveColor.Location.lift_fst   <- in ['OAI.EuclideanFiveColor.Location.not_sameRay_smul_lift']
+     1  OAI.EuclideanFiveColor.CosetCenter.Embedding.j_zero   <- in ['OAI.PlaneFiveColor.Spectral.jHom', 'OAI.PlaneFiveColor.Spectral.j_eq_one_iff', 'OAI.PlaneFiveColor.Spectral.j_zero']
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.act_apply   <- in ['OAI.EuclideanFiveColor.BoundedMeasurable.act_add', 'OAI.EuclideanFiveColor.BoundedMeasurable.act_lift', 'OAI.EuclideanFiveColor.BoundedMeasurable.avg_product_zero_of_pair']
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.Family.add_apply   <- in ['OAI.EuclideanFiveColor.Amenable.Mean.correlation_add', 'OAI.EuclideanFiveColor.Amenable.Mean.jensen', 'OAI.EuclideanFiveColor.Amenable.Mean.squareNorm_add']
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.Family.mul_apply   <- in ['OAI.EuclideanFiveColor.BoundedMeasurable.algebra', 'OAI.EuclideanFiveColor.BoundedMeasurable.avg_product_zero_of_pair', 'OAI.EuclideanFiveColor.BoundedMeasurable.covariance_mean_zero']
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.Family.sub_apply   <- in ['OAI.EuclideanFiveColor.Amenable.Mean.jensen', 'OAI.EuclideanFiveColor.BoundedMeasurable.Family.energy_mean_eq_of_meanNorm_zero', 'OAI.EuclideanFiveColor.BoundedMeasurable.conditional_multiple_mean_zero']
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.Family.zero_apply   <- in ['OAI.EuclideanFiveColor.BoundedMeasurable.square_tensor_centered', 'OAI.EuclideanFiveColor.BoundedMeasurable.zero_apply', 'OAI.EuclideanFiveColor.colorMass_own_zero']
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.Family.one_apply   <- in ['OAI.EuclideanFiveColor.BoundedMeasurable.one_apply', 'OAI.EuclideanFiveColor.CosetCenter.Embedding.measurable_frequencyMeasure', 'OAI.EuclideanFiveColor.SampledAtoms.measurable_atom_mass']
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_apply   <- in ['OAI.EuclideanFiveColor.BoundedMeasurable.avg_product_zero_of_pair', 'OAI.EuclideanFiveColor.BoundedMeasurable.centered_conditional_mean_zero', 'OAI.EuclideanFiveColor.BoundedMeasurable.conditional_multiple_mean_zero']
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.tensor_apply   <- in ['OAI.EuclideanFiveColor.BoundedMeasurable.inner_tensor', 'OAI.EuclideanFiveColor.BoundedMeasurable.tensor_code_finite', 'OAI.EuclideanFiveColor.BoundedMeasurable.tensor_mul']
+
+-- SAFE, largest first --
+    67  OAI.EuclideanFiveColor.EncodedCollision.collision_from_close_encodings
+    62  OAI.PlaneFiveColor.Spectral.relative_singularity_limit
+    51  OAI.PlaneFiveColor.Spectral.finite_encoding_at_of_approximation
+    46  OAI.EuclideanFiveColor.strict_state_uniform_on_compact
+    40  OAI.EuclideanFiveColor.unit_antipodes_of_no_positive
+    32  OAI.EuclideanFiveColor.graphDrop_mem
+    29  OAI.EuclideanFiveColor.sampling_weak_compact
+    27  OAI.EuclideanFiveColor.graphLeafMove_mem
+    21  OAI.EuclideanFiveColor.finite_continuum_subsequence
+    21  OAI.EuclideanFiveColor.CompactFunctions.compact_conj
+    19  OAI.Problem160.exists_measurable_proper_seven
+    19  OAI.EuclideanFiveColor.CosetCenter.Embedding.center_law_ordinary
+    18  OAI.EuclideanFiveColor.cyclicCore_closed
+    17  OAI.EuclideanFiveColor.geometric_partial_sum
+    16  OAI.EuclideanFiveColor.binary_pair_distinct
+    16  OAI.EuclideanFiveColor.graphRealization_singleton
+    15  OAI.PlaneFiveColor.LpMultiplier.weight_inner
+    15  OAI.EuclideanFiveColor.palette_transfer_pair
+    15  OAI.EuclideanFiveColor.OrbitSpace.smul_val
+    14  OAI.EuclideanFiveColor.DifferenceFourier.difference_coefficient_nonneg
+    14  OAI.PlaneFiveColor.InvariantMean.integralReal_shift
+    14  OAI.EuclideanFiveColor.graphLeafHomotopy
+    14  OAI.EuclideanFiveColor.AlgebraReplacement.linear_prod_replace
+    13  OAI.PlaneFiveColor.InvariantMean.weakIntegral_pair
+    12  OAI.Problem160.triangular_wedge_bound
+    12  OAI.EuclideanFiveColor.flat_density_not_one
+    12  OAI.EuclideanFiveColor.Amenable.Koopman.vector_orbit_zero
+    11  OAI.EuclideanFiveColor.interface_four_split_no_opposite
+    10  OAI.Problem160.WeakMeasurableColoring
+     9  OAI.EuclideanFiveColor.four_split_antipodes
+     9  OAI.EuclideanFiveColor.graphLeafRetraction
+     9  OAI.EuclideanFiveColor.paletteSet_minimal
+     9  OAI.Problem160.weakMeasurableColoring_seven
+     9  OAI.EuclideanFiveColor.BoundedMeasurable.project_eq_condexp
+     9  OAI.EuclideanFiveColor.BoundedMeasurable.Family.avg_congr_ae
+     8  OAI.EuclideanFiveColor.colorMass_measurable
+     8  OAI.PlaneFiveColor.InvariantMean.weakMean_add
+     8  OAI.PlaneFiveColor.InvariantMean.integralReal_nonneg
+     8  OAI.EuclideanFiveColor.proper_to_weak
+     8  OAI.EuclideanFiveColor.graphLeafMove_edge
+     8  OAI.EuclideanFiveColor.abs_le_of_bounds
+     8  OAI.EuclideanFiveColor.palette_second_exclusion
+     7  OAI.EuclideanFiveColor.BoundedMeasurable.Family.meanNorm_const
+     6  OAI.PlaneFiveColor.InvariantMean.periodSum_add
+     6  OAI.EuclideanFiveColor.continuous_graphLeafMove
+     6  OAI.EuclideanFiveColor.continuous_graphLift
+     6  OAI.EuclideanFiveColor.graphLift_drop
+     6  OAI.EuclideanFiveColor.graphLift_vertex
+     6  OAI.EuclideanFiveColor.graphLift_edge
+     6  OAI.EuclideanFiveColor.BoundedMeasurable.tensor_conj
+     6  OAI.EuclideanFiveColor.BoundedMeasurable.inner_act
+     6  OAI.EuclideanFiveColor.BoundedMeasurable.Family.meanNorm_neg
+     6  OAI.EuclideanFiveColor.BoundedMeasurable.Family.meanNorm_sub_le
+     5  OAI.PlaneFiveColor.InvariantMean.periodLift_mk
+     5  OAI.EuclideanFiveColor.graphLift_mem
+     5  OAI.EuclideanFiveColor.graphLeafInclusion
+     5  OAI.EuclideanFiveColor.graphRealization_nonneg
+     5  OAI.EuclideanFiveColor.Amenable.Mean.vector_norm_le
+     5  OAI.EuclideanFiveColor.BoundedMeasurable.project_apply
+     5  OAI.EuclideanFiveColor.RelativeProduct.law_probability
+     5  OAI.EuclideanFiveColor.BoundedMeasurable.projectCLM_l2
+     4  OAI.EuclideanFiveColor.circleOperator_norm_le
+     4  OAI.EuclideanFiveColor.colorMass_le_one
+     4  OAI.PlaneFiveColor.Spectral.char_neg
+     4  OAI.PlaneFiveColor.InvariantMean.shift_comm
+     4  OAI.EuclideanFiveColor.four_word_mixed_periodic
+     4  OAI.Problem160.normalizedAngleMeasure
+     4  OAI.EuclideanFiveColor.standardCore_closed
+     4  OAI.EuclideanFiveColor.graphLeafMove_one_at
+     4  OAI.EuclideanFiveColor.fiberCrosses_symm
+     4  OAI.Problem160.SevenLattice.normSq_nonneg
+     4  OAI.EuclideanFiveColor.BoundedMeasurable.projectCLM
+     4  OAI.EuclideanFiveColor.BoundedMeasurable.pairSequence_apply
+     3  OAI.PlaneFiveColor.Spectral.scalar_apply
+     3  OAI.PlaneFiveColor.Spectral.jF_apply
+     3  OAI.PlaneFiveColor.InvariantMean.imagPart_apply
+     3  OAI.PlaneFiveColor.InvariantMean.fieldCircle_apply
+     3  OAI.PlaneFiveColor.LabelModel.translation_apply
+     3  OAI.EuclideanFiveColor.VectorMeasure.realCM_one
+     3  OAI.Problem160.circleDir
+     3  OAI.Problem160.circleMeasure
+     3  OAI.Problem160.weakPairMeasure
+     3  OAI.EuclideanFiveColor.WeakBall.value_norm
+     3  OAI.EuclideanFiveColor.isCompact_traces
+     3  OAI.EuclideanFiveColor.five_ae_mem_support
+     3  OAI.EuclideanFiveColor.graphLeafMove_vertex
+     3  OAI.EuclideanFiveColor.graphDrop_lift
+     3  OAI.EuclideanFiveColor.graphDrop_vertex
+     3  OAI.EuclideanFiveColor.graphDrop_edge
+     3  OAI.EuclideanFiveColor.MarkedDisk.initial_core_cover
+     3  OAI.EuclideanFiveColor.interface_four_split_neg
+     3  OAI.EuclideanFiveColor.interface_four_diagonal_ne_zero
+     3  OAI.EuclideanFiveColor.Location.objective_zero
+     3  OAI.EuclideanFiveColor.FactorCode.encode_bound
+     3  OAI.PlaneFiveColor.Spectral.frequencyRotation_apply
+     2  OAI.PlaneFiveColor.Spectral.kCoeff_minusOne
+     2  OAI.PlaneFiveColor.Spectral.coe_imagUnit
+     2  OAI.PlaneFiveColor.Spectral.coe_ofF
+     2  OAI.PlaneFiveColor.Spectral.coe_imF
+     2  OAI.EuclideanFiveColor.MovingMean.meanCLM_apply
+     2  OAI.PlaneFiveColor.InvariantMean.meanCLM_apply
+     2  OAI.PlaneFiveColor.InvariantMean.realPart_apply
+     2  OAI.PlaneFiveColor.InvariantMean.cmeanCLM_apply
+     2  OAI.EuclideanFiveColor.AlgebraicCayley.coe_asN
+     2  OAI.PlaneFiveColor.Spectral.rot_vadd
+     2  OAI.EuclideanFiveColor.Koopman.unitary_apply
+     2  OAI.EuclideanFiveColor.CommutingSpectral.character_apply
+     2  OAI.EuclideanFiveColor.VectorMeasure.boundedCM_apply
+     2  OAI.EuclideanFiveColor.angleBoundary_closed
+     2  OAI.Problem160.ofPlane_im
+     2  OAI.EuclideanFiveColor.graphLeafMove
+     2  OAI.EuclideanFiveColor.graphLeafMove_zero
+     2  OAI.EuclideanFiveColor.graphLeafMove_of_zero
+     2  OAI.EuclideanFiveColor.graphDrop
+     2  OAI.EuclideanFiveColor.graphLift
+     2  OAI.EuclideanFiveColor.continuous_graphDrop
+     2  OAI.EuclideanFiveColor.coreHoles_open
+     2  OAI.EuclideanFiveColor.five_realState_measurable
+     2  OAI.EuclideanFiveColor.graphEdgePoint_one
+     2  OAI.EuclideanFiveColor.graphSpace_compact
+     2  OAI.EuclideanFiveColor.diskAnnulus_measurable
+     2  OAI.EuclideanFiveColor.triangleState_measurable
+     2  OAI.EuclideanFiveColor.correlation_continuous
+     2  OAI.EuclideanFiveColor.Amenable.Koopman.action_apply
+     2  OAI.EuclideanFiveColor.BoundedMeasurable.real_smul_apply
+     2  OAI.EuclideanFiveColor.CosetCenter.Embedding.range_j
+     2  OAI.PlaneFiveColor.Spectral.ordinaryEmbedding_ordinary
+     2  OAI.EuclideanFiveColor.BoundedMeasurable.act_zero
+     2  OAI.EuclideanFiveColor.BoundedMeasurable.Family.meanNorm_mono
+     1  OAI.PlaneFiveColor.Spectral.embed_one
+     1  OAI.PlaneFiveColor.Spectral.kCoeff_one
+     1  OAI.PlaneFiveColor.Spectral.embedF_one
+     1  OAI.PlaneFiveColor.Spectral.coe_reF
+     1  OAI.PlaneFiveColor.Spectral.eval_scalar
+     1  OAI.PlaneFiveColor.Spectral.char_apply
+     1  OAI.EuclideanFiveColor.AlgebraicCayley.coe_iN
+     1  OAI.PlaneFiveColor.Spectral.rotMul_mulRot
+     1  OAI.PlaneFiveColor.Spectral.mulRot_rotMul
+     1  OAI.EuclideanFiveColor.ContinuousVectors.mem_space
+     1  OAI.Problem160.ofPlane_re
+     1  OAI.EuclideanFiveColor.weakHilbert_apply
+     1  OAI.EuclideanFiveColor.five_diag_nonempty
+     1  OAI.EuclideanFiveColor.five_diag_unique
+     1  OAI.EuclideanFiveColor.interfaceFourEdge_eq
+     1  OAI.EuclideanFiveColor.moserPoint_0
+     1  OAI.EuclideanFiveColor.moserPoint_1
+     1  OAI.EuclideanFiveColor.moserPoint_2
+     1  OAI.EuclideanFiveColor.moserPoint_3
+     1  OAI.EuclideanFiveColor.moserPoint_4
+     1  OAI.EuclideanFiveColor.moserPoint_5
+     1  OAI.EuclideanFiveColor.moserPoint_6
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.scaleHom_apply
+     1  OAI.PlaneFiveColor.Spectral.ordinaryEmbedding_j
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.Family.real_smul_apply
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.Family.complex_smul_apply
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_add
+     1  OAI.EuclideanFiveColor.BoundedMeasurable.conj_mul

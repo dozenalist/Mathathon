@@ -1,0 +1,102 @@
+=== shell constants, lattice units (d = 1) ===
+     v            |v|^2   delta_min^2   delta_max^2    strong conflict iff
+  ( 1, 0)   1      0             13/3           d^2 in (1/dmax^2 , inf)
+  ( 2, 1)   3      1/3           25/3           d^2 in (1/dmax^2 , 3)
+  ( 2, 0)   4      1             28/3           d^2 in (1/dmax^2 , 1)
+  ( 2,-1)   7      7/3           43/3           d^2 in (1/dmax^2 , 3/7)
+  ( 3, 0)   9      4             49/3           d^2 in (1/dmax^2 , 1/4)
+  ( 4, 2)   12     16/3          64/3           d^2 in (1/dmax^2 , 3/16)
+  ( 4, 1)   13     19/3          67/3           d^2 in (1/dmax^2 , 3/19)
+  ( 4, 0)   16     9             76/3           d^2 in (1/dmax^2 , 1/9)
+  ( 5, 2)   19     31/3          91/3           d^2 in (1/dmax^2 , 3/31)
+  ( 5, 1)   21     37/3          97/3           d^2 in (1/dmax^2 , 3/37)
+  ( 6, 3)   27     49/3          121/3          d^2 in (1/dmax^2 , 3/49)
+  ( 5, 0)   25     16            109/3          d^2 in (1/dmax^2 , 1/16)
+  ( 2, 2)   4      1             28/3           d^2 in (1/dmax^2 , 1)
+  ( 6, 2)   28     52/3          124/3          d^2 in (1/dmax^2 , 3/52)
+
+=== A. the 7 cells {0} u N(0): exact conflict intervals ===
+  pairs checked: 21;  pairs where the interval (3/13, 3/4) is NOT inside the conflict interval: 0
+  => for every d^2 in (3/13, 3/4), all 21 pairs strongly conflict.
+     threshold d > sqrt(3/13) = 0.4803844614152614    upper d < sqrt3/2 = 0.8660254037844386
+
+=== A'. direct sample check of the 21 pairs at several d ===
+  d = 1/2: conflicting pairs among the 7 cells: 21/21
+  d = 53/100: conflicting pairs among the 7 cells: 21/21
+  d = 3/5: conflicting pairs among the 7 cells: 21/21
+  d = 7/10: conflicting pairs among the 7 cells: 21/21
+  d = 4/5: conflicting pairs among the 7 cells: 21/21
+
+=== B. coset 7-colouring  colour(a,b) = (a + 2b) mod 7 ===
+  all kernel norms^2 divisible by 7 : True
+  smallest kernel norms^2           : [7, 21, 28, 49, 63, 84]
+  for v = 2-omega (|v|^2 = 7):  delta_min^2 = 7/3   =>  conflict iff d^2 < 1/delta_min^2 = 3/7
+  d^2 >= 3/7  <=>  d >= sqrt(3/7) = 0.6546536707079771
+  paper's d = 2*sqrt3/5, d^2 = 12/25 = 0.48 ;  12/25 >= 3/7 ? True  (84 >= 75)
+  kernel elements with |v|^2<=400 that conflict at d^2=3/7 : 0 []
+  same at paper's d^2 = 12/25                              : 0
+  d = 13/20: cells 0 and 2-omega conflict ? True  (d^2 = 0.42250 vs 3/7 = 0.42857)
+  d = 33/50: cells 0 and 2-omega conflict ? False  (d^2 = 0.43560 vs 3/7 = 0.42857)
+
+=== C. conflict graph at the paper's d: chi = 7 ===
+  conflicting vectors with |v|^2 <= 12 : 18 ; of these in the kernel of (a+2b mod 7): 0
+  7-clique (from A) => chi >= 7 ; the 7-colouring is proper => chi = 7
+
+=== D. M(k)^2 = max over index-k sublattices of min squared norm ===
+   k : M(k)^2 : M(k)      : M(k)^2 > 16/3 ?   (triangle-inequality coset colouring feasible)
+   1 : 1       :  1.00000 : False
+   2 : 1       :  1.00000 : False
+   3 : 3       :  1.73205 : False
+   4 : 4       :  2.00000 : False
+   5 : 3       :  1.73205 : False
+   6 : 4       :  2.00000 : False
+   7 : 7       :  2.64575 : True 
+   8 : 7       :  2.64575 : True 
+   9 : 9       :  3.00000 : True 
+  10 : 7       :  2.64575 : True 
+  11 : 7       :  2.64575 : True 
+  12 : 12      :  3.46410 : True 
+  13 : 13      :  3.60555 : True 
+  14 : 12      :  3.46410 : True 
+  15 : 13      :  3.60555 : True 
+  16 : 16      :  4.00000 : True 
+  17 : 13      :  3.60555 : True 
+  18 : 13      :  3.60555 : True 
+  19 : 19      :  4.35890 : True 
+  20 : 16      :  4.00000 : True 
+  21 : 21      :  4.58258 : True 
+  22 : 19      :  4.35890 : True 
+  23 : 19      :  4.35890 : True 
+  24 : 21      :  4.58258 : True 
+  k=6: need 2d > 1 + 2d/sqrt3, i.e. d > (3+sqrt3)/4 = 1.1830127018922192  which contradicts d < sqrt3/2 = 0.8660254037844386
+
+=== E. gaps in the norm set of the kernel K = (2-omega)Lambda ===
+  kernel norms^2 listed up to 40000 (1365 values); max consecutive gap = 1.936824 < 2 ? True
+  largest gap at: 2.6457513110645907 -> 4.58257569495584
+  sampled R in (2/sqrt3, 200) with step 0.001: annulus failures = 491
+    failure range: R in (1.155, 1.645)  i.e. d in (0.6079, 0.8658)
+    -> these are exactly the R below sqrt7+1 = 3.6458 hmm; the crude annulus misses
+       the smallest kernel norm sqrt7 = 2.6458 for R < 1.6458.  That range
+       d in (0.6076, 0.866) is covered by Thm B(i) (proper for d>=sqrt(3/7)=0.6547)
+       and, for d in (0.6076,0.6547), by the explicit pair (0, 2-omega).
+  restricted to R >= 1.65 (d <= 0.606): failures = 0
+
+=== F. exact constants ===
+  cell diameter < 1      <=>  d < sqrt3/2            = 0.8660254037844386
+  7-clique threshold     :    d > sqrt(3/13)         = 0.4803844614152614
+  7-colouring proper     :    d >= sqrt(3/7)         = 0.6546536707079771
+  paper's d = 2 sqrt3/5  :    0.6928203230275509  ; d^2 = 12/25 vs 3/7 : 84 > 75
+  paper's r = 2/5, d = sqrt3 r, (sqrt21-2) r > 1 : 1.033030277982336 > 1 : True
+  k = 6 coset inequality : 2d > 1 + 2d/sqrt3  <=>  d > (3+sqrt3)/4 = 1.1830127018922192  > sqrt3/2 = 0.8660254037844386
+
+=== G. explicit 7-cliques and their exact d-ranges ===
+  C1  shells {1,3,4}: 21 pairs, pairwise |v|^2 in [1, 3, 4]
+     valid for d in (0.480384, 1.0)
+  C2  shells {3,9,12}: 21 pairs, pairwise |v|^2 in [3, 9, 12]
+     valid for d in (0.34641, 0.433013)
+  C3  shells {4,12,16}: 21 pairs, pairwise |v|^2 in [4, 12, 16]
+     valid for d in (0.327327, 0.333333)
+
+=== H. delta_min, delta_max depend only on |v|^2 (checked for |v|^2 <= 60) ===
+   shells split: 49 {((Fraction(103, 3), Fraction(0, 1)), (Fraction(199, 3), Fraction(0, 1))), ((Fraction(36, 1), Fraction(0, 1)), (Fraction(193, 3), Fraction(0, 1)))}
+  shells checked: 60, shells on which delta's are not determined by |v|^2: 1

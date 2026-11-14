@@ -1,0 +1,4 @@
+n_valid_lists 21 triples 1 [[[0, 1], [2, 3, 4], [2, 3, 4]]]
+S1_forced [2, 3, 4] S5_forced [2, 3, 4] S0_forced [0, 1]
+weak [1, 4] strong []
+six-list configs 0

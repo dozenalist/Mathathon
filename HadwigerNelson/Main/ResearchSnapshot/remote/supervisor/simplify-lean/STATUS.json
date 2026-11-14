@@ -1,0 +1,155 @@
+{
+  "updated_utc": "2026-11-14T18:26:47Z",
+  "status": "completed_block",
+  "summary": "Block 27, source only, no build, no new agents. Audited the parent's three tier-2 candidates across the whole tree and all three are provably free: varying_pullback_L1 is used only at States:601 and near_identity_circle_in only at States:569, both inside the already-deleted 524-721 window, and circleEndpoint_identity_neighborhood only at States:480, inside near_identity_circle_in. So they go as a set, and circleEndpoint is free only because near_identity goes with it. IMPORTANT CORRECTION: indicator_inter_positive has a LIVE consumer at FourContinuity:326 inside support_lower_semicontinuity, so it is retained; my block-23 claim that it had zero external consumers was an artefact of an automated scan and is withdrawn. Produced a SEPARATE candidate integration/States-tier2.lean (462 lines, sha256 f54921fd...), deleting exactly two intervals from the frozen trimmed States: 389-414 (26 lines, varying_pullback_L1) and 445-522 (78 lines, the section block plus circleEndpoint_identity_neighborhood and near_identity_circle_in). diff shows exactly those two hunks, the scope-balance checker reports OK, and the frozen integration/States.lean is untouched at 904ba7ca.... Measured with wc: frozen five-file total 2190 vs originals 2218 = -28; tier-2 would be -132. No -107 claim.",
+  "verified_results": [
+    "GRADE [C] ALL THREE TIER-2 CANDIDATES CONFIRMED FREE, as a set. Whole-tree rg: varying_pullback_L1 declared States:389, used only at States:601; near_identity_circle_in declared States:465, used only at States:569; both use-sites lie inside the already-deleted 524-721 window. circleEndpoint_identity_neighborhood declared States:449, used only at States:480, which is inside near_identity_circle_in. No other module in lean/OAI and no packet copy mentions any of them.",
+    "GRADE [C] INDICATOR_INTER_POSITIVE RETAINED, and I correct an earlier error: it has a LIVE consumer at lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:326 (packet copy :327) inside support_lower_semicontinuity, `have hpos := indicator_inter_positive (mu := volume.restrict E) hA hB (fun _ => hA) hp`; a second use at States:612 is inside the deleted window. My block-23 statement that it had zero external consumers was wrong (automated decl-block scan artefact) and is withdrawn.",
+    "GRADE [C] NEW SEPARATE CANDIDATE integration/States-tier2.lean, 462 lines, sha256 f54921fd75eff5683dacb421a6db7c2d9e7d347880fccd754b1b5a3e9ee9001d. Built from the frozen trimmed States (566 lines) by deleting exactly two intervals: 389-414 (26 lines, varying_pullback_L1, stopping before indicator_inter_positive at 415) and 445-522 (78 lines, the self-contained noncomputable section/opens/namespace block 445-448 plus circleEndpoint_identity_neighborhood 449-464, near_identity_circle_in 465-520 and its closers end EuclideanFiveColor 521 / end 522). diff against the frozen file is exactly `389,414d388` and `445,522d418`.",
+    "GRADE [C] TIER-2 FILE CHECKS: the three removed names occur 0 times; indicator_inter_positive, complex_unit_orthogonal and ae_direction_nonorthogonal each still declared once; m1's scope-balance checker reports OK; deletion boundaries all fall on declaration or section boundaries so no partial proof is left.",
+    "GRADE [C] FROZEN PACKET UNCHANGED: integration/States.lean still 904ba7ca7462856079999a8e6aa80fb64d1231f744392f7cca15f6e7f3ecf567, 566 lines. All five frozen files untouched this block.",
+    "GRADE [C] LINE ACCOUNTING measured with wc -l: originals States 764, FiveSupport 376, Interfaces 527, FourContinuity 551 = 2218. Frozen packet: States 566, AvoidingTrace 233, FiveSupport 354, Interfaces 528, FourContinuity 509 = 2190, i.e. -28. Tier-2 variant: States 462 = 2086, i.e. -132. DISCREPANCY flagged, not papered over: the parent states the frozen net as -24 with a 237-line AvoidingTrace, while the file in my directory measures 233 lines (sha 32d47bba...); a 4-line difference in that one file accounts exactly for -28 vs -24. Their frozen copy is authoritative for their build; I am not adjusting my measured figure, and neither should be quoted until the two copies are compared.",
+    "GRADE [R] NOT CLAIMED: any figure such as -107. The only evidenced reductions are -198 (tier 1) and a further -104 (tier 2) on States, while AvoidingTrace ADDS 233 lines. Also not claimed: that States-tier2 compiles - it is uncompiled and no build was run.",
+    "GRADE [C] FATAL DEFECT FOUND AND FIXED: integration/AvoidingTrace.lean line 230 was `end Generic`, a stray closer (the section is `ThreeCentre`, opened at 45 and closed at 232). Both swarm members found it independently; m1 quoted Lean's elabEnd behaviour and the exact expected error 'Invalid name after `end`: Expected `ThreeCentre`, but found `Generic`'. Provenance: my threecentre/MovingThreeCentres.lean had section Generic / end Generic and the rename to ThreeCentre was applied to the opening line only. Line 230 and its blank successor deleted; file now 233 lines, sha256 32d47bbac4a71a90ee949080df00d0d59b413e10ea31973854a5ab69ce6262f4; m1's check_end_balance.py reports OK on all five packet files.",
+    "GRADE [C] MY OWN FALSE CLAIM WITHDRAWN: block-24 STATUS asserted that AvoidingTrace contained no 'end Generic'. That grep was never run; the parent's report of an unmatched end Generic was correct and my dismissal of it was wrong. Recorded rather than quietly corrected.",
+    "GRADE [C] m2's claims re-checked independently and confirmed: (1) fixed_state_no_unit_three_centres is binder-identical to States:704, with the section `variable {k : \u2115} {c : \u2102 \u2192 Fin k} (hc : Measurable c)` supplying exactly the original {k}{c}(hc) prefix, and the remainder of the type identical up to spacing; (2) four_support_sequence_no_unit's signature is identical after whitespace normalisation with the explicit c retained; (3) rg over lean/OAI for the eight retired names totals 20 hits, each a declaration, a use inside a deleted declaration, or one of the four rerouted sites, and strict_state_uniform_on_compact has zero consumers; (4) `diff <(sed '524,721d' States.lean) integration/States.lean` is IDENTICAL.",
+    "GRADE [C] m1's salvaged findings re-run and confirmed: its scope-balance checker now reports OK for AvoidingTrace, FiveSupport, FourContinuity, Interfaces and States; its import_closure.py reports closure(BoundaryTrace) = 17 modules (BinaryDynamics, BinaryPalettes, CircleDecay, CircleMaps, CircleOperator, CircleTransport, Coloring, Compactness, Expansion, Fourier, PaletteDensity, PaletteTransport, Palettes, Rigidity, States, Transitions, WeakColoring) with FiveSupport, Accumulation, FourContinuity and Interfaces all outside it. m1 also confirmed that avoidingTraceCentre_seqClosed asserts no continuity of traceValue, only inner-product convergence tested at the limit coordinate, and flagged that IsSeqClosed.isClosed needs [SequentialSpace X], available for \u2102 via FirstCountableTopology -> FrechetUrysohnSpace -> SequentialSpace.",
+    "GRADE [C] SWARM smwgpu5eh LIVE with members m1 and m2, model deepseek/deepseek-v4.1-flash, reasoning_effort max, member_steps 60, minutes 60. Directions: m2 = d1 TYPE/BINDER + CONSUMER AUDIT; m1 = d2 LOGICAL VALIDITY OF THE THREE-CENTRE ARGUMENT (member-chosen, complementary: does the reroute need a fact that lived in the deleted 198 lines?). No submission had arrived at hand-off; a report will wake me for ultramath_verdict.",
+    "GRADE [C] four_support_sequence_no_unit: the packet's signature is identical to the original after whitespace normalisation (checked by extracting both headers). fixed_state_no_unit_three_centres carries the same binders as States:704 - k, c implicit (as section variables, hence not printed on the signature line), hc and hw explicit, then x, J, K, X, hlabels, A, B, hA, hB, hp, b, d, hb, hd with identical types and the same conclusion.",
+    "GRADE [C] SWARM ACTIVATED: ultramath_start returned swarm smwgpu5eh with members [m1, m2], model deepseek/deepseek-v4.1-flash, reasoning_effort max, member_steps 60, minutes 60, dir .ultramath/smwgpu5eh. These are the actual returned ids, not an intention.",
+    "GRADE [C] AFFECTED-MANIFEST.json built: reverse closure of the five changed modules is 27 of 84. Topological order: 1 States, 2 BoundaryTrace, 3 AngularBoundary, 4 Exclusion, 5 AvoidingTrace, 6 FourContinuity, 7 FourTransport, 8 Accumulation, 9 FiveSupport, 10 CyclicCore, 11 DiskAverages, 12 PlanarCovers, 13 GraphRealization, 14 Interfaces, 15 Sectors, 16 ContinuumLimits, 17 DiskExtension, 18 GraphCuts, 19 HoleApproximation, 20 GraphPatches, 21 FullApproximation, 22 Mesh, 23 Five, 24 Chromatic, 25 Converse, 26 NullSetRobust, 27 Transfer. Each row names the file to use (packet replacement or untouched original) and carries both the packet and original sha256.",
+    "GRADE [C] Trimmed States prefix check: lines 1-520 of integration/States.lean contain zero occurrences of strict_state_no_unit_support, strict_state_sequence_false, strict_state_sequence_local_false, nonparallel_neighborhood, positive_state_support_point, support_density_direction, support_density_sequence. So no retained declaration in the prefix refers to the deleted branch.",
+    "GRADE [C] Hole scan across all five packet files (AvoidingTrace, FiveSupport, Interfaces, FourContinuity, States), comment-stripped: zero occurrences of sorry, admit, native_decide, implemented_by, opaque, axiom in every file.",
+    "GRADE [C] Packet file hashes: AvoidingTrace e51502b2baf451936ef045eeabe655818e1f1b2708ae1cc9f8feffd81d0cb753; FiveSupport 89c93e0ebda452451b496bc9a3b759b498a03635f0262f01313515098050df2f; Interfaces 568fc119bee888946c7172992bcfd9796b5ffecc403007effa4ac049aa27f1ac; FourContinuity 8b24e593f6eb191378fc0953ce3bd66787a14c10f6b411c1cf40ef7ae6e84123; States 904ba7ca7462856079999a8e6aa80fb64d1231f744392f7cca15f6e7f3ecf567.",
+    "GRADE [C] Net line accounting unchanged from block 24: +235 (new module) -22 (FiveSupport) +1 (Interfaces) -42 (FourContinuity) -198 (States) = -27.",
+    "GRADE [C] Originals untouched: lean/OAI/Geometry/PlaneColoring/{States,FiveSupport,Interfaces,FourContinuity}.lean hashes recorded in AFFECTED-MANIFEST.json as sha256_original.",
+    "GRADE [S] Parent-reported and not re-verified here: AvoidingTrace importing BoundaryTrace only passed locally after the implicit-c helper repairs and section balancing; the fixed and moving replacements passed the original type/binder gates and full dependency traversal (51271/61231 constants, no strict chain, no sorryAx). No build was run in this block."
+  ],
+  "conjectures": [
+    "AvoidingTrace should now compile on its own against the 17-module closure(BoundaryTrace); the two remaining risks are the fixed FrechetUrysohnSpace instance and whether the moved neighbour lemmas need an open adjustment.",
+    "With both consumers rerouted, a compiler dependency dump over the integrated tree should show strict_state_sequence_false reachable only from the removed States:704, i.e. the branch as dead code.",
+    "The staged quartet (varying_pullback_L1, circleEndpoint_identity_neighborhood, near_identity_circle_in, and any helper between 389 and 527) would take the States reduction from -198 to a larger figure, but each needs its own neighbourhood audit."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/STATES-TIER2-AUDIT.md  <-- tier-2 audit: three candidates confirmed, indicator correction, exact intervals, line accounting. sha256 4f71d31f0efd64ff7ce1d1ab4a104c7a0b58fdf9200c09344ee6d5b318ca01cc",
+    "supervisor/simplify-lean/integration/States-tier2.lean  <-- SEPARATE candidate, 462 lines, two deletions from the frozen trimmed States. sha256 f54921fd75eff5683dacb421a6db7c2d9e7d347880fccd754b1b5a3e9ee9001d",
+    "supervisor/simplify-lean/swarm-smwgpu5eh/  <-- salvaged swarm artefacts: FINDINGS-A.md (640406ec77c6467afe43b4f21ce1b273d82db246e4b67c702d636b94551f9fc5), report.txt, findings.md (beac9b33943d369c63364567361f14340ec13def5ffbb6ace8e29f9616b0d2f0), check_end_balance.py, import_closure.py",
+    "supervisor/simplify-lean/integration/AvoidingTrace.lean  <-- FIXED (end Generic removed). sha256 32d47bbac4a71a90ee949080df00d0d59b413e10ea31973854a5ab69ce6262f4",
+    "supervisor/simplify-lean/integration/AvoidingTrace.lean  <-- fixed. sha256 e51502b2baf451936ef045eeabe655818e1f1b2708ae1cc9f8feffd81d0cb753",
+    "supervisor/simplify-lean/integration/FiveSupport.lean  <-- moved lemmas + rerouted no_sixty. sha256 89c93e0ebda452451b496bc9a3b759b498a03635f0262f01313515098050df2f",
+    "supervisor/simplify-lean/integration/Interfaces.lean  <-- one identifier. sha256 568fc119bee888946c7172992bcfd9796b5ffecc403007effa4ac049aa27f1ac",
+    "supervisor/simplify-lean/integration/FourContinuity.lean  <-- body swap + uniform theorem removed. sha256 8b24e593f6eb191378fc0953ce3bd66787a14c10f6b411c1cf40ef7ae6e84123",
+    "supervisor/simplify-lean/integration/States.lean  <-- private copy, strict-state branch removed (198 lines). sha256 904ba7ca7462856079999a8e6aa80fb64d1231f744392f7cca15f6e7f3ecf567",
+    "supervisor/simplify-lean/INTEGRATION-PACKET.md  <-- diffs, acyclicity, corrected accounting, States removal evidence. sha256 197b9ba0b48f0a69a7f0aecbbb13ec0f7220d76a0b04e9046ecf4294e152052d",
+    "originals (unmodified): FiveSupport 6d54703f840a1b4d20b81f5f206b18d79a1fbacde9a481990049b3c41b9c4813, BoundaryTrace c3c0c75a0fb2e2184e8ff39562faac2c38e3d372864ddeca9eb942fa0f2a692f, Interfaces 47dd83f5591742eeabe2aab290f5a855115f0397c12f22b824e5c8047cd1e99e, FourContinuity 7ad20b81c0adf9186399aea794b9817020bfd8c14906e2a7ef12d66b4c173b88, States 941fcbdcd90fb50426d4588d62ea10f9bdc882d455f546f2095ead91a0439340",
+    "retained: threecentre/MovingThreeCentres.lean, threecentre/FixedStateThreeCentres.V1.lean, MOVING-EXTENSION-PLAN.md, THREE-CENTRE-PLAN.md, DOWNSTREAM-INTEGRATION-PLAN.md, JOINT-PAIR-AUDIT.md, STATEMENT-AUDIT.md, DEPENDENCY-LEDGER-converse.md, binder packet, lean/Signature*.lean, lean/AxiomRoots.lean, axiom_gate.py, recon/, snapshots/, BUILD-PLAN.json, MANIFEST-full.json, archive/"
+  ],
+  "tests_run": [
+    "whole-tree rg for varying_pullback_L1, circleEndpoint_identity_neighborhood, near_identity_circle_in, indicator_inter_positive over lean/OAI and the packet copies -> exact use sites listed in the audit.",
+    "python boundary assertions before slicing (decl lines 389/415/449/465/528, closers 521/522, opener 445) then diff -> exactly `389,414d388` and `445,522d418`.",
+    "m1's check_end_balance.py on States-tier2.lean -> OK.",
+    "wc -l over the four originals and the six packet files for the line accounting table.",
+    "ultramath_verdict(accept) on m2/d1 -> swarm solved, 1 accepted.",
+    "grep confirming `end Generic` at AvoidingTrace:230, then deletion and re-diff; python section/end census now 14 section Neighbor, 41 end Neighbor, 45 section ThreeCentre, 230 end ThreeCentre.",
+    "scan of the trimmed States prefix (lines 1-520) for the seven deleted names -> all zero (independently of m2).",
+    "ultramath_status polled three times: m1 registered d2, m2 registered d1, both running; .ultramath/smwgpu5eh/m1/check_end_balance.py created by m1.",
+    "ultramath_start (actual tool call) -> swarm smwgpu5eh, members [m1, m2], flash/max/60 steps/60 minutes.",
+    "python import-closure and topological sort over lean/OAI with the packet's edges (AvoidingTrace -> BoundaryTrace; FiveSupport, Interfaces, FourContinuity each + AvoidingTrace) -> 27 affected modules, acyclic, ordered.",
+    "python comment-stripped scan of the five packet files for sorry/admit/native_decide/implemented_by/opaque/axiom -> all zero.",
+    "python scan of the trimmed States prefix 1-520 for the seven deleted names -> all zero.",
+    "sha256 over the five packet files and the originals; written into AFFECTED-MANIFEST.json.",
+    "NO Lean build, no cloud operation, no installs, no background processes (per policy)."
+  ],
+  "failed_routes": [
+    "My block-23 net figure of -66 is withdrawn; the correct packet total is -27 because the new 235-line module was not counted.",
+    "The reported 'unmatched end Generic' does not occur in the delivered AvoidingTrace (sections balanced Neighbor/ThreeCentre); it was a property of MovingThreeCentres.lean. Recorded rather than silently 'fixed'.",
+    "Not removed: indicator_inter_positive, the ordinary continuity lemmas, complex_unit_orthogonal, ae_direction_nonorthogonal, and the staged quartet (varying_pullback_L1, circleEndpoint_identity_neighborhood, near_identity_circle_in). Not attempted: any deletion on a shared file, any compiler dependency dump, any build."
+  ],
+  "next_step": "Nothing to do until the parent's serial rebuild reports. The frozen packet stays as is. States-tier2.lean is staged as a separate post-build candidate: it needs one local elaboration and one consumer check (FourContinuity, since that is where indicator_inter_positive lives) before any claim. If it lands, the States reduction goes from -198 to -302 and the five-file net from -28 to about -132 on my measured files, subject to reconciling the 233-vs-237 AvoidingTrace discrepancy.",
+  "owned_agents": [
+    {
+      "swarm": "smwgpu5eh",
+      "members": 2,
+      "member_ids": [
+        "m1",
+        "m2"
+      ],
+      "model": "deepseek/deepseek-v4.1-flash",
+      "reasoning_effort": "max",
+      "member_steps": 60,
+      "minutes": 60,
+      "dir": ".ultramath/smwgpu5eh",
+      "started_utc": "2026-11-14T18:06:12Z",
+      "state": "solved",
+      "directions": {
+        "m1": "d2 LOGICAL VALIDITY OF THE THREE-CENTRE ARGUMENT (chosen by the member, complementary to the assigned lanes)",
+        "m2": "d1 TYPE/BINDER + CONSUMER AUDIT"
+      },
+      "task": "two independent audits of the private 3-centre integration packet: (A) type/binder equality and remaining consumers of the retired strict-state branch; (B) proof-term/dependency architecture, hidden chain references, sorry/axiom scan, import acyclicity, circularity",
+      "accepted": 1,
+      "note": "No submission yet at hand-off. Both members running with ~50 min left; m1 has written .ultramath/smwgpu5eh/m1/check_end_balance.py. I will be woken when a member submits and will judge it with ultramath_verdict.",
+      "outcome": "swarm ended SOLVED. m2 accepted under d1 (type/binder + consumer audit). m1's direction d2 ended without a submission (step budget) but left a substantive findings.md and two checkers that were salvaged and re-run."
+    }
+  ],
+  "escalation": null,
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "swarm": "smwgpu5eh SOLVED (m2 accepted under d1; m1 d2 abandoned at step budget, findings salvaged)",
+    "manifest": "supervisor/simplify-lean/AFFECTED-MANIFEST.json",
+    "files": {
+      "AvoidingTrace": "supervisor/simplify-lean/integration/AvoidingTrace.lean",
+      "FiveSupport": "supervisor/simplify-lean/integration/FiveSupport.lean",
+      "Interfaces": "supervisor/simplify-lean/integration/Interfaces.lean",
+      "FourContinuity": "supervisor/simplify-lean/integration/FourContinuity.lean",
+      "States": "supervisor/simplify-lean/integration/States.lean"
+    },
+    "plan": "supervisor/simplify-lean/INTEGRATION-PACKET.md",
+    "build_order_head": [
+      "States",
+      "BoundaryTrace",
+      "AngularBoundary",
+      "Exclusion",
+      "AvoidingTrace",
+      "FourContinuity"
+    ],
+    "affected": 27,
+    "tree_total": 84,
+    "not_claimed": [
+      "the packet compiles (no build run)",
+      "any chi(R^2) consequence",
+      "any shared-tree deletion"
+    ],
+    "next_verification_step": "judge the two swarm reports, then parent builds in AFFECTED-MANIFEST order.",
+    "swarm_state": "smwgpu5eh running: m1=d2, m2=d1, no submission yet at hand-off",
+    "manifest_sha256": "1d9b33d4264a32cc18845425721f81b914e2c0506204d267d6436782196d8cac",
+    "avoidingtrace_fixed_sha256": "32d47bbac4a71a90ee949080df00d0d59b413e10ea31973854a5ab69ce6262f4",
+    "states_tier2": {
+      "path": "supervisor/simplify-lean/integration/States-tier2.lean",
+      "sha256": "f54921fd75eff5683dacb421a6db7c2d9e7d347880fccd754b1b5a3e9ee9001d",
+      "lines": 462,
+      "intervals": [
+        "389-414",
+        "445-522"
+      ],
+      "removed": [
+        "varying_pullback_L1",
+        "circleEndpoint_identity_neighborhood",
+        "near_identity_circle_in"
+      ],
+      "retained": [
+        "indicator_inter_positive (live consumer FourContinuity:326)",
+        "complex_unit_orthogonal",
+        "ae_direction_nonorthogonal"
+      ],
+      "status": "candidate, uncompiled, separate from the frozen packet"
+    },
+    "line_accounting": {
+      "originals_total": 2218,
+      "frozen_packet_total": 2190,
+      "frozen_net": -28,
+      "tier2_total": 2086,
+      "tier2_net": -132,
+      "discrepancy": "parent states -24 with a 237-line AvoidingTrace; my file measures 233 lines, which accounts for the 4-line difference"
+    }
+  }
+}

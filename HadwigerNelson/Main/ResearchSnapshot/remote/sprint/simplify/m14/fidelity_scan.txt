@@ -1,0 +1,197 @@
+## 1.2 Weak measurable coloring
+     WeakColoring                                 Geometry/PlaneColoring/Coloring.lean:27
+## 1.3 Transfer
+     proper_iff_weak                              Geometry/PlaneColoring/Transfer.lean:12
+     proper_to_borel_weak_algebraic               Geometry/PlaneColoring/BorelTransfer.lean:439
+     proper_to_borel_weak                         Geometry/PlaneColoring/BorelTransfer.lean:448
+## 1.4 no weak 5-colouring
+     no_measurable_weak_five_coloring             Geometry/PlaneColoring/Five.lean:105
+## 1.5 positive badness
+     *** NO CANDIDATE ***
+## 2.3 rigidity
+     ergodic_wild_fourier                         Analysis/PlaneSpectrum/Ergodicity.lean:52
+     wild_fourier                                 Analysis/PlaneSpectrum/Ergodicity.lean:335
+     finite_wild_fourier                          Analysis/PlaneSpectrum/Ergodicity.lean:364
+     residual_fourier                             Analysis/PlaneSpectrum/Ergodicity.lean:403
+## 2.4 cosets null
+     wild_coset_null                              Analysis/PlaneSpectrum/Basic.lean:304
+     wild_independent_difference                  Analysis/PlaneSpectrum/Basic.lean:326
+## 2.5 line average
+     wild_line_null                               Analysis/PlaneSpectrum/Basic.lean:696
+     wild_continuous_coefficient_zero             Analysis/PlaneSpectrum/Characters.lean:534
+## 2.6 (approximation)
+     dyadicApprox                                 Analysis/PlaneSpectrum/Characters.lean:288
+     dyadicApprox_error                           Analysis/PlaneSpectrum/Characters.lean:291
+     dyadicApprox_tendsto                         Analysis/PlaneSpectrum/Characters.lean:309
+     char_dyadicApprox_eq                         Analysis/PlaneSpectrum/Characters.lean:469
+## 2.7 relative singularity
+     relative_singularity_successor               MeasureTheory/CompactFactors/Approximation.lean:384
+     relative_singularity_limit                   MeasureTheory/CompactFactors/ConditionalLimits.lean:269
+     relative_singularity_base                    MeasureTheory/CompactFactors/ConditionalLimits.lean:352
+     relative_singularity_approximation           MeasureTheory/CompactFactors/ConditionalLimits.lean:622
+## 3.1 compact tower
+     exists_terminal_factor                       MeasureTheory/CompactFactors/Stationary.lean:126
+     strict_compact_successor                     MeasureTheory/CompactFactors/Factors.lean:206
+## 3.2 conditional multi averages
+     conditional_multiple_mean_zero               MeasureTheory/CompactFactors/AlgebraModels.lean:566
+     conditional_integer_multiple_mean_zero       MeasureTheory/CompactFactors/AlgebraModels.lean:652
+     circleMultiplier                             Analysis/PlaneSpectrum/CircleOperator.lean:52
+     circleMultiplier_ae                          Analysis/PlaneSpectrum/CircleOperator.lean:55
+## 3.3 radial identities
+     massReal_vanish                              Analysis/PlaneSpectrum/RadialEnergy.lean:452
+     projectedMass_radial                         Analysis/PlaneSpectrum/Energy.lean:432
+     radial_positive_near_zero                    Analysis/PlaneSpectrum/RadialEnergy.lean:421
+     radial_unit_contact                          Geometry/PlaneColoring/Rigidity.lean:261
+## 3.4 general position number field
+     numberField_general_position                 Analysis/PlaneSpectrum/NumberFields.lean:514
+     spanning_selection                           Analysis/PlaneSpectrum/Selections.lean:11
+     General                                      Analysis/PlaneSpectrum/NumberFields.lean:346
+     exists_general                               Analysis/PlaneSpectrum/NumberFields.lean:351
+## 3.5 addition under cap
+     dyadicApprox                                 Analysis/PlaneSpectrum/Characters.lean:288
+     dyadicApprox_error                           Analysis/PlaneSpectrum/Characters.lean:291
+     dyadicApprox_tendsto                         Analysis/PlaneSpectrum/Characters.lean:309
+     char_dyadicApprox_eq                         Analysis/PlaneSpectrum/Characters.lean:469
+## 4.1 continuous vectors
+     dualPolishSpace                              Analysis/PlaneSpectrum/ConditionalSpectrum.lean:38
+     cayley_subspaces_avoid                       Analysis/PlaneSpectrum/NumberFields.lean:498
+     Space                                        Analysis/PlaneSpectrum/Representations.lean:56
+     space                                        Analysis/PlaneSpectrum/Representations.lean:182
+## 4.2 proper to weak
+     proper_to_borel_weak_algebraic               Geometry/PlaneColoring/BorelTransfer.lean:439
+## 4.3 density points
+     exists_density_interval                      Geometry/PlaneColoring/Expansion.lean:592
+     FlatDensityZero                              Geometry/PlaneColoring/PaletteDensity.lean:190
+     LineDensityZero                              Geometry/PlaneColoring/PaletteDensity.lean:192
+     flatDensityZero_prod                         Geometry/PlaneColoring/PaletteDensity.lean:220
+## 5.1 palettes
+     five_palette_admissible                      Geometry/PlaneColoring/Accumulation.lean:359
+     palette_eq_measurable                        Geometry/PlaneColoring/Accumulation.lean:365
+     liftPalette_shift_periodic                   Geometry/PlaneColoring/BinaryPalettes.lean:62
+     trace_positive_le_palette                    Geometry/PlaneColoring/BinaryPalettes.lean:193
+## 5.2 palette transfer
+     palette_transfer_pair                        Geometry/PlaneColoring/PaletteDensity.lean:143
+## 5.4 sixty degree
+     sixty_six                                    Geometry/PlaneColoring/AngularBoundary.lean:92
+     sixty_three                                  Geometry/PlaneColoring/AngularBoundary.lean:98
+     sixty_order                                  Geometry/PlaneColoring/AngularBoundary.lean:418
+     five_support_no_sixty                        Geometry/PlaneColoring/FiveSupport.lean:138
+## 5.5 binary separation
+     triangle_binary                              Geometry/PlaneColoring/Accumulation.lean:157
+     binaryQ                                      Geometry/PlaneColoring/BinaryDynamics.lean:8
+     binaryR                                      Geometry/PlaneColoring/BinaryDynamics.lean:9
+     binaryB                                      Geometry/PlaneColoring/BinaryDynamics.lean:10
+## 5.6 palette cardinality
+     palette_cardinality                          Geometry/PlaneColoring/BinaryPalettes.lean:260
+     sameBin_card                                 Analysis/PlaneSpectrum/PhaseCollision.lean:31
+     sameBin_card_eq                              Analysis/PlaneSpectrum/PhaseCollision.lean:48
+     card_phases                                  Analysis/PlaneSpectrum/PhaseEncoding.lean:35
+## 6.1 transition graph
+     transitionGraph                              Geometry/PlaneColoring/CyclicCore.lean:213
+     transitionSet_relabel                        Geometry/PlaneColoring/Accumulation.lean:296
+     transitionSet                                Geometry/PlaneColoring/Transitions.lean:9
+     transitionSet_measurable                     Geometry/PlaneColoring/Transitions.lean:11
+## 6.2 avoiding trace
+     rational_functions_avoid                     Analysis/PlaneSpectrum/NumberFields.lean:183
+     finite_hyperplanes_avoid                     Analysis/PlaneSpectrum/NumberFields.lean:207
+     cayley_finite_avoid                          Analysis/PlaneSpectrum/NumberFields.lean:330
+     cayley_subspaces_avoid                       Analysis/PlaneSpectrum/NumberFields.lean:498
+## 6.3 strict state separation
+     restrictLine                                 Analysis/PlaneSpectrum/Basic.lean:544
+     continuous_restrictLine                      Analysis/PlaneSpectrum/Basic.lean:546
+     continuum_outer_restriction                  Geometry/PlaneColoring/AngularBoundary.lean:259
+     continuum_inner_restriction                  Geometry/PlaneColoring/AngularBoundary.lean:279
+## 6.4 singleton-pair
+     angularMeasure_nullSingleton                 Geometry/PlaneColoring/BinaryPalettes.lean:159
+     fourNonSingleton                             Geometry/PlaneColoring/FourTransport.lean:85
+     graphRealization_singleton                   Geometry/PlaneColoring/GraphRealization.lean:144
+     preimage_center_singleton                    MeasureTheory/CompactFactors/Centers.lean:620
+## 6.5 local finiteness
+     cyclicCore_compact_finite                    Geometry/PlaneColoring/CyclicCore.lean:269
+## 6.6 four-cycle continuity
+     fourier_circleOperator                       Analysis/PlaneSpectrum/CircleOperator.lean:57
+     lineFourier_eq                               Analysis/PlaneSpectrum/ConditionalSpectrum.lean:77
+     differenceFourier_projectedMass              Analysis/PlaneSpectrum/Energy.lean:408
+     fourier_vanish_of_terminal                   Analysis/PlaneSpectrum/Ergodicity.lean:37
+## 6.7 angular step ban
+     angularMeasure_nullSingleton                 Geometry/PlaneColoring/BinaryPalettes.lean:159
+     triangular_injective                         Geometry/PlaneColoring/CircleMaps.lean:122
+     triangular_surjective                        Geometry/PlaneColoring/CircleMaps.lean:137
+     integral_angular_eq_chart                    Geometry/PlaneColoring/CircleMaps.lean:319
+## 7.1 common exclusion continua
+     CommonInterface                              Geometry/PlaneColoring/ContinuumLimits.lean:228
+     commonInterface_of_continuum                 Geometry/PlaneColoring/ContinuumLimits.lean:246
+     no_triangle_commonInterface                  Geometry/PlaneColoring/ContinuumLimits.lean:252
+     no_four_commonInterface                      Geometry/PlaneColoring/ContinuumLimits.lean:270
+## 7.2 disk inequalities
+     diskAverage_unit_pair                        Geometry/PlaneColoring/DiskAverages.lean:63
+## 7.3 missing edge overlap
+     missing_edge_lim                             Geometry/PlaneColoring/Accumulation.lean:214
+     missing_edge_uniform                         Geometry/PlaneColoring/DiskAverages.lean:253
+     missing_edge_overlap                         Geometry/PlaneColoring/DiskAverages.lean:307
+     missing_edge_disk_cover                      Geometry/PlaneColoring/PlanarCovers.lean:146
+## 7.4 small holes tree fillings
+     HoleApprox                                   Geometry/PlaneColoring/HoleApproximation.lean:280
+     holeApprox_exists                            Geometry/PlaneColoring/HoleApproximation.lean:291
+## 7.5 cover obstruction
+     compact_open_cover_impossible                Geometry/PlaneColoring/PlanarCovers.lean:374
+## 7.6 non-null core loops
+     CyclicCore                                   Geometry/PlaneColoring/CyclicCore.lean:218
+     StandardCore                                 Geometry/PlaneColoring/CyclicCore.lean:219
+     cyclicCore_subset_standard                   Geometry/PlaneColoring/CyclicCore.lean:224
+     cyclicCore_closed                            Geometry/PlaneColoring/CyclicCore.lean:234
+## 7.7 midpoint detection
+     midpoint_threshold_labels                    Geometry/PlaneColoring/FullApproximation.lean:52
+     graphMidpoint_coord_le                       Geometry/PlaneColoring/GraphCuts.lean:143
+## 7.8 connected midpoint preimage
+     symmDiff_balls_subset_annulus                Geometry/PlaneColoring/DiskAverages.lean:99
+     annulus_maps_eventually_forest               Geometry/PlaneColoring/FullApproximation.lean:64
+     annulusMap                                   Geometry/PlaneColoring/FullApproximation.lean:167
+     planeAnnulus                                 Geometry/PlaneColoring/GraphPatches.lean:168
+## 8.1 one-sided strips
+     outer_strip                                  Geometry/PlaneColoring/AngularBoundary.lean:244
+     outer_strip_trace                            Geometry/PlaneColoring/BoundaryTrace.lean:182
+     inner_strip                                  Geometry/PlaneColoring/AngularBoundary.lean:251
+     inner_strip_trace                            Geometry/PlaneColoring/BoundaryTrace.lean:210
+## 8.2 length five
+     fiveSupport                                  Geometry/PlaneColoring/FiveSupport.lean:83
+     fiveSupportList                              Geometry/PlaneColoring/FiveSupport.lean:170
+     mem_fiveSupportList                          Geometry/PlaneColoring/FiveSupport.lean:173
+     FiveCenter                                   Geometry/PlaneColoring/Accumulation.lean:358
+## 8.3 six-position words
+     forall_six_word                              Geometry/PlaneColoring/AngularBoundary.lean:17
+     sixty_six                                    Geometry/PlaneColoring/AngularBoundary.lean:92
+     sixty_three                                  Geometry/PlaneColoring/AngularBoundary.lean:98
+     sixAngle                                     Geometry/PlaneColoring/AngularBoundary.lean:103
+## 8.4 four split rays
+     fourier_circleOperator                       Analysis/PlaneSpectrum/CircleOperator.lean:57
+     lineFourier_eq                               Analysis/PlaneSpectrum/ConditionalSpectrum.lean:77
+     differenceFourier_projectedMass              Analysis/PlaneSpectrum/Energy.lean:408
+     fourier_vanish_of_terminal                   Analysis/PlaneSpectrum/Ergodicity.lean:37
+## 8.5 length four
+     fourier_circleOperator                       Analysis/PlaneSpectrum/CircleOperator.lean:57
+     lineFourier_eq                               Analysis/PlaneSpectrum/ConditionalSpectrum.lean:77
+     differenceFourier_projectedMass              Analysis/PlaneSpectrum/Energy.lean:408
+     fourier_vanish_of_terminal                   Analysis/PlaneSpectrum/Ergodicity.lean:37
+## 8.6 local binary rigidity
+     triangle_binary                              Geometry/PlaneColoring/Accumulation.lean:157
+     binaryQ                                      Geometry/PlaneColoring/BinaryDynamics.lean:8
+     binaryR                                      Geometry/PlaneColoring/BinaryDynamics.lean:9
+     binaryB                                      Geometry/PlaneColoring/BinaryDynamics.lean:10
+## 8.7 boundary one orbit
+     angleBoundary_one_orbit                      Geometry/PlaneColoring/AngularBoundary.lean:448
+     triangle_boundary_one_orbit                  Geometry/PlaneColoring/Sectors.lean:193
+     one_orbit_first_arc                          Geometry/PlaneColoring/Sectors.lean:226
+     one_orbit_sectors                            Geometry/PlaneColoring/Sectors.lean:274
+## 8.8 polynomial 3-label region
+     polynomial_region_angles                     Geometry/PlaneColoring/Moser.lean:62
+## 8.9 seven-point certificate
+     seven_point_box_0                            Geometry/PlaneColoring/Moser.lean:199
+     seven_point_box_1                            Geometry/PlaneColoring/Moser.lean:208
+     seven_point_box_2                            Geometry/PlaneColoring/Moser.lean:218
+     seven_point_box_3                            Geometry/PlaneColoring/Moser.lean:228
+## 8.10 length three
+     no_triangle_interfaces                       Geometry/PlaneColoring/Sectors.lean:428
+     moserA                                       Geometry/PlaneColoring/Moser.lean:128
+     moserB                                       Geometry/PlaneColoring/Moser.lean:129
+     moserT                                       Geometry/PlaneColoring/Moser.lean:130

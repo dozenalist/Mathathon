@@ -1,0 +1,283 @@
+{
+  "at": "2026-11-14T15:07:10.518Z",
+  "passed": true,
+  "sourceSha256": "ca6ee63dd737fc7095ee82e35c5d702d90c203721ad92e00757d706e7b9a9304",
+  "inspectionDeclarations": 6,
+  "totalBinders": 133,
+  "summaries": [
+    {
+      "declaration": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+      "totalBinders": 31,
+      "typeBinders": [
+        {
+          "name": "X",
+          "type": "Type u_1",
+          "index": 0
+        },
+        {
+          "name": "Y",
+          "type": "Type u_2",
+          "index": 1
+        },
+        {
+          "name": "W",
+          "type": "Type u_3",
+          "index": 2
+        }
+      ],
+      "explicitOrder": [
+        "μ",
+        "p",
+        "q",
+        "b",
+        "hp",
+        "hq",
+        "hb",
+        "m",
+        "hm",
+        "g",
+        "hg",
+        "hwild",
+        "ρ",
+        "c",
+        "N",
+        "hρ",
+        "hc",
+        "hN",
+        "harc",
+        "happrox"
+      ],
+      "instanceTypes": [
+        "MeasurableSpace X",
+        "StandardBorelSpace X",
+        "Nonempty X",
+        "MeasurableSpace Y",
+        "MeasurableSpace W",
+        "StandardBorelSpace W",
+        "Nonempty W",
+        "MeasureTheory.IsProbabilityMeasure μ"
+      ]
+    },
+    {
+      "declaration": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+      "totalBinders": 31,
+      "typeBinders": [
+        {
+          "name": "X",
+          "type": "Type u_1",
+          "index": 0
+        },
+        {
+          "name": "Y",
+          "type": "Type u_2",
+          "index": 1
+        },
+        {
+          "name": "W",
+          "type": "Type u_3",
+          "index": 2
+        }
+      ],
+      "explicitOrder": [
+        "μ",
+        "p",
+        "q",
+        "b",
+        "hp",
+        "hq",
+        "hb",
+        "m",
+        "hm",
+        "g",
+        "hg",
+        "hwild",
+        "ρ",
+        "c",
+        "N",
+        "hρ",
+        "hc",
+        "hN",
+        "harc",
+        "happrox"
+      ],
+      "instanceTypes": [
+        "MeasurableSpace X",
+        "StandardBorelSpace X",
+        "Nonempty X",
+        "MeasurableSpace Y",
+        "MeasurableSpace W",
+        "StandardBorelSpace W",
+        "Nonempty W",
+        "MeasureTheory.IsProbabilityMeasure μ"
+      ]
+    },
+    {
+      "declaration": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+      "totalBinders": 33,
+      "typeBinders": [
+        {
+          "name": "X",
+          "type": "Type u_1",
+          "index": 0
+        },
+        {
+          "name": "Y",
+          "type": "Type u_2",
+          "index": 1
+        },
+        {
+          "name": "W",
+          "type": "Type u_3",
+          "index": 2
+        },
+        {
+          "name": "Z",
+          "type": "Type u_4",
+          "index": 14
+        }
+      ],
+      "explicitOrder": [
+        "μ",
+        "p",
+        "P",
+        "S",
+        "b",
+        "hp",
+        "hP",
+        "hb",
+        "m",
+        "hm",
+        "g",
+        "hg",
+        "hwild",
+        "ρ",
+        "c",
+        "N",
+        "hρ",
+        "hc",
+        "hN",
+        "harc",
+        "happrox"
+      ],
+      "instanceTypes": [
+        "MeasurableSpace X",
+        "StandardBorelSpace X",
+        "Nonempty X",
+        "MeasurableSpace Y",
+        "MeasurableSpace W",
+        "StandardBorelSpace W",
+        "Nonempty W",
+        "MeasureTheory.IsProbabilityMeasure μ"
+      ]
+    },
+    {
+      "declaration": "OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt",
+      "totalBinders": 12,
+      "typeBinders": [
+        {
+          "name": "X",
+          "type": "Type u_1",
+          "index": 0
+        },
+        {
+          "name": "Y",
+          "type": "Type u_2",
+          "index": 1
+        },
+        {
+          "name": "W",
+          "type": "Type u_3",
+          "index": 2
+        }
+      ],
+      "explicitOrder": [
+        "μ",
+        "p",
+        "q",
+        "b",
+        "m",
+        "γ"
+      ],
+      "instanceTypes": [
+        "MeasurableSpace X",
+        "MeasurableSpace Y",
+        "MeasureTheory.IsProbabilityMeasure μ"
+      ]
+    },
+    {
+      "declaration": "OAI.PlaneFiveColor.Spectral.AmbientEncodingAt",
+      "totalBinders": 12,
+      "typeBinders": [
+        {
+          "name": "X",
+          "type": "Type u_1",
+          "index": 0
+        },
+        {
+          "name": "Y",
+          "type": "Type u_2",
+          "index": 1
+        },
+        {
+          "name": "W",
+          "type": "Type u_3",
+          "index": 2
+        }
+      ],
+      "explicitOrder": [
+        "μ",
+        "p",
+        "q",
+        "b",
+        "m",
+        "γ"
+      ],
+      "instanceTypes": [
+        "MeasurableSpace X",
+        "MeasurableSpace Y",
+        "MeasureTheory.IsProbabilityMeasure μ"
+      ]
+    },
+    {
+      "declaration": "OAI.PlaneFiveColor.Spectral.EncodingApproximationAt",
+      "totalBinders": 14,
+      "typeBinders": [
+        {
+          "name": "X",
+          "type": "Type u_1",
+          "index": 0
+        },
+        {
+          "name": "Y",
+          "type": "Type u_2",
+          "index": 1
+        },
+        {
+          "name": "W",
+          "type": "Type u_3",
+          "index": 2
+        },
+        {
+          "name": "Z",
+          "type": "Type u_4",
+          "index": 9
+        }
+      ],
+      "explicitOrder": [
+        "μ",
+        "p",
+        "P",
+        "S",
+        "b",
+        "m",
+        "γ"
+      ],
+      "instanceTypes": [
+        "MeasurableSpace X",
+        "MeasurableSpace Y",
+        "MeasureTheory.IsProbabilityMeasure μ"
+      ]
+    }
+  ],
+  "scope": "Supplementary actual declaration capture: exact expected binder categories, type names, explicit sequence and instance types checked; predicate aliases omit Y StandardBorel/Nonempty. Complements prior preserved textual hypotheses, defeq and compatibility; no claim about literal proof-object identity."
+}

@@ -1,0 +1,149 @@
+{
+ "updated_utc": "2026-11-14T16:17:57Z",
+ "status": "completed_block",
+ "summary": [
+  "Block 19: independent audit of the Astra joint-pair support candidate. (1) The general theorem is TRUE with POSITIVE supports and I give a complete proof: the level set {f=i} is the finite disjoint union of the Q_ij (uses totality and finiteness), so mu.restrict{f=i} = sum_j mu.restrict Q_ij and hence S_i = union_j supp(mu|Q_ij) (support of a finite sum is the union of supports - finiteness used in the Finite-intersection argument); a in S_i gives j with a in supp(mu|Q_ij) and mu(Q_ij) > 0; if T a were outside S_j an open U gives mu(V cap Q_ij) <= mu(T^-1(U cap {f=j})) = mu(U cap {f=j}) = 0, contradicting membership (only measure preservation and continuity of T are used, no injectivity); a contact S_i cap S_j then forces mu(Q_ij)=0 against the premise. No a.e. statement or exceptional set occurs anywhere. (2) The SAME statement with ordinary closures is FALSE: counterexample f = indicator of the rationals, d = 1 - all four Q_ij are null, closure supports are both R, and the conclusion would assert R = empty. Positive supports are empty there, premise vacuous, conclusion true. So the reading matters and the Lean's stateSupport is the positive support (FiveSupport.lean:39, Mathlib Measure.support), an exact match. (3) Source compatibility: S_i = stateSupport exactly; T = t+d measure-preserving via measurePreserving_add_right (both on R and on Angles); the name shiftedAEfacts does not exist anywhere - the existing relatives are ae_mem_stateSupport, ae_state_support, stateSupport_cover, stateSupport_shift_relation, stateSupport_nonempty_measure; stateSupport_shift_relation is related but NOT the same lemma (it assumes an a.e. relation and moves between state supports). The genuinely new piece is exactly one disintegration lemma. (4) Application: the premise is supplied for non-adjacent pairs by fiveState_adj (a.e. adjacency, unconditionally) and for adjacent pairs with contact by five_support_step_ban; the conclusion is five_support_no_sixty with a new proof. (5) States:704 IS reached transitively by retained input through TWO routes - five_support_no_sixty (FiveSupport:144, itself used at :179,180,190,193,216) and Interfaces:277 - and FiveSupport/States/AngularBoundary are all in the 70-module Five.lean cone. The candidate closes only the first route, so the lemma cannot be deleted; what genuinely disappears is one dependency edge. (6) Naming: this is NOT a Lemma 6.7 deletion - 6.7 is the support-contact step ban, which the candidate RETAINS as an input; five_support_step_ban is its formal counterpart. All new claims here are proposed/proof-reviewed by me, not formalised; nothing is inherited as new."
+ ],
+ "verified_results": [
+  {
+   "claim": "The joint-pair support theorem is true for positive supports, with the proof given (steps 1-5)",
+   "grade": "[P-v] complete proof written in JOINT-PAIR-SUPPORT-AUDIT.md s1, every step's requirement identified",
+   "status": "verified mathematically, not formalised"
+  },
+  {
+   "claim": "The closure version is false: f = 1_Q, d = 1 refutes it (all Q_ij null, closure supports = R, conclusion would assert R = empty)",
+   "grade": "[P-x] explicit counterexample with the null-set check in s2(c)",
+   "status": "refuted for the closure reading"
+  },
+  {
+   "claim": "The Lean's S_i is the positive support: stateSupport f i = (volume.restrict {f t = i}).support at FiveSupport.lean:39",
+   "grade": "[S] definition read",
+   "status": "exact match with the candidate"
+  },
+  {
+   "claim": "No declaration named shiftedAEfacts exists in lean/ or the supervisor records; the existing relatives are listed",
+   "grade": "[S] grep across lean/ and supervisor/",
+   "status": "name not found, must not be cited"
+  },
+  {
+   "claim": "Application is sound: non-adjacent Q_ij null by fiveState_adj (Accumulation.lean:390), adjacent with contact by five_support_step_ban (FiveSupport.lean:90); conclusion = five_support_no_sixty",
+   "grade": "[S+] statements and hypotheses read line by line",
+   "status": "route sound, conditional on the one new disintegration lemma"
+  },
+  {
+   "claim": "States:704 is reached transitively through two routes (FiveSupport.lean:144 and Interfaces.lean:277) and cannot be deleted by this candidate",
+   "grade": "[S] exhaustive grep for strict_state_no_unit_support plus the 70-module import-cone computation",
+   "status": "confirmed; only one dependency edge disappears"
+  },
+  {
+   "claim": "One new lemma suffices: support_restrict_level_eq_iUnion, stated in s7 with its exact form",
+   "grade": "[C] proposal, not attempted",
+   "status": "identified as the single missing piece"
+  }
+ ],
+ "conjectures": [
+  {
+   "statement": "Adding support_restrict_level_eq_iUnion and the measure-preservation step-4 computation yields five_support_no_sixty without States:704.",
+   "status": "proposed; no Lean written",
+   "grade": "[C]"
+  },
+  {
+   "statement": "The identification of fiveSupport (volume.restrict on R pulled back by angleMk) with the support of the pushed measure on Angles is one bookkeeping lemma, unchecked here.",
+   "status": "open obligation",
+   "grade": "[C]"
+  }
+ ],
+ "artifacts": [
+  "supervisor/simplify-verification/AUDIT-FIVE-CYCLE.md",
+  "supervisor/simplify-verification/CHAIN-POSITIVE-AVERAGE-AUDIT.md",
+  "supervisor/simplify-verification/FIVE-DICHOTOMY-AUDIT.md",
+  "supervisor/simplify-verification/FULLAPPROX-AGREES-AUDIT.md",
+  "supervisor/simplify-verification/INTERFACE-WALL.md",
+  "supervisor/simplify-verification/JOINT-PAIR-SUPPORT-AUDIT.md",
+  "supervisor/simplify-verification/LEMMA78-COMPARISON.md",
+  "supervisor/simplify-verification/LOCAL-CHECK-QUEUE.json",
+  "supervisor/simplify-verification/NOTES.md",
+  "supervisor/simplify-verification/STATUS.json",
+  "supervisor/simplify-verification/TOPOLOGY-CONE-MANIFEST.json",
+  "supervisor/simplify-verification/TRANSFER-LEDGER.md",
+  "supervisor/simplify-verification/VALID-CONSUMER-AUDIT.md",
+  "supervisor/simplify-verification/checks/five_cycle_licence.py",
+  "supervisor/simplify-verification/lean/CheckFifth.lean",
+  "supervisor/simplify-verification/lean/ConnectedSetExclusion.lean",
+  "supervisor/simplify-verification/lean/FiveCycleResidues.lean",
+  "supervisor/simplify-verification/lean/WitnessSelection.lean",
+  "supervisor/simplify-verification/move_audit.py",
+  "supervisor/simplify-verification/trim_audit.py"
+ ],
+ "tests_run": [
+  {
+   "cmd": "sed/grep of FiveSupport.lean:39-96, :122-150; States.lean:695-720; Interfaces.lean:268-280; Accumulation.lean:390-395; grep for shiftedAEfacts; import-cone computation for Five.lean",
+   "outcome": "every declaration cited in the audit read at its line; the two States:704 call sites enumerated exhaustively; cone membership confirmed (70 modules, FiveSupport/States/AngularBoundary inside)."
+  },
+  {
+   "cmd": "date -u",
+   "outcome": "2026-11-14T16:17:57Z (real clock, used for updated_utc)."
+  },
+  {
+   "cmd": "Lean build / computation",
+   "outcome": "NONE. No solver, no experiment, no build; this is a proof-and-source-review block."
+  }
+ ],
+ "failed_routes": [
+  "Seeking a countermodel with fewer than four relaxed positions: none exists (single relaxation already gives 0 solutions, and all eight relax all four).",
+  "Reading the drop-one runs as evidence of individual necessity: that is the reverse implication and is not established by them.",
+  "Treating the cover-obstruction substitution as an integration: it cannot be, because no module of lean/ imports supervisor/.",
+  "Expecting the mesh/diameter bound to be the \u00a77 gap: the Lean splits it into a dichotomy inside Five.lean, so it is not a hypothesis left open.",
+  "`h '' P j = P (h j)`: false at j=0; the correct general target is P(-j). Kept in the file header as a recorded trap.",
+  "My first block-6 check script applied the identity map instead of h and reported all identities false - a script bug, not a mathematical finding; corrected and re-run inside the same one-process budget.",
+  "`refine \u27e8membership-proof, ?_\u27e9` for a `Finset.Nonempty` goal: Nonempty is `\u2203 a, a \u2208 s`, so the witness must come first; the local run caught this at hasNbr_image and it also poisoned neighbour_family_push with sorryAx.",
+  "Restoring the paper's monotone eps_n from the Lean per-scale form: monotonicity cannot be obtained by replacing eps_n with min over k<=n, because shrinking eps changes pi^eps and hence the entire disk family and the agreement map; it would need the construction to be redone at the new scale. Recorded as the single loss of the interchange.",
+  "My earlier claim that monotonicity of eps_n cannot be restored: wrong, and now retracted with two explicit constructions. The error was conflating 'modifying a witness' (blocked, since shrinking eps changes pi^eps) with 'selecting among witnesses' (free, and carries all indexed data).",
+  "WitnessSelection V1: failed locally at four points - uninferable positivity for the let-bound budget, equation-compiler unfolding of sel, a denominator mismatch k+1 vs k+1+1, and an undecomposed \u2200n,True conjunct. Only pickAt_lt was accepted; the three dependent theorems carried sorryAx. V2 replaces each failing construction rather than patching it.",
+  "V2 (staged, uncompiled) used Tendsto/atTop with no Filter namespace open and kept the `pickAt_lt ... _ _` positivity placeholder in sel_step_lt; V3 replaces both.",
+  "Selecting on epsilon instead of the budget: epsilon -> 0 leaves t and the radii sum free, since FullApprox gives only epsilon < t and sum rad < t.",
+  "Describing Route B's rule as if it were Route A's: with scale := t the next budget depends on the previous t, so epsilon's monotonicity is not obtained that way; the two routes must be kept separate, as s8 now does.",
+  "Route B (select on epsilon, assume per-index budget s/2): invalid because Classical.choose discards the exhibited witness's budget; retracted with two salvage paths recorded.",
+  "Reading `d.core = true` as the paper's core disk B_{n,x}: wrong in the tree - centerDisks (the fixed disks around cyclic centres) carry core := false.",
+  "V3 (open Filter alone) failed locally only on the unknown \ud835\udcdd notation; V4 adds Topology and passes - recorded so the V3 failure is not mistaken for a mathematical one.",
+  "My earlier statement that the Lean's core flag 'is not the paper's core disk' was too broad: it is correct for centerDisks but wrong for initialDisks' L-part, which is exactly the paper's core family.",
+  "Calling connected_escape_holes the tree's Lemma 7.8: they share only the word 'holes'. The comparison as posed was unanswerable; the useful question (is 7.8 needed at all?) is answered instead.",
+  "Reading the module name ContinuumLimits as evidence of a formalised Proposition 7.1: it holds a.e./support lemmas only.",
+  "My description of diskAnnulus as 'ball(c,r+1) minus closedBall(c,r)' - wrong at both endpoints; corrected to closedBall(c,1+r) minus ball(c,1-r) with area 4*pi*r.",
+  "Treating the absence of winding/reducedWord names as proof that the paper's \u00a77.4 is fully covered: absence of names is not an argument; the replacement is the dichotomy, and its equivalence to the paper's step is a [P] mapping I did not verify.",
+  "Searching for a SmallArcs -> FullApprox consumer: none exists, because SmallArcs belongs to the spectral/rigidity modules and is not imported by FullApproximation.",
+  "Reading the joint-pair supports as ordinary closures: refuted by f = 1_Q with d = 1, where the premise holds and the conclusion fails. Any future formalisation must use the positive support (as the Lean does).",
+  "Citing 'shiftedAEfacts': no such declaration exists in the tree or in the supervisor records I can read."
+ ],
+ "next_step": "(1) If the supervisor wants it formalised: write support_restrict_level_eq_iUnion (statement in s7) and the step-4 continuity/measure-preservation computation, then derive five_support_no_sixty; that is a small, bounded Lean packet with no OAI-cone growth. (2) Independently: whether Interfaces.lean:277 can also be re-derived, which is the only path to actually deleting States:704. (3) Naming of five_support_no_sixty in manuscript terms remains unresolved and must not be called a 6.7 deletion.",
+ "escalation": {
+  "obstacle": "(NC-1), restated precisely: at an accumulation point x of a specified five-cycle locus, with a = lim h_n/|h_n| and R the rotation acting on directions, the list S(R a) = {i : R a lies in the closed essential support of state i at x} has no common label, i.e. the intersection of the diagonals D_i over i in S(R a) is empty.",
+  "definitions": "D_i = {i, i+2} in Z/5Z; state i at x = the set of directions whose palette is exactly D_i; closed essential support S_i = the closed set whose every neighbourhood meets state i in positive measure; S(u) = {i : u in S_i}.",
+  "hypotheses_available": "(6.6) a.e. transition rule at x; closedness and finiteness of the five supports; no-common-label at a and -a from the endpoint pair (a_n^+, a_n^-) and 'y_n in H_k for every label'; (D) disjointness of adjacent position lists; (N) neighbour existence in both directions.",
+  "attempted": "direct transport of the printed zero-area endpoint argument (needs a partner direction whose sum lies near a centre with all five edges present; none exists at r=1); derivation from V0,V3,D,N (fails: 8 countermodels, all relaxing 1,2,4,5); single-position weakening (fails: one relaxation never gives a model).",
+  "expected_useful_output": "Either a proof of (NC-1) \u2014 then FIVE-CYCLE-CORE's five-step elimination of Lemma 6.7 stands as a real simplification \u2014 or a construction of an accumulation configuration realising S(1) = {2,4}, which would prove Lemma 6.7 is not removable by support-list combinatorics alone."
+ },
+ "recovery_note": "2026-11-14 post-outage reconciliation: no jobs running (the only background job, jmwfyybqo, exited 0 long before the outage and its result is recorded); every artifact re-read and hash-checked; nothing re-run or duplicated. Latest instruction (block 3) was already complete at 06:16Z.",
+ "handoff": "Audit verdicts (all new claims proposed/proof-reviewed, none formalised): the joint-pair support theorem is TRUE for positive supports with a complete five-step proof; FALSE for ordinary closures (counterexample f = 1_Q, d = 1); the Lean's stateSupport is exactly the positive support (FiveSupport:39). Source compatibility checked: t+d measure-preservation via measurePreserving_add_right, S_i exact, and 'shiftedAEfacts' does not exist. Application is sound: fiveState_adj gives non-adjacent nulls, five_support_step_ban gives adjacent-with-contact nulls, conclusion = five_support_no_sixty. States:704 IS transitively reached by retained input through two routes (FiveSupport:144, Interfaces:277) and cannot be deleted; only one dependency edge disappears. Not a Lemma 6.7 deletion - 6.7 is retained as an input. One new lemma needed (statement given). No builds, no computation, no new agents; inherited positive-average chain audit banked as-is.",
+ "artifact_hashes": {
+  "AUDIT-FIVE-CYCLE.md": "9fe1ca44daca711f0fb705ea38ea01e490c36adcc08e14d441bfe318e720484c",
+  "FULLAPPROX-AGREES-AUDIT.md": "2de570609f994c3ba0979830b3e68e5545ab2ac6e91a97efc834f07586562c16",
+  "INTERFACE-WALL.md": "d87c5d510b58798fce8445688f8ff958250fa09c4d8ba0e2fca77256afd2945f",
+  "LOCAL-CHECK-QUEUE.json": "cf566c8a96e2fd2ae50d24baa1d3999f8c1bab8d6481dea411172f6d6730bd1e",
+  "NOTES.md": "cd53abfa9912fbd28f113a4ebf20f95b9f39606fc1532ad5001c756d25dc8f39",
+  "TOPOLOGY-CONE-MANIFEST.json": "0be1f96e92e26a8fdc05875703a87bad9c63ac930ca445c2229eaf22aaa7462c",
+  "TRANSFER-LEDGER.md": "7f8b32948490030b523c228bdb4abedfbd925ebe0191b2c9b5f8451dceb6da04",
+  "checks/five_cycle_licence.py": "1fa619d857ec753381f30b27034abc5c6f4073022298572079dffbd22e460360",
+  "lean/ConnectedSetExclusion.lean": "84b6111a0bcf4f1a3f6db5806ed1c3dcbf298d317bf2398448b2a69a8679b144",
+  "lean/FiveCycleResidues.lean": "70452746c5ea999de6156cdee1e16639e6c563670e066288d45355ca9a17ead5",
+  "lean/CheckFifth.lean": "4cebfd5f28cf196e7247247e6fc40719b88c61b3c2f7184b3ff135cf6e7c14f9",
+  "trim_audit.py": "b462805f264b010a12f89ead087bc85c16c038295f6fb314419561aa77a70103",
+  "move_audit.py": "f5afca70b6ae72a19ea334c61b5bdfc49b890b344cb2650068b66cb0ad542b11",
+  "lean/WitnessSelection.lean": "3ff5d5c86fd49e4252e2fbbbcd8fc05e6c909c165cb98d62f47da399f608a569",
+  "VALID-CONSUMER-AUDIT.md": "7f79630d74ff18567786556698cf08f111b01274e36b59f1191eff8637165c8b",
+  "LEMMA78-COMPARISON.md": "f301f806aeda6e06a655a547e5523b34ca8fb3a327664f081ec106a717e5c9dd",
+  "FIVE-DICHOTOMY-AUDIT.md": "264ad03e75b9f10df61800e4ed13c61e092b4a90e5e96eefe46ccb3a759e30e3",
+  "CHAIN-POSITIVE-AVERAGE-AUDIT.md": "65f82a2d84a960f6d6f844d2b21413660e28732e3a0f9b8c6afc8ac64c6885b4",
+  "JOINT-PAIR-SUPPORT-AUDIT.md": "9fa3e35bfc742ed1e14cf9c7a1cbbed528937ddbfce6ec60a15fbccb021f34d9"
+ }
+}

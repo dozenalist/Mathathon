@@ -1,0 +1,5 @@
+'OAI.PlanarCover.paper_lemma_7_5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.PlanarCover.compact_cover_obstruction_gen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.PlanarCover.hit_center_gen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.PlanarCover.disk3_cover_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+CHECK_EXIT=0

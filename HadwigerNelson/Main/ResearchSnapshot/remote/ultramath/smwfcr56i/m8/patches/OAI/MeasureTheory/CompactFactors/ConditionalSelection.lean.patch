@@ -1,0 +1,29 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean	2026-11-13 19:09:13.640462106 +0000
++++ OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean	2026-11-13 19:39:42.948080298 +0000
+@@ -197,7 +197,7 @@
+ lemma map_identity_fiber (μ : Measure X) [IsFiniteMeasure μ]
+     (p : X → W) (hp : AEMeasurable p μ) (b : X → G) (hb : Measurable b) :
+     ∀ᵐ w ∂μ.map p, (condDistrib id p μ w).map b = condDistrib b p μ w := by
+-  filter_upwards [condDistrib_comp hp
++  filter_upwards [condDistrib_comp (X := p)
+     (measurable_id.aemeasurable (μ := μ)) hb] with w hw
+   simpa [Kernel.map_apply _ hb] using hw.symm
+ 
+@@ -206,7 +206,7 @@
+     (μ : Measure X) [IsFiniteMeasure μ] (p : X → W) (hp : Measurable p) :
+     ∀ᵐ w ∂μ.map p, ∀ᵐ x ∂condDistrib id p μ w, p x = w := by
+   filter_upwards [map_identity_fiber μ p hp.aemeasurable p hp,
+-    condDistrib_self hp.aemeasurable] with w hw hs
++    condDistrib_self p] with w hw hs
+   have he : (condDistrib id p μ w).map p = Measure.dirac w := by
+     rw [hw, hs]; rfl
+   apply ae_of_ae_map (p := fun z : W => z = w) hp.aemeasurable
+@@ -326,6 +326,8 @@
+     filter_upwards [ae_fiber_of_ae μ p hp henc, ae_fiber_of_ae μ p hp hmem,
+       hcondp, hcondm, hbin, hupper] with w h₁ h₂ h₃ h₄ h₅ h₆
+     exact ⟨h₁, h₂, h₃, h₄, h₅, h₆⟩
++  haveI : IsProbabilityMeasure (Measure.map p μ) :=
++    Measure.isProbabilityMeasure_map hp.aemeasurable
+   obtain ⟨w, ⟨hwenc, hwmem, hwIp, hwIm, hwbin, hwup⟩, hwf, hmany⟩ :=
+     GoodFiber.simultaneous_good_fiber (μ.map p) f e c (τ^2) hc (sq_pos_of_pos hτ)
+       hf he hf0 (Filter.Eventually.of_forall he0) hbudget' P hP

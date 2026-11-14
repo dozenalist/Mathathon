@@ -1,0 +1,385 @@
+80 modules, 80 with modified sources
+FAIL OAI.Analysis.PlaneSpectrum.Basic (187s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/Basic.lean:74:14: error: unsolved goals
+ξ : ℂ
+⊢ Circle.exp ((embed 1).re * ξ.re) * Circle.exp ((embed 1).im * ξ.im) = 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/Basic.lean:368:6: error: Type mismatch: After simplification, term
+  ht
+ has type
+  Circle.exp (ξ.re * ((↑imagUnit).re * ↑q)) * Circle.exp (ξ.im * ((↑imagUnit).im * ↑q)) = 1
+but is expected to have type
+  Circle.exp (ξ.im * ↑q) = 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/Basic.lean:501:17: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/Basic.lean:592:81: error: unsolved goals
+case e_6
+d : D
+h1 : d ∈ L 1
+hi : d ∈ L imagUnit
+l : ℝ
+hl : jF l = restrictLine 1 d
+e : ℝ
+he : jF e = restrictLine imagUnit d
+z : DiscreteE
+hr : ∀ (t : ↥F), d (Multiplicative.ofAdd (ofF t)) = Circle.exp (l * ↑t)
+hi' : ∀ (t : ↥F), d (Multiplicative.ofAdd (imagUnit * ofF t)) = Circle.exp (e * ↑t)
+hd :
+  d z =
+    d (Multiplicative.ofAdd (ofF (reF (Multiplicative.toAdd z)))) *
+      d (Multiplicative.ofAdd (imagUnit * ofF (imF (Multiplicative.toAdd z))))
+⊢ l * (↑(Multiplicative.toAdd z)).re + e * (↑(Multiplicative.toAdd z)).im =
+    l * ↑(reF (Multiplicative.toAdd z)) + e * ↑(imF (Multiplicative.toAdd z))
+
+OK   OAI.Analysis.PlaneSpectrum.Characters (227s)
+OK   OAI.Analysis.PlaneSpectrum.Fourier (76s)
+OK   OAI.Geometry.PlaneColoring.Coloring (70s)
+80 modules, 56 with modified sources
+FAIL OAI.Analysis.PlaneSpectrum.Basic (381s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/Basic.lean:74:14: error: unsolved goals
+ξ : ℂ
+⊢ Circle.exp ((embed 1).re * ξ.re) * Circle.exp ((embed 1).im * ξ.im) = 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/Basic.lean:368:6: error: Type mismatch: After simplification, term
+  ht
+ has type
+  Circle.exp (ξ.re * ((↑imagUnit).re * ↑q)) * Circle.exp (ξ.im * ((↑imagUnit).im * ↑q)) = 1
+but is expected to have type
+  Circle.exp (ξ.im * ↑q) = 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/Basic.lean:501:17: error: `simp` made no progress
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/Basic.lean:592:81: error: unsolved goals
+case e_6
+d : D
+h1 : d ∈ L 1
+hi : d ∈ L imagUnit
+l : ℝ
+hl : jF l = restrictLine 1 d
+e : ℝ
+he : jF e = restrictLine imagUnit d
+z : DiscreteE
+hr : ∀ (t : ↥F), d (Multiplicative.ofAdd (ofF t)) = Circle.exp (l * ↑t)
+hi' : ∀ (t : ↥F), d (Multiplicative.ofAdd (imagUnit * ofF t)) = Circle.exp (e * ↑t)
+hd :
+  d z =
+    d (Multiplicative.ofAdd (ofF (reF (Multiplicative.toAdd z)))) *
+      d (Multiplicative.ofAdd (imagUnit * ofF (imF (Multiplicative.toAdd z))))
+⊢ l * (↑(Multiplicative.toAdd z)).re + e * (↑(Multiplicative.toAdd z)).im =
+    l * ↑(reF (Multiplicative.toAdd z)) + e * ↑(imF (Multiplicative.toAdd z))
+
+SKIP OAI.Analysis.PlaneSpectrum.Characters (olean newer)
+OK   OAI.Geometry.PlaneColoring.WeakColoring (37s)
+FAIL OAI.Geometry.PlaneColoring.Compactness (83s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness.lean:20:46: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  TopologicalSpace.SeparableSpace E
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness.lean:133:32: error(lean.unknownIdentifier): Unknown identifier `E`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness.lean:134:25: error: Function expected at
+  Space
+but this term has type
+  Type ?u.3
+
+Note: Expected a function because this term is being applied to the argument
+  E
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness.lean:135:45: error: Function expected at
+  Space
+but this term has type
+  Type ?u.3
+
+Note: Expected a function because this term is being applied to the argument
+  E
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness.lean:136:37: error(lean.unknownIdentifier): Unknown identifier `E`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness.lean:137:15: error: Function expected at
+  Space
+but this term has type
+  Type ?u.3
+
+Note: Expected a function because this term is being applied to the argument
+  E
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness.lean:137:32: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  NormedAddCommGroup E
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness.lean:139:53: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness.lean:141:25: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Norm E
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness.lean:141:36: error: Function expected at
+  Space
+but this term has type
+  Type ?u.10
+
+Note: Expected a function because this term is being applied to the argument
+  E
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness.lean:144:38: error(lean.unknownIdentifier): Unknown identifier `E`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness.lean:145:41: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Norm E
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness.lean:146:13: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness.lean:146:19: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Geometry/PlaneColoring/Compactness
+OK   OAI.Analysis.PlaneSpectrum.CircleOperator (19s)
+FAIL OAI.Analysis.PlaneSpectrum.InvariantMean (38s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:291:56: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+f h : G →ᵇ ℂ
+x : G
+⊢ (realPart (f + h)) x = (realPart f) x + (realPart h) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:292:56: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+f h : G →ᵇ ℂ
+hr : realPart (f + h) = realPart f + realPart h
+x : G
+⊢ (imagPart (f + h)) x = (imagPart f) x + (imagPart h) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:297:72: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+c : ℂ
+f : G →ᵇ ℂ
+x : G
+⊢ (realPart (c • f)) x = c.re * (realPart f) x - c.im * (imagPart f) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:299:72: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+c : ℂ
+f : G →ᵇ ℂ
+hr : realPart (c • f) = c.re • realPart f - c.im • imagPart f
+x : G
+⊢ (imagPart (c • f)) x = c.re * (imagPart f) x + c.im * (realPart f) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:298:17: warning: This simp argument is unused:
+  Complex.mul_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:300:17: warning: This simp argument is unused:
+  Complex.mul_im
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:414:19: error(lean.unknownIdentifier): Unknown identifier `circleMean_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:411:6: error: unsolved goals
+case pos
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+ρ : G →+ UnitAddCircle
+hρ : ∀ (n : ℤ), n ≠ 0 → ∃ g, ρ g = ↑(1 / 2 / ↑n)
+f : C(UnitAddCircle, ℂ)
+hp : circlePull ρ (fourier 0) = BoundedContinuousFunction.const G 1
+⊢ (circleMean ρ) (fourier 0) = 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:414:37: warning: This simp argument is unused:
+  hp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [circleMean_apply, cmean_const, circleIntegral_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:414:41: warning: This simp argument is unused:
+  cmean_const
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [circleMean_apply, hp, circleIntegral_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:485:0: error: cannot omit referenced section variable `inst✝⁵`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m
+OK   OAI.Analysis.PlaneSpectrum.Multipliers (12s)
+OK   OAI.Analysis.PlaneSpectrum.FourierTests (7s)
+OK   OAI.Analysis.PlaneSpectrum.SmallArcs (14s)
+OK   OAI.Analysis.PlaneSpectrum.PhaseEncoding (18s)
+OK   OAI.Analysis.PlaneSpectrum.PhaseCollision (29s)
+OK   OAI.MeasureTheory.CompactFactors.ConditionalSelection (42s)
+FAIL OAI.Analysis.PlaneSpectrum.ConditionalSpectrum (58s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:57:41: error: Application type mismatch: The argument
+  X
+has type
+  ?m.1[X]
+but is expected to have type
+  Type ?u.2
+in the application
+  @Measure X
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:58:9: error: type expected, got
+  (X : ?m.6[X])
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:58:21: error: type expected, got
+  (X : ?m.9[X])
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:71:52: error: Application type mismatch: The argument
+  X
+has type
+  ?m.1[X]
+but is expected to have type
+  Type ?u.2
+in the application
+  @Measure X
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:72:9: error: type expected, got
+  (X : ?m.6[X])
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:72:21: error: type expected, got
+  (X : ?m.9[X])
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:185:31: error(lean.unknownIdentifier): Unknown identifier `lineFourier_eq`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:185:19: error: Type mismatch: After simplification, term
+  hn (momentArgument z * ofF t)
+ has type
+  @LE.le ℝ Real.instLE 0 (∫ (d : D), ↑((eval (momentArgument z * ofF t)) d) ∂ν).re
+but is expected to have type
+  @LE.le ℝ Real.instLE 0 (lineFourier ν (momentArgument z) t).re
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:303:10: error(lean.unknownIdentifier): Unknown identifier `predecessor_moment_sq`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:362:4: error(lean.unknownIdentifier): Unknown identifier `integrable_predecessor_moment_sq`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:366:8: error(lean.unknownIdentifier): Unknown identifier `predecessor_moment_sq`
+
+FAIL OAI.MeasureTheory.CompactFactors.Amenability (157s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/Amenability.lean:68:2: error: Type mismatch: After simplification, term
+  norm_inner_le_norm (V x) v
+ has type
+  @LE.le ℝ Real.instLE |⟪V x, v⟫| (‖v‖ * ‖V x‖)
+but is expected to have type
+  @LE.le ℝ Real.instLE |⟪V x, v⟫| (‖v‖ * (normFn V) x)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/Amenability.lean:115:82: error: unsolved goals
+G : Type u_1
+inst✝¹ : TopologicalSpace G
+H : Type u_2
+inst✝ : NormedAddCommGroup H
+V : G →ᵇ H
+x : G
+⊢ (normFn V) x * (normFn V) x = ‖V x‖ * ‖V x‖
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/Amenability.lean:154:76: error: unsolved goals
+G : Type u_1
+inst✝² : TopologicalSpace G
+H : Type u_2
+inst✝¹ : NormedAddCommGroup H
+inst✝ : InnerProductSpace ℝ H
+V W : G →ᵇ H
+x : G
+⊢ ‖V x‖ ^ 2 + ⟪V x, W x⟫ * 2 + ‖W x‖ ^ 2 = ‖V x‖ ^ 2 + ‖W x‖ ^ 2 + (cross V W) x * 2
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/Amenability.lean:157:42: warning: This simp argument is unused:
+  cross_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [squareNorm_apply, BoundedContinuousFunction.add_apply, BoundedContinuousFunction.smul_apply,
+    smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/Amenability.lean:181:69: error: unsolved goals
+case e_6
+G : Type u_1
+inst✝⁴ : AddCommGroup G
+inst✝³ : TopologicalSpace G
+inst✝² : DiscreteTopology G
+M : Mean G
+H : Type u_2
+inst✝¹ : NormedAddCommGroup H
+inst✝ : InnerProductSpace ℝ H
+V W Z : G →ᵇ H
+g x : G
+⊢ (cross (shift G g V) (W + Z)) x = (cross (shift G g V) W) x + (cross (shift G g V) Z) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/Amenability.lean:186:13: warning: This simp argument is unused:
+  cross_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [BoundedContinuousFunction.add_apply, inner_add_right]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/Amenability.lean:186:63: warning: This simp argument is unused:
+  inner_add_right
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [cross_apply, BoundedContinuousFunction.add_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/Amenability.lean:192:52: error: unsolved goals
+G : Type u_1
+inst✝⁴ : AddCommGroup G
+inst✝³ : TopologicalSpace G
+inst✝² : DiscreteTopology G
+M : Mean G
+H : Type u_2
+inst✝¹ : NormedAddCommGroup H
+inst✝ : InnerProductSpace ℝ H
+V : G →ᵇ H
+g x✝ : G
+⊢ (cross (shift G g V) 0) x✝ = 0
+Try this:
+  [apply] abel_nf
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/Amenability.lean:204:14: error: `abel_nf` made no progress on the goal
+Try this:
+  [apply] abel_nf
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/Amenability.lean:197:72: error: unsolved
+OK   OAI.MeasureTheory.CompactFactors.Centers (40s)
+FAIL OAI.MeasureTheory.CompactFactors.RelativeCenters (40s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:79:65: error: unexpected token 'end'; expected 'lemma'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:82:38: error: type expected, got
+  (X : ?m.4[X])
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:247:20: error(lean.unknownIdentifier): Unknown identifier `ErgodicSupport.ae_eq_const_of_invariant`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:247:9: error: Tactic `rcases` failed: `x✝ : ?m.279` is not an inductive datatype
+
+OK   OAI.MeasureTheory.CompactFactors.Approximation (85s)
+FAIL OAI.MeasureTheory.CompactFactors.ConditionalLimits (92s)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:197:43: error: Application type mismatch: The argument
+  X
+has type
+  ?m.2[X]
+but is expected to have type
+  Type ?u.3
+in the application
+  @Measure X
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:198:9: error: type expected, got
+  (X : ?m.7[X])
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:199:4: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace Y
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:204:36: error: Application type mismatch: The argument
+  X
+has type
+  ?m.2[X]
+but is expected to have type
+  Type ?u.3
+in the application
+  @Measure X
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:205:9: error: type expected, got
+  (X : ?m.7[X])
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:206:6: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace Y
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:206:39: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  MeasurableSpace Y
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:223:39: error(lean.unknownIdentifier): Unknown identifier `ConditionalBase.prod_given_const`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/m16/union/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:221:51: error: unsolved goals
+X : Type u_1
+Y : Type u_2
+inst✝² : MeasurableSpace X
+inst✝¹ : MeasurableSpace Y
+μ : Measure X
+inst✝ : IsProbabilityMeasure μ
+b : X → D
+hb : Measurable b
+y₀ : Y
+hw : IsWild (Measure.map b μ)
+this : IsProbabilityMeasure (Measure.map b μ) := inferInstance
+⊢ (Measure.map (fun p => p.1 / p.2)
+        (⇑(condDistrib b (fun x => y₀) μ ×ₖ condDistrib b (fun x => y₀) μ) ∘ₘ Measure.map (fun x => y₀) μ))
+      ↑C =
+    0
+
+OK   OAI.MeasureTheory.CompactFactors.Kernels (268s)

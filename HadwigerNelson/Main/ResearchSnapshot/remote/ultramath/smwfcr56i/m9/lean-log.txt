@@ -1,0 +1,35 @@
+=== environment ===
+Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+
+=== build ===
+$ cd <member dir>; source scripts/env4341.sh && export LEAN_PATH=$PWD:$LEAN_PATH && lean Robust.lean
+exit=0 (no diagnostics)
+
+=== axioms (lean Check.lean) ===
+'OAI.EuclideanFiveColor.exists_translate_disjoint_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.exists_translate_disjoint_isMeagre' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.exists_translate_disjoint_countable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.exists_translate_disjoint_halfplane' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.exists_translate_disjoint_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.exists_translate_disjoint_null_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.exists_translate_disjoint_card_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.not_properColoring_off_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.not_properColoring_off_isMeagre' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.not_properColoring_off_countable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.not_properColoring_off_halfplane' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.not_properColoring_off_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.not_properColoring_off_card_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_five_coloring_off_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_five_coloring_off_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_five_coloring_off_isMeagre' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_five_coloring_off_countable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_five_coloring_off_halfplane' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_five_coloring_off_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_five_coloring_off_card_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_proper_five_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.exists_properColoring_of_finset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.properColoring_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+check exit=0
+
+=== declarations ===
+22

@@ -1,0 +1,115 @@
+{
+ "C1_pythagoras": {
+  "triples_checked": 484,
+  "primitive_triples": 95,
+  "primitive_with_even_hypotenuse": [],
+  "every_primitive_hypotenuse_odd": true,
+  "bound": 600
+ },
+ "C2_no_odd_closed_rational_walk": {
+  "3": {
+   "directions": 28,
+   "closed_walks": 0
+  },
+  "5": {
+   "directions": 28,
+   "closed_walks": 0
+  },
+  "7": {
+   "directions": 28,
+   "closed_walks": 0
+  }
+ },
+ "C3_five_cycle_over_Q_sqrt11": {
+  "cycle_length": 5,
+  "vertices": 5,
+  "all_five_edges_unit": true,
+  "vertices_distinct": true,
+  "non_edge_sq_distances": [
+   "(36/25,0,0,0)",
+   "(1/25,0,0,0)",
+   "(4/5,0,0,0)",
+   "(47/25,0,-12/25,0)",
+   "(11/5,0,0,0)"
+  ],
+  "field": "Q(sqrt11)"
+ },
+ "C4_three_cycle_over_Q_sqrt3": {
+  "cycle_length": 3,
+  "all_three_edges_unit": true,
+  "field": "Q(sqrt3)"
+ },
+ "C5_spindle_geometry": {
+  "vertices": 7,
+  "edges": 11,
+  "vertices_distinct": true,
+  "all_listed_edges_unit": true,
+  "no_other_pair_at_unit_distance": true,
+  "field": "Q(sqrt3,sqrt11)",
+  "sq_distances": {
+   "t1t2": "(3,0,0,0)",
+   "t1t3": "(1,0,0,0)",
+   "t1u1": "(1,0,0,0)",
+   "t1u2": "(1,0,0,0)",
+   "t1v1": "(3/2,0,0,-1/6)",
+   "t1v2": "(3/2,0,0,1/6)",
+   "t2t3": "(3,0,0,0)",
+   "t2u1": "(1,0,0,0)",
+   "t2u2": "(1,0,0,0)",
+   "t2v1": "(1,0,0,0)",
+   "t2v2": "(1,0,0,0)",
+   "t3u1": "(3/2,0,0,-1/6)",
+   "t3u2": "(3/2,0,0,1/6)",
+   "t3v1": "(1,0,0,0)",
+   "t3v2": "(1,0,0,0)",
+   "u1u2": "(1,0,0,0)",
+   "u1v1": "(7/6,0,0,-1/6)",
+   "u1v2": "(1/3,0,0,0)",
+   "u2v1": "(1/3,0,0,0)",
+   "u2v2": "(7/6,0,0,1/6)",
+   "v1v2": "(1,0,0,0)"
+  }
+ },
+ "C6_spindle_colouring": {
+  "num_colourings_3": 2187,
+  "proper_3_colourings": 0,
+  "proper_4_colouring_exists": true,
+  "example_4_colouring": {
+   "t1": 0,
+   "t2": 0,
+   "t3": 1,
+   "u1": 1,
+   "u2": 2,
+   "v1": 2,
+   "v2": 3
+  }
+ },
+ "C7_rational_graph_bipartite": {
+  "vertices": 3225,
+  "edges": 27936,
+  "edges_across_psi_classes": 27936,
+  "all_edges_flip_psi": true,
+  "bipartite": true,
+  "components": 1
+ },
+ "C8_potential_psi": {
+  "well_defined_failures": 0,
+  "psi_of_unit_vector_always_1": true,
+  "additivity_failures": 0
+ },
+ "C9_hexagonal_seven_colouring_arithmetic": {
+  "norm2_of_2_minus_omega": 7,
+  "index": 7,
+  "min_nonzero_norm_in_sublattice": 7,
+  "sqrt21_r_equals_sqrt7_times_sqrt3_times_r": true,
+  "two_r_lt_1": true,
+  "sqrt21_minus_2_times_r_gt_1": true,
+  "verified": {
+   "norm_is_7": true,
+   "index_is_7": true,
+   "min_norm_is_7": true,
+   "two_r": true,
+   "sqrt21": true
+  }
+ }
+}

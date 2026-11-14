@@ -1,0 +1,35 @@
+{
+  "updated_utc": "2026-11-14T16:10:00Z",
+  "status": "completed_block",
+  "summary": "Analysis-only block, no computation. Corrected NEXT-PROBE-ANALYSIS.md with a visible banner: SAT on a finite patch is only a patch colouring so the probe is decisive only on UNSAT; a persistence interval must intersect the forced windows of every offset used, including rings 19 and 21 whose windows are not hand-computable; the lower window needs 1/a >= 2, so state max(0,1/a-2) and restrict to a <= 1/2; further honeycomb parameters paused. Then derived the equality-to-chromatic amplifier. From a k-colourable finite unit-distance graph with distinct forced-equal p,q at distance d: chaining n copies along u=(q-p)/d makes the chain monochromatic in every k-colouring, giving equal-coloured ends at D=nd > 1/2; two chains sharing one end, rotated with cos theta = 1-1/(2D^2), put the far ends exactly 1 apart, so the union is not k-colourable; hypothesis (H4), that the forced equality breaks with one more colour, upgrades it to chromatic number exactly k+1. Bounds 2nV-2n+1 points and 2nE+1 edges; field K(sqrt(4n^2d^2-1)), at most quadratic over the gadget's. Validated by deriving the Moser spindle: diamond, d=sqrt3, n=1, cos theta = 5/6, field Q(sqrt3,sqrt11), 7 vertices, 11 edges. No forcing pair is asserted to exist.",
+  "verified_results": [
+    "GRADE [P] Lemma 1 (chain monochromatic): if G has distinct non-adjacent p,q with c(p)=c(q) in every proper k-colouring, then n translated copies glued q+i d u = p+(i+1)d u give a chain in which every proper k-colouring is constant, so the ends p and p+n d u are equal-coloured at distance nd. Non-adjacency is automatic from k-colourability, since an adjacent forced pair would already be a contradiction.",
+    "GRADE [P] Rotation step: with D = nd and cos theta = 1 - 1/(2D^2), sin theta = sqrt(4D^2-1)/(2D^2), the two far ends D u and D R_theta u are at distance D*2 sin(theta/2) = 1 exactly, and this is possible iff D >= 1/2. Strictness D > 1/2 is needed to keep 0 < theta < pi; at D = 1/2 the angle is pi and the two chains are antipodal reflections, a degenerate configuration with coincidences.",
+    "GRADE [P] Non-k-colourability and ((k+1))-chromaticity: under (H1),(H2) the union X is not k-colourable (both monochromatic ends at unit distance); under (H1),(H2),(H4) with k+1 >= 3 it is (k+1)-colourable, because (H4) gives colourings with the forced pair at any prescribed pair of colours including (alpha,beta) with beta != alpha and, on the second chain, (alpha,beta') with beta' != beta, making the single cross edge proper. Hence chi(X) = k+1, and (H4) is an explicit obligation, not automatic.",
+    "GRADE [P] Size bounds: chain |C_n| = nV - (n-1) points and nE edges (no edge is shared between consecutive copies since their intersection is one point); X has at most 2nV - 2n + 1 points and 2nE + 1 edges, with equality iff there are no accidental coincidences or accidental unit distances.",
+    "GRADE [P] Field requirements: with P in K^2, d in K and u in K^2, the chain stays in K^2 and the rotation lives in K(sqrt(4n^2 d^2 - 1)), a degree-at-most-2 extension; all coordinates of X lie there, so every squared distance and every coincidence test is exact in that field. If d is not in K, one further quadratic extension suffices.",
+    "GRADE [P] Validation against the record's own object: k=3, diamond (two equilateral triangles sharing an edge), p=(0,0), q=(3/2,sqrt3/2), d=sqrt3, n*=1 since sqrt3 > 1/2, cos theta = 5/6, sin theta = sqrt11/6, field Q(sqrt3,sqrt11), counts 2*4-1 = 7 vertices and 2*5+1 = 11 edges: exactly the Moser spindle, with the same field the project already uses for its exact spindle certificate [C: results/VERIFICATION.md records all eleven edges with squared length exactly 1].",
+    "GRADE [P] Consequence at k=6: a forced-equal pair in a 6-colourable finite unit-distance graph would give a finite unit-distance graph of chromatic number at least 7, hence by vertex-minimality one of chromatic number exactly 7. Contrapositive: chi(R^2) <= 6 implies no 6-colourable finite unit-distance graph has such a pair. So the equality-certificate route is sufficient for chi = 7 and a negative answer is as hard as chi(R^2) <= 6. No such pair is claimed to exist."
+  ],
+  "conjectures": [
+    "The amplifier is the right interface between the graph chat's equality certificates and this project's chromatic target: it is mechanical once (H1),(H2),(H4) are discharged, and its (H2) is the only non-local obligation (a statement about every proper k-colouring, not about one).",
+    "Accidental coincidences and accidental unit distances cannot be removed by a genericity argument at the final step because theta is forced by the unit-edge requirement; the only remaining freedoms are n, the mirror sign of sin theta, and which end of each chain is shared. Any concrete gadget must therefore be verified exactly, as the spindle is.",
+    "At k = 6 no gadget is available to test (a 6-chromatic finite unit-distance graph is not known), so the amplifier's immediate use is as a statement about the search space: any forcing pair found at k = 6 settles chi(R^2) = 7 outright, and no weaker conclusion follows from it."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/AMPLIFIER.md",
+    "supervisor/solve-geometry/NEXT-PROBE-ANALYSIS.md",
+    "supervisor/solve-geometry/CELL-NOGO-V2-AUDIT.md",
+    "supervisor/solve-geometry/HONEYCOMB-FAMILY-CERTIFICATE.md",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "None: analysis-only block by instruction (the graph chat holds the sole remote compute slot). All arithmetic in AMPLIFIER.md was carried out by hand and is graded [P]; the only cited machine result is the record's Moser spindle certificate, graded [C]."
+  ],
+  "failed_routes": [
+    "Withdrawn from NEXT-PROBE-ANALYSIS.md: the claim that a SAT patch would be a positive result for the family; the claim that UNSAT at a=1/6 would extend the union to (1/sqrt43, 1/2] without intersecting the windows of rings 19 and 21; and the unrestricted form of the window formula for a > 1/2.",
+    "Not attempted: any search for a forcing pair at k = 6 (no computation this block, and none is proposed); any claim that a 7-chromatic finite unit-distance graph exists; any plane-level conclusion from the honeycomb family."
+  ],
+  "next_step": "If the graph chat produces an equality certificate, apply the checklist in AMPLIFIER.md section 8 in order: exact gadget coordinates and k-colouring, proof of (H2) for every proper k-colouring, (H4) at k+1 colours, then the exact distance verification for the chosen n and theta. Absent such a certificate, the amplifier has no instance to run on and further honeycomb parameter work is paused by instruction.",
+  "escalation": null
+}

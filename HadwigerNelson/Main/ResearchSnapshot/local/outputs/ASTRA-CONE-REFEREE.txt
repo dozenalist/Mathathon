@@ -1,0 +1,324 @@
+INDEPENDENT REFEREE: CLOSED SIXTY-DEGREE CONE EXCLUSION
+14 November 2026. Bounded assignment 12.
+
+VERDICT
+
+ACCEPT at the mathematical paper level the outer-120-degree-arc lemma
+(OA120) and its closed-cone consequence (CC60), including aperture exactly
+60 degrees. The proof uses the original generic rigidity statements with
+their full hypotheses. There is no missing uniformity or almost-everywhere
+step. This is not a Lean elaboration claim.
+
+The theorem concerns actual signed approach vectors at ONE common centre
+and actual spatial support exclusions. It does not follow from finite
+palette words alone. The earlier extension using an unoriented common axis
+and different radial sides within one intersection is INVALID.
+
+The concrete q=(0,0,1,3,3,4) actual-interface configuration is excluded.
+Independently recomputing the cone filter on the supplied 174 tuples gives
+168 exclusions and the same six survivors; every supplied exclusion
+certificate checks. I did not re-establish the preceding 174-input search
+or its palette relaxation. No general six-colouring impossibility follows.
+
+MATERIAL REVIEWED
+
+Author report: outputs/ASTRA-NONALIGNED-A3.txt, especially sections 3-5.
+Original source root:
+  work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/
+Actual declarations and proofs read:
+  Coloring.lean:27, WeakColoring;
+  WeakColoring.lean:73, weak_all_directions and its L2 continuity producer;
+  Rigidity.lean:84, evenPath_local and the four-edge construction;
+  :124, local_ae_translation_constant and its Fubini/shear proof;
+  :171, ae_translated_unit_pair;
+  :179, binary_open_local_rigidity;
+  :226, open_two_unit_directions;
+  :400-418, essentialLocalSet and connected_local_ae_constant;
+  AngularBoundary.lean:147, Straddle and its openness;
+  :186, outer_straddle_strip;
+  :235, ApproachingContinuum; :244, outer_strip;
+  :307-317, spatial support exclusion and finite_support_exclusion_ae.
+I also inspected Sectors.side_strip and the relevant import headers.
+
+1. PRECISE ACCEPTED CONTRACT
+
+Let c:C->Fin k be measurable and satisfy WeakColoring k c. Let E be a
+finite index set, x a common centre, and for every i in E let K_i be a set
+with actual ApproachingContinuum x K_i v_i data. Let H_i be finite sets
+of labels such that
+
+  spatialSupport(c,j) is disjoint from Straddle(K_i)  for every j in H_i.
+
+Suppose the actual signed unit vectors v_i have angle representatives
+alpha_i in [phi-pi/6, phi+pi/6]. Then the complement of union_i H_i has
+at least THREE labels. Equivalently, a complement of size at most two
+is impossible.
+
+Norm-one of v_i may be supplied explicitly or obtained from the unit
+approximating directions and their convergence. The source approach
+structure provides the centre and approaching points in K_i; neither
+compactness nor preconnectedness of K_i is an additional requirement of
+this particular argument. The spatial support exclusion is an essential
+hypothesis; the name "common interface" by itself does not supply it.
+
+The theorem is generic in k. Fin 5 inside the source four-edge path is
+the number of path vertices, not a restriction to five colours. A pair
+{a,b} covering the residual labels may have a=b. If no labels remain,
+choose a=b=c(x); the same restriction follows vacuously. Thus there is
+no hidden assumption k>=2 or that the residual set has exactly size two.
+
+2. FROM THE CONE TO ONE OPEN TWO-COLOUR REGION
+
+Set W=intersection_{i in E} Straddle(K_i). Finiteness and
+straddle_isOpen make W open. The source finite_support_exclusion_ae
+gives one plane-conull set on which every exclusion holds simultaneously.
+Consequently, if the residual labels are covered by {a,b}, then
+
+  for plane-a.e. z, z in W implies c(z)=a or c(z)=b.              (A)
+
+The pair a,b is fixed throughout W. A direction-dependent pair would
+not satisfy the rigidity or connectedness arguments below.
+
+For theta in I=(phi-pi/3,phi+pi/3), and every i,
+
+  |theta-alpha_i| < pi/2,
+
+so the real inner product of e(theta) with v_i is strictly positive.
+ApproachingContinuum.outer_strip therefore gives, for each i, a genuine
+outer strip near x+e(theta) contained in Straddle(K_i). Taking the minimum
+of finitely many positive widths gives such a strip in W. In angular
+coordinates it can be stated as follows:
+
+  for every theta in I there is delta_theta>0 such that
+  |theta'-theta|<delta_theta and 1<r<1+delta_theta imply
+  x+r*e(theta') belongs to W.                                  (B)
+
+The source uses Euclidean distance between unit directions, which implies
+this angular version by continuity, shrinking the width if necessary.
+Every radial side here is OUTER. No per-continuum side choices are made.
+
+The cone is CLOSED, but I is OPEN. At an endpoint direction of the cone
+and any theta strictly inside I, the inner product is still positive.
+Thus this step includes aperture exactly pi/3.
+
+3. INDEPENDENT PROOF OF OA120, INCLUDING ALL MARGINS
+
+Assume only that W is open, (A) holds, and (B) holds on the open interval
+I of width 2*pi/3. These hypotheses already contradict WeakColoring.
+
+3a. A uniform connected sector.
+
+Take the compact interval J=[phi-pi/4,phi+pi/4], strictly inside I.
+The angular neighbourhoods from (B) cover J. A finite subcover, followed
+by the minimum of its positive radial widths, gives eta>0 such that
+
+  theta in J, 1<r<1+eta => x+r*e(theta) in W.
+
+Shrink eta to satisfy eta<1/2. Define
+
+  S={x+r*e(theta): 1<r<1+eta, |theta-phi|<pi/4}.
+
+S is nonempty and connected: it is the continuous image of the product
+of two nonempty intervals. It is also open, though the source connected
+lemma does not require this. It is contained in W. We have used uniformity
+only on J, not near the endpoints of I.
+
+3b. Each p in S has a genuine unit neighbour in W.
+
+Write p=x+r*e(theta), so 1<r<3/2. Put alpha=acos(r/2). Then
+
+  0<alpha<pi/3.
+
+Choose beta=theta-alpha when theta>=phi, and beta=theta+alpha when
+theta<phi. For the first case,
+
+  beta >= phi-alpha > phi-pi/3,
+  beta <= theta < phi+pi/4 < phi+pi/3.
+
+For the second case,
+
+  beta > theta > phi-pi/4 > phi-pi/3,
+  beta < phi+alpha < phi+pi/3.
+
+Thus beta is strictly inside I, including theta=phi. The base-circle
+point q0=x+e(beta) satisfies |p-q0|=1, but we do NOT assume q0 is in W.
+
+For s>1 sufficiently close to 1, define
+
+  g(s)=(r^2+s^2-1)/(2*r*s),
+  alpha(s)=acos(g(s)),
+  beta(s)=theta-alpha(s) or theta+alpha(s), with the same sign as above,
+  q(s)=x+s*e(beta(s)).
+
+At s=1, g(1)=r/2 is strictly between -1 and 1. Positivity of r and s
+and continuity give an interval about 1 on which g(s) remains in (-1,1).
+Hence beta(s)->beta and q(s)->q0. The outer strip (B) at beta ensures
+q(s) in W for every sufficiently small positive s-1: both its angular
+and radial inequalities hold strictly. The cosine identity gives exactly
+
+  |p-q(s)|^2 = r^2+s^2-2*r*s*g(s) = 1.
+
+Choose one such q(s). No lower bound uniform in p on the allowable s-1
+is needed. In particular, it causes no problem if this width collapses
+as r decreases to 1 and beta approaches an endpoint of I.
+
+The neighbours need only lie in the FULL W. They need not lie in S or
+in the compact angular subinterval J. Substituting V=S without a further
+argument would be unjustified; the accepted proof uses U=V=W.
+
+3c. Source rigidity applies at every point of S.
+
+For the chosen neighbour let v=q(s)-p, with |v|=1 and p+v in W.
+Since W is open, open_two_unit_directions gives another unit vector w
+with p+w in W and transverseDet(v,w) nonzero. The lemma does not require
+p itself to lie outside W, any separation of U and V, or distinct radial
+sides. Its proof perturbs a unit direction within an open set, giving a
+nonparallel vector.
+
+Apply binary_open_local_rigidity with U=V=W. All its hypotheses are now
+present: measurable c, WeakColoring, openness, (A) twice, p in W, both
+actual unit neighbours in W, and nonzero transverse determinant.
+It yields a ball about p on which c is essentially a single label i_p.
+
+This is ambient local essential constancy at EVERY p in S. In particular
+p belongs to essentialLocalSet(c,i_p), even if p itself lies in a null
+exceptional set for the colouring. connected_local_ae_constant now gives
+a single i such that
+
+  S is contained in essentialLocalSet(c,i).                    (C)
+
+The source proves this using pairwise disjoint open essential-local sets;
+their disjointness follows from positive area of any nonempty open
+intersection. This is stronger than merely assigning colours to a curve.
+
+3d. One fixed unit pair yields the final contradiction.
+
+Set r0=1+eta/2 and lambda=asin(1/(2*r0)). Then
+
+  0<lambda<pi/6<pi/4.
+
+The points p_plus=x+r0*e(phi+lambda) and
+p_minus=x+r0*e(phi-lambda) belong to S, and
+
+  |p_plus-p_minus|=2*r0*sin(lambda)=1.
+
+By (C), there are open neighbourhoods U_plus,U_minus of these points
+on which c=i almost everywhere. The translation set
+
+  T=(U_plus-p_plus) intersect (U_minus-p_minus)
+
+is open and contains 0, so has positive area. Translation invariance of
+Lebesgue measure gives c(u+p_plus)=i=c(u+p_minus) for a.e. u in T.
+However, ae_translated_unit_pair says these two colours are unequal for
+a.e. u in the plane. Their conull intersection with T is nonempty,
+contradiction. This proves OA120 and hence CC60.
+
+4. THE ALMOST-EVERYWHERE AND DEPENDENCY AUDIT
+
+There is no intersection over uncountably many conull sets in this proof.
+
+* Finitely many spatial exclusions produce the one fixed restriction (A).
+* Unit-neighbour choices are pure geometry, pointwise in p; the chosen
+  points need not themselves avoid any colouring exceptional set.
+* binary_open_local_rigidity already handles the a.e. translated four-edge
+  paths using finite intersections and the source Fubini/shear argument.
+* connected_local_ae_constant uses open essential-local sets and the
+  existing local-to-a.e. theorem; it does not select a common exceptional
+  set over arbitrary balls by an uncountable intersection.
+* The finish fixes just one unit pair, then intersects finitely many
+  conull statements on a positive-area open set.
+
+The original WeakColoring condition is a product-a.e. statement, so a
+claim of properness at a specified direction does need justification.
+Here it is licensed by WeakColoring.weak_all_directions, whose proof
+upgrades the parameter using continuity of L2 translation correlations.
+Rigidity.ae_translated_unit_pair calls precisely that result. Measurability
+of c is included in the accepted contract and is used there and in local
+rigidity. No pointwise proper-colouring assumption has been smuggled in.
+
+No trace-palette cardinality, BinaryCenter premise, angular alternation,
+essential angular boundary, T6, or strict-state theorem is used in this
+declaration-level proof. In particular the new geometry does not assume
+the old AC conclusion. AngularBoundary imports BoundaryTrace, which also
+imports States; that compiled import is distinct from an actual use of
+the strict-state declarations in this proof. This review does not claim
+those imports have been removed or that the whole repository is free of
+the older analytic machinery.
+
+5. THE CLOSED ENDPOINT AND THE REJECTED AXIS ARGUMENT
+
+The endpoint is established by the strict inequality r>1, which gives
+acos(r/2)<pi/3. At r=1 the sign-choice neighbour can fall on an excluded
+endpoint of I; working outside the unit circle repairs exactly that
+problem. Neither a uniform neighbour margin as r->1 nor a closed positive
+arc is required. Thus weakening the theorem to aperture <60 degrees is
+unnecessary.
+
+The unsigned-axis extension is not licensed. For example, take x=0 and
+real segments K_plus=[0,rho], K_minus=[-rho,0], 0<rho<1/10. Their signed
+approaches are +1 and -1. On the positive real ray near radius one,
+
+  Straddle(K_plus) = (1,1+rho),
+  Straddle(K_minus) = (1-rho,1).
+
+These radial portions do not intersect. Choosing an outer strip for one
+and an inner strip for the other cannot produce a strip in their common
+intersection. The allowance of independent radial sides for two different
+angular locations in binary_strip_palette_rigidity does not fix this.
+This refutes that proposed strip proof, not every conceivable separate
+theorem about opposite signed directions.
+
+6. THE SIX-CYCLE CONSEQUENCE AND THE TINY FINITE CHECK
+
+For E_i={i,i+1 mod 6}, the actual common-interface data must obey:
+
+  in every CLOSED 60-degree angular cone, the labels covered by the
+  corresponding excluded edges number at most THREE.
+
+For q=(0,0,1,3,3,4), edges 0,1,2 have directions 0,0,60 degrees and
+cover labels {0,1,2,3}. Their residual pair is {4,5}, so CC60 applies.
+The common positive arc is (-30 degrees,90 degrees), width 120 degrees.
+There is also a second forbidden cone using edges 3,4,5, directions
+180,180,240 degrees and excluded labels {0,3,4,5}.
+
+On the six-direction grid q_i in Z/6, the exact test is: for each d,
+take ALL edges with q_i in {d,d+1}; their endpoint union must have at
+most three labels. It includes equality at the cone endpoints and is
+applied to directed residues, not residues modulo three.
+
+I ran a small independent standard-library Node check, with no search or
+grid approximation, on:
+  work/openmath-supervisor/checkins/20261114T172056Z/ac-independent-audit.json
+  work/astra-six-colour/a3-cone-filter.txt
+  work/openmath-supervisor/checkins/20261114T172056Z/conditional-cone-filter.json
+
+Results: 174 distinct input tuples; 168 rejected by the exact cone rule;
+all 168 author certificates have the correct consecutive direction pair,
+selected edges, and excluded-label union; both reported survivor lists
+equal the independently recomputed list of six:
+
+  (0,0,2,2,4,4), (0,0,4,4,2,2), (0,1,2,3,4,5),
+  (0,2,2,4,4,0), (0,4,4,2,2,0), (0,5,4,3,2,1).
+
+This validates the filter on those supplied inputs. It does not validate
+the completeness of the preceding enumeration, prove that its palette
+assumptions hold for every actual interface, classify continuous direction
+configurations, or construct any global colouring. The cone theorem itself
+does not need a palette-size assumption and applies beyond that grid.
+
+7. REMAINING OBLIGATIONS AND RECOMMENDED SCOPE
+
+There is no remaining mathematical gap identified in OA120 or CC60.
+The result is suitable for a focused private formalization attempt.
+The new obligations are ordinary formal geometry and compactness plumbing:
+the uniform sector from a compact angular interval; continuity and exact
+distance of q(s); connectedness of S; and the same-essential-colour unit
+pair contradiction. Existing source statements already supply the hard
+measurable-rigidity steps.
+
+An application must still supply actual same-centre ApproachingContinuum
+data and the specified spatial support exclusions. A finite SAT witness
+does not supply these. Signed directions may not be reversed separately
+to fit a cone. No claim beyond the stated cone obstruction and its exact
+finite consequence is accepted here. No original files were changed,
+no subagents or remote jobs were used, and no Lean build was run.

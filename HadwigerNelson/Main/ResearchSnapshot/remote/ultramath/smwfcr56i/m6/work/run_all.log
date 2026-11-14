@@ -1,0 +1,215 @@
+############ 1. Lean 4 / Mathlib formalisation of the section 8.5 certificate
+Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+'OAI.Audit.Moser.edges_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Audit.Moser.nonedges_not_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Audit.Moser.P_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Audit.Moser.not_three_colorable' depends on axioms: [propext]
+'OAI.Audit.Moser.placed_edges_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Audit.Moser.placed_nonedges_not_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Audit.Moser.Q_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+############ 2. exact verification of section 8.5 / 8.6 (coordinates, edges,
+################ non-3-colourability, placement, Lemma 8.9 certificate, Table 1/2)
+== (a) unit distances among the seven points of (8.5) ==
+  #unit pairs = 11
+     0 - A
+     0 - B
+     0 - uA
+     0 - uB
+     A - B
+     A - T
+     B - T
+     T - uT
+     uA - uB
+     uA - uT
+     uB - uT
+  #non-unit pairs = 10
+    non-unit: 0 T   sqdist =  = 3 + 0*r3 + 0*r11 + 0*r3r11
+    non-unit: 0 uT   sqdist =  = 3 + 0*r3 + 0*r11 + 0*r3r11
+    non-unit: A uA   sqdist =  = 1/3 + 0*r3 + 0*r11 + 0*r3r11
+    non-unit: A uB   sqdist =  = 7/6 + 0*r3 + 0*r11 + -1/6*r3r11
+    non-unit: A uT   sqdist =  = 3/2 + 0*r3 + 0*r11 + -1/6*r3r11
+    non-unit: B uA   sqdist =  = 7/6 + 0*r3 + 0*r11 + 1/6*r3r11
+    non-unit: B uB   sqdist =  = 1/3 + 0*r3 + 0*r11 + 0*r3r11
+    non-unit: B uT   sqdist =  = 3/2 + 0*r3 + 0*r11 + 1/6*r3r11
+    non-unit: T uA   sqdist =  = 3/2 + 0*r3 + 0*r11 + 1/6*r3r11
+    non-unit: T uB   sqdist =  = 3/2 + 0*r3 + 0*r11 + -1/6*r3r11
+  |u|^2 = 1 : True
+  |T-uT|^2 =  = 1 + 0*r3 + 0*r11 + 0*r3r11  is 1 : True
+  multiplier norm: 35^2+12^2 = 1369 = 37^2 : True
+
+== (b) non-3-colourability ==
+  colourings tried (3^7) = 2187  proper = 0
+  => the graph is NOT 3-colourable (exhaustive check)
+  forcing argument check: triangles (0,A,B),(T,A,B) share edge AB;
+     triangles (0,uA,uB),(uT,uA,uB) share edge uA-uB;
+     all four are triangles: True
+     |T - uT| = 1 (contradiction edge): True
+
+== (c) placement (8.6), Lemma 8.9 certificate ==
+  brackets: r3 in [1.7320508075688772, 1.7320508075688772]
+            r11 in [3.3166247903554, 3.3166247903554]
+
+  g     xi (approx)   ups (approx)   |z|^2 in            P < P'  
+  0      -1.290595     0.187568   [1.700816000,1.700816000]   P<0? True  l<4? True  0<l? True
+  A      -0.633544     0.941414   [1.287637063,1.287637063]   P<0? True  l<4? True  0<l? True
+  B      -0.309219    -0.004532   [0.095637063,0.095637063]   P<0? True  l<4? True  0<l? True
+  T       0.347832     0.749314   [0.682458126,0.682458126]   P<0? True  l<4? True  0<l? True
+  uA     -1.159756     1.178971   [2.735007568,2.735007568]   P<0? True  l<4? True  0<l? True
+  uB     -0.366595     0.569960   [0.459245983,0.459245983]   P<0? True  l<4? True  0<l? True
+  uT     -0.235756     1.561364   [2.493437551,2.493437551]   P<0? True  l<4? True  0<l? True
+
+  ALL SEVEN VERTICES SATISFY 0 < |z|^2 < 4 AND P < P' : True
+
+== paper's Table 1/2 rational certificate, re-checked ==
+  0   yu<by:1 H<bH:1 a<ll:1 lu<b:1 yuH2<P+:1 Pr>P-'_:1 (a,b) in (0,4), 1 excluded:1 box contains true l:1  -> OK
+  A   yu<by:1 H<bH:1 a<ll:1 lu<b:1 yuH2<P+:1 Pr>P-'_:1 (a,b) in (0,4), 1 excluded:1 box contains true l:1  -> OK
+  B   yu<by:1 H<bH:1 a<ll:1 lu<b:1 yuH2<P+:1 Pr>P-'_:1 (a,b) in (0,4), 1 excluded:1 box contains true l:1  -> OK
+  T   yu<by:1 H<bH:1 a<ll:1 lu<b:1 yuH2<P+:1 Pr>P-'_:1 (a,b) in (0,4), 1 excluded:1 box contains true l:1  -> OK
+  uA  yu<by:1 H<bH:1 a<ll:1 lu<b:1 yuH2<P+:1 Pr>P-'_:1 (a,b) in (0,4), 1 excluded:1 box contains true l:1  -> OK
+  uB  yu<by:1 H<bH:1 a<ll:1 lu<b:1 yuH2<P+:1 Pr>P-'_:1 (a,b) in (0,4), 1 excluded:1 box contains true l:1  -> OK
+  uT  yu<by:1 H<bH:1 a<ll:1 lu<b:1 yuH2<P+:1 Pr>P-'_:1 (a,b) in (0,4), 1 excluded:1 box contains true l:1  -> OK
+  Table 1/2 certificate valid for all seven rows: True
+  P+ < P-' in every row of Table 1: True
+
+== residuals of (8.5)->rounding (paper's displayed dx,dy divided by 710400000000) ==
+  0   residual match: True   (dx,dy)=(1/185000, -3/92500)
+  A   residual match: True   (dx,dy)=(-123/2960000, 53/3700000)
+  B   residual match: True   (dx,dy)=(-51/2960000, -117/3700000)
+  T   residual match: True   (dx,dy)=(53/1480000, 7/462500)
+  uA  residual match: True   (dx,dy)=(8010811/177600000000, -1280853/47360000000)
+  uB  residual match: True   (dx,dy)=(396937/59200000000, -5442559/142080000000)
+  uT  residual match: True   (dx,dy)=(4120811/88800000000, -2338559/71040000000)
+  all displayed residuals reproduced exactly: True
+  |T-uT|^2 with midpoint substitution = 1.000004956894311  (exact value 1; midpoint error only)
+
+== summary of assertions ==
+  ALL ASSERTIONS PASSED
+
+############ 3. exact values for the report
+g    xi                       ups                      |z|^2        P            P'            
+0    -1.2905945946            0.1875675676             1.7008160000 0.8661244194 1.3889728356  
+A    -0.6335435370            0.9414136445             1.2876370632 0.0895503190 0.1197727189  
+B    -0.3092192126            -0.0045323015            0.0956370632 0.0000016900 0.0006983199  
+T    0.3478318450             0.7493137754             0.6824581264 0.0221254901 0.0265819267  
+uA   -1.1597561444            1.1789712694             2.7350075684 9.7252412566 19.4762921470 
+uB   -0.3665945783            0.5699599968             0.4592459828 0.0019926823 0.0250709836  
+uT   -0.2357561281            1.5613636986             2.4934375511 12.5743610605 13.0225720287 
+
+|z_0 |^2 = 106301/62500 + 0*sqrt3 + 0*sqrt11 + 0*sqrt33
+|z_A |^2 = 206051/62500 + -29/25*sqrt3 + 0*sqrt11 + 0*sqrt33
+|z_B |^2 = 131551/62500 + -29/25*sqrt3 + 0*sqrt11 + 0*sqrt33
+|z_T |^2 = 293801/62500 + -58/25*sqrt3 + 0*sqrt11 + 0*sqrt33
+|z_uA|^2 = 149882/46875 + -29/30*sqrt3 + 29/150*sqrt11 + 149/1500*sqrt33
+|z_uB|^2 = 206639/93750 + -29/30*sqrt3 + -29/150*sqrt11 + 149/1500*sqrt33
+|z_uT|^2 = 293801/62500 + -29/15*sqrt3 + 0*sqrt11 + 149/750*sqrt33
+
+############ 3b. decimal-free exact rational certificate for Lemma 8.9
+Exact rational certificate for Lemma 8.9 (no decimals anywhere).
+K = Q(sqrt3,sqrt11), a0 + a1*sqrt3 + a2*sqrt11 + a3*sqrt33.
+
+brackets (verified by exact squaring):
+   108253175473/62500000000 < sqrt3  < 1732050807569/1000000000000   (lo^2 <= 3 <= hi^2 exactly)
+   663324958071/200000000000 < sqrt11 < 829156197589/250000000000   (lo^2 <= 11 <= hi^2 exactly)
+
+g    P' - P  as (a0,a1,a2,a3)                                 lower bound > 0       
+0     P'-P > 319835183522319532260768268201282088391/611716844797134399414062500000000000000  (= 0.5228484163)
+A     P'-P > 231094387488931515278074350350882811871479009/7646460559964179992675781250000000000000000000  (= 0.0302223997)
+B     P'-P > 5326752751555504884412914487636986270751509/7646460559964179992675781250000000000000000000  (= 0.0006966299)
+T     P'-P > 17037938342919674249458208691653267783615259/3823230279982089996337890625000000000000000000  (= 0.0044564248)
+uA    P'-P > 9059164665141591375064940242504530896217504183910873823498387/929044958035647869110107421875000000000000000000000000000000  (= 9.7510508903)
+uB    P'-P > 5145787034422971452232656285028999324106449232216176475719463/222970789928555488586425781250000000000000000000000000000000000  (= 0.0230783011)
+uT    P'-P > 3701405565137355946982488572341915773979137424083824043182113/8258177404761314392089843750000000000000000000000000000000000  (= 0.4482109531)
+
+P' - P > 0 for all seven vertices (and the lower bounds above are exact
+rationals): True
+
+g    |z|^2 (a0,a1,a2,a3)            lo(|z|^2)      hi(|z|^2)     
+0     |z|^2 > 106301/62500                                         (= 1.7008160000)   and  4-|z|^2 > 143699/62500
+A     |z|^2 > 32190926580499/25000000000000                        (= 1.2876370632)   and  4-|z|^2 > 4238067088717/1562500000000
+B     |z|^2 > 2390926580499/25000000000000                         (= 0.0956370632)   and  4-|z|^2 > 6100567088717/1562500000000
+T     |z|^2 > 8530726580499/12500000000000                         (= 0.6824581264)   and  4-|z|^2 > 2591829588717/781250000000
+uA    |z|^2 > 51281391907019119258294867/18750000000000000000000000 (= 2.7350075684)   and  4-|z|^2 > 158124053952998183889359997/125000000000000000000000000
+uB    |z|^2 > 8610862176941744258294867/18750000000000000000000000 (= 0.4592459828)   and  4-|z|^2 > 1327782756460542051668079991/375000000000000000000000000
+uT    |z|^2 > 23375977041982244258294867/9375000000000000000000000 (= 2.4934375511)   and  4-|z|^2 > 94160153053268183889359997/62500000000000000000000000
+
+0 < |z|^2 and |z|^2 < 4 for all seven vertices: True
+
+############ 4. section 5.3: uniform expansion (5.9) and constants (5.10)
+Im log(1 + d e^{-it})            = d*(d*cos(t) - 1)*sin(t)
+|d + e^{it}|                     = -d**2*cos(t)**2/2 + d**2/2 + d*exp(I*t)/2 + d*exp(-I*t)/2 + 1
+delta = arccos(|d+e^{it}|/2)     = sqrt(3)*d**2*exp(2*I*t)/36 - sqrt(3)*d**2/9 + sqrt(3)*d**2*exp(-2*I*t)/36 - sqrt(3)*d*exp(I*t)/6 - sqrt(3)*d*exp(-I*t)/6 + pi/3
+
+a_+(t) = d-coeff of alpha_+(t)-(t+kappa) = -sqrt(3)*exp(I*t)/6 - sin(t) - sqrt(3)*exp(-I*t)/6
+a_-(t) = d-coeff of alpha_-(t)-(t-kappa) = sqrt(3)*exp(I*t)/6 - sin(t) + sqrt(3)*exp(-I*t)/6
+  matches paper (5.9) line 1:  a_+ = -sin t - cos t/sqrt3 : True    a_- = -sin t + cos t/sqrt3 : True
+
+d-coefficient of F, a_+(t+kappa) - a_-(t+kappa) = -2*sqrt(3)*cos(t + pi/3)/3
+  equals (2/sqrt3) sin(t - pi/6)     : True
+  equals -(2/sqrt3) cos(t + kappa)   : True
+  NOTE: a_+(t) - a_-(t+kappa) = -sqrt(3)*exp(I*t)/6 - sqrt(3)*exp(-I*t - I*pi/3)/6 - sqrt(3)*exp(I*t + I*pi/3)/6 + cos(t + pi/6) - sqrt(3)*exp(-I*t)/6  vanishes identically -- so the O(d) term genuinely uses a_+(t+kappa), as printed.
+
+=== full nonlinear check: |F(t) - t - d*c1(t)| = O(d^2) ===
+sup over grid of |F(t)-t-d c1(t)|/d^2  = 0.722656039844
+  => O(d^2) remainder of (5.9) is uniform; (5.10) holds with c_0 = 1 - O(d).
+
+=== (5.10): max over six phases spaced by kappa ===
+min over t of max_j sin(t - j pi/3 - pi/6) = 0.866025403784439
+min over t of max_j cos(t - j pi/3 - pi/6) = 0.866025403784439
+sqrt(3)/2 = 0.866025403784439
+  both equal sqrt(3)/2 exactly, so c_0 = (2/sqrt3)(sqrt3/2) = 1 - O(d).
+
+############ 5. finite combinatorics of sections 8.2, 8.3/8.5, 6.3.4
+==============================================================================
+1.  FIVE-CYCLE SIGNS (Section 8.2)
+==============================================================================
+  sign patterns: 32.
+  (a) '[I, O both nonempty]  <=>  [one + run, one - run, lengths 2 and 3]': OK   (10 patterns qualify)
+  (b) options(sigma) = options(-sigma) for every qualifying pattern: OK
+  (c) every option is a diagonal D_x = {x, x+2}: OK
+  (d) run shapes of qualifying patterns: [((-1, 2), (1, 3)), ((-1, 3), (1, 2))]   (lengths 2 and 3, as the paper says)
+  (e) index differences inside an option set: [2, 3]  (i.e. +/-2 mod 5)
+
+==============================================================================
+2.  FIVE-CYCLE SIX-POSITION WORD (Section 8.2, final step)
+==============================================================================
+  steps p_{j+1}-p_j = +-1 (5.7, disjointness),
+  antipodal p_{j+3}-p_j in {0,+-2} (identical option sets at e and -e).
+  solutions among all 5^6 = 15625 words: 0 OK
+  the excluded configurations are exactly the 'sum of three steps' one:
+    possible sums of three steps in {-1,+1}: [-3, -1, 1, 3] ; mod 5: [1, 2, 3, 4]
+    none is 0 mod 5; +-2 mod 5 forces sum +-3, i.e. all three signs equal: True
+
+==============================================================================
+3.  FOUR-CYCLE SIX-POSITION WORDS (Lemmas 8.3, 8.4, Prop. 8.5)
+==============================================================================
+  pointwise-legal words (adjacency inequality + antipodal equality): 34
+  (a) every such word contains X: OK
+  (b) words with X on BOTH parities: 6 -> [('X', 'U', 'V', 'X', 'U', 'V'), ('X', 'V', 'U', 'X', 'V', 'U'), ('U', 'X', 'V', 'U', 'X', 'V'), ('U', 'V', 'X', 'U', 'V', 'X'), ('V', 'X', 'U', 'V', 'X', 'U'), ('V', 'U', 'X', 'V', 'U', 'X')]
+      each is 3-periodic of the form (X,A,B,X,A,B) with A != B: OK
+  (c) cross-word restriction: a diagonal at a position of w cannot equal a
+      diagonal at an ADJACENT position of a compatible nearby word w'.
+      every compatible nearby word equals it (isolation): OK 
+  (d) a 3-periodic word (X,A,B,X,A,B) is not equal to its 1-position shift:
+       OK
+  (e) Prop 8.5 arc count: 3 points equally spaced by pi/3 on a circle of
+      circumference pi; an open arc containing all three has length > 2pi/3 > pi/2.
+      complements: the 3 gaps each have length pi/3, so the closed complementary
+      arc lies in one gap and has length < pi/3;  pi - pi/3 = 2pi/3 > pi/2 : OK
+
+==============================================================================
+4.  FIVE-CYCLE ACCUMULATION (Section 6.3.4)
+==============================================================================
+  j with {j-1, j+2} disjoint from {2,4}: [1, 4] OK
+    j=1: adjacent pairs at a and -a are {0,1} and [0, 3]
+        -> the two steps from state 1 are banned;
+    j=4: adjacent pairs at a and -a are {0,1} and [1, 3]
+        -> the two steps from state 0 are banned;
+  conclusion: the shared state is null, contradicting its membership in S(0).
+  Verified by the five-residue check above.
+
+==============================================================================
+ALL CHECKS PASSED
+==============================================================================
+
+############ ALL CHECKS COMPLETE

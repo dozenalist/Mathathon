@@ -1,0 +1,6 @@
+.scratch/t/pr_Analysis_PlaneSpectrum_Basic.lean:71:0: warning: 
+'Mathlib.Data.Real.Basic' has been deprecated: please replace this import by
+
+import Mathlib.Basic.Real.Basic
+.scratch/t/pr_Analysis_PlaneSpectrum_Basic.lean:581:4: error(lean.unknownIdentifier): Unknown constant `Circle.isCoveringMap_exp.existsUnique_continuousMap_lifts`
+.scratch/t/pr_Analysis_PlaneSpectrum_Basic.lean:580:9: error: Tactic `rcases` failed: `x✝ : ?m.78` is not an inductive datatype

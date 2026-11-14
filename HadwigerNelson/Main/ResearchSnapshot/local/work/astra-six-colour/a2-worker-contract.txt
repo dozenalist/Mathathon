@@ -1,0 +1,46 @@
+A2 HANDOFF — THREE RESULTS AND ONE COUNTERMODEL
+
+1. NR (proved on paper from actual source density lemmas):
+Measurable weak k-colouring; one fixed centre x; RealStates B0->J,B1->K;
+measurable B0,B1 swapped a.e. by tau=pi/3; at most two labels outside J union K.
+Then mu(B_b intersect (B_b-gamma))=0 for b=0,1, gamma=acos(5/6).
+This is a NULL-RETURN statement, not mu(B0 union B1)=0.
+
+2. TC (proved on paper, stronger finite-state consumer):
+Finite measurable state f, fixed label sets L_i represented on its fibres
+at one actual colouring centre, and f(t+2*tau)=f(t) a.e. imply
+  |Fin k minus (L_f(t) union L_f(t+pi+gamma))| >= 3 a.e.
+Producer: States.states_densityOne on three rotated endpoint pairs,
+BinaryPalettes.sourceTriangle_pair, States.two_label_triangle_impossible.
+At k=6 the corresponding union has size at most 3.
+
+3. Angular regression model (NOT an actual WeakColoring6):
+h=pi/6, f(t)=floor(t/h) mod 4, P=(02,03,35,25)[f(t)].
+Each 60-degree orbit alternates one pair, but there are four global palettes.
+The two orbit-type sets {f even},{f odd} each have measure 1/2 and are
+60-degree invariant. Since h<gamma<2h, a gamma step changes f by 1 or 2;
+within one type the phase flips. Thus both types satisfy NR. A pi+gamma
+step changes f by 3 or 0, giving palette-union size 3 or 2, so TC also holds.
+For actual unit vectors (1,-1,-1,-1,1,1), the strip allowed sets are
+{2,3} and {0,5}, perhaps swapped; all four palettes meet both.
+Do not infer global two-state collapse from enumerating one six-position word.
+
+4. AC (complete paper-level source corollary; NEEDS independent audit):
+Finitely many approaching continua at the SAME centre and in the SAME unit
+direction cannot jointly exclude all but two labels from their straddling
+sets under measurable WeakColoring.
+Proof: W=intersection of straddling sets is open and two-coloured a.e.
+It contains a one-sided strip in every direction except two perpendiculars B.
+One-sided traces give a BinaryCenter; binary_alternation gives a Boolean
+tau-flip. At t,t+tau outside B, binary_strip_palette_rigidity with U=V=W
+and independent radial side choices gives essential local constancy.
+Hence the essential boundary is in B union (B-tau), at most four points.
+angleBoundary_nonempty + angleBoundary_six + sixAngle_injective require six.
+
+AC consumes exactly the fixed q regression geometry: cycle edges 1,2,3
+share direction -1 and exclude labels 1,2,3,4, leaving {0,5}. It therefore
+rules out ACTUAL common interfaces with q=(0,3,3,3,0,0), without B2 or T6.
+It does NOT rule out general nonaligned six-cycle directions.
+
+Full proofs and source references: outputs/ASTRA-SIX-COLOUR-A2.txt.
+Exact finite table: work/astra-six-colour/a2-exact-field-check.txt.

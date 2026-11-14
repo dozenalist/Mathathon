@@ -1,0 +1,11 @@
+import OAI.Analysis.PlaneSpectrum.Energy
+open MeasureTheory
+namespace OAI
+namespace PlaneFiveColor.Spectral
+#check @MeasureTheory.MeasurePreserving.integral_comp
+#check @MeasureTheory.MeasurePreserving.integral_comp'
+#check @MeasureTheory.integral_map
+#check @MeasureTheory.MeasurePreserving.map_eq
+#check @MeasureTheory.MeasureTheory.Measure.dirac_apply'
+end PlaneFiveColor.Spectral
+end OAI

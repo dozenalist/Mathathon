@@ -1,0 +1,10 @@
+{
+  "at": "2026-11-14T08:12:43.521Z",
+  "checks": "Exact73cell patch,888edges against previously checked forced offsets,plain6colour CNF equality,explicit8colouring,proof syntax only",
+  "failures": [],
+  "proofLines": 42109,
+  "deletedLines": 0,
+  "emptyClauseLast": true,
+  "rupStepsVerified": false,
+  "scope": "No UNSAT acceptance until independent proof checker passes. Eight-colouring proves upper bound8 on patch only, not lower bound8."
+}

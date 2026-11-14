@@ -1,0 +1,13 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: 442686edc8e5b95c9e6781a8ec6b3e84faa07597f8ec168c6635bd6e04e9c786
+Status: passed
+Exit code: 0
+
+STDOUT
+'OAI.EuclideanFiveColor.fixed_state_no_unit_three_centres' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.strict_state_sequence_no_unit_three_centres' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+STDERR
+

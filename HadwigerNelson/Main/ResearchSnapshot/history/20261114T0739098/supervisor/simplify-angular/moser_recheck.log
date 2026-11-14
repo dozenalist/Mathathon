@@ -1,0 +1,4 @@
+rc_moser=0
+'OAI.EuclideanFiveColor.moser_edge_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.moser_not_three_colorable' depends on axioms: [propext, Classical.choice, Quot.sound]
+rc_check=0

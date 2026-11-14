@@ -1,0 +1,41 @@
+======================================================================
+(i) all 21 squared pair distances: hand basis vs sympy
+   0-A   EDGE  |d|^2 = (Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=True  agree=True
+   0-B   EDGE  |d|^2 = (Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=True  agree=True
+   0-T   ----  |d|^2 = (Fraction(3, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=False  agree=True
+   0-uA  EDGE  |d|^2 = (Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=True  agree=True
+   0-uB  EDGE  |d|^2 = (Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=True  agree=True
+   0-uT  ----  |d|^2 = (Fraction(3, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=False  agree=True
+   A-B   EDGE  |d|^2 = (Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=True  agree=True
+   A-T   EDGE  |d|^2 = (Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=True  agree=True
+   A-uA  ----  |d|^2 = (Fraction(1, 3), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=False  agree=True
+   A-uB  ----  |d|^2 = (Fraction(7, 6), Fraction(0, 1), Fraction(0, 1), Fraction(-1, 6))  unit=False  agree=True
+   A-uT  ----  |d|^2 = (Fraction(3, 2), Fraction(0, 1), Fraction(0, 1), Fraction(-1, 6))  unit=False  agree=True
+   B-T   EDGE  |d|^2 = (Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=True  agree=True
+   B-uA  ----  |d|^2 = (Fraction(7, 6), Fraction(0, 1), Fraction(0, 1), Fraction(1, 6))  unit=False  agree=True
+   B-uB  ----  |d|^2 = (Fraction(1, 3), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=False  agree=True
+   B-uT  ----  |d|^2 = (Fraction(3, 2), Fraction(0, 1), Fraction(0, 1), Fraction(1, 6))  unit=False  agree=True
+   T-uA  ----  |d|^2 = (Fraction(3, 2), Fraction(0, 1), Fraction(0, 1), Fraction(1, 6))  unit=False  agree=True
+   T-uB  ----  |d|^2 = (Fraction(3, 2), Fraction(0, 1), Fraction(0, 1), Fraction(-1, 6))  unit=False  agree=True
+   T-uT  EDGE  |d|^2 = (Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=True  agree=True
+  uA-uB  EDGE  |d|^2 = (Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=True  agree=True
+  uA-uT  EDGE  |d|^2 = (Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=True  agree=True
+  uB-uT  EDGE  |d|^2 = (Fraction(1, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))  unit=True  agree=True
+  ALL 21 AGREE BETWEEN THE TWO ARITHMETICS: True
+
+======================================================================
+(ii) the paper's structural argument: two diamonds sharing vertex 0
+  D1 = {0,A,B,T}: 5 internal edges [('0', 'A'), ('0', 'B'), ('A', 'B'), ('T', 'A'), ('T', 'B')]
+      K4 minus edge [('0', 'T')] -> True
+  D2 = {0,uA,uB,uT}: 5 internal edges [('0', 'uA'), ('0', 'uB'), ('uA', 'uB'), ('uT', 'uA'), ('uT', 'uB')]
+      K4 minus edge [('0', 'uT')] -> True
+  shared vertices of D1,D2: {'0'}
+  every proper 3-colouring of G forces colour(0) = colour(T): True (vacuous, G is not 3-colourable)
+  every proper 3-colouring of G forces colour(0) = colour(uT): True (vacuous, G is not 3-colourable)
+  D1 alone: 6 proper 3-colourings, all force the equality: True
+  D2 alone: 6 proper 3-colourings, all force the equality: True
+
+======================================================================
+(iii) closed form vs brute force at k = 6, 7
+  k=6: brute=31680  formula=31680  equal=True
+  k=7: brute=134400  formula=134400  equal=True

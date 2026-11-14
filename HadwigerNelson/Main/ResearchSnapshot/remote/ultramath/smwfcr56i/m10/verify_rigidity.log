@@ -1,0 +1,28 @@
+=== A. sharpness of 'connected + unit-free => diameter <= 1' (Lemma 1) ===
+PASS  A1  B(0,1/2) is unit-free: |x|+|y| <= 1/2+1/2 = 1, equality needs |x|=|y|=1/2 (not in the open disc)
+PASS  A2  B(0,1/2) has diameter exactly 1 (sup, not attained): 2*(1/2) = 1
+PASS  A3  closed disc of radius 1/2 contains a unit pair: antipodal boundary points, distance 2*(1/2) = 1
+PASS  A4  closed connected unit-free sets have diameter < 1; sharp: closed discs of radius r<1/2 have diameter 2r -> 1
+
+=== B. on a circle of radius rho a unit chord exists iff 2*rho >= 1 ===
+PASS  B   rho=1/4: max chord 2rho=1/2; unit chord exists iff 2rho>=1
+PASS  B   rho=2/5: max chord 2rho=4/5; unit chord exists iff 2rho>=1
+PASS  B   rho=1/2: max chord 2rho=1; unit chord exists iff 2rho>=1
+PASS  B   rho=3/5: max chord 2rho=6/5; unit chord exists iff 2rho>=1
+
+=== C. countably many CONNECTED unit-free Borel classes do cover the plane ===
+PASS  C   half-open square of side 1/2 has diameter sqrt(2)/2 < 1   [0.7071067812]
+
+=== D. paper section 1, hexagonal 7-colouring with circumradius r = 2/5 ===
+PASS  D1  hexagon diameter 2r = 4/5 < 1   [4/5]
+PASS  D2  same-colour hexagons are at distance >= (sqrt(21)-2)r > 1   [1.03303027798]
+PASS  D3  (sqrt(21)-2)r > 1  <=>  2 sqrt(21) > 9  <=>  84 > 81
+PASS  D4  |2-omega|^2 = 7 for omega = e^{2 pi i/3} (index-7 similar sublattice)   [5/2 - sqrt(3)*I/2]
+PASS  D5  same-colour centre separation sqrt(7)*sqrt(3)*r = sqrt(21)*r
+
+=== E. Theorem 19: three half-open arcs of total angular measure pi are unit-independent ===
+PASS  E1  no two points of the 3-arc set are at angular difference +-pi/3 (mod 2pi)
+PASS  E2  total angular measure of the 3-arc set equals pi (measure 1/2 of the circle)   [1]
+PASS  E3  each arc has angular measure exactly pi/3 and is itself unit-independent
+
+ALL: True (17/17)

@@ -1,0 +1,15 @@
+frozen_core.lean:32:13: error(lean.unknownIdentifier): Unknown constant `Fintype.card`
+frozen_core.lean:40:50: error(lean.unknownIdentifier): Unknown constant `Finset.card_le_univ`
+frozen_core.lean:41:50: error(lean.unknownIdentifier): Unknown constant `Finset.card_le_univ`
+frozen_core.lean:42:50: error(lean.unknownIdentifier): Unknown constant `Finset.card_le_univ`
+frozen_core.lean:43:8: error(lean.unknownIdentifier): Unknown constant `Finset.eq_univ_of_card`
+frozen_core.lean:44:6: error: No goals to be solved
+frozen_core.lean:49:13: error(lean.unknownIdentifier): Unknown constant `Fintype.card`
+frozen_core.lean:67:13: error(lean.unknownIdentifier): Unknown constant `Fintype.card`
+frozen_core.lean:72:2: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```

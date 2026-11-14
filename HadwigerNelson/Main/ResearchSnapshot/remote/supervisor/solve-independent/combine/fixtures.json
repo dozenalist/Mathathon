@@ -1,0 +1,87 @@
+{
+  "k": 3,
+  "_about": "Tiny fixtures for combine_witnesses.py. Source only; expected outcomes are the specification. Index convention: A has nA vertices 0..nA-1, B has nB; a pair [i,j] in I means A[i] and B[j] are the SAME point; a pair [i,j] in Ex means A[i] and B[j] are at unit distance.",
+  "fixtures": [
+    {
+      "name": "F1_4cycle_negative_sample",
+      "k": 3, "nA": 3, "nB": 3,
+      "edgesA": [[0,1],[1,2]], "edgesB": [[0,1],[1,2]],
+      "I": [[0,0],[2,2]], "coincident": [[0,0],[2,2]], "Ex": [],
+      "PhiA": [[1,2,3]], "PhiB": [[2,1,2]],
+      "expect": {"outcome": "no_witness", "reason": "sampled_families_only"},
+      "note": "The union is the 4-cycle A0-a1-a2(=b2)-b1-A0, which is 2-colourable: A0=1,a1=2,a2=1,b1=2. So 'no witness' here is emphatically NOT non-colourability. The two singleton families clash: the pins force pi(2)=1 (from b0) and pi(2)=3 (from b2)."
+    },
+    {
+      "name": "F2_4cycle_enlarged_family_succeeds",
+      "k": 3, "nA": 3, "nB": 3,
+      "edgesA": [[0,1],[1,2]], "edgesB": [[0,1],[1,2]],
+      "I": [[0,0],[2,2]], "coincident": [[0,0],[2,2]], "Ex": [],
+      "PhiA": [[1,2,3],[1,2,1]], "PhiB": [[2,1,2]],
+      "expect": {"outcome": "witness"},
+      "note": "Adding phi'=(1,2,1) makes the pins consistent (pi(2)=1 twice); any bijection with pi(2)=1 works, one of which gives cB=(1,2,1). Success is monotone in the families."
+    },
+    {
+      "name": "F3_cross_edge_forces_a_nonidentity_permutation",
+      "k": 3, "nA": 2, "nB": 2,
+      "edgesA": [[0,1]], "edgesB": [[0,1]],
+      "I": [[0,0]], "coincident": [[0,0]], "Ex": [[1,1]],
+      "PhiA": [[1,2]], "PhiB": [[1,2]],
+      "expect": {"outcome": "witness"},
+      "note": "Pin pi(1)=1; cross edge forbids pi(2)=2; the residual matching must send 2 to 3. Minimal demonstration that forbidden cells are what force a nontrivial permutation."
+    },
+    {
+      "name": "F4_duplicate_cross_edge_entry",
+      "k": 3, "nA": 2, "nB": 2,
+      "edgesA": [[0,1]], "edgesB": [[0,1]],
+      "I": [[0,0]], "coincident": [[0,0]], "Ex": [[1,1],[1,1]],
+      "PhiA": [[1,2]], "PhiB": [[1,2]],
+      "expect": {"outcome": "seed_rejected", "reason": "DUPLICATE_INDEX"},
+      "note": "A repeated cross edge is rejected rather than silently deduped, because a duplicated entry signals a malformed geometric pipeline upstream. The union here is perfectly colourable; the rejection is about the input, not the maths."
+    },
+    {
+      "name": "F5_cross_edge_on_an_identified_pair",
+      "k": 3, "nA": 2, "nB": 2,
+      "edgesA": [[0,1]], "edgesB": [[0,1]],
+      "I": [[0,0],[1,1]], "coincident": [[0,0],[1,1]], "Ex": [[1,1]],
+      "PhiA": [[1,2]], "PhiB": [[1,1]],
+      "expect": {"outcome": "seed_rejected", "reason": "SEED_INCONSISTENT"},
+      "note": "A[1] is identified with B[1] and is also at unit distance from it: (b) demands equal colours and (x) demands unequal. The seed itself is not k-colourable, so no colouring search should be attempted. Note PhiB is improper here too; the seed-level check fires first."
+    },
+    {
+      "name": "F6_missing_boundary_entry",
+      "k": 3, "nA": 3, "nB": 3,
+      "edgesA": [[0,1],[1,2]], "edgesB": [[0,1],[1,2]],
+      "I": [[0,0]], "coincident": [[0,0],[2,2]], "Ex": [],
+      "PhiA": [[1,2,1]], "PhiB": [[1,2,1]],
+      "expect": {"outcome": "seed_rejected", "reason": "MISSING_BOUNDARY"},
+      "note": "The certified coincidence set contains (2,2) but I omits it. Silently ignoring it would drop a real equation and could manufacture a spurious witness, so the call must fail."
+    },
+    {
+      "name": "F7_improper_family_member",
+      "k": 3, "nA": 2, "nB": 2,
+      "edgesA": [[0,1]], "edgesB": [[0,1]],
+      "I": [[0,0]], "coincident": [[0,0]], "Ex": [],
+      "PhiA": [[1,1]], "PhiB": [[1,2]],
+      "expect": {"outcome": "seed_rejected", "reason": "FAMILY_NOT_PROPER"},
+      "note": "A family member that is not a proper colouring confers no authority: this is the only step that makes the sampled data 'certified'."
+    },
+    {
+      "name": "F8_pin_lands_in_a_forbidden_cell",
+      "k": 3, "nA": 3, "nB": 2,
+      "edgesA": [[0,1],[1,2]], "edgesB": [[0,1]],
+      "I": [[0,0]], "coincident": [[0,0]], "Ex": [[2,0]],
+      "PhiA": [[1,2,1]], "PhiB": [[1,2]],
+      "expect": {"outcome": "no_witness", "reason": "sampled_families_only"},
+      "note": "Pin pi(1)=1 from (A0,B0); the cross edge (A2,B0) forbids (psi(B0),phi(A2))=(1,1), i.e. exactly the pinned cell. So this pair fails at the PIN_FORBIDDEN stage, which the driver reports as a pair-level failure (counted in pair_failures), not a seed rejection."
+    },
+    {
+      "name": "F9_bad_index",
+      "k": 3, "nA": 2, "nB": 2,
+      "edgesA": [[0,1]], "edgesB": [[0,1]],
+      "I": [[0,0],[5,0]], "coincident": [[0,0],[5,0]], "Ex": [],
+      "PhiA": [[1,2]], "PhiB": [[1,2]],
+      "expect": {"outcome": "seed_rejected", "reason": "BAD_INDEX"},
+      "note": "Out-of-range index in the identification list; caught before any colouring is looked at."
+    }
+  ]
+}

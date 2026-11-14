@@ -1,0 +1,38 @@
+ASTRA REVIEW 1 OF 3 — WILD-LAW COSET OBSTRUCTION
+Completed November13,2026,approximately10:53PM Pacific.
+Grade: mathematical proof reviewed by the supervisor; not Lean-checked. This corrects a proposed research route and is not a Hadwiger–Nelson solution.
+
+SYSTEM
+F is the field of real algebraic numbers; E=F(i) has the discrete additive topology.
+K={u inE:|u|=1}; D is the compact character group ofE.
+Action: (u.d)(z)=d(uz). Let a_z=integral d(z) dmu(d).
+Assume mu is a K-invariant Borel probability. No ergodicity assumption is needed for the lemma.
+
+LEMMA
+For nonzeroz, |a_z|=1 implies mu is the point mass at the trivial character.
+Consequently a wild law, which assigns measure0 to the embedded ordinary planeC, satisfies |a_z|<1 for every nonzeroz.
+
+PROOF
+The integer additive span ofK isE. For t inF choose an integern>=1 with |t|<=2n. Put a=t/(2n), b=sqrt(1-a²), u=a+ib and v=a-ib. Bothu,v lie inK and t=n(u+v). Thus the span containsF; iK=K implies it containsiF as well. For nonzeroz, span_Z(Kz)=E.
+
+If |a_z|=1, the identity integral|psi_z-a_z|²=1-|a_z|² gives psi_z=c almost everywhere. Invariance implies psi_uz=c almost everywhere for eachu inK. Countability gives one common conull set. Take r=(1+i*sqrt3)/2 and s=conjugate(r). Then r+s=1, so c=psi_z=psi_rz*psi_sz=c². Since |c|=1, c=1. Every character on the conull set annihilatesKz, hence allE. It is therefore trivial, proving the lemma.
+
+CORRECTIONS TO THE DEEPSEEK PACKET
+H_z={d:d(z)=1} is notK-stable for nonzeroz: its annihilatorZz is not preserved by multiplication byi. The claimed action onD/H_z therefore does not descend.
+A coset's intersection with the embedded plane corresponds to a union of parallel affine lines, not a single line, because the exponential is2pi-periodic. The invariance argument above nevertheless rules out the proposed wild invariant coset-supported measure.
+
+CORRECT REMAINING CRITERION
+If mu is also ergodic, weak mixing is equivalent, along any fixed sequence of finite nonempty Følner setsPhi_n inK, to
+  average overu inPhi_n of |a_(uz-w)-a_z*conjugate(a_w)|² ->0
+for EVERYz,w inE. No uniformity in the two frequencies is required. If either frequency is0, the centered expression is identically0.
+
+Justification: h_z=psi_z-a_z span the mean-zero subspace densely by Stone–Weierstrass and density of continuous functions inL²(mu), without Haar orthogonality. Their matrix coefficients are exactly the centered expression. Apply the mean ergodic theorem to centered tensor products; Cauchy–Schwarz and density prove the converse. Ergodicity ofmu handles the remaining nonconstant tensor summands.
+
+Under weak mixing the UNcentered average|a_(uz-z)|² tends to |a_z|^4, not necessarily0; atz=0it is1. Requiring0at every nonzeroz would force every nonzero Fourier mean to vanish, hence forceHaar, a substantially stronger conclusion.
+
+WHAT REMAINS OPEN
+Pointwise strictness |a_z|<1 is not a uniform gap and does not exclude all nonconstant Koopman eigenfunctions. No independent proof of weak mixing is provided.
+Weak mixing must not be called equivalent to the tower's non-factor-measurability hypothesisH2 without proof. Properness of an initial stage does not establish properness of the terminal factor.
+The original conditional theorem retains its hypotheses; no paper sections have been eliminated.
+
+The full correction and next centered spectral target were relayed to the now-idle architecture chat in its next focused block.

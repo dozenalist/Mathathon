@@ -1,0 +1,13 @@
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwg1r9lg/m2/audit/m6strip.py:9: SyntaxWarning: invalid escape sequence '\ '
+  groups on positive-measure direction sets force |[k] \ (G_1 u G_2)| >= chi(Q) for every finite
+A = {5} on [(Fraction(0, 1), Fraction(60, 1)), (Fraction(120, 1), Fraction(180, 1)), (Fraction(240, 1), Fraction(300, 1))]
+B = {1,3} on [(Fraction(60, 1), Fraction(120, 1)), (Fraction(180, 1), Fraction(240, 1)), (Fraction(300, 1), Fraction(360, 1))]
+orbit3(E_A) = E_A ? True   orbit3(E_B) = E_B ? True
+psi in U_A - U_B ? True    psi in U_B - U_A ? True
+=> the sum set contains a unit equilateral triangle (m12 Theorem 2): True
+
+k-arithmetic at k = 6:
+   |A u B| =  3    |T'| =  3
+   chi(unit triangle) = 3 <= |T'| = 3  ->  NO contradiction
+   a contradiction would need chi(Q) >= 4, i.e. a 4-chromatic unit-distance
+   graph inside Z(E_A,E_B); none is exhibited anywhere in the record.

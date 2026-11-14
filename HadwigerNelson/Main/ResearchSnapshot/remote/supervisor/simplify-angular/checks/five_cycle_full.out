@@ -1,0 +1,10 @@
+PASS  1. the axioms (V),(D),(N),(R) have NO solution   [solutions=0]
+PASS  2. valid lists inside {2,3,4} = {{2,3},{3,4},{2,3,4}}, every one contains 3
+PASS  3. hence {2,4} in S(1) and validity force S(1) = {2,3,4} (same for S(5))
+PASS  4. S(2) <= {0,1} and validity force S(2) = {0,1}
+PASS  5. likewise S(4) = {0,1}   [same computation at position 5]
+PASS  6. S(0) <= {0,1} because S(0) & S(5) = {} and S(5) = {2,3,4}   [so 3 in S(5) has no neighbour in S(0) = {0,1}]
+PASS  7. neighbours of 3 are {2,4}, both outside {0,1}: (N) fails at (r=5, state 3)
+PASS  8. the printed five-residue split (j in {1,4}) and Lemma 6.7 are NOT needed
+
+ALL CHECKS PASS — the finite core of Sec. 6.3.4 is UNSATISFIABLE with no case analysis

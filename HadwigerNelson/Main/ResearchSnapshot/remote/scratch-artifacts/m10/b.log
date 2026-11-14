@@ -1,0 +1,135 @@
+FAIL OAI.Analysis.PlaneSpectrum.Basic [149.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:373:6: error: Type mismatch: After simplification, term
+  ht
+ has type
+  Circle.exp (ξ.re * ((↑imagUnit).re * ↑q)) * Circle.exp (ξ.im * ((↑imagUnit).im * ↑q)) = 1
+but is expected to have type
+  Circle.exp (ξ.im * ↑q) = 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:601:81: error: unsolved goals
+case e_6
+d : D
+h1 : d ∈ L 1
+hi : d ∈ L imagUnit
+l : ℝ
+hl : jF l = restrictLine 1 d
+e : ℝ
+he : jF e = restrictLine imagUnit d
+z : DiscreteE
+hr : ∀ (t : ↥F), d (Multiplicative.ofAdd (ofF t)) = Circle.exp (l * ↑t)
+hi' : ∀ (t : ↥F), d (Multiplicative.ofAdd (imagUnit * ofF t)) = Circle.exp (e * ↑t)
+hd :
+  d z =
+    d (Multiplicative.ofAdd (ofF (reF (Multiplicative.toAdd z)))) *
+      d (Multiplicative.ofAdd (imagUnit * ofF (imF (Multiplicative.toAdd z))))
+⊢ l * (↑(Multiplicative.toAdd z)).re + e * (↑(Multiplicative.toAdd z)).im =
+    l * ↑(reF (Multiplicative.toAdd z)) + e * ↑(imF (Multiplicative.toAdd z))
+
+FAIL OAI.Analysis.PlaneSpectrum.Fourier [142.7s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:38:0: error: Unexpected name `Multiplier` after `end`: The current section is unnamed
+
+Hint: Delete the name `Multiplier` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵M̵u̵l̵t̵i̵p̵l̵i̵e̵r̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:52:2: error(lean.unknownIdentifier): Unknown identifier `Multiplier.clm`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:55:66: error(lean.unknownIdentifier): Unknown identifier `Multiplier.clm_ae`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:87:0: error: Unexpected name `EuclideanFiveColor` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵
+
+FAIL OAI.Analysis.PlaneSpectrum.InvariantMean [145.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:296:56: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+f h : G →ᵇ ℂ
+x : G
+⊢ (realPart (f + h)) x = (realPart f) x + (realPart h) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:297:56: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+f h : G →ᵇ ℂ
+hr : realPart (f + h) = realPart f + realPart h
+x : G
+⊢ (imagPart (f + h)) x = (imagPart f) x + (imagPart h) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:302:72: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+c : ℂ
+f : G →ᵇ ℂ
+x : G
+⊢ (realPart (c • f)) x = c.re * (realPart f) x - c.im * (imagPart f) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:304:72: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+c : ℂ
+f : G →ᵇ ℂ
+hr : realPart (c • f) = c.re • realPart f - c.im • imagPart f
+x : G
+⊢ (imagPart (c • f)) x = c.re * (imagPart f) x + c.im * (realPart f) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:303:17: warning: This simp argument is unused:
+  Complex.mul_re
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:305:17: warning: This simp argument is unused:
+  Complex.mul_im
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:398:15: error(lean.unknownIdentifier): Unknown identifier `cshift_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:398:29: error(lean.unknownIdentifier): Unknown identifier `circlePull_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:399:4: error: Type mismatch
+  fourier_add_half_inv_index hn zero_lt_one ?m.79
+has type
+  DFunLike.coe.{1, 1, 1} (fourier n) (?m.79 + ↑(1 / 2 / ↑n)) = -(fourier n) ?m.79
+but is expected to have type
+  DFunLike.coe.{max (u_1 + 1) 1, u_1 + 1, 1} (cshift g (circlePull ρ (fourier n))) x = -(circlePull ρ (fourier n)) x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:398:47: warning: This simp argument is unused:
+  map_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [cshift_apply, circlePull_apply, hg, BoundedContinuousFunction.neg_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:398:56: warning: This simp argument is unused:
+  hg
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [cshift_apply, circlePull_apply, map_add, BoundedContinuousFunction.neg_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4
+OK   OAI.Analysis.PlaneSpectrum.NumberFields [131.4s]
+OK   OAI.Analysis.PlaneSpectrum.PhaseEncoding [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.SmallArcs [0.0s]
+OK   OAI.Geometry.PlaneColoring.Assembly [0.0s]
+OK   OAI.Geometry.PlaneColoring.Basic [698.5s]
+OK   OAI.Geometry.PlaneColoring.Coloring [0.0s]
+FAIL OAI.Geometry.PlaneColoring.Covering [698.8s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Covering.lean:19:20: error(lean.unknownIdentifier): Unknown identifier `triangular_wedge_bound`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Covering.lean:21:16: error(lean.unknownIdentifier): Unknown identifier `triangular_wedge_bound`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Covering.lean:26:16: error(lean.unknownIdentifier): Unknown identifier `triangular_wedge_bound`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Covering.lean:30:16: error(lean.unknownIdentifier): Unknown identifier `triangular_wedge_bound`
+
+OK   OAI.Geometry.PlaneColoring.Expansion [452.9s]
+FAIL OAI.Geometry.PlaneColoring.Lattice [409.8s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Lattice.lean:58:0: error: Invalid name after `end`: Expected `OAI`, but found `SevenLattice`
+
+Hint: Use current scope name `OAI`:
+  end S̵e̵v̵e̵n̵L̵a̵t̵t̵i̵c̵e̵O̲A̲I̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Lattice.lean:59:0: error: Invalid name after `end`: Expected `OAI`, but found `Problem160`
+
+Hint: Use current scope name `OAI`:
+  end P̵r̵o̵b̵l̵e̵m̵1̵6̵0̵O̲A̲I̲
+

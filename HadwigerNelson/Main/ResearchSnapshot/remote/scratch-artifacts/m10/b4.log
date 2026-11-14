@@ -1,0 +1,79 @@
+seeded 0 oleans from /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/build/lib
+OK   OAI.Analysis.PlaneSpectrum.Basic [0.0s]
+FAIL OAI.Analysis.PlaneSpectrum.Fourier [24.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:38:0: error: Unexpected name `Multiplier` after `end`: The current section is unnamed
+
+Hint: Delete the name `Multiplier` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵M̵u̵l̵t̵i̵p̵l̵i̵e̵r̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:52:2: error(lean.unknownIdentifier): Unknown identifier `Multiplier.clm`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:55:66: error(lean.unknownIdentifier): Unknown identifier `Multiplier.clm_ae`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Analysis/PlaneSpectrum/Fourier.lean:87:0: error: Unexpected name `EuclideanFiveColor` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵
+
+OK   OAI.Analysis.PlaneSpectrum.InvariantMean [30.8s]
+OK   OAI.Analysis.PlaneSpectrum.NumberFields [33.7s]
+OK   OAI.Analysis.PlaneSpectrum.PhaseEncoding [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.SmallArcs [0.0s]
+OK   OAI.Geometry.PlaneColoring.Assembly [0.0s]
+OK   OAI.Geometry.PlaneColoring.Basic [32.0s]
+OK   OAI.Geometry.PlaneColoring.Coloring [0.0s]
+OK   OAI.Geometry.PlaneColoring.Covering [0.0s]
+OK   OAI.Geometry.PlaneColoring.Expansion [42.6s]
+FAIL OAI.Geometry.PlaneColoring.Lattice [28.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Lattice.lean:58:0: error: Invalid name after `end`: Expected `OAI`, but found `SevenLattice`
+
+Hint: Use current scope name `OAI`:
+  end S̵e̵v̵e̵n̵L̵a̵t̵t̵i̵c̵e̵O̲A̲I̲
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/Geometry/PlaneColoring/Lattice.lean:59:0: error: Invalid name after `end`: Expected `OAI`, but found `Problem160`
+
+Hint: Use current scope name `OAI`:
+  end P̵r̵o̵b̵l̵e̵m̵1̵6̵0̵O̲A̲I̲
+
+OK   OAI.Geometry.PlaneColoring.Moser [108.7s]
+OK   OAI.MeasureTheory.CompactFactors.Amenability [27.3s]
+OK   OAI.MeasureTheory.CompactFactors.Centers [36.7s]
+OK   OAI.Analysis.PlaneSpectrum.Characters [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.CircleDecay [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.PhaseCollision [117.9s]
+OK   OAI.Analysis.PlaneSpectrum.Selections [120.1s]
+OK   OAI.Geometry.PlaneColoring.BinaryDynamics [49.0s]
+OK   OAI.Geometry.PlaneColoring.CircleMaps [0.0s]
+OK   OAI.Geometry.PlaneColoring.Metric [25.2s]
+OK   OAI.Geometry.PlaneColoring.WeakColoring [30.8s]
+FAIL OAI.MeasureTheory.CompactFactors.RelativeCenters [31.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:80:0: error: Unexpected name `EuclideanFiveColor.CosetCenter.Embedding` after `end`: The current section is unnamed
+
+Hint: Delete the name `EuclideanFiveColor.CosetCenter.Embedding` to end the current unnamed scope; outer named scopes can then be closed using additional `end` command(s):
+  end ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵F̵i̵v̵e̵C̵o̵l̵o̵r̵.̵C̵o̵s̵e̵t̵C̵e̵n̵t̵e̵r̵.̵E̵m̵b̵e̵d̵d̵i̵n̵g̵
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:90:8: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.ErgodicSupport.ae_eq_const_of_invariant`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:109:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.compProd_map_base`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:123:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.condDistrib_comp_equiv`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:138:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.KernelSupport.condDistrib_equivariant`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:187:18: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.probabilityKernel`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:191:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.measurable_probabilityKernel`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:194:18: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.cosetMass`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:197:6: warning: The namespace `EuclideanFiveColor` is duplicated in the declaration `OAI.EuclideanFiveColor.CosetCenter.Embedding.EuclideanFiveColor.RelativeCenters.measurable_cosetMass`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.scratch/m10/tree2/lean/OAI/MeasureTheory/CompactFactors/Rela
+OK   OAI.Analysis.PlaneSpectrum.Multipliers [101.9s]
+OK   OAI.Geometry.PlaneColoring.CircleTransport [106.8s]
+OK   OAI.Geometry.PlaneColoring.Compactness [88.1s]
+OK   OAI.Geometry.PlaneColoring.Seven [52.5s]
+OK   OAI.MeasureTheory.CompactFactors.ConditionalSelection [194.2s]

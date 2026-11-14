@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "scope": "Certificate verification; no global-colouring realization or completeness of model search asserted",
+  "sameColourPairs": 9,
+  "closedC5Words": 100,
+  "finiteCycles": [
+    {
+      "m": 3,
+      "accepted": true
+    },
+    {
+      "m": 4,
+      "accepted": true
+    },
+    {
+      "m": 5,
+      "accepted": true
+    },
+    {
+      "m": 6,
+      "accepted": true
+    }
+  ],
+  "primary": [
+    {
+      "compatible": 3,
+      "survivors": 1,
+      "projectionRetained": false
+    },
+    {
+      "compatible": 8,
+      "survivors": 5,
+      "projectionRetained": false
+    },
+    {
+      "compatible": 3,
+      "survivors": 1,
+      "projectionRetained": false
+    },
+    {
+      "compatible": 8,
+      "survivors": 5,
+      "projectionRetained": false
+    },
+    {
+      "compatible": 8,
+      "survivors": 5,
+      "projectionRetained": false
+    },
+    {
+      "compatible": 22,
+      "survivors": 18,
+      "projectionRetained": false
+    },
+    {
+      "compatible": 8,
+      "survivors": 5,
+      "projectionRetained": false
+    },
+    {
+      "compatible": 22,
+      "survivors": 18,
+      "projectionRetained": false
+    }
+  ],
+  "milliseconds": 17
+}

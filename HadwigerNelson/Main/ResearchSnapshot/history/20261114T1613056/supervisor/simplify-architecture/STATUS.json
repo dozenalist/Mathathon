@@ -1,0 +1,43 @@
+{
+ "updated_utc": "2026-11-14T15:46:50Z",
+ "status": "completed_block",
+ "summary": "Block 18 (clock 2026-11-14T15:46:50Z). Corrected two errors in my own FIVE-CYCLE-D.md: the thin-accumulation witness was invalid (A = union over k,n of 60k+(0,eps_n) is 60-periodic, so A-60 = A and the level-set premise fails), and it was the wrong kind of objection anyway (an a.e. conclusion needs a positive-measure failure set, not one point). Both replaced by a valid abstract obstruction with the correct quantifier: for a closed E of positive measure, A countable and dense in E union (E+60) has vol A = 0 so the level-set premise holds, while supp A = closure A contains E, on which both a and a+60 lie in supp A - so level-set disjointness does NOT imply a.e. support disjointness. Also withdrew the claim that different quantifier forms establish incomparability; only 'no derivation available' is claimed. Main result: the exact weakest support-level premise is (D-a.e.), full a.e. disjointness of S a and S(a+60); every proper weakening fails, including the distinguished-state relaxation, because fiveState_adj separates the two state VALUES but not support memberships. Derivation from local lemmas stops at two trace vectors at points distance 1 apart both avoiding fiveDiag i, which nothing forbids.",
+ "verified_results": [
+  "[verified here] E1: the block-17 witness was invalid - A = union over k in Z, n >= 1 of (60k + (0, eps_n)) is 60-periodic, hence A - 60 = A and A cap (A-60) = A, not empty. Retracted in a banner at the head of FIVE-CYCLE-D.md.",
+  "[verified here] E2: an a.e. conclusion (D) cannot be refuted by one point; a positive-measure set of angles is required. The single-point remark in the old witness was therefore not an objection to (D) at all.",
+  "[proved here, abstract] Valid replacement obstruction with the correct quantifier: let E subset [0,1] be closed with vol E > 0, F := E union (E+60), and A subset F countable and dense in F (e.g. a countable dense subset of E together with its translate). Then vol A = 0, so vol (A cap (A-60)) = 0 (the level-set premise holds), and supp A = closure A = F, so {a : a in supp A and a+60 in supp A} contains E, of positive measure - the a.e. support conclusion fails. This refutes the inference (L) implies (S-a.e.) only, and is explicitly not a weak-colouring counterexample.",
+  "[read + argued] Exact weakest premise: (D-a.e.) forall^m a, forall i, a in fiveSupport x i -> a + sixty not in fiveSupport x i, equivalently almost-everywhere disjointness of S a and S(a+60). It is consumed in full by step 1 of the finite argument (S 1 subset I minus S 0).",
+  "[read + argued] Why no proper weakening suffices: the distinguished-state relaxation (exclude only i = fiveState x a) leaves open fiveState x a in S(a+60), which fiveState_adj does not exclude since it separates the two state values, not support memberships; and five_ae_mem_support puts the distinguished state in S a a.e., so the inclusion would fail for it. A single-angle restriction cannot serve because (D) is consumed at all six consecutive pairs.",
+  "[read] Derivation attempt from local lemmas stops precisely here: from i in S a cap S(a+60), five_support_trace gives two trace vectors, at x+direction a and at x+direction(a+60) (points at distance exactly 1), each vanishing on the same fiveDiag i; nothing in the tree forbids that pair, and transition_abundance / transitionEdge_closed / missing_edge_lim concern transitions between different colours in a ball around x, not two points jointly avoiding D_i.",
+  "[read] Retained from block 17 and unaffected: palette_sixty_disjoint (PaletteTransport.lean:450) gives the one-centre two-angle palette form; fiveState_adj (Accumulation.lean:392) gives the level-set form; fiveSupport is Measure.support (FiveSupport.lean:83), purely topological with no density lower bound."
+ ],
+ "conjectures": [
+  "(D-a.e.) is true but needs a lower-density or anti-thin-accumulation property of the level sets at points of their closed support; the tree has none, and the level-set facts it does have are strictly weaker (proved by the valid obstruction above).",
+  "If (D-a.e.) fails for a palette configuration, the failure must be a positive-measure set of angles where the SAME state accumulates at both a and a+60 from one side each - i.e. the palette function creeps, which is a concrete object to look for rather than an abstract obstruction."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/FIVE-CYCLE-D.md (sha 1ff0d58b37b10635; correction banner E1/E2 at the head, Sec.6 valid abstract obstruction with the correct measure quantifier, Sec.7 the exact weakest premise (D-a.e.) with the minimality argument and the derivation stopping point)",
+  "supervisor/simplify-architecture/FIVE-CYCLE-INTERFACE.md (sha d627aabc605d98d3; incomparability claim replaced by 'no derivation available; incomparability not claimed')",
+  "read-only inputs cited: lean/OAI/Geometry/PlaneColoring/{Accumulation.lean 358,364,379,381,392; FiveSupport.lean 82,83,86,89; Exclusion.lean 8,9,20,24; PaletteTransport.lean 390,450; Transitions.lean 9,21,23,25; Coloring.lean 16,17}",
+  "supervisor/simplify-architecture/encoding-core/integration/ (frozen R4 d26d569088faea89... / 24f89dd33533a0f6..., untouched)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "date -u (block clock)",
+   "outcome": "2026-11-14T15:46:50Z"
+  },
+  {
+   "cmd": "no build, no compute, no agents, no solver runs; only files under this supervisor directory written",
+   "outcome": "source/mathematical analysis only, per policy."
+  }
+ ],
+ "failed_routes": [
+  "RETRACTED (E1): the thin-accumulation witness A = union 60k+(0,eps_n) - it is 60-periodic, so A-60 = A and the level-set premise fails outright.",
+  "RETRACTED (E2): the single-point support-intersection objection - an a.e. statement needs a positive-measure failure set.",
+  "RETRACTED: 'different quantifier forms establish incomparability' for (O'') versus the step ban; only 'no derivation available' is claimed, and the abstract models cannot carry an incomparability claim about the actual objects.",
+  "FAILED: deriving (D-a.e.) from the local lemmas; the obstruction is the shared trace-vector avoidance at two points at distance 1, which nothing forbids.",
+  "Not attempted: no broad bridge, no second FiveCenter, no bridge assumption, no compilation."
+ ],
+ "next_step": "Decide (D-a.e.) as stated in FIVE-CYCLE-D.md Sec.7, i.e. almost-everywhere disjointness of S a and S(a+60) for the existing fiveSupport predicate. A proof must supply an anti-thin-accumulation property of the level sets {state = i} at points of their closed support - which the tree does not have - or the failure mode must be exhibited: a positive-measure set of angles at which one state accumulates at both a and a+60. Do not move to clause (V) until (D-a.e.) is settled.",
+ "escalation": null
+}

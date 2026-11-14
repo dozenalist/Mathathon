@@ -1,0 +1,282 @@
+{
+ "OAI.Analysis.PlaneSpectrum.Basic": [
+  735,
+  732
+ ],
+ "OAI.Analysis.PlaneSpectrum.Characters": [
+  560,
+  560
+ ],
+ "OAI.Analysis.PlaneSpectrum.CircleDecay": [
+  241,
+  241
+ ],
+ "OAI.Analysis.PlaneSpectrum.CircleOperator": [
+  308,
+  292
+ ],
+ "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum": [
+  497,
+  496
+ ],
+ "OAI.Analysis.PlaneSpectrum.Energy": [
+  453,
+  449
+ ],
+ "OAI.Analysis.PlaneSpectrum.Ergodicity": [
+  415,
+  415
+ ],
+ "OAI.Analysis.PlaneSpectrum.Fourier": [
+  163,
+  163
+ ],
+ "OAI.Analysis.PlaneSpectrum.FourierTests": [
+  295,
+  286
+ ],
+ "OAI.Analysis.PlaneSpectrum.InvariantMean": [
+  1078,
+  1025
+ ],
+ "OAI.Analysis.PlaneSpectrum.Multipliers": [
+  314,
+  299
+ ],
+ "OAI.Analysis.PlaneSpectrum.NumberFields": [
+  524,
+  524
+ ],
+ "OAI.Analysis.PlaneSpectrum.PhaseCollision": [
+  537,
+  470
+ ],
+ "OAI.Analysis.PlaneSpectrum.PhaseEncoding": [
+  255,
+  255
+ ],
+ "OAI.Analysis.PlaneSpectrum.RadialEnergy": [
+  472,
+  472
+ ],
+ "OAI.Analysis.PlaneSpectrum.Representations": [
+  477,
+  471
+ ],
+ "OAI.Analysis.PlaneSpectrum.Selections": [
+  432,
+  432
+ ],
+ "OAI.Analysis.PlaneSpectrum.SmallArcs": [
+  322,
+  322
+ ],
+ "OAI.Analysis.PlaneSpectrum.SpectralMeasure": [
+  388,
+  386
+ ],
+ "OAI.Geometry.PlaneColoring.Accumulation": [
+  401,
+  401
+ ],
+ "OAI.Geometry.PlaneColoring.AngularBoundary": [
+  503,
+  497
+ ],
+ "OAI.Geometry.PlaneColoring.BinaryDynamics": [
+  515,
+  515
+ ],
+ "OAI.Geometry.PlaneColoring.BinaryPalettes": [
+  375,
+  365
+ ],
+ "OAI.Geometry.PlaneColoring.BorelTransfer": [
+  458,
+  451
+ ],
+ "OAI.Geometry.PlaneColoring.BoundaryTrace": [
+  367,
+  320
+ ],
+ "OAI.Geometry.PlaneColoring.CircleMaps": [
+  517,
+  517
+ ],
+ "OAI.Geometry.PlaneColoring.CircleTransport": [
+  336,
+  336
+ ],
+ "OAI.Geometry.PlaneColoring.Coloring": [
+  34,
+  34
+ ],
+ "OAI.Geometry.PlaneColoring.Compactness": [
+  379,
+  353
+ ],
+ "OAI.Geometry.PlaneColoring.ContinuumLimits": [
+  353,
+  337
+ ],
+ "OAI.Geometry.PlaneColoring.CyclicCore": [
+  280,
+  256
+ ],
+ "OAI.Geometry.PlaneColoring.DiskAverages": [
+  333,
+  333
+ ],
+ "OAI.Geometry.PlaneColoring.DiskExtension": [
+  611,
+  603
+ ],
+ "OAI.Geometry.PlaneColoring.Exclusion": [
+  165,
+  163
+ ],
+ "OAI.Geometry.PlaneColoring.Expansion": [
+  725,
+  715
+ ],
+ "OAI.Geometry.PlaneColoring.Five": [
+  139,
+  139
+ ],
+ "OAI.Geometry.PlaneColoring.FiveSupport": [
+  376,
+  374
+ ],
+ "OAI.Geometry.PlaneColoring.FourContinuity": [
+  551,
+  511
+ ],
+ "OAI.Geometry.PlaneColoring.FourTransport": [
+  454,
+  454
+ ],
+ "OAI.Geometry.PlaneColoring.FullApproximation": [
+  339,
+  339
+ ],
+ "OAI.Geometry.PlaneColoring.GraphCuts": [
+  314,
+  310
+ ],
+ "OAI.Geometry.PlaneColoring.GraphPatches": [
+  314,
+  314
+ ],
+ "OAI.Geometry.PlaneColoring.GraphRealization": [
+  415,
+  408
+ ],
+ "OAI.Geometry.PlaneColoring.HoleApproximation": [
+  328,
+  323
+ ],
+ "OAI.Geometry.PlaneColoring.Interfaces": [
+  527,
+  516
+ ],
+ "OAI.Geometry.PlaneColoring.Mesh": [
+  154,
+  154
+ ],
+ "OAI.Geometry.PlaneColoring.Moser": [
+  439,
+  436
+ ],
+ "OAI.Geometry.PlaneColoring.PaletteDensity": [
+  485,
+  463
+ ],
+ "OAI.Geometry.PlaneColoring.PaletteTransport": [
+  458,
+  458
+ ],
+ "OAI.Geometry.PlaneColoring.Palettes": [
+  124,
+  115
+ ],
+ "OAI.Geometry.PlaneColoring.PlanarCovers": [
+  402,
+  402
+ ],
+ "OAI.Geometry.PlaneColoring.Rigidity": [
+  443,
+  443
+ ],
+ "OAI.Geometry.PlaneColoring.Sectors": [
+  453,
+  451
+ ],
+ "OAI.Geometry.PlaneColoring.States": [
+  764,
+  764
+ ],
+ "OAI.Geometry.PlaneColoring.Transitions": [
+  150,
+  150
+ ],
+ "OAI.Geometry.PlaneColoring.WeakColoring": [
+  176,
+  174
+ ],
+ "OAI.MeasureTheory.CompactFactors.AlgebraModels": [
+  664,
+  664
+ ],
+ "OAI.MeasureTheory.CompactFactors.Amenability": [
+  411,
+  399
+ ],
+ "OAI.MeasureTheory.CompactFactors.Approximation": [
+  496,
+  496
+ ],
+ "OAI.MeasureTheory.CompactFactors.BoundedFunctions": [
+  223,
+  218
+ ],
+ "OAI.MeasureTheory.CompactFactors.Centers": [
+  703,
+  698
+ ],
+ "OAI.MeasureTheory.CompactFactors.ConditionalLimits": [
+  701,
+  603
+ ],
+ "OAI.MeasureTheory.CompactFactors.ConditionalSelection": [
+  442,
+  442
+ ],
+ "OAI.MeasureTheory.CompactFactors.Factors": [
+  586,
+  583
+ ],
+ "OAI.MeasureTheory.CompactFactors.Functions": [
+  884,
+  863
+ ],
+ "OAI.MeasureTheory.CompactFactors.Kernels": [
+  774,
+  770
+ ],
+ "OAI.MeasureTheory.CompactFactors.RelativeCenters": [
+  598,
+  587
+ ],
+ "OAI.MeasureTheory.CompactFactors.RelativeProducts": [
+  472,
+  440
+ ],
+ "OAI.MeasureTheory.CompactFactors.Separability": [
+  573,
+  543
+ ],
+ "OAI.MeasureTheory.CompactFactors.Stationary": [
+  201,
+  201
+ ]
+}

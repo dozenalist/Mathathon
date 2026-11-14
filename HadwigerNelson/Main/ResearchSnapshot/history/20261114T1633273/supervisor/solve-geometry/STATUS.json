@@ -1,0 +1,36 @@
+{
+  "updated_utc": "2026-11-14T16:17:50Z",
+  "status": "completed_block",
+  "summary": "Seed design and G4 heuristics stopped; S3 not continued. Extracted the exact source objects with line numbers and audited the Astra annulus model. BinaryCenter is centre-level: for a.e. direction t, t is in paletteSet x i or paletteSet x j (BinaryPalettes.lean:9), and every surrounding theorem (binary_alternation, binary_pair_distinct, binary_centers_separated, binary_transport_invariant) assumes WeakColoring k c globally. The two-centre transport palette_transport_param (PaletteTransport.lean:362) assumes Measurable c, WeakColoring k c, two centres, HasDerivAt data with derivative at least 1/2, nonzero Ds, nonzero sin(t-s), and the exact circle identity. The tree's ternary statement palette_triple_null is a k = 5 NULLITY; there is no k = 6 analogue and at k = 6 the nullity is false (the available form is the external m11 half-circle bound). Audit: the nine-sector colouring of 0.99 < |z| < 1.01 is proved a proper 3-colouring of the induced unit graph (unit pairs force angular separation in [59.34, 60.66] degrees, never a multiple of 120), (5.7) holds for every centre with |x| < 0.01, and the exact admissible centre neighbourhood is |x| < 0.01, not 0.005. The model meets no theorem-level hypothesis (partial colouring, no global weak properness), so the binary and ternary machinery is vacuous on it.",
+  "verified_results": [
+    "GRADE [S] BinaryCenter c hc x i j := for a.e. direction t, t in paletteSet x i or t in paletteSet x j (BinaryPalettes.lean:9), a CENTRE-level predicate defined through paletteSet, which is built from the trace family at x (Palettes.lean:13,17,44) with IsTrace defined as membership of (x,1,b) in the closure of sampleSet (Compactness.lean:259,261).",
+    "GRADE [S] The two-centre transport theorem palette_transport_param (PaletteTransport.lean:362-368) has eight hypothesis groups: Measurable c; WeakColoring k c; two centres x and z; HasDerivAt data for a, s, t; the lower bound 1/2 <= Da r; Ds r != 0; sin(t r - s r) != 0; and the exact circle identity circleTarget (samplingParameter x z 1, a r) = circleSum 1 (s r, t r). Its conclusion is that a.e. r, if a r is in the palette at z for label i then s r is not in the palette at x for i.",
+    "GRADE [S] The ternary level: palette_triple_null is stated only for c : C -> Fin 5 and asserts that for every 3-element S, a.e. t, S is not contained in palette x t; palette_cardinality (also Fin 5) gives 1 <= |palette| <= 2 a.e. There is NO k = 6 analogue in the Lean tree, and at k = 6 the nullity is false; the strongest recorded k = 6 form is the external m11 half-circle bound sigma{e : T subset P_x(e)} <= 1/2, a different and weaker statement.",
+    "GRADE [P] The annulus model is a proper 3-colouring: for z, z' in the annulus at unit distance, cos of the angle between them equals (r^2 + r'^2 - 1)/(2 r r') which over radii in [0.99,1.01] lies in [0.48985, 0.50985], so the angular separation is in [59.34, 60.66] degrees; equal labels need a separation that is a multiple of 120 degrees, excluded.",
+    "GRADE [P] (5.7) holds for the model at every centre with |x| < 0.01, and 0.01 is the exact threshold: sample points stay in the annulus iff |x| <= 0.01 (from |y_n| + r_n <= 1.01 and r_n - |y_n| >= 0.99 with r_n -> 1). The candidate's 0.005 is a safe but unnecessary restriction. The proof of (5.7) is arithmetic: 60 degrees is exactly 1.5 sectors, so the sector index changes by 1 or 2 modulo 3, never by 0.",
+    "GRADE [P] Local/global audit: the model cannot supply totality (it is a partial colouring) or WeakColoring 6 (a global a.e. statement over all unit pairs including the uncoloured disk and exterior); palettes are defined only for |x| < 0.01; (5.2) is not instantiable because x+e+v is at distance up to 2 from x, outside the annulus; the two-centre transport has no non-vacuous instance because the second centre at distance 1 has unit circles reaching |z|-1 near 0, deep in the uncoloured disk; and BinaryCenter is FALSE at every model centre since the singleton palette takes all three labels on positive-measure direction sets, so binary_alternation, binary_pair_distinct and binary_centers_separated are all vacuous.",
+    "GRADE [S]+[P] The source-licensed ternary contract T1-T7: totality and measurability; global weak properness; the palette object; the derived 60-degree exclusion; binary centres plus alternation and separation; a full instance of two-centre transport with all eight hypothesis groups; and the ternary step at k = 6 which is a half-circle bound, NOT the k = 5 nullity. A local partial colouring can meet T3-T4 and the endpoint trace, but not T1-T2, and without those T5-T7 are vacuous."
+  ],
+  "conjectures": [
+    "The exact obstruction to promoting the annulus model is the cross-boundary unit-pair obligation: every boundary point of the inner disk sees all three annulus labels within unit reach, so the extension must colour the disk and the exterior consistently with three given labels on every 120-degree window; this is where a local 3-colouring of a thin annulus is most likely to fail.",
+    "Because the annulus model has no binary centre at any of its own centres, no k = 5 or k = 6 binary/ternary machinery in the tree can be applied to it; any candidate built on this pattern must first be completed globally, which restores the original problem.",
+    "The distinction between the k = 5 nullity and the k = 6 half-circle bound is a likely source of error in future candidates: quoting palette_triple_null at k = 6 would assert something the tree does not prove and which is false."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/ANNULUS-LOCAL-GLOBAL-AUDIT.md",
+    "supervisor/solve-geometry/PREREG-S3.md",
+    "supervisor/solve-geometry/PREREG-S2.md",
+    "supervisor/solve-geometry/ARTIFACT-HASHES.txt",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "None: analysis and source review only, no computation by instruction. The numeric windows in Claim 1 (cosine range [0.48985, 0.50985], angular range [59.34, 60.66] degrees) were computed by hand from radii 0.99 and 1.01 and are graded [P]; they should be re-derived independently before being quoted as exact."
+  ],
+  "failed_routes": [
+    "Stopped by instruction: seed design, (G4) heuristics and the S3 placement, which is not selected for continuation.",
+    "Not attempted: any computation, any new graph placement, any claim that the annulus model extends to a global 6-colouring, any claim that it contradicts a source theorem (it cannot: it satisfies no theorem-level hypothesis).",
+    "Corrected in the audit rather than carried forward: the candidate's centre threshold 0.005 is replaced by the exact 0.01, and the naive use of palette_triple_null at k = 6 is flagged as a false transport of a k = 5 nullity."
+  ],
+  "next_step": "If the supervisor wants the annulus line continued, the only productive question is the extension problem of section 5: whether the three-labelled annulus admits a measurable colouring of the disk and exterior with all unit pairs proper. That is a global question equivalent in difficulty to the original, and it should be posed as such rather than as a palette-axiom check.",
+  "escalation": null
+}

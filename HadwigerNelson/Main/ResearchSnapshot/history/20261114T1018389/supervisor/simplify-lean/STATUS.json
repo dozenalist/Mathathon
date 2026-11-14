@@ -1,0 +1,77 @@
+{
+  "updated_utc": "2026-11-14T10:22:00Z",
+  "status": "completed_block",
+  "summary": "Block 12: independently verified R4. R3 is now on disk and matches both supplied hashes (my block-11 absence report was a timing artifact). R4 reconstructed byte-identically from frozen R3 plus the single described substitution: the old text occurs exactly once, and the result hashes 24f89dd3... exactly, which proves R4 differs from R3 in that one line and nothing else; Spectrum unchanged. The changed line is the fourth component of a 4-tuple inside an exact, so it is proof-only. Two corrections recorded: (i) ConditionalSpectrum IS an ancestor of ConditionalLimits through Approximation, so the edited pair is comparable -- my block-11 'not comparable' was wrong; (ii) the 9-vs-12 reuse flag is closed, explained by the initial snapshot. Delivered SignatureEquivalence.lean: verbatim pre-patch baselines, Iff.rfl definitional-equality certificates (the decisive S := id test), both original public statements reproved from the R4 theorems at the original binders including the omitted Y instances, plus pp.explicit #checks and a documented limitation. Part A/Part B axiom split retained. Nothing compiled.",
+  "verified_results": [
+    "GRADE [C] R3 hashes now present on disk and matching: ConditionalSpectrum.lean d26d569088faea89e5ae5cc2309809797fcbe76cf6d927f4484bc39db7880d48, ConditionalLimits.lean fed6e99a17a7723240f9b598b1967183b41c5800d23d789e41e020cfe3dffedf. Frozen at supervisor/simplify-lean/snapshots/integ-d26d569088faea89/ with SHA256SUMS.txt.",
+    "GRADE [C] R4 RECONSTRUCTED AND HASH-VERIFIED: applying exactly one substitution ('by rw [\u2190 integral_congr_ae he]; exact hae' -> 'by simpa only [id_eq] using ((integral_congr_ae he) \u25b8 hae)') to the frozen R3 ConditionalLimits.lean yields sha256 24f89dd33533a0f61b9f35940e43b3a26c2b27b00424949a92cfdafc8de60d9b, the supplied R4 hash, exactly. The old text occurred exactly once (asserted before substitution). This proves R4 = R3 + that one line and nothing else. Artifact: supervisor/simplify-lean/recon/ConditionalLimits.R4-recon.lean.",
+    "GRADE [R] The changed line is proof-only: ConditionalLimits.lean:457 is the fourth component of an anonymous 4-tuple inside an 'exact', mid-proof. No statement, binder, hypothesis or definition is touched. Spectrum is byte-identical between R3 and R4.",
+    "GRADE [C] WORDING CORRECTED: ConditionalSpectrum IS an ancestor of ConditionalLimits (Limits imports Approximation, Approximation imports Spectrum), so the edited pair is totally ordered and a single build order suffices. My block-11 statement 'the two edits are not comparable' was wrong; the diamond (Approximation is a descendant of one edit and an ancestor of the other) is consistent with comparability, not opposed to it.",
+    "GRADE [C] Reuse flag CLOSED: the supervisor's 'nine unchanged dependencies' was the initial snapshot; all 14 immediate modules are now compiled and the manifest's twelve non-edit ancestors remain correct. No disagreement outstanding.",
+    "GRADE [R] SignatureEquivalence.lean delivered (195 lines): (i) pre-patch FiniteEncodingApproximationAt and AmbientEncodingAt copied verbatim under SignatureCheck.Baseline names, no import of the pre-patch tree; (ii) baseline_finite_iff and baseline_ambient_iff as Iff.rfl, which fail unless the new aliases are definitionally the old predicates -- the decisive test of S := id; (iii) the two ORIGINAL public statements reproved from the R4 theorems at the original binders including the omitted [StandardBorelSpace Y] [Nonempty Y]; (iv) pp.explicit/pp.universes #checks for a textual diff against the pre-patch build; (v) axiom footprint of the baselines.",
+    "GRADE [R] Documented limitation inside the packet: section 3 cannot detect an ADDED implicit binder, because it lives inside the module's variable block where such an argument is filled automatically; only the section-4 textual #check diff catches that. Both checks are required.",
+    "GRADE [S] Supervisor-reported, not re-run here: the 14 immediate modules and both smoke roots PASSED locally, 4 distinct theorems show standard axioms with no sorryAx, and the 82-module build is running. A 14-module pass is a type-checking result over the immediate closure; a full-tree pass will be a downstream-elaboration result and will not by itself establish statement preservation.",
+    "RETAINED: block-11 closure counts (descendants 19, union 21, complete ancestor closure 82, unaffected ConnectedUnitFree 1); block-10 R2 block-move finding; block-8 interface findings; the 2038-declaration census."
+  ],
+  "conjectures": [
+    "R4 will pass the 82-module build: the only change since R3 is a proof term that has already been accepted in the immediate closure, so no downstream type can move.",
+    "SignatureEquivalence will pass at sections 1-2; the residual risk is section 3's name resolution under the two opens, which is a mechanical fix if it fails and does not affect the equivalence claims themselves.",
+    "If the omit move did change anything publicly, it is detectable only by the section-4 textual diff, and the affected declaration would be the new uniform_precision_contradiction only."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/REVIEW-R4.md  <-- R4 review, sections 1-8. sha256 93630a2e40ec8fe0dba7fdb3efc8e6cc69bcca2399cd2d73b482a9c407fb847f",
+    "supervisor/simplify-lean/lean/SignatureEquivalence.lean  <-- signature/definitional-equivalence packet for the local queue. sha256 86331c2f835027cc0874b1ed9ed9395131dbab056efc09673cdb40dda602038e",
+    "supervisor/simplify-lean/recon/ConditionalLimits.R4-recon.lean  <-- independent R4 reconstruction, hash 24f89dd3... sha256 24f89dd33533a0f61b9f35940e43b3a26c2b27b00424949a92cfdafc8de60d9b",
+    "supervisor/simplify-lean/snapshots/integ-d26d569088faea89/  <-- frozen R3 (both files + patches + smoke roots + SHA256SUMS.txt)",
+    "supervisor/simplify-lean/lean/AxiomRoots.lean (Part A 7 affected roots / Part B 2 unaffected, retained) sha256 726d1ae4ec8cea100c5203492d53523619ae12590713734379deef9e28b9caad",
+    "supervisor/simplify-lean/axiom_gate.py (subset gate with required/optional split) sha256 36bf7fecb22d154ec14ab7d0e77621020761ee2c6a5c2497963509a0e38ea535",
+    "supervisor/simplify-lean/BUILD-PLAN.json (82-row closure; counts unchanged by R4) ",
+    "retained: REVIEW-R3.md, REVIEW-integration-final.md, BUILD-NOTES-full.md, REVIEW-encoding-core.md, PACKET-encoding-core.md, CENSUS.md, MANIFEST-full.json"
+  ],
+  "tests_run": [
+    "sha256sum of the on-disk architect files vs the supplied R3 hashes -> both match.",
+    "python substitution with an asserted single-occurrence precondition on the frozen R3 Limits -> exactly 1 occurrence; result sha256 equals the supplied R4 hash 24f89dd3... (byte-identical reconstruction).",
+    "sed -n 450,462p on the frozen R3 Limits -> shows the changed line as the fourth component of a 4-tuple inside an exact.",
+    "rg for declaration sites of eval, kCoeff, K, D, E, IsWild, PhaseEncoding.kernelEncoding -> confirmed which namespaces SignatureEquivalence.lean must open; added 'open PlaneFiveColor.Spectral'.",
+    "python structural checks on SignatureEquivalence.lean: 4 Iff.rfl sites, 6 ISO/IEC-safe REPLACE guards removed, two omit blocks at lines 119 and 138, limitation section present.",
+    "NO Lean build, no cloud/cache operation (analysis-only block)."
+  ],
+  "failed_routes": [
+    "Could not compile SignatureEquivalence.lean: name resolution under the two namespace opens (eval alongside Mathlib's eval, kCoeff/K/D/E from Basic) is the one uncertainty, flagged in section 8 of the review.",
+    "Could not verify that the 4 theorems whose axioms the supervisor checked are the ones I would pick; AxiomRoots.lean remains the named instrument for that.",
+    "Superseded: block-11's 'R3 bytes absent' (timing) and block-11's 'the two edits are not comparable' (wrong; Spectrum is an ancestor of Limits)."
+  ],
+  "next_step": "Next verification step, one local-queue run: with R4 compiled into the private olean dir, elaborate supervisor/simplify-lean/lean/SignatureEquivalence.lean. Require: sections 1-3 with no errors (Iff.rfl certificates plus both baseline theorems), then diff its section-4 pp.explicit #checks against the pre-patch build output to settle whether the omit move added a Y instance binder -- that diff is the only instrument that can see an added binder. Independently run AxiomRoots.lean through axiom_gate.py for the named Part A roots. The 82-module build continuing does not substitute for either check.",
+  "owned_agents": [
+    {
+      "swarm": "smwfy8rae",
+      "members": 3,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "state": "stopped",
+      "accepted": 0,
+      "note": "stopped in block 1; not restarted (single-agent blocks by instruction)."
+    }
+  ],
+  "escalation": null,
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "review": "supervisor/simplify-lean/REVIEW-R4.md",
+    "signature_packet": "supervisor/simplify-lean/lean/SignatureEquivalence.lean",
+    "r4_reconstruction": "supervisor/simplify-lean/recon/ConditionalLimits.R4-recon.lean",
+    "frozen_R3": "supervisor/simplify-lean/snapshots/integ-d26d569088faea89/SHA256SUMS.txt",
+    "axiom_root_file": "supervisor/simplify-lean/lean/AxiomRoots.lean",
+    "axiom_gate": "supervisor/simplify-lean/axiom_gate.py",
+    "hashes": {
+      "R3_spectrum": "d26d569088faea89e5ae5cc2309809797fcbe76cf6d927f4484bc39db7880d48",
+      "R3_limits": "fed6e99a17a7723240f9b598b1967183b41c5800d23d789e41e020cfe3dffedf",
+      "R4_limits_reconstructed": "24f89dd33533a0f61b9f35940e43b3a26c2b27b00424949a92cfdafc8de60d9b"
+    },
+    "counts": {
+      "descendants_only": 19,
+      "union_with_edits": 21,
+      "complete_ancestor_closure": 82,
+      "unaffected": 1
+    },
+    "next_verification_step": "Elaborate SignatureEquivalence.lean (expect sections 1-3 clean), diff its pp.explicit #checks against the pre-patch build to settle the omit/binder question, and run AxiomRoots through axiom_gate.py."
+  }
+}

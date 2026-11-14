@@ -1,0 +1,443 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: 86331c2f835027cc0874b1ed9ed9395131dbab056efc09673cdb40dda602038e
+Status: failed
+Exit code: 1
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureEquivalenceR4.lean:101:0: warning: automatically included section variable(s) unused in theorem `OAI.SignatureCheck.baseline_finite_iff`:
+  [StandardBorelSpace X]
+  [Nonempty X]
+  [StandardBorelSpace Y]
+  [Nonempty Y]
+  [MeasurableSpace W]
+  [StandardBorelSpace W]
+  [Nonempty W]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [StandardBorelSpace
+  X] [Nonempty
+  X] [StandardBorelSpace Y] [Nonempty Y] [MeasurableSpace W] [StandardBorelSpace W] [Nonempty W] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureEquivalenceR4.lean:107:0: warning: automatically included section variable(s) unused in theorem `OAI.SignatureCheck.baseline_ambient_iff`:
+  [StandardBorelSpace X]
+  [Nonempty X]
+  [StandardBorelSpace Y]
+  [Nonempty Y]
+  [MeasurableSpace W]
+  [StandardBorelSpace W]
+  [Nonempty W]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [StandardBorelSpace
+  X] [Nonempty
+  X] [StandardBorelSpace Y] [Nonempty Y] [MeasurableSpace W] [StandardBorelSpace W] [Nonempty W] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureEquivalenceR4.lean:136:31: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  StandardBorelSpace Y
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r4\src\SignatureEquivalenceR4.lean:155:31: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  StandardBorelSpace Y
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+@finite_uniform_precision_contradiction.{u_1, u_2,
+    u_3} : ∀ {X : Type u_1} {Y : Type u_2} {W : Type u_3} [inst : MeasurableSpace.{u_1} X]
+  [@StandardBorelSpace.{u_1} X inst] [Nonempty.{u_1 + 1} X] [inst_3 : MeasurableSpace.{u_2} Y]
+  [inst_4 : MeasurableSpace.{u_3} W] [@StandardBorelSpace.{u_3} W inst_4] [Nonempty.{u_3 + 1} W]
+  (μ : @Measure.{u_1} X inst) [inst_7 : @IsProbabilityMeasure.{u_1} X inst μ] (p : X → Y) (q : Y → W) (b : X → D),
+  @Measurable.{u_1, u_2} X Y inst inst_3 p →
+    @Measurable.{u_2, u_3} Y W inst_3 inst_4 q →
+      @Measurable.{u_1, 0} X D inst instMeasurableSpaceD b →
+        ∀ (m : Nat),
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) m →
+            ∀ (g : Y → Fin m → D),
+              @Filter.Eventually.{u_2} Y
+                  (fun y =>
+                    @Eq.{1} (@Measure.{0} D instMeasurableSpaceD)
+                      (@DFunLike.coe.{u_2 + 1, u_2 + 1, 1} (@Kernel.{u_2, 0} Y D inst_3 instMeasurableSpaceD) Y
+                        (fun x => @Measure.{0} D instMeasurableSpaceD)
+                        (@Kernel.instFunLike.{u_2, 0} Y D inst_3 instMeasurableSpaceD)
+                        (@condDistrib.{u_1, u_2, 0} X Y D instMeasurableSpaceD ⋯ ⋯ inst inst_3 b p μ ⋯) y)
+                      (@HSMul.hSMul.{0, 0, 0} ENNReal (@Measure.{0} D instMeasurableSpaceD)
+                        (@Measure.{0} D instMeasurableSpaceD)
+                        (@instHSMul.{0, 0} ENNReal (@Measure.{0} D instMeasurableSpaceD)
+                          (@Measure.instSMul.{0, 0} D ENNReal instMeasurableSpaceD
+                            (@instSMulOfMul.{0} ENNReal
+                              (@Distrib.toMul.{0} ENNReal
+                                (@instDistribOfSemiring.{0} ENNReal
+                                  (@CommSemiring.toSemiring.{0} ENNReal ENNReal.instCommSemiring))))
+                            ⋯))
+                        (@Inv.inv.{0} ENNReal ENNReal.instInv
+                          (@Nat.cast.{0} ENNReal
+                            (@AddMonoidWithOne.toNatCast.{0} ENNReal
+                              (@AddCommMonoidWithOne.toAddMonoidWithOne.{0} ENNReal ENNReal.instAddCommMonoidWithOne))
+                            m))
+                        (∑ i, @Measure.dirac.{0} D instMeasurableSpaceD (g y i))))
+                  (@ae.{u_2, u_2} Y (@Measure.{u_2} Y inst_3) (@Measure.instFunLike.{u_2} Y inst_3) ⋯
+                    (@Measure.map.{u_1, u_2} X Y inst inst_3 p μ)) →
+                IsWild
+                    (@DifferenceFourier.differenceLaw.{0, u_3} D W instMeasurableSpaceD inst_4
+                      (@PontryaginDual.instCommGroup.{0} DiscreteE
+                        (@DivInvMonoid.toMonoid.{0} DiscreteE
+                          (@Group.toDivInvMonoid.{0} DiscreteE
+                            (@CommGroup.toGroup.{0} DiscreteE instCommGroupDiscreteE)))
+                        instTopologicalSpaceDiscreteE)
+                      (@Measure.map.{u_1, u_3} X W inst inst_4 (@Function.comp.{u_1 + 1, u_2 + 1, u_3 + 1} X Y W q p) μ)
+                      (@condDistrib.{u_1, u_3, 0} X W D instMeasurableSpaceD ⋯ ⋯ inst inst_4 b
+                        (@Function.comp.{u_1 + 1, u_2 + 1, u_3 + 1} X Y W q p) μ ⋯)
+                      ⋯) →
+                  ∀ (ρ c : Real) (N : Nat),
+                    @LT.lt.{0} Real Real.instLT
+                        (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) ρ →
+                      @LT.lt.{0} Real Real.instLT
+                          (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) c →
+                        @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) N →
+                          (∀ (ω : @Measure.{0} Circle instMeasurableSpaceCircle_oAI_2)
+                              [@IsProbabilityMeasure.{0} Circle instMeasurableSpaceCircle_oAI_2 ω],
+                              (∀ (n : Nat),
+                                  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                                      n →
+                                    @LE.le.{0} Nat instLENat n N →
+                                      @LT.lt.{0} Real Real.instLT
+                                        (@norm.{0} Complex Complex.instNorm
+                                          (@integral.{0, 0} Circle Complex Complex.instNormedAddCommGroup
+                                            (@InnerProductSpace.toNormedSpace.{0, 0} Real Complex Real.instRCLike
+                                              (@NormedAddCommGroup.toSeminormedAddCommGroup.{0} Complex
+                                                Complex.instNormedAddCommGroup)
+                                              instInnerProductSpaceRealComplex)
+                                            instMeasurableSpaceCircle_oAI_2 ω fun w =>
+                                            @HPow.hPow.{0, 0, 0} Complex Nat Complex
+                                              (@instHPow.{0, 0} Complex Nat
+                                                (@NPow.toPow.{0} Complex
+                                                  (@Monoid.toNPow.{0} Complex
+                                                    (@Semiring.toMonoid.{0} Complex Complex.instSemiring))))
+                                              (@Subtype.val.{1} Complex
+                                                (fun x =>
+                                                  @Membership.mem.{0, 0} Complex
+                                                    (@Submonoid.{0} Complex
+                                                      (@MulZeroOneClass.toMulOneClass.{0} Complex
+                                                        (@instMulZeroOneClassOfSemiring.{0} Complex
+                                                          (@Ring.toSemiring.{0} Complex
+                                                            (@SeminormedRing.toRing.{0} Complex
+                                                              (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                                (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                                  (@NormedField.toNormedCommRing.{0} Complex
+                                                                    Complex.instNormedField))))))))
+                                                    (@SetLike.instMembership.{0, 0}
+                                                      (@Submonoid.{0} Complex
+                                                        (@MulZeroOneClass.toMulOneClass.{0} Complex
+                                                          (@instMulZeroOneClassOfSemiring.{0} Complex
+                                                            (@Ring.toSemiring.{0} Complex
+                                                              (@SeminormedRing.toRing.{0} Complex
+                                                                (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                                  (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                                    (@NormedField.toNormedCommRing.{0} Complex
+                                                                      Complex.instNormedField))))))))
+                                                      Complex
+                                                      (@Submonoid.instSetLike.{0} Complex
+                                                        (@MulZeroOneClass.toMulOneClass.{0} Complex
+                                                          (@instMulZeroOneClassOfSemiring.{0} Complex
+                                                            (@Ring.toSemiring.{0} Complex
+                                                              (@SeminormedRing.toRing.{0} Complex
+                                                                (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                                  (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                                    (@NormedField.toNormedCommRing.{0} Complex
+                                                                      Complex.instNormedField)))))))))
+                                                    (@Submonoid.unitSphere.{0} Complex
+                                                      (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                        (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                          (@NormedField.toNormedCommRing.{0} Complex
+                                                            Complex.instNormedField)))
+                                                      Circle._proof_1 Circle._proof_2)
+                                                    x)
+                                                w)
+                                              n))
+                                        c) →
+                                @LT.lt.{0} Real Real.instLT
+                                  (@Measure.real.{0} Circle instMeasurableSpaceCircle_oAI_2 ω
+                                    (@Set.ofPred.{0} Circle fun w =>
+                                      @LE.le.{0} Real Real.instLE
+                                        (@norm.{0} Complex Complex.instNorm
+                                          (@HSub.hSub.{0, 0, 0} Complex Complex Complex
+                                            (@instHSub.{0} Complex Complex.instSub)
+                                            (@Subtype.val.{1} Complex
+                                              (fun x =>
+                                                @Membership.mem.{0, 0} Complex
+                                                  (@Submonoid.{0} Complex
+                                                    (@MulZeroOneClass.toMulOneClass.{0} Complex
+                                                      (@instMulZeroOneClassOfSemiring.{0} Complex
+                                                        (@Ring.toSemiring.{0} Complex
+                                                          (@SeminormedRing.toRing.{0} Complex
+                                                            (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                              (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                                (@NormedField.toNormedCommRing.{0} Complex
+                                                                  Complex.instNormedField))))))))
+                                                  (@SetLike.instMembership.{0, 0}
+                                                    (@Submonoid.{0} Complex
+                                                      (@MulZeroOneClass.toMulOneClass.{0} Complex
+                                                        (@instMulZeroOneClassOfSemiring.{0} Complex
+                                                          (@Ring.toSemiring.{0} Complex
+                                                            (@SeminormedRing.toRing.{0} Complex
+                                                              (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                                (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                                  (@NormedField.toNormedCommRing.{0} Complex
+                                                                    Complex.instNormedField))))))))
+                                                    Complex
+                                                    (@Submonoid.instSetLike.{0} Complex
+                                                      (@MulZeroOneClass.toMulOneClass.{0} Complex
+                                                        (@instMulZeroOneClassOfSemiring.{0} Complex
+                                                          (@Ring.toSemiring.{0} Complex
+                                                            (@SeminormedRing.toRing.{0} Complex
+                                                              (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                                (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                                  (@NormedField.toNormedCommRing.{0} Complex
+                                                                    Complex.instNormedField)))))))))
+                                                  (@Submonoid.unitSphere.{0} Complex
+                                                    (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                      (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                        (@NormedField.toNormedCommRing.{0} Complex
+                                                          Complex.instNormedField)))
+                                                    Circle._proof_1 Circle._proof_2)
+                                                  x)
+                                              w)
+                                            (@OfNat.ofNat.{0} Complex (nat_lit 1)
+                                              (@One.toOfNat1.{0} Complex Complex.instOne))))
+                                        (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+                                          (@OfNat.ofNat.{0} Real (nat_lit 4)
+                                            (@instOfNatAtLeastTwo.{0} Real (nat_lit 4) Real.instNatCast ⋯))
+                                          ρ)))
+                                  (@HDiv.hDiv.{0, 0, 0} Real Real Real
+                                    (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))
+                                    (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+                                    (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+                                      (@OfNat.ofNat.{0} Real (nat_lit 4)
+                                        (@instOfNatAtLeastTwo.{0} Real (nat_lit 4) Real.instNatCast ⋯))
+                                      (@HPow.hPow.{0, 0, 0} Real Nat Real
+                                        (@instHPow.{0, 0} Real Nat
+                                          (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid)))
+                                        (@Nat.cast.{0} Real Real.instNatCast m)
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))) →
+                            @FiniteEncodingApproximationAt.{u_1, u_2, u_3} X Y W inst inst_3 μ inst_7 p q b m
+                                (@HDiv.hDiv.{0, 0, 0} Real Real Real
+                                  (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))
+                                  (@HDiv.hDiv.{0, 0, 0} Real Real Real
+                                    (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))
+                                    (@HDiv.hDiv.{0, 0, 0} Real Real Real
+                                      (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))
+                                      (@HPow.hPow.{0, 0, 0} Real Nat Real
+                                        (@instHPow.{0, 0} Real Nat
+                                          (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid)))
+                                        ρ m)
+                                      (@Nat.cast.{0} Real Real.instNatCast m))
+                                    (@OfNat.ofNat.{0} Real (nat_lit 100)
+                                      (@instOfNatAtLeastTwo.{0} Real (nat_lit 100) Real.instNatCast ⋯)))
+                                  (@OfNat.ofNat.{0} Real (nat_lit 100)
+                                    (@instOfNatAtLeastTwo.{0} Real (nat_lit 100) Real.instNatCast ⋯))) →
+                              False
+@ambient_uniform_precision_contradiction.{u_1, u_2,
+    u_3} : ∀ {X : Type u_1} {Y : Type u_2} {W : Type u_3} [inst : MeasurableSpace.{u_1} X]
+  [@StandardBorelSpace.{u_1} X inst] [Nonempty.{u_1 + 1} X] [inst_3 : MeasurableSpace.{u_2} Y]
+  [inst_4 : MeasurableSpace.{u_3} W] [@StandardBorelSpace.{u_3} W inst_4] [Nonempty.{u_3 + 1} W]
+  (μ : @Measure.{u_1} X inst) [inst_7 : @IsProbabilityMeasure.{u_1} X inst μ] (p : X → Y) (q : X → W) (b : X → D),
+  @Measurable.{u_1, u_2} X Y inst inst_3 p →
+    @Measurable.{u_1, u_3} X W inst inst_4 q →
+      @Measurable.{u_1, 0} X D inst instMeasurableSpaceD b →
+        ∀ (m : Nat),
+          @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) m →
+            ∀ (g : Y → Fin m → D),
+              @Filter.Eventually.{u_2} Y
+                  (fun y =>
+                    @Eq.{1} (@Measure.{0} D instMeasurableSpaceD)
+                      (@DFunLike.coe.{u_2 + 1, u_2 + 1, 1} (@Kernel.{u_2, 0} Y D inst_3 instMeasurableSpaceD) Y
+                        (fun x => @Measure.{0} D instMeasurableSpaceD)
+                        (@Kernel.instFunLike.{u_2, 0} Y D inst_3 instMeasurableSpaceD)
+                        (@condDistrib.{u_1, u_2, 0} X Y D instMeasurableSpaceD dualStandardBorelSpace ⋯ inst inst_3 b p
+                          μ ⋯)
+                        y)
+                      (@HSMul.hSMul.{0, 0, 0} ENNReal (@Measure.{0} D instMeasurableSpaceD)
+                        (@Measure.{0} D instMeasurableSpaceD)
+                        (@instHSMul.{0, 0} ENNReal (@Measure.{0} D instMeasurableSpaceD)
+                          (@Measure.instSMul.{0, 0} D ENNReal instMeasurableSpaceD
+                            (@instSMulOfMul.{0} ENNReal
+                              (@Distrib.toMul.{0} ENNReal
+                                (@instDistribOfSemiring.{0} ENNReal
+                                  (@CommSemiring.toSemiring.{0} ENNReal ENNReal.instCommSemiring))))
+                            ⋯))
+                        (@Inv.inv.{0} ENNReal ENNReal.instInv
+                          (@Nat.cast.{0} ENNReal
+                            (@AddMonoidWithOne.toNatCast.{0} ENNReal
+                              (@AddCommMonoidWithOne.toAddMonoidWithOne.{0} ENNReal ENNReal.instAddCommMonoidWithOne))
+                            m))
+                        (∑ i, @Measure.dirac.{0} D instMeasurableSpaceD (g y i))))
+                  (@ae.{u_2, u_2} Y (@Measure.{u_2} Y inst_3) (@Measure.instFunLike.{u_2} Y inst_3) ⋯
+                    (@Measure.map.{u_1, u_2} X Y inst inst_3 p μ)) →
+                IsWild
+                    (@DifferenceFourier.differenceLaw.{0, u_3} D W instMeasurableSpaceD inst_4
+                      (@PontryaginDual.instCommGroup.{0} DiscreteE
+                        (@DivInvMonoid.toMonoid.{0} DiscreteE
+                          (@Group.toDivInvMonoid.{0} DiscreteE
+                            (@CommGroup.toGroup.{0} DiscreteE instCommGroupDiscreteE)))
+                        instTopologicalSpaceDiscreteE)
+                      (@Measure.map.{u_1, u_3} X W inst inst_4 q μ)
+                      (@condDistrib.{u_1, u_3, 0} X W D instMeasurableSpaceD dualStandardBorelSpace ⋯ inst inst_4 b q μ
+                        ⋯)
+                      ⋯) →
+                  ∀ (ρ c : Real) (N : Nat),
+                    @LT.lt.{0} Real Real.instLT
+                        (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) ρ →
+                      @LT.lt.{0} Real Real.instLT
+                          (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)) c →
+                        @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) N →
+                          (∀ (ω : @Measure.{0} Circle instMeasurableSpaceCircle_oAI_3)
+                              [@IsProbabilityMeasure.{0} Circle instMeasurableSpaceCircle_oAI_3 ω],
+                              (∀ (n : Nat),
+                                  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))
+                                      n →
+                                    @LE.le.{0} Nat instLENat n N →
+                                      @LT.lt.{0} Real Real.instLT
+                                        (@norm.{0} Complex Complex.instNorm
+                                          (@integral.{0, 0} Circle Complex Complex.instNormedAddCommGroup
+                                            (@InnerProductSpace.toNormedSpace.{0, 0} Real Complex Real.instRCLike
+                                              (@NormedAddCommGroup.toSeminormedAddCommGroup.{0} Complex
+                                                Complex.instNormedAddCommGroup)
+                                              instInnerProductSpaceRealComplex)
+                                            instMeasurableSpaceCircle_oAI_3 ω fun w =>
+                                            @HPow.hPow.{0, 0, 0} Complex Nat Complex
+                                              (@instHPow.{0, 0} Complex Nat
+                                                (@NPow.toPow.{0} Complex
+                                                  (@Monoid.toNPow.{0} Complex
+                                                    (@Semiring.toMonoid.{0} Complex Complex.instSemiring))))
+                                              (@Subtype.val.{1} Complex
+                                                (fun x =>
+                                                  @Membership.mem.{0, 0} Complex
+                                                    (@Submonoid.{0} Complex
+                                                      (@MulZeroOneClass.toMulOneClass.{0} Complex
+                                                        (@instMulZeroOneClassOfSemiring.{0} Complex
+                                                          (@Ring.toSemiring.{0} Complex
+                                                            (@SeminormedRing.toRing.{0} Complex
+                                                              (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                                (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                                  (@NormedField.toNormedCommRing.{0} Complex
+                                                                    Complex.instNormedField))))))))
+                                                    (@SetLike.instMembership.{0, 0}
+                                                      (@Submonoid.{0} Complex
+                                                        (@MulZeroOneClass.toMulOneClass.{0} Complex
+                                                          (@instMulZeroOneClassOfSemiring.{0} Complex
+                                                            (@Ring.toSemiring.{0} Complex
+                                                              (@SeminormedRing.toRing.{0} Complex
+                                                                (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                                  (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                                    (@NormedField.toNormedCommRing.{0} Complex
+                                                                      Complex.instNormedField))))))))
+                                                      Complex
+                                                      (@Submonoid.instSetLike.{0} Complex
+                                                        (@MulZeroOneClass.toMulOneClass.{0} Complex
+                                                          (@instMulZeroOneClassOfSemiring.{0} Complex
+                                                            (@Ring.toSemiring.{0} Complex
+                                                              (@SeminormedRing.toRing.{0} Complex
+                                                                (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                                  (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                                    (@NormedField.toNormedCommRing.{0} Complex
+                                                                      Complex.instNormedField)))))))))
+                                                    (@Submonoid.unitSphere.{0} Complex
+                                                      (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                        (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                          (@NormedField.toNormedCommRing.{0} Complex
+                                                            Complex.instNormedField)))
+                                                      Circle._proof_1 Circle._proof_2)
+                                                    x)
+                                                w)
+                                              n))
+                                        c) →
+                                @LT.lt.{0} Real Real.instLT
+                                  (@Measure.real.{0} Circle instMeasurableSpaceCircle_oAI_3 ω
+                                    (@Set.ofPred.{0} Circle fun w =>
+                                      @LE.le.{0} Real Real.instLE
+                                        (@norm.{0} Complex Complex.instNorm
+                                          (@HSub.hSub.{0, 0, 0} Complex Complex Complex
+                                            (@instHSub.{0} Complex Complex.instSub)
+                                            (@Subtype.val.{1} Complex
+                                              (fun x =>
+                                                @Membership.mem.{0, 0} Complex
+                                                  (@Submonoid.{0} Complex
+                                                    (@MulZeroOneClass.toMulOneClass.{0} Complex
+                                                      (@instMulZeroOneClassOfSemiring.{0} Complex
+                                                        (@Ring.toSemiring.{0} Complex
+                                                          (@SeminormedRing.toRing.{0} Complex
+                                                            (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                              (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                                (@NormedField.toNormedCommRing.{0} Complex
+                                                                  Complex.instNormedField))))))))
+                                                  (@SetLike.instMembership.{0, 0}
+                                                    (@Submonoid.{0} Complex
+                                                      (@MulZeroOneClass.toMulOneClass.{0} Complex
+                                                        (@instMulZeroOneClassOfSemiring.{0} Complex
+                                                          (@Ring.toSemiring.{0} Complex
+                                                            (@SeminormedRing.toRing.{0} Complex
+                                                              (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                                (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                                  (@NormedField.toNormedCommRing.{0} Complex
+                                                                    Complex.instNormedField))))))))
+                                                    Complex
+                                                    (@Submonoid.instSetLike.{0} Complex
+                                                      (@MulZeroOneClass.toMulOneClass.{0} Complex
+                                                        (@instMulZeroOneClassOfSemiring.{0} Complex
+                                                          (@Ring.toSemiring.{0} Complex
+                                                            (@SeminormedRing.toRing.{0} Complex
+                                                              (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                                (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                                  (@NormedField.toNormedCommRing.{0} Complex
+                                                                    Complex.instNormedField)))))))))
+                                                  (@Submonoid.unitSphere.{0} Complex
+                                                    (@SeminormedCommRing.toSeminormedRing.{0} Complex
+                                                      (@NormedCommRing.toSeminormedCommRing.{0} Complex
+                                                        (@NormedField.toNormedCommRing.{0} Complex
+                                                          Complex.instNormedField)))
+                                                    Circle._proof_1 Circle._proof_2)
+                                                  x)
+                                              w)
+                                            (@OfNat.ofNat.{0} Complex (nat_lit 1)
+                                              (@One.toOfNat1.{0} Complex Complex.instOne))))
+                                        (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+                                          (@OfNat.ofNat.{0} Real (nat_lit 4)
+                                            (@instOfNatAtLeastTwo.{0} Real (nat_lit 4) Real.instNatCast ⋯))
+                                          ρ)))
+                                  (@HDiv.hDiv.{0, 0, 0} Real Real Real
+                                    (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))
+                                    (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))
+                                    (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)
+                                      (@OfNat.ofNat.{0} Real (nat_lit 4)
+                                        (@instOfNatAtLeastTwo.{0} Real (nat_lit 4) Real.instNatCast ⋯))
+                                      (@HPow.hPow.{0, 0, 0} Real Nat Real
+                                        (@instHPow.{0, 0} Real Nat
+                                          (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid)))
+                                        (@Nat.cast.{0} Real Real.instNatCast m)
+                                        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))))) →
+                            @AmbientEncodingAt.{u_1, u_2, u_3} X Y W inst inst_3 μ inst_7 p q b m
+                                (@HDiv.hDiv.{0, 0, 0} Real Real Real
+                                  (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))
+                                  (@HDiv.hDiv.{0, 0, 0} Real Real Real
+                                    (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))
+                                    (@HDiv.hDiv.{0, 0, 0} Real Real Real
+                                      (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))
+                                      (@HPow.hPow.{0, 0, 0} Real Nat Real
+                                        (@instHPow.{0, 0} Real Nat
+                                          (@NPow.toPow.{0} Real (@Monoid.toNPow.{0} Real Real.instMonoid)))
+                                        ρ m)
+                                      (@Nat.cast.{0} Real Real.instNatCast m))
+                                    (@OfNat.ofNat.{0} Real (nat_lit 100)
+                                      (@instOfNatAtLeastTwo.{0} Real (nat_lit 100) Real.instNatCast ⋯)))
+                                  (@OfNat.ofNat.{0} Real (nat_lit 100)
+                                    (@instOfNatAtLeastTwo.{0} Real (nat_lit 100) Real.instNatCast ⋯))) →
+                              False
+'OAI.SignatureCheck.baseline_finite_uniform_precision_contradiction' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'OAI.SignatureCheck.baseline_ambient_uniform_precision_contradiction' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+
+STDERR
+

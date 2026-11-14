@@ -1,0 +1,56 @@
+================================================================================
+A. exact constants
+================================================================================
+  cos(2 arcsin(1/(2 sqrt3))) = 1 - 2*(1/12) = 5/6 : True
+  |1-e^{i gamma}|^2 = 2 - 2 cos gamma = 2 - 5/3 = 1/3 : True
+  |e^{2 i kappa} - 1|^2 = |e^{120i}-1|^2 = 3 ; 3*(1/3) = 1  (unit side)
+  gamma in degrees in (33.557309761921, 33.557309761921), width 1.58e-44
+  psi = pi+gamma     in (213.557309761921, 213.557309761921)
+
+================================================================================
+B. k-arithmetic:  contradiction iff  k - |G1 u G2| < chi(Q)
+================================================================================
+  |G1 u G2| = 2  =>  |T'| = 4  =>  contradiction from a 5-chromatic unit-distance graph
+  |G1 u G2| = 3  =>  |T'| = 3  =>  contradiction from the Moser spindle  (chi 4)
+  |G1 u G2| = 4  =>  |T'| = 2  =>  contradiction from the unit triangle of Lemma 6.4  (chi 3)
+  |G1 u G2| = 5  =>  |T'| = 1  =>  contradiction from a unit edge  (chi 2)
+  |G1 u G2| = 6  =>  |T'| = 0  =>  contradiction from -- (5.2) alone already contradicts
+  at a 6-cycle centre all palettes have size >= 2, so |G1 u G2| >= 4.
+
+================================================================================
+C. every palette-level countermodel at k=6 that is pair-valued dies
+================================================================================
+  m15 uniform blocks, ell=3    120deg-periodic=True   ELIMINATED
+        A=[0, 3]    B=[1, 4]    |AuB|=4 T'=2   role B->A  t = 53.221345 deg  (witness set of width 79.328 deg)
+        A=[0, 3]    B=[2, 5]    |AuB|=4 T'=2   role A->B  t = 13.221345 deg  (witness set of width 79.328 deg)
+  m15 uniform blocks, ell=4    120deg-periodic=True   ELIMINATED
+        A=[0, 2]    B=[1, 4]    |AuB|=4 T'=2   role B->A  t = 53.221345 deg  (witness set of width 79.328 deg)
+        A=[0, 2]    B=[3, 5]    |AuB|=4 T'=2   role A->B  t = 13.221345 deg  (witness set of width 79.328 deg)
+  m15 uniform blocks, ell=5    120deg-periodic=True   ELIMINATED
+        A=[0, 2]    B=[1, 3]    |AuB|=4 T'=2   role B->A  t = 53.221345 deg  (witness set of width 79.328 deg)
+        A=[0, 2]    B=[4, 5]    |AuB|=4 T'=2   role A->B  t = 13.221345 deg  (witness set of width 79.328 deg)
+  m15 uniform blocks, ell=6    120deg-periodic=True   ELIMINATED
+        A=[0, 3]    B=[1, 4]    |AuB|=4 T'=2   role B->A  t = 53.221345 deg  (witness set of width 79.328 deg)
+        A=[0, 3]    B=[2, 5]    |AuB|=4 T'=2   role A->B  t = 13.221345 deg  (witness set of width 79.328 deg)
+  FREE-LABEL, ell=3            120deg-periodic=True   survives
+  FREE-LABEL, ell=4            120deg-periodic=True   ELIMINATED
+        A=[0, 2]    B=[1, 3]    |AuB|=4 T'=2   role B->A  t = 53.221345 deg  (witness set of width 79.328 deg)
+  FREE-LABEL, ell=5            120deg-periodic=True   ELIMINATED
+        A=[0, 2]    B=[1, 3]    |AuB|=4 T'=2   role B->A  t = 53.221345 deg  (witness set of width 79.328 deg)
+  FREE-LABEL, ell=6            120deg-periodic=False  ELIMINATED
+        A=[1, 3]    B=[2, 4]    |AuB|=4 T'=2   role A->B  t = 93.221345 deg  (witness set of width 19.328 deg)
+        A=[1, 3]    B=[2, 5]    |AuB|=4 T'=2   role B->A  t = 23.221345 deg  (witness set of width 19.328 deg)
+  m13 singleton triangle       120deg-periodic=True   survives
+
+  eliminated: 7 of 9.  survivors: ['FREE-LABEL, ell=3', 'm13 singleton triangle']
+  the survivors are exactly the models whose palettes are singletons (|A u B| = 2,
+  |T'| = 4 >= 3): they are consistent with the mechanism, and a 6-cycle centre
+  has no singleton palette (Lemma 3 of sprint/k6/STRUCTURE.md).
+
+================================================================================
+D. the mechanism is strictly stronger than the gamma criterion
+================================================================================
+  direction sets E_A = (0,120), E_B = (120,240) degrees:
+    neither contains a full 120-degree orbit, so no gamma witness exists;
+    the arc-sum lemma gives a disc of radius >= delta*sigma - delta^2 = 0.717177
+    and 1/sqrt3 = 0.577350  =>  disc contains a unit triangle:  True

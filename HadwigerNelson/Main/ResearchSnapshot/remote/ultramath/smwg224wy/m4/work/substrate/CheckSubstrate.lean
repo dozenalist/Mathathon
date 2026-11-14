@@ -1,0 +1,5 @@
+import OAI.Analysis.PlaneSpectrum.RelativeSingularityTheorem
+#print axioms OAI.PlaneFiveColor.Spectral.RelativeSingularity.relative_singularity_of_ergodic
+#print axioms OAI.PlaneFiveColor.Spectral.RelativeSingularity.differenceLaw_eq_law
+#print axioms OAI.PlaneFiveColor.Spectral.RelativeSingularity.no_four_points
+#check @OAI.PlaneFiveColor.Spectral.RelativeSingularity.relative_singularity_of_ergodic

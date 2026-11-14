@@ -1,0 +1,1 @@
+OAI/Analysis/PlaneSpectrum/TheoremA.lean:1:0: error: import OAI.Analysis.PlaneSpectrum.DifferenceLaw failed, environment already contains 'OAI.EuclideanFiveColor.DifferenceFourier.differenceLaw' from OAI.Analysis.PlaneSpectrum.FourierTests

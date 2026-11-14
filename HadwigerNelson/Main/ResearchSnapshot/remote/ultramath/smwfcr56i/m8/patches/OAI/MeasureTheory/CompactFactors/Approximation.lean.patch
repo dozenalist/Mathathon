@@ -1,0 +1,72 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/Approximation.lean	2026-11-13 19:09:13.640510106 +0000
++++ OAI/MeasureTheory/CompactFactors/Approximation.lean	2026-11-13 19:42:36.680533640 +0000
+@@ -100,7 +100,7 @@
+       κ y = (m : ℝ≥0∞)⁻¹ • ∑ i, Measure.dirac (g i) then h.choose else fun _ => Classical.choice inferInstance
+   refine ⟨m, hm, g, ?_⟩
+   filter_upwards [hlist] with y hy
+-  simpa only [g, dite_eq_left hy] using hy.choose_spec
++  simpa only [g, dif_pos hy] using hy.choose_spec
+ 
+ end EuclideanFiveColor.UniformEnumeration
+ 
+@@ -202,7 +202,7 @@
+   let e : Fin (Fintype.card I) ≃ I := (Fintype.equivFin I).symm
+   let V : I → Y → Fin m → ℂ := fun s y => Pi.single s.1 (Hf s.1 s.2 y)
+   have hV (s : I) : Measurable (V s) := by
+-    apply Measurable.of_eval
++    apply measurable_pi_lambda
+     intro j
+     by_cases h : s.1 = j
+     · subst j
+@@ -234,7 +234,7 @@
+       exact ((norm_le_pi_norm (a (e i).1 w) (e i).2).trans (hab (e i).1 w)).trans
+         (Finset.single_le_sum (fun j _ => hB j) (Finset.mem_univ _))
+     have ham' : Measurable (fun w i => a' w (e i)) := by
+-      apply Measurable.of_eval
++      apply measurable_pi_lambda
+       intro i
+       exact (measurable_pi_iff.mp (ham (e i).1)) (e i).2
+     let A : Y → Fin m → ℂ := fun y => ∑ s : I, a' (q y) s • V s y
+@@ -244,7 +244,7 @@
+       rw [Fintype.sum_sigma]
+       simp [a', V, Pi.single_apply]
+     have hAm : Measurable A := by
+-      apply Measurable.of_eval
++      apply measurable_pi_lambda
+       intro j
+       simp_rw [hAeq]
+       exact Finset.measurable_sum _ (fun i _ => ((measurable_pi_iff.mp (ham j)) i |>.comp hq).mul (hHm j i))
+@@ -313,6 +313,8 @@
+   have he := KernelSupport.condDistrib_equivariant μ b p hb hp
+     (MeasurableEquiv.smul k) (MeasurableEquiv.smul k) (fun d : D => k • d)
+     (measurable_const_smul k) (measurePreserving_smul k μ) (hpe k) (hbe k)
++  haveI : IsProbabilityMeasure (Measure.map p μ) :=
++    Measure.isProbabilityMeasure_map hp.aemeasurable
+   exact DifferenceInvariant.invariant (μ.map p) (condDistrib b p μ)
+     (fun y : Y => k • y) (KernelSupport.factor_smul_preserving μ p hp hpe k)
+     (scalarHom (kCoeff k)) (measurable_const_smul k) he
+@@ -347,10 +349,12 @@
+   have hHbound : ∀ y, ‖H y‖ ≤ max A 0 := by
+     intro y
+     by_cases hy : ‖H₀ y‖ ≤ max A 0
+-    · simpa only [H, ite_eq_left hy] using hy
+-    · simp only [H, ite_eq_right hy, norm_zero]
++    · simpa only [H, if_pos hy] using hy
++    · simp only [H, if_neg hy, norm_zero]
+       exact le_max_right _ _
+-  have hHeq : H =ᵐ[μ.map p] H₀ := hHB.mono fun y hy => ite_eq_left hy
++  have hHeq : H =ᵐ[μ.map p] H₀ := hHB.mono fun y hy => if_pos hy
++  haveI : IsProbabilityMeasure (Measure.map p μ) :=
++    Measure.isProbabilityMeasure_map hp.aemeasurable
+   have hv := CompactApproximation.vector_of_scalar (μ.map p) q hq hc
+   intro γ hγ
+   obtain ⟨r, B, C, Hf, hB, hC, _hHm, hHf, ha⟩ := hv m H hH ⟨max A 0, hHbound⟩ γ hγ
+@@ -401,6 +405,8 @@
+   have hpos : 0 < RelativeCenters.differenceLaw (μ.map p) (condDistrib d p μ) C :=
+     pos_iff_ne_zero.mpr hn
+   obtain ⟨b, hb, hbe, hbw, a, ha, hf⟩ := exact_finite_center_reduction μ d p hd hp hde hpe hwild hpos
++  haveI : IsProbabilityMeasure (Measure.map p μ) :=
++    Measure.isProbabilityMeasure_map hp.aemeasurable
+   obtain ⟨m, hm, g, hg⟩ := UniformEnumeration.constant_uniform_lists (μ.map p)
+     (condDistrib b p μ) a ha (hf.mono fun y ⟨S, hS, hSa, hSupp, hcS, _⟩ =>
+       ⟨S, hS, hSa, hSupp, hcS⟩)

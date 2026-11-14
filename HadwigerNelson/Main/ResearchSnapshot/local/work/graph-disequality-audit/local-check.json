@@ -1,0 +1,37 @@
+{
+  "edgeCount": 2722,
+  "edgeSha256": "b339b6a75575152d8bf2efc9ca1a178d2df15a2f9590b752de4f8ebc4a63e466",
+  "certificateSha256": "2a1b12d2f1fe09359870da8e762ee179c62fe5c9727ab08772f8efe7e5a0e6ff",
+  "checks": [
+    {
+      "key": "colouring_G",
+      "length": 553,
+      "colours": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "badEdges": 0
+    },
+    {
+      "key": "colouring_Gpq",
+      "length": 553,
+      "colours": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "badEdges": 0
+    }
+  ],
+  "pair": "0,39",
+  "pairNonedge": true,
+  "pairColours": [
+    1,
+    3
+  ]
+}

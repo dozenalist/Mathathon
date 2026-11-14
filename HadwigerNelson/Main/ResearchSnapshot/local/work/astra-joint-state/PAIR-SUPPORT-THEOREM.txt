@@ -1,0 +1,289 @@
+JOINT SUPPORTS AND CONTACT BANS
+Principal mathematical lead packet, 14 November 2026.
+Grade: complete paper-level derivation by lead; awaiting independent review / Lean.
+No original files edited. No Lean, Open Math calls, installs, or heavy computation.
+
+1. THE GENERAL THEOREM
+
+Let I be finite, f : R -> I measurable, d real, and
+  A_i = {t : f(t)=i},  S_i = supp(Lebesgue restricted to A_i),
+  Q_ij = {t : f(t)=i and f(t+d)=j}.
+Assume the following CONTACT BAN for every ordered pair (i,j):
+  S_i intersects S_j  ==>  Lebesgue(Q_ij)=0.                 (CB)
+Then, for every i and every a,
+  a in S_i  ==>  a+d not in S_i.                           (NR)
+This is pointwise separation of closed measure supports, not an AE conclusion.
+
+Proof. Set K_ij = supp(Lebesgue restricted to Q_ij). The finite measurable
+partition A_i = disjoint union_j Q_ij implies
+  S_i = union_j K_ij.                                     (P)
+Indeed K_ij is contained in S_i. If a belongs to none of the K_ij, choose
+one open null neighborhood for each j and intersect the finitely many
+neighborhoods. Its intersection with A_i is null, so a is not in S_i.
+Translation continuity and preservation of Lebesgue null sets give
+  a in K_ij ==> a+d in S_j.                               (T)
+To check this carefully, if V is an open neighborhood of a+d with
+Lebesgue(V intersect A_j)=0, then V-d is an open neighborhood of a and
+Q_ij intersect (V-d) is contained in (V intersect A_j)-d, a null set.
+Now suppose a in S_i and a+d in S_i. By (P), select ONE j with a in K_ij.
+By (T), a+d in S_j. Thus S_i intersects S_j; (CB) makes Q_ij null, hence
+K_ij empty, contradiction. QED.
+
+The same proof works for a finite-valued measurable f on a second-countable
+space with a support theory and a continuous, quasi-measure-preserving map T.
+For formalization the R/Lebesgue/translation statement above is sufficient.
+Finiteness is essential to the finite-union support argument. No density
+lower bound, simultaneous choice from marginal supports, uniform Fourier
+gap, weak mixing, or varying-centre continuity is used.
+
+Equivalent interface for the EXISTING generic transport lemma:
+  R(i,j) := Disjoint(S_i,S_j).
+For every ordered pair whose supports intersect, (CB) excludes that pair
+almost everywhere. A finite intersection over all i,j gives
+  R(f(t),f(t+d)) for almost every t.
+Apply FiveSupport.lean:55 stateSupport_shift_relation to get
+  a in S_i ==> exists j, Disjoint(S_i,S_j) and a+d in S_j.
+This immediately implies (NR). Thus a minimal Lean replacement need not
+introduce six-tuples or re-prove a joint-support library.
+
+2. SOURCE APPLICATION: FIVE_SUPPORT_NO_SIXTY
+
+All paths below are relative to
+work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/.
+Fix measurable c : C -> Fin 5, hw : WeakColoring 5 c, x, hx : FiveCenter c x.
+Set f(t)=fiveState c hc x (t : Angles), d=sixty=pi/3.
+
+Measurability:
+  Accumulation.lean:373 fiveState_measurable;
+  compose with angleMk_quasiMeasurePreserving.measurable.
+State/support definitions:
+  FiveSupport.lean:82 fiveRealState, :83 fiveSupport.
+
+Exact contact-ban contract comes from TWO source facts:
+A. Accumulation.lean:390 fiveState_adj:
+     for almost every t under angularMeasure,
+     fiveAdj(fiveState x t)(fiveState x (t+sixty)).
+   Pull this to R by angleMk_quasiMeasurePreserving. Therefore Q_ij is
+   null whenever fiveAdj i j is false. This includes i=j.
+B. FiveSupport.lean:90 five_support_step_ban:
+     if a belongs to fiveSupport x i and fiveSupport x j and fiveAdj i j,
+     then for almost every t under angularMeasure, neither ordered
+     transition i->j nor j->i occurs at angular separation sixty.
+   For an intersecting pair of supports, choose an intersection point a,
+   apply B if adjacent, and again pull to R. This makes Q_ij null.
+Together A+B prove (CB) for every ordered pair. The theorem gives exactly
+the existing statement of FiveSupport.lean:138 five_support_no_sixty.
+
+Exceptional sets: x is fixed throughout. For each of the 25 ordered pairs,
+one can first decide whether its supports meet and, if needed, choose ONE
+witness a_ij. There are only finitely many such applications of B. Intersect
+their conull sets and the conull adjacency set. No uncountable intersection
+over centres or support points is asserted. The final support conclusion is
+for every a because it is obtained by the closed-support argument.
+
+3. PRECISE DEPENDENCY CLAIM
+
+The old body of five_support_no_sixty chooses a neighbor j and invokes
+States.lean:704 strict_state_no_unit_support. That invokes :683
+strict_state_sequence_false, then :547 strict_state_sequence_local_false,
+with density-point approximations, near-identity circle transport and L1
+overlap. The new body does not call any of those results or their
+descendants.
+
+The new body RETAINS five_support_step_ban. Its direct proof uses:
+  FiveSupport:85 five_support_trace;
+  BoundaryTrace:24 state_support_avoiding_trace;
+  BoundaryTrace:53 avoiding_trace_palette;
+  FiveSupport:23 palette_neighbor_disjoint;
+  PaletteTransport:450 palette_sixty_disjoint;
+  Accumulation:378 fiveState_diag;
+  Exclusion:23 five_adj_four and :26 five_forced_label.
+state_support_avoiding_trace uses support_good_sequence, typical circle
+sampling, compactness of TraceVector, and trace_of_realization. It does not
+use strict_state_no_unit_support, strict_state_sequence_false or
+strict_state_sequence_local_false. avoiding_trace_palette uses trace_bounds
+and tracePositive_le_palette. Those live upstream in Compactness/Palettes.
+The neighbor palette result uses smooth palette transport upstream of
+States. The state representatives use only the canonical palette facts.
+
+Module imports still include States, because BoundaryTrace and other
+branches import it. This is a declaration-level proof dependency removal,
+not a claim that the whole States module disappears. Interfaces.lean:277
+still consumes strict_state_no_unit_support in the four-state branch, and
+four-state accumulation arguments retain strict sequence machinery.
+
+Consumer with UNCHANGED statement:
+  five_support_no_sixty
+  -> five_contact_next / five_contact_prev
+  -> five_opposite_contacts_false (FiveSupport:199)
+  -> five_sequence_small_no_accumulation (CyclicCore:99, call at :119)
+  -> five_sequence_no_accumulation / fiveCenter_discrete / compact_finite.
+The finite contact proof and all downstream hypotheses can stay intact.
+
+Separate branch checked to prevent overclaiming: FullApproximation:12
+eventually_forest_of_bridges passes its limiting interfaces to
+ContinuumLimits:296 commonInterface_graph_acyclic. That theorem separately
+handles 3-, 4-, and 5-cycles. Its five-cycle case uses
+ContinuumLimits:290 no_five_commonInterface -> Exclusion:144
+no_five_exclusion_continua, the EXISTING six-angle strip-word obstruction
+under directional ApproachingContinuum/common-support-exclusion data.
+That is not the same input or consumer as the five-centre contact argument.
+Analysis/PlaneSpectrum/SmallArcs.lean supplies
+SmallArc.exists_small_arc_constants to ConditionalSpectrum:489; it is not
+a shortcut around either angular input contract. Nothing in this packet
+removes that spectrum branch or the four-interface branch of the forest
+theorem. In particular, it does not remove strict-state analysis from the
+whole FullApproximation proof.
+
+IMPORTANT NAMING CAVEAT: the manuscript itself was not locally available.
+Historic descriptions of Lemma 6.7 say 'two-endpoint avoiding-trace proof'
+and 'two transition bans'; this suggests that Lemma 6.7 could correspond
+to five_support_step_ban, not States:704. If so this candidate RETAINS
+Lemma 6.7 and removes a different heavy dependency from its consumer.
+Do not claim 'Lemma 6.7 deleted' until exact manuscript text is obtained.
+This packet claims only the precise declaration-level replacement above.
+
+4. WHAT THE SIX-ANGLE REPRESENTATION DOES AND DOES NOT ADD
+
+For the actual periodic angular f let
+  W(t)=(f(t),f(t+d),...,f(t+5d)), d=pi/3,
+and K_w=supp(Lebesgue restricted to {t:W(t)=w}).
+Then for each r in {0,...,5}:
+  {a : a+rd in S_i} = union_{w:w_r=i} K_w.
+If rho(w)=(w_1,...,w_5,w_0), exact 2pi-periodicity gives
+  K_{rho(w)}=K_w+d.
+If W belongs to an allowed finite word set almost everywhere, every
+forbidden word has empty support. Conversely, the allowed word supports
+cover R, since Lebesgue has full support. These statements follow from
+the same finite-union argument, continuity and preservation of null sets.
+They preserve joint correlations; no Cartesian product of marginal lists
+may be substituted for the actual joint support family.
+
+The source adjacency condition leaves exactly 100 closed six-step C5
+walks among 5^6 raw words: six increments +/-1 must have total 0, since the
+only multiple of 5 among -6,-4,-2,0,2,4,6 is 0. Thus there are 5*binom(6,3).
+The return-exclusion proof above needs only the two-coordinate projection.
+This is the useful reduction found by the experiment, rather than a reason
+to formalize all 15,625 words.
+
+5. THE EIGHT HISTORIC FINITE MODELS: RECHECKED
+
+The exact small enumerator audit-joint-words.mjs reconstructs the models
+under the following NORMALIZED finite contract:
+  S_k nonempty subsets of Z/5, k in Z/6;
+  {0,1} subset S_0;
+  S_0 and S_3 contain adjacent vertices (= no common diagonal label);
+  S_k intersect S_{k+1} is empty;
+  every vertex of S_k has a neighbor in S_{k+1}, in both directions.
+It finds exactly 8 models. For each model it lists all closed C5 words
+whose kth coordinate lies in S_k. In EVERY model the coordinate
+projections of these words are exactly S_k. Therefore merely retaining
+joint six-angle correlations DOES NOT eliminate any of the eight models.
+The word counts are 3,8,3,8,8,22,8,22.
+
+Next impose the source contact bans: whenever adjacent labels occur
+together in any S_k, remove every word that uses that undirected edge.
+Some words remain, but in EVERY model their projections lose required
+support memberships. Counts remaining are 1,5,1,5,5,18,5,18. It would be
+incorrect to report 'no surviving words'; the obstruction is failure of
+EXACT support projection, not empty joint family.
+
+Example, first model:
+  S=({0,1},{2,4},{0,3},{1,2},{0,3},{2,4}).
+Its three words are
+  (0,4,0,1,0,4), (0,4,3,2,3,4), (1,2,3,2,3,2).
+Contact edges 01 and 12 ban the first and third words. The survivor loses
+state 1 entirely and cannot realize the original support lists.
+This is also visible directly: bans 01 and 12 leave state 1 no neighbor.
+
+Limit: these are exact finite countermodels to a NAMED finite implication,
+not constructed plane colourings. Nor has a global measurable angular
+function satisfying every analytic source premise been constructed from
+them. Joint realizability at a finite orbit is strictly weaker than the
+complete analytic source contract. They do show that the full word
+representation alone cannot delete the contact-ban premise.
+
+Reproduction: node work/astra-joint-state/audit-joint-words.mjs.
+Runtime observed under 2 seconds; standard-library Node, tiny memory/output.
+Detailed output: work/astra-joint-state/joint-word-audit.json.
+
+6. A CORRECT PERIODIC, POSITIVE-MEASURE SUPPORT COUNTEREXAMPLE
+
+This repairs both historic mistakes: countable dense sets are null and
+have EMPTY restricted-measure support, and a 60-periodic A satisfies
+A-60=A, not disjointness.
+
+There is a Borel B subset (0,d), d=pi/3, such that both B and its complement
+have positive measure in every nonempty open subinterval of (0,d).
+Construction: enumerate the rational open subintervals I_n. Inductively
+choose two positive-measure compact nowhere-dense sets K_n^0,K_n^1 inside
+I_n, disjoint from one another and from all previously selected sets.
+A finite union of compact nowhere-dense sets leaves an open subinterval
+in I_n; a scaled positive-measure fat Cantor set fits there. Put
+B=union_n K_n^0. Its complement contains every K_n^1. Thus each side has
+positive measure in every I_n, hence in every open interval. B is F_sigma.
+
+Write every real t uniquely as t=s+kd, 0<=s<d, k integer, and put
+  f(t) = (k + 1_B(s)) mod 2, interpreted as states 0,1 in Z/5.
+Then f is Borel, 6d-periodic, and f(t+d)=1-f(t) pointwise. Therefore its
+six-angle words are the two alternating closed C5 walks, and adjacent
+level sets at a 60-degree shift are disjoint pointwise.
+Nevertheless S_0=S_1=R: every open real interval contains a subinterval
+inside one d-sector, where both level sets have positive measure.
+Consequently S_i intersects (S_i-d) in ALL of R, so even an AE upgrade
+from level-set exclusion to support exclusion is false.
+
+This is an exact measurable ANGULAR countermodel to 'periodicity +
+adjacency + full joint six-word correlations imply no-sixty'. It is NOT
+a countermodel to the source application, because it violates the
+contact-ban premise: its 0/1 contacts coexist with positive 0->1 and
+1->0 transitions. It is not a plane colouring.
+
+Optional local realizability strengthening for the eight finite models:
+replace the two-way construction by a finite Borel partition of (0,d)
+into |Q| sets each having positive measure in every open interval, where
+Q is the model's listed compatible joint-word family. For t=s+kd choose
+the kth coordinate of the word assigned to s. This yields an actual
+Borel 6d-periodic angular function with adjacency at every angle and
+the EXACT prescribed support lists at every angle in the interior of
+the six sectors. At any a in (0,d), it has the prescribed opposite
+contacts at a and a+3d. D (neighboring support-list disjointness) holds
+away from the finitely many sector boundaries, hence almost everywhere.
+At a sector boundary the closed supports include the lists from both
+sides; D fails there. Thus this realizes the old models under an AE-D
+contract, not under the source's stronger POINTWISE five_support_no_sixty.
+It still violates the contact bans, as the finite projection audit shows.
+No claim of all-source analytic realizability follows.
+
+7. THREE EXECUTABLE WORKER CARDS
+
+ARCHITECTURE (60-90 minutes, paper first):
+First transcribe exact manuscript Lemma 6.7 statement/proof/page and the
+single consumer, naming manuscript/version. Map it to Lean declarations.
+Then independently prove Section 1, using supports of restricted Lebesgue
+measure, and Section 2's source instantiation. Produce a two-page human
+replacement explanation with a precise retained/removed dependency list.
+If Lemma 6.7 is the step ban, explicitly retain it. Do not introduce weak
+mixing, uniform spectral gaps, six-angle casework or unlicensed centre
+changes. Deliver a proof or a specific mathematical objection.
+
+VERIFICATION (60-90 minutes):
+Audit (P), (T), all 25 pair exceptional sets, and the actual statement of
+five_support_step_ban against the source. Trace its declared proof inputs
+and check whether ANY invokes States:547/:683/:704 or descendants. Audit
+the finite script, reconstruct all eight models independently, and verify
+exact projections before and after edge bans. A surviving word is not a
+surviving support model. Deliver one yes/no verdict per claim with exact
+counterexample if rejected; no global-colouring realization claim.
+
+FORMAL (after paper acceptance; 60-120 minutes preparation, serialized build):
+Implement ONE generic R/Lebesgue support-return theorem from Section 1,
+preferably reusing stateSupport_shift_relation with relation
+Disjoint(stateSupport f i)(stateSupport f j). Instantiate with source
+fiveState_adj and five_support_step_ban, replacing only the proof body of
+five_support_no_sixty in a private patch. Keep its statement unchanged.
+No six-word library, no banked-refactor rebuild and no original edits.
+Give the supervisor a minimal patch, a narrow test command, standard-axiom
+check, and declaration dependency check. Submit to the existing serial
+Lean queue only after independent paper review; report 4.34.1 validation
+separately from any later 4.35.0 submission compatibility.

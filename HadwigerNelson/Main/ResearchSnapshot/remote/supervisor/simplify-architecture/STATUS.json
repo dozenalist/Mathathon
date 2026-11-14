@@ -1,0 +1,83 @@
+{
+ "updated_utc": "2026-11-14T18:26:51Z",
+ "status": "completed_block",
+ "summary": "Block 26 (clock 2026-11-14T18:26:51Z): swarm smwgpubt5 read and closed. It ended exhausted: 0 accepted, no submissions waiting, both directions abandoned at budget (122 of 240 calls, 33 records), and m1's first direction was refused as a verbatim duplicate of m2's. Two findings, both verified by me. (F1, m2) the private integration/AvoidingTrace.lean they read was 235 lines, sha e51502b2..., with an unmatched 'end Generic' at 230, so it could not elaborate; that is now STALE - the current file is 233 lines, sha 32d47bba..., with Neighbor 14/41 and ThreeCentre 45/230 balanced. (F2, m1) declaration-level budget for the strict branch with per-declaration ranges and five external consumer sites; m1 corrected my earlier end lines (positive_state_support_point ends 657, not 663 - verified), but EXCLUDED three declarations that are in fact removable (varying_pullback_L1 389-414, circleEndpoint_identity_neighborhood 449-464, near_identity_circle_in 465-520; their only uses are States:601, 480, 569, all inside the branch). Corrected budget: 271 declaration lines + 25 structural = ~296 removed; additions 233 + 3 imports; packet diffs -66; net ~-126, conditional. Preserve list independently confirmed: two_state_impossible at States:378 AND Interfaces:139; indicator_inter_positive now only at FourContinuity:326; five_support_step_ban at States FiveSupport:220,221.",
+ "verified_results": [
+  "[verified here, F1] The defect m2 reported was real against the copy the members read: 235 lines, sha256 e51502b2baf45193..., with an 'end Generic' at line 230 matching no opener (only section Neighbor 14/41 and section ThreeCentre 45/...). It is STALE now: the current file is 233 lines, sha256 32d47bbac4a71a90..., and its scope lines balance exactly - namespace OAI 3, namespace EuclideanFiveColor 8, section Neighbor 14 / end Neighbor 41, section ThreeCentre 45 / end ThreeCentre 230, end 231, end 232, end OAI 233. So the 'cannot elaborate' conclusion applied to the earlier copy only; every line count keyed to 235 is void and must be re-measured at 233.",
+  "[verified here, F2] m1's per-declaration end lines are more accurate than my block-24 figures on one item: positive_state_support_point ends at States.lean:657 (658-659 are the two 'end's), giving 16 lines not 22. Its other ranges reproduce: nonparallel_neighborhood 527-539 (13), strict_state_sequence_local_false 547-635 (89), support_density_direction 664-671 (8), support_density_sequence 672-682 (11), strict_state_sequence_false 683-703 (21), strict_state_no_unit_support 704-718 (15).",
+  "[verified here, correction to m1] m1 omitted three removable declarations from its budget: varying_pullback_L1 (389-414, 26), circleEndpoint_identity_neighborhood (449-464, 16), near_identity_circle_in (465-520, 56). Their only uses in the tree are States.lean:601, :480 and :569, all inside the strict branch being removed. So 98 declaration lines should be added to m1's 173.",
+  "[computed here] Corrected budget: 271 declaration lines + 25 structural/blank inside 525-722 = about 296 removed from States.lean. Additions: AvoidingTrace 233 lines (188 code, 26 comment, 19 blank) + 3 import lines = 236. Packet diffs already measured: -66 (FiveSupport -23, FourContinuity -40, body -3). Net = 236 - 66 - 296 = about -126, conditional on the pending FiveSupport consumer swap and on a build. m1's own 'NET = +244 - 270 = -26' could not be reproduced from its components and is not adopted.",
+  "[verified here, preserve list] two_state_impossible has two consumers: States.lean:378 and Interfaces.lean:139 (m1's Interfaces:139 was new to me and is confirmed). indicator_inter_positive had two consumers, States.lean:612 (inside the branch being removed) and FourContinuity.lean:326; after the removal only FourContinuity:326 remains, so it stays. five_support_step_ban is declared at FiveSupport.lean:90 (my earlier :89 was its docstring line) and used at FiveSupport.lean:220 and :221 inside five_opposite_contacts_false, which feeds CyclicCore.",
+  "[read] Board and records: state exhausted, accepted 0, waiting_for_verdict empty, members m1 and m2 both ended at budget after 122 of 240 calls with 33 records and 2 duplicate checks; model deepseek/deepseek-v4.1-flash, reasoning_effort max."
+ ],
+ "conjectures": [
+  "The defensible end-state figure is about -107 lines once both stages integrate, not -288 and not -66; the largest single block is strict_state_sequence_local_false at 89 lines.",
+  "If the emptied sections around States:639-720 lose their scaffolding, another ~6 lines go; if any of the retained positivity or indicator lemmas turn out to need the branch, the budget shrinks accordingly, which is why the dependency dump is still owed."
+ ],
+ "artifacts": [
+  "swarm smwgpubt5 (ended, exhausted): .ultramath/smwgpubt5/ with members m1 and m2 - m1/budget.md, m1/accounting.py, m1/accounting.out (the accounting finding); records read via ultramath_records",
+  "supervisor/simplify-lean/integration/AvoidingTrace.lean (current: 233 lines, sha 32d47bbac4a71a90...; the copy the members read was 235 lines, sha e51502b2baf45193...)",
+  "lean/OAI/Geometry/PlaneColoring/States.lean (ranges re-verified: 389-414, 449-464, 465-520, 527-539, 547-635, 642-657, 664-671, 672-682, 683-703, 704-718)",
+  "supervisor/simplify-architecture/INTEGRATION-MAP.md (block 24; its Sec.3bis 277-line figure must be revised to 271 declaration lines / ~296 with structural, and its positive_state_support_point range corrected)",
+  "supervisor/simplify-architecture/MANUSCRIPT-REPLACEMENT.md (unchanged; section 6.3.3bis, Lemma 6.7 retained)",
+  "supervisor/simplify-architecture/encoding-core/integration/ (frozen R4 d26d569088faea89... / 24f89dd33533a0f6..., untouched)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "ultramath_status swarm=smwgpubt5; ultramath_records swarm=smwgpubt5 limit=40",
+   "outcome": "exhausted, 0 accepted, 33 records, both directions abandoned; findings f1 and f2 read."
+  },
+  {
+   "cmd": "sha256sum + wc -l + rg '^(section|namespace|end)' on supervisor/simplify-lean/integration/AvoidingTrace.lean",
+   "outcome": "233 lines, sha 32d47bba..., all scopes balanced; the members' 235-line/e51502b2 copy with 'end Generic' no longer present."
+  },
+  {
+   "cmd": "sed/rg over States.lean (end lines 414, 464, 520, 539, 635, 657, 671, 682, 703, 718) and consumer greps for the preserve list",
+   "outcome": "positive_state_support_point ends 657; three m1-excluded lemmas used only at States:480, 569, 601; two_state_impossible at States:378 and Interfaces:139; indicator_inter_positive at States:612 and FourContinuity:326; five_support_step_ban declared :90, used :220, :221."
+  },
+  {
+   "cmd": "date -u",
+   "outcome": "2026-11-14T18:26:51Z"
+  }
+ ],
+ "failed_routes": [
+  "Swarm smwgpubt5 produced no accepted solution and no submission: both directions hit their budget after 122 of 240 calls. The duplicate checker refused m1's first direction as a verbatim restatement of m2's, which cost part of the budget.",
+  "m1's net figure (+244 - 270 = -26) is not reproducible from its stated components; not adopted. Its omission of three removable declarations is corrected above.",
+  "m2's defect conclusion ('cannot elaborate as delivered') is stale: the file was repaired or replaced after the read; only the 233-line current copy should be used for any count.",
+  "Not claimed: any verified net reduction. -126 is arithmetic on measured components, not a build result; the FiveSupport consumer swap and a dependency dump are still owed."
+ ],
+ "next_step": "Re-measure everything against the current 233-line AvoidingTrace (188 code / 26 comment / 19 blank), fold the 98-line correction into INTEGRATION-MAP Sec.3bis (271 declaration lines, ~296 with structural), and integrate the pending FiveSupport consumer swap; then take a dependency dump over the 271 lines before executing any removal. Report the net figure only after that build.",
+ "escalation": null,
+ "swarm_activation": {
+  "tool": "ultramath_start",
+  "returned": true,
+  "swarm": "smwgpubt5",
+  "members": [
+   "m1",
+   "m2"
+  ],
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reasoning_effort": "max",
+  "member_steps": 60,
+  "minutes": 60,
+  "budget": 240,
+  "dir": ".ultramath/smwgpubt5",
+  "deadline_at_ms": 1794683109115,
+  "prior_swarm_for_reference": "smwgphe8q (discover-cone)"
+ },
+ "swarm_result": {
+  "swarm": "smwgpubt5",
+  "outcome": "exhausted",
+  "accepted": 0,
+  "waiting_for_verdict": [],
+  "calls_used": 122,
+  "budget": 240,
+  "records": 33,
+  "duplicate_checks": 2,
+  "directions": {
+   "d1": "m2, conceptual collapse (assignment B) - abandoned",
+   "d2": "m1, accounting (assignment A) - abandoned"
+  },
+  "note": "m1's first proposed direction was refused as a verbatim duplicate of m2's d1, costing budget; it fell back to accounting."
+ }
+}

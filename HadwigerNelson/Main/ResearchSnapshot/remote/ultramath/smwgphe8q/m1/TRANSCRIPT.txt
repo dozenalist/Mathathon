@@ -1,0 +1,72 @@
+# Transcript of: python3 cone_arc.py   (exact arithmetic, Fractions only)
+# generated 2026-11-14T18:10:25Z
+
+[1] Lemma 2 (combinatorial core): |union_{i in S} E_i| <= 3  <=>  S is contained in
+    two cyclically consecutive slots.
+    all 64 subsets of the six slots agree;  usz table: {(0,): 2, (0, 1): 3, (0, 2): 4, (0, 1, 2): 4, (0, 2, 4): 6}
+
+[2] Theorem 3: CC60-arc  <=>  dist(v_i,v_j) > pi/3 on the nine prism pairs.
+    exhaustive over 46875 rational 6-tuples on three grids: 46863 violate, all agree
+    4000 random points with coordinates in (1/60)Z on T agree
+    alternating 6-grid, consecutive gaps exactly pi/3 (grid B)             -> SURVIVES   
+    three double clusters 0,120,240 deg (grid A): equal directions in consecutive slots -> SURVIVES   
+    clusters at 0,60,120 deg: non-consecutive pair 0,2 at distance exactly pi/3 -> violated   witness arc a=0*pi S=(0, 1, 2, 3)
+    all six directions inside an arc of length pi/20                       -> violated   witness arc a=0*pi S=(0, 1, 2, 3, 4, 5)
+    closed endpoints: non-consecutive pair (0,2) at distance EXACTLY pi/3  -> violated   witness arc a=0*pi S=(0, 1, 2)
+    antipodal pair v_0=0, v_1=pi (consecutive) and v_5=v_0 (also consecutive) -> SURVIVES   
+    three equal directions in slots 0,1,2 (pair 0,2 equal)                 -> violated   witness arc a=0*pi S=(0, 1, 2)
+
+[3] independent cross-check of the arc enumeration (brute force scan + membership recheck)
+    400 random points: every witness re-validated, brute-force scan never finds more
+
+[4] Specialisation to the six-direction grid: recovery of AC-CONE-SIX
+    6^6 grid: 36 survivors = 6 rotations x 6;  with q_0=0: 6, equal to the AC-CONE-SIX list:
+       (0, 0, 2, 2, 4, 4)
+       (0, 0, 4, 4, 2, 2)
+       (0, 1, 2, 3, 4, 5)
+       (0, 2, 2, 4, 4, 0)
+       (0, 4, 4, 2, 2, 0)
+       (0, 5, 4, 3, 2, 1)
+
+[5] Explicit non-grid survivor, exact certificate
+    v* = (pi/20) * (1, 5, 14, 18, 28, 32)   [degrees: 9, 45, 126, 162, 252, 288]
+      dist(v0, v2) = 13/20*pi   (117 deg)
+      dist(v0, v3) = 17/20*pi   (153 deg)
+      dist(v0, v4) = 13/20*pi   (117 deg)
+      dist(v1, v3) = 13/20*pi   (117 deg)
+      dist(v1, v4) = 17/20*pi   (153 deg)
+      dist(v1, v5) = 13/20*pi   (117 deg)
+      dist(v2, v4) = 7/10*pi   (126 deg)
+      dist(v2, v5) = 9/10*pi   (162 deg)
+      dist(v3, v5) = 7/10*pi   (126 deg)
+    minimal constrained distance = 13/20*pi = 117 deg ; threshold 1/3*pi = 60 deg
+    slack = 19/60*pi ; Lipschitz box radius rho = slack/3 = 19/180*pi = 19 deg
+    all 64 corners + 200 random interior points of that box satisfy CC60-arc exactly
+
+[6] 4-parameter family of survivors containing grid A at (alpha,beta,gamma)=(0,0,0):
+    v(alpha,beta,gamma;t) = t + (0, alpha, 2/3, 2/3+beta, 4/3, 4/3+gamma),  0<=alpha,beta,gamma<=1/4
+    500 exact family members verified (all satisfy every CC60-arc condition)
+    (0,0,0;0)  = (Fraction(0, 1), Fraction(0, 1), Fraction(2, 3), Fraction(2, 3), Fraction(4, 3), Fraction(4, 3))  -> grid-A point;  equal directions only in consecutive slots
+    (1/4,1/4,1/4;0) = (Fraction(0, 1), Fraction(1, 4), Fraction(2, 3), Fraction(11, 12), Fraction(4, 3), Fraction(19, 12))  -> six distinct directions, non-grid
+    minimal constrained distance over the whole parameter box = 5/12*pi (claimed bound 5/12*pi)
+
+[7] Sharp threshold: CC60-arc with cone width theta is satisfiable iff theta < 2/3*pi.
+    theta = 2/3 - 1/100  : clusters of diameter 1/100 survive (min constrained dist 2/3)
+    theta = 2/3 - 1/10   : clusters of diameter 1/10  survive (min constrained dist 2/3)
+    theta = 2/3 - 1/5    : clusters of diameter 1/5   survive (min constrained dist 2/3)
+    theta = 2/3 - 1/3    : clusters of diameter 1/3   survive (min constrained dist 2/3)
+    theta = 2/3   : no triple of directions is pairwise farther than theta (2000 tries)
+    theta = 7/10  : no triple of directions is pairwise farther than theta (2000 tries)
+    theta = 1     : no triple of directions is pairwise farther than theta (2000 tries)
+    hence V_theta is empty for theta >= 2/3*pi: the 60 deg bound has a factor-2 margin.
+
+[8] Sharp equality at pi/3: Theorem 7 (maximal confinement forces the alternating grid)
+    step 1 (sign constancy) on the grid: 36 confined step vectors, all of one sign
+    step 2 (+ winding): 2 closed step vectors, all equal to (+1/3,...,+1/3) or its negation
+    alternating grid and its reflection, at 3 rotations, are in V and maximally confined
+    20000 random closed step vectors: no counterexample
+
+==============================================================================
+ALL 105635 CHECKS PASSED
+
+exit status: 0

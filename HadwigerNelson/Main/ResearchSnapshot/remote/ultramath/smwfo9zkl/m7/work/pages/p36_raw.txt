@@ -1,0 +1,46 @@
+whose first-circle mass of i, j is less than 1/m. This order of choice requires no lower bound on cBm
+uniform in m. The circle samples at qm have radius one; a weak-* subsequential limit belongs to
+Wx and has zero mass in the two specified coordinates. Since it is nonnegative, sums to one, and
+is supported within Px almost everywhere, it also proves (6.2).
+6.2 Two angular state lemmas
+A state at a center x will mean a measurable angular set together with a specified nonempty group
+of labels contained in Px(e) almost everywhere on that set. For a measurable set A ⊂ S, its closed
+essential support is
+esssuppS A = {a ∈ S : σ(A ∩ I) > 0 for every open arc I ∋ a}.
+It is empty exactly when A is null. Almost every point of A is both a density-one direction for A
+and a member of this support. Changing the representative of a state on a null set changes neither
+its support nor any assertion below.
+Lemma 6.3 (Strict state separation). Suppose A,B ⊂ S are states at x representing disjoint label groups
+whose union is I \ {X}, for a fixed label X. At any nonparallel density-one directions a of A and b of B,
+the point x + a + b has spatial density one of X.
+If σ(A) > 0, the closed essential support of B contains no pair at chordal distance one. In particular,
+it has a strict angular separation from its image under R and under R−1, with the empty-support case
+interpreted vacuously.
+The separation is uniform along a sequence of centers and states (xn, An,Bn) with the same represented
+groups, provided 1An
+→ 1A in L1(S) for a set A of positive measure. More precisely, for all sufficiently
+large n, angular differences between two points of esssuppS Bn stay a fixed positive distance from both κ
+and −κ modulo 2π.
+Proof. The density conclusion of Lemma 5.2, following (5.2), gives density zero of each of the
+four represented labels at the nonparallel sum. Their complement, the singleton X, therefore has
+density one there.
+We prove the uniform assertion by contradiction; the fixed-center case follows by using a con-
+stant sequence. If it fails, choose pairs in the supports of Bn with chordal distances tending to one.
+Each support point is approximable by density-one directions of Bn. We may thus choose density
+directions bn,dn in those states such that, after a subsequence,
+bn → b, dn → d, wn = bn − dn → w = b − d, |w| = 1.
+Choose a small angular interval I with σ(A ∩ I) > 0, whose closure is separated from the direc-
+tions parallel to any of w,b,d. Such an interval exists because only finitely many directions are
+excluded and A has positive measure.
+For a ∈ I, the implicit function theorem gives a unit direction cn(a), smoothly depending on a,
+with
+|wn + a − cn(a)| = 1, cn −→ id in C1
+(I).
+Indeed, at wn = w and cn(a) = a the squared-length equation is satisfied and its derivative in the
+angle of cn(a) is −2w · Ja ̸= 0. Shrinking I around a density point of A if necessary makes this
+construction uniform on its closure.
+The maps cn have uniformly bounded inverse derivatives. It follows that 1An
+◦ cn → 1A in
+L1(I): the differencebetween 1An
+◦cn and 1A ◦cn is controlled by the L1 convergence under change
+36

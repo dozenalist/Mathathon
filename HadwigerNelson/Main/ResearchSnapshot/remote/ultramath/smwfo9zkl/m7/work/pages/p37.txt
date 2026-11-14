@@ -1,0 +1,53 @@
+of variables; continuous approximation of 1 A and cn → id treat the remaining difference. Together
+with 1 An → 1 A on I, this shows that the set of a ∈ I for which both a and cn ( a) lie in An has
+positive measure for large n. Excluding null sets, choose such an a for which both are density-one
+directions. The choice of I ensures that ( a, bn ) and (cn ( a), dn ) are nonparallel. The points
+
+                                      x n + a + bn ,      xn + cn ( a) + dn
+
+both have density one of color X, yet their distance is |wn + a − cn ( a)| = 1. This contradicts
+properness of density-one points. At a single center, compactness of the support turns exclusion
+of distance-one pairs into the asserted strict margin.
+
+Lemma 6.4 (Singleton–pair alternation is impossible). At a fixed center, there is no measurable state
+function with only the two values X, D, representing respectively a singleton { X } and a fixed disjoint pair
+D, and changing state under R almost everywhere.
+
+Proof. Put
+                                                  1                        5
+                                     γ = 2 arcsin √ ,            cos γ =     .
+                                                 2 3                       6
+The ratio γ/π is irrational. Otherwise eiγ would be a root of unity, making 2 cos γ = 5/3 a rational
+algebraic integer, hence an integer, a contradiction.
+    There is a positive-measure set of angles t whose states at t and t + γ are equal. If not, the state
+would flip almost everywhere under γ, and hence be invariant under 2γ. A measurable function
+invariant under an irrational circle rotation is constant almost everywhere: its nonconstant Fourier
+coefficients vanish, since the corresponding rotation eigenvalues differ from one. This would
+contradict the flip under κ.
+    Choose t from the positive-measure equality set, also imposing all finitely many needed R-
+alternation identities and density-direction conditions. For j = 0, 1, 2, form the points
+
+                        z j = x + ei(t+2jκ ) + ei(t+π +γ+2jκ ) = x + ei(t+2jκ ) (1 − eiγ ).
+                                   √
+They have distance |1 − eiγ | = 1/ 3 from x and form an equilateral triangle of side one. In each
+sum the two nonparallel endpoints have opposite states: 2κ preserves the state and π = 3κ flips
+it. The density consequence of Lemma 5.2 therefore gives density one at each z j to the union of
+the two labels outside { X } ∪ D. A uniform common translation in a sufficiently small disk puts
+all three vertices in that union and in the typical set with positive probability; the three failure
+probabilities tend to zero by density one. The resulting unit equilateral triangle would be properly
+colored with two labels, a contradiction.
+
+6.3   The cyclic-center locus
+Theorem 6.5 (Local finiteness of cyclic centers). The set
+
+                                     L = { x ∈ R2 : Γ x contains a cycle}                               (6.4)
+
+is closed and locally finite: it has finite intersection with every compact subset of the plane.
+
+   For any specified simple label cycle, its locus is the intersection of its finitely many closed
+edge-presence loci, hence is closed. There are only finitely many simple cycles on five labels. It
+therefore suffices to prove local finiteness separately for each triangle, four-cycle, and five-cycle.
+
+
+                                                        37
+

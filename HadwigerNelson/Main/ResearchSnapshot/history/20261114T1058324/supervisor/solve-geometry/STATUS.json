@@ -1,0 +1,37 @@
+{
+  "updated_utc": "2026-11-14T19:25:00Z",
+  "status": "completed_block",
+  "summary": "Analysis-only block, no computation. Wrote SEED-DESIGN-TAU.md: a union H u (H+tau) can carry information only through overlaps (tau a difference of vertices) and cross unit edges (a difference at distance exactly 1 from tau); Propositions 1 and 2 prove that a zero-cross-edge union, and a one-point-overlap union at k>=3, force nothing, because the colouring set factors as a product and colour permutations absorb the agreement - the colour-extension argument needed, which also makes such a union useless rather than merely harmless. Applied by hand to the real spindle coordinates from udg/build.py (tau = sqrt3*A1, A1 a unit vertex): along that axis the four Q(sqrt3)-only difference channels give cross edges at k in {1,2} and {0,1}, so k=2 gives two simultaneously while the S1 value k=sqrt3 gives none (squared distances 6-3sqrt3, (sqrt3-1)^2, 4-sqrt3). One sqrt11 channel: |C2-tau|^2 = 6-(5/2)sqrt3-(1/2)sqrt11 = 0.0116, a near-coincidence at 0.108, so the edge set is discontinuous in tau. Selected tau_alt = 2*A1 = (sqrt3,1): two cross edges by construction, |tau_alt| = 2, same field; R_60 tau = (0,sqrt3) recorded as a second probe. Also corrected amp_cert.py's documentation and found a real defect in its squarefree routine (odd denominators), fixed but not re-run.",
+  "verified_results": [
+    "GRADE [P] Proposition 1: if tau is not a difference of two vertices of M and no difference is at distance exactly 1 from tau, then X_tau is a disjoint union, its colouring set is the full product C(M) x C(M+tau) with surjective projections, so X_tau is k-colourable iff M is and no relation between a vertex of one copy and a vertex of the other is forced.",
+    "GRADE [P] Proposition 2: if the copies meet in exactly one point p0 and there are no cross edges, then colourings are pairs agreeing at p0, and for k>=3 the permutations fixing c2(p0) (there are (k-1)! >= 2) show that no relation between a vertex of M\\{p0} and a vertex of (M+tau)\\{p0} is forced. So overlaps alone carry no information at k>=3: cross edges are the only informative channel.",
+    "GRADE [P] Axis computation with the actual build.py coordinates K=(0,0), C1=(sqrt3,0), A1=(sqrt3/2,1/2), A2=(sqrt3/2,-1/2), tau_k = k*A1: |(sqrt3,0) - tau_k|^2 = k^2-3k+3 equals 1 iff k in {1,2}; |A1 - tau_k|^2 = (k-1)^2 equals 1 iff k in {0,2}; |A2 - tau_k|^2 = |(0,1) - tau_k|^2 = k^2-k+1 equals 1 iff k in {0,1}. Hence k=2 is the unique positive value with two cross edges, k=1 is a degenerate unit translate, and the S1 value k=sqrt3 gives none of the four values equal to 1.",
+    "GRADE [P] S1-specific values at k = sqrt3: 6-3*sqrt3 = 0.804 (hub-to-tip channel), (sqrt3-1)^2 = 0.536 (apex channel), 4-sqrt3 = 2.268 (the two remaining channels). So no cross edge of S1 can come from any Q(sqrt3)-only difference; any cross edges must involve C2 or the two K-C2 apexes.",
+    "GRADE [P] One sqrt11-bearing channel: |C2 - tau|^2 = 6 - (5/2)sqrt3 - (1/2)sqrt11 = 0.0116 exactly, i.e. |C2 - tau| = 0.108. So K+tau is 0.108 from C2: not an overlap and not a unit edge, and the union's edge set is a discontinuous function of tau at this scale.",
+    "GRADE [P] Selected alternative tau_alt = 2*A1 = (sqrt3,1): with K' = K + tau_alt, |K'-C1| = |(0,1)| = 1 and |K'-A1| = |(sqrt3/2,1/2)| = 1, so two cross edges exist by construction and {K',C1,A1} is an equilateral triangle of side 1. |tau_alt| = 2 so no vertex is adjacent to its own image; tau_alt lies in Q(sqrt3)^2 inside the field, so exactness is preserved; and R_60(tau) = (0,sqrt3) is recorded as an independent second probe.",
+    "GRADE [S]+[P] Corrections to checks/amp_cert.py, not re-run in this analysis-only block: the docstring's 2^5 is corrected to 2^9 for the D=1/2 control (9 distinct points); the chain_points field counted occurrences rather than distinct chain vertices and is replaced by chain_occurrences and chain_points_distinct; and the squarefree routine's denominator branch used 1/i**(e//2), correct only for even e, now 1/i**((e+1)//2). The controls' denominators were 4 and 16 (even exponents), so the branch never fired and their certificates stand, but the routine's generality claim is retracted pending a re-run; hand checks of the fix give 1/2 -> (2,1/2), 5/4 -> (5,1/2), 1/12 -> (3,1/6)."
+  ],
+  "conjectures": [
+    "Because k=2 is the unique positive scale on the A1 axis giving two cross edges, and k=sqrt3 gives none of the four Q(sqrt3) channels, the S1 union is likely to be either zero-cross-edge (inert by Proposition 1 or 2) or coupled only through the C2/apex differences; the seed's fate is therefore decided by the sqrt11 channels, which the graph worker's stage-1 cross-edge count will report.",
+    "tau_alt = (sqrt3,1) is the better next probe on information grounds alone: it couples the two copies by construction (two cross edges, one equilateral triangle spanning them) while remaining far from a unit translate and staying in Q(sqrt3), so exactness is free.",
+    "The near-coincidence |C2 - tau| = 0.108 is a reproducibility hazard rather than a mathematical feature: any rounded tau would create spurious overlaps or edges, so the seed must be built in the exact field, as udg/build.py already does."
+  ],
+  "artifacts": [
+    "supervisor/solve-geometry/SEED-DESIGN-TAU.md",
+    "supervisor/solve-geometry/AMPLIFIER.md",
+    "supervisor/solve-geometry/checks/amp_cert.py",
+    "supervisor/solve-geometry/amp_certificates.json",
+    "supervisor/solve-geometry/ARTIFACT-HASHES.txt",
+    "supervisor/solve-geometry/STATUS.json"
+  ],
+  "tests_run": [
+    "None: analysis-only block by instruction. All arithmetic in SEED-DESIGN-TAU.md section 3 was done by hand in Q(sqrt3,sqrt11) and is graded [P]; the file edits to checks/amp_cert.py were made but deliberately not executed, so its three certificates remain those of the previous block (produced before the fixes, unaffected by them)."
+  ],
+  "failed_routes": [
+    "The S1 translate tau = sqrt3*A1 is provably silent on all four Q(sqrt3)-only cross-edge channels - a measured negative obtained without any computation, and the reason to prefer tau_alt for the next probe.",
+    "Retracted: the generality of the squarefree helper in checks/amp_cert.py until the fixed version is re-run; the three controls do not exercise the odd-denominator branch, which is exactly the point that controls alone do not establish a library.",
+    "Not attempted: any search for tau, any run of the seed test, any 4-/5-colourability decision, any palette or forcing claim, any plane-level or chromatic-number claim."
+  ],
+  "next_step": "When the compute slot reaches the graph chat: (a) run stage 1 for the frozen tau = (3/2,sqrt3/2) and record the cross-edge count and overlap set; if both are 0 the seed is inert by Propositions 1-2 and the reason should be recorded as the axis computation of SEED-DESIGN-TAU section 3; (b) then build tau_alt = (sqrt3,1), which by construction has at least two cross edges (K' adjacent to C1 and to A1) and no overlap among the Q(sqrt3) differences, and report the exact counts before any colouring question.",
+  "escalation": null
+}

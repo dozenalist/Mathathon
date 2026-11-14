@@ -1,0 +1,54 @@
+=== a = 1/5, period 4Z^2 (index 16), 42 forced offsets, exact Q(sqrt3) ===
+
+[1] window bound (proof, no search truncation)
+    dmin >= |v| - 2a and dmax <= |v| + 2a with a = 1/5, and |v|^2 = 3a^2 N = 0.12 N:
+    dmin < 1 <= |v|+2a  =>  |v| > 0.6  =>  N > 3
+    dmax > 1 <= dmin-2a  =>  |v| < 1.4  =>  N < 16.3333
+    so F is contained in the vectors with N in {4,7,9,12,13,16}: a finite, explicit set.
+    computed: |F| = 42 ; by ring [(4, 6), (7, 12), (9, 6), (12, 6), (13, 12)]
+    [OK] matches the saved artifact forced_a1_5.out: |F| = 42, N in {4,7,9,12,13}, ring 16 empty
+
+[2] self-loops: a cycle at one vertex would kill the quotient outright
+    multiples of 4 in the window: N values [16, 48, 64]
+    [OK] 4Z^2 meets F in nothing (all such norms are multiples of 16, and ring 16 is unforced)
+
+[3] connection set S = F mod 4 : |S| = 15 distinct residues
+    S = [(0, 1), (0, 2), (0, 3), (1, 0), (1, 1), (1, 2), (1, 3), (2, 0), (2, 1), (2, 2), (2, 3), (3, 0), (3, 1), (3, 2), (3, 3)]
+    |(Z/4)^2 minus 0| = 15
+    S == all nonzero residues?  True
+    multiplicity: how many of the 42 offsets hit each residue: {(0, 1): 3, (0, 2): 4, (0, 3): 3, (1, 0): 3, (1, 1): 2, (1, 2): 2, (1, 3): 3, (2, 0): 4, (2, 1): 2, (2, 2): 4, (2, 3): 2, (3, 0): 3, (3, 1): 3, (3, 2): 2, (3, 3): 2}
+    ==> the quotient graph is COMPLETE on 16 vertices (K_16)
+
+[4] independent adjacency check: for each of the 120 unordered pairs of distinct cosets,
+    search the whole coset difference class for a vector that satisfies the strict
+    criterion directly (exact, no reference to the list F).
+    pairs tested: 120 ; pairs WITHOUT a forced representative: 0
+    [OK] every pair of distinct cosets is adjacent: the graph is K_16, verified independently
+    witness cross-checks (in F, correct residue class): failures = 0
+
+[5] decision for this period
+    K_16 needs 16 distinct colours, so the quotient admits NO 6-colouring.
+    Equivalently: any 6-colouring would put two of the 16 cosets in one colour class,
+    and that pair is adjacent, so their cells contain points at distance exactly 1.
+    DSATUR with symmetry breaking, unlimited colours: 16-colourable = True, colours found = 16
+    exhaustive 6-colouring attempt (symmetry broken): SAT = False
+    [OK] UNSAT at 6 colours.  Lower bound is a clique: 16 pairwise adjacent cosets.
+
+    chi(quotient) = 16 exactly (K_16).
+
+[6] scope of this UNSAT
+    * It excludes colourings constant on the cosets of 4Z^2 only, i.e. colourings with
+      period lattice containing 4Z^2.  It is NOT a statement about non-periodic colourings.
+      It is stronger than needed for the interiors: it fails before any boundary question,
+      so no ownership rule and no ring-3 tangency pair is involved.
+    * Combined with the previous block's theorem (index >= 16 at a = 1/5) and its complete
+      sublattice enumeration: index 16 has exactly ONE avoiding sublattice, 4Z^2 (31 upper-HNF
+      forms at index 16, 1 avoids F); indices 17 and 18 have NONE.  So every periodic proper
+      colouring at a = 1/5 has index >= 19.
+    index 16: 31 sublattices, 1 avoiding F  [(4, 0, 4)]
+    index 17: 18 sublattices, 0 avoiding F  []
+    index 18: 39 sublattices, 0 avoiding F  []
+    index 19: 20 sublattices, 2 avoiding F  [(1, 7, 19), (1, 11, 19)]
+
+CONCLUSION: the index-16 quotient (period 4Z^2) needs 16 colours; six colours are impossible
+there.  Nothing here bounds chi(R^2), and no other period was swept.

@@ -1,0 +1,46 @@
+{
+ "updated_utc": "2026-11-14T10:20:00Z",
+ "status": "completed_block",
+ "summary": "Block 10: analysis only; frozen revision untouched (no generator, no build). Wrote EQUIVALENCE.md, the referee-facing argument. P is the coefficient map - the only object hwild sees, and the one needing measurability because it is pushed forward; S is a read-out with no structure, occurring only as H i (S x). The unification is not 'ambient is a special case of finite' but 'the proof used only these two slots': the bodies differ in 6 lines and, after deleting the two local P/hP bindings, q and hq vanish from the proof. Every old hypothesis is tabulated with its new location; nothing is dropped, reordered or strengthened; the only renamed item is hq to hP, which the old proofs already built. def-to-abbrev preservation is argued in three steps (identical binders; body defeq by one delta and one beta, alpha on the bound variable; abbrev merely widens transparency), and no proof depends on unfolding either name (seven occurrences, none in simp/rw/unfold, no attribute). No measurability on S is dropped: it would be unused, the old statements were equally silent about H, and both instances supply measurable S. Zero new assumptions. -126 stays textual.",
+ "verified_results": [
+  "[verified here, source reading] Seven occurrences of the two names exist in the whole tree (ConditionalSpectrum 267, 284, 323; ConditionalLimits 227, 369, 398, 592), each either the declaration, an application in a hypothesis slot, or the conclusion of a construction lemma; none is reached by simp, rw, unfold, or any attribute. So no existing proof depends on unfolding either definition, and def -> abbrev cannot perturb one.",
+  "[verified here, source reading] P/S decomposition from the proof text: the only role of q in the finite body was the deleted line 'let P : X -> W := q circ p', and of hq the deleted 'have hP : Measurable P := hq.comp hp'; after deletion no occurrence of q or hq remains. In the ambient body the same two lines read 'let P : X -> W := q' and 'have hP : Measurable P := hq'.",
+  "[verified here, source reading] def -> abbrev meaning preservation: binders identical (same names, order, explicitness, types, instance argument), bodies defeq by one delta on the alias plus one beta on (fun x => q (p x)) x resp. id x, bound variable renamed alpha-only. Type of the constant unchanged, so all applications including the construction lemmas at ConditionalLimits:227 and :592 keep meaning.",
+  "[verified here, source reading] Quantified public statements preserved as terms: binder text byte-identical (statement hashes 2dde28358ab09934 and ab6dd548d3a6bb53) and hypothesis types unchanged by the alias, so the propositions are the same terms, not merely equivalent; the only caveat is that #check may print the alias unfolded.",
+  "[verified here, source reading] Why S needs no measurability: S occurs only inside H i (S x); the pointwise bound transfers with no regularity on S; Integrable and the integral are assumed of the composite, never derived. The old definitions were equally silent about H (no Measurable hypothesis on H either), and at both instances S is measurable anyway (hp, id). Adding a hypothesis on S would be unused, which the no-new-assumptions rule forbids.",
+  "[verified here, mechanical] Frozen revision untouched this block: shared originals still 6602b9d8f20bbdfd... and ca74ba1033fead55...; patched copies still 48aa378f6f6db82b... and 58707f0495837a89..., matching the queued hashes. No generator was run.",
+  "[argued, not machine-checked] Genuinely new assumptions/instances: none. Z is a bare Type* with no instances, S has no hypothesis, hP is the old hq, hwild sits at the map it was always about, and no typeclass requirement is added."
+ ],
+ "conjectures": [
+  "The transplanted proof also proves the strictly stronger variant with an arbitrary ambient family Kf : Fin r -> X -> Fin m -> C (no factorisation through S). Deliberately NOT stated, because it would change both public statements; it is the obvious later strengthening if the house wants one, and it is the reason the S-parametrisation was chosen over the Kf-form.",
+  "-126 remains a textual candidate pending the local queue's compile, axiom and downstream checks; the five falsifiers are listed in EQUIVALENCE.md Sec.6."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/encoding-core/EQUIVALENCE.md (sha f0edc4de8a785aa4; referee-facing: P/S roles, full hypothesis table, def-to-abbrev proof, measurability discussion, new-assumption audit, falsifier list)",
+  "supervisor/simplify-architecture/encoding-core/integration/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean (frozen 48aa378f6f6db82b..., unchanged this block)",
+  "supervisor/simplify-architecture/encoding-core/integration/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean (frozen 58707f0495837a89..., unchanged this block)",
+  "supervisor/simplify-architecture/encoding-core/integration/SOURCE-FREEZE.md, META.json, INTEGRATION.md, 0001/0002 patches (frozen revision, untouched)",
+  "supervisor/simplify-architecture/encoding-core/integration/SmokeFinite.lean, SmokeAmbient.lean (unchanged)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "grep -rn 'FiniteEncodingApproximationAt|AmbientEncodingAt' --include=*.lean lean/ (read-only)",
+   "outcome": "seven occurrences, all declarations/applications/conclusions; no simp/rw/unfold/attribute use."
+  },
+  {
+   "cmd": "sha256sum on the two shared originals and the two frozen patched copies (read-only)",
+   "outcome": "6602b9d8.../ca74ba10... and 48aa378f.../58707f04... - all match the frozen values; the queued revision is unchanged."
+  },
+  {
+   "cmd": "no generator run, no build, no subagents, no messages",
+   "outcome": "deliberately, so the queued revision cannot shift mid-build."
+  }
+ ],
+ "failed_routes": [
+  "Not run this block, by instruction: integrate.py regeneration (would rewrite files whose hashes are queued), any Lean build, any new weak-mixing exploration, any Astra escalation.",
+  "Rejected formulation (recorded in EQUIVALENCE.md Sec.5): abstracting over an ambient family Kf instead of (Z, S). It is strictly weaker as a hypothesis, hence a strictly stronger theorem, so neither old definition would remain the same proposition and the public statements would change.",
+  "Previously withdrawn and untouched: P3 compaction propagation; coset counterexample; uncentered Fourier decay; first-stage properness; (U) implies M3."
+ ],
+ "next_step": "Wait for the isolated local queue to report on the frozen revision (post-patch hashes 48aa378f.../58707f04...). The five falsifiers in EQUIVALENCE.md Sec.6 are the acceptance list; only after they all pass may -126 be promoted from textual candidate to a compiled simplification, and only then should the cloze-of-closure/downstream review be asked for a verdict. No source changes are proposed while the queue runs.",
+ "escalation": null
+}

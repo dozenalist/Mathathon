@@ -1,0 +1,13 @@
+d2 (m2), §8 at k=6, ell=5. Proofs and commands in RESULTS.md.
+
+THM 1 (outsider gate). x a centre with Gamma_x containing a simple 5-cycle on 0..4, outsider X=5, weak measurable 6-colouring. If X not in P_x(e) a.e. then contradiction. No palette bound used; the only geometric input is Q(-e)=comp Q(e). Five independent searches (reduced s/delta; backtracking with and without |P|<=3; CaDiCaL twice): all 1000 geometry-free cases UNSAT. Mechanism: X absent forces the sign pattern to be a two-run split of lengths 2,3; the length-2 run's interior vertex is forced into P; the antipodal collapse s_(i+3)=s_i plus (5.7) makes the steps s_i-s_(i+1) +-1; three such steps summing to 0 mod 5 is impossible for the four available multisets.
+
+THM 2 (unconditional): at every k=6 five-cycle centre pi/3 <= sigma{X in P_x} <= pi, so the missing lemma for ell=5 at k=6 is exactly "X not in P a.e." and it is false. Corollary: the centre cannot carry the outsider's colour.
+
+LEMMA A / CALIBRATION: |O u I| = k - #sign changes and |O n I| = k - ell, so O n I is empty iff k = ell; the same argument at k=5 is Prop 8.2, UNSAT with and without (5.12).
+
+EXACT BOUND (two procedures): X absent -> UNSAT for every b and geometry; a cycle label absent -> SAT 704/1000, 576/7776; nothing absent -> 1000/1000, 1350/7776; b=1 -> UNSAT. The bound is k-ell and the absent label's identity, not |P|.
+
+EXACT COUNTERMODEL: closed form in RESULTS.md §7; meets (8.1),(5.7),|P|<=2,(6.2),(SUM),(M11), STRUCTURE Thm5.1-7; avoids a cycle label; sigma{X in P}=2pi/3; three-valued so Lemma 6.4 is dodged.
+
+Correction: m6's {5}/{1,3} STRIP(6,5) witness is killed by Lemma 6.4. Not claimed: (W), chi>=7, no exclusion of the 5-cycle at k=6.

@@ -1,0 +1,42 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: cb06c0fb7f297b814662cc3ca238f7f6aac3fdda2b0de944b341e132ee887c54
+Status: passed
+Exit code: 0
+
+STDOUT
+OAI.EuclideanFiveColor.outer_strip_actual_unit_neighbour {x : ℂ} {W : Set ℂ} {r θ δ : ℝ} (hr1 : 1 < r) (hr2 : r < 2)
+  (hδ : 0 < δ) (b : Bool)
+  (hstrip :
+    ∀ (β : ℝ),
+      |β - OAI.EuclideanFiveColor.coneNeighbourAngle r θ b 1| < δ →
+        ∀ (s : ℝ), 1 < s → s < 1 + δ → x + ↑s * ↑(Circle.exp β) ∈ W) :
+  ∃ q ∈ W, ‖x + ↑r * ↑(Circle.exp θ) - q‖ = 1
+OAI.EuclideanFiveColor.outer120_binary_impossible {k : ℕ} {c : ℂ → Fin k} (hc : Measurable c)
+  (hw : OAI.EuclideanFiveColor.WeakColoring k c) {a b : Fin k} {x : ℂ} {φ : ℝ} {W : Set ℂ} (hW : IsOpen W)
+  (hWc : ∀ᵐ (z : ℂ), z ∈ W → c z = a ∨ c z = b)
+  (hstrip : OAI.EuclideanFiveColor.OuterAngularStrips x W (Set.Ioo (φ - Real.pi / 3) (φ + Real.pi / 3))) : False
+OAI.EuclideanFiveColor.closed60_exclusions_three_le.{u_1} {k : ℕ} {c : ℂ → Fin k} (hc : Measurable c)
+  (hw : OAI.EuclideanFiveColor.WeakColoring k c) {ι : Type u_1} [Fintype ι] {x : ℂ} {φ : ℝ} {K : ι → Set ℂ} {α : ι → ℝ}
+  (F : ι → Finset (Fin k)) (hK : (i : ι) → OAI.EuclideanFiveColor.ApproachingContinuum x (K i) ↑(Circle.exp (α i)))
+  (hα : ∀ (i : ι), α i ∈ Set.Icc (φ - Real.pi / 6) (φ + Real.pi / 6))
+  (hexcl :
+    ∀ (i : ι),
+      ∀ j ∈ F i, Disjoint (OAI.EuclideanFiveColor.spatialSupport c j) (OAI.EuclideanFiveColor.Straddle (K i))) :
+  3 ≤ {j | ∀ (i : ι), j ∉ F i}.card
+OAI.EuclideanFiveColor.cone_survivor_001334_impossible {c : ℂ → Fin 6} (hc : Measurable c)
+  (hw : OAI.EuclideanFiveColor.WeakColoring 6 c) {x : ℂ} {K : Fin 3 → Set ℂ}
+  (hK :
+    (i : Fin 3) →
+      OAI.EuclideanFiveColor.ApproachingContinuum x (K i) ↑(Circle.exp (OAI.EuclideanFiveColor.coneSurvivorAngles i)))
+  (hexcl :
+    ∀ (i : Fin 3),
+      ∀ j ∈ OAI.EuclideanFiveColor.coneSurvivorExclusions i,
+        Disjoint (OAI.EuclideanFiveColor.spatialSupport c j) (OAI.EuclideanFiveColor.Straddle (K i))) :
+  False
+'OAI.EuclideanFiveColor.outer_strip_actual_unit_neighbour' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.outer120_binary_impossible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.closed60_exclusions_three_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.cone_survivor_001334_impossible' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+STDERR
+

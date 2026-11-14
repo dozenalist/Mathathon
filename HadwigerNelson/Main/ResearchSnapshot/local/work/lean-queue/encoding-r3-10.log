@@ -1,0 +1,10 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: d26d569088faea89e5ae5cc2309809797fcbe76cf6d927f4484bc39db7880d48
+Status: failed
+Exit code: 1
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r3\src\OAI\Analysis\PlaneSpectrum\ConditionalSpectrum.lean:1:0: error: object file 'C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\encoding-r3\build\OAI\Analysis\PlaneSpectrum\FourierTests.olean' of module OAI.Analysis.PlaneSpectrum.FourierTests does not exist
+
+STDERR
+

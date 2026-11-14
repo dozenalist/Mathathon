@@ -1,0 +1,114 @@
+Hadwiger--Nelson Continuation Prompt
+
+Current task statement
+
+Let $\chi(\mathbb{R}^{2})$ be the chromatic number of the plane: the least $k$ for which there is a colouring $c : \mathbb{R}^{2} \to \{1, \dots, k\}$ with $|x - y| = 1 \Rightarrow c(x) \neq c(y)$. The known state is $5 \le \chi(\mathbb{R}^{2}) \le 7$: the upper bound is the classical hexagonal $7$-colouring, the lower bound rests on explicit finite unit-distance graphs produced since 2018 in the de Grey--Polymath16 line, machine-verified to have chromatic number $5$. No explicitly realised $6$-chromatic unit-distance graph is known, and no $6$-colouring of the plane is known.
+
+Determine $\chi(\mathbb{R}^{2})$, or failing that, close one half of it, or failing that, reduce one half of it to a finite decision problem that a checker can settle. The problem is settled exactly when one finite unit-distance graph $G \subset \mathbb{R}^{2}$ with $\chi(G) = k$ and one proper colouring $c : \mathbb{R}^{2} \to \{1, \dots, k\}$ exist for the same explicit $k$.
+
+Status of record
+
+The following is accepted. Do not re-derive it, do not re-verify it, and above all do not report it as progress. Cite it, build on it, or attack it.
+
+R1. $\chi(\mathbb{R}^{2}) = \chi(E)$ for the countable algebraic plane $E = \overline{\mathbb{Q}}^{2}$; a finite witness of a lower bound may be taken with algebraic coordinates.
+R2. Deletion stability: $\chi(\mathbb{C} \setminus Z) = \chi(\mathbb{C})$ for $Z$ null, meagre, of cardinality $< \mathfrak{c}$, of finite outer measure, or contained in a half-plane.
+R3. The connected-set exclusion of \S 7 is equivalent to: a connected set containing no two points at distance exactly $1$ has diameter $\le 1$.
+R4. The cover lemma of \S 7 holds for every mesh $d < 5$ and is invariant under the number of colour labels.
+R5. Proposition 5.6 is the unique locus of the $k = 6$ failure.
+R6. The development is machine-checked under two toolchains; five reported errata were text-extraction artifacts.
+
+The impediments as reported, restated in their logical form:
+
+I1. (Palette) $\chi \ge 7$ requires $|P_x(e)| \le 2$ at $k = 6$; the method yields $k - 3 = 3$; a circle of radius one is $2$-colourable, so ternary centres are consistent.
+I2. (Combinatorics at $k = 6$) A length-six interface cycle is untreated; triangle and square states are set-valued rather than singleton.
+I3. (Upper bound) $\chi \le 6$ requires an actual $6$-colouring; lattice, periodic, radial, o-minimal and finite-component classes are excluded by no-go results.
+I4. (Explicitness) The finite witness for $\chi \ge 6$ comes from compactness and is not explicit.
+
+Not one of I1--I4 is a theorem as stated. Each is either a theorem with named hypotheses, a construction, or an excuse. Converting I1--I4 into that form is the first obligation of this continuation, and the sentence "this needs a genuinely new mechanism" is not an acceptable output.
+
+Terminal outcomes
+
+Any one of the following closes this continuation. They are listed by strength; all five count as success.
+
+L1. Resolution. An explicit finite unit-distance graph $G \subset \mathbb{R}^{2}$ with $\chi(G) = k$ and an explicit proper $k$-colouring of $\mathbb{R}^{2}$, for the same $k \in \{5, 6, 7\}$.
+    Acceptance: exact coordinates and a complete edge list for $G$; every edge verified to have length exactly $1$ in exact arithmetic; a checkable proof that $G$ has no proper $(k-1)$-colouring; a closed-form colouring of the plane; and a proof that no two points at distance exactly $1$ share a colour.
+
+L2. One half closed. An explicit $6$-chromatic unit-distance graph in the plane, or an explicit proper $6$-colouring of the plane.
+    Acceptance: as in L1, for one half only, with the $k$-verification exact and machine-checked.
+
+L3. Certified finite reduction. A finite decision problem $P$ and a machine-checked proof of exactly one implication: $P$ unsatisfiable implies $\chi(\mathbb{R}^{2}) \ge 6$, or $P$ satisfiable, with an exhibited solution, implies $\chi(\mathbb{R}^{2}) \le 6$.
+    Acceptance: $P$ given as an explicit instance (variables, clauses or constraints, file, size, solver and version, resolution certificate); the implication proved in full, with every appeal to compactness replaced by the finitary object it yields; and the residual gap, if any, stated in a single sentence with no free parameters.
+
+L4. Certified no-go plus specification. A theorem that the cover-and-palette method of \S 5--\S 7 cannot decide $k = 6$ for any value of its constants, together with the exact list of properties a replacement mechanism must have, and one explicit example on which a proposed replacement satisfies at least one of those properties while the present method cannot.
+    Acceptance: the no-go stated for a precisely delimited class of arguments, proved, and checked to be non-vacuous -- it must exclude a method that would otherwise plausibly work, not a strawman; the specification stated as a list of falsifiable requirements; the example computed exactly.
+
+L5. Calibration and irreducibility. The present machinery reproduces $\chi(\mathbb{R}^{2}) \ge 5$ through its own route, with an explicit finite witness and no appeal to a published graph; and the \S 7 chain is reduced to an irreducible core in which deleting any single lemma breaks the argument.
+    Acceptance: the reproduced witness is explicit, exact-verified and $(k-1)$-unsatisfiable by certificate; the irreducibility claim is checked lemma by lemma; the simplified chain is shorter and each step is machine-checked.
+
+Anything weaker is a status report, and a status report is a failed run.
+
+Why I1--I4 are not terminal
+
+Repair of I3. The sentence "$\chi \le 6$ needs an actual 6-colouring" misstates the obligation. For finite $k$, a graph $G$ satisfies $\chi(G) \le k$ if and only if every finite subgraph of $G$ does. Applied to the unit-distance graph of the plane,
+
+  $\chi(\mathbb{R}^{2}) \le 6$   if and only if   no finite unit-distance graph in the plane has chromatic number $\ge 7$.
+
+The upper half of the problem is therefore a finitary statement about finite point configurations, containing no colouring at all. Every no-go theorem you cite for lattice, periodic, radial, o-minimal and finite-component colourings constrains the shape of a colouring, and so cannot bear on a statement that quantifies over no colouring. Note also that R1 is a corollary of this same equivalence, not an independent tool; the structural no-gos are therefore not merely weakened by R1, they are irrelevant to the question of existence. Rewrite the upper-bound programme in the finitary form and attack that.
+
+Repair of I4. By the same equivalence, a proof of $\chi(\mathbb{R}^{2}) \ge 6$ is, contrapositively, the existence of a finite $6$-chromatic unit-distance graph in the plane. There is no such thing as a proof of $\chi \ge 6$ from which no finite witness can be extracted; there are only proofs from which nobody has extracted one yet. Non-explicitness is an extraction problem with a definite shape: finitely many vertices, algebraic coordinates by R1, so for each vertex count $n$ and height bound $H$ the search space is finite and enumerable. Either carry out the extraction, or prove the infeasibility of the extraction at the sizes involved by a lower bound on witness size; and if the compactness argument yields neither, then what it proves is not $\chi \ge 6$, and the claim must be restated with its hypothesis displayed. Resolve this first: as written, I4 asserts a proof of $\chi \ge 6$ while I1 sets out to reach $\chi \ge 7$. One of the two is being misreported, and the misreport sits exactly where the value of the work lies.
+
+Repair of I1. The constraint you dismiss is not a constraint on the circle. $P_x(e)$ is a palette at a centre $x$ inside a colouring of a neighbourhood of $x$, not a colouring of $S^{1}(x)$: it must be simultaneously compatible with the palettes at every centre $y$ with $|x - y| = 1$. The $2$-colourability of the unit-distance graph on a circle -- true, since that graph is a disjoint union of $6$-cycles -- says only that no obstruction lives on one circle. It says nothing about a ball. The claim "ternary centres are consistent" must therefore be tested thus: exhibit a finite $S \subset B(x, 2)$, containing three points of $S^{1}(x)$ carrying three distinct colours, whose unit-distance graph admits a proper $6$-colouring. If such an $S$ exists, the local obstruction survives to radius $2$ and you have a real global problem, stated. If no such $S$ exists, the obstruction is already dead at radius $2$ and you must produce the contradiction. Both outcomes are results. The report asserts the first without testing either.
+
+Repair of I2. "A length-six interface cycle is untreated" and "states become set-valued" are not mathematical statements. A state is an object; write its definition, the state set attached to each site, the transition relation, the interface cycle with its six sites and the constraint each carries, and the resulting finite constraint problem with its exact size. If the state set is astronomically large, that is the finding, and the deliverable is the exact count together with a symmetry-reduced quotient. Note further that set-valued states are a loss, not a fact: the standard remedy, and the one that produced the known lower bounds, is to enlarge the configuration until the state is forced to be a singleton. Design configurations that force singleton palettes; do not accept a set-valued state and stop.
+
+Mandatory work items
+
+W1. Disambiguate I4. State the exact theorem the development proves, its hypotheses line by line, and the sentence of the paper corresponding to each. Say whether $\chi(\mathbb{R}^{2}) \ge 6$ is claimed unconditionally. If it is, half the problem is solved and must be presented as solved, with the extraction of Repair of I4 carried out or bounded; if it is conditional, display the condition.
+W2. Calibrate at $k = 5$. Reproduce $\chi \ge 5$ through your own machinery, with an explicit witness. A method that cannot recover a known result at $k = 5$ is uncalibrated at $k = 6$, and its failure there is then evidence about the method, not about the plane.
+W3. Audit the no-go theorems. For lattice, periodic, radial, o-minimal and finite-component colourings, state each class precisely and prove the exclusion, then test for vacuity: exhibit the largest subclass your proof actually excludes, and check whether a colouring outside every one of these classes is excluded by anything you have.
+W4. Prove or refute the multiplicity claim. "With three positive coordinates the smoothed map sits in the two-skeleton, where the multiplicity-two cover obstruction is false" must become a lemma with an explicit configuration witnessing multiplicity one at the relevant degree, or a counterexample to it.
+W5. Draw the consequence of R4. If the cover count is invariant in the label count, no choice of constants in \S 7 will ever separate $k = 6$ from $k = 7$. Prove the invariance as a theorem in the sharpest form obtainable, and derive from it the specification demanded by L4.
+W6. Build the finite state model of the $k = 6$ analysis: explicit states, explicit transitions, explicit counts, and explicit small cases decided by exhaustive enumeration. Nothing in prose.
+W7. Test the ternary-centre claim by the ball test of Repair of I1, and report the outcome as a theorem either way.
+W8. Extract or bound. Produce an explicit witness from the compactness argument, or prove a lower bound on the size of any witness your route can yield.
+
+Routes to keep alive simultaneously
+
+Maintain a registry in which each route is named by its mathematical idea, carries a one-line falsification test, and is marked live, blocked-with-certificate, or dead. Never mark a route blocked without the certificate.
+
+A. Finitary upper bound. Work directly with "no finite $7$-chromatic unit-distance graph in the plane". Structural constraints on unit-distance graphs -- degree, independence number, forbidden configurations realisable at prescribed distances, the field of definition of a witness by R1 -- and reduction to a finite search over configuration types.
+B. Singleton-forcing by configuration design. For the palette route: design finite centre configurations whose constraints force a palette of size at most $2$ at $k = 6$; each design is a finite check; iterate. Precedent exists at $k = 5$, where exactly this move overcame a local obstruction of the same kind, so the method is not speculative -- it is the one that worked before.
+C. $k$-sensitive invariants. The count of R4 is blind to labels; replace it with a quantity in which $k$ appears structurally: Fourier-analytic linear-programming bounds on circle measures, the polynomial method with degree $k$, Combinatorial Nullstellensatz, spectral or entropy inequalities on circle-measure operators. Acceptance for any candidate: an explicit example where the invariant changes when $k$ changes by one.
+D. Number-field amplification. R1 together with algebraic number theory: distinct embeddings of the field of definition give distinct realisations of one abstract graph; unite several realisations into one configuration, adding the cross-edges that are exactly of unit length, and compute the chromatic number of the union. This manufactures large witnesses from small ones at no combinatorial search cost.
+E. Extraction. Bounded enumeration of algebraic configurations by vertex count and height, with symmetry reduction, run in parallel with W8.
+F. Proof simplification. Reduce \S 5--\S 7 to an irreducible core, state each lemma minimally, and identify the single lemma whose failure would be fatal. Simplification is progress only when it shortens the distance to a terminal outcome; state that distance after each reduction.
+G. Independent reconstruction. A fresh derivation of the $k = 6$ analysis without the \S 7 architecture, as a check against the possibility that R4's blindness is an artifact of how \S 7 is set up.
+
+Adversarial audit requirements
+
+Every claimed result must survive the following, and the audit report is part of the deliverable.
+
+- Every use of compactness names the finitary object it yields: the finite set of points, the finite subgraph, the finite constraint set. An unnamed finite object is an unfinished proof.
+- Every no-go theorem states its class precisely and is checked for vacuity: what is the largest class the proof actually excludes, and is anything outside it also excluded?
+- Every invariance or blindness claim is proved for all $k$, not exhibited at two values.
+- Every palette or state claim is a statement about a ball, not a circle; verify that the constraint set used includes the cross-constraints between centres at distance $1$.
+- Every satisfiable or unsatisfiable claim carries a checkable certificate: a resolution proof, a DRAT or LRAT file, or a verified exhaustive enumeration; report instance size, encoding, solver, version, and the verification of the certificate itself.
+- Every unit length is verified exactly, in exact arithmetic or in Lean, never numerically; a near-unit length with an unstated tolerance is an error.
+- Every structural assumption on a colouring -- measurability, periodicity, bounded variation, regularity of colour classes -- is either the hypothesis under study or a gap.
+- Every statement equivalent in strength to the problem is flagged as such and is not used as a step.
+- Every sentence of the form "this requires a new mechanism" is replaced by a theorem, a construction, or an explicit falsification test that was run and failed.
+- Simplification is audited too: a shorter proof that no longer reaches the same conclusion is not a simplification.
+
+What does not count
+
+Reported as progress, the following are insufficient: the status of record R1--R6 restated; module counts, port sizes, axiom lists, or toolchain versions; five errata shown to be extraction artifacts; a no-go theorem for one class of colourings presented as a no-go for the problem; a compactness-derived witness presented as though it were explicit; prose descriptions of the $k = 6$ subproblem; improvements to constants that do not change $k$; numerical or SAT claims without certificates; reductions to another open statement; measurable or finite-field results transplanted; any argument resting on $|\mathbb{R}^{2}| = \mathfrak{c}$; and the observation that a circle of radius one is $2$-colourable, which is a fact about a circle.
+
+Return conditions
+
+Return only with one of L1--L5 complete to its acceptance criteria, and with each of W1--W8 carrying either a completed deliverable or a certified negative result. Do not return a status report, a list of impediments, a reduction, an isolated missing lemma, a "genuinely new mechanism is needed" summary, or an explanation of why the problem is difficult. If every live route dies, the deliverable is the certified no-go of L4 and the specification it forces: that is a result, and it is the only acceptable substitute for a solution.
+
+Spend at least 8 hours on this before even thinking of returning or giving up.
+
+Use multiagent v2 aggressively and dynamically. You have up to 64 concurrent agents. Do not use a fixed assignment such as "$N$ agents for route $X$." Begin with a genuinely diverse portfolio spread across routes A--G, including at least one agent on each half and one on calibration. Preserve independence in early rounds and do not tell most agents which route is currently favoured. Redirect agents when too many converge on one route, and never let a route dominate because it gives elegant reductions: a route that ends at a lemma equivalent in strength to the problem is not close to completion. Require concrete lemmas, explicit configurations, exact coordinates, counts, certificates, and counterexamples to proposed sublemmas. The root agent synthesises, challenges, redirects and launches new rounds; it does not stop after the first wave fails.
+
+Public search may be used for ordinary mathematical background and standard named theorems, and you may consult published finite witnesses at $k = 5$ for the calibration of W2, since those are the calibration standard and not the answer. Do not search the public web for $6$-chromatic or $7$-chromatic unit-distance graphs, for a $6$-colouring of the plane, or for a solution to this problem, and do not answer that the value of $\chi(\mathbb{R}^{2})$ is open.

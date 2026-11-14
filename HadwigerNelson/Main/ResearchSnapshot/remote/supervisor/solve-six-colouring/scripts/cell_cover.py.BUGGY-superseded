@@ -1,0 +1,103 @@
+"""Exact, certified K_7 cover of the rectangular cell-tiling family at k=6.
+
+L = s*Z x t*Z, cells = rectangles of side s,t (the Voronoi cells of L).
+A colouring constant on cells is proper (no same-coloured pair of points at distance 1)
+  iff for every forced difference v = (ps,qt) the two cells never share a colour,
+  forced(v) :<=> dmin^2 <= 1 <= dmax^2,   (closed: tangency at distance exactly 1 counts)
+  dmin^2 = max(0,|p|-1)^2 s^2 + max(0,|q|-1)^2 t^2   (closest approach of the two closed rectangles)
+  dmax^2 = (|p|+1)^2 s^2 + (|q|+1)^2 t^2             (farthest pair of the two closed rectangles)
+The distance set of the pair is the closed interval [dmin,dmax] (R x (R+v) is connected,
+distance is continuous, and both extremes are attained), so 1 is a realised distance iff
+dmin <= 1 <= dmax.
+
+Truncation is exact and finite: dmin >= |v| - diam, so forced needs |v| <= 1 + sqrt(s^2+t^2).
+
+With s = i/60, t = j/60 all four inequalities are INTEGER:
+  forced <=> A(p) i^2 + A(q) j^2 <= 3600 <= (|p|+1)^2 i^2 + (|q|+1)^2 j^2,  A(n)=max(0,n-1)^2.
+Guaranteed-forced on a box [i,i+1]/60 x [j,j+1]/60 (uses monotonicity of both sides in s,t):
+  dmin^2(s1,t1) <= 1  and  dmax^2(s0,t0) >= 1.
+A 7-clique among guaranteed-forced differences => NO proper 6-colouring for ANY (s,t) in the box
+(the 7 cells are pairwise forced, so they need 7 distinct colours). This is the certificate.
+"""
+import sys, json, itertools
+
+H = 60; M = H*H  # 1/h^2
+
+def A(n): return max(0, n-1)**2
+
+def gforced_set(i, j, up=(1,1), lo=None):
+    """differences guaranteed forced on box [i,i+up0]/60 x [j,j+up1]/60 ; lo = lower corner (i,j)."""
+    i1, j1 = i+up[0], j+up[1]
+    if lo is None: lo = (i, j)
+    if lo[0] == 0 or lo[1] == 0: return set()   # degenerate corner: no guarantee possible
+    if i1 == 0 or j1 == 0: return set()
+    P = 1 + M//(i1*i1) + 1 if i1 else 0      # A(p) i1^2 <= M  =>  |p| <= 1 + sqrt(M)/i1
+    Q = 1 + M//(j1*j1) + 1 if j1 else 0
+    out = set()
+    for p in range(-P, P+1):
+        ap = A(p)
+        lo_p = ((abs(p)+1)**2)*lo[0]**2
+        for q in range(-Q, Q+1):
+            if p == 0 and q == 0: continue
+            if ap*i1*i1 + A(q)*j1*j1 > M: continue          # dmin^2(s1,t1) > 1 -> not guaranteed
+            if ((abs(p)+1)**2)*i1*i1 + ((abs(q)+1)**2)*j1*j1 < M: continue  # dmax^2(s1,t1) < 1 -> not forced at all
+            if ((abs(p)+1)**2)*lo[0]**2 + ((abs(q)+1)**2)*lo[1]**2 < M: continue  # dmax^2(lo) < 1
+            out.add((p, q))
+    return out
+
+def max_clique(G, target=7, budget=400000):
+    """G: symmetric set of nonzero vectors; graph on Z^2 with edges = differences in G.
+    Returns a clique of size `target` containing 0, or None (budget exhausted / none)."""
+    nodes = [0]
+    verts = sorted(G, key=lambda v: (abs(v[0]) + abs(v[1]), v[0], v[1]))
+    def adj(u, v): return (v[0]-u[0], v[1]-u[1]) in G
+    best = []
+    cnt = [0]
+    def bk(cur, cand):
+        if cnt[0] > budget: return True
+        cnt[0] += 1
+        if len(cur) + len(cand) < target: return False
+        if len(cur) == target:
+            best.extend(cur); return True
+        # pivot: high degree
+        for idx, v in enumerate(cand):
+            if cnt[0] > budget: return True
+            bk(cur + [v], [w for w in cand[idx+1:] if adj(v, w)])
+            if best: return True
+        return False
+    bk([], verts)
+    return ([ (0,0) ] + best) if best else None
+
+def run(cover_h=H, verbose=True):
+    rows = []
+    excl = 0; tried = 0; undecided = []
+    for i in range(1, cover_h):          # s = i/60, WLOG s <= t  (swap symmetry)
+        for j in range(i, cover_h):
+            if (i*i + j*j) >= M: continue          # lower corner outside s^2+t^2 < 1
+            tried += 1
+            G = gforced_set(i, j)
+            c = max_clique(G, 6)   # 6 pairwise-adjacent forced offsets + origin = K_7
+            if c:
+                excl += 1
+                rows.append({"i": i, "j": j, "D2": i*i+j*j, "clique": sorted(c),
+                             "size_G": len(G)})
+            else:
+                undecided.append((i, j, len(G)))
+    if verbose:
+        print(f"boxes tested (s<=t, lower corner in open disc): {tried}")
+        print(f"boxes CERTIFIED excluded (7-clique among guaranteed-forced): {excl}")
+        print(f"boxes not decided by this test: {len(undecided)}")
+        if undecided:
+            ds = sorted((i*i+j*j, i, j, n) for (i, j, n) in undecided)
+            print("  smallest undecided (i,j,|G|) by D^2:", [(a,b,c) for (_,a,b,c) in ds[:12]])
+            print("  largest  undecided (i,j,|G|) by D^2:", [(a,b,c) for (_,a,b,c) in ds[-6:]])
+        ex = sorted((r["D2"], r["i"], r["j"]) for r in rows)
+        print(f"  certified region: D^2 from {ex[0][0]/M:.6f} (i,j={ex[0][1]},{ex[0][2]}) "
+              f"to {ex[-1][0]/M:.6f} (i,j={ex[-1][1]},{ex[-1][2]})")
+    return rows, undecided
+
+if __name__ == "__main__":
+    rows, und = run()
+    json.dump({"certified": rows, "undecided": und},
+              open("out/rect_cover.json", "w"))
+    print("wrote out/rect_cover.json")

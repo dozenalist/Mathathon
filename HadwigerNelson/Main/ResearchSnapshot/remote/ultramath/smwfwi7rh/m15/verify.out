@@ -1,0 +1,48 @@
+
+== A. geometry of the 60-degree transport ==
+PASS  A1  R - 1 = exp(2 pi i/3) = -1/2 + i sqrt3/2, and |R-1| = 1
+PASS  A2  for every exact unit w there is a unit e with (R-1)e = w, i.e. e - Re = w   [6 exact unit vectors]
+PASS  A3  (x,e) -> (x+e, x+Re) lands in unit pairs, and v - u = (R-1)e
+PASS  A4  e -> (R-1)e is multiplication by exp(2 pi i/3), a rotation
+PASS  A5  every unit pair of the sample is (x+e, x+Re); |e| = |Re| = |e-Re| = 1   [6 exact pairs]
+
+== A6. the trace form of the wall (Corollary 3.2) ==
+PASS  A6a |1 - R| = 1 and (1-R)^{-1} = exp(-2 pi i/3)
+PASS  A6b for every exact unit w there is a unit e with e - Re = w, i.e. e = w/(1-R)   [6 exact unit vectors]
+PASS  A6c for a unit pair (y,y') there is a centre x with y = x+Re, y' = x+e
+
+== A7. m11's heavy-direction triple is not pairwise unit-separated ==
+PASS  A7  |y0-y1|^2 = 1, |y1-y2|^2 = 1, |y0-y2|^2 = 3, not 1   [so P_{y0} and P_{y2} are not forced disjoint]
+
+== B. countermodels: palette axioms hold, the point-field axiom fails ==
+PASS  B  m15 3-block model, ell=3           palette axioms: (5.7), |P|<=3, C_3-admissible   [36 sectors, 3 distinct values, absent labels [0, 1, 2]]
+PASS  B  m15 3-block model, ell=3           violates (PF) (translation invariant, >=2 values)   [Q(e0)=[3] != Q(e1)=[4]]
+PASS  B  m15 3-block model, ell=4           palette axioms: (5.7), |P|<=3, C_4-admissible   [36 sectors, 3 distinct values, absent labels [5]]
+PASS  B  m15 3-block model, ell=4           violates (PF) (translation invariant, >=2 values)   [Q(e0)=[0, 2] != Q(e1)=[1, 3]]
+PASS  B  m15 3-block model, ell=5           palette axioms: (5.7), |P|<=3, C_5-admissible   [36 sectors, 3 distinct values, absent labels [4]]
+PASS  B  m15 3-block model, ell=5           violates (PF) (translation invariant, >=2 values)   [Q(e0)=[0, 2] != Q(e1)=[1, 3]]
+PASS  B  free-label 36-sector word, ell=6   palette axioms: (5.7), |P|<=3, C_6-admissible   [36 sectors, 6 distinct values, absent labels [0]]
+PASS  B  free-label 36-sector word, ell=6   violates (PF) (translation invariant, >=2 values)   [Q(e0)=[1, 3] != Q(e1)=[1, 4]]
+PASS  B  ell=6 word: the six transport offsets +-5,+-6,+-7 are disjoint
+PASS  B  m13 singleton model: singletons and (5.7) (4 != s, s' != s)   [values {4},{5},{6}; absent labels 0,1,2,3]
+PASS  B  3-block ell=3  fails (HIT): intersection of all values is empty   [empty intersection]
+PASS  B  3-block ell=4  fails (HIT): intersection of all values is empty   [empty intersection]
+PASS  B  3-block ell=5  fails (HIT): intersection of all values is empty   [empty intersection]
+PASS  B  ell=6 word     fails (HIT): intersection of all values is empty   [empty intersection]
+PASS  B  m13 singleton: fails (HIT) (three disjoint singleton values)   [intersection of {4},{5},{6} is empty]
+PASS  B  a centre-independent field is a point field iff it is constant   [note, Theorem 5]
+
+== C. the Moser spindle: the (PF) system IS finite unit-distance colouring ==
+PASS  C1  Moser spindle: 7 vertices, 11 unit edges, exact in Q(sqrt3,sqrt11)   [edges = [(0, 3), (0, 4), (0, 5), (0, 6), (1, 2), (1, 3), (1, 4), (2, 5), (2, 6), (3, 4), (5, 6)]]
+PASS  C2  the spindle is not 3-colourable and is 4-colourable   [4-colouring (0, 0, 1, 1, 2, 2, 3)]
+PASS  C3  (PF)+(5.7)+nonempty on the spindle is UNSAT at k=3 (exhaustive)
+PASS  C4  ... and SAT at k=6, explicit witness   [F = {0: [0], 1: [0], 2: [1], 3: [1], 4: [2], 5: [2], 6: [3]}]
+PASS  C5  the C4 witness is nonempty and edge-disjoint
+
+== D. a 6-cycle at a centre is point-field consistent at k = 6 ==
+PASS  D1  every C_6-admissible palette has at least two labels   [29 admissible values]
+PASS  D2  the wheel system (PF)+(5.7)+(6.2) is SAT at k=6   [5 witnesses]
+PASS  D3  the D2 witness satisfies every constraint   [rim [[0, 2], [1, 3], [0, 2], [1, 3], [0, 2], [1, 3]] hub [4]]
+
+0 failure(s)
+ALL CHECKS PASS

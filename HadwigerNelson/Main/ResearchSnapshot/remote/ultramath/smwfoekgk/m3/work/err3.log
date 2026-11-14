@@ -1,0 +1,24 @@
+==== OAI.MeasureTheory.CompactFactors.Amenability rc=1
+tree/OAI/MeasureTheory/CompactFactors/Amenability.lean:377:8: error(lean.unknownIdentifier): Unknown identifier `eventuallyEmptyOrUniv_iff.mp`
+
+==== OAI.MeasureTheory.CompactFactors.RelativeProducts rc=1
+tree/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:1:0: error: object file 'build2/OAI/MeasureTheory/CompactFactors/Amenability.olean' of module OAI.MeasureTheory.CompactFactors.Amenability does not exist
+
+==== OAI.MeasureTheory.CompactFactors.Separability rc=1
+tree/OAI/MeasureTheory/CompactFactors/Separability.lean:1:0: error: object file 'build2/OAI/MeasureTheory/CompactFactors/RelativeProducts.olean' of module OAI.MeasureTheory.CompactFactors.RelativeProducts does not exist
+
+==== OAI.Geometry.PlaneColoring.Compactness rc=1
+tree/OAI/Geometry/PlaneColoring/Compactness.lean:1:0: error: object file 'build2/OAI/Geometry/PlaneColoring/WeakColoring.olean' of module OAI.Geometry.PlaneColoring.WeakColoring does not exist
+
+==== OAI.Geometry.PlaneColoring.CyclicCore rc=1
+tree/OAI/Geometry/PlaneColoring/CyclicCore.lean:1:0: error: object file 'build2/OAI/Geometry/PlaneColoring/FiveSupport.olean' of module OAI.Geometry.PlaneColoring.FiveSupport does not exist
+
+==== OAI.Geometry.PlaneColoring.PaletteDensity rc=1
+tree/OAI/Geometry/PlaneColoring/PaletteDensity.lean:1:0: error: object file 'build2/OAI/Geometry/PlaneColoring/CircleTransport.olean' of module OAI.Geometry.PlaneColoring.CircleTransport does not exist
+
+==== OAI.Analysis.PlaneSpectrum.PhaseCollision rc=1
+tree/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:1:0: error: object file 'build2/OAI/Analysis/PlaneSpectrum/PhaseEncoding.olean' of module OAI.Analysis.PlaneSpectrum.PhaseEncoding does not exist
+
+==== OAI.MeasureTheory.CompactFactors.Functions rc=1
+tree/OAI/MeasureTheory/CompactFactors/Functions.lean:1:0: error: object file 'build2/OAI/MeasureTheory/CompactFactors/Kernels.olean' of module OAI.MeasureTheory.CompactFactors.Kernels does not exist
+

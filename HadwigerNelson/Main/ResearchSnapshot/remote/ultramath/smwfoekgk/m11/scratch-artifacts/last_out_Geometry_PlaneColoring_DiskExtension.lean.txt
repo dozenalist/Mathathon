@@ -1,0 +1,61 @@
+ prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:340:53: error: unsolved goals
+V : Type u
+v val : V
+property : val ≠ v
+⊢ graphLift v (graphVertex ⟨val, property⟩) = graphVertex val
+work/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:347:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:346:71: error: unsolved goals
+V : Type u
+v : V
+t : ℝ
+val : V
+property : val ≠ v
+val_1 : V
+property_1 : val_1 ≠ v
+⊢ graphLift v (graphEdgePoint ⟨val, property⟩ ⟨val_1, property_1⟩ t) = graphEdgePoint val val_1 t
+work/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:359:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:358:59: error: unsolved goals
+V : Type u
+G : SimpleGraph V
+v : V
+p : V → ℝ
+hp : p ∈ graphRealization G
+hz : p v = 0
+⊢ graphDrop v p ∈ graphRealization (SimpleGraph.induce {i | ¬i = v} G)
+work/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:419:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:418:53: error: unsolved goals
+V : Type u
+inst : Fintype V
+G : SimpleGraph V
+a_1 : G.IsTree
+⊢ ContractibleSpace (GraphSpace G)
+work/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:474:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:473:72: error: unsolved goals
+V : Type u
+inst : Fintype V
+inst_1 : Nonempty V
+c : ℂ
+r : ℝ
+hr : 0 < r
+f : C(↑(Metric.sphere c r), V → ℝ)
+G : SimpleGraph V
+hG : G.IsAcyclic
+hf : ∀ (a : ℂ) (b : ‖a - c‖ = r), f ⟨a, ⋯⟩ ∈ graphRealization G
+⊢ ∃ g, ∀ (a : ℂ) (b : ‖a - c‖ = r), ↑(g ⟨a, ⋯⟩) = f ⟨a, ⋯⟩
+work/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:541:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:540:71: error: unsolved goals
+V : Type u
+inst : Fintype V
+inst_1 : Nonempty V
+Q : Set ℂ
+S : Finset MarkedDisk
+hr : ∀ d ∈ S, 0 < d.radius
+hdis : (↑S).Pairwise fun a b => Disjoint a.closedBall b.closedBall
+f : C(ℂ, V → ℝ)
+hg : ∀ z ∈ Q, z ∉ diskHoles S → f z ∈ graphRealization ⊤
+hb :
+  ∀ d ∈ S,
+    d.core = false →
+      (d.closedBall ∩ Q).Nonempty → ∃ G, G.IsAcyclic ∧ ∀ (z : ℂ), ‖z - d.center‖ = d.radius → f z ∈ graphRealization G
+⊢ ∃ g, ∀ (a : ℂ) (hp : a ∈ Q) (hq : a ∉ coreHoles S), a ∉ diskHoles S → ↑(g ⟨a, ⋯⟩) = f a

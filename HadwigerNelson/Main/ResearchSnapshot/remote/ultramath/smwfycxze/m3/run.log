@@ -1,0 +1,46 @@
+A1  c_0 is proper (hexagons of circumradius 2/5, colour (m+2n) mod 7)
+  ok   min of m^2-mn+n^2 over nonzero same-colour (m,n) equals 7   [got 7]
+  ok   |d(m+nw)|^2 = (12/25)(m^2-mn+n^2) gives least same-colour centre distance^2 = 84/25   [84/25 > 81/25 = (1+2r)^2, since 84 > 81]
+A2  Method 1: the annulus 1 +- 71/10000 about p0 misses exactly the labels 0,2,3
+  ok   colours meeting that annulus = {1,4,5,6}   [[1, 4, 5, 6]]
+  ok   label 0 absent from the annulus (Method 1)
+  ok   label 2 absent from the annulus (Method 1)
+  ok   label 3 absent from the annulus (Method 1)
+A3  Method 2: the same statement, by a cell cover that computes no hexagon distance
+  ok   every cover cell of the annulus carries only colours 1,4,5,6   [boxes=12100 depth=0 colours seen=[1, 4, 5, 6]]
+  ok   the cover is not vacuous: it meets at least two colours   [[1, 4, 5, 6]]
+A4  Method 1: every point of p0 +- 1/100 is a good gadget centre
+  ok   labels 0,2,3 are absent from every annulus with centre in that square   [[1, 4, 5, 6]]
+A5  Method 2: the same statement by covering the union of those annuli
+  ok   every cover cell of the union of annuli carries only colours 1,4,5,6   [boxes=2037 depth=2 colours seen=[1, 3, 4, 5, 6]]
+A6  a bad site: at q = (-13/50,-1/10) six labels meet the unit annulus
+  ok   six colours meet the annulus at q=(1/10,1/10) (Method 1)   [[1, 2, 3, 4, 5, 6]]
+  FAIL all six labels have an explicit rational witness point inside the annulus (Method 2)   [[1, 2, 4, 5, 6]]
+A7  lattice window: no two distinct Lambda-translates of W are at distance in
+    [1 - sqrt2*ELL, 1 + sqrt2*ELL], so gadgets in distinct translates cannot collide
+  ok   sqrt2/100 < 3/100
+  ok   k=1: lattice distance^2 = 12/25 < (1-a)^2   [0.480000 < 0.940900]
+  ok   k=3: lattice distance^2 = 36/25 > (1+a)^2   [1.440000 > 1.060900]
+  ok   m^2-mn+n^2 has no value strictly between 1 and 3   [x^2-xy+y^2 = 2 has no integer solution (discriminant -3)]
+A8  arithmetic of the construction
+  ok   ELL*sqrt2 < 1
+  ok   ELL/sqrt2 <= EPS   [ELL/sqrt2=0.00707107  EPS=0.00710000]
+  ok   P0 is interior to the colour-0 hexagon of the origin
+  ok   all four corners of W lie in the colour-0 hexagon of the origin
+A9  an instantiation: the middle-thirds Cantor dust inside W
+  ok   disks pairwise disjoint (exact, in Q(sqrt3))   [84 disks]
+      debug first offender: (229/13200, 229/13200, Fraction(1, 9600)) <class 'hexgeo.Q3'> <class 'fractions.Fraction'> 0.0008333333333333334 0.00010416666666666667
+  FAIL every disk lies in the interior of W (exact)   [84 offences]
+  ok   total radius is finite: sum_n 4^n * 3^-n / (400*8) converges   [sum(level<=4) = 0.001713]
+Traceback (most recent call last):
+  File "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfycxze/m3/verify.py", line 413, in <module>
+    run_checks()
+  File "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfycxze/m3/verify.py", line 371, in run_checks
+    c2 = cf(x + ex, y + ey)
+         ^^^^^^^^^^^^^^^^^^
+  File "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfycxze/m3/verify.py", line 360, in cf
+    m, n = nearest_lattice((px, py))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/.ultramath/smwfycxze/m3/hexgeo.py", line 240, in nearest_lattice
+    raise ValueError(("point location failed", p, best))
+ValueError: ('point location failed', (17637/50000, 39293/31250), ((1963803769/2500000000+-27637/62500s), 2, 2))

@@ -1,0 +1,149 @@
+{
+  "at": "2026-11-14T10:51:35.443Z",
+  "packetAudits": [
+    {
+      "id": "witness-selection-v4",
+      "sha256": "3ff5d5c86fd49e4252e2fbbbcd8fc05e6c909c165cb98d62f47da399f608a569",
+      "passed": true,
+      "axioms": [
+        {
+          "name": "WitnessSelection.pickAt_lt",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "name": "WitnessSelection.stepF_lt",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "name": "WitnessSelection.sel_bound",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "name": "WitnessSelection.sel_tendsto",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "name": "WitnessSelection.exists_strictAnti_scale",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "name": "WitnessSelection.exists_strictAnti_scale'",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "signature-equivalence-r5",
+      "sha256": "bbc58eac177e99a2ad26b8f6b89473692f5cfadf992c06e638769c54814b4323",
+      "passed": true,
+      "axioms": [
+        {
+          "name": "OAI.SignatureCheck.baseline_finite_uniform_precision_contradiction",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "name": "OAI.SignatureCheck.baseline_ambient_uniform_precision_contradiction",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "name": "OAI.SignatureCheck.baseline_finite_iff",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "name": "OAI.SignatureCheck.baseline_ambient_iff",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "signature-fresh-r5",
+      "sha256": "b0853a037a55d465a80606a711b4e3d2ca56d251a53b2415befbe362a98e455a",
+      "passed": true,
+      "axioms": [
+        {
+          "name": "OAI.SignatureFresh.control_finite",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "name": "OAI.SignatureFresh.fresh_finite",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "name": "OAI.SignatureFresh.control_ambient",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "name": "OAI.SignatureFresh.fresh_ambient",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    }
+  ],
+  "baselinePredicatesWhitespaceNormalizedEqual": {
+    "finite": true,
+    "ambient": true
+  },
+  "publicStatementHeadersWhitespaceNormalizedEqual": {
+    "finite": true,
+    "ambient": true,
+    "baselineFinite": true,
+    "baselineAmbient": true
+  },
+  "scope": "Exact copied baseline predicates, definitional equality, preserved textual public hypotheses and fresh-context applications. Compilation/standard-axiom audits supplement source comparison; not a new plane bound."
+}

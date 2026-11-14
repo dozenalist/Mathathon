@@ -1,0 +1,9 @@
+d10 structured-substitute rigidity. Files (in .ultramath/smwfcr56i/m10/): rigidity.md (all proofs), verify_rigidity.py, verify_rigidity.log (17/17 PASS). Check: python3 verify_rigidity.py
+
+1) BLACK BOX ELIMINATED (§7 connected-set exclusion): if C ⊆ R^2 is CONNECTED with no pair at distance exactly 1, then diam C <= 1; hence for unit-free U and K ⊆ U connected, z ∈ U: NOT (inf_{q∈K}|z-q| < 1 < sup|z-q|). Proof: (x,y)->|x-y| is continuous on connected C x C, so its image is an interval containing 0 and any value >1, hence 1. Sharp: the open disc B(0,1/2) is unit-free of diameter exactly 1; closed connected unit-free sets have diameter < 1. Also in R^n and for forbidden-distance sets D with inf D = 1.
+
+2) NO-GO for every finite k (a fortiori 6): (a) classes with finitely many components cannot cover R^2 (kills semialgebraic, o-minimal definable, finite-union-of-convex colourings); (b) invariant under a LINE of translations; (c) radial. Sharp: countably many connected unit-free Borel classes DO cover (half-open squares of side 1/2); Lemma 8 proves the §1 hexagonal 7-colouring boundary-correctly with closed classes (exact: (sqrt21-2)*2/5>1 iff 84>81; |2-omega|^2=7).
+
+3) COUNTEREXAMPLE to "unit-free + Baire => meager": B(0,1/2); the correct form needs U ∩ (U-u) nonempty for a unit u, so category gives no finite bound.
+
+4) SHARP CONSTANT: a measurable unit-independent A ⊆ S^1 has angular measure <= pi, attained; footnote 1's example attains only pi/3.

@@ -1,0 +1,38 @@
+{
+ "3": {
+  "O_k": 0,
+  "all_top_size": 0,
+  "max_top_size_count": 0,
+  "top_size": 0
+ },
+ "4": {
+  "O_k": 732,
+  "all_top_size": 732,
+  "max_top_size_count": 6,
+  "top_size": 1
+ },
+ "5": {
+  "O_k": 225590,
+  "all_top_size": 990,
+  "max_top_size_count": 6,
+  "top_size": 2
+ },
+ "6": {
+  "O_k": 10581680,
+  "all_top_size": 20,
+  "max_top_size_count": 6,
+  "top_size": 3
+ },
+ "7": {
+  "O_k": 294272482,
+  "all_top_size": 0,
+  "max_top_size_count": 3,
+  "top_size": 4
+ },
+ "8": {
+  "O_k": 6750365146,
+  "all_top_size": 0,
+  "max_top_size_count": 3,
+  "top_size": 5
+ }
+}

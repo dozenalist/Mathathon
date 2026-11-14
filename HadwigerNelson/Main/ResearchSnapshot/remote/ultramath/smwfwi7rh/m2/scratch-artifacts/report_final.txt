@@ -1,0 +1,23 @@
+AUDIT of the k=6 palette layer (d10). Not a resolution of (W).
+
+Theorem R (new). At k=6, at a typical centre whose Gamma_x has a cycle, the nine palette conditions
+used by the sprint ((SA),(PB),(T),(EDG),(SIN),(SA2),(C1),(C2),(MON)) are EQUIVALENT, on the
+admissible alphabet, to (T) alone: consecutive R-orbit palettes disjoint. The five extras are
+theorems ((MON) is vacuous since a ternary palette pins both neighbours). So the single-centre
+layer's content is (PB)+(EDG)+(T), and the four orbit rows are exactly tr(A^6) =
+70194/11888/18746/2164/3720/380/510, by three independent exact procedures; dropping (EDG) gives
+446960 for every ell, tightening |P|<=2 gives 150 at ell=6.
+
+Paper Lemma 8.9 and Table 1 verified exactly in Q(sqrt3,sqrt11); printed (8.6) is ambiguous, one
+reading fails (8.4) at 3 of 7 vertices. alpha<1/6 in section 7 is exactly optimal; the cover lemma
+sharpens to "inradius > mesh", and (W) with R>1 needs its DISK form, not a square form.
+
+Frontier correction (confirms d18/m1): (5.3) at centre distance 1 gives P_{x+a}(f) cap P_x(f) =
+empty (Remark 5.3), not an instance of the (P3) the countermodels satisfy (|z-z'| <= d_0), so every
+palette countermodel in the record is inadmissible and REPORT 4-5's frontier is superseded. Seven
+errata.
+
+Files .ultramath/smwfwi7rh/m2/: AUDIT.md, certify_orbit.py, certify_8_9.py, calibrate_k5.py. Check:
+cd there; python3 certify_orbit.py && python3 certify_8_9.py && python3 calibrate_k5.py (~85 s).
+
+Not done: paper sections 2-4; m3's k>=7 construction (d4's object); k6_orbit_count.lean UNCHECKED.

@@ -1,0 +1,1712 @@
+OK   OAI.Analysis.PlaneSpectrum.Basic [0.0s]
+FAIL OAI.Analysis.PlaneSpectrum.DifferenceLaw [3.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/DifferenceLaw.lean:8:43: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+OK   OAI.Analysis.PlaneSpectrum.Fourier [0.0s]
+FAIL OAI.Analysis.PlaneSpectrum.InvariantMean [8.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:195:17: error(lean.unknownIdentifier): Unknown identifier `atTop`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:199:2: error: Type mismatch
+  Ultrafilter.of_le ?m.7
+has type
+  ↑(Ultrafilter.of ?m.7) ≤ ?m.7
+but is expected to have type
+  ↑(averagingUF G) ≤ atTop
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:202:13: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  (fun i => approx i f)
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:218:4: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  (fun i => approx i f)
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:222:8: error(lean.unknownIdentifier): Unknown identifier `Tendsto.limUnder_eq`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:223:2: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:227:8: error(lean.unknownIdentifier): Unknown identifier `Tendsto.limUnder_eq`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:228:2: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:232:8: error(lean.unknownIdentifier): Unknown identifier `Tendsto.limUnder_eq`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:233:2: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:239:16: error: Invalid projection: Type of
+  i
+is not known; cannot resolve projection `1`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:239:27: error: Invalid projection: Type of
+  i
+is not known; cannot resolve projection `2`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:237:67: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+f : G →ᵇ ℝ
+hf : ∀ (x : G), 0 ≤ f x
+⊢ 0 ≤ mean f
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/InvariantMean.lean:242:
+FAIL OAI.Analysis.PlaneSpectrum.NumberFields [6.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:231:22: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:255:14: error(lean.unknownIdentifier): Unknown identifier `conj`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:255:62: error: unsolved goals
+N : IntermediateField ℚ ℂ
+hi : Complex.I ∈ N
+a : ↥(realSlice N)
+⊢ sorry () = 1 - Complex.I * ↑↑a
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:413:18: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:438:4: error: Function expected at
+  conj
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  z
+
+Hint: The identifier `conj` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:450:17: error: unsolved goals
+case algebraMap
+x✝ : Sort u_1
+conj : x✝
+s : Finset ℂ
+z : ℂ
+r : ℚ
+⊢ sorry () ∈ generatedField s
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:454:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/NumberFields.lean:459:6: warning: declaration uses `sorry`
+
+FAIL OAI.Analysis.PlaneSpectrum.PhaseEncoding [4.7s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean:7:35: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean:9:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/PhaseEncoding.lean:10:43: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+FAIL OAI.Analysis.PlaneSpectrum.SmallArcs [3.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SmallArcs.lean:12:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SmallArcs.lean:13:43: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+OK   OAI.Geometry.PlaneColoring.Assembly [0.0s]
+OK   OAI.Geometry.PlaneColoring.Basic [0.0s]
+OK   OAI.Geometry.PlaneColoring.Coloring [0.0s]
+OK   OAI.Geometry.PlaneColoring.Covering [0.0s]
+FAIL OAI.Geometry.PlaneColoring.Expansion [5.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Expansion.lean:6:31: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Expansion.lean:25:55: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Expansion.lean:25:57: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Expansion.lean:28:20: error: unsolved goals
+f' : ℝ → ℝ
+K : sorry
+a b e : ℝ
+hlip : LipschitzWith sorry f'
+_hab : a ≤ b
+he : sorry * (b - a) ≤ e
+hmid : 1 + e ≤ f' ((a + b) / 2)
+t : ℝ
+ht : t ∈ Icc a b
+hdist : |t - (a + b) / 2| ≤ (b - a) / 2
+h : |f' t - f' ((a + b) / 2)| ≤ ↑sorry * |t - (a + b) / 2|
+⊢ 1 + e / 2 ≤ f' t
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Expansion.lean:35:54: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Expansion.lean:35:56: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Expansion.lean:38:31: error: unsolved goals
+f f' : ℝ → ℝ
+K : sorry
+a b e : ℝ
+hd : ∀ (x : ℝ), HasDerivAt f (f' x) x
+hlip : LipschitzWith sorry f'
+hab : a ≤ b
+he : sorry * (b - a) ≤ e
+hmid : 1 + e ≤ f' ((a + b) / 2)
+t : ℝ
+ht : t ∈ interior (Icc a b)
+⊢ 1 + e / 2 ≤ f' t
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Expansion.lean:49:31: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Expansion.lean:75:41: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synt
+OK   OAI.Geometry.PlaneColoring.Lattice [0.0s]
+OK   OAI.Geometry.PlaneColoring.Moser [0.0s]
+FAIL OAI.MeasureTheory.CompactFactors.Amenability [5.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Amenability.lean:7:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+FAIL OAI.MeasureTheory.CompactFactors.Centers [4.7s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:7:35: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:9:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:10:43: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Centers.lean:11:31: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+OK   OAI.Analysis.PlaneSpectrum.Characters [0.0s]
+OK   OAI.Analysis.PlaneSpectrum.CircleDecay [0.0s]
+FAIL OAI.Analysis.PlaneSpectrum.PhaseCollision [6.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:7:35: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:9:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:10:43: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:235:35: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:238:35: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+OK   OAI.Analysis.PlaneSpectrum.Selections [0.0s]
+FAIL OAI.Geometry.PlaneColoring.BinaryDynamics [8.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:334:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:337:9: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:337:11: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:387:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BinaryDynamics.lean:499:67: error: unsolved goals
+δ : ℝ
+hδ : δ > 0
+hctrl :
+  ∀ (d : ℝ),
+    0 < d →
+      d < δ →
+        ∃ C L,
+          0 < C ∧
+            0 < L ∧
+              C * d ≤ L / 2 ∧
+                (∀ (n : ℕ) (t : ℝ), 1 / 2 ≤ 1 + d * binaryB d (t + ↑n * (Real.pi / 3))) ∧
+                  (∀ (n : ℕ) (t : ℝ), 1 + d * binaryB d (t + ↑n * (Real.pi / 3)) ≤ 2) ∧
+                    (∀ (n : ℕ), LipschitzWith (d * C).toNNReal fun t => 1 + d * binaryB d (t + ↑n * (Real.pi / 3))) ∧
+                      (∀ (t : ℝ), ∃ n, 1 + d / 8 ≤ 1 + d * binaryB d (t + ↑n * (Real.pi / 3))) ∧
+                        (∀ (t : ℝ), ∃ n, t + d / 8 ≤ binaryConjugate d n t) ∧
+                          (∀ (n : ℕ) (t : ℝ), binaryConjugate d n t ≤ t + C * d) ∧ d * C * L ≤ d / 8 ∧ d < 1 / 2
+d : ℝ
+hd : 0 < d
+hdδ : d < δ
+A : Set ℝ
+hA : MeasurableSet A
+hper : ∀ (n : ℤ) (x : ℝ), x + ↑n * (2 * Real.pi) ∈ A ↔ x ∈ A
+halt : ∀ᵐ (x : ℝ), x + Real.pi / 3 ∈ A ↔ x ∉ A
+hF : ∀ᵐ (x : ℝ), x ∈ A ↔ binaryCircleMap d x ∈ A
+C L : ℝ
+hC : 0 < C
+hL : 0 < L
+hB : C * d ≤ L / 2
+hlo : ∀ (n : ℕ) (t : ℝ), 1 / 2 ≤ 1 + d * binaryB d (t + ↑n * (Real.pi / 3))
+hhi : ∀ (n : ℕ) (t : ℝ), 1 + d * binaryB d (t + ↑n * (Real.pi / 3)) ≤ 2
+hLip : ∀ (n : ℕ), LipschitzWith (d * C).toNNReal fun t => 1 + d * binaryB d (t + ↑n * (Real.pi / 3))
+hlarge : ∀ (t : ℝ), ∃ n, 1 + d / 8 ≤ 1 + d * binaryB d (t + ↑n * (Real.pi / 3))
+hadvance : ∀ (t : ℝ), ∃ n, t + d / 8 ≤ binaryConjugate d n t
+hdispl : ∀ (n : ℕ) (t : ℝ), binaryConjugate d n t ≤ t + C * d
+hKL : d * C * L ≤ d / 8
+hda : d < 1 / 2
+hdd : |d| < 1 / 2
+hder : ∀ (n : ℕ) (t : ℝ), HasDerivAt (binaryConjugate d n) (1 + d * binaryB d (t + ↑n * (Real.pi / 3))) t
+hinv : ∀ (n : ℕ), ∀ᵐ (x : ℝ), x ∈ A ↔ binaryConjugate d n x ∈ A
+⊢ False
+
+FAIL OAI.Geometry.PlaneColoring.CircleMaps [6.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleMaps.lean:6:31: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleMaps.lean:51:50: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleMaps.lean:51:52: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleMaps.lean:51:108: error: unsolved goals
+r : ℝ
+p : RealPlane
+h : r * Real.sin (p.2 - p.1) ≠ 0
+L : RealPlane ≃L[ℝ] RealPlane := circleSumDerivEquiv h
+hd : HasStrictFDerivAt (circleSum r) (↑L) p
+s : Set RealPlane
+hp : p ∈ s
+hs : IsOpen s
+ha : ApproximatesLinearOn (circleSum r) (↑L) s (‖↑L.symm‖₊⁻¹ / 2)
+⊢ ∃ s, IsOpen s ∧ p ∈ s ∧ ∃ K, AntilipschitzWith sorry (s.domRestrict (circleSum r))
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleMaps.lean:116:31: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleMaps.lean:150:12: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleMaps.lean:150:14: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleMaps.lean:176:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/
+OK   OAI.Geometry.PlaneColoring.Metric [0.0s]
+FAIL OAI.Geometry.PlaneColoring.WeakColoring [3.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/WeakColoring.lean:6:41: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/WeakColoring.lean:17:42: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/WeakColoring.lean:33:55: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/WeakColoring.lean:33:37: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Fintype ℂ
+
+Hint: Adding the command `deriving instance Fintype for Complex` may allow Lean to derive the missing instance.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/WeakColoring.lean:33:37: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  Fintype ℂ
+
+Hint: Adding the command `deriving instance Fintype for Complex` may allow Lean to derive the missing instance.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/WeakColoring.lean:32:60: error: unsolved goals
+case hc
+T : Type u_1
+inst✝² : TopologicalSpace T
+inst✝¹ : MeasurableSpace T
+μ : Measure T
+inst✝ : μ.IsOpenPosMeasure
+d : T → ℂ
+hd : Continuous[inst✝², _] d
+f : ↥PlaneL2
+hf : ∀ᵐ (x : ℂ), 0 ≤ ↑↑f x
+ho : ∀ᵐ (t : T) ∂μ, ∀ᵐ (x : ℂ), ↑↑f x * ↑↑f (x + d t) = 0
+⊢ sorry
+
+T : Type u_1
+inst✝² : TopologicalSpace T
+inst✝¹ : MeasurableSpace T
+μ : Measure T
+inst✝ : μ.IsOpenPosMeasure
+d : T → ℂ
+hd : Continuous[inst✝², _] d
+f : ↥PlaneL2
+hf : ∀ᵐ (x : ℂ), 0 ≤ ↑↑f x
+ho : ∀ᵐ (t : T) ∂μ, ∀ᵐ (x : ℂ), ↑↑f x * ↑↑f (x + d t) = 0
+hc : sorry
+⊢ ∀ (t : T), ∀ᵐ (x : ℂ), ↑↑f x * ↑↑f (x + d t) = 0
+
+FAIL OAI.MeasureTheory.CompactFactors.RelativeCenters [4.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:8:35: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:10:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:11:43: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean:12:31: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+FAIL OAI.Analysis.PlaneSpectrum.Multipliers [6.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Multipliers.lean:13:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+FAIL OAI.Geometry.PlaneColoring.CircleTransport [7.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleTransport.lean:68:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleTransport.lean:92:12: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleTransport.lean:92:14: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleTransport.lean:94:44: error: Type mismatch: After simplification, term
+  have this := p.property;
+  this
+ has type
+  Real.sin ((↑p).2 - (↑p).1) ≠ 0
+but is expected to have type
+  ?m.189 * Real.sin (?m.190.2 - ?m.190.1) ≠ 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleTransport.lean:115:20: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleTransport.lean:115:22: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/CircleTransport.lean:84:94: error: unsolved goals
+μ : Measure RealPlane
+inst✝¹ : IsFiniteMeasure μ
+inst✝ : μ.InnerRegularCompactLTTop
+hμ : μ ≤ volume
+r : ℕ → ℝ
+y : ℕ → RealPlane
+x : RealPlane
+hr : Tendsto r atTop (𝓝 1)
+hy : Tendsto y atTop (𝓝 x)
+f : RealPlane → ℝ
+hf : Measurable f
+hfb : ∀ (z : RealPlane), 0 ≤ f z ∧ f z ≤ 1
+T : ℕ → RealPlane → RealPlane := fun n q => y n + circleSum (r n) q
+S : RealPlane → RealPlane := fun q => x + circleSum 1 q
+hT : ∀ (n : ℕ), Measurable (T n)
+hS : Measurable S
+R : Set RealPlane := {p | Real.sin (p.2 - p.1) ≠ 0}
+V : ↑R → Set RealPlane
+hVo : ∀ (p : ↑R), IsOpen (V p)
+hpV : ∀ (p : ↑R), ↑p ∈ V p
+K : ↑R → sorry
+hK : ∀ (p : ↑R), AntilipschitzWith sorry ((V p).domRestrict (circleSum 1))
+hfull : ∀ᵐ (q : RealPlane) ∂μ, q ∈ ⋃ p, V p
+p : ↑R
+B : Set RealPlane := Metric.closedBall x 4
+ν : Measure RealPlane := volume.restrict B
+hB : MeasurableSet B
+this : IsFiniteMeasure ν :=
+  {
+    measure_univ_lt_top :=
+      Eq.mpr
+        (id
+          (congrFun'
+            (congrArg LT.lt
+              (Eq.trans (Measure.restrict_apply (of_eq_true MeasurableSet.univ._simp_1))
+                (congrArg (⇑volume) (univ_inter B))))
+            ⊤))
+        (IsCom
+FAIL OAI.Geometry.PlaneColoring.Compactness [9.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Compactness.lean:6:27: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Compactness.lean:12:66: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Compactness.lean:16:62: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Compactness.lean:38:41: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Compactness.lean:47:39: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Compactness.lean:57:39: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Compactness.lean:66:43: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Compactness.lean:77:63: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Compactness.lean:131:27: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Compactness.lean:141:53: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Compactness.lean:150:75: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Compactness.lean:155:67: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Compactness.lean:163:41: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix
+OK   OAI.Geometry.PlaneColoring.Seven [0.0s]
+FAIL OAI.MeasureTheory.CompactFactors.ConditionalSelection [6.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:7:35: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:9:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:10:43: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalSelection.lean:11:31: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+FAIL OAI.MeasureTheory.CompactFactors.DifferenceInvariant [5.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/DifferenceInvariant.lean:8:43: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/DifferenceInvariant.lean:70:62: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+OK   OAI.Analysis.PlaneSpectrum.CircleOperator [0.0s]
+FAIL OAI.Analysis.PlaneSpectrum.FourierTests [3.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/FourierTests.lean:13:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+FAIL OAI.Analysis.PlaneSpectrum.ConditionalSpectrum [12.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:9:35: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:11:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:12:43: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:13:31: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:23:30: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:161:30: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean:242:62: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+OK   OAI.Geometry.PlaneColoring.Transitions [0.0s]
+FAIL OAI.Geometry.PlaneColoring.Palettes [5.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Palettes.lean:50:41: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Palettes.lean:54:27: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Palettes.lean:59:43: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Palettes.lean:62:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Palettes.lean:78:57: warning: This simp argument is unused:
+  sample_inner_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Function.comp_apply, traceValue_sampleCode] at ht
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Palettes.lean:80:4: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Palettes.lean:86:4: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Palettes.lean:79:4: warning: Unused tactic linter: `rw [inner_oneL2_integral] at ht` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Palettes.lean:80:4: warning: Unused tactic linter: `have ht' : Tendsto (fun n => colorMass c a (q n)) atTop (𝓝 0) :=
+  by
+  apply squeeze_zero (fun n => colorMass_nonneg c a (q n)) (fun n => ?_) tendsto_one_div_add_atTop_nhds_zero_nat
+  rcases ha with rfl | rfl
+  · exact (le_add_of_nonneg_right (colorMass_nonneg c j (q n))).trans (hq n).2.2.le
+  · exact (le_add_of_nonneg_left (colorMass_nonneg c i (q n))).trans (hq n).2.2.le` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Palettes.lean:86:4: warning: Unused tactic linter: `exact tendsto_nhds_unique ht (ht'.comp hφ.tendsto_atTop)` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+
+FAIL OAI.MeasureTheory.CompactFactors.Approximation [8.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Approximation.lean:9:35: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Approximation.lean:11:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Approximation.lean:12:43: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Approximation.lean:13:31: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Approximation.lean:226:62: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+FAIL OAI.Geometry.PlaneColoring.PaletteDensity [4.7s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean:171:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean:177:68: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean:177:70: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean:194:2: error: Tactic `assumption` failed
+
+F : ℝ × ℝ → ℝ × ℝ
+s : Set (ℝ × ℝ)
+K : sorry
+hF : LipschitzWith sorry (s.domRestrict F)
+A : Set (ℝ × ℝ)
+hA : A ⊆ s
+B : Set ↑s := Subtype.val ⁻¹' A
+he1 : s.domRestrict F '' B = F '' A
+he2 : Subtype.val '' B = A
+hi : volume A = μH[2] B
+ha : volume (F '' A) ≤ ↑sorry ^ 2 * volume A
+⊢ volume (F '' A) ≤ sorry ^ 2 * volume A
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean:224:11: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean:224:11: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean:224:13: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean:224:13: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteDensity.lean:226:59: error: unsolved goals
+D s : Set (ℝ × ℝ)
+p : ℝ × ℝ
+F : ℝ × ℝ → ℝ × ℝ
+K : sorry
+L : sorry
+hD : FlatDensityZero D p
+
+FAIL OAI.MeasureTheory.CompactFactors.ConditionalLimits [12.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:7:35: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:9:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:10:43: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:11:31: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:166:62: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:203:62: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:244:62: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean:454:62: error: unexpected identifie
+FAIL OAI.Geometry.PlaneColoring.PaletteTransport [6.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteTransport.lean:141:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteTransport.lean:145:72: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteTransport.lean:145:74: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PaletteTransport.lean:217:28: error: don't know how to synthesize placeholder
+context:
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+hw : WeakColoring k c
+x z : ℂ
+t u a : ℝ
+h : Real.sin (u - t) ≠ 0
+he : circleTarget (samplingParameter x z 1, a) = circleSum 1 (t, u)
+ha : Real.sin (a - u) ≠ 0
+P : Set CircleParameter
+I : Set ℝ
+hP : IsOpen P
+hp : samplingParameter x z 1 ∈ P
+hI : IsOpen I
+haI : a ∈ I
+hIa : I ⊆ Ioc (a - Real.pi) (a - Real.pi + 2 * Real.pi)
+K : NNReal
+hA : ∀ q ∈ P, AntilipschitzWith K (I.domRestrict fun v => circleEndpoint h (q, v))
+hB :
+  ∀ q ∈ P,
+    ∀ v ∈ I,
+      circleTarget (q, v) ∈ (circleInverseHomeo h).target ∧
+        Real.sin ((circleInverse h (circleTarget (q, v))).2 - (circleInverse h (circleTarget (q, v))).1) ≠ 0 ∧
+          circleEndpoint h (q, v) ∈ Metric.closedBall t 1
+i : Fin k
+⊢ ∀ᵐ (f : ℝ) ∂volume.restrict I,
+    f ∈ liftPalette c hc z i → circleEndpoint h (samplingParameter x z 1, f) ∉ liftPalette c hc x i
+
+FAIL OAI.MeasureTheory.CompactFactors.Kernels [9.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Kernels.lean:7:35: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Kernels.lean:9:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Kernels.lean:10:43: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Kernels.lean:11:31: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Kernels.lean:237:60: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Kernels.lean:366:60: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+OK   OAI.Geometry.PlaneColoring.BinaryPalettes [0.0s]
+OK   OAI.Geometry.PlaneColoring.Rigidity [0.0s]
+FAIL OAI.MeasureTheory.CompactFactors.BoundedFunctions [12.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:6:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:13:39: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:13:41: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:15:37: error: unsolved goals
+X : Type u_1
+inst✝ : MeasurableSpace X
+⊢ ∀ (x : X), sorry ()
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:14:38: error: unsolved goals
+X : Type u_1
+inst✝ : MeasurableSpace X
+⊢ ∀ (x : X), sorry ()
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:30:58: error: Invalid projection: Projection operates on types of the form `C ...` where C is a constant. The expression
+  f.property
+has type
+  (algebra X).toSubsemigroup.1 ↑f
+which does not have the necessary form.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:32:25: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:32:27: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:32:32: error: Invalid projection: Projection operates on types of the form `C ...` where C is a constant. The expression
+  f.property
+has type
+  (algebra X).toSubsemigroup.1 ↑f
+which does not have the necessary form.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean:33:62: error: Invalid projection: Projection operates on types of the form `C ...` where C is a constant. The expression
+  f.property
+has type
+  (algebra X).toSubsemigroup.1 ↑f
+which does not have the necessary form.
+/workspace/nucleus/work/projects
+FAIL OAI.MeasureTheory.CompactFactors.Functions [13.5s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Functions.lean:7:35: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Functions.lean:9:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Functions.lean:10:43: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Functions.lean:11:31: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Functions.lean:750:60: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+FAIL OAI.Geometry.PlaneColoring.States [21.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/States.lean:386:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/States.lean:391:37: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/States.lean:391:39: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/States.lean:398:63: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/States.lean:388:6: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/States.lean:445:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/States.lean:466:31: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/States.lean:466:33: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/States.lean:542:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_ru
+FAIL OAI.MeasureTheory.CompactFactors.Factors [16.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:7:35: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:9:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:10:43: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Factors.lean:11:31: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+FAIL OAI.MeasureTheory.CompactFactors.RelativeProducts [16.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:8:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean:78:50: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+FAIL OAI.Geometry.PlaneColoring.BoundaryTrace [5.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:7:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:76:67: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:110:37: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:147:10: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BoundaryTrace.lean:312:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+
+OK   OAI.Geometry.PlaneColoring.Converse [0.0s]
+FAIL OAI.Geometry.PlaneColoring.FourContinuity [5.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:69:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:99:37: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:109:63: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:144:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:152:60: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:217:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:232:41: error: Application type mismatch: The argument
+  hc
+has type
+  Measurable c
+but is expected to have type
+  WeakColoring 5 c
+in the application
+  @four_weak_limit_identify c hc
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:226:104: error: unsolved goals
+c : ℂ → Fin 5
+hc : Measurable c
+hw : WeakColoring 5 c
+x : ℕ → ℂ
+y : ℂ
+hx : ∀ (n : ℕ), FourCenter c (x n)
+hy : FourCenter c y
+hxt : Tendsto x atTop (𝓝 y)
+f : Fin 3 → ↥(RealL2 angularMeasure)
+φ : ℕ → ℕ
+hφ : StrictMono φ
+left✝¹ : ∀ (i : Fin 3), ‖f i‖ ≤ 1
+hf :
+  ∀ (i : Fin 3) (v : ↥(RealL2 angularMeasure)),
+    Tendsto (fun n => inner ℝ (fourStateL2 c hc (x (φ n)) i) v) atTop (𝓝 (inner ℝ (f i) v))
+b : ℕ → Fin 4 → TraceVector 5
+hb : ∀ (n : ℕ) (e : Fin 4), IsTrace c hc (x (φ n)) (b n e)
+hz : ∀ (n : ℕ) (e : Fin 4), ∀ i ∈ fourEdge e, traceValue (b n e) i = 0
+a : Fin 4 → TraceVector 5
+left✝ : a ∈ univ
+ψ : ℕ → ℕ
+hψ : StrictMono ψ
+ha : Tendsto (b ∘ ψ) atTop (𝓝 a)
+⊢ ∃ φ, StrictMono φ ∧ ∀ (s : Fin 3), Tendsto (fun n => fourStateDistance c hc (x (φ n)) y s) atTop (𝓝 0)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourContinuity.lean:262:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708
+FAIL OAI.MeasureTheory.CompactFactors.Separability [10.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:7:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Separability.lean:502:25: error(lean.unknownIdentifier): Unknown identifier `condDistrib`
+
+FAIL OAI.MeasureTheory.CompactFactors.Stationary [8.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:8:25: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:15:36: error: elaboration function for `Mathlib.Tactic.superscriptTerm` has not been implemented
+  ᵇ
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:19:47: error: Application type mismatch: The argument
+  t
+has type
+  A → X → X
+but is expected to have type
+  C(?m.10, ℝ)
+in the application
+  inner t
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:21:28: error: elaboration function for `Mathlib.Tactic.superscriptTerm` has not been implemented
+  ᵇ
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:23:73: error(lean.unknownIdentifier): Unknown identifier `inner_norm`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:24:44: error: Application type mismatch: The argument
+  t
+has type
+  A → X → X
+but is expected to have type
+  C(?m.11, ℝ)
+in the application
+  outer t
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:26:89: error: Application type mismatch: The argument
+  t
+has type
+  A → X → X
+but is expected to have type
+  C(?m.24, ℝ)
+in the application
+  inner t
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:28:83: error: Application type mismatch: The argument
+  t
+has type
+  A → X → X
+but is expected to have type
+  C(?m.15, ℝ)
+in the application
+  inner t
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:30:77: error: Application type mismatch: The argument
+  t
+has type
+  A → X → X
+but is expected to have type
+  C(?m.21, ℝ)
+in the application
+  outer t
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:34:73: error: Application type mismatch: The argument
+  t
+has type
+  A → X → X
+but is expected to have type
+  C(?m.13, ℝ)
+in the application
+  outer t
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:37:35: error: Function expected at
+  average ?m.10
+but this term has type
+  ℝ
+
+Note: Expected a function because this term is being applied to the argument
+  r
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:37:58: error: Function expected at
+  average ?m.15
+but this term has type
+  ℝ
+
+Note: Expected a function because this term is being applied to the argument
+  r
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/Stationary.lean:37:77: error: Function expected at
+  average ?m.20
+but this term has type
+  ℝ
+
+Note: Expected a function because this term is being applied to the argument
+  r
+/workspace/nucleus
+FAIL OAI.Geometry.PlaneColoring.AngularBoundary [22.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:139:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:157:59: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:170:57: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:213:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:239:62: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:246:60: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:257:47: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:277:45: error: expected token
+
+FAIL OAI.Geometry.PlaneColoring.FourTransport [6.1s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourTransport.lean:6:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourTransport.lean:30:11: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourTransport.lean:30:13: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourTransport.lean:80:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourTransport.lean:101:31: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourTransport.lean:101:33: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourTransport.lean:127:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourTransport.lean:135:31: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FourTransport.lean:135:33: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+
+FAIL OAI.MeasureTheory.CompactFactors.AlgebraModels [15.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:7:32: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:148:66: error: invalid binder annotation, type is not a class instance
+  ?m.7
+
+Note: Use the command `set_option checkBinderAnnotations false` to disable the check
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:162:64: error: invalid binder annotation, type is not a class instance
+  ?m.7
+
+Note: Use the command `set_option checkBinderAnnotations false` to disable the check
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:174:64: error: Invalid projection: Type of
+  z
+is not known; cannot resolve projection `1`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:174:12: error: Function expected at
+  condDistrib
+but this term has type
+  ?m.10
+
+Note: Expected a function because this term is being applied to the argument
+  id
+
+Hint: The identifier `condDistrib` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:176:6: error(lean.unknownIdentifier): Unknown identifier `Kernel.prod_apply`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:174:75: error: unsolved goals
+X : Type u_1
+Y : Type u_2
+inst✝⁶ : MeasurableSpace X
+inst✝⁵ : MeasurableSpace Y
+inst✝⁴ : StandardBorelSpace X
+inst✝³ : Nonempty X
+inst✝² : StandardBorelSpace Y
+inst✝¹ : Nonempty Y
+μ : Measure X
+inst✝ : IsProbabilityMeasure μ
+q : X → Y
+hq : Measurable q
+x✝ : Sort u_3
+condDistrib : x✝
+y : Y
+hy : ∀ᵐ (x : X) ∂(ProbabilityTheory.condDistrib id q μ) y, q x = y
+⊢ ∀ᵐ (z : ?m.41 y) ∂?m.22, q sorry = y
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:182:8: error(lean.unknownIdentifier): Unknown identifier `map_mixture`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:185:4: error: Function expected at
+  condDistrib
+but this term has type
+  ?m.10
+
+Note: Expected a function because this term is being applied to the argument
+  id
+
+Hint: The identifier `condDistrib` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/MeasureTheory/CompactFactors/AlgebraModels.lean:186:7: error: Function expected at
+  condDistrib
+but this term has type
+  ?m.10
+
+
+FAIL OAI.Analysis.PlaneSpectrum.Representations [18.3s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:7:50: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:130:25: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:149:21: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:149:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:291:41: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:298:37: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:298:39: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Representations.lean:299:68: error: unsolved goals
+A : Type u_1
+X : Type u_2
+inst✝² : AddCommGroup A
+inst✝¹ : TopologicalSpace A
+inst✝ : MeasurableSpace X
+μ : Measure X
+U : Multiplicative A →* ↥(unitary (↥(Lp ℂ 2 μ) →L[ℂ] ↥(Lp ℂ 2 μ)))
+s : A → X → X
+hs : ∀ (a : A), MeasurePreserving (s a) μ μ
+hU : ∀ (a : A) (v : ↥(Lp ℂ 2 μ)), (op U a) v = (Lp.compMeasurePreserving (s a) ⋯) v
+F : ℂ → ℂ
+c : sorry
+hF : LipschitzWith sorry F
+h0 : F 0 = 0
+v : ↥(Lp ℂ 2 μ)
+hv : v ∈ space
+FAIL OAI.Geometry.PlaneColoring.Exclusion [14.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Exclusion.lean:91:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Exclusion.lean:93:93: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Exclusion.lean:94:80: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Exclusion.lean:137:34: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Exclusion.lean:134:28: error: Application type mismatch: The argument
+  hh
+has type
+  angularSign v t i = true
+but is expected to have type
+  decide (0 < inner ℝ (direction t) (v i)) = true
+in the application
+  of_decide_eq_true hh
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Exclusion.lean:157:10: error(lean.unknownIdentifier): Unknown identifier `angularSign_opposite`
+
+FAIL OAI.Geometry.PlaneColoring.Interfaces [7.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:35:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:38:28: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:41:29: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:73:34: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:71:28: error: Application type mismatch: The argument
+  (Finset.mem_filter.mp hi).right
+has type
+  fourInterfaceSign v t i = true
+but is expected to have type
+  decide (0 < inner ℝ (direction t) (v i)) = true
+in the application
+  of_decide_eq_true (Finset.mem_filter.mp hi).right
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:184:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:187:29: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:193:18: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:216:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:287:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:290:29: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:300:29: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Interfaces.lean:311:42: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/r
+FAIL OAI.Geometry.PlaneColoring.Sectors [9.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:7:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:16:60: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:35:40: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:64:42: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:81:45: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:88:51: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:133:42: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:155:34: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:194:25: error(lean.unknownIdentifier): Unknown identifier `triple_orthogonal_cover`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Sectors.lean:194:9: error: Tactic `rcases` failed: `x✝ : ?m.43` is not an inductive datatype
+
+FAIL OAI.Analysis.PlaneSpectrum.Energy [24.7s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:20:13: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  (fun i => approxAt b i f)
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:21:48: error(lean.unknownIdentifier): Unknown identifier `b`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:26:36: error(lean.unknownIdentifier): Unknown identifier `b`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:28:40: error(lean.unknownIdentifier): Unknown identifier `b`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:36:4: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  (fun i => approxAt b i f)
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:37:42: error(lean.unknownIdentifier): Unknown identifier `b`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:40:8: error(lean.unknownIdentifier): Unknown identifier `Tendsto.limUnder_eq`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:41:2: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:45:8: error(lean.unknownIdentifier): Unknown identifier `Tendsto.limUnder_eq`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:46:2: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:50:8: error(lean.unknownIdentifier): Unknown identifier `Tendsto.limUnder_eq`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:51:2: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:56:38: error: Application type mismatch: The argument
+  b
+has type
+  Finset G × ℕ → G
+but is expected to have type
+  ?m.29 →ᵇ ℝ
+in the application
+  tendsto_approx b
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Energy.lean:55:71: error: unsolved goals
+G : Type u_1
+inst✝² : AddCommGroup G
+inst✝¹ : TopologicalSpace G
+inst✝ : DiscreteTopology G
+b : Finset G × ℕ → G
+f : G →ᵇ ℝ
+hf : ∀ (x : G), 0 ≤ f x
+⊢ 0 ≤ meanAt b f
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f6
+FAIL OAI.Analysis.PlaneSpectrum.SpectralMeasure [19.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:6:25: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:13:83: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:35:98: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:58:25: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:62:14: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:64:44: error: Type mismatch
+  MemLp.coeFn_toLp ?m.35
+has type
+  ↑↑(MemLp.toLp ?m.34 ?m.35) =ᵐ[?m.32] ?m.34
+but is expected to have type
+  ↑↑(mulLp μ f g) =ᵐ[μ] fun x => ↑f x * ↑↑g x
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:166:25: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:197:36: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:200:41: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:210:41: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:282:30: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:281:13: error(lean.unknownIdentifier): Unknown identifier `cyclicMap_pair_one`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean:279:44: error: unsolved goals
+H : Type u_1
+inst✝² : NormedAddCommGroup H
+inst✝¹ : Inn
+OK   OAI.Geometry.PlaneColoring.Accumulation [0.0s]
+FAIL OAI.Analysis.PlaneSpectrum.RadialEnergy [13.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:39:69: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:117:69: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:340:69: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:344:63: error: Function expected at
+  conj
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  ((kCoeff (rotMul g) : E) : ℂ)
+
+Hint: The identifier `conj` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:351:50: error: unsolved goals
+case a
+r : ↥F
+g : Rot
+⊢ (↑(kCoeff (rotMul g))).re * ↑r + ↑r * (sorry ()).re = (↑(kCoeff (rotMul g))).re * ↑r * 2
+
+case a
+r : ↥F
+g : Rot
+⊢ (↑(kCoeff (rotMul g))).im * ↑r + (sorry ()).im * ↑r = 0
+
+r : ↥F
+g : Rot
+⊢ Sort ?u.78
+
+r : ↥F
+g : Rot
+⊢ ?m.88
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:370:32: error: elaboration function for `Mathlib.Tactic.superscriptTerm` has not been implemented
+  ᵇ
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:382:17: error: Application type mismatch: The argument
+  μ
+has type
+  Measure D
+but is expected to have type
+  ↥F
+in the application
+  radiusFamily μ
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:385:24: error: Application type mismatch: The argument
+  μ
+has type
+  Measure D
+but is expected to have type
+  ↥F
+in the application
+  radiusFamily μ
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/RadialEnergy.lean:386:25: error: Application ty
+FAIL OAI.Geometry.PlaneColoring.DiskAverages [6.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean:8:22: error: Function expected at
+  Measure
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  ℂ
+
+Hint: The identifier `Measure` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean:9:3: error(lean.unknownIdentifier): Unknown identifier `volume`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean:9:37: error(lean.unknownIdentifier): Unknown identifier `volume.restrict`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean:11:3: error(lean.unknownIdentifier): Unknown identifier `Measure.restrict_le_self`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean:12:47: error: Function expected at
+  IsProbabilityMeasure
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (diskLaw ε)
+
+Hint: The identifier `IsProbabilityMeasure` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean:13:2: error: Tactic `constructor` failed: target is not an inductive datatype
+
+x✝ : Sort u_1
+IsProbabilityMeasure : x✝
+ε : ℝ
+hε : 0 < ε
+⊢ sorry
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean:26:21: error: invalid binder annotation, type is not a class instance
+  ?m.8
+
+Note: Use the command `set_option checkBinderAnnotations false` to disable the check
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean:32:4: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean:35:29: error(lean.unknownIdentifier): Unknown identifier `integral_nonneg`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean:38:10: error: don't know how to synthesize implicit argument `IsProbabilityMeasure`
+  @diskLaw_probability ?m.16 ?m.17 ε ⋯
+context:
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+ε : ℝ
+hε : 0 < ε
+i : Fin k
+q : ℂ
+⊢ ?m.16
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean:38:10: error: don't know how to synthesize implicit argument
+  @diskLaw_probability ?m.16 ?m.17 ε ⋯
+context:
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+ε : ℝ
+hε : 0 < ε
+i : Fin k
+q : ℂ
+⊢ Sort ?u.21
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskAverages.lean:37:51: error: unsolved goals
+k : ℕ
+c : ℂ → Fin k
+hc : Measurable c
+ε : ℝ
+hε : 0 < ε
+i : Fin k
+q : ℂ
+⊢ diskAverage c ε i q ≤ 1
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd
+OK   OAI.Geometry.PlaneColoring.FiveSupport [0.0s]
+FAIL OAI.Analysis.PlaneSpectrum.Ergodicity [9.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:9:69: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:65:41: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:69:64: error: elaboration function for `Mathlib.Tactic.superscriptTerm` has not been implemented
+  ᵇ
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:122:48: error: elaboration function for `Mathlib.Tactic.superscriptTerm` has not been implemented
+  ᵇ
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:134:41: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:166:36: error(lean.invalidField): Invalid field `exists_finite_approx`: The environment does not contain `OAI.EuclideanFiveColor.Amenable.Mean.exists_finite_approx`, so it is not possible to project the field `exists_finite_approx` from an expression
+  M
+of type `Amenable.Mean G`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:166:2: error: expected a term of the shape `∀ xs, ∃ a, p xs a` or `∀ xs, p xs ∧ q xs`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:358:25: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:389:35: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Analysis/PlaneSpectrum/Ergodicity.lean:402:33: error: expected token
+
+OK   OAI.Geometry.PlaneColoring.CyclicCore [0.0s]
+FAIL OAI.Geometry.PlaneColoring.PlanarCovers [5.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:6:15: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:31:29: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:13:10: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:13:12: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:15:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  LE Type
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:15:69: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  OfNat Type 0
+numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+  Type
+due to the absence of the instance above
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:15:85: error: unsolved goals
+X : Type u_1
+inst✝ : MetricSpace X
+A : Set X
+hA : TotallyBounded A
+ρ : ℝ
+hρ : 0 < ρ
+e : sorry := sorry
+⊢ ¬?m.65 = 0
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:354:10: error(lean.unknownIdentifier): Unknown identifier `mem_iUnion.mpr`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:359:62: error(lean.unknownIdentifier): Unknown identifier `mem_univ`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:381:10: error(lean.unknownIdentifier): Unknown identifier `mem_iUnion.mpr`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:384:11: error(lean.unknownIdentifier): Unknown identifier `mem_iUnion.mp`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/PlanarCovers.lean:384:48: error: Tactic `rcases` failed: `x✝ : ?m.105` is not an inductive datatype
+
+FAIL OAI.Geometry.PlaneColoring.BorelTransfer [5.9s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:7:41: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:29:77: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:59:73: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:98:27: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:117:27: error(lean.unknownIdentifier): Unknown identifier `conj`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:115:62: error: unsolved goals
+z : ↥E
+hz : IsAlgebraic ℚ ↑z
+⊢ IsAlgebraic ℚ ↑‖↑z‖
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:124:27: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:150:50: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:197:41: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:231:48: error: expected token
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:244:58: error: unexpected identifier; expected '[', 'add_aesop_rules', 'binder_predicate', 'builtin_cbv_simproc', 'builtin_dsimproc', 'builtin_simproc', 'cbv_simproc', 'def_eval_config_item', 'dsimproc', 'elab', 'elab_rules', 'grind_pattern', 'infix', 'infixl', 'infixr', 'instance', 'macro', 'macro_rules', 'notation', 'notation3', 'postfix', 'prefix', 'simproc', 'syntax' or 'unif_hint'
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/BorelTransfer.lean:279:68: error: expected token
+/workspace/n
+FAIL OAI.Geometry.PlaneColoring.GraphRealization [4.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:93:40: error(lean.unknownIdentifier): Unknown identifier `Icc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:109:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:110:23: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:110:35: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:110:23: warning: Unused tactic linter: `norm_num` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:110:35: warning: Unused tactic linter: `simp` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:112:20: error: Function expected at
+  Icc
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (0 : ℝ)
+
+Hint: The identifier `Icc` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:114:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:114:64: warning: Variable name `h` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _h
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:117:2: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:117:2: warning: Unused tactic linter: `exact ⟨i, j, hij.imp id (fun hh => h hh), t, ht, rfl⟩` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:118:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphRealization.lean:119:5: warning: Variable name `hp` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [a
+FAIL OAI.Geometry.PlaneColoring.ContinuumLimits [3.7s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean:51:4: error: Function expected at
+  LocallyIntegrable
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (colorFn c i)
+
+Hint: The identifier `LocallyIntegrable` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean:53:52: error(lean.unknownIdentifier): Unknown identifier `Eventually.of_forall`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean:60:14: error(lean.unknownIdentifier): Unknown identifier `measurePreserving_add_left`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean:56:75: error: unsolved goals
+inst✝ : MeasurableSpace ℂ
+volume : MeasureTheory.Measure ℂ
+k : ℕ
+c : ℂ → Fin k
+ε : ℝ
+i : Fin k
+q : ℂ
+he : (fun v => q + v) ⁻¹' Metric.ball q ε = Metric.ball 0 ε
+⊢ diskAverage c ε i q = ⨍ (z : ℂ) in Metric.ball q ε, colorFn c i z ∂volume
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean:67:4: error: typeclass instance problem is stuck
+  MeasureTheory.OuterMeasureClass ?m.1 ℂ
+
+Note: Lean will not try to resolve this typeclass instance problem because the first and third type arguments to `MeasureTheory.OuterMeasureClass` are metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean:72:22: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  ε
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean:73:22: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (fun n => diskAverage c (ε n) i z)
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/ContinuumLimits.lean:74:13: error: Function expected at
+  Tendsto
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the a
+FAIL OAI.Geometry.PlaneColoring.DiskExtension [4.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:105:39: error(lean.unknownIdentifier): Unknown constant `HasSubset.Subset.rfl`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:142:73: error(lean.unknownIdentifier): Unknown constant `HasSubset.Subset.rfl`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:236:16: error(lean.unknownIdentifier): Unknown identifier `IsQuotientMap.of_surjective_continuous`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:224:66: error: unsolved goals
+Y : Type u
+inst✝¹ : TopologicalSpace Y
+inst✝ : ContractibleSpace Y
+c : ℂ
+r : ℝ
+hr : 0 < r
+f : C(↑(Metric.sphere c r), Y)
+this : CompactSpace ↑(Metric.sphere c r) := isCompact_iff_compactSpace.mp (isCompact_sphere c r)
+a : Y
+H : (ContinuousMap.id Y).Homotopy (ContinuousMap.const Y a)
+F : C(↑unitInterval × ↑(Metric.sphere c r), Y) := H.comp (ContinuousMap.fst.prodMk (f.comp ContinuousMap.snd))
+hf : Function.FactorsThrough ⇑F ⇑(diskCone c hr)
+⊢ ∃ g, ∀ (z : ↑(Metric.sphere c r)), g ⟨↑z, ⋯⟩ = f z
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:279:60: error: Function expected at
+  Icc
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (0 : ℝ)
+
+Hint: The identifier `Icc` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:378:21: error(lean.unknownIdentifier): Unknown identifier `graphLeafMove_mem`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:393:4: error(lean.unknownIdentifier): Unknown identifier `graphLeafMove_mem`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:415:50: error(lean.unknownIdentifier): Unknown identifier `mem_singleton_iff`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:479:58: error: Type mismatch
+  univ
+has type
+  ?m.1
+but is expected to have type
+  Set X
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:491:24: error: Function expected at
+  closedCoverMap
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  S
+
+Hint: The identifier `closedCoverMap` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:488:58: error: Type mismatch
+  univ
+has type
+  ?m.1
+but is expected to have type
+  Set X
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/DiskExtension.lean:508:23: error(lean.unknownIdentifier): Un
+OK   OAI.Geometry.PlaneColoring.Transfer [0.0s]
+FAIL OAI.Geometry.PlaneColoring.GraphCuts [3.2s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:78:54: error(lean.unknownIdentifier): Unknown identifier `Icc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:79:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:95:6: warning: declaration uses `sorry`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:105:56: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:105:75: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:105:56: warning: Unused tactic linter: `linarith [ht.2]` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:105:75: warning: Unused tactic linter: `linarith` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:117:81: error(lean.unknownIdentifier): Unknown identifier `Icc`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:125:21: error(lean.unknownIdentifier): Unknown identifier `univ`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:126:10: error(lean.unknownIdentifier): Unknown identifier `iUnion_eq_univ_iff.mpr`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:127:10: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:159:20: error: Function expected at
+  Icc
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (0 : ℝ)
+
+Hint: The identifier `Icc` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:187:4: error(lean.unknownIdentifier): Unknown identifier `graphCut_lerp_mem`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:231:10: error(lean.unknownIdentifier): Unknown identifier `disjoint_left.mpr`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:232:10: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphCuts.lean:243:10: error(lean.unknownIdentifier): Unknown identifier `disjoint_left.mpr`
+/workspace/nucl
+FAIL OAI.Geometry.PlaneColoring.HoleApproximation [3.6s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:130:16: error(lean.unknownIdentifier): Unknown identifier `mem_iUnion.mpr`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:157:21: error(lean.unknownIdentifier): Unknown identifier `mem_iUnion.mp`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:157:11: error: Tactic `rcases` failed: `x✝ : ?m.675` is not an inductive datatype
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:163:21: error(lean.unknownIdentifier): Unknown identifier `mem_iUnion.mp`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:163:11: error: Tactic `rcases` failed: `x✝ : ?m.703` is not an inductive datatype
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:218:4: error: Function expected at
+  volume
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (diskAnnulus d)
+
+Hint: The identifier `volume` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:225:6: error: Failed to rewrite using equation theorems for `diskAnnulus`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:233:4: error: Function expected at
+  volume
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (holeAnnuli S)
+
+Hint: The identifier `volume` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:235:4: error: Function expected at
+  volume
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (holeAnnuli S)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:235:31: error: Function expected at
+  volume
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (diskAnnulus d)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:235:57: error(lean.unknownIdentifier): Unknown identifier `measure_biUnion_finset_le`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/HoleApproximation.lean:236:52: error: unsolved goals
+x✝ : Sort u_1
+volume : x✝
+S : Finset MarkedDisk
+hS : ∀ d ∈ S, 0 ≤ d.radius ∧ d.radius ≤ 1
+d : MarkedDisk
+hd : d ∈ S
+⊢ sorry = ENNReal.ofReal (4 * Real.pi * d.radius)
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/
+FAIL OAI.Geometry.PlaneColoring.GraphPatches [2.8s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphPatches.lean:16:25: error: Function expected at
+  EqOn
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  g
+
+Hint: The identifier `EqOn` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphPatches.lean:16:53: error: Function expected at
+  EqOn
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  g
+
+Hint: The identifier `EqOn` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphPatches.lean:28:19: error(lean.unknownIdentifier): Unknown identifier `univ`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphPatches.lean:29:10: error(lean.unknownIdentifier): Unknown identifier `iUnion_eq_univ_iff.mpr`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphPatches.lean:30:10: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphPatches.lean:82:10: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case refine_1
+x✝ : Sort u_1
+EqOn : x✝
+X : Type u
+Y : Type v
+inst✝³ : TopologicalSpace X
+inst✝² : TopologicalSpace Y
+inst✝¹ : NormalSpace X
+D : Set Y
+inst✝ : ContractibleSpace ↑D
+f : C(X, Y)
+A B : Set X
+hA : IsClosed[inst✝³] A
+hB : IsClosed[inst✝³] B
+hd : Disjoint A B
+hg : ∀ x ∉ A, x ∉ B → f x ∈ D
+t : C(X, ℝ)
+htB : Set.EqOn (⇑t) 0 B
+htA : Set.EqOn (⇑t) 1 A
+ht : ∀ (x : X), t x ∈ Set.Icc 0 1
+a : ↑D
+H : (ContinuousMap.id ↑D).Homotopy (ContinuousMap.const (↑D) a)
+S : Fin 3 → Set X := ![{x | t x ≤ 1 / 3}, {x | 1 / 3 ≤ t x ∧ t x ≤ 2 / 3}, {x | 2 / 3 ≤ t x}]
+hS : ∀ (i : Fin 3), IsClosed[inst✝³] (S i)
+hc : ⋃ i, S i = sorry
+hgood : ∀ (x : ↑(S 1)), f ↑x ∈ D
+hτmem : ∀ (x : ↑(S 1)), 3 * t ↑x - 1 ∈ unitInterval
+τ : C(↑(S 1), ↑unitInterval) := { toFun := fun x => ⟨3 * t ↑x - 1, ⋯⟩, continuous_toFun := ⋯ }
+φ₁ : C(↑(S 1), Y) := { toFun := fun x => ↑(H (τ x, ⟨f ↑x, ⋯⟩)), continuous_toFun := ⋯ }
+φ : (i : Fin 3) → C(↑(S i), Y) :=
+  fun i =>
+    Fin.cases (ContinuousMap.restrict (S 0) f)
+      (fun j => Fin.cases φ₁ (fun j => ContinuousMap.const ↑(S j.succ.succ) ↑a) j) i
+h01 : ∀ (x : X) (h0 : x ∈ S 0) (h1 : x ∈ S 1), (φ 0) ⟨x, h0⟩ = (φ 1) ⟨x, h1⟩
+h12 : ∀ (x : X) (h1 : x ∈ S 1) (h2 : x ∈ S 2), (φ 1) ⟨x, h1⟩ = (φ 2) ⟨x, h2⟩
+hφ : ∀ (i j : Fin 3) (x : X) (hi : x ∈ S i) (hj : x ∈ S j), (φ i) ⟨x, hi⟩ = (φ j) ⟨x, hj⟩
+⊢ sorry
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/GraphPatches.lean:85:10: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce
+
+case refine_2
+x✝ : Sort u_1
+EqOn : x✝
+X : Type u
+Y : Type v
+inst✝³ : TopologicalSpace X
+inst✝² : TopologicalSpace Y
+inst✝¹ : NormalSpace X
+D : Set Y
+inst✝ : ContractibleSpace ↑D
+f : C(X, Y)
+A B : Set X
+hA : IsClosed[inst✝³] A
+hB : IsClosed[inst✝³] B
+hd : Disjoint A B
+hg
+FAIL OAI.Geometry.PlaneColoring.FullApproximation [3.0s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FullApproximation.lean:14:10: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  r
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FullApproximation.lean:14:39: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  ε
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FullApproximation.lean:15:28: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (fun n => volume (E n))
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FullApproximation.lean:18:43: error: Function expected at
+  NonemptyCompacts
+but this term has type
+  ?m.2
+
+Note: Expected a function because this term is being applied to the argument
+  ℂ
+
+Hint: The identifier `NonemptyCompacts` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FullApproximation.lean:64:10: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  r
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/FullApproximation.lean:64:39: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  ε
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f6
+FAIL OAI.Geometry.PlaneColoring.Mesh [2.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Mesh.lean:39:22: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  ε
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Mesh.lean:40:10: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  a
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Mesh.lean:42:9: error(lean.unknownIdentifier): Unknown identifier `Measure.mem_support_iff_forall`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Mesh.lean:43:8: error: No goals to be solved
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Mesh.lean:72:40: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  t
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Mesh.lean:73:4: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (fun n => (a n).ε)
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Mesh.lean:76:40: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  t
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Mesh.lean:77:4: error: Function expected at
+  Tendsto
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (fun n => volume (holeAnnuli (a n).disks))
+
+Hint: The identifier `Tendsto` is unknown, and Lean's `autoImplicit` op
+FAIL OAI.Geometry.PlaneColoring.Five [2.4s]
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Five.lean:108:12: error(lean.unknownIdentifier): Unknown identifier `Tendsto`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Five.lean:112:21: error(lean.unknownIdentifier): Unknown identifier `atTop`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Five.lean:115:5: error(lean.unknownIdentifier): Unknown identifier `Eventually.of_forall`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Five.lean:117:25: error(lean.unknownIdentifier): Unknown identifier `extraction_of_frequently_atTop`
+/workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/sprint/simplify/r1/m7/lean/OAI/Geometry/PlaneColoring/Five.lean:117:9: error: Tactic `rcases` failed: `x✝ : ?m.186` is not an inductive datatype
+
+OK   OAI.Geometry.PlaneColoring.Chromatic [2.4s]
+OK   OAI.Geometry.PlaneColoring.NullSetRobust [0.0s]
+
+24/82 modules OK in 249s (j=3); sum of module times 488s
+FAILED: OAI.Analysis.PlaneSpectrum.DifferenceLaw, OAI.Analysis.PlaneSpectrum.InvariantMean, OAI.Analysis.PlaneSpectrum.NumberFields, OAI.Analysis.PlaneSpectrum.PhaseEncoding, OAI.Analysis.PlaneSpectrum.SmallArcs, OAI.Geometry.PlaneColoring.Expansion, OAI.MeasureTheory.CompactFactors.Amenability, OAI.MeasureTheory.CompactFactors.Centers, OAI.Analysis.PlaneSpectrum.PhaseCollision, OAI.Geometry.PlaneColoring.BinaryDynamics, OAI.Geometry.PlaneColoring.CircleMaps, OAI.Geometry.PlaneColoring.WeakColoring, OAI.MeasureTheory.CompactFactors.RelativeCenters, OAI.Analysis.PlaneSpectrum.Multipliers, OAI.Geometry.PlaneColoring.CircleTransport, OAI.Geometry.PlaneColoring.Compactness, OAI.MeasureTheory.CompactFactors.ConditionalSelection, OAI.MeasureTheory.CompactFactors.DifferenceInvariant, OAI.Analysis.PlaneSpectrum.FourierTests, OAI.Analysis.PlaneSpectrum.ConditionalSpectrum, OAI.Geometry.PlaneColoring.Palettes, OAI.MeasureTheory.CompactFactors.Approximation, OAI.Geometry.PlaneColoring.PaletteDensity, OAI.MeasureTheory.CompactFactors.ConditionalLimits, OAI.Geometry.PlaneColoring.PaletteTransport, OAI.MeasureTheory.CompactFactors.Kernels, OAI.MeasureTheory.CompactFactors.BoundedFunctions, OAI.MeasureTheory.CompactFactors.Functions, OAI.Geometry.PlaneColoring.States, OAI.MeasureTheory.CompactFactors.Factors, OAI.MeasureTheory.CompactFactors.RelativeProducts, OAI.Geometry.PlaneColoring.BoundaryTrace, OAI.Geometry.PlaneColoring.FourContinuity, OAI.MeasureTheory.CompactFactors.Separability, OAI.MeasureTheory.CompactFactors.Stationary, OAI.Geometry.PlaneColoring.AngularBoundary, OAI.Geometry.PlaneColoring.FourTransport, OAI.MeasureTheory.CompactFactors.AlgebraModels, OAI.Analysis.PlaneSpectrum.Representations, OAI.Geometry.PlaneColoring.Exclusion, OAI.Geometry.PlaneColoring.Interfaces, OAI.Geometry.PlaneColoring.Sectors, OAI.Analysis.PlaneSpectrum.Energy, OAI.Analysis.PlaneSpectrum.SpectralMeasure, OAI.Analysis.PlaneSpectrum.RadialEnergy, OAI.Geometry.PlaneColoring.DiskAverages, OAI.Analysis.PlaneSpectrum.Ergodicity, OAI.Geometry.PlaneColoring.PlanarCovers, OAI.Geometry.PlaneColoring.BorelTransfer, OAI.Geometry.PlaneColoring.GraphRealization, OAI.Geometry.PlaneColoring.ContinuumLimits, OAI.Geometry.PlaneColoring.DiskExtension, OAI.Geometry.PlaneColoring.GraphCuts, OAI.Geometry.PlaneColoring.HoleApproximation, OAI.Geometry.PlaneColoring.GraphPatches, OAI.Geometry.PlaneColoring.FullApproximation, OAI.Geometry.PlaneColoring.Mesh, OAI.Geometry.PlaneColoring.Five

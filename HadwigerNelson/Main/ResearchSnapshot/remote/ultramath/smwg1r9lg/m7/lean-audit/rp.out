@@ -1,0 +1,4 @@
+'Repair31.no_proper_two_colouring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Repair31.rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Repair31.no_two_valued_sector_field' depends on axioms: [propext, Quot.sound]
+TIME 1.16 s

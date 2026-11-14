@@ -1,0 +1,21 @@
+lean/OAI: 83 modules, 31277 lines
+MeasureTheory.CompactFactors: 14 modules, 7728 lines
+Analysis.PlaneSpectrum: 19 modules, 8466 lines
+
+Geometry.PlaneColoring.BorelTransfer          closure  32 modules,  15974 lines
+    CompactFactors in closure: 14 modules, 7728 lines
+    PlaneSpectrum   in closure: 16 modules, 7754 lines
+    transfer-only part (closure minus closure of Ergodicity): 2 modules, 492 lines
+
+Geometry.PlaneColoring.WeakColoring           closure   2 modules,    210 lines
+    CompactFactors in closure: 0 modules, 0 lines
+    PlaneSpectrum   in closure: 0 modules, 0 lines
+
+Analysis.PlaneSpectrum.Ergodicity             closure  30 modules,  15482 lines
+    CompactFactors in closure: 14 modules, 7728 lines
+    PlaneSpectrum   in closure: 16 modules, 7754 lines
+
+rigidity chain:
+  Analysis.PlaneSpectrum.Basic                735 lines   IsWild, wild_coset_null
+  Analysis.PlaneSpectrum.Ergodicity           415 lines   wild_fourier, finite_wild_fourier, residual_fourier
+  Geometry.PlaneColoring.BorelTransfer        458 lines   projected_unit_correlation, proper_to_weak

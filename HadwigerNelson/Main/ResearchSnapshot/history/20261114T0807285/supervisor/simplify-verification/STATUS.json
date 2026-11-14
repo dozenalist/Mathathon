@@ -1,0 +1,119 @@
+{
+ "updated_utc": "2026-11-14T07:43:57Z",
+ "status": "completed_block",
+ "summary": "Block 5: audited the exact paper application of FiveCycleResidues and found the pairing ill-typed - RETRACTED. The five-cycle data live on two copies of Z/5Z: vertex labels k (with D_i={i,i+2}) and state indices i (with S(a), P_j={j-1,j+2}, {0,1}, {2,4}). The correct compatible pair is g(k)=3-k and h(i)=1-i, tied by g(D_i)=D(h(i)) (check: {3-i,1-i}={1-i,3-i}). The map I had used, k->1-k, induces the state map i->4-i, which does NOT send P_1 to P_4 - so the old pairing could not support step 5 at all, even though all nine finite statements were true. Fixed: FiveCycleResidues.lean rewritten with both levels, the commuting identity g_induces_h, the guard lemma one_minus_k_induces_four_minus_i, and the per-condition transport written out in the header (V via label_transport, D trivial, N via h(i+1)=h i - 1, anchor and pair24 fixed setwise, P_1 <-> P_4). AUDIT-FIVE-CYCLE.md got a block-5 retraction banner 0b, corrected 4a/4b, and a new 4c. New finite fact: validity at positions 0 AND 1 alone already gives 0 solutions, so the repair needs only (NC-1) - not (V3), not four positions; this corroborates the angular worker's 'two positions suffice' as a finite fact while showing it presupposes (NC-1). FIVE-CYCLE-CORE remains WITHHELD: stronger finite theorem compiling + moser_recheck.log (standard axioms, rc 0) is remote evidence about those artefacts, not an application to \u00a76.3.4. Recorded that the connected-set check needs Mathlib.Analysis.Normed.Group.Uniform (ContinuousSub). No Lean built, one <1 s computation.",
+ "verified_results": [
+  {
+   "claim": "The five pairs {j-1,j+2} reduce to j=1 and j=4; the excluded residues collide at an exhibited label",
+   "grade": "written, not compiled (all `by decide`, closed over Fin 5 / ZMod 5); independently confirmed earlier by checks/five_cycle_licence.py",
+   "status": "source delivered, build queued as item 6"
+  },
+  {
+   "claim": "The topology substitution is not integrated: zero references to paper_lemma_7_5 / compact_cover_obstruction_gen anywhere in lean/",
+   "grade": "exact rg over lean/",
+   "status": "confirmed"
+  },
+  {
+   "claim": "The earliest analytic interface upstream of the cover obstruction is FullApprox.agrees (FullApproximation.lean:255-265), discharged by fullApprox_exists (:330) via fullApprox_exists_of_finite_core (:268); paper sources Lemmas 7.4 and 7.8",
+   "grade": "source-read [S]; proof body not audited",
+   "status": "identified, not verified"
+  },
+  {
+   "claim": "straddle_connected_unit is a proved lemma (AngularBoundary.lean:156), so the connected-straddling/Fubini step is compiled",
+   "grade": "source-read",
+   "status": "confirmed (existence), content not audited"
+  },
+  {
+   "claim": "graph_map_small_mesh_impossible's mesh hypothesis is not assumed in the end: graph_map_large_positive (Five.lean:94) splits the argument, and Mesh.no_large_positive_sequence covers the other branch",
+   "grade": "source-read",
+   "status": "confirmed"
+  },
+  {
+   "claim": "RETRACTION: the single-map reflection used in blocks 3-4 was ill-typed; the compatible pair is (vertex g(k)=3-k, state h(i)=1-i)",
+   "grade": "hand check + previously computed list-level data; Lean source written, unbuilt",
+   "status": "retracted then corrected",
+   "detail": "g(D_i) = {3-i, 3-i-2} = {3-i,1-i} = D_{1-i}. The old map 1-k gives D_i -> {1-i,4-i} = D_{4-i}, and 4-i sends P_1={0,3} to {4,1} != P_4={1,3}. All nine block-4 statements were true; the pairing was not."
+  },
+  {
+   "claim": "Transport of the list conditions along (g,h): (V) via k in D_i iff g k in D(h i); (D) as image of disjoint sets; (N) via h(i+1)=h i - 1; anchor {0,1} and {2,4} fixed setwise; P_1 <-> P_4",
+   "grade": "algebraic cores decidable and written (unbuilt); the set-level bookkeeping is stated in the file header",
+   "status": "corrected and formalised in source"
+  },
+  {
+   "claim": "Validity at positions 0 and 1 alone + (D)+(N)+(R) is already unsatisfiable, so the finite repair needs only (NC-1)",
+   "grade": "exact exhaustive computation (single process, <1 s)",
+   "status": "confirmed",
+   "detail": "validity sets {0,1}, {0,5}, {0,1,2}, {0,1,4}, {0,1,3} all give 0 solutions; the three-line proof is in AUDIT 4c. Position 3 (V3) is not needed."
+  },
+  {
+   "claim": "The angular worker's 'two positions suffice' is an (NC-1)-shaped assumption, not a supply of (NC-1)",
+   "grade": "deduction from the countermodel set",
+   "status": "confirmed",
+   "detail": "it uses S(1)={2,3,4}, which requires validity at position 1; without it the eight countermodels survive."
+  },
+  {
+   "claim": "FIVE-CYCLE-CORE stays withheld despite compiling; moser_recheck.log is remote evidence only",
+   "grade": "policy record; log read, not re-run",
+   "status": "recorded"
+  }
+ ],
+ "conjectures": [
+  {
+   "statement": "If FullApprox.agrees is derived at exactly the paper's strength (agreement off the holes, with the paper's threshold parameters), then \u00a77's compiled chain certifies \u00a77 up to Lemma 7.4/7.8 content only.",
+   "status": "open; needs a statement-level audit of FullApproximation.lean",
+   "grade": "projection"
+  },
+  {
+   "statement": "The six-step argument plus FiveCycleResidues covers every residue enumeration in \u00a76.3.4, so no further finite check is needed there if (NC-1) or the retained Lemma 6.7 is used.",
+   "status": "conditional on the build",
+   "grade": "conditional"
+  },
+  {
+   "statement": "With (g,h) fixed, the paper's residue split reduces to one count plus one state reflection, and every list condition transports - so no further relabelling check is needed in \u00a76.3.4.",
+   "status": "written, unbuilt",
+   "grade": "conditional on the local build of FiveCycleResidues.lean"
+  }
+ ],
+ "artifacts": [
+  "supervisor/simplify-verification/AUDIT-FIVE-CYCLE.md",
+  "supervisor/simplify-verification/INTERFACE-WALL.md",
+  "supervisor/simplify-verification/LOCAL-CHECK-QUEUE.json",
+  "supervisor/simplify-verification/NOTES.md",
+  "supervisor/simplify-verification/STATUS.json",
+  "supervisor/simplify-verification/TOPOLOGY-CONE-MANIFEST.json",
+  "supervisor/simplify-verification/TRANSFER-LEDGER.md",
+  "supervisor/simplify-verification/checks/five_cycle_licence.py",
+  "supervisor/simplify-verification/lean/CheckFifth.lean",
+  "supervisor/simplify-verification/lean/FiveCycleResidues.lean"
+ ],
+ "tests_run": [
+  {
+   "cmd": "python3 (single process, <1 s): five_cycle_licence with validity sets {0,1},{0,5},{0,1,2},{0,1,4},{0,1,3}",
+   "outcome": "all 0 solutions - validity at positions 0 and 1 alone suffices."
+  },
+  {
+   "cmd": "read supervisor/simplify-angular/moser_recheck.log and STATUS.json",
+   "outcome": "rc_moser=0; moser_edge_unit and moser_not_three_colorable reported with [propext, Classical.choice, Quot.sound]; rc_check=0. Remote evidence, not re-run."
+  },
+  {
+   "cmd": "Lean builds",
+   "outcome": "NONE (policy). FiveCycleResidues.lean revision is queue item 6, unbuilt."
+  }
+ ],
+ "failed_routes": [
+  "Seeking a countermodel with fewer than four relaxed positions: none exists (single relaxation already gives 0 solutions, and all eight relax all four).",
+  "Reading the drop-one runs as evidence of individual necessity: that is the reverse implication and is not established by them.",
+  "Treating the cover-obstruction substitution as an integration: it cannot be, because no module of lean/ imports supervisor/.",
+  "Expecting the mesh/diameter bound to be the \u00a77 gap: the Lean splits it into a dichotomy inside Five.lean, so it is not a hypothesis left open."
+ ],
+ "next_step": "Local serial queue: item 6 (FiveCycleResidues, smallest cone) then CheckFifth, then the 25-source cone, then the trim rebuild - note the connected-set item needs Mathlib.Analysis.Normed.Group.Uniform for ContinuousSub. Mathematical: (NC-1). Referee-facing text: AUDIT-FIVE-CYCLE.md 0b/4b/4c.",
+ "escalation": {
+  "obstacle": "(NC-1), restated precisely: at an accumulation point x of a specified five-cycle locus, with a = lim h_n/|h_n| and R the rotation acting on directions, the list S(R a) = {i : R a lies in the closed essential support of state i at x} has no common label, i.e. the intersection of the diagonals D_i over i in S(R a) is empty.",
+  "definitions": "D_i = {i, i+2} in Z/5Z; state i at x = the set of directions whose palette is exactly D_i; closed essential support S_i = the closed set whose every neighbourhood meets state i in positive measure; S(u) = {i : u in S_i}.",
+  "hypotheses_available": "(6.6) a.e. transition rule at x; closedness and finiteness of the five supports; no-common-label at a and -a from the endpoint pair (a_n^+, a_n^-) and 'y_n in H_k for every label'; (D) disjointness of adjacent position lists; (N) neighbour existence in both directions.",
+  "attempted": "direct transport of the printed zero-area endpoint argument (needs a partner direction whose sum lies near a centre with all five edges present; none exists at r=1); derivation from V0,V3,D,N (fails: 8 countermodels, all relaxing 1,2,4,5); single-position weakening (fails: one relaxation never gives a model).",
+  "expected_useful_output": "Either a proof of (NC-1) \u2014 then FIVE-CYCLE-CORE's five-step elimination of Lemma 6.7 stands as a real simplification \u2014 or a construction of an accumulation configuration realising S(1) = {2,4}, which would prove Lemma 6.7 is not removable by support-list combinatorics alone."
+ },
+ "recovery_note": "2026-11-14 post-outage reconciliation: no jobs running (the only background job, jmwfyybqo, exited 0 long before the outage and its result is recorded); every artifact re-read and hash-checked; nothing re-run or duplicated. Latest instruction (block 3) was already complete at 06:16Z.",
+ "handoff": "Corrected deliverable: lean/FiveCycleResidues.lean (two-level structure, g_induces_h, guard lemma, per-condition transport in the header; 14 decide theorems; unbuilt). AUDIT-FIVE-CYCLE.md now carries retraction banner 0b, corrected 4a/4b, new 4c ((NC-1) only), and NOTES.md 8 records why FIVE-CYCLE-CORE stays withheld. Preserved: 8 countermodels, Lemma 6.7 retained, TOPOLOGY-CONE-MANIFEST.json, INTERFACE-WALL.md, TRANSFER-LEDGER.md."
+}

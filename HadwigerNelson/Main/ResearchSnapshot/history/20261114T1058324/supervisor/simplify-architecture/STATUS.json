@@ -1,0 +1,48 @@
+{
+ "updated_utc": "2026-11-14T12:20:00Z",
+ "status": "completed_block",
+ "summary": "Block 14: isolated candidate for the duplicated norm_integral_sq, both public names preserved. Candidate: replace Kernels.lean:45-62 (18 lines, byte-identical to Fourier.lean:96-113) by a 5-line wrapper whose statement is reused verbatim and whose body is EuclideanFiveColor.ProbabilityL2.norm_integral_sq applied, plus one import. Measured file length 774 -> 762 = -12, not the -16 of the pure-deletion variant (which would break the public name) and not my earlier erroneous -17: 18 - 5 - 1 = 12. No call site changes, so three consumers are untouched. Import weight measured: Fourier imports Mathlib only (closure empty, so no cycle possible); the umbrella Mathlib is already imported by five modules in closure(Kernels), so Mathlib transit is unchanged and the OAI closure count stays 15; the real cost is that Fourier acquires 17 dependents. Recommendation: DEFER - a genuine fidelity win (one duplicated proof removed) but 0.04 percent of the tree and it couples a leaf into the measure-theory half mid-audit; do it when Kernels.lean is next opened, not as a sprint item. Includes patch, candidate copy, META with both SHA256s, import DAG, affected closure manifest and SmokeNames.lean with an rfl identity check. Nothing built; shared originals and R4 unchanged.",
+ "verified_results": [
+  "[verified here, mechanical] Duplication and design: Kernels.lean:45-62 and Fourier.lean:96-113 are both 18 lines and compare equal byte for byte; the candidate replaces the Kernels block by a 5-line wrapper reusing the statement verbatim (only ':= by' becomes ':='), so the public statement of KernelCompact.norm_integral_sq is unchanged to the character and the name survives: no API break, no call-site edit.",
+  "[verified here, mechanical] Measured line arithmetic: original 774 lines, candidate 762, net -12 (= -18 block +5 wrapper +1 import). The supervisor's correction is accepted: pure deletion is -16 (18-1-1) and my earlier -17 was wrong; the alias design costs 4 more lines than deletion and buys zero API change.",
+  "[verified here, mechanical] Import analysis: Fourier imports Mathlib only, closure(Fourier) is empty, and neither module previously reached the other, so the single edge Kernels -> Fourier cannot create a cycle; the umbrella Mathlib is already imported by five modules in closure(Kernels) (SmallArcs, InvariantMean, Centers, Basic, PhaseEncoding), so no new Mathlib transit and the OAI closure count stays 15; reverse closure after the change is 17 modules.",
+  "[verified here, mechanical] Artefacts and hashes: original Kernels.lean 8665ae62def8d70b..., candidate 050bb27408fa871c..., Fourier.lean unchanged 315079396f8612ab..., patch 680879c3b05869ca...; candidate copy stored under dedup-norm-integral-sq/OAI/MeasureTheory/CompactFactors/Kernels.lean with its diff alongside.",
+  "[verified here, mechanical] Frozen R4 and shared originals untouched: patched Spectrum d26d569088faea89..., patched Limits 24f89dd33533a0f6..., shared originals 6602b9d8.../ca74ba10..., shared Kernels.lean still 8665ae62def8d70b...",
+  "[reported externally, not re-run here] R4 affected closure passed all 82 modules locally; the 9-root axiom export check passed; the final detailed audit is in progress."
+ ],
+ "conjectures": [
+  "SmokeNames.lean's rfl identity (KernelCompact.norm_integral_sq = ProbabilityL2.norm_integral_sq applied) should hold by construction, since the wrapper body is literally that application; if it fails, the wrapper is not a definitional alias and the candidate should be redesigned as a plain deletion (-16) instead.",
+  "The candidate's only real value is fidelity: two byte-identical 18-line proofs that must stay in agreement is a latent inconsistency risk, which is worth removing the next time Kernels.lean is opened, but not worth a dedicated build cycle at 0.04 percent of the tree."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/dedup-norm-integral-sq/CANDIDATE.md (sha f86f0cf87a203b5c; design, measured arithmetic, import DAG, recommendation to defer, falsifiers)",
+  "supervisor/simplify-architecture/dedup-norm-integral-sq/0001-kernels-norm-integral-sq.patch (sha 680879c3b05869ca...)",
+  "supervisor/simplify-architecture/dedup-norm-integral-sq/OAI/MeasureTheory/CompactFactors/Kernels.lean (candidate copy, sha 050bb27408fa871c..., 762 lines)",
+  "supervisor/simplify-architecture/dedup-norm-integral-sq/META.json (original and candidate SHA256, block span, wrapper size, patch hash, consumer list, closure sizes)",
+  "supervisor/simplify-architecture/dedup-norm-integral-sq/affected.json (closure(Kernels) 15 modules, reverse closure 17 modules, umbrella-Mathlib importers, Fourier import list)",
+  "supervisor/simplify-architecture/dedup-norm-integral-sq/SmokeNames.lean (both names, statement identity, rfl proof-object identity, axioms for both names and the three consumers)",
+  "supervisor/simplify-architecture/NEXT-CANDIDATE.md (block-13 proposal, superseded in arithmetic by CANDIDATE.md but retained as the record)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "python3 (single process): block location and identity of the two copies, candidate generation, diff, import graph, closures -- under 0.1 s",
+   "outcome": "block 45-62 (18 lines) identical to Fourier 96-113; candidate 762 lines (-12); patch written; closure(Kernels) 15; reverse closure 17; five umbrella-Mathlib importers."
+  },
+  {
+   "cmd": "sha256sum on the candidate, the patch, the two read-only inputs and the two R4 outputs",
+   "outcome": "as recorded in META.json and STATUS; R4 and shared originals unchanged."
+  },
+  {
+   "cmd": "no Lean build, no cloud compute, no subagents, no messages",
+   "outcome": "candidate only; the smoke file is delivered for the local queue."
+  }
+ ],
+ "failed_routes": [
+  "My earlier -17 estimate was wrong (double-counted a blank line); the pure-deletion variant is -16 as corrected, and the name-preserving alias design is -12. Recorded so the three numbers are not confused later.",
+  "Variant 2 from the previous block (new leaf module OAI.Analysis.NormIntegralSq with both sides importing it) becomes line-neutral once both public names must be preserved (two 5-line wrappers plus a 24-line module against 36 deleted lines), so it is dropped on line count; it remains the principled option only if the two halves are ever separated.",
+  "Rejected: presenting the pure deletion (-16) as the candidate, because it breaks the public name EuclideanFiveColor.KernelCompact.norm_integral_sq and edits two call sites; name preservation was required and is worth the 4 lines.",
+  "Not attempted: no implementation in the shared tree, no rebuild, no bundling with R4, no new wildness or weak-mixing speculation."
+ ],
+ "next_step": "No action proposed for this sprint: the candidate is deferred by my own recommendation. If the supervisor disagrees, the order is: build the private tree from the R4 revision, apply 0001-kernels-norm-integral-sq.patch, rebuild the 17-module reverse closure, run SmokeNames.lean (expecting the rfl identity and clean axioms), and only then count -12 as verified. Otherwise keep it on file and apply it the next time Kernels.lean is opened for other work.",
+ "escalation": null
+}

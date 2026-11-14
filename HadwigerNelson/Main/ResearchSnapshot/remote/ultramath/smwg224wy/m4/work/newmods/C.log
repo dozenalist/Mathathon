@@ -1,0 +1,138 @@
+C.lean:81:6: error: Application type mismatch: The argument
+  Measurable.aemeasurable hq
+has type
+  AEMeasurable.{u_1, u_2} q ?m.266
+but is expected to have type
+  AEMeasurable.{u_1, u_1} id μ
+in the application
+  @condDistrib_comp X Y X ?m.250 ?m.251 ?m.252 inst✝⁶ μ ?m.254 id ?m.256 ?m.257 ?m.258 ?m.259 ?m.260 q
+    (Measurable.aemeasurable hq)
+C.lean:137:56: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsProbabilityMeasure (⇑(κ ×ₖ κ) ∘ₘ ν)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+C.lean:137:2: warning: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+C.lean:172:17: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+C.lean:227:6: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+C.lean:255:10: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+C.lean:272:8: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+C.lean:289:8: warning: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+C.lean:292:71: warning: `Set.compl_setOf` has been deprecated: Use `Set.compl_ofPred` instead
+C.lean:318:10: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsProbabilityMeasure ν
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+C.lean:311:66: error: unsolved goals
+X : Type u_1
+Y : Type u_2
+inst✝⁸ : MeasurableSpace X
+inst✝⁷ : MeasurableSpace Y
+inst✝⁶ : StandardBorelSpace X
+inst✝⁵ : Nonempty X
+inst✝⁴ : StandardBorelSpace Y
+inst✝³ : Nonempty Y
+inst✝² : MulAction (↥K) X
+μ : Measure X
+inst✝¹ : IsProbabilityMeasure μ
+q : X → Y
+hq : Measurable q
+d : X → D
+hd : Measurable d
+hde : ∀ (k : ↥K) (x : X), d (k • x) = k • d x
+ν : Measure Y := Measure.map q μ
+hν : ν = Measure.map q μ
+κ : Kernel Y X := condDistrib id q μ
+hκ : κ = condDistrib id q μ
+μR : Measure (X × X) := EuclideanFiveColor.RelativeProduct.law μ q hq
+inst✝ : ErgodicVAdd Rot (X × X) μR
+hdiag : ¬∀ᵐ (z : X × X) ∂μR, d z.1 = d z.2
+hμR : μR = EuclideanFiveColor.RelativeProduct.law μ q hq
+hmix : μR = ⇑(κ ×ₖ κ) ∘ₘ ν
+hμRp : IsProbabilityMeasure μR
+ratio : X × X → D := fun z => d z.1 / d z.2
+hratio : ratio = fun z => d z.1 / d z.2
+hratiom : Measurable ratio
+A : ℝ → Set (X × X) := fun t => ratio ⁻¹' j '' Metric.closedBall 0 t
+hA : A = fun t => ratio ⁻¹' j '' Metric.closedBall 0 t
+hAm : ∀ (t : ℝ), MeasurableSet (A t)
+hAmono : ∀ (s t : ℝ), s ≤ t → A s ⊆ A t
+hAinv : ∀ (g : Rot) (t : ℝ), A t ⊆ (fun z => g +ᵥ z) ⁻¹' A t
+hae_inv : ∀ (g : Rot) (t : ℝ), (fun z => g +ᵥ z) ⁻¹' A t =ᵐ[μR] A t
+hle1 : ∀ (t : ℝ), μR (A t) ≤ 1
+h01 : ∀ (t : ℝ), μR (A t) = 0 ∨ μR (A t) = 1
+hnot : ¬(EuclideanFiveColor.DifferenceFourier.differenceLaw ν (condDistrib d q μ)) ↑C = 0
+hpos : 0 < μR (ratio ⁻¹' ↑C)
+hF_eq : ratio ⁻¹' ↑C = ⋃ n, A ↑n
+Tset : Set ℝ := {t | 0 ≤ t ∧ μR (A t) = 1}
+hTset : Tset = {t | 0 ≤ t ∧ μR (A t) = 1}
+hTne : Tset.Nonempty
+r : ℝ := sInf Tset
+hr : r = sInf Tset
+hr0 : 0 ≤ r
+hrd : ∀ t ∈ Tset, r ≤ t
+hbig : ∀ (t : ℝ), r < t → μR (A t) = 1
+hsmall : ∀ (t : ℝ), 0 ≤ t → t < r → μR (A t) = 0
+hAr : μR (A r) = 1
+hposr : 0 < r
+U : ℕ → Set (X × X) := fun m => A (r - r / (↑m + 1))
+hU : U = fun m => A (r - r / (↑m + 1))
+hUm : ∀ (m : ℕ), MeasurableSet (U m)
+hUnull : μR (⋃ m, U m) = 0
+hT : μR (A r \ ⋃ m, U m) = 1
+hTm : MeasurableSet (A r \ ⋃ m, U m)
+hfib : ∀ᵐ (y : Y) ∂ν, ((κ ×ₖ κ) y) (A r \ ⋃ m, U m)ᶜ = 0
+hcon : ∀ (x : Y), ¬((κ ×ₖ κ) x) (A r \ ⋃ m, U m)ᶜ = 0
+hsub : Set.univ ⊆ {y | ¬((κ ×ₖ κ) y) (A r \ ⋃ m, U m)ᶜ = 0}
+h0 : ν Set.univ = 0
+⊢ IsProbabilityMeasure ν
+C.lean:360:60: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  IsProbabilityMeasure (Measure.map d (κ y))
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+C.lean:360:4: warning: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+C.lean:334:19: warning: This simp argument is unused:
+  hSphD
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Set.mem_sdiff, Set.mem_iUnion] at hm hn
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+C.lean:334:26: warning: This simp argument is unused:
+  Set.mem_sdiff
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hSphD, Set.mem_iUnion] at hm hn
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

@@ -1,0 +1,421 @@
+{
+ "built": 83,
+ "fail": [],
+ "status": {
+  "OAI.Analysis.PlaneSpectrum.Basic": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.Characters": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.Fourier": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Coloring": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.CircleDecay": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.WeakColoring": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Compactness": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.CircleOperator": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.InvariantMean": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.Multipliers": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.FourierTests": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.SmallArcs": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.PhaseEncoding": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.PhaseCollision": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.MeasureTheory.CompactFactors.ConditionalSelection": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.MeasureTheory.CompactFactors.Amenability": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.MeasureTheory.CompactFactors.Centers": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.MeasureTheory.CompactFactors.RelativeCenters": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.MeasureTheory.CompactFactors.Approximation": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.MeasureTheory.CompactFactors.ConditionalLimits": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.MeasureTheory.CompactFactors.Kernels": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.MeasureTheory.CompactFactors.BoundedFunctions": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.MeasureTheory.CompactFactors.RelativeProducts": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.MeasureTheory.CompactFactors.Separability": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.MeasureTheory.CompactFactors.AlgebraModels": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.MeasureTheory.CompactFactors.Functions": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.MeasureTheory.CompactFactors.Factors": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.MeasureTheory.CompactFactors.Stationary": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.Representations": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.Energy": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.NumberFields": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.Selections": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.RadialEnergy": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.SpectralMeasure": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Analysis.PlaneSpectrum.Ergodicity": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Expansion": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.BinaryDynamics": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.CircleMaps": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.CircleTransport": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Transitions": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Palettes": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.PaletteDensity": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.PaletteTransport": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Rigidity": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.BinaryPalettes": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.States": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.BoundaryTrace": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.AngularBoundary": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Exclusion": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.FourContinuity": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.FourTransport": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Accumulation": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Assembly": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Basic": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.BorelTransfer": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.FiveSupport": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.CyclicCore": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.DiskAverages": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.PlanarCovers": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.GraphRealization": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Interfaces": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Moser": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Sectors": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.ContinuumLimits": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.DiskExtension": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.GraphCuts": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.HoleApproximation": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.GraphPatches": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.FullApproximation": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Mesh": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Five": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Lattice": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Metric": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Covering": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.MeasurableAssembly": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.MeasurableProper": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Seven": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Chromatic": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.ConnectedUnitFree": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Converse": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.NullSetRobust": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  },
+  "OAI.Geometry.PlaneColoring.Transfer": {
+   "ok": true,
+   "secs": 0.0,
+   "err": ""
+  }
+ }
+}

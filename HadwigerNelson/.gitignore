@@ -1,0 +1,13 @@
+# Credentials, caches, and transient execution state do not belong in research snapshots.
+**/platform-key.*
+**/.env
+**/.env.*
+**/*.clixml
+**/*.pem
+**/*.key
+**/*.olean
+**/*.ilean
+**/*.pyc
+**/__pycache__/
+**/node_modules/
+**/.lake/

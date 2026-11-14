@@ -1,0 +1,378 @@
+{
+ "prereg": "REFINE2-PREREG.md",
+ "k": 5,
+ "graph": "verified induced unit-distance graph, 1048 points, 5487 edges",
+ "grade": "induced completeness VERIFIED (independent check, all 548628 pairs)",
+ "steps": [
+  {
+   "step": 1,
+   "pair": [
+    416,
+    437
+   ],
+   "class_size": 18,
+   "before": 1145,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 687,
+   "removed": 458,
+   "c_pair": [
+    0,
+    1
+   ]
+  },
+  {
+   "step": 2,
+   "pair": [
+    890,
+    891
+   ],
+   "class_size": 16,
+   "before": 687,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 648,
+   "removed": 39,
+   "c_pair": [
+    2,
+    1
+   ]
+  },
+  {
+   "step": 3,
+   "pair": [
+    892,
+    923
+   ],
+   "class_size": 15,
+   "before": 648,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 171,
+   "removed": 477,
+   "c_pair": [
+    0,
+    1
+   ]
+  },
+  {
+   "step": 4,
+   "pair": [
+    546,
+    548
+   ],
+   "class_size": 7,
+   "before": 171,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 158,
+   "removed": 13,
+   "c_pair": [
+    0,
+    2
+   ]
+  },
+  {
+   "step": 5,
+   "pair": [
+    551,
+    552
+   ],
+   "class_size": 6,
+   "before": 158,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 89,
+   "removed": 69,
+   "c_pair": [
+    0,
+    2
+   ]
+  },
+  {
+   "step": 6,
+   "pair": [
+    885,
+    922
+   ],
+   "class_size": 6,
+   "before": 89,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 52,
+   "removed": 37,
+   "c_pair": [
+    2,
+    0
+   ]
+  },
+  {
+   "step": 7,
+   "pair": [
+    906,
+    998
+   ],
+   "class_size": 5,
+   "before": 52,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 42,
+   "removed": 10,
+   "c_pair": [
+    2,
+    3
+   ]
+  },
+  {
+   "step": 8,
+   "pair": [
+    924,
+    934
+   ],
+   "class_size": 5,
+   "before": 42,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 33,
+   "removed": 9,
+   "c_pair": [
+    2,
+    1
+   ]
+  },
+  {
+   "step": 9,
+   "pair": [
+    1022,
+    1033
+   ],
+   "class_size": 5,
+   "before": 33,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 19,
+   "removed": 14,
+   "c_pair": [
+    3,
+    2
+   ]
+  },
+  {
+   "step": 10,
+   "pair": [
+    395,
+    457
+   ],
+   "class_size": 3,
+   "before": 19,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 17,
+   "removed": 2,
+   "c_pair": [
+    1,
+    0
+   ]
+  },
+  {
+   "step": 11,
+   "pair": [
+    1040,
+    1045
+   ],
+   "class_size": 3,
+   "before": 17,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 7,
+   "removed": 10,
+   "c_pair": [
+    0,
+    1
+   ]
+  },
+  {
+   "step": 12,
+   "pair": [
+    366,
+    431
+   ],
+   "class_size": 2,
+   "before": 7,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 6,
+   "removed": 1,
+   "c_pair": [
+    2,
+    1
+   ]
+  },
+  {
+   "step": 13,
+   "pair": [
+    433,
+    461
+   ],
+   "class_size": 2,
+   "before": 6,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 5,
+   "removed": 1,
+   "c_pair": [
+    1,
+    0
+   ]
+  },
+  {
+   "step": 14,
+   "pair": [
+    959,
+    982
+   ],
+   "class_size": 2,
+   "before": 5,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 3,
+   "removed": 2,
+   "c_pair": [
+    3,
+    1
+   ]
+  },
+  {
+   "step": 15,
+   "pair": [
+    457,
+    527
+   ],
+   "class_size": 2,
+   "before": 3,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 2,
+   "removed": 1,
+   "c_pair": [
+    0,
+    1
+   ]
+  },
+  {
+   "step": 16,
+   "pair": [
+    923,
+    932
+   ],
+   "class_size": 2,
+   "before": 2,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 1,
+   "removed": 1,
+   "c_pair": [
+    1,
+    0
+   ]
+  },
+  {
+   "step": 17,
+   "pair": [
+    548,
+    552
+   ],
+   "class_size": 2,
+   "before": 1,
+   "verdict": "SAT",
+   "mono": 0,
+   "after": 0,
+   "removed": 1,
+   "c_pair": [
+    0,
+    2
+   ]
+  }
+ ],
+ "baseline_survivors": 1145,
+ "both_index_lt553": 177,
+ "both_aonly": 112,
+ "both_idx_touching_overlap": 65,
+ "stage": "baseline",
+ "elapsed": 3.65,
+ "stopped": "NO SURVIVORS",
+ "final_survivors": 0,
+ "n_witnesses": 34,
+ "n_targets": 17,
+ "survivors": [],
+ "tested": [
+  [
+   366,
+   431
+  ],
+  [
+   395,
+   457
+  ],
+  [
+   416,
+   437
+  ],
+  [
+   433,
+   461
+  ],
+  [
+   457,
+   527
+  ],
+  [
+   546,
+   548
+  ],
+  [
+   548,
+   552
+  ],
+  [
+   551,
+   552
+  ],
+  [
+   885,
+   922
+  ],
+  [
+   890,
+   891
+  ],
+  [
+   892,
+   923
+  ],
+  [
+   906,
+   998
+  ],
+  [
+   923,
+   932
+  ],
+  [
+   924,
+   934
+  ],
+  [
+   959,
+   982
+  ],
+  [
+   1022,
+   1033
+  ],
+  [
+   1040,
+   1045
+  ]
+ ]
+}

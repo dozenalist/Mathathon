@@ -1,0 +1,85 @@
+{
+  "at": "2026-11-14T10:46:36.085Z",
+  "modules": 82,
+  "reused": 14,
+  "newlyBuilt": 68,
+  "allPassed": true,
+  "axiomRoots": [
+    {
+      "name": "OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.PlaneFiveColor.Spectral.finite_uniform_successor_contradiction",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.PlaneFiveColor.Spectral.relative_singularity_successor",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.PlaneFiveColor.Spectral.relative_singularity_approximation",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.EuclideanFiveColor.no_proper_five_coloring",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.Problem160.properColoring_seven",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.Problem160.weakMeasurableColoring_seven",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "standardAxiomsOnly": true,
+  "noSorryAx": true,
+  "signatureChecks": "PASS; see fidelity-check.json",
+  "rootSourceSha256": "cac851851383970f3d33e42c8bf4ae4ce5963059f43c44328f12542bbf96f26d"
+}

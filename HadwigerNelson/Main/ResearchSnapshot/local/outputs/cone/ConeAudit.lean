@@ -1,0 +1,11 @@
+import OAI.Geometry.PlaneColoring.ConeSurvivor
+
+#check OAI.EuclideanFiveColor.outer_strip_actual_unit_neighbour
+#check OAI.EuclideanFiveColor.outer120_binary_impossible
+#check OAI.EuclideanFiveColor.closed60_exclusions_three_le
+#check OAI.EuclideanFiveColor.cone_survivor_001334_impossible
+
+#print axioms OAI.EuclideanFiveColor.outer_strip_actual_unit_neighbour
+#print axioms OAI.EuclideanFiveColor.outer120_binary_impossible
+#print axioms OAI.EuclideanFiveColor.closed60_exclusions_three_le
+#print axioms OAI.EuclideanFiveColor.cone_survivor_001334_impossible

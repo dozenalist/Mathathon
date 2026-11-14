@@ -1,0 +1,13 @@
+d16: exact geometry of the cyclic locus L. Files: report.md, verify.py+field.py+hexcol.py (23 exact Q(sqrt3) checks; `python3 verify.py`).
+
+(1) §2 Interface determination: for c constant on the cells of a partition with finitely many cells and interface arcs per ball (piecewise C^1 boundaries), ij in Gamma_x iff x lies on an interface arc between a colour-i and a colour-j cell. So L = junctions where >=3 cells of distinct colours meet, hence locally finite, hence (W) — no palette, measurability or properness input, at any k. Covers the 7-colouring and all polygonal-map colourings; a k=6 countermodel must be non-tame.
+
+(2) L of the paper's 7-colouring = the honeycomb vertex lattice V exactly: the six unit vectors carry the six nonzero residues mod 7, so each vertex is 3-coloured and no other point is; V has separation and covering radius 2/5, so (W) holds for every R > 2/5.
+
+(3) L of the k>=7 accumulating colouring = V + {q_n, z_n} + {p_0} exactly (z_n = q_n - rho_n): closed, countable, one accumulation point. So (W) fails with a countable L; no size property of L can imply (W).
+
+(4) §5: eps = 1/70 is certified exactly by two independent methods, so the square side is 1/50, not 1/100; exact threshold eps* = 0.017078986431 (maximal side 0.0241533342). Prior slacks 0.028950, 0.017079 reproduce independently.
+
+(5) §6: the unit circle about p_0 meets exactly {1,4,5,6} = k-3 labels, the gadget's resource; at k=6 at most 3 allowed.
+
+Not claimed: a decision of (W) at k=6.

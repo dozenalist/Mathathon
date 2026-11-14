@@ -1,0 +1,48 @@
+5.3 Separation of binary centers
+Fix two distinct labels i+,i−. Call a center x binary for {i+,i−} if
+Px(e) ∩ {i+,i−} ̸= ∅ for almost every e ∈ S.
+The exclusion (5.7) makes this intersection a singleton almost everywhere. Indeed, at almost every
+e, the intersections at e and Re are nonempty disjoint subsets of a two-element set; they must
+therefore be the two different singletons. Thus there is a unique measurable selection from this
+pair, up to a null set, and it alternates under R. Conversely, the existence of an alternating selection
+from the pair plainly implies the displayed intersection condition.
+Write this selection as a measurable 2π-periodic sign function sx : R → {−1,1}, assigning the
+signs +1,−1 to i+,i− respectively and choosing arbitrary values on the exceptional null set. With
+κ = π/3, it satisfies
+sx(t + κ) = −sx(t) for almost every t. (5.8)
+In particular, either sign occupies angular measure π in a period.
+Lemma 5.5 (Binary-center separation). There is an absolute constant δ∗ > 0 such that, for every fixed
+pair of labels, any two distinct centers binary for that pair are at distance at least δ∗.
+Proof. Suppose that x,y are distinct binary centers for the same pair, and put d = |y − x|. We will
+derive a contradiction whenever 0 < d < δ∗, with δ∗ chosen below independently of the coloring,
+the pair, and the centers. Rotate angular coordinates so that y− x = d lies on the positive real axis.
+The maps forced by palette transport. For d < 1/2, the vector d + eit has length strictly between zero
+and two. Define real lifts
+Θd(t) = t +Imlog(1 + de−it
+),
+α±(t) = Θd(t) ±arccos |d + eit
+|/2
+
+,
+where the logarithm is the branch near 1. These formulas give the exact representation
+y + eit
+= x + eiα+(t)
++ eiα−(t)
+.
+Its two unit directions are nonparallel. Their angular difference is twice an angle strictly between
+zero and π/2, and stays away from both parallel cases for sufficiently small d.
+The functions α± are smooth degree-one lifts: α±(t + 2π) = α±(t) + 2π. Their derivatives
+converge uniformly to 1 as d → 0, so for small d they induce orientation-preserving circle diffeo-
+morphisms. We may therefore apply Lemma 5.2 locally, with either endpoint as its first direction,
+and cover the angular circle by finitely many such domains. It follows that
+Py(eit
+) ∩ Px(eiα±(t)
+) = ∅ for almost every t.
+Both binary selections belong to the same fixed pair of labels. Consequently,
+sx(α+(t)) = sx(α−(t)) = −sy(t) for almost every t.
+Since α− is nonsingular for angular Lebesgue measure, sx is invariant almost everywhere under
+H = α+ ◦ α−1
+− .
+By (5.8), sx is also invariant under translation by 2κ. Define
+F(t) = H(t) −2κ, Fj(t) = jκ + F(t − jκ), 0 ≤ j ≤ 5.
+30

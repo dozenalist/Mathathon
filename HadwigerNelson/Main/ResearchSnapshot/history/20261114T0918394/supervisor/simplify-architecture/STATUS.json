@@ -1,0 +1,56 @@
+{
+ "updated_utc": "2026-11-14T09:55:00Z",
+ "status": "completed_block",
+ "summary": "Block 9: repaired the declaration-order defect the local source audit found. The common theorem was anchored before two_array_norm_bound and simultaneous_test_budget, which its proof calls; it is now placed AFTER both helpers and immediately before the finite wrapper, while the generic definition and the alias stay early (they need nothing from the helpers). Measured order in the regenerated file: EncodingApproximationAt 273, alias 291, FiniteEncodingApproximation 295, two_array_norm_bound 299, simultaneous_test_budget 305, uniform_precision_contradiction 325, finite_uniform_precision_contradiction 494, successor 512. integrate.py now refuses to emit a patch unless every inserted block's code-only identifiers are declared earlier in the same file; the audit reports 0 forward references in both files, no private or local declarations added, and all four new names public in OAI.PlaneFiveColor.Spectral. Patches, patched copies, META and SOURCE-FREEZE regenerated; apply check rc 0/0; statement delta still empty; net -126 remains a textual candidate only. Shared originals re-hashed unchanged.",
+ "verified_results": [
+  "[verified here, mechanical] Declaration-order repair: patched ConditionalSpectrum declares two_array_norm_bound at 299 and simultaneous_test_budget at 305, both before uniform_precision_contradiction at 325; the wrapper follows at 494 and the untouched successor consumer at 512.",
+  "[verified here, mechanical] New audit in integrate.py strips comments/docstrings and checks, for every inserted block, that each same-file identifier it uses is declared earlier; it hard-fails otherwise. Result: ConditionalSpectrum forward references 0, ConditionalLimits forward references 0. It also caught its own first false positive (a docstring mentioning FiniteEncodingApproximationAt), which is why comment stripping is now part of the check.",
+  "[verified here, mechanical] Visibility audit of the four introduced/aliased names: EncodingApproximationAt, uniform_precision_contradiction, FiniteEncodingApproximationAt (abbrev) and AmbientEncodingAt (abbrev) are all public in OAI.PlaneFiveColor.Spectral and reachable from ConditionalLimits, which imports ConditionalSpectrum; no private, no local declaration is introduced, and the pre-existing MeasurableSpace/BorelSpace Circle instances are untouched.",
+  "[verified here, mechanical] Regenerated patches apply cleanly on frozen copies: patch -p1 --dry-run rc 0 and 0 (APPLY-CHECK.txt). Post-patch sha256 48aa378f6f6db82b... (Spectrum) and 58707f0495837a89... (Limits), recorded in SOURCE-FREEZE.md and META.json.",
+  "[verified here, mechanical] Statement delta still EMPTY for both public theorems (identical statement sha 2dde28358ab09934 and ab6dd548d3a6bb53), so the reordering changed no public signature.",
+  "[verified here, mechanical] Shared originals unchanged: ConditionalSpectrum 6602b9d8f20bbdfd... and ConditionalLimits ca74ba1033fead55... re-checked after regeneration; integrate.py refuses to run if either moves.",
+  "[verified here, mechanical] Line counts unchanged by the reordering: 497 -> 530 (+33) and 701 -> 542 (-159), net -126. Labelled a TEXTUAL candidate only; no build was run.",
+  "[delivered, uncompiled] SOURCE-FREEZE.md: root-closed 14-module OAI closure with per-module sha256, the post-patch hashes the build must reproduce, Mathlib import roots, pinned toolchain, and the sha256sum verification command."
+ ],
+ "conjectures": [
+  "The corrected order is now the minimal valid one: the generic definition must precede the two aliases, and the common proof must follow both helpers. Any further reordering risks another forward reference, which the audit now blocks mechanically.",
+  "Net -126 lines remains unverified; the local integration build plus the axiom run on the two roots and three consumers is the only thing that can promote it."
+ ],
+ "artifacts": [
+  "supervisor/simplify-architecture/encoding-core/integration/0001-conditional-spectrum.patch (sha 87236acd52ff0169)",
+  "supervisor/simplify-architecture/encoding-core/integration/0002-conditional-limits.patch (sha 64b657d3159ade37)",
+  "supervisor/simplify-architecture/encoding-core/integration/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean (post-patch copy, sha 48aa378f6f6db82b...)",
+  "supervisor/simplify-architecture/encoding-core/integration/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean (post-patch copy, sha 58707f0495837a89...)",
+  "supervisor/simplify-architecture/encoding-core/integration/SOURCE-FREEZE.md (post-patch and input hashes, 14-module closure, Mathlib roots, toolchain pins, verify command)",
+  "supervisor/simplify-architecture/encoding-core/integration/INTEGRATION.md (Sec.9 corrected anchors and order audit, Sec.10 regenerated hashes, Sec.11 source freeze; correction banner at the top)",
+  "supervisor/simplify-architecture/encoding-core/integration/META.json (all hashes, statement delta, declaration_order_audit, checks, net line change)",
+  "supervisor/simplify-architecture/encoding-core/integration/SmokeFinite.lean, SmokeAmbient.lean",
+  "supervisor/simplify-architecture/encoding-core/integration/APPLY-CHECK.txt",
+  "supervisor/simplify-architecture/encoding-core/integrate.py (now with the comment-stripping forward-reference audit and a hard failure on any order violation)"
+ ],
+ "tests_run": [
+  {
+   "cmd": "python3 integrate.py (regeneration + order audit + apply check; the block's single process)",
+   "outcome": "0 forward references in both files; apply rc 0/0; statement delta empty; net -126; all hashes regenerated."
+  },
+  {
+   "cmd": "patch -p1 --dry-run on frozen copies (invoked inside integrate.py)",
+   "outcome": "rc 0 and rc 0, logged in APPLY-CHECK.txt."
+  },
+  {
+   "cmd": "sha256sum on the two shared originals after regeneration",
+   "outcome": "6602b9d8... and ca74ba10... - unchanged."
+  },
+  {
+   "cmd": "no lean/lake/remote build, no subagents, no messages",
+   "outcome": "compilation handed to the supervisor's serial local queue against SOURCE-FREEZE.md."
+  }
+ ],
+ "failed_routes": [
+  "Block-8 insertion anchor (common theorem before the helpers) was INVALID and is superseded: uniform_precision_contradiction called two_array_norm_bound and simultaneous_test_budget before their declarations. Found by the local source audit, fixed here, and now impossible to reintroduce silently because integrate.py hard-fails on forward references.",
+  "First version of the new audit raised a false positive on a docstring mention of FiniteEncodingApproximationAt; comment/docstring stripping is now part of the check rather than a filter of leading tokens.",
+  "Not attempted per instruction: duplicating the formal-dependency chat's closure/interface review or the supervisor's local build; no remote build; no new weak-mixing work; no Astra escalation."
+ ],
+ "next_step": "Local queue, against SOURCE-FREEZE.md (single stable revision): apply 0001 then 0002, verify the two post-patch sha256 (48aa378f6f6db82b..., 58707f0495837a89...), build, then run SmokeFinite.lean and SmokeAmbient.lean. Confirm in order: the common theorem elaborates at 325 after the helpers; both abbrev aliases are accepted where the defs were, including inside refine at ConditionalLimits:592; S := id reduces; the four change lines and hbins re-elaborate; #print axioms gives [propext, Classical.choice, Quot.sound] for both roots, the shared theorem and all three consumers. Only after that may -126 be reported as verified. If the formal-dependency chat's closure review lands first, use its interfaces and do not re-audit.",
+ "escalation": null
+}

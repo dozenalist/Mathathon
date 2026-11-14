@@ -1,0 +1,16 @@
+MeasureTheory/CompactFactors/Functions.lean
+MeasureTheory/CompactFactors/Kernels.lean
+Geometry/PlaneColoring/Expansion.lean
+MeasureTheory/CompactFactors/ConditionalLimits.lean
+Analysis/PlaneSpectrum/Basic.lean
+Geometry/PlaneColoring/DiskExtension.lean
+Geometry/PlaneColoring/FourContinuity.lean
+Geometry/PlaneColoring/BinaryDynamics.lean
+Analysis/PlaneSpectrum/Characters.lean
+MeasureTheory/CompactFactors/AlgebraModels.lean
+Geometry/PlaneColoring/Moser.lean
+MeasureTheory/CompactFactors/Centers.lean
+Analysis/PlaneSpectrum/NumberFields.lean
+MeasureTheory/CompactFactors/Approximation.lean
+MeasureTheory/CompactFactors/Factors.lean
+MeasureTheory/CompactFactors/Separability.lean

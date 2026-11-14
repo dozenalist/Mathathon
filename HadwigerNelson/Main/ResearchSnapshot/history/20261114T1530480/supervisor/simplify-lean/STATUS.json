@@ -1,0 +1,112 @@
+{
+  "updated_utc": "2026-11-14T15:26:12Z",
+  "status": "completed_block",
+  "summary": "Block 17, source-only. Applied the two rendering fixes the supervisor's local repair needed: renderType uses 'let fmt \u2190 ppExpr e; pure (flat (toString fmt))' because ppExpr returns Format, and the catch clause uses 'e.toMessageData.toString' without Command.liftCoreM because it is BaseIO. My v4 source is NOT hash-identical to the tested ca6ee63d... (comments/whitespace) and is not claimed to compile; v3 is preserved in archive/. Hardened the comparator on the four named defects: error markers written unconditionally so an ERROR after BINDER lines survives; malformed lines now fail and are counted; extra implicit value binders now fail instead of being labelled; instance lists compared as Counter multisets so a duplicate or omission fails. Added index-consecutiveness and type-binder index/universe checks. Froze expectations from the transcribed real capture (no hand-entered values): counts 31,31,33,12,12,14 and instances 8,8,8,3,3,3, no StandardBorelSpace Y or Nonempty Y. The regenerated capture reproduces the finite theorem's 31 raw rows and gives fails=0 malformed=0; each hardening was demonstrated on a deliberate bad capture. Supplementary tooling, not new proof; accepted R4/R5 evidence unchanged.",
+  "verified_results": [
+    "GRADE [C] R1 applied: renderType is `let fmt \u2190 ppExpr e; pure (flat (toString fmt))`, matching the finding that ppExpr returns Format rather than MessageData.",
+    "GRADE [C] R2 applied: the catch clause is `let msg \u2190 e.toMessageData.toString` with no Command.liftCoreM, matching the finding that MessageData.toString is BaseIO.",
+    "GRADE [S] The supervisor's locally tested repaired source is ca6ee63dd737fc7095ee82e35c5d702d90c203721ad92e00757d706e7b9a9304. My v4 sha256 is 0efd3831cd8633818af24110d254e3ae8a1a34cc93a529a0de33b4d0ba4ee202 and is explicitly NOT claimed to be identical to it or to compile.",
+    "GRADE [C] H1 repaired and demonstrated: error markers are set unconditionally and appending a binder never clears a recorded error, so BINDER lines followed by ERROR <decl> boom now yields FAIL: ERROR boom (v3's setdefault would have dropped it).",
+    "GRADE [C] H2 repaired and demonstrated: every malformed line is a FAIL counted into the total; a truncated BINDER record now yields MALFORMED line N and malformed=1 with a non-zero exit. An over-reach found while testing (the legitimate DECL line was first flagged) was fixed so only unrecognised lines fail.",
+    "GRADE [C] H3 repaired and demonstrated: an implicit binder that is not an expected type binder now yields EXTRA IMPLICIT BINDER Q : Fin 2 and FAIL, instead of a mere label.",
+    "GRADE [C] H4 repaired and demonstrated: instances are compared as Counter multisets in both directions, so a duplicated MeasurableSpace X with MeasurableSpace Y dropped yields UNKNOWN/EXTRA INSTANCE MeasurableSpace X (x1) and FAIL, which set membership would have missed.",
+    "GRADE [C] v4 also checks consecutive binder indices 0..n-1, type-binder indices and universe strings, the exact explicit sequence, the total binder count and each declaration's instance count.",
+    "GRADE [C] Expectations FROZEN from the transcribed supervisor-verified summary (capture/real_summary.json), with no hand-entered values: total binders 31, 31, 33, 12, 12, 14 and instances 8, 8, 8, 3, 3, 3; no StandardBorelSpace Y and no Nonempty Y in any declaration.",
+    "GRADE [C] Cross-check of the regenerated capture: it reproduces the 31 raw rows of finite_uniform_precision_contradiction on every field the comparator reads (indices 0-2 implicit types, 3-9 instances, 10 \u03bc explicit, 11 the IsProbabilityMeasure instance, 12-30 explicit), which is what licenses the same ordering rule for the other five declarations.",
+    "GRADE [C] On the regenerated real capture the hardened comparator prints SUMMARY fails=0 malformed=0 across all six declarations. This shows the comparator and the frozen expectations agree with the supervisor's verified numbers; it is not an independent re-run of the audit.",
+    "GRADE [C] Substantive content of the capture, now on record: the two public theorems carry 8 instances with neither StandardBorelSpace Y nor Nonempty Y (the omit is intact); the predicate aliases carry 3; uniform_precision_contradiction carries an extra implicit Z : Type u_4 at index 14 and EncodingApproximationAt at index 9.",
+    "GRADE [S] Accepted evidence unchanged and not re-run: R4 82-module build PASS, 9 exported-root axiom checks PASS, R5 SignatureEquivalence and SignatureCheckFresh PASS with 4+4 standard axiom prints and no sorry.",
+    "GRADE [R] Scope unchanged: 6 <= chi(R^2) <= 7; certifying the supplied OpenAI proof creates no new plane bound."
+  ],
+  "conjectures": [
+    "v4 will compile if the two rendering fixes are the only remaining obstacle, since v3 differed from the tested source precisely there; the residual risk is a one-line adaptation if toString on Format needs Format.pretty instead.",
+    "With expectations now frozen, future runs are a pure regression gate: any drift in the six headers will show as a named FAIL rather than requiring re-derivation.",
+    "If type-text equality for the explicit hypotheses is wanted, the raw 133-row capture must be supplied; the regenerated one carries placeholders there by design."
+  ],
+  "artifacts": [
+    "supervisor/simplify-lean/REVIEW-instrument-v4.md  <-- compact review packet. sha256 26a055777da6abacac6b49a076b567a1cb7413f69d668d1bc3967be237dff64a",
+    "supervisor/simplify-lean/lean/BinderAudit.lean  <-- v4 with R1/R2. sha256 0efd3831cd8633818af24110d254e3ae8a1a34cc93a529a0de33b4d0ba4ee202",
+    "supervisor/simplify-lean/binder_expected.json  <-- schema 4, frozen from the real capture. sha256 19810d24f5c83db61e483f52f42c04260cff41c5e4e52e78c4846d991f2c30ad",
+    "supervisor/simplify-lean/binder_snapshot.py  <-- comparator v4, H1-H4 hardened. sha256 d96e317e91ac6672b05e34f02ecf83d7dd829f866ef46196e668508b47ecd423",
+    "supervisor/simplify-lean/capture/real_summary.json  <-- transcribed supervisor-verified capture summary. sha256 86cfe723368c6a72efd127f20c1881ee10692dbbfda465ed1a629c02566d1ad9",
+    "supervisor/simplify-lean/capture/BinderAudit.real_capture.txt  <-- capture regenerated in BINDER format (133 records). sha256 65c9549ec5f2f4d698ee61fba13ecb81d43f3ac47f10dc5606d36e0b282e8e59",
+    "supervisor/simplify-lean/.scratch/build_capture.py, .scratch/freeze_expected.py, .scratch/h_tests.txt  <-- generators and the four-defect negative test",
+    "supervisor/simplify-lean/archive/BinderAudit.v2.FAILED.lean sha256 648afda2bd84f73169d26d5e2ccd2886803d46df9ea599cf39d2ddf3a0a06049, archive/binder_expected.v2.FAILED.json sha256 fb575764b0d145e7e95b926258d27bbe74669b869946af45c2e1c30cef6e9f88, archive/binder_snapshot.v2.FAILED.py sha256 977878b409010c8182f428b66aadf5b2d4838d0f4556b5488795ceb5abc7ebc5, archive/BinderAudit.v3.UNCOMPILED.lean sha256 de6d516257562feeac0c2d71e62ecd5d79fb54def93cf7471e5b9457099b1db6",
+    "retained: STATEMENT-AUDIT.md, REVIEW-baseline-and-fresh.md, lean/SignatureEquivalence.lean, lean/SignatureCheckFresh.lean, lean/AxiomRoots.lean, axiom_gate.py, recon/ConditionalLimits.R4-recon.lean, snapshots/integ-d26d569088faea89/, BUILD-PLAN.json, MANIFEST-full.json"
+  ],
+  "tests_run": [
+    "python3 .scratch/build_capture.py -> 6 DECL, 133 BINDER records; per-declaration counts 31,31,33,12,12,14; index/kind pattern of the finite theorem matches its 31 raw rows.",
+    "python3 .scratch/freeze_expected.py -> binder_expected.json schema 4; totals and instance counts as listed.",
+    "python3 binder_snapshot.py capture/BinderAudit.real_capture.txt -> SUMMARY fails=0 malformed=0, exit 0.",
+    "python3 binder_snapshot.py .scratch/h_tests.txt -> FAIL: ERROR boom (H1), MALFORMED line 6 (H2), EXTRA IMPLICIT BINDER Q : Fin 2 (H3), UNKNOWN/EXTRA INSTANCE MeasurableSpace X (x1) (H4); exit 1.",
+    "sha256 over every artefact, recorded above.",
+    "NO Lean build, no cloud operation, no heavy compute, no writes outside supervisor/simplify-lean (per instruction)."
+  ],
+  "failed_routes": [
+    "v2 Lean: FAILED locally (E1/E2/E3), preserved. v3 Lean: superseded by the supervisor's local repair, preserved as archive/BinderAudit.v3.UNCOMPILED.lean.",
+    "v3 comparator: its four defects are exactly H1-H4; each is now repaired and each repair demonstrated on a deliberate bad capture. The v3 file is preserved, not deleted.",
+    "Not attempted: any Lean run, or an independent re-run of the audit. The regenerated capture is a transcription of the supervisor's verified summary, not a second capture of the tree."
+  ],
+  "next_step": "Supervisor review before any local run. If a slot is granted: compile lean/BinderAudit.lean, and if lean reports ANY error discard the capture entirely; otherwise run python3 binder_snapshot.py on the fresh capture and require SUMMARY fails=0 malformed=0. Any FAIL is a named, localised difference in one of the six headers and should be read against the frozen values first. No 82-module rebuild.",
+  "owned_agents": [
+    {
+      "swarm": "smwfy8rae",
+      "members": 3,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "state": "stopped",
+      "accepted": 0,
+      "note": "stopped in block 1; no new chats, swarms or nested agents this block (per instruction)."
+    }
+  ],
+  "escalation": null,
+  "recovery_note": "Post-outage recovery pass 2026-11-14T06:46Z: jobs reconciled (no job of this session was running; nothing owned to collect; the only 'lean' processes on the VM belong to another project, p-9021becf..., which is not mine to touch). No writes were duplicated: CENSUS.md, STATUS.json and the two .scratch scripts were already saved; EnergyShort.lean was re-created from source and is now byte-identical to OAI/Analysis/PlaneSpectrum/Energy.lean. No subagents launched.",
+  "packet": {
+    "review": "supervisor/simplify-lean/REVIEW-instrument-v4.md",
+    "ready_to_queue": [
+      "supervisor/simplify-lean/lean/BinderAudit.lean",
+      "supervisor/simplify-lean/binder_snapshot.py",
+      "supervisor/simplify-lean/binder_expected.json"
+    ],
+    "real_capture_inputs": [
+      "supervisor/simplify-lean/capture/real_summary.json",
+      "supervisor/simplify-lean/capture/BinderAudit.real_capture.txt"
+    ],
+    "archived_failures": [
+      "supervisor/simplify-lean/archive/BinderAudit.v2.FAILED.lean",
+      "supervisor/simplify-lean/archive/binder_expected.v2.FAILED.json",
+      "supervisor/simplify-lean/archive/binder_snapshot.v2.FAILED.py",
+      "supervisor/simplify-lean/archive/BinderAudit.v3.UNCOMPILED.lean"
+    ],
+    "frozen_counts": {
+      "binders": [
+        31,
+        31,
+        33,
+        12,
+        12,
+        14
+      ],
+      "instances": [
+        8,
+        8,
+        8,
+        3,
+        3,
+        3
+      ],
+      "forbidden": [
+        "StandardBorelSpace Y",
+        "Nonempty Y"
+      ]
+    },
+    "accepted_unchanged": [
+      "R4 82-module build PASS",
+      "9 root axiom checks PASS",
+      "R5 SignatureEquivalence PASS",
+      "R5 SignatureCheckFresh PASS (4+4 standard axiom prints, no sorry)"
+    ],
+    "scope": "supplementary tool hardening, not new mathematical proof; 6 <= chi(R^2) <= 7 unchanged, no new plane bound",
+    "validity_rule": "a capture is void if lean reports any error for BinderAudit.lean",
+    "next_verification_step": "supervisor review, then compile BinderAudit v4 and require fails=0 malformed=0 on the fresh capture."
+  }
+}

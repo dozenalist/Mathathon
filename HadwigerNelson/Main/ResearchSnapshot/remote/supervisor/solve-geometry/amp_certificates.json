@@ -1,0 +1,342 @@
+{
+ "instances": [
+  {
+   "name": "k2-path-n3",
+   "k": 2,
+   "n": 3,
+   "V": 3,
+   "E": 2,
+   "field": [
+    "7",
+    "5"
+   ],
+   "D": 0.75,
+   "v2": "1/16",
+   "cos_theta": "1/9",
+   "sin_theta": "4/9*sqrt(5)",
+   "chain_points": 9,
+   "distinct_points": 13,
+   "bound_chain": "7",
+   "bound_total": "13",
+   "generating_entries": 13,
+   "generating_distinct": 13,
+   "induced_edges": 13,
+   "all_generating_are_unit_edges": true,
+   "final_edge_unit": true,
+   "final_ends_distinct": true,
+   "proper_k_colourings": 0,
+   "points": [
+    [
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(1, 8), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(3, 8), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(1, 4), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(3, 8), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(3, 8), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(1, 2), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(5, 8), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(3, 8), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(3, 4), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(1, 72), Fraction(0, 1), Fraction(0, 1), Fraction(-1, 6))",
+     "(Fraction(0, 1), Fraction(1, 24), Fraction(1, 18), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(1, 36), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(1, 9), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(1, 24), Fraction(0, 1), Fraction(0, 1), Fraction(-1, 6))",
+     "(Fraction(0, 1), Fraction(1, 24), Fraction(1, 6), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(1, 18), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(2, 9), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(5, 72), Fraction(0, 1), Fraction(0, 1), Fraction(-1, 6))",
+     "(Fraction(0, 1), Fraction(1, 24), Fraction(5, 18), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(1, 12), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(1, 3), Fraction(0, 1))"
+    ]
+   ],
+   "induced_edge_list": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     6,
+     12
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     8,
+     9
+    ],
+    [
+     9,
+     10
+    ],
+    [
+     10,
+     11
+    ],
+    [
+     11,
+     12
+    ]
+   ]
+  },
+  {
+   "name": "k2-path-n2-D-half",
+   "k": 2,
+   "n": 2,
+   "V": 3,
+   "E": 2,
+   "field": [
+    "7",
+    "5"
+   ],
+   "D": 0.5,
+   "v2": "1/16",
+   "cos_theta": "-1",
+   "sin_theta": "0",
+   "chain_points": 6,
+   "distinct_points": 9,
+   "bound_chain": "5",
+   "bound_total": "9",
+   "generating_entries": 9,
+   "generating_distinct": 9,
+   "induced_edges": 9,
+   "all_generating_are_unit_edges": true,
+   "final_edge_unit": true,
+   "final_ends_distinct": true,
+   "proper_k_colourings": 0,
+   "points": [
+    [
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(1, 8), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(3, 8), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(1, 4), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(3, 8), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(3, 8), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(1, 2), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(-1, 8), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(-3, 8), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(-1, 4), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(-3, 8), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(-3, 8), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(-1, 2), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))"
+    ]
+   ],
+   "induced_edge_list": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     7,
+     8
+    ]
+   ]
+  },
+  {
+   "name": "k3-diamond-n1",
+   "k": 3,
+   "n": 1,
+   "V": 4,
+   "E": 5,
+   "field": [
+    "3",
+    "11"
+   ],
+   "D": 1.7320508075688772,
+   "v2": "3",
+   "cos_theta": "5/6",
+   "sin_theta": "1/6*sqrt(11)",
+   "chain_points": 4,
+   "distinct_points": 7,
+   "bound_chain": "4",
+   "bound_total": "7",
+   "generating_entries": 11,
+   "generating_distinct": 11,
+   "induced_edges": 11,
+   "all_generating_are_unit_edges": true,
+   "final_edge_unit": true,
+   "final_ends_distinct": true,
+   "proper_k_colourings": 0,
+   "points": [
+    [
+     "(Fraction(-1, 2), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(-1, 2), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(1, 2), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(-1, 2), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1))",
+     "(Fraction(0, 1), Fraction(-1, 1), Fraction(0, 1), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(-5, 12), Fraction(0, 1), Fraction(0, 1), Fraction(1, 12))",
+     "(Fraction(0, 1), Fraction(-5, 12), Fraction(-1, 12), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(5, 12), Fraction(0, 1), Fraction(0, 1), Fraction(1, 12))",
+     "(Fraction(0, 1), Fraction(-5, 12), Fraction(1, 12), Fraction(0, 1))"
+    ],
+    [
+     "(Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(1, 6))",
+     "(Fraction(0, 1), Fraction(-5, 6), Fraction(0, 1), Fraction(0, 1))"
+    ]
+   ],
+   "induced_edge_list": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ]
+  }
+ ]
+}

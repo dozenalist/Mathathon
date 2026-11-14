@@ -1,0 +1,342 @@
+[
+ {
+  "chromatic": 2,
+  "gamma": 0.4615120077394468,
+  "label": "critical#0",
+  "n_edges": 3,
+  "radii": [
+   1.4574271077563383,
+   0.457427107756338,
+   1.914854215512676
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 3,
+  "gamma": 0.5856855434571511,
+  "label": "critical#1",
+  "n_edges": 3,
+  "radii": [
+   1.369637260582887,
+   0.5773502691896257,
+   1.9469875297725128
+  ],
+  "unit_chord_circles": [
+   1
+  ]
+ },
+ {
+  "chromatic": 3,
+  "gamma": 1.5087095589360446,
+  "label": "critical#2",
+  "n_edges": 3,
+  "radii": [
+   0.577350269189626,
+   1.369637260582887,
+   1.946987529772513
+  ],
+  "unit_chord_circles": [
+   0
+  ]
+ },
+ {
+  "chromatic": 2,
+  "gamma": 1.6328830946537485,
+  "label": "critical#3",
+  "n_edges": 3,
+  "radii": [
+   0.45742710775633866,
+   1.4574271077563379,
+   1.9148542155126766
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 2,
+  "gamma": 2.555907110132643,
+  "label": "critical#4",
+  "n_edges": 3,
+  "radii": [
+   0.4574271077563384,
+   1.9148542155126762,
+   1.4574271077563383
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 3,
+  "gamma": 2.6800806458503468,
+  "label": "critical#5",
+  "n_edges": 3,
+  "radii": [
+   0.5773502691896257,
+   1.9469875297725128,
+   1.3696372605828875
+  ],
+  "unit_chord_circles": [
+   0
+  ]
+ },
+ {
+  "chromatic": 3,
+  "gamma": 3.6031046613292403,
+  "label": "critical#6",
+  "n_edges": 3,
+  "radii": [
+   1.369637260582887,
+   1.9469875297725128,
+   0.5773502691896263
+  ],
+  "unit_chord_circles": [
+   2
+  ]
+ },
+ {
+  "chromatic": 2,
+  "gamma": 3.727278197046945,
+  "label": "critical#7",
+  "n_edges": 3,
+  "radii": [
+   1.4574271077563385,
+   1.9148542155126762,
+   0.4574271077563389
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 2,
+  "gamma": 4.650302212525839,
+  "label": "critical#8",
+  "n_edges": 3,
+  "radii": [
+   1.9148542155126762,
+   1.4574271077563377,
+   0.4574271077563382
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 3,
+  "gamma": 4.7744757482435425,
+  "label": "critical#9",
+  "n_edges": 3,
+  "radii": [
+   1.9469875297725128,
+   1.3696372605828868,
+   0.5773502691896255
+  ],
+  "unit_chord_circles": [
+   2
+  ]
+ },
+ {
+  "chromatic": 3,
+  "gamma": 5.697499763722435,
+  "label": "critical#10",
+  "n_edges": 3,
+  "radii": [
+   1.946987529772513,
+   0.5773502691896263,
+   1.3696372605828862
+  ],
+  "unit_chord_circles": [
+   1
+  ]
+ },
+ {
+  "chromatic": 2,
+  "gamma": 5.821673299440141,
+  "label": "critical#11",
+  "n_edges": 3,
+  "radii": [
+   1.9148542155126762,
+   0.4574271077563372,
+   1.4574271077563383
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 1,
+  "gamma": 0.2307560038697234,
+  "label": "open stratum",
+  "n_edges": 0,
+  "radii": [
+   1.6054128033591941,
+   0.2302443706749141,
+   1.8356571740341074
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 1,
+  "gamma": 0.5235987755982989,
+  "label": "open stratum",
+  "n_edges": 0,
+  "radii": [
+   1.4142135623730951,
+   0.5176380902050416,
+   1.9318516525781364
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 1,
+  "gamma": 1.0471975511965979,
+  "label": "open stratum",
+  "n_edges": 0,
+  "radii": [
+   0.9999999999999998,
+   1.0000000000000004,
+   2.0
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 1,
+  "gamma": 1.5707963267948966,
+  "label": "open stratum",
+  "n_edges": 0,
+  "radii": [
+   0.5176380902050419,
+   1.414213562373095,
+   1.9318516525781368
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 1,
+  "gamma": 2.0943951023931957,
+  "label": "open stratum",
+  "n_edges": 0,
+  "radii": [
+   1.2246467991473532e-16,
+   1.7320508075688772,
+   1.7320508075688776
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 1,
+  "gamma": 2.617993877991495,
+  "label": "open stratum",
+  "n_edges": 0,
+  "radii": [
+   0.5176380902050416,
+   1.9318516525781366,
+   1.4142135623730951
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 1,
+  "gamma": 3.1415926535897936,
+  "label": "open stratum",
+  "n_edges": 0,
+  "radii": [
+   1.0000000000000004,
+   2.0,
+   1.0000000000000009
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 1,
+  "gamma": 3.6651914291880927,
+  "label": "open stratum",
+  "n_edges": 0,
+  "radii": [
+   1.4142135623730956,
+   1.9318516525781364,
+   0.5176380902050413
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 1,
+  "gamma": 4.188790204786391,
+  "label": "open stratum",
+  "n_edges": 0,
+  "radii": [
+   1.7320508075688772,
+   1.7320508075688772,
+   3.6739403974420594e-16
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 1,
+  "gamma": 4.712388980384691,
+  "label": "open stratum",
+  "n_edges": 0,
+  "radii": [
+   1.9318516525781366,
+   1.4142135623730947,
+   0.5176380902050406
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 1,
+  "gamma": 5.235987755982989,
+  "label": "open stratum",
+  "n_edges": 0,
+  "radii": [
+   2.0,
+   0.9999999999999993,
+   0.9999999999999987
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 1,
+  "gamma": 5.759586531581288,
+  "label": "open stratum",
+  "n_edges": 0,
+  "radii": [
+   1.9318516525781366,
+   0.5176380902050413,
+   1.4142135623730947
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 1,
+  "gamma": 6.0524293033098635,
+  "label": "open stratum",
+  "n_edges": 0,
+  "radii": [
+   1.8356571740341079,
+   0.2302443706749128,
+   1.6054128033591932
+  ],
+  "unit_chord_circles": []
+ },
+ {
+  "chromatic": 3,
+  "gamma": 0.5856855434571511,
+  "label": "paper constant gamma0",
+  "n_edges": 3,
+  "radii": [
+   1.369637260582887,
+   0.5773502691896257,
+   1.9469875297725128
+  ],
+  "unit_chord_circles": [
+   1
+  ]
+ },
+ {
+  "chromatic": 3,
+  "gamma": 5.697499763722435,
+  "label": "2pi-gamma0",
+  "n_edges": 3,
+  "radii": [
+   1.946987529772513,
+   0.5773502691896263,
+   1.3696372605828862
+  ],
+  "unit_chord_circles": [
+   1
+  ]
+ }
+]

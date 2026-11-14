@@ -1,0 +1,115 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean	2026-11-13 19:09:13.640526677 +0000
++++ OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean	2026-11-13 19:45:46.083576145 +0000
+@@ -89,7 +89,7 @@
+     (clip C ((ν[R j | ℱ n]) y) : ℂ) + Complex.I * (clip C ((ν[I j | ℱ n]) y) : ℂ)
+   have hHn (n : ℕ) : Measurable[ℱ n] (Hn n) := by
+     let : MeasurableSpace Y := ℱ n
+-    apply Measurable.of_eval
++    apply measurable_pi_lambda
+     intro j
+     exact ((Complex.measurable_ofReal.comp ((continuous_clip C).measurable.comp
+       stronglyMeasurable_condExp.measurable))).add
+@@ -163,13 +163,13 @@
+   have hH₀ : Measurable H₀ := hH'.piecewise (measurableSet_le hH'.norm measurable_const) measurable_const
+   have hB₀ (z : Z n) : ‖H₀ z‖ ≤ 2*C := by
+     by_cases hz : ‖H' z‖ ≤ 2*C
+-    · simpa only [H₀, ite_eq_left hz] using hz
+-    · simp only [H₀, ite_eq_right hz, norm_zero]; positivity
++    · simpa only [H₀, if_pos hz] using hz
++    · simp only [H₀, if_neg hz, norm_zero]; positivity
+   have heq₀ (y : Y) : H₀ (p n y) = Hn n y := by
+     have hy := congrFun heq y
+     simp only [Function.comp_apply] at hy
+     have hb : ‖H' (p n y)‖ ≤ 2*C := hy ▸ hBn n y
+-    simpa only [H₀, ite_eq_left hb] using hy.symm
++    simpa only [H₀, if_pos hb] using hy.symm
+   refine ⟨n, H₀, hH₀, hB₀, ?_, ?_⟩
+   · simpa only [heq₀] using hint n
+   · simpa only [heq₀] using hn
+@@ -210,10 +210,10 @@
+   have hHbound : ∀ y, ‖H y‖ ≤ max A 0 := by
+     intro y
+     by_cases hy : ‖H₀ y‖ ≤ max A 0
+-    · simpa only [H, ite_eq_left hy] using hy
+-    · simp only [H, ite_eq_right hy, norm_zero]
++    · simpa only [H, if_pos hy] using hy
++    · simp only [H, if_neg hy, norm_zero]
+       exact le_max_right _ _
+-  exact ⟨H, hH, ⟨max A 0, le_max_right _ _, hHbound⟩, hHB.mono fun y hy => ite_eq_left hy⟩
++  exact ⟨H, hH, ⟨max A 0, le_max_right _ _, hHbound⟩, hHB.mono fun y hy => if_pos hy⟩
+ 
+ lemma finite_encoding_at_of_approximation
+     (μ : Measure X) [IsProbabilityMeasure μ] [SMulInvariantMeasure K X μ]
+@@ -226,7 +226,7 @@
+     (γ : ℝ) (ha : CompactApproximation.At (K := K) (μ.map p) q m H γ) :
+     FiniteEncodingApproximationAt μ p q b m γ := by
+   classical
+-  let : IsProbabilityMeasure (μ.map p) := inferInstance
++  let : IsProbabilityMeasure (μ.map p) := Measure.isProbabilityMeasure_map (by fun_prop)
+   obtain ⟨r, B, C, Hf, hB, hC, _hHm, hHf, ha⟩ := ha
+   refine ⟨r, B, C, Hf, hB, hC, hHf, ?_⟩
+   intro k
+@@ -289,7 +289,7 @@
+         (condDistrib b ((q n ∘ v n) ∘ p) μ) C = 0) :
+     DifferenceFourier.differenceLaw (μ.map p) (condDistrib d p μ) C = 0 := by
+   classical
+-  let : IsProbabilityMeasure (μ.map p) := inferInstance
++  let : IsProbabilityMeasure (μ.map p) := Measure.isProbabilityMeasure_map (by fun_prop)
+   by_contra hn
+   have hpos : 0 < RelativeCenters.differenceLaw (μ.map p) (condDistrib d p μ) C :=
+     pos_iff_ne_zero.mpr hn
+@@ -303,7 +303,8 @@
+   obtain ⟨H, hH, ⟨A, hA, hHB⟩, hHeq⟩ := bounded_phase_encoding μ p b m hm g hg
+   obtain ⟨n, H₀, hH₀, hH₀B, hi, he⟩ := LimitDensity.generated_factor_approximation
+     (μ.map p) v hv hmono hgen m H hH A hA hHB (γ/2) (by positivity)
+-  let : IsProbabilityMeasure ((μ.map p).map (v n)) := inferInstance
++  let : IsProbabilityMeasure ((μ.map p).map (v n)) :=
++    Measure.isProbabilityMeasure_map (hv n).aemeasurable
+   have hvector := CompactApproximation.vector_of_scalar ((μ.map p).map (v n)) (q n) (hq n) (hc n)
+   have happ := CompactApproximation.lift_at (μ.map p) (v n) (q n) (hv n) (hq n)
+     (KernelSupport.factor_smul_preserving μ p hp hpe) (hve n) m H H₀ hH hH₀
+@@ -353,7 +354,7 @@
+     (b : X → D) (hb : Measurable b) (y₀ : Y) (hw : IsWild (μ.map b)) :
+     DifferenceFourier.differenceLaw (μ.map (fun _ : X => y₀))
+       (condDistrib b (fun _ : X => y₀) μ) C = 0 := by
+-  let : IsProbabilityMeasure (μ.map b) := inferInstance
++  let : IsProbabilityMeasure (μ.map b) := Measure.isProbabilityMeasure_map (by fun_prop)
+   rw [DifferenceFourier.differenceLaw, ConditionalBase.prod_given_const μ b hb y₀,
+     Measure.map_apply (f := fun p : D × D => p.1 / p.2) (measurable_fst.div measurable_snd) measurableSet_C]
+   exact wild_independent_difference (μ.map b) hw
+@@ -399,7 +400,7 @@
+   classical
+   let P : X → W := q
+   have hP : Measurable P := hq
+-  let : IsProbabilityMeasure (μ.map P) := inferInstance
++  let : IsProbabilityMeasure (μ.map P) := Measure.isProbabilityMeasure_map (by fun_prop)
+   let ν := DifferenceFourier.differenceLaw (μ.map P) (condDistrib b P μ)
+   let : IsProbabilityMeasure ν := inferInstance
+   have hn (a : E) : 0 ≤ (∫ d, (eval a d : ℂ) ∂ν).re := by
+@@ -559,7 +560,7 @@
+   refine ⟨1, max 0 B, 1, fun _ _ => 1, le_max_left _ _, by norm_num,
+     fun _ => measurable_const, fun _ => by simp, ?_⟩
+   intro k
+-  refine ⟨fun y _ => H (k • y), Measurable.of_eval (fun _ => hH.comp (measurable_const_smul k)),
++  refine ⟨fun y _ => H (k • y), measurable_pi_lambda _ (fun _ => hH.comp (measurable_const_smul k)),
+     fun y => ?_, ?_, ?_⟩
+   · rw [pi_norm_le_iff_of_nonneg (le_max_left _ _)]
+     exact fun _ => (hB _).trans (le_max_right _ _)
+@@ -636,7 +637,7 @@
+           Integrable (fun x => dist (H (p x)) (H₀ (q x))^2) μ ∧
+           (∫ x, dist (H (p x)) (H₀ (q x))^2 ∂μ) < ε^2) :
+     DifferenceFourier.differenceLaw (μ.map p) (condDistrib d p μ) C = 0 := by
+-  let : IsProbabilityMeasure (μ.map p) := inferInstance
++  let : IsProbabilityMeasure (μ.map p) := Measure.isProbabilityMeasure_map (by fun_prop)
+   by_contra hn
+   have hpos : 0 < RelativeCenters.differenceLaw (μ.map p) (condDistrib d p μ) C :=
+     pos_iff_ne_zero.mpr hn
+@@ -649,7 +650,7 @@
+   have hγ : 0 < γ := by dsimp [γ]; positivity
+   obtain ⟨H, hH, ⟨A, _hA, hHB⟩, hHeq⟩ := bounded_phase_encoding μ p b m hm g hg
+   obtain ⟨q, hq, hqe, hprev, H₀, hH₀, hH₀B, hi, he⟩ := ha m H hH ⟨A,hHB⟩ (γ/2) (by positivity)
+-  let : IsProbabilityMeasure (μ.map q) := inferInstance
++  let : IsProbabilityMeasure (μ.map q) := Measure.isProbabilityMeasure_map (by fun_prop)
+   have happ := CompactApproximation.lift_at μ q id hq measurable_id
+     (fun k => measurePreserving_smul k μ) hqe m (H ∘ p) H₀ (hH.comp hp) hH₀ hH₀B γ hγ hi he
+     (CompactApproximation.vector_of_scalar (μ.map q) id measurable_id

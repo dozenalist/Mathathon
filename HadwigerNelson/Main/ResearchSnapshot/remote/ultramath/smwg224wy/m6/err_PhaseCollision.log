@@ -1,0 +1,188 @@
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:40:0: warning: automatically included section variable(s) unused in theorem `OAI.EuclideanFiveColor.AverageErrors.goodFraction_eq_sum`:
+  [MeasurableSpace Ω]
+  [Nonempty ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Ω] [Nonempty ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:53:0: warning: automatically included section variable(s) unused in theorem `OAI.EuclideanFiveColor.AverageErrors.goodFraction_nonneg`:
+  [MeasurableSpace Ω]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Ω] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:56:0: warning: automatically included section variable(s) unused in theorem `OAI.EuclideanFiveColor.AverageErrors.goodFraction_le_one`:
+  [MeasurableSpace Ω]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Ω] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:122:33: error: unknown namespace `PhaseCollision`
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:132:43: error: Function expected at
+  encoding
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (zp x j)
+
+Hint: The identifier `encoding` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:132:63: error: Function expected at
+  encoding
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (zp x j₀)
+
+Hint: The identifier `encoding` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:133:43: error: Function expected at
+  encoding
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (zm x j)
+
+Hint: The identifier `encoding` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:133:63: error: Function expected at
+  encoding
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (zm x j₀)
+
+Hint: The identifier `encoding` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:136:13: error: Function expected at
+  encoding
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (zp x j)
+
+Hint: The identifier `encoding` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:136:33: error: Function expected at
+  encoding
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (zp x j₀)
+
+Hint: The identifier `encoding` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:137:13: error: Function expected at
+  encoding
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (zm x j)
+
+Hint: The identifier `encoding` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:137:33: error: Function expected at
+  encoding
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (zm x j₀)
+
+Hint: The identifier `encoding` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:139:13: error: Function expected at
+  encoding
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (zp x j)
+
+Hint: The identifier `encoding` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:139:33: error: Function expected at
+  encoding
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (zp x j₀)
+
+Hint: The identifier `encoding` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:140:13: error: Function expected at
+  encoding
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (zm x j)
+
+Hint: The identifier `encoding` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:140:33: error: Function expected at
+  encoding
+but this term has type
+  ?m.1
+
+Note: Expected a function because this term is being applied to the argument
+  (zm x j₀)
+
+Hint: The identifier `encoding` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:149:10: error: Function expected at
+  encoding
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (zp x j)
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:149:30: error: Function expected at
+  encoding
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (zp x j₀)
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:150:10: error: Function expected at
+  encoding
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (zm x j)
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:150:30: error: Function expected at
+  encoding
+but this term has type
+  x✝
+
+Note: Expected a function because this term is being applied to the argument
+  (zm x j₀)
+OAI/Analysis/PlaneSpectrum/PhaseCollision.lean:144:77: error: unsolved goals
+Ω : Type u_1
+ι : Type u_2
+inst✝³ : MeasurableSpace Ω
+inst✝² : Fintype ι
+inst✝¹ : Nonempty ι
+x✝ : Sort u_3
+encoding : x✝
+μ : Measure Ω
+inst✝ : IsProbabilityMeasure μ
+m : ℕ
+hm : 0 < m
+ρ : ℝ
+hρ : 0 < ρ
+zp zm : Ω → ι → Fin m → Circle
+ap am : ι → Ω → Circle
+j₀ : ι
+hap : ∀ (j : ι), Measurable (ap j)
+ham : ∀ (j : ι), Measurable (am j)
+hDp : ∀ (j : ?m.384 μ m hm ρ hρ zp zm ap am j₀ hap ham), Measurable fun x => dist ?m.31 ?m.32
+hDm : ∀ (j : ?m.391 μ m hm ρ hρ zp zm ap am j₀ hap ham hDp), Measurable fun x => dist ?m.51 ?m.52
+hmem : ∀ᵐ (x : Ω) ∂μ, ∀ (j : ι), (∃ r, ap j x = zp x j r) ∧ ∃ r, am j x = zm x j r
+hi :
+  ∀ (j : ?m.412 μ m hm ρ hρ zp zm ap am j₀ hap ham hDp hDm hmem),
+    Integrable (fun x => dist ?m.85 ?m.86 ^ 2 + dist ?m.91 ?m.92 ^ 2) μ
+he :
+  ∀ (j : ?m.493 μ m hm ρ hρ zp zm ap am j₀ hap ham hDp hDm hmem hi),
+    ∫ (x : Ω), dist ?m.150 ?m.151 ^ 2 + dist ?m.156 ?m.157 ^ 2 ∂μ < (ρ ^ m / ↑m) ^ 2 / 20
+hlarge : 10 * m ^ 2 < Fintype.card ι
+δ : ℝ := ρ ^ m / ↑m
+hδ : 0 < δ
+⊢ ∃ i j, i ≠ j ∧ 1 / (4 * ↑m ^ 2) ≤ μ.real {x | dist (↑(ap i x) * ↑(am i x)) (↑(ap j x) * ↑(am j x)) ≤ 4 * ρ}

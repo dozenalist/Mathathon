@@ -1,0 +1,14 @@
+frozen_core.lean:78:2: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+'union_eq_of_three_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'not_disjoint_fourth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'exists_card_le_one_of_free_label' depends on axioms: [propext, Classical.choice, Quot.sound]
+'union_eq_of_three_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'not_disjoint_fourth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'exists_card_le_one_of_free_label' depends on axioms: [propext, Classical.choice, Quot.sound]
+TIME 0.70 s

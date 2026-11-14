@@ -1,0 +1,57 @@
+an/OAI/Analysis/PlaneSpectrum/Basic.lean:591:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:590:21: error: unsolved goals
+d : D
+val : ℂ
+property : val ∈ E
+ha : d ∈ L ⟨val, property⟩
+val_1 : ℂ
+property_1 : val_1 ∈ E
+hb : d ∈ L ⟨val_1, property_1⟩
+⊢ d ∈ L ⟨val + val_1, ⋯⟩
+work/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:600:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:599:25: error: unsolved goals
+d : D
+val : ℂ
+property : val ∈ E
+ha : d ∈ L ⟨val, property⟩
+val_1 : ℝ
+property_1 : val_1 ∈ F
+⊢ d ∈ L (⟨val, property⟩ * ofF ⟨val_1, property_1⟩)
+work/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:611:37: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+work/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:637:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:636:47: error: unsolved goals
+d : D
+h1 : d ∈ L 1
+val : ℂ
+property : val ∈ E
+hw : d ∈ L ⟨val, property⟩
+hn : ¬imF ⟨val, property⟩ = 0
+⊢ d ∈ C
+work/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:673:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:672:78: error: unsolved goals
+val : Circle
+property : val ∈ K
+hi : imF (kCoeff ⟨val, property⟩) = 0
+⊢ val ^ 2 = 1
+work/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:686:18: warning: aesop: maximum number of rule applications (200) reached. Set the 'maxRuleApplications' option to increase the limit.
+work/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:685:75: error: unsolved goals
+val : ℂ
+property : val ∈ E
+ha : ¬⟨val, property⟩ = 0
+val_1 : Circle
+property_1 : val_1 ∈ K
+val_2 : Circle
+property_2 : val_2 ∈ K
+huv : ¬val_1 ^ 2 = val_2 ^ 2
+a : imF ((kCoeff ⟨val_1, property_1⟩)⁻¹ * ⟨val, property⟩⁻¹ * (⟨val, property⟩ * kCoeff ⟨val_2, property_2⟩)) = 0
+⊢ False
+work/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:698:18: warning: aesop: failed to prove the goal after exhaustive search.
+work/lean/OAI/Analysis/PlaneSpectrum/Basic.lean:697:58: error: unsolved goals
+ν : MeasureTheory.Measure D
+inst : MeasureTheory.IsProbabilityMeasure ν
+hν : IsWild ν
+val : ℂ
+property : val ∈ E
+ha : ¬⟨val, property⟩ = 0
+⊢ ν (L ⟨val, property⟩) = 0

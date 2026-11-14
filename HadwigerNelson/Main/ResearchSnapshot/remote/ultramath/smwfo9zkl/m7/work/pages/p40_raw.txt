@@ -1,0 +1,49 @@
+Indeed, differentiating c + d = a + b − h at h = 0 in direction H gives Jaθ̇ + Jbϕ̇ = −H; take the
+dot product with b. Since H · a ̸= 0, this velocity takes different values at projectively different
+nonparallel directions b. The positive measure of the V state allows choices b,b′ ∈ SV,x, neither
+parallel to a, with VH(a;b) > VH(a;b′).
+Set cn = T1
+hn
+(a,b). By support transport, cn ∈ Nyn, and smoothness gives
+argcn = arga + δnVH(a;b) + o(δn).
+If cn ∈ SU,yn along an infinite subsequence, choose b′
+n ∈ SV,yn with b′
+n → b′. Transporting (cn,b′
+n)
+back by T−hn
+gives a first endpoint in Nx whose angle is
+arga + δn VH(a;b) − VH(a;b′
+)
+
++ o(δn).
+This lies strictly inside the gap for large n, a contradiction. To justify the error term without any
+convergence rate for b′
+n, let τ(h,θ, β) be a real lift of the first output angle on a fixed branch near
+(0,arga,argb′). The identity τ(0,θ, β) = θ gives, uniformly on a smaller neighborhood,
+τ(h,θ, β) = θ + Dhτ(0,θ, β)h +O(|h|2
+).
+Thus the change in the auxiliary angle β affects only the coefficient multiplied by h. Continuity of
+that coefficient, cn → a, b′
+n → b′, and Hn → H give the claimed o(δn) remainder.
+It follows that cn ∈ SV,yn for all large n. The strict separation for U leaves a neighborhood of Ra
+free of SU,x. Immediately to the right of a the state is X almost everywhere, so immediately to the
+right of Ra it is non-X almost everywhere. It must therefore be V on a one-sided neighborhood of
+Ra, giving Ra ∈ SV,x. There are points of SV,yn tending to Ra. Together with cn → a, these violate
+the uniform strict separation of SV,yn from its own R-shift.
+For a gap lying to the left of a, choose VH(a;b) < VH(a;b′) and repeat the argument on that
+side. Thus every gap endpoint would have to satisfy H ·a = 0. There are only two such directions,
+and they are antipodal. A nonempty gap has distinct endpoints and length at most κ < π, so its
+two endpoints cannot both be these directions. This contradiction rules out accumulation in L and
+proves local finiteness for the specified four-cycle.
+6.3.3 Five-cycles: support lists and a global step ban
+Fix a five-cycle, labeled in cyclic order by Z/5Z, and a center x in its locus. By (6.2) and Proposi-
+tion 5.6, almost every palette is exactly one of its diagonals
+Di = {i,i +2}, i ∈ Z/5Z.
+Write wx(e) = i for this state. Two such diagonals are disjoint exactly when their indices differ by
+one, so
+wx(Re) = wx(e) ±1 (mod 5) almost everywhere. (6.6)
+Let Si be the closed essential support of state i, and let
+S(a) = {i : a ∈ Si} (a ∈ S)
+be its support list. Every list is nonempty, since the finitely many supports cover the circle: an
+uncovered direction would have a neighborhood on which all five state sets were null.
+40

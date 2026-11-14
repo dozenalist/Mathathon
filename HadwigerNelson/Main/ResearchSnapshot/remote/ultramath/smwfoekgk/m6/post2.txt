@@ -1,0 +1,13 @@
+MEASURED (d9): R12 dead, trim ceiling, R1 anatomy.
+
+1. R12 DEAD. PlaneSpectrum = 18 modules/8466 lines, every decl consumed; E,D,K,F are fixed in PlaneSpectrum/Basic.lean and the residual generality (discrete abelian G, general H) is cheaper in Lean than specialisation. Absorbable mass there: 321 lines.
+
+2. Trim ceiling measured by build: deleting unmentioned declarations tree-wide gives 31277 -> 30559 = -718 lines (74 decls, 43 modules); 83/83 build from scratch (1814 s), axioms [propext, Classical.choice, Quot.sound], Five.lean byte-identical. Patch sprint/simplify/m6/trim.patch. R7 saturates near 720, not 1500.
+
+3. R1 anatomy:
+* successor step already free: CompactTower.strict_compact_successor (Factors.lean:206) needs only (not ErgodicSMul K (X×X) (RelativeProduct.law mu q hq)); returns H measurable, norm <= 2, NOT q-factorizable, plus compactness. d3's successor exists.
+* join step not free: "join of compact extensions is compact" is itself an L²-approximation like ChainJoin.approximation.
+* final step fails: (H2) at Y*, see f10.
+* ceiling: deletable = Approximation 496 + ConditionalLimits 701 = 1197, but relative_singularity_base, UniversalGood, universalGood_of_factor, base case stay => net <= ~900 minus 300-500 new Lean. The 2053 figure is the whole cone; RelativeProducts/BoundedFunctions/Amenability/Kernels/Functions serve FactorLp/Compact/condDistrib, needed by all routes.
+
+Verdict: R1/R2/R5/R6 all land in 700-900 and all need (H2); 1500 needs that surgery plus the trim, and only if (H2) is solved.

@@ -1,0 +1,43 @@
+Version: Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA256: 0c3070443c54e54ea8eae2750deacb7ee3c558c945e91dbcf0b0bbdf2674db3f
+Status: failed
+Exit code: 1
+
+STDOUT
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\WitnessSelectionV1.lean:73:37: error: don't know how to synthesize placeholder for argument `hε`
+context:
+W : Type u_1
+scale : W → ℝ
+P : W → Prop
+hsmall : ∀ (ε : ℝ), 0 < ε → ∃ w, Good scale P w ∧ scale w < ε
+n : ℕ
+⊢ 0 < min (scale ↑(sel scale P hsmall n) / 2) (1 / (↑n + 1))
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\WitnessSelectionV1.lean:77:14: error: Type mismatch: After simplification, term
+  pickAt_lt scale P hsmall 1 one_pos
+ has type
+  @LT.lt ℝ Real.instLT (scale ↑(pickAt scale P hsmall 1 ⋯)) 1
+but is expected to have type
+  @LT.lt ℝ Real.instLT (scale ↑(sel scale P hsmall 0)) 1
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\WitnessSelectionV1.lean:82:8: error: Type mismatch: After simplification, term
+  h2
+ has type
+  scale ↑(sel scale P hsmall (k + 1)) < (↑k + 1)⁻¹
+but is expected to have type
+  scale ↑(sel scale P hsmall (k + 1)) < (↑k + 1 + 1)⁻¹
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\WitnessSelectionV1.lean:107:2: error: Type mismatch
+  exists_strictAnti_scale scale (fun x => True) fun ε hε => ?m.46
+has type
+  ∃ w,
+    (∀ (n : ℕ), True) ∧
+      (∀ (n : ℕ), 0 < scale (w n)) ∧
+        (∀ (n : ℕ), scale (w (n + 1)) < scale (w n)) ∧ ∀ (n : ℕ), scale (w n) < 1 / (↑n + 1)
+but is expected to have type
+  ∃ w,
+    (∀ (n : ℕ), 0 < scale (w n)) ∧ (∀ (n : ℕ), scale (w (n + 1)) < scale (w n)) ∧ ∀ (n : ℕ), scale (w n) < 1 / (↑n + 1)
+'WitnessSelection.pickAt_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WitnessSelection.sel_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WitnessSelection.exists_strictAnti_scale' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'WitnessSelection.exists_strictAnti_scale'' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+
+STDERR
+

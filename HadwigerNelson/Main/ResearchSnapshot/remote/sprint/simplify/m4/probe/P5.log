@@ -1,0 +1,5 @@
+'M4Probe.measurable_topSigma_of_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'M4Probe.compact_of_measurable_topSigma' depends on axioms: [propext, Classical.choice, Quot.sound]
+'M4Probe.compact_of_inClass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'M4Probe.join_inClass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'M4Probe.topSigma_inClass' depends on axioms: [propext, Classical.choice, Quot.sound]

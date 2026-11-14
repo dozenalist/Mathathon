@@ -1,0 +1,189 @@
+{
+"OAI.Analysis.PlaneSpectrum.CircleOperator": [
+"colorMass_le_one",
+"colorMass_measurable",
+"circleOperator_norm_le"
+],
+"OAI.Analysis.PlaneSpectrum.ConditionalSpectrum": [
+"eval_scalar"
+],
+"OAI.Analysis.PlaneSpectrum.Energy": [
+"char_neg"
+],
+"OAI.Analysis.PlaneSpectrum.FourierTests": [
+"difference_coefficient_nonneg"
+],
+"OAI.Analysis.PlaneSpectrum.InvariantMean": [
+"weakIntegral_pair",
+"integralReal_shift",
+"integralReal_nonneg",
+"periodSum_add",
+"weakMean_add",
+"shift_comm"
+],
+"OAI.Analysis.PlaneSpectrum.Multipliers": [
+"weight_inner"
+],
+"OAI.Analysis.PlaneSpectrum.NumberFields": [
+"General.spans"
+],
+"OAI.Analysis.PlaneSpectrum.PhaseCollision": [
+"collision_from_close_encodings"
+],
+"OAI.Analysis.PlaneSpectrum.Representations": [
+"translation_apply",
+"mem_space",
+"unitary_apply"
+],
+"OAI.Analysis.PlaneSpectrum.SpectralMeasure": [
+"character_apply"
+],
+"OAI.Geometry.PlaneColoring.AngularBoundary": [
+"angleBoundary_closed",
+"four_word_mixed_periodic"
+],
+"OAI.Geometry.PlaneColoring.Basic": [
+"WeakMeasurableColoring",
+"weakPairMeasure"
+],
+"OAI.Geometry.PlaneColoring.BinaryPalettes": [
+"binary_pair_distinct"
+],
+"OAI.Geometry.PlaneColoring.BorelTransfer": [
+"proper_to_weak"
+],
+"OAI.Geometry.PlaneColoring.BoundaryTrace": [
+"four_split_antipodes",
+"unit_antipodes_of_no_positive"
+],
+"OAI.Geometry.PlaneColoring.Compactness": [
+"isCompact_traces",
+"continuous_eval",
+"value_norm",
+"sampling_weak_compact"
+],
+"OAI.Geometry.PlaneColoring.ContinuumLimits": [
+"finite_continuum_subsequence"
+],
+"OAI.Geometry.PlaneColoring.CyclicCore": [
+"standardCore_closed",
+"cyclicCore_closed",
+"five_ae_mem_support"
+],
+"OAI.Geometry.PlaneColoring.DiskExtension": [
+"coreHoles_open",
+"graphLift_vertex"
+],
+"OAI.Geometry.PlaneColoring.Exclusion": [
+"five_diag_unique",
+"five_diag_nonempty"
+],
+"OAI.Geometry.PlaneColoring.Expansion": [
+"geometric_partial_sum"
+],
+"OAI.Geometry.PlaneColoring.FiveSupport": [
+"five_realState_measurable"
+],
+"OAI.Geometry.PlaneColoring.FourContinuity": [
+"strict_state_uniform_on_compact"
+],
+"OAI.Geometry.PlaneColoring.GraphCuts": [
+"fiberCrosses_symm"
+],
+"OAI.Geometry.PlaneColoring.GraphRealization": [
+"graphRealization_nonneg"
+],
+"OAI.Geometry.PlaneColoring.HoleApproximation": [
+"annuli_tendsto",
+"sum_tendsto",
+"\u03b5_tendsto",
+"diskAnnulus_measurable",
+"initial_core_cover"
+],
+"OAI.Geometry.PlaneColoring.Interfaces": [
+"interfaceFourEdge_eq",
+"interface_four_split_no_opposite",
+"interface_four_diagonal_ne_zero",
+"interface_four_split_neg"
+],
+"OAI.Geometry.PlaneColoring.Lattice": [
+"normSq_nonneg"
+],
+"OAI.Geometry.PlaneColoring.MeasurableAssembly": [
+"exists_measurable_unit_distance_coloring_of_center_cover"
+],
+"OAI.Geometry.PlaneColoring.MeasurableProper": [
+"weakMeasurableColoring_of_aemeasurable_proper",
+"ae_weakPairMeasure_unit",
+"ae_circleMeasure_norm",
+"norm_circleDir",
+"measurable_circleDir",
+"continuous_circleDir"
+],
+"OAI.Geometry.PlaneColoring.Mesh": [
+"\u03b5_tendsto"
+],
+"OAI.Geometry.PlaneColoring.Moser": [
+"abs_le_of_bounds"
+],
+"OAI.Geometry.PlaneColoring.PaletteDensity": [
+"flat_density_not_one",
+"FlatDensityZero.mono_ae",
+"palette_transfer_pair",
+"palette_second_exclusion"
+],
+"OAI.Geometry.PlaneColoring.Palettes": [
+"paletteSet_minimal"
+],
+"OAI.Geometry.PlaneColoring.Sectors": [
+"triangleState_measurable"
+],
+"OAI.Geometry.PlaneColoring.Seven": [
+"weakMeasurableColoring_seven",
+"exists_measurable_proper_seven"
+],
+"OAI.Geometry.PlaneColoring.WeakColoring": [
+"correlation_continuous"
+],
+"OAI.MeasureTheory.CompactFactors.Amenability": [
+"vector_orbit_zero",
+"vector_norm_le"
+],
+"OAI.MeasureTheory.CompactFactors.BoundedFunctions": [
+"project_eq_condexp"
+],
+"OAI.MeasureTheory.CompactFactors.Centers": [
+"range_j",
+"objective_zero"
+],
+"OAI.MeasureTheory.CompactFactors.ConditionalLimits": [
+"relative_singularity_limit",
+"finite_encoding_at_of_approximation"
+],
+"OAI.MeasureTheory.CompactFactors.Factors": [
+"encode_bound"
+],
+"OAI.MeasureTheory.CompactFactors.Functions": [
+"compact_conj"
+],
+"OAI.MeasureTheory.CompactFactors.RelativeCenters": [
+"center_law_ordinary"
+],
+"OAI.MeasureTheory.CompactFactors.RelativeProducts": [
+"linear_prod_replace",
+"tensor_conj",
+"orbit_add",
+"avg_congr_ae",
+"projectCLM_l2",
+"projectCLM"
+],
+"OAI.MeasureTheory.CompactFactors.Separability": [
+"meanNorm_const",
+"meanNorm_sub_le",
+"meanNorm_neg",
+"meanNorm_mono",
+"act_zero",
+"conj_mul",
+"inner_act"
+]
+}

@@ -1,0 +1,43 @@
+--- /workspace/nucleus/work/projects/p-a4e2849861784c708dd751c46b0f4f64/repo/lean/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean	2026-11-13 19:09:13.640958217 +0000
++++ OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean	2026-11-13 19:58:18.659638217 +0000
+@@ -61,9 +61,13 @@
+ namespace EuclideanFiveColor.BoundedMeasurable
+ variable {X : Type*} [MeasurableSpace X] (μ : Measure X) [IsFiniteMeasure μ]
+ def mulLp (f : Func X) (g : Lp ℂ 2 μ) : Lp ℂ 2 μ :=
+-  ((memLp μ f ∞).fun_mul (Lp.memLp g)).toLp (fun point => f point * g point)
++  (MemLp.mul' (hpqr := ENNReal.HolderTriple.instInfty 2) (memLp μ f ∞)
++    (Lp.memLp g)).toLp (fun point => g point * f point)
+ lemma mulLp_ae (f : Func X) (g : Lp ℂ 2 μ) :
+-    mulLp μ f g =ᵐ[μ] fun x => f x * g x := MemLp.coeFn_toLp _
++    mulLp μ f g =ᵐ[μ] fun x => f x * g x := by
++  filter_upwards [MemLp.coeFn_toLp (MemLp.mul' (hpqr := ENNReal.HolderTriple.instInfty 2)
++    (memLp μ f ∞) (Lp.memLp g))] with x hx
++  exact hx.trans (mul_comm _ _)
+ def mulLpLinear (f : Func X) : Lp ℂ 2 μ →ₗ[ℂ] Lp ℂ 2 μ where
+   toFun := mulLp μ f
+   map_add' g h := by
+@@ -106,19 +110,17 @@
+ instance algebra_closed : IsClosed (algebra U : Set (H →L[ℂ] H)) :=
+   StarSubalgebra.isClosed_topologicalClosure _
+ lemma adjoin_comm : IsMulCommutative (StarAlgebra.adjoin ℂ (Set.range (fun g => (U g : H →L[ℂ] H)))) := by
+-  apply StarAlgebra.isMulCommutative_adjoin
+-  · rintro _ ⟨element,rfl⟩
+-    infer_instance
+-  · rintro _ ⟨left,rfl⟩ _ ⟨right,rfl⟩ _
++  apply StarAlgebra.isMulCommutative_adjoin ℂ
++  · rintro _ ⟨left,rfl⟩ _ ⟨right,rfl⟩
+     change ((U left * U right : unitary _) : H →L[ℂ] H) = ((U right * U left : unitary _) : H →L[ℂ] H)
+     rw [← map_mul,← map_mul,mul_comm]
+-  · rintro _ ⟨left,rfl⟩ _ ⟨right,rfl⟩ _
++  · rintro _ ⟨left,rfl⟩ _ ⟨right,rfl⟩
+     change ((U left * (U right)⁻¹ : unitary _) : H →L[ℂ] H) = (((U right)⁻¹ * U left : unitary _) : H →L[ℂ] H)
+     rw [← map_inv,← map_mul,← map_mul,mul_comm]
+ open scoped IsMulCommutative in
+ instance algebra_commRing : CommRing (algebra U) :=
+-  let := adjoin_comm U
+-  inferInstance
++  letI := adjoin_comm U
++  StarSubalgebra.commRingTopologicalClosure _ (fun x y => mul_comm x y)
+ instance algebra_commCStar : CommCStarAlgebra (algebra U) where
+ 
+ def generator (g : G) : algebra U :=

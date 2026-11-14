@@ -1,0 +1,12 @@
+EuclideanFiveColor.no_five_exclusion_continua : ∀ (c : ℂ → Fin 5),
+  Measurable c →
+    EuclideanFiveColor.WeakColoring 5 c →
+      ∀ {x : ℂ} {K : Fin 5 → Set ℂ} {v : Fin 5 → ℂ},
+        (∀ (i : Fin 5), ‖v i‖ = 1) →
+          ∀ (hK : (i : Fin 5) → EuclideanFiveColor.ApproachingContinuum x (K i) (v i)),
+            (∀ (i : Fin 5),
+                Disjoint (EuclideanFiveColor.spatialSupport c i) (EuclideanFiveColor.Straddle (K i)) ∧
+                  Disjoint (EuclideanFiveColor.spatialSupport c (i + 1)) (EuclideanFiveColor.Straddle (K i))) →
+              False
+'OAI.EuclideanFiveColor.no_five_exclusion_continua' depends on axioms: [propext, Classical.choice, Quot.sound]
+TIME 40.57 s

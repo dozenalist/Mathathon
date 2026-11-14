@@ -1,0 +1,35 @@
+Lean 4.34.1 + Mathlib @ d13f23b723b8a846827a245b89c10fc7d3f11612
+78/78 modules build with zero patches (scripts/build4341.log)
+command: (cd repo/lean && source ../scripts/env4341.sh && LEAN_PATH=build/lib:$LEAN_PATH lean ../.ultramath/smwfcr56i/m1/Axioms.lean)
+--- output:
+'OAI.EuclideanFiveColor.no_proper_five_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.properColoring_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.exists_unit_distance_coloring_of_center_cover' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.Problem160.triangular_lattice_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.triangularLattice_dist_gt_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.SevenLattice.same_color_separation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_measurable_weak_five_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.proper_to_borel_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.fullApprox_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.FullApprox.no_large_positive_sequence' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.EuclideanFiveColor.graph_map_large_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.PlanarCover.compact_open_cover_impossible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.graphRealization_positive_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.thresholdMap_mem_forest' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.compact_forest_charts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.PlaneFiveColor.Spectral.wild_coset_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.PlaneFiveColor.Spectral.wild_independent_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.PlaneFiveColor.Spectral.wild_line_average_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.palette_cardinality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.binary_centers_separated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.cyclicCore_compact_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_five_exclusion_continua' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_five_commonInterface' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_triangle_commonInterface' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.five_opposite_contacts_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.straddle_connected_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.four_words_no_mixed' depends on axioms: [propext, Classical.choice, Quot.sound]
