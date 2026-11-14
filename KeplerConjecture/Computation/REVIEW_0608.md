@@ -132,6 +132,18 @@ the regular dodecahedron).
 adding contacts, because the maximal kissing configuration already covers every direction. Raising
 `b(0)` needs a *different* local geometry, not a fuller shell.
 
+**And the arrangement is what decides**, not the contact count: the *cuboctahedral* 12-shell — which
+is exactly FCC's neighbourhood — gives `b(0) = −0.004242` at the same radius `2.0005` and `−0.4350`
+at `2.05`, and at radius exactly `2` its cell is the rhombic dodecahedron of volume `√32`, so `b = 0`
+there and it can **never** be positive. Same twelve contacts, same distance, opposite verdict:
+
+| shell | `r = 2.0005` | `r = 2` exactly |
+| --- | --- | --- |
+| icosahedral | `b(0) = +0.102399` | `+0.106563` (the dodecahedron) |
+| cuboctahedral (= FCC) | `b(0) = −0.004242` | `0` exactly |
+
+Nonvacuousness is a property of the **arrangement**.
+
 ### 2.3b Where the content sits, and convergence of the rational shell
 
 Two checks that the fixture is what it claims.
@@ -238,6 +250,10 @@ not volumes alone.
 
 ## 5. What is NOT claimed
 
+* **The 500 finite cases were re-run after the engine changed.** The qhull-free volume code (§3)
+  recomputes all 500 instances of `nearcontact_scan.py` to a byte-identical JSON: still `0` with
+  `t* > 0`, densities `0.6206–0.7392`. That re-run is the check that the engine change did not move
+  any number.
 * **The 500 finite cases stay finite evidence.** `nearcontact_scan.py` scans 500 near-contact
   instances in five families at densities `0.6206–0.7392` and finds `t* = 0` in every one. That is
   `TESTED_FINITE`: it says the criterion is vacuous in those families, **not** that it is vacuous in
