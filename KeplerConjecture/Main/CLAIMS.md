@@ -2173,10 +2173,17 @@ inequality) and `K15-C051` (no locally dense periodic blob found), and with
   i.e. `Σ_C b ≤ 0` with `b = √32 − vol Ω`: each component must pay for itself.
 - **The transfer route** (`K15-C044`) asks only `Σ_C b ≤ Φ|δ⁺_R(C)|` for the same
   `C`, because the component may be funded from outside across its boundary.
-- Since `Φ|δ⁺_R(C)| ≥ 0`, the transfer condition is implied by `(T')` and is strictly
-  weaker whenever `δ⁺_R(C) ≠ ∅` — which holds for every bounded component in a
-  saturated packing (there are always neighbours at distance in `(2.09, …)` unless
-  the component is the whole packing).
+- Since `Φ|δ⁺_R(C)| ≥ 0`, the transfer condition is implied by `(T')`, and it is
+  *strictly* weaker exactly when `δ⁺_R(C) ≠ ∅`.
+- **Precision (corrected in the same entry).** The first version claimed every bounded
+  component has out-edges in a saturated packing. That is **not proved**: a closed
+  finite component would need every centre within `R` of it to be inside it, and while
+  saturation forbids leaving room for a *new* sphere, it does not by itself forbid a
+  cluster whose nearest outside neighbour is farther than `R = 2.09`. What is true is
+  the conditional statement: **if** the component has out-edges, the cut form is
+  weaker; **if** it is closed, the cut condition *is* `(T')`. So a proof of the cut
+  form must handle both, and a closed component is exactly the case where E's `(T')`
+  cannot be avoided.
 - **Consequence for the next block.** The target should be stated in the *cut* form,
   not as `(T')`: it is the weaker obligation, it is exactly what a transfer
   certificate needs, and its price `Φ` is explicit in the final rate
