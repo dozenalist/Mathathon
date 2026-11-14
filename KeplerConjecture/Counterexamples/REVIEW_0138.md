@@ -384,3 +384,77 @@ success     a certified value < 0.810774752922
 Every claim above has a reproducible script under `Counterexamples/` and `Counterexamples/Reviews/`;
 the sign-predicate artifacts are `exact_sign.py` (authority), `Reviews/x_adversarial_shellcheck.py`,
 and `Reviews/x_family_check.py` (random **and** probe-targeted families).
+
+---
+
+## 10. `K15-X-C013`: certified `0.794809295672` — the strict-margin SDP works
+
+### 10.1 What made the difference
+
+Two changes, both necessary:
+
+1. **A strict margin on the SOS blocks.** With `A,B ⪰ 0` the SDP optimum sits on the boundary,
+   the solver returns `min eig ≈ −10⁻⁷`, and *every* rational rounding is rejected. Replacing them
+   by `A,B ⪰ εI` with `ε = 10⁻⁶` moves the optimum into the interior, so a nearby rational
+   SOS representation exists. `CLARABEL` then reports `min eig A = 1.0×10⁻⁶` exactly as required.
+2. **Round the Cholesky factor, never the Gram matrix** (§8.2). `H = Σ_j q_j²` then holds
+   *identically*, so CE1 needs no sign test at all.
+
+### 10.2 The certificate (frozen, `X_C013_certificate.json`)
+
+$$q_1=\frac{97307490s^3-1092569588s^2-31547019s-52222164}{17729424678},\quad
+q_2=-\frac{4331237s^3+14039182s^2-720269172s+149399793}{2442817668},$$
+$$q_3=-\frac{17081708s^3-376637660s^2+1451802684s+7034095257}{13784938356},$$
+$$H=q_1^2+q_2^2+q_3^2\quad(\deg 6),\qquad P=-(s-4)H,\qquad f(x)=P(|x|^2)e^{-|x|^2},$$
+$$\frac{P(0)}{Q(0)}=\frac{281839935071797}{266763929780642}\Big/\frac{19955550866148368228524748218725506847387847117712051327}{19956640533391903604409039403095657914895829471032461312}
+=1.0565720976369093,$$
+$$\boxed{\ \Delta\;\le\;\frac{4}{3\sqrt\pi}\cdot 1.0565720976369093\;=\;\mathbf{0.794809295672}\ }$$
+
+Verified: **CE1 structural** (`H` is an explicit sum of three squares, so `P ≤ 0` on `[4,∞)` with no
+sign test); **CE2 exact** (`Q ≥ 0` on `[0,∞)`; `Q` has **no** real root in `[0,∞)` and exactly one
+real root overall, which is negative); and the value passes both independent sanity checks —
+above Kepler `0.740480489` and above Li's floor for *any* CE certificate `0.770657`.
+
+### 10.3 Where this sits, stated without inflation
+
+| bound | value | source |
+| --- | --- | --- |
+| Kepler | `0.740480` | target |
+| Li's floor for any CE certificate | `0.770657` | Li, Thm 6.1 (necessary) |
+| CDS22 optimised CE | `0.779747` | published |
+| C's `K15-C033`, computed here | `0.77996650` | in-house |
+| **X's `K15-X-C013`** | **`0.794809`** | this block |
+| X's previous `K15-X-C010` | `0.818087` | earlier block |
+
+So the SDP route produced a **`0.023` improvement** over my own previous best, and it is now within
+`0.015` of the published optimised CE value — but it is **not** competitive with CDS22 and makes no
+claim to be. Its value is that it is an **independently generated, exactly certified** number in the
+ordinary CE class, produced without reusing C's or Main's code, and its certificate is a short
+explicit list of rational polynomials. Whether it beats `0.779747` depends on reaching `m ≥ 4`,
+which the current solvers cannot do (§10.4).
+
+### 10.4 Why `m ≥ 4` fails, precisely
+
+| `m` | CLARABEL (margin) | SCS (margin) | verdict |
+| --- | --- | --- | --- |
+| 2 | `1.078207` | — | certified `0.811081` |
+| 3 | `1.056522` | — | **certified `0.794809`** |
+| 4 | `SolverError` | `0.000161` | unusable — the value is **below Li's floor `1.024466`**, hence provably infeasible |
+| 5 | `SolverError` | `0.026684` | same |
+
+The `m = 4,5` outputs are recognisable as garbage *without any certificate*: a valid CE certificate
+in this normalisation must satisfy `P(0)/Q(0) ≥ 1.024466` (Li), so anything below that is
+infeasible. **That Li-floor check is the cheapest imaginable filter and should be built into every
+future SDP run in this project** — it would have caught my own invalid `0.810774751` too, since
+`1.07780 > 1.024466` did *not* catch it but the `m=4` value would have been caught instantly.
+
+The next step is a solver that handles the `m ≥ 4` SDP (higher-degree Gram blocks, ill-conditioned
+because the basis `1,s,…,s^m` is badly scaled). **Basis rescaling** (`s ↦ σ·s` to put the action
+inside `[0,1]`) is the obvious first fix and is cheap; it is filed in the bounded request below.
+
+## 11. Block close (second half)
+
+Checkpoints pushed: `7de7bee` (Task 1), `9d85f3b` (Task 2), `a65a705` (Task 3 + retraction of the
+near-tangency "correction"), `1fc26ac` (X-C012), and this final commit. Everything reported above is
+reproducible from `Counterexamples/` with the commands in each section; Ultramath is the actual
+runtime per the supervisor, which I accept.
