@@ -41,6 +41,14 @@ None of these is a Kepler proof, and none is a new best bound: `0.782267 > 0.740
 | `Reviews/repro_c_cutflow_defects.py` | C's five live `cut_flow.py` defects (+1 latent, +1 cosmetic), portably | 13/13 checks |
 | `Reviews/verify_eta_closed.py` | whether Main's `5caa1c9` closed the `η` witness | closed, control unchanged |
 | `Reviews/g8_checker_independence.py` | `PROOF_GAPS` G8: do the two exact checkers share code, and do they agree | no shared code; 52/52 agreement on the `q` side |
+| `REVIEW_0523.md` | audit of Main's `GEOMETRIC_LEMMA_0438.md` / `EXPOSITION_0438.md` at `a6f3935`: C106–C108, Theorem B/C/D | six findings, `X-C037`…`X-C049` |
+| `Reviews/witness_0438_audit.py` | exact witnesses W1–W3 for the 0438 audit (C_R, (M), the star) | runs clean |
+| `Reviews/two_dodecahedra_indep.py` | Theorem D step 4 recomputed, and the E/Main discrepancy resolved | `sup_t m(t) = 1.125554844510 < 2` |
+| `Reviews/p_le_eta_independent.py` | the bounded-interval `p ≤ η` predicate by Vincent–Descartes, no Sturm | 92 cases, 0 mismatches; found the `nsimplify` bug (`X-C045`) |
+| `Reviews/crack_cell_indep.py` | crack-packing cell volumes by half-space clipping | `√32 + 2ε` exactly; the `6.985` confirmed |
+| `Reviews/near_contact_band_indep.py` | the two-dodecahedra threshold, against `C116`'s `6/√5` | threshold `3.4555003`, attainable; `C116` 28.8% short |
+| `Reviews/a15_pair_indep.py` | A15 Voronoi volumes, against the §5 table's `15.875` | `125/16`, `129/16`, sum `a³`; contacts give `16.125` |
+| `Reviews/fcc_hcp_cells_indep.py` | fcc and hcp cells: volume and circumradius | both `√32`, `√2`, 12 contacts |
 
 ## Known-wrong things in the tree (kept deliberately, do not quote)
 

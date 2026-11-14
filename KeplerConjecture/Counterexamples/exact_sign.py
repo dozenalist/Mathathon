@@ -16,6 +16,28 @@ import sympy as sp
 
 _T = sp.Symbol('t')
 
+
+def _endpoint(x):
+    """Exact conversion of an interval endpoint, WITHOUT `sp.nsimplify`.
+
+    `sp.nsimplify` on a rational with a long denominator invents a radical: e.g.
+    nsimplify(Rational(353553390593273762200422181, 250000000000)) = 1000*sqrt(2), which is a
+    different number (1414.21 vs 1.41421).  Deciding a sign on that interval would be deciding a
+    sign somewhere else, silently.  Rationals are therefore converted exactly and never
+    `nsimplify`d; only genuinely symbolic input is passed through.
+    """
+    if isinstance(x, sp.Rational): return x
+    if isinstance(x, sp.Integer): return sp.Integer(x)
+    try:
+        import fractions
+        if isinstance(x, fractions.Fraction): return sp.Rational(x.numerator, x.denominator)
+    except Exception:
+        pass
+    if isinstance(x, int): return sp.Integer(x)
+    if isinstance(x, float):
+        raise ValueError("float endpoint: pass an exact rational, the decision is exact")
+    return sp.nsimplify(x)
+
 def sign_on_half_line(p, a, want, full=False, var=None):
     """EXACT: is sign(p) == want (-1/0/+1) on [a, inf)?
     Endpoint zeros are allowed (touching), interior odd-multiplicity roots are not.
@@ -30,7 +52,7 @@ def sign_on_half_line(p, a, want, full=False, var=None):
     if P.is_zero:
         r = (want == 0), "zero polynomial"
         return r if full else r[0]
-    a = sp.nsimplify(a)
+    a = _endpoint(a)
     coeff, facs = sp.sqf_list(p)
     u = sp.Integer(1)
     for f, m in facs:
@@ -75,7 +97,7 @@ def sign_on_interval(p, lo, hi, want, full=False, var=None):
     elif len(fs) == 1:  t = list(fs)[0]
     elif len(fs) == 0:  t = _T
     else: raise ValueError("need a univariate polynomial")
-    lo = sp.nsimplify(lo); hi = sp.nsimplify(hi)
+    lo = _endpoint(lo); hi = _endpoint(hi)
     if sp.simplify(p.subs(t, lo)) == 0 and sp.simplify(p.subs(t, hi)) == 0 and lo == hi:
         r = (want == 0), "degenerate point interval"
         return r if full else r[0]

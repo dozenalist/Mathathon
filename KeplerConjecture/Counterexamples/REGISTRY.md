@@ -710,3 +710,239 @@ revision can be audited the same way. **Why `e229923`'s new self-check does not 
 vertex range the same way (`n` from the edge list), so both agree on a truncated vertex set. The
 self-check is a genuine repair of the `1e-9`-grid defect it names (`8.3·10⁻⁹` below the cut scan's
 `t*`), and it cannot test an assumption it shares.
+
+### K15-X-C037 — `C_R` in Theorem B is defined as the wrong set; the identity needs the one-endpoint sum
+
+`GEOMETRIC_LEMMA_0438.md` (a6f3935) line 90 defines `C_R := Σ_{e : e ⊄ B∖E_B} c_e` (every edge not
+contained in `B∖E_B`), while line 94 uses it in `|B| − |E_B| = 2Σ_{e⊆B∖E_B}c_e + C_R`. The middle
+sum counts each edge with multiplicity `#{e ∩ (B∖E_B)}`, so the identity holds iff `C_R` is the sum
+over edges with **exactly one** endpoint in `B∖E_B`. With line 90's set, an edge entirely outside
+`B` with `c_e > 0` breaks it, and for a translation-invariant weighting there are infinitely many,
+so `C_R = +∞` and line 100 is vacuous. The document's own self-audit at line 409 states the correct
+object, so this is a definition typo; `C_R ≤ O(R²) + 12|E_B|` (line 120) is right for the corrected
+definition. Exact witness: `Reviews/witness_0438_audit.py` W1 — `|B|−|E_B| = 4`, `2S₂+S₁ = 4`,
+`2S₂+(S₁+S₀) = 13/3`, discrepancy exactly the weight of one edge touching `B` neither.
+
+### K15-X-C038 — `(M)`'s characterisation is the FRACTIONAL Tutte condition and is correct (my first reading was wrong)
+
+Line 197: `(M)` holds iff for every finite `S`, `#isolated vertices of G−S ≤ |S|`. That is the
+fractional condition `ν*(G) = min_S (|V|+|S|−iso(G−S))/2 = |V|/2`, and it is **correct**: verified
+against an LP on **all 33,867 graphs with `n ≤ 6`**, 0 mismatches (`Reviews/witness_0438_audit.py`
+W2 runs `n ≤ 5`). An earlier draft of this review read it as Tutte's *integral* condition (odd
+components) and "refuted" it with the triangle; the triangle refutes only the integral form, and
+that claim is withdrawn. The practical certificate form is Farkas: `(M)` infeasible ⟺ ∃`y` with
+`y_u+y_v ≤ 0` on every edge and `Σy > 0`; on `K_{1,12}` the certificate is `y = −1` at the centre,
+`y = +3/4` at the twelve leaves (edge sums `−1/4`, total `8`).
+
+### K15-X-C039 — the failure of `(M)` is not "exactly" an icosahedral cluster (wording)
+
+The mechanism is "some `S` with `iso(G−S) > |S|`". The icosahedral 13-cluster is its extremal
+geometric instance, not the only one: `K_{1,3}` fails via `S =` its centre, and three contacts at a
+centre is a legal local configuration. The conclusion the document draws (the bridge's hypothesis is
+not automatic) is unaffected; the word "exactly" should go.
+
+### K15-X-C040 — "(L)'s equality case is exactly the Barlow family" is refuted by C095
+
+Line 40 asserts the converse (equality in `(L)` ⟹ Barlow) and proves only Barlow ⟹ equality. `C095`
+gives the counterexample: the crack packing is saturated, **every bulk cell has volume `√32`
+exactly**, so any bulk–bulk contact pair has `vol Ω(v)+vol Ω(w) = 2√32` — equality in `(L)` — and
+`C095` §4 states the packing is **not** Barlow (layer spacing `d ≠ H` across the crack). The same
+file's §5 table records this ("crack packing | bulk–bulk | equality in the bulk"), so line 40
+contradicts line 240. Repair: "attained on every Barlow packing and on the bulk of every planar-fault
+packing; the equality family is not classified".
+
+### K15-X-C041 — Theorem C's "the equality case of the dodecahedral bound is empty" needs a stability theorem
+
+Consequence 2 (line 385) infers from equality of *density* that "every cell is a dodecahedron". The
+bound is a limit of averages and all terms are `≥ V_dod`, so equality gives only
+`density{vol Ω > V_dod + ε} = 0` for each `ε > 0`; cells of volume `V_dod + ε_v` with `ε_v → 0` are
+compatible with that and are not dodecahedral. Closing the step needs: `vol Ω(vₙ) → V_dod` ⟹ cells
+asymptotically dodecahedral ⟹ asymptotically twelve contacts — a **quantitative stability version of
+Hales–McLaughlin**, which `EXPOSITION_0438.md` §6 itself names as unavailable. The corollary is not
+refuted (it may well be true); the argument given is not a proof of it. Theorem C itself is correct
+and I checked its split, its two-sided volume estimate and `ρ ≤ 1/2`.
+
+### K15-X-C042 — the slack display is correct under the repair's reading and false if `E` is kept
+
+The split gives `Σ_B vol Ω ≥ √32(|B| − |E_B|) − (√32−V_dod)(Σd_v + C_R')` with
+`√32−V_dod = 0.106563221` on both terms. The display at line 215 has `2(√32−V_dod)` on `Σd_v`,
+`√32` on `C_R`, and no `|E_B|` term. **If the exceptional set is absorbed into the slack (`E = ∅`,
+which is what the repair intends) the display is weaker than the split and true**; the difference is
+`−(√32−V_dod)Σd_v − V_dod C_R' ≤ 0`. **If `E` is kept alongside `d`, it can fail**: `R = 0` with
+`B = {v}`, `v ∈ E`, `d_v = 0`, `vol Ω(v) = V_dod` gives the display `V_dod ≥ √32` ✗ while the split
+gives `V_dod ≥ 0` ✓. The finding is the ambiguity — the sentence does not say whether `E = ∅` — and
+the repair is to state it, or to replace the display by the derived form. Conclusion unaffected
+(`|E_B|`, `Σd_v`, `C_R'` are all `o(R³)`). This entry has been rewritten twice; the two readings are
+why the block's swarm split 3–2 on it.
+
+### K15-X-C043 — Theorem D step 4 confirmed independently, and the E/Main discrepancy resolved
+
+`Reviews/two_dodecahedra_indep.py`: building the two icosahedral rings from the dodecahedron's face
+normals, putting the centres at distance 2 and maximising over the twist about the `v`–`w` axis gives
+`sup_t m(t) = 1.125554844510` at `t = 36°` (required 2; shortfall 0.8744) — Main's
+`1.12555484451` confirmed to twelve digits, over a *superset* of the legal configurations (legality
+forces the shared pentagon to coincide, a multiple of 72°), so the impossibility is a fortiori.
+**The "unresolved discrepancy" with E is resolved:** `1.056487696` is a value of the same function,
+attained at twist `33.636862°` and `38.363138°`, while its supremum is `1.1255548`. E sampled
+another twist; Main's number is the supremum. Main's four tabulated values at `0°, 18°, 36°, 54°`
+are this script's `m` at `36°, 54°, 0°, 18°` (twist origin shifted by 36°).
+
+### K15-X-C044 — `cut_flow.py` at `a25f5be` still truncates the vertex set in three functions, line-specifically
+
+Blob `c2127cee`. `singleton_bounds` (line 236) and `load_external_fixture` (line 415) use
+`n = len(b_lo)` ✓; `exhaustive_cut_scan` computes `n` from the edges at line 306 but repairs it at
+line 307 with `n = max(n, len(b_lo))` ✓. The three that still truncate: **`find_violating_cut`
+line 269**, **`feasible_flow` line 352**, **`verify_flow_exact` line 390** — all
+`n = max(max(e) for e in edges) + 1 if edges else 0`. So D8 is unchanged, the one-line fix pattern
+already exists two functions away, and `evaluate_external` still emits `status: PATCH_FEASIBLE` on a
+fixture that is infeasible at every `Φ` (five vertices, edges on `0..3`,
+`b = (−1,−1,−1,−1,+1)`). `Reviews/repro_c_cutflow_defects.py Reviews/C_cut_flow_a25f5be.py` → 9/13
+checks reproduce, the four that do not being D1/D2/D3.
+
+### K15-X-C045 — `exact_sign.py` decided signs on the wrong interval for some exact rational endpoints
+
+`sign_on_interval` (and `sign_on_half_line`) converted endpoints with `sp.nsimplify`. For an exact
+rational with a long denominator, `nsimplify` **invents a radical**:
+`nsimplify(Rational(353553390593273762200422181, 250000000000)) = 1000*sqrt(2)` = 1414.21 rather
+than 1.41421. The predicate then decided a sign on a different interval, or raised
+`CoercionFailed` when `count_roots` received the radical. **No published certificate is affected**
+— every X certificate is decided on `[0,∞)` or `[0,4]`, where `nsimplify` is the identity — and
+`verify_all.py` still reports ALL PASS after the fix. Fixed with an `_endpoint` helper that passes
+`Rational`/`Fraction`/`int` through exactly and only calls `nsimplify` on symbolic input.
+Regression test: section C of `Reviews/p_le_eta_independent.py`. Found by an independently
+implemented decider, which is the point of having one.
+
+### K15-X-C046 — bounded-interval `p ≤ η` closed by an independent Vincent–Descartes decider
+
+`Reviews/p_le_eta_independent.py`: exact rational arithmetic, `w = p/gcd(p,p')`, Möbius transform
+of `(a,b)` to `(0,∞)`, Descartes' count `V` (`V = 0` no root, `V = 1` exactly one, bisect while
+`V ≥ 2`), then one rational sample per gap between consecutive roots plus the endpoints. No Sturm
+sequence, no `sqf_list`, no SymPy root isolation. Agrees with X's `exact_sign.sign_on_interval` and
+Main's `shell_check.le_on_interval` on **60 rational-endpoint cases** (endpoints at, between and
+within `10⁻¹²` of roots) and **32 algebraic-endpoint cases** (`√2`, `√3`, `√5/2`, `φ`, bracketed
+into root-free rational zones) — 0 mismatches. Records the two implementation traps that produced
+wrong answers first (endpoint values decide nothing when an endpoint is a root; the shrink point
+must not be a zero of `p`). G8 stays open: finite sample, and no proof of correctness for any of
+the three implementations.
+
+### K15-X-C047 — Hales–McLaughlin's equality case verified from the primary source
+
+The load-bearing external input of Theorem D (`C108`) step (3) is
+"`vol Ω(v) = V_dod` ⟺ `Ω(v)` regular dodecahedron of inradius 1". It is **stated explicitly** in
+Hales–McLaughlin, *The dodecahedral conjecture*, arXiv:math/9811079v3 §1: "…for every set of points
+`Λ ⊂ R³` whose pairwise distances are at least the diameter `2`. **The case of equality occurs
+exactly when `Ω(Λ,v)` is congruent to a regular dodecahedron of inradius 1**", and again in the
+strong form (§2.1): "Equality holds exactly when `Ω(Λ,v₀)` is congruent to `Ω(Λ_dod,0)`". Two
+consequences: step (3) is exactly as strong as the source (no hidden stability assumption), and the
+inequality is stated for **every 2-separated point set**, not only saturated packings — which is
+what Theorem D's minimiser is. Caveats: the source is computer-assisted (interval arithmetic over
+tame Voronoi graphs), and its `Λ_dod` has inradius 2 with pairwise distances `≥ 2`, so a conversion
+to this project's inradius-1 normalisation is needed.
+
+### K15-X-C048 — "twelve centres at mutual distance ≥ 2 on radius 2 is exactly the icosahedral twelve" is false
+
+`GEOMETRIC_LEMMA_0438.md` line 204 asserts uniqueness of the twelve-point configuration. The
+icosahedral twelve on radius 2 have minimum mutual distance `4√2/√(5+√5) = 2.102924448 > 2`, so
+every sufficiently small perturbation is still admissible and the admissible set is
+**positive-dimensional**; Tammes-12 is the optimiser of the minimum distance, not the solution set
+of the inequality. Second reason (after `K_{1,3}`) that "the failure is exactly an isolated
+icosahedral cluster" is too strong. **Explicit family:** keeping eleven icosahedral points fixed and rotating the twelfth about `e₁`
+by `t` (renormalised to radius 2) keeps the minimum mutual distance `≥ 2` for `t = 0.5°, 1°, 2°, 4°,
+6°` (`2.0955, 2.0880, 2.0730, 2.0427, 2.0120`), so the admissible set is at least one-dimensional.
+**A failure with no cluster and minimum degree 2** (swarm member `m6`, verified exactly): the five
+points `v = 0`, `w = (2,0,0)`, `p₁ = (1,√3,0)`, `p₂ = (1,−√3/2,3/2)`, `p₃ = (1,−√3/2,−3/2)` have
+contact graph `K₅` minus a triangle (degrees `4,4,2,2,2`), and `S = {v,w}` leaves three isolated
+vertices against `|S| = 2`; Farkas `y = (−1,−1,+1,+1,+1)`, edge sums `≤ 0`, `Σy = 1`. So "exactly an
+isolated icosahedral cluster" is wrong even with all degrees `≥ 2`. Also: `K_{1,3}` is geometrically realisable — `v = 0` plus
+`2·(1,1,1)/√3`, `2·(1,−1,−1)/√3`, `2·(−1,1,−1)/√3`, mutual distances `√(32/3) = 3.266 ≥ 2` — so
+`(M)` fails on a legal configuration of four points, not only on the 13-cluster.
+
+### K15-X-C049 — the "equality case is empty" corollary is true, in two lines from Hales
+
+`π/√18 = 0.740480489693 < 0.754697399337 = (4π/3)/V_dod`, so Hales' theorem alone forbids equality in
+the dodecahedral bound. The corollary is therefore **true**, and it cannot be used as independent
+evidence inside a route whose purpose is to prove Kepler — which is what `X-C041` records as the gap
+in Main's route (that route goes through Theorem C and needs a stability version of
+Hales–McLaughlin). A swarm finding, checked and corrected: its derivation addressed "`vol Ω = V_dod`
+off a density-zero set", which is stronger than density equality, so it proves the different (also
+true) statement that almost-everywhere exact dodecahedral cells are impossible.
+
+### K15-X-C050 — `C121` (explicit stability for `≤ 12`-face cells) is correct, sharp, and does not close the corollary
+
+`main` at `8dc264e` (post-dating the audit target). Lemma: `Ω(v)` with `≤ 12` faces and all
+neighbours at distance `≥ 2ρ` (`ρ ≥ 1`) has `vol Ω(v) ≥ V_dod ρ³`. **Correct**: scale by `1/ρ`, the
+scaled cell is again a Voronoi cell (of a packing with minimum distance still `≥ 2`), has `≤ 12`
+faces, contains `B(0,1)` and has faces at distance `≥ 1`, so Fejes Tóth's Theorem 4.1 (quoted in
+`C115`) gives volume `≥ ω_dod`. Arithmetic exact: `V_dod·1.045³ = 6.333804106 = 1.119669·√32`; the
+no-face-count form's threshold is `(3V_dod/4π)^{1/3} = 1.0983541`. **Sharp**, with equality at the
+twelve-icosahedral-directions-at-circumradius-`2ρ` family — which has no contact at all, so `C121`
+is exactly the statement that volume stability cannot produce contacts, and the corollary gap of
+`X-C041`/`X-C049` survives: Theorem C needs contacts (distance exactly 2), `C121` gives neighbours
+within `2ρ` (≤ 2.09 at ρ = 1.045; `C116`'s band is 2.683). What it does close is the *singleton*
+question for `≤ 12`-face cells. **Flag, outside the audited target:** `C115` writes
+"`t_dod = 3 tan(π/5) ≈ 1.258`", but `3 tan 36° = 2.17963` while `1.2584 = √3 tan(π/5)` — the formula
+and the decimal disagree by `√3`; check against the paper before quoting.
+
+### K15-X-C051 — the two-dodecahedra threshold is `3.4555003`, so C116's `6/√5` is valid but 28.8% short
+
+**Corrected entry — the first version of it claimed `2φ` and is withdrawn.** The first script scaled
+*v's* icosahedral ring by the separation `d` as well as w's (`d*V[i]` instead of `2*V[i]`), which
+produced a spurious threshold at `2φ = 3.236068`. With v's ring fixed at radius 2 — the only version
+that models two dodecahedral cells — the computation gives:
+
+```
+max over twist of the minimum cross-distance = 2 exactly at   d* = 3.4555003444
+(twist 36 deg; and at d* no other centre cuts either cell, so the two dodecahedral cells are
+actually attainable there)
+```
+
+So the threshold for two dodecahedral cells is `d* = 3.4555003`, and C116's `6/√5 = 2.6832816`
+(main `8dc264e`) is a **valid but 28.8% short** bound (`d*/2.6832816 = 1.287789`). The configuration
+is the same as `X-C043` with the separation free: v at 0 with its twelve neighbours at `2u_i`, w at
+`d·u₀` with its twelve at `d·u₀ + 2R_t u_j`. `Reviews/near_contact_band_indep.py` reproduces `d*`
+and the attainability check (0 cutting centres). Route impact: none — `C114` needs only
+`ε < 0.6832816`, and `d* − 2 = 1.4555`.
+
+### K15-X-C052 — A15's Voronoi volumes confirmed: 125/16 (A) and 129/16 (B), so E's 15.875 was the A–B pair
+
+`Reviews/a15_pair_indep.py` computes the eight Voronoi cells of the Cr₃Si / A15 structure by
+half-space clipping with `a = 4` (nearest distance `a/2 = 2` exactly): the two A sites have volume
+`125/16 = 7.8125` each, the six B sites `129/16 = 8.0625` each, the weighted sum is
+`2·125/16 + 6·129/16 = 64 = a³` exactly, the minimum site distance is `a/2 = 2`, and the A–B
+distance is `√5 = 2.2360679`. **Main's post-target correction (`C111`, commit `c4134c2`) is right**:
+the contact pairs in A15 are the B–B chain bonds at `a/2`, with pair sum `2·129/16 = 16.125`, and the
+`15.875` in the audited §5 table is the A–B sum, which is not a contact pair. Nothing is refuted
+either way — both exceed `2√32 = 11.3137` — but the table's A15 row should read 16.125.
+
+### K15-X-C053 — the arithmetic of `C119` and `C122` (post-target) checks exactly
+
+Recomputed: `(4π/3)/V_dod = 0.754697399337`; `8/d³ = 0.754697399337` gives `d = 2.1967082337`
+(C119's threshold, and `(4π/3)(d/2)³ = 5.550291029 = V_dod` at that `d`, which is the same
+comparison); `√32/1.045³ = 4.95708216846` (C122's required `c_F`); the regular icosahedron of
+inradius 1 has `V_ico = 5.054056144` (C122 prints 5.054056) and `V_ico·1.045³ = 5.767517665`
+(prints 5.767518), i.e. `+1.96%` over `√32`, against `V_dod·1.045³ = 6.333804106` at `+11.97%`.
+No discrepancy. Both entries post-date the audit target; they are checked because they carry the
+numbers a later block would quote.
+
+### K15-X-C055 — E's payer fixture reproduced independently, and it is NOT the value §5 quotes
+
+`Reviews/payer_fixture_indep.py` runs the closed-form fixture written down in Main's `C118`
+(`c = 0`, `w1 = (0,0,2)`, five ring points at `(4/√5 cos72k, 4/√5 sin72k, 2/√5)`, five pentagon
+points at `w1 + 2(s cos(36+72k), s sin(36+72k), 3/8)` with `s = √55/8`, `south = (0,0,4)`) through
+an independent half-space clipping: **`vol Ω(w1) = 5.89801737180372`** — `C118`'s value to every
+digit it quotes — with **20 cell vertices** and minimum pairwise distance exactly 2. So `C118`'s
+reproduction is sound. **But this is not the `5.897967122` quoted in §5 of the audited
+`GEOMETRIC_LEMMA_0438`**: that is a different, slightly sharper completion from E's `C5` search.
+Both exceed the payer target `2√32 − V_dod = 5.763417470`; the §5 margin `0.134549652` belongs to
+E's value and this fixture's margin is `0.134599902`. No claim is affected, but the two numbers
+should not be quoted interchangeably.
+
+### K15-X-C056 — the two `CDS22` three-point numbers are in the source
+
+`EXPOSITION_0438` §4 quotes `0.770271` (general three-point) and `0.741506` (lattice three-point) as
+`CDS22`. Checked against the paper: Cohn, de Laat and Salmon, *Three-point bounds for sphere
+packing*, arXiv:2206.15373 — the HTML full text contains **`0.770271` twice and `0.741506` twice**
+(a table and a comparison). So the attribution is right. Note for a later reader: the paper's
+*abstract* advertises new bounds only "in dimension 4 through 7 and 9 through 16", because `d = 3`
+is not new territory — the `d = 3` values are there, but a reader who stops at the abstract will
+think they are the project's own computation. They are not.
