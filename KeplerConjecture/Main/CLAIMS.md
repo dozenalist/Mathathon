@@ -685,3 +685,31 @@ by any finding above.
   reusable, its angle comparison is illustrative only.
 - C's regressions pass (exit 0) but produce **no new certificate**; `shell_bench.py`
   is still unwritten, so `C-SHELL-001` remains blocked.
+
+### K15-C022 — the shell benchmark's unconditional form, and why a grid LP cannot propose it
+
+- **Unconditional count.** With no Tammes input, K15-C013(a) gives
+  `n(ρ) ≤ ⌊(ρ+1)³⌋ − 1`, e.g. `n ≤ 27` at `ρ = 2.05` and `n ≤ 28` at `ρ = 2.09`.
+  So K15-C018 holds **unconditionally** with those counts:
+  `δ ≤ (4π/3)(f(0) + 27η)/f̂(0)`. `shell_check.check(..., count=27)` evaluates it.
+  The Tammes route (K15-C019) only improves `27 → 12`; it is not needed for the
+  theorem to be true, only for it to be sharp enough to matter.
+- **Negative result: a dense-grid LP cannot propose a candidate.** Main attempted
+  the obvious proposer (minimise `p(0)` subject to grid samples of the three sign
+  conditions, degree 6, 900 points, `u` up to 80). Three failure modes, all
+  structural:
+  1. without the (true) constraint `p(0) ≥ 0`, which follows from
+     `f(0) = ∫f̂ ≥ 0`, the LP is degenerate and returns a box vertex
+     (`a = (−1000, 1000, −1000, …)`);
+  2. **with** `p(0) ≥ 0` the optimum is exactly `0` — the grid conditions are
+     vacuous, so the objective can be driven to the constraint boundary;
+  3. at `u` up to `8000` HiGHS returns NaN unless every constraint row is scaled,
+     and the scaled solution rounds to a profile with `q(0) ≈ −2.5·10⁶`.
+  **Conclusion for C:** propose candidates by exact Sturm bisection over a
+  low-dimensional family, or by an SDP with SOS multipliers in `u`
+  (Markov–Lukács makes the half-line conditions exact), never by dense grids over
+  monomial coefficients. This is the same lesson as K15-C014r, in a second guise;
+  it is recorded so that no worker spends a local run on it.
+- **Status.** `TESTED_FINITE` (the failure modes were observed) / `PROVED` for the
+  unconditional count. Reviewer X. Script not retained: it produced no candidate
+  and would only invite reuse.

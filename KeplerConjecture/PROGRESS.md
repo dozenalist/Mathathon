@@ -298,3 +298,23 @@ No chat created; no swarm; no heavy computation (one 1.3 s symbolic self-test).
 Gaps: no Tammes enclosure yet (E), no candidate profile yet (C), so no bound. Next:
 E encloses `θ₁₃` at `ρ = 2.05`; C runs the optimisation at `η = 0` versus small
 `η` in the checker's format; X audits `shell_check.py`.
+
+### K15-MAIN-007 — 2026-11-14 — continuous block, part 2
+
+Author **M**. Extended block (timing update). Two additions, one of them negative
+and useful.
+
+* **K15-C022 `PROVED` (unconditional form):** with no Tammes input the shell
+  allowance still holds, with `n(ρ) ≤ ⌊(ρ+1)³⌋ − 1` (K15-C013(a)): `n ≤ 27` at
+  `ρ = 2.05`, `n ≤ 28` at `ρ = 2.09`. So the benchmark theorem is unconditional;
+  the Tammes route only sharpens `27 → 12`. `shell_check.check(..., count=27)`
+  evaluates it.
+* **K15-C022 negative half `TESTED_FINITE`:** a dense-grid LP cannot propose a
+  candidate. Three observed failure modes at degree 6: a box vertex without
+  `p(0) ≥ 0`; objective exactly `0` with it (grid conditions vacuous); NaN at
+  `u ≤ 8000` unless every row is scaled, and the scaled solution rounds to
+  `q(0) ≈ −2.5·10⁶`. Recorded so C does not spend a local run rediscovering the
+  C014r lesson in monomials. The proposed routes are exact Sturm bisection in a
+  small family, or an SOS/SDP with Markov–Lukács multipliers (C-SHELL-001c).
+* `shell_check.check` gains a `count` parameter (12 conditional, 27
+  unconditional); self-test still passes.

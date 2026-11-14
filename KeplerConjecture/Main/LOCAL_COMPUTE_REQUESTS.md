@@ -47,6 +47,19 @@ Acceptance for any of the three: exact rational identity, verified by an
 independent checker, with the sign regions `s ≥ 4` and `s ≥ 0` stated in `s`
 (never mixed with `t`), and `f̂(0) > 0` exhibited.
 
+### C-SHELL-001c — how to propose a candidate (after K15-C022)
+
+Do **not** propose by a dense grid LP: at degree 6 it returns a box vertex without
+`p(0) >= 0`, and objective exactly `0` with it (K15-C022). Two proposers that can
+work:
+(a) **exact Sturm bisection**: fix a small parametric family (e.g. `p` of degree
+`K` with roots pinned at `u = 13.5` and a movable double root), and bisect on the
+parameter with exact sign verdicts at each step;
+(b) **SOS/SDP**: minimise `p(0) + n*eta` subject to
+`q = s_0 + u s_1`, `-p + eta = t_0 + (u - T_LO)(T_HI - u) t_2 + (u - T_HI) s_3` with
+`s_i, t_j` sums of squares, then round the Gram data to rationals and let
+`shell_check` decide. The second is the only one that scales past degree ~10.
+
 ### C-SHELL-001b — exact checker is now in the tree (use it)
 
 `Computation/shell_check.py` (new, runnable, no heavy numerics): rational profile

@@ -40,6 +40,10 @@ by K15-C003 (Theorem B) with n = 12 and K15-C002b's bridge, PROVIDED the count
 value rho = 209/100 is provisional until that is certified).  The count is a
 hypothesis here, never a conclusion.
 
+The count `n` is a parameter: `n = 12` is conditional on a Tammes-13 enclosure
+(K15-C019); `n = 27` is unconditional at rho = 2.05 by the volume bound
+K15-C013(a), `n <= floor((rho+1)^3) - 1`.
+
 Exit status: 0 iff every check passes.  Failures are reported unconditionally
 (D13: no failure path may sit behind a verbosity flag).
 """
@@ -140,7 +144,7 @@ def _ray(coeffs, hi) -> bool:
     return sc(sp.Rational(hi)) - sc(oo) == 0
 
 
-def check(a, rho=F(209, 100), eta=F(0), K=None, verbose=True):
+def check(a, rho=F(209, 100), eta=F(0), K=None, count=12, verbose=True):
     """Full verdict for a rational coefficient list a (monomial, u = pi s)."""
     K = K if K is not None else len(a) - 1
     a = [F(x) for x in a] + [F(0)] * (K + 1 - len(a))
@@ -166,11 +170,11 @@ def check(a, rho=F(209, 100), eta=F(0), K=None, verbose=True):
     rep("fhat(0) > 0", q0 > 0, "q(0) = %s" % q0)
     if not ok:
         return None
-    val = (p0 + 12 * eta) / q0
+    val = (p0 + count * eta) / q0
     lo = 4 * PI_LO / 3 * val
     hi = 4 * PI_HI / 3 * val
     print("  p(0) = %s, q(0) = %s, eta = %s" % (p0, q0, eta))
-    print("  R = (p(0)+12 eta)/q(0) = %s = %.12f" % (val, float(val)))
+    print("  R = (p(0)+%d eta)/q(0) = %s = %.12f" % (count, val, float(val)))
     print("  delta <= (4pi/3) R in (%.12f, %.12f)   [rational pi enclosure]" % (float(lo), float(hi)))
     return (lo, hi)
 
