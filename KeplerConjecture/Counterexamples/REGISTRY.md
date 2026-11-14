@@ -1084,3 +1084,402 @@ Checked against `out/nearcontact_scan.json` (comp tip `bf7998c`): the four cells
 `t = 1.01, 1.02, …` — the correct identity per family, in exact rational arithmetic. The stored
 densities equal `(4π/3)/mean(vols)` in 200/200 rows checked. So C's volume engine is consistent with
 its own data; the finite scope is the only limit, and the docstring states it.
+
+### K15-X-C070 — C102's constant `3.206870905` is CORRECT; `3.178617889` is the same function at `ρ = 2`
+
+The previous block queued an entry saying C102's `min |p| = 3.206870905` was 0.881% too high and that
+the true minimum was `3.178617889` at C102's own direction. **That entry was wrong and is withdrawn
+before it was ever written**: the two numbers are the same function evaluated at different radii.
+`Reviews/twist/nearest_13th_indep.py` (exit 0) recomputes at `ρ = 2.09`, the radius C102 uses:
+
+- independent mpmath (dps 30) implementation of `r₊(c) = c + √(c² − (ρ²−4))`: **`3.206870905245`**,
+  deviation from C102's `3.206870905` is `2.45e-10`; Nelder–Mead from 32 starts returns the same
+  value at the cube-corner direction `(−1,1,1)/√3`; 2·10⁶ random directions give `3.207307899`;
+- **closed form** `ρκ + √(ρ²κ² − ρ² + 4)` with `κ = √((5+2√5)/15) = 0.794654472292`, the cosine of the
+  icosahedral face's angular radius — the same number to 12 digits;
+- the minimisation is **exactly a covering-radius problem and it is proved, not sampled**: `r₊` is
+  strictly increasing on its domain, so `min_u max_i r₊(⟨u,x_i⟩) = r₊(ρ·min_u max_i⟨u,x̂_i⟩)`, and for
+  `u` in a face triangle, `u = Σλ_k a_k/|Σλ_k a_k|`, `Σλ_k = 1`, `t = max λ_k ≥ 1/3`, gives
+  `max_j⟨u,a_j⟩ = ((1−m)t+m)/|Σλ a|` with `m = 1/√5` and `|Σλ a|² = (1−m)Σλ² + m ≤ (1−m)t+m`, so
+  `max_j⟨u,a_j⟩ ≥ w/√w ≥ κ` once `w = (1−m)t+m ≥ w(1/3) = (1+2m)/3 = κ²`. Equality only at the 20 face
+  centres. Hence the minimum over **all** directions is the face-centre value, exactly.
+- `3.178617889` is what the same function gives at `ρ = 2` with the contacts at radius 2 (floor 2,
+  discriminant `c²−0`, so `r₊ = 2c`). `3.206871/3.178618 = 1.008888 ≠ 1.045`, because **the problem is
+  not scale invariant** — the contact distance stays 2 while `ρ` moves, so `ρ = 2` (distance = radius)
+  and `ρ = 2.09` are different problems. Comparing one against the other is the error.
+
+**Two real, minor defects in `Computation/nearest_13th.py`, neither affecting the constant.**
+(i) Its `dd` block is labelled "dodecahedral (hole) directions" but yields **12** directions with
+`max_i⟨u,x̂_i⟩ = 2/√5 = 0.894427`, i.e. a second icosahedron, not the 20 face centres (which have
+`0.794654`). The printed "nearest admissible radius among holes: 4.09" is therefore not a hole value
+(the set's own value is `3.637510062`); the true face-centre value `3.206871` *is* the global minimum.
+(ii) `CLAIMS.md:3012` describes the minimising direction `(0.934172, 0.356822, 0)` as "an edge-midpoint
+direction of the icosahedron (not a face centre)" — it is `(φ, 1/φ, 0)/√3`, a **face centre**
+(dodecahedron vertex); its `max_i⟨u,x̂_i⟩ = κ`, and it is exactly where the bound is attained.
+
+**Conclusion unaffected and with room**: against C102's conservative `2·R_cell = 2.955706345` the margin
+is `0.251165`; against the true cell circumradius `2·1.045·1.258408572 = 2.630073915` it is `0.576797`.
+Status: **constant CONFIRMED, conclusion stands**; two auxiliary/prose defects recorded.
+
+### K15-X-C071 — Main's third `twist_cover.py` (`a34a3ff1`, their C127) fixes both defects and its certificate closes
+
+Blob `a34a3ff104fc9be7d2e358cbbcf4151715c69e0c` at main `4dc1cc9` (supersedes `67d5c973`). Read as
+byte copy `Reviews/twist/twist_cover_a34a3ff1.py` and run (exit 0): it adds `2*u_x*q_x` to `Aij`,
+uses `violation = |t − ψ| > h` with `h = arccos c`, shrinks endpoints inward by `MARGIN = 1e-30`, and
+reduces mod the twist period `2π/5`. **53 proper arcs → 65 pieces → one merged interval
+`[0, 2π/5]`, no gaps**, at 60 digits. This is the repair `X-C058`/`corrected_cover.py` specified, and
+the two agree (45 raw arcs there because that script keeps the pair list unmerged). So `X-C057`'s
+refutation is *of the first two revisions only*, and `C127` now stands.
+
+**One caveat, sound but sloppy.** `L = max(lo, k·PERIOD) − k·PERIOD` folds only the part of the
+violation interval `[lo,hi] = [ψ+h, ψ+2π−h]` lying in `[0, 2π]`. Instrumented run: **5 pairs have
+`lo < 0`** (down to `−0.550555`) and **5 have `hi > 2π`** (up to `6.833740`), so those pieces are
+dropped rather than folded. Dropped pieces are *true* violations, so the emitted arcs remain strict
+subsets of the violation sets — the certificate stays **sound** — and the cover still closes with no
+gap. But the right operation is reduction mod `2π` before the period split; as written, a different
+instance could silently lose coverage. Fix before reuse.
+
+### K15-X-C072 — E's repair of the cell certifier: the five requirements are met, and the old defects are still live in the old files
+
+At experimental tip `f502b9a` (supersedes `d289bef`):
+
+- `Experimental/scripts/rigorous_cell_volume.py` is **byte-identical** to the audited
+  `d015a2e1e322853286322ff2c6ec4a5a88f03550` (only the path moved from `Computation/` to
+  `Experimental/scripts/`). So `X-C060` (norm) and `X-C061` (boundedness) are **still live in that
+  file**, and `Experimental/scripts/certify_region.py` is still `540b4ed1` — `X-C065`'s dropped
+  remainder is live there too.
+- **New**: `Experimental/scripts/cell_certificate.py` and `certify_region_v2.py` (`ec1eaeda`), which
+  name `X-C060`/`X-C061`/`X-C065` explicitly and repair them. Audited line by line:
+
+| requirement (`REVIEW_0608` §5) | repair | verdict |
+| --- | --- | --- |
+| norm | slack `R·(7/4)·e_i + f_i`, `√3 ≤ 7/4` rational | **sound** |
+| radius bootstrap | `R₀ = b_max/(c − (7/4)e_max)`, `b_max` includes `f_i`, `c` a rigorous *lower* bound for `min_u max_i u·n_i` | **sound**: `max_i u·n_i` is 1‑Lipschitz, so `min_mesh − diam` is a lower bound; the mesh diameter (max edge) is a valid covering radius for a spherical triangle — acute gives `L/(2 sin A_max) ≤ L/√3`, obtuse puts the max on an edge at `≤ L/2` |
+| boundedness | `Out` bounded iff `0 ∈ int conv{n_i}`, decided by supporting planes of the hull | **DEFECTIVE — see the erratum at the end of this entry.** The idea is right and better than "four normals with a positive dependence" (which rejects the cube), but the implementation's contract is false. |
+| inner inclusion | `Inn = {y·n_i' ≤ b_i' − slack}` and `Inn ⊆ Ω ∩ B_R` | **sound** |
+| domain coverage | `n = ceil(span/width)`, box width `span/n` exactly, with `assert lo + n*w == hi` | **sound** |
+
+Run: `cell_certificate.py` exits 0, reproduces **both my witnesses** (W1 `y·δn = 8/9 > R·e = 4/5`,
+ratio 1.111; W2 the four-vertex unbounded polyhedron **refused**) and its five controls stay exact
+(cube `8`, tetrahedron `8/3`, fcc and hcp `4√2`, C5 `5.8980173718`) at enclosure width `1.2e-18`.
+
+Two limits: `spanning_constant` evaluates the rational normals in float and deducts a flat `1e-9`,
+which covers the ~`1e-16` conversion error but is a fudge, not an interval computation; and the old
+`certify_region.py`/`rigorous_cell_volume.py` are still in the tree, so any number they produce keeps
+the old defects — only the `_v2` path is repaired.
+
+**Erratum (same block, after `REVIEW_0653` steering).** The boundedness row above was marked *sound*
+on the strength of E's controls. It is not. `origin_interior_certificate` returns `(True, 1, 1)` for
+`[(1,0,0),(0,1,0),(0,0,1)]`, whose hull is a triangle in `x+y+z=1` and does not contain the origin at
+all; and it returns `(True, 1, 4)` for `[(1,0,0),(0,1,0),(0,0,1),(1,1,1)]`, where **all four points have
+`x+y+z = 1`, so `0 ∉ conv` outright** — a full-dimensional hull, not a degenerate one. The cause is not
+the `b×c` vs `(b−a)×(c−a)` inconsistency alone (that is a real inconsistency, but replacing it does not
+fix the three-point probe: with edge vectors the triangle still returns `(True, 1, 1)`). The cause is
+that the routine never checks the hull is **3-dimensional**: for any set whose hull is at most
+2-dimensional, some plane contains all the points, every point is on one side of it, and the origin is
+strictly inside it, so the "all supporting planes" test is vacuous. Consequence: the **boundedness
+decision** in `polytope_volume` is unreliable — a false positive on a set with ≥ 4 vertices would give a
+finite volume for an unbounded polyhedron, i.e. the `X-C061` failure mode through a new door. On the
+full-dimensional witness it happens to fail safe (`polytope_volume` returns `None`, 0 vertices, and
+`certify` would then raise on `None` rather than return a number), so I have **no** demonstrated false
+*volume*; what is refuted is the helper's contract and the boundedness guarantee, which `X-C072`'s table
+had marked sound. Fix: require `0 ∈ int conv{n_i}` by proving the hull 3-dimensional (a positive
+spanning subset with a strictly positive dependence, *plus* the supporting-plane scan with
+`(b−a)×(c−a)` normals), and refuse otherwise.
+
+**Full default region, reproduced.** `certify_region_v2.py 110 111 35 36 0.1 --out …` (100 boxes,
+~13 min) **exits 0: "CERTIFIED for the whole region: `[5.859536248896, 5.940277014469]`"**, worst box at
+`θ = 110.9°, φ = 35.0°`, target `5.763417470` cleared by `+0.096119`. Certificate kept as
+`Reviews/twist/reg_default_110_111_35_36.json`. So the repaired path does what it claims end-to-end —
+*subject to* `X-C080`: the boundedness gate it relies on is unsound as written, and the `1e-9` in
+`spanning_constant` is a fudge, so this run is evidence that the numbers come out consistently, not yet
+a proof.
+
+### K15-X-C073 — C's *extended* near-contact scan (two- and three-site displacements) still gives `t* = 0`, and its tiling identity is exact on all 500 rows
+
+C added families `F4` (two sites displaced in opposite directions — the multi-site case their own
+`fixture_nonuniform.py` §C does not cover) and `F5` (three sites along independent random directions)
+to `nearcontact_scan.py` (`9b41169a` → `9c37b1d4` at comp `926cdb7`), and re-ran. Audited the shipped
+`out/nearcontact_scan.json` directly, in exact rational arithmetic:
+
+- **500 rows, family counts `F1` 198, `F2` 14, `F3` 72, `F4` 144, `F5` 72; `t_star` takes the single
+  value `0` on every row**, `with_positive_t_star: 0`, density range `[0.620562, 0.739247]`;
+- the **tiling identity holds in all 500 rows with no exception**: `Σvol = a³` for `F1`, `F3`, `F4`,
+  `F5` and `Σvol = a³·t_ax` for the 14 tetragonal `F2` rows;
+- the stored `density` equals `(4π/3)/mean(vols)` in **500/500** rows (to 1e-12).
+
+So the multi-site families — the ones the single-site argument misses — behave exactly like the
+single-site ones on these instances, and C's bookkeeping is exact. Scope unchanged: this is finite
+evidence, as the module docstring says, and `X-C068`'s reading of `t* = 0` (some cut attains `Σ_U b = 0`
+exactly, because `exhaustive_cut_scan` has no `max(0,·)`) applies here too.
+
+### K15-X-C074 — C116's `6/√5` is contradicted by Main's own corrected machinery: its script certifies to `d = 3.00`
+
+After the third `twist_cover.py` (`a34a3ff1`, `X-C071`), `near_contact_band.py` at main `4dc1cc9`
+imports the repaired `inner_arcs`. Run as shipped (`Reviews` copy under `.scratch`, exit 0):
+
+```
+       d   cover?   coverage
+    2.00     True     1.2566      ...     2.80     True     1.2566
+    3.00     True     1.2566
+largest tested d with a certified cover: 3.00
+```
+
+So Main's own script **certifies the two-dodecahedra clash out to `d = 3.00`**, the end of its table —
+well beyond `6/√5 = 2.6832816`, which `CLAIMS.md:3561` still states as `PROVED` and "sharp". The
+documents are inconsistent with each other: `CLAIMS.md:3340` already records `K15-X-C051` —
+"the two-dodecahedra threshold is `3.4555003444`; Main's `6/√5` was wrong (missing term, `C126`)" — as
+**adopted by Main**, while `C116` (`:3561`), `Computation/README.md:28` and `CONTINUATION_0308.md:407`
+still carry `6/√5`. The certified value is `X-C051`'s `3.4555003444`, reproduced by `X-C064`'s
+`certified_threshold.py`; `6/√5` is a lower bound, not the threshold, and "sharp" is wrong in both
+directions (it is neither the value nor the limit of the corrected certificate, which reaches `3.4555`).
+The consequence for `C114`/Theorem D is favourable: the near-contact band is `1.4555` wide, not
+`0.6833` — 2.13× wider than claimed.
+
+Its **module docstring is also stale and self-contradictory**: lines 10–12 still say "the 'closer than
+2' set of each pair is a single arc in the twist, the arcs are inflated by EPS", while the `covers()`
+docstring ten lines below says the opposite ("Uses `twist_cover.inner_arcs`, i.e. rigorous inner arcs …
+An earlier version of this file inflated endpoints OUTWARD by 1e-20, which cannot certify an
+all-twists exclusion"). `EPS` is now referenced only in that dead sentence. The prose should be
+corrected with the number.
+
+### K15-X-C075 — `ACCEPTED.md:28`'s parenthetical cites the *defective* constant, but its conclusion survives
+
+`ACCEPTED.md:28` justifies citing `C112` (rather than a single-pair argument) with "a one-pair argument
+is impossible (`min max_t d² = 8.4223 > 4`)". `8.4223` is the code's `A = |u|²+|q|²`, i.e. exactly the
+constant that omits `2u_xq_x` (`X-C057` D1) — so the number is the defective one. Recomputed with the
+correct `A` over the same 121 pairs (`A − R ≤ d²(t) ≤ A + R`, `R = √(B²+C²)`):
+
+- `min over pairs of max_t d² = A + R` is **`12.844582472`**, not `8.4223`; no pair has `A + R < 4`, so
+  **no single pair clashes for every twist** — the conclusion `ACCEPTED.md` draws is correct;
+- `min over pairs of min_t d² = A − R` is **`0.044582472`**, and **37 of 121 pairs** have `A − R < 4`,
+  i.e. clash for some twist. That near-zero `0.0446` is why a per-pair argument cannot work and the
+  arc cover over all pairs is needed.
+
+So: correct the number in the parenthetical to `12.844582472`, keep the conclusion. Same pattern as
+`X-C062` — a display that is right in its verdict and stale in its constant.
+
+### K15-X-C076 — `rho_probe.py` is consistent with C102, and its three test radii straddle the threshold
+
+`Computation/rho_probe.py` at main `4dc1cc9`, run as shipped (1.0 s, exit 0):
+
+```
+rho = 2.0127   vol = 5.656696899  (V_dod (rho/2)^3, identical)   vs sqrt32 -0.0028%
+rho = 2.09     vol = 6.333804106                                 vs sqrt32 +11.9669%
+rho = 2.2      vol = 7.387437359                                 vs sqrt32 +30.5927%
+      no extra point in a face-centre direction is admissible AND cuts the cell   (all three)
+```
+
+Three points.
+
+1. **The construction is right.** The 20 directions in `dodeca_dir()` are the dodecahedron vertices
+   (4 of type `(0,±1/φ,±φ)` plus 16 of type `(±1/φ,±φ,0)`, `(±φ,0,±1/φ)`), i.e. the icosahedron's
+   face centres — the correct set, by `X-C070` the very set where the nearest admissible radius is
+   minimised. The half-spaces are `⟨p,x⟩ ≤ |p|²/2` with the extra centre at its own radius, and the
+   base cell `⟨x_i,x⟩ ≤ ρ²/2` is the dodecahedron of inradius `ρ/2`, not the ball — correct.
+2. **The negative output is exactly what C102 predicts**: along a face centre the smallest admissible
+   radius is `3.206870905`, and any cutter needs `|p| < 2·R_cell = 2.63 < 3.2069`, so no `r` can be
+   both admissible and cutting, at any `ρ` in the swept range.
+3. **The three radii straddle the crossing.** `V_dod(ρ/2)³ = √32` at `ρ = 2.0127…`, and at
+   `ρ = 2.0127` the cell is **`0.0028%` below** `√32`, while at `2.09` it is `11.97%` above. So the
+   probe's first row is not a "singleton works" case at all — it is the knife edge where the singleton
+   *fails* — and C102's redundancy statement is load-bearing precisely there. Main's `C101` text reads
+   as if all three radii are above target; only two are.
+
+### K15-X-C077 — `constants_check.py` ("every ledger constant re-derived") does not re-derive C102's constant
+
+Parsed all **143** `chk(...)` calls in `Computation/constants_check.py` at main `4dc1cc9` and compared the
+`got` and `want` arguments textually. **Two are self-comparisons** — identical expressions, so they
+cannot fail:
+
+- `chk("  theta_min (deg) at rho=%s" % rho, degrees(acos(c)), degrees(acos(c)))` (inside the `rho` loop);
+- `chk("nearest admissible 13th centre at rho=2.09", 3.206870905, 3.206870905, tol=1e-9)` — and this is
+  the only ledger line for `C102`'s constant, which is the value that matters for `C101` case (B).
+
+A third is a semantic self-comparison with a mislabelled name:
+`chk("2.09 is below the 13-point threshold", mpf('2.09'), 2.09)` compares `2.09` with `2.09`; it does
+**not** test `2.09 < 2.091145548…`, and would pass at any radius.
+
+So `run_all_checks.py`'s row "constants: every ledger constant re-derived — PASS" is true of 140 of
+143 entries but not of `C102`'s. The value is nevertheless **correct** (`X-C070`, an independent
+mpmath recomputation plus a proof of the covering step), so this is a gap in the regression net, not a
+wrong number: if `nearest_13th.py` regressed, `constants_check.py` would not notice. The fix is a
+one-line `chk` against `nearest_13th.min_admissible`, or against the closed form
+`ρκ + √(ρ²κ²−ρ²+4)` used in `nearest_13th_indep.py`.
+
+### K15-X-C078 — why my cover has 45 arcs and Main's has "53 proper": 14 pairs are tangential with zero-width arcs
+
+`corrected_cover.arcs()` returns **45** raw arcs where Main's repaired `inner_arcs` reports **53**
+proper arcs. Reconciled exactly, over the same 121 pairs at `d = 2`:
+
+| class | count | note |
+| --- | --- | --- |
+| never closer than 2 (`A − R > 4`) | 69 (Main: 68) | no arc |
+| **tangential**: `min_t d² = A − R = 4` exactly | **14** | zero-width arcs; `c = −1`, `half = π − acos(−1) = 0`; contribute nothing |
+| genuinely violating (`A − R < 4 < A + R`) | **39** | these carry the cover; folding them mod `2π/5` gives the 45 raw pieces |
+
+`68 + 53 = 121` and `69 + 39 + 13 = 121`: Main's "proper" count includes the 14 tangential pairs
+(one of which my 60-digit code classifies as "empty" because `A − R` comes out `4 + 10⁻⁵⁸`). Both
+implementations therefore agree on the *set* that matters — 39 pairs, merged to `[0, 2π/5]` — and the
+counts differ only by zero-width bookkeeping.
+
+Two things worth stating because they are easy to lose: the certificate is carried by **39 of 121**
+pairs, and **14 pairs are tangent at distance exactly 2** for exactly one twist each. A strict-inequality
+treatment would have to exclude those 14 explicitly; the inner-arc formulation does it automatically,
+since their arcs are empty after the margin. The cover does not depend on any of them.
+
+**A 1-count difference remains**: `A − R = 4` for 14 pairs, and at 60 digits one of them computes as
+`4 + 1e-58` and falls into "empty". It changes no arc, but it shows the classification is exactly at a
+numerical boundary for those pairs — the reason Main's `1e-30` inner margin, not a `1e-58` epsilon, is
+the right device.
+
+### K15-X-C079 — E's new interval trigonometry is sound; and the default region does not contain E's own C5 fixture
+
+**Trig.** `cell_certificate._sincos` is `rational_interval.sin_cos_iv_of_pi_multiple(mult, terms=24,
+pi_terms=32)`, and `_range_of` takes the hull of the endpoints plus every quarter-turn inside the box —
+no monotonicity assumption. Tested the enclosure directly: **344 rational multiples of π in `[−2, 2]`**
+(denominators 5, 10, 20, 50), exact values inside the returned intervals in **344/344** cases, maximum
+interval width **`1.18e-37`**. So the same verdict as `X-C067` for the old module: the trigonometric
+enclosure is exact rational arithmetic and sound; the flat `1e-9` in `spanning_constant` (`X-C072`) is
+the only non-interval step in the chain.
+
+**Scope of the default region.** The C5 control in `cell_certificate.py` is built at
+`tsin = √55/8`, `tcos = −3/8`, i.e. **θ = 112.02°**, and certifies `5.8980173718`. The default region of
+`certify_region_v2.py` is **θ ∈ [110°, 111°]**, which **does not contain 112.02°**: the region certifies
+a *different* one-parameter family (there `z = −2cos θ ∈ [0.68, 0.70]`, radius `2 sin θ ∈ [1.879,
+1.884]`, volume `[5.861827, 5.940277]`), not a neighbourhood of the C5 fixture. Both are above the
+`5.763417470` target, so nothing false is claimed — but "CERTIFIED for the whole region" should not be
+read as "certified around C5", and the region and the control are two different objects.
+
+### K15-X-C080 — `origin_interior_certificate`'s contract is false, and `spanning_constant` is not rigorous
+
+1. **The helper.** Reproduced exactly:
+   `origin_interior_certificate([(1,0,0),(0,1,0),(0,0,1)])` → `(True, 1, 1)`, while the hull is the
+   triangle in `x+y+z=1` and does not contain the origin. **Stronger**: on
+   `[(1,0,0),(0,1,0),(0,0,1),(1,1,1)]` it returns `(True, 1, 4)` although all four points have
+   `x+y+z = 1`, so `0 ∉ conv` — and this hull *is* 3-dimensional, so the failure is not only the
+   degenerate case. The `b×c` normals (instead of `(b−a)×(c−a)`) are a genuine inconsistency, but they
+   are **not** the operative cause of the three-point probe: with edge-vector normals the answer is
+   still `(True, 1, 1)`. The operative cause is the missing **3-dimensionality** check.
+2. **Consequence, stated exactly.** The boundedness decision in `polytope_volume` (and hence in
+   `certify`) rests on this helper. On the full-dimensional witness the failure is *safe* —
+   `polytope_volume` returns `None` with 0 vertices and `certify` would raise — so I have no
+   demonstrated false volume. What is refuted is the guarantee itself; a false positive on a normal set
+   with ≥ 4 vertices would yield a finite volume for an unbounded cell, which is `X-C061` again.
+3. **The radius path is not rigorous either.** `spanning_constant` evaluates the rational normals in
+   `numpy` floats and returns `F(vals.min()) − F(diam) − 1e-9`: the LaTeX-side argument (1‑Lipschitz,
+   mesh diameter as covering radius) is correct, but the float error is not *bounded*, it is assumed
+   below `1e-9`. So `R₀`, and with it the outer polytope's truncation, is not a certified bound. The
+   fix is to do the mesh evaluation in `Iv`/`Fraction` (the mesh can be generated with rational
+   directions from the icosahedral subdivision, or the `min` can be bounded below on each mesh triangle
+   by its vertices minus the diameter, evaluated exactly), and to drop the `1e-9`.
+
+**Status of `X-C072`**: its table row on boundedness is **withdrawn** (see the erratum there). The other
+four rows stand: the `√3` slack, the inner inclusion, the exact domain tiling and the a-priori-radius
+*formula* are correct as algebra — the defect is in the two inputs to that formula (the helper's verdict
+and `c`'s lower bound).
+
+### K15-X-C081 — `C125(b)` refutes exact-`F` monotonicity, not the nested infimum; `C124`'s `deg ≤ 12` needs its radius
+
+**(a) The classes are nested.** If `C122`'s `c_F` is the minimum volume of a convex body containing
+`B(0,1)` with **at most** `F` faces, then `c_F` is **non-increasing** in `F` by inclusion, and nothing can
+refute it. `C125(b)`'s table — truncated octahedron, 14 faces, `6.158403`, versus icosahedron, 20 faces,
+`5.054056` — shows only that the minimum over **exactly** `F` faces is *not* monotone (it can rise from
+`F = 14` to `F = 20`). That is true and worth recording, but it is a different statement: a
+larger-volume 14-face example cannot refute a non-increasing infimum over nested "at most `F`" classes.
+So `C125`'s obstruction rests on **(a)** the seven unproved values of `F` and **(c)** the equal-cap
+estimate, not on (b). This is the same conflation as my own §7/X-C066, corrected in `REVIEW` §21 — the
+error is mine as much as Main's, and it points the same way: `c_20` (at most 20) is what `C122` needs,
+and it is not available.
+
+**(b) `C124`'s `deg ≤ 12`.** `CLAIMS.md` uses "`S_ε ⊆ matched ∪ N(matched)`, and with `deg ≤ 12`,
+`|S_ε ∩ B| ≤ 26|M ∩ B|`" — so it needs a per-point bound of 12 on neighbours. The steering's witness,
+the origin plus the 18 vectors in `{−2,0,2}³` of squared norm 4 or 8, is a fragment of the fcc lattice:
+I verified **19 points, minimum pairwise distance exactly 2, circumradius `2√2 = 2.828427`**. That
+refutes "at most 12 points in a ball of radius `2√2`", but **it does not refute `deg ≤ 12`**: in that
+fragment the origin has degree `6` and a corner point has degree `5`. So, read as written, `deg ≤ 12` is
+not touched by this witness; what it shows is that the *ball count* version of the bound fails at large
+radius, i.e. `C124` cannot replace `deg ≤ 12` by a counting argument at that scale. Whether `deg ≤ 12`
+itself holds depends on the radius over which neighbours are counted, which `C124` does not state at the
+place I can see; the safe statement is that it needs the kissing-number-12 theorem (Schütte–van der
+Corput) applied to a *sphere of contacts*, and that substituting a finite-ball count is invalid.
+
+### K15-X-C082 — a correct replacement for the boundedness gate (exact, rational, no plane scan)
+
+`Reviews/twist/fixed_boundedness.py` (exit 0) decides `{y : y·n_i ≤ d_i}` bounded **exactly** and without
+E's plane scan. Criterion: the recession cone `R = {d : d·n_i ≤ 0 ∀i}` is `{0}`; `R` is a polyhedral cone,
+so if `R ≠ {0}` it contains a nonzero candidate among `±n_i` (when `R` is a halfspace or a line) or
+`±(n_i × n_j)` (an extreme ray is the intersection of two of the planes). Rational arithmetic, finite
+check.
+
+| case | verdict |
+| --- | --- |
+| `[(1,0,0),(0,1,0),(0,0,1)]` (triangle, origin outside) | **False** — E's helper says True |
+| `[(1,0,0),(0,1,0),(0,0,1),(1,1,1)]` (all `x+y+z=1`) | **False** — E's helper says True |
+| tetra `e1,e2,e3,(−1,−1,−1)` | True |
+| cube's six normals | True, and `{|y_i| ≤ 1}` has 8 vertices |
+| octahedron's six normals | True |
+| unbounded tetra `{y·n_i ≤ 1}` | **refused**, with the ray `(0,−1,0)` |
+
+This is the fix to file against `X-C080`: replace the gate, keep E's `√3`-slack and inner inclusion, and
+make `spanning_constant` rational as `X-C080` §3 says.
+
+### K15-X-C083 — `C124`'s `deg ≤ 12` is FALSE in the `(2+ε)`-graph: an exact 17-neighbour witness at `ε = 0.6832816`
+
+`C124` writes: `M` a maximal matching of the **`(2+ε)`-graph**, `S_ε ⊆ matched ∪ N(matched)`, "and with
+`deg ≤ 12`, `|S_ε ∩ B| ≤ 26|M ∩ B|`". The domination step uses neighbourhoods in the `(2+ε)`-graph, so
+`deg` must be the degree there — and that degree is **not** bounded by 12 once `ε > 0`. Exact witness
+(`Reviews/twist/deg13_witness.json`, rationals with denominator 100, greedy construction, seed 11):
+
+- **17 points**, all rational, minimum pairwise **squared** distance `4.1129 ≥ 4`, maximum modulus
+  `2.6647889222 < 2.6832816 = 2 + 0.6832816`;
+- together with the origin they form a 2-separated set (every `|q| ≥ 2.65`), and the origin has **17
+  neighbours at distance `≤ 2.6648 ≤ 2+ε`**.
+
+So `deg ≥ 17 > 12` at the band end `ε = 0.6832816`, and the constant `26` is wrong (the same domination
+argument gives `2 + 2·deg ≥ 36` here, and without a bound on `deg` at all it gives nothing uniform). This
+is a refutation of a **step**, not of `C124`'s conclusion: the conclusion `ρ_ε = 0 ⟹ S_ε` has density
+zero needs only that the multiplier be finite, and a shell-degree bound of the form
+`deg_ε ≤ C(1+ε/2)²` (kissing in a shell, not the kissing number 12) would still give it. What cannot be
+used is `12`, or the number `26`. `C124` is marked `PROVED`; this step needs replacing before that
+stand.
+
+Also note the safe direction: 12 *is* the bound for neighbours at distance **exactly** 2 on a sphere
+(kissing number, Schütte–van der Corput), which is why `C112`-type contact arguments are unaffected.
+
+### K15-X-C084 — ERRATUM to `X-C075`: `C128`'s one-pair argument is VALID; my "no single pair" was computed on the wrong twist space
+
+`X-C075` above says "no single pair clashes for every twist — the conclusion `ACCEPTED.md` draws is
+correct". **That is wrong**, and `C128` is right. My statement used `A − R ≤ d² ≤ A + R` over the whole
+`360°` twist circle; the physical twist space is `R/(2π/5)`, a circle of circumference **`72°`**, because
+a `72°` rotation about the vertex axis maps the icosahedron to itself. A violation set that is an arc of
+length `> 72°` meets **every** coset, so one pair suffices.
+
+Checked exactly for the pair with `A = 6.444582472`, `R = 6.4` (in my `build()` ordering it is
+`A[5]`, `Q[10]`, not `A[1]`, `Q[8]`; the pair is identified by its invariants):
+
+- `c = (4−A)/R = −(3−√5)/2 = −0.381966011250`, `h = arccos c = 112.4555152°`, `|T| = 2π − 2h =
+  135.0889696° > 72°` ✓ — so `T` meets every coset;
+- direct maximisation, `max over τ ∈ [0°,72°) of min over k∈{0..4} d²(τ + 72k°)` =
+  **`1.266873708`** at `τ = 0`, matching `C128` to `1e-9` — and `1.2669 < 4`, i.e. this one pair is
+  closer than `2` at some representative of every physical twist.
+
+So `C128`'s three-line proof stands and is the better certificate of record. What remains true from
+`X-C075`: `ACCEPTED.md:28`'s number `8.4223` is the defective `A` (the true `A + R` is `12.844582472`),
+**and** its parenthetical conclusion — "a one-pair argument is impossible" — is also wrong, for the
+independent reason that it maximises over `360°` instead of `72°`. Both halves of that parenthetical
+should go: the correct pair certificate is `max_τ min_k d² = 1.266873708 < 4`.
+
+*Reproducible*: `Reviews/twist/one_pair_c128.py` (exit 0) finds the pair by its invariants
+(`A = 6.444582472`, `R = 32/5`), prints `h`, `|T|` and the `1.266873708`. One documentation nit: the
+indices `A[1]`, `Q[8]` in `C128` do not select this pair under the **current** `build()`/`eleven()` —
+loading the shipped `twist_cover.py` (`a34a3ff1`) as a module, the pair is `A[5]`, `Q[10]`. The
+invariants are what identify it; the indices should be recomputed or dropped.
+
+**How far the bound survives.** Greedy spherical packing on a sphere of radius `R = 2+ε` (separation
+`2`, 40 trials × 3000 candidates): `ε = 0.10 → 10` points, `0.20 → 11`, `0.25 → 12`, `0.30 → 12`,
+`0.35 → 13`, `0.40 → 14`, `0.50 → 15`. So `deg ≤ 12` can hold only for `ε ≲ 0.31`, while `C124` fixes
+`ε` anywhere in `(0, 0.6832816)`. The step is repairable by choosing `ε` small — but then it needs a
+**proved** shell bound (`deg_ε ≤ 12` for `ε ≤ 0.3`, which is a spherical-code statement, not the
+kissing number), and the choice of `ε` interacts with the other branch, whose bound
+`1/(1+ε/2)³` improves as `ε` grows. Whether a compatible `ε` exists is not settled here.
