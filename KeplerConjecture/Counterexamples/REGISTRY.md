@@ -566,3 +566,12 @@ decision procedures, one of which uses no floating point at all.
 families (`Reviews/x_family_check.py`) give **0 wrong verdicts** against `5caa1c9`. Integration
 note: `check()` now returns `None` for `η < 0`, so a caller that computes `η` as `max p` on the
 shell will fail loudly (intended); `shell_fixture.py` exits 2, `checker_adversarial.py` tests it.
+
+### K15-X-C026 — the repaired checker passes 3,600 further adversarial queries
+
+`Reviews/x_family_check.py Reviews/shell_check_5caa1c9.py 1200 11`: **0 wrong verdicts in 3,600
+random-family queries** (roots in `[0,2]`, multiplicities 1–2, both signs of the leading
+coefficient), 0 in the probe-targeted family, 0/8 in the near-touching family `(u−r)² ∓ ε`. The
+truth is the proven algebraic rule, computed independently of any checker. This is a regression
+check on the predicate part only: the `5caa1c9` change is the `η ≥ 0` precondition, so no
+predicate should have moved, and none did.

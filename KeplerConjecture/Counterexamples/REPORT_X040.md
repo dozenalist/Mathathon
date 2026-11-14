@@ -212,17 +212,20 @@ work. `Reviews/verify_eta_closed.py` checks the three things that matter at once
 | blob `5caa1c9`, `η = 0` control | `0.780370311`, unchanged (C published `0.78037032`) |
 
 So the guard closes the witness and moves no published number. I also re-ran the three
-adversarial families (`Reviews/x_family_check.py`, 300 random + probe-targeted + near-touching)
-against `5caa1c9`: **0 wrong verdicts**. That is expected — the change is a precondition, not a
+adversarial families (`Reviews/x_family_check.py`) against `5caa1c9`: **0 wrong verdicts in
+3,600 random queries**, 0 in the probe-targeted family, 0/8 in the near-touching family. That is expected — the change is a precondition, not a
 predicate repair — but it is worth having on record that the precondition added no regression in
 the part of the checker that has failed three times before.
 
-One integration note for C: because `check()` now returns `None` rather than a number,
-`Computation/shell_fixture.py` will report failure (exit 2) on a negative `η` instead of printing
-a density, and `checker_adversarial.py` already tests for exactly that. Any C-side caller that
-*computes* `η` as `max p` on the shell rather than passing `0` will now break loudly. That is the
-intended behaviour, but it is a behaviour change and should be checked on C's side before the next
-`shell_propose` run.
+One integration note for C, with the call sites named. `shell_propose.py:202` writes
+`eta=str(er2)` into its rows, where `er2 = round(η·D)/D` comes from `solve_laguerre(..., use_eta,
+...)` — so the `eta_free` branch can hand `check()` a *negative* `η` whenever the shell maximum of
+`p` is negative. Before the guard that produced a silent 1.5% "bound"; with `5caa1c9` the same
+call returns `None`, `exact_verdict` reports failure, and the loop moves on — a loud failure
+instead of a quiet unsound success. That is the fix working. `shell_bench.py:132` records the same
+quantity as `held_shell_max_f_minus_eta` and is diagnostic only. No published row is affected:
+all four rows of `C_shell_propose.json` carry `eta = "0"`, and the `η = 0` control is numerically
+unchanged.
 
 ---
 
