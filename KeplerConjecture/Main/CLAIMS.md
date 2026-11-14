@@ -4512,11 +4512,18 @@ chosen contact coincides with `p`**: `w + 2u_i = p`. Since that contact lies at 
 from `w`, coincidence forces `d = 2` and `u_i = e`. Two things must then be checked, and both are
 short.
 
-*(a) The axis is a face normal of `p`'s cell too.* The midpoint `m = (p+w)/2` has `|m − w| = 1`, and
-for every centre `u`, `|m − u|² = |u|² − 2⟨m,u⟩ + 1 ≥ (|u| − 1)² ≥ 1 = |m − w|²`, so `m ∈ Ω(w)`, and
-symmetrically `m ∈ Ω(p)`. Hence the bisector plane `{x : |x−w| = |x−p|}` — at distance exactly 1 from
-each centre, which is the inradius — supports **both** cells, so it contains a face of each. The axis
-`w→p` is therefore a face-normal direction (a vertex direction of the icosahedron) for both cells.
+*(a) The axis is a face normal of `p`'s cell too.* Two facts. **(Support)** Since `p` is a centre,
+`Ω(w) ⊆ {x : |x−w| ≤ |x−p|}`, so the bisector plane `B = {|x−w| = |x−p|}` lies on the far side of
+`Ω(w)` — it is a supporting plane unless `Ω(w)` never reaches it. **(Nonemptiness)** It does reach it:
+the midpoint `m = (p+w)/2` has `|m − w| = 1`, and for every centre `u`,
+`|m − u|² = |u|² − 2⟨m,u⟩ + 1 ≥ (|u| − 1)² ≥ 1 = |m − w|²`, so `m ∈ Ω(w)`, and symmetrically
+`m ∈ Ω(p)`. Together: `B ∩ Ω(w) = B ∩ Ω(p)` is a nonempty face of **each**, and `B` is at distance
+`d/2 = 1` from both centres — exactly the inradius, so it is a face plane of both cells. The axis `w→p`
+is therefore a face-normal direction (a vertex direction of the icosahedron) for both cells.
+
+(A referee may query the compressed form "`m ∈ Ω(w) ∩ Ω(p)`, hence `B` supports both". The support comes
+from `p` being a *centre*, not from `m`; `m` supplies nonemptiness. Both are needed and both are one
+line.)
 
 *(b) `C128` excludes that case for every twist.* `C128` proves, at `d = 2` with the axis a vertex
 direction of both icosahedra and the relative twist free on the circle `R/(2π/5)`, that some pair of
