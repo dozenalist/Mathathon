@@ -916,3 +916,16 @@ inradius 1 has `V_ico = 5.054056144` (C122 prints 5.054056) and `V_ico·1.045³ 
 (prints 5.767518), i.e. `+1.96%` over `√32`, against `V_dod·1.045³ = 6.333804106` at `+11.97%`.
 No discrepancy. Both entries post-date the audit target; they are checked because they carry the
 numbers a later block would quote.
+
+### K15-X-C055 — E's payer fixture reproduced independently, and it is NOT the value §5 quotes
+
+`Reviews/payer_fixture_indep.py` runs the closed-form fixture written down in Main's `C118`
+(`c = 0`, `w1 = (0,0,2)`, five ring points at `(4/√5 cos72k, 4/√5 sin72k, 2/√5)`, five pentagon
+points at `w1 + 2(s cos(36+72k), s sin(36+72k), 3/8)` with `s = √55/8`, `south = (0,0,4)`) through
+an independent half-space clipping: **`vol Ω(w1) = 5.89801737180372`** — `C118`'s value to every
+digit it quotes — with **20 cell vertices** and minimum pairwise distance exactly 2. So `C118`'s
+reproduction is sound. **But this is not the `5.897967122` quoted in §5 of the audited
+`GEOMETRIC_LEMMA_0438`**: that is a different, slightly sharper completion from E's `C5` search.
+Both exceed the payer target `2√32 − V_dod = 5.763417470`; the §5 margin `0.134549652` belongs to
+E's value and this fixture's margin is `0.134599902`. No claim is affected, but the two numbers
+should not be quoted interchangeably.
