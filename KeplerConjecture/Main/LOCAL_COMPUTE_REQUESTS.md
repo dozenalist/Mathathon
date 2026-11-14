@@ -111,6 +111,33 @@ blocking = rho = 2.09 needs a Tammes-13 enclosure; without it the count 12 is a
 certification = exact (Sturm) or none
 ```
 
+
+### M-LEAN-002 — pinned build of `Lean/Kepler15/Volume.lean` (ball-volume identity)
+
+```text
+request_id = M-LEAN-002
+status = REQUESTED
+owner = M (Main); executed by Astra locally
+reviewer = X
+claim_id = K15-C024 item 1 (ball volume), K15-C039
+branch = kepler15/main
+source_commit = the pushed head that carries this file
+input_files = KeplerConjecture/Lean/Kepler15/Volume.lean
+              KeplerConjecture/Lean/Kepler15/Normalisation.lean
+command = lake env lean KeplerConjecture/Lean/Kepler15/Volume.lean
+          then append `#print axioms Kepler15.volume_ball_unit` and re-run
+dependencies = Lean v4.35.0, Mathlib v4.35.0 (local checkout)
+resources = 1 CPU, 1 GB RAM, 300 s cap (cold Mathlib read dominates)
+expected_outputs = KeplerConjecture/Lean/out/volume_build.log
+success_criteria = exit 0; `#print axioms` shows only
+                   [propext, Classical.choice, Quot.sound]; no `sorry`
+certification = Lean kernel (pinned toolchain only)
+note = the two proof routes are named in the file's header. If
+       `EuclideanSpace.volume_ball` or `Real.Gamma_nat_add_one_over_two` has a
+       different name in v4.35.0, report the diagnostic and do not patch with
+       `sorry`; Main revises the file.
+```
+
 ### M-QUEUE-001 — claims that must be re-anchored when the review lands (M)
 
 Not a computation: `Main/HOURLY_REVIEW_2026-11-14_0008.md` and

@@ -37,16 +37,22 @@ For every cluster `K` produced by R1 with `diam K ≤ D`:
    centres in `K ∪ (one layer outside K)`; the cap estimate of Rogers gives a
    lower bound depending on the number of Delaunay simplices attached to each
    vertex. The constant to beat is `√32`, and Rogers' simplex bound
-   (`0.7796 → V_0 ≈ 5.42`) is *below* it, so a bare Rogers estimate is not enough:
-   the cluster structure must beat Rogers by `5.6568/5.42 ≈ 1.044` on the
-   configurations that occur.
+   (`σ₃ = 0.779635570044… → V_0 = (4π/3)/σ₃ = 5.372754099…`) is *below* it, so a
+   bare Rogers estimate is not enough: the cluster structure must beat Rogers by
+   `√32/5.372754 = 1.0529` (5.29%) on the configurations that occur. For scale the
+   ladder in cell-volume units is `4.188790` (ball) < `5.372754` (Rogers) <
+   `5.550291` (dodecahedral) < `5.656854` (Kepler).
 2. **Fejes Tóth-type.** A weighted average over the cells of `K` with weights from
    the contact graph, as in L. Fejes Tóth's programme; the weight exists only if
    the contact graph's structure is controlled, which is the hard part.
 
-Either way, K15-C029 applies: `A` must be positive at defect vertices and
-negative on a full-density set, and `Σ A ≤ C₁r²`. **A specification that omits
-the negative part of `A` is incomplete.**
+If `A` is a bounded-range antisymmetric transfer (K15-C035) then `Σ A ≤ C₁r²`
+holds automatically with `C₁ = 3Φ(R+1)⁵`, so negligibility is not a separate
+obligation; what remains is the pointwise inequality `Σ_w φ(v,w) ≥ √32 − vol Ω(v)`
+and hence the analytic cluster-volume bound. *(The earlier sentence here — that
+`A` must be "negative on a full-density set" — came from K15-C029 and is
+**withdrawn**, review 0138: the correct statement is the signed estimate
+`θ#(D_θ) ≤ C₁r² + N_A` of K15-C029r.)*
 
 ## R4 — Test cases the rule must survive
 

@@ -44,10 +44,22 @@ tested, not asserted (`Computation/interface_xcheck.py`).
    `0.034°`). The Tammes input is E's enclosure (K15-C027), which Main re-ran and
    accepts with the scope that the constant's *identification* rests on
    Musin–Tarasov's computer enumeration.
-5. **Defect density is zero** (K15-C029): with an fcc-compatible negligible `A`,
-   `#{v : vol Ω(v) ≤ √32 − θ} ∩ B(x,r) ≤ C₁r²/θ`, so small cells must be rare.
-   Any proposed `A` must therefore be *negative* on a set of vertices of full
-   density; a candidate that specifies only its positive part is incomplete.
+5. **Signed defect estimate** (K15-C029r): with an fcc-compatible negligible `A`,
+   `θ·#(D_θ ∩ B(x,r)) ≤ C₁r² + N_A(x,r)`, where `N_A` is the *negative mass* of
+   `A` in the ball. Negligibility alone does not bound the defect count — the
+   earlier "defect density is zero" claim (K15-C029) is **withdrawn**, its proof
+   having assumed `A ≥ 0`. Under that extra hypothesis the statement is true and
+   is recorded separately as K15-C029c.
+6. **Transfers make negligibility automatic** (K15-C035): if `A` is an
+   antisymmetric transfer of range `R` and bound `Φ`, it is negligible with the
+   explicit packing-independent constant `C₁ = 3Φ(R+1)⁵`. This removes Hales'
+   Chapter 5 machinery *if* his correction is recast in transfer form (Main's
+   reading, not verified against his text), and leaves only the pointwise
+   inequality `Σ_w φ(v,w) ≥ √32 − vol Ω(v)`.
+7. **No finite fixture can test that inequality** (K15-C036): cells computed in a
+   finite completion are upper bounds for the cells in a packing (monotonicity in
+   the point set), so a fixture can refute the required lower bound but never
+   confirm it.
 6. **Density normalisation** (K15-C024), item by item, including the
    counting-to-volume bridge and the older-convention conversions
    (`c = n/8`, `Δ = (π/6)n`).
@@ -59,11 +71,13 @@ tested, not asserted (`Computation/interface_xcheck.py`).
 | **Cluster/partition (geometric)** — E's criterion, cluster averages instead of pointwise fcc-compatibility | criterion proposed; universal quantifier refuted (a singleton at the icosahedral vertex); repaired to a *specified* partition | a partition rule with a boundary estimate; an analytic cluster-volume lower bound at `D = 2`; an explicit `A` satisfying K15-C029 |
 | **Exact-certificate pipeline (analytic)** — rational data + Sturm verdicts | working end to end at degree 33, cross-verified | nothing structural; its ceiling is obstructed by Li, so it is a control and a component, not the theorem |
 
-Two routes are **closed with evidence**, and should not be reopened without new
-information: the shell allowance (measured gain 0 at degree 21, and K15-C028
-shows why: the cost `12η` scales with the amplitude of the profile on the shell)
-and degree escalation of the two-point family (C's saturation at degree 33,
-`+0.03%` above CE03).
+**Scope of the negative results (narrowed after review 0138).** The shell
+allowance found **no gain in the tested scope** (degree 21, grid 500, `ρ = 2.09`;
+and `K15-C028` explains why it is expensive: the cost `12η` scales with the
+profile's amplitude on the shell). The two-point certifier saturates at degree 33
+in *that* implementation, `+0.03%` above CE03. Neither is an impossibility
+theorem, and neither family is "closed": a different proposer, a different
+degree, or a different relaxation could behave differently.
 
 ## 4. The frontier, in one place
 

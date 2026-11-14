@@ -913,14 +913,20 @@ geometric route produces: a candidate profile ⇒ run `exactcert` and
 - **Status.** `TESTED_FINITE`; the verdicts inside are exact, the *values* are
   vacuous. Reviewer X. G10 remains open but with the cost structure now explicit.
 
-### K15-C029 — the usable objective for the geometric route (`PROVED`, a constraint on `A`)
+### K15-C029 — WITHDRAWN (proof invalid, review 0138; text kept as rejected evidence)
+
+> **Status: `WITHDRAWN`.** The proof below assumes `A ≥ 0` without saying so: from
+> `A ≥ θ` on `D_θ` and `Σ_Λ A ≤ C₁r²` one cannot bound `#D_θ`, because negative
+> terms of `A` outside `D_θ` cancel the positive ones inside. The corrected
+> estimate is `K15-C029r`; the conditional version under `A ≥ 0` is `K15-C029c`.
+> See `Main/REVIEW_0138.md`.
 
 The cluster criterion (K15-C025) needs `Σ_{v∈K}(vol Ω(v) + A(v)) ≥ V_0|K|` with
 `V_0 > 5.550291` to beat the dodecahedral bound, and `V_0 = √32 = 5.656854` to
 reach Kepler. This entry records what that forces on `A`, so that a proposed `A`
 can be tested before any cluster analysis is attempted.
 
-**Lemma (defect density is zero).** Let `Λ` be saturated with an fcc-compatible,
+**REJECTED Lemma (defect density is zero).** Let `Λ` be saturated with an fcc-compatible,
 negligible `A`: `vol Ω(v) + A(v) ≥ √32` for all `v`, and
 `Σ_{v∈Λ∩B(x,r)} A(v) ≤ C₁r²` for all `x`, `r ≥ 1`. Fix `θ > 0` and let
 `D_θ = {v : vol Ω(v) ≤ √32 − θ}`. Then `#(D_θ ∩ B(x,r)) ≤ C₁r²/θ` for all
@@ -1089,3 +1095,353 @@ from the committed script.
 `Main/INTERFACE.md` §4 was also corrected: the "conservative integer threshold"
 no longer exists — `4·PI_LO` and `PI_LO·ρ²` are rational and exact, so the
 threshold costs nothing.
+
+### K15-C029r — the correct signed estimate (`PROVED`)
+
+Same hypotheses as C029 (`Λ` saturated 2-separated, `vol Ω(v)+A(v) ≥ √32`,
+`Σ_{Λ∩B(x,r)} A ≤ C₁r²`). For `θ > 0` and `D_θ = {v : vol Ω(v) ≤ √32 − θ}`:
+
+```
+θ · #(D_θ ∩ B(x,r))  ≤  C₁ r²  +  N_A(x,r),     N_A(x,r) := Σ_{v∈Λ∩B(x,r)} max(−A(v),0).
+```
+
+*Proof.* `Σ_B A = Σ_{D∩B}A + Σ_{B∖D}A ≥ θ#(D∩B) − N_A`, using `A ≥ θ` on `D` and
+`A ≥ −max(−A,0)` everywhere; combine with `Σ_B A ≤ C₁r²`. ∎
+
+This is the only form that follows from the stated hypotheses. Any use must bound
+`N_A`; §2 of `Main/REVIEW_0138.md` lists the two available routes (conditional
+positivity, or the transfer construction of `K15-C035`). Reviewer X.
+
+### K15-C029c — the conditional version under `A ≥ 0` (`PROVED`, with an extra hypothesis)
+
+If in addition `A(v) ≥ 0` for all `v`, then `N_A = 0` and
+`#(D_θ ∩ B(x,r)) ≤ C₁r²/θ`: small cells have upper density zero. **This is the
+statement the withdrawn entry actually proved**, and it is true, but the
+hypothesis `A ≥ 0` is false for the corrections that matter (an `A` that is
+positive at the icosahedral vertex must be negative where cells exceed `√32`).
+Cite it only with the hypothesis attached. Reviewer X.
+
+### K15-C035 — bounded-range antisymmetric transfers make negligibility automatic (`PROVED`)
+
+**Definition.** A *transfer* of range `R ≥ 1` and bound `Φ ≥ 0` is an
+antisymmetric `φ : Λ×Λ → R` (`φ(v,w) = −φ(w,v)`) with `φ(v,w) = 0` when
+`|v−w| > R` and `|φ| ≤ Φ`. Its *correction* is `A(v) := Σ_{w∈Λ} φ(v,w)`.
+
+**Lemma.** Let `Λ` be 2-separated, `A` a transfer as above, and
+`k_R := max_v #{w ∈ Λ∖{v} : |w−v| ≤ R}`. Then
+(a) `|A(v)| ≤ Φ·k_R` and `k_R ≤ (R+1)³ − 1`;
+(b) `Σ_{v∈Λ∩B(x,r)} A(v) ≤ 3Φ(R+1)⁵ r²` for all `x` and all `r ≥ 1`, i.e. `A`
+is negligible with the **explicit packing-independent** constant
+`C₁ = 3Φ(R+1)⁵`.
+
+*Proof.* (a) Each term of the sum is bounded by `Φ` and there are at most `k_R`
+of them; the balls `B(w,1)`, `w ∈ Λ∩B(v,R+1)∖{v}`, are disjoint, lie in
+`B(v,R+2)∖B(v,1)` up to measure zero, and the volume comparison gives
+`k_R ≤ ((R+1)³ − 1)` (using `vol B(0,s) = (4π/3)s³`).
+(b) In `Σ_{B(x,r)} A` every pair with both ends inside `B(x,r)` contributes
+`φ(v,w)+φ(w,v) = 0`. What remains are pairs with `v ∈ B(x,r)`, `w ∉ B(x,r)`,
+`|v−w| ≤ R`: at most `k_R·#(Λ ∩ (B(x,r+R)∖B(x,r))) ≤ k_R·((r+R)³ − r³)` ordered
+pairs, each contributing at most `Φ`.
+**Arithmetic step, proved termwise.** `(r+R)³ − r³ = R(3r² + 3rR + R²)`, and for
+`r ≥ 1 ≥ R·0`:
+`R² ≤ 3r²R²`, `3rR ≤ 6r²R` (as `r ≥ 1`), `3r² ≤ 3r²` — so
+`R(3r²+3rR+R²) ≤ 3Rr²(R+1)²` after dividing by `R > 0`. Hence
+`3Φk_R·Rr²(R+1)² ≤ 3Φ(R+1)³·r²(R+1)² = 3Φ(R+1)⁵r²`. ∎
+(The termwise form replaces the earlier "checked numerically" remark; it is also
+the form the Lean lemma `cube_diff_le` states.)
+
+**Why this matters for the project's goal.** Hales' proof spends a chapter
+(Chapter 5: the `Q`-system, compatibility Lemma 5.28, and the four-way
+cancellation of Lemma 7.10) establishing that `A` is negligible. If `A` is
+presented as an antisymmetric bounded-range transfer, negligibility is the
+two-line estimate above, with a constant that does not depend on the packing.
+His four-way cancellation is precisely the antisymmetry bookkeeping, so
+*recasting* his correction in transfer form is the natural simplification —
+**flagged as Main's reading of his construction, not as a verified claim about
+his text.**
+
+**What it does not give.** Fcc-compatibility stays pointwise:
+`Σ_w φ(v,w) ≥ √32 − vol Ω(v)` for every `v`. Summed over a region this says the
+transfer must move exactly the deficit `√32 − vol Ω(v)` into each vertex, and
+since the total flux over a large region is `O(r²)`, the *integrated* requirement
+is `Σ_{B}(vol Ω(v) − √32) ≥ −C₁r²`, i.e. an averaged cell inequality — which is
+`K15-C025`'s cluster form with H4 supplied. So `K15-C035` closes H4 and leaves
+H2/H3 untouched. Reviewer X.
+
+### K15-C036 — why the icosahedral fixture cannot test fcc-compatibility (`PROVED` obstruction)
+
+`K15-C035` reduces the remaining obligation to the pointwise inequality
+`Σ_w φ(v,w) ≥ √32 − vol Ω(v)`. A fixture would have to *verify* it at the
+icosahedral vertex, where the deficit is `√32 − 5.550291 = 0.106563`. But:
+
+- the Voronoi cells of a finite point set are unbounded, so a bare 13-point
+  cluster has no volumes to sum;
+- completing the cluster inside a finite region gives cells `Ω_K` *inside* the
+  completion, and `Ω_K ⊇ Ω_{K'}` for `K ⊆ K'` (more bisectors only shrink), so
+  every computed volume is an **upper** bound for the cell in any packing
+  containing the cluster (`K15-E003`).
+
+Hence a finite fixture can only ever **refute** the required lower bound; it can
+never confirm it. This is the exact sense in which the transfer route is blocked:
+`K15-C035` removes the negligibility work, and what remains is a pointwise
+*lower* bound on Voronoi volume — an analytic inequality (Rogers/Fejes Tóth type),
+not a computation. Main tested the arithmetic of the bound (the deficit is
+`0.106563`, and a transfer of range `R = 2`, `Φ` must satisfy `Φ k_2 ≥ 0.106563`
+at that vertex, i.e. `Φ ≥ 0.106563/26 ≈ 0.0041`) and did not run a completion
+search, because by the monotonicity above it could not settle the question.
+
+**Consequence for the ledger.** G5 (an analytic cluster-volume lower bound) is the
+single remaining obligation on the geometric route; G4 and G6 are supplied or
+bypassed by `K15-C035`; G7's "falsification test" is withdrawn with `C029`.
+
+### K15-C037 — independent audit of the `K15-C002b` bridge and its zero-density case (`AUDITED`)
+
+Main audited the repaired periodic-approximation lemma line by line.
+
+1. **Tile count.** `#C_in(R)·S³ ≤ vol B(0,R)` is correct: interior tiles are
+   disjoint and contained in the ball, so `#C_in ≤ vol(B(0,R))/S³`. This is the
+   direction the original argument needed and did not state.
+2. **Boundary loss.** Centres in `B(0,R)` outside the interior tiles lie in tiles
+   meeting `S(0,R)`; a tile of side `S` meeting the sphere near the origin of a
+   tile is contained in the shell of width `2S√3` about `S(0,R)`, which has volume
+   `≤ 4πR²·(2S√3 + 2) = O(R²S)`. The centres there are 2-separated, so their
+   number is at most the shell volume divided by `4π/3` — again `O(R²S)`. ✓
+3. **Division.** `n(C*) ≥ (N(0,R) − O(R²S))/#C_in ≥ (N − O(R²S))·S³/vol B(0,R)`
+   uses `1/#C_in ≥ S³/vol`, which follows from item 1. ✓
+4. **Rate.** Dividing by `S³`: `n(C*)/S³ ≥ c − O(S/R)`, so for fixed `S` and
+   `R = R(S) → ∞` the periodic packing has centre density `≥ c − O(1/S)` and
+   occupied density `≥ δ(Λ) − O(1/S)`. The diagonal choice `S → ∞`, `R(S)/S → ∞`
+   is what makes the `o(1)` uniform; that is the step the original text left
+   implicit and it is now stated.
+5. **Zero-density case.** If `δ(Λ) = 0` then `N(0,R) = o(R³)` and the conclusion
+   `δ(Λ) ≤ (4π/3)f(0)/f̂(0)` is immediate (the right side is `≥ 0`); the periodic
+   packing may be taken empty. No division by `c` occurs, so the lemma is
+   vacuous-free. ✓
+6. **Hidden dependency.** The reduction identifies the occupied-volume ratio with
+   `(4π/3)·#(Λ∩B(0,R))/vol B(0,R)` up to `O(1/R)`; that is the counting-to-volume
+   identity of `K15-C024` item 3. It is written out there and is used here
+   implicitly — a reader of C002b alone would miss it.
+
+*Verdict:* the bridge is correct as repaired. The only defect found is the
+implicit dependency in item 6, which is now recorded. Reviewer X (this is Main
+auditing Main's own repair, so an outside check is still required).
+
+### K15-C038 — transfer fixture: the constant is valid but very loose (`TESTED_FINITE`)
+
+- **Artifact.** `Computation/transfer_check.py` — builds fcc (1099 centres),
+  draws a random rational antisymmetric transfer with `R = 2`, `Φ = 1`, forms
+  `A(v) = Σ_w φ(v,w)`, and compares `Σ_{Λ∩B(0,r)} A` with `3Φ(R+1)⁵r²` for
+  `r = 1..6`.
+- **Result.** The bound holds at every radius, with observed sums of order
+  `10⁰`–`10¹` against bounds of order `10³`–`10⁴`; `max|A| = 7.25` against
+  `Φk_R = 26`. So `K15-C035`'s constant is *valid but loose by about three
+  orders of magnitude* on this instance.
+- **Why the looseness is acceptable.** Lemma 3.3's conclusion is
+  `δ ≤ π/√18 + C/r` with `C` depending on `C₁`; a loose `C₁` slows the rate, it
+  does not weaken the bound. A sharper `C₁` would matter only for a quantitative
+  (finite-`r`) statement, which is not what the project needs.
+- **Status.** `TESTED_FINITE` (arithmetic of the constant on one instance). The
+  proof of `K15-C035` does not depend on this run.
+
+### K15-C039 — icosahedral cluster fixture: monotonicity of finite completions (`TESTED_FINITE`)
+
+- **Artifact.** `Computation/cluster_fixture.py` (scipy half-space intersections).
+- **Numbers.** The 13-cluster (centre + 12 at distance exactly 2, mutual minimum
+  `2.102924`) has its centre cell computed as **5.550291** — reproducing
+  `V_dod` to six decimals, an independent numerical confirmation of
+  `K15-C012`. Completions on a spacing-`2.2` lattice at distance `≥ 5.0`, `≥ 3.5`,
+  `≥ 2.7` (nested, `2140 ⊂ 2178 ⊂ 2190` points) give
+  `Σ_{v∈K}(vol Ω_K(v) − √32) = +157.87, +63.71, +17.91`: **decreasing as the
+  completion grows**, exactly the monotonicity behind `K15-E003`/`K15-C036`, and
+  still far from the packing value because the completions are sparse.
+- **What it shows.** (i) the centre's cell is untouched by any completion at
+  distance `≥ 2·1.2584 = 2.5168` (its circumradius), which is why such
+  completions are legitimate tests of the neighbours; (ii) every finite value is
+  an upper bound and the sequence decreases toward the truth, so **no finite
+  stage decides the sign** — the numerical form of the `K15-C036` obstruction.
+- **What it does not show.** It gives no lower bound, hence no evidence for or
+  against the cluster inequality at the icosahedral configuration.
+- **Status.** `TESTED_FINITE`. Reviewer X.
+
+### K15-C040 — Lean: ball-volume identity drafted, build requested (`PROPOSED`)
+
+`Lean/Kepler15/Volume.lean` states `volume (ball 0 1) = ofReal (4π/3)` and its
+scaling form, with two named proof routes (`EuclideanSpace.volume_ball` at
+`n = 3` with `Γ(5/2) = 3√π/4`, or Fubini). **Not compiled by Main** — the VM does
+not run Lean. Request `M-LEAN-002` (1 CPU, 1 GB, 300 s) asks Astra for the pinned
+build and axiom audit. Status stays `PROPOSED` until that log exists; the file
+contains no `sorry` and is meant to be *revised* rather than patched if the lemma
+names differ in v4.35.0.
+
+### K15-C041 — independent quadrature audit of Main's Fourier map (`VERIFIED`; two defects in the audit script)
+
+- **Run.** X's `Reviews/audit_shell_check.py` with their copy
+  `Reviews/shell_check_main.py` (branch `kepler15/counterexamples/run-01`,
+  `e3a63a1`) was executed by Main.
+- **What it confirms.** Against **direct 3-D radial quadrature**, Main's
+  `fourier_map` reproduces `f̂` with maximum relative errors `2.25e−15`,
+  `3.19e−16`, `1.79e−15`, `4.91e−15` for four coefficient vectors, and it prints
+  the same matrix `M` (column 3 = `(105/8, −105/4, 21/2, −1)`). This is a
+  **third independent confirmation** of the map — Main's Laguerre-consistency
+  check, Computation's `build_pq`, and now quadrature.
+- **Two defects in the audit script** (reported, not fixed by Main):
+  1. their copy hard-codes `PI_LO = PI_HI = float(π)`, so its "`PI_LO < π < PI_HI`"
+     line prints `False` and the threshold-direction check is vacuous — the real
+     file carries 29-digit rationals;
+  2. it crashes at section 3 (`sp.real_roots` returns `Float` objects in this
+     SymPy version, so `r.imag` raises), i.e. the odd-part part of their audit did
+     not run. Main's own `checker_adversarial.py` covers that ground (13 cases).
+- **Status.** `VERIFIED` for the quadrature confirmation; the audit script needs a
+  repair before it can be quoted as a complete audit. Reviewer: X (their script,
+  so the repair is theirs).
+
+### K15-C042 — E's per-cell ceiling import (`ACCEPTED WITH SCOPE`; one number to query)
+
+- **Claim (`K15-E048`, branch `kepler15/experimental/run-01`, `4ea4e8b`).** Every
+  directional per-cell bound of the form
+  `vol Ω(w) ≥ (1/3)∫_{S²} τ(u)³ du` with
+  `τ(u) = min(known-neighbour terms, 1.045)` is at most
+  `(4π/3)(1.045)³ = 4.780105…`; E's optimised value is `4.734`, within 1% of the
+  ceiling, and both are far below the `5.5…` required.
+- **Main's reading.** The ceiling is immediate once `τ ≤ 1.045` holds
+  *everywhere*, which it does by construction: an unknown neighbour is at
+  distance `≥ 2.09` (`K15-E014`), so its term is `≥ 2.09/(2cos φ) ≥ 1.045`. The
+  substantive content is therefore the numerical optimisation reaching `4.734`
+  and the conclusion that **this mechanism** cannot reach the threshold — not a
+  new inequality.
+- **Scope.** It bounds one *class* of directional arguments (those using `t ≥ min_z
+  d_z/(2cos φ_z)`); it does not bound per-cell arguments using a body that is not
+  star-shaped about `w`, as E says.
+- **Query for X/E.** E's note compares against `5.665735`, but `√32 = 5.656854`
+  and `(4π/3)/(π/√18) = 5.656854`; the origin of `5.665735` (`= 4√2·1.00157`) is
+  not explained in the pushed text. Until it is, do not quote the "2.08%
+  shortfall" figure — the shortfall against `√32` is `2.30%`.
+- **Status.** `ACCEPTED WITH SCOPE` (Main's reading of the argument), the
+  shortfall arithmetic **disputed pending the constant's definition**. Reviewer X.
+
+### K15-C043 — Hales Lemma 3.3: independent re-derivation of the chain (`AUDITED`)
+
+From the hypotheses of `K15-C002`'s companion (saturated `Λ`, negligible and
+fcc-compatible `A`, `√32 ≤ vol Ω(v) + A(v)`), the inequality
+`δ(x,r,Λ) ≤ π/√18 + C/r` follows in three steps. Main re-derived each:
+
+1. **Occupied volume to count.** For a saturated packing,
+   `vol B(x,r,Λ) = Σ_{v∈Λ(x,r+1)} vol(B(v,1) ∩ B(x,r)) ≤ |Λ(x,r+1)|·(4π/3)`:
+   each ball contributes at most its own volume, and only centres within
+   `r+1` can contribute. ✓
+2. **Count to corrected volume.** `√32·|Λ(x,r+1)| ≤ Σ_{v∈Λ(x,r+1)}(vol Ω(v)+A(v))`
+   by fcc-compatibility, and
+   `Σ_{v∈Λ(x,r+1)} vol Ω(v) ≤ vol B(x,r+3)` because saturated packings have
+   `Ω(v) ⊆ B(v,2)` and hence `∪_{v∈Λ(x,r+1)} Ω(v) ⊆ B(x,r+3)`; the `A`-sum is
+   `≤ C₁(r+1)²` by negligibility. ✓ (So the correction may be *negative*
+   anywhere — only the pointwise sum matters, which is why one-sided negligibility
+   suffices.)
+3. **Divide.**
+   `δ(x,r,Λ) ≤ (4π/3)/√32 · (vol B(x,r+3) + C₁(r+1)²)/vol B(0,r)
+   = (π/√18)(1+3/r)³ + (4π/3)C₁(r+1)²/(√32·(4π/3)r³)`.
+   The first term tends to `π/√18` and the second is `O(1/r)`. ✓
+
+**Verdict.** The chain is correct as printed (the page image `X-SRC-01` shows the
+`√32` that the text layer drops). No gap found. This is the *only* place the
+dodecahedral constant enters the project's target: Lemma 3.3 needs
+`√32 = 5.656854`, not `5.550291`. Reviewer X.
+
+### K15-C044 — the exact feasibility criterion for a transfer (`PROVED`, corrected the same block)
+
+**Setting.** `Λ` a packing, `b(v) := √32 − vol Ω(v)`, and the transfer graph `G_R`
+joining centres at distance `≤ R`, each edge carrying capacity `Φ`.
+
+**Criterion (Hoffman / Gale).** There is an antisymmetric `φ` on `G_R` with
+`|φ| ≤ Φ` and `Σ_w φ(v,w) ≥ b(v)` for all `v` **iff** for every finite `U ⊆ Λ`
+```
+Σ_{v∈U} b(v)  ≤  Φ · |δ⁺_R(U)|,        δ⁺_R(U) = edges from U to Λ∖U.
+```
+(Add a supersource/supersink; this is the max-flow min-cut condition.)
+
+**Correction history.** The first version of this entry claimed the criterion was
+"`Σ_U b ≤ 0` for every union of connected components", presented as an `iff`.
+That is wrong in two ways: (i) it is only the *no-out-edge* case of the cut
+condition; (ii) for a transfer graph that is connected — as `G_R` is for fcc with
+`R ≥ 2` — there are no proper unions of components, so the condition is vacuous
+and the real content is entirely in the cut condition. Recorded because the
+overclaim is exactly the kind this block exists to remove.
+
+**What the criterion says, in the two regimes.**
+- `R < 2` (graph = isolated vertices): the condition is `b(v) ≤ 0` for each `v`,
+  i.e. **pointwise** fcc-compatibility — the Hales requirement.
+- `R ≥ 2` on a connected graph: for a large blob `U`,
+  `Σ_U b ≤ Φ|δ⁺(U)| = O(Φ·|U|^{2/3})`, i.e.
+  `Σ_{v∈U} vol Ω(v) ≥ √32|U| − O(Φ|U|^{2/3})` — an **averaged, global** inequality
+  with an explicit `o(|U|)` slack, not a local one.
+
+So the transfer formulation delivers exactly what the averaging formulation
+delivers, with the extra slack `Φ|U|^{2/3}` paid for by `Φ`; it never weakens the
+requirement below the averaged inequality. **The gain is confined to
+negligibility** (`K15-C035`), which is real but is bookkeeping, not geometry.
+
+*Status.* `PROVED` (standard flow duality). Reviewer X.
+
+### K15-C045 — structural reading: where the transfer route actually stands
+
+Combining `K15-C035`, `K15-C036`, `K15-C043` and `K15-C044`:
+
+1. A bounded-range antisymmetric transfer is automatically negligible (`C035`),
+   so Hales' Chapter 5 (the `Q`-system, Lemma 5.28, the four-way cancellation of
+   Lemma 7.10) is replaceable by a two-line estimate — **the one simplification
+   this line of work has produced**.
+2. The price is the cut condition of `C044`. On a connected transfer graph it is
+   the *global averaged* inequality
+   `Σ_U vol Ω ≥ √32|U| − O(Φ|U|^{2/3})`; on a disconnected graph (`R < 2`) it is
+   the pointwise inequality. There is no regime in which the requirement is both
+   local and weak.
+3. Neither version can be established by computation (`C036`: finite completions
+   bound cell volumes only above).
+4. Therefore the remaining mathematical content is exactly **an analytic averaged
+   lower bound for `Σ vol Ω`**, equivalently Kepler's inequality in averaged form.
+   Not a shortcut; the honest location of the difficulty.
+
+*Status.* `PROVED` given C035/C036/C044 (a synthesis, not a new inequality).
+Reviewer X.
+
+### K15-C046 — import of C's shell proposers (`TESTED_FINITE`; no verdict yet)
+
+- **Artifacts.** `Computation/shell_sos.py`, `Computation/shell_propose.py` and
+  their JSON outputs (branch `kepler15/comp-01a1d8c0`, `5c10267`).
+- **What is good.** C adopts Main's basis (`u = π|x|²`) and Main's checker for the
+  verdict, explicitly refusing to certify from an LP objective — the interface of
+  `Main/INTERFACE.md` is being used as intended. They also caught that the
+  *then-current* `shell_check.check` hardcoded `T_HI = 27/2`, which is invalid at
+  `ρ = 2.05`; that has since been parameterised (`t_hi_for(ρ)`), so their
+  workaround is no longer needed and their own per-`ρ` handling is compatible.
+- **What it does not give.** Every `verdict` field in `shell_sos.json` is `null`:
+  no candidate has passed the exact check. The best LP objective at degree 7 is
+  `0.3161`, i.e. `Δ ≈ 1.32` — vacuous. Their `n = 27, ρ = 2.05` row is correctly
+  labelled unconditional and `n = 12, ρ = 2.09` conditional on Tammes.
+- **Status.** `TESTED_FINITE` (proposer only). Not a bound; nothing to import into
+  `RESULTS.md`. Reviewer X. The proposer is the right shape; the missing piece is
+  a family rich enough to reach `R ≈ 0.186` at moderate degree, which no proposer
+  in this project has yet achieved.
+
+### K15-C047 — E's `verify_all_claims.py` re-run by Main (`CONSISTENT`, not independent)
+
+`Experimental/scripts/verify_all_claims.py` (branch `kepler15/experimental/run-01`,
+`4ea4e8b`) was executed from a scratch directory: **23/23 items pass**, including
+the Tammes enclosure values (`δ₁₃ < 57.138726938°`, `θ_min > 57.170897332°`), the
+`ρ = 2.05` and `2.09` cosine thresholds (`0.524092801904`, `0.542135024381`), the
+`√5 − 1` scope constant, and the `K15-E048` ceiling `(4π/3)(1.045)³ = 4.780105486`.
+This is a *consistency* check on E's own numbers (E wrote both the claims and the
+script), useful but **not** independent evidence; the independence comes from
+Main's separate re-derivations (`K15-C027`, `K15-C042`).
+
+### K15-C048 — re-verification against the *current* Computation artifacts (`VERIFIED`, repeat of C023/C031)
+
+After C advanced to `5c102677…`, Main re-ran both checks:
+
+- `checker_adversarial.py --against-exactcert` on the current `exactcert.py`:
+  **agrees on every case** (including `p=-(u-T)^2 → neg`, and the two
+  endpoint-root `fail` cases);
+- `verify_certificate.py out/cert.json` on `out/verified_certificate_K33b.json`:
+  `ACCEPT` by both of C's implementations, `p0/q0` unchanged, `Δ ≤ 0.779966216777`.
+
+So the interface (`K15-C023`, `K15-C031`) survives C's updates; nothing in the
+last two blocks' verification was version-specific.
