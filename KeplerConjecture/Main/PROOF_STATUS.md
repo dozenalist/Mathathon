@@ -23,6 +23,7 @@ single missing object is an explicit constant.
 | Monotone bridge: pair constant `K` ⟹ `δ ≤ 8π/(3K)` | `C106`, `C107` | `K = 2V_dod` reproduces `0.754697399337` exactly; `K = 2√32` reproduces `π/√18` |
 | The dodecahedral bound is implied by the trivial inball bound for `d ≥ 2.1967082` | `C119` | locates the route: it is needed only on `2 ≤ d < 2.1967082` |
 | E's payer fixture reproduced to `1e−15`, and its family scanned | `C118`, `C120` | independent of E's code |
+| **Explicit stability**: `≤ 12`-face cell with all neighbours `≥ 2ρ` has `vol ≥ V_dod·ρ³` | `C121` | the first *explicit* stability bound here; at `ρ = 1.045` it gives `b(v) < 0` with `12%` margin |
 
 ## Conditional, non-explicit, or open
 
@@ -30,6 +31,7 @@ single missing object is an explicit constant.
 | --- | --- | --- |
 | `(L)`: pair bound `≥ 2√32` | **open** (E's conjecture) | would give `π/√18` outright |
 | An explicit `δ₀ > 0` | **open** | the only thing between `C108` and a *number* |
+| A `≤ 20`-face circumscribed-polyhedron bound at `c ≥ 4.958`, and whether an isolated cell can have `> 12` faces | **open** (`C122`) | the two finite-dimensional sub-problems that would close the singleton case outright |
 | `ρ_ε > 0` (density of close pairs) | **open**, and false for scaled examples | `G13`; the real residue |
 | `σ₀` attained by a legal configuration | n/a | the infimum is attained in the compactified local space only |
 | Emptiness of the dodecahedral equality case | **open** — retracted at `C113` | the average-to-pointwise inference is invalid |

@@ -208,6 +208,55 @@ margin of `0.49` in `d`. **The route's scope is therefore fine; what remains is 
 This is not new mathematics — `δ ≤ 8/d³` is the oldest bound in the subject — but the
 comparison had not been made, and it says the route is aimed at the right regime.
 
+## 3c. Fallback work: the first **explicit** stability bound, and the target it opens
+
+The brief's fallback was "strengthen a concrete missing geometric lemma". Reading the primary
+source made one available, and it is three lines.
+
+**`C121` (proved, elementary).** Let `Ω(v)` have **at most 12 faces** and let every neighbour be at
+distance `≥ 2ρ` (`ρ ≥ 1`). Then `vol Ω(v) ≥ V_dod·ρ³`. *Proof:* scale by `1/ρ`; the result is
+convex, contains `B(0,1)`, has `≤ 12` faces all at distance `≥ 1`, so Fejes Tóth's Theorem 4.1
+(quoted at `C115`) gives volume `≥ V_dod`.
+
+This is exactly what `CLOSED_COMPONENT.md` A2 recorded as **needed and unavailable**: *"cells with
+inradius `≥ 1.045` have volume `≥ V_dod·(1.045)³` — neither is available."* It is available. At the
+isolated-vertex value `ρ = 1.045`:
+
+```
+vol Ω(v) ≥ V_dod·(1.045)³ = 6.333804 = 1.1197·√32 > √32 ,
+```
+
+so **`b(v) < 0` with a `12%` margin, with no compactness and no unspecified constant**, and the
+singleton closed-component question is **settled in the `≤ 12`-face case**.
+
+**Where it stops, exactly.** The hypothesis is a face count and it is *not* automatic: an isolated
+vertex has all bisectors at `≥ 1.045`, so every neighbour within `2R_cell` cuts, and `R_cell` is not
+bounded *a priori* without a volume bound. So the residual gap is precisely: *can an isolated
+vertex's cell have more than 12 faces?*
+
+**`C122` (proposed) — what would close it.** Repeat the three lines with any "`F`-face circumscribed"
+constant `c_F`. The isolated-vertex requirement is `c_F·1.045³ > √32`, i.e.
+
+```
+c_F  >  4.95708216846 .
+```
+
+| `c_F` | source | `c_F·1.045³` | verdict |
+| --- | --- | --- | --- |
+| `V_dod = 5.550291` | Fejes Tóth, `≤ 12` faces | `6.333804` | `+11.97%` ✓ |
+| `V_ico = 5.054056` | regular icosahedron, inradius 1 | `5.767518` | `+1.96%` ✓ |
+| `4π/3` | inscribed ball only | `4.780105` | `−15.5%` ✗ |
+
+So a bound for **circumscribed polyhedra with `≤ 20` faces** at `c ≥ 4.958` would close the
+`≤ 20`-face case. Two gaps remain and both are stated: the face count is not free, and the `13–20`
+face constants are a classical question Main has **not** resolved (whether the regular icosahedron
+minimises among `20`-face circumscribed polyhedra is not established here — no source in the
+repository, and it was not searched).
+
+**Consequence for the ledger.** `G11` and `G14` are unchanged, but `C121` is the first *explicit*
+stability statement the project has produced, and `C122` turns "settle the singleton question" into
+two finite-dimensional sub-problems with numbers (`4.958`, and a face count).
+
 ## 4. Proof-status account (the concise one)
 
 **Proved, this project.** Every Barlow cell has volume `√32` on a repaired basis (`C094`/`C104`);
@@ -265,7 +314,7 @@ fixture to `1e−15` and its whole `14°` family (`C118`, `C120`); C's `t*` valu
 
 **Artifacts pushed** (all on `kepler15/main`): this file, `Main/PROOF_STATUS.md`, and
 `Computation/{twist_cover, twist_all_t, near_contact_band, payer_reproduce, payer_family}.py`;
-reconciled `CLAIMS.md` (`C112`–`C120`, `C093` bullet struck), `ACCEPTED.md`, `RESULTS.md`,
+reconciled `CLAIMS.md` (`C112`–`C122`, `C093` bullet struck), `ACCEPTED.md`, `RESULTS.md`,
 `PROOF_GAPS.md` (`G13` new, `G14` reopened), `COMPLEXITY.md` (§1b and the §2a correction),
 `EXPOSITION_0438.md`, `SOURCE_MANIFEST.md`. The check suite grew from 12 to 16 checks, all green in
 `6.3 s`; the ledger linter passes.
