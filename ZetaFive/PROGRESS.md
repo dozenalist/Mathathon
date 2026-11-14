@@ -20,3 +20,7 @@ Started a 90-minute SAIR formalization block for the **parallel constructions in
 - Ownership: the coordinator is to collect functional-algebra, matrix and independent-review work. Source commit: `5f20e2fac14d7f38a56459a2e69d1dd406efaa5e`; later repository changes must be preserved. A local completion watcher will request review of this session through 7:11 p.m. PST, subject to the computer remaining awake and connected.
 
 The API credential is stored outside the repository using Windows account encryption. No credential values are included in the research prompt or source material.
+
+### Earlier parts first
+
+The user directed the same SAIR session to proceed in source order, prioritizing the polynomial/Bernoulli definitions, Euler–Maclaurin polynomial identities, pole extension and first μ–τ transport lemmas before residue and matrix constructions. The API accepted the instruction with message ID `oc_609858b673cd2a45`. The current work budget and proof-quality requirements remain unchanged; no additional mathematical result is claimed by this priority update.

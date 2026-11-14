@@ -4,6 +4,12 @@ Work for **90 minutes** on the correspondences in the zeta 5 argument. Use `http
 
 The user specifically requests lemmas for the **parallel constructions**, rather than a new proof of irrationality. Produce a small, compiling Lean library that shows how apparently separate functionals and determinant constructions represent common algebraic objects.
 
+## Priority update from the user
+
+**Formalize the earlier parts first.** Follow the reviewed source in dependency order. Complete and check the polynomial domain, Bernoulli convention, L and τ definitions, terminating Euler–Maclaurin polynomial formula, monomial calculations, forward-difference/reflection identities, simple-pole extension and harmonic increments, and the first μ–τ transport identity before advancing to the residue and matrix constructions below.
+
+Keep a source-ordered checklist and identify the earliest unproved step. If an early analytic correspondence requires substantial infrastructure, state its prerequisites and gap explicitly. Redirect pending worker assignments to the early prerequisites; preserve useful later work already completed. Every checkpoint should identify the earliest source section or lemma reached and the first remaining dependency. The current work budget and verification requirements remain in force.
+
 ## Sources and scope
 
 The reviewed [framework sources and manifest](../Literature/ParallelConstructions/README.md) are preserved in this repository. SAIR also received them directly in its ZetaFive VM project. The initial assignment was followed by a source-update message identifying the independently reviewed revision.
