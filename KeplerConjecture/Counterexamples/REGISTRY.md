@@ -762,18 +762,18 @@ Hales–McLaughlin**, which `EXPOSITION_0438.md` §6 itself names as unavailable
 refuted (it may well be true); the argument given is not a proof of it. Theorem C itself is correct
 and I checked its split, its two-sided volume estimate and `ρ ≤ 1/2`.
 
-### K15-X-C042 — the slack coefficients at line 215 are weaker than the split's, not stronger (my first claim was inverted)
+### K15-X-C042 — the slack display is correct under the repair's reading and false if `E` is kept
 
-With `d_v + Σ_{e∋v}c_e = 1` on `B∖E_B`, the edge split gives
-`Σ_{v∈B}vol Ω ≥ √32(|B| − |E_B|) − (√32 − V_dod)·(Σd_v + C_R')` with `√32−V_dod = 0.106563221` on
-**both** terms. The document displays `2(√32−V_dod) = 0.213126442` on `Σd_v` and `√32 = 5.656854` on
-`C_R`. Both displayed coefficients are **larger**, so the displayed right-hand side is **smaller**:
-the display is weaker and follows from the correct inequality, and it is true. **My first version of
-this entry said the opposite** ("stronger … plausibly false", from a per-vertex computation at a
-dodecahedral vertex with `d = 0.4`); that computation treated a global inequality as vertex-separable
-and is withdrawn — swarm member `m1` caught it. The one genuine addition: the repair needs
-`Σ_{e∋v}c_e ≤ 1` at `v ∈ E`, which `(M)` does not give, so it should be stated as "`c_e ≥ 0` with
-`Σ_{e∋v}c_e ≤ 1` everywhere and `= 1` off a density-zero set".
+The split gives `Σ_B vol Ω ≥ √32(|B| − |E_B|) − (√32−V_dod)(Σd_v + C_R')` with
+`√32−V_dod = 0.106563221` on both terms. The display at line 215 has `2(√32−V_dod)` on `Σd_v`,
+`√32` on `C_R`, and no `|E_B|` term. **If the exceptional set is absorbed into the slack (`E = ∅`,
+which is what the repair intends) the display is weaker than the split and true**; the difference is
+`−(√32−V_dod)Σd_v − V_dod C_R' ≤ 0`. **If `E` is kept alongside `d`, it can fail**: `R = 0` with
+`B = {v}`, `v ∈ E`, `d_v = 0`, `vol Ω(v) = V_dod` gives the display `V_dod ≥ √32` ✗ while the split
+gives `V_dod ≥ 0` ✓. The finding is the ambiguity — the sentence does not say whether `E = ∅` — and
+the repair is to state it, or to replace the display by the derived form. Conclusion unaffected
+(`|E_B|`, `Σd_v`, `C_R'` are all `o(R³)`). This entry has been rewritten twice; the two readings are
+why the block's swarm split 3–2 on it.
 
 ### K15-X-C043 — Theorem D step 4 confirmed independently, and the E/Main discrepancy resolved
 

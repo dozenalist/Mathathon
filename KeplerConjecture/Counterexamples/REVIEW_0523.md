@@ -416,7 +416,7 @@ be true, but it is not proved by this argument.
 
 ---
 
-## 7. The slack inequality at line 215: the coefficients are not the split's, but they are weaker, not stronger (my first reading was inverted)
+## 7. The slack inequality at line 215: correct under the repair's own reading, false if `E` is kept
 
 Line 211–217 offers the repair: allow `d_v ≥ 0` with `d_v + Σ_{e∋v}c_e = 1`, and displays
 
@@ -424,33 +424,41 @@ Line 211–217 offers the repair: allow `d_v ≥ 0` with `d_v + Σ_{e∋v}c_e = 
 Σ_{v∈B} vol Ω(v)  ≥  √32|B| − (2√32 − 2V_dod)·Σ_{v∈B} d_v − √32 C_R .
 ```
 
-Deriving it from the same split: with `Σ_{e∋v}c_e = 1 − d_v` on `B∖E_B`,
+Deriving it from the same split, with `C_R'` the exactly-one-endpoint sum:
 
 ```
-Σ_{v∈B}vol Ω(v) ≥ V_dod·Σ d_v + 2√32·Σ_{e⊆B∖E_B}c_e + V_dod·C_R'      (C_R' = one-endpoint sum)
-                = V_dod Σ d_v + √32(|B| − |E_B| − Σd_v − C_R') + V_dod C_R'
-                = √32(|B| − |E_B|) − (√32 − V_dod)(Σ d_v + C_R') .
+Σ_{v∈B}vol Ω(v) ≥ V_dod·Σ d_v + 2√32·Σ_{e⊆B∖E_B}c_e + V_dod·C_R'
+                = √32(|B| − |E_B|) − (√32 − V_dod)(Σ d_v + C_R') .        (Q)
 ```
 
-So the correct coefficients are `√32 − V_dod = 0.106563221` on **both** `Σd_v` and `C_R'`, while the
-display has `2(√32 − V_dod) = 0.213126442` on `Σd_v` and `√32 = 5.656854` on `C_R`. **Both displayed
-coefficients are larger than the correct ones, hence the displayed right-hand side is smaller, hence
-the displayed inequality is weaker and follows from the correct one.** So it is true, and the
-conclusion is unchanged — this is imprecision, not a defect.
+**The two expressions agree in the repair's own setting and diverge if a reader keeps `E`.**
 
-**Correction, recorded.** My first draft of this section claimed the opposite — that the displayed
-form was "stronger than the argument and plausibly false", with a per-vertex computation at a
-dodecahedral vertex carrying `d = 0.4`. That computation reads the inequality as if it were
-vertex-separable, which it is not: the slack term is global and is offset by vertices where the
-matching is complete. The direction of the comparison is fixed by
-`RHS_displayed − RHS_correct = −(√32−V_dod)Σd_v − (√32 − (√32−V_dod))C_R' ≤ 0`, which is immediate.
-The block's swarm member `m1` caught this; it is the second inequality I inverted in this block and
-both are recorded rather than quietly fixed.
+- *If the exceptional set is absorbed into the slack* — `d_v = 1 − Σ_{e∋v}c_e ≥ 0` for **every** `v`,
+  so `E = ∅` — then `(Q)` is `√32|B| − (√32−V_dod)(Σd_v + C_R')` and
+  `RHS_displayed − RHS_(Q) = −(√32−V_dod)Σd_v − V_dod·C_R' ≤ 0`, i.e. the display is **weaker and
+  true**, with the correct coefficient `√32−V_dod = 0.106563221` on `Σd_v` rather than
+  `2(√32−V_dod) = 0.213126442`, and `√32−V_dod` rather than `√32` on `C_R`. This is the reading the
+  repair intends (`E` disappears into `d`), and it is why three of the block's swarm members called
+  the display "valid but weak".
+- *If `E` is kept alongside `d`* — `d_v + Σc_e = 1` on `B∖E_B` only — then
+  `RHS_displayed − RHS_(Q) = √32|E_B| − (√32−V_dod)(Σd_v + C_R')`, which is positive unless
+  `C_R' ≳ 52|E_B|` (using `d_v ≤ 1`). **Explicit failure:** `R = 0`, so `B = {v}`, with `v ∈ E`,
+  `d_v = 0` and `vol Ω(v) = V_dod` (a dodecahedral cell — `(M)` constrains nothing in `E`). Then
+  `(Q)` reads `V_dod ≥ 0` ✓ while the display reads `V_dod ≥ √32 = 5.656854 > 5.550291` ✗. This is
+  why two other members called it "at best unproved, plausibly false".
 
-**One genuine addition to the repair.** `d_v ≥ 0` needs `Σ_{e∋v}c_e ≤ 1` at `v ∈ E`, which `(M)`
-does not give (it constrains only `v ∉ E`). The repair should be stated as: there are `c_e ≥ 0`
-with `Σ_{e∋v}c_e ≤ 1` for every `v` and `= 1` for every `v` outside a density-zero set. With that
-reading the derivation above is valid.
+**The finding is the ambiguity, not a computation.** The displayed inequality is true under the
+reading the repair needs and false under the literal one (a non-empty `E` surviving alongside `d`).
+The sentence "allow slack `d_v ≥ 0` with `d_v + Σ_{e∋v}c_e = 1`" does not say which, and the two
+readings give different coefficients *and* a different constant term. **Repair: state `E = ∅` in the
+repair** (equivalently, replace the display by `(Q)` with `C_R'` and drop `E`). The conclusion is
+unaffected either way, since `|E_B|`, `Σd_v` and `C_R'` are all `o(R³)` in the intended regime.
+
+**Record of my own three positions, since this section had them.** (i) "stronger than the argument
+and plausibly false", with an invalid per-vertex argument; (ii) "weaker because both coefficients
+are larger", which silently set `E = ∅`; (iii) the two-reading statement above. (i) is right under
+one reading, (ii) under the other, and neither says so. Swarm members `m5`, `m6` held (i);
+`m1`, `m2`, `m3` held (ii).
 
 ---
 
