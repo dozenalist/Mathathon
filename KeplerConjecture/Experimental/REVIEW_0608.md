@@ -111,6 +111,7 @@ boxes of `0.1°` and silently missed the strip `[110.2, 110.25] × [35.2, 35.25]
 | `K15-E091` certified enclosure | **repaired** (`K15-E095`). The old numbers are right to the digits quoted, because the missing slack is `~1e-18` at a fixed configuration; the *certificate* was not sound |
 | `K15-E094` certified regions | **PENDING**. Produced with a slack short by up to `√3` and an incomplete partition. Not withdrawn as observations, not certified |
 | five controls | **re-pass** with the repaired slack, width `1.2e-18` |
+| a non-family configuration | **certified**: the global search's best legal completion (6 free centres, `5.898473397`) encloses to width `1.2e-10` with `R = 1.449` and a 30-plane boundedness certificate. This is the first end-to-end use of the verifier on something that is not a C5 configuration |
 | the two-dodecahedra and Theorem D audits | unaffected (they use no volume) |
 
 The repaired region run over `θ ∈ [110,111] × φ ∈ [35,36]` is in flight; its result is reported
