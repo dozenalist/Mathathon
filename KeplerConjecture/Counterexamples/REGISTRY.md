@@ -895,3 +895,14 @@ is the same as `X-C043` with the separation free: v at 0 with its twelve neighbo
 `d·u₀` with its twelve at `d·u₀ + 2R_t u_j`. `Reviews/near_contact_band_indep.py` reproduces `d*`
 and the attainability check (0 cutting centres). Route impact: none — `C114` needs only
 `ε < 0.6832816`, and `d* − 2 = 1.4555`.
+
+### K15-X-C052 — A15's Voronoi volumes confirmed: 125/16 (A) and 129/16 (B), so E's 15.875 was the A–B pair
+
+`Reviews/a15_pair_indep.py` computes the eight Voronoi cells of the Cr₃Si / A15 structure by
+half-space clipping with `a = 4` (nearest distance `a/2 = 2` exactly): the two A sites have volume
+`125/16 = 7.8125` each, the six B sites `129/16 = 8.0625` each, the weighted sum is
+`2·125/16 + 6·129/16 = 64 = a³` exactly, the minimum site distance is `a/2 = 2`, and the A–B
+distance is `√5 = 2.2360679`. **Main's post-target correction (`C111`, commit `c4134c2`) is right**:
+the contact pairs in A15 are the B–B chain bonds at `a/2`, with pair sum `2·129/16 = 16.125`, and the
+`15.875` in the audited §5 table is the A–B sum, which is not a contact pair. Nothing is refuted
+either way — both exceed `2√32 = 11.3137` — but the table's A15 row should read 16.125.
