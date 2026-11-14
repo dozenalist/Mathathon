@@ -32,9 +32,15 @@ south  = (0, 0, 4)
 
 The pentagon is at **`cos θ = −3/8`, `sin θ = √55/8`**, i.e. `θ = 112.0248…°` — chosen so
 that `sin²+cos² = 1` holds *exactly* and `|pent_k − w1| = 2` exactly, while `θ` sits within
-`0.03°` of the numerically optimal value `112°` computed last block. `cos 36° = φ/2` is in
-`Q(√5)`, and `√55 = √5·√11`, so every coordinate lies in the degree-4 field
-`Q(√5, √55)`. (No periodic images are used anywhere: the fixture is a finite set.)
+`0.03°` of the optimum. (No periodic images are used anywhere: the fixture is a finite set.)
+
+**The coordinate field is `Q(√5, √(10+2√5), √55)`, of degree 8 — not `Q(√5, √55)`.** The
+ring needs `sin 72° = √(10+2√5)/4`, a *nested* radical, and PSLQ confirms
+`√(10+2√5)/4 ∉ Q(√5, √11)` (no relation with coefficients up to `10⁶`). The pentagon needs
+`sin 36° = √(10−2√5)/4`, which lies in the same field because
+`√(10+2√5)·√(10−2√5) = 4√5`. So the exactness of the construction is real, but it lives in
+a degree-8 field, and that is why the volume is enclosed rather than computed symbolically
+(§1.2).
 
 ### 1.2 What the validator checks, and the direction of each inequality
 
@@ -60,13 +66,15 @@ margin                          = +0.134599901
 Monte Carlo at `4×10⁶` samples gives `5.901210`, within its `σ ≈ 0.01` — a check on the
 polytope code, not a second value.
 
-The **coordinates** are exact but the **volume** is only enclosed, and it is worth saying
-why: the ring bisectors divide by the icos edge, `|ring_k − w1| = √(8 − (8/5)√5)`, which is
-not in `Q(√5, √55)`, so the polytope's vertices (and the volume) live in the larger field
-`Q(√5, √55, √(8 − (8/5)√5))`. A PSLQ search for the volume in `Q(√5, √55)` with
-coefficients up to `10⁷` finds nothing, as it should. `5.898017371803720` is therefore an
-enclosure to `1.4e-15`, certified by two independent algorithms (hull volume and
-divergence-theorem face decomposition), not an algebraic identity.
+The **coordinates** are exact but the **volume** is only enclosed, and the reason is the
+one above. One can avoid dividing by the icos edge by writing each plane as
+`(x − w1)·v_i = |v_i|²/2`, whose coefficients are in `Q(√5, √(10+2√5), √55)` — but the
+*areas* of the faces introduce a further square root of a quadratic form, and a symbolic
+run does not terminate in usable time. A PSLQ search for the volume in `Q(√5, √55)` with
+coefficients up to `10⁷` finds nothing, as it should, since the coordinates are not even in
+that field. `5.898017371803720` is therefore an **enclosure to `1.4e-15`**, certified by two
+independent floating-point algorithms (convex-hull volume and divergence-theorem face
+decomposition), not an algebraic identity.
 
 ---
 

@@ -26,7 +26,9 @@ this block         0ae14cc4c88ea0e74bf9c7c361a6e610f1d7d01e   fixture, theorem, 
 
 ## The four things Main needs to know
 
-1. **The payer fixture is frozen and its cell is exact.** `(θ, φ) = (111.80°, 36°)` minimises
+1. **The payer fixture is frozen and its cell is exact** (coordinates in the degree-8 field
+   `Q(√5, √(10+2√5), √55)` — `sin 72°` is a nested radical, so not the degree-4 field an
+   earlier draft claimed). `(θ, φ) = (111.80°, 36°)` minimises
    `vol Ω(w1) = 5.897967122` over the C5-symmetric family, and the cell is *exact* (no
    completion changes it). The frozen fixture uses `cos θ = −3/8` (exact coordinates) and
    gets `5.898017372`, `5.0e-5` above the family optimum. `(P')` needs `5.763417470`, so the
