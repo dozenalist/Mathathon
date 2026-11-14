@@ -134,8 +134,97 @@ adversarial coverage.
 | `K15-E099` conditional twelve-face theorem | **conditional**, premise open, not refuted (§3) |
 | continuum certificates / universal pair claims | **pending**, as instructed |
 
-An honest remark on `E094'`: the region runs used the mesh-based radius. The change to the exact
-inradius alters `c`, hence `R`, hence the slack. The numbers are not expected to move much
-(`c` was `0.73` by mesh; the inradius gives `0.577350` for the cube, and for the C5 normals the
-table below), but "not expected to move much" is not a certificate, and the region claims must be
-recomputed before they are quoted again.
+An honest remark on `E094'`: the region runs used the mesh-based radius, so they must be
+recomputed before being quoted again. The exact inradius **improves** the constants rather than
+weakening them, because the mesh under-estimated `c`:
+
+```
+C5 normals:  mesh gave c >= 0.730508 ;  exact inradius c = 0.768212  (20 supporting planes)
+             mesh gave R = 1.467     ;  exact R = 1.37              -> tighter slack
+```
+
+and the C5 point enclosure is unchanged at `5.898017371804` with width `1.2e-18`. So the region
+numbers will shrink slightly towards the truth; they are still pending until recomputed.
+
+---
+
+## 6. The ring-excess lemma: a self-contained conditional proof, and an audit of its premise
+
+### 6.1 The lemma, self-contained
+
+> **Lemma.** Let `P` be a bounded polytope with the origin interior, `P = ⋂_{i=1}^{n} {y·n_i ≤ d_i}`
+> with `|n_i| = 1`, and let `J ⊆ {1..n}` be a set of faces. For `b ≥ 1` put
+> `P(b) = ⋂_{i∈J}{y·n_i ≤ b·d_i} ∩ ⋂_{i∉J}{y·n_i ≤ d_i}`. Then
+>
+> ```
+> vol P(b) − vol P  =  (b−1) Σ_{i∈J} d_i ∫₀¹ A_i(t) dt  ≥  (b−1) Σ_{i∈J} d_i · min_t A_i(t) ,
+> ```
+>
+> where `A_i(t)` is the area of the `i`-th face of `P(t)`.
+
+*Proof.* `t ↦ P(t)` is a linear homothety of the face planes; the volume is absolutely continuous
+in `t` (a convex body whose support function is Lipschitz in `t`), and where the combinatorial
+type is constant the derivative is `Σ_i d_i A_i(t)` — moving one face outward at speed `d_i`
+appends a prism of base `A_i(t)` and height `d_i dt`, and the other faces do not move. The
+identity follows by integrating over the finitely many intervals of constant type; at the
+finitely many type changes the derivative is discontinuous but the volume is continuous, so the
+integral is unaffected. ∎
+
+Nothing here is specific to the dodecahedron, and nothing uses a computation.
+
+### 6.2 Its use, and exactly what is assumed
+
+Applying it to the payer cell with `J` the five ring faces, `d_i = 1`, `b = ρ_r/2`:
+
+```
+vol Ω(w1)  =  vol D' + (b−1)·5·mean_t A_ring(t) ,        D' = Ω with the ring faces at 1,
+```
+
+so for the twelve-face class
+
+```
+(P')  follows from   vol D' + 5(b−1)·A_min  ≥  5.763417470 ,
+```
+
+and with the uncut-disk bound `A_min ≥ π t*² = 0.868315` (§`REVIEW_0608` 11) the single remaining
+premise is `vol D' ≥ 5.5400`.
+
+### 6.3 Auditing the `5.5400` premise
+
+`D'` is the unit-distance polytope of the twelve directions — `c`, the five ring directions at
+`58.2825°`, and six free ones constrained by 2-separation (`60°` from `c` and from each other,
+`≥ 58.28°` from each ring direction). `premise_audit.py` minimises `vol D'` over that admissible
+set, by local search from the C5 configuration and from six random legal restarts:
+
+```
+C5 configuration                        vol D' = 5.572649
+local search from C5 (25 s)                    5.567413
+six random legal restarts (random walk inside the legal region)
+                                       5.567434, 5.567417, 5.567420, 5.567425, 5.567421, 5.567420
+
+minimum found  5.567413          premise 5.540000   slack +0.027413
+                                 V_dod     5.550291  the minimum is +0.017122 above it
+```
+
+**Seven independent starts converge to the same value to five digits**, which is what a genuine
+minimum of a smooth functional looks like. The premise holds with slack `0.027`, and — more
+interesting — the admissible minimum sits only `0.0171` above `V_dod`, suggesting that the
+sharper statement `vol D' ≥ V_dod` may be true on the admissible family even though it is false
+in general (§3). That would be a *stability* statement about the icosahedron: moving five of the
+twelve directions from `63.43°` to `58.28°` raises the unit-distance volume by at least `0.017`.
+
+**Caveat, stated plainly.** This is a numerical minimisation, not a proof. It bounds the minimum
+from *above*; the premise needs a lower bound. What it does establish is that the premise is not
+knife-edge, that it is not an artefact of one configuration, and that the search does not drift
+towards `5.5400` — all seven starts stop `0.027` short of it.
+
+*(A first version of the sampler drew directions from scratch and found **zero** legal sets in
+`6 × 4000` tries; the legal region is far too small in twelve dimensions for rejection sampling.
+The random-walk restart replaced it and works immediately.)*
+
+### 6.4 What would close it
+
+A proof that `vol D' ≥ 5.54` (or the sharper `≥ V_dod`) for every admissible six-direction set.
+Equivalently, a lower bound on the volume of a twelve-face unit-distance polytope whose five
+"ring" directions are held at `58.2825°`. This is a stability statement about the dodecahedron's
+neighbourhood, and it is the smallest remaining target on the pair route.
