@@ -338,7 +338,7 @@ be true, but it is not proved by this argument.
 
 ---
 
-## 7. The slack inequality at line 215 has the wrong coefficients, and the conclusion survives anyway
+## 7. The slack inequality at line 215: the coefficients are not the split's, but they are weaker, not stronger (my first reading was inverted)
 
 Line 211–217 offers the repair: allow `d_v ≥ 0` with `d_v + Σ_{e∋v}c_e = 1`, and displays
 
@@ -349,25 +349,30 @@ Line 211–217 offers the repair: allow `d_v ≥ 0` with `d_v + Σ_{e∋v}c_e = 
 Deriving it from the same split: with `Σ_{e∋v}c_e = 1 − d_v` on `B∖E_B`,
 
 ```
-Σ_{v∈B}vol Ω(v) ≥ Σ_e c_e Σ_{v∈e∩(B∖E_B)}vol Ω(v)
-                ≥ 2√32·Σ_{e⊆B∖E_B}c_e + V_dod·C_R'          (C_R' = exactly-one-endpoint sum)
-                = √32(|B| − |E_B| − Σd_v − C_R') + V_dod C_R'
-                = √32(|B| − |E_B| − Σ d_v) − (√32 − V_dod)·C_R' .
+Σ_{v∈B}vol Ω(v) ≥ V_dod·Σ d_v + 2√32·Σ_{e⊆B∖E_B}c_e + V_dod·C_R'      (C_R' = one-endpoint sum)
+                = V_dod Σ d_v + √32(|B| − |E_B| − Σd_v − C_R') + V_dod C_R'
+                = √32(|B| − |E_B|) − (√32 − V_dod)(Σ d_v + C_R') .
 ```
 
-So the correct inequality has
-- coefficient `√32` on `Σd_v`, not `2√32 − 2V_dod` (which is `0.213`, thirty times smaller), and
-- coefficient `√32 − V_dod = 0.1066` on `C_R`, not `√32`,
+So the correct coefficients are `√32 − V_dod = 0.106563221` on **both** `Σd_v` and `C_R'`, while the
+display has `2(√32 − V_dod) = 0.213126442` on `Σd_v` and `√32 = 5.656854` on `C_R`. **Both displayed
+coefficients are larger than the correct ones, hence the displayed right-hand side is smaller, hence
+the displayed inequality is weaker and follows from the correct one.** So it is true, and the
+conclusion is unchanged — this is imprecision, not a defect.
 
-and it is *weaker* than the displayed one — the displayed slack coefficient is exactly twice the
-correct one. So the displayed inequality is **not** what the split gives; it is strictly stronger,
-and it is plausibly false: at a vertex with a dodecahedral cell (`vol Ω = V_dod = 5.5503`) whose
-matching weight happens to be `0.6` (so `d = 0.4`, which the normalisation allows), the displayed
-RHS per vertex is `√32 − 0.213126·0.4 = 5.5719 > 5.5503 = vol Ω`. Nothing in the argument
-establishes it. The correct form has coefficient `√32 − V_dod = 0.106563221` on `Σd_v`; since
-`Σ_{v∈B}d_v` and `C_R` are both `o(R³)` in the intended regime, **the conclusion is the same with
-the correct coefficient**, so the repair is one symbol — but a reader who checks line 215 against
-line 94 will not be able to reproduce it, and the displayed version should not be quoted.
+**Correction, recorded.** My first draft of this section claimed the opposite — that the displayed
+form was "stronger than the argument and plausibly false", with a per-vertex computation at a
+dodecahedral vertex carrying `d = 0.4`. That computation reads the inequality as if it were
+vertex-separable, which it is not: the slack term is global and is offset by vertices where the
+matching is complete. The direction of the comparison is fixed by
+`RHS_displayed − RHS_correct = −(√32−V_dod)Σd_v − (√32 − (√32−V_dod))C_R' ≤ 0`, which is immediate.
+The block's swarm member `m1` caught this; it is the second inequality I inverted in this block and
+both are recorded rather than quietly fixed.
+
+**One genuine addition to the repair.** `d_v ≥ 0` needs `Σ_{e∋v}c_e ≤ 1` at `v ∈ E`, which `(M)`
+does not give (it constrains only `v ∉ E`). The repair should be stated as: there are `c_e ≥ 0`
+with `Σ_{e∋v}c_e ≤ 1` for every `v` and `= 1` for every `v` outside a density-zero set. With that
+reading the derivation above is valid.
 
 ---
 
@@ -410,7 +415,7 @@ line 94 will not be able to reproduce it, and the displayed version should not b
 | `X-C039` | "the failure is *exactly* an isolated icosahedral cluster" — the mechanism is "some `S` with `iso(G−S) > |S|`"; the 13-cluster is its extremal geometric case, not the only one (`K_{1,3}` fails too) | **Wording**, not a defect; witness W3 |
 | `X-C040` | Line 40's "equality case is exactly the Barlow family" asserts an unproved converse that `C095`'s crack packing refutes (bulk–bulk pairs at equality, packing not Barlow) | **REFUTED as stated**; demote the heading |
 | `X-C041` | Theorem C consequence 2 ("the equality case is empty") infers a pointwise statement from an average and needs a stability version of Hales–McLaughlin that the exposition says is unavailable | **GAP (not refuted)**; the corollary may be true, the argument is not a proof |
-| `X-C042` | Line 215's coefficients (`2√32−2V_dod` on `Σd_v`, `√32` on `C_R`) are not what the split gives (`√32`, `√32−V_dod`); the slack coefficient is exactly twice the correct one, so the displayed inequality is stronger than the argument and is not established (and plausibly false: at a dodecahedral vertex with matching weight 0.6, `d = 0.4` and the displayed RHS exceeds `vol Ω = V_dod`). Conclusion unaffected if the correct form is used | **DEFECT (false as displayed; correct form supplied)** |
+| `X-C042` | Line 215's coefficients are not the split's (`2(√32−V_dod)` on `Σd_v`, `√32` on `C_R`, vs `√32−V_dod` on both). Both displayed coefficients are **larger**, so the display is **weaker** and follows; the earlier claim in this review that it was stronger/false is **withdrawn** (per-vertex reading error). Real addition: the repair needs `Σ_{e∋v}c_e ≤ 1` at `v ∈ E`, which `(M)` does not state | **IMPRECISION, not a defect** |
 | `X-C043` | Theorem D step 4 confirmed independently: `sup_t m(t) = 1.125554844510 < 2`; and E's `1.056487696` is `m` at twist `33.636862°`/`38.363138°`, so the "unresolved discrepancy" is resolved in Main's favour | **VERIFIED / RESOLVED** |
 | `X-C048` | Line 204's "twelve centres on the sphere of radius 2 with mutual distance ≥ 2 is exactly the icosahedral twelve" is **false**: the icosahedral twelve have min distance `2.102924448 > 2`, so the admissible set is positive-dimensional; `K_{1,3}` is realisable at `2·(±1,±1,±1)/√3`, so the failure set of `(M)` is much larger than "the 13-cluster" | **REFUTED (over-claim)**; verified |
 | `X-C049` | Theorem C's corollary "the equality case is empty" is **true** but follows in two lines from Hales (`π/√18 = 0.740480 < 0.754697 = (4π/3)/V_dod`), so it cannot be evidence inside a chain meant to prove Kepler; the route through Theorem C needs the missing stability statement | **TRUE but not from the chain** (`X-C041` stands as the gap) |
