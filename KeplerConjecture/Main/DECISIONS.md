@@ -34,11 +34,14 @@ frontier is set by Hales–McLaughlin; without this anchor the team would presen
 a `0.7703` re-derivation as state of the art. **Reverse if** X establishes that
 a stronger published non-Kepler bound exists.
 
-## D4 — The hybrid price must be a local count, not an integral (M)
+## D4 — A local-count price is proved; an integral tail is not excluded (M)
 
-Demote the "positive tail `I = ∫_{|x|>R} f`" interface that the earlier brief
-proposed. A proved replacement exists: Theorem B / K15-C003 charges
-`n·max(M,0)` where `n` is a contact number of the region where `f > 0`.
+The earlier brief's "positive tail `I = ∫_{|x|>R} f`" interface has no proof.
+Theorem B / K15-C003 supplies a proved replacement: it charges `n·max(M,0)`
+where `n` is a contact number of the region where `f > 0`.
+**Narrowing (review objection 10):** this does *not* show that integral tail
+estimates are impossible. An integral estimate combined with a proved counting
+envelope (K15-C013) is a legitimate route and is not excluded here.
 **Evidence.** `smwg019eu` m2 §3: the integral form is equivalent to a global
 equidistribution statement about the tail; a purely local argument loses a
 factor `1/(c·vol B_1) = 1.3505`, and any refutation of the integral form must
@@ -46,20 +49,22 @@ beat the two-point optimum by `5.30%` (`f̂(0)/f(0) = 5.3719879` at the CE
 optimum). **Reverse if** someone proves the equidistribution inequality for a
 class of packings — then the integral form is available again on that class.
 
-## D5 — Contact-sphere relaxation is closed (M, m2)
+## D5 — Contact-sphere relaxation is closed (M, m2; restored)
 
 "Let `f > 0` on `{|x| = 2}`, price it with the kissing number 12" is vacuous
-(K15-C004/C011). **Reverse if** the relaxation set has interior — which means
-a genuine tolerance in the kissing problem, i.e. a *new* local theorem. That
-would be a result in its own right and would re-open the route.
+(K15-C004). **Reverse if** the relaxation set has interior — which means a
+genuine tolerance in the kissing problem, i.e. a new local theorem (see
+K15-C013 and T5). That would be a result in its own right and would re-open the
+route.
 
-## D6 — Additive two-point corrections to Voronoi volume are closed (M)
+## D6 — Additive two-point corrections to Voronoi volume: RE-OPENED (M)
 
-`vol Ω(v) ≥ V_0 − κB_κ(v)` with `B_κ` from a positive-definite kernel cannot
-reach `V_0 > V_HM` (K15-C005): the correction is positive at the icosahedral
-cell and non-positive on average. **Reverse if** the correction is made
-multiplicative or normalised per cell (so that the fcc slack is not spent
-twice), which is a different inequality and needs its own proof.
+The checkpoint-1 closure was based on an inequality read backwards and is
+withdrawn (K15-C005). The route is open: what is missing is a statement
+controlling how often near-icosahedral cells occur in a packing, since
+negligibility controls `Σ_v A(v)` only from above. **Status:** open, unowned.
+**Note:** whoever revives it must freeze the sign convention first
+(`score = vol Ω + A ≥ V_0`), and must not reuse Main's checkpoint-1 text.
 
 ## D7 — Sharpness and uniqueness claims must survive zero-density defects (M)
 

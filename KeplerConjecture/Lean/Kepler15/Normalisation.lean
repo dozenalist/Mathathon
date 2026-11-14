@@ -43,7 +43,15 @@ The balls of radius 1 centred there are then pairwise disjoint. -/
 def IsPacking (Λ : Set E3) : Prop :=
   ∀ x ∈ Λ, ∀ y ∈ Λ, x ≠ y → 2 ≤ dist x y
 
-/-- Volume of the unit ball in `E3`, as a real number: `4 pi / 3`. -/
+/-- The number `4 pi / 3`, used as the volume of the unit ball.
+
+**This is a definition, not a theorem.** The statement "the Lebesgue volume of
+`Metric.ball 0 1` in `E3` equals `4 pi / 3`" is *not* proved here, and nothing
+in this file depends on it: `centreDensity` below is defined as `upperDensity`
+divided by this number. A later module must prove the measure identity (or cite
+Mathlib's ball-volume formula) before any density conclusion can be transported.
+Review of checkpoint 1, "Local Lean review": this constant is algebraic
+normalisation only. -/
 noncomputable def volB1 : ℝ := 4 * Real.pi / 3
 
 /-- Occupied volume fraction in the ball of radius `R` about the origin:

@@ -6,13 +6,16 @@
 | --- | --- | --- | --- |
 | Problem 15 roadmap | Frozen research plan | `ROADMAP.md`, `Literature/PROBLEM_SPEC.md` | Main |
 | Mathematical contract | Frozen; conversion rules recorded | `Main/CLAIMS.md` K15-C001, K15-C007 | Main |
-| Claim ledger, decision record, task board | Created | `Main/CLAIMS.md`, `Main/DECISIONS.md`, `Main/TASKS.md` | Main |
+| Claim ledger, decision record, task board | Created; revised after review | `Main/CLAIMS.md`, `Main/DECISIONS.md`, `Main/TASKS.md` | Main |
+| Independent review of checkpoint 1 | 10 objections, all answered | `Main/CLAIMS.md` "Correction log" | X |
 | Recovered pre-setup notes | Recovered to Git, `PENDING_REVIEW` | `Literature/RECOVERED.md` (6 files, checksums) | X |
 | Two-point bound for all packings | Proof written, Main-audited, awaiting X | `Main/RESULTS.md` §1, K15-C002 | X |
 | Truncated/hybrid bound with a count price | Proof written, awaiting X | K15-C003 (`smwg019eu` m2 §2) | X |
-| Additive CE+Voronoi hybrids | Obstructed (cannot beat 5.550291) | K15-C005, `m1/verify.py` | X to confirm |
-| Contact-sphere relaxation | Refuted as stated, repaired | K15-C004, K15-C011 | X |
-| Frontier anchor below 0.770271 | Fixed at 0.754697399337 | K15-C008 | X to confirm no better exists |
+| Additive CE+Voronoi hybrids | **Obstruction withdrawn, route re-opened** | K15-C005 | unowned |
+| Contact-sphere relaxation | Closed (proof restored after Main's error) | K15-C004 | X |
+| Frontier anchor | 0.754697399337; Rogers 0.779636 < CE 0.779747 (order fixed) | K15-C008, `Main/RESULTS.md` §4 | X |
+| Counting envelope for shells | Upper bound proved; exact 12 for thin shells proved; explicit width open | K15-C013 | E / X |
+| Grid-sampled CE values | Closed (LP unbounded below) | K15-C014, `Computation/ce_laguerre.py` | C |
 | Numerical baseline | Not reproduced locally | `Main/LOCAL_COMPUTE_REQUESTS.md` K15-COMPUTE-001 | C and Astra |
 | Lean definitions module | Drafted and pre-checked on Lean 4.33.1 | `Lean/Kepler15/Normalisation.lean` | Astra (pinned 4.35.0) |
 
@@ -101,3 +104,60 @@ Not done: no new numerical bound; CDS22 Table 1.1 has not been reproduced
 locally; Li's 0.18398089 is quoted, not reproduced; X's reviews are outstanding.
 Next: X audits K15-C002/C003/C005 and Li's scope; C runs 001; E answers whether a
 tolerance kissing bound with `n < 26` exists for shells of width below 0.0366.
+
+### K15-MAIN-003 — 2026-11-14, America/Los_Angeles — review repair checkpoint
+
+Author **M (Main)**, session `based-on-the-chats-e0wz`. Source revision of the
+reviewed checkpoint: `c91007ff11844f179921fadfb2e90d352b8c0090`. Independent
+review: Astra plus a separate mathematical audit (10 required corrections). Every
+objection is accepted; dispositions are tabulated in `Main/CLAIMS.md`
+("Correction log"). No worker chat was created or contacted: this environment
+exposes no delegation tool that reaches the other three assigned sessions
+without starting a new one, so this block is a coordinator synthesis plus the
+mathematical repairs that did not need a worker (see "Blocked" below).
+
+Corrections made at source, with the old versions quoted in place:
+
+* **K15-C004 restored.** Main's checkpoint-1 "counterexample" `A = Q³∩{|x|≥2}`
+  was wrong: the complement of a set with empty interior is dense, which is the
+  hypothesis the proof needs. **K15-C011 withdrawn** (the closedness repair was
+  unnecessary). The contact-shell route stays closed for the right reason.
+* **K15-C005 obstruction withdrawn.** The inequality had been read backwards:
+  `V_0 ≤ vol Ω(v) + κB_κ(v)`, so a positive correction at the icosahedral cell
+  permits a *larger* `V_0`. The two raw sign computations stand; the exclusion
+  does not. **D6 re-opened.**
+* **K15-C010 refuted as stated.** Finitely many prescribed zeros impose no
+  bandwidth bound (`f = g·∏(|x|²−r_j²)` with `supp ĝ` arbitrarily small). The
+  repaired form keeps the `log(‖f̂‖₁/f(0))` term, which checkpoint 1 dropped.
+* **K15-C002 restated** with continuity of `f` and `f̂` and the separate
+  hypothesis `f̂(0) > 0`.
+* **K15-C013 added**: the counting envelope `n ≤ ⌊(3+δ)³⌋−1` is an *upper*
+  bound (checkpoint 1 said lower), and the exact value is 12 for all
+  sufficiently thin shells (compactness + kissing number); an explicit width is
+  open.
+* **K15-C014 added** (negative result): the submitted grid-discretised CE LP is
+  unbounded below, and with the rigorous floor `f(0) ≥ 3/(32π)` it attains the
+  floor with fine-grid violations of order `10¹⁰`. Grid sampling cannot produce a
+  CE value; the SOS identity is mandatory.
+* **RESULTS.md** ordering fixed (`Rogers 0.779636 < CE 0.779747`), novelty
+  language removed, `n ≥ 26` corrected.
+* **LOCAL_COMPUTE-001 rev. 2**: `s = |x|² ≥ 4`, `t = 2πs ≥ 8π` (not 4); exact
+  rational SOS identity required; no implied convergence to Li's `0.18398089`.
+* **Evidence exported** to `Main/Evidence/` (5 swarm files + outputs, hashes in
+  `MANIFEST.txt`); `Computation/ce_laguerre.py` is runnable (sha256
+  `b17badb…`) with measured runtime 1.1 s.
+
+Run on the VM this block: `python3 Computation/ce_laguerre.py --degree 8
+--grid 1200 --tmax 40` (1.1 s, exploratory, negative result), both swarm
+verifiers re-run earlier in the cycle (30/30 and 41/41). Not run: the pinned Lean
+build (request `K15-COMPUTE-002`, unchanged; the module's only edit since the
+Lean 4.33.1 pre-check is a docstring). The unit-ball volume identity is **not**
+proved in `Normalisation.lean` and the file says so.
+
+Blocked / not done: no worker contact (no delegation tool reaching the three
+other sessions without creating a chat); no independent review of the repaired
+statements yet; no certified CE value; no new bound. Next assignment: X audits
+K15-C002/C003/C004/C013 and the K15-C005 withdrawal; E takes the two candidate
+mechanisms (local counting with an explicit width, and a strengthened analytic
+route) with the count-price theorem as the interface; C implements the exact SOS
+identity of request rev. 2 for `n ≤ 12`.

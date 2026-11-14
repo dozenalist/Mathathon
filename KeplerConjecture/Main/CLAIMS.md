@@ -30,10 +30,17 @@ minimum-separation-1 convention are in K15-C007.
 
 ## K15-C002 — two-point (Cohn–Elkies) bound for all packings, with the periodic approximation proved
 
-- **Statement.** Let `f` be admissible in the Cohn–Elkies sense
-  (`|f|,|f̂| ≤ C(1+|x|)^{−3−η}`), `f ≢ 0`, `f(x) ≤ 0` for `|x| ≥ 2`, `f̂ ≥ 0`.
-  Then every packing with minimum separation 2 satisfies `c(Λ) ≤ f(0)/f̂(0)` and
-  `δ(Λ) ≤ (4π/3) f(0)/f̂(0)`.
+- **Statement (corrected hypotheses, review objection 5).** Let `f: R³ → R` be
+  continuous with `f̂` continuous, both satisfying `|f(x)|, |f̂(x)| ≤ C(1+|x|)^{−3−η}`
+  for some `η > 0` (this decay gives `f, f̂ ∈ L¹` and hence continuity of each
+  other's transform; decay alone, without the transform being defined, gives
+  nothing). Assume `f(x) ≤ 0` for `|x| ≥ 2`, `f̂ ≥ 0` everywhere, **and
+  `f̂(0) > 0`**. Then `c(Λ) ≤ f(0)/f̂(0)` and `δ(Λ) ≤ (4π/3) f(0)/f̂(0)` for
+  every packing with minimum separation 2.
+  *Why `f̂(0) > 0` is a separate hypothesis:* `f̂ ≥ 0` and `f ≢ 0` give
+  `f̂(0) = ∫f ≥ 0`, not `> 0`; and `f(0) > 0` does not help either (`f(0) = ∫f̂`
+  can be positive while `∫f = 0`). Without it the ratio `f(0)/f̂(0)` is not
+  defined or has the wrong sign.
 - **Attribution.** Cohn–Elkies, *New bounds on sphere packings I*, Annals 157
   (2003) 689–714, Theorem 3.1 (proved there for periodic packings, with the
   reduction to arbitrary packings in an appendix).
@@ -55,7 +62,9 @@ minimum-separation-1 convention are in K15-C007.
 
 ## K15-C003 — truncated/hybrid two-point bound with a *count* price
 
-- **Statement (Theorem B).** Let `f` be admissible, `f̂ ≥ 0`, `f(0) > 0`; let
+- **Statement (Theorem B).** Let `f` satisfy the hypotheses of K15-C002
+  (`f, f̂` continuous, the decay bound, `f ≤ 0` off `|x| ≥ 2` away from `A`,
+  `f̂ ≥ 0`, `f̂(0) > 0`); let
   `A ⊂ R³∖{0}` have **contact number** `n` (every 2-separated set has at most
   `n` points at an `A`-difference from any of its points); let `M ≥ max_{A} f`
   and `f ≤ 0` off `A` on `{|x| ≥ 2}`. Then every packing satisfies
@@ -71,39 +80,50 @@ minimum-separation-1 convention are in K15-C007.
   whether any admissible `f` with a useful `A` exists at all
   (Corollary 2.4 says the winning region is small).
 
-## K15-C004 — "relax the sign condition on the contact sphere" is vacuous
+## K15-C004 — "relax the sign condition on the contact sphere" is vacuous  [RESTORED]
 
-- **Statement as submitted.** If `A` has empty interior then (B1)+(B2) force
-  `f ≤ 0` on `{|x| ≥ 2}`, so relaxing on the contact sphere buys nothing.
-- **Status.** `REFUTED` as stated. **Witness:** `A = Q³ ∩ {|x| ≥ 2}` has empty
-  interior but is dense, so `B2` constrains nothing. **Corrected claim
-  (K15-C011)** replaces "empty interior" by "closed with empty interior".
-- **Why it still matters.** For `A ⊆ {|x| = 2}` (closed, empty interior) the
-  conclusion holds and the intended consequence stands: pricing a contact-shell
-  relaxation by the kissing number 12 cannot improve any two-point constant.
-  This retires a route before it was implemented.
-- **Owner** m2 (`smwg019eu`). **Reviewer** X (to confirm the repair).
-  **Artifact.** `m2/proof.md` Corollary 2.2.
+- **Statement.** Let `A ⊂ R³∖{0}` have empty interior, and let `f` be continuous
+  with `f ≤ 0` on `{|x| ≥ 2} ∖ A`. Then `f ≤ 0` on `{|x| ≥ 2}`. Consequently the
+  relaxation of K15-C003 with `A` of empty interior buys **nothing**: K15-C002
+  applies with the better constant.
+- **Proof.** If `A` has empty interior then `R³ ∖ A` is dense in `R³`. The set
+  `{|x| > 2}` is open, so `{|x| > 2} ∖ A` is dense in `{|x| > 2}`; on it `f ≤ 0`
+  by hypothesis, so by continuity `f ≤ 0` on the closure `{|x| ≥ 2}`. ∎
+- **Status.** `PROPOSED` (author m2, `smwg019eu`), **correct as stated**.
+  **Correction of the correction:** Main's previous checkpoint marked this
+  `REFUTED` with "counterexample" `A = Q³ ∩ {|x| ≥ 2}`. That was an error by
+  Main: `Q³` has empty interior, and the complement of *any* set with empty
+  interior is dense, which is precisely the hypothesis the proof needs. The
+  rationals are not a counterexample; there is no counterexample. Closedness of
+  `A` is unnecessary. Review objection 1 is accepted; K15-C011 is withdrawn.
+- **Reviewer.** X. **Artifact.** `Main/Evidence/m2-proof.md` Corollary 2.2.
+- **Consequence.** The contact-sphere route stays closed (D5) — now for the
+  right reason, which survives review.
 
-## K15-C005 — two-point + Voronoi additive score hybrids cannot beat 5.550291
+## K15-C005 — two-point + Voronoi additive hybrids: obstruction WITHDRAWN
 
-- **Statement.** For every admissible two-point kernel `f` and every `κ > 0`,
-  a hybrid of the shape "`vol Ω(v) ≥ V_0 − κ·B_κ(v)`" with `B_κ` built from the
-  positive-definite inequality has `V_0 < V_HM = 5.550291028515…`, i.e. gives a
-  bound strictly *worse* than Hales–McLaughlin. Two mechanisms:
-  (i) at the icosahedral cell `B_κ(ico) ≥ κ f̂(0)/(4√2) > 0` (Poisson at fcc), so
-  the correction pushes the required cell volume **up**;
-  (ii) averaged over centres, the two-point correction has the *wrong sign*:
-  `mean_v B_κ ≤ −κ c f̂(0) < 0` for every periodic packing.
-- **Status.** `PROPOSED`; `verify.py` passes (items H1–H4). **main_audit:** the
-  fcc Poisson value `f(0)+12f(2) ≥ f̂(0)/(4√2)` is reproduced for five
-  admissible `f` in an explicit family; the sign identity (ii) is the standard
-  sum-rule slack. I have not yet checked the passage from the per-cell
-  inequality to a global bound in a boundary-accounting sense.
-- **Reviewer.** X. **Artifact.** `.ultramath/smwg019eu/m1/certificate.json`,
-  `m1/verify.py`, `m1/solution.md` (in `m1/work/`).
-- **Consequence.** The naive "CE kernel as a correction to Voronoi volume" route
-  is closed; DECISIONS D6.
+- **What was claimed at checkpoint 1.** That a hybrid of the shape
+  "`vol Ω(v) ≥ V_0 − κ B_κ(v)`" cannot reach `V_0 > V_HM`, on the grounds that
+  `B_κ(ico) > 0`.
+- **Status.** `REFUTED` — the claimed obstruction is **invalid**, and the route is
+  re-opened. The inequality rearranges to `V_0 ≤ vol Ω(v) + κ B_κ(v)`; at the
+  icosahedral cell a **positive** `B_κ` therefore *permits a larger* `V_0`, and a
+  negative average of `B_κ` *strengthens* the global volume inequality. Main
+  transcribed the sign backwards from the swarm's Theorem C(i). Review
+  objection 3 accepted.
+- **What does remain established** (raw computations, `Main/Evidence/m1-certificate.json`,
+  `m1-verify.py`, re-run: 30/30 checks):
+  (i) `B_κ(ico) = κ(f(0) + 12f(2)) ≥ κ f̂(0)/(4√2) > 0` for every admissible `f`
+  (Poisson summation at fcc, i.e. the fcc sum rule);
+  (ii) `mean_v B_κ ≤ 0` for periodic packings (positive-definiteness).
+  These are two facts with **opposite** signs at the icosahedral configuration
+  versus the average — which is exactly the shape of a Hales-style argument and
+  not, by itself, an obstruction.
+- **What would actually be needed** to reopen or close it: a statement about how
+  often near-icosahedral cells can occur in a packing, since negligibility
+  (K15-C002-style averaging) controls `Σ_v A(v)` only from above. That is the
+  hard part of the Kepler proof, not a corollary.
+- **Reviewer.** X. **Owner** M (withdrew its own claim).
 
 ## K15-C006 — ordinary Cohn–Elkies is not sharp in dimension 3
 
@@ -164,26 +184,40 @@ minimum-separation-1 convention are in K15-C007.
   the recovered brief is preserved verbatim for provenance. This ledger entry
   supersedes it.
 
-## K15-C010 — bandwidth budget for a sharp certificate (independent derivation)
+## K15-C010 — bandwidth budget from finitely many zeros: REFUTED as stated
 
-- **Statement.** If `supp f̂ ⊆ B(0,R)` and `f` vanishes at the first `K` shell
-  radii of a lattice, then `R ≳ K/(2 r_K)`; for fcc `R ≥ 0.3489, 1.0665, 3.3414,
-  10.564` for `K = 10, 10², 10³, 10⁴`. Consequence: no band-limited certificate
-  is sharp in `d ≥ 2`.
-- **Status.** `PROPOSED` (recovered, `smwfyzz1k` m3 rev. 2, `m4`). Independently
-  re-derived twice inside the swarm, not yet reviewed outside it.
-- **Reviewer.** X. **Note.** The *qualitative* statement is classical
-  (Cohn–Elkies §5; Viazovska's `g` is Schwartz with non-compact support). Do not
-  present the budget as new. See also the retraction note in
-  `Literature/PRIOR_WORK.md` on contact-shell derivatives.
+- **What was claimed at checkpoint 1.** "If `supp f̂ ⊆ B(0,R)` and `f` vanishes at
+  the first `K` shell radii, then `R ≳ K/(2r_K)`."
+- **Status.** `REFUTED` (review objection 2, accepted). Counterexample: take a
+  nonzero radial Schwartz `g` with `supp ĝ ⊆ B(0,ε)` and set
+  `f(x) = g(x)·∏_{j≤K}(|x|² − r_j²)`. Multiplication by a polynomial is
+  differentiation on the Fourier side, so `supp f̂ ⊆ supp ĝ ⊆ B(0,ε)`: finitely
+  many prescribed zeros impose **no** lower bound on the bandwidth, for every
+  `ε > 0`. Five (or fifty) shell conditions are not a zero-density statement.
+- **Corrected form (K15-C010b, `PROPOSED`, reviewer X).** A genuine zero-count
+  argument needs growth control, and the honest shape is the one with a norm
+  factor: if `supp f̂ ⊆ B(0,R)` and `f` vanishes at `r_1 < … < r_K` then
+  `R ≥ (K log 2 − ½ log(‖f̂‖₁/f(0)))/(2π r_K)` (Jensen for entire functions of
+  exponential type). The `log ‖f̂‖₁/f(0)` term is not decorative: the product
+  construction above makes it grow like `Σ_j log r_j²`, which is what restores
+  consistency. Whether this yields a useful *quantitative* obstruction with
+  `f̂(0) > 0` and the CE sign conditions is **open here**; it is a statement
+  about the analytic class, not a consequence of non-isoduality (review
+  objection 9, also accepted: a union of lattice shell radii is discrete with no
+  finite accumulation point, and shell radii alone never force a density of
+  zeros).
+- **Artifact.** `smwfyzz1k/m3/zero-density-obstruction.md` (recovered; the
+  formula (B) there *does* carry the norm term — the error was introduced by
+  Main when condensing it, which is where it is now corrected).
 
-## K15-C011 — corrected contact-shell relaxation lemma
+## K15-C011 — withdrawn
 
-- **Statement.** In K15-C004 replace "`A` has empty interior" by "`A` is closed
-  and has empty interior". Then `{|x| > 2} ∖ A` is dense in `{|x| > 2}`, and with
-  `f` continuous and `f ≤ 0` off `A` on `{|x| ≥ 2}` we get `f ≤ 0` on `{|x| ≥ 2}`,
-  so K15-C002 applies with the better constant.
-- **Status.** `PROPOSED` (repair by Main; trivial proof). **Reviewer.** X.
+- **Status.** `WITHDRAWN` (was `PROPOSED` at checkpoint 1). This entry proposed
+  replacing "`A` has empty interior" by "`A` is closed with empty interior" in
+  K15-C004. The repair was unnecessary: empty interior already implies a dense
+  complement, which is all the proof uses (see K15-C004). Retained only so the
+  ledger does not silently lose a version that other notes may cite.
+- **Reviewer.** X.
 
 ## K15-C012 — dodecahedral cell volume, exact form
 
@@ -198,6 +232,53 @@ minimum-separation-1 convention are in K15-C007.
 - **Reviewer.** X. This is the constant every Tier-3 claim is compared against;
   it is also the best candidate for a Lean `norm_num`-style lemma (see
   `Main/LOCAL_COMPUTE_REQUESTS.md` `K15-COMPUTE-002`).
+
+## K15-C013 — counting envelope for shells (and what it does and does not say)
+
+- **Statement (a), `PROVED`.** Let `X ⊂ R³` be 2-separated, `x ∈ X`. Then
+  `#{y ∈ X ∖ {x} : 2 ≤ |y − x| ≤ 2+δ} ≤ ⌊(3+δ)³⌋ − 1`.
+  *Proof.* The open unit balls around the points of `X` are pairwise disjoint and
+  lie in `B(x, 3+δ) ∖ B(x,1)` up to boundary; comparing volumes gives
+  `n·(4π/3) ≤ (4π/3)((3+δ)³ − 1)`. ∎
+  This is an **upper** bound on the contact number, i.e. it says "at most 26 for
+  `δ < 0.0366`", never "at least 26". Checkpoint 1 stated it as a lower bound in
+  `RESULTS.md`; that was wrong (review objection 6, accepted).
+- **Statement (b), `PROVED` modulo the kissing number.** There is `δ_0 > 0` such
+  that for every `0 < δ ≤ δ_0` the maximum is exactly **12**. *Proof.* Suppose
+  not: there are `δ_k → 0` and 13-point 2-separated sets `X_k ⊂ [2, 2+δ_k]`.
+  Passing to a subsequence, `X_k → X` with 13 distinct points on `{|y| = 2}` and
+  pairwise distances `≥ 2`, i.e. 13 unit spheres touching a central unit sphere,
+  contradicting the three-dimensional kissing number (Schütte–van der Waerden
+  1953). ∎ No value of `δ_0` is extracted here.
+- **Open.** An explicit `δ_0` needs a quantitative "kissing number with
+  tolerance" statement; the crude spherical-cap area bound gives nothing
+  (`13·2π(1−cos(θ/2)) ≤ 4π` only forces `θ ≥ 64.4°`, whereas one needs
+  `θ > 57.1°`, the Tammes `N = 13` value). This is the one place where a *new
+  local theorem* would re-open the contact-shell route (D5) — and it must
+  produce a count bound, not a volume bound.
+- **Reviewer.** X. Used by K15-C003 with `n = ⌊(3+δ)³⌋ − 1` (conservative) or
+  `n = 12` (sharper, but only for an unspecified `δ_0`).
+
+## K15-C014 — a grid-discretised Cohn–Elkies LP does not bound anything (negative result)
+
+- **Statement (`TESTED_FINITE`).** Imposing the two sign conditions of K15-C002 on
+  finite grids and minimising `f(0)` with `f̂(0) = 1` gives an LP that is
+  **unbounded below** (degree 8, 1200 grid points, box `|a_k| ≤ 10⁶`: objective
+  `−1.87·10⁷`). Adding the one rigorous consequence available,
+  `f(0) ≥ 3/(32π)` — from `1 = f̂(0) = ∫f` and `f ≤ 0` off `|x| < 2`, so
+  `1 ≤ f(0)·vol B(0,2) = (32π/3) f(0)` — makes the optimum sit *exactly at the
+  floor* `3/(32π) = 0.02984155…` (i.e. `δ = 0.125`), while a fine-grid audit of
+  the resulting coefficients shows violations of both sign conditions of order
+  `10¹⁰`–`10⁴¹`.
+- **Conclusion.** Grid sampling cannot even produce an exploratory CE value:
+  the two sign conditions must be enforced *identically* (SOS/Gram, Markov–
+  Lukács), and the `f(0)` floor must be part of the formulation. Any baseline
+  that reports a number from grid sampling is worthless.
+- **Artifacts.** `Computation/ce_laguerre.py` (runnable),
+  `Computation/out/ce_d8.json`; reproduction:
+  `python3 KeplerConjecture/Computation/ce_laguerre.py --degree 8 --grid 1200 --tmax 40`.
+  Runtime 1.1 s, 1 core.
+- **Reviewer.** X. This record exists so no worker repeats the mistake.
 
 ---
 
@@ -215,12 +296,35 @@ Their status is `PENDING_REVIEW`: they are **not** evidence for any claim above.
 | K15-R004 | `Roadmaps/sharp-bound-in-three-dimensions.md` | earlier roadmap draft | superseded by `ROADMAP.md`; retain for provenance only |
 | K15-R005 | `Literature/fig-CE-dim3.png`, `fig-CE-dim3-log.png` | CE/BCC shell diagnostics plots | numerical provenance unknown — the generating script was never recovered |
 
-## Obstructed or retired routes (kept deliberately)
+## Obstructed, retired, or re-opened routes
 
-| Route | Why retired | Claim |
+| Route | Status | Claim |
 | --- | --- | --- |
-| Any single admissible `f` proving `π/√18` | Li Thm 6.1 | K15-C006 |
-| "Allow `f>0` on the contact sphere, priced by 12" | vacuous | K15-C004, C011 |
-| Additive two-point correction to Voronoi volume | wrong sign at fcc and on average | K15-C005 |
-| Integral tail `∫_{|x|>R} f` as the hybrid price | not a local quantity; needs equidistribution; local route loses a factor 1.3505 | K15-C003, `m2/proof.md` §3.3 |
-| Recovering sharpness from ordinary CE at fcc/hcp | fcc is not isodual; equality forces vanishing on a dense set | K15-C010, `smwfyzz1k` m1/m5 (pending review) |
+| A single admissible `f` proving `π/√18` | **closed** (published theorem) | K15-C006 (Li Thm 6.1) |
+| "Allow `f>0` on the contact sphere, priced by 12" | **closed** (proof stands) | K15-C004 |
+| Additive two-point correction to Voronoi volume | **RE-OPENED** — the claimed obstruction was invalid | K15-C005 |
+| Finite zero conditions forcing finite bandwidth | **closed** (false) | K15-C010 |
+| Recovering sharpness of ordinary CE at fcc/hcp | **open**; non-isoduality alone proves nothing | K15-C010, objection 9 |
+| Integral tail `∫_{|x|>R} f` as a hybrid price | **not established**; a count price is proved instead, and integral estimates with proved counting envelopes remain possible | K15-C003, K15-C013 |
+| Grid-sampled CE values | **closed** (LP unbounded) | K15-C014 |
+
+## Correction log — review of checkpoint `c91007ff…c0090`
+
+Ten required corrections were received from the independent review
+(November 13, 2026, America/Los_Angeles). Disposition of each:
+
+| # | Objection | Disposition |
+| --- | --- | --- |
+| 1 | empty-interior lemma: retract the rational-point "counterexample" | **accepted** — Main was wrong; K15-C004 restored, K15-C011 withdrawn |
+| 2 | finite-zero bandwidth claim false | **accepted** — K15-C010 `REFUTED`, norm-term version recorded as C010b |
+| 3 | hybrid obstruction inequality backwards | **accepted** — K15-C005 obstruction withdrawn, route re-opened |
+| 4 | `t = 2πr²` vs interval `[4,∞)` mismatch | **accepted** — `s = \|x\|² ≥ 4`, `t = 2πs ≥ 8π`; request rewritten |
+| 5 | CE hypotheses need `f̂(0) > 0` and continuity | **accepted** — K15-C002 restated |
+| 6 | crude counting estimate is an upper, not a lower, bound | **accepted** — K15-C013(a)/(b) separate; RESULTS corrected |
+| 7 | float SOS ≠ certificate; no implied convergence to Li's value | **accepted** — request demands an exact rational identity; convergence language removed |
+| 8 | `0.779636 < 0.779747` ordering; novelty claims | **accepted** — RESULTS ordering fixed; no novelty claimed |
+| 9 | non-isoduality ⇏ density of zeros | **accepted** — folded into K15-C010 |
+| 10 | export evidence under Kepler; narrow the tail claim | **accepted** — `Main/Evidence/` added; tail wording narrowed |
+
+The old versions of K15-C004, C005, C010 and C011 are quoted inside the entries
+above rather than deleted, so that any note citing them can be traced.

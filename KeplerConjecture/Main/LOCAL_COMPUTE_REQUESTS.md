@@ -13,57 +13,61 @@ Two requests submitted 2026-11-14 from branch `kepler15/main`. Both are
 **independent**: 001 is the numerical baseline, 002 is the Lean build. Neither
 has been executed; nothing in `Main/CLAIMS.md` depends on them yet.
 
-### K15-COMPUTE-001 — certified two-point LP in the Laguerre basis, d = 3
+### K15-COMPUTE-001 (rev. 2) — exact SOS certificate for a two-point profile, d = 3
+
+Revision 2 after review objections 4, 7 and 8. The rev. 1 specification had the
+variable mismatch `t = 2πr²` against a sign interval starting at 4; it also asked
+for a sympy check of a floating-point optimum, which is not a certificate, and it
+used language that could be read as expecting convergence to Li's lower bound.
 
 ```text
 request_id = K15-COMPUTE-001
-status = REQUESTED
-owner = C (Computation, session using-the-chats-in-mcl6) — script authored there;
-        Main supplies the specification below
+status = REQUESTED (rev. 2)
+owner = C (Computation, using-the-chats-in-mcl6)
 reviewer = X (Counterexamples, i-ve-attached-viazovska-f7hh)
-claim_id = K15-C002 (control), and the Tier-1 question of Main/CLAIMS.md
-source_commit = the pushed head of kepler15/main that carries this file
-branch = kepler15/main (Main) or Computation/'s own branch, whichever C pushes
-purpose = (a) reproduce the published d = 3 two-point value 0.779746762
-          (occupied-volume units) with an independently written evaluator;
-          (b) report the degree-versus-constant curve for the univariate
-          reduction, and (c) state whether the optimum is *certified* (SOS,
-          rational coefficients) or only sampled.
+claim_id = K15-C002 control; no new bound is claimed
+source_commit = the pushed head of kepler15/main that carries this revision
 working_directory = repository root
-input_files = KeplerConjecture/Computation/ce_laguerre.py (C to add),
-              KeplerConjecture/Computation/README.md (conventions),
-              KeplerConjecture/Main/CLAIMS.md (normalisation, K15-C007)
-command = python3 KeplerConjecture/Computation/ce_laguerre.py --degree 40             --precision 60 --grid 2001 --out KeplerConjecture/Computation/out/
-dependencies = python3 3.11+, numpy, scipy, mpmath, sympy; optional cvxpy or
-               scs/mosek for the SDP; pin exact versions in the log
-resources = 1 core, < 4 GB RAM, expect < 10 min at degree 40; abort above 30 min
-parameters = dimension 3; basis phi_k(x) = exp(-pi r^2) L_k^{1/2}(2 pi r^2),
-             k = 0..n, n in {12, 16, 20, 24, 30, 40}; t = 2 pi r^2;
-             f = sum a_k phi_k, fhat = sum (-1)^k a_k phi_k;
-             sign conditions f <= 0 on [4, inf) and fhat >= 0 on [0, inf)
-             reduced to SOS on the half-line; degrees of the SOS multipliers
-             n/2; precision 60 decimal digits; no random seed (deterministic)
-expected_outputs = KeplerConjecture/Computation/out/ce_laguerre.json
-             (coefficients, f(0), fhat(0), ratio, degree, solver status,
-             residuals), out/ce_laguerre.txt (human table)
-success_criteria = (1) the ratio 4 pi/3 * f(0)/fhat(0) at some n is <= 0.7798
-             and decreases monotonically in n; (2) at least one n with the SOS
-             certificate verified symbolically by sympy (exact rational
-             coefficients, residual < 1e-40); (3) the run prints BOTH
-             occupied-volume and centre-density values; (4) explicit statement
-             of whether Li's 0.18398089 lower bound is approached from above
-certification = whichever of: exploratory float, interval, exact SOS.
-             A float optimum alone is `TESTED_FINITE` and cannot be promoted
-remaining_obligations = global signs (the SOS identity is the certificate),
-             tail (none in this reduction: the half-line SOS covers [4, inf)),
-             and the passage from the univariate reduction to the multivariate
-             admissible class, which must be stated as an inclusion, not asserted
+input_files = KeplerConjecture/Computation/ce_laguerre.py  (runnable; sha256 in
+              Computation/out/MANIFEST.txt), KeplerConjecture/Main/CLAIMS.md
+command = python3 KeplerConjecture/Computation/ce_laguerre.py --degree 8             --grid 1200 --tmax 40 --out KeplerConjecture/Computation/out/ce_d8.json
+dependencies = python3 >= 3.11, numpy, scipy (scipy.sparse.linalg), sympy;
+              record exact versions with `pip freeze`
+resources = 1 core, < 2 GB RAM; the submitted instance runs in 1.1 s. The
+              SDP/SOS instance at degree n <= 24 should be capped at 15 min and
+              is expected to need < 4 GB.
+parameters = s = |x|^2 >= 0; Laguerre argument t = 2*pi*s.
+              (A1) f <= 0 for |x| >= 2  <=>  P(t) <= 0 for t >= 8*pi  [NOT 4]
+              (A2) fhat >= 0           <=>  Q(t) >= 0 for t >= 0
+              f = sum_{k<=n} a_k exp(-pi s) L_k^(1/2)(t),
+              fhat = sum_k (-1)^k a_k exp(-pi s) L_k^(1/2)(t),
+              c_k = L_k^(1/2)(0) = (2k+1) C(2k,k)/4^k, fhat(0) > 0 required.
+expected_outputs = Computation/out/ce_<n>.json (coefficients, f(0), fhat(0),
+              ratio, both normalisations, solver status, residuals) and
+              Computation/out/ce_<n>.txt
+success_criteria = ONE of:
+              (a) an exact rational identity -P(t) = s0(t) + (t - 8*pi) s1(t) and
+                  Q(t) = u0(t) + t u1(t) with s_i, u_i sums of squares of
+                  polynomials with rational coefficients (pi treated as a formal
+                  transcendental; any pi^2 appearing is reduced via pi^2 = pi*pi
+                  and the identity checked coefficient-wise), verified by exact
+                  arithmetic; or
+              (b) a rigorous residual bound on the whole half-line.
+              A floating-point optimum is EXPLORATORY and must be labelled so.
+certification = exact or none. `TESTED_FINITE` at best for a float optimum.
+remaining_obligations = the reduction from the univariate family to the full
+              admissible class must be stated as an inclusion and proved;
+              Li's theorem bounds the optimum of ordinary CE and says nothing
+              about convergence of this particular sequence - do not compare
+              a finite-degree value with 0.18398089 as if it were a limit.
 ```
 
-Why this is worth a local run: it is the only way to turn `Main/DECISIONS.md`
-D2/D4 from assertions into measurements, it is small (a univariate SDP), and it
-either produces the first locally reproduced 3D number in this project or
-explains exactly why not.
+**Already run on the VM (exploratory, negative result).** The submitted script
+implements the *grid* version of the two sign conditions and demonstrates that
+this approach cannot work: the LP is unbounded below, and with the rigorous floor
+`f(0) >= 3/(32 pi)` forced it attains the floor with fine-grid violations of
+order `10^10`. See K15-C014 and `Computation/out/ce_d8.json`. The lesson is
+carried by rev. 2 above: the identity, not the grid.
 
 ### K15-COMPUTE-002 — build the frozen definitions under the pinned toolchain
 

@@ -1,0 +1,52 @@
+{
+  "title": "Certificate for: two-point + Voronoi hybrids in R^3 cannot beat the dodecahedral bound",
+  "conventions": {
+    "packing": "Lambda subset R^3, |x-y| >= 2 for distinct x,y",
+    "ball_radius": 1,
+    "vol_B1": "4*pi/3",
+    "centre_density_c": "c = limsup_R #(Lambda cap B(0,R)) / vol B(0,R)   (centres per unit volume)",
+    "density_delta": "delta = limsup_R vol(B(0,R) cap union_{lambda in Lambda} B(lambda,1)) / vol B(0,R)",
+    "relation": "delta = (4*pi/3)*c  (Lemma 1.1, all packings)",
+    "fourier": "fhat(t) = integral f(x) exp(-2*pi*i*t.x) dx   (no normalising constant)"
+  },
+  "constants": {
+    "V_HM_exact": "(15+7*sqrt(5))/4 * (20/sqrt(250+110*sqrt(5)))^3",
+    "V_HM": "5.5502910285155102690704321136618",
+    "V_HM_definition": "volume of the regular dodecahedron of inradius 1 (= Voronoi cell of the 12 icosahedral centres at distance 2)",
+    "delta_HM": "0.75469739933740583039165210599023",
+    "c_HM": "0.18017073246471935042979798304424",
+    "fcc_covolume_exact": "4*sqrt(2)",
+    "fcc_covolume": "5.656854249492380195206755",
+    "c_fcc": "0.176776695296636881100211090526",
+    "delta_fcc": "0.740480489693061041169313498343",
+    "icosahedral_shell_min_pair_distance": "2.1029244484765344",
+    "icosahedral_cell_circumradius": "1.2584085723648177"
+  },
+  "theorem_B_fcc_constraint": {
+    "statement": "for every admissible f (fhat>=0, f(0)>0, f(x)<=0 for |x|>=2):  f(0) + 12*f(2) >= fhat(0)/(4*sqrt(2)) > 0",
+    "statement_2": "equivalently 12*(-f(2)) < f(0) (the contact cost C_ico at the icosahedral star is strictly below the diagonal term)",
+    "test_family": "f_a(x) = exp(-pi r^2)(1 + a(3/2 - 2 pi r^2)), a in [1/(8 pi - 3/2), 2/3]",
+    "test_values_a": ["0.042314177", "0.05", "0.1", "0.3", "0.666666"]
+  },
+  "theorem_C_barrier": {
+    "statement": "with score B_kappa(v) = kappa*(f(0) - C(v)), C(v) = sum_{mu != v} (-f(v-mu)): (i) at the icosahedral cell B_kappa = kappa*(f(0)+12 f(2)) >= kappa*fhat(0)/(4 sqrt 2) > 0, so (H1) forces V_0 <= V_HM - kappa*fhat(0)/(4 sqrt 2) < V_HM; (ii) mean B_kappa <= -kappa*c*fhat(0) < 0, so (H2) fails. Hence no two-point score yields a bound better than delta <= 4*pi/(3*V_HM).",
+    "deficit": "kappa*fhat(0)*(1/(4*sqrt(2)) + c)"
+  },
+  "theorem_D_necessity": {
+    "statement": "if (H1) and (H2) hold with V_0 > V_HM then B(ico) < 0 <= liminf mean B",
+    "consequence": "a winning score must be negative on the icosahedral star; the two-point cost is positive there (Theorem C)"
+  },
+  "no_go": {
+    "affine_face_count": "B = alpha*F + gamma (F = #Voronoi faces): fcc mean F = 12, bcc mean F = 14, every cell F>=4 => no (alpha,gamma) satisfies (H2) and B(ico)<0",
+    "delaunay_vertex_counts": "#{tetrahedra at v} = 2*d_v - 4 identically, so affine Delaunay scores reduce to affine functions of d_v; no Euler identity fixes mean(d_v)"
+  },
+  "benchmarks_delta_and_c": {
+    "kepler_hales":            {"delta": "0.740480489693", "c": "0.176776695297"},
+    "hales_mclaughlin":        {"delta": "0.754697399337", "c": "0.180170732465"},
+    "cohn_deLaat_salmon_3pt":  {"delta": "0.770270440",    "c": "0.183888522065"},
+    "muder_1998":              {"delta": "0.773055",       "c": "0.184553286798"},
+    "cohn_elkies_2pt":         {"delta": "0.779746762",    "c": "0.186150827298"},
+    "rogers_simplex":          {"delta": "0.779636",       "c": "0.186124384819"},
+    "this_work":               {"delta": "<= 0.75469739933740583039165210599", "c": "<= 0.180170732464719350429797983044", "kind": "barrier: no improvement for the two-point + Voronoi family"}
+  }
+}

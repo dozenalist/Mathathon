@@ -34,27 +34,37 @@ contact number `n` (at most `n` `A`-differences from any centre of any
 This replaces the unprovable "integral tail" of the earlier brief by a finite
 count. Consequences already verified: `A = ∅` recovers (1); relaxing on a closed
 measure-zero set (the contact sphere) buys nothing (K15-C004/C011); the winning
-region for a shell relaxation is controlled by `n·M/f̂(0)`, and `n ≥ 26` for
-every shell of positive width under the elementary volume bound
-`n(δ) = ⌊(3+δ)³⌋ − 1` (Corollary 2.3).
+region for a shell relaxation is controlled by `n·M/f̂(0)`, and the count `n` may be taken as
+`⌊(3+δ)³⌋ − 1` for a shell of width `δ` (K15-C013(a), a volume bound). That is an
+*upper* bound on the contact number, not a lower one. The true maximum is
+exactly 12 for all sufficiently thin shells (K15-C013(b), compactness plus the
+kissing number); an explicit width is open.
 
-## 3. Two obstructions that retire routes (K15-C004, K15-C005)
+## 3. One obstruction, one withdrawal (K15-C004, K15-C005)
 
-- **Contact-sphere relaxation is vacuous** (correct statement: `A` closed and of
-  empty interior). Pricing `f > 0` on `{|x| = 2}` by the kissing number 12
-  cannot improve any two-point constant.
-- **Additive two-point corrections to Voronoi volume cannot beat 5.550291.**
-  At the icosahedral cell the positive-definite correction is `≥ κf̂(0)/(4√2) > 0`
-  (so it raises the required cell volume) and on average it is `≤ −κc f̂(0) < 0`
-  (wrong sign). Hence `V_0 < V_HM` for every `κ > 0`: the family is strictly
-  worse than Hales–McLaughlin. `verify.py` reproduces every constant.
+- **Contact-sphere relaxation is vacuous (K15-C004, stands).** If `A` has empty
+  interior then `R³∖A` is dense, so a continuous `f` that is `≤ 0` on
+  `{|x| ≥ 2}∖A` is `≤ 0` on `{|x| ≥ 2}`. Pricing `f > 0` on `{|x| = 2}` by the
+  kissing number 12 cannot improve any two-point constant. (At checkpoint 1 this
+  entry was marked refuted by Main on the strength of a bad example; the review
+  is right and the entry is restored.)
+- **Additive two-point corrections to Voronoi volume (K15-C005): obstruction
+  WITHDRAWN, route re-opened.** The two computations are real — the
+  positive-definite correction is `≥ κf̂(0)/(4√2) > 0` at the icosahedral cell
+  and has non-positive mean — but they do not exclude the family: in
+  `V_0 ≤ vol Ω(v) + κB_κ(v)` a positive value at the icosahedral configuration
+  *permits* a larger `V_0`. No bound is obtained, in either direction.
 
 ## 4. The frontier, fixed in one place (K15-C008)
 
 `0.740480` (Kepler, Hales) < `0.754697` (dodecahedral, Hales–McLaughlin) <
-`0.770271` (three-point, CDS22) < `0.773055` (Muder) < `0.779747` (CE) <
-`0.779636` (Rogers). Any new bound below `0.754697399337` is the first of its
-kind; `0.741506` (CDS22) is **lattice-only** and is not a general bound.
+`0.770271` (three-point, CDS22) < `0.773055` (Muder 1998) < **`0.779636`
+(Rogers 1958) < `0.779747` (Cohn–Elkies 2003)**. The last two are in the right
+order as written and the two-point bound is the *worse* of them; checkpoint 1
+had them transposed. `0.741506` (CDS22) is **lattice-only** and is not a general
+bound. No novelty is claimed for anything in this file: the unrestricted sharp
+bound is already a theorem (Hales), and "first below 0.754697" would be a claim
+about a restricted class that has not been compared with the literature.
 
 ## 5. What is not established
 
