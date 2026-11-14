@@ -3301,3 +3301,25 @@ counterexample, and it should not be quoted as either.** The only family that re
 relevant regime is E's icosahedral one, which is why the payer search is E's.
 
 *Status.* `TESTED_FINITE` (negative). Reviewer X.
+
+### External ids — worker-ledger claims cited by Main
+
+These are defined in a worker's own ledger, not here. They are listed so that a reference from
+`Main/` resolves to something a reader can chase, and so that `Computation/ledger_lint.py` can
+distinguish "external" from "dangling". Main does not vouch for their content; each is quoted
+with the worker's own status.
+
+| id | owner | what it is | status per the owner |
+| --- | --- | --- | --- |
+| `K15-X-C014` | X | both-sides certificate, `p`-side only, `0.780718153` | X's ledger |
+| `K15-X-C015` | X | both-sides, `0.813631102` | X's ledger |
+| `K15-X-C016` | X | both-sides, `0.783097911` | X's ledger |
+| `K15-X-C017` | X | both-sides rational Gram, `Δ < 0.782267220134` (smaller certificate: `< 0.782267254857`, 41-character entries) | X's ledger; **`PENDING_REVIEW`** in Main pending local review of the smaller certificate |
+| `K15-E074`, `E075`, `E081`–`E086` | E | the pair conjecture, the two-dodecahedra exclusion, the payer fixtures | E's ledger; `E074` `PROPOSED`, `E078` `WITHDRAWN` by E |
+| `K15-C-TRANSFER-DENSITY-002`, `CUTIMPLIES-003`, `HIGHDENS-001`, `PERIODCONV-001`, `CUTBLOB-001`, `DECOUPLE-001`, `CUTEQUIV-001` | C | the cut/flow fixtures and their scope; `CUTEQUIV-001` **withdrawn** by C | C's ledger |
+
+**Checked:** `Computation/ledger_lint.py` (K15-C110) verifies that every *fully-qualified*
+`K15-C…`/`K15-E…`/`K15-R…` reference in `KeplerConjecture/` resolves to a heading here, that no
+id is defined twice except by an explicit `addendum` sub-heading, and that every status token is
+from the documented vocabulary. The `C…`/`E…`/`X…` shorthand used in prose is not checked, so a
+typo in shorthand is still possible; 411 shorthand occurrences exist in `Main/`.

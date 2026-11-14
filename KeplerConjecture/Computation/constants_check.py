@@ -146,6 +146,10 @@ chk("lattice -> general factor", mpf('0.770271') / mpf('0.741506'), 1.0387927, t
 chk("3-point proof would need this % improvement", 100 * (1 - TRU / mpf('0.770271')), 3.86754, tol=1e-4)
 chk("ML gap and pair window are the SAME number", 100 * (mpf('0.754697399337') / TRU - 1), 100 * (sqrt(32) / vdod - 1), tol=2e-3)
 
+# --- reconciliation of C's CUTBLOB-001 value (review 0438) ---------------------
+chk("b(v0) = sqrt32 - V_dod", sqrt(32) - vdod, 0.106563220977, tol=1e-12)
+chk("C's t* = b(v0)/12 = 0.008880268414739", (sqrt(32) - vdod) / 12, 0.008880268414739, tol=1e-15)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)
