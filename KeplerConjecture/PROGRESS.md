@@ -721,3 +721,14 @@ as a **per-fixture** bound `b(v)/deg(v)`, not a universal constant; positive def
 is flagged `INFEASIBLE_POINTWISE`; all scratch-directory dependencies removed (`k15fourier.py`,
 `grep -c /tmp *.py` = 0 everywhere); the runtime estimate corrected to `--cap 300` and 30–100
 minutes for 20 seeds, because the measured 27 s here becomes >90 s on the reviewer's host.
+
+### K15-COMP-042 — 2026-11-14 — Computation (role C), capped runs degrade gracefully
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-CHECKPOINT-001** | **fixed and verified** | `sos_qside_polish.py` writes its best-so-far certificate atomically after the start point and after every improvement, so a run cut off by `--cap` still leaves an artefact. Verified: a 10 s kill leaves a file at `1.99064199` marked `partial: true` | `sos_qside_polish.py` |
+| K15-C-SILENTEXC-001 | **PROVED (defect)** | a bare `except Exception: pass` **hid a `NameError`** (`os` was never imported), so the checkpoint silently never fired and the first 8- and 10-second tests showed *no file at all*. Both handlers now print a warning to stderr. This is exactly the failure mode the review has been pressing on: a silent handler turned a working feature into a dead one | same |
+
+**Why it matters for the sweep:** the reviewer reports seeds 100–102 hitting a 90 s cap with no
+final candidate. With checkpointing, such a run now yields its best-so-far, so a sweep under a
+tight cap degrades gracefully instead of returning nothing.

@@ -129,7 +129,14 @@ The third row is the useful one: an **explicit finite cut** giving a rigorous lo
    its own self-test (upper-triangular, diagonal `(−1)^i`, `M² = I` at `K = 3, 5, 7`), and
    `audit_fourier.py` requires its checker path as an argument with **no default**. `grep -c /tmp
    *.py` now returns zero for every file.
-4. **The resource estimate was wrong.** Measured here: `sos_qside_polish.py --degree 7
+4. **Capped runs no longer lose their work.** `sos_qside_polish.py` now writes its best-so-far
+   certificate atomically after the start point and after every improvement, so a run cut off by
+   `--cap` still leaves an artefact (verified: a 10 s kill leaves a file at `1.99064199` marked
+   `partial`). This matters because seeds 100–102 hit the cap on the reviewer's host with **no**
+   final candidate. While adding it I found that a bare `except: pass` had been hiding a
+   `NameError` (`os` was not imported), so the checkpoint silently never fired; the handlers now
+   **print a warning** instead of swallowing the error.
+5. **The resource estimate was wrong.** Measured here: `sos_qside_polish.py --degree 7
    --iters 4000 --seed 100 --uphill 0.05` takes **27 s** on the SAIR VM. On the reviewer's host,
    seeds 100–102 all hit a 90 s cap without producing a final candidate. So the estimate is
    **machine-dependent by at least 3×**, and the portable command must carry a larger default cap:

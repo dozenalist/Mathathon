@@ -15,7 +15,7 @@ only if exactcert accepts it.
 
 Usage:  python3 sos_qside_polish.py [--iters N] [--out out/sos_qside_polish.json]
 """
-import argparse, json, random, copy
+import argparse, json, random, copy, os, sys, tempfile
 from fractions import Fraction as F
 import numpy as np
 import sympy as sp
@@ -113,12 +113,60 @@ def main():
         if p0 <= 0 or q0 <= 0:
             return None
         return p0 / q0, p, aa, bb, q
+    def _early_write(val, rs_, ss_):
+        """Minimal writer used before the full _checkpoint exists, so that even a very short cap
+        leaves an artefact.  The start-point search alone can take ~10 s at degree 7, which is
+        why an earlier version produced no file at all under a 15 s cap."""
+        try:
+            dd = os.path.dirname(os.path.abspath(a.out))
+            os.makedirs(dd, exist_ok=True)
+            json.dump(dict(script="KeplerConjecture/Computation/sos_qside_polish.py",
+                           status="PARTIAL_START", partial=True,
+                           p0_q0=float(val),
+                           delta=val * 4 * 3.141592653589793 / 3,
+                           r=[[str(x) for x in c] for c in rs_],
+                           s=[[str(x) for x in c] for c in ss_],
+                           note="start point only; no search done yet"),
+                      open(a.out, "w"), indent=1)
+        except Exception as e:
+            # LOUD, not silent.  A bare "except: pass" here hid a NameError (os was not
+            # imported) and the checkpoint silently never fired.
+            print("WARNING: early checkpoint failed: %r" % (e,), file=sys.stderr)
+
     base = score(rs, ss)
     assert base is not None, "start point must be admissible"
+    _early_write(base[0], rs, ss)
     best = (base[0], copy.deepcopy(rs), copy.deepcopy(ss), base[2], base[3], base[4])
     print("start: p0/q0 = %.10f  -> Delta = %.8f" % (best[0], best[0] * 4 * 3.141592653589793 / 3))
     improved = 0
     cur = (best[0], copy.deepcopy(best[1]), copy.deepcopy(best[2]))
+
+    def _checkpoint(val, rs_, ss_):
+        """Write the best-so-far certificate after every improvement, atomically.
+
+        WHY: a capped run otherwise loses everything (measured: seeds 100-102 hit a 90 s cap on
+        the reviewer's host with no final candidate).  With this, a timeout still leaves a usable
+        artefact on disk, so the sweep degrades gracefully instead of discarding work.
+        """
+        import tempfile
+        rec_ = dict(script="KeplerConjecture/Computation/sos_qside_polish.py",
+                    status="TESTED_FINITE (best so far; run may still be in progress)",
+                    partial=True, p0_q0=float(val),
+                    delta=val * 4 * 3.141592653589793 / 3,
+                    r=[[str(x) for x in c] for c in rs_],
+                    s=[[str(x) for x in c] for c in ss_],
+                    note=("written incrementally; the final exact verification happens at the end "
+                          "of the run, so a partial file is indicative, NOT a certificate"))
+        try:
+            d = os.path.dirname(os.path.abspath(a.out))
+            fd, tmp = tempfile.mkstemp(dir=d, suffix=".part")
+            with os.fdopen(fd, "w") as fh:
+                json.dump(rec_, fh, indent=1)
+            os.replace(tmp, a.out)
+        except Exception as e:
+            print("WARNING: checkpoint failed: %r" % (e,), file=sys.stderr)
+
+    _checkpoint(best[0], best[1], best[2])
     for it in range(a.iters):
         rs2 = copy.deepcopy(cur[1]); ss2 = copy.deepcopy(cur[2])
         # pick a random polynomial and a random coefficient, perturb
@@ -134,6 +182,7 @@ def main():
                 cur = (r[0], rs2, ss2)
             if r[0] < best[0] - 1e-12:
                 best = (r[0], rs2, ss2, r[2], r[3], r[4]); improved += 1
+                _checkpoint(best[0], best[1], best[2])
             if improved % 5 == 0 and r[0] < best[0] - 1e-12:
                 print("  iter %4d improved: p0/q0 = %.10f  Delta = %.8f"
                       % (it, best[0], best[0] * 4 * 3.141592653589793 / 3))
