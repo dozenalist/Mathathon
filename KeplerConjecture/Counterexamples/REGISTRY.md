@@ -436,3 +436,60 @@ demonstration that X can generate and verify ordinary-CE bounds without reusing 
 **Reproduction.** `python3 x_r03_sos_descend.py` (C010) · `python3 x_r03b_sos_from_sdp.py` (C013,
 needs cvxpy) · `python3 x_r03b_rescaled.py` (C014, ~140 s). Each prints the exact certificate and the
 exact sign verdict; none reports a float as a bound.
+
+---
+
+## Claim records added in review block 0308
+
+### K15-X-C015 and K15-X-C016 — certificates with an explicit rational Gram on BOTH sides
+
+Both are ordinary Cohn–Elkies certificates of the form
+
+* `H(s) = v(s/S)ᵀ G v(s/S)`, `P = −(s−4)H`, `f(x) = P(|x|²)e^{−|x|²}`
+  ⇒ `f ≤ 0` for `|x| ≥ 2` **by construction** (`G ⪰ 0`);
+* `Q(u) = v(u/S)ᵀ A v(u/S) + u·v(u/S)ᵀ B v(u/S)`
+  ⇒ `f̂ ≥ 0` **by construction** (`A, B ⪰ 0`), where `v(x) = (1, x/S, …, (x/S)^m)`;
+* the link is the exact coefficient identity
+  `Q_k = S^{−k}Σ_{i+j=k}A_{ij} + S^{−(k−1)}Σ_{i+j=k−1}B_{ij}`, verified by expansion to equal the
+  Fourier image of `P`.
+
+| claim | `m, S` | `P(0)/Q(0)` | bound | status |
+| --- | --- | --- | --- | --- |
+| `K15-X-C015` | 2, 4 | `1.0815926849` | `0.813631102` | **PROVED** (first both-sides object) |
+| **`K15-X-C016`** | 4, 8 | `1.0411662228` | **`0.783220184`** | **PROVED** (both sides, useful strength) |
+
+**No sign predicate, no root isolation, no Sturm sequence is needed for either**: every sign
+condition is the statement that a rational symmetric matrix is positive semidefinite, checkable by
+rational `LDLᵀ`. `verify_all.py` performs exactly those checks.
+
+**Necessary condition on `G`:** it is *singular* at any optimum, because `P(4) = 0` forces a double
+root of `H` at `s = 4`; the correct requirement is `G ⪰ 0`, not `G ≻ 0`.
+
+**Comparison.** C's best explicit-Gram object (`K15-C-SOSQSIDE-005`) is `1.413704545`; `X-C016` is
+`0.783220184`, i.e. `0.63` better, and within `0.0033` of the best certificate in the project
+(C's `K33` at `0.779966500`). `X-C014` (`0.780718153`) remains the strongest X certificate overall
+but has only the p-side explicit. **`X-C016` closes C's first open obligation** — "one certificate
+with obvious rational Gram on BOTH sides at useful strength".
+
+**Reproduction.** `python3 both_sides_strong.py` (≈12 s) → matrices; `python3 verify_all.py` → all
+checks. `both_sides_gram5.py` reproduces `X-C015`.
+
+**Caveat, stated once.** These are ordinary-CE bounds, so Li's theorem governs them
+(`P(0)/Q(0) ≥ 1.024466` necessarily); both satisfy it. Neither is competitive with CDS22
+(`0.779747`), and no such claim is made.
+
+### K15-X-C017 — both-sides explicit rational Gram at `0.782267220134`
+
+Same construction as `X-C015`/`X-C016` with a **margin on `G`** (`ε_G = 10⁻²`): `P = −(s−4)H` gives
+`P(4) = 0` for any `H`, so `H` need not vanish at `s = 4` and `G` need not be singular — the singular
+`G` at the `m ≥ 5` optima was a coincidence that exact rounding broke. `m = 5`, `S = 8`, rational
+`6×6` `G, A, B`, all PSD by exact rational `LDLᵀ`, identity and link exact by expansion, density
+`0.782267220134`. **No sign predicate, no root isolation, no Sturm sequence is needed.**
+
+Ladder of both-sides objects: `C SOSQSIDE-005 1.413704545` → `X-C015 0.813631102` →
+`X-C016 0.783097911` → **`X-C017 0.782267220`** → (`X-C014 0.780718153` has p-side only) →
+`C K33 0.779966500` (neither side). `X-C017` is within `0.0023` of the project's best bound with
+every sign condition reduced to three rational PSD tests.
+
+Reproduce: `python3 both_sides_gmargin.py` (single configuration, ≈6 s); verify:
+`python3 verify_all.py` (**ALL PASS**).
