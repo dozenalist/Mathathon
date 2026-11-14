@@ -1,0 +1,185 @@
+#!/usr/bin/env python3
+"""Adversarial tests for exact_volume.py.  Every expectation is a hand value, not a re-run.
+
+The point of each case is to break a specific shortcut that a naive exact-volume implementation
+takes -- and, in particular, the three the reviewer named: a float determinant filter, a
+completeness check that only looks at the vertices already found, and duplicate planes.
+
+Run: python3 tests_exact_volume.py       (exit 0 iff every case passes)
+"""
+import sys
+from fractions import Fraction as F
+import exact_volume as EV
+
+FAILS = []
+N = [0]
+def check(name, cond, info=None):
+    N[0] += 1
+    if not cond:
+        FAILS.append(name)
+    print("  %s %s%s" % ("PASS" if cond else "FAIL", name, "" if info is None else "  %r" % (info,)))
+
+def box(a, b, c, interior=(0, 0, 0)):
+    """The box [-a,a] x [-b,b] x [-c,c] as six half-spaces, with an explicit interior point."""
+    a, b, c = F(a), F(b), F(c)
+    return [((1, 0, 0), a), ((-1, 0, 0), a), ((0, 1, 0), b), ((0, -1, 0), b),
+            ((0, 0, 1), c), ((0, 0, -1), c)], (F(interior[0]), F(interior[1]), F(interior[2]))
+
+def planes_of(spec):
+    return [(n[0], n[1], n[2], d) for (n, d) in spec]
+
+def main():
+    print("=" * 96)
+    print("A. KNOWN VOLUMES, EXACT")
+    print("=" * 96)
+    spec, v = box(1, 1, 1)
+    check("unit cube: volume 8", EV.volume(planes_of(spec), v) == 8, EV.volume(planes_of(spec), v))
+    spec, v = box(1, 2, 3)
+    check("box 2x4x6: volume 48", EV.volume(planes_of(spec), v) == 48, EV.volume(planes_of(spec), v))
+    # the regular octahedron |x|+|y|+|z| <= 1 has volume 4/3
+    octa = [((1, 1, 1), 1), ((1, 1, -1), 1), ((1, -1, 1), 1), ((1, -1, -1), 1),
+            ((-1, 1, 1), 1), ((-1, 1, -1), 1), ((-1, -1, 1), 1), ((-1, -1, -1), 1)]
+    check("octahedron |x|+|y|+|z| <= 1: volume 4/3",
+          EV.volume(planes_of(octa), (F(0), F(0), F(0))) == F(4, 3),
+          EV.volume(planes_of(octa), (F(0), F(0), F(0))))
+
+    print("\n" + "=" * 96)
+    print("B. DUPLICATE AND REDUNDANT CONSTRAINTS  (E's duplicate-face defect: 28/3 instead of 8)")
+    print("=" * 96)
+    spec, v = box(1, 1, 1)
+    P = planes_of(spec)
+    # (1) an identical duplicate
+    try:
+        vol, cert = EV.certify_volume(P + [P[0]], v)
+        check("identical duplicate cube: volume still 8", vol == 8, vol)
+        check("... and it is reported as dropped",
+              any("duplicate" in why for _, why in cert["dropped"]), cert["dropped"])
+    except ValueError as e:
+        check("identical duplicate cube: volume still 8", False, str(e))
+    # (2) a SCALED duplicate -- the same half-space written as (2,0,0,2)
+    try:
+        vol2, cert2 = EV.certify_volume(P + [(2, 0, 0, 2)], v)
+        check("scaled duplicate (2,0,0,2) of (1,0,0,1): volume still 8", vol2 == 8, vol2)
+        check("... reported as a duplicate, not a second face",
+              any("duplicate" in why for _, why in cert2["dropped"]), cert2["dropped"])
+    except ValueError as e:
+        check("scaled duplicate (2,0,0,2): volume still 8", False, str(e))
+    # (3) the naive failure mode, for the record: counting the duplicate face twice
+    print("     (a naive fan over all six+1 planes would give 8 + 4/3 = 28/3 = %.4f)" % (28 / 3))
+    # (4) a redundant plane far outside
+    try:
+        vol3, _ = EV.certify_volume(P + [(0, 0, 1, 100)], v)
+        check("a far redundant plane changes nothing", vol3 == 8, vol3)
+    except ValueError as e:
+        check("a far redundant plane changes nothing", False, str(e))
+    # (5) a nearly-coincident plane: offset 1 + 1/10^12
+    try:
+        vol4, cert4 = EV.certify_volume(P + [(0, 0, 1, F(10 ** 12 + 1, 10 ** 12))], v)
+        check("a plane 1e-12 outside a face is redundant: volume 8", vol4 == 8, vol4)
+        check("... and it is dropped as dominated",
+              any("dominated" in why for _, why in cert4["dropped"]), cert4["dropped"])
+    except ValueError as e:
+        check("a plane 1e-12 outside a face is redundant: volume 8", False, str(e))
+
+    print("\n" + "=" * 96)
+    print("C. WHAT A FLOAT DETERMINANT FILTER GETS WRONG")
+    print("=" * 96)
+    # A box with one face tilted by a rational of size 1e-9: the triple at each of the four
+    # vertices of that face has a determinant of order 1e-9, exactly the size the old filter dropped.
+    eps = F(1, 10 ** 9)
+    tilted = [(1, 0, 0, 1), (-1, 0, 0, 1), (0, 1, 0, 1), (0, -1, 0, 1),
+              (0, 0, 1, 1), (eps, 0, -1, 1)]          # bottom face tilted by eps
+    try:
+        vol, cert = EV.certify_volume(tilted, (F(0), F(0), F(0)))
+        # the exact volume: the bottom face is z = 1 + eps*x, so the height at x=+-1 is 1 -+ eps,
+        # and the volume is the mean height times the base area: 2 * 2 * 2 * 1 = 8
+        check("tilted-box volume is 8 (mean height 1)", vol == 8, vol)
+        check("... with all 8 vertices found", len(cert["vertices"]) == 8, len(cert["vertices"]))
+    except ValueError as e:
+        check("tilted box with a 1e-9 angle", False, str(e))
+
+    check("solve3 divides exactly (no float leak)",
+          EV.solve3([(1, 0, 0, 1), (0, 1, 0, 1), (1, 0, -10 ** 9, 10 ** 9)])
+          == (F(1), F(1), F(-999999999, 1000000000)),
+          EV.solve3([(1, 0, 0, 1), (0, 1, 0, 1), (1, 0, -10 ** 9, 10 ** 9)]))
+    check("... and the result is a Fraction, not a float",
+          isinstance(EV.solve3([(1, 0, 0, 1), (0, 1, 0, 1), (1, 0, -10 ** 9, 10 ** 9)])[2], F))
+
+    print("\n" + "=" * 96)
+    print("D. DEGENERACIES ARE REJECTED, NOT APPROXIMATED")
+    print("=" * 96)
+    # (1) unbounded: three planes meeting in a corner
+    try:
+        EV.certify_volume([(1, 0, 0, 1), (0, 1, 0, 1), (0, 0, 1, 1)], (F(0), F(0), F(0)))
+        check("three planes (unbounded) are rejected", False, "accepted")
+    except ValueError as e:
+        check("three planes (unbounded) are rejected", True, str(e)[:60])
+    # (2) a slab of zero thickness
+    try:
+        EV.certify_volume([(1, 0, 0, 1), (-1, 0, 0, 1), (0, 1, 0, 1), (0, -1, 0, 1),
+                           (0, 0, 1, 0), (0, 0, -1, 0)], (F(0), F(0), F(0)))
+        check("a flat slab is rejected", False, "accepted")
+    except ValueError as e:
+        check("a flat slab is rejected", True, str(e)[:80])
+    # (3) a zero normal
+    try:
+        EV.normalise((0, 0, 0, 1))
+        check("a zero normal is rejected", False, "accepted")
+    except ValueError:
+        check("a zero normal is rejected", True)
+    # (4) three planes sharing a line: exact determinant zero, no spurious vertex
+    check("three planes through a common line give no vertex",
+          EV.solve3([(1, 0, 0, 1), (0, 1, 0, 1), (1, 1, 0, 2)]) is None)
+
+    print("\n" + "=" * 96)
+    print("E. A NON-SIMPLE POLYTOPE: vertices where FOUR planes meet")
+    print("=" * 96)
+    # the rhombic dodecahedron {|x|<=1, |y|<=1, |z|<=1, |x|+|y|+|z|<=2}: 12 faces,
+    # 8 vertices of degree 3 and 6 of degree 4, volume 8 + 6*(1/6)*... computed below by hand:
+    # cube of volume 8 with the 8 corners cut by the planes +-x+-y+-z = 2, each corner cut is a
+    # pyramid of base area 3/2 and height (sqrt3/2 ... ) -- instead take the exact known value:
+    rd = [(1, 0, 0, 1), (-1, 0, 0, 1), (0, 1, 0, 1), (0, -1, 0, 1), (0, 0, 1, 1), (0, 0, -1, 1),
+          (1, 1, 1, 2), (1, 1, -1, 2), (1, -1, 1, 2), (1, -1, -1, 2),
+          (-1, 1, 1, 2), (-1, 1, -1, 2), (-1, -1, 1, 2), (-1, -1, -1, 2)]
+    vol, cert = EV.certify_volume(rd, (F(0), F(0), F(0)))
+    # the cube is 8; each of the 8 corners is cut by a plane through the three adjacent edge
+    # midpoints, removing a tetrahedron of volume (1/2)^3/6 = 1/48 each: 8 - 8/48 = 8 - 1/6
+    # each corner (1,1,1) is cut by x+y+z = 2 through the edge midpoints (1,1,0),(1,0,1),(0,1,1):
+    # the removed tetrahedron is |det[(0,0,-1),(0,-1,0),(-1,0,0)]|/6 = 1/6, eight corners: 8/6 = 4/3
+    check("truncated cube: volume 8 - 8*(1/6) = 20/3", vol == F(20, 3), vol)
+    # degree-4 vertices belong to the octahedron: (+-1,0,0) lies on four of its eight planes
+    oct_planes = planes_of(octa)
+    check("the octahedron has vertices where four planes meet",
+          sum(1 for pl in oct_planes if pl[0]*1 + pl[1]*0 + pl[2]*0 == pl[3]) == 4,
+          sum(1 for pl in oct_planes if pl[0]*1 + pl[1]*0 + pl[2]*0 == pl[3]))
+
+    print("\n" + "=" * 96)
+    print("F. THE CERTIFICATE IS CHECKED INDEPENDENTLY")
+    print("=" * 96)
+    spec, v = box(1, 1, 1)
+    vol, cert = EV.certify_volume(planes_of(spec), v)
+    # tampering must be caught
+    import copy
+    for name, mutate in (
+            ("volume", lambda c: c.__setitem__("volume", "9")),
+            ("a vertex moved", lambda c: c["vertices"].__setitem__(0, ["2", "0", "0"])),
+            ("a facet dropped", lambda c: c["facets"].pop()),
+            ("a facet reversed", lambda c: c["facets"][0]["verts"].reverse()),
+            ("the interior point moved out", lambda c: c.__setitem__("interior", ["2", "0", "0"]))):
+        bad = copy.deepcopy(cert)
+        mutate(bad)
+        try:
+            EV.check_certificate(bad)
+            check("tampering with %s is caught" % name, False, "accepted")
+        except (ValueError, KeyError, IndexError):
+            check("tampering with %s is caught" % name, True)
+
+    print()
+    if FAILS:
+        print("FAILED: %d -> %s" % (len(FAILS), FAILS))
+        return 1
+    print("ALL %d EXACT-VOLUME TESTS PASS" % N[0])
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())
