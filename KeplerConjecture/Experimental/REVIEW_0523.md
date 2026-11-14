@@ -181,10 +181,19 @@ Theorem D (`σ₀ > 2V_dod`) has four steps. Checked:
   outside `B(v,R_max) ⊇ Ω(v)`, so only centres within `2R_max` of `v` or `w` contribute; those
   form a bounded 2-separated set, and the admissible configurations form a finite union (over
   `N ≤ N_max`) of compacta on which `Φ` is continuous. ✓
-- **Minor arithmetic slip.** `§4.1b` bounds the number of points by `(21.865)³ ≈ 10453`. The
-  correct 2-separation bound is `vol(B(0, R+1))/(4π/3) = (R+1)³ ≈ 11961` — the `+1` is the
-  radius of the ball each centre reserves. Both are "≈10⁴", so no conclusion changes, but the
-  number as written is not the one the argument gives.
+- **Minor arithmetic slip, quantified.** `§4.1b` bounds the number of points by
+  `(21.865)³ ≈ 10453`. For a 2-separated set in `B(0,R)` the correct bound is
+  `vol(B(0,R+1))/(4π/3) = (R+1)³`, since the unit balls around the centres are disjoint and lie
+  in `B(0,R+1)`. With Main's own `σ₀ ≤ 11.448258` this gives `R = 3σ₀/π = 10.9323`,
+  `2R = 21.8646`, hence
+
+  ```
+  N ≤ (2R+1)³ = 11953      (Main writes 10453, which is (2R)³)       ratio 1.144
+  ```
+
+  and with the sharp `σ₀ ≤ 2√32` it is `11555`. No conclusion changes — both are "≈10⁴" — but
+  the `+1` is the radius each centre reserves and it is a 14% term, so the number as written
+  is not the one the argument gives.
 - **(3) the rigidity — the load-bearing gap.** Step 3 needs: `vol Ω(v) = V_dod` forces `Ω(v)`
   to be the regular dodecahedron of inradius 1. That is the **equality case of
   Hales–McLaughlin**, imported and not re-derived, and Main flags it as the soft dependency.
