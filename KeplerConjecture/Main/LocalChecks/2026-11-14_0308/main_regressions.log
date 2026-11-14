@@ -1,0 +1,40 @@
+adversarial sign-checker suite (T = pi_lo*rho^2 = 13722790870145575844928672562461687/1000000000000000000000000000000000)
+PASS  q=(u-5)^2 : touching zero, must PASS
+PASS  q=-(u-5)^2 : negative, must FAIL
+PASS  q=(u-5)^3 : sign change, must FAIL
+PASS  q=(u-1)^2(u-2)^2 : two touching zeros, must PASS
+PASS  q=(u-1)^2(u-2) : one sign change, must FAIL
+PASS  q=u^2 : double root at the endpoint 0, must PASS
+PASS  q=prod_{k=1..10}(u-k) : ten simple positive roots, must FAIL
+PASS  p=-(u-T)^2 : touching at T, must PASS
+PASS  p=(u-T) : crosses at T, must FAIL
+PASS  p=-(u-T) : negative beyond T, must PASS
+PASS  p=-(u-13)^2 <= 0 on the window, must PASS
+PASS  p=(u-13)^2 <= 0 on the window, must FAIL
+PASS  p=-1 <= 0 on the window, must PASS
+PASS  u(1-u) <= 0 on [0,1] : +1/4 inside, must FAIL
+PASS  u(u-1) >= 0 on [0,inf) : -1/4 inside, must FAIL
+PASS  u(1-u) <= 0 on [0,inf) : +1/4 inside, must FAIL
+PASS  -(u-1/2)^2 <= 0 on [0,1] : touching only, must PASS
+PASS  (u-1/2)^2 >= 0 on [0,inf) : touching only, must PASS
+PASS  u(u-1) <= 0 on [0,1] : NEGATIVE between two endpoint roots, must PASS
+PASS  ([u(u-1/2)(u-1)]^2 <= 0 on [0,1] : +9/4096 at 1/4, must FAIL
+PASS  (-[u(u-1)(u-1/2)(u-2)]^2 >= 0 : -441/65536 at 1/4, must FAIL
+PASS  ([u(u-1)(u-2)]^2 <= 0 from 0 : +9/64 at 1/2, must FAIL
+PASS  ([u(u-1/2)(u-1)]^2 <= 0 on [2,3] : positive there, must FAIL
+PASS  (-[u(u-1)(u-2)]^2 <= 0 on [0,3] : square with a sign, must PASS
+PASS  (u-7/5)^2 - 2e-40 >= 0 : negative dip of size 2e-40, must FAIL
+PASS  -(u-7/5)^2 + 2e-40 <= 0 from 0 : must FAIL
+PASS  -(u-7/5)^2 + 2e-40 <= 0 on [0,3] : must FAIL
+PASS  (u-7/5)^2 + 2e-40 >= 0 : strictly positive, must PASS
+PASS  (u-1/5)^2 - 2e-40 >= 0 on [0,1] : dip inside, must FAIL
+PASS  roots exactly at both endpoints, negative between, must PASS
+PASS  root exactly at the domain start, must PASS
+PASS  triple root (u-2)^3 >= 0 on [0,inf) : sign change, must FAIL
+PASS  (u-2)^4 >= 0 : even multiplicity everywhere, must PASS
+PASS  (u-2)^4 <= 0 on [0,3] : positive away from 2, must FAIL
+PASS  clustered roots with a 1e-30 dip, must FAIL
+
+35 cases; SUITE: ALL EXPECTATIONS HOLD
+These same cases should be run against Computation's exactcert;
+they are stated in Main's basis, so convert with interface_xcheck.main_to_comp.

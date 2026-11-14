@@ -590,3 +590,29 @@ Supervisor sync 2026-11-14 03:08 PST: Experimental source 9a46efcb retained in M
 
 
 Supervisor sync 2026-11-14 03:08 PST: Main correction f1e4d8b4 retained in Main/AgentProgress/Main-f1e4d8b4.md; rejected and pending claims remain explicit in Main/REVIEW_2026-11-14_0308.md.
+
+
+## Supervisor checkpoint: November 14, 03:08 Pacific
+
+Merged completed sources Main 7c56c5ee, Computation 9d9ff682, Experimental
+9a46efcb and Counterexamples 6535e768, plus Main's subsequent correction
+f1e4d8b4. Original commits and conflicting progress snapshots are preserved.
+C081's upper-to-lower deficit inference was rejected and Main withdrew it.
+The replacement singleton floor and its per-fixture/universal quantifiers remain
+under review. C079's arbitrary-cut boundary claim was narrowed.
+
+Independent exact checking verifies X-C014 below 0.780718153344 and C's
+both-sides Fourier/Gram identities below 2.0017173734. These are controls,
+not new best bounds. Main's repaired checker passes the nine independent cases
+and the 35-case suite; general soundness stays pending. All ten local jobs ended:
+seven completed normally; three polish pilots hit 90-second caps. The rescaled
+SDP pilot produced only weaker proposals. No new Lean result is accepted.
+
+All four previous blocks fail the substantive-hour requirement: three early
+endings and Experimental's 281 seconds of explicit sleep-padding. Four new
+Ultramath assignments were delivered; Main ended again after 12.614 minutes,
+so it received a longer self-contained proof package. Evidence steering does
+not reset busy worker clocks. Exact delivery/runtime records and current
+deadlines are in Main/ASSIGNMENTS_2026-11-14_0308.json; decisions and limitations
+are in Main/REVIEW_2026-11-14_0308.md. The 45-minute cadence remains active and
+Sair-Watch remains stopped.

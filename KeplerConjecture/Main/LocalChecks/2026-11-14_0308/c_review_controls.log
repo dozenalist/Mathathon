@@ -1,0 +1,27 @@
+T1  Fourier-side explicit Gram: q = 3^2 + (3u/2-6)^2 + u(3/2-2u/3)^2
+  PASS  identity holds
+  PASS  q(0) = 45 and all three summands are >= 0 for u >= 0
+  PASS  p(0)/q(0) = 1351/2160
+T2  p-side cubic Gram: -p = 0 + (u-T)(u-c)^2
+  PASS  -p = (u-T)(u-c)^2
+  PASS  p(0) = T c^2 > 0
+  PASS  p(T) = 0 exactly
+T3  p-side quintic Gram: -p = (u-T)[(u-c)^2(u-e)^2 + m^2(u-d)^2]
+  PASS  -p = (u-T)*bracket
+  PASS  bracket = r1^2 + r2^2
+T4  the shell allowance: eta_suff = (T'-T)M^2 is SUFFICIENT, and any admissible
+    allowance satisfies eta >= p(T) = (T'-T)(T-c)^2 > 0  (an attained lower bound)
+  PASS  c=1 : eta_suff is SUFFICIENT (sup p = 181.500000 <= 234.375000)
+  PASS  c=1 : sup_{[T,T']} p > 0 (so any admissible eta is positive)
+  PASS  c=12 : eta_suff is SUFFICIENT (sup p = 0.500000 <= 3.375000)
+  PASS  c=12 : sup_{[T,T']} p > 0 (so any admissible eta is positive)
+  PASS  c=5 : eta_suff is SUFFICIENT (sup p = 73.500000 <= 108.375000)
+  PASS  c=5 : sup_{[T,T']} p > 0 (so any admissible eta is positive)
+T5  cut equivalence: the full-period blob makes the condition read rho <= 1/sqrt32
+  PASS  sum_U b = N(sqrt32 - 1/rho)
+  PASS  the condition total_b <= 0 is exactly rho <= 1/sqrt32
+T6  jamming: FCC at separation 2 has 12 contacts at exactly 2
+  PASS  minimum distance is exactly 2
+  PASS  12 contacts per centre at distance 2
+
+ALL 0138 TESTS PASS

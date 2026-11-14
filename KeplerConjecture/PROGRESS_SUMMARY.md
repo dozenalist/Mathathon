@@ -1,11 +1,13 @@
 # Kepler Conjecture: progress so far
 
-Updated at the November 14, 2026, 02:23 Pacific scheduled review. Worker commits
-and corrections are combined in the review branch. Independent local checking
-verified another weak rational certificate and found another exact failure in
-Main's sign checker. All ten local jobs finished; the new Lean draft remains
-unverified. Actual Ultramath runtime is verified for all four active chats,
-but completed full-hour work has not yet been established. Sair-Watch remains
+Updated at the November 14, 2026, 03:08 Pacific scheduled review. Worker commits
+and corrections are combined in the review branch. Independent checking verified
+Counterexamples' improved control and Computation's algebraic example, and
+rejected an invalid transfer-threshold argument. The latest checker fixes the
+named failures but still needs a general correctness review. All ten local jobs
+ended, including three capped searches. Actual Ultramath is verified in all four
+chats; full-hour compliance is still unestablished because three blocks ended
+early and the fourth included sleep-padding. Sair-Watch remains
 stopped and the 45-minute cadence is unchanged. No new best packing bound or
 simpler Kepler proof has been accepted. This cumulative account is updated
 at each scheduled check, with a short entry in
@@ -173,6 +175,46 @@ work, including an independent fallback after the checker repair. The other
 three chats continue their existing blocks without interruption. Actual
 Ultramath model calls are verified in all four. Detailed evidence, source hashes
 and delivery records are in [the 02:23 review](Main/REVIEW_2026-11-14_0223.md).
+
+## What the 03:08 scheduled review established
+
+Counterexamples improved its own reproducible construction to a bound below
+0.780718153344. Its rational factors, Fourier transform, signs and final comparison
+passed independent exact checking. This is still weaker than the project's K33b
+control and known bounds. Computation also supplied explicit rational algebraic
+identities for both sign conditions; the identities and their Fourier relationship
+check, but the resulting bound exceeds one and is only a format demonstration.
+
+Main's proposed transfer threshold failed review. It used an upper bound on a
+cluster's deficit as a lower bound, so its claimed necessary threshold does not
+follow. Cut conditions also need their proper quantifiers: checking one whole
+period does not establish all cuts, and a boundary estimate for balls cannot be
+applied to arbitrary subsets. These obligations now guide the agents' work on
+collective geometric compensation and a runnable cut/flow evaluator.
+
+Main accepted the transfer objection, withdrew the original threshold and proposed
+a weaker singleton version. Its distinction between a constant valid for all
+packings and one specific fixture still needs care. The correction is integrated,
+with rejected text and remaining obligations retained.
+
+The latest sign-checker repair passes the exact examples that defeated previous
+versions and its 35-case regression suite. A general proof is still pending;
+successful examples alone do not establish completeness. Seven local jobs
+completed normally. Three 4,000-iteration search pilots each reached their
+90-second cap without a final candidate. A separate rescaled SDP pilot produced
+only slightly weaker proposals than the frozen X certificate. There is no new
+Lean result or universal geometric certificate.
+
+The timing audit rejected all four previous blocks as full substantive hours:
+Main, Computation and Counterexamples ended early; Experimental reached an hour
+but used repeated sleeps near its end. Its earlier elapsed-time acknowledgement
+was explicitly corrected. All four received fresh hour-long tasks in verified
+Ultramath, with independent fallbacks and no permission to pad time. The review
+records both mathematical evidence and [actual activity](Main/REVIEW_2026-11-14_0308.md).
+
+Main then ended the next block after another 12.614 minutes. It was reassigned a
+longer independent proof package so useful work can continue without waiting on
+the other workers. No full substantive hour is claimed on the basis of a prompt.
 
 ## How the next stages will run
 

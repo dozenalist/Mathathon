@@ -1,5 +1,12 @@
 # Accepted lemmas, open gaps, and closest sources — the one-page account
 
+> **Supervisor scope, 03:08 Pacific:** C081 is withdrawn. The singleton witness
+> gives a necessary floor for a constant serving all packings, or the specific
+> witness packing; it does not justify rejecting every individual positive-deficit
+> fixture with a smaller optimum. C-CUT-001's corresponding acceptance rule is
+> pending correction. Other newly proposed claims retain the scope and pending
+> obligations in [the independent review](REVIEW_2026-11-14_0308.md).
+
 Status of every mathematical statement the project may rely on. "Accepted" means
 proved in this repository or published and checked; nothing here is accepted on the
 strength of its author's label.

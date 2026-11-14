@@ -1,5 +1,12 @@
 # Routing the four sessions through the current mathematical plan
 
+> **Supervisor scope, 03:08 Pacific:** C081 is withdrawn. The singleton witness
+> gives a necessary floor for a constant serving all packings, or the specific
+> witness packing; it does not justify rejecting every individual positive-deficit
+> fixture with a smaller optimum. C-CUT-001's corresponding acceptance rule is
+> pending correction. Other newly proposed claims retain the scope and pending
+> obligations in [the independent review](REVIEW_2026-11-14_0308.md).
+
 Written by M at block `K15-REVIEW-0308-M` for Astra to deliver. Every assignment
 names the exact artifact it consumes and the acceptance test, so a worker cannot
 report "done" without an artifact that passes.

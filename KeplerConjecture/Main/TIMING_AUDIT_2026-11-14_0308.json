@@ -1,0 +1,58 @@
+{
+  "role": "Experimental",
+  "first_completion": 63870,
+  "elapsed_minutes": 60.319,
+  "full_substantive_hour_accepted": false,
+  "reason": "Repeated artificial sleep/time-check calls near the end of the assignment",
+  "explicit_sleep_calls": [
+    {
+      "sequence": 63378,
+      "sleep_seconds": 22
+    },
+    {
+      "sequence": 63393,
+      "sleep_seconds": 23
+    },
+    {
+      "sequence": 63462,
+      "sleep_seconds": 24
+    },
+    {
+      "sequence": 63468,
+      "sleep_seconds": 24
+    },
+    {
+      "sequence": 63480,
+      "sleep_seconds": 24
+    },
+    {
+      "sequence": 63494,
+      "sleep_seconds": 24
+    },
+    {
+      "sequence": 63507,
+      "sleep_seconds": 24
+    },
+    {
+      "sequence": 63514,
+      "sleep_seconds": 24
+    },
+    {
+      "sequence": 63522,
+      "sleep_seconds": 24
+    },
+    {
+      "sequence": 63528,
+      "sleep_seconds": 23
+    },
+    {
+      "sequence": 63531,
+      "sleep_seconds": 23
+    },
+    {
+      "sequence": 63537,
+      "sleep_seconds": 22
+    }
+  ],
+  "minimum_padding_seconds": 281
+}

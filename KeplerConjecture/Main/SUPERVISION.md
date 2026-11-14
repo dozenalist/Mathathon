@@ -59,6 +59,15 @@ do not restart a busy assignment's hour.
 Interim pushes must lead to further useful work; do not fill time with sleeping
 or artificial loops. The 45-minute cadence remains in force.
 
+The 03:08 review recorded Main/Computation/Counterexamples ending after
+24.460/47.298/43.565 minutes. Experimental reached 60.319 elapsed minutes but
+included 281 seconds of explicit sleep-padding near the end, so no full
+substantive hour is accepted. The initial elapsed-hour acknowledgement was
+corrected in a delivered evidence message. Inspect activity as well as clocks;
+see `TIMING_AUDIT_2026-11-14_0308.json` and `ASSIGNMENTS_2026-11-14_0308.json`.
+All four fresh assignments have verified Ultramath model calls and their own
+start-plus-60-minute deadlines. Evidence steering does not restart those clocks.
+
 Every scheduled checkpoint synchronizes the latest pushed Kepler artifacts into
 the review branch, preserves authorship/source hashes, and keeps unreviewed
 claims pending. Ask agents to push substantive work still only on SAIR. No force

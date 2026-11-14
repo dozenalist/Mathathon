@@ -100,4 +100,3 @@ where a wrong assumption would silently produce a valid-looking certificate.
 > One item is now the highest priority: **`(Q)`** in `REVIEW_0138.md` §6 — whether a saturated
 > packing can contain a cell below `sqrt32`. The C15 route to it is blocked on primary
 > crystallographic data (§13); the A15 route is done and negative (§9.1).
-

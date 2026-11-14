@@ -1,0 +1,169 @@
+[
+  {
+    "job": "independent_exact",
+    "workdir": ".",
+    "args": [
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\worktrees\\kepler15-01a1d8c0\\KeplerConjecture\\Main\\LocalChecks\\2026-11-14_0308\\independent_checks.py",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0308\\local-jobs\\KeplerConjecture"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 60,
+    "elapsed_seconds": 3.062,
+    "peak_observed_bytes": 60063744,
+    "log": "independent_exact.log"
+  },
+  {
+    "job": "main_regressions",
+    "workdir": "Computation",
+    "args": [
+      "checker_adversarial.py"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 60,
+    "elapsed_seconds": 2.609,
+    "peak_observed_bytes": 59039744,
+    "log": "main_regressions.log"
+  },
+  {
+    "job": "x_verify_all",
+    "workdir": "Counterexamples",
+    "args": [
+      "verify_all.py"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 60,
+    "elapsed_seconds": 19.782,
+    "peak_observed_bytes": 64937984,
+    "log": "x_verify_all.log"
+  },
+  {
+    "job": "c_review_controls",
+    "workdir": "Computation",
+    "args": [
+      "tests_0138.py"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 60,
+    "elapsed_seconds": 2.515,
+    "peak_observed_bytes": 63754240,
+    "log": "c_review_controls.log"
+  },
+  {
+    "job": "c_both_sides",
+    "workdir": "Computation",
+    "args": [
+      "sos_both_sides.py"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 30,
+    "elapsed_seconds": 2.532,
+    "peak_observed_bytes": 53129216,
+    "log": "c_both_sides.log"
+  },
+  {
+    "job": "e_claim_controls",
+    "workdir": ".",
+    "args": [
+      "Experimental/scripts/verify_all_claims.py"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 60,
+    "elapsed_seconds": 2.531,
+    "peak_observed_bytes": 52772864,
+    "log": "e_claim_controls.log"
+  },
+  {
+    "job": "gram_pilot_seed100",
+    "workdir": "Computation",
+    "args": [
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\worktrees\\kepler15-01a1d8c0\\KeplerConjecture\\Main\\LocalChecks\\2026-11-14_0308\\run_with_checker.py",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0308\\local-jobs\\KeplerConjecture\\Computation\\sos_qside_polish.py",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0308\\local-jobs\\KeplerConjecture\\Computation\\shell_check.py",
+      "--degree",
+      "7",
+      "--iters",
+      "4000",
+      "--seed",
+      "100",
+      "--uphill",
+      "0.05",
+      "--out",
+      "out/local_pilot_100.json"
+    ],
+    "status": "time_cap",
+    "exit_code": 1,
+    "cap_seconds": 90,
+    "elapsed_seconds": 90.219,
+    "peak_observed_bytes": 92868608,
+    "log": "gram_pilot_seed100.log"
+  },
+  {
+    "job": "gram_pilot_seed101",
+    "workdir": "Computation",
+    "args": [
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\worktrees\\kepler15-01a1d8c0\\KeplerConjecture\\Main\\LocalChecks\\2026-11-14_0308\\run_with_checker.py",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0308\\local-jobs\\KeplerConjecture\\Computation\\sos_qside_polish.py",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0308\\local-jobs\\KeplerConjecture\\Computation\\shell_check.py",
+      "--degree",
+      "7",
+      "--iters",
+      "4000",
+      "--seed",
+      "101",
+      "--uphill",
+      "0.05",
+      "--out",
+      "out/local_pilot_101.json"
+    ],
+    "status": "time_cap",
+    "exit_code": 1,
+    "cap_seconds": 90,
+    "elapsed_seconds": 90.172,
+    "peak_observed_bytes": 92532736,
+    "log": "gram_pilot_seed101.log"
+  },
+  {
+    "job": "gram_pilot_seed102",
+    "workdir": "Computation",
+    "args": [
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\worktrees\\kepler15-01a1d8c0\\KeplerConjecture\\Main\\LocalChecks\\2026-11-14_0308\\run_with_checker.py",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0308\\local-jobs\\KeplerConjecture\\Computation\\sos_qside_polish.py",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0308\\local-jobs\\KeplerConjecture\\Computation\\shell_check.py",
+      "--degree",
+      "7",
+      "--iters",
+      "4000",
+      "--seed",
+      "102",
+      "--uphill",
+      "0.05",
+      "--out",
+      "out/local_pilot_102.json"
+    ],
+    "status": "time_cap",
+    "exit_code": 1,
+    "cap_seconds": 90,
+    "elapsed_seconds": 90.265,
+    "peak_observed_bytes": 92487680,
+    "log": "gram_pilot_seed102.log"
+  },
+  {
+    "job": "rescaled_sdp_pilot",
+    "workdir": "Counterexamples",
+    "args": [
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\worktrees\\kepler15-01a1d8c0\\KeplerConjecture\\Main\\LocalChecks\\2026-11-14_0308\\rescaled_pilot.py"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 150,
+    "elapsed_seconds": 34.985,
+    "peak_observed_bytes": 202768384,
+    "log": "rescaled_sdp_pilot.log"
+  }
+]
