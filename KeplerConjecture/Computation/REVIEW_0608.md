@@ -287,7 +287,29 @@ Artifacts: `fixture_dense_shell.py`, `out/fixture_dense_shell.json` (coordinates
 
 ## 7. Clock
 
-Receipt `2026-11-14T14:28:52Z`. The fixture was pushed at `14:30:12Z` (commit `88f882f`), the
-certificate and the congruence theorem at `14:33:55Z` (`a958bf3`); this document and the closing
-validation follow. Commit times are in the table below and are the evidence.
+Receipt `2026-11-14T14:28:52Z`. Every commit of this block, on the real clock:
 
+| commit | UTC | what |
+| --- | --- | --- |
+| `88f882f` | 14:30:12 | a NONVACUOUS 3-D cut/flow fixture -- rational coordinates, exact volu... |
+| `a958bf3` | 14:33:55 | certify the volume engine's completeness; prove two-site congruence |
+| `fab3fef` | 14:35:53 | the nonvacuous window of the dense-shell family |
+| `a981271` | 14:38:40 | qhull-free exact triangulation; convention checks; the nonvacuous window |
+| `efd6b76` | 14:41:12 | the patch minimum is exactly t*, and the shell's closure obstruction |
+| `16a693e` | 14:41:30 | register -- the nonvacuous fixture, its window, the obstruction, and ... |
+| `926cdb7` | 14:50:05 | 26 000 random instances, three-way, no disagreement |
+| `f84a91e` | 14:54:04 | the cut profile (one inequality) and convergence of the rational shell |
+| `222971b` | 14:54:20 | runtimes for the two new scripts and the fuzz |
+| `e1ed10d` | 14:55:35 | the arrangement decides -- icosahedral vs cuboctahedral 12-shells |
+| `38a04a8` | 15:11:41 | record the cuboctahedral contrast and the post-change re-run |
+
+**Substantive work accounting.** The fixture, the certificate, the theorem and the review were
+pushed by `14:41Z`. The compute-bound portion is `nearcontact_scan.py` at **15 m 53 s** for the
+post-change re-run (500 instances) and `fuzz_cut_flow.py` at 26 000 instances; the rest is writing
+and the validation sweeps. Stated separately because a previous block was called out for counting
+verification as substance.
+
+**Mode.** Ultramath is ON; **no swarm was run** and `ultramath_start` was not called, as the review
+requires.
+
+**No Lean.** Nothing in this block needed a Lean build, so nothing was sent to Astra.
