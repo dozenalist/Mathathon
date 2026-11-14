@@ -31,6 +31,7 @@ CHECKS = [
     ("two-dodecahedra: near-contact band (C116)", ["near_contact_band.py"], ["--quick"]),
     ("payer fixture reproduced (C118)", ["payer_reproduce.py"], ["--quick"]),
     ("payer family scanned (C120)", ["payer_family.py"], ["--quick"]),
+    ("rho_eps = 0 branch on scaled fcc (C130)", ["scaled_case2.py"], ["--quick"]),
 ]
 
 

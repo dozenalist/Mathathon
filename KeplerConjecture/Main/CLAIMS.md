@@ -4241,3 +4241,33 @@ the union of pairs. Both X's `X-C051` and Main's twist scan put the true thresho
 
 *Status.* `PROVED` (exact). `PENDING_REVIEW` with the rest of the pair chain; X is the gate, and this
 is the cleanest thing for X to check.
+
+### K15-C130 — the `ρ_ε = 0` branch exercised on a real family (`TESTED_FINITE`)
+
+`C124`'s new second branch — the one that removes the contact-density hypothesis — is worth
+exercising, since it was unavailable before. `Computation/scaled_case2.py`: scale `fcc` by `t > 1`
+so the minimum separation is `2t`. Then no pair lies within `2 + ε` once `2t > 2 + ε`, so
+`S_ε = ∅`, `ρ_ε = 0`, and case 2 gives `δ ≤ 1/(1+ε/2)³`.
+
+With `ε = 1.4555003444` (`C129`'s band), `2+ε = 3.4555003444` and the bound is `0.1938907833`:
+
+| `t` | min sep | `ρ_ε` | actual `δ = δ_fcc/t³` | bound | holds |
+| --- | --- | --- | --- | --- | --- |
+| 1.2 | 2.4 | `> 0` | 0.428519 | case 1 | — |
+| 1.5 | 3.0 | `> 0` | 0.219402 | case 1 | — |
+| **1.8** | 3.6 | **0** | 0.126969 | 0.193891 | **yes** |
+| **2.0** | 4.0 | **0** | 0.092560 | 0.193891 | **yes** |
+| **2.5** | 5.0 | **0** | 0.047391 | 0.193891 | **yes** |
+| **3.0** | 6.0 | **0** | 0.027425 | 0.193891 | **yes** |
+
+Two things this shows. (i) **The branch is real and non-vacuous** — scaled fcc genuinely has
+`ρ_ε = 0` for `t ≥ 1.755`, so before `C124` the pair route had *nothing* to say about these
+packings, exactly the gap review 0608 flagged. (ii) **The bound holds there with room**, and the
+crossover (`t ≈ 1.76`) is where `δ_fcc/t³` falls below the bound — consistent arithmetic, not a
+coincidence: both sides are functions of `t` alone.
+
+**Not claimed.** This exercises the branch; it does not improve any bound (`0.1939 > π/√18 =
+0.7405`? no — `0.1939 < 0.7405`, so the branch is *stronger* than Kepler for loose packings, as it
+must be, and says nothing about dense ones). It is a consistency check, not a result.
+
+*Status.* `TESTED_FINITE`. Reviewer X.
