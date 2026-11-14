@@ -249,3 +249,77 @@ is positive, so the published cubic-family numbers are unaffected.
 | C's both-sides-Gram obligation | **OPEN**, now stated as a 42-unknown / 12-equation rational PSD feasibility problem; diagonal ansatz `⟺` non-negative coefficients of `Q` (fails for `X-C014`) |
 | `K15-X-C014` | unchanged, `0.780718153`; Astra's independent reconstruction outstanding |
 | generic checker soundness | **SUSPENDED** |
+
+---
+
+## 8. C's `SOSQSIDE-005` verified; the both-sides Gram advanced but not closed
+
+### 8.1 `K15-C-SOSQSIDE-005` (`out/hop_u0.05_s17.json`): VERIFIED
+
+| check | result |
+| --- | --- |
+| `q = Σ_{i=1}^{4} r_i² + u·Σ_{j=1}^{2} s_j²` with the JSON's rational `r_i, s_j` (ascending coefficient order) | **identity holds exactly** — so `q ≥ 0` on `[0,∞)` **by construction**, as claimed |
+| `p(0)/q(0)` | `0.337497099` |
+| `Δ ≤ (4π/3)(p0/q0)` | **`1.413704545`** — matches their published `1.41370455` |
+| `p ≤ 0` on `[T_LO,∞)`, `T_LO = 4·π_lo < 4π` | **TRUE** (my own `exact_sign`, not their checker) |
+| `p ≤ 0` on `[4,∞)` | false — irrelevant, the CE1 domain is `u ≥ 4π` |
+
+So their explicit-Gram certificate is honest: the q-side is a sum-of-squares identity (machine-checkable
+by expansion alone), and the p-side is a sign statement I re-verified independently. It is weak
+(`1.41`), which is the price of having only the q-side structural.
+
+### 8.2 The both-sides obligation: three attempts, and what each teaches
+
+I tried to build a certificate with **both** sides explicit, using `X-C014`'s p-side (`P = −(s−4)Σq_j²`).
+Four failure modes, each informative:
+
+1. **Diagonal ansatz.** With `A = diag`, `B = diag`, the even coefficients of `Q` come only from `A`
+   and the odd only from `B`, so PSD forces **every coefficient of `Q` to be non-negative**. `X-C014`'s
+   `Q` has `u², u⁴, u⁶, u⁸, u¹⁰ < 0` ⇒ **no diagonal Gram exists**. This is a one-line necessary
+   test worth adding to C's tooling.
+2. **The identity is underdetermined but not free.** For `m = 5` the map `(A,B) ↦ Q` is `42`
+   unknowns against `12` equations (**rank 12, nullity 30**), so the solution set is a 30-parameter
+   affine subspace. The difficulty is PSD-ness, not counting — as C's register says.
+3. **Coordinate ascent on `λ_min` stalls at the boundary.** `λ_min` is concave in the parameters, so
+   coordinate ascent is the right tool *if* the feasible set has interior; starting from the
+   particular solution (objective exactly `0`) every coordinate move reduces it. The feasible set
+   appears to meet that point tangentially.
+4. **Projecting an SDP pair onto the exact identity destroys PSD-ness.** With the SDP pair at
+   margin `≈10⁻⁶`, the least-squares projection onto `{Lx = rhs}` moved `λ_min` to `−46`. I tried
+   both the monomial and the `(s/S)`-scaled basis of the identity; both fail. The diagnosis: the
+   frozen certificate's `Q` differs from the SDP's own `Q` by more than the margin, and the
+   projection is ill-conditioned in this basis — **the same conditioning problem that blocked the
+   SDP at `m ≥ 4`**. The fix is a *joint* rational feasibility problem in `(G, A, B)` with a large
+   margin, solved entirely in exact arithmetic; my first attempt at that hit a sympy
+   `OverflowError` in rational factorisation from coefficient blow-up.
+
+**Status: `OPEN`, advanced.** The obligation is now a precisely stated joint problem with a known
+conditioning obstacle and a named remedy; it is **not** a correctness dependency for any certificate
+in either session (each certificate proves `Q ≥ 0` by an exact Sturm count, which is a proof — the
+explicit Gram buys legibility, not validity).
+
+### 8.3 Is `C081r`'s singleton cut the best in its class? Two regimes
+
+`C081r` gives `Φ ≥ (√32 − V_dod)/12 = 0.0088802684` from `U = {v₀}`. Could a 13-cluster cut beat it?
+
+* If the twelve outer cells are **FCC-like** (`vol Ω = √32`), then
+  `Σ_C b = 13√32 − V_dod − 12√32 = 0.1065632` — the *same numerator* as the singleton — while each
+  outer centre has 6 of its 12 contacts inside the cluster (the centre at distance 2 plus five
+  icosahedral neighbours at `2.102924`), so `|δ⁺(C)| ≥ 12·6 = 72` and the cluster ratio is
+  `≤ 0.1065632/72 = 0.00148 ≪ 0.00888`. **The singleton is extremal in this regime.**
+* If all thirteen cells were **dodecahedral** (geometrically excluded, but as a bound),
+  `Σ_C b = 13(√32 − V_dod) = 1.3853219` and the cluster ratio could be as large as
+  `1.3853219/72 = 0.0192 > 0.00888`. **The cluster would win.**
+
+Since neither regime is established, **`C081r` remains the best *proved* floor**, and the honest
+statement is: *the singleton cut is extremal in the FCC-like regime, and the cluster cut could
+overtake it only if the outer cells were near-dodecahedral — which is exactly the configuration
+whose existence `(T′)` is about.* So the floor and the open inequality are two faces of the same
+question, not independent facts.
+
+## 9. Verification status of X's own artifacts after this block
+
+`python3 verify_all.py` → **ALL PASS** (21 witness-anchored controls, three adversarial families,
+the three frozen certificates re-derived from disk, and the Li-floor filter). `X-C010 = 0.818086808`,
+`X-C013 = 0.794809296`, `X-C014 = 0.780718153`, all with CE1 structural and CE2 exact.
+`X-C014`'s independent reconstruction by Astra is the outstanding check and is not duplicated here.
