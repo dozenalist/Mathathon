@@ -552,9 +552,12 @@ every `U` and the fixture is no evidence at any `Φ`.
 
 ### K15-X-C024 — Theorem 1 and the threshold formula, decided in exact arithmetic
 
-`Reviews/audit_cutflow_repair.py` §E: 196 random small instances (`n ≤ 5`, `b ∈ {−2..2}⁵`,
+`Reviews/audit_cutflow_repair.py` §E: 297 random small instances (`n ≤ 6`, `b ∈ {−2..2}ⁿ`,
 `Φ ∈ {0,1,2,3}`, random `F ⊆ V`) decided by **Fourier–Motzkin elimination over ℚ** agree with the
-cut condition in every case (`0/196`). Combined with §D (115 instances via HiGHS and via
+cut condition in every case (`0/297`; one further instance undecided by the blow-up guard). A fixed
+elimination order ran out of memory at `n = 6`; a min-cost order fixed it. Two earlier versions of
+the routine were also wrong (a sign convention, then a premature contradiction test) and were
+caught by this same comparison. Combined with §D (115 instances via HiGHS and via
 `Φ ≥ t*`), Theorem 1's statement and the threshold formula are verified against two independent
 decision procedures, one of which uses no floating point at all.
 
@@ -567,9 +570,9 @@ families (`Reviews/x_family_check.py`) give **0 wrong verdicts** against `5caa1c
 note: `check()` now returns `None` for `η < 0`, so a caller that computes `η` as `max p` on the
 shell will fail loudly (intended); `shell_fixture.py` exits 2, `checker_adversarial.py` tests it.
 
-### K15-X-C026 — the repaired checker passes 3,600 further adversarial queries
+### K15-X-C026 — the repaired checker passes 9,000 further adversarial queries
 
-`Reviews/x_family_check.py Reviews/shell_check_5caa1c9.py 1200 11`: **0 wrong verdicts in 3,600
+`Reviews/x_family_check.py Reviews/shell_check_5caa1c9.py 3000 23`: **0 wrong verdicts in 9,000
 random-family queries** (roots in `[0,2]`, multiplicities 1–2, both signs of the leading
 coefficient), 0 in the probe-targeted family, 0/8 in the near-touching family `(u−r)² ∓ ε`. The
 truth is the proven algebraic rule, computed independently of any checker. This is a regression
@@ -646,3 +649,64 @@ Recorded in `Reviews/repro_c_cutflow_defects.py` as D5, labelled latent.
 the repaired theorem's `max(0,·)`, so on an all-negative instance it reports `t_star = −1` where
 `t* = 0`. `Φ ≥ t*` is unaffected (`Φ ≥ 0` is a hypothesis); the number itself is not the theorem's
 `t*`.
+
+### K15-X-C032 — `PROOF_GAPS` G8, part one: the two exact checkers share no code
+
+`Reviews/g8_checker_independence.py` (exit 0). **No shared code path:** `exactcert.py` (comp
+`5c10267`) imports `fractions.Fraction` only and hand-writes `pmul`, `pdivmod`, `pgcd`,
+`sturm_chain`, `sign_variations`, `cauchy_bound`; `shell_check.py` (`5caa1c9`) imports `sympy` +
+`fractions` and delegates root isolation to SymPy; neither imports the other. **Agreement:** on
+`q ≥ 0` on `[0,∞)`, **four** routes — Main's SymPy predicate, C's hand-rolled Sturm, X's
+`exact_sign.py` and the algebraic odd-part rule — agree on all 52 vectors tried — both leading signs, roots at 0, repeated roots, and 12
+near-touching cases `(t−r)² ∓ ε` with `ε = 10⁻²⁰, 10⁻⁸`. **Not closed:** finite sample, `q`-side
+only; the `p ≤ η` predicate and the `η` precondition are outside it (the latter is `X-C025`). G8
+should read "independence established; agreement sampled, not proved".
+
+### K15-X-C033 — C's `feasible_flow` agrees with the cut condition on 38 instances
+
+`Reviews/audit_cutflow_repair.py` §F: C's max-flow constructor (blob `700e44f6`, scipy search,
+then rounded to rationals and re-verified exactly) returns a flow exactly when the cut condition
+holds, on 38 random instances with `n ≤ 5` (25 infeasible, 13 feasible, 0 mismatches). That makes
+four independent decision procedures for Theorem 1 on the same instances — the cut scan, my
+HiGHS LP, my exact Fourier–Motzkin routine, and C's flow constructor.
+
+### K15-X-C034 — three functions take their vertex set from the edge list and accept an impossible instance
+
+`verify_flow_exact`, `find_violating_cut` and `feasible_flow` all infer the vertex set as
+`n = max(max(e) for e in edges)+1`, so a vertex with no incident edge is never checked. Witness:
+`b = (−1,−1,+1)`, `edges = [(0,1)]`, `Φ = 1` — vertex 2 is isolated with a unit deficit, so the
+instance is infeasible at *every* `Φ`. `verify_flow_exact(b, E, 1, {})` → `(True, True, [0,0])`;
+`find_violating_cut(b, E, 1)` → `None`; `feasible_flow(b, E, 1)` → a flow. All three wrong; only
+`exhaustive_cut_scan` is right (`empty_boundary_positive = [([2], '1')]`). The module contradicts itself here: the cut scan
+reports `[([2], '1')]` as an empty-boundary positive set, i.e. infeasible at every `Φ`. **Reachable through `--fixture`:** `load_external_fixture` validates edge indices but not that
+every vertex appears in an edge, so a five-vertex fixture with edges on `0..3` and
+`b = (−1,−1,−1,−1,+1)` makes `evaluate_external` print "POSITIVE DEFICIT AT DEGREE ZERO at [4]:
+INFEASIBLE at any Phi" and then emit `status: PATCH_FEASIBLE`. Not reachable from `main()`'s own
+fixtures (`build_13` gives every vertex an edge for `R ≥ 2−10⁻⁹`; the edgeless regime is skipped),
+so no published number is affected. Fix: `n = len(b)` in all three functions. D8 of
+`Reviews/repro_c_cutflow_defects.py` (11/11 checks).
+
+### K15-X-C035 — Main's `le_on_interval` agrees with X's `sign_on_interval` on 50 vectors
+
+`Reviews/g8_checker_independence.py`, second section: 50 polynomials with roots in `[0,2]`,
+multiplicities 1–2, both leading signs, decided for `p ≤ η` on closed intervals with rational
+endpoints and `η ∈ {0, ±1/2}` — Main's `le_on_interval` and X's `sign_on_interval` agree on all 50.
+C's `exactcert` has no bounded-interval decision, so this is a two-way test. The failure mode my
+own `exact_sign` docstring warns about (reading the sign from `sign(lc)`, which is only the
+rightmost gap) does not occur in Main's current version.
+
+### K15-X-C036 — C's repair closes D1, D2, D3 and leaves D4, D5, D7, D8 open
+
+`cut_flow.py` moved `700e44f6` → **`c2127cee`** at comp tip `716a1b3` (commits `2fa125c`, `e229923`,
+`a1d99ef`, whose messages name review 0353-C). Re-running `Reviews/repro_c_cutflow_defects.py`
+against the new blob: **D1 (the `V_DOD` enclosure), D2 (the `build_13` ring gate) and D3
+(`build_fcc_patch(1)`) no longer reproduce** — verified by the same witnesses, not by reading the
+commit message. **D4** (period-16 unsaturation), **D5** (`exhaustive_cut_scan` on edgeless input,
+latent), **D7** (`max(0,·)` omitted, cosmetic) and **D8** (vertex set taken from the edge list —
+still producing `status: PATCH_FEASIBLE` through `--fixture` on an instance infeasible at every
+`Φ`) still reproduce. The repro script now takes the module path as an argument so any future
+revision can be audited the same way. **Why `e229923`'s new self-check does not catch D8:**
+`feasible_flow` now calls `verify_flow_exact` before returning, but that verifier computes its
+vertex range the same way (`n` from the edge list), so both agree on a truncated vertex set. The
+self-check is a genuine repair of the `1e-9`-grid defect it names (`8.3·10⁻⁹` below the cut scan's
+`t*`), and it cannot test an assumption it shares.

@@ -17,14 +17,25 @@ rational arithmetic or a stated geometric fact.
       R < 2 regime that build_13 models.  main() guards 'if not edges', so this is not live.
   D7  (cosmetic) exhaustive_cut_scan omits the repaired theorem's max(0, .): with all b negative
       it reports a negative t_star where t* = 0.
+  D8  verify_flow_exact FALSE-ACCEPTS when a vertex with positive deficit has no incident edge:
+      its vertex range is taken from the edge list, so such a vertex is never checked.
 
-Run:  python3 Reviews/repro_c_cutflow_defects.py        (exit 0 iff all four reproduce)
+Run:  python3 Reviews/repro_c_cutflow_defects.py [path-to-cut_flow.py]
+      default Reviews/C_cut_flow_4bcbd3a.py (blob 700e44f6, the version reviewed at 0353-C).
+      Point it at a newer copy to see which defects a repair actually closed:
+
+        python3 Reviews/repro_c_cutflow_defects.py Reviews/C_cut_flow_c2127cee.py
+
+      The `c2127cee` copy needs `Reviews/k15radicals.py` (also committed here), which that revision
+      imports; both are byte copies from the comp branch.
 """
-import importlib.util, sys
+import importlib.util, os, sys
 from fractions import Fraction as F
 import sympy as sp
 
-spec = importlib.util.spec_from_file_location("cf", "Reviews/C_cut_flow_4bcbd3a.py")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
+MODULE = sys.argv[1] if len(sys.argv) > 1 else "Reviews/C_cut_flow_4bcbd3a.py"
+spec = importlib.util.spec_from_file_location("cf", MODULE)
 cf = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(cf)
 
@@ -124,6 +135,44 @@ print("    the repaired theorem's formula gives t* = max(0, sup) = 0")
 ck("D7 C's t_star is not the theorem's t* when the sup is negative",
    r['t_star'] < 0, "harmless for 'Phi >= t*' because Phi >= 0 is a hypothesis, but not quotable")
 
+print("=" * 96); print("D8  verify_flow_exact FALSE-ACCEPTS at an isolated vertex with positive deficit"); print("=" * 96)
+b8 = [F(-1), F(-1), F(1)]          # vertex 2 is isolated and must receive 1 unit
+E8 = [(0, 1)]
+ok_cap, ok_div, div = cf.verify_flow_exact(b8, E8, F(1), {})
+print("    b = (-1,-1,+1), edges = [(0,1)], flow = 0")
+print("    verify_flow_exact -> (ok_cap=%s, ok_div=%s, div=%s)" % (ok_cap, ok_div, [str(d) for d in div]))
+print("    the true verdict is ok_div = False: div(2) = 0 < b(2) = 1")
+ck("D8 verify_flow_exact accepts an impossible instance", ok_div, "n is taken from the edge list, so vertex 2 is never checked")
+print("    and the same truncation is in two more functions:")
+print("      find_violating_cut(Phi=1) -> %s   (should report U={2} violating at every Phi)" % (cf.find_violating_cut(b8, E8, F(1)),))
+print("      feasible_flow(Phi=1)      -> %s   (should be None)" % (cf.feasible_flow(b8, E8, F(1)),))
+ck("D8 the defect is systematic: 3 functions truncate the vertex set",
+   cf.find_violating_cut(b8, E8, F(1)) is None and cf.feasible_flow(b8, E8, F(1)) is not None,
+   "only exhaustive_cut_scan gets it right")
+print("    cause: n = max(max(e) for e in edges) + 1 = 2, so vertices with no incident edge are")
+print("    outside the divergence check.  The cut scan DOES catch this instance:")
+print("    exhaustive_cut_scan reports the empty-boundary positive set [([2], '1')].")
+print()
+print("    REACHABLE through the documented --fixture path: load_external_fixture validates edge")
+print("    indices but does not require every vertex to appear in an edge.")
+import json, os, tempfile
+fx = {"name": "isolated-deficit", "note": "D8 reachability",
+      "edges": [[0,1],[1,2],[2,3],[3,0]],
+      "b_lo": ["-1","-1","-1","-1","1"], "b_hi": ["-1","-1","-1","-1","1"],
+      "volumes_are_provisional": False}
+pth = os.path.join(".scratch", "fixture_isolated.json")
+os.makedirs(".scratch", exist_ok=True); json.dump(fx, open(pth, "w"))
+out = cf.evaluate_external(cf.load_external_fixture(pth), Phi_trials=(F(1,100),))
+status = out["rows"][0]["status"]
+print("    evaluate_external reports status = %s at Phi = 1/100" % status)
+ck("D8 reachable: --fixture yields PATCH_FEASIBLE on an instance infeasible at every Phi",
+   status == "PATCH_FEASIBLE", "the same run also prints 'INFEASIBLE at any Phi' for vertex 4")
+
 print("\nRESULT: %d/%d checks reproduce" % (nchecked[0]-len(fails), nchecked[0]))
-print("        " + ("ALL CHECKS REPRODUCE (4 live + 1 latent + 1 cosmetic + a 12/12 sweep)" if not fails else "FAILED: %s" % fails))
-sys.exit(0 if not fails else 1)
+if fails:
+    print("        NOT reproducing in this revision (i.e. these defects are GONE or CHANGED):")
+    for f in fails: print("          - " + f)
+else:
+    print("        ALL CHECKS REPRODUCE (5 live: D1-D4+D8, 1 latent, 1 cosmetic, 12/12 sweep)")
+print("        The exit status is 0 either way: this is an audit, not a pass/fail gate.")
+sys.exit(0)

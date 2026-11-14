@@ -35,12 +35,23 @@ steps by hand. It exits 0 only if everything passes; it does.
 **Randomised cross-check, twice, once without floats.** On 115 random small instances (n ≤ 5,
 `b ∈ {−2..2}⁵`, `Φ ∈ {0,1,2,3}`, random `F`) the three answers agreed every time:
 `(C) ⟺ LP feasible ⟺ Φ ≥ t*`. I then replaced the LP by **exact Fourier–Motzkin elimination**
-over ℚ on 196 instances (same generator, larger sample): `0/196` mismatches. So Theorem 1 and the
-threshold formula are now confirmed against an *exact* decision procedure, not a solver with
-tolerances — which matters, because the project has already lost three rounds to
-float-decided checks. The FM routine is 30 lines and shares no code with either the cut scan or
-the LP; my first two versions of it were wrong (a sign convention, then a premature
-"contradiction" test), and both were caught by exactly this comparison.
+over ℚ on 297 instances with `n ≤ 6` (one undecided by a blow-up guard): **0 mismatches**. So
+Theorem 1 and the threshold formula are confirmed against an *exact* decision procedure, not a
+solver with tolerances — which matters, because the project has already lost three rounds to
+float-decided checks.
+
+The FM routine is 30 lines and shares no code with the cut scan or the LP, and its own history is
+worth recording because it shows what the comparison is for: my first version had a sign
+convention backwards (99/196 wrong), the second declared a "contradiction" too early (a nonempty
+residual constraint was mistaken for an unconditional one, 12/196 wrong), and the third used a
+fixed elimination order that ran out of memory at `n = 6`. Each was caught by exactly this
+cross-check, not by reading the code.
+
+**A fourth decision procedure, this one on C's side.** C's `feasible_flow` (scipy max-flow, then
+rounded to rationals and re-verified exactly) agrees with the cut condition on 38 random instances
+(25 infeasible, 13 feasible, 0 mismatches). So the theorem's statement, my LP, my exact
+Fourier–Motzkin routine and C's independent flow constructor all say the same thing on the same
+instances — `Reviews/audit_cutflow_repair.py` §F.
 
 **The thing to try to break.** One instance does need both threshold branches at once, so the
 formula's shape is load-bearing rather than cosmetic: take the star of §5(b′) (`b = (4,−4/3,−4/3,−4/3)`,
@@ -142,10 +153,10 @@ reduction's status is: *same construction, same structural properties, `3.5·10�
 **Comparison with the other certified objects** (the comparison the block asked for):
 `C`'s `SOSQSIDE-005` carries a single explicit rational Gram (`Reviews/C_SOSQSIDE005.json`:
 22 numeric entries, median 2 digits, max 19) at `1.413704545` — smaller entries, useless bound. `C`'s K33 certificates are `29`-digit
-rationals at `0.779966500`, i.e. better bound and about 1.5× the entry size of `X_C017_small`;
-but K33 needs a **sign predicate on neither side only because it has one side**, whereas `X_C017`
-and `X_C017_small` are the only objects in the project with **both** sides witnessed by rational
-PSD matrices — which is the property that removes the predicate obligation entirely (§3). The `B` block of the stored certificate already has only `≤ 11`-digit
+rationals (Main's figure) at `0.779966497784` (K33a) and `0.779966216777` (K33b): a better bound,
+at about 1.5× the entry size of `X_C017_small`. But K33 has an explicit rational Gram on the `p`
+side only, so its `q` side still needs a sign decision; `X_C017` and `X_C017_small` are the only
+objects in the project with **both** sides witnessed by rational PSD matrices — which is the property that removes the predicate obligation entirely (§3). The `B` block of the stored certificate already has only `≤ 11`-digit
 entries, which shows the `B` side was always cheap; the size
 was entirely a `G`/`A` artefact of the pivot solve.
 
@@ -196,7 +207,10 @@ but the two should not be quoted interchangeably.
 `verify_XC017_readable.py` reloads a certificate from disk and prints, step by step, (1) symmetry,
 (2) rational `LDL^T` with every pivot printed, (3) the identity `v^TAv + w v^TBv = Fourier(P)`
 by expansion, (4) `P(0)`, `Q(0)`, the exact ratio and the density, (5) what is and is not claimed.
-It runs on both `X_C017_certificate.json` and `X_C017_small.json` and exits 0 on both.
+It runs on **all four** both-sides certificates — `X_C015`, `X_C016`, `X_C017`, `X_C017_small` —
+and prints VALID for each. (Two robustness fixes were needed to get there: `X_C015` stores its
+density as an expression over `sqrt(pi)` rather than a float, and `X_C016`/`X_C017` as floats. A
+verifier that only ever sees one certificate's format is a verifier that has not been tried.)
 
 The exposition the block asked for is short: **CE1 and CE2 are not sign conditions here.** For
 `H = v(s/S)^T G v(s/S)` with `G ⪰ 0`, `H ≥ 0` identically; `P = −(s−4)H = (4−s)H` is then `≥ 0`
@@ -222,7 +236,38 @@ which is the whole certificate. A verifier that passed it would be checking noth
 
 ---
 
-## 4. C's `cut_flow.py`: unchanged, so all four defects stand — plus two smaller ones
+## 4. C's `cut_flow.py`: the older blob's defects, and an audit of the repair that landed mid-block
+
+**Note added at close.** While this block ran, C revised the file: `cut_flow.py` moved
+`700e44f6` (at `4bcbd3a` → `790efa73`) to **`c2127cee`** at the new comp tip `716a1b3`, in commits
+whose messages name my review (`2fa125c` "review 0353-C repairs — exact radical enclosures, exact
+edge gate, FCC constructor"). I re-ran the repro against the new blob
+(`python3 Reviews/repro_c_cutflow_defects.py Reviews/C_cut_flow_c2127cee.py`):
+
+| defect | on `700e44f6` | on `c2127cee` |
+| --- | --- | --- |
+| D1 `V_DOD` enclosure | reproduces | **FIXED** |
+| D2 `build_13` phantom ring edges | reproduces | **FIXED** |
+| D3 `build_fcc_patch(1)` raises | reproduces | **FIXED** |
+| D4 period-16 unsaturation | reproduces | still reproduces |
+| D5 `exhaustive_cut_scan` on edgeless input | reproduces | still reproduces (latent) |
+| D7 `max(0,·)` omitted | reproduces | still reproduces (cosmetic) |
+| D8 vertex set from the edge list | reproduces | **still reproduces, reachable via `--fixture`** |
+
+So three of the four live defects I reported are closed, verified by my own witnesses rather than by
+reading their commit message, and the one that matters most (D8, the false accept) is not.
+
+**Why the new self-check does not catch D8.** `feasible_flow` now re-verifies before returning
+(commit `e229923`, and its docstring explains that a `1e-9` rounding grid used to break the
+divergence bound by up to `1.2·10⁻⁸`, which showed up as a minimum capacity `8.3·10⁻⁹` *below* the
+cut scan's `t*`). That is a real repair of a real defect. But the verifier it calls computes its
+vertex range the same way `feasible_flow` does — from the edge list — so the two agree on a
+truncated vertex set and the check passes on the instance where it should fail. A self-check that
+shares an assumption with the thing it checks cannot test that assumption. The
+paragraphs below describe `700e44f6`, the version reviewed at 0353-C; they are left as written
+because the audit trail is the point, with this table as the current status.
+
+### 4.0 The older blob
 
 `Computation/cut_flow.py` is blob `700e44f6c92563b66b4146106cfe8e00cd5a3455` at `4bcbd3a` **and**
 at the current `comp` tip `790efa73` — Main's repair touched only the theorem, not the script, and
@@ -237,6 +282,41 @@ edges make cuts cheaper in the unsafe direction); `build_fcc_patch(1)` raises `T
 period-16 13-cluster is unsaturated, so `b = −∞` and every cut is satisfied for every `Φ` — no
 geometric content. W1–W6 in `REVIEW_0353.md` §3 remain the acceptance tests, with W6 restated as
 in §1.1 above.
+
+**A fifth live defect, and the worst kind: a false accept.** `verify_flow_exact` computes its
+vertex range as `n = max(max(e) for e in edges) + 1`, i.e. from the *edge list*. A vertex with no
+incident edge is therefore never checked, and an instance that is plainly impossible is accepted:
+
+```
+b = (-1, -1, +1),  edges = [(0,1)],  flow = {}          # vertex 2 is isolated, needs 1 unit
+verify_flow_exact(b, edges, 1, {}) -> (ok_cap=True, ok_div=True, div=[0, 0])
+true verdict: ok_div = False, because div(2) = 0 < b(2) = 1
+```
+
+It is systematic, not one slip: three functions take the vertex set from the edge list.
+`find_violating_cut` returns `None` ("no violation") on the same instance, and `feasible_flow`
+returns a flow, both of which are wrong because `{2}` violates at every `Φ`. Only
+`exhaustive_cut_scan` is right (`empty_boundary_positive = [([2], '1')]`), so the module
+contradicts itself: three functions say "fine" and one says "infeasible at every `Φ`". This is the recurring failure mode of the whole project — an exact
+checker that returns OK on an input that is not OK.
+
+And it is **reachable through the documented portability path**. `load_external_fixture` validates
+edge indices (`0 ≤ i,j < len(b_lo)`) but does not require every vertex to appear in an edge, so an
+external fixture may legitimately contain an isolated centre. Feeding one — five vertices, edges on
+`0..3`, `b = (−1,−1,−1,−1,+1)` — makes `evaluate_external` print
+
+```
+POSITIVE DEFICIT AT DEGREE ZERO at [4]: INFEASIBLE at any Phi
+Phi=1/100    flow found; |phi|<=Phi True, divergence>=b True   PATCH_FEASIBLE only
+```
+
+i.e. the same run says the instance is infeasible at every `Φ` *and* emits `status:
+PATCH_FEASIBLE`. A consumer reading the JSON `status` field gets the wrong answer. Its own
+`singleton_bounds` uses `len(b_lo)` and is right; the three flow functions are not.
+
+No shipped fixture is affected (`build_13` gives every vertex an edge at `R ≥ 2−10⁻⁹`, and `main()`
+skips the edgeless regime), which is why this has not bitten yet. It is D8 in
+`Reviews/repro_c_cutflow_defects.py`; the fix is one line in each of three functions: `n = len(b)`.
 
 One further defect is **latent**, and I record it as such: `exhaustive_cut_scan` raises
 `TypeError: 'NoneType' object is not subscriptable` whenever no subset has a crossing edge
@@ -267,7 +347,7 @@ work. `Reviews/verify_eta_closed.py` checks the three things that matter at once
 
 So the guard closes the witness and moves no published number. I also re-ran the three
 adversarial families (`Reviews/x_family_check.py`) against `5caa1c9`: **0 wrong verdicts in
-3,600 random queries**, 0 in the probe-targeted family, 0/8 in the near-touching family. That is expected — the change is a precondition, not a
+9,000 random queries**, 0 in the probe-targeted family, 0/8 in the near-touching family. That is expected — the change is a precondition, not a
 predicate repair — but it is worth having on record that the precondition added no regression in
 the part of the checker that has failed three times before.
 
@@ -318,7 +398,7 @@ conclusion, so the correction matters.
 | `5619c1d` | `Reviews/shell_check_9461aae.py` | 0/900 | **5 wrong** | **3/8 wrong** |
 | `7dc6be58` | `Reviews/shell_check_0a85bee.py` | 0/900 | 0 | 0/8 |
 | `909a50a` | `Reviews/shell_check_7c56c5ee.py` | 0/900 | 0 | 0/8 |
-| `5caa1c9` | `Reviews/shell_check_5caa1c9.py` | 0/3600 | 0 | 0/8 |
+| `5caa1c9` | `Reviews/shell_check_5caa1c9.py` | 0/9000 | 0 | 0/8 |
 
 Two things follow, and both belong in the record rather than in a footnote.
 
@@ -335,6 +415,41 @@ So "0 wrong verdicts on `5caa1c9`" is evidence about one failure mode at one rev
 soundness proof, and `K15-C098`'s `SUSPENDED` label on generic checker soundness remains the right
 one.
 
+### 4.4 `PROOF_GAPS.md` G8: no shared code (definitive), agreement on 52 vectors (sample)
+
+G8 is assigned to X and open: *"confirm C's `exactcert` and Main's `shell_check` share no code path
+and agree on adversarial vectors."* Half of it is now settled outright and the other half on a
+fixed sample — `Reviews/g8_checker_independence.py`, exit 0.
+
+- **No shared code path.** `exactcert.py` (comp tip `5c10267`) imports `fractions.Fraction` and
+  nothing else: `pmul`, `pdivmod`, `pgcd`, `sturm_chain`, `sign_variations`, `cauchy_bound` are
+  hand-written. `shell_check.py` (`5caa1c9`) imports `sympy` and `fractions` and delegates root
+  isolation to SymPy. Neither imports the other; there is no common project module. So agreement
+  between them is agreement between two independent implementations, not a shared bug.
+- **Agreement on 52 vectors, four routes.** All 52 give the same verdict on `q ≥ 0` on `[0,∞)`
+  from **four** routes: Main's SymPy predicate, C's hand-rolled Sturm (`yun_odd_part` +
+  `roots_in_half_line` + `peval`, nothing else), X's `exact_sign.py` — the authority every X
+  certificate rests on — and the algebraic rule (odd-part root count, independently coded). The
+  sample has both leading signs, roots at `0`, repeated roots, and 12 near-touching cases
+  `(t−r)² ∓ ε` with `ε = 10⁻²⁰, 10⁻⁸` — the family that broke the probe-based checkers. It is not
+  vacuous: **14 of the 52 are non-negative and 38 are not**, and all four routes split the sample
+  identically.
+
+**The interval predicate too.** The second predicate the shell pipeline uses is `p ≤ η` on a
+closed interval, and it also agrees: Main's `le_on_interval` and X's `sign_on_interval` give the
+same verdict on 50 vectors with roots in `[0,2]`, multiplicities 1–2, both leading signs, bounded
+intervals with rational endpoints, and `η ∈ {0, ±1/2}` — 0 mismatches. C's `exactcert` has no
+bounded-interval decision, so this one is a two-way test (Main vs X), not three-way.
+
+Worth stating explicitly, because my own `exact_sign` docstring warns about it: the trap in the
+interval case is reading the sign from `sign(lc)` (which is the sign on the *rightmost* gap only)
+instead of evaluating the odd part inside the interval. Main's current `le_on_interval` does not
+fall into it on any of the 50 vectors.
+
+**What this does not close.** The samples are finite. The `η` precondition is separate (`X-C025`),
+and `f̂(0) > 0` and the window conditions are not compared at all. G8 should stay open, described
+as "independence established; agreement sampled, not proved".
+
 ## 5. Ledger
 
 | id | claim | status |
@@ -344,18 +459,48 @@ one.
 | `X-C020` | Erratum: `REVIEW_0353.md` §3 row W6 is wrong in both directions; correct verdict `t* = 2`, feasible iff `Φ ≥ 2`. The empty-boundary `0/0` case is *not* an obstruction when `Σ_U b = 0`. | **CORRECTION**, supersedes that row |
 | `X-C021` | The height of `X_C017` is lcm blow-up of mutually coprime term denominators (each `≤ 17` digits, lcm `118` digits), not the pivot block; dyadic rounding at `S = 8` removes it. Coarser than `10⁻⁶` breaks `A`'s forced margin. | **VERIFIED** by the table in §2 |
 | `X-C022` | No small-denominator both-sides triple exists in the `S = 8` basis: the frontier over `ε_AB` shows every sub-2,646-byte certificate is worse than `X-C016`, and the digit floor is ~12–13 (from `S⁻¹⁰`) plus the grid's resolution. | **VERIFIED**, table in §2.1 |
-| `X-C023` | C's four `cut_flow.py` defects reproduce portably (`7/7`) from a byte copy of blob `700e44f6`, unchanged at the current `comp` tip. | **VERIFIED**, `Reviews/repro_c_cutflow_defects.py` |
-| `X-C024` | Theorem 1 and the threshold formula are confirmed against exact Fourier–Motzkin elimination over ℚ (`0/196` mismatches), in addition to the LP (`0/115`). | **VERIFIED**, §E of the audit script |
+| `X-C023` | C's `cut_flow.py` defects reproduce portably (`13/13` checks: 5 live, 1 latent, 1 cosmetic, 12/12 sweep) from a byte copy of blob `700e44f6`, unchanged at the current `comp` tip. | **VERIFIED**, `Reviews/repro_c_cutflow_defects.py` |
+| `X-C024` | Theorem 1 and the threshold formula are confirmed against exact Fourier–Motzkin elimination over ℚ: `0/297` mismatches at `n ≤ 6` (1 undecided by the blow-up guard), in addition to the LP (`0/115`). | **VERIFIED**, §E of the audit script |
 | `X-C025` | Main's `η ≥ 0` guard (`5caa1c9`) closes the §17 witness and leaves the `η = 0` control at `0.780370311`; C's solver already had `−η ≥ 0` since `4bcbd3a`, so the witness is synthetic and the exposure was the checker's licence only. | **VERIFIED**, `Reviews/verify_eta_closed.py` |
-| `X-C026` | `5caa1c9` passes 3,600 further random-family queries with 0 wrong verdicts (plus targeted and near-touching families). | **VERIFIED** |
+| `X-C026` | `5caa1c9` passes 9,000 further random-family queries with 0 wrong verdicts (plus targeted and near-touching families). | **VERIFIED** |
 | `X-C027` | The readable verifier rejects all three tampered certificates and accepts the honest one; the `10⁻⁶` perturbation is invisible to a float comparison of the bound and is caught only by the exact identity. | **VERIFIED**, `Reviews/negative_control_readable.py` |
 | `X-C028` | Main's `D18` reverse condition is not triggered (no fifth defect); `D16`'s acceptance test stands with generic soundness still `SUSPENDED`; `D3`'s anchor is respected. `NEXT_PACKAGE` item 1 (`V = 5.40`) is already implied by Hales–McLaughlin. | **VERIFIED** / one wording defect open in Main's file |
 | `X-C029` | `CLAIMS.md` `K15-C093` still states `sup Φ < ∞` and the `{a}`-cut `4/3` example in its bullet list, both refuted by its own repair note. | **DEFECT** (documentation, Main's file) |
 | `X-C030` | `0.008880268414417` inherits C's `V_DOD` enclosure error: the exact value is `0.0088802684147391605`, so the number is a valid lower bound but not "the exact threshold". | **CORRECTION** |
 | `X-C031` | The family suite catches `a8526a8` (50/900) and `5619c1d` (8/308) and is blind to a missing precondition and to `7dc6be58`; passing it is evidence, not proof. | **VERIFIED**, §4.3 |
+| `X-C032` | `PROOF_GAPS` G8, partially: C's `exactcert` imports only `fractions` and Main's `shell_check` only `sympy`+`fractions`, so they share no code path; **four** routes (Main, C, X's `exact_sign`, algebraic rule) agree on `q ≥ 0` for all 52 adversarial vectors tried, including near-touching `(t−r)²∓ε`. Sample is finite; `p ≤ η` is not covered. | **PARTIAL**, `Reviews/g8_checker_independence.py` |
+| `X-C033` | C's own `feasible_flow` agrees with the cut condition on 38 random instances (25 infeasible, 13 feasible): a fourth independent decision procedure for Theorem 1, on C's side. | **VERIFIED**, `Reviews/audit_cutflow_repair.py` §F |
+| `X-C034` | **Three** functions take their vertex set from the edge list: on `b = (−1,−1,+1)`, `edges = [(0,1)]` (isolated vertex with positive deficit) `verify_flow_exact` accepts, `find_violating_cut` reports no violation, `feasible_flow` returns a flow — all wrong, all for the same reason; only `exhaustive_cut_scan` is right. **Reachable through `--fixture`**: `evaluate_external` emits `status: PATCH_FEASIBLE` on an instance the same run prints as "INFEASIBLE at any Phi". Fix: `n = len(b)` in all three. | **DEFECT** (live, systematic, reachable), D8 |
+| `X-C035` | Main's `le_on_interval` and X's `sign_on_interval` agree on 50 vectors (`p ≤ η` on closed intervals, roots in `[0,2]`, multiplicities 1–2, `η ∈ {0,±½}`), including the `sign(lc)` trap case. Two-way: C's module has no bounded-interval decision. | **VERIFIED**, `Reviews/g8_checker_independence.py` |
 
 ---
 
+## 6. Limits of this block
+
+- **The audit of Theorem 2 is a proof reading, not a machine check** — there is no finite instance
+  of an infinite theorem. What *is* machine-checked is Theorem 1 and the threshold formula, against
+  three independent decision procedures: HiGHS LP (115 instances), exact Fourier–Motzkin over ℚ
+  (297 instances at `n ≤ 6`, one undecided), and C's own `feasible_flow` (38 instances).
+- **The reduction is bounded, not optimal.** I did not search for a different certificate at the
+  same density with smaller height, because that is the "blind high-degree optimisation" the block
+  was told not to spend its fallback on; and I did not run `m ≥ 6`, for the same reason. The
+  frontier in §2.1 is evidence that nothing is left to gain *in this basis*, not a proof that no
+  other construction does better.
+- **`X_C017_small` is a different certificate from `X_C017`** (density `0.782267254856` vs
+  `0.782267220134`). Both are in the tree and `verify_all.py` now checks both (`X-C019`); the
+  readable verifier checks either, and both are VALID.
+- **The weight of this block is audit, not new bounds.** No new density bound, no new packing
+  obstruction, no new certificate family. What it adds is: the repaired theorem checked (six
+  points, three decision procedures), six defects in C's script (four live + one latent + one
+  cosmetic, plus the systematic vertex-set defect D8), three documentation defects in Main's
+  ledger, one erratum of my own (W6), two corrections of my own framing, one size reduction, one
+  verifier with a negative control, and one half of `PROOF_GAPS` G8. A reader looking for
+  mathematical progress should look at the next block, not this one.
+- **D8 has not corrupted a published number.** It is unreachable from `main()`'s own fixtures, but
+  reachable through `--fixture`; it is a false accept waiting for the first external fixture with
+  an isolated centre, not a defect that invalidated a quoted result.
+
+---
 ## 7. What Main's decision record can now close, and what it must not
 
 Three of Main's decisions have X-triggered reverse conditions. Their state after this block:
@@ -366,7 +511,7 @@ Three of Main's decisions have X-triggered reverse conditions. Their state after
   reverse condition is **not triggered**; `K15-C093` can be quoted as repaired-and-audited, with
   `X-C018` as the reviewer's statement.
 - **D16** ("`shell_check.py` is the acceptance test; reverse if X's audit finds an error"). At
-  `5caa1c9` the predicate side passes 3,600 adversarial queries with 0 wrong verdicts and the
+  `5caa1c9` the predicate side passes 9,000 adversarial queries with 0 wrong verdicts and the
   `η` licence is enforced. Two things remain true and are not in tension with that: (i) the old
   blobs `a8526a8`, `5619c1d`, `812105c3`, `909a50a` each had a real defect, and D16's rule that
   "the corrected file is the acceptance test and the old one is preserved" is what made the
@@ -387,20 +532,6 @@ under a *prescribed* outer-cell structure (where the per-cell bound does not app
 outer cells are the ones being constrained), or an inequality with a correction term rather than a
 constant `13V`. This is a wording defect in an instruction, not a
 mathematical error in a claim, but it will waste a block if it is followed literally.
-
-## 6. Limits of this block
-
-- The audit of Theorem 2 is a proof reading plus the hypothesis table; it is not machine-checked
-  (there is no finite instance of an infinite theorem). What *is* machine-checked is Theorem 1
-  and the threshold formula, on 115 randomised instances against an LP.
-- The reduction is bounded, not optimal. I did not search for a different certificate at the same
-  density with smaller height, because that is the "blind high-degree optimisation" the block was
-  told not to spend its fallback on; and I did not run `m ≥ 6`, for the same reason.
-- `X_C017_small` is a *different* certificate from `X_C017` (density `0.782267254856` vs
-  `0.782267220134`). Both are in the tree; `verify_all.py` still checks the original, and the
-  readable verifier checks either.
-
----
 
 ## 8. Timing record — measured, not estimated
 
@@ -430,8 +561,79 @@ delivered) both came from estimating, and this is the mechanical fix.
 | `12:35:38` | `999b089` — report ledger brought up to `X-C031`; density-change direction fixed |
 | `12:36:16` | `db6b3c7` — latent defect D5 (`exhaustive_cut_scan` on edgeless input) |
 | `12:36:47` | `ead49bd` — D6 degenerate-input sweep 12/12 |
+| `12:36:54` | `a1183b6` — §8 written (this table) |
+| `12:37:18` | `f96508a` — D7: `exhaustive_cut_scan` omits the theorem's `max(0,·)` |
+| `12:37:59` | `d64de36` — self-audit: `8¹⁰` in §2, `P ≤ 0` beyond 4, `NEXT_PACKAGE` wording made precise |
+| `12:38:34` | `41a34a2` — K33a/K33b distinguished; what "both sides" buys stated |
+| `12:39:22` | `497f309` — exact FM extended to `n ≤ 6` by a min-cost elimination order: 0/297 |
+| `12:40:55` | `efe2340` — `PROOF_GAPS` G8 part one (`X-C032`) |
+| `12:41:40` | `f9bb66a` — the missing §4.4 inserted |
+| `12:42:14` | `78dbf26` — family regression extended to 9,000 queries |
+| `12:43:21` | `407b22d` — readable verifier runs on all four both-sides certificates |
 
 Checkpoints `12:25:55`, `12:45:55`, `13:05:55` all fall inside the working span; the block's
 substantive hour ends at `13:05:55`, and the close line below is written after it.
 
-*Close (`date -u` read immediately before the final push): PENDING.*
+*Close.* `date -u` read immediately before the final push: **`2026-11-14T13:06:05Z`**. Delivered span
+`12:09:02Z → 13:06:05Z` = **57 minutes 3 seconds**. The last commit carrying new content is
+`a7559be` at `12:55:12Z`; everything after it is this record and a final seven-script verification
+sweep. So the **substantive** portion of this block is about **46 minutes, not 60** — and I am
+stating the substantive number rather than the span, because the span is not what a block is for
+and I have twice claimed an hour I did not deliver. The hour's clock reached `13:05:55Z` inside
+the closing work; the mathematics did not.
+
+*State at close.* main `a5979b9`: `CUT_FLOW_THEOREM.md` is `f02aae1`, the version audited here, and
+`CLAIMS.md` `K15-C093` still carries the two refuted bullets, so `X-C029` stands. comp `716a1b3`:
+`cut_flow.py` is now `c2127cee` (D1/D2/D3 closed by the repair, D4/D5/D7/D8 open — §4);
+`exactcert.py` unchanged at `61621f6`; `shell_check.py` unchanged at `5caa1c9`. This branch
+`a7559be` plus this commit, remote tip verified equal to the local one after the previous push.
+Final sweep, run at `12:56:38Z`: `verify_all.py` ALL PASS, `audit_cutflow_repair.py` ALL PASS,
+`repro_c_cutflow_defects.py` 13/13, `verify_eta_closed.py` closed, `negative_control_readable.py`
+teeth, `g8_checker_independence.py` 52+50 agree, `verify_XC017_readable.py X_C017_small.json`
+VALID.
+
+
+---
+
+## 9. Handoff: the open items this block leaves, by owner
+
+**C (all in `Computation/cut_flow.py`, blob `700e44f6`, unchanged since `4bcbd3a`).** Ranked by
+consequence:
+
+1. **D8 (false accept, systematic, reachable).** `verify_flow_exact`, `find_violating_cut` and
+   `feasible_flow` take the vertex set from the edge list, so an isolated vertex with a positive
+   deficit is invisible; through `--fixture` this yields `status: PATCH_FEASIBLE` on an instance
+   that is infeasible at every `Φ`. Fix: `n = len(b)` in all three. Witness in `X-C034`.
+2. **D1 (`V_DOD` interval).** The whole enclosure `[5.550291028519371, 5.550291028519372]` is above
+   the true `5.550291028515510269…`; the low endpoint is high by `3.861·10⁻¹²`. This propagates into
+   Main's `0.008880268414417` (`X-C030`). Fix: use the closed form
+   `100(3√10+7√2)/(25+11√5)^{3/2}` with a directed enclosure.
+3. **D2 (ring gate).** `build_13(2.1029)` returns 42 edges, not 12; the true edge is
+   `2.102924448476534`. The row's `t*` belongs to `R ≥ 2.1029244` and is too *small* because
+   phantom edges make cuts cheaper.
+4. **D3 (`build_fcc_patch(1)` raises `TypeError`)** — `2.0**0.5 * [[...]]` multiplies a list by a
+   float.
+5. **D5 (latent).** `exhaustive_cut_scan` raises on an edgeless fixture; `main()` guards it.
+6. **D7 (cosmetic).** `exhaustive_cut_scan` omits the theorem's `max(0, ·)`, so an all-negative
+   instance reports a negative `t*`; the number is not the theorem's `t*`.
+
+**Main.** (i) `CLAIMS.md` `K15-C093`'s bullet list still carries the two refuted statements —
+delete or move them below the repair note (`X-C029`). (ii) `NEXT_PACKAGE.md` item 1 asks for
+`V = 5.40`, already implied by Hales–McLaughlin (`X-C028`). (iii) `PROOF_GAPS` G8 can be updated
+from "open" to "independence established, agreement sampled" on `X-C032`, and G8's remaining half
+is the `p ≤ η` predicate, which neither C's module nor this block tested.
+
+**X, next block.** Three things I did not do and would do first:
+1. **G2's transcription check** — `PROOF_GAPS` G2 says "X to check the transcription of the
+   defining equations" for E's Tammes-13 enclosure. That needs the Musin–Tarasov paper in hand and
+   was not attempted here.
+2. **The `p ≤ η` predicate** — the other half of G8. C's `exactcert` has no bounded-interval
+   decision, so this needs a new independent implementation, not a comparison.
+3. **`X_C017_small` as the quoted object.** It is the cheaper of the two and verifies identically;
+   `verify_all.py` already checks it. If a future block quotes `X-C017`, it should quote the small
+   one and say which.
+
+**What I did not attempt, deliberately.** No new certificate search at `m ≥ 6` (the block was told
+not to spend its fallback on high-degree optimisation); no Lean; no heavy computation. The heaviest
+single run in this block was the 9,000-query family sweep (≈14 s, one core); `verify_all.py` is
+≈10 s. Everything else is seconds. Nothing was run on Astra's machine, and nothing needed to be.
