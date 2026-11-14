@@ -236,6 +236,16 @@ def check_certificate(cert):
     facets = cert["facets"]
     vol = F(cert["volume"])
     P = lambda pt, pl: pl[0] * pt[0] + pl[1] * pt[1] + pl[2] * pt[2]
+    # V0: every CANDIDATE plane must be one of the constraints.  Otherwise the facets could be
+    # built on a half-space that is not in `planes`, the polytope would be a strict subset of the
+    # intersection the volume claims, and the claim would be wrong in the other direction.
+    def _norm(pl):
+        return normalise(pl)
+    all_set = {_norm(pl) for pl in allp}
+    for pl in planes:
+        if _norm(pl) not in all_set:
+            raise ValueError("V0: a candidate plane %r is not among the constraints" % (pl,))
+
     # V1 -- against EVERY constraint in cert["planes"], not only the candidate ones
     for pt in verts:
         for pl in allp:

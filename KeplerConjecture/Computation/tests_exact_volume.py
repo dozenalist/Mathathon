@@ -241,6 +241,15 @@ def main():
         check("an added constraint (volume would be 6) is REJECTED", False, "accepted")
     except ValueError as e:
         check("an added constraint (volume would be 6) is REJECTED", True, str(e)[:50])
+    # (2b) the mirror image: a CANDIDATE plane that is not a constraint
+    bad3 = _copy.deepcopy(cert8)
+    bad3["candidate_planes"] = [list(pl) for pl in bad3["candidate_planes"]] + [[1, 0, 0, 0]]
+    try:
+        EV.check_certificate(bad3)
+        check("a candidate plane outside the constraints is REJECTED", False, "accepted")
+    except ValueError as e:
+        check("a candidate plane outside the constraints is REJECTED", True, str(e)[:50])
+
     # (3) closure alone is not boundedness: the four side faces of a prism close, rank 2
     check("the four side-face normals span only 2 dimensions",
           EV._rank3([(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0)]) is False)

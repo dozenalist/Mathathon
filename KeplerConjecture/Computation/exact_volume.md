@@ -28,6 +28,7 @@ Let `P = ⋂{planes}` and `Q = conv(vertices)`.
 
 | id | obligation | what it buys |
 | --- | --- | --- |
+| V0 | every **candidate** plane is one of the constraints | otherwise the facets could be built on a half-space not in `cert["planes"]`, so the polytope would be a strict subset of the intersection the volume claims — the same defect as the reviewer's witness (2), in the other direction |
 | V1 | every vertex satisfies every plane **in `cert["planes"]`** — all the constraints, not only the candidate ones | `Q ⊆ P` |
 | V2 | `a·v < d` for every plane in `cert["planes"]` | a valid apex for the fans |
 | V3 | each facet's vertices lie on its plane, `≥ 3`, non-collinear, and the area vector **recomputed from the vertex order** is a positive multiple of the outward normal | the facet is a genuine, outward-oriented 2-face |
