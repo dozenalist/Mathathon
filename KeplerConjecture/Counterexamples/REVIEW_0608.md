@@ -368,11 +368,11 @@ Two limits, stated as such: `spanning_constant` evaluates the rational normals i
 flat `1e-9`, which covers the `~1e-16` conversion error but is a fudge rather than an interval
 computation; and the repaired path is `_v2` only — the old modules remain in the tree.
 
-**What I ran of it.** The worst corner of the default region, `[110°,110.1°]×[35°,35.1°]`, certifies
-in 31 s with enclosure **`[5.861826587058, 5.940277014469]`**, above the `5.763417470` target by
-`0.098409`. The full default region is 100 such boxes (~50 min at that rate); that run is in flight as
-a background job and **its end-to-end verdict is not part of this block** — I have only the corner box
-and the soundness audit above.
+**What I ran of it.** The full default region `[110°,111°]×[35°,36°]` at `0.1°` (100 boxes, ~13 min)
+**exits 0: "CERTIFIED for the whole region: `[5.859536248896, 5.940277014469]`"**, worst box at
+`θ = 110.9°, φ = 35.0°`, target `5.763417470` cleared by `+0.096119`; certificate at
+`Reviews/twist/reg_default_110_111_35_36.json`. So the repaired path is reproducible end-to-end — but
+given `X-C080` it is *not yet a proof*: the gate and the `1e-9` must be fixed first.
 
 ## 13. C's extended near-contact scan (two- and three-site displacements)
 

@@ -1187,11 +1187,13 @@ had marked sound. Fix: require `0 ∈ int conv{n_i}` by proving the hull 3-dimen
 spanning subset with a strictly positive dependence, *plus* the supporting-plane scan with
 `(b−a)×(c−a)` normals), and refuse otherwise.
 
-**Run at one box.** `certify_region_v2.py 110 110.1 35 35.1 0.1` (the worst corner of the default
-region; 31 s) exits 0 with enclosure **`[5.861826587058, 5.940277014469]`**, above the `5.763417470`
-target by `0.098409`. At ~31 s per box the full default `[110,111]×[35,36]` at `0.1°` is 100 boxes,
-~50 minutes, and is running as a background job; **the end-to-end default-region claim is not
-reproduced in this block** — only the corner box is, and it holds with room.
+**Full default region, reproduced.** `certify_region_v2.py 110 111 35 36 0.1 --out …` (100 boxes,
+~13 min) **exits 0: "CERTIFIED for the whole region: `[5.859536248896, 5.940277014469]`"**, worst box at
+`θ = 110.9°, φ = 35.0°`, target `5.763417470` cleared by `+0.096119`. Certificate kept as
+`Reviews/twist/reg_default_110_111_35_36.json`. So the repaired path does what it claims end-to-end —
+*subject to* `X-C080`: the boundedness gate it relies on is unsound as written, and the `1e-9` in
+`spanning_constant` is a fudge, so this run is evidence that the numbers come out consistently, not yet
+a proof.
 
 ### K15-X-C073 — C's *extended* near-contact scan (two- and three-site displacements) still gives `t* = 0`, and its tiling identity is exact on all 500 rows
 
