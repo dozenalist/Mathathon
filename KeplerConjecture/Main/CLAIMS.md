@@ -2207,10 +2207,16 @@ volume `≥ V_dod = 5.5502910285…`, so the cluster's total deficit is at most
 Φ  ≥  13(√32 − V_dod) / |δ⁺_R(C)|  =  1.3853218727… / |δ⁺_R(C)|.
 ```
 
-At `R = 2.09` each of the twelve outer vertices has at most `k_R ≤ 12` edges, and at
-most `12·12 = 144` of them leave `C`, so `Φ ≥ 1.3853/144 = 0.009620`. (With a
-sharper count of the leaving edges the bound improves proportionally:
-`|δ⁺| ≤ 132 ⇒ Φ ≥ 0.010495`.)
+At `R = 2.09`, each of the twelve outer vertices has at most `k_R ≤ 12` edges, one
+of which is the spoke to the centre (distance exactly `2`), and the spoke-free ones
+must be counted as leaving. The **outer–outer distances in the cluster are
+`2.102924… > 2.09`**, so no outer–outer edge exists at this range: each outer vertex
+has at most `11` leaving edges, `|δ⁺(C)| ≤ 132`, and
+
+```
+Φ  ≥  1.3853218727 / 132  =  0.0104949…        (not 0.009620, the value obtained
+                                                 from the crude 144-edge count)
+```
 
 **What it is.** A *cluster-level* refinement of the vertex-level bound
 `Φ ≥ 0.00888` (`K15-C036`): the cluster must shed `1.3853` of deficit across its
