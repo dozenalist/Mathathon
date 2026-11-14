@@ -203,6 +203,41 @@ finite-dimensional *at all*, by reducing arbitrary `S` to components and removin
 obligation. Even so, each payer's cell remains completion-dependent, which is where the difficulty
 concentrates.
 
+### 6.1 The route is a strengthening of Kepler, not a weakening — and that cuts both ways
+
+This is the sharpest complexity statement I can make, and it should temper any claim that the
+transfer route is "a simpler proof".
+
+**The chain.** `(H_R)` (all finite `S`) plus bounded degree `<= 12` (`K15-E014`) gives a global
+transfer (`K15-E071`), which gives pointwise FCC-compatibility; with the exact cancellation and
+`O(r^2)` boundary of `K15-E061` that is a negligible, fcc-compatible `A`, so Hales's Lemma 3.3
+gives `delta <= pi/sqrt18 + C/r`, i.e. **Kepler**. Hence
+
+```
+(H_R)   ==>   Kepler .
+```
+
+The converse is not expected: Kepler bounds the density but does not force a transfer to exist,
+so `(H_R)` is plausibly **strictly stronger** than the theorem.
+
+**Two consequences, in opposite directions.**
+
+1. *In favour of the route.* A proof of `(H_R)` would establish more than Kepler, and stronger
+   statements are sometimes easier because they expose more structure to exploit. Nothing in the
+   chain is computational: no graph enumeration, no linear programming, no interval arithmetic.
+   That is a genuine structural simplification of the *proof method* relative to Hales.
+2. *Against calling it simpler.* The route is **not logically weaker** than the theorem. It is a
+   reformulation that strengthens the goal. So "a simpler proof of Kepler" is the wrong
+   description: this is "a different, possibly more tractable, stronger statement that implies
+   Kepler". If `(H_R)` is proved, the honesty runs the other way — the result is *more* than was
+   asked for.
+
+**How this compares to the relevant Hales step.** Hales's route is logically equivalent to Kepler
+(he proves the theorem and a local structure theorem); mine strengthens it. So the comparison in
+the table above — far less machinery, but an unproved universal statement — should be read with
+this caveat: the machinery saving is real, the logical saving is negative. That is the honest
+bottom line of this block, and it is a better statement of the route's status than "promising".
+
 ## 7. Portable local-run request
 
 ```text
