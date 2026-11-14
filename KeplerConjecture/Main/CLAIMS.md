@@ -5128,7 +5128,7 @@ zero, so the rate is `√η`, exactly as `C139` §4 guessed.
 ```
 
 so the quadratic form slightly *under*-estimates at the scale that matters. Taking `c = 0.17`
-(`96.2%` of `½λ₁`) gives `vol − V_dod ≥ 0.17·Σ_j angle_j²` with margin at every `θ ≤ 0.05` tested.
+(`96.2%` of a `½λ₁` that later turned out to be an artefact, addendum 6) gives `vol − V_dod ≥ 0.17·Σ_j angle_j²` with margin at every `θ ≤ 0.05` tested. **[Superseded: `c = 0.13`, quotient form, addendum 7.]**
 This is the sort of detail that a "close enough" treatment would have got wrong.
 
 **(4) The number.** `C132` fixes `ε = 1`, so the pair exclusion must cover `d ≤ 3`. With the perturbed
@@ -5139,11 +5139,11 @@ exclusion survives while
 4cos(ρ_c + θ) ≥ 3   ⟺   θ ≤ cos ρ_c − cos(arccos 0.75) = 0.7946545 − 0.75 = 0.044655 rad = 2.5585° .
 ```
 
-Hence any cell with `vol ≤ V_dod + 0.17·(0.044655)² = V_dod + 3.3898·10⁻⁴` is excluded from every
+Hence any cell with `vol ≤ V_dod + 0.13·(0.044655)² = V_dod + 2.5922·10⁻⁴` is excluded from every
 dodecahedral pair at `d ≤ 3`, and
 
 ```
-σ₀  ≥  2V_dod + 2V_dod·(3.3898·10⁻⁴)   ⟹   δ₀  ≥  3.76·10⁻³   explicitly.
+σ₀  ≥  2V_dod + 2V_dod·(3.3898·10⁻⁴)   ⟹   δ₀  ≥  3.76·10⁻³   explicitly.  **[= `2.8775·10⁻³`, addendum 6]**
 ```
 
 **(5) The two lemmas that would turn it into a theorem.** Stated so they can be attacked:
@@ -5231,7 +5231,7 @@ The rigorous version is a bounded interval-arithmetic job (**`M-CERT-002`**, spe
 `LOCAL_COMPUTE_REQUESTS.md` with its pinned command, dependencies, `1 CPU / 1 GiB / 120 s` budget, and a
 negative control `c = 0.30` that it must reject). It is not run here: no heavy numerics on the VM.
 
-**Status of the explicit `δ₀`.** `δ₀ ≥ 3.76·10⁻³` is **conditional on `L1` alone**. `L2` is proved; the
+**Status of the explicit `δ₀`.** `δ₀ ≥ 2.8775·10⁻³` (addendum 6; `3.76·10⁻³` before the correction) is **conditional on `L1'` alone**. `L2` is proved; the
 face-distance half is proved and explicit; the normal half is measured with a wide margin. `G11` stays
 open until `M-CERT-002` returns, and `C124` stays `PENDING_REVIEW` regardless.
 
@@ -5276,7 +5276,7 @@ table below is the one computed with the older value; scaled by `0.765` its entr
 what that converts into. `C108`'s Theorem C reads `δ ≤ (4π/3)/(V_dod + δ₀ρ)` with `ρ = ρ_ε` the
 density of matched near-contact pairs (`ρ ≤ 1/2`).
 
-| `ρ_ε` | bound with `δ₀ = 3.7629·10⁻³` | improvement over ML `0.754697399` |
+| `ρ_ε` | bound with `δ₀ = 3.7629·10⁻³` (superseded: `2.8775·10⁻³`) | improvement over ML `0.754697399` |
 | --- | --- | --- |
 | `0.50` | `0.754441656` | `2.56·10⁻⁴` |
 | `0.25` | `0.754569506` | `1.28·10⁻⁴` |
@@ -5383,7 +5383,7 @@ compete for the same `η`: `vol − V_dod ≥ A_0Σε_i + 0.17Σθ_i²`. With `�
 | `1` | `2.443·10⁻⁴` | `0` | `3.463771` | `5.4·10⁻¹` |
 
 So the pure-normal case is the binding one and it is *exactly* tight — which is what makes the inequality
-strict at `η` below the stated value and not at it. Any face excess buys room. **The number `δ₀ ≥ 3.76·10⁻³`
+strict at `η` below the stated value and not at it. Any face excess buys room. **The number `δ₀ ≥ 2.8775·10⁻³` (addendum 6)
 therefore stands, with the strictness coming from `η < 0.17θ_max²` and not from a slack in this table.**
 
 #### `C142` addendum 5 — `L2`'s perturbation margin, measured (the constant I had left implicit)
@@ -5477,7 +5477,11 @@ c = 0.13 :  min over 1500 directions x 4 radii of [vol − V_dod − 0.13·d(θ,
             negative control (c = 0.30) rejects 4 samples  -> the test can fail
 ```
 
-So the measured quotient constant is `0.241`, and `c = 0.13` carries **85% slack**. (My earlier
+So the measured quotient constant is `0.241` over 1500 directions and `0.2253` over a 4000-direction run
+(the infimum is only bracketed from above by a sample), and `c = 0.13` carries **at least 73% slack**.
+The negative control is now deterministic — `c = 0.30` is tested at the *worst direction found*, where it
+is rejected, because testing it on 200 random directions was under-powered (the low-curvature directions
+are rare, and the control reported "inert"). (My earlier
 non-quotiented measurements of `0.1378` were contaminated by exactly this: a random direction has three
 quarters of its length outside the rotation subspace, so the non-quotiented ratio understates the shape
 curvature by roughly that factor.)

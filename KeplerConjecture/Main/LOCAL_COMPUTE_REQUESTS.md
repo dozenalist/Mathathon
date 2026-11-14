@@ -286,6 +286,6 @@ must fail on the negative control:  c = 0.30 is REJECTED (that constant is too l
 The negative control matters: a certifier that cannot reject `c = 0.30` is not measuring anything, and
 this project has had three unsound checkers.
 
-**If it succeeds.** `δ₀ ≥ 3.76·10⁻³` becomes a theorem, `C124`'s strictness becomes explicit, and the
+**If it succeeds.** `δ₀ ≥ 2.8775·10⁻³` becomes a theorem, `C124`'s strictness becomes explicit, and the
 pair route produces its first number. It still does not improve `0.7546974` by itself — the hybrid needs
 `ρ_ε`, and `C139` shows the bound is a monotone function of `δ₀`.

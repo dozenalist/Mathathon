@@ -103,7 +103,7 @@ def main(n=2000, quick=False):
     assert abs(v0 - V_DOD) < 1e-6, v0
     # sample uniformly in the ball: radius^(1/24) scaling gives a uniform measure
     worst = (1e9, None)
-    ratio = (1e9, None)          # min over samples of (vol - V_dod)/theta^2
+    ratio = (1e9, None, None)    # min over samples of (vol - V_dod)/theta^2
     thetas = [0.0447] + ([] if quick else [0.01, 0.02, 0.03])
     for k in range(n):
         u = rng.normal(size=24)
@@ -117,7 +117,7 @@ def main(n=2000, quick=False):
                 worst = (f, (k, th))
             r = (v - V_DOD) / (th * th)
             if r < ratio[0]:
-                ratio = (r, (k, th))
+                ratio = (r, (k, th), t.copy())
     print(f"samples: {n} directions x {len(thetas)} radii, ball {BALL}")
     print("  directions are projected onto the orthogonal complement of the 3 rotation modes")
     print(f"c = {C},  lam1/2 = {LAM1_HALF:.6f},  c/(lam1/2) = {C / LAM1_HALF:.3f}")
@@ -127,18 +127,20 @@ def main(n=2000, quick=False):
     if worst[0] <= 0:
         print("RESULT: L1 FAILS on this sample (the constant is too large)")
         return 1
-    # a negative control: c = 0.30 must FAIL somewhere
+    # Negative control: c = 0.30 must be REJECTED at the worst direction found.  Testing it
+    # on random directions was under-powered (the low-curvature directions are rare, so 200
+    # draws all exceeded 0.30 and the control reported "inert").  The worst direction is the
+    # strongest place to test a too-large constant, so the control is deterministic there.
     bad = 0
-    for k in range(min(n, 200)):
-        u = rng.normal(size=24)
-        u = project_out(u, Q)
-        u /= np.linalg.norm(u)
-        for th in thetas:
-            v = vol_at(u * th, dirs)
-            if v - V_DOD - 0.30 * th * th <= 0:
-                bad += 1
-    print(f"negative control (c = 0.30): {bad} sample(s) rejected"
-          f" -> {'OK (the test can fail)' if bad else 'WARNING: inert test'}")
+    t_worst = ratio[2]
+    if t_worst is not None:
+        th = float(np.linalg.norm(t_worst))
+        v = vol_at(t_worst, dirs)
+        if v - V_DOD - 0.30 * th * th <= 0:
+            bad += 1
+    print(f"negative control (c = 0.30) at the worst direction: "
+          f"{'REJECTED' if bad else 'accepted'} -> "
+          f"{'OK (the test can fail)' if bad else 'WARNING: inert test'}")
     print("RESULT: L1 holds on this sample; proof still owes M-CERT-002")
     return 0 if bad else 1
 
