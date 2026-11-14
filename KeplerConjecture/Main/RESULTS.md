@@ -1,5 +1,11 @@
 # Results — Kepler problem 15
 
+> **Overview publication, November 14:** see the [consolidated assessment](../PROJECT_OVERVIEW.md).
+> The reviewed snapshot below is retained unchanged. Later Main and Computation
+> branches implement the missing pilot and targeted checker repairs, but their
+> general guarantees remain unvalidated. No new best bound or simpler proof is
+> accepted. Recurring reviews are paused by user request.
+
 > **Supervisor review, 08:23 Pacific:** E's duplicate/proportional-plane
 > regression is repaired on the locally checked cases. C's standalone exact
 > certificate checker still falsely accepts duplicated facets and ignores added

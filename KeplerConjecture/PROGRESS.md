@@ -1,6 +1,7 @@
 # KeplerConjecture progress
 
-For a plain-language cumulative account, read [PROGRESS_SUMMARY.md](PROGRESS_SUMMARY.md).
+For an extensive plain-language account, read [PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md).
+The dated cumulative account remains in [PROGRESS_SUMMARY.md](PROGRESS_SUMMARY.md).
 This technical chronology includes worker self-reports. A worker's status label
 does not itself establish independent verification; the cumulative summary and
 supervisor reviews identify which claims have actually been checked.
@@ -11,17 +12,40 @@ supervisor reviews identify which claims have actually been checked.
 | --- | --- | --- | --- |
 | Problem 15 roadmap | Prepared research plan | ROADMAP.md and Literature/PROBLEM_SPEC.md | Main |
 | Literature and modern obstructions | Source compilation | Literature/README.md and CORE_SOURCES.md | Main and Counterexamples |
-| Earlier SAIR work | First coordinator checkpoint reviewed; corrections required | Main/SUPERVISOR_REVIEW_23906.md | Main and Counterexamples |
-| New simpler general 3D proof | Open | No accepted new theorem at setup | Main |
-| Numerical reproduction | Main bug reproduced; three independent CE grid controls run locally; no certificate | Computation/Reviews/27616/README.md | Computation and Counterexamples |
+| Earlier SAIR work | Recovered, reviewed and integrated through the 08:23 checkpoint; later inputs linked separately | Main/SYNC_2026-11-14_0823.json; PROJECT_OVERVIEW.md | Main and Counterexamples |
+| New simpler general 3D proof | Open; no improved known packing bound accepted | PROJECT_OVERVIEW.md; Main/REVIEW_2026-11-14_0823.md | Main |
+| Analytic controls | Finite grid outputs are not certificates; specific exact certificates independently reconstructed, all weaker than published controls | Main/REVIEW_2026-11-14_0308.md; Main/REVIEW_2026-11-14_0438.md | Computation and Counterexamples |
 | Local Lean proofs | Targeted-import algebraic normalization passed locally; geometric bridges remain open | Lean/Review/README.md | Main and Astra |
-| Publication and response logs | Four SAIR branches synchronized; hourly updates and cumulative summary required | Main/HOURLY_SYNC.json, PROGRESS_SUMMARY.md and HourlyUpdates/ | Astra |
-| New rational certificate | REFUTED; repaired checker regression suite passes, full validation pending | Computation/Reviews/48443/README.md; Main/LocalChecks/2026-11-14_0008/ | Counterexamples and Astra |
-| Rational Gaussian control | Feasible control verified; density factor repaired; model error and comparison truncation remain | Counterexamples/Reviews/41644/README.md; Main/LocalChecks/2026-11-14_0008/ | Counterexamples and Astra |
-| Geometric and strengthened analytic targets | Restricted shell lemma and existential partition remain open; no implemented improved bound accepted | Main/HOURLY_REVIEW_2026-11-14_0008.md | Experimental, Computation and Main |
-| Review cadence | Every 45 minutes; Sair-Watch stopped; SAIR work blocks 30–90 minutes, normally 60–90 | Main/SUPERVISION.md | Astra |
+| Publication and response logs | Main-branch publication authorized; reviewed source history plus extensive overview | Main/PUBLICATION_2026-11-14_OVERVIEW.md | Astra |
+| Rejected certificates and software failures | Retained with exact witnesses; later targeted repairs do not establish generic soundness | Main/REVIEW_2026-11-14_0823.md; PROJECT_OVERVIEW.md | Counterexamples and Astra |
+| Geometry and compensation | Specific fixtures and conditional arguments checked; universal geometric inequalities and global bridge remain open | Main/REVIEW_2026-11-14_0653.md; Main/REVIEW_2026-11-14_0823.md | Experimental, Computation and Main |
+| New stability pilot | Implemented on later Main branch; floating arithmetic, rotation treatment and rigorous input bounds unresolved | PROJECT_OVERVIEW.md, section 9 | Main and Counterexamples |
+| Review cadence | PAUSED by latest user request; Sair-Watch remains stopped; no further automatic assignments | Main/SUPERVISION.md | Astra |
 
 ## History
+
+### K15-OVERVIEW-001 — 2026-11-14, main-branch publication request
+
+Author: Astra; independent read-only factual audit by a second Codex reader.
+The user requested an extensive plain-language overview, publication to main,
+and cancellation of recurring check-ins. The official automation tool returned
+`PAUSED`, confirmed against its saved configuration. No SAIR sends occurred.
+
+`DOCUMENTED`: PROJECT_OVERVIEW.md consolidates the objective, literature,
+specific exact analytic certificates, geometric fixtures, conditional transfer
+arguments, rejected claims, checker defects, limited Lean result and remaining
+proof obligations. It distinguishes the independently reviewed supervisor
+checkpoint 872fa211ecc827c8d78f0c302c1f99c882cbd590 from four later worker heads.
+Read-only inspection establishes that M-CERT-002 now exists and that Computation
+implemented targeted volume-checker repairs; it does not certify their outputs
+or general guarantees. No new mathematical acceptance is recorded.
+
+`OPERATIONAL`: an isolated publishing worktree starts from origin/main
+5746863f92b9d7dade5854c311b237ed04020106 and normally merges the supervisor
+history. All publication changes are confined to KeplerConjecture. See the
+publication record for scope and checks. Existing failed claims and authorship
+are retained. Future research requires a new user instruction to resume
+supervision; this entry does not create a follow-up assignment.
 
 ### K15-OPS-005 — 2026-11-14, 01:00 Pacific
 

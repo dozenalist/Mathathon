@@ -1,13 +1,27 @@
 # Kepler Conjecture: progress so far
 
-Updated at the November 14, 2026, 08:23 Pacific scheduled review. Experimental's
-duplicate-face repair passes local controls. Computation has a more explicit
-exact-volume certificate, but two new independent probes still make its checker
-accept wrong cube volumes. Main corrected two earlier proof errors and developed
-a conditional stability estimate; the proposed certificate program is not yet
-implemented. Main and Experimental ended early and received new full-hour
-Ultramath assignments; the other two continued. No new best packing bound or
-simpler proof is accepted. Checks remain every 45 minutes, with watchers stopped.
+Updated November 14, 2026 for the user's overview and main-branch publication
+request. Read [PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md) for the extensive,
+consolidated explanation of the entire project, its accomplishments and its
+remaining mathematical gaps. The sections below preserve the dated development
+of the work and must not be read as simultaneous current instructions.
+
+**The 45-minute automation is paused. Sair-Watch remains stopped.** No new
+research assignments were sent for this documentation request. Publication on
+main is explicitly authorized by the latest user instruction.
+
+The reviewed project has exact analytic control certificates, checked geometric
+examples, a limited Lean normalization result and a substantial record of
+independent error detection. It has no accepted simpler Kepler proof or improved
+known packing bound. The geometric compensation argument, quantitative stability
+and general certificate-checker guarantees remain open.
+
+The 08:23 review found two false accepts in Computation's volume checker and a
+missing Main stability program. Later public commits now implement targeted
+checker repairs and that pilot. Source inspection does not establish their full
+correctness; the overview separates these newer inputs from the independently
+reviewed snapshot. This publication preserves the reviewed source history and
+links those later immutable revisions without silently treating them as accepted.
 
 ## Where the project stands
 

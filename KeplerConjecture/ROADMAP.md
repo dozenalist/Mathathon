@@ -1,5 +1,10 @@
 # Problem 15 — a simpler proof of the Kepler theorem
 
+**Status, November 14, 2026:** the [project overview](PROJECT_OVERVIEW.md)
+explains what has actually been achieved and what remains open. This roadmap is
+a research plan, not a claim of completion. Recurring supervision is paused at
+the user's request; historical work instructions below do not restart it.
+
 Prepared 2026-11-13 for the SAIR Ultramath research team. The project is confined
 to `KeplerConjecture/` in the Mathathon repository. The objective and initial
 research directions come from the user's assignment and the official problem.

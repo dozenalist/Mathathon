@@ -1,6 +1,24 @@
 # Kepler supervision and response records
 
-## Current cadence: checks every 45 minutes
+## Current instruction: recurring checks stopped
+
+On November 14, 2026, the user requested an extensive human-readable overview,
+publication on GitHub's main branch, and cancellation of the 45-minute check-ins.
+The official automation update returned status `PAUSED`, and the saved automation
+configuration independently confirms it. Sair-Watch remains stopped. Do not
+restart watchers or send research prompts in response to stale callbacks or
+queued heartbeats. Resume recurring supervision only on a new user instruction.
+
+This request authorizes a normal main-branch publication of Kepler work. Preserve
+all other projects, existing main history, worker authorship and failed claims.
+Use the [project overview](../PROJECT_OVERVIEW.md) for the consolidated state and
+the [publication record](PUBLICATION_2026-11-14_OVERVIEW.md) for its source scope.
+The user stopped check-ins; this action does not assert that already assigned
+SAIR work was canceled. No new assignment was sent during this publication.
+
+## Historical cadence: checks every 45 minutes
+
+The following records the superseded policy and its operational history.
 
 The latest user instruction, November 14 at approximately 00:53 Pacific,
 cancels Sair-Watch after a brief restoration attempt. All four restored monitor
