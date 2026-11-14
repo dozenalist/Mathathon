@@ -49,6 +49,6 @@
  ],
  "coefficient_format": "IEEE double, repr precision (17 significant digits)",
  "Delta_from_stored_coefficients": 0.7812177174596973,
- "runtime_s": 7.82,
+ "runtime_s": 7.83,
  "re_evaluation_gap": 2.220446049250313e-16
 }
