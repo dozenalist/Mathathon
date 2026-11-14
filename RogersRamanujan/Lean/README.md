@@ -1,48 +1,85 @@
 # Lean (L) -- RR127
 
-## Verification command and result
+## Build target (added in cycle 2 by Main)
+
+`RogersRamanujan/Lean/` was outside the `Mathathon` hierarchy, so the default
+build validated nothing of it. Cycle 2 adds a named target:
+
+* `lakefile.toml` gains `[[lean_lib]] name = "RogersRamanujan"`,
+  `globs = ["RogersRamanujan.Lean.*"]`;
+* `RogersRamanujan.lean` (repository root) is the aggregator importing
+  `RogersRamanujan.Lean.Staircase`.
 
 ```sh
-lean RogersRamanujan/Lean/Staircase.lean     # exit 0, ~14 s, no output
+lake build RogersRamanujan        # the intended command; see status below
 ```
 
-`#print axioms` for all six theorems reports `[propext, Quot.sound]` only, which
-is inside the event's allowed set (`propext`, `Classical.choice`,
-`Quot.sound`). No `sorry`, no `admit`, no `sorryAx`, no custom axiom.
+**Status of `lake build`: NOT VERIFIED on the SAIR VM.** There is no `.lake/`
+package checkout in this container, so Lake would first clone Mathlib v4.35.0 and
+its eight dependencies; that is outside this block's budget and the VM has
+already failed to elaborate `import Mathlib` once (6.4 GB of oleans against 15 GB
+of RAM). The configuration is written and is expected to work wherever the
+repository's pinned dependencies are present. This is recorded as an unverified
+integration, not as a passing build.
 
-| theorem | statement |
+## Verification that was actually run
+
+Two commands, both executed here:
+
+```sh
+# 1. the module, standalone, against the local executable (Lean 4.33.1)
+lean RogersRamanujan/Lean/Staircase.lean
+#    exit 0, ~14 s; six #print axioms lines as recorded below.
+
+# 2. the aggregator, which also proves the module path resolves
+lean -o .scratch/olean/RogersRamanujan/Lean/Staircase.olean \
+     RogersRamanujan/Lean/Staircase.lean
+LEAN_PATH="$LEAN_PATH:$PWD/.scratch/olean" lean RogersRamanujan.lean
+#    exit 0  <- the name `RogersRamanujan.Lean.Staircase` is the right module name
+```
+
+Independently, the supervisor compiled the same `Staircase.lean`
+(SHA256 `C7ACBCD74866958596ACC458A7231939EBE01969A0723179BFDAAF263CBEB280`) with
+the **pinned** Lean 4.35.0 (`eb6cafb7290e8bd5f2937522d8d804f58f02bafc`, exit 0)
+and reported identical axiom sets. So the toolchain question is settled in favour
+of the pin; the local 4.33.1 runs agree.
+
+| theorem | axioms |
 | --- | --- |
-| `RR127.head_bound` | `Pos (a::rest) -> Gap (a::rest) -> 2*rest.length+1 <= a` |
-| `RR127.addStair_subStair` | `addStair (subStair l) = l` (positive gap partitions) |
-| `RR127.subStair_addStair` | `subStair (addStair l) = l` (unconditional) |
-| `RR127.sum_addStair` | `(addStair l).sum = l.sum + l.length * l.length` |
-| `RR127.weight_subStair` | `lam.sum = n -> (subStair lam).sum = n - lam.length * lam.length` |
-| `RR127.subStair_nonneg` | every staircase coordinate of a positive gap partition is `>= 0` |
+| `RR127.subStair_addStair` | `[propext]` |
+| `RR127.head_bound` | `[propext, Quot.sound]` |
+| `RR127.addStair_subStair` | `[propext, Quot.sound]` |
+| `RR127.sum_addStair` | `[propext, Quot.sound]` |
+| `RR127.weight_subStair` | `[propext, Quot.sound]` |
+| `RR127.subStair_nonneg` | `[propext, Quot.sound]` |
 
-## Two environment limitations, both blocking for a "full" Lean claim
+All inside the event's allowed set; no `sorry`, no `admit`, no `sorryAx`, no
+custom axiom, no `native_decide`, no `Classical.choice`.
 
-1. **Lean version mismatch.** `lean --version` is **4.33.1**, while
-   `lean-toolchain` pins `v4.35.0` and `lake-manifest.json` names mathlib
-   `56a005855ea17e0b0958f73ec801ae140b0a1679`. The kernel-checked evidence above
-   is therefore *not* the pinned toolchain's. Re-running on 4.35.0 is a
-   prerequisite for quoting these theorems in a submission.
-2. **`import Mathlib` does not elaborate here.** A one-line
-   `import Mathlib` file exceeded 240 s wall with 1.5 s user and 27 s sys: the
-   6.4 GB olean import is being read from disk against 15 GB RAM with 0 GB free
-   and 7 GB available. Consequently `Staircase.lean` imports only `Init` and
-   uses only `omega` and `simp` (`ring` is not available in core Lean).
-   **No `lake build` is claimed, and none was run.**
+## Honest scope: this is NOT yet a staircase equivalence
 
-## What is *not* formalized (dependency table)
+Cycle 1 advertised the six declarations as a staircase bridge; the supervisor's
+review correctly narrowed that. Two specific problems:
+
+1. **Weak-decreasingness is missing.** `subStair` producing a nonnegative list of
+   the right length and weight does not make it a *partition*; the order
+   statement (`WeakDec (subStair l)`) is still only checked computationally
+   (Computation results, `staircase_and_T.ok`), not in Lean. This is the one
+   addition that would turn the six lemmas into a genuine equivalence.
+2. **`subStair_nonneg` carries no content.** For `Nat`-valued coordinates
+   `0 <= x` is automatic, so it cannot establish absence of truncation. The
+   substantive non-truncation evidence is `head_bound` (which forces
+   `lambda_1 >= 2(k-1)+1`) together with `addStair_subStair` (which needs exactly
+   that bound to apply `Nat.sub_add_cancel`). Keep the lemma, but do not cite it
+   as truncation evidence.
+
+## Dependency table
 
 | Obligation | Why it matters | Status |
 | --- | --- | --- |
-| `subStair` is weakly decreasing | the other half of "mu is a partition" | computational only (checker) |
-| `Nat.Partition` bridge | the repo pin is `Nat.Partition`, which is a `Multiset` without consecutive indices | not started |
+| `WeakDec (subStair l)` | the other half of "mu is a partition" | **open** (computational only) |
+| subtype-level `Equiv` | packages the two inverse laws as a genuine equivalence of the two families, length retained | open; needs the row above |
 | `T` and `B_n` (= smallest part >= length) | bridges to BZ82/BP06 notation | not started |
-| BZ82 `phi`/`psi` definitions | would let a kernel check replace RR-C007's finite test | not started, and blocked by D-3 |
-| root library integration in `lakefile.toml` | `RogersRamanujan/Lean/` is outside the `Mathathon` hierarchy | not done; `Mathathon.lean` is empty, so the default target validates nothing |
-
-The last row is the one to fix first: adding a `RogersRamanujan` lib to
-`lakefile.toml` is a root-build edit owned by Main and must be done together with
-a working `import Mathlib`, which limitation 2 currently prevents.
+| `Nat.Partition` bridge | the repo pin is a `Multiset` without consecutive indices | not started |
+| BZ82 `phi`/`psi` | would let the kernel replace RR-C009's finite test | not started |
+| `lake build RogersRamanujan` | proves the target actually builds with the pin | **not verified here** (no `.lake` checkout) |

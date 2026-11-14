@@ -8,3 +8,12 @@ rev = "v4.35.0"
 
 [[lean_lib]]
 name = "Mathathon"
+
+# Rogers--Ramanujan (SAIR problem 127) proof modules.
+# Added 2026-11-14 by Main so that `RogersRamanujan/Lean/*.lean` is compiled by a
+# named target instead of being invisible to the default build. The modules here
+# import only `Init`, so this library does NOT depend on Mathlib being built.
+# Build:  lake build RogersRamanujan
+[[lean_lib]]
+name = "RogersRamanujan"
+globs = ["RogersRamanujan.Lean.*"]

@@ -1,0 +1,655 @@
+# Long trace: the A_n object with the largest number of steps, n = 30
+# object: (4, 4, 4, 4, 4, 4, 4, 1, 1) in A_30 ; 646 phi/psi applications ; 647 states visited
+# image in B_n: (8, 8, 7, 7) ; T^-1 image in D_n: (11, 9, 6, 4)
+     0  -     j=+0  lam=(4, 4, 4, 4, 4, 4, 4, 1, 1)                                  -
+     1  phi   j=-1  lam=(3, 3, 3, 3, 3, 3, 3, 3, 3)                                  case II (m=3)
+     2  psi   j=+0  lam=(3, 3, 3, 3, 3, 3, 3, 3, 3, 3)                               case IIb (nu=3)
+     3  phi   j=-1  lam=(5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2)                         case II (m=2)
+     4  psi   j=+0  lam=(10, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2)                           case Ib
+     5  phi   j=+1  lam=(3, 3, 3, 3, 3, 3, 3, 3, 3, 1)                               case I
+     6  psi   j=+0  lam=(3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1)                            case Ia (nu=2)
+     7  phi   j=-1  lam=(6, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1)                         case II (m=2)
+     8  psi   j=+0  lam=(6, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1)                         case Ib
+     9  phi   j=-1  lam=(8, 5, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                      case II (m=1)
+    10  psi   j=+0  lam=(8, 8, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                      case IIb (nu=8)
+    11  phi   j=-1  lam=(8, 7, 7, 3, 2)                                              case II (m=2)
+    12  psi   j=+0  lam=(8, 7, 5, 5, 3, 2)                                           case Ib
+    13  phi   j=+1  lam=(9, 6, 6, 3, 1, 1, 1, 1)                                     case I
+    14  psi   j=+0  lam=(9, 6, 6, 3, 2, 1, 1, 1, 1)                                  case Ia (nu=2)
+    15  phi   j=+1  lam=(7, 7, 3, 2, 2, 2, 2, 1, 1, 1)                               case I
+    16  psi   j=+2  lam=(7, 3, 2, 2, 2, 2, 1, 1, 1)                                  case Ib
+    17  phi   j=+1  lam=(12, 6, 4, 2, 1, 1, 1, 1)                                    case II (m=4)
+    18  psi   j=+2  lam=(6, 5, 4, 2, 1, 1, 1, 1)                                     case Ib
+    19  phi   j=+1  lam=(11, 5, 4, 4, 3, 1)                                          case II (m=4)
+    20  psi   j=+0  lam=(11, 7, 4, 4, 3, 1)                                          case Ia (nu=7)
+    21  phi   j=+1  lam=(12, 5, 5, 2, 1, 1, 1, 1)                                    case I
+    22  psi   j=+0  lam=(12, 12, 2, 1, 1, 1, 1)                                      case Ia (nu=12)
+    23  phi   j=+1  lam=(13, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1)                        case I
+    24  psi   j=+0  lam=(13, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1)                     case Ia (nu=2)
+    25  phi   j=+1  lam=(3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 1, 1)                      case I
+    26  psi   j=+0  lam=(3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1)                   case Ia (nu=2)
+    27  phi   j=-1  lam=(9, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1)                   case II (m=2)
+    28  psi   j=+0  lam=(9, 5, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1)                   case Ib
+    29  phi   j=-1  lam=(10, 8, 4, 1, 1, 1, 1, 1)                                    case II (m=1)
+    30  psi   j=+0  lam=(13, 8, 4, 1, 1, 1, 1, 1)                                    case IIb (nu=13)
+    31  phi   j=-1  lam=(12, 7, 5, 3)                                                case II (m=0)
+    32  psi   j=+0  lam=(10, 7, 5, 5, 3)                                             case Ib
+    33  phi   j=+1  lam=(11, 6, 6, 1, 1, 1, 1, 1)                                    case I
+    34  psi   j=+0  lam=(11, 6, 6, 2, 1, 1, 1, 1, 1)                                 case Ia (nu=2)
+    35  phi   j=-1  lam=(10, 5, 5, 5, 1, 1)                                          case II (m=1)
+    36  psi   j=-2  lam=(12, 5, 1, 1)                                                case Ia (nu=12)
+    37  phi   j=-1  lam=(6, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) case I
+    38  psi   j=+0  lam=(6, 5, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) case Ib
+    39  phi   j=-1  lam=(16, 5, 4, 1, 1)                                             case II (m=1)
+    40  psi   j=+0  lam=(16, 8, 4, 1, 1)                                             case IIb (nu=8)
+    41  phi   j=+1  lam=(17, 9, 2)                                                   case I
+    42  psi   j=+2  lam=(9, 5, 5, 2)                                                 case Ib
+    43  phi   j=+3  lam=(6, 3)                                                       case I
+    44  psi   j=+2  lam=(12, 6, 3)                                                   case Ia (nu=12)
+    45  phi   j=+1  lam=(11, 6, 5, 4, 2)                                             case II (m=4)
+    46  psi   j=+0  lam=(11, 7, 6, 4, 2)                                             case Ia (nu=7)
+    47  phi   j=+1  lam=(12, 8, 5, 1, 1, 1)                                          case I
+    48  psi   j=+2  lam=(10, 8, 1, 1, 1)                                             case Ib
+    49  phi   j=+1  lam=(9, 8, 7, 4)                                                 case II (m=4)
+    50  psi   j=+2  lam=(9, 8, 4)                                                    case Ib
+    51  phi   j=+1  lam=(8, 7, 7, 3, 3)                                              case II (m=3)
+    52  psi   j=+2  lam=(8, 7, 3, 3)                                                 case Ib
+    53  phi   j=+1  lam=(7, 7, 6, 4, 2, 2)                                           case II (m=4)
+    54  psi   j=+2  lam=(7, 6, 4, 2, 2)                                              case Ib
+    55  phi   j=+1  lam=(7, 6, 5, 5, 3, 1, 1)                                        case II (m=5)
+    56  psi   j=+0  lam=(12, 7, 6, 3, 1, 1)                                          case Ia (nu=12)
+    57  phi   j=+1  lam=(8, 7, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1)                      case I
+    58  psi   j=+2  lam=(8, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1)                         case Ib
+    59  phi   j=+1  lam=(15, 7, 4, 1, 1)                                             case II (m=4)
+    60  psi   j=+0  lam=(10, 7, 7, 4, 1, 1)                                          case Ia (nu=7)
+    61  phi   j=-1  lam=(9, 6, 6, 3, 3)                                              case II (m=0)
+    62  psi   j=+0  lam=(9, 6, 6, 3, 3, 3)                                           case IIb (nu=3)
+    63  phi   j=+1  lam=(7, 7, 4, 4, 1, 1, 1, 1, 1, 1)                               case I
+    64  psi   j=+2  lam=(7, 4, 4, 1, 1, 1, 1, 1, 1)                                  case Ib
+    65  phi   j=+1  lam=(12, 6, 4, 3, 3)                                             case II (m=4)
+    66  psi   j=+2  lam=(6, 5, 4, 3, 3)                                              case Ib
+    67  phi   j=+1  lam=(8, 5, 4, 4, 3, 2, 2)                                        case II (m=4)
+    68  psi   j=+0  lam=(8, 7, 4, 4, 3, 2, 2)                                        case Ia (nu=7)
+    69  phi   j=+1  lam=(9, 5, 5, 3, 3, 1, 1, 1)                                     case I
+    70  psi   j=+0  lam=(12, 9, 3, 3, 1, 1, 1)                                       case Ia (nu=12)
+    71  phi   j=+1  lam=(10, 4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1)                     case I
+    72  psi   j=+0  lam=(7, 5, 4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1)                   case Ia (nu=7)
+    73  phi   j=-1  lam=(9, 6, 4, 3, 2, 1, 1, 1)                                     case II (m=2)
+    74  psi   j=+0  lam=(9, 6, 5, 4, 3, 1, 1, 1)                                     case Ib
+    75  phi   j=+1  lam=(10, 6, 5, 2, 2, 2, 1)                                       case I
+    76  psi   j=+0  lam=(12, 6, 5, 2, 2, 2, 1)                                       case Ia (nu=12)
+    77  phi   j=+1  lam=(13, 6, 3, 3, 2, 1)                                          case I
+    78  psi   j=+0  lam=(13, 6, 3, 3, 2, 2, 1)                                       case Ia (nu=2)
+    79  phi   j=+1  lam=(7, 4, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1)                   case I
+    80  psi   j=+2  lam=(4, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1)                      case Ib
+    81  phi   j=+1  lam=(17, 3, 3, 2, 2, 1)                                          case II (m=3)
+    82  psi   j=+2  lam=(5, 5, 3, 3, 2, 2, 1)                                        case Ib
+    83  phi   j=+1  lam=(10, 4, 4, 4, 2, 2, 1, 1)                                    case II (m=4)
+    84  psi   j=+0  lam=(7, 5, 4, 4, 4, 2, 2, 1, 1)                                  case Ia (nu=7)
+    85  phi   j=+1  lam=(6, 5, 5, 3, 3, 2, 2, 1, 1)                                  case I
+    86  psi   j=+0  lam=(12, 6, 3, 3, 2, 2, 1, 1)                                    case Ia (nu=12)
+    87  phi   j=+1  lam=(7, 4, 3, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1)                      case I
+    88  psi   j=+2  lam=(4, 3, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1)                         case Ib
+    89  phi   j=+1  lam=(16, 3, 3, 2, 2, 1, 1)                                       case II (m=3)
+    90  psi   j=+0  lam=(16, 3, 3, 2, 2, 2, 1, 1)                                    case Ia (nu=2)
+    91  phi   j=-1  lam=(15, 4, 2, 2, 1, 1, 1, 1)                                    case II (m=1)
+    92  psi   j=+0  lam=(20, 4, 2, 1, 1, 1, 1)                                       case Ib
+    93  phi   j=+1  lam=(5, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) case I
+    94  psi   j=+0  lam=(7, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) case Ia (nu=7)
+    95  phi   j=-1  lam=(16, 6, 1, 1, 1, 1, 1)                                       case II (m=1)
+    96  psi   j=+0  lam=(16, 6, 3, 1, 1, 1, 1, 1)                                    case IIb (nu=3)
+    97  phi   j=-1  lam=(15, 5, 5, 2)                                                case II (m=0)
+    98  psi   j=-2  lam=(10, 7, 2)                                                   case Ia (nu=7)
+    99  phi   j=-1  lam=(8, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)       case I
+   100  psi   j=-2  lam=(3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)          case IIa (nu=0)
+   101  phi   j=-3  lam=(4, 2)                                                       case II (m=0)
+   102  psi   j=-2  lam=(5, 5, 5, 4)                                                 case Ib
+   103  phi   j=-1  lam=(6, 6, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                      case I
+   104  psi   j=+0  lam=(8, 6, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                      case IIb (nu=8)
+   105  phi   j=-1  lam=(8, 7, 5, 5, 2)                                              case II (m=2)
+   106  psi   j=+0  lam=(10, 10, 8, 2)                                               case Ib
+   107  phi   j=+1  lam=(11, 9, 1, 1, 1, 1, 1, 1, 1, 1)                              case I
+   108  psi   j=+0  lam=(11, 9, 2, 1, 1, 1, 1, 1, 1, 1, 1)                           case Ia (nu=2)
+   109  phi   j=+1  lam=(10, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1)                           case I
+   110  psi   j=+0  lam=(7, 5, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1)                         case Ia (nu=7)
+   111  phi   j=-1  lam=(8, 6, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1)                         case II (m=1)
+   112  psi   j=-2  lam=(6, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1)                            case IIa (nu=0)
+   113  phi   j=-1  lam=(5, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1)                case I
+   114  psi   j=+0  lam=(10, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1)                  case Ib
+   115  phi   j=-1  lam=(10, 9, 1, 1, 1, 1, 1, 1, 1, 1)                              case II (m=1)
+   116  psi   j=+0  lam=(13, 9, 1, 1, 1, 1, 1, 1, 1, 1)                              case IIb (nu=13)
+   117  phi   j=+1  lam=(14, 2, 2, 2, 2, 2, 2, 2)                                    case I
+   118  psi   j=+0  lam=(14, 2, 2, 2, 2, 2, 2, 2, 2)                                 case Ia (nu=2)
+   119  phi   j=+1  lam=(3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1)                   case I
+   120  psi   j=+0  lam=(3, 3, 3, 3, 3, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1)                case Ia (nu=2)
+   121  phi   j=-1  lam=(10, 2, 2, 2, 2, 2, 2, 2, 2, 1)                              case II (m=2)
+   122  psi   j=+0  lam=(15, 2, 2, 2, 2, 2, 2, 2, 1)                                 case Ib
+   123  phi   j=+1  lam=(3, 3, 3, 3, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1)                case I
+   124  psi   j=+0  lam=(3, 3, 3, 3, 3, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1)             case Ia (nu=2)
+   125  phi   j=-1  lam=(11, 2, 2, 2, 2, 2, 2, 2, 1, 1)                              case II (m=2)
+   126  psi   j=+0  lam=(11, 5, 2, 2, 2, 2, 2, 2, 1, 1)                              case Ib
+   127  phi   j=+1  lam=(6, 3, 3, 3, 3, 3, 2, 2, 1, 1, 1)                            case I
+   128  psi   j=+0  lam=(6, 3, 3, 3, 3, 3, 2, 2, 2, 1, 1, 1)                         case Ia (nu=2)
+   129  phi   j=-1  lam=(7, 5, 2, 2, 2, 2, 2, 2, 1, 1, 1)                            case II (m=2)
+   130  psi   j=+0  lam=(10, 5, 2, 2, 2, 2, 2, 2, 1, 1, 1)                           case Ib
+   131  phi   j=+1  lam=(6, 3, 3, 3, 3, 3, 2, 2, 2, 1)                               case I
+   132  psi   j=+0  lam=(6, 3, 3, 3, 3, 3, 2, 2, 2, 2, 1)                            case Ia (nu=2)
+   133  phi   j=-1  lam=(6, 5, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1)                         case II (m=2)
+   134  psi   j=+0  lam=(10, 6, 2, 2, 2, 2, 2, 1, 1, 1, 1)                           case Ib
+   135  phi   j=+1  lam=(7, 3, 3, 3, 3, 2, 2, 2, 2, 1)                               case I
+   136  psi   j=+2  lam=(3, 3, 3, 3, 2, 2, 2, 2, 1)                                  case Ib
+   137  phi   j=+1  lam=(13, 3, 2, 2, 2, 2, 1, 1, 1, 1)                              case II (m=3)
+   138  psi   j=+0  lam=(13, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1)                           case Ia (nu=2)
+   139  phi   j=+1  lam=(4, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1)                      case I
+   140  psi   j=+0  lam=(4, 3, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1)                   case Ia (nu=2)
+   141  phi   j=-1  lam=(9, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1)                         case II (m=2)
+   142  psi   j=+0  lam=(9, 5, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1)                         case Ib
+   143  phi   j=-1  lam=(8, 8, 4, 2, 1, 1, 1, 1, 1)                                  case II (m=1)
+   144  psi   j=+0  lam=(8, 8, 5, 4, 1, 1, 1, 1, 1)                                  case Ib
+   145  phi   j=-1  lam=(7, 7, 5, 4, 3, 1)                                           case II (m=1)
+   146  psi   j=+0  lam=(10, 7, 5, 4, 3, 1)                                          case Ib
+   147  phi   j=+1  lam=(11, 6, 5, 2, 1, 1, 1, 1)                                    case I
+   148  psi   j=+0  lam=(11, 7, 6, 2, 1, 1, 1, 1)                                    case Ia (nu=7)
+   149  phi   j=+1  lam=(12, 7, 2, 2, 2, 2, 1)                                       case I
+   150  psi   j=+2  lam=(7, 5, 2, 2, 2, 2, 1)                                        case Ib
+   151  phi   j=+1  lam=(10, 6, 4, 4, 1, 1, 1, 1)                                    case II (m=4)
+   152  psi   j=+0  lam=(7, 6, 5, 4, 4, 1, 1, 1, 1)                                  case Ia (nu=7)
+   153  phi   j=+1  lam=(7, 6, 5, 2, 2, 2, 2, 1, 1)                                  case I
+   154  psi   j=+0  lam=(7, 7, 6, 2, 2, 2, 2, 1, 1)                                  case Ia (nu=7)
+   155  phi   j=+1  lam=(8, 7, 3, 3, 3, 2, 2)                                        case I
+   156  psi   j=+2  lam=(8, 3, 3, 3, 2, 2)                                           case Ib
+   157  phi   j=+1  lam=(9, 7, 4, 2, 2, 2, 1, 1)                                     case II (m=4)
+   158  psi   j=+2  lam=(9, 4, 2, 2, 2, 1, 1)                                        case Ib
+   159  phi   j=+1  lam=(10, 8, 4, 3, 1, 1, 1)                                       case II (m=4)
+   160  psi   j=+0  lam=(8, 7, 5, 4, 3, 1, 1, 1)                                     case Ia (nu=7)
+   161  phi   j=+1  lam=(9, 6, 5, 2, 2, 2, 1, 1)                                     case I
+   162  psi   j=+0  lam=(9, 7, 6, 2, 2, 2, 1, 1)                                     case Ia (nu=7)
+   163  phi   j=+1  lam=(10, 7, 3, 3, 2, 2, 1)                                       case I
+   164  psi   j=+0  lam=(7, 7, 5, 3, 3, 2, 2, 1)                                     case Ia (nu=7)
+   165  phi   j=+1  lam=(8, 6, 4, 3, 3, 2, 1, 1)                                     case I
+   166  psi   j=+0  lam=(8, 6, 4, 3, 3, 2, 2, 1, 1)                                  case Ia (nu=2)
+   167  phi   j=+1  lam=(7, 5, 4, 3, 3, 2, 2, 1, 1)                                  case I
+   168  psi   j=+0  lam=(7, 7, 4, 3, 3, 2, 2, 1, 1)                                  case Ia (nu=7)
+   169  phi   j=+1  lam=(8, 5, 4, 3, 3, 2, 2, 1)                                     case I
+   170  psi   j=+0  lam=(8, 7, 4, 3, 3, 2, 2, 1)                                     case Ia (nu=7)
+   171  phi   j=+1  lam=(8, 5, 4, 3, 3, 2, 1, 1, 1)                                  case I
+   172  psi   j=+0  lam=(8, 7, 4, 3, 3, 2, 1, 1, 1)                                  case Ia (nu=7)
+   173  phi   j=+1  lam=(8, 5, 4, 3, 2, 2, 2, 1, 1)                                  case I
+   174  psi   j=+0  lam=(8, 7, 4, 3, 2, 2, 2, 1, 1)                                  case Ia (nu=7)
+   175  phi   j=+1  lam=(8, 5, 3, 3, 3, 2, 2, 1, 1)                                  case I
+   176  psi   j=+0  lam=(8, 7, 3, 3, 3, 2, 2, 1, 1)                                  case Ia (nu=7)
+   177  phi   j=+1  lam=(8, 4, 4, 3, 3, 2, 2, 1, 1)                                  case I
+   178  psi   j=+0  lam=(8, 4, 4, 3, 3, 2, 2, 2, 1, 1)                               case Ia (nu=2)
+   179  phi   j=+1  lam=(5, 5, 4, 3, 3, 3, 2, 2, 1)                                  case I
+   180  psi   j=+0  lam=(12, 4, 3, 3, 3, 2, 2, 1)                                    case Ia (nu=12)
+   181  phi   j=+1  lam=(5, 4, 4, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1)                      case I
+   182  psi   j=+0  lam=(7, 4, 4, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1)                      case Ia (nu=7)
+   183  phi   j=-1  lam=(8, 6, 3, 3, 2, 2, 2, 1)                                     case II (m=2)
+   184  psi   j=+0  lam=(8, 6, 5, 3, 3, 2, 2, 1)                                     case Ib
+   185  phi   j=+1  lam=(7, 6, 4, 3, 3, 2, 1, 1, 1)                                  case I
+   186  psi   j=+2  lam=(6, 4, 3, 3, 2, 1, 1, 1)                                     case Ib
+   187  phi   j=+1  lam=(11, 5, 4, 3, 2, 2, 1)                                       case II (m=4)
+   188  psi   j=+0  lam=(11, 7, 4, 3, 2, 2, 1)                                       case Ia (nu=7)
+   189  phi   j=+1  lam=(8, 5, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1)                         case I
+   190  psi   j=+0  lam=(8, 7, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1)                         case Ia (nu=7)
+   191  phi   j=-1  lam=(7, 7, 6, 2, 2, 2, 1)                                        case II (m=2)
+   192  psi   j=+0  lam=(7, 6, 5, 5, 2, 2, 2, 1)                                     case Ib
+   193  phi   j=-1  lam=(6, 5, 4, 4, 4, 1, 1, 1, 1)                                  case II (m=1)
+   194  psi   j=+0  lam=(8, 6, 4, 4, 4, 1, 1, 1, 1)                                  case IIb (nu=8)
+   195  phi   j=+1  lam=(7, 5, 5, 2, 2, 2, 2, 1, 1, 1)                               case I
+   196  psi   j=+0  lam=(12, 7, 2, 2, 2, 2, 1, 1, 1)                                 case Ia (nu=12)
+   197  phi   j=+1  lam=(8, 3, 3, 3, 2, 2, 2, 1, 1, 1, 1, 1)                         case I
+   198  psi   j=+0  lam=(8, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1)                      case Ia (nu=2)
+   199  phi   j=-1  lam=(8, 7, 2, 2, 2, 2, 1, 1, 1, 1)                               case II (m=2)
+   200  psi   j=+0  lam=(8, 5, 5, 2, 2, 2, 2, 1, 1, 1, 1)                            case Ib
+   201  phi   j=-1  lam=(7, 7, 4, 4, 1, 1, 1, 1, 1)                                  case II (m=1)
+   202  psi   j=+0  lam=(7, 5, 5, 4, 4, 1, 1, 1, 1, 1)                               case Ib
+   203  phi   j=+1  lam=(6, 6, 5, 2, 2, 2, 2, 2, 1)                                  case I
+   204  psi   j=+0  lam=(7, 6, 6, 2, 2, 2, 2, 2, 1)                                  case Ia (nu=7)
+   205  phi   j=-1  lam=(6, 5, 5, 5, 1, 1, 1, 1, 1, 1)                               case II (m=1)
+   206  psi   j=-2  lam=(7, 6, 1, 1, 1, 1, 1, 1)                                     case Ia (nu=7)
+   207  phi   j=-1  lam=(7, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)             case I
+   208  psi   j=+0  lam=(5, 5, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)          case Ib
+   209  phi   j=-1  lam=(13, 4, 4, 1, 1, 1, 1, 1, 1)                                 case II (m=1)
+   210  psi   j=-2  lam=(5, 4, 4, 1, 1, 1, 1, 1, 1)                                  case IIa (nu=5)
+   211  phi   j=-1  lam=(5, 5, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1)                   case I
+   212  psi   j=-2  lam=(2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1)                      case Ia (nu=2)
+   213  phi   j=-1  lam=(3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2)                            case I
+   214  psi   j=+0  lam=(5, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2)                            case Ib
+   215  phi   j=-1  lam=(6, 4, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1)                      case II (m=2)
+   216  psi   j=+0  lam=(6, 5, 4, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1)                      case Ib
+   217  phi   j=-1  lam=(8, 5, 4, 3, 2, 1, 1, 1, 1, 1)                               case II (m=2)
+   218  psi   j=+0  lam=(10, 8, 4, 3, 1, 1, 1, 1, 1)                                 case Ib
+   219  phi   j=+1  lam=(9, 5, 2, 2, 2, 2, 2, 1, 1, 1, 1)                            case I
+   220  psi   j=+0  lam=(9, 7, 2, 2, 2, 2, 2, 1, 1, 1, 1)                            case Ia (nu=7)
+   221  phi   j=+1  lam=(8, 3, 3, 3, 3, 2, 2, 2, 2)                                  case I
+   222  psi   j=+0  lam=(8, 3, 3, 3, 3, 2, 2, 2, 2, 2)                               case Ia (nu=2)
+   223  phi   j=+1  lam=(4, 4, 4, 3, 3, 3, 3, 3, 1)                                  case I
+   224  psi   j=+0  lam=(4, 4, 4, 3, 3, 3, 3, 3, 2, 1)                               case Ia (nu=2)
+   225  phi   j=-1  lam=(5, 3, 3, 3, 2, 2, 2, 2, 2, 2, 1)                            case II (m=2)
+   226  psi   j=+0  lam=(10, 3, 3, 3, 2, 2, 2, 2, 2, 1)                              case Ib
+   227  phi   j=+1  lam=(4, 4, 3, 3, 3, 3, 3, 2, 1, 1, 1)                            case I
+   228  psi   j=+0  lam=(4, 4, 3, 3, 3, 3, 3, 2, 2, 1, 1, 1)                         case Ia (nu=2)
+   229  phi   j=-1  lam=(7, 3, 3, 2, 2, 2, 2, 2, 2, 1, 1)                            case II (m=2)
+   230  psi   j=+0  lam=(5, 5, 3, 3, 2, 2, 2, 2, 2, 2, 1, 1)                         case Ib
+   231  phi   j=-1  lam=(7, 4, 4, 2, 2, 2, 1, 1, 1, 1, 1, 1)                         case II (m=2)
+   232  psi   j=+0  lam=(5, 5, 4, 4, 2, 2, 2, 1, 1, 1, 1, 1, 1)                      case Ib
+   233  phi   j=-1  lam=(7, 4, 4, 3, 3, 3, 1, 1, 1)                                  case II (m=3)
+   234  psi   j=+0  lam=(5, 5, 4, 4, 3, 3, 3, 1, 1, 1)                               case Ib
+   235  phi   j=-1  lam=(4, 4, 4, 3, 3, 3, 2, 2, 2)                                  case II (m=3)
+   236  psi   j=+0  lam=(5, 4, 4, 4, 3, 3, 3, 2, 2)                                  case Ib
+   237  phi   j=-1  lam=(4, 4, 3, 3, 3, 2, 2, 2, 2, 1, 1)                            case II (m=2)
+   238  psi   j=+0  lam=(5, 4, 4, 3, 3, 3, 2, 2, 2, 1, 1)                            case Ib
+   239  phi   j=-1  lam=(6, 4, 3, 3, 2, 2, 2, 2, 1, 1, 1)                            case II (m=2)
+   240  psi   j=+0  lam=(6, 5, 4, 3, 3, 2, 2, 2, 1, 1, 1)                            case Ib
+   241  phi   j=-1  lam=(6, 5, 4, 3, 2, 2, 2, 1, 1, 1)                               case II (m=2)
+   242  psi   j=+0  lam=(10, 6, 4, 3, 2, 2, 1, 1, 1)                                 case Ib
+   243  phi   j=+1  lam=(7, 5, 3, 3, 2, 2, 2, 1, 1, 1, 1)                            case I
+   244  psi   j=+0  lam=(7, 7, 3, 3, 2, 2, 2, 1, 1, 1, 1)                            case Ia (nu=7)
+   245  phi   j=-1  lam=(6, 6, 6, 2, 2, 2, 1, 1, 1)                                  case II (m=2)
+   246  psi   j=+0  lam=(6, 6, 6, 5, 2, 2, 1, 1, 1)                                  case Ib
+   247  phi   j=-1  lam=(5, 5, 5, 5, 4, 1, 1, 1)                                     case II (m=1)
+   248  psi   j=-2  lam=(12, 4, 1, 1, 1)                                             case Ia (nu=12)
+   249  phi   j=-1  lam=(13, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1)                        case I
+   250  psi   j=+0  lam=(13, 5, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1)                        case Ib
+   251  phi   j=+1  lam=(6, 3, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1)                      case I
+   252  psi   j=+0  lam=(6, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1)                   case Ia (nu=2)
+   253  phi   j=-1  lam=(10, 5, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                     case II (m=1)
+   254  psi   j=-2  lam=(5, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                      case Ia (nu=2)
+   255  phi   j=-1  lam=(3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1)                   case I
+   256  psi   j=+0  lam=(5, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1)                   case Ib
+   257  phi   j=-1  lam=(9, 4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1)                      case II (m=2)
+   258  psi   j=+0  lam=(9, 5, 4, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1)                      case Ib
+   259  phi   j=-1  lam=(8, 8, 4, 3, 2, 1, 1)                                        case II (m=2)
+   260  psi   j=+0  lam=(8, 8, 5, 4, 3, 1, 1)                                        case Ib
+   261  phi   j=+1  lam=(9, 6, 5, 2, 2, 1, 1, 1, 1)                                  case I
+   262  psi   j=+0  lam=(9, 7, 6, 2, 2, 1, 1, 1, 1)                                  case Ia (nu=7)
+   263  phi   j=+1  lam=(10, 7, 3, 2, 2, 2, 2)                                       case I
+   264  psi   j=+0  lam=(7, 7, 5, 3, 2, 2, 2, 2)                                     case Ia (nu=7)
+   265  phi   j=+1  lam=(8, 6, 3, 3, 3, 3, 1, 1)                                     case I
+   266  psi   j=+0  lam=(8, 6, 3, 3, 3, 3, 2, 1, 1)                                  case Ia (nu=2)
+   267  phi   j=+1  lam=(7, 4, 4, 4, 3, 2, 2, 1, 1)                                  case I
+   268  psi   j=+2  lam=(4, 4, 4, 3, 2, 2, 1, 1)                                     case Ib
+   269  phi   j=+1  lam=(12, 3, 3, 3, 3, 2, 1, 1)                                    case II (m=3)
+   270  psi   j=+2  lam=(5, 3, 3, 3, 3, 2, 1, 1)                                     case Ib
+   271  phi   j=+1  lam=(11, 4, 4, 2, 2, 2, 2, 1)                                    case II (m=4)
+   272  psi   j=+0  lam=(11, 4, 4, 2, 2, 2, 2, 2, 1)                                 case Ia (nu=2)
+   273  phi   j=-1  lam=(10, 5, 3, 3, 1, 1, 1, 1, 1, 1)                              case II (m=1)
+   274  psi   j=-2  lam=(5, 3, 3, 2, 1, 1, 1, 1, 1, 1)                               case Ia (nu=2)
+   275  phi   j=-1  lam=(4, 4, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1)                   case I
+   276  psi   j=+0  lam=(5, 4, 4, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1)                   case Ib
+   277  phi   j=-1  lam=(9, 4, 3, 3, 2, 2, 1, 1, 1, 1)                               case II (m=2)
+   278  psi   j=+0  lam=(9, 5, 4, 3, 3, 2, 1, 1, 1, 1)                               case Ib
+   279  phi   j=+1  lam=(6, 5, 4, 3, 2, 2, 2, 2, 1, 1)                               case I
+   280  psi   j=+0  lam=(7, 6, 4, 3, 2, 2, 2, 2, 1, 1)                               case Ia (nu=7)
+   281  phi   j=+1  lam=(7, 5, 3, 3, 3, 3, 2, 2)                                     case I
+   282  psi   j=+0  lam=(7, 7, 3, 3, 3, 3, 2, 2)                                     case Ia (nu=7)
+   283  phi   j=+1  lam=(8, 4, 4, 4, 3, 3, 1, 1)                                     case I
+   284  psi   j=+0  lam=(8, 4, 4, 4, 3, 3, 2, 1, 1)                                  case Ia (nu=2)
+   285  phi   j=-1  lam=(7, 4, 3, 3, 3, 2, 2, 2, 1)                                  case II (m=2)
+   286  psi   j=+0  lam=(5, 5, 4, 3, 3, 3, 2, 2, 2, 1)                               case Ib
+   287  phi   j=-1  lam=(5, 4, 4, 3, 2, 2, 2, 2, 1, 1, 1)                            case II (m=2)
+   288  psi   j=+0  lam=(10, 4, 4, 3, 2, 2, 2, 1, 1, 1)                              case Ib
+   289  phi   j=+1  lam=(5, 5, 3, 3, 3, 2, 2, 2, 1, 1, 1)                            case I
+   290  psi   j=+0  lam=(12, 3, 3, 3, 2, 2, 2, 1, 1, 1)                              case Ia (nu=12)
+   291  phi   j=+1  lam=(4, 4, 3, 3, 3, 2, 2, 2, 1, 1, 1, 1, 1)                      case I
+   292  psi   j=+0  lam=(4, 4, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1)                   case Ia (nu=2)
+   293  phi   j=-1  lam=(9, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1)                            case II (m=2)
+   294  psi   j=+0  lam=(9, 5, 3, 3, 2, 2, 2, 1, 1, 1, 1)                            case Ib
+   295  phi   j=+1  lam=(6, 4, 3, 3, 3, 2, 2, 2, 2, 1)                               case I
+   296  psi   j=+0  lam=(6, 4, 3, 3, 3, 2, 2, 2, 2, 2, 1)                            case Ia (nu=2)
+   297  phi   j=-1  lam=(6, 5, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1)                         case II (m=2)
+   298  psi   j=+0  lam=(10, 6, 3, 2, 2, 2, 1, 1, 1, 1, 1)                           case Ib
+   299  phi   j=-1  lam=(9, 7, 5, 2, 1, 1, 1, 1)                                     case II (m=1)
+   300  psi   j=+0  lam=(10, 9, 5, 2, 1, 1, 1, 1)                                    case Ib
+   301  phi   j=+1  lam=(11, 6, 2, 2, 2, 2, 1, 1, 1)                                 case I
+   302  psi   j=+0  lam=(11, 6, 2, 2, 2, 2, 2, 1, 1, 1)                              case Ia (nu=2)
+   303  phi   j=+1  lam=(7, 3, 3, 3, 3, 2, 2, 2, 1, 1, 1)                            case I
+   304  psi   j=+2  lam=(3, 3, 3, 3, 2, 2, 2, 1, 1, 1)                               case Ib
+   305  phi   j=+1  lam=(14, 3, 2, 2, 2, 2, 1, 1, 1)                                 case II (m=3)
+   306  psi   j=+0  lam=(14, 3, 2, 2, 2, 2, 2, 1, 1, 1)                              case Ia (nu=2)
+   307  phi   j=+1  lam=(4, 3, 3, 3, 3, 2, 2, 2, 1, 1, 1, 1, 1, 1)                   case I
+   308  psi   j=+0  lam=(4, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1)                case Ia (nu=2)
+   309  phi   j=-1  lam=(10, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1)                           case II (m=2)
+   310  psi   j=+0  lam=(15, 3, 2, 2, 2, 2, 1, 1, 1, 1)                              case Ib
+   311  phi   j=+1  lam=(4, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1)                case I
+   312  psi   j=+0  lam=(4, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1)             case Ia (nu=2)
+   313  phi   j=-1  lam=(11, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1)                           case II (m=2)
+   314  psi   j=+0  lam=(11, 5, 3, 2, 2, 2, 1, 1, 1, 1, 1)                           case Ib
+   315  phi   j=-1  lam=(10, 7, 4, 2, 1, 1, 1, 1)                                    case II (m=1)
+   316  psi   j=+0  lam=(15, 5, 4, 2, 1, 1, 1, 1)                                    case Ib
+   317  phi   j=-1  lam=(14, 4, 4, 3, 1, 1)                                          case II (m=1)
+   318  psi   j=+0  lam=(14, 4, 4, 3, 3, 1, 1)                                       case IIb (nu=3)
+   319  phi   j=+1  lam=(5, 5, 4, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                case I
+   320  psi   j=+0  lam=(12, 4, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                  case Ia (nu=12)
+   321  phi   j=+1  lam=(5, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2)                         case I
+   322  psi   j=+0  lam=(7, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2)                         case Ia (nu=7)
+   323  phi   j=-1  lam=(8, 6, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                   case II (m=1)
+   324  psi   j=+0  lam=(8, 6, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                   case Ib
+   325  phi   j=-1  lam=(9, 7, 5, 4, 2)                                              case II (m=2)
+   326  psi   j=+0  lam=(10, 9, 5, 4, 2)                                             case Ib
+   327  phi   j=+1  lam=(11, 10, 5, 1, 1)                                            case I
+   328  psi   j=+0  lam=(12, 11, 5, 1, 1)                                            case Ia (nu=12)
+   329  phi   j=+1  lam=(13, 12, 2, 1)                                               case I
+   330  psi   j=+2  lam=(13, 5, 2, 1)                                                case Ib
+   331  phi   j=+3  lam=(3, 2, 1, 1, 1, 1)                                           case I
+   332  psi   j=+2  lam=(12, 3, 2, 1, 1, 1, 1)                                       case Ia (nu=12)
+   333  phi   j=+1  lam=(11, 11, 3, 2, 1)                                            case II (m=3)
+   334  psi   j=+0  lam=(11, 11, 3, 2, 2, 1)                                         case Ia (nu=2)
+   335  phi   j=+1  lam=(12, 4, 3, 2, 1, 1, 1, 1, 1, 1, 1)                           case I
+   336  psi   j=+2  lam=(5, 4, 3, 2, 1, 1, 1, 1, 1, 1, 1)                            case Ib
+   337  phi   j=+1  lam=(14, 4, 4, 3, 2, 1)                                          case II (m=4)
+   338  psi   j=+0  lam=(14, 4, 4, 3, 2, 2, 1)                                       case Ia (nu=2)
+   339  phi   j=+1  lam=(5, 5, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                case I
+   340  psi   j=+0  lam=(12, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                  case Ia (nu=12)
+   341  phi   j=-1  lam=(11, 10, 2, 2, 1, 1)                                         case II (m=1)
+   342  psi   j=+0  lam=(15, 11, 2, 1, 1)                                            case Ib
+   343  phi   j=+1  lam=(12, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)               case I
+   344  psi   j=+2  lam=(5, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                case Ib
+   345  phi   j=+1  lam=(18, 4, 4, 1, 1)                                             case II (m=4)
+   346  psi   j=+0  lam=(18, 4, 4, 2, 1, 1)                                          case Ia (nu=2)
+   347  phi   j=+1  lam=(19, 5, 2, 2)                                                case I
+   348  psi   j=+0  lam=(19, 7, 2, 2)                                                case Ia (nu=7)
+   349  phi   j=+1  lam=(8, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)    case I
+   350  psi   j=+0  lam=(8, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) case Ia (nu=2)
+   351  phi   j=-1  lam=(16, 7, 2, 1, 1)                                             case II (m=1)
+   352  psi   j=+0  lam=(16, 5, 5, 2, 1, 1)                                          case Ib
+   353  phi   j=+1  lam=(17, 6, 2, 2, 1)                                             case I
+   354  psi   j=+2  lam=(6, 5, 5, 2, 2, 1)                                           case Ib
+   355  phi   j=+1  lam=(9, 5, 4, 4, 4, 1, 1)                                        case II (m=4)
+   356  psi   j=+0  lam=(9, 7, 4, 4, 4, 1, 1)                                        case Ia (nu=7)
+   357  phi   j=+1  lam=(8, 5, 5, 2, 2, 1, 1, 1, 1, 1, 1)                            case I
+   358  psi   j=+0  lam=(12, 8, 2, 2, 1, 1, 1, 1, 1, 1)                              case Ia (nu=12)
+   359  phi   j=+1  lam=(9, 3, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1)                         case I
+   360  psi   j=+0  lam=(9, 3, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1)                      case Ia (nu=2)
+   361  phi   j=-1  lam=(9, 8, 2, 1, 1, 1, 1, 1, 1, 1, 1)                            case II (m=1)
+   362  psi   j=+0  lam=(9, 8, 5, 1, 1, 1, 1, 1, 1, 1, 1)                            case Ib
+   363  phi   j=-1  lam=(8, 7, 7, 4, 1)                                              case II (m=1)
+   364  psi   j=+0  lam=(8, 7, 5, 5, 4, 1)                                           case Ib
+   365  phi   j=+1  lam=(8, 6, 6, 2, 1, 1, 1, 1, 1, 1)                               case I
+   366  psi   j=+0  lam=(8, 6, 6, 2, 2, 1, 1, 1, 1, 1, 1)                            case Ia (nu=2)
+   367  phi   j=-1  lam=(7, 7, 5, 5, 1, 1, 1)                                        case II (m=1)
+   368  psi   j=+0  lam=(10, 10, 7, 1, 1, 1)                                         case Ib
+   369  phi   j=+1  lam=(11, 11, 2, 2, 1, 1)                                         case I
+   370  psi   j=+0  lam=(11, 11, 2, 2, 2, 1, 1)                                      case Ia (nu=2)
+   371  phi   j=+1  lam=(12, 3, 3, 2, 2, 1, 1, 1, 1, 1, 1)                           case I
+   372  psi   j=+2  lam=(5, 3, 3, 2, 2, 1, 1, 1, 1, 1, 1)                            case Ib
+   373  phi   j=+1  lam=(14, 4, 4, 2, 2, 1, 1)                                       case II (m=4)
+   374  psi   j=+0  lam=(14, 4, 4, 2, 2, 2, 1, 1)                                    case Ia (nu=2)
+   375  phi   j=-1  lam=(13, 4, 3, 3, 1, 1, 1, 1)                                    case II (m=1)
+   376  psi   j=-2  lam=(5, 4, 3, 3, 1, 1, 1, 1)                                     case IIa (nu=5)
+   377  phi   j=-1  lam=(5, 4, 4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1)                   case I
+   378  psi   j=+0  lam=(10, 4, 4, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1)                     case Ib
+   379  phi   j=-1  lam=(9, 9, 3, 3, 1, 1, 1)                                        case II (m=1)
+   380  psi   j=+0  lam=(9, 9, 3, 3, 3, 1, 1, 1)                                     case IIb (nu=3)
+   381  phi   j=+1  lam=(10, 4, 4, 2, 2, 2, 1, 1, 1, 1)                              case I
+   382  psi   j=+0  lam=(7, 5, 4, 4, 2, 2, 2, 1, 1, 1, 1)                            case Ia (nu=7)
+   383  phi   j=-1  lam=(6, 6, 4, 3, 3, 2, 1, 1, 1)                                  case II (m=2)
+   384  psi   j=+0  lam=(6, 6, 5, 4, 3, 3, 1, 1, 1)                                  case Ib
+   385  phi   j=+1  lam=(7, 6, 5, 4, 2, 2, 2)                                        case I
+   386  psi   j=+0  lam=(7, 7, 6, 4, 2, 2, 2)                                        case Ia (nu=7)
+   387  phi   j=+1  lam=(8, 8, 5, 3, 3, 1)                                           case I
+   388  psi   j=+0  lam=(8, 8, 7, 3, 3, 1)                                           case Ia (nu=7)
+   389  phi   j=+1  lam=(9, 8, 4, 2, 1, 1, 1, 1, 1)                                  case I
+   390  psi   j=+0  lam=(9, 8, 4, 2, 2, 1, 1, 1, 1, 1)                               case Ia (nu=2)
+   391  phi   j=+1  lam=(10, 5, 3, 2, 2, 2, 2, 2)                                    case I
+   392  psi   j=+0  lam=(12, 5, 3, 2, 2, 2, 2, 2)                                    case Ia (nu=12)
+   393  phi   j=-1  lam=(11, 4, 4, 2, 1, 1, 1, 1, 1, 1)                              case II (m=1)
+   394  psi   j=+0  lam=(11, 5, 4, 4, 1, 1, 1, 1, 1, 1)                              case Ib
+   395  phi   j=-1  lam=(10, 5, 4, 3, 3, 2)                                          case II (m=2)
+   396  psi   j=-2  lam=(5, 4, 3, 3, 2, 2)                                           case Ia (nu=2)
+   397  phi   j=-1  lam=(6, 5, 4, 3, 3, 1, 1, 1, 1, 1, 1)                            case I
+   398  psi   j=+0  lam=(8, 6, 4, 3, 3, 1, 1, 1, 1, 1, 1)                            case IIb (nu=8)
+   399  phi   j=+1  lam=(7, 5, 4, 2, 2, 2, 2, 2, 2)                                  case I
+   400  psi   j=+0  lam=(7, 7, 4, 2, 2, 2, 2, 2, 2)                                  case Ia (nu=7)
+   401  phi   j=+1  lam=(8, 5, 3, 3, 3, 3, 3)                                        case I
+   402  psi   j=+0  lam=(8, 7, 3, 3, 3, 3, 3)                                        case Ia (nu=7)
+   403  phi   j=+1  lam=(8, 4, 4, 4, 4, 1, 1, 1, 1)                                  case I
+   404  psi   j=+0  lam=(8, 4, 4, 4, 4, 2, 1, 1, 1, 1)                               case Ia (nu=2)
+   405  phi   j=+1  lam=(5, 5, 5, 3, 2, 2, 2, 2, 1, 1)                               case I
+   406  psi   j=+0  lam=(17, 3, 2, 2, 2, 2, 1, 1)                                    case Ia (nu=17)
+   407  phi   j=+1  lam=(4, 3, 3, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)          case I
+   408  psi   j=+0  lam=(4, 3, 3, 3, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)       case Ia (nu=2)
+   409  phi   j=-1  lam=(13, 3, 2, 2, 2, 2, 1, 1, 1)                                 case II (m=2)
+   410  psi   j=+0  lam=(13, 5, 3, 2, 2, 2, 1, 1, 1)                                 case Ib
+   411  phi   j=-1  lam=(12, 5, 4, 2, 1, 1, 1, 1)                                    case II (m=1)
+   412  psi   j=+0  lam=(10, 5, 5, 4, 2, 1, 1, 1, 1)                                 case Ib
+   413  phi   j=-1  lam=(9, 4, 4, 4, 3, 2, 1)                                        case II (m=2)
+   414  psi   j=+0  lam=(9, 5, 4, 4, 4, 3, 1)                                        case Ib
+   415  phi   j=+1  lam=(6, 5, 5, 4, 2, 1, 1, 1, 1, 1, 1)                            case I
+   416  psi   j=+0  lam=(12, 6, 4, 2, 1, 1, 1, 1, 1, 1)                              case Ia (nu=12)
+   417  phi   j=-1  lam=(11, 6, 5, 3, 1, 1)                                          case II (m=1)
+   418  psi   j=+0  lam=(11, 8, 6, 3, 1, 1)                                          case IIb (nu=8)
+   419  phi   j=+1  lam=(9, 7, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1)                         case I
+   420  psi   j=+2  lam=(9, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1)                            case Ib
+   421  phi   j=+1  lam=(14, 8, 4, 1, 1)                                             case II (m=4)
+   422  psi   j=+0  lam=(14, 8, 4, 2, 1, 1)                                          case Ia (nu=2)
+   423  phi   j=+1  lam=(15, 5, 2, 2, 1, 1, 1, 1)                                    case I
+   424  psi   j=+0  lam=(12, 10, 2, 2, 1, 1, 1, 1)                                   case Ia (nu=12)
+   425  phi   j=+1  lam=(11, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1)                        case I
+   426  psi   j=+0  lam=(11, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1)                     case Ia (nu=2)
+   427  phi   j=+1  lam=(4, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2)                            case I
+   428  psi   j=+0  lam=(4, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2)                         case Ia (nu=2)
+   429  phi   j=-1  lam=(7, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1)                   case II (m=2)
+   430  psi   j=+0  lam=(5, 5, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1)                case Ib
+   431  phi   j=-1  lam=(10, 4, 4, 2, 2, 1, 1, 1, 1, 1)                              case II (m=2)
+   432  psi   j=+0  lam=(15, 4, 4, 2, 1, 1, 1, 1, 1)                                 case Ib
+   433  phi   j=-1  lam=(14, 5, 3, 3, 1, 1)                                          case II (m=1)
+   434  psi   j=+0  lam=(14, 8, 3, 3, 1, 1)                                          case IIb (nu=8)
+   435  phi   j=+1  lam=(9, 4, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                case I
+   436  psi   j=+0  lam=(9, 4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)             case Ia (nu=2)
+   437  phi   j=-1  lam=(12, 8, 3, 1, 1, 1, 1)                                       case II (m=1)
+   438  psi   j=+0  lam=(8, 5, 5, 5, 3, 1, 1, 1, 1)                                  case Ib
+   439  phi   j=-1  lam=(7, 4, 4, 4, 4, 2, 2)                                        case II (m=2)
+   440  psi   j=+0  lam=(5, 5, 4, 4, 4, 4, 2, 2)                                     case Ib
+   441  phi   j=+1  lam=(6, 5, 5, 5, 3, 3, 1)                                        case I
+   442  psi   j=+0  lam=(17, 6, 3, 3, 1)                                             case Ia (nu=17)
+   443  phi   j=+1  lam=(7, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)       case I
+   444  psi   j=+2  lam=(4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)          case Ib
+   445  phi   j=+1  lam=(21, 3, 3, 1)                                                case II (m=3)
+   446  psi   j=+0  lam=(21, 3, 3, 2, 1)                                             case Ia (nu=2)
+   447  phi   j=+1  lam=(22, 4, 2)                                                   case I
+   448  psi   j=+2  lam=(5, 5, 5, 4, 2)                                              case Ib
+   449  phi   j=+1  lam=(8, 4, 4, 4, 4, 3, 1)                                        case II (m=4)
+   450  psi   j=+0  lam=(8, 4, 4, 4, 4, 3, 2, 1)                                     case Ia (nu=2)
+   451  phi   j=+1  lam=(5, 5, 5, 4, 3, 2, 1, 1, 1, 1)                               case I
+   452  psi   j=+0  lam=(17, 4, 3, 2, 1, 1, 1, 1)                                    case Ia (nu=17)
+   453  phi   j=-1  lam=(16, 4, 3, 2, 1, 1)                                          case II (m=1)
+   454  psi   j=+0  lam=(16, 5, 4, 3, 1, 1)                                          case Ib
+   455  phi   j=+1  lam=(6, 5, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)          case I
+   456  psi   j=+0  lam=(7, 6, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)          case Ia (nu=7)
+   457  phi   j=-1  lam=(13, 6, 5, 1, 1, 1)                                          case II (m=1)
+   458  psi   j=-2  lam=(6, 5, 5, 1, 1, 1)                                           case IIa (nu=5)
+   459  phi   j=-1  lam=(6, 6, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                case I
+   460  psi   j=+0  lam=(6, 6, 5, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                case Ib
+   461  phi   j=-1  lam=(10, 5, 5, 4, 2, 1)                                          case II (m=2)
+   462  psi   j=-2  lam=(7, 5, 4, 2, 1)                                              case Ia (nu=7)
+   463  phi   j=-1  lam=(8, 5, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1)                      case I
+   464  psi   j=+0  lam=(10, 8, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1)                        case Ib
+   465  phi   j=-1  lam=(9, 8, 7, 2, 1)                                              case II (m=1)
+   466  psi   j=+0  lam=(9, 8, 5, 5, 2, 1)                                           case Ib
+   467  phi   j=+1  lam=(10, 9, 6, 2, 1)                                             case I
+   468  psi   j=+0  lam=(9, 7, 6, 5, 2, 1)                                           case Ia (nu=7)
+   469  phi   j=+1  lam=(10, 8, 6, 2, 1, 1)                                          case I
+   470  psi   j=+0  lam=(8, 7, 6, 5, 2, 1, 1)                                        case Ia (nu=7)
+   471  phi   j=+1  lam=(9, 8, 6, 2, 2, 1)                                           case I
+   472  psi   j=+0  lam=(9, 8, 6, 2, 2, 2, 1)                                        case Ia (nu=2)
+   473  phi   j=+1  lam=(10, 7, 3, 3, 2, 1, 1, 1)                                    case I
+   474  psi   j=+0  lam=(7, 7, 5, 3, 3, 2, 1, 1, 1)                                  case Ia (nu=7)
+   475  phi   j=+1  lam=(8, 6, 4, 3, 2, 2, 2, 1)                                     case I
+   476  psi   j=+0  lam=(8, 6, 4, 3, 2, 2, 2, 2, 1)                                  case Ia (nu=2)
+   477  phi   j=+1  lam=(7, 5, 3, 3, 3, 3, 2, 1, 1)                                  case I
+   478  psi   j=+0  lam=(7, 7, 3, 3, 3, 3, 2, 1, 1)                                  case Ia (nu=7)
+   479  phi   j=+1  lam=(8, 4, 4, 4, 3, 2, 2, 1)                                     case I
+   480  psi   j=+0  lam=(8, 4, 4, 4, 3, 2, 2, 2, 1)                                  case Ia (nu=2)
+   481  phi   j=-1  lam=(7, 4, 3, 3, 3, 2, 2, 1, 1, 1)                               case II (m=2)
+   482  psi   j=+0  lam=(5, 5, 4, 3, 3, 3, 2, 2, 1, 1, 1)                            case Ib
+   483  phi   j=-1  lam=(6, 4, 4, 3, 2, 2, 2, 2, 1, 1)                               case II (m=2)
+   484  psi   j=+0  lam=(6, 5, 4, 4, 3, 2, 2, 2, 1, 1)                               case Ib
+   485  phi   j=-1  lam=(5, 5, 4, 3, 3, 2, 2, 1, 1, 1)                               case II (m=2)
+   486  psi   j=-2  lam=(4, 3, 3, 2, 2, 2, 1, 1, 1)                                  case Ia (nu=2)
+   487  phi   j=-1  lam=(5, 4, 3, 3, 3, 2, 2, 1, 1, 1, 1, 1)                         case I
+   488  psi   j=+0  lam=(10, 4, 3, 3, 3, 2, 1, 1, 1, 1, 1)                           case Ib
+   489  phi   j=+1  lam=(5, 4, 4, 3, 2, 2, 2, 2, 2, 1, 1)                            case I
+   490  psi   j=+0  lam=(7, 4, 4, 3, 2, 2, 2, 2, 2, 1, 1)                            case Ia (nu=7)
+   491  phi   j=-1  lam=(6, 6, 3, 3, 2, 2, 1, 1, 1, 1, 1)                            case II (m=2)
+   492  psi   j=+0  lam=(6, 6, 5, 3, 3, 2, 1, 1, 1, 1, 1)                            case Ib
+   493  phi   j=-1  lam=(6, 5, 5, 4, 2, 2, 2, 1)                                     case II (m=2)
+   494  psi   j=-2  lam=(6, 4, 2, 2, 2, 2, 1)                                        case Ia (nu=2)
+   495  phi   j=-1  lam=(7, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1)                      case I
+   496  psi   j=+0  lam=(5, 5, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1)                   case Ib
+   497  phi   j=-1  lam=(9, 4, 4, 2, 2, 2, 2, 2)                                     case II (m=2)
+   498  psi   j=+0  lam=(9, 5, 4, 4, 2, 2, 2, 2)                                     case Ib
+   499  phi   j=-1  lam=(8, 4, 4, 3, 3, 1, 1, 1, 1, 1)                               case II (m=1)
+   500  psi   j=-2  lam=(4, 4, 3, 3, 1, 1, 1, 1, 1)                                  case IIa (nu=0)
+   501  phi   j=-1  lam=(5, 4, 4, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1)                      case I
+   502  psi   j=+0  lam=(10, 4, 4, 2, 2, 2, 1, 1, 1, 1, 1, 1)                        case Ib
+   503  phi   j=-1  lam=(9, 8, 3, 3, 1, 1, 1, 1)                                     case II (m=1)
+   504  psi   j=-2  lam=(9, 3, 3, 1, 1, 1, 1)                                        case IIa (nu=0)
+   505  phi   j=-1  lam=(4, 4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)       case I
+   506  psi   j=+0  lam=(5, 4, 4, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)       case Ib
+   507  phi   j=-1  lam=(13, 4, 3, 3, 2, 1, 1)                                       case II (m=2)
+   508  psi   j=+0  lam=(13, 5, 4, 3, 3, 1, 1)                                       case Ib
+   509  phi   j=+1  lam=(6, 5, 4, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1)                   case I
+   510  psi   j=+0  lam=(7, 6, 4, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1)                   case Ia (nu=7)
+   511  phi   j=-1  lam=(9, 6, 5, 3, 2, 1, 1)                                        case II (m=2)
+   512  psi   j=+0  lam=(10, 9, 6, 3, 1, 1)                                          case Ib
+   513  phi   j=+1  lam=(10, 7, 2, 2, 1, 1, 1, 1, 1, 1, 1)                           case I
+   514  psi   j=+0  lam=(7, 7, 5, 2, 2, 1, 1, 1, 1, 1, 1, 1)                         case Ia (nu=7)
+   515  phi   j=-1  lam=(7, 6, 6, 4, 2, 1, 1)                                        case II (m=2)
+   516  psi   j=+0  lam=(6, 6, 5, 5, 4, 2, 1, 1)                                     case Ib
+   517  phi   j=+1  lam=(7, 6, 6, 3, 2, 2, 1, 1)                                     case I
+   518  psi   j=+2  lam=(6, 6, 3, 2, 2, 1, 1)                                        case Ib
+   519  phi   j=+1  lam=(9, 5, 5, 5, 2, 1, 1)                                        case II (m=5)
+   520  psi   j=+0  lam=(17, 9, 2, 1, 1)                                             case Ia (nu=17)
+   521  phi   j=+1  lam=(10, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)         case I
+   522  psi   j=+0  lam=(7, 5, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)       case Ia (nu=7)
+   523  phi   j=-1  lam=(14, 6, 4, 1, 1, 1)                                          case II (m=1)
+   524  psi   j=+0  lam=(14, 6, 4, 3, 1, 1, 1)                                       case IIb (nu=3)
+   525  phi   j=+1  lam=(7, 5, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                case I
+   526  psi   j=+0  lam=(7, 7, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)                case Ia (nu=7)
+   527  phi   j=-1  lam=(11, 6, 6, 1, 1, 1, 1)                                       case II (m=1)
+   528  psi   j=+0  lam=(11, 6, 6, 3, 1, 1, 1, 1)                                    case IIb (nu=3)
+   529  phi   j=+1  lam=(7, 7, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1)                         case I
+   530  psi   j=+2  lam=(7, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1)                            case Ib
+   531  phi   j=+1  lam=(14, 6, 4, 1, 1, 1, 1)                                       case II (m=4)
+   532  psi   j=+0  lam=(14, 6, 4, 2, 1, 1, 1, 1)                                    case Ia (nu=2)
+   533  phi   j=+1  lam=(15, 5, 2, 2, 2, 2)                                          case I
+   534  psi   j=+0  lam=(12, 10, 2, 2, 2, 2)                                         case Ia (nu=12)
+   535  phi   j=+1  lam=(11, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1)                        case I
+   536  psi   j=+0  lam=(11, 3, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1)                     case Ia (nu=2)
+   537  phi   j=+1  lam=(4, 4, 3, 2, 2, 2, 2, 2, 2, 2, 2, 1)                         case I
+   538  psi   j=+0  lam=(4, 4, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1)                      case Ia (nu=2)
+   539  phi   j=-1  lam=(8, 3, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1)                   case II (m=2)
+   540  psi   j=+0  lam=(8, 5, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1)                   case Ib
+   541  phi   j=-1  lam=(9, 7, 4, 2, 2, 2, 1)                                        case II (m=2)
+   542  psi   j=+0  lam=(9, 5, 5, 4, 2, 2, 2, 1)                                     case Ib
+   543  phi   j=-1  lam=(8, 4, 4, 4, 3, 1, 1, 1, 1)                                  case II (m=1)
+   544  psi   j=-2  lam=(4, 4, 4, 3, 1, 1, 1, 1)                                     case IIa (nu=0)
+   545  phi   j=-1  lam=(5, 5, 4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1)                      case I
+   546  psi   j=-2  lam=(4, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1)                         case Ia (nu=2)
+   547  phi   j=-1  lam=(3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 1, 1, 1)                      case I
+   548  psi   j=+0  lam=(5, 3, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1, 1)                      case Ib
+   549  phi   j=-1  lam=(8, 4, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1)                         case II (m=2)
+   550  psi   j=+0  lam=(8, 5, 4, 2, 2, 2, 2, 1, 1, 1, 1, 1)                         case Ib
+   551  phi   j=-1  lam=(7, 7, 4, 3, 2, 1, 1, 1, 1)                                  case II (m=2)
+   552  psi   j=+0  lam=(7, 5, 5, 4, 3, 2, 1, 1, 1, 1)                               case Ib
+   553  phi   j=-1  lam=(6, 5, 4, 4, 3, 2, 2, 1)                                     case II (m=2)
+   554  psi   j=+0  lam=(10, 6, 4, 4, 3, 2, 1)                                       case Ib
+   555  phi   j=+1  lam=(11, 5, 5, 3, 2, 1, 1)                                       case I
+   556  psi   j=+0  lam=(12, 11, 3, 2, 1, 1)                                         case Ia (nu=12)
+   557  phi   j=+1  lam=(13, 4, 2, 2, 1, 1, 1, 1, 1, 1, 1)                           case I
+   558  psi   j=+0  lam=(13, 4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1)                        case Ia (nu=2)
+   559  phi   j=+1  lam=(5, 3, 3, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1)                      case I
+   560  psi   j=+0  lam=(7, 3, 3, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1)                      case Ia (nu=7)
+   561  phi   j=-1  lam=(8, 6, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1)                         case II (m=2)
+   562  psi   j=+0  lam=(8, 6, 5, 2, 2, 1, 1, 1, 1, 1, 1, 1)                         case Ib
+   563  phi   j=-1  lam=(7, 7, 5, 4, 2, 1, 1)                                        case II (m=2)
+   564  psi   j=+0  lam=(10, 7, 5, 4, 2, 1, 1)                                       case Ib
+   565  phi   j=+1  lam=(11, 8, 5, 2, 2)                                             case I
+   566  psi   j=+0  lam=(11, 8, 7, 2, 2)                                             case Ia (nu=7)
+   567  phi   j=+1  lam=(12, 8, 3, 1, 1, 1, 1, 1)                                    case I
+   568  psi   j=+2  lam=(8, 5, 3, 1, 1, 1, 1, 1)                                     case Ib
+   569  phi   j=+1  lam=(11, 7, 4, 4, 2)                                             case II (m=4)
+   570  psi   j=+2  lam=(11, 4, 4, 2)                                                case Ib
+   571  phi   j=+1  lam=(10, 8, 3, 3, 3, 1)                                          case II (m=3)
+   572  psi   j=+0  lam=(8, 7, 5, 3, 3, 3, 1)                                        case Ia (nu=7)
+   573  phi   j=+1  lam=(8, 6, 4, 4, 2, 1, 1, 1, 1)                                  case I
+   574  psi   j=+0  lam=(8, 6, 4, 4, 2, 2, 1, 1, 1, 1)                               case Ia (nu=2)
+   575  phi   j=-1  lam=(7, 5, 5, 3, 3, 2, 1, 1)                                     case II (m=2)
+   576  psi   j=+0  lam=(10, 10, 3, 3, 2, 1, 1)                                      case Ib
+   577  phi   j=+1  lam=(11, 4, 3, 2, 2, 1, 1, 1, 1, 1, 1)                           case I
+   578  psi   j=+0  lam=(11, 4, 3, 2, 2, 2, 1, 1, 1, 1, 1, 1)                        case Ia (nu=2)
+   579  phi   j=-1  lam=(10, 8, 3, 2, 1, 1, 1, 1)                                    case II (m=1)
+   580  psi   j=+0  lam=(15, 8, 3, 1, 1, 1, 1)                                       case Ib
+   581  phi   j=-1  lam=(14, 7, 4, 2)                                                case II (m=0)
+   582  psi   j=+0  lam=(14, 5, 5, 4, 2)                                             case Ib
+   583  phi   j=+1  lam=(15, 6, 5, 1, 1)                                             case I
+   584  psi   j=+0  lam=(12, 10, 6, 1, 1)                                            case Ia (nu=12)
+   585  phi   j=+1  lam=(13, 11, 2, 1, 1)                                            case I
+   586  psi   j=+0  lam=(13, 11, 2, 2, 1, 1)                                         case Ia (nu=2)
+   587  phi   j=+1  lam=(12, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1)                     case I
+   588  psi   j=+2  lam=(5, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1)                      case Ib
+   589  phi   j=+1  lam=(16, 4, 4, 2, 1, 1)                                          case II (m=4)
+   590  psi   j=+0  lam=(16, 4, 4, 2, 2, 1, 1)                                       case Ia (nu=2)
+   591  phi   j=-1  lam=(15, 3, 3, 3, 1, 1, 1)                                       case II (m=1)
+   592  psi   j=+0  lam=(18, 3, 3, 3, 1, 1, 1)                                       case IIb (nu=18)
+   593  phi   j=+1  lam=(4, 4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)    case I
+   594  psi   j=+0  lam=(4, 4, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) case Ia (nu=2)
+   595  phi   j=-1  lam=(16, 3, 3, 1, 1, 1, 1, 1)                                    case II (m=1)
+   596  psi   j=+0  lam=(16, 3, 3, 3, 1, 1, 1, 1, 1)                                 case IIb (nu=3)
+   597  phi   j=+1  lam=(4, 4, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)          case I
+   598  psi   j=+0  lam=(4, 4, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)       case Ia (nu=2)
+   599  phi   j=-1  lam=(14, 3, 3, 1, 1, 1, 1, 1, 1, 1)                              case II (m=1)
+   600  psi   j=+0  lam=(14, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1)                           case IIb (nu=3)
+   601  phi   j=+1  lam=(4, 4, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1)                case I
+   602  psi   j=+0  lam=(4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1)             case Ia (nu=2)
+   603  phi   j=-1  lam=(12, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1)                        case II (m=1)
+   604  psi   j=+0  lam=(5, 5, 5, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1)                   case Ib
+   605  phi   j=-1  lam=(9, 4, 4, 4, 2, 2, 2)                                        case II (m=2)
+   606  psi   j=+0  lam=(9, 5, 4, 4, 4, 2, 2)                                        case Ib
+   607  phi   j=+1  lam=(6, 5, 5, 3, 3, 1, 1, 1, 1, 1, 1)                            case I
+   608  psi   j=+0  lam=(12, 6, 3, 3, 1, 1, 1, 1, 1, 1)                              case Ia (nu=12)
+   609  phi   j=+1  lam=(7, 4, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1)                      case I
+   610  psi   j=+2  lam=(4, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1)                         case Ib
+   611  phi   j=+1  lam=(16, 3, 3, 1, 1, 1, 1, 1, 1)                                 case II (m=3)
+   612  psi   j=+0  lam=(16, 3, 3, 2, 1, 1, 1, 1, 1, 1)                              case Ia (nu=2)
+   613  phi   j=-1  lam=(15, 6, 2, 2, 1, 1)                                          case II (m=1)
+   614  psi   j=+0  lam=(20, 6, 2, 1, 1)                                             case Ib
+   615  phi   j=+1  lam=(7, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) case I
+   616  psi   j=+2  lam=(2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)    case Ib
+   617  phi   j=+1  lam=(23, 3, 1, 1)                                                case II (m=3)
+   618  psi   j=+0  lam=(23, 3, 2, 1, 1)                                             case Ia (nu=2)
+   619  phi   j=+1  lam=(4, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) case I
+   620  psi   j=+0  lam=(4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) case Ia (nu=2)
+   621  phi   j=-1  lam=(20, 3, 1, 1, 1, 1)                                          case II (m=1)
+   622  psi   j=+0  lam=(23, 3, 1, 1, 1, 1)                                          case IIb (nu=23)
+   623  phi   j=-1  lam=(22, 3, 2)                                                   case II (m=0)
+   624  psi   j=+0  lam=(5, 5, 5, 5, 5, 3, 2)                                        case Ib
+   625  phi   j=+1  lam=(6, 6, 6, 6, 3, 1)                                           case I
+   626  psi   j=+0  lam=(6, 6, 6, 6, 3, 2, 1)                                        case Ia (nu=2)
+   627  phi   j=+1  lam=(7, 7, 7, 3, 2, 1, 1)                                        case I
+   628  psi   j=+2  lam=(7, 7, 3, 2, 1, 1)                                           case Ib
+   629  phi   j=+1  lam=(8, 6, 6, 5, 2, 1)                                           case II (m=5)
+   630  psi   j=+0  lam=(8, 7, 6, 6, 2, 1)                                           case Ia (nu=7)
+   631  phi   j=+1  lam=(9, 8, 7, 2, 1, 1)                                           case I
+   632  psi   j=+2  lam=(9, 8, 2, 1, 1)                                              case Ib
+   633  phi   j=+1  lam=(8, 8, 7, 4, 1)                                              case II (m=4)
+   634  psi   j=+2  lam=(8, 8, 4, 1)                                                 case Ib
+   635  phi   j=+1  lam=(7, 7, 7, 4, 3)                                              case II (m=4)
+   636  psi   j=+2  lam=(7, 7, 4, 3)                                                 case Ib
+   637  phi   j=+1  lam=(6, 6, 6, 5, 3, 2)                                           case II (m=5)
+   638  psi   j=+0  lam=(7, 6, 6, 6, 3, 2)                                           case Ia (nu=7)
+   639  phi   j=+1  lam=(8, 7, 7, 3, 1, 1, 1)                                        case I
+   640  psi   j=+2  lam=(8, 7, 3, 1, 1, 1)                                           case Ib
+   641  phi   j=+1  lam=(8, 7, 6, 5, 2)                                              case II (m=5)
+   642  psi   j=+0  lam=(8, 7, 7, 6, 2)                                              case Ia (nu=7)
+   643  phi   j=+1  lam=(9, 8, 7, 1, 1, 1, 1)                                        case I
+   644  psi   j=+2  lam=(9, 8, 1, 1, 1, 1)                                           case Ib
+   645  phi   j=+1  lam=(8, 8, 7, 5)                                                 case II (m=5)
+   646  psi   j=+0  lam=(8, 8, 7, 7)                                                 case Ia (nu=7)
+
+# Short trace: (1,1) in A_2, the smallest object needing a phi/psi step
+     0  -     j=+0  lam=(1, 1)                                                       -
+     1  phi   j=+1  lam=()                                                           case I
+     2  psi   j=+0  lam=(2,)                                                         case Ia (nu=2)

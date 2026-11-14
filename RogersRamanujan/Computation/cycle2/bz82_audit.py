@@ -86,6 +86,22 @@ R3. ZERO PARTS.  "Subtract 1 from each of the t parts", resp. "subtract 5 from
 R4. SORTING.  Never stated except "(and sort)" in psi II; every result is
     returned as a descending tuple, which is the contract's representation.
 
+R5. phi CASE I: "DELETE THE PARTS" IS A VALUE DELETION, NOT A POSITION
+    DELETION.  "Delete the parts lam(a) and lam(mu)" is read as: remove one
+    copy of the value lam(a) and one copy of the value lam(mu), skipping a
+    value that is 0.  Under this reading the identity
+        t - [lam(a)>0] - [lam(mu)>0] = t* - 2
+    holds for every state, so |lam'| = |lam| - 5j - 2 and the weight is
+    preserved unconditionally.  The competing reading -- pad the sequence to
+    length t* and delete the two *positions* a and mu -- coincides with it
+    exactly when max(a,mu) <= t*, and breaks the weight identity otherwise.
+    First witness: the state (-2;()) of weight 11, where a = 5, mu = 1,
+    t = 0, t* = 2 and Case I applies; the position reading returns nine 1's
+    (weight 12) while the value reading returns (1^8) (weight 11, and
+    phi(1^8) at j = -1 gives (8), whose phi is (-2;()) again).  Implemented
+    as the `case1` switch and measured exhaustively (`case1="slots"` is the
+    negative control).
+
 --------------------------------------------------------------------------------
 FROZEN INTERFACE
 --------------------------------------------------------------------------------
@@ -236,12 +252,25 @@ def _phi_a(j, lam):
     return x
 
 
-def phi(j, lam, zmin=0):
+def phi(j, lam, zmin=0, case1="parts"):
     """Bressoud--Zeilberger's phi, transcribed from p.314.
 
     Returns ((j', lam'), diag).  diag['case'] is 'I' or 'II' and the remaining
     keys record the quantities the printed rule names, so that a trace can be
-    printed with the paper's own letters."""
+    printed with the paper's own letters.
+
+    `case1` selects the reading of Case I's deletion (reading R5 in REPORT.md):
+      "parts" -- DEFAULT.  Delete the *parts* lam(a) and lam(mu): one copy of
+                 the value lam(a) and one copy of the value lam(mu), each
+                 skipped when that value is 0.  "Add 1 to each of the remaining
+                 parts" then applies to the t - [lam(a)>0] - [lam(mu)>0]
+                 surviving parts, which equals t* - 2 identically.
+      "slots" -- negative control, the over-literal reading that treats the
+                 sequence as padded to length t* and deletes the two *positions*
+                 a and mu.  It coincides with "parts" exactly when
+                 max(a,mu) <= t* and it breaks the weight identity otherwise
+                 (first witness (-2;()) of weight 11).  Kept only to measure
+                 the damage."""
     if not _is_partition(lam):
         raise ValueError("not a partition: %r" % (lam,))
     t = len(lam)
@@ -251,6 +280,8 @@ def phi(j, lam, zmin=0):
     lmu = lam_at(lam, mu)
     tstar = t + (1 if la == 0 else 0) + (1 if lmu == 0 else 0)
     diag = dict(case=None, a=a, mu=mu, t=t, tstar=tstar, lam_a=la, lam_mu=lmu)
+    if a != mu and tstar < max(a, mu) and la + lmu >= 5 * j + tstar:
+        diag["readings_differ"] = (tstar, a, mu)
     if la + lmu >= 5 * j + tstar:
         # ---- Case I -------------------------------------------------------
         diag["case"] = "I"
@@ -259,13 +290,29 @@ def phi(j, lam, zmin=0):
             raise RuntimeError(
                 "phi Case I with a = mu: reading R2 says this cannot happen; "
                 "j=%r lam=%r" % (j, lam))
-        if tstar < max(a, mu):
-            # Would break the weight identity; recorded, not silently fixed.
-            diag["tstar_too_small"] = (tstar, a, mu)
-        vals = [lam_at(lam, y) + 1 for y in range(1, tstar + 1) if y not in (a, mu)]
+        if case1 == "parts":
+            kept = list(lam)
+            for v in (la, lmu):
+                if v > 0:
+                    try:
+                        kept.remove(v)
+                    except ValueError:
+                        raise RuntimeError(
+                            "phi Case I: part %r to delete is absent from %r"
+                            % (v, lam))
+            vals = [p + 1 for p in kept]
+            if len(vals) != tstar - 2:
+                raise RuntimeError(
+                    "phi Case I: kept %d parts but t*-2 = %d ; j=%r lam=%r"
+                    % (len(vals), tstar - 2, j, lam))
+        elif case1 == "slots":
+            vals = [lam_at(lam, y) + 1 for y in range(1, tstar + 1) if y not in (a, mu)]
+            diag["slots_kept"] = len(vals)
+        else:
+            raise ValueError("case1 must be 'parts' or 'slots'")
         new = tuple(sorted(vals + [1] * ones, reverse=True))
         diag["ones_inserted"] = ones
-        diag["slots_kept"] = len(vals)
+        diag["kept_parts"] = len(vals)
         return (j + 1, new), diag
     # ---- Case II ----------------------------------------------------------
     diag["case"] = "II"
