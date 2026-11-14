@@ -218,6 +218,13 @@ def negative_controls(path="out/verified_certificate_K33b.json"):
     ok = not all(ok_ for _, ok_ in out)
     print("  %s the tighter claim 0.7797 is REJECTED" % ("PASS" if ok else "FAIL"))
     cases.append(("tighter claim", ok))
+    # leave no scratch files behind: the corrupted copies are inputs to a test, not outputs
+    for f in os.listdir(".scratch"):
+        os.remove(os.path.join(".scratch", f))
+    try:
+        os.rmdir(".scratch")
+    except OSError:
+        pass
     return all(ok for _, ok in cases)
 
 if __name__ == "__main__":
