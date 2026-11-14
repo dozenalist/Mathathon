@@ -61,7 +61,7 @@ Vocabulary: `PROVED` / `VERIFIED_EXACT` / `TESTED_FINITE` / `TESTED_FAMILY` / `P
 
 | claim | status | statement, with its hypotheses visible | evidence |
 | --- | --- | --- | --- |
-| `K15-C-VERIFIEDCERT-001` | `VERIFIED_EXACT` | `Δ ≤ 0.77996622` for every unit-sphere packing in `R³`; degree-33 rational certificate accepted by two checkers sharing no code | `out/verified_certificate_K33b.json`, `verify_certificate.py`, `exactcert_oracle.py` |
+| `K15-C-VERIFIEDCERT-001` | `VERIFIED_EXACT` | `Δ ≤ 0.77996622` for every unit-sphere packing in `R³`; degree-33 rational certificate accepted by two checkers sharing no code, and now by a third on a different algorithm (§4) | `out/verified_certificate_K33b.json`, `verify_certificate.py`, `exactcert_oracle.py` |
 | `K15-C-TRANSFER-DENSITY-002` | `PROVED` | a bounded antisymmetric transfer (`|φ| ≤ Φ`, `div ≥ b`) on a packing of finite upper density **that is D-saturated for some finite D** implies `ρ ≤ 1/√32`. No periodicity of `φ`. Repaired this block: the saturation hypothesis is now explicit and proved necessary for the argument (LEMMA S, LEMMA B) | `transfer_necessity.py` §docstring |
 | `K15-C-CUTIMPLIES-003` | `PROVED` | the **finite-`U`** cut condition, at any one finite capacity `Φ`, on a D-saturated packing, already forces `ρ ≤ 1/√32` — because `U = Λ ∩ B` is finite. No transfer on the infinite graph, no compactness, no period | same file, Corollary 1 |
 | `K15-C-TRANSFER-DENSITY-001` | `REFUTED` | the periodic-sum version: summing the divergence over one period is valid only if `φ` is periodic, and periodicity of the *packing* does not make `φ` periodic — the flux across a period boundary need not cancel | retained in git history |
@@ -198,6 +198,11 @@ The block ran the full hour: work continued past the last commit — the final a
 complete re-run of every checker (`exactcert_tests`, `tests_0138`, `tests_cut_flow`,
 `period_convention`, `highdensity_cut`, `k15radicals`, `compact_verify` plus its negative controls,
 and `verify_certificate` on K33b) and the review of this document against the artifacts.
+
+**Reproducibility of the pushed branch, checked at the end of the block**: a clean `git clone` of
+`kepler15/comp-01a1d8c0` at `e3948da` (42 `.py`, 68 `.json`) runs `exactcert_tests`,
+`tests_0138`, `tests_cut_flow`, `period_convention`, `highdensity_cut`, `k15radicals` and
+`compact_verify` all green, so nothing the results depend on is untracked.
 
 **Mode: Ultramath is ON for this session, and no swarm was used this block** — the four-chat
 structure is fixed and the review forbids new swarms, so this was ordinary single-agent work with no
