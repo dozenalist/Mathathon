@@ -533,8 +533,8 @@ Frontier over the forced margin `ε_AB` (each row: the coarsest dyadic grid that
 16 digits, 1,833 bytes; `5·10⁻²` → `0.850160`, `2⁻¹⁰`, 16 digits, 1,732 bytes. Every row cheaper
 than 2,646 bytes is worse than `X-C016` (`0.783097911`), so nothing is gained at comparable
 strength. The digit floor is structural: row 11's pivot coefficient is `S⁻¹⁰`, so the solve
-multiplies by `8¹¹ ≈ 8.6·10⁹` (~10 digits) on top of magnitude and grid. A 5-digit certificate
-in this basis does not exist; `S = 1` would remove `8¹¹` but reintroduce the lcm problem through
+multiplies by `8¹⁰ ≈ 1.07·10⁹` (~9–10 digits; corrected from an earlier `8¹¹`) on top of magnitude
+and grid. A 5-digit certificate in this basis does not exist; `S = 1` would remove `8¹⁰` but reintroduce the lcm problem through
 the Fourier map's own denominators. Reproduce: `python3 x_c017_shrink.py`.
 
 ### K15-X-C023 — C's four `cut_flow.py` defects are reproducible by one portable script
@@ -581,3 +581,11 @@ at least `4bcbd3a` (with a comment recording that the opposite sign let the obje
 the `−1e5` box bound). So the C-side pipeline was already guarded; the exposure was confined to
 the checker's licence, which is what `5caa1c9` closes. The `X_eta_negative_witness` input is
 synthetic (C's committed row with `η` replaced by the shell maximum), not a run C produced.
+
+### K15-X-C027 — the readable verifier rejects tampered certificates
+
+`Reviews/negative_control_readable.py` (exit 0): of four copies of `X_C017_small.json`,
+`G[0,1] += 1/1000`, `A[1,1] += 10⁻⁶` and `A[0,1] = 100` are all REJECTED by
+`verify_XC017_readable.py`, and the unmodified copy is VALID. The `10⁻⁶` perturbation moves the
+density in the 7th decimal only, so it would pass any float comparison of the bound; it fails
+because the exact identity `L p = 0` breaks. A verifier that accepted it would be checking nothing.

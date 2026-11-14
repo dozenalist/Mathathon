@@ -144,8 +144,10 @@ Two conclusions.
    `0.0135` of density.
 2. **The digit count has a floor of about 16, whatever the grid.** Even at the coarse `2⁻¹⁰` grid
    the entries need 16 digits. The mechanism is not rounding: row 11's pivot coefficient is
-   `S⁻¹⁰ = 8⁻¹⁰`, so solving that row multiplies whatever the free entries carry by `8¹¹ ≈ 8.6·10⁹`,
-   i.e. ~10 digits, on top of ~3 digits of magnitude and the grid's own resolution. **No 5-digit
+   `S⁻¹⁰ = 8⁻¹⁰`, so solving that row divides by it, multiplying whatever the free entries carry by
+   `8¹⁰ ≈ 1.07·10⁹`, i.e. ~9–10 digits, on top of ~3 digits of magnitude and the grid's own
+   resolution. *(Corrected: I first wrote `8¹¹`; the coefficient is `S^{-10}` with `S = 8`, so the
+   factor is `8¹⁰`.)* The floor at an integer grid would therefore be ~12–13 digits. **No 5-digit
    certificate exists in this basis**, for any grid, at any strength. That is a statement about
    the `S = 8` monomial Gram basis, not about Cohn–Elkies certificates in general: a basis with
    `S = 1` would remove the `8¹¹`, but the identity's coefficients then have denominators from
@@ -182,6 +184,13 @@ proof and beats nothing: `0.782267 > 0.740480`.
 The script prints that last sentence itself, because a verifier that returned "valid" for a
 `0.782` density without saying so would invite exactly the misreading the block has twice had to
 correct.
+
+**It has teeth.** `Reviews/negative_control_readable.py` writes three tampered copies and one
+honest copy of `X_C017_small.json` and requires the verifier to reject the three and accept the
+one: `G[0,1] += 1/1000` → REJECTED; `A[1,1] += 10⁻⁶` → REJECTED; `A[0,1] = 100` → REJECTED;
+unmodified → VALID. The `10⁻⁶` case is the one that matters: it moves the density in the seventh
+decimal, invisible to any float comparison of the bound, but breaks the exact identity `L p = 0`,
+which is the whole certificate. A verifier that passed it would be checking nothing.
 
 ---
 
