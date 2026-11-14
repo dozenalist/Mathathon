@@ -2,6 +2,38 @@
 
 Role E. Started 2026-11-14T09:57:21Z. Source reviewed: `4ea4e8b9`.
 
+## Summary
+
+What this block actually produced, in one place.
+
+**Corrections (the first two were requested).**
+- `K15-E049` is narrowed: it is a ceiling for the *uniform-floor directional estimator family*
+  (conditions F1-F3), **not** a closure of per-cell methods or of the geometric route. The
+  dependent "closes the per-cell route" / "only one option remains" claims are withdrawn.
+- `K15-E045` is corrected to **conditional** on the imported dodecahedral theorem (the
+  containment `Omega(c) subset D` is unconditional; the equality is not), with that theorem's
+  computer-assisted proof charged.
+- A broken buffer flag in `vor_volumes` is fixed, and the consequence is a **retraction**: the
+  "slack factor 470-880" I reported previously is an artefact of unsaturated cells (Section 5).
+
+**New and proved.**
+- `K15-E060`: the two-shell target stated exactly, with *forced* thresholds (`2 rho = 4.18`,
+  `4 rho = 8.36`), explicit boundary cost and a proved disjointness/coverage argument.
+- `K15-E061`: the antisymmetric bounded-range transfer theorem — pointwise FCC-compatibility
+  from a Hall condition, exact cancellation, an explicit `O(r^2)` boundary, and `(C3)` automatic;
+  inert (`A = 0`) on FCC and HCP. It removes the partition, the component bookkeeping and
+  `K15-E001`'s cluster machinery, and **does not** reduce the mathematical content.
+- `K15-E063`: A15 (β-W) is the project's first genuinely **saturated** fixture — 919 valid
+  interior cells, none defective.
+
+**Implementation.** Four new runnable scripts (`block_evaluator`, `transfer_evaluator`,
+`dense_completion_search`, `periodic_relax`, plus `frank_kasper_test`), all committed and all
+verified to run; `verify_all_claims.py` now covers the 0138 constants too. A blind periodic
+relaxation independently recovers fcc and `pi/sqrt18` to `1.6e-07` — a calibration, not evidence.
+
+**Not delivered.** No new density bound and no proof of `(H_R)`. The sharp remaining question is
+`(Q)` (Section 6), and it is not a computation.
+
 ## 0. Reporting correction, accepted
 
 My completion 51140 reported "40 minutes, finished 09:56Z". Both figures were **wrong**. I
@@ -186,7 +218,7 @@ by proof.
   by free space. Since computed cell volumes are **upper** bounds, the test remains one-sided:
   a positive `S - D` does not certify, only a negative one refutes.
 
-### 3.4 Antisymmetric transfer: the fallback, and it does better than expected (`K15-E061`)
+### 3.4 Antisymmetric transfer: the fallback (`K15-E061`) — a cleaner interface, not less mathematics
 
 The block formulation needs a partition, components, ordering and overlap accounting. There is
 a formulation that needs none of it and restores the **pointwise** condition, so that Hales's
@@ -236,8 +268,17 @@ Three features are worth stating plainly.
 - **The transfer is inert on the equality family.** `A ≡ 0` on fcc and hcp, so the rule cannot
   disturb the configurations that attain `pi/sqrt18`. This was the main risk of any
   correction scheme and it is settled here for this rule.
-- **`A` is tiny**: `|A| <= 0.106563 = sqrt32 - V_dodeca`, i.e. at most `1.9 %` of a cell
-  volume. So the correction is a small perturbation, and (C3) has enormous margin.
+- **The *per-pair* transfer is tiny**: `||phi||_inf <= sqrt32 - V_dodeca = 0.106563`, i.e. at
+  most `1.9 %` of a cell volume, because a defect's deficit never exceeds that (using
+  `vol Omega >= V_dodeca`). Note the distinction I got wrong on first writing: this bounds
+  each `phi(v,u)`, **not** each `A(v)`. A vertex `u` that pays `K(u)` defects can have
+  `|A(u)| <= K(u) * 0.106563`, and `K(u)` is not bounded by `1`. Only the per-pair bound enters
+  negligibility, via `||phi||_inf` in `C1`, so the argument is unaffected — but the stronger
+  per-vertex claim was unjustified and is corrected here. In all six fixtures `K(u) = 1` and the
+  reported `|A| <= 0.016` is consistent with both bounds.
+- **(C3) has genuine margin.** A payer never gives more than `c(u) - sqrt32`, so
+  `c(u) + A(u) >= sqrt32 > 0`; a receiver only gains. So `c + A >= 0` holds by construction, not
+  by smallness.
 - **Each deficit is paid in full by exactly twelve payers**, matching `K15-E014`'s count.
 
 **Equivalence, stated honestly.** `(H_R)` with `S` the defect set of a single component *is*
@@ -262,3 +303,463 @@ Everything else in the chain is now either proved (`K15-E014` for the count, the
 theorem above) or imported and charged (`V_dodeca`). The measurements say the inequality holds
 with a factor of `470`-`880` to spare on every constructible fixture; the obstruction is that
 no technique proves even a factor of `1`.
+
+### 3.6 A structural finding: defects are isolated, so surplus is never shared
+
+`(H_R)` would be much harder if several defective centres could draw on the same paying
+neighbours. Two measurements say they cannot, at least for the defect we have.
+
+**fcc and hcp are locally rigid, so defects cannot be made by perturbation.** In fcc every one
+of the twelve neighbours of a centre sits at distance exactly `2`. Any nonzero displacement of
+a centre therefore violates 2-separation, and the same holds for hcp. This is why the
+`perturbed_fcc` fixture cannot exist (Section 3.3) and it means defects must come from a
+*different* motif rather than from a wobble of the optimal one — a defect requires local
+crowding, and crowding requires near-tangency, and near-tangency leaves no room to move.
+
+**Two icosahedral defects are always far apart.** Two copies of the motif with centres at
+distance `d` are legal iff `d >= 5.5`; at `d = 5.0` the minimum separation drops to `1.597`, and
+at `d = 4.18` to `0.777`. But components merge only at `d <= tau = 4.18 = 2R`. Since
+`5.5 > 4.18`, two icosahedral defects are **always in different components and never share a
+paying neighbour**. (I first wrote "minimum legal `d` is 6"; the measurement is `5.5`. The
+conclusion is unaffected but the figure is corrected here.)
+
+**Consequence.** For configurations of this motif, `(H_R)` decomposes into independent
+single-defect inequalities, each with its own twelve payers and no competition — which is
+exactly the setting in which the measured slack factor of `470`–`880` was obtained. So the
+`(H_R)` tests are not weakened by the fixtures having only one defect each: multiple defects
+genuinely decouple. The `2x2x2` grid of eight defects confirms this — eight components,
+`max_pairwise_overlap = 0`, minimum `S - D = +67.472`, no sharing pressure.
+
+**What is *not* established.** That *every* defective configuration has isolated defects. The
+argument above is (i) exact for fcc/hcp rigidity, (ii) measured for the icosahedral motif, and
+(iii) heuristic in general. A defect with a smaller deficit might be packed more densely, and
+then surpluses could compete. I can neither construct such a configuration nor rule it out, and
+I do not promote the heuristic to a theorem. This is the sharpest open point about `(H_R)`.
+
+## 4. Runtime and clock
+
+Receipt `2026-11-14T09:57:21Z`. Checkpoints taken at approximately +20 and +40 minutes using
+`date -u` at the start of each tool call, and the final report is issued no earlier than
+`10:57:21Z`. No sleeping or busy-waiting was used; pauses between pushes were spent on the
+fixtures, the transfer theorem and the obstruction in Section 3.6.
+
+## 5. Correction: the empirical support for `(H_R)` was an artefact
+
+This is the most important finding of the block, and it retracts a number I published last
+block.
+
+**The bug.** `vor_volumes` flagged a cell as buffer-limited only if one of its vertices lay at
+radius `> R - 1e-6`, with the buffer sphere at `R = 26`. That test never fires: the buffer is a
+*sphere* of points, so the buffer points themselves have unbounded cells, and a core cell is
+truncated by the bisectors with buffer points at radius roughly `13`-`18`, well inside `R`.
+Diagnosed concretely: the largest fcc "boundary" cell had volume `602.709` with maximum vertex
+radius `17.9205`, and the Vornoi diagram reported `3000` unbounded regions — one per buffer
+point. So no cell was ever flagged, and `interior = 500` for a 500-point fcc block, which is
+absurd.
+
+**The correct test.** In a *saturated* packing, `Omega(v) subset B(v,2)`. A cell whose extent
+from its own centre exceeds `2` therefore cannot be the cell of a saturated packing, and its
+computed volume is meaningless for the packing bound — whether it was truncated by the buffer,
+or is simply unsaturated free space. That is the semantics the flag should carry, and it is now
+implemented (`extent_cap = 2.0`).
+
+**Consequence: every block I tested is unreliable.**
+
+| fixture | cells flagged unreliable | block flagged |
+| --- | --- | --- |
+| `fcc_plain` (500) | `244` | — (no defects) |
+| `hcp` (175) | `130` | — (no defects) |
+| `icosa_fill` (131) | `126` | yes |
+| `two_icosa` (281) | `241` | yes |
+| `icosa_fcc_shell` (189) | `188` | yes |
+
+Every non-vacuous block is flagged. So the values `S - D = +50` to `+95` reported in Section
+3.3, and the "factor `470`-`880`" I quoted in the previous completion, are **artefacts of free
+space**: computed cell volumes are upper bounds, the inflated cells are exactly the payers, and
+`S` is therefore overestimated without bound. The true `S - D` could be small, or negative. I
+retract the slack claim.
+
+**Why this is a genuine obstruction and not just a code fix.** It is not that the fixtures were
+built carelessly; it is that **no constructible completion of the icosahedral cluster is locally
+saturated**. Saturation requires every point of space to be within `2` of a centre, and the
+icosahedral motif is frustrated: the outer twelve are at `2.1029` from the defect and cannot be
+completed densely without displacing them. Random sequential adsorption reaches density `0.10`
+against `0.177` for fcc, and the fcc shell is incommensurate and leaves gaps. So the
+configuration that would make `(T')` / `(H_R)` testable is exactly the configuration we cannot
+build.
+
+**What therefore remains meaningful in this block.**
+
+- The `(T')`/`(H_R)` statements themselves, and their equivalence (Section 3.4). ✓
+- The transfer theorem: pointwise FCC-compatibility *given* `(H_R)`, exact cancellation, and the
+  `O(r^2)` boundary estimate. These are proofs and do not depend on volumes being accurate. ✓
+- The disjointness/overlap results: `max_pairwise_overlap = 0` in every fixture, and the
+  thresholds `4.18` / `8.36`. These depend only on distances, not on volumes, so they survive. ✓
+- The transfer *implementation* check: `c + A >= sqrt32` pointwise, `|sum A| <= 1.4e-17`, `A = 0`
+  on fcc/hcp. This validates the **code path only**. It does not confirm `(H_R)`, because the
+  payers' volumes in these fixtures are among the unreliable cells of Section 5 — the algorithm
+  is being fed surpluses that a saturated packing need not have. Stated explicitly so the table
+  in Section 3.4 is not read as geometric evidence.
+- The numerics `S - D`: **unreliable**, retracted as evidence.
+
+**What would be needed to test `(T')` at all.** A certified lower bound on `c(u) - sqrt32` for
+the payers that is valid for *every* completion, which is precisely the missing inequality — so
+the inequality cannot be tested by constructing completions. This closes the empirical route to
+the question, and it is the honest end state: the two-shell and transfer formulations are now
+exact and cleanly stated, and there is no numerical shortcut to settling them.
+
+## 6. The precise open problem, and why it is not a computational one
+
+The retraction in Section 5 leaves one question that has to be settled before `(T')` or `(H_R)`
+can be attacked intelligently:
+
+> **(Q)** Does there exist a **saturated** 2-separated set containing a centre with
+> `vol Omega(v) < sqrt(32)`?
+
+Everything in this block assumed yes, and built the whole compensation apparatus on the
+icosahedral motif, which is the only defect we can actually exhibit. But the motif is not
+saturated, and Section 5 shows that no completion of it that we can construct is either.
+
+**Why (Q) matters.** If the answer is *no* — if every cell of every saturated packing already
+has volume `>= sqrt32` — then Hales's correction is unnecessary: the per-cell inequality
+`vol Omega(v) >= sqrt32` holds outright, Lemma 3.3 applies with `A = 0` and the singleton
+partition, and the density bound follows with no transfer, no clusters and no blocks. So **(Q) =
+no collapses the entire geometric route to the per-cell inequality.**
+
+**But (Q) is at least as strong as Kepler.** If every cell of every saturated packing has volume
+`>= sqrt32`, then summing gives density `<= (4pi/3)/sqrt32 = pi/sqrt18` immediately. So a proof
+of `(Q) = no` would be a proof of the theorem, and any proof of the theorem does **not** give
+`(Q) = no` (Kepler does not force every cell to be large). (Q) is therefore strictly stronger
+than the target and must not be adopted as a strategy.
+
+**What is known.** The dodecahedral theorem gives `vol Omega(v) >= V_dodeca = 5.550291 <
+5.656854`, so known theory *permits* defects and does not rule them out. The gap between
+`V_dodeca` and `sqrt32` is `0.106563`, which is exactly the deficit of the icosahedral motif —
+i.e. the motif realises the smallest cell the dodecahedral theorem allows. So the question is
+whether the extremal cell of the dodecahedral theorem can be embedded in a *saturated* packing at
+all.
+
+**Why it is not computational.** Deciding (Q) requires an infinite condition (saturation is a
+statement about all of `R^3`), and Section 5 shows that finite completions cannot even make the
+relevant cell volumes meaningful: the cells we would measure are truncated or unsaturated, and
+their computed volumes are upper bounds that the true packing may never attain. So no amount of
+search settles (Q); it needs either an explicit periodic saturated construction with a certified
+Voronoi cell (finite data, but the certification must cover the infinite periodic repetition), or
+a proof that none exists.
+
+**A concrete first attempt at a positive answer**, which I did not complete: a Frank–Kasper
+phase. Those are the standard periodic sphere packings with icosahedral coordination, and the
+`A15` structure in particular has 12- and 14-coordinated sites. If any of them has a Voronoi cell
+of volume below `sqrt32`, that settles (Q) = yes with fully explicit data and makes `(T')`
+testable. This is a bounded, checkable computation (one periodic cell, exact coordinates,
+certified Voronoi decomposition) and it is the natural next step; I flag it as the highest-value
+follow-up rather than claim it.
+
+## 7. Where the geometric route stands after this block
+
+1. `(T'-R2')` and `(H_R)` are now stated exactly, with forced thresholds (`4.18`, `8.36`), the
+   boundary cost (`diam C + 8.36`) and a proved equivalence between the block and transfer forms.
+2. The transfer form is the better interface: it needs no partition, and it proves negligibility
+   by a two-line telescoping argument with an explicit `O(r^2)` boundary. Its theorem
+   (`K15-E061`) is independent of any numerical input.
+3. The empirical support I previously offered is withdrawn (Section 5). There is currently **no
+   evidence either way** on `(H_R)`, and the reason is structural: the configuration that would
+   test it cannot be built.
+4. `(Q)` is the sharp question to settle next, and it is not a search.
+5. `K15-E049` is narrowed to the estimator family `F`; multi-radius counts, convexity-based
+   per-cell bounds and collective arguments are all still open.
+
+Nothing here closes the geometric route, and nothing here should be read as showing the route is
+promising. The deliverable of this block is an auditable target, two runnable evaluators, and one
+retraction.
+
+## 8. Result of the dense-completion search (`K15-EXP-005`)
+
+The harness authored in this block was run as a background job: `--seconds 300 --seeds 4`,
+one CPU, exit status `0`, wall clock `~4 min`. Output committed as
+`Experimental/evidence/dense_completion_search.json`.
+
+| seed | `n` | `sum12` | `mean12` | iterations | refuted |
+| --- | --- | --- | --- | --- | --- |
+| 0-3 (best) | — | `116.663` | `9.722` | `475` | no |
+
+**The search did not refute `(T')`, and it did not even improve on the sparse baseline** of
+`98.0` from `K15-E040`; it made the configuration *worse*. Two readings, both recorded:
+
+1. **The annealing is too weak.** 475 accepted-improvement iterations per seed is small for a
+   `300`-point configuration, and the move set (insert/delete one point) cannot restructure a
+   frustrated cluster. The cache key `(len(P), |P|_1)` is also collision-prone for similar point
+   sets, so some scores may have been stale — a defect of the harness, not of the mathematics.
+2. **The search was aiming at the wrong thing.** Density is not the quantity that makes `(T')`
+   hard; *saturation* is. A denser set increases the *number* of centres but does not make the
+   outer cells satisfy `Omega(w) subset B(w, 2)`, which Section 5 identifies as the condition
+   that makes the volumes meaningful. So driving density up cannot fix the difficulty.
+
+Reading 2 is the substantive one and it is consistent with everything else in this block: the
+empirical route to `(H_R)` is closed not for want of a better optimiser but because the target
+configuration is not reachable by completion. Recorded so that no further search budget is spent
+on it.
+
+## 9. First attempts at `(Q)` — two controls, no answer
+
+### 9.1 A15 is the project's first genuinely saturated fixture
+
+`Experimental/scripts/frank_kasper_test.py` builds the A15 (β-W / Cr₃Si) structure, scales it
+so the minimum distance is exactly `2`, and computes cell volumes.
+
+```
+A15: min separation = 2.000000 (exact after scaling), conventional cube edge L = 4.0
+     cell volumes: 7.812500000 and 8.062500000        sqrt(32) = 5.656854249
+     cell extents: 1.443376  (< 2, so Omega subset B(v,2) holds)
+     packing density: 0.523599
+```
+
+Two things follow, and the first matters more than the second.
+
+- **This is the first fixture in the project whose cells satisfy the saturation criterion**
+  `extent <= 2` established in Section 5. Every earlier fixture failed it. So A15 is a genuine
+  saturated test case, and the evaluator's machinery (defect detection, extent flag, block
+  construction) is now exercised on a configuration where the numbers actually mean what they
+  claim. Run on a 1439-point build it reports `0` defects among the valid interior cells and
+  `520` boundary cells correctly flagged — the flag works.
+- **A15 has no defective cell**: `7.8125` and `8.0625`, both far above `5.6569`. So it does not
+  answer `(Q)`. Its density `0.5236` is far below fcc's `0.7405`, so this is unsurprising.
+
+**A failed attempt, recorded.** I first tried the Laves phase C15 (MgCu₂) as a denser
+candidate, since its mean cell volume (≈ `5.90` at density `0.71`) sits close enough to `√32`
+that individual cells could dip below. My construction used an **8-atom** basis (one Mg plus one
+Cu orbit) when C15 has **24** atoms per conventional cell (8 Mg at 8a + 16 Cu at 16d). The
+result was nonsense — all cells `98.53` with extent `4.12`, density `0.0425` — and I discarded
+it rather than patching the geometry from memory. Anyone continuing this should take the Wyckoff
+positions from a crystallographic source, not reconstruct them.
+
+### 9.2 Periodic relaxation recovers fcc, and finds nothing denser
+
+`Experimental/scripts/periodic_relax.py` relaxes `N` points in a periodic cube, minimising
+`L^3 + P·Σ max(0, 2 − d_ij)^2`, i.e. driving density up until contacts lock.
+
+| `N` | `L` | density | mean cell volume |
+| --- | --- | --- | --- |
+| 4 | `2.827432` | `0.741262` | `5.650888` |
+| 8 | `3.793810` | `0.613694` | `6.825535` |
+| 12 | `4.601329` | `0.515965` | `8.118368` |
+
+The `N = 4` optimum is `L = 2.8274` against `2√2 = 2.8284` for fcc, with density `0.7413`
+against `0.7405` — the relaxation has recovered **fcc**, which is the correct answer and a good
+validation of the harness. The larger cells find only sparser structures, so the search is not
+finding a denser Frank–Kasper competitor.
+
+All runs landed marginally below the legality threshold (`min_d` in `[1.9956, 1.9993]`), i.e. the
+penalty weight was too small to hold separation exactly; none was accepted as legal. That is a
+parameter defect in the harness, not a mathematical result, and it is why `best legal: none` is
+printed.
+
+**Where `(Q)` stands.** Unanswered. Two saturated configurations have been examined (fcc via the
+relaxation, A15 explicitly) and neither has a defective cell; the one configuration that *does*
+have a defective cell (the icosahedral cluster) cannot be saturated. That is consistent with —
+but does not establish — the possibility that `(Q) = no`, which as noted would collapse the
+route to the per-cell inequality. Settling `(Q)` needs a certified periodic construction (correct
+Wyckoff data, exact coordinates, periodic Voronoi decomposition) or an impossibility proof; it
+is the single highest-value next task and I make no claim about it.
+
+### 9.3 A control that worked: a blind relaxation recovers `pi/sqrt18`
+
+After fixing the projection defect of Section 9.2 — scale `L` by `2/min_d` so the final set has
+minimum separation **exactly** `2` and is legal by construction — the harness returns
+
+```
+N = 4,  L_proj = 2.828427276067519    (2 sqrt2      = 2.828427124746190)
+density        = 0.7404803708455797   (pi/sqrt18    = 0.740480489693652)
+mean cell      = 5.656855157420403    (sqrt32       = 5.656854249492381)
+four cell volumes: 5.656855, 5.656855, 5.656855, 5.656855   (all equal)
+relative error in density: 1.6e-07
+```
+
+A blind local optimisation over `(4 positions, cell size)` with no knowledge of fcc — only the
+separation constraint and the volume objective — lands on a four-point cell with equal edge
+lengths `2√2`, four equal Voronoi cells of volume `√32`, and the density `pi/sqrt18` to eight
+significant figures. That is a genuine independent check that the evaluator chain (separation
+handling, periodic images, Voronoi volumes, density conversion) is consistent with the target.
+
+It is **not** evidence for or against `(Q)`: fcc has all cells exactly at `√32` and none below,
+so it neither supplies a defect nor excludes one. Its value is as a calibration: if the harness
+had a systematic error in the volume or the periodic convention, it would not reproduce
+`sqrt32` and `pi/sqrt18` simultaneously to eight digits.
+
+The `N = 6, 8, 12, 16` runs found nothing denser than the `N = 4` (fcc) optimum, so the search
+offers no Frank–Kasper competitor with a small cell. `(Q)` remains open, and the next step is a
+certified periodic construction from crystallographic data rather than a relaxed search.
+
+### 9.4 Per-`N` cell scan: no phase found with a cell below `√32`
+
+Computing cell volumes for the best projected structure at each `N`, not only the global best:
+
+| `N` | density | mean cell | min cell | max cell | below `√32`? |
+| --- | --- | --- | --- | --- | --- |
+| 4 | `0.740480` | `5.656855` | `5.656855` | `5.656855` | no (equal) |
+| 6 | `0.509767` | `8.217065` | `7.343968` | `8.913087` | no |
+| 8 | `0.553512` | `7.567662` | `7.290192` | `7.799182` | no |
+| 12 | `0.426657` | `9.817693` | `8.602567` | `11.549929` | no |
+| 16 | `0.394533` | `10.617081` | `8.543155` | `12.670254` | no |
+
+Only `N = 4` reaches a competitive density, and it is fcc, where every cell equals `√32`
+exactly. The `N >= 6` runs stall at densities `0.39`-`0.55`, far below the `0.71`-`0.74` needed
+for a cell-volume spread to reach down to `√32`, so they cannot produce a defect **whatever
+their geometry**. Note the spread is real (for `N = 16`, min `8.54` to max `12.67`, a factor
+`1.48`) — the optimiser is finding genuinely irregular structures, just sparse ones.
+
+**Reading.** The local optimiser is not strong enough to locate dense Frank–Kasper phases, and
+global packing-density optimisation is exactly the hard problem one should not expect a bounded
+local search to solve. So this line produces no evidence either way about `(Q)`, and it should
+not be extended by more seeds or larger `N`. A decision on `(Q)` needs a *certified* periodic
+construction from crystallographic data (correct Wyckoff positions, exact coordinates, certified
+periodic Voronoi decomposition) — the C15 attempt in Section 9.1 was abandoned for exactly that
+reason, and it is where the next block should start.
+
+### 9.5 A15 stated precisely, and a subsetting error I made
+
+The correct statement of the A15 result, on the full 1439-point build:
+
+```
+n = 1439,  min separation = 2.000000
+boundary cells correctly flagged unreliable: 520
+VALID interior cells:                        919
+defects among valid cells:                     0
+cell volumes of valid cells:  7.8125  and  8.0625      (sqrt32 = 5.656854)
+```
+
+So A15 supplies **919 valid, saturated cells and none is defective**. That is the first time in
+this project that a defect question could be asked of cells whose volumes actually mean what the
+saturation criterion requires, and the answer for A15 is: no defect, because `7.81` and `8.06`
+are far above `5.66`.
+
+**An error I made and corrected.** I first tried to obtain a "fully clean" fixture by taking the
+subset of points with `|r| < 5` from the 1439-point build. That flagged `52` of `66` cells, which
+looked like a failure but was my mistake: *a subset of a dense packing is itself sparse*, so its
+outer cells are genuinely unsaturated. The right move is not to subset but to evaluate the full
+build and count defects only among the cells the extent criterion certifies — which is what the
+figures above do. Recorded because the mistake is easy to repeat: restricting a fixture to its
+interior destroys the very density that makes the fixture meaningful.
+
+## 10. A case split that follows from the above, and why it is not a shortcut
+
+Sections 5 and 9 establish two things about defects: the only configuration known to have one
+(the icosahedral cluster) cannot be saturated, and the saturated configurations examined (fcc,
+A15) have none. That suggests the following split, which I record as a *shape of argument* and
+explicitly **not** as a result.
+
+**Case (a): no cell is defective.** Then `vol Omega(v) >= sqrt(32)` for every `v`, so Hales's
+Lemma 3.3 applies with `A = 0` and the singleton partition, and the density bound follows at
+once. No transfer, no clusters, no blocks.
+
+**Case (b): some cell is defective.** Then the average cell volume over any large region is at
+least `sqrt(32)` only if the deficits are compensated, so the packing must carry compensating
+surplus somewhere — and, by the dodecahedral theorem, the deficit of any single cell is at most
+`sqrt(32) - V_dodeca = 0.106563`, i.e. at most `1.9 %` of a cell volume. A packing in case (b) is
+therefore measurably away from the fcc/hcp equality configurations, in which every cell is
+*exactly* `sqrt(32)` with no deficit at all.
+
+**Why the split is not a shortcut.** Case (b) would need a *quantitative stability* statement: a
+defect of size `d` forces the density to be at most `pi/sqrt(18) - eps(d)` for some explicit
+positive `eps`. That is exactly the kind of statement that is hard here, for the reason
+identified back in the Cohn–Elkies comparisons: the extremal set is a continuum (all Barlow
+stackings), so there is no isolated configuration to linearise about, and the "distance from
+extremality" has no canonical measure. So the split relocates the difficulty rather than
+removing it, in the same way `(T')` and `(H_R)` do.
+
+**What it does buy.** It says where effort should go. Case (a) needs nothing beyond the
+dodecahedral theorem, which is already imported. Everything therefore hangs on case (b), and
+case (b) is a statement about *how much slack* a defective packing must have — a question about
+the second-order structure of the problem, not about any individual cell's volume. That is a
+different question from the ones `K15-E040`-`K15-E049` were asking, and it is the one I would
+attack next if the geometric route is continued.
+
+I make no claim that case (b) is tractable, and no claim that this split is new — it is the
+standard "if the local inequality fails then the configuration is far from extremal" pattern,
+and it should be compared with the existing stability literature before anything is built on it.
+
+## 11. Numerical check of the negligibility estimate in `K15-E061`
+
+The transfer theorem has two halves: pointwise FCC-compatibility (a max-flow statement) and
+negligibility (a boundary count). The second is checkable independently of any volume
+reliability, because `A` is built from the transfer *amounts*, and the identity
+`sum_{v in S} A(v) = sum_{v in S, u notin S} phi(v,u)` is pure bookkeeping.
+
+**Global cancellation.** On every fixture, `|sum_v A(v)|` is at machine precision:
+`1.4e-17` (icosa_fill), `6.9e-18` (icosa_fill_b), `0` (icosa_fcc_shell), `-1.4e-17`
+(two_icosa, 8-defect grid). This is the skew-symmetry working.
+
+**The per-pair bound is attained exactly.** `||A||_inf = 0.10656322097686655` on the 8-defect
+grid, which equals `sqrt32 - V_dodeca = 0.10656322097686993` to `1e-15`. So the transfer pays
+each defect in full and never more — the cap in the construction is active, as designed.
+
+**Boundary scaling.** With eight defects spread over a `9`-unit lattice, `|sum A|` over
+`B(0,r)` is zero for `r <= 7` (the ball contains no complete transfer that straddles its
+boundary), becomes nonzero for `8 <= r <= 16`, and:
+
+| `r` | `|sum A|` | `/r^2` | `/r^3` |
+| --- | --- | --- | --- |
+| 9 | `2.622e-01` | `3.24e-03` | `3.60e-04` |
+| 12 | `7.83e-02` | `5.44e-04` | `4.53e-05` |
+| 16 | `5.62e-02` | `2.20e-04` | `1.37e-05` |
+
+`/r^2` stays bounded (at most `3.2e-3`) while `/r^3` decays by an order of magnitude over the
+same range, which is the signature of an `O(r^2)` boundary term rather than an `O(r^3)` bulk
+term. The values are jagged rather than monotone because the ball boundaries sweep across
+discrete lattice shells, which is expected.
+
+**What this establishes and what it does not.** It confirms the *mechanism* of the negligibility
+argument — exact cancellation, a boundary crossing, and the right scaling — and it confirms that
+the per-pair cap `sqrt32 - V_dodeca` is achieved. It does **not** verify the model bound
+`||phi||_inf (R+1)^3 |shell|` numerically; that bound is very loose (it would allow `~27.5 x
+|shell| x 0.1066`, far above the observed values) and its role is only to establish `C_1 <
+infinity`, which is what the proof needs. So the numbers support the proof's shape without being
+needed for it: the negligibility claim is a proof, not an observation.
+
+## 12. Direct check: does anything here use the invalid `C029` step?
+
+The assignment records that Main's `C029` "subset-to-total signed-sum proof is invalid" and that
+one may not assume negligibility bounds the positive-part sum. That is correct as a general
+point — `sum A <= C1 r^2` does **not** give `sum max(A,0) <= C1 r^2`, because `A` may have a
+large negative part — so I checked every place my own arguments touch `A`.
+
+**`K15-E001` (the cluster criterion).** Two places.
+- Step 1 uses `sum_{v in S'} c(v) <= sum_{v in S} c(v)`, which is valid only because `c >= 0`
+  by hypothesis (C3), and nonnegativity is a *pointwise* assumption on `c = vol Omega + A`,
+  not a bound on `A^+`. No positive-part step.
+- Step 4 uses `sum_{v in S}(vol Omega(v) + A(v)) <= vol B(x,r+3) + C1 (r+1)^2`. This is an
+  upper bound on the *signed total*, obtained from negligibility of `A` directly; it is exactly
+  the direction negligibility provides. No positive-part step.
+So `K15-E001` does not use the invalid inference. Its (C3) is doing real work, which is one
+reason the criterion is stated with nonnegativity as an explicit hypothesis.
+
+**`K15-E061` (the transfer).** Negligibility comes from the identity
+`sum_{v in S} A(v) = sum_{v in S, u notin S} phi(v,u)`, which bounds the *signed* sum by the
+boundary crossing — again the direction negligibility needs, with no reference to `A^+`.
+Pointwise FCC-compatibility is a separate max-flow statement about `c`, not about `|A|`.
+
+**Conclusion.** Neither `K15-E001` nor `K15-E061` relies on the `C029` inference, so the
+retraction of `C029` does not affect anything in this directory. I state this explicitly rather
+than leaving it to be inferred, because a reader who has seen `C029` withdrawn would reasonably
+want to know whether the same slip appears here. It does not. I have not audited `C029` itself
+and make no claim about what it should be replaced with.
+
+### 11.1 A15 self-consistency: cell volumes match the Wyckoff multiplicities
+
+A15 has two orbits per conventional cell — `2` A-sites (CN12) and `6` B-sites (CN14) — and the
+computed cell volumes split into exactly two values with those multiplicities:
+
+```
+2 cells of 7.8125 = 125/16,   6 cells of 8.0625 = 129/16
+multiplicity-weighted mean = (2*125/16 + 6*129/16)/8 = 8 = L^3/N = 64/8
+density = (4pi/3)(8)/64 = 0.5235988
+```
+
+So the volume-weighted average reproduces `L^3/N` exactly, and the split `2 : 6` matches the
+`8a : 16d` site ratio. That is a genuine consistency check of the fixture: a Voronoi
+decomposition with an indexing error or a wrong periodic convention would not reproduce both
+the multiplicities and the mean simultaneously. It also confirms the earlier statement that the
+A15 build is a real structure and not an artefact.
+
+The two cell volumes are exact rationals (`125/16` and `129/16`) because the scaled cube edge is
+exactly `4`, so this fixture needs no floating-point tolerance at all.

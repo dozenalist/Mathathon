@@ -76,6 +76,21 @@ def fill(core, rmax=6.5, minsep=2.0-1e-9, n=4000, seed=4):
 # 2, so any nonzero displacement violates the 2-separation.  Creating a defect needs a
 # locally compressed motif, which is why the icosahedral cluster is the natural source.
 
+def a15_fixture(reps=4):
+    """A15 (beta-W) scaled to minimum separation 2: the only fixture whose interior
+    cells satisfy the saturation criterion Omega(v) subset B(v,2)."""
+    A=[(0,0,0),(0.5,0.5,0.5)]
+    B=[(0.25,0,0.5),(0.5,0.25,0),(0,0.5,0.25),
+       (0.75,0,0.5),(0.5,0.75,0),(0,0.5,0.75)]
+    basis=(np.array(A+B,float))*(2.0/0.5)      # unscaled min distance is 0.5
+    L=4.0
+    pts=[]
+    for i in range(-reps,reps+1):
+        for j in range(-reps,reps+1):
+            for k in range(-reps,reps+1):
+                pts.append(basis+np.array([i,j,k])*L)
+    return np.vstack(pts)
+
 def two_icosa(sep=16.0, seed=7):
     """Two icosahedral clusters far apart, each with its own fill: TWO defect
     components, so the disjointness / overlap accounting is genuinely exercised."""
@@ -118,15 +133,25 @@ FIXTURES={
  "hcp":            lambda: hcp(2),
  "icosa_fill":     lambda: fill(icosa_cluster(), 7.0, seed=4),
  "icosa_fill_b":   lambda: fill(icosa_cluster(), 7.0, seed=9),
+ "a15_saturated":  lambda: a15_fixture(3),
  "two_icosa":      lambda: two_icosa(),
  "icosa_fcc_shell": lambda: icosa_in_fcc_shell(2),
  "icosa_fcc_shell_b": lambda: icosa_in_fcc_shell(5),
 }
 
 # ---------------- Voronoi with buffer + unbounded detection ----------------
-def vor_volumes(P, R=26.0, nbuf=3000):
-    """Returns (vol, buffer_face_flag).  A cell with buffer_face_flag True is
-    cut by the buffer and its computed volume is NOT the true cell volume."""
+def vor_volumes(P, R=26.0, nbuf=3000, extent_cap=2.0):
+    """Returns (vol, unreliable_flag).
+
+    A cell is flagged UNRELIABLE when its computed extent from its own centre
+    exceeds `extent_cap`.  Two things make that the right test:
+      * in a SATURATED packing Omega(v) is contained in B(v,2), so a cell with
+        extent > 2 cannot be the cell of a saturated packing;
+      * a sparse finite fixture (or one truncated by the buffer) produces exactly
+        such cells, and their volumes are meaningless for the packing bound.
+    An earlier version tested only "vertex radius > R - 1e-6", which silently
+    missed cells truncated at radius ~18 by an unbounded buffer sphere."""
+
     buf=fib(nbuf)*R
     A=np.vstack([P,buf]); vor=Voronoi(A); n=len(P)
     vol=np.zeros(len(A)); touched=np.zeros(len(A),bool)
@@ -140,8 +165,8 @@ def vor_volumes(P, R=26.0, nbuf=3000):
         V=vor.vertices[reg]
         try: vol[i]=ConvexHull(V).volume
         except Exception: touched[i]=True; continue
-        # a cell touching the buffer is buffer-limited
-        if np.max(np.linalg.norm(V,axis=1)) > R-1e-6: touched[i]=True
+        # unreliable if the cell reaches farther than a saturated cell may
+        if np.max(np.linalg.norm(V-P[i],axis=1)) > extent_cap+1e-9: touched[i]=True
     return vol[:n], touched[:n]
 
 # ---------------- graph / blocks ----------------
