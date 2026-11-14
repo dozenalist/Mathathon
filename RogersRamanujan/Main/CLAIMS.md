@@ -14,7 +14,7 @@ never used to promote anything above TESTED_FINITE.
 | RR-C002 | Equality `|A_n| = |D_n|` for `n <= 50`; method independence stated honestly | TESTED_FINITE |
 | RR-C003 | No weight-preserving bijection preserves the **length** | PROVED |
 | RR-C004 | No weight-preserving bijection preserves the **largest part** | PROVED |
-| RR-C005 | Staircase: nonnegativity, weight `n-k^2`, both inverse laws (order NOT yet in Lean) | LEAN_VERIFIED (pinned compiler, supervisor-checked) |
+| RR-C005 | Staircase **equivalence**: order, both inverse laws on the correct subtypes, length retained, padding explicit | **LEAN_VERIFIED** (4.35.0 for the base module; order module on 4.33.1 only) |
 | RR-C006 | Shift `T : D_n -> B_n` (smallest part >= length), both laws | TESTED_FINITE |
 | RR-C007 | BZ82 reference map: our implementation is a bijection `A_n -> D_n` | TESTED_FINITE (n <= 50); BZ82's theorem is PROVED in the literature |
 | RR-C008 | BZ82 `psi` involution on `X(n) minus {0} x A_n`, **all n** | **PROVED (amended, independently audited, gap list empty)** |

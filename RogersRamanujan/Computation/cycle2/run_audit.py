@@ -341,6 +341,51 @@ def path_stats(NMAX):
 
 
 # ---------------------------------------------------------------------------
+# shape of the Case-II admissible set, and the closed existence criterion
+# ---------------------------------------------------------------------------
+
+
+def admissible_shape(NMAX):
+    """Tests two structural claims about the admissible z-set S.
+
+    (S1) S is always a prefix {0,1,...,m}: no holes, so "Max" is never a maximum
+         over a non-convex set and |S| = m+1.
+    (S2) S is non-empty iff  a+2j-2 >= 0  and  lam(a+2j-1) <= t+5j-2.
+
+    (S2) is the criterion that direction B of this swarm (member m1) derives
+    from the monotonicity of  i |-> lam(i) - i; it is *checked* here, not
+    assumed.  With (S2) the "does the maximum exist for every n" question of
+    cycle 1 becomes two explicit inequalities."""
+    out = dict(caseII=0, not_prefix=0, criterion_mismatch=0, size_ne_max_plus_1=0,
+               witnesses=[])
+    for n in range(NMAX + 1):
+        for (j, lam) in B.states_of_weight(n):
+            t = len(lam)
+            a = B._phi_a(j, lam)
+            la = B.lam_at(lam, a)
+            mu = 2 * j + a - la
+            lmu = B.lam_at(lam, mu)
+            tstar = t + (1 if la == 0 else 0) + (1 if lmu == 0 else 0)
+            if la + lmu >= 5 * j + tstar:
+                continue
+            out["caseII"] += 1
+            S, _ep = B.case_ii_admissible_set(j, lam)
+            if S != list(range(len(S))):
+                out["not_prefix"] += 1
+                if len(out["witnesses"]) < 5:
+                    out["witnesses"].append(dict(kind="not_prefix", j=j, lam=list(lam), S=S))
+            crit = (a + 2 * j - 2 >= 0) and (B.lam_at(lam, a + 2 * j - 1) <= t + 5 * j - 2)
+            if bool(S) != crit:
+                out["criterion_mismatch"] += 1
+                if len(out["witnesses"]) < 5:
+                    out["witnesses"].append(dict(kind="criterion", j=j, lam=list(lam),
+                                                 S=S, crit=crit, a=a, t=t))
+            if S and len(S) != S[-1] + 1:
+                out["size_ne_max_plus_1"] += 1
+    return out
+
+
+# ---------------------------------------------------------------------------
 # psi branch pairing: which branch does psi send each branch to?
 # ---------------------------------------------------------------------------
 
@@ -431,6 +476,10 @@ def main():
 
     results["examples"] = printed_examples()
     results["psi_branch_pairing"] = branch_pairing(NMAX)
+    shape = admissible_shape(NMAX)
+    results["admissible_shape"] = shape
+    if shape["not_prefix"] or shape["criterion_mismatch"] or shape["size_ne_max_plus_1"]:
+        fail("admissible-set shape", shape)
     ic = independent_counts(NMAX)
     results["independent_counts"] = ic
     bad = [r for r in ic if not r["agree"]]
@@ -502,6 +551,11 @@ def main():
               % (r["n"], r["A_count"], r["steps_max"],
                  Fraction(r["steps_mean_num"], r["steps_mean_den"]) if r["A_count"] else "-",
                  r["steps_mean"], r["argmax_lam"]))
+    sh = results["admissible_shape"]
+    print("admissible z-set over all %d Case-II states: not a prefix %d ; "
+          "size != max+1 %d ; criterion-mismatches %d"
+          % (sh["caseII"], sh["not_prefix"], sh["size_ne_max_plus_1"],
+             sh["criterion_mismatch"]))
     print("psi branch pairing:")
     for k, v in results["psi_branch_pairing"]["counts"].items():
         print("   %-9s %d" % (k, v))

@@ -271,3 +271,37 @@ of active work, as specified in ROADMAP.
 - **Still open:** all-`n` `phi` case stability and `phi^2 = id`; tying the two
   inequalities above; tie-breaks used but not derived from inverseness; and the
   Mathathon objective.
+
+## 2026-11-14 / RR-M006 / Lean: the missing order statement is proved; staircase is a genuine equivalence
+
+- **Agent and reviewer:** worker m2 (swarm `smwg03n61`, direction D,
+  `Lean/cycle2/`), integrated and independently verified by Main.
+- **Status:** RR-C005 upgraded from "six lemmas, order missing" to
+  **LEAN_VERIFIED staircase equivalence**, with a toolchain caveat.
+- **New theorems** (`Lean/StaircaseOrder.lean`, integrated): `subStair_weakDec`
+  (`Pos + Gap => WeakDec (subStair l)`, the half missing since cycle 1),
+  `addStair_pos`, `addStair_gap`, `addStairMap_subStairMap`,
+  `subStairMap_addStairMap` on the subtypes `StairGap = {l // Pos l ∧ Gap l}` and
+  `StairCoord = {m // WeakDec m}`, `stairBridge`, `subStairMap_facts` (length
+  retained, `sum = n-k*k`), and `allZero_of_weakDec_zero` / `subStair_zero_tail`
+  making the zero padding a terminal block.
+- **Non-vacuity verified by Main** with a separate importing file: the kernel
+  evaluates `subStair [7,3,1] = [2,0,0]`, `addStair [5,3,3] = [10,6,4]`,
+  `subStair (addStair [4,0,0]) = [4,0,0]`; `subStairMap ⟨[7,3,1],_⟩ = ⟨[2,0,0],_⟩`
+  by `rfl`; both subtype round trips fire at concrete elements; the order
+  statement holds where claimed. The worker's sharp witnesses are confirmed:
+  `¬ WeakDec (subStair [1,3])` (so `Gap` is genuinely needed) and
+  `addStair [1] ≠ addStair [1,0]` (so padding carries the length).
+- **Axioms:** `[propext, Quot.sound]` or none, for all 22 declarations; no
+  `sorryAx`, no `Classical.choice`, no `native_decide`.
+- **Toolchain, stated precisely:** the order module compiles on the VM's Lean
+  **4.33.1** only. The cycle-1 base module was separately compiled on the pinned
+  4.35.0 by the supervisor. So the pair is LEAN_VERIFIED modulo the pin, i.e.
+  Lean-conditional on a 4.35.0 run of `StaircaseOrder.lean`.
+- **Build:** `RogersRamanujan.lean` now imports both modules; named target
+  `lake build RogersRamanujan` still unverified here (no `.lake` checkout).
+- **Two integration fixes by Main:** import the real `RogersRamanujan.Lean.Staircase`
+  instead of a byte-identical copy; and `def StairGap`/`def StairCoord` ->
+  `abbrev`, because with `def` the subtypes are opaque to importers.
+- **Still open:** `T` and `B_n`; the `Nat.Partition` bridge; a 4.35.0 run; and
+  nothing here touches `A_n`, `phi`, `psi`, so the objective is untouched.

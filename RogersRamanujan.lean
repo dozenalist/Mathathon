@@ -6,9 +6,21 @@ this aggregator and the `[[lean_lib]] name = "RogersRamanujan"` entry in
 `lakefile.toml` the default build compiles nothing of the project's Lean work.
 Named target:  lake build RogersRamanujan
 
-Scope note: the theorems collected here are the standard staircase reduction
-(positivity bound, both inverse laws, exact weight change, nonnegativity). They
-are project infrastructure, not a solution of the Rogers--Ramanujan problem.
-Weak-decreasingness of the staircase coordinates is NOT yet proved here.
+Contents:
+  * `Staircase`      -- the staircase map, its positivity bound, both inverse
+                        laws, the exact weight change and nonnegativity.
+  * `StaircaseOrder` -- the order statement that was missing from cycle 1
+                        (`subStair_weakDec`), the converse directions
+                        (`addStair_pos`, `addStair_gap`), both inverse laws as
+                        maps between the correctly specified subtypes with the
+                        length retained and zero padding explicit, and witnesses
+                        showing the `Gap` hypothesis is needed and that padding
+                        carries the length.
+
+Together these make the staircase reduction a genuine equivalence between
+positive gap partitions and weakly decreasing coordinate lists. They are project
+infrastructure: nothing here touches A_n, D_n, phi, psi, T or B_n, and none of it
+is a solution of the Rogers--Ramanujan problem.
 -/
 import RogersRamanujan.Lean.Staircase
+import RogersRamanujan.Lean.StaircaseOrder

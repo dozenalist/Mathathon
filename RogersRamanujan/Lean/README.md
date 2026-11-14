@@ -56,16 +56,59 @@ of the pin; the local 4.33.1 runs agree.
 All inside the event's allowed set; no `sorry`, no `admit`, no `sorryAx`, no
 custom axiom, no `native_decide`, no `Classical.choice`.
 
-## Honest scope: this is NOT yet a staircase equivalence
+## Cycle 2: the order statement is now proved (this IS a staircase equivalence)
+
+`Lean/StaircaseOrder.lean` (integrated by Main from cycle-2 worker m2) supplies
+what cycle 1 recorded as missing:
+
+| theorem | statement |
+| --- | --- |
+| `RR127.subStair_weakDec` | `Pos l -> Gap l -> WeakDec (subStair l)` — **the order half** |
+| `RR127.addStair_pos` | `Pos (addStair l)`, no hypothesis |
+| `RR127.addStair_gap` | `WeakDec l -> Gap (addStair l)` — surjectivity onto coordinates |
+| `RR127.addStairMap_subStairMap` | `addStairMap ∘ subStairMap = id` on `StairGap` |
+| `RR127.subStairMap_addStairMap` | `subStairMap ∘ addStairMap = id` on `StairCoord` |
+| `RR127.stairBridge` | the pair packaged (Init has no `Equiv`) |
+| `RR127.subStairMap_facts` | length retained, `sum = n - k*k` |
+| `RR127.allZero_of_weakDec_zero`, `subStair_zero_tail` | the zeros of a coordinate list are a terminal block, so a coordinate is "positive part ++ padding", and the padding must be kept because `addStair` needs the length |
+
+Witnesses that the statement is not vacuous: `subStair [4,1] = [1,0]`;
+`¬ WeakDec (subStair [1,3])`, so the `Gap` hypothesis is needed; and
+`addStair [1] ≠ addStair [1,0]`, so padding carries the length.
+
+`StairGap = {l // Pos l ∧ Gap l}` (length retained, positivity, gaps) and
+`StairCoord = {m // WeakDec m}` (length retained, weakly decreasing `Nat` list,
+trailing zeros allowed). So `StairGap ≃ StairCoord` is a genuine equivalence of
+the two objects the contract names.
+
+**Main's independent verification of this module.** Compiled here, exit 0,
+axioms `[propext, Quot.sound]` or none for all 22 declarations, no `sorryAx`;
+plus a separate non-vacuity file importing it and discharging by `rfl` that the
+map computes (`subStairMap ⟨[7,3,1], _⟩ = ⟨[2,0,0], _⟩`), that both subtype round
+trips fire at concrete elements, and that the order statement holds where claimed
+while failing without `Gap`. The kernel also evaluates `subStair [7,3,1] = [2,0,0]`,
+`addStair [5,3,3] = [10,6,4]`, `subStair (addStair [4,0,0]) = [4,0,0]`.
+
+**Toolchain label, precisely.** This module is **LEAN_VERIFIED on Lean 4.33.1**
+(the VM's executable). It has **not** been compiled on the pinned 4.35.0; the
+cycle-1 base module was, independently, by the supervisor. Since `StaircaseOrder`
+is `Init`-only and uses only `omega`/`simp`, a 4.35.0 run is expected to agree,
+but it is not claimed. Under the event rules this makes the *pair* of modules
+Lean-conditional on the pin until someone runs the pinned compiler.
+
+Two integration fixes applied by Main: the module now imports
+`RogersRamanujan.Lean.Staircase` rather than a copy, and `def StairGap`/
+`def StairCoord` became `abbrev`, because with `def` the subtypes are opaque to
+importers (`⟨⟩` notation and `rfl`-level checks then fail from outside the file).
+
+## Superseded: the cycle-1 scope caveat
 
 Cycle 1 advertised the six declarations as a staircase bridge; the supervisor's
 review correctly narrowed that. Two specific problems:
 
-1. **Weak-decreasingness is missing.** `subStair` producing a nonnegative list of
-   the right length and weight does not make it a *partition*; the order
-   statement (`WeakDec (subStair l)`) is still only checked computationally
-   (Computation results, `staircase_and_T.ok`), not in Lean. This is the one
-   addition that would turn the six lemmas into a genuine equivalence.
+1. ~~**Weak-decreasingness is missing.**~~ **Fixed in cycle 2:**
+   `subStair_weakDec`. This was the one addition needed to turn the six lemmas
+   into a genuine equivalence, and it is now kernel-checked.
 2. **`subStair_nonneg` carries no content.** For `Nat`-valued coordinates
    `0 <= x` is automatic, so it cannot establish absence of truncation. The
    substantive non-truncation evidence is `head_bound` (which forces
@@ -77,8 +120,8 @@ review correctly narrowed that. Two specific problems:
 
 | Obligation | Why it matters | Status |
 | --- | --- | --- |
-| `WeakDec (subStair l)` | the other half of "mu is a partition" | **open** (computational only) |
-| subtype-level `Equiv` | packages the two inverse laws as a genuine equivalence of the two families, length retained | open; needs the row above |
+| `WeakDec (subStair l)` | the other half of "mu is a partition" | **DONE** (`subStair_weakDec`) |
+| subtype-level bridge | packages the two inverse laws as a genuine equivalence, length retained | **DONE** (`StairBridge`, both round trips) |
 | `T` and `B_n` (= smallest part >= length) | bridges to BZ82/BP06 notation | not started |
 | `Nat.Partition` bridge | the repo pin is a `Multiset` without consecutive indices | not started |
 | BZ82 `phi`/`psi` | would let the kernel replace RR-C009's finite test | not started |
