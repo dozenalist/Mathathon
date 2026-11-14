@@ -22,6 +22,7 @@ in the project lives in Computation's own branch (`exactcert.py`, `out/…K33b.j
 | `barlow_cells.py` | `K15-C094`: Barlow cells — 12 contacts, cell volume `√32`, the fcc/hcp two-shape dichotomy and its tangency slack; `--sweep N` adds random stackings of period 3–10 | `python3 barlow_cells.py [--sweep 6]` | 23 s; 6 min with `--sweep 6` |
 | `gap_fixture.py` | `K15-C095`: the crack packing — min separation, cross-crack distance, sampled covering radius over a range of `d` | `python3 gap_fixture.py` | 6 s |
 | `rho_probe.py` | `K15-C096`: the icosahedral-scaled cell volume against `√32`, and whether a 13th point in an icosahedral hole can cut it | `python3 rho_probe.py` | 1 s |
+| `near_contact_band.py` | `K15-C116`: bisects the largest centre separation at which two dodecahedral cells remain impossible (`6/√5 = 2.6832816`, sharp for this certificate) | `python3 near_contact_band.py` | 0.09 s |
 | `twist_cover.py` | `K15-C112`: two adjacent dodecahedral centres are impossible for **all** relative twists — the "too close" set of each pair is a single arc, and the arcs cover the twist circle with zero gaps (supersedes the sampled grid) | `python3 twist_cover.py` | 0.06 s |
 | `a15_pair.py` | `K15-C111`: A15 cell volumes (exact rationals `125/16`, `129/16`) and the contact-pair type; corrects E's A–B-for-B–B entry | `python3 a15_pair.py` | 0.3 s |
 | `ledger_lint.py` | `K15-C110`: CLAIMS.md consistency — ids, addenda, status vocabulary, and that every fully-qualified `K15-…` reference resolves | `python3 ledger_lint.py` | 0.05 s |

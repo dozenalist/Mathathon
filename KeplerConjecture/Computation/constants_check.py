@@ -166,6 +166,12 @@ chk("A15 contact pair (B-B) = 129/8", 2 * mpf(129) / 16, 16.125, tol=1e-12)
 chk("A15 A+B (NON-contact pair) = 127/8", (mpf(125) + mpf(129)) / 16, 15.875, tol=1e-12)
 chk("A15 A-B distance = sqrt5 (not 2)", sqrt(mpf(5)), 2.2360679774997896964, tol=1e-15)
 
+# --- K15-C116: the near-contact band -------------------------------------------------
+chk("critical separation 6/sqrt5", 6 / sqrt(mpf(5)), 2.683281572999747635, tol=1e-12)
+chk("(6/sqrt5)^2 = 36/5", (6 / sqrt(mpf(5))) ** 2, mpf('7.2'), tol=1e-15)
+chk("band width 6/sqrt5 - 2", 6 / sqrt(mpf(5)) - 2, 0.683281572999747635, tol=1e-12)
+chk("route needs 0.012718662083, a factor", (6 / sqrt(mpf(5)) - 2) / mpf('0.012718662083'), 53.723, tol=1e-2)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)

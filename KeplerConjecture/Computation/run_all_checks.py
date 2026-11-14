@@ -28,6 +28,7 @@ CHECKS = [
     ("ledger: consistency lint (C110)", ["ledger_lint.py"], []),
     ("A15 pair type corrected (C111)", ["a15_pair.py"], ["--quick"]),
     ("two-dodecahedra: all-twists cover (C112)", ["twist_cover.py"], ["--quick"]),
+    ("two-dodecahedra: near-contact band (C116)", ["near_contact_band.py"], ["--quick"]),
 ]
 
 

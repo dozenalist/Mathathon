@@ -3466,12 +3466,14 @@ cannot is the density.**
 **Widening to near-contacts.** For `ε ≥ 0` let `G_ε` be the graph of pairs at distance `≤ 2+ε`,
 and `σ₀(ε)` the infimum of `vol Ω(v)+vol Ω(w)` over such pairs. Two facts:
 
-1. `σ₀(ε) > 2V_dod` for every **fixed** `ε ≥ 0`: Theorem D's compactness argument runs verbatim
-   with "distance exactly 2" replaced by "distance in `[2, 2+ε]`" (the admissible set is still
-   compact and `Φ` still continuous), and the equality case still forces two dodecahedral cells —
-   and the two-dodecahedra clash of `C112` persists for centres `d > 2` apart, because the clash
-   margin at `d = 2` is large (`1.1256` against a required `2`, on an arc cover with **no gaps**)
-   and the configuration depends continuously on `d`.
+1. `σ₀(ε) > 2V_dod` for every **fixed** `ε < 0.6832816 = 6/√5 − 2`: Theorem D's compactness
+   argument runs verbatim with "distance exactly 2" replaced by "distance in `[2, 2+ε]`" (the
+   admissible set is still compact and `Φ` still continuous), and the equality case still forces
+   two dodecahedral cells — whose impossibility is `C112` at `d = 2` and `C116` for every
+   `d < 6/√5`, certified by arc cover. **That band is `53.7` times wider than the `ε* =
+   0.012718662` the route can ever use**, so the near-contact form is available with room to
+   spare. (An earlier version asserted only that "the clash persists for `d > 2`" by continuity;
+   `C116` replaces that with a covered range and a sharpness statement.)
 2. `σ₀(ε)` is **not explicit**, for the same reason as `σ₀`, and nothing here gives a rate in `ε`.
 
 Substituting `G_ε` and `σ₀(ε)` for the contact graph and `σ₀` in Theorem C, the bridge holds for
@@ -3550,3 +3552,35 @@ bounds how far from a dodecahedron a cell may be while staying within `V_dod + �
 assumption from Theorem D's ledger entry; it does not add a number.
 
 *Status.* `AUDITED` (source read, quoted, hashed). Reviewer X.
+
+### K15-C116 — the near-contact band is `6/√5 = 2.6832816`, and it is sharp (`PROVED`, arc cover)
+
+`Computation/near_contact_band.py`. Quantifies `C114`'s widening, which asserted only that "the
+clash persists for `d > 2`". It does, much further than needed:
+
+> **Two dodecahedral cells are impossible whenever their centres are less than `6/√5 =
+> 2.6832815729997476` apart** — and the arc-cover certificate **fails** for every larger `d`
+> tested, so the constant is sharp for this method.
+
+Method: the `C112` arc cover, run with the partner centre at `(d,0,0)` instead of `(2,0,0)`.
+Coverage of the twist circle is `1.0000` (no gaps) at `d = 2.00, 2.02, 2.05, 2.10, 2.20, 2.40,
+2.60` and fails at `2.80`; bisection gives the threshold bracket
+`[2.68328151703, 2.68328170776]`, whose closed form is `6/√5 = 2.683281572999…`
+(`(6/√5)² = 36/5 = 7.2` exactly).
+
+**Why this matters for the route.** `C114` widens Theorem D from "distance exactly 2" to
+"distance `≤ 2+ε`", which requires the clash to survive at `d = 2+ε`. It survives for
+`ε < 0.6832816`, so the near-contact bridge is available on a band **`53.7` times wider** than
+the widest band the route can actually use (`ε* = 0.012718662`, where a uniform scaling meets the
+dodecahedral bound). **So the exact-contact restriction is comfortably removable and was never
+the obstruction** — which is exactly `C114`'s conclusion, now with a constant and a sharpness
+statement instead of an assertion.
+
+**Not claimed.** Sharpness is for *this* certificate (the arc cover at threshold exactly `2`);
+beyond `6/√5` the test says nothing, and it is entirely possible that two dodecahedral cells stay
+impossible to larger `d` by an argument this one cannot see. The bracket is asserted only as a
+bracket, and `d = 6/√5` itself was not resolved (the bisection window is `1.9×10⁻⁷` wide and
+straddles it).
+
+*Status.* `PROVED` on `[2, 6/√5)` modulo 50-digit arithmetic and the `1e-20` inflation; `TESTED`
+for the sharpness claim. Reviewer X.
