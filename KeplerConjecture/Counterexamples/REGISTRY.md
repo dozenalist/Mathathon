@@ -1796,3 +1796,22 @@ the **nine** values in `13 ≤ F ≤ 20`" — `13..20` is **eight** values, of w
 proved, so seven of **eight** are unproved ✓ (the count matters only for the prose, not for the argument).
 Their "not claimed" paragraph is right: `6.1584` and `5.0541` are both consistent with a `≤ 20` target of
 `4.958`, so the branch is stopped because the constants are unproved, not because they are large.
+
+### K15-X-C115 — the payer (P′) claim reproduces exactly
+
+`payer_reproduce.py` (main `2c41311`, exit 0): 13 fixture points, min separation over all 78 pairs `2.0`
+(legal), `vol Ω(w1) = 5.89801737180372` against E's frozen `5.898017371803720` (`1e-15`), margin
+`0.1345999018` over the `(P′)` requirement `5.763417470`. `payer_family.py`: legal `dz` window `[+0.55,
++0.90]`, family minimum `5.898017372` at `dz = +0.75`, E's grid minimum `5.898007181` and E's *continuous*
+optimum `5.897967122` — all above the requirement. Independently, `c5_fixture` and `cell_certificate` give
+the same `5.8980173718` (`X-C110`). So `(P′)` holds on this family with margin `0.135`, three ways.
+
+### K15-X-C116 — a second unreconciled Main/E number: `a15_pair`'s `16.125` vs `15.875`
+
+`a15_pair.py` (main `2c41311`, exit 0) prints "B-B contact pair sum `= 2*vol_B = 16.125000000` … E's A15 row
+quotes `15.875000000` … difference `+0.250000000`". Both exceed `2√32 = 11.313708` so `(P′)` holds either
+way, but the two numbers differ by exactly `1/4` and neither side reconciles them. Same class as `X-C104`
+(where Main's `1.1255548` was the right one): the ledger needs one number per quantity, and a line saying
+which is the record. `cluster_fixture.py` and `transfer_check.py` also pass, and `cluster_fixture.py` states
+the monotonicity direction correctly ("every entry above is an UPPER bound … a positive sum at a finite
+stage cannot certify the inequality", `C036`).
