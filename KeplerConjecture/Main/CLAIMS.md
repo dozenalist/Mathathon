@@ -904,3 +904,45 @@ geometric route produces: a candidate profile ⇒ run `exactcert` and
   C's `shell_bench.py` is grid-based and cannot certify.
 - **Status.** `TESTED_FINITE`; the verdicts inside are exact, the *values* are
   vacuous. Reviewer X. G10 remains open but with the cost structure now explicit.
+
+### K15-C029 — the usable objective for the geometric route (`PROVED`, a constraint on `A`)
+
+The cluster criterion (K15-C025) needs `Σ_{v∈K}(vol Ω(v) + A(v)) ≥ V_0|K|` with
+`V_0 > 5.550291` to beat the dodecahedral bound, and `V_0 = √32 = 5.656854` to
+reach Kepler. This entry records what that forces on `A`, so that a proposed `A`
+can be tested before any cluster analysis is attempted.
+
+**Lemma (defect density is zero).** Let `Λ` be saturated with an fcc-compatible,
+negligible `A`: `vol Ω(v) + A(v) ≥ √32` for all `v`, and
+`Σ_{v∈Λ∩B(x,r)} A(v) ≤ C₁r²` for all `x`, `r ≥ 1`. Fix `θ > 0` and let
+`D_θ = {v : vol Ω(v) ≤ √32 − θ}`. Then `#(D_θ ∩ B(x,r)) ≤ C₁r²/θ` for all
+`x, r`, hence `D_θ` has upper density zero.
+
+*Proof.* For `v ∈ D_θ`, fcc-compatibility gives `A(v) ≥ √32 − vol Ω(v) ≥ θ`.
+Summing over `D_θ ∩ B(x,r) ⊆ Λ ∩ B(x,r)` and using negligibility,
+`θ·#(D_θ ∩ B(x,r)) ≤ Σ A ≤ C₁r²`. Divide by `vol B(x,r) ≍ r³`. ∎
+
+**Consequences, in the order they matter.**
+1. Any packing that is fcc-compatible in this sense has `o(r³)` vertices with cell
+   volume below `√32 − θ`, for every fixed `θ`. So the *only* way a cell can be
+   small is for it to be rare: the geometric content is a statement about
+   densities, not about individual cells.
+2. Conversely, a proposed `A` that is uniformly positive on a positive-density
+   set of vertices **cannot be negligible** — an immediate falsification test.
+   (The same test with `θ = 0.106563` is X's `X-C003(2)`; this makes the constant
+   arbitrary and the statement quantitative.)
+3. On the icosahedral 13-cluster, `vol Ω = 5.550291` so `A ≥ 0.106563` there; by
+   1, such clusters must have density zero in any admissible packing. **This is
+   the precise sense in which the icosahedral configuration is the obstruction**,
+   and it is why a successful `A` must be negative on the generic (near-fcc)
+   vertices: the average of `A` over a large region is `≤ C₁r²/vol = o(1)`, while
+   its value at defect vertices is `≥ 0.106563`.
+4. **The usable objective** for the next geometric attempt is therefore:
+   `A` with (i) `A(v) ≥ √32 − vol Ω(v)` on defect vertices, (ii) `Σ A ≤ C₁r²`,
+   (iii) cluster average `≥ V_0|K|` with `V_0 > 5.550291`. Condition (ii) forces
+   `A` to be negative on a set of vertices of full density, so any candidate must
+   exhibit its negative part explicitly. A candidate that only specifies the
+   positive part is incomplete by construction.
+
+*Status.* `PROVED` (elementary; the `θ`-quantification is Main's). Reviewer X.
+No numerical input is used.
