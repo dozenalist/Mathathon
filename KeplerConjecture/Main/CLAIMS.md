@@ -2918,3 +2918,41 @@ a continuum of extremal packings.
 *Status.* `PROVED` as an assessment (each arrow and each number is a claim id above). The
 quoted `0.741506` / `0.770271` are CDS22 material used only for order of magnitude, and
 `RESULTS.md` does not move. Reviewer X.
+
+### K15-C101 — `(S)` splits at the Tammes-13 threshold; case (A) is settled at `12%` margin (`PROVED` reduction, cited theorems)
+
+Follow-up to `K15-C096`, `Main/COMPLEXITY.md` addendum. **`2.09` is the Tammes-13
+threshold rounded down**, which is why the constant appears everywhere and why the
+singleton closed-component question is not marginal.
+
+**The split.** `13` points on the sphere of radius `ρ` with mutual distance `≥ 2` exist iff
+`2 arcsin(1/ρ) ≥ θ₁₃ = 57.1367°`, i.e. `ρ ≥ 2.091145548…`. At `ρ = 2.09` the required
+separation is `57.1709° > 57.1367°`, so **at radius exactly `2.09` every admissible
+configuration has at most 12 points**. Then:
+
+- **(A) all points at radius exactly `ρ`.** Scaling `x ↦ 2x/ρ` carries the cell cut by
+  `{⟨u_i,x⟩ ≤ ρ/2}` to the `ρ = 2` cell for the same directions, so case (A) is the `ρ = 2`
+  problem; Fejes Tóth's 12-point optimality (icosahedron) plus monotonicity of the cell in
+  the spread of the directions gives the icosahedral minimum `V_dod(ρ/2)³ = 6.333804106` at
+  `ρ = 2.09` — **`1.1197·√32`**. So case (A) satisfies `V(2.09) ≥ √32` with `12%` margin,
+  modulo the two cited theorems (Tammes-12, spread monotonicity), neither proved here.
+- **(B) some point at radius `> ρ`.** Then more than 12 points become available (the shell
+  `[2.09, 2.956]` can hold at most `16` two-separated points, by a volume count), and `(S)`
+  is exactly **"mixed radii do not help"**: a point at radius `r > ρ` has the looser
+  half-space `⟨u,x⟩ ≤ r/2`, so extra points must gain by number what they lose by distance.
+  This is the open case, and it is what `Computation/rho_probe.py` probes negatively: from
+  the icosahedral twelve at `ρ`, an extra point in one of the 20 hole directions is
+  admissible only for `r ≳ 3.2`, where its bisector at `1.6` lies outside the cell's
+  circumradius `1.478`. Verified for every `r ∈ [ρ,4]` at `ρ = 2.0127, 2.09, 2.2`. **Two or
+  more extra points, or a point off the hole directions, is not searched.**
+- **Why not a ball estimate.** `vol B(0,ρ/2) = 4.78011` at `ρ = 2.09` and beats `V_dod` only
+  for `ρ > 2.1967`; so on `[2, 2.1967]` the binding information is Hales–McLaughlin together
+  with a stability term. `(S)` cannot be replaced by an inball bound.
+
+**Effect on `PN-1`.** The request narrows from "decide `V(2.09) ≥ √32`" to "decide case (B)"
+— a bounded finite-dimensional optimisation with an explicit admissible set (≤ 16 points in
+a shell of known volume), an explicit target `√32`, and a negative probe on its natural
+configurations.
+
+*Status.* The split and case (A) are `PROVED` reductions (the two cited theorems are
+`ACCEPTED WITH SCOPE` elsewhere in `ACCEPTED.md`); case (B) is open. Reviewer X.
