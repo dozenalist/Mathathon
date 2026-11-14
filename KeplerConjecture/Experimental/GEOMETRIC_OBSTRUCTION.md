@@ -465,3 +465,48 @@ the inequality must be collective over the block (no per-cell bound at all), whi
 | centre cell in all 12 completions | `5.550291028515513`, i.e. `V_dodeca` to `1e-15` |
 | every accepted configuration | `minsep = 2.0` |
 | interval self-audit | 118 checks pass; corruption detected 50/50 |
+
+## K15-E049 — the count-12 radius is capped by Tammes-13, which caps the whole technique
+
+This closes the per-cell route exactly, and ties the failure to the same constant that makes
+the shell lemma work.
+
+The floor `d >= rho` used in any directional bound can only be as large as the radius at which
+the count `12` is known to hold. By `K15-E012`, the count `12` holds at radius `rho` whenever
+
+```
+arccos(1 - 2/rho^2) > theta_13 ,     i.e.   rho < 2 + delta_0 ,
+delta_0 = sqrt( 2/(1 - cos theta_13) ) - 2 = 0.091145548   (with theta_13 = 57.1367 deg).
+```
+
+So the largest usable radius is `rho_max = 2.091145548`, the floor is `rho_max/2 = 1.045572774`,
+and the ceiling of every directional per-cell bound is
+
+```
+(4 pi / 3) (1.045572774)^3 = 4.787969853 .
+```
+
+Compare:
+
+| quantity | value |
+| --- | --- |
+| ceiling at `rho = 2.09` (`K15-E048`) | `4.780105486` |
+| ceiling at `rho_max` (Tammes-capped) | `4.787969853` |
+| **required** | **`5.665734517907`** |
+| shortfall at `rho_max` | `0.877764660`, i.e. **`15.49 %`** |
+
+The Tammes-capped ceiling is only `0.16 %` above the `rho = 2.09` one, so nothing is to be
+gained by using the largest admissible shell.
+
+**Why this is a closure and not just another estimate.** The count `12` cannot hold beyond
+`2 + delta_0`, because at that radius `13` well-separated points become angularly admissible
+(the Tammes `N = 13` configuration exactly fits). So no strengthening of the shell lemma within
+its own method can raise the floor, and therefore no directional per-cell bound can exceed
+`4.787970`. Since the requirement is `5.665734`, **the per-cell route is closed by the same
+constant that makes `K15-E014` work** — the Tammes-13 angle serves the shell lemma and
+simultaneously caps the technique that was supposed to use it.
+
+This is the cleanest statement of the geometric route's obstruction I can give, and it is
+where I stop: any further progress must be either a count sharper than Tammes-13 permits
+(i.e. impossible within this method) or a collective inequality over the block that uses no
+per-cell bound at all.
