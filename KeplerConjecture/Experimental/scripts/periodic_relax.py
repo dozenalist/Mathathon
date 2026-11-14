@@ -18,7 +18,7 @@ from scipy.optimize import minimize
 from scipy.spatial import ConvexHull, Voronoi
 sys.path.insert(0,"Experimental/scripts")
 
-R32=float(np.sqrt(32)); PEN=2.0e3
+R32=float(np.sqrt(32)); PEN=2.0e4
 
 def min_image_dists(pos, L):
     d=pos[:,None,:]-pos[None,:,:]
@@ -72,7 +72,7 @@ if __name__=="__main__":
     ap.add_argument("--starts",type=int,default=6); a=ap.parse_args()
     sec=min(max(a.seconds,1.0),600.0); t0=time.time()
     best=None; recs=[]
-    for N in (4,8,12):
+    for N in (4,6,8,12,16):
         for s in range(max(1,a.starts//3)):
             if time.time()-t0>sec: break
             rng=np.random.default_rng(100*N+s)
@@ -80,16 +80,23 @@ if __name__=="__main__":
             f,L=unpack(r.x,N)
             D=min_image_dists(f*L,L); np.fill_diagonal(D,np.inf)
             dens=(4.0/3.0*np.pi*N)/L**3
-            rec={"N":N,"start":s,"L":float(L),"min_d":float(D.min()),
-                 "density":float(dens),"mean_cell":float((4*np.pi/3)/dens)}
-            if D.min()>=2.0-1e-6 and (best is None or dens>best["density"]): best=rec
+            # PROJECT to exact separation 2 by scaling L; legal by construction
+            Lp=L*(2.0/D.min()); densp=(4.0/3.0*np.pi*N)/Lp**3
+            rec={"N":N,"start":s,"L_raw":float(L),"L_proj":float(Lp),
+                 "min_d_raw":float(D.min()),"density":float(densp),
+                 "mean_cell":float((4*np.pi/3)/densp)}
+            if best is None or densp>best["density"]:
+                best=dict(rec); best["_f"]=f.tolist(); best["_L"]=float(Lp)
             recs.append(rec)
-            print(json.dumps(rec))
-    print("\nbest legal:", json.dumps(best,indent=1) if best else "none")
-    if best:
-        # recompute at exact separation 2 and get cell volumes
-        rng=None
-        out={"best":best,"cells":None}
-        print(f"mean cell volume at that density = {(4*np.pi/3)/best['density']:.6f}  "
-              f"(sqrt32 = {R32:.6f})")
-        json.dump(out, open("Experimental/evidence/periodic_relax.json","w"), indent=1)
+            print(json.dumps({k:v for k,v in rec.items() if k!="_f"}))
+    print("\nbest (after projection):", json.dumps({k:v for k,v in best.items() if k!="_f"},indent=1))
+    f=np.array(best["_f"]); L=best["_L"]
+    cv=cell_volumes(f,L)
+    vals=[v[0] for v in cv.values() if v is not None]
+    print(f"mean cell volume = {(4*np.pi/3)/best['density']:.6f}  sqrt32 = {R32:.6f}")
+    print("cell volumes:", [round(v,6) for v in sorted(vals)])
+    print("ANY cell below sqrt32?", (min(vals)<R32-1e-9) if vals else "n/a")
+    json.dump({"best":{k:v for k,v in best.items() if k!="_f"},
+               "cell_volumes":{str(k):v for k,v in cv.items()},
+               "sqrt32":R32,"any_below":bool(vals and min(vals)<R32-1e-9)},
+              open("Experimental/evidence/periodic_relax.json","w"), indent=1)

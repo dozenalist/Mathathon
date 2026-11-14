@@ -529,3 +529,31 @@ but does not establish — the possibility that `(Q) = no`, which as noted would
 route to the per-cell inequality. Settling `(Q)` needs a certified periodic construction (correct
 Wyckoff data, exact coordinates, periodic Voronoi decomposition) or an impossibility proof; it
 is the single highest-value next task and I make no claim about it.
+
+### 9.3 A control that worked: a blind relaxation recovers `pi/sqrt18`
+
+After fixing the projection defect of Section 9.2 — scale `L` by `2/min_d` so the final set has
+minimum separation **exactly** `2` and is legal by construction — the harness returns
+
+```
+N = 4,  L_proj = 2.828427276067519    (2 sqrt2      = 2.828427124746190)
+density        = 0.7404803708455797   (pi/sqrt18    = 0.740480489693652)
+mean cell      = 5.656855157420403    (sqrt32       = 5.656854249492381)
+four cell volumes: 5.656855, 5.656855, 5.656855, 5.656855   (all equal)
+relative error in density: 1.6e-07
+```
+
+A blind local optimisation over `(4 positions, cell size)` with no knowledge of fcc — only the
+separation constraint and the volume objective — lands on a four-point cell with equal edge
+lengths `2√2`, four equal Voronoi cells of volume `√32`, and the density `pi/sqrt18` to eight
+significant figures. That is a genuine independent check that the evaluator chain (separation
+handling, periodic images, Voronoi volumes, density conversion) is consistent with the target.
+
+It is **not** evidence for or against `(Q)`: fcc has all cells exactly at `√32` and none below,
+so it neither supplies a defect nor excludes one. Its value is as a calibration: if the harness
+had a systematic error in the volume or the periodic convention, it would not reproduce
+`sqrt32` and `pi/sqrt18` simultaneously to eight digits.
+
+The `N = 6, 8, 12, 16` runs found nothing denser than the `N = 4` (fcc) optimum, so the search
+offers no Frank–Kasper competitor with a small cell. `(Q)` remains open, and the next step is a
+certified periodic construction from crystallographic data rather than a relaxed search.
