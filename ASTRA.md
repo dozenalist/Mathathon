@@ -88,6 +88,8 @@ Every report includes its canonical target, destination UUID, and completion seq
 
 `codex queue --resume` requires a running local Codex server. It can queue successfully while warning that automatic resume failed. Inspect the watcher log and `resume_warning` field if the expected wake does not arrive. Operational error and deadline alerts identify this watcher's state file and require their own diagnosis. They do not establish mathematical progress. Creating the run's `STOP` file stops its watcher at the next check. Stopping SAIR research itself is a separate action governed by the user's instruction. [SAIR Platform API](https://os.openmathmodel.org/v1/doc) · [Codex queue](https://learn.chatgpt.com/docs/developer-commands?surface=cli#codex-queue)
 
+In continuous mode, transient failures of read operations retry with a backoff capped at 30 seconds until the stop file or deadline. State records `retrying`, the operation, attempt count and HTTP status; a successful read restores the connected state. Non-JSON gateway errors retain their HTTP status. Writes such as `chat_say` are never retried automatically: a failed response can leave delivery uncertain. Save the pending prompt and attempt record, then inspect the assigned session history when access returns before deciding whether to resend. A network outage does not authorize creating a replacement coordinator or moving to another project.
+
 Run `./tests/Watch-Sair.Tests.ps1` in PowerShell after changing the watcher. It uses mocked HTTP and Codex calls in separate processes to check routing, shared protected-key access, completion handling, restart behavior, and process locks.
 
 ## Delegate the research fleet inside SAIR

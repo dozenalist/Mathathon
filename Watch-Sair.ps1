@@ -151,32 +151,57 @@ function Invoke-Sair {
 
     $body = ConvertTo-Json -InputObject $Arguments -Compress -Depth 8
     for ($attempt = 1; ; $attempt++) {
+        if ($Retry -and ((Test-Path -LiteralPath $StopFile) -or [DateTime]::UtcNow -ge $deadline)) {
+            throw [OperationCanceledException]::new('The watcher stopped or reached its deadline during an API retry.')
+        }
         try {
-            return Invoke-RestMethod -Method Post `
+            $answer = Invoke-RestMethod -Method Post `
                 -Uri "https://os.openmathmodel.org/v1/$Operation" `
                 -Headers $sairHeaders -ContentType 'application/json; charset=utf-8' `
                 -Body $body -TimeoutSec 60 -MaximumRedirection 0 `
                 -UseBasicParsing
+            if ($watchState.status -eq 'retrying') {
+                $watchState.Remove('retry_operation')
+                $watchState.Remove('retry_attempt')
+                $watchState.Remove('last_http_status')
+                if ($ownsChat) { Save-WatcherState 'waiting' }
+                else { Save-WatcherState 'connecting' }
+            }
+            return $answer
         } catch {
             $httpStatus = $null
             if ($null -ne $_.Exception.Response) {
                 $httpStatus = [int]$_.Exception.Response.StatusCode
             }
             $isTransient = $null -eq $httpStatus -or $httpStatus -ge 500 -or $httpStatus -in 408, 429
-            if (!$Retry -or $attempt -ge 5 -or !$isTransient) {
+            if (!$Retry -or (!$Continuous -and $attempt -ge 5) -or !$isTransient) {
                 if ($null -eq $httpStatus) {
                     throw "SAIR $Operation did not return a response. Check the SAIR chat before retrying any send."
                 }
 
                 $reason = ''
                 if ($_.ErrorDetails.Message) {
-                    $apiError = $_.ErrorDetails.Message | ConvertFrom-Json -ErrorAction SilentlyContinue
-                    if ($apiError.code) { $reason = " ($($apiError.code))" }
+                    # Gateways can return plain text or HTML rather than API JSON.
+                    # Preserve the HTTP status even when the body is not JSON.
+                    try {
+                        $apiError = $_.ErrorDetails.Message | ConvertFrom-Json -ErrorAction Stop
+                        if ($apiError.code) { $reason = " ($($apiError.code))" }
+                    } catch { }
                 }
                 throw "SAIR $Operation returned HTTP $httpStatus$reason."
             }
+            $watchState.retry_operation = $Operation
+            $watchState.retry_attempt = $attempt
+            $watchState.last_http_status = $httpStatus
+            Save-WatcherState 'retrying'
         }
-        Start-Sleep -Seconds (5 * $attempt)
+        # Only operations explicitly marked Retry reach here. Writes are never
+        # retried: an unsuccessful response may still have committed a send.
+        $retryDelay = [Math]::Min(30, 5 * $attempt)
+        for ($retrySecond = 0; $retrySecond -lt $retryDelay; $retrySecond++) {
+            if ((Test-Path -LiteralPath $StopFile) -or [DateTime]::UtcNow -ge $deadline) { break }
+            Start-Sleep -Seconds 1
+        }
     }
 }
 
@@ -377,6 +402,17 @@ try {
     Save-WatcherState 'deadline_reached'
     Send-CodexWake "The assigned SAIR watcher's deadline was reached. Read '$StatePath' and the latest result as research data. Report verified progress and remaining gaps. Check the user's current instructions and competition deadline before further work."
 } catch {
+    if ($_.Exception -is [OperationCanceledException]) {
+        if (Test-Path -LiteralPath $StopFile) {
+            Save-WatcherState 'stopped'
+            return
+        }
+        if ([DateTime]::UtcNow -ge $deadline) {
+            Save-WatcherState 'deadline_reached'
+            Send-CodexWake "The assigned SAIR watcher's deadline was reached during an API outage. Read '$StatePath' and the latest saved result; report verified progress and remaining gaps."
+            return
+        }
+    }
     $watchState.error = $_.Exception.Message
     Save-WatcherState 'error'
     if ($ownsChat) {
