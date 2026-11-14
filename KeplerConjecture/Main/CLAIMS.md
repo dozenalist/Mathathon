@@ -5713,10 +5713,26 @@ type can genuinely change — so a rigorous `L1'` at `ε = 0.2` must handle type
 the difficulty `M-CERT-002` avoids at `ε = 1`. **The lever moves the difficulty from the constant to the
 combinatorics.**
 
+**`ε = 0.2` is a balanced choice, and the balance is numerical.** Two constraints bound `ε` from below
+and above at this value: the `ρ_ε = 0` branch must stay under `ML`, `1/(1+ε/2)³ < 0.754697399`, which
+holds for `ε = 0.2` by `0.003382`; and the pair branch must overlap `C119`'s inball range
+`d ≥ 2.1967082337`, which holds by `0.003292`. The two margins agree to `3%`, so `ε = 0.2` sits in the
+middle of the admissible window `(0.1967082, …)` where both are satisfied — pushing `ε` down improves
+`δ₀` and destroys the overlap; pushing it up destroys the case-2 margin.
+
 **A margin to watch at `ε = 0.2`.** The two branches must meet: `C119`'s inball bound covers `d ≥
 2.1967082337` and the pair bound covers `d ≤ 2+ε = 2.2`, so the overlap is `0.003292` wide. It closes, but
 only just, and any future tightening of `ε` towards `0.1967` must respect it — `ε = 0.2` is a sensible
 choice precisely because it leaves `0.0033` of overlap while keeping `δ₀` within a factor `2.5` of sharp.
+
+**And the type does not actually change.** `L2`'s determinant bound is crude (`|det| ≥ 0.760845 − 3θ`
+vanishes at `θ = 0.25`, because Hadamard's bound is worst-case). Measured directly — how many of the 12
+planes support a facet — every one of `300` random directions keeps **exactly 12 facets** at `θ = 0.02,
+0.05, 0.08, 0.12, 0.20, 0.2447` and even `0.30`. So the large-ball route is not obstructed by type changes
+in practice; what is missing is a *bound* better than Hadamard, not a different geometry. That makes the
+`ε = 0.2` extension (`δ₀ = 0.0864`) more attractive than the price paragraph above suggests — the proof
+would need a sharper determinant bound, e.g. the exact `|det|` for the dodecahedron's 20 triples perturbed
+by `θ`, which is a finite computation of the same kind as `M-CERT-002`.
 
 **Recommendation for the next block.** Prove `L1'` at `ε = 1` first (`M-CERT-002` as specified: no type
 changes, `c = 0.13`, `δ₀ = 2.88·10⁻³`), then extend the ball to `Σθ² ≤ 0.06` if the combinatorics can be
@@ -5728,3 +5744,119 @@ improvement exists on this route; what improves is the rate in `ρ_ε`.
 
 *Status.* `TESTED_FINITE` (the `ε` table is arithmetic; the ratio table is sampled). `L1'` unproved.
 `C124` `PENDING_REVIEW`.
+
+#### `C143` addendum — what `C146`'s `ε = 0.2` value would buy, and for whom
+
+With `δ₀ = 0.086376` (`C146`) and `ρ_ε = 1/2` the largest possible matching density,
+`C108`'s Theorem C gives
+
+```
+δ  ≤  (4π/3)/(V_dod + δ₀/2)  =  0.748870280 .
+```
+
+| comparison | value | this bound |
+| --- | --- | --- |
+| `π/√18` (truth) | `0.740480490` | above by `0.008390` |
+| Hales–McLaughlin | `0.754697399` | **below by `0.005827`** (`0.77%`) |
+| Cohn–de Laat–Salmon three-point | `0.770271` | below by `0.021401` |
+| Cohn–Elkies two-point | `0.779747` | below by `0.030877` |
+| project `K33b` | `0.779966` | below by `0.031096` |
+
+**So conditional on `L1'`, the pair route would give a bound below every published value — but only for
+packings whose near-contact matching density is `1/2`.** For `ρ_ε = t` the improvement shrinks linearly
+(`C143`'s table), and the `ρ_ε → 0` limit is `ML` itself, so there is **no** uniform improvement and
+**no** new packing bound. What this table establishes is where the route is strong — dense-contact
+packings — and how much the missing factor is worth: the whole difference between `0.7489` and `0.7547`
+is `δ₀`, and the whole difference between `0.7489` and truth is the remaining `2.5×` in `δ₀`.
+
+**Not claimed.** No packing bound, no improvement over truth, no reviewed theorem. `L1'` is unproved;
+`C124` is `PENDING_REVIEW`; `RESULTS.md` does not move.
+
+#### `C146` addendum — the determinant suggestion above is WRONG: it is 160 triples, and some go singular
+
+I wrote that extending `L2` to `θ ≈ 0.25` needs "the exact `|det|` for the dodecahedron's 20 triples
+perturbed by `θ`". Checking it before recommending it: **the suggestion is wrong on both counts.**
+
+1. **There are 160 triples, not 20.** Any three of the 12 icosahedral normals are linearly independent
+   (the icosahedron has no three coplanar vertex directions), so all `C(12,3) = 220` triples are
+   nonsingular except the 60 that contain an antipodal pair — `160` nonzero determinants. The 20 "tight"
+   triples are the ones that are *active* at the dodecahedron; the other 140 are not.
+2. **Some inactive triple goes nearly singular.** `min |det|` over the 160 triples:
+
+```
+θ = 0      0.470228      θ = 0.10   0.228504      θ = 0.20   0.000014
+θ = 0.05   0.352378      θ = 0.15   0.100619      θ = 0.2447 0.000016
+```
+
+so at `θ ≈ 0.2` some *would-be* vertex passes extremely close to a face. It is **not** active — the
+measured facet count stays at 12 for `θ ≤ 0.30` — but a determinant bound over all triples cannot be the
+tool, and the "20 triples" suggestion I nearly recorded would have been an eighth error.
+
+**What the correct extension needs**, stated now: fix the **active** vertex set (the 20 tight triples) and
+prove that each stays tight *and* that the other 140 stay slack, i.e. a **slackness margin** at the
+dodecahedron for the inactive triples — which is exactly the object that degenerates above `θ ≈ 0.2`, so
+the margin is small and the bound will be delicate. This is a different computation from `M-CERT-002`'s and
+should be its own job if the large-ball route is pursued.
+
+**Consequence for the recommendation.** `ε = 1` (`M-CERT-002` as pinned: `c = 0.13` on `Σθ² ≤ 0.002`, no
+type changes, `|det| ≥ 0.61`) remains the safe step. The `ε = 0.2` extension is worth `30×` on `δ₀` but
+needs this slackness analysis first, and the analysis is delicate precisely where the gain is largest.
+
+#### `C146` addendum 2 — the `ε = 0.2` route sits at a BIFURCATION, measured
+
+The previous addendum worried about the *determinant*, which is the wrong diagnostic: a vanishing `|det|`
+means the would-be vertex runs away to infinity, and its slack then *grows*. The right diagnostic is the
+**slackness**: for each of the 140 inactive triples, `max over the other 9 planes of (x·n_j − 1)`, which
+must stay positive for the 12-facet type to persist.
+
+| `θ` | min slack over the 140 inactive triples | active triples |
+| --- | --- | --- |
+| `0` | `1.236068` (`= 2/φ` exactly) | `20` |
+| `0.05` | `0.876618` | `20` |
+| `0.10` | `0.593997` | `20` |
+| `0.15` | `0.354170` | `20` |
+| `0.20` | `0.151489` | `20` |
+| **`0.2447`** | **`0.001869`** | `20` |
+| `0.30` | `0.000845` | `20` |
+
+**So the `ε = 0.2` route needs `θ_max = 0.2446545`, and the min slack there is `0.0019` — the type is
+*just* stable and about to change.** The active count stays 20 throughout, but an inactive triple is
+approaching activity and arrives at `θ ≈ 0.25`. A rigorous `L1'` at the `ε = 0.2` ball would therefore sit
+*at a bifurcation*, where the volume functional's Taylor expansion has a singularity in its derivatives
+(the vertex is leaving the hull). That is a much worse place to prove a bound than `ε = 1`.
+
+**Revised recommendation, with the numbers.** Stay at `ε = 1`: there `θ_max = 0.0447`, the min inactive
+slack is `≈ 0.9`, the type is robust by a wide margin, and `M-CERT-002` is a clean computation. The
+`ε = 0.2` extension is worth `30×` on `δ₀` and is *not* worth it: it requires controlling a bifurcation
+for a factor that a sharper `c` at `ε = 1` might supply more cheaply.
+
+**What this also explains.** The measured quotient ratio stayed `0.27–0.32` out to `θ = 0.30` even though
+the type is about to change at `0.25` — the volume is continuous through a bifurcation (a vertex passing
+through a face changes the hull discretely but the volume continuously, to first order). That is why a
+*ratio* measurement looked harmless while the *derivative* structure degenerates. **A sampled function can
+look smooth where its derivatives are not**, and only the slackness showed it.
+
+#### `C146` addendum 3 — the recommended `ε`: `0.58`, not `0.2`, and not `1`
+
+With the bifurcation in view, the choice of `ε` is a three-way trade-off: `δ₀` grows as `θ_max` grows, but
+so does the risk from the type boundary, and the case-2 branch must stay under `ML`.
+
+| `θ_max` | min inactive slack | `ε = 4(cos ρ_c − θ) − 2` | `η` | `δ₀` | case-2 branch | bound at `ρ = 1/2` |
+| --- | --- | --- | --- | --- | --- | --- |
+| `0.0447` | `0.877` | `0.9998` | `2.60·10⁻⁴` | `0.002883` | `0.296350` | `0.754501` |
+| `0.10` | `0.594` | `0.7786` | `1.30·10⁻³` | `0.014431` | `0.372910` | `0.753718` |
+| **`0.15`** | **`0.354`** | **`0.5786`** | **`2.93·10⁻³`** | **`0.032469`** | `0.466583` | **`0.752496`** |
+| `0.20` | `0.151` | `0.3786` | `5.20·10⁻³` | `0.057723` | `0.594451` | `0.750793` |
+| `0.2447` | `0.002` | `0.2` | `7.78·10⁻³` | `0.086376` | `0.751315` | `0.748870` |
+
+**The recommendation is `ε ≈ 0.58` (`θ_max = 0.15`).** It gives `δ₀ = 0.032469` — **`11×` the `ε = 1`
+value** — while keeping the type margin at `0.354` (a third of the dodecahedron's own `1.236`), the case-2
+branch at `0.467` (far under `ML`), and `C119`'s overlap at `0.382` (a hundred times the `0.0033` that
+`ε = 0.2` leaves). It is the largest `θ` at which the type is robust by a comfortable factor.
+
+**So the ladder is: `ε = 1` proves first (safest, `δ₀ = 0.0029`); `ε ≈ 0.58` is the target worth aiming at
+(`δ₀ = 0.032`, with margin); `ε = 0.2` buys another factor `2.7` only by proving a bound at a bifurcation,
+and should not be attempted.** All three are conditional on `L1'`, which is unproved at any `θ`.
+
+*Status.* `TESTED_FINITE` (the slack table is sampled; the `ε`/`δ₀` columns are arithmetic). No bound, no
+review.
