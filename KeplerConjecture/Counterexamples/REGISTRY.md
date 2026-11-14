@@ -1969,3 +1969,13 @@ region theta in [110.0, 110.25], phi in [35.0, 35.2], boxes of 0.1 deg
 certified**, and the output calls it "the whole region" and "every configuration in the region". No number in
 the reported interval is wrong; the *quantifier* is. `certify_region_v2.py` on the same domain uses
 `ceil(0.25/0.1) = 3` boxes of `0.0833…` with an exact tiling assertion, so it cannot lose the strip.
+
+### K15-X-C130 — `X-C096`'s "iff" verified on the cross distance
+
+For the parallel configuration, the minimum **cross** distance is `1.960502258` at `d = 4.717927`,
+`1.999920535` at `6c − 10⁻⁴`, **`2.000000000` at `d = 6c = 4.767926833`**, `2.000079466` at `6c + 10⁻⁴`,
+`2.039958552` at `4.817927`, `2.188956343` at `5.0` and `3.071529602` at `6.0`. So the threshold is exactly
+`6cos ρ_c`, approached from below and crossed continuously ✓. (The within-icosahedron pairs are at
+`2.102924` throughout and `d ≥ 4.77 > 2`, so the cross pairs are the binding ones ✓. My first table of this
+check included `i = j` in the "all pairs" minimum and so printed `0.000000` in that column; the cross
+column, which is the one that matters, was right.)
