@@ -174,7 +174,15 @@ box around `(θ, φ) = (111.7975°, 36°)`:
  4     0.00625          [5.8962999874, 5.8996340814]    3.33e-03
  5     0.003125         [5.8971335748, 5.8988006202]    1.67e-03
  6     0.0015625        [5.8975503521, 5.8983838744]    8.34e-04   <- first below 1e-3
+ 7     0.00078125       [5.8977587367, 5.8981754977]    4.17e-04
+ 8     0.00039063       [5.8978629279, 5.8980713084]    2.08e-04
+ 9     0.00019531       [5.8979150233, 5.8980192135]    1.04e-04
+10     0.00009766       [5.8979410709, 5.8979931660]    5.21e-05
 ```
+
+Ten successive halvings, width halving exactly each time (`5.33e-2 → 5.21e-5`): the linear
+law holds over the whole range, so the extrapolation is not an artefact of the first few
+points.
 
 so reaching a `1e-3` enclosure costs `(14/0.0015625)² ≈ 8×10⁷` boxes over the legal window —
 three orders of magnitude more than the `2×10⁴` that the *useful* (0.1°) box already needs.
