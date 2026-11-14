@@ -1,5 +1,38 @@
 # Kepler supervision and response records
 
+## Current cadence: hourly reviews
+
+The user's latest instruction replaces Sair-Watch and ASTRA.md's continuous
+watcher/15-minute callback cadence for this project. All four owned watcher
+processes were stopped and their exits verified. Do not restart them or use
+old queued watcher notifications to launch extra research cycles. Preserve the
+old state and reports as evidence, and deduplicate callbacks against prior
+prompt IDs.
+
+Automation `kepler-hourly-review-and-github-sync` is active in this Codex chat,
+at the top of every hour through November 15, 2026, noon Pacific (20:00 UTC).
+It reads the exact existing SAIR sessions through the API, reviews new progress,
+runs actionable Lean/heavy work locally, and sends concrete bounded prompts.
+Normally give up to 60 minutes to the next hourly review; do not interrupt a
+busy session merely because another hour has arrived. Stop research sends on
+user stop, verified completion, or the event deadline.
+
+Every hourly checkpoint must synchronize the latest pushed Kepler worker
+artifacts into the public review branch, preserve authorship and source hashes,
+and keep unreviewed claims explicitly pending. Main owns mathematical
+integration. Request a push for useful work still present only on SAIR.
+Never overwrite unrelated changes or force-push teammates' work.
+
+Each push includes a brief plain-language `HourlyUpdates/<Pacific timestamp>.md`
+and an updated `PROGRESS_SUMMARY.md` describing the total progress so far.
+Update `PROGRESS.md`, evidence and claim records as needed. Save the exact final
+response in a dated `ChatLogs/` file, push the completed changes, and verify
+the remote before returning idle. A no-change hour still gets an honest update.
+
+This instruction supersedes older watcher instructions and 90-minute templates
+in historical prompts. Other projects' shared supervision code is not part of
+this Kepler-only transition.
+
 Standing user instruction received November 13, 2026: after handling each user
 message or monitored research response, report the progress made. Before every
 return to idle, save the final response verbatim in `../ChatLogs/` and push the
@@ -38,7 +71,7 @@ numerical computations are handed off with exact source revisions and resource
 budgets for local execution. No detached swarm or additional session is
 authorized beyond this four-chat limit.
 
-## Operational checkpoint, November 13, 2026
+## Historical operational checkpoint, November 13, 2026
 
 Initial bounded assignments were accepted in all four sessions through
 `Watch-Sair.ps1`. The current model is `deepseek/deepseek-v4.1-flash` with maximum

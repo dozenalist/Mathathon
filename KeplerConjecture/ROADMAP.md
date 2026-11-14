@@ -238,9 +238,12 @@ An empty default build provides no evidence about a Kepler module.
 
 ## 4. Work packages and acceptance gates
 
-Use 60–120 minute research blocks, initially 90 minutes. The supervisor reviews
-each completed coordinator turn and returns a detailed next assignment within
-15 minutes, following ASTRA.md. End a block early with a concrete offload
+The latest user instruction replaces Sair-Watch with hourly supervisor reviews.
+Normally use research blocks of up to 60 minutes to the next review. At each
+hourly check, review new completed work, send useful bounded follow-ups, and
+push the synchronized Kepler work with a brief hourly update and a refreshed
+cumulative `PROGRESS_SUMMARY.md`. Do not restart the retired watchers or
+duplicate a task because an old callback arrives. End a block early with a concrete offload
 handoff when local execution is the next dependency. Check the current event
 deadline and reserve the final quarter for review, integration, and exposition.
 
@@ -385,7 +388,7 @@ stress the global summation and boundary estimate.
 Workers write requests in their own role directories, push the required
 code and inputs, and alert Main. Main collects them in
 `Main/LOCAL_COMPUTE_REQUESTS.md` and includes pending requests in its completion
-response so the watcher wakes the local supervisor. If this is the critical
+response so the next hourly review collects them for local execution. If this is the critical
 dependency, hand off after 30–45 minutes rather than spending the rest of the
 block on the VM. Continue independent mathematical work while a request is pending.
 

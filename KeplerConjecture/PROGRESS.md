@@ -1,5 +1,10 @@
 # KeplerConjecture progress
 
+For a plain-language cumulative account, read [PROGRESS_SUMMARY.md](PROGRESS_SUMMARY.md).
+This technical chronology includes worker self-reports. A worker's status label
+does not itself establish independent verification; the cumulative summary and
+supervisor reviews identify which claims have actually been checked.
+
 ## Current state
 
 | Item | Status | Evidence | Next owner |
@@ -10,9 +15,27 @@
 | New simpler general 3D proof | Open | No accepted new theorem at setup | Main |
 | Numerical reproduction | Main bug reproduced; three independent CE grid controls run locally; no certificate | Computation/Reviews/27616/README.md | Computation and Counterexamples |
 | Local Lean proofs | Targeted-import algebraic normalization passed locally; geometric bridges remain open | Lean/Review/README.md | Main and Astra |
-| Publication and response logs | Setup published in draft PR #1; save and push every final response | Main/SUPERVISION.md and ChatLogs/ | Astra |
+| Publication and response logs | Four SAIR branches synchronized; hourly updates and cumulative summary required | Main/HOURLY_SYNC.json, PROGRESS_SUMMARY.md and HourlyUpdates/ | Astra |
+| New rational certificate | Worker reports a bound near 0.78010544; independent local verification pending | Computation/CERTIFIER.md and Main/HOURLY_SYNC.json | Astra and Counterexamples |
+| Review cadence | Hourly schedule active; all four Sair-Watch processes stopped | Main/SUPERVISION.md | Astra |
 
 ## History
+
+### K15-HOURLY-SETUP — 2026-11-14, America/Los_Angeles
+
+Applied the user's replacement of Sair-Watch with hourly reviews. Verified the
+four owned watchers stopped, created the active hourly schedule, and documented
+the override of older callback-cadence instructions. The latest four SAIR branch
+tips were fetched and merged into the supervisor publication branch with source
+authorship preserved. Only Kepler paths changed. Main, Experimental and
+Counterexamples progress conflicts were retained in `Main/AgentProgress/`;
+Computation's chronology merged directly.
+
+Added the brief `HourlyUpdates/2026-11-14_00-00_PST.md`, the cumulative
+`PROGRESS_SUMMARY.md`, a readable project index and an exact source manifest.
+New SAIR research claims are synchronized as working evidence, not silently
+accepted as proved. The next hourly review will examine them and prepare new
+prompts without duplicating the assignments already delivered.
 
 ### K15-REVIEW-003 — 2026-11-13, America/Los_Angeles
 
