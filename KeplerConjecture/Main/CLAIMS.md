@@ -1333,35 +1333,59 @@ fcc-compatible `A`, `√32 ≤ vol Ω(v) + A(v)`), the inequality
 dodecahedral constant enters the project's target: Lemma 3.3 needs
 `√32 = 5.656854`, not `5.550291`. Reviewer X.
 
-### K15-C044 — a transfer exists iff the cluster inequalities hold (`PROVED`)
+### K15-C044 — the exact feasibility criterion for a transfer (`PROVED`, corrected the same block)
 
-**Setting.** `Λ` a packing; `b(v) := √32 − vol Ω(v)`; a transfer of range `R` and
-bound `Φ` as in `K15-C035`. Existence of `φ` with `A(v) = Σ_w φ(v,w) ≥ b(v)` is a
-feasibility problem for a signed flow on the graph `G_R` joining centres at
-distance `≤ R`.
+**Setting.** `Λ` a packing, `b(v) := √32 − vol Ω(v)`, and the transfer graph `G_R`
+joining centres at distance `≤ R`, each edge carrying capacity `Φ`.
 
-**Lemma.** If `φ` is such a transfer, then for every finite region `U` whose
-boundary partners are included — precisely, for every `U` with
-`{w : |w−v| ≤ R for some v ∈ U} ⊆ U` (a union of connected components of `G_R`) —
-one has `Σ_{v∈U} b(v) ≤ 0`. Conversely, if that holds for every union of
-components, a transfer exists (with `Φ` bounded by the flow value), and it may be
-assumed supported on `G_R`.
+**Criterion (Hoffman / Gale).** There is an antisymmetric `φ` on `G_R` with
+`|φ| ≤ Φ` and `Σ_w φ(v,w) ≥ b(v)` for all `v` **iff** for every finite `U ⊆ Λ`
+```
+Σ_{v∈U} b(v)  ≤  Φ · |δ⁺_R(U)|,        δ⁺_R(U) = edges from U to Λ∖U.
+```
+(Add a supersource/supersink; this is the max-flow min-cut condition.)
 
-*Proof.* (⟹) Sum `A(v) ≥ b(v)` over `U`; internal pairs cancel by antisymmetry
-and there are no boundary pairs, so `0 = Σ_U A ≥ Σ_U b`. (⟸) This is the
-Hoffman circulation theorem on `G_R`: the demands `b(v)` are feasible iff every
-subset `U` satisfies `Σ_{v∈U} b(v) ≤ 0` (no edge leaves `U` in the normal
-orientation), which is the stated hypothesis; a feasible circulation is exactly an
-antisymmetric `φ` with `Σ_w φ(v,w) = b(v)`. ∎
+**Correction history.** The first version of this entry claimed the criterion was
+"`Σ_U b ≤ 0` for every union of connected components", presented as an `iff`.
+That is wrong in two ways: (i) it is only the *no-out-edge* case of the cut
+condition; (ii) for a transfer graph that is connected — as `G_R` is for fcc with
+`R ≥ 2` — there are no proper unions of components, so the condition is vacuous
+and the real content is entirely in the cut condition. Recorded because the
+overclaim is exactly the kind this block exists to remove.
 
-**Consequence — no free lunch, and where the gain actually is.**
-The transfer formulation is *equivalent* to the cluster-average formulation
-(`K15-C015`), not weaker: it neither weakens nor strengthens the geometric
-content. Its only gain is `K15-C035`: negligibility (Hales' Chapter 5) becomes a
-two-line estimate. So a transfer construction cannot succeed unless the cluster
-inequalities hold — and `K15-C036` says those cannot be verified on a finite
-completion. The two facts together locate the whole difficulty in one place:
-**an analytic lower bound for `Σ_{v∈U} vol Ω(v)` on a union of transfer-components.**
+**What the criterion says, in the two regimes.**
+- `R < 2` (graph = isolated vertices): the condition is `b(v) ≤ 0` for each `v`,
+  i.e. **pointwise** fcc-compatibility — the Hales requirement.
+- `R ≥ 2` on a connected graph: for a large blob `U`,
+  `Σ_U b ≤ Φ|δ⁺(U)| = O(Φ·|U|^{2/3})`, i.e.
+  `Σ_{v∈U} vol Ω(v) ≥ √32|U| − O(Φ|U|^{2/3})` — an **averaged, global** inequality
+  with an explicit `o(|U|)` slack, not a local one.
 
-*Status.* `PROVED` (the ⟸ direction invokes Hoffman's theorem, a standard
-flow-feasibility result). Reviewer X.
+So the transfer formulation delivers exactly what the averaging formulation
+delivers, with the extra slack `Φ|U|^{2/3}` paid for by `Φ`; it never weakens the
+requirement below the averaged inequality. **The gain is confined to
+negligibility** (`K15-C035`), which is real but is bookkeeping, not geometry.
+
+*Status.* `PROVED` (standard flow duality). Reviewer X.
+
+### K15-C045 — structural reading: where the transfer route actually stands
+
+Combining `K15-C035`, `K15-C036`, `K15-C043` and `K15-C044`:
+
+1. A bounded-range antisymmetric transfer is automatically negligible (`C035`),
+   so Hales' Chapter 5 (the `Q`-system, Lemma 5.28, the four-way cancellation of
+   Lemma 7.10) is replaceable by a two-line estimate — **the one simplification
+   this line of work has produced**.
+2. The price is the cut condition of `C044`. On a connected transfer graph it is
+   the *global averaged* inequality
+   `Σ_U vol Ω ≥ √32|U| − O(Φ|U|^{2/3})`; on a disconnected graph (`R < 2`) it is
+   the pointwise inequality. There is no regime in which the requirement is both
+   local and weak.
+3. Neither version can be established by computation (`C036`: finite completions
+   bound cell volumes only above).
+4. Therefore the remaining mathematical content is exactly **an analytic averaged
+   lower bound for `Σ vol Ω`**, equivalently Kepler's inequality in averaged form.
+   Not a shortcut; the honest location of the difficulty.
+
+*Status.* `PROVED` given C035/C036/C044 (a synthesis, not a new inequality).
+Reviewer X.
