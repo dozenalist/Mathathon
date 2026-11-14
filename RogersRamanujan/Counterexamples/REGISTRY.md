@@ -61,6 +61,68 @@ statement about BZ82's map rather than about a variant of it.
 
 ## Source-level defects found (not failures of our code)
 
+### RR-X005 — RETRACTED IN CYCLE 2. "The printed `phi` Case II rule is inconsistent."
+
+**This entry was wrong and is preserved on purpose.** Cycle 1 claimed that
+BZ82 p.314's `phi` Case II formula contradicts the paper's own example (3), on
+the strength of the state `s = (0;(2,1,1,1))` where the admissible set appeared
+empty. That appearance came entirely from an unstated restriction `z >= 1`
+introduced in my transcription. The printed set is
+
+    m = Max{ z <= a+2j-2 : z + lambda(a+2j-1-z) <= t+5j-2 },
+
+with `z` ranging over **integers with 0 <= z <= a+2j-2** — the lower bound 0 is
+part of the printed rule, and the index `a+2j-1-z` then runs over `1..a+2j-1`,
+so it never leaves the padded range.
+
+*Correction found by the supervisor's review, 2026-11-14; verified by Main.*
+
+Checked facts, both directions:
+
+| claim | result |
+| --- | --- |
+| `z = 0` is admissible at `s = (0;(2,1,1,1))` (`a=2`, `t=4`, `j=0`) | yes: `0 <= 0` and `0 + lambda(1) = 2 <= t+5j-2 = 2` |
+| the printed rule sends `s` to the paper's next state `(-1;(1,1))` | yes, with `m = 0`, created pair `{0,1}` |
+| admissible set empty on any Case-II state of weight <= 25 | **never** (0 of 10 285) |
+| `phi` chosen maximum yields a negative created part | **never** (0 of 10 285) |
+| `phi(phi(s)) = s` on the printed rule, all in-domain states `weight <= 30` | **0 defects / 66 658 states** |
+| the cycle-1 `z >= 1` + "fall back to 0 if empty" code vs the printed rule | **0 discrepancies** |
+
+The last row is why no numerical result changed: the fallback to `m = 0`
+compensates exactly for the missing `z = 0`, so the implementation was always
+behaviourally faithful. Only the *diagnosis* was wrong. The cycle-1 "2 692
+defects" figure describes a restricted transcription of the rule, not the
+published algorithm, and must not be quoted against BZ82.
+
+Consequential corrections: decision D-3 is rewritten (no reconstruction is
+needed); RR-C009 is a faithful transcription with no reconstructed rule; and
+`Computation/bz82.py` now states the printed set directly. **What remains
+unproved:** that the admissible set is nonempty *for all* `n` (verified for
+`weight <= 30`, no counterexample; this is the one honest gap in the `phi`
+boundary analysis, and it is a small lemma, not a defect).
+
+### RR-X006 — the three *alternative* tie-breaks for `psi` are refuted (so the chosen ones are forced).
+Decisions 1-3 of DECISIONS D-3 are not aesthetic. Flipping any one of them
+destroys the involution immediately, with a minimal witness. Main verified this
+independently of worker m3 by patching each comparison in `bz82.py` and
+re-running the involution census over all 3198 in-domain states of weight
+`<= 18`:
+
+| reading | failures | first witness |
+| --- | --- | --- |
+| chosen: `I(a)` on `thr >= m2`, `II(a)` on `thr >= m0`, drop a part 0 | **0** | - |
+| equality to `I(b)` instead of `I(a)` | 1120 | `n=4`, `(0;(2,2))` -> `I(b)` demands `k = -1` copies of 5 |
+| equality to `II(b)` instead of `II(a)` | 374 | `n=3`, `(-1;())` -> nonpositive created part |
+| keep a created part 0 in `II(a)` | 374 | `n=3`, `(-1;())` -> gives `(0;(3))` instead of the required state |
+
+Worker m3 found the same three witnesses in their own enumeration (their counts
+219/100/100 are over a different state range; the witnesses agree exactly).
+Consequence: D-3's `>=` readings are the *only* ones under which `psi` is a map
+`X(n)\\{0}xA_n -> X(n)\\{0}xA_n` with `psi^2 = id`, which is what makes RR-C008 a
+statement about BZ82's map rather than about a variant of it.
+
+## Source-level defects found (not failures of our code)
+
 ### RR-X005 — the literal printed `phi` Case II rule is inconsistent. See DECISIONS D-3.
 Under a verbatim transcription of BZ82 p.314, `phi` has **2692 defects** among
 the 3198 in-domain states of weight <= 18 (not an involution), and the inverse

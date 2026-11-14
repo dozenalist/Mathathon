@@ -11,16 +11,16 @@ never used to promote anything above TESTED_FINITE.
 | ID | Short statement | Status |
 | --- | --- | --- |
 | RR-C001 | Canonical interfaces and fixtures | PROVED (spec) + TESTED_FINITE |
-| RR-C002 | `\|A_n\| = \|D_n\|` for `n <= 50`, six independent methods | TESTED_FINITE |
+| RR-C002 | Equality `|A_n| = |D_n|` for `n <= 50`; method independence stated honestly | TESTED_FINITE |
 | RR-C003 | No weight-preserving bijection preserves the **length** | PROVED |
 | RR-C004 | No weight-preserving bijection preserves the **largest part** | PROVED |
-| RR-C005 | Staircase coordinates: order, nonnegativity, weight `n-k^2`, both laws | LEAN_VERIFIED |
+| RR-C005 | Staircase: nonnegativity, weight `n-k^2`, both inverse laws (order NOT yet in Lean) | LEAN_VERIFIED (pinned compiler, supervisor-checked) |
 | RR-C006 | Shift `T : D_n -> B_n` (smallest part >= length), both laws | TESTED_FINITE |
-| RR-C007 | BZ82 reference map `A_n -> D_n`, proven inverse pair | TESTED_FINITE (n <= 50) |
-| RR-C008 | BZ82 `psi` is an involution on `X(n) \\ {0} x A_n`, **all n** | **PROVED** |
-| RR-C009 | BZ82 `phi` is an involution on `X(n) \ {0} x B_n` (reconstructed rule) | TESTED_FINITE (n <= 25) |
+| RR-C007 | BZ82 reference map: our implementation is a bijection `A_n -> D_n` | TESTED_FINITE (n <= 50); BZ82's theorem is PROVED in the literature |
+| RR-C008 | BZ82 `psi` involution on `X(n) minus {0} x A_n`, **all n**: amended argument | **PROVED (amended cycle 2, under audit)** |
+| RR-C009 | BZ82 `phi` involution on `X(n) minus {0} x B_n`; **faithful transcription, no reconstruction** | TESTED_FINITE (`n <= 30`) |
 | RR-C010 | Equal largest-part cutoffs are **not** an identity (`n=5, m=4`) | PROVED (witness) |
-| RR-C011 | BZ82 iteration length is Theta(n) empirically (max 646 at n=30) | TESTED_FINITE |
+| RR-C011 | BZ82 alternating-path lengths: raw max/mean per weight, extremal objects | TESTED_FINITE (no growth class claimed) |
 | RR-C012 | A "more natural" bijection meeting all criteria | OPEN |
 
 ## Details
@@ -40,17 +40,31 @@ enumeration of `A_n`, (ii) direct canonical enumeration of `D_n`, (iii) unbounde
 coin-change DP over allowed residues, (iv) the gap recurrence
 `d(n,m)=d(n,m-1)+d(n-m,m-2)`, (v) the power series
 `prod 1/((1-x^{5k+1})(1-x^{5k+4}))`, (vi) the series `sum_t x^{t^2}/(x;x)_t`;
-plus (vii) a generic all-partitions filter for `n <= 20`. Methods (v) and (vi)
-are independent of both recursions and are the analytic identity itself.
+plus (vii) a generic all-partitions filter for `n <= 20`.
+
+**Independence, corrected in cycle 2.** Cycle 1 called these "six independent
+methods", which overstates it. (iii) and (v) are the *same* recurrence (same
+objects, same order of summation), so they cross-check transcription, not
+mathematics. The genuinely independent groups are: {direct enumeration of `A_n`
+and of `D_n` — different families, different generators}, {(iii)=(v)}, {(iv)},
+{(vi)}, {(vii)}. The comparison that carries real mathematical content is
+`(v) = (vi)`, whose equality *is* the Rogers--Ramanujan first identity, checked
+coefficient by coefficient; and (vii), which enumerates unconditionally and then
+filters. Note also that (vi) counts the `B_n` side, so agreement of (vi) with
+(i)-(iv) is the identity, not a tautology.
 Owner C (worker m1, `smwfxwsqf`), reviewer M + X.
 Evidence: `Computation/results.json` (`counts_all_agree = true`),
 `.ultramath/smwfxwsqf/m1/d1_counts.tsv` (independent reproduction, identical).
 First 31 values: 1,1,1,1,2,2,3,3,4,5,6,7,9,10,12,14,17,19,23,26,31,35,41,46,
 54,61,70,79,91,102,117.
 Obligations: none for the finite claim; **no all-n conclusion is drawn**.
-Note: a widely quoted table value (55 at n=24) was checked and is wrong for this
-family; all six methods agree on 54. Recorded to prevent a future regression to
-the recalled table.
+Cycle-2 correction: cycle 1 asserted that a "widely quoted" table value (55 at
+`n = 24`) is wrong. That assertion had no source and is withdrawn. What is true
+is narrower and verifiable: the hand-recalled array that cycle 1 carried inside
+`rr_core.py` as a cross-check disagrees with every method implemented here, and
+that array has been **retired** rather than corrected, because this project has
+no citation for the sequence's offset or convention. No remembered table is used
+as an oracle anywhere in the code now.
 
 ### RR-C003 — length cannot be preserved. Status: PROVED.
 `A_2 = {(1,1)}` and `D_2 = {(2)}`, so any weight-preserving bijection sends the
@@ -62,7 +76,7 @@ or `()`, of weight <= 1; so `(1^n)` has no partner with a preserved largest
 part. Verified with minimal witnesses at every `n <= 14` in
 `Counterexamples/REGISTRY.md`. Owner M/X, source: original to this project.
 
-### RR-C005 — staircase bridge. Status: **LEAN_VERIFIED**.
+### RR-C005 — staircase bridge. Status: **LEAN_VERIFIED** (pinned compiler, externally re-checked).
 Statement (`Lean/Staircase.lean`): with `Pos` and `Gap` as defined there,
 `(a) head_bound : 2*len(rest)+1 <= a` (so subtraction never truncates),
 `(b) addStair_subStair : addStair (subStair l) = l`,
@@ -70,12 +84,27 @@ Statement (`Lean/Staircase.lean`): with `Pos` and `Gap` as defined there,
 `(d) sum_addStair : (addStair l).sum = l.sum + l.length * l.length`,
 `(e) weight_subStair : (subStair lam).sum = n - len*len` when `lam.sum = n`,
 `(f) subStair_nonneg`.
-Evidence: `lean RogersRamanujan/Lean/Staircase.lean`, exit 0, 14.4 s, and
-`#print axioms` giving `[propext, Quot.sound]` for every theorem — inside the
-event's allowed set, no `sorryAx`, no `Classical.choice`.
-Owner L (Main this cycle), reviewer M/X. Obligations: weak-decreasingness of
-`subStair` is established by the checker (RR-C006) but **not** in Lean; the
-`Nat.Partition` bridge is not done; `T` is not formalized (D-4).
+Evidence, primary: the supervisor compiled the identical file (SHA256
+`C7ACBCD74866958596ACC458A7231939EBE01969A0723179BFDAAF263CBEB280`) with the
+**pinned** Lean 4.35.0 executable (commit `eb6cafb7290e8bd5f2937522d8d804f58f02bafc`),
+exit 0, and reports the exact axiom output: `subStair_addStair` uses
+`[propext]`; `head_bound`, `addStair_subStair`, `sum_addStair`,
+`weight_subStair`, `subStair_nonneg` use `[propext, Quot.sound]`. This is inside
+the event's allowed set, with no `sorryAx`. Main's own local check used Lean
+4.33.1 (the VM's executable) and gave the same axiom sets; the toolchain
+mismatch is therefore resolved in favour of the pinned compiler, and the `4.33.1`
+caveat is retired.
+**Scope, corrected in cycle 2.** These six declarations do **not** constitute a
+staircase *equivalence*. Two things were overstated in cycle 1:
+(i) weak-decreasingness of `subStair` is still missing in Lean — it is verified
+only computationally (RR-C006) — so "the staircase coordinates form a partition"
+is not yet kernel-checked;
+(ii) `subStair_nonneg` proves `0 <= x` for a `Nat`, which is automatic and
+carries no content; the substantive non-truncation evidence is `head_bound`
+together with `addStair_subStair`, not nonnegativity.
+Owner L (Main cycle 1), reviewer: the supervisor's independent compilation, plus
+X. Obligations: the order lemma; `T`; the `Nat.Partition` bridge (D-4); and a
+named build target so these modules are actually compiled by the reported build.
 
 ### RR-C006 — shift T. Status: TESTED_FINITE.
 Statement: `T(lambda)_i = lambda_i - k + 2i - 1` is a weight-preserving bijection
@@ -85,7 +114,18 @@ Evidence: `results.json` `staircase_and_T.ok = true` for `n <= 50` (every
 `D_n` object), `T(7,3,1) = (5,3,3)` specifically checked.
 Obligations: needs RR-C005-style Lean proof for LEAN_VERIFIED.
 
-### RR-C007 — the BZ82 reference bijection. Status: TESTED_FINITE, `n <= 50`.
+### RR-C007 — the BZ82 reference bijection. Status: TESTED_FINITE for our
+implementation, `n <= 50`; the underlying theorem is PROVED in the literature
+(BZ82 p.314) and is attributed, not claimed.
+
+Three distinct things, kept separate in cycle 2 (cycle 1's "proven inverse pair"
+blurred them): (1) **BZ82's theorem** that the alternating composition is a
+bijection — established mathematics, cited, not ours; (2) **our implementation**
+of it, verified as a bijection over a finite range — TESTED_FINITE; (3) a
+**source-faithfulness proof** — we have finite reproduction of all three printed
+examples and finite involution/closure checks, but no written proof that our code
+implements BZ82's rules on all inputs, so this is at best TESTED_FINITE on the
+tested range, not PROVED.
 Statement: `forward : A_n -> D_n` and `inverse : D_n -> A_n` as implemented in
 `Computation/bz82.py` are mutually inverse bijections for every
 `0 <= n <= 50`; forward is injective, surjective onto `D_n`, deterministic and
@@ -105,6 +145,23 @@ only the run). Source: BZ82 p.314 with the three forced tie-breaks of D-3
 (equality in I(a) -> I(a); equality in II(a) -> II(a); II(a) with value 0 ->
 the part is deleted). Evidence: `.ultramath/smwfxwsqf/m3/README.md` §3 plus
 Main's independent re-derivation.
+AMENDED IN CYCLE 2. The supervisor found two real boundary errors in the worker's
+argument, both repaired here; the argument below is the amended version and its
+status is conditional on an independent audit of the repairs.
+ * Repair 1 (case stability, II(b)). `t0' = t0 - 1` is **false when `m0 = 0`**:
+   then no part is removed, a part `= 3 (mod 5)` is created, and `t0' = t0 = 0`,
+   e.g. `(-1;()) -> (0;(3))`. Separate argument for that case: `m0 = 0` gives
+   `t0 = 0`, and Case II gives `t0 + j <= 0`, i.e. `j <= 0`. If `j = 0` then
+   `m0 = m2 = 0`; II(b) selected means `m3 - 3 < 0`, so `m3 = 0`; hence `lam`
+   has no part `= 0,2,3 (mod 5)` and the state is in the excluded set. So on the
+   domain `j <= -1`, and `t0' + j' = 0 + (j+1) <= 0` as required.
+ * Repair 2 (branch inverse, II(a) with `nu = m3+5j-3 = 0`). The bound
+   `m3' <= m3 - 5` is **false when the largest `3 (mod 5)` part is repeated**:
+   `(0;(3,3)) -> (-1;(3))` keeps `m3' = 3`. The weaker bound `m3' <= m3`
+   suffices: `m3' + 5(j-1) - 3 <= m3 + 5j - 8 = nu - 5 = -5 < 0 = m0'`, so II(b)
+   is selected, and it creates `m0' - 5(j-1) - 2 = 3 - 5j = m3`, restoring the
+   part. Multiplicity variants of both witnesses are exercised in the audit.
+
 Written argument, in outline. Put `P(j) = j(5j-1)/2`, so `P(j-1) = P(j)-(5j-3)`
 and `P(j+1) = P(j)+(5j+2)`. (a) Each of the four branches changes `|lam|` by
 exactly `-(change in P(j))`, so `|lam|+P(j) = n` is invariant, and every created
@@ -132,7 +189,7 @@ bound `-13` is arithmetically `-10`; the conclusion still holds.
 What this does **not** give: the analogous statement for `phi` (RR-C009), and any
 conclusion about BZ82's endpoint map beyond `n <= 50`.
 
-### RR-C009 — `phi` is an involution on `X(n) \ {0} x B_n`. Status: TESTED_FINITE, `n <= 25`.
+### RR-C009 — `phi` is an involution on `X(n) \ {0} x B_n`. Status: TESTED_FINITE, `n <= 30`.
 `psi` is an involution with `psi^2 = id` and closure on `X(n) \ {0} x A_n` for
 every such state with `n <= 25`; likewise `phi` on `X(n) \ {0} x B_n` under D-3.
 Also both preserve the invariant `|lam| + j(5j-1)/2` and flip the parity of `j`
@@ -146,12 +203,26 @@ At `n = 5`, cutoff `m = 4`: `{|lambda in A_5 : lambda_1 <= 4|} = 2`
 So no refinement at equal largest-part cutoff can be proved by counting; it
 needs its own correct boundary conditions. Confirms the roadmap's warning.
 
-### RR-C011 — iteration length. Status: TESTED_FINITE (empirical only).
-The number of `phi`/`psi` applications needed by the BZ82 map, per weight, has
-max 0,0,2,2,6,8,10,14,16,16,10,42,58,42,90,124,128,140,110,196,224,208,228,344,
-300,466,592,390,416,560,646 for `n = 0..30`, and mean growing roughly linearly
-(114.6 at `n = 30`). This is measured, **not** proved; no lower bound is claimed
-and PAK06's exercise about worst-case growth stays open here.
+### RR-C011 — alternating-path lengths. Status: TESTED_FINITE. No growth class claimed.
+Cycle 1 wrote "`Theta(n)` empirically" and "roughly linearly". Both are withdrawn:
+a maximum of 646 steps at `n = 30` over 31 data points cannot support a growth
+class, and the mean is not a linear function of `n` (it is not even monotone in
+the max, e.g. max falls from 16 at `n=9` to 10 at `n=10`, and from 592 at `n=26`
+to 390 at `n=27`). What is recorded is raw data only:
+
+* max steps for `n = 0..30`: 0,0,2,2,6,8,10,14,16,16,10,42,58,42,90,124,128,140,
+  110,196,224,208,228,344,300,466,592,390,416,560,646;
+* mean steps for `n = 0..30`: 0,0,2,2,3,5,4,8,7,6,4.333,12.571,15.778,18,20.667,
+  21.143,26.824,31.579,34.261,38.615,41.29,47.314,53.463,60.043,65.926,73.738,
+  80.029,88.658,96.484,106.255,114.564;
+* extremal `A_n` objects (longest path): `n=10` `(6,1,1,1,1)`; `n=20`
+  `(11,6,1,1,1)`; `n=30` `(4,4,4,4,4,4,4,1,1)`.
+
+The last row is the interesting one and is file-able evidence for the next
+cycle: at `n = 30` the longest path starts in the two-parameter family
+`(4^r, 1^s)`. PAK06's exercise on worst-case growth stays open. Two complete
+labelled traces (longest and shortest at `n = 12` and `n = 20`, with the
+involution applied at each step) are in `results.json` under `extremal_traces`.
 
 ### RR-C012 — the objective. Status: OPEN.
 No candidate has been exhibited that improves on BZ82 on the project's

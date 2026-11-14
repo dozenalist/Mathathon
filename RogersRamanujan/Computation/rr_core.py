@@ -216,10 +216,26 @@ def Tinv(b):
 
 
 # --------------------------------------------------------------------------
-# reference counts, for cross-checking only (OEIS A003114)
+# Reference table: RETIRED in cycle 2, kept only as a documented tripwire.
 # --------------------------------------------------------------------------
-A003114 = [1, 1, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7, 9, 10, 12, 14, 17, 19, 23,
-           26, 31, 35, 41, 46, 55, 62, 71, 82, 94, 106, 121]
+# Cycle 1 carried a hand-recalled "A003114" array ending ...46288, 96 048, ...
+# whose tail (55 at n = 24, 121 at n = 30) disagrees with every computation
+# here. It was never verified against OEIS, so it is retired rather than
+# corrected: this project has no source for the sequence's offset/convention,
+# and an unverified oracle in a test file is a liability, not evidence.
+#
+# The values actually used as a cross-check in this project are the COMPUTED
+# ones, agreed by the methods listed in `run_checks.py`, and the analytic
+# identity prod 1/((1-x^{5k+1})(1-x^{5k+4})) = sum_t x^{t^2}/(x;x)_t, which is
+# checked coefficient by coefficient. Do not reinstate a remembered table here
+# without a citation for the sequence and its offset.
+#
+# For the record, the computed counts |A_n| = |D_n| for 0 <= n <= 50 begin
+#   1,1,1,1,2,2,3,3,4,5,6,7,9,10,12,14,17,19,23,26,31,35,41,46,54,61,70,79,
+#   91,102,117,131,149,167,189,211,239,266,299,333,374,415,467,517,578,639,
+#   713,788,877,967,1070
+# (values from `results.json`; n = 24 is 54, NOT 55).
+COMPUTED_COUNTS_NOTE = "see Computation/results.json; no remembered table is used"
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-# RR127 results, checkpoint 1 (2026-11-14)
+# RR127 results, checkpoint 2 (2026-11-14, America/Los_Angeles)
 
 Relation to the official objective, stated first and without inflation:
 **the requested more-natural bijection is not solved.** What this checkpoint
@@ -74,6 +74,36 @@ largest part never occurs in `D_n` is 1,1,1,1,1,2,3,3,3,3,4,7,8 for
 `n = 2..14`, with minimal witnesses (`(1^n)`, then `(4,1^{n-4})`, ...).
 Independent worker m2 produced the same table; M reproduced it from scratch.
 
+## 3a. Withdrawals made in cycle 2
+
+Three statements from checkpoint 1 were wrong or overstated, and are withdrawn
+here rather than edited away silently.
+
+1. **The claim that BZ82's printed `phi` Case II formula is defective is
+   RETRACTED.** It rested on a `z >= 1` restriction that I had added to the
+   printed range `0 <= z <= a+2j-2`. With the printed range, the rule is complete:
+   0 defects in `phi(phi(s)) = s` over all 66 658 in-domain states of weight
+   `<= 30`, and the admissible set is nonempty on all 10 285 Case-II states of
+   weight `<= 25`. The state I offered as a counterexample,
+   `(0;(2,1,1,1))`, is *correctly* sent to `(-1;(1,1))` by `z = 0`. My
+   implementation was behaviourally faithful all along (0 discrepancies) because
+   its fallback to `m = 0` exactly compensated. Correction found by the
+   supervisor. Full record: `Counterexamples/REGISTRY.md` RR-X005,
+   `Main/DECISIONS.md` D-3.
+2. **"`Theta(n)` empirically" and "roughly linearly" are withdrawn.** Thirty-one
+   data points, with the maximum non-monotone in `n`, cannot support a growth
+   class. RR-C011 now records raw maxima, means and extremal objects only.
+3. **"Six independent counting methods" is corrected** to the honest grouping:
+   the power-series product and the residue coin-change DP are the same
+   recurrence and cross-check transcription, not mathematics. The genuinely
+   informative comparisons are the gap recurrence, the `q`-series
+   `sum_t x^{t^2}/(x;x)_t` (whose equality with the product *is* the identity),
+   and the unconditional all-partitions filter for `n <= 20`.
+
+Also corrected: a hand-recalled sequence table inside `rr_core.py` is retired
+(no remembered table is used as an oracle), and `run_checks.py` now actually tests
+the generic-filter gap count it computes, which checkpoint 1 omitted.
+
 ## 4. What the artifact does *not* show
 
 Equal counts, an equal-rank matching, a finite success, a fast implementation or
@@ -87,6 +117,17 @@ claim. Specifically this checkpoint does **not** show:
 * anything about `Nat.Partition` or a full `lake build` (section 6).
 
 ## 5. The remaining gap, stated precisely
+
+**Scope warning about this section.** The four criteria listed below are this
+project's own working criteria for judging a candidate construction. They are
+**not** requirements imposed by the official problem, and satisfying them is not
+the definition of "natural". The official statement asks for "a more natural
+bijection" without defining naturalness, so a candidate that fails one of these
+criteria — for instance by using transparent recursion, bounded local
+iteration, or a small auxiliary state — may still be a substantive and
+publishable answer. Conversely, meeting all four is not proof of interest. They
+are a checklist for comparison, not a filter.
+
 
 BZ82's map is an **iterated pair of involutions**, not a structural rule. Its
 cost profile is the obstruction to naturalness: the number of `phi`/`psi` steps
@@ -112,10 +153,14 @@ proposals fail, and why the residue-to-staircase step is the hard part.
 ## 6. Build and environment identity
 
 * Python 3.12.14, stdlib only for the mathematics.
-* `lean --version` = **4.33.1**, while `lean-toolchain` pins `v4.35.0` and
-  `lake-manifest.json` names mathlib `56a0058...`. The Lean evidence in this
-  checkpoint was produced with 4.33.1, so it is version-mismatched with the
-  repository pin. Reported, not papered over.
+* Lean: the supervisor compiled `Lean/Staircase.lean` (SHA256
+  `C7ACBCD74866958596ACC458A7231939EBE01969A0723179BFDAAF263CBEB280`) with the
+  **pinned** Lean 4.35.0 (commit `eb6cafb7290e8bd5f2937522d8d804f58f02bafc`),
+  exit 0, axioms `[propext]` for `subStair_addStair` and
+  `[propext, Quot.sound]` for the other five. The local VM's executable is
+  4.33.1, which produced the same axiom sets. The cycle-1 "toolchain mismatch"
+  caveat is therefore retired; what remains is that weak-decreasingness is not
+  yet formalized, so the six declarations are not yet a staircase equivalence.
 * `import Mathlib` could not be elaborated here (measured, D-4), so
   `Lean/Staircase.lean` is Mathlib-free and **no `lake build` is claimed**.
 * All timings are wall-clock on this shared VM and include contention with a

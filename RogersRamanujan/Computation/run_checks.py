@@ -5,7 +5,18 @@ Usage:  python3 run_checks.py [NMAX]     (default 30)
 
 Emits results.json next to this file, containing
   * the canonical fixtures for n <= 6,
-  * |A_n| and |D_n| by four independent methods for n <= NMAX,
+  * |A_n| and |D_n| by four methods for n <= NMAX.  Independence, stated
+    honestly (cycle-1 text claimed six independent methods, which overstates
+    it): (1) direct canonical enumeration of A_n and of D_n are independent of
+    each other and of everything below; (2) the coin-change DP over allowed
+    residues and (3) the series `product 1/((1-x^{5k+1})(1-x^{5k+4}))` are the
+    SAME recurrence -- same objects, same order of summation -- so they
+    cross-check transcription, not mathematics; (4) the gap recurrence
+    d(n,m)=d(n,m-1)+d(n-m,m-2) is a genuinely different recurrence, and the
+    series `sum_t x^{t^2}/(x;x)_t` is a genuinely different series, whose
+    equality with the product is the Rogers-Ramanujan identity itself; (5) the
+    generic all-partitions filter for n <= 20 is independent of all of them,
+    because it enumerates unconditionally and then tests membership.
   * the staircase and T inverse-law checks,
   * exhaustive verification of the BZ82 reference bijection for n <= NMAX,
   * orbit-length statistics for the BZ82 iteration,
@@ -112,9 +123,15 @@ def main():
             'generic_filter_residue': ga,
             'generic_filter_gap': gd,
         }
+        # NB cycle 1 computed the generic-filter gap count and then forgot to
+        # test it: the agreement predicate only compared ga with dp_residue.
+        # Both generic-filter values are now required to agree.
         vals = [row[k] for k in ('direct_residue', 'direct_gap', 'dp_residue',
                                  'dp_gap', 'product_series', 'q_series') if row[k] is not None]
-        row['agree'] = len(set(vals)) == 1 and (ga is None or ga == row['dp_residue'])
+        row['agree'] = (len(set(vals)) == 1
+                        and (ga is None or ga == row['direct_residue'])
+                        and (gd is None or gd == row['dp_gap'])
+                        and (ga is None or gd is None or ga == gd))
         counts.append(row)
     R['counts'] = counts
     R['counts_all_agree'] = all(r['agree'] for r in counts)
@@ -155,6 +172,9 @@ def main():
         fa = {a: bz82.forward(a) for a in A}
         ga = {d: bz82.inverse(d) for d in D}
         steps = [len(bz82.pi_forward(a)[1]) - 1 for a in A]
+        traces = {a: bz82.pi_forward(a)[1] for a in A}
+        lens = {a: len(traces[a]) - 1 for a in A}
+        extremal = max(A, key=lambda a: (lens[a], a)) if A else ()
         checks = {
             'n': n,
             'count': len(A),
@@ -167,18 +187,50 @@ def main():
             'inverse_right': all(fa[ga[d]] == d for d in D),
             'deterministic': all(bz82.forward(a) == fa[a] for a in A),
             'weight_preserved': all(weight(fa[a]) == n for a in A),
+            # raw statistics only: no growth class is asserted anywhere.
             'max_iteration_steps': max(steps) if steps else 0,
+            'min_iteration_steps': min(steps) if steps else 0,
+            'mean_iteration_steps': round(sum(steps) / len(steps), 3) if steps else 0,
             'total_iteration_steps': sum(steps),
+            'extremal_A_object': list(extremal),
+            'max_state_parts': max((len(s2[1]) for a in A for s2 in traces[a]),
+                                   default=0),
+            'max_abs_j': max((abs(s2[0]) for a in A for s2 in traces[a]), default=0),
         }
         checks['ok'] = all(v for k, v in checks.items()
                            if k not in ('n', 'count', 'max_iteration_steps',
-                                        'total_iteration_steps'))
+                                        'min_iteration_steps',
+                                        'mean_iteration_steps',
+                                        'total_iteration_steps',
+                                        'extremal_A_object', 'max_state_parts',
+                                        'max_abs_j'))
         bij_ok &= checks['ok']
         bij.append(checks)
         if not checks['ok']:
             break
     R['bz82_bijection'] = {'ok': bij_ok, 'per_weight': bij,
                            'verified_through': bij[-1]['n'] if bij else -1}
+
+    # A long and a short complete trace, for Experimental to work from.
+    traces_out = []
+    for n in (min(12, NMAX), min(20, NMAX)):
+        A = enumerate_residue(n)
+        if not A:
+            continue
+        got = {a: bz82.pi_forward(a)[1] for a in A}
+        long_a = max(A, key=lambda a: (len(got[a]), a))
+        short_a = min(A, key=lambda a: (len(got[a]), a))
+        for label, a in (('longest', long_a), ('shortest', short_a)):
+            tr = got[a]
+            traces_out.append({
+                'n': n, 'kind': label, 'source': list(a),
+                'steps': len(tr) - 1,
+                'path': [{'step': i, 'j': s2[0], 'lam': list(s2[1]),
+                          'involution_applied': None if i == 0
+                          else ('phi' if (i - 1) % 2 == 0 else 'psi')}
+                         for i, s2 in enumerate(tr)],
+            })
+    R['extremal_traces'] = traces_out
 
     # ---- involution structure -------------------------------------------
     def states(n):
@@ -209,7 +261,7 @@ def main():
 
     inv_ok = True
     inv_stats = []
-    for n in range(0, min(NMAX, 25) + 1):
+    for n in range(0, min(NMAX, 30) + 1):
         stt = states(n)
         pd = [s for s in stt if bz82.phi_domain(s, n)]
         sd = [s for s in stt if bz82.psi_domain(s, n)]

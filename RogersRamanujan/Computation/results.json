@@ -2,7 +2,7 @@
  "environment": {
   "python": "3.12.14",
   "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.43",
-  "nmax": 50
+  "nmax": 30
  },
  "fixtures": {
   "0": {
@@ -504,246 +504,6 @@
    "generic_filter_residue": null,
    "generic_filter_gap": null,
    "agree": true
-  },
-  {
-   "n": 31,
-   "direct_residue": 131,
-   "direct_gap": 131,
-   "dp_residue": 131,
-   "dp_gap": 131,
-   "product_series": 131,
-   "q_series": 131,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 32,
-   "direct_residue": 149,
-   "direct_gap": 149,
-   "dp_residue": 149,
-   "dp_gap": 149,
-   "product_series": 149,
-   "q_series": 149,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 33,
-   "direct_residue": 167,
-   "direct_gap": 167,
-   "dp_residue": 167,
-   "dp_gap": 167,
-   "product_series": 167,
-   "q_series": 167,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 34,
-   "direct_residue": 189,
-   "direct_gap": 189,
-   "dp_residue": 189,
-   "dp_gap": 189,
-   "product_series": 189,
-   "q_series": 189,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 35,
-   "direct_residue": 211,
-   "direct_gap": 211,
-   "dp_residue": 211,
-   "dp_gap": 211,
-   "product_series": 211,
-   "q_series": 211,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 36,
-   "direct_residue": 239,
-   "direct_gap": 239,
-   "dp_residue": 239,
-   "dp_gap": 239,
-   "product_series": 239,
-   "q_series": 239,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 37,
-   "direct_residue": 266,
-   "direct_gap": 266,
-   "dp_residue": 266,
-   "dp_gap": 266,
-   "product_series": 266,
-   "q_series": 266,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 38,
-   "direct_residue": 299,
-   "direct_gap": 299,
-   "dp_residue": 299,
-   "dp_gap": 299,
-   "product_series": 299,
-   "q_series": 299,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 39,
-   "direct_residue": 333,
-   "direct_gap": 333,
-   "dp_residue": 333,
-   "dp_gap": 333,
-   "product_series": 333,
-   "q_series": 333,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 40,
-   "direct_residue": 374,
-   "direct_gap": 374,
-   "dp_residue": 374,
-   "dp_gap": 374,
-   "product_series": 374,
-   "q_series": 374,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 41,
-   "direct_residue": 415,
-   "direct_gap": 415,
-   "dp_residue": 415,
-   "dp_gap": 415,
-   "product_series": 415,
-   "q_series": 415,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 42,
-   "direct_residue": 465,
-   "direct_gap": 465,
-   "dp_residue": 465,
-   "dp_gap": 465,
-   "product_series": 465,
-   "q_series": 465,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 43,
-   "direct_residue": 515,
-   "direct_gap": 515,
-   "dp_residue": 515,
-   "dp_gap": 515,
-   "product_series": 515,
-   "q_series": 515,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 44,
-   "direct_residue": 575,
-   "direct_gap": 575,
-   "dp_residue": 575,
-   "dp_gap": 575,
-   "product_series": 575,
-   "q_series": 575,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 45,
-   "direct_residue": 637,
-   "direct_gap": 637,
-   "dp_residue": 637,
-   "dp_gap": 637,
-   "product_series": 637,
-   "q_series": 637,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 46,
-   "direct_residue": 709,
-   "direct_gap": 709,
-   "dp_residue": 709,
-   "dp_gap": 709,
-   "product_series": 709,
-   "q_series": 709,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 47,
-   "direct_residue": 783,
-   "direct_gap": 783,
-   "dp_residue": 783,
-   "dp_gap": 783,
-   "product_series": 783,
-   "q_series": 783,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 48,
-   "direct_residue": 871,
-   "direct_gap": 871,
-   "dp_residue": 871,
-   "dp_gap": 871,
-   "product_series": 871,
-   "q_series": 871,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 49,
-   "direct_residue": 961,
-   "direct_gap": 961,
-   "dp_residue": 961,
-   "dp_gap": 961,
-   "product_series": 961,
-   "q_series": 961,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
-  },
-  {
-   "n": 50,
-   "direct_residue": 1065,
-   "direct_gap": 1065,
-   "dp_residue": 1065,
-   "dp_gap": 1065,
-   "product_series": 1065,
-   "q_series": 1065,
-   "generic_filter_residue": null,
-   "generic_filter_gap": null,
-   "agree": true
   }
  ],
  "counts_all_agree": true,
@@ -767,7 +527,12 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 0,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 0.0,
     "total_iteration_steps": 0,
+    "extremal_A_object": [],
+    "max_state_parts": 0,
+    "max_abs_j": 0,
     "ok": true
    },
    {
@@ -783,7 +548,14 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 0,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 0.0,
     "total_iteration_steps": 0,
+    "extremal_A_object": [
+     1
+    ],
+    "max_state_parts": 1,
+    "max_abs_j": 0,
     "ok": true
    },
    {
@@ -799,7 +571,15 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 2,
+    "min_iteration_steps": 2,
+    "mean_iteration_steps": 2.0,
     "total_iteration_steps": 2,
+    "extremal_A_object": [
+     1,
+     1
+    ],
+    "max_state_parts": 2,
+    "max_abs_j": 1,
     "ok": true
    },
    {
@@ -815,7 +595,16 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 2,
+    "min_iteration_steps": 2,
+    "mean_iteration_steps": 2.0,
     "total_iteration_steps": 2,
+    "extremal_A_object": [
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 3,
+    "max_abs_j": 1,
     "ok": true
    },
    {
@@ -831,7 +620,17 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 6,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 3.0,
     "total_iteration_steps": 6,
+    "extremal_A_object": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 4,
+    "max_abs_j": 1,
     "ok": true
    },
    {
@@ -847,7 +646,15 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 8,
+    "min_iteration_steps": 2,
+    "mean_iteration_steps": 5.0,
     "total_iteration_steps": 10,
+    "extremal_A_object": [
+     4,
+     1
+    ],
+    "max_state_parts": 5,
+    "max_abs_j": 1,
     "ok": true
    },
    {
@@ -863,7 +670,16 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 10,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 4.0,
     "total_iteration_steps": 12,
+    "extremal_A_object": [
+     4,
+     1,
+     1
+    ],
+    "max_state_parts": 6,
+    "max_abs_j": 1,
     "ok": true
    },
    {
@@ -879,7 +695,17 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 14,
+    "min_iteration_steps": 2,
+    "mean_iteration_steps": 8.0,
     "total_iteration_steps": 24,
+    "extremal_A_object": [
+     4,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 7,
+    "max_abs_j": 1,
     "ok": true
    },
    {
@@ -895,7 +721,18 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 16,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 7.0,
     "total_iteration_steps": 28,
+    "extremal_A_object": [
+     4,
+     1,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 8,
+    "max_abs_j": 1,
     "ok": true
    },
    {
@@ -911,7 +748,16 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 16,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 6.0,
     "total_iteration_steps": 30,
+    "extremal_A_object": [
+     4,
+     4,
+     1
+    ],
+    "max_state_parts": 9,
+    "max_abs_j": 1,
     "ok": true
    },
    {
@@ -927,7 +773,18 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 10,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 4.333,
     "total_iteration_steps": 26,
+    "extremal_A_object": [
+     6,
+     1,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 10,
+    "max_abs_j": 2,
     "ok": true
    },
    {
@@ -943,7 +800,18 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 42,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 12.571,
     "total_iteration_steps": 88,
+    "extremal_A_object": [
+     4,
+     4,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 11,
+    "max_abs_j": 2,
     "ok": true
    },
    {
@@ -959,7 +827,17 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 58,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 15.778,
     "total_iteration_steps": 142,
+    "extremal_A_object": [
+     9,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 12,
+    "max_abs_j": 2,
     "ok": true
    },
    {
@@ -975,7 +853,16 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 42,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 18.0,
     "total_iteration_steps": 180,
+    "extremal_A_object": [
+     6,
+     6,
+     1
+    ],
+    "max_state_parts": 13,
+    "max_abs_j": 2,
     "ok": true
    },
    {
@@ -991,7 +878,17 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 90,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 20.667,
     "total_iteration_steps": 248,
+    "extremal_A_object": [
+     11,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 14,
+    "max_abs_j": 2,
     "ok": true
    },
    {
@@ -1007,7 +904,17 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 124,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 21.143,
     "total_iteration_steps": 296,
+    "extremal_A_object": [
+     9,
+     4,
+     1,
+     1
+    ],
+    "max_state_parts": 15,
+    "max_abs_j": 2,
     "ok": true
    },
    {
@@ -1023,7 +930,18 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 128,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 26.824,
     "total_iteration_steps": 456,
+    "extremal_A_object": [
+     6,
+     4,
+     4,
+     1,
+     1
+    ],
+    "max_state_parts": 16,
+    "max_abs_j": 2,
     "ok": true
    },
    {
@@ -1039,7 +957,19 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 140,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 31.579,
     "total_iteration_steps": 600,
+    "extremal_A_object": [
+     9,
+     4,
+     1,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 17,
+    "max_abs_j": 2,
     "ok": true
    },
    {
@@ -1055,7 +985,22 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 110,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 34.261,
     "total_iteration_steps": 788,
+    "extremal_A_object": [
+     4,
+     4,
+     4,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 18,
+    "max_abs_j": 2,
     "ok": true
    },
    {
@@ -1071,7 +1016,17 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 196,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 38.615,
     "total_iteration_steps": 1004,
+    "extremal_A_object": [
+     11,
+     6,
+     1,
+     1
+    ],
+    "max_state_parts": 19,
+    "max_abs_j": 2,
     "ok": true
    },
    {
@@ -1087,7 +1042,18 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 224,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 41.29,
     "total_iteration_steps": 1280,
+    "extremal_A_object": [
+     11,
+     6,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 20,
+    "max_abs_j": 2,
     "ok": true
    },
    {
@@ -1103,7 +1069,16 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 208,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 47.314,
     "total_iteration_steps": 1656,
+    "extremal_A_object": [
+     14,
+     6,
+     1
+    ],
+    "max_state_parts": 21,
+    "max_abs_j": 3,
     "ok": true
    },
    {
@@ -1119,7 +1094,17 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 228,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 53.463,
     "total_iteration_steps": 2192,
+    "extremal_A_object": [
+     11,
+     9,
+     1,
+     1
+    ],
+    "max_state_parts": 22,
+    "max_abs_j": 3,
     "ok": true
    },
    {
@@ -1135,7 +1120,18 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 344,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 60.043,
     "total_iteration_steps": 2762,
+    "extremal_A_object": [
+     14,
+     6,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 23,
+    "max_abs_j": 3,
     "ok": true
    },
    {
@@ -1151,7 +1147,25 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 300,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 65.926,
     "total_iteration_steps": 3560,
+    "extremal_A_object": [
+     4,
+     4,
+     4,
+     4,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 24,
+    "max_abs_j": 3,
     "ok": true
    },
    {
@@ -1167,7 +1181,19 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 466,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 73.738,
     "total_iteration_steps": 4498,
+    "extremal_A_object": [
+     14,
+     4,
+     4,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 25,
+    "max_abs_j": 3,
     "ok": true
    },
    {
@@ -1183,7 +1209,23 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 592,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 80.029,
     "total_iteration_steps": 5602,
+    "extremal_A_object": [
+     6,
+     6,
+     4,
+     4,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 26,
+    "max_abs_j": 3,
     "ok": true
    },
    {
@@ -1199,7 +1241,19 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 390,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 88.658,
     "total_iteration_steps": 7004,
+    "extremal_A_object": [
+     14,
+     6,
+     4,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 27,
+    "max_abs_j": 3,
     "ok": true
    },
    {
@@ -1215,7 +1269,18 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 416,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 96.484,
     "total_iteration_steps": 8780,
+    "extremal_A_object": [
+     9,
+     6,
+     6,
+     6,
+     1
+    ],
+    "max_state_parts": 28,
+    "max_abs_j": 3,
     "ok": true
    },
    {
@@ -1231,7 +1296,22 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 560,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 106.255,
     "total_iteration_steps": 10838,
+    "extremal_A_object": [
+     11,
+     11,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 29,
+    "max_abs_j": 3,
     "ok": true
    },
    {
@@ -1247,332 +1327,3951 @@
     "deterministic": true,
     "weight_preserved": true,
     "max_iteration_steps": 646,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 114.564,
     "total_iteration_steps": 13404,
-    "ok": true
-   },
-   {
-    "n": 31,
-    "count": 131,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 950,
-    "total_iteration_steps": 16430,
-    "ok": true
-   },
-   {
-    "n": 32,
-    "count": 149,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 870,
-    "total_iteration_steps": 20440,
-    "ok": true
-   },
-   {
-    "n": 33,
-    "count": 167,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 1138,
-    "total_iteration_steps": 24918,
-    "ok": true
-   },
-   {
-    "n": 34,
-    "count": 189,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 1006,
-    "total_iteration_steps": 29628,
-    "ok": true
-   },
-   {
-    "n": 35,
-    "count": 211,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 1044,
-    "total_iteration_steps": 36732,
-    "ok": true
-   },
-   {
-    "n": 36,
-    "count": 239,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 1924,
-    "total_iteration_steps": 45038,
-    "ok": true
-   },
-   {
-    "n": 37,
-    "count": 266,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 1284,
-    "total_iteration_steps": 54888,
-    "ok": true
-   },
-   {
-    "n": 38,
-    "count": 299,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 1806,
-    "total_iteration_steps": 66498,
-    "ok": true
-   },
-   {
-    "n": 39,
-    "count": 333,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 1336,
-    "total_iteration_steps": 79442,
-    "ok": true
-   },
-   {
-    "n": 40,
-    "count": 374,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 2026,
-    "total_iteration_steps": 96428,
-    "ok": true
-   },
-   {
-    "n": 41,
-    "count": 415,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 1942,
-    "total_iteration_steps": 116128,
-    "ok": true
-   },
-   {
-    "n": 42,
-    "count": 465,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 2016,
-    "total_iteration_steps": 138254,
-    "ok": true
-   },
-   {
-    "n": 43,
-    "count": 515,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 1876,
-    "total_iteration_steps": 166594,
-    "ok": true
-   },
-   {
-    "n": 44,
-    "count": 575,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 2214,
-    "total_iteration_steps": 198762,
-    "ok": true
-   },
-   {
-    "n": 45,
-    "count": 637,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 3202,
-    "total_iteration_steps": 236508,
-    "ok": true
-   },
-   {
-    "n": 46,
-    "count": 709,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 3044,
-    "total_iteration_steps": 282158,
-    "ok": true
-   },
-   {
-    "n": 47,
-    "count": 783,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 3564,
-    "total_iteration_steps": 334854,
-    "ok": true
-   },
-   {
-    "n": 48,
-    "count": 871,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 3196,
-    "total_iteration_steps": 398064,
-    "ok": true
-   },
-   {
-    "n": 49,
-    "count": 961,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 4544,
-    "total_iteration_steps": 471402,
-    "ok": true
-   },
-   {
-    "n": 50,
-    "count": 1065,
-    "forward_in_A": true,
-    "forward_values_in_D": true,
-    "forward_injective": true,
-    "forward_surjective": true,
-    "inverse_values_in_A": true,
-    "inverse_left": true,
-    "inverse_right": true,
-    "deterministic": true,
-    "weight_preserved": true,
-    "max_iteration_steps": 5162,
-    "total_iteration_steps": 557542,
+    "extremal_A_object": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     1,
+     1
+    ],
+    "max_state_parts": 30,
+    "max_abs_j": 3,
     "ok": true
    }
   ],
-  "verified_through": 50
+  "verified_through": 30
  },
+ "extremal_traces": [
+  {
+   "n": 12,
+   "kind": "longest",
+   "source": [
+    9,
+    1,
+    1,
+    1
+   ],
+   "steps": 58,
+   "path": [
+    {
+     "step": 0,
+     "j": 0,
+     "lam": [
+      9,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": null
+    },
+    {
+     "step": 1,
+     "j": 1,
+     "lam": [
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 2,
+     "j": 0,
+     "lam": [
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 3,
+     "j": -1,
+     "lam": [
+      5,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 4,
+     "j": 0,
+     "lam": [
+      8,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 5,
+     "j": 1,
+     "lam": [
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 6,
+     "j": 0,
+     "lam": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 7,
+     "j": -1,
+     "lam": [
+      4,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 8,
+     "j": 0,
+     "lam": [
+      4,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 9,
+     "j": -1,
+     "lam": [
+      3,
+      3,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 10,
+     "j": 0,
+     "lam": [
+      5,
+      3,
+      3,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 11,
+     "j": 1,
+     "lam": [
+      6,
+      4
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 12,
+     "j": 0,
+     "lam": [
+      6,
+      4,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 13,
+     "j": 1,
+     "lam": [
+      5,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 14,
+     "j": 0,
+     "lam": [
+      7,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 15,
+     "j": 1,
+     "lam": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 16,
+     "j": 0,
+     "lam": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 17,
+     "j": -1,
+     "lam": [
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 18,
+     "j": 0,
+     "lam": [
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 19,
+     "j": -1,
+     "lam": [
+      4,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 20,
+     "j": 0,
+     "lam": [
+      5,
+      4,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 21,
+     "j": 1,
+     "lam": [
+      5,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 22,
+     "j": 0,
+     "lam": [
+      7,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 23,
+     "j": -1,
+     "lam": [
+      6,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 24,
+     "j": 0,
+     "lam": [
+      6,
+      5,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 25,
+     "j": 1,
+     "lam": [
+      7,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 26,
+     "j": 2,
+     "lam": [
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 27,
+     "j": 1,
+     "lam": [
+      7,
+      3
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 28,
+     "j": 2,
+     "lam": [
+      3
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 29,
+     "j": 1,
+     "lam": [
+      5,
+      3,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 30,
+     "j": 0,
+     "lam": [
+      7,
+      3,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 31,
+     "j": 1,
+     "lam": [
+      4,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 32,
+     "j": 0,
+     "lam": [
+      4,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 33,
+     "j": -1,
+     "lam": [
+      4,
+      3,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 34,
+     "j": 0,
+     "lam": [
+      4,
+      3,
+      3,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 35,
+     "j": -1,
+     "lam": [
+      3,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 36,
+     "j": 0,
+     "lam": [
+      5,
+      3,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 37,
+     "j": 1,
+     "lam": [
+      4,
+      3,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 38,
+     "j": 0,
+     "lam": [
+      4,
+      3,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 39,
+     "j": 1,
+     "lam": [
+      4,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 40,
+     "j": 0,
+     "lam": [
+      4,
+      2,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 41,
+     "j": 1,
+     "lam": [
+      3,
+      3,
+      3,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 42,
+     "j": 0,
+     "lam": [
+      3,
+      3,
+      3,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 43,
+     "j": 1,
+     "lam": [
+      4,
+      4,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 44,
+     "j": 0,
+     "lam": [
+      4,
+      4,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 45,
+     "j": 1,
+     "lam": [
+      5,
+      3,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 46,
+     "j": 0,
+     "lam": [
+      7,
+      3,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 47,
+     "j": 1,
+     "lam": [
+      8,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 48,
+     "j": 0,
+     "lam": [
+      8,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 49,
+     "j": 1,
+     "lam": [
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 50,
+     "j": 0,
+     "lam": [
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 51,
+     "j": -1,
+     "lam": [
+      5,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 52,
+     "j": 0,
+     "lam": [
+      10,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 53,
+     "j": 1,
+     "lam": [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 54,
+     "j": 0,
+     "lam": [
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 55,
+     "j": -1,
+     "lam": [
+      6,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 56,
+     "j": 0,
+     "lam": [
+      6,
+      3,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 57,
+     "j": -1,
+     "lam": [
+      5,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 58,
+     "j": 0,
+     "lam": [
+      10,
+      2
+     ],
+     "involution_applied": "psi"
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "kind": "shortest",
+   "source": [
+    4,
+    4,
+    4
+   ],
+   "steps": 0,
+   "path": [
+    {
+     "step": 0,
+     "j": 0,
+     "lam": [
+      4,
+      4,
+      4
+     ],
+     "involution_applied": null
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "kind": "longest",
+   "source": [
+    11,
+    6,
+    1,
+    1,
+    1
+   ],
+   "steps": 224,
+   "path": [
+    {
+     "step": 0,
+     "j": 0,
+     "lam": [
+      11,
+      6,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": null
+    },
+    {
+     "step": 1,
+     "j": 1,
+     "lam": [
+      12,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 2,
+     "j": 2,
+     "lam": [
+      5,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 3,
+     "j": 1,
+     "lam": [
+      8,
+      4,
+      4,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 4,
+     "j": 0,
+     "lam": [
+      8,
+      4,
+      4,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 5,
+     "j": 1,
+     "lam": [
+      9,
+      5,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 6,
+     "j": 0,
+     "lam": [
+      9,
+      7,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 7,
+     "j": 1,
+     "lam": [
+      8,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 8,
+     "j": 0,
+     "lam": [
+      8,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 9,
+     "j": 1,
+     "lam": [
+      4,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 10,
+     "j": 0,
+     "lam": [
+      4,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 11,
+     "j": -1,
+     "lam": [
+      5,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 12,
+     "j": 0,
+     "lam": [
+      8,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 13,
+     "j": -1,
+     "lam": [
+      7,
+      7,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 14,
+     "j": 0,
+     "lam": [
+      7,
+      5,
+      5,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 15,
+     "j": 1,
+     "lam": [
+      8,
+      6,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 16,
+     "j": 0,
+     "lam": [
+      8,
+      6,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 17,
+     "j": 1,
+     "lam": [
+      7,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 18,
+     "j": 2,
+     "lam": [
+      3,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 19,
+     "j": 1,
+     "lam": [
+      11,
+      3,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 20,
+     "j": 0,
+     "lam": [
+      11,
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 21,
+     "j": 1,
+     "lam": [
+      4,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 22,
+     "j": 0,
+     "lam": [
+      4,
+      3,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 23,
+     "j": -1,
+     "lam": [
+      8,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 24,
+     "j": 0,
+     "lam": [
+      8,
+      5,
+      3,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 25,
+     "j": -1,
+     "lam": [
+      7,
+      4,
+      4,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 26,
+     "j": 0,
+     "lam": [
+      5,
+      5,
+      4,
+      4,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 27,
+     "j": 1,
+     "lam": [
+      6,
+      6,
+      5,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 28,
+     "j": 0,
+     "lam": [
+      7,
+      6,
+      6,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 29,
+     "j": 1,
+     "lam": [
+      8,
+      7,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 30,
+     "j": 2,
+     "lam": [
+      8,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 31,
+     "j": 1,
+     "lam": [
+      7,
+      7,
+      4
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 32,
+     "j": 2,
+     "lam": [
+      7,
+      4
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 33,
+     "j": 1,
+     "lam": [
+      6,
+      6,
+      3,
+      3
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 34,
+     "j": 0,
+     "lam": [
+      6,
+      6,
+      3,
+      3,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 35,
+     "j": 1,
+     "lam": [
+      7,
+      4,
+      3,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 36,
+     "j": 2,
+     "lam": [
+      4,
+      3,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 37,
+     "j": 1,
+     "lam": [
+      10,
+      3,
+      3,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 38,
+     "j": 0,
+     "lam": [
+      7,
+      5,
+      3,
+      3,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 39,
+     "j": 1,
+     "lam": [
+      6,
+      4,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 40,
+     "j": 0,
+     "lam": [
+      6,
+      4,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 41,
+     "j": -1,
+     "lam": [
+      5,
+      5,
+      3,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 42,
+     "j": -2,
+     "lam": [
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 43,
+     "j": -1,
+     "lam": [
+      4,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 44,
+     "j": 0,
+     "lam": [
+      5,
+      4,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 45,
+     "j": -1,
+     "lam": [
+      5,
+      4,
+      3,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 46,
+     "j": 0,
+     "lam": [
+      10,
+      4,
+      3,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 47,
+     "j": 1,
+     "lam": [
+      11,
+      4,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 48,
+     "j": 0,
+     "lam": [
+      11,
+      4,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 49,
+     "j": 1,
+     "lam": [
+      5,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 50,
+     "j": 0,
+     "lam": [
+      7,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 51,
+     "j": -1,
+     "lam": [
+      7,
+      6,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 52,
+     "j": 0,
+     "lam": [
+      6,
+      5,
+      5,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 53,
+     "j": 1,
+     "lam": [
+      7,
+      6,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 54,
+     "j": 2,
+     "lam": [
+      6,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 55,
+     "j": 1,
+     "lam": [
+      7,
+      5,
+      4,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 56,
+     "j": 0,
+     "lam": [
+      7,
+      7,
+      4,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 57,
+     "j": 1,
+     "lam": [
+      8,
+      8,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 58,
+     "j": 0,
+     "lam": [
+      8,
+      8,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 59,
+     "j": 1,
+     "lam": [
+      9,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 60,
+     "j": 0,
+     "lam": [
+      9,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 61,
+     "j": 1,
+     "lam": [
+      4,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 62,
+     "j": 0,
+     "lam": [
+      4,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 63,
+     "j": -1,
+     "lam": [
+      6,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 64,
+     "j": 0,
+     "lam": [
+      6,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 65,
+     "j": -1,
+     "lam": [
+      6,
+      5,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 66,
+     "j": 0,
+     "lam": [
+      10,
+      6,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 67,
+     "j": 1,
+     "lam": [
+      7,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 68,
+     "j": 2,
+     "lam": [
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 69,
+     "j": 1,
+     "lam": [
+      13,
+      3,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 70,
+     "j": 0,
+     "lam": [
+      13,
+      3,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 71,
+     "j": 1,
+     "lam": [
+      4,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 72,
+     "j": 0,
+     "lam": [
+      4,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 73,
+     "j": -1,
+     "lam": [
+      10,
+      3,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 74,
+     "j": 0,
+     "lam": [
+      15,
+      3,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 75,
+     "j": 1,
+     "lam": [
+      16,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 76,
+     "j": 0,
+     "lam": [
+      16,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 77,
+     "j": 1,
+     "lam": [
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 78,
+     "j": 0,
+     "lam": [
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 79,
+     "j": -1,
+     "lam": [
+      13,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 80,
+     "j": 0,
+     "lam": [
+      13,
+      5,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 81,
+     "j": 1,
+     "lam": [
+      14,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 82,
+     "j": 0,
+     "lam": [
+      14,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 83,
+     "j": 1,
+     "lam": [
+      3,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 84,
+     "j": 0,
+     "lam": [
+      3,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 85,
+     "j": -1,
+     "lam": [
+      11,
+      2,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 86,
+     "j": 0,
+     "lam": [
+      11,
+      5,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 87,
+     "j": 1,
+     "lam": [
+      12,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 88,
+     "j": 2,
+     "lam": [
+      5,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 89,
+     "j": 1,
+     "lam": [
+      7,
+      4,
+      4,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 90,
+     "j": 2,
+     "lam": [
+      4,
+      4,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 91,
+     "j": 1,
+     "lam": [
+      9,
+      3,
+      3,
+      3
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 92,
+     "j": 0,
+     "lam": [
+      9,
+      3,
+      3,
+      3,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 93,
+     "j": 1,
+     "lam": [
+      4,
+      4,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 94,
+     "j": 0,
+     "lam": [
+      4,
+      4,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 95,
+     "j": -1,
+     "lam": [
+      6,
+      3,
+      3,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 96,
+     "j": 0,
+     "lam": [
+      6,
+      5,
+      3,
+      3,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 97,
+     "j": 1,
+     "lam": [
+      6,
+      4,
+      3,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 98,
+     "j": 0,
+     "lam": [
+      6,
+      4,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 99,
+     "j": -1,
+     "lam": [
+      5,
+      4,
+      3,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 100,
+     "j": 0,
+     "lam": [
+      10,
+      4,
+      3,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 101,
+     "j": -1,
+     "lam": [
+      9,
+      3,
+      3,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 102,
+     "j": 0,
+     "lam": [
+      9,
+      5,
+      3,
+      3
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 103,
+     "j": 1,
+     "lam": [
+      6,
+      4,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 104,
+     "j": 0,
+     "lam": [
+      6,
+      4,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 105,
+     "j": -1,
+     "lam": [
+      7,
+      5,
+      3,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 106,
+     "j": 0,
+     "lam": [
+      10,
+      5,
+      3,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 107,
+     "j": -1,
+     "lam": [
+      9,
+      4,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 108,
+     "j": 0,
+     "lam": [
+      9,
+      5,
+      4,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 109,
+     "j": 1,
+     "lam": [
+      10,
+      5,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 110,
+     "j": 0,
+     "lam": [
+      12,
+      5,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 111,
+     "j": 1,
+     "lam": [
+      13,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 112,
+     "j": 0,
+     "lam": [
+      13,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 113,
+     "j": 1,
+     "lam": [
+      3,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 114,
+     "j": 0,
+     "lam": [
+      3,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 115,
+     "j": -1,
+     "lam": [
+      10,
+      2,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 116,
+     "j": 0,
+     "lam": [
+      15,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 117,
+     "j": -1,
+     "lam": [
+      14,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 118,
+     "j": 0,
+     "lam": [
+      14,
+      5,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 119,
+     "j": 1,
+     "lam": [
+      15,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 120,
+     "j": 0,
+     "lam": [
+      10,
+      7,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 121,
+     "j": 1,
+     "lam": [
+      11,
+      2,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 122,
+     "j": 0,
+     "lam": [
+      11,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 123,
+     "j": 1,
+     "lam": [
+      3,
+      3,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 124,
+     "j": 0,
+     "lam": [
+      3,
+      3,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 125,
+     "j": -1,
+     "lam": [
+      8,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 126,
+     "j": 0,
+     "lam": [
+      8,
+      5,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 127,
+     "j": 1,
+     "lam": [
+      6,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 128,
+     "j": 0,
+     "lam": [
+      6,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 129,
+     "j": -1,
+     "lam": [
+      5,
+      5,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 130,
+     "j": -2,
+     "lam": [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 131,
+     "j": -1,
+     "lam": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 132,
+     "j": 0,
+     "lam": [
+      5,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 133,
+     "j": -1,
+     "lam": [
+      7,
+      4,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 134,
+     "j": 0,
+     "lam": [
+      5,
+      5,
+      4,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 135,
+     "j": -1,
+     "lam": [
+      4,
+      4,
+      4,
+      3,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 136,
+     "j": 0,
+     "lam": [
+      5,
+      4,
+      4,
+      4,
+      3
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 137,
+     "j": 1,
+     "lam": [
+      6,
+      5,
+      5,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 138,
+     "j": 0,
+     "lam": [
+      12,
+      6,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 139,
+     "j": 1,
+     "lam": [
+      13,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 140,
+     "j": 0,
+     "lam": [
+      13,
+      2,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 141,
+     "j": 1,
+     "lam": [
+      3,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 142,
+     "j": 0,
+     "lam": [
+      3,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 143,
+     "j": -1,
+     "lam": [
+      10,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 144,
+     "j": 0,
+     "lam": [
+      15,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 145,
+     "j": 1,
+     "lam": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 146,
+     "j": 0,
+     "lam": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 147,
+     "j": -1,
+     "lam": [
+      11,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 148,
+     "j": 0,
+     "lam": [
+      11,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 149,
+     "j": -1,
+     "lam": [
+      10,
+      5,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 150,
+     "j": -2,
+     "lam": [
+      5,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 151,
+     "j": -1,
+     "lam": [
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 152,
+     "j": 0,
+     "lam": [
+      3,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 153,
+     "j": -1,
+     "lam": [
+      9,
+      2,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 154,
+     "j": 0,
+     "lam": [
+      9,
+      5,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 155,
+     "j": 1,
+     "lam": [
+      6,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 156,
+     "j": 0,
+     "lam": [
+      6,
+      3,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 157,
+     "j": -1,
+     "lam": [
+      5,
+      5,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 158,
+     "j": -2,
+     "lam": [
+      2,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 159,
+     "j": -1,
+     "lam": [
+      3,
+      3,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 160,
+     "j": 0,
+     "lam": [
+      5,
+      3,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 161,
+     "j": -1,
+     "lam": [
+      5,
+      4,
+      2,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 162,
+     "j": 0,
+     "lam": [
+      10,
+      4,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 163,
+     "j": 1,
+     "lam": [
+      5,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 164,
+     "j": 0,
+     "lam": [
+      7,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 165,
+     "j": -1,
+     "lam": [
+      6,
+      6,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 166,
+     "j": 0,
+     "lam": [
+      6,
+      6,
+      5,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 167,
+     "j": 1,
+     "lam": [
+      7,
+      6,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 168,
+     "j": 2,
+     "lam": [
+      6,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 169,
+     "j": 1,
+     "lam": [
+      8,
+      5,
+      4,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 170,
+     "j": 0,
+     "lam": [
+      8,
+      7,
+      4,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 171,
+     "j": 1,
+     "lam": [
+      9,
+      8,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 172,
+     "j": 0,
+     "lam": [
+      9,
+      8,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 173,
+     "j": 1,
+     "lam": [
+      9,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 174,
+     "j": 0,
+     "lam": [
+      9,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 175,
+     "j": 1,
+     "lam": [
+      3,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 176,
+     "j": 0,
+     "lam": [
+      3,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 177,
+     "j": -1,
+     "lam": [
+      6,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 178,
+     "j": 0,
+     "lam": [
+      6,
+      5,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 179,
+     "j": -1,
+     "lam": [
+      7,
+      5,
+      4,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 180,
+     "j": 0,
+     "lam": [
+      10,
+      5,
+      4,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 181,
+     "j": 1,
+     "lam": [
+      11,
+      6,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 182,
+     "j": 0,
+     "lam": [
+      11,
+      6,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 183,
+     "j": 1,
+     "lam": [
+      7,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 184,
+     "j": 2,
+     "lam": [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 185,
+     "j": 1,
+     "lam": [
+      14,
+      3,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 186,
+     "j": 0,
+     "lam": [
+      14,
+      3,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 187,
+     "j": 1,
+     "lam": [
+      4,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 188,
+     "j": 0,
+     "lam": [
+      4,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 189,
+     "j": -1,
+     "lam": [
+      11,
+      3,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 190,
+     "j": 0,
+     "lam": [
+      11,
+      3,
+      3,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 191,
+     "j": -1,
+     "lam": [
+      10,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 192,
+     "j": 0,
+     "lam": [
+      15,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 193,
+     "j": 1,
+     "lam": [
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 194,
+     "j": 0,
+     "lam": [
+      3,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 195,
+     "j": -1,
+     "lam": [
+      12,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 196,
+     "j": 0,
+     "lam": [
+      5,
+      5,
+      5,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 197,
+     "j": 1,
+     "lam": [
+      6,
+      6,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 198,
+     "j": 0,
+     "lam": [
+      6,
+      6,
+      2,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 199,
+     "j": 1,
+     "lam": [
+      7,
+      3,
+      3,
+      3,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 200,
+     "j": 2,
+     "lam": [
+      3,
+      3,
+      3,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 201,
+     "j": 1,
+     "lam": [
+      9,
+      3,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 202,
+     "j": 0,
+     "lam": [
+      9,
+      3,
+      2,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 203,
+     "j": 1,
+     "lam": [
+      4,
+      3,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 204,
+     "j": 0,
+     "lam": [
+      4,
+      3,
+      3,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 205,
+     "j": -1,
+     "lam": [
+      5,
+      3,
+      2,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 206,
+     "j": 0,
+     "lam": [
+      10,
+      3,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 207,
+     "j": 1,
+     "lam": [
+      4,
+      3,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 208,
+     "j": 0,
+     "lam": [
+      4,
+      3,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 209,
+     "j": -1,
+     "lam": [
+      6,
+      3,
+      2,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 210,
+     "j": 0,
+     "lam": [
+      6,
+      5,
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 211,
+     "j": 1,
+     "lam": [
+      7,
+      4,
+      3,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 212,
+     "j": 2,
+     "lam": [
+      4,
+      3,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 213,
+     "j": 1,
+     "lam": [
+      8,
+      3,
+      3,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 214,
+     "j": 0,
+     "lam": [
+      8,
+      3,
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 215,
+     "j": -1,
+     "lam": [
+      7,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 216,
+     "j": 0,
+     "lam": [
+      5,
+      5,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 217,
+     "j": -1,
+     "lam": [
+      4,
+      4,
+      4,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 218,
+     "j": 0,
+     "lam": [
+      5,
+      4,
+      4,
+      4,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 219,
+     "j": -1,
+     "lam": [
+      4,
+      3,
+      3,
+      3,
+      3,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 220,
+     "j": 0,
+     "lam": [
+      4,
+      3,
+      3,
+      3,
+      3,
+      3,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 221,
+     "j": 1,
+     "lam": [
+      4,
+      4,
+      4,
+      4,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 222,
+     "j": 0,
+     "lam": [
+      4,
+      4,
+      4,
+      4,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 223,
+     "j": 1,
+     "lam": [
+      5,
+      5,
+      5,
+      3
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 224,
+     "j": 0,
+     "lam": [
+      17,
+      3
+     ],
+     "involution_applied": "psi"
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "kind": "shortest",
+   "source": [
+    6,
+    6,
+    4,
+    4
+   ],
+   "steps": 0,
+   "path": [
+    {
+     "step": 0,
+     "j": 0,
+     "lam": [
+      6,
+      6,
+      4,
+      4
+     ],
+     "involution_applied": null
+    }
+   ]
+  }
+ ],
  "involution_structure": {
   "ok": true,
   "per_weight": [
@@ -1783,8 +5482,48 @@
     "psi_domain": 4526,
     "phi_involutive": true,
     "psi_involutive": true
+   },
+   {
+    "n": 26,
+    "states": 5748,
+    "phi_domain": 5678,
+    "psi_domain": 5678,
+    "phi_involutive": true,
+    "psi_involutive": true
+   },
+   {
+    "n": 27,
+    "states": 7173,
+    "phi_domain": 7094,
+    "psi_domain": 7094,
+    "phi_involutive": true,
+    "psi_involutive": true
+   },
+   {
+    "n": 28,
+    "states": 8919,
+    "phi_domain": 8828,
+    "psi_domain": 8828,
+    "phi_involutive": true,
+    "psi_involutive": true
+   },
+   {
+    "n": 29,
+    "states": 11052,
+    "phi_domain": 10950,
+    "psi_domain": 10950,
+    "phi_involutive": true,
+    "psi_involutive": true
+   },
+   {
+    "n": 30,
+    "states": 13655,
+    "phi_domain": 13538,
+    "psi_domain": 13538,
+    "phi_involutive": true,
+    "psi_involutive": true
    }
   ]
  },
- "elapsed_seconds": 256.69
+ "elapsed_seconds": 16.789
 }

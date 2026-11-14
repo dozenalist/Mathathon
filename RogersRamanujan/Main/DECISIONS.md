@@ -28,32 +28,38 @@ Consequence: "fix the intersection A_n cap D_n" stays a **candidate design
 choice**, not a requirement; the intersection is empty at `n = 2,3,8` and has
 size 1 at `n = 0,1,4,5,6,7,9,12,13`.
 
-## D-3 BZ82 phi, Case II: the scan is underdetermined; one rule reconstructed.
+## D-3 (REWRITTEN 2026-11-14) BZ82 phi Case II: no defect; a cycle-1 error retracted.
 
-BZ82 p.314 prints `m = Max{z <= a+2j-2 : z + lam(a+2j-1-z) <= t+5j-2}` and
-creates parts `m` and `t+5j-3-m`. That printed rule is not consistent with the
-paper's own examples:
+**Cycle 1 recorded that BZ82 p.314's `phi` Case II rule is underdetermined and
+that one rule had to be reconstructed. That decision was wrong and is withdrawn.**
 
-* its admissible set is **empty** at `(0;(2,1,1,1))`, which the printed chain of
-  example (3) must send to `(-1;(1,1))`;
-* at the same time `z = 0` occurrences are needed, i.e. the index
-  `a+2j-1-z` reaches 0.
+What happened: in transcribing
+`m = Max{z <= a+2j-2 : z + lambda(a+2j-1-z) <= t+5j-2}` I silently added a lower
+bound `z >= 1`. That made the admissible set empty on `(0;(2,1,1,1))`, which I
+then reported as a defect in the paper. The printed rule has no lower bound
+beyond `z` being a nonnegative integer, and with `0 <= z <= a+2j-2` the index
+`a+2j-1-z` ranges over `1..a+2j-1`, i.e. exactly the padded range of `lambda`.
 
-Since the two created parts enter only as the unordered pair `{m, hi-m}` with
-`hi = t+5j-3`, the choice of `m` is invisible whenever both are positive, and
-the two readings differ only where the pair degenerates. Decision: take
-`m = Max{1 <= z <= a+2j-2 : ...}`, and **default to `m = 0` when that set is
-empty**, which degenerates the pair to the single part `hi` (or to nothing when
-`hi = 0`). This is the unique completion under which `phi` is an involution.
+Corrected position, now adopted everywhere:
 
-Evidence: exhaustive census over all 33 329 Case-II states of weight <= 30.
-Under this rule `phi(phi(s)) = s` on **every** state of its declared domain for
-`n <= 25` (0 defects), `psi(psi(s)) = s` on **every** state of its domain for
-`n <= 25` (0 defects), and all three printed examples reproduce exactly,
-including the full nine-state chain of example (3). Under the literal printed
-rule, `phi` has 2 692 defects at `n <= 18` and the inverse iteration cycles.
-Label: **implementation with one reconstructed rule**, not a verbatim
-transcription; recorded in `Literature/READING_NOTES.md` follow-up RR-L004.
+* **The printed rule is complete as printed.** 0 defects in `phi(phi(s)) = s`
+  over all 66 658 in-domain states of weight `<= 30`; the admissible set is
+  nonempty on every one of the 10 285 Case-II states of weight `<= 25`.
+* **No reconstructed rule is used anywhere.** `RR-C009` is a faithful
+  transcription, not a transcription plus a tie-break.
+* **The cycle-1 implementation was behaviourally correct** (0 discrepancies with
+  the printed rule over the same range) because it fell back to `m = 0` when its
+  restricted set was empty. So no computed number, table or verdict in cycle 1
+  changes; only the *claim about the source* does.
+* **Remaining honest gap:** the existence of the maximum for *all* `n` is
+  verified over a finite range and unproved in general. It is a small lemma; it
+  is not evidence of a defect.
+
+Retraction is recorded at REGISTRY RR-X005 with the mistaken interpretation and
+its resolution, per the project's rule that refuted and superseded claims are
+kept with their scope.
+
+The forced tie-breaks of D-3a are unaffected: they concern `psi`, not `phi`.
 
 ## D-4 Lean target reduced to a Mathlib-free staircase module.
 

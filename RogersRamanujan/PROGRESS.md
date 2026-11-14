@@ -166,3 +166,51 @@ of active work, as specified in ROADMAP.
 - **Not changed:** no claim is promoted by this entry; it removes the main
   soft spot in D-3 rather than adding a new result.
 - **GitHub checkpoint:** committed locally; push still blocked (see RR-M001-PUSH).
+
+## 2026-11-14 05:5x America/Los_Angeles / RR-M003 / cycle-2 checkpoint: source-faithful BZ82, retraction of RR-X005
+
+- **Author / reviewer:** Main; independent review by the supervisor (externally
+  re-ran `run_checks.py 30` and compiled the Lean file with the pinned toolchain)
+  and by the cycle-2 worker swarm `smwg03n61`.
+- **Status:** RR-C009 stays TESTED_FINITE but is upgraded in *kind* (faithful
+  transcription, no reconstruction); RR-C005 LEAN_VERIFIED on the pinned
+  compiler with reduced scope; RR-C008 PROVED with an amended argument, under
+  audit; **RR-X005 RETRACTED**.
+- **Retraction (the important item).** Checkpoint 1 claimed BZ82 p.314's `phi`
+  Case II formula is defective. That was my error: I had silently imposed
+  `z >= 1` on the printed range `0 <= z <= a+2j-2`. With the printed range the
+  rule is complete — 0 defects in `phi(phi(s)) = s` over 66 658 in-domain states
+  of weight `<= 30`, admissible set nonempty on all 10 285 Case-II states of
+  weight `<= 25`, and the alleged counterexample `(0;(2,1,1,1))` is correctly
+  mapped to `(-1;(1,1))` by `z = 0`. My implementation was behaviourally faithful
+  throughout (0 discrepancies with the printed rule) because its empty-set
+  fallback to `m = 0` exactly compensated. **No computed number changes; a
+  claim about the source does.** Record: REGISTRY RR-X005 (kept, marked
+  retracted), DECISIONS D-3 (rewritten).
+- **Amended proof of RR-C008.** Two boundary errors in the worker argument are
+  repaired: (1) case stability of II(b) needs a separate argument when `m0 = 0`
+  (`t0' = t0`, e.g. `(-1;()) -> (0;(3))`), where `j <= -1` follows because the
+  excluded `j = 0` case is exactly `{0} x A_n`; (2) the branch-inverse bound for
+  II(a) with `nu = 0` must be `m3' <= m3`, not `m3' <= m3 - 5`, since
+  `(0;(3,3)) -> (-1;(3))` retains `m3' = 3`; the weaker bound gives
+  `m3'+5(j-1)-3 <= -5 < 0 = m0'` and the restoration still works.
+- **Withdrawals:** "`Theta(n)` empirically" / "roughly linearly" (RR-C011 now raw
+  max/mean/extremizers); "six independent counting methods" (corrected grouping);
+  the unsourced "widely quoted table value" remark; and the recalled A003114
+  array in `rr_core.py`, retired with no oracle substituted.
+- **Code repairs:** `bz82.py` states the printed Case-II set; `phi`/`psi` now
+  validate their state and name the excluded set on violation; the cycle
+  detector is keyed on (parity, state) so the next involution is part of the key;
+  header corrected (`psi`, not `phi`, is the Jacobi-triple-product-equivalent
+  involution; images are complements, not intersections); `run_checks.py` tests
+  the generic-filter gap count it computes and reports raw orbit statistics,
+  extremal objects and two labelled traces.
+- **Evidence:** `results.json` (`bz82_bijection.ok` through `n = 30`,
+  `involution_structure.ok` through `n = 30`, `counts_all_agree`),
+  `Counterexamples/checker.py 30` -> PASS 0 fails; supervisor's own run of
+  `run_checks.py 30` and pinned-compiler Lean compile.
+- **Open:** existence of the `phi` maximum for all `n`; weak-decreasingness in
+  Lean; `T` and the `Nat.Partition` bridge; a named build target; and the
+  Mathathon objective itself (RR-C012 OPEN).
+- **GitHub checkpoint:** local commits only; push blocked (no credential).
+  Bundle export for the supervisor is under `.sair/exports/`.
