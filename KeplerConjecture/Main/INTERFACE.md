@@ -108,3 +108,41 @@ which is conditional on the Tammes-13 enclosure). It establishes nothing about
 sharpness, nothing about equality cases, and nothing about optimality of the
 family. A finite-grid search that produces no certificate establishes only that
 *that search* failed (review 27616); it is never an impossibility proof.
+
+## 7. Sign predicates: what a verdict means, and the failure they must exclude
+
+A verdict of "the condition holds on `[lo, hi]`" means: the polynomial has
+constant sign on every interval between consecutive real roots, and at least one
+point in each such gap satisfies the condition, with the endpoints included.
+Testing the endpoints alone is **not** enough — `u(1−u)` is zero at both `0` and
+`1` and `+1/4` between them, and a checker that only looks at the ends accepts it
+(review 0138). The repaired predicates isolate the roots (`Poly.intervals`) and
+test one rational point per gap; when the odd part has no root in the region, the
+sign is constant and three probes decide it.
+
+Every certificate must therefore state the sign regions in the *polynomial's own
+variable*, and the checker's output must name the condition that failed, not
+merely return a boolean.
+
+## 8. What a *transfer* certificate would look like (for the geometric route)
+
+No transfer certificate exists yet. If one is ever proposed, this is the data it
+must carry, in the same spirit as §3:
+
+```
+object      : "K15 transfer certificate"
+range R     : integer >= 1
+bound Phi   : rational > 0
+edges       : {(v, w, phi(v,w))} with phi antisymmetric, 0 for |v-w| > R
+claim       : "sum_w phi(v,w) >= sqrt32 - vol Omega(v) for every v of every packing"
+negligibility: automatic, with C1 = 3 Phi (R+1)^5        (K15-C035)
+required    : the cut condition of K15-C044 at this Phi, i.e.
+              sum_U b <= Phi |delta^+_R(U)| for every U,
+              b = sqrt32 - vol Omega
+unresolved  : vol Omega is not part of the data (it depends on the packing), so a
+              transfer certificate must be accompanied by an *analytic* lower
+              bound for the cell volumes it is compared against (K15-C036).
+```
+
+The last line is the whole difficulty: the certificate's data would be finite, but
+the inequality it must satisfy quantifies over every packing's cell volumes.

@@ -1177,10 +1177,15 @@ Hence a finite fixture can only ever **refute** the required lower bound; it can
 never confirm it. This is the exact sense in which the transfer route is blocked:
 `K15-C035` removes the negligibility work, and what remains is a pointwise
 *lower* bound on Voronoi volume — an analytic inequality (Rogers/Fejes Tóth type),
-not a computation. Main tested the arithmetic of the bound (the deficit is
-`0.106563`, and a transfer of range `R = 2`, `Φ` must satisfy `Φ k_2 ≥ 0.106563`
-at that vertex, i.e. `Φ ≥ 0.106563/26 ≈ 0.0041`) and did not run a completion
-search, because by the monotonicity above it could not settle the question.
+not a computation. Main tested the arithmetic of the bound and did not run a completion search,
+because by the monotonicity above it could not settle the question. **Two
+different necessary bounds on `Φ`, which must not be confused:** at the
+icosahedral vertex there are exactly **12** neighbours within range `R = 2`, so the
+transfer must satisfy `Φ ≥ 0.106563/12 = 0.00888`; the counting bound
+`k_R ≤ (R+1)³ − 1 = 26` gives only the weaker uniform statement
+`Φ ≥ 0.106563/26 ≈ 0.0041`, which is a bound *every* packing satisfies but is not
+what that vertex forces. (The earlier text quoted the 26-based figure as if it
+were the vertex condition — corrected here.)
 
 **Consequence for the ledger.** G5 (an analytic cluster-volume lower bound) is the
 single remaining obligation on the geometric route; G4 and G6 are supplied or
