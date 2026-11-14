@@ -92,6 +92,46 @@ def sign_on_half_line(p, a, want):
         return False, "p(a)=0 mult %d, sign just right = %s" % (m_a, sign_open)
     return True, "ok: sign on (a,inf) = %s, multiplicity at a = %d" % (sign_open, m_a)
 
+# ---------------------------------------------------------------------------
+# Directed rational enclosure of pi, and the exact Kepler comparison.
+# pi = 16*arctan(1/5) - 4*arctan(1/239)  (Machin).  For arctan(1/n) the partial
+# sums of the alternating series bracket the limit between consecutive ones, so
+# (lo,hi) below are RIGOROUS rational bounds.
+# ---------------------------------------------------------------------------
+from fractions import Fraction as Fr
+
+def _atan_inv_bounds(n, terms=48):
+    S = []
+    acc = Fr(0)
+    for k in range(terms):
+        acc += Fr((-1)**k, (2*k+1)*n**(2*k+1))
+        S.append(acc)
+    lo, hi = min(S[-1], S[-2]), max(S[-1], S[-2])
+    return lo, hi
+
+def pi_bounds(terms=48):
+    a_lo, a_hi = _atan_inv_bounds(5, terms)
+    b_lo, b_hi = _atan_inv_bounds(239, terms)
+    return 16*a_lo - 4*b_hi, 16*a_hi - 4*b_lo
+
+def kepler_ok(P0, Q0):
+    """EXACT, directed test of  (4/(3 sqrt pi)) P0/Q0 < pi/sqrt18  for rational P0,Q0>0.
+
+    Equivalent (squaring twice, all quantities positive) to  32 P0^2 < pi^3 Q0^2.
+    Returns True / False / None (None = not decided by the enclosure, which the
+    caller must treat as a rejection, never as acceptance).
+    BUG THIS REPLACES: sp.Integer(P0) truncates a positive rational, so
+    (P0,Q0) = (99/100,1) was wrongly accepted.
+    """
+    P0 = Fr(P0); Q0 = Fr(Q0)
+    if P0 <= 0 or Q0 <= 0:
+        return False
+    R = 32*P0*P0/(Q0*Q0)                 # need R < pi^3
+    lo, hi = pi_bounds()
+    if R < lo**3:  return True
+    if R > hi**3:  return False
+    return None
+
 def certify(P, verbose=False):
     P = sp.expand(P)
     Q = apply_map(P)
@@ -142,6 +182,15 @@ if __name__ == "__main__":
         (res, msg) = certify(sp.expand(P))
         print("   P = %-24s -> %s" % (str(sp.factor(sp.expand(P)))[:24], msg))
     print()
+    print("="*84); print("4. Directed pi enclosure and the exact Kepler test"); print("="*84)
+    lo,hi = pi_bounds()
+    print("   pi in [%.20f, %.20f]  (width %.2e)" % (float(lo), float(hi), float(hi-lo)))
+    print("   acceptance threshold: bound < pi/sqrt18  <=>  P0/Q0 < sqrt(pi^3/32) = %.8f"
+          % (float(hi)**1.5/32**0.5))
+    for (P0,Q0) in [(99,100),(1,1),(2,3),(98,100),(9843,10000),(9844,10000)]:
+        r=Fr(P0,Q0)
+        print("      P0/Q0 = %-9s  32 P0^2 = %-12s vs pi^3 Q0^2 = %-12.6f => kepler_ok = %s"
+              % (str(r), str(32*Fr(P0)**2), float(Fr(Q0)**2*hi**3), kepler_ok(Fr(P0),Fr(Q0))))
     print("   A successful certificate reports P(0)/Q(0) rational and the test")
     print("        32 P(0)^2 < pi^3 Q(0)^2  (<=> bound (4/(3 sqrt pi))P0/Q0 < pi/sqrt18),")
     print("   decided with rational enclosures of pi; the SEARCH over P is a separate LP.")

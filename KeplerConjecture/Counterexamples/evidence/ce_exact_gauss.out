@@ -26,8 +26,19 @@
    P = -(s - 8)/4               -> sign failure: CE1 odd-multiplicity root(s) in (4,inf): [(8, 1)] (sign flips => not -1) / CE2 ok
    P = -(s - 4)*(s + 10)/10     -> sign failure: CE1 ok / CE2 odd-multiplicity root(s) in (0,inf): [(11/2 + sqrt(230)/2, 1)] (sign flips => not 1)
 
+====================================================================================
+4. Directed pi enclosure and the exact Kepler test
+====================================================================================
+   pi in [3.14159265358979311600, 3.14159265358979311600]  (width 6.67e-68)
+   acceptance threshold: bound < pi/sqrt18  <=>  P0/Q0 < sqrt(pi^3/32) = 0.98435062
+      P0/Q0 = 99/100     32 P0^2 = 313632       vs pi^3 Q0^2 = 310062.766803 => kepler_ok = False
+      P0/Q0 = 1          32 P0^2 = 32           vs pi^3 Q0^2 = 31.006277    => kepler_ok = False
+      P0/Q0 = 2/3        32 P0^2 = 128          vs pi^3 Q0^2 = 279.056490   => kepler_ok = True
+      P0/Q0 = 49/50      32 P0^2 = 307328       vs pi^3 Q0^2 = 310062.766803 => kepler_ok = True
+      P0/Q0 = 9843/10000  32 P0^2 = 3100308768   vs pi^3 Q0^2 = 3100627668.029982 => kepler_ok = True
+      P0/Q0 = 2461/2500  32 P0^2 = 3100938752   vs pi^3 Q0^2 = 3100627668.029982 => kepler_ok = False
    A successful certificate reports P(0)/Q(0) rational and the test
-        32 P(0)^2 < pi Q(0)^2   (<=> bound (4 sqrt(pi)/3)P0/Q0 < pi/sqrt18),
+        32 P(0)^2 < pi^3 Q(0)^2  (<=> bound (4/(3 sqrt pi))P0/Q0 < pi/sqrt18),
    decided with rational enclosures of pi; the SEARCH over P is a separate LP.
    No float residual is used as an identity: the map is applied by exact
    differentiation, and only the quadrature cross-check above is floating point.

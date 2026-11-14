@@ -44,9 +44,15 @@ def build(N, ngrid=600, smax=120.0, vmax=400.0):
         return np.array([sum(float(c)*v**k for k, c in enumerate(M[n])) for n in range(N+1)])
     AQ = np.array([qrow(v) for v in V])
     globals()['qrow'] = qrow
+    # ---- column equilibration: divide each basis column by its max |entry| ----
+    sc_P = np.abs(AP).max(axis=0); sc_P[sc_P == 0] = 1.0
+    sc_Q = np.abs(AQ).max(axis=0); sc_Q[sc_Q == 0] = 1.0
+    sc = np.maximum(sc_P, sc_Q)
+    AP = AP / sc; AQ = AQ / sc
+    def unscale(cs): return np.asarray(cs)*sc
     p0 = np.array([1.0] + [0.0]*N)                                      # P(0)=c_0
     q0 = np.array([float(sp.N(G.apply_map(s_**n).subs(G.v_,0))) for n in range(N+1)])
-    return AP, S, AQ, V, p0, q0
+    return AP, S, AQ, V, p0, q0, sc
 
 def certify_vec(c, N):
     P = sum(sp.Rational(int(round(ci*10**9)), 10**9)*s_**n for n, ci in enumerate(c))
@@ -64,9 +70,11 @@ def run(N=6, iters=40, eps=1e-9):
     else:
         print("   CONTROL FAILED TO CERTIFY:", cmsg, " <- implementation error, stop")
         return
-    AP, S, AQ, V, p0, q0 = build(N)
+    AP, S, AQ, V, p0, q0, sc = build(N)
     extra_P, extra_Q = [], []
     best = None
+    print("   scaled constraint matrix: max |entry| = %.3e (was ~1e15 unscaled)"
+          % max(np.abs(AP).max(), np.abs(AQ).max()))
     for it in range(iters):
         Aub = np.vstack([AP] + ([np.array(extra_P)] if extra_P else []) +
                         [-AQ] + ([-np.array(extra_Q)] if extra_Q else []))
@@ -75,8 +83,10 @@ def run(N=6, iters=40, eps=1e-9):
                              [np.zeros(len(AQ))] +
                              ([np.zeros(len(extra_Q))] if extra_Q else []))
         Aeq = q0.reshape(1, -1); beq = [1.0]
-        res = linprog(p0, A_ub=Aub, b_ub=bub, A_eq=Aeq, b_eq=beq,
+        res = linprog(p0/sc, A_ub=Aub, b_ub=bub, A_eq=Aeq/sc, b_eq=beq,
                       bounds=[(None, None)]*(N+1), method='highs')
+        if res.success:
+            res.x = np.asarray(res.x)*sc
         if not res.success:
             print("iter %2d: SOLVER DID NOT RETURN A SOLUTION -- raw status %s, message %r."
                   % (it, res.status, (res.message or '')[:90]))
@@ -108,8 +118,8 @@ def run(N=6, iters=40, eps=1e-9):
             if bad is None:
                 print("iter %2d: exact certifier failed but no sampled violation found: %s" % (it, msg)); break
             kind, vv = bad
-            if kind == 'P': extra_P.append([vv**n for n in range(N+1)])
-            else:           extra_Q.append(list(qrow(vv)))
+            if kind == 'P': extra_P.append(list(np.array([vv**n for n in range(N+1)])/sc))
+            else:           extra_Q.append(list(np.array(qrow(vv))/sc))
             print("iter %2d: rejected (%s at %s); adding cutting plane" % (it, kind, ("%.4f"%vv)))
     print("-"*70)
     if best:
