@@ -332,15 +332,19 @@ Checked, all consistent once Lemma 1′ is in place:
   that conclusion.
 - **The theorem itself, on stackings Main never enumerated.** `barlow_random_stackings.py`
   generates random legal period-`p` stackings (a closed `±1` walk on `Z/3`) and computes
-  every layer's cell: **270 layers over 40 random stackings of period 3-12, every one with
+  every layer's cell: **488 layers over 52 random stackings of period 3-20, every one with
   volume `4√2 = 5.656854249`, 12 contacts at distance 2, next distance `2√2 = 2.828427`,
-  and an fcc or hcp fingerprint**. The type sequence also follows the theoretical rule — a
-  layer is hcp exactly when the two adjacent `±1` steps have opposite signs — so the two-cell
+  and an fcc or hcp fingerprint** (108 fcc / 110 hcp in the period 13-20 batch alone). The
+  type sequence also follows the theoretical rule — a layer is hcp exactly when the two
+  adjacent `±1` steps have opposite signs, checked on every layer — so the two-cell
   classification is confirmed out of sample, not only on Main's six named stackings.
 
-  *(This check found its own bug first: I fingerprinted `n[0..11]`, the first twelve centres
-  in enumeration order rather than the twelve contacts, and every cell came out "fcc". The
-  tell was that random stackings should be about half hcp.)*
+  *(This check found two of its own bugs. First I fingerprinted `n[0..11]`, the first twelve
+  centres in enumeration order rather than the twelve contacts, and every cell came out
+  "fcc" — the tell being that random stackings should be about half hcp. Then, extending to
+  period `20`, the layer scan was still a fixed `[-14,14]`, so a site in layer 19 saw no
+  layers above it and returned `1.178511`, below `V_dodeca`. Both were caught by the same
+  floor.)*
 
 - Lemma 2's classification is not affected by the gap; it only ever used the contact sets.
   Its **fingerprint claim is exact**: the twelve face-normal dot products are

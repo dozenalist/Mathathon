@@ -39,11 +39,16 @@ def random_stacking(p, rng):
     return None
 
 
-def sites(s, centre, R=5.5, nlayers=14):
-    """All centres of the stacking within R of `centre`."""
+def sites(s, centre, R=5.5, nlayers=6):
+    """All centres of the stacking within R of `centre`.
+
+    The layer window is centred on the site's OWN layer: an earlier version scanned a fixed
+    [-14,14], so a site in layer 19 of a period-20 stacking saw no layers above it and the
+    cell came out truncated (1.178511, below V_dodeca -- which is how it was caught)."""
     out = []
     p = len(s)
-    for k in range(-nlayers, nlayers + 1):
+    k0 = int(round(centre[2] / H))
+    for k in range(k0 - nlayers, k0 + nlayers + 1):
         z = k * H
         off = s[k % p] * T
         for i in range(-4, 5):
