@@ -17,7 +17,7 @@ never used to promote anything above TESTED_FINITE.
 | RR-C005 | Staircase: nonnegativity, weight `n-k^2`, both inverse laws (order NOT yet in Lean) | LEAN_VERIFIED (pinned compiler, supervisor-checked) |
 | RR-C006 | Shift `T : D_n -> B_n` (smallest part >= length), both laws | TESTED_FINITE |
 | RR-C007 | BZ82 reference map: our implementation is a bijection `A_n -> D_n` | TESTED_FINITE (n <= 50); BZ82's theorem is PROVED in the literature |
-| RR-C008 | BZ82 `psi` involution on `X(n) minus {0} x A_n`, **all n**: amended argument | **PROVED (amended cycle 2, under audit)** |
+| RR-C008 | BZ82 `psi` involution on `X(n) minus {0} x A_n`, **all n** | **PROVED (amended, independently audited, gap list empty)** |
 | RR-C009 | BZ82 `phi` involution on `X(n) minus {0} x B_n`; **faithful transcription, no reconstruction** | TESTED_FINITE (`n <= 30`) |
 | RR-C010 | Equal largest-part cutoffs are **not** an identity (`n=5, m=4`) | PROVED (witness) |
 | RR-C011 | BZ82 alternating-path lengths: raw max/mean per weight, extremal objects | TESTED_FINITE (no growth class claimed) |
@@ -145,9 +145,24 @@ only the run). Source: BZ82 p.314 with the three forced tie-breaks of D-3
 (equality in I(a) -> I(a); equality in II(a) -> II(a); II(a) with value 0 ->
 the part is deleted). Evidence: `.ultramath/smwfxwsqf/m3/README.md` §3 plus
 Main's independent re-derivation.
-AMENDED IN CYCLE 2. The supervisor found two real boundary errors in the worker's
-argument, both repaired here; the argument below is the amended version and its
-status is conditional on an independent audit of the repairs.
+AMENDED AND AUDITED IN CYCLE 2. The supervisor found two real boundary errors in
+the cycle-1 argument; worker m1 (direction B) wrote the amended all-`n` proof in
+full (`Counterexamples/cycle2/AMENDED_PROOF.md`) and Main refereed it, re-deriving
+every new lemma by machine. **The gap list is empty.** Four items beyond the
+supervisor's two:
+ * **E3** `II(a)` is never selected with `m3 = 0`: the guard would give
+   `nu = 5j-3 >= m0 >= 0`, i.e. `j >= 1`, against `j <= 0` (Lemma 1.1). So
+   "replace the part `m3`" always acts on a real part, and `nu` is a
+   `0 (mod 5)` value, hence `m2' = m2 = 0`. **Verified: 0 occurrences.**
+ * **E3'** `I(b)` is never selected with `m2 = 0`, which makes its multiplicity
+   `k = (m2-N-5)/5` a non-negative integer. **Verified: 0 occurrences.**
+ * **Sharp forms**: `t0' = t0-1` **iff** `m0 > 0`; `m3' = m3` **iff** `m3` is
+   repeated; and `m3' <= m3-5` also fails for `m3 = 3` simple, not only for
+   repeated maxima — so the corrected bound `m3' <= m3` is the right one.
+ * A 14-row census of every virtual-zero and multiplicity case ships with the
+   proof (`psi_audit.py`, 0 failures over the domain for `n <= 30`: `Dom` 66 658,
+   `I(a) = I(b) = 29 924`, `II(a) = II(b) = 3 405`, `II(b)` with `m0 = 0` in
+   1 949, `II(a)` with `nu = 0` in 1 949 of which 980 have `m3` repeated).
  * Repair 1 (case stability, II(b)). `t0' = t0 - 1` is **false when `m0 = 0`**:
    then no part is removed, a part `= 3 (mod 5)` is created, and `t0' = t0 = 0`,
    e.g. `(-1;()) -> (0;(3))`. Separate argument for that case: `m0 = 0` gives

@@ -58,6 +58,14 @@ Corrected position, now adopted everywhere:
   maximum exists exactly where the rule is meant to apply, and its non-existence
   is the domain boundary. Verified finitely (`n <= 30`); the all-`n` statement is
   the same equivalence and remains to be written as a lemma.
+* **Sharp form of the existence question (cycle 2, worker m1, verified by Main).**
+  The Case-II admissible set is a **down-set** in `z`, so `m` exists **iff**
+  `a+2j-2 >= 0` and `lambda(a+2j-1) <= t+5j-2`. Both halves verified by machine
+  over all 33 329 in-domain Case-II states of weight `<= 30` with 0 failures. So
+  the residual obligation is two explicit inequalities, not a search.
+* **`t*` convention pinned.** `t*` = `t` real slots plus one virtual slot at each
+  of `a`, `mu` exceeding `t`. The rival "pad to length `t*`" reading breaks
+  weight preservation; the committed code already used the correct reading.
 
 Retraction is recorded at REGISTRY RR-X005 with the mistaken interpretation and
 its resolution, per the project's rule that refuted and superseded claims are

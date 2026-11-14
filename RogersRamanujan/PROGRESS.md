@@ -241,3 +241,33 @@ of active work, as specified in ROADMAP.
   (7.6 s) and Main's inline check.
 - **Remaining:** an all-`n` version of the same equivalence; the other three
   cycle-2 worker directions were still running when this entry was written.
+
+## 2026-11-14 / RR-M005 / psi proof audited with empty gap list; phi existence reduced to two inequalities
+
+- **Agent and reviewer:** worker m1 (swarm `smwg03n61`, direction B,
+  `Counterexamples/cycle2/`), refereed and machine-re-derived by Main.
+- **Status:** RR-C008 **PROVED (amended, independently audited, gap list empty)**;
+  RR-C009 documentation defect fixed.
+- **New content.** (1) `Counterexamples/cycle2/AMENDED_PROOF.md`: the full
+  all-`n` proof with named lemmas, repairing the supervisor's E1/E2 and supplying
+  two items the cycle-1 text left silent: **E3** `II(a)` cannot be selected with
+  `m3 = 0` (its guard would force `j >= 1` against `j <= 0`), and **E3'** `I(b)`
+  cannot be selected with `m2 = 0`, which makes its multiplicity a non-negative
+  integer. So "replace `m3`" and "delete `m2`" always act on real parts.
+  (2) **Monotonicity lemma**: the Case-II admissible `z`-set is a down-set, so
+  `m` exists iff `a+2j-2 >= 0` and `lambda(a+2j-1) <= t+5j-2`.
+- **Verification (Main, independent of the worker's code).** Over all 33 329
+  in-domain Case-II states of weight `<= 30`: down-set property 0 failures;
+  the existence criterion 0 failures; `II(a)` with `m3 = 0` 0 occurrences;
+  `I(b)` with `m2 = 0` 0 occurrences. Worker scripts rerun here:
+  `psi_audit.py 30` and `phi_skeleton.py 30` (0 failures on skeleton steps P0-P9,
+  `a = mu` on 6 458 states, all Case II) and `crosscheck.py 26` (26 248 states,
+  0 value and 0 domain disagreements against `Computation/bz82.py`).
+- **Pinned spec ambiguity.** `t*` = `t` real slots plus one virtual slot at each
+  of `a`, `mu` exceeding `t`; the rival "pad to length `t*`" reading breaks weight
+  preservation. The committed code already used the correct reading.
+- **Reproduction:** `cd RogersRamanujan/Counterexamples/cycle2 && python3
+  psi_audit.py 30 && python3 phi_skeleton.py 30 && python3 crosscheck.py 26`.
+- **Still open:** all-`n` `phi` case stability and `phi^2 = id`; tying the two
+  inequalities above; tie-breaks used but not derived from inverseness; and the
+  Mathathon objective.

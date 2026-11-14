@@ -1,0 +1,6 @@
+phi skeleton audit, n = 0..30
+domain states 66658, excluded {0}xB(n) 893
+Case I 33329, Case II 33329
+states with a = mu: 6458  (all Case II: True)
+
+0 failures on every skeleton step P0-P9 over the whole range.

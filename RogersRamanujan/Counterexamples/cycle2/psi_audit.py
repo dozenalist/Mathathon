@@ -269,28 +269,10 @@ def audit(N, verbose=True):
 
 # ---------------------------------------------------------------- repairs
 
-def show_chain(chain_label, s0, expect=None):
-    print('  ' + chain_label)
-    cur = s0
-    seen = [cur]
-    for _ in range(len(expect) - 1 if expect else 1):
-        cur = psi(*cur)
-        seen.append(cur)
-    txt = ' -> '.join('(%d;%s)' % (j, ','.join(map(str, lam)) if lam else '') for j, lam in seen)
-    print('    ' + txt)
-    if expect is not None:
-        ok = (seen == expect or seen == list(reversed(expect)))
-        print('    matches expectation: %s' % ok)
-        if not ok:
-            FAIL.append(('chain', chain_label, seen, expect))
-    return seen
-
 def repairs_report(N):
     print('\n=== targeted witnesses for the two repairs in the committed proof ===')
 
     print('\nRepair 1  (II(b) case-stability, m0 = 0): t0\' = t0, NOT t0 - 1')
-    for (j, lam) in [(0, ()), (0, (1,)), (0, (3,)), (0, (2, 3)), (0, (3, 3, 3))]:
-        s = (-1, tuple(sorted(lam + (1,), reverse=True)))
     w = [(-1, ()), (-1, (1,)), (-1, (3,)), (-1, (2, 3)), (-1, (3, 3, 3))]
     for s in w:
         j, lam = s
@@ -373,11 +355,12 @@ def main():
     print('  II(a) selected with nu = 0, m3 repeated     : %d states' % len(rep))
     print('  II(a) selected with nu = 0, m3 not repeated : %d states' % len(notrep))
     print('  II(b) selected with m0 = 0                  : %d states' % len(m0zero))
+    print('     (in all of them t0 = t0\' = 0 and j <= -1 -- Repair 1), e.g. (-1;()) -> (0;(3))')
     print('  states where the committed bound m3\' <= m3-5 is FALSE : %d'
           % stats['old_bound_broken'])
     print('     of which m3 is repeated                              : %d'
           % stats['old_bound_broken_repeated'])
-    print('  (in all of the latter, t0 = t0\' = 0 and j <= -1 -- Repair 1)')
+    print('  n = 0: X(0) = {(0;())}, () in A_0, so Dom(0) = {} -- theorem vacuous.')
     if notrep:
         print('  smallest II(a)/nu=0/m3-not-repeated witness: j=%d lam=%s'
               % (notrep[0][0], notrep[0][1] or '()'))

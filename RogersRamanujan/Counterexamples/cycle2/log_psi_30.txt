@@ -1,0 +1,60 @@
+psi audit, all n = 0..30, every state of X(n), every proof step asserted
+
+--- proof-step assertion failures ---
+0 failures: every step of the amended proof (a)-(d), every branch,
+every virtual-zero case and every multiplicity case, holds on every state.
+
+states in X(n):   67551
+states in Dom(n): 66658   (F(n) = {0}xA(n): 893)
+branch counts:    I(a)=29924 I(b)=29924 II(a)=3405 II(b)=3405
+I(a) = I(b) and II(a) = II(b) (forced by psi^2 = id): True
+
+virtual zeros, measured over the whole range:
+  I(b) selected with m2 = 0          : 0 occurrences (proved impossible: N<m2=0 => N<0
+                                       => t0+j <= 0 => Case II, contradiction)
+  II(a) selected with m3 = 0         : 0 occurrences (proved impossible: nu=5j-3>=m0>=0
+                                       => j>=1, but Case II gives j <= -t0 <= 0)
+  II(a) selected with nu = 0, m3 repeated     : 980 states
+  II(a) selected with nu = 0, m3 not repeated : 969 states
+  II(b) selected with m0 = 0                  : 1949 states
+     (in all of them t0 = t0' = 0 and j <= -1 -- Repair 1), e.g. (-1;()) -> (0;(3))
+  states where the committed bound m3' <= m3-5 is FALSE : 1721
+     of which m3 is repeated                              : 1138
+  n = 0: X(0) = {(0;())}, () in A_0, so Dom(0) = {} -- theorem vacuous.
+  smallest II(a)/nu=0/m3-not-repeated witness: j=0 lam=(3,)
+  smallest II(a)/nu=0/m3-REPEATED witness:     j=0 lam=(3, 3)
+
+=== targeted witnesses for the two repairs in the committed proof ===
+
+Repair 1  (II(b) case-stability, m0 = 0): t0' = t0, NOT t0 - 1
+    (-1;       ) --II(b)--> (0;3      )   t0 = 0, t0' = 0, j' = 0, so t0'+j' = 0
+    (-1;1      ) --II(b)--> (0;3,1    )   t0 = 0, t0' = 0, j' = 0, so t0'+j' = 0
+    (-1;3      ) --II(b)--> (0;3,3    )   t0 = 0, t0' = 0, j' = 0, so t0'+j' = 0
+    (-1;2,3) is not an m0=0 II(b) state -- skipped (branch I(b))
+    (-1;3,3,3  ) --II(b)--> (0;3,3,3,3)   t0 = 0, t0' = 0, j' = 0, so t0'+j' = 0
+    The claim "t0' = t0 - 1" would give t0' = -1 in every row above.
+
+Repair 2  (II(a) branch-inverse, nu = m3 + 5j - 3 = 0)
+    (0;3,3      ) --II(a)--> (-1;3        )  m3 = 3, m3' = 3, REPEATED  m3'+5(j-1)-3 = -5, m0' = 0
+        false bound m3' <= m3-5 = -2 holds? False ; correct bound m3' <= m3 = 3 holds? True
+    (0;3,3,3    ) --II(a)--> (-1;3,3      )  m3 = 3, m3' = 3, REPEATED  m3'+5(j-1)-3 = -5, m0' = 0
+        false bound m3' <= m3-5 = -2 holds? False ; correct bound m3' <= m3 = 3 holds? True
+    (0;3,3,1    ) --II(a)--> (-1;3,1      )  m3 = 3, m3' = 3, REPEATED  m3'+5(j-1)-3 = -5, m0' = 0
+        false bound m3' <= m3-5 = -2 holds? False ; correct bound m3' <= m3 = 3 holds? True
+    (0;3,3,1,1  ) --II(a)--> (-1;3,1,1    )  m3 = 3, m3' = 3, REPEATED  m3'+5(j-1)-3 = -5, m0' = 0
+        false bound m3' <= m3-5 = -2 holds? False ; correct bound m3' <= m3 = 3 holds? True
+    (0;3,3,4    ) --II(a)--> (-1;4,3      )  m3 = 3, m3' = 3, REPEATED  m3'+5(j-1)-3 = -5, m0' = 0
+        false bound m3' <= m3-5 = -2 holds? False ; correct bound m3' <= m3 = 3 holds? True
+    (0;3,3,3,2  ) branch I(b) nu None -- not the witness shape
+    (0;3        ) --II(a)--> (-1;         )  m3 = 3, m3' = 0, not repeated  m3'+5(j-1)-3 = -8, m0' = 0
+        false bound m3' <= m3-5 = -2 holds? False ; correct bound m3' <= m3 = 3 holds? True
+    (0;3,1      ) --II(a)--> (-1;1        )  m3 = 3, m3' = 0, not repeated  m3'+5(j-1)-3 = -8, m0' = 0
+        false bound m3' <= m3-5 = -2 holds? False ; correct bound m3' <= m3 = 3 holds? True
+    (0;3,1,1    ) --II(a)--> (-1;1,1      )  m3 = 3, m3' = 0, not repeated  m3'+5(j-1)-3 = -8, m0' = 0
+        false bound m3' <= m3-5 = -2 holds? False ; correct bound m3' <= m3 = 3 holds? True
+    (0;8,3      ) branch II(a) nu 5 -- not the witness shape
+    (0;2        ) branch I(b) nu None -- not the witness shape
+    (0;1        ) undefined: II(b) created the non-positive part -2
+    (0;         ) undefined: II(b) created the non-positive part -2
+
+Every state of weight <= 30 with II(a) and nu = 0:

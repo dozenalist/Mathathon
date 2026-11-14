@@ -87,9 +87,14 @@ def phi(j, lam, rec=None):
         r['r'] = cnt
         if cnt < 0:
             raise Undef('Case I: negative number of 1s')
-        word = [lam_padded(lam, y) for y in range(1, tstar + 1)]
-        remaining = [word[y - 1] for y in range(1, tstar + 1) if y not in (a, mu)]
-        out = [v + 1 for v in remaining] + [1] * cnt
+        # Slot set = the t real slots 1..t, plus ONE virtual slot (value 0) at
+        # each of a, mu that exceeds t.  Size t*.  Slots a and mu are deleted
+        # (so no virtual zero ever survives to become a part), every remaining
+        # slot -- necessarily real -- is incremented, cnt ones are inserted.
+        slots = [(pos, lam[pos - 1]) for pos in range(1, t + 1)]
+        slots += [(pos, 0) for pos in (a, mu) if pos > t]
+        assert len(slots) == tstar
+        out = [v + 1 for (pos, v) in slots if pos not in (a, mu)] + [1] * cnt
         if any(v <= 0 for v in out):
             raise Undef('Case I: non-positive part')
         return (j + 1, tuple(sorted(out, reverse=True)))
@@ -128,9 +133,6 @@ def main():
     N = int(sys.argv[1]) if len(sys.argv) > 1 else 24
     st = Counter()
     first = {}
-    def note(tag):
-        st[tag] += 1
-        first.setdefault(tag, None)
 
     for n in range(N + 1):
         Bn = B_set(n)
@@ -152,7 +154,7 @@ def main():
             case1 = (la + lam_padded(lam, mu) >= 5 * j + tstar)
             # ---------- P3 a = mu never happens in Case I
             if a == mu:
-                st['a==mu'] += 1; first['a==mu'] = first['a==mu'] or (j, lam)
+                st['a==mu'] += 1
                 check(not case1, 'P3 a=mu => Case II', j, lam, 'a=mu=%d' % a)
                 check(la == 2 * j, 'P3 a=mu <=> lam_a = 2j', j, lam)
             defined = phi_defined(j, lam)
@@ -188,7 +190,9 @@ def main():
             # ---------- P7 case stability
             j3, lam3 = phi(j2, lam2)
             def case_of(jj, ll):
-                return phi(jj, ll, {}).get('branch')
+                rr = {}
+                phi(jj, ll, rr)
+                return rr.get('branch')
             check(case_of(j2, lam2) != rec['branch'],
                   'P7 Case I <-> Case II (phi changes the case)', j, lam, rec['branch'])
             # ---------- P8 finite involution check (evidence, not a proof)
@@ -197,7 +201,7 @@ def main():
             # ---------- indices: phi must flip the sign parity
             check((j2 - j) % 2 != 0, 'P9 j parity flips', j, lam)
 
-    print('phi skeleton audit, n = 0..%d, all %d states of X(n)' % (N, st['X'] if 'X' in st else 0))
+    print('phi skeleton audit, n = 0..%d' % N)
     print('domain states %d, excluded {0}xB(n) %d' % (st['Dom'], st['F']))
     print('Case I %d, Case II %d' % (st['caseI'], st['caseII']))
     print('states with a = mu: %d  (all Case II: %s)' %

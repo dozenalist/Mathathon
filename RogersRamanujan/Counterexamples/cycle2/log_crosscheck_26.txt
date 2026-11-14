@@ -1,0 +1,4 @@
+n = 0..26, 26752 states of X(n), 26248 in the psi domain
+psi: domain disagreements 0, value disagreements 0
+phi: domain disagreements 0, value disagreements 0
+VERDICT: identical maps on the tested range

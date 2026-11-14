@@ -1,0 +1,94 @@
+{
+ "counts": {
+  "examples": 3,
+  "forward": 3251,
+  "forward_injective": 3251,
+  "forward_onto_D": 41,
+  "inverse": 0,
+  "phi": 541114,
+  "phi_domain": 544365,
+  "psi": 541114,
+  "psi_domain": 544365
+ },
+ "discrepancies": [],
+ "examples": [
+  {
+   "expected": [
+    3,
+    [
+     10,
+     9,
+     7,
+     2,
+     2,
+     2
+    ]
+   ],
+   "ok": true,
+   "theirs": [
+    3,
+    [
+     10,
+     9,
+     7,
+     2,
+     2,
+     2
+    ]
+   ],
+   "which": "(1)"
+  },
+  {
+   "expected": [
+    -3,
+    [
+     14,
+     10,
+     9,
+     9,
+     8,
+     8,
+     8,
+     4,
+     3,
+     2,
+     2,
+     1
+    ]
+   ],
+   "ok": true,
+   "theirs": [
+    -3,
+    [
+     14,
+     10,
+     9,
+     9,
+     8,
+     8,
+     8,
+     4,
+     3,
+     2,
+     2,
+     1
+    ]
+   ],
+   "which": "(2)"
+  },
+  {
+   "expected": [
+    4,
+    1
+   ],
+   "ok": true,
+   "theirs": [
+    4,
+    1
+   ],
+   "which": "(3)"
+  }
+ ],
+ "n_discrepancies": 0,
+ "nmax": 40
+}
