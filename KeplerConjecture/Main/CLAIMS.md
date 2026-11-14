@@ -5163,3 +5163,49 @@ better target than a definition.
 
 *Status.* `TESTED_FINITE` (the Hessian, the zero modes and the worst-direction test) + `OPEN` (L1, L2).
 No claim of a proved `δ₀`.
+
+#### `C142` addendum — `L2` is provable, and a correction of mine that it depends on
+
+**(a) A correction.** I had been carrying `√3 = 1.732` as the dodecahedron's circumradius at inradius 1.
+**That is the cube's ratio.** For the regular dodecahedron (`= ` icosahedron, they are duals and share
+`R/r`):
+
+```
+circumradius of the inradius-1 dodecahedron  =  1.258408572 ,   not √3 = 1.732050808 .
+```
+
+Verified two ways: the volume comes out `5.550291029` from the 20 enumerated vertices, and the vertex
+enumeration returns exactly `20` points (√3 would have returned a cube-like 8). Nothing in `C133` or
+`C136` used the wrong value — `C133` uses the *icosahedron's* covering radius, which is a different
+number — but the error would have broken the argument below, so it is recorded.
+
+**(b) `L2` is provable in the near-dodecahedral regime, by `C133`'s own inequality.** Suppose a cell has
+its 12 contacts at distance exactly `2` in icosahedral directions, and let `x` be any other centre. By
+`C133`'s computation (the covering radius of the 12 directions),
+
+```
+|x| ≥ 4cos ρ_c = 3.1786178892      (else some contact is within 2 of x, violating 2-separation),
+```
+
+so `x`'s bisector lies at distance `≥ 2cos ρ_c = 1.5893089446 > 1.258408572` — **beyond the
+dodecahedron's circumradius**. A half-space whose boundary misses a polytope creates no facet, so the
+cell has **exactly 12 facets**, and `L2` holds with margin
+
+```
+2cos ρ_c − R_dod = 1.589309 − 1.258409 = 0.330900 .
+```
+
+The same estimate survives perturbation: with normals disturbed by `θ ≤ 0.0447`, the near-dodecahedron's
+circumradius grows by `O(θ)` (`≲ 0.05`) while the 13th neighbour's bisector distance falls by
+`O(θ) (≲ 0.05)`, against a margin of `0.33`. **So `L2` is not the gap; `L1` alone is.**
+
+**(c) What is still missing, precisely.** A rigorous cubic-remainder bound turning the numerical
+`vol − V_dod ≥ 0.17 Σ angle²` into a theorem for `Σ angle² ≤ 0.002`. The measured degradation is
+`0.9997` at the needed `θ = 0.0447` and `0.9982` at `0.1`, so the constant `0.17` (96% of `½λ₁`) carries
+a wide margin; the work is to bound the third-order term, not to find a better constant.
+
+**(d) Consequence for `C139` §1.** The two "near-counterexamples" recorded there are now explained
+rather than merely excluded: the truncated dodecahedron's 13th neighbour is at distance exactly `2`
+(illegal, `1.2817` from the nearest contact); a *legal* 13th neighbour is at `≥ 3.1786` and its plane
+never reaches the cell. So `ML`'s unrestricted volume bound and this ledger's numbers are consistent, and
+**`C108` step (1) stands** — which it would not have if the legal 13th neighbour had cut the cell.

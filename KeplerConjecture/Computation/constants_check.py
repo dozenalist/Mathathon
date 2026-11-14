@@ -269,6 +269,14 @@ chk("delta0 candidate = 2 V_dod eta", 2*vdod*mpf('0.17')*(cosrho-mpf('0.75'))**2
 chk("fraction of the sharp delta0", 2*vdod*mpf('0.17')*(cosrho-mpf('0.75'))**2/(2*sqrt(32)-2*vdod), 0.017656, tol=1e-6)
 
 
+# --- K15-C142 addendum: L2, and the dodecahedron's circumradius ----------------
+chk("R_dod (inradius 1) = 1.258408572", sqrt(3)/4*(1+sqrt(mpf(5)))*a, 1.258408572, tol=1e-9)
+chk("R_dod is NOT sqrt3 (that is the cube)", abs(sqrt(3)/4*(1+sqrt(mpf(5)))*a - sqrt(mpf(3))) > 0.4, True)
+chk("2 cos rho_c", 2*cosrho, 1.5893089446, tol=1e-10)
+chk("L2 margin 2cos rho_c - R_dod", 2*cosrho - sqrt(3)/4*(1+sqrt(mpf(5)))*a, 0.330900, tol=1e-6)
+chk("the 13th neighbour at 4cos rho_c is legal (dist to contacts)", 4*cosrho, 3.1786178892, tol=1e-10)
+
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)
