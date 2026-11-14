@@ -109,3 +109,21 @@ reduction is sound for arcs longer than the period. The `d = 2` case is now prov
 machinery (`C128`, one-pair argument), so nothing load-bearing depends on it. **Closure:** a written
 argument that the reduction preserves the cover, or replace the band computation with a projection
 argument like `C128`'s.
+
+## G16 — CLOSED (review 0653, `C133`): the all-orientation two-dodecahedra exclusion
+
+Review 0653 asked for the gap between "axial twist excluded" (`C129`) and "every relative orientation
+excluded" — the statement `C124`/`C114` actually need at `d > 2`, where the second cell's icosahedron
+is free in `SO(3)`. It was queued as the bounded local job `X-ORIENT-001`.
+
+**Closed by a proof, not by a computation.** A dodecahedral cell of inradius 1 has its 12 face normals
+in icosahedral position; the icosahedron's **covering radius** is
+`ρ_c = arccos√((1+2/√5)/3) = 37.3773681…°`, so for any direction `e` some contact direction `u_i` has
+`⟨e,u_i⟩ ≥ cos ρ_c`, and then `|p − (w+2u_i)|² ≤ d² + 4 − 4d cos ρ_c < 4` whenever
+`d < 4cos ρ_c = 3.1786179`. The only escape is `w + 2u_i = p` exactly, which forces `d = 2` and the
+axis to be a face normal of both cells — `C128`'s case. So `X-ORIENT-001` is discharged, `C124`
+returns to `PROVED`, and the local job is withdrawn.
+
+What remains open is unchanged: `δ₀(ε)` is still non-explicit (`G11`), so `C124` gives strictness and
+no constant, and `RESULTS.md` does not move. `C129`'s axial constant `3.4555` is still the better
+constant *on that sub-family*; `C133`'s `3.1786` is the orientation-free one.

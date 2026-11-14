@@ -3557,6 +3557,11 @@ and `σ₀(ε)` the infimum of `vol Ω(v)+vol Ω(w)` over such pairs. Two facts:
    0.012718662` the route can ever use**, so the near-contact form is available with room to
    spare. (An earlier version asserted only that "the clash persists for `d > 2`" by continuity;
    `C116` replaces that with a covered range and a sharpness statement.)
+   **[Repaired at `C133`]** the impossibility of two dodecahedral cells is now **orientation-free**,
+   `|v − w| ≥ 4cos ρ_c = 3.1786179`, proved from the icosahedron's covering radius. So the band is
+   `ε < 1.1786179` (the stated `0.6832816` is inside it, and the item's band and use are unchanged),
+   the constraint "axis a vertex direction of both" is gone, and `C116`/`C123`'s arc cover is off the
+   load-bearing path.
 2. `σ₀(ε)` is **not explicit**, for the same reason as `σ₀`, and nothing here gives a rate in `ε`.
 
 Substituting `G_ε` and `σ₀(ε)` for the contact graph and `σ₀` in Theorem C, the bridge holds for
@@ -4067,8 +4072,17 @@ saturated 2-separated, `c = c(Λ)`, `δ = (4π/3)c`.
 4. **The second branch uses `≥`, not `>`**: `v ∉ S_ε` means *every* other centre is at distance
    `> 2+ε`, so `Ω(v) ⊇ B(v, 1+ε/2)` and `vol ≥ (4π/3)(1+ε/2)³` — the argument needs only `≥`.
 
-*Status.* `PROVED` (the `26`-counting and the split; `C108`/`C114`/`C116` supply `δ₀(ε)>0` and the
-band). `PENDING_REVIEW` with the rest of the pair chain, per review 0608.
+> **DOWNGRADED to `CONDITIONAL` (review 0653, `K15-C131`).** The case-2 branch needs the
+> **all-orientation** two-dodecahedra exclusion on `[2, 2.1967]`, not the axial version that `C129`
+> proves: at `d > 2` the second icosahedron is free in `SO(3)`. The counting, the split and the inball
+> branch are unaffected; the dependence on the exclusion is stated and submitted as `X-ORIENT-001`.
+> The counting constant is also corrected at `C132` (`deg ≤ 12` does not hold at radius `3.4555`).
+
+*Status.* `PROVED` again. Between `C131` and `C133` this entry stood as `CONDITIONAL` on
+`X-ORIENT-001`; that note is kept above for the record, and it was right that `C129` alone did not
+supply the exclusion. `C133` supplies it orientation-free (`|v − w| ≥ 3.1786179`), so the `ρ_ε > 0`
+branch needs no orientation hypothesis, and the counting is `C132`. `PENDING_REVIEW` with the rest of
+the pair chain.
 
 ### K15-C126 — a missing term in the twist sinusoid: found by X, confirmed, and the band withdrawn (`CORRECTION`)
 
@@ -4349,3 +4363,355 @@ coincidence: both sides are functions of `t` alone.
 must be, and says nothing about dense ones). It is a consistency check, not a result.
 
 *Status.* `TESTED_FINITE`. Reviewer X.
+
+### K15-C131 — the orientation gap: `C129`'s band is AXIAL only, and `C124` is downgraded (`CORRECTION`)
+
+Review 0653: *"Distinguish an axial two-icosahedron exclusion from the all-orientation statement needed
+by a near-contact compactness argument when the second centre is not a face normal."* **Correct, and it
+breaks the dependency I claimed.**
+
+**The distinction.**
+
+- **At `d = 2`** the two centres are in contact, so each is a vertex of the other's icosahedron. The
+  axis `v→w` is therefore a **vertex direction for both**, and the only freedom is the relative twist
+  about it. That is the situation `C128`/`C129` treat, and it is exactly what **Theorem D step (4)**
+  needs. **That step stands.**
+- **At `d > 2`** the two centres are not in contact, so `w`'s cell can be dodecahedral with `v`
+  nowhere among its twelve contacts. `w`'s icosahedron is then free in `SO(3)` — a **3-parameter**
+  family, not a 1-parameter twist. `C129`'s band is a statement about the axial sub-family only.
+
+**What that does to `C124`.** Its case-2 branch needs `σ₀(ε) > 2V_dod` for a *single* `ε > 0.1967`,
+and `σ₀(ε)` is an infimum over pairs with centre distance in `[2, 2+ε]`. At the minimiser both cells
+are dodecahedra at distance `d` with `d` possibly `> 2`, where the orientation is free. So `C124`
+requires the **all-orientation** exclusion on `[2, 2.1967]`, which `C129` does not give. **`C124` is
+therefore downgraded from `PROVED` to `CONDITIONAL`: it holds if the all-orientation exclusion holds
+on `[2, 2.1967]`.**
+
+Nothing else in `C124` changes: the `|S_ε| ≤ (2+2D)|M|` counting, the two-case split and the inball
+branch are independent of this.
+
+**Numerical status of the all-orientation exclusion** (`Computation/free_orientation.py`,
+`orient_opt.py`). Two independent computations, both *against* the exclusion failing:
+
+1. **Forbidden-cap coverage.** For fixed `a`, the condition `|b − a| ≥ 2` with `|b − w| = 2` forbids a
+   cap on `w`'s sphere of angular radius `arccos(|a−w|/4)`. The twelve caps cover only `84%` of the
+   sphere at `d = 2`, falling to `53%` at `d = 3` — so coverage alone never excludes a legal placement.
+2. **Direct optimisation over `SO(3)`** (60 Nelder–Mead starts each, maximising the minimum
+   cross-distance): best values `1.0825` (`d=2`), `1.1986` (`d=2.2`), `1.1623` (`d=3`),
+   `1.4387` (`d=4`). **No legal placement (≥ 2) found at any `d ≤ 4`,** with a margin of `≥ 0.80` at
+   `d = 2.1967`.
+
+So the evidence is that the exclusion holds *far* beyond what `C124` needs, with a large margin — but
+**evidence is not a certificate**, and this is a 4-dimensional claim (`d` times `SO(3)`) that needs an
+interval/covering argument. It is submitted as a bounded local job (`LOCAL_COMPUTE_REQUESTS.md`,
+`X-ORIENT-001`) rather than asserted.
+
+**A compactness remark that is *not* a substitute.** If no legal placement existed at `d = 2` even
+with free orientation, then since `{(d,R) : legal}` is closed in `(d,R)` and `SO(3)` is compact, the
+projection onto `d` would be closed, giving an *open* band `[2, 2+ε₀)` — non-explicit `ε₀`. That
+argument cannot be made at `d = 2` at all, because at `d = 2` the orientation is *not* free (it is a
+single vertex of each icosahedron), so the free-orientation set is empty there by geometry rather than
+by clash. **The `d = 2` end is therefore not a limit point of the free-orientation family**, and no
+continuity argument is available. This is exactly the review's point.
+
+*Status.* `CORRECTION`. `C129`'s band is `PROVED` **for the axial family only**, and that stays
+true; `C124` was `CONDITIONAL` on `X-ORIENT-001` between `C131` and `C133`. **`X-ORIENT-001` is
+answered at `C133`** — the all-orientation exclusion is proved, by a covering radius rather than by a
+computation, so the condition is discharged and `C124` is `PROVED`. The distinction this entry draws
+is unaffected, and the axial scope of `C129` is unaffected.
+
+### K15-C132 — `C124`'s counting repaired: the degree bound, the boundary term, and limsup/liminf (`PROVED`)
+
+Review 0653's audit items 1–3 against `C124`, one repair each. All three were real; none of them
+changes `C124`'s conclusion, and the reason is worth stating once: **the counting enters only through
+`|S_ε ∩ B_R| = o(|B_R|)`, so every constant in it is irrelevant and only the error term matters.**
+The old text's `26` was both wrong and load-bearing-looking, which is worse than wrong.
+
+**(1) `deg ≤ 12` was the wrong bound — the radius is the wrong kind of radius.** `C054`/`C013`'s
+kissing-type theorem says *a point with 13 neighbours within distance `R` forces `R > 2.09`*. That is
+a **punctual** statement, and at `R = 3.4555` it is simply false (a centre can carry 13 neighbours at
+distance 3.4). `C124` cited it for the `(2+ε)`-graph. The correct bound needs **no radius at all**:
+neighbours of `v` in `G_{2+ε}` lie in the annulus `2 ≤ |x − v| ≤ 2+ε` and are pairwise `≥ 2` apart, so
+their unit balls are disjoint and lie in `1 ≤ |x − v| ≤ 3+ε`:
+
+```
+D(ε)  :=  |N_{G_{2+ε}}(v)|  ≤  (3+ε)³ − 1        (D = 63 at ε = 1, D = 87 at ε = 1.4555)
+```
+
+The bound is crude — the true count is `12 + O(ε)` — and that is fine: by the sentence above, only
+finiteness is used. So the counting constant is `2 + 2D(ε)`, not `26`.
+
+**(2) The boundary term, tracked rather than assumed.** `|N(M) ∩ B_R|` counts neighbours of matched
+vertices which may themselves lie outside `B_R`. Correctly,
+
+```
+|S_ε ∩ B_R|  ≤  |M ∩ B_R| + D(ε)·|M ∩ B_{R+2+ε}|
+             ≤  (1 + D(ε))·|M ∩ B_R|  +  D(ε)·|Λ ∩ {R ≤ |x| ≤ R+2+ε}| .
+```
+
+The shell term is `O(R²)`: those points are 2-separated, so their unit balls are disjoint inside
+`{R−1 ≤ |x| ≤ R+3+ε}`, giving `≤ (R+3+ε)³ − (R−1)³ = O(R²)`. Hence
+
+```
+|S_ε ∩ B_R|  ≤  (1 + D(ε))·|M ∩ B_R|  +  O(R²)  =  o(R³)   whenever |M ∩ B_R| = o(|B_R|).
+```
+
+**That `O(R²)` is the whole content of the repair**: it is `o(|B_R|)` because `|B_R|` grows like
+`R³` for a 2-separated set, so the boundary cannot carry a positive fraction of the matching.
+
+**(3) limsup/liminf, with no hypothesis that the density exists.** `C124`'s `ρ_ε = 0` branch is
+restated so that nothing is assumed about `δ(Λ)` existing. Two facts, both unconditional:
+
+- **Coverage.** Saturation gives every `x` a centre `u` with `|x − u| ≤ 2`, and `x ∈ Ω(v)` forces
+  `|x − v| ≤ |x − u|`, so `Ω(v) ⊆ B(v,2)` for every `v`. Therefore
+  `Σ_{v ∈ B_R} vol Ω(v) ≥ vol B(0,R) − |Λ ∩ {R ≤ |·| ≤ R+2}|·(32π/3) = (4π/3)R³ − O(R²)`.
+- **Branch bound.** `v ∉ S_ε` means every other centre is at distance `> 2+ε`, so
+  `Ω(v) ⊇ B(v, 1+ε/2)` and `vol Ω(v) ≥ (4π/3)(1+ε/2)³`; always `vol Ω(v) ≥ 4π/3`.
+
+Chaining, with `ε` fixed and `|S_ε ∩ B_R| = o(R³)` from (2):
+
+```
+(4π/3)R³ − O(R²)  ≥  Σ_{v∈B_R} vol Ω(v)  ≥  (|B_R| − |S_ε ∩ B_R|)·(4π/3)(1+ε/2)³ .
+```
+
+Divide by `(4π/3)R³` and take `limsup`, resp. `liminf`, over `R → ∞`:
+
+```
+1 ≥ c̄(1+ε/2)³   and   1 ≥ c_(1+ε/2)³ ,   c̄ = limsup |B_R|/R³,  c_ = liminf |B_R|/R³ .
+```
+
+So **both** the upper and the lower centre density obey `δ ≤ 1/(1+ε/2)³`, with no assumption that
+they agree. At `ε = 1`: `1/1.5³ = 0.296296`. (The old text's `0.414086` was the value at
+`ε = 0.6832816`, which nothing needs any more.)
+
+**The choice of `ε`, fixed once.** `C124` needs one `ε > 0.1967082337` (`C119`'s crossover). Take
+
+> **`ε = 1`.** Then `2+ε = 3 < 3.1786179` (the orientation-free band of `C133`) **and**
+> `< 3.4555` (`C129`'s axial band), so the exclusion holds with a factor `1.45` of room on the
+> stronger of the two constants, and the `ρ_ε = 0` branch gives `δ ≤ 0.296296`.
+
+**What changes in `C124`, and what does not.** The statement, the two-case split, the inball branch
+and the conclusion `δ < 0.754697399337` are unchanged. What changes: the constant `26` becomes
+`2(1+D(ε)) = 128` at `ε = 1` (or `176` at `ε = 1.4555`), the boundary term is `O(R²)` and explicit,
+and the density statement is `limsup`/`liminf` rather than a limit. `RESULTS.md` does not move: no
+number is produced, because `δ₀(ε)` is still non-explicit (`C108`).
+
+*Status.* `PROVED` (bookkeeping repair; the three defects were in the constants and the quantifier
+order, not in the argument). `PENDING_REVIEW` with the rest of the pair chain.
+
+### K15-C133 — the two-dodecahedra exclusion is ORIENTATION-FREE, by a covering radius (`PROVED`, exact)
+
+`C131` recorded the review's objection and downgraded `C124`: at `d > 2` the second cell's
+icosahedron of contact directions is free in `SO(3)`, and `C129`'s band is a statement about the
+**axial** sub-family. The objection was right, and the gap it names is closed here — **not** by an
+interval/covering computation over `d × SO(3)` (`X-ORIENT-001`, no longer needed) but by a covering
+radius of the icosahedron and one triangle inequality. **The exclusion never needed orientations to be
+constrained; it only needed the contacts of `w` to be close to the direction of `p`.**
+
+> **Theorem.** Let `Λ ⊂ R³` be 2-separated and let `v, w ∈ Λ` have Voronoi cells both congruent to
+> the **regular dodecahedron of inradius 1**. Then
+>
+> ```
+> |v − w|  ≥  4 cos ρ_c  =  4√(30√5 + 75)/15  =  3.1786178891670644… ,
+> ```
+>
+> where `ρ_c = arccos √((1 + 2/√5)/3) = 37.3773681…°`. No hypothesis on relative orientation.
+
+**Two ingredients, both elementary.**
+
+**(i) The 12 contacts of a dodecahedral cell are `w + 2u_i` with `u_i` an icosahedron.** A regular
+dodecahedron of inradius 1 is circumscribed about the unit ball, so its polar dual is an icosahedron
+inscribed in that ball; the 12 face normals *are* that icosahedron's 12 vertices. Each face at
+distance 1 from `w` is a bisector plane, so each gives a centre at `w + 2u_i` and these are 12
+distinct centres at distance exactly 2 from `w`.
+
+**(ii) The covering radius.** For the 12 unit vectors `u_i`,
+
+```
+max over unit n of  min_i ∠(n, u_i)  =  ρ_c ,   cos ρ_c = √((1 + 2/√5)/3) .
+```
+
+*Proof.* The spherical Delaunay triangulation of the 12 points is the icosahedron's own face
+structure: 20 equilateral spherical triangles with side `a = arccos(1/√5) = 63.4349…°` and corner
+angle `72°` (five triangles at each vertex). The spherical Voronoi cells are the pentagons around the
+vertices, so the covering radius is the circumradius of a Delaunay triangle, i.e. the distance from a
+vertex to a face centre. If `O` is the circumcentre, the three triangles `AOB`, `BOC`, `COA` tile
+`ABC`, so their angles at `O` sum to `2π` and each is `2π/3`; hence
+
+```
+cos a = cos²ρ_c + sin²ρ_c·cos(2π/3) = (3cos²ρ_c − 1)/2
+⟹  cos ρ_c = √((1 + 2cos a)/3) = √((1 + 2/√5)/3) = √(30√5 + 75)/15 = 0.7946544723…  ∎
+```
+
+(The maximum is attained at the 20 **face-centre** directions — the dodecahedron's vertex
+directions: each Voronoi cell is a convex spherical pentagon and `n ↦ ∠(n,u_i)` is convex on it, so
+the max sits at a cell vertex.)
+
+**The argument.** Let `p` be any other centre, `d = |p − w|`, `e = (p − w)/d`. Choose `u_i` with
+`∠(e, u_i) ≤ ρ_c`. Then
+
+```
+|p − (w + 2u_i)|²  =  d² + 4 − 4d⟨e, u_i⟩  ≤  d² + 4 − 4d cos ρ_c  <  4
+                                       whenever   d < 4cos ρ_c = 3.1786179… .
+```
+
+So the contact `w + 2u_i` is a centre at distance `< 2` from `p`: a violation of 2-separation.
+
+**The one escape case, and why `C128` covers exactly it.** The inequality above is strict unless
+`d = 4cos ρ_c`, so a violation is unavoidable **unless `w + 2u_i = p`**, which forces `d = 2` and
+`u_i = e` exactly (a contact cannot be at distance `2` from `w` and distance `< 2` from itself). That
+is precisely the axial case: `p` is a face-contact of `w`'s cell. Then the midpoint `m = (p+w)/2`
+satisfies `|m − w| = 1` and, for every centre `u`, `|m − u| ≥ |u| − 1 ≥ 1`, so `m ∈ Ω(w) ∩ Ω(p)`; the
+bisector plane `x_1 = 1` therefore supports both cells, and a supporting plane at distance exactly 1
+(= the inradius) from `p` must be one of the 12 face planes. So the axis is a face normal of **both**
+cells, and `C128` — which covers **every** relative twist at `d = 2` — gives the clash. ∎
+
+**The constant, and its sharpness for this method.** `Computation/orient_cover.py` (exact `sympy`
+in `Q(√5)` plus a `SO(3)` scan):
+
+| quantity | value | how checked |
+| --- | --- | --- |
+| `cos ρ_c = √(30√5+75)/15` | `0.7946544722917661` | exact simplification; all 60 face-centre/vertex dots equal it |
+| `ρ_c` | `0.6523581398 rad = 37.3773681°` | — |
+| `4cos ρ_c` | `3.1786178891670644` | exact |
+| sampled covering over 200 000 directions | `min max_i cos = 0.795013` `>` `cos ρ_c` | confirms no direction beats the face centres |
+| `SO(3)` scan, `max over rotations of min_i |d e − 2Ru_i|` | `1.275` (`d=2`), `1.350` (`d=2.1967`), `1.491` (`d=2.5`), `1.849` (`d=3.0`) | all `< 2`, i.e. **every** orientation clashes |
+| the closed form `√(d²+4−4d cos ρ_c)` | `1.282`, `1.358`, `1.518`, `1.861` | the scan approaches it from below, as it must |
+| face-centre alignment at `d = 3.1786 / 3.18 / 3.2` | `1.999986 / 2.001098 / 2.017033` | the bound is **exact**: it clears 2 the moment `d > 4cos ρ_c` |
+
+So the constant is not a lossy estimate of something better available from this argument: aligning `e`
+with a face centre puts three contacts at the closed-form distance exactly, and no band beyond
+`4cos ρ_c` follows this way. (`C129`'s `3.4555` is *larger*, but only on the axial sub-family.)
+
+**Consequences.**
+
+1. **`σ₀(ε) > 2V_dod` for every fixed `ε < 1.1786178891…`, with no orientation hypothesis.** At a
+   minimiser realising `Φ = 2V_dod`, both cells have volume exactly `V_dod`, so by the equality case
+   of Hales–McLaughlin (`C115`) both are regular dodecahedra of inradius 1 — at distance `≤ 2+ε`,
+   which the Theorem forbids. This is `C114` item 1 **repaired**: its stated band `ε < 0.6832816` is
+   inside the new one, so the band, the statement and the use in `C124` all stand; what changes is the
+   certificate. `C116`/`C123`/`C127`'s arc cover is no longer on the load-bearing path (it remains
+   recorded, and `C129` remains the better constant in its own sub-family).
+2. **`C124` returns from `CONDITIONAL` to `PROVED`** — the binding item was `X-ORIENT-001` and it is
+   answered here. (Its counting is `C132`.) With `ε = 1`: `2+ε = 3 < 3.1786179` ✓.
+3. **`X-ORIENT-001` is withdrawn as a computation request**: it asked for an interval/covering
+   certificate over `[2, 2.1967] × SO(3)`; the theorem above is a proof, and a bounded local job is
+   the wrong tool for a statement that reduces to `4cos ρ_c > 2.1967`.
+4. **Nothing numeric moves.** `δ₀(ε)` is still non-explicit (`G11`), so `C124` gives strictness and
+   not a constant, and `RESULTS.md` does not move.
+5. **`C131` stays as a correction of the record** — the distinction it draws is right, and the axial
+   scope of `C129` is unchanged. What `C131` could not know is that the general case is *easier* than
+   the axial one, not harder: freeing the orientation helps the argument, because the clash it
+   produces need not be a contact-versus-contact coincidence.
+
+**Attribution and what is not claimed.** The covering radius of the icosahedron is classical (it is
+the circumradius of the icosahedral spherical Delaunay triangle; `C128`'s `72°` period and this
+`37.377°` are the same symmetry seen twice). Main's contribution is the observation that it settles
+the orientation question, and the exact constant `4cos ρ_c` with its sharpness check. **Not claimed:**
+novelty in the literature; any improvement to `C129`'s axial constant; any number.
+
+*Status.* `PROVED` (exact; two ingredients, both verified in `orient_cover.py`). `PENDING_REVIEW`
+with the rest of the pair chain — X is the gate, and this is now the cleanest thing for X to check.
+
+### K15-C134 — `C125`'s monotonicity refutation refuted the wrong statement (`CORRECTION`)
+
+Review 0653, audit item 4: *"`c_F` over **at most** `F` faces is nonincreasing (nested classes). My
+[`C125`] refutation used an **exact-`F`** example."* **Correct, and `C125`'s stated reason (b) is
+withdrawn.**
+
+**Two different constants, and only one of them is monotone.**
+
+```
+c_exact(F)  =  inf{ vol P : P circumscribed about the unit ball, with EXACTLY F faces }
+c_{≤F}      =  inf{ vol P : ... with AT MOST F faces }  =  min_{F' ≤ F} c_exact(F') .
+```
+
+`c_{≤F}` is an infimum over nested classes, hence **nonincreasing** — that is a one-line consequence
+of the definition and cannot be refuted by an example. `c_exact` is *not* monotone, and `C125`'s
+counterexample (truncated octahedron `F = 14`, `vol = 6.158402871`, against icosahedron `F = 20`,
+`vol = 5.0540561436`) shows exactly that and nothing more: `c_exact(14) > c_exact(20)`.
+
+**So `C122`'s `≤ 20`-face target is not refuted by those two polyhedra.** What the counterexample does
+refute is an argument of the form "the constants decrease in `F`, so the `F = 14` value controls the
+`F ≤ 20` case" — the monotone direction is the other way, so a value at `14` gives only
+`c_{≤20} ≤ c_{≤14} = 6.1584`, an **upper** bound. A **lower** bound for `c_{≤20}` needs `c_exact(F)`
+for every `F ≤ 20`, since `c_{≤20} = min_{F ≤ 20} c_exact(F)`.
+
+**The branch is still stopped, on reason (a) alone, and the reason is now stated exactly.** Fejes Tóth
+(*Regular Figures*, p. 263, Thm 2.1) gives the circumscribed-volume constant only for
+`F ∈ {4, 5, 6, 8, 10, 12, 14}`, and it depends on `(f, v, e, r, R)`, not on `F` alone, so it does not
+label a `c_F`; Mutoh (LNCS **2866**, 2002, 204–214) gives `F = 4..30` as **conjectures**. So seven of
+the nine values in `13 ≤ F ≤ 20` are unproved, and `c_{≤20} = min_{F≤20} c_exact(F)` is exactly the
+one quantity a `≤ 20`-face target needs. **`C125`'s conclusion stands; its reason (b) does not.**
+
+**Not claimed.** That `c_{≤20}` is *small* — the only exact-`F` values in range are `6.1584` (`F=14`)
+and `5.0541` (`F=20`), and both are consistent with a `≤20` target of `4.958`. The branch is stopped
+because the constants are **unproved**, not because they are large; if Mutoh's conjectures are ever
+certified, the branch becomes available again without any new geometry.
+
+*Status.* `CORRECTION`. `C125`'s stop stands; its monotonicity argument is withdrawn and replaced by
+the exact statement above.
+
+### K15-C135 — `C128`/`C129` made self-contained: coordinates, the pair, the endpoint (`PROVED`)
+
+Review 0653, audit item 5. `C128`/`C129` are the certificates of record for the two-dodecahedra step,
+and both referred to "the order produced by `build()`/`eleven()`" — a property of a Python file, not a
+mathematical object. Everything needed is restated here in closed form.
+
+**The frame.** `v = (0,0,0)`, `w = (d,0,0)`, `2 ≤ d`. A dodecahedral cell of inradius 1 with a
+face-contact in the direction of `+x` has its 12 contacts at distance exactly 2 at
+
+```
+p±  = ( 2, 0, 0) , (−2, 0, 0)                                   poles (p+ is w itself at d = 2)
+U_k = ( 2/√5 ,  (4/√5) sin(2πk/5) ,      −(4/√5) cos(2πk/5) )    k = 0..4    "upper ring"
+L_k = (−2/√5 ,  (4/√5) sin(2πk/5 + π/5), −(4/√5) cos(2πk/5 + π/5))  k = 0..4 "lower ring"
+```
+
+Each has norm `√(4/5 + 16/5) = 2`; the 12 points are an icosahedron of circumradius 2 with a vertex on
+the axis (checked in `two_dodecahedra.py`, and exact in `Q(√5)` in `orient_cover.py`). The rings are
+staggered by `π/5`, and the whole set is invariant under rotation by `2π/5` about `x` — that is where
+`C128`'s `72°` period comes from.
+
+**The pair.** `a = U_0 = (2/√5, 0, −4/√5)` (a contact of `v`) and `q = L_2 = (−2/√5, 0, +4/√5)` (a
+contact of `w`, at zero relative twist). Note `q = −a`: **the certificate uses an antipodal pair of the
+same icosahedron**, one point on each ring. Everything below holds for any of the five rotations
+`U_k, L_{k+2}` (`C129`'s addendum: five-way tie, all with `R = 32/5`).
+
+**The algebra, exactly.** With `x := d − 2/√5`, `u = w − a = (x, 0, 4/√5)`, `q = (−2/√5, 0, 4/√5)`,
+and a rotation `R_t` about `x`, `b(t) = w + R_t q`:
+
+```
+d²(t) = A(x) + B cos t + C sin t ,
+A(x)  = x² − (4/√5)x + 36/5 ,        B = 2(u_y q_y + u_z q_z) = 32/5 ,        C = 2(u_z q_y − u_y q_z) = 0 .
+```
+
+`B` is **constant in `d`** because `u_y, u_z` do not move with `d` — that is the whole trick of
+`C129`, and `C = 0` is why the sinusoid degenerates to a cosine.
+
+**The certificate.** The violation set is `T = {t : d²(t) < 4} = {t : cos t < (4 − A)/B}`, which is the
+arc `{|t − ψ| > h}` centred at `ψ + π` with `h = arccos((4−A)/B)` (this is `C127`'s corrected
+orientation; the earlier versions covered the complementary, *safe*, set). Since the physical twist
+space is the circle of circumference `2π/5`, `T` meets every coset of `2π/5` **iff** `2π − 2h > 2π/5`,
+i.e.
+
+```
+h < 4π/5   ⟺   (4 − A)/B > cos(4π/5) = −(1+√5)/4
+           ⟺   x² − (4/√5)x + (8 − 8√5)/5 < 0
+           ⟺   d < d_max = 4/√5 + 2√((2√5 − 1)/5) = 3.4555003444044642048… .
+```
+
+**Endpoint scope, stated exactly.** The inequality is **strict**: for `d < d_max` the violation arc is
+*longer* than the period, so it meets every coset and the clash is certified. At `d = d_max` the arc has
+length exactly `2π/5` and is *open*, so the coset through its two endpoints meets it in **no** point and
+the argument is **inconclusive there** — `d_max` is not proved, and `C129` never needed it to be
+(`C124` uses `ε = 1`, i.e. `d ≤ 3`, by `C132`). Above `d_max` the same pair says nothing; that is where
+`C133`'s orientation-free bound `3.1786179` takes over in the other direction of usefulness, and the
+axial `3.4555` remains the better constant **on the axial sub-family only**.
+
+**Verification status, restated honestly.** `two_dodecahedra.py` is 40-digit `mpmath`, *not* certified;
+the `C129` closed form is exact and its agreement with bisection (`4×10⁻¹⁵`) and with X's `X-C051` (10
+significant figures) is corroboration, not proof. The proof of record is the algebraic chain above,
+which is hand-checkable. `orient_cover.py` re-derives the same 12 points in exact `Q(√5)` and checks
+the covering radius used by `C133`.
+
+*Status.* `PROVED` (exact; self-contained as of this entry).
