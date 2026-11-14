@@ -32,8 +32,8 @@ Reviewer: X. Withdrawn and narrowed claims are kept, not deleted.
 
 | id | statement |
 | --- | --- |
-| `K15-E004` | existence of a partition with bounded diameter absorbing the dodecahedral defect |
-| `(T'-R2')` | `S(C) ≥ D(C)` on one-shell blocks |
+| `K15-E004` | existence of a partition with bounded diameter absorbing the dodecahedral defect. **Largely superseded**: the transfer form (`K15-E061`) restores the pointwise condition and needs no partition, so this is only needed if the block form is retained |
+| `(T'-R2')` | `S(C) ≥ D(C)` on one-shell blocks — equivalent to `(H_R)` (Section 3.5 of `REVIEW_0138.md`), so proving either suffices |
 | `(H_R)` | Hall condition with `R = 2.09`. **No numerical evidence either way**: the earlier "470-880x slack" is retracted (see below) |
 | `K15-E013'` | the count at `ρ > 2.0911` (needs a sharper spherical-code input) |
 | `K15-E020` | local-mass row; **blocked**, no three-point evaluator exists in these artifacts |
