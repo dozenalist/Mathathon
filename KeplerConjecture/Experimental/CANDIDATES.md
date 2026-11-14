@@ -25,7 +25,11 @@ Summary:
 - `K15-E032` block rule R2 disjointness: **corrected**, adjacency threshold `4.18`.
 - `K15-E041` dodecahedral shortfall `1.385321873` (`2.04 %`): **PROVED**. Kills every
   per-cell-independent argument.
-- `K15-E042` angular estimate `4.733968` vs required `5.665735`: **PROVED bound, insufficient**.
+- `K15-E042` angular estimate `4.733968` vs required `5.665735`: **PROVED bound, insufficient**,
+  and by `K15-E047` *weaker than the dodecahedral theorem itself*, so this technique is not
+  competitive. `K15-E046` (perturbation heuristic) is **withdrawn** as non-additive.
+- `K15-E045` centre cell exactly dodecahedral in every completion: **PROVED**, so the deficit
+  `0.1065632209769` is exact and unavoidable.
 - `(T'-R2')` itself: **OPEN**. Best certified per-cell lower bound `4.733968`; best computed
   upper bound `8.167277`; required `5.665735`.
 
