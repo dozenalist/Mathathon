@@ -256,8 +256,7 @@ or Astra to collect.
 ```
 path      KeplerConjecture/Computation/l1_remainder.py
 sha256    bd2f24c28e469f3315d046bd1d445287cf6f26b8bc056d8ba3e97f440ab2f2ac
-source    the commit that first contains it (this block's tip; hash in AgentReports/
-          REVIEW_2026-11-14_0823.md, which is pushed after the file)
+commit    1d2db443359ad57dddb6e8ac00212044dc7777af   (first commit containing the file)
 deps      python3 (stdlib), numpy, scipy.spatial   -- no Lean, no network, no GPU
 runtime   ~1 s measured; budget 1 CPU / 1 GiB / 120 s
 ```
