@@ -22,9 +22,12 @@ which is a linear map Q[s] -> Q[v] (rational, exact).  Both sign conditions are 
 polynomial conditions on rational half-lines:
     (CE1)  P(s) <= 0  for s >= 4          (CE2)  Q(v) >= 0  for v >= 0.
 Neither needs pi, grids or tails.  The final bound is
-    (4 pi/3) f(0)/f^(0) = (4 sqrt(pi)/3) P(0)/Q(0),
-and comparing with pi/sqrt(18) reduces, after squaring twice, to the rational-pi test
-    32 P(0)^2  <  pi  Q(0)^2 .
+    (4 pi/3) f(0)/f^(0) = (4/(3 sqrt(pi))) P(0)/Q(0),
+because f(0)=P(0) and f^(0)=pi^{3/2}Q(0), so (4 pi/3)*(P(0)/(pi^{3/2}Q(0)))
+= (4/(3 pi^{1/2})) P(0)/Q(0).  [CORRECTED: an earlier revision of this file had
+(4 sqrt(pi)/3) P(0)/Q(0), i.e. pi^{+1/2} instead of pi^{-1/2}.]
+Comparing with pi/sqrt(18) for positive constants P(0),Q(0) reduces, by squaring twice, to
+    32 P(0)^2  <  pi^3 Q(0)^2 .   [CORRECTED: was 32 P(0)^2 < pi Q(0)^2.]
 """
 import sympy as sp
 s, v, lam, x, t = sp.symbols('s v lambda x t', real=True, positive=False)
@@ -140,7 +143,7 @@ if __name__ == "__main__":
         print("   P = %-24s -> %s" % (str(sp.factor(sp.expand(P)))[:24], msg))
     print()
     print("   A successful certificate reports P(0)/Q(0) rational and the test")
-    print("        32 P(0)^2 < pi Q(0)^2   (<=> bound (4 sqrt(pi)/3)P0/Q0 < pi/sqrt18),")
+    print("        32 P(0)^2 < pi^3 Q(0)^2  (<=> bound (4/(3 sqrt pi))P0/Q0 < pi/sqrt18),")
     print("   decided with rational enclosures of pi; the SEARCH over P is a separate LP.")
     print("   No float residual is used as an identity: the map is applied by exact")
     print("   differentiation, and only the quadrature cross-check above is floating point.")
