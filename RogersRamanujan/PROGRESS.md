@@ -144,3 +144,25 @@ of active work, as specified in ROADMAP.
 - **Nothing is lost:** all artifacts are in the working tree and in
   `c007d4d`, which is a fast-forward of `origin/main`; the branch is ready to be
   pushed or to become a pull request unchanged.
+
+## 2026-11-14 / RR-M002 / tie-breaks proved forced; worker statement correction
+
+- **Agent and reviewer:** M, reviewing the full text of the four accepted worker
+  reports (the first checkpoint had only their summaries).
+- **Status:** strengthens RR-C008 (still PROVED); new REFUTED entry RR-X006.
+- **Statement:** flipping any of the three `psi` tie-breaks in DECISIONS D-3
+  destroys the involution: 1120 failures for equality-to-I(b) (first witness
+  `n=4`, `(0;(2,2))`), 374 for equality-to-II(b) and 374 for keeping a created
+  part 0 (both first at `n=3`, `(-1;())`), against 0 for the chosen reading,
+  over all 3198 in-domain states of weight `<= 18`. Verified by Main by patching
+  `bz82.py` directly; worker m3 reported the same witnesses independently.
+- **Correction recorded:** the task question "does every orbit reach
+  `{0} x A_n`?" is mis-posed; orbits of an involution are 2-cycles and the
+  correct statement is `X(n) = ({0} x A_n)` disjoint-union 2-cycles. Caught by
+  m3, adopted in CLAIMS and DECISIONS D-3a.
+- **Reproduction:** `python3 RogersRamanujan/Computation/run_checks.py 30`
+  (0 failures on the chosen reading); the flipped readings are recorded as a
+  table in `Counterexamples/REGISTRY.md` RR-X006.
+- **Not changed:** no claim is promoted by this entry; it removes the main
+  soft spot in D-3 rather than adding a new result.
+- **GitHub checkpoint:** committed locally; push still blocked (see RR-M001-PUSH).

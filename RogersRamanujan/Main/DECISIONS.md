@@ -74,3 +74,22 @@ control experiment, not progress on the objective. Do not pursue HEX26 until an
 invertible weight-compatible bridge to `A_n`/`D_n` exists. Reason: the whole
 value of the checkpoint is that the reference map now runs, so the productive
 next question is *why* it needs an orbit of length Theta(n) at all.
+
+## D-3a (2026-11-14, after the first checkpoint) The D-3 tie-breaks are forced, not chosen.
+
+Worker m3's report prompted a direct test. Each `psi` comparison was flipped in
+turn and the involution census rerun on all 3198 in-domain states of weight
+`<= 18`: the chosen reading gives 0 failures, flipping the I(a) tie gives 1120
+(first witness `n=4`, `(0;(2,2))`, where `I(b)` would need `k = -1` copies of 5),
+flipping the II(a) tie gives 374 (first witness `n=3`, `(-1;())`), and keeping a
+created part 0 in II(a) also gives 374 at the same first witness. So the `>=`
+readings are the unique ones under which `psi` is a well-defined involution on
+`X(n) \ {0} x A_n`. This matters because RR-C008's step (d) *uses* the tie-breaks:
+without the forcing argument, that proof would be about a variant of BZ82's map
+rather than about BZ82's map. Registered as RR-X006.
+
+Also recorded: my original task statement to worker m3 asked whether "every
+orbit reaches `{0} x A_n`". That question is **mis-posed** — the orbits of an
+involution are 2-cycles and never reach the fixed set; the correct statement is
+the disjoint decomposition `X(n) = ({0} x A_n) ⊔ 2-cycles`. The worker caught
+this. Same correction applies to the earlier phrasing in `Main/CLAIMS.md` RR-C008.

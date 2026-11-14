@@ -122,6 +122,11 @@ opposite `(-1)^j` and the leftover states are exactly `A_n`,
 Main's independent confirmation of the same three tie-breaks: `psi^2 = id` with
 0 defects over all 3198 in-domain states for `n <= 18` and over all in-domain
 states for `n <= 25`; BZ82's three printed examples reproduce exactly.
+The tie-breaks themselves are **forced**: flipping any one of them gives 1120 or
+374 failures at `n <= 18` with explicit witnesses (RR-X006, DECISIONS D-3a). That
+is what makes step (d) a statement about BZ82's map and not about a variant.
+Phrasing correction: the orbits are 2-cycles and never reach `{0} x A_n`; the
+correct claim is the decomposition `X(n) = ({0} x A_n) ⊔ 2-cycles`.
 Recorded correction to the worker's text: in II(a) with `nu = 0` the printed
 bound `-13` is arithmetically `-10`; the conclusion still holds.
 What this does **not** give: the analogous statement for `phi` (RR-C009), and any

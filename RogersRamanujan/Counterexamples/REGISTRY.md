@@ -39,6 +39,26 @@ So an intersection-fixing rule is vacuous at those weights and cannot be the
 structural content of a uniform bijection. Retained only as an optional
 convention; it must be justified, never assumed.
 
+### RR-X006 — the three *alternative* tie-breaks for `psi` are refuted (so the chosen ones are forced).
+Decisions 1-3 of DECISIONS D-3 are not aesthetic. Flipping any one of them
+destroys the involution immediately, with a minimal witness. Main verified this
+independently of worker m3 by patching each comparison in `bz82.py` and
+re-running the involution census over all 3198 in-domain states of weight
+`<= 18`:
+
+| reading | failures | first witness |
+| --- | --- | --- |
+| chosen: `I(a)` on `thr >= m2`, `II(a)` on `thr >= m0`, drop a part 0 | **0** | - |
+| equality to `I(b)` instead of `I(a)` | 1120 | `n=4`, `(0;(2,2))` -> `I(b)` demands `k = -1` copies of 5 |
+| equality to `II(b)` instead of `II(a)` | 374 | `n=3`, `(-1;())` -> nonpositive created part |
+| keep a created part 0 in `II(a)` | 374 | `n=3`, `(-1;())` -> gives `(0;(3))` instead of the required state |
+
+Worker m3 found the same three witnesses in their own enumeration (their counts
+219/100/100 are over a different state range; the witnesses agree exactly).
+Consequence: D-3's `>=` readings are the *only* ones under which `psi` is a map
+`X(n)\\{0}xA_n -> X(n)\\{0}xA_n` with `psi^2 = id`, which is what makes RR-C008 a
+statement about BZ82's map rather than about a variant of it.
+
 ## Source-level defects found (not failures of our code)
 
 ### RR-X005 — the literal printed `phi` Case II rule is inconsistent. See DECISIONS D-3.
