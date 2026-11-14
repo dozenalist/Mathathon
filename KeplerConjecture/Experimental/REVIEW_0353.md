@@ -288,16 +288,23 @@ is over its boundary, not over space.
 | --- | --- | --- |
 | start | `12:11:31Z` | delivery; tree clean at `212d132` |
 | 20 min | `~12:31Z` | fixture frozen exactly; validator passing; §2 theorem closing (`41.85°` vs `48.88°`); Barlow Lemma 1′ verified for both types; `GAP_FIXTURE` covering radius confirmed `2/√3` |
-| 40 min | `~12:51Z` | high-precision volume confirmed (`5.898017371803720`, mpmath 40 digits vs float, `1.4e-15`); `K15-E078` withdrawn; this file written |
-| 60 min | `~13:11Z` | pushed; hashes recorded in §8 |
+| 40 min | `~12:51Z` | high-precision volume confirmed (`5.898017371803720`, mpmath 40 digits vs float, `1.4e-15`); `K15-E078` withdrawn; this file written; first push `0ae14cc` |
+| 52 min | `~13:03Z` | Main's `§3` crack volume table reproduced in every layer (`6.985349063` / `sqrt32`); two slips of mine caught by the `V_dodeca` floor and recorded in §5.4; second push `f3d7fdd` |
+| 60 min | `~13:11Z` | full check suite green; hashes above |
 
 ## 8. Hashes for Main's integration record
 
 ```
-source audited (Main)      b42c8d1   KeplerConjecture/Main/BARLOW_CELLS.md, GAP_FIXTURE.md
+source audited (Main)      b42c8d1    KeplerConjecture/Main/BARLOW_CELLS.md
+                                      KeplerConjecture/Main/GAP_FIXTURE.md
 source continued (E)       212d13292b2f86d6c9114b7160642228644942a3
-this block                 see the commit that adds this file; the tip is reported in chat
-artefacts                  Experimental/scripts/c5_fixture.py
-                           Experimental/evidence/c5_fixture.json
+this block, first push     0ae14cc4c88ea0e74bf9c7c361a6e610f1d7d01e   fixture + theorem + withdrawal
+this block, second push    f3d7fdd8989665e4675b847580d4a90a34416601   crack-table verification
+artefacts                  Experimental/scripts/c5_fixture.py       (validator, exit 0)
+                           Experimental/evidence/c5_fixture.json    (compact fixture data)
                            Experimental/REVIEW_0353.md
+ledger ids                 K15-E080, E081, E082, E083, E084; K15-E078 WITHDRAWN
 ```
+
+Run `python3 Experimental/scripts/c5_fixture.py` (0.6 s) for the fixture checks and
+`bash Experimental/scripts/run_all_checks.sh` (~35 s) for the whole suite.
