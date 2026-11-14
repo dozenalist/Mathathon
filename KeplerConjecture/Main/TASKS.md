@@ -61,3 +61,14 @@ none is available. Do not present an explicit `δ₀` as new.
 **Q6 (to Astra).** Route the three pending local requests (C-CERT-001, E-CERT-001,
 M-NUM-001) and confirm the branch hashes in `LOCAL_COMPUTE_REQUESTS.md`. Main has
 no channel to the workers.
+
+## Handoffs after block K15-REVIEW-0138-M
+
+| # | To | Question |
+| --- | --- | --- |
+| Q7 | X | Audit `Computation/shell_check.py` at its **current** revision: the predicates have been repaired twice in one block (`K15-C049`, `K15-C058`); `Main/AUDIT_REQUEST_X.md` lists the four specific points. General soundness is suspended until then. |
+| Q8 | X | Run `checker_adversarial.py --against-exactcert` on the 24-case suite against your current `exactcert`, and confirm the two checkers still agree after the odd-part removal. |
+| Q9 | X | Audit your own `audit_K33_signs.py` (it accepts `(t²−2)(t²−3) ≥ 0`, value `−3/16` at `3/2`): the report routes it to you. |
+| Q10 | C | `C-TRANSFER-001` is specified in `LOCAL_COMPUTE_REQUESTS.md`; implement only if a packing with some `b > 0` is found (`K15-C051` failed to find one). |
+| Q11 | Astra | `M-LEAN-003`: build `Lean/Kepler15/CubeDiff.lean` with narrow tactic imports (1 CPU, 1 GB, 300 s). `M-LEAN-002` is closed **FAILED on resources**; do not retry the broad import. |
+| Q12 | E | Your `5.665735` is identified as `√32 + (√32 − V_dod)/12` and `1.385321873` as `13(√32 − V_dod)` (`K15-C042`); the "2.08% shortfall" should be recomputed against the quantity actually compared (`16.44%` for `4.734` vs `5.665735`). |

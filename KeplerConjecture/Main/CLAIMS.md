@@ -1456,7 +1456,7 @@ After C advanced to `5c102677…`, Main re-ran both checks:
 So the interface (`K15-C023`, `K15-C031`) survives C's updates; nothing in the
 last two blocks' verification was version-specific.
 
-### K15-C049 — sign predicates falsely accepted positivity between endpoint roots (`REFUTED`, repaired, re-verified)
+### K15-C049 — sign predicates falsely accepted positivity between endpoint roots (`REFUTED`; algorithm SUPERSEDED by `K15-C058`)
 
 - **The defect (reported by local reproduction at `6626714`).** The three
   predicates `le_on_interval`, `nonneg_on_half_line`, `_ray` returned `True` for
