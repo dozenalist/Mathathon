@@ -1860,3 +1860,13 @@ reaching `111.000000` — **gap `0.05`**; `[110, 111]` at `0.3` gives `n = 3`, r
 first two cases the old script still prints "CERTIFIED for the whole region". `certify_region_v2.py` fixes
 it with `n = ceil(span/width)` and box width `span/n` plus an exact tiling assertion ✓. The defective file
 is still in the tree (`X-C107`).
+
+### K15-X-C121 — three Computation scripts only run with `cwd` = the repository root
+
+`interface_xcheck.py` (`X-C119`'s neighbour), `ce_laguerre.py` and `verify_comp_cert.py` open
+`KeplerConjecture/Computation/out/…` as a **relative** path, so they raise `FileNotFoundError` when run from
+inside `Computation/`. `run_all_checks.py` handles this (`cwd=str(HERE.parent.parent)`) and therefore passes
+18/18, but a reader following `Computation/README.md`'s per-script `python3 <script>.py` invocations will hit
+the error. Worth either resolving the path against `__file__` or documenting "run from the repository root".
+(`ce_laguerre.py` also exited `1` from the root with no output on my two attempts; I did not investigate
+further — it generates a Laguerre certificate and is not on the path I was asked to audit.)
