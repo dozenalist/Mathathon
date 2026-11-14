@@ -270,6 +270,22 @@ not volumes alone.
 * **No exact contact matching is assumed** anywhere for saturated packings; the only geometric input
   is the cell-volume partition identity, which holds for every packing.
 
+### 6.1 Remaining obligations, explicitly
+
+1. **Generic soundness** (the interface never certifies something false). Every *positive* output is
+   exactly verified, so this is discharged for flows and for cut witnesses; what remains is (a) that
+   `t*` from the scan equals the LP optimum — LP duality, checked numerically to `10⁻⁵` and exactly
+   on this fixture (both witnesses exhibited), not formalised; and (b) that the LP path's internal
+   floating point never turns an infeasible instance into a verified flow — impossible, since the
+   output is re-verified exactly, but worth stating as the reason.
+2. **The converse direction** — Kepler ⇒ a finite `Φ` works — remains open. `K15-C-CUTIMPLIES-003`
+   is one implication, and §2's fixture does not touch it.
+3. **The near-contact scan** stays `TESTED_FINITE` (500 instances, five families). It is not a
+   theorem and is not offered as one.
+4. **The dense-shell construction is one family.** The obstruction of §2.3 shows it cannot be
+   improved by adding contacts, but nothing here says that *some other* geometry cannot give a
+   larger `b(0)`; the 13-cluster's `0.1066` is the best in the record.
+
 ## 6. Files and reproduction
 
 ```bash

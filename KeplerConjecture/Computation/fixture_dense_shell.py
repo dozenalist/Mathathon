@@ -98,6 +98,10 @@ def self_test():
     check("the diameter is < 4.1, so period 8 leaves no wrap-around edge for R <= 3",
           2 * 2.01 < 8 - 3)
     E = FN.edges_within(L, sites, CONTACT_R)
+    # the edge range must EXCEED the shell radius: R = 2 would give a graph with no edges at all and
+    # a degree-zero centre.  (A second instance at r = 2.005 with the r = 2.0005 constant fell into
+    # exactly this trap, which is why export() now derives R from the radius actually used.)
+    check("the edge range exceeds the shell radius", F(R_SHELL) < CONTACT_R, (str(R_SHELL), str(CONTACT_R)))
     check("at R = 2.001 the graph has exactly the twelve shell edges",
           sorted(E) == [(0, j) for j in range(1, 13)], E[:5])
     check("at R = 2 it would have none (which is why R = 2.001 is the contact range)",
@@ -340,10 +344,16 @@ def family():
             hi = mid
     return lo, hi, central_volume(lo), central_volume(hi)
 
-def export(L, sites, vols, path=None):
+def export(L, sites, vols, path=None, R=None):
     b_lo = [CF.SQ32_LO - v for v in vols]
     b_hi = [CF.SQ32_HI - v for v in vols]
-    E = FN.edges_within(L, sites, CONTACT_R)
+    # the edge range must EXCEED the shell radius, or the graph has no edges at all and the centre
+    # is degree zero -- a trap this file fell into when a second instance was tried at r = 2.005
+    # with the r = 2.0005 constant.  Default: just above the shell radius actually used.
+    if R is None:
+        r_used = max(float(sum(c * c for c in p)) ** 0.5 for p in sites[1:])
+        R = F(int(r_used * 1000) + 1, 1000)
+    E = FN.edges_within(L, sites, R)
     d = dict(name="dense_shell_rational",
              note=("NONVACUOUS fixture: a rational 12-point icosahedral shell of radius ~2.0005 "
                    "around a central vertex, period 8 Z^3.  Exact rational cell volumes; "
@@ -353,6 +363,7 @@ def export(L, sites, vols, path=None):
              volumes_are_provisional=False,
              cell_volumes_exact=[str(v) for v in vols],
              period_volume_exact=str(abs(FN.det3(*L))),
+             edge_range=str(R),
              coordinates=[[str(c) for c in p] for p in sites])
     path = path or os.path.join(_OUT, "fixture_dense_shell.json")
     json.dump(d, open(path, "w"), indent=1)
