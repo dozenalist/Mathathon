@@ -143,3 +143,33 @@ blocked on an evaluator that my artifacts do not contain.
 Gaps: `K15-E014` inherits Musin–Tarasov's computer-assisted enumeration and needs a
 directed enclosure (rounded 57.1367 deg is not an upper bound); `K15-E030` target (T) is
 open; `K15-E031` ordering defect unrepair.
+
+### K15-EXP-004 — 2026-11-14, America/Los_Angeles — role E (Experimental)
+
+Continuous block. Branch `kepler15/experimental/run-01`, supervisor source
+`ec2596dce67a4c6a93157d291c2f8e2e58f5cfc3`. Ultramath not used; runtime mode unconfirmed.
+
+**`K15-E015` — PROVED (arithmetic).** `tammes13_enclosure.py` implemented and RUN on the
+SAIR VM in 0.25 s: rational interval arithmetic only (Fraction endpoints, `pi` enclosed by
+`333/106 < pi < 355/113`, Taylor sin/cos with explicit alternating remainder, no floating
+point in any decision). Root selection proved analytically: `g'(a) < 0` on `(0,pi/2)`
+because both terms are strictly negative, so `g` has at most one root; sign change
+certified on `[12113/10000, 12114/10000]`. Comparison made in cos-space, so no arccos
+occurs in the certificate. Result: `delta_13 < 57.146323807 deg` and
+`theta_min > 57.170897332 deg`, margin `+3.826e-04 > 0` CERTIFIED.
+
+**`K15-E014` — PROVED.** At most 12 centres of a 2-separated set lie in `[2, 2.09]`.
+Dependency disclosed: `d_13 = delta_13` is Theorem 1 of arXiv:1002.1439v3, proved there by
+computer enumeration of irreducible contact graphs; this block certifies only the
+arithmetic of the constant.
+
+**`K15-E031` — R1 withdrawn, precise failure.** (T) is not preserved under truncation: if
+all 12 neighbours of a defective centre are absorbed by earlier blocks the block is the
+singleton `{v}` and (T) reads `5.5502910285 >= 5.6568542495`, false. Rule R2 (components of
+the defective graph, block = `C union N(C)`) replaces it and reduces the route to two
+checkable statements: `(T') S(C) >= D(C)` and `(T'') diam(C) <= D_0`. Both open; the
+icosahedral component requires `S(C) >= 0.1065632`.
+
+Gaps: independent re-run and reading of the Taylor remainder argument (Astra/X);
+`K15-E013` Barlow shell check; (T') unproved; `K15-E020` still blocked on a three-point
+evaluator that my artifacts do not contain.

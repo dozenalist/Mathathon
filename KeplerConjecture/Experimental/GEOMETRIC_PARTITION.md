@@ -91,10 +91,82 @@ an unproved inequality as progress. The obstruction is specific:
   must never be absorbed into a block that does not repair it), and I have not constructed
   one. Recorded as `K15-E031`, status OPEN, and it is the first thing to repair.
 
-## Honest verdict
+## K15-E031 — precise failure of rule R1 (replaces the vague defect note)
 
-The rule is explicit, bounded (`diam <= 4.18`, `|K| <= 13`), and correct on FCC and HCP
-with equality. It is **not proved**, for two separate reasons: the target inequality (T)
-on the icosahedral block, and the ordering defect `K15-E031`. I make no claim that this
-route is simpler than Hales's; it reduces the global partition problem to one inequality
-about a specific 13-centre configuration, and that inequality is open.
+The rule creates blocks by consuming neighbours, and **(T) is not preserved under
+truncation**. Precisely: let `v` be defective with its 12 neighbours at distance exactly
+`2` (the icosahedral star). If earlier blocks have absorbed `k` of those neighbours, the
+block containing `v` has `1 + (12 - k)` members while the full deficit of `v` must still be
+paid.
+
+- `k = 12`: the block is the **singleton** `{v}`, so (T) reads
+  `5.5502910285 >= 5.6568542495`, which is **false**. Rule R1 can therefore emit a block
+  that provably violates its own target inequality.
+- `k = 11`: the block is `{v, w}` and (T) demands
+  `vol Omega(w) >= 2 sqrt(32) - 5.5502910285 = 5.7634174705`, just above `sqrt(32)`;
+  not impossible, but nothing available proves it.
+
+Whether a saturated packing realises `k = 12` is not settled here, so this is a
+**rule-internal failure**: the correctness of R1 cannot be established block-locally, and
+its target inequality is falsifiable at the level of arithmetic. R1 is withdrawn.
+
+## Revised rule R2 — one checkable inequality
+
+Define the **defective graph** `G_def` on `Lambda`: vertices are the defective centres
+(`vol Omega(v) < sqrt(32)`); an edge joins `u != v` when `|u - v| <= 209/100`. Let the
+blocks be
+
+```
+C_1, ..., C_m   = the connected components of G_def,
+Block(C_i)      = C_i  union  N(C_i),      N(C) = { w : 2 <= |w - v| <= 2.09, v in C },
+sound centres   = singleton blocks.
+```
+
+This is a partition by construction (components are disjoint, and every sound centre not in
+any `N(C_i)` is a singleton). Because `C_i` is a *full component*, every centre in
+`N(C_i) \ C_i` is **sound**, so each contributes a nonnegative surplus.
+
+Define, for a component `C`,
+
+```
+D(C) = sum_{v in C} ( sqrt(32) - vol Omega(v) )        (the deficit; > 0 on defective v)
+S(C) = sum_{w in N(C)\C} ( vol Omega(w) - sqrt(32) )   (the surplus; >= 0 by soundness)
+```
+
+Then (T) on `Block(C)` is **exactly equivalent** to
+
+```
+(T')      S(C)  >=  D(C)          for every component C of G_def .
+```
+
+That is the single checkable inequality. It is the classical compensation statement,
+localised to the defective components, and it is not a restatement of `K15-E001`.
+
+**Boundedness.** `diam Block(C) <= diam(C) + 2 (2.09)`, so the boundary loss in
+`K15-E001` Step 2 is controlled as soon as `diam(C) <= D_0` for some explicit `D_0`. This
+gives a second, separate obligation:
+
+```
+(T'')     diam(C) <= D_0      for every component C of G_def .
+```
+
+## Worked configurations under R2
+
+- **FCC, HCP**: every centre is sound, `G_def` is empty, all blocks are singletons, both
+  (T') and (T'') hold vacuously and (T) holds with equality `sqrt(32)`. ✔
+- **Icosahedral defect**: if the dodecahedral centre is the only defective centre nearby,
+  `C = {v}` is a singleton component and `Block(C)` is the full 13-cluster. Then (T')
+  reads `S(C) >= 0.1065632` with 12 surplus terms available. This is now a single, sharply
+  stated inequality rather than a family of cases. **Still unproved.**
+- **Two adjacent defective centres**: `C = {u, v}` with `|u - v| <= 2.09`. Then (T') must
+  be checked on the union of two large stars. This is a case the old rule could not even
+  state.
+
+## Honest verdict after the repair
+
+R1 is withdrawn with a precise arithmetic failure. R2 is well defined, produces a genuine
+partition, is correct on FCC and HCP with equality, and reduces the entire geometric route
+to two checkable statements (T') and (T''). **Neither is proved**, and (T') on the
+icosahedral component is the crux. I make no claim that this route is simpler than
+Hales's; its value is that it isolates one inequality about a specific configuration
+instead of an enumeration of standard regions.

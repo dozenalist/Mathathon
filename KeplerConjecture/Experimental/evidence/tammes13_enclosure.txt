@@ -1,0 +1,20 @@
+=== Tammes N=13 enclosure: certificate for rho = 209/100 ===
+pi in [3.14150943396226, 3.14159292035398]
+g(1.2113) = [0.00120503788683505, 0.00135752466875259]
+g(1.2114) = [-0.0017051666762499, -0.00155268902813996]
+sign change g>0 -> g<0 on [a_lo,a_hi]; g strictly decreasing on (0,pi/2)
+  => unique root a* in [a_lo, a_hi]
+
+cos(a_hi) >= 0.351709193286087241
+h(a*) >= h(a_hi) >= 0.542517631969590242
+threshold cos(theta_min) = 23681/43681 = 0.542135024381310004
+margin = 3.826076e-04  (>0 CERTIFIED)
+
+delta_13 < 57.146323807 deg   (rigorous upper bound)
+theta_min   > 57.170897332 deg   (rigorous lower bound)
+
+CONCLUSION: delta_13 < theta_min, so K15-E014 holds at rho = 209/100:
+  at most 12 centres of a 2-separated set lie in [2, 2.09].
+Dependency: identification d_13 = delta_13 is Theorem 1 of arXiv:1002.1439v3,
+which rests on a computer enumeration of irreducible contact graphs. This
+certificate covers the arithmetic of the constant only.
