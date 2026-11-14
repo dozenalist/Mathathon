@@ -1,6 +1,6 @@
 #Requires -Version 5.1
 
-[CmdletBinding()]
+[CmdletBinding(PositionalBinding = $false)]
 param(
     [string]$CodexThreadId,
 

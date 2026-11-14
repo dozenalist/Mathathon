@@ -146,8 +146,22 @@ $worker = {
         $parameters.ReasoningEffort = 'high'
     }
     $caughtError = $null
-    try { & $WatcherPath @parameters 6>$null }
-    catch { $caughtError = $_.Exception.Message }
+    $bindingError = $false
+    try {
+        if ($Mode -eq 'Positional') { & $WatcherPath @parameters 'unexpected-input' 6>$null }
+        else { & $WatcherPath @parameters 6>$null }
+    } catch {
+        $caughtError = $_.Exception.Message
+        $bindingError = $_.Exception -is [Management.Automation.ParameterBindingException]
+    }
+
+    if ($Mode -eq 'Positional') {
+        if (!$bindingError -or $fixture.wakes.Count -ne 0 -or $fixture.sends -ne 0 -or $fixture.creates -ne 0) {
+            throw 'Unexpected positional input was not rejected before side effects.'
+        }
+        [pscustomobject]@{Case=$Mode;Passed=$true}
+        return
+    }
 
     if ($Mode -eq 'Locked') {
         if ($caughtError -notlike 'Another watcher already owns*' -or $fixture.wakes.Count -ne 0 -or $fixture.sends -ne 0) {
@@ -198,7 +212,7 @@ try {
     Assert-Condition (@($results | Where-Object Passed).Count -eq 2) 'Concurrent watcher isolation failed.'
     $results | Format-Table -AutoSize
 
-    foreach ($mode in @('New', 'SendExisting', 'Resume')) {
+    foreach ($mode in @('New', 'SendExisting', 'Resume', 'Positional')) {
         & $worker $Watcher (Join-Path $testRoot $mode) $threadA 'alpha' $mode | Format-Table -AutoSize
     }
 
@@ -219,7 +233,7 @@ try {
     Assert-Condition ($collisionResult.Count -eq 1 -and $collisionResult[0].Passed) 'Shared state-file lock failed.'
     Assert-Condition (!(Test-Path -LiteralPath $collisionState)) 'An unowned state file was overwritten.'
 
-    Write-Output 'PASS: concurrent supervisors sharing a protected key, exact chat/project filtering, streaming suppression, duplicate events, delayed history, reset recovery, pagination, restart deduplication, initial and existing-chat sends, process locks, and stop isolation.'
+    Write-Output 'PASS: concurrent supervisors sharing a protected key, exact chat/project filtering, streaming suppression, duplicate events, delayed history, reset recovery, pagination, restart deduplication, initial and existing-chat sends, positional argument rejection, process locks, and stop isolation.'
 } finally {
     foreach ($job in $jobs) {
         if ($job.State -eq 'Running') { $job | Stop-Job }

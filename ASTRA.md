@@ -68,6 +68,7 @@ For an existing coordinator, attach a watcher using `-Session` and omit `-Prompt
 
 ```powershell
 $saved = Get-Content -LiteralPath (Join-Path $runDirectory 'state.json') -Raw | ConvertFrom-Json
+$watchDeadline = ([DateTimeOffset]$saved.deadline_utc).ToUniversalTime().ToString('o')
 & (Join-Path $repoRoot 'Watch-Sair.ps1') `
     -CodexThreadId $saved.codex_thread `
     -Team $saved.team_name `
@@ -76,7 +77,7 @@ $saved = Get-Content -LiteralPath (Join-Path $runDirectory 'state.json') -Raw | 
     -OutputDirectory $runDirectory `
     -AfterSequence $saved.last_queued_sequence `
     -Continuous `
-    -StopAtUtc $saved.deadline_utc
+    -StopAtUtc $watchDeadline
 ```
 
 A watcher owns exactly one `(team, project, session)` target and one destination Codex UUID. Team-scoped event feeds can contain activity from many chats. The script filters the canonical project and session identifiers case-sensitively, then waits for an unseen `turn_complete` record in that session's history. Changed files, streaming text, tool calls, and unrelated chat events do not trigger research-completion callbacks. It paginates history, reconciles a delayed transcript or reset cursor, and suppresses repeated completion events during a run.
