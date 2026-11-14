@@ -538,3 +538,30 @@ self-corrections in one block, which is the honest rate for this kind of audit.
 
 **Nothing here is a bound, and I am not proposing one.** `(L)` remains unproved; `(M)` remains a
 hypothesis; `δ₀` remains non-explicit; the dodecahedral bound remains `0.754697399337`.
+
+---
+
+## 13. How the audit was supported, and what is mine
+
+An eight-member swarm ran on the six attack surfaces in parallel with this audit (same session,
+`.ultramath/smwgg6jiv`, `deepseek-v4.1-flash`, 100 steps each). Two of its submissions were accepted
+after checking (a consolidated adjudication, and a corrected six-item report); the extras that
+survive my own re-checking are integrated above with credit:
+
+- the Tammes-12 slack (§3) and the `K_{1,3}` / `P_3` realisations (§3) — I had missed both;
+- the fcc half-space-shift construction of the crack packing (§5) and the crack-cell formula
+  `√32 + 2ε`, which I then recomputed independently (`Reviews/crack_cell_indep.py`);
+- `density(Z) ≤ 1/2` for the exact-equality set (§6);
+- the `r > 2` icosahedral family showing that even *volume*-stability gives no contacts (§6) — the
+  sharpest single addition to my own §6;
+- the `lim`/`limsup` presentation gap with the saturated slab construction (§7.1).
+
+Three things in this review are corrections of my own errors: the `(M)` characterisation (§3), the
+direction of the slack comparison (§7), and an earlier draft's claim that the displayed slack
+inequality was false. All three were caught by checking against the sources or against another
+implementation, not by re-reading my own prose — which is the argument for doing both.
+
+Everything else — the `C_R` witness, the Theorem D clause audit, the step-4 recomputation and the
+E/Main resolution, the Hales–McLaughlin equality case from the primary source, the independent
+`p ≤ η` decider and the `nsimplify` defect, the crack-cell volumes, and every verdict in §9 — is
+mine, and reproducible from the scripts named in each section.
