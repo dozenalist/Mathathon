@@ -166,6 +166,37 @@ chk("A15 contact pair (B-B) = 129/8", 2 * mpf(129) / 16, 16.125, tol=1e-12)
 chk("A15 A+B (NON-contact pair) = 127/8", (mpf(125) + mpf(129)) / 16, 15.875, tol=1e-12)
 chk("A15 A-B distance = sqrt5 (not 2)", sqrt(mpf(5)), 2.2360679774997896964, tol=1e-15)
 
+# --- K15-C116: the near-contact band -------------------------------------------------
+chk("critical separation 6/sqrt5", 6 / sqrt(mpf(5)), 2.683281572999747635, tol=1e-12)
+chk("(6/sqrt5)^2 = 36/5", (6 / sqrt(mpf(5))) ** 2, mpf('7.2'), tol=1e-15)
+chk("band width 6/sqrt5 - 2", 6 / sqrt(mpf(5)) - 2, 0.683281572999747635, tol=1e-12)
+chk("route needs 0.012718662083, a factor", (6 / sqrt(mpf(5)) - 2) / mpf('0.012718662083'), 53.723, tol=1e-2)
+
+# --- K15-C119: where the dodecahedral bound does work ----------------------------
+def inball(d):
+    return 8 / mpf(d) ** 3
+chk("inball bound at d = 2 is trivially 1", inball(mpf(2)), 1.0, tol=1e-12)
+chk("inball meets ML at d", (8 / mpf('0.754697399337')) ** (mpf(1) / 3), 2.1967082337, tol=1e-9)
+chk("inball meets the truth at d", (8 / mpf('0.740480489693')) ** (mpf(1) / 3), 2.21067782856, tol=1e-9)
+chk("inball at 6/sqrt5", inball(6 / sqrt(mpf(5))), 0.41408665, tol=1e-7)
+
+# --- K15-C121: explicit stability for <= 12-face cells --------------------------
+chk("V_dod*(1.045)^3", vdod * mpf('1.045') ** 3, 6.33380410563330904910)
+chk("that over sqrt32", vdod * mpf('1.045') ** 3 / sqrt(32), 1.11966895845012715101)
+chk("so b(v) is negative", sqrt(32) - vdod * mpf('1.045') ** 3, -0.676949856141, tol=1e-12)
+chk("inball threshold rho = (3V_dod/4pi)^(1/3)", (3 * vdod / (4 * pi)) ** (mpf(1) / 3), 1.098354117, tol=1e-9)
+chk("2*R_cell at rho=1.045", 2 * mpf('1.045') * sqrt(mpf(2)), 2.955706345, tol=1e-9)
+
+# --- K15-C122: the F<=20 target ------------------------------------------------
+a_ico = 12 / (sqrt(mpf(3)) * (3 + sqrt(mpf(5))))          # icosahedron edge, inradius 1
+V_ico = mpf(5) / 12 * (3 + sqrt(mpf(5))) * a_ico ** 3
+chk("icosahedron edge, inradius 1", a_ico, 1.3231690765, tol=1e-9)
+chk("icosahedron volume, inradius 1", V_ico, 5.0540561436, tol=1e-9)
+chk("V_ico * 1.045^3", V_ico * mpf('1.045') ** 3, 5.76751766492, tol=1e-9)
+chk("V_ico * 1.045^3 exceeds sqrt32 by (%)", 100 * (V_ico * mpf('1.045') ** 3 / sqrt(32) - 1), 1.956, tol=1e-3)
+chk("target c_F = sqrt32/1.045^3", sqrt(32) / mpf('1.045') ** 3, 4.95708216846, tol=1e-9)
+chk("inball c = 4pi/3 falls short (product)", 4 * pi / 3 * mpf('1.045') ** 3, 4.780105486434, tol=1e-9)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)

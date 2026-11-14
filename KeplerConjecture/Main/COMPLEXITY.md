@@ -13,7 +13,7 @@ Truth: `π/√18 = 0.740480489693`.
 | --- | --- | --- | --- | --- |
 | three-point, **lattices only** (CDS22) | `0.741506` | **`+0.00103`** (`0.14%`) | a finite LP + a positive-definite kernel check | general-position-free but lattice-restricted |
 | Hales | `0.740480489693` | 0 | interval arithmetic on `R⁵/R⁶` cells, `≈5×10³` planar maps, `≈10⁵` LPs of `10²`–`2×10³` constraints; equality case **not** computational | complete |
-| Hales–McLaughlin | `0.754697399337` | `+0.01422` | one cell inequality (dodecahedron) | pointwise |
+| Hales–McLaughlin | `0.754697399337` | `+0.01422` | **Kepler-scale** — hypermap classification, several hundred LPs, an interval-arithmetic prover, plus a local-deformation argument (see §1b; the old entry here said "one cell inequality", which was misleading) | pointwise |
 | three-point, general (CDS22) | `0.770271` | `+0.02979` | the same LP without the lattice restriction | complete |
 | Muder | `0.773055` | `+0.03257` | Barlow/stacked-specific | restricted |
 | Rogers simplex | `0.779635570044` | `+0.03916` | a simplex volume | pointwise |
@@ -61,11 +61,15 @@ Three cost observations that matter more than the numbers.
    relative to the analytic route: its *inequality* is hard and its *bookkeeping* is easy, while
    the two-point LP's inequality is easy and its sharpness impossible.
 
-**The honest comparison to Hales.** The pair route, if `(L)` were proved, would be a genuinely
-shorter proof of `δ ≤ π/√18` than Hales' — but it would still rest on a two-cell isoperimetric
-inequality that nobody has proved, and E's own best witness (`5.897967` against a required
-`5.763417`) shows the margin at the critical pair is only `1.19%`. So it is *promising*, not
-*short*.
+**The honest comparison to Hales, revised after reading the primary source (§1b).** An earlier
+version of this paragraph said the pair route "would be a genuinely shorter proof of
+`δ ≤ π/√18` than Hales'". That claim is **withdrawn**: the closest precedent for a multi-cell
+tightening — Hales–McLaughlin itself — is a Kepler-scale computation, so there is no evidence that
+a two-cell inequality would be cheap. What is defensible is narrower: if `(L)` were proved, the
+*remaining* step to `δ ≤ π/√18` would be the elementary bridge of `C106`, so the proof's cost
+would be the cost of `(L)` and nothing more. E's best witness (`5.897967` against a required
+`5.763417`, margin `1.19%`) shows `(L)` is at least not trivial. So it is *promising*, and its
+cost is *unknown*, not *short*.
 
 ## 2. The obstruction that decides the analytic route
 
@@ -80,6 +84,44 @@ would need `f` to vanish on the shell radii of a **continuum** of extremal packi
 leaving the level-2 class. The three-point class is the next step and its general bound is
 `0.770271`, so three-point alone does not close it either; what would is a level-3 object
 that is sharp — a well-known open problem, not a computation.
+
+## 1b. CORRECTION: the dodecahedral bound is **not cheap** (review 0523, primary source)
+
+An earlier version of this file put Hales–McLaughlin's cost down as "one cell inequality
+(dodecahedron)", which reads as a short argument and invites the inference that a *two*-cell
+inequality would also be cheap. **That is wrong, and the primary source says so.** Reading Hales &
+McLaughlin, *The Dodecahedral Conjecture* (`K15-C115` has the hash and quotations):
+
+- the proof **is a long computer calculation**. §3 lists three programs — "graph generation",
+  "a linear programming package", and "a piece of code based on interval arithmetic that
+  automatically proves nonlinear inequalities" — and refers to "several hundred linear programs";
+- the reduction is by **hypermaps**: *"each tame Voronoi graph can be encoded as a hypermap `H` …
+  the computer code repository specifies a hypermap system, called the Voronoi hypermap system,
+  for each case `H` arising in the classification"*, and infeasibility of each system is then
+  established by LP;
+- the two cases are `n ≤ 12`, which is Fejes Tóth's theorem, and `n ≥ 13`, which needs the whole
+  hypermap machinery plus a long **local-deformation** argument (§6, Theorems 6.2–6.3: "the
+  method … is to produce a deformation of the local configuration by moving one vertex `v` at a
+  time");
+- and on the relation to the other proof: *"the two solutions follow a similar outline and share
+  a significant number of methods. Both are based on long computer calculations. Computer code
+  was freely exchanged between the two projects."*
+
+**Consequences, stated plainly.**
+
+1. **`0.754697399337` is a Kepler-scale bound, not a cheap one.** So the pair route's promise
+   should not be phrased as "a shorter proof than Hales" on the strength of the ML precedent: the
+   closest precedent for a multi-cell tightening is itself a major computation plus a delicate
+   deformation argument.
+2. **The reparametrisation is the differentiator, not the scale.** ML's mechanism is a *weight
+   assignment* (an LP duality on clusters), not a two-cell volume inequality. A two-cell
+   inequality would be a different object, and `C106`'s bridge shows it would pay off differently
+   (monotonically in one constant). But nothing here suggests it is *easier*.
+3. **The paper confirms the pointwise family is rigid**, which is what `D19` records: *"With the
+   Dodecahedral problem, there is no such flexibility. The problem about finite clusters of balls
+   is fixed from the outset. This gives the problem a degree of rigidity that is not present in
+   the sphere packing problem."* That is an independent statement, from the primary source, that
+   the per-cell route has no room.
 
 ## 2a. The analytic gap, quantified exactly
 

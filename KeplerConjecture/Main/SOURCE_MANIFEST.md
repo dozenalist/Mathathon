@@ -148,3 +148,23 @@ suites. No Lean, no heavy solve.
 - Rejected versions preserved: `BARLOW_CELLS.md` §Lemma 1 (circular argument),
   `CLAIMS.md` `C087` (the "reorganisation" inference), `COMPLEXITY.md` §3 (same),
   `GEOMETRIC_LEMMA_0438.md` §4.1a (the `ρ = 1` and "unmatched" defects).
+
+## Review 0523 — sources
+
+- C `ae545b9a8757f165171ab0e60dab09cf98b1abd8` — `cut_flow.py`, `k15radicals.py`,
+  `audit_cut_flow_api.py`, `tests_cut_flow.py`, `out/fixture_C034_witness.json`
+- E `93c61a8b926eeece8ea0abff10e231757d76a2cc` — `Experimental/REVIEW_0353.md`
+- X `a35b71346d0f0e976b63c6da2a243fac64b75d0a` — `Counterexamples/REPORT_X040.md`
+- supervisor `194b40cffe972aed96e14ad0445da18728c14f5f` — `Main/REVIEW_2026-11-14_0438.md`,
+  `SUPERVISION.md`, `SYNC_2026-11-14_0438.json`
+- **primary source fetched this block:** Hales & McLaughlin, *The Dodecahedral Conjecture*, 6 pp.,
+  2 675 648 bytes, `sha256 beab1f4a6c41bfe02c719db3f16cd3a78c9a6666f3fe7b91fe3c72f939ef6960`,
+  from `https://www.cs.cmu.edu/~seanmcl/papers/McLaughlin-Dodec.pdf`. Read with
+  `pdftotext -layout` (139 128 bytes of text), spot-checked against the p. 2 page image. Quoted
+  at `K15-C115`. **Cited, not committed** — the repo carries the hash rather than a 2.6 MB
+  duplicate.
+- Main's new artifacts: `Main/REVIEW_0523.md`, `Computation/twist_cover.py`,
+  `Computation/twist_all_t.py`.
+- Rejected versions preserved: the `C093` worked-examples bullet (superseded); `C108`'s
+  "equality case is empty" and "exactly the Barlow family" (both retracted at `C113`); the
+  sampled twist grid (retracted at `C112`).

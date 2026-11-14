@@ -58,7 +58,8 @@ pair. It clears the brief's bar — with the bridge it yields `δ ≤ π/√18` 
 `0.754697…` — and it is strictly stronger than the published dodecahedral bound because
 `2V_dod = 11.100582 < 11.313708 = 2√32` and E's `E075` shows `2V_dod` is unattainable for a
 contact pair. **New here: `(P′)` holds with equality on every Barlow packing**, from `C094`, so
-its equality family is exactly the known extremal one.
+its equality family **contains** the whole Barlow family (one inclusion only — "exactly" is
+retracted at review 0523).
 
 **What was missing.** E's warrant for `(P′)` is "it implies the cut with `1.72%` margin"; that
 arithmetic is right but it is the 13-cluster cut only. A cut at one `U` is not a density bound.
@@ -93,10 +94,11 @@ matching this gives, unconditionally and with no fractional matching,
 δ(Λ) ≤ (4π/3)/(V_dod + δ₀ρ)  <  0.754697399337   whenever ρ > 0,
 ```
 
-where `ρ ≤ 1/2` is the matching density and `δ₀ = σ₀ − 2V_dod > 0` is **not explicit**. Two
-corollaries worth having: any saturated packing with a positive density of contact pairs is
-*strictly* below the dodecahedral bound, and **the equality case of the dodecahedral density
-bound is empty**.
+where `ρ ≤ 1/2` is the matching density and `δ₀ = σ₀ − 2V_dod > 0` is **not explicit**. One
+corollary survives: *if* `ρ > 0` a saturated packing is strictly below the dodecahedral bound —
+**conditional and non-quantitative, not a bound**. *(This file also claimed the equality case of
+the dodecahedral bound is empty; retracted at review 0523, see `C108`: the inference is
+average-to-pointwise and invalid.)*
 
 **What this is not.** Not a number. `δ₀` is non-explicit, so `RESULTS.md` does not move, and no
 universal lower-volume claim is accepted pending review.
@@ -127,10 +129,10 @@ Written because a referee looks here first; the details are `GEOMETRIC_LEMMA_043
   correct split is "not in an *internal* pair" — a vertex matched to a partner outside `B`
   contributes only `V_dod`. The inequality is unaffected; the justification is now right.
   Also recorded: **maximality is not doing analytic work**, only bookkeeping on `ρ`.
-- **Theorem D** survives its own audit, with one flagged dependency: it needs the *equality
-  case* of Hales–McLaughlin ("`vol Ω = V_dod` iff the regular dodecahedron"). That is standard,
-  and it is **not** re-derived here — **it is the softest link in the chain and the place a
-  referee should push.**
+- **Theorem D** survives its own audit. Its one flagged dependency was the *equality case* of
+  Hales–McLaughlin; that is now **verified against the primary source** and quoted verbatim at
+  `K15-C115`, together with Fejes Tóth's Theorem 4.1 as an independent second source. It was the
+  softest link and is now a cited quotation rather than trained knowledge.
 - **A negative result recorded rather than hidden.** The compressed symmetric pair family
   (`C109`) is too sparse to probe `(L)`: it gives pair sums `20.99`–`30.02`, far *above*
   `2√32`, and since computed volumes are upper bounds it is neither support nor counterexample.

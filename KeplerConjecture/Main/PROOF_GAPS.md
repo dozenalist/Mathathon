@@ -52,3 +52,22 @@ saturated packing with high density, or a replacement bridge that does not need 
 
 Unchanged from `AUDIT_REQUEST_X.md` item 5 and `PN-4`. Note C's report against revision
 `6626714` is a *stale revision* and is not evidence about the current file (`C103`).
+
+## G13 — the contact-matching density `ρ > 0` (review 0523)
+
+**Statement.** `ρ` is the density of a maximal matching of the **contact** graph (edges at
+distance *exactly* `2`). The bridge `C106`/`C108` is silent unless `ρ > 0`.
+
+**Why it is a real hypothesis, not a technicality.** Any **scaled** saturated packing — minimum
+separation `2 + ε` instead of `2` — has an empty contact graph and `ρ = 0`. So exact-contact
+matching can fail outright, and the pair route cannot bound contact-free packings at all.
+**Closure condition:** a proof that a *high-density* saturated packing has a positive density of
+contacts, or a replacement bridge that uses near-contacts at `2 + ε` instead of contacts.
+**Owner** M. Not on the critical path for `C094`.
+
+## G14 — the emptiness of the dodecahedral equality case (REOPENED at review 0523)
+
+Previously recorded as proved via `C108`. **Reopened**: the argument went from "the average cell
+volume equals the pointwise infimum" to "every cell is dodecahedral", which is invalid in a
+limit. What is proved is only: if `ρ > 0` (G13), equality is impossible. **Closure:** rule out
+`ρ = 0` at equality, or find another route.
