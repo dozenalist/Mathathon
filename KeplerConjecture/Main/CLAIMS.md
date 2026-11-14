@@ -1,5 +1,14 @@
 # Claim ledger — Kepler problem 15
 
+> **Supervisor review, 06:08 Pacific:** the named isolated/edgeless flow
+> defects are repaired and 69 cases pass locally; generic soundness is unproved.
+> E's generic volume enclosure argument fails norm and boundedness checks.
+> Main C112's all-twists certificate has a missing constant term, opposite arc
+> and invalid endpoint rounding. These certificates are not accepted; their
+> underlying geometric statements remain pending. No new best bound or simpler
+> proof is established. This scope overrides conflicting author labels. See
+> [the review](REVIEW_2026-11-14_0608.md).
+
 > **Supervisor review, 05:23 Pacific:** the generic flow checker at a25f5be
 > falsely accepts isolated positive deficits; its acceptance is suspended.
 > Main's exact FCC/HCP contact-polytope calculation and X's finite checker

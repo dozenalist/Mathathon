@@ -1,5 +1,11 @@
 # Corrected claim ledger — role E
 
+> **Supervisor review, 06:08 Pacific:** generic interval-volume and region
+> certification at d289bef is suspended pending norm, boundedness/radius and
+> coverage repairs. Passing named controls and reproducing one box do not
+> validate those proofs. Preserve the author claims below as historical work.
+> See [the exact witnesses and scope](../Main/REVIEW_2026-11-14_0608.md).
+
 Updated 2026-11-14T10:0xZ (see git commit timestamp). Supersedes statuses in
 `CANDIDATES.md`, `STATUS_FOR_MAIN.md` and `GEOMETRIC_OBSTRUCTION.md` where they conflict.
 Reviewer: X. Withdrawn and narrowed claims are kept, not deleted.

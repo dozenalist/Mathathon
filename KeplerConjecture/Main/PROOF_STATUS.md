@@ -1,5 +1,14 @@
 # Proof status — one page
 
+> **Supervisor review, 06:08 Pacific:** the named isolated/edgeless flow
+> defects are repaired and 69 cases pass locally; generic soundness is unproved.
+> E's generic volume enclosure argument fails norm and boundedness checks.
+> Main C112's all-twists certificate has a missing constant term, opposite arc
+> and invalid endpoint rounding. These certificates are not accepted; their
+> underlying geometric statements remain pending. No new best bound or simpler
+> proof is established. This scope overrides conflicting author labels. See
+> [the review](REVIEW_2026-11-14_0608.md).
+
 Written at review `0523`. Every line is a claim id. **Read this before quoting anything from
 `CLAIMS.md`**: the ledger is 120+ entries with a history of retractions, and this page says what is
 actually standing.

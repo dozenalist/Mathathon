@@ -1,13 +1,13 @@
 # Kepler Conjecture: progress so far
 
-Updated at the November 14, 2026, 05:23 Pacific scheduled review. An independent
-probe reproduced a serious flow-checker error, which is now assigned for repair.
-An exact contact-cell calculation passed locally. Eight short geometric
-searches found no counterexample, and the new general geometric argument is
-still under review. All four chats have new verified Ultramath assignments;
-their earlier work did not establish full substantive hours. No local job is
-still running. No new best packing bound, simpler Kepler proof or new Lean
-result is accepted. Checks continue every 45 minutes without Sair-Watch.
+Updated at the November 14, 2026, 06:08 Pacific scheduled review. The named
+flow-checker defects are repaired and pass local tests. Independent review
+found failures in two new geometric certificates; their numerical outputs
+are not accepted proofs. All four agents have fresh full-hour assignments
+with actual Ultramath verified. Earlier turns fell short of an hour, and
+those shortfalls are recorded. No local job remains running. No new best
+packing bound, simpler Kepler proof or new Lean result is accepted. The
+45-minute schedule continues without Sair-Watch.
 
 ## Where the project stands
 
@@ -304,6 +304,31 @@ density, but its matching hypothesis and compactness/equality arguments still
 need independent checking. Those are now explicit worker assignments, not
 accepted improvements. The [05:23 technical review](Main/REVIEW_2026-11-14_0523.md)
 records sources, objections and exact delivery evidence.
+
+## What the 06:08 scheduled review established
+
+The previously failing isolated-vertex and empty-graph examples now reject,
+and the repaired flow checker passes a 69-case audit locally. Computation
+also produced exact nonuniform cell fixtures and reports 500 finite examples
+with no positive transfer threshold. These cases do not yet test the difficult
+positive-deficit regime needed by the proposed general geometric approach.
+Its next task is a legal three-dimensional example that does.
+
+The new interval-volume implementation has a mismatch between its error norm
+and radius estimate. Its claimed radius validation also accepts an unbounded
+cell because it checks vertices without excluding infinite rays. We saved
+exact witnesses. A small requested box reproduces the author's numerical
+output, but agreement cannot make the proof sound. Experimental is repairing
+the argument and Counterexamples will audit it before a larger local sweep.
+
+Main's proposed all-twists certificate omits a constant in the distance
+formula and chooses the complement of the needed arcs. Its endpoint expansion
+also cannot certify a cover by strict clashes. This invalidates that certificate,
+not necessarily the underlying geometric impossibility statement. Main and
+Counterexamples have the concrete failures, and the broader pair-to-packing
+bridge remains unproved. The [06:08 technical review](Main/REVIEW_2026-11-14_0608.md)
+preserves sources, corrections, tests and the distinction between working
+claims and independently accepted results.
 
 ## How the next stages will run
 

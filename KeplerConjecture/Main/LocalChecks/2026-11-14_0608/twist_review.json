@@ -1,0 +1,39 @@
+{
+  "source": "8dc264e82edbf56df5cb36487b62abaafc43cfbb",
+  "path": "KeplerConjecture/Computation/twist_cover.py",
+  "status": "certificate_rejected; underlying impossibility remains pending",
+  "constant_witness": {
+    "a": [
+      -2,
+      0,
+      0
+    ],
+    "q": [
+      2,
+      0,
+      0
+    ],
+    "w": [
+      2,
+      0,
+      0
+    ],
+    "u": [
+      4,
+      0,
+      0
+    ],
+    "true_squared_distance": 36,
+    "implemented_constant": 20,
+    "missing_term": 16
+  },
+  "arc_witness": {
+    "c": 0,
+    "psi": 0,
+    "implemented_arc": "[-pi/2,pi/2]",
+    "true_strict_arc": "(pi/2,3pi/2) modulo 2pi",
+    "t0": "cos(0)=1 fails <0 but lies in implemented arc",
+    "tpi": "cos(pi)=-1 satisfies <0 but is outside implemented arc"
+  },
+  "rounding": "cover of supersets cannot certify cover by strict clash sets; use rigorously enclosed inner arcs"
+}

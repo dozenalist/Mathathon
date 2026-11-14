@@ -677,3 +677,24 @@ minutes. Prompt IDs, actual starts and earliest finishes are recorded in
 Main/ASSIGNMENTS_2026-11-14_0523.json. Sources, rejected artifacts and limitations
 are in Main/SYNC_2026-11-14_0523.json and Main/REVIEW_2026-11-14_0523.md.
 All local jobs ended; 45-minute checks persist and watchers remain stopped.
+
+## Supervisor checkpoint: November 14, 06:08 Pacific
+
+Merged M 8dc264e, C bf7998c, E d289bef and X ee1848c with original authorship.
+K15-SUP-0608-01 closes the named isolated/edgeless/negative-threshold flow
+regressions: independent witnesses reject and 69 cases pass. Generic soundness
+remains unproved. E's generic volume certification fails norm and boundedness
+validation (-02); Main C112's certificate omits a constant term, selects the
+opposite arcs and expands endpoints in the wrong direction (-03). Exact
+witnesses and one reproduced volume-box output are saved; numerical agreement
+does not validate either certificate. Broader geometric bridges, X's new
+checker and face-count reductions remain pending (-04). No new best bound,
+simpler proof or Lean result is accepted.
+
+All four early completions received one fresh full-hour assignment. Actual
+model calls verify Ultramath; Main also received evidence-only steering with
+no clock reset. ASSIGNMENTS_2026-11-14_0608.json records exact IDs and timing.
+All local jobs finished; the first box run's serialization failure and its
+bounded successful retry are preserved. SYNC_2026-11-14_0608.json and
+REVIEW_2026-11-14_0608.md record the sources, scope and next tasks. Checks stay
+at 45 minutes; no watcher was launched or restarted.

@@ -179,3 +179,20 @@ earliest finishes. A navigation URL accidentally entered Main's queue was
 withdrawn before delivery; its private ID is retained for deduplication.
 All local jobs finished. Next check: review the new repairs and geometric
 proof obligations, preserving the 45-minute schedule and stopped watchers.
+
+### 06:08 review
+
+All four previous blocks ended early (18.648/51.273/37.352/40.369 elapsed
+minutes). Computation was left uninterrupted while busy, then refilled when
+its completion arrived during this scheduled check. All four new website
+prompts have confirmed delivery and actual Ultramath model-call evidence.
+Main's evidence steering did not reset its hour. Exact IDs, starts and earliest
+finishes are in ASSIGNMENTS_2026-11-14_0608.json. A full hour remains a requirement
+to audit, not a promise that the runtime will obey.
+
+The prior X block used an internal eight-member swarm and then recorded a stop
+and closure. The supervisor did not launch/resume it; all new prompts explicitly
+prohibit extra sessions and swarm utilities. Preserve this operational evidence
+without calling it proof of extra top-level owned chats. All local jobs finished.
+Next check: verify geometric certificate repairs and a nonvacuous 3D fixture,
+route independent reviews through Main, and continue the 45-minute schedule.

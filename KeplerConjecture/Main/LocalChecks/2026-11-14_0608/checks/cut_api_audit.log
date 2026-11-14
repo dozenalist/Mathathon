@@ -1,0 +1,101 @@
+====================================================================================================
+A.  THE REVIEW'S WITNESS: b = (-1,-1,-1,-1,+1), edges on 0..3, every path must reject
+====================================================================================================
+  PASS the retained witness file has 5 vertices and 4 edges
+  PASS hand expectation: infeasible (vertex 4 isolated, b=+1)
+  PASS oracle: infeasible at Phi = 1
+  PASS oracle: infeasible at Phi = 1e6
+  PASS verify_flow_exact REJECTS the zero flow (ok_div False)   (True, False)
+  PASS verify_flow_exact returns a divergence of length len(b)   5
+  PASS verify_flow_exact shows div(4) = 0 < b(4) = 1   (5, [Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)])
+  PASS feasible_flow returns None at Phi = 1
+  PASS feasible_flow returns None at Phi = 1e6
+  PASS find_violating_cut finds the obstruction
+  PASS ... the unbounded one, at U = {4}   (Fraction(1000000000000000000, 1), (4,))
+  PASS ... with sum_b = +1   (Fraction(1, 1), 0)
+  PASS singleton_bounds flags exactly vertex 4   [4]
+  PASS exhaustive_cut_scan gives t* = +inf   Fraction(1000000000000000000, 1)
+
+  the external evaluator must not emit PATCH_FEASIBLE for it:
+  PASS evaluate_external reports no flow   [{'kind': 'flow', 'status': 'NO_FLOW'}]
+  PASS evaluate_external does not print PATCH_FEASIBLE
+  PASS evaluate_external reports the unbounded cut   [{'kind': 'violating_cut', 'U': [4], 'sum_b': '1', 'boundary': 0, 'phi_threshold': '1000000000000000000'}, {'kind': 'flow', 'status': 'NO_FLOW'}]
+
+====================================================================================================
+B.  THREE-WAY AGREEMENT: hand expectation / exact oracle / implementation, every path
+====================================================================================================
+  PASS A1 the review's witness: vertex 4 isolated with b=+1, delta^+ Phi=1      feasible=False   {'hand': False, 'oracle': False, 'flow': False, 'scan': False, 'cut': True}
+  PASS A2 same, at Phi = 1e6: no finite capacity helps               Phi=1000000 feasible=False   {'hand': False, 'oracle': False, 'flow': False, 'scan': False, 'cut': True}
+  PASS A3 same, at Phi = 0                                           Phi=0      feasible=False   {'hand': False, 'oracle': False, 'flow': False, 'scan': False, 'cut': True}
+  PASS A4 edgeless, one positive vertex: its own cut, empty boundary Phi=0      feasible=False   {'hand': False, 'oracle': False, 'flow': False, 'scan': False, 'cut': True}
+  PASS A5 edgeless, all deficits non-positive: phi = {} works        Phi=0      feasible=True   {'hand': True, 'oracle': True, 'flow': True, 'scan': True, 'cut': False}
+  PASS A5 the returned flow verifies exactly
+  PASS A6 two disconnected components, each with one unit to move ov Phi=1      feasible=True   {'hand': True, 'oracle': True, 'flow': True, 'scan': True, 'cut': False}
+  PASS A6 the returned flow verifies exactly
+  PASS A7 two components, the second has an isolated positive vertex Phi=1000000 feasible=False   {'hand': False, 'oracle': False, 'flow': False, 'scan': False, 'cut': True}
+  PASS A8 zero capacity, zero demand: phi = 0                        Phi=0      feasible=True   {'hand': True, 'oracle': True, 'flow': True, 'scan': True, 'cut': False}
+  PASS A8 the returned flow verifies exactly
+  PASS A9 zero capacity, one unit of demand: impossible until Phi >= Phi=0      feasible=False   {'hand': False, 'oracle': False, 'flow': False, 'scan': False, 'cut': True}
+  PASS A10 all deficits negative: feasible with phi = 0 even though s Phi=0      feasible=True   {'hand': True, 'oracle': True, 'flow': True, 'scan': True, 'cut': False}
+  PASS A10 the returned flow verifies exactly
+  PASS A11 path of length 3: INFEASIBLE -- vertex 1 needs 2 units, fo Phi=1      feasible=False   {'hand': False, 'oracle': False, 'flow': False, 'scan': False, 'cut': True}
+  PASS A12 b(2) = 0 on an end vertex: a transfer must exist with div( Phi=1      feasible=True   {'hand': True, 'oracle': True, 'flow': True, 'scan': True, 'cut': False}
+  PASS A12 the returned flow verifies exactly
+
+====================================================================================================
+C.  MALFORMED EDGE LISTS: rejected explicitly, by every path, never silently repaired
+====================================================================================================
+  PASS M1 self-loop                              verify_flow_exact raises
+  PASS M1 self-loop                              feasible_flow raises
+  PASS M1 self-loop                              find_violating_cut raises
+  PASS M1 self-loop                              exhaustive_cut_scan raises
+  PASS M2 duplicate edge, same orientation       verify_flow_exact raises
+  PASS M2 duplicate edge, same orientation       feasible_flow raises
+  PASS M2 duplicate edge, same orientation       find_violating_cut raises
+  PASS M2 duplicate edge, same orientation       exhaustive_cut_scan raises
+  PASS M3 duplicate edge, reversed orientation   verify_flow_exact raises
+  PASS M3 duplicate edge, reversed orientation   feasible_flow raises
+  PASS M3 duplicate edge, reversed orientation   find_violating_cut raises
+  PASS M3 duplicate edge, reversed orientation   exhaustive_cut_scan raises
+  PASS M4 edge index out of range                verify_flow_exact raises
+  PASS M4 edge index out of range                feasible_flow raises
+  PASS M4 edge index out of range                find_violating_cut raises
+  PASS M4 edge index out of range                exhaustive_cut_scan raises
+  PASS M5 not a pair                             verify_flow_exact raises
+  PASS M5 not a pair                             feasible_flow raises
+  PASS M5 not a pair                             find_violating_cut raises
+  PASS M5 not a pair                             exhaustive_cut_scan raises
+
+====================================================================================================
+D.  FLOW DICTS THAT ARE NOT FLOWS
+====================================================================================================
+  PASS D unknown key raises FixtureError
+  PASS D non-antisymmetric raises FixtureError
+  PASS D capacity violated is rejected by ok_cap   (False, True)
+
+====================================================================================================
+D2. THE LOADER's own validation (untested before this block)
+====================================================================================================
+  PASS D2 length mismatch is rejected by the loader
+  PASS D2 b_lo > b_hi is rejected by the loader
+  PASS D2 edge out of range is rejected by the loader
+
+====================================================================================================
+E.  INTERVAL ENDPOINTS: the two directions are not interchangeable
+====================================================================================================
+  PASS with b_lo the edgeless instance is feasible
+  PASS with b_hi it is not
+  PASS with b_lo no cut is violated
+  PASS with b_hi the empty-boundary cut is violated
+  PASS the straddling fixture claims no flow
+  PASS ... and no violation either (b_lo does not violate)   [{'kind': 'flow', 'status': 'NO_FLOW'}]
+
+====================================================================================================
+F.  THE OLD API's BLIND SPOT, AS A REGRESSION GUARD
+====================================================================================================
+  PASS F verify_flow_exact's divergence has len(b) entries   5
+  PASS F the isolated vertex is inside it   [Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)]
+  PASS F feasible_flow refuses rather than falling back to the edge range
+
+RESULT: 69 checks, 0 failed
+ALL AUDIT CHECKS PASS

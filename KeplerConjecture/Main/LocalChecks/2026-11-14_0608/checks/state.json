@@ -1,0 +1,39 @@
+{
+  "started_utc": "2026-11-14T14:17:24.424412+00:00",
+  "status": "finished",
+  "cpu_affinity_bit": 1,
+  "memory_cap_bytes": 1073741824,
+  "jobs": [
+    {
+      "name": "cut_api_audit",
+      "role": "Computation",
+      "script": "Computation/audit_cut_flow_api.py",
+      "cap_seconds": 60,
+      "exit_code": 0,
+      "status": "completed",
+      "elapsed_seconds": 3.031,
+      "peak_observed_bytes": 89968640
+    },
+    {
+      "name": "volume_controls",
+      "role": "Experimental",
+      "script": "Experimental/scripts/rigorous_cell_volume.py",
+      "cap_seconds": 90,
+      "exit_code": 0,
+      "status": "completed",
+      "elapsed_seconds": 24.61,
+      "peak_observed_bytes": 18579456
+    },
+    {
+      "name": "one_box",
+      "role": "Experimental",
+      "script": "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0608\\one_box.py",
+      "cap_seconds": 120,
+      "exit_code": 1,
+      "status": "completed",
+      "elapsed_seconds": 66.203,
+      "peak_observed_bytes": 20897792
+    }
+  ],
+  "finished_utc": "2026-11-14T14:18:58.268562+00:00"
+}
