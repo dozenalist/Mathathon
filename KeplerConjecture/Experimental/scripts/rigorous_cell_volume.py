@@ -308,6 +308,34 @@ def box_volume(theta_box, phi_box):
     return sandwich(out, F(3, 2))
 
 
+def box_scaling(kmax=14):
+    """How the certified enclosure width scales with the box width.  This is the number the
+    branch-and-bound needs: it converts 'the atom works' into 'the B&B needs N boxes'."""
+    print("\nBOX-SIZE SCALING around (theta, phi) = (111.7975, 36) degrees")
+    print("   k   box width (deg)        certified enclosure            width")
+    centre_t, centre_p = F(1117975, 10 ** 4) / 180, F(36, 180)
+    rows = []
+    for k in range(kmax + 1):
+        w = F(1, 2 ** k) / 10          # degrees
+        half = w / 2 / 180             # in units of pi
+        tb = (centre_t - half, centre_t + half)
+        pb = (centre_p - half, centre_p + half)
+        v_in, v_out, ni, no = box_volume(tb, pb)
+        rows.append((k, w, v_in, v_out))
+        print(f"  {k:3d}   {float(w):12.8f}     [{float(v_in):.10f}, {float(v_out):.10f}]"
+              f"   {float(v_out - v_in):.2e}")
+    for k, w, a, b in rows:
+        if float(b - a) < 1e-3:
+            print(f"\n  enclosure width first drops below 1e-3 at k = {k}, "
+                  f"box width {float(w):.6f} deg")
+            th_span = (120 - 106) / float(w)
+            ph_span = (36 - 22) / float(w)
+            print(f"  covering theta in [106,120] and phi in [22,36] at that width needs about "
+                  f"{th_span*ph_span:.3g} boxes")
+            break
+    return rows
+
+
 def box_demo():
     print("\nNONTRIVIAL BOX: theta/pi in [111.70, 111.90]/180, phi/pi in [35.5, 36.5]/180")
     tb = (F(11170, 18000), F(11190, 18000))
@@ -320,6 +348,10 @@ def box_demo():
 
 
 if __name__ == "__main__":
+    import sys as _sys
     rc = main()
-    box_demo()
+    if "--scaling" in _sys.argv:
+        box_scaling()
+    else:
+        box_demo()
     sys.exit(rc)
