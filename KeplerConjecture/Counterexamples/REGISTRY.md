@@ -1560,3 +1560,15 @@ completeness guarantee for arbitrary input, and the `0.0` is silent, but I could
 family I tried (three faces through a common point with normals `δ` apart keep their vertex to
 `δ = 10⁻⁸`), and on its actual inputs it agrees with the exact routine (`V12 = Vfull = 5.656854249492`
 on all 34 layer analyses, `0` violations). `audit_volume_filter.py`.
+
+### K15-X-C092 — `4cos ρ_c` is not attained: the true two-dodecahedra threshold is ≈ 4.7, not 3.18
+
+`c133_attain.py` (exit 0): at `d = 4cos ρ_c` the placement of `p`'s icosahedron is *forced* to the
+face-centre alignment (`|p+2v_j| ≥ 2` needs `v_j·e ≥ −d/4`, and the covering radius gives
+`max_j(−v_j·e) ≥ cos ρ_c`), and in that alignment the best twist leaves a pair at **`1.214124`**.
+`c133_threshold.py`: maximising the minimum pairwise distance over the relative rotation gives
+`1.2141, 1.2559, 1.4659, 1.7222, 1.8693, 2.000000` at `d = 3.18, 3.5, 4.0, 4.4, 4.6, 4.8` — so two
+dodecahedral cells coexist from about `d = 4.7` on this family, and the true threshold is in
+`[3.1786, 4.8]`. C133's constant is a valid **bound** (sufficient for `C124`, which needs `d ≤ 3`) and
+must not be quoted as the threshold. The `2.000000` values are the cap, not evidence of contact: `w` and
+`p` each have twelve contacts at exactly 2.
