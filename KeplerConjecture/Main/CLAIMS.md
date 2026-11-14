@@ -1860,3 +1860,29 @@ directions on degree-33 data. Two corrections from Main:
 - **What stands regardless.** Direction 2 exercises a certificate produced by the
   monomial pipeline and confirms it under the Laguerre checker; that is the
   strongest coupling the project has between the two bases.
+
+### K15-C067 — C044's quantifier, made precise (`PROVED`; the objection X is asked to audit)
+
+`K15-C044` states the criterion for a *finite* graph. For an infinite packing two
+things must be said.
+
+1. **Necessity is local.** For every finite `U ⊆ Λ`, summing `A(v) ≥ b(v)` over `U`
+   gives `Σ_U b ≤ Σ_{edges leaving U} φ ≤ Φ|δ⁺_R(U)|`. No compactness is needed. ✓
+2. **Sufficiency needs compactness, and the degree bound supplies it.** Hoffman's
+   theorem is finite. On an infinite graph one applies it to an exhaustion
+   `U_1 ⊂ U_2 ⊂ …` and takes a cluster point of the resulting flows in the product
+   `∏_e [−Φ, Φ]`, which is compact by Tychonoff **provided the product is over a
+   set of edges** — it always is — and the limit is a flow because each vertex has
+   finitely many incident edges, i.e. **bounded degree**. That is exactly what
+   `K15-C054` gives at `R ≤ 2.09` (degree ≤ 12). So sufficiency holds for the
+   packings we care about, *and the bounded-degree hypothesis is not decoration*: on
+   an unbounded-degree graph the limit argument fails because a vertex could
+   accumulate infinitely many edges.
+3. **Novelty check (Main's reading, for X).** "A bounded-range antisymmetric
+   transfer is negligible" is a discrete divergence/Stokes statement with an
+   explicit boundary count; it is **not a new idea** — Hales' `A` is built from
+   transfers and his four-way cancellation (Lemma 7.10) is the antisymmetry
+   bookkeeping. What is new here is only the *packaging*: it makes negligibility a
+   two-line estimate with a packing-independent constant and isolates the remaining
+   obligation (an analytic averaged cell bound). Claiming more than that would be
+   overreach.
