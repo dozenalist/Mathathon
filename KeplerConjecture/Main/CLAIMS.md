@@ -1557,3 +1557,20 @@ last two blocks' verification was version-specific.
   errors: the ledger's percentages (5.29%, 1.92%) are correct. The placeholders
   were replaced by the exact values with a `1e−5` tolerance.
 - **Status.** `VERIFIED`. Reviewer X: run it before quoting any constant.
+
+### K15-C053 — one command runs every check (`VERIFIED`: 8/8 in 6.8 s)
+
+- **Artifact.** `Computation/run_all_checks.py`: runs the constants re-derivation,
+  the sign-predicate self-test, the 19 adversarial cases, the differential fuzz, the
+  transfer-lemma fixture, the cluster fixture and the interface dictionary, and —
+  with `--cert` — a certificate verification. Final run: **8 checks, 0 failed,
+  6.8 s, 1 core**.
+- **Why it matters for the next block.** The review-0138 defect survived both a
+  self-test and a hand-written adversarial suite; what finally caught it was a
+  *local reproduction of the reported inputs*. A single entry point makes such a
+  regression runnable in one command by Astra and by X, so a repair cannot be
+  reported as complete without it.
+- **Reproduce.**
+  `python3 KeplerConjecture/Computation/run_all_checks.py --cert <certificate.json>`
+  (`--quick` skips the fuzz).
+- **Status.** `VERIFIED`. Reviewer X.
