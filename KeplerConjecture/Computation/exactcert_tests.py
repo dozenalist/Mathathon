@@ -73,6 +73,22 @@ def main():
     except FileNotFoundError:
         print("  SKIP  out/certificate_K21.json absent")
 
+    print("T5b every retained candidate file declares REFUTED and is rejected")
+    for K in (9, 11, 13, 15, 17, 19, 21):
+        path = "out/certificate_K%d.json" % K
+        try:
+            blob = json.load(open(path))
+        except FileNotFoundError:
+            print("  SKIP  %s absent" % path)
+            continue
+        check("%s declares status REFUTED" % path, blob.get("status") == "REFUTED",
+              blob.get("status"))
+        check("%s keeps the old claim as declared_status_original" % path,
+              "declared_status_original" in blob, list(blob.keys())[:4])
+        cc = [F(str(x)) for x in blob["certificate"]["c"]]
+        rr = EC.certify(cc, verbose=False)
+        check("%s is rejected by the repaired checker" % path, rr["ok"] is False, rr["reason"])
+
     print("T6 independent oracle agreement (sympy), random low-degree c")
     try:
         import random
