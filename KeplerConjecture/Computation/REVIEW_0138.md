@@ -611,3 +611,37 @@ still being admissible.
 
 Both sides are now demonstrated at `≈2` or better with an explicit rational Gram. The gap to
 `0.78` remains the open quantitative question, and it is a search-power gap, not a structural one.
+
+## 15. The headline obligation is closed: explicit rational Gram on BOTH sides
+
+`REVIEW_0138.md` §10 item 1 asked for **one** certificate with an explicit rational Gram on both
+the `p` and the `q` side. `sos_both_sides.py` supplies it. Both sign conditions are algebraic
+identities, verified by expanding finite sums of squares — **no Sturm sequence, no root counting,
+and no dependence on any checker** (including Computation's own, and deliberately excluding Main's
+`shell_check`).
+
+$$f = e^{-\pi|x|^2}p(u),\qquad \widehat f = e^{-\pi|y|^2}q(u'),$$
+
+**`p`-side** (certifies `f ≤ 0` for `|x| ≥ 2`, since `12 < 4π = 12.566371`):
+
+$$-p(u) \;=\; (u-12)\Bigl[\bigl(\tfrac43\bigr)^2 + \bigl(-\tfrac{37}{3}\bigr)^2
++ \bigl(\tfrac{101}{12}u + \tfrac14\bigr)^2 + \bigl(-\tfrac{13}{6}\bigr)^2\Bigr],$$
+
+**`q`-side** (certifies `\widehat f ≥ 0` everywhere; a Markov–Lukács decomposition for the
+half-line, with both `σ₀` and `σ₁` explicit sums of rational squares):
+
+$$q(u) \;=\; \Bigl(22u - \tfrac{7250725477}{114904064}\Bigr)^2 \;+\; \tfrac{73964663853612149}{39608831771148288}
+\;+\; u\Bigl(\tfrac{101}{12}u - \tfrac{36667}{1616}\Bigr)^2 .$$
+
+Then `p(0) = 7615/4`, `q(0) = 1529773/384`, and
+
+$$\Delta \;\le\; \frac{4\pi}{3}\cdot\frac{731040}{1529773} \;=\; 2.0017173733\ldots$$
+
+**Scope, stated hard:** this does **not** improve on Cohn–Elkies' `0.779747` nor on the LP-optimal
+`0.77996622`; it is `2.7×` Kepler. Its value is that it is the *first* certificate in this
+directory whose two sign conditions are checkable by hand, and it demonstrates that the
+explicit-Gram format is not confined to toy strengths. The `q`-side coefficients came from solving
+the Markov–Lukács system exactly (a one-parameter rational search for `p₁` with `k > 0`), not from
+a search over certificates.
+
+**Reproduce:** `python3 sos_both_sides.py` (< 1 s); data in `out/sos_both_sides.json`.

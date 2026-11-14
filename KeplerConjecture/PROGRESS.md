@@ -600,3 +600,15 @@ independent routes. Every status is `VERIFIED_EXACT`, `PROVED`, `TESTED_FAMILY` 
 **Both sides are now demonstrated at ≈2 or better with an explicit rational Gram.** The gap to
 `0.78` is a search-power gap, not a structural one — which is the block's most useful conclusion
 for Main and revises `K15-C-SOSWHY-001`.
+
+### K15-COMP-034 — 2026-11-14 — Computation (role C), BOTH-SIDES explicit Gram (headline obligation closed)
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-BOTHSIDES-001** | **VERIFIED_EXACT (both sides by algebraic identity)** | a single certificate with an explicit rational Gram on **both** sides exists: `−p = (u−12)[(4/3)² + (−37/3)² + (101u/12+1/4)² + (−13/6)²]` and `q = (22u − 7250725477/114904064)² + 73964663853612149/39608831771148288 + u(101u/12 − 36667/1616)²`, giving **`Δ ≤ 2.0017173733`**. Both sign conditions are identities verified by expanding finite sums of squares — **no Sturm, no root counting, no checker at all** | `sos_both_sides.py`, `out/sos_both_sides.json` |
+
+**This closes `REVIEW_0138.md` §10 item 1**, the headline open obligation from the last block.
+Scope stated hard: it does **not** improve on `0.779747` or `0.77996622`; it is `2.7×` Kepler. Its
+value is that both sign conditions are hand-checkable and the format is shown not to be confined
+to toy strengths. The `q`-side coefficients came from **solving the Markov–Lukács system exactly**
+(a one-parameter rational search for `p₁` with `k > 0`), not from searching over certificates.
