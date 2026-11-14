@@ -917,3 +917,25 @@ Consequences, stated plainly:
 - This is a small, clean loose end for the next block: run the fixed harness once to completion
   and either record a better `sum12` or record that it still cannot improve on the sparse
   baseline.
+
+### 14.1 The lemma's premise, checked numerically
+
+The decomposition lemma rests on fact 1: distinct components have disjoint `R`-neighbourhoods.
+Checked directly on the `2x2x2` icosahedral grid (eight defects, spread over `9`-unit spacing):
+
+```
+defects = 8,  components = 8
+component pairs checked: 28
+pairs with NON-DISJOINT R-neighbourhoods: 0
+min defect-defect distance = 9.000000   (required to exceed 2R = 4.18)
+```
+
+So the premise holds with a wide margin on the only multi-defect fixture available, and the
+margin is structural rather than accidental: the smallest legal separation of two icosahedral
+motifs is `5.5` (Section 3.6), already above `4.18`, and on a grid it is larger still.
+
+**Caveat.** Eight defects is not a proof; the lemma in Section 14 is the proof, and this is a
+check that the lemma's hypothesis is not vacuous. Note also that the same grid reports `195` of
+`203` cells flagged unreliable, so its `S - D` figures are among the retracted ones — the
+distance-only content is what survives here, which is exactly why the overlap check is the
+useful thing to have run.
