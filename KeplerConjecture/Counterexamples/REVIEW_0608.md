@@ -108,6 +108,19 @@ volume**; E's `sandwich(centres, R=2)` returns `[1.3333333333333333, 1.333333333
 regular tetrahedron (`8/3`) self-tests pass, and the fcc control encloses `4√2` at
 `[5.656854249492, 5.656854249492]`. The defect is in the enclosure argument, not the arithmetic.
 
+**The repair is cheap, and I implemented it to be sure.** `Reviews/twist/repaired_sandwich.py`
+makes the two changes and nothing else — slack `R·√3·(e + QERR) + f + QERR`, and the box
+`|y_i| ≤ R` on both polytopes — and the fcc control still closes, at width `1.4·10⁻¹⁸`, for
+`R = 2, 3, 4`. So the norm fix costs nothing numerically.
+
+**But the box alone does not detect unboundedness**, and that is worth stating because it is
+tempting to think it does: on the `{|x|≤1, |y|≤1, z≥−1}` witness the boxed version returns
+`[12.000000, 12.000000]` — finite, and *not* the cell's volume, because the box cut it. What
+detects it is a **saturation check**: if `Ω(w) ⊆ B(w,2)` is to be used, every point of the outer
+polytope must be within 2 of some centre, and on that witness **4 of the 8 outer vertices fail the
+test**. So requirement (1) below is really "boundedness *plus* the covering check that licenses
+`R = 2`", not "add a box".
+
 **What a repair must do** (the five requirements, in the order they bind):
 
 1. **boundedness** — prove it, don't inherit it: either exhibit a positive combination of the

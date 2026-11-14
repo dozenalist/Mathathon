@@ -1011,3 +1011,17 @@ form `√32(|B|−|E_B|) − (√32−V_dod)(Σd_v + C_R')` with difference
 `−(√32−V_dod)Σd_v − V_dod C_R' ≤ 0`. If a non-empty `E` is kept alongside `d`, it is **false**
 (`R = 0`, `B = {v}`, `v ∈ E`, `d_v = 0`, `vol Ω(v) = V_dod` reads `V_dod ≥ √32`). Each of the three
 files should state `E = ∅` or use the derived form.
+
+### K15-X-C063 — the repair for E's cell certifier is cheap, and the box alone is not enough
+
+`Reviews/twist/repaired_sandwich.py`. Two changes to E's `sandwich`: slack
+`R·√3·(e + QERR) + f + QERR` (the Euclidean norm, `X-C060`), and the box `|y_i| ≤ R` on both
+polytopes (`X-C061`). **The fcc control still closes** at width `1.4·10⁻¹⁸` for `R = 2, 3, 4`, so
+the norm fix is free. **But the box does not detect unboundedness**: on the
+`{|x|≤1, |y|≤1, z≥−1}` witness the boxed sandwich returns `[12.000000, 12.000000]`, finite and not
+the cell's volume, because the box cut it. What detects it is a **saturation check** — every outer
+vertex within 2 of some centre, which is what licenses the a-priori bound `R = 2` — and on that
+witness 4 of the 8 outer vertices fail it. So requirement (1) is "boundedness *plus* the covering
+check", not "add a box". E's `certify_region.py` imports `rigorous_cell_volume as R` and uses
+`R.box_volume`, so the certified *region* at `d289bef` inherits both defects until the atom is
+repaired.
