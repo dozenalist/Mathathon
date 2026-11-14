@@ -79,19 +79,26 @@ in `B(x,r+1+D)`. Hence `K(v)` meets the shell
 assignment `v |-> t(v) in K(v) cap T` over a point `t in T` is contained in `K(t)`, so is
 of size at most `Vmax`. Thus `|S \ S'| <= Vmax |T|`.
 
-*Step 3 — shell bound.* Balls of radius 1 about the points of `Lambda` are disjoint and
-lie in `B(y, rho+1)`, so `|Lambda cap B(y,rho)| <= (rho+1)^3`. For `rho >= 1` both
-radii `r+1` and `r+1+D` exceed 1, so
+*Step 3 — shell bound.* **Corrected (hourly review 2026-11-14 00:08):** the earlier
+version wrote `(r+1+D)^3 - (r+1)^3`, which subtracts an *upper* bound for the count in
+the inner ball from an upper bound for the outer ball. That is illegitimate.
+
+Use instead the disjoint unit balls about the points of `T`. For `y in T` we have
+`|y-x| >= r+1`, so `B(y,1)` does not meet `B(x,r)`, while `|y-x| <= r+1+D` gives
+`B(y,1) subset B(x, r+D+2)`. The balls are pairwise disjoint, so
 
 ```
-|T| <= (r+2+D)^3 - (r+1)^3 <= 3D (r+2+D)^2 <= C' r^2     (r >= 1)
+|T| * (4pi/3) <= (4pi/3) [ (r+D+2)^3 - r^3 ],   i.e.   |T| <= (r+D+2)^3 - r^3.
 ```
 
-for a constant `C' = C'(D)`. Hence `|S| <= |S'| + Vmax C' r^2`, and with (1),
+Since `a^3 - b^3 = (a-b)(a^2+ab+b^2) <= 3(a-b)a^2` for `0 <= b <= a`,
 
 ```
-sqrt(32) |S| <= sum_{v in S} (vol Omega(v) + A(v)) + sqrt(32) Vmax C' r^2.   (2)
+|T| <= 3(D+2)(r+D+2)^2 <= C' r^2   for r >= 1,
 ```
+
+with `C' = C'(D)`. This is a genuine upper bound obtained by subtracting a *lower*
+bound (namely `0`) for the inner region, not by subtracting an upper bound for it.
 
 *Step 4 — volume bound.* The cells `Omega(v)`, `v in S`, are pairwise disjoint and each
 lies in `B(v,2) subset B(x,r+3)`, so by (C5)
@@ -157,74 +164,56 @@ to handle; it is also why the dodecahedral theorem's own bound `4pi/(3 V_dodeca)
 Verified numerically and exactly in `Experimental/scripts/icosa_cluster_test.py`; the
 computed centre-cell volume reproduces `V_dodeca` to `1e-15`.
 
-## 3. Obstruction: cluster averages are not certifiable by truncation
+## 3. Certification: what truncation does and does not give
 
-`K15-E003`, status **PROVED** (elementary monotonicity). For a finite set `K` let
-`vol_K Omega(v)` be the Voronoi volume of `v` computed inside `K`. If `K subset K'` then
-`vol_{K'} Omega(v) <= vol_K Omega(v)` for every `v in K`, because more bisector
-constraints can only shrink a cell.
+`K15-E003`, status **PROVED, with a correction accepted (hourly review 2026-11-14 00:08).**
 
-Hence every finite computation of cell volumes is an **upper** bound for the volumes in
-any packing containing that cluster. A numerical test can therefore only **refute** a
-cluster-average lower bound, never establish it. Our runs confirm the practical form of
-this: with a sparse completion of the icosahedral core the 13-cluster mean was `8.69`
-and with a denser randomized completion `12.90`, both dominated by the free space
-outside the cluster rather than by any property of the core. Both numbers are
-uninformative upper bounds and are recorded only as evidence for the obstruction.
+**Correct monotonicity.** For finite `K subset K'` and `v in K`,
+`vol_{K'} Omega(v) <= vol_K Omega(v)`: more bisector constraints only shrink a cell. So a
+finite computation of cell volumes is an **upper** bound for the volumes in any packing
+containing that cluster, and sampling alone can only refute a cluster-average lower bound.
+Our recorded values (`8.69` sparse, `12.90` denser randomised) are uninformative upper
+bounds.
 
-Consequence for the programme: `K15-E001` shifts the burden from a pointwise analytic
-inequality to a cluster-level one, and the cluster-level inequality cannot be discharged
-by sampling. It requires either an analytic lower bound on cell volume over a cluster
-(Rogers-simplex or Fejes Toth style) or a *certified* saturation of the outer region.
-This must be priced in before the criterion is promoted.
+**Correction.** The previous heading claimed that cluster averages are *not certifiable*
+by truncation. That is too broad. Monotonicity has a second half which is what
+certification uses:
 
-## 4. The exposed question
+> If `Omega(v)` is **bounded** and every centre within distance `4` of `v` is known
+> (the standard cut-off, since a centre at distance `>= 4` cannot bound `Omega(v) subset
+> B(v,2)`), then bisectors from all further centres are irrelevant and `vol Omega(v)` is
+> determined exactly.
 
-`K15-E004`, status **OPEN**. With `A = 0` and `Pi` the partition into clusters of
-diameter at most `D`:
+So a computation over a *provably complete* neighbourhood does certify the volume, even
+though sampling in an incomplete neighbourhood cannot. The obstruction is therefore not
+truncation as such; it is truncation without a completeness certificate. For the
+icosahedral cluster this means the outer region must be enumerated and the missing outer
+mass bounded — an enclosure problem, not an impossibility. `K15-EXP-001` Job B was
+withdrawn for being unauthored, not because certification is impossible.
 
-> Is `sum_{v in K} vol Omega(v) >= sqrt(32) |K|` for every cluster `K` of diameter at
-> most `D`, in every saturated packing?
+## 4. The exposed question — restated as an existence problem
 
-`D = infinity` is Kepler. The point of the question is the smallest `D` for which it
-holds, and the icosahedral 13-cluster (Section 2) is the first test case: it violates
-the pointwise version and is the natural candidate to violate the averaged version.
-Note that (C1)–(C5) with `A = 0` and unbounded `D` is equivalent to the theorem, so no
-claim of a shortcut is made here; the content is the reframing plus the proved
-criterion plus the certification obstruction.
+`K15-E004`, status **OPEN**. **Correction accepted (hourly review 2026-11-14 00:08).**
+The previous formulation quantified over *every* cluster of diameter `<= D`, and that is
+false for every `D`: if the partition happens to contain a singleton `{v}` at the centre
+of the icosahedral configuration, `vol Omega(v) = 5.5503 < sqrt(32)` refutes it
+(`K15-E002`). A universal statement over cluster shapes cannot be true.
 
-## 5. What the criterion actually removes, and what it does not
+**Corrected formulation.** With `A = 0`, the question is whether there **exists**, for
+each saturated packing `Lambda` and each `D`, a partition `Pi` of `Lambda` into clusters
+of diameter `<= D` such that
 
-`K15-E001` is a **conditional accounting lemma**. It is not a bound on packing density
-and it does not shorten Hales's proof by itself. The honest accounting:
+```
+sum_{v in K} vol Omega(v) >= sqrt(32) |K|        for every K in Pi,
+```
 
-**Removed.** (i) The obligation to write an explicit pointwise transfer formula. In Hales
-the corrected volume must be correct cell by cell, and the machinery that achieves this —
-the V-cell construction (Chapter 5), its compatibility with the Q-system (Lemma 5.28),
-and the four-way cancellation `sum_i A1(S,c,v_i) = 0` (Lemma 7.10) — exists to make the
-transfer explicit and to make negligibility provable. Under (C4) none of that is needed:
-the compensation is absorbed into an average. (ii) The pointwise failure at the
-dodecahedral configuration (`K15-E002`) stops being fatal, because the configuration is
-precisely a case where a small cell has large neighbours.
+i.e. whether the defect can always be *absorbed by choosing the clusters*, with the
+boundary loss in Step 2 of `K15-E001` controlled by `D`. Existence rather than
+universality is the right quantifier: the criterion only needs one partition per packing,
+and a partition may deliberately place the dodecahedral centre inside a larger cluster
+whose total is adequate.
 
-**Not removed.** (i) `K15-E004` is unproved, and it is the entire geometric content.
-(ii) The hypothesis (C4) is a universal statement over cluster *shapes*, which is a larger
-quantifier range than a single formula. (iii) `K15-E003` shows (C4) cannot be certified by
-truncated computation. So the criterion relocates the difficulty; it does not reduce it.
-Any statement that it "simplifies Hales" must be qualified as *simplifies the interface
-between the local analysis and the accounting*, not the local analysis itself.
+**What remains open.** Whether such a partition exists is not known. `D = infinity` with
+a single cluster is Kepler, so the content is again the size of `D`, now read as
+"how large must the blocks be before the averaging succeeds".
 
-### Audit points for X (boundary clusters, saturation, signs)
-
-1. **(C1) versus the boundary count.** Step 2 needs each cluster meeting `Lambda \ S` to
-   lie in `B(x, r+1+D)`, using `diam K <= D` and `v in S`. Confirm no use of cluster
-   *convexity* is smuggled in — diameter suffices, but check the step as written.
-2. **Saturation.** Used only for `Omega(v) subset B(v,2)`. Is saturation required, or does
-   `Omega(v) subset B(v, c)` with a constant `c` suffice, giving a different final
-   constant? The criterion should state the weakest form it needs.
-3. **(C3) nonnegativity.** Used only to discard terms with `v in S \ S'`. Hales's own
-   `vol Omega + A` is positive in his construction, but the criterion should not assume it
-   silently. Is there a version that survives signed `A` with a bounded-below hypothesis?
-4. **Bounded cluster size.** Listed as (C2) for clarity, but implied by (C1) and
-   separation `>= 2`; confirm that the constant `Vmax` used in Step 2 is then not
-   independent of `D`.

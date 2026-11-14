@@ -37,63 +37,78 @@ The correct diagnosis is:
 > a contradiction from the cap bound. The cap bound is vacuous here **because it is too
 > weak an upper bound**, not because it is a lower bound.
 
-## K15-E011 — radius conversion without putting centres on one sphere
+## K15-E011 — radius conversion, corrected for wide shells
 
-**Statement (PROVED).** Let `y, z` be two points with `|y|, |z| in [2, 2+delta]` and
+**Correction accepted (hourly review 2026-11-14 00:08).** My previous version asserted
+`cos theta <= 1 - 2/(2+delta)^2` for all `delta >= 0`. That is false for wide shells.
+
+**Statement (PROVED).** Let `y, z` have `|y|, |z| in [2, R]` with `R = 2 + delta` and
 `|y - z| >= 2`, and let `theta` be the angle at the origin. By the law of cosines
+`cos theta <= f(r,s) := (r^2+s^2-4)/(2rs)` with `r = |y|, s = |z|`. On the square
+`[2,R]^2` the maximum of `f` is attained on the boundary, and
 
 ```
-4 <= |y|^2 + |z|^2 - 2|y||z| cos(theta),   i.e.   cos(theta) <= (r^2 + s^2 - 4)/(2rs)
+f(R,R) = 1 - 2/R^2 ,        f(2,R) = f(R,2) = R/4 ,
 ```
 
-for `r = |y|, s = |z|`. Writing `t = max(r,s) <= 2+delta`, the right-hand side is
-maximised when `r = s = t`, where it equals `1 - 2/t^2`, and `d/dt (1 - 2/t^2) = 4/t^3 > 0`.
-
-**Consequence, stated as a necessary condition.** No assumption that the centres share a
-sphere is needed. Because `(r^2+s^2-4)/(2rs) <= 1 - 2/(2+delta)^2` for all admissible
-`r, s`, every pair in the shell satisfies
+so
 
 ```
-theta >= theta_min(delta) := arccos( 1 - 2/(2+delta)^2 ).
+cos theta <= max( 1 - 2/R^2 , R/4 ),    theta >= arccos( max(1 - 2/R^2, R/4) ).
 ```
 
-`theta_min` is strictly decreasing on `[0, inf)`, with `theta_min(0) = 60 deg` and
-`theta_min(delta) -> 0` as `delta -> inf`. This is the exact conversion the assignment
-asks for: it is a bound on the angle in terms of the *largest* radius in the shell, and
-mixed-radius configurations only make the constraint weaker, so using
-`theta_min(delta)` is valid (necessary) for every configuration in the shell.
-
-## K15-E012 — an explicit thin-shell count (PROVISIONAL)
-
-**Statement.** Fix `theta_13` an upper bound for the minimal angular separation of 13
-points on `S^2` (the Tammes `N = 13` value). Then for
+The comparison is exact:
 
 ```
-delta < delta_0 := sqrt( 2 / (1 - cos theta_13) ) - 2
+1 - 2/R^2 >= R/4   <=>   R^3 - 4R^2 + 8 <= 0   <=>   (R-2)(R^2-2R-4) <= 0
+                    <=>   2 <= R <= 1 + sqrt5 .
 ```
 
-every 2-separated set has **at most 12** points in the closed shell `[2, 2+delta]` about
-any centre.
+**Allowed range for the equal-radius formula.** Hence
 
-*Proof.* If 13 points lay in the shell, they would be `theta`-separated with
-`theta >= theta_min(delta)` by `K15-E011`, and `theta <= theta_13` by definition of
-`theta_13`. So the claim holds whenever `theta_min(delta) > theta_13`, which rearranges
-to the displayed inequality because `theta_min` is strictly decreasing. ∎
+```
+cos theta <= 1 - 2/(2+delta)^2     is valid exactly for   0 <= delta <= sqrt5 - 1 = 1.2360679...
+```
 
-**Numerical status.** With the commonly quoted `theta_13 = 57.1367 deg` (Tammes
-`N = 13`) this gives `delta_0 = 0.0911455`. With the cap bound of `K15-E010`
-(`64.408 deg`) the formula gives `delta_0 = -0.1236 < 0`, i.e. no information, exactly
-matching the diagnosis above.
+and **not** beyond. For `delta > sqrt5 - 1` the binding pair is one centre at radius `2`
+and the other at radius `2+delta`, and the bound becomes `cos theta <= (2+delta)/4`.
 
-**This is PROVISIONAL, and the reason is explicit.** I did **not** verify the value
-`57.1367 deg` from a primary source in this block. The conversion, the monotonicity and
-the algebraic form of `delta_0` are proved; the *number* `0.0911` is only as good as the
-Tammes constant fed into it. Per the assignment I am **not** claiming a new threshold:
-`delta_0` is a derived function of a classical spherical-code constant. X should pin the
-exact primary locator for the Tammes `N = 13` value (Schutte–van der Waerden tradition)
-and re-evaluate. If the correct `theta_13` is smaller than `57.1367 deg`, `delta_0` grows
-and the bound improves; if it is not available in a citable form, `K15-E012` should be
-replaced by C013(a)'s unconditional volume count.
+**The counterexample that killed the old statement.** At `delta = 2` (`R = 4`) the two
+bounds read `1 - 2/16 = 0.875` and `4/4 = 1`. Two centres at radii `2` and `4` on the same
+ray have separation exactly `2` and angle `0`, so `cos theta = 1 = R/4`; the equal-radius
+value `0.875 < 1` would wrongly assert `theta >= 29.0 deg`. This is the review's example
+and it is decisive.
+
+**Consequence at the radii we use.** Every thin-shell statement below uses
+`delta <= 0.09 < sqrt5 - 1`, so the equal-radius formula is available there. The range
+restriction is recorded so the lemma is not misapplied to thick shells.
+
+**Necessary-condition status.** `max(1-2/R^2, R/4)` is the *weakest* per-pair constraint
+over the shell, so `theta >= arccos(max(...))` holds for every configuration in the
+shell and may be used as a necessary condition. Both functions are decreasing where they
+bind, and the maximum of two decreasing functions is decreasing.
+
+## K15-E012 — explicit thin-shell bound (PROVISIONAL)
+
+**Statement.** Let `theta_13^+` be a certified upper bound for the minimal angular
+separation of 13 points on `S^2`. Then for `delta` in the range where the equal-radius
+formula applies,
+
+```
+delta < delta_0 := sqrt( 2 / (1 - cos theta_13^+) ) - 2
+```
+
+every 2-separated set has **at most 12** points in the closed shell `[2, 2+delta]`.
+
+*Proof.* 13 points in the shell would be `theta`-separated with
+`theta >= arccos(1 - 2/(2+delta)^2)` by `K15-E011`, and `theta <= theta_13^+` by
+definition. Contradiction whenever `arccos(1-2/(2+delta)^2) > theta_13^+`, which
+rearranges to the displayed inequality because both sides are decreasing. ∎
+
+**Status: PROVISIONAL.** `delta_0 = 0.0911455` was computed from the *rounded* value
+`57.1367 deg`, and a rounded decimal is **not** an upper enclosure. The correct input is a
+directed enclosure from Musin–Tarasov; see `Experimental/SHELL_2P09.md`, which replaces
+this provisional statement by the specific choice `rho = 209/100`.
 
 ## Comparison with the existing unconditional bound (C013(a))
 
@@ -118,6 +133,6 @@ therefore not disturbed by the bound, and `K15-E012` does not exclude any packin
 attains `pi/sqrt(18)`.
 
 **Scope caveat.** Barlow stackings are not analysed here; a stacking with an unusually
-short next shell could in principle have more than 12 centres inside `[2, 2+0.09]`. That
+short next shell could in principle have more than 12 centres inside `[2, 2.09]`. That
 is a concrete finite question for C/X (`CLAIMS_FOR_X.md`, `K15-E013`), and it must be
 settled before the bound is used. I make no claim about it in this block.
