@@ -562,6 +562,24 @@ explicitly: a computed *upper* bound on a cell volume is not evidence that the c
 the search legitimately supports is the *plausibility* that the payers have room to spare, and
 that is all.
 
+## 12b. The sharpest one-line statement of the requirement
+
+The requirement on the twelve payers is a mean of `5.665734518`, and
+
+```
+sqrt32 = 5.656854249   (the fcc / hcp cell volume, the densest possible arrangement)
+```
+
+so the payers must **exceed an fcc cell by `0.008880269` each, i.e. by `0.157 %` on average**.
+This is worth isolating because it is counter-intuitive at first sight: next to a *small* cell
+(`c` at `V_dodeca`), the neighbouring cells must be **larger than fcc cells** — not merely larger
+than the dodecahedral minimum. Compensation is not a small correction here; it requires the
+neighbourhood of the defect to be locally *less* dense than the densest packing.
+
+Put the other way: if the twelve payers were arranged as tightly as fcc allows, the cut would
+still fail, by `12 x 0.008880269 = 0.106563`, i.e. by exactly the deficit. So the cut demands a
+strict excess over the optimal local arrangement, which is why no per-cell minimum can supply it.
+
 ## 13. What this block establishes, and what it does not
 
 **Established.**
