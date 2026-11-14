@@ -531,10 +531,12 @@ fixed; no proof of correctness for any of them".
 | `cut_flow.py` at `a25f5be` | D8 unchanged, line-specific: 269, 352, 390; the fix pattern already sits at 306–307 (`X-C044`) |
 | bounded-interval predicate (G8) | independent Vincent–Descartes decider, 92 cases, 0 mismatches; it found and I fixed an `nsimplify` soundness bug in `exact_sign.py` (`X-C045`, `X-C046`) |
 
-**Two corrections of my own are in this review, both found by the comparison rather than by care:**
-the `(M)` characterisation (§3) and the direction of the slack comparison (§7). I also had to
-withdraw an earlier draft's claim that the displayed slack inequality was false. That is three
-self-corrections in one block, which is the honest rate for this kind of audit.
+**Four corrections of my own are in this review**, each found by a computation or a comparison
+rather than by re-reading: the `(M)` characterisation (§3), the direction of the slack comparison
+(§7), a draft claim that the displayed slack inequality was false (§7), and the two-dodecahedra
+threshold (§14 — the only one that was pushed before being caught, a script that scaled the wrong
+ring). That rate is worth recording: this is what an audit of one's own work costs when the checks
+are real.
 
 **Nothing here is a bound, and I am not proposing one.** `(L)` remains unproved; `(M)` remains a
 hypothesis; `δ₀` remains non-explicit; the dodecahedral bound remains `0.754697399337`.
@@ -556,9 +558,9 @@ survive my own re-checking are integrated above with credit:
   sharpest single addition to my own §6;
 - the `lim`/`limsup` presentation gap with the saturated slab construction (§7.1).
 
-Three things in this review are corrections of my own errors: the `(M)` characterisation (§3), the
-direction of the slack comparison (§7), and an earlier draft's claim that the displayed slack
-inequality was false. All three were caught by checking against the sources or against another
+Four things in this review are corrections of my own errors: the `(M)` characterisation (§3), the
+direction of the slack comparison (§7), an earlier draft's claim that the displayed slack inequality
+was false, and the two-dodecahedra threshold (§14). All three were caught by checking against the sources or against another
 implementation, not by re-reading my own prose — which is the argument for doing both.
 
 Everything else — the `C_R` witness, the Theorem D clause audit, the step-4 recomputation and the
@@ -643,9 +645,9 @@ survive my own re-checking are integrated above with credit:
   sharpest single addition to my own §6;
 - the `lim`/`limsup` presentation gap with the saturated slab construction (§7.1).
 
-Three things in this review are corrections of my own errors: the `(M)` characterisation (§3), the
-direction of the slack comparison (§7), and an earlier draft's claim that the displayed slack
-inequality was false. All three were caught by checking against the sources or against another
+Four things in this review are corrections of my own errors: the `(M)` characterisation (§3), the
+direction of the slack comparison (§7), an earlier draft's claim that the displayed slack inequality
+was false, and the two-dodecahedra threshold (§14). All three were caught by checking against the sources or against another
 implementation, not by re-reading my own prose — which is the argument for doing both.
 
 Everything else — the `C_R` witness, the Theorem D clause audit, the step-4 recomputation and the
