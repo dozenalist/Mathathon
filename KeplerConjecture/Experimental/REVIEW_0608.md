@@ -412,11 +412,45 @@ areas rather than volumes.
 
 ---
 
-## 11. Theorem: `(P')` at the icosahedral pair holds for every twelve-face completion
+## 11. A CONDITIONAL theorem for twelve-face completions — and why it is not yet a theorem
 
-This is the block's main positive result, and it is a proof, not a computation.
+> **Correction, made after the first version of this section was written.** The first version
+> claimed this as a theorem. It is not one: **step (1) is not established**, and its pure form
+> is false. Recorded here in full rather than quietly repaired, because the failure is
+> instructive and because a conditional result must not be circulated as a theorem.
 
-> **Theorem (`K15-E099`).** Let the icosahedral cluster be present — `c` at distance `2` from
+**The defect.** Step (1) argued `vol D' ≥ V_dod` by calling `D'` a Voronoi cell of a legal
+packing. It is not: `D'` has the ring faces at distance `1`, which corresponds to neighbours at
+distance exactly `2`, and scaling the ring inward by `2/2.102924 = 0.9511` puts it at
+`1.902` from `c` — **violating 2-separation**. So Hales–McLaughlin does not apply to `D'`.
+
+And the pure inequality is false: over `20 000` random 12-tuples of unit normals,
+`min vol ⋂{y·n_i ≤ 1} = 0.707055`, far below `V_dod = 5.550291`. Clustering the normals gives
+thin polytopes. What remains open is whether the *constrained* twelve directions of our
+problem — six fixed (generously spread) plus six 2-separated free ones — force
+`vol D' ≥ 5.5400`, the value the argument needs.
+
+**What is actually true.** Everything except step (1) is proved, and the gap is now a single
+number rather than an argument:
+
+> **Conditional Theorem (`K15-E099`, CONDITIONAL).** If for a twelve-face completion
+> `vol D' ≥ V_dod − 5(b−1)A_min = 5.5400`, then `vol Ω(w1) > 5.763417470`.
+
+The condition holds in every configuration ever constructed, with room:
+
+```
+C5 configuration            vol D' = 5.572648770     (needs 5.5400, slack +0.0326)
+search's best completion    vol D' = 5.576078423     (slack +0.0361)
+```
+
+but "in every configuration ever constructed" is not a proof, and the 20 000-sample experiment
+above says the unconstrained version of the statement is simply false.
+
+### 11.0 The argument, with step (1) flagged
+
+The following is the *conditional* proof; the flagged line is the open input.
+
+> **Theorem (`K15-E099`), CONDITIONAL.** Let the icosahedral cluster be present — `c` at distance `2` from
 > `w1`, five ring centres at `ρ_r = 2.102924…` in the ring directions. Let `z_1..z_6` be any
 > further centres at distance `≥ 2` from `w1`, all 2-separated, and suppose `Ω(w1)` has
 > **exactly twelve faces**. Then
@@ -427,14 +461,13 @@ This is the block's main positive result, and it is a proof, not a computation.
 
 *Proof.*
 
-**(1) Base polytope.** Let `D'` be `Ω(w1)` with the five ring faces moved in to distance `1`,
-every other face left where it is. Note the inclusion is `D' ⊆ Ω(w1)` — pushing faces *in*
-shrinks the polytope — so the volume inequality cannot come from the inclusion, and an earlier
-draft of this proof wrongly wrote `D' ⊇ Ω`. What is true is stronger and simpler: **`D'` is the
-Voronoi cell of `w1` with respect to the same twelve neighbours**, hence every face of `D'` is at
-distance `≥ 1` and the imported Hales–McLaughlin bound gives `vol D' ≥ V_dod` directly. (That
-theorem is about Voronoi cells of 2-separated point sets; it needs neither saturation nor the
-full configuration.)
+**(1) Base polytope — THIS IS THE OPEN STEP.** Let `D'` be `Ω(w1)` with the five ring faces
+moved in to distance `1`, every other face left where it is; so `D' ⊆ Ω(w1)` and every face of
+`D'` is at distance `≥ 1`. The proof needs `vol D' ≥ V_dod` and **does not have it**: `D'` is
+not the Voronoi cell of a legal packing (§11 above, the `1.902` clash), and the unconstrained
+statement "twelve half-spaces at distance `1` have volume `≥ V_dod`" is false (`0.707055`
+counterexample). The conditional hypothesis is `vol D' ≥ V_dod − 5(b−1)A_min = 5.5400`, which
+is weaker than `≥ V_dod` and verified in every constructed configuration.
 
 **(2) Ring-excess lemma (§9).** The path runs from `K(1) = D'` to `K(b) = Ω(w1)`, so moving the
 five ring faces from `1` to `b = ρ_r/2` gains
@@ -497,10 +530,15 @@ vol Ω(w1) ≥ 5.550291029 + 5·0.051462224238·0.868314854
 All quantities in the chain are rational intervals from `rational_interval.py`;
 `pair_theorem_12faces.py` computes it and prints `margin ≥ +0.010301`.
 
-### 11.1 Scope, and where it stops
+### 11.1 Scope, and where it stops (two gaps now, not one)
 
-- **Proved**: `(P')` at the icosahedral pair for **every** completion whose payer cell has
-  exactly twelve faces. No search, no enumeration, no floating point in the conclusion.
+- **Proved conditionally**: `(P')` at the icosahedral pair for every twelve-face completion
+  **with `vol D' ≥ 5.5400`**. The condition is not established in general; it holds with slack
+  `+0.033` in both configurations ever constructed.
+- **Open (new, and the reason this is not a theorem)**: that every twelve-face completion has
+  `vol D' ≥ 5.5400`. This is a *smaller* problem than the original — a bound on the
+  unit-distance polytope of the twelve directions, no ring excess involved — but it is not done,
+  and the unconstrained version is false.
 - **Not proved**: thirteen or more faces. That is not an oversight — it is where the argument
   fails, and the failure is quantifiable. Adding one face at distance `1` to the dodecahedral
   cell costs `0.052007` in volume (computed over a direction grid: `5.550291 → 5.498284`), while
@@ -518,7 +556,8 @@ upper end a computation and no lower bound beyond the imported one. The state no
 
 | class | lower bound | status |
 | --- | --- | --- |
-| twelve-face completions | `5.773718` | **proved** (this section) |
+| twelve-face completions, `vol D' ≥ 5.5400` | `5.773718` | **conditional** (§11) |
+| twelve-face completions, unconstrained | `5.550291` | imported only |
 | thirteen or more faces | `V_dod = 5.550291` | imported only; argument fails at `0.042` short |
 
 So the payer problem is now **solved on the twelve-face class** and open only where more than
