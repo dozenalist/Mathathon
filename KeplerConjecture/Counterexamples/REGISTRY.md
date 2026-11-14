@@ -1421,3 +1421,26 @@ check.
 
 This is the fix to file against `X-C080`: replace the gate, keep E's `√3`-slack and inner inclusion, and
 make `spanning_constant` rational as `X-C080` §3 says.
+
+### K15-X-C083 — `C124`'s `deg ≤ 12` is FALSE in the `(2+ε)`-graph: an exact 17-neighbour witness at `ε = 0.6832816`
+
+`C124` writes: `M` a maximal matching of the **`(2+ε)`-graph**, `S_ε ⊆ matched ∪ N(matched)`, "and with
+`deg ≤ 12`, `|S_ε ∩ B| ≤ 26|M ∩ B|`". The domination step uses neighbourhoods in the `(2+ε)`-graph, so
+`deg` must be the degree there — and that degree is **not** bounded by 12 once `ε > 0`. Exact witness
+(`Reviews/twist/deg13_witness.json`, rationals with denominator 100, greedy construction, seed 11):
+
+- **17 points**, all rational, minimum pairwise **squared** distance `4.1129 ≥ 4`, maximum modulus
+  `2.6647889222 < 2.6832816 = 2 + 0.6832816`;
+- together with the origin they form a 2-separated set (every `|q| ≥ 2.65`), and the origin has **17
+  neighbours at distance `≤ 2.6648 ≤ 2+ε`**.
+
+So `deg ≥ 17 > 12` at the band end `ε = 0.6832816`, and the constant `26` is wrong (the same domination
+argument gives `2 + 2·deg ≥ 36` here, and without a bound on `deg` at all it gives nothing uniform). This
+is a refutation of a **step**, not of `C124`'s conclusion: the conclusion `ρ_ε = 0 ⟹ S_ε` has density
+zero needs only that the multiplier be finite, and a shell-degree bound of the form
+`deg_ε ≤ C(1+ε/2)²` (kissing in a shell, not the kissing number 12) would still give it. What cannot be
+used is `12`, or the number `26`. `C124` is marked `PROVED`; this step needs replacing before that
+stand.
+
+Also note the safe direction: 12 *is* the bound for neighbours at distance **exactly** 2 on a sphere
+(kissing number, Schütte–van der Corput), which is why `C112`-type contact arguments are unaffected.

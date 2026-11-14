@@ -544,3 +544,18 @@ per-point degree bound of 12; it refutes "≤ 12 points in a ball of radius `2�
 finite-ball count in place of `deg ≤ 12` at that scale, and `deg ≤ 12` itself still needs the
 kissing-number theorem applied to a contact sphere, with the counting radius stated. I did not audit
 `C128`/`C129`.
+
+## 23. `C124`'s `deg ≤ 12` fails in the `(2+ε)`-graph — exact 17-neighbour witness
+
+`C124` uses `S_ε ⊆ matched ∪ N(matched)` with a maximal matching of the `(2+ε)`-graph and then
+"`deg ≤ 12`" to get `|S_ε ∩ B| ≤ 26|M ∩ B|`. The neighbourhoods in that domination step are taken in the
+`(2+ε)`-graph, where 12 is not a bound: it is the kissing number for distance **exactly** 2.
+
+Witness (`Reviews/twist/deg13_witness.json`): **17 rational points** with denominator 100, minimum
+pairwise squared distance `4.1129`, maximum modulus `2.6647889 < 2 + 0.6832816`. With the origin they
+form a 2-separated set, and the origin has 17 neighbours within `2+ε`. So at the band end `ε = 0.6832816`
+the degree is at least 17 and the constant is at least `2 + 2·17 = 36`, not 26.
+
+This refutes the step, not the theorem: the density-zero conclusion only needs a finite multiplier, and
+a shell-kissing bound `deg_ε ≤ C(1+ε/2)²` would carry it. But `26` and `deg ≤ 12` cannot be used as
+written, and `C124` is marked `PROVED`.
