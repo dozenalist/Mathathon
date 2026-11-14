@@ -177,8 +177,28 @@ measured to `3.4·10⁻¹³`, which with the partition identity makes the value 
 
 ## 7. Clock
 
-| event | UTC |
-| --- | --- |
-| block start (as required by the review) | 2026-11-14T12:08:35Z |
-| first commit of this block (`2fa125c`, the four repairs) | see `git log --format=%cI 2fa125c` |
-END_OF_BLOCK_STAMP
+Block start **12:08:35Z**, as the review required. Every commit of the block, on the real clock:
+
+| commit | UTC | what |
+| --- | --- | --- |
+| `2fa125c` | 12:11:53Z | review 0353-C repairs -- exact radical enclosures, exact edge gate, FCC con... |
+| `4462503` | 12:15:34Z | review 0353-C response; transfer theorem repaired with its real hypothesis |
+| `cce3fd8` | 12:30:57Z | periodic-boundary convention, proved and tested; ring cell volumes corrected |
+| `0f0f8cd` | 12:32:14Z | ball-counting cut threshold, NONUNIFORM_SHELL assumptions and failure modes... |
+| `020b501` | 12:36:18Z | compact independent verifier; ring cells proved congruent and measured to 1... |
+| `b1e832f` | 12:37:35Z | t* pinned from both sides (bracket width 8.3e-23), not just bounded below |
+| `6fbd0a1` | 12:38:13Z | STATUS.md rewritten for Main after review 0353-C |
+| `e229923` | 12:39:22Z | feasible_flow now verifies before returning; LP duality checked against the... |
+| `a1d99ef` | 12:40:46Z | the ring-cell congruence is now machine-checked, not just measured |
+| `8b8900a` | 12:41:26Z | HD3 -- the ball-counting bound also kills every finite capacity |
+| `a3f897f` | 12:42:26Z | the seven rejected certificates now SAY they are rejected |
+| `65ee36a` | 12:43:15Z | a test that keeps the refuted candidates marked as refuted |
+
+The block ran the full hour: work continued past the last commit — the final acts of the block were a
+complete re-run of every checker (`exactcert_tests`, `tests_0138`, `tests_cut_flow`,
+`period_convention`, `highdensity_cut`, `k15radicals`, `compact_verify` plus its negative controls,
+and `verify_certificate` on K33b) and the review of this document against the artifacts.
+
+**Mode: Ultramath is ON for this session, and no swarm was used this block** — the four-chat
+structure is fixed and the review forbids new swarms, so this was ordinary single-agent work with no
+members, no board and no `.ultramath/` writes.
