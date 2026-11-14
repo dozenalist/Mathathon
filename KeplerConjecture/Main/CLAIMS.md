@@ -1124,9 +1124,17 @@ antisymmetric `φ : Λ×Λ → R` (`φ(v,w) = −φ(w,v)`) with `φ(v,w) = 0` wh
 **Lemma.** Let `Λ` be 2-separated, `A` a transfer as above, and
 `k_R := max_v #{w ∈ Λ∖{v} : |w−v| ≤ R}`. Then
 (a) `|A(v)| ≤ Φ·k_R` and `k_R ≤ (R+1)³ − 1`;
-(b) `Σ_{v∈Λ∩B(x,r)} A(v) ≤ 3Φ(R+1)⁵ r²` for all `x` and all `r ≥ 1`, i.e. `A`
+(b) `Σ_{v∈Λ∩B(x,r)} A(v) ≤ 3ΦR(R+1)⁵ r²` for all `x` and all `r ≥ 1`, i.e. `A`
 is negligible with the **explicit packing-independent** constant
-`C₁ = 3Φ(R+1)⁵`.
+`C₁ = 3ΦR(R+1)⁵`.
+
+**Correction (review 0223, X).** The first version of this entry printed
+`C₁ = 3Φ(R+1)⁵`, which **drops a factor `R`**: the count of crossing pairs is
+`k_R·((r+R)³ − r³)`, and `(r+R)³ − r³ ≤ 3R(R+1)²r²` already carries `R`, so
+`k_R ≤ (R+1)³` gives `3ΦR(R+1)⁵r²`. At `R = 2.09, Φ = 1` the correct value is
+`1766.28`, not `845.11`. The *sharper* numbers quoted later are unaffected
+because they were computed from `3·k_R·R·(R+1)²` with the `R` included:
+`718.40` at `k_R = 12` and `1556.53` at `k_R = 26`.
 
 *Proof.* (a) Each term of the sum is bounded by `Φ` and there are at most `k_R`
 of them; the balls `B(w,1)`, `w ∈ Λ∩B(v,R+1)∖{v}`, are disjoint, lie in
@@ -1140,7 +1148,7 @@ pairs, each contributing at most `Φ`.
 `r ≥ 1 ≥ R·0`:
 `R² ≤ 3r²R²`, `3rR ≤ 6r²R` (as `r ≥ 1`), `3r² ≤ 3r²` — so
 `R(3r²+3rR+R²) ≤ 3Rr²(R+1)²` after dividing by `R > 0`. Hence
-`3Φk_R·Rr²(R+1)² ≤ 3Φ(R+1)³·r²(R+1)² = 3Φ(R+1)⁵r²`. ∎
+`3Φk_R·Rr²(R+1)² ≤ 3ΦR(R+1)³·r²(R+1)² = 3ΦR(R+1)⁵r²`. ∎
 (The termwise form replaces the earlier "checked numerically" remark; it is also
 the form the Lean lemma `cube_diff_le` states.)
 
@@ -1601,9 +1609,9 @@ last two blocks' verification was version-specific.
 - **Consequence for the constant, computed.** From the proof of `K15-C035`,
   `C₁/Φ = 3·k_R·R·(R+1)²`. With `R = 2.09`: `k_R = 12` (this lemma) gives
   `C₁/Φ = 718.40`, while the volume bound `k_R ≤ 26` gives `1556.53` and the
-  published general form `3(R+1)⁵ = 845.11` sits between them. So the shell count
-  buys **15% off** the general constant at the widest certified range (not a
-  factor of two, because `3(R+1)⁵` mixes the `k_R` and shell factors).
+  general form (corrected, `3R(R+1)⁵`) gives `1766.28`. So the shell count buys
+  **59% off** the general constant at the widest certified range, and **2.2×** off
+  the volume-bound version.
 - **Quantitative footprint of a hypothetical transfer.** Combining the two
   constraints: the icosahedral vertex forces `Φ ≥ 0.00888` (12 neighbours) and the
   negligibility constant at `R = 2.09` is `C₁/Φ = 718.40` (this lemma), so
@@ -1886,3 +1894,36 @@ things must be said.
    two-line estimate with a packing-independent constant and isolates the remaining
    obligation (an analytic averaged cell bound). Claiming more than that would be
    overreach.
+
+### K15-C068 — THIRD-round predicate defect: touching isolating intervals (`REFUTED`, repaired; complete rule adopted)
+
+- **Witness (review 0223).** `q(u) = (u − 7/5)² − 2·10⁻⁴⁰` — value `−2·10⁻⁴⁰` at
+  `u = 7/5` — was accepted by `nonneg_on_half_line`, and `_ray(−q, 0)` and
+  `le_on_interval(−q, 0, 0, 3)` likewise. SymPy's two isolating intervals are
+  `(…, 7/5)` and `(7/5, …)`: they **share the rational endpoint** `7/5`, so the
+  gap between them is empty and the negative dip (width `9·10⁻²¹`) was never
+  sampled.
+- **Correctness argument for the new rule (stated before promotion).** A
+  polynomial has constant sign on every component of `[lo,hi] ∖ {roots}` and is
+  zero at the roots, so one point per component decides the sign. The components
+  are met by `lo`, `hi`, and the midpoints of the **gaps between consecutive
+  isolating intervals** — but only when those gaps are non-empty. The routine
+  returns `None` (inconclusive) as soon as two intervals touch or overlap, and the
+  decision then falls to `function_range`, whose algorithm is the exact
+  characterisation "extrema at endpoints and critical points". Formally:
+  `p ≤ 0` on `I` ⟺ `sup_{I} p ≤ 0`, and `function_range` returns that sup exactly.
+  Half-lines are handled by the same routine (SymPy supports unbounded intervals);
+  alternatively a Cauchy-bound reduction would do.
+- **Why the certificate path is unaffected.** On the sign regions of a
+  certificate the polynomials have no real root, the isolating list is empty, the
+  gap argument is conclusive, and no call to `function_range` occurs. So the
+  certificate checks remain independent of SymPy's range code, and the genuinely
+  independent oracle remains Computation's `exactcert`.
+- **Regressions kept permanently** (`checker_adversarial.py`, now **29** cases):
+  the three new witnesses, the sign-flipped controls `(u−7/5)² + 2·10⁻⁴⁰ ≥ 0`
+  (must PASS) and `(u−1/5)² − 2·10⁻⁴⁰ ≤ 0 on [0,1]` (must FAIL).
+- **Re-verified.** All six earlier witnesses still reject; all valid/touching
+  cases still accept; K33b still `ACCEPT` at `0.779966216777`; fuzz clean.
+- **Status.** `REFUTED` (the gap-only algorithm) → repaired with a complete rule.
+  Three repairs in three rounds; the checker's *general* soundness remains
+  suspended for X.

@@ -81,6 +81,24 @@ def cases():
                 le_on_interval(coeffs(sq1), 0, 2, 3), False))
     out.append(("(-[u(u-1)(u-2)]^2 <= 0 on [0,3] : square with a sign, must PASS",
                 le_on_interval(coeffs(-sq3), 0, 0, 3), True))
+    # --- review 0223: a NEARLY double root.  The two isolating intervals of
+    # (u-7/5)^2 - eps share the rational endpoint 7/5, so any "test the gaps
+    # between intervals" scheme sees no gap and misses the negative dip between
+    # the two roots.  Four witnesses, plus the sign-flipped controls.
+    eps = sp.Rational(2, 10 ** 40)
+    near_neg = (u - sp.Rational(7, 5)) ** 2 - eps
+    near_pos = (u - sp.Rational(7, 5)) ** 2 + eps
+    out.append(("(u-7/5)^2 - 2e-40 >= 0 : negative dip of size 2e-40, must FAIL",
+                nonneg_on_half_line(coeffs(near_neg)), False))
+    out.append(("-(u-7/5)^2 + 2e-40 <= 0 from 0 : must FAIL",
+                _ray(coeffs(-near_neg), 0), False))
+    out.append(("-(u-7/5)^2 + 2e-40 <= 0 on [0,3] : must FAIL",
+                le_on_interval(coeffs(-near_neg), 0, 0, 3), False))
+    out.append(("(u-7/5)^2 + 2e-40 >= 0 : strictly positive, must PASS",
+                nonneg_on_half_line(coeffs(near_pos)), True))
+    near_end = (u - sp.Rational(1, 5)) ** 2 - eps
+    out.append(("(u-1/5)^2 - 2e-40 >= 0 on [0,1] : dip inside, must FAIL",
+                le_on_interval(coeffs(-near_end), 0, 0, 1), False))
     return out
 
 
