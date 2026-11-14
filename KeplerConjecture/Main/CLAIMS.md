@@ -2289,3 +2289,20 @@ are dense in density, but with a loss of `12/S` it says nothing quantitative at 
 computable scale. That is fine for its use (an upper bound proved for all periodic
 packings transfers to all packings), and it is worth stating so that nobody tries to
 make the bridge carry numerical weight.
+
+### K15-C084 — the remaining lemma compared with Hales' accounting (`AUDITED`)
+
+`Main/REMAINING_LEMMA.md` states the cut condition exactly, and compares it with
+Hales' accounting: his structure is (i) a score on Delaunay stars from an explicit
+volume transfer, (ii) an **exact rearrangement**
+`Σ_{v∈B}(vol Ω(v)+A(v)) = Σ_{D⊆B} σ(D)` (his four-way cancellation), (iii) a
+pointwise `σ(D) ≥ 0` verified over a **finite** list of tame combinatorial types.
+The cut condition has the same shape — a transfer plus an identity — but its
+quantifier (every finite `U` in every packing) is not finitised, so it is *harder to
+verify mechanically* and *weaker as a statement*. No published source proves a cut
+form; the pointwise results (Rogers `5.372754`, Muder `5.41848`, Hales–McLaughlin
+`5.550291`) cannot reach `√32` because `V_dod` is pointwise optimal.
+
+Also recorded there: the most promising unexplored route — an **explicit local**
+`φ(v,w) = ψ(|v−w|)(b(v)−b(w))`, for which the cut condition reduces to a per-edge
+inequality and *is* finitely verifiable. No one has attempted it.
