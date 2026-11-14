@@ -29,6 +29,8 @@ Reviewer: X. Withdrawn and narrowed claims are kept, not deleted.
 | `K15-E070` | **`(Q)` is YES**: there is a *saturated* 2-separated set with `vol Omega(c) < sqrt32` | Zorn extension of the 13-cluster; `K15-E045a`; `vol D < sqrt32` | **imports nothing**; settles `(Q)` and decides the case split in favour of (b) |
 | `K15-E071` | under `(H_R)` for finite `S` and bounded degree `<= kappa`, a global transfer exists (compactness) | `kappa <= 12` from `K15-E014` | the transfer form needs **no** bound on component diameter |
 | `K15-E072` | four families of per-cell sufficient condition for the cut are quantitatively excluded; best `66.916356` against `67.988814` required | `S = {c}`; the families are balls, `V_dodeca`, the outward collar, and finite constraint sets | the shortfall is `1.072458` (`1.577 %`) at best |
+| `K15-E074` | **(P') pair conjecture**: adjacent cells satisfy `vol Ω(v) + vol Ω(w) ≥ 2√32 = 11.3137084990`; implied by nothing available, implies the cut with `1.72 %` margin, and is **attained exactly** by every fcc and hcp pair | unproved | sharp at the equality family, so unimprovable; survives all fixtures |
+| `K15-E075` | two adjacent centres cannot both be dodecahedral: the two icosahedral rings clash at distance `1.056487696` against a required `2`, for every relative twist | proved (exact computation) | hence `2 V_dodeca = 11.100582` is unattainable and `(P')` is strictly stronger than the one-cell bound |
 | `K15-E073` | on components, `(H_R)` is monotone in `R` because no defective centre lies within `R` of a component | `tau = 2R` exactly | enlarging `R` only helps; as `R -> infinity` the condition degenerates to the density bound |
 | `K15-E064` | a blind periodic relaxation over (4 positions, cell size) recovers fcc: `L = 2.828427276` vs `2√2 = 2.828427125`, density `0.740480371` vs `π/√18 = 0.740480490` (rel. err. `1.6e-07`), four equal cells `5.656855` vs `√32` | numerical | **calibration** of the evaluator chain; not evidence about `(Q)` |
 
@@ -39,6 +41,7 @@ Reviewer: X. Withdrawn and narrowed claims are kept, not deleted.
 | `K15-E004` | existence of a partition with bounded diameter absorbing the dodecahedral defect. **Largely superseded**: the transfer form (`K15-E061`) restores the pointwise condition and needs no partition, so this is only needed if the block form is retained |
 | `(T'-R2')` | `S(C) ≥ D(C)` on one-shell blocks — equivalent to `(H_R)` (Section 3.5 of `REVIEW_0138.md`), so proving either suffices |
 | `(H_R)` | Hall condition, any `R >= 2.09`. **No numerical evidence either way** (`K15-E062` retracts the earlier slack). Best available indication is exploratory and one-sided (`REVIEW_0308.md` §12: completions give payer cells `8.5`–`12`, all upper bounds) |
+| **`(P')`** | the pair conjecture `K15-E074`. The cleanest open target this directory has: a two-cell isoperimetric statement, sharp at fcc/hcp, implying the cut |
 | **`(S_dod)`** | **stability version of the dodecahedral theorem**: any cell not in the exact icosahedral configuration has volume `>= V_dodeca + 0.1154435`. Identified in `REVIEW_0308.md` §10 as the precise missing input; no evidence either way |
 | `K15-E013'` | the count at `ρ > 2.0911` (needs a sharper spherical-code input) |
 | `K15-E020` | local-mass row; **blocked**, no three-point evaluator exists in these artifacts |
