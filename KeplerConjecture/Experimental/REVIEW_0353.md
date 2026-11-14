@@ -129,9 +129,21 @@ in `1°` steps and re-runs both the legality test and the covering argument at e
 
 **15 of the 23 angles are legal, and every legal one has the exact-cell property.** So the
 statement "vol Ω(w1) is exactly the twelve-face polytope" is not an artefact of one lucky
-angle: it holds across `[106°, 120°]`, a `14°` window. The family minimum is
-`vol = 5.898007181` at `θ = 112°` — the value the previous block found numerically — and
-the frozen fixture sits `1.0e-5` above it at `cos θ = −3/8`.
+angle: it holds across `[106°, 120°]`, a `14°` window.
+
+The `1°` grid puts its minimum at `θ = 112°`, but that is grid resolution: a `0.05°` sweep
+resolves it to
+
+```
+theta = 111.40 .. 112.10, vol = 5.8981217284 .. 5.8980564728
+grid minimum     5.8979671248  at theta = 111.80
+parabolic vertex theta* = 111.7975,  vol* = 5.8979671217
+```
+
+so the family minimum is `5.897967122` at `θ ≈ 111.80°`, and the frozen fixture
+(`cos θ = −3/8`, `θ = 112.0248°`, `vol = 5.898017372`) sits `5.0e-5` above it. The `(P')`
+margin at the family optimum is therefore `+0.134549` rather than `+0.134600` — the same
+number to three decimals, which is the honest precision of the conclusion.
 
 The legal window also has a clean interpretation: below `≈105.2°` the pentagon penetrates
 the ring (contact at `1.9938` at `105°`), and above `120°` it penetrates the *lower* ring —
@@ -153,9 +165,10 @@ vol        phi   theta   minsep(added)
 
 The volume increases monotonically as `φ` decreases from `36°`, and legality fails below
 `φ ≈ 22°`, so `φ = 36°` is optimal and the optimum is **interior in `φ`** — not pinned by a
-contact. (By the reflection symmetry of the pentagon there is nothing to check beyond
-`36°`.) The symmetric family is therefore fully resolved at `(θ, φ) = (112°, 36°)` with
-`vol = 5.898007181`.
+contact. A `0.5°` sweep confirms it and shows the exact symmetry: `φ = 35.5` and `φ = 36.5`
+give identical volumes (`5.898035176`), as do `35`/`37` (`5.898119134`), so `36°` is the
+mirror axis. The symmetric family is therefore fully resolved at `(θ, φ) = (111.80°, 36°)`
+with `vol = 5.897967122`.
 
 ---
 
