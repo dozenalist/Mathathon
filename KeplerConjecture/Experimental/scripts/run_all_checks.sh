@@ -36,7 +36,7 @@ run barlow_random_stackings "random Barlow stackings: every layer 4sqrt2 and fcc
 run rational_interval      "exact rational intervals; pi/sin/cos with remainder bounds"
 run cell_certificate        "REPAIRED enclosure: witnesses W1,W2 + cube/tet/fcc/hcp/C5 controls"
 run ring_excess             "ring-excess lemma: C5 configuration cleared by proof, margin +0.109"
-run pair_theorem_12faces      "THEOREM: (P') holds for every 12-face completion, margin +0.0103"
+run pair_theorem_12faces      "THEOREM modulo Lindelof: (P') for every 12-face completion, margin +0.0103"
 # evidence integrity: every JSON must parse, every TXT must be non-empty
 bad=0
 for f in Experimental/evidence/*.json; do

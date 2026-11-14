@@ -419,10 +419,22 @@ areas rather than volumes.
 > is false. Recorded here in full rather than quietly repaired, because the failure is
 > instructive and because a conditional result must not be circulated as a theorem.
 
-**The defect.** Step (1) argued `vol D' ≥ V_dod` by calling `D'` a Voronoi cell of a legal
-packing. It is not: `D'` has the ring faces at distance `1`, which corresponds to neighbours at
-distance exactly `2`, and scaling the ring inward by `2/2.102924 = 0.9511` puts it at
-`1.902` from `c` — **violating 2-separation**. So Hales–McLaughlin does not apply to `D'`.
+**The defect, and its repair (recorded in `REVIEW_0653` §6).** Step (1) argued `vol D' ≥ V_dod`
+by calling `D'` a Voronoi cell of a legal packing. It is not: `D'` has the ring faces at
+distance `1`, which corresponds to neighbours at distance exactly `2`, and scaling the ring
+inward by `2/2.102924 = 0.9511` puts it at `1.902` from `c` — violating 2-separation. So
+Hales–McLaughlin does not apply to `D'`.
+
+**But the conclusion is true for a different and older reason.** Lindelöf (1869) proved that
+among convex polyhedra with `n` faces circumscribed about the unit sphere, the surface area is
+minimised by the regular polyhedron, and that this happens for `n = 4, 6, 12` at the regular
+tetrahedron, hexahedron and **dodecahedron**. Since `V = S·r/3` with `r = 1`, that also minimises
+the volume. `D'` has twelve faces at distance `≥ 1`; moving any face that sits farther than `1`
+in to `1` only decreases the volume, so `D'` contains a twelve-faced polyhedron circumscribed
+about the unit ball, whose volume is at least `V_dod`. Hence `vol D' ≥ V_dod`.
+
+So step (1) stands — on Lindelöf, not on Hales–McLaughlin. Both are imported nineteenth- and
+twentieth-century theorems and neither is re-proved here.
 
 And the pure inequality is false: over `20 000` random 12-tuples of unit normals,
 `min vol ⋂{y·n_i ≤ 1} = 0.707055`, far below `V_dod = 5.550291`. Clustering the normals gives
@@ -430,8 +442,9 @@ thin polytopes. What remains open is whether the *constrained* twelve directions
 problem — six fixed (generously spread) plus six 2-separated free ones — force
 `vol D' ≥ 5.5400`, the value the argument needs.
 
-**What is actually true.** Everything except step (1) is proved, and the gap is now a single
-number rather than an argument:
+**What is actually true (superseded by the Lindelöf repair above).** At the time of writing the
+following was the best available; with Lindelöf, step (1) is proved and the theorem stands. The
+conditional form is kept because it was what the block could prove unaided:
 
 > **Conditional Theorem (`K15-E099`, CONDITIONAL).** If for a twelve-face completion
 > `vol D' ≥ V_dod − 5(b−1)A_min = 5.5400`, then `vol Ω(w1) > 5.763417470`.
