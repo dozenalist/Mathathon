@@ -21,7 +21,8 @@ CLAIMS = os.path.join(ROOT, 'KeplerConjecture', 'Main', 'CLAIMS.md')
 
 # ids defined in a worker's own ledger, cited by Main; they are listed in CLAIMS.md
 # under "External ids" so that a reference from Main resolves to something.
-EXTERNAL = {'K15-X-C017', 'K15-X-C014', 'K15-X-C015', 'K15-X-C016'}
+EXTERNAL = {'K15-X-C014', 'K15-X-C015', 'K15-X-C016', 'K15-X-C017',
+            'K15-X-C043', 'K15-X-C051', 'K15-X-C052', 'K15-X-C053', 'K15-X-C055'}
 
 VOCAB = {
     'PROPOSED', 'TESTED_FINITE', 'PROVED', 'LEAN_VERIFIED', 'LEAN_CONDITIONAL',

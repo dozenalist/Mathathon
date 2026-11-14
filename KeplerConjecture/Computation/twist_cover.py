@@ -67,7 +67,14 @@ def inner_arcs(d=None, threshold=None, verbose=False):
     for a in A:
         u = (w[0] - a[0], w[1] - a[1], w[2] - a[2])
         for q in Q:
-            Aij = (u[0]**2 + u[1]**2 + u[2]**2) + (q[0]**2 + q[1]**2 + q[2]**2)
+            # d^2(t) = |u|^2 + |q|^2 + 2<u, R_t q> with R_t a rotation about the x-axis, so
+            #   <u, R_t q> = u_x q_x + (u_y q_y + u_z q_z) cos t + (u_z q_y - u_y q_z) sin t
+            # and the CONSTANT piece is |u|^2 + |q|^2 + 2 u_x q_x.  Main omitted 2 u_x q_x in
+            # the first version (K15-C126): the x-components are untouched by the rotation, so
+            # that term does not vanish.  The omission made every pair look farther apart and
+            # produced a wrong threshold (6/sqrt5 instead of ~3.4555).
+            Aij = ((u[0]**2 + u[1]**2 + u[2]**2) + (q[0]**2 + q[1]**2 + q[2]**2)
+                   + 2 * u[0] * q[0])
             B = 2 * (u[1] * q[1] + u[2] * q[2])
             C = 2 * (u[2] * q[1] - u[1] * q[2])
             R = sqrt(B * B + C * C)

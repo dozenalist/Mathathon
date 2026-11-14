@@ -197,6 +197,24 @@ chk("V_ico * 1.045^3 exceeds sqrt32 by (%)", 100 * (V_ico * mpf('1.045') ** 3 / 
 chk("target c_F = sqrt32/1.045^3", sqrt(32) / mpf('1.045') ** 3, 4.95708216846, tol=1e-9)
 chk("inball c = 4pi/3 falls short (product)", 4 * pi / 3 * mpf('1.045') ** 3, 4.780105486434, tol=1e-9)
 
+# --- K15-C124/C125 (review 0608) -----------------------------------------------
+EPS_BAND = 6 / sqrt(mpf(5)) - 2
+chk("band end eps = 6/sqrt5 - 2", EPS_BAND, 0.683281572999747635, tol=1e-12)
+chk("case-2 density at the band end", 1 / (1 + EPS_BAND / 2) ** 3, 0.414086, tol=1e-6)
+chk("case-2 density is well below ML", 1 / (1 + EPS_BAND / 2) ** 3 < mpf('0.754697399337'), True)
+chk("C125: truncated octahedron volume, inradius 1", 8 * sqrt(mpf(2)) * (2 / sqrt(mpf(6))) ** 3, 6.158402871, tol=1e-9)
+chk("C125: regular icosahedron volume, inradius 1", mpf(5) / 12 * (3 + sqrt(mpf(5))) * (12 / (sqrt(mpf(3)) * (3 + sqrt(mpf(5))))) ** 3, 5.0540561436, tol=1e-9)
+chk("C125: 14-face truncated oct is WORSE than 20-face icosahedron", 8 * sqrt(mpf(2)) * (2 / sqrt(mpf(6))) ** 3 > mpf(5) / 12 * (3 + sqrt(mpf(5))) * (12 / (sqrt(mpf(3)) * (3 + sqrt(mpf(5))))) ** 3, True)
+th = mp.acos(1 - 2 / mpf(20))
+chk("C125: equal-cap estimate for F=20", 20 * 2 * pi * (-mp.log(mp.cos(th))) / 3, 4.413331, tol=1e-6)
+chk("C125: equal-cap estimate is BELOW the C122 threshold", 20 * 2 * pi * (-mp.log(mp.cos(th))) / 3 < sqrt(32) / mpf('1.045') ** 3, True)
+
+# --- K15-C126: X's corrected band and the d=2 agreement ------------------------
+chk("X-C051 two-dodecahedra threshold", mpf('3.4555003444'), 3.4555003444, tol=1e-9)
+chk("that threshold sits just below 2 sqrt3", 2 * sqrt(3) - mpf('3.4555003444'), 0.00860127, tol=1e-7)
+chk("X band width 3.4555 - 2 covers C124's eps", mpf('3.4555003444') - 2 > mpf('0.6832816'), True)
+chk("C124 case-2 density at eps = 0.6832816", 1 / (1 + mpf('0.6832816') / 2) ** 3, 0.414086, tol=1e-6)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)

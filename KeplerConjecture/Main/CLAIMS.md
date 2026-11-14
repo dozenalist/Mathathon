@@ -3336,6 +3336,11 @@ with the worker's own status.
 | `K15-X-C015` | X | both-sides, `0.813631102` | X's ledger |
 | `K15-X-C016` | X | both-sides, `0.783097911` | X's ledger |
 | `K15-X-C017` | X | both-sides rational Gram, `Δ < 0.782267220134` (smaller certificate: `< 0.782267254857`, 41-character entries) | X's ledger; **`PENDING_REVIEW`** in Main pending local review of the smaller certificate |
+| `K15-X-C043` | X | Theorem D step 4 verified to 12 digits; the E/Main twist discrepancy resolved (different twist origins) | X's ledger |
+| `K15-X-C051` | X | **the two-dodecahedra threshold is `3.4555003444`** — Main's `6/√5` was wrong (missing term, `C126`); `2φ` withdrawn by X | X's ledger; **adopted by Main** |
+| `K15-X-C052` | X | A15 Voronoi volumes `125/16`, `129/16`, contact pair `16.125` | X's ledger; confirms Main's `C111` |
+| `K15-X-C053` | X | the arithmetic of `C119`/`C122` checked exactly | X's ledger; no discrepancy |
+| `K15-X-C055` | X | E's payer fixture reproduced to `1e−12`; it is not the `5.897967122` family optimum | X's ledger; confirms `C118` |
 | `K15-E074`, `E075`, `E081`–`E086` | E | the pair conjecture, the two-dodecahedra exclusion, the payer fixtures | E's ledger; `E074` `PROPOSED`, `E078` `WITHDRAWN` by E |
 | `K15-C-TRANSFER-DENSITY-002`, `CUTIMPLIES-003`, `HIGHDENS-001`, `PERIODCONV-001`, `CUTBLOB-001`, `DECOUPLE-001`, `CUTEQUIV-001` | C | the cut/flow fixtures and their scope; `CUTEQUIV-001` **withdrawn** by C | C's ledger |
 
@@ -3869,3 +3874,158 @@ the code crashed).
 *Status.* `PROVED` (modulo the 60-digit arithmetic and the `1e−30` inner margin). `C112`'s
 *statement* is unchanged and its rounding is superseded; per review 0608 both `C112` and this entry
 stay **`PENDING_REVIEW`** until X checks the exact claims.
+
+### K15-C125 — the `13`–`20`-face route **stops**, and a tempting reduction is refuted (`PROVED` negative)
+
+Attempt 1 of review 0608's brief: the `13`–`20`-face circumscribed-volume constants that
+`K15-C122` needs. **The literature, the arithmetic and a counterexample all say stop.** Recorded as
+a precise failed lemma, which the brief counts as a deliverable.
+
+**(a) The constants are not available as theorems.** `c_F` := min volume of a convex body containing
+`B(0,1)` with `≤ F` faces. Reading the sources:
+
+- **Fejes Tóth, *Regular Figures* p. 263, Theorem 2.1** (formula quoted in Horváth,
+  arXiv:1509.08859v2, §2): for a convex polyhedron with `f` faces, `v` vertices, `e` edges, inradius
+  `r` and circumradius `R`, a **two-sided** bound of the form
+  `(e/3)·sin(πf/e)·tan²(πf/2e)·tan²(πv/2e)·r³ ≤ V ≤ (quadratic in cot, cos)·R³`.
+  It bounds `V` below only through `f`, `v`, `e` **jointly**; with `r = 1` it is not a function of
+  `f` alone, so it does **not** give `c_F`.
+- **Proved cases.** Fejes Tóth proved `F = 4, 6, 12` (tetrahedron, cube, dodecahedron) via Goldberg's
+  Steinitz-number bound; `F = 5` is also proved; *Symmetry* **9** (2017) 41 proves `F = 8, 10, 14`
+  and leaves `F = 18, 20, 22` **conjectured**, citing **N. Mutoh, "The polyhedra of maximal volume
+  inscribed in the unit sphere and of minimal volume circumscribed about the unit sphere", JCDCG,
+  LNCS 2866 (2002) 204–214**, whose optima for `F = 4..30` are computer-aided *conjectures*.
+- So for `F = 13, 15, 16, 17, 18, 19, 20` — seven of the eight values `C122` needs — **no proved
+  constant exists to cite.**
+
+**(b) The monotonicity `C122` relied on is false.** `C122` wrote "the minimum decreases with `F`",
+supported by the Platonic sequence. It is not true in general. With inradius `1`:
+
+| solid | faces | volume |
+| --- | --- | --- |
+| regular tetrahedron | 4 | `13.856406` |
+| cube | 6 | `8.000000` |
+| regular octahedron | 8 | `6.928203` |
+| **truncated octahedron** | **14** | **`6.158403`** |
+| **regular icosahedron** | **20** | **`5.054056`** |
+
+The `14`-face truncated octahedron is **worse than the `20`-face icosahedron** by `22%`. So
+"more faces ⟹ smaller minimum" is false, and the target cannot be aimed at `F = 20` on that basis.
+(This also corrects `C122`'s reading of the Platonic sequence: it is monotone in `F`, but it is not
+the sequence of *minimisers*.)
+
+**(c) A crude estimate cannot substitute, and misses by a wide margin.** A circumscribed polyhedron
+with tangency points `w_i` has `V = (1/3)Σ_i ∫_{S_i} sec θ dσ` over the normal-fan tiling of `S²`.
+For `F = 20` equal caps (solid angle `4π/20`, angular radius `0.451027`),
+`∫sec = 2π(−ln cos θ) = 0.662000`, so `V ≈ (1/3)(20)(0.662000) = 4.413331`. That is **below**
+`C122`'s threshold `4.957082`, so any argument using only the *count* of faces through this estimate
+lands on the wrong side; the threshold would need the minimiser to be `12%` *worse* than equal caps,
+and nothing supplied here says so.
+
+**Verdict: stop this branch.** `C122`'s target is not reachable by citation (unproved for seven of
+the eight faces), not reachable by monotonicity (false), and not reachable by the count-based
+estimate (misses by `12%`). `G11` is unaffected. What would revive it is a *proved* `c_F` for
+`F ≤ 20` at `≥ 4.958` — which by (a) is exactly the open part of Mutoh's conjecture and cannot be
+assumed here.
+
+*Status.* `PROVED` negative (the refutations in (b) and (c) are arithmetic; (a) is a literature
+finding with locators). Reviewer X.
+
+### K15-C124 — the near-contact bridge without assuming positive contact density (`PROVED`)
+
+Attempt 2, and the successful one: remove the hypothesis `ρ_ε > 0` that `C108`'s Theorem C and
+`C114` need, which review 0608 says must **not** be assumed. It can be removed by a two-case split
+against the inball bound.
+
+**The missing implication.** Let `S_ε := {v : ∃w with 0 < |v−w| ≤ 2+ε}` and let `M` be a **maximal**
+matching of the `(2+ε)`-graph. Every `v ∈ S_ε` is either matched or, by maximality, adjacent to a
+matched vertex; so `S_ε ⊆ matched ∪ N(matched)` and, with `deg ≤ 12`,
+
+```
+|S_ε ∩ B|  ≤  2|M ∩ B| + 12·2|M ∩ B|  =  26 |M ∩ B| .
+```
+
+Hence `ρ_ε = 0` forces `S_ε` to have density zero. **This is the step that was missing**: the pair
+bridge does not need `ρ_ε > 0` as an assumption — where it fails, the packing is *asymptotically
+ε-loose*, and that case the trivial bound handles.
+
+**The split.** Fix `ε ∈ (0, 0.6832816)`, inside the band certified by `C116`/`C123`. Let `Λ` be
+saturated 2-separated, `c = c(Λ)`, `δ = (4π/3)c`.
+
+- **Case `ρ_ε > 0`.** Theorem C gives `δ ≤ (4π/3)/(V_dod + δ₀(ε)ρ_ε) < (4π/3)/V_dod =
+  0.754697399337`, strictly, since `δ₀(ε) > 0` (`C108` via `C114`).
+- **Case `ρ_ε = 0`.** Then `|S_ε ∩ B| = o(|B|)`, so all but `o(|B|)` cells contain `B(v, 1+ε/2)` and
+  `vol Ω(v) ≥ (4π/3)(1+ε/2)³`. Since `Σ_{v∈B} vol Ω(v) = (4π/3)R³(1+o(1))` and
+  `|B| = c(4π/3)R³(1+o(1))`,
+
+  ```
+  (4π/3)R³ ≥ (|B| − o(|B|))·(4π/3)(1+ε/2)³  ⟹  1 ≥ c(4π/3)(1+ε/2)³  ⟹  δ ≤ 1/(1+ε/2)³ .
+  ```
+
+  At the band end `ε = 0.6832816`: `δ ≤ 1/(1.3416408)³ = 0.414086…`.
+
+> **Theorem.** Every saturated 2-separated packing in `R³` satisfies `δ(Λ) < 0.754697399337`
+> **strictly**, with no hypothesis on contact density. Explicitly
+> `δ(Λ) ≤ max{ (4π/3)/(V_dod + δ₀(ε)ρ_ε), 1/(1+ε/2)³ }`, and the second branch is at most
+> `0.414086` for `ε ≤ 0.6832816`.
+
+**What this achieves, and what it does not.**
+
+1. **`G13` is closed as a *hypothesis*.** The bridge now assumes nothing beyond saturation and
+   2-separation; `ρ_ε > 0` is no longer required, which is what review 0608 asked for.
+2. **The dodecahedral bound is not attained — properly this time.** `C113` retracted an earlier
+   "equality case is empty" claim because it used an invalid average-to-pointwise inference. This
+   argument does not: it splits on `ρ_ε`, and in the `ρ_ε = 0` branch it bounds the *density* directly
+   from the cell-volume sum, with no termwise inference. **The emptiness is restored on a sound
+   proof** (`G14` closes).
+3. **Still not a number.** `δ₀(ε)` is non-explicit (`C108`), so branch 1 gives strictness and no
+   constant. **Nothing here is a new packing bound and `RESULTS.md` does not move.**
+4. **The second branch uses `≥`, not `>`**: `v ∉ S_ε` means *every* other centre is at distance
+   `> 2+ε`, so `Ω(v) ⊇ B(v, 1+ε/2)` and `vol ≥ (4π/3)(1+ε/2)³` — the argument needs only `≥`.
+
+*Status.* `PROVED` (the `26`-counting and the split; `C108`/`C114`/`C116` supply `δ₀(ε)>0` and the
+band). `PENDING_REVIEW` with the rest of the pair chain, per review 0608.
+
+### K15-C126 — a missing term in the twist sinusoid: found by X, confirmed, and the band withdrawn (`CORRECTION`)
+
+Review 0608 asked for inner arcs (`C123`, done). While reconciling X's `K15-X-C051` — which reports the
+two-dodecahedra threshold as `3.4555003444`, *not* `6/√5` — Main found a **genuine bug in its own
+formula**, and X's number is the correct one.
+
+**The bug.** With `R_t` a rotation about the `x`-axis and `u = w − a`, `b − a = u + R_t q`, so
+
+```
+d²(t) = |u|² + |q|² + 2⟨u, R_t q⟩
+      = |u|² + |q|² + 2u_x q_x + 2(u_y q_y + u_z q_z)cos t + 2(u_z q_y − u_y q_z) sin t .
+```
+
+The first version put `A = |u|² + |q|²` and **dropped `2u_x q_x`** — the `x`-components are untouched
+by a rotation about `x`, so that term does not vanish. Confirmed numerically on a pair at `d = 2.7`:
+direct `min_t d² = 7.29` against `A − R = 4.06`, and `4.06 + 2u_x q_x = 7.29` exactly.
+
+**What it affected, and what it did not.**
+
+- **`C112`/`C123`'s certification at `d = 2` survives.** With the corrected `A`, re-running gives
+  68 never-violating pairs, 53 proper arcs, 133 arcs, merging to one interval covering `[0, 2π/5]`
+  with zero gaps. Independently, a direct scan of the minimum cross-distance over a fine twist grid
+  gives `max over t of min_pq d² = 1.266874`, i.e. `1.1255548 < 2` everywhere. **The two methods
+  agree at `d = 2`**, so **Theorem D step (4) is sound** and needs no further repair.
+- **`C116`'s numeric threshold is WITHDRAWN.** `6/√5 = 2.6832816` was a consequence of the missing
+  term. X's `3.4555003444` is correct, and Main's own direct scan agrees: the max over twists of the
+  min cross-distance is `1.9999997` at `d = 3.4555` and `2.007172` at `d = 2√3 = 3.4641`, so the
+  threshold sits just below `2√3`. **`C116`'s *statement* that a band exists is unaffected; its
+  constant is replaced by X's `3.4555`** (attributed to X, `X-C051`), and Main's `6/√5` is retired.
+- **The arc test disagrees with the scan above `d ≈ 3.5`** (it still covers at `3.5`, where the scan
+  finds a twist with no pair closer than 2). Main has **not** resolved that; it does not affect
+  `d = 2`, where the methods agree. Until resolved, the arc test is certified **only at `d = 2`**
+  and no band end is claimed from it.
+- **`C124` is unaffected.** It needs `σ₀(ε) > 2V_dod` for *one* `ε` inside the band, and uses
+  `ε = 0.6832816`, which is inside every candidate band (`6/√5 − 2` withdrawn, `3.4555 − 2 = 1.4555`
+  from X, and Main's scan). So the two-case split stands; only the *number* `0.6832816` should be
+  quoted as "any `ε ≤ 1.45`", attributed jointly.
+
+**Two method failures of Main's in one object** — a wrong constant term, and an arc test that is not
+monotone in the way the scan is. Both were caught by comparing with an independent computation, which
+is the only reason they surfaced. `C112`, `C123` and this entry stay **`PENDING_REVIEW`**.
+
+*Status.* `CORRECTION`; `C116`'s constant retired in favour of X's `X-C051`.
