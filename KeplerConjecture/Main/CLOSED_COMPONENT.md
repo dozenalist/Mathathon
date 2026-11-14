@@ -45,3 +45,63 @@ isolated vertex is never "alone", it forces a shell of at least five centres.
 - **The question stays open**, and it is `K15-C089`'s step 0: until it is settled, a
   proof of the cut condition must handle the closed case, and a single example would
   close the *transfer route* (though not Kepler).
+
+---
+
+# Addendum (block `K15-REVIEW-0308-M-CONTINUE`): three corrections and one sharp target
+
+## A. "Closed" must mean "bounded"
+
+The question above implicitly assumed `C` finite. That assumption is not removable: the
+**crack packing** of `K15-C095` (`Main/GAP_FIXTURE.md`, `Computation/gap_fixture.py`) is a
+saturated 2-separated packing whose `2.09`-graph has **two closed infinite components** —
+two fcc half-spaces separated by a crack of width `d ∈ (1.633, 3.266]`, with the upper
+half shifted sideways by `T` so the minimum cross-crack distance is `> 2.09` once
+`d > 1.633`. Infinite closed components are therefore not exotic, and they are harmless:
+every finite `U ⊆ C` still has out-edges, into `C∖U`.
+
+> **Corrected obligation.** No **bounded** closed component `C` has `Σ_C b > 0`.
+
+(Same correction applied in `K15-C089`, ledger.)
+
+## B. A void is never the counterexample
+
+In the crack packing at `d = 2.4` every crack-face cell has `vol Ω = 6.985349063`, i.e.
+`b = −1.328495`, while every bulk cell has `vol Ω = √32` exactly. Cells next to a void
+are *bigger* than `√32`, so `b < 0` there and the cut condition holds for free. So the
+search for a violating component should not look at voids, vacancies, gaps or surfaces:
+**only compression can produce `b > 0`.** The known source is the icosahedral 13-cluster
+(`K15-C081r`). This is worth writing down because "find a packing that breaks the cut
+condition" naturally suggests looking at holes, and holes are the wrong direction.
+
+## C. A2 becomes a sharp, finite, testable target
+
+A2 said the singleton case needs "a stability version of Hales–McLaughlin", that the
+admissible window is `1.9%` wide, and that no such result is available. That is still
+true, but the target can now be stated exactly (`K15-C096`):
+
+```
+V(ρ) := min{ vol Ω(0) : C 2-separated, every |c| ≥ ρ },     V(2) = V_dod (Hales–McLaughlin)
+conjecture (S):   V(ρ) = V_dod·(ρ/2)³   on  2 ≤ ρ ≤ ρ_c
+sharp threshold:  ρ* = 2(√32/V_dod)^{1/3} = 2.012718662…   ← √32 is crossed here
+state at ρ=2.09:  V_dod(1.045)³ = 6.333804106 = 1.1197·√32
+```
+
+Three things this buys:
+
+1. **The margin is 12%, not 1.9%.** The 1.9% window above is the *volume* window for an
+   arbitrary cell; for an isolated vertex the cheapest configuration clears `√32` by
+   `11.97%`. So the singleton case is not marginal at all — if `(S)` holds.
+2. **A sharp constant to aim at.** Proving `V(ρ) ≥ V_dod(1 + 0.2133(ρ−2))` on `[2, 2.09]`
+   suffices; proving `(S)` gives it for every `ρ ≥ 2.0127` at once.
+3. **`ρ* < 2.09` is informative.** The threshold is `0.64%` above 2, whereas the graph
+   radius is `4.5%` above 2. So the geometry is not close to the boundary — which is why
+   the numerical probe finds a 12% margin rather than a near miss.
+
+## D. What is still open
+
+`|C| ≥ 2` is untouched by C. A member `v` of a multi-point `C` has neighbours *inside*
+`C` at distance exactly 2, so `(S)` — which assumes all neighbours are far — does not
+apply. Whether a small `C` can have all its cells below `√32` on average remains open, no
+construction was found (A1–A4), and `A3`/`A4` were not computed. **The honest status is
+unchanged: open, with the singleton case now reduced to a single explicit inequality.**
