@@ -1,0 +1,304 @@
+ASTRA PAIRED PRODUCER A6 — EXACT SOURCE PRODUCER AND PAIRED EXCLUSION
+14 November 2026. Cumulative assignment 20. Paper proof; no Lean elaboration.
+
+VERDICT
+
+VALID. The precise equilateral paired-direction interface hypotheses in
+the assignment force the canonical three-pair field as an ACTUAL
+almost-everywhere subpalette at the common centre. No palette-cardinality
+assumption is required. In fact, the same proof then forces equality to
+the canonical field almost everywhere.
+
+Composing this producer with the independently accepted A5 canonical-
+subpalette exclusion proves that this six-set equilateral paired-direction
+exclusion configuration is impossible for a measurable WeakColoring6.
+
+This is a theorem about that specified configuration and its common rigid
+motions/global label relabelings. It is not exclusion of all common
+interfaces, a proof of F6, or a global six-colouring impossibility theorem.
+No claim about the distinct-direction survivors follows from this result.
+
+The producer is checked directly against the original source consumers;
+no external coordinator claim, finite search, or guessed palette word is
+used. Only this report was written. Original sources were read only.
+No builds, computational searches, services, or subagents were used.
+
+1. EXACT THEOREM AND HYPOTHESES
+
+Let C={0,1,2,3,4,5}, let c:C-plane->C be measurable, and suppose
+WeakColoring6 c. Fix ONE centre x. Indices below are modulo six, and
+  E_i={i,i+1}.
+Suppose there are six sets K_i with actual
+  ApproachingContinuum x K_i v_i
+data, where the SIGNED unit directions are
+  v_0=v_1=e(0),
+  v_2=v_3=e(2*pi/3),
+  v_4=v_5=e(4*pi/3),
+and e(t)=exp(it). Suppose also, for every i and every label a in E_i,
+  Disjoint(spatialSupport(c,a), Straddle(K_i)).          (EX)
+
+THEOREM: These hypotheses imply False.
+
+The six sets K_i need not coincide within pairs and need not be pairwise
+disjoint. No compactness, connectedness, palette cardinality, or finite
+angular-state assertion is added to the stated approach/exclusion data.
+The conclusion is obtained from the actual source palette at x, not from
+an independently selected angular field.
+
+Write
+  Q(theta)=palette c hc x theta,
+  tau=pi/3,
+  A0={1,4}, A1={2,5}, A2={0,3},
+and define on the angular circle
+  P(theta)=A_(floor((theta+pi/6)/tau) mod3).              (CAN)
+This is well-defined modulo2pi: replacing a real representative by
+theta+2pi changes the floor by6, which does not change its residue mod3.
+Values at sector endpoints will not matter.
+
+The producer proved below is
+  P(theta) subset Q(theta) for angular-a.e. theta.       (PROD)
+The accepted A5 theorem contradicts (PROD). It actually requires only
+this containment, although section6 below obtains equality as well.
+
+2. SOURCE CONTRACTS READ AND USED
+
+Original read-only root:
+  work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/
+
+AngularBoundary.lean:317, finite_support_exclusion_ae, says from (EX):
+  for plane-a.e. z, for every i,
+    z in Straddle(K_i) implies c(z) notin E_i.           (S)
+Its hypotheses are measurable c, a finite index type, and the actual
+spatial support exclusions. They are all present.
+
+For any fixed set F of edge indices, define
+  J_F=C minus union_{i in F} E_i.
+Statement (S) immediately gives
+  for plane-a.e. z,
+    (for every i in F, z in Straddle(K_i)) implies c(z) in J_F.
+This is exactly the hJ premise of the next two source declarations.
+
+AngularBoundary.lean:259, continuum_outer_restriction, gives
+  for angular-a.e. theta,
+    (for every i in F, <e(theta),v_i> >0)
+      implies (Q(theta) intersect J_F) is nonempty.      (OUT)
+
+AngularBoundary.lean:279, continuum_inner_restriction, gives
+  for angular-a.e. theta,
+    (for every i in F, <e(theta),v_i> <0)
+      implies (Q(theta) intersect J_F) is nonempty.      (IN)
+
+Their actual hypotheses are the approach data, measurability, and the
+displayed spatial a.e. restriction. Neither uses a palette-size bound.
+They each produce an INTERSECTION HIT, not a whole-palette containment.
+The proof below respects exactly that conclusion.
+
+PaletteTransport.lean:450, palette_sixty_disjoint, is generic in k and
+assumes only measurable c and WeakColoring k c. At our fixed centre:
+  for angular-a.e. theta,
+    Disjoint(Q(theta),Q(theta+tau)).                    (DIS)
+I read its generic variable declarations and proof through palette_sixty
+and palette_sixty_real. There is no five-colour classification or B2
+hypothesis hidden in this consumer.
+
+All directions and palettes in (S), (OUT), (IN), and (DIS) use the SAME
+centre x. Outer strips are combined only with outer strips; inner strips
+only with inner strips. The two resulting hits belong to the same actual
+palette by the source trace theorems. No mixed-side straddling intersection
+or independently reversed approach direction is invented.
+
+3. COMPLETE SIGN AND LABEL TABLE
+
+Group the EDGE INDICES by their common directed vector:
+  B0={0,1}, B1={2,3}, B2={4,5}.
+Their respective excluded LABEL unions are
+  U0=E0 union E1={0,1,2},
+  U1=E2 union E3={2,3,4},
+  U2=E4 union E5={0,4,5}.
+
+Let t be any real angle strictly in I=(-pi/6,pi/6), and put
+  theta_j=t+j*tau, j=0,...,5.
+At theta_j each of the three directional inner products is strictly
+positive or strictly negative. Direct cosine signs give this table.
+An entry '01' in a BLOCK column means B0 union B1, not a label pair.
+
+ j   positive blocks   OUT residual    negative blocks   IN residual
+ -------------------------------------------------------------------
+ 0          0             {3,4,5}            12              {1}
+ 1         01                {5}             2            {1,2,3}
+ 2          1             {0,1,5}            02              {3}
+ 3         12                {1}             0            {3,4,5}
+ 4          2             {1,2,3}            01              {5}
+ 5         02                {3}             1            {0,1,5}
+
+For example, at t in (-30,30) degrees, direction0 has positive cosine
+and directions120,240 both have negative cosine. The positive block
+excludes U0 and leaves {3,4,5}; the negative blocks exclude U1 union U2
+={0,2,3,4,5} and leave {1}. At t+60, the positive blocks are B0,B1,
+leaving {5}, while the negative block B2 leaves {1,2,3}. The next row
+has only B1 positive, and the final three rows reverse these signs.
+The table includes every possible phase away from the six endpoints.
+
+Consequently (OUT) and (IN), at phases where their a.e. conclusions hold,
+give for Q_j=Q(theta_j):
+  f_j in Q_j,                 (Q_j intersect T_j) nonempty,
+where
+  (f_0,...,f_5)=(1,5,3,1,5,3),
+  (T_0,...,T_5)=({3,4,5},{1,2,3},{0,1,5},
+                 {3,4,5},{1,2,3},{0,1,5}).             (HITS)
+Singleton membership is just the exact meaning of hitting a singleton.
+No assumption that Q_j has only one or two elements has been made.
+
+4. FINITE CONULL INTERSECTION: ALL SIX SHIFTS ARE LICENSED
+
+Here is an explicit way to synchronize the source a.e. statements.
+
+There are only finitely many selected edge-index sets in section3.
+Intersect their OUT and IN conull sets to obtain an angular conull set G.
+Let D be the conull set from (DIS). Haar measure on the angular circle
+is invariant under addition by j*tau. Hence the set
+  Gstar=intersection_{j=0}^5 {t: t+j*tau belongs to G intersect D}
+is conull. All six hit statements and all six disjointness statements
+therefore hold simultaneously whenever the base angle t is in Gstar
+and in the open base arc I.
+
+In particular, for such a t:
+  Disjoint(Q_j,Q_(j+1)) for j modulo6.                 (CYCLE)
+For j=5 this uses 6*tau=2pi, which is zero on the angular quotient.
+Disjointness with the PREVIOUS palette follows by symmetry from the
+statement at j-1. It is not inferred from a new unlicensed shift.
+
+Equivalently one can pull these conull sets to the real line using
+PaletteDensity.angleMk_quasiMeasurePreserving (line158). No real-angle
+representative is assumed to avoid a null set merely because it was
+explicitly named; the finite conull restriction is made first.
+
+The six arcs I+j*tau partition the circle except for six endpoints.
+Those endpoints have Haar measure zero. Thus an a.e. statement on I
+proved simultaneously at all six shifts yields the desired angular-a.e.
+statement on the whole circle. Only FINITELY many shifts and families
+are intersected, with one fixed centre throughout.
+
+5. THE SECOND LABEL IS FORCED BY THE TWO NEIGHBOURS
+
+Fix t as in section4. By (CYCLE), Q_j cannot contain either f_(j-1)
+or f_(j+1), because those labels lie in the corresponding neighboring
+palettes by (HITS). The exact arithmetic is:
+
+ j   singleton f_j   other-side hit T_j   forbidden from neighbors
+ ----------------------------------------------------------------
+ 0        1               {3,4,5}                    {3,5}
+ 1        5               {1,2,3}                    {1,3}
+ 2        3               {0,1,5}                    {1,5}
+ 3        1               {3,4,5}                    {3,5}
+ 4        5               {1,2,3}                    {1,3}
+ 5        3               {0,1,5}                    {1,5}
+
+Each nonempty intersection Q_j intersect T_j therefore has only one
+possible element, respectively
+  (g_0,...,g_5)=(4,2,0,4,2,0).
+Thus
+  {f_j,g_j}=A_(j mod3) subset Q_j, j=0,...,5.           (PAIR)
+
+This is the complete finite implication. It does not infer an entire
+palette restriction from an OUT/IN hit, does not use a greedy choice of
+a witness word, and does not start by classifying possible two-element
+palettes. Larger palettes were permitted throughout and the second
+label was forced by actual neighbor disjointness.
+
+For theta=t+j*tau with t in I,
+  floor((theta+pi/6)/tau)=j.
+Therefore (PAIR) is exactly the containment (PROD) with the angular
+normalization (CAN), after the finite null-set argument in section4.
+
+6. OPTIONAL STRONGER CONSEQUENCE: EXACT EQUALITY, STILL WITHOUT B2
+
+Although A5 needs only containment, the preceding proof actually
+determines the full palette at the centre almost everywhere.
+The neighboring palettes contain A_((j-1) mod3) and A_((j+1) mod3).
+These two disjoint pairs together are precisely C minus A_(j mod3).
+Disjointness from both neighbors therefore gives
+  Q_j subset A_(j mod3).
+Combined with (PAIR), this yields Q_j=A_(j mod3) simultaneously for all
+six shifts and hence Q(theta)=P(theta) angular-almost everywhere.
+
+This is a CONSEQUENCE of the special paired interface hypotheses. It
+is not an assumed global B2 theorem and says nothing about arbitrary
+centres or different interface direction patterns.
+
+7. COMPOSITION WITH THE ACCEPTED A5 CONSUMER
+
+The accepted theorem in outputs/ASTRA-FOUR-LIST-A5.txt, independently
+audited in outputs/ASTRA-FOUR-LIST-REFEREE.txt, states:
+  under measurable WeakColoring6, at no centre can the actual palette
+  contain the canonical P(theta) of (CAN) for angular-a.e. theta.
+
+Its geometry uses a finite-existence list obstruction consisting of two
+odd walks in open two-list H regions and the four-list vertex i/2.
+States.states_densityOne and States.finite_density_realization consume
+the actual subpalette hypothesis. That theorem has already been audited;
+it is not being replaced here by a finite chosen palette word.
+
+Sections2-5 supply exactly its subpalette hypothesis at the centre x
+under the six-set interface assumptions of section1. Applying A5 gives
+False. This completes the stated equilateral paired-exclusion theorem.
+
+No extra colouring regularity, enumerated coordinate certificate, or
+cardinality premise is needed to compose the two paper proofs. A5's
+remaining implementation limitation is unchanged: existence of its
+finite walks is proved, but all graph vertices are not explicitly listed.
+This does not prevent the existential finite_density_realization consumer.
+
+8. COMMON ROTATIONS, REFLECTIONS, AND GLOBAL RELABELINGS
+
+Common spatial rotation. If all six directions are multiplied by e(phi),
+use the base phase theta=phi+t. The same cosine signs hold, and the
+producer is P(theta-phi) subset Q(theta). To apply A5, rotate its entire
+finite geometry about x by e(phi). Distances remain1; its sector sums
+become sums of the rotated directions, and states_densityOne applies
+at the corresponding points x+e(phi)y. This directly proves the rotated
+version without needing an unstated equivariance theorem for traces.
+
+Common spatial reflection. For directions with angles
+  (phi,phi,phi-2pi/3,phi-2pi/3,phi-4pi/3,phi-4pi/3),
+put t=phi-theta. Cosine is even, so the same table gives the reflected
+canonical field. Reflect and rotate the entire A5 geometry by
+  y maps to e(phi)*conj(y)
+about x. Unit lengths are preserved; nonparallelity changes sign but
+remains nonzero. The same States consumer proves the contradiction.
+This is ONE common spatial reflection, not independent reversal of
+individual signed approach vectors.
+
+Global label relabeling. For a single permutation pi of all six labels,
+replace every E_i and every A_j by pi(E_i), pi(A_j). Complements, unions,
+hits and disjointness commute with that one bijection. The source
+restriction lemmas apply directly to these finite label sets, and the
+A5 finite list obstruction remains uncolourable after the same global
+relabeling. This avoids appealing to the Fin5-specific permutation
+declarations as if they were already compiled for Fin6.
+
+In particular the other adjacent-pair matching of the six cycle edges
+is obtained by a cyclic global label shift. Permuting the three rays of
+an equilateral direction triple is achieved by its common rotations and
+reflections. These symmetries therefore do not create an unhandled
+equilateral paired case. Independent edge-specific label permutations
+or direction sign changes are not licensed symmetries of the argument.
+
+9. FINAL SCOPE AND AUDIT FINDINGS
+
+The parent six-shift sketch is correct, including the ordering
+  forced singletons: 1,5,3,1,5,3;
+  forced second labels: 4,2,0,4,2,0.
+The actual source contracts supply all required hypotheses. There is
+no missing B2 premise, mixed-side intersection, arbitrary witness choice,
+unsigned-axis substitution, or exceptional-set step.
+
+The formerly separate producer is now proved for EXACTLY the
+equilateral paired-direction configuration in section1, and A5 excludes
+it. The theorem and proof extend under the common symmetries stated in
+section8. Other direction configurations remain outside this report.
+
+Status: complete source-licensed PAPER proof of the specified paired
+configuration's impossibility. No Lean compilation, fully enumerated
+finite graph, all-interface acyclicity theorem, or new global numerical
+colouring bound is claimed.

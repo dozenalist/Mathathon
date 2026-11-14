@@ -11,6 +11,7 @@ Start with [PROGRESS.md](PROGRESS.md) for the evidence and its limits, and
 
 | Area | Entry point |
 | --- | --- |
+| Proof explanations, worked examples, and interactive geometry | [Exposition/README.md](Exposition/README.md) |
 | Research snapshot, provenance, and completeness | [Main/README.md](Main/README.md) |
 | Formal proofs and validation | [Lean/README.md](Lean/README.md) |
 | Exact graph and finite-family computations | [Computation/README.md](Computation/README.md) |

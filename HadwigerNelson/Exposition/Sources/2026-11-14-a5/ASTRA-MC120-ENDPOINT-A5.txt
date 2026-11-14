@@ -1,0 +1,238 @@
+ACTUAL MC120 ENDPOINT: EXPLICIT PROPER 19-COLOUR COUNTEREXAMPLE
+14 November 2026
+
+RESULT AND SCOPE
+
+The generic strict-aperture MC120 theorem CANNOT be extended to a closed
+120-degree cone. There are two compact connected embedded arcs K_+, K_-
+approaching the SAME centre 0 in directions +60 and -60 degrees, a Borel
+POINTWISE PROPER 19-colouring c of the whole plane, and exact essential
+spatial-support exclusions H_+, H_-, whose union excludes 18 of the 19
+labels. Thus the residual palette is exactly one label.
+
+This is an actual continuum/colouring counterexample, not only an angular
+strip model. It handles every point of the plane and all support boundaries.
+It is NOT a six-colour counterexample and makes no novelty-priority claim.
+It does not refute a special six-colour endpoint theorem using additional
+six-cycle combinatorics. It does refute the palette-independent closed-MC120
+statement with precisely the hypotheses in section 4 of A4.
+
+Grade: complete elementary paper proof, not Lean verified. Original source
+files were read only. No builds, installs, heavy computation, or subagents.
+
+SOURCE CONTRACT
+
+Read outputs/ASTRA-CONTINUOUS-SIX-A4.txt, especially sections 4-5, and
+outputs/MC120-ENDPOINT-CORRECTION.txt. Original source root:
+  work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/
+
+AngularBoundary.lean defines
+  Straddle(K) = {z : exists p,q in K, |z-p|<1 and |z-q|>1},
+and proves it open. Its ApproachingContinuum structure records 0 in K and
+points r_n w_n in K with r_n>0, r_n ->0, |w_n|=1, w_n ->v. The construction
+below additionally makes K compact, connected, and an embedded arc.
+
+spatialSupport(c,j) is the support of plane Lebesgue measure restricted to
+the colour-j set. Coloring.lean defines ProperColoring by pointwise
+inequality at every unit pair, and WeakColoring by AEMeasurability plus
+almost-everywhere inequality for plane point/angular direction pairs.
+A Borel ProperColoring therefore satisfies the source WeakColoring.
+
+All angles in the proof are in radians. Identify C with R^2, write
+  e(theta)=(cos theta,sin theta), rho=1/100,
+  alpha(t)=pi/3+2t,
+  q_+(t)=t e(alpha(t)), q_-(t)=t e(-alpha(t)), 0<=t<=rho,
+  K_+={q_+(t):0<=t<=rho}, K_-={q_-(t):0<=t<=rho}.
+Let S_+=Straddle(K_+), S_-=Straddle(K_-), and W=S_+ intersect S_-.
+
+1. ACTUAL APPROACHING CONTINUA
+
+Both parameter maps are continuous on [0,rho], so their images are compact
+and connected. They are injective because |q_+(t)|=|q_-(t)|=t. Each is an
+embedded arc; the two arcs meet only at 0, since their nonzero arguments lie
+in disjoint intervals near +pi/3 and -pi/3.
+
+For n>=0 set r_n=rho/(n+1) and w_n=e(+(pi/3+2r_n)) for K_+, or use the
+minus sign for K_-. These give the exact ApproachingContinuum data at 0,
+with signed limiting directions v_+=e(pi/3), v_-=e(-pi/3). Their circular
+separation is exactly 2pi/3, and they lie in the closed cone [-pi/3,pi/3].
+
+2. THE ENTIRE COMMON STRADDLING REGION IS UNIT-INDEPENDENT
+
+First, every z in either S_+ or S_- satisfies
+                         1-rho < |z| < 1+rho.                 (1)
+Indeed a witness |z-q|<1 gives |z|<1+|q|<=1+rho, and a witness |z-q|>1
+gives |z|>1-|q|>=1-rho. Strict inequalities are preserved.
+
+Define the open disks of radius 1/2
+  D_+=B((sqrt(3)/2,0),1/2), D_-=B((-sqrt(3)/2,0),1/2).
+We prove
+  W intersect {|z|>1} is a subset of D_+,
+  W intersect {|z|<1} is a subset of D_-,
+  W intersect {|z|=1} is empty,                            (2)
+and any point in the first part has distance >1 from any point in the
+second part. Each disk itself has all pairwise distances strictly <1.
+
+2A. OUTER ESTIMATE, INCLUDING r=1 UNTIL IT IS EXCLUDED
+
+Let z in W have r=|z|>=1 and write z=r e(theta), with theta in (-pi,pi].
+For each sign choose the close witness q_+(t_+) or q_-(t_-), respectively.
+Both t_+,t_->0, since q(0)=0 is not strictly closer than 1 when r>=1.
+The squared-distance inequalities give
+  cos(theta-alpha(t_+)) > (r^2-1+t_+^2)/(2rt_+) >=0,
+  cos(theta+alpha(t_-)) > (r^2-1+t_-^2)/(2rt_-) >=0.
+
+There is no hidden angular-wrap choice here: each relevant open
+semicircle is an interval contained in (-pi,pi), since
+  alpha(t)+pi/2 <= 5pi/6+1/50 < pi.
+Their intersection therefore gives the ordinary real inequalities
+         -pi/6+2t_+ < theta < pi/6-2t_-.                    (3)
+Put h=r-1. The close witnesses also imply r<1+t_+ and r<1+t_-, so
+  0<=h<rho, t_+,t_->h, and |theta|<pi/6-2h.                (4)
+
+For 0<=s<=1/50, the 1-Lipschitz property of sine gives
+  sin(pi/6-u) >= 1/2-u >= 12/25 > 1/3  (0<=u<=s).
+Integrating gives
+  cos(pi/6-s) >= sqrt(3)/2+s/3.
+Consequently (4), with s=2h, gives the STRICT estimate
+                  cos(theta) > sqrt(3)/2+2h/3.             (5)
+The strictness also holds at h=0 because the angular interval is open.
+
+The condition z in D_+ is equivalent to
+                  r^2-sqrt(3) r cos(theta)+1/2 < 0.
+By (5), its left side is strictly less than
+  r^2-(3/2)r+1/2-(2sqrt(3)/3)rh
+    = h(1/2+h)-(2sqrt(3)/3)(1+h)h
+    <= h(1/2+h)-(1+h)h = -h/2 <=0,
+using 2sqrt(3)/3>1. Thus z in D_+. Equation (3) also gives Re z>0.
+
+2B. INNER ESTIMATE, INCLUDING r=1 UNTIL IT IS EXCLUDED
+
+Let z in W have r=|z|<=1 and write z=-r e(beta), beta in (-pi,pi].
+Here r>99/100 by (1). For each sign choose a far witness q_+(t_+) or
+q_-(t_-). Again t_+,t_->0, since 0 is not strictly farther than 1.
+The far inequalities give
+  cos(beta-alpha(t_+)) > (1-r^2-t_+^2)/(2rt_+) >= -t_+/(2r),
+  cos(beta+alpha(t_-)) > (1-r^2-t_-^2)/(2rt_-) >= -t_-/(2r).
+Set delta(t)=arcsin(t/(2r)). Since 0<t<=1/100 and r>99/100,
+  0<t/(2r)<1/198<1/2,
+  0<delta(t)<=2(t/(2r))=t/r<(100/99)t<2t.                 (6)
+The bound arcsin(u)<=2u for 0<=u<=1/2 follows directly by integrating its
+derivative, which is at most 2 on that interval.
+
+The two angular intervals of radius pi/2+delta(t) around +alpha(t_+) and
+-alpha(t_-) are again contained in (-pi,pi): indeed
+  alpha(t)+pi/2+delta(t)<5pi/6+4t<=5pi/6+1/25<pi.
+Hence their intersection yields
+  -pi/6+2t_+-delta(t_+) < beta < pi/6-2t_-+delta(t_-),
+and (6) implies
+                              |beta|<pi/6.                 (7)
+
+Thus Re z<0. Moreover
+  r^2-sqrt(3)r cos(beta)+1/2
+    < r^2-(3/2)r+1/2 = (r-1)(r-1/2) <=0,
+because 99/100<r<=1. This is exactly z in D_-.
+
+At r=1, 2A gives Re z>0 and 2B gives Re z<0, an impossibility.
+This proves every assertion of (2), including the missing unit-circle
+boundary. No almost-everywhere exception is used.
+
+2C. DISTANCES WITHIN AND BETWEEN THE TWO PARTS
+
+Two points in D_+ have distance <1 by the triangle inequality through its
+centre, and the same is true for D_-. If z is in the outer part of W,
+(3) and r>1 give Re z>sqrt(3)/2. If w is in the inner part, (7) and
+|w|>99/100 give Re w<-(99/100)sqrt(3)/2. Therefore
+                 |z-w| >= Re z-Re w > 199sqrt(3)/200 >1.
+This proves that W contains NO unit-distance pair.
+
+For completeness W has both parts nonempty. Take t=rho and points
+z_out=(1+rho/4,0), z_in=(-(1-rho/4),0). At both signs,
+cos alpha(rho)>=cos(pi/3)-2rho=12/25. For z_out, q(0) is the far witness
+and q(rho) is close; for z_in, q(0) is close and q(rho) is far. Substitution
+in r^2+rho^2 minus/plus 2r rho cos alpha(rho) verifies both strict
+inequalities. Nonemptiness is not needed for the counterexample logic.
+
+3. AN EXPLICIT BOREL PROPER NINE-COLOUR BACKGROUND
+
+For z=(x,y) put
+  m=floor(5x/3), n=floor(5y/3),
+  b(z)=3(m mod 3)+(n mod 3), with residues in {0,1,2}.
+This is a Borel map to {0,...,8}. Its grid cells have side 3/5.
+If two points of the same b-colour are in one cell, their distance is
+strictly less than its diameter 3sqrt(2)/5<1.
+If they are in distinct cells, one coordinate index differs by a nonzero
+multiple of 3, hence by at least 3. Their corresponding coordinate
+separation is at least 6/5 (in fact strictly greater for the half-open
+cells), so their distance is >1. Thus b is pointwise proper everywhere,
+including grid boundaries and negative-coordinate cells.
+
+4. WHOLE-PLANE PROPER 19-COLOURING AND EXACT EXCLUSIONS
+
+Use labels P_+={0,...,8}, P_-={9,...,17}, and a=18. Define c everywhere by
+
+  c(z)=18,                 if z in W;
+  c(z)=b(z),               if z not in W and z not in S_+;
+  c(z)=9+b(z),             otherwise.
+
+The last case means precisely z in S_+ but z not in S_-. The sets S_+,
+S_- and W are open, so c is Borel.
+
+To verify pointwise properness, equal colours in P_+ or P_- imply equal
+background colours b, and hence cannot occur at unit distance by section
+3. Equal colour 18 forces both points into W, which has no unit pair by
+section 2. The two palettes and colour 18 are disjoint. This exhausts all
+equal-colour cases, so ProperColoring 19 c holds pointwise and consequently
+WeakColoring 19 c holds in the exact source sense.
+
+Every point of S_+ has colour in P_- union {18}, so no label in P_+ occurs
+anywhere on S_+. Every point of S_- has colour in P_+ union {18}, so no
+label in P_- occurs anywhere on S_-. Set H_+=P_+ and H_-=P_-.
+
+These pointwise absences imply the REQUIRED SUPPORT EXCLUSIONS, not just
+almost-everywhere absences: if U is open and the colour-j class is disjoint
+from U, every z in U has an open neighbourhood within U whose restricted
+colour-j measure is zero. Such z is outside spatialSupport(c,j). Therefore
+  Disjoint(spatialSupport(c,j), Straddle(K_+)) for every j in H_+,
+  Disjoint(spatialSupport(c,j), Straddle(K_-)) for every j in H_-.
+The open-set condition is crucial and has been checked. Colour-class
+support may meet the boundary of S_+ or S_-, which is harmless because
+Straddle uses strict distance inequalities. All such boundary points were
+already assigned a colour in the total piecewise definition.
+
+Finally {0,...,18} minus (H_+ union H_-) is exactly {18}. Thus every
+hypothesis of generic closed-aperture MC120 is satisfied, while its claimed
+contradiction is false. The original strict <120 theorem is unaffected:
+the limiting directions here are exactly 120 degrees apart.
+
+5. AUDIT OF THE STRAIGHT-NEEDLE CANDIDATE
+
+The straight-needle claim that motivated this search is TRUE and does not
+extend to the curved arcs above. Here is a direct exact unit-pair witness.
+Take straight K_+=[0,L_+ e(pi/3)] and K_-=[0,L_- e(-pi/3)] with L_+,L_->0.
+Choose 0<t<=min(L_+,L_-,1/10), and put
+  d=t^2/(2(t+sqrt(3))), a=sqrt(3)/2-d,
+  z_+=(-a,1/2), z_-=(-a,-1/2).
+Then |z_+-z_-|=1 and |z_+|^2=|z_-|^2=1-sqrt(3)d+d^2<1, so 0 is the
+close witness for each point and each segment. The smallest of their four
+squared distances to the two witnesses t e(+-pi/3), minus 1, is
+  t^2-(t+sqrt(3))d+d^2=t^2/2+d^2>0.
+Thus both z_+,z_- lie in Straddle(K_+) intersect Straddle(K_-).
+The radial deficit is O(t^2), while their angular excess past the limiting
+inner endpoints is O(t^2) for this deliberately conservative exact choice.
+Larger choices of the far witness can give more bulge; no such asymptotic
+claim is needed. The exact common unit pair is the relevant conclusion.
+
+The curved counterexample uses outward angular deviation 2t, already
+linear in radius. The suggested larger deviation sqrt(t) is unnecessary.
+Its inner far inequality is overpowered by the outward angular deviation,
+as quantified by arcsin(t/(2r))<2t. This identifies exactly why the needle
+argument does not prove an arbitrary-continuum endpoint theorem.
+
+FINAL LOGICAL STATUS
+
+Generic MC120 for aperture <120: unaffected.
+Generic MC120 for aperture <=120: disproved by the explicit construction.
+Straight two-needle endpoint: proved by explicit unit-pair coordinates.
+Six-colour paired-equilateral exclusion: NOT settled by this report.
+No source changes or Lean-verification claim.

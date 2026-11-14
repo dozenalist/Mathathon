@@ -1,0 +1,94 @@
+<div id="mathathon-contact">
+  <style>
+    #mathathon-contact {display:grid;gap:calc(var(--font-size-base)*1);color:var(--foreground)}
+    #mathathon-contact .contact-controls {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:calc(var(--font-size-base)*1)}
+    #mathathon-contact .contact-control {display:grid;gap:calc(var(--font-size-base)*.25)}
+    #mathathon-contact .contact-canvas {width:100%;display:block;overflow:visible}
+    #mathathon-contact .contact-line {stroke:var(--foreground);fill:none;stroke-width:1.5}
+    #mathathon-contact .contact-muted {stroke:var(--border);fill:none;stroke-width:1}
+    #mathathon-contact .contact-label {fill:var(--foreground);font:inherit}
+    #mathathon-contact .contact-dot {fill:var(--viz-series-1);stroke:var(--background);stroke-width:2}
+    #mathathon-contact .contact-region {fill:var(--viz-series-1);opacity:.16}
+    #mathathon-contact .contact-unit {stroke:var(--viz-series-2);fill:none;stroke-width:2}
+    #mathathon-contact .contact-witness {fill:var(--viz-series-2);stroke:var(--background);stroke-width:2}
+    @media(max-width:420px) {#mathathon-contact .contact-controls {grid-template-columns:1fr}}
+  </style>
+  <h3>A connected set forces a unit-distance contact</h3>
+  <div class="contact-controls">
+    <div class="contact-control">
+      <label class="form-label" for="contact-x">Point z, horizontal: <output id="contact-x-value" class="tabular-nums">0.65</output></label>
+      <input class="form-range" id="contact-x" type="range" min="-1.5" max="1.5" step="0.01" value="0.65">
+    </div>
+    <div class="contact-control">
+      <label class="form-label" for="contact-y">Point z, vertical: <output id="contact-y-value" class="tabular-nums">0.70</output></label>
+      <input class="form-range" id="contact-y" type="range" min="-1.5" max="1.5" step="0.01" value="0.70">
+    </div>
+  </div>
+  <div class="viz-row" aria-label="Example positions">
+    <button type="button" class="btn" data-example="straddle">Straddles 1</button>
+    <button type="button" class="btn" data-example="close">All closer</button>
+    <button type="button" class="btn" data-example="far">All farther</button>
+    <button type="button" class="btn" data-example="middle">Middle matters</button>
+  </div>
+  <svg class="contact-canvas" role="img" aria-labelledby="contact-title contact-desc">
+    <title id="contact-title">Unit-distance contacts with a horizontal segment</title>
+    <desc id="contact-desc">The shaded region consists of points with distance less than one to part of the segment and greater than one to another part. The circle centered on z has radius one. Its highlighted intersections with the segment represent unit-distance contacts.</desc>
+  </svg>
+  <div id="contact-result" class="tabular-nums" aria-live="polite"></div>
+  <div class="text-small">Shading: strict straddle region · Circle: radius 1 · Solid segment: K</div>
+  <script>
+  (() => {
+    const root = document.getElementById('mathathon-contact');
+    const svg = root.querySelector('svg');
+    const xInput = root.querySelector('#contact-x');
+    const yInput = root.querySelector('#contact-y');
+    const a = -0.6, b = 0.6, tolerance = 1e-9;
+    function geometry(x,y) {
+      const nearest = Math.max(a,Math.min(b,x));
+      const minimum = Math.hypot(x-nearest,y);
+      const maximum = Math.max(Math.hypot(x-a,y),Math.hypot(x-b,y));
+      const contacts = [];
+      if (Math.abs(y)<=1+tolerance) {
+        const dx = Math.sqrt(Math.max(0,1-y*y));
+        [x-dx,x+dx].forEach(q => {if(q>=a-tolerance&&q<=b+tolerance&&!contacts.some(p=>Math.abs(q-p)<tolerance)) contacts.push(Math.max(a,Math.min(b,q)));});
+      }
+      return {minimum,maximum,contacts,strict:minimum<1-tolerance&&maximum>1+tolerance};
+    }
+    function render() {
+      const x = Number(xInput.value), y = Number(yInput.value), g = geometry(x,y);
+      const width = Math.max(280,root.clientWidth), height = Math.min(380,width*.84);
+      const xmin=Math.min(a-1,x-1)-.18, xmax=Math.max(b+1,x+1)+.18;
+      const ymin=Math.min(-1,y-1)-.18, ymax=Math.max(1,y+1)+.18;
+      const unit=Math.min((width-12)/(xmax-xmin),(height-12)/(ymax-ymin));
+      const sx = q=>width/2+(q-(xmin+xmax)/2)*unit, sy = q=>height/2-(q-(ymin+ymax)/2)*unit;
+      const top = sy(.8), bottom = sy(-.8), mid = sx(0);
+      const lens = `M ${mid} ${top} A ${unit} ${unit} 0 0 1 ${mid} ${bottom} A ${unit} ${unit} 0 0 1 ${mid} ${top} Z`;
+      svg.setAttribute('viewBox',`0 0 ${width} ${height}`);
+      svg.setAttribute('height',height);
+      svg.innerHTML = `<title id="contact-title">Unit-distance contacts with a horizontal segment</title><desc id="contact-desc">Point z is (${x.toFixed(2)}, ${y.toFixed(2)}). Minimum distance ${g.minimum.toFixed(3)}, maximum ${g.maximum.toFixed(3)}. ${g.contacts.length} unit-distance contacts. The shaded region uses the minimum over the entire segment.</desc>
+        <defs><mask id="contact-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="${width}" height="${height}"><rect x="${sx(a)}" y="${sy(1)}" width="${(b-a)*unit}" height="${2*unit}" fill="white"/><circle cx="${sx(a)}" cy="${sy(0)}" r="${unit}" fill="white"/><circle cx="${sx(b)}" cy="${sy(0)}" r="${unit}" fill="white"/><path d="${lens}" fill="black"/></mask></defs>
+        <rect x="0" y="0" width="${width}" height="${height}" class="contact-region" mask="url(#contact-mask)"/>
+        <circle cx="${sx(a)}" cy="${sy(0)}" r="${unit}" class="contact-muted"/>
+        <circle cx="${sx(b)}" cy="${sy(0)}" r="${unit}" class="contact-muted"/>
+        <circle cx="${sx(x)}" cy="${sy(y)}" r="${unit}" class="contact-unit"/>
+        <line x1="${sx(a)}" y1="${sy(0)}" x2="${sx(b)}" y2="${sy(0)}" class="contact-line"/>
+        <circle cx="${sx(a)}" cy="${sy(0)}" r="3" fill="currentColor"/><circle cx="${sx(b)}" cy="${sy(0)}" r="3" fill="currentColor"/>
+        <text x="${sx(a)-8}" y="${sy(0)+21}" class="contact-label">A</text><text x="${sx(b)+2}" y="${sy(0)+21}" class="contact-label">B</text>
+        ${g.contacts.map(q=>`<line x1="${sx(x)}" y1="${sy(y)}" x2="${sx(q)}" y2="${sy(0)}" class="contact-unit" stroke-dasharray="4 4"/><circle cx="${sx(q)}" cy="${sy(0)}" r="5" class="contact-witness"/>`).join('')}
+        <circle cx="${sx(x)}" cy="${sy(y)}" r="5" class="contact-dot"/><text x="${sx(x)+10}" y="${sy(y)-8}" class="contact-label">z</text>`;
+      root.querySelector('#contact-x-value').textContent=x.toFixed(2);
+      root.querySelector('#contact-y-value').textContent=y.toFixed(2);
+      root.querySelector('#contact-result').textContent=`Minimum ${g.minimum.toFixed(3)} · Maximum ${g.maximum.toFixed(3)} · ${g.strict?'Contact forced by straddling':g.contacts.length?'Boundary contact; no strict straddle':'No unit-distance contact'}`;
+      return {x,y};
+    }
+    function save() {const state=render();if(window.openai?.setWidgetState)window.openai.setWidgetState({modelContent:{...state,model:'unit-distance contact with segment [-0.6,0.6]'},privateContent:null}).catch(()=>{});}
+    function restore(state) {const p=state?.modelContent;if(p&&Number.isFinite(p.x)&&Number.isFinite(p.y)){xInput.value=Math.max(-1.5,Math.min(1.5,p.x));yInput.value=Math.max(-1.5,Math.min(1.5,p.y));}render();}
+    xInput.addEventListener('input',save);yInput.addEventListener('input',save);
+    const presets={straddle:[.65,.7],close:[0,.2],far:[0,1.3],middle:[0,.9]};
+    root.querySelectorAll('[data-example]').forEach(button=>button.addEventListener('click',()=>{const p=presets[button.dataset.example];xInput.value=p[0];yInput.value=p[1];save();}));
+    window.addEventListener('openai:set_globals',event=>restore(event.detail?.globals?.widgetState));
+    new ResizeObserver(render).observe(root);
+    restore(window.openai?.widgetState);
+  })();
+  </script>
+</div>

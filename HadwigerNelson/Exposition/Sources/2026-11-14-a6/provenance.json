@@ -1,0 +1,25 @@
+{
+  "description": "Unmodified final mathematical reports, accessed read-only at source. Supervisor-checked paper results; exposition adds bounded source-contract and six-row review, not Lean verification or independent literature review.",
+  "reports": [
+    {
+      "file": "ASTRA-PAIRED-PRODUCER-A6.txt",
+      "original_path": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\outputs\\ASTRA-PAIRED-PRODUCER-A6.txt",
+      "report_date": "2026-11-14",
+      "copied_date": "2026-11-14",
+      "sha256": "2a7e4aed6b6db4ebcbff0d09e43c002ae4dae86b13bf3bf1606c19435ec9649e",
+      "source_model": "Astra",
+      "attribution_basis": "Research supervisor handoff",
+      "artifact_type": "Final mathematical report"
+    },
+    {
+      "file": "ASTRA-PAIRED-COROLLARIES-A6.txt",
+      "original_path": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\outputs\\ASTRA-PAIRED-COROLLARIES-A6.txt",
+      "report_date": "2026-11-14",
+      "copied_date": "2026-11-14",
+      "sha256": "94a6b50a2c0530555f494e9ef7618e1f8afa051d559ebf03f54994639c02a03f",
+      "source_model": "Astra",
+      "attribution_basis": "Research supervisor handoff",
+      "artifact_type": "Final mathematical report"
+    }
+  ]
+}

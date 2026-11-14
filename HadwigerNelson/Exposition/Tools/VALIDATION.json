@@ -1,0 +1,28 @@
+{
+  "checkedAtUtc": "2026-11-14T19:30:09.759Z",
+  "checks": {
+    "geometryExamples": 5,
+    "numericalGridPoints": 10201,
+    "javascriptSyntax": "passed",
+    "browser": "passed",
+    "desktopViewport": 800,
+    "mobileViewport": 360,
+    "controls": "passed",
+    "contactMarkers": "passed",
+    "horizontalOverflow": "none observed at mobile width",
+    "pageErrors": 0,
+    "localMarkdownLinks": {
+      "files": 13,
+      "checked": 108,
+      "missing": 0
+    },
+    "preservedSourceReports": 6
+  },
+  "scope": "Teaching model and local references only; not a fresh build or proof of the full colouring theorem.",
+  "sourceSha256": {
+    "unit-distance-contact.fragment.html": "1f00ae4cf479b082ba8226ab66b90932836b482e566b2821cc754ec84831c49c",
+    "unit-distance-contact.html": "791a9c7d12ca3223a1ce3bd72cf2a593409f2acd94b58dd79c38834b958ba263",
+    "verify-contact.cjs": "3094e08eee394a9c80092d1dc6d944d7a3e887b90d41aa1f58f4f7555b2cdbd3"
+  },
+  "notes": "After the passing browser run, the checker output label was clarified and screenshot-output path adjusted for the user-requested folder relocation. Geometry and interaction logic are unchanged. Links were checked again after relocation."
+}

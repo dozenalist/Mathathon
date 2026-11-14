@@ -1,0 +1,4 @@
+# Keep authored text stable across Windows and Unix checkouts.
+* text eol=lf
+# Preserve the exact source bytes identified in provenance.json.
+Sources/**/*.txt -text

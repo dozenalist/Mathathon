@@ -1,0 +1,198 @@
+ASTRA PAIRED COROLLARIES A6 — THREE-DIRECTION AND UNIFORM NEIGHBOURHOOD EXCLUSION
+14 November 2026. Cumulative assignment 21. Concise independent audit.
+
+VERDICT
+
+BOTH deductions are valid as paper corollaries. The first is explicitly
+conditional on the accepted strict-MC120 paper theorem. The second gives
+one positive angular tolerance independent of the colouring, centre,
+continua, and exceptional null sets. No numerical tolerance or fully
+enumerated finite graph is claimed.
+
+Inputs are the accepted CC60 and strict-MC120 contracts, the geometric
+finite-existence obstruction and source consumer in A5, and the audited
+six-shift producer in ASTRA-PAIRED-PRODUCER-A6.txt. No new source or
+formalization claim is made. Only this report was written; no builds,
+searches, external services, or subagents were used.
+
+COMMON ACTUAL HYPOTHESES
+
+Let c:C-plane->Fin6 be measurable and satisfy WeakColoring6. Fix one
+centre x, and for i modulo six let E_i={i,i+1}. There are six actual
+ApproachingContinuum x K_i e(alpha_i) data, and for every a in E_i,
+  Disjoint(spatialSupport(c,a), Straddle(K_i)).
+Directions remain SIGNED. The continua and support exclusions belong
+to this one colouring and one common centre.
+
+1. AT MOST THREE DISTINCT DIRECTIONS ARE IMPOSSIBLE
+
+This corollary uses strict MC120 as an accepted PAPER input, pending
+formal proof: directions in a cone of aperture strictly less than
+120 degrees cannot jointly exclude all but one label. Its strict
+endpoint is preserved throughout the following argument.
+
+By CC60, a coincident-direction block contains at most two cycle-edge
+indices, and a two-element block consists of adjacent indices. Indeed,
+two nonadjacent cycle edges cover four labels, and every three distinct
+cycle edges include a nonadjacent pair. Either violates CC60 in the
+zero-width cone containing the block.
+
+Consequently six edges cannot occupy fewer than three directions. If
+there are exactly three, every block has size two and the blocks form
+a perfect matching of the edge-index C6. Its only two perfect matchings
+are
+  (01),(23),(45) and (12),(34),(50).
+A cyclic global relabeling reduces the second to the first.
+
+For the first matching, the three blocks exclude respectively
+  U0={0,1,2}, U1={2,3,4}, U2={0,4,5}.
+Any two block unions have exactly five labels. If their directed rays
+had circular separation less than120 degrees, the four associated
+continua would fit in that shorter cone and contradict strict MC120.
+Thus every pair of the three rays has circular separation at least120.
+
+List the three rays in circular order, with successive positive gaps
+g0,g1,g2. Circular distance at least120 implies each forward gap is at
+least120, since the circular distance is the minimum of that gap and
+its complementary arc. Their sum is360, so all three gaps equal120.
+
+The configuration is therefore equilateral and paired. A common rotation
+or reflection puts the three blocks in the normalized order of A6; its
+global-label symmetry handles the other perfect matching. A6 proves the
+canonical actual subpalette, and accepted A5 excludes it. Contradiction.
+
+CONCLUSION, CONDITIONAL ON STRICT MC120: under the common actual
+hypotheses, the six directions cannot have at most three distinct values.
+The argument did not close MC120's endpoint: equality was retained as
+the equilateral case and then excluded by the separate A5/A6 theorem.
+This does not classify or exclude all four-, five-, or six-direction
+configurations.
+
+2. ONE UNIFORM OPEN NEIGHBOURHOOD OF THE PAIRED CONFIGURATION IS EXCLUDED
+
+Let the nominal directions be
+  alpha^0=(0,0,2pi/3,2pi/3,4pi/3,4pi/3),
+let tau=pi/3, and let the canonical sector boundary set be
+  B={pi/6+k*tau : k=0,...,5}
+on the angular circle. Let P be the canonical field with pairs
+  A0={1,4}, A1={2,5}, A2={0,3},
+constant on sectors S_j=((j-1/2)tau,(j+1/2)tau), with index mod3.
+
+Claim: There is epsilon0>0, fixed entirely by A5's geometry, such that
+the common actual hypotheses are impossible whenever
+  d_circle(alpha_i,alpha_i^0)<epsilon0 for every i.       (N)
+The perturbations are independent: the two directions in a nominal
+pair need not remain equal. Thus this is genuinely an open six-direction
+neighbourhood, not just a statement about three coincident pairs.
+
+2a. Choose the finite obstruction BEFORE the colouring.
+
+A5 proves by pure geometry that one finite unit-distance configuration
+F exists which is not colourable from the canonical list field L.
+Its finite odd connecting walks are obtained from open-set geometry
+and connectedness, independently of any colouring or centre. Fix one
+such F once and for all.
+
+Every v in F lies strictly inside the A5 domain D. Choose its unordered
+unit-sum representation
+  v=e(a_v)+e(b_v).
+Both angles are strictly inside canonical sectors, and
+sin(b_v-a_v) is nonzero. There are only finitely many chosen angles, so
+  eta=min_{v in F} min(d_circle(a_v,B),d_circle(b_v,B))>0.
+Set, for example,
+  epsilon0=min(eta/4,pi/24)>0.                         (EPS)
+This has the requested strict bound epsilon0<min(eta/2,pi/12).
+No numerical value of eta or epsilon0 is asserted.
+
+2b. The safe angular set is preserved by all six shifts.
+
+Define
+  T={theta:d_circle(theta,B)>epsilon0}.
+This is the union of the six canonical sectors shrunk by epsilon0 at
+both ends. Since B+tau=B, T+tau=T; every one of the six tau-shifts of
+a safe phase is safe.
+
+For each nominal alpha_i^0, the zeros of cos(theta-alpha_i^0) belong
+to B. At theta in T their angular distance from theta is greater than
+epsilon0. Under (N), replacing alpha_i^0 by alpha_i cannot cross a
+cosine zero. Therefore each of the six actual signs agrees exactly
+with its nominal sign throughout T, with strict inequalities.
+
+The source continuum restrictions only require these strict signs;
+they do not require equality of the two vectors assigned to a block.
+Hence the six OUT/IN sign rows in A6 remain valid on the shrunken
+sectors for the actual independently perturbed directions.
+
+Intersect the finitely many source hit conull sets and all six shifts
+of the palette_sixty_disjoint conull set, exactly as in A6. For almost
+every safe base phase, the six palettes simultaneously have singleton
+members
+  (1,5,3,1,5,3)
+and hits of
+  ({3,4,5},{1,2,3},{0,1,5},{3,4,5},{1,2,3},{0,1,5}).
+Both neighbours remain in T. Their singleton labels and disjointness
+therefore force the second members
+  (4,2,0,4,2,0).
+It follows that
+  P(theta) subset palette c hc x theta
+for angular-a.e. theta in T. No field claim is needed near the removed
+sector endpoints, and no palette-size bound has been used.
+
+The tau-invariance of T is essential here: it supplies the neighbour
+singletons on the SAME shrunken phase orbit. Shrinking unrelated arcs
+without that invariance would not justify this six-shift inference.
+
+2c. Local RealStates suffice for every vertex of the fixed F.
+
+Every a_v and b_v has distance at least eta from B. A real interval
+of radius epsilon0 about any chosen lift of one of these angles has
+boundary margin at least eta-epsilon0>=3epsilon0. It is therefore
+contained in T and in the same canonical sector as its centre.
+
+On this interval the corresponding pair P(a_v), or P(b_v), is constant
+and is contained in the actual palette almost everywhere. Angular-to-
+real quasi-measure preservation gives the exact RealState hypothesis
+on that interval. Its complement has line-density zero at its central
+angle, because the angle is an interior point of the interval.
+
+States.states_densityOne, using these two local interval RealStates,
+now yields at x+v the density-one list restriction
+  DensityOne {q:c(q) in C minus (P(a_v) union P(b_v))} (x+v).
+The list on the right is precisely the original fixed canonical L(v).
+Nonparallelity is unchanged because F and its representation angles
+were fixed before any perturbation.
+
+It is NOT necessary that the fixed angles a_v,b_v themselves avoid
+the colouring's palette exceptional set. RealState is an a.e. interval
+inclusion, and the interval centre has complement density zero; the
+source density theorem then applies at that fixed centre angle. This
+is the step that makes the universal choice of F and epsilon0 valid.
+
+Apply States.finite_density_realization to the finite vertices x+F
+and their fixed lists L. It supplies a proper L-colouring of F,
+contradicting the A5 geometric obstruction. This proves the claim.
+
+3. QUANTIFIER AND SCOPE AUDIT
+
+The quantifier order in section2 is:
+  choose a geometric A5 finite F;
+  choose its finitely many strict representation angles;
+  choose eta and epsilon0 from those angles;
+  then, for EVERY measurable weak six-colouring, centre, six continua,
+  and independent direction perturbations satisfying (N), derive False.
+
+The conull sets may depend on the colouring and interface data. That
+does not affect epsilon0: the fixed representation angles are consumed
+through local interval RealStates, not through pointwise palette tests.
+Only finitely many shifts, angle intervals, and graph vertices are used.
+
+Both corollaries are therefore valid with the stated paper-level inputs.
+Section1 retains its explicit strict-MC120 dependency. Section2 needs
+the A5 finite geometry, source restriction/disjointness lemmas, and
+States density/finite-realization consumers; it does not use MC120.
+
+The neighbourhood tolerance is existential and uniform. There is no
+claimed numerical epsilon, complete graph-coordinate certificate, Lean
+build, exclusion of all remaining direction patterns, or global colouring
+bound. Common rotations/reflections and one global label relabeling
+carry the same statements to their corresponding normalized families.

@@ -1,0 +1,321 @@
+INDEPENDENT REFEREE — FOUR-LIST A5
+14 November 2026. Paper-level source and geometry audit.
+
+VERDICT
+
+ACCEPT the complete candidate in outputs/ASTRA-FOUR-LIST-A5.txt at the
+mathematical paper level, with its stated scope and certificate limitation.
+I found no remaining mathematical gap in the finite list-obstruction
+existence proof or in its actual source-palette consumer.
+
+The two accepted conclusions are:
+
+  (F) For the explicitly defined canonical palette P and its induced list
+      field L, a FINITE non-L-colourable unit-distance configuration exists.
+      Every vertex is strictly inside an open list cell. The connecting
+      walks are proved finite by an exact geometric reachability argument;
+      their complete vertex coordinates have NOT been enumerated.
+
+  (P) If c:C->Fin6 is measurable and WeakColoring6, there is no centre x
+      whose ACTUAL source palette contains P(t) for angular-almost every t.
+      Containment suffices; equality and a palette-cardinality bound are
+      unnecessary.
+
+This is not acceptance of a producer from arbitrary common interfaces to
+the canonical field. It does not itself exclude every paired-direction
+common-interface configuration, prove common-interface acyclicity, or
+improve a global numerical chromatic bound. Those conclusions would require
+an independently established producer. No Lean elaboration is claimed.
+
+I read the full A5 report through STATUS AND REMAINING WORK, rather than
+accepting its summary. I also read the A4 report for the H/list definitions.
+The accepted A5 proof does NOT require A4's global V--H separation theorem,
+the full A4 bipartition, or exhaustion by any 512 flip assignments.
+
+ORIGINAL SOURCE AUDITED
+
+Read-only root:
+  work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/
+
+I inspected the declarations and proof bodies for:
+  Rigidity.lean:9-115 evenOffset, evenPath_edges, evenPath_local;
+    :171 ae_translated_unit_pair;
+    :179 binary_open_local_rigidity;
+    :226 open_two_unit_directions;
+    :400-435 essentialLocalSet and connected_local_ae_constant.
+  States.lean:92 RealState; :95 state_densityZero;
+    :106 states_densityOne; :130-170 density-one intersection tools;
+    :173 finite_density_realization.
+  WeakColoring.lean:164 ae_density_actual.
+  PaletteDensity.lean:431-449 liftPalette and palette_spatial_densityZero.
+  Palettes.lean:9-38 actual palette construction and mem_palette.
+  Coloring.lean:27 WeakColoring.
+
+The relevant rigidity and density declarations are generic in the finite
+label count. A Fin5 index inside evenPath means five PATH VERTICES; it is
+not a five-colour restriction. The original files were not modified.
+
+1. EXACT AUDITED LIST DATA AND DOMAIN
+
+Use e(t)=exp(it), s=sqrt(3)/2, and
+  A0={1,4}, A1={2,5}, A2={0,3},
+  P(t)=A_(floor((t+pi/6)/(pi/3)) mod3).
+The sector of index m is ((m-1/2)pi/3,(m+1/2)pi/3).
+
+Let D be 0<|z|<2 with the six circles
+  |z-e(pi/6+k*pi/3)|=1
+removed. The unordered unit-vector decomposition z=e(a)+e(b) is unique
+for 0<|z|<2. Its vectors are distinct and nonantipodal. A vector on a
+sector boundary occurs exactly on one of the removed circles, because
+then the other summand is the unit vector z-e(boundary). Therefore every
+decomposition used in D is strictly inside two sectors and has
+sin(b-a) nonzero. This verifies the domain and Jacobian requirements.
+
+For H=e((pi/6,pi/2))+e((pi/2,5pi/6)), the two sector palettes are A1,A2,
+so its residual list is A0. Under R(z)=e(pi/3)z, sectors shift by +1;
+hence H1=R(H) has list A1. Under S(z)=-conj(z), sector index m becomes
+3-m modulo6; since S(H)=H and SR=R^(-1)S,
+  H2=S(H1)=R^(-1)(H)
+has list A2. This is the reflected H copy, not an incorrect use of
+the same list after reflection.
+
+For z0=i/2, put a=arcsin(1/4) in (0,pi/6). Then
+  z0=e(a)+e(pi-a).
+The two sectors are 0 and3, both with palette A0, giving the four-list
+  L(z0)=A1 union A2.
+Its six distances to boundary centres are among 1/2, sqrt(3)/2,
+sqrt(7)/2, 3/2; none equals1. Thus the central vertex has strict margin.
+
+2. H IS EXACTLY THE CLAIMED OPEN REGION
+
+With C=(0,1), A=(s,1/2), and Dleft=(-s,1/2), define
+  g(u)=1/2+sqrt(1-(s-u)^2) for 0<=u<s,
+  U(u)=1+sqrt(1-u^2) for |u|<s.
+The exact formula is
+  H={(u,v): |u|<s, g(|u|)<v<U(u)}.                 (H)
+
+The forward inequalities in A5 are correct. For a,b in the specified
+arcs, |u|<s and 1<v<2. After rotation by -pi/2, put
+delta=(b-a)/2 and m=(a+b)/2-pi/2. Then |m|<delta<pi/3 and
+  |e(a-pi/2)+e(b-pi/2)-1|^2-1
+    =4 cos(delta)(cos(delta)-cos(m))<0.
+This proves |q-C|<1. The chord e(a)-A has argument between 2pi/3 and
+5pi/6 and has positive scalar product with e(b), so |q-A|>1.
+Reflection supplies |q-Dleft|>1. For u>=0 the first two circle
+inequalities give the upper and lower bounds in (H); reflect for u<0.
+
+I separately checked the converse, since one-way circle inequalities
+would not suffice for the contact and connectivity argument. Suppose
+0<=u<s and g(u)<v<U(u), and write q=r e(theta). Here
+pi/6<theta<=pi/2 and 0<r<2. With alpha=acos(r/2),
+  |q-C|<1 implies alpha>pi/2-theta,
+  |q-A|>1 implies alpha<theta-pi/6.
+The inequalities follow respectively by comparing cos(alpha) with
+sin(theta) and cos(theta-pi/6); all comparison angles lie in the
+monotonicity interval of cosine. They imply
+  pi/6<theta-alpha<pi/2<theta+alpha<5pi/6.
+For the last inequality, alpha<theta-pi/6 and theta<=pi/2 give
+theta+alpha<2theta-pi/6<=5pi/6. Thus q is in H. Reflection completes
+the converse. No omitted additional component is present.
+
+For every |u|<s, g(|u|)<3/2<U(u). Vertical movement to height3/2,
+followed by horizontal movement there, proves H path connected.
+The strict continuous inequalities prove openness.
+
+3. THE ACTIVE LOBES ARE CONNECTED AND HAVE UNIT NEIGHBOURS
+
+Set Qplus=(s,3/2), Qminus=(-s,3/2), both in closure(H), and
+  Bplus={p=(u,v) in H: u>0, |p-Qminus|>1},
+  Bminus=S(Bplus).
+These definitions need only be sufficient active regions. No claim
+that every remaining point of H is inactive or flexible is used.
+
+Let d=1-s, so 0<d<s. For 0<u<d, define
+  ell(u)=3/2-sqrt(1-(u+s)^2),
+  h(u)=3/2+sqrt(1-(u+s)^2).
+The vertical section of Bplus is exactly
+  (g(u),ell(u)) union (h(u),U(u)).
+Both intervals are nonempty. The function f(t)=t/sqrt(1-t^2) is
+strictly increasing on (0,1), and direct differentiation gives
+  (ell-g)'=f(u+s)-f(s-u)>0,
+  (U-h)'=f(u+s)-f(u)>0.
+Their differences start from zero at u=0. These derivative signs and
+the endpoint values were independently checked.
+
+For d<u<s the complete interval (g(u),U(u)) is active, because u+s>1.
+It is path connected through height3/2. At u=d, only the point of
+height3/2 is removed. The two left horns really connect to the right
+region: hold fixed 0<lambda<1 in
+  v(u)=g(u)+lambda(ell(u)-g(u))
+or
+  v(u)=h(u)+lambda(U(u)-h(u)),
+and increase u to d. At d the lower path ends strictly below3/2,
+and the upper path strictly above3/2. Both endpoints remain inside
+Bplus and admit a short horizontal step to u>d by openness. This
+proves path connectedness without crossing the omitted tangent point.
+Reflection proves the corresponding fact for Bminus.
+
+For p in Bplus, approximation of Qminus by points q in H gives
+|p-q|>1. A path in H from p to q starts with distance0 from p and
+ends above1, so it contains an actual point at distance1. The same
+argument applies to Bminus. The unit neighbour lies in the open H,
+not merely its closure. Openness then supplies a second nonparallel
+unit direction, exactly as in Rigidity.open_two_unit_directions.
+
+4. FINITE EVEN WALKS: THE EXISTENCE CLAIM IS JUSTIFIED
+
+The general geometric lemma in A5 is correct: if W is open and each
+point of connected T subset W has a unit neighbour in W, any two
+points of T are joined by a finite even unit walk lying in W.
+
+At p choose nonparallel unit v,w landing in W. For small h write
+  h=a*i*v+b*i*w.
+The coefficients are continuous linear functions of h. With
+  E(v,a)=(sqrt(1-a^2/4)+i*a/2)v,
+the source identities give unit lengths for both wings when |a|<2.
+The points
+  p, p+E(v,a), p+a*i*v,
+  p+a*i*v+E(w,b), p+h
+therefore form a four-edge unit walk. At h=0 they are
+  p, p+v, p, p+w, p,
+all inside W. Continuity keeps the entire finite walk inside W for
+all sufficiently small h, exactly matching evenPath_local/edges.
+
+The relation used is reachability by ACTUAL FINITE even walks. It is
+an equivalence relation, and the preceding construction makes every
+class relatively open in T. The complement of a class is a union of
+other relatively open classes. Connectedness therefore leaves one
+class. This does not replace a finite walk by a limiting path or infer
+finiteness from metric approximation. Finiteness is built into the
+equivalence relation and survives concatenation and reversal.
+
+The anchors aplus=(1/2,3/2), aminus=(-1/2,3/2) are in the respective
+active lobes: (H) gives H membership and s+1/2>1 gives activity.
+Their distance is1. Joining each active endpoint to its anchor by an
+even walk therefore produces an odd H walk between opposite lobes.
+
+5. EXACT CONTACT ARITHMETIC AND LIST ROTATIONS
+
+Let zprime=R^(-1)z0=(s/2,1/4), and
+  qminus=(-sqrt(3)/24,(6+sqrt(429))/24),
+  qplus=(sqrt(3)/12,(3+2sqrt(33))/12).
+Write their heights vm,vp. Exact squares show
+  |qminus-zprime|^2=(147+429)/576=1,
+  |qplus-zprime|^2=(3+33)/36=1.
+The rational radical bounds imply
+  1<vm<9/8, 1<vp<5/4.
+
+The identity used to audit every circle test is
+  u^2+v^2=s*u+v/2+3/4,
+obtained by expanding either unit-distance equation. For qminus,
+s*u=-1/16, and the three quantities |q-centre|^2-1 at C,A,Dleft are
+  11/16-3vm/2, 13/16-vm/2, 9/16-vm/2,
+with signs negative, positive, positive. Its active quantity is
+  |qminus-Qplus|^2-1=(5/2)(9/8-vm)>0.
+For qplus, s*u=1/8, the corresponding three quantities are
+  7/8-3vp/2, 5/8-vp/2, 9/8-vp/2,
+again negative, positive, positive, and
+  |qplus-Qminus|^2-1=(5/2)(5/4-vp)>0.
+All formulas and signs check exactly. Together with |u|<s and v>1,
+the exact region formula proves qminus in Bminus and qplus in Bplus.
+No rounded numerical position or boundary membership is being used.
+
+An odd H walk Gamma joins these two contacts. R(Gamma) has constant
+two-list A1. S(R(Gamma)) has constant two-list A2. Since R(zprime)=z0
+and S(z0)=z0, every endpoint of the two walks is at distance1 from z0.
+
+6. FINITE LIST CONTRADICTION AND ITS CERTIFICATE LIMIT
+
+Take the finite set F consisting of z0 and the vertices of the two
+walks. In any proper list colouring, colours alternate on the first
+odd walk and its endpoints use both members of A1. Both are unit
+neighbours of z0. The second odd walk similarly excludes both members
+of A2. The central list is exactly A1 union A2, contradiction.
+
+Repeated vertices cause no problem: any proper colouring of their
+union restricts to a colouring along each walk. Extra unit edges only
+add restrictions. The two H copies have different constant residual
+lists and cannot overlap, by the uniqueness of the unit decomposition.
+Every chosen vertex belongs to D. Because F is finite, its minimum
+distance-margin expression from the removed boundaries is positive.
+
+ACCEPTED: a finite configuration exists with strict list-cell margins.
+NOT SUPPLIED: a chosen vertex count, complete coordinates, an enumerated
+edge set, or a numerical lower bound for those margins. The author
+states this distinction clearly. It is not a mathematical gap in the
+finite-existence theorem, but it remains necessary if a fully explicit
+machine-checkable finite certificate is wanted.
+
+7. THE ACTUAL PALETTE/DENSITY CONSUMER IS VALID
+
+Assume measurable c:C->Fin6 and WeakColoring6, and at one centre x
+assume P(t) is contained in its ACTUAL palette for angular-a.e. t.
+For each relevant open sector, its label pair defines RealState:
+the sector is measurable, and its real lift is a.e. contained in
+each relevant liftPalette. The angle quotient's quasi-measure-
+preserving map transfers the given angular a.e. statement to real
+angles. At every interior angle the sector complement has line
+density zero. The sector endpoints themselves are not used.
+
+For y=e(a)+e(b) in D, States.states_densityOne therefore gives
+  DensityOne {q:c(q) in L(y)} at x+y.
+The source theorem uses exactly the union of the two represented
+label sets; it does not require that either be the entire actual
+palette. Nonparallelity was checked in section1. Thus the assertion
+holds at EVERY vertex of F, even if the original palette inclusion
+fails at particular point representatives of a null exceptional set.
+The RealState plus interior-density premise handles that issue.
+
+Apply States.finite_density_realization to the vertices x+F with
+their fixed lists L. Its source proof takes a finite intersection of
+translated density-one restrictions and the conull properness
+statements for all unit pairs in that finite set. It gives an actual
+proper list colouring of F, contradicting section6.
+
+This is not an unjustified invocation of pointwise proper colouring
+from the product-a.e. definition of WeakColoring. The source theorem
+explicitly invokes weak_all_directions at the finitely many fixed
+unit directions and then intersects translated conull statements.
+It is also not a selection of one exceptional-set complement over
+uncountably many centres: the centre x is fixed, then F is finite.
+
+8. THE ALTERNATIVE ESSENTIAL-RIGIDITY PROOF ALSO CHECKS
+
+The pointwise density-one pair restriction on each open H copy implies
+an a.e. pair restriction there. Indeed ae_density_actual gives density
+one of the actual colour at almost every point. If that colour were
+outside the pair, two disjoint measurable sets would both have density
+one at that point; DensityOne.inter and measure_ne_zero exclude this.
+
+At each active point there are two genuine nonparallel unit neighbours
+inside the same open H copy. Apply binary_open_local_rigidity with
+U=V equal to that full H copy, and its same fixed pair restriction.
+The neighbours need not belong to the active lobe itself. The lemma
+produces ambient essential constancy at every active point. Connected
+local constancy gives one essential label per lobe; openness and the
+a.e. pair restriction force that label into the pair. The anchor unit
+edge forces the two labels to differ, so the lobes exhaust the pair.
+
+The four contact points consequently have essential neighborhoods
+carrying the four distinct labels of A1 union A2. For each fixed unit
+contact, ae_translated_unit_pair excludes its label almost everywhere
+on a sufficiently small ball about z0. The minimum of four positive
+radii excludes the entire central list on a ball, contradicting its
+density-one restriction. No local constancy is assumed on H's inactive
+core, and no a.e. fact is evaluated at a single unlicensed point.
+
+FINAL SCOPE
+
+Both the purely geometric finite-existence proof and the independent
+essential-rigidity reading are sound. The finite-existence route is
+particularly direct for the source bridge and makes no regularity
+assumption on a hypothetical list colouring.
+
+No remaining mathematical gap was identified in the stated A5 theorem.
+The separate producer from common-interface hypotheses to the canonical
+P remains unverified by this audit. Consequently this report licenses
+the exact canonical-subpalette exclusion and finite-obstruction
+existence, and no broader interface or global colouring conclusion.
+
+Only this referee output was written. No source changes, subagents,
+builds, heavy computation, external services, or remote jobs were used.

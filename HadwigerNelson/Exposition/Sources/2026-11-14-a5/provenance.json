@@ -1,0 +1,45 @@
+{
+  "description": "Unmodified copies of final mathematical reports; originals accessed read-only. Paper-level proofs and referee audits, not Lean verification.",
+  "reports": [
+    {
+      "file": "ASTRA-MC120-ENDPOINT-A5.txt",
+      "original_path": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\outputs\\ASTRA-MC120-ENDPOINT-A5.txt",
+      "report_date": "2026-11-14",
+      "copied_date": "2026-11-14",
+      "sha256": "78503d6ee09748eed6368e2080e88571b9700c7cfbb761db028c14d85c0ce25e",
+      "source_model": "Astra",
+      "attribution_basis": "Research supervisor handoff",
+      "artifact_type": "Final mathematical report"
+    },
+    {
+      "file": "ASTRA-MC120-ENDPOINT-REFEREE.txt",
+      "original_path": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\outputs\\ASTRA-MC120-ENDPOINT-REFEREE.txt",
+      "report_date": "2026-11-14",
+      "copied_date": "2026-11-14",
+      "sha256": "318773a2908246dc86186ed84a58a3cd1df2056481dc0379f02b35d3d6d5ce77",
+      "source_model": "Astra",
+      "attribution_basis": "Research supervisor handoff",
+      "artifact_type": "Final mathematical report"
+    },
+    {
+      "file": "ASTRA-FOUR-LIST-A5.txt",
+      "original_path": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\outputs\\ASTRA-FOUR-LIST-A5.txt",
+      "report_date": "2026-11-14",
+      "copied_date": "2026-11-14",
+      "sha256": "799cef0737b23deb8e17d1cb5ca197b394c4e9a19e3c5a79acebed2671f3955e",
+      "source_model": "Astra",
+      "attribution_basis": "Research supervisor handoff",
+      "artifact_type": "Final mathematical report"
+    },
+    {
+      "file": "ASTRA-FOUR-LIST-REFEREE.txt",
+      "original_path": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\outputs\\ASTRA-FOUR-LIST-REFEREE.txt",
+      "report_date": "2026-11-14",
+      "copied_date": "2026-11-14",
+      "sha256": "29e3800ecb740d9699254787d5a5b8689372d505b69a178eb08e447eada7548f",
+      "source_model": "Astra",
+      "attribution_basis": "Research supervisor handoff",
+      "artifact_type": "Final mathematical report"
+    }
+  ]
+}
