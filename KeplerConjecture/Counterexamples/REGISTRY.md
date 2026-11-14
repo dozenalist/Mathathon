@@ -1025,3 +1025,12 @@ witness 4 of the 8 outer vertices fail it. So requirement (1) is "boundedness *p
 check", not "add a box". E's `certify_region.py` imports `rigorous_cell_volume as R` and uses
 `R.box_volume`, so the certified *region* at `d289bef` inherits both defects until the atom is
 repaired.
+
+### K15-X-C064 — the two-dodecahedra threshold is CERTIFIED at `3.455500344` (not sampled)
+
+`Reviews/twist/certified_threshold.py`: the corrected arc cover run with the partner centre at
+`d·u₀` covers the twist circle for `d = 2.0, 2.5, 3.0, 3.3, 3.4, 3.45, 3.455` and fails at
+`3.456`, `3.46`, `3.5`; bisection gives `d_c ∈ [3.455500344, 3.455500344]`. That matches `X-C051`'s
+sampled threshold `3.455500344` to nine decimals and upgrades it from "maximised over a grid" to
+"covered for every twist". Consequence: `C116`'s `6/√5 = 2.6832816` should be `3.455500344`, and the
+statement ("two dodecahedral cells impossible below `d_c`") is certified rather than inferred.

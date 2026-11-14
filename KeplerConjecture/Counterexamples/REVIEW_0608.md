@@ -74,8 +74,19 @@ cover.
 
 So the theorem is true and certified: **for every relative twist, some pair of the two eleven-point
 sets is strictly closer than 2, hence two regular dodecahedral cells of inradius 1 cannot have
-centres at distance exactly 2.** That restores `C108` step (4) — as `X-C057`, replacing `C112` and
+centres at distance exactly 2.** That restores `C108` step (4) — as `X-C058`, replacing `C112` and
 `C123` as the load-bearing certificate.
+
+**And it certifies the threshold, not just the endpoint.** Running the same corrected cover with the
+partner centre at `d·u₀` (`Reviews/twist/certified_threshold.py`) gives a cover for every
+`d < d_c` and a failure just above, with
+
+```
+covered at d = 3.455,  fails at d = 3.456,  bisection:  d_c ∈ [3.455500344, 3.455500344]
+```
+
+matching `X-C051`'s sampled `3.455500344` to nine decimals. So `C116`'s `6/√5 = 2.6832816` is
+replaced by a *certified* `3.455500344`, 28.8% larger, with the same one-line repair of the arcs.
 
 ## 4. The failure is the certificate, not the theorem — and `C116` inherits the defect
 
