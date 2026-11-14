@@ -521,3 +521,39 @@ secondary implementation that removes the faithfulness bottleneck.
   weight 18, the `n=0,2` fixtures, Lemma MX.2's criterion (1 739 Case-II states),
   and both `a`-shift facts. Deliberately small bounds: a smoke test, not evidence.
 - **Reproduction:** `python3 RogersRamanujan/Computation/cycle3_fast_regression.py`
+
+## 2026-11-14 / RR-M011 / cycle-3 swarm status: RUNNING at handoff (not a completed fleet)
+
+- **Swarm:** `smwg1kdjq`, 4 members, launched for cycle 3. **State at this
+  handoff: all four still running, 0 submissions received**, with about 49
+  minutes of its own budget left. Per the supervisor's rule, an artifact written
+  while its author is running is **not** an accepted audit, so nothing from this
+  swarm is promoted below. Disposition:
+
+| member | direction | board state | artifact on disk | verdict |
+| --- | --- | --- | --- | --- |
+| m2 | Lean `T` bridge | running | `Lean/cycle3/ShiftT.lean` (growing) | not submitted |
+| m3 | computation regression | running | `Computation/cycle3/` (empty) | not submitted |
+| m1 | `(4^r,1^s)` family | running | `Experimental/cycle3/` (absent) | not submitted |
+| m4 | `phi` inverse proof | running | `Counterexamples/cycle3/` (absent) | not submitted |
+
+- **One verified snapshot, recorded as evidence only.** At an intermediate state,
+  `Lean/cycle3/ShiftT.lean` compiled here: `lean ShiftT_test.lean` exit 0, and all
+  14 `RR127.Shift.*` declarations used `[propext]`, `[propext, Quot.sound]` or no
+  axioms — no `sorryAx`. It formalizes the same-weight shift as
+  `shiftT l = (subStair l).map (· + l.length)`, i.e. `T(lam)_i = mu_i + k`
+  literally, with `sum_shiftT` (weight preserved exactly), `mem_shiftT_ge`
+  (image entries `>= k`, i.e. the `B_n` condition), and both inverse laws
+  `shiftInv_shiftT`, `shiftT_shiftInv`. **Main confirmed it is non-vacuous** with
+  a separate importing file: `shiftT [7,3,1] = [5,3,3]` and
+  `shiftInv [5,3,3] = [7,3,1]` by `rfl` (the contract's own example),
+  `shiftT [9,4,1] = [7,4,3]` with sum 14, and both inverse laws discharged at
+  concrete values. The worker's file then **grew another block** (a second
+  `namespace Shift` with `weakDec_map_add`), so the file is a moving target and
+  has **not** been integrated into the project or the named target. Once the
+  worker submits, Main should re-verify, replace the inlined copy of
+  `Staircase.lean` with `import RogersRamanujan.Lean.Staircase`, and rebuild
+  `lake build RogersRamanujan`.
+- **Why this is recorded rather than promoted:** the supervisor's rule is
+  explicit that a running worker's partial file is not an accepted audit. The
+  snapshot above is reproducible and useful, and it is labelled as a snapshot.
