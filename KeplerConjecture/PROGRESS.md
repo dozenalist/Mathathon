@@ -322,3 +322,19 @@ convergence rate should be inferred.
 **Best exact certificate in Computation's possession is now `0.83632450`**, still far above
 Cohn–Elkies' `0.779747` for the structural reasons in the results file (§2): `T_LO = 12 < 4π` and
 a mandatory `ε_q ≥ 1e-5` margin on `q ≥ 0`.
+
+### K15-COMP-013 — 2026-11-14 — Computation (role C), the T_LO finding
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-TLOCOST-001** | **VERIFIED_EXACT (measured)** | `shell_check.py`'s default `T_LO = 12` costs about **6.7% of the bound**, because it requires `p ≤ 0` on `12 ≤ u < 4π = 12.566…`, i.e. **inside** the ball of radius 2, where the Cohn–Elkies hypothesis imposes nothing. Same code and degree, only `T_LO` changed: `K=9` `0.87227746 → 0.82311657`; `K=13` `0.84002473 → 0.78526369`; `K=21` `0.83632450 → 0.78062816` | `shell_propose.py --tlo-exact`, `TLO_FINDING.md` |
+| **K15-C-TLOFIX-001** | **PROVED (elementary)** | `T_LO = 4·π_lo` remains safe: `4π_lo < 4π`, so `p ≤ 0` on `[4π_lo, ∞)` implies it on `[4π, ∞)`. The excluded sub-interval shrinks from `0.566` to `~10^-9` | same |
+| **K15-C-XVAL-001** | **VERIFIED_EXACT (cross-session)** | the degree-33 certificate `Δ ≤ 0.77996622` is **accepted by Main's checker** in Main's monomial basis once `T_LO = 4π_lo` is used; with the default `T_LO = 12` the only failing predicate is the shell one, confirming the certificate itself is sound | `TLO_FINDING.md` §"Independent confirmation at degree 33" |
+
+**Recommendation for Main (one line).** Switch `shell_check.py`'s default from `T_LO = 12` to
+`T_LO = 4·π_lo`, or state in every quoted number that the `12` default makes it ~6.7%
+pessimistic. No safety is lost.
+
+**Best exactly-certified bound in Computation's possession is now `0.78062816`** (`K=21`,
+`T_LO = 4π_lo`, `n = 27`, `ρ = 2.05`, unconditional) — **0.11%** above Cohn–Elkies' `0.779747`,
+the residual being the mandatory `ε_q` margin on `q ≥ 0`.
