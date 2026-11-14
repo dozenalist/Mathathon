@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
-"""K15 shell proposer: structured route to a shell-allowance candidate, decided exactly.
+"""K15 shell proposer -- A NUMERIC LINEAR-PROGRAM PROPOSER, not an SDP/SOS optimiser.
+
+RELABELLED per review 0138-C.  Main's C-SHELL-001c sketched an SOS/SDP
+(Markov-Lukacs multipliers with sum-of-squares Gram matrices).  What THIS FILE
+implements is an ordinary linear program over a finite collocation grid; the SOS
+structure is NOT implemented and no Gram matrix is produced here.  For an actual
+explicit rational Gram identity see sos_family.py, which constructs a family in
+which the p-side multiplier is a literal square.
+
+This file is retained because it reproduces the K15-C022 failure mode and
+identifies its cause (the monomial basis is unsuitable for optimisation).
 
 ROLE.  This is a PROPOSER, not a certifier.  It searches a small structured family and then
 hands every candidate to Main's exact checker (`shell_check.py`, K15-C018/C019/C022) for the
