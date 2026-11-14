@@ -78,6 +78,13 @@ weights normalised so `Σ_{e∋v}c_e = 1` on `B∖E_B`: `|B| − |E_B| = 4`, `2S
 `2S₂ + (S₁+S₀) = 13/3 ≠ 4`, the discrepancy being exactly the weight `1/3` of the single edge whose
 endpoints both lie outside `B`. Exact rational arithmetic.
 
+**And the same typo breaks `c_e ≤ 1`.** Line 92 justifies `c_e ≤ 1` by "`c_e` is one summand of
+`Σ_{e'∋v}c_{e'} = 1`", which only holds at a vertex **outside** `E`. Under line 90's definition
+`C_R` also counts edges whose endpoints *both* lie in `E`, where nothing normalises `c_e`, so
+`c_e` is unbounded on those and the estimate `C_R ≤ O(R²) + 12|E_B|` fails for a second reason.
+With the one-endpoint definition every edge in `C_R` has an endpoint in `B∖E_B`, so `c_e ≤ 1`
+does hold. So the repair is forced twice over, by the identity and by the bound.
+
 **Does the estimate survive the repair?** Yes, and the document's own split is right once the
 definition is fixed: with `C_R` = exactly-one-endpoint, an edge counted there has one endpoint in
 `B∖E_B` and the other either outside `B` — hence at distance `< R+2` from the origin, in the shell
