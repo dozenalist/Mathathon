@@ -54,7 +54,20 @@ import sympy as sp
 PI_LO = F(31415926535, 10**10)      # 3.1415926535 < pi
 PI_HI = F(31415926539, 10**10)      # pi < 3.1415926539
 T_LO = F(12)                        # <= 4*pi
-T_HI_DEFAULT = F(27, 2)             # <= pi*rho^2 for rho = 2.09
+T_HI_DEFAULT = F(27, 2)             # <= pi*rho^2 only for rho >= 2.0906
+
+
+def t_hi_for(rho):
+    """Largest simple rational <= pi*rho^2, using the directed lower bound PI_LO.
+
+    The shell window must satisfy T_HI <= pi*rho^2 (so that "p <= 0 beyond T_HI"
+    covers the true exterior s >= rho^2); using PI_LO makes this safe.
+    """
+    lim = PI_LO * rho * rho
+    for cand in (F(27, 2), F(13), F(25, 2), F(12), F(23, 2), F(11)):
+        if cand <= lim:
+            return cand
+    return max(T_LO, F(int(lim)))
 
 t = sp.Symbol('t')
 
@@ -160,12 +173,15 @@ def check(a, rho=F(209, 100), eta=F(0), K=None, count=12, verbose=True):
         ok = ok and bool(cond)
 
     rep("containment T_LO = %s <= 4*pi" % T_LO, T_LO <= 4 * PI_LO, "4pi in (%s, %s)" % (4 * PI_LO, 4 * PI_HI))
-    rep("containment T_HI = %s <= pi*rho^2" % T_HI_DEFAULT,
-        T_HI_DEFAULT <= PI_LO * rho * rho, "pi*rho^2 > %s" % (PI_LO * rho * rho))
+    T_HI = t_hi_for(rho)
+    rep("containment T_HI = %s <= pi*rho^2" % T_HI,
+        T_HI <= PI_LO * rho * rho, "pi*rho^2 > %s" % (PI_LO * rho * rho))
+    rep("window non-degenerate (T_LO < T_HI)", T_LO < T_HI,
+        "else the allowance is empty and this is ordinary CE")
     rep("fhat >= 0 for u >= 0 (q >= 0)", nonneg_on_half_line(b))
     rep("f <= eta on the shell (p <= eta on [T_LO, T_HI])",
-        le_on_interval(a, eta, T_LO, T_HI_DEFAULT))
-    rep("f <= 0 beyond rho (p <= 0 on [T_HI, inf))", _ray(a, T_HI_DEFAULT))
+        le_on_interval(a, eta, T_LO, T_HI))
+    rep("f <= 0 beyond rho (p <= 0 on [T_HI, inf))", _ray(a, T_HI))
     p0, q0 = F(a[0]), F(b[0])
     rep("fhat(0) > 0", q0 > 0, "q(0) = %s" % q0)
     if not ok:
