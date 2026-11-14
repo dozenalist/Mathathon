@@ -157,6 +157,22 @@ the useful part — **the lower end is already useful at the coarsest box**: `0.
 `vol > 5.8712`, which is `0.108` above the `(P')` threshold `5.7634`. A two-parameter family is
 therefore exhaustively certifiable at `(14/0.1)² ≈ 2×10⁴` boxes, which is cheap.
 
+**How much of that width is real?** Measured on the same `1° × 1°` box: evaluating the volume at
+the centre and the four corners (each to `1e-18`) gives
+
+```
+true variation over the 1° box   [5.898239004, 5.898239907]   width 9.0e-07
+sandwich over the same box       [5.629142811, 6.162489628]   width 5.3e-01
+                                                     ratio   ~6e5
+```
+
+so the sandwich is dominated by dependency by nearly six orders of magnitude. The caveat is
+that this box is centred on the family minimum, where `dV/dθ = 0`; over the whole legal window
+the volume moves by `0.064`, i.e. a Lipschitz constant of about `4e-3` per degree. **Even that
+is ~130× better than the sandwich**, so the obvious next improvement is a parameter-Lipschitz
+bound (differentiate `V` in `(θ, φ)`) rather than a finer sandwich. That is a concrete design
+input, not a repair done here.
+
 The catch is the one that matters: **that is the C5 family, not the completion space.** The
 domain of §3 has up to 200 coordinates, and no 0.1°-granular grid over it is remotely
 reachable. So the atom is not the obstruction — the *dimension* is. A branch-and-bound would

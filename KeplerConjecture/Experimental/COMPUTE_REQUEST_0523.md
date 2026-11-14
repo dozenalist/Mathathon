@@ -45,6 +45,12 @@ width 0.003125 deg -> certified [5.897134, 5.898801]
 `φ ∈ [22°, 36°]` — with `0.1°` boxes: `(14/0.1)² ≈ 2×10⁴` boxes, each asking only
 "is the certified lower end above `5.763417470`?"  Report the number of boxes that fail.
 
+**Before spending that, read this.** The sandwich is dependency-dominated: on a `1°×1°` box it
+certifies width `0.53` when the true variation is `9e-7` (ratio `6e5`), and a parameter
+Lipschitz bound would give about `4e-3` per degree — ~130× better over the legal window. If
+Astra can differentiate `V` in `(θ, φ)` with interval arithmetic, the `2e4`-box count collapses
+by two orders of magnitude and this request should be re-scoped before it is run.
+
 That is the complete certification of the C5 family, and it is cheap. What it is **not** is a
 bound over completions: the domain of `REVIEW_0523` §3 has up to 200 coordinates, and the
 atom's cost per box (≈10 s in pure Python) is irrelevant next to the box count at that
