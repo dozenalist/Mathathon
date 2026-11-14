@@ -90,6 +90,20 @@ is meshed by a 5-fold subdivided icosahedron (20 480 faces, diameter `2.369°`),
 mesh triangle `min_s ∠(u,ŝ) ≤ max_i min_s ∠(v_i,ŝ) + diam`. The raw maximum over `10 242`
 mesh vertices is `39.480°`.
 
+The bound is not mesh-limited in any dangerous way — refining the mesh converges, and even
+the coarsest mesh tried already clears the requirement:
+
+```
+subdiv  faces    raw max   diameter   certified   needed < 48.88
+  3      1280    37.5662    9.4443     47.0105        yes
+  4      5120    38.4837    4.7342     43.2179        yes
+  5     20480    39.4801    2.3686     41.8488        yes
+  6     81920    39.6011    1.1845     40.7856        yes
+```
+
+so the true covering radius is about `39.6-40°` and there is `8°` of slack at the finest
+mesh, `1.9°` even at the coarsest.
+
 Now take any `z = w1 + ρu` with `2 ≤ ρ ≤ ρ_max` and let `s` be a fixture centre at angle
 `γ ≤ 41.85°` from `u`. Then
 
