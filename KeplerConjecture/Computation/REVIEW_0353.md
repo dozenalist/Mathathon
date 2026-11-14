@@ -194,10 +194,22 @@ Block start **12:08:35Z**, as the review required. Every commit of the block, on
 | `a3f897f` | 12:42:26Z | the seven rejected certificates now SAY they are rejected |
 | `65ee36a` | 12:43:15Z | a test that keeps the refuted candidates marked as refuted |
 
-The block ran the full hour: work continued past the last commit — the final acts of the block were a
-complete re-run of every checker (`exactcert_tests`, `tests_0138`, `tests_cut_flow`,
-`period_convention`, `highdensity_cut`, `k15radicals`, `compact_verify` plus its negative controls,
-and `verify_certificate` on K33b) and the review of this document against the artifacts.
+The block ran the full hour: work continued past the last commit. After it, and in this order, the
+block also re-ran and re-checked, against the artifacts:
+
+* the **whole checker set** — `exactcert_tests`, `tests_0138`, `tests_cut_flow`, `period_convention`,
+  `highdensity_cut`, `k15radicals`, `compact_verify` (with its negative controls) and
+  `verify_certificate` on K33b — from a clean clone of the pushed branch, all green;
+* `cut_isoperimetry.py`, reproducing the `−0.3230` exponent and the `16.1` constant;
+* `sos_both_sides_quintic2.py` (197 s), reproducing `Δ ≤ 1.33982381256`, whose two identities were
+  then expanded independently in SymPy — and that is how the **"above the trivial bound 1"** omission
+  was caught and fixed in three documents;
+* `cut_fixture_close.py` and `cut_fixture_frank_kasper.py`, which still called themselves "faces of
+  `K15-C-CUTEQUIV-001`" — retired, since that claim is withdrawn;
+* the **external-fixture path** (`load_external_fixture` / `evaluate_external`), which had never been
+  executed: it now has a worked example and test S15;
+* every script in the directory, timed, in `RUNTIMES.md` — the whole verification set is 22 s here,
+  about 75 s on a host 3.3× slower.
 
 **Reproducibility of the pushed branch, checked at the end of the block**: a clean `git clone` of
 `kepler15/comp-01a1d8c0` at `e3948da` (42 `.py`, 68 `.json`) runs `exactcert_tests`,

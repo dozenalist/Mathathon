@@ -43,10 +43,11 @@ absolute value.  Hence
         sum_{v in B} b(v)  <=  Phi * #{(v,w) : v in B, w not in B, |v-w| <= R}.
 
 Every such v lies within distance R of the boundary of B, so #crossing <= #(Lambda cap
-(dB + B_R)) = O(rho R L^2) for a packing of finite upper density.  With LEMMA B and
-#(Lambda cap B) = rho |B| + O(L^2),
+(dB + B_R)) = O(rho R L^2) for a packing of finite upper density.  LEMMA B gives the volume term
+to O_D(L^2); the count is only rho |B| + o(|B|) for a general packing of upper density rho (no
+uniformity in L is assumed), which is all the conclusion needs:
 
-        sum_{v in B} b(v) = sqrt(32) rho |B| - |B| + O_D(L^2),
+        sum_{v in B} b(v) = (sqrt(32) rho - 1)|B| + o(|B|),
 
 and dividing by |B| = L^3 and letting L -> infinity (along a sequence of boxes realizing the upper
 density) gives sqrt(32) rho - 1 <= 0.  QED.
