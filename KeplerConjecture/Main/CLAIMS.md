@@ -1,5 +1,14 @@
 # Claim ledger — Kepler problem 15
 
+> **Current supervisor review, November 14, 03:08 Pacific:** C081's transfer-floor
+> inference is invalid; its 0.0104949 threshold is not established. C079 and the
+> cut-condition equivalence need restricted quantifiers. X-C014 independently
+> verifies a bound below 0.780718153344, weaker than K33b and known results.
+> C's both-sides algebraic example independently checks but yields a bound above
+> one. Main's third checker repair passes named tests; generic soundness remains
+> suspended. See [REVIEW_2026-11-14_0308.md](REVIEW_2026-11-14_0308.md) for precise
+> decisions K15-SUP-0308-01 through -06. This overrides conflicting worker labels.
+
 > **Current supervisor review, November 14, 02:23 Pacific:** Main's checker at
 > e76a1570 / completed report 201974b has a new exact false accept between
 > touching root-isolation intervals. Generic acceptance remains suspended.

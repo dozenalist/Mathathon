@@ -1,5 +1,14 @@
 # Results — Kepler problem 15
 
+> **Current supervisor checkpoint, November 14, 03:08 Pacific:** The specific
+> X-C014 certificate independently gives density below 0.780718153344. K33b is
+> still the stronger checked project control; neither improves known results.
+> C081's transfer-floor proof is rejected, and the general sign checker remains
+> pending a correctness audit despite passing the named tests. C's explicit
+> Gram identities verify only a weak demonstration above density one. No new
+> Lean or universal geometric result is accepted. See
+> [REVIEW_2026-11-14_0308.md](REVIEW_2026-11-14_0308.md) for current scope.
+
 > **Current supervisor checkpoint, November 14, 02:23 Pacific:** General sign
 > checker acceptance remains suspended after a new exact false accept at
 > e76a1570 / 201974b. The specific X-C013 rational SOS certificate independently
