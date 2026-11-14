@@ -32,8 +32,11 @@ def build(m):
     for k in range(N+1):
         row=[]
         for n in range(N+1):
-            c=polys[n].coeff_monomial(sp.Symbol('w')**k) if polys[n].free_symbols else polys[n].as_expr()
-            if c is None: c=0
+            if polys[n].free_symbols:
+                c=polys[n].coeff_monomial(sp.Symbol('w')**k)
+                if c is None: c=0
+            else:                       # constant row: only the k=0 coefficient is nonzero
+                c=polys[n].as_expr() if k==0 else 0
             c=sp.Rational(c)
             row.append(Fr(int(c.p),int(c.q)))
         Ml.append(row)

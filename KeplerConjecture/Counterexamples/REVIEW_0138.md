@@ -300,3 +300,87 @@ centre in `B(x,r+1)`), and the boundary loss is `O(r²)`: the centres in `B(x,r+
 at most `((r+1)³ − (r−1)³) = O(r²)`, because each owns a disjoint unit ball. Hence
 `vol B(x,r,Λ) = (4π/3)#(Λ∩B(x,r)) + O(r²)`, which is exactly the bridge Hales's Lemma 3.3 uses,
 with the `4π/3` factor carried explicitly. No new claim; recorded as an independent check.
+
+---
+
+## 8. `X-R03b` corrected: SDP → round the **Cholesky factor** → exact SOS certificate
+
+### 8.1 A false claim of mine, retracted
+
+Section 5 above reported an SDP-derived **`0.810774751`**. **That claim is retracted: it was not a
+certificate.** My `cert()` helper checked only CE2 (`Q ≥ 0`); it never verified `H ≥ 0`, and the
+rounded coefficient vector had
+`H = (612750016231071696258320 s⁴ − … )/…` with **negative coefficients**, so `H ≥ 0` is **false**
+and CE1 fails: `P = −(s−4)H` is *positive* somewhere on `s ≥ 4`. Precisely the failure mode the
+project keeps producing — a sign condition verified on one side only. The `m=2` anchor of that
+pipeline is therefore invalid, and so is the interpolation/descent built on it.
+
+### 8.2 The correct construction, and a valid replacement
+
+Round the **factor**, not the Gram matrix. With `G_f ⪰ 0` from the SDP, take an eigendecomposition
+`G_f = L Lᵀ`, round `L` entrywise to rationals, and set `q_j(s) = Σ_i L_r[i,j]s^i`. Then
+$$H=\sum_j q_j^2\ \ge 0 \text{ identically},\qquad P=-(s-4)H\le 0 \text{ for } s\ge 4,$$
+so **CE1 holds by construction, with no sign test at all**; only CE2 needs deciding, and it is
+decided exactly. (`x_r03b_sos_from_sdp.py`.)
+
+**Frozen certificate `K15-X-C012`** (`X_C012_certificate.json`):
+$$q_1=-\frac{752400440961s^2-18949818187248s+3060058336238}{66945123798436},\quad
+q_2=\frac{748892423467s^2-15016249221372s-93174256513317}{180197237252697},$$
+$$H=q_1^2+q_2^2,\qquad P=-(s-4)H,\qquad f(x)=P(|x|^2)e^{-|x|^2},$$
+$$\frac{P(0)}{Q(0)}=\frac{1084779332928872921215086820978063658980178766231040}{1006479621917964066299490582373737472364608148324259}=1.0777956247754918,$$
+$$\boxed{\ \Delta\;\le\;\frac{4}{3\sqrt\pi}\cdot\frac{P(0)}{Q(0)}\;=\;0.810774752922\ }\qquad
+\text{for every packing of unit balls in }\mathbb R^3 .$$
+
+Verified: CE1 structural (`H` is an explicit sum of two squares); **CE2 exact** (`Q ≥ 0` on
+`[0,∞)`, and `Q` has **zero** real roots in `[0,∞)`); the value is consistent with Kepler
+(`0.8108 > 0.740480`) and with Li's floor for any CE certificate (`0.8108 > 0.770657`), which is the
+necessary sanity check that the certificate is real.
+
+**Status:** `PROVED`, weak (`0.0703` above Kepler, `0.0308` above C's `K33` `0.77996650`), and an
+improvement on my earlier `K15-X-C010` (`0.818086808`, which remains valid — its `H` is an explicit
+positive quadratic). `K15-X-C010` is **superseded** by `K15-X-C012` but not withdrawn.
+
+### 8.3 What blocked higher degree, stated exactly
+
+`m = 3,4,5` all fail: the SDP returns points with `min eig A ≈ −4×10⁻⁷` (a solver-accuracy
+artefact — SCS at `eps = 1e−11` still warns "solution may be inaccurate"), and the exact test
+rejects every rounding of them. `m = 4` even returns `P(0)/Q(0) = 0.193`, i.e. a density of
+`0.145`, which is **below Kepler and below Li's floor** — an impossible value that is itself the
+proof that the returned point is infeasible. So the honest statement is: **the SDP formulation is
+correct (the identity `Q_c = M·p` is verified), the solver accuracy is the binding constraint, and
+the next step is an interior-point solver with a strict-margin constraint (`A ⪰ εI`, `B ⪰ εI`) so
+that rational rounding survives.**
+
+**Bounded local request (executable, for Astra).**
+```text
+commit      <this commit>    branch kepler15/counterexamples/run-01
+cwd         KeplerConjecture/Counterexamples
+command     python3 x_r03b_sos_from_sdp.py     # reproduces 0.810774753 at m=2 in ~10 s
+            python3 x_r03b_pipeline.py         # (superseded; kept as the record of the bad path)
+deps        python3.12, cvxpy 1.9.2, numpy 2.5.3, sympy 1.14.0      (all present)
+cap         10 min, 1 CPU, 2 GB
+goal        m in 3..8 with a strict-margin SDP (A,B >= 1e-6 I), factor rounding, exact CE2;
+            report only exact-certified values. Anything below 0.770657 is a bug, not a theorem.
+success     a certified value < 0.810774752922
+```
+
+## 9. Summary of this block
+
+| item | verdict |
+| --- | --- |
+| Main `shell_check` `9461aae` | **PENDING** — three new exact false accepts confirmed, 2 more found; repair owned by Main |
+| Main `C035` | conclusion accepted; **constant must be `3ΦR(R+1)⁵`** (a factor `R` was dropped) |
+| Main `C044` | lemma accepted; finite-to-infinite step missing; `O(|U|^{2/3})` only for ball-like `U` |
+| `NEXT_PACKAGE` `V=5.40` | **already implied** by Hales–McLaughlin (`13 V_dod = 72.154 > 70.2`); not new |
+| `C029` withdrawn / `C029r` / `C029c` | withdrawal right, both repairs **correct**; the withdrawn text's item 4 is false reasoning and is still quoted |
+| E `E048` ceiling `4.787969853` | **verified exactly**; `ρ = 2.091145548` matches my `δ₀` to `3.2×10⁻¹¹` |
+| E `E049` as originally worded | **REFUTED** — ceiling is below the proved dodecahedral `5.550291` |
+| E `E045` | conditional form correct |
+| E `E040` shortfall `19.08483258` | **wrong**; correct 12-outer-cell figure `17.7233318` |
+| C `K33` near-tangency `3.5e−29` | **CORRECT** — my earlier "correction" was a category error, withdrawn |
+| `K15-X-C012` | **PROVED** `0.810774752922` (CE1 structural, CE2 exact) |
+| my `0.810774751` (SDP, §5) | **RETRACTED** — `H < 0`, CE1 violated |
+
+Every claim above has a reproducible script under `Counterexamples/` and `Counterexamples/Reviews/`;
+the sign-predicate artifacts are `exact_sign.py` (authority), `Reviews/x_adversarial_shellcheck.py`,
+and `Reviews/x_family_check.py` (random **and** probe-targeted families).
