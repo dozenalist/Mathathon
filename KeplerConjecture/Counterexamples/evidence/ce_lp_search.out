@@ -1,0 +1,16 @@
+====================================================================================
+ LP-guided search + exact Sturm certification, d=3, separation 2
+====================================================================================
+   K= 1  certified bound: f(0)/f^(0) = 567773/500000  occupied volume = 4.756564   gap = 4.016083
+   K= 2  LP value 1.134311 but exact certification FAILED (rounding)
+   K= 3  LP value 0.468691 but exact certification FAILED (rounding)
+   K= 4  LP value 0.468146 but exact certification FAILED (rounding)
+   K= 5  LP value 0.286885 but exact certification FAILED (rounding)
+   K= 6  LP infeasible on the grid
+   K= 7  LP infeasible on the grid
+   K= 8  LP infeasible on the grid
+   K= 9  LP infeasible on the grid
+   K=10  LP infeasible on the grid
+
+   best certified in this family: K=1, occupied volume 4.756564
+   (Kepler pi/sqrt18 = 0.740480490 ; Li forbids reaching it inside ordinary CE)
