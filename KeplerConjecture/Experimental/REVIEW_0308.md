@@ -755,3 +755,44 @@ concentrated in either `(P')` (a two-cell isoperimetric statement, sharp at fcc/
 (a stability version of the dodecahedral theorem). Both are precise, both are unproved, and `(P')`
 is the more attractive target because it is sharp at the equality family and needs no new
 machinery to state.
+
+### 14.3 The conjecture is at risk precisely at the configuration that motivates it
+
+This has to be said plainly, because the framing above makes `(P')` look safer than it is.
+
+The sharpest test of `(P')` is the **icosahedral pair itself**: `c`, whose cell is exactly
+`V_dodeca`, and one payer `w_1`. For that pair `(P')` requires
+
+```
+vol Omega(w_1)  >=  2 sqrt32 - V_dodeca  =  5.76341747047 ,
+```
+
+which is `sqrt32 + 0.106563` — i.e. `w_1` must exceed an fcc cell by **the full deficit**.
+
+Now: if all twelve of `w_1`'s neighbours were at distance exactly `2`, its cell would be the
+dodecahedron. Five of them are relaxed to `2.102924`, so its cell is *strictly* larger — but by how
+much is precisely what is unknown. The twelve-constraint model of §9 gives `5.905412`, which is
+above `5.763417` with margin `0.142`; but that is an **upper** bound holding only twelve
+constraints, and the true cell can be smaller.
+
+So:
+
+```
+(P') fails for this pair   <=>   true vol Omega(w_1) < 5.76341747047 .
+```
+
+**I do not know which way this goes, and it is the question that decides the conjecture.** Note
+also that `(P')` demands much more here than the cut itself does (the cut needs the twelve payers to
+average `5.6657`; `(P')` needs each, paired with `c`, to clear `5.7634`). So `(P')` may well be
+**too strong** — a point in favour of it being false at exactly this pair.
+
+**What I would do next, and what I would not claim.** The honest next step is a lower bound for
+`vol Omega(w_1)` that uses the five relaxed bisectors: the face areas of the dodecahedron give a
+first-order excess of `5 x 1.387572757 x 0.051462 = 0.357` over `V_dodeca`, which would put
+`w_1` at `5.907` and `(P')` comfortably true — but that argument is the perturbation heuristic of
+`K15-E046`, which I withdrew as non-additive, and I will not revive it without a proof. Until then
+`(P')` should be carried as **a conjecture that may be false**, not as a promising route.
+
+**Revised status of `(P')`.** Sharp at fcc/hcp, survives every fixture, strictly stronger than the
+one-cell bound (§14.1), and at genuine risk at the icosahedral pair (§14.3). It is a well-posed
+target and a cheap one to test; it is not established and it is not safe.
