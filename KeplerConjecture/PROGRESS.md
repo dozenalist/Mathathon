@@ -261,3 +261,40 @@ run on the VM.
 Not fetchable at this checkpoint: `Main/HOURLY_REVIEW_2026-11-14_0008.md` and
 `Computation/Reviews/48443/` (announced, absent from `0e28e09`). K15-C017's
 witness is therefore carried from the assignment text (`M-QUEUE-001`).
+
+### K15-MAIN-006 — 2026-11-14 — continuous block: shell count reduced, checker written
+
+Author **M (Main)**. Read: supervisor `ec2596dce67a4c6a93157d291c2f8e2e58f5cfc3`,
+Computation `8bb50f85…`, Experimental `96fbf9bb…`, Counterexamples `3831361a…`,
+`Main/LocalChecks/2026-11-14_0008/` and `Main/HOURLY_REVIEW_2026-11-14_0008.md`.
+No chat created; no swarm; no heavy computation (one 1.3 s symbolic self-test).
+
+* **K15-C019 `PROVED`**: the shell count is a single Tammes-13 inequality. If
+  `2 ≤ |y_i| ≤ ρ` and `|y_i−y_j| ≥ 2` for 13 points, their directions are
+  separated by `≥ arccos(1 − 2/ρ²)` (monotonicity of
+  `(a²+b²−4)/(2ab)` on `[2,ρ]²`). Table: `ρ = 2.02/2.05/2.09` leaves
+  `2.21°/1.26°/0.034°` margin over `θ₁₃`. Attainment of 12 by the icosahedral
+  twelve recorded. Tammes value cited, not proved.
+* **K15-C020 `PROPOSED` (pipeline)**: E encloses `θ₁₃` → M applies C019 with
+  rational thresholds `12 ≤ 4π`, `27/2 ≤ πρ²` → C optimises → anyone verifies with
+  the new checker. Honest calibration: the realistic target is the first certified
+  number and at best `0.770271`; it is not a route past `0.754697` (DLOV14's whole
+  gain is `0.0067` in `δ`, the gap to the dodecahedral bound is `0.025`).
+* **New artifact `Computation/shell_check.py`** (exact checker, runnable):
+  rational monomial basis `u = π|x|²`, rational Fourier map verified against the
+  Hermite–Laguerre eigen-relation, exact Sturm verdicts for `q ≥ 0` on `u ≥ 0`,
+  `p ≤ η` on `[12, 27/2]`, `p ≤ 0` on `[27/2, ∞)`, directed-`π` output interval,
+  failure reporting unconditional (D13), and a self-test that *rejects* a
+  deliberately bad profile. Reproduce: `python3
+  KeplerConjecture/Computation/shell_check.py --self-test`.
+* **K15-C021**: recorded checker defects — `kepler_ok` truncates positive
+  rationals (`99/100` case returns true though `19602/625 > π³`); X's
+  pair-average and existential-partition arguments remain wrong and are not
+  imported; E's Tammes script is floating arithmetic with a reusable exact
+  endpoint; C's regressions pass but `shell_bench.py` is unwritten.
+* `D15` fixes `ρ = 2.05` as the first width to certify; `D16` makes
+  `shell_check.py` the acceptance test for shell-allowance candidates.
+
+Gaps: no Tammes enclosure yet (E), no candidate profile yet (C), so no bound. Next:
+E encloses `θ₁₃` at `ρ = 2.05`; C runs the optimisation at `η = 0` versus small
+`η` in the checker's format; X audits `shell_check.py`.

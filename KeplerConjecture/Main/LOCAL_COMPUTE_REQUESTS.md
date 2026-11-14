@@ -47,6 +47,18 @@ Acceptance for any of the three: exact rational identity, verified by an
 independent checker, with the sign regions `s ≥ 4` and `s ≥ 0` stated in `s`
 (never mixed with `t`), and `f̂(0) > 0` exhibited.
 
+### C-SHELL-001b — exact checker is now in the tree (use it)
+
+`Computation/shell_check.py` (new, runnable, no heavy numerics): rational profile
+`a` in the basis `u = π|x|²`, i.e. `f = e^{-π|x|²} Σ a_k u^k`, Fourier map `b = M a`
+with `M` rational (verified against the Hermite–Laguerre eigen-relation for
+`k ≤ 2`), then exact Sturm verdicts for `q ≥ 0` on `u ≥ 0`, `p ≤ η` on
+`[12, 27/2]`, `p ≤ 0` on `[27/2, ∞)`, and a directed-`π` output interval.
+Reproduce: `python3 KeplerConjecture/Computation/shell_check.py --self-test`
+(1.3 s, 1 core, stdlib+sympy). C's optimiser should emit candidates in exactly
+this format so that the same file certifies them; X should audit it before any
+number is quoted.
+
 ### C-SHELL-001 — same-degree comparison at `η = 0` vs `η > 0` (K15-C018)
 
 Only a request if C's Sturm driver (C-CERT-001) exists; otherwise it stays a

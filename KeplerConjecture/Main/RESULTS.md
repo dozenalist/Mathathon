@@ -97,8 +97,20 @@ about a restricted class that has not been compared with the literature.
    `5.55029 < √32`). Sampling can refute but never establish a cluster inequality
    (K15-E003), so this needs an analytic lower bound.
 
+Both candidates now have exact interfaces rather than prose:
+- the **count** in the benchmark reduces to one number — 13 points on `S²` with
+  angular separation `≥ arccos(1 − 2/ρ²)` are impossible (K15-C019). At
+  `ρ = 2.09` the margin over the Tammes value is only `0.034°`; at `ρ = 2.05` it
+  is `1.26°`. The recommended first target is `ρ = 2.05`.
+- the **verdict** in the benchmark is now executable: `Computation/shell_check.py`
+  takes a rational profile in the basis `u = π|x|²`, builds the rational Fourier
+  map, decides all three sign conditions by exact Sturm sequences, and prints the
+  bound as an exact rational times a directed `π` enclosure. Its self-test passes
+  and it *rejects* a deliberately bad profile with the failing condition named.
+
 A third object is a **mechanism**, not a candidate: the exact-Sturm Laguerre family
-(X-C008), which can certify a number but whose ceiling is obstructed by Li.
+(X-C008), which can certify a number but whose ceiling is obstructed by Li. The
+shell checker above is its practical form for this benchmark.
 
 ## 5. What is not established
 

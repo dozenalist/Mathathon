@@ -610,3 +610,78 @@ assignment text and must be re-anchored to their artifacts when those land.
 Kept as narrow positive results, with their hypotheses: **K15-C002b** (additive
 periodic estimate) and **K15-C003r** (fixed-coset counting). Neither is affected
 by any finding above.
+
+---
+
+## Continuous block, November 14 — shell count reduced, exact checker written
+
+### K15-C019 — the shell count is a single Tammes-13 number (PROVED reduction)
+
+- **Lemma.** Let `y_1, …, y_13 ∈ R³` with `2 ≤ |y_i| ≤ ρ` and `|y_i − y_j| ≥ 2`
+  for `i ≠ j`. Then the directions `u_i = y_i/|y_i|` satisfy
+  `⟨u_i, u_j⟩ ≤ 1 − 2/ρ²`, i.e. every pair subtends an angle
+  `≥ arccos(1 − 2/ρ²)`.
+- **Proof.** With `r_i = |y_i| ∈ [2, ρ]`,
+  `4 ≤ |y_i − y_j|² = r_i² + r_j² − 2r_ir_j⟨u_i,u_j⟩`, so
+  `⟨u_i,u_j⟩ ≤ f(r_i,r_j) := (r_i² + r_j² − 4)/(2r_ir_j)`.
+  For `2 ≤ a, b ≤ ρ` with `ρ ≤ √6` (our `ρ ≈ 2.09`), `f` is increasing in each
+  argument: `∂_a f = (a² − b² + 4)/(2a²b)`-signed quantity is positive because
+  `a² + 4 ≥ 8 > ρ² ≥ b²`. Hence `f(r_i,r_j) ≤ f(ρ,ρ) = 1 − 2/ρ²`. ∎
+  *(The mixed case is subdominant: `f(2,ρ) = ρ/4 < 1 − 2/ρ²` exactly when
+  `ρ² − 4ρ + 8 > 0`, true for all `ρ`.)*
+- **Corollary.** If the maximal number of points on `S²` with mutual angular
+  distance `≥ θ` is at most 12 — equivalently, if the Tammes value `θ₁₃` for 13
+  points satisfies `θ₁₃ < arccos(1 − 2/ρ²)` — then every 2-separated set has at
+  most 12 points in the annulus `[2, ρ]`, i.e. `n(ρ) = 12` in K15-C018.
+  The value 12 is **attained** by the icosahedral twelve (mutual distances
+  `2.1029… > 2`), so the maximum equals 12, not merely at most 12.
+- **Numerical content (checked).**
+
+  | `ρ` | `1 − 2/ρ²` | required `θ_min` | margin over `θ₁₃ = 57.1367°` | `πρ²` |
+  | --- | --- | --- | --- | --- |
+  | 2.02 | 0.509852 | 59.346° | **+2.209°** | 12.819 |
+  | 2.05 | 0.524093 | 58.393° | **+1.256°** | 13.202 |
+  | 2.09 | 0.542135 | 57.171° | **+0.034°** | 13.723 |
+
+  So `ρ = 209/100` is admissible **only** with a Tammes-13 enclosure accurate to
+  better than 0.03°; `ρ = 2.05` leaves 1.26° and is the recommended first target.
+  This matches E's diagnostic (`cos θ_min = 23681/43681` exactly for `ρ = 2.09`).
+- **Status.** `PROVED` (the lemma and corollary; Main). **Reviewer** X.
+  The Tammes value itself is *cited*, not proved here: a rigorous enclosure of
+  `θ₁₃` (Schütte–van der Waerden; Musin–Tarasov for computer-assisted
+  certification) is the outstanding input, and it must be enclosed, not rounded.
+
+### K15-C020 — path from E's count to C's evaluated benchmark (specification)
+
+1. **E** produces `θ₁₃ < arccos(1 − 2/ρ²)` as a *directed enclosure* for a chosen
+   `ρ` (recommended `ρ = 2.05`), or cites a published rigorous value with its
+   precise scope. Output: an inequality between exact rationals.
+2. **M** applies K15-C019 to get `n(ρ) ≤ 12`, with attainability, and fixes the
+   rational thresholds `T_LO ≤ 4π` and `T_HI ≤ πρ²` (directed `π` bounds).
+3. **C** runs the optimisation: find rational `a` minimising
+   `(p(0) + 12η)/q(0)` subject to `q = M a ≥ 0` on `u ≥ 0`, `p ≤ η` on
+   `[T_LO, T_HI]`, `p ≤ 0` on `u ≥ T_HI`, `q(0) > 0`.
+4. **Anyone** verifies the candidate with `Computation/shell_check.py`
+   (`--self-test` passes; a bad profile is rejected with its failing condition).
+   Only a `PASS` on every line yields a bound, and the printed value is an exact
+   rational times a directed `π` enclosure.
+5. **Honest calibration.** With `η = 0` this is ordinary CE and Li blocks it; the
+   realised gain from DLOV14-type relaxations is `0.779747 → 0.773080`, i.e.
+   `0.0067` in `δ`. Beating `0.754697` would need `0.025`. So the benchmark's
+   realistic target is the **first certified number in this project** and, at
+   best, `0.770271`; it is not a route past the dodecahedral barrier, and saying
+   otherwise would be a domain error.
+
+### K15-C021 — checker bugs to record (from X and the local checks)
+
+- `kepler_ok` truncated positive rationals to integers before comparison:
+  `P(0) = 99/100`, `Q(0) = 1` gives exact left side `32P(0)² = 19602/625 > π³`
+  yet the helper returned **true**. Exact rationals and a directed `π` comparison
+  are required; the truncation is a bug, not a certificate (agrees with the local
+  check `gaussian_comparison_regression.log`).
+- X's pair-average and existential-partition arguments remain **wrong** as
+  stated and are not imported. E's Tammes script is floating-point arithmetic
+  (`mpmath`), not a directed enclosure: its exact endpoint `23681/43681` is
+  reusable, its angle comparison is illustrative only.
+- C's regressions pass (exit 0) but produce **no new certificate**; `shell_bench.py`
+  is still unwritten, so `C-SHELL-001` remains blocked.

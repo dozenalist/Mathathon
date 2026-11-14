@@ -138,3 +138,19 @@ the geometric target, with K15-C015r's specified-partition formulation. The
 exact-Sturm Laguerre family (X-C008) remains the only certification mechanism.
 No third route is opened this cycle; no route is closed on the strength of a
 wrong universal quantifier.
+
+## D15 — `ρ = 2.05` is the first shell width to certify; `2.09` is the tight target (M)
+
+K15-C019 turns the shell count into a single Tammes inequality. At `ρ = 2.09`
+the required enclosure accuracy is 0.03°, which no artefact in this project can
+currently support; at `ρ = 2.05` it is 1.26°. Certify `2.05` first, then tighten
+only if E's enclosure supports it. **Reverse if** a published rigorous Tammes-13
+enclosure with a stated margin arrives, in which case 2.09 costs nothing extra.
+
+## D16 — One checker, used by everyone (M)
+
+`Computation/shell_check.py` is the acceptance test for any shell-allowance
+candidate: rational input, failure reporting unconditional, exact Sturm verdicts,
+directed `π`. A number that has not passed it is `TESTED_FINITE` regardless of the
+tool that produced it. **Reverse if** X's audit finds an error in it, in which
+case the corrected file is the acceptance test and the old one is preserved.
