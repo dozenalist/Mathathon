@@ -862,3 +862,35 @@ The one case this does not cover: a cell with `extent <= 2` and `c(v) < sqrt32` 
 fixture, where the computed volume is still an upper bound — but there the over-estimate works
 against finding a defect, so the `0` remains trustworthy. The asymmetry is what makes the
 statistic usable: every error in the volumes pushes the defect count *down*, never up.
+
+## 16. Handoff: the three next steps, in order of value
+
+1. **Answer `(Q)`** (Section 6) — does a saturated packing contain a cell below `sqrt32`? This is
+   the highest-value question because `(Q) = no` would collapse the route to the per-cell
+   inequality, and `(Q) = yes` would make `(T')`/`(H_R)` testable for the first time. It needs a
+   *certified* periodic construction, and the blocked input is exactly identified in Section 13
+   (`Fd-3m` `8a`/`16d` from a primary crystallographic source, origin choice stated). The
+   checking recipe is already written down: build the 24-atom cell, scale to separation 2, verify
+   the cell volumes weight `8 : 16` and average to `L^3/24`, then look for a cell below `5.6569`.
+2. **Decide the fate of `(H_R)`.** It is now stated exactly (Section 3.5), it is known to be
+   *equivalent* to `(T')` on blocks rather than weaker, and there is no numerical evidence either
+   way (Section 5). Either someone proves it, or the route should be recorded as blocked rather
+   than carried. Carrying it as "promising" would misrepresent its state.
+3. **If the geometric route is retained, repair the harness rather than search harder.** The
+   dense-completion search cannot help (Section 8), because density is not the quantity that
+   makes `(T')` hard; saturation is. Any future effort should construct saturated configurations,
+   not denser ones.
+
+**What I would not do.** Add more seeds, larger `N`, or a stronger optimiser to
+`dense_completion_search`/`periodic_relax`. Sections 8 and 9.4 explain why both are aiming at
+the wrong target, and the retraction in Section 5 explains why their outputs cannot settle
+anything.
+
+**Reviewer asks.** X: the interval direction assumptions in `REVIEW_CHECKLIST_X.md` part C; the
+uniqueness argument in part A4; the imported dodecahedral theorem's exact hypothesis list
+(Section 2); and an independent read of the Hall-decomposition lemma in Section 14, which is
+short and load-bearing. Main: decide between items 1 and 2 above and record the decision in
+`Main/DECISIONS.md`.
+
+**Clock.** Receipt `2026-11-14T09:57:21Z`; final report not before `10:57:21Z`. Elapsed time is
+reported from API timestamps only, per the correction in Section 0.
