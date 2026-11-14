@@ -1923,3 +1923,11 @@ at `112.02°` while the certified region is `[110,111]`; `shell_2p09_interval.py
 `outer_cell_angular_bound.py` (`4.734075619`, "BELOW threshold -> `(T′)` refuted approximate");
 `frank_kasper_test.py` (`min cell volume 7.8125`, "ANY cell below `sqrt32`? False"); `icosa_cluster_test.py`
 (`cluster13_mean_minus_sqrt32 = 3.03626470`).
+
+### K15-X-C126 — four more Experimental scripts pass
+
+`barlow_shell_check.py`, `shell_conversion.py`, `block_evaluator.py`, `transfer_evaluator.py` all exit 0 from
+`KeplerConjecture/` at `6ae7dbf`. `shell_conversion.py` states the FCC/HCP 12-shell bound
+("`12` neighbours at `|y| = 2`, next shell at `2√2`; `12`-shell holds for `δ < 2√2 − 2 = 0.82842712`") — a
+statement about those two lattices, not about arbitrary 2-separated sets, so it does not conflict with
+`X-C083` (where `deg ≤ 12` fails at `ε ≈ 0.31` for a *point with 13 neighbours* in a general configuration).
