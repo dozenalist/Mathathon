@@ -19,6 +19,17 @@ import argparse, json, random, copy
 from fractions import Fraction as F
 import numpy as np
 import sympy as sp
+
+import k15fourier
+
+
+class _FourierShim:
+    """Minimal stand-in for the external checker: only fourier_map was ever used."""
+    @staticmethod
+    def fourier_map(K):
+        # a sympy Matrix so that both M[i, k] and M[i][k] indexing work from every call site
+        return sp.Matrix(k15fourier.M_matrix(K))
+
 import exactcert as EC
 
 u = sp.Symbol('u')
@@ -69,9 +80,7 @@ def main():
                     help="5 or 7; the degree-5 optimum is embedded as the degree-7 start")
     ap.add_argument("--out", default="out/sos_qside_polish.json")
     a = ap.parse_args()
-    import importlib.util
-    spec = importlib.util.spec_from_file_location("sc", "/tmp/sc662.py")
-    SC = importlib.util.module_from_spec(spec); spec.loader.exec_module(SC)
+    SC = _FourierShim()
     K = a.degree
     random.seed(a.seed)
     if K == 5:

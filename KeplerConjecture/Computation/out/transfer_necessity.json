@@ -1,0 +1,34 @@
+{
+ "script": "KeplerConjecture/Computation/transfer_necessity.py",
+ "claim": "K15-C-TRANSFER-DENSITY-001",
+ "status": "PROVED (elementary)",
+ "statement": "a periodic transfer implies rho <= 1/sqrt(32); hence no transfer exists for any packing that violates the Kepler bound",
+ "consequence": "the transfer/Hoffman route cannot establish the density bound for the packings that matter: it applies only where the conclusion already holds",
+ "not_claimed": "that finite cuts are uninformative; a violating cut remains a genuine obstruction",
+ "rows": [
+  {
+   "fixture": "FCC (period 1 cell)",
+   "N": 1,
+   "V": "5.65685424949",
+   "sum_b": "0.0",
+   "rho": "0.176776695297",
+   "density_ok": true
+  },
+  {
+   "fixture": "HCP (period 1 cell)",
+   "N": 1,
+   "V": "5.65685424949",
+   "sum_b": "0.0",
+   "rho": "0.176776695297",
+   "density_ok": true
+  },
+  {
+   "fixture": "periodised 13-cluster",
+   "N": 13,
+   "V": "4096.0",
+   "sum_b": "-4022.46089476",
+   "rho": "0.003173828125",
+   "density_ok": true
+  }
+ ]
+}

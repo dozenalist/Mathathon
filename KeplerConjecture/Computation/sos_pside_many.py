@@ -18,6 +18,17 @@ import argparse, copy, json, random, itertools
 from fractions import Fraction as F
 import numpy as np
 import sympy as sp
+
+import k15fourier
+
+
+class _FourierShim:
+    """Minimal stand-in for the external checker: only fourier_map was ever used."""
+    @staticmethod
+    def fourier_map(K):
+        # a sympy Matrix so that both M[i, k] and M[i][k] indexing work from every call site
+        return sp.Matrix(k15fourier.M_matrix(K))
+
 import exactcert as EC
 
 u = sp.Symbol('u')
@@ -64,9 +75,7 @@ def main():
     ap.add_argument("--uphill", type=float, default=0.05)
     ap.add_argument("--out", default="out/sos_pside_many.json")
     a = ap.parse_args()
-    import importlib.util
-    spec = importlib.util.spec_from_file_location("sc", "/tmp/sc662.py")
-    SC = importlib.util.module_from_spec(spec); spec.loader.exec_module(SC)
+    SC = _FourierShim()
     K = 2 * a.deg + 1                 # deg p = 1 + 2*deg
     if K % 2 == 0:
         K += 1

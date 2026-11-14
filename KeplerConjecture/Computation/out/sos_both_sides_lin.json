@@ -1,0 +1,31 @@
+{
+ "script": "KeplerConjecture/Computation/sos_both_sides_lin.py",
+ "status": "VERIFIED_EXACT (both sides by algebraic identity)",
+ "beats_trivial_bound": false,
+ "delta": 2.4770679955387376,
+ "T": "12",
+ "m": 3,
+ "p_side_squares": [
+  "47*u/6 - 31/6",
+  "5/2",
+  "7"
+ ],
+ "q_side": {
+  "sigma0_square": "41*u/2 - 2126762837/52167744",
+  "sigma0_constant": "2265058783519559/2721473514049536",
+  "sigma1_square": "47*u/6 - 17803/1128"
+ },
+ "p0": "2950/3",
+ "q0": "53211/32",
+ "p": "-2209*u**3/36 + 14711*u**2/18 - 18959*u/18 + 2950/3",
+ "q": "2209*u**3/36 + 12455*u**2/72 - 204823*u/144 + 53211/32",
+ "comparison": {
+  "trivial": 1.0,
+  "kepler": 0.7404804896930611,
+  "ce03": 0.779747
+ },
+ "verification": {
+  "p_identity": true,
+  "q_identity": true
+ }
+}

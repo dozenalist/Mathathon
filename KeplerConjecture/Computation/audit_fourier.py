@@ -58,7 +58,11 @@ def my_fourier_map(K):
     return M
 
 def main():
-    path = sys.argv[1] if len(sys.argv) > 1 else "/tmp/shell_check.py"
+    if len(sys.argv) < 2:
+        sys.exit("usage: audit_fourier.py PATH_TO_shell_check.py\n"
+                 "  (extract it with: git show <commit>:KeplerConjecture/Computation/"
+                 "shell_check.py > shell_check_ext.py)")
+    path = sys.argv[1]
     SC = load(path)
     K = 6
     Mmain = [[F(int(SC.fourier_map(K)[i, k].p), int(SC.fourier_map(K)[i, k].q))

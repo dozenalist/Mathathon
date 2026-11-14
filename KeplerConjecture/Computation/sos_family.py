@@ -45,6 +45,16 @@ Usage:
 import argparse, json, itertools
 from fractions import Fraction as F
 import sympy as sp
+
+import k15fourier
+
+
+class _FourierShim:
+    """Minimal stand-in for the external checker: only fourier_map was ever used."""
+    @staticmethod
+    def fourier_map(K):
+        return sp.Matrix(k15fourier.M_matrix(K))
+
 import exactcert as EC
 
 def M_matrix(K, checker):
@@ -100,12 +110,11 @@ def exactly_verify(T, c, rec, SC):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--checker", default="/tmp/sc662.py")
+    ap.add_argument("--checker", default=None)
     ap.add_argument("--out", default="out/sos_family.json")
     a = ap.parse_args()
     import importlib.util
-    spec = importlib.util.spec_from_file_location("sc", a.checker)
-    SC = importlib.util.module_from_spec(spec); spec.loader.exec_module(SC)
+    SC = _FourierShim()
     print("Searching p(u) = -(u-T)(u-c)^2 for a certificate with an explicit rational Gram.")
     print("T must satisfy T <= 4*pi = 12.566...\n")
     best = None; rows = []

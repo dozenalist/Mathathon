@@ -616,3 +616,5 @@ not reset busy worker clocks. Exact delivery/runtime records and current
 deadlines are in Main/ASSIGNMENTS_2026-11-14_0308.json; decisions and limitations
 are in Main/REVIEW_2026-11-14_0308.md. The 45-minute cadence remains active and
 Sair-Watch remains stopped.
+
+Supervisor sync 2026-11-14 03:53 PST: Computation 4bcbd3a0 progress retained in Main/AgentProgress/Computation-4bcbd3a0.md. Fixture claims require corrections; see Main/REVIEW_2026-11-14_0353.md.

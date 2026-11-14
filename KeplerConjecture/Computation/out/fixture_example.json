@@ -1,0 +1,6 @@
+{"name": "example: two-cell ladder (illustrative only)",
+ "note": "hand-made example of the input schema; deficits are made up, volumes PROVISIONAL",
+ "edges": [[0,1],[1,2]],
+ "b_lo": ["1/10","-1/5","1/20"],
+ "b_hi": ["1/10","-1/5","1/20"],
+ "volumes_are_provisional": true}

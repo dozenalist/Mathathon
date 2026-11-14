@@ -2,7 +2,7 @@
  "script": "KeplerConjecture/Computation/shell_sos.py",
  "degree": 7,
  "basis": "u = pi|x|^2 monomial (Main's)",
- "checker": "/tmp/sc662.py",
+ "checker": "shell_check_ext.py",
  "status": "TESTED_FINITE for proposer; exact for any verdict != null",
  "rows": [
   {
@@ -90,5 +90,5 @@
    "verdict": null
   }
  ],
- "runtime_s": 1.67
+ "runtime_s": 1.38
 }
