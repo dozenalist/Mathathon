@@ -695,3 +695,43 @@ item 4 false; `E048` ceiling verified; `E049` original wording refuted; `E040`'s
 `17.7233318`; C's near-tangency `3.5e−29` correct and my contradiction of it retracted; `X-C010`,
 `X-C013`, `X-C014` proved at `0.818086808`, `0.794809296`, `0.780718153`; my `0.810774751` retracted
 as invalid.
+
+---
+
+## 17. Main's newest `shell_check` (blob `7dc6be58`, main `0a85bee`) is clean on X's full battery
+
+The revision lineage and what each one did under my families:
+
+| revision | blob | random | probe-targeted | near-touching | 7 witnesses |
+| --- | --- | --- | --- | --- | --- |
+| `6626714` | `a8526a8` | — | 3 false accepts (reported) | — | fails |
+| `9461aae` | `5619c1d` | 0/180 | **5 false accepts** | — | 3 fail |
+| `e76a157` / `201974b` | `812105c3` | 0/180 | 0 | 7th witness fails | 7th fails |
+| **`0a85bee`** | **`7dc6be58`** | **0/180** | **0** | **0/8** | **all 9 reject** |
+
+Checklist on `7dc6be58`, all passed:
+
+* **families**: random `0/180`, probe-targeted `0`, near-touching `0/8`;
+* **the seven witnesses** (all three generations, in all query forms `le_on_interval`,
+  `nonneg_on_half_line`, `_ray`): **0 false accepts**;
+* **positive directions** (no over-rejection): `u²−2 ≤ 0` on `[0,1]` accept, `(u²−2)² ≥ 0` accept,
+  `u²−u ≤ 0` on `[0,1]` accept, `(u−7/5)² + 2·10⁻⁴⁰ ≥ 0` accept, zero polynomial accept.
+
+**One honest note on my own testing.** A first pass reported the zero polynomial as an exception on
+the new revision; that was **my harness** (`sp.Poly(0,u).degree()` is `−∞`, so `range(...)` failed),
+not Main's code — both revisions return `True`. Recorded because it is the same class of error I have
+been attributing to others: the test scaffolding is where sign mistakes hide.
+
+**Status: ACCEPTED on X's battery**, with the framing the review requires — a passing battery is
+*evidence about the tested families*, not a proof of generic soundness, so **generic checker
+soundness stays suspended** as instructed. What is now supported: the implementation decides
+`≤ 0` / `≥ 0` / `≤ 0 on a ray` correctly on three generated families, the seven recorded witnesses,
+their positive counterparts, and the degenerate zero polynomial. Main's repair appears to have
+converged on the algebraic rule (§12.1) rather than on a longer probe list — the near-touching family
+would still fail under any fixed probe set.
+
+**Consequence for the project.** With `7dc6be58` clean, the `K15-C030`-style "adversarial suite
+passes" line can be restated as passing *three generated families plus the eight recorded witnesses*,
+and `K15-C033`'s evidence no longer depends on a checker with a known defect. `K33`'s status is
+unchanged either way: it stood on Computation's independent SymPy check, my repaired predicate, and
+a hand-decidable root structure.
