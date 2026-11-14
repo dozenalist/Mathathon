@@ -254,3 +254,29 @@ The certified value as a function of margin and degree, all verified:
 Monotone in degree at fixed margin, and monotone in margin at fixed degree, both as expected.
 The certified value approaches the CE control from above and cannot cross it, since `0.779747`
 is a rigorous upper bound on the LP optimum.
+
+## Saturation of the pipeline (measured)
+
+Sweeping degree 33–41 at grids 10000 and 14000 and margins `1e-8, 3e-8, 1e-7`:
+
+| degree | grid | margin | outcome |
+| --- | --- | --- | --- |
+| 33 | 10000 | 1e-8, 3e-8 | verification FAILS |
+| 33 | 10000 | 1e-7 | **verified, `Delta <= 0.77996622`** |
+| 33 | 14000 | 1e-7 | verified, `0.7799711` |
+| 37, 41 | 10000, 14000 | 1e-8 … 1e-7 | verification FAILS in every combination |
+
+So **the pipeline saturates at degree 33 with a verified `Delta <= 0.77996622`**, which is
+`+5.33%` above Kepler and `+0.03%` above Cohn–Elkies' rigorous `0.779747`. It cannot pass
+`0.779747`, since that is a rigorous upper bound on the LP optimum; the remaining `0.03%` is
+the price of the strict-sign margin plus rational rounding.
+
+Published as `out/verified_certificate_K33b.json` (the marginally better variant; the first
+one, `out/verified_certificate_K33.json`, remains valid at `0.77996650`). Both are accepted by
+both implementations. `search_saturation.py` reproduces the table.
+
+**Why higher degree fails.** Not a defect of the criterion: at degree 37–41 the LP optimum has
+more sign changes between grid points, so the same margin no longer dominates the
+inter-grid excursion, and exact verification correctly refuses. Refining the grid and the
+margin together is the only way up, and the payoff is bounded by `0.03%`, so this family is
+finished. Any further progress needs a different mechanism, not a higher degree.

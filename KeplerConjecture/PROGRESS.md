@@ -226,3 +226,22 @@ wrong: (i) raising the degree does not repair a failed certificate, refining the
 scaling is necessary at degree 33, without it the LP returns spurious degenerate optima.
 
 **Reproduction:** `python3 verify_certificate.py out/verified_certificate_K33.json` (5 s).
+
+### K15-COMP-008 — 2026-11-15 — Computation (role C), pipeline saturation
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-SATURATION-001 | measured | the verified-certificate pipeline saturates at degree 33: `Delta <= 0.77996622` (variant b) / `0.77996650` (variant a). Degrees 37 and 41 fail exact verification at every grid (10000, 14000) and margin (1e-8, 3e-8, 1e-7) tried | `search_saturation.py`; `out/verified_certificate_K33b.json` verified by both implementations |
+| K15-C-SATLIMIT-001 | measured | the residual `+0.03%` above CE03's `0.779747` is the price of the strict-sign margin plus rational rounding; it cannot be removed within this family, because `0.779747` is a rigorous upper bound on the LP optimum | `CERTIFIER.md` saturation table |
+
+**Why degrees 37–41 fail.** At higher degree the LP optimum has more sign changes between grid
+points, so a fixed margin no longer dominates the inter-grid excursion and exact verification
+correctly refuses. Refining grid and margin together is the only remedy, and the payoff is
+bounded by `0.03%`. **This family is finished**: further progress needs a different mechanism,
+not a higher degree. That is the decision-relevant conclusion for Main, and it agrees with the
+independent negative result from the shell bench (`K15-C-SHELLBENCH-001`, gain exactly 0).
+
+**Two routes now closed with evidence, both in the two-point family:**
+count-strengthening with a uniform 12-neighbour shell (gain 0), and degree escalation of the
+certified CE optimum (saturates `0.03%` above CE03). The remaining live route in my scope is a
+genuinely different mechanism — three-point/SDP, or a local geometric inequality.
