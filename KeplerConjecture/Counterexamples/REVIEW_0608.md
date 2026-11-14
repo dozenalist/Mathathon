@@ -153,8 +153,10 @@ test**. So requirement (1) below is really "boundedness *plus* the covering chec
 
 **What a repair must do** (the five requirements, in the order they bind):
 
-1. **boundedness** — prove it, don't inherit it: either exhibit a positive combination of the
-   normals summing to zero, or impose `|y| ≤ R` as a *constraint* in both polytopes and check it;
+1. **boundedness** — prove it, don't inherit it: impose `|y| ≤ R` as a *constraint* in both
+   polytopes **and** check the covering hypothesis that licenses `R` (every outer vertex within 2 of
+   some centre). The box alone is not enough — it makes the polytope bounded but returns the volume
+   of `Ω ∩ box`, which is `12.0` on the witness above;
 2. **norm choice** — slack `R‖n − n'‖₂`, or renormalise so that `‖n − n'‖₂ ≤ √3 max|·|` is paid for;
 3. **radius bootstrap** — `R` must be an a-priori bound (`R = 2` follows from `Ω(w) ⊆ B(w,2)`
    independently of any enumeration), not a property checked against the vertices that were found;
