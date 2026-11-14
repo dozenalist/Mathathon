@@ -59,6 +59,13 @@ q0 = F(4611686310674994558554251, 4611686018427387904000000)
 chk("K33b ratio p0/q0", float(p0 / q0), 0.186203218267)
 chk("K33b Delta = (4pi/3)(p0/q0)", float(p0 / q0) * float(4 * pi / 3), 0.779966216777)
 
+# --- E's directional-bound constants (K15-C042) -------------------------------
+deficit = sqrt(32) - vdod
+chk("sqrt32 + deficit/12 (E's 5.665735)", sqrt(32) + deficit / 12, 5.665735, tol=1e-6)
+chk("13*(sqrt32 - V_dod) (E's 1.385321873)", 13 * deficit, 1.385321873, tol=1e-6)
+chk("shortfall of 4.734 vs 5.665735 (%)", 100 * (1 - mpf('4.734') / mpf('5.665735')), 16.4451, tol=1e-3)
+chk("shortfall of V_dod vs sqrt32 (%)", 100 * (1 - vdod / sqrt(32)), 1.8839, tol=1e-3)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)

@@ -1311,10 +1311,17 @@ names differ in v4.35.0.
 - **Scope.** It bounds one *class* of directional arguments (those using `t ≥ min_z
   d_z/(2cos φ_z)`); it does not bound per-cell arguments using a body that is not
   star-shaped about `w`, as E says.
-- **Query for X/E.** E's note compares against `5.665735`, but `√32 = 5.656854`
-  and `(4π/3)/(π/√18) = 5.656854`; the origin of `5.665735` (`= 4√2·1.00157`) is
-  not explained in the pushed text. Until it is, do not quote the "2.08%
-  shortfall" figure — the shortfall against `√32` is `2.30%`.
+- **Query resolved by Main.** E's `5.665735` is `√32 + (√32 − V_dod)/12
+  = 5.656854249 + 0.008880268 = 5.665734518` (agrees to `5e−7`): a threshold in
+  which each of a vertex's twelve neighbours absorbs a twelfth of the icosahedral
+  deficit. It is *not* `√32`, and the two must not be used interchangeably.
+  Likewise E's `1.385321873` equals `13·(√32 − V_dod) = 1.385319…`, a 13-cluster
+  total, not a per-cell difference. Consequently the quoted "2.08% shortfall" does
+  not follow from either comparison: Main computes `16.44%` for `4.734` against
+  `5.665735`, `16.31%` for `4.734` against `√32`, and `1.88%` for
+  `√32 − V_dod` against `√32`. **Report the quantity being compared**; the
+  arithmetic in the note is a factor/identity mix-up, not an error in E's
+  optimisation.
 - **Status.** `ACCEPTED WITH SCOPE` (Main's reading of the argument), the
   shortfall arithmetic **disputed pending the constant's definition**. Reviewer X.
 
@@ -1587,8 +1594,10 @@ last two blocks' verification was version-specific.
   of `K15-C044` and the constant of `K15-C035` (`3Φ(R+1)⁵`) want: `k_R ≤ 12`
   beats the volume bound `(R+1)³ − 1 = 26` by a factor 2, and the shell count is
   a *theorem*, not an assumption (K15-C027).
-- **Consequence for the constant.** With `R = 2.09`, `k_R ≤ 12` and
-  `C₁ ≤ 3Φ·12·(3.09)²·r²`-form arithmetic gives a materially smaller
-  negligibility constant than the `3Φ(R+1)⁵` worst case; the exact recomputation
-  is left to a worker (it is a one-line substitution).
+- **Consequence for the constant, computed.** From the proof of `K15-C035`,
+  `C₁/Φ = 3·k_R·R·(R+1)²`. With `R = 2.09`: `k_R = 12` (this lemma) gives
+  `C₁/Φ = 718.40`, while the volume bound `k_R ≤ 26` gives `1556.53` and the
+  published general form `3(R+1)⁵ = 845.11` sits between them. So the shell count
+  buys **15% off** the general constant at the widest certified range (not a
+  factor of two, because `3(R+1)⁵` mixes the `k_R` and shell factors).
 - **Status.** `PROVED` (immediate from `K15-E014`). Reviewer X.
