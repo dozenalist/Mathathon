@@ -209,6 +209,30 @@ concrete build.
 Status: `TESTED_FINITE` (negative). The validation gates are the useful part: V1 (separation ≥ 2),
 V2 (volumes sum to `N × covolume`), V4 (`Σb = 0`) all refuse to report if violated.
 
+### The Frank–Kasper idea, also refuted by measurement (`cut_fixture_frank_kasper.py`)
+
+The next candidate for a near-Kepler fixture with *unequal* cells was a Frank–Kasper phase, since
+those have unequal Voronoi cells by construction. Tested and refuted **for equal spheres**, with
+the crystallography measured rather than asserted:
+
+| structure | atoms/cell | min distance | packing fraction | vs Kepler |
+| --- | --- | --- | --- | --- |
+| simple cubic (control) | 1 | 1.000000 | 0.523599 = π/6 | −29.3% |
+| FCC conventional cell (control) | 4 | 0.707107 | **0.740480** | **0.0%** |
+| A15 (Cr₃Si) sites, equal spheres | 8 | 0.500000 | 0.523599 = π/6 | −29.3% |
+
+The two controls validate the routine: FCC reproduces Kepler exactly, simple cubic reproduces
+`π/6`. **A15 with equal spheres gives exactly the simple-cubic value**, and the reason is
+measurable: the shortest distance is the `a/2` chain contact between `6c` atoms, while the `2a`–`6c`
+distance is `a√5/4 = 0.559017a > a/2`, so the `2a` atoms are *untouched* and the structure rattles.
+Frank–Kasper phases are dense for polydisperse mixtures, not for congruent spheres.
+
+**Consolidated consequence.** Between `K15-C-CUTJAM-001` (close packings are jammed) and this file
+(A15 is not dense), the near-Kepler regime appears to be populated only by the close-packed
+stackings — all of which have **equal** cell volumes, hence `b = 0` identically and no
+discriminating power for the cut condition. That is a third face of `K15-C-CUTEQUIV-001`. Main
+should treat "find a near-Kepler fixture and test the cut condition" as unlikely to succeed.
+
 ### Reproduced
 
 ```bash

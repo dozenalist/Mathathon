@@ -494,3 +494,18 @@ exactly the jammed close-packing regime in which no perturbation is available �
 **Validation gates built in and doing their job:** V1 (separation ≥ 2), V2 (volumes sum to
 `N × covolume`), V4 (`Σb = 0`). The script refuses to report volumes when any fails, which is why
 the first two runs produced no numbers rather than wrong ones.
+
+### K15-COMP-026 — 2026-11-14 — Computation (role C), Frank–Kasper fixture refuted by measurement
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-FKNEG-001** | **TESTED_FINITE (negative, measured)** | A15 (Cr₃Si) Wyckoff sites with **equal spheres** give packing fraction `π/6 = 0.523599` — the simple-cubic value, 29.3% below Kepler — because the shortest contact is the `a/2` `6c`–`6c` chain distance while the `2a`–`6c` distance is `a√5/4 = 0.559017a`, so the `2a` atoms are untouched and the structure rattles. **Frank–Kasper phases are dense for polydisperse mixtures, not for congruent spheres** | `cut_fixture_frank_kasper.py`, `out/cut_fixture_frank_kasper.json` |
+| K15-C-FKCONTROL-001 | validation | the measuring routine is validated by two controls: FCC conventional cell reproduces **exactly** Kepler `0.740480`, simple cubic reproduces `π/6` | same |
+
+**Consolidated consequence for Main (third face of `K15-C-CUTEQUIV-001`).** Between
+`K15-C-CUTJAM-001` (close packings are jammed, no perturbation possible) and `K15-C-FKNEG-001`
+(A15 is not dense for equal spheres), the near-Kepler regime appears populated **only** by the
+close-packed stackings — all of which have **equal** cell volumes, hence `b = 0` identically and
+**no discriminating power** for the cut condition. "Find a near-Kepler fixture and test the cut
+condition" is unlikely to succeed; the condition is equivalent to Kepler and its only near-extremal
+fixtures are exact equality cases.
