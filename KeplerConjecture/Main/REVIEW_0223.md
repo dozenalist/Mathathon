@@ -85,6 +85,30 @@ instruction, Lean imports are **not** iterated this block: the module stays
 `PROPOSED` and `M-LEAN-003` records the resource failure. `Volume.lean` carries only
 `Prop`-valued statements.
 
+## 6b. What came after the first draft of this file
+
+- **`K15-C076`/`C077`** — X's repaired `exact_sign` was audited and the suite
+  cross-run against it: 10 claims, 10 agreements. The project now has **two complete
+  independent half-line implementations**; the *compact-interval* decision still has
+  no external cross-check beyond `function_range` (recorded).
+- **`K15-C078`** — the cut condition is trivial on fcc/hcp (`b ≡ 0`); the first
+  version extended this to every Barlow stacking with a numerical check, and **both
+  were wrong** (the stack was not a packing; mixed stackings need not have congruent
+  cells). Corrected and restricted.
+- **`K15-C079`** — E's `(T')`/`(T'')` and the averaged inequality are the same
+  obligation (`K15-C067`), and E's "outer cells must average 5.66573451791" is
+  `√32 + (√32 − V_dod)/12`, matching `K15-C042` to `5e−7`.
+- **`K15-C080`** — the transfer's cut condition is *strictly weaker* than `(T')`
+  when a component has out-edges, but a **closed** component reduces it exactly to
+  `(T')`; the first version wrongly asserted every bounded component has out-edges.
+- **`K15-C081`/`C082`** — a cluster-level floor on `Φ`: `Φ ≥ 1.3853218727/132 =
+  0.0104949` at `R = 2.09` (using the outer–outer distance `2.102924 > 2.09`), so a
+  candidate transfer with smaller `Φ` is refuted outright. E's Barlow spectrum was
+  re-run and agrees with `K15-C033`.
+- **`K15-C075`** — cost profile: the witness `0.07 s`, degree-33 rational roots
+  `0.02 s`, but a degree-35 polynomial with a `1.4·10⁻¹⁰` root pair takes minutes.
+  Exact but slow; no certificate enters that branch.
+
 ## 7. Accepted-lemmas account
 
 `Main/ACCEPTED.md` lists every statement the project may rely on, its status, the
