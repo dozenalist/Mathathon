@@ -5611,6 +5611,11 @@ type can genuinely change — so a rigorous `L1'` at `ε = 0.2` must handle type
 the difficulty `M-CERT-002` avoids at `ε = 1`. **The lever moves the difficulty from the constant to the
 combinatorics.**
 
+**A margin to watch at `ε = 0.2`.** The two branches must meet: `C119`'s inball bound covers `d ≥
+2.1967082337` and the pair bound covers `d ≤ 2+ε = 2.2`, so the overlap is `0.003292` wide. It closes, but
+only just, and any future tightening of `ε` towards `0.1967` must respect it — `ε = 0.2` is a sensible
+choice precisely because it leaves `0.0033` of overlap while keeping `δ₀` within a factor `2.5` of sharp.
+
 **Recommendation for the next block.** Prove `L1'` at `ε = 1` first (`M-CERT-002` as specified: no type
 changes, `c = 0.13`, `δ₀ = 2.88·10⁻³`), then extend the ball to `Σθ² ≤ 0.06` if the combinatorics can be
 tamed, which multiplies `δ₀` by `30`. Do not attempt the large ball first: `ε = 1` already gives a
