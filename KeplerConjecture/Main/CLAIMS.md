@@ -2127,19 +2127,26 @@ conversion, and `run_all_checks` in ≈ 6 s.
   fallback — so compact claims remain less protected than half-line claims. Closing
   this needs a compact-interval mode in one of the other checkers; recorded for X.
 
-### K15-C078 — the cut condition is trivial on close-packed structures (`PROVED` remark)
+### K15-C078 — the cut condition is trivial on fcc and hcp (`PROVED` for those two)
 
-For fcc, hcp and **every Barlow stacking**, every Voronoi cell has volume exactly
-`√32` (fcc/hcp is classical; the general Barlow case is `K15-C033`'s setting, where
-all cells are congruent to the rhombic dodecahedron or the hcp cell — in either case
-`√32`). Hence `b(v) = √32 − vol Ω(v) = 0` for every vertex, the cut condition of
-`K15-C044` holds with `Φ = 0`, and `φ ≡ 0` is a valid transfer.
+For **fcc** and **hcp**, every Voronoi cell is the rhombic dodecahedron or the hcp
+cell respectively, each of volume exactly `√32` (classical; equivalently, both attain
+density `π/√18` with congruent cells). Hence `b(v) = √32 − vol Ω(v) = 0` at every
+vertex, the cut condition of `K15-C044` holds with `Φ = 0`, and `φ ≡ 0` is a valid
+transfer. The transfer route therefore costs nothing on the two structures that
+attain the bound.
 
-**What this means.** The transfer construction costs nothing on the structures that
-attain the bound; the entire content is in *defect* configurations. That is
-consistent with `K15-C036` (no finite fixture decides the pointwise inequality) and
-with `K15-C051` (no locally dense periodic blob was found). It also means a
-proposed transfer must be checked only where `b > 0`, i.e. on cells smaller than
-`√32` — and `K15-C069` says such cells exist in saturated packings.
+**Correction to the first version of this entry.** The first version claimed the
+same for *every* Barlow stacking and cited a numerical check; both were wrong: the
+numerical stack I built was not a packing (minimum separation `1.70 < 2`, a
+construction bug), and for a *mixed* Barlow stacking (e.g. `ABAC…`) the cells need
+not be congruent, so pointwise `b ≤ 0` does not follow from the density alone —
+only the *average* volume is `√32` there. The claim is therefore restricted to fcc
+and hcp, where congruence is standard.
 
-*Status.* `PROVED` (immediate). Reviewer X.
+**What stands.** On fcc/hcp the transfer costs nothing; all the content is in defect
+configurations, consistent with `K15-C036` (no finite fixture decides the pointwise
+inequality) and `K15-C051` (no locally dense periodic blob found), and with
+`K15-C069` (cells below `√32` do exist in saturated packings).
+
+*Status.* `PROVED` (fcc, hcp; standard cell geometry). Reviewer X.
