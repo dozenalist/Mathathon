@@ -458,3 +458,280 @@ Checkpoints pushed: `7de7bee` (Task 1), `9d85f3b` (Task 2), `a65a705` (Task 3 + 
 near-tangency "correction"), `1fc26ac` (X-C012), and this final commit. Everything reported above is
 reproducible from `Counterexamples/` with the commands in each section; Ultramath is the actual
 runtime per the supervisor, which I accept.
+
+---
+
+## 12. Predicate specification, completed: closed interval vs half-line
+
+### 12.1 The two rules, stated independently of any implementation
+
+Let `p = c·Π f_i^{m_i}` be the squarefree decomposition and `u = Π_{m_i odd} f_i` the
+odd-multiplicity part. Then the sign of `p` is constant on every gap between distinct real roots,
+and on a gap it equals `sign(c)·sign(u)`. From this:
+
+* **(H) half-line `[a,∞)`.** `sign(p) = want` on `[a,∞)` iff
+  (i) `u` has **no** real root in `(a,∞)` (remove a factor `(t−a)^m` first: a zero *at* `a` is
+  allowed), (ii) `sign(c)·sign(lc u) = want`, (iii) `p(a)` does not contradict `want`.
+  On a half-line the rightmost gap is the one involved, so **`sign(lc u)` is the right sign** —
+  provided (i) holds.
+* **(I) closed interval `[lo,hi]`.** Same, except that the interior sign must be read from `u`
+  **evaluated at a point strictly inside** `(lo,hi)`: `sign(lc u)` is the rightmost-gap sign and
+  is *wrong* for a bounded interval whenever `u` has a root above `hi`. Conditions:
+  (i) `u` has no root strictly inside, (ii) `sign(c)·sign(u(mid)) = want`,
+  (iii) `p(lo), p(hi)` do not contradict.
+
+Zero polynomial: accepted for `want = 0`, rejected otherwise. Even-multiplicity zeros: never
+rejected, and never used as evidence of sign (that is the probe trap).
+
+### 12.2 The mistake I made while building this, recorded
+
+Using rule (H) as a substitute for rule (I) — i.e. testing `[lo,∞)` when the question was
+`[lo,hi]` — produced **9 false rejects** in my self-audit (e.g. `(u−1)²(3u−7)/3 ≤ 0` on `[0,1]` is
+true, but `(H)` sees the odd root at `7/3 > 1` and rejects). That is the *safe* direction
+(over-rejection, not false acceptance), but it is still wrong, and it is the mirror image of the
+error in the opposite direction that Main's probes make. **Both rules are needed; neither
+substitutes for the other.**
+
+### 12.3 Self-audit of `exact_sign.py` on the failure class
+
+`Reviews/x_selftest_run.py` drives my predicate through the same generators used against other
+checkers:
+
+| family | queries | wrong verdicts |
+| --- | --- | --- |
+| random (roots in `[0,2]`, exponents `{1,2}`, both signs) | 180 | **0** |
+| **probe-targeted** (roots at the probe positions, `{2,2,2}` and `{2,2,1}`) | 12 | **0** |
+| hand controls in `exact_sign.py` (`controls()`) | 21 | **0** |
+
+The 21 hand controls now include six closed-interval cases (odd root outside → accept; odd roots
+inside → reject; even zero inside in both directions; wrong sign inside → reject), so the
+interval rule is exercised in both directions. **`exact_sign.py` is the authority for X's sign
+decisions; the earlier `half_line_verdict` and `sign_on_half_line` uses in
+`Reviews/K33/audit_K33_signs.py` are superseded** (old outputs preserved).
+
+### 12.4 What this does and does not license
+
+* It licenses: my own certificates (`K15-X-C010`, `K15-X-C013`) and my re-verification of `K33` —
+  all of which now rest on a predicate that passes both families plus witness-anchored controls.
+* It does **not** license any statement about Main's checker, which remains **PENDING** with the
+  three confirmed false accepts plus two more that I found. Main owns that repair, and I will audit
+  the next immutable revision with rule (H)/(I) as the oracle — not with a case list.
+
+---
+
+## 13. `K15-X-C014`: basis rescaling reaches **`0.780718153343`**
+
+### 13.1 The fix that unlocked `m ≥ 4`
+
+The plain Gram basis `{1, s, …, s^m}` spans `30^k` over the region of interest, which is why
+CLARABEL raised `SolverError` and SCS returned garbage. Replacing it by the scaled basis
+`{(s/S)^i}`, i.e. `H = Σ_j q_j²` with `q_j(s) = Σ_i L_ij (s/S)^i`, conditions the SDP. The Fourier
+map is still applied in `s`, so **nothing is approximated** — the only change is the basis in which
+the SOS block is expressed, and `H ≥ 0` remains exact by construction.
+
+### 13.2 The certificate (`X_C014_certificate.json`, `m = 5`, `S = 8`)
+
+Seven rational quintics `q_1,…,q_7` in `s/8` (listed in the JSON), with
+$$H=\sum_{j=1}^{7}q_j^2\ (\deg 10),\qquad P=-(s-4)H,\qquad f(x)=P(|x|^2)e^{-|x|^2},$$
+$$\frac{P(0)}{Q(0)}=1.0378401730236737,\qquad
+\boxed{\ \Delta\le\frac{4}{3\sqrt\pi}\cdot 1.0378401730236737=\mathbf{0.780718153343}\ }$$
+
+**Re-verified end-to-end from the file on disk** (not from the solver's memory): `H` is an explicit
+sum of seven squares (CE1 structural, no sign test); `Q ≥ 0` on `[0,∞)` decided exactly, with **no
+real root in `[0,∞)`**; the value is above Kepler and above Li's floor.
+
+### 13.3 The ladder, with no inflation
+
+| bound | value |
+| --- | --- |
+| Kepler | `0.740480489` |
+| **Li's floor for any ordinary CE certificate** | `0.770657` |
+| CDS22 optimised CE (published) | `0.779747` |
+| C `K15-C033` (in-house, verified) | `0.779966500` |
+| **X `K15-X-C014`** | **`0.780718153`** |
+| X `K15-X-C013` | `0.794809296` |
+| X `K15-X-C010` | `0.818086808` |
+
+So the SDP route moved X's own certified bound by `0.037` in this block, and now sits `0.0010`
+above the published optimised CE value and `0.00075` above C's `K33`. **It does not beat either, and
+no such claim is made.** What it establishes is that X can generate and exactly certify competitive
+ordinary-CE bounds independently of C's and Main's code, on a certificate that is a short explicit
+list of rational polynomials.
+
+`m = 6` still fails (`SolverError` at `S = 2,3`; Li-floor violations at `S = 12`), so `m = 5` is the
+practical limit of this implementation. The `S`-scan matters: `S = 6 → 0.780720`, `S = 8 →
+0.780718`, `S = 12 → 0.781630`, so `S ≈ 8` is near-optimal for `m = 5`.
+
+**Bounded local request (final, executable).**
+```text
+commit      <this commit>     branch kepler15/counterexamples/run-01
+cwd         KeplerConjecture/Counterexamples
+command     python3 x_r03b_rescaled.py        # ~140 s, reproduces the m=4..6 scan
+            python3 x_r03b_sos_from_sdp.py    # the strict-margin m=2,3 route
+deps        python3.12, cvxpy 1.9.2, numpy 2.5.3, scipy 1.18.1, sympy 1.14.0
+cap         20 min, 1 CPU, 2 GB
+goal        m in 6..9 with S in {6,8,10}, CLARABEL margin eps=1e-6; report only
+            exact-certified values. Anything below P0/Q0 = 1.024466 is infeasible (Li) and is
+            a bug, not a discovery.
+success     a certified value < 0.780718153
+```
+
+## 14. Closing state of this block
+
+| item | verdict |
+| --- | --- |
+| Main `shell_check` `9461aae` | **PENDING** — 3 confirmed + 2 further false accepts; repair owned by Main |
+| X `exact_sign.py` | **repaired, extended with a closed-interval rule**, 21 controls + 0/180 random + 0/12 probe-targeted |
+| `K15-C033` (C) | **evidence stands** (independent SymPy + my repaired predicate + hand-decidable root structure) |
+| C's near-tangency `3.5e−29` | **correct**; my earlier contradiction of it retracted as a category error |
+| Main `C035` / `C044` / `NEXT_PACKAGE` | factor-`R` correction; isoperimetry scope; `V=5.40` already implied |
+| E `E048` / `E049` / `E040` | ceiling verified; `E049` original wording refuted; `E040` shortfall `17.7233318` not `19.08483258` |
+| `K15-X-C010` / `C013` / `C014` | **PROVED** `0.818086808` / `0.794809296` / **`0.780718153`** |
+| my invalid `0.810774751` | **retracted** before it could propagate |
+
+Ultramath is the actual runtime, per the supervisor; I accept that and make no contrary claim.
+
+---
+
+## 15. Main's seventh witness: *touching root-isolation intervals* (new defect class)
+
+### 15.1 The witness, verified
+
+Main's `shell_check` at `e76a1570…` (blob lineage: `a8526a8` → `5619c1d` → `812105c3`) rejects the
+six earlier witnesses but **accepts**
+$$q(u)=\Bigl(u-\tfrac75\Bigr)^2-\frac{2}{10^{40}},$$
+for which `q(7/5) = −2×10⁻⁴⁰ < 0`, so `q ≥ 0` on `[0,∞)` is **false**. Its negation is likewise
+accepted by `_ray(−q,0)` and `le_on_interval(−q,0,0,3)`, though `−q(7/5) = +2×10⁻⁴⁰ > 0`.
+
+### 15.2 The mechanism, and why it is a *different* defect from the earlier five
+
+The two real roots are `7/5 ± √(2)·10⁻²⁰`. Their exact isolating intervals **share the rational
+endpoint** `7/5`, and `_test_points` only samples `(prev + a)/2` when `a > prev`; with `a = prev =
+7/5` no point is inserted, so the entire negative dip between the two roots is skipped. The
+`_odd_part` root count is 2 (correct), so the code does take the "roots present" branch — it simply
+has no sample inside the only gap that matters.
+
+**A sharper statement of what goes wrong.** `sympy`'s `real_roots`/`intervals` *collapse*
+near-coincident roots onto a common rational endpoint: on this `q`, `real_roots(multiple=True)`
+returns `[7/5, 7/5]`. Meanwhile **`count_roots` (Sturm) returns exactly 2.** So any decision
+procedure built on isolating-interval midpoints inherits that collapse, while a procedure built on
+an exact root *count* does not.
+
+### 15.3 X's predicate is immune, verified on this witness
+
+My `exact_sign.py` **never samples**: it counts the real roots of the odd-multiplicity part with
+Sturm on `(0,∞)` (or strictly inside the interval) and rejects whenever the count exceeds 0, because
+a simple root forces a sign change. Verified:
+
+| query | value | correct | X's predicate |
+| --- | --- | --- | --- |
+| `nonneg_on_half_line(q)` | `q(7/5) < 0` | reject | **False** ✔ |
+| `_ray(−q, 0)` | `−q(7/5) > 0` | reject | **False** ✔ |
+| `le_on_interval(−q, 0, 0, 3)` | `−q(7/5) > 0` | reject | **False** ✔ |
+
+and the same at `(r, ε) = (7/5, 2·10⁻⁴⁰), (1/2, 10⁻⁶⁰), (3, 10⁻²⁰)`, where the **opposite**
+direction `(u−r)² + ε ≥ 0` (no real roots) is correctly **accepted** — so the immunity is not
+bought by over-rejecting. The Sturm count of `q`'s odd part on `(0,∞)` is `2`, exactly.
+
+### 15.4 What Main needs, stated as a completeness requirement
+
+The repair is **not** "add the endpoint 7/5 to the probe list": with `ε = 10⁻⁶⁰` the dip is
+`10⁻⁶⁰` wide and no finite list of probes can be guaranteed to hit it. The requirement is:
+
+> Decide the sign from an **exact Sturm count** of the odd-multiplicity part on the domain (after
+> removing endpoint factors), together with the **algebraic** sign on the gaps
+> (`sign(c)·sign(u)` at a point inside, or `sign(lc u)` for a half-line once the count is 0).
+> Isolating-interval midpoints may be used to *find* a point in a gap, but must never be the sole
+> evidence that a gap has no sign change.
+
+This is precisely rules (H)/(I) of §12.1, and it is why my implementation survived all three
+generations of Main's witnesses without modification: it was never probe-based.
+
+### 15.5 Status
+
+| item | status |
+| --- | --- |
+| Main `shell_check` (`e76a1570…`, blob `812105c3`) | **PENDING** — 7 false accepts across 3 revisions; audit completeness, not case lists |
+| X `exact_sign.py` | **unchanged and passing** on the new class (no re-probe needed) |
+| `K15-X-C013` | **independently reconstructed locally and confirmed** (`P0/Q0` matches, `Q` has no nonnegative real root, Machin enclosure gives `δ < 0.794809295672`) — remains a weak ordinary-CE control |
+| `K15-X-C014` | factor-rounded SDP running in Astra's private CVXPY environment; **not duplicated here** |
+| transfer constant / cut hypotheses (`C035`/`C044`) | **reconciliation routed through Main**, as instructed |
+| generic checker soundness | **suspended** — no statement about any checker beyond the tested families |
+
+---
+
+## 16. Final artifact state
+
+Three adversarial families now live in `Reviews/x_family_check.py` (they can be pointed at **any**
+checker exposing the `le_on_interval` / `nonneg_on_half_line` / `_ray` interface), with truth from
+the algebraic rules of §12.1 rather than from a case list:
+
+| family | what it targets | X's `exact_sign` |
+| --- | --- | --- |
+| random (roots in `[0,2]`, exponents `{1,2}`, both signs) | generic correctness | **0 / 120** |
+| probe-targeted (roots at the implementation's fixed probes) | the "sign is constant, 3 probes suffice" shortcut | **0** |
+| near-touching (`(u−r)² ∓ ε`, `ε` down to `10⁻⁶⁰`) | midpoint sampling when isolating intervals share an endpoint | **0 / 8** |
+
+Running the same three families against Main's `9461aae` gives `0/180` on the random family and
+**5 false accepts** on the probe-targeted one; against `e76a1570…` the near-touching family produces
+the seventh witness. **The contrast is the whole point:** an audit that only ran the random family
+would have certified a checker that accepts three sign errors, because the failures live in
+structured coincidences that random draws hit with probability `~10⁻⁴`.
+
+Two mistakes of mine, recorded because they shaped the artifact: a `sp.Rational(0,0)` in the family
+definition (fixed), and using a half-line rule where an interval rule was needed (§12.2, 9 false
+rejects). Neither reached a claim.
+
+**Files.** `exact_sign.py` (authority: `sign_on_half_line`, `sign_on_interval`, 21 witness-anchored
+controls); `Reviews/x_family_check.py`; `Reviews/x_selftest_run.py`; `Reviews/x_selftest_exact_sign.py`;
+`Reviews/x_adversarial_shellcheck.py`; certificates `X_C012_certificate.json`, `X_C013_certificate.json`,
+`X_C014_certificate.json`; SDP `x_r03b_sdp.py`, `x_r03b_sos_from_sdp.py`, `x_r03b_rescaled.py`.
+
+**Status of every claim in this review, in one line each.** `K15-C033` accepted on independent
+evidence; Main's checker **suspended** (7 false accepts, 3 revisions); `C035` needs a factor `R`;
+`C044`'s isoperimetry is ball-only and its finite-to-infinite step is missing; `NEXT_PACKAGE`'s
+`V=5.40` is implied by the dodecahedral theorem; `C029r`/`C029c` correct, the withdrawn text's
+item 4 false; `E048` ceiling verified; `E049` original wording refuted; `E040`'s shortfall is
+`17.7233318`; C's near-tangency `3.5e−29` correct and my contradiction of it retracted; `X-C010`,
+`X-C013`, `X-C014` proved at `0.818086808`, `0.794809296`, `0.780718153`; my `0.810774751` retracted
+as invalid.
+
+---
+
+## 17. Main's newest `shell_check` (blob `7dc6be58`, main `0a85bee`) is clean on X's full battery
+
+The revision lineage and what each one did under my families:
+
+| revision | blob | random | probe-targeted | near-touching | 7 witnesses |
+| --- | --- | --- | --- | --- | --- |
+| `6626714` | `a8526a8` | — | 3 false accepts (reported) | — | fails |
+| `9461aae` | `5619c1d` | 0/180 | **5 false accepts** | — | 3 fail |
+| `e76a157` / `201974b` | `812105c3` | 0/180 | 0 | 7th witness fails | 7th fails |
+| **`0a85bee`** | **`7dc6be58`** | **0/180** | **0** | **0/8** | **all 9 reject** |
+
+Checklist on `7dc6be58`, all passed:
+
+* **families**: random `0/180`, probe-targeted `0`, near-touching `0/8`;
+* **the seven witnesses** (all three generations, in all query forms `le_on_interval`,
+  `nonneg_on_half_line`, `_ray`): **0 false accepts**;
+* **positive directions** (no over-rejection): `u²−2 ≤ 0` on `[0,1]` accept, `(u²−2)² ≥ 0` accept,
+  `u²−u ≤ 0` on `[0,1]` accept, `(u−7/5)² + 2·10⁻⁴⁰ ≥ 0` accept, zero polynomial accept.
+
+**One honest note on my own testing.** A first pass reported the zero polynomial as an exception on
+the new revision; that was **my harness** (`sp.Poly(0,u).degree()` is `−∞`, so `range(...)` failed),
+not Main's code — both revisions return `True`. Recorded because it is the same class of error I have
+been attributing to others: the test scaffolding is where sign mistakes hide.
+
+**Status: ACCEPTED on X's battery**, with the framing the review requires — a passing battery is
+*evidence about the tested families*, not a proof of generic soundness, so **generic checker
+soundness stays suspended** as instructed. What is now supported: the implementation decides
+`≤ 0` / `≥ 0` / `≤ 0 on a ray` correctly on three generated families, the seven recorded witnesses,
+their positive counterparts, and the degenerate zero polynomial. Main's repair appears to have
+converged on the algebraic rule (§12.1) rather than on a longer probe list — the near-touching family
+would still fail under any fixed probe set.
+
+**Consequence for the project.** With `7dc6be58` clean, the `K15-C030`-style "adversarial suite
+passes" line can be restated as passing *three generated families plus the eight recorded witnesses*,
+and `K15-C033`'s evidence no longer depends on a checker with a known defect. `K33`'s status is
+unchanged either way: it stood on Computation's independent SymPy check, my repaired predicate, and
+a hand-decidable root structure.

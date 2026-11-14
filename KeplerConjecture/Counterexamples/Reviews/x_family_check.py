@@ -138,6 +138,24 @@ def main():
                     tgt += 1
                     print("      p = %-44s truth=%-5s got=%-5s  <-- false accept" % (str(sp.factor(p))[:44], t, g))
     print("  TOTAL wrong verdicts (probe-targeted family): %d" % tgt)
+
+    # ---- NEAR-TOUCHING family: (u-r)^2 - eps with eps astronomically small.
+    # Root-isolating intervals then SHARE the rational endpoint r (sympy's real_roots even
+    # returns [r, r]), so any midpoint-based sampling skips the negative dip of width 2*sqrt(eps).
+    # Truth: NOT >= 0 and NOT <= 0 (both false), while (u-r)^2 + eps >= 0 is TRUE.
+    print("\n  near-touching family: (u-r)^2 -/+ eps")
+    nt = 0
+    for r, eps in [((7,5),(2,10**40)), ((1,2),(1,10**60)), ((3,1),(1,10**20)), ((0,1),(1,10**30))]:
+        rr = sp.Rational(*r); ee = sp.Rational(*eps)
+        for sign, poly in [(-1, (u-rr)**2 - ee), (+1, (u-rr)**2 + ee)]:
+            t_ge = (sign == +1)          # >= 0 true only for the +eps version
+            try: g = sc.nonneg_on_half_line(to_coeffs(poly, u))
+            except Exception: g = "EXC"
+            if g != t_ge:
+                nt += 1
+                print("      p = %-30s truth(>=0)=%-5s got=%-5s  <-- WRONG" % (str(sp.factor(poly))[:30], t_ge, g))
+    print("  TOTAL wrong verdicts (near-touching family): %d / 8 queries" % nt)
+    tot += nt
     return 1 if (tot + tgt) else 0
 
 if __name__ == "__main__":
