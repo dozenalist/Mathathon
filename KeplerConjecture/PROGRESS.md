@@ -23,6 +23,16 @@ supervisor reviews identify which claims have actually been checked.
 
 ## History
 
+### K15-OPS-005 — 2026-11-14, 01:00 Pacific
+
+Verified the stale Experimental watcher report for completion 41061 against
+ownership, stopped state and live API history. No later user prompt exists;
+the result is already pending for the next 45-minute scheduled review. The
+watcher remains stopped and the 45-minute automation is active. No new research
+prompt, local computation, or mathematical acceptance was triggered. Details
+are in `Main/CALLBACKS.md`; this handling log and cumulative summary were
+published on the Kepler feature branch.
+
 ### K15-OPS-004 — 2026-11-14, 00:53 Pacific
 
 Latest user instruction replaces the briefly restored Sair-Watch approach with

@@ -1,7 +1,9 @@
 # Kepler Conjecture: progress so far
 
-Updated November 14, 2026, after the 00:53 Pacific instruction to check every
-45 minutes. The mathematical status remains that of the preceding review,
+Updated November 14, 2026, at the 01:00 Pacific operational check. A stale
+Experimental notification was verified and logged; its result remains pending
+for the next 45-minute review. No extra assignment or watcher restart occurred.
+The mathematical status remains that of the preceding review,
 which rejected the submitted certificate. This cumulative account is updated
 at each scheduled check, with a short entry in
 [HourlyUpdates](HourlyUpdates/).

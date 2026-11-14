@@ -1,5 +1,20 @@
 # Completion review and duplicate handling
 
+## Experimental 41061 — stale watcher trigger, November 14, 01:00 PST
+
+Report `sair-result-602146e21caf4f71a7ff2d0401df16fd.json` matches ownership,
+supervisor UUID, exact Kepler team/project/session, and the stopped watcher's
+`last_queued_sequence=41061`. Live API history confirms that completion and
+contains no later user prompt. The timing update `oc_e0a147166e52de1d` was
+delivered at sequence 39016, before this completion; it is not a follow-up for
+41061. The result was already marked pending in `supervision-state.json`.
+
+The latest human instruction cancels Sair-Watch and requires checks every 45
+minutes. Watcher PID 14472 is no longer running; the active automation has the
+45-minute RRULE. No new research assignment or watcher restart was performed.
+The source claim reported at `8aca235e` remains unreviewed until the scheduled
+check. This is operational verification, not acceptance of its mathematics.
+
 ## Scheduled review — November 14, 00:08 PST
 
 The hourly review independently checked completions Main 30102, Computation
