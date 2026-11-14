@@ -1625,3 +1625,16 @@ last two blocks' verification was version-specific.
   done without X's audit.
 - **Reproduce.** `python3 Computation/predicate_crosscheck.py` (0.6 s).
 - **Status.** `VERIFIED`. Reviewer X.
+
+### K15-C056 — both K33 variants pass the repaired checker, values match C's report (`VERIFIED`)
+
+- `verified_certificate_K33.json` (variant a): `ACCEPT`, ratio
+  `57247406970676848810768955/307445740617578019715085691 = 0.186203285353`,
+  `Δ ≤ 0.779966497784`.
+- `verified_certificate_K33b.json` (variant b): `ACCEPT`,
+  `Δ ≤ 0.779966216777`.
+- Both agree with Computation's own reported pair (`0.77996650` / `0.77996622`
+  from their PROGRESS), which is an independent confirmation of *their* numbers
+  through Main's repaired checker and of *Main's* checker through known-good data.
+- Neither is an improvement on CE03 (`0.779747`); both are `VERIFIED_CROSS`-grade
+  components at their stated scope.
