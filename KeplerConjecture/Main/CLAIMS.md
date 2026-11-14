@@ -2161,10 +2161,15 @@ inequality) and `K15-C051` (no locally dense periodic blob found), and with
   two are equivalent up to `Φ` and the boundary term. E's own figure "outer cells
   must average `5.66573451791`" is exactly `√32 + (√32 − V_dod)/12` (`K15-C042`), so
   the two sessions' constants agree.
-- **Boundary constant, explicit**: for a blob containing a ball of radius `r`,
-  `|δ⁺(U)| ≤ k_R((r+R)³ − (r−R)³) ≈ 6k_RRr²`, and `|U| ≍ (4π/3)r³`, so the slack is
-  `Φ·6k_RR·(3|U|/4π)^{2/3}` — a `|U|^{2/3}` term with an explicit coefficient, which
-  is what a proof of `(T')` must beat.
+- **Boundary constant (CORRECTED, review 0308)**: the estimate holds for **ball
+  cuts** `U = B(x,r) ∩ Λ`, where `|δ⁺(U)| ≤ k_R·#(Λ ∩ (B(x,r+R)∖B(x,r))) ≤
+  k_R((r+R)³ − r³) ≈ 3k_RRr²` and `|U| ≍ (4π/3)r³`, giving the slack
+  `Φ·3k_RR·(3|U|/4π)^{2/3}`. For an **arbitrary** `U` the correct trivial bound is
+  `|δ⁺(U)| ≤ k_R|U|`, i.e. slack `Φk_R|U|`, which is *not* `o(|U|)`: merely
+  containing a ball does not control an arbitrary cut's boundary (a comb-shaped `U`
+  has boundary comparable to its size). So the `|U|^{2/3}` form is a **hypothesis
+  about ball-like cuts**, not a consequence. The first version of this entry applied
+  it to arbitrary blobs; that was wrong.
 - **Status.** `PROVED` (a translation between two statements, no new mathematics).
   Reviewer X.
 
@@ -2197,39 +2202,48 @@ inequality) and `K15-C051` (no locally dense periodic blob found), and with
 *Status.* `PROVED` (immediate from the definitions). Reviewer X. Recorded in
 `Main/NEXT_PACKAGE.md`.
 
-### K15-C081 — a cluster-level lower bound on `Φ` (`PROVED`)
+### K15-C081 — WITHDRAWN: the cluster-level `Φ` floor was an invalid inference
 
-**Setup.** Take the icosahedral 13-cluster `C`. By Hales–McLaughlin every cell has
-volume `≥ V_dod = 5.5502910285…`, so the cluster's total deficit is at most
-`13(√32 − V_dod) = 1.3853218727…`. By `K15-C044` the cut condition for `U = C` reads
-`Σ_C b ≤ Φ|δ⁺_R(C)|`, i.e.
+> **Status: `WITHDRAWN` (review 0308).** The original text is retained below as
+> rejected evidence.
+>
+> **The error.** `C081` derived `Σ_C b ≤ 13(√32 − V_dod)` — an **upper** bound on the
+> cluster's signed deficit — and then used it as though it were a **lower** bound, to
+> conclude `Φ|δ⁺(C)| ≥ Σ_C b` and hence a floor on `Φ`. That inference is invalid:
+> if the thirteen cells are on average *larger* than `√32` (so `Σ_C b < 0`) the cut
+> condition is satisfied with `Φ = 0`. Nothing in the ledger bounds `Σ_C b` from
+> below, and the claim that all thirteen cells attain `V_dod` was never proved — and
+> is false in general.
+>
+> **Superseded by `C081r`** (the singleton bound), which is valid and weaker.
+
+*Rejected text (kept):* "By Hales–McLaughlin every cell has volume `≥ V_dod`, so the
+cluster's total deficit is at most `13(√32 − V_dod) = 1.3853218727…`; by `K15-C044`
+… `Φ ≥ 13(√32 − V_dod)/|δ⁺_R(C)|`" — with the outer–outer observation giving
+`Φ ≥ 0.0104949`. **This conclusion does not follow and is withdrawn.**
+
+### K15-C081r — the valid necessary condition: the singleton cut (`PROVED`)
+
+For a packing containing the 13-cluster, let `v₀` be the centre. Its cell satisfies
+`Ω(v₀) ⊆` the dodecahedron determined by the twelve neighbours, hence
+`vol Ω(v₀) ≤ V_dod` (monotonicity: more bisectors only shrink; `K15-C036`), and
+therefore
 
 ```
-Φ  ≥  13(√32 − V_dod) / |δ⁺_R(C)|  =  1.3853218727… / |δ⁺_R(C)|.
+b(v₀) = √32 − vol Ω(v₀)  ≥  √32 − V_dod  =  0.1065632…,
 ```
 
-At `R = 2.09`, each of the twelve outer vertices has at most `k_R ≤ 12` edges, one
-of which is the spoke to the centre (distance exactly `2`), and the spoke-free ones
-must be counted as leaving. The **outer–outer distances in the cluster are
-`2.102924… > 2.09`**, so no outer–outer edge exists at this range: each outer vertex
-has at most `11` leaving edges, `|δ⁺(C)| ≤ 132`, and
+a **lower** bound on the signed deficit at that vertex — which is what the cut
+condition needs. With `U = {v₀}` and `R ≤ 2.09`, at most `k_R ≤ 12` edges leave:
 
 ```
-Φ  ≥  1.3853218727 / 132  =  0.0104949…        (not 0.009620, the value obtained
-                                                 from the crude 144-edge count)
+Φ  ≥  (√32 − V_dod)/12  =  0.0088803….
 ```
 
-**What it is.** A *cluster-level* refinement of the vertex-level bound
-`Φ ≥ 0.00888` (`K15-C036`): the cluster must shed `1.3853` of deficit across its
-boundary, so a smaller `Φ` is impossible regardless of how the transfer is arranged.
-It gives the next block a definite floor to beat — a transfer with
-`Φ ∈ [0.0096, …]` is the smallest that can work, and a candidate claiming a smaller
-`Φ` is refuted outright.
+(Equality `vol Ω(v₀) = V_dod` is *not* needed — only the inclusion, exactly as the
+review notes. Hales–McLaughlin is not used.)
 
-**Caveat.** The bound uses only HM and the cut condition; it does not show such a
-transfer exists.
-
-*Status.* `PROVED` (arithmetic from accepted lemmas). Reviewer X.
+*Status.* `PROVED`. Reviewer X. This is the only `Φ` floor the project has.
 
 ### K15-C082 — E's Barlow spectrum re-run, and the `Φ` floor published (`AGREES`)
 
