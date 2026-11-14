@@ -528,6 +528,14 @@ A15: min separation = 2.000000 (exact after scaling), conventional cube edge L =
      packing density: 0.523599
 ```
 
+**Saturation is a property of the periodic structure, not of the finite build.** A15 is a
+crystal: its periodic repetition is a genuine saturated packing of `R^3`, so each interior cell
+computed with periodic images is the true Voronoi cell. The finite build used for the check has
+a boundary shell whose cells are truncated, and those are exactly what the extent flag removes.
+So "A15 is saturated" refers to the infinite periodic structure, and the finite computation is
+valid only on the interior — a distinction the flag makes explicit and which the earlier
+fixtures could not make because none of them was periodic.
+
 Two things follow, and the first matters more than the second.
 
 - **This is the first fixture in the project whose cells satisfy the saturation criterion**
