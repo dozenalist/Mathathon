@@ -268,3 +268,61 @@ its own docstring says.
 - C's `cde39fa` near-contact scan passed the original witnesses and the 69 audit cases; that is
   finite evidence, as the brief says, and I am not upgrading it to a soundness proof.
 - Nothing here is a bound on packing density.
+
+## 10. C102's constant: correct, and one error of my own corrected before it was published
+
+The handover for this block carried a pending entry (`X-C070`) saying C102's
+`min |p| = 3.206870905` at `ρ = 2.09` was **0.881% too high** and that the true minimum was
+`3.178617889`, "already at C102's own direction". I checked it before writing it up, and it is wrong:
+the two numbers are the same function at different radii, and **the problem is not scale invariant** —
+the contact distance stays 2 while `ρ` moves, so `ρ = 2` (contact distance = radius, discriminant
+`c²−0`, `r₊ = 2c`) and `ρ = 2.09` are different problems. The ratio of the two values is `1.008888`,
+not `ρ`-ratio `1.045`, which is exactly the signature of that mistake.
+
+`Reviews/twist/nearest_13th_indep.py` (exit 0) recomputes at `ρ = 2.09` and **reproduces C102 to
+`2.45e-10`**: the face-centre value is `3.206870905245`, the closed form
+`ρκ + √(ρ²κ²−ρ²+4)` with `κ = √((5+2√5)/15) = 0.794654472292` gives the same, Nelder–Mead from 32
+starts returns it at the cube-corner direction, and 2·10⁶ random directions give `3.207307899`.
+
+What upgrades this from "reproduced" to "decided": `r₊` is strictly increasing on its domain, so the
+minimisation is a **covering-radius** problem, and the covering bound `max_i⟨u,x̂_i⟩ ≥ κ` for every unit
+`u` has a three-line proof (§ X-C070): for `u` in a face triangle, `u = Σλ_k a_k/|Σλ_k a_k|` with
+`Σλ_k = 1`, `t = max λ_k ≥ 1/3`, `m = 1/√5`, one has `max_j⟨u,a_j⟩ ≥ w/√w ≥ κ` because
+`|Σλ a|² = (1−m)Σλ² + m ≤ (1−m)t + m = w` and `w ≥ w(1/3) = (1+2m)/3 = κ²`. Equality only at the 20
+face centres. So the minimum over all directions is exactly `r₊(ρκ)`, and it is attained at a face
+centre — which is what `(0.934172, 0.356822, 0) = (φ,1/φ,0)/√3` is, not an "edge midpoint" as
+`CLAIMS.md:3012` says. The script's own "dodecahedral (hole)" enumeration is also wrong: it returns
+**12** directions with `max_i⟨u,x̂_i⟩ = 2/√5`, i.e. a second icosahedron, not the 20 face centres, so
+its printed "nearest among holes: 4.09" is that set's value, not a hole value. Neither defect touches
+the constant or the conclusion: `3.206871 > 2·R_cell = 2.955706345` by `0.251165`, and
+`> 2·1.045·1.258408572 = 2.630073915` by `0.576797`.
+
+**Recorded as an error of this block**: the "0.881% too high" reading was a `ρ = 2` vs `ρ = 2.09`
+confusion, caught before publication. The lesson is the same one `X-C062` taught: a constant is only
+meaningful together with the normalisation it was computed in.
+
+### 10.1 Main's third `twist_cover.py` (`a34a3ff1`, their C127) is correct
+
+While checking the tips I found `twist_cover.py` had moved again, from `67d5c973` to
+`a34a3ff104fc9be7d2e358cbbcf4151715c69e0c` (main `4dc1cc9`). The new revision fixes **both** defects
+independently and in the same way `corrected_cover.py` does: `Aij` now carries `2u_xq_x`, and the
+violation set is `|t − ψ| > h` with `h = arccos c`, endpoints shrunk inward by `1e-30`, reduced mod the
+twist period `2π/5`. Run as `Reviews/twist/twist_cover_a34a3ff1.py` (exit 0): **53 proper arcs → 65
+pieces → one merged interval `[0, 2π/5]`, no gaps**, 60 digits. So `X-C057` refutes the first two
+revisions only, and `C127` now stands on a sound certificate.
+
+One caveat, sound but sloppy: the fold `L = max(lo,kP) − kP` keeps only the part of `[lo,hi]` inside
+`[0,2π]`. The instrumented run shows **5 pairs with `lo < 0`** (to `−0.550555`) and **5 with
+`hi > 2π`** (to `6.833740`), so those pieces are dropped rather than wrapped. Dropped pieces are true
+violations, so the emitted arcs remain strict subsets of the violation sets — the certificate is
+**sound** and still closes — but the fold should be a reduction mod `2π`; otherwise a different
+instance can lose coverage silently. Worth fixing before reuse, not a hole in `C127`.
+
+## 11. Limits (this block)
+
+- C102's value is confirmed with a *proof* of the covering step, but the cell-circumradius bound
+  `2·R_cell = 2.955706345` is still C102's conservative `(ρ/2)√2`; the sharper `2.630074` uses my
+  `1.258408572` for the `ρ = 2` dodecahedral cell, which is itself numerical.
+- `C127` was checked by running the blob and instrumenting its fold; I did not re-derive its 53 pair
+  constants. The soundness argument for the dropped pieces is analytic (periodicity), not machine-checked.
+- The `ρ = 2` vs `ρ = 2.09` error above was mine, caught before it reached the registry.

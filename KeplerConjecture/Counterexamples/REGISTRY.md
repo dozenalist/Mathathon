@@ -1084,3 +1084,57 @@ Checked against `out/nearcontact_scan.json` (comp tip `bf7998c`): the four cells
 `t = 1.01, 1.02, …` — the correct identity per family, in exact rational arithmetic. The stored
 densities equal `(4π/3)/mean(vols)` in 200/200 rows checked. So C's volume engine is consistent with
 its own data; the finite scope is the only limit, and the docstring states it.
+
+### K15-X-C070 — C102's constant `3.206870905` is CORRECT; `3.178617889` is the same function at `ρ = 2`
+
+The previous block queued an entry saying C102's `min |p| = 3.206870905` was 0.881% too high and that
+the true minimum was `3.178617889` at C102's own direction. **That entry was wrong and is withdrawn
+before it was ever written**: the two numbers are the same function evaluated at different radii.
+`Reviews/twist/nearest_13th_indep.py` (exit 0) recomputes at `ρ = 2.09`, the radius C102 uses:
+
+- independent mpmath (dps 30) implementation of `r₊(c) = c + √(c² − (ρ²−4))`: **`3.206870905245`**,
+  deviation from C102's `3.206870905` is `2.45e-10`; Nelder–Mead from 32 starts returns the same
+  value at the cube-corner direction `(−1,1,1)/√3`; 2·10⁶ random directions give `3.207307899`;
+- **closed form** `ρκ + √(ρ²κ² − ρ² + 4)` with `κ = √((5+2√5)/15) = 0.794654472292`, the cosine of the
+  icosahedral face's angular radius — the same number to 12 digits;
+- the minimisation is **exactly a covering-radius problem and it is proved, not sampled**: `r₊` is
+  strictly increasing on its domain, so `min_u max_i r₊(⟨u,x_i⟩) = r₊(ρ·min_u max_i⟨u,x̂_i⟩)`, and for
+  `u` in a face triangle, `u = Σλ_k a_k/|Σλ_k a_k|`, `Σλ_k = 1`, `t = max λ_k ≥ 1/3`, gives
+  `max_j⟨u,a_j⟩ = ((1−m)t+m)/|Σλ a|` with `m = 1/√5` and `|Σλ a|² = (1−m)Σλ² + m ≤ (1−m)t+m`, so
+  `max_j⟨u,a_j⟩ ≥ w/√w ≥ κ` once `w = (1−m)t+m ≥ w(1/3) = (1+2m)/3 = κ²`. Equality only at the 20 face
+  centres. Hence the minimum over **all** directions is the face-centre value, exactly.
+- `3.178617889` is what the same function gives at `ρ = 2` with the contacts at radius 2 (floor 2,
+  discriminant `c²−0`, so `r₊ = 2c`). `3.206871/3.178618 = 1.008888 ≠ 1.045`, because **the problem is
+  not scale invariant** — the contact distance stays 2 while `ρ` moves, so `ρ = 2` (distance = radius)
+  and `ρ = 2.09` are different problems. Comparing one against the other is the error.
+
+**Two real, minor defects in `Computation/nearest_13th.py`, neither affecting the constant.**
+(i) Its `dd` block is labelled "dodecahedral (hole) directions" but yields **12** directions with
+`max_i⟨u,x̂_i⟩ = 2/√5 = 0.894427`, i.e. a second icosahedron, not the 20 face centres (which have
+`0.794654`). The printed "nearest admissible radius among holes: 4.09" is therefore not a hole value
+(the set's own value is `3.637510062`); the true face-centre value `3.206871` *is* the global minimum.
+(ii) `CLAIMS.md:3012` describes the minimising direction `(0.934172, 0.356822, 0)` as "an edge-midpoint
+direction of the icosahedron (not a face centre)" — it is `(φ, 1/φ, 0)/√3`, a **face centre**
+(dodecahedron vertex); its `max_i⟨u,x̂_i⟩ = κ`, and it is exactly where the bound is attained.
+
+**Conclusion unaffected and with room**: against C102's conservative `2·R_cell = 2.955706345` the margin
+is `0.251165`; against the true cell circumradius `2·1.045·1.258408572 = 2.630073915` it is `0.576797`.
+Status: **constant CONFIRMED, conclusion stands**; two auxiliary/prose defects recorded.
+
+### K15-X-C071 — Main's third `twist_cover.py` (`a34a3ff1`, their C127) fixes both defects and its certificate closes
+
+Blob `a34a3ff104fc9be7d2e358cbbcf4151715c69e0c` at main `4dc1cc9` (supersedes `67d5c973`). Read as
+byte copy `Reviews/twist/twist_cover_a34a3ff1.py` and run (exit 0): it adds `2*u_x*q_x` to `Aij`,
+uses `violation = |t − ψ| > h` with `h = arccos c`, shrinks endpoints inward by `MARGIN = 1e-30`, and
+reduces mod the twist period `2π/5`. **53 proper arcs → 65 pieces → one merged interval
+`[0, 2π/5]`, no gaps**, at 60 digits. This is the repair `X-C058`/`corrected_cover.py` specified, and
+the two agree (45 raw arcs there because that script keeps the pair list unmerged). So `X-C057`'s
+refutation is *of the first two revisions only*, and `C127` now stands.
+
+**One caveat, sound but sloppy.** `L = max(lo, k·PERIOD) − k·PERIOD` folds only the part of the
+violation interval `[lo,hi] = [ψ+h, ψ+2π−h]` lying in `[0, 2π]`. Instrumented run: **5 pairs have
+`lo < 0`** (down to `−0.550555`) and **5 have `hi > 2π`** (up to `6.833740`), so those pieces are
+dropped rather than folded. Dropped pieces are *true* violations, so the emitted arcs remain strict
+subsets of the violation sets — the certificate stays **sound** — and the cover still closes with no
+gap. But the right operation is reduction mod `2π` before the period split; as written, a different
+instance could silently lose coverage. Fix before reuse.
