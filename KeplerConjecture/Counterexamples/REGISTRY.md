@@ -705,4 +705,8 @@ commit message. **D4** (period-16 unsaturation), **D5** (`exhaustive_cut_scan` o
 latent), **D7** (`max(0,·)` omitted, cosmetic) and **D8** (vertex set taken from the edge list —
 still producing `status: PATCH_FEASIBLE` through `--fixture` on an instance infeasible at every
 `Φ`) still reproduce. The repro script now takes the module path as an argument so any future
-revision can be audited the same way.
+revision can be audited the same way. **Why `e229923`'s new self-check does not catch D8:**
+`feasible_flow` now calls `verify_flow_exact` before returning, but that verifier computes its
+vertex range the same way (`n` from the edge list), so both agree on a truncated vertex set. The
+self-check is a genuine repair of the `1e-9`-grid defect it names (`8.3·10⁻⁹` below the cut scan's
+`t*`), and it cannot test an assumption it shares.

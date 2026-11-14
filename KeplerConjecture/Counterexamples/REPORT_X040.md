@@ -255,7 +255,15 @@ edge gate, FCC constructor"). I re-ran the repro against the new blob
 | D8 vertex set from the edge list | reproduces | **still reproduces, reachable via `--fixture`** |
 
 So three of the four live defects I reported are closed, verified by my own witnesses rather than by
-reading their commit message, and the one that matters most (D8, the false accept) is not. The
+reading their commit message, and the one that matters most (D8, the false accept) is not.
+
+**Why the new self-check does not catch D8.** `feasible_flow` now re-verifies before returning
+(commit `e229923`, and its docstring explains that a `1e-9` rounding grid used to break the
+divergence bound by up to `1.2·10⁻⁸`, which showed up as a minimum capacity `8.3·10⁻⁹` *below* the
+cut scan's `t*`). That is a real repair of a real defect. But the verifier it calls computes its
+vertex range the same way `feasible_flow` does — from the edge list — so the two agree on a
+truncated vertex set and the check passes on the instance where it should fail. A self-check that
+shares an assumption with the thing it checks cannot test that assumption. The
 paragraphs below describe `700e44f6`, the version reviewed at 0353-C; they are left as written
 because the audit trail is the point, with this table as the current status.
 
