@@ -2402,3 +2402,25 @@ computation (interval arithmetic + LPs). The cut condition has **no `DS`**: it
 quantifies over subsets of a packing, so no compact reduction is available. That is a
 sharper statement than "finite vs infinite", and it explains why the transfer route
 cannot be finitised the way Hales' can.
+
+### K15-C089 — the next geometric package: `sup_Λ t*(Λ) ≤ Φ₀` (`PROPOSED` package)
+
+`Main/PACKAGE_CUT.md` restates the geometric target as a *quantitative* inequality:
+
+```
+t*(Λ) = max over finite U of  Σ_U b / |δ⁺_R(U)|   ≤   Φ₀(R)      for every saturated Λ, R ≤ 2.09,
+```
+
+with `t*` the minimal transfer bound (LP duality, `K15-C044`). Reasons this is the
+right form: (i) it is exactly what the rate `O(Φ/r)` needs; (ii) a single periodic
+packing with `t* > Φ₀` refutes a claimed `Φ₀`, so candidates are testable
+(`C-TRANSFER-001` computes `t*`); (iii) *existence* cannot be refuted by a packing
+(Kepler is true and `C087` shows large-ball cuts already encode it), so only the
+quantitative form is falsifiable; (iv) it has a proved floor `Φ₀ ≥ 0.0088803`
+(`K15-C081r`).
+
+The difficulty is located precisely in the trade-off between small cuts (small
+denominator, `Σ_U b` controlled only by `√32|U|`) and large cuts (density controls
+`Σ_U b`, but the boundary grows like `|U|^{2/3}`). Three steps are specified:
+compute `t*` on four non-trivial periodic packings; prove the ball-cut case; then show
+the maximum is attained on ball-like cuts.
