@@ -509,3 +509,14 @@ close-packed stackings — all of which have **equal** cell volumes, hence `b = 
 **no discriminating power** for the cut condition. "Find a near-Kepler fixture and test the cut
 condition" is unlikely to succeed; the condition is equivalent to Kepler and its only near-extremal
 fixtures are exact equality cases.
+
+### K15-COMP-027 — 2026-11-14 — Computation (role C), hill-climbed explicit Gram
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-SOSQSIDE-004** | **VERIFIED_EXACT** | best explicit-Gram certificate: `q = (1/12)² + (11u/6 − 19/4)² + u(7/4 − 2u/3)²`, `p = −4u³/9 + 205u²/36 − 353u/144 + 3089/288`, giving **`Δ ≤ 1.99064200`** — 3× better than the `p`-side cubic family | `sos_qside_polish.py`, `out/sos_qside_polish.json` |
+| K15-C-SOSPLATEAU-001 | measured | the hill-climb **plateaus at ≈2**: three further seeds give `1.99889176`, `1.99578400`, `1.99725415`. So `1.99064200` is best-found, **not optimal**, but the search is no longer productive | `out/polish_s*.json` |
+
+**Progression recorded in full** so the shape of the search is visible: random `2.8236` → wider
+random `2.6199` → hill-climb `1.9906`. Acceptance at every step was exact (`exactcert`), with the
+float screen used only to steer.
