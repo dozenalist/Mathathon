@@ -60,6 +60,14 @@ margin                          = +0.134599901
 Monte Carlo at `4×10⁶` samples gives `5.901210`, within its `σ ≈ 0.01` — a check on the
 polytope code, not a second value.
 
+The **coordinates** are exact but the **volume** is only enclosed, and it is worth saying
+why: the ring bisectors divide by the icos edge, `|ring_k − w1| = √(8 − (8/5)√5)`, which is
+not in `Q(√5, √55)`, so the polytope's vertices (and the volume) live in the larger field
+`Q(√5, √55, √(8 − (8/5)√5))`. A PSLQ search for the volume in `Q(√5, √55)` with
+coefficients up to `10⁷` finds nothing, as it should. `5.898017371803720` is therefore an
+enclosure to `1.4e-15`, certified by two independent algorithms (hull volume and
+divergence-theorem face decomposition), not an algebraic identity.
+
 ---
 
 ## 2. `K15-E081`: the cell is **exact**, not an upper bound
@@ -249,17 +257,21 @@ This is the supervisor's objection, and it is correct.
 > **Lemma 1′ (`K15-E083`).** For both local types, the contact-only polytope `K` satisfies
 > `K ⊆ B(v,√2)`.
 
-*Proof* (finite, exact). `K = ⋂_{i=1..12}{x : x·n_i ≤ 1}` with `n_i = p_i/2`, `|p_i| = 2`,
-for the contact sets of §5.1 of Main's file. Enumerating the triple-plane vertices:
+*Proof* (finite, exact, machine-checked). `K = ⋂_{i=1..12}{x : x·n_i ≤ 1}` with
+`n_i = p_i/2`, `|p_i| = 2`, for the contact sets of Main's file. The vertices are triple
+plane intersections in `Q(√3)` (`H = √(8/3)`), so everything below is symbolic, not
+floating point: `Experimental/scripts/barlow_contact_cell.py` (1.4 s, exit 0). Enumerating:
 
 | type | vertices | `|x|²` values (multiplicity) | `vol` | `max|x|` |
 | --- | --- | --- | --- | --- |
 | fcc (`ABC`) | 14 | `3/2` (8), `2` (6) | `5.656854249492 = √32` | `√2` |
 | hcp (`ABA`) | 14 | `3/2` (8), `2` (6) | `5.656854249492 = √32` | `√2` |
 
-The coordinates lie in `Q(√3)` (`H = √(8/3)`, `T` rational in the `a_i`), so `|x|² ∈ {3/2, 2}`
-is exact. Hence `K ⊆ B(v,√2)`, with equality attained at the six `|x|² = 2` vertices — the
-octahedral holes. ∎
+Both types give **exactly** `|x|² ∈ {3/2, 2}` with multiplicities `8` and `6`, and
+`vol K = 4√2` exactly by the divergence theorem (`V = (1/3)Σ_i A_i`, all twelve faces at
+distance `1`) — which also confirms Main's (F4) independently of the average argument.
+Hence `K ⊆ B(v,√2)`, with equality attained at the six `|x|² = 2` vertices, the octahedral
+holes. ∎
 
 **The repair.** With Lemma 1′: `K ⊆ B(v,√2) ⊆ B(v,|c−v|/2) ⊆ H_c` for every non-contact `c`
 (the middle inclusion because `|c−v| ≥ 2√2`), so `K ⊆ H_c` for all non-contacts, so

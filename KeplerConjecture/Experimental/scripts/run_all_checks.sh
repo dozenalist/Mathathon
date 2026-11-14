@@ -31,6 +31,7 @@ run icosa_cut_check         "cut/flow fixture: 12 payers, exact distances, surpl
 run c5_completion           "C5 completion: vol Omega(w_1) = 5.898007, (P') margin 0.1346"
 run c5_fixture              "frozen fixture: exact coords, legality, exact cell theorem"
 run c5_family               "theta family [106,120]: exact-cell property at every legal angle"
+run barlow_contact_cell     "exact: contact-only K subset B(v,sqrt2), both types, vol K = 4sqrt2"
 # evidence integrity: every JSON must parse, every TXT must be non-empty
 bad=0
 for f in Experimental/evidence/*.json; do
