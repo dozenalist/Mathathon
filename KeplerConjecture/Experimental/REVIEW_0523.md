@@ -247,7 +247,13 @@ CERTIFIED for the whole region:  vol Omega(w1) in [5.873007762, 5.926242378]
 
 So every one of the continuum of configurations in that rectangle has a payer cell above the
 `(P')` threshold, certified — the first statement of that kind in this project, and the shape
-any future bound over completions would take. It is a `2`-parameter slice of the completion
+any future bound over completions would take.
+
+**The region is legal, which it must be for "cell" to mean anything**: the legal window is
+`θ ∈ [105.2°, 120°]` (outside it the pentagon penetrates the ring or the lower ring) and
+`φ ≳ 22°`, established in `K15-E085`/`E086`, and `[110.4, 110.6] × [35.4, 35.6]` sits well
+inside it. `certify_region.py` does not re-check legality, so this is inherited from that
+earlier computation and stated as such rather than implied. It is a `2`-parameter slice of the completion
 space, not the space itself (§3), and it is reported as such.
 
 *(A `1° × 1°` region — 100 boxes, 4 workers, about 8 minutes — was also launched; its result is
