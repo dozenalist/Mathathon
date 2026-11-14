@@ -1034,3 +1034,13 @@ repaired.
 sampled threshold `3.455500344` to nine decimals and upgrades it from "maximised over a grid" to
 "covered for every twist". Consequence: `C116`'s `6/√5 = 2.6832816` should be `3.455500344`, and the
 statement ("two dodecahedral cells impossible below `d_c`") is certified rather than inferred.
+
+### K15-X-C065 — E's `certify_region.py` box grid can leave a gap and still say "CERTIFIED for the whole region"
+
+Blob at experimental `d289bef`. The grid is `n = int(round((hi − lo)/w))` then `n` boxes at
+`lo + i·w`; nothing checks the remainder, and the epilogue prints "CERTIFIED for the whole region"
+regardless. Replicating the index arithmetic: `[110°, 111.05°]` at `w = 0.1°` is covered only to
+`111°` (gap `0.05°`); `[110°, 111°]` at `w = 0.3°` only to `110.9°` (gap `0.1°`). The default region
+`[110,111] × [35,36]` at `0.1°` is an exact multiple, so that run is unaffected. Fix: require the
+extent to be an integer multiple of `w`, or add the remainder box. (Independently, the region's
+certification inherits `X-C060`/`X-C061` through `rigorous_cell_volume.box_volume`.)

@@ -144,6 +144,14 @@ test**. So requirement (1) below is really "boundedness *plus* the covering chec
 5. **domain coverage** — bounding one cell of one configuration is not bounding a family; the
    branch-and-bound must cover the parameter domain exactly, boundary included.
 
+**Requirement 5 also fails, in `certify_region.py` itself.** The box grid is
+`n = int(round((hi − lo)/w))` followed by `n` boxes at `lo + i·w`, and nothing checks the
+remainder: a region `[110°, 111.05°]` at `w = 0.1°` is covered only to `111°` (**a 0.05° gap**), and
+`[110°, 111°]` at `w = 0.3°` only to `110.9°` (**0.1° gap**) — while the program still prints
+"CERTIFIED for the whole region". The default region `[110,111] × [35,36]` at `0.1°` happens to be
+an exact multiple, so *that* run is unaffected; any other region is not, and the fix is one line
+(require `(hi − lo)/w` integral, or add the remainder box).
+
 ## 6. What survives in `C106`–`C108`, and the slack scope
 
 - **`C106`** (the Theorem B bridge and the `1.92%` gap): unaffected by the twist defect — it is the
