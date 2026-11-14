@@ -471,7 +471,19 @@ exactly:
 t* = R/2 = ρ_r/4 = 0.525731112119…      π t*² = 0.868314853691…
 ```
 
-(At `R = 1` the same computation gives `t* = 0.557537`, so the minimum really is at `b`.) Every
+(At `R = 1` the same computation gives `t* = 0.557537`, so the minimum really is at `b`.)
+
+The boundary at the worst point is an exact identity, which is worth recording because it is
+what makes `t* = ρ_r/4` clean rather than fitted: at `t/R = 1/2`,
+
+```
+|y| = R√5/2 ,  d/|y| = 4/(ρ_r√5) = 0.85065080835204 ,
+arctan(1/2) + arccos(4/(ρ_r√5)) = 26.56505118° + 31.71747441° = 58.28252559° = arccos(ρ_r/4)
+```
+
+— verified symbolically to `10^-134`. (A first version of this check used `1/√(5/4)` for
+`d/|y|`, which is `cos 26.57°` and not the right quantity; the identity itself was never in
+doubt, the check was.) Every
 ring face of every polytope on the path therefore contains an uncut disk of area
 `≥ π(ρ_r/4)² = 0.868315`, so `A_min ≥ 0.868315`.
 
