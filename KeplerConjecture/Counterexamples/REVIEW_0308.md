@@ -161,3 +161,91 @@ quantification stands: `(T′)` for the 13-cluster demands `Σ_{12} vol Ω(w_i) 
 | `E045` | **ACCEPTED**, and stronger than it claims: only the inclusion is needed |
 | `K15-X-C014` | unchanged (`0.780718153`); Astra's independent reconstruction is the outstanding check |
 | generic checker soundness | **SUSPENDED** — a passing battery is not a proof, and §1.2 shows one gap remains |
+
+---
+
+## 5. C's explicit Gram identities, and the both-sides obligation
+
+### 5.1 The three identities in `tests_0138.py`, verified by hand
+
+| test | identity | verdict |
+| --- | --- | --- |
+| T1 (q-side) | `45 − (63/4)u + (1/4)u² + (4/9)u³ = 3² + (3u/2 − 6)² + u(3/2 − 2u/3)²` | **CORRECT**. Expanding: `9 + (9u²/4 − 18u + 36) + (9u/4 − 2u² + 4u³/9) = 45 − (63/4)u + (1/4)u² + (4/9)u³` ✓, and every summand is a square times a non-negative factor (`u ≥ 0`), so `q ≥ 0` on `[0,∞)` **by construction** ✓ |
+| T2 (p-side) | `−p = (u−T)(u−c)²`, `T = 314/25`, `c = 12` | **CORRECT** (trivially: `(u−T) ≥ 0` for `u ≥ T` and the square is `≥ 0`) |
+| T3 (p-side) | `−p = (u−T)[(u−c)²(u−e)² + m²(u−d)²]`, and the bracket `= r₁² + r₂²` | **CORRECT** (bracket is manifestly a sum of two squares, so `−p ≤ 0` for `u ≥ T`) |
+
+### 5.2 The named open obligation, stated exactly
+
+C's register lists as open: *"One certificate with obvious rational Gram on **both** sides at useful
+strength."* Stated precisely, for the degree-`(2m+1)` family this is the feasibility problem
+
+> find rational **symmetric positive semidefinite** `A, B ∈ Q^{(m+1)×(m+1)}` with
+> `Q(u) = Σ_{i+j=k}` coefficient identities, i.e.
+> `Q_k = [k ≤ 2m]·Σ_{i+j=k}A_{ij} + [k ≥ 1]·Σ_{i+j=k−1}B_{ij}` for `k = 0,…,2m+1`,
+> where `Q = M p` is the Fourier image of the chosen `p`.
+
+For `m = 5` this is **42 unknowns against 12 equations** — heavily underdetermined, so the
+difficulty is *not* counting; it is that the solution must be PSD, which is an SDP in rational
+arithmetic. Two remarks that sharpen the target:
+
+* **The diagonal ansatz is equivalent to `Q` having non-negative coefficients.** If `A = diag(a_k)`
+  and `B = diag(b_j)` then `a(u) = Σa_k u^{2k}` and `u b(u) = Σb_j u^{2j+1}`, so even coefficients
+  of `Q` come only from `a` and odd only from `b`; PSD then forces **every coefficient of `Q` to be
+  non-negative**. My `K15-X-C014`'s `Q` has alternating signs (`u², u⁴, u⁶, u⁸, u¹⁰ < 0`), so no
+  diagonal Gram exists for it. **Checking the sign pattern of `Q` is a one-line necessary test for
+  the diagonal route.**
+* **Only one side needs a Gram for verification.** My certificates prove `Q ≥ 0` by an exact Sturm
+  count, which is a proof — machine-checkable by `verify_all.py` in one command. An explicit Gram
+  would make the check a polynomial expansion instead (simpler to audit by hand, no root isolation),
+  which is a *legibility* gain, not a correctness gain. So the obligation is worth closing for
+  auditability, not because the certificates are otherwise conditional.
+
+### 5.3 `CUTEQUIV` verified, and the necessary condition it gives for the cut package
+
+`K15-C-CUTEQUIV-001` says the cut condition over a **full period** reads `Σ_U b ≤ 0`, i.e.
+`mean vol Ω ≥ √32`. Verified independently: this is exactly
+`center density ≤ 1/√32 = 0.17677670`, i.e. `occupied density ≤ (4π/3)/√32 = 0.740480490 =
+π/√18` — **Kepler, with no slack**. And for a growing ball, `|δ⁺(U)|/|U| ≈ 3r²/((4π/3)r³) → 0`
+(`7.2×10⁻², 7.2×10⁻³, 7.2×10⁻⁴` at `r = 10, 100, 1000`), so the same limit holds along balls.
+
+**This is the necessary condition the geometric cut package needs to be honest about:** the cut
+family *includes* Kepler-hard cuts, so no proof of the full package can be easier than Kepler. What
+the transfer formulation buys is not a weaker obligation but a *localisation* of it: it suffices to
+control `Φ` and the cuts for the defective components. Combined with `C080` (the transfer condition
+is strictly weaker than `(T′)` when `δ⁺ ≠ ∅`), the route's honest summary is: **the difficulty is
+relocated, not reduced** — and `C081r`'s `Φ ≥ 0.0088803` is a *necessary* constraint on the
+relocation, not a step toward the bound.
+
+## 6. The `η < 0` hole: attempted witness, and why it resists
+
+I tried to turn §1.2 into a concrete counterexample: profiles of the shape
+`p(u) = −A(u−m)²(u−r)` with `r < T_HI < m < πρ²` and `m` inside the `8.7×10⁻²⁹` sliver, for which
+`p > 0` on `[0,r)`, `p ≤ 0` beyond `r`, and `max_{shell} p = 0 > η` — so the checker would report
+`(p₀+12η)/q₀` with `η` too negative. **All four attempts failed the `q ≥ 0` test** (`A` from `10¹⁰`
+to `2.2×10⁵⁵`, all `q ≥ 0 → False`). The tension is structural: the spike needs `|p′| ~ 10²⁸` near
+`T_HI`, and such a `p` has a Fourier image that alternates too violently to be nonnegative.
+
+So the honest status of the hole is: **a real gap in the argument, with a necessary condition
+(`η ≥ 0`) that must be assumed or enforced, and no witness found.** I am not calling it a refutation
+of any reported number; I am calling it a line that must be added before the docstring's argument is
+complete. C's `K15-C-SOSSHELL-001` independently notes that in the cubic family every admissible `η`
+is positive, so the published cubic-family numbers are unaffected.
+
+## 7. Acceptance labels, final for this review
+
+| item | label |
+| --- | --- |
+| `shell_check` `7c56c5ee`: normalization, `M` rational, thresholds, sign regions, count-as-hypothesis, failure policy | **ACCEPTED** |
+| `shell_check` `7c56c5ee`: gluing of the two sign checks | **ACCEPTED modulo `η ≥ 0`** — NOT enforced; one-line fix required |
+| `_gap_verdict` strict branch | **PROVED SOUND** (rule + proof in §1.3) |
+| `function_range` fallback | **DELEGATED, correct on all hostile cases tried** (deg 8/12/20, roots `10⁻¹²…10⁻¹⁸` apart, `≤0.2 s`) |
+| exception handling | **NOT fail-closed in-module** (no `try:`) — caller must key on `PASS` lines |
+| `C081` | **WITHDRAWN**, correctly; error confirmed with a negative-deficit witness |
+| `C081r` | **PROVED**, necessary only: `Φ ≥ 0.0088802684` |
+| `C079` | **ACCEPTED** (ball-cut scope) |
+| `C044` | **ACCEPTED for finite `Λ`**; finite-to-infinite step missing |
+| `CUTEQUIV` | **VERIFIED** — the full-period cut is exactly Kepler |
+| C's `tests_0138.py` T1–T3 Gram identities | **VERIFIED by hand** |
+| C's both-sides-Gram obligation | **OPEN**, now stated as a 42-unknown / 12-equation rational PSD feasibility problem; diagonal ansatz `⟺` non-negative coefficients of `Q` (fails for `X-C014`) |
+| `K15-X-C014` | unchanged, `0.780718153`; Astra's independent reconstruction outstanding |
+| generic checker soundness | **SUSPENDED** |
