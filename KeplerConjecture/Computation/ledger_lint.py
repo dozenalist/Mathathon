@@ -22,13 +22,14 @@ CLAIMS = os.path.join(ROOT, 'KeplerConjecture', 'Main', 'CLAIMS.md')
 # ids defined in a worker's own ledger, cited by Main; they are listed in CLAIMS.md
 # under "External ids" so that a reference from Main resolves to something.
 EXTERNAL = {'K15-X-C014', 'K15-X-C015', 'K15-X-C016', 'K15-X-C017',
-            'K15-X-C043', 'K15-X-C051', 'K15-X-C052', 'K15-X-C053', 'K15-X-C055'}
+            'K15-X-C043', 'K15-X-C051', 'K15-X-C052', 'K15-X-C053', 'K15-X-C055',
+            'K15-X-C083'}   # K15-X-C083: deg<=12 only for eps <~ 0.31 (review block 0738)
 
 VOCAB = {
     'PROPOSED', 'TESTED_FINITE', 'PROVED', 'LEAN_VERIFIED', 'LEAN_CONDITIONAL',
     'REFUTED', 'BLOCKED', 'PENDING_REVIEW', 'AUDITED', 'IMPORTED', 'AGREES',
     'WITHDRAWN', 'CORRECTION', 'TESTED_FAMILY', 'PROPOSED_PACKAGE', 'DECISION',
-    'VERIFIED', 'VERIFIED_CROSS', 'ACCEPTED',
+    'VERIFIED', 'VERIFIED_CROSS', 'ACCEPTED', 'OBLIGATION',   # OBLIGATION: named gap with an owner
 }
 ID_RE = re.compile(r'K15-([CERX])-?(C?\d{3}[a-z]?|\d{3}[a-z]?)')
 HEAD_RE = re.compile(r'^#{2,3}\s+K15-([CERX])-?(C?\d{3}[a-z]?)(.*)$', re.M)

@@ -4390,20 +4390,47 @@ restated so that nothing is assumed about `δ(Λ)` existing. Two facts, both unc
 - **Branch bound.** `v ∉ S_ε` means every other centre is at distance `> 2+ε`, so
   `Ω(v) ⊇ B(v, 1+ε/2)` and `vol Ω(v) ≥ (4π/3)(1+ε/2)³`; always `vol Ω(v) ≥ 4π/3`.
 
-Chaining, with `ε` fixed and `|S_ε ∩ B_R| = o(R³)` from (2):
+> **[Second repair, review 2026-11-14 07:38.]** The first version of this paragraph chained
+> `(4π/3)R³ − O(R²) ≥ Σ vol Ω(v) ≥ (…)` and concluded `1 ≥ c̄(1+ε/2)³`. **That is invalid**: the
+> coverage estimate is a *lower* bound on the sum, and a lower bound on the sum combined with a
+> lower bound on its terms bounds nothing. The density bound needs an **upper** bound on the same
+> sum, and saturation supplies it. Both bounds are stated below, with their directions.
+
+**Two bounds on the same sum, in the directions they actually have.**
+
+- **Upper (saturation + disjointness + containment).** By the same argument as coverage, `Ω(v) ⊆
+  B(v,2)` for every `v`: for `x ∈ Ω(v)` and any centre `u`, `|x−v| ≤ |x−u|`, and saturation gives a
+  centre with `|x−u| ≤ 2`. Voronoi cells have disjoint interiors. Hence, for `v ∈ B_R`,
+  `Ω(v) ⊆ B(0,R+2)`, and
+
+  ```
+  Σ_{v∈B_R} vol Ω(v)  ≤  vol B(0,R+2)  =  (4π/3)(R+2)³ .
+  ```
+
+- **Lower (branch bound).** `vol Ω(v) ≥ (4π/3)(1+ε/2)³` for `v ∉ S_ε`, and `≥ 4π/3` for all `v`:
+
+  ```
+  Σ_{v∈B_R} vol Ω(v)  ≥  (|B_R| − |S_ε ∩ B_R|)·(4π/3)(1+ε/2)³ .
+  ```
+
+- **Lower (coverage), recorded but *not* used here.** `Σ_{v∈B_R} vol Ω(v) ≥ (4π/3)R³ − O(R²)`.
+  True, and irrelevant to bounding `c` from above — this is the step the first version got
+  backwards.
+
+**Combining the two that point the same way**, with `ε` fixed and `|S_ε ∩ B_R| = o(R³)` from (2):
 
 ```
-(4π/3)R³ − O(R²)  ≥  Σ_{v∈B_R} vol Ω(v)  ≥  (|B_R| − |S_ε ∩ B_R|)·(4π/3)(1+ε/2)³ .
+(|B_R| − |S_ε ∩ B_R|)·(1+ε/2)³  ≤  (R+2)³
+⟹  (|B_R|/R³)(1+ε/2)³  ≤  ((R+2)/R)³ + (|S_ε ∩ B_R|/R³)(1+ε/2)³ .
 ```
 
-Divide by `(4π/3)R³` and take `limsup`, resp. `liminf`, over `R → ∞`:
-
-```
-1 ≥ c̄(1+ε/2)³   and   1 ≥ c_(1+ε/2)³ ,   c̄ = limsup |B_R|/R³,  c_ = liminf |B_R|/R³ .
-```
-
-So **both** the upper and the lower centre density obey `δ ≤ 1/(1+ε/2)³`, with no assumption that
-they agree. At `ε = 1`: `1/1.5³ = 0.296296`. (The old text's `0.414086` was the value at
+**The two density cases, audited separately.** Let `R_j → ∞` be a sequence realising
+`limsup |B_R|/R³ = c̄`. Then `|B_R| = O(R³)` (2-separation: unit balls are disjoint in `B(0,R+1)`),
+so `|S_ε ∩ B_R| = o(|B_R|) = o(R³)` and the last term vanishes along `R_j`; the right-hand side tends
+to `1`. Hence `c̄(1+ε/2)³ ≤ 1`. The same inequality along a sequence realising
+`liminf |B_R|/R³ = c_` gives `c_(1+ε/2)³ ≤ 1`, since every term is the same except the vanishing
+one. So **both** densities obey `δ ≤ 1/(1+ε/2)³`, and no hypothesis that the limit exists is used
+anywhere. At `ε = 1`: `1/1.5³ = 0.296296`. (The old text's `0.414086` was the value at
 `ε = 0.6832816`, which nothing needs any more.)
 
 **The choice of `ε`, fixed once.** `C124` needs one `ε > 0.1967082337` (`C119`'s crossover). Take
@@ -4479,14 +4506,38 @@ the max sits at a cell vertex.)
 
 So the contact `w + 2u_i` is a centre at distance `< 2` from `p`: a violation of 2-separation.
 
-**The one escape case, and why `C128` covers exactly it.** The inequality above is strict unless
-`d = 4cos ρ_c`, so a violation is unavoidable **unless `w + 2u_i = p`**, which forces `d = 2` and
-`u_i = e` exactly (a contact cannot be at distance `2` from `w` and distance `< 2` from itself). That
-is precisely the axial case: `p` is a face-contact of `w`'s cell. Then the midpoint `m = (p+w)/2`
-satisfies `|m − w| = 1` and, for every centre `u`, `|m − u| ≥ |u| − 1 ≥ 1`, so `m ∈ Ω(w) ∩ Ω(p)`; the
-bisector plane `x_1 = 1` therefore supports both cells, and a supporting plane at distance exactly 1
-(= the inradius) from `p` must be one of the 12 face planes. So the axis is a face normal of **both**
-cells, and `C128` — which covers **every** relative twist at `d = 2` — gives the clash. ∎
+**The one escape case, and why `C128` covers exactly it — the coincident-centre case, in full.**
+The clash inequality is strict whenever `d < 4cos ρ_c`, so a violation is unavoidable **unless the
+chosen contact coincides with `p`**: `w + 2u_i = p`. Since that contact lies at distance exactly `2`
+from `w`, coincidence forces `d = 2` and `u_i = e`. Two things must then be checked, and both are
+short.
+
+*(a) The axis is a face normal of `p`'s cell too.* The midpoint `m = (p+w)/2` has `|m − w| = 1`, and
+for every centre `u`, `|m − u|² = |u|² − 2⟨m,u⟩ + 1 ≥ (|u| − 1)² ≥ 1 = |m − w|²`, so `m ∈ Ω(w)`, and
+symmetrically `m ∈ Ω(p)`. Hence the bisector plane `{x : |x−w| = |x−p|}` — at distance exactly 1 from
+each centre, which is the inradius — supports **both** cells, so it contains a face of each. The axis
+`w→p` is therefore a face-normal direction (a vertex direction of the icosahedron) for both cells.
+
+*(b) `C128` excludes that case for every twist.* `C128` proves, at `d = 2` with the axis a vertex
+direction of both icosahedra and the relative twist free on the circle `R/(2π/5)`, that some pair of
+contacts is closer than `2`; its `d²(t) = A + (32/5)cos t` form has `A` independent of `t`, so the
+violation arc has length `2π − 2h = 135.089° > 72°` and meets **every** coset — it covers every
+relative twist, not merely sampled ones. `C135` states that certificate self-containedly.
+
+So the escape case is covered by `C128`, and every other case by the inequality. **∎**
+
+**Dependencies, stated as inputs rather than implied.** `C133` uses exactly two external facts:
+
+1. **Polar duality**: a regular dodecahedron of inradius 1 is circumscribed about the unit ball, so
+   its 12 face normals are the vertices of an icosahedron inscribed in that ball (`C115`'s equality
+   case supplies that the cell *is* the regular dodecahedron).
+2. **The axial exclusion at `d = 2`** (`C128`), used only in the coincident case (a) above. `C133`
+   does **not** reprove it and does not weaken its scope: `C128` remains `PENDING_REVIEW` in its own
+   right, so `C133` inherits that dependency explicitly. If `C128` were wrong, `C133` would still
+   exclude every configuration except the coincident one at `d = 2`.
+
+Nothing else is imported: no arc cover (`C116`/`C123`/`C127`), no bisection, no interval arithmetic,
+and no orientation constraint.
 
 **The constant, and its sharpness for this method.** `Computation/orient_cover.py` (exact `sympy`
 in `Q(√5)` plus a `SO(3)` scan):
@@ -4532,8 +4583,9 @@ the circumradius of the icosahedral spherical Delaunay triangle; `C128`'s `72°`
 the orientation question, and the exact constant `4cos ρ_c` with its sharpness check. **Not claimed:**
 novelty in the literature; any improvement to `C129`'s axial constant; any number.
 
-*Status.* `PROVED` (exact; two ingredients, both verified in `orient_cover.py`). `PENDING_REVIEW`
-with the rest of the pair chain — X is the gate, and this is now the cleanest thing for X to check.
+*Status.* `PROVED` (exact; two ingredients, both verified in `orient_cover.py`). **`PENDING_REVIEW`
+and not reviewed**: X's independent audit is the gate, and `C124` must not be described as reviewed
+until `C132`/`C133`/`C135` pass it. This is the cleanest thing for X to check.
 
 ### K15-C134 — `C125`'s monotonicity refutation refuted the wrong statement (`CORRECTION`)
 
@@ -4548,16 +4600,28 @@ c_exact(F)  =  inf{ vol P : P circumscribed about the unit ball, with EXACTLY F 
 c_{≤F}      =  inf{ vol P : ... with AT MOST F faces }  =  min_{F' ≤ F} c_exact(F') .
 ```
 
-`c_{≤F}` is an infimum over nested classes, hence **nonincreasing** — that is a one-line consequence
-of the definition and cannot be refuted by an example. `c_exact` is *not* monotone, and `C125`'s
-counterexample (truncated octahedron `F = 14`, `vol = 6.158402871`, against icosahedron `F = 20`,
-`vol = 5.0540561436`) shows exactly that and nothing more: `c_exact(14) > c_exact(20)`.
+`c_{≤F}` is an infimum over nested classes, hence **nonincreasing** — a one-line consequence of the
+definition, and **no example can refute it**.
 
-**So `C122`'s `≤ 20`-face target is not refuted by those two polyhedra.** What the counterexample does
-refute is an argument of the form "the constants decrease in `F`, so the `F = 14` value controls the
-`F ≤ 20` case" — the monotone direction is the other way, so a value at `14` gives only
-`c_{≤20} ≤ c_{≤14} = 6.1584`, an **upper** bound. A **lower** bound for `c_{≤20}` needs `c_exact(F)`
-for every `F ≤ 20`, since `c_{≤20} = min_{F ≤ 20} c_exact(F)`.
+**[Third repair, review 2026-11-14 07:38 — a claim of mine withdrawn.]** An earlier version of this
+entry wrote "`c_exact` is *not* monotone, and `C125`'s counterexample shows exactly that:
+`c_exact(14) > c_exact(20)`", from the truncated octahedron (`F = 14`, `vol = 6.158402871`) and the
+icosahedron (`F = 20`, `vol = 5.0540561436`). **That inference is invalid and is withdrawn.** Both
+numbers are *volumes of specific polyhedra*, i.e. **upper** bounds on the respective infima:
+`c_exact(20) ≤ 5.0541` and `c_exact(14) ≤ 6.1584`. Upper bounds cannot order infima, so **no
+monotonicity statement about `c_exact` follows in either direction** — not non-monotone, not
+monotone. Candidate volumes do not determine optima, and this entry no longer pretends otherwise.
+
+What is left, stated only as far as it is proved:
+
+- `c_{≤20} ≤ c_{≤14}` — definitional (nested classes).
+- `c_{≤20} ≤ 5.0540561436` and `c_{≤14} ≤ 6.158402871` — both are witness values, hence upper bounds.
+- A **lower** bound for `c_{≤20}` requires a lower bound for `c_exact(F)` for **every** `F ≤ 20`,
+  because `c_{≤20} = min_{F ≤ 20} c_exact(F)`.
+- Therefore `C122`'s `≤ 20`-face target is **neither refuted nor supported** by those two polyhedra.
+
+**The branch stays stopped, on reason (a) only**, and that reason is unaffected by any of this: the
+circumscribed-volume constants are unproved for `F ∈ {13, 15, 16, 17, 18, 19, 20}`.
 
 **The branch is still stopped, on reason (a) alone, and the reason is now stated exactly.** Fejes Tóth
 (*Regular Figures*, p. 263, Thm 2.1) gives the circumscribed-volume constant only for
@@ -4571,8 +4635,9 @@ and `5.0541` (`F=20`), and both are consistent with a `≤20` target of `4.958`.
 because the constants are **unproved**, not because they are large; if Mutoh's conjectures are ever
 certified, the branch becomes available again without any new geometry.
 
-*Status.* `CORRECTION`. `C125`'s stop stands; its monotonicity argument is withdrawn and replaced by
-the exact statement above.
+*Status.* `CORRECTION` (twice: the monotonicity argument withdrawn, then my replacement for it
+withdrawn too). `C125`'s stop stands on unproved constants alone. Nothing here is a statement about
+any optimum.
 
 ### K15-C135 — `C128`/`C129` made self-contained: coordinates, the pair, the endpoint (`PROVED`)
 
@@ -4637,3 +4702,166 @@ which is hand-checkable. `orient_cover.py` re-derives the same 12 points in exac
 the covering radius used by `C133`.
 
 *Status.* `PROVED` (exact; self-contained as of this entry).
+
+### K15-C136 — audit of E's twelve-face ring-excess proof: premise re-attributed, offset argument verified, one obligation (`AUDITED`)
+
+E's `K15-E099` (`Experimental/REVIEW_0653.md` §7, source `6ae7dbf83`) restores the twelve-face theorem
+`(P')` modulo an imported premise. Two things needed review: the premise's provenance, and the
+area/offset estimate in step (3). **The argument is sound; its citation is not the best available, and
+one step is less complete than it reads.**
+
+**(1) The premise is Fejes Tóth, not Lindelöf — and the project holds the primary source.** E's §7
+argues: `D'` is an intersection of twelve half-spaces at distance `≥ 1` from the origin; move each face
+in to exactly `1` (volume can only decrease), giving `P ⊆ D'` circumscribed about the unit ball with
+*at most* twelve faces; then `vol P ≥ V_dod`, so `vol D' ≥ V_dod`. **The inference is correct.** What
+is mis-attributed is the theorem.
+
+- The statement needed is the **at-most-12-face** form with its equality case. Cutting faces in to 1
+  can leave a half-space redundant, so `P` may have fewer than twelve facets; a theorem stated for
+  *exactly* `n = 12` does not apply without an extra argument.
+- That exact statement is **Fejes Tóth's**, and it is already in this project's hands as **Hales–
+  McLaughlin, *The Dodecahedral Conjecture*, Theorem 4.1** (PDF p. 16,
+  `https://www.cs.cmu.edu/~seanmcl/papers/McLaughlin-Dodec.pdf`), the same PDF `C115` verified with
+  `sha256 beab1f4a6c41bfe02c719db3f16cd3a78c9a6666f3fe7b91fe3c72f939ef6960`. It is the source `C115`,
+  `C121` and `C004` already use, so no new import is created.
+- E's Lindelöf citation (1869, via the survey arXiv:1509.08859 Thm 2.1) is **secondary-sourced** and,
+  as E notes, the "regular polyhedron minimises at each `n`" form is **false for `n ≥ 13`**. A theorem
+  that is false in the neighbouring case is the wrong tool to lean on for the boundary case `n = 12`;
+  the Fejes Tóth form has no such defect. **Correction: Lindelöf drops out of the chain entirely**; it
+  may stay as a historical remark, and `K15-E100`'s "secondary source only — the original is not
+  verified" caveat is then discharged rather than carried.
+
+**(2) The area/offset estimate (step 3) is correct as calculus**, and I re-derived it independently
+with `ρ_r = 8/√(10+2√5) = 2.1029244485` (the ring centre-to-centre distance), `b = ρ_r/2`:
+
+| E's claim | re-derived | |
+| --- | --- | --- |
+| `5(b−1) = 0.257311121` | `0.257311121` | ✓ |
+| `α(2) = arccos(ρ_r/4) = 58.28252559°` | `58.28252559°` | ✓ |
+| worst `ρ` is `2` for every `R` | min `t*` over `ρ ∈ [2, 2.603447]` at `ρ = 2`, for `R = 1, 1.02, b` | ✓ |
+| worst `R` is `b` | min `t*` over `R ∈ [1, b]` at `R = b` | ✓ |
+| `t* = ρ_r/4 = 0.5257311121` | `0.5257311121` | ✓ |
+| `π t*² = 0.868314853691` | `0.868314853691` | ✓ |
+| `5.550291029 + 0.223427069 = 5.773718098` | `5.773718098 > 5.763417470` | ✓ |
+
+The `d²`-style monotonicity is genuine, not assumed: `α(ρ)` increases with `ρ` more slowly than
+`arccos((ρ/2)/√(R²+t²))` does, so the worst case really is the smallest admissible `ρ`.
+
+**(3) The one step that is not complete: the disk must lie inside the face.** Step (3) bounds the
+**uncut part of the ring plane**, not of the ring *face*. The face is that plane intersected with the
+other half-spaces, so
+
+```
+A_ring  ≥  area( uncut disk ∩ face )
+```
+
+and `A_ring ≥ π t*²` needs the face to contain a disk of radius `t*` about the face's contact point —
+i.e. **the face's inradius must be `≥ ρ_r/4` along the whole path**. Nothing E states proves this, and
+it does not follow from the face's *area*: a pentagon of area `1.25` can have inradius well below
+`0.5257` if it is elongated. In the `C5` configuration the margin is comfortable — the binding
+half-space is the neighbouring ring face, which allows in-plane radius
+`b(1 − cos 63.43°)/sin 63.43° = 0.650` against `t* = 0.5257`, a `24%` margin — but **that is an
+estimate in one configuration, not a proof along the path**, and it is the concrete obligation to
+close. (It should be easy: the same `aφ`-type constraint that fixes the ring angle bounds the face's
+inradius from below, and the path's endpoints are the two extremal configurations.)
+
+**(4) What this audit does and does not accept.** The ring-excess lemma itself (§6.1) is correct and
+self-contained: `vol P(b) − vol P = (b−1)Σ d_i ∫A_i` is a homothety of face planes with an absolutely
+continuous volume, and the finitely many combinatorial-type changes do not affect the integral. With
+`D' ≥ V_dod` from Fejes Tóth, `(P')` for the twelve-face class is a theorem **given (3)**. It is not a
+universal pair claim, it is not a packing bound, and `RESULTS.md` does not move.
+
+*Status.* `AUDITED`. Premise re-attributed to Fejes Tóth via Hales–McLaughlin Thm 4.1 (primary source
+in hand); offset argument verified; face-inradius obligation recorded as the remaining gap. E owns the
+repair.
+
+### K15-C137 — C's exact-volume completeness: a derived edge range is not a completeness proof (`OBLIGATION`)
+
+`Computation` `2d6d64051` repairs a real trap: `export()` now derives the edge range from the shell
+radius actually used, instead of a constant that could fall below it (`R = 2` gives a graph with no
+edges and a degree-zero centre). That repair is correct and the self-test now checks it
+(`F(R_SHELL) < CONTACT_R`).
+
+**But it does not make the volume routine complete**, and the difference matters because the fixture's
+exactness has been quoted as if it transferred. `central_volume(r)` calls
+`FN.evaluate(L, sites, rmax=6)`: the neighbour set is determined by a **fixed** `rmax`. The cell volume
+is exact *for the neighbours found*; completeness — that no centre beyond `rmax` contributes a face —
+is not established for a generic input. For this fixture the answer is certainly right (the shell is
+bounded and the period is `8`, and `diameter < 4.1 < 8 − 3` rules out wrap-around), but that is a
+property of *this* fixture, not of `evaluate`.
+
+**Repair specified, not yet done** (it is a local computation, so it goes to Astra as a pinned job, not
+run here): replace the hard-coded `rmax` by the **certified truncation** of `C120`/`A15`: a centre `p`
+can contribute a face only if `|p − v| ≤ 2 h_Ω(p − v)` (Lemma 3), or equivalently only if its bisector
+intersects the current candidate cell. Implemented as an expanding-hull loop — start from the nearest
+`k` centres, compute the cell, test every excluded centre against the current cell's support function,
+add the failures, repeat — it terminates with a **proof** that the face set is complete, for any input.
+The same criterion is what made the dense-fixture computation terminate in `0.3 s` after two earlier
+attempts timed out; ignoring it does not merely slow the code down, it makes it non-terminating.
+
+**Standing rule, restated.** The fixed fixture's exact volumes remain **separate evidence**: they
+certify that fixture (with its separation checked), and they may not be cited as evidence that
+`evaluate` is complete, sound, or exact in general. `K15-C-CUTIMPLIES-003` and §2 of
+`Computation/REVIEW_0608.md` are unaffected.
+
+*Status.* `OBLIGATION` (repair specified; owner C; Astra job to be pinned). The fixed fixture stands as
+`TESTED_FINITE` evidence for itself only.
+
+### K15-C138 — fallback: what an explicit `δ₀` would need, and why the CE hybrid does not supply it (`TESTED_FINITE` + `OPEN`)
+
+`G11` asks for an explicit `δ₀ > 0` in `σ₀ > 2V_dod`. Two attempts, one partial, one failed. Both are
+recorded because the failures are the useful part.
+
+**(1) The reduction, stated exactly.** `δ₀` is explicit iff one has a **quantitative Fejes Tóth**: an
+explicit `η ↦ θ(η)` with
+
+```
+vol Ω ≤ V_dod(1 + η)   ⟹   Ω is within Hausdorff distance θ(η) of a regular dodecahedron of inradius 1,
+```
+
+together with the (explicit) separation `θ ↦ ` the distance at which two `θ`-near-dodecahedra at centre
+distance `≤ 2+ε` must clash. The second half is *available*: `C133`'s covering-radius argument is
+quantitative — replacing `cos ρ_c` by `cos ρ_c − θ'` costs `O(θ')` in the constant, so a
+`θ`-perturbation of the contact directions keeps the exclusion for `d < 3.1786 − O(θ)`. **The first
+half is the gap**, and it is not in Hales–McLaughlin: their equality case is qualitative ("congruent to
+a dodecahedron"), and neither the paper nor `C115`'s audit gives a modulus.
+
+**(2) The one case where an explicit constant is available, and why it is not enough.** Fix the 12
+normals at their icosahedral directions and let the face distances be `1 + e_i`. Then
+`vol = V_dod + Σ_i ∫₀^{e_i} A_i(t) dt`, and the ring-excess lemma (`C136` §4) with `A_i ≥ A_min > 0`
+gives
+
+```
+vol − V_dod  ≥  A_min · max_i (1 − (1+e_i))   for deviations INWARD (e_i < 0),
+```
+
+with `A_min ≥ π(ρ_r/4)² = 0.868315` from the uncut-disk bound. So a cell that is thinner than a
+dodecahedron in one direction is `0.868·|e|` above `V_dod` **explicitly**. That covers one sign of one
+perturbation; a cell can also have volume near `V_dod` with `e_i > 0` in some faces and its *normals*
+moved, which is precisely the case the argument does not reach. **Partial, not a solution.**
+
+**(3) The geometric/CE hybrid, compared against the 3D controls — it fails, and the failure is
+structural.** The comparison that was asked for, with the numbers the ledger already holds:
+
+| bound | density | vs truth `0.7404805` | vs ML `0.7546974` |
+| --- | --- | --- | --- |
+| Cohn–Elkies two-point (published) | `0.779747` | `+5.30%` | `+3.32%` |
+| Cohn–de Laat–Salmon three-point, general (published) | `0.770271` | `+4.02%` | `+2.06%` |
+| project certificate `K33b` | `0.779966` | `+5.33%` | `+3.35%` |
+| Hales–McLaughlin (proved) | `0.7546974` | `+1.92%` | — |
+| pair route + inball hybrid (`C119`, `C124`) | no number | — | `< 0.7546974` strictly |
+
+The hybrid's *shape* is `δ ≤ max{ (4π/3)/(V_dod + δ₀ρ_ε), 8/d³ }` with `d` the minimal separation.
+Every 3D control it is compared against collapses to the same obstruction: the term `δ₀ρ_ε` is
+non-explicit (`G11`), so the first branch returns strictness and no constant, and the second branch is
+`0.296` at `ε = 1` — far *below* truth, hence vacuous for dense packings. **A geometric/CE hybrid
+cannot beat `0.7546974` here without `δ₀`, and with `δ₀` it would beat it only by the amount
+`δ₀ρ_ε/(V_dod(V_dod+δ₀ρ_ε))`, which is not evaluable.** This is the same conclusion as `D19` reached
+from the other side: the pointwise route is capped at `8/V_dod`, and the pair route is only as strong
+as its stability input.
+
+**Not accepted, and restated.** None of this is a packing bound. `RESULTS.md` does not move, `K33b` is
+not an improvement on `0.779747`, and `C124` is `PENDING_REVIEW`.
+
+*Status.* `TESTED_FINITE` for the numeric comparison, `OPEN` for the stability estimate. Attempts
+recorded: (2) partial with an explicit constant in one direction; (3) failed, with the reason.
