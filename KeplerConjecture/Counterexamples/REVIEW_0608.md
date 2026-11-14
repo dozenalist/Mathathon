@@ -399,3 +399,12 @@ So the correct statement is the one in `X-C051`/`X-C064`: the certified band is 
 2.13× wider than C116 claims, and `6/√5` is a lower bound only. This is a documentation/consistency
 defect, not a new mathematical one, and it resolves *in Main's favour*: Theorem D's near-contact
 widening `ε < 1.4555` rather than `ε < 0.6833`.
+
+## 15. `ACCEPTED.md:28`'s parenthetical number is the defective one
+
+`ACCEPTED.md:28` writes "a one-pair argument is impossible (`min max_t d² = 8.4223 > 4`)". `8.4223` is
+`A = |u|²+|q|²` with the missing `2u_xq_x` — the `X-C057` D1 constant. With the correct `A`, over the
+same 121 pairs: `min over pairs of max_t d² = A+R = 12.844582472` (so still no pair clashes for all
+twists: the *conclusion* holds) and `min over pairs of min_t d² = A−R = 0.044582472`, with **37 of 121
+pairs** clashing for some twist. The near-zero `0.0446` is precisely why a one-pair argument cannot
+work. Fix the number, keep the verdict.

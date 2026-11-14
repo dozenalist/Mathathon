@@ -1214,3 +1214,19 @@ still carry `6/√5`. The certified value is `X-C051`'s `3.4555003444`, reproduc
 directions (it is neither the value nor the limit of the corrected certificate, which reaches `3.4555`).
 The consequence for `C114`/Theorem D is favourable: the near-contact band is `1.4555` wide, not
 `0.6833` — 2.13× wider than claimed.
+
+### K15-X-C075 — `ACCEPTED.md:28`'s parenthetical cites the *defective* constant, but its conclusion survives
+
+`ACCEPTED.md:28` justifies citing `C112` (rather than a single-pair argument) with "a one-pair argument
+is impossible (`min max_t d² = 8.4223 > 4`)". `8.4223` is the code's `A = |u|²+|q|²`, i.e. exactly the
+constant that omits `2u_xq_x` (`X-C057` D1) — so the number is the defective one. Recomputed with the
+correct `A` over the same 121 pairs (`A − R ≤ d²(t) ≤ A + R`, `R = √(B²+C²)`):
+
+- `min over pairs of max_t d² = A + R` is **`12.844582472`**, not `8.4223`; no pair has `A + R < 4`, so
+  **no single pair clashes for every twist** — the conclusion `ACCEPTED.md` draws is correct;
+- `min over pairs of min_t d² = A − R` is **`0.044582472`**, and **37 of 121 pairs** have `A − R < 4`,
+  i.e. clash for some twist. That near-zero `0.0446` is why a per-pair argument cannot work and the
+  arc cover over all pairs is needed.
+
+So: correct the number in the parenthetical to `12.844582472`, keep the conclusion. Same pattern as
+`X-C062` — a display that is right in its verdict and stale in its constant.
