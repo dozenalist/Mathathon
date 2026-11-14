@@ -31,6 +31,14 @@ roadmap vocabulary with two additions used only where the reviewer required them
 | `K15-C-HIGHDENS-001` | `PROVED` | `R`-saturated ⇒ `Ω(v) ⊆ B(v,R)` ⇒ `b(v) ≥ √32 − (4π/3)R³`. Hence every packing with covering radius `≤ R_Φ = ((√32−12Φ)·3/(4π))^{1/3}` fails C044 at capacity `Φ`; `R_0 = 1.105339`. No packing is constructed | `highdensity_cut.py`  The same bound gives **HD3**: at `R < R_0` every vertex has `b(v) > 0`, so `Σ_U b` over a box grows like `L³` while `|δ⁺| = O(L²)` and the ratio tends to infinity — the condition fails at **every finite `Φ`**, with no kissing-number input (needs `L > ΦCR/b_min(R)`, e.g. `L > 108` at `Φ = 1`, `R = 1.10`). |
 | `K15-C-ISOPERIM-001` | `TESTED_FINITE` | FCC kissing-graph profile: `|δ⁺U|/|U|` has exponent `−0.3230 ≈ −1/3`, `|δ⁺|/|U|^{2/3} → 16.1`, on one complex. A mechanism for the open perimeter lemma, not a proof | `cut_isoperimetry.py` |
 
+## The cut/flow API contract (X-C034 / D8)
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| `K15-C-CUTFLOWAPI-001` | `VERIFIED_EXACT` | the public contract of `cut_flow.py`, checked three ways on 66 cases: the vertex set is `range(len(b))` and never the edge list; malformed edges (self-loop, duplicate in either orientation, out of range, non-pair) raise `FixtureError`; a flow must be antisymmetric with keys on edges only; an isolated vertex with `b(v) > 0` is infeasible at **every** Φ; `t* = +∞` there and `max(0, sup)` otherwise | `audit_cut_flow_api.py` (hand expectation + exact Fourier–Motzkin oracle + implementation), `tests_cut_flow.py` S16–S18, witness `out/fixture_C034_witness.json` |
+| `K15-C-D4RECON-001` | `PROVED` | the period-16 13-cluster's cut condition reduces to **one** inequality: over all 8191 subsets exactly one has `Σ_U b > 0`, the singleton `{0}`, since any subset containing a ring vertex has `Σ_U b ≤ −335.1`. The fixture is unsaturated (`max hole ≥ 12.327`) so it supports no Hales-type argument, but its torus cells are bounded (they sum to 4096), so `b` is finite and the fixture *is* a legitimate C044 test set | `cut_flow.py`, `period_convention.py`, `REVIEW_0523.md` §4 |
+| `X-C034 / D8` | `CLOSED` | `verify_flow_exact` false-accepted an isolated positive-deficit vertex; `feasible_flow` and `find_violating_cut` shared the defect. Repaired at `ae545b9`; the witness is retained and every path now rejects it, including the `PATCH_FEASIBLE` output | `audit_cut_flow_api.py` §A |
+
 ## Finite-search evidence — **not** optima, **not** closures
 
 | claim | status | statement |
