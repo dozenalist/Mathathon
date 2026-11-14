@@ -168,6 +168,35 @@ mod-period reduction and a merge test — both of which had already produced two
 object. The one-pair argument needs one algebraic identity (`R = 32/5`), one comparison
 (`h < 4π/5 = 144°`) and the `72°` symmetry. **It is hand-checkable.**
 
+## 4b. The band in CLOSED FORM — the hour's actual deliverable (`C129`)
+
+`C128`'s one pair extends to the whole band in exact arithmetic, and the band end is a closed form.
+In `v`'s frame take `a = (2/√5, 0, −4/√5)` and `q = (−2/√5, 0, 4/√5)` (both in the `xz`-plane, both of
+norm 2). Then `u = w − a` has `u_y, u_z` independent of `d`, so
+
+```
+R = √(B² + C²) = 2·(4/√5)·(4/√5) = 32/5      — constant in d.
+```
+
+The violation set is `{|t−ψ| > h}`, `h = arccos((4−A(d))/R)`, and it covers every physical twist iff
+`2π − 2h > 2π/5`, i.e. `h < 4π/5`, i.e. `(4 − A(d))/R > cos(4π/5) = −(1+√5)/4`. With
+`x = d − 2/√5` this is the quadratic `x² − (4/√5)x + (8 − 8√5)/5 = 0`, so
+
+> **`d_max = 4/√5 + 2√((2√5 − 1)/5) = 3.4555003444044642…`**
+
+| closed form | bisection (`C127`) | X's `X-C051` |
+| --- | --- | --- |
+| `3.4555003444044642048` | `3.4555003444044642049` | `3.4555003444` |
+
+agreement `4×10⁻¹⁵` / **ten significant figures**.
+
+**Why this is the deliverable rather than the repair.** The arc cover needed covering, merging, a
+`2π = 5·(2π/5)` reduction and an inward margin — and that machinery produced **two** errors
+(`C126`, `C127`). The closed form needs one observation (`R = 32/5` is constant in `d`), one
+trigonometric value (`cos 4π/5 = −(1+√5)/4`) and one quadratic. **Every step is hand-checkable**, it
+confirms an independent worker's constant exactly, and it feeds `C124` with `7.40×` the room it
+needs. `G15` is thereby downgraded: the mod-period reduction is no longer load-bearing.
+
 ## 5. What is standing, and what is not
 
 **Proved and not in doubt:** `C094`/`C104` (Barlow cells, repaired), `C093`/`D18` (cut/flow),

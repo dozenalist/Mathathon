@@ -231,6 +231,14 @@ chk("one-pair |T| (deg)", degrees(2*pi-2*mp.acos(-(3-sqrt(mpf(5)))/2)), 135.0889
 chk("one-pair |T| > 72 deg (the twist period)", 2*pi-2*mp.acos(-(3-sqrt(mpf(5)))/2) > 2*pi/5, True)
 chk("equivalently h < 4pi/5 = 144 deg", mp.acos(-(3-sqrt(mpf(5)))/2) < 4*pi/5, True)
 
+# --- K15-C129: the closed-form band --------------------------------------------
+chk("closed form 4/sqrt5 + 2 sqrt((2sqrt5-1)/5)", 4/sqrt(mpf(5)) + 2*sqrt((2*sqrt(mpf(5))-1)/5), 3.4555003444044642048, tol=1e-18)
+chk("agrees with the bisection", 4/sqrt(mpf(5)) + 2*sqrt((2*sqrt(mpf(5))-1)/5), mpf('3.4555003444044642049'), tol=1e-15)
+chk("agrees with X-C051 to 10 sig figs", abs(4/sqrt(mpf(5)) + 2*sqrt((2*sqrt(mpf(5))-1)/5) - mpf('3.4555003444')) < 1e-9, True)
+chk("R = 32/5 in the one-pair computation", mpf(2)*(4/sqrt(mpf(5)))*(4/sqrt(mpf(5))), 32/mpf(5), tol=1e-30)
+chk("cos(4pi/5) = -(1+sqrt5)/4", cos(4*pi/5) + (1+sqrt(mpf(5)))/4, 0, tol=1e-30)
+chk("C124 needs eps 0.1967082, band gives 1.4555 (factor)", (4/sqrt(mpf(5)) + 2*sqrt((2*sqrt(mpf(5))-1)/5) - 2) / 0.196708233700, 7.3992853, tol=1e-6)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)

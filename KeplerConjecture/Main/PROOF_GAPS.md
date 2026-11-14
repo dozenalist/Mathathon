@@ -85,7 +85,13 @@ The emptiness of the dodecahedral equality case is restored on a sound proof. It
 `C113` because the original used an average-to-pointwise inference; `C124` bounds the density
 directly from the cell-volume sum in the `ρ_ε = 0` branch and needs no termwise statement.
 
-## G15 — the arc test above `d ≈ 3.5` (open, review 0608)
+## G15 — the arc test's period reduction (DOWNGRADED, review 0608, `C129`)
+
+**No longer load-bearing.** `C129` proves the whole band in closed form from a *single* pair
+(`d_max = 4/√5 + 2√((2√5−1)/5)`), with no period reduction and no covering. The question below is
+kept only because the arc-test tooling still exists.
+
+### original statement
 
 The corrected arc test (`C127`) agrees with an independent twist scan at every `d` tested and
 reproduces `X-C051`'s `3.4555003444` to ten digits, but Main has **not** proved that the mod-period

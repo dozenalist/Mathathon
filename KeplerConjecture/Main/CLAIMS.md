@@ -4136,3 +4136,72 @@ reduction and no interval bookkeeping: one algebraic identity (`R = 32/5`), one 
 about `d > 2`; the band constant remains `X-C051`'s `3.4555003444` (`C127`).
 
 *Status.* `PROVED`. `PENDING_REVIEW` with the rest of the pair chain; X is the gate.
+
+### K15-C129 — the two-dodecahedra band in CLOSED FORM, from a single pair (`PROVED`, exact)
+
+`C128` gave a one-pair proof at `d = 2`. It extends to the whole band, in exact arithmetic, and the
+band end is a closed form that reproduces X's `3.4555003444` to ten significant figures. **This
+supersedes the arc cover entirely**: no covering, no period reduction, no bisection.
+
+**The pair, exactly.** In `v`'s frame take
+
+```
+a = ( 2/√5, 0, −4/√5 )      (a contact of v;  |a| = 2 ✓)
+q = (−2/√5, 0,  4/√5 )      (a point of w's ring in w's frame;  |q| = 2 ✓)
+```
+
+Both lie in the `xz`-plane, so with `w = (d,0,0)` the difference is `u = w − a = (d − 2/√5, 0, 4/√5)`
+and, since a rotation about `x` leaves `u_y, u_z` alone,
+
+```
+B = 2(u_y q_y + u_z q_z) = 2·(4/√5)(4/√5) = 32/5,     C = 2(u_z q_y − u_y q_z) = 0,
+R = √(B² + C²) = 32/5      —  CONSTANT in d  (only u_y,u_z enter, and they do not move).
+```
+
+**The band condition.** The violation set is `{|t − ψ| > h}` with `h = arccos((4 − A(d))/R)`, and the
+twist period is `2π/5`. So the pair covers every physical twist iff `2π − 2h > 2π/5`, i.e.
+
+```
+h < 4π/5   ⟺   (4 − A(d))/R > cos(4π/5) = −(1+√5)/4 .
+```
+
+**The quadratic.** With `A(d) = |u|² + |q|² + 2u_x q_x` and `x := d − 2/√5`,
+
+```
+A = x² − (4/√5)x + 36/5 ,
+x² − (4/√5)x + (8 − 8√5)/5 = 0     ⟹     x = 2/√5 ± 2√((2√5−1)/5) ,
+```
+
+so the band is `[2, d_max)` with
+
+> ```
+> d_max  =  4/√5 + 2√( (2√5 − 1)/5 )  =  3.4555003444044642048…
+> ```
+
+**Checks.**
+
+| quantity | value |
+| --- | --- |
+| closed form `4/√5 + 2√((2√5−1)/5)` | `3.4555003444044642048` |
+| bisection on the corrected arc cover (`C127`) | `3.4555003444044642049` |
+| X's `K15-X-C051` | `3.4555003444` |
+| agreement | `4×10⁻¹⁵` vs the bisection; **10 significant figures** vs X |
+
+**Why this matters.**
+
+1. **It supersedes a numerically fragile certificate with a two-line exact one.** The arc cover
+   required covering, merging, a `2π = 5·(2π/5)` reduction and an inward margin — machinery that had
+   already produced **two** errors in this object (`C126`, `C127`). The closed form needs one
+   observation (`R = 32/5` is constant in `d`), one trigonometric comparison (`cos(4π/5) =
+   −(1+√5)/4`) and one quadratic. **Every step is checkable by hand.**
+2. **It confirms an independent worker's constant exactly**, which is the strongest evidence
+   available that both are right.
+3. **`C124` is fed with more than it needs.** `C124` requires `ε > 0.1967082`; the band supplies
+   `ε < 1.4555003444`, a factor of `7.40`.
+
+**Scope.** Proves the two-dodecahedra impossibility for centre separation `d < d_max`, hence
+`σ₀(ε) > 2V_dod` for `ε < 1.4555003444` (`C114`), hence `C124` with any such `ε`. It says nothing
+beyond `d_max`, and it is **not** a density bound.
+
+*Status.* `PROVED` (exact). `PENDING_REVIEW` with the rest of the pair chain; X is the gate, and this
+is the cleanest thing for X to check.
