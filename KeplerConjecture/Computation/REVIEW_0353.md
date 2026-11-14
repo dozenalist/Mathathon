@@ -2,7 +2,8 @@
 
 Author: Computation (role C). Block **2026-11-14T12:08:35Z → 13:08:35Z** (60 minutes, measured on
 the real UTC clock; commit timestamps in §6 are the evidence). Branch `kepler15/comp-01a1d8c0`,
-base `4bcbd3a` (the commit the review examined), head after this block in §6.
+base `4bcbd3a` (the commit the review examined); head after this block `61dabc2`, reachable
+from the remote at the time of writing; every commit is listed in §7.
 
 ## 0. Accepted — the four defects, each reproduced, repaired and regression-tested
 
