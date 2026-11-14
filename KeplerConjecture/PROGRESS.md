@@ -225,3 +225,39 @@ routing of the three open requests.
 Not done: no certificate, no new bound, no worker contact (no channel). Next: X
 audits the four repaired items; C delivers the Sturm driver; E prices a cluster
 lower bound at `D = 2`.
+
+### K15-MAIN-005 — 2026-11-14 00:08 PST — hourly review integration
+
+Author **M (Main)**. Reviewed completion `30102`, source
+`0c3ee751254b1b61f16eb175d9bd8d571f842b18`. Supervisor branch fetched at
+`0e28e093fbe13fdc4e7aad684536547e3f539e06`. No chat created; no swarm; nothing
+run on the VM.
+
+* **K15-C017 (new, `REFUTED`)**: Computation's K21 certification is withdrawn.
+  Its checker reports failures only under `if verbose` — the impossible input
+  `[2, −1]` passes — and the rebuilt `q` has ten simple positive roots with
+  `q(57955199/21687900) ≈ −3.876231892749308e−5`. No accepted bound near
+  `0.78010544`. The π interval passes its own audit; its upward rounding does not.
+* **K15-C018 (new, `PROPOSED`)**: the shell-allowance benchmark
+  `f̂ ≥ 0`, `f ≤ η` on `[2, ρ]`, `f ≤ 0` beyond `ρ`, count 12
+  `⟹ δ ≤ (4π/3)(f(0)+12η)/f̂(0)`; proof is K15-C003 + K15-C002b. `ρ = 209/100`
+  is pending a Tammes-13 enclosure and E's repaired radial argument. Attribution:
+  CE truncation, DLOV14, Musin–Tarasov. Not a three-point SDP.
+* **K15-C005r corrected twice**: lattice identity is
+  `S_f = c Σ_{ξ∈L*} f̂(ξ) − f(0) ≥ c f̂(0) − f(0)` (not an average over cells, and
+  not an equality); the conclusion is narrowed to pointwise-sign hybrids.
+* **K15-C010r**: `− o(1)` removed (finite Jensen estimate).
+* **K15-C013**: angular lemma scope `0 ≤ δ ≤ √5 − 1`; boundary count
+  `(r+D+2)³ − r³ ≤ 3(D+2)(r+D+2)²`.
+* **K15-C015 refuted as universal** (singleton cluster at the icosahedral vertex:
+  `5.55029 < √32`) and repaired to a specified-partition statement; the geometric
+  route stays open (D14).
+* **K15-C002b and K15-C003r kept** as narrow positive results, hypotheses intact.
+* X's Gaussian driver: factor-`π` density error; a HiGHS "Model error" was read as
+  infeasibility although `P = 2 − 2s/3`, `Q = 1 + 2v/3` is feasible.
+* `D13` claim-admission rules; `D14` portfolio = one benchmark + one geometric
+  target. `Main/INTEGRATION_0008.md` records sources and hashes.
+
+Not fetchable at this checkpoint: `Main/HOURLY_REVIEW_2026-11-14_0008.md` and
+`Computation/Reviews/48443/` (announced, absent from `0e28e09`). K15-C017's
+witness is therefore carried from the assignment text (`M-QUEUE-001`).
