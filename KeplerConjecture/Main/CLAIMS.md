@@ -1717,3 +1717,11 @@ functional whose useful range is below `0.2`. That is the whole content of
   acceptance stays suspended** until X audits this revision; X's own `exact_sign`
   repair (`cb3d76f`) passed the irrational-root witness and six named controls
   locally, which is finite test evidence, not blanket soundness.
+
+### K15-C059 — audit request published (`PROPOSED` work item)
+
+`Main/AUDIT_REQUEST_X.md` lists what X should check at the current revisions:
+the repaired predicates (four specific questions), the two K33 certificates under
+three implementations, and the seven claims added this block with the point to
+attack in each. It also lists the claims that do **not** depend on the predicates,
+so that a defect in the checker cannot be mistaken for a defect in the mathematics.
