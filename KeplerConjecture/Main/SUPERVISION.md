@@ -147,3 +147,14 @@ another assignment. The configured watcher deadline is November 15, 2026,
 
 The user stopped Computer Use with Escape. Browser actions ended immediately.
 No further browser operation is part of this checkpoint.
+
+
+### 03:53 review
+
+C/E/X again ended early (49.738/47.894/41.969 minutes). Fresh full-hour website
+assignments were delivered and actual Ultramath calls verified; Main continued
+its existing hour with evidence delivered at its next step. Do not infer a full
+substantive hour from the mode or prompt alone. Deduplicate E's additional
+stale-job completion 93074 with 92900. Current IDs, clocks and reviewed
+completions are in ASSIGNMENTS_2026-11-14_0353.json and private supervision-state.
+No watcher was launched. Checkpoints remain every 45 minutes.

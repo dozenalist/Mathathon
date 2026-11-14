@@ -1,5 +1,10 @@
 # Every Voronoi cell of a Barlow packing has volume `√32` — a proof
 
+> **Independent review pending (03:53 Pacific):** Lemma 1 does not establish
+> redundancy from containment of the full intersection. E is checking the
+> contact-only polytope and downstream claims. The author's PROVED labels below
+> remain a working draft; see [the review](REVIEW_2026-11-14_0353.md).
+
 Block `K15-REVIEW-0308-M-CONTINUE`, task 3. `K15-C091` proved that the **average** cell
 volume is `√32` in every Barlow stacking and produced six stackings whose cells are all
 `√32` numerically, but recorded the uniformity as *evidence, not proof*. This file

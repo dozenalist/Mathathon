@@ -620,3 +620,24 @@ Sair-Watch remains stopped.
 Supervisor sync 2026-11-14 03:53 PST: Computation 4bcbd3a0 progress retained in Main/AgentProgress/Computation-4bcbd3a0.md. Fixture claims require corrections; see Main/REVIEW_2026-11-14_0353.md.
 
 Supervisor sync 2026-11-14 03:53 PST: Computation 790efa73 progress retained in Main/AgentProgress/Computation-790efa73.md. Fixture claims require corrections; see Main/REVIEW_2026-11-14_0353.md.
+
+## Supervisor checkpoint: November 14, 03:53 Pacific
+
+K15-SUP-0353-01 independently verifies X-C015/016/017 from exact rational Gram
+matrices and an independent Fourier recurrence; X-C017 gives density strictly
+below 0.782267220134, weaker than known/project controls. The tested C fixture
+has a false volume enclosure, premature ring edges, a broken FCC constructor
+and unsaturated scope; exact threshold promotion is suspended (-02). Main
+repaired the cut/flow draft after four objections; X reviews the precise
+hypotheses (-03). Negative eta independently reproduces an old checker false
+accept; the repaired 37-case suite passes, general soundness pending (-04).
+Barlow proof, crack geometry and C5 numerical candidate retain independent
+geometric obligations (-05). No new best bound, simpler proof or Lean result.
+
+C/E/X completions 76816/92900 (plus stale-job 93074)/83471 were early at
+49.738/47.894/41.969 minutes. Fresh full-hour tasks were delivered through the
+website; actual model calls verify Ultramath. Main's existing hour continues
+with evidence steering. Full delivery IDs, times, source hashes, local limits
+and decisions are in Main/ASSIGNMENTS_2026-11-14_0353.json,
+Main/SYNC_2026-11-14_0353.json and Main/REVIEW_2026-11-14_0353.md.
+All local jobs ended; two searches reached caps. Watchers remain stopped.

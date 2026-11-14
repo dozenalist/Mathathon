@@ -1,0 +1,90 @@
+{
+  "review": "03:53 Pacific",
+  "sources": [
+    {
+      "role": "Main initial",
+      "commit": "e70dd10c64a305f0c6bba3401fc20c8b3d7eb7cd",
+      "author": "Kepler15 Main",
+      "author_email": "carterchastings@gmail.com",
+      "committed_utc": "2026-11-14T11:38:32Z",
+      "subject": "Kepler15 Main: finite-to-infinite cut/flow theorem with a free boundary, and worked sign examples",
+      "original_commit_preserved": true
+    },
+    {
+      "role": "Main repair",
+      "commit": "9d6414d2495ebfd1abb02f6144b3882e57078089",
+      "author": "Kepler15 Main",
+      "author_email": "carterchastings@gmail.com",
+      "committed_utc": "2026-11-14T12:07:26Z",
+      "subject": "Kepler15 Main: proof-complexity scorecard (C100) after the repairs",
+      "original_commit_preserved": true
+    },
+    {
+      "role": "C tested",
+      "commit": "4bcbd3a0ee94bd29d2f1fdcc5e69aaf1f0ed0a62",
+      "author": "Computation (K15)",
+      "author_email": "noreply@anthropic.com",
+      "committed_utc": "2026-11-14T11:52:57Z",
+      "subject": "K15 Computation: scope upgrade for the icosahedral fixture -- exact for the infinite packing",
+      "original_commit_preserved": true
+    },
+    {
+      "role": "C completed",
+      "commit": "790efa73f805aea66133f9f35a36b42b172d0b91",
+      "author": "Computation (K15)",
+      "author_email": "noreply@anthropic.com",
+      "committed_utc": "2026-11-14T12:03:22Z",
+      "subject": "K15 Computation: status table completed for this hour",
+      "original_commit_preserved": true
+    },
+    {
+      "role": "E initial",
+      "commit": "82689ba1999a1ca240e480f9bc90121101f9e801",
+      "author": "Carter Hastings",
+      "author_email": "carterchastings@gmail.com",
+      "committed_utc": "2026-11-14T11:47:38Z",
+      "subject": "Kepler15 E: correct the trend claim - the decline is not monotone",
+      "original_commit_preserved": true
+    },
+    {
+      "role": "E completed",
+      "commit": "212d13292b2f86d6c9114b7160642228644942a3",
+      "author": "Carter Hastings",
+      "author_email": "carterchastings@gmail.com",
+      "committed_utc": "2026-11-14T12:03:09Z",
+      "subject": "Kepler15 E: correct the ring-collar argument in 18.3, it is not a proof",
+      "original_commit_preserved": true
+    },
+    {
+      "role": "X matrix tests",
+      "commit": "118ecd1601bb500f7d305ce299dcb00f73a66772",
+      "author": "SAIR Counterexamples (X)",
+      "author_email": "x@kepler15.invalid",
+      "committed_utc": "2026-11-14T11:52:52Z",
+      "subject": "K15-X-033: K15-X-C017 \u00e2\u20ac\u201d both sides explicit at 0.782267220134 (margin on G)",
+      "original_commit_preserved": true
+    },
+    {
+      "role": "X completed",
+      "commit": "33df893ec435bf383154b075f19a6d2c85fe5880",
+      "author": "SAIR Counterexamples (X)",
+      "author_email": "x@kepler15.invalid",
+      "committed_utc": "2026-11-14T11:58:51Z",
+      "subject": "K15-X-038: the remaining collective obligation in four lines (O1)-(O4), and block close",
+      "original_commit_preserved": true
+    },
+    {
+      "role": "X ongoing audit",
+      "commit": "16c639ceb22accb8c666319adf8939acc672a3a9",
+      "author": "SAIR Counterexamples (X)",
+      "author_email": "x@kepler15.invalid",
+      "committed_utc": "2026-11-14T12:08:20Z",
+      "subject": "K15-X-039 (cp1): flow theorem audited \u00e2\u20ac\u201d Theorem 1 correct, formula and section 4(b) refuted; C's cut_flow defects confirmed exactly",
+      "original_commit_preserved": true
+    }
+  ],
+  "previous_publication": "a3c773b6ac57fcb33bd30f306a21ef60212be526",
+  "integration": "normal merges on kepler15/setup-01a1d8c0; no default-branch change",
+  "progress_conflicts": "full incoming C snapshots preserved in Main/AgentProgress",
+  "working_claims_not_accepted_by_merge": true
+}

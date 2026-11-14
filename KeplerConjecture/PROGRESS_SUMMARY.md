@@ -1,17 +1,15 @@
 # Kepler Conjecture: progress so far
 
-Updated at the November 14, 2026, 03:08 Pacific scheduled review. Worker commits
-and corrections are combined in the review branch. Independent checking verified
-Counterexamples' improved control and Computation's algebraic example, and
-rejected an invalid transfer-threshold argument. The latest checker fixes the
-named failures but still needs a general correctness review. All ten local jobs
-ended, including three capped searches. Actual Ultramath is verified in all four
-chats; full-hour compliance is still unestablished because three blocks ended
-early and the fourth included sleep-padding. Sair-Watch remains
-stopped and the 45-minute cadence is unchanged. No new best packing bound or
-simpler Kepler proof has been accepted. This cumulative account is updated
-at each scheduled check, with a short entry in
-[HourlyUpdates](HourlyUpdates/).
+Updated at the November 14, 2026, 03:53 Pacific scheduled review. Independent
+checking verifies three certificates with explicit rational matrices on both
+sides, strongest below 0.782267220134. This improves the project's certificate
+format, not the best density bound. Review caught errors in the geometric
+fixtures and flow proof, plus another checker defect. Main repaired the named
+checker defect and flow draft; general correctness and new geometric proofs
+remain under review. Three agents ended early and received fresh full-hour
+tasks; Main continues its current hour. Actual Ultramath is verified in all
+four chats. No new best bound, simpler Kepler proof or new Lean result is
+accepted. Sair-Watch remains stopped and checks remain every 45 minutes.
 
 ## Where the project stands
 
@@ -215,6 +213,50 @@ records both mathematical evidence and [actual activity](Main/REVIEW_2026-11-14_
 Main then ended the next block after another 12.614 minutes. It was reassigned a
 longer independent proof package so useful work can continue without waiting on
 the other workers. No full substantive hour is claimed on the basis of a prompt.
+
+## November 14, 03:53 review: clearer certificates, corrected claims
+
+Counterexamples supplied three certificates with explicit rational matrices on
+both sides of the Fourier bound. Independent exact checking verifies the
+strongest below 0.782267220134. It uses three 6-by-6 matrices and about 10 KB of
+input, with some large rational entries. It is easier to verify through matrix
+identities, but remains weaker than the earlier X-C014 and K33b controls and
+known bounds. The next assignment includes making this certificate easier to
+read and reducing its coefficient size, without claiming a new packing result.
+
+The new geometric cut evaluator passed its own tests but failed independent
+checks of its input geometry: a volume enclosure misses the true value, ring
+edges are added below their actual distance, and the FCC constructor crashes.
+Its sparse periodic fixture is not saturated. Computation and Counterexamples
+are repairing and auditing those premises before exact threshold claims can be
+accepted. This illustrates why successful graph tests are not enough to certify
+the packing they describe.
+
+Main's cut/flow draft had mistakes in boundary placement, the capacity threshold
+for a closed graph, and the compactness hypothesis. It incorporated the review
+and preserved the rejected version. Independent checking of the repair
+continues. A criterion that implies Kepler is not automatically circular;
+the work must prove that criterion without assuming Kepler. Claims about all
+finite cuts still require more than a whole-period density condition.
+
+A new negative-allowance input makes the old checker falsely report a bound
+near 0.0152. The local reproduction confirms it. Main now rejects negative
+allowances, and 37 regression cases pass; this repairs the named defect while
+the general soundness review remains open. Specific accepted certificates use
+independent exact arithmetic rather than trust in this checker.
+
+The geometric work includes a structured C5 candidate with numerical volume
+about 5.8980 and a draft proof of constant Barlow cell volume. Neither is a new
+accepted result: an upper volume does not prove the desired lower bound, and
+the Barlow draft's redundancy argument needs repair. Experimental is tasked
+with exact geometry, the missing lemma and honest scope for the finite searches.
+
+All local checks finished or hit their explicit limits. The quintic search and
+C5 anneal hit 45- and 60-second caps. No new Lean target was supplied. C, E and X
+ended after 49.738, 47.894 and 41.969 minutes, respectively, so none completed
+the required hour. Each received a fresh full-hour assignment with useful
+fallbacks. Main's ongoing hour was preserved. Delivery and actual Ultramath
+runtime evidence are recorded in the [03:53 review](Main/REVIEW_2026-11-14_0353.md).
 
 ## How the next stages will run
 

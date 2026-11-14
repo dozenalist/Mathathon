@@ -1,0 +1,41 @@
+[
+  {
+    "job": "eta_negative_witness",
+    "workdir": "Counterexamples/Reviews",
+    "args": [
+      "X_eta_negative_witness.py"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 45,
+    "elapsed_seconds": 10.719,
+    "peak_observed_bytes": 63324160,
+    "log": "eta_negative_witness.log"
+  },
+  {
+    "job": "eta_repaired_regressions",
+    "workdir": "Computation",
+    "args": [
+      "checker_adversarial.py"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 45,
+    "elapsed_seconds": 2.968,
+    "peak_observed_bytes": 59383808,
+    "log": "eta_repaired_regressions.log"
+  },
+  {
+    "job": "e_c5_numeric",
+    "workdir": ".",
+    "args": [
+      "Experimental/scripts/c5_completion.py"
+    ],
+    "status": "time_cap",
+    "exit_code": 1,
+    "cap_seconds": 60,
+    "elapsed_seconds": 60.235,
+    "peak_observed_bytes": 132390912,
+    "log": "e_c5_numeric.log"
+  }
+]

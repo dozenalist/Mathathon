@@ -1,0 +1,49 @@
+=== (1) validation: 12 neighbours at distance exactly 2 give the dodecahedron ===
+  vol = 5.550291028516   V_dodeca = 5.5502910285   max|y| = 1.258409
+
+=== (2) the pentagon sweep (radius exactly 2, south-pole point present) ===
+  (P') needs vol Omega(w_1) >= 5.763417470
+
+   theta    phi     margin(added)        vol            verdict
+   95.000   0.0   1.295966940      6.285462447   illegal
+   95.000  36.0   1.743815721      6.200675244   illegal
+  100.000   0.0   1.464070829      6.124474934   illegal
+  100.000  36.0   1.867968248      6.042236715   illegal
+  105.000   0.0   1.629497420      6.024867518   illegal
+  105.000  36.0   1.993805527      5.944507719   illegal
+  107.000   0.0   1.694840479      6.000666357   illegal
+  107.000  36.0   2.044342214      5.920920682   LEGAL
+  110.000   0.0   1.791901467      5.980083988   illegal
+  110.000  36.0   2.120155695      5.901146791   LEGAL
+  112.000   0.0   1.855942641      5.976467127   illegal
+  112.000  36.0   2.170617049      5.898007181   LEGAL
+  115.000   0.0   1.950954035      5.985698613   illegal
+  115.000  36.0   2.130857405      5.907882374   LEGAL
+  116.565   0.0   1.999998402      5.997349468   illegal
+  116.565  36.0   2.102925388      5.919841960   LEGAL
+
+  best legal in the sweep: theta=112, phi=36, vol = 5.898007181
+
+=== (3) the best configuration, verified ===
+  centres: c + 5 ring (2.102924) + pentagon (polar 112.0, azimuth 36.0+72k, radius 2) + south pole
+  12 centres besides w_1 (13 including w_1)
+  min separation over all pairs incl w_1 = 2.000000000000
+  min separation on pairs involving an added centre and c or the ring = 2.170617049
+  vol Omega(w_1) = 5.898007181138   max|vertex| = 1.301968 (<= 2, ball inactive)
+  independent Monte Carlo (4e6 samples) = 5.901938
+  excess over V_dodeca                   = +0.347716153
+  cutting centres need rho < 2*max|vertex| = 2.603935
+    -> angular clearance from a ring direction >= 48.88 deg
+    ring faces subtend 35.57 deg from their normals (measured on this cell)
+  first-order dodecahedral excess 5*A_pent*(b-1) = 0.357037902   (b = 1.051462224)
+  threshold for (P')                     = 5.763417470
+  margin                                 = +0.134589711
+  previous best (local search, 14.7)     =  6.263608   margin +0.500
+
+=== (4) is it locally minimal? exhaustive single-addition scan ===
+  5382 positions scanned, 0 legal  -> no legal addition exists
+
+=== (5) two-pentagon configurations ===
+  legal two-pentagon configurations found: 0
+
+=== (6) symmetry-breaking anneal from the symmetric optimum ===

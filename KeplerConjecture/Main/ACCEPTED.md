@@ -1,5 +1,14 @@
 # Accepted lemmas, open gaps, and closest sources — the one-page account
 
+> **Supervisor review, 03:53 Pacific:** specific X-C015/016/017 matrix
+> certificates independently pass, strongest < 0.782267220134. Geometric
+> fixture thresholds are suspended for a false volume enclosure and edge tests.
+> C093's repaired cut/flow proof awaits X; C094's Barlow proof has a circular
+> redundancy step; C095 crack geometry remains pending. The negative-eta checker
+> defect is repaired and 37 tests pass, but generic soundness stays suspended.
+> These decisions override conflicting author labels. See
+> [REVIEW_2026-11-14_0353.md](REVIEW_2026-11-14_0353.md).
+
 > **Supervisor scope, 03:08 Pacific:** C081 is withdrawn. The singleton witness
 > gives a necessary floor for a constant serving all packings, or the specific
 > witness packing; it does not justify rejecting every individual positive-deficit

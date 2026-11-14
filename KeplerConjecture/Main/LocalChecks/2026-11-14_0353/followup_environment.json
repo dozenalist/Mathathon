@@ -1,0 +1,27 @@
+{
+  "inputs": {
+    "33df893ec435bf383154b075f19a6d2c85fe5880": [
+      "Counterexamples/Reviews/X_eta_negative_witness.py",
+      "Counterexamples/Reviews/C_shell_propose.json",
+      "Counterexamples/Reviews/shell_check_7c56c5ee.py"
+    ],
+    "9d6414d2495ebfd1abb02f6144b3882e57078089": [
+      "Computation/shell_check.py",
+      "Computation/checker_adversarial.py"
+    ],
+    "212d13292b2f86d6c9114b7160642228644942a3": [
+      "Experimental/scripts/c5_completion.py"
+    ]
+  },
+  "cpu_affinity_bit": 1,
+  "memory_cap_bytes": 1073741824,
+  "total_seconds": 150,
+  "hashes": {
+    "Computation/checker_adversarial.py": "a2463300861eb84788ff7a65cec2ec28e84c140f27324601cca9576ea63a7221",
+    "Computation/shell_check.py": "458e9b5dbef3137844ccc0d1890fda33d033087659a4daac11ec1539a497cd39",
+    "Counterexamples/Reviews/C_shell_propose.json": "22d76ad202c10bae33bb519a8b9ec7e8092a83743af5d158862ab3e5e7f7522f",
+    "Counterexamples/Reviews/shell_check_7c56c5ee.py": "07049bfeaa0f13611fe638521fad1d080bb437b58e3638e258927fc0a5d9b75e",
+    "Counterexamples/Reviews/X_eta_negative_witness.py": "4b83c06e59bef82317cd7f78bfdaeec7990fd6065675e68faddf1941506e540d",
+    "Experimental/scripts/c5_completion.py": "da524baa1750cf566df9a2006354808ee8454de63920807fcbf5dea5b2458e61"
+  }
+}

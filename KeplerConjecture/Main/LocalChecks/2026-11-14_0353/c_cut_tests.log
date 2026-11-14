@@ -1,0 +1,65 @@
+S1a star, centre b0 > 0 and leaves 0: Sigma b > 0, so NO transfer exists at any Phi
+    (summing div(v) >= b(v) over all v gives 0 >= Sigma b, so Sigma b <= 0 is necessary;
+     the obstruction is the empty-boundary cut U = everything, which an earlier version
+     of find_violating_cut skipped, hiding the constraint)
+  PASS  m=1 violation reported even at Phi = 1000
+  PASS  m=1 no flow exists
+  PASS  m=2 violation reported even at Phi = 1000
+  PASS  m=2 no flow exists
+  PASS  m=3 violation reported even at Phi = 1000
+  PASS  m=3 no flow exists
+  PASS  m=12 violation reported even at Phi = 1000
+  PASS  m=12 no flow exists
+S1b star, leaves summing to -b0: threshold is exactly b0/m
+  PASS  m=2 violation just below b0/m = 3/20
+  PASS  m=2 no violation just above b0/m
+  PASS  m=2 flow exists and verifies exactly
+  PASS  m=2 flow checks out
+  PASS  m=2 no flow just below the threshold
+  PASS  m=3 violation just below b0/m = 1/10
+  PASS  m=3 no violation just above b0/m
+  PASS  m=3 flow exists and verifies exactly
+  PASS  m=3 flow checks out
+  PASS  m=3 no flow just below the threshold
+  PASS  m=4 violation just below b0/m = 3/40
+  PASS  m=4 no violation just above b0/m
+  PASS  m=4 flow exists and verifies exactly
+  PASS  m=4 flow checks out
+  PASS  m=4 no flow just below the threshold
+S2 all deficits <= 0: the zero flow is feasible at Phi = 0
+  PASS  no cut violates when every b <= 0
+  PASS  zero flow verifies at Phi = 0
+S3 path with b = (1,-1,0): Sigma b = 0, Phi* = 1 from the cut {0}
+  PASS  threshold is exactly 1
+  PASS  binding cut is {0}
+S4 an inconsistent enclosure is rejected
+  PASS  b_lo > b_hi rejected
+S5 a provisional fixture is stamped
+== external fixture 'prov'  (2 vertices, 1 edges)   [VOLUMES PROVISIONAL]
+   singleton bound v0: b/deg = 1/10/1 = 0.100000000000
+   global necessary condition sum_v b >= -0.100000000 -> satisfied
+   worst cut (|U| <= 6): U=[0]  sum b >= 1/10  |delta^+|=1  ratio=0.100000000000
+   => for THIS fixture the cut condition fails for every Phi < 0.100000000000  (PROVISIONAL)
+      (a per-fixture threshold, not a universal constant)
+   Phi=1/10     flow found; |phi|<=Phi True, divergence>=b True   PATCH_FEASIBLE only
+
+  PASS  provisional flag propagated
+  PASS  no row claims a certificate
+S6 an isolated vertex is its own cut
+  PASS  no cut reported when the graph is edgeless
+S7 the binding cut need NOT be a singleton
+  PASS  sum b = 0 so the global condition holds
+  PASS  pair cut beats the singleton: 1/4 > 1/10
+  PASS  search finds the pair value (1/4) not the singleton
+  PASS  binding U is the pair {0,1}
+S8 positive deficit at degree zero is POINTWISE infeasibility, not a cut violation
+  PASS  vertex 0 flagged degree zero
+  PASS  its verdict is INFEASIBLE_POINTWISE
+  PASS  no singleton bound is quoted for it
+  PASS  global condition holds (sum b = 0), so the obstruction is pointwise
+S9 the singleton bound is b(v)/deg(v), a PER-FIXTURE threshold
+  PASS  no degree-zero vertices
+  PASS  b0/deg = (1/2)/2 = 1/4
+  PASS  the exhaustive worst cut agrees with the singleton here
+
+ALL CUT/FLOW TESTS PASS
