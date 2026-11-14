@@ -264,6 +264,27 @@ is exactly what `5caa1c9` closes. No published row is affected: all four rows of
 maximum), not a run C ever produced; that does not weaken it — the licence was wrong — but it
 should not be described as a pipeline bug, and I am correcting my own earlier framing here.
 
+### 4.2 D1's consequence in Main's ledger: `0.008880268414417` is a bound, not "the exact threshold"
+
+`CLAIMS.md` says "`t* = 0.008880268414417` is the exact threshold for the infinite packing". The
+exact value of the singleton constant is
+
+```
+(4√2 − V_dod)/12  with  V_dod = 100(3√10 + 7√2)/(25 + 11√5)^{3/2}
+                  = 0.0088802684147391605…
+```
+
+Main's number is lower by `3.22·10⁻¹³`, which is exactly `3.8607·10⁻¹²/12` — the error of C's
+`V_DOD` enclosure (D1), divided by 12. So Main's figure inherits D1 rather than being independent
+of it, and the sentence "the two routes give the same number" is true only because both routes use
+the same enclosure.
+
+The direction is safe: an *over*-estimate of `V_dod` gives an *under*-estimate of `b(v₀)`, hence a
+weaker necessary condition, so `Φ ≥ 0.008880268414417` is a valid (if slightly weak) floor. What
+is not right is the word "exact". The fix is one of: quote `0.0088802684147391605` from the closed
+form, or keep the number and call it a lower bound. This is the second place where D1's `3.86·10⁻¹²`
+shows up; the first is C's own reported `Φ` at the scanned row.
+
 ---
 
 ## 5. Ledger

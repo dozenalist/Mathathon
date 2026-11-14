@@ -611,3 +611,12 @@ not mathematical: the document is correct, the ledger's summary of it is not. Co
 unfixed: a reader takes away a superfluous hypothesis and `4/3` as the threshold of a vector that
 has none. No published claim depends on either (`C084`, `C085` do not use `4/3`), so this is
 documentation only.
+
+### K15-X-C030 — `0.008880268414417` is a lower bound, not "the exact threshold"
+
+The exact singleton constant is `(4√2 − V_dod)/12 = 0.0088802684147391605…` with
+`V_dod = 100(3√10+7√2)/(25+11√5)^{3/2}`. Main's `0.008880268414417` is lower by `3.22·10⁻¹³ =
+3.8607·10⁻¹²/12`, i.e. it inherits C's `V_DOD` enclosure error (D1 of `X-C023`), and the claim
+that "the two routes give the same number" holds only because both use that enclosure. The
+direction is safe (an over-estimate of `V_dod` weakens a necessary condition), so the number is a
+valid floor; the word "exact" is what is wrong. Quote `0.0088802684147391605`, or call it a bound.
