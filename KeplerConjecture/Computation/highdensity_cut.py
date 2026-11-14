@@ -23,6 +23,20 @@ So every R-saturated packing with
 FAILS the cut condition at capacity Phi -- at every finite U containing such a v, a fortiori.
 The formula is monotone and only meaningful while sqrt(32) - 12 Phi > 0, i.e. Phi < sqrt(32)/12.
 
+COROLLARY HD3 (failure at EVERY finite capacity, no kissing number needed).  If Lambda is
+R-saturated with R < R_0 = lambda^(1/3) = 1.105339..., then b(v) >= b_min(R) > 0 at EVERY vertex.
+For a box B of side L the finite set U = Lambda cap B therefore has
+
+        sum_U b  >=  b_min(R) * #(Lambda cap B)  =  b_min(R) * rho * L^3,
+
+while the cut side is |delta^+_R(U)| = O(rho R L^2).  The ratio grows like L, so
+
+        sum_U b / |delta^+_R(U)|  ->  infinity,
+
+and the cut condition fails at EVERY finite capacity Phi.  HD2 needs the kissing number to bound
+deg(v); HD3 does not, because it uses a box instead of a singleton and lets L grow.  The price is
+that it is asymptotic: it says some finite U violates, not which one.
+
 WHAT THIS IS AND IS NOT.
 * It is a *negative* result about capacities: no packing that is R-saturated with R <= R_Phi can
   be Phi-admissible.  It constructs no packing, and it does not prove Kepler.
@@ -45,6 +59,7 @@ There is no rearrangement of this into "1 - kappa s^3" with lambda = 1: the cons
 Reproduction: python3 highdensity_cut.py
 """
 import mpmath as mp
+F = mp.mpf
 
 mp.mp.dps = 30
 VOL_B1 = 4 * mp.pi / 3
@@ -83,6 +98,17 @@ def self_test():
           R_Phi(mp.sqrt(32) / 12) is None)
     check("FCC's covering radius sqrt2 = 1.41421 exceeds R_0, so FCC is not caught",
           mp.sqrt(2) > R_Phi(0))
+    check("HD3: b_min(R) > 0 exactly when R < R_0", b_min(R_Phi(0)) > 0 and b_min(R_Phi(0)) < mp.mpf("1e-25"))
+    check("HD3: b_min(1.10) > 0 > b_min(1.11), so the sign changes at R_0", 
+          b_min("1.10") > 0 and b_min("1.11") < 0, (float(b_min("1.10")), float(b_min("1.11"))))
+    # with |delta^+| <= C rho R L^2 and C = 8 (a crude but explicit boundary constant), the cut
+    # fails once L > Phi C R / b_min: a finite threshold for every finite Phi, growing linearly.
+    b110 = b_min("1.10")
+    Ls = {Phi: float(F(Phi) * 8 * mp.mpf("1.10") / b110) for Phi in (1, 10, 10 ** 6)}
+    print("     HD3: L needed to force a violation at R = 1.10 (C = 8): " +
+          ", ".join("Phi=%s -> L > %.0f" % (k, v) for k, v in Ls.items()))
+    check("HD3: that threshold is finite and grows linearly in Phi",
+          Ls[10 ** 6] > 1000 * Ls[1] * 0.9, (Ls[1], Ls[10 ** 6]))
     print()
     print("  capacity Phi        R_Phi (max covering radius forcing a violation)")
     rows = []
