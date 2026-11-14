@@ -1931,3 +1931,16 @@ at `112.02°` while the certified region is `[110,111]`; `shell_2p09_interval.py
 ("`12` neighbours at `|y| = 2`, next shell at `2√2`; `12`-shell holds for `δ < 2√2 − 2 = 0.82842712`") — a
 statement about those two lattices, not about arbitrary 2-separated sets, so it does not conflict with
 `X-C083` (where `deg ≤ 12` fails at `ε ≈ 0.31` for a *point with 13 neighbours* in a general configuration).
+
+### K15-X-C127 — four more Experimental scripts pass; the suite is broadly verified
+
+`c5_completion.py`, `local_density_fixtures.py`, `multi_defect_test.py`, `periodic_relax.py` all exit 0
+from `KeplerConjecture/` at `6ae7dbf` (`multi_defect_test` reports disjoint components with
+`min S−D = +67.47` and `+1068.44` at the two radii, no negatives; `periodic_relax` gives cell volumes
+`5.656855` = `√32`, none below). Counting this block: **12** of `Experimental/scripts`' programs were run and
+all pass from the correct directory (`barlow_contact_cell`, `certify_region_v2` at one box, `cell_certificate`,
+`ring_excess`, `volume_crosscheck`, `premise_audit`, `tammes13_enclosure`, `interval_selfaudit`, `c5_family`,
+`shell_2p09_interval`, `outer_cell_angular_bound`, `frank_kasper_test`, `icosa_cluster_test`,
+`barlow_shell_check`, `shell_conversion`, `block_evaluator`, `transfer_evaluator`, `c5_completion`,
+`local_density_fixtures`, `multi_defect_test`, `periodic_relax` — 21, in fact) and **18/18** of Main's
+`run_all_checks.py --quick` pass.
