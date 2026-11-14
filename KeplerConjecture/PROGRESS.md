@@ -426,3 +426,22 @@ Ultramath, as the reviewer states; I had no evidence and should not have claimed
 the cut condition at bounded `Φ` would be a counterexample to Kepler. A localisation that avoids
 the full-period blob (prescribed boundary-to-volume relation, or a functional with zero mean on
 every packing) is a design change for Main and Experimental.
+
+### K15-COMP-020 — 2026-11-14T10:5xZ — Computation (role C), SOS deliverable complete
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-SOSGRAM2-001 | **VERIFIED_EXACT** | degree-5 family with a two-square multiplier `-p = (u−T)[(u−c)²(u−e)² + m²(u−d)²]`: 1200/1200 rational parameter sets admissible, best `Δ ≤ 6.73788568`. **Extra freedom did not help** — recorded because it is the opposite of the expectation | `sos_family2.py`, `out/sos_family2.json` |
+| K15-C-SOSWHY-001 | **PROVED (structural)** | explicit-Gram families of shape `-p = (u−T)σ₁` are weak because the shape pins `p(T) = 0` at the contact radius and fixes the local behaviour exactly where a competitive CE certificate needs freedom. This is a structural obstruction, not a tuning failure; it explains the 8× gap to `0.78` | `REVIEW_0138.md` §8a |
+| **K15-C-SOSSHELL-001** | **PROVED (family-restricted)** | in the cubic family `p = −(u−T')(u−c)²` with allowance `η` on `[T,T']`, the smallest admissible allowance is `η* = (T'−T)M²`, `M = max(|T−c|,|T'−c|)`, **exact and attained at `u = T`**. Since the objective charges `n·η` with `n ≥ 12` and `η* > 0` for `T < T'`, every shell member is **strictly worse** than the `η = 0` member — a proof, not a search | `sos_shell_variant.py` |
+
+**Same-family comparison now exists across the whole ladder** (`REVIEW_0138.md` §8c):
+LP-optimal `0.77996622` (no rational Gram) / shell route `0.78037032` (no rational Gram) /
+explicit-Gram cubic `5.99152482` / explicit-Gram quintic `6.73788568` / CE reference `0.779747`.
+**The gap between the 0.78 rows and the 5.99–6.74 rows is the price of an explicit rational Gram
+in this shape**, and closing it needs an SDP with rational Gram rounding (open obligation,
+solver-dependent, hence a local request).
+
+**Scope guard, applied to my own result:** `K15-C-SOSSHELL-001` is a statement about *one cubic
+family*. It does not say shell allowances never help elsewhere, and it is not to be quoted as
+support for a general negative claim.

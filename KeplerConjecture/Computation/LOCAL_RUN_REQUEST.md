@@ -38,6 +38,10 @@ python3 shell_propose.py --checker /tmp/shell_check.py --degree 9
 # best exact value in the family (~10 s):
 python3 shell_propose.py --checker /tmp/shell_check.py --degree 33 --tlo-exact --Umax 120
 python3 audit_fourier.py /tmp/shell_check.py
+python3 sos_family.py          # explicit rational Gram, p-side by expansion
+python3 sos_family2.py         # degree 5, two-square Gram
+python3 sos_shell_variant.py   # proved family-restricted shell comparison
+python3 cut_deficit.py         # periodic cut-deficit fixtures
 ```
 
 For (2) copy Main's checker next to the run, or pass its absolute path:

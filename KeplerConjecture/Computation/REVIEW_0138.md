@@ -172,3 +172,86 @@ multiplied the dodecahedral cell volume by 8 on the grounds of rescaling to sepa
 double-scaled it (the helper already returns the inradius-1 volume). Caught by checking against
 the value `5.5502910` used elsewhere in this directory; recorded because it is the same class of
 error as the four the reviewer caught last block.
+
+## 8. SOS deliverable, completed: explicit Gram, a better family, and a proved shell comparison
+
+### 8a. The explicit Gram identity (as required)
+
+`p(u) = -(u-T)(u-c)^2` with rational `T ≤ 4π`, `c`. The p-side sign condition is certified by
+the identity
+
+$$-p(u) \;=\; \underbrace{0}_{\sigma_0} \;+\; (u-T)\,\underbrace{(u-c)^2}_{\sigma_1},$$
+
+i.e. a Markov–Lukács representation whose multiplier `σ₁` is **a single rational square**.
+Verification is expanding one product; no Sturm sequence, no root counting, no trusted checker.
+Best member found: `T = 314/25`, `c = 12`, `Δ ≤ 5.99152482` (`sos_family.py`).
+
+A richer family (`sos_family2.py`, degree 5) with a **two-square** multiplier,
+
+$$-p \;=\; (u-T)\Big[\underbrace{(u-c)^2(u-e)^2}_{r_1^2} + \underbrace{m^2(u-d)^2}_{r_2^2}\Big],$$
+
+was also searched over 1200 rational parameter sets; all were admissible, best `Δ ≤ 6.73788568`.
+So extra freedom within this explicit-Gram shape did **not** improve the bound. Recorded because
+it is the opposite of what one expects.
+
+**Why the explicit-Gram families are weak.** Forcing `-p = (u-T)σ₁` with `σ₁` a sum of squares
+pins `p(T) = 0` exactly and fixes the shape near the contact radius, which is precisely where a
+competitive CE certificate needs freedom. This is a structural obstruction, not a tuning failure,
+and it explains the 8× gap to the LP-optimal `0.78`.
+
+### 8b. The shell variant, with a *proved* negative result
+
+Same family, with an allowance `η` on `[T, T']` and `p ≤ 0` on `[T', ∞)`. On the shell,
+
+$$0 \le p(u) = (T'-u)(u-c)^2 \le (T'-T)M^2,\qquad M := \max\{|T-c|,\,|T'-c|\},$$
+
+and the bound is **attained at `u = T`**, so
+
+$$\eta^\star \;=\; (T'-T)\,M^2$$
+
+is the *smallest* allowance this family admits — exact, rational, and attained. Since the
+objective charges `n·η` with `n ≥ 12` and `η* > 0` for every `T < T'`, **every shell member of
+this family is strictly worse than the corresponding `η = 0` member.**
+
+This is a **proof inside the family**, not a finite search, and it is the strongest form of the
+shell-negative result I can offer. Its scope is correspondingly narrow: it says nothing about
+other families, other degrees, or configurational constraints.
+
+Measured `η*` values (`T = 12`, `T' = 27/2`): `c = 1 → 234.375`; `c = 5 → 108.375`;
+`c = 12 → 3.375`. All exceed what the bound can absorb.
+
+### 8c. Same-family comparison
+
+| object | `Δ ≤` | `p`-side certificate |
+| --- | --- | --- |
+| LP-optimal shell route, `K = 33` | 0.78037032 | exact Sturm (no rational Gram found) |
+| LP-optimal Laguerre certificate, `K = 33` | 0.77996622 | exact Sturm + SymPy oracle |
+| explicit-Gram cubic family (best) | 5.99152482 | **one rational square**, by expansion |
+| explicit-Gram quintic family (best) | 6.73788568 | two rational squares, by expansion |
+| Cohn–Elkies 2003 (reference) | 0.779747 | published |
+
+The gap between rows 2 and 3 is the price of an explicit rational Gram in this shape. **An
+explicit Gram at useful strength remains an open obligation** and needs an SDP with rational
+Gram rounding (solver → local request).
+
+## 9. Immutable source hashes
+
+| artefact | commit |
+| --- | --- |
+| corrections, demotions, `REVIEW_0138.md`, `sos_family.py` | `0a1efa979215c58c571103e8df6de7e53efea182` |
+| `cut_deficit.py`, `REVIEW_0138.md` §7 | `2e87011d07a5d98b9c8c459a4b5489d1d2c31ab5` |
+| `sos_family2.py`, `sos_shell_variant.py`, §8 (this section) | recorded in PROGRESS at push |
+| Main's checker audited | `6626714125c35292d78943cd0fe8d18ec0051b38` (unsound, §1) |
+| base | supervisor `83cb448` |
+
+## 10. Open obligations, restated after this block
+
+1. **Explicit rational Gram at useful strength** (§8c). Needs an SDP with rational Gram rounding;
+   no solver on the SAIR VM, so this is a local request.
+2. **Re-run every `PENDING_MAIN_FIX` item** once Main's `shell_check` fix is published and audited
+   (§2 lists the four certificates that already stand on my checker's evidence).
+3. A **localisation of the cut condition** that avoids the full-period blob (§7) — Main and
+   Experimental, not Computation.
+4. `shell_sos.py`'s SOS structure is **unimplemented**; it is an LP (§0).
+5. The collective geometric inequality is Experimental's; my `NONUNIFORM_SHELL.md` only argues a
+   *count* cannot suffice.
