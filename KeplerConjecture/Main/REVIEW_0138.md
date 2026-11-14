@@ -159,3 +159,22 @@ Two further corrections from the same evidence round: the signed toy example in
 §1 had the wrong coefficient for a zero mean (`−θ(1−δ)/δ`, not `−θ/δ`; corrected
 in place), and the cluster fixture's completions were **not packings** until a
 cross-distance filter against the core was added (`K15-C039`, updated).
+
+## 9. Block summary (for the supervisor)
+
+Block `K15-REVIEW-0138-M`, receipt `2026-11-14T09:42:58Z`.
+
+**Withdrawn:** `K15-C029` (invalid proof, the reason the block exists),
+`K15-C049`'s algorithm (superseded), `K15-C014` (earlier block, still documented).
+**Added and proved:** `C035` (transfers ⇒ negligibility, explicit constant),
+`C036` (no finite fixture can verify the pointwise inequality), `C043` (Lemma 3.3
+chain re-derived), `C044` (cut condition, corrected in-block), `C045` (synthesis),
+`C054` (transfer graph has degree ≤ 12 at `R ≤ 2.09`), `C029r`/`C029c` (signed
+estimate and its conditional form), `C037` (C002b audited), `C024` (normalisation).
+**Verified:** `C023`, `C031`, `C041`, `C048`, `C052`, `C055`, `C056` (the K33 pair
+under a repaired checker and three implementations).
+**Fixtures:** `C038`, `C039` (corrected twice), `C028` (+ two addenda), `C051`
+(negative search), `C053` (one-command runner), `C030` and `C058`'s 24 cases.
+**Lean:** `C040` — statement frozen, no proof, `M-LEAN-003` filed.
+**Suspended:** every general soundness claim about the checker, until X audits
+`Main/AUDIT_REQUEST_X.md`'s four questions.

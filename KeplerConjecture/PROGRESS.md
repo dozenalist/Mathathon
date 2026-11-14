@@ -432,3 +432,26 @@ Correction within the same block: `K15-C049`/`C050` — the sign predicates in
 (three reported inputs). Repaired generally, 19 regressions kept, re-verified that
 the K33b certificate and all fixture values are unchanged. General soundness of
 the checker is suspended pending X's audit. `K15-C053` adds a one-command runner.
+
+### K15-MAIN-009 addendum — second evidence round (predicates, second repair)
+
+Received mid-block: three new false accepts from fixed probes, all **perfect
+squares** (`K15-C058`). The odd-part algorithm of `K15-C049` was itself unsound
+for polynomials all of whose roots have even multiplicity; the algorithm is now
+replaced (test points from the polynomial's own roots, one per constant-sign gap;
+odd part deleted). Suite at 24 cases with all six witnesses; K33 and K33b both
+still `ACCEPT` unchanged; fixture unchanged; run_all_checks 9/9.
+
+Also corrected in this round: the signed toy example's coefficient
+(`−θ(1−δ)/δ`, not `−θ/δ`); the cluster fixture's completions, which were **not
+packings** until a cross-distance filter against the core was added (the earlier
+`+17.91` came from overlapping sets; corrected sequence `+157.87, +63.71,
++63.71`); and the Lean plan (`M-LEAN-002` closed FAILED on resources — 60 s /
+715 MB broad import, 1 GiB cap at 32.6 s — replaced by the narrow-import
+`CubeDiff.lean` and request `M-LEAN-003`; `Volume.lean` now carries the
+ball-volume statement as `Prop`-valued definitions with no `sorry`).
+
+The block's own record now contains three self-inflicted defects (C029, C049,
+C058), each caught by an outside reproduction rather than by the tests that were
+supposed to cover it. `Main/AUDIT_REQUEST_X.md` and `Computation/run_all_checks.py`
+are the response.
