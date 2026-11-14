@@ -323,3 +323,56 @@ question, not independent facts.
 the three frozen certificates re-derived from disk, and the Li-floor filter). `X-C010 = 0.818086808`,
 `X-C013 = 0.794809296`, `X-C014 = 0.780718153`, all with CE1 structural and CE2 exact.
 `X-C014`'s independent reconstruction by Astra is the outstanding check and is not duplicated here.
+
+---
+
+## 10. `K15-X-C015`: the both-sides explicit rational Gram — **OBLIGATION CLOSED**
+
+Section 8.2 ended with the obligation open and a diagnosed obstacle. It is now **closed**, and the
+fix was the one I predicted: the identity had to be built in the *same* rescaled basis as the SDP,
+with the correct `S`-power on the `B` block. My earlier attempts used `S^{−k}` for both blocks,
+which is why the projection moved `λ_min` to `−46`; with `S^{−k}` for `A` and `S^{−(k−1)}` for `B`
+the SDP point satisfies the identity to `1.7×10^{−16}` and the projection is a no-op.
+
+**The object** (`X_C015_certificate.json`, `m = 2`, `S = 4`). Rational symmetric `3×3` matrices
+`G, A, B`, each **positive semidefinite verified exactly** by a rational `LDLᵀ` (minimum pivots
+`5.22×10⁻⁸`, `2.49×10⁻³`, `2.43×10⁻³`, all `≥ 0`; the `G` pivot is small because `G` is
+*necessarily singular* — `P(4) = 0` forces a double root of `H` at `s = 4`, so `G ⪰ 0` is the
+correct demand, not `G ≻ 0`), with `v(x) = (1, x/S, (x/S)²)` and
+
+* **p-side**: `H(s) = v(s)ᵀ G v(s) ≥ 0` identically, hence `P = −(s−4)H ≤ 0` on `[4,∞)` — **by
+  construction, with no sign test at all**;
+* **q-side**: `Q(u) = v(u)ᵀ A v(u) + u·v(u)ᵀ B v(u) ≥ 0` identically — again by construction;
+* **link**, verified exactly by expansion:
+  `Q_k = S^{−k}Σ_{i+j=k}A_{ij} + S^{−(k−1)}Σ_{i+j=k−1}B_{ij}`, and this `Q` **equals** the Fourier
+  image of `P` (`Q(A,B) − Q(Mp) = 0` exactly).
+
+$$\frac{P(0)}{Q(0)} = 1.0815926849,\qquad
+\Delta \;\le\; \frac{4}{3\sqrt\pi}\cdot\frac{P(0)}{Q(0)} \;=\; \mathbf{0.813631101950}$$
+for every packing of unit balls. Cross-checked three ways: the identity by expansion, the three
+PSD properties by rational `LDLᵀ`, and `Q ≥ 0` independently by my exact Sturm predicate. Consistent
+with Kepler (`0.8136 > 0.7405`) and with Li's floor (`> 0.770657`).
+
+**What it is and is not.** It is *weaker* than `X-C014` (`0.780718`) — `m = 2` with a deliberately
+large margin `ε = 10⁻³`, chosen so that exact rational rounding survives. Its value is **structural**:
+it is the certificate for which *every* sign condition is an algebraic identity checkable by
+expansion, so a reader needs no root isolation, no Sturm sequence and no sign predicate — only
+polynomial arithmetic and a rational `LDLᵀ`. That is exactly the object C's register listed as its
+first open obligation, and it is now available for anyone to re-verify with `verify_all.py`.
+
+**Reproduction.** `python3 both_sides_gram5.py` (≈1 s) regenerates the matrices;
+`python3 verify_all.py` checks the identity, the three PSD properties, the density, the two floors,
+and every other X artifact — currently **ALL PASS**.
+
+## 11. Block close
+
+| task | outcome |
+| --- | --- |
+| Timing correction | **done** — previous block was 43.565 min, not 60 |
+| Checker correctness argument (`7c56c5ee`) | audited clause by clause; **one hole** (`η ≥ 0` not enforced); scoped rule **proved**; `function_range` fallback delegated; no `try:` in module |
+| `C081` / `C081r` / `C079` / `C044` | withdrawal confirmed; `C081r` verified (`Φ ≥ 0.0088803`, necessary only); `C079` accepted; `C044` still needs the finite-to-infinite step |
+| `CUTEQUIV` | **verified** — the full-period cut *is* Kepler, so the cut family contains Kepler-hard cuts |
+| E's `Q` | Main's framing accepted: saturated extension + containment suffices, no equality |
+| C's Gram identities | T1–T3 **verified by hand**; `SOSQSIDE-005` **verified**; both-sides obligation **CLOSED** (`X-C015`) |
+| `η < 0` witness attempt | failed (`q ≥ 0` in four constructions) — hole recorded as latent, with the fix and the reason exploitation needs `|p′| ~ 10²⁸` |
+| X artifacts | `verify_all.py` **ALL PASS**: `X-C010 0.818086808`, `X-C013 0.794809296`, `X-C014 0.780718153`, `X-C015 0.813631102` |
