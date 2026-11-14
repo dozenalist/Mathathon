@@ -418,6 +418,20 @@ proved".
 
 ---
 
+## 6. Limits of this block
+
+- The audit of Theorem 2 is a proof reading plus the hypothesis table; it is not machine-checked
+  (there is no finite instance of an infinite theorem). What *is* machine-checked is Theorem 1
+  and the threshold formula, on 115 randomised instances against an LP.
+- The reduction is bounded, not optimal. I did not search for a different certificate at the same
+  density with smaller height, because that is the "blind high-degree optimisation" the block was
+  told not to spend its fallback on; and I did not run `m ≥ 6`, for the same reason.
+- `X_C017_small` is a *different* certificate from `X_C017` (density `0.782267254856` vs
+  `0.782267220134`). Both are in the tree; `verify_all.py` still checks the original, and the
+  readable verifier checks either.
+
+---
+
 ## 7. What Main's decision record can now close, and what it must not
 
 Three of Main's decisions have X-triggered reverse conditions. Their state after this block:
@@ -449,63 +463,6 @@ under a *prescribed* outer-cell structure (where the per-cell bound does not app
 outer cells are the ones being constrained), or an inequality with a correction term rather than a
 constant `13V`. This is a wording defect in an instruction, not a
 mathematical error in a claim, but it will waste a block if it is followed literally.
-
-## 6. Limits of this block
-
-- The audit of Theorem 2 is a proof reading plus the hypothesis table; it is not machine-checked
-  (there is no finite instance of an infinite theorem). What *is* machine-checked is Theorem 1
-  and the threshold formula, on 115 randomised instances against an LP.
-- The reduction is bounded, not optimal. I did not search for a different certificate at the same
-  density with smaller height, because that is the "blind high-degree optimisation" the block was
-  told not to spend its fallback on; and I did not run `m ≥ 6`, for the same reason.
-- `X_C017_small` is a *different* certificate from `X_C017` (density `0.782267254856` vs
-  `0.782267220134`). Both are in the tree; `verify_all.py` still checks the original, and the
-  readable verifier checks either.
-
----
-
----
-
-## 9. Handoff: the open items this block leaves, by owner
-
-**C (all in `Computation/cut_flow.py`, blob `700e44f6`, unchanged since `4bcbd3a`).** Ranked by
-consequence:
-
-1. **D8 (false accept, systematic).** `verify_flow_exact`, `find_violating_cut` and `feasible_flow`
-   take the vertex set from the edge list, so an isolated vertex with a positive deficit is
-   invisible. Fix: `n = len(b)` in all three. Witness in `X-C034`; one line each.
-2. **D1 (`V_DOD` interval).** The whole enclosure `[5.550291028519371, 5.550291028519372]` is above
-   the true `5.550291028515510269…`; the low endpoint is high by `3.861·10⁻¹²`. This propagates into
-   Main's `0.008880268414417` (`X-C030`). Fix: use the closed form
-   `100(3√10+7√2)/(25+11√5)^{3/2}` with a directed enclosure.
-3. **D2 (ring gate).** `build_13(2.1029)` returns 42 edges, not 12; the true edge is
-   `2.102924448476534`. The row's `t*` belongs to `R ≥ 2.1029244` and is too *small* because
-   phantom edges make cuts cheaper.
-4. **D3 (`build_fcc_patch(1)` raises `TypeError`)** — `2.0**0.5 * [[...]]` multiplies a list by a
-   float.
-5. **D5 (latent).** `exhaustive_cut_scan` raises on an edgeless fixture; `main()` guards it.
-6. **D7 (cosmetic).** `exhaustive_cut_scan` omits the theorem's `max(0, ·)`, so an all-negative
-   instance reports a negative `t*`; the number is not the theorem's `t*`.
-
-**Main.** (i) `CLAIMS.md` `K15-C093`'s bullet list still carries the two refuted statements —
-delete or move them below the repair note (`X-C029`). (ii) `NEXT_PACKAGE.md` item 1 asks for
-`V = 5.40`, already implied by Hales–McLaughlin (`X-C028`). (iii) `PROOF_GAPS` G8 can be updated
-from "open" to "independence established, agreement sampled" on `X-C032`, and G8's remaining half
-is the `p ≤ η` predicate, which neither C's module nor this block tested.
-
-**X, next block.** Three things I did not do and would do first:
-1. **G2's transcription check** — `PROOF_GAPS` G2 says "X to check the transcription of the
-   defining equations" for E's Tammes-13 enclosure. That needs the Musin–Tarasov paper in hand and
-   was not attempted here.
-2. **The `p ≤ η` predicate** — the other half of G8. C's `exactcert` has no bounded-interval
-   decision, so this needs a new independent implementation, not a comparison.
-3. **`X_C017_small` as the quoted object.** It is the cheaper of the two and verifies identically;
-   `verify_all.py` already checks it. If a future block quotes `X-C017`, it should quote the small
-   one and say which.
-
-**What I did not attempt, deliberately.** No new certificate search at `m ≥ 6` (the block was told
-not to spend its fallback on high-degree optimisation); no Lean; no heavy computation (the biggest
-single run here was 200 s of exact Fourier–Motzkin at `n ≤ 6`, single-threaded, under 1 GiB).
 
 ## 8. Timing record — measured, not estimated
 
@@ -550,3 +507,46 @@ substantive hour ends at `13:05:55`, and the close line below is written after i
 
 *Close (`date -u` read immediately before the final push): PENDING.*
 
+
+---
+
+## 9. Handoff: the open items this block leaves, by owner
+
+**C (all in `Computation/cut_flow.py`, blob `700e44f6`, unchanged since `4bcbd3a`).** Ranked by
+consequence:
+
+1. **D8 (false accept, systematic).** `verify_flow_exact`, `find_violating_cut` and `feasible_flow`
+   take the vertex set from the edge list, so an isolated vertex with a positive deficit is
+   invisible. Fix: `n = len(b)` in all three. Witness in `X-C034`; one line each.
+2. **D1 (`V_DOD` interval).** The whole enclosure `[5.550291028519371, 5.550291028519372]` is above
+   the true `5.550291028515510269…`; the low endpoint is high by `3.861·10⁻¹²`. This propagates into
+   Main's `0.008880268414417` (`X-C030`). Fix: use the closed form
+   `100(3√10+7√2)/(25+11√5)^{3/2}` with a directed enclosure.
+3. **D2 (ring gate).** `build_13(2.1029)` returns 42 edges, not 12; the true edge is
+   `2.102924448476534`. The row's `t*` belongs to `R ≥ 2.1029244` and is too *small* because
+   phantom edges make cuts cheaper.
+4. **D3 (`build_fcc_patch(1)` raises `TypeError`)** — `2.0**0.5 * [[...]]` multiplies a list by a
+   float.
+5. **D5 (latent).** `exhaustive_cut_scan` raises on an edgeless fixture; `main()` guards it.
+6. **D7 (cosmetic).** `exhaustive_cut_scan` omits the theorem's `max(0, ·)`, so an all-negative
+   instance reports a negative `t*`; the number is not the theorem's `t*`.
+
+**Main.** (i) `CLAIMS.md` `K15-C093`'s bullet list still carries the two refuted statements —
+delete or move them below the repair note (`X-C029`). (ii) `NEXT_PACKAGE.md` item 1 asks for
+`V = 5.40`, already implied by Hales–McLaughlin (`X-C028`). (iii) `PROOF_GAPS` G8 can be updated
+from "open" to "independence established, agreement sampled" on `X-C032`, and G8's remaining half
+is the `p ≤ η` predicate, which neither C's module nor this block tested.
+
+**X, next block.** Three things I did not do and would do first:
+1. **G2's transcription check** — `PROOF_GAPS` G2 says "X to check the transcription of the
+   defining equations" for E's Tammes-13 enclosure. That needs the Musin–Tarasov paper in hand and
+   was not attempted here.
+2. **The `p ≤ η` predicate** — the other half of G8. C's `exactcert` has no bounded-interval
+   decision, so this needs a new independent implementation, not a comparison.
+3. **`X_C017_small` as the quoted object.** It is the cheaper of the two and verifies identically;
+   `verify_all.py` already checks it. If a future block quotes `X-C017`, it should quote the small
+   one and say which.
+
+**What I did not attempt, deliberately.** No new certificate search at `m ≥ 6` (the block was told
+not to spend its fallback on high-degree optimisation); no Lean; no heavy computation (the biggest
+single run here was 200 s of exact Fourier–Motzkin at `n ≤ 6`, single-threaded, under 1 GiB).
