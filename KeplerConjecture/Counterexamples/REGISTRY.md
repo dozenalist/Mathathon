@@ -1475,3 +1475,11 @@ should go: the correct pair certificate is `max_τ min_k d² = 1.266873708 < 4`.
 indices `A[1]`, `Q[8]` in `C128` do not select this pair under the **current** `build()`/`eleven()` —
 loading the shipped `twist_cover.py` (`a34a3ff1`) as a module, the pair is `A[5]`, `Q[10]`. The
 invariants are what identify it; the indices should be recomputed or dropped.
+
+**How far the bound survives.** Greedy spherical packing on a sphere of radius `R = 2+ε` (separation
+`2`, 40 trials × 3000 candidates): `ε = 0.10 → 10` points, `0.20 → 11`, `0.25 → 12`, `0.30 → 12`,
+`0.35 → 13`, `0.40 → 14`, `0.50 → 15`. So `deg ≤ 12` can hold only for `ε ≲ 0.31`, while `C124` fixes
+`ε` anywhere in `(0, 0.6832816)`. The step is repairable by choosing `ε` small — but then it needs a
+**proved** shell bound (`deg_ε ≤ 12` for `ε ≤ 0.3`, which is a spherical-code statement, not the
+kissing number), and the choice of `ε` interacts with the other branch, whose bound
+`1/(1+ε/2)³` improves as `ε` grows. Whether a compatible `ε` exists is not settled here.
