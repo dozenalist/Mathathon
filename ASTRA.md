@@ -60,7 +60,7 @@ Resolve the variables below to the current user's actual assignment. Save the re
     -StopAtUtc '2026-11-15T20:00:00Z'
 ```
 
-Launch the watcher in a process that can survive the current Astra turn. When using Windows `Start-Process`, use `-WindowStyle Hidden`, quote arguments correctly, and redirect output and errors into this run's own files. Confirm that `state.json` contains the intended Codex UUID, exact SAIR target, and initial `prompt_message_id`, and that its recorded process is alive. A process launched outside the filesystem sandbox may require a process check in that same host context. Then finish the Astra turn and return idle. Keep the computer awake, connected, and Codex running for local callbacks.
+Launch the watcher in a process that can survive the current Astra turn. When using Windows `Start-Process`, use `-WindowStyle Hidden`, quote arguments correctly, and redirect output and errors into this run's own files. Confirm that `state.json` contains the intended Codex UUID, exact SAIR target, and initial `prompt_message_id`, and that its recorded process is alive. A process launched outside the filesystem sandbox may require a process check in that same host context. Complete the progress-report, ChatLogs, and GitHub-push steps below before returning idle. Keep the computer awake, connected, and Codex running for local callbacks.
 
 The current platform may expose different model names from the Ultramath branding used in earlier plans. Inspect the available models and delegation tools. Honor a user-selected model, or record the available model and reasoning setting you choose. The script accepts explicit `-Model` and `-ReasoningEffort` values from the current catalog.
 
@@ -129,6 +129,22 @@ Each significant PROGRESS entry includes the following information.
 
 Put a reviewed commit hash in a later integration entry or external manifest. A file cannot reliably embed the hash of the commit that contains that very file. Keep large generated data reproducible from compact inputs and retain checksums when useful. Mark an upload successful only after the remote confirms it.
 
+## Report, log, and push before every idle period
+
+Standing user instruction, added November 13, 2026: after handling each user message or monitored SAIR response, summarize the progress made and report it to the user. Before every return to idle, save the exact final response and push the changes to GitHub. This applies to research reviews, instruction or documentation changes, operational recovery, and duplicate-notification turns. A duplicate completion still receives a brief handling summary and log; it does not trigger another SAIR assignment.
+
+Create `ChatLogs/` inside the assigned project's repository folder. For RogersRamanujan this is `RogersRamanujan/ChatLogs/`; a future supervisor uses its own assigned project folder. Use a separate, date-stamped Markdown file for each response, with a Windows-safe timestamp and supervisor identifier, for example `2026-11-13_22-52-04_PST_01a1d855.md`. Use the user's current timezone, presently `America/Los_Angeles`, and include the applicable timezone or UTC offset. Avoid filename collisions between concurrent supervisors and never overwrite another response.
+
+For every turn, complete this sequence before going idle:
+
+1. Prepare a concise user-facing progress report: what changed or was verified, the supporting evidence, remaining gaps, the next assignment or monitoring state, and the GitHub outcome. When nothing new was reviewed, report the actual handling outcome without implying mathematical progress.
+2. Save the final response verbatim in the new dated `ChatLogs/` file. Log the assistant's user-facing response, not raw tool output, internal reasoning, credentials, or the user's private inputs. Keep credential values out of both responses and logs. Preserve historical responses as written; record later corrections in a new response.
+3. Review and commit the log together with the authorized, completed changes owned by this turn. Stage explicit paths and preserve other supervisors' work. Even if there are no research changes, the new response log is a change to commit.
+4. Push to the appropriate authorized GitHub branch and verify that the remote contains the commit. Resolve an ordinary rejected push by fetching and integrating the remote changes safely; never force-push away teammates' work. A report that says the push succeeded must only be sent after that confirmation.
+5. Send the same final response text that was saved, then return idle with the assigned watcher retained. If the final response changes during verification, update its log and push the correction before sending it. Do not include the log's own containing commit hash in its text; a branch/file link or a previously verified source hash avoids self-reference.
+
+If an external failure prevents the push, preserve the response and commits locally, report the specific blocker and accurate push status, and continue the authorized recovery where possible. Never describe an unconfirmed push as successful. A SAIR outage does not prevent pushing the local progress report when GitHub is available.
+
 ## Review each completion and send the next prompt within 15 minutes
 
 Start the review clock when the assigned completion wakes this Astra chat. Within 15 minutes, digest the available local repository progress and send a detailed next assignment to the same SAIR coordinator, unless the user has stopped the work, the goal has been verified complete, or a concrete blocker prevents sending. Report such an exception within that same interval. Keep the response cycle moving when a long verification can be made an explicit next work package.
@@ -137,7 +153,7 @@ Start the review clock when the assigned completion wakes this Astra chat. Withi
 2. Inspect the local checkout with `git status`, fetch the remote, and read the assigned project's new commits, PROGRESS entries, and changed artifacts. Fetching alone leaves the worktree unchanged, so inspect `git show <commit>:<path>` or use a clean integration worktree to read the actual reported revision. Fast-forward a clean checkout when appropriate. Preserve uncommitted work and avoid switching branches underneath active workers.
 3. Compare important claims with their evidence. Read the relevant argument, independently reproduce an appropriate small check, or inspect the actual Lean statement, build target, and axiom output. Record checks that remain pending. Establish which files were really pushed and which results exist only in the transcript.
 4. Identify the strongest useful result, the largest remaining gap, the closest known work, and the next dependency with the highest expected value. Correct an overclaim at its source. Ask for a specific missing lemma or counterexample search when a broad approach stalls. Preserve both the failed claim and any corrected version.
-5. Send a concrete research assignment with an explicit duration, task ownership, artifact paths, validation criteria, and expected checkpoint. Save its text and returned message ID locally. Confirm delivery, retain the watcher, then end the Astra turn and return idle.
+5. Send a concrete research assignment with an explicit duration, task ownership, artifact paths, validation criteria, and expected checkpoint. Save its text and returned message ID locally. Confirm delivery and retain the watcher. Summarize progress to the user, save the exact final response in the assigned project's dated `ChatLogs/` file, commit and confirm the GitHub push as described above, then return idle.
 
 Use the first two minutes for identity and state, roughly the next eight for repository and evidence review, and the final five for choosing and sending the next assignment. A check that exceeds the review window remains an explicit verification task with an owner. Keep substantive conclusions conditional until the supporting check finishes.
 
