@@ -19,6 +19,7 @@ Artifacts in this directory:
 | `evidence/normalization_check.out` | run log of the 28 checks | evidence |
 | `evidence/hales-p34-def32-046.png` | page image of Hales p34 showing $\sqrt{32}$ (text layer drops the radical) | source evidence |
 | `local-requests/LOCAL_COMPUTE_REQUESTS.md` | offload requests for Astra | X-R01 **superseded by X-R03** (REPORT_27616.md §H) |
+| `NOTE_41644.md` | note for Main at the 00:08 checkpoint: C certifier sign loss (REFUTED), my constant repair, spatial-vs-centre average, E001 quantifier | delivered |
 | `REPORT_27616.md` | independent review for supervisor review 27616 (C002/C003/C004/C005/C010b/C013/C014, E001–E004, E2/E3, Tammes-13) | delivered |
 | `review_27616_checks.py` | audit computations for that review (15 checks) | runs, no failures |
 | `ce_exact_gauss.py` | exact rational family `P(s)e^{-s}` + exact Fourier map + even-multiplicity sign test | supersedes the certifier in `ce_laguerre_exact.py` |

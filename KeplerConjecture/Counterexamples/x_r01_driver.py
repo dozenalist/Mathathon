@@ -15,6 +15,24 @@ import ce_exact_gauss as G
 
 s_ = G.s_
 
+# ---- corrected constants (supervisor review 41644, item 2; re-derived here) ----
+# f = P(s)e^{-s}, f^ = pi^{3/2}Q(v)e^{-v}, so
+#   Delta <= (4 pi/3) f(0)/f^(0) = (4/(3 sqrt(pi))) P(0)/Q(0).
+# Kepler comparison for P(0),Q(0) > 0:
+#   (4/(3 sqrt pi)) P0/Q0 < pi/sqrt18  <=>  4 sqrt18 P0 < 3 pi^{3/2} Q0
+#   <=> (squaring, both sides positive twice) 32 P0^2 < pi^3 Q0^2.
+def density_factor():
+    return 4/(3*sp.sqrt(sp.pi))
+
+def kepler_ok(P0, Q0):
+    return bool(sp.N(32*sp.Integer(P0)**2, 30) < sp.N(sp.pi**3*sp.Integer(Q0)**2, 30))
+
+def density(P0, Q0):
+    return density_factor()*sp.Rational(P0)/sp.Rational(Q0)
+
+# Exact feasible control: P = 2 - 2s/3  =>  Q = 1 + 2v/3 exactly (Q_0=1, Q_1=3/2-v).
+CONTROL_P = 2 - sp.Rational(2,3)*s_
+
 def build(N, ngrid=600, smax=120.0, vmax=400.0):
     # P-column values: coefficient of s^n at grid points
     S = np.linspace(4.0, smax, ngrid)
@@ -35,6 +53,17 @@ def certify_vec(c, N):
     return G.certify(sp.expand(P))
 
 def run(N=6, iters=40, eps=1e-9):
+    print("CONTROL CHECK (must certify; proves the family is non-empty):")
+    cc, cmsg = G.certify(sp.expand(CONTROL_P))
+    if cc:
+        cP0 = sp.nsimplify(CONTROL_P.subs(s_,0)); cQ0 = sp.nsimplify(G.apply_map(CONTROL_P).subs(G.v_,0))
+        print("   P = 2 - 2s/3 , Q = %s , P(0)=%s Q(0)=%s" % (sp.expand(G.apply_map(CONTROL_P)), cP0, cQ0))
+        print("   certified; density = %s = %.6f  (trivial >1, but a valid certificate)"
+              % (sp.nsimplify(density(cP0,cQ0)), float(density(cP0,cQ0))))
+        print("   => the fixed family IS feasible; a solver failure must not be reported as infeasibility.")
+    else:
+        print("   CONTROL FAILED TO CERTIFY:", cmsg, " <- implementation error, stop")
+        return
     AP, S, AQ, V, p0, q0 = build(N)
     extra_P, extra_Q = [], []
     best = None
@@ -49,13 +78,16 @@ def run(N=6, iters=40, eps=1e-9):
         res = linprog(p0, A_ub=Aub, b_ub=bub, A_eq=Aeq, b_eq=beq,
                       bounds=[(None, None)]*(N+1), method='highs')
         if not res.success:
-            print("iter %2d: LP infeasible on current point set (status %s)" % (it, res.status)); break
+            print("iter %2d: SOLVER DID NOT RETURN A SOLUTION -- raw status %s, message %r."
+                  % (it, res.status, (res.message or '')[:90]))
+            print("           This is NOT a proof of infeasibility; check scaling first")
+            print("           (max |entry| of the constraint matrix here = %.3e)." % np.abs(Aub).max())
+            break
         P = sum(sp.Rational(int(round(ci*10**9)), 10**9)*s_**n for n, ci in enumerate(res.x))
         cert, msg = G.certify(sp.expand(P))
         if cert:
             P0, Q0 = sp.nsimplify(P.subs(s_,0)), sp.nsimplify(G.apply_map(P).subs(G.v_,0))
-            bound = sp.Rational(4,3)*sp.sqrt(sp.pi)*P0/Q0
-            okk = bool(sp.N(32*P0**2, 30) < sp.N(sp.pi*Q0**2, 30))
+            bound = density(P0, Q0); okk = kepler_ok(P0, Q0)
             if best is None or sp.N(bound) < best[0]:
                 best = (sp.N(bound), bound, P, P0, Q0, okk)
             print("iter %2d: CERTIFIED  P0/Q0 = %-14s bound = %.9f  (<Kepler? %s)"
@@ -87,7 +119,7 @@ def run(N=6, iters=40, eps=1e-9):
         print("  32 P0^2 < pi Q0^2 ?  %s" % okk)
         print("  STATUS: PROVED for all packings of unit balls (exact sign certificate)")
     else:
-        print("NO CERTIFIED CANDIDATE in %d iterations (all LP points fail exact signs)." % iters)
+        print("NO CERTIFIED CANDIDATE in %d iterations." % iters)
         print("  STATUS: exploratory only; no bound claimed.")
 
 if __name__ == "__main__":
