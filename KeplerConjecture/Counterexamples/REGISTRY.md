@@ -1138,3 +1138,50 @@ dropped rather than folded. Dropped pieces are *true* violations, so the emitted
 subsets of the violation sets — the certificate stays **sound** — and the cover still closes with no
 gap. But the right operation is reduction mod `2π` before the period split; as written, a different
 instance could silently lose coverage. Fix before reuse.
+
+### K15-X-C072 — E's repair of the cell certifier: the five requirements are met, and the old defects are still live in the old files
+
+At experimental tip `f502b9a` (supersedes `d289bef`):
+
+- `Experimental/scripts/rigorous_cell_volume.py` is **byte-identical** to the audited
+  `d015a2e1e322853286322ff2c6ec4a5a88f03550` (only the path moved from `Computation/` to
+  `Experimental/scripts/`). So `X-C060` (norm) and `X-C061` (boundedness) are **still live in that
+  file**, and `Experimental/scripts/certify_region.py` is still `540b4ed1` — `X-C065`'s dropped
+  remainder is live there too.
+- **New**: `Experimental/scripts/cell_certificate.py` and `certify_region_v2.py` (`ec1eaeda`), which
+  name `X-C060`/`X-C061`/`X-C065` explicitly and repair them. Audited line by line:
+
+| requirement (`REVIEW_0608` §5) | repair | verdict |
+| --- | --- | --- |
+| norm | slack `R·(7/4)·e_i + f_i`, `√3 ≤ 7/4` rational | **sound** |
+| radius bootstrap | `R₀ = b_max/(c − (7/4)e_max)`, `b_max` includes `f_i`, `c` a rigorous *lower* bound for `min_u max_i u·n_i` | **sound**: `max_i u·n_i` is 1‑Lipschitz, so `min_mesh − diam` is a lower bound; the mesh diameter (max edge) is a valid covering radius for a spherical triangle — acute gives `L/(2 sin A_max) ≤ L/√3`, obtuse puts the max on an edge at `≤ L/2` |
+| boundedness | `Out` bounded iff `0 ∈ int conv{n_i}`, decided by supporting planes of the hull | **sound**, and *better than what I asked for*: my "four normals with a positive dependence" is only sufficient and **rejects the cube** (any four of its six include an antipodal pair). E found this with their own control. |
+| inner inclusion | `Inn = {y·n_i' ≤ b_i' − slack}` and `Inn ⊆ Ω ∩ B_R` | **sound** |
+| domain coverage | `n = ceil(span/width)`, box width `span/n` exactly, with `assert lo + n*w == hi` | **sound** |
+
+Run: `cell_certificate.py` exits 0, reproduces **both my witnesses** (W1 `y·δn = 8/9 > R·e = 4/5`,
+ratio 1.111; W2 the four-vertex unbounded polyhedron **refused**) and its five controls stay exact
+(cube `8`, tetrahedron `8/3`, fcc and hcp `4√2`, C5 `5.8980173718`) at enclosure width `1.2e-18`.
+
+Two limits: `spanning_constant` evaluates the rational normals in float and deducts a flat `1e-9`,
+which covers the ~`1e-16` conversion error but is a fudge, not an interval computation; and the old
+`certify_region.py`/`rigorous_cell_volume.py` are still in the tree, so any number they produce keeps
+the old defects — only the `_v2` path is repaired.
+
+### K15-X-C073 — C's *extended* near-contact scan (two- and three-site displacements) still gives `t* = 0`, and its tiling identity is exact on all 500 rows
+
+C added families `F4` (two sites displaced in opposite directions — the multi-site case their own
+`fixture_nonuniform.py` §C does not cover) and `F5` (three sites along independent random directions)
+to `nearcontact_scan.py` (`9b41169a` → `9c37b1d4` at comp `926cdb7`), and re-ran. Audited the shipped
+`out/nearcontact_scan.json` directly, in exact rational arithmetic:
+
+- **500 rows, family counts `F1` 198, `F2` 14, `F3` 72, `F4` 144, `F5` 72; `t_star` takes the single
+  value `0` on every row**, `with_positive_t_star: 0`, density range `[0.620562, 0.739247]`;
+- the **tiling identity holds in all 500 rows with no exception**: `Σvol = a³` for `F1`, `F3`, `F4`,
+  `F5` and `Σvol = a³·t_ax` for the 14 tetragonal `F2` rows;
+- the stored `density` equals `(4π/3)/mean(vols)` in **500/500** rows (to 1e-12).
+
+So the multi-site families — the ones the single-site argument misses — behave exactly like the
+single-site ones on these instances, and C's bookkeeping is exact. Scope unchanged: this is finite
+evidence, as the module docstring says, and `X-C068`'s reading of `t* = 0` (some cut attains `Σ_U b = 0`
+exactly, because `exhaustive_cut_scan` has no `max(0,·)`) applies here too.

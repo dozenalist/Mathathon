@@ -326,3 +326,56 @@ instance can lose coverage silently. Worth fixing before reuse, not a hole in `C
 - `C127` was checked by running the blob and instrumenting its fold; I did not re-derive its 53 pair
   constants. The soundness argument for the dropped pieces is analytic (periodicity), not machine-checked.
 - The `ρ = 2` vs `ρ = 2.09` error above was mine, caught before it reached the registry.
+
+## 12. E's repair of the cell certifier (experimental `f502b9a`) — audited, and it meets §5
+
+Two things at the new experimental tip, and they must not be confused:
+
+- `Experimental/scripts/rigorous_cell_volume.py` is **byte-identical** to the audited
+  `d015a2e1e322853286322ff2c6ec4a5a88f03550` — only the path moved. `X-C060` and `X-C061` are
+  therefore **still live in that file**, and `Experimental/scripts/certify_region.py` is still
+  `540b4ed1`, so `X-C065`'s dropped remainder is live there too. Any number those files produce keeps
+  the old defects.
+- `Experimental/scripts/cell_certificate.py` and `certify_region_v2.py` (`ec1eaeda`) are new, name
+  `X-C060`/`X-C061`/`X-C065` in their own docstrings, and implement the five requirements of §5.
+
+Audit of the repair, by requirement:
+
+1. **Norm.** Slack is `R·(7/4)·e_i + f_i` with the rational bound `√3 ≤ 7/4`. Sound: for `|y| ≤ R`,
+   `|y·(n_i−n_i')| ≤ R‖n_i−n_i'‖₂ ≤ R√3 e_i`, and `7/4 ≥ √3` keeps it rational.
+2. **Radius bootstrap.** `R₀ = b_max/(c − (7/4)e_max)` with `b_max` including `f_i`, and `c` a rigorous
+   *lower* bound for `min_{|u|=1} max_i u·n_i'`: `max_i u·n_i'` is 1‑Lipschitz in `u`, so its minimum
+   over the sphere is at least its minimum over a `δ`-net minus `δ`; they take `δ` = the longest mesh
+   edge, which is a valid covering radius for a spherical triangle (acute: circumradius
+   `L/(2 sin A_max) ≤ L/√3`; obtuse: the max of the distance to the nearest vertex is on an edge and
+   `≤ L/2`). No vertex enumeration, no volume — not circular. Then `r(c − √3e_max) ≤ b_max` gives
+   `|y| ≤ R₀` for every `y ∈ Ω`, so `Ω = Ω ∩ B_R` and the outer polytope is a genuine outer bound.
+3. **Boundedness.** `Out` is bounded iff `0 ∈ int conv{n_i}` (the recession cone `{d : d·n_i ≤ 0}` is
+   `{0}` exactly then), decided by scanning the supporting planes of `conv{n_i}` and requiring the
+   origin strictly inside each, with a positive margin. This is *better than what I asked for*: my
+   "four normals with a strictly positive dependence" is only sufficient and **rejects the cube** (any
+   four of its six normals contain an antipodal pair); E caught that with their own control.
+4. **Inner inclusion.** `Inn = {y·n_i' ≤ b_i' − slack}` gives `Inn ⊆ Ω ∩ B_R`, using the same `R`.
+5. **Domain coverage.** `n = ceil(span/width)`, box width `span/n` exactly, `assert lo + n·w == hi`.
+   The `[110°,111.05°]` / `0.3°` cases from `X-C065` can no longer lose a strip.
+
+Run: `cell_certificate.py` exits 0, **reproduces both of my witnesses** (`y·δn = 8/9 > R·e = 4/5`,
+ratio `1.111`; the four-vertex unbounded polyhedron **refused** with "0 is not in the interior of
+conv(n_i), supporting planes checked: 1") and its five controls stay exact — cube `8`, tetrahedron
+`8/3`, fcc and hcp `4√2`, C5 `5.8980173718` — with enclosure width `1.2e-18`.
+
+Two limits, stated as such: `spanning_constant` evaluates the rational normals in `float` and deducts a
+flat `1e-9`, which covers the `~1e-16` conversion error but is a fudge rather than an interval
+computation; and the repaired path is `_v2` only — the old modules remain in the tree.
+
+## 13. C's extended near-contact scan (two- and three-site displacements)
+
+`nearcontact_scan.py` moved `9b41169a → 9c37b1d4` (comp tip `926cdb7`) and gained `F4` (two sites
+displaced in opposite directions — the multi-site case their own single-site argument does not cover)
+and `F5` (three sites along independent random directions). The shipped `out/nearcontact_scan.json`,
+checked in exact rational arithmetic: **500 rows** (`F1` 198, `F2` 14, `F3` 72, `F4` 144, `F5` 72),
+**`t_star` is the single value `0` on every row**, density range `[0.620562, 0.739247]`; the **tiling
+identity holds in every row** (`Σvol = a³` for `F1/F3/F4/F5`, `Σvol = a³·t_ax` for `F2`) and the stored
+density equals `(4π/3)/mean(vols)` in 500/500 rows. So the multi-site families behave like the
+single-site ones on these instances and the bookkeeping is exact. Scope is unchanged — finite evidence,
+as the module's own docstring says.
