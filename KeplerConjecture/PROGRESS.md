@@ -509,3 +509,37 @@ ten seeds; `constants_check.py` 29/29; both K33 variants `ACCEPT` at
 
 Unchanged: no new density bound; the checker's general soundness stays suspended for
 X; `G5` (the analytic averaged cell bound) remains the whole mathematical content.
+
+### K15-MAIN-011 — 2026-11-14 11:13:20Z– — review 0308 block
+
+Receipt `11:13:20Z`. Read: supervisor `58d06dd`, C `9d9ff68`, E `9a46efc`, X `6535e76`.
+
+- **`K15-C081` withdrawn** (review 0308): it used an *upper* bound on the 13-cluster's
+  signed deficit (`13(√32−V_dod)`) as a *lower* bound to force `Φ`. If the cluster is
+  on average larger than `√32` the cut condition holds with `Φ = 0`. Replaced by
+  **`K15-C081r`**, the singleton cut: `vol Ω(v₀) ≤ V_dod` by monotonicity (no
+  Hales–McLaughlin), so `b(v₀) ≥ 0.1065632` and `Φ ≥ 0.0088803` at `R = 2.09`. The
+  withdrawn `0.0104949` was removed from six files; the rejected text is kept.
+- **`K15-C079` corrected**: the `|U|^{2/3}` boundary slack holds for **ball cuts**;
+  for arbitrary `U` the bound is `k_R|U|`, which is not `o(|U|)`.
+- **`K15-C087`**: for large ball cuts `Σ_U b = (4π/3)r³(√32c−1)+O(r²)` while the right
+  side is `O(r²)`, so the cut condition *is* the density theorem there. The transfer
+  route is not a weaker target; `C080`'s "weaker than `(T')`" is for small components
+  only.
+- **`K15-C083`**: the bridge's loss is `12/S` (inner cube of side `S−4`), verified
+  numerically on fcc; the bridge is qualitative only.
+- **`K15-C084`/`C088`**: Hales' accounting read from the text (Def. 7.12, Lemma 7.13,
+  Thm 7.14, Def. 7.15). The structural difference is **compactness**: `DS` is compact
+  and finite-dimensional, so his pointwise statement becomes a finite computation; the
+  cut condition has no `DS`.
+- **`K15-C085`**: the naive explicit transfer `φ = ψ(b(v)−b(w))` is **refuted** on a
+  three-line model (it overshoots at the funding vertices).
+- **`K15-C089`/`C090`**: the next package is `sup_Λ t*(Λ) ≤ Φ₀` with `t*` the minimal
+  transfer bound; step 0 is the **closed-component** question (a positive-deficit
+  closed component would make `t* = ∞` and refute the route). The icosahedral cluster
+  has a fit position at radius `3.4026`, which does *not* settle that question.
+- **`K15-C086`**: worker sources integrated; X's 23-test audit of the checker is
+  superseded (the supervisor found three false accepts at the same revision).
+
+State: no new bound; generic checker soundness suspended; the geometric route is one
+quantitative statement with a proved floor and an unsettled closed-component case.
