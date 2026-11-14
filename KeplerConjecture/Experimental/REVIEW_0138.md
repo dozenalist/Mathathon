@@ -334,11 +334,15 @@ paying neighbour**. (I first wrote "minimum legal `d` is 6"; the measurement is 
 conclusion is unaffected but the figure is corrected here.)
 
 **Consequence.** For configurations of this motif, `(H_R)` decomposes into independent
-single-defect inequalities, each with its own twelve payers and no competition — which is
-exactly the setting in which the measured slack factor of `470`–`880` was obtained. So the
-`(H_R)` tests are not weakened by the fixtures having only one defect each: multiple defects
-genuinely decouple. The `2x2x2` grid of eight defects confirms this — eight components,
-`max_pairwise_overlap = 0`, minimum `S - D = +67.472`, no sharing pressure.
+single-defect inequalities, each with its own twelve payers and no competition. So the `(H_R)`
+question is not weakened by the fixtures having only one defect each: multiple defects genuinely
+decouple, and a single-defect proof would settle this family.
+
+**What this does not give.** It says nothing about the *magnitude* of the surplus, and in
+particular it does not support the `470`–`880` slack once claimed here — Section 5 retracts that.
+The `2x2x2` grid confirms only the distance-only content: eight components,
+`max_pairwise_overlap = 0`, no sharing pressure. Its `S - D = +67.472` is one of the retracted
+figures (the same grid flags `195` of `203` cells unreliable).
 
 **What is *not* established.** That *every* defective configuration has isolated defects. The
 argument above is (i) exact for fcc/hcp rigidity, (ii) measured for the icosahedral motif, and
