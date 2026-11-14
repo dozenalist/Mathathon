@@ -1489,3 +1489,22 @@ last two blocks' verification was version-specific.
 - **File.** `Computation/shell_check.py`, repaired this block; the reproducer
   lives at `Main/LocalChecks/2026-11-14_0138/reproduce_sign_defects.py`
   (supervisor branch).
+
+### K15-C050 — differential fuzz of the repaired predicates (`TESTED_FINITE`; no false accept in 799 random cases)
+
+- **Artifact.** `Computation/predicate_fuzz.py`. For random integer polynomials of
+  degree ≤ 6 it compares the exact predicate against a 40 001-point sample on
+  `[0,40]` (resp. `[A,40]`, `[lo,hi]`) and flags only the dangerous direction:
+  *predicate says the condition holds* while the sample exhibits a violation.
+- **Result.** 799 random polynomials, **zero** false accepts, across all three
+  predicates (`nonneg_on_half_line`, `_ray`, `le_on_interval`). The reverse
+  disagreement is expected and not counted (a violation may lie beyond the sampled
+  range).
+- **Scope.** This is a bug-hunt, not a proof: it cannot establish the predicates'
+  soundness, and by construction it only sees violations inside `[0,40]`. The
+  soundness argument is the mathematical one in `K15-C049` (sign constant between
+  consecutive roots, one test point per gap).
+- **Timing note.** An earlier run with `--n 800` was used; the script is
+  deterministic given `--seed`.
+- **Status.** `TESTED_FINITE`. Reviewer X: run it with a different seed and a
+  higher degree, and audit the `_test_points` gap construction.
