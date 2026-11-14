@@ -50,4 +50,24 @@ theorem volume_ball_three (R : ℝ) (hR : 0 ≤ R) :
   norm_num [Real.Gamma_nat_add_one_over_two]
   ring_nf
 
+/-- The arithmetic step of the transfer lemma (`K15-C035`):
+`(r+R)^3 - r^3 <= 3 R (R+1)^2 r^2` for `r >= 1`, `R >= 0`.
+
+This is purely polynomial — no analysis, no `Gamma`, no measure — so it is the
+part of the Lean plan that should compile first and independently of the
+ball-volume identity.  Proof: expand, divide by `R` (the case `R = 0` is
+trivial), and bound `R^2 <= 3 r^2 R^2`, `3 r R <= 6 r^2 R` using `r >= 1`. -/
+theorem cube_diff_le (R r : ℝ) (hr : 1 ≤ r) (hR : 0 ≤ R) :
+    (r + R) ^ 3 - r ^ 3 ≤ 3 * R * (R + 1) ^ 2 * r ^ 2 := by
+  have hRr : 0 ≤ R := hR
+  have h1 : (r + R) ^ 3 - r ^ 3 = R * (3 * r ^ 2 + 3 * r * R + R ^ 2) := by ring
+  have h2 : 3 * r ^ 2 + 3 * r * R + R ^ 2 ≤ 3 * r ^ 2 * (R + 1) ^ 2 := by
+    nlinarith [sq_nonneg (r - 1), sq_nonneg R, sq_nonneg (R * r), hr, hRr,
+      mul_nonneg (mul_nonneg hRr hRr) (sq_nonneg r)]
+  have h3 : 0 ≤ 3 * r ^ 2 * R := by positivity
+  calc (r + R) ^ 3 - r ^ 3 = R * (3 * r ^ 2 + 3 * r * R + R ^ 2) := h1
+    _ ≤ R * (3 * r ^ 2 * (R + 1) ^ 2) := by
+          exact mul_le_mul_of_nonneg_left h2 hRr
+    _ = 3 * R * (R + 1) ^ 2 * r ^ 2 := by ring
+
 end Kepler15

@@ -1133,9 +1133,14 @@ of them; the balls `B(w,1)`, `w ∈ Λ∩B(v,R+1)∖{v}`, are disjoint, lie in
 (b) In `Σ_{B(x,r)} A` every pair with both ends inside `B(x,r)` contributes
 `φ(v,w)+φ(w,v) = 0`. What remains are pairs with `v ∈ B(x,r)`, `w ∉ B(x,r)`,
 `|v−w| ≤ R`: at most `k_R·#(Λ ∩ (B(x,r+R)∖B(x,r))) ≤ k_R·((r+R)³ − r³)` ordered
-pairs, each contributing at most `Φ`. Since
-`(r+R)³ − r³ = R(3r²+3rR+R²) ≤ 3R(R+1)²r²` for `r ≥ 1`, the bound follows:
-`3Φ k_R R(R+1)²r² ≤ 3Φ(R+1)⁵r²`. ∎
+pairs, each contributing at most `Φ`.
+**Arithmetic step, proved termwise.** `(r+R)³ − r³ = R(3r² + 3rR + R²)`, and for
+`r ≥ 1 ≥ R·0`:
+`R² ≤ 3r²R²`, `3rR ≤ 6r²R` (as `r ≥ 1`), `3r² ≤ 3r²` — so
+`R(3r²+3rR+R²) ≤ 3Rr²(R+1)²` after dividing by `R > 0`. Hence
+`3Φk_R·Rr²(R+1)² ≤ 3Φ(R+1)³·r²(R+1)² = 3Φ(R+1)⁵r²`. ∎
+(The termwise form replaces the earlier "checked numerically" remark; it is also
+the form the Lean lemma `cube_diff_le` states.)
 
 **Why this matters for the project's goal.** Hales' proof spends a chapter
 (Chapter 5: the `Q`-system, compatibility Lemma 5.28, and the four-way

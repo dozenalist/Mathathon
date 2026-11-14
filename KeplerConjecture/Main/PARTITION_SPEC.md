@@ -37,9 +37,11 @@ For every cluster `K` produced by R1 with `diam K ≤ D`:
    centres in `K ∪ (one layer outside K)`; the cap estimate of Rogers gives a
    lower bound depending on the number of Delaunay simplices attached to each
    vertex. The constant to beat is `√32`, and Rogers' simplex bound
-   (`0.7796 → V_0 ≈ 5.42`) is *below* it, so a bare Rogers estimate is not enough:
-   the cluster structure must beat Rogers by `5.6568/5.42 ≈ 1.044` on the
-   configurations that occur.
+   (`σ₃ = 0.779635570044… → V_0 = (4π/3)/σ₃ = 5.372754099…`) is *below* it, so a
+   bare Rogers estimate is not enough: the cluster structure must beat Rogers by
+   `√32/5.372754 = 1.0529` (5.29%) on the configurations that occur. For scale the
+   ladder in cell-volume units is `4.188790` (ball) < `5.372754` (Rogers) <
+   `5.550291` (dodecahedral) < `5.656854` (Kepler).
 2. **Fejes Tóth-type.** A weighted average over the cells of `K` with weights from
    the contact graph, as in L. Fejes Tóth's programme; the weight exists only if
    the contact graph's structure is controlled, which is the hard part.
