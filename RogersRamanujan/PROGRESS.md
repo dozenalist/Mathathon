@@ -13,26 +13,59 @@ along with exact commands, remaining gaps and corrections. Swarm `smwg03n61`
 still needs its completed reports collected. The older current-state table
 below is a historical cycle-1 snapshot pending Main's reconciliation.
 
-## Current state (2026-11-14, America/Los_Angeles)
+## Current state (2026-11-14, America/Los_Angeles; cycle 3)
 
 | Area | State | Next action |
 | --- | --- | --- |
-| Target | Official formulation unchanged; seek a more natural first-identity bijection | Keep the objective explicit in every artifact |
-| Coordination | Main + 4 Ultramath specialists (`smwfxwsqf`) run; 4 of 4 reports accepted | Next cycle: 2 specialists on R1/R2, plus Lean |
-| Literature | BZ82 scan retrieved in full and read (all 3 pages); GM81a/GM81b full text still not retrieved | Resolve GM81b access before any novelty claim |
-| Computation | Contract + six-method counts + working BZ82 reference map, verified `n <= 50` | Prove termination; add operation counts |
-| Counterexamples | Independent checker PASS at `n = 30`; 5 registry entries; 2 obstructions PROVED | Audit any proposed preserved statistic first |
-| Experimental | Level-splitting reformulation; 3 natural level rules refuted | Prove or refute Lemma LS exactly |
-| Lean | 6 staircase theorems kernel-checked, axioms `{propext, Quot.sound}` | Fix toolchain mismatch; add `T`; add `Nat.Partition` bridge |
-| Main result | No new natural bijection. Foundation complete, obstructions proved | Attack the residue-to-staircase step (R2) |
+| Target | Official formulation unchanged; a more natural first-identity bijection | Objective **OPEN**; do not claim it |
+| Coordination | Swarm `smwg03n61` closed 4/4 accepted; swarm `smwg1kdjq` running for cycle 3 | Collect and review; no duplicate swarms |
+| Literature | BZ82 read in full (pp.313-315); GM81a/GM81b still abstract-only | Locate full GM81b or record the access limit precisely |
+| Computation | Six-method counts; BZ82 map verified `n <= 50`; secondary implementation agrees on every object | Fast regression script; repair `phi_skeleton.py` |
+| Counterexamples | Independent checker PASS `n=30`; 7 registry entries | Audit the `phi` inverse branches |
+| Experimental | Theorems F/G closed forms on two rays; the `s=0 (5)` two-step obstruction | A valid two-parameter family with >1 object per weight |
+| Lean | Staircase **equivalence** (order proved); named target `lake build RogersRamanujan` passes for the six base declarations | Formalize `T`; rebuild target with new modules |
+| Main result | Baseline proved and audited; `psi` proved all `n`; first new subfamily theorems | `phi` inverse branches remain the blocker |
 
-## Status at a glance
+## Status at a glance (reconciled, cycle 3)
 
-PROVED: RR-C003 (length), RR-C004 (largest part, all `n>=2`), RR-C008 (BZ82
-`psi` involutive for all `n`), RR-C010 (cutoff witness).
-LEAN_VERIFIED: RR-C005 (staircase bridge, 6 theorems).
-TESTED_FINITE: RR-C002 (`n<=50`), RR-C006, RR-C007 (`n<=50`), RR-C009, RR-C011.
-OPEN: RR-C012, the official objective.
+**PROVED:** RR-C003 (length not preservable), RR-C004 (largest part not
+preservable for all `n>=2`), RR-C008 (BZ82 `psi` involutive for all `n`, amended
+argument, independently audited, empty gap list, tie-breaks forced),
+RR-C010 (cutoff witness), RR-C013 (Theorem F, all-ones ray closed form),
+RR-C014 (Theorem G, all-fours ray), RR-C015 (`>2` step lower bound for
+`s = 5k, k >= 6`), RR-C017 (Case-I deletion trap, by witness), and **MX**
+(`Main/LEMMA_MAXEXIST.md`: the Case-II maximum exists on every state, is
+non-negative exactly on `phi`'s domain, and `a = mu` is impossible in Case I).
+
+**LEAN_VERIFIED:** RR-C005 staircase equivalence — order statement proved and
+non-vacuous; base module compiled on pinned Lean 4.35.0 by the supervisor, named
+target `lake build RogersRamanujan` exit 0 at `731b457`. The order module has
+been compiled on 4.33.1 (Main) and on **4.35.0 by the supervisor** for the bytes
+`5EFBAF6A...0AAA829E`.
+
+**TESTED_FINITE:** RR-C002 (counts `n<=50`), RR-C006 (`T`), RR-C007 (the map,
+`n<=50`; BZ82's theorem is PROVED in the literature and attributed), RR-C009
+(`phi`, `n<=30`), RR-C011 (path lengths, raw data only).
+
+**RETRACTED:** RR-X005 (my claim that BZ82's `phi` Case II formula is defective).
+
+**OPEN:** RR-C012 (the Mathathon objective), RR-C016 (mechanisms M1/M2).
+
+**Superseded statements, kept rather than deleted:** "six independent counting
+methods" (cycle 1) -> corrected grouping in RR-C002; "`Theta(n)` empirically" and
+"roughly linearly" (cycle 1) -> raw data in RR-C011; "the `z >= 0` lower bound is
+part of the printed rule" (cycle 2) -> MX.3, where the lower bound is a
+*consequence* on the domain; "the maximum fails to exist off the domain" ->
+MX.3(3), where it exists and is negative; "path length `<= 6` throughout `s<=60`"
+(cycle 2) -> corrected to the four derived classes; both extremizers in
+`(4^r,1^s)` -> only the `n=30` one; `(5^k)` as a residue family -> it is not in
+`A_n`; `-13`/`-10` numerical repair (cycle 1) -> the amended boundary arguments
+in `AMENDED_PROOF.md`; toolchain-mismatch and missing-build-target statuses
+(cycle 1) -> resolved by the supervisor's pinned build.
+
+**Dates:** the cycle-2 review was **November 13, 2026, ~22:25 PST** (the UTC date
+was already November 14, which is why earlier entries disagree). Entries below
+keep their original stamps; this table is the current view.
 
 ## 2026-11-14 / RR-M001 / checkpoint 1: contract, BZ82 reference map, staircase in Lean
 
@@ -401,3 +434,61 @@ Four of four accepted. What the block produced: one retraction (my own), one
 completed proof (psi), one completed formalization step (staircase equivalence),
 the first new mathematics (two rays plus a structural obstruction), and a
 secondary implementation that removes the faithfulness bottleneck.
+
+## 2026-11-14 / RR-M009 / cycle-3 checkpoint: merged supervisor branch; maximum-existence PROVED
+
+- **Date/time:** 2026-11-14, America/Los_Angeles (cycle 3).
+- **Author / reviewer:** Main. Independent review of the case argument: Main,
+  case by case, plus a 25-assertion machine check. The case split is the
+  supervisor's (SUPERVISOR_REVIEW_19046.md, reviewed Nov 13 22:25 PST).
+- **Status:** **PROVED** — `Main/LEMMA_MAXEXIST.md` (Lemma MX). Plus two
+  statement-level corrections to a worker proof and a `phi` slot lemma.
+- **Git integration.** Merged `origin/rr127/main` (`731b457`, the supervisor's
+  review + Lean glob fix) and `origin/main` (`e6656d4`, watcher outage fix +
+  ASTRA.md) into the research branch by **normal merge**, preserving
+  `ef6826a`, `f8d372b`, `3379ab3`, `06d07a4`. No reset, no force push. The
+  supervisor's `lakefile.toml` glob fix is retained (the explicit
+  `RogersRamanujan.Lean.*` glob requested a nonexistent module).
+- **Lemma MX (proved, all inputs).** In Case II the admissible set for `z` is an
+  initial segment, so the printed maximum exists **iff** `k >= 1` and
+  `lam(k) <= R`. The case analysis (`a <= t` split by `mu <= t` or `mu > t`;
+  `a = t+1` split by sign of `j`; `a > t+1` impossible) is complete, with
+  `a = mu` impossible in Case I. Every inequality is checked; the full proof is
+  in `Main/LEMMA_MAXEXIST.md`.
+- **What Main corrected in the process** (these supersede cycle-2 wording):
+  * the printed rule has **no lower bound** on `z`; the scan prints only
+    `z <= k-1`. The lower bound is a *consequence* on the domain, which is what
+    MX.3(2) establishes;
+  * read literally over all integers, the maximum **exists on every Case-II
+    state**; off `phi`'s domain it is *negative* and one created part is
+    non-positive (first witnesses `(0;())` -> `m=-2`, part `-1`; `(0;(1))` ->
+    `-1,-1`). So "the maximum fails to exist off the domain" is wrong; the
+    right statement is that it is negative there;
+  * `a = mu` occurs on 6 458 states of weight `<= 30` and **all are Case II**
+    (0 in Case I), so the cycle-2 second-removal fallback in `Computation/bz82.py`
+    is unreachable.
+- **Machine verification (Main, independent of the argument).** 25 assertions
+  over every Case-II state of weight `<= 30` (34 222 states): **0 failures**.
+  Cases: 1 -> 32 480, 2 -> 513, 3 -> **0**, 4 -> **0**, 5 -> 336, 6 -> 893. The
+  zero counts for cases 3 and 4 are *required* by the proof (they contradict
+  Case II), and `32 480+513+336 = 33 329` is exactly the in-domain count, with the
+  893 excluded states being exactly Case 6. In-domain, `max over Z` equals
+  `max over z >= 0` on all 33 329 states (0 disagreements).
+- **Worker-proof corrections** (`Counterexamples/cycle2/AMENDED_PROOF.md`,
+  amended in place with the amendment marked): Lemma 1.2 stated the `|lambda|`
+  change as `-5j+3` for I(a)/II(a) while its own calculation gives `5j-3`;
+  corrected. Lemma 2.3 stated that the output is "a partition of weight `n`";
+  corrected to preservation of the signed weight `|lambda| + P(j)`, since after
+  `j -> j+1` the partition alone has weight `n - P(j+1)`.
+- **Corrections to cycle-2 summaries** (superseded text kept, see the reconciled
+  table above): both extremizers in `(4^r,1^s)` — only the `n=30` one is;
+  `(5^k)` as a residue family — it is not in `A_n`; "path length `<= 6`
+  throughout `s <= 60`" — the bound is derived only for `s = 1,2,3,4 (mod 5)`;
+  exact `>2` lower bound separated from measured lengths, with no growth claim.
+- **Reproduction:** the 25-assertion check is inline in this entry's session; the
+  reusable form is in `Computation/cycle3/` (worker task C). Fast regression:
+  `python3 RogersRamanujan/Computation/run_checks.py 30`.
+- **Explicitly NOT established:** `phi`'s Case-I insert count integrality, case
+  stability, `phi^2 = id`, the alternating endpoint theorem, `T` and `B_n`, the
+  `Nat.Partition` bridge — and the Mathathon objective itself.
+- **GitHub:** local merge only; export bundle below.

@@ -72,9 +72,17 @@ of 0. For a state `(j;lambda)` put
 **Lemma 1.1 (Case II forces `j <= 0`).** `t0 >= 0`, so `t0 + j <= 0` gives
 `j <= -t0 <= 0`. In particular `5j - 3 <= -3` and `-5j >= 0`.
 
-**Lemma 1.2 (weight).** In each of the four branches `|lambda|` changes by
-exactly `-5j+3` (I(a), II(a)) or `-5j-2` (I(b), II(b)), i.e. by
-`-(P(j')-P(j))`. Hence `|lambda| + P(j) = n` is preserved.
+**Lemma 1.2 (signed weight).** In each of the four branches `|lambda|` changes by
+exactly **`5j-3`** (I(a), II(a)) or **`-5j-2`** (I(b), II(b)), i.e. by
+`-(P(j')-P(j))` where `P(j) = j(5j-1)/2`. Hence the **signed** weight
+`|lambda| + P(j)` is preserved.
+
+*[Amended by Main, cycle 3: the cycle-2 statement printed `-5j+3` for
+I(a)/II(a), which contradicts the lemma's own calculation (`-5t0` from the
+dropped multiples of 5 plus `+N = 5t0+5j-3` gives `+5j-3`) and contradicts
+`-(P(j-1)-P(j)) = +(5j-3)`. Statement corrected; the proof text was already
+right. The heading is also corrected from "weight" to "signed weight", because
+`|lambda'|` alone is not `n` after a `j`-changing step.]*
 
 *Proof.* I(a): every part `= 0 (mod 5)` loses 5, those equal to 5 are dropped,
 which is a loss of `5t0`; the inserted part is `N = 5t0+5j-3`. Net `5j-3`.
@@ -109,8 +117,14 @@ integrality argument cycle 1 omitted; it is exactly why the `m2 = 0` case of
 I(b) is empty.) QED
 
 **Lemma 2.3 (the domain is exactly `X(n) \ {0} x A(n)`).** `psi` produces a
-partition of weight `n` on a state `s` iff `s` is not of the form `(0;lambda)`
-with `lambda in A(n)`.
+valid signed state of the **same signed weight** `|lambda| + P(j) = n` on a state
+`s` iff `s` is not of the form `(0;lambda)` with `lambda in A(n)`.
+
+*[Amended by Main, cycle 3: the cycle-2 wording said the output is "a partition
+of weight n". That is the wrong invariant: after `j -> j+1` the partition alone
+has weight `n - P(j+1)`, not `n`. The correct statement, which the proof below
+actually establishes via Lemma 1.2, is preservation of the signed weight
+`|lambda| + P(j)`, together with validity (all parts positive).]*
 
 *Proof.* By Lemmas 1.2 and 2.1 the only failing configuration is II(b) with
 `m0 = 0, j = 0`. Then `t0 = 0` (as `m0 = 0`), `m2 = 0` (Case II), and II(b)

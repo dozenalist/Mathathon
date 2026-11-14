@@ -243,9 +243,14 @@ to 390 at `n=27`). What is recorded is raw data only:
 * extremal `A_n` objects (longest path): `n=10` `(6,1,1,1,1)`; `n=20`
   `(11,6,1,1,1)`; `n=30` `(4,4,4,4,4,4,4,1,1)`.
 
-The last row is the interesting one and is file-able evidence for the next
-cycle: at `n = 30` the longest path starts in the two-parameter family
-`(4^r, 1^s)`. PAK06's exercise on worst-case growth stays open. Two complete
+**Correction (cycle 3).** Cycle 2 wrote that both of the last two "start in the
+two-parameter family `(4^r,1^s)`". Checked: `(4,4,4,4,4,4,4,1,1) = (4^7,1^2)` **is**
+in that family, but `(11,6,1,1,1)` is **not** — it lies in `A_20` and is a
+genuine extremizer, but it is not of the form `(4^r,1^s)`. So the `n = 30`
+extremizer alone motivates that family; inferring a common parametric family
+from two extremizers was unjustified. A second valid family to test is
+`(6^r,1^s)` (weight `6r+s`), which contains `(6,1,1,1,1)`. PAK06's exercise on
+worst-case growth stays open. Two complete
 labelled traces (longest and shortest at `n = 12` and `n = 20`, with the
 involution applied at each step) are in `results.json` under `extremal_traces`.
 
@@ -265,8 +270,15 @@ one class needing a six-step chain (Lemma 2). The D-side images
 
 $$b(1^s)=\begin{cases}(s) & s\equiv3\\ (s-2,2) & s\equiv2,4\\ (s-4,4) & s\equiv1,\ s\ge11\\ (6+k-2i),\ k=s/5 & s\equiv0,\ s\le25\end{cases}$$
 
-with exceptions $s=4\mapsto(3,1)$, $s=6\mapsto(4,2)$, hold with path length
-$\le6$ throughout.
+with exceptions $s=4\mapsto(3,1)$, $s=6\mapsto(4,2)$ and $s=2\mapsto(2)$.
+
+**Scope of the length bound (corrected in cycle 3).** Path length `<= 6` is
+claimed only for the residue classes in which the closed form is *derived*, i.e.
+`s = 1,2,3,4 (mod 5)`. It is **not** a claim about `s = 0 (mod 5)`, where the
+measured lengths are 2 for `s <= 25` but 220, 574, 124, 452, 44, 454, 672 for
+`s = 30,35,40,45,50,55,60`. Cycle 2 stated a blanket "`<= 6` throughout" for
+`s <= 60`, which contradicts its own multiples-of-five table; that blanket claim
+is withdrawn.
 
 **Main's independent verification.** Computed `forward((1^s))` for every
 $s\le60$ with the committed `bz82.py` and compared to the formula: **every value
@@ -290,11 +302,24 @@ into the threes at $r=9$.
 
 ### RR-C015 — where BZ82's cost actually lives. Status: PROVED lower bound + measured.
 For $s\equiv0\ (5)$ the two-step output is $(5^{s/5})$, which lies in $B(n)$ iff
-$5\ge s/5$, i.e. **iff $s\le25$**. So for $s\ge30$ this class **cannot** be
-closed in two steps — a short, complete argument, not an observation. Measured
-path lengths for $s=30,35,40,45,50,55,60$ are
-220, 574, 124, 452, 44, 454, 672, against $\le6$ for every other residue class
-of $s\le60$. This is the first result in the project that locates BZ82's cost
+$5\ge s/5$, i.e. **iff $s\le25$**. So for $s\ge30$ in this class the endpoint is
+**not reached in two steps**.
+
+**Exact statement, and what it is not (cycle 3).** The proved content is a
+*$>2$ lower bound* on the path length for `s = 5k, k >= 6`. It is **not** a claim
+that the length is asymptotic to anything, superconstant, or growing at any
+particular rate. The measured lengths
+`220, 574, 124, 452, 44, 454, 672` for `s = 30,35,40,45,50,55,60` are *data*, and
+they are non-monotone, so no growth statement is supported. Measured lengths for
+the other classes are `<= 6` up to `s = 60`; that is likewise a finite
+observation about those classes, and the `<= 6` bound is only *derived* for
+`s = 1,2,3,4 (mod 5)`.
+
+The honest summary: the all-ones ray has a proved closed form with path length
+`<= 6` in four residue classes, and in the fifth the two-step route is provably
+blocked from `s = 30` on, with the endpoint then reached by other routes at
+measured lengths between 44 and 672. Where the truth lies in that fifth class is
+**open**. This is the first result in the project that locates BZ82's cost
 structurally rather than tabulating it: the all-ones ray is closed-form and cheap
 in four classes and provably expensive in the fifth. It does **not** give a new
 bijection and does not bear on the objective directly.
@@ -306,8 +331,10 @@ termination measure, and each is blocked by one named lemma (L-M1: the natural
 continuation fails on $B$-membership `5 >= k`). Worker m4 states plainly that
 neither meets the objective; that assessment is accepted. Also **refuted** on
 held-out parameters: $b(5k)=(5^k)$ for $k\ge6$ (7/7 fail), $b(5k)$ affine in
-$k$, $\mathrm{len}(b(4^r))\le2$ (fails at $r=7$), and $\kappa$ a function of
-$s\bmod5$. No rule was found for $(4^r,1^s)$.
+$k$, $\mathrm{len}(b(4^r))\le2$ (fails at `r=7`), and $\kappa$ a function of
+$s\bmod5$. No rule was found for `(4^r,1^s)`. Also corrected: `(5^k)` is **not**
+in `A_n` for `k > 0` (since `5 = 0 (mod 5)`), so it is not a residue family to
+test; it appears only as an *intermediate* state on the all-ones ray.
 
 ### RR-C017 — Implementation trap in `phi` Case I: the two deletions are indexed against the original list.
 Status: **PROVED by witness** (cycle-2 worker m3, F2; confirmed and quantified by Main).
