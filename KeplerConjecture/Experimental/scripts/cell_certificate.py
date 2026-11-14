@@ -93,27 +93,36 @@ def solve3(rows, rhs):
 def origin_interior_certificate(normals):
     """Exact certificate that 0 lies in the INTERIOR of conv{normals}.
 
-    Decided by supporting planes: for every triple of normals spanning a plane with all the
-    other normals on one side, that plane supports the hull, and 0 must lie strictly on the
-    hull's side of it.  Returns (True, margin, n_supporting) with margin the smallest slack
-    over the supporting planes, or (False, ...) otherwise.
+    Supporting planes: for every triple of normals that is AFFINELY INDEPENDENT and whose
+    plane has all the other normals on one side, that plane supports the hull, and 0 must
+    lie strictly on the hull's side of it.
 
-    (An earlier test demanded four normals with a strictly positive dependence.  That is only
-    sufficient: the cube's six normals have no such four -- any four include an antipodal
-    pair, whose determinant vanishes -- yet 0 is plainly interior.  The cube control caught
-    the over-restriction.)"""
+    DEFECT FOUND IN REVIEW 0653 AND REPAIRED HERE.  The first version used the normal
+    cross(b, c) -- the normal of the plane through 0, b, c -- instead of
+    cross(b - a, c - a), the normal of the plane through a, b, c.  On the input
+    [(1,0,0),(0,1,0),(0,0,1)], whose points all satisfy x+y+z = 1 so that the origin is
+    plainly outside, it returned (True, 1, 1): a false certificate.  Two things were wrong:
+    the normal, and the absence of any affine-independence check.  Witness W3 keeps the
+    exact input.
+
+    Returns (True, margin, n_supporting) or (False, reason, n_supporting)."""
     N = len(normals)
+    # FULL AFFINE DIMENSION first: a point set in a plane has no interior in R^3 at all, and
+    # the supporting-plane test below would divide by a vanishing normal (review 0653).
+    if not _affine_dim_3(normals):
+        return False, "the normals span less than 3 dimensions: no interior in R^3", 0
     best = None
     nsup = 0
     for i, j, k in itertools.combinations(range(N), 3):
         a, b, c = normals[i], normals[j], normals[k]
-        nrm = (b[1] * c[2] - b[2] * c[1],
-               b[2] * c[0] - b[0] * c[2],
-               b[0] * c[1] - b[1] * c[0])
+        ba = tuple(b[t] - a[t] for t in range(3))
+        ca = tuple(c[t] - a[t] for t in range(3))
+        nrm = (ba[1] * ca[2] - ba[2] * ca[1],
+               ba[2] * ca[0] - ba[0] * ca[2],
+               ba[0] * ca[1] - ba[1] * ca[0])
         if nrm == (0, 0, 0):
-            continue                      # collinear triple: no plane, not a supporting one
-        # normal of the plane through a,b,c, translated to pass through a
-        nn = (nrm[0] * a[0] + nrm[1] * a[1] + nrm[2] * a[2])
+            continue                      # collinear triple: no plane (affine dimension < 2)
+        nn = sum(nrm[t] * a[t] for t in range(3))
         vals = [sum(nrm[t] * p[t] for t in range(3)) - nn for p in normals]
         if all(v <= 0 for v in vals):
             side = -1
@@ -122,14 +131,73 @@ def origin_interior_certificate(normals):
         else:
             continue
         nsup += 1
-        z = 0 - nn                      # the value at the origin
-        margin = side * z                # > 0 means the origin is strictly inside
+        z = -nn                            # the plane's value at the origin
+        margin = side * z
         if margin <= 0:
-            return False, margin, nsup
+            return False, "the origin is on or outside a supporting plane", nsup
         best = margin if best is None else min(best, margin)
     if best is None:
-        return False, None, 0
+        return False, "no supporting plane found (affine dimension < 3)", 0
     return True, best, nsup
+
+
+def _affine_dim_3(pts):
+    """True iff the points affinely span R^3 (some four are affinely independent)."""
+    base = pts[0]
+    for i, j, k in itertools.combinations(range(1, len(pts)), 3):
+        v = [tuple(pts[t][r] - base[r] for r in range(3)) for t in (i, j, k)]
+        cr = (v[1][1] * v[2][2] - v[1][2] * v[2][1],
+              v[1][2] * v[2][0] - v[1][0] * v[2][2],
+              v[1][0] * v[2][1] - v[1][1] * v[2][0])
+        if sum(x * x for x in cr) != 0 and (v[0][0] * cr[0] + v[0][1] * cr[1] + v[0][2] * cr[2]) != 0:
+            return True
+    return False
+
+
+def radius_witness(normals):
+    """EXACT lower bound for min_{|u|=1} max_i u.n_i, from the inradius of conv{normals}.
+
+    No sphere mesh, no floating point, no unproved epsilon.  If B(0,r) is contained in
+    conv{n_i} then every unit u has max_i u.n_i >= r (r u lies in the hull, and
+    r = u.(r u) = sum lambda_i (u.n_i) <= max_i u.n_i).  And conv{n_i} is contained in each
+    supporting half-space {p : m.p <= k}, so B(0,r) is contained in the hull as soon as
+    r <= dist(0, that plane) for EVERY supporting plane.  Hence
+
+        c  >=  min over supporting planes of |k| / |m| ,
+
+    which is exactly the inradius of the hull about the origin.  (A first attempt looked for a
+    tetrahedron with vertices among the n_i containing 0; that fails on the cube, whose six
+    normals admit no such four -- 0 is interior to the octahedron but in no inscribed
+    tetrahedron.)
+
+    Returns (c_lower, n_supporting, witness) or (0, 0, None)."""
+    inside, margin, nsup = origin_interior_certificate(normals)
+    if not inside:
+        return F(0), nsup, None
+    best = None
+    wit = None
+    N = len(normals)
+    for i, j, k in itertools.combinations(range(N), 3):
+        a, b, c = normals[i], normals[j], normals[k]
+        ba = tuple(b[t] - a[t] for t in range(3))
+        ca = tuple(c[t] - a[t] for t in range(3))
+        nrm = (ba[1] * ca[2] - ba[2] * ca[1],
+               ba[2] * ca[0] - ba[0] * ca[2],
+               ba[0] * ca[1] - ba[1] * ca[0])
+        if nrm == (0, 0, 0):
+            continue
+        nn = sum(nrm[t] * a[t] for t in range(3))
+        vals = [sum(nrm[t] * p[t] for t in range(3)) - nn for p in normals]
+        if not (all(v <= 0 for v in vals) or all(v >= 0 for v in vals)):
+            continue
+        n2 = sum(x * x for x in nrm)
+        d = Iv(abs(nn)) / sqrt_iv(Iv(n2))
+        if best is None or d.lo < best:
+            best = d.lo
+            wit = (i, j, k)
+    if best is None:
+        return F(0), nsup, None
+    return best, nsup, wit
 
 
 def polytope_volume(normals, dists, require_bounded=True):
@@ -267,8 +335,9 @@ def certify(centres, name="", verbose=False):
         e_i.append(eq)
         f_i.append(fq)
     b_max = max(b_rat[i] + f_i[i] for i in range(len(b_rat)))
-    mesh = sphere_mesh(5)
-    c = spanning_constant(n_rat, mesh, mesh[1])
+    # EXACT radius witness: the inradius of conv{n_i} about the origin.  No sphere mesh, no
+    # floating point, no unproved 1e-9 subtraction (review 0653).
+    c, nsup, cwit = radius_witness(n_rat)
     denom = c - SQRT3_UB * max(e_i)
     if denom <= 0:
         raise Unbounded("the a priori radius bound fails: c <= sqrt3 e_max")
@@ -349,6 +418,44 @@ def main():
     good, det = witness_2()
     print(f"  W2 unbounded polytope with four vertices refused: {good}  ({det.get('reason','')})")
     ok &= good
+
+    # ---- W3: the false certificate found in review 0653 -------------------
+    flat = [(F(1), F(0), F(0)), (F(0), F(1), F(0)), (F(0), F(0), F(1))]
+    res = origin_interior_certificate(flat)
+    good = (res[0] is False)
+    print(f"  W3 coplanar normals refused: {good}  -> {res[1]}")
+    print(f"     (the first version returned (True, 1, 1) here, using cross(b,c) instead of")
+    print(f"      cross(b-a,c-a) and never checking affine dimension)")
+    ok &= good
+
+    # ---- W4: exact radius witness, no mesh -------------------------------
+    cube_n = [(F(1), F(0), F(0)), (F(-1), F(0), F(0)), (F(0), F(1), F(0)),
+              (F(0), F(-1), F(0)), (F(0), F(0), F(1)), (F(0), F(0), F(-1))]
+    c, nsup, wit = radius_witness(cube_n)
+    # 1/sqrt(3) enclosed
+    lower3 = sqrt_iv(Iv(3)).lo
+    good = (abs(c - 1 / lower3) < F(1, 10 ** 12)) if False else (abs(c - (F(1) / sqrt_iv(Iv(3)).lo)) < F(1, 10 ** 15) * 10)
+    print(f"  W4 exact radius on the cube's normals: c = {float(c):.12f}  "
+          f"(1/sqrt3 = {float(F(1)/sqrt_iv(Iv(3)).lo):.12f}), {nsup} supporting planes")
+    ok &= abs(c - F(1) / sqrt_iv(Iv(3)).lo) < F(1, 10 ** 12)
+
+    # ---- the volume contract ---------------------------------------------
+    print("\nVOLUME CONTRACT: bodies with known volumes, and a degenerate one")
+    oct_n = [(F(a), F(b), F(cc)) for a in (1, -1) for b in (1, -1) for cc in (1, -1)]
+    v, nv, _ = polytope_volume(oct_n, [F(1)] * 8)
+    print(f"  octahedron |x|+|y|+|z| <= 1: {v}  (4/3 expected), {nv} vertices")
+    ok &= (v == F(4, 3) and nv == 6)
+    box = [(F(1), F(0), F(0)), (F(-1), F(0), F(0)), (F(0), F(1), F(0)),
+           (F(0), F(-1), F(0)), (F(0), F(0), F(1)), (F(0), F(0), F(-1))]
+    v, nv, _ = polytope_volume(box, [F(1), F(1), F(3, 2), F(3, 2), F(2), F(2)])
+    print(f"  box 2 x 3 x 4: {v}  (24 expected), {nv} vertices")
+    ok &= (v == 24 and nv == 8)
+    try:
+        polytope_volume([(F(1), F(0), F(0)), (F(0), F(1), F(0)), (F(1), F(1), F(0))], [F(1)] * 3)
+        print("  degenerate (coplanar normals): NOT REFUSED  <- BUG")
+        ok = False
+    except Unbounded:
+        print("  degenerate (coplanar normals): refused")
 
     print("\nCONTROLS (the same five as before, now with the repaired slack)")
     import numpy as np
