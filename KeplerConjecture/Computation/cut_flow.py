@@ -62,6 +62,80 @@ V_DOD_LO, V_DOD_HI = RAD.dodeca_volume_enclosure(digits=40)
 # the 30 ring-ring edges.  The gate now uses this enclosure, in the conservative direction.
 EDGE_LO, EDGE_HI = RAD.icosa_edge_enclosure(digits=40)
 
+# ================================================================ the public contract
+#
+# Vertex set.  The vertices of a fixture are range(len(b)) and are NEVER inferred from the edge
+# list.  An edge list is a SUBSET of the pairs; a vertex with no incident edge is isolated, and an
+# isolated vertex with b(v) > 0 makes the instance infeasible at every Phi (the singleton cut {v}
+# has delta^+ = empty and sum_U b = b(v) > 0).  X-C034 / D8 was exactly this: three functions took
+# n = max(edges)+1, so such a vertex vanished and an impossible instance was accepted.
+#
+# Edge list.  Undirected, one entry per pair, indices in range(len(b)), no self-loops, no
+# duplicates in either orientation.  A violation raises FixtureError -- it is never silently
+# repaired, because merging duplicates would double the capacity and dropping a self-loop would
+# hide a degree.
+#
+# Flow.  A flow is a dict phi with phi[(i,j)] for the edges, interpreted antisymmetrically
+# (phi[(j,i)] = -phi[(i,j)]).  It must satisfy |phi_e| <= Phi on every edge and
+#      div_phi(v) = sum_{w ~ v} phi(v,w) >= b(v)        for EVERY v in range(len(b)).
+# Keys outside the edge set, or an antisymmetry violation, are rejected rather than ignored.
+#
+# Cut condition (C044).  sum_{v in U} b(v) <= Phi * |delta^+(U)| for every finite U subset of the
+# vertices.  If some U has delta^+(U) = empty and sum_U b > 0, the instance is infeasible at EVERY
+# Phi; that is reported with the sentinel ratio UNBOUNDED, never as a large finite number.
+#
+# Threshold.  t* = max(0, sup_U sum_U b / |delta^+(U)|) in [0, +inf], with +inf in the
+# empty-boundary case above.  The max(0, .) is the repaired theorem's, and a scan that reports a
+# negative t* is reporting sup, not t* (X's D7).
+#
+# Enclosure endpoints.  b(v) is known only up to b_lo(v) <= b(v) <= b_hi(v).  A violating cut found
+# with b_lo is a violation of the true instance (b >= b_lo); a flow found for b_hi is a flow for the
+# true instance (b <= b_hi).  The two directions are never swapped, and no verdict is drawn from
+# b_hi on the cut side or b_lo on the flow side.
+
+class FixtureError(ValueError):
+    """A fixture whose edge list or bounds are not well formed."""
+
+UNBOUNDED = F(10) ** 18            # sentinel: infeasible at every finite Phi
+
+
+def validate_fixture(b, edges):
+    """Check a (b, edges) pair against the contract.  Returns the normalised edge list.
+
+    Raises FixtureError instead of repairing: duplicate edges would change the capacity, and a
+    self-loop would change the degree, so neither can be fixed silently.
+    """
+    n = len(b)
+    seen = set()
+    out = []
+    for e in edges:
+        if len(e) != 2:
+            raise FixtureError("edge %r is not a pair" % (e,))
+        i, j = int(e[0]), int(e[1])
+        if not (0 <= i < n and 0 <= j < n):
+            raise FixtureError("edge %r is out of range for %d vertices" % (e, n))
+        if i == j:
+            raise FixtureError("self-loop %r: it would count in the degree and not in the cut" % (e,))
+        key = (min(i, j), max(i, j))
+        if key in seen:
+            raise FixtureError("duplicate edge %r: merging would double its capacity" % (e,))
+        seen.add(key)
+        out.append((i, j))
+    return out
+
+
+def check_flow(phi, edges):
+    """Check the flow dict's shape: keys on edges, antisymmetric, nothing elsewhere."""
+    E = {(min(i, j), max(i, j)) for (i, j) in edges}
+    for (i, j), v in phi.items():
+        key = (min(i, j), max(i, j))
+        if key not in E:
+            raise FixtureError("flow key %r is not an edge" % ((i, j),))
+        w = phi.get((j, i))
+        if w is not None and w != -v:
+            raise FixtureError("flow is not antisymmetric on %r: %s vs %s" % ((i, j), v, w))
+    return True
+
 def fcc_b():   return F(0), F(0)           # vol Omega = sqrt32 exactly
 def hcp_b():   return F(0), F(0)
 
@@ -234,6 +308,7 @@ def singleton_bounds(b_lo, edges):
         packing exists.
     """
     n = len(b_lo)
+    edges = validate_fixture(b_lo, edges)      # a self-loop would double-count the degree
     deg = [0] * n
     for (i, j) in edges:
         deg[i] += 1; deg[j] += 1
@@ -266,9 +341,8 @@ def global_necessary_condition(b_lo):
 def find_violating_cut(b, edges, Phi, max_size=None):
     """Exhaustive over subsets up to max_size; returns (U, sum_b, boundary) of the worst
     ratio sum_b / boundary, or None if no violation.  n is small by design."""
-    n = max(max(e) for e in edges) + 1 if edges else 0
-    if n == 0:
-        return None
+    n = len(b)
+    edges = validate_fixture(b, edges)
     if max_size is None:
         max_size = n
     best = None
@@ -282,7 +356,7 @@ def find_violating_cut(b, edges, Phi, max_size=None):
                 # (This is the only place where the empty-boundary case carries content, and an
                 # earlier version skipped it, hiding the constraint.)
                 if sb > 0:
-                    ratio = F(10) ** 18          # represent as "unbounded"
+                    ratio = UNBOUNDED            # "no finite Phi works", not a big number
                     if best is None or ratio > best[0]:
                         best = (ratio, U, sb, bd)
                 continue
@@ -303,8 +377,8 @@ def exhaustive_cut_scan(b_lo, edges, cap_subsets=1 << 16):
     EMPTY boundary are excluded from the ratio (the ratio is not defined there) but are reported
     separately, because for a finite vertex set they carry the condition sum_U b <= 0.
     """
-    n = max(max(e) for e in edges) + 1 if edges else len(b_lo)
-    n = max(n, len(b_lo))
+    n = len(b_lo)
+    edges = validate_fixture(b_lo, edges)
     if (1 << n) > cap_subsets:
         return None
     best = None
@@ -319,7 +393,25 @@ def exhaustive_cut_scan(b_lo, edges, cap_subsets=1 << 16):
         r = sb / bd
         if best is None or r > best[0]:
             best = (r, U, sb, bd)
-    return dict(t_star=best[0], U=list(best[1]), sum_b=best[2], boundary=best[3],
+    # The theorem's +inf branch comes FIRST and overrides any finite sup: if some U has an empty
+    # boundary and sum_U b > 0, no finite Phi works, whatever the other subsets do.  (This is the
+    # D8 instance: the witness subset is {isolated vertex} and every other cut looks harmless.)
+    # D5: with no crossing edge anywhere best stays None and indexing best[0] used to raise
+    # TypeError; the answer is +inf above, and 0 (the empty sup) otherwise.
+    if empty_boundary_positive:
+        return dict(t_star=UNBOUNDED, t_star_raw=None,
+                    U=list(empty_boundary_positive[0][0]), sum_b=empty_boundary_positive[0][1],
+                    boundary=0, subsets_scanned=(1 << n) - 1,
+                    empty_boundary_positive=[(list(U), str(sb))
+                                             for (U, sb) in empty_boundary_positive])
+    if best is None:
+        return dict(t_star=F(0), t_star_raw=None, U=[], sum_b=None, boundary=0,
+                    subsets_scanned=(1 << n) - 1, empty_boundary_positive=[])
+    # D7: the theorem's threshold is max(0, sup).  A negative raw supremum is reported as such,
+    # but t_star itself is 0 -- a scan that returns the negative number is not reporting t*.
+    raw = best[0]
+    t_star = raw if raw > 0 else F(0)
+    return dict(t_star=t_star, t_star_raw=raw, U=list(best[1]), sum_b=best[2], boundary=best[3],
                 subsets_scanned=(1 << n) - 1,
                 empty_boundary_positive=[(list(U), str(sb)) for (U, sb) in empty_boundary_positive])
 
@@ -349,9 +441,19 @@ def feasible_flow(b, edges, Phi):
         from scipy.optimize import linprog
     except ImportError:
         return None
-    n = max(max(e) for e in edges) + 1 if edges else 0
-    if n == 0:
-        return {}
+    n = len(b)
+    if Phi < 0:
+        return None
+    edges = validate_fixture(b, edges)
+    # A vertex with positive deficit and no incident edge can never be served, at ANY capacity.
+    # This is the D8 instance, and it is now refused before the LP sees anything.
+    deg = [0] * n
+    for (i, j) in edges:
+        deg[i] += 1; deg[j] += 1
+    if any(b[v] > 0 and deg[v] == 0 for v in range(n)):
+        return None
+    if not edges:
+        return {} if all(b[v] <= 0 for v in range(n)) else None
     # ONE variable per UNDIRECTED edge, with phi(i,j) in [-Phi, Phi].  An earlier version gave
     # each orientation its own variable and symmetrised afterwards, which does not enforce
     # antisymmetry inside the LP and can produce "flows" that violate the divergence bound.
@@ -386,8 +488,18 @@ def feasible_flow(b, edges, Phi):
     return None
 
 def verify_flow_exact(b, edges, Phi, phi):
-    """Exact check of |phi| <= Phi and divergence >= b at every vertex."""
-    n = max(max(e) for e in edges) + 1 if edges else 0
+    """Exact check of |phi| <= Phi and divergence >= b at EVERY vertex of range(len(b)).
+
+    The vertex set comes from b, NOT from the edge list (X-C034 / D8: with n taken from the edges an
+    isolated vertex with positive deficit was never checked and an impossible instance was ACCEPTed).
+    A negative capacity, a malformed edge list, a flow key outside the edges, or a non-antisymmetric
+    flow are all rejected.
+    """
+    n = len(b)
+    if Phi < 0:
+        return False, False, [F(0)] * n
+    edges = validate_fixture(b, edges)
+    check_flow(phi, edges)
     ok_cap = all(abs(phi.get((i, j), F(0))) <= Phi for (i, j) in edges)
     div = [F(0)] * n
     for (i, j) in edges:
@@ -448,10 +560,15 @@ def evaluate_external(fx, Phi_trials=(F(1, 1000), F(1, 100), F(1, 10), F(1))):
         worst = (F(10) ** 18, tuple(range(len(fx["b_lo"]))), tot, 0)
     if worst:
         ratio, U, sb, bd = worst
-        print("   worst cut (|U| <= 6): U=%s  sum b >= %s  |delta^+|=%d  ratio=%.12f"
-              % (list(U), sb, bd, float(ratio)))
-        print("   => for THIS fixture the cut condition fails for every Phi < %.12f%s"
-              % (float(ratio), "  (PROVISIONAL)" if fx["provisional"] else ""))
+        if ratio >= UNBOUNDED:
+            print("   worst cut (|U| <= 6): U=%s  sum b >= %s  |delta^+|=%d  ->  UNBOUNDED"
+                  % (list(U), sb, bd))
+            print("   => INFEASIBLE AT EVERY Phi: this U has an empty boundary and sum_U b > 0")
+        else:
+            print("   worst cut (|U| <= 6): U=%s  sum b >= %s  |delta^+|=%d  ratio=%.12f"
+                  % (list(U), sb, bd, float(ratio)))
+            print("   => for THIS fixture the cut condition fails for every Phi < %.12f%s"
+                  % (float(ratio), "  (PROVISIONAL)" if fx["provisional"] else ""))
         print("      (a per-fixture threshold, not a universal constant)")
         out["rows"].append(dict(kind="violating_cut", U=list(U), sum_b=str(sb), boundary=bd,
                                 phi_threshold=str(ratio)))
@@ -573,8 +690,10 @@ def main():
                  else "INTERACTING (patch result is PATCH_ONLY)"))
         ex = exhaustive_cut_scan(b_lo, edges)
         if ex is not None:
-            print("            t* from all %d subsets (b_lo scan): %.15f at U=%s  %s"
-                  % (ex["subsets_scanned"], float(ex["t_star"]), ex["U"],
+            print("            t* from all %d subsets (b_lo scan): %s at U=%s  %s"
+                  % (ex["subsets_scanned"],
+                     "+inf (empty-boundary cut with positive sum: no finite Phi works)"
+                     if ex["t_star"] >= UNBOUNDED else "%.15f" % float(ex["t_star"]), ex["U"],
                      "(singleton attains it)" if ex["U"] == [0] else ""))
             br = bracket_t_star(b_lo, b_hi, edges)
             if br is not None:
