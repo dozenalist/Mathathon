@@ -1600,6 +1600,13 @@ last two blocks' verification was version-specific.
   published general form `3(R+1)⁵ = 845.11` sits between them. So the shell count
   buys **15% off** the general constant at the widest certified range (not a
   factor of two, because `3(R+1)⁵` mixes the `k_R` and shell factors).
+- **Quantitative footprint of a hypothetical transfer.** Combining the two
+  constraints: the icosahedral vertex forces `Φ ≥ 0.00888` (12 neighbours) and the
+  negligibility constant at `R = 2.09` is `C₁/Φ = 718.40` (this lemma), so
+  `C₁ ≥ 6.38` for any transfer that works there. Lemma 3.3 then gives
+  `δ(x,r,Λ) ≤ π/√18 + C/r` with `C` of order a few — i.e. **a transfer
+  construction would have a usable rate**, unlike a construction that needs a huge
+  `Φ`. Nothing here assumes such a transfer exists.
 - **Status.** `PROVED` (immediate from `K15-E014`). Reviewer X.
 
 ### K15-C055 — independent cross-check of the repaired predicates via `function_range` (`VERIFIED`)

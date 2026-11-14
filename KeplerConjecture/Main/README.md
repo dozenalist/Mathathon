@@ -1,0 +1,39 @@
+# Main/ — index and current status
+
+One page so that Astra, X and the next block can find things without reading the
+whole ledger. Last updated at the end of block `K15-REVIEW-0138-M`
+(receipt `2026-11-14T09:42:58Z`).
+
+| File | What it is | Status |
+| --- | --- | --- |
+| `ROADMAP.md` (project root, imported from setup) | the frozen research plan | carried |
+| `CLAIMS.md` | the claim ledger: K15-C001…C055 plus K15-R001…R005 (recovered material) | current; two withdrawals this block (C029, C014) and a repair (C049) |
+| `REVIEW_0138.md` | **read this first**: the withdrawal of C029, its rejected text, the corrected estimate, and the second finding (sign predicates) | current |
+| `RESULTS.md` | the short account: only `VERIFIED_CROSS`/`PROVED` statements count | current |
+| `PROOF_GAPS.md` | G1–G10 with owners and closure conditions | current |
+| `NEXT_PACKAGE.md` | the exact analytic inequality the geometric route now reduces to, with constants and a falsification test | current |
+| `PARTITION_SPEC.md` | requirements R1–R5 for the cluster partition (G4) | current, R3 corrected |
+| `INTERFACE.md` | the three conventions, their dictionaries, the certificate schema, the sign-verdict semantics, and what a transfer certificate would contain | current |
+| `TASKS.md` | task board and handoff questions Q1–Q6 | current |
+| `LOCAL_COMPUTE_REQUESTS.md` | the local queue with per-role IDs (`M-LEAN-001/002`, `C-CERT-001`, `E-CERT-001`, `X-R01`, …) | current |
+| `SOURCE_MANIFEST.md` | every branch revision and artifact hash read, plus the commands run | current |
+| `Evidence/` | verbatim copies of the recovered swarm artifacts, with hashes | current |
+| `PROGRESS.md` (project root, imported) | dated history; this block is K15-MAIN-008/009 | current |
+
+## The state of the three routes, in one line each
+
+1. **Analytic (certificate) route** — a working exact pipeline; the K33b
+   certificate is verified by two independent implementations at
+   `Δ ≤ 0.779966216777`, which is *not* an improvement. Nothing to promote.
+2. **Geometric (local) route** — reduces to one inequality
+   (`Σ_U vol Ω ≥ √32|U| − O(|U|^{2/3})`); the transfer construction gives its
+   negligibility half for free (`C035`), and no finite computation can decide it
+   (`C036`). `NEXT_PACKAGE.md` is the assignment.
+3. **Shell/higher-point route** — no gain in the tested scope; not closed.
+
+## What would make the next block successful
+
+Either (a) a cluster-average improvement over Rogers with an explicit `V_0 > 5.55`,
+or (b) a periodic witness violating the cut condition at bounded `Φ`, or (c) an
+independent audit that finds another defect of the `C049` kind — the third is not
+a failure, it is the cheapest way to protect the other two.
