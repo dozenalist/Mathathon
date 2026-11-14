@@ -762,14 +762,18 @@ Hales–McLaughlin**, which `EXPOSITION_0438.md` §6 itself names as unavailable
 refuted (it may well be true); the argument given is not a proof of it. Theorem C itself is correct
 and I checked its split, its two-sided volume estimate and `ρ ≤ 1/2`.
 
-### K15-X-C042 — the slack inequality at line 215 has the wrong coefficients (cosmetic)
+### K15-X-C042 — the slack coefficients at line 215 are weaker than the split's, not stronger (my first claim was inverted)
 
-With `d_v + Σ_{e∋v}c_e = 1` on `B∖E_B`, the same edge split gives
-`Σ_{v∈B}vol Ω ≥ √32(|B| − |E_B| − Σd_v) − (√32 − V_dod)·C_R` — coefficient `√32 ≈ 5.657` on `Σd_v`
-and `√32−V_dod = 0.1066` on `C_R`. The document displays `(2√32−2V_dod) = 0.2131` on `Σd_v` and
-`√32` on `C_R`, which is not what the split gives and is *stronger* than it. Both terms are
-`o(R³)` in the intended regime, so the conclusion is the same either way; the display should be
-corrected or re-derived.
+With `d_v + Σ_{e∋v}c_e = 1` on `B∖E_B`, the edge split gives
+`Σ_{v∈B}vol Ω ≥ √32(|B| − |E_B|) − (√32 − V_dod)·(Σd_v + C_R')` with `√32−V_dod = 0.106563221` on
+**both** terms. The document displays `2(√32−V_dod) = 0.213126442` on `Σd_v` and `√32 = 5.656854` on
+`C_R`. Both displayed coefficients are **larger**, so the displayed right-hand side is **smaller**:
+the display is weaker and follows from the correct inequality, and it is true. **My first version of
+this entry said the opposite** ("stronger … plausibly false", from a per-vertex computation at a
+dodecahedral vertex with `d = 0.4`); that computation treated a global inequality as vertex-separable
+and is withdrawn — swarm member `m1` caught it. The one genuine addition: the repair needs
+`Σ_{e∋v}c_e ≤ 1` at `v ∈ E`, which `(M)` does not give, so it should be stated as "`c_e ≥ 0` with
+`Σ_{e∋v}c_e ≤ 1` everywhere and `= 1` off a density-zero set".
 
 ### K15-X-C043 — Theorem D step 4 confirmed independently, and the E/Main discrepancy resolved
 
