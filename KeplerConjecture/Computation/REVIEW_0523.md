@@ -128,6 +128,21 @@ all 8191 subsets, exactly one has `Σ_U b > 0` — the singleton `{0}` — becau
 a ring vertex has `Σ_U b ≤ −335.1`. So the fixture yields the number `0.008880268414739` and nothing
 else. It is evidence, but thin evidence, and it is not evidence of the Hales type.
 
+**And the one inequality is not an artefact of the empty void.** If it were, "unsaturation" would
+undermine the fixture's content rather than merely its Hales-type use. It does not: `fixture_cluster_robust.py`
+adds 125 rational points in `[4,12]³` (spacing 2) and checks, by the triangle inequality on exact
+rational data, that
+
+* every added point is at distance `≥ 4√3 = 6.93` from the origin, so its bisector plane is at
+  `≥ 3.46`, outside the dodecahedron's circumradius `1.2584` — **the central cell is unchanged** and
+  `b(0) = +0.1065632` with it;
+* every added point is `≥ 4` from every nonzero lattice point of `16Z³`, hence `≥ 4 − 2 = 2` from
+  every ring vertex, and the grid is pairwise `≥ 2`.
+
+So the singleton bound survives the filling: it is a property of the local contact configuration at
+the origin, not of the void. This does **not** produce a saturated packing — the void is about 12.3
+wide and `[4,12]³` is only part of it — and nothing here depends on saturation.
+
 ## 5. The geometric item: a near-contact evaluator and the smallest nonuniform fixture
 
 The review's fallback asked for "a concrete near-contact version of the finite cut evaluator with
@@ -225,6 +240,7 @@ python3 audit_cut_flow_api.py     # 66 checks, three-way; exit 0
 python3 tests_cut_flow.py         # S1-S18 including the witness; exit 0
 python3 cut_flow.py --fixture out/fixture_C034_witness.json   # the witness: no flow, UNBOUNDED cut
 python3 fixture_nonuniform.py     # exact volumes, the 3-point fixture, the near-contact scan (~30 s)
+python3 fixture_cluster_robust.py # the 13-cluster's b(0) survives filling the void
 python3 cut_flow.py --fixture out/fixture_nonuniform_3pt.json  # the nonuniform fixture: vacuous
 ```
 
