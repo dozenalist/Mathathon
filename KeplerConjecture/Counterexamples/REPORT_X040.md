@@ -420,18 +420,30 @@ proved".
 
 ## 6. Limits of this block
 
-- The audit of Theorem 2 is a proof reading plus the hypothesis table; it is not machine-checked
-  (there is no finite instance of an infinite theorem). What *is* machine-checked is Theorem 1
-  and the threshold formula, on 115 randomised instances against an LP.
-- The reduction is bounded, not optimal. I did not search for a different certificate at the same
-  density with smaller height, because that is the "blind high-degree optimisation" the block was
-  told not to spend its fallback on; and I did not run `m ≥ 6`, for the same reason.
-- `X_C017_small` is a *different* certificate from `X_C017` (density `0.782267254856` vs
-  `0.782267220134`). Both are in the tree; `verify_all.py` still checks the original, and the
-  readable verifier checks either.
+- **The audit of Theorem 2 is a proof reading, not a machine check** — there is no finite instance
+  of an infinite theorem. What *is* machine-checked is Theorem 1 and the threshold formula, against
+  three independent decision procedures: HiGHS LP (115 instances), exact Fourier–Motzkin over ℚ
+  (297 instances at `n ≤ 6`, one undecided), and C's own `feasible_flow` (38 instances).
+- **The reduction is bounded, not optimal.** I did not search for a different certificate at the
+  same density with smaller height, because that is the "blind high-degree optimisation" the block
+  was told not to spend its fallback on; and I did not run `m ≥ 6`, for the same reason. The
+  frontier in §2.1 is evidence that nothing is left to gain *in this basis*, not a proof that no
+  other construction does better.
+- **`X_C017_small` is a different certificate from `X_C017`** (density `0.782267254856` vs
+  `0.782267220134`). Both are in the tree and `verify_all.py` now checks both (`X-C019`); the
+  readable verifier checks either, and both are VALID.
+- **The weight of this block is audit, not new bounds.** No new density bound, no new packing
+  obstruction, no new certificate family. What it adds is: the repaired theorem checked (six
+  points, three decision procedures), six defects in C's script (four live + one latent + one
+  cosmetic, plus the systematic vertex-set defect D8), three documentation defects in Main's
+  ledger, one erratum of my own (W6), two corrections of my own framing, one size reduction, one
+  verifier with a negative control, and one half of `PROOF_GAPS` G8. A reader looking for
+  mathematical progress should look at the next block, not this one.
+- **D8 is not reachable from `main()`** as it stands. I have said so where it is reported; it
+  should not be described as a defect that corrupted a published number, only as a false accept
+  waiting for the first caller that passes a `b` longer than its edge list.
 
 ---
-
 ## 7. What Main's decision record can now close, and what it must not
 
 Three of Main's decisions have X-triggered reverse conditions. Their state after this block:
