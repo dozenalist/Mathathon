@@ -1900,3 +1900,16 @@ Two more scripts fail from inside the scripts directory for the same reason as `
 `tammes13_enclosure.py` writes `Experimental/evidence/…`), so the `cwd`-relative-path issue is not confined
 to three files — it is the directory's convention, and `Computation/README.md`-style per-script invocations
 do not work.
+
+### K15-X-C124 — the two `cwd` conventions are different, and both Tammes/interval scripts pass
+
+Correction to `X-C121`/`X-C123`: the requirement is **not** uniformly "the repository root".
+`Computation/` scripts resolve `KeplerConjecture/Computation/out/…` — so they need the **repository root**
+(`run_all_checks.py` uses `HERE.parent.parent` ✓). `Experimental/` scripts resolve `Experimental/evidence/…`
+and import `Experimental/scripts/…` — so they need **`KeplerConjecture/`**. Run that way:
+`tammes13_enclosure.py` exits 0 with the correct dependency note ("identification `d_13 = delta_13` is
+Theorem 1 of arXiv:1002.1439v3, which rests on a computer enumeration of irreducible contact graphs; this
+certificate covers the arithmetic of the constant only" — matching `C054`'s scope) and
+`interval_selfaudit.py` exits 0 ("AUDIT PASSED: enclosures contain the true values; corruption is
+detectable", with `333/106 < π < 3.14159292`). So both directories work, from *different* directories, and
+neither `README` states which.
