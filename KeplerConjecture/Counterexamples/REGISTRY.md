@@ -1987,3 +1987,15 @@ column, which is the one that matters, was right.)
 `dense_completion_search` notes "computed sum is an UPPER bound so this is inconclusive" — the monotonicity
 direction is stated correctly, as in `cluster_fixture` (`X-C116`). That is **27** Experimental programs run
 this block, every one passing from the documented directory.
+
+### K15-X-C132 — the defective module passes its own controls, which is why `X-C060`/`X-C061` survived
+
+`rigorous_cell_volume.py` at `6ae7dbf` runs its own self-test to "ALL CONTROLS PASS" — including the C5
+fixture at `[5.898017371803721, 5.898017371803721]` (width `8.7e-19`, `20/20` vertices) — and it prints
+"`R = 3/2` was CERTIFIED against the outer polytope in every sandwich above (the check raises if an outer
+vertex exceeds it)". That consistency check is real, but it tests the *radius*, not the norm: a cell whose
+normal intervals are wide enough still passes it while the `R·e` slack is short by up to `√3` (`X-C060`).
+So the defects are invisible to the module's own suite — which is exactly why they needed an adversarial
+witness rather than a re-run. Also this batch: `icosa_compensation_search.py` exits 0 with "not refuted
+(inconclusive: computed sum is an upper bound)"; `c5_global_search.py` needs more than 200 s (timed out, not
+a failure).
