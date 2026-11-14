@@ -1888,3 +1888,15 @@ Hales–McLaughlin Theorem 4.1 (p16)**: *"any polyhedron with **at most 12 faces
 `≤ 12` faces including the degenerate push-in, and gives the equality case. So the theorem's conclusion
 stands, with a stronger and simpler citation; the script's own footnote ("step (1) is Lindelof, not
 Hales-McLaughlin") should be replaced.
+
+### K15-X-C123 — `premise_audit` puts the 12-face premise `+0.0171` above `V_dod`, and more scripts need `cwd` = root
+
+`premise_audit.py` (`6ae7dbf`, exit 0): the minimum of `vol D'` over the audited family is **`5.567413076`**
+(the C5 basin), which clears the older premise `5.5400` by `0.027413` and clears `V_dod = 5.550291` by
+**`0.017122`**. So the hypothesis `vol D' ≥ V_dod` that `pair_theorem_12faces.py` needs is true on this
+family with a small but positive margin — consistent with `X-C122`'s margin `+0.0103` for the final theorem.
+Two more scripts fail from inside the scripts directory for the same reason as `X-C121`
+(`interval_selfaudit.py` imports `Experimental/scripts/tammes13_enclosure.py` by that relative path;
+`tammes13_enclosure.py` writes `Experimental/evidence/…`), so the `cwd`-relative-path issue is not confined
+to three files — it is the directory's convention, and `Computation/README.md`-style per-script invocations
+do not work.
