@@ -162,11 +162,14 @@ def verify(verbose=True):
 def cell_volume(verbose=True):
     """Volume of the thirteen-face cell of w1 in the witness configuration."""
     import cell_certificate as CC
+    # the FIVE RING faces sit at b = rho_r/2, not at 1 -- that is the configuration of
+    # K15-E099.  b is entered as a rational rounded DOWN (1051462224238/10^12 <= b), which
+    # can only decrease the volume, and the claim below is a lower bound.
     normals, dists = [], []
-    for f in FIXED:
+    for i, f in enumerate(FIXED):
         L = float(np.linalg.norm(f))
         normals.append([float(x) / L for x in f])
-        dists.append(F(1))
+        dists.append(F(1051462224238, 10 ** 12) if 1 <= i <= 5 else F(1))
     for p in WITNESS:
         L = float(np.linalg.norm(p))
         normals.append([float(x) / L for x in p])
