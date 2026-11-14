@@ -268,3 +268,54 @@ remaining    = icosa_cut_check.py is NOT yet written. It is a ~60-line script ov
 **What this request does not ask for.** No large search, no Lean. The Lean target remains the
 `R2'` partition lemma (`LOCAL_LEAN_REQUEST.md`), still `PROPOSED` pending X freezing the
 statement; nothing in this block changes it, and I am not committing speculative Lean.
+
+## 8. The obstruction in final form: two families of sufficient condition, both excluded
+
+The cut is `S = {c}` with twelve payers `w_1, ..., w_12` and requirement
+
+```
+sum_{i=1..12} c(w_i)  >=  13 sqrt32 - V_dodeca  =  67.9888142149 ,   mean >= 5.66573451791 .
+```
+
+Two natural families of sufficient condition are available, and each provably fails. Together they
+exhaust the elementary approaches.
+
+**Family 1 — inscribed balls.** `Omega(w_i) ⊇ B(w_i, r)` for every `r` not exceeding half the
+distance to the nearest other centre. The nearest other centre is `c`, at distance **exactly 2**,
+so the guaranteed radius is exactly `1` and no larger ball is available *whatever the completion
+is*. Hence
+
+```
+sum  >=  12 * (4 pi/3) = 50.26548246 ,   short by 17.723332 .
+```
+
+Reaching the requirement from balls alone would need radius `1.105917008`, unavailable. **So
+every ball-based sufficient condition is excluded by the tangency of the cluster**, not by any
+deficiency of technique.
+
+**Family 2 — the dodecahedral minimum.** `c(w_i) >= V_dodeca` (McLaughlin, imported), so
+
+```
+sum  >=  12 * V_dodeca = 66.6034923422 ,   short by 1.385321873 , i.e. 2.03757 % .
+```
+
+So the best available per-cell theorem, computer-assisted and imported, is `2.04 %` short — and
+the minimum is *attained*, at `c` itself, so no improvement of that bound can help.
+
+**Combined.** `max(50.265, 66.603) = 66.603` against `67.989` required, a ratio of `0.9796`.
+**Both families are quantitatively excluded, and nothing between them is available.**
+
+**What a proof must therefore do.** It must produce a *configuration-specific* lower bound on the
+ten remaining... sorry, on the twelve payer cells that exceeds `V_dodeca` in total by
+`1.385321873`, using the actual neighbour data — which for a payer is: one neighbour at exactly
+`2` (`c`) and five at `2.1029244485`. The only feature that distinguishes these payers from a
+generic cell is that their five non-central neighbours sit *just beyond* tangency, so their
+bisectors are at `1.051462` rather than `1`. That gain is real but small, and capturing it
+requires a lower bound that is not of the form "inscribed ball" and not of the form "single-cell
+minimum" — i.e. exactly what `(H_R)` demands.
+
+**Quantifiers, stated once.** The obstruction is: *for every* saturated 2-separated set containing
+the cluster, *for every* completion, the cut surplus is bounded below by `-1.278758652` (using
+`E045b` and McLaughlin) and above by the (unknown) truth; *and* the two standard families give at
+most `66.603` against `67.989` required. It is *not* a claim that `(H_R)` is false — the truth may
+well exceed `67.989`; it is a claim that no currently available bound reaches it.
