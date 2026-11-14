@@ -82,3 +82,26 @@ Same hypotheses: `Λ` saturated 2-separated, `vol Ω(v) + A(v) ≥ √32` for al
   shows the allowance is unprofitable *at degree 3 in that family*, and C's
   saturation is a statement about *that certifier*; neither is an impossibility
   theorem. The word "closed" is replaced by "no gain found in the tested scope".
+
+## 5. Integration log for this block
+
+Read at receipt (`2026-11-14T09:42:58Z`): supervisor `3c8ea4b0…`, Computation
+`5c102677…`, Experimental `4ea4e8b9…`, Counterexamples `e3a63a18…`. Nothing was
+merged; artifacts are imported by reference with full hashes in
+`Main/SOURCE_MANIFEST.md`, and no unrelated history was deleted.
+
+| Artifact | Disposition |
+| --- | --- |
+| X `Reviews/audit_shell_check.py` | **run**; quadrature confirms Main's Fourier map to `4.9e−15` (K15-C041). Two defects in the script reported. |
+| C `shell_sos.py`, `shell_propose.py` | read; proposer-only, all verdicts `null` (K15-C046) |
+| E `verify_all_claims.py` | **run**; 23/23 consistent (K15-C047), not independent |
+| E `TAMMES13_ENCLOSURE.md` | audited last block (K15-C027); unchanged verdict |
+| E `outer_cell_angular_bound.py`, `K15-E048` | imported with scope (K15-C042); one constant `5.665735` queried |
+
+Block content beyond the withdrawal: `K15-C029r` (correct signed estimate),
+`K15-C029c` (conditional), `K15-C035` (transfer ⇒ negligibility, explicit
+`C₁ = 3Φ(R+1)⁵`), `K15-C036` (no finite fixture can decide), `K15-C037` (C002b
+audit), `K15-C038`/`C039` (transfer and cluster fixtures, both with the
+monotonicity lesson), `K15-C043` (Lemma 3.3 chain re-derived), `K15-C044`
+(transfer feasibility, corrected in-block), `K15-C045` (structural synthesis),
+`K15-C040` (Lean volume module + request `M-LEAN-002`).

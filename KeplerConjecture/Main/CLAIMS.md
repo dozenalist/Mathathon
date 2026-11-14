@@ -1389,3 +1389,33 @@ Combining `K15-C035`, `K15-C036`, `K15-C043` and `K15-C044`:
 
 *Status.* `PROVED` given C035/C036/C044 (a synthesis, not a new inequality).
 Reviewer X.
+
+### K15-C046 — import of C's shell proposers (`TESTED_FINITE`; no verdict yet)
+
+- **Artifacts.** `Computation/shell_sos.py`, `Computation/shell_propose.py` and
+  their JSON outputs (branch `kepler15/comp-01a1d8c0`, `5c10267`).
+- **What is good.** C adopts Main's basis (`u = π|x|²`) and Main's checker for the
+  verdict, explicitly refusing to certify from an LP objective — the interface of
+  `Main/INTERFACE.md` is being used as intended. They also caught that the
+  *then-current* `shell_check.check` hardcoded `T_HI = 27/2`, which is invalid at
+  `ρ = 2.05`; that has since been parameterised (`t_hi_for(ρ)`), so their
+  workaround is no longer needed and their own per-`ρ` handling is compatible.
+- **What it does not give.** Every `verdict` field in `shell_sos.json` is `null`:
+  no candidate has passed the exact check. The best LP objective at degree 7 is
+  `0.3161`, i.e. `Δ ≈ 1.32` — vacuous. Their `n = 27, ρ = 2.05` row is correctly
+  labelled unconditional and `n = 12, ρ = 2.09` conditional on Tammes.
+- **Status.** `TESTED_FINITE` (proposer only). Not a bound; nothing to import into
+  `RESULTS.md`. Reviewer X. The proposer is the right shape; the missing piece is
+  a family rich enough to reach `R ≈ 0.186` at moderate degree, which no proposer
+  in this project has yet achieved.
+
+### K15-C047 — E's `verify_all_claims.py` re-run by Main (`CONSISTENT`, not independent)
+
+`Experimental/scripts/verify_all_claims.py` (branch `kepler15/experimental/run-01`,
+`4ea4e8b`) was executed from a scratch directory: **23/23 items pass**, including
+the Tammes enclosure values (`δ₁₃ < 57.138726938°`, `θ_min > 57.170897332°`), the
+`ρ = 2.05` and `2.09` cosine thresholds (`0.524092801904`, `0.542135024381`), the
+`√5 − 1` scope constant, and the `K15-E048` ceiling `(4π/3)(1.045)³ = 4.780105486`.
+This is a *consistency* check on E's own numbers (E wrote both the claims and the
+script), useful but **not** independent evidence; the independence comes from
+Main's separate re-derivations (`K15-C027`, `K15-C042`).
