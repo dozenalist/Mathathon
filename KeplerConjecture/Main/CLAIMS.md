@@ -1235,26 +1235,28 @@ auditing Main's own repair, so an outside check is still required).
 - **Status.** `TESTED_FINITE` (arithmetic of the constant on one instance). The
   proof of `K15-C035` does not depend on this run.
 
-### K15-C039 — icosahedral cluster fixture: monotonicity of finite completions (`TESTED_FINITE`)
+### K15-C039 — icosahedral cluster fixture: what it shows and what it does not (`TESTED_FINITE`, scope corrected in-block)
 
 - **Artifact.** `Computation/cluster_fixture.py` (scipy half-space intersections).
-- **Numbers.** The 13-cluster (centre + 12 at distance exactly 2, mutual minimum
-  `2.102924`) has its centre cell computed as **5.550291** — reproducing
-  `V_dod` to six decimals, an independent numerical confirmation of
-  `K15-C012`. Completions on a spacing-`2.2` lattice at distance `≥ 5.0`, `≥ 3.5`,
-  `≥ 2.7` (nested, `2140 ⊂ 2178 ⊂ 2190` points) give
-  `Σ_{v∈K}(vol Ω_K(v) − √32) = +157.87, +63.71, +17.91`: **decreasing as the
-  completion grows**, exactly the monotonicity behind `K15-E003`/`K15-C036`, and
-  still far from the packing value because the completions are sparse.
-- **What it shows.** (i) the centre's cell is untouched by any completion at
-  distance `≥ 2·1.2584 = 2.5168` (its circumradius), which is why such
-  completions are legitimate tests of the neighbours; (ii) every finite value is
-  an upper bound and the sequence decreases toward the truth, so **no finite
-  stage decides the sign** — the numerical form of the `K15-C036` obstruction.
-- **What it does not show.** It gives no lower bound, hence no evidence for or
-  against the cluster inequality at the icosahedral configuration.
-- **Status.** `TESTED_FINITE`. Reviewer X.
-
+- **Robust output.** The centre's Voronoi cell computes to **5.550291**, matching
+  `V_dod` to six decimals, and is **box-independent** (identical for boxes
+  `3, 4, 6, 9`) and completion-independent whenever the completion keeps distance
+  `≥ 2·1.2584 = 2.5168` from the centre. That is an independent numerical
+  confirmation of `K15-C012` and a useful sanity check on the whole cell pipeline.
+- **Not robust, and corrected here.** The *cluster sums*
+  `Σ_{v∈K}(vol Ω_K(v) − √32)` are dominated by the cavity between the core and the
+  completion, not by the cluster: with a dense fcc completion at distance `≥ 2.52`
+  the sum is `+54.40`; with the sparse nested completions of the first run it went
+  `+157.87 → +63.71 → +17.91`. The *trend* (decreasing as more points are added)
+  is the monotonicity of `K15-E003`/`K15-C036` and is real; the *values* carry no
+  information about the clubster inequality in a packing.
+- **What the fixture therefore establishes.** (i) `V_dod = 5.550291` numerically;
+  (ii) nested completions shrink cell volumes monotonically, so every finite value
+  is an upper bound and no finite stage decides the sign — the numerical form of
+  `K15-C036`. Nothing else.
+- **Status.** `TESTED_FINITE`. Reviewer X. (First version of the script used
+  non-nested completions and a wrong fcc scaling; both were caught and fixed
+  before the numbers were recorded.)
 ### K15-C040 — Lean: ball-volume identity drafted, build requested (`PROPOSED`)
 
 `Lean/Kepler15/Volume.lean` states `volume (ball 0 1) = ofReal (4π/3)` and its
