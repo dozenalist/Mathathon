@@ -183,7 +183,10 @@ correct.
 
 `Computation/cut_flow.py` is blob `700e44f6c92563b66b4146106cfe8e00cd5a3455` at `4bcbd3a` **and**
 at the current `comp` tip `790efa73` — Main's repair touched only the theorem, not the script. So
-the four findings of `REVIEW_0353.md` §2 remain open on C's side, with the same exact numbers:
+the four findings of `REVIEW_0353.md` §2 remain open on C's side. They are now reproducible by
+one script that does not import anything of mine except a byte copy of C's own file:
+`python3 Reviews/repro_c_cutflow_defects.py` → **7/7 checks reproduce, all four defects**.
+The exact numbers:
 the `V_DOD` interval's lower endpoint is `3.86·10⁻¹²` too high; `build_13(2.1029)` returns 42 edges
 instead of 12 (the true icosahedral edge at circumradius 2 is `2.102924448476534`, and phantom ring
 edges make cuts cheaper in the unsafe direction); `build_fcc_patch(1)` raises `TypeError`; and the

@@ -536,3 +536,16 @@ strength. The digit floor is structural: row 11's pivot coefficient is `S⁻¹�
 multiplies by `8¹¹ ≈ 8.6·10⁹` (~10 digits) on top of magnitude and grid. A 5-digit certificate
 in this basis does not exist; `S = 1` would remove `8¹¹` but reintroduce the lcm problem through
 the Fourier map's own denominators. Reproduce: `python3 x_c017_shrink.py`.
+
+### K15-X-C023 — C's four `cut_flow.py` defects are reproducible by one portable script
+
+`python3 Reviews/repro_c_cutflow_defects.py` (7/7 checks, exit 0) against
+`Reviews/C_cut_flow_4bcbd3a.py`, a byte copy of blob `700e44f6` (unchanged at the current `comp`
+tip `790efa73`): (D1) `V_DOD_LO − V_dod = +3.861·10⁻¹²`, so the whole enclosure is above the
+truth and `b0 = √32 − V_DOD` is over-estimated; (D2) `build_13(2.1029)` returns 42 edges, not
+12 — the gate is `2.4448·10⁻⁵` below the true edge `4√2/√(5+√5) = 2.102924448476534`, and
+phantom edges make every cut cheaper, so the row's `t*` is too small and belongs to
+`R ≥ 2.1029244`; (D3) `build_fcc_patch(1)` raises `TypeError` before any geometry; (D4) at
+period 16 the copies do not interact (gap 12 > R) and all 12 ring cells are extreme points of
+the cluster's convex hull, hence unbounded, hence `b = −∞` on them — `(C)` holds at `Φ = 0` for
+every `U` and the fixture is no evidence at any `Φ`.
