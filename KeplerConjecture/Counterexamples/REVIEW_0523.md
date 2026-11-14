@@ -521,7 +521,7 @@ radius and the 2-separation.)
 | `X-C039` | "the failure is *exactly* an isolated icosahedral cluster" | **wording**; `K_{1,3}` and `P₃` fail too |
 | `X-C040` | "(L)'s equality case is exactly the Barlow family" (line 40) | **refuted** by `C095` and by the fcc half-space shift |
 | `X-C041` | Theorem C's "equality case is empty" reads an average as pointwise | **gap**; needs stability |
-| `X-C042` | the slack coefficients (line 215) are weaker than the split's, so the display follows | **impression**, not a defect; my first claim withdrawn |
+| `X-C042` | the slack display (line 215): correct if the exceptional set is absorbed into `d` (`E = ∅`), false if `E` is kept (`R = 0` witness) | **ambiguity**, not a computation; state `E = ∅` |
 | `X-C043` | Theorem D step 4 | **verified** to 12 digits; E/Main discrepancy **resolved** |
 | `X-C044` | `cut_flow.py` at `a25f5be` still truncates the vertex set at lines 269/352/390 | **defect** (D8, unchanged) |
 | `X-C045` | `exact_sign.py` decided signs on a different interval for some exact rationals (`nsimplify`) | **defect in X's own tool**, fixed; no published number moved |
@@ -613,7 +613,7 @@ fixed; no proof of correctness for any of them".
 | "twelve at distance ≥ 2 on radius 2 is exactly the icosahedral twelve" | **false**: the icosahedral twelve have min distance `2.102924448 > 2`, so the set is positive-dimensional (`X-C048`) |
 | `(L)`'s equality case | "exactly the Barlow family" **refuted** by `C095` and independently by the fcc half-space-shift packing; equality at a pair forces only `vol ∈ [V_dod, 2√32−V_dod]` per cell (`X-C040`) |
 | Theorem C's "equality case is empty" | **true** (two lines from Hales: `0.740480 < 0.754697`) but not from the chain: the argument reads an average as pointwise and needs stability; even volume-stability is not enough — twelve icosahedral directions at radius `r > 2` give `vol → V_dod` with degree 0 (`X-C041`, `X-C049`) |
-| §4 slack inequality | coefficients `2(√32−V_dod)` and `√32` are larger than the split's `√32−V_dod` on both terms, so the display is **weaker and true**; my first claim (stronger/false) is withdrawn; repair needs `Σc_e ≤ 1` on `E` (`X-C042`) |
+| §4 slack inequality | true under the repair's reading (`E` absorbed into `d`, then it is weaker than the split) and false if a non-empty `E` is kept alongside `d` (`R = 0` witness); the sentence does not say which, so it should state `E = ∅` and use `√32−V_dod` on both terms (`X-C042`) |
 | Theorem D | **correct**, all five clauses; `N_max` should be `(2R_max+1)³` (11,956 not 10,453); step 4 confirmed independently to 12 digits; E/Main discrepancy **resolved** (`X-C043`) |
 | Hales–McLaughlin's equality case | **verified from the primary source** (arXiv:math/9811079v3 §1), including that the inequality is for *every* 2-separated point set — so Theorem D's minimiser needs no saturation (`X-C047`) |
 | `lim` vs `limsup` in Theorems B and C | presentation gap: neither `c(Λ)` nor `ρ` need exist (saturated slab construction); the one-sided inequalities survive verbatim with `limsup` (`X-C049`… recorded as a note) |
