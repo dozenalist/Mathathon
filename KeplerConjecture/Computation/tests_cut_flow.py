@@ -102,10 +102,20 @@ def main():
     os.remove(tmp2)
 
     print("S6 an isolated vertex is its own cut")
+    # This test used to assert "no cut reported when the graph is edgeless", which was the DEFECT
+    # speaking: find_violating_cut took n from the edge list, so an edgeless graph had no vertices
+    # at all and the empty-boundary obstruction was invisible.  The contract says the opposite: a
+    # vertex with b > 0 and no incident edge is infeasible at every Phi, and must be reported.
     b = [F(5, 100), F(-1)]
     E = []                                  # no edges at all
     worst = CF.find_violating_cut(b, E, F(0))
-    check("no cut reported when the graph is edgeless", worst is None, worst)
+    check("edgeless graph with a positive vertex DOES report the cut", worst is not None, worst)
+    check("... as the unbounded one, at U = {0}", worst[0] == CF.UNBOUNDED and worst[1] == (0,),
+          worst[:2])
+    check("... with sum_b = b(0) and boundary 0", worst[2] == F(5, 100) and worst[3] == 0, worst[2:])
+    check("edgeless graph with all b <= 0 reports nothing",
+          CF.find_violating_cut([F(-1), F(-1)], [], F(0)) is None)
+    check("... and its threshold is 0, not -inf", CF.exhaustive_cut_scan([F(-1), F(-1)], [])["t_star"] == 0)
 
     print("S7 the binding cut need NOT be a singleton")
     # star with centre b0 and ONE positive leaf: absorbing that leaf reduces the boundary
@@ -232,7 +242,7 @@ def main():
 
     print("S15 EXTERNAL PATH: a fixture exported to JSON reproduces the internal numbers")
     import json as _json, os as _os
-    fxpath = "out/example_external_icos13.json"
+    fxpath = os.path.join(_HERE, "out", "example_external_icos13.json")
     check("the worked example exists", _os.path.exists(fxpath))
     if _os.path.exists(fxpath):
         fx = CF.load_external_fixture(fxpath)
@@ -254,8 +264,8 @@ def main():
               and flows[0].get("divergence_ok"), flows)
         # the PROVISIONAL stamping path: a fixture whose volumes are estimated must be marked,
         # and the flag must survive into every row of the report.  Never exercised before.
-        _os.makedirs(".scratch", exist_ok=True)
-        tmp = _os.path.join(".scratch", "provisional.json")
+        _os.makedirs(_os.path.join(_HERE, ".scratch"), exist_ok=True)
+        tmp = _os.path.join(_HERE, ".scratch", "provisional.json")
         prov = dict(name="provisional_copy", note="volumes estimated, must be stamped",
                     edges=[[int(a), int(b)] for (a, b) in fx["edges"]],
                     b_lo=[str(x) for x in fx["b_lo"]], b_hi=[str(x) for x in fx["b_hi"]],
@@ -270,9 +280,59 @@ def main():
         finally:
             _os.remove(tmp)
             try:
-                _os.rmdir(".scratch")           # leave no empty directory behind
+                _os.rmdir(_os.path.join(_HERE, ".scratch"))           # leave no empty directory behind
             except OSError:
                 pass
+
+    print("S16 D8 / X-C034: the vertex set comes from b, never from the edge list")
+    # b = (-1,-1,-1,-1,+1) with edges on 0..3 only.  Vertex 4 is isolated with b = +1, so the
+    # instance is infeasible at EVERY Phi.  The old API inferred n from the edges and accepted it.
+    b8 = [F(-1), F(-1), F(-1), F(-1), F(1)]
+    E8 = [(0, 1), (1, 2), (2, 3), (0, 3)]
+    ok_cap, ok_div, div8 = CF.verify_flow_exact(b8, E8, F(1), {})
+    check("verify_flow_exact REJECTS the zero flow", ok_div is False, (ok_cap, ok_div))
+    check("its divergence has one entry per vertex", len(div8) == 5, len(div8))
+    check("feasible_flow refuses at Phi = 1", CF.feasible_flow(b8, E8, F(1)) is None)
+    check("feasible_flow refuses at Phi = 1e6 too", CF.feasible_flow(b8, E8, F(10) ** 6) is None)
+    w8 = CF.find_violating_cut(b8, E8, F(1))
+    check("find_violating_cut reports the empty-boundary cut U = {4}",
+          w8 is not None and w8[0] == CF.UNBOUNDED and w8[1] == (4,), None if w8 is None else w8[:2])
+    check("exhaustive_cut_scan reports t* = +inf", CF.exhaustive_cut_scan(b8, E8)["t_star"] == CF.UNBOUNDED)
+    # the same through the external fixture path, which must not print PATCH_FEASIBLE
+    import io as _io, contextlib as _ctx, json as _json2
+    fxp = _json2.load(open(os.path.join(_HERE, "out", "fixture_C034_witness.json")))
+    buf = _io.StringIO()
+    with _ctx.redirect_stdout(buf):
+        outw = CF.evaluate_external(CF.load_external_fixture(os.path.join(_HERE, "out", "fixture_C034_witness.json")))
+    check("the external path claims no flow", all(r.get("status") != "PATCH_FEASIBLE"
+                                                  for r in outw["rows"] if r["kind"] == "flow"))
+    check("the external path does not print PATCH_FEASIBLE", "PATCH_FEASIBLE" not in buf.getvalue())
+
+    print("S17 malformed edge lists raise instead of being reinterpreted")
+    for bad, why in ((((0, 0),), "self-loop"), (((0, 1), (1, 0)), "reversed duplicate"),
+                     (((0, 1), (0, 1)), "duplicate"), (((0, 7),), "out of range")):
+        raised = 0
+        for fn in (lambda: CF.verify_flow_exact([F(0), F(0)], bad, F(1), {}),
+                   lambda: CF.feasible_flow([F(0), F(0)], bad, F(1)),
+                   lambda: CF.find_violating_cut([F(0), F(0)], bad, F(1)),
+                   lambda: CF.exhaustive_cut_scan([F(0), F(0)], bad)):
+            try:
+                fn()
+            except CF.FixtureError:
+                raised += 1
+        check("%s raises in all four paths" % why, raised == 4, raised)
+
+    print("S18 empty edges, zero capacity, negative threshold")
+    check("edgeless with a positive vertex is infeasible at any Phi",
+          CF.find_violating_cut([F(1), F(-1)], [], F(0)) is not None)
+    check("edgeless with all b <= 0 is feasible", CF.feasible_flow([F(-1), F(-1)], [], F(0)) == {})
+    check("edgeless with all b <= 0 has t* = 0", CF.exhaustive_cut_scan([F(-1), F(-1)], [])["t_star"] == 0)
+    check("zero capacity: phi = 0 is the only option", CF.feasible_flow([F(0), F(0)], [(0, 1)], F(0)) is not None)
+    check("zero capacity with demand 1 is infeasible", CF.feasible_flow([F(1), F(-1)], [(0, 1)], F(0)) is None)
+    check("... and feasible at Phi = 1", CF.feasible_flow([F(1), F(-1)], [(0, 1)], F(1)) is not None)
+    r7 = CF.exhaustive_cut_scan([F(-1), F(-2)], [(0, 1)])
+    check("all-negative b: t* = 0 (not the negative supremum)", r7["t_star"] == 0, r7["t_star"])
+    check("... while the raw supremum is kept for the record", r7["t_star_raw"] < 0, r7["t_star_raw"])
 
     print()
     if FAILS:

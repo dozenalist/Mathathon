@@ -1,0 +1,32 @@
+{
+ "name": "smallest_nonuniform_3pt",
+ "note": "three points per cell; the smallest periodic packing whose Voronoi cells are not all congruent.  Minimum separation exactly 2 (A-B, A-C).",
+ "edges": [
+  [
+   0,
+   1
+  ],
+  [
+   0,
+   2
+  ]
+ ],
+ "b_lo": [
+  "-5171572875253809902397/500000000000000000000",
+  "-9171572875253809902397/500000000000000000000",
+  "-9171572875253809902397/500000000000000000000"
+ ],
+ "b_hi": [
+  "-10343145750507619804793/1000000000000000000000",
+  "-18343145750507619804793/1000000000000000000000",
+  "-18343145750507619804793/1000000000000000000000"
+ ],
+ "volumes_are_provisional": false,
+ "cell_volumes_exact": [
+  "16",
+  "24",
+  "24"
+ ],
+ "cell_volume_sum_exact": "64",
+ "period_volume_exact": "64"
+}
