@@ -1707,3 +1707,20 @@ Main to `4.8e-13`. So **Main's number is right and `K15-E075`'s `1.056487696` is
 (two dodecahedral neighbours are impossible, shortfall `0.874`) is unaffected either way, but the ledger
 should say which number is the record. Main's suite at `2c41311` also passes: **18 checks, 0 failed**,
 including the new "two-dodecahedra: orientation-free band (C133)" entry.
+
+### K15-X-C105 — the shipped worst-box certificate's exact inradius recomputes
+
+Rebuilding `c5_centres_box(110.9/180, 111/180, 35.6/180, 35.7/180)` and calling the repaired
+`radius_witness` gives `c = 0.7618195817474015` with `20` supporting planes — the certificate's
+`spanning_constant = 0.7618195817474014646324770542568028282489` to the last printed digit. So the
+internal number of `region_110_111_exactradius.json` is reproducible from the module, not just trusted.
+
+### K15-X-C106 — `C130`'s illustration uses `ε = 1.4555`, but `C132` fixes `ε = 1`: one `ε` must be chosen
+
+`scaled_case2.py` (main `2c41311`, exit 0) computes its bound at `ε = 1.4555003444` (the *old* `C129` axial
+band end): `1/(1+ε/2)³ = 0.193891`, with `δ = 0.126969, 0.092560, 0.047391, 0.027425` at `t = 1.8, 2.0,
+2.5, 3.0`, all below it ✓. But `C132` fixes **`ε = 1`** for the two-case split, precisely because
+`2 + 1 = 3 < 4cos ρ_c = 3.1786`; at `ε = 1.4555` the `ρ_ε > 0` branch would need the orientation-free
+exclusion out to `3.4555`, which `C133` does **not** give (`C129`'s `3.4555` is axial only). So `C130`'s
+table is a valid illustration of the `ρ_ε = 0` inequality but its `ε` is not the one in force: at `ε = 1`
+the bound is `0.296296` and the same `δ` values still pass ✓. The ledger should quote `ε = 1` throughout.
