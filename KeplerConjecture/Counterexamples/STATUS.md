@@ -47,6 +47,8 @@ None of these is a Kepler proof, and none is a new best bound: `0.782267 > 0.740
 | `Reviews/p_le_eta_independent.py` | the bounded-interval `p ≤ η` predicate by Vincent–Descartes, no Sturm | 92 cases, 0 mismatches; found the `nsimplify` bug (`X-C045`) |
 | `Reviews/crack_cell_indep.py` | crack-packing cell volumes by half-space clipping | `√32 + 2ε` exactly; the `6.985` confirmed |
 | `Reviews/near_contact_band_indep.py` | the two-dodecahedra threshold, against `C116`'s `6/√5` | threshold `3.4555003`, attainable; `C116` 28.8% short |
+| `Reviews/a15_pair_indep.py` | A15 Voronoi volumes, against the §5 table's `15.875` | `125/16`, `129/16`, sum `a³`; contacts give `16.125` |
+| `Reviews/fcc_hcp_cells_indep.py` | fcc and hcp cells: volume and circumradius | both `√32`, `√2`, 12 contacts |
 
 ## Known-wrong things in the tree (kept deliberately, do not quote)
 
