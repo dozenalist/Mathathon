@@ -298,8 +298,9 @@ centre cell was `5.550291028515513` to `1e-15` in all twelve completions.
 
 **`K15-E046` — where the missing `2.08 %` should come from.** Five neighbours at
 `2.102924 > 2` push their bisectors from `1` to `1.051462`, gaining a slab of thickness
-`0.051462` per face. With pentagonal face area `A_pent = 1.7205`, the available gain is about
-`5.31` against `1.385` needed, a margin factor of about `3.8`. A first-order estimate only;
+`0.051462` per face. With pentagonal face area `A_pent = 1.387572757` (edge `a = 0.8980559532`), the available
+gain is `4.2844362` against `1.385321873` needed, a margin factor of about `3.09`. (An earlier
+line in this entry quoted `1.7205` and `3.8`; corrected.) A first-order estimate only;
 the rigorous version is a finite polytope computation (below).
 
 Gaps: `(T'-R2')` open; best certified per-cell bound `4.734076` vs required `5.665735`;

@@ -294,15 +294,25 @@ area `A` each, the gain per cell is `5 x 0.051462 x A = 0.25731 A`, and the tota
 `12 x 0.25731 A = 3.08772 A`.
 
 Setting `3.08772 A >= 1.385321873` needs `A >= 0.4486`. The pentagonal faces of the
-dodecahedron have area about
+dodecahedron have area
 
 ```
-A_pent = (1/4) sqrt(25 + 10 sqrt5) a^2 ,   a = 4/sqrt(10 + 22/sqrt5) = 1.4530851 ,
+A_pent = (1/4) sqrt(25 + 10 sqrt5) a^2 ,   a = 4/sqrt(10 + 22/sqrt5) = 0.8980559532 ,
+A_pent = 1.387572757 .
 ```
 
-which evaluates to about `1.7205`. So the available gain (`3.08772 x 1.7205 ≈ 5.31`) exceeds
-the `1.385` needed by a factor of about `3.8`, **before** accounting for the fact that the
-five neighbours constrain only part of each face and that the completion shrinks the cell.
+(Note `a` here is the *edge length* `0.8980559532`, not the inradius; an earlier draft of
+this paragraph quoted `1.4530851` for `a` and `1.7205` for `A_pent`, which were both wrong.
+The corrected values are the ones used below and they were recomputed symbolically.) So the
+available gain is
+
+```
+12 x 5 x 0.051462 x 1.387572757 = 4.2844362 ,
+```
+
+which exceeds the `1.385321873` needed by a factor of about `3.09`, **before** accounting
+for the fact that the five neighbours constrain only part of each face and that the
+completion shrinks the cell.
 
 **What this is and is not.** It is a first-order estimate identifying the correct mechanism
 and showing the margin is not delicate — consistent with the `44 %` slack measured in
