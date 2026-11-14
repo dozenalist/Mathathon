@@ -26,6 +26,7 @@ The block deliverable is `CONTINUATION_0308.md`; read that first.
 | `Evidence/` | verbatim copies of the recovered swarm artifacts, with hashes | current |
 | `CONTINUATION_0308.md` | **the block deliverable**: tasks 1–4, the corrections table, and the next package PN-1…PN-5 | current |
 | `BARLOW_CELLS.md` | `K15-C094`: every Voronoi cell of every Barlow packing has volume `√32` — proof, the two-shape dichotomy, and the tightness corollary | current |
+| `COMPLEXITY.md` | `K15-C100`: the cost/gap scorecard — why no route here is a shortcut, and the one well-posed improvement target (`K15-C096`'s `(S)`) | current |
 | `GAP_FIXTURE.md` | `K15-C095`: the crack packing — infinite closed components, a second equality case of Kepler's bound, `b = −1.328495` at the crack faces | current |
 | `PROGRESS.md` (project root, imported) | dated history; this block is K15-MAIN-008/009 | current |
 

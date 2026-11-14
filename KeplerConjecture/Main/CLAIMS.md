@@ -2887,3 +2887,34 @@ most-repeated failure. **Reverse if** `PN-4`'s argument is written and X accepts
 
 *Status.* `PROPOSED` (a process decision, not a theorem). Needs the person's sign-off
 because it changes what "accepted" means.
+
+### K15-C100 — proof-complexity scorecard after the repairs (`PROVED` assessment; no new bound)
+
+`Main/COMPLEXITY.md` continues `K15-C071` with the numbers now settled. Two figures carry
+the analysis:
+
+- the **lattice-restricted** three-point bound is `0.741506` against the truth
+  `0.740480489693` — a gap of `+0.00103`, i.e. **`0.14%`**;
+- the **general** three-point bound is `0.770271`, a gap of `+0.02979`, i.e. `4.0%`.
+
+So the lattice restriction is worth `0.029` of density — more than this project has moved by
+any means — and every non-computational object within `0.14%` of the truth is
+three-point-and-lattice. Since the plain two-point LP is *proved* not sharp in `d = 3`
+(R. Li, Adv. Math. 460 (2024), Thm 6.1), no refinement of the two-point certificate
+reaches the truth, and `K15-C095` now exhibits the mechanism concretely: **any planar fault
+is an equality case**, so a sharp certificate would need `f` to vanish on the shell radii of
+a continuum of extremal packings.
+
+**Consequences recorded for the project's stated goal ("a simpler proof").**
+1. The analytic route cannot be a shortcut below level 3; the next class (three-point) does
+   not close the gap either at `0.770271`.
+2. The transfer route is **at least as strong as** the theorem (`K15-C087`) and has no slack
+   at the extremal family (`K15-C094`); it is a reorganisation, not a simplification.
+3. The one well-posed improvement target with this project's tools is a **pointwise** cell
+   inequality strictly better than Hales–McLaughlin's `0.754697399337`, and the concrete
+   instance is `K15-C096`'s `(S)`: `V(ρ) = V_dod(ρ/2)³`, whose consequence
+   `V(2.09) ≥ √32` would settle the singleton closed-component case with a `12%` margin.
+
+*Status.* `PROVED` as an assessment (each arrow and each number is a claim id above). The
+quoted `0.741506` / `0.770271` are CDS22 material used only for order of magnitude, and
+`RESULTS.md` does not move. Reviewer X.
