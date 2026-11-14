@@ -365,3 +365,45 @@ optimisation to Astra is request `X-R01`.
 *Requested review.* M should rule on whether X-C001 and X-C002 change the accepted claim ledger,
 and C should adopt the exact Sturm certificate as the acceptance test for the Laguerre–Gaussian
 family before reporting any CE number.
+
+---
+
+## K15-X-C010 — a certified Cohn–Elkies bound in dimension 3 (PROVED, weak)
+
+Added in the full-hour block `2026-11-14T09:17:25Z` (see
+`REPORT_FULL_HOUR_20261114.md`, `REPORT_FULL_HOUR_P2.md`).
+
+> **Theorem.** Every packing of unit-radius balls in `R^3` (pairwise centre distances `>= 2`)
+> has occupied-volume upper density
+> $$\Delta \;\le\; \frac{4}{3\sqrt\pi}\cdot\frac{60952}{56047}\;=\;0.818086808\ldots$$
+
+*Proof.* Let `s = |x|²`,
+$$H(s)=\frac{17}{4096}\bigl(6144s^{2}+6848s+22857\bigr)>0,\qquad P(s)=-(s-4)H(s),$$
+and `f(x) = P(s)e^{−s}`. Since `H > 0` on all of `R` and `s − 4 >= 0` on `s >= 4`, we have
+`f(x) <= 0` whenever `|x| >= 2` (**CE1 holds by construction — no sign test is used**).
+With the exact Fourier map of `ce_exact_gauss.py`,
+$$\widehat f(t)=\pi^{3/2}Q(w)e^{-w},\qquad w=\pi^{2}|t|^{2},$$
+and `Q` was verified to satisfy `Q >= 0` on `[0,∞)` by two independent exact routes (Sturm with
+even-multiplicity handling; and `count_roots(Q,0,∞) = 0` with `Q(0) = 2858397/8192 > 0`), so
+**CE2 holds**. Cohn–Elkies (Theorem 3.1) then gives
+`Δ <= (4π/3)f(0)/f̂(0) = (4/(3√π))·P(0)/Q(0) = (4/(3√π))·(60952/56047)`. ∎
+
+*Status:* **PROVED**. *Value:* weak — `0.0777` above Kepler and `0.0382` above `K15-C033`
+(`0.77996650`); it is a pipeline demonstration, not a competitive bound. *Artifacts:*
+`x_r03_sos.py`, `x_r03_sos_descend.py`; reproduce with
+`python3 x_r03_sos.py` (gives `0.826434`) then `python3 x_r03_sos_descend.py` (gives the frozen
+value). *Reviewer:* C or Main. *Remaining obligation:* none for the stated bound; the obvious
+extension is an SDP over `H` of higher degree (`X-R03b`), which is an offload, not a gap in this
+claim.
+
+## K15-X-C011 — the width-π / width-1 interface constraint (PROVED, interface)
+
+C's `exactcert` and Main's `shell_check` use the width-`π` Gaussian (`e^{−π|x|²}`, Laguerre
+basis) and are interconvertible by the **rational** substitution `t = 2u`. My structural family
+uses width `1` (`e^{−|x|²}`); the rescaling `x = y/√π` maps it to width `π` but sends the
+polynomial argument `s = |x|² ↦ u/π²`, which is **irrational** in `u`. Hence:
+**certificates cannot be transported between the two widths by a change of variable; each must be
+re-derived in the target width.** Consequence for review practice: a cross-check between `K15-C033`
+(in `t`) and Main's checker (in `u`) is valid and I performed it; a cross-check between
+`K15-X-C010` (width 1) and either of those is *not* available, and its absence is not evidence
+against the bound.
