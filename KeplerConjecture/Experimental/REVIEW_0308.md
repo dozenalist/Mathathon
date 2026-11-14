@@ -666,3 +666,36 @@ a per-cell statement.
 their full local neighbourhoods, minimising `vol Omega(v) + vol Omega(w)` over completions. If the
 minimum over that model exceeds `2 sqrt32`, `(P')` gains real support and the model is small enough
 to be a candidate for a rigorous proof.
+
+### 14.1 The equality case of `2 V_dodeca` is unattainable, so `(P')` is strictly stronger
+
+`(P')` is stronger than the elementary bound `2 V_dodeca = 11.100582` coming from McLaughlin. How
+much stronger? The only way to attain `2 V_dodeca` is for **both** cells to be regular
+dodecahedra, i.e. both centres have twelve tangent neighbours in the icosahedral arrangement.
+
+**This is impossible for adjacent centres.** Suppose `v` is dodecahedral and `w` is one of its
+twelve tangent neighbours. Then the other eleven neighbours of `v`, as seen from `w`, sit at
+distance `2.1029` (the icosahedron edge), and `w`'s cell can only be dodecahedral if `w` has twelve
+tangent neighbours, one being `v` and the other eleven at distance exactly `2` from `w`.
+
+Computed exactly, with `v` at the origin and `w = (2,0,0)`, both twelve-point sets being perfect
+icosahedra with the shared axis (pole-to-pole):
+
+```
+aligned:                        min distance between the two eleven-point sets = 1.056487696
+best over 721 relative twists:  min distance                                  = 1.056487696
+required:                                                                      2
+```
+
+So the two rings clash badly — `1.06` against a required `2` — and **no relative twist rescues
+it**. Two adjacent centres cannot both be dodecahedral, so the value `2 V_dodeca` is unattainable
+and `(P')` is strictly stronger than the one-cell bound by a real, sizeable gap.
+
+*(A first version of this check used the wrong filter and reported a legal configuration with a
+minimum distance of exactly `2`; the bug was keeping the shared pole instead of excluding it. The
+corrected run gives `11` and `11` points, as it must.)*
+
+**What this does and does not show.** It shows `(P')` is not a trivial consequence of McLaughlin,
+and that its equality cases are not the ones that would make it look weak. It does **not** prove
+`(P')`: the minimum pair sum could still lie between `11.100582` and `11.313708`. Locating that
+minimum is the open question, and the two-cell model in §14 is the natural setting for it.
