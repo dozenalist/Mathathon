@@ -335,3 +335,41 @@ quoted as unconditional.
 
 **Pending, and not to be quoted:** the region certificates of `K15-E094'` (computed with the
 mesh-based radius), and any universal pair claim. Twelve faces is a class, not all completions.
+
+---
+
+## 10. Independent fallback: Lindelöf gives Main's Theorem D a second route to rigidity
+
+Main's `GEOMETRIC_LEMMA_0438.md` Theorem D (`σ₀ > 2V_dod`) has one soft dependency, flagged by
+Main itself: step (3), *"`vol Ω(v) = V_dod` forces `Ω(v)` to be the regular dodecahedron"*, is the
+**equality case of Hales–McLaughlin**, imported and not re-derived. The same file also notes that
+a referee should push exactly there.
+
+The Lindelöf route of §7 gives an independent proof of that rigidity **for cells with exactly
+twelve faces**, and it is self-contained apart from Lindelöf:
+
+> **Rigidity, 12-face case.** Let `Ω` be a cell with exactly twelve faces, all at distance `≥ 1`
+> from its centre. Then `vol Ω ≥ V_dod`, with equality **only** for the regular dodecahedron.
+
+*Proof.* Write `Ω = ⋂_{i=1}^{12}{y·n_i ≤ d_i}` with `d_i ≥ 1`. Moving each face that sits farther
+than `1` in to `1` can only decrease the volume, so `vol Ω ≥ vol Ω'` where `Ω'` is circumscribed
+about the unit ball. By Lindelöf, among twelve-faced polyhedra circumscribed about the unit
+sphere the surface area — hence the volume — is minimised by the regular dodecahedron, and only
+there. So `vol Ω ≥ vol Ω' ≥ V_dod`, with equality forcing `Ω' = ` the dodecahedron and every
+`d_i = 1`. ∎
+
+**What this does and does not cover for Main.**
+
+- It gives Theorem D's step (3) a route that does not depend on the equality case of
+  Hales–McLaughlin, at the cost of importing Lindelöf instead. Both are classical; neither is
+  re-proved in this project.
+- It does **not** cover cells with thirteen or more faces, where the equality statement still
+  rests on McLaughlin. In Theorem D a minimiser has *both* cells of volume `V_dod`; if either has
+  `≥ 13` faces the rigidity argument above does not apply and the soft dependency returns. So
+  Main's flag stands, but the 12-face case — which is the one the icosahedral equality
+  configuration actually realises — is now covered twice.
+
+**And a caution on Theorem D's compactness.** `§4.1b` bounds the number of points by
+`(2R)³ ≈ 10453`; the correct 2-separation bound is `(2R+1)³ = 11953`, a `14 %` term (recorded in
+`REVIEW_0353` §5.4). No conclusion changes, but the number as written is not the one the
+argument gives, and if it is ever fed to a computation the constant matters.
