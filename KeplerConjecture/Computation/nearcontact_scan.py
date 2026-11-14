@@ -8,7 +8,10 @@ family is one family.  This scans three:
       site displaced along +x by a fraction of the contact slack;
   F2  tetragonal FCC: lattice (a, a, a t) with the same basis, t in [0.94, 1.06] -- a distortion
       that removes the cubic symmetry and so produces UNEQUAL cells;
-  F3  FCC at a in [2.83, 3.00] with the displacement in a random rational direction rather than +x.
+  F3  FCC at a in [2.83, 3.00] with the displacement in a random rational direction rather than +x;
+  F4  TWO sites displaced in opposite directions -- a multi-site rearrangement, which is the case
+      the single-site argument of fixture_nonuniform.py §C does not cover;
+  F5  THREE sites displaced along independent random directions.
 
 For each instance the cell volumes are computed EXACTLY (rational vertex enumeration), b is an exact
 rational interval, and t* is the maximum of sum_U b/|delta^+(U)| over all 2^4 subsets.  A positive t*
@@ -18,7 +21,7 @@ WHAT A NEGATIVE RESULT MEANS.  t* = 0 everywhere says only that these families g
 nothing: the deficits are all negative, so every finite U satisfies the condition at Phi = 0.  It is
 evidence about the geometry of the near-contact regime, not a theorem about all packings.
 
-Run: python3 nearcontact_scan.py            (~8 minutes)
+Run: python3 nearcontact_scan.py            (~20 minutes at 284+ instances)
 """
 import itertools, json, os, random, sys
 from fractions import Fraction as F
@@ -103,11 +106,92 @@ def f3(seed=0, per_a=4):
                              vols=[str(v) for v in vols]))
     return rows
 
+def _joint_bisect(L, S, moves, iters=30):
+    """Largest lambda with all moves applied (site i moves by lambda * moves[i]) keeping sep >= 2."""
+    if FN.min_separation(L, list(S)) < 4:
+        return None
+    lo, hi = F(0), F(1)
+    def moved(lam):
+        S2 = list(S)
+        for i, d in moves.items():
+            p = S2[i]
+            S2[i] = (p[0] + d[0] * lam, p[1] + d[1] * lam, p[2] + d[2] * lam)
+        return S2
+    while FN.min_separation(L, moved(hi)) >= 4:
+        hi *= 2
+        if hi > 2:
+            break
+    for _ in range(iters):
+        mid = (lo + hi) / 2
+        if FN.min_separation(L, moved(mid)) >= 4:
+            lo = mid
+        else:
+            hi = mid
+    return lo
+
+def f4(seed=1, per_a=8):
+    rng = random.Random(seed)
+    rows = []
+    for i in range(18):
+        a = F(300 - i, 100)
+        L, S = FN.fcc_cubic(a)
+        for k in range(per_a):
+            while True:
+                d = (F(rng.randint(-2, 2)), F(rng.randint(-2, 2)), F(rng.randint(-2, 2)))
+                if any(d):
+                    break
+            moves = {0: d, 1: (-d[0], -d[1], -d[2])}
+            lam = _joint_bisect(L, S, moves)
+            if lam is None or lam == 0:
+                continue
+            S2 = list(S)
+            for j, dd in moves.items():
+                p = S2[j]
+                S2[j] = (p[0] + dd[0] * lam, p[1] + dd[1] * lam, p[2] + dd[2] * lam)
+            if FN.min_separation(L, S2) < 4:
+                continue
+            t, vols, _ = t_star_of(L, S2)
+            rows.append(dict(family="F4", a=str(a), direction=[str(x) for x in d], delta=str(lam),
+                             density=float(density(L, S2)), t_star=str(t),
+                             vols=[str(v) for v in vols]))
+    return rows
+
+def f5(seed=2, per_a=4):
+    rng = random.Random(seed)
+    rows = []
+    for i in range(18):
+        a = F(300 - i, 100)
+        L, S = FN.fcc_cubic(a)
+        for k in range(per_a):
+            moves = {}
+            for j in range(3):
+                while True:
+                    d = (F(rng.randint(-2, 2)), F(rng.randint(-2, 2)), F(rng.randint(-2, 2)))
+                    if any(d):
+                        break
+                moves[j] = d
+            lam = _joint_bisect(L, S, moves)
+            if lam is None or lam == 0:
+                continue
+            S2 = list(S)
+            for j, dd in moves.items():
+                p = S2[j]
+                S2[j] = (p[0] + dd[0] * lam, p[1] + dd[1] * lam, p[2] + dd[2] * lam)
+            if FN.min_separation(L, S2) < 4:
+                continue
+            t, vols, _ = t_star_of(L, S2)
+            rows.append(dict(family="F5", a=str(a), delta=str(lam),
+                             density=float(density(L, S2)), t_star=str(t),
+                             vols=[str(v) for v in vols]))
+    return rows
+
 def main():
     allrows = []
     for name, fn in (("F1 FCC, x-displacement", f1),
                      ("F2 tetragonal FCC", f2),
-                     ("F3 FCC, random direction", f3)):
+                     ("F3 FCC, random direction", f3),
+                     ("F4 FCC, two sites moved oppositely", f4),
+                     ("F5 FCC, three sites moved", f5)):
         print("running %s ..." % name, flush=True)
         rows = fn()
         pos = [r for r in rows if F(r["t_star"]) > 0]

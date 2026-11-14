@@ -224,10 +224,14 @@ this family**. That is a thin sample, so `nearcontact_scan.py` widens it to thre
 | F1 | FCC `a ∈ [2.83, 3.00]`, one site displaced along `+x` by 0, 0.1, …, 1.0 of the slack | 198 | **0** |
 | F2 | tetragonal FCC, lattice `(a,a,a·t)`, `t ∈ [0.94, 1.06]` — breaks the cubic symmetry, so cells are genuinely unequal | 14 | **0** |
 | F3 | FCC with the displacement in a random rational direction | 72 | **0** |
-| | **total**, densities `0.6206 – 0.7392` against Kepler's `0.7405` | **284** | **0** |
+| F4 | **two** sites displaced in opposite directions — the multi-site case §5.3 does not cover | 144 | **0** |
+| F5 | **three** sites displaced along independent random directions | 72 | **0** |
+| | **total**, densities `0.6206 – 0.7392` against Kepler's `0.7405` | **500** | **0** |
 
 `max t* = 0` over the whole scan: every deficit is negative, so every finite `U` is satisfied at
-`Φ = 0`. Stated conditionally, as required — this is evidence about three families of near-contact
+`Φ = 0`. The multi-site families matter because single-site rigidity (§5.3) does not rule out a
+rearrangement; F4 and F5 confirm that the rearrangements available within the slack do not help
+either. Stated conditionally, as required — this is evidence about three families of near-contact
 packings, not a theorem about all packings.
 
 ## 6. What this block does NOT establish
@@ -251,7 +255,7 @@ python3 tests_cut_flow.py         # S1-S18 including the witness; exit 0
 python3 cut_flow.py --fixture out/fixture_C034_witness.json   # the witness: no flow, UNBOUNDED cut
 python3 fixture_nonuniform.py     # exact volumes, the 3-point fixture, the near-contact scan (~30 s)
 python3 fixture_cluster_robust.py # the 13-cluster's b(0) survives filling the void
-python3 nearcontact_scan.py       # 284 near-contact instances in three families (~9 min)
+python3 nearcontact_scan.py       # 500 near-contact instances in five families (~13 min)
 python3 cut_flow.py --fixture out/fixture_nonuniform_3pt.json  # the nonuniform fixture: vacuous
 ```
 
