@@ -26,6 +26,7 @@ The block deliverable is `CONTINUATION_0308.md`; read that first.
 | `Evidence/` | verbatim copies of the recovered swarm artifacts, with hashes | current |
 | `CONTINUATION_0308.md` | **the block deliverable**: tasks 1–4, the corrections table, and the next package PN-1…PN-5 | current |
 | `BARLOW_CELLS.md` | `K15-C094`: every Voronoi cell of every Barlow packing has volume `√32` — proof, the two-shape dichotomy, and the tightness corollary | current |
+| `REVIEW_0523.md` | **this block's deliverable**: D8 verified repaired on C's source, the six review items repaired, the certified all-twists theorem, and the proof-status account | current |
 | `REVIEW_0438.md` | **this block's deliverable**: the `C094` repair, the reconciliation of C/E/X and the local evidence, the pair-route bridge, and the next package | current |
 | `GEOMETRIC_LEMMA_0438.md` | `C106`–`C108`: the pair bound, the global bridge, the monotone `8π/(3K)` payoff, the `1.92%` gap, and Theorem D (`σ₀ > 2V_dod`) | current |
 | `COMPLEXITY.md` | `K15-C100`: the cost/gap scorecard — why no route here is a shortcut, and the one well-posed improvement target (`K15-C096`'s `(S)`) | current |

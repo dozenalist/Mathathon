@@ -43,8 +43,9 @@ contact pair there sums to `2√32`. Hence
 
 > **(L) holds with equality on every Barlow packing** (`K15-C106`).
 
-That is the whole known equality family, and `(L)` is sharp on it, so `(L)` cannot be
-improved to `> 2√32`.
+So the equality family of `(L)` **contains** the Barlow family and `(L)` is sharp on it, hence
+`(L)` cannot be improved to `> 2√32`. **Equality `⟹` Barlow is not proved and not claimed**: the
+Barlow argument gives one inclusion only (review 0523 retracts "exactly").
 
 ## 2. Why a local bound is not yet a density bound
 
@@ -325,18 +326,35 @@ no other centre cuts the cell.
 
 **(4) Contradiction.** `v` and `w` are at distance 2, so each is among the other's twelve
 contacts, and both cells would be dodecahedral. **Two adjacent centres cannot both be
-dodecahedral**, and Main verified this independently (`Computation/two_dodecahedra.py`) rather
-than citing E: with both twelve-point sets icosahedral about the shared `v`–`w` axis, the two
-eleven-point sets (partner pole removed — the shared contact is at `+2` in `v`'s frame and `−2`
-in `w`'s) have minimum mutual distance
+dodecahedral**, and this is now proved for **all** relative twists, not sampled
+(`Computation/twist_cover.py`, `K15-C112`). For a pair `(a, q)` of the two eleven-point sets the
+squared distance is a pure sinusoid in the twist,
 
 ```
-max over the relative twist  of  min cross-distance  =  1.12555484451 ,
-t = 0°, 18°, 36°, 54°:   1.1256,  0.5982,  0.2111,  0.5982     (required: 2)
+d²(t) = A + B cos t + C sin t = A + R cos(t − ψ),     R = √(B²+C²),
 ```
 
-so for **every** twist some pair is closer than `2`, with a shortfall of `0.874`. Hence
-`σ₀ ≠ 2V_dod`, and with (1), `σ₀ > 2V_dod`. ∎
+so the twists that put that pair closer than `2` form the arc `{cos(t−ψ) < (4−A)/R}` of
+half-width `arccos((4−A)/R)` — empty, the whole circle, or a single arc. Each endpoint is
+computed at 50 digits and then **inflated by `1e−20`**, so the arcs tested are supersets of the
+true ones. The resulting arcs merge into **one interval covering `[0, 2π/5]` with zero gaps**,
+`2π/5` being the icosahedral period of the shared vertex axis:
+
+```
+arcs built           125
+after merging          1 interval, length 1.25663706 = 2π/5 exactly
+starts at 0: yes     reaches the period end: yes     gaps: 0
+```
+
+Hence for **every** relative twist some pair is closer than `2`. Γ `σ₀ ≠ 2V_dod`, and with (1),
+`σ₀ > 2V_dod`. ∎
+
+**Retraction (review 0523).** An earlier version of this step reported
+`max over a twist grid of the min cross-distance = 1.12555484451`, sampled at
+`t = 0°, 18°, 36°, 54°`. **A sampled maximum is not an all-twists proof**, and the number is
+retained only as the value the grid produced. The cover above replaces it. (A one-pair argument
+does not work: `min over pairs of max_t d² = 8.4223 > 4`, so no single pair is always too close —
+the arcs must be *combined*, which is what the cover does.)
 
 Three things are used and none is re-proved: the **equality case** of Hales–McLaughlin
 (standard, from their proof); that a dodecahedral cell forces twelve tangent neighbours in the
@@ -391,14 +409,16 @@ Now `Σ_{v∈B} vol Ω(v) = (4π/3)R³ + O(R²)` by saturation (Theorem B step (
 
 Four consequences worth stating plainly.
 
-1. **The pair route beats the dodecahedral bound in principle, unconditionally.** No fractional
-   matching, no `(M)`, no compactness theorem: a *maximal* matching always exists, and `δ₀ > 0`
-   is proved. For any saturated packing with a positive density of contact pairs,
-   `δ < 0.754697399337` — strictly.
-2. **The equality case of the dodecahedral bound is empty.** Equality in
-   `δ ≤ (4π/3)/V_dod` would need *every* cell to be a dodecahedron, hence (step 3) every centre
-   to have twelve contacts, hence a positive density of contact pairs, which Theorem C forbids.
-   So the dodecahedral density bound is **never attained** — a clean corollary that does not
+1. **The pair route beats the dodecahedral bound *conditionally*, and not quantitatively.** No
+   fractional matching and no `(M)` is needed — a *maximal* matching always exists and `δ₀ > 0` is
+   proved — but the conclusion `δ < 0.754697399337` holds only **if `ρ > 0`**, and it carries no
+   number. **This is not a new packing bound.**
+2. **RETRACTED: "the equality case of the dodecahedral bound is empty."** The rejected argument
+   ran: equality in `δ ≤ (4π/3)/V_dod` would need *every* cell dodecahedral, hence twelve contacts
+   per centre, hence `ρ > 0`, which Theorem C forbids. **The first step is an invalid
+   average-to-pointwise inference**: an average equal to the pointwise infimum in a *limit* forces
+   only that the excess has zero density, not that any cell attains the infimum. The emptiness is
+   **open**. What survives is: if `ρ > 0`, equality is impossible.
    need the matching machinery at all.
 3. **The gain is proportional to the matching density `ρ ≤ 1/2`**, and the maximum
    `ρ = 1/2` (a perfect matching) together with the sharp `δ₀ = 2√32 − 2V_dod` gives
@@ -418,9 +438,14 @@ Done deliberately against Main's own work, since a referee will look here first.
 - **B, the sum swap.** `Σ_{v∈B∖E_B} (Σ_{e∋v}c_e) vol Ω(v) = Σ_e c_e Σ_{v∈e∩(B∖E_B)}vol Ω(v)` is
   a finite rearrangement; both factors are `≥ 0`, and discarding the `v ∈ E_B` terms is
   legitimate because volumes are `≥ 0`. ✓
-- **B, the counting identity.** `|B| − |E_B| = 2Σ_{internal}c_e + C_R` where `C_R` collects
-  every edge with exactly one endpoint in `B∖E_B`. That is an identity, not an inequality;
-  `C_R` then splits as claimed into shell edges `O(R²)` and `E_B`-incident edges `≤ 12|E_B|`. ✓
+- **B, the counting identity (definition corrected at review 0523).** Write
+  `W := B ∖ E_B`. Since `Σ_{e∋v}c_e = 1` on `W`,
+  `|W| = Σ_{v∈W}Σ_{e∋v}c_e = Σ_e c_e·#{v ∈ e ∩ W} = 2Σ_{e ⊆ W}c_e + C_R` where **`C_R` counts
+  exactly the edges with exactly one endpoint in `W`** — i.e. crossing edges, and nothing else.
+  An earlier draft described `C_R` as "every edge not internal", which wrongly included edges
+  with *both* endpoints in `E_B`; those contribute `0` to the identity and must not appear.
+  With the corrected definition `C_R ≤ (shell edges) + (edges incident to E_B)` and the bound
+  `O(R²) + 12|E_B|` follows as before. ✓
 - **B, the tiling.** `Σ_{v∈B}vol Ω(v) = (4π/3)R³ + O(R²)` uses `Ω(v) ⊆ B(v,2)`, which needs
   **saturation** — this is the one place the bridge can break, and it is why Theorem B is stated
   for saturated packings. ✓ (Measured on fcc in `bridge_probability`… see `bridge_boundary.py`.)
@@ -450,11 +475,14 @@ Theorem D's step (2) is a compactness argument, but the admissible set it compac
 would be attacking. Using E's witness to bound the infimum, `σ₀ ≤ 11.4482581505`, every cell at
 a minimiser has volume `≤ 11.4483`, hence (cone estimate) circumradius `≤ 3σ₀/π = 10.932`, hence
 both cells are determined by the centres within `2·10.932 = 21.865`, and a 2-separated set in
-`B(0,21.865)` has at most `(21.865)³ ≈ 10453` points.
+`B(0,21.865)` has at most `(21.865 + 1)³ ≈ 11957` points — the cardinality bound being
+`vol B(0,R+1)/vol B(0,1) = (R+1)³`, because the unit balls about the centres are disjoint and all
+lie in `B(0,R+1)`. (An earlier draft wrote `R³`, which undercounts by the surface term; the
+correction is `≈1.4%` here and does not change the conclusion.)
 
 So:
 
-> **The minimiser of the pair functional is a configuration of at most `≈1.05×10⁴` points in an
+> **The minimiser of the pair functional is a configuration of at most `≈1.2×10⁴` points in an
 > explicit ball of radius `≈22`** — a finite search problem, not an abstract limit.
 
 That is a genuine step toward explicitness and it is *not* enough: a `10⁴`-point search is far

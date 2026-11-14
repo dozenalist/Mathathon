@@ -35,8 +35,10 @@ reviewer named in the ledger.
 - A pair constant `K` gives `δ ≤ 8π/(3K)` (`C106`); `K = 2V_dod` reproduces the dodecahedral
   bound `0.754697399337` *exactly*, and `K = 2√32` reproduces `π/√18` exactly.
 - `δ(Λ) ≤ (4π/3)/(V_dod + δ₀ρ)` with `ρ ≤ 1/2` the density of a maximal contact matching
-  (`C108`). Hence any saturated packing with a positive density of contact pairs is **strictly**
-  below `0.754697399337`, and the equality case of the dodecahedral density bound is **empty**.
+  (`C108`). Hence *if* `ρ > 0` a saturated packing is strictly below `0.754697399337` — a
+  **conditional, non-quantitative** strictness statement, **not a new packing bound**.
+  *(An earlier version also claimed the equality case of the dodecahedral bound is empty; that
+  inference — average reaching a pointwise infimum — is invalid and is retracted at `C108`.)*
 
 **Bridges and conversions.**
 - The periodic-to-arbitrary bridge is exact for its purpose; its `12/S` loss cancels in the limit

@@ -125,8 +125,10 @@ misled by `CLAIMS.md`:
    `π/√18`. Every `K > 2V_dod` is an improvement, and the whole remaining gap is a `1.92%`
    increase in that one constant (`C107`).
 3. `(L_δ)` — the pair constant exceeds `2V_dod` by *some* positive amount — is **true** by
-   compactness (`C108`), which makes any saturated packing with a positive density of contact
-   pairs *strictly* below `0.754697399337`, and makes the equality case of the dodecahedral
-   density bound empty.
+   compactness (`C108`) with the twist step now certified for **all** twists (`C112`). It implies
+   that **if** `ρ > 0` a saturated packing is strictly below the dodecahedral bound. That is
+   **conditional and non-quantitative, and it is not a new packing bound.** (An earlier version of
+   this item also claimed the equality case of the dodecahedral density bound is empty; that
+   average-to-pointwise inference is invalid and is retracted at `C108`.)
 4. Because the constant is not explicit, **none of 2–3 is quoted as a bound**, and per the
    supervisor's standing instruction universal lower-volume claims are `PENDING_REVIEW`.

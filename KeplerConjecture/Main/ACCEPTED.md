@@ -25,6 +25,9 @@ strength of its author's label.
 | Finite-to-infinite cut/flow theorems with a free boundary (`K15-C093`, `Main/CUT_FLOW_THEOREM.md`) | `PROVED` | Gale–Hoffman / Hoffman cut condition; Tychonoff | the free-boundary formulation is what makes the finite reduction go through; the infinite theorem needs compactness only, local finiteness only for `div` to be a finite sum |
 | Cut condition ⟹ Kepler (`K15-C087`) — **one direction only** | `PROVED` (as an implication; statement of the hypothesis is open) | none | the `O(r²)` boundary term needs saturation (`Ω(v) ⊆ B(v,2)`), which `K15-C087` did not state; see §"One-way implications" |
 | Every Voronoi cell of a Barlow packing has volume `√32` (`K15-C094`, `Main/BARLOW_CELLS.md`) | `PROVED` | folklore for fcc/hcp; `K15-C091` for the average | uniformity is new: cell = 12-contact cell (covering radius `≤ √2`), exactly two contact configurations up to isometry, both volumes `√32`; stated for the layered class only |
+| Two adjacent dodecahedral centres are impossible (`C112`) | `PROVED` (all twists, arc cover) | — | supersedes the sampled grid of `C108`; the arc cover is the proof, and a one-pair argument is impossible (`min max_t d² = 8.4223 > 4`) |
+| `σ₀ > 2V_dod`: the pair functional exceeds twice the dodecahedral volume (`C108`) | `PROVED` modulo ML's equality case and `C112`; **`PENDING_REVIEW`** | E's `E074` for the sharp form | non-explicit; gives only conditional strictness, never a number |
+| Monotone bridge `δ ≤ 8π/(3K)` (`C106`/`C107`) | `PROVED` | — | `K = 2V_dod` reproduces `0.754697399337` exactly, `K = 2√32` reproduces `π/√18`; needs a matching, which exact-contact examples can fail |
 | K33 / K33b certificates: `Δ ≤ 0.779966497784`, `0.779966216777` | `VERIFIED_CROSS` (C's two implementations + Main's, after three repairs) | CE 2003 (0.779747) | not an improvement; a checked component |
 
 ## Open
@@ -73,4 +76,8 @@ No new density bound. No improvement over `0.779747` (2-point), `0.770271`
 shell, two-point and transfer routes are "no gain found in the tested scope" or
 "not verifiable by computation", not impossible. No compact reduction exists *for the
 cut formulation as stated* (`C088`); that is not a claim about every reformulation.
-`b ≡ 0` holds on Barlow packings (`C094`), which does **not** characterise them.
+`b ≡ 0` holds on Barlow packings (`C094`), which does **not** characterise them. The pair
+functional's equality family **contains** the Barlow family but is not known to equal it (one
+inclusion only, review 0523). **The equality case of the dodecahedral density bound is *not*
+proved empty** — the average-to-pointwise inference is invalid (`C113`) — and no conditional or
+non-explicit gain here is a new packing bound.

@@ -27,6 +27,7 @@ CHECKS = [
     ("Barlow: bridge boundary term measured (C106)", ["bridge_boundary.py"], ["--quick"]),
     ("ledger: consistency lint (C110)", ["ledger_lint.py"], []),
     ("A15 pair type corrected (C111)", ["a15_pair.py"], ["--quick"]),
+    ("two-dodecahedra: all-twists cover (C112)", ["twist_cover.py"], ["--quick"]),
 ]
 
 

@@ -2586,10 +2586,15 @@ signed `b`, antisymmetric `φ`, uniform capacity):
   the geometry enters only in verifying the cuts — fcc/hcp `b ≡ 0` (`C078`), the
   witness-specific floor `0.0088803` (`C081r`), the large-ball cut being the density
   bound (`C087`), and the closed component needing `Σ_C b ≤ 0` (`C080`).
-- **Worked examples**: the dumbbell `b = (1,−1/3,−1/3,−1/3)` has `t* = 1/3` with the
+- ~~**Worked examples**: the dumbbell `b = (1,−1/3,−1/3,−1/3)` has `t* = 1/3` with the
   exact transfer `φ(a,l_i) = 1/3` and the tight singleton cut as dual witness; the
   variant `b(a) = 4` is infeasible at `Φ = 1` with the violating cut `{a}`; and a
-  two-hop path `(+1,0,0,−1)` has `t* = 1` with a unique flow and three tight prefix cuts.
+  two-hop path `(+1,0,0,−1)` has `t* = 1` with a unique flow and three tight prefix cuts.~~
+  **SUPERSEDED (review 0523): this bullet is retained only as retraction history.** The
+  `b(a) = 4` sentence is wrong — that vector is infeasible at **every** capacity because
+  `Σ_F b = 1 > 0 = cap(F)` — and the `t*` formula it presupposes divides by an empty boundary.
+  The corrected examples, including the genuine threshold case `b = (4,−4/3,−4/3,−4/3)`, are in
+  the repaired block immediately below. Do not cite this bullet.
 
 > **REPAIRED (`D18`; review `K15-REVIEW-0353-M-EVIDENCE`).** Four defects were found by
 > the reviewer and are all confirmed against the text. `Main/CUT_FLOW_THEOREM.md` is
@@ -3174,7 +3179,10 @@ phrasing preserved), `COMPLEXITY.md` §3–§4. *Status.* `CORRECTION`; no mathe
 11.3137084990`. Strictly stronger than the pointwise bound, since Hales–McLaughlin gives only
 `2V_dod = 11.100582057`, and E's `K15-E075` shows `2V_dod` is unattainable for a contact pair.
 **Equality holds on every Barlow packing** — proved here from `K15-C094` (every Barlow cell is
-`√32`), so the equality family is exactly the known extremal one and `2√32` cannot be improved.
+`√32`). So the equality family of `(L)` **contains** the Barlow family, and `2√32` cannot be
+improved. **It is not an iff** (review 0523): Barlow `⟹` equality, but equality `⟹` Barlow is
+not proved and is not claimed. Earlier wording said the equality family "is exactly" the Barlow
+family; that is retracted.
 
 **The bridge (new).** E's justification for `(P′)` is "it implies the cut with `1.72%` margin";
 that arithmetic is correct but it is the cut at `U =` the 13-cluster only, not a density bound.
@@ -3250,13 +3258,26 @@ neither is re-proved: ML's equality case (standard), and the two-dodecahedra imp
 > `ρ := lim P_B/|B| ≤ 1/2`:
 > `δ(Λ) ≤ (4π/3)/(V_dod + δ₀ρ) < 0.754697399337` whenever `ρ > 0`.
 
-**Consequences.** (i) Any saturated packing with a positive density of contact pairs has
-density **strictly** below the dodecahedral bound — unconditionally, since a maximal matching
-always exists and `δ₀ > 0` is proved. (ii) The equality case of the dodecahedral density bound
-is **empty** (equality would need every cell dodecahedral, hence every centre with twelve
-contacts, hence `ρ > 0`). (iii) With `ρ = 1/2` and the sharp `δ₀ = 2√32 − 2V_dod`:
-`V_dod + δ₀/2 = √32` and `c ≤ 1/√32`, the truth. **(iv) With `δ₀` non-explicit there is no
-number**: this is a strictness statement, not a bound, and `RESULTS.md` does not move.
+**Consequences, with scope stated exactly (review 0523 — this block's wording was wrong).**
+
+(i) **Conditional strictness, not a bound.** *If* `ρ > 0` then
+`δ(Λ) ≤ (4π/3)/(V_dod + δ₀ρ) < 0.754697399337`. This concerns packings that *have* contacts, it
+is not quantitative (`δ₀` is non-explicit), and **it is not a new packing bound** — nothing here
+improves `0.754697399337` for all packings.
+
+(ii) **RETRACTED: "the equality case of the dodecahedral density bound is empty."** Rejected
+argument: equality would force the average cell volume to equal the pointwise infimum `V_dod`,
+hence every cell dodecahedral, hence twelve contacts per centre, hence `ρ > 0`, contradicting (i).
+**The first step is invalid** — an average reaching a pointwise infimum *in a limit* does not
+force each term to equal it; it forces only that the excess has zero density. What survives: if
+`ρ > 0` equality is impossible; if `ρ = 0` nothing follows. **The emptiness is open, not proved.**
+(Step (3) of Theorem D is unaffected: there `x, y ≥ V_dod` with `x + y = 2V_dod` genuinely forces
+`x = y = V_dod` — two terms, fixed sum.)
+
+(iii) With `ρ = 1/2` and the sharp `δ₀ = 2√32 − 2V_dod`: `V_dod + δ₀/2 = √32` and `c ≤ 1/√32`,
+the truth — conditional on the sharp `δ₀` and on `ρ = 1/2`.
+
+(iv) With `δ₀` non-explicit there is no number, and `RESULTS.md` does not move.
 
 **Main's own error, recorded.** The first draft wrote `ρ = 1` in (iii), which is impossible for
 a matching (`P_B/|B| ≤ 1/2`) and made the formula appear to return `0.7268 < π/√18` — a bound
@@ -3353,3 +3374,127 @@ pair-sum tables are exactly where a wrong pair type is invisible: every entry is
 every entry exceeds the bound.
 
 *Status.* `PROVED` (exact rationals, with the `a³` sum check). Reviewer X.
+
+### K15-C112 — two adjacent dodecahedral centres: certified for **all** relative twists (`PROVED`)
+
+`Computation/twist_cover.py`. Repairs the step of Theorem D that the review correctly called out:
+*"a sampled twist maximum is not an all-twists proof."* It was, in `C108` — a grid at
+`t = 0°, 18°, 36°, 54°` giving `1.12555484451`. The grid is retracted; here is the proof.
+
+**The structure.** For a pair `(a, q)` drawn from the two eleven-point sets, the squared distance
+under a relative twist `t` about the shared `v`–`w` axis is a **pure sinusoid**:
+
+```
+d²(t) = A + B cos t + C sin t = A + R cos(t − ψ),     R = √(B²+C²),  ψ = atan2(C, B).
+```
+
+So the set of twists for which *that* pair is closer than `2` is
+
+```
+T = { t : cos(t − ψ) < (4 − A)/R } ,
+```
+
+which is **empty**, the **whole circle**, or a **single arc** of half-width `arccos((4−A)/R)`. A
+clash for every twist is therefore the statement that finitely many arcs **cover** the twist
+circle, whose period is `2π/5 = 72°` — the icosahedral stabiliser of the shared vertex axis.
+
+**The result.** 121 pairs, each contributing at most one (possibly wrapped) arc; every endpoint
+computed at 50 significant digits and then **inflated by `1e−20`**, so the arcs tested are
+supersets of the true ones and a cover of the supersets is a cover of the truth. The 125 arcs
+merge into
+
+```
+one interval covering [0, 2π/5], length 1.25663706 = 2π/5 exactly, gaps: 0.
+```
+
+**Hence for every relative twist some pair is closer than `2`, and two adjacent dodecahedral
+centres are impossible.** No twist is sampled and no grid enters.
+
+**Why a one-pair argument fails (recorded so it is not retried).** `min` over pairs of
+`max_t d²` is `8.4223 > 4`, so no single pair is always too close: the arcs must be *combined*.
+This is the substantive content of the step, and the sampled maximum could not see it.
+
+**Status.** `PROVED` (modulo `mpmath.iv`/50-digit arithmetic and the `1e−20` inflation). This
+upgrades `C108` step (4) from `TESTED_FINITE`. Reviewer X — noted that X's audit covers
+`C106`–`C108`, so this repair is handed to X rather than self-certified.
+
+### K15-C113 — review 0523 corrections to `C106`/`C108`, with the rejected text preserved
+
+Five defects were found by the review, all confirmed, plus one found by Main while checking.
+
+1. **`C_R` counted the wrong edges (review).** `C_R` must be the edges with **exactly one**
+   endpoint in `W = B∖E_B` — the crossing edges — and nothing else. An earlier draft described it
+   as "every edge not internal to `W`", which wrongly included edges with both endpoints in
+   `E_B`; those contribute `0` to the counting identity and must not appear. Fixed in
+   `GEOMETRIC_LEMMA_0438.md` §4.1a.
+2. **Compactness cardinality (review).** The bound on the number of centres is
+   `vol B(0,R+1)/vol B(0,1) = (R+1)³`, not `R³` — the unit balls about the centres are disjoint
+   and lie in `B(0,R+1)`. At `R = 21.865` that is `≈11957`, not `≈10453` (`1.4%` larger;
+   conclusion unchanged).
+3. **Finite truncation redundancy (review).** Stated explicitly: a centre at distance `> 2R_max`
+   has its bisector outside `B(v,R_max) ⊇ Ω(v)` and cannot cut, which is Main's Lemma 3; the
+   minimiser's cells therefore depend only on centres inside `B(0, 2R_max)`, and that is what
+   makes the compactification a statement about a *finite* configuration.
+4. **"Equality family is exactly the Barlow family" (review).** Wrong direction: Barlow `⟹`
+   equality in `(L)`, but equality `⟹` Barlow is not proved. Retracted to one inclusion in
+   `C106`, `GEOMETRIC_LEMMA_0438.md` and `REVIEW_0438.md`.
+5. **"The equality case of the dodecahedral density bound is empty" (review).** Retracted. The
+   rejected argument went from "the average cell volume equals the pointwise infimum `V_dod`" to
+   "every cell is dodecahedral", which is invalid in a limit — an average reaching a pointwise
+   infimum forces only that the excess has zero density. Retracted in `C108`, `RESULTS.md`,
+   `EXPOSITION_0438.md`, `GEOMETRIC_LEMMA_0438.md`, `REVIEW_0438.md`. **The emptiness is open.**
+   (Theorem D's step (3) is *not* affected: `x, y ≥ V_dod` with `x + y = 2V_dod` forces
+   `x = y = V_dod` — two terms, fixed sum, valid.)
+6. **Exact-contact matching is an extra hypothesis (review).** `ρ` counts edges at distance
+   *exactly* `2`, so any **scaled** saturated packing (minimum separation `2 + ε`) has an empty
+   contact graph and `ρ = 0`. Theorem C is therefore silent on that whole cone and `(M)` is not a
+   consequence of saturation. Stated explicitly in `GEOMETRIC_LEMMA_0438.md` §4.2.
+7. **Main's own additional finding.** The twist maximum in `C108` step (4) was sampled; `C112`
+   replaces it with a certified arc cover and records why a one-pair argument cannot work.
+
+**None of this changes a number, because none of it ever was one.** The pair route remains
+`PROPOSED`/`PENDING_REVIEW` above the level of `(L_δ)`, and universal pair/compactness claims are
+pending independent review.
+
+### K15-C114 — exact-contact is *not* the binding hypothesis; `ρ_ε > 0` is (`PROVED` reduction)
+
+Review 0523 warns that exact-contact matching "is an extra hypothesis and may fail for scaled
+saturated examples". It is and it does (`C113` item 6). This entry records the consequence, and
+the clarification that follows from `C112`'s machinery: **the exactness can be removed; what
+cannot is the density.**
+
+**Widening to near-contacts.** For `ε ≥ 0` let `G_ε` be the graph of pairs at distance `≤ 2+ε`,
+and `σ₀(ε)` the infimum of `vol Ω(v)+vol Ω(w)` over such pairs. Two facts:
+
+1. `σ₀(ε) > 2V_dod` for every **fixed** `ε ≥ 0`: Theorem D's compactness argument runs verbatim
+   with "distance exactly 2" replaced by "distance in `[2, 2+ε]`" (the admissible set is still
+   compact and `Φ` still continuous), and the equality case still forces two dodecahedral cells —
+   and the two-dodecahedra clash of `C112` persists for centres `d > 2` apart, because the clash
+   margin at `d = 2` is large (`1.1256` against a required `2`, on an arc cover with **no gaps**)
+   and the configuration depends continuously on `d`.
+2. `σ₀(ε)` is **not explicit**, for the same reason as `σ₀`, and nothing here gives a rate in `ε`.
+
+Substituting `G_ε` and `σ₀(ε)` for the contact graph and `σ₀` in Theorem C, the bridge holds for
+any `ε` with `ρ_ε := lim P_B^{ε}/|B| > 0`. So:
+
+> **The exact-contact restriction is removable.** What is *not* removable is `ρ_ε > 0`: a
+> saturated packing whose close pairs are sparse — finitely many, or of zero density — leaves
+> `ρ_ε = 0` for every `ε`, and every version of Theorem C is then silent. Scaled examples are
+> the simplest such family, but they are a symptom, not the disease.
+
+**Consequence for the route's scope, stated once and plainly.** The pair route's obstruction is
+**sparsity of close pairs**, not exact equality of distances. That is a property of the packing
+that no amount of two-cell geometry can supply, and it is now `G13`. It also means the review's
+scaled-example objection is fully absorbed: a scaled packing with `ε₀ > 0` looseness is handled
+by `G_{ε}` for `ε > ε₀` **whenever it has a positive density of minimum-distance pairs**, and
+not otherwise.
+
+**A consistency check, not a theorem.** Two constants in this project coincide by identity:
+`ρ* − 2 = 0.012718662` (`C101`, where the isolated dodecahedral cell reaches `√32`) and
+`ε* = 2((ML/truth)^{1/3} − 1) = 0.012718662` (where a uniform scaling reaches the dodecahedral
+bound). Both are just `√32/V_dod = ML/truth = 1.01919957358` rewritten, so their agreement
+confirms the ledger's arithmetic and says nothing new. Recorded only so that a future block does
+not read a coincidence into it.
+
+*Status.* `PROVED` reduction (item 1 is compactness plus `C112`); no number, no bound. `PENDING_REVIEW`
+with the rest of the pair chain. Reviewer X.
