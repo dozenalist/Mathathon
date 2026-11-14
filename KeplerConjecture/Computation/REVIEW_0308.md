@@ -97,7 +97,17 @@ Recorded because the reviewer's instruction — validate, do not promote — is 
    pointwise condition is the only object and is reported instead.
 
 The third row is the useful one: an **explicit finite cut** giving a rigorous lower bound
-`Φ ≥ 0.008880268291` for that packing. Above that threshold a flow exists and is verified
+`Φ ≥ 0.008880268291` for that packing.
+
+**Caveat the test suite forced (`tests_cut_flow.py` S7), and it matters for reading that
+threshold.** The binding cut need **not** be a singleton: absorbing a *positive*-deficit
+neighbour into `U` costs something but removes an edge from the boundary, and when the neighbour's
+deficit is small the trade pays. Explicit example: a star with centre `3/10`, one leaf `1/5` and two
+leaves `−1/4` has `Σb = 0`, and the pair `{centre, positive leaf}` gives `(3/10+1/5)/2 = 1/4`
+against the singleton's `(3/10)/3 = 1/10` — the pair binds. So a **singleton-cut bound is only a
+lower bound on `Φ*`**; the exhaustive search up to `|U| = 6` is what makes `0.008880268291` a
+defensible threshold for the icosahedral fixture (whose ring cells are so negative that larger `U`
+loses), and `Φ*` could in principle be larger than any singleton computation suggests. Above that threshold a flow exists and is verified
 exactly (`|φ| ≤ Φ`, divergence `≥ b`), reported as `PATCH_FEASIBLE`.
 
 Note what the FCC/HCP controls show: on the two extremal packings the cut condition is
@@ -211,8 +221,9 @@ small-square families do not reach 1.
 
 ## 5. One portable command for the local pilot, and the sweep
 
-`LOCAL_RUN_REQUEST.md` carries the pilot. The sweep is a single command with a seed range, a time
-cap and an output schema:
+`LOCAL_RUN_REQUEST.md` carries the pilot (and now also `cut_flow.py`, `tests_cut_flow.py` and
+`cut_isoperimetry.py`). The sweep is a single command with a seed range, a time cap and an output
+schema:
 
 ```bash
 cd KeplerConjecture/Computation

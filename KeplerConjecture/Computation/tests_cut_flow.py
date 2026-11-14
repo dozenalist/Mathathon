@@ -107,6 +107,23 @@ def main():
     worst = CF.find_violating_cut(b, E, F(0))
     check("no cut reported when the graph is edgeless", worst is None, worst)
 
+    print("S7 the binding cut need NOT be a singleton")
+    # star with centre b0 and ONE positive leaf: absorbing that leaf reduces the boundary
+    # without adding to the deficit, so the pair can beat the singleton.
+    # centre 3/10, one POSITIVE leaf 1/5, two leaves -1/4 each: sum b = 0, so the global
+    # condition is satisfied and the exhaustive search is well posed.
+    b = [F(3, 10), F(1, 5), F(-1, 4), F(-1, 4)]
+    E = [(0, 1), (0, 2), (0, 3)]
+    tot, ok = CF.global_necessary_condition(b)
+    check("sum b = 0 so the global condition holds", tot == 0 and ok, tot)
+    worst = CF.find_violating_cut(b, E, F(0), max_size=len(b))
+    ratio, U, sb, bd = worst
+    singleton = F(3, 10) / 3
+    pair = (F(3, 10) + F(1, 5)) / 2
+    check("pair cut beats the singleton: %s > %s" % (pair, singleton), pair > singleton)
+    check("search finds the pair value (%s) not the singleton" % pair, ratio == pair, ratio)
+    check("binding U is the pair {0,1}", sorted(U) == [0, 1], U)
+
     print()
     if FAILS:
         print("FAILED: %d -> %s" % (len(FAILS), FAILS)); return 1

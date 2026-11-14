@@ -31,6 +31,9 @@ python3 tests_0138.py                                            # every 0138 cl
 ```bash
 cd KeplerConjecture/Computation
 python3 cut_flow.py                     # writes out/cut_flow.json
+python3 tests_cut_flow.py               # truth-known tests: ALL CUT/FLOW TESTS PASS
+python3 cut_isoperimetry.py             # FCC isoperimetric profile: exponent ~ -1/3
+python3 cut_flow.py --fixture out/fixture_example.json   # external-fixture path
 ```
 
 Expected: FCC and HCP report `TRIVIAL_SATISFIED` with `b = 0`; the icosahedral fixture reports the
@@ -103,7 +106,7 @@ SAIR VM.
 | row | wall time | RAM | success criterion |
 | --- | --- | --- | --- |
 | §1 | < 60 s | < 300 MB | all exit 0; `Delta upper` = `0.779966216777` at 12 dp |
-| §2 | ~1 s | < 100 MB | FCC/HCP `TRIVIAL_SATISFIED`; threshold `0.008880268291` |
+| §2 | ~10 s | < 200 MB | FCC/HCP `TRIVIAL_SATISFIED`; threshold `0.008880268291`; `tests_cut_flow.py` all pass; isoperimetry exponent between `-0.30` and `-0.36` |
 | §3 | ~30 s | < 500 MB | each prints an `EXACT` line; identities `True` |
 | §4 | ~15 s | < 300 MB | `AUDIT PASS`; the two degree rows pass |
 | §5 | ≤ 15 min | < 300 MB | one JSON per seed; at least one `VERIFIED_EXACT` |
