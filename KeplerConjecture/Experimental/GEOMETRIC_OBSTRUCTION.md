@@ -251,3 +251,64 @@ below the requirement, while the truth is `44 %` *above* it. The gap is a defici
 Voronoi-volume lower-bound technique, not of the geometry. Closing it needs an estimate that
 uses the neighbour configuration globally and simultaneously — the next missing inequality,
 and the honest stopping point for this block.
+
+## K15-E045 — the centre cell is exactly dodecahedral in every completion
+
+A clean by-product, and it fixes the deficit exactly.
+
+**Proposition (PROVED).** Let `Lambda` be any saturated 2-separated set containing the
+icosahedral 13-cluster (centre `c`, twelve tangent neighbours at the icosahedron vertices of
+circumradius `2`). Then `Omega(c) = D`, the regular dodecahedron of inradius `1`, and
+
+```
+vol Omega(c) = 5.55029102851549...   exactly, for every completion.
+```
+
+*Proof.* The twelve tangent neighbours already impose the twelve bisector half-spaces that
+cut out `D`, so `Omega(c) ⊆ D`. Conversely the dodecahedral theorem gives
+`vol Omega(c) >= V_dodeca = vol D` for every cell of every packing. Hence
+`V_dodeca <= vol Omega(c) <= vol D = V_dodeca`, so equality holds and `Omega(c) = D` up to a
+null set. ∎
+
+**Why it matters.** The deficit `D(C) = sqrt(32) - V_dodeca = 0.1065632209769` is therefore
+**exact and unavoidable**: no completion can reduce it, and no completion can enlarge the
+centre cell to help. This confirms — rather than assumes — the threshold
+`67.9888142149`, and it explains a numerical observation I had recorded without proof: the
+computed centre cell was `5.550291028515513` in *every* run, to `1e-15`, across six random
+and six targeted completions. That agreement is now accounted for: it is a theorem, not a
+property of the completions chosen.
+
+**How much correction is needed.** By `K15-E041`, the dodecahedral theorem gives
+`12 V_dodeca = 66.6034923422`, leaving
+
+```
+67.9888142149 - 66.6034923422 = 1.385321873 ,   i.e. 0.1154435 per outer cell (2.08 %).
+```
+
+## K15-E046 — where that 2.08 % should come from, as an estimate
+
+Each outer centre has five neighbours at `2.102924 > 2` instead of the tangent distance `2`.
+Moving a neighbour from `2` to `2.102924` pushes its bisector out from `1` to `1.051462`,
+so the cell gains a slab of thickness `0.051462` over that face. With five such faces of
+area `A` each, the gain per cell is `5 x 0.051462 x A = 0.25731 A`, and the total gain is
+`12 x 0.25731 A = 3.08772 A`.
+
+Setting `3.08772 A >= 1.385321873` needs `A >= 0.4486`. The pentagonal faces of the
+dodecahedron have area about
+
+```
+A_pent = (1/4) sqrt(25 + 10 sqrt5) a^2 ,   a = 4/sqrt(10 + 22/sqrt5) = 1.4530851 ,
+```
+
+which evaluates to about `1.7205`. So the available gain (`3.08772 x 1.7205 ≈ 5.31`) exceeds
+the `1.385` needed by a factor of about `3.8`, **before** accounting for the fact that the
+five neighbours constrain only part of each face and that the completion shrinks the cell.
+
+**What this is and is not.** It is a first-order estimate identifying the correct mechanism
+and showing the margin is not delicate — consistent with the `44 %` slack measured in
+`K15-E043`. It is **not** a proof: it ignores that the bisector shift is not uniform over a
+face, that faces overlap, and that the completion only ever removes volume. The rigorous
+version must lower-bound the volume of `D` with five faces pushed out by `0.051462`, in the
+directions of the actual icosahedral normals, and show the result exceeds
+`5.665734518`. That is a concrete, finite, algebraic problem about a specific polytope, and
+it is exactly the "next missing inequality". Offloaded in `LOCAL_ICOSA_SEARCH.md`.

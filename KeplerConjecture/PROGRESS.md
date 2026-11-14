@@ -290,5 +290,17 @@ the inward direction, so the outward hemisphere is free and gives
 `(1/3)[2pi + 2pi(1.045)^3] = 4.4849`; refining with the count gives about `4.9`. Both routes
 cap per-cell bounds at `4.7`–`4.9`, `13`–`17 %` below the requirement.
 
+**`K15-E045` — centre cell exactly dodecahedral (PROVED).** In any saturated completion of
+the icosahedral cluster, `Omega(c) = D` exactly: the twelve tangent bisectors give
+`Omega(c) subset D`, and the dodecahedral theorem gives `vol >= V_dodeca = vol D`. Hence the
+deficit `0.1065632209769` is exact and unavoidable. This also explains why the computed
+centre cell was `5.550291028515513` to `1e-15` in all twelve completions.
+
+**`K15-E046` — where the missing `2.08 %` should come from.** Five neighbours at
+`2.102924 > 2` push their bisectors from `1` to `1.051462`, gaining a slab of thickness
+`0.051462` per face. With pentagonal face area `A_pent = 1.7205`, the available gain is about
+`5.31` against `1.385` needed, a margin factor of about `3.8`. A first-order estimate only;
+the rigorous version is a finite polytope computation (below).
+
 Gaps: `(T'-R2')` open; best certified per-cell bound `4.734076` vs required `5.665735`;
 `icosa_dense_optimize.py` unauthored (`LOCAL_ICOSA_SEARCH.md` BLOCKED on authoring).
