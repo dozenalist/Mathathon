@@ -13,6 +13,7 @@ premise is plausible; if it approaches 5.5400 the premise is delicate; if it goe
 premise is FALSE and the conditional theorem is empty.
 
 Run: python3 Experimental/scripts/premise_audit.py [seconds]
+Every start is capped at 120 s regardless of the total (review 2026-11-14_0738).
 """
 import itertools
 import sys
@@ -124,9 +125,13 @@ def main():
     print(f"C5 configuration: vol D' = {base:.9f}")
     print(f"premise needed   : vol D' >= 5.540000")
     print(f"V_dod            : 5.550291\n")
+    # PER-START CAP.  A first version passed `secs` to the first start, so `--seconds 600`
+    # spent 600 s on it -- over the 120 s per-start cap the pilot request specifies
+    # (review 2026-11-14_0738).  Every start, including the first, is now bounded by 120 s.
+    per_start = min(120.0, max(5.0, secs / 7.0))
     best = (base, c5_free(), "C5")
-    v, f = minimise(c5_free(), secs, rng)
-    print(f"local search from C5 ({secs:.0f}s): {v:.9f}")
+    v, f = minimise(c5_free(), per_start, rng)
+    print(f"local search from C5 ({per_start:.0f}s): {v:.9f}")
     if v < best[0]:
         best = (v, f, "C5 basin")
     for trial in range(6):
@@ -134,7 +139,7 @@ def main():
         if f0 is None:
             print(f"  random start {trial}: no legal set found")
             continue
-        v, f = minimise(f0, secs / 2, rng)
+        v, f = minimise(f0, per_start, rng)
         print(f"  random start {trial}: {v:.9f}"
               + ("   <-- new minimum" if v < best[0] else ""))
         if v < best[0]:
