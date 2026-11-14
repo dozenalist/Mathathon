@@ -162,3 +162,41 @@ which the five neighbours at `2.102924 > 2` (bisectors at `1.051462 > 1`) are ex
 *simultaneously* over the whole solid angle rather than direction by direction. Attempt (b)
 is the next missing inequality; attempt (a) is a spherical-code question of the same kind as
 `K15-E014` but at radius `2.09` with one neighbour already fixed, which changes the count.
+
+### Separation check: is the 4.734 an artefact of an illegal configuration?
+
+The minimisation allows the six free neighbour directions to be chosen freely, which could in
+principle place two near neighbours closer than `2` to each other — an illegal configuration
+whose bound would be too weak (still valid, since minimising over a superset only lowers the
+value, but less informative). Adding the true constraint — two neighbours of the outer centre
+at radii `d_a, d_b` must satisfy `d_a^2 + d_b^2 - 2 d_a d_b cos(angle) >= 4`, which for
+`d_a = d_b = 2` means angular separation `>= 60 deg` — and re-minimising gives
+
+```
+4.734075619     (constraint active, configuration reported feasible)
+against 4.733968112 without it.
+```
+
+The bound moves by `1.1e-4`, so **the optimum was already attained at a feasible
+configuration** and the overlap hypothesis is refuted. The `4.734` is therefore not an
+artefact of relaxing the separation constraint; it is what this information actually gives.
+
+The five fixed neighbours sit at angular separation `58.28 deg` from the centre direction
+(law of cosines on the `(2, 2, 2.1029)` triangle), which is exactly the tangency value
+`arccos(0.52573)` — the configuration is tight, and the free directions cannot buy much.
+
+### Summary of the per-cell obstruction
+
+| bound | value | source |
+| --- | --- | --- |
+| inscribed ball | `4.188790` | separation `>= 2` alone |
+| angular + count-12 + separation | `4.734076` | this work, feasible optimum |
+| dodecahedral theorem | `5.550291` | McLaughlin, computer-assisted |
+| **required** | **`5.665735`** | `(T')` |
+
+Every available per-cell bound is short, including the ideal single-cell minimum. The
+deficiency is `16.4 %` for the best self-contained bound and `2.04 %` even for the
+computer-assisted ideal. **Conclusion: `(T'-R2')` cannot be proved by per-cell estimates in
+any form presently available, and the block must either be enlarged (two-shell `(T'-2)`) or
+the inequality replaced by a collective statement over the whole block.** That is the
+precise state of the geometric route at handoff.

@@ -52,7 +52,19 @@ def fib(n):
     return np.stack([np.cos(th)*np.sin(ph),np.sin(th)*np.sin(ph),z],1)
 U=fib(2500); Wq=4*np.pi/len(U)          # equal-area => uniform weight
 
-def vol_lb(free_u, free_d):
+def sep_penalty(free_u, free_d, wl=400.0):
+    """near neighbours of w must be mutual distance >= 2 in 3-D.
+       For directions a,b with radii da,db:  dist^2 = da^2+db^2-2 da db cos(angle) >= 4."""
+    allU=np.vstack([FU,free_u]); allD=np.concatenate([FD,free_d])
+    C=allU@allU.T; D2=(allD[:,None]**2+allD[None,:]**2-2*allD[:,None]*allD[None,:]*C)
+    n=len(allD); pen=0.0
+    for i in range(n):
+        for j in range(i+1,n):
+            if D2[i,j] < 4.0-1e-9:
+                pen += (4.0-D2[i,j])
+    return wl*pen
+
+def vol_lb(free_u, free_d, penalise=True):
     allU=np.vstack([FU,free_u]); allD=np.concatenate([FD,free_d])
     cosang=U@allU.T                      # (nq, nc)
     with np.errstate(divide='ignore',invalid='ignore'):
@@ -63,7 +75,9 @@ def vol_lb(free_u, free_d):
     # d >= 2.09 hence d/(2 cos phi) >= 1.045.  (An earlier version used max here,
     # which inflated the bound and was caught by the direction check.)
     t=np.minimum(t_near, FALLBACK)
-    return float((t**3).sum()*Wq/3.0)
+    v=float((t**3).sum()*Wq/3.0)
+    if penalise: v += sep_penalty(free_u, free_d)
+    return v
 
 def unpack(x):
     x=np.asarray(x).reshape(-1,3)
@@ -79,13 +93,16 @@ for trial in range(4):
     # separation check among free dirs and against fixed (must be >=2 apart in 3-D)
     Fu=unpack(r.x)
     P=np.vstack([[w], w+2.0*Fu])         # crude: only 2-separation of the new ring
-    rec=dict(trial=trial,val=float(r.fun))
+    Fu=unpack(r.x)
+    rec=dict(trial=trial,val=float(r.fun),valor=vol_lb(Fu,np.full(6,2.0),penalise=False),
+             feasible=bool(sep_penalty(Fu,np.full(6,2.0),wl=1.0)<=1e-7))
     if best is None or r.fun<best['val']: best=rec
 print(json.dumps(best,indent=1))
 print("threshold per outer cell      :", round(13*R32/12-5.5502910285155105/12,9))
 print("dodecahedral floor            : 5.550291029")
 print("12-direction (count-only) floor:", "~5.5503 (McLaughlin)")
 print("inscribed-ball bound          :", round(VOCT,9))
-print("angular bound (this run)      :", round(best['val'],9))
+print("angular bound (unpenalised)   :", round(best.get('valor',best['val']),9),
+      " feasible:", best.get('feasible'))
 print("VERDICT:", "above threshold" if best['val']>5.665734518 else "BELOW threshold -> (T') refuted approximate")
 open('Experimental/evidence/outer_cell_angular_bound.txt','w').write(json.dumps(best,indent=1)+"\n")

@@ -265,5 +265,12 @@ Artifacts: `GEOMETRIC_OBSTRUCTION.md` extended, `REVIEW_CHECKLIST_X.md`,
 `LOCAL_ICOSA_SEARCH.md`, `scripts/{interval_selfaudit,outer_cell_angular_bound}.py`,
 `evidence/{icosa_compensation_search,icosa_targeted_completion,outer_cell_angular_bound}.txt`.
 
-Gaps: `(T'-R2')` open; best certified per-cell bound `4.733968` vs required `5.665735`;
+**Separation check.** Adding the true constraint that two near neighbours of radius `~2`
+must be `>= 60 deg` apart changes the angular bound only from `4.733968` to `4.734076`, at a
+feasible optimum. So the bound is not an artefact of an illegal configuration, and the
+optimiser was already finding the true minimum of this functional. The five fixed neighbours
+sit at exactly the tangency angle `arccos(0.52573) = 58.28 deg`, so the configuration is tight
+and free directions buy almost nothing.
+
+Gaps: `(T'-R2')` open; best certified per-cell bound `4.734076` vs required `5.665735`;
 `icosa_dense_optimize.py` unauthored (`LOCAL_ICOSA_SEARCH.md` BLOCKED on authoring).
