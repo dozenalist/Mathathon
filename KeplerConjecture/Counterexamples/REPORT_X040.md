@@ -272,7 +272,7 @@ work. `Reviews/verify_eta_closed.py` checks the three things that matter at once
 
 So the guard closes the witness and moves no published number. I also re-ran the three
 adversarial families (`Reviews/x_family_check.py`) against `5caa1c9`: **0 wrong verdicts in
-3,600 random queries**, 0 in the probe-targeted family, 0/8 in the near-touching family. That is expected — the change is a precondition, not a
+9,000 random queries**, 0 in the probe-targeted family, 0/8 in the near-touching family. That is expected — the change is a precondition, not a
 predicate repair — but it is worth having on record that the precondition added no regression in
 the part of the checker that has failed three times before.
 
@@ -323,7 +323,7 @@ conclusion, so the correction matters.
 | `5619c1d` | `Reviews/shell_check_9461aae.py` | 0/900 | **5 wrong** | **3/8 wrong** |
 | `7dc6be58` | `Reviews/shell_check_0a85bee.py` | 0/900 | 0 | 0/8 |
 | `909a50a` | `Reviews/shell_check_7c56c5ee.py` | 0/900 | 0 | 0/8 |
-| `5caa1c9` | `Reviews/shell_check_5caa1c9.py` | 0/3600 | 0 | 0/8 |
+| `5caa1c9` | `Reviews/shell_check_5caa1c9.py` | 0/9000 | 0 | 0/8 |
 
 Two things follow, and both belong in the record rather than in a footnote.
 
@@ -376,7 +376,7 @@ proved".
 | `X-C023` | C's four `cut_flow.py` defects reproduce portably (`7/7`) from a byte copy of blob `700e44f6`, unchanged at the current `comp` tip. | **VERIFIED**, `Reviews/repro_c_cutflow_defects.py` |
 | `X-C024` | Theorem 1 and the threshold formula are confirmed against exact Fourier–Motzkin elimination over ℚ: `0/297` mismatches at `n ≤ 6` (1 undecided by the blow-up guard), in addition to the LP (`0/115`). | **VERIFIED**, §E of the audit script |
 | `X-C025` | Main's `η ≥ 0` guard (`5caa1c9`) closes the §17 witness and leaves the `η = 0` control at `0.780370311`; C's solver already had `−η ≥ 0` since `4bcbd3a`, so the witness is synthetic and the exposure was the checker's licence only. | **VERIFIED**, `Reviews/verify_eta_closed.py` |
-| `X-C026` | `5caa1c9` passes 3,600 further random-family queries with 0 wrong verdicts (plus targeted and near-touching families). | **VERIFIED** |
+| `X-C026` | `5caa1c9` passes 9,000 further random-family queries with 0 wrong verdicts (plus targeted and near-touching families). | **VERIFIED** |
 | `X-C027` | The readable verifier rejects all three tampered certificates and accepts the honest one; the `10⁻⁶` perturbation is invisible to a float comparison of the bound and is caught only by the exact identity. | **VERIFIED**, `Reviews/negative_control_readable.py` |
 | `X-C028` | Main's `D18` reverse condition is not triggered (no fifth defect); `D16`'s acceptance test stands with generic soundness still `SUSPENDED`; `D3`'s anchor is respected. `NEXT_PACKAGE` item 1 (`V = 5.40`) is already implied by Hales–McLaughlin. | **VERIFIED** / one wording defect open in Main's file |
 | `X-C029` | `CLAIMS.md` `K15-C093` still states `sup Φ < ∞` and the `{a}`-cut `4/3` example in its bullet list, both refuted by its own repair note. | **DEFECT** (documentation, Main's file) |
@@ -396,7 +396,7 @@ Three of Main's decisions have X-triggered reverse conditions. Their state after
   reverse condition is **not triggered**; `K15-C093` can be quoted as repaired-and-audited, with
   `X-C018` as the reviewer's statement.
 - **D16** ("`shell_check.py` is the acceptance test; reverse if X's audit finds an error"). At
-  `5caa1c9` the predicate side passes 3,600 adversarial queries with 0 wrong verdicts and the
+  `5caa1c9` the predicate side passes 9,000 adversarial queries with 0 wrong verdicts and the
   `η` licence is enforced. Two things remain true and are not in tension with that: (i) the old
   blobs `a8526a8`, `5619c1d`, `812105c3`, `909a50a` each had a real defect, and D16's rule that
   "the corrected file is the acceptance test and the old one is preserved" is what made the
