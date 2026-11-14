@@ -72,6 +72,14 @@ certificate has a two-degree margin — far more than any rounding error at 60 d
 sampled maximum of the minimum distance over the twist is `1.125554845 < 2`, consistent with the
 cover.
 
+**The cover is complete**, which is worth one paragraph because a reader will ask whether the
+`11 × 11` pairs are all that can clash. The other four families are twist-independently safe:
+`w` to `v`'s ring is the icosahedron edge `2.102924448 ≥ 2`; within either ring the twist is a
+rotation, so distances are preserved and the same `2.102924448` is the minimum; the shared pair is
+the contact, exactly 2; and `v` to `w`'s ring has `|w + R_t q|² = 8 + 4q_x ≥ 8 − 4(2/√5) = 4.4223`,
+i.e. distance `≥ 2.102924448` for **every** twist (the `q_x = −2` antipode is the excluded contact).
+So only the 121 cross pairs can clash, and the cover over them settles all twists.
+
 So the theorem is true and certified: **for every relative twist, some pair of the two eleven-point
 sets is strictly closer than 2, hence two regular dodecahedral cells of inradius 1 cannot have
 centres at distance exactly 2.** That restores `C108` step (4) — as `X-C058`, replacing `C112` and
