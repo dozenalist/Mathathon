@@ -86,14 +86,23 @@ for _ in range(33):
     P = sp.Poly(p, sp.Symbol('x'))
     cases.append([P.coeff_monomial(sp.Symbol('x')**k) for k in range(P.degree() + 1)])
 
+# fourth route: X's own exact_sign, which every X certificate rests on
+es = load("es", os.path.join("..", "exact_sign.py"))
+xs_ = sp.Symbol('x')
+def x_side(coeffs):
+    p = sum(sp.Rational(v)*xs_**i for i, v in enumerate(coeffs))
+    return bool(es.sign_on_half_line(p, 0, +1, var=xs_))
+
 bad = 0
 for coeffs in cases:
-    t = truth(coeffs)
+    t = bool(truth(coeffs))
     a = main.nonneg_on_half_line(coeffs)
     b = comp_nonneg(coeffs)
-    if not (t == a == b):
+    xv = x_side(coeffs)
+    if not (t == a == b == xv):
         bad += 1
-        print("  MISMATCH truth=%s main=%s comp=%s on %s" % (t, a, b, coeffs))
-print("%d cases: truth == Main == C on %d, mismatches %d" % (len(cases), len(cases)-bad, bad))
+        print("  MISMATCH truth=%s main=%s comp=%s exact_sign=%s on %s" % (t, a, b, xv, coeffs))
+print("%d cases: truth == Main == C == X's exact_sign on %d, mismatches %d"
+      % (len(cases), len(cases)-bad, bad))
 print("imports: exactcert -> {fractions}; shell_check -> {sympy, fractions}; no shared module")
 sys.exit(0 if bad == 0 else 1)

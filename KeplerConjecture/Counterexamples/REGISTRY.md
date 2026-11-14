@@ -656,8 +656,8 @@ the repaired theorem's `max(0,·)`, so on an all-negative instance it reports `t
 `5c10267`) imports `fractions.Fraction` only and hand-writes `pmul`, `pdivmod`, `pgcd`,
 `sturm_chain`, `sign_variations`, `cauchy_bound`; `shell_check.py` (`5caa1c9`) imports `sympy` +
 `fractions` and delegates root isolation to SymPy; neither imports the other. **Agreement:** on
-`q ≥ 0` on `[0,∞)`, Main's SymPy predicate, C's hand-rolled Sturm and the algebraic odd-part rule
-agree on all 52 vectors tried — both leading signs, roots at 0, repeated roots, and 12
+`q ≥ 0` on `[0,∞)`, **four** routes — Main's SymPy predicate, C's hand-rolled Sturm, X's
+`exact_sign.py` and the algebraic odd-part rule — agree on all 52 vectors tried — both leading signs, roots at 0, repeated roots, and 12
 near-touching cases `(t−r)² ∓ ε` with `ε = 10⁻²⁰, 10⁻⁸`. **Not closed:** finite sample, `q`-side
 only; the `p ≤ η` predicate and the `η` precondition are outside it (the latter is `X-C025`). G8
 should read "independence established; agreement sampled, not proved".
