@@ -3815,9 +3815,16 @@ volume `5(3+√5)a³/12 = 5.0540561436`.
    volume of a circumscribed polyhedron with `20` faces, which is `≤ V_ico` (the regular icosahedron
    attains `V_ico`, but whether it *minimises* over `20`-face circumscribed polyhedra is a classical
    question Main has **not** resolved — no source for it is in the repository and it was not
-   searched). Since the minimum decreases with `F`, the target is a lower bound at `F = 20`:
-   **any `c ≥ 4.958` valid for circumscribed polyhedra with `≤ 20` faces would close the
-   `≤ 20`-face case.**
+   searched). The target is a lower bound at `F = 20`, on the expectation that the minimum
+   decreases with `F` — which is *supported* by the Platonic sequence but **not proved here**
+   (`F = 4, 6, 8, 12, 20` give `13.86, 8.00, 6.93, 5.55, 5.05`, monotonically down toward the
+   sphere's `4.19`). So: **any `c ≥ 4.958` valid for circumscribed polyhedra with `≤ 20` faces
+   would close the `≤ 20`-face case**, and the monotonicity is an expectation, not a lemma.
+
+   *(A false start, recorded: Main considered getting `c` from Santaló's inequality and abandoned
+   it — the constant `vol(B)²` that came to mind is **wrong**; the regular tetrahedron of inradius
+   `1` has `vol·vol° = 13.86 × 0.513 = 7.11 < 17.55`, so the recalled form is false. Nothing was
+   recorded from it, and it is noted so that nobody picks it up as if it had been checked.)*
 
 **Why this is worth stating.** It converts "settle the singleton question" into two concrete
 sub-problems with numbers: a classical circumscribed-polyhedron bound at `F = 20` (target `4.958`),
