@@ -44,7 +44,7 @@ def rational_T_HI(rho, digits=6):
     s = 10 ** digits
     return F((x.numerator * s) // x.denominator, s)
 
-def solve_laguerre(K, T_LO, T_HI, Umax, use_eta, n, eps_shell):
+def solve_laguerre(K, T_LO, T_HI, Umax, use_eta, n, eps_shell, extra_hat=(), eps_q=None):
     """Variables c_0..c_K, eta.  q(0)=1.  minimise p(0) + n*eta."""
     tp = np.unique(np.concatenate([2 * np.linspace(float(T_LO), float(T_HI), 300),
                                    2 * np.linspace(float(T_LO), float(T_HI), 60)]))
@@ -55,7 +55,8 @@ def solve_laguerre(K, T_LO, T_HI, Umax, use_eta, n, eps_shell):
     # on a scale ~1/K in u, so the grid is deliberately dense and geometric near 0.
     th = np.unique(np.concatenate([2 * Umax * (np.expm1(7 * np.linspace(0, 1, 1500)) / np.expm1(7.0)),
                                    2 * np.linspace(0.0, Umax, 1500),
-                                   2 * np.linspace(0.0, 3.0 * Umax, 3000)]))
+                                   2 * np.linspace(0.0, 3.0 * Umax, 3000),
+                                   np.asarray(list(extra_hat), float)]))
     Ms, Me, Mh = basis(tp, K), basis(te, K), basis(th, K) * ((-1.0) ** np.arange(K + 1))[None, :]
     cw = np.maximum(np.abs(np.vstack([Ms, Me, Mh])).max(axis=0), 1e-14)
     Ms, Me, Mh = Ms / cw, Me / cw, Mh / cw
@@ -66,13 +67,23 @@ def solve_laguerre(K, T_LO, T_HI, Umax, use_eta, n, eps_shell):
     A_parts = [np.hstack([Ms / rs[:, None], eta_col]),
                np.hstack([Me / re[:, None], np.zeros((len(re), 1))]),
                np.hstack([-Mh / rh[:, None], np.zeros((len(rh), 1))]),
+               # eta >= 0.  The coefficient must be -1: with +1 this row reads eta <= 0,
+               # a needless tightening that also lets the objective drive eta -> -inf
+               # (measured: eta hit the -1e5 box bound and the candidate was rejected).
                np.hstack([np.zeros((1, K + 1)),
-                          np.ones((1, 1)) if use_eta else np.zeros((1, 1))])]
+                          -np.ones((1, 1)) if use_eta else np.zeros((1, 1))])]
     asym = np.zeros((1, K + 2)); asym[0, K] = -1.0
     A_parts.append(asym)
     A = np.vstack(A_parts)
+    # A margin is required on BOTH sign conditions.  Without one on q >= 0 the LP parks q
+    # exactly on a double root (measured: min q = -1.1e-07), which exact Sturm correctly
+    # rejects and which no amount of grid refinement repairs, because the constraint is
+    # already satisfied to solver tolerance at those points.
+    if eps_q is None:
+        eps_q = max(eps_shell, 1e-5)
     b = np.concatenate([-eps_shell * np.ones(len(rs)),
-                        np.zeros(len(re)), np.zeros(len(rh)), [0.0], [-1e-9]])
+                        -eps_q * np.ones(len(re)), -eps_q * np.ones(len(rh)),
+                        [0.0], [-1e-9]])
     L0 = np.array([lag(k, 0.0) for k in range(K + 1)]) / cw
     cq0 = np.concatenate([L0 * ((-1.0) ** np.arange(K + 1)), [0.0]])
     obj = np.concatenate([L0, [float(n) if use_eta else 0.0]])
@@ -109,6 +120,33 @@ def exact_verdict(SC, a, eta, K, T_LO, T_HI):
               and SC._ray(a, T_HI) and b[0] > 0 and a[0] > 0)
     return ok, b
 
+def negative_intervals(b, K, umax=400.0, npts=400001):
+    """Narrow negative excursions of q that a uniform grid can miss.
+
+    A grid constraint q(t_i) >= 0 at spacing h cannot see a dip of width < h that crosses
+    below zero and returns between two sample points.  This finds those dips exactly enough
+    to cut them: locate real root intervals numerically, keep the ones where q < 0, and
+    return their midpoints as extra constraint points.  The exact checker still decides;
+    these points only steer the LP.
+    """
+    xs = np.linspace(0.0, umax, npts)
+    vals = np.zeros_like(xs)
+    for i, c in enumerate(b):                    # Horner in float, steering only
+        vals = vals * xs + float(c)
+    neg = np.where(vals < 0)[0]
+    if neg.size == 0:
+        return []
+    # group contiguous negative runs, take the midpoint of each
+    cuts, run = [], [neg[0]]
+    for j in neg[1:]:
+        if j == run[-1] + 1:
+            run.append(j)
+        else:
+            cuts.append(xs[run[len(run) // 2]]); run = [j]
+    cuts.append(xs[run[len(run) // 2]])
+    return [2.0 * u for u in cuts]               # t = 2u
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--checker", required=True)
@@ -133,26 +171,40 @@ def main():
         for use_eta in (False, True):
             tag = "eta_free" if use_eta else "eta=0"
             got = None
-            for eps in (1e-3, 1e-4, 1e-5, 1e-6, 1e-7, 0.0):
-                sol = solve_laguerre(K, T_LO, T_HI, a.Umax, use_eta, n, eps)
-                if sol is None:
-                    continue
-                c, eta = sol
-                for D in (10**6, 10**9, 10**12):
-                    cr = [F(int(round(x * D)), D) for x in c]
-                    er = F(int(round(eta * D)), D)
+            cuts = []
+            # smallest margin first: the margin is a cost, so prefer the tightest one
+            # that still survives rounding and exact verification.
+            for eps in (1e-6, 1e-5, 1e-4, 1e-3, 1e-2):
+                for _round in range(12):          # cutting-plane refinement
+                    sol = solve_laguerre(K, T_LO, T_HI, a.Umax, use_eta, n, eps, cuts)
+                    if sol is None:
+                        break
+                    c, eta = sol
+                    cr = [F(int(round(x * 10**9)), 10**9) for x in c]
+                    er = F(int(round(eta * 10**9)), 10**9)
                     am = to_monomial_u(cr, K)
                     ok, b = exact_verdict(SC, am, er, K, T_LO, T_HI)
                     if ok:
-                        p0, q0 = am[0], b[0]
-                        val = (p0 + n * er) / q0
-                        got = dict(eps=eps, denominator=D, eta=str(er),
-                                   a_monomial=[str(x) for x in am],
-                                   c_laguerre=[str(x) for x in cr],
-                                   p0=str(p0), q0=str(q0),
-                                   delta_lo=float(4 * PI_LO / 3 * val),
-                                   delta_hi=float(4 * PI_HI / 3 * val))
+                        for D in (10**6, 10**9, 10**12):
+                            cr2 = [F(int(round(x * D)), D) for x in c]
+                            er2 = F(int(round(eta * D)), D)
+                            am2 = to_monomial_u(cr2, K)
+                            ok2, b2 = exact_verdict(SC, am2, er2, K, T_LO, T_HI)
+                            if ok2:
+                                p0, q0 = am2[0], b2[0]
+                                val = (p0 + n * er2) / q0
+                                got = dict(eps=eps, denominator=D, eta=str(er2),
+                                           a_monomial=[str(x) for x in am2],
+                                           c_laguerre=[str(x) for x in cr2],
+                                           p0=str(p0), q0=str(q0), cuts=len(cuts),
+                                           delta_lo=float(4 * PI_LO / 3 * val),
+                                           delta_hi=float(4 * PI_HI / 3 * val))
+                                break
                         break
+                    new = negative_intervals(b, K)
+                    if not new:
+                        break
+                    cuts.extend(x for x in new if x not in cuts)
                 if got:
                     break
             if got:

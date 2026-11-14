@@ -32,8 +32,8 @@ python3 verify_certificate.py out/verified_certificate_K33.json
 python3 exactcert_tests.py
 python3 exactcert_oracle.py
 
-# 2. shell proposer against Main's exact checker, ~60 s
-python3 shell_sos.py --checker ../Main_checker/shell_check.py --degree 8
+# 2. shell proposer against Main's exact checker, ~5 s for degree 9
+python3 shell_propose.py --checker /tmp/shell_check.py --degree 9
 ```
 
 For (2) copy Main's checker next to the run, or pass its absolute path:
@@ -54,7 +54,7 @@ used on the VM: numpy 2.5.3, scipy 1.18.1, sympy current.
 | `verify_certificate.py K33` | `ACCEPT`, `0.779966497785` | exit 0 |
 | `exactcert_tests.py` | `ALL TESTS PASS` | exit 0, including the `K21` refutation |
 | `exactcert_oracle.py` | `ALL ORACLE CHECKS PASS` | exit 0 |
-| `shell_sos.py --degree 8` | comparison table `eta=0` vs `eta>0` at `n=27,rho=2.05` and `n=12,rho=2.09` | prints exact verdicts from `shell_check`; **no FAIL may be reported as a bound** |
+| `shell_propose.py --degree 9` | `eta=0` and `eta_free` both EXACT PASS at `Delta <= 0.87227746`; gain exactly 0 | both rows PASS; gain printed as `+0.00000000` |
 
 ## Caps
 

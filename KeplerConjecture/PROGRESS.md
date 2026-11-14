@@ -245,3 +245,47 @@ independent negative result from the shell bench (`K15-C-SHELLBENCH-001`, gain e
 count-strengthening with a uniform 12-neighbour shell (gain 0), and degree escalation of the
 certified CE optimum (saturates `0.03%` above CE03). The remaining live route in my scope is a
 genuinely different mechanism — three-point/SDP, or a local geometric inequality.
+
+### K15-COMP-009 — 2026-11-14T09:18–10:19Z — Computation (role C), shell proposer
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-FREEZE-001 | frozen | the K33 certificates, both checkers, the oracle, the regression suite and the run request are pushed at `50727f1` and `90cc632` and restated in `Computation/LOCAL_RUN_REQUEST.md` with caps (≤300 s, 1 CPU, <1 GB) | `LOCAL_RUN_REQUEST.md` |
+| K15-C-THIDEP-001 | **PROVED (defect in my reading, not in Main's file)** | `shell_check.check()` hardcodes `T_HI = 27/2`, which is valid for `ρ = 2.09` (`πρ² = 13.72`) but **invalid for `ρ = 2.05`** (`πρ² = 13.20`). The parameterised predicates must be called with `T_HI(ρ) = ⌊π_lo ρ²⌋` | `shell_propose.py`, `SHELL_PROPOSE_RESULTS.md` |
+| K15-C-ODDDEG-BASIS-001 | **PROVED (elementary)** | in Main's monomial basis `M` is upper triangular with diagonal `(−1)^i`, so `lc(q) = (−1)^K a_K` and `lc(p) = a_K`; both sign conditions hold only for `K` odd. Verified numerically `M[K][K] = (−1)^K` | `shell_sos.py` guard |
+| K15-C-MONOBASIS-001 | measured | the monomial basis is unsuitable for *optimisation*: `M[0][k] = (2k+1)!!/2^k` gives `M[0][7] = 15836`, and the direct LP returns box vertices with `p(0) → −∞`, reproducing `K15-C022`. Cause identified | `shell_sos.py`, results file |
+| K15-C-SHELLPROP-001 | **UNRESOLVED (explicit failure)** | the corrected proposer (`shell_propose.py`) passes the shell and exterior-ray verdicts but fails `q ≥ 0` (`min q ≈ −1.8` at `u ≈ 21.5`) even with a 6000-point dual grid. **No exact candidate; no shell bound claimed.** Attributed to the proposer (four defects found and fixed in it this block), not to the mathematics | `SHELL_PROPOSE_RESULTS.md` |
+
+**Consequence for the shell question.** `K15-C-SHELLBENCH-001` (`eta = 0`, gain exactly 0, my
+Laguerre basis) is **neither confirmed nor refuted in Main's basis** by this block. Main should
+treat the `eta` question as *one measurement in one basis* until a candidate is produced and
+exactly certified.
+
+**Four defects found in my own code this block**, listed because three of them were caught only
+by an independent checker: the `T_HI` default, even-degree impossibility in Main's basis, the
+`mono(u)·M` vs `mono(u)·Mᵀ` transpose error, and a column-scaling recovery inverted in the
+wrong direction (caught because `q(0)` came out `1.62` where `1` was imposed). No defect was
+found in `shell_check.py`.
+
+### K15-COMP-010 — 2026-11-14 — Computation (role C), shell proposer RESOLVED
+
+Supersedes the "explicit failure" status in `K15-COMP-009`. The five defects listed there were
+real; fixing them produced exact candidates, and the earlier negative claim is now corroborated
+by an independent basis and an independent checker.
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-SHELLPROP-002 | **VERIFIED_EXACT** (conditional only on citing CE) | at degree 9, in Main's basis with Main's checker: `Δ ≤ 0.87227746` for every unit-sphere packing, for `n = 27, ρ = 2.05` (unconditional, K15-C013a) and for `n = 12, ρ = 2.09` (conditional, K15-C019) | `shell_propose.py --degree 9`, `out/shell_propose.json`; verdicts are exact Sturm over `Q` with rational `π` enclosures, issued by `shell_check.py` |
+| K15-C-SHELLGAIN-002 | **VERIFIED_EXACT** | with the allowance free, the LP sets `η = 0` in both cases and returns the *identical* value: **gain exactly 0**. This independently confirms `K15-C-SHELLBENCH-001` in a different basis (`u = π|x|²` vs `t = 2π|x|²`), with a different Fourier matrix and different Sturm implementation | same |
+| K15-C-ETASIGN-001 | **PROVED (defect)** | the `η ≥ 0` row had coefficient `+1`, enforcing `η ≤ 0`; the objective drove `η → −10⁵` and produced a "candidate" with `Δ = −4.6e6`. A negative density bound should have been rejected by inspection before the checker | `SHELL_PROPOSE_RESULTS.md` §4.5 |
+| K15-C-QMARGIN-001 | measured | a margin on `q ≥ 0` is mandatory, not cosmetic: without it the LP parks `q` at a double root (`min q = −1.1e-07`) which exact Sturm correctly rejects, and no grid refinement repairs it because the constraint is already met to solver tolerance | §2 step 4 |
+| K15-C-CUTPLANE-001 | measured | the final `q` has a negative dip of width `0.034` at `u ≈ 21.52` while a 1500-point grid has spacing `0.027`; cutting-plane refinement at the dip midpoints is what makes the candidate verifiable | §2 step 3 |
+
+**Scope.** `0.87227746` is a valid exact certificate and is **not** competitive with CE's
+`0.779747`; the gap is the price of `T_LO = 12 < 4π` and of the mandatory `ε_q ≥ 1e-5` margin on
+this route. It is offered as a cross-validated artifact, not a bound to improve on.
+
+**The shell question is now closed with two independent measurements:** a uniform
+`n`-neighbour allowance at fixed degree does not pay, because the objective charges `n·η` while
+`p(0) ≈ 0.21`, so `η` must be below `≈0.008` to break even and at that size the relaxation buys
+nothing.
