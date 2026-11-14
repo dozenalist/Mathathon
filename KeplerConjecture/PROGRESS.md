@@ -455,3 +455,32 @@ The block's own record now contains three self-inflicted defects (C029, C049,
 C058), each caught by an outside reproduction rather than by the tests that were
 supposed to cover it. `Main/AUDIT_REQUEST_X.md` and `Computation/run_all_checks.py`
 are the response.
+
+### K15-MAIN-010 — 2026-11-14 10:36:27Z– — review 0223 block
+
+Receipt `10:36:27Z`. Read: supervisor `a2237aa`, C `b51129e`, E `846f221`, X `9dc2ab2`.
+
+- **Third checker defect and repair (`K15-C068`)**: `(u−7/5)² − 2·10⁻⁴⁰` was
+  accepted because SymPy's two isolating intervals share the rational endpoint
+  `7/5`, leaving no gap to sample. The gap rule now applies only when the intervals
+  are separated by non-empty gaps; otherwise `function_range` decides (exact:
+  extrema at endpoints and critical points). Correctness argument stated in the
+  docstring. Suite at **35 cases**; certificate path never enters the fallback, so
+  certificate checks stay independent of `function_range`.
+- **`K15-C035`'s lost factor `R` restored** (`C₁ = 3ΦR(R+1)⁵`; 1766.28 at
+  `R = 2.09`, not 845.11). The `k_R`-based figures already included `R` and stand
+  (718.40 at `k_R = 12`).
+- **`K15-C069`**: E's `(Q)` is false — a saturated packing does contain a cell below
+  `√32` (the dodecahedral one, via `X-C003(iii)` and Zorn). `K15-C072`/`D17` choose
+  E's `(H_R)` in cluster-average form as the next target.
+- **`K15-C070`/`BRIDGE_AUDIT.md`**: the periodic bridge compared with Cohn–Elkies'
+  Appendix A (read from the PDF): CE need Groemer and pass to an extremal packing;
+  `K15-C002b` stays with the given packing and pays explicit losses.
+- **`K15-C071`**: proof complexity of the transfer route — non-effective only for
+  aperiodic packings; the real cost is exact cell volumes, which Hales never needs.
+- **`K15-C076`/`C077`**: audited X's repaired `exact_sign` and cross-ran the suite
+  against it — 10/10 agreement, giving the project two complete independent
+  half-line implementations.
+- **`K15-C075`**: cost profile, with the documented slow branch (high degree with
+  clustered roots: exact but minutes; no certificate enters it).
+- Lean not iterated (1 GiB cap at 8.8 s); `M-LEAN-003` stands.

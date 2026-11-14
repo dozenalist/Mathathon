@@ -60,4 +60,6 @@ def main(dirpath):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
+        print("usage: python3 xsign_crossrun.py <dir containing exact_sign.py>"); sys.exit(0 if len(sys.argv) > 1 else 2)
     sys.exit(main(sys.argv[1]))
