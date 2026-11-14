@@ -44,6 +44,26 @@ def sample_minmax(expr, lo, hi, n=40001):
     return float(np.nanmin(vals)), float(np.nanmax(vals))
 
 
+def structured_cases(rng, n):
+    """Perfect squares and their negations: the family that defeated two repairs.
+
+    Random coefficients in a box essentially never produce a polynomial all of
+    whose roots have even multiplicity, so a uniform random fuzz cannot find this
+    failure mode.  Here the polynomial is built AS a square on purpose:
+        p = sign * prod_i (u - r_i)^2  with rational roots r_i.
+    Its sign is constant (= sign) and it is zero at every r_i, so any checker that
+    decides the sign only at the roots will accept the wrong inequality.
+    """
+    out = []
+    for _ in range(n):
+        m = rng.randint(1, 3)
+        roots = [sp.Rational(rng.randint(-4, 6), rng.choice([1, 2, 3])) for _ in range(m)]
+        expr = sp.prod((sp.Symbol('u') - r) ** 2 for r in roots)
+        sign = rng.choice([1, -1])
+        out.append((sign * expr, roots))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=2000)
@@ -79,6 +99,28 @@ def main():
         if ok_int and mxI > 1e-9:
             print("FALSE ACCEPT (interval [%s,%s]):" % (lo, hi), sp.factor(expr), "max sampled", mxI)
             bad += 1
+    # structured pass: perfect squares, the family that broke the first two repairs
+    uu = sp.Symbol('u')
+    sbad = 0
+    for expr, roots in structured_cases(rng, max(20, args.n // 10)):
+        cs = coeffs_of(expr, uu)
+        for r in roots + [sp.Rational(1, 7)]:
+            val = sp.simplify(expr.subs(uu, r))
+            if val > 0:
+                # a positive value must force the <=0 predicates to decline
+                if nonneg_on_half_line([-c for c in cs]):
+                    print("FALSE ACCEPT (structured, nonneg of -p):", sp.factor(expr), "at", r)
+                    sbad += 1
+                # p <= 0 on [0,inf) is FALSE when p > 0 somewhere: the predicate
+                # must decline.  (Asking for "-p <= 0", i.e. "_ray(-p)", would be
+                # true and correct -- that was a bug in the first version of this
+                # structured test, not in the checker.)
+                if _ray(coeffs_of(expr, uu), 0):
+                    print("FALSE ACCEPT (structured, _ray of +p):", sp.factor(expr), "at", r)
+                    sbad += 1
+                break
+    print("structured (perfect-square) cases also checked; false accepts:", sbad)
+    bad += sbad
     print("\nchecked %d random polynomials, false accepts found: %d" % (checked, bad))
     print("RESULT:", "no false accept found" if bad == 0 else "FALSE ACCEPTS PRESENT")
     return 0 if bad == 0 else 1

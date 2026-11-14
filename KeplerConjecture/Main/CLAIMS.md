@@ -1705,7 +1705,14 @@ functional whose useful range is below `0.2`. That is the whole content of
   positive, and `−[u(u−1)(u−2)]² ≤ 0` on `[0,3]` which must PASS.
 - **Re-verified after the second repair.** All six witnesses (three old, three new)
   rejected; all valid/touching cases accepted; suite 24/24; the K33b and K33
-  certificates still `ACCEPT` with unchanged ratios; `shell_fixture` unchanged.
+  certificates still `ACCEPT` with unchanged ratios; `shell_fixture` unchanged;
+  fuzz on seeds `5, 21, 22, 23` (1100 polynomials) and `function_range` cross-check
+  with 25 fresh random cases: no disagreement.
+- **The fuzz itself needed the same scrutiny.** Its new *structured* pass (perfect
+  squares with rational roots) first reported 19 "false accepts" that were a bug in
+  the test (`_ray(−p)` instead of `_ray(+p)`); after the fix it reports 0. The
+  lesson is the block's theme: a test is only evidence once it has been checked for
+  the ability to be wrong.
 - **Status.** `REFUTED` (the `C049` algorithm) → repaired. **Generic checker
   acceptance stays suspended** until X audits this revision; X's own `exact_sign`
   repair (`cb3d76f`) passed the irrational-root witness and six named controls
