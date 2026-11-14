@@ -33,6 +33,8 @@ run c5_fixture              "frozen fixture: exact coords, legality, exact cell 
 run c5_family               "theta family [106,120]: exact-cell property at every legal angle"
 run barlow_contact_cell     "exact: contact-only K subset B(v,sqrt2), both types, vol K = 4sqrt2"
 run barlow_random_stackings "random Barlow stackings: every layer 4sqrt2 and fcc/hcp typed"
+run rational_interval      "exact rational intervals; pi/sin/cos with remainder bounds"
+run rigorous_cell_volume   "certified cell-volume sandwich: cube, fcc, hcp, C5 controls"
 # evidence integrity: every JSON must parse, every TXT must be non-empty
 bad=0
 for f in Experimental/evidence/*.json; do
