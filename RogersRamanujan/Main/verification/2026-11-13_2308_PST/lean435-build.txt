@@ -1,0 +1,61 @@
+ℹ [2/6] Built RogersRamanujan.Lean.Staircase (1.3s)
+info: RogersRamanujan/Lean/Staircase.lean:149:0: 'RR127.head_bound' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/Staircase.lean:150:0: 'RR127.addStair_subStair' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/Staircase.lean:151:0: 'RR127.subStair_addStair' depends on axioms: [propext]
+info: RogersRamanujan/Lean/Staircase.lean:152:0: 'RR127.sum_addStair' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/Staircase.lean:153:0: 'RR127.weight_subStair' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/Staircase.lean:154:0: 'RR127.subStair_nonneg' depends on axioms: [propext, Quot.sound]
+ℹ [3/6] Built RogersRamanujan.Lean.StaircaseOrder (1.4s)
+info: RogersRamanujan/Lean/StaircaseOrder.lean:225:0: 'RR127.subStair_weakDec' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/StaircaseOrder.lean:226:0: 'RR127.addStair_pos' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/StaircaseOrder.lean:227:0: 'RR127.addStair_gap' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/StaircaseOrder.lean:228:0: 'RR127.allZero_of_weakDec_zero' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/StaircaseOrder.lean:229:0: 'RR127.subStair_zero_tail' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/StaircaseOrder.lean:230:0: 'RR127.subStair_length_sum' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/StaircaseOrder.lean:231:0: 'RR127.addStair_length_sum' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/StaircaseOrder.lean:232:0: 'RR127.addStairMap_subStairMap' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/StaircaseOrder.lean:233:0: 'RR127.subStairMap_addStairMap' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/StaircaseOrder.lean:234:0: 'RR127.nonneg_is_vacuous' does not depend on any axioms
+info: RogersRamanujan/Lean/StaircaseOrder.lean:235:0: 'RR127.subStairMap_facts' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/StaircaseOrder.lean:236:0: 'RR127.witness_41' does not depend on any axioms
+info: RogersRamanujan/Lean/StaircaseOrder.lean:237:0: 'RR127.witness_weakDec_41' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/StaircaseOrder.lean:238:0: 'RR127.witness_gap_hypothesis_needed' does not depend on any axioms
+info: RogersRamanujan/Lean/StaircaseOrder.lean:239:0: 'RR127.witness_padding' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/StaircaseOrder.lean:240:0: 'RR127.witness_padding_carries_length' does not depend on any axioms
+ℹ [4/6] Built RogersRamanujan.Lean.ShiftT (1.5s)
+info: RogersRamanujan/Lean/ShiftT.lean:172:0: 'RR127.Shift.sum_map_add' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:173:0: 'RR127.Shift.addStair_map_add' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:174:0: 'RR127.Shift.map_add_sub_cancel' depends on axioms: [propext]
+info: RogersRamanujan/Lean/ShiftT.lean:175:0: 'RR127.Shift.map_sub_add_of_le' depends on axioms: [propext]
+info: RogersRamanujan/Lean/ShiftT.lean:176:0: 'RR127.Shift.subStair_addStair_map_sub' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:177:0: 'RR127.Shift.length_shiftT' depends on axioms: [propext]
+info: RogersRamanujan/Lean/ShiftT.lean:178:0: 'RR127.Shift.length_shiftInv' depends on axioms: [propext]
+info: RogersRamanujan/Lean/ShiftT.lean:179:0: 'RR127.Shift.sum_shiftT' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:180:0: 'RR127.Shift.mem_shiftT_ge' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:181:0: 'RR127.Shift.mem_shiftT_iff' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:182:0: 'RR127.Shift.shiftT_entry' depends on axioms: [propext]
+info: RogersRamanujan/Lean/ShiftT.lean:183:0: 'RR127.Shift.shiftInv_entry' depends on axioms: [propext]
+info: RogersRamanujan/Lean/ShiftT.lean:184:0: 'RR127.Shift.shiftInv_shiftT' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:185:0: 'RR127.Shift.shiftT_shiftInv' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:346:0: 'RR127.Shift.weakDec_map_add' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:347:0: 'RR127.Shift.weakDec_subStair' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:348:0: 'RR127.Shift.weakDec_shiftT' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:349:0: 'RR127.Shift.addStair_pos' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:350:0: 'RR127.Shift.weakDec_addStair' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:351:0: 'RR127.Shift.addStair_gt' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:352:0: 'RR127.Shift.pos_map_sub' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:353:0: 'RR127.Shift.gap_map_sub' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:354:0: 'RR127.Shift.shiftInv_pos' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:355:0: 'RR127.Shift.shiftInv_gap' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:356:0: 'RR127.Shift.toD_toB' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:357:0: 'RR127.Shift.toB_toD' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:358:0: 'RR127.Shift.weight_toB' depends on axioms: [propext, Quot.sound]
+info: RogersRamanujan/Lean/ShiftT.lean:359:0: 'RR127.Shift.witness_T_531' does not depend on any axioms
+info: RogersRamanujan/Lean/ShiftT.lean:360:0: 'RR127.Shift.witness_T_41' does not depend on any axioms
+info: RogersRamanujan/Lean/ShiftT.lean:361:0: 'RR127.Shift.witness_T_641' does not depend on any axioms
+info: RogersRamanujan/Lean/ShiftT.lean:362:0: 'RR127.Shift.witness_inv_443' does not depend on any axioms
+info: RogersRamanujan/Lean/ShiftT.lean:363:0: 'RR127.Shift.witness_gap_needed' does not depend on any axioms
+info: RogersRamanujan/Lean/ShiftT.lean:364:0: 'RR127.Shift.witness_not_injective' does not depend on any axioms
+info: RogersRamanujan/Lean/ShiftT.lean:365:0: 'RR127.Shift.witness_weakDec_needed' does not depend on any axioms
+✔ [5/6] Built RogersRamanujan (1.2s)
+Build completed successfully (6 jobs).

@@ -1,0 +1,14 @@
+BZ82 example 1 (phi)                           PASS
+BZ82 example 2 (psi)                           PASS
+BZ82 example 3 (nine-state chain)              PASS
+T(7,3,1) = (5,3,3)                             PASS
+phi^2 = id on domain, weight<=18               PASS (3198 states)
+psi^2 = id on domain, weight<=18               PASS (3198/3198 states)
+A_n <-> D_n both laws, weight<=18              PASS (140 objects in A)
+n=0 and n=2 fixtures                           PASS
+Lemma MX.2 criterion, weight<=18               PASS (1739 Case-II states)
+Case I  -> a' = a-1 (Lemma CI.2)               PASS (1599/1599)
+Case II -> a' = a+1 (Lemma CII)                PASS (1599/1599)
+
+elapsed 0.20 s
+TOTAL: 11 checks, 0 failed

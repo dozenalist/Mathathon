@@ -1,5 +1,31 @@
 # Rogers--Ramanujan / SAIR problem 127: progress
 
+## 2026-11-13 23:10 PST / supervisor review of completions 26480–31032
+
+This current review supersedes incompatible status tables below. Imported and
+verified cycle-3 tip `980e4cdcc4e91c79977697f127ef48252c0f15e5`; all four SAIR
+workers are reported collected. The integrated `ShiftT.lean` source passes the
+named `lake build RogersRamanujan` target on Lean 4.35.0, six jobs, exit 0.
+Its two subtype inverse laws and weight preservation prove the known D/B shift
+with permitted axioms; they do not prove the full A/D bijection.
+
+Repaired the fast psi regression to require success for every in-domain state:
+all eleven checks pass, including phi and psi on 3,198 states each at weight
+<=18. Repaired MX.3's incorrect all-integer monotonicity argument. Independently
+reproduced `(4^3,1^62)`: B endpoint `(25,17,8,8,8,8)`, D image
+`(30,20,9,7,5,3)`, inverse correct, 1,910 edges / 1,911 trace states. Main's
+rejection of the B endpoint and five-step report were mistaken. RR-C021 remains
+TESTED_FINITE until its all-input proof is available; C020's endpoint scope and
+family boundary table need repair. See `Main/SUPERVISOR_REVIEW_26480.md`.
+
+At 23:08:52 PST the supervisor sent a detailed 90-minute continuation to the
+same assigned coordinator; history confirms sequence 31033. The new block
+prioritizes the phi slot and branch proof, a stable family formula and inverse,
+independent adversarial checking, and the conditional finite alternating-path
+theorem. RR-C012 remains OPEN. The exact target watcher remains active. This
+checkpoint and the dated ChatLogs report are being published to `rr127/main`;
+the supervisor's final response records confirmed push status.
+
 ## 2026-11-13 22:25 PST / supervisor review of completion 19046
 
 The cycle-2 export was retrieved and its bundle verified. Python checks and the
