@@ -440,3 +440,30 @@ follow-up rather than claim it.
 Nothing here closes the geometric route, and nothing here should be read as showing the route is
 promising. The deliverable of this block is an auditable target, two runnable evaluators, and one
 retraction.
+
+## 8. Result of the dense-completion search (`K15-EXP-005`)
+
+The harness of Section 8-authoring was run as a background job: `--seconds 300 --seeds 4`,
+one CPU, exit status `0`, wall clock `~4 min`. Output committed as
+`Experimental/evidence/dense_completion_search.json`.
+
+| seed | `n` | `sum12` | `mean12` | iterations | refuted |
+| --- | --- | --- | --- | --- | --- |
+| 0-3 (best) | — | `116.663` | `9.722` | `475` | no |
+
+**The search did not refute `(T')`, and it did not even improve on the sparse baseline** of
+`98.0` from `K15-E040`; it made the configuration *worse*. Two readings, both recorded:
+
+1. **The annealing is too weak.** 475 accepted-improvement iterations per seed is small for a
+   `300`-point configuration, and the move set (insert/delete one point) cannot restructure a
+   frustrated cluster. The cache key `(len(P), |P|_1)` is also collision-prone for similar point
+   sets, so some scores may have been stale — a defect of the harness, not of the mathematics.
+2. **The search was aiming at the wrong thing.** Density is not the quantity that makes `(T')`
+   hard; *saturation* is. A denser set increases the *number* of centres but does not make the
+   outer cells satisfy `Omega(w) subset B(w, 2)`, which Section 5 identifies as the condition
+   that makes the volumes meaningful. So driving density up cannot fix the difficulty.
+
+Reading 2 is the substantive one and it is consistent with everything else in this block: the
+empirical route to `(H_R)` is closed not for want of a better optimiser but because the target
+configuration is not reachable by completion. Recorded so that no further search budget is spent
+on it.
