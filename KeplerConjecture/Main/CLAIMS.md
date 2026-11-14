@@ -5837,11 +5837,23 @@ specification it replaces had four defects, all named by review 0823 and all fix
 - Together: **the certified ball radius is `0.163600`**, three and a half times `θ_max = 0.0446545`. This is
   a real theorem about the configuration, and it is what makes a Taylor argument well-posed.
 
-**What it refuses to prove.** The value bound. Given the measured minimum quotient ratio `0.2039` and the
-measured `M₃ = 0.0752`, the Taylor criterion `M₃ ≤ 6(ratio − c)/θ_max` needs **`M₃ ≤ 2.7151`** at the `ε = 1`
-ball (with a FIXED conservative `ratio_min = 0.20`, so the threshold does not move with a sampling seed), and a rigorous enclosure is exactly what the pilot does not have. `--m3-bound X` lets an
-*independent* interval computation supply it: with `X = 0.5` the pilot returns 0, with `X = 10⁶` it returns
-1 — so the certification path is exercised, not decorative.
+**What it refuses to prove.** The value bound, and it needs **two** rigorous inputs — a point I got wrong
+in the first version of the flag set:
+
+- **`--hessian-bound Q`**: a rigorous lower bound for the quotient *quadratic* coefficient (`λ_min/2`).
+  Without it the quadratic term is only *measured*, and a Taylor certificate would claim more than Taylor's
+  theorem gives. **An `M₃` alone is not enough**, and the pilot now returns exit 1 if one is supplied
+  without the other (asserted in the self-test). This was a genuine soundness defect in the handoff as first
+  written.
+- **`--m3-bound X`**: a rigorous *third-derivative* bound. With `Q ≥ 0.20` (fixed, not sampled, so the
+  threshold cannot move with a seed) the criterion is `X ≤ 6(Q − c)/θ_max = 2.7151` at the `ε = 1` ball;
+  the measured `M₃` is `0.075…0.213`.
+
+With `Q = 0.24, X = 0.5` the pilot returns 0; with `X = 10⁶` it returns 1; with `X` alone it returns 1 —
+so the certification path is exercised, not decorative. Input validation is explicit too: a non-positive
+`c`, a zero ball, or an `ε` beyond `4cos ρ_c − 2 = 1.1786` returns exit 4 rather than reporting on a
+vacuous configuration (a *negative* ball makes T1/T2 pass automatically, which is exactly the kind of
+vacuous success this project keeps finding).
 
 **The obstruction to the obvious alternative.** A covering argument on the quotient sphere `S²⁰` needs, at
 the available Lipschitz bound `L = 21.81` (surface area × circumradius), a net radius `r = 1.01·10⁻⁵`, i.e.
