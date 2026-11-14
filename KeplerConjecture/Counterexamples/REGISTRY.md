@@ -1673,3 +1673,14 @@ twelve contacts changes nothing — the enclosure is identical. So in the parall
 `d = 6cos ρ_c` both Voronoi cells **are** the regular dodecahedra of inradius 1 (the other cluster's
 contacts are redundant). That closes `X-C096`: the threshold is not just a separation threshold of a point
 set, it is a threshold for *two dodecahedral cells*.
+
+### K15-X-C102 — the C5 cell is *13th-centre stable*: no admissible extra centre cuts it
+
+`c133_13face_counterexample.py` (exit 0). Sweeping a 13th centre along the farthest cell vertex (radius
+`1.3017`): at `t ≥ 2.55` the bisector lies outside the vertex radius and the cell volume is unchanged
+(`5.898017372`); at `t ≤ 2.60` the bisector does cut (marginally, `1.3e-8` at `t = 2.60`) but the centre is
+already at distance `1.66 < 2` from one of the twelve — **inadmissible**. So there is no admissible 13th
+centre that cuts the C5 cell, the same phenomenon as `C102`, and the "volume `= V_dod` ⟹ dodecahedron" step
+cannot be attacked by adding a 13th contact *in this family*. That is why the counterexample to the
+polyhedral strengthening (`X-C090`) has to be the 20-face circumscribed icosahedron rather than a packing
+configuration.

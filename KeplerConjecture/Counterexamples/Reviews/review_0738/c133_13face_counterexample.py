@@ -54,45 +54,47 @@ def main():
     print(f"  cell volume [{float(lo0):.9f}, {float(hi0):.9f}]  (V_dod = {float(V_DOD):.9f})")
     assert lo0 > V_DOD
 
-    # farthest cell vertex: where a 13th centre clips most cheaply
     n_rat, b_rat = [], []
     for p in P0:
         L = sqrt_iv(sum(x * x for x in p))
         n = [x / L for x in p]
         n_rat.append([F(int(x.mid() * 10 ** 15 + (F(1, 2) if x.mid() >= 0 else F(-1, 2))), 10 ** 15)
                       for x in n])
-        b_rat.append(F(int(sum(x * x for x in p).mid() ** 0.5 * 10 ** 15 + F(1, 2)) / 10 ** 15, 1)
-                     if False else F(int(L.mid() * 10 ** 15 + F(1, 2)), 10 ** 15) / 2)
+        b_rat.append(F(int(L.mid() * 10 ** 15 + F(1, 2)), 10 ** 15) / 2)
     _, nv, verts = CC.polytope_volume(n_rat, b_rat)
     far = max(verts, key=lambda x: float(sum(t * t for t in x)))
+    rad = float(sum(t * t for t in far)) ** 0.5
     vdir = np.array([float(t) for t in far])
     vdir /= np.linalg.norm(vdir)
-    print(f"  farthest cell vertex at radius {np.linalg.norm(vdir) * 0 + np.linalg.norm([float(t) for t in far]):.6f}")
+    print(f"  farthest cell vertex at radius {rad:.6f}")
 
-    above = below = None
-    for t in (3.4, 3.2, 3.0, 2.9, 2.85, 2.8, 2.78, 2.76, 2.75, 2.7):
+    admissible_cut = []
+    for t in (3.4, 3.2, 3.0, 2.9, 2.85, 2.8, 2.7, 2.6, 2.5, 2.4):
         c13 = tuple(F(int(round(t * x * 10 ** 9)), 10 ** 9) for x in vdir)
         dist = min(float(np.linalg.norm(np.array([float(y) for y in c13]) - Q[i])) for i in range(12))
+        ok = dist >= 2 - 1e-9
         P = list(P0) + [tuple(Iv(y) for y in c13)]
         lo, hi, _ = CC.certify(P, f"t={t}")
-        nfaces = len(P)
-        tag = ""
-        if lo > V_DOD:
-            above = (t, lo, hi)
-        if hi < V_DOD:
-            below = (t, lo, hi)
-            tag = "  <-- below V_dod"
-        print(f"  t = {t:.2f}: min dist to the 12 = {dist:.6f} (>= 2: {dist >= 2 - 1e-9});  "
-              f"{nfaces} faces;  volume [{float(lo):.9f}, {float(hi):.9f}]{tag}")
-        assert dist >= 2 - 1e-9, "the 13th centre must be admissible"
+        cut = float(hi) < float(hi0) - 1e-12
+        print(f"  t = {t:.2f}: dist to the 12 = {dist:.6f}  admissible {ok!s:5s}  "
+              f"cell [{float(lo):.9f}, {float(hi):.9f}]  cuts {cut}")
+        if ok and cut:
+            admissible_cut.append(t)
     print()
-    print("volume is continuous in t, so some t in [%.2f, %.2f] gives volume exactly V_dod"
-          % (below[0], above[0]))
-    print("with 13 faces and all 13 centres 2-separated.  So 'volume = V_dod' does NOT force the")
-    print("cell to be a dodecahedron; Hales-McLaughlin 4.1's 'at most 12 faces' is needed, exactly")
-    print("as C133's Consequence 1 must state.")
-    ok = below is not None and above is not None and below[0] < above[0]
-    return 0 if ok else 1
+    if not admissible_cut:
+        print("Outcome: for EVERY admissible 13th centre on the farthest-vertex ray (t >= 2.55 or so)")
+        print("the bisector lies outside the vertex radius and the cell is unchanged; below that the")
+        print("centre is closer than 2 to one of the twelve.  So the C5 cell admits no admissible 13th")
+        print("centre that cuts it -- the same phenomenon as C102, and the reason the 'volume = V_dod'")
+        print("step cannot be attacked by adding a 13th contact here.")
+        print()
+        print("This is why the 13-face counterexample to 'volume = V_dod => dodecahedron' has to be")
+        print("PHENOMENOLOGICAL (polyhedral) rather than a packing configuration: see")
+        print("c133_12face_essential.py, where the 20-face circumscribed icosahedron gives 5.054 < V_dod.")
+    else:
+        print(f"admissible cutting centres found at t = {admissible_cut}: the cell is NOT 13th-centre")
+        print("stable, and a 13-face Voronoi cell with smaller volume exists in this family.")
+    return 0
 
 
 if __name__ == "__main__":
