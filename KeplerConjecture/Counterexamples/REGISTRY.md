@@ -493,3 +493,34 @@ every sign condition reduced to three rational PSD tests.
 
 Reproduce: `python3 both_sides_gmargin.py` (single configuration, ≈6 s); verify:
 `python3 verify_all.py` (**ALL PASS**).
+
+### K15-X-C018 — the repaired flow theorem is correct at all six requested points
+
+`Main/CUT_FLOW_THEOREM.md` at `aa52147` (main tip `9d6414d`) passes the audit Main requested in
+`AUDIT_REQUEST_X.md` §5: directed model, cut orientation with `X = ∅` forced, demand satisfaction
+including `b(v) = 0`, Farkas + coarea, Theorem 2 without `sup_e Φ_e < ∞`, and the two-branch
+threshold formula. No fifth defect found. Evidence: `Reviews/audit_cutflow_repair.py` (exits 0),
+which agrees with a direct LP on 115 random instances: `(C) ⟺ LP feasible ⟺ Φ ≥ t*`. One instance
+needs both threshold branches at once (isolated `+1` vertex disjoint from the §5(b′) star:
+finite branch `4/3`, answer `+∞`).
+
+### K15-X-C019 — `X_C017_small`: 3.80× smaller certificate at `0.782267254856`
+
+`X_C017_small.json`: same both-sides Gram construction, entries on the grid `2⁻²⁴`, ≤ 20 digits
+(was 281), 2,646 bytes (was 10,056), density `0.782267254856` (`3.5·10⁻⁸` weaker than `X-C017`).
+`L p = 0` exactly; `G, A, B ⪰ 0` by rational `LDLᵀ`; no sign predicate. Verified by
+`python3 verify_XC017_readable.py X_C017_small.json`. Not a new best bound, not a Kepler proof.
+
+### K15-X-C020 — erratum: witness W6 of `REVIEW_0353` §3 is wrong
+
+The two-disjoint-edges row (`b = (1,−1)` and `(2,−2)`, `F = V`) is neither "infeasible" nor
+"feasible for every `Φ > 0`": the singleton cuts bind, so `t* = 2` and it is feasible iff
+`Φ ≥ 2`. The point the row was meant to pin is still valid — `U = V` has `Σ_U b = 0 ≤ 0` with
+`δ⁺(U) = ∅`, so an empty boundary with zero sum is **not** an obstruction. W1–W5 stand.
+
+### K15-X-C021 — the height of `X_C017` is lcm blow-up, not the pivot block
+
+Each term of a constraint row has a `≤ 17`-digit denominator; the terms' denominators are
+mutually coprime and the lcm of 21 of them is 118 digits. Rounding to `10⁻ᵐ` cannot help; rounding
+to the dyadic grid `2⁻ᵐ` that `S = 8` already uses removes the blow-up. Grids coarser than `10⁻⁶`
+break `A`, whose margin was forced to `10⁻⁶` by the SDP (`G` survives coarser grids: `ε_G = 10⁻²`).
