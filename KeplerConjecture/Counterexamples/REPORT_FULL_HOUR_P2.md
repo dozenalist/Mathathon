@@ -285,3 +285,55 @@ upheld; Main's checker verified; Main's C019 corrected), the fallback is complet
 structure confirmed, (T) reduced to its exact deficit, a certified 0.818734679 CE bound produced
 by the structural-SOS parameterisation). Ultramath was not used: no swarm was created, resumed or
 queried in this block.
+
+## E's `SHELL_CONVERSION.md` (`K15-E010`/`E011`): ACCEPTED, and it supersedes my own earlier claim
+
+**`K15-E010` (cap inequality, direction repaired).** `θ ≤ 2 arccos(1 − 2/k)`; for `k = 13`,
+`2 arccos(11/13) = 64.40845°` — identical to the value I computed independently two blocks ago.
+Their diagnosis is also right: the cap bound is an **upper** bound on `θ`, so it cannot
+contradict `θ ≥ 60°`; it is vacuous here because it is too *weak*, not because it points the
+wrong way. C013's "only forces `θ ≥ 64.4°`" was wrong on the direction. **ACCEPTED.**
+
+**`K15-E011` (radius conversion) — correct, and sharper than what I produced.** They show the
+maximum of `f(r,s) = (r²+s²−4)/(2rs)` on `[2,R]²` is attained on the boundary, with
+`f(R,R) = 1−2/R²` and `f(2,R) = R/4`, and that
+`1−2/R² ≥ R/4 ⟺ R³−4R²+8 ≤ 0 ⟺ (R−2)(R²−2R−4) ≤ 0 ⟺ 2 ≤ R ≤ 1+√5`.
+So `cos θ ≤ 1−2/(2+δ)²` is valid **exactly for `0 ≤ δ ≤ √5−1 = 1.2360679…`**, and beyond that
+the binding pair is `(2, 2+δ)`.
+
+**This supersedes a remark of mine.** In two earlier blocks I reported that "`R < 2√2 = 2.828`
+suffices, which is weaker than E's `R < 1+√5`". That was **a sufficient condition, not the sharp
+one**: my argument used monotonicity of `f` in each variable, which is valid only while
+`r²+4 > s²`, i.e. `R < 2√2`. E's range is strictly larger and is the correct one. **I withdraw
+the claim that my condition is weaker (i.e. better) — E's `δ ≤ √5−1` stands as the sharp range.**
+
+**One line missing from their proof, supplied here.** "The maximum is on the boundary" is
+established by `∇f ≠ 0` in the interior (no solution of `r² + 4 = s²` and `s² + 4 = r²`
+simultaneously — verified symbolically). But for `R > 2√2` the *edge* `s = R` has an interior
+critical point at `r* = √(R²−4)`, which their proof does not examine. It is harmless:
+$$f(r_*,R)=\frac{\sqrt{R^2-4}}{R}\ \le\ 1-\frac{2}{R^2}=f(R,R)
+\iff R\sqrt{R^2-4}\le R^2-2 \iff 0\le 4,$$
+so the edge critical point never beats the corner. **Their conclusion is therefore correct**;
+the missing line is a completeness fix, not an error. (Their crossover check is also exact:
+at `δ = √5−1` both candidates equal `0.809017`; at `δ = 0` both equal `0.5`, i.e. `60°`.)
+
+**Status consequence.** `K15-E012`/`K15-E014` at `ρ = 209/100` were `PROVISIONAL` on an
+"unverified external constant". That constant is now certified (`K15-E015`, which I upheld above:
+`δ₁₃ ≤ 57.1448° < 57.1709°`), so E can move both to **PROVED, conditional only on
+Musin–Tarasov being computer-assisted** — which they already disclose.
+
+## Block close (final)
+
+| Priority | Item | Outcome |
+| --- | --- | --- |
+| 1 | C `K15-C033` K33 certificate | **ACCEPTED**, 3 implementations / 2 conventions; metadata corrected; minimal witness frozen |
+| 2 | E `K15-E015` Tammes-13 enclosure | **UPHELD**; transcription justification corrected |
+| 2 | Main `shell_check` | **ACCEPTED** (Fourier matrix, π, threshold, odd-part) |
+| 2 | Main `K15-C019` | **ACCEPTED** with sharpened range `ρ < 2√2` and corrected mixed-case algebra (`ρ < 1+√5`) |
+| — | E `K15-E010`/`E011` | **ACCEPTED**; supersedes my earlier remark; one missing line supplied |
+| fallback | E `K15-E030` (T) | reduced to an exact deficit `1.3853219`; shown **not** separation-determined |
+| fallback | structural-SOS CE | certified **0.818734679** for all unit-ball packings (weak but proved) |
+| gap | Main shell-density write-up | only the checker, C019 and the optimisation spec were read; the write-up itself is not audited |
+
+Ultramath: **not active** in this block — no swarm was created, resumed, or queried; the tool
+surface contained no Ultramath capability and reasoning effort is not evidence of it.
