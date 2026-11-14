@@ -407,3 +407,32 @@ re-derived in the target width.** Consequence for review practice: a cross-check
 (in `t`) and Main's checker (in `u`) is valid and I performed it; a cross-check between
 `K15-X-C010` (width 1) and either of those is *not* available, and its absence is not evidence
 against the bound.
+
+---
+
+## Claim records added in review block 0138 (second hour)
+
+All three are ordinary Cohn–Elkies certificates in the family `f(x)=P(|x|²)e^{−|x|²}` with
+`f̂(t) = π^{3/2}Q(w)e^{−w}`, `w = π²|t|²`, so `Δ ≤ (4/(3√π))·P(0)/Q(0)`. In every case **CE1 holds
+by construction** — `H` is an explicit sum of squares and `P = −(s−4)H` — so the only obligation is
+CE2 (`Q ≥ 0` on `[0,∞)`), decided exactly by `exact_sign.sign_on_half_line`.
+
+| claim | certificate | `P(0)/Q(0)` | bound | status |
+| --- | --- | --- | --- | --- |
+| `K15-X-C010` | `H = (17/4096)(6144s²+6848s+22857)` | `1.0874…` | `0.818086808` | PROVED (superseded) |
+| `K15-X-C013` | 3 rational cubics, `X_C013_certificate.json` | `1.0565721` | `0.794809296` | PROVED |
+| **`K15-X-C014`** | 6 rational quintics in `s/8`, `X_C014_certificate.json` | `1.0378402` | **`0.780718153`** | **PROVED (current best)** |
+
+**Necessary sanity filter for any future candidate in this family:** Li's theorem gives
+`P(0)/Q(0) ≥ 1.024466` for every admissible `f` (since the CE optimum exceeds `0.18398089` in centre
+density). Any SDP or search output below that is **infeasible by theorem** — it is a bug, not a
+discovery. (This filter would not have caught my own invalid `0.810774751`, whose `P0/Q0 = 1.0778`
+was above the floor; that one was caught only by checking `H ≥ 0`. Both checks are needed.)
+
+**What these are not.** They are not competitive: CDS22's optimised CE value is `0.779747` and C's
+`K15-C033` is `0.77996650`, both below `X-C014`. They are an independent, exactly certified
+demonstration that X can generate and verify ordinary-CE bounds without reusing C's or Main's code.
+
+**Reproduction.** `python3 x_r03_sos_descend.py` (C010) · `python3 x_r03b_sos_from_sdp.py` (C013,
+needs cvxpy) · `python3 x_r03b_rescaled.py` (C014, ~140 s). Each prints the exact certificate and the
+exact sign verdict; none reports a float as a bound.
