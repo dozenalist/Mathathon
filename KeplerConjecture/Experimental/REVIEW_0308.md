@@ -922,3 +922,43 @@ block could mount, with a reduced but positive margin.
 improved, while the threshold for `(P')` is `5.763`. The downward trend is not a proof of anything —
 it is a warning that better searches have kept finding smaller cells, and it is why I will not
 describe `(P')` as safe.
+
+### 14.7 The margin keeps shrinking: `(P')` may well be false
+
+A harder search (18 legal centres instead of 12, more restarts, longer local search) returns
+
+```
+restart 0: 18 centres,  vol Omega(w_1) = 6.345329496
+restart 1: 18 centres,  vol Omega(w_1) = 6.263607857
+restart 2: 18 centres,  vol Omega(w_1) = 6.626973093
+```
+
+so the best legal value is now `6.263608`, still above the `5.763417` that `(P')` requires, with
+margin `0.500`.
+
+**The trajectory is the important thing, and it is not reassuring:**
+
+| search | centres | best `vol Omega(w_1)` | margin over `5.763417` |
+| --- | --- | --- | --- |
+| greedy fill (§12) | 11-17 | `8.543387` | `2.780` |
+| legal local search (§14.6) | 12 | `6.730974` | `0.968` |
+| harder search (§14.7) | 18 | `6.263608` | `0.500` |
+
+Every improvement in the search has found a materially smaller cell, and the margin has roughly
+halved at each step. There is no sign of convergence above the threshold. **So the honest reading is
+that `(P')` may well be false**, and I would not be surprised if a better search — or a cleverer
+construction — produced a legal completion below `5.763417`.
+
+**What that would mean.** If `(P')` is false, the pair route to the cut is closed, and the remaining
+target reverts to `(CUT)` itself or to `(S_dod)`. That would not be a setback for the *programme* —
+`(CUT)` is equivalent to `(H_R)`, which was the target all along — but it would remove the only
+sharp, cheap-to-state sufficient condition this block produced.
+
+**For the record: what I do not know.**
+- Whether the sequence `8.54, 6.73, 6.26, ...` converges above or below `5.763`.
+- Whether 18 centres is near the useful maximum (the count of 12 applies only within `2.09`;
+  beyond that any number is legal, so more centres remain available).
+- Whether a structured construction, rather than local search, does better.
+
+All three are open, and none of them can be settled by more of the same search. **`(P')` should be
+carried as a conjecture in doubt, not as a route.**
