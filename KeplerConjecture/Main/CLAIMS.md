@@ -1229,3 +1229,33 @@ auditing Main's own repair, so an outside check is still required).
   (finite-`r`) statement, which is not what the project needs.
 - **Status.** `TESTED_FINITE` (arithmetic of the constant on one instance). The
   proof of `K15-C035` does not depend on this run.
+
+### K15-C039 — icosahedral cluster fixture: monotonicity of finite completions (`TESTED_FINITE`)
+
+- **Artifact.** `Computation/cluster_fixture.py` (scipy half-space intersections).
+- **Numbers.** The 13-cluster (centre + 12 at distance exactly 2, mutual minimum
+  `2.102924`) has its centre cell computed as **5.550291** — reproducing
+  `V_dod` to six decimals, an independent numerical confirmation of
+  `K15-C012`. Completions on a spacing-`2.2` lattice at distance `≥ 5.0`, `≥ 3.5`,
+  `≥ 2.7` (nested, `2140 ⊂ 2178 ⊂ 2190` points) give
+  `Σ_{v∈K}(vol Ω_K(v) − √32) = +157.87, +63.71, +17.91`: **decreasing as the
+  completion grows**, exactly the monotonicity behind `K15-E003`/`K15-C036`, and
+  still far from the packing value because the completions are sparse.
+- **What it shows.** (i) the centre's cell is untouched by any completion at
+  distance `≥ 2·1.2584 = 2.5168` (its circumradius), which is why such
+  completions are legitimate tests of the neighbours; (ii) every finite value is
+  an upper bound and the sequence decreases toward the truth, so **no finite
+  stage decides the sign** — the numerical form of the `K15-C036` obstruction.
+- **What it does not show.** It gives no lower bound, hence no evidence for or
+  against the cluster inequality at the icosahedral configuration.
+- **Status.** `TESTED_FINITE`. Reviewer X.
+
+### K15-C040 — Lean: ball-volume identity drafted, build requested (`PROPOSED`)
+
+`Lean/Kepler15/Volume.lean` states `volume (ball 0 1) = ofReal (4π/3)` and its
+scaling form, with two named proof routes (`EuclideanSpace.volume_ball` at
+`n = 3` with `Γ(5/2) = 3√π/4`, or Fubini). **Not compiled by Main** — the VM does
+not run Lean. Request `M-LEAN-002` (1 CPU, 1 GB, 300 s) asks Astra for the pinned
+build and axiom audit. Status stays `PROPOSED` until that log exists; the file
+contains no `sorry` and is meant to be *revised* rather than patched if the lemma
+names differ in v4.35.0.
