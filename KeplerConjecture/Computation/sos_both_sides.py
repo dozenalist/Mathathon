@@ -36,8 +36,12 @@ certificate is the same object as the one exactcert accepts is in the JSON's `cr
 
 Usage:  python3 sos_both_sides.py
 """
-import json
+import json, os
 import sympy as sp
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_OUT = os.path.join(_HERE, "out")
+os.makedirs(_OUT, exist_ok=True)
 
 u = sp.Symbol('u')
 T = sp.Rational(12)                     # <= 4*pi
@@ -91,7 +95,7 @@ def main():
                                      cross_check=("the same p is accepted by exactcert and the "
                                                   "independent SymPy oracle via "
                                                   "out/sos_pside_many.json")),
-                   ), open("out/sos_both_sides.json", "w"), indent=1)
+                   ), open(os.path.join(_OUT, "sos_both_sides.json"), "w"), indent=1)
     print("\nwrote out/sos_both_sides.json")
 
 if __name__ == "__main__":
