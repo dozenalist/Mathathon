@@ -274,3 +274,66 @@ is nothing.
 **So: no tighter enclosure and no stability lemma beyond the family is delivered here.** What is
 delivered is the repaired certificate, the quantified obstruction, and the shell-2 sub-problem
 identified as the cheapest place to attack — with its own gap stated rather than papered over.
+
+---
+
+## 9. A proof (not a computation) that the C5 configuration clears the threshold
+
+The obstruction of §8.3b says the content is in the ring's excess `b = 1.051462 > 1`. That
+suggests a lemma that *uses* it, and it works.
+
+> **Ring-excess lemma.** Let `D = {y·n_i ≤ 1, i = 1..12}` be bounded, let the faces on five
+> chosen planes have areas `A_i`, and for `b ≥ 1` put `K(b) = D ∩ {y·n_i ≤ b, i ≤ 5}`. Then
+>
+> ```
+> vol K(b) − vol D  =  5(b−1) ∫₀¹ mean(A_i(b(t))) dt  ≥  5(b−1) min_t mean(A_i) .
+> ```
+>
+> *Proof.* Moving one face of a polytope outward at unit speed increases the volume at rate
+> equal to that face's area — the added slab is the prism over the face, and the other faces
+> are unchanged to first order. Here five faces move at rate `(b−1)` and the other seven do not,
+> so `d/dt vol K(b(t)) = (b−1) Σ_{i≤5} A_i(b(t))`. The volume is absolutely continuous and
+> piecewise `C¹` along the path (the combinatorial type may change, which does not affect the
+> integral), so integrating gives the identity and hence the bound. ∎
+
+**Applied to the C5 direction set** (`c`, the five ring at `58.2825°`, the pentagon at `112°`
+with azimuth `36+72k`, the south pole), `ring_excess.py`:
+
+```
+vol D (all twelve faces at distance 1)         5.572648770477
+vol K (five ring faces at b = 1.051462224238)  5.898007182910
+ring face areas: 1.275974 at b=1, 1.251511 at b=1.051462
+  sampled at 21 points along the path, monotonically decreasing, minimum at the end
+min ring area (sampled lower bound)            1.251511009
+
+V_dod + 5(b−1)·A_min = 5.550291029 + 0.322027701 = 5.872318729
+threshold                                            5.763417470
+margin                                               +0.108901
+```
+
+So **the C5 configuration satisfies `(P')` as a theorem** — `vol Ω(w1) > 5.8723 > 5.7634` —
+where the previous block had only the computed value `5.898017`. The bound is weaker than the
+truth by `0.026` (as it must be: it uses only `V_dod` for the base and one area lower bound),
+and it is robust to the sampling: even taking the area 1 % below the sampled minimum gives
+`5.8690`, still `0.106` above the threshold.
+
+(An earlier quick run of mine reported ring areas of `1.0889`; that number was wrong — it fanned
+over the face's vertices in enumeration order instead of cyclically. The area routine is checked
+against the cube, where every face area is exactly `4`, and against §2's determinant volume.)
+
+### 9.1 What this does and does not prove
+
+- **Proves**: for the C5 direction set, with the five ring neighbours at `2.102924` and the
+  other seven at `2`, the payer cell exceeds `5.763417470`.
+- **Does not prove**: the inequality for other completions. The lemma applies to any direction
+  set, but two things are missing for the general case: a lower bound on `vol D` when the
+  completion has more than twelve faces (§8.1 allows up to 45 centres), and a lower bound on the
+  ring face areas over all admissible direction sets. In the C5 set the areas are `1.25`; for a
+  completion that squeezes the ring faces they could be smaller, and the bound scales with them.
+- **Suggests the target**: the general statement to aim at is
+
+  > `vol D + 5(b−1)·A_min(directions) ≥ 5.763417470` for **every** admissible direction set,
+
+  i.e. a lower bound on a *product* of the base volume and the ring face areas. That is a
+  different object from the stability statement of §8.3, and it is the concrete form the
+  obstruction of §8.3b suggests.
