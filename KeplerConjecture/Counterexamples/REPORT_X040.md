@@ -249,6 +249,38 @@ should not be described as a pipeline bug, and I am correcting my own earlier fr
 | `X-C020` | Erratum: `REVIEW_0353.md` §3 row W6 is wrong in both directions; correct verdict `t* = 2`, feasible iff `Φ ≥ 2`. The empty-boundary `0/0` case is *not* an obstruction when `Σ_U b = 0`. | **CORRECTION**, supersedes that row |
 | `X-C021` | The height of `X_C017` is lcm blow-up of mutually coprime term denominators (each `≤ 17` digits, lcm `118` digits), not the pivot block; dyadic rounding at `S = 8` removes it. Coarser than `10⁻⁶` breaks `A`'s forced margin. | **VERIFIED** by the table in §2 |
 
+---
+
+## 7. What Main's decision record can now close, and what it must not
+
+Three of Main's decisions have X-triggered reverse conditions. Their state after this block:
+
+- **D18** ("reverse if X's audit of the repaired statement finds a further defect"). The audit
+  found none: all six requested checks pass, 196 instances agree with exact Fourier–Motzkin
+  feasibility, and the one instance that needs both threshold branches is handled correctly. The
+  reverse condition is **not triggered**; `K15-C093` can be quoted as repaired-and-audited, with
+  `X-C018` as the reviewer's statement.
+- **D16** ("`shell_check.py` is the acceptance test; reverse if X's audit finds an error"). At
+  `5caa1c9` the predicate side passes 3,600 adversarial queries with 0 wrong verdicts and the
+  `η` licence is enforced. Two things remain true and are not in tension with that: (i) the old
+  blobs `a8526a8`, `5619c1d`, `812105c3`, `909a50a` each had a real defect, and D16's rule that
+  "the corrected file is the acceptance test and the old one is preserved" is what made the
+  sequence auditable; (ii) passing my families is evidence, not a soundness proof — Main's own
+  docstring still marks generic predicate soundness `SUSPENDED`, and it should stay that way.
+- **D3** ("progress only below `0.754697399337`"). `X-C017` at `0.782267` and `X_C017_small` at
+  `0.7822673` are **not** progress under this rule, and nothing in this report claims otherwise.
+  Their value is that they remove the sign-predicate obligation, which is a cost, not a bound.
+
+One live inconsistency outside Main's changed files, unchanged from my earlier block:
+`Main/NEXT_PACKAGE.md` item 1 asks the next block to prove `Σ_{v∈K} vol Ω(v) ≥ 13V` for "even
+`V = 5.40`". Hales–McLaughlin already gives `vol Ω(v) ≥ V_dod = 5.550291029` **per cell**, hence
+`13 V_dod = 72.1538 > 70.2 = 13·5.40` for the cluster. The item as written therefore asks for
+something already implied; the content it means to ask for must be a *different* inequality (for
+instance one that does not follow from the per-cell bound, such as a lower bound on the cluster
+sum that is strictly stronger than `13 V_dod`, which is impossible, or a bound on a cluster with
+a *prescribed* outer-cell structure). This is a wording defect in an instruction, not a
+mathematical error in a claim, but it will waste a block if it is followed literally.
+
 ## 6. Limits of this block
 
 - The audit of Theorem 2 is a proof reading plus the hypothesis table; it is not machine-checked

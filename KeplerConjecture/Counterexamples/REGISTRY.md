@@ -589,3 +589,14 @@ synthetic (C's committed row with `η` replaced by the shell maximum), not a run
 `verify_XC017_readable.py`, and the unmodified copy is VALID. The `10⁻⁶` perturbation moves the
 density in the 7th decimal only, so it would pass any float comparison of the bound; it fails
 because the exact identity `L p = 0` breaks. A verifier that accepted it would be checking nothing.
+
+### K15-X-C028 — Main's D18 reverse condition is not triggered; D3 and D16 states
+
+`X-C018` found no fifth defect in the repaired `CUT_FLOW_THEOREM.md`, so D18's reverse condition
+("reverse if X's audit of the repaired statement finds a further defect") is **not** triggered.
+D16's acceptance test stands at `5caa1c9` on the evidence of `X-C025`/`X-C026`, with generic
+predicate soundness still `SUSPENDED` as Main's docstring says. D3's anchor is respected: nothing
+here is progress below `0.754697399337`. Still live and unchanged from an earlier block:
+`Main/NEXT_PACKAGE.md` item 1 asks for `Σ_{v∈K} vol Ω(v) ≥ 13V` with "even `V = 5.40`", which
+Hales–McLaughlin already implies (`13 V_dod = 72.1538 > 70.2`); the item needs rewording before a
+block follows it.
