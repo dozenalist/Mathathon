@@ -121,6 +121,42 @@ def self_test():
           sum(CF.SQ32_LO - v for v in vols) < 0, float(sum(CF.SQ32_LO - v for v in vols)))
     return ok, L, sites, vols, b0_lo, b0_hi
 
+def conventions_test():
+    """The boundary and periodic conventions of §P1-P2, checked rather than asserted.
+
+    (a) The central cell is IDENTICAL at periods 8, 12 and 16 -- so the numbers do not depend on the
+        periodic identification, which is the whole point of computing cells on the torus.
+    (b) The cell is far inside the box (circumradius 1.2587 against a half-period of 4).
+    (c) Wrap-around edges: none at R <= 2, exactly twelve at R = 2.001, 42 at R = 3.
+    """
+    ok = True
+    def check(name, cond, info=None):
+        nonlocal ok
+        ok = ok and bool(cond)
+        print("  %s %s%s" % ("PASS" if cond else "FAIL", name, "" if info is None else "  %r" % (info,)))
+    L, sites = build()
+    origin = sites[0]
+    vols = []
+    for P in ("8", "12", "16"):
+        Lp = [[F(P), F(0), F(0)], [F(0), F(P), F(0)], [F(0), F(0), F(P)]]
+        comp = []
+        for s in sites:
+            for n in FN.lattice_points(Lp, 1):
+                w = tuple(s[t] + n[t] for t in range(3))
+                if FN.norm2([w[t] - origin[t] for t in range(3)]) <= 25:
+                    comp.append(w)
+        vol, nv, na, verts = FN.cell_volume(origin, comp, return_vertices=True)
+        vols.append(vol)
+        if P == "8":
+            circ = max(float(FN.norm2(Q)) ** 0.5 for Q in verts)
+    check("the central cell is identical at periods 8, 12, 16", len(set(vols)) == 1,
+          [float(v) for v in vols])
+    check("its circumradius 1.2587 is far inside the half-period 4", circ < 1.3, circ)
+    check("no wrap-around edge at R = 2", FN.edges_within(L, sites, F(2)) == [])
+    check("exactly twelve at R = 2.001", len(FN.edges_within(L, sites, CONTACT_R)) == 12)
+    check("42 at R = 3", len(FN.edges_within(L, sites, F(3))) == 42)
+    return ok
+
 def shell(r):
     """The 12 shell points at radius r (rational), rounded to denominator 10^6."""
     phi = (1 + 5 ** 0.5) / 2
@@ -196,6 +232,13 @@ if __name__ == "__main__":
     print("\n" + "=" * 100)
     print("B. THE NONVACUOUS WINDOW: where does the shell stop giving b(0) > 0?")
     print("=" * 100)
+    print("\n" + "=" * 100)
+    print("A2. BOUNDARY AND PERIODIC CONVENTIONS")
+    print("=" * 100)
+    conv_ok = conventions_test()
+    print("\n" + "=" * 100)
+    print("B. THE NONVACUOUS WINDOW: where does the shell stop giving b(0) > 0?")
+    print("=" * 100)
     lo, hi, vlo, vhi = family()
     print("  b(0) > 0 for shell radius r <= %s  (vol = %.12f < sqrt32)" % (lo, float(vlo)))
     print("  b(0) < 0 for r >= %s  (vol = %.12f > sqrt32)" % (hi, float(vhi)))
@@ -204,5 +247,5 @@ if __name__ == "__main__":
     print("  t* = b(0)/12 at the last nonvacuous r: %.12f" % float((CF.SQ32_LO - vlo) / 12))
     p = export(L, sites, vols)
     print("\nexported:", p)
-    print("dense_shell:", "PASS" if good else "FAIL")
-    sys.exit(0 if good else 1)
+    print("dense_shell:", "PASS" if (good and conv_ok) else "FAIL")
+    sys.exit(0 if (good and conv_ok) else 1)

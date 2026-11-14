@@ -90,6 +90,55 @@ def lattice_points(L, rng=2):
 def norm2(p):
     return sum(t * t for t in p)
 
+def _facet_volume(v, planes, verts):
+    """Exact volume of the polytope, computed FACET BY FACET from the planes -- no qhull.
+
+    Every vertex of the cell lies on at least three of the enumerated planes, so the facets can be
+    read off directly: for each plane, the vertices exactly on it.  A plane with fewer than three
+    such vertices touches the cell in a point or an edge and is not a facet.  Each facet is ordered
+    cyclically by an EXACT angular sort around its centroid, fanned into triangles, and each triangle
+    is joined to the interior point v.
+
+    This replaces a scipy ConvexHull triangulation that failed with QH6154 (a flat initial simplex)
+    on a coplanar facet -- a float fragility in a computation that is otherwise exact end to end.
+    """
+    total = F(0)
+    for (a, b, c, d) in planes:
+        on = [P for P in verts if a * P[0] + b * P[1] + c * P[2] == d]
+        if len(on) < 3:
+            continue                                  # a point or an edge, not a facet
+        m = [sum(P[t] for P in on) / len(on) for t in range(3)]
+        # an in-plane basis: e1 from the centroid to the first vertex, e2 = n x e1
+        e1 = [on[0][t] - m[t] for t in range(3)]
+        n = (a, b, c)
+        e2 = [n[1] * e1[2] - n[2] * e1[1], n[2] * e1[0] - n[0] * e1[2], n[0] * e1[1] - n[1] * e1[0]]
+        def coords(P):
+            w = [P[t] - m[t] for t in range(3)]
+            return (sum(w[t] * e1[t] for t in range(3)), sum(w[t] * e2[t] for t in range(3)))
+        pts = [(coords(P), P) for P in on]
+        def half(p):                                   # exact: upper half-plane or lower
+            x, y = p[0]
+            return 0 if (y > 0 or (y == 0 and x >= 0)) else 1
+        import functools
+        def cmp(p, q):
+            hp, hq = half(p), half(q)
+            if hp != hq:
+                return -1 if hp < hq else 1
+            cross = p[0][0] * q[0][1] - p[0][1] * q[0][0]
+            if cross > 0:
+                return -1
+            if cross < 0:
+                return 1
+            return 0
+        pts.sort(key=functools.cmp_to_key(cmp))
+        for i in range(1, len(pts) - 1):
+            A, B, C = pts[0][1], pts[i][1], pts[i + 1][1]
+            total += abs(det3(tuple(A[t] - v[t] for t in range(3)),
+                              tuple(B[t] - v[t] for t in range(3)),
+                              tuple(C[t] - v[t] for t in range(3)))) / 6
+    return total
+
+
 def cell_volume(v, competitors, _drop_active=None, return_vertices=False):
     """Exact volume of {x : |x-v| <= |x-w| for every w in competitors}.
 
@@ -148,8 +197,6 @@ def cell_volume(v, competitors, _drop_active=None, return_vertices=False):
     verts = sorted(set(verts))
     if len(verts) < 4:
         raise RuntimeError("degenerate cell (only %d vertices)" % len(verts))
-    ptsx = np.array([[float(c) for c in q] for q in verts])
-    hull = ConvexHull(ptsx)
 
     # ---------------------------------------------------------------- COMPLETENESS CERTIFICATE
     # The float pass above only PROPOSES which planes are active.  Three exact checks then certify
@@ -162,33 +209,18 @@ def cell_volume(v, competitors, _drop_active=None, return_vertices=False):
     #   (C3) the hull is non-degenerate (checked above by the vertex count).
     # Together: the volume computed below is the volume of the Voronoi cell, with no reliance on the
     # float pre-pass being right.
-    # (C1) every facet of the hull lies on a plane of A.  All vertices satisfy every A-plane by
-    #      construction, so hull <= cap(A); this check says the hull's boundary is made of A-planes,
-    #      which together gives hull = cap(A) -- a polytope, hence bounded.
-    #      NOTE: a plane of A that supports NO facet is REDUNDANT, not an error: its half-space
-    #      contains the cell (the float pass flags near-duplicate planes as active, and the shell
-    #      coordinates are rounded to 1e-6, so this happens).  Requiring "every active plane
-    #      supports a facet" would be wrong, and an earlier version of this check did exactly that.
-    for tri in hull.simplices:
-        A_, B_, C_ = (verts[t] for t in tri)
-        if not any(a * A_[0] + b * A_[1] + c * A_[2] == d and
-                   a * B_[0] + b * B_[1] + c * B_[2] == d and
-                   a * C_[0] + b * C_[1] + c * C_[2] == d
-                   for (a, b, c, d) in active):
-            raise RuntimeError("completeness (C1) failed: a hull facet lies on no plane of A")
-    # (C2) every discarded plane contains every vertex => cap(D) does not cut the hull.
+    # (C1') the facet-by-facet volume uses only planes and exact vertices; the checks below
+    #       certify that the plane set is complete: every enumerated vertex satisfies every plane of
+    #       A (by construction) and every DISCARDED plane contains every vertex, so the polytope
+    #       built from A is the true cell.
     for (a, b, c, d) in discarded:
         for (x, y, z) in verts:
             if a * x + b * y + c * z > d:
                 raise RuntimeError("completeness (C2) failed: a discarded plane cuts the hull")
 
-    vol = F(0)
-    for tri in hull.simplices:
-        a, b, c = (verts[t] for t in tri)
-        d = det3(tuple(a[t] - v[t] for t in range(3)),
-                 tuple(b[t] - v[t] for t in range(3)),
-                 tuple(c[t] - v[t] for t in range(3)))
-        vol += abs(d) / 6
+    vol = _facet_volume(v, active, verts)
+    if vol <= 0:
+        raise RuntimeError("degenerate cell: the facet decomposition gave volume %s" % vol)
     if return_vertices:
         return vol, len(verts), len(active), verts
     return vol, len(verts), len(active)

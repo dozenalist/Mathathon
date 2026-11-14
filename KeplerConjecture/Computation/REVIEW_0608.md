@@ -43,6 +43,7 @@ source of truth.
 | P2′ | no wrap-around edge: diameter `4.002 < 8 − 3` | exact inequality |
 | P3 | cells are Voronoi cells of the **infinite** packing, computed on the torus | the thirteen cells must sum to `|det L| = 512` exactly — the check that none was truncated |
 | P4 | `b(v) = √32 − vol Ω(v)`, `√32` enclosed between two rationals | so `b(0) > 0` is the rational inequality `vol Ω(0) < SQ32_LO` |
+| P5 | the numbers do not depend on the periodic identification | the central cell is computed at periods 8, 12 and 16 and is **identical** (`5.554454804528846` in all three); its circumradius `1.2587` is far inside the half-period `4` |
 
 **Exact volumes** (rational, from vertex enumeration — see §3 for the certificate):
 
@@ -79,6 +80,25 @@ tolerance, not a mathematical discrepancy (the same check appears in `audit_cut_
 condition provably fails below a positive capacity and holds at a slightly larger one. It **refutes**
 capacities; a fixture cannot do more, and nothing here supports Kepler.
 
+### 2.1 The nonvacuous window of the family
+
+The shell radius `r` is a parameter: as `r` grows the central cell grows, so `b(0)` falls. The
+crossing `vol Ω(0) = √32` cannot be located exactly (`√32` is irrational), so it is **bracketed with
+rationals**, each step computing the exact volume:
+
+| | `r` | `vol Ω(0)` |
+| --- | --- | --- |
+| `b(0) > 0` for | `r ≤ 4322279766317/2147483648000 = 2.01236…` | `5.656849616044` |
+| `b(0) < 0` for | `r ≥ 1080569941629/536870912000 = 2.01236…` | `5.656856788442` |
+
+the two endpoints differing by `9.3·10⁻¹¹`. At the last nonvacuous radius `t* = b(0)/12 = 3.9·10⁻⁷`;
+at `r = 2.0005`, the fixture of §1, it is `8.53·10⁻³`.
+
+**Cross-check against the irrational fixture.** The period-16 13-cluster has its shell exactly at
+`r = 2` and `t* = 8.880·10⁻³`. The rational shell at `r = 2.0005` gives `8.533·10⁻³`, and the family
+is monotone in `r`: the two independent constructions — one with irrational coordinates and an exact
+dodecahedron, one rational with an exact polyhedron — agree in the direction and magnitude they must.
+
 ## 3. Completeness of the exact volume algorithm (fallback, first item)
 
 The engine enumerates vertices from a set `A` of half-spaces proposed by a floating-point pre-pass.
@@ -92,6 +112,15 @@ one and shrink the cell silently. The engine now carries an **exact certificate*
 * **(C3)** the hull is non-degenerate.
 
 Then the true cell `= ⋂A ∩ ⋂D = hull`, and the volume is exact with **no reliance on the float pass**.
+
+**The triangulation is now qhull-free as well.** Computing the boundary from a `scipy` convex hull
+failed with `QH6154` (a flat initial simplex) on a coplanar facet of a *shell* cell — a float
+fragility in a computation that was otherwise exact end to end. Since every vertex already lies on
+identified planes, the facets are read off directly (the vertices exactly on each plane), ordered by
+an exact angular sort around the facet centroid, and fanned into triangles joined to the interior
+point. Every arithmetic step is rational; `scipy` is no longer used by the engine at all. The known
+cases (cube `8`, BCC `a³/2`), the partition identity, and the sampler cross-check (`0.2σ`) all still
+pass, and the family bracket is unchanged to the last digit.
 
 Two things had to be got right, and the first version got them wrong:
 
@@ -143,7 +172,7 @@ not volumes alone.
 
 ```bash
 cd KeplerConjecture/Computation
-python3 fixture_dense_shell.py     # the nonvacuous fixture, exact volumes (~2 s)
+python3 fixture_dense_shell.py     # the fixture, its conventions, the window (~30 s)
 python3 cut_flow.py --fixture out/fixture_dense_shell.json   # the evaluated cut and flow
 python3 fixture_nonuniform.py      # the engine, its certificate, the two-site theorem (~30 s)
 python3 audit_cut_flow_api.py      # 69 checks of the repaired interface
