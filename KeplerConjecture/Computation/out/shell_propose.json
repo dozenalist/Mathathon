@@ -1,0 +1,42 @@
+{
+ "script": "KeplerConjecture/Computation/shell_propose.py",
+ "degree": 9,
+ "basis_propose": "Laguerre in t=2 pi|x|^2",
+ "basis_certify": "monomial u=pi|x|^2 (Main's shell_check)",
+ "checker": "/tmp/shell_check.py",
+ "rows": [
+  {
+   "case": "n=27 rho=2.05 UNCONDITIONAL (K15-C013a)",
+   "count": 27,
+   "rho": "41/20",
+   "shell_status": "unconditional",
+   "variant": "eta=0",
+   "verdict": null
+  },
+  {
+   "case": "n=27 rho=2.05 UNCONDITIONAL (K15-C013a)",
+   "count": 27,
+   "rho": "41/20",
+   "shell_status": "unconditional",
+   "variant": "eta_free",
+   "verdict": null
+  },
+  {
+   "case": "n=12 rho=2.09 CONDITIONAL (K15-C019)",
+   "count": 12,
+   "rho": "209/100",
+   "shell_status": "conditional",
+   "variant": "eta=0",
+   "verdict": null
+  },
+  {
+   "case": "n=12 rho=2.09 CONDITIONAL (K15-C019)",
+   "count": 12,
+   "rho": "209/100",
+   "shell_status": "conditional",
+   "variant": "eta_free",
+   "verdict": null
+  }
+ ],
+ "runtime_s": 13.93
+}
