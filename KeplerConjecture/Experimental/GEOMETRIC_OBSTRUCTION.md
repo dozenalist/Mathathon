@@ -113,3 +113,52 @@ A certified lower bound of the form `vol Omega(w) >= Phi(neighbour data)` with
 within `2.09` (at most `12`, from `K15-E014`) plus the angular data. That is a
 kissing-with-tolerance estimate with an angular constraint, and it is the next missing
 inequality. Offloaded as `LOCAL_ICOSA_SEARCH.md`.
+
+## K15-E042 — the angular estimate: an improvement that still falls short
+
+I attempted the "rigorous angular/local-mass estimate" the task asks for, and it fails.
+Recorded with the numbers, because a failed bound with a measured margin is more useful
+than a vague plan.
+
+**The bound.** For `x = w + t u`,
+`t(u) = min over centres z with cos phi_z > 0 of d_z/(2 cos phi_z)`, and `t >= 1` always.
+A lower bound on `t` is the **minimum** of the per-centre lower bounds — not the maximum.
+Per centre: the six fixed neighbours of an outer centre are known exactly (one at `d = 2`,
+five at `d = 2.102924`), so their terms are known; every other centre has `d >= 2.09` (by
+`K15-E014` at most twelve lie in `[2, 2.09]`, and those twelve are accounted for), giving
+the fallback `2.09/2 = 1.045`. Hence
+
+```
+t_lb(u) = min( min_{6 fixed} d_j/(2 cos phi_j) , 1.045 ) ,      vol Omega(w) >= (1/3) int t_lb^3 .
+```
+
+**Result, minimising over the six free neighbour directions** (they are placed at
+`d = 2`, the most adversarial choice):
+
+| bound on an outer cell | value | shortfall to `5.665735` |
+| --- | --- | --- |
+| inscribed ball `4 pi/3` | `4.188790` | `26.1 %` |
+| **angular + count-12 (this work)** | **`4.733968`** | **`16.4 %`** |
+| dodecahedral theorem (imported) | `5.550291` | `2.04 %` |
+| required | `5.665735` | — |
+
+So the angular estimate is a real improvement over the inscribed ball (`+13.0 %`) but is
+`0.931767` short. **It does not close `(T')`.** The reason is structural: the fallback
+`1.045` is weak, and in directions aligned with a neighbour at distance exactly `2` the
+bound is `1`, so `t_lb` is pinned near `1` over a non-negligible solid angle.
+
+**A direction error caught in my own code, recorded.** The first version used
+`t = max(t_near, FALLBACK)`, which reported `5.943752` — *above* the threshold, and would
+have been read as success. That is wrong: `t` is a minimum over centres, so a lower bound on
+`t` is the minimum of the per-centre bounds. Comparing the two runs is the clearest possible
+demonstration of why the checklist item on monotonicity direction matters; a plausible
+number four fifths of the way to a proof came from a single `max`/`min` slip. Both runs are
+in `evidence/outer_cell_angular_bound.txt`.
+
+**What the failure tells us.** The information "six neighbours at known directions, at most
+twelve within `2.09`" is not enough. Closing `(T'-R2')` needs either (a) a sharper count —
+e.g. `11` rather than `12`, or a *second* shell count — or (b) a genuinely new estimate in
+which the five neighbours at `2.102924 > 2` (bisectors at `1.051462 > 1`) are exploited
+*simultaneously* over the whole solid angle rather than direction by direction. Attempt (b)
+is the next missing inequality; attempt (a) is a spherical-code question of the same kind as
+`K15-E014` but at radius `2.09` with one neighbour already fixed, which changes the count.

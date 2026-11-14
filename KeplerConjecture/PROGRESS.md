@@ -231,3 +231,39 @@ the sum below `99.8`; random completions reach `98.0`.
 Gaps: `(T')`/`(T'-2)` unproved; the upper bounds are `TESTED_FINITE` and undersaturated
 (density `0.10` vs `0.177`); the next missing inequality is an angular
 neighbour-count-versus-volume estimate. Offload `LOCAL_ICOSA_SEARCH.md` filed.
+
+### K15-EXP-007 — 2026-11-14, America/Los_Angeles — role E (Experimental)
+
+Same 60-minute block (start 09:16:38Z), continuing after the first two pushes.
+
+**`K15-E032` — R2 disjointness threshold corrected.** Following the instruction to check
+block disjointness/coverage, R2 as stated was wrong: with adjacency at `2.09`, two defective
+centres at distance in `(2.09, 4.18]` lie in different components yet a shared sound centre
+lies in both neighbourhoods, so the blocks overlap and the family is not a partition. The
+overlap only removes surplus, so `(T')` need not survive. Corrected adjacency threshold
+`tau = 2*2.09 = 4.18`, with disjointness, coverage and `diam Block <= diam(C) + 4.18`
+proved. `(T')` at `2.09` withdrawn as ill-posed.
+
+**`K15-E041` — second obstruction.** `12 * V_dodeca = 66.6034923422` against the required
+`67.9888142149`, shortfall `1.385321873` (`2.0376 %`). So no argument bounding the twelve
+outer cells independently by the single-cell minimum can work; configuration-specific data
+is required, and the dodecahedral theorem is itself computer-assisted.
+
+**`K15-E042` — angular estimate attempted, failed.** Bound
+`vol Omega(w) >= (1/3) int min(min_6 d_j/(2cos phi_j), 1.045)^3 du` gives `4.733968`
+(optimised over the six free neighbour directions), an improvement of `13.0 %` on the
+inscribed ball but `16.4 %` short of the threshold. A direction error (`max` instead of
+`min` in the fallback) initially reported `5.943752`, above threshold; caught and recorded
+in both the doc and the evidence file.
+
+**Interval self-audit.** `interval_selfaudit.py`: 118 point-interval soundness checks
+against 60-digit mpmath, all pass; monotone-wrapper endpoints pass; a too-tight corruption
+is detected `50/50`; the `Iv` constructor rejects `lo > hi` structurally; `pi` enclosure
+verified.
+
+Artifacts: `GEOMETRIC_OBSTRUCTION.md` extended, `REVIEW_CHECKLIST_X.md`,
+`LOCAL_ICOSA_SEARCH.md`, `scripts/{interval_selfaudit,outer_cell_angular_bound}.py`,
+`evidence/{icosa_compensation_search,icosa_targeted_completion,outer_cell_angular_bound}.txt`.
+
+Gaps: `(T'-R2')` open; best certified per-cell bound `4.733968` vs required `5.665735`;
+`icosa_dense_optimize.py` unauthored (`LOCAL_ICOSA_SEARCH.md` BLOCKED on authoring).
