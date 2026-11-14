@@ -63,7 +63,16 @@ scan said `Φ ≥ 0` suffices.
 
 ## 3. The audit: hand expectation / exact oracle / implementation, three ways
 
-`audit_cut_flow_api.py`, 66 checks, exits 0. Expected outcomes are stated twice before the
+`audit_cut_flow_api.py`, 69 checks, exits 0, and it can be pointed at **any revision**:
+
+```bash
+python3 audit_cut_flow_api.py                       # the current module: 69/69
+python3 audit_cut_flow_api.py path/to/cut_flow.py   # any copy, e.g. the one X audited
+```
+
+As a control, run against `cut_flow.py` at `4bcbd3a` (the revision X audited) it reports **42 failed
+of 74**, including every D8 check; run against the repaired module it reports 69/69. A check that
+passes on both would be worthless, so the control is part of the deliverable. Expected outcomes are stated twice before the
 implementation is consulted:
 
 * a **hand** expectation, written as a literal per case (e.g. "vertex 4 is isolated and needs +1");

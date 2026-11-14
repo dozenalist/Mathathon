@@ -28,9 +28,21 @@ verdict from the module under test.
 
 Run:  python3 audit_cut_flow_api.py          (exit 0 iff every case agrees three ways)
 """
-import contextlib, io, itertools, json, os, sys
+import contextlib, importlib.util, io, itertools, json, os, sys
 from fractions import Fraction as F
-import cut_flow as CF
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_MODULE = sys.argv[1] if len(sys.argv) > 1 else None
+if _MODULE:
+    # audit ANY revision of the module, like X's reproduction scripts: point it at a copy
+    _spec = importlib.util.spec_from_file_location("cut_flow_under_test", _MODULE)
+    CF = importlib.util.module_from_spec(_spec)
+    _spec.loader.exec_module(CF)
+else:
+    import cut_flow as CF
+FIXTURE = os.path.join(_HERE, "out", "fixture_C034_witness.json")
+FIXTURE_ERROR = getattr(CF, "FixtureError", ValueError)
+UNB = getattr(CF, "UNBOUNDED", F(10) ** 18)   # an older revision has no sentinel; use its value
 
 FAILS = []
 CHECKS = [0]
@@ -75,12 +87,15 @@ def fm_feasible(b, edges, Phi):
     return all(rhs >= 0 for (coef, rhs) in rows)   # no variables left: need 0 <= rhs
 
 def scan_threshold(b, edges):
-    r = CF.exhaustive_cut_scan(b, edges)
-    return r["t_star"]
+    """t* from the module under test, or None if it raises (a revision with D5 does)."""
+    try:
+        return CF.exhaustive_cut_scan(b, edges)["t_star"]
+    except Exception:
+        return None
 
 def infeasible_according_to_scan(b, edges, Phi):
     t = scan_threshold(b, edges)
-    return Phi < t
+    return t is not None and Phi < t
 
 # --------------------------------------------------------------- the cases
 # Each: (id, b, edges, Phi, feasible?, note).  `feasible?` is the HAND expectation.
@@ -127,7 +142,7 @@ def main():
     print("=" * 100)
     print("A.  THE REVIEW'S WITNESS: b = (-1,-1,-1,-1,+1), edges on 0..3, every path must reject")
     print("=" * 100)
-    fx = CF.load_external_fixture("out/fixture_C034_witness.json")
+    fx = CF.load_external_fixture(FIXTURE)
     b, E = fx["b_lo"], fx["edges"]
     check("the retained witness file has 5 vertices and 4 edges", len(b) == 5 and len(E) == 4)
     check("hand expectation: infeasible (vertex 4 isolated, b=+1)", not True or True)
@@ -137,16 +152,21 @@ def main():
     ok_cap, ok_div, div = CF.verify_flow_exact(b, E, F(1), {})
     check("verify_flow_exact REJECTS the zero flow (ok_div False)", ok_div is False, (ok_cap, ok_div))
     check("verify_flow_exact returns a divergence of length len(b)", len(div) == 5, len(div))
-    check("verify_flow_exact shows div(4) = 0 < b(4) = 1", div[4] == 0 and b[4] == 1, (div[4], b[4]))
+    check("verify_flow_exact shows div(4) = 0 < b(4) = 1",
+          len(div) > 4 and div[4] == 0 and b[4] == 1, (len(div), div[:5]))
     check("feasible_flow returns None at Phi = 1", CF.feasible_flow(b, E, F(1)) is None)
     check("feasible_flow returns None at Phi = 1e6", CF.feasible_flow(b, E, F(10) ** 6) is None)
     worst = CF.find_violating_cut(b, E, F(1))
     check("find_violating_cut finds the obstruction", worst is not None)
-    check("... the unbounded one, at U = {4}", worst[0] == CF.UNBOUNDED and worst[1] == (4,), worst[:2])
-    check("... with sum_b = +1", worst[2] == 1 and worst[3] == 0, worst[2:])
+    check("... the unbounded one, at U = {4}",
+          worst is not None and worst[0] == UNB and worst[1] == (4,),
+          None if worst is None else worst[:2])
+    check("... with sum_b = +1", worst is not None and worst[2] == 1 and worst[3] == 0,
+          None if worst is None else worst[2:])
     sb_rows, infeas = CF.singleton_bounds(b, E)
     check("singleton_bounds flags exactly vertex 4", infeas == [4], infeas)
-    check("exhaustive_cut_scan gives t* = +inf", scan_threshold(b, E) == CF.UNBOUNDED)
+    check("exhaustive_cut_scan gives t* = +inf", scan_threshold(b, E) == UNB,
+          scan_threshold(b, E))
 
     print("\n  the external evaluator must not emit PATCH_FEASIBLE for it:")
     buf = io.StringIO()
@@ -168,7 +188,7 @@ def main():
         flow = CF.feasible_flow(bb, ee, Phi)
         impl_feasible = flow is not None
         t = scan_threshold(bb, ee)
-        scan_feasible = (Phi >= t)
+        scan_feasible = (t is not None and Phi >= t)
         worst = CF.find_violating_cut(bb, ee, Phi)
         cut_says_infeasible = worst is not None
         ok = (oracle == hand_feasible == impl_feasible == scan_feasible
@@ -194,7 +214,7 @@ def main():
             try:
                 fn()
                 check("%s %-38s %s raises" % (mid, why, name), False, "accepted silently")
-            except CF.FixtureError:
+            except FIXTURE_ERROR:
                 check("%s %-38s %s raises" % (mid, why, name), True)
             except Exception as e:
                 check("%s %-38s %s raises FixtureError" % (mid, why, name), False, type(e).__name__)
@@ -215,8 +235,30 @@ def main():
                       (ok_cap, ok_div))
             else:
                 check("D %s raises" % name, False, "accepted silently")
-        except CF.FixtureError:
+        except FIXTURE_ERROR:
             check("D %s raises FixtureError" % name, True)
+
+    print("\n" + "=" * 100)
+    print("D2. THE LOADER's own validation (untested before this block)")
+    print("=" * 100)
+    os.makedirs(".scratch", exist_ok=True)
+    for name, blob in (
+            ("length mismatch", dict(edges=[], b_lo=["0", "0"], b_hi=["0"])),
+            ("b_lo > b_hi", dict(edges=[], b_lo=["1", "0"], b_hi=["0", "0"])),
+            ("edge out of range", dict(edges=[[0, 5]], b_lo=["0", "0"], b_hi=["0", "0"]))):
+        path = os.path.join(".scratch", "bad.json")
+        json.dump(blob, open(path, "w"))
+        try:
+            CF.load_external_fixture(path)
+            check("D2 %s is rejected by the loader" % name, False, "accepted silently")
+        except SystemExit:
+            check("D2 %s is rejected by the loader" % name, True)
+        except Exception as e:
+            check("D2 %s is rejected by the loader" % name, False, type(e).__name__)
+        finally:
+            os.remove(path)
+    with contextlib.suppress(OSError):
+        os.rmdir(".scratch")
 
     print("\n" + "=" * 100)
     print("E.  INTERVAL ENDPOINTS: the two directions are not interchangeable")

@@ -40,6 +40,11 @@ Owner: Computation session. Branch `kepler15/comp-01a1d8c0`, source commit
 | `transfer_necessity.py` | what a bounded transfer implies about the density |
 | `NONUNIFORM_SHELL.md` | the nonuniform shell family; §3.0 assumptions, §3.1 failure modes |
 | `out/example_external_icos13.json` | worked example of the external-fixture format |
+| `audit_cut_flow_api.py` | adversarial audit of the cut/flow API: 69 checks, three-way (hand / exact Fourier–Motzkin / implementation); run it against any revision |
+| `fixture_nonuniform.py` | exact rational Voronoi volumes; the smallest nonuniform periodic fixture; the near-contact scan |
+| `out/fixture_C034_witness.json` | the retained D8 witness: vertex 4 isolated with `b = +1` |
+| `out/fixture_nonuniform_3pt.json` | the 3-point nonuniform fixture, exact volumes 16/24/24 |
+| `REVIEW_0523.md` | this cycle: D8 repair, the API contract, D4/D5/D7 reconciliation |
 
 Reproduce everything in this block (VM, ~40 s total):
 
