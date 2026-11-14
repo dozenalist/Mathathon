@@ -2,13 +2,22 @@
  "script": "KeplerConjecture/Computation/cut_flow.py",
  "external": [
   {
-   "fixture": "cli_fixture",
+   "fixture": "dense_shell_rational",
    "provisional": false,
-   "note": "built from rational geometry: period volume 64, cell volumes ['16', '24', '24'], min separation 2.0",
+   "note": "NONVACUOUS fixture: a rational 12-point icosahedral shell of radius ~2.0005 around a central vertex, period 8 Z^3.  Exact rational cell volumes; b(0) > 0, so the cut condition constrains the capacity.",
    "rows": [
     {
+     "kind": "violating_cut",
+     "U": [
+      0
+     ],
+     "sum_b": "173681993083224792908422781903368798867361787/1696122407158310132608314500000000000000000000",
+     "boundary": 12,
+     "phi_threshold": "57893997694408264302807593967789599622453929/6784489628633240530433258000000000000000000000"
+    },
+    {
      "kind": "flow",
-     "Phi": "1/1000",
+     "Phi": "1/100",
      "cap_ok": true,
      "divergence_ok": true,
      "status": "PATCH_FEASIBLE"
