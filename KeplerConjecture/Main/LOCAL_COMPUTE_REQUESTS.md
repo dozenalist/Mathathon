@@ -256,7 +256,7 @@ or Astra to collect.
 
 ```
 path      KeplerConjecture/Computation/l1_remainder.py
-sha256    fd375ff8b4eb3dff4130c62f2e146bacda71bdc0fdbe035dd79c22a40c993ba0
+sha256    e0adc938f1ca814cc4240862775e26569e2bd53b070627ce79a0e678b5fc5ade
 commit    1d2db443359ad57dddb6e8ac00212044dc7777af   (first commit containing the file)
 deps      python3 (stdlib), numpy, scipy.spatial   -- no Lean, no network, no GPU
 runtime   ~1 s measured; budget 1 CPU / 1 GiB / 120 s
@@ -311,6 +311,7 @@ Acceptance is by **exit code**:
 | `1` | T1/T2 certified, value bound open (no `Q`, no `X`, or `X` too large) | expected with a crude `X` |
 | `2` | a sound part failed (e.g. a ball outside `0.163600`) | a real problem |
 | `3` | the negative control was not rejected, i.e. the pilot is inert | discard the run |
+| `4` | invalid input (non-positive `c`, zero ball, `eps` beyond `4cos ρ_c − 2 = 1.1786`) | fix the call |
 
 **Required negative controls.**
 

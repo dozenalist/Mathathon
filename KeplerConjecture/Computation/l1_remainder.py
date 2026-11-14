@@ -353,7 +353,7 @@ def main():
                     help="ball radius in the sum-of-squares metric")
     ap.add_argument("--eps", type=float, default=None,
                     help="derive the ball from eps: theta_pn = cos(rho_c) - (2+eps)/4, "
-                         "ball = sqrt(12)*theta_pn")
+                         "ball = sqrt(12)*theta_pn.  --eps OVERRIDES --theta.")
     ap.add_argument("--c", type=float, default=0.13)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--ratio-min", type=float, default=RATIO_MIN,
@@ -368,8 +368,22 @@ def main():
                          "interval computation; without it the value bound cannot "
                          "be certified, only shown plausible")
     a = ap.parse_args()
+    # ---- input validation: refuse nonsense rather than report on it -----------------
+    # (a negative ball makes T1/T2 pass VACUOUSLY, since the margin grows with |theta|)
     if a.eps is not None:
-        a.theta = (12 ** 0.5) * (COVER - (2.0 + a.eps) / 4.0)
+        pn = COVER - (2.0 + a.eps) / 4.0
+        if pn <= 0:
+            print(f"INVALID: eps = {a.eps} gives a non-positive per-normal allowance "
+                  f"({pn:.6f}); the route needs eps < 4cos(rho_c) - 2 = "
+                  f"{4 * COVER - 2:.7f}")
+            return 4
+        a.theta = (12 ** 0.5) * pn
+    if a.theta <= 0:
+        print("INVALID: the ball radius must be positive")
+        return 4
+    if a.c <= 0:
+        print("INVALID: c must be positive (c = 0 is trivially satisfied)")
+        return 4
 
     print(f"l1_remainder.py -- theta_max={a.theta:.8f}  c={a.c:.3f}  V_dod={V_DOD:.9f}")
     print(f"   per-normal angle implied: {a.theta / 12 ** 0.5:.8f} "
@@ -474,6 +488,9 @@ def self_test():
         (["--certify", "--theta", "0.30", "--seed", "3"], 2, "a ball beyond the certified radius FAILS"),
         (["--certify", "--eps", "1.0", "--seed", "3"], 1, "the eps=1 ball is inside, value bound open"),
         (["--certify", "--eps", "0.2", "--seed", "3"], 2, "the eps=0.2 ball is OUTSIDE the type region"),
+        (["--certify", "--eps", "3.0"], 4, "a negative per-normal allowance is INVALID"),
+        (["--certify", "--theta", "0"], 4, "a zero ball is INVALID (--eps absent)"),
+        (["--certify", "--c", "0"], 4, "c = 0 is INVALID"),
     ]
     ok = True
     for argv, want, why in cases:
