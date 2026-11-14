@@ -1,5 +1,14 @@
 # The exact remaining lemma, against Hales' accounting and the literature
 
+> **Superseded as the project's *chosen* target (review 0438, `D19`).** This file states the
+> **cut-condition** route. That route is intact but is no longer the live one: the pointwise cell
+> family is *provably capped* at `8/V_dod` (retained literature below);
+> `Literature/sharp-bounds-in-dimension-3.md` §5.3(i), so beating it requires a **multi-cell**
+> inequality, and the chosen object is now E's pair bound `vol Ω(v)+vol Ω(w) ≥ 2√32`
+> (`Main/GEOMETRIC_LEMMA_0438.md`, `C106`–`C108`). Read that file for the current target; read
+> this one for the cut route's own inequality, which is unchanged and still correct.
+
+
 Block `K15-REVIEW-0308-M`. The project's geometric route now reduces to **one**
 statement. This file states it exactly, compares it with the accounting lemma Hales
 actually uses, and names the closest literature.
