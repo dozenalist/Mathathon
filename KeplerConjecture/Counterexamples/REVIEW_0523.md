@@ -452,18 +452,31 @@ radius and the 2-separation.)
 
 ## 9. Status changes this review asks for
 
-| id | claim | what this review found |
+| id | claim | verdict |
 | --- | --- | --- |
-| `X-C037` | Line 90's `C_R` is the wrong object; the identity needs the exactly-one-endpoint sum (already the wording at line 409) | **DEFECT (definition), one-line repair**; witness W1, exact |
-| `X-C038` | Line 197's criterion for `(M)` is the **fractional** Tutte condition and is **correct**: verified against an LP on all 33,867 graphs with `n ≤ 6`, 0 mismatches. (An earlier draft of this review called it the integral condition and "refuted" it with the triangle; that reading was wrong and is withdrawn.) The Farkas form `y_u+y_v ≤ 0`, `Σy > 0` is the practical certificate form | **VERIFIED** (and my own error recorded); witness W2 |
-| `X-C039` | "the failure is *exactly* an isolated icosahedral cluster" — the mechanism is "some `S` with `iso(G−S) > |S|`"; the 13-cluster is its extremal geometric case, not the only one (`K_{1,3}` fails too) | **Wording**, not a defect; witness W3 |
-| `X-C040` | Line 40's "equality case is exactly the Barlow family" asserts an unproved converse that `C095`'s crack packing refutes (bulk–bulk pairs at equality, packing not Barlow) | **REFUTED as stated**; demote the heading |
-| `X-C041` | Theorem C consequence 2 ("the equality case is empty") infers a pointwise statement from an average and needs a stability version of Hales–McLaughlin that the exposition says is unavailable | **GAP (not refuted)**; the corollary may be true, the argument is not a proof |
-| `X-C042` | Line 215's coefficients are not the split's (`2(√32−V_dod)` on `Σd_v`, `√32` on `C_R`, vs `√32−V_dod` on both). Both displayed coefficients are **larger**, so the display is **weaker** and follows; the earlier claim in this review that it was stronger/false is **withdrawn** (per-vertex reading error). Real addition: the repair needs `Σ_{e∋v}c_e ≤ 1` at `v ∈ E`, which `(M)` does not state | **IMPRECISION, not a defect** |
-| `X-C043` | Theorem D step 4 confirmed independently: `sup_t m(t) = 1.125554844510 < 2`; and E's `1.056487696` is `m` at twist `33.636862°`/`38.363138°`, so the "unresolved discrepancy" is resolved in Main's favour | **VERIFIED / RESOLVED** |
-| `X-C048` | Line 204's "twelve centres on the sphere of radius 2 with mutual distance ≥ 2 is exactly the icosahedral twelve" is **false**: the icosahedral twelve have min distance `2.102924448 > 2`, so the admissible set is positive-dimensional; `K_{1,3}` is realisable at `2·(±1,±1,±1)/√3`, so the failure set of `(M)` is much larger than "the 13-cluster" | **REFUTED (over-claim)**; verified |
-| `X-C049` | Theorem C's corollary "the equality case is empty" is **true** but follows in two lines from Hales (`π/√18 = 0.740480 < 0.754697 = (4π/3)/V_dod`), so it cannot be evidence inside a chain meant to prove Kepler; the route through Theorem C needs the missing stability statement | **TRUE but not from the chain** (`X-C041` stands as the gap) |
-| `X-C044` | `cut_flow.py` at `a25f5be` (blob `c2127cee`) still infers the vertex set from the edge list at lines 269 (`find_violating_cut`), 352 (`feasible_flow`), 390 (`verify_flow_exact`); `exhaustive_cut_scan` already has the fix at 306–307 (`n = max(n, len(b_lo))`) but it was not propagated | **DEFECT (D8, unchanged)** |
+| `X-C037` | `C_R` (line 90) is the wrong set; the identity and `c_e ≤ 1` both need the exactly-one-endpoint sum (already line 409) | **defect**, one-line repair |
+| `X-C038` | `(M)`'s criterion (line 197) is the fractional Tutte condition and is correct | **verified** (33,867 graphs); my first reading withdrawn |
+| `X-C039` | "the failure is *exactly* an isolated icosahedral cluster" | **wording**; `K_{1,3}` and `P₃` fail too |
+| `X-C040` | "(L)'s equality case is exactly the Barlow family" (line 40) | **refuted** by `C095` and by the fcc half-space shift |
+| `X-C041` | Theorem C's "equality case is empty" reads an average as pointwise | **gap**; needs stability |
+| `X-C042` | the slack coefficients (line 215) are weaker than the split's, so the display follows | **impression**, not a defect; my first claim withdrawn |
+| `X-C043` | Theorem D step 4 | **verified** to 12 digits; E/Main discrepancy **resolved** |
+| `X-C044` | `cut_flow.py` at `a25f5be` still truncates the vertex set at lines 269/352/390 | **defect** (D8, unchanged) |
+| `X-C045` | `exact_sign.py` decided signs on a different interval for some exact rationals (`nsimplify`) | **defect in X's own tool**, fixed; no published number moved |
+| `X-C046` | the bounded-interval `p ≤ η` predicate by an independent Vincent–Descartes decider | **done**, 92 cases, 0 mismatches |
+| `X-C047` | Hales–McLaughlin's equality case | **verified from the primary source**, including its hypothesis |
+| `X-C048` | "twelve at mutual distance ≥ 2 on radius 2 is exactly the icosahedral twelve" (line 204) | **refuted** (the icosahedral twelve have 2.1029) |
+| `X-C049` | "the equality case is empty" is true, in two lines from Hales | **true, but not from the chain** |
+| `X-C050` | `C121` (post-target): explicit stability for `≤ 12`-face cells | **correct and sharp**, but gives near-contacts, not contacts |
+| `X-C051` | the two-dodecahedra threshold | **`3.4555003`**, so `C116`'s `6/√5` is 28.8% short (my first claim, `2φ`, withdrawn) |
+| `X-C052` | A15's Voronoi volumes (post-target correction `C111`) | **confirmed**: `125/16`, `129/16`, contacts give `16.125` |
+| `X-C053` | the arithmetic of `C119`/`C122` (post-target) | **checked exactly**, no discrepancy |
+| `X-C054` | fcc and hcp cells: `√32` and circumradius `√2` | **verified** directly, both hcp sites |
+| `X-C055` | E's payer fixture (`C118`) | **reproduced to 1e-12**; it is *not* the `5.897967122` of §5 |
+
+Rows `X-C037`–`X-C043` are in the audited target (`a6f3935`); `X-C044` and `X-C050`–`X-C055` are
+post-target material audited because it carries numbers a later block would quote; `X-C045`–
+`X-C046` are the G8 fallback and `X-C047`–`X-C049` are the source check and the Tammes-12 refutation.
 
 ## 10. Limits of this review
 
