@@ -33,3 +33,34 @@ Git object name or a file SHA-256.
 No Lean build and no heavy solve was run on the VM. The only floating-point
 computation in the block was a five-second LP diagnostic, which failed and is
 recorded (K15-C022).
+
+## Block K15-REVIEW-0138-M — additions
+
+Receipt `2026-11-14T09:42:58Z`. Revisions read at receipt:
+
+| Source | Full hash |
+| --- | --- |
+| supervisor `kepler15/setup-01a1d8c0` | `3c8ea4b0dd5d2749bb3c2760afb59f3b642167a6` |
+| Computation `kepler15/comp-01a1d8c0` | `5c10267703d89ed285a01112aeba717018fb67bc` |
+| Experimental `kepler15/experimental/run-01` | `4ea4e8b96eea76b9f045325f9d18229a2157aeb5` |
+| Counterexamples `kepler15/counterexamples/run-01` | `e3a63a184a5cc94ce63512f1f3285f0622d089df` |
+| Main `kepler15/main` at receipt | `6626714125c35292d78943cd0fe8d18ec0051b38` |
+
+New worker artifacts read but **not** imported as claims (attribution preserved,
+status unchanged): C `shell_propose.py` / `shell_sos.py` and their JSON outputs;
+E `interval_selfaudit.py`, `outer_cell_angular_bound.py`, revised
+`tammes13_enclosure.py`; X `Reviews/audit_shell_check.py`,
+`Reviews/shell_check_main.py` (an independent copy of Main's checker with a
+quadrature audit of `fourier_map`), `Reviews/K33/witness_bisect.py`.
+
+Quality-control note: a previous run of `Computation/checker_adversarial.py`
+against `exactcert` depended on files extracted to a scratch directory that is
+not part of the repository. The runnable command therefore is:
+
+```
+git show 5c10267703d89ed285a01112aeba717018fb67bc:KeplerConjecture/Computation/exactcert.py > /tmp/exactcert.py
+python3 KeplerConjecture/Computation/checker_adversarial.py --against-exactcert /tmp
+```
+
+with the caveat that `exactcert.py` imports nothing else. `Computation/transfer_check.py`
+needs only numpy.

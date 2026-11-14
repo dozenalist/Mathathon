@@ -1180,3 +1180,52 @@ search, because by the monotonicity above it could not settle the question.
 **Consequence for the ledger.** G5 (an analytic cluster-volume lower bound) is the
 single remaining obligation on the geometric route; G4 and G6 are supplied or
 bypassed by `K15-C035`; G7's "falsification test" is withdrawn with `C029`.
+
+### K15-C037 — independent audit of the `K15-C002b` bridge and its zero-density case (`AUDITED`)
+
+Main audited the repaired periodic-approximation lemma line by line.
+
+1. **Tile count.** `#C_in(R)·S³ ≤ vol B(0,R)` is correct: interior tiles are
+   disjoint and contained in the ball, so `#C_in ≤ vol(B(0,R))/S³`. This is the
+   direction the original argument needed and did not state.
+2. **Boundary loss.** Centres in `B(0,R)` outside the interior tiles lie in tiles
+   meeting `S(0,R)`; a tile of side `S` meeting the sphere near the origin of a
+   tile is contained in the shell of width `2S√3` about `S(0,R)`, which has volume
+   `≤ 4πR²·(2S√3 + 2) = O(R²S)`. The centres there are 2-separated, so their
+   number is at most the shell volume divided by `4π/3` — again `O(R²S)`. ✓
+3. **Division.** `n(C*) ≥ (N(0,R) − O(R²S))/#C_in ≥ (N − O(R²S))·S³/vol B(0,R)`
+   uses `1/#C_in ≥ S³/vol`, which follows from item 1. ✓
+4. **Rate.** Dividing by `S³`: `n(C*)/S³ ≥ c − O(S/R)`, so for fixed `S` and
+   `R = R(S) → ∞` the periodic packing has centre density `≥ c − O(1/S)` and
+   occupied density `≥ δ(Λ) − O(1/S)`. The diagonal choice `S → ∞`, `R(S)/S → ∞`
+   is what makes the `o(1)` uniform; that is the step the original text left
+   implicit and it is now stated.
+5. **Zero-density case.** If `δ(Λ) = 0` then `N(0,R) = o(R³)` and the conclusion
+   `δ(Λ) ≤ (4π/3)f(0)/f̂(0)` is immediate (the right side is `≥ 0`); the periodic
+   packing may be taken empty. No division by `c` occurs, so the lemma is
+   vacuous-free. ✓
+6. **Hidden dependency.** The reduction identifies the occupied-volume ratio with
+   `(4π/3)·#(Λ∩B(0,R))/vol B(0,R)` up to `O(1/R)`; that is the counting-to-volume
+   identity of `K15-C024` item 3. It is written out there and is used here
+   implicitly — a reader of C002b alone would miss it.
+
+*Verdict:* the bridge is correct as repaired. The only defect found is the
+implicit dependency in item 6, which is now recorded. Reviewer X (this is Main
+auditing Main's own repair, so an outside check is still required).
+
+### K15-C038 — transfer fixture: the constant is valid but very loose (`TESTED_FINITE`)
+
+- **Artifact.** `Computation/transfer_check.py` — builds fcc (1099 centres),
+  draws a random rational antisymmetric transfer with `R = 2`, `Φ = 1`, forms
+  `A(v) = Σ_w φ(v,w)`, and compares `Σ_{Λ∩B(0,r)} A` with `3Φ(R+1)⁵r²` for
+  `r = 1..6`.
+- **Result.** The bound holds at every radius, with observed sums of order
+  `10⁰`–`10¹` against bounds of order `10³`–`10⁴`; `max|A| = 7.25` against
+  `Φk_R = 26`. So `K15-C035`'s constant is *valid but loose by about three
+  orders of magnitude* on this instance.
+- **Why the looseness is acceptable.** Lemma 3.3's conclusion is
+  `δ ≤ π/√18 + C/r` with `C` depending on `C₁`; a loose `C₁` slows the rate, it
+  does not weaken the bound. A sharper `C₁` would matter only for a quantitative
+  (finite-`r`) statement, which is not what the project needs.
+- **Status.** `TESTED_FINITE` (arithmetic of the constant on one instance). The
+  proof of `K15-C035` does not depend on this run.
