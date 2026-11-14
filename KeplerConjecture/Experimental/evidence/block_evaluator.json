@@ -1,0 +1,84 @@
+{
+ "two_icosa": {
+  "fixture": "two_icosa",
+  "n": 281,
+  "minsep": 1.9999999999999991,
+  "buffer_limited_cells": 0,
+  "n_defective": 2,
+  "defective_vols": [
+   5.550291028515513,
+   5.5502910285155105
+  ],
+  "defective_touched": 0,
+  "r2": {
+   "R2_one_shell": {
+    "components": 2,
+    "threshold": 4.18,
+    "blocks": [
+     {
+      "component_size": 1,
+      "block_size": 13,
+      "sum_vol": 124.27150537991757,
+      "need": 73.53910524340095,
+      "T_holds": true,
+      "deficit_D": 0.10656322097686743,
+      "surplus_S": 50.8389633574935,
+      "S_minus_D": 50.73240013651663,
+      "block_has_buffer_cell": false,
+      "diam_block": 4.0,
+      "surplus_minus_deficit_direct": 50.73240013651662
+     },
+     {
+      "component_size": 1,
+      "block_size": 13,
+      "sum_vol": 123.59144444569598,
+      "need": 73.53910524340095,
+      "T_holds": true,
+      "deficit_D": 0.1065632209768701,
+      "surplus_S": 50.15890242327191,
+      "S_minus_D": 50.052339202295045,
+      "block_has_buffer_cell": false,
+      "diam_block": 4.000000000000001,
+      "surplus_minus_deficit_direct": 50.05233920229503
+     }
+    ],
+    "max_pairwise_overlap": 0,
+    "disjoint": true
+   },
+   "R2pp_two_shell": {
+    "components": 2,
+    "threshold": 8.36,
+    "blocks": [
+     {
+      "component_size": 1,
+      "block_size": 16,
+      "sum_vol": 159.02726776345645,
+      "need": 90.50966799187809,
+      "T_holds": true,
+      "deficit_D": 0.10656322097686743,
+      "surplus_S": 68.62416299255524,
+      "S_minus_D": 68.51759977157838,
+      "block_has_buffer_cell": false,
+      "diam_block": 6.9527151896025785,
+      "surplus_minus_deficit_direct": 68.51759977157836
+     },
+     {
+      "component_size": 1,
+      "block_size": 17,
+      "sum_vol": 172.6162346454793,
+      "need": 96.16652224137047,
+      "T_holds": true,
+      "deficit_D": 0.1065632209768701,
+      "surplus_S": 76.55627562508568,
+      "S_minus_D": 76.44971240410881,
+      "block_has_buffer_cell": false,
+      "diam_block": 7.01055835547834,
+      "surplus_minus_deficit_direct": 76.44971240410882
+     }
+    ],
+    "max_pairwise_overlap": 0,
+    "disjoint": true
+   }
+  }
+ }
+}
