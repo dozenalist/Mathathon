@@ -212,3 +212,19 @@ after reproducing the base fixture, before completing the parameter sweep.
 Review its generic volume completeness separately from exact flow arithmetic.
 The next checkpoint must inspect repaired origin-interior/radius proofs and
 the global geometry hypotheses. Keep the 45-minute cadence and stopped watchers.
+
+### 07:38 review
+
+All four owned sessions were idle. Completion sequences 153278/118884/141959/
+158590 received exactly one new full-hour assignment, with actual Ultramath
+model calls confirmed. Prior elapsed minutes M/C/E/X: 10.557/51.335/23.775/
+54.387; none accepted as a full substantive hour. New earliest finishes are
+08:45–08:49 Pacific. Exact IDs, starts and evidence are in
+ASSIGNMENTS_2026-11-14_0738.json. Busy work was not interrupted. No extra
+sessions or swarms were started, and Sair-Watch remains stopped.
+
+Both local jobs finished. E's requested 600-second scan conflicts with its
+per-start cap and may be redundant after the source correction; its disposition
+is explicit in the review. All Lean and heavy work must be routed locally.
+Main leads proof choices and integration. The next scheduled review must inspect
+the exact verifier/geometry repairs and substantive duration, not just labels.

@@ -1,0 +1,16 @@
+{
+  "review": "2026-11-14 07:38 Pacific",
+  "previous_publication": "5f8013b571ffc6f644447ef9c70ea2b3388777f7",
+  "source_revisions": {
+    "Main": "2c4131108498d1eea26792ce72cc1c8ebf8c2190",
+    "Computation": "2d6d64051b144c97a4da7485cfca367828a452ca",
+    "Experimental": "6ae7dbf834295aa688076d94caa091a77a127ce2",
+    "Counterexamples": "8677a0294ab171f00d2efd74829c0c80caf6aab3"
+  },
+  "integration_head": "74d7436815febc02d94eaf83fff1a8719a92173a",
+  "all_sources_are_ancestors": true,
+  "scope": "KeplerConjecture only",
+  "cutoff": "Completed source revisions fetched for this scheduled review before new assignments. New-task interim pushes belong to the next scheduled review.",
+  "conflicts": "Computation/REVIEW_0608.md closing clock paragraph: preserved the newer complete worker timeline; only obsolete earlier closing text replaced.",
+  "preservation": "Normal merges retain author commits and failed/retracted claims. Supervisor dispositions do not silently rewrite worker proofs."
+}

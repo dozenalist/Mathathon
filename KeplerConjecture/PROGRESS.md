@@ -717,3 +717,20 @@ evidence without a clock reset; C stayed busy without duplicate assignment.
 Its heavy VM scan violates the standing offload instruction and is recorded
 for the next review. All local jobs stopped. Source hashes and limits are in
 SYNC_2026-11-14_0653.json and REVIEW_2026-11-14_0653.md. Watchers remain stopped.
+
+## Supervisor checkpoint: November 14, 07:38 Pacific
+
+Merged M 2c41311, C 2d6d640, E 6ae7dbf and X 8677a02 with authorship retained.
+K15-SUP-0738-01 records local origin/radius repairs and a new exact duplicate-face
+overcount (cube 8 becomes 28/3). The 12-face premise has an identified primary
+source (-02), but the ring-excess proof remains open. Main's covering-radius
+exclusion is pending review; its finite-ball inequality is still reversed (-03).
+Face-class minima and generic rational-volume completeness remain unresolved
+(-04). No new best bound, simpler proof or Lean result accepted.
+
+All four completed early; one new full-hour assignment per owned session is
+delivered and runtime-verified Ultramath. IDs, actual starts, earliest finishes
+and previous duration audit are in Main/ASSIGNMENTS_2026-11-14_0738.json. Both
+local jobs finished; the inconsistent/redundant premise scan is deferred with
+its reason. See Main/REVIEW_2026-11-14_0738.md and SYNC_2026-11-14_0738.json.
+The next review remains on the 45-minute schedule; watchers remain stopped.

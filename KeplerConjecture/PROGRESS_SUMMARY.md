@@ -1,14 +1,14 @@
 # Kepler Conjecture: progress so far
 
-Updated at the November 14, 2026, 06:53 Pacific scheduled review. A concrete
-periodic packing now exercises the transfer condition with a positive deficit;
-local calculations reproduce its values and independently check its geometry
-and flow using the volume data. General volume verification is still open.
-New exact objections keep Experimental's replacement certificate and Main's
-global geometric argument under review. Main and Experimental received fresh
-full-hour Ultramath tasks after early endings; the other two chats continue.
-All local jobs stopped, including a capped parameter scan. No new best bound,
-simpler Kepler proof or Lean result is accepted. Checks remain every 45 minutes.
+Updated at the November 14, 2026, 07:38 Pacific scheduled review. The latest
+worker sources are synchronized. The origin and radius checks now pass local
+controls, but another exact example exposes duplicate-face overcounting. A
+primary source supports the twelve-face premise; the surrounding geometric
+argument still needs proof review. Main has a shorter candidate exclusion
+argument, while its global counting proof still contains an inequality error.
+All four agents ended early and received new full-hour Ultramath assignments;
+their actual runtime mode is verified. No new best packing bound or simpler
+proof is accepted. Checks continue every 45 minutes, with watchers stopped.
 
 ## Where the project stands
 
@@ -397,3 +397,28 @@ finish the local geometric lemmas, and numerically evaluate the shell-count
 candidate against an ordinary analytic control. Approximately the final nine
 hours before November 15 at noon Pacific are reserved for independent checking,
 integration and an honest exposition of the strongest result obtained.
+
+## November 14, 07:38 Pacific: more precise proof obligations
+
+Experimental fixed the earlier test that wrongly accepted a triangle of normals
+as surrounding the origin, and replaced its sampled radius estimate with an
+exact construction. The supplied controls now pass locally. A separate probe
+found another problem: repeating one cube face makes the routine count that
+face twice. The specific geometric fixtures remain useful evidence, but the
+general certificate cannot yet be trusted without its input conditions and
+facet accounting proved.
+
+The classical twelve-face volume theorem does apply to the contracted
+polyhedron used in the geometric route; the literature record now points to
+the precise theorem and correct attribution. It does not automatically prove
+the additional area and displacement estimates. Main also proposes a short
+argument using the covering radius of an icosahedron to remove an orientation
+restriction. Independent review is underway. Its accompanying global proof
+still uses an inequality backwards, and examples of polyhedra were mistakenly
+treated as optimal values. These are recorded as open work, not accepted results.
+
+All four sessions stopped before sixty minutes. Fresh assignments include
+substantive fallback work and exact review criteria, and all four are confirmed
+to run Ultramath. The supervisor ran the small checks locally, integrated the
+captured sources with authorship intact and preserved every failed version.
+No mathematical improvement to the best known packing bound is claimed.

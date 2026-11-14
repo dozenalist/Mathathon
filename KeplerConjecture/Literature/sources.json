@@ -129,9 +129,10 @@
       "version": "JAMS 23 (2010), 299-344; 49-page author manuscript inspected",
       "url": "https://www.cs.cmu.edu/~seanmcl/papers/McLaughlin-Dodec.pdf",
       "doi": "10.1090/S0894-0347-09-00647-X",
-      "locator": "Section 1 pp. 1-2; Theorem 2.1 p. 6; Section 3 p. 8 in author manuscript",
+      "locator": "Section 1 pp. 1-2; Theorem 2.1 p. 6; Section 3 p. 8; Section 4, Theorem 4.1, printed/PDF p. 16 (zero-based 15), author manuscript",
       "access_status": "SELECTED_FULL_TEXT_CHECKED",
-      "role": "Known local-volume density benchmark about 0.7546974 with computational proof dependencies"
+      "role": "Known local-volume density benchmark about 0.7546974 with computational proof dependencies",
+      "additional_review": "2026-11-14 07:38 Pacific: Theorem 4.1 and attribution to Fejes Toth checked; see TWELVE_FACE_SOURCE_AUDIT.md"
     },
     {
       "id": "H12",

@@ -18,3 +18,5 @@ The November 14 hourly review added a fourth PDF,
 [its source card](TAMMES13.md). The collection now has 17 source records.
 
 Every new citation or borrowed construction must be added to this collection with its version, precise locator, access date, role in the argument, and limits. Record failed searches and inaccessible sources. Compare candidate complexity with the closest existing method using proof dependencies, geometric cases, certification workload, and actual exposition.
+
+The [twelve-face source audit](TWELVE_FACE_SOURCE_AUDIT.md) identifies the exact imported premise used by the current geometric route and records the November 14 follow-up Hexagon search.

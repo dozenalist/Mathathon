@@ -1,0 +1,8 @@
+{
+  "positive_axes_rejected": true,
+  "cube_volume": "8",
+  "radius_lower": "200867255532373784442745261542645325315275374222849104412672/347912292158992048655243746967195092148173250036947093091097",
+  "radius_squared_le_one_third": true,
+  "duplicate_face_volume": "28/3",
+  "duplicate_face_invariant": false
+}

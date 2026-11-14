@@ -1,0 +1,40 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "packages": {
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0"
+  },
+  "sources": {
+    "Experimental/scripts/cell_certificate.py": {
+      "commit": "6ae7dbf834295aa688076d94caa091a77a127ce2",
+      "git_blob": "6adc6cde9234b427a41f6ff19072dac2b9f46e5b",
+      "sha256": "6ca9faa97127660d8bba02b293430502f1fec1315b03e7ead92d7c1e5994d3a4"
+    },
+    "Experimental/scripts/rational_interval.py": {
+      "commit": "6ae7dbf834295aa688076d94caa091a77a127ce2",
+      "git_blob": "16703d14b3438be007b3031f4d67034d307c430e",
+      "sha256": "561f9167f716caeb21db70f46bc6d3ddf43b5b4683e491387be1035dc051fb8b"
+    },
+    "Experimental/scripts/premise_audit.py": {
+      "commit": "6ae7dbf834295aa688076d94caa091a77a127ce2",
+      "git_blob": "d783e453659fa1390ab905c2283a7e126afd22d6",
+      "sha256": "7ec89b4747e1c6d9ad97dedfe9f6e89b75d0a54310bde56a22c4b517f331f962"
+    },
+    "Experimental/scripts/pair_theorem_12faces.py": {
+      "commit": "6ae7dbf834295aa688076d94caa091a77a127ce2",
+      "git_blob": "e632572927518597949c73cc472dcfcc2180babc",
+      "sha256": "50d8c01d046afaceae6b0bde40c1352911d95439c3e3fce805729a0fbe17008c"
+    },
+    "Computation/fixture_nonuniform.py": {
+      "commit": "2d6d64051b144c97a4da7485cfca367828a452ca",
+      "git_blob": "a4e4efd1aa3ba5de969ed21237a111fd602a4dc3",
+      "sha256": "d8145651d69aead28f95638f93501bae6d473aeb270955bc2c08e4c47e15d300"
+    }
+  },
+  "cpu_affinity_bit": 1,
+  "memory_cap_bytes": 1073741824,
+  "threads": 1
+}

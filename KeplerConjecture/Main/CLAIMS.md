@@ -1,5 +1,16 @@
 # Claim ledger — Kepler problem 15
 
+> **Supervisor review, 07:38 Pacific:** E's origin/radius repairs pass the
+> named controls, but a duplicated cube face gives volume 28/3 instead of 8.
+> Generic certification remains pending; distinct-face fixtures are not thereby
+> refuted. Main C133's short all-orientation argument awaits independent audit;
+> C132 still reverses an inequality, and C134 mistakes examples for minima.
+> C's generic exact-volume completeness is unproved. The twelve-face premise
+> has a primary Fejes Toth source; E's remaining ring-excess proof is unchecked.
+> No new best bound or simpler proof is accepted. This current disposition
+> overrides conflicting author labels and older status banners below.
+> See [the review](REVIEW_2026-11-14_0738.md).
+
 > **Supervisor review, 06:53 Pacific:** C's nonvacuous periodic fixture has
 > locally reproduced values and independently checked legality/flow, conditional
 > on its volume data; the generic volume algorithm remains under review.
