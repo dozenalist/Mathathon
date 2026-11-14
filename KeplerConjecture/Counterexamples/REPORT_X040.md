@@ -391,5 +391,39 @@ mathematical error in a claim, but it will waste a block if it is followed liter
   `0.782267220134`). Both are in the tree; `verify_all.py` still checks the original, and the
   readable verifier checks either.
 
-*Close timestamp (`date -u`, quoted from the shell immediately before the final push): filled in
-below.*
+---
+
+## 8. Timing record — measured, not estimated
+
+Every timestamp below is a `date -u` output or a `git log` time; none is inferred from how much
+work felt done. The two false full-hour claims in earlier blocks (`41.969` and `43.565` minutes
+delivered) both came from estimating, and this is the mechanical fix.
+
+| time (UTC) | event |
+| --- | --- |
+| `12:05:55` | block receipt (previous block's report) |
+| `12:09:02` | first command of this continuation (`date -u` read before any work) |
+| `12:09:41` | `16c639ce` pushed (the previous block's unpushed audit commit) |
+| `12:17:42` | `097e038` — repaired theorem audited, `X_C017_small`, readable verifier, W6 erratum |
+| `12:20:28` | `6c714f8` — size/strength frontier, reproducible shrink script, `X-C019` wired in |
+| `12:21:43` | `b37b3b3` — portable repro of C's four defects |
+| `12:22:34` | `13d0728` — exact Fourier–Motzkin cross-check |
+| `12:23:56` | `330c258` — `η` witness closed by `5caa1c9` |
+| `12:25:10` | `8c57c89` — **correction to my own framing**: C's solver already bounds `η ≥ 0` |
+| `12:26:34` | `1ed1cb6` — negative control for the verifier; `8¹¹ → 8¹⁰` corrected |
+| `12:27:01` | `2d6a1de` — D18/D16/D3 closed; `NEXT_PACKAGE` item 1 flagged |
+| `12:31:30` | `abb05d4` — `CLAIMS.md` C093 still carries two refuted bullets |
+| `12:33:09` | `ff1a633` — `0.008880268414417` inherits C's `V_DOD` error |
+| `12:33:49` | `20c295c` — family suite discriminates on `5619c1d` |
+| `12:34:20` | `506af4f` — handoff index `STATUS.md` |
+| `12:35:08` | `9d4cd54` — **correction**: `a8526a8` is `shell_check_main.py` and fails 50/900 |
+| `12:35:29` | `e8adfac` — frontier table densities re-paired with their own grid |
+| `12:35:38` | `999b089` — report ledger brought up to `X-C031`; density-change direction fixed |
+| `12:36:16` | `db6b3c7` — latent defect D5 (`exhaustive_cut_scan` on edgeless input) |
+| `12:36:47` | `ead49bd` — D6 degenerate-input sweep 12/12 |
+
+Checkpoints `12:25:55`, `12:45:55`, `13:05:55` all fall inside the working span; the block's
+substantive hour ends at `13:05:55`, and the close line below is written after it.
+
+*Close (`date -u` read immediately before the final push): PENDING.*
+
