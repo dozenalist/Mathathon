@@ -411,7 +411,7 @@ cd KeplerConjecture/Computation
 python3 tests_0138.py                      # every claim in this block, exact; ALL PASS
 python3 verify_certificate.py out/verified_certificate_K33b.json   # 0.77996622
 python3 exactcert_tests.py && python3 exactcert_oracle.py          # regression + exact oracle
-python3 audit_fourier.py /tmp/sc662.py                             # Fourier audit
+python3 audit_fourier.py path/to/shell_check.py                    # Fourier audit
 python3 sos_family.py                      # p-side Gram, 5.99152482
 python3 sos_family2.py                     # p-side quintic Gram, 6.73788568
 python3 sos_shell_variant.py               # family-restricted shell proof

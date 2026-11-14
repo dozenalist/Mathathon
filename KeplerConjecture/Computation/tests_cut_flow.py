@@ -269,6 +269,10 @@ def main():
             check("the provisional flag appears in the report", outp["provisional"] is True)
         finally:
             _os.remove(tmp)
+            try:
+                _os.rmdir(".scratch")           # leave no empty directory behind
+            except OSError:
+                pass
 
     print()
     if FAILS:
