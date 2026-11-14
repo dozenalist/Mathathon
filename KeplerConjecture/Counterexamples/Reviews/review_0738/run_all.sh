@@ -6,7 +6,7 @@
 #   git show 6ae7dbf:KeplerConjecture/Experimental/scripts/rational_interval.py  > rational_interval.py
 set -e
 for f in audit_c133.py audit_c132.py c133_12face_essential.py c133_attain.py c133_threshold.py \
-         c133_parallel_threshold.py audit_volume_filter.py; do
+         c133_parallel_threshold.py audit_volume_filter.py c133_13face_counterexample.py; do
     printf '%-32s ' "$f"
     python3 "$f" > /dev/null 2>&1 && echo "exit 0" || echo "FAILED"
 done
