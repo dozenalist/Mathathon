@@ -7,14 +7,17 @@ whole ledger. Last updated at the end of block `K15-REVIEW-0138-M`
 | File | What it is | Status |
 | --- | --- | --- |
 | `ROADMAP.md` (project root, imported from setup) | the frozen research plan | carried |
-| `CLAIMS.md` | the claim ledger: K15-C001…C055 plus K15-R001…R005 (recovered material) | current; two withdrawals this block (C029, C014) and a repair (C049) |
+| `CLAIMS.md` | the claim ledger: K15-C001…C067 plus K15-R001…R005 (recovered material) | current; three defects found and repaired this block (C029 withdrawn, C049 superseded, C058 repaired), plus C014 from the previous block |
 | `REVIEW_0138.md` | **read this first**: the withdrawal of C029, its rejected text, the corrected estimate, and the second finding (sign predicates) | current |
 | `RESULTS.md` | the short account: only `VERIFIED_CROSS`/`PROVED` statements count | current |
 | `PROOF_GAPS.md` | G1–G10 with owners and closure conditions | current |
 | `NEXT_PACKAGE.md` | the exact analytic inequality the geometric route now reduces to, with constants and a falsification test | current |
 | `PARTITION_SPEC.md` | requirements R1–R5 for the cluster partition (G4) | current, R3 corrected |
 | `INTERFACE.md` | the three conventions, their dictionaries, the certificate schema, the sign-verdict semantics, and what a transfer certificate would contain | current |
-| `TASKS.md` | task board and handoff questions Q1–Q6 | current |
+| `DECISIONS.md` | D1–D16: why each route was continued, revised or stopped | current |
+| `INTEGRATION_0008.md` | what was integrated from which branch, with hashes (block 00:08) | current |
+| `AUDIT_REQUEST_X.md` | exactly what X should audit now, and what is not at issue | current |
+| `TASKS.md` | task board and handoff questions Q1–Q12 | current |
 | `LOCAL_COMPUTE_REQUESTS.md` | the local queue with per-role IDs (`M-LEAN-001/002`, `C-CERT-001`, `E-CERT-001`, `X-R01`, …) | current |
 | `SOURCE_MANIFEST.md` | every branch revision and artifact hash read, plus the commands run | current |
 | `Evidence/` | verbatim copies of the recovered swarm artifacts, with hashes | current |

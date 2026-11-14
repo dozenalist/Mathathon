@@ -462,7 +462,7 @@ was unexplained and is removed; the Jensen estimate has no asymptotic slack here
   contact shell is a boundary shell too, so the contrast drawn there is invalid.
   Recorded so no worker builds on the note as written.
 
-### K15-C013r — counting envelope: corrected statements
+### K15-C013r — counting envelope: corrected statements (`PROVED` for (a)-(c), open for an explicit width `δ₀`)
 
 - (a) `n ≤ ⌊(3+δ)³⌋ − 1` — an **upper** bound (K15-C013(a), unchanged), with the
   exact threshold `δ < ∛28 − 3 = 0.03658897…` for `n ≤ 26`.
@@ -668,7 +668,7 @@ by any finding above.
   `θ₁₃` (Schütte–van der Waerden; Musin–Tarasov for computer-assisted
   certification) is the outstanding input, and it must be enclosed, not rounded.
 
-### K15-C020 — path from E's count to C's evaluated benchmark (specification)
+### K15-C020 — path from E's count to C's evaluated benchmark (specification, `PROPOSED`)
 
 1. **E** produces `θ₁₃ < arccos(1 − 2/ρ²)` as a *directed enclosure* for a chosen
    `ρ` (recommended `ρ = 2.05`), or cites a published rigorous value with its
@@ -689,7 +689,7 @@ by any finding above.
    best, `0.770271`; it is not a route past the dodecahedral barrier, and saying
    otherwise would be a domain error.
 
-### K15-C021 — checker bugs to record (from X and the local checks)
+### K15-C021 — checker bugs recorded from X and the local checks (`REFUTED` items, kept as evidence)
 
 - `kepler_ok` truncated positive rationals to integers before comparison:
   `P(0) = 99/100`, `Q(0) = 1` gives exact left side `32P(0)² = 19602/625 > π³`
@@ -1315,7 +1315,7 @@ names differ in v4.35.0.
   repair before it can be quoted as a complete audit. Reviewer: X (their script,
   so the repair is theirs).
 
-### K15-C042 — E's per-cell ceiling import (`ACCEPTED WITH SCOPE`; one number to query)
+### K15-C042 — E's per-cell ceiling import (`ACCEPTED WITH SCOPE`; constant identified)
 
 - **Claim (`K15-E048`, branch `kepler15/experimental/run-01`, `4ea4e8b`).** Every
   directional per-cell bound of the form
@@ -1853,3 +1853,53 @@ three successive checkers passed their "random" tests while being wrong.
 - **Status.** `IMPORTED` (their evidence, verified in one direction by Main's own
   runs in `K15-C023`/`C056`). Full acceptance awaits X's audit of the repaired
   predicates (`Main/AUDIT_REQUEST_X.md`).
+
+### K15-C066 — C's `CROSSVALIDATION.md`: two notes (`IMPORTED` with corrections)
+
+C's document is the clearest integration artifact either side has produced: it
+tabulates the two pipelines' bases, sign machinery and Fourier maps, and runs both
+directions on degree-33 data. Two corrections from Main:
+
+1. **"Direction 1 rejected at `T_LO = 12`" is now moot.** `shell_check` has used
+   `T_LO = 4·PI_LO` since `K15-C049`; their copy was stale. Main's own runs
+   (`K15-C023`, `K15-C056`) `ACCEPT` both K33 variants at the current default, with
+   no need to override the threshold.
+2. **"Agreement to ten significant digits" is not what an exact pipeline should
+   show.** For the direction-2 shell certificate they report their `Δ` as
+   `0.780338357535` against `shell_check`'s `0.780338357611` — a difference of
+   `7.6e−11`. Exact arithmetic should agree on the *ratio* `R = p(0)/q(0)` to the
+   last digit; the `Δ` values can differ only through the `π` enclosure used to
+   multiply. So either (i) `R` agrees exactly and the `Δ` difference is the two
+   `π` intervals, or (ii) `R` differs, which would be a real defect. **They should
+   print `R` as an exact rational and the `π` interval separately**, and X should
+   check which of (i)/(ii) holds. Main cannot settle it without their shell
+   certificate file, which is not on the fetched branch.
+- **What stands regardless.** Direction 2 exercises a certificate produced by the
+  monomial pipeline and confirms it under the Laguerre checker; that is the
+  strongest coupling the project has between the two bases.
+
+### K15-C067 — C044's quantifier, made precise (`PROVED`; the objection X is asked to audit)
+
+`K15-C044` states the criterion for a *finite* graph. For an infinite packing two
+things must be said.
+
+1. **Necessity is local.** For every finite `U ⊆ Λ`, summing `A(v) ≥ b(v)` over `U`
+   gives `Σ_U b ≤ Σ_{edges leaving U} φ ≤ Φ|δ⁺_R(U)|`. No compactness is needed. ✓
+2. **Sufficiency needs compactness, and the degree bound supplies it.** Hoffman's
+   theorem is finite. On an infinite graph one applies it to an exhaustion
+   `U_1 ⊂ U_2 ⊂ …` and takes a cluster point of the resulting flows in the product
+   `∏_e [−Φ, Φ]`, which is compact by Tychonoff **provided the product is over a
+   set of edges** — it always is — and the limit is a flow because each vertex has
+   finitely many incident edges, i.e. **bounded degree**. That is exactly what
+   `K15-C054` gives at `R ≤ 2.09` (degree ≤ 12). So sufficiency holds for the
+   packings we care about, *and the bounded-degree hypothesis is not decoration*: on
+   an unbounded-degree graph the limit argument fails because a vertex could
+   accumulate infinitely many edges.
+3. **Novelty check (Main's reading, for X).** "A bounded-range antisymmetric
+   transfer is negligible" is a discrete divergence/Stokes statement with an
+   explicit boundary count; it is **not a new idea** — Hales' `A` is built from
+   transfers and his four-way cancellation (Lemma 7.10) is the antisymmetry
+   bookkeeping. What is new here is only the *packaging*: it makes negligibility a
+   two-line estimate with a packing-independent constant and isolates the remaining
+   obligation (an analytic averaged cell bound). Claiming more than that would be
+   overreach.
