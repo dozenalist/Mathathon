@@ -477,3 +477,19 @@ checks. `both_sides_gram5.py` reproduces `X-C015`.
 **Caveat, stated once.** These are ordinary-CE bounds, so Li's theorem governs them
 (`P(0)/Q(0) ≥ 1.024466` necessarily); both satisfy it. Neither is competitive with CDS22
 (`0.779747`), and no such claim is made.
+
+### K15-X-C017 — both-sides explicit rational Gram at `0.782267220134`
+
+Same construction as `X-C015`/`X-C016` with a **margin on `G`** (`ε_G = 10⁻²`): `P = −(s−4)H` gives
+`P(4) = 0` for any `H`, so `H` need not vanish at `s = 4` and `G` need not be singular — the singular
+`G` at the `m ≥ 5` optima was a coincidence that exact rounding broke. `m = 5`, `S = 8`, rational
+`6×6` `G, A, B`, all PSD by exact rational `LDLᵀ`, identity and link exact by expansion, density
+`0.782267220134`. **No sign predicate, no root isolation, no Sturm sequence is needed.**
+
+Ladder of both-sides objects: `C SOSQSIDE-005 1.413704545` → `X-C015 0.813631102` →
+`X-C016 0.783097911` → **`X-C017 0.782267220`** → (`X-C014 0.780718153` has p-side only) →
+`C K33 0.779966500` (neither side). `X-C017` is within `0.0023` of the project's best bound with
+every sign condition reduced to three rational PSD tests.
+
+Reproduce: `python3 both_sides_gmargin.py` (single configuration, ≈6 s); verify:
+`python3 verify_all.py` (**ALL PASS**).

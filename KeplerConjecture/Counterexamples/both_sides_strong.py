@@ -30,8 +30,8 @@ def ldl_min(M):
     return min(piv) if piv else sp.Integer(0)
 best=None
 print("%-3s %-4s %-7s %-6s %-6s %-6s %-8s %-14s %s" % ("m","S","eps","ident","PSD G","PSD A/B","link","P0/Q0","density"))
-for (m,S) in [(3,6),(3,8),(4,8),(4,12),(5,8)]:
-    for eps in (1e-2,1e-3,1e-4):
+for (m,S) in [(4,8),(4,10),(4,12),(5,6),(5,10),(5,12),(6,8)]:
+    for eps in (1e-5,1e-6,1e-7):
         try: out=joint_sdp(m,S,eps)
         except Exception as e:
             print("%-3d %-4d %-7g solver exc %s"%(m,S,eps,type(e).__name__)); continue

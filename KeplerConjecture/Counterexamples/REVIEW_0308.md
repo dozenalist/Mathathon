@@ -447,3 +447,68 @@ stone rather than a curiosity.
 | C's both-sides obligation | **CLOSED by `X-C016`** (`0.783220184`) |
 | `X-C010/C013/C014/C015/C016` | **PROVED**, `0.818086808 / 0.794809296 / 0.780718153 / 0.813631102 / 0.783220184` |
 | generic checker soundness | **SUSPENDED** |
+
+---
+
+## 14. `K15-X-C017`: both sides explicit at **`0.782267220134`**
+
+The `m ≥ 5` failures in §12 came from a wrong assumption of mine: I had been treating `G` as
+necessarily singular "because `P(4) = 0`". That is wrong — `P = −(s−4)H` gives `P(4) = 0` for
+**any** `H`, so `H` need not vanish at `s = 4` and `G` need not be singular. The singular `G` at the
+`m ≥ 5` optima was a coincidence, and exact rounding then broke it. **Forcing a margin `G ⪰ 10⁻² I`**
+makes the rounding safe. One configuration, verified from disk:
+
+| check | result |
+| --- | --- |
+| `m = 5`, `S = 8`, `ε_G = 10⁻²`, `ε_{A,B} = 10⁻⁶` | — |
+| `G, A, B` rational `6×6`, PSD (exact rational `LDLᵀ`) | **True / True / True** |
+| `Q(A,B) = Q(Fourier image)` | **exact** |
+| `P(0)/Q(0)` | `1.039899410072` |
+| **density** | **`0.782267220134`** |
+| `Q ≥ 0` cross-check by exact Sturm | True |
+| above Kepler / Li's floor | True / True |
+
+### 14.1 The ladder of *both-sides* objects, and the overall ladder
+
+| certificate | density | p-Gram | q-Gram | sign tests |
+| --- | --- | --- | --- | --- |
+| C `SOSQSIDE-005` | `1.413704545` | no | **yes** | 1 |
+| X `X-C015` (m=2) | `0.813631102` | **yes** | **yes** | **0** |
+| X `X-C016` (m=4) | `0.783097911` | **yes** | **yes** | **0** |
+| **X `X-C017` (m=5)** | **`0.782267220`** | **yes** | **yes** | **0** |
+| X `X-C014` (m=5) | `0.780718153` | **yes** | no | 1 |
+| C `K33` | `0.779966500` | no | no | exact Sturm |
+| CDS22 optimised CE | `0.779747000` | — | — | — |
+
+So the project now has a certificate that is **within `0.0023` of its own best bound and `0.0025` of
+the published optimised CE value, with every sign condition reduced to "these three rational matrices
+are positive semidefinite"** — verifiable by rational `LDLᵀ` and polynomial expansion alone. That is
+C's first open obligation, closed at a strength where the object is genuinely usable.
+
+### 14.2 Honest scope
+
+* These are ordinary-Cohn–Elkies bounds; Li's theorem governs them (`P(0)/Q(0) ≥ 1.024466`
+  necessarily) and all satisfy it. None is competitive with CDS22, and none is a step toward Kepler.
+* The both-sides construction is an **SDP with a large margin plus exact rational rounding**. The
+  margin costs strength (`X-C017` is `0.0015` worse than `X-C014`), which is the expected trade.
+* `verify_all.py` re-checks all five X certificates from disk: **ALL PASS**.
+
+## 15. Closing summary of review 0308
+
+**Delivered:** the timing correction; a clause-by-clause audit of Main's `7c56c5ee` correctness
+argument with **one unaddressed hypothesis (`η ≥ 0`)** and a **proved scoped decision rule**; the
+confirmation that `C081`'s withdrawal is right (with a negative-deficit witness), that `C081r` is
+valid and *necessary only*, that the singleton cut is extremal in the FCC-like regime, that `C079`'s
+ball-cut correction matches my finding, and that `C044` still needs the finite-to-infinite step;
+`CUTEQUIV` verified (the cut family contains Kepler-hard cuts); C's `tests_0138` Gram identities and
+`SOSQSIDE-005` verified by hand and independently; and **C's first open obligation closed** by three
+new certificates (`X-C015 0.813631`, `X-C016 0.783098`, **`X-C017 0.782267`**), each with both sides
+explicit and no sign predicate needed.
+
+**Not done:** an explicit witness for the `η < 0` hole (four constructions failed `q ≥ 0`; the
+requirement is `|p′| ~ 10²⁸`, so it remains latent); Main's next `shell_check` revision (none pushed
+after `7c56c5ee` during this block); and the joint rational feasibility problem at `m ≥ 6` (solver
+timeout at 900 s, not a mathematical obstruction).
+
+**Nothing in X's own earlier claims is retracted by this block**, and the one over-claim I caught
+mid-flight (an LDL test run on floats rather than rationals) was fixed before any push.
