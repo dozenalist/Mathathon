@@ -153,6 +153,11 @@ def main():
     ap.add_argument("--degree", type=int, default=13)
     ap.add_argument("--Umax", type=float, default=40.0)
     ap.add_argument("--out", default="out/shell_propose.json")
+    ap.add_argument("--tlo-exact", action="store_true",
+                    help="use T_LO = 4*PI_LO = 12.566... instead of Main's conservative "
+                         "default 12.  CE requires f <= 0 only for |x| >= 2, i.e. u >= 4*pi; "
+                         "T_LO = 12 additionally demands it on 12 <= u < 4*pi, INSIDE the ball, "
+                         "which costs bound and is not part of the theorem.")
     a = ap.parse_args()
     if a.degree % 2 == 0:
         raise SystemExit("degree must be odd (lc(q)=(-1)^K a_K and lc(p)=a_K must have "
@@ -166,7 +171,8 @@ def main():
              ("n=12 rho=2.09 CONDITIONAL (K15-C019)",     F(209, 100), 12, "conditional")]
     rows = []
     for label, rho, n, status in cases:
-        T_LO, T_HI = F(12), rational_T_HI(rho)
+        T_LO = (4 * PI_LO) if a.tlo_exact else F(12)
+        T_HI = rational_T_HI(rho)
         print("\n== %s   T_LO=%s  T_HI=%s" % (label, T_LO, T_HI))
         for use_eta in (False, True):
             tag = "eta_free" if use_eta else "eta=0"

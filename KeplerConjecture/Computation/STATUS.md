@@ -1,0 +1,37 @@
+# Computation — status index
+
+Branch `kepler15/comp-01a1d8c0`. One page for Main: what is proved, what is numerical, what is
+open. Full detail in `PROGRESS.md`, `CERTIFIER.md`, `SHELL_PROPOSE_RESULTS.md`, `TLO_FINDING.md`.
+
+## Exactly verified (exact rational arithmetic; no floating point in any decision)
+
+| claim | statement | scope |
+| --- | --- | --- |
+| **K15-C-VERIFIEDCERT-001** | `Δ ≤ 0.77996622` | every unit-sphere packing in `R³`; degree-33 rational certificate; accepted by two checkers sharing no code |
+| **K15-C-TLOCOST-001 / XVAL-001** | the same certificate is **accepted by Main's `shell_check.py`** once `T_LO = 4·π_lo` is used | cross-session verification |
+| **K15-C-SHELLPROP-002 / SHELLLADDER-001** | `Δ ≤ 0.78055517` at degree 25 via the shell route, `T_LO = 4π_lo`, `n = 27`, `ρ = 2.05` | unconditional count; saturates at degree 25 |
+| **K15-C-SHELLGAIN-002 / -003** | the uniform shell allowance gives **exactly 0** gain, at every degree 9–21 and both `(n, ρ)` cases | 16+ exact comparisons |
+| **K15-C-FOURIER-AUDIT-001** | Main's `fourier_map` verified: exact matrix agreement, `M² = I`, and quadrature to `1e-13` | A1/A2 exact, A3 float |
+| **K15-C-POSCERT-001** | `c = (4,1)` ⟹ `Δ ≤ 44π/15 = 9.215339` | elementary, hand-checkable, positive control |
+
+## Actionable for Main
+
+1. **Change `shell_check.py`'s `T_LO` default from `12` to `4·π_lo`.** It costs ~6.7% of the
+   bound and buys nothing: `12 < 4π` constrains `p` *inside* the ball. See `TLO_FINDING.md`.
+2. `T_HI = 27/2` is valid at `ρ = 2.09` but **not** at `ρ = 2.05` (`πρ² = 13.20 < 13.5`); use
+   the parameterised predicates with `T_HI(ρ) = ⌊π_lo ρ²⌋`.
+3. Do not optimise in the monomial basis; propose in Laguerre and convert exactly
+   (`shell_propose.py`). The monomial basis returns box vertices (reproduces `K15-C022`).
+
+## Numerical only (`TESTED_FINITE`) — not certificates
+
+`shell_bench.py` (grid LP), `ce3_baseline.py`, `ce3_constrained.py`, `search_*.py`.
+The withdrawn ladder of review 48443 is retained in git history and in `out/certificate_K*.json`
+as failed evidence; every one of those candidates is **rejected** by the repaired checker.
+
+## Open
+
+* A **local/configurational** shell statement (`NONUNIFORM_SHELL.md` §3) — the only variant that
+  could still pay, and it is not a count.
+* Three-point / SDP route: needs a solver, hence a local run.
+* Nothing here improves on Cohn–Elkies; the exact bounds above are cross-validated artifacts.
