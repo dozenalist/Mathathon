@@ -389,10 +389,20 @@ fixed sample — `Reviews/g8_checker_independence.py`, exit 0.
   vacuous: **14 of the 52 are non-negative and 38 are not**, and all three routes split the sample
   identically.
 
-**What this does not close.** The sample is finite, and only the `q`-side predicate is compared;
-`p ≤ η` on an interval, the `η` precondition (`X-C025`), `f̂(0) > 0` and the window conditions are
-outside it. G8 should stay open, described as "independence established; agreement sampled, not
-proved".
+**The interval predicate too.** The second predicate the shell pipeline uses is `p ≤ η` on a
+closed interval, and it also agrees: Main's `le_on_interval` and X's `sign_on_interval` give the
+same verdict on 50 vectors with roots in `[0,2]`, multiplicities 1–2, both leading signs, bounded
+intervals with rational endpoints, and `η ∈ {0, ±1/2}` — 0 mismatches. C's `exactcert` has no
+bounded-interval decision, so this one is a two-way test (Main vs X), not three-way.
+
+Worth stating explicitly, because my own `exact_sign` docstring warns about it: the trap in the
+interval case is reading the sign from `sign(lc)` (which is the sign on the *rightmost* gap only)
+instead of evaluating the odd part inside the interval. Main's current `le_on_interval` does not
+fall into it on any of the 50 vectors.
+
+**What this does not close.** The samples are finite. The `η` precondition is separate (`X-C025`),
+and `f̂(0) > 0` and the window conditions are not compared at all. G8 should stay open, described
+as "independence established; agreement sampled, not proved".
 
 ## 5. Ledger
 
@@ -412,6 +422,7 @@ proved".
 | `X-C029` | `CLAIMS.md` `K15-C093` still states `sup Φ < ∞` and the `{a}`-cut `4/3` example in its bullet list, both refuted by its own repair note. | **DEFECT** (documentation, Main's file) |
 | `X-C030` | `0.008880268414417` inherits C's `V_DOD` enclosure error: the exact value is `0.0088802684147391605`, so the number is a valid lower bound but not "the exact threshold". | **CORRECTION** |
 | `X-C034` | **Three** functions take their vertex set from the edge list: on `b = (−1,−1,+1)`, `edges = [(0,1)]` (isolated vertex with positive deficit) `verify_flow_exact` accepts, `find_violating_cut` reports no violation, `feasible_flow` returns a flow — all wrong, all for the same reason; only `exhaustive_cut_scan` is right. Not reachable from `main()`; fix is `n = len(b)` in all three. | **DEFECT** (live, systematic), D8 |
+| `X-C035` | Main's `le_on_interval` and X's `sign_on_interval` agree on 50 vectors (`p ≤ η` on closed intervals, roots in `[0,2]`, multiplicities 1–2, `η ∈ {0,±½}`), including the `sign(lc)` trap case. Two-way: C's module has no bounded-interval decision. | **VERIFIED**, `Reviews/g8_checker_independence.py` |
 | `X-C033` | C's own `feasible_flow` agrees with the cut condition on 38 random instances (25 infeasible, 13 feasible): a fourth independent decision procedure for Theorem 1, on C's side. | **VERIFIED**, `Reviews/audit_cutflow_repair.py` §F |
 | `X-C032` | `PROOF_GAPS` G8, partially: C's `exactcert` imports only `fractions` and Main's `shell_check` only `sympy`+`fractions`, so they share no code path; **four** routes (Main, C, X's `exact_sign`, algebraic rule) agree on `q ≥ 0` for all 52 adversarial vectors tried, including near-touching `(t−r)²∓ε`. Sample is finite; `p ≤ η` is not covered. | **PARTIAL**, `Reviews/g8_checker_independence.py` |
 | `X-C031` | The family suite catches `a8526a8` (50/900) and `5619c1d` (8/308) and is blind to a missing precondition and to `7dc6be58`; passing it is evidence, not proof. | **VERIFIED**, §4.3 |

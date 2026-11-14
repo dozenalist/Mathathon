@@ -682,3 +682,12 @@ reports `[([2], '1')]` as an empty-boundary positive set, i.e. infeasible at eve
 reachable from `main()` (`build_13` gives every vertex an edge for `R ≥ 2−10⁻⁹`, and the edgeless
 regime is skipped), and the fix is one line: `n = len(b)`. D8 of
 `Reviews/repro_c_cutflow_defects.py` (11/11 checks).
+
+### K15-X-C035 — Main's `le_on_interval` agrees with X's `sign_on_interval` on 50 vectors
+
+`Reviews/g8_checker_independence.py`, second section: 50 polynomials with roots in `[0,2]`,
+multiplicities 1–2, both leading signs, decided for `p ≤ η` on closed intervals with rational
+endpoints and `η ∈ {0, ±1/2}` — Main's `le_on_interval` and X's `sign_on_interval` agree on all 50.
+C's `exactcert` has no bounded-interval decision, so this is a two-way test. The failure mode my
+own `exact_sign` docstring warns about (reading the sign from `sign(lc)`, which is only the
+rightmost gap) does not occur in Main's current version.

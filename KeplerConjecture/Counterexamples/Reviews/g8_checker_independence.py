@@ -104,5 +104,28 @@ for coeffs in cases:
         print("  MISMATCH truth=%s main=%s comp=%s exact_sign=%s on %s" % (t, a, b, xv, coeffs))
 print("%d cases: truth == Main == C == X's exact_sign on %d, mismatches %d"
       % (len(cases), len(cases)-bad, bad))
+
+# ---- second predicate: p <= eta on a CLOSED interval (Main only; C's module has no bounded-
+# interval decision, so this is Main against X's exact_sign, not a three-way test)
+def x_le(poly, eta, lo, hi):
+    q = sp.expand(poly - eta)
+    return bool(es.sign_on_interval(q, lo, hi, -1, var=xs_) or es.sign_on_interval(q, lo, hi, 0, var=xs_))
+
+random.seed(5)
+bad2, n2 = 0, 0
+for _ in range(50):
+    p = sp.Integer(random.choice([1, -1]))
+    for _ in range(random.randint(1, 3)):
+        rr = sp.Rational(random.randint(0, 20), 10)
+        p = sp.expand(p * (xs_ - rr) ** random.choice([1, 1, 2]))
+    P = sp.Poly(p, xs_)
+    coeffs = [P.coeff_monomial(xs_**k) for k in range(P.degree() + 1)]
+    lo = sp.Rational(random.choice([0, 1, 3]), 2); hi = sp.Rational(random.choice([1, 3, 4]), 2)
+    if lo >= hi: hi = lo + 1
+    eta = sp.Rational(random.choice([0, 0, 1, -1]), 2)
+    n2 += 1
+    if bool(main.le_on_interval(coeffs, eta, lo, hi)) != x_le(p, eta, lo, hi): bad2 += 1
+print("%d interval cases: Main's le_on_interval == X's sign_on_interval on %d, mismatches %d"
+      % (n2, n2 - bad2, bad2))
 print("imports: exactcert -> {fractions}; shell_check -> {sympy, fractions}; no shared module")
 sys.exit(0 if bad == 0 else 1)
