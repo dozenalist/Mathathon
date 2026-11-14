@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="524" viewBox="0 0 720 524" role="img" aria-labelledby="title desc">
+<title id="title">Turn the ruler slightly: tips land in a disk of radius two h</title><desc id="desc">The start disk of radius h around a is on the left. A fan of unit rulers leaves it in directions within angle h of u-zero. Their tips spread over a dashed disk of radius two h around b, drawn with the smaller radius-h disk faintly inside it; two tips land outside the small disk but still inside the dashed one, because a start offset and a turn add up. A dashed arc shows how far a tip travels when the ruler turns from one edge of the fan to the other.</desc>
+<rect width="720" height="524" fill="white"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="360.0" y="46.0" font-size="30" fill="#172c43" text-anchor="middle" font-weight="600">Turn slightly: directions within angle h of u₀</text>
+<text x="360.0" y="84.0" font-size="24" fill="#172c43" text-anchor="middle" font-weight="400">Start anywhere in B(a,h); turn by at most h radians.</text>
+<circle cx="170.0" cy="250.0" r="60.0" fill="#e7f0fb" stroke="#63758a" stroke-width="3" />
+<circle cx="530.0" cy="250.0" r="120.0" fill="#e7f0fb" stroke="#63758a" stroke-width="3" stroke-dasharray="10 7"/>
+<circle cx="530.0" cy="250.0" r="60.0" fill="none" stroke="#b5c1cf" stroke-width="2" />
+<circle cx="130.0" cy="280.0" r="3" fill="#b33d39"/>
+<circle cx="195.0" cy="208.0" r="3" fill="#b33d39"/>
+<circle cx="600.0" cy="170.0" r="3" fill="#b33d39"/>
+<circle cx="435.0" cy="295.0" r="3" fill="#b33d39"/>
+<circle cx="560.0" cy="350.0" r="3" fill="#b33d39"/>
+<circle cx="510.0" cy="190.0" r="3" fill="#b33d39"/>
+<polyline points="525.0,309.7 525.8,304.8 526.5,299.8 527.2,294.9 527.8,289.9 528.3,284.9 528.8,280.0 529.1,275.0 529.4,270.0 529.7,265.0 529.9,260.0 530.0,255.0 530.0,250.0 530.0,245.0 529.9,240.0 529.7,235.0 529.4,230.0 529.1,225.0 528.8,220.0 528.3,215.1 527.8,210.1 527.2,205.1 526.5,200.2 525.8,195.2 525.0,190.3" fill="none" stroke="#63758a" stroke-width="2" stroke-dasharray="4 4"/>
+<line x1="170.0" y1="250.0" x2="530.0" y2="250.0" stroke="#172c43" stroke-width="5" />
+<circle cx="170.0" cy="250.0" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<circle cx="530.0" cy="250.0" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<line x1="170.0" y1="250.0" x2="525.0" y2="190.3" stroke="#172c43" stroke-width="2.5" />
+<circle cx="170.0" cy="250.0" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<circle cx="525.0" cy="190.3" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<line x1="170.0" y1="250.0" x2="525.0" y2="309.7" stroke="#172c43" stroke-width="2.5" />
+<circle cx="170.0" cy="250.0" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<circle cx="525.0" cy="309.7" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<line x1="138.0" y1="272.0" x2="496.8" y2="242.0" stroke="#172c43" stroke-width="2.5" />
+<circle cx="138.0" cy="272.0" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<circle cx="496.8" cy="242.0" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<line x1="200.0" y1="216.0" x2="557.6" y2="257.9" stroke="#172c43" stroke-width="2.5" />
+<circle cx="200.0" cy="216.0" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<circle cx="557.6" cy="257.9" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<line x1="190.0" y1="286.0" x2="546.4" y2="235.2" stroke="#172c43" stroke-width="2.5" />
+<circle cx="190.0" cy="286.0" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<circle cx="546.4" cy="235.2" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<line x1="170.0" y1="200.0" x2="526.0" y2="146.2" stroke="#172c43" stroke-width="2.5" />
+<circle cx="170.0" cy="200.0" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<circle cx="526.0" cy="146.2" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<line x1="175.0" y1="295.0" x2="531.5" y2="345.2" stroke="#172c43" stroke-width="2.5" />
+<circle cx="175.0" cy="295.0" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<circle cx="531.5" cy="345.2" r="5" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<text x="160.0" y="340.0" font-size="27" fill="#172c43" text-anchor="start" font-weight="600">a</text>
+<text x="520.0" y="280.0" font-size="27" fill="#172c43" text-anchor="start" font-weight="600">b</text>
+<text x="170.0" y="172.0" font-size="24" fill="#172c43" text-anchor="middle" font-weight="400">B(a,h)</text>
+<text x="530.0" y="400.0" font-size="24" fill="#172c43" text-anchor="middle" font-weight="400">B(b,2h): radius 2h, area ×4</text>
+<text x="658.0" y="258.0" font-size="23" fill="#172c43" text-anchor="start" font-weight="400">2h</text>
+<text x="300.0" y="146.0" font-size="22" fill="#172c43" text-anchor="middle" font-weight="400">turn by at most h</text>
+<text x="360.0" y="446.0" font-size="21" fill="#172c43" text-anchor="middle" font-weight="600">A turn of at most h moves the tip less than h: tips stay within 2h of b.</text>
+<rect x="40" y="484" width="22" height="22" fill="#e7f0fb" stroke="#63758a" stroke-width="2"/>
+<text x="72.0" y="502.0" font-size="23" fill="#172c43" text-anchor="start" font-weight="400">colour i</text>
+<circle cx="190.0" cy="495.0" r="5" fill="#b33d39"/>
+<text x="204.0" y="502.0" font-size="23" fill="#172c43" text-anchor="start" font-weight="400">not colour i: ≤ 1% of B(a,h) and ≤ 1% of B(b,2h)</text>
+</g></svg>

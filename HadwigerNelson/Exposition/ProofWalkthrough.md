@@ -1,6 +1,6 @@
 # Understanding the five-colour obstruction
 
-**Start here.** This is the main reading path through our exposition. This first lesson builds one idea carefully: what a *weak measurable colouring* means, and why the proof needs it. You can give feedback on this page without following the supporting folders.
+**Start here.** This is the main reading path through our exposition. Lesson 1 builds one idea carefully: what a *weak measurable colouring* means, and why the proof needs it. Lesson 2 shows how that “almost never” condition still forbids some unit distances exactly. You can give feedback on this page without following the supporting folders.
 
 The supplied OpenAI proof, *The Euclidean plane is not five-colorable* (23 September 2026), rules out a proper five-colouring even when its colour classes are not measurable. Together with the classical seven-colouring construction, this gives $6\leq\chi(\mathbb R^2)\leq7$. It does not decide between six and seven. We are explaining that supplied result; our team's local contributions come later.
 
@@ -258,14 +258,164 @@ The bad fractions $s(p)$ are never negative, so their window average can be 0 on
 
 </details>
 
-**Feedback on this page:** name the first sentence where you had to take something on trust, or the first picture that did not help you make a new inference. Section numbers give us a stable way to discuss it. The next lesson, added to this page, will develop the density step previewed in Section 7.
+**Feedback on Lesson 1:** name the first sentence where you had to take something on trust, or the first picture that did not help you make a new inference. Section numbers give us a stable way to discuss it. Lesson 2, below, develops the density step previewed in Section 7.
+
+## Lesson 2: from “almost never” to “never”
+
+Lesson 1 ended with a promise. A weak colouring is allowed exceptional bad pairs, yet the proof needs some unit-distance relations to be ruled out **exactly**. This lesson shows how: if two points sit *robustly* inside the same colour, they can never be exactly one unit apart.
+
+This is the supplied manuscript's Lemma 4.3. The argument below is our slow version of it, with explicit numbers. Sections 9 and 14 also use one classical fact from real analysis, Lebesgue's density theorem, which is not part of the manuscript or our team's work. The argument for the lemma itself needs only the definition of a robust point. This lesson is new and has not yet received outside reader feedback.
+
+## 8. One bad ruler is invisible
+
+Return to the recoloured point $q$ of Section 5. Many rulers starting at $q$ are bad; even its whole turning test fails, since $s(q)>0$. Yet every window still has $P_B=0$, because a single start has zero area, and from every other start at most one direction reaches $q$ (Section 5).
+
+So weakness cannot see one bad pair, or even every bad pair through one point. To contradict weakness, we must find bad placements that fill a **positive share** of some window's experiment.
+
+The plan of this lesson: show that if two suitably robust points of the same colour were one unit apart, a whole family of nearby rulers would be bad, enough to make $P_B$ positive.
+
+## 9. Points that sit robustly inside a colour
+
+Say that a point $a$ is **robustly inside** colour $i$ when the fraction of the disk $B(a,h)$ of radius $h$ centred at $a$ that is coloured $i$ tends to 100% as $h$ shrinks. The standard name is a **density-one point** of the colour class $A_i$.
+
+Unpacked: pick any tolerance, say 99%. Then every small enough disk centred at $a$ is at least 99% colour $i$. It need not be 100%; tiny specks of other colours may remain at every scale.
+
+Three remarks make this definition concrete.
+
+**Having a colour is not the same as sitting robustly inside it.** From now on, take the point $q$ of Section 5 inside a hexagon, not on an edge. After recolouring, $q$ carries colour $i$, but every small enough disk around $q$ is entirely its old colour apart from the single point $q$. Colour $i$ occupies 0% of those disks. So $q$ is robustly inside its *old* colour, not the colour it now carries.
+
+**A point cannot sit robustly inside two colours.** A small disk cannot be at least 99% red and also at least 99% blue, since the colour classes do not overlap.
+
+**Almost every point is robust.** Lebesgue's density theorem, met in Section 7, says that for each colour, all of its points outside a zero-area set are robustly inside it. Since the colours cover the plane, all points outside a zero-area set are robustly inside their own colour.
+
+## 10. Suppose two robust points of one colour are one unit apart
+
+Let $a$ and $b$ both be robustly inside colour $i$, with $|b-a|=1$. Write $u_0$ for the unit direction from $a$ to $b$, so that $b=a+u_0$.
+
+Choose a small radius $h$ such that:
+
+- the disk $B(a,h)$ is at least 99% colour $i$;
+- the disk $B(b,2h)$ is at least 99% colour $i$.
+
+Robustness at both points guarantees that every small enough $h$ works. The next section explains why the disk around $b$ needs radius $2h$ rather than $h$.
+
+Our goal is to show that many rulers near the segment from $a$ to $b$ have both ends coloured $i$. Each of these is a **bad** placement in Lesson 1's sense: score 1.
+
+## 11. Slide the ruler, then turn it slightly
+
+**Slide.** Start the ruler anywhere in the disk $B(a,h)$ and point it in the direction $u_0$. Its endpoint lands in $B(b,h)$, a copy of the start disk slid one unit along $u_0$.
+
+![Two disks of radius h centred at a and at b, one unit apart. Six parallel unit rulers start inside the left disk, point in the direction u-zero, and each lands inside the right disk at the same offset. Both disks are mostly colour i, with a few specks of other colours.](Figures/density-slide.svg)
+
+The picture shows the one thing the slide gives: the rulers from $B(a,h)$ in direction $u_0$ end exactly in the slid copy $B(b,h)$. Both disks are mostly colour $i$, so most of these rulers are bad.
+
+But one direction alone is not enough. Sections 3 and 5 noted that a single direction occupies none of the full turn, so rulers in one direction cannot fill a positive share of the experiment.
+
+**Turn slightly.** Allow every direction $u$ within angle $h$ (in radians) of $u_0$. This **fan** of directions is a fraction $2h/(2\pi)=h/\pi$ of the full turn, which is positive.
+
+Turning costs something. When a unit ruler turns through a small angle, its tip moves along an arc of that length, and the straight-line distance between the two tip positions is shorter still. So $|u-u_0|<h$. With the start within $h$ of $a$, the endpoint $p+u$ is within $h+h=2h$ of $b$:
+
+$$
+|p+u-b|\le |p-a|+|u-u_0|<h+h=2h.
+$$
+
+That is why the landing disk has radius $2h$. Doubling the radius multiplies the area by 4.
+
+![The start disk of radius h around a, and a fan of unit rulers leaving it in directions within angle h of u-zero. Their tips spread over a dashed disk of radius two h around b, with the radius-h disk drawn faintly inside it; two tips land outside the small disk but still inside the dashed one, because a start offset and a turn add up. A dashed arc shows how far a tip travels across the fan.](Figures/density-turn.svg)
+
+The inference to take from the picture is that the fan costs one doubling of the landing radius: the tips no longer all land in $B(b,h)$, but they all stay inside $B(b,2h)$, whose area is four times that of $B(a,h)$.
+
+## 12. Count failures, one direction at a time
+
+Fix one direction $u$ in the fan. A start $p$ in $B(a,h)$ gives a ruler with both ends coloured $i$ unless one of two things goes wrong.
+
+1. **The start is not colour $i$.** At most 1% of the start disk is like this.
+2. **The endpoint is not colour $i$.** The endpoint lies in the landing disk $B(b,2h)$, which is at most 1% non-$i$. The starts that land there lie inside a copy of that non-$i$ part, slid back by $u$. Sliding does not change area. So these starts have area at most 1% of $B(b,2h)$, which is 4% of the start disk.
+
+At most $1\%+4\%=5\%$ of starts fail. So **for every direction in the fan, at least 95% of the start disk gives a bad ruler**.
+
+The failing starts may change from one direction to the next. Only their share is controlled, and it is at most 5% in every direction.
+
+![Three stacked rows, one for each of three directions in the fan. Each shows the same start disk B(a,h) in colour i with two small failing regions: a solid spot of area at most one percent for starts that are not colour i, in the same place in every row, and an outlined spot of area at most four percent for starts whose endpoint is not colour i, in a different place in each row, shifted straight up or down as the direction changes. Their total share is at most five percent in every row.](Figures/density-slices.svg)
+
+Read the three slices as one claim: the starts that fail because their endpoint misses colour $i$ can change with the direction (they are the non-$i$ part of $B(b,2h)$, slid back by $u$), and the argument never needs to know where they are, only that all failures together are at most 5% of the disk every time.
+
+## 13. The contradiction, in one window
+
+Now use the start disk itself as the observation window: $B=B(a,h)$.
+
+Lesson 1 fixed each start and averaged over directions. Because the start and the direction are chosen independently, the same probability can be found the other way round: fix each direction and average over starts. Section 12 has already done the inner step.
+
+- With probability $h/\pi$, the direction lands in the fan.
+- Given that, the start gives a bad ruler with probability at least $0.95$.
+
+Therefore
+
+$$
+P_B\ \ge\ 0.95\cdot\frac{h}{\pi}\ >\ 0.
+$$
+
+But weakness demands $P_B=0$ in every window. This contradiction shows that the starting assumption was impossible.
+
+**Conclusion (manuscript Lemma 4.3).** In a weak measurable colouring, two points robustly inside the same colour are never exactly one unit apart.
+
+A single bad pair between robust points does not stay single. Robustness at both ends spreads it into a fan of bad rulers that fills a positive share of a window.
+
+<details>
+<summary>Why 99%, and why the radii h and 2h?</summary>
+
+Nothing depends on 99%. With tolerance $\varepsilon$ (missing fraction $\varepsilon$ in both disks), the count in Section 12 gives at most $\varepsilon+4\varepsilon=5\varepsilon$ failing starts per direction, so any $\varepsilon<1/5$ closes the argument. At $\varepsilon=1/5$ the count gives no positive share, and the argument says nothing.
+
+The ratio $2:1$ is a convenience. Use a narrower fan, of directions within angle $\delta h$ of $u_0$, with landing radius $(1+\delta)h$. The failure budget becomes $\varepsilon\big(1+(1+\delta)^2\big)$. For any $\varepsilon<1/2$, a small enough $\delta$ keeps this below 1. What matters is only that the budget is strictly below 1.
+
+</details>
+
+<details>
+<summary>A precision note</summary>
+
+With Borel colour classes (Section 5's precision note), the set of bad placements is a Borel subset of position-times-direction. Choosing the direction first is Tonelli's theorem applied to the nonnegative score $m(p,u)$; it is the second reading of $P_B$ in Section 4. The count in Section 12 uses only that a translate of a set has the same area.
+
+The bound $|u-u_0|<h$ holds because a chord of the unit circle is shorter than its arc.
+
+</details>
+
+## 14. What this gives, and what it does not
+
+**What it gives.** Give each robust point the colour it is robustly inside. By Section 9, this **robust colour** is unique and is defined everywhere outside a zero-area set. By Section 13, no two robust points with the same robust colour are exactly one unit apart.
+
+So on the robust points the robust colouring is exactly proper, with no exceptions at all. Here “almost never” has become “never”.
+
+**What it does not give.**
+
+- **It concerns robust colours, not the labels themselves.** The recoloured point $q$ is robust in its old colour but carries colour $i$. More drastically, give every point of one straight line the same colour. A line has zero area, so every $P_B$ stays zero (Section 5's precision note) and every robust colour is unchanged. Yet the line now contains same-label pairs exactly one unit apart. When both endpoints of such a pair are robust, their robust colours, inherited from the surrounding hexagons, still differ, exactly as Section 13 requires.
+- **Pairs that touch non-robust points are uncontrolled.** On a hexagon edge, no colour fills more than half of any small enough disk (exactly half at an edge point, a third at a corner), so edge points are not robust in any colour. The lemma says nothing about unit pairs that have such a point as an endpoint.
+- **It is not a colouring of the whole plane, and on its own it does not count colours.** It is a tool. The technical map below shows one place where the manuscript uses it.
+
+## A second place to stop and respond
+
+Try to answer these before opening the comparison.
+
+1. Why does a bad pair through the recoloured point $q$ leave every $P_B$ at zero, while a bad pair between two robust points forces some $P_B$ to be positive?
+2. If $a$ is robustly inside colour $i$, must $a$ itself carry colour $i$?
+3. Where does the factor 4 in Section 12 come from?
+
+<details>
+<summary>Compare your reading</summary>
+
+1. At $q$, every bad ruler has $q$ as an endpoint. Starts at $q$ have zero area, and from any other start at most one direction ends at $q$. Around two robust points, nearby starts are at least 99% colour $i$, and so are the disks where nearby endpoints land. A positive share of starts, across a positive fan of directions, then gives bad rulers.
+2. No. The recoloured $q$ is robustly inside its old colour but carries colour $i$. Robustness is a fact about small disks around a point, not about the point's own label. It is also not the same as being surrounded: a robust point's small disks need not be completely filled.
+3. Turning the ruler by up to angle $h$ moves its tip by less than $h$, so the endpoints lie within a disk of radius $2h$ around $b$. Twice the radius means four times the area, so a 1% missing share of that disk can be up to 4% of the start disk.
+
+</details>
+
+**Feedback on Lesson 2:** name the first sentence where you had to take something on trust, or the first picture that did not help you make a new inference. The three Lesson 2 figures are first drafts.
 
 ---
 
 <details>
 <summary>The rest of the proof: a technical map for later reading</summary>
 
-The following is a compact orientation, with source pointers. It runs ahead of the teaching sequence above; it is not required to complete this first lesson.
+The following is a compact orientation, with source pointers. It runs ahead of the teaching sequence above; it is not required to complete these lessons.
 
 ## Bridge one: extracting measurable structure
 
@@ -330,6 +480,6 @@ CC60 is a local obstruction, not an unrestricted six-colour impossibility theore
 
 The [manuscript](../Main/ResearchSnapshot/remote/attachments/here-are-three-files-ni5n/paper.pdf), Theorems 1.1–1.4, states the supplied result and transfer theorem. The [source bundle](../Main/ResearchSnapshot/remote/attachments/here-are-three-files-ni5n/hadwiger-nelson-lean-review-bundle.md) identifies OpenAI commit <code>fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb</code>, Lean 4.34.1, and mathlib commit <code>d13f23b723b8a846827a245b89c10fc7d3f11612</code>. The [source map](SourceMap.md) gives declaration names and distinguishes supplied results from team contributions.
 
-The exposition director prepared the initial lesson with an [Astra source audit](Reviews/WeakColouringLesson-Astra.md). Claude then led the final editorial integration, using focused reader reviews and two independent Claude checks. These are bounded checks of this explanation, not independent verification of the entire supplied proof. Figures illustrate the explicit half-plane example and the sampling definition; they do not depict a valid colouring.
+The exposition director prepared the initial lesson with an [Astra source audit](Reviews/WeakColouringLesson-Astra.md). Claude then led the final editorial integration, using focused reader reviews and two independent Claude checks. Lesson 2 was rewritten by the Claude exposition editor from a research-worker draft; its proof was checked by an independent Claude referee and the integrated text by a separate Claude reviewer. These are bounded checks of this explanation, not independent verification of the entire supplied proof. Figures illustrate the explicit half-plane example, the sampling definition, and the slide-and-turn argument of Lesson 2 (drawn to scale, with one unit equal to 360 pixels); they do not depict a valid colouring.
 
 </details>

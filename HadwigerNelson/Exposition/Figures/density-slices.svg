@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="564" viewBox="0 0 720 564" role="img" aria-labelledby="title desc">
+<title id="title">Direction slices: endpoint failures move, the total failing share stays at most five percent</title><desc id="desc">Three stacked rows, one for each of three directions in the fan. Each row shows the same start disk B(a,h) in colour i with two small failing regions: a solid red spot of area at most one percent for starts that are not colour i, in the same place in every row, and a red-outlined spot of area at most four percent for starts whose endpoint is not colour i, in a different place in each row, shifted straight up or down as the direction changes. Their total share is at most five percent in every row.</desc>
+<rect width="720" height="564" fill="white"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="360.0" y="46.0" font-size="28" fill="#172c43" text-anchor="middle" font-weight="600">Some failing starts move; their share does not</text>
+<text x="360.0" y="82.0" font-size="21" fill="#172c43" text-anchor="middle" font-weight="400">One fan direction per slice; failing starts ≤ 1% + 4% = 5% of B(a,h).</text>
+<rect x="28" y="112" width="664" height="126" fill="#f7f9fb" stroke="#d6dde6" stroke-width="2"/>
+<text x="50.0" y="188.0" font-size="24" fill="#172c43" text-anchor="start" font-weight="600">direction u₁</text>
+<line x1="60.0" y1="224.0" x2="113.7" y2="229.4" stroke="#172c43" stroke-width="3" /><polygon points="113.7,229.4 103.5,223.1 102.5,233.5" fill="#172c43"/>
+<circle cx="276.0" cy="180.0" r="58.0" fill="#e7f0fb" stroke="#63758a" stroke-width="3" />
+<circle cx="246.0" cy="155.0" r="5.8" fill="#b33d39"/>
+<circle cx="296.0" cy="144.0" r="11.6" fill="#fbe9e5" stroke="#b33d39" stroke-width="2"/>
+<text x="348.0" y="166.0" font-size="16" fill="#172c43" text-anchor="start" font-weight="400">start not colour i: ≤ 1% (solid spot)</text>
+<text x="348.0" y="196.0" font-size="16" fill="#172c43" text-anchor="start" font-weight="400">endpoint not colour i, slid back: ≤ 4% (outline)</text>
+<text x="348.0" y="226.0" font-size="19" fill="#172c43" text-anchor="start" font-weight="600">so ≥ 95% of starts give a bad ruler</text>
+<rect x="28" y="248" width="664" height="126" fill="#f7f9fb" stroke="#d6dde6" stroke-width="2"/>
+<text x="50.0" y="324.0" font-size="24" fill="#172c43" text-anchor="start" font-weight="600">direction u₂</text>
+<line x1="60.0" y1="360.0" x2="114.0" y2="360.0" stroke="#172c43" stroke-width="3" /><polygon points="114.0,360.0 103.2,354.8 103.2,365.2" fill="#172c43"/>
+<circle cx="276.0" cy="316.0" r="58.0" fill="#e7f0fb" stroke="#63758a" stroke-width="3" />
+<circle cx="246.0" cy="291.0" r="5.8" fill="#b33d39"/>
+<circle cx="296.0" cy="316.0" r="11.6" fill="#fbe9e5" stroke="#b33d39" stroke-width="2"/>
+<text x="348.0" y="302.0" font-size="16" fill="#172c43" text-anchor="start" font-weight="400">start not colour i: ≤ 1% (solid spot)</text>
+<text x="348.0" y="332.0" font-size="16" fill="#172c43" text-anchor="start" font-weight="400">endpoint not colour i, slid back: ≤ 4% (outline)</text>
+<text x="348.0" y="362.0" font-size="19" fill="#172c43" text-anchor="start" font-weight="600">so ≥ 95% of starts give a bad ruler</text>
+<rect x="28" y="384" width="664" height="126" fill="#f7f9fb" stroke="#d6dde6" stroke-width="2"/>
+<text x="50.0" y="460.0" font-size="24" fill="#172c43" text-anchor="start" font-weight="600">direction u₃</text>
+<line x1="60.0" y1="496.0" x2="113.7" y2="490.6" stroke="#172c43" stroke-width="3" /><polygon points="113.7,490.6 102.5,486.5 103.5,496.9" fill="#172c43"/>
+<circle cx="276.0" cy="452.0" r="58.0" fill="#e7f0fb" stroke="#63758a" stroke-width="3" />
+<circle cx="246.0" cy="427.0" r="5.8" fill="#b33d39"/>
+<circle cx="296.0" cy="488.0" r="11.6" fill="#fbe9e5" stroke="#b33d39" stroke-width="2"/>
+<text x="348.0" y="438.0" font-size="16" fill="#172c43" text-anchor="start" font-weight="400">start not colour i: ≤ 1% (solid spot)</text>
+<text x="348.0" y="468.0" font-size="16" fill="#172c43" text-anchor="start" font-weight="400">endpoint not colour i, slid back: ≤ 4% (outline)</text>
+<text x="348.0" y="498.0" font-size="19" fill="#172c43" text-anchor="start" font-weight="600">so ≥ 95% of starts give a bad ruler</text>
+<text x="360.0" y="542.0" font-size="21" fill="#172c43" text-anchor="middle" font-weight="600">In every direction of the fan, at least 95% of starts give a bad ruler.</text>
+</g></svg>
