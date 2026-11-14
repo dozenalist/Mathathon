@@ -1,0 +1,64 @@
+{
+ "degree": 25,
+ "grid": 900,
+ "convention": "min-separation-1 native, Delta=(pi/6)rho_A",
+ "status": "TESTED_FINITE",
+ "rows": [
+  {
+   "case": "control: plain CE",
+   "rho_A": 1.4891417842810633,
+   "Delta": 0.7797128149418309,
+   "ratio_to_kepler": 1.0529822538133748,
+   "feasible": true
+  },
+  {
+   "case": "f=0 on first 2 FCC shells",
+   "rho_A": 1.5266262709863305,
+   "Delta": 0.7993396462846395,
+   "ratio_to_kepler": 1.0794877885519663,
+   "feasible": true
+  },
+  {
+   "case": "f=0 on first 4 FCC shells",
+   "rho_A": 1.5281414533966138,
+   "Delta": 0.8001329939394719,
+   "ratio_to_kepler": 1.080559184309012,
+   "feasible": true
+  },
+  {
+   "case": "fhat=0 on first 2 dual shells",
+   "rho_A": 1.607694237971762,
+   "Delta": 0.8417867345384548,
+   "ratio_to_kepler": 1.1368114977443722,
+   "feasible": true
+  },
+  {
+   "case": "fhat=0 on first 4 dual shells",
+   "rho_A": 1.6149375001602468,
+   "Delta": 0.8455792977516828,
+   "ratio_to_kepler": 1.1419332575557617,
+   "feasible": true
+  },
+  {
+   "case": "both, 1 shell each",
+   "rho_A": 1.5376462449534005,
+   "Delta": 0.8051096911609225,
+   "ratio_to_kepler": 1.0872800868725807,
+   "feasible": true
+  },
+  {
+   "case": "both, 2 shells each",
+   "rho_A": 1.6716752284783498,
+   "Delta": 0.8752871028292705,
+   "ratio_to_kepler": 1.1820528899986125,
+   "feasible": true
+  },
+  {
+   "case": "both, 3 shells each",
+   "rho_A": 1.729568530986231,
+   "Delta": 0.905599965137739,
+   "ratio_to_kepler": 1.2229896367872193,
+   "feasible": true
+  }
+ ]
+}
