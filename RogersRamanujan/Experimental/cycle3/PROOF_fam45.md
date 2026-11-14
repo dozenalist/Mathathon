@@ -241,3 +241,48 @@ is the missing lemma.
   obligations (RR-C009) are untouched.
 * P2 is a conjecture with 80 confirming parameters; that is evidence, not
   proof. P3 is a refutation and is exact.
+
+---
+
+## Main's cycle-4 corrections to this file
+
+Recorded here rather than silently edited, because the errors are in the *statement*
+of otherwise-correct formulas. All were found by the supervisor's review and
+re-verified by Main against the committed `bz82.py`.
+
+**1. Lemma 1, row `r = 0, s >= 1`, fails at `s = 1`; split it.** The row as stated
+does not hold at `s = 1`. Direct computation on `(0;(1))`:
+`a = 2` (not `1`), `L = lam(2) = 0`, `k = 1`, `mu = 2`, `lam(mu) = 0`, `t* = 3` —
+because at `a = 1` we have `2j + 1 - lam(1) = 1 - 1 = 0`, not `> 0`, so minimality
+puts `a` at 2. That state is also **outside `phi`'s domain** (`(1) in B_1`), so it
+is excluded rather than a counterexample to a formula about the domain. The correct
+row is: `r = 0, s = 1` is excluded; `r = 0, s = 2` gives `(1;())`;
+`r = 0, s >= 3` gives `(-1;(s-3))`. Verified at `s = 1,2,3,5,7`.
+
+**2. The blanket `a != mu` claim is false off the domain; restrict it to Case I.**
+`a = mu` occurs on 6 458 states of `weight <= 30`, all of them in Case II, e.g.
+`j = 1, lam = (2,)` where `a = mu = 1 <= t`. The correct statement is the one
+`Main/LEMMA_MAXEXIST.md` Lemma MX.5 proves: **`a = mu` cannot occur in Case I**, so
+the Case-I double deletion always acts on two distinct slots. What is also true is
+that `a = mu` cannot occur on the excluded set: `()`, `(1)`, `(4^r)` for
+`1 <= r <= 4` are the excluded pure-four/empty inputs and they are not in Case I
+either. State it as a Case-I claim and the problem disappears.
+
+**3. "Every `r = 1` full endpoint takes two steps" is inconsistent with the stated
+open classes.** It holds only for the residue classes where the closed form is
+derived (`s = 1,2,3,4 (mod 5)`). For `r = 1` with `s = 0,4 (mod 5)` the file itself
+reports 21 of 80 parameters exceeding the 20 000-edge cap, so those endpoints are
+not reached in two edges. Restrict the claim to the derived classes.
+
+**4. Keep four different objects apart.** This file proves (a) local `phi` formulas
+on the family, (b) `psi o phi` formulas, and, for `r = 1` and the derived classes
+only, (c) complete endpoints. It does **not** give (d) an inverse characterisation
+of the image. The naturalness question needs (d), not (c): a formula for where one
+ray lands is not a rule that covers several inputs at the same weight.
+
+**Terminology used throughout, and it must stay explicit:** all endpoints in this
+file are **B-space** objects (`pi_forward`), where `B_n` means "smallest part at
+least the length". They are **not** `D_n` objects. To compare with `D_n`, apply
+`T^{-1}` (RR-C006); e.g. `T^{-1}(25,17,8,8,8,8) = (30,20,9,7,5,3)`. The tuple
+`(25,17,8,8,8,8)` has adjacent differences `8,9,0,0,0` and is a perfectly valid
+`B_74` element; it is not required to satisfy any gap condition.
