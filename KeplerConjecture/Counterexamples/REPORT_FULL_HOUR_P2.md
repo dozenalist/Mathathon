@@ -186,3 +186,57 @@ Either (i) prove `K15-E030`'s (T) by exhibiting disjoint bodies in the twelve ou
 `2.08%` surplus and the `50.27 < 67.99` ball-only shortfall show the caps must carry the whole
 weight; or (ii) run the X-R03 SDP with `P = −(s−4)H`, `H` SOS, which is the only route on my
 side that can still produce a certified 3-D CE number.
+
+## X-R03 structural-SOS attempt: a certified (if weak) 3-D CE bound
+
+`x_r03_sos.py`. The parameterisation makes **CE1 exact by construction** and leaves only CE2:
+$$H(s)=\sum_{j=1}^{r}q_j(s)^2,\quad q_j\in\mathbb Q[s],\qquad P(s)=-(s-4)H(s),$$
+so `P ≤ 0` on `[4,∞)` because `H ≥ 0` and `-(s-4) ≤ 0` — no search, no sign test, no
+possibility of a cutting-plane oscillation. Then `Q =` exact Fourier image of `P`, and the single
+remaining obligation `Q ≥ 0` on `[0,∞)` is decided exactly (Sturm with even-multiplicity
+handling). Density `(4/(3√π))P(0)/Q(0)`.
+
+Random rational search (800 trials per setting, coefficient pool in halves up to ±4):
+
+| `m` (deg `q_j`) | `r` | best `P(0)/Q(0)` | certified density |
+| --- | --- | --- | --- |
+| 1 | 3 | `1648/1513` | `0.819374` |
+| **1** | **4** | **`2032/1867`** | **`0.818734679`** |
+| 1 | 5 | `4240/3889` | `0.820147` |
+| 1 | 8 | — | `0.864979` |
+| 2, 3 | 2, 3 | — | no candidate found |
+
+**Best certificate (frozen):**
+$$P(s)=-(s-4)\Bigl[49+\tfrac{(s+12)^2}{4}+(5s+2)^2+\tfrac{(s+5)^2}{4}\Bigr],\qquad
+P(0)/Q(0)=\tfrac{2032}{1867},$$
+$$\boxed{\ \Delta\ \le\ \frac{4}{3\sqrt\pi}\cdot\frac{2032}{1867}\ =\ 0.818734679\ }\quad
+\text{for every packing of unit balls in }\mathbb R^3 .$$
+
+This is a **PROVED** bound (CE1 structural, CE2 exact, no numerical residual), but it is *weak*:
+it is `0.078` above Kepler and `0.039` above C's K33 `0.77996650`. What it establishes is the
+**pipeline**, not a competitive value: it is the first certified number X has produced in this
+project, and it confirms that the `P = -(s-4)H` parameterisation removes the convergence failure
+diagnosed in `REPORT_width_and_E030.md`. The obvious next step is an SDP over the `q_j`
+coefficients (CE2 is quadratic in them) rather than random search; that is exactly the bounded
+local request below.
+
+**Bounded local request (X-R03b, for Astra).**
+```text
+commit      <this commit>       branch kepler15/counterexamples/run-01
+cwd         KeplerConjecture/Counterexamples
+command     python3 x_r03_sos.py                      # reproduces 0.826434 in ~35 s
+            python3 x_r03_sos_sdp.py <m> <r> <budget> # to be added: SDP over the q_j
+deps        python3.12, sympy 1.14.0, numpy 2.5.3, scipy 1.18.1
+cap         10 min wall, 1 CPU, 2 GB ; precision: exact rationals in the certificate
+success     a certified P0/Q0 with density < 0.779747 (CDS22's CE value) would be a genuine
+            in-house record for the ordinary CE class; < 0.818734 is a modest improvement.
+note        the random search is NOT an optimisation; it must not be reported as the
+            optimum of the family, only as a feasible point.
+```
+
+## Block summary
+
+Everything above was produced between `09:17:25Z` and the push recorded below. All three
+assignment priorities were completed, plus the fallback and one implementation advance. Nothing
+here required a Lean build or a heavy solve; the only offloads are the bounded reproductions
+above.
