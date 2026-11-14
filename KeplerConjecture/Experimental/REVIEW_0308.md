@@ -36,6 +36,22 @@ Omega_Lambda(c) = intersection over v in Lambda of {x : |x-c| <= |x-v|}
 
 hence `vol Omega_Lambda(c) <= vol D = 5.5503... < sqrt32`. ∎
 
+**The same argument in five lines, for a reader checking it once.**
+
+1. `K` = `{0} ∪ {twelve icosahedron vertices at circumradius 2}` is 2-separated: centre–vertex
+   distance is exactly `2`, vertex–vertex is `2.1029...` or more.
+2. Intersecting the twelve half-spaces `{x : |x| <= |x - w|}` gives the regular dodecahedron `D`
+   of inradius `1`, of volume `(15+7sqrt5)/4 x (4/sqrt(10+22/sqrt5))^3 = 5.5502910285155...`,
+   by the standard formula. That is `< 5.6568542495... = sqrt32`.
+3. Zorn: `K` lies in a maximal 2-separated set `Lambda`. Maximal means every `x` has
+   `|x - v| < 2` for some `v in Lambda` — i.e. `Lambda` is saturated.
+4. Adding centres only adds half-space constraints, so
+   `Omega_Lambda(c) ⊆ Omega_K(c) = D`.
+5. Therefore `vol Omega_Lambda(c) <= vol D < sqrt32`. ∎
+
+No step uses the dodecahedral theorem, the Tammes constant, any computation, or any
+compactness beyond Zorn. Step 2 is the only numerical input and it is a classical volume formula.
+
 **What the proof does and does not use.**
 
 - It uses **only** the containment `Omega_Lambda(c) ⊆ Omega_K(c)` and the elementary volume of
