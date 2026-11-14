@@ -29,6 +29,8 @@ where $c(x)$ is the positive correction function discussed there. Equations (106
 
 The required repair is a proved bound for the **corrected** cost, or a replacement family of local bounds whose full cost is sufficiently small. Merely changing the sign in the final paragraph cannot supply that estimate. Nor does this discrepancy, by itself, prove that no suitable normalization exists.
 
+The [exponent catalog](../EXPONENT_CATALOG.md) follows a different, explicitly identified source convention: Fauzan's original Section 5.1 uses $\ell(x,z)=\lfloor x-z\rfloor+\lfloor x+z\rfloor+1$, whereas Lai's equation (71) prints absolute values. The catalog reconstructs the original floor-function integrals and Proposition 5.2 without Lai's $E_M$ term. Its $k=7$ column is a derived extension calculation with separate local proof obligations, rather than a consequence of Lai's Theorem 9.3 as printed.
+
 ## To bound the integral, the potential inequality must hold between sample points and in the tail
 
 [Companion 4](04_ANALYTIC_ESTIMATES.md) uses

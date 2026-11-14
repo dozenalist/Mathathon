@@ -18,6 +18,7 @@ The numbered results below refer to Chun Wing Lai, [*On Fauzan’s Proof that ζ
 | [6. The Hankel construction](ProofGuide/06_HANKEL_CONSTRUCTION.md) | How partial fractions give affine entries and a Vandermonde determinant gives exact degree. |
 | [7. The moment representation](ProofGuide/07_MOMENT_REPRESENTATION.md) | The definition of the functional and the two integral calculations behind it. |
 | [8. Reading cautions](ProofGuide/08_READING_CAUTIONS.md) | What the printed estimates leave to justify, and what the exponent 260 additionally requires. |
+| [Exponent catalog from 5 to 7](EXPONENT_CATALOG.md) | The contribution of each prime range and the real estimate, with theorem references, exact arithmetic, and the remaining local proof obligations. |
 
 ## 1 The last step is an impossible integer
 

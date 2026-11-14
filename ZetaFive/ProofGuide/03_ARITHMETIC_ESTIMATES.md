@@ -157,3 +157,5 @@ $$
 Here $O(1)$ means a uniformly bounded error. If instead the local expression is written $L_p=p\,g(K/p)$, substituting $x=K/p$ gives an integral with the factor $x^{-3}$. This explains that factor in Lai's arithmetic constants.
 
 **What must be imported:** the actual local inequalities, their uniform errors, and the resulting cost bound. This companion explains how those assertions imply integrality and control the multiplier; it does not replace their proofs. The sign problem in the printed final cost and a documented alternative implementation are discussed in [companion 8](08_READING_CAUTIONS.md).
+
+For the numerical contribution of each prime range and its proposed change at $k=7$, see the [exponent catalog](../EXPONENT_CATALOG.md). It reconstructs Fauzan's original floor-function formulas, distinguishes their numbering from Lai's, and includes an exact-arithmetic reproduction script.

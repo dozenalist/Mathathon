@@ -4,6 +4,8 @@ Search date: **14 November 2026**. The companion [proof overview](../PROOF_OVERV
 
 **The central question for an extension is whether the arithmetic cost still fits inside the analytic decay.** The positive integral and determinant construction have analogues for higher zeta values. Producing integer polynomials that remain small is the difficult additional requirement.
 
+The [exponent catalog](../EXPONENT_CATALOG.md) makes this comparison explicit for the original geometry at $k=5$ and its proposed $k=7$ adaptation. It links each contribution to the relevant theorem, separates the outer-range costs, and includes exact rational checks. The $k=7$ formulas are a research calculation with local estimates still to certify uniformly.
+
 ## Read these first
 
 | Source | What it helps explain | Qualification |
