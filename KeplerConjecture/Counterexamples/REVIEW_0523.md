@@ -518,15 +518,23 @@ fixed; no proof of correctness for any of them".
 
 | item | result |
 | --- | --- |
-| `C_R` in Theorem B | wrong set defined (line 90); identity needs the one-endpoint sum (line 409); exact witness; one-line repair (`X-C037`) |
-| `(M)`'s characterisation | **correct** (fractional Tutte, verified on 33,867 graphs); my first reading of it was wrong and is withdrawn; Farkas form supplied (`X-C038`) |
-| failure of `(M)` | mechanism is "some `S` with `iso(G−S) > |S|`"; the 13-cluster is the extremal case, not the only one — wording (`X-C039`) |
-| `(L)`'s equality case | "exactly the Barlow family" **refuted by `C095`** (crack packing, bulk–bulk pairs at equality, not Barlow) (`X-C040`) |
-| Theorem C's "equality case empty" | average read as pointwise; needs a stability version of Hales–McLaughlin that the exposition says is unavailable — gap, not refutation (`X-C041`) |
-| §4 slack inequality | displayed coefficients not what the split gives (`√32`, `√32−V_dod` vs `2√32−2V_dod`, `√32`); conclusion unaffected (`X-C042`) |
-| Theorem D step 4 | **confirmed independently to 12 digits**; E/Main "unresolved discrepancy" **resolved** (E's value is another twist) (`X-C043`) |
+| `C_R` in Theorem B | wrong set defined (line 90); the identity needs the one-endpoint sum (already line 409); the same typo also breaks `c_e ≤ 1` on `E`-internal edges; exact witness; one-line repair (`X-C037`) |
+| `(M)`'s characterisation | **correct** (fractional Tutte, `i(G−S) ≤ |S|`; equivalently `|N(C)| ≥ |C|` on independent sets); verified on 33,867 graphs; my first reading of it was wrong and is withdrawn (`X-C038`) |
+| failure of `(M)` | mechanism is "some `S` with `iso(G−S) > |S|`", realisable at three points (`{(0,0,0),(2,0,0),(4,0,0)}`, graph `P₃`); the icosahedral 13-cluster is the extremal case, not the only one — wording (`X-C039`) |
+| "twelve at distance ≥ 2 on radius 2 is exactly the icosahedral twelve" | **false**: the icosahedral twelve have min distance `2.102924448 > 2`, so the set is positive-dimensional (`X-C048`) |
+| `(L)`'s equality case | "exactly the Barlow family" **refuted** by `C095` and independently by the fcc half-space-shift packing; equality at a pair forces only `vol ∈ [V_dod, 2√32−V_dod]` per cell (`X-C040`) |
+| Theorem C's "equality case is empty" | **true** (two lines from Hales: `0.740480 < 0.754697`) but not from the chain: the argument reads an average as pointwise and needs stability; even volume-stability is not enough — twelve icosahedral directions at radius `r > 2` give `vol → V_dod` with degree 0 (`X-C041`, `X-C049`) |
+| §4 slack inequality | coefficients `2(√32−V_dod)` and `√32` are larger than the split's `√32−V_dod` on both terms, so the display is **weaker and true**; my first claim (stronger/false) is withdrawn; repair needs `Σc_e ≤ 1` on `E` (`X-C042`) |
+| Theorem D | **correct**, all five clauses; `N_max` should be `(2R_max+1)³` (11,956 not 10,453); step 4 confirmed independently to 12 digits; E/Main discrepancy **resolved** (`X-C043`) |
+| Hales–McLaughlin's equality case | **verified from the primary source** (arXiv:math/9811079v3 §1), including that the inequality is for *every* 2-separated point set — so Theorem D's minimiser needs no saturation (`X-C047`) |
+| `lim` vs `limsup` in Theorems B and C | presentation gap: neither `c(Λ)` nor `ρ` need exist (saturated slab construction); the one-sided inequalities survive verbatim with `limsup` (`X-C049`… recorded as a note) |
 | `cut_flow.py` at `a25f5be` | D8 unchanged, line-specific: 269, 352, 390; the fix pattern already sits at 306–307 (`X-C044`) |
-| bounded-interval predicate | independent Vincent–Descartes decider, 92 cases, 0 mismatches; found and fixed an `nsimplify` soundness bug in `exact_sign.py` (`X-C045`, `X-C046`) |
+| bounded-interval predicate (G8) | independent Vincent–Descartes decider, 92 cases, 0 mismatches; it found and I fixed an `nsimplify` soundness bug in `exact_sign.py` (`X-C045`, `X-C046`) |
+
+**Two corrections of my own are in this review, both found by the comparison rather than by care:**
+the `(M)` characterisation (§3) and the direction of the slack comparison (§7). I also had to
+withdraw an earlier draft's claim that the displayed slack inequality was false. That is three
+self-corrections in one block, which is the honest rate for this kind of audit.
 
 **Nothing here is a bound, and I am not proposing one.** `(L)` remains unproved; `(M)` remains a
 hypothesis; `δ₀` remains non-explicit; the dodecahedral bound remains `0.754697399337`.
