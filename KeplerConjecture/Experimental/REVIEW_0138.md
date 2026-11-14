@@ -2,6 +2,15 @@
 
 Role E. Started 2026-11-14T09:57:21Z. Source reviewed: `4ea4e8b9`.
 
+**Reproduce everything in one command** (one CPU, ~30 s measured, under 200 MB):
+
+```
+bash Experimental/scripts/run_all_checks.sh
+```
+
+It runs twelve checks plus an evidence-integrity row and prints a PASS/FAIL table. It also
+prints which runs are exploratory, so a green table is not mistaken for a certificate.
+
 ## Summary
 
 What this block actually produced, in one place.
@@ -26,9 +35,10 @@ What this block actually produced, in one place.
 - `K15-E063`: A15 (β-W) is the project's first genuinely **saturated** fixture — 919 valid
   interior cells, none defective.
 
-**Implementation.** Four new runnable scripts (`block_evaluator`, `transfer_evaluator`,
-`dense_completion_search`, `periodic_relax`, plus `frank_kasper_test`), all committed and all
-verified to run; `verify_all_claims.py` now covers the 0138 constants too. A blind periodic
+**Implementation.** Six new runnable scripts this block — `block_evaluator`,
+`transfer_evaluator`, `multi_defect_test`, `dense_completion_search`, `frank_kasper_test`,
+`periodic_relax` — all committed and all verified to run; plus `verify_all_claims.py` now
+covering the 0138 constants. A blind periodic
 relaxation independently recovers fcc and `pi/sqrt18` to `1.6e-07` — a calibration, not evidence.
 
 **Not delivered.** No new density bound and no proof of `(H_R)`. The sharp remaining question is
@@ -200,11 +210,13 @@ any block reported with a buffer-cut cell, since the volume is then not the true
 | `icosa_fcc_shell_b` (189) | 1 | 1 / 1 | `+94.036` | `+94.036` |
 | `two_icosa` (two clusters) | 2 | 2 / 2 | `+50.052`, `+50.732` | `+68.518`, `+76.450` |
 
-The deficit being repaid is `D = 0.106563`. So across seven non-vacuous blocks the observed
-surplus exceeds the deficit by a factor between `470` and `880`, and **no block comes close to
-failing**. `two_icosa` exercises the overlap accounting with two components and reports
-`max_pairwise_overlap = 0`, confirming the `4.18` / `8.36` thresholds empirically as well as
-by proof.
+The deficit being repaid is `D = 0.106563`. **These `S - D` figures are retracted as evidence
+and must not be read as support for `(T')` — see Section 5.** They were computed with a buffer
+flag that never fired, so the payers' volumes are inflated by free space and `S` is an
+over-estimate without bound. What *does* survive from this table is distance-only:
+`two_icosa` exercises the overlap accounting with two components and reports
+`max_pairwise_overlap = 0`, confirming the `4.18` / `8.36` thresholds empirically as well as by
+proof, and the `block_has_buffer_cell` column is what later exposed the flag's failure.
 
 **Two fixtures could not be built, and that is informative.**
 
@@ -245,7 +257,7 @@ sum_{v in S} d(v)  <=  sum_{u in N_R(S) \ S} ( c(u) - sqrt32 ) .
 3. *Negligibility.* For `S = Lambda(x,r)` the boundary pairs have `u in B(x,r+R) \ B(x,r)`,
    a shell of `O(r^2)` centres, and for each such `u` at most `|Lambda cap B(u,R)| <= (R+1)^3`
    partners. Hence `|sum_{v in Lambda(x,r)} A(v)| <= ||phi||_inf (R+1)^3 |shell| = O(r^2)`.
-4. *(C3) is automatic.* Pacers never pay more than `c(u) - sqrt32`, and receivers only gain,
+4. *(C3) is automatic.* Payers never pay more than `c(u) - sqrt32`, and receivers only gain,
    so `c(v) + A(v) >= 0` everywhere.
 
 Consequently `A` is negligible and fcc-compatible, and **Lemma 3.3 applies with no cluster
@@ -265,9 +277,12 @@ non-defective centres) and verifies the conclusions numerically:
 
 Three features are worth stating plainly.
 
-- **The transfer is inert on the equality family.** `A ≡ 0` on fcc and hcp, so the rule cannot
-  disturb the configurations that attain `pi/sqrt18`. This was the main risk of any
-  correction scheme and it is settled here for this rule.
+- **The transfer is inert on the equality family — by proof, not only by fixture.** In fcc and
+  hcp every Voronoi cell has volume exactly `sqrt32` (the rhombic dodecahedron, inradius `1`), so
+  the defective set is *empty*, so no transfer is ever created and `A ≡ 0`. The fixtures agree,
+  but the statement does not depend on them: it follows from the rule plus the standard cell
+  volume. So the correction cannot disturb the configurations that attain `pi/sqrt18`. This was
+  the main risk any correction scheme runs, and for this rule it is closed.
 - **The *per-pair* transfer is tiny**: `||phi||_inf <= sqrt32 - V_dodeca = 0.106563`, i.e. at
   most `1.9 %` of a cell volume, because a defect's deficit never exceeds that (using
   `vol Omega >= V_dodeca`). Note the distinction I got wrong on first writing: this bounds
@@ -300,9 +315,13 @@ with R = 2.09.
 ```
 
 Everything else in the chain is now either proved (`K15-E014` for the count, the transfer
-theorem above) or imported and charged (`V_dodeca`). The measurements say the inequality holds
-with a factor of `470`-`880` to spare on every constructible fixture; the obstruction is that
-no technique proves even a factor of `1`.
+theorem above) or imported and charged (`V_dodeca`).
+
+**There is currently no numerical evidence either way on `(H_R)`.** An earlier version of this
+paragraph said the inequality holds "with a factor of `470`-`880` to spare"; that is retracted by
+Section 5, because the payers' volumes in those fixtures were unreliable. The obstruction is that
+no technique proves even a factor of `1`, and it is now clear that no completion we can build
+will settle it either.
 
 ### 3.6 A structural finding: defects are isolated, so surplus is never shared
 
@@ -324,11 +343,15 @@ paying neighbour**. (I first wrote "minimum legal `d` is 6"; the measurement is 
 conclusion is unaffected but the figure is corrected here.)
 
 **Consequence.** For configurations of this motif, `(H_R)` decomposes into independent
-single-defect inequalities, each with its own twelve payers and no competition — which is
-exactly the setting in which the measured slack factor of `470`–`880` was obtained. So the
-`(H_R)` tests are not weakened by the fixtures having only one defect each: multiple defects
-genuinely decouple. The `2x2x2` grid of eight defects confirms this — eight components,
-`max_pairwise_overlap = 0`, minimum `S - D = +67.472`, no sharing pressure.
+single-defect inequalities, each with its own twelve payers and no competition. So the `(H_R)`
+question is not weakened by the fixtures having only one defect each: multiple defects genuinely
+decouple, and a single-defect proof would settle this family.
+
+**What this does not give.** It says nothing about the *magnitude* of the surplus, and in
+particular it does not support the `470`–`880` slack once claimed here — Section 5 retracts that.
+The `2x2x2` grid confirms only the distance-only content: eight components,
+`max_pairwise_overlap = 0`, no sharing pressure. Its `S - D = +67.472` is one of the retracted
+figures (the same grid flags `195` of `203` cells unreliable).
 
 **What is *not* established.** That *every* defective configuration has isolated defects. The
 argument above is (i) exact for fcc/hcp rigidity, (ii) measured for the icosahedral motif, and
@@ -470,13 +493,13 @@ follow-up rather than claim it.
    per-cell bounds and collective arguments are all still open.
 
 Nothing here closes the geometric route, and nothing here should be read as showing the route is
-promising. The deliverable of this block is an auditable target, two runnable evaluators, and one
-retraction.
+promising. The deliverable of this block is an auditable target, six runnable evaluators behind a
+single reproduction command, one proved transfer theorem, and one retraction.
 
 ## 8. Result of the dense-completion search (`K15-EXP-005`)
 
 The harness authored in this block was run as a background job: `--seconds 300 --seeds 4`,
-one CPU, exit status `0`, wall clock `~4 min`. Output committed as
+one CPU, exit status `0`, wall clock `5 min 04 s` (from the job record, not estimated). Output committed as
 `Experimental/evidence/dense_completion_search.json`.
 
 | seed | `n` | `sum12` | `mean12` | iterations | refuted |
@@ -513,6 +536,14 @@ A15: min separation = 2.000000 (exact after scaling), conventional cube edge L =
      cell extents: 1.443376  (< 2, so Omega subset B(v,2) holds)
      packing density: 0.523599
 ```
+
+**Saturation is a property of the periodic structure, not of the finite build.** A15 is a
+crystal: its periodic repetition is a genuine saturated packing of `R^3`, so each interior cell
+computed with periodic images is the true Voronoi cell. The finite build used for the check has
+a boundary shell whose cells are truncated, and those are exactly what the extent flag removes.
+So "A15 is saturated" refers to the infinite periodic structure, and the finite computation is
+valid only on the interior — a distinction the flag makes explicit and which the earlier
+fixtures could not make because none of them was periodic.
 
 Two things follow, and the first matters more than the second.
 
@@ -763,3 +794,240 @@ A15 build is a real structure and not an artefact.
 
 The two cell volumes are exact rationals (`125/16` and `129/16`) because the scaled cube edge is
 exactly `4`, so this fixture needs no floating-point tolerance at all.
+
+## 13. C15 attempted from secondary sources — blocked on provenance, deliberately not used
+
+I tried to settle `(Q)` with the Laves phase C15 (MgCu₂), which is the natural candidate: its
+mean cell volume (`~5.90` at density `~0.71`) sits close enough to `√32 = 5.6569` that an
+individual cell could fall below, and unlike A15 it is dense.
+
+**The attempt is blocked, and I am not using it.** A web search for the Wyckoff positions
+returned conflicting values for the same site in the same space group:
+
+| source | `8a` (Mg) | `16d` (Cu) |
+| --- | --- | --- |
+| materials-database summary | `(1/8,1/8,1/8)` | `(5/8,5/8,5/8)` |
+| another summary | `(1/8,1/8,1/8)` | `(1/2,1/2,1/2)` |
+| a third | `(1/8,1/8,1/8)` | `(0,0,1/2)` |
+
+At most one of these can be right. All three are secondary or AI-generated materials pages, not
+crystallographic tables, and I am not willing to build a geometric fixture — let alone a claim
+about `(Q)` — on a coordinate I cannot source. This is the same judgement that made me discard
+the earlier 8-atom C15 build rather than patch it from memory.
+
+**What is needed, precisely.** The `Fd-3m` (No. 227) Wyckoff positions for `8a` and `16d` from a
+primary crystallographic source (ICSD, the *International Tables*, or the original
+Strukturbericht entry), with the origin choice stated — `Fd-3m` has two origin conventions, and
+confusing them shifts every coordinate, which is a likely explanation for at least some of the
+disagreement above. Then: build the 24-atom cell, scale to minimum separation `2`, and compute
+the periodic Voronoi decomposition. Success criterion as for A15: check that the cell volumes
+weight `8 : 16` and that the multiplicity-weighted mean equals `L^3/24`; if either fails, the
+construction is wrong, not the physics.
+
+**Status of `(Q)`: unchanged, unanswered.** This section records a blocked attempt and the exact
+input required, not a result. I make no claim about C15's cell volumes.
+
+## 14. Why checking one component at a time suffices for the Hall condition
+
+`K15-E061` needs `(H_R)` for **every** finite set `S` of defective centres. The evaluator only
+checks single components, so this needs justification, and it is a short lemma.
+
+**Lemma.** With `R = 2.09`, `tau = 2R = 4.18`, and components taken at threshold `tau`, the
+satisfaction of
+
+```
+sum_{v in S} (sqrt32 - c(v))  <=  sum_{u in N_R(S) \ S} (c(u) - sqrt32)          (*)
+```
+
+for every **component** implies `(*)` for every finite `S` of defective centres.
+
+*Proof.* Let `S` be a finite set of defective centres and let `C_1, ..., C_k` be the components
+meeting `S`, so `S = (S cap C_1) u ... u (S cap C_k)` is a disjoint union. Two facts:
+
+1. **Neighbourhoods of distinct components are disjoint.** If `s in N_R(C_i) cap N_R(C_j)` with
+   `i != j`, there are `v_i in C_i`, `v_j in C_j` with `|s - v_i| <= R` and `|s - v_j| <= R`,
+   hence `|v_i - v_j| <= 2R = tau`, so `v_i` and `v_j` would be adjacent and in the *same*
+   component — a contradiction. So `N_R(C_i) cap N_R(C_j) = empty`.
+2. **Defective centres are never payers.** The transfer only draws on `c(u) - sqrt32 > 0`, and a
+   defective `u` has `c(u) < sqrt32`, so it contributes nothing. In particular for
+   `S cap C_i ⊂ C_i`, the set `N_R(S cap C_i) \ S` differs from `N_R(C_i) \ C_i` only by other
+   defective centres of `C_i`, which are excluded from the sum either way.
+
+Therefore `sum_{u in N_R(S)\S}` splits as a disjoint sum over `i` of `sum_{u in N_R(C_i)\C_i}`,
+and `sum_{v in S}` splits as `sum_i sum_{v in S cap C_i}`. Applying `(*)` to each *component*
+would give the component version with `C_i` in place of `S cap C_i`; since
+`sum_{v in S cap C_i} <= sum_{v in C_i}` the sub-sum is even smaller, and the right-hand sides
+add. Hence `(*)` holds for `S`. ∎
+
+**Consequence.** The evaluator's per-component check is the right one, and this is why. It also
+explains the measured `max_pairwise_overlap = 0` in every fixture: it is not a numerical
+accident but fact 1 above, which holds because the block threshold is exactly `2R`.
+
+**Caveat, stated honestly.** Fact 1 uses `tau = 2R` *exactly*; the argument breaks if the
+component threshold is taken smaller than `2R`, which is precisely the error corrected in
+`K15-E032` for the earlier rule `R2`. So the choice of `4.18` is forced twice over — once for
+partition disjointness and once for this decomposition of the Hall condition.
+
+## 15. The extent flag cannot hide a defect
+
+A correctness point for whoever uses the evaluator, since the flag retires cells from the defect
+test and a broken flag would silently suppress the interesting cases.
+
+The flag marks a cell unreliable when its extent exceeds `2`. A cell that was **genuinely**
+defective, `c(v) < sqrt32 = 5.6569`, would have `Omega(v) ⊂ B(v,2)` in the saturated case and
+`extent <= 2`; and in any case its volume is below `sqrt32 < (4pi/3)`, so it cannot be a large
+bloated cell. Hence:
+
+```
+extent > 2   =>   the cell is unsaturated or truncated   =>   c(v) is an UPPER bound
+extent <= 2  and c(v) < sqrt32                          =>   a genuine defect, reported
+```
+
+So the flag only removes cells whose volumes are over-estimates, and over-estimates cannot
+*create* a defect. **The flag can suppress false positives but never a true one.** That is why
+counting defects among unflagged cells is the right statistic, and why the `0` defects reported
+for A15 (919 valid cells) is a real `0` rather than an artefact of aggressive flagging.
+
+The one case this does not cover: a cell with `extent <= 2` and `c(v) < sqrt32` in a *sparse*
+fixture, where the computed volume is still an upper bound — but there the over-estimate works
+against finding a defect, so the `0` remains trustworthy. The asymmetry is what makes the
+statistic usable: every error in the volumes pushes the defect count *down*, never up.
+
+## 16. Handoff: the three next steps, in order of value
+
+1. **Answer `(Q)`** (Section 6) — does a saturated packing contain a cell below `sqrt32`? This is
+   the highest-value question because `(Q) = no` would collapse the route to the per-cell
+   inequality, and `(Q) = yes` would make `(T')`/`(H_R)` testable for the first time. It needs a
+   *certified* periodic construction, and the blocked input is exactly identified in Section 13
+   (`Fd-3m` `8a`/`16d` from a primary crystallographic source, origin choice stated). The
+   checking recipe is already written down: build the 24-atom cell, scale to separation 2, verify
+   the cell volumes weight `8 : 16` and average to `L^3/24`, then look for a cell below `5.6569`.
+2. **Decide the fate of `(H_R)`.** It is now stated exactly (Section 3.5), it is known to be
+   *equivalent* to `(T')` on blocks rather than weaker, and there is no numerical evidence either
+   way (Section 5). Either someone proves it, or the route should be recorded as blocked rather
+   than carried. Carrying it as "promising" would misrepresent its state.
+3. **If the geometric route is retained, repair the harness rather than search harder.** The
+   dense-completion search cannot help (Section 8), because density is not the quantity that
+   makes `(T')` hard; saturation is. Any future effort should construct saturated configurations,
+   not denser ones.
+
+**What I would not do.** Add more seeds, larger `N`, or a stronger optimiser to
+`dense_completion_search`/`periodic_relax`. Sections 8 and 9.4 explain why both are aiming at
+the wrong target, and the retraction in Section 5 explains why their outputs cannot settle
+anything.
+
+**Reviewer asks.** X: the interval direction assumptions in `REVIEW_CHECKLIST_X.md` part C; the
+uniqueness argument in part A4; the imported dodecahedral theorem's exact hypothesis list
+(Section 2); and an independent read of the Hall-decomposition lemma in Section 14, which is
+short and load-bearing. Main: decide between items 1 and 2 above and record the decision in
+`Main/DECISIONS.md`.
+
+**Clock.** Receipt `2026-11-14T09:57:21Z`; final report not before `10:57:21Z`. Elapsed time is
+reported from API timestamps only, per the correction in Section 0.
+
+### 8.1 Status of the cache-key fix
+
+After the collision bug in Section 8 was found, the key was changed from `(len(P), |P|_1)` to
+`(len(P), hash(rounded coordinates))` and committed. A confirmation re-run
+(`--seconds 120 --seeds 2`) was started in the background and **did not finish within its
+four-minute cap**; I stopped it rather than let it run. That is expected rather than alarming:
+with a correct key there are no spurious cache hits, so every candidate set costs a real Voronoi
+decomposition, and the search is materially slower than the version that produced the numbers in
+Section 8.
+
+Consequences, stated plainly:
+
+- The numbers in Section 8 were produced by the **buggy** build. They are not a reliable measure
+  of what the search can reach, though the qualitative conclusion — that a denser completion does
+  not help, because saturation rather than density is the binding condition — does not depend on
+  them.
+- The fixed build is **syntax-verified and imports cleanly but its search has not been observed
+  to completion**. Anyone using it should budget more time than `--seconds 120` and should treat
+  the first run as exploratory.
+- This is a small, clean loose end for the next block: run the fixed harness once to completion
+  and either record a better `sum12` or record that it still cannot improve on the sparse
+  baseline.
+
+### 14.1 The lemma's premise, checked numerically
+
+The decomposition lemma rests on fact 1: distinct components have disjoint `R`-neighbourhoods.
+Checked directly on the `2x2x2` icosahedral grid (eight defects, spread over `9`-unit spacing):
+
+```
+defects = 8,  components = 8
+component pairs checked: 28
+pairs with NON-DISJOINT R-neighbourhoods: 0
+min defect-defect distance = 9.000000   (required to exceed 2R = 4.18)
+```
+
+So the premise holds with a wide margin on the only multi-defect fixture available, and the
+margin is structural rather than accidental: the smallest legal separation of two icosahedral
+motifs is `5.5` (Section 3.6), already above `4.18`, and on a grid it is larger still.
+
+**Caveat.** Eight defects is not a proof; the lemma in Section 14 is the proof, and this is a
+check that the lemma's hypothesis is not vacuous. Note also that the same grid reports `195` of
+`203` cells flagged unreliable, so its `S - D` figures are among the retracted ones — the
+distance-only content is what survives here, which is exactly why the overlap check is the
+useful thing to have run.
+
+## 17. Proof obligations, for integration
+
+Each item states what is proved, what it depends on, and what would discharge it. Ordered by
+dependency, so `Main` can integrate from the top down.
+
+| # | obligation | status | depends on | discharge |
+| --- | --- | --- | --- | --- |
+| 1 | `K15-E014`: at most 12 centres in `[2,2.09]` and `[2,2.05]` | **proved** | Tammes-13 constant (imported); `K15-E011` | nothing further, but the import must be charged |
+| 2 | `K15-E015`: `delta_13 < 57.138726938 deg` | **proved** | rational interval arithmetic; Taylor lemma | validate the Taylor remainder bound (short) |
+| 3 | `K15-E011`: radius conversion `max(1-2/R^2, R/4)` | **proved** | elementary | — |
+| 4 | `K15-E013`: Barlow stackings have 12 in `[2,2.09]` | **proved** | elementary geometry | — |
+| 5 | `K15-E045`: centre cell equals `V_dodeca` | **proved, conditional** | dodecahedral theorem (imported, computer-assisted) | verify that theorem's exact hypotheses |
+| 6 | `K15-E060`: two-shell thresholds `4.18`/`8.36`, disjointness, coverage, boundary `diam C + 8.36` | **proved** | elementary | — |
+| 7 | `K15-E061`: transfer theorem (pointwise FCC from Hall; exact cancellation; `O(r^2)`; `(C3)`) | **proved** | max-flow/min-cut; skew-symmetry | — |
+| 8 | Hall decomposition: per-component checks suffice | **proved** | `tau = 2R` exactly | — |
+| 9 | `(H_R)` with `R = 2.09` | **open** | — | a proof, or a counterexample (none found; no numerical evidence either way) |
+| 10 | `(Q)`: a saturated packing with a cell below `sqrt32` | **open** | — | certified periodic construction from primary crystallographic data, or an impossibility proof |
+
+**Chain.** `(H_R)` (row 9) plus row 7 gives pointwise FCC-compatibility; with rows 1-2 providing
+`A = 0` in the equality cases and row 5 fixing `V_dodeca`, Hales's Lemma 3.3 would then give
+`delta <= pi/sqrt18 + C/r`. Rows 1-8 are done; **the whole route currently rests on row 9.** Row
+10 is the sharper question that would tell us whether row 9 is even necessary.
+
+**What is *not* an obligation.** The `S - D` magnitudes, the `4.733968`/`8.167277` bounds, and
+the `470-880` slack are withdrawn (`K15-E062`) and should not appear in any integration record.
+
+### 9.6 A15 cell volume is buffer-independent
+
+A final robustness check on the A15 fixture: the cell volume of a fixed interior site,
+computed with three different bounding buffers (`1500` points at radius `30`, `3000` at `40`,
+`6000` at `60`):
+
+```
+nbuf= 1500  R=30   volume = 7.812500000000
+nbuf= 3000  R=40   volume = 7.812500000000
+nbuf= 6000  R=60   volume = 7.812500000000       125/16 = 7.812500000000
+```
+
+Identical to twelve decimal places and equal to the exact rational `125/16`. That rules out the
+failure mode that ruined the earlier fixtures — a volume that drifts with the buffer because the
+cell is really unbounded — and it is the check that the *flag* in Section 5 was designed to make
+unnecessary but which is still worth having for a fixture whose cells are genuinely bounded.
+
+## 18. What Main may cite from this block
+
+**Cite as proved:** `K15-E060` (two-shell thresholds and boundary cost), `K15-E061` (the
+transfer theorem, conditional on `(H_R)` — state the condition every time), `K15-E063` (A15 as a
+saturated fixture), `K15-E011`/`E014`/`E015` (the shell count and its enclosure, with the imported
+Tammes-13 constant named), `K15-E013` (Barlow), `K15-E032` (the `4.18` partition), and the
+Hall-decomposition lemma.
+
+**Cite only with its condition:** `K15-E045` (needs the dodecahedral theorem), `K15-E012` (needs
+`theta_13 < 57.1367 deg`), `K15-E049` (only for the estimator family F).
+
+**Do not cite:** any `S - D` value, the `470-880` slack, `4.733968`, `8.167277`, the "per-cell
+route is closed" phrasing, or `K15-E046`/`E047`/`E043` as current claims. These are withdrawn or
+narrowed and appear here only for the record.
+
+**Do not describe the geometric route as promising or as closed.** Its state is: one exact target
+(`(H_R)`), one proved transfer theorem contingent on it, no numerical evidence either way, and a
+clear next question (`(Q)`) that is not computational.

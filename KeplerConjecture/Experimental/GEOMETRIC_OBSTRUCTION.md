@@ -1,3 +1,20 @@
+> **SUPERSEDED IN PART — read with `REVIEW_0138.md`.**
+>
+> This file records the 2026-11-14 09:16 block. Three of its claims are corrected later and the
+> corrections take precedence:
+>
+> 1. **`K15-E049` is narrowed** (`REVIEW_0138.md` §1). It is a ceiling for the *uniform-floor
+>    directional estimator family* (F1-F3), **not** a closure of per-cell methods or of the
+>    geometric route. Sentences saying the per-cell route is "closed" are withdrawn.
+> 2. **The `S - D` values and the slack factors are retracted** (`REVIEW_0138.md` §5). They were
+>    computed with a broken buffer flag and are inflated by unsaturated cells. Every number in
+>    the "compute" rows below that depends on those volumes is unreliable; only the proofs and
+>    the distance-only results survive.
+> 3. **`K15-E045` is conditional** on the imported dodecahedral theorem (`REVIEW_0138.md` §2);
+>    only the containment `Omega(c) subset D` is unconditional.
+>
+> The `K15-E010`/`E011`/`E013`/`E014` enclosure and shell results below are unaffected.
+
 # The icosahedral compensation inequality: quantitative obstruction
 
 Role E. `K15-E040`. Status **OBSTRUCTED (quantitative)**. The inequality is neither

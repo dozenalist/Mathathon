@@ -46,3 +46,13 @@ cannot reach it. Consequence for `K15-E2`: the local-mass rows must come from
 spherical-code / kissing-type bounds, not from search, and `N(rho)` for `rho` just above
 2 is a kissing-with-tolerance problem whose optima are structured. The search harness is
 retained only as a refutation device.
+| `REVIEW_0138.md` | the 0138 block: scope corrections, the retraction, the transfer theorem, `(Q)`, proof obligations | authoritative for this block |
+| `CLAIM_LEDGER.md` | corrected claim ledger with scopes, imports and withdrawals | statuses |
+| `OFFLOAD_0138.md` | local execution request referencing committed code | `K15-EXP-005` |
+| `scripts/run_all_checks.sh` | **one-command reproduction of all twelve checks** | 13 rows, all PASS |
+| `scripts/block_evaluator.py` | blocks, disjointness, overlap, `(T')` accounting; `a15_saturated` fixture | TESTED_FINITE |
+| `scripts/transfer_evaluator.py` | antisymmetric transfer: pointwise FCC, exact cancellation, `A ≡ 0` on fcc/hcp | TESTED_FINITE |
+| `scripts/multi_defect_test.py` | defect isolation; 2×2×2 grid | TESTED_FINITE |
+| `scripts/dense_completion_search.py` | annealed density search with a hard time cap | TESTED_FINITE |
+| `scripts/frank_kasper_test.py` | A15 saturated fixture | exact rationals |
+| `scripts/periodic_relax.py` | blind relaxation recovering fcc and `π/√18` | calibration |

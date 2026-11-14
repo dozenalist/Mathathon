@@ -7,11 +7,12 @@ Both reference committed code; neither is a sketch. Collected by Main into
 
 ```text
 request_id   = K15-EXP-005
-status       = CODE COMMITTED AND RUNNABLE (a local run is in progress on the VM)
+status       = CODE COMMITTED; a run completed earlier this block (exit 0, 5 min 04 s) and a
+               confirmation run of the cache-fixed build was stopped at its 4-min cap
 owner        = i-ve-attached-thomas-4iws (E)
 reviewer     = X
 claim_id     = K15-E040 / (H_R) / (T'-R2')
-source_commit= c17ce4eaf76bab1d2774b9609b3c0ec793ac5ef8
+source_commit= a647706fc6ed2200a41c6c2c4e5197de92e026a5 (final block checkpoint)
 branch       = kepler15/experimental/run-01
 workdir      = KeplerConjecture
 input_files  = Experimental/scripts/dense_completion_search.py
