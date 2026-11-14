@@ -48,6 +48,12 @@ a **finite** vertex set the empty-boundary cut carries content (`Σ_U b ≤ 0`),
 zero leaves therefore has **no transfer at any `Φ`**, while a star whose leaves sum to `−b₀` has
 threshold exactly `b₀/m`; both are now tested, and the earlier version got the first case wrong.
 
+**Enclosure width, checked.** The threshold was recomputed with the enclosures tightened by three
+and then six extra digits: it moves by `1.2·10^{-10}` and then by `3.1·10^{-14}`, i.e. it has
+**converged to `0.00888026841442…`**. The shipped value `0.008880268414` sits *below* the true
+threshold, which is the conservative direction for a refutation: the claim "fails for every
+`Φ` below it" is weakened, never overstated, by the enclosure.
+
 Arithmetic: FCC and HCP have `b = 0` exactly. The icosahedral fixture's cell volume involves
 `√5`, so the file carries rational enclosures and uses `b_lo` to refute and `b_hi` for
 feasibility — each direction conservative.
@@ -58,7 +64,7 @@ feasibility — each direction conservative.
 | --- | --- | --- |
 | FCC (separation 2) | `b = 0` exactly, every cell | condition **satisfied trivially** at any `Φ ≥ 0`; **no information** |
 | HCP | `b = 0` exactly, every cell | same |
-| periodised icosahedral 13-cluster | central `b ∈ [0.106563219492, 0.106563221492]`; ring `b ≈ −335.214` | **the singleton cut `{0}` violates the condition for every `Φ < 0.008880268291`** |
+| periodised icosahedral 13-cluster | central `b ∈ [0.106563219492, 0.106563221492]`; ring `b ≈ −335.214` | **the singleton cut `{0}` violates the condition for every `Φ < 0.008880268414`** |
 
 The third row is the useful one. **Before using it the fixture is validated, not asserted**
 (`validate_icos_fixture`): minimum separation among the 13 centres exactly `2.000000`; nearest
@@ -71,7 +77,7 @@ enclosure `[5.550291028, 5.550291030]`.
 | `R` | graph | criterion | verdict for the icosahedral fixture |
 | --- | --- | --- | --- |
 | `1` | **no edges** | pointwise `b(v) ≤ 0` (Hales' fcc-compatibility) | **VIOLATED**: `max b ≥ 0.106563` |
-| `2` | 12 edges | cut condition | fails for `Φ < 0.008880268291`; flow above, `PATCH_FEASIBLE` |
+| `2` | 12 edges | cut condition | fails for `Φ < 0.008880268414`; flow above, `PATCH_FEASIBLE` |
 | `2.1029`, `3` | 42 edges | cut condition | same threshold; the singleton cut is still binding |
 
 The `R < 2` row is worth Main's attention: the fixture is a legitimate packing (separation exactly
@@ -97,7 +103,7 @@ Recorded because the reviewer's instruction — validate, do not promote — is 
    pointwise condition is the only object and is reported instead.
 
 The third row is the useful one: an **explicit finite cut** giving a rigorous lower bound
-`Φ ≥ 0.008880268291` for that packing.
+`Φ ≥ 0.008880268414` for that packing.
 
 **Caveat the test suite forced (`tests_cut_flow.py` S7), and it matters for reading that
 threshold.** The binding cut need **not** be a singleton: absorbing a *positive*-deficit

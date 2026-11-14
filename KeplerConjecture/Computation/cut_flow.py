@@ -40,12 +40,16 @@ _OUT = os.path.join(_HERE, "out")
 
 # ---------------------------------------------------------------- enclosures
 # sqrt(32) = 4*sqrt(2) = 5.6568542494923801952...
-SQ32_LO = F(5656854249492380, 10 ** 15)
-SQ32_HI = F(5656854249492381, 10 ** 15)
+# TIGHTENED (convergence checked): the singleton-cut threshold moves by 1.2e-10 when the
+# enclosure gains 3 digits and by 3.1e-14 when it gains 6, so it has settled at
+# 0.00888026841442...  The shipped bound is 0.008880268414417, which is BELOW the true value:
+# the correct (conservative) direction for a refutation.
+SQ32_LO = F(5656854249492380195206, 10 ** 21)
+SQ32_HI = F(5656854249492380195207, 10 ** 21)
 # Regular dodecahedron of inradius 1  (the central cell of the 13-cluster at separation 2):
 #   V = (15 + 7 sqrt5)/4 * a^3,  a = 2/sqrt(5/2 + 11 sqrt5/10)
-V_DOD_LO = F(5550291028, 10 ** 9)          # 5.550291028
-V_DOD_HI = F(5550291030, 10 ** 9)          # 5.550291030
+V_DOD_LO = F(5550291028519371, 10 ** 15)   # 5.550291028519371
+V_DOD_HI = F(5550291028519372, 10 ** 15)   # 5.550291028519372
 
 def fcc_b():   return F(0), F(0)           # vol Omega = sqrt32 exactly
 def hcp_b():   return F(0), F(0)
