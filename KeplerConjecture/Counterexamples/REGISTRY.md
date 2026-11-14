@@ -1311,3 +1311,21 @@ since their arcs are empty after the margin. The cover does not depend on any of
 `4 + 1e-58` and falls into "empty". It changes no arc, but it shows the classification is exactly at a
 numerical boundary for those pairs — the reason Main's `1e-30` inner margin, not a `1e-58` epsilon, is
 the right device.
+
+### K15-X-C079 — E's new interval trigonometry is sound; and the default region does not contain E's own C5 fixture
+
+**Trig.** `cell_certificate._sincos` is `rational_interval.sin_cos_iv_of_pi_multiple(mult, terms=24,
+pi_terms=32)`, and `_range_of` takes the hull of the endpoints plus every quarter-turn inside the box —
+no monotonicity assumption. Tested the enclosure directly: **344 rational multiples of π in `[−2, 2]`**
+(denominators 5, 10, 20, 50), exact values inside the returned intervals in **344/344** cases, maximum
+interval width **`1.18e-37`**. So the same verdict as `X-C067` for the old module: the trigonometric
+enclosure is exact rational arithmetic and sound; the flat `1e-9` in `spanning_constant` (`X-C072`) is
+the only non-interval step in the chain.
+
+**Scope of the default region.** The C5 control in `cell_certificate.py` is built at
+`tsin = √55/8`, `tcos = −3/8`, i.e. **θ = 112.02°**, and certifies `5.8980173718`. The default region of
+`certify_region_v2.py` is **θ ∈ [110°, 111°]**, which **does not contain 112.02°**: the region certifies
+a *different* one-parameter family (there `z = −2cos θ ∈ [0.68, 0.70]`, radius `2 sin θ ∈ [1.879,
+1.884]`, volume `[5.861827, 5.940277]`), not a neighbourhood of the C5 fixture. Both are above the
+`5.763417470` target, so nothing false is claimed — but "CERTIFIED for the whole region" should not be
+read as "certified around C5", and the region and the control are two different objects.

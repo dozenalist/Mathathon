@@ -460,3 +460,17 @@ The worth-knowing part: the certificate is carried by **39 of 121 pairs**, and 1
 distance 2 for exactly one twist each — a strict-inequality argument would have to exclude those
 explicitly, while the inner-arc formulation disposes of them automatically (their arcs are empty after
 the margin). It also shows why Main's `1e-30` margin, rather than a `1e-58` epsilon, is the right device.
+
+## 19. E's interval trigonometry, and what the default region actually covers
+
+`cell_certificate._sincos` delegates to `rational_interval.sin_cos_iv_of_pi_multiple(·, 24, 32)` and
+`_range_of` hulls the endpoints with every quarter-turn inside the box. Checked directly on **344
+rational multiples of π in `[−2,2]`**: the exact values lie inside the returned intervals in every case,
+maximum width `1.18e-37`. So the trig is sound, as `X-C067` found for the old module, and the only
+non-interval step in E's chain is the flat `1e-9` inside `spanning_constant`.
+
+One scope point. The C5 control is built at `sin θ = √55/8`, `cos θ = −3/8`, i.e. `θ = 112.02°`, and
+certifies `5.8980173718`. The default region is `θ ∈ [110°,111°]`, which **does not contain** `112.02°`;
+it certifies a neighbouring family (volume `[5.861827, 5.940277]`). Both clear the `5.763417470` target,
+so no false claim is made, but "certified for the whole region" is not a statement about the C5 fixture
+the self-test uses, and the two should not be conflated in the ledger.
