@@ -204,6 +204,32 @@ def main():
               br["width"] < F(1, 10 ** 20), float(br["width"]))
         check("R = %s: the maximizer is the singleton" % R, br["U_lo"] == [0], br["U_lo"])
 
+    print("S14 DUALITY: the minimum feasible Phi equals t* from the cut scan")
+    # LP duality on a finite graph: min{Phi : exists flow, |phi|<=Phi, div>=b} = max_U sum_U b/|d^+(U)|.
+    # The two sides are computed by completely different code paths, so agreement is a real check.
+    b_lo, b_hi = CF.icos_b()
+    n_r, E = CF.build_13(F(2), direction="refute")
+    t_star = CF.exhaustive_cut_scan(b_lo, E)["t_star"]
+    lo, hi = F(0), F(1, 50)
+    check("no flow at Phi = 0 (the singleton cut forbids it)", CF.feasible_flow(b_lo, E, F(0)) is None)
+    check("a flow exists at Phi = 0.02", CF.feasible_flow(b_lo, E, F(1, 50)) is not None)
+    for _ in range(40):
+        mid = (lo + hi) / 2
+        if CF.feasible_flow(b_lo, E, mid) is not None:
+            hi = mid
+        else:
+            lo = mid
+    # The LP is solved in floating point, so the resolved threshold is limited by linprog's
+    # tolerance; what must be EXACT is that any flow we return verifies.  Agreement of the two
+    # independent code paths to 1e-6 is the check.
+    check("the patch's minimum capacity agrees with the cut scan to 1e-6",
+          abs(hi - t_star) < F(1, 10 ** 6), (float(lo), float(hi), float(t_star)))
+    check("the bisection never certifies a capacity below t* minus the LP tolerance",
+          hi > t_star - F(1, 10 ** 6), float(t_star - hi))
+    phi02 = CF.feasible_flow(b_lo, E, F(1, 50))
+    ok_cap, ok_div, _ = CF.verify_flow_exact(b_lo, E, F(1, 50), phi02)
+    check("the flow returned at Phi = 0.02 passes the exact verifier", ok_cap and ok_div)
+
     print()
     if FAILS:
         print("FAILED: %d -> %s" % (len(FAILS), FAILS)); return 1

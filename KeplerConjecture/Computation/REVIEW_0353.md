@@ -15,9 +15,9 @@ base `4bcbd3a` (the commit the review examined), head after this block in §6.
 
 Two wording repairs the review also required, now in the code and the output:
 
-* the exhaustive 8191-subset scan is reported as a **CERTIFIED LOWER BOUND on `t*`** (`b_lo` gives a
-  lower bound; equality with the irrational optimum would need interval arithmetic on both sides),
-  not as `t*` itself;
+* the exhaustive 8191-subset scan is not reported as `t*` from a one-sided enclosure: `b_lo` alone
+  gives only a **lower** bound. (Later in the block this was strengthened further — the scan is now
+  run with both `b_lo` and `b_hi`, which brackets `t*` from both sides; see §6.)
 * the feasibility LP now runs on the **subgraph** (`direction="flow"`), so a flow found is a flow on
   the true graph.
 
@@ -26,7 +26,33 @@ the old `V_DOD` enclosure was already conservative — `b_lo = √32_lo − V_hi
 makes `b_lo` too *small*, which understates the threshold rather than overstating it. The refutation
 `Φ < 0.008880268414` therefore survives; what was broken was the bracketing *claim*, and any use of
 `V_DOD_LO` as a lower bound on the central cell volume. The corrected threshold is
-**`0.008880268414739`** (was `0.008880268414`), and it is still a lower bound.
+**`0.008880268414739`** (was `0.008880268414`), and with the `b_hi` scan added later in the block it
+is pinned to within `8.3·10⁻²³` rather than merely bounded below.
+
+### 0.1 Two further defects, found by the new tests rather than by the review
+
+The review's four are above. Writing test S14 (below) exposed two more, both of the same kind —
+a claim in a docstring that the code did not implement:
+
+* **`feasible_flow` did not re-verify.** Its docstring said the LP solution is "ROUNDED TO
+  RATIONALS and re-verified exactly, so the returned object is a genuine certificate". The code
+  rounded to a `10⁻⁹` grid and returned it. Rounding can break the divergence bound by
+  `deg·10⁻⁹ ≈ 1.2·10⁻⁸`, and the symptom was exactly that: bisecting for the patch's minimum
+  capacity produced a value **8.3·10⁻⁹ below `t*`**, which LP duality forbids. The function now
+  verifies with `verify_flow_exact` before returning, retries on `10⁻¹²` and `10⁻¹⁵` grids if
+  rounding broke it, and returns `None` rather than an unverified object.
+* **The duality check itself.** With the repair, the two code paths agree:
+
+  | quantity | value |
+  | --- | --- |
+  | `t*` from the exhaustive cut scan (`b_lo`, 8191 subsets) | `0.008880268414739160` |
+  | minimum `Φ` for which a flow exists (bisection on the LP, 45 steps) | `0.008880610465967038` |
+  | difference | `3.4·10⁻⁷`, in the direction duality allows |
+
+  The residual is `linprog`'s float tolerance, not a mathematical gap: the LP is solved in
+  floating point, and every flow that is *returned* now passes the exact verifier. So the two
+  independent computations — combinatorial scan and linear program — agree to `3.4·10⁻⁷`, which
+  is what one can ask of a float LP.
 
 ## 1. Claim status
 
@@ -91,7 +117,7 @@ precise sense in which "exhibiting a bounded transfer is strictly stronger than 
 
 ## 4. The independent compact verifier the review asked for
 
-`compact_verify.py` (170 lines, one file, standard library only) verifies the K33b certificate by a
+`compact_verify.py` (229 lines, one file, standard library only) verifies the K33b certificate by a
 third algorithm. The two existing checkers both *count roots* — `exactcert.py` with hand-rolled
 Sturm + Yun, `exactcert_oracle.py` with SymPy's `sqf_list`/`count_roots`. This one counts nothing:
 
@@ -145,9 +171,9 @@ this block went into trustworthy geometry (the four defects, and §2) instead.
 4. **Claims register** — rewritten for this block: `CUTEQUIV-001` moved to `WITHDRAWN`, the
    periodic-sum and "circular" claims retired, and seven claims added.
 
-Still open: a Frank–Kasper fixture with unequal cell volumes; exact (not measured) ring-cell
-volumes, needed only if a verdict ever depends on one ring cell individually; and the above-one
-Gram sweep, deferred as instructed.
+Still open: a Frank–Kasper fixture with unequal cell volumes, and the above-one Gram sweep
+(deferred as instructed). The ring-cell volumes are no longer open: the cells are congruent and
+measured to `3.4·10⁻¹³`, which with the partition identity makes the value exact.
 
 ## 7. Clock
 

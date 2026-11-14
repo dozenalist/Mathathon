@@ -366,13 +366,21 @@ def feasible_flow(b, edges, Phi):
     res = linprog(c, A_ub=A, b_ub=bb, bounds=bounds, method="highs")
     if not res.success:
         return None
-    # round and verify EXACTLY
-    phi = {}
-    for (i, j), k in idx.items():
-        q = F(int(round(res.x[k] * 10 ** 9)), 10 ** 9)
-        phi[(i, j)] = q
-        phi[(j, i)] = -q
-    return phi
+    # ROUND AND VERIFY EXACTLY.  The docstring used to claim this re-verification without doing
+    # it: the 1e-9 grid alone can break the divergence bound by up to deg * 1e-9 ~ 1.2e-8, which
+    # showed up as a "minimum capacity" 8.3e-9 BELOW the cut scan's t* -- impossible by LP duality,
+    # and the symptom that exposed the missing check.  Now a flow is returned only if it passes the
+    # exact verifier; otherwise a finer grid is tried, and failing that, None.
+    for den in (10 ** 9, 10 ** 12, 10 ** 15):
+        phi = {}
+        for (i, j), k in idx.items():
+            q = F(int(round(res.x[k] * den)), den)
+            phi[(i, j)] = q
+            phi[(j, i)] = -q
+        ok_cap, ok_div, _ = verify_flow_exact(b, edges, Phi, phi)
+        if ok_cap and ok_div:
+            return phi
+    return None
 
 def verify_flow_exact(b, edges, Phi, phi):
     """Exact check of |phi| <= Phi and divergence >= b at every vertex."""
