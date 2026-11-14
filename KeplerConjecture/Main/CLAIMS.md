@@ -1836,3 +1836,27 @@ three successive checkers passed their "random" tests while being wrong.
 - **Status.** `IMPORTED` (their evidence, verified in one direction by Main's own
   runs in `K15-C023`/`C056`). Full acceptance awaits X's audit of the repaired
   predicates (`Main/AUDIT_REQUEST_X.md`).
+
+### K15-C066 — C's `CROSSVALIDATION.md`: two notes (`IMPORTED` with corrections)
+
+C's document is the clearest integration artifact either side has produced: it
+tabulates the two pipelines' bases, sign machinery and Fourier maps, and runs both
+directions on degree-33 data. Two corrections from Main:
+
+1. **"Direction 1 rejected at `T_LO = 12`" is now moot.** `shell_check` has used
+   `T_LO = 4·PI_LO` since `K15-C049`; their copy was stale. Main's own runs
+   (`K15-C023`, `K15-C056`) `ACCEPT` both K33 variants at the current default, with
+   no need to override the threshold.
+2. **"Agreement to ten significant digits" is not what an exact pipeline should
+   show.** For the direction-2 shell certificate they report their `Δ` as
+   `0.780338357535` against `shell_check`'s `0.780338357611` — a difference of
+   `7.6e−11`. Exact arithmetic should agree on the *ratio* `R = p(0)/q(0)` to the
+   last digit; the `Δ` values can differ only through the `π` enclosure used to
+   multiply. So either (i) `R` agrees exactly and the `Δ` difference is the two
+   `π` intervals, or (ii) `R` differs, which would be a real defect. **They should
+   print `R` as an exact rational and the `π` interval separately**, and X should
+   check which of (i)/(ii) holds. Main cannot settle it without their shell
+   certificate file, which is not on the fetched branch.
+- **What stands regardless.** Direction 2 exercises a certificate produced by the
+  monomial pipeline and confirms it under the Laguerre checker; that is the
+  strongest coupling the project has between the two bases.
