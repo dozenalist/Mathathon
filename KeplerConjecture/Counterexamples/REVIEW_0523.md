@@ -334,3 +334,72 @@ be able to reproduce it, and the numbers are thirty-fold different in one case.
   exceptional set and is not affected by the triangle, which is used only to refute the *stated
   characterisation*.
 - No high-degree optimiser search was run, and no new bound is proposed.
+
+---
+
+## 11. Fallback done: the bounded-interval predicate closed independently — and it found a bug in X's own tool
+
+G8's remaining half was "the `p ≤ η` predicate by an independently derived method". Done:
+`Reviews/p_le_eta_independent.py`.
+
+**Method.** Vincent/Descartes, exact rational arithmetic, no Sturm sequence, no `sqf_list`, no
+SymPy root isolation: `w = p/gcd(p,p')` (Euclidean gcd over ℚ), a root of `w` in `(a,b)` is a
+positive root of the Möbius transform `(1+t)ⁿw((a+bt)/(1+t))`, Descartes gives `V ≥ #roots` with
+`V ≡ #roots (mod 2)`, so `V = 0` is "no root" and `V = 1` is "exactly one"; bisect any piece with
+`V ≥ 2`. Then `p ≤ 0` on `[lo,hi]` iff `p ≤ 0` at `lo`, at `hi`, and at one rational sample in each
+gap between consecutive roots — the sign is constant on each gap.
+
+**Two implementation traps, recorded because both produced wrong answers before being caught by
+the comparison:**
+1. Endpoint values alone decide nothing when an endpoint is a root: `p = −(x−1)(x−3/2)` on `[1,3/2]`
+   has `p ≤ 0` at both ends and `p > 0` inside. The first draft returned True.
+2. Shrinking away from an endpoint root must land on a point where `p ≠ 0`; a root-free piece whose
+   far end is a zero of `p` still says nothing about the sign just inside it. The second draft
+   returned True on the same example.
+
+**Result.** 60 rational-endpoint cases (endpoints at, between and within `10⁻¹²` of roots;
+multiplicities 1–2; both leading signs) and 32 algebraic-endpoint cases (`√2`, `√3`, `√5/2`,
+`φ`; algebraic endpoints bracketed into root-free rational zones) — **0 mismatches** against both
+X's `exact_sign.sign_on_interval` and Main's `shell_check.le_on_interval`.
+
+**The bug it found in `exact_sign.py`.** `sign_on_interval` and `sign_on_half_line` converted their
+endpoints with `sp.nsimplify`, and `nsimplify` **invents radicals for exact rationals**:
+
+```
+nsimplify(Rational(353553390593273762200422181, 250000000000))  =  1000*sqrt(2)
+```
+
+which is `1414.21`, not `1.41421`. With such an endpoint the predicate decided a sign on a
+*different interval*, or raised `CoercionFailed` when SymPy's `count_roots` got the radical. No
+published certificate is affected — every X certificate is decided on `[0, ∞)` or `[0,4]`, where
+`nsimplify` is the identity — but it is a genuine soundness defect in the tool the certificates
+rest on, and it is the same failure mode as the one already recorded in this project's history
+(`nsimplify` rewriting rationals into spurious radical products inside a try/except). **Fixed** by
+a `_endpoint` helper that passes `Rational`/`Fraction`/`int` through exactly and only calls
+`nsimplify` on genuinely symbolic input; `verify_all.py` still reports **ALL PASS** (21 controls
+and every certificate), so nothing published moved. Section C of the new script is the regression
+test: the two endpoints above now return `False` (not a verdict on `1000√2`, and not an exception).
+
+**What this does and does not close.** The bounded-interval predicate now has three
+implementations — X's, Main's and this one — agreeing on 92 adversarial cases, and one of the
+three (X's) was carrying a defect that only an independent implementation would surface. It does
+not close G8: the samples are finite, and G8's *independence* half was already answered in the
+previous block. The right status is "three implementations agree on 92 cases; one defect found and
+fixed; no proof of correctness for any of them".
+
+## 12. What this block adds, in one list
+
+| item | result |
+| --- | --- |
+| `C_R` in Theorem B | wrong set defined (line 90); identity needs the one-endpoint sum (line 409); exact witness; one-line repair (`X-C037`) |
+| `(M)`'s characterisation | **correct** (fractional Tutte, verified on 33,867 graphs); my first reading of it was wrong and is withdrawn; Farkas form supplied (`X-C038`) |
+| failure of `(M)` | mechanism is "some `S` with `iso(G−S) > |S|`"; the 13-cluster is the extremal case, not the only one — wording (`X-C039`) |
+| `(L)`'s equality case | "exactly the Barlow family" **refuted by `C095`** (crack packing, bulk–bulk pairs at equality, not Barlow) (`X-C040`) |
+| Theorem C's "equality case empty" | average read as pointwise; needs a stability version of Hales–McLaughlin that the exposition says is unavailable — gap, not refutation (`X-C041`) |
+| §4 slack inequality | displayed coefficients not what the split gives (`√32`, `√32−V_dod` vs `2√32−2V_dod`, `√32`); conclusion unaffected (`X-C042`) |
+| Theorem D step 4 | **confirmed independently to 12 digits**; E/Main "unresolved discrepancy" **resolved** (E's value is another twist) (`X-C043`) |
+| `cut_flow.py` at `a25f5be` | D8 unchanged, line-specific: 269, 352, 390; the fix pattern already sits at 306–307 (`X-C044`) |
+| bounded-interval predicate | independent Vincent–Descartes decider, 92 cases, 0 mismatches; found and fixed an `nsimplify` soundness bug in `exact_sign.py` (`X-C045`, `X-C046`) |
+
+**Nothing here is a bound, and I am not proposing one.** `(L)` remains unproved; `(M)` remains a
+hypothesis; `δ₀` remains non-explicit; the dodecahedral bound remains `0.754697399337`.

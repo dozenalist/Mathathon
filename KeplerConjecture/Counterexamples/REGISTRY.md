@@ -794,3 +794,29 @@ already exists two functions away, and `evaluate_external` still emits `status: 
 fixture that is infeasible at every `Φ` (five vertices, edges on `0..3`,
 `b = (−1,−1,−1,−1,+1)`). `Reviews/repro_c_cutflow_defects.py Reviews/C_cut_flow_a25f5be.py` → 9/13
 checks reproduce, the four that do not being D1/D2/D3.
+
+### K15-X-C045 — `exact_sign.py` decided signs on the wrong interval for some exact rational endpoints
+
+`sign_on_interval` (and `sign_on_half_line`) converted endpoints with `sp.nsimplify`. For an exact
+rational with a long denominator, `nsimplify` **invents a radical**:
+`nsimplify(Rational(353553390593273762200422181, 250000000000)) = 1000*sqrt(2)` = 1414.21 rather
+than 1.41421. The predicate then decided a sign on a different interval, or raised
+`CoercionFailed` when `count_roots` received the radical. **No published certificate is affected**
+— every X certificate is decided on `[0,∞)` or `[0,4]`, where `nsimplify` is the identity — and
+`verify_all.py` still reports ALL PASS after the fix. Fixed with an `_endpoint` helper that passes
+`Rational`/`Fraction`/`int` through exactly and only calls `nsimplify` on symbolic input.
+Regression test: section C of `Reviews/p_le_eta_independent.py`. Found by an independently
+implemented decider, which is the point of having one.
+
+### K15-X-C046 — bounded-interval `p ≤ η` closed by an independent Vincent–Descartes decider
+
+`Reviews/p_le_eta_independent.py`: exact rational arithmetic, `w = p/gcd(p,p')`, Möbius transform
+of `(a,b)` to `(0,∞)`, Descartes' count `V` (`V = 0` no root, `V = 1` exactly one, bisect while
+`V ≥ 2`), then one rational sample per gap between consecutive roots plus the endpoints. No Sturm
+sequence, no `sqf_list`, no SymPy root isolation. Agrees with X's `exact_sign.sign_on_interval` and
+Main's `shell_check.le_on_interval` on **60 rational-endpoint cases** (endpoints at, between and
+within `10⁻¹²` of roots) and **32 algebraic-endpoint cases** (`√2`, `√3`, `√5/2`, `φ`, bracketed
+into root-free rational zones) — 0 mismatches. Records the two implementation traps that produced
+wrong answers first (endpoint values decide nothing when an endpoint is a root; the shrink point
+must not be a zero of `p`). G8 stays open: finite sample, and no proof of correctness for any of
+the three implementations.
