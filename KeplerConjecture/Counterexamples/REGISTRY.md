@@ -1572,3 +1572,20 @@ dodecahedral cells coexist from about `d = 4.7` on this family, and the true thr
 `[3.1786, 4.8]`. C133's constant is a valid **bound** (sufficient for `C124`, which needs `d ≤ 3`) and
 must not be quoted as the threshold. The `2.000000` values are the cap, not evidence of contact: `w` and
 `p` each have twelve contacts at exactly 2.
+
+### K15-X-C093 — the exact-radius region certificate reproduces at its worst box
+
+`certify_region_v2.py 110.9 111.0 35.6 35.7 0.1` (20 s) gives `[5.860980375091, 5.936347031671]`, whose
+lower end equals the shipped `vol_lo = 5.860980375091257…` of
+`Experimental/evidence/region_110_111_exactradius.json` exactly. The full region's `vol_hi = 5.938771` is
+higher than this box's, i.e. `worst_box` is selected by the *lower* end — correct for a lower-bound
+target. So the headline number is reproducible from one box; the 100-box scan was not re-run.
+
+### K15-X-C094 — `C054`'s `PROVED` inherits `E014`'s `ACCEPTED_WITH_SCOPE`
+
+`C132(1)`'s account is correct: `C054` is the punctual statement for `2 ≤ R ≤ 2.09`, and `E014` really is
+the *shell* statement ("at most 12 centres of a 2-separated set in `[2, 2.09]`"), so there is no
+sphere/shell confusion. But `E014` is `ACCEPTED_WITH_SCOPE` — "accepted subject to Musin–Tarasov", with
+Main recording that it did **not** verify the `(E1)` transcription against the paper nor the enumeration —
+while `ACCEPTED.md:20` lists `C054` as plain `PROVED`. The status should be `PROVED modulo
+Musin–Tarasov`, or the transcription should be checked.
