@@ -32,7 +32,9 @@ import contextlib, importlib.util, io, itertools, json, os, sys
 from fractions import Fraction as F
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
-_MODULE = sys.argv[1] if len(sys.argv) > 1 else None
+# only a .py argument is a module to audit, so that importing this file (e.g. from the fuzz
+# script, which passes its own argv) does not try to load a bare number as a module
+_MODULE = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1].endswith(".py") else None
 if _MODULE:
     # audit ANY revision of the module, like X's reproduction scripts: point it at a copy
     _spec = importlib.util.spec_from_file_location("cut_flow_under_test", _MODULE)
@@ -55,11 +57,12 @@ def check(name, cond, detail=None):
                          "" if detail is None else "   %r" % (detail,)))
 
 # --------------------------------------------------------------- exact oracle (Fourier-Motzkin)
-def fm_feasible(b, edges, Phi):
+def fm_feasible(b, edges, Phi, max_rows=20000):
     """Is there phi with |phi_e| <= Phi and div(v) >= b(v) for EVERY v in range(len(b))?
 
     Exact, over Q.  Constraints are rows (coeffs, rhs) meaning sum coeffs*x <= rhs.
     The vertex set is range(len(b)) BY CONSTRUCTION -- that is the point of the oracle.
+    Returns True/False, or None if the elimination exceeded max_rows (undecided, never a verdict).
     """
     n, m = len(b), len(edges)
     rows = []
@@ -84,6 +87,8 @@ def fm_feasible(b, edges, Phi):
                 rhs = ca * (-c[k]) + cc * a[k]
                 keep.append((coef, rhs))
         rows = keep
+        if len(rows) > max_rows:                   # the elimination blew up: undecided
+            return None
     return all(rhs >= 0 for (coef, rhs) in rows)   # no variables left: need 0 <= rhs
 
 def scan_threshold(b, edges):

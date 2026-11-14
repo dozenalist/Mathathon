@@ -132,6 +132,29 @@ the regular dodecahedron).
 adding contacts, because the maximal kissing configuration already covers every direction. Raising
 `b(0)` needs a *different* local geometry, not a fuller shell.
 
+### 2.4 Soundness evidence at scale
+
+The review notes that generic soundness remains a proof obligation. It is not discharged here, but
+the evidence behind it is no longer twelve hand-written cases: `fuzz_cut_flow.py` draws **random**
+instances (`n ≤ 4`, `b ∈ {−2..2}`, random edge sets, rational `Φ`) and decides each one three ways —
+the exhaustive cut scan (exact), Fourier–Motzkin elimination over ℚ (`fm_feasible`, built from
+`range(len(b))`, so it cannot repeat the D8 omission), and the interface's own verdicts — then
+requires that
+
+* any returned flow passes `verify_flow_exact` **and** the oracle agrees it is feasible;
+* any returned witness is a genuine violation **and** the oracle agrees it is infeasible;
+* `Φ ≥ t*` is feasible and `Φ = t* − 1/4` is not.
+
+| run | instances | flows verified | witnesses | disagreements |
+| --- | --- | --- | --- | --- |
+| seeds 0, 1, 2 | 6 000 | — | — | **0** |
+| seed 42 | 20 000 | 8 716 | 11 284 | **0** |
+
+That is evidence, not a proof: it samples a distribution, and the oracle is capped (it returns
+`None` rather than blowing up, and undecided instances are skipped, never counted as agreement).
+What it does establish is that the three decision procedures do not disagree anywhere in 26 000
+random instances — which is the shape of evidence a soundness proof would have to explain.
+
 ## 3. Completeness of the exact volume algorithm (fallback, first item)
 
 The engine enumerates vertices from a set `A` of half-spaces proposed by a floating-point pre-pass.
@@ -209,6 +232,7 @@ python3 fixture_dense_shell.py     # the fixture, its conventions, the window (~
 python3 cut_flow.py --fixture out/fixture_dense_shell.json   # the evaluated cut and flow
 python3 fixture_nonuniform.py      # the engine, its certificate, the two-site theorem (~30 s)
 python3 audit_cut_flow_api.py      # 69 checks of the repaired interface
+python3 fuzz_cut_flow.py 20000 42  # 20 000 random instances, three-way (~15 s)
 python3 nearcontact_scan.py        # the 500 finite cases (~13 min)
 ```
 
