@@ -119,3 +119,28 @@ of active work, as specified in ROADMAP.
 - Next action / owner / dependency:
 - GitHub checkpoint: branch and successful push, or explicit failure:
 ```
+
+## 2026-11-14 / RR-M001-PUSH / checkpoint 1 push status: FAILED (credentials)
+
+- **Status:** BLOCKED for upload; the mathematical work is complete and committed.
+- **Local commit:** `c007d4d3e84cae69fc6627f212520db536449105` on local branch
+  `rr127/main`, branched from the assigned base `79df0e4`.
+- **Base check:** the remote HEAD at assignment time was `79df0e4`; the fetched
+  remote still reports `79df0e4`, so the branch is a fast-forward of the remote
+  `main` and needs no rebase.
+- **Exact failure:**
+  `git push -u origin rr127/main` ->
+  `remote: No anonymous write access.`
+  `fatal: Authentication failed for 'https://github.com/dozenalist/Mathathon/'`
+- **Cause:** this environment has anonymous read access to the public repository
+  (clone and `git ls-remote` succeed) and no write credential. The platform's
+  connected-GitHub service is **not** connected for this project:
+  `github_status` returns `github_not_connected: Connect a GitHub repository in
+  project settings.` No support for asking for a token or SSH key exists here,
+  and none was requested.
+- **To unblock (human action, one of):** connect the repository in project
+  settings, or push the commit manually:
+  `git push origin refs/heads/rr127/main:refs/heads/rr127/main`.
+- **Nothing is lost:** all artifacts are in the working tree and in
+  `c007d4d`, which is a fast-forward of `origin/main`; the branch is ready to be
+  pushed or to become a pull request unchanged.
