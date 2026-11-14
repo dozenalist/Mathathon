@@ -1,0 +1,74 @@
+======================================================================================
+A. C005 — the hybrid score mean, computed from the definition
+======================================================================================
+  Definition (m1-certificate.json):  B_kappa(v) = kappa * sum_{mu in Lambda} f(v - mu).
+  For a periodic packing with k centres per cell of volume V (centre density c = k/V):
+      mean_v B_kappa = (kappa/V) * sum_j int_cell sum_{x in L} f(v - x - v_j) dv
+                     = (kappa/V) * sum_j int_{R^3} f  =  kappa * (k/V) * fhat(0) = kappa * c * fhat(0).
+  (unfolding sum_{x in L} over the cell is exact for f in L^1; no Voronoi geometry enters.)
+  [PASS] mean B_kappa > 0 for kappa>0, fhat(0)>0  => C005(ii) 'mean <= 0' is REFUTED kappa*c*fhat(0) = 5.568328*c
+  [PASS] FCC separation 2: centre density c = 1/(4 sqrt2)                 c = 0.176776695
+     so for FCC the mean is kappa*c*fhat(0) = kappa*fhat(0)/(4 sqrt2) — the SAME constant
+     C005(i) quoted as a lower bound for B_kappa(ico). The 'opposite signs' contrast is void.
+
+  Distant centres: is B_kappa(v0) = kappa(f(0)+12 f(2)) correct for an infinite packing?
+     a= 1.0 : f(2)/f(0) = 1.832e-02 ; contact term is 2.2e-01 of the centre term
+     a= 3.0 : f(2)/f(0) = 6.144e-06 ; contact term is 7.4e-05 of the centre term
+     a=10.0 : f(2)/f(0) = 4.248e-18 ; contact term is 5.1e-17 of the centre term
+     (a) the 12-contact formula is exact only if f vanishes beyond the second shell
+         (r2 = 2.102924 > 2 for this cluster), i.e. only for compactly supported f.
+     (b) for such f, f(2) is a boundary value of the support, so the contact term is
+         not independently normalisable; for unbounded support the tail sum is positive.
+  [PASS] icosahedral cluster second-shell radius > 2                      r2 = 2.102924
+
+======================================================================================
+B. C010b — the log term vanishes in the Fourier-positive class
+======================================================================================
+  For fhat >= 0 and f continuous:  ||fhat||_1 = int fhat = f(0)  (Fourier inversion at 0).
+  [PASS] int fhat = f(0) for f=e^{-a|x|^2}, a=1 (3D quadrature)           1.000000 vs 1
+  [PASS] => log(||fhat||_1/f(0)) = 0 exactly in the PD class; C010b adds nothing there bound reduces to R >= K log2/(2 pi r_K)
+  Product counterexample f=g*prod(|x|^2-r_j^2) leaves the PD class:
+     multiplication by prod(s-r_j^2) maps to a differential operator on fhat, so fhat
+     changes sign for K>=1 once the polynomial has a real root off the support of ghat;
+     hence the counterexample refutes the UNRESTRICTED claim only (as review states).
+  [PASS] C010b restricted to PD class is not refuted by the product construction the product kills fhat >= 0; scope distinction preserved
+
+======================================================================================
+C. C013 — exact thresholds (direction and arithmetic)
+======================================================================================
+  [PASS] count bound gives n <= (3+delta)^3-1 ; 'at most 26' requires delta < 28^(1/3)-3 28^(1/3)-3 = 0.036588972  (NOT 0.0366)
+  [PASS] 0.0366 > 28^(1/3)-3, so 'delta<0.0366' is FALSE (wrong direction of rounding) 0.036600000 > 0.036588972
+  [PASS] spherical-cap bound: 13 caps => 1-cos(theta/2) <= 2/13 => theta <= 2 arccos(11/13) 2 arccos(11/13) = 64.4085 deg
+     => the cap bound gives theta <= 64.41 deg, which does NOT contradict theta>=60 deg (C013 correct).
+
+======================================================================================
+D. Tammes-13 and the varying-radius reduction (explicit delta_0)
+======================================================================================
+  Setup: y_1..y_13 with |y_i| in [2,2+delta] and |y_i-y_j| >= 2. Project y_i' = y_i/|y_i|.
+  For radii u,v in [2,2+delta],  |y_i-y_j|^2 = u^2+v^2-2uv cos(theta) >= 4  gives
+      cos(theta) <= (u^2+v^2-4)/(2uv), maximised at u=v=2+delta, i.e. 1 - 2/(2+delta)^2.
+  So all pairwise angles of the 13 projected points exceed alpha(delta)=arccos(1-2/(2+delta)^2).
+  Musin-Tarasov (arXiv:1002.1439, DCG 48 (2012) 128-141): d13 = 57.1367... deg is the
+  maximum possible minimal angle for 13 points. Contradiction whenever alpha(delta) > d13.
+     alpha(delta) > 60 deg at delta=0 (kissing number 12 = Schuette-van der Waerden)
+     delta_max(d13 = 57.1367 deg) = 0.091146
+     delta_max(d13 <= 57.14 deg)  = 0.091035   <- conservative certificate
+  [PASS] explicit tolerance: N(rho)=12 for 2 <= rho <= 2+delta_0 with delta_0 = 0.091 delta_0 >= 0.091035 (conservative)
+  [PASS] the required Tammes input is d13 < 60 deg (equivalently: kissing number 12) 57.14 deg < 60 deg
+     NOTE: this converts C013's 'open delta_0' into a proved explicit constant, at the
+     price of citing Musin-Tarasov. It is not new mathematics: the reduction is elementary.
+
+======================================================================================
+E. E002 closed form and E001 partition existence
+======================================================================================
+  [PASS] E002 closed form = 5.5502910285                                  5.5502910285
+  [PASS] E002: V_dodec < sqrt(32) = 4 sqrt2                               deficit 4sqrt2 - V = 0.106563
+  E001 partition existence: saturation gives dist(x,Lambda)<=2 for every x
+  (otherwise a unit ball fits at x). Cover R^3 by balls B(y,2); then
+     diam(cluster) <= 4  and  |Lambda cap B(y,2)| <= vol(B(y,3))/vol(B(0,1)) = 27.
+  [PASS] E001 hypotheses are satisfiable with D=4, Vmax=27                D = 4, Vmax = 27 (crude but valid for every saturated packing)
+  [PASS] annulus count in E001 Step 3: |Lambda cap B(y,rho)| <= (rho+1)^3 for all rho>=0 disjoint unit balls inside B(y,rho+1)
+
+======================================================================================
+failures: 0
+ALL CHECK POINTS EVALUATED — no arithmetic failure
