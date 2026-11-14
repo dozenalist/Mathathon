@@ -16,4 +16,3 @@ name = "Mathathon"
 # Build:  lake build RogersRamanujan
 [[lean_lib]]
 name = "RogersRamanujan"
-globs = ["RogersRamanujan.Lean.*"]

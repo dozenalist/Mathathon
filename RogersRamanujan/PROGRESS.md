@@ -1,5 +1,18 @@
 # Rogers--Ramanujan / SAIR problem 127: progress
 
+## 2026-11-13 22:25 PST / supervisor review of completion 19046
+
+The cycle-2 export was retrieved and its bundle verified. Python checks and the
+independent endpoint checker pass at `n=30`. The exported named Lean build fails
+because its glob requests a nonexistent module; removing that glob makes
+`lake build RogersRamanujan` pass on Lean 4.35.0 (22:28 PST, exit 0). The exported phi skeleton checker crashes and is not
+accepted evidence. RR-M004 remains finite evidence: the all-input obligation
+is not closed by that census. A proposed case proof is supplied for independent
+review in [Main/SUPERVISOR_REVIEW_19046.md](Main/SUPERVISOR_REVIEW_19046.md),
+along with exact commands, remaining gaps and corrections. Swarm `smwg03n61`
+still needs its completed reports collected. The older current-state table
+below is a historical cycle-1 snapshot pending Main's reconciliation.
+
 ## Current state (2026-11-14, America/Los_Angeles)
 
 | Area | State | Next action |
