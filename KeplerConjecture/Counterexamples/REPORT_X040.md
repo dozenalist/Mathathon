@@ -32,9 +32,15 @@ steps by hand. It exits 0 only if everything passes; it does.
 | 5. Theorem 2 without a uniform bound | correct | Tychonoff on `∏_e[−Φ_e,Φ_e]`: compactness is per factor; `S_F` closed since `div_φ(v)` is a finite sum; FIP. The hypothesis table correctly marks `sup_e Φ_e < ∞` as **not used** |
 | 6. threshold formula, both branches | correct | `+∞` if some `U ⊆ F` has `δ⁺(U) = ∅` and `Σ_U b > 0`; else `max(0, sup Σ_U b/|δ⁺(U)|)`. `max(0,·)` is needed: `b = (−1,−2)` on one edge has all `Σ_U b < 0` and `t* = 0`, and `φ ≡ 0` is the witness |
 
-**Randomised cross-check.** On 115 random small instances (n ≤ 5, `b ∈ {−2..2}⁵`, `Φ ∈ {0,1,2,3}`,
-random `F`), the three answers agreed every time: `(C) ⟺ LP feasible ⟺ Φ ≥ t*`. This is the
-strongest evidence available that Theorem 1 is not just correctly proved but correctly *stated*.
+**Randomised cross-check, twice, once without floats.** On 115 random small instances (n ≤ 5,
+`b ∈ {−2..2}⁵`, `Φ ∈ {0,1,2,3}`, random `F`) the three answers agreed every time:
+`(C) ⟺ LP feasible ⟺ Φ ≥ t*`. I then replaced the LP by **exact Fourier–Motzkin elimination**
+over ℚ on 196 instances (same generator, larger sample): `0/196` mismatches. So Theorem 1 and the
+threshold formula are now confirmed against an *exact* decision procedure, not a solver with
+tolerances — which matters, because the project has already lost three rounds to
+float-decided checks. The FM routine is 30 lines and shares no code with either the cut scan or
+the LP; my first two versions of it were wrong (a sign convention, then a premature
+"contradiction" test), and both were caught by exactly this comparison.
 
 **The thing to try to break.** One instance does need both threshold branches at once, so the
 formula's shape is load-bearing rather than cosmetic: take the star of §5(b′) (`b = (4,−4/3,−4/3,−4/3)`,
