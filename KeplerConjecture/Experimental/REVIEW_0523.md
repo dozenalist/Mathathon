@@ -177,10 +177,25 @@ sandwich over the same box       [5.629142811, 6.162489628]   width 5.3e-01
 
 so the sandwich is dominated by dependency by nearly six orders of magnitude. The caveat is
 that this box is centred on the family minimum, where `dV/dθ = 0`; over the whole legal window
-the volume moves by `0.064`, i.e. a Lipschitz constant of about `4e-3` per degree. **Even that
-is ~130× better than the sandwich**, so the obvious next improvement is a parameter-Lipschitz
-bound (differentiate `V` in `(θ, φ)`) rather than a finer sandwich. That is a concrete design
-input, not a repair done here.
+the volume moves by `0.064`, i.e. about `4e-3` per degree.
+
+**And a Lipschitz bound would not close the gap — I had this wrong in a first draft.** A
+Lipschitz bound `|V(p) − V(p')| ≤ A·max_i(|∂n_i/∂θ|R + |∂b_i/∂θ|)·|Δθ|` *is* the sandwich's
+own estimate: `R e_i + f_i` is exactly that quantity. The `6e5` gap is not a weakness of the
+constant, it is **cancellation** — over a parameter step some faces move out and others in, and
+the volume barely changes. No bound that estimates each face's motion independently can see
+that.
+
+What would see it is a **derivative-based** enclosure:
+
+```
+V(p) = V(p0) + ∇V(p0)·(p − p0) + ½ (p−p0)ᵀ H(ξ)(p−p0) ,
+```
+
+which needs `∇V` (the face areas and their derivatives — cheap) and a bound on the Hessian
+`H` over the box (not cheap, and not attempted here). That is the correct next step, and it is
+a different object from "a Lipschitz bound". Recorded because the wrong version sounds easier
+and would have wasted a block.
 
 The catch is the one that matters: **that is the C5 family, not the completion space.** The
 domain of §3 has up to 46 coordinates, and no 0.1°-granular grid over it is remotely
