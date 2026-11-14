@@ -246,6 +246,11 @@ of getting a verdict. It is in `Reviews/repro_c_cutflow_defects.py` as D5, marke
 Everything else in the module is robust on degenerate input: 12 further edge cases (no edges,
 `Φ = 0`, one vertex, empty `b`, `n = 17` over the scan cap, `R = 0`, `build_13(0)`, `build_13(2.0)`,
 `feasible_flow` with no edges) all return a verdict rather than raising — 12/12 (D6).
+One cosmetic mismatch with the repaired theorem is worth a line: `exhaustive_cut_scan` reports
+`t_star` as the raw maximum of `Σ_U b/|δ⁺(U)|`, without the theorem's `max(0, ·)`, so an
+all-negative instance yields `t_star = −1` where the formula gives `t* = 0`. Nothing changes for
+the test `Φ ≥ t*` (since `Φ ≥ 0` is a hypothesis), but the number is not the theorem's `t*` and
+should not be quoted as one (D7).
 
 ### 4.1 Main's `η ≥ 0` guard closes the §17 witness, and the predicates are undisturbed
 

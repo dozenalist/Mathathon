@@ -15,6 +15,8 @@ rational arithmetic or a stated geometric fact.
       there and every cut is satisfied for every Phi.  The fixture cannot be evidence.
   D5  (latent) exhaustive_cut_scan raises TypeError when no subset has a crossing edge, e.g. the
       R < 2 regime that build_13 models.  main() guards 'if not edges', so this is not live.
+  D7  (cosmetic) exhaustive_cut_scan omits the repaired theorem's max(0, .): with all b negative
+      it reports a negative t_star where t* = 0.
 
 Run:  python3 Reviews/repro_c_cutflow_defects.py        (exit 0 iff all four reproduce)
 """
@@ -114,6 +116,13 @@ for label, fn in degen:
     try: fn()
     except Exception as e: bad.append((label, type(e).__name__))
 ck("D6 %d/%d degenerate inputs handled" % (len(degen)-len(bad), len(degen)), not bad, str(bad))
+
+print("=" * 96); print("D7  exhaustive_cut_scan omits the theorem's max(0, .)"); print("=" * 96)
+r = cf.exhaustive_cut_scan([F(-1), F(-2)], [(0, 1)])
+print("    all-negative b on one edge: C reports t_star = %s" % r['t_star'])
+print("    the repaired theorem's formula gives t* = max(0, sup) = 0")
+ck("D7 C's t_star is not the theorem's t* when the sup is negative",
+   r['t_star'] < 0, "harmless for 'Phi >= t*' because Phi >= 0 is a hypothesis, but not quotable")
 
 print("\nRESULT: %d/%d checks reproduce" % (nchecked[0]-len(fails), nchecked[0]))
 print("        " + ("ALL DEFECTS REPRODUCE (4 live + 1 latent)" if not fails else "FAILED: %s" % fails))

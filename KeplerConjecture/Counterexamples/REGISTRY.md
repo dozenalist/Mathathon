@@ -641,3 +641,8 @@ stays `None` and is indexed at `best[0]`. `main()` guards this with `if not edge
 `python3 cut_flow.py` runs; the gap is in the function's contract (its docstring promises `None`
 only for an oversized scan) and for any caller that evaluates the `R < 2` regime through it.
 Recorded in `Reviews/repro_c_cutflow_defects.py` as D5, labelled latent.
+
+**Cosmetic mismatch (D7).** `exhaustive_cut_scan` returns `t_star = max_U Σ_U b/|δ⁺(U)|` without
+the repaired theorem's `max(0,·)`, so on an all-negative instance it reports `t_star = −1` where
+`t* = 0`. `Φ ≥ t*` is unaffected (`Φ ≥ 0` is a hypothesis); the number itself is not the theorem's
+`t*`.
