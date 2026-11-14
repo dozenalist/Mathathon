@@ -2456,3 +2456,44 @@ recorded in `K15-C089`'s step 0.
 
 *Status.* `PROVED` (exact icosahedral geometry; computed and checked numerically to
 `1e−9`). Reviewer X.
+
+### K15-C091 — Barlow cell volumes: six mixed stackings tested, all cells `√32` (`TESTED_FINITE`, proof open)
+
+**Construction (validated).** Layer `k` at height `k·h`, `h = √(8/3)`, on the
+triangular lattice `⟨(2,0),(1,√3)⟩`, shifted by `s_k·(a₁+a₂)/3`; a stacking is the
+sequence `(s_k)` with consecutive differences `±1 mod 3` (a hollow move) and the wrap
+step also `±1 mod 3`. Cells computed on a `3×3×3`-replicated periodic set with the
+half-space/ConvexHull machinery; **minimum separation over all pairs checked** (`2.0000`
+in every legal case).
+
+| stacking | period | min sep | cell volumes |
+| --- | --- | --- | --- |
+| `ABC` (fcc) | 3 | 2.0000 | `5.656854 ×3` |
+| `ABA` (hcp) | 2 | 2.0000 | `5.656854 ×2` |
+| `ABAC` | 4 | 2.0000 | `5.656854 ×4` |
+| `ABCB` | 4 | 2.0000 | `5.656854 ×4` |
+| `ABABAC` | 6 | 2.0000 | `5.656854 ×6` |
+| `ABCACB` | 6 | 2.0000 | `5.656854 ×6` |
+| `ABACABA` | 7 | 1.6330 | **illegal**: wrap step `0 ≢ ±1 mod 3` |
+
+`√32 = 5.656854249…`, so **every cell in every legal stacking tested has volume
+`√32` to six decimals** — the uniformity claim survives six distinct local environments
+(including `ABAC`, where the four sites have different neighbourhoods).
+
+**What is proved, and what is not.**
+- *Average*: `√32` in every Barlow stacking, since the density is `π/√18` (each layer
+  carries `1/(2√3)` points per unit area and the layer spacing is `h`).
+- *Uniformity*: **not proved**. The six cases are evidence; the cell volume is a
+  function of the local offset pattern and no argument is known to Main showing the
+  function is constant. (This is the corrected status of `K15-C078`: fcc/hcp are proved;
+  general Barlow is evidenced, not proved.)
+- *Degree facts vs volume facts* (`K15-C054` vs `C078`): the degree bound `≤ 12` at
+  `R = 2.09` holds for **every** 2-separated set (`C013`), Barlow or not; the vanishing
+  of `b` holds only where the volumes are `√32`, i.e. fcc/hcp by proof and Barlow by
+  evidence.
+
+**Construction bug found and recorded.** The first version added the height to the
+*y*-coordinate (`np.array([0.0, k*h])` added to a 2-D base) instead of using it as `z`;
+it produced "packings" with minimum separation `1.70` and meaningless cell volumes. The
+same mistake had invalidated Main's earlier numerical checks of `C033`/`C078`. Fixed
+before any number above was recorded.
