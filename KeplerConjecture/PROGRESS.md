@@ -426,3 +426,9 @@ X `e3a63a18…`. Twelve commits pushed in-block (hashes in the final report).
   tested scope", not closure.
 
 Next: the analytic averaged inequality of `Main/NEXT_PACKAGE.md`.
+
+Correction within the same block: `K15-C049`/`C050` — the sign predicates in
+`Computation/shell_check.py` falsely accepted positivity between endpoint roots
+(three reported inputs). Repaired generally, 19 regressions kept, re-verified that
+the K33b certificate and all fixture values are unchanged. General soundness of
+the checker is suspended pending X's audit. `K15-C053` adds a one-command runner.

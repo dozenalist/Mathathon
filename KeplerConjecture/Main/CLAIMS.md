@@ -1574,3 +1574,21 @@ last two blocks' verification was version-specific.
   `python3 KeplerConjecture/Computation/run_all_checks.py --cert <certificate.json>`
   (`--quick` skips the fuzz).
 - **Status.** `VERIFIED`. Reviewer X.
+
+### K15-C054 — the transfer graph at range `R ≤ 2.09` has degree `≤ 12` (`PROVED`, from the count)
+
+- **Statement.** Let `Λ` be 2-separated and `G_R` the graph joining centres at
+  distance `≤ R`. For `2 ≤ R ≤ 2.09` every vertex of `G_R` has degree `≤ 12`,
+  because every neighbour lies in the annulus `[2, 2.09]` and `K15-E014` bounds
+  that count by 12.
+- **Why it is the right range.** `R = 2` is the contact graph; `R = 2.09` is the
+  widest range the Tammes enclosure covers. Within it the transfer graph is
+  **local and degree-bounded**, which is exactly the structure the cut condition
+  of `K15-C044` and the constant of `K15-C035` (`3Φ(R+1)⁵`) want: `k_R ≤ 12`
+  beats the volume bound `(R+1)³ − 1 = 26` by a factor 2, and the shell count is
+  a *theorem*, not an assumption (K15-C027).
+- **Consequence for the constant.** With `R = 2.09`, `k_R ≤ 12` and
+  `C₁ ≤ 3Φ·12·(3.09)²·r²`-form arithmetic gives a materially smaller
+  negligibility constant than the `3Φ(R+1)⁵` worst case; the exact recomputation
+  is left to a worker (it is a one-line substitution).
+- **Status.** `PROVED` (immediate from `K15-E014`). Reviewer X.

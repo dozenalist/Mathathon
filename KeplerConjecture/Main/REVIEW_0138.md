@@ -105,3 +105,21 @@ audit), `K15-C038`/`C039` (transfer and cluster fixtures, both with the
 monotonicity lesson), `K15-C043` (Lemma 3.3 chain re-derived), `K15-C044`
 (transfer feasibility, corrected in-block), `K15-C045` (structural synthesis),
 `K15-C040` (Lean volume module + request `M-LEAN-002`).
+
+## 6. Second finding, received mid-block: the sign predicates were unsound
+
+Local reproduction at source `6626714` found that `Computation/shell_check.py`
+accepted three impossible inputs (`u(1−u) ≤ 0` on `[0,1]` with value `+1/4` at
+`1/2`; `u(u−1) ≥ 0` on `[0,∞)` with `−1/4`; `u(1−u) ≤ 0` on `[0,∞)`). Root
+cause: Sturm's `V(a) − V(b)` counts roots in `(a, b]`, the code subtracted a root
+at `lo` instead of `hi`, and testing only endpoints is invalid when both endpoints
+are roots. `K15-C049` records the general repair (root isolation plus one test
+point per constant-sign gap), the regressions now kept permanently (19 cases), and
+the re-verification: the K33b certificate still `ACCEPT` with the identical ratio,
+the fixture value unchanged, the `exactcert` cross-run unchanged. General
+soundness claims are suspended until X audits the repaired file.
+
+This is the second withdrawal of the block (the first was `K15-C029`) and the
+lesson is the same in both: a claim was supported by *tests that could not have
+failed*. The countermeasures are now mechanical — `Computation/run_all_checks.py`
+(8 checks, one command) and the fuzz script `K15-C050`.
