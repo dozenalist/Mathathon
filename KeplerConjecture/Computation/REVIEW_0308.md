@@ -234,7 +234,27 @@ The fitted exponent of `|δ⁺|/|U|` against `|U|` is **`−0.3230`**, essential
 `|δ⁺|/|U|^{2/3}` converges to **16.1**. So on this complex `|δ⁺(U)| ≈ 16.1·|U|^{2/3}` — the
 `O(k^{2/3})` behaviour the lemma needs, with the constant.
 
-**What this establishes and what it does not.** It exhibits the *mechanism*: for a packing with
+### Scope upgrade: for this fixture the threshold is exact for the *infinite* packing
+
+The two-output asymmetry (§1) says a feasible flow is patch evidence only. For **this** fixture the
+patch is not a proxy at all, and the reason is checkable: registered centres lie within a ball of
+radius 2 of their copy's origin, so distinct copies are at distance at least `16 − 4 = 12`, and
+`R ≤ 3 ≪ 12`. Hence **the periodic graph is a disjoint union of identical copies**. A finite `U`
+then splits into pieces in separate copies with **no edges between them**, so
+`Σ_U b/|δ⁺(U)|` is a weighted average of the pieces' ratios and its maximum is attained inside a
+single copy.
+
+**Therefore, for this fixture, `t* = 0.008880268414417` is the exact threshold for the infinite
+packing**, not a finite-patch bound — and `Φ ≥ t*` is necessary for any `Φ` serving all packings,
+because this packing exists. The evaluator now prints the decoupling verdict per row
+(`period_decoupling`), and switches the wording to `PATCH_ONLY` automatically when copies
+interact.
+
+**Caveat, stated because it is the honest limit of the above:** a *dense* packing has period
+comparable to `R`, so its copies do interact and the patch result would indeed be a proxy. The
+decoupling is a property of this fixture (period 16 versus `R ≤ 3`), not of the method.
+
+### What this establishes and what it does not. It exhibits the *mechanism*: for a packing with
 mean deficit `c > 0`, `Σ_U b ≈ c k` eventually dominates `Φ·16.1·k^{2/3}` at any fixed `Φ`. It is a
 computation on **one** complex (FCC, `TESTED_FINITE`), not a proof that a general packing's complex
 has the same profile — `K15-CUTPERIM-001` **remains open**. But it converts "we have no idea

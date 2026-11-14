@@ -101,6 +101,23 @@ def validate_icos_fixture():
                 V2_nearest_image=16.0 - 2.0, V2_ok=True,
                 V3_circumradius_bound=R_circ_upper, V3_uncut=bool(R_circ_upper < 8.0))
 
+def period_decoupling(R, period=16.0):
+    """Do copies of the period interact through G_R?  Registered centres lie within a ball of
+    radius 2 about the origin of their copy, so two copies are at distance at least
+    period - 4.  If that exceeds R there are NO edges between copies, the periodic graph is a
+    disjoint union of identical copies, and -- because a finite U splits into pieces in separate
+    copies with no edges between them, making sum_U b/|delta^+(U)| a weighted average -- the
+    maximum ratio is attained INSIDE one copy.
+
+    CONSEQUENCE when True: the patch threshold t* computed here IS the exact threshold for the
+    INFINITE packing, not a finite-patch proxy.  When False the patch result must be labelled
+    PATCH_ONLY.  This is a property of the fixture (period vs R), not of the method: a denser
+    packing has period comparable to R and the periods do interact.
+    """
+    gap = period - 4.0
+    return dict(gap=gap, decoupled=bool(gap > R), R=R, period=period)
+
+
 # ---------------------------------------------------------------- graph fixtures
 def icosa_edges():
     """Adjacency of the 12 ring cells around the central cell (icosahedron graph),
@@ -468,6 +485,10 @@ def main():
             print("               (this constrains a Phi that must serve ALL packings only")
             print("                because this packing exists; it is not implied by b > 0 in an")
             print("                arbitrary fixture)")
+        dec = period_decoupling(R)
+        print("            period vs R: copies are >= %.4f apart, R = %.4f -> %s"
+              % (dec["gap"], R, "DECOUPLED (patch threshold is exact for the infinite packing)"
+                 if dec["decoupled"] else "INTERACTING (patch result is PATCH_ONLY)"))
         ex = exhaustive_cut_scan(b_lo, edges)
         if ex is not None:
             print("            EXACT scan of all %d subsets: t* = %.15f at U=%s  %s"

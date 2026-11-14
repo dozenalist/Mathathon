@@ -707,3 +707,17 @@ Markov–Lukács system reduces to a **four-parameter rational search plus exact
 **Strength, stated honestly:** `1.33982381256` is `1.34×` the trivial bound `Δ ≤ 1`, so this is
 still a format demonstrator, not a competitive bound. The gap in `p(0)/q(0)` is `34%` (see
 `REVIEW_0308.md` §4).
+
+### K15-COMP-041 — 2026-11-14 — Computation (role C), scope upgrade and evidence corrections
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-DECOUPLE-001** | **PROVED (elementary, checked)** | for the icosahedral fixture the periodic graph is a **disjoint union** of identical copies, because centres lie within radius 2 of their copy origin and the period is 16, so copies are ≥ 12 apart while `R ≤ 3`. A finite `U` then splits into pieces with no edges between them, making `Σ_U b/|δ⁺(U)|` a weighted average — so the maximum is attained **inside one copy**, and **`t* = 0.008880268414417` is the exact threshold for the infinite packing**, not a patch proxy | `cut_flow.py` (`period_decoupling`), `REVIEW_0308.md` §1 |
+| K15-C-DECOUPLE-CAVEAT-001 | scope | a *dense* packing has period comparable to `R`, so its copies interact and the patch result would be a proxy. The decoupling is a property of this fixture, not of the method; the evaluator switches the wording to `PATCH_ONLY` automatically when copies interact | same |
+| **K15-C-TRANSFER-DENSITY-001** | **PROVED** | see `K15-COMP-039`: a transfer implies `ρ ≤ 1/√32`, so the transfer route presupposes the bound | `transfer_necessity.py` |
+
+**Evidence-review corrections applied** (see `REVIEW_0308.md` §1): the singleton floor is reported
+as a **per-fixture** bound `b(v)/deg(v)`, not a universal constant; positive deficit at degree zero
+is flagged `INFEASIBLE_POINTWISE`; all scratch-directory dependencies removed (`k15fourier.py`,
+`grep -c /tmp *.py` = 0 everywhere); the runtime estimate corrected to `--cap 300` and 30–100
+minutes for 20 seeds, because the measured 27 s here becomes >90 s on the reviewer's host.
