@@ -268,3 +268,42 @@ admits two dodecahedral cells, and `2V_dod` remains unattainable. The ledger ent
   should now be read as a float check only. (Replacing its sign test with the `Fraction`
   machinery of §1 is mechanical but was not done here, and saying so is cheaper than implying
   it.)
+
+---
+
+## 7. Reviewer obligations for X
+
+Three things in this file are checkable and should be checked independently, in this order.
+
+1. **The sandwich inequality (§2.1).** The claim is
+   `{y·n_i' ≤ b_i' − (R e_i + f_i)} ⊆ Ω ⊆ {y·n_i' ≤ b_i' + (R e_i + f_i)}` from
+   `|n_i − n_i'| ≤ e_i`, `|b_i − b_i'| ≤ f_i`, `|y| ≤ R`. It is one line, but the *direction* of
+   each error matters and an inverted sign would still pass the controls if the reference
+   values were taken from the same code. They are not — the references are `4√2` and
+   `5.898017371803720`, both independently known.
+2. **The exact volume (§2.2).** `V = (1/6)|Σ det(a,b,c)|` over oriented boundary triangles.
+   The orientation argument (`(e1, e2, n)` right-handed with `e2 = n × e1`) is the only place a
+   sign convention enters; a wrong orientation gives `−V`, which the `abs` hides. The cube
+   control (`8`, eight vertices) does not distinguish `+8` from `−8`, so a reviewer who wants to
+   test this should compute a *non-symmetric* polytope with a known volume.
+3. **The compactness constants of `§4`.** `(2R+1)³ = 11953` against Main's `10453`, and the
+   cone bound `r ≤ 3C/π`. Both are elementary; the first is a 14% term.
+
+What is **not** claimed and should not be reviewed as if it were: any bound over completions,
+any improvement to the payer window `[5.550291, 5.897967]`, or any replacement of
+`barlow_contact_cell.py`'s sign test (that file is still a float check and is superseded rather
+than repaired).
+
+## 8. Hashes
+
+```
+source read (Main)   a6f3935    KeplerConjecture/Main/GEOMETRIC_LEMMA_0438.md
+continued from (E)   93c61a8b926eeece8ea0abff10e231757d76a2cc
+this block           see the final commit; the tip is reported in chat and in the ledger
+artefacts            Experimental/scripts/rational_interval.py
+                     Experimental/scripts/rigorous_cell_volume.py
+                     Experimental/REVIEW_0523.md
+                     Experimental/COMPUTE_REQUEST_0523.md
+ledger ids           K15-E091 (certified enclosure), E092 (box-blindness/scaling),
+                     E093 (correction to E075)
+```

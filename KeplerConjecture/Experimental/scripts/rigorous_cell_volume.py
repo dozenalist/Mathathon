@@ -360,6 +360,6 @@ if __name__ == "__main__":
     rc = main()
     if "--scaling" in _sys.argv:
         box_scaling()
-    else:
+    elif "--box" in _sys.argv:
         box_demo()
     sys.exit(rc)
