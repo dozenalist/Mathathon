@@ -2500,3 +2500,27 @@ in every legal case).
 it produced "packings" with minimum separation `1.70` and meaningless cell volumes. The
 same mistake had invalidated Main's earlier numerical checks of `C033`/`C078`. Fixed
 before any number above was recorded.
+
+### K15-C092 — closed components: one obstruction proved, no counterexample found (`TESTED_FINITE` ledger)
+
+`Main/CLOSED_COMPONENT.md` records four attempted constructions with their exact
+failed conditions and one proved necessary obstruction:
+
+**Covering lemma.** An isolated vertex (no centre within `2.09`) in a *saturated*
+packing has at least **five** other centres in the annulus `(2.09, 4]`. *Proof:*
+saturation forces, for each direction `u`, a centre within `2` of `v + 2u`, hence a
+cap of directions of area `2π(1 − ρ/4)`; covering `S²` with caps of area `< 0.4775·2π`
+needs five of them. ∎ (Weak but real.)
+
+**Attempts and exact failures** (no construction succeeded):
+- *A1*: icosahedral directions pushed to `2.09` (legal, mutual `2.1976`): cell volume
+  `6.333804 > √32`, i.e. **negative** deficit — the natural candidate has the wrong
+  sign by 12%;
+- *A2*: general singleton needs `vol ∈ (V_dod, √32)` with all faces `≥ 1.045` — a
+  1.9% window; Hales–McLaughlin does not close it, and a *stability* version would;
+- *A3*: isolated dimer — the far-face argument fails (a face at distance 1); no
+  conclusion;
+- *A4*: clusters `≥ 3` — every cell has a near face inside the cluster; open.
+
+So the closed-component question stays open, with one proved constraint and a documented
+set of failures. Reviewer X.
