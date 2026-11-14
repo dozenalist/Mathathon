@@ -2,7 +2,7 @@
  "fixture": "icosa_grid_2x2x2",
  "n": 203,
  "minsep": 1.9999999999999998,
- "buffer_limited_cells": 0,
+ "buffer_limited_cells": 195,
  "n_defective": 8,
  "defective_vols": [
   5.550291028515512,
@@ -29,7 +29,7 @@
      "deficit_D": 0.10656322097686832,
      "surplus_S": 309.3214940626217,
      "S_minus_D": 309.21493084164484,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 4.0,
      "surplus_minus_deficit_direct": 309.2149308416448
     },
@@ -42,7 +42,7 @@
      "deficit_D": 0.10656322097687365,
      "surplus_S": 391.9026484600394,
      "S_minus_D": 391.79608523906256,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 4.0,
      "surplus_minus_deficit_direct": 391.7960852390625
     },
@@ -55,7 +55,7 @@
      "deficit_D": 0.10656322097686832,
      "surplus_S": 104.75496751008745,
      "S_minus_D": 104.64840428911059,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 4.0,
      "surplus_minus_deficit_direct": 104.64840428911056
     },
@@ -68,7 +68,7 @@
      "deficit_D": 0.10656322097686832,
      "surplus_S": 101.06481321727728,
      "S_minus_D": 100.95824999630041,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 4.000000000000001,
      "surplus_minus_deficit_direct": 100.95824999630038
     },
@@ -81,7 +81,7 @@
      "deficit_D": 0.10656322097686921,
      "surplus_S": 530.2618020440974,
      "S_minus_D": 530.1552388231205,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 4.0,
      "surplus_minus_deficit_direct": 530.1552388231203
     },
@@ -94,7 +94,7 @@
      "deficit_D": 0.10656322097687276,
      "surplus_S": 67.57865298239558,
      "S_minus_D": 67.47208976141872,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 4.000000000000001,
      "surplus_minus_deficit_direct": 67.4720897614187
     },
@@ -107,7 +107,7 @@
      "deficit_D": 0.10656322097686388,
      "surplus_S": 124.70389623852823,
      "S_minus_D": 124.59733301755136,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 4.000000000000001,
      "surplus_minus_deficit_direct": 124.59733301755135
     },
@@ -120,7 +120,7 @@
      "deficit_D": 0.10656322097686921,
      "surplus_S": 84.51360804558796,
      "S_minus_D": 84.40704482461109,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 4.000000000000001,
      "surplus_minus_deficit_direct": 84.40704482461105
     }
@@ -141,7 +141,7 @@
      "deficit_D": 0.10656322097686832,
      "surplus_S": 4148.059581376681,
      "S_minus_D": 4147.953018155705,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 6.731885126931567,
      "surplus_minus_deficit_direct": 4147.953018155705
     },
@@ -154,7 +154,7 @@
      "deficit_D": 0.10656322097687365,
      "surplus_S": 2721.845112322189,
      "S_minus_D": 2721.738549101212,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 6.723684870219574,
      "surplus_minus_deficit_direct": 2721.7385491012114
     },
@@ -167,7 +167,7 @@
      "deficit_D": 0.10656322097686832,
      "surplus_S": 2515.062154982757,
      "S_minus_D": 2514.95559176178,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 6.43903251740251,
      "surplus_minus_deficit_direct": 2514.955591761778
     },
@@ -180,7 +180,7 @@
      "deficit_D": 0.10656322097686832,
      "surplus_S": 1719.7262668002008,
      "S_minus_D": 1719.619703579224,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 6.705558395501403,
      "surplus_minus_deficit_direct": 1719.6197035792236
     },
@@ -193,7 +193,7 @@
      "deficit_D": 0.10656322097686921,
      "surplus_S": 2686.0383343167787,
      "S_minus_D": 2685.9317710958017,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 6.727987402782509,
      "surplus_minus_deficit_direct": 2685.931771095802
     },
@@ -206,7 +206,7 @@
      "deficit_D": 0.10656322097687276,
      "surplus_S": 1785.0005251315372,
      "S_minus_D": 1784.8939619105604,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 6.7499559812095224,
      "surplus_minus_deficit_direct": 1784.8939619105606
     },
@@ -219,7 +219,7 @@
      "deficit_D": 0.10656322097686388,
      "surplus_S": 1639.477399606185,
      "S_minus_D": 1639.3708363852081,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 6.6608153154405345,
      "surplus_minus_deficit_direct": 1639.370836385208
     },
@@ -232,7 +232,7 @@
      "deficit_D": 0.10656322097686921,
      "surplus_S": 1068.5476446711828,
      "S_minus_D": 1068.441081450206,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 6.7070216330717125,
      "surplus_minus_deficit_direct": 1068.4410814502057
     }

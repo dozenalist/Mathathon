@@ -25,6 +25,8 @@ Reviewer: X. Withdrawn and narrowed claims are kept, not deleted.
 | `K15-E050` | icosahedral fixture: edge `4√2/√(5+√5)`, `cos(angle) = edge/4`, tangency `|c−w_j| = 2` exact | exact arithmetic | reusable |
 | `K15-E060` | two-shell blocks need `τ = 8.36`; `diam ≤ diam(C)+4ρ`; boundary stays `O(r²)` | any 2-separated set | thresholds forced, not chosen |
 | `K15-E061` | under Hall `(H_R)`: skew transfer ⟹ pointwise FCC-compat., exact cancellation, `O(r²)` negligibility, (C3) automatic; `A ≡ 0` on FCC/HCP | `(H_R)` unproved | **repackages, does not reduce**, the content |
+| `K15-E063` | A15 (β-W) scaled to separation 2 is the project's first **saturated** fixture: cells `7.8125`, `8.0625`, extents `1.443 < 2`, density `0.523599`; **no defective cell** | exact coordinates, tested | first valid test of the extent criterion; does not answer `(Q)` |
+| `K15-E064` | a blind periodic relaxation over (4 positions, cell size) recovers fcc: `L = 2.828427276` vs `2√2 = 2.828427125`, density `0.740480371` vs `π/√18 = 0.740480490` (rel. err. `1.6e-07`), four equal cells `5.656855` vs `√32` | numerical | **calibration** of the evaluator chain; not evidence about `(Q)` |
 
 ## Open
 
@@ -35,6 +37,7 @@ Reviewer: X. Withdrawn and narrowed claims are kept, not deleted.
 | `(H_R)` | Hall condition with `R = 2.09`. **No numerical evidence either way**: the earlier "470-880x slack" is retracted (see below) |
 | `K15-E013'` | the count at `ρ > 2.0911` (needs a sharper spherical-code input) |
 | `K15-E020` | local-mass row; **blocked**, no three-point evaluator exists in these artifacts |
+| **`(Q)`** | does a *saturated* 2-separated set contain a centre with `vol Ω(v) < √32`? Unanswered. `(Q)=no` would collapse the route to the per-cell inequality, but `(Q)=no` implies Kepler, so it is strictly stronger than the target |
 
 ## Withdrawn / narrowed (kept for the record)
 

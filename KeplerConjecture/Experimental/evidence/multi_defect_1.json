@@ -2,7 +2,7 @@
  "fixture": "icosa_grid_1x1x1",
  "n": 23,
  "minsep": 2.0,
- "buffer_limited_cells": 0,
+ "buffer_limited_cells": 22,
  "n_defective": 1,
  "defective_vols": [
   5.550291028515512
@@ -22,7 +22,7 @@
      "deficit_D": 0.10656322097686832,
      "surplus_S": 1005.0672515981221,
      "S_minus_D": 1004.9606883771452,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 4.0,
      "surplus_minus_deficit_direct": 1004.960688377145
     }
@@ -43,7 +43,7 @@
      "deficit_D": 0.10656322097686832,
      "surplus_S": 12345.266940651763,
      "S_minus_D": 12345.160377430786,
-     "block_has_buffer_cell": false,
+     "block_has_buffer_cell": true,
      "diam_block": 6.731885126931567,
      "surplus_minus_deficit_direct": 12345.160377430784
     }
