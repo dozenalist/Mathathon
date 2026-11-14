@@ -1,3 +1,33 @@
+## Abstract
+
+Six questions, six verdicts, with the three layers kept apart (a contact-pair conjecture, a
+combinatorial weighting hypothesis, a density conclusion):
+
+1. **Theorem B's counting**: the definition of `C_R` at line 90 is the wrong set — the identity and
+   `c_e ≤ 1` both need the exactly-one-endpoint sum (the document's own self-audit has it right).
+   One-line repair; the theorem survives. `X-C037`.
+2. **The weight hypothesis `(M)`**: its characterisation is the *fractional* Tutte condition and is
+   correct (verified on 33,867 graphs). `X-C038`. The "exactly an isolated icosahedral cluster"
+   description of the failure is too strong — `K_{1,3}` and `P₃` fail too, and the icosahedral
+   twelve are *not* the unique twelve-point set with mutual distance `≥ 2` on radius 2. `X-C039`,
+   `X-C048`.
+3. **Theorem D (compactness)**: correct in all five clauses, with `N_max` needing `(2R_max+1)³`; its
+   two-dodecahedra step is confirmed independently to twelve digits. `X-C043`.
+4. **The equality case of `(L)`**: "exactly the Barlow family" is **refuted** — the crack packing
+   has bulk–bulk pairs at `2√32` and is not Barlow. `X-C040`. Hales–McLaughlin's own equality case
+   (which Theorem D needs) *is* verified from the primary source. `X-C047`.
+5. **Theorem C's "the equality case of the dodecahedral bound is empty"**: the conclusion is true
+   (two lines from Hales) but the document's route to it reads an average as a pointwise statement,
+   and even a *volume*-stability theorem would not repair it. `X-C041`, `X-C049`.
+6. **The slack repair**: its displayed coefficients are weaker than the split's, so the display is
+   true; the repair does need `Σc_e ≤ 1` on the exceptional set, which `(M)` does not give.
+   `X-C042`.
+
+Nothing here is a bound. The record remains `0.754697399337` (analytic) and `0.779966216777` (best
+certificate); `(L)` is unproved and `(M)` is a hypothesis. Four statements in the audited files and
+four claims of my own were wrong at some point; all eight were caught by a computation, a second
+implementation or a source, and each is recorded where it was found.
+
 # K15-REVIEW-0523-X — audit of `GEOMETRIC_LEMMA_0438.md` and `EXPOSITION_0438.md`
 
 Receipt `2026-11-14T13:32:41Z`. Audited: `Main/GEOMETRIC_LEMMA_0438.md` at commit `a6f3935`
