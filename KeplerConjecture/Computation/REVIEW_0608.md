@@ -132,6 +132,35 @@ the regular dodecahedron).
 adding contacts, because the maximal kissing configuration already covers every direction. Raising
 `b(0)` needs a *different* local geometry, not a fuller shell.
 
+### 2.3b Where the content sits, and convergence of the rational shell
+
+Two checks that the fixture is what it claims.
+
+**The content is exactly one inequality.** Over all 8190 subsets with a non-empty boundary, the
+singleton is the unique maximizer and the gap to the second best is enormous:
+
+| `U` | ratio | `Σ_U b` | boundary |
+| --- | --- | --- | --- |
+| `{0}` | **`+0.008533287080295`** | `+0.102399` | 12 |
+| `{0,12}` | `−3.313140158045` | `−36.444542` | 11 |
+
+so the fixture's cut condition reduces to `b(0) ≤ 12Φ`, exactly as for the 13-cluster — a fixture
+constrains one capacity and nothing else.
+
+**The rational fixture converges to the ideal one.** Refining the rounding at fixed shell radius
+`2.0005`, the central volume settles:
+
+| denominator | central volume | change |
+| --- | --- | --- |
+| `10⁴` | `5.554154021196409` | — |
+| `10⁵` | `5.554497957052789` | `3.44·10⁻⁴` |
+| `10⁶` | `5.554454804528846` | `4.32·10⁻⁵` |
+| `10⁷` | `5.554454533883713` | `2.71·10⁻⁷` |
+
+The limit is **not** the dodecahedron `5.5502910285` — that is the value at radius exactly `2`,
+which the irrational 13-cluster realises; at `r = 2.0005` the limit is `≈5.5544545`. The two
+constructions are consistent, not identical.
+
 ### 2.4 Soundness evidence at scale
 
 The review notes that generic soundness remains a proof obligation. It is not discharged here, but

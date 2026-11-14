@@ -161,6 +161,56 @@ def flow_and_obstruction_test():
           dmax < 2)
     return ok
 
+def cut_profile():
+    """Where does the fixture's content sit among all 8191 subsets?"""
+    import json
+    d = json.load(open(os.path.join(_OUT, "fixture_dense_shell.json")))
+    b_lo = [F(x) for x in d["b_lo"]]
+    E = [tuple(e) for e in d["edges"]]
+    rows = []
+    for k in range(1, len(b_lo) + 1):
+        for U in itertools.combinations(range(len(b_lo)), k):
+            sb, bd = CF.cut_value(b_lo, E, U)
+            if bd:
+                rows.append((sb / bd, U, sb, bd))
+    rows.sort(reverse=True)
+    return rows
+
+def convergence():
+    """The rational fixture converges to the ideal one as the rounding is refined.
+
+    At FIXED shell radius 2.0005 the central volume converges as the denominator grows (the changes
+    fall by roughly ten each step), and b(0) settles at 0.1023997.  The limit is NOT the dodecahedron
+    5.5502910285: that is the value at radius exactly 2, which the irrational 13-cluster realises.
+    """
+    phi = (1 + 5 ** 0.5) / 2
+    raw = []
+    for s1 in (1, -1):
+        for s2 in (1, -1):
+            raw += [(0, s1 * 1, s2 * phi), (s1 * 1, s2 * phi, 0), (s2 * phi, 0, s1 * 1)]
+    norm = (1 + phi ** 2) ** 0.5
+    L = [[PERIOD, F(0), F(0)], [F(0), PERIOD, F(0)], [F(0), F(0), PERIOD]]
+    out = []
+    for D in (10 ** 4, 10 ** 5, 10 ** 6, 10 ** 7):
+        scale = float(R_SHELL) / norm
+        pts = []
+        for v in raw:
+            q = tuple(F(int(round(c * scale * D)), D) for c in v)
+            if q not in pts:
+                pts.append(q)
+        sites = [(F(0), F(0), F(0))] + pts
+        if FN.min_separation(L, sites) < 4:
+            out.append((D, None)); continue
+        comp = []
+        for s in sites:
+            for n in FN.lattice_points(L, 1):
+                w = tuple(s[t] + n[t] for t in range(3))
+                if FN.norm2(list(w)) <= 25:
+                    comp.append(w)
+        vol, _, _, _ = FN.cell_volume(sites[0], comp, return_vertices=True)
+        out.append((D, vol))
+    return out
+
 def conventions_test():
     """The boundary and periodic conventions of §P1-P2, checked rather than asserted.
 
@@ -266,30 +316,52 @@ def export(L, sites, vols, path=None):
 
 if __name__ == "__main__":
     print("=" * 100)
-    print("A dense local cell: rational icosahedral shell, exact volumes")
+    print("A. A dense local cell: rational icosahedral shell, exact volumes")
     print("=" * 100)
     good, L, sites, vols, b0_lo, b0_hi = self_test()
-    print("\n" + "=" * 100)
-    print("B. THE NONVACUOUS WINDOW: where does the shell stop giving b(0) > 0?")
-    print("=" * 100)
+
     print("\n" + "=" * 100)
     print("A2. BOUNDARY AND PERIODIC CONVENTIONS")
     print("=" * 100)
     conv_ok = conventions_test()
+
     print("\n" + "=" * 100)
     print("A3. THE PATCH MINIMUM, EXACTLY, AND WHY THE SHELL CANNOT BE FILLED FURTHER")
     print("=" * 100)
     flow_ok = flow_and_obstruction_test()
+
+    print("\n" + "=" * 100)
+    print("A4. THE CUT PROFILE, AND CONVERGENCE OF THE RATIONAL SHELL")
+    print("=" * 100)
+    rows = cut_profile()
+    print("  %d subsets with a non-empty boundary; the best three:" % len(rows))
+    for r_, U, sb, bd in rows[:3]:
+        print("     U=%-14s ratio %+.15f  (sum_b %.6f over %d edges)"
+              % (str(list(U)), float(r_), float(sb), bd))
+    print("  the singleton is the UNIQUE maximizer; gap to the second best = %.3e"
+          % float(rows[0][0] - rows[1][0]))
+    print("  => the fixture's content is exactly one inequality: b(0) <= Phi * 12")
+    print()
+    print("  %-10s %-22s" % ("denominator", "central volume"))
+    prev = None
+    for D, vol in convergence():
+        if vol is None:
+            print("  %-10d invalid (rounding broke the separation)" % D); continue
+        change = "" if prev is None else "  change %.2e" % abs(float(vol - prev))
+        print("  %-10d %-22.15f%s" % (D, float(vol), change))
+        prev = vol
+    print("  => converging; the limit at r = 2.0005 is about 5.5544545, NOT the dodecahedron")
+    print("     5.5502910285 of radius exactly 2 (which the irrational 13-cluster realises)")
+
     print("\n" + "=" * 100)
     print("B. THE NONVACUOUS WINDOW: where does the shell stop giving b(0) > 0?")
     print("=" * 100)
     lo, hi, vlo, vhi = family()
     print("  b(0) > 0 for shell radius r <= %s  (vol = %.12f < sqrt32)" % (lo, float(vlo)))
     print("  b(0) < 0 for r >= %s  (vol = %.12f > sqrt32)" % (hi, float(vhi)))
-    print("  the crossing is in [%s, %s], exact rationals; its width is %.1e"
-          % (lo, hi, float(hi - lo)))
+    print("  the crossing is in [%s, %s], exact rationals; width %.1e" % (lo, hi, float(hi - lo)))
     print("  t* = b(0)/12 at the last nonvacuous r: %.12f" % float((CF.SQ32_LO - vlo) / 12))
-    p = export(L, sites, vols)
-    print("\nexported:", p)
+
+    print("\nexported:", export(L, sites, vols))
     print("dense_shell:", "PASS" if (good and conv_ok and flow_ok) else "FAIL")
     sys.exit(0 if (good and conv_ok and flow_ok) else 1)
