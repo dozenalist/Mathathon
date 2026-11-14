@@ -5902,6 +5902,15 @@ default and the `--eps` option now use the correct metric, and the self-test ass
 (`0.8476`) is **outside** the certified region — which is `C146`'s bifurcation, now a test rather than a
 paragraph.
 
+**Two verifications of the pilot's own core.**
+(i) `volume()` sums signed tetrahedra over a **fixed** triangulation; cross-checked against `ConvexHull` of
+the same vertices at `θ = 0, 0.05, 0.10, 0.1547, 0.30`, the worst disagreement is `3.3·10⁻¹²` (relative
+`6·10⁻¹³`), and at `θ = 0` it returns `5.550291028517` against the ledger's `5.550291028516`. So the
+routine is not the weak point.
+(ii) At the **certified radius** `0.1636`, 400 sampled directions all keep `20` active vertices, with
+active `min |det| = 0.658773` (bound `0.270045`) and inactive slack `0.757516` (bound `4·10⁻⁵`) — the
+conclusions hold with room, and the bounds are conservative, as Hadamard-based bounds are.
+
 **The certified radius is conservative.** T1/T2 prove `0.163600`; the measured type margin is still positive
 at `θ = 0.30` (facet counts stay at 12), so Hadamard is the crude step. That is a fact about the *proof*, not
 about the geometry.

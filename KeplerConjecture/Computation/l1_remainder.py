@@ -356,6 +356,8 @@ def main():
                          "ball = sqrt(12)*theta_pn.  --eps OVERRIDES --theta.")
     ap.add_argument("--c", type=float, default=0.13)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--ndir", type=int, default=400,
+                    help="sampled directions for the ratio/M3 report (cost ~1 ms each)")
     ap.add_argument("--ratio-min", type=float, default=RATIO_MIN,
                     help="conservative quotient ratio used for the ACCEPTANCE test; "
                          "the sampled value is reported but never decides")
@@ -394,7 +396,7 @@ def main():
     if a.margins:
         return 0 if ok else 2
 
-    ratio_min, m3 = ratio_and_m3(a.theta, a.c, seed=a.seed)
+    ratio_min, m3 = ratio_and_m3(a.theta, a.c, ndir=a.ndir, seed=a.seed)
     print("\nVALUE BOUND (not certified by this pilot)")
     print(f"   min quotient ratio (vol - V_dod)/d^2 over sampled dirs = {ratio_min:.6f}")
     print(f"   measured M3 = 6|c3| along the worst direction          = {m3:.6f}")
