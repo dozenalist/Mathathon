@@ -13,6 +13,8 @@ rational arithmetic or a stated geometric fact.
   D3  build_fcc_patch(1) raises TypeError before doing any geometry.
   D4  the period-16 13-cluster is unsaturated: all 12 ring cells are unbounded, so b = -inf
       there and every cut is satisfied for every Phi.  The fixture cannot be evidence.
+  D5  (latent) exhaustive_cut_scan raises TypeError when no subset has a crossing edge, e.g. the
+      R < 2 regime that build_13 models.  main() guards 'if not edges', so this is not live.
 
 Run:  python3 Reviews/repro_c_cutflow_defects.py        (exit 0 iff all four reproduce)
 """
@@ -82,6 +84,15 @@ ck("D4 copies do not interact at period 16", dec['decoupled'], "gap 12 > R")
 print("    therefore each ring cell's Voronoi cell is an unbounded cone: b(ring) = -inf.")
 print("    Any U meets a ring cell only with sum_U b <= 0, so (C) holds at Phi = 0 for every U")
 print("    and the fixture carries no geometric information at any Phi.")
+
+print("=" * 96); print("D5 (latent)  exhaustive_cut_scan raises on an edgeless fixture"); print("=" * 96)
+try:
+    cf.exhaustive_cut_scan([F(1), F(-1)], [])
+    ck("D5 raises on no-crossing-edge input", False, "it returned")
+except TypeError as e:
+    ck("D5 raises TypeError (latent: main() guards 'if not edges')", True, str(e))
+print("    main() never reaches this path -- it tests 'if not edges' and reports the pointwise")
+print("    condition instead -- so this is a robustness gap for other callers, not a live crash.")
 
 print("\nRESULT: %d/%d checks reproduce" % (nchecked[0]-len(fails), nchecked[0]))
 print("        " + ("ALL FOUR DEFECTS REPRODUCE" if not fails else "FAILED: %s" % fails))

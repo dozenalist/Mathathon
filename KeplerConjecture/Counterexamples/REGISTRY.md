@@ -634,3 +634,10 @@ so no claim is made about it. Passing the families is evidence, not proof; `K15-
 `SUSPENDED` label stays correct. **Correction recorded here:** my first version of this table
 labelled `shell_check_0a85bee.py` as `a8526a8`; it is `7dc6be58`, and running the real `a8526a8`
 changed the conclusion from "the suite misses this one" to "the suite catches it 50/900".
+
+**Latent fifth defect (not live).** `exhaustive_cut_scan(b_lo, edges)` raises
+`TypeError: 'NoneType' object is not subscriptable` when no subset has a crossing edge — `best`
+stays `None` and is indexed at `best[0]`. `main()` guards this with `if not edges`, so
+`python3 cut_flow.py` runs; the gap is in the function's contract (its docstring promises `None`
+only for an oversized scan) and for any caller that evaluates the `R < 2` regime through it.
+Recorded in `Reviews/repro_c_cutflow_defects.py` as D5, labelled latent.

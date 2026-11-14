@@ -236,6 +236,14 @@ period-16 13-cluster is unsaturated, so `b = −∞` and every cut is satisfied 
 geometric content. W1–W6 in `REVIEW_0353.md` §3 remain the acceptance tests, with W6 restated as
 in §1.1 above.
 
+One further defect is **latent**, and I record it as such: `exhaustive_cut_scan` raises
+`TypeError: 'NoneType' object is not subscriptable` whenever no subset has a crossing edge
+(`best` stays `None` and is indexed). `main()` never reaches it — it tests `if not edges` and
+reports the pointwise condition instead — so `python3 cut_flow.py` runs. But the function's own
+docstring says it returns `None` only when the scan is too large, and any caller that evaluates the
+`R < 2` regime through it (or a future C block that drops the `if not edges` guard) crashes instead
+of getting a verdict. It is in `Reviews/repro_c_cutflow_defects.py` as D5, marked latent.
+
 ### 4.1 Main's `η ≥ 0` guard closes the §17 witness, and the predicates are undisturbed
 
 `shell_check.py` moved `909a50a → 5caa1c9`, which adds `if eta < 0: return None` before any other
