@@ -338,3 +338,17 @@ pessimistic. No safety is lost.
 **Best exactly-certified bound in Computation's possession is now `0.78062816`** (`K=21`,
 `T_LO = 4π_lo`, `n = 27`, `ρ = 2.05`, unconditional) — **0.11%** above Cohn–Elkies' `0.779747`,
 the residual being the mandatory `ε_q` margin on `q ≥ 0`.
+
+### K15-COMP-014 — 2026-11-14 — Computation (role C), block close
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-TLODEGREE-001 | **VERIFIED_EXACT** | at the corrected threshold `T_LO = 4π_lo` the shell route reaches **`Δ ≤ 0.78055517`** (degree 25, `n = 27`, `ρ = 2.05`, unconditional) — **0.086%** above Cohn–Elkies' `0.779747`. Degrees 29, 31, 33 give no exact candidate: the pipeline saturates at degree 25 | `shell_propose.py --tlo-exact`, `TLO_FINDING.md` |
+| K15-C-STATUS-001 | index | `Computation/STATUS.md` gives Main a one-page view of what is exact, what is numerical, what is open, plus three actionable items | `STATUS.md` |
+
+**Summary of the block.** Two exact results that cross-validate across sessions: the degree-33
+certificate `0.77996622` and the shell-route certificate `0.78055517`, both accepted by Main's
+independently written checker. Three actionable defects/findings for Main (`T_LO` cost ~6.7%,
+`T_HI` invalid at `ρ = 2.05`, do not optimise in the monomial basis). Five defects in my own code
+found, four caught only by the independent checker. The uniform shell allowance is confirmed
+useless at seven degrees in two bases.

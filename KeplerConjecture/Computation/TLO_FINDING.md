@@ -50,11 +50,29 @@ threshold is not the binding constraint, and the only reason for the earlier rej
 by my Laguerre/Sturm/Yun pipeline, verified exactly, then accepted by another session's
 independently written monomial-basis checker.
 
+## Extending the degree at the corrected threshold
+
+Single runs (`shell_propose.py --tlo-exact --degree K`), `n = 27`, `ρ = 2.05`, all
+`EXACT PASS`:
+
+| `K` | `Δ ≤` | gap to CE `0.779747` |
+| --- | --- | --- |
+| 21 | 0.78062816 | +0.11% |
+| **25** | **0.78055517** | **+0.086%** |
+| 29 | no exact candidate | — |
+| 31 | no exact candidate | — |
+| 33 | no exact candidate | — |
+
+The pipeline **saturates at degree 25**: beyond it the cutting-plane loop and the rational
+rounding no longer converge, and exact verification refuses. (This mirrors the independent
+saturation found in the Laguerre basis at degree 33 in `CERTIFIER.md`; the monomial conversion
+of Main's checker reaches its limit sooner, as expected from `M[0][k] = (2k+1)!!/2^k`.)
+
 ## Consequence for the record
 
-* `0.78062816` (`K = 21`, `T_LO = 4π_lo`, `n = 27`, `ρ = 2.05`, **unconditional**) is the best
-  exactly-certified shell-route bound, and it is **0.11%** above Cohn–Elkies' `0.779747` rather
-  than 7% above it.
+* **`0.78055517` (`K = 25`, `T_LO = 4π_lo`, `n = 27`, `ρ = 2.05`, unconditional)** is the best
+  exactly-certified shell-route bound: **0.086%** above Cohn–Elkies' `0.779747`, rather than 7%
+  above it. The pipeline saturates at degree 25.
 * The remaining 0.11% is the cost of the mandatory `ε_q ≥ 1e-5` margin on `q ≥ 0` alone, since
   the `T_LO` cost has now been removed.
 * Anyone quoting a shell-route number computed with `T_LO = 12` should scale it: the true
