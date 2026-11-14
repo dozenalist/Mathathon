@@ -1913,3 +1913,13 @@ certificate covers the arithmetic of the constant only" — matching `C054`'s sc
 `interval_selfaudit.py` exits 0 ("AUDIT PASSED: enclosures contain the true values; corruption is
 detectable", with `333/106 < π < 3.14159292`). So both directories work, from *different* directories, and
 neither `README` states which.
+
+### K15-X-C125 — five more Experimental scripts pass, and `c5_family` confirms the fixture's `θ = 112.025°`
+
+Run from `KeplerConjecture/` at `6ae7dbf`, all exit 0: `c5_family.py` ("the frozen fixture uses
+`cos θ = −3/8`, i.e. `θ = 112.025`, `vol = 5.898017372`; `V_dodeca` floor never approached: `min vol −
+V_dodeca = +0.347716153`") — which independently confirms `X-C079`'s observation that the **control** sits
+at `112.02°` while the certified region is `[110,111]`; `shell_2p09_interval.py` (slack `0.0005969407701`);
+`outer_cell_angular_bound.py` (`4.734075619`, "BELOW threshold -> `(T′)` refuted approximate");
+`frank_kasper_test.py` (`min cell volume 7.8125`, "ANY cell below `sqrt32`? False"); `icosa_cluster_test.py`
+(`cluster13_mean_minus_sqrt32 = 3.03626470`).
