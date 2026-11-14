@@ -67,6 +67,23 @@ chk("13*(sqrt32 - V_dod) (E's 1.385321873)", 13 * deficit, 1.385321873, tol=1e-6
 chk("shortfall of 4.734 vs 5.665735 (%)", 100 * (1 - mpf('4.734') / mpf('5.665735')), 16.4451, tol=1e-3)
 chk("shortfall of V_dod vs sqrt32 (%)", 100 * (1 - vdod / sqrt(32)), 1.8839, tol=1e-3)
 
+# --- K15-C094 / C095 / C096 (block K15-REVIEW-0308-M-CONTINUE) ----------------
+Hlay = sqrt(mpf(8) / 3)
+chk("layer spacing H = sqrt(8/3)", Hlay, 1.63299316185545206546)
+chk("average Barlow cell volume 2 sqrt3 H", 2 * sqrt(mpf(3)) * Hlay, 5.65685424949238019521)
+chk("in-plane offset |T| = 2/sqrt3", 2 / sqrt(mpf(3)), 1.15470053837925152902)
+chk("|T|^2 + H^2 = 4 (contact distance)", (2 / sqrt(mpf(3))) ** 2 + Hlay ** 2, 4.0, tol=1e-20)
+chk("next distance 2 sqrt2 = sqrt(16/3+8/3)", sqrt(mpf(16) / 3 + mpf(8) / 3), 2.82842712474619009760)
+chk("covering: (2/sqrt3)^2 + (H/2)^2 = 2", (2 / sqrt(mpf(3))) ** 2 + (Hlay / 2) ** 2, 2.0, tol=1e-20)
+chk("crack: min d for 2-separation = H", Hlay, 1.63299316185545206546)
+chk("crack: max d for saturation = 2H", 2 * Hlay, 3.26598632371090413093)
+chk("icosahedron edge at circumradius 2.09", 2 * mpf('2.09') / sqrt(1 + ((1 + sqrt(mpf(5))) / 2) ** 2), 2.197556, tol=1e-6)
+chk("rho* = 2 (sqrt32/V_dod)^(1/3)", 2 * (sqrt(32) / vdod) ** (mpf(1) / 3), 2.01271866208334826748)
+chk("V_dod * 1.045^3", vdod * mpf('1.045') ** 3, 6.33380410563330904910)
+chk("margin of V_dod(1.045)^3 over sqrt32", vdod * mpf('1.045') ** 3 / sqrt(32) - 1, 0.11966895845012715101)
+chk("slope c needed: (sqrt32/V_dod-1)/0.09", (sqrt(32) / vdod - 1) / mpf('0.09'), 0.21332859530224944336)
+chk("crack energy per unit area at d=2.4", 2 * mpf('1.328495') / (2 * sqrt(mpf(3))), 0.76700694586707188002)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)

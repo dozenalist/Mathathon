@@ -248,7 +248,26 @@ def _sign_at(poly_expr, x):
 
 
 def check(a, rho=F(209, 100), eta=F(0), K=None, count=12, verbose=True):
-    """Full verdict for a rational coefficient list a (monomial, u = pi s)."""
+    """Full verdict for a rational coefficient list a (monomial, u = pi s).
+
+    PRECONDITION eta >= 0 (K15-C098). The count-price bound is
+        delta <= (4 pi/3) (f(0) + n eta) / fhat(0)
+    with f <= eta on the shell and f <= 0 off it; for eta < 0 the licensed statement is
+    the plain two-point bound (eta = 0), because f <= 0 off the shell already gives the
+    stronger hypothesis.  Passing eta < 0 used to return a SMALLER number than the
+    argument licenses for the parameter the caller believes it passed, so it is now
+    rejected rather than silently reinterpreted.
+
+    This is a precondition check, not a soundness argument: generic soundness of the
+    sign predicates remains SUSPENDED (K15-C049/C058/C068, Main/PROOF_GAPS.md).
+    """
+    eta = F(eta)
+    if eta < 0:
+        if verbose:
+            print("REJECT  precondition eta >= 0 violated: eta = %s" % eta)
+            print("        the licensed bound at a negative allowance is the plain")
+            print("        two-point bound, i.e. eta = 0; pass eta=0 instead.")
+        return None
     K = K if K is not None else len(a) - 1
     a = [F(x) for x in a] + [F(0)] * (K + 1 - len(a))
     M = fourier_map(K)
@@ -269,6 +288,7 @@ def check(a, rho=F(209, 100), eta=F(0), K=None, count=12, verbose=True):
     if rho > 2:
         rep("window non-degenerate (T_LO < T_HI)", T_LO < T_HI,
             "else the allowance is empty and this is ordinary CE")
+    rep("precondition eta >= 0 (K15-C098)", eta >= 0, "eta = %s" % eta)
     rep("fhat >= 0 for u >= 0 (q >= 0)", nonneg_on_half_line(b))
     if rho > 2:
         rep("f <= eta on the shell (p <= eta on [T_LO, T_HI])",

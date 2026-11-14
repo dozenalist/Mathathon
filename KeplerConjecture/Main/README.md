@@ -1,8 +1,8 @@
 # Main/ — index and current status
 
 One page so that Astra, X and the next block can find things without reading the
-whole ledger. Last updated at the end of block `K15-REVIEW-0138-M`
-(receipt `2026-11-14T09:42:58Z`).
+whole ledger. Last updated at the end of block `K15-REVIEW-0308-M-CONTINUE`.
+The block deliverable is `CONTINUATION_0308.md`; read that first.
 
 | File | What it is | Status |
 | --- | --- | --- |
@@ -24,6 +24,10 @@ whole ledger. Last updated at the end of block `K15-REVIEW-0138-M`
 | `LOCAL_COMPUTE_REQUESTS.md` | the local queue with per-role IDs (`M-LEAN-001/002`, `C-CERT-001`, `E-CERT-001`, `X-R01`, …) | current |
 | `SOURCE_MANIFEST.md` | every branch revision and artifact hash read, plus the commands run | current |
 | `Evidence/` | verbatim copies of the recovered swarm artifacts, with hashes | current |
+| `CONTINUATION_0308.md` | **the block deliverable**: tasks 1–4, the corrections table, and the next package PN-1…PN-5 | current |
+| `BARLOW_CELLS.md` | `K15-C094`: every Voronoi cell of every Barlow packing has volume `√32` — proof, the two-shape dichotomy, and the tightness corollary | current |
+| `COMPLEXITY.md` | `K15-C100`: the cost/gap scorecard — why no route here is a shortcut, and the one well-posed improvement target (`K15-C096`'s `(S)`) | current |
+| `GAP_FIXTURE.md` | `K15-C095`: the crack packing — infinite closed components, a second equality case of Kepler's bound, `b = −1.328495` at the crack faces | current |
 | `PROGRESS.md` (project root, imported) | dated history; this block is K15-MAIN-008/009 | current |
 
 ## The state of the three routes, in one line each
@@ -31,10 +35,12 @@ whole ledger. Last updated at the end of block `K15-REVIEW-0138-M`
 1. **Analytic (certificate) route** — a working exact pipeline; the K33b
    certificate is verified by two independent implementations at
    `Δ ≤ 0.779966216777`, which is *not* an improvement. Nothing to promote.
-2. **Geometric (local) route** — reduces to one inequality
-   (`Σ_U vol Ω ≥ √32|U| − O(|U|^{2/3})`); the transfer construction gives its
-   negligibility half for free (`C035`), and no finite computation can decide it
-   (`C036`). `NEXT_PACKAGE.md` is the assignment.
+   The periodic-to-general bridge is exact for its purpose (`BRIDGE_AUDIT.md` §6).
+2. **Geometric (local) route** — reduces to the cut condition, which **implies Kepler**
+   and is at least as strong as it (`C087`), so it is a reorganisation, not a shortcut.
+   `b ≡ 0` on every Barlow packing (`C094`), so there is **no slack** at the extremal
+   configurations. Step 0 is the bounded-closed-component question, now reduced for
+   singleton components to `V(2.09) ≥ √32` (`C096`, `PN-1`).
 3. **Shell/higher-point route** — no gain in the tested scope; not closed.
 
 ## What would make the next block successful

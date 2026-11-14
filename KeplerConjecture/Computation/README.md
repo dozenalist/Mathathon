@@ -19,6 +19,9 @@ in the project lives in Computation's own branch (`exactcert.py`, `out/…K33b.j
 | `transfer_check.py` | numerically exercises the transfer lemma's negligibility bound on fcc | `python3 transfer_check.py --R 2 --rmax 4` | 0.2 s |
 | `cluster_fixture.py` | the icosahedral 13-cluster: centre cell volume and the monotonicity of completions (validated to be packings) | `python3 cluster_fixture.py` | 0.5 s |
 | `ce_laguerre.py` | **historical, broken** grid LP kept as evidence for `K15-C014r`; do not use | — | 1 s |
+| `barlow_cells.py` | `K15-C094`: Barlow cells — 12 contacts, cell volume `√32`, the fcc/hcp two-shape dichotomy and its tangency slack; `--sweep N` adds random stackings of period 3–10 | `python3 barlow_cells.py [--sweep 6]` | 23 s; 6 min with `--sweep 6` |
+| `gap_fixture.py` | `K15-C095`: the crack packing — min separation, cross-crack distance, sampled covering radius over a range of `d` | `python3 gap_fixture.py` | 6 s |
+| `rho_probe.py` | `K15-C096`: the icosahedral-scaled cell volume against `√32`, and whether a 13th point in an icosahedral hole can cut it | `python3 rho_probe.py` | 1 s |
 
 ## Conventions
 

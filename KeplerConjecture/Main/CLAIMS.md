@@ -2419,6 +2419,24 @@ the geometric content reappears at full strength. This is the precise form of
 `K15-C071`'s "trade", and it should stop any future block from pursuing the cut
 condition as though it were easier than Kepler.
 
+**Precision added (block `K15-REVIEW-0308-M-CONTINUE`, task 4).** The `O(r²)` boundary
+term is not free: `Σ_{v∈U} vol Ω(v) = vol B(x,r) + O(r²)` needs `Ω(v) ⊆ B(v,2)`, which
+holds for **saturated** packings and only for those (saturation says every `x` has a
+centre within 2, so `|x−v| > 2` forces `x ∉ Ω(v)`). So `K15-C087` is stated for
+saturated `Λ`; the passage from an arbitrary packing to a saturated one is the Zorn step
+recorded in `Main/BRIDGE_AUDIT.md` §3 item 3. Second precision: `|U| = c(Λ)·(4π/3)r³ +
+O(r²)`, where `c` is the **centre** density, so the identity reads
+`Σ_U b = (4π/3)r³(√32c − 1) + O(r²)` with `c` the centre density and `√32 c − 1 = 0`
+at `c = 1/√32`; both substitutions are stated nowhere above and are needed for the
+displayed chain to be checkable. Neither gap affects the conclusion.
+
+**Direction (stated once, here, because the converse has been assumed twice).** `C087`
+proves *cut condition ⟹ density bound*. It does **not** prove the converse, and the
+converse is not available: the density bound carries no local cut information. Hence
+the cut condition is **at least as strong as** Kepler, and `K15-C080`'s "strictly weaker"
+must be read against the *open* `(T')`, not against Kepler. See
+`Main/ACCEPTED.md` §"One-way implications".
+
 *Status.* `PROVED` (asymptotic identity from the tiling, plus `K15-C043`'s chain in
 the other direction). Reviewer X.
 
@@ -2434,10 +2452,17 @@ and Ch. 10 bounds it region by region.
 **The structural difference, precisely.** `DS` is a *compact finite-dimensional* space
 of local configurations. Hales' Lemma 7.13 converts a pointwise statement about all
 packings into an optimisation over that compact space, which is then a finite
-computation (interval arithmetic + LPs). The cut condition has **no `DS`**: it
-quantifies over subsets of a packing, so no compact reduction is available. That is a
-sharper statement than "finite vs infinite", and it explains why the transfer route
-cannot be finitised the way Hales' can.
+computation (interval arithmetic + LPs).
+
+**Scope of the comparison (softened, block `K15-REVIEW-0308-M-CONTINUE`).** The cut
+condition **has no `DS`**: it quantifies over subsets of a packing, so no compact
+reduction is available *for the cut formulation as stated*. That is what is shown, and
+it is why the transfer route as stated cannot be finitised the way Hales' can. It is
+**not** a claim that no reformulation of the geometric route admits a compact
+reduction; nothing here rules out an analogous device for the cut form. The earlier
+wording ("no compact reduction exists") is withdrawn as an overstatement. The bounded
+claim that remains: none is available for the present formulation, and no candidate has
+been exhibited in this project.
 
 ### K15-C089 — the next geometric package: `sup_Λ t*(Λ) ≤ Φ₀` (`PROPOSED` package)
 
@@ -2456,9 +2481,14 @@ icosahedral singleton, not for every packing with `b > 0`. The per-packing neces
 bound is `t* ≥ max_v b(v)/deg(v)`; the two must not be confused (review 0308
 continuation).
 - **Correction (in the same entry).** The first version said "existence cannot be
-  refuted by a packing". **False.** If a packing has a **closed** component `C` (no
-  edges leaving at range `R`) with `Σ_C b > 0`, then `t*(Λ) = ∞` and **no transfer
-  exists** — such a packing refutes the transfer route (not Kepler). By `K15-C080` a
+  refuted by a packing". **False.** If a packing has a **bounded** closed component `C`
+  (finite, no edges leaving at range `R`) with `Σ_C b > 0`, then `t*(Λ) = ∞` and **no
+  transfer exists** — such a packing refutes the transfer route (not Kepler).
+  **"Bounded" is essential and was missing** (block `K15-REVIEW-0308-M-CONTINUE`):
+  *infinite* closed components do exist — the crack packing of `K15-C095` is a saturated
+  2-separated packing whose `2.09`-graph has two closed infinite components — and they
+  are harmless, because every finite `U ⊆ C` has `δ⁺(U) ≠ ∅` via its edges to `C∖U`.
+  So the obligation is: **no bounded closed component with `Σ_C b > 0`**. By `K15-C080` a
   closed component reduces the cut condition exactly to E's `(T')`. So the package has
   a prior obligation: **show that no saturated packing has a positive-deficit closed
   component**, or restrict the target to packings without one. This is E's
@@ -2496,7 +2526,7 @@ recorded in `K15-C089`'s step 0.
 *Status.* `PROVED` (exact icosahedral geometry; computed and checked numerically to
 `1e−9`). Reviewer X.
 
-### K15-C091 — Barlow cell volumes: six mixed stackings tested, all cells `√32` (`TESTED_FINITE`, proof open)
+### K15-C091 — Barlow cell volumes: six mixed stackings tested, all cells `√32` (`PROVED` — uniformity settled in `K15-C094`; the finite evidence is retained below)
 
 **Construction (validated).** Layer `k` at height `k·h`, `h = √(8/3)`, on the
 triangular lattice `⟨(2,0),(1,√3)⟩`, shifted by `s_k·(a₁+a₂)/3`; a stacking is the
@@ -2584,3 +2614,343 @@ signed `b`, antisymmetric `φ`, uniform capacity):
   exact transfer `φ(a,l_i) = 1/3` and the tight singleton cut as dual witness; the
   variant `b(a) = 4` is infeasible at `Φ = 1` with the violating cut `{a}`; and a
   two-hop path `(+1,0,0,−1)` has `t* = 1` with a unique flow and three tight prefix cuts.
+
+> **REPAIRED (`D18`; review `K15-REVIEW-0353-M-EVIDENCE`).** Four defects were found by
+> the reviewer and are all confirmed against the text. `Main/CUT_FLOW_THEOREM.md` is
+> rewritten; the first version's statements are retained there in §6 as rejected evidence.
+>
+> 1. **Cut orientation reversed.** The first version said the infinite arcs to the sink make
+>    `X ⊇ N(U)∖F` optimal for `X = S∖F`. Wrong: an outside vertex on the **source** side
+>    puts its infinite arc `w→t` across the cut, so finite cuts have `X = ∅` — outside
+>    vertices are forced onto the **sink** side, and there is no minimisation. The
+>    conclusion `Σ_U b ≤ cap(U)` is unchanged. Also now written out: **two directed arcs
+>    `v→w` and `w→v`, each with the full capacity `Φ_{vw}`**, and the transfer is their net
+>    `ψ(v,w) = f(v→w) − f(w→v)`, so `|ψ| ≤ Φ_{vw}` and conversely every transfer arises
+>    this way.
+> 2. **Threshold formula divided by a zero boundary.** The first version's
+>    `t* = max_{U⊆F} Σ_U b/|δ⁺(U)|` is undefined when `δ⁺(U) = ∅`, and that case is an
+>    obstruction at *every* capacity. Corrected:
+>    `t* = +∞` if some `U ⊆ F` has `δ⁺(U) = ∅` and `Σ_U b > 0`, else
+>    `max(0, sup_{U: δ⁺(U)≠∅} Σ_U b/|δ⁺(U)|)`. The `max(0,·)` is needed because the minimal
+>    capacity must be non-negative. Consequently the first version's example
+>    `b = (4,−1,−1,−1)` is **infeasible at every `Φ`** (`Σ_F b = 1 > 0 = cap(F)`), not
+>    infeasible at a threshold `4/3`; the genuine threshold example is `b = (4,−4/3,−4/3,−4/3)`,
+>    where `t* = 4/3`.
+> 3. **Compactness assumed a uniform bound.** Tychonoff gives `∏_e [−Φ_e, Φ_e]` compact from
+>    the compactness of each factor, so `sup_e Φ_e < ∞` is **not** a hypothesis of Theorem 2
+>    and is removed. What *is* used: `Φ_e ≥ 0` (non-degenerate intervals), `Φ_e < ∞` per
+>    edge (compact factor), local finiteness (only for `div` to be a finite sum, hence
+>    continuous), and `F_n` finite with `⋃F_n = V`.
+> 4. **The density implication is one-directional.** `K15-C087` gives `(C) ⟹ Kepler`;
+>    there is no converse and no equivalence between `(C)` and the density statement.
+>
+> **Second, independent proof of (⟸)** added, by duality + coarea: the Farkas alternative
+> for `{Aφ ≥ b, |φ_e| ≤ Φ_e}` (box multipliers kept) is `Σ_F y_v b(v) > Σ_e Φ_e|y_v − y_w|`
+> for some `y ≥ 0`; the coarea identities `Σ_F y_v b = ∫_0^∞ Σ_{U_t} b` and
+> `Σ_e Φ_e|y_v−y_w| = ∫_0^∞ cap(U_t)` with `U_t = {v : y_v > t}` then produce a cut
+> violating `(C)`. This proof is the one that survives signed capacities, where the box
+> multipliers matter.
+>
+> *Status.* `PROVED` (both proofs written out). Reviewer X — the reviewer asked for an
+> independent audit of the repaired statement; the request is in `Main/AUDIT_REQUEST_X.md`
+> item 5.
+
+### K15-C094 — every Voronoi cell of a Barlow packing has volume `√32` (`PROVED`)
+
+`Main/BARLOW_CELLS.md`. Closes the uniformity left open in `K15-C091`.
+
+**Statement.** For every Barlow packing `P(s)` (the layered class of `K15-C091`: layers
+`Λ + s_k T` at height `kH`, `Λ` triangular with nearest neighbour 2, `T = (a₁+a₂)/3`,
+`H = √(8/3)`, consecutive offsets differing by `±1 mod 3`), **every** Voronoi cell has
+volume `4√2 = √32 = 5.656854249492…`, not merely the average.
+
+**Proof, in four steps** (all elementary; no interval arithmetic, no vertex lists).
+
+1. *Distances.* Exactly twelve centres at distance 2 (six in-layer, three in each
+   adjacent layer, the latter because `T` is the centroid of the equilateral triangle
+   `{0,a₁,a₂}`, so `|T| = 2/√3` and `|T|² + H² = 4`), and every other centre at distance
+   `≥ 2√2` (the next in-plane distance in an adjacent layer is `4/√3`, giving
+   `√(16/3 + 8/3)`).
+2. *Reduction to 12 contacts.* Every point of space is within `√2` of a centre: a
+   layer plane lies within `H/2` of any point, the triangular lattice has covering
+   radius `2/√3`, and `(2/√3)² + (H/2)² = 2`. So `Ω(v) ⊆ B(v,√2)`; and any non-contact
+   `c` satisfies `|c−v| ≥ 2√2`, so its half-space contains `B(v,√2) ⊇ Ω(v)` and is
+   redundant. **`Ω(v)` is the cell cut out by the twelve contacts alone.**
+3. *Two shapes.* The six in-layer contacts form a regular hexagon (no parameter). The
+   three upper contacts lie in the coset `δ₊T + Λ` and the three lower in `−δ₋T + Λ`,
+   with `δ₊, δ₋ ∈ {±1}` the layer steps; the two non-zero cosets of `Λ` in `(1/3)Λ` give
+   the azimuth classes `𝒜 = {30°,150°,270°}` and `ℬ = 𝒜+60°`. So the contact set is
+   determined by whether `δ₊ = δ₋` (*different* classes: the **fcc** configuration) or
+   `δ₊ = −δ₋` (*same* class: the **hcp** configuration); a `60°` rotation and the
+   reflection `z ↦ −z` reduce the four sign combinations to these two.
+4. *Both volumes are `√32`.* The average cell volume is `2√3·H = 4√2` in every Barlow
+   packing (one centre per area `2√3` per layer). `ABC…` is fcc-configured in every layer,
+   so its average is the fcc cell's volume; `ABA…` is hcp-configured in every layer, so
+   its average is the hcp cell's volume. Hence both are `4√2`, and every cell is one of
+   the two. ∎
+
+**The two cells are not congruent.** fcc gives the rhombic dodecahedron (12 rhombi,
+face-normal dot products in `{−1,−½,0,½}`); hcp gives the trapezorhombic dodecahedron
+(12 quadrilaterals, dot products including `−5/6` and `−1/3`). Both have 14 vertices and
+circumradius `√2`. So the result is a volume statement about a two-element family, not a
+shape statement about one polyhedron — which is why the earlier attempts to prove
+"every Barlow cell is a rhombic dodecahedron" were looking for something false.
+
+**Corollary (tightness at the extremal points, new).** `b ≡ 0` on every Barlow packing,
+so at such a packing `Σ_U b = 0 = Φ|δ⁺_R(U)|` with `Φ = 0`, `φ ≡ 0`: **every cut is
+tight** and `t*(Λ) = 0`. Consequently the cut condition cannot be proved by exhibiting a
+positive margin anywhere on the extremal family; the equality case of the `Φ = 0`
+condition is the two-shape family of step 3, i.e. a finite local classification. This is
+the transfer-route analogue of Hales' remark that pure subdivision fails at a tight point
+(§17.2), and it is a **cost**, not a gain: it removes the slack argument.
+
+**Numerics (`Computation/barlow_cells.py`).** For the nine named stackings, per layer:
+`#`centres at distance 2 `= 12`; next distance `2√2`; volume from the 12 contacts `=` volume
+from all centres within radius 5 `= 5.656854249492` (agreement to `1e−12`); circumradius
+`√2`; 12 quadrilateral faces, 14 vertices; and the largest non-contact half-space value
+`max_vertex n·x − 1 = 0` to `1e−16` — the far half-spaces are **tangent**, exactly the
+equality case of step 2. The fcc and hcp dot-product fingerprints differ, confirming
+step 3's "two shapes, not one". `ABACABA` and `ABABCBCA` are rejected as illegal
+(wrap step `0 ≢ ±1`), as in `K15-C091`. Random sweep (`--sweep 6`, periods 3–10):
+**48 stackings, 346 layer analyses, 0 violations**, exit 0; sampled covering radius
+`≤ 1.379` against the proved `√2`.
+
+**What is not claimed.** (i) Not the converse: `b ≡ 0` does *not* force a packing to be
+Barlow — that needs the classification of all densest packings, which is open. (ii) Not
+the classical characterisation "12 contacts ⟹ layered"; the theorem is stated for the
+layered class and nothing here depends on that characterisation. (iii) No bound in
+`RESULTS.md` moves; `K15-C087` is untouched.
+
+*Status.* `PROVED` (steps 1–4 above; the numerical checks test step 2's tangency and
+step 3's dichotomy, both of which could have been wrong). Reviewer X.
+
+### K15-C095 — the crack packing: infinite closed components, and a second equality case (`PROVED`)
+
+`Main/GAP_FIXTURE.md`, `Computation/gap_fixture.py`. Two fcc half-spaces, `ABC` stacking,
+cut at `z = 0`, the upper half translated up by `d` and sideways by `T`:
+
+```
+lower:  ( Λ + (k mod 3)T ) × {kH},          k ≤ 0
+upper:  ( Λ + ((1+k) mod 3)T ) × {d + kH},  k ≥ 0
+```
+
+**(1) It is a packing, and it is saturated, for `H ≤ d ≤ 2H`.** Across the crack the
+in-plane nearest distance is `2/√3`, so 2-separation needs `d² + 4/3 ≥ 4`, i.e.
+`d ≥ H = 1.632993`; saturation needs the mid-crack point within 2, i.e.
+`(d/2)² + 4/3 ≤ 4`, i.e. `d ≤ 2H = 3.265986`. Both bounds are attained at `d = H` and
+`d = 2H` respectively. Numerically: min separation `2.000000` and sampled covering radius
+`≤ 1.97` for `d ∈ {1.633,…,3.2}`.
+
+**(2) For `d > 2.09` the `2.09`-graph has two closed infinite components.** Minimum cross-
+crack distance: `2.1385` at `d = 1.8`, `2.6633` at `d = 2.4`, `3.4020` at `d = 3.2`. So
+`K15-C089`'s obstruction must be stated for **bounded** closed components only; infinite
+ones exist and are harmless (every finite `U ⊆ C` has out-edges into `C∖U`).
+
+**(3) The crack costs volume in the helpful direction.** At `d = 2.4` every crack-face cell
+has `vol Ω = 6.985349063`, i.e. `b = −1.328495`; every bulk cell has `vol Ω = √32`
+exactly. So a void produces `b < 0` and satisfies the cut condition for free: **only
+compression can force `Φ > 0`.** Crack energy `2 × 1.328495/(2√3) = 0.767` per unit area.
+
+**(4) It is an equality case of Kepler's bound and is not Barlow.** The crack is a single
+surface, so it costs `O(r²)` centres in a ball of radius `r`: the density is exactly
+`1/√32` in centre units, i.e. `δ = π/√18`. But the layer spacing across the crack is `d`,
+not `H`, so the packing is not a Barlow stacking (nor fcc, nor hcp). Hence **the equality
+case of Kepler's bound is strictly larger than the Barlow packings** — any planar fault is
+an equality case, and they are unclassified.
+
+**Consequences.** (i) `densest ⇏ b ≡ 0`, so `K15-C094`'s corollary is one-directional.
+(ii) `b ≤ 0` everywhere is **false** (`K15-C069`'s dodecahedral cell, `vol Ω = 5.5503 <
+√32` in a saturated packing), so the cut condition at `Φ = 0` is false and `Φ > 0` is
+necessary — an independent second route to `K15-C081r`'s conclusion, this time without
+using the value of `V_dod` at all. (iii) A sharp `d = 3` certificate cannot rest on
+uniqueness of the extremiser: complementary slackness would need `f` to vanish on the
+shell radii of every equality case.
+
+*Status.* `PROVED` (items 1–2 by the two displayed inequalities plus the `gap_fixture.py`
+check; 3 by the half-space computation; 4 by the `O(r²)` count). Reviewer X.
+
+### K15-C096 — the singleton closed component reduces to a stability problem for Hales–McLaughlin (`PROPOSED`, with a sharp threshold and a finite evidence base)
+
+**The reduction.** A bounded closed component `{v₀}` of the `2.09`-graph with `Σ_C b > 0`
+is exactly a centre `v₀` such that (i) every other centre is at distance `≥ 2.09` from
+`v₀`, and (ii) `vol Ω(v₀) < √32`. So define
+
+```
+V(ρ)  =  min { vol Ω(0) : C is 2-separated, every c ∈ C has |c| ≥ ρ } .
+```
+
+Then **`V(2.09) ≥ √32` excludes the singleton closed component outright**, and
+`V(2) = V_dod = 5.550291028515510` is exactly Hales–McLaughlin.
+
+**The sharp threshold.** The icosahedral twelve at radius `ρ` give the dodecahedron of
+inradius `ρ/2`, of volume `V_dod(ρ/2)³`. Setting this equal to `√32`:
+
+```
+ρ*  =  2·(√32 / V_dod)^{1/3}  =  2.012718662083…,
+```
+
+so `√32` is crossed only `0.64%` of the way from `2` to `2.09`. Verified numerically
+(`Computation/rho_probe.py`): at `ρ = 2.09` the icosahedral configuration has cell volume
+`6.333804106 = V_dod(1.045)³`, i.e. **`+11.97%` above `√32`**, and at `ρ = 2.0127` it is
+`5.656697`, below `√32` by `0.003%` as the formula requires. So the window is wide: the
+cheapest known isolated-vertex configuration clears `√32` by 12%.
+
+**The conjecture.**
+
+```
+V(ρ)  =  V_dod·(ρ/2)³    for  2 ≤ ρ ≤ ρ_c ,      (S)
+```
+
+i.e. the extremal configuration at radius `ρ` is the icosahedral one pushed out to `ρ`.
+`(S)` is exactly the *stability version of Hales–McLaughlin* that `Main/CLOSED_COMPONENT.md`
+A2 asked for, in explicit and testable form, and it is stronger than needed: `(S)` at
+`ρ = 2.09` gives `6.3338 ≥ √32`.
+
+**Evidence for `(S)`.** (i) `V(ρ) ≥ V_dod` for every `ρ ≥ 2` is Hales–McLaughlin itself;
+`(S)` is the quantitative improvement bought by pushing the neighbours out.
+(ii) Among 12-point configurations at radius `ρ` the icosahedron minimises the cell
+(Fejes Tóth's 12-point spherical-code optimality), so `(S)` holds with exactly 12
+admissible points. (iii) The open case is *more* than 12 points, which is possible here
+because the points may sit at different radii `≥ ρ`. A probe over the 20 icosahedral
+"holes" (the dodecahedral directions) for a 13th point at every radius in `[ρ, 4]`, at
+`ρ = 2.0127, 2.09, 2.2`, finds **no admissible extra point that cuts the cell at all**
+(the nearest hole direction needs radius `≳ 3.2` to be 2-separated from the twelve, and
+its bisector at `1.6` then lies outside the cell's circumradius `1.478`). So a 13th point
+cannot help in the natural position; a full search over 13+ points is not done.
+
+**What would settle it.** A proof of `(S)` on `[2, 2.09]` — or of any bound
+`V(ρ) ≥ V_dod·(1 + c(ρ−2))` with `c ≥ (√32/V_dod − 1)/0.09 = 0.2133` — closes the
+singleton case. This is the sharpest formulation the project has of D17's step 0 for
+`|C| = 1`; `|C| ≥ 2` is untouched (a member of `C` has neighbours *inside* `C` at
+distance 2, so `(S)` does not apply to it).
+
+*Status.* `PROPOSED` (`(S)` is open); the reduction, the threshold `ρ*` and the numbers
+are `PROVED`/`TESTED_FINITE` respectively. Reviewer X.
+
+### K15-C097 — integration at review 0353: the decoupling lemma, E's trend correction, X-C017 (`IMPORTED`)
+
+Three worker revisions read this block, by hashes. None is merged; integration is by
+reference.
+
+**1. C, `4bcbd3a0ee94bd29d2f1fdcc5e69aaf1f0ed0a62` — `C-DECOUPLE-001` (`PROVED`,
+elementary).** For the icosahedral fixture the periodic graph is a **disjoint union of
+identical copies**: registered centres lie within `2` of their copy's origin, so distinct
+copies are at distance `≥ 16 − 4 = 12`, while `R ≤ 3 ≪ 12`. A finite `U` therefore splits
+into pieces in separate copies with **no edges between them**, so `Σ_U b/|δ⁺(U)|` is a
+weighted average of the pieces' ratios and its maximum is attained **inside one copy**.
+Consequently `t* = 0.008880268414417` is the exact threshold for the **infinite** packing,
+not a finite-patch proxy. **Caveat C records and Main endorses:** a *dense* packing has
+period comparable to `R`, so decoupling is a property of sparse fixtures only.
+
+*Main's audit.* The argument is correct as stated for the fixture. Two limits Main adds:
+(i) the fixture is **unsaturated** (X's flag), so this is a statement about an unsaturated
+periodic packing; (ii) it therefore does **not** by itself give a floor for saturated
+packings. That floor is already independently valid: `K15-C081r` uses the icosahedral
+13-cluster extended to a saturated packing by Zorn (`X-C003(iii)`), adding centres can only
+*shrink* `Ω(v₀)` (hence only increase `b(v₀)`), and `deg(v₀) = 12` exactly by `K15-C054`,
+so `Φ ≥ b(v₀)/12 ≥ 0.1065632/12 = 0.00888027…`. The two routes give the same number, and
+the saturated one is the one the ledger relies on.
+
+**2. E, `82689ba1999a1ca240e480f9bc90121101f9e801` — the trend claim corrected.** The
+30-centre search gives `6.494845` and `6.968035`, **worse** than the 18-centre `6.263608`,
+so the sequence is not monotone and the earlier framing ("every improvement found a smaller
+cell", "margin halving at each step") overstates the trend; the likely cause is method
+limitation (twice the degrees of freedom for the same iteration budget). Revised verdict:
+**(P′) has survived every legal test, best `6.263608` against a required `5.763417`; the
+evidence is one-sided, so not support.** E explicitly records what not to do: report
+`6.264` as evidence *for* (P′), or the trajectory as evidence *against*. **Main records
+(P′) as `PROPOSED`, unproved; numerical upper volumes cannot validate it** (an upper bound
+on a computed volume is not a lower bound on the true infimum, and no interval arithmetic
+was used).
+
+**3. X, `118ecd1601bb500f7d305ce299dcb00f73a66772` — `K15-X-C017` (`VERIFIED` by X's own
+exact arithmetic; Main has not re-run it).** Both sides explicit: rational symmetric `6×6`
+`G, A, B`, `m = 5`, `S = 8`, `eps_G = 1e−2`, `eps_AB = 1e−6`; all PSD verified exactly by
+rational LDL; `Q(A,B)` equals the Fourier image of `P` exactly; `P(0)/Q(0) = 1.039899410072`
+giving `Δ ≤ 0.782267220134` for every packing of unit balls; `Q ≥ 0` cross-checked by exact
+Sturm. X also corrects its own earlier wrong assumption (it had treated `G` as necessarily
+singular "because `P(4)=0`"; false, since `P = −(s−4)H` gives `P(4)=0` for any `H`).
+
+*Assessment.* `0.782267220134` is **worse** than the project's best (`0.779966216777`), so
+it is not an improvement and does not change `RESULTS.md`. Its value is **methodological
+and it is significant**: *no sign predicate, no root isolation and no Sturm is needed
+anywhere — every sign condition is a rational PSD test.* The ladder is C `SOSQSIDE-005`
+`1.413704545` → X-C015 `0.813631102` → X-C016 `0.783097911` → X-C017 `0.782267220`; X-C014
+`0.780718153` has the p-side only and C's K33 `0.779966500` has neither side. Given that
+`Computation/shell_check.py` has been unsound three times (`C049`, `C058`, `C068`) **this
+is the trust profile the project should prefer**: a both-sides certificate whose every sign
+condition is a rational LDL test is outside the failure mode entirely. Recorded as the
+first candidate for the acceptance pipeline of `K15-C099`.
+
+*Status.* `IMPORTED`; per-claim statuses as above. Reviewer X.
+
+### K15-C098 — the shell allowance's `η ≥ 0` precondition, and what it is not (`PROVED`, narrow)
+
+X flags that `Computation/shell_check.py` did not check `η ≥ 0`. Confirmed: `check(a, rho,
+eta, …)` accepted any rational `eta` and the reported bound is
+`R = (p(0) + count·η)/q(0)` with the displayed verdict `f ≤ η` on the shell `[2, ρ]`.
+
+**What was wrong.** The count-price bound (`K15-C003r`) is
+`δ ≤ (4π/3)(f(0) + n·M)/f̂(0)` where `f ≤ M` on a set `A` of contact number `≤ n` and `f ≤ 0`
+off `A` outside radius 2. With `M = η`, the formula is the intended one **only for `η ≥ 0`**;
+for `η < 0` the *correct* statement replaces `η` by `max(η,0) = 0` (the plain two-point
+bound), because `f ≤ 0` off `A` already supplies the stronger hypothesis. So an `η < 0` call
+returned a *smaller* number than the argument licenses for the parameter the user believes
+they passed. That is a precondition defect, not a sign-predicate defect.
+
+**Fix.** `check` now rejects `η < 0` explicitly, with the message that the plain bound is
+`η = 0`; and `checker_adversarial.py` gains the case. **This is a precondition validation
+and it is not a soundness argument.** Generic checker soundness remains **SUSPENDED**: the
+three historical repairs were all in the sign-decision path, and no written argument that
+the accepted set is contained in `{p ≤ 0 on the region}` exists yet (`PN-4`).
+
+*Status.* `PROVED` (the `η < 0` claim, two lines). Reviewer X.
+
+### K15-C099 — acceptance-pipeline proposal: prefer certificates with no sign predicate (`PROPOSED`)
+
+Motivated by `K15-C098` and X-C017. The project's weakest link is not the mathematics but
+`shell_check.py`, unsound three times, each caught by outside reproduction. X-C017's
+certificate needs **no** sign decision: `Q ≥ 0`, `A ⪰ 0`, `B ⪰ 0` are three rational LDL
+tests, and `Q(A,B) = Fourier image of P` is an exact polynomial identity. Such a certificate
+has no `≤ 0 on an interval` step at all, so it is not exposed to the failure mode.
+
+**Proposal.** Make "both sides, all sign conditions rational PSD" the *acceptance* criterion
+for certificates, and treat any certificate that needs `shell_check` as `PENDING` until the
+soundness argument of `PN-4` exists. This costs nothing numerically (`K15-C017` is `0.7823`
+against `0.7800` for the best p-side-only object, and the current best `0.779966216777` is
+not an improvement over published values anyway) and it removes the project's
+most-repeated failure. **Reverse if** `PN-4`'s argument is written and X accepts it.
+
+*Status.* `PROPOSED` (a process decision, not a theorem). Needs the person's sign-off
+because it changes what "accepted" means.
+
+### K15-C100 — proof-complexity scorecard after the repairs (`PROVED` assessment; no new bound)
+
+`Main/COMPLEXITY.md` continues `K15-C071` with the numbers now settled. Two figures carry
+the analysis:
+
+- the **lattice-restricted** three-point bound is `0.741506` against the truth
+  `0.740480489693` — a gap of `+0.00103`, i.e. **`0.14%`**;
+- the **general** three-point bound is `0.770271`, a gap of `+0.02979`, i.e. `4.0%`.
+
+So the lattice restriction is worth `0.029` of density — more than this project has moved by
+any means — and every non-computational object within `0.14%` of the truth is
+three-point-and-lattice. Since the plain two-point LP is *proved* not sharp in `d = 3`
+(R. Li, Adv. Math. 460 (2024), Thm 6.1), no refinement of the two-point certificate
+reaches the truth, and `K15-C095` now exhibits the mechanism concretely: **any planar fault
+is an equality case**, so a sharp certificate would need `f` to vanish on the shell radii of
+a continuum of extremal packings.
+
+**Consequences recorded for the project's stated goal ("a simpler proof").**
+1. The analytic route cannot be a shortcut below level 3; the next class (three-point) does
+   not close the gap either at `0.770271`.
+2. The transfer route is **at least as strong as** the theorem (`K15-C087`) and has no slack
+   at the extremal family (`K15-C094`); it is a reorganisation, not a simplification.
+3. The one well-posed improvement target with this project's tools is a **pointwise** cell
+   inequality strictly better than Hales–McLaughlin's `0.754697399337`, and the concrete
+   instance is `K15-C096`'s `(S)`: `V(ρ) = V_dod(ρ/2)³`, whose consequence
+   `V(2.09) ≥ √32` would settle the singleton closed-component case with a `12%` margin.
+
+*Status.* `PROVED` as an assessment (each arrow and each number is a claim id above). The
+quoted `0.741506` / `0.770271` are CDS22 material used only for order of magnitude, and
+`RESULTS.md` does not move. Reviewer X.
