@@ -149,6 +149,42 @@ cell complex — i.e. a discrete isoperimetric estimate, which is standard in fo
 * the large-`U` statement is recorded as an **open obligation** with the exact missing lemma
   named (uniform perimeter growth).
 
+### The correct version of the claim, proved through the transfer side
+
+The withdrawn claim had a true conclusion reached by an invalid route. Here is the same conclusion
+proved properly, and it is **stronger and sharper** than what I had asserted.
+
+> **Theorem (`K15-C-TRANSFER-DENSITY-001`).** Let `Λ` be a periodic packing with `N` centres per
+> fundamental domain of volume `V`, centre density `ρ = N/V`. If a transfer exists — an
+> antisymmetric `φ` on the range-`R` graph with `|φ| ≤ Φ` and `Σ_w φ(v,w) ≥ b(v)` at every centre
+> — then `ρ ≤ 1/√32`.
+
+*Proof.* The packing and its cell complex are periodic, so summing the inequality over the `N`
+centres of one fundamental domain gives `Σ_v Σ_w φ(v,w) ≥ Σ_v b(v) = N√32 − V`. The left side is
+a sum over ordered pairs, and antisymmetry `φ(w,v) = −φ(v,w)` makes each unordered pair contribute
+zero — including pairs in different copies of the domain, which periodicity identifies
+consistently. So the left side is exactly `0`, whence `N√32 ≤ V`, i.e. `ρ ≤ 1/√32`. ∎
+
+**Consequence, which is the thing Main needs.** For any packing with `ρ > 1/√32` — precisely the
+packings a proof of Kepler must rule out — **no transfer exists at any capacity `Φ`**. So the
+transfer/Hoffman route of `C035`/`C044` cannot *establish* the density bound where it is not
+already true: it applies only where the conclusion holds. The route is **circular as a proof of the
+density bound**, and its genuine content is confined to `C035`'s negligibility bookkeeping, which
+is real but is not the geometry.
+
+**Sharpness and consistency, checked numerically** (`transfer_necessity.py`):
+
+| fixture | `Σ_v b` | `ρ` | transfer possible? |
+| --- | --- | --- | --- |
+| FCC (one cell) | **0** exactly | `0.1767767` `= 1/√32` | equality — the theorem is sharp |
+| HCP (one cell) | **0** exactly | `0.1767767` | equality — sharp |
+| periodised 13-cluster | `−4022.46` | `0.0031738` | yes, consistent with `cut_flow.py` finding a flow |
+
+**What this does *not* say.** It does not say the cut *inequalities* are false or vacuous, nor that
+individual finite cuts are uninformative — a violating cut remains a genuine obstruction (§1). It
+says that *existence of a transfer* is strictly stronger than the density bound, so the flow
+formulation cannot be the engine of the proof.
+
 ### Partial progress on the missing lemma (`cut_isoperimetry.py`)
 
 The lemma needs `I(k)/k → 0`, where `I(k) = min{|δ⁺(U)| : |U| = k}`. On the one complex where the

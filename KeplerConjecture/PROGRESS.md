@@ -674,3 +674,20 @@ a finite test set. Both facts are now represented explicitly.
 
 `tests_cut_flow.py` cases S1a, S1b, S2, S3, S4, S5, S6 all pass; the suite checks the
 implementation against analytic thresholds rather than against itself.
+
+### K15-COMP-039 — 2026-11-14 — Computation (role C), the transfer route presupposes the bound
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-TRANSFER-DENSITY-001** | **PROVED (elementary)** | if a periodic packing admits a transfer (antisymmetric `φ`, `|φ| ≤ Φ`, `Σ_w φ(v,w) ≥ b(v)`), then `ρ ≤ 1/√32`. **Proof:** summing `Σ_w φ(v,w) ≥ b(v)` over one fundamental domain, antisymmetry makes the left side exactly `0`, so `N√32 ≤ V`. | `transfer_necessity.py`, `out/transfer_necessity.json` |
+| **K15-C-TRANSFER-CIRC-001** | **PROVED (consequence)** | hence for any packing with `ρ > 1/√32` — exactly the packings a Kepler proof must rule out — **no transfer exists at any `Φ`**. The transfer/Hoffman route of `C035`/`C044` cannot *establish* the density bound where it is not already true: it is **circular** as a proof of the bound, and its genuine content is `C035`'s negligibility bookkeeping | same |
+| K15-C-TRANSFER-SHARP-001 | measured | sharpness: FCC and HCP have `Σ_v b = 0` exactly, so the theorem is attained there; the periodised 13-cluster has `Σ_v b = −4022.46` and `ρ = 0.003174`, so a transfer *can* exist for it — consistent with `cut_flow.py` finding a flow | same |
+
+**This is the correct replacement for the withdrawn `K15-C-CUTEQUIV-001`**: the conclusion (the
+route presumes the density bound) is true, but the earlier *route* to it — the full-period blob —
+was invalid, because C044 quantifies over finite `U`. The transfer-side argument proves the
+conclusion rigorously and sharpens it: the requirement is per-packing and exact (`ρ ≤ 1/√32`),
+not merely asymptotic.
+
+**Scope guard:** this does *not* say finite cuts are uninformative; a violating cut remains a
+genuine obstruction. It says existence of a transfer is strictly stronger than the density bound.
