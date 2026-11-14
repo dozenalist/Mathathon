@@ -134,17 +134,21 @@ adversarial coverage.
 | `K15-E099` conditional twelve-face theorem | **conditional**, premise open, not refuted (§3) |
 | continuum certificates / universal pair claims | **pending**, as instructed |
 
-An honest remark on `E094'`: the region runs used the mesh-based radius, so they must be
-recomputed before being quoted again. The exact inradius **improves** the constants rather than
-weakening them, because the mesh under-estimated `c`:
+**`E094'` re-certified with the exact radius.** The exact inradius *improves* the constants
+rather than weakening them, because the mesh under-estimated `c`:
 
 ```
 C5 normals:  mesh gave c >= 0.730508 ;  exact inradius c = 0.768212  (20 supporting planes)
              mesh gave R = 1.467     ;  exact R = 1.37              -> tighter slack
+
+region theta in [110,110.25] x phi in [35,35.25], 3 x 3 exact boxes
+   mesh radius   [5.867852, 5.933758]   margin +0.104434
+   exact radius  [5.869101, 5.932503]   margin +0.105684     <- tighter, as predicted
 ```
 
-and the C5 point enclosure is unchanged at `5.898017371804` with width `1.2e-18`. So the region
-numbers will shrink slightly towards the truth; they are still pending until recomputed.
+`evidence/region_110_110p25_exactradius.json`. The `1°` region is re-running with the exact
+radius; its result is reported in the final message. Neither is a universal claim: both are
+continuum statements **within the C5 family**.
 
 ---
 
