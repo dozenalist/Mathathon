@@ -125,5 +125,5 @@ ck("D7 C's t_star is not the theorem's t* when the sup is negative",
    r['t_star'] < 0, "harmless for 'Phi >= t*' because Phi >= 0 is a hypothesis, but not quotable")
 
 print("\nRESULT: %d/%d checks reproduce" % (nchecked[0]-len(fails), nchecked[0]))
-print("        " + ("ALL DEFECTS REPRODUCE (4 live + 1 latent)" if not fails else "FAILED: %s" % fails))
+print("        " + ("ALL CHECKS REPRODUCE (4 live + 1 latent + 1 cosmetic + a 12/12 sweep)" if not fails else "FAILED: %s" % fails))
 sys.exit(0 if not fails else 1)

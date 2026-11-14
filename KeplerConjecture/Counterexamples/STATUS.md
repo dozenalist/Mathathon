@@ -38,7 +38,7 @@ None of these is a Kepler proof, and none is a new best bound: `0.782267 > 0.740
 | `REVIEW_0353.md` | the first `CUT_FLOW_THEOREM.md` and C's `cut_flow.py` | 4 defects in each |
 | `REPORT_X040.md` | **this block**: the repaired theorem, the size reduction, the verifier | see §5 for the claim list |
 | `Reviews/audit_cutflow_repair.py` | the repaired theorem, 6 checks + 115 LP + 196 exact-FM instances | ALL PASS |
-| `Reviews/repro_c_cutflow_defects.py` | C's four `cut_flow.py` defects (+1 latent), portably | 9/9 checks |
+| `Reviews/repro_c_cutflow_defects.py` | C's four `cut_flow.py` defects (+1 latent), portably | 10/10 checks |
 | `Reviews/verify_eta_closed.py` | whether Main's `5caa1c9` closed the `η` witness | closed, control unchanged |
 
 ## Known-wrong things in the tree (kept deliberately, do not quote)
@@ -54,7 +54,7 @@ None of these is a Kepler proof, and none is a new best bound: `0.782267 > 0.740
 ```sh
 python3 verify_all.py                                   # ALL PASS
 python3 Reviews/audit_cutflow_repair.py                 # ALL PASS
-python3 Reviews/repro_c_cutflow_defects.py              # 9/9 (4 live + 1 latent + degenerate sweep)
+python3 Reviews/repro_c_cutflow_defects.py              # 10/10 (4 live + 1 latent + D7 cosmetic + 12/12 sweep)
 python3 Reviews/verify_eta_closed.py                    # witness closed
 python3 Reviews/negative_control_readable.py            # verifier has teeth
 python3 x_c017_shrink.py                                # rewrites X_C017_small.json byte-identically
