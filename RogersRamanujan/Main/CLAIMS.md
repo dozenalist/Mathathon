@@ -1,5 +1,29 @@
 # RR127 claim ledger
 
+## Supervisor correction, November 13, 2026, 23:06 PST
+
+This review supersedes incompatible statuses and witness descriptions below.
+The pinned Lean 4.35.0 named target builds successfully with `ShiftT.lean` from
+`2d75d274dd8ea4f781fec256a522a0d9b7993e3c` (unchanged at `980e4cd`). The two
+subtype inverse laws and weight theorem have only permitted printed axioms.
+RR-C006 is verified for the stated list/subtype map D to B, not for A to D.
+
+RR-C021 is **TESTED_FINITE** until its claimed all-input proof is committed and
+independently reviewed. The paragraph below supplies 10,285 finite checks, not
+a proof for all inputs. RR-C020 needs statement repair: closed forms for one
+or two local steps do not give the full endpoint on the whole family. In
+particular, its unqualified assertion that every r=1 endpoint takes two steps
+contradicts the worker's explicit exceptional residue classes.
+
+RR-C025's supervisor reproduction at `980e4cd` for `(4^3,1^62)` gives B endpoint
+`(25,17,8,8,8,8)`, D image `(30,20,9,7,5,3)`, and **1,910 involution edges**
+(1,911 states including the input). The inverse recovers the input. Main's
+claimed five steps and rejection of the B endpoint for lacking gaps confuse
+B and D. The worker's B endpoint was correct; its step convention needs
+clarifying. Keep the refutation but correct this explanation throughout.
+
+Further review and next tasks: `SUPERVISOR_REVIEW_26480.md`.
+
 Every row: exact statement and hypotheses, owner, reviewer, source, status,
 evidence, unresolved obligations. Status vocabulary is the roadmap's:
 PROPOSED | TESTED_FINITE | PROVED | LEAN_VERIFIED | REFUTED | BLOCKED.
@@ -28,7 +52,7 @@ never used to promote anything above TESTED_FINITE.
 | RR-C018 | **Lemma CI**: `phi` Case I maps into Case II; `a' = a-1`; `mu' >= mu` | PROVED (weight, `a'=a-1`) + TESTED_FINITE (`weight<=26`) |
 | RR-C019 | BZ82's printed `mu_bar > mu` is **false**; the correct statement is `>=`, equality iff `lam(a)=lam(a+1)` | **REFUTED** (5 844 of 10 285 Case-I states, first `(-1;())`) |
 | RR-C020 | **Theorem 1/2/3**: `phi` and `psi∘phi` closed forms on the **whole** family `(4^r,1^s)`, plus Lemma 2 (excluded set) | **PROVED** |
-| RR-C021 | **R2 slot identities**: at the Case-II image, `lam'(a') = m` and `lam'(mu') = p2` | PROVED (Main-verified, all `n<=26`) |
+| RR-C021 | **R2 slot identities**: at the Case-II image, `lam'(a') = m` and `lam'(mu') = p2` | TESTED_FINITE (`n<=26`); all-input proof pending |
 | RR-C022 | `phi` obligations: `N >= 0`, both deletions valid, `a != mu` in Case I, `p2 >= 0` (**sharp**: attained), weight identity | **PROVED** (all `n`) |
 | RR-C026 | Dead code retired: `phi` Case I never deletes one slot twice | **PROVED** (2 routes) + 0 hits in 1 746 369 states |
 | RR-C023 | `(4^r,1^s)` cost: 21 of 80 parameters exceed a 20 000-step cap (finite chains to 18 702) | TESTED_FINITE |
@@ -397,7 +421,7 @@ looks forced but is not, with the damage showing up only in weight or an
 involution law. `Computation/bz82.py` collects both slots before removing them,
 which is why it was never affected.
 
-### RR-C021 — the slot identities R2, and why they matter. Status: PROVED (verified by Main).
+### RR-C021 — the slot identities R2, and why they matter. Status: TESTED_FINITE.
 Cycle-3 worker m4 isolated, and Main verified independently, the identity that makes
 `phi^2 = id` plausible as a *mechanism* rather than a coincidence.
 
@@ -418,7 +442,7 @@ gives `a' = a+1`, both 10 285/10 285) this is the whole mechanism:
 
 So the missing step in proving `phi^2 = id` is no longer a search — it is the pair
 of identities above plus the inequalities R1 that make the branch selection match.
-**Status: R2 verified; the composition itself is not yet proved.**
+**Status: R2 verified on the finite range; its all-input proof and the composition remain unproved in this artifact.**
 
 ### RR-C022 — `phi`'s definedness obligations. Status: PROVED for all `n`.
 From cycle-3 worker m4, with Main's checks:

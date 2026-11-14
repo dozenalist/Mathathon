@@ -47,15 +47,17 @@ def states(n):
         j+=1
         if j>0 and bz82.f(j)>n: break
     return out
-phi_ok=psi_ok=n=0
+phi_ok=psi_ok=n=n_psi=0
 for w in range(0,19):
     for st in states(w):
         if bz82.phi_domain(st,w):
             n+=1; phi_ok += (bz82.phi(bz82.phi(st))==st)
         if bz82.psi_domain(st,w):
+            n_psi += 1
             psi_ok += (bz82.psi(bz82.psi(st))==st)
 check("phi^2 = id on domain, weight<=18", phi_ok==n, "(%d states)"%n)
-check("psi^2 = id on domain, weight<=18", psi_ok>0)
+check("psi^2 = id on domain, weight<=18", n_psi>0 and psi_ok==n_psi,
+      "(%d/%d states)" % (psi_ok,n_psi))
 
 # 3. the map is a bijection A_n -> D_n, weight <= 18
 bij=True; tot=0

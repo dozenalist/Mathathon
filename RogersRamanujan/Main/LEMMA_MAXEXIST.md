@@ -47,10 +47,13 @@ Let `S_Z = { z in Z : z <= k-1, z + lam(k-z) <= R }`, i.e. the printed rule read
 literally with **no lower bound on z** (BZ82 p.314 prints `z <= a+2j-2 = k-1`
 and nothing more). Then:
 
-1. **`S_Z` has a maximum on every state.** `z |-> z + lam(k-z)` is strictly
-   increasing on all of `Z` (the same argument as MX.1, with `lam(x) = 0` for
-   `x <= 0`), and it tends to `+infinity` as `z -> +infinity`, so the admissible
-   values of `z` form a downward-closed set bounded above.
+1. **`S_Z` has a maximum on every state.** On the restricted half-line
+   `z <= k-1`, all indices `k-z` are positive, and the argument of MX.1 proves
+   strict increase. For sufficiently negative `z`, `k-z > t`, so
+   `z + lam(k-z) = z <= R`. Thus `S_Z` is nonempty and bounded above by `k-1`;
+   a nonempty subset of the integers bounded above has a maximum. This does
+   not assert monotonicity on all of `Z`: crossing `z=k` can decrease the
+   expression because `lam(0)=0`. Supervisor correction, November 13, 2026 PST.
 2. **On `phi`'s domain**, the maximum of `S_Z` equals the maximum of `S`, and the
    two created parts `m` and `t+5j-3-m` are both `>= 0`.
 3. **Off `phi`'s domain** — that is, on `{0} x B(n)` — the maximum of `S_Z` is
