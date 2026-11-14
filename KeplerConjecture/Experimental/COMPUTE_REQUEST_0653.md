@@ -7,7 +7,7 @@ Filed by role E, `K15-REVIEW-0653-E`. All heavy scans go through Astra from now 
 ```
 repo      https://github.com/dozenalist/Mathathon
 branch    kepler15/experimental/run-01
-commit    d03eb8ae90b7d6a8455d0dbf07582bafd3f77299
+commit    549660ab99e8d1879f3cba526d5aa0c5f1a0ecb4
 code      KeplerConjecture/Experimental/scripts/premise_audit.py
           KeplerConjecture/Experimental/scripts/cell_certificate.py
           KeplerConjecture/Experimental/scripts/rational_interval.py
