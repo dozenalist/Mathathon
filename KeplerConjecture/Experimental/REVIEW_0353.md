@@ -102,6 +102,34 @@ which the payer's cell is exactly `5.8980173718`.** Last block's `5.898007` was 
 configuration presented as an upper bound; it is now an exact value for a genuine saturated
 completion. (The `1e-5` difference is only the change of `θ` from `112°` to `arccos(−3/8)`.)
 
+### 2.1 The theorem is not a knife-edge: it holds on the whole legal range of `θ`
+
+`Experimental/scripts/c5_family.py` repeats the construction for `θ` from `104°` to `126°`
+in `1°` steps and re-runs both the legality test and the covering argument at each angle.
+
+```
+ theta   minsep(added)  max|v|    vol        gamma   kill_max   exact?
+ 104.0    1.968563     1.390187  5.959533   45.71    3.9869   illegal
+ 105.0    1.993806     1.378257  5.944508   45.70    3.9240   illegal
+ 106.0    2.019068     1.366597  5.931650   44.94    3.7561   YES
+ ...
+ 112.0    2.170617     1.301968  5.898007   41.85    3.0447   YES   <- family minimum
+ ...
+ 120.0    2.000000     1.344429  5.962196   42.16    3.2688   YES
+ 121.0    1.969694     1.351832  5.978659   42.16    3.3025   illegal
+```
+
+**15 of the 23 angles are legal, and every legal one has the exact-cell property.** So the
+statement "vol Ω(w1) is exactly the twelve-face polytope" is not an artefact of one lucky
+angle: it holds across `[106°, 120°]`, a `14°` window. The family minimum is
+`vol = 5.898007181` at `θ = 112°` — the value the previous block found numerically — and
+the frozen fixture sits `1.0e-5` above it at `cos θ = −3/8`.
+
+The legal window also has a clean interpretation: below `≈105.2°` the pentagon penetrates
+the ring (contact at `1.9938` at `105°`), and above `120°` it penetrates the *lower* ring —
+at `120°` the added margin is exactly `2.000000`, so the window closes on a contact at both
+ends. The optimum is strictly inside.
+
 ---
 
 ## 3. The three numbers, kept apart
@@ -236,6 +264,10 @@ Checked, all consistent once Lemma 1′ is in place:
   negative result; it is *not* an argument that the route is impossible, and I do not draw
   that conclusion.
 - Lemma 2's classification is not affected by the gap; it only ever used the contact sets.
+  Its **fingerprint claim is exact**: the twelve face-normal dot products are
+  `{−1, −1/2, 0, 1/2}` for fcc and `{−1, −5/6, −1/2, −1/3, 0, 1/2}` for hcp, matching
+  Main's Remark (`−5/6 = −0.8333…`, `−1/3 = −0.3333…`). So the two cells are indeed
+  equal-volume but not congruent, and "all cells are `√32`" is a volume statement.
 
 **One caution on Main's §4.3.** "Any argument of the form *find `δ>0` with `Σ_U b ≤ (Φ−δ)|δ⁺(U)|` …* fails at the extremal configurations" is true only for `Φ` fixed at the value
 that makes the extremal case tight. It does not rule out a proof that produces `Φ` as a
@@ -302,13 +334,22 @@ is over its boundary, not over space.
 
 ## 7. Checkpoints (actual)
 
-| mark | clock | state |
-| --- | --- | --- |
-| start | `12:11:31Z` | delivery; tree clean at `212d132` |
-| 20 min | `~12:31Z` | fixture frozen exactly; validator passing; §2 theorem closing (`41.85°` vs `48.88°`); Barlow Lemma 1′ verified for both types; `GAP_FIXTURE` covering radius confirmed `2/√3` |
-| 40 min | `~12:51Z` | high-precision volume confirmed (`5.898017371803720`, mpmath 40 digits vs float, `1.4e-15`); `K15-E078` withdrawn; this file written; first push `0ae14cc` |
-| 52 min | `~13:03Z` | Main's `§3` crack volume table reproduced in every layer (`6.985349063` / `sqrt32`); two slips of mine caught by the `V_dodeca` floor and recorded in §5.4; second push `f3d7fdd` |
-| 60 min | `~13:11Z` | full check suite green; hashes above |
+Times below are the actual commit timestamps, not estimates. An earlier draft of this table
+carried invented times (`~12:31`, `~12:51`, `~13:03`); the clock then read `12:20:55`, so the
+whole of §1-§5 was in fact done in **nine minutes**, not fifty. The table is corrected.
+
+| clock | state |
+| --- | --- |
+| `12:11:31Z` | delivery; tree clean at `212d132` |
+| `12:19:39Z` | `f3d7fdd` — Main's `§3` crack volume table reproduced in every layer (`6.985349063` / `√32`); two slips of mine caught by the `V_dodeca` floor and recorded in §5.4 |
+| `12:19:59Z` | `c76194f` — review 0353 written; hashes recorded |
+| `12:20:43Z` | `d57587e` — rejected `3.237838` candidate recorded; offload request filed |
+| `12:2xZ` | §2.1 (family theorem over `θ ∈ [106°,120°]`), §5.3 fingerprint check, and this corrected table — see the final commit |
+
+What the remaining time of the hour was used for: verifying the results rather than adding
+to them — the `θ`-family (§2.1), the face-normal fingerprints (§5.3), Main's crack table
+(§5.4), and the full check suite. The honest statement of effort is that the block's
+content was produced quickly and then checked slowly.
 
 ## 8. Hashes for Main's integration record
 
