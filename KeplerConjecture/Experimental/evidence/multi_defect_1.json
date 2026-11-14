@@ -1,0 +1,55 @@
+{
+ "fixture": "icosa_grid_1x1x1",
+ "n": 23,
+ "minsep": 2.0,
+ "buffer_limited_cells": 0,
+ "n_defective": 1,
+ "defective_vols": [
+  5.550291028515512
+ ],
+ "defective_touched": 0,
+ "r2": {
+  "R2_one_shell": {
+   "components": 1,
+   "threshold": 4.18,
+   "blocks": [
+    {
+     "component_size": 1,
+     "block_size": 13,
+     "sum_vol": 1078.499793620546,
+     "need": 73.53910524340095,
+     "T_holds": true,
+     "deficit_D": 0.10656322097686832,
+     "surplus_S": 1005.0672515981221,
+     "S_minus_D": 1004.9606883771452,
+     "block_has_buffer_cell": false,
+     "diam_block": 4.0,
+     "surplus_minus_deficit_direct": 1004.960688377145
+    }
+   ],
+   "max_pairwise_overlap": 0,
+   "disjoint": true
+  },
+  "R2pp_two_shell": {
+   "components": 1,
+   "threshold": 8.36,
+   "blocks": [
+    {
+     "component_size": 1,
+     "block_size": 23,
+     "sum_vol": 12475.268025169109,
+     "need": 130.10764773832474,
+     "T_holds": true,
+     "deficit_D": 0.10656322097686832,
+     "surplus_S": 12345.266940651763,
+     "S_minus_D": 12345.160377430786,
+     "block_has_buffer_cell": false,
+     "diam_block": 6.731885126931567,
+     "surplus_minus_deficit_direct": 12345.160377430784
+    }
+   ],
+   "max_pairwise_overlap": 0,
+   "disjoint": true
+  }
+ }
+}

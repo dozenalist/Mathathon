@@ -262,3 +262,42 @@ Everything else in the chain is now either proved (`K15-E014` for the count, the
 theorem above) or imported and charged (`V_dodeca`). The measurements say the inequality holds
 with a factor of `470`-`880` to spare on every constructible fixture; the obstruction is that
 no technique proves even a factor of `1`.
+
+### 3.6 A structural finding: defects are isolated, so surplus is never shared
+
+`(H_R)` would be much harder if several defective centres could draw on the same paying
+neighbours. Two measurements say they cannot, at least for the defect we have.
+
+**fcc and hcp are locally rigid, so defects cannot be made by perturbation.** In fcc every one
+of the twelve neighbours of a centre sits at distance exactly `2`. Any nonzero displacement of
+a centre therefore violates 2-separation, and the same holds for hcp. This is why the
+`perturbed_fcc` fixture cannot exist (Section 3.3) and it means defects must come from a
+*different* motif rather than from a wobble of the optimal one — a defect requires local
+crowding, and crowding requires near-tangency, and near-tangency leaves no room to move.
+
+**Two icosahedral defects are always far apart.** Two copies of the motif with centres at
+distance `d` are legal iff `d >= 5.5`; at `d = 5.0` the minimum separation drops to `1.597`, and
+at `d = 4.18` to `0.777`. But components merge only at `d <= tau = 4.18 = 2R`. Since
+`5.5 > 4.18`, two icosahedral defects are **always in different components and never share a
+paying neighbour**. (I first wrote "minimum legal `d` is 6"; the measurement is `5.5`. The
+conclusion is unaffected but the figure is corrected here.)
+
+**Consequence.** For configurations of this motif, `(H_R)` decomposes into independent
+single-defect inequalities, each with its own twelve payers and no competition — which is
+exactly the setting in which the measured slack factor of `470`–`880` was obtained. So the
+`(H_R)` tests are not weakened by the fixtures having only one defect each: multiple defects
+genuinely decouple. The `2x2x2` grid of eight defects confirms this — eight components,
+`max_pairwise_overlap = 0`, minimum `S - D = +67.472`, no sharing pressure.
+
+**What is *not* established.** That *every* defective configuration has isolated defects. The
+argument above is (i) exact for fcc/hcp rigidity, (ii) measured for the icosahedral motif, and
+(iii) heuristic in general. A defect with a smaller deficit might be packed more densely, and
+then surpluses could compete. I can neither construct such a configuration nor rule it out, and
+I do not promote the heuristic to a theorem. This is the sharpest open point about `(H_R)`.
+
+## 4. Runtime and clock
+
+Receipt `2026-11-14T09:57:21Z`. Checkpoints taken at approximately +20 and +40 minutes using
+`date -u` at the start of each tool call, and the final report is issued no earlier than
+`10:57:21Z`. No sleeping or busy-waiting was used; pauses between pushes were spent on the
+fixtures, the transfer theorem and the obstruction in Section 3.6.
