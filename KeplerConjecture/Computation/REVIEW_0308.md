@@ -54,6 +54,12 @@ and then six extra digits: it moves by `1.2·10^{-10}` and then by `3.1·10^{-14
 threshold, which is the conservative direction for a refutation: the claim "fails for every
 `Φ` below it" is weakened, never overstated, by the enclosure.
 
+**The per-fixture threshold is now exact, not capped.** For the 13-vertex fixture the evaluator
+enumerates **all 8191 non-empty subsets** (`exhaustive_cut_scan`, used whenever `n ≤ 16`) and finds
+`t* = max_U Σ_U b/|δ⁺(U)| = 0.008880268414417`, attained at the singleton — at `R = 2`, `2.1029`
+and `3` alike. So for this fixture `Φ ≥ 0.008880268414417` is necessary and (with the flow it
+verifies) sufficient. The `|U| ≤ 6` cap that earlier versions used is gone for this fixture.
+
 Arithmetic: FCC and HCP have `b = 0` exactly. The icosahedral fixture's cell volume involves
 `√5`, so the file carries rational enclosures and uses `b_lo` to refute and `b_hi` for
 feasibility — each direction conservative.

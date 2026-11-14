@@ -228,6 +228,35 @@ def find_violating_cut(b, edges, Phi, max_size=None):
                     best = (ratio, U, sb, bd)
     return best
 
+def exhaustive_cut_scan(b_lo, edges, cap_subsets=1 << 16):
+    """EXACT per-fixture t* = max over ALL finite U of sum_U b / |delta^+(U)|.
+
+    Only feasible when 2^n is small (n <= 16 by default); otherwise returns None and the caller
+    falls back to the size-capped search, which must then be described as capped.  Subsets with an
+    EMPTY boundary are excluded from the ratio (the ratio is not defined there) but are reported
+    separately, because for a finite vertex set they carry the condition sum_U b <= 0.
+    """
+    n = max(max(e) for e in edges) + 1 if edges else len(b_lo)
+    n = max(n, len(b_lo))
+    if (1 << n) > cap_subsets:
+        return None
+    best = None
+    empty_boundary_positive = []
+    for mask in range(1, 1 << n):
+        U = tuple(v for v in range(n) if mask >> v & 1)
+        sb, bd = cut_value(b_lo, edges, U)
+        if bd == 0:
+            if sb > 0:
+                empty_boundary_positive.append((U, sb))
+            continue
+        r = sb / bd
+        if best is None or r > best[0]:
+            best = (r, U, sb, bd)
+    return dict(t_star=best[0], U=list(best[1]), sum_b=best[2], boundary=best[3],
+                subsets_scanned=(1 << n) - 1,
+                empty_boundary_positive=[(list(U), str(sb)) for (U, sb) in empty_boundary_positive])
+
+
 def feasible_flow(b, edges, Phi):
     """Max-flow with a supersource feeding b(v) and capacity Phi per edge.
     Returns a rational flow dict or None.  Uses scipy for the search, then ROUNDS TO RATIONALS
@@ -439,6 +468,14 @@ def main():
             print("               (this constrains a Phi that must serve ALL packings only")
             print("                because this packing exists; it is not implied by b > 0 in an")
             print("                arbitrary fixture)")
+        ex = exhaustive_cut_scan(b_lo, edges)
+        if ex is not None:
+            print("            EXACT scan of all %d subsets: t* = %.15f at U=%s  %s"
+                  % (ex["subsets_scanned"], float(ex["t_star"]), ex["U"],
+                     "(singleton is optimal)" if ex["U"] == [0] else ""))
+            if ex["empty_boundary_positive"]:
+                print("            NOTE: %d empty-boundary subset(s) have sum_U b > 0 -> infeasible"
+                      " at any Phi" % len(ex["empty_boundary_positive"]))
         worst = find_violating_cut(b_lo, edges, F(0), max_size=min(n, 6))
         if not ok_global:
             worst = (F(10) ** 18, tuple(range(n)), tot, 0)
