@@ -1944,3 +1944,28 @@ all pass from the correct directory (`barlow_contact_cell`, `certify_region_v2` 
 `barlow_shell_check`, `shell_conversion`, `block_evaluator`, `transfer_evaluator`, `c5_completion`,
 `local_density_fixtures`, `multi_defect_test`, `periodic_relax` — 21, in fact) and **18/18** of Main's
 `run_all_checks.py --quick` pass.
+
+### K15-X-C128 — `verify_all_claims`, `icosa_cut_check`, `barlow_random_stackings` pass
+
+All exit 0 from `KeplerConjecture/` at `6ae7dbf`: `verify_all_claims.py` reports "ALL CHECKS PASSED (True)";
+`barlow_random_stackings.py` tests `88` layers and confirms every cell is `4√2` with `12` contacts at `2`,
+next at `2√2`, and an fcc/hcp fingerprint ✓; `icosa_cut_check.py` is honest about its own limit — "(3) the
+certified lower bound is negative, so the cut cannot be discharged by per-cell minima". That makes **24**
+Experimental programs run this block, all passing from the documented directory.
+
+### K15-X-C129 — `X-C065` exhibited live: the old certifier certifies a region it only partly covers
+
+`Experimental/scripts/certify_region.py 110 110.25 35 35.2 0.1` (at `6ae7dbf`, exit 0, ~27 s) prints
+
+```
+region theta in [110.0, 110.25], phi in [35.0, 35.2], boxes of 0.1 deg
+  4 boxes, 4 workers
+  CERTIFIED for the whole region: [5.874258302, 5.927479312]
+  every configuration in the region has vol Omega(w1) > threshold: True   (margin +0.110841)
+```
+
+`n_th = round(0.25/0.1) = round(2.5) = 2` and `n_ph = 2`, so the four boxes cover
+`[110, 110.2] × [35, 35.2]` — the strip `θ ∈ [110.2, 110.25]` (a fifth of the requested θ-range) is **never
+certified**, and the output calls it "the whole region" and "every configuration in the region". No number in
+the reported interval is wrong; the *quantifier* is. `certify_region_v2.py` on the same domain uses
+`ceil(0.25/0.1) = 3` boxes of `0.0833…` with an exact tiling assertion, so it cannot lose the strip.
