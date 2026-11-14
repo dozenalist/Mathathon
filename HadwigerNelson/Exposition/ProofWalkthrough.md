@@ -1,6 +1,6 @@
 # Understanding the five-colour obstruction
 
-**Start here.** This is the main reading path through our exposition. Lesson 1 builds one idea carefully: what a *weak measurable colouring* means, and why the proof needs it. Lesson 2 shows how that “almost never” condition still forbids some unit distances exactly. You can give feedback on this page without following the supporting folders.
+**Start here.** This is the main reading path through our exposition. Lesson 1 builds one idea carefully: what a *weak measurable colouring* means, and why the proof needs it. Lesson 2 shows how that “almost never” condition still forbids some unit distances exactly. Lesson 3 shows how a connected set of robust points turns that exact exclusion on a circle into an exclusion on a band with positive area. You can give feedback on this page without following the supporting folders.
 
 The supplied OpenAI proof, *The Euclidean plane is not five-colorable* (23 September 2026), rules out a proper five-colouring even when its colour classes are not measurable. Together with the classical seven-colouring construction, this gives $6\leq\chi(\mathbb R^2)\leq7$. It does not decide between six and seven. We are explaining that supplied result; our team's local contributions come later.
 
@@ -410,6 +410,94 @@ Try to answer these before opening the comparison.
 
 **Feedback on Lesson 2:** name the first sentence where you had to take something on trust, or the first picture that did not help you make a new inference. The three Lesson 2 figures are first drafts.
 
+## Lesson 3: from a circle to a band — straddling a connected set
+
+Lesson 2 showed that a robust point excludes its own colour, exactly, from the robust points on its unit circle. But a circle has zero area, and weakness cannot feel zero area. This lesson shows how a *connected* set of robust points thickens that circle into a band with positive area.
+
+The tool is elementary: the intermediate value theorem. It is the geometric engine behind the manuscript's “straddle” regions. The manuscript applies it to constructed two-colour interfaces. Here we use the simplest model, a set lying robustly inside one colour. That model is our illustration, not the manuscript's statement.
+
+## 15. What one robust point excludes
+
+Let $q$ be robustly inside colour $i$. By Section 13, no point at distance exactly 1 from $q$ is robustly inside colour $i$.
+
+That is exact, but it lives on a circle, and a circle has zero area. Recolouring the whole circle with colour $i$ would change no window average (compare the recoloured line in Section 14). To reach a statement with area in it, we need many centres whose unit circles sweep out a region.
+
+## 16. Many centres: the straddle region
+
+Let $K$ be a set of centres, for example a short segment. For a point $z$, look at its distances to all the points of $K$. Say that $z$ **straddles** $K$ when some point of $K$ is closer than 1 and some point of $K$ is farther than 1:
+
+$$
+\Delta(K)=\{z:\ \min_{q\in K}|z-q|<1<\max_{q\in K}|z-q|\}.
+$$
+
+This is the manuscript's straddle region (Section 7; `Straddle` in the Lean development). Section 17 shows that when $K$ is connected, every straddling point lies on the unit circle of some point of $K$. So $\Delta(K)$ sits inside the region swept by those circles.
+
+![A short horizontal segment K of length 0.6 with its endpoints and midpoint marked. The shaded region Delta(K) is the open radius-one capsule around K with a white lens removed, the lens where the two closed unit disks centred at the endpoints overlap; inside the lens every point of K is within 1. The shaded band is thick to the left and right of K and thin above and below it. The unit circle of the midpoint of K is drawn dashed in blue and runs through both thick parts of the band.](Figures/straddle-band.svg)
+
+The inference to take from the picture is that a segment of centres turns a single unit circle, which has zero area, into a band $\Delta(K)$ with positive area, swept by the unit circles of the points of $K$.
+
+## 17. Straddling forces an exact contact
+
+**Contact lemma.** If $K$ is connected and $z$ straddles $K$, then some point of $K$ is at distance exactly 1 from $z$.
+
+For a segment, walk along $K$ from a point closer than 1 to a point farther than 1. The distance to $z$ changes continuously, without jumps, so at some moment it equals 1.
+
+![A point z at the lower left and a horizontal segment K above it. The left end of K is closer than 1 to z and the right end is farther than 1. Three rulers run from z to points of K, of lengths 0.9, exactly 1 (highlighted in red) and 1.1. A dashed arc of the unit circle around z crosses K at the end of the highlighted ruler.](Figures/straddle-contact.svg)
+
+Read the picture as the walk itself: as the far end of the ruler moves along $K$ its length passes from below 1 to above 1, so it must cross the dashed unit circle of $z$ at a point of $K$.
+
+A general connected set may contain no path to walk along, but the conclusion survives. The distance $q\mapsto|z-q|$ is continuous, and a continuous function on a connected set takes every value between any two values it takes. This is a classical fact of topology, not part of the manuscript.
+
+**Connectedness is essential.** Let $K$ be only the two endpoints of a segment of length 2, and let $z$ be the first endpoint. Its distances to $K$ are 0 and 2, so $z$ straddles $K$, yet no point of $K$ is exactly one unit away. Restore the whole segment and the midpoint supplies the contact. The missing middle is exactly where the contact would have been.
+
+![Two points of K, two units apart, joined by a dashed line showing the missing middle of the segment. The left point is z itself, at distance 0; the right point is at distance 2. At the midpoint, where a dashed arc of the unit circle around z crosses the line, a dashed red circle marks the missing contact: it is at distance 1 from z but does not belong to K.](Figures/straddle-gap.svg)
+
+The picture shows that without connectedness the distance can jump straight from 0 to 2, so straddling alone does not force a point of $K$ onto the unit circle of $z$.
+
+## 18. A band that colour $i$ cannot occupy
+
+Combine the contact lemma with Lesson 2. Suppose $K$ is compact and connected, contains at least two points, and every point of $K$ is robustly inside colour $i$.
+
+Take any $z$ in $\Delta(K)$. By the contact lemma, some $q$ in $K$ satisfies $|z-q|=1$. Since $q$ is robustly inside colour $i$, Section 13 says $z$ is not.
+
+So no point of $\Delta(K)$ is robustly inside colour $i$. By Lebesgue's density theorem (Section 9), all colour-$i$ points outside a zero-area set are robust in colour $i$. Therefore **colour $i$ occupies zero area of $\Delta(K)$**.
+
+This is now a statement with area in it, because $\Delta(K)$ has positive area. Take $K$ to be a segment of length $L>0$, and put $z$ on its perpendicular bisector at distance $d$ from the midpoint, with $d$ slightly less than 1. The nearest point of $K$ is the midpoint, at distance $d<1$. The endpoints are at distance $\sqrt{d^2+L^2/4}$, which exceeds 1 once $d$ is close enough to 1. Both the nearest and the farthest distance change continuously as $z$ moves, so every point near this $z$ also straddles $K$. A whole small disk lies in $\Delta(K)$.
+
+One robust point excluded its colour on a circle, which weakness cannot see. A robust connected set excludes it on a band, which weakness can.
+
+**Sanity check.** In the proper hexagon colouring, let $K$ be a short segment inside an open hexagon of colour $i$. Every point of $\Delta(K)$ is exactly one unit from some point of $K$, so properness forbids colour $i$ there, with no exceptions. The weak version says the same thing up to zero area.
+
+<details>
+<summary>A precision note</summary>
+
+The nearest and farthest distances to a compact $K$ are continuous in $z$; each changes by at most $|z-z'|$ when $z$ moves to $z'$. So $\Delta(K)$ is open and therefore measurable. The contact lemma needs no compactness, only connectedness: with infimum and supremum in place of minimum and maximum, the argument is unchanged.
+
+</details>
+
+## 19. What the manuscript actually needs
+
+Our model assumed that $K$ lies robustly inside one colour. In the proof, the connected sets come from a constructed loop of colour *interfaces*: compact connected sets $K_j$ sharing a centre $x$. Each carries a **pair** of labels, and the manuscript shows that both are absent almost everywhere in $\Delta(K_j)$ (manuscript Section 7).
+
+Proving that two-label exclusion requires the manuscript's analytic interface construction. Connectedness alone does not give it. What carries over from this lesson is the geometric engine: straddling a connected set forces an exact unit contact, and the straddle region has area. The next lesson explains where the interfaces come from.
+
+## A third place to stop and respond
+
+1. Why does one robust point exclude its colour only on a zero-area set, while a robust segment excludes it on a region with area?
+2. With $K$ the two endpoints of a length-2 segment and $z$ the first endpoint, why is there no contact? What changes when $K$ is the whole segment?
+3. Must the contact point be unique?
+
+<details>
+<summary>Compare your reading</summary>
+
+1. One point's unit circle has zero area. A segment's points have unit circles that sweep the band $\Delta(K)$, and the contact lemma says every point of that band lies on one of those circles.
+2. The distances jump from 0 to 2 with nothing in between. The whole segment supplies every intermediate distance, and the midpoint is at exactly 1.
+3. No. If $z$ is less than 1 from the middle of a segment but more than 1 from both endpoints, the distance crosses 1 twice, once on each side.
+
+</details>
+
+**Feedback on Lesson 3:** name the first sentence where you had to take something on trust.
+
 ---
 
 <details>
@@ -480,6 +568,6 @@ CC60 is a local obstruction, not an unrestricted six-colour impossibility theore
 
 The [manuscript](../Main/ResearchSnapshot/remote/attachments/here-are-three-files-ni5n/paper.pdf), Theorems 1.1–1.4, states the supplied result and transfer theorem. The [source bundle](../Main/ResearchSnapshot/remote/attachments/here-are-three-files-ni5n/hadwiger-nelson-lean-review-bundle.md) identifies OpenAI commit <code>fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb</code>, Lean 4.34.1, and mathlib commit <code>d13f23b723b8a846827a245b89c10fc7d3f11612</code>. The [source map](SourceMap.md) gives declaration names and distinguishes supplied results from team contributions.
 
-The exposition director prepared the initial lesson with an [Astra source audit](Reviews/WeakColouringLesson-Astra.md). Claude then led the final editorial integration, using focused reader reviews and two independent Claude checks. Lesson 2 was rewritten by the Claude exposition editor from a research-worker draft; its proof was checked by an independent Claude referee and the integrated text by a separate Claude reviewer. These are bounded checks of this explanation, not independent verification of the entire supplied proof. Figures illustrate the explicit half-plane example, the sampling definition, and the slide-and-turn argument of Lesson 2 (drawn to scale, with one unit equal to 360 pixels); they do not depict a valid colouring.
+The exposition director prepared the initial lesson with an [Astra source audit](Reviews/WeakColouringLesson-Astra.md). Claude then led the final editorial integration, using focused reader reviews and two independent Claude checks. Lesson 2 was rewritten by the Claude exposition editor from a research-worker draft; its proof was checked by an independent Claude referee and the integrated text by a separate Claude reviewer. Lesson 3 was drafted by the Claude exposition editor and checked by an independent Claude referee. These are bounded checks of this explanation, not independent verification of the entire supplied proof. Figures illustrate the explicit half-plane example, the sampling definition, and the slide-and-turn argument of Lesson 2 (drawn to scale, with one unit equal to 360 pixels), and the straddle region, exact contact and band of Lesson 3; they do not depict a valid colouring.
 
 </details>

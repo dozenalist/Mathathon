@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="500" viewBox="0 0 720 500" role="img" aria-labelledby="title desc">
+<title id="title">Walking along a segment, the distance to z passes through exactly 1</title><desc id="desc">A point z at the lower left and a horizontal segment K above it. One end of K is closer than 1 to z and the other is farther. Three rulers run from z to points of K, of lengths 0.9, exactly 1 (highlighted) and 1.1. A dashed arc of the unit circle around z crosses K at the end of the highlighted ruler.</desc>
+<rect width="720" height="500" fill="white"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="360.0" y="46.0" font-size="30" fill="#172c43" text-anchor="middle" font-weight="600">Walking along K, the distance crosses 1</text>
+<text x="360.0" y="82.0" font-size="23" fill="#172c43" text-anchor="middle" font-weight="400">Somewhere in between, a ruler from z has length exactly 1.</text>
+<polyline points="474.61,315.85 473.94,313.67 473.26,311.49 472.56,309.32 471.86,307.15 471.13,304.99 470.40,302.83 469.65,300.68 468.89,298.53 468.11,296.39 467.32,294.25 466.52,292.11 465.70,289.99 464.87,287.86 464.03,285.74 463.17,283.63 462.30,281.52 461.42,279.42 460.52,277.33 459.61,275.24 458.69,273.15 457.75,271.07 456.80,269.00 455.84,266.93 454.86,264.87 453.87,262.82 452.87,260.77 451.86,258.73 450.83,256.69 449.79,254.66 448.73,252.64 447.67,250.63 446.59,248.62 445.50,246.62 444.39,244.62 443.28,242.63 442.15,240.65 441.00,238.68 439.85,236.72 438.68,234.76 437.50,232.81 436.31,230.86 435.11,228.93 433.89,227.00 432.66,225.08 431.42,223.16 430.17,221.26 428.90,219.36 427.63,217.47 426.34,215.59 425.04,213.72 423.73,211.85 422.40,210.00 421.07,208.15 419.72,206.31 418.36,204.48 416.99,202.66 415.61,200.85 414.21,199.04 412.81,197.25 411.39,195.46" fill="none" stroke="#63758a" stroke-width="1.5" stroke-dasharray="6 5"/>
+<line x1="202.00" y1="204.00" x2="508.00" y2="204.00" stroke="#172c43" stroke-width="6" />
+<circle cx="202.00" cy="204.00" r="6" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<circle cx="508.00" cy="204.00" r="6" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<text x="522.0" y="212.0" font-size="27" fill="#172c43" text-anchor="start" font-weight="600">K</text>
+<line x1="130.00" y1="420.00" x2="371.50" y2="204.00" stroke="#63758a" stroke-width="3" />
+<circle cx="371.50" cy="204.00" r="6" fill="white" stroke="#172c43" stroke-width="2"/>
+<text x="260.9" y="286.4" font-size="21" fill="#172c43" text-anchor="end" font-weight="400">0.9 &lt; 1</text>
+<line x1="130.00" y1="420.00" x2="418.00" y2="204.00" stroke="#b33d39" stroke-width="5" />
+<circle cx="418.00" cy="204.00" r="6" fill="#b33d39" stroke="#172c43" stroke-width="2"/>
+<text x="418.0" y="184.0" font-size="21" fill="#b33d39" text-anchor="middle" font-weight="600">length exactly 1</text>
+<line x1="130.00" y1="420.00" x2="461.90" y2="204.00" stroke="#63758a" stroke-width="3" />
+<circle cx="461.90" cy="204.00" r="6" fill="white" stroke="#172c43" stroke-width="2"/>
+<text x="343.1" y="306.4" font-size="21" fill="#172c43" text-anchor="start" font-weight="400">1.1 &gt; 1</text>
+<circle cx="130.00" cy="420.00" r="7" fill="#172c43" stroke="#172c43" stroke-width="2"/>
+<text x="116.0" y="428.0" font-size="27" fill="#172c43" text-anchor="end" font-weight="600">z</text>
+<text x="202.0" y="184.0" font-size="19" fill="#172c43" text-anchor="middle" font-weight="400">closer than 1</text>
+<text x="488.0" y="238.0" font-size="19" fill="#172c43" text-anchor="start" font-weight="400">farther than 1</text>
+<text x="484.6" y="335.9" font-size="18" fill="#63758a" text-anchor="start" font-weight="400">dashed: unit circle of z</text>
+<text x="360.0" y="476.0" font-size="22" fill="#172c43" text-anchor="middle" font-weight="600">No jump is possible, so the walk meets the unit circle of z.</text>
+</g></svg>

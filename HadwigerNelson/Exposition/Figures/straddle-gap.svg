@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="402" viewBox="0 0 720 402" role="img" aria-labelledby="title desc">
+<title id="title">Two separate points: the distance jumps from 0 to 2 and skips 1</title><desc id="desc">Two points of K, two units apart, joined by a dashed line showing the missing middle of the segment. The left point is z itself, at distance 0; the right point is at distance 2. The midpoint, where a dashed arc of the unit circle around z crosses the line, is marked with a dashed red circle as the missing contact: it is at distance 1 from z but does not belong to K.</desc>
+<rect width="720" height="402" fill="white"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="360.0" y="46.0" font-size="30" fill="#172c43" text-anchor="middle" font-weight="600">Without connectedness, the distance can jump</text>
+<text x="360.0" y="82.0" font-size="23" fill="#172c43" text-anchor="middle" font-weight="400">K is only the two endpoints; the middle of the segment is missing.</text>
+<line x1="120.00" y1="250.00" x2="600.00" y2="250.00" stroke="#63758a" stroke-width="3" stroke-dasharray="10 8"/>
+<polyline points="358.80,273.96 359.01,271.77 359.20,269.58 359.37,267.38 359.52,265.19 359.65,262.99 359.76,260.80 359.85,258.60 359.91,256.40 359.96,254.20 359.99,252.00 360.00,249.80 359.99,247.60 359.96,245.40 359.90,243.20 359.83,241.00 359.74,238.80 359.63,236.61 359.49,234.41 359.34,232.22 359.17,230.02 358.97,227.83 358.76,225.64 358.53,223.45 358.27,221.27 358.00,219.09 357.71,216.91 357.39,214.73 357.06,212.55 356.71,210.38 356.33,208.21 355.94,206.05 355.53,203.89 355.10,201.73 354.64,199.58 354.17,197.43 353.68,195.29 353.17,193.15 352.64,191.01 352.09,188.88 351.52,186.76 350.93,184.64 350.32,182.52 349.69,180.41 349.04,178.31 348.38,176.21 347.69,174.12 346.99,172.04 346.26,169.96 345.52,167.89 344.76,165.83 343.97,163.77 343.18,161.72 342.36,159.68 341.52,157.65 340.66,155.62 339.79,153.60 338.90,151.59 337.98,149.59 337.06,147.59 336.11,145.61" fill="none" stroke="#63758a" stroke-width="1.5" stroke-dasharray="6 5"/>
+<circle cx="360.00" cy="250.00" r="10" fill="white" stroke="#b33d39" stroke-width="3" stroke-dasharray="4 3"/>
+<text x="360.0" y="296.0" font-size="21" fill="#b33d39" text-anchor="middle" font-weight="600">missing contact</text>
+<text x="360.0" y="322.0" font-size="19" fill="#b33d39" text-anchor="middle" font-weight="400">(distance 1, not in K)</text>
+<circle cx="120.00" cy="250.00" r="8" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<circle cx="600.00" cy="250.00" r="8" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<text x="120.0" y="224.0" font-size="21" fill="#172c43" text-anchor="middle" font-weight="600">z = first point of K</text>
+<text x="120.0" y="296.0" font-size="21" fill="#172c43" text-anchor="middle" font-weight="400">distance 0</text>
+<text x="600.0" y="224.0" font-size="21" fill="#172c43" text-anchor="middle" font-weight="600">second point of K</text>
+<text x="600.0" y="296.0" font-size="21" fill="#172c43" text-anchor="middle" font-weight="400">distance 2</text>
+<text x="360.0" y="130.0" font-size="18" fill="#63758a" text-anchor="middle" font-weight="400">dashed arc: unit circle of z</text>
+<text x="360.0" y="378.0" font-size="22" fill="#172c43" text-anchor="middle" font-weight="600">0 &lt; 1 &lt; 2, yet no point of K is exactly one unit from z.</text>
+</g></svg>
