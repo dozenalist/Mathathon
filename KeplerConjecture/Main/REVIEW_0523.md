@@ -190,6 +190,24 @@ tolerance that reports a false failure).
 witness — its five pentagons would clash if repeated at all twelve outer centres — so it tests
 the inequality at the sharpest pair and says nothing about simultaneous compensation.
 
+## 3b. The pair route's scope checked against the trivial bound (`K15-C119`)
+
+One thing had not been checked and should have been: is the pair route even *needed* over the
+range it works on? Three elementary inequalities answer it.
+
+1. Every cell contains the inball `B(v,d/2)`, so `δ ≤ 8/d³` for minimum separation `d`.
+2. `8/d³ ≤ 0.754697399337` iff `d ≥ 2.1967082`, so **for `d ≥ 2.1967082` the dodecahedral bound
+   is implied by the trivial inball bound** and ML does no work.
+3. The near-contact band of `C116` reaches `6/√5 = 2.6832816`, strictly containing `2.1967082`.
+
+So the only packings where a two-cell argument has to do anything are those with
+`2 ≤ d < 2.1967082`, and on that whole range the near-contact pair bound is available with a
+margin of `0.49` in `d`. **The route's scope is therefore fine; what remains is `ρ_ε > 0` — the
+*density* of close pairs, not their existence.** That is `G13` and nothing else.
+
+This is not new mathematics — `δ ≤ 8/d³` is the oldest bound in the subject — but the
+comparison had not been made, and it says the route is aimed at the right regime.
+
 ## 4. Proof-status account (the concise one)
 
 **Proved, this project.** Every Barlow cell has volume `√32` on a repaired basis (`C094`/`C104`);

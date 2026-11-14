@@ -172,6 +172,14 @@ chk("(6/sqrt5)^2 = 36/5", (6 / sqrt(mpf(5))) ** 2, mpf('7.2'), tol=1e-15)
 chk("band width 6/sqrt5 - 2", 6 / sqrt(mpf(5)) - 2, 0.683281572999747635, tol=1e-12)
 chk("route needs 0.012718662083, a factor", (6 / sqrt(mpf(5)) - 2) / mpf('0.012718662083'), 53.723, tol=1e-2)
 
+# --- K15-C119: where the dodecahedral bound does work ----------------------------
+def inball(d):
+    return 8 / mpf(d) ** 3
+chk("inball bound at d = 2 is trivially 1", inball(mpf(2)), 1.0, tol=1e-12)
+chk("inball meets ML at d", (8 / mpf('0.754697399337')) ** (mpf(1) / 3), 2.1967082337, tol=1e-9)
+chk("inball meets the truth at d", (8 / mpf('0.740480489693')) ** (mpf(1) / 3), 2.21067782856, tol=1e-9)
+chk("inball at 6/sqrt5", inball(6 / sqrt(mpf(5))), 0.41408665, tol=1e-7)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)

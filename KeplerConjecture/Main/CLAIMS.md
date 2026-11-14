@@ -3669,3 +3669,34 @@ It does **not** make the fixture a proof of `(P′)`: E's own `K15-E090` notes t
 tests `(P′)` and says nothing about simultaneous compensation of the cluster.
 
 *Status.* `AGREES`. Reviewer X.
+
+### K15-C119 — where the dodecahedral bound is actually doing work, and why the pair route's scope is fine (`PROVED`)
+
+Three elementary inequalities, combined, locate the pair route exactly.
+
+1. **Inball bound.** Every cell contains the inball `B(v, d/2)` where `d` is the minimum
+   separation, so `vol Ω(v) ≥ (4π/3)(d/2)³` and hence
+   `δ ≤ (4π/3)/((4π/3)(d/2)³) = 8/d³`.
+2. **Where that already beats Hales–McLaughlin.** `8/d³ ≤ 0.754697399337` iff
+   `d ≥ 2.1967082337…`. So **for every packing with minimum separation `≥ 2.1967082` the
+   dodecahedral bound is implied by the trivial inball bound** and ML does no work.
+   (The same constant appears in `C101` as the radius beyond which the inball beats `V_dod` —
+   it is the same comparison, `V_dod = (4π/3)(d/2)³`.)
+3. **The near-contact band of `C116` reaches `6/√5 = 2.6832816`**, which strictly contains
+   `2.1967082`.
+
+> **Consequence.** The only packings on which a two-cell argument has to do anything are those
+> with `2 ≤ min separation < 2.1967082`, and on that whole range — with a margin of `0.49` in
+> `d` — the near-contact pair bound of `C114`/`C116` is available.
+
+So the pair route's **scope** is not in question: it covers everything the dodecahedral bound is
+not already giving for free. What remains is `ρ_ε > 0` (`G13`) — the *density* of close pairs, not
+their existence or their distance. That is the honest residue, and `C114` already says the same
+thing from the other side.
+
+**Also recorded: this is not new mathematics.** `δ ≤ 8/d³` is the oldest bound in the subject and
+combining it with a range check is bookkeeping. Its value is that it *locates* the route: before
+this entry the pair route's applicability range had not been compared with the range on which the
+target bound is non-trivial, and the check comes out favourably by a wide margin.
+
+*Status.* `PROVED` (elementary). Reviewer X.
