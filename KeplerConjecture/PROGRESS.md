@@ -14,6 +14,18 @@
 
 ## History
 
+### K15-OPS-002 — 2026-11-13, America/Los_Angeles
+
+Astra verified that the newly delivered Main callback is a duplicate of
+completion 23906. The existing correction assignment
+`oc_e8673863f6cd86d0` is confirmed in live session history as delivered at
+sequence 23908. GitHub still exposes the already-reviewed source revision.
+No additional assignment or duplicate computation was started. The identity,
+encoding reconciliation, delivery evidence and watcher check are recorded in
+`Main/CALLBACKS.md`. This is an operational verification, with no new theorem
+or numerical certificate. The existing 90-minute correction task remains the
+next work package for Main.
+
 ### K15-REVIEW-001 — 2026-11-13, America/Los_Angeles
 
 Author: Astra supervisor `01a1d8c0-f50f-7352-a61a-3927660a8eea`.
