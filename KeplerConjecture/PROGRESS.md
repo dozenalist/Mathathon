@@ -289,3 +289,20 @@ this route. It is offered as a cross-validated artifact, not a bound to improve 
 `n`-neighbour allowance at fixed degree does not pay, because the objective charges `n·η` while
 `p(0) ≈ 0.21`, so `η` must be below `≈0.008` to break even and at that size the relaxation buys
 nothing.
+
+### K15-COMP-011 — 2026-11-14 — Computation (role C), Fourier audit (fallback task)
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-FOURIER-AUDIT-001 | **A1/A2 PROVED, A3 TESTED_FINITE** | Main's `shell_check.fourier_map` is correct: (A1) it agrees entry-by-entry with my independent exact construction from `L_j^{(1/2)}` — 49/49 entries at `K = 6`, and `M[0][k] = (2k+1)!!/2^k` confirmed; (A2) `M² = I`, the transform being an involution on even functions, holds exactly; (A3) direct radial quadrature of the transform agrees with M's prediction to `1e-13` for `k = 0,1,2` at `y = 0.35, 0.9` | `Computation/audit_fourier.py` |
+
+**Why this matters.** Every exact verdict in this directory rests on the Fourier convention. A3
+is the check that would catch a wrong normalisation, a missing factor, or a factor of 2 in the
+exponent, and it shares nothing with any polynomial algebra; A2 is a structural identity that a
+mis-transcribed matrix almost never satisfies. Main's matrix passes both, so the `0.87227746`
+certificate of `K15-C-SHELLPROP-002` rests on a verified transform.
+
+**Not done this block:** the nonuniform radial-shell objective with exact geometric assumptions
+(the second fallback item). `K15-C-SHELLGAIN-002` shows the *uniform* allowance does not pay;
+whether a nonuniform one can is untested, and the present negative result must not be quoted as
+a general impossibility.
