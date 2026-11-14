@@ -565,3 +565,40 @@ Everything else — the `C_R` witness, the Theorem D clause audit, the step-4 re
 E/Main resolution, the Hales–McLaughlin equality case from the primary source, the independent
 `p ≤ η` decider and the `nsimplify` defect, the crack-cell volumes, and every verdict in §9 — is
 mine, and reproducible from the scripts named in each section.
+
+---
+
+## 14. Post-audit developments in `main` (checked, not part of the audited target)
+
+Between the audit target `a6f3935` and the tip I fetched at close (`8dc264e`) Main pushed, among
+others, `K15-C121` — "an explicit stability bound for cells with `≤ 12` faces" — which is exactly the
+object §6 above says the chain is missing. I checked it; it belongs in the record.
+
+**`C121` is correct.** Statement: if `Ω(v)` has at most 12 faces and every neighbour is at distance
+`≥ 2ρ` (`ρ ≥ 1`), then `vol Ω(v) ≥ V_dod ρ³`. Proof: scale by `1/ρ`; the scaled body has
+`≤ 12` faces, contains `B(0,1)` and has all faces at distance `≥ 1`; Fejes Tóth's Theorem 4.1 (as
+quoted in `C115`) gives volume `≥ ω_dod`; scale back. Two checks: the arithmetic is exact —
+`V_dod·1.045³ = 6.333804106 = 1.119669·√32`, so a `≤ 12`-face cell of an isolated vertex beats `√32`
+by 11.97% — and the "second form" threshold is right: `(3V_dod/4π)^{1/3} = 1.0983541`, above the
+`1.045` in play, which is why Fejes Tóth is doing real work. The application is legitimate because
+`Ω/ρ` is again a Voronoi cell (of the scaled packing, whose minimum distance is still `≥ 2`).
+
+**It is sharp, and its equality case is the `r > 2` family of §6.** Twelve icosahedral directions at
+circumradius `r = 2ρ` give a dodecahedral cell of inradius `ρ` and volume `V_dod ρ³`, with no
+contact at all. So `C121` is not merely a bound — it is attained, by precisely the family that shows
+volume-stability cannot produce contacts.
+
+**Consequently `C121` does not close the corollary, and my §6 stands with a sharper boundary.** What
+the chain needs is *contacts* (distance exactly 2) to feed the matching of Theorem C; `C121` gives
+"some neighbour within `2ρ`". For `ρ = 1.045` that is a neighbour at distance `≤ 2.09` — a
+*near*-contact, and `C116`'s band `6/√5 = 2.683` is wider still. A positive density of near-contacts
+is not a matching of the contact graph, so the step "asymptotically dodecahedral ⟹ `ρ > 0`" is not
+repaired. What `C121` does repair is the *singleton* question for `≤ 12`-face cells, explicitly and
+without compactness, which is a real gain and a different statement.
+
+**One arithmetic flag in `C115` (Main's newest entry, outside the audited target).** It records
+"`t_dod = 3 tan(π/5) ≈ 1.258`". But `3 tan 36° = 2.17963`, while `1.2584 = √3 tan(π/5)`. So a
+factor `√3` looks to be missing from the displayed formula (the decimal is the one my arithmetic
+gives for `√3 tan(π/5)`). I have not read the paper's own definition of `t_dod`, so this is a flag
+to check against the source rather than a verdict — but it is a formula and a decimal that do not
+agree with each other, in an entry whose purpose is to be the quotable primary source.

@@ -859,3 +859,19 @@ in Main's route (that route goes through Theorem C and needs a stability version
 Hales–McLaughlin). A swarm finding, checked and corrected: its derivation addressed "`vol Ω = V_dod`
 off a density-zero set", which is stronger than density equality, so it proves the different (also
 true) statement that almost-everywhere exact dodecahedral cells are impossible.
+
+### K15-X-C050 — `C121` (explicit stability for `≤ 12`-face cells) is correct, sharp, and does not close the corollary
+
+`main` at `8dc264e` (post-dating the audit target). Lemma: `Ω(v)` with `≤ 12` faces and all
+neighbours at distance `≥ 2ρ` (`ρ ≥ 1`) has `vol Ω(v) ≥ V_dod ρ³`. **Correct**: scale by `1/ρ`, the
+scaled cell is again a Voronoi cell (of a packing with minimum distance still `≥ 2`), has `≤ 12`
+faces, contains `B(0,1)` and has faces at distance `≥ 1`, so Fejes Tóth's Theorem 4.1 (quoted in
+`C115`) gives volume `≥ ω_dod`. Arithmetic exact: `V_dod·1.045³ = 6.333804106 = 1.119669·√32`; the
+no-face-count form's threshold is `(3V_dod/4π)^{1/3} = 1.0983541`. **Sharp**, with equality at the
+twelve-icosahedral-directions-at-circumradius-`2ρ` family — which has no contact at all, so `C121`
+is exactly the statement that volume stability cannot produce contacts, and the corollary gap of
+`X-C041`/`X-C049` survives: Theorem C needs contacts (distance exactly 2), `C121` gives neighbours
+within `2ρ` (≤ 2.09 at ρ = 1.045; `C116`'s band is 2.683). What it does close is the *singleton*
+question for `≤ 12`-face cells. **Flag, outside the audited target:** `C115` writes
+"`t_dod = 3 tan(π/5) ≈ 1.258`", but `3 tan 36° = 2.17963` while `1.2584 = √3 tan(π/5)` — the formula
+and the decimal disagree by `√3`; check against the paper before quoting.
