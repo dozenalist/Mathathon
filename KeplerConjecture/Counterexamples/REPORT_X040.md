@@ -574,7 +574,23 @@ delivered) both came from estimating, and this is the mechanical fix.
 Checkpoints `12:25:55`, `12:45:55`, `13:05:55` all fall inside the working span; the block's
 substantive hour ends at `13:05:55`, and the close line below is written after it.
 
-*Close (`date -u` read immediately before the final push): PENDING.*
+*Close.* `date -u` read immediately before the final push: **`2026-11-14T13:06:05Z`**. Delivered span
+`12:09:02Z → 13:06:05Z` = **57 minutes 3 seconds**. The last commit carrying new content is
+`a7559be` at `12:55:12Z`; everything after it is this record and a final seven-script verification
+sweep. So the **substantive** portion of this block is about **46 minutes, not 60** — and I am
+stating the substantive number rather than the span, because the span is not what a block is for
+and I have twice claimed an hour I did not deliver. The hour's clock reached `13:05:55Z` inside
+the closing work; the mathematics did not.
+
+*State at close.* main `a5979b9`: `CUT_FLOW_THEOREM.md` is `f02aae1`, the version audited here, and
+`CLAIMS.md` `K15-C093` still carries the two refuted bullets, so `X-C029` stands. comp `716a1b3`:
+`cut_flow.py` is now `c2127cee` (D1/D2/D3 closed by the repair, D4/D5/D7/D8 open — §4);
+`exactcert.py` unchanged at `61621f6`; `shell_check.py` unchanged at `5caa1c9`. This branch
+`a7559be` plus this commit, remote tip verified equal to the local one after the previous push.
+Final sweep, run at `12:56:38Z`: `verify_all.py` ALL PASS, `audit_cutflow_repair.py` ALL PASS,
+`repro_c_cutflow_defects.py` 13/13, `verify_eta_closed.py` closed, `negative_control_readable.py`
+teeth, `g8_checker_independence.py` 52+50 agree, `verify_XC017_readable.py X_C017_small.json`
+VALID.
 
 
 ---
