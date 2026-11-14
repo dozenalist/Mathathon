@@ -1645,3 +1645,13 @@ cube's and the octahedron's six normals → affine dim 3 and interior ✓; `[(1,
 affine-dimension test and the edge-normal supporting-plane scan are both doing their jobs, not just
 passing the printed witnesses. `radius_witness` gives `1/√3` on the cube ✓ and `0.301511344578 = 1/√11` on
 `conv{e1,e2,e3,−(1,1,1)}` ✓.
+
+### K15-X-C099 — numerics: no relative orientation beats the parallel placement, so `6cos ρ_c` stands as the threshold
+
+For `d = 4.60, 4.70, 4.75, 4.767, 4.7679` the maximum of the minimum pairwise distance over 120 random
+rotations (Nelder–Mead from each) equals the **identity-rotation** value exactly
+(`1.869337900, 1.946458478, 1.985784182, 1.999263567, 1.999978677`), and the "optimal" rotations it
+returns are `120°` rotations — symmetries of the icosahedron, i.e. the same configuration. At
+`d = 6cos ρ_c = 4.767926834` the identity placement gives exactly `2`. So the parallel placement is
+optimal among everything scanned, consistent with `X-C096`'s threshold. Numerical, not a proof: it bounds
+the threshold from above by `6cos ρ_c` and finds nothing below it.
