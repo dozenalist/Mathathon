@@ -99,9 +99,12 @@ region is unbounded, and the vertex enumeration found a partial vertex set whose
 error class of W2, committed by the routine that W2 was added to guard.
 
 **Consequence.** The pure statement "twelve half-spaces at distance `1` have volume `≥ V_dod`"
-is **not refuted** by me, and I have no counterexample. It is simply unproved. The conditional
-result of `REVIEW_0608` §11 therefore stands exactly as stated: conditional, with the premise
-`vol D' ≥ 5.5400` open — neither proved nor refuted.
+is **not refuted** by me, and I have no counterexample.
+
+At the time of writing this section the conditional result of `REVIEW_0608` §11 stood with its
+premise `vol D' ≥ 5.5400` open — neither proved nor refuted. **§7 below proves it**, by Lindelöf
+1869, so the twelve-face theorem is restored; this section is kept because the retraction and the
+audit stand independently of that outcome.
 
 ---
 
@@ -131,7 +134,7 @@ adversarial coverage.
 | --- | --- |
 | `K15-E091`/`E095` certified enclosure | **repaired again**; five controls pass with the exact radius, width `1.2e-18` |
 | `K15-E094'` certified regions | **unchanged**, but see below: produced with a radius that used the mesh, so **pending** re-certification with the exact radius |
-| `K15-E099` conditional twelve-face theorem | **conditional**, premise open, not refuted (§3) |
+| `K15-E099` twelve-face theorem | **theorem modulo Lindelöf 1869** — the premise that was open in `REVIEW_0608` §11 is proved in §7 below |
 | continuum certificates / universal pair claims | **pending**, as instructed |
 
 **`E094'` re-certified with the exact radius.** The exact inradius *improves* the constants
