@@ -10,10 +10,11 @@ faces.  Then vol Omega(w1) > 5.763417470 = 2 sqrt32 - V_dod.
 
 Proof.
   (1) BASE POLYTOPE.  Let D' be Omega(w1) with the five ring faces moved in to distance 1
-      (all other faces kept where they are).  Every face of D' is at distance >= 1, and D'
-      has twelve faces, so vol D' >= V_dod by Hales-McLaughlin (the cell of a saturated
-      packing is contained in any twelve of its half-spaces, and its volume is at least
-      V_dod).
+      (all other faces kept where they are).  NOTE the inclusion is D' SUBSET Omega: pushing
+      faces in shrinks the polytope, so the volume inequality cannot come from the inclusion
+      (an earlier draft had this backwards).  What is true is direct: D' is the Voronoi cell
+      of w1 with respect to the same twelve neighbours, so every face is at distance >= 1 and
+      the imported Hales-McLaughlin bound gives vol D' >= V_dod.
 
   (2) RING-EXCESS LEMMA.  Moving one face of a polytope outward at unit speed increases the
       volume at rate equal to that face's area.  Moving the five ring faces from 1 to b

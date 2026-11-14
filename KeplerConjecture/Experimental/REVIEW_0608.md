@@ -428,15 +428,21 @@ This is the block's main positive result, and it is a proof, not a computation.
 *Proof.*
 
 **(1) Base polytope.** Let `D'` be `Ω(w1)` with the five ring faces moved in to distance `1`,
-every other face left where it is. Then `D' ⊇ Ω(w1)`, so `vol D' ≥ vol Ω(w1) ≥ V_dod` — the last
-step being the imported Hales–McLaughlin bound — and every face of `D'` is at distance `≥ 1`.
+every other face left where it is. Note the inclusion is `D' ⊆ Ω(w1)` — pushing faces *in*
+shrinks the polytope — so the volume inequality cannot come from the inclusion, and an earlier
+draft of this proof wrongly wrote `D' ⊇ Ω`. What is true is stronger and simpler: **`D'` is the
+Voronoi cell of `w1` with respect to the same twelve neighbours**, hence every face of `D'` is at
+distance `≥ 1` and the imported Hales–McLaughlin bound gives `vol D' ≥ V_dod` directly. (That
+theorem is about Voronoi cells of 2-separated point sets; it needs neither saturation nor the
+full configuration.)
 
-**(2) Ring-excess lemma (§9).** Moving the five ring faces from `1` to `b = ρ_r/2` gains
+**(2) Ring-excess lemma (§9).** The path runs from `K(1) = D'` to `K(b) = Ω(w1)`, so moving the
+five ring faces from `1` to `b = ρ_r/2` gains
 `5(b−1)·mean_t A_ring(t)` where the mean is over the path and `A_ring` are the ring-face areas
 of the polytope at that point. Hence
 
 ```
-vol Ω(w1) ≥ vol D' + 5(b−1)·A_min ≥ V_dod + 5(b−1)·A_min ,
+vol Ω(w1) = vol D' + 5(b−1)·mean_t A_ring(t) ≥ vol D' + 5(b−1)·A_min ≥ V_dod + 5(b−1)·A_min ,
 ```
 
 with `A_min` the least ring-face area anywhere on the path.
