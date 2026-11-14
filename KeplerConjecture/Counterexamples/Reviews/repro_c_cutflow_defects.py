@@ -94,6 +94,27 @@ except TypeError as e:
 print("    main() never reaches this path -- it tests 'if not edges' and reports the pointwise")
 print("    condition instead -- so this is a robustness gap for other callers, not a live crash.")
 
+print("=" * 96); print("D6  degenerate-input robustness of the rest of the module"); print("=" * 96)
+degen = [
+    ("cut_value: no edges",            lambda: cf.cut_value([F(1),F(-1)], [], [0])),
+    ("singleton_bounds: empty graph",  lambda: cf.singleton_bounds([F(1),F(-1)], [])),
+    ("singleton_bounds: 1 vertex",     lambda: cf.singleton_bounds([F(1)], [])),
+    ("global_necessary_condition: []", lambda: cf.global_necessary_condition([])),
+    ("find_violating_cut: no edges",   lambda: cf.find_violating_cut([F(1),F(-1)], [], F(1))),
+    ("find_violating_cut: Phi = 0",    lambda: cf.find_violating_cut([F(1),F(-1)], [(0,1)], F(0))),
+    ("exhaustive_cut_scan: n = 17",    lambda: cf.exhaustive_cut_scan([F(0)]*17, [(i,i+1) for i in range(16)])),
+    ("feasible_flow: Phi = 0",         lambda: cf.feasible_flow([F(1),F(-1)], [(0,1)], F(0))),
+    ("feasible_flow: no edges",        lambda: cf.feasible_flow([F(1),F(-1)], [], F(1))),
+    ("period_decoupling: R = 0",       lambda: cf.period_decoupling(0.0)),
+    ("build_13(0)",                    lambda: cf.build_13(0)),
+    ("build_13(2.0)",                  lambda: cf.build_13(2.0)),
+]
+bad = []
+for label, fn in degen:
+    try: fn()
+    except Exception as e: bad.append((label, type(e).__name__))
+ck("D6 %d/%d degenerate inputs handled" % (len(degen)-len(bad), len(degen)), not bad, str(bad))
+
 print("\nRESULT: %d/%d checks reproduce" % (nchecked[0]-len(fails), nchecked[0]))
 print("        " + ("ALL DEFECTS REPRODUCE (4 live + 1 latent)" if not fails else "FAILED: %s" % fails))
 sys.exit(0 if not fails else 1)

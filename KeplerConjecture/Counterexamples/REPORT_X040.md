@@ -243,6 +243,9 @@ reports the pointwise condition instead — so `python3 cut_flow.py` runs. But t
 docstring says it returns `None` only when the scan is too large, and any caller that evaluates the
 `R < 2` regime through it (or a future C block that drops the `if not edges` guard) crashes instead
 of getting a verdict. It is in `Reviews/repro_c_cutflow_defects.py` as D5, marked latent.
+Everything else in the module is robust on degenerate input: 12 further edge cases (no edges,
+`Φ = 0`, one vertex, empty `b`, `n = 17` over the scan cap, `R = 0`, `build_13(0)`, `build_13(2.0)`,
+`feasible_flow` with no edges) all return a verdict rather than raising — 12/12 (D6).
 
 ### 4.1 Main's `η ≥ 0` guard closes the §17 witness, and the predicates are undisturbed
 
