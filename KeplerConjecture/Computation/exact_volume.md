@@ -42,6 +42,35 @@ Let `P = ⋂{planes}` and `Q = conv(vertices)`.
 `Q ⊆ P` (V1) and `P ⊆ Q` (V3+V6) give `P = Q`; V5 gives boundedness, so `V` is the complete vertex
 set of `P`. Every step is rational arithmetic.
 
+## 3b. The soundness statement
+
+**Proposition.** If `check_certificate(cert)` returns `V`, then the volume of
+`P = ⋂{a·x ≤ d : (a,d) ∈ cert["planes"]}` equals `V`.
+
+*Proof.* Write `C` for `cert["candidate_planes"]` and `Q = conv(cert["vertices"])`.
+
+1. **V0** puts every plane of `C` among the constraints, so `P ⊆ ⋂C`.
+2. **V1** puts every vertex in every constraint, so `Q ⊆ P`.
+3. **V3** makes each listed facet a genuine 2-face of `Q`: its vertices lie on its plane `a_f`, are
+   `≥ 3` and not collinear, so their convex hull is a 2-dimensional subset of `Q ∩ {a_f·x = d_f}` and
+   is contained in a facet; the recomputed area vector being an outward multiple of `a_f` says the
+   polygon's interior lies on the `≤` side. **V6a** makes the faces distinct.
+4. **V5** gives `Σ_f A_f = 0`; substituting `A_f = λ_f a_f` (`λ_f > 0` by V3) and taking the inner
+   product with any `x` in the recession cone `{x : a_f·x ≤ 0 ∀f}` gives `Σ λ_f (a_f·x) = 0` with
+   every term `≤ 0`, hence `a_f·x = 0` for all `f`. **Rank 3** then forces `x = 0`. So `P` is
+   bounded, and being a bounded polyhedron it is the convex hull of **all** its vertices.
+5. By 3, every facet of `Q` lies on a plane of `C`, so `⋂C ⊆ ⋂{facets of Q} = Q`; with 1 and 2,
+   `P = Q`, and the vertex list is complete.
+6. Every other plane of `cert["planes"]` is satisfied by all vertices (V1), hence by `Q = P`, so it
+   is redundant — dropping it does not change `P`. Hence `P = ⋂C = Q`.
+7. **V7** and **V8** compute the volume of `Q` exactly and agree with each other and with the
+   certificate's field. So `vol(P) = V`. ∎
+
+The obligations are therefore not a checklist of local sanity conditions: together they entail the
+claim. The witnesses in section H show what happens when one of them is missing — V6a absent admits
+a doubled facet list, V1 restricted to `C` admits a constraint violation — which is why they are
+regressions.
+
 ## 4. Search is not trusted
 
 `certify_volume(planes, v, candidates=None)`:
