@@ -52,7 +52,7 @@ Astra can differentiate `V` in `(θ, φ)` with interval arithmetic, the `2e4`-bo
 by two orders of magnitude and this request should be re-scoped before it is run.
 
 That is the complete certification of the C5 family, and it is cheap. What it is **not** is a
-bound over completions: the domain of `REVIEW_0523` §3 has up to 200 coordinates, and the
+bound over completions: the domain of `REVIEW_0523` §3 has up to 46 coordinates, and the
 atom's cost per box (≈10 s in pure Python) is irrelevant next to the box count at that
 dimension. The dimension, not the atom, is the obstruction, and this request deliberately does
 not pretend otherwise.
