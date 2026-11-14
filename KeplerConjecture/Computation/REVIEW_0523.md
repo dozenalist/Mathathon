@@ -281,6 +281,9 @@ Receipt `2026-11-14T13:29:44Z`. Every commit of this block, on the real clock:
 | `1c930f7` | 14:14:28 | the near-contact scan widened to 500 instances in five families |
 | `c679065` | 14:15:46 | REVIEW_0523 clock section -- every commit with its UTC time, and the ac... |
 | `7ee7a6a` | 14:16:25 | a CLI so Main can feed a rational packing without editing code |
+| `d7ef85d` | 14:17:11 | refresh the clock table with the final two commits |
+| `5485a91` | 14:18:12 | the tests and the audit run from any working directory |
+| `e280966` | 14:18:48 | compact_verify made cwd-independent too |
 
 **Substantive work accounting.** The repair, its audit and the reconciliation were done and pushed by
 `14:14Z`; of the block's span, the compute-bound portion is `nearcontact_scan.py` at roughly 13
