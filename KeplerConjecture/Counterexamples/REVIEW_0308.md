@@ -594,3 +594,47 @@ Agreement to nine decimals (the last two digits differ only because I evaluate w
 15 digits while C uses a directed enclosure). **So the two headline shell-route numbers are
 independently confirmed**, with `η = 0` throughout, and the `η < 0` defect above has no bearing on
 them.
+
+---
+
+## 19. The remaining collective obligation, stated once and precisely
+
+After this review the geometric/transfer route stands as follows. Define `b(v) = √32 − vol Ω(v)`,
+the transfer graph `G_R` (edges at distance `≤ R`), and for a finite `U ⊆ Λ` the edge boundary
+`δ⁺_R(U)`. Then:
+
+**(O1) The cut condition** (`K15-C044`, accepted for finite `Λ`; the finite-to-infinite step is still
+owed): `Σ_{v∈U} b(v) ≤ Φ|δ⁺_R(U)|` for **every** finite `U` and one explicit `Φ`.
+
+**(O2) What is known about `Φ`.** Necessarily `Φ ≥ 0.0088802684` (the singleton cut at an
+icosahedral vertex, `C081r`, verified here). In the FCC-like regime that is the extremal cut (§8.3);
+if the twelve outer cells were dodecahedral — a configuration whose existence *is* the open question —
+the cluster cut would force `Φ ≥ 1.3853219/72 = 0.0192`. So **any claimed `Φ` must be at least
+`0.0089`, and `0.0192` is not excluded.**
+
+**(O3) What is *not* available.** No argument bounds `Σ_U b` from below in general: for my dense
+completion the 13-cluster deficit is `−54.4` (negative), so `Φ = 0` satisfies that cut; and
+`CUTEQUIV` shows the family of cuts contains the full-period one, which is *exactly* Kepler. Hence
+the route cannot be easier than Kepler, and the honest target is a `Φ` plus a cut proof for the
+*defective* components only — i.e. `(T′)` for isolated defects, or its averaged transfer form.
+
+**(O4) The `|U|^{2/3}` form** requires `U = B(x,r)∩Λ` (`C079`, corrected); for a comb-shaped `U` only
+`|δ⁺| ≤ k_R|U|` holds. Any proof must therefore either restrict to ball cuts or *prove* an
+isoperimetric bound for the `U`'s it uses.
+
+That is the whole remaining content of route R1 in four lines. Everything else in the route —
+negligibility (`C035`, with the factor-`R` correction), the count (`C019`, Tammes-conditional), the
+boundary constants (`C079`) — is settled or explicitly conditional.
+
+## 20. Block close
+
+| task | outcome |
+| --- | --- |
+| timing correction | done (previous block: 43.565 min, not 60) |
+| `7c56c5ee` correctness argument | audited clause by clause; **proved scoped rule**; `function_range` delegated; no `try:`; **`η < 0` witnessed unsound (§17)** |
+| `C081` / `C081r` / `C079` / `C044` / `C080` | withdrawal confirmed; `C081r` proved *necessary only*; `C079` accepted; `C044` needs compactness; `C080` accepted |
+| `CUTEQUIV` | verified — the full-period cut is exactly Kepler |
+| C's numbers | `SOSQSIDE-005` and the two headline shell-route values **independently recomputed and confirmed** |
+| C's first open obligation | **CLOSED** — `X-C015` `0.813631`, `X-C016` `0.783098`, **`X-C017` `0.782267`**, both sides explicit, zero sign tests |
+| E's `Q` | accepted as settled (saturated extension + containment, no equality) |
+| pitfalls recorded | `nsimplify` corrupting rationals; LDL run on floats instead of rationals; the `S`-power mismatch; the `G`-singularity misconception |
