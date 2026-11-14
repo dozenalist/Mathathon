@@ -3008,6 +3008,27 @@ beat `6.333804` — i.e. the spread-monotonicity lemma of `K15-C101` in the form
 twelve apart decreases the cell volume faster than adding centres decreases it". `PN-1` is
 unchanged in substance and now has one fewer degree of freedom.
 
+**How far the reduction reaches, exactly.** Let `C` be admissible and let `C'` be the same
+*directions* placed at radius exactly `ρ`. Since `r ≥ ρ` gives
+`{⟨u,x⟩ ≤ ρ/2} ⊆ {⟨u,x⟩ ≤ r/2}`, the cell of `C'` is contained in that of `C`, so
+`vol Ω(C) ≥ vol Ω(C')`. Then:
+
+- **`|C| ≤ 12`**: `vol Ω(C') ≥ V_dod(ρ/2)³`, because `C'` is a set of at most 12 points on
+  the sphere of radius `ρ` and [12-point optimality + spread monotonicity] says the
+  icosahedral directions minimise the cell. So `V(2.09) ≥ 6.333804` for every configuration
+  with at most 12 centres, and combined with `C102` (equality attained, extras redundant)
+  this gives `V(2.09) = 6.333804` **on the `|C| ≤ 12` branch**.
+- **`|C| ≥ 13`**: the reduction **stops**. `C'` is then `≥ 13` points on the sphere and is *not*
+  2-separated (moving a centre inward breaks the 2-separation), so neither Tammes-13 nor
+  `C102` applies, and more constraints can in principle shrink the cell below
+  `V_dod(ρ/2)³`. For a *packing* `C`, at most 12 of its centres can be at radius `≤ 2.0911`
+  (Tammes-13), so the `≥ 13` case forces at least one centre at radius `> 2.0911` — and such
+  a centre is redundant at the icosahedral base but not provably redundant at a clustered one.
+
+So the open content of `(S)` is now exactly: **`|C| ≥ 13`, with at least one centre at radius
+`> 2.0911`.** That is one integrality-and-trade-off statement, not a search over all
+configurations, and it is what `PN-1` should be asked for.
+
 *Status.* `PROVED` for the stated finite check (the minimisation is over a `2`-parameter
 family with a closed form for the radius, so it is checkable to interval-arithmetic standard;
 Main ran it numerically only). Reviewer X.
