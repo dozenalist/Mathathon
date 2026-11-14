@@ -137,8 +137,100 @@ def main():
         "discriminate; the icosahedral-cluster fixture has b > 0 on its central cell but a mean "
         "cell volume far ABOVE sqrt32, so its full-period sum is negative and it does not refute.")
     print("STRUCTURAL CONCLUSION\n  " + out["structural_conclusion"].replace(". ", ".\n  "))
+    blobs = main_blobs()
+    out["blobs"] = blobs[:12]
+    out["phi_lower_bound_from_fixture"] = (blobs[0]["ratio"] if blobs else None)
     json.dump(out, open("out/cut_deficit.json", "w"), indent=1)
     print("\nwrote out/cut_deficit.json")
+
+
+# --------------------------------------------------------------------------- blobs
+# Appended after the first version: the evaluator above only computed fixture volumes and the
+# full-period test.  Main's item 3 asks for cut DEFICITS on blobs, which is what follows.
+
+def icosa_adjacency():
+    """Adjacency of the 12-cell ring around the central cell of the 13-cluster.
+
+    The twelve icosahedral neighbours: each vertex of the icosahedron is adjacent (shares a
+    Voronoi face) with its 5 icosahedral neighbours.  Vertex 0..11 in the order produced by
+    the golden-ratio construction; we rebuild the graph from coordinates so the convention is
+    explicit rather than asserted."""
+    from mpmath import mpf as M2, sqrt as s2
+    phi = (1 + s2(5)) / 2
+    V = []
+    for s1 in (1, -1):
+        for s3 in (1, -1):
+            V.append((0, s1 * 1, s3 * phi))
+            V.append((s1 * 1, s3 * phi, 0))
+            V.append((s3 * phi, 0, s1 * 1))
+    V = V[:12]
+    edge2 = 4.0                      # icosahedron edge^2 = 4 for these coordinates
+    adj = {i: set() for i in range(12)}
+    for i in range(12):
+        for j in range(i + 1, 12):
+            d2 = sum((V[i][k] - V[j][k]) ** 2 for k in range(3))
+            if abs(float(d2) - edge2) < 1e-9:
+                adj[i].add(j); adj[j].add(i)
+    return adj, V
+
+def blob_report():
+    """Cut deficits for blobs in the 13-cluster fixture.
+
+    Cells: index 0 = central (volume V_dod = 5.550291, b = +0.106563), indices 1..12 = the ring
+    (volume (period - V_dod)/12 = 340.870809, b = sqrt32 - that < 0).
+    Adjacency: central is adjacent to all twelve; the ring is the icosahedron graph.
+    A blob's edge boundary is the set of faces between U and its complement, which for a union
+    of cells is the number of adjacent cell pairs crossing the cut.
+    """
+    fx = icosa_cluster_fixture()
+    V0 = fx["central_cell_volume"]; V1 = fx["other_cell_volume"]
+    b0 = fx["central_b"]; b1 = SQRT32 - V1
+    adj, _ = icosa_adjacency()
+    import itertools
+    results = []
+    def boundary(U):
+        Uset = set(U)
+        cnt = 0
+        # central-ring faces
+        for i in U:
+            for j in range(13):
+                if j == i:
+                    continue
+                inside = (j in Uset)
+                if i == 0 and j != 0 and not inside:
+                    cnt += 1
+                elif j == 0 and i != 0 and not inside:
+                    cnt += 1
+                elif i != 0 and j != 0 and j in adj[i - 1] and not inside:
+                    cnt += 1
+        return cnt
+    for size in (1, 2, 3):
+        for U in itertools.combinations(range(13), size):
+            if 0 not in U:
+                continue          # only blobs containing the small cell can have b > 0
+            sb = sum(b0 if i == 0 else b1 for i in U)
+            bd = boundary(list(U))
+            if bd > 0:
+                results.append(dict(blob=list(U), sum_b=float(sb), boundary=bd,
+                                    ratio=float(sb) / bd))
+    results.sort(key=lambda r: -r["ratio"])
+    return results
+
+def main_blobs():
+    print("\n== blob cut-deficits in the 13-cluster fixture ==")
+    print("   (b = sqrt32 - vol; central cell has b > 0, ring cells have large b < 0)")
+    rs = blob_report()
+    print("   %-18s %14s %10s %12s" % ("blob (cells)", "sum_U b", "|d^+U|", "ratio"))
+    for r in rs[:6]:
+        print("   %-18s %14.6f %10d %12.6f" % (str(r["blob"]), r["sum_b"], r["boundary"], r["ratio"]))
+    if rs:
+        best = rs[0]
+        print("\n   Largest ratio found: %.6f at blob %s" % (best["ratio"], best["blob"]))
+        print("   => any Phi satisfying the cut condition for EVERY packing must exceed %.6f" % best["ratio"])
+        print("   (this is a LOWER bound on Phi from one fixture, not a refutation: the full-period")
+        print("    blob of this fixture has sum_U b = %.3f < 0, so it is satisfied there)"
+              % float(torus_test(icosa_cluster_fixture())["total_b"]))
+    return rs
 
 if __name__ == "__main__":
     main()

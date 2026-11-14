@@ -468,3 +468,13 @@ is a local request (obligation 1 in `REVIEW_0138.md` §10).
 Supersedes `K15-C-SOSQSIDE-001`'s `2.82361314`. The improvement from a wider search is recorded as
 evidence the search **has not saturated**, so `2.61993314` is a best-found value, not an optimum —
 the same status discipline the review required elsewhere.
+
+### K15-COMP-023 — 2026-11-14 — Computation (role C), cut-deficit blob scan
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-CUTBLOB-001 | measured | blob cut-deficits in the periodised 13-cluster: the singleton blob `{central cell}` has `Σ_U b = +0.106563` and `|δ⁺(U)| = 12`, ratio **0.008880**; larger blobs are not binding (they pick up the enormous ring cells, ratio ≈ −21). Hence **any `Φ` satisfying the cut condition for every packing must exceed `0.008880`** | `cut_deficit.py` (`blob_report`), `out/cut_deficit.json` |
+| K15-C-CUTWEAK-001 | measured | the fixture is weak: its density `0.0032` is 55× below Kepler because the twelve ring cells are huge. A fixture near the Kepler density would have ring cells near `√32` and could push the ratio much harder — **that is the next fixture to build**, and it needs exact Voronoi volumes for a perturbed close packing | same |
+
+**Honest status:** `0.008880` is a *lower bound* on `Φ` from one fixture, not a refutation. The
+fixture's full-period blob gives `Σb = −4022.46`, so the condition is satisfied there.

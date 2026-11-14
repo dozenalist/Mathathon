@@ -161,6 +161,30 @@ blob — e.g. by restricting to blobs with a *prescribed* boundary-to-volume rel
 replacing `b` with a functional whose mean is zero on every packing. That is a design change for
 Main and Experimental, not something the evaluator can settle.
 
+### Actual cut deficits on blobs (added after the first version)
+
+The first version of the evaluator computed fixture volumes and the full-period test only, which
+is not what item 3 asks. It now enumerates blobs (unions of cells, three sizes, adjacency built
+from explicit icosahedron coordinates rather than asserted) and reports `Σ_U b` against the edge
+boundary `|δ⁺(U)|`:
+
+| blob (cells) | `Σ_U b` | `\|δ⁺(U)\|` | ratio |
+| --- | --- | --- | --- |
+| `{central}` | +0.106563 | 12 | **0.008880** |
+| `{central, ring-1}` | −335.107392 | 15 | −22.34 |
+| `{central, ring-i}` | −335.107392 | 16 | −20.94 |
+
+**Result: any `Φ` satisfying the cut condition for every packing must exceed `0.008880`**, from
+this one fixture. Larger blobs are not binding there (they pick up the enormous ring cells and go
+strongly negative), and the full-period blob gives −4022.46, so the fixture does **not** refute the
+condition — it only forces a positive constant. That is a genuine quantitative output from a
+concrete periodic packing, and the smallest useful contribution this evaluator can make.
+
+Note the asymmetry that makes the fixture weak: its density is `0.0032`, fifty-five times below
+Kepler, because the twelve ring cells are huge. A fixture near the Kepler density would have ring
+cells close to `√32` and could push the ratio much harder. **That is the next fixture to build**,
+and it needs exact Voronoi volumes for a perturbed close packing.
+
 ### Reproduced
 
 ```bash
