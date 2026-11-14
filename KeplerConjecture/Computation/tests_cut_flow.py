@@ -252,6 +252,23 @@ def main():
         flows = [r for r in out["rows"] if r["kind"] == "flow"]
         check("the external flow is exactly verified", flows and flows[0].get("cap_ok")
               and flows[0].get("divergence_ok"), flows)
+        # the PROVISIONAL stamping path: a fixture whose volumes are estimated must be marked,
+        # and the flag must survive into every row of the report.  Never exercised before.
+        _os.makedirs(".scratch", exist_ok=True)
+        tmp = _os.path.join(".scratch", "provisional.json")
+        prov = dict(name="provisional_copy", note="volumes estimated, must be stamped",
+                    edges=[[int(a), int(b)] for (a, b) in fx["edges"]],
+                    b_lo=[str(x) for x in fx["b_lo"]], b_hi=[str(x) for x in fx["b_hi"]],
+                    volumes_are_provisional=True)
+        import json as _j
+        _j.dump(prov, open(tmp, "w"))
+        try:
+            fxp = CF.load_external_fixture(tmp)
+            check("volumes_are_provisional is read as True", fxp["provisional"] is True)
+            outp = CF.evaluate_external(fxp)
+            check("the provisional flag appears in the report", outp["provisional"] is True)
+        finally:
+            _os.remove(tmp)
 
     print()
     if FAILS:
