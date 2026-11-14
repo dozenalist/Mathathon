@@ -306,8 +306,8 @@ the minimum is *attained*, at `c` itself, so no improvement of that bound can he
 **Both families are quantitatively excluded, and nothing between them is available.**
 
 **What a proof must therefore do.** It must produce a *configuration-specific* lower bound on the
-ten remaining... sorry, on the twelve payer cells that exceeds `V_dodeca` in total by
-`1.385321873`, using the actual neighbour data — which for a payer is: one neighbour at exactly
+twelve payer cells that exceeds `V_dodeca` in total by `1.385321873`, using the actual neighbour
+data — which for a payer is: one neighbour at exactly
 `2` (`c`) and five at `2.1029244485`. The only feature that distinguishes these payers from a
 generic cell is that their five non-central neighbours sit *just beyond* tangency, so their
 bisectors are at `1.051462` rather than `1`. That gain is real but small, and capturing it
