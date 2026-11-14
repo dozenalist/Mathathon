@@ -30,8 +30,10 @@ Summary:
   competitive. `K15-E046` (perturbation heuristic) is **withdrawn** as non-additive.
 - `K15-E045` centre cell exactly dodecahedral in every completion: **PROVED**, so the deficit
   `0.1065632209769` is exact and unavoidable.
-- `(T'-R2')` itself: **OPEN**. Best certified per-cell lower bound `4.733968`; best computed
-  upper bound `8.167277`; required `5.665735`.
+- `(T'-R2')` itself: **OPEN**, with **no numerical evidence either way** — `K15-E062`
+  retracts the `S - D`/slack figures and the `4.734076`/`8.167277` bounds, which came from a
+  broken buffer flag. The best *certified* per-cell lower bound remains the imported
+  `5.550291`; required `5.665735`.
 
 ---
 
