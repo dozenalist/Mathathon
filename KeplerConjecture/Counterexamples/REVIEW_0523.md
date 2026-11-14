@@ -319,10 +319,14 @@ for every ε > 0 :   density{ v : vol Ω(v) > V_dod + ε }  =  0 ,
 ```
 
 because the terms are `≥ V_dod` and their Cesàro mean tends to `V_dod`. That does **not** say that
-almost every cell has volume *exactly* `V_dod`; it allows every cell to have volume
-`V_dod + ε_v` with `ε_v → 0`. Step (3) then does not apply (it is an equality statement, not a
-stability statement), so "every cell is a dodecahedron" does not follow, and neither does "every
-centre has twelve contacts".
+almost every cell has volume *exactly* `V_dod`. What it leaves open — not what it asserts — is that
+every cell has volume `V_dod + ε_v` with `ε_v → 0` and no cell dodecahedral; the averaging argument
+cannot exclude that, because `Σ_{v∈B} ε_v` can be `o(R³)` while `ε_v > 0` everywhere (take
+`ε_v = 1/|v|`, whose sum over a ball of radius `R` is `O(R²)`). Step (3) then does not apply — it is
+an equality statement, not a stability statement — so "every cell is a dodecahedron" does not
+follow, and neither does "every centre has twelve contacts". (Whether such a packing *exists* is a
+separate question, and §6's next paragraph shows that even a volume-stability theorem would not
+settle it.)
 
 To close it one needs: `vol Ω(vₙ) → V_dod` ⟹ the cells become asymptotically dodecahedral ⟹ the
 contact directions become asymptotically the twelve icosahedral ones ⟹ a positive density of
