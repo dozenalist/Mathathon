@@ -27,6 +27,7 @@ run transfer_evaluator      "antisymmetric transfer, pointwise FCC, cancellation
 run multi_defect_test       "defect isolation; 2x2x2 grid"
 run frank_kasper_test       "A15 saturated fixture"
 run periodic_relax          "periodic relaxation recovers fcc / pi/sqrt18"
+run icosa_cut_check         "cut/flow fixture: 12 payers, exact distances, surplus bracket"
 # evidence integrity: every JSON must parse, every TXT must be non-empty
 bad=0
 for f in Experimental/evidence/*.json; do

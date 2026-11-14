@@ -66,6 +66,36 @@ chk("relaxation recovered density", 0.7404803708455797, sp.pi/sp.sqrt(18), 1e-6)
 chk("icosahedral defect paid by 12", 12, 12, 0)
 
 print()
+print("== 0308 block: K15-E070 (Q = YES) ==")
+phi=(1+sp.sqrt(5))/2; sc=2*sp.sqrt(2)/sp.sqrt(5+sp.sqrt(5))
+raw=[]
+for a in (1,-1):
+    for b in (1,-1):
+        raw += [(0,a,b), (a,b,0), (a*phi,0,b)] if False else [(0,a*sp.Integer(1),b*phi),(a*sp.Integer(1),b*phi,0),(a*phi,0,b*sp.Integer(1))]
+V=[tuple(sp.simplify(sc*sp.sympify(t)) for t in v) for v in raw]
+chk("cluster has 12 outer vertices", len(V), 12, 0)
+dmin=None; dmax=None
+for i in range(12):
+    for j in range(i+1,12):
+        d=sp.sqrt(sum((V[i][k]-V[j][k])**2 for k in range(3)))
+        dd=float(d)
+        dmin=dd if dmin is None or dd<dmin else dmin
+        dmax=dd if dmax is None or dd>dmax else dmax
+chk("min outer-outer distance (must be >= 2)", dmin, 2.1029244485, 1e-9)
+chk("max outer-outer distance", dmax, 4.0, 1e-9)
+cc=[float(sp.sqrt(sum(v[k]**2 for k in range(3)))) for v in V]
+chk("min |c - w_i| (must be exactly 2)", min(cc), 2.0, 1e-12)
+chk("V_dodeca < sqrt32  (the (Q) inequality)", Vd, 5.5502910285155, 1e-12)
+print("  => the cluster is 2-separated and its centre cell is D with vol D < sqrt32;")
+print("     adding centres only shrinks it, so a saturated extension has vol < sqrt32 (E070).")
+chk("deficit for the cut", sp.sqrt(32)-Vd, 0.106563220976869926, 1e-15)
+chk("12*(4pi/3) shortfall", (13*sp.sqrt(32)-Vd)-12*(4*sp.pi/3), 17.72333176, 1e-6)
+chk("12*V_dodeca shortfall", (13*sp.sqrt(32)-Vd)-12*Vd, 1.385321873, 1e-9)
+Ap=(sp.Rational(1,4))*sp.sqrt(25+10*sp.sqrt(5))*(4/sp.sqrt(10+22/sp.sqrt(5)))**2
+chk("collar bound 12*(4pi/3+A_pent)", 12*(sp.Rational(4,3)*sp.pi+Ap), 66.9163555430, 1e-9)
+chk("best-of-four ratio", 12*(sp.Rational(4,3)*sp.pi+Ap)/(13*sp.sqrt(32)-Vd), 0.98422595, 1e-8)
+
+print()
 print("== 0138 block: retraction bounds ==")
 print("  (the S-D magnitudes are RETRACTED and deliberately not checked:")
 print("   they were computed with a broken buffer flag; see REVIEW_0138.md section 5)")

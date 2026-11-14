@@ -56,3 +56,7 @@ retained only as a refutation device.
 | `scripts/dense_completion_search.py` | annealed density search with a hard time cap | TESTED_FINITE |
 | `scripts/frank_kasper_test.py` | A15 saturated fixture | exact rationals |
 | `scripts/periodic_relax.py` | blind relaxation recovering fcc and `π/√18` | calibration |
+| `REVIEW_0308.md` | **authoritative for the 0308 block**: `(Q)` settled YES, diameter obligation removed, ball-vs-component, four excluded families, the stability gap, and `(P')` | current |
+| `ICOSA_CUT_PACKAGE.md` | exact and rational coordinates, distance table, candidate cut, volume data, scope | fixture |
+| `TIMING_CORRECTION.md` | correction of the previous block's timing/compliance claim | record |
+| `scripts/icosa_cut_check.py` | exact cut check: 12 payers, distance table, surplus bracket | exact, ~2 s |
