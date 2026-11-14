@@ -445,3 +445,18 @@ Nothing here is a bound on packing density, and none of it is a Kepler proof.
 `run_all_checks.py`'s "every ledger constant re-derived — PASS" (`X-C071`-era tip, all 17 checks pass
 once `Main/` is present) is accurate for 140 of 143 entries and silent on the one that decides
 `C101` case (B). The number is right (`X-C070`); the regression net has a hole where that number lives.
+
+## 18. The 45-vs-53 arc counts reconcile, and 14 pairs are tangential
+
+Cross-checked my `corrected_cover.arcs()` (45 raw pieces) against Main's repaired `inner_arcs`
+(53 "proper"): identical pair set, and the difference is zero-width bookkeeping. Of the 121 pairs at
+`d = 2`, **69** never come closer than 2, **14 are tangential** (`min_t d² = A − R = 4` exactly, so
+`c = −1` and `half = π − acos(−1) = 0` — a single touching twist, no arc), and **39 genuinely violate**
+for some twist and fold into the 45 pieces. Main counts the 14 tangential ones as "proper"; my 60-digit
+code classifies one of them as "empty" because `A − R` evaluates to `4 + 10⁻⁵⁸`. So both covers rest on
+the same 39 pairs, and the conclusion is unaffected.
+
+The worth-knowing part: the certificate is carried by **39 of 121 pairs**, and 14 pairs sit exactly at
+distance 2 for exactly one twist each — a strict-inequality argument would have to exclude those
+explicitly, while the inner-arc formulation disposes of them automatically (their arcs are empty after
+the margin). It also shows why Main's `1e-30` margin, rather than a `1e-58` epsilon, is the right device.

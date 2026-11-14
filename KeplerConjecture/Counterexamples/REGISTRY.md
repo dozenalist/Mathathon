@@ -1285,3 +1285,29 @@ mpmath recomputation plus a proof of the covering step), so this is a gap in the
 wrong number: if `nearest_13th.py` regressed, `constants_check.py` would not notice. The fix is a
 one-line `chk` against `nearest_13th.min_admissible`, or against the closed form
 `ρκ + √(ρ²κ²−ρ²+4)` used in `nearest_13th_indep.py`.
+
+### K15-X-C078 — why my cover has 45 arcs and Main's has "53 proper": 14 pairs are tangential with zero-width arcs
+
+`corrected_cover.arcs()` returns **45** raw arcs where Main's repaired `inner_arcs` reports **53**
+proper arcs. Reconciled exactly, over the same 121 pairs at `d = 2`:
+
+| class | count | note |
+| --- | --- | --- |
+| never closer than 2 (`A − R > 4`) | 69 (Main: 68) | no arc |
+| **tangential**: `min_t d² = A − R = 4` exactly | **14** | zero-width arcs; `c = −1`, `half = π − acos(−1) = 0`; contribute nothing |
+| genuinely violating (`A − R < 4 < A + R`) | **39** | these carry the cover; folding them mod `2π/5` gives the 45 raw pieces |
+
+`68 + 53 = 121` and `69 + 39 + 13 = 121`: Main's "proper" count includes the 14 tangential pairs
+(one of which my 60-digit code classifies as "empty" because `A − R` comes out `4 + 10⁻⁵⁸`). Both
+implementations therefore agree on the *set* that matters — 39 pairs, merged to `[0, 2π/5]` — and the
+counts differ only by zero-width bookkeeping.
+
+Two things worth stating because they are easy to lose: the certificate is carried by **39 of 121**
+pairs, and **14 pairs are tangent at distance exactly 2** for exactly one twist each. A strict-inequality
+treatment would have to exclude those 14 explicitly; the inner-arc formulation does it automatically,
+since their arcs are empty after the margin. The cover does not depend on any of them.
+
+**A 1-count difference remains**: `A − R = 4` for 14 pairs, and at 60 digits one of them computes as
+`4 + 1e-58` and falls into "empty". It changes no arc, but it shows the classification is exactly at a
+numerical boundary for those pairs — the reason Main's `1e-30` inner margin, not a `1e-58` epsilon, is
+the right device.
