@@ -81,3 +81,31 @@ does **not** remove the difficulty, because `sqrt(32)` is still above the dodeca
 | mutual distance of outer centres | `2.1029244484765` | `> 2`, legal |
 | `|c - w_j|` | exactly `2` | tangent, as required |
 | minimal separation in all fixtures | `2.0` | verified each run |
+
+## Why a sparse correction at the defect does not work either
+
+Having observed that `A(c) = sqrt(32) - V_dodeca` is the smallest positive correction that
+repairs the icosahedral defect, it is natural to ask whether one may simply set `A` to that
+value at defective centres and `0` elsewhere. **It fails negligibility**, for a reason worth
+recording because it also explains why `K15-E001` is formulated the way it is.
+
+Negligibility demands `sum_{v in Lambda(x,r)} A(v) <= C1 r^2`. If `A` is supported on the
+defective set, the sum is at least `0.1065632` times the number of defective centres in
+`B(x,r)`, which is `O(r^3)` as soon as the defective set has positive density. Nothing
+prevents that: deficits must be *balanced* in aggregate (otherwise the packing would beat
+`pi/sqrt(18)`), but their number need not be small — the surpluses can be concentrated far
+away. So the sparse `A` is not negligible and does not satisfy Definition 3.2.
+
+This is not a defect of the idea but a structural point: **a correcting function must either
+be globally defined with telescoping cancellation (Hales's construction, where negligibility
+comes from `sum vol VC - sum vol Omega = O(r^2)`) or it must not exist at all.** That is
+precisely why `K15-E001` is stated as a *cluster-average* criterion rather than as a rule for
+choosing `A`: inside a cluster the surplus is available locally and needs no bookkeeping, and
+the negligibility requirement disappears because `A` may be taken to be `0`.
+
+So the two difficulties are separate and both real:
+
+1. even the smallest positive `A` at the defect only lowers the requirement to `sqrt(32) =
+   5.656854`, still `1.9 %` above the dodecahedral floor (table above);
+2. any `A` supported only on defects fails negligibility, so `A = 0` with cluster averaging is
+   the only viable form — which returns us to `(T'-R2')`.
