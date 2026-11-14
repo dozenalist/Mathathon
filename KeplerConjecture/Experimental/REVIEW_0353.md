@@ -294,8 +294,9 @@ This is the supervisor's objection, and it is correct.
 
 *Proof* (finite, exact, machine-checked). `K = ⋂_{i=1..12}{x : x·n_i ≤ 1}` with
 `n_i = p_i/2`, `|p_i| = 2`, for the contact sets of Main's file. The vertices are triple
-plane intersections in `Q(√3)` (`H = √(8/3)`), so everything below is symbolic, not
-floating point: `Experimental/scripts/barlow_contact_cell.py` (1.4 s, exit 0). Enumerating:
+plane intersections in `Q(√2, √3)` (`H = √(8/3) = 2√6/3`, so `√6` enters), and everything
+below is symbolic rather than floating point: `Experimental/scripts/barlow_contact_cell.py`
+(1.4 s, exit 0). Enumerating:
 
 | type | vertices | `|x|²` values (multiplicity) | `vol` | `max|x|` |
 | --- | --- | --- | --- | --- |
