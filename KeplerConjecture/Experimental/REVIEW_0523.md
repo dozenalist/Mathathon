@@ -125,6 +125,15 @@ the pairwise form. Nothing in this file may be read as the former.
 
 All three geometric controls contain their reference value; the whole run is 6.6 s.
 
+**And out of sample.** The controls are fixed configurations, so the enclosure is also checked
+against the independent float code path (`c5_fixture.py`: numpy plus a `ConvexHull` volume) at
+random `(θ, φ)` in the legal window — `volume_crosscheck.py`. Agreement is to `~1e-15`, i.e.
+the float's own accuracy, which is the strongest statement a float comparison can make.
+
+*(The first version of that check demanded that the float value lie inside the `1e-18`-wide
+enclosure and "failed" on a case whose values agreed to twelve digits. A float carries `1e-15`
+error, so containment in a `1e-18` interval is not a meaningful test — the tolerance form is.)*
+
 ### 2.5 One nontrivial box — and the honest size of the step
 
 The same sandwich accepts *interval* centres, so it evaluates a whole region at once. For the
