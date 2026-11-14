@@ -2353,3 +2353,35 @@ in different parametrisations: C's Laguerre certificates, X's `P(s)e^{−s}` fam
 Main's `u = π|x|²` checker. Their bare numbers are not comparable across normalisations —
 X's bound is `(4/(3√π))P(0)/Q(0)`, Main's is `(4π/3)R` — and only the converted
 occupied-volume values may be compared. All three are above `0.779747`.
+
+### K15-C087 — the cut condition is not a weaker target: large ball cuts *are* the theorem (`PROVED`)
+
+For a ball cut `U = B(x,r) ∩ Λ` with `r` large, the cells of the vertices in `U` tile
+`B(x,r)` up to a boundary layer, so
+
+```
+Σ_{v∈U} b(v) = √32|U| − Σ_{v∈U} vol Ω(v)
+             = √32 c·(4π/3)r³ − (4π/3)r³ + O(r²)
+             = (4π/3)r³ (√32 c − 1) + O(r²),
+```
+
+while the right side of the cut condition is `Φ|δ⁺(U)| ≤ Φ·3k_R R r² = O(r²)`. So the
+cut condition for large balls reads
+
+```
+(√32 c − 1)·r³ ≤ O(r²),      i.e.   c ≤ 1/√32 + O(1/r),
+```
+
+which is exactly `δ ≤ π/√18` in the limit. **The cut condition for large ball cuts is
+the Kepler bound itself**, not a weakening of it.
+
+**What this settles.** `K15-C080`'s "strictly weaker than `(T')`" applies only to
+*small* components: the cut condition must also hold for large balls, and there it
+is the theorem. So the transfer route is not a way to weaken the target; it is a way
+to *reorganise* the proof (negligibility for free, `K15-C035`) whose price is that
+the geometric content reappears at full strength. This is the precise form of
+`K15-C071`'s "trade", and it should stop any future block from pursuing the cut
+condition as though it were easier than Kepler.
+
+*Status.* `PROVED` (asymptotic identity from the tiling, plus `K15-C043`'s chain in
+the other direction). Reviewer X.
