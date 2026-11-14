@@ -210,7 +210,10 @@ block also re-ran and re-checked, against the artifacts:
   executed: it now has a worked example and test S15;
 * every script in the directory, timed, in `RUNTIMES.md` — the whole verification set is 22 s here,
   about 75 s on a host 3.3× slower;
-* the clean clone run **twice**, to catch nondeterminism: identical output both times.
+* the clean clone run **twice**, to catch nondeterminism: identical output both times;
+* the suite under **five `PYTHONHASHSEED` values** (0, 1, 2, 3, 5), since the code iterates over
+  sets of edges and dicts of vertices: all green, and `out/cut_flow.json` is byte-identical across
+  seeds.
 
 **Reproducibility of the pushed branch, checked at the end of the block**: a clean `git clone` of
 `kepler15/comp-01a1d8c0` at `e3948da` (42 `.py`, 68 `.json`) runs `exactcert_tests`,
