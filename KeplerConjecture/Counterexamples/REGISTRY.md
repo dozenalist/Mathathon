@@ -1507,8 +1507,8 @@ Coverage gives `Σ ≥ (4π/3)R³ − O(R²)` (cells of centres with `|v| ≤ R+
 Constants re-derived (`D(1) = 63`, `D(1.4555) = 87`, `2+2D = 128/176`, `1/1.5³ = 0.296296`, crossover
 `0.1967082337`). Witness that the mis-sign is not vacuous: the saturated lattice `2·{i+j+k even}` (cells of
 volume `16`, covering radius `2`) has `Σ/((4π/3)R³) = 1.013658, 1.000110, 0.999759` at `R = 20, 40, 80`,
-so no negative slack is available. Notation defect: `|B_R|` is a cardinality on the right of the same
-display where `(4π/3)R³` is a volume.
+so no negative slack is available. (Withdrawn: `|B_R|` is the count throughout and the volume is written out as `(4π/3)R³`; there is no
+symbol collision. Only the direction of the first inequality is wrong.)
 
 ### K15-X-C087 — Experimental `6ae7dbf`: my `X-C080` is closed; the gate and the radius are now exact
 
