@@ -710,3 +710,87 @@ revision can be audited the same way. **Why `e229923`'s new self-check does not 
 vertex range the same way (`n` from the edge list), so both agree on a truncated vertex set. The
 self-check is a genuine repair of the `1e-9`-grid defect it names (`8.3·10⁻⁹` below the cut scan's
 `t*`), and it cannot test an assumption it shares.
+
+### K15-X-C037 — `C_R` in Theorem B is defined as the wrong set; the identity needs the one-endpoint sum
+
+`GEOMETRIC_LEMMA_0438.md` (a6f3935) line 90 defines `C_R := Σ_{e : e ⊄ B∖E_B} c_e` (every edge not
+contained in `B∖E_B`), while line 94 uses it in `|B| − |E_B| = 2Σ_{e⊆B∖E_B}c_e + C_R`. The middle
+sum counts each edge with multiplicity `#{e ∩ (B∖E_B)}`, so the identity holds iff `C_R` is the sum
+over edges with **exactly one** endpoint in `B∖E_B`. With line 90's set, an edge entirely outside
+`B` with `c_e > 0` breaks it, and for a translation-invariant weighting there are infinitely many,
+so `C_R = +∞` and line 100 is vacuous. The document's own self-audit at line 409 states the correct
+object, so this is a definition typo; `C_R ≤ O(R²) + 12|E_B|` (line 120) is right for the corrected
+definition. Exact witness: `Reviews/witness_0438_audit.py` W1 — `|B|−|E_B| = 4`, `2S₂+S₁ = 4`,
+`2S₂+(S₁+S₀) = 13/3`, discrepancy exactly the weight of one edge touching `B` neither.
+
+### K15-X-C038 — `(M)`'s characterisation is the FRACTIONAL Tutte condition and is correct (my first reading was wrong)
+
+Line 197: `(M)` holds iff for every finite `S`, `#isolated vertices of G−S ≤ |S|`. That is the
+fractional condition `ν*(G) = min_S (|V|+|S|−iso(G−S))/2 = |V|/2`, and it is **correct**: verified
+against an LP on **all 33,867 graphs with `n ≤ 6`**, 0 mismatches (`Reviews/witness_0438_audit.py`
+W2 runs `n ≤ 5`). An earlier draft of this review read it as Tutte's *integral* condition (odd
+components) and "refuted" it with the triangle; the triangle refutes only the integral form, and
+that claim is withdrawn. The practical certificate form is Farkas: `(M)` infeasible ⟺ ∃`y` with
+`y_u+y_v ≤ 0` on every edge and `Σy > 0`; on `K_{1,12}` the certificate is `y = −1` at the centre,
+`y = +3/4` at the twelve leaves (edge sums `−1/4`, total `8`).
+
+### K15-X-C039 — the failure of `(M)` is not "exactly" an icosahedral cluster (wording)
+
+The mechanism is "some `S` with `iso(G−S) > |S|`". The icosahedral 13-cluster is its extremal
+geometric instance, not the only one: `K_{1,3}` fails via `S =` its centre, and three contacts at a
+centre is a legal local configuration. The conclusion the document draws (the bridge's hypothesis is
+not automatic) is unaffected; the word "exactly" should go.
+
+### K15-X-C040 — "(L)'s equality case is exactly the Barlow family" is refuted by C095
+
+Line 40 asserts the converse (equality in `(L)` ⟹ Barlow) and proves only Barlow ⟹ equality. `C095`
+gives the counterexample: the crack packing is saturated, **every bulk cell has volume `√32`
+exactly**, so any bulk–bulk contact pair has `vol Ω(v)+vol Ω(w) = 2√32` — equality in `(L)` — and
+`C095` §4 states the packing is **not** Barlow (layer spacing `d ≠ H` across the crack). The same
+file's §5 table records this ("crack packing | bulk–bulk | equality in the bulk"), so line 40
+contradicts line 240. Repair: "attained on every Barlow packing and on the bulk of every planar-fault
+packing; the equality family is not classified".
+
+### K15-X-C041 — Theorem C's "the equality case of the dodecahedral bound is empty" needs a stability theorem
+
+Consequence 2 (line 385) infers from equality of *density* that "every cell is a dodecahedron". The
+bound is a limit of averages and all terms are `≥ V_dod`, so equality gives only
+`density{vol Ω > V_dod + ε} = 0` for each `ε > 0`; cells of volume `V_dod + ε_v` with `ε_v → 0` are
+compatible with that and are not dodecahedral. Closing the step needs: `vol Ω(vₙ) → V_dod` ⟹ cells
+asymptotically dodecahedral ⟹ asymptotically twelve contacts — a **quantitative stability version of
+Hales–McLaughlin**, which `EXPOSITION_0438.md` §6 itself names as unavailable. The corollary is not
+refuted (it may well be true); the argument given is not a proof of it. Theorem C itself is correct
+and I checked its split, its two-sided volume estimate and `ρ ≤ 1/2`.
+
+### K15-X-C042 — the slack inequality at line 215 has the wrong coefficients (cosmetic)
+
+With `d_v + Σ_{e∋v}c_e = 1` on `B∖E_B`, the same edge split gives
+`Σ_{v∈B}vol Ω ≥ √32(|B| − |E_B| − Σd_v) − (√32 − V_dod)·C_R` — coefficient `√32 ≈ 5.657` on `Σd_v`
+and `√32−V_dod = 0.1066` on `C_R`. The document displays `(2√32−2V_dod) = 0.2131` on `Σd_v` and
+`√32` on `C_R`, which is not what the split gives and is *stronger* than it. Both terms are
+`o(R³)` in the intended regime, so the conclusion is the same either way; the display should be
+corrected or re-derived.
+
+### K15-X-C043 — Theorem D step 4 confirmed independently, and the E/Main discrepancy resolved
+
+`Reviews/two_dodecahedra_indep.py`: building the two icosahedral rings from the dodecahedron's face
+normals, putting the centres at distance 2 and maximising over the twist about the `v`–`w` axis gives
+`sup_t m(t) = 1.125554844510` at `t = 36°` (required 2; shortfall 0.8744) — Main's
+`1.12555484451` confirmed to twelve digits, over a *superset* of the legal configurations (legality
+forces the shared pentagon to coincide, a multiple of 72°), so the impossibility is a fortiori.
+**The "unresolved discrepancy" with E is resolved:** `1.056487696` is a value of the same function,
+attained at twist `33.636862°` and `38.363138°`, while its supremum is `1.1255548`. E sampled
+another twist; Main's number is the supremum. Main's four tabulated values at `0°, 18°, 36°, 54°`
+are this script's `m` at `36°, 54°, 0°, 18°` (twist origin shifted by 36°).
+
+### K15-X-C044 — `cut_flow.py` at `a25f5be` still truncates the vertex set in three functions, line-specifically
+
+Blob `c2127cee`. `singleton_bounds` (line 236) and `load_external_fixture` (line 415) use
+`n = len(b_lo)` ✓; `exhaustive_cut_scan` computes `n` from the edges at line 306 but repairs it at
+line 307 with `n = max(n, len(b_lo))` ✓. The three that still truncate: **`find_violating_cut`
+line 269**, **`feasible_flow` line 352**, **`verify_flow_exact` line 390** — all
+`n = max(max(e) for e in edges) + 1 if edges else 0`. So D8 is unchanged, the one-line fix pattern
+already exists two functions away, and `evaluate_external` still emits `status: PATCH_FEASIBLE` on a
+fixture that is infeasible at every `Φ` (five vertices, edges on `0..3`,
+`b = (−1,−1,−1,−1,+1)`). `Reviews/repro_c_cutflow_defects.py Reviews/C_cut_flow_a25f5be.py` → 9/13
+checks reproduce, the four that do not being D1/D2/D3.
