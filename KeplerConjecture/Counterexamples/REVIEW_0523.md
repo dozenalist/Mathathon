@@ -138,6 +138,24 @@ via `S =` its centre, and a solid angle of three neighbours is a legal local con
 13-cluster". The conclusion the document draws from it — that the bridge's hypothesis is not
 automatic — is unaffected.
 
+**A second over-claim in the same paragraph (found by the block's swarm, verified here).** Line 204
+says "twelve centres on the sphere of radius 2 about `v` with mutual distance `≥ 2` is exactly the
+icosahedral twelve (Tammes-12)". That is false: the icosahedral twelve on radius 2 have minimum
+mutual distance `4√2/√(5+√5) = 2.102924448`, which is *strictly* greater than 2, so every small
+perturbation of the icosahedron is still admissible. The set of twelve-point configurations on the
+sphere with mutual distance `≥ 2` is positive-dimensional; Tammes-12 is the *optimiser* of the
+minimum distance, not the solution set of `≥ 2`. Consequence: the failure set of `(M)` is much
+larger than "the icosahedral 13-cluster", which is the second reason (after `K_{1,3}`) that
+"exactly" is the wrong word at line 199.
+
+**`K_{1,3}` is geometrically realisable, not just a graph.** `v = 0` and the three points
+`2·(1,1,1)/√3`, `2·(1,−1,−1)/√3`, `2·(−1,1,−1)/√3`: each is at distance 2 from `v`, and their
+mutual distances are `√(32/3) = 3.266 ≥ 2`, so the contact graph of this configuration **is**
+`K_{1,3}` and `(M)` fails on it. (It is not saturated — the leaves have unbounded cells — so this
+refutes the characterisation of the *graph* condition, not the existence of a saturated packing
+with that contact graph. Whether a saturated packing can realise `K_{1,3}` is a separate question
+and I do not claim it.)
+
 **Exceptional vertices and their weights.** `E` must have upper density zero, and the proof uses
 `|E_B| = o(R³)` for `E_B = E ∩ B(0,R)`, which is exactly what upper density zero gives for balls ✓.
 `c_e ≤ 1` follows because `c_e` is one summand of `Σ_{e'∋v}c_{e'} = 1` ✓, and the same argument
@@ -179,7 +197,10 @@ configuration can have a centre at *exactly* `2R_max` from `v`, where the half-s
 the one place where "no other centre contributes" needs the word "closed" rather than "open". ✓
 
 **(e) The cardinality bound** `N_max = vol(B(0,2R_max))/(4π/3)` is a constant factor off (the
-disjoint unit balls lie in `B(0,2R_max+1)`), which does not matter for compactness ✓.
+disjoint unit balls lie in `B(0,2R_max+1)`, so the count is `(2R_max+1)³`), which does not matter
+for compactness ✓. The same slip propagates into §4.1b's headline number: "at most
+`(21.865)³ ≈ 10453` points" should be `(22.865)³ ≈ 11956`. Cosmetic — the point of that paragraph
+is that the search is finite and enormous — but the number is quoted as a concrete bound.
 
 **Step (3) is where the document says a referee should push** (line 448–451): it uses
 Hales–McLaughlin's *equality* case, `vol Ω = V_dod ⟺ Ω` regular dodecahedron. **I checked it
@@ -280,6 +301,17 @@ contact pairs. That is a **quantitative stability version of Hales–McLaughlin*
 `EXPOSITION_0438.md` §6 itself says it is the unavailable object ("Extracting an explicit `δ₀` is
 equivalent to a stability version of Hales–McLaughlin"). So the corollary is asserted from exactly
 the tool the exposition says is missing.
+
+**The corollary is nevertheless true, for a reason that does not help the route.** `π/√18 =
+0.740480 < 0.754697 = (4π/3)/V_dod`, so Hales' theorem alone says no packing attains the
+dodecahedral bound. That is a two-line proof of the *statement*, and it is worth stating because it
+tells the reader what the corollary is worth: inside a chain whose purpose is to prove Kepler, a
+corollary that follows from Hales cannot be used as independent evidence, and the route to it
+through Theorem C would need the stability statement that the exposition says is missing. (This
+observation is the block's swarm member `m3`'s; I checked it and it is right, with one correction:
+their derivation addressed "`vol Ω = V_dod` off a density-zero set", which is stronger than density
+equality, so it does not prove the corollary either — it proves the different statement that
+almost-everywhere exact dodecahedral cells are impossible.)
 
 **What is unaffected:** Theorem C itself (line 352) is correct — I checked the split into internal
 pairs and `U_B`, the two-sided volume estimate, `P_B ≤ |B|/2` hence `ρ ≤ 1/2`, and the final
