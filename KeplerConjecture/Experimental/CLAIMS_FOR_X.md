@@ -1,85 +1,105 @@
 # Claims for independent review — role X
 
-Each claim is stated so it can be attacked without reading the rest of my material.
-Reviewer: X (`i-ve-attached-viazovska-f7hh`). Do not accept a claim because a computation
-agrees; state which hypothesis fails if one does.
+Reviewer: X (`i-ve-attached-viazovska-f7hh`). Each claim is stated so it can be attacked
+without reading the rest of my material. **The 27616 review is accepted in full**; the
+items below are the repaired and new claims, plus the four audit points the review asked
+me to raise with X.
 
-## K15-E001 — cluster-averaged criterion (status PROVED, argument in LOCAL_CRITERION.md §1)
+## K15-E001 — cluster-averaged criterion (PROVED)
 
-Claim: let `Lambda` be saturated with separation `>= 2`; let `Pi` be a partition of
-`Lambda` into finite clusters with `diam <= D` and `|K| <= Vmax`; let
-`c(v) = vol Omega(v) + A(v)`. If `c(v) >= 0` for all `v`, `sum_{v in K} c(v) >=
-sqrt(32)|K|` for all `K in Pi`, and `sum_{v in Lambda(x,r)} A(v) <= C1 r^2`, then
-`delta(x,r,Lambda) <= pi/sqrt(18) + C/r` with `C` depending only on `C1, D, Vmax`.
+Let `Lambda` be saturated, `Pi` a partition into clusters with `diam <= D`, `c(v) =
+vol Omega(v) + A(v)`. If `c >= 0`, `sum_{v in K} c(v) >= sqrt(32)|K|` for all `K in Pi`,
+and `A` is negligible, then `delta(x,r,Lambda) <= pi/sqrt(18) + C/r`. Hales's Lemma 3.3
+is the singleton case.
 
-**Attack points I want checked.**
-1. Step 2's fibre bound: each `t in T` lies in exactly one cluster `K(t)`, and the
-   preimage of `t` under `v |-> t(v)` is contained in `K(t)`. Is the partition hypothesis
-   used correctly, or does it silently require `Pi` to be a *cover* with bounded
-   multiplicity?
-2. Step 3 uses `|Lambda cap B(y,rho)| <= (rho+1)^3`. Is that valid for all `rho >= 1` for
-   a separation-`>= 2` set, and is the annulus estimate `(r+2+D)^3 - (r+1)^3 = O(r^2)`
-   uniform in `r >= 1`?
-3. The degenerate case `r = 1` and `D` large relative to `r`: does the constant `C`
-   remain independent of `r`? My absorption step assumes `(1+3/r)^3 - 1 = O(1/r)`, fine,
-   but the `C' r^2` term is compared against `vol B(x,r) ~ r^3` only for `r >= 1`, so the
-   constant may blow up as `D -> infinity`. Confirm that `C` is allowed to depend on `D`
-   but not on `r` or `x`.
-4. Does `A` need to be measurable, bounded, or bounded below? (C3) is used for
-   nonnegativity only.
+**This is a conditional accounting lemma, not a density bound.** Review asks to quantify
+the removed burden: what is removed is the explicit transfer formula (V-cells, Lemma 5.28,
+the four-way cancellation of Lemma 7.10); what is *not* removed is the geometric
+hypothesis `K15-E004`. See `LOCAL_CRITERION.md` §5.
 
-## K15-E002 — dodecahedral fixture (status PROVED, exact)
+**Audit points (the review's request).**
+1. Step 2 needs each cluster meeting `Lambda \ S` to lie in `B(x, r+1+D)`. Does any step
+   use cluster *convexity* rather than diameter?
+2. Is saturation needed beyond `Omega(v) subset B(v,2)`? State the weakest form.
+3. (C3) nonnegativity is used only to drop terms with `v in S \ S'`. Does a signed
+   version with `A` bounded below survive?
+4. (C2) is implied by (C1) plus separation `>= 2`; confirm `Vmax` may then depend on `D`.
 
-Claim: the regular dodecahedron of inradius 1 has volume
-`(15+7sqrt5)/4 * (4/sqrt(10+22/sqrt5))^3 = 5.5502910285155... < sqrt(32)`.
-Consequence: no fcc-compatible `A` can be identically zero.
+## K15-E002 — dodecahedral fixture (PROVED, exact)
 
-**Attack.** Is the icosahedral 13-cluster actually realisable as a subconfiguration of a
-*saturated* packing? If not, the fixture is only a lower bound on cell volume over
-non-saturable clusters and the conclusion "`A` cannot vanish" weakens to "`A` cannot
-vanish on clusters that occur in saturated packings". Please settle the realisation
-question explicitly, including whether the 12 outer centres (mutual distance
-`~2.1029`) can be completed.
+`V_dodeca = (15+7sqrt5)/4 * (4/sqrt(10+22/sqrt5))^3 = 5.5502910285155 < sqrt(32)`.
+Hence no fcc-compatible `A` vanishes identically.
 
-## K15-E003 — no numerical certification of cluster averages (status PROVED)
+**Open sub-question.** Is the icosahedral 13-cluster realisable inside a *saturated*
+packing? If not, the conclusion weakens to "no `A` vanishes on clusters that occur in
+saturated packings". Settle this before `K15-E002` is cited.
 
-Claim: for `K subset K'`, `vol_{K'} Omega(v) <= vol_K Omega(v)`; hence finite
-computations bound cell volumes from above and can only refute a cluster-average lower
-bound. Our recorded values `8.69` (sparse completion) and `12.90` (denser randomised
-completion) are upper bounds and must not be quoted as evidence for `K15-E004`.
+## K15-E003 — no certification by truncation (PROVED)
 
-**Attack.** Is monotonicity correct for *unbounded* cells, i.e. when `K` is not
-saturating and `Omega_K(v)` is unbounded? My statement needs `vol_K Omega(v)` defined as
-an extended value; if some cells are unbounded the comparison still holds but the
-numbers are infinite, which only strengthens the point. Confirm the formulation.
+Cell volume is monotone decreasing under adding centres, so finite computations give
+upper bounds and can only refute `K15-E004`. Recorded values `8.69` (sparse) and `12.90`
+(randomsed, denser) are uninformative upper bounds.
 
-## K15-E004 — the open question (status OPEN)
+## K15-E004 — the open geometric question (OPEN)
 
-Claim: with `A = 0`, is `sum_{v in K} vol Omega(v) >= sqrt(32)|K|` for every cluster of
-diameter `<= D` in every saturated packing? `D = infinity` is Kepler.
+With `A = 0`: is `sum_{v in K} vol Omega(v) >= sqrt(32)|K|` for every cluster of diameter
+`<= D` in every saturated packing? `D = infinity` is Kepler.
 
-**Attack.** Try to refute at small `D`: two adjacent centres; the tetrahedral 4-cluster;
-the icosahedral 13-cluster; a perturbed FCC with one centre displaced. If any cluster in
-a saturable packing has average below `sqrt(32)`, the route needs a nonzero `A` and I want
-the witness.
+**Refutation attempts wanted:** adjacent pair; tetrahedral 4-cluster; icosahedral
+13-cluster; perturbed FCC. A witness inside a saturable packing redirects the route.
 
-## K15-E2 — local-mass rows (status SPECIFIED, unevaluated)
+## K15-E010 — cap inequality direction (PROVED; repairs K15-C013)
 
-Claim to audit: the rows `mu(B(0,rho)) <= N(rho)` are valid for *every* packing, hence
-outside Li's obstruction, and `N(2) = 12` is tight on FCC, HCP and all Barlow stackings.
+For `k` points on `S^2` with minimal angular separation `theta`,
+`k * 2pi(1 - cos(theta/2)) <= 4pi`, hence `theta <= 2 arccos(1 - 2/k)`. For `k=13`,
+`theta <= 2 arccos(11/13) = 64.40845 deg`, and `13*2pi*(1-11/13) = 4pi` exactly.
 
-**Attack.** Confirm that `N(rho)` is a property of the packing class and not of a lattice;
-confirm the kissing number is the correct value at `rho = 2` and not `13` at `rho = 2+eps`
-in a way that would exclude the equality family. If an added row excludes HCP, the
-candidate is dead by the equality-fixture test.
+This is an **upper** bound on `theta`. C013's "only forces `theta >= 64.4 deg`" has the
+direction reversed. The cap bound is vacuous because `theta_min(delta) <= 60 deg` always,
+and `64.408 > 60`.
 
-## K15-E3 — Delaunay obstruction (status OBSTRUCTED)
+**Attack:** check the cap-area formula (a cap of angular radius `phi` has area
+`2pi(1-cos phi)`), and check that `theta/2` is the right radius, not `theta`.
 
-Claim: pure Delaunay per-simplex bounds fail at `(2,2,2,2,l,l)`, `l = sqrt(2(3+sqrt6))`,
-density `~0.78469`. We reproduce `0.78317` by Monte Carlo (s.e. `~0.001`), consistent
-but not resolved to five digits.
+## K15-E011 — radius conversion (PROVED)
 
-**Attack.** Verify the source locator (Hales unabridged Section 2.1) and whether the
-simplex really occurs in a *saturated* packing; confirm that `l` is the value at which the
-density crosses `delta_oct ~ 0.7209` (source says `x_0 ~ 2.504`). If the simplex cannot
-occur, the obstruction is weaker than I state.
+For centres at radii `r, s in [2, 2+delta]` with mutual distance `>= 2` and angle `theta`,
+`cos theta <= (r^2+s^2-4)/(2rs) <= 1 - 2/(2+delta)^2`. Proof: the right side is maximised
+at `r = s = t` where it is `1-2/t^2`, increasing in `t`. Hence
+`theta >= arccos(1-2/(2+delta)^2)`, which is decreasing in `delta`, `60 deg` at
+`delta = 0`.
+
+No assumption that centres share a sphere. Confirm that using the *weakest* per-pair
+constraint is legitimate as a necessary condition.
+
+## K15-E012 — explicit thin-shell count (PROVISIONAL)
+
+If `theta_13` is an upper bound for the minimal angular separation of 13 points on `S^2`,
+then for `delta < sqrt(2/(1-cos theta_13)) - 2` at most 12 centres lie in `[2, 2+delta]`.
+
+**PROVISIONAL because** I did not verify `theta_13 = 57.1367 deg` from a primary source.
+With it, `delta_0 = 0.0911455`. With the cap bound of `K15-E010`, `delta_0 = -0.1236`, no
+information.
+
+**X's task:** pin the primary locator for Tammes `N = 13` and re-evaluate, or replace
+`K15-E012` by C013(a)'s unconditional `n <= (3+delta)^3 - 1`. I do not claim a new
+threshold; `delta_0` is a derived function of a classical constant.
+
+## K15-E013 — Barlow compatibility of the 12-shell (OPEN, for C/X)
+
+Does every Barlow stacking have at most 12 centres in `[2, 2+0.0912]`? FCC and HCP do
+(12 at `|y|=2`, next shell `2 sqrt 2 = 2.8284`, so the bound holds for `delta < 0.8284`).
+A stacking with an unusually short next shell would break `K15-E012`'s equality fixture.
+This is the concrete finite question that must be settled before `K15-E012` is used.
+
+## K15-E020 — local-mass row (SPECIFIED; validity PROVED, strength UNEVALUATED)
+
+Row: `n_v(rho) <= N(rho)` for every centre, with the proved choice
+`N(rho) = (rho+1)^3 - 1` from C013(a). Stated as a constraint on the *pair measure*, not
+on contacts, so it survives the review's objection that a twelve-contact sum misses
+distant completions.
+
+**Attack:** confirm the measure form is linear in the SDP variables; confirm the row does
+not exclude FCC/HCP (slack 14 at `rho = 2.01`, so it does not); confirm the row cannot be
+sharpened to the kissing value without `K15-E012`; and confirm I have not claimed novelty
+over `DLOV14` Section 5.

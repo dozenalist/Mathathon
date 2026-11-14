@@ -192,3 +192,39 @@ the pointwise version and is the natural candidate to violate the averaged versi
 Note that (C1)–(C5) with `A = 0` and unbounded `D` is equivalent to the theorem, so no
 claim of a shortcut is made here; the content is the reframing plus the proved
 criterion plus the certification obstruction.
+
+## 5. What the criterion actually removes, and what it does not
+
+`K15-E001` is a **conditional accounting lemma**. It is not a bound on packing density
+and it does not shorten Hales's proof by itself. The honest accounting:
+
+**Removed.** (i) The obligation to write an explicit pointwise transfer formula. In Hales
+the corrected volume must be correct cell by cell, and the machinery that achieves this —
+the V-cell construction (Chapter 5), its compatibility with the Q-system (Lemma 5.28),
+and the four-way cancellation `sum_i A1(S,c,v_i) = 0` (Lemma 7.10) — exists to make the
+transfer explicit and to make negligibility provable. Under (C4) none of that is needed:
+the compensation is absorbed into an average. (ii) The pointwise failure at the
+dodecahedral configuration (`K15-E002`) stops being fatal, because the configuration is
+precisely a case where a small cell has large neighbours.
+
+**Not removed.** (i) `K15-E004` is unproved, and it is the entire geometric content.
+(ii) The hypothesis (C4) is a universal statement over cluster *shapes*, which is a larger
+quantifier range than a single formula. (iii) `K15-E003` shows (C4) cannot be certified by
+truncated computation. So the criterion relocates the difficulty; it does not reduce it.
+Any statement that it "simplifies Hales" must be qualified as *simplifies the interface
+between the local analysis and the accounting*, not the local analysis itself.
+
+### Audit points for X (boundary clusters, saturation, signs)
+
+1. **(C1) versus the boundary count.** Step 2 needs each cluster meeting `Lambda \ S` to
+   lie in `B(x, r+1+D)`, using `diam K <= D` and `v in S`. Confirm no use of cluster
+   *convexity* is smuggled in — diameter suffices, but check the step as written.
+2. **Saturation.** Used only for `Omega(v) subset B(v,2)`. Is saturation required, or does
+   `Omega(v) subset B(v, c)` with a constant `c` suffice, giving a different final
+   constant? The criterion should state the weakest form it needs.
+3. **(C3) nonnegativity.** Used only to discard terms with `v in S \ S'`. Hales's own
+   `vol Omega + A` is positive in his construction, but the criterion should not assume it
+   silently. Is there a version that survives signed `A` with a bounded-below hypothesis?
+4. **Bounded cluster size.** Listed as (C2) for clarity, but implied by (C1) and
+   separation `>= 2`; confirm that the constant `Vmax` used in Step 2 is then not
+   independent of `D`.

@@ -81,3 +81,33 @@ certified icosahedral cluster average) filed in
 Remaining gap: `K15-E004` is the whole content and is open; `K15-E001` does not shorten
 the proof until a cluster-level local lemma is proved analytically. No claim of a
 shortcut is made.
+
+### K15-EXP-002 — 2026-11-14, America/Los_Angeles — role E (Experimental)
+
+Second block, following review 27616. Branch `kepler15/experimental/run-01`, based on
+Main checkpoint `a08f378be6a03f80ac075b34f8ba99aeb8201d9e`. Ultramath not used; no swarm
+started or resumed.
+
+| claim | status | change |
+| --- | --- | --- |
+| `K15-E010` | PROVED | cap inequality direction repaired: it is `theta <= 2 arccos(1-2/k)`, an upper bound; `13*2pi*(1-11/13) = 4pi` exactly |
+| `K15-E011` | PROVED | exact radius conversion for centres of differing radius in `[2,2+delta]`; binding case at the largest radius; `theta_min` decreasing, `60 deg` at `delta = 0` |
+| `K15-E012` | PROVISIONAL | explicit 12-shell bound with `delta_0 = sqrt(2/(1-cos theta_13)) - 2`; numeric `0.0911455` depends on an **unverified** Tammes-13 constant |
+| `K15-E013` | OPEN | Barlow compatibility of the 12-shell; FCC/HCP safe up to `delta < 0.8284` |
+| `K15-E020` | SPECIFIED | local-mass row `n_v(rho) <= (rho+1)^3 - 1` in measure form; validity proved from C013(a); strength unevaluated; slack 14 at the contact shell |
+| `K15-E001` | PROVED (conditional) | burden quantified: removes the explicit transfer formula, does not remove `K15-E004`, cannot be certified numerically |
+| `K15-EXP-001` Job B | WITHDRAWN | unauthored driver removed; replaced by two proved lemmas and a precise enclosure problem |
+
+Reconciliation of the 27616 review: the cap reversal is accepted and repaired
+(`K15-E010`); the "twelve-contact Fourier sum" objection is accepted and the analytic
+candidate is reformulated as an integral constraint on the pair measure (`K15-E020`),
+which does capture distant completions. The `delta < 0.0366` rounding is replaced by the
+exact `28^(1/3) - 3 = 0.0365889718757`, verified to `1e-12`.
+
+Negative results retained: the cap bound alone yields `delta_0 < 0`, so the thin-shell
+route needs a genuine Tammes-13 input and a count bound rather than a volume bound;
+C013(a)'s volume count is vacuous for `n <= 12` (`13^(1/3) - 3 < 0`).
+
+Artifacts: `Experimental/SHELL_CONVERSION.md`, `Experimental/ANALYTIC_LOCAL_MASS.md`,
+`Experimental/scripts/shell_conversion.py`,
+`Experimental/evidence/shell_conversion.txt`, plus the revised `LOCAL_CRITERION.md` §5.

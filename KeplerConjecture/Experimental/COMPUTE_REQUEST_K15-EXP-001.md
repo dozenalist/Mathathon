@@ -41,32 +41,36 @@ remaining    = values at rho > 3 not requested; the SDP may only use certified r
 Note: `N(2) = 12` is the kissing number (Schutte–van der Waerden) and should be recovered
 as a control. Values just above 2 are the hard ones.
 
-## Job B — certified cluster-average for the icosahedral 13-cluster (K15-E004)
+## Job B — WITHDRAWN, narrowed to a proved analytic lemma
 
-Purpose: decide whether the icosahedral 13-cluster satisfies
-`sum_{v in K} vol Omega(v) >= sqrt(32)|K|`, which is the first test case for the
-cluster-averaged criterion `K15-E001`.
+The certification driver for the icosahedral cluster average is **withdrawn**. It was
+labelled NEEDS_AUTHOR in the previous block and remains unauthored; per the review of
+27616 it is not a runnable request and must not be counted as one.
 
-Blocking subtlety, already established (`K15-E003`): cell volume is monotone decreasing
-under adding centres, so a finite cluster gives an **upper** bound. A certification must
-therefore supply a *lower* bound for the worst completion, not a sampled value.
+It is replaced by two proved statements, neither of which needs execution:
 
-```text
-command      = python3 Experimental/scripts/cluster_average_certify.py --cluster icosa13 \
-                 --outer-mode certified-taylor --rho-outer 6.0 --precision 1e-12
-parameters   = core = origin + 12 icosahedron vertices at circumradius 2;
-               outer region radius 6; interval arithmetic with directed rounding
-resources    = 4 threads, 8 GB RAM, 2 h cap
-outputs      = Experimental/evidence/icosa13_cluster_average.json
-success      = interval [lo,hi] for sum_{v in K} vol Omega(v) over all separations-2
-               completions; decide lo >= sqrt(32)*13 or hi < sqrt(32)*13
-certification= rigorous interval bound only if the outer optimisation is enclosed
-remaining    = whole-packing statement is NOT implied either way
-```
+**Lemma K15-E003 (PROVED).** For finite `K subset K'` and `v in K`,
+`vol_{K'} Omega(v) <= vol_K Omega(v)`, so finite computations bound cell volumes from
+**above** and can only refute a cluster-average lower bound. Hence no truncated
+computation can certify `K15-E004`.
 
-If Job B is infeasible, the fallback is a one-sided refutation: search for a completion
-whose 13-cluster average is `< sqrt(32)`, which would refute `K15-E004` at `D >= 4` and
-redirect the route. Report infeasibility honestly rather than a sampled value.
+**Lemma K15-E002 (PROVED, exact).** The icosahedral 13-cluster's centre cell is the
+regular dodecahedron of inradius 1, volume `5.5502910285155 < sqrt(32)`, so no
+fcc-compatible `A` vanishes identically. Reproduced to `1e-15` by
+`scripts/icosa_cluster_test.py`.
+
+**Remaining enclosure problem, stated precisely.** To decide `K15-E004` on that cluster
+one must bound
+`inf over admissible completions Sigma of  sum_{v in K} vol_Omega_Sigma(v)`
+from below, where the infimum runs over all 2-separated sets `Sigma` containing the
+13 core points. This is an infinite-dimensional minimisation of a sum of Voronoi volumes,
+and `K15-E003` shows it is not approachable by sampling. A rigorous route would need
+either (a) a lower bound on `vol Omega(v)` in terms of finitely many neighbouring
+distances (Rogers-simplex or Fejes Toth style, valid for every completion), or (b) a
+certified branch-and-bound over the finitely many centres that can influence the core
+cells — namely those within distance `2 + 4 = 6` of the origin, by the standard
+`Omega(v) subset B(v,2)` bisector cut-off. Option (b) is finite but large, and would need
+a genuine interval enclosure, not a float search.
 
 ## What is NOT requested
 

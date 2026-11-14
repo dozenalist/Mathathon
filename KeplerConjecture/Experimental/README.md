@@ -13,6 +13,9 @@ Evaluator: C (`using-the-chats-in-mcl6`).
 | `COMPUTE_REQUEST_K15-EXP-001.md` | two local jobs for Astra | REQUESTED |
 | `scripts/icosa_cluster_test.py` | exact dodecahedron volume and icosahedral cluster cell volumes | reproduced to 1e-15 |
 | `scripts/local_density_fixtures.py` | Monte Carlo of `delta_tet`, `delta_oct`, Hales extremal simplex | TESTED_FINITE |
+| `SHELL_CONVERSION.md` | cap-inequality direction repaired; exact radius conversion for centres in `[2,2+delta]`; explicit 12-shell bound; equality fixtures | `K15-E010` PROVED, `K15-E011` PROVED, `K15-E012` PROVISIONAL, `K15-E013` OPEN |
+| `ANALYTIC_LOCAL_MASS.md` | local-mass row outside ordinary CE, in measure form; proved `N(rho)`; sized evaluator for C | `K15-E020` SPECIFIED |
+| `scripts/shell_conversion.py` | exact cap identity, conversion, delta table | exact, <1 s |
 | `scripts/local_mass_search.py` | exploratory search for `N(rho)` | TESTED_FINITE, inadequate (see below) |
 | `evidence/` | captured outputs | — |
 
