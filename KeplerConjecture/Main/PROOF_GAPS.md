@@ -35,3 +35,20 @@ bookkeeping, verification, or comparison.
    exact implementations) or `PROVED`; `TESTED_FINITE` never enters `RESULTS.md`
    as a bound.
 4. Every status change names the artifact and its hash.
+
+## G11 — the pair constant (new, review 0438)
+
+**Statement.** `σ₀ := inf{vol Ω(v) + vol Ω(w) : contact pair in a 2-separated configuration}`
+satisfies `σ₀ > 2V_dod` — proved (`C108`), but **non-explicit**. The gap is the *value*: any
+explicit `δ₀ = σ₀ − 2V_dod > 0` turns `C108`'s strictness statement into a number, by
+`δ ≤ (4π/3)/(V_dod + δ₀ρ)`.
+
+**Closure conditions.** (i) an explicit `δ₀ > 0` (E's payer problem; the sharp value would be
+`2√32 − 2V_dod = 0.213126`, and the best witness gives `δ₀ ≤ 0.347676`); (ii) `ρ > 0` for every
+saturated packing with high density, or a replacement bridge that does not need a matching.
+**Owner** E (i), M (ii). **Not on the critical path** for `C094`, which no longer depends on it.
+
+## G12 — `shell_check` soundness argument (carried, still open)
+
+Unchanged from `AUDIT_REQUEST_X.md` item 5 and `PN-4`. Note C's report against revision
+`6626714` is a *stale revision* and is not evidence about the current file (`C103`).
