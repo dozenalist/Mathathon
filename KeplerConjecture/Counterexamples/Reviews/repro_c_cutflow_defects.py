@@ -95,5 +95,5 @@ print("    main() never reaches this path -- it tests 'if not edges' and reports
 print("    condition instead -- so this is a robustness gap for other callers, not a live crash.")
 
 print("\nRESULT: %d/%d checks reproduce" % (nchecked[0]-len(fails), nchecked[0]))
-print("        " + ("ALL FOUR DEFECTS REPRODUCE" if not fails else "FAILED: %s" % fails))
+print("        " + ("ALL DEFECTS REPRODUCE (4 live + 1 latent)" if not fails else "FAILED: %s" % fails))
 sys.exit(0 if not fails else 1)
