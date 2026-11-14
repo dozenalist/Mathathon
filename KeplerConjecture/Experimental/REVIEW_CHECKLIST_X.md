@@ -81,3 +81,23 @@ where a wrong assumption would silently produce a valid-looking certificate.
     bug in an earlier version).
 21. The computed sums (`8.17`–`8.32` per cell) are **upper** bounds and must not be quoted
     as evidence for or against `(T')`. Confirm no document does so.
+
+> **What changed after this checklist was written (block `K15-REVIEW-0138-E`).**
+>
+> Parts A–D below are unchanged and still valid. Three additions:
+>
+> 1. **New part E (the transfer theorem, `K15-E061`).** Please check the max-flow reduction,
+>    the exact-cancellation identity, and the `O(r^2)` boundary count. These are proofs, not
+>    computations, and they are short — `REVIEW_0138.md` §3.4 and §14.
+> 2. **`K15-E049` is narrowed** to the uniform-floor directional estimator family (F1–F3)
+>    (`REVIEW_0138.md` §1). Several "closed" statements are withdrawn; do not review them as
+>    current claims.
+> 3. **The `S - D` numbers are retracted** (`REVIEW_0138.md` §5). Item 21 below said the
+>    computed sums must not be quoted as evidence; that instruction was correct and the numbers
+>    have now been formally withdrawn, with the cause identified (a buffer flag that never
+>    fired). If you previously checked those numbers, the check is moot rather than wrong.
+>
+> One item is now the highest priority: **`(Q)`** in `REVIEW_0138.md` §6 — whether a saturated
+> packing can contain a cell below `sqrt32`. The C15 route to it is blocked on primary
+> crystallographic data (§13); the A15 route is done and negative (§9.1).
+
