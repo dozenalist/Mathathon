@@ -5451,3 +5451,44 @@ and its constant is now the measured one.
 (3 exact zero modes) and was wrong; the sampling check was built to be able to *fail* and did. That is the
 third time in this block that a "clean-looking" computation was wrong and an adversarial one was right —
 which is why `l1_sample.py` carries its negative control as a required part rather than a nicety.
+
+#### `C142` addendum 7 — `L1` must be quotiented by `SO(3)`, and as I first stated it, it is FALSE
+
+The local refinement of the `L1` constant drove the ratio `(vol − V_dod)/θ²` down to `0.002387`, stable
+at `θ = 0.005` and `0.002` and twenty thousand times above the noise. That is not a flat direction of the
+*shape*: the search had found the **rotation orbit**. `vol` is exactly invariant under global rotations,
+so along those 3 of the 24 directions `vol − V_dod = 0` identically, and
+
+> **`vol − V_dod ≥ c Σθ²` is false for every `c > 0`**, because `θ` may be a pure rotation.
+
+The correct statement — the one the covering argument actually needs, since `ρ_c` is rotation-invariant
+too — is in terms of the **distance to the rotation orbit**:
+
+```
+L1' :   vol − V_dod  ≥  c · d(θ, Rot)² ,      Rot = the 3-dimensional rotation subspace of R^24 .
+```
+
+**Re-measured with the projection.** `l1_sample.py` now projects each sampled direction onto the
+orthogonal complement of the rotation subspace (built from the `ω × u_j` motions in the tangent basis):
+
+```
+c = 0.13 :  min over 1500 directions x 4 radii of [vol − V_dod − 0.13·d(θ,Rot)²] = +1.11·10⁻⁵
+            min over samples of (vol − V_dod)/d(θ,Rot)²                          = 0.241229
+            negative control (c = 0.30) rejects 4 samples  -> the test can fail
+```
+
+So the measured quotient constant is `0.241`, and `c = 0.13` carries **85% slack**. (My earlier
+non-quotiented measurements of `0.1378` were contaminated by exactly this: a random direction has three
+quarters of its length outside the rotation subspace, so the non-quotiented ratio understates the shape
+curvature by roughly that factor.)
+
+**`δ₀ = 2.8775·10⁻³` stands, and is conservative.** The measurement suggests the constant could be taken
+as `0.24`, which would give `δ₀ ≈ 5.1·10⁻³`; `0.13` is kept because a sample minimum is only an upper
+bound on the infimum. `L1'` remains **unproved** and is the target of `M-CERT-002`, whose statement is
+corrected here to the quotient form.
+
+**Two diagnostics worth keeping.** (i) The "refinement to `c₂ = 0.0024`" was not a discovery of flatness;
+it was the search sliding into a symmetry orbit, and a zero mode that is a *symmetry* is not a stability
+failure. (ii) The matrix Hessian's `λ_min/2 = 0.1753` exceeding a directly measured directional curvature
+`0.1375` is a self-contradiction, which is how the matrix approach was caught: **a Hessian whose
+eigenvalues contradict a directional second difference is wrong, whatever its spectrum looks like.**

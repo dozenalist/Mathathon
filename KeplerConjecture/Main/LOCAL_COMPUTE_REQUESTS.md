@@ -249,7 +249,7 @@ or Astra to collect.
 icosahedral normals,
 
 ```
-vol(θ) − V_dod  ≥  0.17 · Σ_j θ_j²        (V_dod = 5.550291028515510)
+vol(θ) − V_dod  ≥  c · d(θ, Rot)²        (V_dod = 5.550291028515510, c = 0.13)
 ```
 
 where `vol(θ)` is the volume of `{x·n_j(θ) ≤ 1}`, `n_j(θ)` the normalised perturbed normals.
