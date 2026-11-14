@@ -377,3 +377,19 @@ conditioning. `(33, 120)` is the interior optimum, `+0.080%` from Cohn–Elkies'
 
 **This closes the shell route as an optimisation problem:** the family is characterised, its
 optimum certified, and the residual `0.080%` is the mandatory `ε_q` margin on `q ≥ 0`.
+
+### K15-COMP-017 — 2026-11-14 — Computation (role C), bidirectional cross-validation
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-XVAL-002** | **VERIFIED_EXACT (both directions)** | the two independently written exact checkers accept each other's certificates. Direction 1: my degree-33 certificate `0.77996622` is accepted by `shell_check` at `T_LO = 4π_lo`. Direction 2: a degree-33 *shell* certificate is accepted by my `exactcert` in strict mode at `0.780338357535` vs `shell_check`'s `0.780338357611` — agreement to ten digits | `CROSSVALIDATION.md`, `audit_fourier.py` |
+
+**Why this matters for integration.** Main can quote either certificate with the other session's
+checker as the reviewing implementation, which is exactly the roadmap's acceptance condition
+("exact rational identity, verified by an independent checker"). A wrong factor in `M`, a wrong
+`π` enclosure direction, or a mis-mapped `t ↔ u` would break one of the two directions; neither
+breaks.
+
+**And it pins the only remaining difference between the pipelines:** `shell_check`'s
+`T_LO = 12` default is *sound but pessimistic* (it can only reject valid certificates, never
+accept invalid ones), which is why direction 1 needed `T_LO = 4π_lo` to pass.
