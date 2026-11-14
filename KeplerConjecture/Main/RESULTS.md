@@ -132,3 +132,27 @@ anything in this file.
   Lean 4.35.0, axioms `[propext, Classical.choice, Quot.sound]`). The ball-volume
   and counting-to-volume identities are **not** formalised (G9).
 - The cluster route has no value of `V_0` and no cluster-volume bound.
+
+---
+
+## Review 0438 — status note (no number changes)
+
+**Nothing in this section is a bound.** The analytic record to beat remains Hales–McLaughlin's
+`0.754697399337`, and the project's best certificate remains `Δ ≤ 0.779966216777` (not an
+improvement on the published `0.779747`).
+
+What changed is *structural*, and it is recorded here so that a reader of this file only is not
+misled by `CLAIMS.md`:
+
+1. `K15-C094` (every Barlow cell is `√32`) was **repaired** — its Lemma 1 was circular — and now
+   rests on an exact contact-polytope bound independently re-derived by Main (`C104`).
+2. The pair route's **global bridge** exists (`C106`): a pair constant `K` gives
+   `δ ≤ 8π/(3K)`, so `K = 2V_dod` reproduces `0.754697399337` and `K = 2√32` reproduces
+   `π/√18`. Every `K > 2V_dod` is an improvement, and the whole remaining gap is a `1.92%`
+   increase in that one constant (`C107`).
+3. `(L_δ)` — the pair constant exceeds `2V_dod` by *some* positive amount — is **true** by
+   compactness (`C108`), which makes any saturated packing with a positive density of contact
+   pairs *strictly* below `0.754697399337`, and makes the equality case of the dodecahedral
+   density bound empty.
+4. Because the constant is not explicit, **none of 2–3 is quoted as a bound**, and per the
+   supervisor's standing instruction universal lower-volume claims are `PENDING_REVIEW`.

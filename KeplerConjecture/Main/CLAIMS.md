@@ -2452,6 +2452,18 @@ the cut condition is **at least as strong as** Kepler, and `K15-C080`'s "strictl
 must be read against the *open* `(T')`, not against Kepler. See
 `Main/ACCEPTED.md` §"One-way implications".
 
+> **Correction (`K15-REVIEW-0438-M`): the direction is not a circularity, and an earlier note
+> here said so wrongly.** The rejected phrasing was: *"nothing implies it from the density
+> bound, so the transfer route is a reorganisation whose price is the full geometric content"*
+> — used as though the implication *disqualified* the route. That inference is invalid. A
+> **sufficient** condition implies its target by definition; that is what "sufficient" means,
+> and it says nothing against it. Circularity would require the criterion to *assume* the
+> target. What the one-way arrow does establish is narrower and still worth having: the cut
+> form is not a weakening of Kepler, so it cannot be advertised as an easier target. Whether
+> the cut form is *simpler to verify* is an open cost question (`C071`, `C100`), not a
+> consequence of the implication. (The genuinely circular step found this block was `C094`'s
+> Lemma 1, repaired in `C104` — a different defect.)
+
 *Status.* `PROVED` (asymptotic identity from the tiling, plus `K15-C043`'s chain in
 the other direction). Reviewer X.
 
@@ -3099,3 +3111,296 @@ configurations, and it is what `PN-1` should be asked for.
 *Status.* `PROVED` for the stated finite check (the minimisation is over a `2`-parameter
 family with a closed form for the radius, so it is checkable to interval-arithmetic standard;
 Main ran it numerically only). Reviewer X.
+
+### K15-C103 — reconciliation of the three frozen worker inputs at review 0438 (`IMPORTED`, with two Main corrections)
+
+Sources read by exact hash, confirmed against the remote; nothing merged.
+
+- **C `6fbd0a1bf214a92b625cee84e8ee95ac5da4b8d9`** — `Computation/STATUS.md` rewritten for Main.
+  Substantive content: `TRANSFER-DENSITY-002` (a bounded antisymmetric transfer on a
+  finite-upper-density packing that is `D`-**saturated** implies `ρ ≤ 1/√32`), `CUTIMPLIES-003`
+  (the finite-`U` cut condition at any *one* finite capacity forces `ρ ≤ 1/√32`, because
+  `U = Λ ∩ B` is finite), `HIGHDENS-001` (every packing with covering radius `≤ R_Φ` fails
+  `C044` at capacity `Φ`; `R_0 = 1.105339`), `PERIODCONV-001` (no wrap-around edges for
+  `R ≤ 3`; the twelve ring cells congruent, volume `340.870809080957`, to `3.4e−13`),
+  `CUTBLOB-001` (`t*` pinned to width `8.3e−23`, maximiser `{0}`). **`CUTEQUIV-001` ("cut
+  condition ⟺ Kepler") is WITHDRAWN by C** — correct, and consistent with `C087`'s one-way
+  statement. C also records that the converse Kepler ⟹ some finite `Φ` works is open.
+- **E `498cfc3c0ce8d023fbf29b5810d06be115ac256b`** — `Experimental/REVIEW_0353.md` +
+  `INTEGRATION_0353.md`. Three items Main must act on, all checked: (i) **`K15-E083`**, the
+  contact-only `K ⊆ B(v,√2)` repair of Main's circular Lemma 1 — adopted and independently
+  re-verified (`C104`); (ii) `K15-E078` ("97.4% irremovable") **WITHDRAWN** by E because it
+  rested on failed searches, leaving only `K15-E082`, an angular exclusion for head-on cuts;
+  (iii) E's payer fixture: `(θ,φ) = (111.80°, 36°)` minimises `vol Ω(w1) = 5.897967122` over the
+  `C5` family, frozen fixture at `cos θ = −3/8` gives `5.898017372` (`5.0e−5` above), against
+  `(P′)`'s required `5.763417470` — margin `+0.1345`. E's covering-radius certificate converges
+  (`47.01, 43.22, 41.85, 40.79` at subdiv `3,4,5,6`, requirement `48.88`).
+- **X `d64de362da7b6f52bd494d15364e67783a3b184b`** — `Counterexamples/REPORT_X040.md`
+  self-audit (an `8^10` typo in §2, `P ≤ 0` beyond `4`, `NEXT_PACKAGE` wording). Astra has
+  independently verified the original X-C017 at `< 0.782267220134` and the 37 repaired checker
+  regressions; **the smaller C017 certificate and the geometric repairs still need local
+  review** and are therefore `PENDING_REVIEW` here, not accepted.
+
+**Main's two corrections to worker material.**
+1. **C's `shell_check` unsoundness report is against a stale revision of Main's own branch.**
+   C names `shell_check.py` at `6626714`; that commit *is* an ancestor of `kepler15/main`, but it
+   predates the `C058`/`C068` repairs and still contains `_odd_part`. Main ran C's three
+   witnesses against the current file: `le_on_interval([0,1,−1],0,0,1)`, `nonneg_on_half_line
+   ([0,−1,1])` and `_ray([0,1,−1],0)` all return **False**, i.e. correctly rejected (`u−u² = 1/4
+   > 0` at `u = 1/2`). So the defect C reports is **already repaired**, and C's advice to "not
+   rely on it until the fix is audited" is right in form: generic checker soundness remains
+   **SUSPENDED** (`PN-4`), but not for the reason C gives. Recorded with the exact revision so
+   it is not re-litigated.
+2. **Main's `BARLOW_CELLS.md` Lemma 1 was circular** (E's finding, confirmed). Repaired in
+   `C104`; `K15-C094`'s acceptance is restored on the repaired proof, not on the old one.
+
+*Status.* `IMPORTED`; per-source statuses above. Reviewer X.
+
+### K15-C104 — independent verification of the contact-polytope bound; `C094`'s Lemma 1 repaired (`PROVED`)
+
+**The defect (E's `K15-E083`, confirmed).** `C094`'s Lemma 1 argued: a non-contact `c` has
+`|c−v| ≥ 2√2`, so `H_c ⊇ B(v,√2)`; and `Ω(v) ⊆ B(v,√2)` by (F3); "so every non-contact
+half-space contains `Ω(v)`, hence is redundant". **Circular**: `Ω ⊆ H_c` is true *by
+definition* for every defining half-space. Redundancy needs `K ⊆ H_c` for the **contact-only**
+polytope `K`. The rejected text is preserved in `BARLOW_CELLS.md`.
+
+**The repair.** Two steps: (1) `K ⊆ B(v,√2)`, an exact finite statement about the contact
+polytope that never mentions `Ω`; (2) for a non-contact `c` and `x ∈ K`,
+`|x−c| ≥ |c−v| − |x−v| ≥ 2√2 − √2 = √2 ≥ |x−v|`, so `K ⊆ H_c`; hence `Ω = K`.
+
+**Independent verification (`Computation/contact_cell_exact.py`, exit 0).** Written against
+E's *statement*, not E's code: exact arithmetic in `Q(√2,√3)` as 4-tuples over `Fraction`,
+Cramer solves, exact feasible-set tests, and **rigorous interval sign decisions** (`mpmath.iv`,
+increasing precision until the sign is certified; exact zeros detected structurally as the
+all-zero tuple). Result for both local types:
+
+| type | vertices | `|x|²` (mult.) | `max|x|²` | `K ⊆ B(v,√2)` | Euler |
+| --- | --- | --- | --- | --- | --- |
+| fcc | 14 | `3/2` (8), `2` (6) | `2` | **yes** | `14−24+12 = 2` ✓ |
+| hcp | 14 | `3/2` (8), `2` (6) | `2` | **yes** | `2` ✓ |
+
+This reproduces E's table exactly. Agrees with Main's own float enumeration (8 vertices at
+`√(3/2)`, 6 at `√2`) and with E's `vol K = 4√2` cross-check against (F4)'s `2√3·H`.
+
+**Two bugs in the verifying implementation, recorded because one of them is a false
+refutation.** (i) `T` was coded `(1/3, √3/3)` instead of `(1, √3/3)`; (ii) the normals were
+coded `p/4` instead of `p/2` (the bisector is `x·p = |p|²/2 = 2`, so `n = p/2`). With the
+second bug the polytope is twice too large, `max|x|² = 8`, and the check prints
+**`K ⊄ B(v,√2)`** — i.e. a silent scaling slip manufactures a refutation of a true statement.
+The bound is exactly attained (`max = 2`), so it is not robust to scaling error; any future
+re-derivation must check `|p_i|² = 4` for all twelve contacts before trusting the output, which
+the script now asserts.
+
+**Consequence for `K15-C094`.** Acceptance restored on the repaired proof. `(F3)` is no longer
+used by the theorem (it survives as a true remark on the covering radius), so the repaired chain
+is also shorter: (F1) → `Ω = K` → two types (Lemma 2) → `vol = 4√2`.
+
+*Status.* `PROVED`. Independent reviewer: X (requested); the verification above is Main's own
+second implementation and does not substitute for X's.
+
+### K15-C105 — a sufficient criterion is not circular because it implies the target (`CORRECTION` of Main's own rhetoric)
+
+Main had written, in four places, that because the cut condition **implies** `δ ≤ π/√18`
+(`C087`) and nothing implies it from the density bound, "the transfer route is a
+reorganisation, not a simplification" — as though the implication were a verdict on the route.
+**That inference is invalid.** A sufficient condition implies its target *by definition*; that
+is what "sufficient" means, and it is no argument against it. A stronger statement can perfectly
+well be **simpler** to prove. Circularity requires *assuming* the target, which is a different
+error — and precisely the error that `C094`'s Lemma 1 actually committed (`C104`).
+
+What survives, and is worth keeping: the cut form is **not a weakening** of Kepler, so it must
+not be advertised as an easier target. What does not survive: any suggestion that the
+implication disqualifies the route. Whether the route is *cheaper* is an open cost comparison
+(`C071`, `C100`), not a logical consequence.
+
+Corrected in `ACCEPTED.md` §"One-way implications" (with a standing caution), `C087` (rejected
+phrasing preserved), `COMPLEXITY.md` §3–§4. *Status.* `CORRECTION`; no mathematics changes.
+
+### K15-C106 — the global bridge for the pair bound, and the `1.92%` gap (`PROVED`)
+
+`Main/GEOMETRIC_LEMMA_0438.md` §1–§3.
+
+**The local statement.** E's pair conjecture `(P′)`/`K15-E074`: for every contact pair
+(`|v−w| = 2`) of a saturated 2-separated packing, `vol Ω(v) + vol Ω(w) ≥ 2√32 =
+11.3137084990`. Strictly stronger than the pointwise bound, since Hales–McLaughlin gives only
+`2V_dod = 11.100582057`, and E's `K15-E075` shows `2V_dod` is unattainable for a contact pair.
+**Equality holds on every Barlow packing** — proved here from `K15-C094` (every Barlow cell is
+`√32`), so the equality family is exactly the known extremal one and `2√32` cannot be improved.
+
+**The bridge (new).** E's justification for `(P′)` is "it implies the cut with `1.72%` margin";
+that arithmetic is correct but it is the cut at `U =` the 13-cluster only, not a density bound.
+
+> **Theorem B.** If `Λ` is saturated, satisfies `(P′)`, and carries weights `c_e ≥ 0` on the
+> contact edges with `Σ_{e∋v} c_e = 1` for every `v` outside a set of upper density zero, then
+> `δ(Λ) ≤ π/√18`.
+> **Corollary B1.** If `deg(v) = 12` for every `v`, `c_e = 1/12` works, so `(P′)` alone gives
+> `δ ≤ π/√18`. This covers every Barlow packing.
+
+*Proof sketch* (full in the file): sum `vol Ω(v) = Σ_{e∋v}c_e vol Ω(v)` over a ball, discard
+the crossing edges (`O(R²)` of them by 2-separation, `c_e ≤ 1`), use `(P′)` on the internal
+edges, and `Σ_{v∈B}vol Ω(v) = (4π/3)R³ + O(R²)` from saturation; divide by `(4π/3)R³`.
+
+**The quantitative point (`K15-C107`).** The bridge is monotone: any pair constant `K` gives
+`δ ≤ 8π/(3K)`. Two evaluations:
+
+| `K` | `8π/(3K)` |
+| --- | --- |
+| `2V_dod = 11.100582057` (ML twice) | `0.754697399337` — exactly the dodecahedral bound |
+| `2√32 = 11.313708499` (`(P′)`) | `0.740480489693` — exactly `π/√18` |
+
+So the route interpolates from the published bound to the truth with **no sharpness barrier**,
+and since `√32/V_dod = 1.01919957`,
+
+> **the entire remaining gap is a `1.92%` increase in one two-cell constant**, and any
+> `K > 2V_dod` already beats `0.754697399337`.
+
+That is the structural difference from the routes already closed in this project: pointwise
+cell bounds are dead by sharpness (`V_dod` is attained), and the two-point LP by Li's
+obstruction, but the pair functional has room.
+
+*Status.* `PROVED` (bridge). `(P′)` itself is E's and **unproved**. Reviewer X.
+
+### K15-C107 — the target restated weakly: `(L_δ)` suffices (`PROVED` reduction)
+
+Because of the monotonicity in `C106`, the sharp constant is not needed. Let
+
+> **(L_δ)** there is `δ > 0` with `vol Ω(v) + vol Ω(w) ≥ 2V_dod + δ` for every contact pair.
+
+Then `(L_δ)` for *any* `δ > 0` gives `δ(Λ) ≤ 8π/(3(2V_dod+δ)) < 0.754697399337` via Theorem B,
+with the improvement proportional to `δ`. `(L_δ)` is strictly weaker than `(P′)`. Recorded so
+that the workers are asked for the monotone form, not only the sharp one: the sharp `2√32` is a
+*bonus*, not a requirement.
+
+*Status.* `PROVED` (reduction). Reviewer X.
+
+### K15-C108 — `(L_δ)` is true (compactness), and what it buys (`PROVED`, non-explicit; universal lower-volume claim PENDING review)
+
+`Main/GEOMETRIC_LEMMA_0438.md` §4.
+
+> **Theorem D.** `σ₀ := inf{vol Ω(v) + vol Ω(w) : 2-separated configurations with a contact
+> pair v,w}` satisfies `σ₀ > 2V_dod`.
+
+*Proof.* (1) `σ₀ ≥ 2V_dod` by Hales–McLaughlin. (2) **The infimum is attained**: a cell of
+volume `≤ C` contains the unit inball and is convex, so a point at distance `r` in it carries a
+cone of volume `≥ πr/3`, whence `r ≤ 3C/π`; so for configurations with `Φ ≤ 2V_dod+1` both cells
+are determined by the centres in a bounded region, where 2-separated configurations form a
+compact set and `Φ` is continuous. (3) At a minimiser with `σ₀ = 2V_dod`, both cells have
+volume exactly `V_dod`, so by the **equality case of Hales–McLaughlin** both are regular
+dodecahedra of inradius 1. (4) But `v` and `w` are at distance 2, so each is a contact of the
+other, and **two adjacent centres cannot both be dodecahedral** — verified independently by
+Main (`Computation/two_dodecahedra.py`): with both icosahedral twelve-point sets share-axis, the
+two eleven-point sets have minimum mutual distance `1.12555484451` for every relative twist
+(`t = 0, 18°, 36°, 54°` give `1.1256, 0.5982, 0.2111, 0.5982`), against a required `2`. Hence
+`σ₀ ≠ 2V_dod`. ∎
+
+`δ₀ := σ₀ − 2V_dod > 0` is **not explicit** — step 2 is compactness. Two inputs are used and
+neither is re-proved: ML's equality case (standard), and the two-dodecahedra impossibility
+(now Main's own computation, `1.1255548 < 2`).
+
+> **Theorem C.** With `M` a **maximal** contact matching, `P_B` its edges in `B(0,R)`,
+> `ρ := lim P_B/|B| ≤ 1/2`:
+> `δ(Λ) ≤ (4π/3)/(V_dod + δ₀ρ) < 0.754697399337` whenever `ρ > 0`.
+
+**Consequences.** (i) Any saturated packing with a positive density of contact pairs has
+density **strictly** below the dodecahedral bound — unconditionally, since a maximal matching
+always exists and `δ₀ > 0` is proved. (ii) The equality case of the dodecahedral density bound
+is **empty** (equality would need every cell dodecahedral, hence every centre with twelve
+contacts, hence `ρ > 0`). (iii) With `ρ = 1/2` and the sharp `δ₀ = 2√32 − 2V_dod`:
+`V_dod + δ₀/2 = √32` and `c ≤ 1/√32`, the truth. **(iv) With `δ₀` non-explicit there is no
+number**: this is a strictness statement, not a bound, and `RESULTS.md` does not move.
+
+**Main's own error, recorded.** The first draft wrote `ρ = 1` in (iii), which is impossible for
+a matching (`P_B/|B| ≤ 1/2`) and made the formula appear to return `0.7268 < π/√18` — a bound
+below the truth, hence obviously wrong. Caught by `constants_check.py`. Corrected.
+
+**Discrepancy with E, recorded not resolved.** E's `K15-E075` quotes `1.056487696`; Main gets
+`1.12555484451` for the same stated configuration. Both are `< 2`, so the impossibility
+conclusion agrees and Theorem D is unaffected; Main cites **its own** value. E's number was not
+reverse-engineered. Note also that Main's own first version removed the wrong pole for `w` (the
+shared contact is at `−2` in `w`'s frame, not `+2`) — the same bug E records — which is why the
+check now states the pole convention explicitly.
+
+**Exactness caveat (supervisor, `K15-REVIEW-0438-M-LOCAL`).** E's `barlow_contact_cell.py`
+admits vertices via `sp.N(...,30) > 1e-25` and compares radii numerically; it is **not** to be
+advertised as fully exact. Main's `contact_cell_exact.py` is a separate implementation with
+exact field arithmetic and interval sign decisions (`C104`), and that is what `C094` rests on.
+`two_dodecahedra.py` is high-precision (40 digits) but not certified; the conclusion
+(`1.1256 < 2`) has a `44%` margin and is insensitive to convention, so it is recorded as
+`TESTED_FINITE` rather than `PROVED`.
+
+*Status.* Theorem D `PROVED` modulo the two named inputs; **universal lower-volume claims are
+`PENDING_REVIEW`** per the supervisor's standing instruction, and `(L)`/`σ₀` must not be quoted
+as established constants. Reviewer X.
+
+### K15-C109 — a compressed symmetric pair family does not probe `(L)` (`TESTED_FINITE`, negative result)
+
+`Computation/pair_family.py`. E's search for `(L)` is one-sided (a dodecahedral `v` and the best
+payer `w`), so a *different* family was tried: configurations symmetric under `x ↦ 2−x`, so both
+cells are congruent and the pair sum is `2·vol`. A point at distance 2 from **both** centres lies
+on the circle `x = 1`, radius `√3`; `n` such points form a ring with mutual separation
+`2√3 sin(π/n)`, which is `≥ 2` only for `n ≤ 5`, so the pentagon is the largest admissible ring.
+Nine to twelve configurations were evaluated: `ring5 ph0.31` is the best at pair sum
+`20.989006`, i.e. `+9.675` above `2√32`, and the rest are worse (`ring4`: `23.111`; `ring3`:
+`30.022`). Both cap-ring variants are illegal (min separation `1.732051`).
+
+**Result: the family is far too sparse to probe `(L)`, and this is worth recording as a
+negative.** A cell needs about twelve neighbours to approach `V_dod`; the family supplies at most
+six per centre, so the cells come out at `11.5`–`15` each instead of `5.6`, and the test can
+only ever fail to refute. Since computed volumes are *upper* bounds for any saturated completion,
+a value above `2√32` is not evidence *for* `(L)` either. **So this file is neither support nor
+counterexample, and it should not be quoted as either.** The only family that reaches the
+relevant regime is E's icosahedral one, which is why the payer search is E's.
+
+*Status.* `TESTED_FINITE` (negative). Reviewer X.
+
+### External ids — worker-ledger claims cited by Main
+
+These are defined in a worker's own ledger, not here. They are listed so that a reference from
+`Main/` resolves to something a reader can chase, and so that `Computation/ledger_lint.py` can
+distinguish "external" from "dangling". Main does not vouch for their content; each is quoted
+with the worker's own status.
+
+| id | owner | what it is | status per the owner |
+| --- | --- | --- | --- |
+| `K15-X-C014` | X | both-sides certificate, `p`-side only, `0.780718153` | X's ledger |
+| `K15-X-C015` | X | both-sides, `0.813631102` | X's ledger |
+| `K15-X-C016` | X | both-sides, `0.783097911` | X's ledger |
+| `K15-X-C017` | X | both-sides rational Gram, `Δ < 0.782267220134` (smaller certificate: `< 0.782267254857`, 41-character entries) | X's ledger; **`PENDING_REVIEW`** in Main pending local review of the smaller certificate |
+| `K15-E074`, `E075`, `E081`–`E086` | E | the pair conjecture, the two-dodecahedra exclusion, the payer fixtures | E's ledger; `E074` `PROPOSED`, `E078` `WITHDRAWN` by E |
+| `K15-C-TRANSFER-DENSITY-002`, `CUTIMPLIES-003`, `HIGHDENS-001`, `PERIODCONV-001`, `CUTBLOB-001`, `DECOUPLE-001`, `CUTEQUIV-001` | C | the cut/flow fixtures and their scope; `CUTEQUIV-001` **withdrawn** by C | C's ledger |
+
+**Checked:** `Computation/ledger_lint.py` (K15-C110) verifies that every *fully-qualified*
+`K15-C…`/`K15-E…`/`K15-R…` reference in `KeplerConjecture/` resolves to a heading here, that no
+id is defined twice except by an explicit `addendum` sub-heading, and that every status token is
+from the documented vocabulary. The `C…`/`E…`/`X…` shorthand used in prose is not checked, so a
+typo in shorthand is still possible; 411 shorthand occurrences exist in `Main/`.
+
+### K15-C111 — A15 cell volumes, and a corrected pair type in E's fixture table (`PROVED`, exact rationals)
+
+`Computation/a15_pair.py`. Independent computation of the A15 / Cr₃Si packing (`Pm-3n`, 8 sites per
+cubic cell), with `a = 4` so that the nearest distance `a/2 = 2` is exact. Using the adaptive
+truncation of Main's Lemma 3 (`BARLOW_CELLS.md`) with the support-function certificate, so the
+truncation is verified and not assumed:
+
+| site | Voronoi volume | exact |
+| --- | --- | --- |
+| A (2 per cell) | `7.812500000` | `125/16` |
+| B (6 per cell) | `8.062500000` | `129/16` |
+| weighted sum | `64.000000000` | `2·125/16 + 6·129/16 = 64 = a³` ✓ |
+
+The sum identity is an exact internal consistency check that validates the volumes.
+
+**Contact pairs, and a correction to E's table.** The nearest distance in A15 is the B–B chain
+bond `a/2 = 2`; the A–B distance is `√5 = 2.236068` and A–A is `2√3 = 3.464`. So the **contacts**
+are the B–B pairs, with pair sum `2·129/16 = 129/8 = 16.125`. E's `K15-E074` table quotes A15's
+minimum pair sum as `15.875`, which is `125/16 + 129/16 = 127/8` — the **A–B** pair, which is
+*not* a contact. Since `(P′)` quantifies over contact pairs only, E's entry for A15 is measuring
+the wrong pair type. **Nothing is refuted** (both `15.875` and `16.125` exceed `2√32`, and A15 is
+far from the extremal regime), but the row should read `16.125`.
+
+This is the second convention error found in the workers' pair tables this block, after E's pole
+convention in `E075` (`C108`, Main `1.1255548` vs E `1.056487696`). Both are recorded because
+pair-sum tables are exactly where a wrong pair type is invisible: every entry is plausible and
+every entry exceeds the bound.
+
+*Status.* `PROVED` (exact rationals, with the `a³` sum check). Reviewer X.

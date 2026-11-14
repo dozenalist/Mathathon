@@ -102,6 +102,70 @@ chk("redundancy threshold 2*R_cell = rho*sqrt2", mpf('2.09') * sqrt(mpf(2)), 2.9
 chk("margin: nearest admissible / 2R_cell", mpf('3.206870905') / (mpf('2.09') * sqrt(mpf(2))), 1.08498, tol=1e-5)
 chk("shell [2.09,2.956] volume", 4 * pi / 3 * (mpf('2.956') ** 3 - mpf('2.09') ** 3), 70.0, tol=1.0)
 
+# --- K15-C106: the pair bound and its bridge (review 0438) ---------------------
+chk("pair bound 2 sqrt32", 2 * sqrt(32), 11.3137084990, tol=1e-9)
+chk("2 V_dod (what McLaughlin alone gives for a pair)", 2 * vdod, 11.100582057, tol=1e-9)
+chk("pair bound minus 2 V_dod (strictness gap)", 2 * sqrt(32) - 2 * vdod, 0.213126442, tol=1e-8)
+chk("required payer 2 sqrt32 - V_dod", 2 * sqrt(32) - vdod, 5.763417470, tol=1e-9)
+chk("13-cluster requirement 13 sqrt32 - V_dod", 13 * sqrt(32) - vdod, 67.9888142149, tol=1e-8)
+chk("pair bound gives 12*(2sqrt32 - V_dod)", 12 * (2 * sqrt(32) - vdod), 69.1610096456, tol=1e-8)
+chk("13-cluster cut margin", 12 * (2 * sqrt(32) - vdod) - (13 * sqrt(32) - vdod), 1.172195431, tol=1e-7)
+chk("margin as % of the requirement", 100 * (12 * (2 * sqrt(32) - vdod) - (13 * sqrt(32) - vdod)) / (13 * sqrt(32) - vdod), 1.7241004, tol=1e-6)
+chk("E's payer value + V_dod", vdod + mpf('5.897967122'), 11.4482581505, tol=1e-9)
+chk("payer margin over the pair bound", vdod + mpf('5.897967122') - 2 * sqrt(32), 0.1345496515, tol=1e-9)
+chk("payer margin as % of 2 sqrt32", 100 * (vdod + mpf('5.897967122') - 2 * sqrt(32)) / (2 * sqrt(32)), 1.1892621, tol=1e-6)
+chk("bridge conclusion 4pi/(3sqrt32) = pi/sqrt18", 4 * pi / (3 * sqrt(32)), 0.740480489693061, tol=1e-12)
+chk("slack coefficient 2sqrt32 - 2V_dod", 2 * sqrt(32) - 2 * vdod, 0.213126442, tol=1e-8)
+
+# --- K15-C107: the monotone pair bridge ---------------------------------------
+def dens_from_K(K):
+    return 8 * pi / (3 * K)
+chk("bridge with K = 2 V_dod reproduces ML", dens_from_K(2 * vdod), 0.754697399337, tol=1e-12)
+chk("bridge with K = 2 sqrt32 reproduces pi/sqrt18", dens_from_K(2 * sqrt(32)), 0.740480489693, tol=1e-12)
+chk("sqrt32 / V_dod = the whole-gap factor", sqrt(32) / vdod, 1.019199573577, tol=1e-12)
+chk("density at K = 2V_dod*(1.01)", dens_from_K(2 * vdod * mpf('1.01')), 0.7472251479, tol=1e-9)
+chk("density at K = 2V_dod*(1.0192)", dens_from_K(2 * vdod * mpf('1.0192')), 0.7404801799, tol=1e-8)
+
+# --- K15-C108: Theorem D / Theorem C bookkeeping -------------------------------
+chk("witness sigma_0 (icosahedral pair)", vdod + mpf('5.897967122'), 11.4482581505, tol=1e-10)
+chk("delta_0 bound from the witness", vdod + mpf('5.897967122') - 2 * vdod, 0.3476760935, tol=1e-9)
+chk("delta_0 as % of 2V_dod", 100 * (mpf('5.897967122') - vdod) / (2 * vdod), 3.132, tol=1e-2)
+chk("delta_0 if the sharp (L) held", 2 * sqrt(32) - 2 * vdod, 0.213126442, tol=1e-8)
+chk("delta_0_sharp as % of 2V_dod", 100 * (2 * sqrt(32) - 2 * vdod) / (2 * vdod), 1.9199, tol=1e-3)
+chk("Theorem C at rho=1/2 (perfect matching), sharp delta_0 -> pi/sqrt18",
+    (4 * pi / 3) / (vdod + (2 * sqrt(32) - 2 * vdod) / 2), 0.740480489693, tol=1e-12)
+chk("V_dod + delta_0/2 = sqrt32 exactly", vdod + (2 * sqrt(32) - 2 * vdod) / 2, sqrt(32), tol=1e-18)
+chk("Theorem C at rho=1/4, sharp delta_0", (4 * pi / 3) / (vdod + (2 * sqrt(32) - 2 * vdod) / 4), 0.747521353722, tol=1e-11)
+
+# --- K15-C100/C109: the analytic ladder, exactly (review 0438) ------------------
+TRU = mpf('0.740480489693')
+chk("ML above truth (%)", 100 * (mpf('0.754697399337') / TRU - 1), 1.91996, tol=1e-5)
+chk("3-point lattice above truth (%)", 100 * (mpf('0.741506') / TRU - 1), 0.138493, tol=1e-5)
+chk("3-point general above truth (%)", 100 * (mpf('0.770271') / TRU - 1), 4.02313, tol=1e-4)
+chk("lattice -> general factor", mpf('0.770271') / mpf('0.741506'), 1.0387927, tol=1e-6)
+chk("3-point proof would need this % improvement", 100 * (1 - TRU / mpf('0.770271')), 3.86754, tol=1e-4)
+chk("ML gap and pair window are the SAME number", 100 * (mpf('0.754697399337') / TRU - 1), 100 * (sqrt(32) / vdod - 1), tol=2e-3)
+
+# --- reconciliation of C's CUTBLOB-001 value (review 0438) ---------------------
+chk("b(v0) = sqrt32 - V_dod", sqrt(32) - vdod, 0.106563220977, tol=1e-12)
+chk("C's t* = b(v0)/12 = 0.008880268414739", (sqrt(32) - vdod) / 12, 0.008880268414739, tol=1e-15)
+
+# --- the per-point cap (Liter ature 5.3(i)), reconciled -----------------------
+chk("per-point family cap 8/V_dod", 8 / vdod, 1.4413658597, tol=1e-10)
+# the literature's convention has min separation 1, so volumes scale by 8 and
+# delta = (pi/6) * (number density) = (pi/6) * 8/V_dod
+chk("same number as the density-convention 0.754697399337",
+    (pi / 6) * (8 / vdod), 0.754697399337, tol=1e-12)
+chk("equivalently (4pi/3)/V_dod", (4 * pi / 3) / vdod, 0.754697399337, tol=1e-12)
+
+# --- K15-C111: A15 cell volumes, exact rationals --------------------------------
+chk("A15 vol_A = 125/16", mpf(125) / 16, 7.8125, tol=1e-15)
+chk("A15 vol_B = 129/16", mpf(129) / 16, 8.0625, tol=1e-15)
+chk("A15 2*vol_A + 6*vol_B = a^3 = 64", 2 * mpf(125) / 16 + 6 * mpf(129) / 16, 64, tol=1e-12)
+chk("A15 contact pair (B-B) = 129/8", 2 * mpf(129) / 16, 16.125, tol=1e-12)
+chk("A15 A+B (NON-contact pair) = 127/8", (mpf(125) + mpf(129)) / 16, 15.875, tol=1e-12)
+chk("A15 A-B distance = sqrt5 (not 2)", sqrt(mpf(5)), 2.2360679774997896964, tol=1e-15)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)

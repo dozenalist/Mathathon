@@ -422,3 +422,51 @@ why the far-centre slack is `0` to `1e−16` (tangency) and not negative. Step 2
 therefore cannot be sharpened to a strict inequality.
 
 **Status unchanged: no new bound on the density of a packing in `R³`.**
+
+---
+
+# R7 — review 0438 integration (what in this document is now superseded)
+
+This document was written for block `0308`. Two later blocks changed its content, and this
+section is the pointer so a reader does not work from a superseded page. Nothing above is
+deleted: the earlier text is the record of what was believed then.
+
+**1. Task 3's theorem was proved on a flawed lemma, and is now proved on a repaired one.**
+§"Task 3" rests on `BARLOW_CELLS.md` Lemma 1, which was **circular** — E's `K15-E083` found it
+and `K15-C104` repairs it: redundancy of a non-contact half-space needs `K ⊆ H_c` for the
+*contact-only* polytope, not `Ω ⊆ H_c`. The theorem (`C094`) is unchanged and its acceptance is
+restored on the repaired proof, whose load-bearing step is an exact two-polytope computation that
+Main re-derived independently (`Computation/contact_cell_exact.py`). Consequences of the repair:
+`(F3)` is no longer used by the theorem, and the chain is shorter.
+
+**2. `GAP_FIXTURE`'s saturation range was overstated.** "For `d > 1.633` … saturated" needs the
+upper bound `d ≤ 2H = 3.266`; corrected in `GAP_FIXTURE.md` (E caught it).
+
+**3. The block's rhetoric about the cut route was wrong, and is withdrawn.** `C105`: a
+**sufficient** criterion is not circular because it implies the target. `C087`'s one-way arrow
+forbids only the reading "the cut form is a weaker target than Kepler"; it does not disqualify
+the route. The phrase "a reorganisation, not a simplification" is withdrawn from `ACCEPTED.md`,
+`C087` and `COMPLEXITY.md`.
+
+**4. The chosen geometric target has changed (`D19`).** This document's Task 2 and the
+`PACKAGE_CUT`/`NEXT_PACKAGE` material target the **cut condition**. That route is not wrong, but
+`D19` records that it is no longer the live one, for two reasons established at `0438`:
+
+- the *pointwise* cell route is **closed by sharpness** — `vol Ω ≥ V_dod` is attained, and the
+  retained literature records that the whole per-point family is capped at `8/V_dod`
+  (`Literature/sharp-bounds-in-dimension-3.md` §5.3(i)), so beating it *requires* a multi-cell
+  inequality;
+- the **pair route** is that inequality: `vol Ω(v) + vol Ω(w) ≥ 2√32` (`GEOMETRIC_LEMMA_0438.md`,
+  `C106`–`C108`), with a bridge to the density bound and a proof of its qualitative form.
+
+So a reader looking for the current target should read `GEOMETRIC_LEMMA_0438.md` and
+`REVIEW_0438.md` §5 (package `PN-C`/`PN-E`/`PN-X`), not `NEXT_PACKAGE.md`, which remains as the
+statement of the cut route's inequality.
+
+**5. Task 4's audit was revised.** `C088`'s "no compact reduction exists" is now scoped to "none
+available *for the cut formulation as stated*"; and `C002b`'s status token (`PROPOSED`) was
+inconsistent with three files treating it as audited — now `AUDITED` with `G1` outstanding.
+
+**Still true from this document:** the four-task results, the covering lemma (`C092`), the
+cut/flow theorems (`C093`, repaired at `D18`), and the six-stacking table (`C091`, upgraded to
+`PROVED` by `C094`).

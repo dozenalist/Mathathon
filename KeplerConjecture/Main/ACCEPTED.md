@@ -68,10 +68,22 @@ three of them have already been read as equivalences at least once in this ledge
 because a mis-read arrow is the cheapest way to make the whole programme look better than
 it is.
 
+**A standing caution about this table (added at `K15-REVIEW-0438-M`).** A one-way arrow is
+not a defect in the antecedent. In particular, "the cut condition implies Kepler" does *not*
+make the transfer route circular or pointless: it is a **sufficient** condition, and proving a
+sufficient condition is how a proof strategy works. The error to avoid is narrow — presenting
+the cut form as a *weaker* target than Kepler. An earlier version of this project wrote
+"the route is a reorganisation, not a simplification" as though the implication settled its
+value; it does not, and that phrasing is withdrawn here and in `C087`/`C100`/`COMPLEXITY.md`.
+Whether the route is *practically* simpler is a separate, open question about the cost of
+verifying the cuts — not a logical consequence of the implication. A criterion is circular
+only if it **assumes** the conclusion, which is a different matter entirely (and which is
+exactly the defect found in `C094`'s Lemma 1 and repaired at `C104`).
+
 | Arrow | Proved? | Converse | Consequence of a mis-read |
 | --- | --- | --- | --- |
 | `(T')` ⟹ cut condition (`C080`) | yes (`Φ|δ⁺| ≥ 0`) | **no** — the cut form is strictly weaker whenever `δ⁺ ≠ ∅` | reading it as an equivalence would make the cut form a restatement of `(T')` |
-| cut condition ⟹ `δ ≤ π/√18` (`C087`) | yes | **no** — nothing in the density bound gives a local cut inequality | reading it as a *shortcut* ("the cut form is weaker than Kepler") is the error `C087` exists to prevent: the cut form is **at least as strong**. `C080`'s "strictly weaker" compares it to `(T')`, which is itself open and stronger |
+| cut condition ⟹ `δ ≤ π/√18` (`C087`) | yes | **no** — nothing in the density bound gives a local cut inequality | the only error this direction forbids is reading the cut form as a *weakening* of Kepler. It does **not** make the route circular, and it does **not** make it worthless: a sufficient condition that implies the target is exactly what a proof strategy is, and a stronger statement can perfectly well be *simpler* to prove. See the correction recorded under `C087` |
 | `b ≡ 0` on Barlow packings (`C094`) | yes | **no** — `b ≡ 0` forces densest, but "densest ⟹ Barlow" is the (open) classification of densest packings | reading it as a characterisation would silently assume the equality case of Kepler |
 | 12 contacts ⟹ layered (`C094`'s scope note) | **not verified here** | not used | the theorem is stated for the layered class; a non-layered 12-contact packing is outside it |
 | transfer exists ⟺ cut condition (`C044`, `C093`) | yes, **both** ways | — | this is the one genuine equivalence, and it is pure graph theory: all the geometry is in *verifying* the cuts |

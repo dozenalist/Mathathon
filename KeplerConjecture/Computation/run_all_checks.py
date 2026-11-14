@@ -23,6 +23,10 @@ CHECKS = [
     ("cluster fixture: dodecahedral cell", ["cluster_fixture.py"], []),
     ("sign predicates: vs exact function_range", ["predicate_crosscheck.py", "--n", "10"], []),
     ("interface: Main <-> Computation dictionary", ["interface_xcheck.py", "--degree", "3"], []),
+    ("Barlow: contact polytope exact (C104)", ["contact_cell_exact.py"], ["--quick"]),
+    ("Barlow: bridge boundary term measured (C106)", ["bridge_boundary.py"], ["--quick"]),
+    ("ledger: consistency lint (C110)", ["ledger_lint.py"], []),
+    ("A15 pair type corrected (C111)", ["a15_pair.py"], ["--quick"]),
 ]
 
 

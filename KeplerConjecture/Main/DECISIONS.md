@@ -195,3 +195,31 @@ repaired, because the tempting repair was the wrong one.
 **Reverse if** X's independent audit of the repaired statement finds a further defect; in
 that case the pattern above (two proofs, rejected text retained, hypotheses itemised) is
 still the right one, and the fix goes into the same two places.
+
+## D19 — the pair route is the live geometric route; the pointwise route is closed by sharpness (M, review 0438)
+
+The two facts established this block point in opposite directions for the *pointwise* route and
+the *same* direction for the pair route, so this records the split.
+
+- **Pointwise is closed, not merely stuck.** `vol Ω(v) ≥ V_dod` is *attained* — the dodecahedral
+  cell of the 13-cluster embeds in a saturated packing (`C069`, `C095`). So no pointwise
+  strengthening exists, and the dodecahedral bound `δ ≤ 0.754697399337` is the exact limit of
+  that class. Continuing to look for pointwise improvements is a category error.
+- **The pair functional has room.** `2V_dod = 11.100582` is *unattainable* for a contact pair
+  (E's `E075`, re-verified here at `1.1255548 < 2`), while `2√32 = 11.313708` is attained on
+  every Barlow packing (`C106`). The true infimum lies strictly between, and by `C107` **every**
+  improvement of the pair constant improves the density bound, with no threshold to clear.
+- **The payoff is `(4π/3)/(V_dod + δ₀ρ)`** (`C108`), so the pair route needs exactly two
+  numbers: a geometric `δ₀ > 0` and a combinatorial matching density `ρ > 0`. Neither is a
+  sharpness barrier.
+
+**Decision.** Keep one geometric route active and make it this one. State the target in the
+monotone weak form `(L_δ)` (`C107`), not the sharp `2√32`, because any positive `δ₀` suffices
+and the sharp constant is a bonus. Do **not** open new pointwise targets. Keep the local
+statement (the pair bound) and the global bridge (matching + counting) as *separate*
+deliverables with separate owners, since they fail for different reasons.
+
+**Reverse if** E's payer bound is proved with an explicit constant and the resulting number does
+not beat `0.754697399337` (which cannot happen by `C107` unless `ρ = 0`, so the real reversal
+condition is: if `ρ = 0` turns out to be compatible with high density, the bridge is vacuous and
+the route needs a different global device).

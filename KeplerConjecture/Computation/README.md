@@ -22,6 +22,11 @@ in the project lives in Computation's own branch (`exactcert.py`, `out/…K33b.j
 | `barlow_cells.py` | `K15-C094`: Barlow cells — 12 contacts, cell volume `√32`, the fcc/hcp two-shape dichotomy and its tangency slack; `--sweep N` adds random stackings of period 3–10 | `python3 barlow_cells.py [--sweep 6]` | 23 s; 6 min with `--sweep 6` |
 | `gap_fixture.py` | `K15-C095`: the crack packing — min separation, cross-crack distance, sampled covering radius over a range of `d` | `python3 gap_fixture.py` | 6 s |
 | `rho_probe.py` | `K15-C096`: the icosahedral-scaled cell volume against `√32`, and whether a 13th point in an icosahedral hole can cut it | `python3 rho_probe.py` | 1 s |
+| `a15_pair.py` | `K15-C111`: A15 cell volumes (exact rationals `125/16`, `129/16`) and the contact-pair type; corrects E's A–B-for-B–B entry | `python3 a15_pair.py` | 0.3 s |
+| `ledger_lint.py` | `K15-C110`: CLAIMS.md consistency — ids, addenda, status vocabulary, and that every fully-qualified `K15-…` reference resolves | `python3 ledger_lint.py` | 0.05 s |
+| `contact_cell_exact.py` | `K15-C104`: exact contact-polytope bound `K ⊆ B(v,√2)` for both local types in `Q(√2,√3)` with interval sign decisions | `python3 contact_cell_exact.py` | 0.3 s |
+| `two_dodecahedra.py` | `K15-C108` step (4): two adjacent centres cannot both be dodecahedral; max over the relative twist of the min cross-distance | `python3 two_dodecahedra.py` | 18 s |
+| `bridge_boundary.py` | `K15-C106` step (i): measures the `O(R²)` boundary term of the cell-volume sum on fcc | `python3 bridge_boundary.py` | 0.5 s |
 | `nearest_13th.py` | `K15-C102`: how close a 13th centre can get to the icosahedral twelve at radius `rho` (closed form for the admissible radius per direction), and whether that is inside `2·R_cell` | `python3 nearest_13th.py` | 1 s |
 
 ## Conventions

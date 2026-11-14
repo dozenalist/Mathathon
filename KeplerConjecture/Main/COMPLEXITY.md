@@ -29,6 +29,44 @@ Two numbers carry all the information:
 2. **The general three-point bound is `4.0%` from the truth**, i.e. the lattice restriction
    is worth `0.029` of density — more than any improvement this project has produced.
 
+## 1a. The pair route as a cost object (added at review 0438)
+
+`GEOMETRIC_LEMMA_0438.md` introduces a route not in the ladder above, so it is placed here for
+comparison. Its content is a **two-cell** inequality, and its payoff is exact:
+
+| route | object | gives | status of the object |
+| --- | --- | --- | --- |
+| pointwise | `vol Ω(v) ≥ V_dod` | `0.754697399337` | **proved**, and **sharp** (attained), so closed |
+| pair, trivial constant | `vol Ω(v)+vol Ω(w) ≥ 2V_dod` | `0.754697399337` | proved (ML twice) — reproduces ML exactly |
+| pair, `(L_δ)` | `≥ 2V_dod + δ`, any `δ > 0` | `< 0.754697399337` | **proved non-explicit** (`C108`) |
+| pair, sharp `(L)` | `≥ 2√32` | `0.740480489693` | **open** (E's `E074`) |
+| three-point, general | an LP optimum | `0.770271` | proved (CDS22) — weaker than ML |
+| two-point | one `f` | `0.779747` | proved — and *provably* not sharp (Li) |
+
+Three cost observations that matter more than the numbers.
+
+1. **No sharpness barrier.** The pointwise route is not merely stuck: `V_dod` is *attained*, so
+   no pointwise improvement exists. The pair route's floor `2V_dod` is *unattainable* for a
+   contact pair, so the interval `[2V_dod, 2√32]` — a `1.92%` window — is entirely usable, and
+   every point in it yields a real improvement. This is the only route in the table with that
+   property.
+2. **The computational content is of a different kind.** Hales needs interval arithmetic on
+   `R⁵/R⁶` cells, `≈5×10³` planar maps and `≈10⁵` LPs. The pair route needs (i) one exact finite
+   polytope computation per local type (two types, 14 vertices each — `C104` does it in
+   ~0.3 s), and (ii) a combinatorial matching statement. **No large computation is in
+   prospect**: the local object is two cells, not a decomposition star.
+3. **The bridge is where the risk is, not the geometry.** `C106`/`C108` show the local bound is
+   converted to a density bound by a counting argument whose failure mode is `ρ = 0` (no
+   contacts at all), not a numerical threshold. So the pair route's risk profile is inverted
+   relative to the analytic route: its *inequality* is hard and its *bookkeeping* is easy, while
+   the two-point LP's inequality is easy and its sharpness impossible.
+
+**The honest comparison to Hales.** The pair route, if `(L)` were proved, would be a genuinely
+shorter proof of `δ ≤ π/√18` than Hales' — but it would still rest on a two-cell isoperimetric
+inequality that nobody has proved, and E's own best witness (`5.897967` against a required
+`5.763417`) shows the margin at the critical pair is only `1.19%`. So it is *promising*, not
+*short*.
+
 ## 2. The obstruction that decides the analytic route
 
 `K15-C094` (R. Li, Adv. Math. 460 (2024), Thm 6.1): the **plain** Cohn–Elkies LP is **not
@@ -43,11 +81,51 @@ leaving the level-2 class. The three-point class is the next step and its genera
 `0.770271`, so three-point alone does not close it either; what would is a level-3 object
 that is sharp — a well-known open problem, not a computation.
 
+## 2a. The analytic gap, quantified exactly
+
+All four numbers below are re-derived in `constants_check.py`; the two middle ones are CDS22
+material quoted for their value, not re-proved here.
+
+| bound | value | above the truth |
+| --- | --- | --- |
+| truth, `π/√18` | `0.740480489693` | — |
+| three-point, **lattices only** | `0.741506` | **`+0.1385%`** |
+| three-point, **general** | `0.770271` | `+4.0231%` |
+| Hales–McLaughlin (dodecahedral) | `0.754697399337` | `+1.9200%` |
+
+Three exact statements, each of which decides something:
+
+1. **The lattice restriction costs `2.877` percentage points of density** (`+0.138%` → `+4.023%`,
+   a factor `1.03879`). That factor *is* the whole analytic gap: the three-point class is
+   `0.138%` from the truth when restricted to lattices and `4.02%` from it in general, so the
+   content of the missing step is entirely "lattices → all packings".
+2. **A three-point proof would need a `3.868%` improvement in the class optimum** (from
+   `0.770271` to `0.740480`). For comparison, the lattice-restricted optimum is already only
+   `0.138%` away — so the class is not far from being *able* to prove it, but the generality is
+   what is missing, not the constant.
+3. **`1.920%` appears twice and it is the same number.** Hales–McLaughlin sits `1.9200%` above
+   the truth, and the pair route's window in its constant is `√32/V_dod − 1 = 1.9199%`. That is
+   not a coincidence: both are `π/(4π/3·V_dod) − 1` up to the common factor, i.e. the *same*
+   deficit expressed in the two currencies (density and two-cell volume). So the pair route's
+   room and the dodecahedral bound's gap are the same quantity, which is why Theorem B with
+   `K = 2V_dod` reproduces `0.754697399337` exactly rather than approximately.
+
 ## 3. The geometric route's cost, after this block
 
 `K15-C087`: the cut condition **implies** `δ ≤ π/√18`, and nothing implies it from the
-density bound. So the transfer route is a reorganisation whose price is the full geometric
-content. Three further costs, all established this block:
+density bound.
+
+> **Correction (`K15-REVIEW-0438-M`).** An earlier version of this section concluded "so the
+> transfer route is a reorganisation whose price is the full geometric content", treating the
+> implication as a verdict on the route. **That inference is invalid and is withdrawn.** A
+> sufficient condition implies its target by definition; that is not circularity and it is not
+> a defect. Circularity would require assuming the target — which is what `C094`'s Lemma 1
+> actually did, and what `C104` repaired. The correct content of the one-way arrow is narrow:
+> the cut form cannot be sold as a **weaker** target than Kepler. Its **cost** relative to
+> Hales' proof — how hard it is to verify the cuts — is an open comparison (`C071`, `C100`),
+> not something the implication decides.
+
+Three further costs, all established this block:
 
 - **no slack** (`K15-C094`): on every Barlow packing `b ≡ 0`, so *every* cut is tight;
   a proof by a positive margin on a compact class cannot work;
@@ -61,10 +139,11 @@ decide its remaining inequality (`G5`), and that assessment is unchanged.
 
 ## 4. What this means for "simpler", in one paragraph
 
-A simpler proof of `δ ≤ π/√18` is not available in this project and no route explored here
-is a shortcut. The honest statement of the frontier: the only bound within `0.14%` of the
-truth is the **lattice** three-point bound, the plain LP is *proved* not sharp, and the
-transfer route is at least as strong as the theorem. So the realistic outcomes, in
+A simpler proof of `δ ≤ π/√18` is not available in this project, and none of the routes
+explored here is *known* to be cheaper. The honest statement of the frontier: the only bound
+within `0.14%` of the truth is the **lattice** three-point bound, and the plain LP is *proved*
+not sharp. The transfer route is at least as strong as the theorem — which, per the
+correction in §3, is a statement about its logical strength and not a verdict on its cost. So the realistic outcomes, in
 increasing order of difficulty, are (i) a certified improvement over `0.754697399337`
 (pointwise cell inequalities — Hales–McLaughlin plus a stability term, `K15-C096`'s `(S)` is
 exactly such a term); (ii) a general three-point bound strictly better than `0.770271`;

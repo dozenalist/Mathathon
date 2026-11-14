@@ -131,3 +131,20 @@ seven seeds; `constants_check.py` (29 checks); `function_range` cross-checks.
 Runs executed by Main this block: the fcc tiling audit of the bridge (`K15-C083`),
 the explicit-transfer ansatz model (`K15-C085`), `run_all_checks` and the fuzz
 suites. No Lean, no heavy solve.
+
+## Review 0438 — sources and provenance
+
+- C `6fbd0a1bf214a92b625cee84e8ee95ac5da4b8d9` — `Computation/STATUS.md`
+- E `498cfc3c0ce8d023fbf29b5810d06be115ac256b` — `Experimental/REVIEW_0353.md`,
+  `INTEGRATION_0353.md`, `CLAIM_LEDGER.md`
+- X `d64de362da7b6f52bd494d15364e67783a3b184b` — `Counterexamples/REPORT_X040.md`
+- Local evidence and the supervisor's own record are published in the **supervisor branch** under
+  `Main/REVIEW_2026-11-14_0438.md`; Main does not have that file in its own tree and refers to it
+  by name only. Where the supervisor's local checks disagree with a worker claim, `REVIEW_0438.md`
+  §2 records the disposition.
+- Main's own new artifacts this block: `Main/REVIEW_0438.md`, `Main/GEOMETRIC_LEMMA_0438.md`,
+  `Main/EXPOSITION_0438.md`, and `Computation/{contact_cell_exact,two_dodecahedra,
+  bridge_boundary,pair_family}.py`.
+- Rejected versions preserved: `BARLOW_CELLS.md` §Lemma 1 (circular argument),
+  `CLAIMS.md` `C087` (the "reorganisation" inference), `COMPLEXITY.md` §3 (same),
+  `GEOMETRIC_LEMMA_0438.md` §4.1a (the `ρ = 1` and "unmatched" defects).

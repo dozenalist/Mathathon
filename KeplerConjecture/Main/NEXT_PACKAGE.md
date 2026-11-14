@@ -1,5 +1,14 @@
 # Next research package (for the block after K15-REVIEW-0138-M)
 
+> **Superseded as the project's *chosen* target (review 0438, `D19`).** This file states the
+> **cut-condition** route. That route is intact but is no longer the live one: the pointwise cell
+> family is *provably capped* at `8/V_dod` (retained literature below);
+> `Literature/sharp-bounds-in-dimension-3.md` §5.3(i), so beating it requires a **multi-cell**
+> inequality, and the chosen object is now E's pair bound `vol Ω(v)+vol Ω(w) ≥ 2√32`
+> (`Main/GEOMETRIC_LEMMA_0438.md`, `C106`–`C108`). Read that file for the current target; read
+> this one for the cut route's own inequality, which is unchanged and still correct.
+
+
 Written by M. This is the concrete target the withdrawal leaves standing: after
 `K15-C035`/`C036`/`C044`/`C045`, the whole geometric route reduces to **one
 analytic inequality**, and this file says exactly which one, with the constants.

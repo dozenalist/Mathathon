@@ -94,15 +94,62 @@ in every Barlow packing, independent of `s`. Equivalently the density is `π/√
 
 ## 2. The two lemmas
 
-> **Lemma 1 (the cell is the contact cell).** `Ω(v)` is the intersection of the twelve
+> **Lemma 1′ (the cell is the contact cell).** `Ω(v)` is the intersection of the twelve
 > half-spaces determined by the twelve contacts alone.
 
-*Proof.* Let `c` be a centre that is not one of the twelve. By (F1), `|c−v| ≥ 2√2`, so the
-half-space `{x : |x−v| ≤ |x−c|}` contains the ball `B(v, |c−v|/2) ⊇ B(v,√2)`. By (F3),
-`Ω(v) ⊆ B(v,√2)`. So every non-contact half-space contains `Ω(v)`, hence is redundant. ∎
+**Rejected first version, and why it fails (review `K15-REVIEW-0438-M`, after E's
+`K15-E083`).** The first version read: *"Let `c` be a non-contact. By (F1), `|c−v| ≥ 2√2`, so
+the half-space contains `B(v,|c−v|/2) ⊇ B(v,√2)`; by (F3), `Ω(v) ⊆ B(v,√2)`; so every
+non-contact half-space contains `Ω(v)`, hence is redundant."* **That is circular.** With `H_c`
+the half-space of `c` and `K = ⋂_{contacts} H_c`, `Ω = K ∩ ⋂_{non-contacts} H_c`, and
+`Ω ⊆ H_c` is **true by definition** — `H_c` is one of the half-spaces defining `Ω`. So the
+argument establishes nothing. Redundancy of `H_c` needs
 
-(Note the equality case: `|c−v| = 2√2` does occur, so the redundant half-spaces are
-*tangent* to `B(v,√2)`, not strictly redundant. Lemma 1 is still exact.)
+```
+K ⊆ H_c ,      NOT      Ω ⊆ H_c .
+```
+
+A witness to the gap: if it happened that `K ⊄ B(v,√2)`, a non-contact bisector could cut
+`K` and the conclusion would be false; the rejected argument cannot exclude that.
+
+*Proof of Lemma 1′.* Two steps.
+
+1. **`K ⊆ B(v,√2)`.** This is a statement about the contact polytope alone and never mentions
+   `Ω`. The twelve contact vectors `p_i` (with `|p_i| = 2`) are explicit and lie in
+   `Q(√2,√3)`: `T = (1, √3/3)`, `H = 2√6/3`, `|T|² + H² = 4`. Enumerating the vertices of
+   `K = {x : x·p_i ≤ 2}` exactly gives, for **both** local types,
+
+   | type | vertices | `|x|²` (multiplicity) | Euler `V−E+F` |
+   | --- | --- | --- | --- |
+   | fcc (`ABC`) | 14 | `3/2` (8), `2` (6) | `14−24+12 = 2` ✓ |
+   | hcp (`ABA`) | 14 | `3/2` (8), `2` (6) | `14−24+12 = 2` ✓ |
+
+   so `max_K |x|² = 2` exactly and `K ⊆ B(v,√2)`, with equality at the six octahedral-hole
+   vertices.
+2. **Redundancy.** For a non-contact `c`, `|c−v| ≥ 2√2` (F1), so for `x ∈ K`,
+   `|x−c| ≥ |c−v| − |x−v| ≥ 2√2 − √2 = √2 ≥ |x−v|`, i.e. `K ⊆ H_c`. Hence
+   `K ⊆ Ω`, and `Ω ⊆ K` trivially, so `Ω = K`. ∎
+
+**Independently verified (`K15-C104`, `Computation/contact_cell_exact.py`).** The vertex
+tables above were reproduced by a second implementation written against E's *statement* and
+not E's code: exact arithmetic in `Q(√2,√3)` as 4-tuples over `Fraction`, Cramer solves,
+exact feasible-set test, and **rigorous interval sign decisions** (`mpmath.iv`) so that every
+comparison is certified. Both types: 14 vertices, `|x|² ∈ {3/2 (×8), 2 (×6)}`, `max = 2`,
+Euler 2. Two bugs were found in that implementation before it agreed — the `x`-component of
+`T` (`(1,√3/3)`, not `(1/3,√3/3)`) and the normalisation (`n = p/2`, not `p/4`) — and the
+normalisation bug is instructive: with `n = p/4` the polytope is twice too large, `max|x|² =
+8`, and the check reports `K ⊄ B(v,√2)`, i.e. a **false refutation**. The bound is exactly at
+the boundary (max `= 2`), so it is not robust to a scaling slip.
+
+**Consequence: (F3) is no longer needed.** The repaired proof never uses `Ω(v) ⊆ B(v,√2)`;
+(F3) is retained below as a true remark about the covering radius, but it is not part of the
+argument. The proof is also *shorter* than the broken one: one exact finite enumeration plus
+one inequality.
+
+(Equality case, still correct: `|c−v| = 2√2` does occur, so the non-contact bisectors are
+*tangent* to `∂K` at the six `|x|² = 2` vertices — tangent to the boundary of the
+**contact polytope**, which is what the repaired step 1 supplies and the rejected version did
+not.)
 
 > **Lemma 2 (exactly two contact cells).** Up to an isometry of `R³` fixing `v`, the
 > twelve contacts take exactly **two** values, and they are the contact sets of `fcc` and
