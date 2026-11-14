@@ -1,80 +1,70 @@
-# Computation — status index
+# Computation — status index (after review 0353-C)
 
-Branch `kepler15/comp-01a1d8c0`. One page for Main: what is proved, what is numerical, what is
-open. Full detail in `PROGRESS.md`, `CERTIFIER.md`, `SHELL_PROPOSE_RESULTS.md`, `TLO_FINDING.md`.
+Branch `kepler15/comp-01a1d8c0`. One page for Main: what is proved, what is numerical, what is open.
+Full detail in `REVIEW_0353.md` (this block), `CLAIM_REGISTER.md`, `NONUNIFORM_SHELL.md`,
+`CERTIFIER.md`.
 
-## Exactly verified (exact rational arithmetic; no floating point in any decision)
-
-| claim | statement | scope |
-| --- | --- | --- |
-| **K15-C-VERIFIEDCERT-001** | `Δ ≤ 0.77996622` | every unit-sphere packing in `R³`; degree-33 rational certificate; accepted by two checkers sharing no code |
-| **K15-C-TLOCOST-001 / XVAL-001** | the same certificate is **accepted by Main's `shell_check.py`** once `T_LO = 4·π_lo` is used | cross-session verification |
-| **K15-C-SHELLPROP-002 / SHELLLADDER-001** | `Δ ≤ 0.78037031` at degree 33, `Umax = 120`, `T_LO = 4π_lo`, `n = 27`, `ρ = 2.05` | unconditional count; **0.080% above CE's 0.779747** |
-| **K15-C-SHELLGAIN-002 / -003** | `TESTED_FAMILY`: the *uniform* `n`-neighbour allowance was not used by the LP in the cases tested (16 exact comparisons, two bases). **Not** a statement about local/configurational strengthenings | finite search |
-| **K15-C-FOURIER-AUDIT-001** | Main's `fourier_map` verified: exact matrix agreement, `M² = I`, and quadrature to `1e-13` | A1/A2 exact, A3 float |
-| **K15-C-XVAL-002** | the two exact checkers accept **each other's** certificates, in both directions, agreeing to ten digits | `CROSSVALIDATION.md` |
-| **K15-C-FAMTESTED-001** | `TESTED_FAMILY`: best value found in the tested family is `0.78037032` at `(K, Umax) = (33, 120)`; **not an optimum** — the ladder is non-monotone, so the search is not exhaustive | finite search over a parameter grid |
-| **K15-C-POSCERT-001** | `c = (4,1)` ⟹ `Δ ≤ 44π/15 = 9.215339` | elementary, hand-checkable, positive control |
-| **K15-C-SOSQSIDE-003/004/005** | `Δ ≤ 1.41370455` with `q = Σ r_i² + u Σ s_j²` (five rational squares, degrees ≤ 2) | **explicit rational Gram on the Fourier side**; basin-hopped; **best-found**, spread across seeds 1.41–1.70 |
-| **K15-C-SOSFAMILY-001** / **SOSGRAM2-001** | `Δ ≤ 5.99152482` (cubic) / `6.73788568` (quintic) | explicit rational Gram on the **p** side |
-| **K15-C-SOSSHELL-002** | in the cubic family any admissible shell allowance is `> 0`, so every shell member is strictly worse than `η = 0` | family-restricted **proof** (corrected; `tests_0138.py` T4) |
-| **K15-C-CUTEQUIV-001** | the full-period blob makes the cut condition read `ρ ≤ 1/√32` — **the Kepler bound itself** | `PROVED`, elementary |
-| **K15-C-TESTS-0138** | every claim above is checked by exact expansion in `tests_0138.py` | machine-checked |
-
-> **Status note on the shell-route numbers** (`0.78037031`/`0.78037032`): the *certificates* were
-> re-verified by my own checker after exact basis conversion (`REVIEW_0138.md` §2) and stand. Their
-> *agreement* with `shell_check` is uninformative until Main's fix is audited, so any number resting
-> on `shell_check` alone is `PENDING_MAIN_FIX`.
-
-## Negative results from the cut-condition direction (this block)
-
-| claim | finding |
-| --- | --- |
-| `K15-C-CUTBLOB-001` | `Φ > 0.008880` from the 13-cluster fixture (a **lower bound**, not a refutation) |
-| `K15-C-CUTJAM-001` | FCC/HCP are **jammed** (12 contacts at exactly 2): no perturbation preserves separation, so no near-Kepler fixture that way |
-| `K15-C-FKNEG-001` | A15 with **equal** spheres gives `π/6 = 0.5236`, not a dense packing (the `2a` site is untouched at the `a/2` chain contact) |
-
-Together: the near-Kepler regime appears populated only by the close-packed stackings — all with
-**equal** cell volumes, hence `b = 0` and no discriminating power. **Three faces of
-`K15-C-CUTEQUIV-001`.**
-
-## Actionable for Main
-
-1. **`shell_check.py` at `6626714` is UNSOUND** — it falsely accepts `le_on_interval([0,1,-1],0,0,1)`,
-   `nonneg_on_half_line([0,-1,1])`, `_ray([0,1,-1],0)`, all contradicted at `u = 1/2`
-   (`REVIEW_0138.md` §1). Do not rely on it until the fix is audited.
-2. **Change `shell_check.py`'s `T_LO` default from `12` to `4·π_lo`.** It costs ~6.7% of the
-   bound and buys nothing: `12 < 4π` constrains `p` *inside* the ball. See `TLO_FINDING.md`.
-3. `T_HI = 27/2` is valid at `ρ = 2.09` but **not** at `ρ = 2.05` (`πρ² = 13.20 < 13.5`); use
-   the parameterised predicates with `T_HI(ρ) = ⌊π_lo ρ²⌋`.
-4. Do not optimise in the monomial basis; propose in Laguerre and convert exactly
-   (`shell_propose.py`). The monomial basis returns box vertices (reproduces `K15-C022`).
-5. **Raise the constraint horizon with the degree.** A degree-29 polynomial constrained on
-   `[13.2, 40]` rises to `5.4×10^46` outside it; the exact checker rejects that, correctly.
-   `Umax ≈ 120` works, `250` breaks on conditioning.
-
-## How to reproduce in one minute
+## Exactly verified — one command, three independent checkers
 
 ```bash
 cd KeplerConjecture/Computation
-python3 verify_certificate.py out/verified_certificate_K33b.json   # 0.77996622, both checkers
-python3 exactcert_tests.py && python3 exactcert_oracle.py          # regression + exact oracle
-python3 audit_fourier.py /tmp/shell_check.py                       # Fourier audit
-python3 shell_propose.py --checker /tmp/shell_check.py --degree 33 --tlo-exact --Umax 120
+python3 verify_certificate.py out/verified_certificate_K33b.json   # exactcert + SymPy oracle
+python3 compact_verify.py                                          # third algorithm
 ```
 
-with Main's checker extracted first:
-`git show omm/kepler15/main:KeplerConjecture/Computation/shell_check.py > /tmp/shell_check.py`
+| claim | statement | how |
+| --- | --- | --- |
+| `K15-C-VERIFIEDCERT-001` | `Δ ≤ 0.77996622` for every unit-sphere packing in `R³` | degree-33 rational certificate; `0.779966216777` |
+| `K15-C-XVAL-002` | two checkers sharing no code accept it, and accept each other's output | `CROSSVALIDATION.md` |
+| `compact_verify.py` | a **third** checker on a different algorithm: Bernstein basis + reversed-polynomial tail, no root counting | 41+9 pieces for `q`, 1+11 for `p`; negative controls reject a perturbed `p(0)`, a flipped Laguerre sign, and the claim `0.7797` |
+| `K15-C-REVALIDATE-001` | four shell-route verdicts survive exact basis conversion (`0.78037032`, `0.78033446`) | `REVIEW_0138.md` §2 |
+| `K15-C-BOTHSIDES-QUINTIC-001` | quintic both-sides Gram `Δ ≤ 1.33982381256` | `sos_both_sides_quintic2.py` |
 
-## Numerical only (`TESTED_FINITE`) — not certificates
+## The cut/flow geometry — what it does and does not give
 
-`shell_bench.py` (grid LP), `ce3_baseline.py`, `ce3_constrained.py`, `search_*.py`.
-The withdrawn ladder of review 48443 is retained in git history and in `out/certificate_K*.json`
-as failed evidence; every one of those candidates is **rejected** by the repaired checker.
+* `K15-C-TRANSFER-DENSITY-002` (**proved**): a bounded antisymmetric transfer on a packing of
+  finite upper density **that is `D`-saturated for some finite `D`** implies `ρ ≤ 1/√32`. The
+  saturation hypothesis is needed for `Σ_B vol Ω = |B| + O(L²)` and is proved necessary for the
+  argument; a packing with an unbounded void does not satisfy it.
+* `K15-C-CUTIMPLIES-003` (**proved**): the finite-`U` cut condition at any *one* finite capacity
+  `Φ` already forces `ρ ≤ 1/√32`, because `U = Λ ∩ B` is finite. No transfer, no compactness, no
+  period.
+* `K15-C-HIGHDENS-001` (**proved**): every packing with covering radius `≤ R_Φ` fails C044 at
+  capacity `Φ`; `R_0 = 1.105339`. No packing is constructed.
+* `K15-C-PERIODCONV-001` (**proved + measured**): the periodic convention for the 13-cluster —
+  no wrap-around edges for `R ≤ 3`; the twelve ring cells are congruent (octahedral symmetry) with
+  volume `340.870809080957`, measured to `3.4·10⁻¹³`.
+* `K15-C-CUTBLOB-001` (**proved, fixture-restricted**): for that fixture `t*` is pinned from both
+  sides — `t* ∈ [0.008880268414739, 0.008880268414739]`, width `8.3·10⁻²³`, maximizer `{0}`.
+
+**What none of it gives:** a universal capacity, a proof of Kepler, or any improvement on
+Cohn–Elkies. `K15-C-CUTEQUIV-001` ("the cut condition is equivalent to Kepler") is **withdrawn** —
+C044 quantifies over finite `U` and a period is not finite.
+
+## Numerical only (`TESTED_FINITE` / `TESTED_FAMILY`) — not certificates
+
+`SOSQSIDE-004` (`1.37125723` Fourier side, `1.33982382` `p` side — best found), `ISOPERIM-001`
+(profile exponent `−0.3230 ≈ −1/3`, one complex), `FAMTESTED-001`, `SHELLBENCH-001`,
+`SHELLGAIN-002/003`, `CUTJAM-001`, `SOSIRRED-001`, `SATURATION-001`. `shell_bench.py`,
+`search_*.py`, `ce3_*.py` are all in this class.
+
+## Actionable for Main
+
+1. **`shell_check.py` at `6626714` is unsound** — it falsely accepts `le_on_interval([0,1,-1],0,0,1)`,
+   `nonneg_on_half_line([0,-1,1])`, `_ray([0,1,-1],0)`, all contradicted at `u = 1/2`.
+   Do not rely on it until the fix is audited.
+2. **Change `shell_check.py`'s `T_LO` default from `12` to `4·π_lo`.** It costs ~6.7% of the bound
+   and buys nothing (`TLO_FINDING.md`).
+3. `T_HI = 27/2` is valid at `ρ = 2.09` but not at `2.05`; use `T_HI(ρ) = ⌊π_lo ρ²⌋`.
+4. Do not optimise in the monomial basis; propose in Laguerre and convert exactly
+   (`shell_propose.py`).
+5. **Portable verifier for review:** `python3 compact_verify.py` is one file, standard library only.
 
 ## Open
 
-* A **local/configurational** shell statement (`NONUNIFORM_SHELL.md` §3) — the only variant that
-  could still pay, and it is not a count.
-* Three-point / SDP route: needs a solver, hence a local run.
-* Nothing here improves on Cohn–Elkies; the exact bounds above are cross-validated artifacts.
+* A near-Kepler fixture with **unequal** cell volumes (needs an exactly constructed Frank–Kasper
+  phase; perturbation is ruled out by `K15-C-CUTJAM-001`).
+* A **local/configurational** shell statement (`NONUNIFORM_SHELL.md` §3.0 states its assumptions and
+  §3.1 the four failure modes of the cut condition).
+* The converse direction — Kepler ⇒ a finite `Φ` works — is open, and is exactly where a transfer
+  would have to be earned.
