@@ -463,6 +463,15 @@ delivered) both came from estimating, and this is the mechanical fix.
 | `12:35:38` | `999b089` — report ledger brought up to `X-C031`; density-change direction fixed |
 | `12:36:16` | `db6b3c7` — latent defect D5 (`exhaustive_cut_scan` on edgeless input) |
 | `12:36:47` | `ead49bd` — D6 degenerate-input sweep 12/12 |
+| `12:36:54` | `a1183b6` — §8 written (this table) |
+| `12:37:18` | `f96508a` — D7: `exhaustive_cut_scan` omits the theorem's `max(0,·)` |
+| `12:37:59` | `d64de36` — self-audit: `8¹⁰` in §2, `P ≤ 0` beyond 4, `NEXT_PACKAGE` wording made precise |
+| `12:38:34` | `41a34a2` — K33a/K33b distinguished; what "both sides" buys stated |
+| `12:39:22` | `497f309` — exact FM extended to `n ≤ 6` by a min-cost elimination order: 0/297 |
+| `12:40:55` | `efe2340` — `PROOF_GAPS` G8 part one (`X-C032`) |
+| `12:41:40` | `f9bb66a` — the missing §4.4 inserted |
+| `12:42:14` | `78dbf26` — family regression extended to 9,000 queries |
+| `12:43:21` | `407b22d` — readable verifier runs on all four both-sides certificates |
 
 Checkpoints `12:25:55`, `12:45:55`, `13:05:55` all fall inside the working span; the block's
 substantive hour ends at `13:05:55`, and the close line below is written after it.
