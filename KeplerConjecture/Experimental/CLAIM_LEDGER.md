@@ -32,7 +32,7 @@ Reviewer: X. Withdrawn and narrowed claims are kept, not deleted.
 | --- | --- |
 | `K15-E004` | existence of a partition with bounded diameter absorbing the dodecahedral defect |
 | `(T'-R2')` | `S(C) ≥ D(C)` on one-shell blocks |
-| `(H_R)` | Hall condition with `R = 2.09`; measured slack factor `470`–`880` on all fixtures |
+| `(H_R)` | Hall condition with `R = 2.09`. **No numerical evidence either way**: the earlier "470-880x slack" is retracted (see below) |
 | `K15-E013'` | the count at `ρ > 2.0911` (needs a sharper spherical-code input) |
 | `K15-E020` | local-mass row; **blocked**, no three-point evaluator exists in these artifacts |
 
@@ -47,6 +47,33 @@ Reviewer: X. Withdrawn and narrowed claims are kept, not deleted.
 | `K15-E047` | angular technique as a route | **withdrawn**; `4.734 < 5.550291`, weaker than the import |
 | **`K15-E049` as originally worded** | "closes the per-cell route" | **narrowed to family F**; see `REVIEW_0138.md` §1 |
 | `STATUS_FOR_MAIN` "only (2) remains" | — | **corrected**: multi-radius counts, convexity-based per-cell bounds and collective arguments all remain open |
+
+## Retraction of the empirical slack claim (`K15-E062`)
+
+The values `S - D = +50` to `+95`, and the "factor `470`-`880`" quoted in completion 51140 as
+evidence that `(H_R)`/`(T')` hold with room to spare, are **withdrawn**. They were produced by
+`vor_volumes` with a broken buffer flag: the flag tested "vertex radius > `R - 1e-6`" with the
+buffer sphere at `R = 26`, which never fires because the buffer points themselves have unbounded
+cells and core cells are truncated at radius `~18`. Diagnosed from the fcc control: largest
+"boundary" cell volume `602.709` with maximum vertex radius `17.9205`, and `3000` unbounded
+regions reported.
+
+The flag now tests the saturation criterion `extent <= 2`, valid because `Omega(v) subset B(v,2)`
+in any saturated packing. With that, **every** non-vacuous block is flagged unreliable
+(`icosa_fill` 126/131 cells, `two_icosa` 241/281, `icosa_fcc_shell` 188/189). Since computed
+volumes are upper bounds and the inflated cells are exactly the payers, `S` is overestimated
+without bound and the true `S - D` could be small or negative.
+
+The obstruction is genuine rather than a coding slip: no constructible completion of the
+icosahedral cluster is locally saturated, because the motif is frustrated (outer centres at
+`2.1029` cannot be closed up) and RSA reaches density `0.10` against `0.177` for fcc. So the
+configuration that would make `(T')` testable is the one that cannot be built.
+
+**Survives the retraction** (does not depend on volume accuracy): the statements of `(T')` and
+`(H_R)` and their equivalence; the transfer theorem (`K15-E061`) including exact cancellation and
+the `O(r^2)` boundary; the disjointness/overlap results and the `4.18` / `8.36` thresholds, which
+use distances only; the transfer code check (`c + A >= sqrt32`, `|sum A| <= 1.4e-17`, `A = 0` on
+fcc/hcp), which validates the implementation rather than the geometry.
 
 ## Reporting correction
 
