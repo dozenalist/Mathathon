@@ -143,6 +143,21 @@ ck("D8 the defect is systematic: 3 functions truncate the vertex set",
 print("    cause: n = max(max(e) for e in edges) + 1 = 2, so vertices with no incident edge are")
 print("    outside the divergence check.  The cut scan DOES catch this instance:")
 print("    exhaustive_cut_scan reports the empty-boundary positive set [([2], '1')].")
+print()
+print("    REACHABLE through the documented --fixture path: load_external_fixture validates edge")
+print("    indices but does not require every vertex to appear in an edge.")
+import json, os, tempfile
+fx = {"name": "isolated-deficit", "note": "D8 reachability",
+      "edges": [[0,1],[1,2],[2,3],[3,0]],
+      "b_lo": ["-1","-1","-1","-1","1"], "b_hi": ["-1","-1","-1","-1","1"],
+      "volumes_are_provisional": False}
+pth = os.path.join(".scratch", "fixture_isolated.json")
+os.makedirs(".scratch", exist_ok=True); json.dump(fx, open(pth, "w"))
+out = cf.evaluate_external(cf.load_external_fixture(pth), Phi_trials=(F(1,100),))
+status = out["rows"][0]["status"]
+print("    evaluate_external reports status = %s at Phi = 1/100" % status)
+ck("D8 reachable: --fixture yields PATCH_FEASIBLE on an instance infeasible at every Phi",
+   status == "PATCH_FEASIBLE", "the same run also prints 'INFEASIBLE at any Phi' for vertex 4")
 
 print("\nRESULT: %d/%d checks reproduce" % (nchecked[0]-len(fails), nchecked[0]))
 print("        " + ("ALL CHECKS REPRODUCE (5 live: D1-D4+D8, 1 latent, 1 cosmetic, 12/12 sweep)" if not fails else "FAILED: %s" % fails))

@@ -678,9 +678,12 @@ HiGHS LP, my exact Fourier–Motzkin routine, and C's flow constructor.
 instance is infeasible at *every* `Φ`. `verify_flow_exact(b, E, 1, {})` → `(True, True, [0,0])`;
 `find_violating_cut(b, E, 1)` → `None`; `feasible_flow(b, E, 1)` → a flow. All three wrong; only
 `exhaustive_cut_scan` is right (`empty_boundary_positive = [([2], '1')]`). The module contradicts itself here: the cut scan
-reports `[([2], '1')]` as an empty-boundary positive set, i.e. infeasible at every `Φ`. Not
-reachable from `main()` (`build_13` gives every vertex an edge for `R ≥ 2−10⁻⁹`, and the edgeless
-regime is skipped), and the fix is one line: `n = len(b)`. D8 of
+reports `[([2], '1')]` as an empty-boundary positive set, i.e. infeasible at every `Φ`. **Reachable through `--fixture`:** `load_external_fixture` validates edge indices but not that
+every vertex appears in an edge, so a five-vertex fixture with edges on `0..3` and
+`b = (−1,−1,−1,−1,+1)` makes `evaluate_external` print "POSITIVE DEFICIT AT DEGREE ZERO at [4]:
+INFEASIBLE at any Phi" and then emit `status: PATCH_FEASIBLE`. Not reachable from `main()`'s own
+fixtures (`build_13` gives every vertex an edge for `R ≥ 2−10⁻⁹`; the edgeless regime is skipped),
+so no published number is affected. Fix: `n = len(b)` in all three functions. D8 of
 `Reviews/repro_c_cutflow_defects.py` (11/11 checks).
 
 ### K15-X-C035 — Main's `le_on_interval` agrees with X's `sign_on_interval` on 50 vectors

@@ -1,0 +1,1 @@
+{"name": "isolated-deficit", "note": "D8 reachability", "edges": [[0, 1], [1, 2], [2, 3], [3, 0]], "b_lo": ["-1", "-1", "-1", "-1", "1"], "b_hi": ["-1", "-1", "-1", "-1", "1"], "volumes_are_provisional": false}

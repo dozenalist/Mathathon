@@ -267,10 +267,25 @@ It is systematic, not one slip: three functions take the vertex set from the edg
 returns a flow, both of which are wrong because `{2}` violates at every `Φ`. Only
 `exhaustive_cut_scan` is right (`empty_boundary_positive = [([2], '1')]`), so the module
 contradicts itself: three functions say "fine" and one says "infeasible at every `Φ`". This is the recurring failure mode of the whole project — an exact
-checker that returns OK on an input that is not OK — and it belongs in the record even though no
-shipped fixture is affected (`build_13` gives every vertex an edge at `R ≥ 2−10⁻⁹`, and `main()`
-skips the edgeless regime). It is D8 in `Reviews/repro_c_cutflow_defects.py`. The fix is one line:
-take `n = len(b)`.
+checker that returns OK on an input that is not OK.
+
+And it is **reachable through the documented portability path**. `load_external_fixture` validates
+edge indices (`0 ≤ i,j < len(b_lo)`) but does not require every vertex to appear in an edge, so an
+external fixture may legitimately contain an isolated centre. Feeding one — five vertices, edges on
+`0..3`, `b = (−1,−1,−1,−1,+1)` — makes `evaluate_external` print
+
+```
+POSITIVE DEFICIT AT DEGREE ZERO at [4]: INFEASIBLE at any Phi
+Phi=1/100    flow found; |phi|<=Phi True, divergence>=b True   PATCH_FEASIBLE only
+```
+
+i.e. the same run says the instance is infeasible at every `Φ` *and* emits `status:
+PATCH_FEASIBLE`. A consumer reading the JSON `status` field gets the wrong answer. Its own
+`singleton_bounds` uses `len(b_lo)` and is right; the three flow functions are not.
+
+No shipped fixture is affected (`build_13` gives every vertex an edge at `R ≥ 2−10⁻⁹`, and `main()`
+skips the edgeless regime), which is why this has not bitten yet. It is D8 in
+`Reviews/repro_c_cutflow_defects.py`; the fix is one line in each of three functions: `n = len(b)`.
 
 One further defect is **latent**, and I record it as such: `exhaustive_cut_scan` raises
 `TypeError: 'NoneType' object is not subscriptable` whenever no subset has a crossing edge
@@ -421,7 +436,7 @@ as "independence established; agreement sampled, not proved".
 | `X-C028` | Main's `D18` reverse condition is not triggered (no fifth defect); `D16`'s acceptance test stands with generic soundness still `SUSPENDED`; `D3`'s anchor is respected. `NEXT_PACKAGE` item 1 (`V = 5.40`) is already implied by Hales–McLaughlin. | **VERIFIED** / one wording defect open in Main's file |
 | `X-C029` | `CLAIMS.md` `K15-C093` still states `sup Φ < ∞` and the `{a}`-cut `4/3` example in its bullet list, both refuted by its own repair note. | **DEFECT** (documentation, Main's file) |
 | `X-C030` | `0.008880268414417` inherits C's `V_DOD` enclosure error: the exact value is `0.0088802684147391605`, so the number is a valid lower bound but not "the exact threshold". | **CORRECTION** |
-| `X-C034` | **Three** functions take their vertex set from the edge list: on `b = (−1,−1,+1)`, `edges = [(0,1)]` (isolated vertex with positive deficit) `verify_flow_exact` accepts, `find_violating_cut` reports no violation, `feasible_flow` returns a flow — all wrong, all for the same reason; only `exhaustive_cut_scan` is right. Not reachable from `main()`; fix is `n = len(b)` in all three. | **DEFECT** (live, systematic), D8 |
+| `X-C034` | **Three** functions take their vertex set from the edge list: on `b = (−1,−1,+1)`, `edges = [(0,1)]` (isolated vertex with positive deficit) `verify_flow_exact` accepts, `find_violating_cut` reports no violation, `feasible_flow` returns a flow — all wrong, all for the same reason; only `exhaustive_cut_scan` is right. **Reachable through `--fixture`**: `evaluate_external` emits `status: PATCH_FEASIBLE` on an instance the same run prints as "INFEASIBLE at any Phi". Fix: `n = len(b)` in all three. | **DEFECT** (live, systematic, reachable), D8 |
 | `X-C035` | Main's `le_on_interval` and X's `sign_on_interval` agree on 50 vectors (`p ≤ η` on closed intervals, roots in `[0,2]`, multiplicities 1–2, `η ∈ {0,±½}`), including the `sign(lc)` trap case. Two-way: C's module has no bounded-interval decision. | **VERIFIED**, `Reviews/g8_checker_independence.py` |
 | `X-C033` | C's own `feasible_flow` agrees with the cut condition on 38 random instances (25 infeasible, 13 feasible): a fourth independent decision procedure for Theorem 1, on C's side. | **VERIFIED**, `Reviews/audit_cutflow_repair.py` §F |
 | `X-C032` | `PROOF_GAPS` G8, partially: C's `exactcert` imports only `fractions` and Main's `shell_check` only `sympy`+`fractions`, so they share no code path; **four** routes (Main, C, X's `exact_sign`, algebraic rule) agree on `q ≥ 0` for all 52 adversarial vectors tried, including near-touching `(t−r)²∓ε`. Sample is finite; `p ≤ η` is not covered. | **PARTIAL**, `Reviews/g8_checker_independence.py` |
@@ -450,9 +465,9 @@ as "independence established; agreement sampled, not proved".
   ledger, one erratum of my own (W6), two corrections of my own framing, one size reduction, one
   verifier with a negative control, and one half of `PROOF_GAPS` G8. A reader looking for
   mathematical progress should look at the next block, not this one.
-- **D8 is not reachable from `main()`** as it stands. I have said so where it is reported; it
-  should not be described as a defect that corrupted a published number, only as a false accept
-  waiting for the first caller that passes a `b` longer than its edge list.
+- **D8 has not corrupted a published number.** It is unreachable from `main()`'s own fixtures, but
+  reachable through `--fixture`; it is a false accept waiting for the first external fixture with
+  an isolated centre, not a defect that invalidated a quoted result.
 
 ---
 ## 7. What Main's decision record can now close, and what it must not
@@ -538,9 +553,10 @@ substantive hour ends at `13:05:55`, and the close line below is written after i
 **C (all in `Computation/cut_flow.py`, blob `700e44f6`, unchanged since `4bcbd3a`).** Ranked by
 consequence:
 
-1. **D8 (false accept, systematic).** `verify_flow_exact`, `find_violating_cut` and `feasible_flow`
-   take the vertex set from the edge list, so an isolated vertex with a positive deficit is
-   invisible. Fix: `n = len(b)` in all three. Witness in `X-C034`; one line each.
+1. **D8 (false accept, systematic, reachable).** `verify_flow_exact`, `find_violating_cut` and
+   `feasible_flow` take the vertex set from the edge list, so an isolated vertex with a positive
+   deficit is invisible; through `--fixture` this yields `status: PATCH_FEASIBLE` on an instance
+   that is infeasible at every `Φ`. Fix: `n = len(b)` in all three. Witness in `X-C034`.
 2. **D1 (`V_DOD` interval).** The whole enclosure `[5.550291028519371, 5.550291028519372]` is above
    the true `5.550291028515510269…`; the low endpoint is high by `3.861·10⁻¹²`. This propagates into
    Main's `0.008880268414417` (`X-C030`). Fix: use the closed form
