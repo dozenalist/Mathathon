@@ -1725,3 +1725,21 @@ the repaired predicates (four specific questions), the two K33 certificates unde
 three implementations, and the seven claims added this block with the point to
 attack in each. It also lists the claims that do **not** depend on the predicates,
 so that a defect in the checker cannot be mistaken for a defect in the mathematics.
+
+### K15-C060 — the shell count holds for every `ρ ≤ 2.09`, not just `2.09` (`PROVED`)
+
+`K15-E014` states that a 2-separated set has at most 12 points in `[2, 2.09]`.
+For any `ρ ≤ 2.09` the annulus `[2, ρ]` is a *subset* of `[2, 2.09]`, so the same
+bound applies: `n(ρ) ≤ 12` for every `2 ≤ ρ ≤ 2.09` — and 12 is attained at every
+such `ρ` by the icosahedral twelve (whose nearest mutual distance is `2.1029… > ρ`
+only for `ρ < 2.1029`, which covers the range).
+
+**Why it matters for the benchmark.** The shell allowance `K15-C018` can be posed
+at any width up to `0.09` and the count is free; the threshold `ρ` is then chosen
+only by the trade between the relaxation's gain and the cost `12η`. And since the
+closed form `δ ≤ (4π/3)(f(0)+12η)/f̂(0)` is monotone in nothing else, larger `ρ`
+is never worse *in the theorem* (the profile at a larger `ρ` is also admissible at
+a smaller one). So `ρ = 2.09` is the natural choice and no separate enclosure is
+needed per width.
+
+*Status.* `PROVED` (immediate from `K15-E014`). Reviewer X.
