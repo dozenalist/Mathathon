@@ -1106,12 +1106,30 @@ first-order        5 * A_pent * (b-1)  =  0.357037902
 observed           5.898007181 - 5.550291029 = 0.347716153      97.4 % of it survives
 ```
 
-That excess is **not removable by adding centres**: a centre cutting the collar around a ring
-face would have to lie within about `58 deg` of that ring direction, but any centre at
-distance `rho` from `w_1` must satisfy `rho >= 4 cos(alpha)` in angular distance `alpha` from
-an existing shell centre, so anything that clears the ring at `2.102924` is at distance
-`>= 3.4` from `w_1` — and a bisector at `rho/2 >= 1.7` lies outside the cell, whose vertices
-are all within `1.302`. The ring excess is structural, not a search artefact.
+That excess is **essentially not removable by adding centres**, for a reason that is
+quantitative and checkable. A centre `z` can cut the cell only if its bisector meets it, i.e.
+only if `rho/2 < max|vertex| = 1.301968`, so
+
+```
+any cutting centre has   rho < 2.603935 .
+```
+
+But it must also keep distance `2` from the ring centre, which sits at `2.102924` from
+`w_1`. Writing `alpha` for its angular distance from the ring direction,
+
+```
+cos alpha  <=  (rho^2 + 0.422310) / (2 * rho * 2.102924)
+           ->  alpha >= 48.88 deg  at rho = 2.6039   (and more for smaller rho)
+```
+
+whereas the five ring faces, measured on the computed cell, subtend only `35.57 deg` from
+their normals. **No centre that can cut the cell at all lies within `13 deg` of aiming at a
+ring face**, so the collar cannot be attacked head-on.
+
+What this does *not* exclude is a bisector at a large angle to the face normal shaving a
+**corner** of the collar. That case is covered empirically and not analytically: it is what
+`18.4`'s three searches test, and none of them finds anything. The ring excess is therefore
+structural in the sense that no construction reaches it, not in the sense of a theorem.
 
 This is the corrected form of `§14.3`'s question. There the open question was whether the
 `5 x 1.387573 x 0.051462 = 0.357` excess could be cut; the perturbation heuristic

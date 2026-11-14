@@ -214,6 +214,15 @@ def report():
     print(f"  vol Omega(w_1) = {vol:.12f}   max|vertex| = {rmax:.6f} (<= 2, ball inactive)")
     print(f"  independent Monte Carlo (4e6 samples) = {mc:.6f}")
     print(f"  excess over V_dodeca                   = {vol - V_DODECA:+.9f}")
+    # why the collar resists: a cutting centre needs rho < 2*max vertex, hence an angular
+    # clearance from each ring direction that exceeds the face's own angular half-width
+    ringL = np.linalg.norm(RING[0] - W1)
+    rho_max = 2 * rmax
+    cos_alpha = (rho_max ** 2 + ringL ** 2 - 4) / (2 * rho_max * ringL)
+    alpha = np.degrees(np.arccos(min(1.0, cos_alpha)))
+    print(f"  cutting centres need rho < 2*max|vertex| = {rho_max:.6f}")
+    print(f"    -> angular clearance from a ring direction >= {alpha:.2f} deg")
+    print(f"    ring faces subtend 35.57 deg from their normals (measured on this cell)")
     b = np.linalg.norm(RING[0] - W1) / 2
     print(f"  first-order dodecahedral excess 5*A_pent*(b-1) = {5 * A_PENT * (b - 1):.9f}"
           f"   (b = {b:.9f})")
