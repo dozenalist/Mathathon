@@ -5746,3 +5746,28 @@ the type is about to change at `0.25` — the volume is continuous through a bif
 through a face changes the hull discretely but the volume continuously, to first order). That is why a
 *ratio* measurement looked harmless while the *derivative* structure degenerates. **A sampled function can
 look smooth where its derivatives are not**, and only the slackness showed it.
+
+#### `C146` addendum 3 — the recommended `ε`: `0.58`, not `0.2`, and not `1`
+
+With the bifurcation in view, the choice of `ε` is a three-way trade-off: `δ₀` grows as `θ_max` grows, but
+so does the risk from the type boundary, and the case-2 branch must stay under `ML`.
+
+| `θ_max` | min inactive slack | `ε = 4(cos ρ_c − θ) − 2` | `η` | `δ₀` | case-2 branch | bound at `ρ = 1/2` |
+| --- | --- | --- | --- | --- | --- | --- |
+| `0.0447` | `0.877` | `0.9998` | `2.60·10⁻⁴` | `0.002883` | `0.296350` | `0.754501` |
+| `0.10` | `0.594` | `0.7786` | `1.30·10⁻³` | `0.014431` | `0.372910` | `0.753718` |
+| **`0.15`** | **`0.354`** | **`0.5786`** | **`2.93·10⁻³`** | **`0.032469`** | `0.466583` | **`0.752496`** |
+| `0.20` | `0.151` | `0.3786` | `5.20·10⁻³` | `0.057723` | `0.594451` | `0.750793` |
+| `0.2447` | `0.002` | `0.2` | `7.78·10⁻³` | `0.086376` | `0.751315` | `0.748870` |
+
+**The recommendation is `ε ≈ 0.58` (`θ_max = 0.15`).** It gives `δ₀ = 0.032469` — **`11×` the `ε = 1`
+value** — while keeping the type margin at `0.354` (a third of the dodecahedron's own `1.236`), the case-2
+branch at `0.467` (far under `ML`), and `C119`'s overlap at `0.382` (a hundred times the `0.0033` that
+`ε = 0.2` leaves). It is the largest `θ` at which the type is robust by a comfortable factor.
+
+**So the ladder is: `ε = 1` proves first (safest, `δ₀ = 0.0029`); `ε ≈ 0.58` is the target worth aiming at
+(`δ₀ = 0.032`, with margin); `ε = 0.2` buys another factor `2.7` only by proving a bound at a bifurcation,
+and should not be attempted.** All three are conditional on `L1'`, which is unproved at any `θ`.
+
+*Status.* `TESTED_FINITE` (the slack table is sampled; the `ε`/`δ₀` columns are arithmetic). No bound, no
+review.
