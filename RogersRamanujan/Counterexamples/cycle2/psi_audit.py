@@ -227,10 +227,12 @@ def audit(N, verbose=True):
                 check(m32 <= m3, '(d-IIa) NEW bound m3\' <= m3', j, lam,
                       'm3=%d m3\'=%d' % (m3, m32))
                 # the *false* bound used by the committed proof
-                false_bound = (m32 <= m3 - 5)
                 repeated = (lam.count(m3) >= 2)
-                check(false_bound == (not repeated), '(d-IIa) m3\'<=m3-5 iff m3 not repeated',
+                check((m32 == m3) == repeated, '(d-IIa) m3\'=m3 iff m3 repeated',
                       j, lam, 'm3=%d m3\'=%d repeated=%s' % (m3, m32, repeated))
+                stats['old_bound_broken'] += (m32 > m3 - 5)
+                if m32 > m3 - 5:
+                    stats['old_bound_broken_repeated'] += repeated
                 if nu == 0:
                     (IIa_nu0_rep if repeated else IIa_nu0_notrep).append((j, lam))
                     check(m02 == 0, '(d-IIa) nu=0 => m0 = 0', j, lam)
@@ -348,7 +350,8 @@ def main():
         seen = Counter(f[0] for f in FAIL)
         for tag, c in sorted(seen.items()):
             w = next(f for f in FAIL if f[0] == tag)
-            print('  %-45s x%-5d first witness j=%s lam=%s %s' % (tag, c, w[1], w[2], w[4]))
+            print('  %-45s x%-5d first witness j=%s lam=%s | %s'
+                  % (tag, c, w[1], w[2], w[3] if len(w) > 3 else ''))
         return 1
     print('0 failures: every step of the amended proof (a)-(d), every branch,')
     print('every virtual-zero case and every multiplicity case, holds on every state.')
@@ -370,6 +373,10 @@ def main():
     print('  II(a) selected with nu = 0, m3 repeated     : %d states' % len(rep))
     print('  II(a) selected with nu = 0, m3 not repeated : %d states' % len(notrep))
     print('  II(b) selected with m0 = 0                  : %d states' % len(m0zero))
+    print('  states where the committed bound m3\' <= m3-5 is FALSE : %d'
+          % stats['old_bound_broken'])
+    print('     of which m3 is repeated                              : %d'
+          % stats['old_bound_broken_repeated'])
     print('  (in all of the latter, t0 = t0\' = 0 and j <= -1 -- Repair 1)')
     if notrep:
         print('  smallest II(a)/nu=0/m3-not-repeated witness: j=%d lam=%s'

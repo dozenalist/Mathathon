@@ -4,8 +4,80 @@
   "domain_disagreements": 0,
   "empty_admissible": 893,
   "empty_admissible_in_domain": 0,
+  "empty_iff_offdomain_off": 893,
+  "empty_witnesses": [
+   {
+    "hi": -1,
+    "in_B": true,
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [],
+    "n": 0
+   },
+   {
+    "hi": 0,
+    "in_B": true,
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [
+     1
+    ],
+    "n": 1
+   },
+   {
+    "hi": 0,
+    "in_B": true,
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [
+     2
+    ],
+    "n": 2
+   },
+   {
+    "hi": 0,
+    "in_B": true,
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [
+     3
+    ],
+    "n": 3
+   },
+   {
+    "hi": 0,
+    "in_B": true,
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [
+     4
+    ],
+    "n": 4
+   },
+   {
+    "hi": 1,
+    "in_B": true,
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [
+     2,
+     2
+    ],
+    "n": 4
+   }
+  ],
   "hi_neg": 1,
   "hi_neg_in_domain": 0,
+  "hi_neg_witnesses": [
+   {
+    "a": 1,
+    "hi": -1,
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [],
+    "t": 0
+   }
+  ],
   "in_domain_caseII": 33329,
   "max_selected_m": 6,
   "min_selected_m": 0,
@@ -35,7 +107,7 @@
   "phi_I_ones_pos": 0,
   "phi_a_eq_mu": 6458,
   "phi_caseI": 33329,
-  "phi_caseII": 0,
+  "phi_caseII": 34222,
   "phi_domain": 66658,
   "phi_excluded": 0,
   "phi_virtual_a": 2605,
@@ -59,7 +131,7 @@
   "states": 67551,
   "t0_empty_lam": 7
  },
- "elapsed_seconds": 7.57,
+ "elapsed_seconds": 14.68,
  "examples": [
   {
    "a": 4,
@@ -335,7 +407,226 @@
  ],
  "exhaustive_ok": true,
  "failures": [],
- "generated": "2026-11-14 06:16:38",
+ "generated": "2026-11-14 06:19:29",
+ "independent_counts": [
+  {
+   "A": 1,
+   "D": 1,
+   "agree": true,
+   "jacobi": 1,
+   "n": 0
+  },
+  {
+   "A": 1,
+   "D": 1,
+   "agree": true,
+   "jacobi": 1,
+   "n": 1
+  },
+  {
+   "A": 1,
+   "D": 1,
+   "agree": true,
+   "jacobi": 1,
+   "n": 2
+  },
+  {
+   "A": 1,
+   "D": 1,
+   "agree": true,
+   "jacobi": 1.0,
+   "n": 3
+  },
+  {
+   "A": 2,
+   "D": 2,
+   "agree": true,
+   "jacobi": 2.0,
+   "n": 4
+  },
+  {
+   "A": 2,
+   "D": 2,
+   "agree": true,
+   "jacobi": 2.0,
+   "n": 5
+  },
+  {
+   "A": 3,
+   "D": 3,
+   "agree": true,
+   "jacobi": 3.0,
+   "n": 6
+  },
+  {
+   "A": 3,
+   "D": 3,
+   "agree": true,
+   "jacobi": 3.0,
+   "n": 7
+  },
+  {
+   "A": 4,
+   "D": 4,
+   "agree": true,
+   "jacobi": 4.0,
+   "n": 8
+  },
+  {
+   "A": 5,
+   "D": 5,
+   "agree": true,
+   "jacobi": 5.0,
+   "n": 9
+  },
+  {
+   "A": 6,
+   "D": 6,
+   "agree": true,
+   "jacobi": 6.0,
+   "n": 10
+  },
+  {
+   "A": 7,
+   "D": 7,
+   "agree": true,
+   "jacobi": 7.0,
+   "n": 11
+  },
+  {
+   "A": 9,
+   "D": 9,
+   "agree": true,
+   "jacobi": 9.0,
+   "n": 12
+  },
+  {
+   "A": 10,
+   "D": 10,
+   "agree": true,
+   "jacobi": 10.0,
+   "n": 13
+  },
+  {
+   "A": 12,
+   "D": 12,
+   "agree": true,
+   "jacobi": 12.0,
+   "n": 14
+  },
+  {
+   "A": 14,
+   "D": 14,
+   "agree": true,
+   "jacobi": 14.0,
+   "n": 15
+  },
+  {
+   "A": 17,
+   "D": 17,
+   "agree": true,
+   "jacobi": 17.0,
+   "n": 16
+  },
+  {
+   "A": 19,
+   "D": 19,
+   "agree": true,
+   "jacobi": 19.0,
+   "n": 17
+  },
+  {
+   "A": 23,
+   "D": 23,
+   "agree": true,
+   "jacobi": 23.0,
+   "n": 18
+  },
+  {
+   "A": 26,
+   "D": 26,
+   "agree": true,
+   "jacobi": 26.0,
+   "n": 19
+  },
+  {
+   "A": 31,
+   "D": 31,
+   "agree": true,
+   "jacobi": 31.0,
+   "n": 20
+  },
+  {
+   "A": 35,
+   "D": 35,
+   "agree": true,
+   "jacobi": 35.0,
+   "n": 21
+  },
+  {
+   "A": 41,
+   "D": 41,
+   "agree": true,
+   "jacobi": 41.0,
+   "n": 22
+  },
+  {
+   "A": 46,
+   "D": 46,
+   "agree": true,
+   "jacobi": 46.0,
+   "n": 23
+  },
+  {
+   "A": 54,
+   "D": 54,
+   "agree": true,
+   "jacobi": 54.0,
+   "n": 24
+  },
+  {
+   "A": 61,
+   "D": 61,
+   "agree": true,
+   "jacobi": 61.0,
+   "n": 25
+  },
+  {
+   "A": 70,
+   "D": 70,
+   "agree": true,
+   "jacobi": 70.0,
+   "n": 26
+  },
+  {
+   "A": 79,
+   "D": 79,
+   "agree": true,
+   "jacobi": 79.0,
+   "n": 27
+  },
+  {
+   "A": 91,
+   "D": 91,
+   "agree": true,
+   "jacobi": 91.0,
+   "n": 28
+  },
+  {
+   "A": 102,
+   "D": 102,
+   "agree": true,
+   "jacobi": 102.0,
+   "n": 29
+  },
+  {
+   "A": 117,
+   "D": 117,
+   "agree": true,
+   "jacobi": 117.0,
+   "n": 30
+  }
+ ],
  "nmax": 30,
  "notes": [
   {
@@ -38605,6 +38896,64 @@
    "phi": 13538,
    "psi": 13538,
    "states": 13655
+  }
+ },
+ "psi_branch_pairing": {
+  "counts": {
+   "IIa->IIb": 3405,
+   "IIb->IIa": 3405,
+   "Ia->Ib": 29924,
+   "Ib->Ia": 29924
+  },
+  "examples": {
+   "IIa->IIb": {
+    "image": [
+     -1,
+     []
+    ],
+    "state": [
+     0,
+     [
+      3
+     ]
+    ]
+   },
+   "IIb->IIa": {
+    "image": [
+     0,
+     [
+      3
+     ]
+    ],
+    "state": [
+     -1,
+     []
+    ]
+   },
+   "Ia->Ib": {
+    "image": [
+     0,
+     [
+      2
+     ]
+    ],
+    "state": [
+     1,
+     []
+    ]
+   },
+   "Ib->Ia": {
+    "image": [
+     1,
+     []
+    ],
+    "state": [
+     0,
+     [
+      2
+     ]
+    ]
+   }
   }
  },
  "trace_files": "traces_cycle2.txt"

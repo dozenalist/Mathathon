@@ -101,18 +101,30 @@ def census(NMAX):
                 if lmu == 0:
                     cov["phi_virtual_mu"] += 1
             else:
+                cov["phi_caseII"] += 1
                 c2["total_caseII"] += 1
                 in_dom = B.phi_domain(j, lam)
+                # identify the empty admissible sets exactly
+                if not in_dom:
+                    c2["empty_iff_offdomain_off"] = c2.get("empty_iff_offdomain_off", 0) + 1
+                    if not (j == 0 and B.in_B(lam)):
+                        fail("off-domain Case-II state that is not 0 x B", (j, lam))
                 if in_dom:
                     c2["in_domain_caseII"] += 1
                 S, ep = B.case_ii_admissible_set(j, lam, zmin=0)
                 hi = ep["hi"]
                 if hi < 0:
                     c2["hi_neg"] += 1
+                    c2.setdefault("hi_neg_witnesses", []).append(
+                        dict(j=j, lam=list(lam), hi=hi, a=ep["a"], t=t, in_phi_domain=in_dom))
                     if in_dom:
                         c2["hi_neg_in_domain"] += 1
                 if not S:
                     c2["empty_admissible"] += 1
+                    if len(c2.setdefault("empty_witnesses", [])) < 6:
+                        c2["empty_witnesses"].append(
+                            dict(j=j, lam=list(lam), n=n, in_phi_domain=in_dom,
+                                 in_B=B.in_B(lam), hi=ep["hi"]))
                     if in_dom:
                         c2["empty_admissible_in_domain"] += 1
                 else:
@@ -329,6 +341,80 @@ def path_stats(NMAX):
 
 
 # ---------------------------------------------------------------------------
+# psi branch pairing: which branch does psi send each branch to?
+# ---------------------------------------------------------------------------
+
+
+def branch_pairing(NMAX):
+    pair = {}
+    examples = {}
+    for n in range(NMAX + 1):
+        for (j, lam) in B.states_of_weight(n):
+            if not B.psi_domain(j, lam):
+                continue
+            s2, d = B.psi(j, lam)
+            src = d["case"] + d["sub"]
+            _n2, _l2 = s2
+            t0, m0, m2, m3 = B.residues(_l2)
+            if t0 + s2[0] > 0 or m2 > 0:
+                dst = "Ia" if 5 * t0 + 5 * s2[0] - 3 >= m2 else "Ib"
+            else:
+                dst = "IIa" if m3 + 5 * s2[0] - 3 >= m0 else "IIb"
+            pair[(src, dst)] = pair.get((src, dst), 0) + 1
+            if (src, dst) not in examples:
+                examples[(src, dst)] = dict(state=[j, list(lam)], image=[s2[0], list(s2[1])])
+    return dict(counts={"%s->%s" % k: v for k, v in sorted(pair.items())},
+                examples={"%s->%s" % k: v for k, v in sorted(examples.items())})
+
+
+# ---------------------------------------------------------------------------
+# independent counting routes (nothing here uses phi or psi)
+# ---------------------------------------------------------------------------
+
+
+def independent_counts(NMAX):
+    """|A_n| and |D_n| by direct definitional enumeration, plus the Jacobi
+    triple-product sum  sum_j (-1)^j p(n - P(j)), which uses the ordinary
+    partition numbers p(m) instead of A- or D-parts.  The three agreeing is
+    *not* the objective (equal counts prove nothing about naturalness); it is a
+    consistency check on the sign/parity bookkeeping of the involutions."""
+    p = [0] * (NMAX + 1)
+    p[0] = 1
+    for k in range(1, NMAX + 1):                     # p via Euler's recurrence
+        tot = 0
+        g = 1
+        while True:
+            g1 = g * (3 * g - 1) // 2
+            g2 = g * (3 * g + 1) // 2
+            if g1 > k and g2 > k:
+                break
+            sign = 1 if g % 2 == 1 else -1
+            if g1 <= k:
+                tot += sign * p[k - g1]
+            if g2 <= k:
+                tot += sign * p[k - g2]
+            g += 1
+        p[k] = tot
+    rows = []
+    for n in range(NMAX + 1):
+        a = sum(1 for l in B.partitions(n) if B.in_A(l))
+        d = sum(1 for l in B.partitions(n)
+                if all(l[i] >= l[i + 1] + 2 for i in range(len(l) - 1)))
+        jacobi = 0
+        j = 0
+        while B.pent(j) <= n:
+            jacobi += (-1) ** j * p[n - B.pent(j)]
+            j += 1
+        j = -1
+        while B.pent(j) <= n:
+            jacobi += (-1) ** j * p[n - B.pent(j)]
+            j -= 1
+        rows.append(dict(n=n, A=a, D=d, jacobi=jacobi,
+                         agree=(a == d == jacobi)))
+    return rows
+
+
+# ---------------------------------------------------------------------------
 # main
 # ---------------------------------------------------------------------------
 
@@ -344,6 +430,12 @@ def main():
     results["exhaustive_ok"] = not FAILS
 
     results["examples"] = printed_examples()
+    results["psi_branch_pairing"] = branch_pairing(NMAX)
+    ic = independent_counts(NMAX)
+    results["independent_counts"] = ic
+    bad = [r for r in ic if not r["agree"]]
+    for r in bad:
+        fail("counting routes disagree", r)
 
     rows, best, long_trace, short_trace = path_stats(NMAX)
     results["path_stats"] = rows
@@ -410,6 +502,13 @@ def main():
               % (r["n"], r["A_count"], r["steps_max"],
                  Fraction(r["steps_mean_num"], r["steps_mean_den"]) if r["A_count"] else "-",
                  r["steps_mean"], r["argmax_lam"]))
+    print("psi branch pairing:")
+    for k, v in results["psi_branch_pairing"]["counts"].items():
+        print("   %-9s %d" % (k, v))
+    print("independent counts: A_n vs D_n vs sum_j (-1)^j p(n-P(j)) ; all agree:",
+          all(r["agree"] for r in ic))
+    print("   n: |A_n| ; n=24 -> %d ; n=30 -> %d"
+          % (ic[24]["A"], ic[30]["A"]))
     print("OVERALL exhaustive checks passed:", not FAILS)
     if FAILS:
         print("FAILURES:", len(FAILS))

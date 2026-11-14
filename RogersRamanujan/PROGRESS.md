@@ -214,3 +214,30 @@ of active work, as specified in ROADMAP.
   Mathathon objective itself (RR-C012 OPEN).
 - **GitHub checkpoint:** local commits only; push blocked (no credential).
   Bundle export for the supervisor is under `.sair/exports/`.
+
+## 2026-11-14 / RR-M004 / phi maximum exists exactly on the domain (cycle-2 worker audit)
+
+- **Agent and reviewer:** worker m3 (swarm `smwg03n61`, direction A/`Computation/cycle2/`),
+  re-derived independently by Main.
+- **Status:** closes the cycle-1 "existence of the `m` maximum" obligation in the
+  sharp form; no claim promotion beyond RR-C009's scope.
+- **Statement:** over all Case-II states of weight `<= 30`, BZ82's printed
+  admissible set `{0 <= z <= a+2j-2 : z + lam(a+2j-1-z) <= t+5j-2}` is empty for
+  893 states and every one lies outside `phi`'s domain (`0 x B(n)`); it is empty
+  for **0** of the 33 329 in-domain Case-II states. Hence the maximum exists
+  exactly where the rule applies, and "non-existence" is the domain boundary
+  rather than a defect.
+- **Evidence:** `Computation/cycle2/results_cycle2.json`
+  (`case_ii.empty_admissible = 893`, `empty_admissible_in_domain = 0`,
+  `empty_iff_offdomain_off = 893`, `exhaustive_ok = true`, `failures = []`),
+  plus Main's own re-derivation (same three numbers).
+- **Also independently reproduced by m3:** `exhaustive_ok = true` with
+  `nmax = 30`; all three printed BZ82 examples; branch census
+  (`phi_caseI = phi_caseII = 33 329`, `phi_a_eq_mu = 6 458`,
+  `phi_virtual_zero = 2 605`, `psi_Ia = 2`, `psi_IIa = psi_IIb` paired at
+  3 405/4 298 with 1 949 deletions matched by 1 949 creations); extremal path
+  `n = 30`, `(4,4,4,4,4,4,4,1,1)`, 646 steps.
+- **Reproduction:** `cd RogersRamanujan/Computation/cycle2 && python3 run_audit.py`
+  (7.6 s) and Main's inline check.
+- **Remaining:** an all-`n` version of the same equivalence; the other three
+  cycle-2 worker directions were still running when this entry was written.

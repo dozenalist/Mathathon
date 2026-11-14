@@ -51,9 +51,13 @@ Corrected position, now adopted everywhere:
   the printed rule over the same range) because it fell back to `m = 0` when its
   restricted set was empty. So no computed number, table or verdict in cycle 1
   changes; only the *claim about the source* does.
-* **Remaining honest gap:** the existence of the maximum for *all* `n` is
-  verified over a finite range and unproved in general. It is a small lemma; it
-  is not evidence of a defect.
+* **The "existence of the maximum" question is answered sharply** (worker m3,
+  re-derived by Main): the admissible set is empty exactly on the states outside
+  `phi`'s domain — 893 such states among the Case-II states of weight `<= 30`,
+  all of them in `0 x B(n)`, and 0 of the 33 329 in-domain Case-II states. So the
+  maximum exists exactly where the rule is meant to apply, and its non-existence
+  is the domain boundary. Verified finitely (`n <= 30`); the all-`n` statement is
+  the same equivalence and remains to be written as a lemma.
 
 Retraction is recorded at REGISTRY RR-X005 with the mistaken interpretation and
 its resolution, per the project's rule that refuted and superseded claims are
