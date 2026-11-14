@@ -2071,6 +2071,7 @@ Timings on this VM, one core:
 | its mirror `(u−7/5)²+2·10⁻⁴⁰` | accept | < 0.01 s | gap rule, first pass |
 | degree 33, seven rational roots in `[12,30]` | reject | 0.02 s | gap rule (degenerate intervals, strict) |
 | degree 35 with a root pair `1.4·10⁻¹⁰` apart | not measured | **> 20 s** | refinement/`function_range` |
+| `(u−7/5)² − 2·10⁻⁴⁰` times `(u+1)³`, `(u+1)⁵`, `(u+1)⁷` | reject | 0.16 / 0.18 / 0.24 s | refinement then `function_range` |
 
 **Recorded limitation.** At high degree with clustered roots the complete rule is
 *exact but slow* — both the refinement ladder (capped at `ε = 10⁻¹⁴` to bound the

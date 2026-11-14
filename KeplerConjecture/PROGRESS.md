@@ -484,3 +484,28 @@ Receipt `10:36:27Z`. Read: supervisor `a2237aa`, C `b51129e`, E `846f221`, X `9d
 - **`K15-C075`**: cost profile, with the documented slow branch (high degree with
   clustered roots: exact but minutes; no certificate enters it).
 - Lean not iterated (1 GiB cap at 8.8 s); `M-LEAN-003` stands.
+
+### K15-MAIN-010 close — review 0223 block, commit tally
+
+Twenty-six commits, all pushed to `kepler15/main` and confirmed by `git ls-remote`.
+The block's content, in order: the third sign-predicate repair with a complete rule
+and its correctness argument (`C068`); six more regression classes and a third
+structured fuzz family (`C073`, `C074`); `K15-C035`'s lost factor `R` restored and
+the stale constant purged from every file (`C035`, `C052`, and the sweep); E's `(Q)`
+refuted (`C069`); the next target chosen from worker evidence (`C072`, `D17`); the
+periodic bridge audited against Cohn–Elkies' Appendix A (`C070`, `BRIDGE_AUDIT.md`);
+the transfer route's proof complexity assessed (`C071`); X's repaired `exact_sign`
+audited and cross-run (`C076`, `C077`); the cut condition shown trivial on fcc/hcp
+and *not* on general Barlow stackings (`C078`); E's `(T')` identified with the
+averaged inequality and their constant matched (`C079`); the transfer requirement
+shown weaker than `(T')` except for closed components (`C080`); a cluster-level floor
+`Φ ≥ 0.0104949` (`C081`, `C082`); and the cost profile of the complete rule
+(`C075`). `Main/REVIEW_0223.md` and `Main/ACCEPTED.md` are the readable accounts.
+
+Verification state at close: `run_all_checks.py --cert` 9/9 in 5.9 s; the xsign
+cross-run 10/10; the adversarial suite 35 cases; the fuzz clean at degrees 6–12 over
+ten seeds; `constants_check.py` 29/29; both K33 variants `ACCEPT` at
+`0.779966497784` and `0.779966216777`.
+
+Unchanged: no new density bound; the checker's general soundness stays suspended for
+X; `G5` (the analytic averaged cell bound) remains the whole mathematical content.
