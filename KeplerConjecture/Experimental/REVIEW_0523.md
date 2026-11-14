@@ -134,12 +134,33 @@ both ranges, so the hull of the corner values is the exact range):
 certified   [5.728055604988, 6.066297678036]      width 0.338
 ```
 
-That is **correct and useless**: the true variation of the volume over that box is of order
+That is **correct and too wide**: the true variation of the volume over that box is of order
 `1e-4`, so the `0.338` is dependency, not geometry — the normal error `e_i` of each interval
-centre is multiplied by `R` in the sandwich and summed over twelve constraints. This is the
-concrete answer to "does the atom scale": it does at a point (`1e-18`) and it does not at a
-`1°` box. The branch-and-bound therefore needs an explicit box-size/width curve, which is the
-subject of `COMPUTE_REQUEST_0523.md` rather than a guess here.
+centre is multiplied by `R` in the sandwich and summed over twelve constraints.
+
+So the atom must be calibrated, and it is worth doing here rather than guessing. Halving the
+box around `(θ, φ) = (111.7975°, 36°)`:
+
+```
+ k   box width (deg)      certified enclosure            width
+ 0     0.1              [5.8712721949, 5.9246189771]    5.33e-02
+ 1     0.05             [5.8846251953, 5.9112982754]    2.67e-02
+ 2     0.025            [5.8912975480, 5.9046339975]    1.33e-02
+ 3     0.0125           [5.8946326818, 5.9013008823]    6.67e-03
+ 4     0.00625          [5.8962999874, 5.8996340814]    3.33e-03
+ 5     0.003125         [5.8971335748, 5.8988006202]    1.67e-03
+```
+
+**The width is linear in the box width**, as the dependency argument predicts, and — this is
+the useful part — **the lower end is already useful at the coarsest box**: `0.1°` certifies
+`vol > 5.8712`, which is `0.108` above the `(P')` threshold `5.7634`. A two-parameter family is
+therefore exhaustively certifiable at `(14/0.1)² ≈ 2×10⁴` boxes, which is cheap.
+
+The catch is the one that matters: **that is the C5 family, not the completion space.** The
+domain of §3 has up to 200 coordinates, and no 0.1°-granular grid over it is remotely
+reachable. So the atom is not the obstruction — the *dimension* is. A branch-and-bound would
+have to be preceded by a reduction to a low-dimensional family, and no such reduction is known.
+That is the honest state of the route, and it is the number the next block needs.
 
 ---
 

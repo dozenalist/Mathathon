@@ -32,13 +32,24 @@ The box evaluation is **correct but too wide at the box size tried**: a `0.2° �
 multiplied by `R` and summed over the twelve constraints. The true variation of the volume over
 that box is of order `1e-4`, so the enclosure is dominated by dependency, not by geometry.
 
-**Task.** For a geometric sequence of box widths `w = 2^-k`, `k = 0..16`, centred on
-`(θ, φ) = (111.7975°, 36°)`, record the certified enclosure width. Report the smallest `w`
-whose enclosure width is below `1e-3` (the scale a B&B needs) and the number of boxes of that
-width needed to cover the legal family (the legal window is `θ ∈ [106°, 120°]`, `φ ∈ [22°, 36°]`).
+**Already measured locally, so this request is now smaller than first drafted.** The scaling is
+linear in the box width, and the lower end is useful even at a coarse box:
 
-That single curve converts "the atom works" into "the B&B needs N boxes", which is the number
-the next block has to know.
+```
+width 0.1 deg      -> certified [5.871272, 5.924619]     (lower end is 0.108 ABOVE the threshold 5.763417)
+width 0.025 deg    -> certified [5.891298, 5.904634]
+width 0.003125 deg -> certified [5.897134, 5.898801]
+```
+
+**Task (what remains).** Certify the whole legal `(θ, φ)` window — `θ ∈ [106°, 120°]`,
+`φ ∈ [22°, 36°]` — with `0.1°` boxes: `(14/0.1)² ≈ 2×10⁴` boxes, each asking only
+"is the certified lower end above `5.763417470`?"  Report the number of boxes that fail.
+
+That is the complete certification of the C5 family, and it is cheap. What it is **not** is a
+bound over completions: the domain of `REVIEW_0523` §3 has up to 200 coordinates, and the
+atom's cost per box (≈10 s in pure Python) is irrelevant next to the box count at that
+dimension. The dimension, not the atom, is the obstruction, and this request deliberately does
+not pretend otherwise.
 
 ```
 CPU      <= 1 core
