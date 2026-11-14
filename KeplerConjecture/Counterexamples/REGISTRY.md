@@ -946,3 +946,141 @@ packing*, arXiv:2206.15373 — the HTML full text contains **`0.770271` twice an
 *abstract* advertises new bounds only "in dimension 4 through 7 and 9 through 16", because `d = 3`
 is not new territory — the `d = 3` values are there, but a reader who stops at the abstract will
 think they are the project's own computation. They are not.
+
+### K15-X-C057 — `twist_cover.py` is unsound in BOTH revisions: missing `2u_x q_x`, and the arcs are the complements
+
+Audited blobs `469fc9f181f976598fd866d9d6473527d4e4a6f8` (C112, main `8dc264e`) and
+`67d5c97345cbdb049461b1ea8c50d743b0bf58f1` (C123, main `6d542f5`). **D1:** with `u = w − a` and the
+twist about the v–w axis, `d²(t) = |u|²+|q|²+2u_x q_x + 2(u_y q_y+u_z q_z)cos t + 2(u_z q_y−u_y q_z) sin t`;
+both revisions set `A = |u|²+|q|²` and drop `2u_x q_x`, which is nonzero for **121 of 121 pairs** and
+makes `A` too large when `q_x > 0` (unsafe). Exact witness: code `A = 8.422291236` vs true
+`6.444582472`; at `t = 10.3°` the code gives `d² = 4.0006` (safe) while the truth is `2.0229` (clash),
+and the direct recomputation agrees with the corrected constant. **D2:** `{t : cos(t−ψ) < c}` is
+centred at `ψ+π` with half-width `π−acos c`; both revisions use `[ψ∓acos c, ψ±acos c]`, the **far**
+set. Over the 121 pairs `c ≤ −0.381966`, so true clash half-widths are `≤ 67.54°` while the code
+uses `≥ 112.46°`, and **all 50 emitted arcs are centred where `d² = 16.8`** (the far point). C123's
+claim that its arcs are "subsets of the true violation sets" is the reverse. Reproduce:
+`Reviews/twist/audit_twist_cover.py`.
+
+### K15-X-C058 — the two-dodecahedra theorem at distance 2 is TRUE, and the corrected cover certifies it
+
+`Reviews/twist/corrected_cover.py`: same configuration, both defects fixed (`A` includes `2u_x q_x`;
+arcs centred at `ψ+π`, half-width `π−acos c`; inner shrink `1e-30` at 60 digits). Result: 45 raw arcs
+merging to **one interval `[0°, 72°]`**, full coverage of the twist circle with no gaps, and the
+cover **survives shrinking every arc by 2°**. Validated by 175 inside/outside samples against the
+direct distance (0 disagreements) and by the sampled maximum of the minimum distance
+`1.125554845 < 2`. So: for every relative twist some pair is strictly closer than 2, and two regular
+dodecahedral cells of inradius 1 cannot have centres at distance 2. This restores `C108` step (4);
+`ACCEPTED.md`'s "modulo ... `C112`" should read "modulo the corrected cover".
+
+### K15-X-C059 — `C116`'s `6/√5` inherits both arc defects; the statement is true but the threshold is `3.4555003`
+
+`near_contact_band.py:43` uses `twist_cover.inner_arcs`, so the near-contact band computation
+inherits D1 and D2 of `X-C057`. The *statement* ("two dodecahedral cells impossible for centre
+distance below `6/√5 = 2.6832816`") is true, but proved by `X-C051`'s direct computation, which
+gives the true threshold `3.4555003` (attained, with no other centre cutting either cell). Since
+`3.4555003 > 6/√5`, impossibility below `6/√5` follows from `X-C051`, not from `C116`.
+
+### K15-X-C060 — E's `rigorous_cell_volume.py`: componentwise error used where the Euclidean norm is needed
+
+Blob `d015a2e1e322853286322ff2c6ec4a5a88f03550` (experimental `d289bef`). The code sets
+`e = max((x.hi − x.lo)/2 for x in n)` and then `slack = R*e + f`, but the inclusion
+`{y·n' ≤ b' − slack} ⊆ Ω` needs `|y·(n − n')| ≤ R‖n − n'‖₂`, and `‖·‖₂ ≤ √3‖·‖_∞`. Exact rational
+witness with `R = 1`: `n₀ = (1,0,0)`, `n = (3/5,4/5,0)` gives `‖n−n₀‖_∞ = 4/5` but
+`‖n−n₀‖₂ = 0.894427`, and `y = (−4/9,8/9,0)` (`|y| = 0.993808`) has `y·(n−n₀) = 8/9 = 0.888889 > 4/5`.
+So the allowance is smaller than the perturbation it must absorb and the inner inclusion can fail.
+Reproduce: `Reviews/twist/audit_E_cell_volume.py`.
+
+### K15-X-C061 — E's `rigorous_cell_volume.py`: an unbounded cell gets a finite "certified" volume
+
+Same blob. `polytope_volume` accepts any body with ≥ 4 feasible triple-plane vertices and never tests
+boundedness; `sandwich`'s `R`-check inspects only the vertices it found, so an unbounded body passes
+vacuously. Witness: centres `(±2,0,0)`, `(0,±2,0)`, `(0,0,−2)` give the cell
+`{|x| ≤ 1, |y| ≤ 1, z ≥ −1}` with recession ray `(0,0,1)` and **infinite** volume; E's
+`sandwich(centres, R=2)` returns `[1.3333333333333333, 1.3333333333333333]`. The rational polytope
+machinery is exact (cube `8`, tetrahedron `8/3`, fcc control `4√2` all ✓); the enclosure argument is
+what fails. Repair requirements: boundedness, norm choice, radius bootstrap, inner inclusion, exact
+domain coverage.
+
+### K15-X-C062 — the §4 slack display appears in three `main` files and is true only with `E = ∅`
+
+`Claims` `C106`/`GEOMETRIC_LEMMA_0438.md`/`PROOF_GAPS.md` all carry
+`Σvol ≥ √32|B| − (2√32−2V_dod)Σd_v − √32 C_R`. Under the repair's reading, where the exceptional set
+is absorbed into the slack (`E = ∅`, so `d_v + Σc_e = 1` for every `v`), it follows from the derived
+form `√32(|B|−|E_B|) − (√32−V_dod)(Σd_v + C_R')` with difference
+`−(√32−V_dod)Σd_v − V_dod C_R' ≤ 0`. If a non-empty `E` is kept alongside `d`, it is **false**
+(`R = 0`, `B = {v}`, `v ∈ E`, `d_v = 0`, `vol Ω(v) = V_dod` reads `V_dod ≥ √32`). Each of the three
+files should state `E = ∅` or use the derived form.
+
+### K15-X-C063 — the repair for E's cell certifier is cheap, and the box alone is not enough
+
+`Reviews/twist/repaired_sandwich.py`. Two changes to E's `sandwich`: slack
+`R·√3·(e + QERR) + f + QERR` (the Euclidean norm, `X-C060`), and the box `|y_i| ≤ R` on both
+polytopes (`X-C061`). **The fcc control still closes** at width `1.4·10⁻¹⁸` for `R = 2, 3, 4`, so
+the norm fix is free. **But the box does not detect unboundedness**: on the
+`{|x|≤1, |y|≤1, z≥−1}` witness the boxed sandwich returns `[12.000000, 12.000000]`, finite and not
+the cell's volume, because the box cut it. What detects it is a **saturation check** — every outer
+vertex within 2 of some centre, which is what licenses the a-priori bound `R = 2` — and on that
+witness 4 of the 8 outer vertices fail it. So requirement (1) is "boundedness *plus* the covering
+check", not "add a box". E's `certify_region.py` imports `rigorous_cell_volume as R` and uses
+`R.box_volume`, so the certified *region* at `d289bef` inherits both defects until the atom is
+repaired.
+
+### K15-X-C064 — the two-dodecahedra threshold is CERTIFIED at `3.455500344` (not sampled)
+
+`Reviews/twist/certified_threshold.py`: the corrected arc cover run with the partner centre at
+`d·u₀` covers the twist circle for `d = 2.0, 2.5, 3.0, 3.3, 3.4, 3.45, 3.455` and fails at
+`3.456`, `3.46`, `3.5`; bisection gives `d_c ∈ [3.455500344, 3.455500344]`. That matches `X-C051`'s
+sampled threshold `3.455500344` to nine decimals and upgrades it from "maximised over a grid" to
+"covered for every twist". Consequence: `C116`'s `6/√5 = 2.6832816` should be `3.455500344`, and the
+statement ("two dodecahedral cells impossible below `d_c`") is certified rather than inferred.
+
+### K15-X-C065 — E's `certify_region.py` box grid can leave a gap and still say "CERTIFIED for the whole region"
+
+Blob at experimental `d289bef`. The grid is `n = int(round((hi − lo)/w))` then `n` boxes at
+`lo + i·w`; nothing checks the remainder, and the epilogue prints "CERTIFIED for the whole region"
+regardless. Replicating the index arithmetic: `[110°, 111.05°]` at `w = 0.1°` is covered only to
+`111°` (gap `0.05°`); `[110°, 111°]` at `w = 0.3°` only to `110.9°` (gap `0.1°`). The default region
+`[110,111] × [35,36]` at `0.1°` is an exact multiple, so that run is unaffected. Fix: require the
+extent to be an integer multiple of `w`, or add the remainder box. (Independently, the region's
+certification inherits `X-C060`/`X-C061` through `rigorous_cell_volume.box_volume`.)
+
+### K15-X-C066 — the 13–20-face route has no obstruction but needs an unproved classical constant
+
+`C122`'s (B_F) needs `c_F > √32/1.045³ = 4.957082168`. No obstruction exists for `F ≤ 20`: the
+20-faced constant is `V_ico = 5.054056144` (regular icosahedron of inradius 1) and
+`V_ico·1.045³ = 5.767517665 > √32`, a **1.96% margin** (against the dodecahedron's `11.97%` at
+`F = 12`). **But the optimality of the icosahedron among 20-faced circumscribed bodies is not
+proved**: Lindelöf's theorem gives only the shape of an optimum (faces tangent at centroids);
+proved optimality covers `n = 4, 5, 6, 12` (Fejes Tóth) — the same `≤ 12` boundary as the
+dodecahedral theorem — while `n = 20` is classical conjecture with numerical support (Goldberg;
+Mutoh's computer-aided search, `4 ≤ n ≤ 30`). So the 13–20-face case closes *if* that conjecture
+holds, with 1.96% margin, and the route does fail for large `F` since `4π/3 = 4.188790 < 4.957082`.
+The obstruction the brief asked for exists only in the large-`F` direction, and it is the ball.
+
+### K15-X-C067 — E's sin/cos interval extension is sound (checked), unlike the enclosing steps
+
+`range_of` in `rigorous_cell_volume.py` (blob `d015a2e1...`) returns the hull of the corner values
+plus the quarter-turn points inside the box; that is a valid interval extension, and a direct test
+gives **504 samples over 12 random boxes, 0 outside the interval**. Recorded so that `X-C060`/
+`X-C061` are not read as "E's arithmetic is wrong": the rational polytope machinery (cube `8`,
+tetrahedron `8/3`, fcc `4√2`) and the trigonometric enclosure are exact; the defects are the
+Euclidean-slack step, the boundedness step and the region grid.
+
+### K15-X-C068 — C's near-contact scan does not inherit the arc defect, and its 500 instances are exact
+
+`nearcontact_scan.py` (comp `cde39fa`) imports `fixture_nonuniform` and `cut_flow`, not
+`twist_cover`, so `X-C057` does not touch it. Its output at comp tip `bf7998c`:
+**500 instances, `with_positive_t_star: 0`, all `t_star` exactly `0`**, density range
+`[0.620562, 0.739247]` — below Kepler throughout. Exhaustive over `2^4` subsets with exact rational
+cell volumes, so `t* = 0` is exact for those fixtures; the docstring's scope caveat is correct and I
+am not upgrading it. Interaction with D7 (`X-C044`): `exhaustive_cut_scan` has no `max(0,·)`, so a
+raw `t_star` of exactly `0` over all 500 instances means some cut has `Σ_U b = 0` exactly.
+
+### K15-X-C069 — C's exact cell volumes satisfy the right tiling identity on all 500 rows
+
+Checked against `out/nearcontact_scan.json` (comp tip `bf7998c`): the four cells in each row satisfy
+`Σvol = a³` exactly in the 488 cubic rows and `Σvol = a³·t` in the 12 tetragonal (`F2`) rows with
+`t = 1.01, 1.02, …` — the correct identity per family, in exact rational arithmetic. The stored
+densities equal `(4π/3)/mean(vols)` in 200/200 rows checked. So C's volume engine is consistent with
+its own data; the finite scope is the only limit, and the docstring states it.
