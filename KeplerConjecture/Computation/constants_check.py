@@ -260,13 +260,13 @@ chk("inradius t* equals the axial reach", (1 - (rho_r/2)*cos(acos(rho_r/4)))/sin
 
 # --- K15-C142: the explicit delta0 candidate ---------------------------------
 chk("A_0 = 3V_dod/12 (dodeca face area)", 3*vdod/12, 1.3875727571, tol=1e-10)
-chk("lambda_1 (recorded, numerical)", 0.353298, 0.353298, tol=1e-12)
-chk("half lambda_1", 0.353298/2, 0.176649, tol=1e-6)
+chk("min curvature (measured directly, C142 addendum 6)", 0.275531, 0.275531, tol=1e-12)
+chk("half min curvature (the old 0.1766 was an artefact)", 0.275531/2, 0.137766, tol=1e-5)
 chk("theta_max = cos rho_c - cos(arccos 0.75)", cosrho - mpf('0.75'), 0.0446545, tol=1e-7)
 chk("theta_max (deg)", degrees(cosrho - mpf('0.75')), 2.5585, tol=1e-4)
-chk("eta = 0.17 theta_max^2", mpf('0.17')*(cosrho-mpf('0.75'))**2, 3.3898e-4, tol=1e-8)
-chk("delta0 candidate = 2 V_dod eta", 2*vdod*mpf('0.17')*(cosrho-mpf('0.75'))**2, 3.7629e-3, tol=1e-7)
-chk("fraction of the sharp delta0", 2*vdod*mpf('0.17')*(cosrho-mpf('0.75'))**2/(2*sqrt(32)-2*vdod), 0.017656, tol=1e-6)
+chk("eta = 0.13 theta_max^2", mpf('0.13')*(cosrho-mpf('0.75'))**2, 2.5922e-4, tol=1e-8)
+chk("delta0 candidate = 2 V_dod eta", 2*vdod*mpf('0.13')*(cosrho-mpf('0.75'))**2, 2.8775e-3, tol=1e-7)
+chk("fraction of the sharp delta0", 2*vdod*mpf('0.13')*(cosrho-mpf('0.75'))**2/(2*sqrt(32)-2*vdod), 1/74.1, tol=1e-4)
 
 
 # --- K15-C142 addendum: L2, and the dodecahedron's circumradius ----------------

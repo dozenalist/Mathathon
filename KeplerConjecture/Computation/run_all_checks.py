@@ -34,6 +34,7 @@ CHECKS = [
     ("payer family scanned (C120)", ["payer_family.py"], ["--quick"]),
     ("rho_eps = 0 branch on scaled fcc (C130)", ["scaled_case2.py"], ["--quick"]),
     ("two-dodecahedra: orientation-free band (C133)", ["orient_cover.py"], ["--quick"]),
+    ("L1 constant sampled with its negative control (C142)", ["l1_sample.py", "--n", "300"], ["--quick"]),
 ]
 
 

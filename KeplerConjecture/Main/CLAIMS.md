@@ -5099,6 +5099,9 @@ So with `A_0 := 3V_dod/12 = 1.387572757…` (the dodecahedron's face area at inr
 
 > **Face-distance stability, explicit and unconditional on the normal set.** With the normals fixed and
 > every `d_i ≥ 1`: `vol − V_dod ≥ A_0 Σ_i (d_i − 1)`.
+>
+> **[Numbers below corrected at addendum 6: the constant is `0.13`, not `0.17`, and `δ₀ = 2.88·10⁻³`.**
+> The `λ₁` in §(2) is a finite-difference artefact; the measured minimum curvature is `0.275531`.]
 
 That half of `G11` is done: the rate in the face distances is `1.3876` per unit, and it is sharp to
 first order.
@@ -5266,7 +5269,10 @@ finite calculation rather than a covering problem.
 
 ### K15-C143 — what the explicit `δ₀` does and does not buy (`PROVED` conditional on `L1`; **no new bound**)
 
-`C142` produces `δ₀ ≥ 3.7629·10⁻³` conditional on `L1`. Before anyone quotes a number, here is exactly
+`C142` produces `δ₀ ≥ 2.8775·10⁻³` conditional on `L1` (**corrected from `3.7629·10⁻³` at `C142`
+addendum 6: the Hessian curvature was an artefact; the measured constant is `0.13`, not `0.17`). The
+table below is the one computed with the older value; scaled by `0.765` its entries become
+`1.96·10⁻⁴, 9.78·10⁻⁵, 3.91·10⁻⁵, 3.91·10⁻⁶`. Before anyone quotes a number, here is exactly
 what that converts into. `C108`'s Theorem C reads `δ ≤ (4π/3)/(V_dod + δ₀ρ)` with `ρ = ρ_ε` the
 density of matched near-contact pairs (`ρ ≤ 1/2`).
 
@@ -5402,3 +5408,46 @@ than `O(θ)`.
 **What this does not do.** It measures the circumradius growth; it does not *prove* the `1.30` bound for
 all directions. That is a derivative bound of the same kind as `L1` and belongs in the same
 `M-CERT-002` job (vertex coordinates, hence their norms, are explicit functions of the 24 parameters).
+
+#### `C142` addendum 6 — CORRECTION: my `λ₁` was a finite-difference artefact; the constant is `0.13`, `δ₀ = 2.88·10⁻³`
+
+**A sampling check falsified the constant in §(4).** `Computation/l1_sample.py` tests
+`vol − V_dod ≥ c·Σθ²` over many directions. With `c = 0.17` it **failed**: at 4000 directions × 4 radii
+the minimum of `(vol − V_dod)/θ²` is **`0.137789`**, far below the `0.17` I had used. Diagnosing the
+offending direction:
+
+| `θ` | `(vol − V_dod)/θ²` | (tighter rounding, 15 digits) |
+| --- | --- | --- |
+| `0.002` | `0.137771` | `0.137770` |
+| `0.010` | `0.137789` | `0.137789` |
+| `0.0447` | `0.137848` | `0.137848` |
+
+and the second difference along it is `0.275531` at every step from `1·10⁻²` down to `5·10⁻⁴`. **So the
+true minimum curvature is `≤ 0.275531`, and the `λ₁ = 0.353298` recorded in §(2) is wrong** — it came
+from a 24×24 finite-difference Hessian at `ε = 2·10⁻⁴` with the vertex coordinates rounded to 12
+decimals, which overestimated the curvature by `28%`. The three-zero-mode check that "confirmed" it was
+therefore also consistent with a distorted matrix and proves nothing. **Recorded as a failed computation,
+not a correction of arithmetic.**
+
+**Consequences, propagated.**
+
+```
+c       = 0.13          (measured 0.137789, 5% slack)
+θ_max   = 0.0446545     (unchanged: cos ρ_c − 3/4, from d ≤ 3)
+η       = 0.13·θ_max² = 2.5922·10⁻⁴
+δ₀      = 2V_dod·η    = 2.8775·10⁻³      (was 3.7629·10⁻³; 1/74.1 of the sharp 0.213126)
+```
+
+`l1_sample.py` now runs with `c = 0.13` and passes on **16 000 samples** with margin `7.8·10⁻⁷`
+(consistent with `(0.137789 − 0.13)·θ²` at the binding point), and its **negative control** (`c = 0.30`)
+is rejected on 33 samples, so the test can fail. **`L1` is therefore still only sampled, never proved**,
+and its constant is now the measured one.
+
+**Everything downstream that quoted `3.76·10⁻³` or `0.17` is corrected here**, and the numbers in §(2),
+§(3) and addendum 2 (`c₂` range `0.1766…`) should be read with this addendum: the measured range of
+`(vol − V_dod)/θ²` begins at `0.1378`, not `0.1766`.
+
+**What this changes about the method, not just the number.** The first Hessian was built to be *tidy*
+(3 exact zero modes) and was wrong; the sampling check was built to be able to *fail* and did. That is the
+third time in this block that a "clean-looking" computation was wrong and an adversarial one was right —
+which is why `l1_sample.py` carries its negative control as a required part rather than a nicety.
