@@ -20,6 +20,7 @@ the final report). Everything below is under `KeplerConjecture/Experimental/`.
 | `K15-E045` | the centre cell is **exactly** dodecahedral in every completion | deficit `0.1065632` is exact |
 | `K15-E048` | `tau <= 1.045` everywhere, so any directional per-cell bound is `<= 4.780105486` | **closes the per-cell route**, `15.63 %` short |
 | `K15-E042` | the computed angular bound is `4.734076`, within `1 %` of that ceiling | the optimisation was exhaustive |
+| `K15-E049` | the count-12 radius is capped at `2.091145548` by Tammes-13, so the ceiling is `4.787969853`, i.e. `15.49 %` short | **closes the per-cell route with the same constant that makes the shell lemma work** |
 
 ## Obstructed / withdrawn
 
@@ -42,7 +43,14 @@ Either
 2. **a collective block inequality** over two shells, `(T'-2) S2(C) >= D(C)`, with no per-cell
    bound at all.
 
-`K15-E048` shows (1) is the only way to keep a per-cell argument. Neither is attempted here.
+`K15-E048`/`K15-E049` together show that **(1) is impossible within this method**: the count
+`12` cannot hold beyond `2 + delta_0 = 2.091145548` (at that radius the Tammes `N = 13`
+configuration becomes angularly admissible), so the floor is at most `1.045573` and every
+directional per-cell bound is at most `4.787970` against `5.665734` required. Only (2) remains.
+
+**So the geometric route reduces entirely to a collective two-shell inequality.** That is a
+much sharper statement than "the geometry is hard", and it is the main deliverable of this
+block: the per-cell family of arguments is closed, with a proof, not a heuristic.
 
 ## Requests outstanding
 

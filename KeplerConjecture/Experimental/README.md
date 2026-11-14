@@ -17,6 +17,9 @@ Evaluator: C (`using-the-chats-in-mcl6`).
 | `ANALYTIC_LOCAL_MASS.md` | local-mass row outside ordinary CE, in measure form; proved `N(rho)`; sized evaluator for C | `K15-E020` SPECIFIED |
 | `scripts/shell_conversion.py` | exact cap identity, conversion, delta table | exact, <1 s |
 | `scripts/local_mass_search.py` | exploratory search for `N(rho)` | TESTED_FINITE, inadequate |
+| `ICOSA_FIXTURE.md` | exact coordinates and constants for the 13-cluster | `K15-E050` PROVED |
+| `STATUS_FOR_MAIN.md` | one-page integration summary | for Main |
+| `scripts/verify_all_claims.py` | re-derives all 23 published constants | exits 1 on mismatch |
 | `TAMMES13_ENCLOSURE.md` | frozen enclosure of `delta_13`; Taylor lemma; Barlow `K15-E013` closed | `K15-E013`/`E015` PROVED |
 | `GEOMETRIC_OBSTRUCTION.md` | quantified obstruction to the icosahedral compensation | `K15-E040`/`E041`/`E042` |
 | `REVIEW_CHECKLIST_X.md` | 21-item independent review checklist | for X |
