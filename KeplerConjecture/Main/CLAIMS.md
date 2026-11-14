@@ -2126,3 +2126,20 @@ conversion, and `run_all_checks` in ≈ 6 s.
   external cross-check other than `function_range`, which Main also uses as a
   fallback — so compact claims remain less protected than half-line claims. Closing
   this needs a compact-interval mode in one of the other checkers; recorded for X.
+
+### K15-C078 — the cut condition is trivial on close-packed structures (`PROVED` remark)
+
+For fcc, hcp and **every Barlow stacking**, every Voronoi cell has volume exactly
+`√32` (fcc/hcp is classical; the general Barlow case is `K15-C033`'s setting, where
+all cells are congruent to the rhombic dodecahedron or the hcp cell — in either case
+`√32`). Hence `b(v) = √32 − vol Ω(v) = 0` for every vertex, the cut condition of
+`K15-C044` holds with `Φ = 0`, and `φ ≡ 0` is a valid transfer.
+
+**What this means.** The transfer construction costs nothing on the structures that
+attain the bound; the entire content is in *defect* configurations. That is
+consistent with `K15-C036` (no finite fixture decides the pointwise inequality) and
+with `K15-C051` (no locally dense periodic blob was found). It also means a
+proposed transfer must be checked only where `b > 0`, i.e. on cells smaller than
+`√32` — and `K15-C069` says such cells exist in saturated packings.
+
+*Status.* `PROVED` (immediate). Reviewer X.
