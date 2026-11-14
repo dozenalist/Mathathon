@@ -194,6 +194,18 @@ at `≥ 2` for `t` up to at least `6°` (`2.0955, 2.0880, 2.0730, 2.0427, 2.0120
 larger than "the icosahedral 13-cluster", which is the second reason (after `K_{1,3}`) that
 "exactly" is the wrong word at line 199.
 
+**A better failure, with no cluster and minimum degree 2 (swarm member `m6`, verified exactly).** Five
+points: `v = 0`, `w = (2,0,0)`, `p₁ = (1,√3,0)`, `p₂ = (1,−√3/2,3/2)`, `p₃ = (1,−√3/2,−3/2)`.
+Every `v`–`w`, `v`–`pᵢ` and `w`–`pᵢ` squared distance is exactly `4` and every `pᵢ`–`p_j` squared
+distance is exactly `9`, so the contact graph is `K₅` minus the triangle on `{p₁,p₂,p₃}` — a book
+with spine `v w` and three pages, degrees `4,4,2,2,2`. `S = {v,w}` leaves three isolated vertices
+against `|S| = 2`, so `(M)` fails, with the Farkas certificate `y = (−1,−1,+1,+1,+1)`: edge sums
+`−2,0,0,0,0,0,0` and `Σy = 1`. So `(M)` fails on a legal configuration with **no vertex of degree
+1** and **no icosahedral cluster** — the 13-cluster is the *largest* violation (`12 > 1`), not the
+only mechanism. (How large: two contact points at distance 2 both touching a point at distance 2
+put it on a circle `{x = 1, |p| = 2}` of radius `√3`, where mutual distance `≥ 2` allows at most
+`5` points, so `|S| = 2` can be violated by up to `5 > 2` common neighbours. `m6`.)
+
 **`K_{1,3}` is geometrically realisable, not just a graph.** `v = 0` and the three points
 `2·(1,1,1)/√3`, `2·(1,−1,−1)/√3`, `2·(−1,1,−1)/√3`: each is at distance 2 from `v`, and their
 mutual distances are `√(32/3) = 3.266 ≥ 2`, so the contact graph of this configuration **is**

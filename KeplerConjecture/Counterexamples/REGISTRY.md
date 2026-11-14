@@ -849,7 +849,11 @@ of the inequality. Second reason (after `K_{1,3}`) that "the failure is exactly 
 icosahedral cluster" is too strong. **Explicit family:** keeping eleven icosahedral points fixed and rotating the twelfth about `e₁`
 by `t` (renormalised to radius 2) keeps the minimum mutual distance `≥ 2` for `t = 0.5°, 1°, 2°, 4°,
 6°` (`2.0955, 2.0880, 2.0730, 2.0427, 2.0120`), so the admissible set is at least one-dimensional.
-Also: `K_{1,3}` is geometrically realisable — `v = 0` plus
+**A failure with no cluster and minimum degree 2** (swarm member `m6`, verified exactly): the five
+points `v = 0`, `w = (2,0,0)`, `p₁ = (1,√3,0)`, `p₂ = (1,−√3/2,3/2)`, `p₃ = (1,−√3/2,−3/2)` have
+contact graph `K₅` minus a triangle (degrees `4,4,2,2,2`), and `S = {v,w}` leaves three isolated
+vertices against `|S| = 2`; Farkas `y = (−1,−1,+1,+1,+1)`, edge sums `≤ 0`, `Σy = 1`. So "exactly an
+isolated icosahedral cluster" is wrong even with all degrees `≥ 2`. Also: `K_{1,3}` is geometrically realisable — `v = 0` plus
 `2·(1,1,1)/√3`, `2·(1,−1,−1)/√3`, `2·(−1,1,−1)/√3`, mutual distances `√(32/3) = 3.266 ≥ 2` — so
 `(M)` fails on a legal configuration of four points, not only on the 13-cluster.
 
