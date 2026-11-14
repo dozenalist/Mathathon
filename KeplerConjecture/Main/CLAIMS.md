@@ -1754,3 +1754,16 @@ the polynomial's own roots).
 Added with it: a **degree-12** fuzz run (`--n 200 --deg 12 --seed 77`), 199
 polynomials, zero false accepts — the earlier runs were degree ≤ 6, where the
 isolating-interval code is barely exercised.
+
+### K15-C062 — the repaired predicates scale (`TESTED_FINITE`)
+
+Timing on deliberately hostile inputs (`u`-variable, rational coefficients):
+a degree-33 polynomial with seven simple roots inside the region is decided in
+`0.01 s`; the same polynomial squared (degree 66, every root of even multiplicity,
+which is the shape that broke both earlier algorithms) in `0.07 s`; a degree-200
+synthetic case is not needed because the K33 certificates themselves are decided in
+about `2 s` including the basis conversion. All three hostile verdicts were
+correct (`False`, `False`, `False`, as the root pattern requires).
+
+Scope: timing on this VM, single core, sympy only. The certificate path is the
+slowest real use and stays far below the 300 s cap.
