@@ -68,7 +68,7 @@ tested, not asserted (`Computation/interface_xcheck.py`).
 
 | Route | State | Missing |
 | --- | --- | --- |
-| **Cluster/partition (geometric)** — E's criterion, cluster averages instead of pointwise fcc-compatibility | criterion proposed; universal quantifier refuted (a singleton at the icosahedral vertex); repaired to a *specified* partition | a partition rule with a boundary estimate; an analytic cluster-volume lower bound at `D = 2`; an explicit `A` satisfying K15-C029 |
+| **Cluster/partition (geometric)** — E's criterion, cluster averages instead of pointwise fcc-compatibility | criterion proposed; universal quantifier refuted (a singleton at the icosahedral vertex); repaired to a *specified* partition | a partition rule with a boundary estimate; an analytic cluster-volume lower bound at `D = 2`; an explicit `A` whose negative part satisfies the signed estimate `K15-C029r` |
 | **Exact-certificate pipeline (analytic)** — rational data + Sturm verdicts | working end to end at degree 33, cross-verified | nothing structural; its ceiling is obstructed by Li, so it is a control and a component, not the theorem |
 
 **Scope of the negative results (narrowed after review 0138).** The shell

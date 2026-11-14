@@ -7,7 +7,7 @@ whole ledger. Last updated at the end of block `K15-REVIEW-0138-M`
 | File | What it is | Status |
 | --- | --- | --- |
 | `ROADMAP.md` (project root, imported from setup) | the frozen research plan | carried |
-| `CLAIMS.md` | the claim ledger: K15-C001…C055 plus K15-R001…R005 (recovered material) | current; two withdrawals this block (C029, C014) and a repair (C049) |
+| `CLAIMS.md` | the claim ledger: K15-C001…C067 plus K15-R001…R005 (recovered material) | current; three defects found and repaired this block (C029 withdrawn, C049 superseded, C058 repaired), plus C014 from the previous block |
 | `REVIEW_0138.md` | **read this first**: the withdrawal of C029, its rejected text, the corrected estimate, and the second finding (sign predicates) | current |
 | `RESULTS.md` | the short account: only `VERIFIED_CROSS`/`PROVED` statements count | current |
 | `PROOF_GAPS.md` | G1–G10 with owners and closure conditions | current |
