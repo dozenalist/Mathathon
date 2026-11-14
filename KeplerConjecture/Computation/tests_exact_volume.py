@@ -174,6 +174,48 @@ def main():
         except (ValueError, KeyError, IndexError):
             check("tampering with %s is caught" % name, True)
 
+    print("\n" + "=" * 96)
+    print("G. THE TWO-PART ARGUMENT, AND NORMALISATION")
+    print("=" * 96)
+    spec, v = box(1, 1, 1)
+    P = planes_of(spec)
+    # (1) part (ii) of the argument: candidates = the six cube faces (bounded), and one more plane
+    #     that CUTS the cube.  The candidate polytope certifies fine, so only the check of the
+    #     remaining plane can catch the omission.
+    cutting = (1, 1, 1, 2)                     # x+y+z <= 2, cuts the corner (1,1,1)
+    try:
+        EV.certify_volume(P + [cutting], v, candidates=P)
+        check("a plane outside the candidate set that CUTS is caught", False, "accepted")
+    except ValueError as e:
+        check("a plane outside the candidate set that CUTS is caught",
+              "cuts the polytope" in str(e), str(e)[:70])
+    # ... and the same plane IS a facet when it is in the candidate set: the truncated cube
+    vol_t, _ = EV.certify_volume(P + [cutting], v, candidates=P + [cutting])
+    check("with the cutting plane as a candidate the volume is 8 - 1/6 = 47/6",
+          vol_t == F(47, 6), vol_t)
+    # (1b) an omission that leaves the candidate polytope unbounded is caught by V5 instead
+    try:
+        EV.certify_volume(P, v, candidates=[pl for pl in P if pl != (0, 0, 1, 1)])
+        check("an unbounded candidate set is caught (V5)", False, "accepted")
+    except ValueError as e:
+        check("an unbounded candidate set is caught (V5)", "V5" in str(e), str(e)[:60])
+    # (2) a candidate set containing all facets gives the right volume
+    vol, cert = EV.certify_volume(P, v, candidates=P)
+    check("the full candidate set gives volume 8", vol == 8, vol)
+    # (3) opposite half-spaces are NOT duplicates: (1,0,0,1) is x<=1, (-1,0,0,-1) is x>=1
+    check("(1,0,0,1) and (-1,0,0,-1) normalise differently",
+          EV.normalise((1, 0, 0, 1)) != EV.normalise((-1, 0, 0, -1)),
+          (EV.normalise((1, 0, 0, 1)), EV.normalise((-1, 0, 0, -1))))
+    # (4) a positively scaled copy IS the same half-space
+    check("(1,0,0,1) and (3,0,0,3) normalise the same",
+          EV.normalise((1, 0, 0, 1)) == EV.normalise((3, 0, 0, 3)))
+    # (5) the x>=1 half-space, added to the unit cube, leaves nothing: rejected
+    try:
+        EV.certify_volume(P + [(-1, 0, 0, -1)], v)
+        check("cube + (x >= 1) is rejected (empty)", False, "accepted")
+    except ValueError:
+        check("cube + (x >= 1) is rejected (empty)", True)
+
     print()
     if FAILS:
         print("FAILED: %d -> %s" % (len(FAILS), FAILS))
