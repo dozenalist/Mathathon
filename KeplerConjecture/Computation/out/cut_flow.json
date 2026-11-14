@@ -1,6 +1,21 @@
 {
  "script": "KeplerConjecture/Computation/cut_flow.py",
- "external": [],
+ "external": [
+  {
+   "fixture": "smallest_nonuniform_3pt",
+   "provisional": false,
+   "note": "three points per cell; the smallest periodic packing whose Voronoi cells are not all congruent.  Minimum separation exactly 2 (A-B, A-C).",
+   "rows": [
+    {
+     "kind": "flow",
+     "Phi": "1/1000",
+     "cap_ok": true,
+     "divergence_ok": true,
+     "status": "PATCH_FEASIBLE"
+    }
+   ]
+  }
+ ],
  "convention": "K15-C044: b(v)=sqrt32-vol Omega(v); G_R edges <= R, capacity Phi; transfer exists iff sum_U b <= Phi|delta^+(U)| for every finite U",
  "arithmetic": "rational enclosures b_lo <= b <= b_hi; b_lo used to refute, b_hi used for feasibility",
  "rows": [
