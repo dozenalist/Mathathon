@@ -151,12 +151,20 @@ def _cyclic_order(normal, pts):
 
 
 def _cube_test():
-    """Self-test of polytope_volume on a body whose volume is obvious."""
-    n = [(F(1), F(0), F(0)), (F(-1), F(0), F(0)), (F(0), F(1), F(0)),
-         (F(0), F(-1), F(0)), (F(0), F(0), F(1)), (F(0), F(0), F(-1))]
-    d = [F(1)] * 6
-    v, nv, _pts = polytope_volume(n, d)
-    return v == 8 and nv == 8
+    """Self-tests of polytope_volume on bodies whose volumes are obvious and RATIONAL.
+
+    The cube alone is not enough: it is centrally symmetric, so a face-orientation error that
+    reverses the sign is invisible after the `abs`.  The regular tetrahedron with vertices
+    (1,1,1), (1,-1,-1), (-1,1,-1), (-1,-1,1) has volume exactly 8/3 and is not symmetric, so a
+    wrong face set or a wrong cyclic order changes the answer."""
+    cube_n = [(F(1), F(0), F(0)), (F(-1), F(0), F(0)), (F(0), F(1), F(0)),
+              (F(0), F(-1), F(0)), (F(0), F(0), F(1)), (F(0), F(0), F(-1))]
+    v1, nv1, _ = polytope_volume(cube_n, [F(1)] * 6)
+    # faces of the tetrahedron: (x+y+z = -1) etc., as (-1,-1,-1).y <= 1 and its three images
+    tet_n = [(F(-1), F(-1), F(-1)), (F(-1), F(1), F(1)),
+             (F(1), F(-1), F(1)), (F(1), F(1), F(-1))]
+    v2, nv2, _ = polytope_volume(tet_n, [F(1)] * 4)
+    return (v1 == 8 and nv1 == 8) and (v2 == F(8, 3) and nv2 == 4)
 
 
 # ---------------------------------------------------------------- the sandwich
@@ -257,7 +265,19 @@ def barlow_contact_cell(kind):
 def main():
     ok = True
     print("=" * 80)
-    print("CONTROL 1/2: Barlow contact cells must enclose 4 sqrt2 = 5.656854249492380")
+    print("CONTROL 0: exact polytope volumes of two bodies with rational volumes")
+    cube_n = [(F(1), F(0), F(0)), (F(-1), F(0), F(0)), (F(0), F(1), F(0)),
+              (F(0), F(-1), F(0)), (F(0), F(0), F(1)), (F(0), F(0), F(-1))]
+    v1, nv1, _ = polytope_volume(cube_n, [F(1)] * 6)
+    tet_n = [(F(-1), F(-1), F(-1)), (F(-1), F(1), F(1)),
+             (F(1), F(-1), F(1)), (F(1), F(1), F(-1))]
+    v2, nv2, _ = polytope_volume(tet_n, [F(1)] * 4)
+    print(f"  cube [-1,1]^3: {v1} (8 expected), {nv1} vertices")
+    print(f"  regular tetrahedron: {v2} (8/3 expected), {nv2} vertices  <- non-symmetric, so")
+    print(f"     it detects a face-orientation error that the cube cannot")
+    ok &= (v1 == 8 and nv1 == 8 and v2 == F(8, 3) and nv2 == 4)
+
+    print("\nCONTROL 1/2: Barlow contact cells must enclose 4 sqrt2 = 5.656854249492380")
     lo_ref, hi_ref = F(5656854249492380, 10 ** 15), F(5656854249492381, 10 ** 15)
     for kind in ("fcc", "hcp"):
         P = barlow_contact_cell(kind)

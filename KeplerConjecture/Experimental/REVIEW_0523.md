@@ -118,6 +118,7 @@ the pairwise form. Nothing in this file may be read as the former.
 | control | reference | enclosure | width |
 | --- | --- | --- | --- |
 | cube `[-1,1]³` | `8` exactly | exact | `0` |
+| regular tetrahedron | `8/3` exactly | exact, 4 vertices | `0` |
 | fcc contact cell | `4√2` | `[5.656854249492381, 5.656854249492381]` | `1e-18` |
 | hcp contact cell | `4√2` | same | `1e-18` |
 | C5 payer fixture | `5.898017371803720` | `[5.898017371803721, 5.898017371803721]` | `8.7e-19` |
@@ -284,8 +285,9 @@ Three things in this file are checkable and should be checked independently, in 
 2. **The exact volume (§2.2).** `V = (1/6)|Σ det(a,b,c)|` over oriented boundary triangles.
    The orientation argument (`(e1, e2, n)` right-handed with `e2 = n × e1`) is the only place a
    sign convention enters; a wrong orientation gives `−V`, which the `abs` hides. The cube
-   control (`8`, eight vertices) does not distinguish `+8` from `−8`, so a reviewer who wants to
-   test this should compute a *non-symmetric* polytope with a known volume.
+   control cannot see that, which is why a **non-symmetric** control with a rational volume was
+   added: the regular tetrahedron `(1,1,1), (1,-1,-1), (-1,1,-1), (-1,-1,1)` has volume exactly
+   `8/3`, and a wrong face set or cyclic order changes it. Both are exact, not enclosures.
 3. **The compactness constants of `§4`.** `(2R+1)³ = 11953` against Main's `10453`, and the
    cone bound `r ≤ 3C/π`. Both are elementary; the first is a 14% term.
 
