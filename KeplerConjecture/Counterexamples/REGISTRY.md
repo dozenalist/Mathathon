@@ -1786,3 +1786,13 @@ The five ring half-space distances in `ring_excess.py` are `b = |p|/2` with `|p|
 **`b = √(2 − 2/√5) = 1.0514622242382672`** exactly (the script uses `1.051462224238` ✓), and
 `b − 1 = 0.0514622242`. So the "ring excess" is a closed form, not a fitted number. Also re-derived:
 `1/(1+0.6832816/2)³ = 0.41408665` (C132's `0.414086` ✓), `1/(1+1/2)³ = 0.2962963` ✓, `2 + 2·63 = 128` ✓.
+
+### K15-X-C114 — `C134` matches `X-C081`, with one arithmetic slip
+
+`C134` now states exactly what `X-C081` said: `c_exact(F)` is not monotone (truncated octahedron `6.158402871`
+at `F = 14` vs icosahedron `5.0540561436` at `F = 20`), `c_{≤F} = min_{F'≤F} c_exact(F')` is nonincreasing
+by definition, `C125`'s reason (b) is withdrawn, and the branch stops on (a) alone ✓. One slip: "seven of
+the **nine** values in `13 ≤ F ≤ 20`" — `13..20` is **eight** values, of which `14` is the one they list as
+proved, so seven of **eight** are unproved ✓ (the count matters only for the prose, not for the argument).
+Their "not claimed" paragraph is right: `6.1584` and `5.0541` are both consistent with a `≤ 20` target of
+`4.958`, so the branch is stopped because the constants are unproved, not because they are large.
