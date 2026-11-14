@@ -2,6 +2,15 @@
 
 Role E. Started 2026-11-14T09:57:21Z. Source reviewed: `4ea4e8b9`.
 
+**Reproduce everything in one command** (one CPU, ~2 min, under 1 GiB):
+
+```
+bash Experimental/scripts/run_all_checks.sh
+```
+
+It runs twelve checks plus an evidence-integrity row and prints a PASS/FAIL table. It also
+prints which runs are exploratory, so a green table is not mistaken for a certificate.
+
 ## Summary
 
 What this block actually produced, in one place.
