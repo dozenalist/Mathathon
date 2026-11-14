@@ -14,7 +14,7 @@ the roadmap vocabulary with two additions used only where the reviewer required 
 | `K15-C-SOSQSIDE-003` | `VERIFIED_EXACT` | best explicit-Gram certificate: `q = 3² + (3u/2−6)² + u(3/2−2u/3)²`, `Δ ≤ 2.61993314` | `sos_qside.py`, `REVIEW_0138.md` §11 |
 | `K15-C-SOSFAMILY-001` | `VERIFIED_EXACT` | explicit rational square on the `p` side: `−p = 0 + (u−T)(u−c)²`, `Δ ≤ 5.99152482` | `sos_family.py` |
 | `K15-C-SOSGRAM2-001` | `VERIFIED_EXACT` | degree-5 two-square family, best `Δ ≤ 6.73788568`; extra freedom did **not** help | `sos_family2.py` |
-| `K15-C-SOSSHELL-001` | `PROVED` (family-restricted) | `η* = (T'−T)M²` is the smallest allowance in the cubic family, exact and attained, so every shell member is strictly worse than `η=0` | `sos_shell_variant.py` |
+| `K15-C-SOSSHELL-001` | `PROVED` (family-restricted) | in the cubic family, `eta_suff = (T'-T)M^2` is a *sufficient* allowance and `sup p > 0` on `[T,T']` always, so every admissible `eta` is positive and every shell member is strictly worse than `eta=0`. **Corrected**: an earlier version called it 'the smallest, attained' -- false -- and the repair `eta >= p(T)` is false at `c = T` | `sos_shell_variant.py`, `tests_0138.py` T4 |
 | `K15-C-CUTEQUIV-001` | `PROVED` (elementary) | the full-period blob makes the cut condition read `ρ ≤ 1/√32` — **the Kepler bound itself**, so the condition is equivalent to Kepler rather than independent | `cut_deficit.py`, `REVIEW_0138.md` §7 |
 | `K15-C-FOURIER-AUDIT-001` | `PROVED` A1/A2, `TESTED_FINITE` A3 | Main's `fourier_map` correct: 49/49 exact agreement, `M² = I`, quadrature to `1e-13` | `audit_fourier.py` |
 | `K15-C-POSCERT-001` | `PROVED` (elementary) | `c=(4,1)` ⟹ `Δ ≤ 44π/15 = 9.215339`; hand-checkable positive control | `CERTIFIER.md` |
@@ -27,6 +27,7 @@ the roadmap vocabulary with two additions used only where the reviewer required 
 | `K15-C-SHELLGAIN-002/003` | `TESTED_FAMILY` | the *uniform* `n`-neighbour allowance was not used by the LP in the cases tested (16 exact comparisons, two bases). Says **nothing** about local/configurational strengthenings |
 | `K15-C-SHELLBENCH-001` | `TESTED_FINITE` | grid LP, `η = 0` throughout; held-out tests exposed under-resolution at `K ≥ 21` |
 | `K15-C-CUTBLOB-001` | measured | `Φ > 0.008880` from one fixture; a **lower bound**, not a refutation |
+| `K15-C-TESTS-0138` | `PROVED` (machine-checked) | `tests_0138.py`: every review-0138 claim checked by exact expansion -- both Gram identities, `eta_suff` sufficiency, `sup p > 0`, the cut equivalence, the 12-contact jamming | `tests_0138.py` |
 | `K15-C-CUTJAM-001` | `TESTED_FINITE` (negative) | FCC/HCP at separation 2 are jammed (12 contacts at exactly 2), so no perturbation preserves separation: amplitudes 0.06 → 1.894, 0.01 → 1.982. **No near-Kepler cut fixture by perturbation** |
 | `K15-C-SOSQSIDE-002` | measured | degree-7 `q`-side squares give `38.136` — worse than degree 5; bounds what a naive search may claim |
 | `K15-C-SOSIRRED-001` | `TESTED_FAMILY` (negative) | LP-optimal certificates are irreducible over `Q` at degrees 5, 7, 9, 13, 33, so no factorisation-based rational Gram export exists |

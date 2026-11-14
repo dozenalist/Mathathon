@@ -247,26 +247,36 @@ pins `p(T) = 0` exactly and fixes the shape near the contact radius, which is pr
 competitive CE certificate needs freedom. This is a structural obstruction, not a tuning failure,
 and it explains the 8× gap to the LP-optimal `0.78`.
 
-### 8b. The shell variant, with a *proved* negative result
+### 8b. The shell variant, with a *proved* negative result — and a correction to it
 
 Same family, with an allowance `η` on `[T, T']` and `p ≤ 0` on `[T', ∞)`. On the shell,
 
 $$0 \le p(u) = (T'-u)(u-c)^2 \le (T'-T)M^2,\qquad M := \max\{|T-c|,\,|T'-c|\},$$
 
-and the bound is **attained at `u = T`**, so
+so `η_suff := (T'−T)M²` is a **sufficient** allowance — a rational, explicit bound needing no
+root count.
 
-$$\eta^\star \;=\; (T'-T)\,M^2$$
+**Correction, found by my own `tests_0138.py` after I had already written the stronger claim.**
+An earlier revision of this file called `η_suff` "the *smallest* allowance this family admits,
+attained at `u = T`". That is **false** on both counts:
 
-is the *smallest* allowance this family admits — exact, rational, and attained. Since the
-objective charges `n·η` with `n ≥ 12` and `η* > 0` for every `T < T'`, **every shell member of
-this family is strictly worse than the corresponding `η = 0` member.**
+* `η_suff` is an upper bound, not the supremum. Measured: `T = 12`, `T' = 27/2`, `c = 5` gives
+  `sup p = 147/2 = 73.5` while `η_suff = 867/8 = 108.375`.
+* the substitute "`η ≥ p(T)`" is also false, because `p(T) = (T'−T)(T−c)²` **vanishes at `c = T`**.
 
-This is a **proof inside the family**, not a finite search, and it is the strongest form of the
-shell-negative result I can offer. Its scope is correspondingly narrow: it says nothing about
-other families, other degrees, or configurational constraints.
+What the argument actually needs is weaker and is true:
 
-Measured `η*` values (`T = 12`, `T' = 27/2`): `c = 1 → 234.375`; `c = 5 → 108.375`;
-`c = 12 → 3.375`. All exceed what the bound can absorb.
+$$\sup_{[T,\,T']} p \;>\; 0,$$
+
+since `p(u) = (T'−u)(u−c)² > 0` for every `u ∈ [T, T')` with `u ≠ c`, and such `u` exist because
+`T < T'`. Hence **any** admissible allowance satisfies `η ≥ sup p > 0`, and since the objective
+charges `n·η` with `n ≥ 12`, **every shell member of this family is strictly worse than the
+corresponding `η = 0` member.**
+
+This is a **proof inside the family**, not a finite search, and its scope is narrow by
+construction: it says nothing about other families, other degrees, or configurational constraints.
+`tests_0138.py` T4 checks both the sufficiency of `η_suff` and `sup p > 0` for three parameter
+triples, and caught both errors above.
 
 ### 8c. Same-family comparison
 

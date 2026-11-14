@@ -12,13 +12,23 @@ condition is met by the same identity.  For the first, note that on [T, T'],
     0 <= p(u) = -(u - T')(u - c)^2 = (T' - u)(u - c)^2 <= (T' - T) * M^2,
     M := max( |T - c| , |T' - c| ),
 
-because 0 <= T' - u <= T' - T and (u - c)^2 <= M^2.  Hence the shell condition holds with
+because 0 <= T' - u <= T' - T and (u - c)^2 <= M^2.  Hence the shell condition holds with the
+SUFFICIENT allowance
 
-    eta*  =  (T' - T) * M^2                                                   (E)
+    eta_suff  =  (T' - T) * M^2                                               (E)
 
-and eta* is attained at u = T when |T - c| = M, so **eta* is exactly the smallest allowance
-this family admits on this shell**.  (E) is a rational number, so the variant is again a
-rational certificate, and the shell side needs no Sturm sequence either: it is an elementary
+**CORRECTION (found by tests_0138.py T4).**  An earlier revision called eta_suff "the smallest
+allowance this family admits".  That is FALSE, for two reasons: eta_suff is only an upper bound
+for p on the shell, and the true supremum is generally smaller (at T = 12, T' = 27/2, c = 5 it
+is 147/2 = 73.5 against eta_suff = 867/8 = 108.4); and the sharper-looking substitute
+"eta >= p(T)" also fails, because p(T) = (T'-T)(T-c)^2 vanishes when c = T.  What the argument
+actually needs is only this, and it is true:
+
+    sup_{[T,T']} p > 0,
+
+because p(u) = (T'-u)(u-c)^2 > 0 for every u in [T, T') with u != c, and such u exist since
+T < T'.  Hence **any** admissible allowance satisfies eta >= sup p > 0.  (E) is a rational number, so the variant
+is a rational certificate, and the shell side needs no Sturm sequence: it is an elementary
 bound, not a root count.
 
 THE COMPARISON, WHICH IS THE POINT.  The bound is
