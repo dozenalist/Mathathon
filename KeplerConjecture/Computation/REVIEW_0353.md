@@ -41,6 +41,8 @@ Vocabulary: `PROVED` / `VERIFIED_EXACT` / `TESTED_FINITE` / `TESTED_FAMILY` / `P
 | `K15-C-TRANSFER-DENSITY-001` | `REFUTED` | the periodic-sum version: summing the divergence over one period is valid only if `φ` is periodic, and periodicity of the *packing* does not make `φ` periodic — the flux across a period boundary need not cancel | retained in git history |
 | `K15-C-CUTEQUIV-001` | `WITHDRAWN` | "the full-period blob makes the cut condition read `ρ ≤ 1/√32`, so the condition is equivalent to Kepler". The derivation is invalid: C044 quantifies over **finite** `U`, and a period is not finite. The *one-directional* statement that survives is `K15-C-CUTIMPLIES-003`; the converse (Kepler ⇒ a finite `Φ` works) is **open** and is exactly where the transfer has to be earned | `cut_deficit.py` history; §3 below |
 | `K15-C-DECOUPLE-001` | `PROVED` | in the 13-cluster fixture copies are ≥ 12 apart while `R ≤ 3`, so every finite `U` splits into copies and `Σ_U b/|δ⁺(U)|` is a weighted average of copy ratios: the patch extremum equals the infinite-packing extremum | `cut_flow.py: period_decoupling` |
+| `K15-C-PERIODCONV-001` | `PROVED` Q1/Q2, `TESTED_FINITE` per-cell | the periodic-boundary convention, proved: `diam X = 4` so for `R ≤ 3` no lattice shift occurs (the periodic graph **is** the register graph, checked against `build_13` at four radii); torus cells partition the cube, so `Σ vol = 4096` exactly and the central cell is the true dodecahedron. The twelve ring cells have the stated *mean* volume but are **not** congruent — the group preserving register and lattice has order 8 with three orbits of four, since the icosahedral group is not crystallographic. Measured class means agree to 0.02 within 0.25 sampling error | `period_convention.py` |
+| `K15-C-HIGHDENS-001` | `PROVED` | `R`-saturated ⇒ `Ω(v) ⊆ B(v,R)` ⇒ `b(v) ≥ √32 − (4π/3)R³`, so every packing with covering radius `≤ R_Φ = ((√32−12Φ)·3/(4π))^{1/3}` fails C044 at capacity `Φ`. `R_0 = 1.105339`, and `R_Φ` barely moves with `Φ` (1.105 at `Φ=0` → 1.065 at `Φ=0.05`): the constraint is on the covering radius, not the capacity. No packing is constructed | `highdensity_cut.py` |
 | `K15-C-CUTBLOB-001` | `PROVED` (fixture-restricted) | for the period-16 13-cluster and `R ∈ {2, 2.1029, 3}`: `max_U Σ_U b/|δ⁺(U)| ≥ 0.008880268414739`, attained at the singleton, over **all 8191** subsets. A lower bound on `t*`, and a constraint on any `Φ` that must serve every packing — **not** a refutation of the transfer route | `cut_flow.py`, output row `R = 2` |
 | `K15-C-SOSSHELL-002` | `PROVED` (family-restricted) | in the cubic family every admissible shell allowance is `> 0` (`sup p > 0`), so every shell member is strictly worse than `η = 0`. The earlier "`η*` is smallest/attained" and the repair `η ≥ p(T)` are both **false** and are recorded as such | `sos_shell_variant.py`, `tests_0138.py` T4 |
 | `K15-C-SOSQSIDE-004` | `TESTED_FINITE` | explicit-Gram Fourier-side certificate `Δ ≤ 1.99064200` from the plain hill-climb (a genuine local optimum: 2500 single-coefficient moves at degree 7 found none), then basin-hopping to `1.37125723`, then the `p`-side at `1.33982382`. **Best found, not optimal** | `out/hop2_23.json`, `out/ps3.json` |
@@ -93,13 +95,34 @@ The large above-one Gram sweep is deferred: X now supplies both-sides certificat
 `0.782267220134`, which is better than anything the sweep was going to reach on this side. Effort
 this block went into trustworthy geometry (the four defects, and §2) instead.
 
-## 5. Still open at the end of this block
+## 5. The rest of the review's list — done in the remainder of the block
 
-1. `period_convention.py` — the periodic-boundary convention for the 13-cluster (`16Z³`), and the
-   derivation `r_∞(Q) < ρ(Λ)/2 ⇒ Q = B(0,1)`.
-2. `highdensity_cut.py` — the ball-counting violation package.
-3. `NONUNIFORM_SHELL.md` §3 — the assumption paragraph and the four failure modes.
-4. The claims register update (`CLAIM_REGISTER.md` predates this block).
+1. **`period_convention.py`** — the periodic-boundary convention, proved and tested (see
+   `K15-C-PERIODCONV-001` above). Two corrections came out of it that I did not expect:
+   * the twelve ring cells are **not** congruent, so `(4096 − V_dod)/12` is their *mean*, not each
+     cell's volume; `cut_flow.py` was relabelled accordingly and a Sobol measurement bounds the
+     per-cell agreement at 0.02. Every verdict is insensitive (a subset containing a ring vertex
+     has `Σ_U b ≤ 0.11 − 334 < 0` against a maximum of `0.00888`).
+   * a criterion I had carried in my own plan, `r_∞(Q) < ρ(Λ)/2 ⇒ Q = B(0,1)`, is **refuted**:
+     it would give `b(v) = √32 − 4π/3 = 1.468 > 0` at every vertex, contradicting `Σ_U b ≤ 0` for
+     `U` the whole register (`−4022.46`), and the inequality points the wrong way for what the
+     patch needs. The correct condition is an *upper* bound on the cell diameter relative to the
+     period, which is what `Q2` uses.
+2. **`highdensity_cut.py`** — the ball-counting package (`K15-C-HIGHDENS-001`). The form I had
+   recorded, `1 − κ(r)s³ ≤ b/vol B₁`, is **not** reproducible: normalising HD1 gives
+   `b/vol B₁ ≥ λ − R³` with `λ = √32/(4π/3) = 1.3505`, and no rearrangement makes the constant 1.
+   The exact inequality replaces it, and the file says so.
+3. **`NONUNIFORM_SHELL.md` §3** — §3.0 now states the four assumptions (the count function, the
+   local scale `s(r)` — flagged as an assumption about the packing class, not a theorem — FCC
+   extremality, and (N) being a relaxation), and §3.1 lists the four failure modes of the cut
+   condition, each with an instance from this record: vacuous at FCC/HCP, test set not finite (the
+   withdrawn period argument), capacity per-packing rather than universal, and patch ≠ packing.
+4. **Claims register** — rewritten for this block: `CUTEQUIV-001` moved to `WITHDRAWN`, the
+   periodic-sum and "circular" claims retired, and seven claims added.
+
+Still open: a Frank–Kasper fixture with unequal cell volumes; exact (not measured) ring-cell
+volumes, needed only if a verdict ever depends on one ring cell individually; and the above-one
+Gram sweep, deferred as instructed.
 
 ## 6. Clock
 
