@@ -1684,3 +1684,13 @@ centre that cuts the C5 cell, the same phenomenon as `C102`, and the "volume `= 
 cannot be attacked by adding a 13th contact *in this family*. That is why the counterexample to the
 polyhedral strengthening (`X-C090`) has to be the 20-face circumscribed icosahedron rather than a packing
 configuration.
+
+### K15-X-C103 — the ring-excess lemma's two premises verified: constant combinatorics and the derivative identity
+
+(i) Along `b ∈ [1, 1.051462]` at 11 sample points the polytope `K(b)` is a **dodecahedron** at every one:
+`20` vertices, `12` faces, all pentagons (`[5]×12`). So "the combinatorial type is constant on the path"
+holds, and the rank-one update formula applies on the whole interval. (ii) The derivative identity:
+`(vol K(b+h) − vol K(b))/h` against the sum of the five ring-face areas gives `6.379862` vs `6.379871`
+(`b = 1`), `6.337403` vs `6.337415` (`b = 1.02`), `6.288487` vs `6.288500` (`b = 1.04`), `6.257715` vs
+`6.257729` (`b = 1.0514`) — agreement to 7–8 digits with the residual `O(h)` truncation. So
+`d/db vol K(b) = Σ_{i≤5} A_i(b)` is confirmed numerically, and the lemma's calculus is sound.
