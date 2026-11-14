@@ -669,3 +669,14 @@ then rounded to rationals and re-verified exactly) returns a flow exactly when t
 holds, on 38 random instances with `n ≤ 5` (25 infeasible, 13 feasible, 0 mismatches). That makes
 four independent decision procedures for Theorem 1 on the same instances — the cut scan, my
 HiGHS LP, my exact Fourier–Motzkin routine, and C's flow constructor.
+
+### K15-X-C034 — `verify_flow_exact` false-accepts at a vertex with positive deficit and no edge
+
+`verify_flow_exact` takes its vertex range from the edge list (`n = max(max(e) for e in edges)+1`),
+so a vertex with no incident edge is never checked. Witness: `b = (−1,−1,+1)`,
+`edges = [(0,1)]`, zero flow → `(ok_cap=True, ok_div=True, div=[0,0])`, while the truth is
+`ok_div = False` since `div(2) = 0 < b(2) = 1`. The module contradicts itself here: the cut scan
+reports `[([2], '1')]` as an empty-boundary positive set, i.e. infeasible at every `Φ`. Not
+reachable from `main()` (`build_13` gives every vertex an edge for `R ≥ 2−10⁻⁹`, and the edgeless
+regime is skipped), and the fix is one line: `n = len(b)`. D8 of
+`Reviews/repro_c_cutflow_defects.py` (11/11 checks).

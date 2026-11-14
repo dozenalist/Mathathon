@@ -17,6 +17,8 @@ rational arithmetic or a stated geometric fact.
       R < 2 regime that build_13 models.  main() guards 'if not edges', so this is not live.
   D7  (cosmetic) exhaustive_cut_scan omits the repaired theorem's max(0, .): with all b negative
       it reports a negative t_star where t* = 0.
+  D8  verify_flow_exact FALSE-ACCEPTS when a vertex with positive deficit has no incident edge:
+      its vertex range is taken from the edge list, so such a vertex is never checked.
 
 Run:  python3 Reviews/repro_c_cutflow_defects.py        (exit 0 iff all four reproduce)
 """
@@ -124,6 +126,18 @@ print("    the repaired theorem's formula gives t* = max(0, sup) = 0")
 ck("D7 C's t_star is not the theorem's t* when the sup is negative",
    r['t_star'] < 0, "harmless for 'Phi >= t*' because Phi >= 0 is a hypothesis, but not quotable")
 
+print("=" * 96); print("D8  verify_flow_exact FALSE-ACCEPTS at an isolated vertex with positive deficit"); print("=" * 96)
+b8 = [F(-1), F(-1), F(1)]          # vertex 2 is isolated and must receive 1 unit
+E8 = [(0, 1)]
+ok_cap, ok_div, div = cf.verify_flow_exact(b8, E8, F(1), {})
+print("    b = (-1,-1,+1), edges = [(0,1)], flow = 0")
+print("    verify_flow_exact -> (ok_cap=%s, ok_div=%s, div=%s)" % (ok_cap, ok_div, [str(d) for d in div]))
+print("    the true verdict is ok_div = False: div(2) = 0 < b(2) = 1")
+ck("D8 verify_flow_exact accepts an impossible instance", ok_div, "n is taken from the edge list, so vertex 2 is never checked")
+print("    cause: n = max(max(e) for e in edges) + 1 = 2, so vertices with no incident edge are")
+print("    outside the divergence check.  The cut scan DOES catch this instance:")
+print("    exhaustive_cut_scan reports the empty-boundary positive set [([2], '1')].")
+
 print("\nRESULT: %d/%d checks reproduce" % (nchecked[0]-len(fails), nchecked[0]))
-print("        " + ("ALL CHECKS REPRODUCE (4 live + 1 latent + 1 cosmetic + a 12/12 sweep)" if not fails else "FAILED: %s" % fails))
+print("        " + ("ALL CHECKS REPRODUCE (5 live: D1-D4+D8, 1 latent, 1 cosmetic, 12/12 sweep)" if not fails else "FAILED: %s" % fails))
 sys.exit(0 if not fails else 1)
