@@ -660,3 +660,35 @@ secondary implementation that removes the faithfulness bottleneck.
   conjectured shape fails, not what the actual image is.
 - **Reproduction:** `python3 RogersRamanujan/Experimental/cycle3/fam45.py`
   (9/9, 4.5 s, 0 mismatches vs `bz82.py`).
+
+## 2026-11-14 / RR-M015 / swarm smwg1kdjq closed 4/4; phi obligation (i) proved, dead code retired
+
+- **Swarm `smwg1kdjq` closed: 4 of 4 directions accepted** (m1 family, m2 Lean T,
+  m3 computation, m4 phi obligations). Every claim below re-checked by Main.
+- **RR-C022(i) PROVED** (worker m3). Since `t+5j-3 = R-1`, obligation (i) is
+  exactly `m <= R-1`. With `f(z) = z + lam(k-z)` strictly increasing on
+  `0 <= z <= k-1` (and stepping **down** at `z = k`, which is the trap), the two
+  cases `k <= t` and `k > t` both give `m <= R-1`, hence `p2 >= 0`. Main checked
+  the 9 constituent assertions separately over 13 124 in-domain Case-II states:
+  0 failures.
+- **The bound is sharp**: `slab_c3.py`'s minimum `p2 = 0` is attained at
+  `j = -4, lam = (1^23)`. Recorded because a bound never approached is worth less
+  than one attained.
+- **RR-C026, dead code retired.** `a = mu` cannot occur in Case I, so the two
+  deletions always act on distinct slots. Two independent proofs (Main's MX.5 and
+  the worker's shorter route via `2j = L`) and two independent censuses (Main: 6 458
+  hits, all Case II; worker: 0 hits in 1 746 369 states) agree. The defensive
+  `if drop:` fallback in `Computation/bz82.py` Case I is **now an assertion**;
+  regression re-run clean (11 checks, 0 failed; `run_checks.py 18` passes).
+- **Reconciliation of two apparently contradictory reports.** The supervisor
+  reported `Counterexamples/cycle2/phi_skeleton.py` failing with
+  `KeyError: 'a==mu'`; worker m3 reported it exiting 0 at bounds 2 and 30. **Both
+  are right about different revisions:** at checkpoint `8d72419` the file indexes
+  the `'a==mu'` key unconditionally in two places (Main extracted that revision to
+  confirm), and the fix landed in later commits. The current tree exits 0 and
+  independently reproduces Main's MX.5 figure (`a = mu` on 6 458 states, all
+  Case II). Recorded with both revisions so neither silently supersedes the other.
+- **Honest limits stated by the worker and retained:** obligations (ii), (iv), (v)
+  were not attempted as proofs and P8 is finite evidence only. So `phi` remains a
+  **reduction** (R1 inequalities + R2 slot identities) rather than a proved
+  involution, and RR-C012 stays OPEN.

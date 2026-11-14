@@ -29,7 +29,8 @@ never used to promote anything above TESTED_FINITE.
 | RR-C019 | BZ82's printed `mu_bar > mu` is **false**; the correct statement is `>=`, equality iff `lam(a)=lam(a+1)` | **REFUTED** (5 844 of 10 285 Case-I states, first `(-1;())`) |
 | RR-C020 | **Theorem 1/2/3**: `phi` and `psi∘phi` closed forms on the **whole** family `(4^r,1^s)`, plus Lemma 2 (excluded set) | **PROVED** |
 | RR-C021 | **R2 slot identities**: at the Case-II image, `lam'(a') = m` and `lam'(mu') = p2` | PROVED (Main-verified, all `n<=26`) |
-| RR-C022 | `phi` obligations: `N >= 0`, both deletions valid, `a != mu` in Case I, `p2 >= 0`, weight identity | **PROVED** (all `n`) |
+| RR-C022 | `phi` obligations: `N >= 0`, both deletions valid, `a != mu` in Case I, `p2 >= 0` (**sharp**: attained), weight identity | **PROVED** (all `n`) |
+| RR-C026 | Dead code retired: `phi` Case I never deletes one slot twice | **PROVED** (2 routes) + 0 hits in 1 746 369 states |
 | RR-C023 | `(4^r,1^s)` cost: 21 of 80 parameters exceed a 20 000-step cap (finite chains to 18 702) | TESTED_FINITE |
 | RR-C024 | Conjecture P2: `b(4^2,1^s)` shape for `s≡2 (5)` | CONJECTURE (80 parameters, 0 failures) |
 | RR-C025 | P3 shape at `r=3` | **REFUTED** (fails at `s=62`, corrected witness) |
@@ -435,6 +436,27 @@ From cycle-3 worker m4, with Main's checks:
 * signed weight is preserved by an explicit identity (Lemma CI.1).
 **Not proved:** case stability and `phi^2 = id`, now reduced to R1 (explicit
 inequalities) plus RR-C021.
+
+**RR-C022(i) in full, and why it is short** (cycle-3 worker m3, propositions
+checked by Main over 13 124 in-domain Case-II states — 9 assertions, 0 failures).
+Since `t+5j-3 = R-1`, obligation (i) is exactly `m <= R-1`. Put
+`f(z) = z + lam(k-z)` on `0 <= z <= k-1`. Both indices lie in `[1,k]`, so `f` is
+strictly increasing there — but `f` **steps down at `z = k`** because `lam(0) = 0`,
+so the interval cannot be extended; that is the trap in any slicker argument.
+* If `k <= t` then `lam(k) >= 1`. If `R <= k-1` then `f(R) >= f(0) + R >= R+1 > R`,
+  so `R` is not admissible, and neither is any `z > R`; hence `m < R`.
+* If `k > t` then `j >= 1` (from `a <= max(t+1, 1-2j)`). With `a <= t` one gets
+  `R-(k-1) = t+3j-a >= 3`; with `a = t+1` one gets `3j-1 >= 2`. Either way
+  `m <= k-1 <= R`.
+So `m <= R-1` and `p2 = R-1-m >= 0`.
+**The bound is sharp**, not slack: `slab_c3.py` finds `p2 = 0` attained at
+`j=-4, lam=(1^23)`.
+
+**RR-C026.** `a = mu` cannot occur in Case I, so the two deletions always act on
+distinct slots. Two independent arguments (Main's MX.5; the worker's shorter route
+via `2j = L`) and two independent censuses (Main's 6 458 hits all in Case II;
+the worker's 0 hits in 1 746 369 states) agree. The defensive fallback in
+`Computation/bz82.py` Case I was therefore dead code and is now an **assertion**.
 
 ### RR-C020 — closed forms on the whole `(4^r,1^s)` family. Status: PROVED.
 Cycle-3 worker m1. `t = r+s`, `j = 0`, and `phi` is closed form on all four regimes

@@ -6,8 +6,8 @@ EX-3   PASS  BZ82 p.315 example (3), nine-state chain, pi((4,1))=(3,2)  (steps=8
 PHI    PASS  phi^2 = id and closure on X(n)\{0}xB(n), n <= 18  (checked=3198, 0.03s)
 PSI    PASS  psi^2 = id and closure on X(n)\{0}xA(n), n <= 18  (checked=3198, 0.03s)
 BIJ    PASS  forward/inverse are mutually inverse bijections A_n <-> D_n, n <= 18  (objects=140, 0.04s)
-C2MAX  PASS  Case-II maximum exists iff k>=1 and lam(k)<=R, n <= 30  (checked=34222, 0.16s)
-C2BOX  PASS  created parts/inserted ones are nonnegative, n <= 30  (case_II=33329 case_I=33329, 0.16s)
+C2MAX  PASS  Case-II maximum exists iff k>=1 and lam(k)<=R, n <= 30  (checked=34222, 0.15s)
+C2BOX  PASS  created parts/inserted ones are nonnegative, n <= 30  (case_II=33329 case_I=33329, 0.13s)
 
-TOTAL: PASS  8/8 checks passed in 0.41 s
+TOTAL: PASS  8/8 checks passed in 0.38 s
 wrote /workspace/nucleus/work/projects/p-9021becf3f0d47a89b3f3c794c1e872b/repo/RogersRamanujan/Computation/cycle3/results_regression_c3.json

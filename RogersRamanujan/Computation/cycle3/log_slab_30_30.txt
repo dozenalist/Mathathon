@@ -8,5 +8,5 @@ Case II INSIDE phi's domain: hi < 0 0, admissible empty 0
 Case I: r < 0 0;  min r = 0 at {'j': -5, 'lam': [2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'r': 0}
 min p2 = 0 at {'j': -5, 'lam': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'm': 0, 'p2': 0, 'weight': 93}
 
-TOTAL: PASS  (0 violations, 3.4 s)
+TOTAL: PASS  (0 violations, 3.3 s)
 wrote /workspace/nucleus/work/projects/p-9021becf3f0d47a89b3f3c794c1e872b/repo/RogersRamanujan/Computation/cycle3/results_slab_c3.json

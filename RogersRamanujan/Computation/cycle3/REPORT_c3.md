@@ -11,8 +11,10 @@ only, no network, no git. Files are confined to
 | `phi_skeleton_c3.py` | corrected skeleton auditor of BZ82's `phi`, assertions P0–P9, all of `X(n)` for `n <= 30` |
 | `regression_c3.py` | one self-contained fast regression against the committed `Computation/bz82.py`, 8 checks, **0.41 s** |
 | `slab_c3.py` | a `(j, lambda)` slab decoupled from weight (`|j| <= 30`, `|lam| <= 30`, 1 746 369 states) — a wider screen than any weight slice can give |
+| `proofcheck_c3.py` | machine check of each *step* of the written proof of obligation (i) (Finding 2) |
 | `results_skeleton_c3.json`, `results_regression_c3.json`, `results_slab_c3.json` | machine-readable results (JSON, no YAML), aggregates only |
-| `log_skeleton_n30.txt`, `log_regression.txt`, `log_slab_30_30.txt` | captured stdout of the three runs |
+| `results_proofcheck_c3.json` | its aggregates |
+| `log_skeleton_n30.txt`, `log_regression.txt`, `log_slab_30_30.txt`, `log_proofcheck.txt` | captured stdout |
 
 Exact commands (each from `RogersRamanujan/Computation/cycle3/`):
 
@@ -20,7 +22,21 @@ Exact commands (each from `RogersRamanujan/Computation/cycle3/`):
 python3 phi_skeleton_c3.py 30 --json results_skeleton_c3.json
 python3 regression_c3.py
 python3 slab_c3.py 30 30
+python3 proofcheck_c3.py 40 22
 ```
+
+Key output line of the last one:
+
+```
+s0 R >= 0 fails 0   s1 k >= 1 fails 0   s2 f not increasing on [0,hi] 0
+s4 case (a) k <= t: 15187 states (R <= hi: 0, R > hi: 15187), branch argument fails 0, m <= R-1 fails 0
+s5 case (b) k > t: 166804 states, j < 1 0, a > t+1 0, R < k 0
+s6 (p2>=0) <=> (R>=k) fails 0   s7 lemma m <= R-1 fails 0
+TOTAL: PASS  (0 step failures, 1.7 s)
+```
+
+`R <= hi` occurs 0 times in case (a), which is itself the argument above: if
+`R <= hi` then `f(R) >= f(0)+R >= R+1 > R` contradicts admissibility of `R`.
 
 ## Job 1 — the repaired skeleton auditor
 
@@ -97,27 +113,53 @@ in `Computation/bz82.py` is unreachable. It is dead code that looks like a rule
 replace it by `assert not drop` (or delete it) with a pointer to this note. It is
 exercised 0 times over 1 746 369 states.
 
-**Finding 2 (obligation (i): the second created part, reduced to one inequality).**
-`p2 = t + 5j - 3 - m >= 0` holds on every in-domain Case-II state, both bounds
-tried. It is certified by `C-a : t+5j-2 >= m+1` on **33 329 / 33 329** in-domain
-Case-II states at weight `<= 30` and on **870 782 / 870 782** in the slab; a
-second certificate `C-b : m = a+2j-2 and lam(1) >= 1` (which follows from
-admissibility of `z = m = hi`) covers 22 524 of them. **`C-a` is not implied by
-maximality of `m`.** When `m < hi` the inadmissibility of `z = m+1` reads
-`m+1 + lam(k-m-1) > R` and bounds `lam(k-m-1)`, not `R - m`; that branch is
-10 802 of the 33 329 states (32 %), so `C-b` is not available there and `C-a`
-is doing real work. The precise missing lemma:
+**Finding 2 (obligation (i) — BOTH parts now proved).**
 
-> **Lemma (open).** In Case II with the admissible set nonempty, `m <= R - 1`,
-> where `R = t + 5j - 2`, `k = a+2j-1`, `m = max{0 <= z <= k-1 : z + lam(k-z) <= R}`.
+Part one, `m >= 0`, is immediate: `m` is the maximum of a nonempty set of
+nonnegative integers.
 
-Equivalently: `t + 5j - 3 - m >= 0`. This is the *only* thing standing between
-the current state and obligation (i) being closed. I did not prove it.
+Part two, `p2 = t+5j-3-m >= 0`, is **proved for all in-domain Case-II states**;
+no computation is needed. Write `R = t+5j-2`, `k = a+2j-1`, `hi = k-1`,
+`f(z) = z + lam(k-z)` with zero padding, `S = {0 <= z <= hi : f(z) <= R}`,
+`m = max S`. Case II contributes exactly one hypothesis: `S` is nonempty.
+
+* `f` is **strictly increasing on `[0, hi]`**: for `0 <= z <= hi-1` both indices
+  `k-z` and `k-z-1` lie in `[1,k]`, so
+  `f(z+1) - f(z) = 1 + lam(k-z-1) - lam(k-z) >= 1` by weak decrease of `lam`.
+  (It is **not** increasing past `hi`, where the padded index `0` is reached and
+  `f(z+1)-f(z) = 1 - lam(1)` may be very negative. Extending the monotonicity
+  argument beyond `hi` — as a careless reading of "`z + lam(k-z)` increases"
+  invites — is the one trap here; `S` only ever lives on `[0,hi]`, so nothing is
+  lost.)
+* `S` nonempty gives `R >= 0`, since `f >= 0` on `[0,hi]`.
+* **Case (a), `k <= t`.** Then `k >= 1` (as `S ⊆ [0,k-1]` is nonempty) and
+  `lam(k) >= 1`. If `R <= hi` then `f(R) >= f(0) + R = lam(k) + R >= R+1 > R`,
+  so `z = R` is inadmissible and `m <= R-1`. If `R > hi` then
+  `m <= hi <= R-1`.
+* **Case (b), `k > t`.** Then `j >= 1`: if `a <= t` then
+  `k = a+2j-1 > t` forces `2j-1 >= k-a > t-a >= 0`, and if `a > t` then
+  `k = a+2j-1 >= t+2j > t`. With `j >= 1`, `a <= max(t+1, 1-2j) = t+1`. So either
+  `a <= t` and `R - (k-1) = t+3j-a >= 3j >= 3`, or `a = t+1` and
+  `R - (k-1) = 3j-1 >= 2`. Hence `R >= k = hi+1` and `m <= hi <= R-1`.
+
+**Sharp form (also proved, and it explains why the naive route fails):**
+`p2 >= 0` **iff** `R >= k`. `z = R` is admissible whenever `0 <= R <= hi`, since
+`f(R) >= R`; so if `R < k` then `R <= hi`, `m >= R` and `p2 <= -1`. Conversely
+`R >= k` forces `hi <= R-1`. So the whole obligation is the single inequality
+`a <= t+3j-1`, which the two cases above establish.
 
 Both bounds are attained, so they are sharp:
 
-* `min p2 = 0` at `j = -5, lam = (1^28)`, `n = 93`, `m = 0`, `p2 = 0`.
+* `min p2 = 0` at `j = -5, lam = (1^28)`, `n = 93`, `m = 0`, `p2 = 0`;
 * `min r = 0` at `j = -5, lam = (2,2,1^26)`.
+
+Finite confirmation of every step of the proof is `proofcheck_c3.py`: 0 step
+failures over 181 991 in-domain Case-II states with `S` nonempty, `|j| <= 40`,
+`|lam| <= 22` — `f` strictly increasing on `[0,hi]`, `R >= 0`, `k >= 1`, the
+case-(a) argument in both sub-branches, case (b) `j >= 1`, `a <= t+1`, `R >= k`,
+the sharp form, and `m <= R-1`. The script also reports, as a non-failure, that
+`f` steps *down* at `hi+1` in 181 951 of 181 991 states: that is the trap, and it
+is why the monotonicity is only ever used on `[0,hi]`.
 
 **Finding 3 (obligation (iii) beyond the collision, and the domain, on a wider domain).**
 `slab_c3.py 30 30` sweeps 1 746 369 states with `|j| <= 30` and `|lam| <= 30`,
@@ -170,7 +212,7 @@ checked against the source, not the other way round:
 
 ## What is not done, and one unrelated defect
 
-* Obligation (i) is **not** closed: the missing lemma is stated above.
+* Obligation (i) is **closed** (Finding 2), by a written proof, not by the run.
 * Obligation (v) is **not** proved. `P8` is a finite check over 66 658 states and
   is labelled as evidence in the code, not as a proof.
 * `Computation/rr_core.py` cannot be run as a script: its `__main__` block

@@ -128,14 +128,14 @@ def phi(state):
                 drop.remove(pos)
                 continue
             keep.append(val + 1)
-        if drop:
-            # a == mu with only one slot of that value: remove a second copy of
-            # the same value if one exists, otherwise the state is degenerate.
-            v = lam[a - 1] if a <= t else 0
-            idx = next((i for i, x in enumerate(keep) if x - 1 == v), None)
-            if idx is None:
-                raise ValueError("phi Case I: slot %r not removable" % (drop,))
-            del keep[idx]
+        # a = mu cannot occur in Case I (Lemma MX.5): if a = mu then 2j = L, and
+        # a <= t forces L >= 1 hence j >= 1 while Case I forces t* <= -j <= -1;
+        # and a > t forces L = 0, j = 0, contradicting t* >= 1. So the two
+        # deletion slots are always distinct and both are found above.
+        # Cycle 3: the former 'if drop:' fallback for the a = mu collision was
+        # dead code (0 hits in 1,746,369 states, worker m3; proved in MX.5) and is
+        # replaced by an assertion.
+        assert not drop, "phi Case I: a == mu is impossible here (Lemma MX.5)"
         n_new = la + lmu - 5 * j - tstar
         if n_new < 0:
             raise ValueError("phi Case I: negative number of inserted 1s")

@@ -1,0 +1,8 @@
+proof-step check: |j| <= 40, |lam| <= 22, 181991 in-domain Case-II states with S nonempty
+s0 R >= 0 fails 0   s1 k >= 1 fails 0   s2 f not increasing on [0,hi] 0   s3 f steps down past hi (expected, not a failure) 181951
+s4 case (a) k <= t: 15187 states (R <= hi: 0, R > hi: 15187), branch argument fails 0, m <= R-1 fails 0
+s5 case (b) k > t: 166804 states, j < 1 0, a > t+1 0, R < k 0
+s6 (p2>=0) <=> (R>=k) fails 0   s7 lemma m <= R-1 fails 0
+
+TOTAL: PASS  (0 step failures, 1.7 s)
+wrote /workspace/nucleus/work/projects/p-9021becf3f0d47a89b3f3c794c1e872b/repo/RogersRamanujan/Computation/cycle3/results_proofcheck_c3.json
