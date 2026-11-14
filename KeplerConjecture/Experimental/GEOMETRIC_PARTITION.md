@@ -170,3 +170,63 @@ to two checkable statements (T') and (T''). **Neither is proved**, and (T') on t
 icosahedral component is the crux. I make no claim that this route is simpler than
 Hales's; its value is that it isolates one inequality about a specific configuration
 instead of an enumeration of standard regions.
+
+## Status of (T') on the icosahedral component, quantified
+
+The single decisive inequality is `S(C) >= D(C)` for `C = {v}` the dodecahedral centre.
+Writing it out with exact constants:
+
+```
+D(C) = sqrt(32) - 5.5502910285155 = 0.1065632209769
+```
+
+so the twelve outer cells must satisfy
+
+```
+sum_{i=1..12} vol Omega(w_i)  >=  13 sqrt(32) - 5.5502910285155 = 67.9888142149,
+mean                           >=  5.66573451791 .
+```
+
+Three consequences, all exact:
+
+1. **The requirement exceeds an fcc cell.** `sqrt(32) = 5.65685424949`, so each outer cell
+   must average `0.008880268415` above an fcc cell, i.e. `0.157 %` above. The inequality is
+   therefore not satisfied by "typical" cells: it demands genuine expansion of every
+   neighbour of the defect on average. This is the sharpest way to state what the
+   dodecahedral defect costs.
+
+2. **Inscribed balls do not come close.** Separation `>= 2` gives only
+   `vol Omega(w) >= 4pi/3 = 4.188790205`, hence `13 * 4pi/3 = 54.45427266` against the
+   required `73.53910524`, a shortfall of `19.08483258`. To reach the required mean from an
+   inscribed ball alone the ball would need radius `1.105917008`, i.e. nearest-neighbour
+   distance `2.211834`, whereas the true nearest-neighbour distance at the outer centres is
+   exactly `2`. The inscribed-ball bound is therefore useless here and no amount of
+   bookkeeping around it will close the gap.
+
+3. **What a proof must therefore use.** A cell-volume lower bound that improves on the
+   inscribed ball by exploiting *how few* neighbours a centre has: the outer centres have
+   `6` neighbours within `2.1029` (one at `2`, five at `2.102851...`), against `12` in fcc.
+   The estimate "cell volume grows as the neighbour count falls" is precisely the
+   Rogers-simplex / Fejes Toth territory that Hales's Chapters 8 and 11-14 occupy.
+
+**Honest status.** (T') on this component is open, and I have not proved it. What this
+section establishes is that it is *not* accessible to the elementary lower bounds
+available, that it is a genuine expansion statement (`+0.157 %` over fcc), and that its
+proof must be a neighbour-count-versus-volume estimate. That is a real narrowing: it rules
+out the inscribed-ball family, which is the obvious first attempt, with exact arithmetic.
+
+### A route I did not complete, recorded so it is not lost
+
+For a centre `w` and direction `u`, the cell extends to
+
+```
+t(u) = min over neighbours z with <z-w,u> > 0 of  |z-w|^2 / (2 <z-w,u>) ,
+```
+
+and `vol Omega(w) = (1/3) int_{S^2} t(u)^3 du`. A lower bound on `t` from the neighbour
+data would give (T') directly. For the icosahedral outer centres the six neighbours leave a
+large solid angle free in the outward direction, so `t` is large there; the obstruction is
+that the free directions are closed not by the six known neighbours but by the unknown
+completion, and only the `12`-count of `K15-E014` constrains the completion. Combining
+`K15-E014` with the above integral is the concrete next step, and it is where I would
+continue.

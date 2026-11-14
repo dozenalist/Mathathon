@@ -173,3 +173,30 @@ icosahedral component requires `S(C) >= 0.1065632`.
 Gaps: independent re-run and reading of the Taylor remainder argument (Astra/X);
 `K15-E013` Barlow shell check; (T') unproved; `K15-E020` still blocked on a three-point
 evaluator that my artifacts do not contain.
+
+### K15-EXP-005 — 2026-11-14, America/Los_Angeles — role E (Experimental)
+
+Continuation of the same block (timing extension). Branch `kepler15/experimental/run-01`.
+Ultramath not used.
+
+| claim | status | note |
+| --- | --- | --- |
+| `K15-E015` | PROVED (arithmetic) | bracket refined by bisection: `delta_13 < 57.138726938 deg` (was `57.1463`), margin `+4.94e-04`; runtime 0.43 s |
+| `K15-E013` | **PROVED / CLOSED** | every Barlow stacking has exactly 12 centres in `[2,2.09]`; open shell is `(2, 2 sqrt2)` and `2.09 < 2.8284` |
+| `K15-E014` | PROVED | unchanged conclusion, stronger arithmetic backing |
+| Taylor lemma | PROVED | remainder bound stated and proved for `x <= 8/5`, `N >= 2`; hypothesis met with margin |
+| `(T')` icosahedral | OPEN | quantified: outer cells must average `5.66573451791`, i.e. `0.157 %` above an fcc cell; inscribed balls fall `19.0848` short |
+
+`K15-E013` proof: adjacent-layer heights `h = 2 sqrt(2/3)`, hollow offsets of modulus
+`2/sqrt3`; nearest `|u+delta|^2 = 4/3` gives distance `2`, next `16/3` gives `2 sqrt2`;
+in-plane `2`, `2 sqrt3`; two layers `2h = 3.266`. No spectrum value in `(2, 2 sqrt2)`.
+Numerical cross-check `barlow_shell_check.py` on `ABC`, `AB`, `ABCB`, `ABAC` all return 12.
+Two construction bugs were found and fixed (wrong hollow shift; reference centre in the
+bottom layer) and are recorded in the doc.
+
+`(T')` narrowing: inscribed-ball bounds are excluded with exact arithmetic
+(`13 * 4pi/3 = 54.454` against `73.539` required, shortfall `19.085`), so any proof must be
+a neighbour-count-versus-volume estimate. Recorded along with the incomplete `t(u)` route.
+
+Gaps: `(T')` open; `(T'')` diameter bound not attempted; `K15-E020` still blocked on a
+three-point evaluator; the Taylor lemma and the enclosure want independent review.

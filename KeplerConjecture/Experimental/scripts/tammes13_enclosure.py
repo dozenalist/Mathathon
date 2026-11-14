@@ -107,6 +107,18 @@ def g_iv(lo, hi):
     rhs = (Iv(1) - Iv(2)*c) / (c*c)
     return lhs - rhs
 
+def gp_iv(lo, hi):
+    """Rigorous Iv enclosure of g'(a) = -(1/2)sec^2(3pi/8-a/4) - 2 sin a (1-cos a)/cos^3 a
+    on [lo,hi] with 0 < lo <= hi < pi/2.  Both terms are negative there."""
+    arg_lo = (Iv(3)*PI/Iv(8) - Iv(hi)/Iv(4)).lo
+    arg_hi = (Iv(3)*PI/Iv(8) - Iv(lo)/Iv(4)).hi
+    c_arg = cos_iv(arg_lo, arg_hi)
+    sec2 = Iv(1) / (c_arg*c_arg)
+    t1 = Iv(-1)/Iv(2) * sec2
+    sa = sin_iv(lo, hi); ca = cos_iv(lo, hi)
+    t2 = Iv(-2) * sa * (Iv(1) - ca) / (ca*ca*ca)
+    return t1 + t2
+
 def h_at(x):
     """Iv enclosure of h(x) = cos x/(1-cos x), x a Fraction in (0, pi/2)."""
     c = _taylor_cos(x)
@@ -135,6 +147,22 @@ def main():
     say("sign change g>0 -> g<0 on [a_lo,a_hi]; g strictly decreasing on (0,pi/2)")
     say("  => unique root a* in [a_lo, a_hi]")
     say("")
+
+    # --- refine the bracket by bisection (rigour kept: sign change maintained) ---
+    # Note: bisection stalls once the interval evaluation straddles 0 near the root,
+    # because plain interval arithmetic loses the sign there. That is why the bracket
+    # below is ~1e-5 wide rather than 1e-12; it is ample for the margin required.
+    for _ in range(40):
+        mid = (a_lo + a_hi) / 2
+        gm = g_iv(mid, mid)
+        if gm.lo > 0:
+            a_lo = mid
+        elif gm.hi < 0:
+            a_hi = mid
+        else:
+            break
+    say(f"refined bracket: a* in [{float(a_lo):.15f}, {float(a_hi):.15f}]")
+    say(f"  width {float(a_hi-a_lo):.3e}  (limited by sign loss in interval evaluation)")
 
     # d <= arccos(h(a*)) <= arccos(h_lo) with h_lo from lower bound of cos(a_hi)
     c_hi_pt = _taylor_cos(a_hi)

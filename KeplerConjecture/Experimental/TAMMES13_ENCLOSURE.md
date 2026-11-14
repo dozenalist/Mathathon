@@ -125,3 +125,82 @@ Tammes `N = 13` problem and I claim no novelty for that theorem.
 - `K15-E013`: Barlow stackings must still be shown to have at most 12 centres in
   `[2, 2.09]`. FCC and HCP are fine (12 at distance 2, next shell `2 sqrt 2 = 2.8284`).
 - The shell lemma alone gives no density bound; it feeds `K15-E020` and `K15-E030`.
+
+## Lemma (Taylor remainder bound, written out)
+
+The certificate rests on the following, which I record rather than assert.
+
+**Lemma.** For `x` real with `0 <= x <= 8/5` and `N >= 2`,
+
+```
+| cos x - sum_{k=0}^{N} (-1)^k x^{2k}/(2k)! |  <=  x^{2N+2}/(2N+2)! ,
+| sin x - sum_{k=0}^{N} (-1)^k x^{2k+1}/(2k+1)! |  <=  x^{2N+3}/(2N+3)! .
+```
+
+*Proof.* Let `t_k = x^{2k}/(2k)!` for the cosine series. Then
+`t_k/t_{k-1} = x^2/((2k-1)(2k))`, which is `< 1` as soon as `x^2 < (2k-1)(2k)`. Since
+`x <= 8/5`, `x^2 <= 64/25 = 2.56`, and for `k >= 2` we have `(2k-1)(2k) >= 12 > 2.56`. So
+`t_k` is strictly decreasing for `k >= 2`, hence from the term of index `N >= 2` onward.
+The series is alternating in sign, so the Leibniz criterion gives that the tail from index
+`N+1` onward is bounded in absolute value by its first term, which is
+`x^{2N+2}/(2N+2)!`. For the sine series set `s_k = x^{2k+1}/(2k+1)!` with
+`s_k/s_{k-1} = x^2/((2k)(2k+1)) < 1` for `k >= 1` since `(2k)(2k+1) >= 6 > 2.56`. Same
+argument. ∎
+
+The script uses `N = 28`, and the ranges it evaluates at are `a <= 1.2114`,
+`3pi/8 - a/4 <= 0.8753 + eps`, and (in the bisection helper) degrees up to `1.57`; all are
+below `8/5 = 1.6`. The hypothesis of the lemma is therefore met with margin.
+
+`pi` is enclosed by `333/106 = 3.14150943... < pi < 3.14159292... = 355/113`, the standard
+continued-fraction bounds; both are exact rationals and the enclosure is verified by
+squaring appropriately or by the classical interpolation argument. Only the enclosure is
+used, never a decimal expansion.
+
+## K15-E013 — CLOSED: every Barlow stacking has exactly 12 centres in [2, 2.09]
+
+Status **PROVED** (analysis), with a numerical cross-check in
+`Experimental/scripts/barlow_shell_check.py`.
+
+A Barlow packing is any stacking of close-packed hexagonal layers with consecutive layers
+offset into the hollows. Write the layer at height `0` as the triangular lattice `L` of
+spacing `2`, with `L = { m(2,0) + n(1, sqrt3) }`. Adjacent layers sit at height
+`h = 2 sqrt(2/3) = 1.63299316...`, with centres at `L + delta`, where `delta` is one of the
+two hollows
+
+```
+delta_+ = (1, sqrt3/3),      delta_- = (1, -sqrt3/3),      |delta_+| = |delta_-| = 2/sqrt3 ,
+```
+
+and the stacking is any word in the three layer positions with no two consecutive equal.
+
+**Distance spectrum to the adjacent layers.** For a centre at the origin and a centre
+`(u + delta, h)` in an adjacent layer,
+
+```
+|(u+delta, h)|^2 = |u + delta|^2 + h^2 = |u+delta|^2 + 8/3 .
+```
+
+The nearest lattice points to a hollow are the three vertices of the triangle containing
+it, at `|u + delta|^2 = 4/3`, giving `4/3 + 8/3 = 4`, i.e. distance exactly `2`; there are
+three such per adjacent layer, hence `6` from the two adjacent layers. The next value is
+`|u+delta|^2 = 16/3` (the ring at `4/sqrt3 = 2.3094`), giving `16/3 + 8/3 = 8`, i.e.
+distance `2 sqrt2 = 2.82842712...`, six in total.
+
+**Remaining contributions.** In-plane: `2`, then `2 sqrt3 = 3.4641`. Two layers away:
+`2h = 3.26599`. All are `>= 2 sqrt2`.
+
+**Conclusion.** The distance spectrum about any centre of any Barlow packing has *no*
+values in the open interval `(2, 2 sqrt2)`, and `2.09 < 2.8284271`. Hence exactly `12`
+centres lie in `[2, 2.09]`, for every Barlow stacking. This holds uniformly over the
+stacking word, because the interlayer geometry is identical for every choice of hollow —
+which is precisely why the equality family does not break the shell bound.
+
+**Numerical cross-check.** `barlow_shell_check.py` builds four stackings (`ABC`, `AB`,
+`ABCB`, `ABAC`), translates so the origin is a centre, and reports the spectrum. All four
+return `12` at `2.000000` and the next shell at `2.828427`, with `12` centres in
+`[2, 2.09]`. Two bugs were found and fixed during this check and are recorded because they
+are the kind that produce false confidence: an incorrect hollow shift (drifting by
+`1 - 2/sqrt3` in-plane, which produced illegal distances below `2`), and placing the
+reference centre in the bottom layer instead of the middle (which halved the count to
+`9 + 3`). The final construction reproduces the known fcc spectrum `12, 6, 24, ...` at
+`2, 2sqrt2, 2sqrt3`, which is the control that the geometry is right.

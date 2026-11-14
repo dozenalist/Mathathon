@@ -5,12 +5,14 @@ g(1.2114) = [-0.0017051666762499, -0.00155268902813996]
 sign change g>0 -> g<0 on [a_lo,a_hi]; g strictly decreasing on (0,pi/2)
   => unique root a* in [a_lo, a_hi]
 
-cos(a_hi) >= 0.351709193286087241
-h(a*) >= h(a_hi) >= 0.542517631969590242
+refined bracket: a* in [1.211337500000000, 1.211350000000000]
+  width 1.250e-05  (limited by sign loss in interval evaluation)
+cos(a_hi) >= 0.351755998312013762
+h(a*) >= h(a_hi) >= 0.542629006047203655
 threshold cos(theta_min) = 23681/43681 = 0.542135024381310004
-margin = 3.826076e-04  (>0 CERTIFIED)
+margin = 4.939817e-04  (>0 CERTIFIED)
 
-delta_13 < 57.146323807 deg   (rigorous upper bound)
+delta_13 < 57.138726938 deg   (rigorous upper bound)
 theta_min   > 57.170897332 deg   (rigorous lower bound)
 
 CONCLUSION: delta_13 < theta_min, so K15-E014 holds at rho = 209/100:
