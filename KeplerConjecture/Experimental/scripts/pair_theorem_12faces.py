@@ -1,7 +1,16 @@
 #!/usr/bin/env python3
 """
-THEOREM (this script): the pair inequality (P') holds at the icosahedral pair for EVERY
-completion whose payer cell has exactly twelve faces.
+CONDITIONAL THEOREM (this script) -- corrected status.
+
+An earlier version called this a theorem.  It is not: step (1) is not established, and its
+pure form is false (see REVIEW_0608 section 11).  What is proved is the implication
+
+    vol D' >= V_dod - 5(b-1) A_min   ==>   vol Omega(w1) > 5.763417470 ,
+
+for a twelve-face completion, where D' is the cell with the ring faces moved in to distance 1.
+The hypothesis holds with slack +0.033 in every configuration ever constructed, and is NOT
+proved in general: D' is not a Voronoi cell of a legal packing (the inward-scaled ring sits
+1.902 from c), and "twelve half-spaces at distance 1" alone can have volume 0.707055.
 
 Statement.  Let the icosahedral cluster be present (c at distance 2 from w1, five ring
 centres at 2.102924 in the ring directions).  Let z_1..z_6 be any further centres at
@@ -86,7 +95,8 @@ def main():
     print(f"V_dod + that  >= {float(bound.lo):.12f}")
     print(f"threshold        {float(THRESH.lo):.9f}")
     ok = bound.lo > THRESH.hi
-    print(f"\nTHEOREM: vol Omega(w1) > threshold for every 12-face completion: {ok}")
+    print(f"\nCONDITIONAL: vol Omega(w1) > threshold for every 12-face completion with")
+    print(f"  vol D' >= 5.5400: {ok}   (the hypothesis itself is NOT proved -- see section 11)")
     print(f"         margin >= {float(bound.lo - THRESH.hi):+.9f}")
     return 0 if ok else 1
 
