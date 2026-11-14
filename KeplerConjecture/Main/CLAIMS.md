@@ -1003,3 +1003,47 @@ No numerical input is used.
 
 None of these is promoted to a bound. The numbers in the first row are the ones
 Main independently reproduced (K15-C023).
+
+### K15-C033 — Barlow stackings have no distance in `(2, 2.09)` (`PROVED`; closes E's `K15-E013`)
+
+E's `K15-E013` asked for Barlow stackings to be shown to have at most 12 centres
+in `[2, 2.09]`; E proposed a numerical check. It has a three-line structural
+proof, which Main supplies here.
+
+**Setting.** A Barlow stacking is: the triangular lattice
+`L = ⟨(2,0), (1,√3)⟩` in each horizontal layer `z = kc` with `c = √(8/3)`, each
+layer displaced by a hollow of the layer below, i.e. by `±s`,
+`s = (a₁+a₂)/3`, `|s| = 2/√3`.
+
+**Lemma.** Every inter-centre distance is either `2` or `≥ 2.828`. Hence there is
+no distance in `(2, 2.09)`, and the only centres within `2.09` are the contacts at
+distance exactly `2`, of which there are at most 12 (kissing number; exactly 12
+for fcc and hcp).
+
+*Proof.* Three cases.
+1. **Same layer.** Distances are those of `L`, i.e. `≥ 2`, with equality for the
+   six nearest neighbours, and next value `2√3 = 3.464`.
+2. **Adjacent layers.** Vertical separation `c`, so the 3-D distance is
+   `√(d² + c²) = √(d² + 8/3)` where `d` is the horizontal distance between the two
+   lattices. The horizontal distance spectrum between `L` and `L + s` is
+   `2/√3 = 1.1547` (the hollow), then `4/√3 = 2.3094`, `3.0550`, `4.1633`.
+   The first is `|s|² = 4/3`; the second is
+   `|a₁ − a₂ + s|² = |(2, −2/√3)|² = 4 + 4/3 = 16/3`. Hence the 3-D distances
+   are `√(4/3 + 8/3) = 2` and then `√(16/3 + 8/3) = √8 = 2.828`. Both facts were
+   also checked numerically this block (spectrum `2.0, 2.828, 3.464, 4.472`), and
+   `2.828 > 2.09`.
+3. **Non-adjacent layers.** Vertical separation `≥ 2c = 3.266 > 2.09`. ∎
+
+**Verified numerically** (this block): with `c = √(8/3)` the adjacent-layer 3-D
+spectrum begins `2.0, 2.828, 3.464, 4.472` and no value lies in `(2, 2.09)`;
+the same holds for every allowed offset sequence of length 3.
+
+**Status.** `PROVED` (Main). Reviewer X. **Scope:** this closes the "Barlow"
+item of E's enclosure note; the Tammes-13 input (K15-C027) supplies the `≤ 12`
+count for *arbitrary* 2-separated sets, which subsumes this lemma — so the lemma
+is a redundancy check on E's enumeration rather than a new ingredient.
+
+*Note on the definition.* "Each layer over a hollow of the one below" is what
+makes the family dense; if layers may sit above lattice points the packing
+overlaps (`c = 1.633 < 2`), so those sequences are not packings and are excluded
+by the definition, not by a computation.
