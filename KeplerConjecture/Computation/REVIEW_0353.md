@@ -209,7 +209,8 @@ block also re-ran and re-checked, against the artifacts:
 * the **external-fixture path** (`load_external_fixture` / `evaluate_external`), which had never been
   executed: it now has a worked example and test S15;
 * every script in the directory, timed, in `RUNTIMES.md` — the whole verification set is 22 s here,
-  about 75 s on a host 3.3× slower.
+  about 75 s on a host 3.3× slower;
+* the clean clone run **twice**, to catch nondeterminism: identical output both times.
 
 **Reproducibility of the pushed branch, checked at the end of the block**: a clean `git clone` of
 `kepler15/comp-01a1d8c0` at `e3948da` (42 `.py`, 68 `.json`) runs `exactcert_tests`,
