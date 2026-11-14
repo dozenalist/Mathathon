@@ -269,7 +269,13 @@ fcc with nearest-neighbour distance 2, `{√2(m,n,p) : m+n+p even}`, and transla
 packing is **saturated**, bulk cells are unmodified fcc cells of volume `√32` (so bulk–bulk pairs
 sit exactly at `2√32`), and the crack-adjacent cells are strictly larger — so it is not Barlow.
 Same conclusion, one more construction, and it makes the counterexample independent of the details
-of `C095`.
+of `C095`. I checked the numbers of that construction directly (`Reviews/crack_cell_indep.py`,
+half-space clipping plus hull volumes): `ε = 0` gives the fcc cell of volume `√32 =
+5.656854249492` exactly; the facing-layer cell has volume `√32 + 2ε` **exactly** (`6.656854249492`
+at `ε = 1/2`, `6.985000249492` at `ε = 0.664073`), and the minimum pairwise distance is exactly 2
+throughout. So the `6.985` quoted in the §5 table is confirmed independently, and the formula
+`√32 + 2ε` explains why the crack costs volume: one cell per unit area of crack, at height
+`2ε`.
 
 The document's own §5 table says the same thing ("crack packing | bulk–bulk | `11.313708499` |
 equality in the bulk"), so line 40 contradicts line 240 of the same file. **Repair:** the heading
