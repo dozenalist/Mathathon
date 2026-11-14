@@ -256,7 +256,7 @@ or Astra to collect.
 
 ```
 path      KeplerConjecture/Computation/l1_remainder.py
-sha256    524be53bbfb1147e63a0f08311fa6e20d1d87c9f46118e7f0ba6f6ca52afe441
+sha256    cd855d86dd4536961e06db03b1b2553613c3e566025f19011d60a7b1eeab5335
 commit    1d2db443359ad57dddb6e8ac00212044dc7777af   (first commit containing the file)
 deps      python3 (stdlib), numpy, scipy.spatial   -- no Lean, no network, no GPU
 runtime   ~1 s measured; budget 1 CPU / 1 GiB / 120 s
@@ -282,8 +282,9 @@ is the obvious first improvement.
 `vol − V_dod ≥ (ratio)d² − (M₃/6)d³`, sufficient for `c = 0.13` iff
 
 ```
-M₃  ≤  6(ratio_min − c)/θ_max  =  2.86   at the ε = 1 ball
-measured: ratio_min = 0.2039, M₃ = 0.0752   ->  a factor 38 of headroom
+M₃  ≤  6(ratio_min − c)/θ_max  =  2.7151  at the ε = 1 ball
+ratio_min = 0.20 is a FIXED conservative constant (the sampled value is reported, never used
+to decide); measured M₃ = 0.075…0.213 across seeds, so the headroom is a factor 13…36
 ```
 
 **Pinned command.**
@@ -296,7 +297,7 @@ python3 KeplerConjecture/Computation/l1_remainder.py --certify --eps 1.0 --c 0.1
 
 | exit | meaning | acceptable? |
 | --- | --- | --- |
-| `0` | T1/T2 certified **and** `X ≤ 2.86`: the local rate follows | **the target** |
+| `0` | T1/T2 certified **and** `X ≤ 2.7151`: the local rate follows | **the target** |
 | `1` | T1/T2 certified, value bound open (no `X`, or `X` too large) | expected with a crude `X` |
 | `2` | a sound part failed (e.g. a ball outside `0.156743`) | a real problem |
 | `3` | the negative control was not rejected, i.e. the pilot is inert | discard the run |
@@ -308,7 +309,7 @@ python3 .../l1_remainder.py --certify --c 0.30 --seed 3    # must exit 3
 python3 .../l1_remainder.py --certify --eps 0.2            # must exit 2 (ball outside the type region)
 ```
 
-**If `X` is above `2.86`.** Report it and the ladder row: `δ₀ ∝ M₃⁻²`, so `X = 10` gives `δ₀ ≈ 2.8·10⁻³`,
+**If `X` is above `2.7151`.** Report it and the ladder row: `δ₀ ∝ M₃⁻²`, so `X = 10` gives `δ₀ ≈ 2.8·10⁻³`,
 `X = 100` gives `2.8·10⁻⁵`. Nothing fails; the constant degrades.
 
 **Not in scope.** `C147`'s global-to-local entry is a separate obligation (it reduces to the `≥13`-facet

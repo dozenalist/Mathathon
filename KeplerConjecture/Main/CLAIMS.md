@@ -5838,8 +5838,8 @@ specification it replaces had four defects, all named by review 0823 and all fix
   a real theorem about the configuration, and it is what makes a Taylor argument well-posed.
 
 **What it refuses to prove.** The value bound. Given the measured minimum quotient ratio `0.2039` and the
-measured `M₃ = 0.0752`, the Taylor criterion `M₃ ≤ 6(ratio − c)/θ_max` needs **`M₃ ≤ 2.86`** at the `ε = 1`
-ball, and a rigorous enclosure is exactly what the pilot does not have. `--m3-bound X` lets an
+measured `M₃ = 0.0752`, the Taylor criterion `M₃ ≤ 6(ratio − c)/θ_max` needs **`M₃ ≤ 2.7151`** at the `ε = 1`
+ball (with a FIXED conservative `ratio_min = 0.20`, so the threshold does not move with a sampling seed), and a rigorous enclosure is exactly what the pilot does not have. `--m3-bound X` lets an
 *independent* interval computation supply it: with `X = 0.5` the pilot returns 0, with `X = 10⁶` it returns
 1 — so the certification path is exercised, not decorative.
 

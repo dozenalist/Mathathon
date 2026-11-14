@@ -64,6 +64,10 @@ COVER = np.sqrt(30 * np.sqrt(5) + 75) / 15      # cos(rho_c) = 0.7946544723
 # whether the ball is inside the type-robust region at all.
 THETA_PN = 0.0446544723                         # cos(rho_c) - 3/4, from d <= 3
 THETA_MAX = (12 ** 0.5) * THETA_PN              # = 0.15469..., the ball for eps = 1
+# The certification threshold must NOT depend on a sampling seed.  RATIO_MIN is the
+# conservative minimum of the quotient ratio from the 16k-sample study (C142/C148);
+# a sampled value is reported alongside but is never used in an acceptance decision.
+RATIO_MIN = 0.20
 
 
 def normals():
@@ -330,6 +334,9 @@ def main():
                          "ball = sqrt(12)*theta_pn")
     ap.add_argument("--c", type=float, default=0.13)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--ratio-min", type=float, default=RATIO_MIN,
+                    help="conservative quotient ratio used for the ACCEPTANCE test; "
+                         "the sampled value is reported but never decides")
     ap.add_argument("--m3-bound", type=float, default=None,
                     help="a RIGOROUS third-derivative bound from an independent "
                          "interval computation; without it the value bound cannot "
@@ -351,7 +358,8 @@ def main():
     print("\nVALUE BOUND (not certified by this pilot)")
     print(f"   min quotient ratio (vol - V_dod)/d^2 over sampled dirs = {ratio_min:.6f}")
     print(f"   measured M3 = 6|c3| along the worst direction          = {m3:.6f}")
-    need, enough = certified_taylor(a.theta, a.c, ratio_min, m3)
+    need, enough = certified_taylor(a.theta, a.c, a.ratio_min, m3)
+    print(f"   ACCEPTANCE uses the conservative ratio_min = {a.ratio_min:.4f} (not the sample):")
     print(f"   Taylor sufficient iff M3 <= 6(ratio_min - c)/theta_max = {need:.4f}")
     print(f"   measured M3 {m3:.4f} vs required {need:.4f} -> "
           f"{'PLAUSIBLE (factor %.1f of headroom)' % (need / m3) if m3 > 0 and need > m3 else 'NOT SUFFICIENT'}")
@@ -372,19 +380,19 @@ def main():
     print("   M3 bound   theta_max      eta          delta0")
     tcert, t1c, t2c = certified_radius()
     print(f"   certified ball radius (T1 {t1c:.4f}, T2 {t2c:.4f}) = {tcert:.4f}")
-    for m, th, eta, d0 in delta0_ladder(a.c, ratio_min, theta_cap=tcert):
+    for m, th, eta, d0 in delta0_ladder(a.c, a.ratio_min, theta_cap=tcert):
         print(f"   {m:8.2f}   {th:.3e}    {eta:.3e}   {d0:.3e}")
-    print(f"   capped at the certified radius, so any M3 <= {6.0*(ratio_min-a.c)/tcert:.2f} reaches the ceiling;")
-    print(f"   the measured M3 is {m3:.4f}, i.e. a factor {6.0*(ratio_min-a.c)/tcert/max(m3,1e-12):.0f} of headroom before the cap binds")
+    print(f"   capped at the certified radius, so any M3 <= {6.0*(a.ratio_min-a.c)/tcert:.2f} reaches the ceiling;")
+    print(f"   the measured M3 is {m3:.4f}, i.e. a factor {6.0*(a.ratio_min-a.c)/tcert/max(m3,1e-12):.0f} of headroom before the cap binds")
     print("   Elementary-partial route: the DIRECTIONAL third derivative is bounded by")
     print("   24^{3/2} = 118 times the largest elementary third partial, so a rigorous")
     print("   computation needs elementary partials <= %.3f to reach the required M3."
           % (need / 118.0))
 
     print("\nNEGATIVE CONTROL")
-    lam_half = ratio_min
+    lam_half = a.ratio_min
     inert = a.c < lam_half
-    print(f"   c = {a.c:.3f} vs measured ratio_min = {lam_half:.6f}: "
+    print(f"   c = {a.c:.3f} vs the conservative ratio_min = {lam_half:.6f}: "
           f"{'accepted (c is below the measured curvature)' if inert else 'REJECTED (c exceeds the curvature)'}")
 
     if not ok:
