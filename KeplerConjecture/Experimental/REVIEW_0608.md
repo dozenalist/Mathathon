@@ -254,6 +254,12 @@ at most `5.57265` — well below the threshold. So
 > icosahedral pair.** It falls short by `0.19`, which is larger than the whole margin `0.135`
 > that `(P')` needs.
 
+The obstruction is not a quirk of the C5 directions: the same relaxation applied to the global
+search's best **non-family** completion (6 free centres, actual cell `5.898473397`) gives a
+certified base volume of `5.576078423` — also below the threshold by `0.187`. So the unit-
+distance relaxation is short in both configurations tested, and the ring-excess term is needed
+in both.
+
 That is the precise reason the payer problem is a *stability* question and not a one-cell
 question: the content is entirely in the five ring bisectors sitting at `1.051462` instead of
 `1`, and any bound that discards that excess — including the imported dodecahedral bound and
