@@ -408,3 +408,30 @@ same 121 pairs: `min over pairs of max_t d² = A+R = 12.844582472` (so still no 
 twists: the *conclusion* holds) and `min over pairs of min_t d² = A−R = 0.044582472`, with **37 of 121
 pairs** clashing for some twist. The near-zero `0.0446` is precisely why a one-pair argument cannot
 work. Fix the number, keep the verdict.
+
+## 16. Status asked for, consolidated (`X-C057` … `X-C076`)
+
+| id | claim | verdict | witness |
+| --- | --- | --- | --- |
+| `X-C057` | `twist_cover.py` unsound in its first two revisions (missing `2u_xq_x`; arcs on the far set) | **REFUTED** | `audit_twist_cover.py` |
+| `X-C058` | two-dodecahedra theorem at `d = 2` is true; the corrected cover certifies it | **PROVED** (60-digit interval arithmetic, 2° margin) | `corrected_cover.py` |
+| `X-C059` | `C116` inherits both defects; statement true, threshold `3.4555003` | certificate unsound, statement true | `near_contact_band.py` run |
+| `X-C060` | E: componentwise error used as Euclidean | **DEFECT** (`y·δn = 8/9 > 4/5`) | `audit_E_cell_volume.py` |
+| `X-C061` | E: unbounded cell gets a finite enclosure | **DEFECT** (`[4/3,4/3]`) | `audit_E_cell_volume.py` |
+| `X-C062` | §4 slack display true only with `E = ∅` | scope correction | `REVIEW` §4 |
+| `X-C063` | the box alone does not repair the sandwich; a saturation check is needed | repair specification | `repaired_sandwich.py` |
+| `X-C064` | the two-dodecahedra threshold is CERTIFIED at `3.455500344` | **PROVED** | `certified_threshold.py` |
+| `X-C065` | E's region grid drops the remainder while printing "whole region" | **DEFECT** | `REVIEW` §5 |
+| `X-C066` | no 13–20-face obstruction; needs unproved 20-face optimality | negative result | `REVIEW` §7 |
+| `X-C067` | E's sin/cos interval extension is sound | **checked, sound** | `REVIEW` §5 |
+| `X-C068` | C's near-contact scan is independent of the arc machinery | **checked** | `C_fixture_nonuniform.py` |
+| `X-C069` | C's cell volumes satisfy the tiling identity on all rows | **checked** | `REVIEW` §8.1 |
+| `X-C070` | C102's `3.206870905` is **correct**; the handover's `3.178617889` was the `ρ = 2` value | **CONFIRMED**, two auxiliary defects | `nearest_13th_indep.py` |
+| `X-C071` | Main's third `twist_cover.py` (`a34a3ff1`) fixes both defects and closes | **checked**, one soundness-preserving sloppiness | `twist_cover_a34a3ff1.py` |
+| `X-C072` | E's `cell_certificate.py` meets the five requirements; old defects live in the old files | **checked** | `cell_certificate.py` run |
+| `X-C073` | C's `F4`/`F5` multi-site families still give `t* = 0`, tiling exact on 500 rows | **checked** | JSON audit |
+| `X-C074` | `C116`'s `6/√5` contradicted by Main's own script (certifies to `d = 3.00`) | **documentation defect, in Main's favour** | `near_contact_band.py` run |
+| `X-C075` | `ACCEPTED.md:28`'s `8.4223` is the defective constant; conclusion survives | number wrong, verdict right | 121-pair recomputation |
+| `X-C076` | `rho_probe.py` consistent with C102; its `ρ = 2.0127` row is *below* `√32` | **checked** | `rho_probe.py` run |
+
+Nothing here is a bound on packing density, and none of it is a Kepler proof.
