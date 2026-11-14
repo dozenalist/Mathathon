@@ -56,7 +56,12 @@ PUBLISHED = {
     "dodecahedral_HM10":   (mpf("0.7546974"),            "Hales-McLaughlin JAMS 2010 (rounding as quoted in CDS22)"),
     "cds22_lattice_3pt":   (mpf("0.741506"),             "CDS22 Table 1.1, lattice-only three-point"),
     "cds22_general_3pt":   (mpf("0.770271"),             "CDS22 Table 1.1, general three-point"),
-    "dlov14_2pt_strength": (mpf("0.773080"),             "CDS22 Table 1.1, de Laat-de Oliveira Filho-Vallentin strengthened 2-point"),
+    # CDS22 Table 1.1 calls this column "Delta^str_2, the strengthening given in [24]".
+    # [24] verified against CDS22's reference list: de Laat, de Oliveira Filho, Vallentin,
+    # "Upper bounds for packings of spheres of several radii", Forum Math. Sigma 2 (2014),
+    # Paper e23, arXiv:1206.2608.  NOTE: that paper's title concerns several radii; the
+    # equal-radius strengthening is a specialisation of its method, not its stated subject.
+    "dlov14_2pt_strength": (mpf("0.773080"),             "CDS22 Table 1.1 Delta^str_2 = strengthening of [24] (DLOV, Forum Math Sigma 2014, arXiv:1206.2608)"),
     "ce03_lp":             (mpf("0.779747"),             "CDS22 Table 1.1 (= CE03 Table 3 m=6, 0.18616 CE-units)"),
 }
 

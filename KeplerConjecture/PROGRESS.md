@@ -81,3 +81,24 @@ as tangency artefacts by grid refinement.
 **Next bounded task.** `K15-COMPUTE-001` (fine grid, `K = 41`, plus the `r0 = 2^(1/6)`
 variant) is submitted for local execution. Meanwhile Computation specifies the three-point
 formulation and the mixed cell-wise/Fourier hybrid; neither depends on those numbers.
+
+### K15-COMP-002 — 2026-11-14, America/Los_Angeles — Computation (role C), continuation
+
+Branch `kepler15/comp-01a1d8c0`, commit `f33e814e46b4b6f6ca6b9e84b3d84ba7d841d549`
+(pushed) plus this entry.
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-DLOV-SRC-001 | source audit | CDS22 Table 1.1's `Delta^str_2 = 0.773080` is "the strengthening given in [24]", and [24] is de Laat, de Oliveira Filho, Vallentin, *Upper bounds for packings of spheres of several radii*, Forum Math. Sigma 2 (2014) e23, arXiv:1206.2608. That paper's stated subject is several radii; the equal-radius strengthening is a specialisation, so citing it as an "equal-sphere two-point bound" is imprecise | `cds.txt` Table 1.1 caption and reference [24]; `k15conv.py` entry corrected and annotated |
+| K15-C-3PT-SPEC-001 | SPECIFIED | the truncated three-point evaluator, free of implementation: CDS22 Theorem 1.1 on the unit-radius contract, with the two structural constraints (`f3(0,0) > 0` required, and truncation required by CDS Lemma 1.2) and a four-test acceptance protocol whose first test recovers the two-point control exactly | `Computation/REQUESTS/K15-COMPUTE-002.md` |
+
+**The decisive test for any three-point implementation** is recorded explicitly because it is
+the one that catches the two errors that would otherwise look like progress: with the kernel
+set to zero the code must reproduce `0.779747` (CE03), and any solution below that value must
+have `f3(0,0) > 0` — otherwise it is a two-point certificate and contradicts Li's theorem,
+which would mean the code is wrong rather than the mathematics.
+
+**Status of the route.** The three-point bound `0.770271` is the only published mechanism
+that provably improves on ordinary two-point positivity here, so it is the correct second
+evaluator and the correct baseline for Experimental's hybrid. It is *reproduction*, not
+improvement, and is labelled as such.
