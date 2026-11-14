@@ -255,7 +255,7 @@ or Astra to collect.
 
 ```
 path      KeplerConjecture/Computation/l1_remainder.py
-sha256    bd2f24c28e469f3315d046bd1d445287cf6f26b8bc056d8ba3e97f440ab2f2ac
+sha256    4268688c94a342898e9efc506ca2b4e11504b731506c7e2a5eebda4416383aab
 commit    1d2db443359ad57dddb6e8ac00212044dc7777af   (first commit containing the file)
 deps      python3 (stdlib), numpy, scipy.spatial   -- no Lean, no network, no GPU
 runtime   ~1 s measured; budget 1 CPU / 1 GiB / 120 s
@@ -264,7 +264,7 @@ runtime   ~1 s measured; budget 1 CPU / 1 GiB / 120 s
 **What is already proved by the pilot (no local work needed).** On the ball `d(θ,Rot) ≤ 0.156743`:
 
 - **T1** every one of the 160 triples keeps `|det| > 0` (slack `0.336265` at `θ_max`);
-- **T2** the 20 active triples stay active and the 140 inactive stay slack (slack `1.095124` at `θ_max`),
+- **T2** the 20 active triples stay active and the 140 inactive stay slack (slack `0.898693` at `θ_max`),
 
 so the cell has exactly 12 facets and `vol` is smooth there. `--margins` exits 0.
 

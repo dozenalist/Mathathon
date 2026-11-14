@@ -188,16 +188,30 @@ def margins_at_zero():
     alldet = [abs(np.linalg.det(U[list(t)])) for t in TRIPLES
               if abs(np.linalg.det(U[list(t)])) > 1e-13]
     return dict(active=len(act), inactive=len(inact),
-                min_inactive_slack=min(inact), min_det=min(act) if act else min(dets),
+                min_inactive_slack=min(inact),
+                # NB: min_det must be the smallest |det| over triples, NOT the smallest
+                # slack -- the first version wrote min(act), which is ~0, making
+                # 1/min_det a huge negative number and the T2 test pass VACUOUSLY.
+                min_det=min(dets),
                 min_det_all=min(alldet), n_triples=len(alldet))
 
 
 def certify_margins(theta_max, verbose=True):
-    """T1 and T2, soundly.  Derivatives: |dA| <= 1 per entry, |dv| <= |A^-1|^2 |v|."""
+    """T1 and T2, soundly.
+
+    Derivatives: |dA| <= 1 per entry (a unit vector turning at unit rate), and a vertex
+    moves by <= R|A^-1| sqrt(6) per unit theta -- sqrt(6) because a unit theta spreads
+    over the six components (three planes, two tangents each) that fix the vertex.
+    """
     m = margins_at_zero()
     rmax = 1.258408572                              # dodecahedron circumradius
     inv = 1.0 / m["min_det"]                        # |A^-1| <= 1/min|det|
-    dv = inv * inv * rmax                            # vertex motion per unit theta
+    # A vertex is the solution of THREE planes, each of which can move, and each of
+    # those motions has TWO tangent components: a unit theta distributes over six
+    # components, so the directional derivative is sqrt(6) times one component.
+    # The first version used |A^-1|^2 R = 2.1563 and was UNSOUND: the measured rate of
+    # the slack is 5.4-7.2 per unit theta (adversarial check), which exceeds it.
+    dv = rmax * inv * np.sqrt(6.0)                  # vertex motion per unit theta
     feas = m["min_det_all"] - 3.0 * theta_max        # Hadamard on the determinants
     type_margin = m["min_inactive_slack"] - (dv + 1.0) * theta_max
     ok = (feas > 0) and (m["active"] == 20) and (type_margin > 0)
@@ -209,7 +223,7 @@ def certify_margins(theta_max, verbose=True):
         print("T2 type (exactly 12 facets, vol smooth on the ball)")
         print(f"   active triples {m['active']} / inactive {m['inactive']} at theta=0")
         print(f"   min inactive slack at theta=0                      : {m['min_inactive_slack']:.9f}")
-        print(f"   vertex motion per unit theta <= |A^-1|^2 R        : {dv:.4f}")
+        print(f"   vertex motion per unit theta <= R|A^-1| sqrt(6)   : {dv:.4f}")
         print(f"   slack left at theta_max                            : {type_margin:.6f}  "
               f"{'OK' if type_margin > 0 else 'FAIL'}")
     return ok, m, feas, type_margin
@@ -269,7 +283,7 @@ def certified_radius():
     inv = 1.0 / m["min_det"]
     dv = inv * inv * 1.258408572
     t1 = m["min_det_all"] / 3.0                      # Hadamard on the determinants
-    t2 = m["min_inactive_slack"] / (dv + 1.0)        # the type margin
+    t2 = m["min_inactive_slack"] / (dv + 1.0)        # the type margin (+1: the normal's own motion)
     return min(t1, t2), t1, t2
 
 

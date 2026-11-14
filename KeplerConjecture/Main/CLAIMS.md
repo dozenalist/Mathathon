@@ -5864,6 +5864,27 @@ target, and the concrete thing for the next block or `M-CERT-002` to attack.
 
 **And `C147` stands outside all of it.** The pilot certifies a local rate; the entry is `C147`'s problem.
 
+**Two bugs in the pilot's own first version, found by an adversarial check of its own margins.** Both are
+recorded because the project has had three unsound checkers and this is the same family:
+
+1. **The T2 derivative constant was too small.** It used `|A^{-1}|² R = 2.156` for the vertex motion, but a
+   unit `θ` distributes over the **six** components that fix a vertex (three planes × two tangents), so the
+   directional derivative is `√6` times one component: `R|A^{-1}|√6 = 6.555`. The measured rate of the
+   min-inactive slack is `5.4…7.2` per unit `θ`, which **exceeds** `2.156` — so the original bound was
+   violated by the data it was supposed to bound. Corrected; the T2 margin at `θ_max` drops from `1.095125`
+   to `0.898693`, and T2's certified radius is `0.16360` (T1's `0.156743` binds, so the combined radius is
+   unchanged).
+2. **`min_det` was `min(act)` — the minimum of the *slack* list (≈`−1e−16`), not of the determinants.** Then
+   `1/min_det ≈ −1e16` and `dv` came out `−4.035`, so the T2 test `type_margin > 0` **passed vacuously** —
+   the exact "checker that cannot fail" failure mode. Corrected to `min(dets) = 0.470228202`.
+
+Neither bug changes any conclusion, and both were caught by the pilot checking its own margin against a
+measurement — which is why the pilot reports the measured slope alongside the bound.
+
+**The certified radius is conservative.** T1/T2 prove `0.156743`; the measured type margin is still positive
+at `θ = 0.30` (facet counts stay at 12), so Hadamard is the crude step. That is a fact about the *proof*, not
+about the geometry.
+
 *Status.* T1/T2 `PROVED`; value bound `OPEN`; the pilot's own self-test (7 cases) is in `run_all_checks`
 (21 checks).
 
