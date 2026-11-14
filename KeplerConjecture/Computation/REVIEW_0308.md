@@ -136,8 +136,14 @@ The task asked to derive the quintic construction and to seek simpler structure 
 `σ₁ = (au²+bu+c)²` and `σ₀ = (du²+eu+f)²+k`, matching coefficients leaves one free parameter and
 forces `k = q0 − f² > 0`, i.e. `|f| < √q0 = 40.0739`. For that `q`, `|f|` has **minimum 195.95**
 at `d ≈ 6.17`, and `|f| → ∞` as `d → 0` or `d → ∞`. So no choice of the parameter works and the
-two-square ansatz is excluded for that certificate. (This is a bound on `|f|` over the
-parametrisation, not a finite search claim.)
+two-square ansatz is excluded for that certificate.
+
+Rigour of the exclusion, stated precisely: `|f|` was evaluated on `3·10^5` points of `d ∈
+(0.05, 300)`; it is **monotonically decreasing** up to `d = 6.177`, **monotonically increasing**
+after it, with `|f(0.05)| = 3.6·10^7` and `|f(300)| = 2.5·10^6`. Hence the minimum over `d > 0`
+is `195.948`, and `195.948 > 40.074`. The monotonicity is a numerical verification on a fine grid,
+not a symbolic proof; the conclusion is a bound on `|f|` *within this parametrisation*, not a
+claim about sums of squares in general.
 
 **The honest strength table — the point of §4:**
 
