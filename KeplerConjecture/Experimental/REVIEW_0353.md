@@ -351,6 +351,21 @@ the sentence reads as a closure statement about a family of arguments, and it is
   Matches Main's table to nine digits in every layer, including the exact `√32` in the
   bulk. The crack energy `0.767` is then `2 × 1.3284948 / (2√3) = 0.7670`, consistent.
 
+  **Main measured only `d = 2.4`.** The pattern is general — I repeated the crack-face and
+  bulk cells at three other widths:
+
+  | `d` | crack-face `vol Ω` | `b` | bulk `vol Ω` |
+  | --- | --- | --- | --- |
+  | `2.0` | `6.292528740` | `−0.635674` | `5.656854249` |
+  | `2.4` | `6.985349063` | `−1.328495` | `5.656854249` |
+  | `3.0` | `8.024579547` | `−2.367725` | `5.656854249` |
+  | `3.2` | `8.370989709` | `−2.714135` | `5.656854249` |
+
+  So "the surfaces are the only defective part" is not an artefact of `d = 2.4`: the bulk is
+  exactly `√32` at every width and the crack faces are always *larger* (`b < 0`), i.e. a
+  void, which is the helpful direction for the cut condition. The crack energy per unit area
+  grows with `d` (`0.367, 0.767, 1.367, 1.567` for the four rows).
+
 - **Density / equality-case claim: correct.** Counts of centres in balls of radius
   `R = 10,15,20,30,40` at `d = 2.4` divided by the ball volume give
   `0.1685, 0.1691, 0.1722, 0.1735, 0.1743` against `1/√32 = 0.176777`, i.e.
@@ -366,12 +381,15 @@ the sentence reads as a closure statement about a family of arguments, and it is
   and the packing is **not** saturated (checked above). Every table row satisfies `d ≤ 3.2`,
   so no computed value is affected — but the sentence as written is false for `d > 3.266`.
 
-**Two slips of my own, both caught by the `V_dodeca` test.** First I put the site at
+**Three slips of my own, all caught by the `V_dodeca` test.** First I put the site at
 `(0,0,−H)`, which is not a site of layer `k=−1` (that layer sits at `2T + Λ`), and got
 `2.946278` — *below* `V_dodeca`, which is impossible. Second, an earlier enumeration
-dropped the upper half's bottom layer and reported the crack face at `9.81`. Both are the
+dropped the upper half's bottom layer and reported the crack face at `9.81`. Third, pruning
+the constraint set at `|z − v| < 3.0` threw away the upper layer at `d = 3.0`, which sits at
+*exactly* distance `3.0`, and gave `1.178511` — again below `V_dodeca`. All three are the
 `K15-E077` lesson repeating: a number below a known bound is a bug, and a fixture must be
-checked against it, not only against consistency with itself.
+checked against it, not only against consistency with itself. The prune is now `4.5` with a
+`max|vertex| < prune/2` validity check printed alongside every value.
 
 ---
 
