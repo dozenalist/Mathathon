@@ -1724,3 +1724,17 @@ band end): `1/(1+ε/2)³ = 0.193891`, with `δ = 0.126969, 0.092560, 0.047391, 0
 exclusion out to `3.4555`, which `C133` does **not** give (`C129`'s `3.4555` is axial only). So `C130`'s
 table is a valid illustration of the `ρ_ε = 0` inequality but its `ε` is not the one in force: at `ε = 1`
 the bound is `0.296296` and the same `δ` values still pass ✓. The ledger should quote `ε = 1` throughout.
+
+### K15-X-C107 — `volume_crosscheck.py` still calls the defective `sandwich`, and prints "certified"
+
+At experimental `6ae7dbf`: `certify_region.py` is still `540b4ed` (the `round(span/width)` partition,
+`X-C065`) and `rigorous_cell_volume.py` is still `d015a2e` (the norm and boundedness defects,
+`X-C060`/`X-C061`). E's `CLAIM_LEDGER` handles this correctly — `K15-E094` is struck through as
+"PENDING RERUN", `K15-E094'` is the repaired rerun, `K15-E096` is `certify_region_v2.py`. But
+**`volume_crosscheck.py` imports `rigorous_cell_volume` and calls `R.sandwich(P, 3/2)`**, so its
+enclosures inherit the short slack (factor up to `√3`), and its output prints the word "certified".
+Run (`5` trials, exit 0): midpoints agree with an independent float hull to `≤1.8e-15` in `5/5`
+cases — the *midpoints* are fine, because the defect is in the enclosure width, not the centre. The
+numbers are harmless here (the slack difference is of order the interval widths, `~10⁻⁴⁰`), but the word
+"certified" is not earned by that code path; it should call `cell_certificate.certify`. Same class as
+`X-C060`: the defective module is still load-bearing for anything that imports it.
