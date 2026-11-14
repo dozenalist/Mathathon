@@ -111,6 +111,30 @@ cell complex — i.e. a discrete isoperimetric estimate, which is standard in fo
 * the large-`U` statement is recorded as an **open obligation** with the exact missing lemma
   named (uniform perimeter growth).
 
+### Partial progress on the missing lemma (`cut_isoperimetry.py`)
+
+The lemma needs `I(k)/k → 0`, where `I(k) = min{|δ⁺(U)| : |U| = k}`. On the one complex where the
+profile is computable exactly — FCC, whose adjacency graph is the kissing graph on `√2·D₃` with 12
+contact offsets — graph-balls give:
+
+| `m` | `\|U\|` | `\|δ⁺U\|` | `\|δ⁺\|/\|U\|` | `\|δ⁺\|/\|U\|^{2/3}` |
+| --- | --- | --- | --- | --- |
+| 1 | 13 | 84 | 6.461538 | 15.193 |
+| 3 | 147 | 444 | 3.020408 | 15.941 |
+| 5 | 561 | 1092 | 1.946524 | 16.054 |
+| 8 | 2057 | 2604 | 1.265921 | **16.100** |
+
+The fitted exponent of `|δ⁺|/|U|` against `|U|` is **`−0.3230`**, essentially `−1/3`, and
+`|δ⁺|/|U|^{2/3}` converges to **16.1**. So on this complex `|δ⁺(U)| ≈ 16.1·|U|^{2/3}` — the
+`O(k^{2/3})` behaviour the lemma needs, with the constant.
+
+**What this establishes and what it does not.** It exhibits the *mechanism*: for a packing with
+mean deficit `c > 0`, `Σ_U b ≈ c k` eventually dominates `Φ·16.1·k^{2/3}` at any fixed `Φ`. It is a
+computation on **one** complex (FCC, `TESTED_FINITE`), not a proof that a general packing's complex
+has the same profile — `K15-CUTPERIM-001` **remains open**. But it converts "we have no idea
+whether the mechanism is there" into "the mechanism is there on the extremal complex, with a
+constant, and what is missing is the general-complex bound".
+
 ## 3. What the reviewer should hold against the earlier block
 
 Two of my block-0308 statements do not survive review and are retracted here rather than

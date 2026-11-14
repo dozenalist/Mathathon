@@ -645,3 +645,17 @@ default, so a missing checker fails loudly.
 `K15-C-SOSWHY-001` (explicit-Gram families are weak "for structural reasons") — the strength table
 shows all explicit-Gram certificates are above the trivial bound, which is a limitation of the
 families searched, not a structural impossibility.
+
+### K15-COMP-037 — 2026-11-14 — Computation (role C), cut/flow package completed
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-CUTFIXTURE-001** | **fixed; validator-caught** | the icosahedral fixture was **not a packing**: the vertices `(0,±1,±φ)` have circumradius `√(1+φ²) = 1.9021`, so the centre–vertex distance was `1.9021 < 2`. Corrected by scaling the *unit* icosahedron to circumradius exactly 2 (edge `2.1029 > 2`); `V1` now reports min separation exactly `2.000000` | `cut_flow.py` (`validate_icos_fixture`) |
+| K15-C-CUTRGATE-001 | fixed | the central-ring edges (distance exactly 2) were added unconditionally, so `R = 1` produced a twelve-edge star instead of the edge-free graph — the `R < 2` regime was unreachable. Now gated by `R` | same |
+| K15-C-CUTEMPTY-001 | fixed | with no edges the singleton cut has `|δ⁺| = 0` and the cut code divided by zero. The cut machinery now runs only for `R ≥ 2`; in `R < 2` the pointwise condition is reported instead | same |
+| K15-C-CUTPOINT-001 | measured | in the `R < 2` regime the criterion *is* Hales' pointwise fcc-compatibility, and the icosahedral fixture **violates** it (`max b ≥ 0.106563`). That is precisely why `K15-C035`'s correction term `A` is needed — the evaluator now exhibits it rather than assuming it | same |
+| **K15-C-ISOPERIM-001** | **TESTED_FINITE** | on FCC's kissing graph, graph-balls give `|δ⁺|/|U|` with fitted exponent **−0.3230 ≈ −1/3**, and `|δ⁺|/|U|^{2/3} → 16.1`. So `|δ⁺(U)| ≈ 16.1·|U|^{2/3}`: the mechanism `CUTPERIM-001` needs is present on the extremal complex, with a constant | `cut_isoperimetry.py`, `out/cut_isoperimetry.json` |
+| K15-C-CUTPERIM-001 | **still OPEN** | the general-complex perimeter bound is not proved; the computation above is on **one** complex | `REVIEW_0308.md` §2 |
+
+**Second memory bug fixed:** `cut_isoperimetry.py` first built a full distance matrix on `33³`
+points (~31 GB) and was killed; adjacency now comes from the 12 explicit contact offsets.
