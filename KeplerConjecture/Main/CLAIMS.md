@@ -1601,3 +1601,20 @@ last two blocks' verification was version-specific.
   buys **15% off** the general constant at the widest certified range (not a
   factor of two, because `3(R+1)⁵` mixes the `k_R` and shell factors).
 - **Status.** `PROVED` (immediate from `K15-E014`). Reviewer X.
+
+### K15-C055 — independent cross-check of the repaired predicates via `function_range` (`VERIFIED`)
+
+- **Artifact.** `Computation/predicate_crosscheck.py`. SymPy's `function_range`
+  computes the exact range of a polynomial on an interval by a **different route**
+  (critical points plus endpoints, no Sturm chain), so agreement is real evidence
+  that the repaired `K15-C049` predicates are right.
+- **Result.** Five fixed cases (the three reported defects, `u(u−1) ≤ 0` on
+  `[0,1]` which must PASS, and `(u−5)² ≤ 0` on `[0,10]` which must FAIL) all agree
+  with `sup` values `1/4, 0, 0, 1/4, 25`; plus 20/20 random degree-≤3 polynomials
+  on compact intervals, zero disagreements.
+- **Combined with `K15-C050`** (differential fuzz on half-lines, 799 cases, zero
+  false accepts), the repaired predicates now have three independent supports: the
+  mathematical argument, `function_range`, and sampling. That is as much as can be
+  done without X's audit.
+- **Reproduce.** `python3 Computation/predicate_crosscheck.py` (0.6 s).
+- **Status.** `VERIFIED`. Reviewer X.

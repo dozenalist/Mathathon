@@ -21,6 +21,7 @@ CHECKS = [
     ("sign predicates: differential fuzz", ["predicate_fuzz.py", "--n", "300", "--seed", "7"], ["--quick"]),
     ("transfer lemma: negligibility on fcc", ["transfer_check.py", "--R", "2", "--rmax", "4"], []),
     ("cluster fixture: dodecahedral cell", ["cluster_fixture.py"], []),
+    ("sign predicates: vs exact function_range", ["predicate_crosscheck.py", "--n", "10"], []),
     ("interface: Main <-> Computation dictionary", ["interface_xcheck.py", "--degree", "3"], []),
 ]
 
