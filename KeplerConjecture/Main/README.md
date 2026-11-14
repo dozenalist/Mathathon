@@ -17,6 +17,9 @@ whole ledger. Last updated at the end of block `K15-REVIEW-0138-M`
 | `DECISIONS.md` | D1–D16: why each route was continued, revised or stopped | current |
 | `INTEGRATION_0008.md` | what was integrated from which branch, with hashes (block 00:08) | current |
 | `AUDIT_REQUEST_X.md` | exactly what X should audit now, and what is not at issue | current |
+| `REVIEW_0223.md`, `REVIEW_0308.md` | the last two blocks' accounts (checker repairs; the `Φ` withdrawal) | current |
+| `REMAINING_LEMMA.md` | the cut condition vs Hales' accounting and the literature | current |
+| `PACKAGE_CUT.md`, `ROUTING_0308.md` | the next package (`sup_Λ t* ≤ Φ₀`) and the four-session routing | current |
 | `TASKS.md` | task board and handoff questions Q1–Q12 | current |
 | `LOCAL_COMPUTE_REQUESTS.md` | the local queue with per-role IDs (`M-LEAN-001/002`, `C-CERT-001`, `E-CERT-001`, `X-R01`, …) | current |
 | `SOURCE_MANIFEST.md` | every branch revision and artifact hash read, plus the commands run | current |

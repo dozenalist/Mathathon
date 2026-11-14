@@ -1306,7 +1306,7 @@ names differ in v4.35.0.
   repair before it can be quoted as a complete audit. Reviewer: X (their script,
   so the repair is theirs).
 
-### K15-C042 — E's per-cell ceiling import (`ACCEPTED WITH SCOPE`; constant identified)
+### K15-C042 — E's per-cell ceiling import (`ACCEPTED_WITH_SCOPE`; constant identified)
 
 - **Claim (`K15-E048`, branch `kepler15/experimental/run-01`, `4ea4e8b`).** Every
   directional per-cell bound of the form
