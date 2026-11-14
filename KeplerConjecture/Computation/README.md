@@ -22,6 +22,7 @@ in the project lives in Computation's own branch (`exactcert.py`, `out/…K33b.j
 | `barlow_cells.py` | `K15-C094`: Barlow cells — 12 contacts, cell volume `√32`, the fcc/hcp two-shape dichotomy and its tangency slack; `--sweep N` adds random stackings of period 3–10 | `python3 barlow_cells.py [--sweep 6]` | 23 s; 6 min with `--sweep 6` |
 | `gap_fixture.py` | `K15-C095`: the crack packing — min separation, cross-crack distance, sampled covering radius over a range of `d` | `python3 gap_fixture.py` | 6 s |
 | `rho_probe.py` | `K15-C096`: the icosahedral-scaled cell volume against `√32`, and whether a 13th point in an icosahedral hole can cut it | `python3 rho_probe.py` | 1 s |
+| `scaled_case2.py` | `K15-C130`: exercises `C124`'s `ρ_ε = 0` branch on scaled fcc (no close pairs), checking the inball bound `1/(1+ε/2)³` there | `python3 scaled_case2.py` | 0.05 s |
 | `payer_family.py` | `K15-C120`: scans E's C5 payer family in the pentagon height; confirms the 106° window end, twelve faces throughout, and that the margin holds at every legal point | `python3 payer_family.py` | 0.6 s |
 | `payer_reproduce.py` | `K15-C118`: independent reproduction of E's frozen payer fixture, `vol Ω(w1) = 5.89801737180372` to `1e−15`, with min separation over all 78 pairs | `python3 payer_reproduce.py` | 0.2 s |
 | `near_contact_band.py` | `K15-C116`: bisects the largest centre separation at which two dodecahedral cells remain impossible (`6/√5 = 2.6832816`, sharp for this certificate) | `python3 near_contact_band.py` | 0.09 s |

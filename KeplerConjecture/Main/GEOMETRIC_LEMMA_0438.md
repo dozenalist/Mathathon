@@ -336,8 +336,10 @@ d²(t) = A + B cos t + C sin t = A + R cos(t − ψ),     R = √(B²+C²),
 
 so the twists that put that pair closer than `2` form the arc `{cos(t−ψ) < (4−A)/R}` of
 half-width `arccos((4−A)/R)` — empty, the whole circle, or a single arc. Each endpoint is
-computed at 50 digits and then **inflated by `1e−20`**, so the arcs tested are supersets of the
-true ones. The resulting arcs merge into **one interval covering `[0, 2π/5]` with zero gaps**,
+computed at 60 digits and then **shrunk inward by `1e−30`**, so each arc is a *subset* of the true
+violation set and a cover by them is a cover by strict violations (`K15-C123`; an earlier version
+inflated outward by `1e−20`, which cannot certify an exclusion — the extra material could close the
+gaps by itself). The resulting arcs merge into **one interval covering `[0, 2π/5]` with zero gaps**,
 `2π/5` being the icosahedral period of the shared vertex axis:
 
 ```
@@ -348,6 +350,12 @@ starts at 0: yes     reaches the period end: yes     gaps: 0
 
 Hence for **every** relative twist some pair is closer than `2`. Γ `σ₀ ≠ 2V_dod`, and with (1),
 `σ₀ > 2V_dod`. ∎
+
+> **SUPERSEDED (review 0608): `K15-C128`/`C129`.** The two-dodecahedra step now has a **closed-form**
+> band end, `d_max = 4/√5 + 2√((2√5−1)/5) = 3.4555003444…`, proved from a **single pair**
+> (`a = (2/√5,0,−4/√5)`, `q = (−2/√5,0,4/√5)`, `R = 32/5` constant in `d`, one quadratic). It needs
+> no arc cover and no sampling. The arc-cover material below is retained as the record of two
+> rounding/trig errors and their repair; the *statement* was always correct.
 
 **Retraction (review 0523).** An earlier version of this step reported
 `max over a twist grid of the min cross-distance = 1.12555484451`, sampled at

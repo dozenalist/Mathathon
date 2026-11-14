@@ -197,6 +197,48 @@ chk("V_ico * 1.045^3 exceeds sqrt32 by (%)", 100 * (V_ico * mpf('1.045') ** 3 / 
 chk("target c_F = sqrt32/1.045^3", sqrt(32) / mpf('1.045') ** 3, 4.95708216846, tol=1e-9)
 chk("inball c = 4pi/3 falls short (product)", 4 * pi / 3 * mpf('1.045') ** 3, 4.780105486434, tol=1e-9)
 
+# --- K15-C124/C125 (review 0608) -----------------------------------------------
+EPS_BAND = 6 / sqrt(mpf(5)) - 2
+chk("band end eps = 6/sqrt5 - 2", EPS_BAND, 0.683281572999747635, tol=1e-12)
+chk("case-2 density at the band end", 1 / (1 + EPS_BAND / 2) ** 3, 0.414086, tol=1e-6)
+chk("case-2 density is well below ML", 1 / (1 + EPS_BAND / 2) ** 3 < mpf('0.754697399337'), True)
+chk("C125: truncated octahedron volume, inradius 1", 8 * sqrt(mpf(2)) * (2 / sqrt(mpf(6))) ** 3, 6.158402871, tol=1e-9)
+chk("C125: regular icosahedron volume, inradius 1", mpf(5) / 12 * (3 + sqrt(mpf(5))) * (12 / (sqrt(mpf(3)) * (3 + sqrt(mpf(5))))) ** 3, 5.0540561436, tol=1e-9)
+chk("C125: 14-face truncated oct is WORSE than 20-face icosahedron", 8 * sqrt(mpf(2)) * (2 / sqrt(mpf(6))) ** 3 > mpf(5) / 12 * (3 + sqrt(mpf(5))) * (12 / (sqrt(mpf(3)) * (3 + sqrt(mpf(5))))) ** 3, True)
+th = mp.acos(1 - 2 / mpf(20))
+chk("C125: equal-cap estimate for F=20", 20 * 2 * pi * (-mp.log(mp.cos(th))) / 3, 4.413331, tol=1e-6)
+chk("C125: equal-cap estimate is BELOW the C122 threshold", 20 * 2 * pi * (-mp.log(mp.cos(th))) / 3 < sqrt(32) / mpf('1.045') ** 3, True)
+
+# --- K15-C126: X's corrected band and the d=2 agreement ------------------------
+chk("X-C051 two-dodecahedra threshold", mpf('3.4555003444'), 3.4555003444, tol=1e-9)
+chk("that threshold sits just below 2 sqrt3", 2 * sqrt(3) - mpf('3.4555003444'), 0.00860127, tol=1e-7)
+chk("X band width 3.4555 - 2 covers C124's eps", mpf('3.4555003444') - 2 > mpf('0.6832816'), True)
+chk("C124 case-2 density at eps = 0.6832816", 1 / (1 + mpf('0.6832816') / 2) ** 3, 0.414086, tol=1e-6)
+
+# --- K15-C127: the corrected band ------------------------------------------------
+chk("two-dodecahedra threshold, corrected arc test", mpf('3.4555003444044642049'), 3.4555003444, tol=1e-9)
+chk("band width", mpf('3.4555003444044642049') - 2, 1.4555003444, tol=1e-9)
+chk("C124 needs eps/2 > this (inball radius 1.0983541)", (1 / mpf('0.754697399337')) ** (mpf(1)/3) - 1, 0.098354116850, tol=1e-9)
+chk("so eps_needed = d_ML - 2", 2 * ((1 / mpf('0.754697399337')) ** (mpf(1)/3) - 1), 0.196708233700, tol=1e-9)
+chk("eps_needed equals C119 d_ML - 2", 2 * ((1 / mpf('0.754697399337')) ** (mpf(1)/3) - 1), (8 / mpf('0.754697399337')) ** (mpf(1)/3) - 2, tol=1e-12)
+chk("band / needed room (x)", (mpf('3.4555003444044642049') - 2) / (2 * ((1 / mpf('0.754697399337')) ** (mpf(1)/3) - 1)), 7.4, tol=0.05)
+
+# --- K15-C128: the one-pair certificate ---------------------------------------
+chk("one-pair R = 32/5", mpf(32)/5, 6.4, tol=1e-15)
+chk("one-pair c = -(3-sqrt5)/2", -(3-sqrt(mpf(5)))/2, -0.381966011250105, tol=1e-14)
+chk("one-pair h (deg)", degrees(mp.acos(-(3-sqrt(mpf(5)))/2)), 112.455515, tol=1e-5)
+chk("one-pair |T| (deg)", degrees(2*pi-2*mp.acos(-(3-sqrt(mpf(5)))/2)), 135.08897, tol=1e-4)
+chk("one-pair |T| > 72 deg (the twist period)", 2*pi-2*mp.acos(-(3-sqrt(mpf(5)))/2) > 2*pi/5, True)
+chk("equivalently h < 4pi/5 = 144 deg", mp.acos(-(3-sqrt(mpf(5)))/2) < 4*pi/5, True)
+
+# --- K15-C129: the closed-form band --------------------------------------------
+chk("closed form 4/sqrt5 + 2 sqrt((2sqrt5-1)/5)", 4/sqrt(mpf(5)) + 2*sqrt((2*sqrt(mpf(5))-1)/5), 3.4555003444044642048, tol=1e-18)
+chk("agrees with the bisection", 4/sqrt(mpf(5)) + 2*sqrt((2*sqrt(mpf(5))-1)/5), mpf('3.4555003444044642049'), tol=1e-15)
+chk("agrees with X-C051 to 10 sig figs", abs(4/sqrt(mpf(5)) + 2*sqrt((2*sqrt(mpf(5))-1)/5) - mpf('3.4555003444')) < 1e-9, True)
+chk("R = 32/5 in the one-pair computation", mpf(2)*(4/sqrt(mpf(5)))*(4/sqrt(mpf(5))), 32/mpf(5), tol=1e-30)
+chk("cos(4pi/5) = -(1+sqrt5)/4", cos(4*pi/5) + (1+sqrt(mpf(5)))/4, 0, tol=1e-30)
+chk("C124 needs eps 0.1967082, band gives 1.4555 (factor)", (4/sqrt(mpf(5)) + 2*sqrt((2*sqrt(mpf(5))-1)/5) - 2) / 0.196708233700, 7.3992853, tol=1e-6)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)

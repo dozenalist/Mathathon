@@ -61,7 +61,7 @@ the shared vertex axis).
 
 ```
 Computation/twist_cover.py:   121 pairs -> 125 arcs, endpoints at 50 digits,
-                              each endpoint INFLATED by 1e-20 (supersets, so a cover is conservative)
+                              each endpoint **shrunk inward** by 1e-30, so the arcs are SUBSETS of the true violation sets (K15-C123)
                               merged: 1 interval covering [0, 2π/5], length 1.25663706 = 2π/5
                               gaps: 0   ->  CERTIFIED
 ```
@@ -70,7 +70,9 @@ Computation/twist_cover.py:   121 pairs -> 125 arcs, endpoints at 50 digits,
 `max_t d² = 8.4223 > 4`, so *no* single pair is always too close. The arcs must be combined —
 which is exactly the content the sampled maximum could not see.
 
-Status: `PROVED` modulo 50-digit arithmetic and the `1e−20` inflation. This upgrades `C108`
+Status: `PROVED` modulo 60-digit arithmetic and the inward `1e−30` margin (`C123` corrected the
+rounding direction — the original `1e−20` inflation was outward and unsound, review 0608). This
+upgrades `C108`
 step (4) from `TESTED_FINITE`. Per the review, X's audit covers `C106`–`C108`, so this is handed
 to X, not self-certified.
 
