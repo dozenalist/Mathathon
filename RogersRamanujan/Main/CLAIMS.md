@@ -14,8 +14,8 @@ never used to promote anything above TESTED_FINITE.
 | RR-C002 | Equality `|A_n| = |D_n|` for `n <= 50`; method independence stated honestly | TESTED_FINITE |
 | RR-C003 | No weight-preserving bijection preserves the **length** | PROVED |
 | RR-C004 | No weight-preserving bijection preserves the **largest part** | PROVED |
-| RR-C005 | Staircase **equivalence**: order, both inverse laws on the correct subtypes, length retained, padding explicit | **LEAN_VERIFIED** (4.35.0 for the base module; order module on 4.33.1 only) |
-| RR-C006 | Shift `T : D_n -> B_n` (smallest part >= length): **bijection**, both laws | **LEAN_VERIFIED** (4.33.1; pin pending) |
+| RR-C005 | Staircase **equivalence**: order, both inverse laws on the correct subtypes, length retained, padding explicit | **LEAN_VERIFIED** (all integrated modules, Lean 4.35.0) |
+| RR-C006 | Shift `T : D_n -> B_n` (smallest part >= length): **bijection**, both laws | **LEAN_VERIFIED** (Lean 4.35.0 named target, both subtype laws and weight) |
 | RR-C007 | BZ82 reference map: our implementation is a bijection `A_n -> D_n` | TESTED_FINITE (n <= 50); BZ82's theorem is PROVED in the literature |
 | RR-C008 | BZ82 `psi` involution on `X(n) minus {0} x A_n`, **all n** | **PROVED (amended, independently audited, gap list empty)** |
 | RR-C009 | BZ82 `phi` involution on `X(n) minus {0} x B_n`; **faithful transcription, no reconstruction** | TESTED_FINITE (`n <= 30`) |
@@ -26,8 +26,8 @@ never used to promote anything above TESTED_FINITE.
 | RR-C015 | $(1^s)$ with $s\equiv0\ (5)$, $s\ge30$: **provably** not closable in 2 steps; measured path lengths 44–672 | **PROVED** (lower bound) + TESTED_FINITE (lengths) |
 | RR-C016 | Candidate mechanisms M1 (collapse-and-singleton), M2 (free window) | OPEN; neither meets the objective |
 | RR-C018 | **Lemma CI**: `phi` Case I maps into Case II; `a' = a-1`; `mu' >= mu` | PROVED (weight, `a'=a-1`) + TESTED_FINITE (`weight<=26`) |
-| RR-C019 | BZ82's printed `mu_bar > mu` is **false**; the correct statement is `>=`, equality iff `lam(a)=lam(a+1)` | **REFUTED** (5 844 of 10 285 Case-I states, first `(-1;())`) |
-| RR-C020 | **Theorem 1/2/3**: `phi` and `psi∘phi` closed forms on the **whole** family `(4^r,1^s)`, plus Lemma 2 (excluded set) | **PROVED** |
+| RR-C019 | Strict `mu_bar > mu` fails, e.g. `(0;(4,1,1))`; a claim about the printed source needs separate verification | **REFUTED** (mathematical strict inequality); source attribution pending |
+| RR-C020 | Local formulas on `(4^r,1^s)` and selected short endpoint classes | Written partial results; endpoint scope and boundary audit required; no full-family bijection |
 | RR-C021 | **R2 slot identities** (R2.1 multiset, R2.2, and both Case-I duals) verified; all-input proof open | TESTED_FINITE (widened in cycle 4) |
 | RR-C022 | `phi` obligations: `N >= 0`, both deletions valid, `a != mu` in Case I, `p2 >= 0` (**sharp**: attained), weight identity | **PROVED** (all `n`) |
 | RR-C026 | Dead code retired: `phi` Case I never deletes one slot twice | **PROVED** (2 routes) + 0 hits in 1 746 369 states |

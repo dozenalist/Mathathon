@@ -34,7 +34,8 @@ For $\lambda=(4^r,1^s)$, $j=0$:
 | range | $a$ | $L$ | $\mu$ | $\lambda_\mu$ | $L+\lambda_\mu$ | $t^*$ |
 |---|---|---|---|---|---|---|
 | $r=0,s=0$ | 1 | 0 | 1 | 0 | 0 | 2 |
-| $r=0,s\ge1$ | 2 | 1 | 1 | 1 | 2 | $s$ |
+| $r=0,s=1$ | 2 | 0 | 2 | 0 | 0 | 3 |
+| $r=0,s\ge2$ | 2 | 1 | 1 | 1 | 2 | $s$ |
 | $1\le r\le4$, $s\ge1$ | $r+1$ | 1 | $r$ | 4 | 5 | $t$ |
 | $1\le r\le4$, $s=0$ | $r+1$ | 0 | $r+1$ | 0 | 0 | $r+2$ |
 | $r\ge5$, $s\ge0$ | 5 | 4 | 1 | 4 | 8 | $t$ |
@@ -56,8 +57,8 @@ $t^*$ then follows from $\mu\le t\iff$ never exceeding $t$ in the listed
 non-degenerate ranges: for $r=0,s=0$, $a=1>0=t$ and $\mu=1>0$; for
 $r=0,s\ge1$, $a=2>t\iff s=1$; for $1\le r\le4,s=0$, $a=\mu=r+1>r=t$. $\square$
 
-Note $a\ne\mu$ in every range of Lemma 1, so the Case-I deletion is never at a
-doubled slot on this family (obligation (iii) is vacuous here).
+On the Case-I inputs, $a\ne\mu$, so its two deletion slots are distinct.
+The assertion does not apply to excluded inputs such as the empty partition.
 
 ## 2. Lemma 2 (which members are excluded)
 
@@ -155,7 +156,7 @@ first state $(0;\cdot)$ reached with all parts $\ge$ the length
 | $s\equiv1\pmod5$, $s\ge6$ | $(s-2,3,3)$ | 2 |
 | $s\equiv2\pmod5$, $s\ge7$ | $(s+1,3)$ | 2 |
 | $s\equiv3\pmod5$, $s\ge8$ | $(s-2,3,3)$ | 2 |
-| $s=5$ | $(3,3,3)$ | 1 |
+| $s=5$ | $(3,3,3)$ | 2 |
 | $s=9$ | $(5,5,3)$ | 2 |
 
 *Proof.* By Theorem 1 (case 4 with $r=1$, valid for $s\ge5$) the first step is
@@ -270,7 +271,8 @@ either. State it as a Case-I claim and the problem disappears.
 
 **3. "Every `r = 1` full endpoint takes two steps" is inconsistent with the stated
 open classes.** It holds only for the residue classes where the closed form is
-derived (`s = 1,2,3,4 (mod 5)`). For `r = 1` with `s = 0,4 (mod 5)` the file itself
+derived (`s = 1,2,3 (mod 5)`, with the lower bounds in Theorem 3 and isolated
+exceptions `s=5,9`). For `r = 1` with `s = 0,4 (mod 5)` the file itself
 reports 21 of 80 parameters exceeding the 20 000-edge cap, so those endpoints are
 not reached in two edges. Restrict the claim to the derived classes.
 

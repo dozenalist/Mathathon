@@ -21,8 +21,9 @@ Together these make the staircase reduction a genuine equivalence between
 positive gap partitions and weakly decreasing coordinate lists, and `ShiftT`
 formalizes the same-weight shift `T`, the same-weight bijection from `D_n` onto
 the `B_n` of BZ82/BP06 (with smallest part at least the length). They are project
-infrastructure: nothing here touches A_n, D_n, phi, psi, T or B_n, and none of it
-is a solution of the Rogers--Ramanujan problem.
+infrastructure: they establish the D_n/B_n bridge, but do not formalize the
+residue-side A_n correspondence, phi or psi, and do not solve the requested
+more-natural Rogers--Ramanujan bijection problem.
 -/
 import RogersRamanujan.Lean.Staircase
 import RogersRamanujan.Lean.StaircaseOrder

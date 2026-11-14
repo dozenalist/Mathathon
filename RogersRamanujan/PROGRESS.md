@@ -1,5 +1,22 @@
 # Rogers--Ramanujan / SAIR problem 127: progress
 
+## November 13, 2026 PST — publication and synchronization review
+
+The current synthesis is [Main/RESULTS.md](Main/RESULTS.md); older entries below
+are historical checkpoints. Imported cycle-4 SAIR commit
+`d8684a9384edc52e5960733a4f92bf8c207083db`, preserving its corrections and
+honest remaining proof gaps. The supervisor reproduced all 13 regression
+checks, the independent checker through weight 20, and the Lean 4.35.0 named
+build. The saved n<=50 endpoint census contains 1,065 objects at weight 50;
+its separate signed-state census stops at 25. Corrected stale current tables
+and family boundary text. No new full bijection or all-input phi proof is claimed.
+
+This publication brings the project checkpoint and current summary onto the
+GitHub `main` branch and retains `rr127/main` for research. SAIR must synchronize
+against the confirmed public commit; the final supervisor response records the
+verified publication/synchronization outcome. No additional worker round is
+launched by this documentation and repository-sync request.
+
 ## 2026-11-13 23:10 PST / supervisor review of completions 26480–31032
 
 This current review supersedes incompatible status tables below. Imported and
