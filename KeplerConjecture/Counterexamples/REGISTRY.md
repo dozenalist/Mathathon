@@ -1825,3 +1825,18 @@ fraction `0.839530` at `d = 2` falling to `0.536450` at `d = 3` and `0.113785` a
 `C131`'s "84% … 53%". Note that my parallel placement gives `1.4659` at `d = 4.0` (`X-C099`) against
 `orient_opt`'s `1.4387`, i.e. **the published scan is not the optimum** — its numbers are lower bounds, as
 its author intends, and `X-C096`'s `6cos ρ_c` is the better threshold.
+
+### K15-X-C118 — `twist_all_t.py` is a stale attempt that asserts what its own numbers deny; `shell_fixture.py` exits 2 by design
+
+**`twist_all_t.py` (main `2c41311`) exits `1` and is wrong twice.** Its computation reports
+`MIN over pairs of max over ALL twists of d² = 8.422291236…` — the **defective** `A` (missing `2u_xq_x`,
+`X-C057` D1) — and then "required: `d² < 4` for every pair and every twist — ENCLOSURE ENTIRELY BELOW 4:
+**False**". So the script's own numbers deny the statement, and its closing paragraph ("Hence for every
+relative twist some pair is closer than 2") does not follow from them: `min over pairs of max over twists`
+being `8.42` says the *best* pair is not always close. The correct all-twists statement is `C128`/`C135`'s,
+and it works because the physical twist space is `72°`, not because any pair has `max_t d² < 4` (`X-C084`).
+The script should be deleted or relabelled as a record of the failed route; as it stands it prints a false
+conclusion.
+**`shell_fixture.py`** exits `2`, but by design: it is a *proposer* (`C028`) whose only FAIL is "`f ≤ eta` on
+the shell", i.e. its coarse enumeration found no admissible fixture — consistent with `C028`'s negative
+conclusion that the shell allowance cannot pay. Correctly excluded from `run_all_checks.py`.
