@@ -5606,6 +5606,12 @@ So `ε = 0.2` gives `δ₀ = 0.0864`, which is **`40%` of the sharp `0.213126`**
 becomes `0.748870` — `0.0058` below Hales–McLaughlin rather than `0.0002`. Every case-2 value stays below
 `ML`, so the split still closes.
 
+**Verified at the large ball.** 3000 projected directions at `θ = 0.2446545` (the `ε = 0.2` ball) give a
+minimum ratio of **`0.271612`** — `109%` of slack above `c = 0.13` — with no degenerate or unbounded
+configuration, and the deterministic negative control (`c = 0.60`, at the worst direction found) is
+**rejected**. So the quotient lemma holds on the sampled set at the thirty-times ball as well, at the same
+constant.
+
 **And the measurement supports it.** The quotient ratio `(vol − V_dod)/d(θ,Rot)²` does **not** decay with
 `θ`; over 300 directions at each radius the minimum is `0.277` (`θ=0.045`), `0.294` (`0.08`), `0.313`
 (`0.12`), `0.265` (`0.16`), `0.316` (`0.20`), `0.288` (`0.2455`), `0.320` (`0.30`). So `L1'` with
