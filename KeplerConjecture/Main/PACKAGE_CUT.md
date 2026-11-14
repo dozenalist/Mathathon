@@ -25,10 +25,13 @@ Why this form:
   but the target is an inequality with a constant, not a proof of Kepler, and it is
   exactly the statement the transfer machinery needs (`K15-C035`, Lemma 3.3's rate
   `O(Φ/r)`).
-- **It is falsifiable.** A single periodic packing with `t* > Φ₀` refutes any claimed
-  `Φ₀`; `C-TRANSFER-001` computes `t*` for periodic packings, so candidates can be
-  attacked directly. (No packing can refute *existence* — the flow exists whenever the
-  cut condition holds — so the quantitative form is the only testable one.)
+- **It is falsifiable, in two ways.** (a) A single periodic packing with `t* > Φ₀`
+  refutes a claimed `Φ₀`; `C-TRANSFER-001` computes `t*`, so candidates can be attacked
+  directly. (b) **A packing with a closed component of positive deficit refutes the
+  route outright**: such a component has `|δ⁺| = 0` and `Σ_C b > 0`, so `t* = ∞` and no
+  transfer exists. By `K15-C080` that case is exactly E's `(T')`. Settling whether a
+  saturated packing can have such a component is the **first** obligation; a single
+  example closes the transfer route (though not Kepler).
 - **It has a proved floor.** `t* ≥ 0.0088803` at `R = 2.09` on any packing containing
   the 13-cluster (`K15-C081r`, singleton cut). So `Φ₀ ≥ 0.0088803`, and a candidate
   below that is refuted outright.
@@ -50,8 +53,11 @@ The difficulty is a *trade-off between two scales*: small `U` give small denomin
 density theorem but the boundary grows like `|U|^{2/3}`. A proof of the target must
 interpolate between them; nobody has tried.
 
-## 3. The three concrete steps
+## 3. The concrete steps
 
+0. **Settle the closed-component case** (`E-COMPONENT-001`): exhibit a saturated
+   packing with a closed component of positive deficit, or prove none exists. Everything
+   below is conditional on this.
 1. **Compute `t*` for every periodic packing anyone can build** (`C-CUT-001`). The
    value on fcc/hcp is `0`; on a vacancy, a defect pair, and a stacking fault the
    answer is unknown and cheap to get. The maximum over those is a lower bound for

@@ -2414,10 +2414,17 @@ t*(Λ) = max over finite U of  Σ_U b / |δ⁺_R(U)|   ≤   Φ₀(R)      for e
 with `t*` the minimal transfer bound (LP duality, `K15-C044`). Reasons this is the
 right form: (i) it is exactly what the rate `O(Φ/r)` needs; (ii) a single periodic
 packing with `t* > Φ₀` refutes a claimed `Φ₀`, so candidates are testable
-(`C-TRANSFER-001` computes `t*`); (iii) *existence* cannot be refuted by a packing
-(Kepler is true and `C087` shows large-ball cuts already encode it), so only the
-quantitative form is falsifiable; (iv) it has a proved floor `Φ₀ ≥ 0.0088803`
+(`C-TRANSFER-001` computes `t*`); (iii) it has a proved floor `Φ₀ ≥ 0.0088803`
 (`K15-C081r`).
+- **Correction (in the same entry).** The first version said "existence cannot be
+  refuted by a packing". **False.** If a packing has a **closed** component `C` (no
+  edges leaving at range `R`) with `Σ_C b > 0`, then `t*(Λ) = ∞` and **no transfer
+  exists** — such a packing refutes the transfer route (not Kepler). By `K15-C080` a
+  closed component reduces the cut condition exactly to E's `(T')`. So the package has
+  a prior obligation: **show that no saturated packing has a positive-deficit closed
+  component**, or restrict the target to packings without one. This is E's
+  `E-COMPONENT-001`, and it is the first thing to settle — a single example would
+  close the route.
 
 The difficulty is located precisely in the trade-off between small cuts (small
 denominator, `Σ_U b` controlled only by `√32|U|`) and large cuts (density controls
