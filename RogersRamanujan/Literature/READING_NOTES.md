@@ -262,3 +262,50 @@ reconstructed rule**, not a verbatim transcription.
 **Still open.** GM81a and GM81b remain abstract/metadata only; no claim in this
 cycle compares our work to Garsia--Milne's map, and none should be made until
 `GM81b` pp.289-339 is read.
+
+## Event-cycle literature check, cycle 3 (2026-11-14)
+
+Bounded search for the two official GM81 references. Outcome is a **precise
+access limitation**, not a reading.
+
+**GM81a (PNAS 78(4):2026-2028).** `PMC319275` is reachable and its metadata is
+machine-readable, but the record is `ncbi_type: scanpage` — the full text is
+three scanned page images (`pnas00655-0054.png`, `-0055.png`, `-0056.png`) with
+no extractable text layer. Confirmed bibliographic data: doi
+`10.1073/pnas.78.4.2026`, PMID 16593004, PMCID PMC319275, received/publication
+April 1981. The **abstract** is available and is directly useful for the
+naturalness comparison:
+
+> "This bijection is obtained by a cut-and-paste procedure that starts with a
+> partition in one class and ends with a partition in the other class. The whole
+> construction is a combination of a bijection discovered quite early by Schur
+> and two bijections of our own. A basic principle concerning pairs of
+> involutions provides the key for connecting all these bijections."
+
+Keywords: "Rogers-Ramanujan identities, involution, labeled graph".
+
+**What that abstract licenses us to say, and no more.** GM81's route is
+described by its authors as **three** bijections (Schur's, plus two of their own)
+connected by an involution principle. BZ82's route is described by its authors as
+**two** involutions, with the remark that their second involution "is
+considerably simpler than that provided by Garsia and Milne" (BZ82 p.313). Those
+are the authors' own characterisations of their constructions. A defensible
+comparison inside this project is therefore: *GM81 = Schur's map + two GM
+bijections + involution principle; BZ82 = two involutions; our reconstruction
+implements the BZ82 route.* Any finer claim — that one is "more natural", or that
+our implementation is shorter, or that either is minimal — **requires reading the
+constructions**, which we have not done, and is not made.
+
+**GM81b (JCTA 31(3):289-339).** Not retrieved. The publisher page
+(`sciencedirect.com/science/article/pii/0097316581900625`) answers with a
+Cloudflare human-check; automated access is refused by the site and was **not**
+worked around. No open mirror was located in this interval. Status unchanged from
+the preparation bundle: metadata and abstract only.
+
+**Consequence for the report.** The novelty comparison against the official 1981
+references remains **unverified**. The nearest *verified* baseline is BZ82, whose
+construction we have read in full and implemented; comparisons are drawn against
+BZ82 only. This is the honest state and should be stated as such in any
+submission: "we compare against Bressoud--Zeilberger 1982, which we read in full;
+the 1981 Garsia--Milne papers were not accessible in full text, so no comparison
+with them is claimed."
