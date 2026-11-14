@@ -232,6 +232,29 @@ reachable. So the atom is not the obstruction — the *dimension* is. A branch-a
 have to be preceded by a reduction to a low-dimensional family, and no such reduction is known.
 That is the honest state of the route, and it is the number the next block needs.
 
+### 2.6 A certified REGION, not a sample
+
+The brief asked for one nontrivial box. The atom does better than that: `certify_region.py`
+cuts a rectangle of the family into boxes, certifies each with the same sandwich, and reports
+the min of the lower ends and the max of the upper ends — a statement about **every**
+configuration in the rectangle, not about finitely many points.
+
+```
+region  theta in [110.4, 110.6], phi in [35.4, 35.6]   (4 boxes of 0.1 deg)
+CERTIFIED for the whole region:  vol Omega(w1) in [5.873007762, 5.926242378]
+(P') threshold 5.763417470        margin of the lower end  +0.109590
+```
+
+So every one of the continuum of configurations in that rectangle has a payer cell above the
+`(P')` threshold, certified — the first statement of that kind in this project, and the shape
+any future bound over completions would take. It is a `2`-parameter slice of the completion
+space, not the space itself (§3), and it is reported as such.
+
+*(A `1° × 1°` region — 100 boxes, 4 workers, about 8 minutes — was also launched; its result is
+reported in the final message for this block. The `0.1°` box is the one that matters: at that
+width the enclosure is `5.3e-2` and the margin to the threshold is `0.11`, so the coarsest
+useful grid already closes.)*
+
 ---
 
 ## 3. The finite domain, and its completeness argument
