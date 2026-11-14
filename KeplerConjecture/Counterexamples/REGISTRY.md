@@ -1694,3 +1694,16 @@ holds, and the rank-one update formula applies on the whole interval. (ii) The d
 (`b = 1`), `6.337403` vs `6.337415` (`b = 1.02`), `6.288487` vs `6.288500` (`b = 1.04`), `6.257715` vs
 `6.257729` (`b = 1.0514`) — agreement to 7–8 digits with the residual `O(h)` truncation. So
 `d/db vol K(b) = Σ_{i≤5} A_i(b)` is confirmed numerically, and the lemma's calculus is sound.
+
+### K15-X-C104 — the Main/E conflict on the `d = 2` cross distance is resolved: Main's `1.1255548` is right
+
+`two_dodecahedra.py` (main `2c41311`, exit 0) reports "E's K15-E075 quotes 1.056487696; Main gets
+1.12555484451" without reconciling them. Independent computation with the corrected `twist_cover` model
+(`build()`, `eleven()`, rotation about the `x` axis, 721 twists in `[0°, 72°]`):
+
+**max over twists of the min cross distance = `1.1255548445104795`**, attained at `t = 72°` (a symmetry, so
+`t = 0`), with `1.125554845, 0.598181216, 0.211145618, 0.598181216` at `t = 0°, 18°, 36°, 54°` — matching
+Main to `4.8e-13`. So **Main's number is right and `K15-E075`'s `1.056487696` is wrong**. The conclusion
+(two dodecahedral neighbours are impossible, shortfall `0.874`) is unaffected either way, but the ledger
+should say which number is the record. Main's suite at `2c41311` also passes: **18 checks, 0 failed**,
+including the new "two-dodecahedra: orientation-free band (C133)" entry.
