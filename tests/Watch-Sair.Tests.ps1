@@ -33,6 +33,7 @@ $worker = {
         creates = 0
         wakes = @()
         reports = @()
+        transientErrors = 0
     }
     $stateFile = Join-Path $RunDirectory 'state.json'
     $stopFile = Join-Path $RunDirectory 'STOP'
@@ -60,12 +61,31 @@ $worker = {
         if ($fixture.wakes.Count -eq $expectedWakes) { Set-Content -LiteralPath $stopFile -Value 'Finished test' }
     }
 
-    function Start-Sleep { param($Seconds) }
+    function Start-Sleep {
+        param($Seconds)
+        if ($Mode -eq 'StopDuringRetry') { Set-Content -LiteralPath $stopFile -Value 'Stop during outage' }
+    }
+
+    function Throw-GatewayError {
+        $exception = New-Object System.Exception 'Mock gateway failure'
+        $exception | Add-Member -NotePropertyName Response -NotePropertyValue ([pscustomobject]@{StatusCode=502})
+        $errorRecord = New-Object Management.Automation.ErrorRecord($exception, 'Mock502', 'ConnectionError', $null)
+        $errorRecord.ErrorDetails = New-Object Management.Automation.ErrorDetails('error code: 502')
+        throw $errorRecord
+    }
 
     function Invoke-RestMethod {
         param($Method, $Uri, $Headers, $ContentType, $Body, $TimeoutSec, $MaximumRedirection, [switch]$UseBasicParsing)
         if ($Headers.Authorization -ne 'Bearer nuc_oc_mock_for_tests') { throw 'Wrong mock credential.' }
         $request = $Body | ConvertFrom-Json
+        if ($Uri.EndsWith('/orgs') -and $Mode -in @('TransientRead', 'StopDuringRetry') -and $fixture.transientErrors -lt 6) {
+            if ($fixture.transientErrors -gt 0) {
+                $retryState = Get-Content -LiteralPath $stateFile -Raw | ConvertFrom-Json
+                if ($retryState.status -ne 'retrying') { throw 'Transient retry state was not saved.' }
+            }
+            $fixture.transientErrors++
+            Throw-GatewayError
+        }
         switch ($Uri.Split('/')[-1]) {
             'orgs' { @{orgs=@(@{name='Test Team';id='team-test'})} }
             'org_projects' { @{projects=@(@{display_name='Test Project';name='project-test';state='active'})} }
@@ -76,6 +96,7 @@ $worker = {
             }
             'chat_say' {
                 $fixture.sends++
+                if ($Mode -eq 'SendFailure') { Throw-GatewayError }
                 if ($fixture.stage -ne 0) { throw 'The completion cursor was not captured before sending.' }
                 if ($request.project -cne 'project-test' -or $request.session -cne $SessionId) { throw 'Wrong send target.' }
                 if ($request.text -ne 'Bounded mock research' -or $request.model -ne 'mock-model' -or $request.reasoning_effort -ne 'high') { throw 'Incorrect prompt/model arguments.' }
@@ -140,7 +161,7 @@ $worker = {
         $parameters.ApiKeyFile = $SharedKeyFile
     }
     if ($Mode -ne 'New') { $parameters.Session = $SessionId }
-    if ($Mode -in @('New', 'SendExisting')) {
+    if ($Mode -in @('New', 'SendExisting', 'SendFailure')) {
         $parameters.Prompt = 'Bounded mock research'
         $parameters.Model = 'mock-model'
         $parameters.ReasoningEffort = 'high'
@@ -162,6 +183,23 @@ $worker = {
         [pscustomobject]@{Case=$Mode;Passed=$true}
         return
     }
+
+    if ($Mode -eq 'SendFailure') {
+        if ($caughtError -ne 'SAIR chat_say returned HTTP 502.' -or $fixture.sends -ne 1 -or $fixture.creates -ne 0) {
+            throw 'An uncertain send was retried or its non-JSON HTTP error was lost.'
+        }
+        [pscustomobject]@{Case=$Mode;Passed=$true}
+        return
+    }
+    if ($Mode -eq 'StopDuringRetry') {
+        $stoppedState = Get-Content -LiteralPath $stateFile -Raw | ConvertFrom-Json
+        if ($caughtError -or $stoppedState.status -ne 'stopped' -or $fixture.transientErrors -ne 1 -or $fixture.wakes.Count -ne 0) {
+            throw 'Stopping during an outage failed or caused an unwanted callback.'
+        }
+        [pscustomobject]@{Case=$Mode;Passed=$true}
+        return
+    }
+    if ($Mode -eq 'TransientRead' -and $fixture.transientErrors -ne 6) { throw 'Extended outage recovery was not exercised.' }
 
     if ($Mode -eq 'Locked') {
         if ($caughtError -notlike 'Another watcher already owns*' -or $fixture.wakes.Count -ne 0 -or $fixture.sends -ne 0) {
@@ -212,7 +250,7 @@ try {
     Assert-Condition (@($results | Where-Object Passed).Count -eq 2) 'Concurrent watcher isolation failed.'
     $results | Format-Table -AutoSize
 
-    foreach ($mode in @('New', 'SendExisting', 'Resume', 'Positional')) {
+    foreach ($mode in @('New', 'SendExisting', 'Resume', 'Positional', 'TransientRead', 'StopDuringRetry', 'SendFailure')) {
         & $worker $Watcher (Join-Path $testRoot $mode) $threadA 'alpha' $mode | Format-Table -AutoSize
     }
 
