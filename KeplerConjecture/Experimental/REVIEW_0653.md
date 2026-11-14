@@ -413,3 +413,39 @@ the stretch.
 for the actual icosahedral cluster (`ρ_r = 2.102924…`, fixed by the geometry), so it is not a
 free parameter being tuned. The table above says that a hypothetical cluster with a shorter ring
 would not be covered by this argument.
+
+---
+
+## 12. Is the uncut disk pessimistic? Yes — by about 35 %
+
+The twelve-face theorem's margin (`0.0103`) is set by the *guaranteed* uncut disk
+`π t*² = 0.868315`. The true ring faces are much larger, and this is worth measuring because it
+says how much of the tightness is the argument rather than the geometry.
+
+Sixty admissible direction sets — the six fixed plus six free ones, each set required to be
+legal *and* to bound a polytope (`0 ∈ int conv{n_i}`, which `D'` inherits from `Ω ⊇ D'`) —
+obtained by random walks inside the legal region from the C5 configuration:
+
+```
+admissible direction sets analysed      60 / 60
+minimum RING-FACE area                  1.172495     (needed 0.828283, guaranteed 0.868315)
+minimum unit-distance volume            5.574890     (premise 5.5400, V_dod 5.550291)
+```
+
+So
+
+- the guaranteed disk is conservative by a factor `1.172/0.868 = 1.35`, and the theorem's
+  `0.0103` margin is an artefact of the worst-case disk rather than of the geometry;
+- the premise `vol D' ≥ 5.5400` is exceeded by every admissible set found (`5.5749` at the
+  worst), consistent with Lindelöf's `V_dod` bound below it;
+- and a better area bound — anywhere above `1.03` — would raise the theorem's margin from
+  `0.0103` to something like `0.04`.
+
+**A constraint I had not used, and which matters.** Clustering the six free directions around one
+ring direction is not admissible: the resulting polytope is unbounded (a first attempt at this
+measurement returned nothing but unbounded sets). Boundedness is therefore an extra constraint on
+the free directions, inherited by `D'` from `Ω ⊇ D'`, and it is what keeps the ring faces from
+being squeezed. Any improvement of the area bound should use it explicitly.
+
+**Scope.** Still twelve faces, still the C5 family for the numerics. Nothing here is a universal
+pair claim.
