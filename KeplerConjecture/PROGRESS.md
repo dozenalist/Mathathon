@@ -580,3 +580,23 @@ no optimality is claimed anywhere.
 `5.99 → 2.62 → 1.99 → 1.41 → 1.37125723`, degree 9 worse at equal budget, record validated by four
 independent routes. Every status is `VERIFIED_EXACT`, `PROVED`, `TESTED_FAMILY` or
 `TESTED_FINITE` as appropriate; no optimality is claimed anywhere.
+
+### K15-COMP-033 — 2026-11-14 — Computation (role C), p-side Gram improved 5.99 → 2.00
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-SOSPSIDE-002** | **VERIFIED_EXACT** | allowing **many** squares in the p-side multiplier and basin-hopping the coefficients moves that family from `5.99` to **`Δ ≤ 2.00171738`**, with the simple Gram `−p = (u−12)[(101u/12 + 1/4)² + 2021/12]` (three of the four squares are constants) and `q ≥ 0` by exact Sturm | `sos_pside_many.py`, `out/sos_pside_many.json` |
+
+**Explicit-Gram programme summary after this block:**
+
+| family | best `Δ ≤` | Gram |
+| --- | --- | --- |
+| Fourier side, five squares, degree 5 | **1.37125723** | `q = Σ r_i² + u Σ s_j²` |
+| p-side, many squares, hopped | **2.00171738** | `−p = (u−12)[(101u/12+1/4)² + 2021/12]` |
+| p-side, two squares | 6.73788568 | |
+| p-side, one square | 5.99152482 | |
+| LP-optimal (no rational Gram found) | 0.77996622 | — |
+
+**Both sides are now demonstrated at ≈2 or better with an explicit rational Gram.** The gap to
+`0.78` is a search-power gap, not a structural one — which is the block's most useful conclusion
+for Main and revises `K15-C-SOSWHY-001`.

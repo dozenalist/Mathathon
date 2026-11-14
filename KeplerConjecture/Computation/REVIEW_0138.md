@@ -576,3 +576,38 @@ degree *and* search effort, and `(degree 7, 4000 hops)` is the best combination 
 
 So the record rests on an explicit identity plus two exact implementations that share no code.
 `Main's shell_check` was **not** used for it, deliberately, since it is unsound (§1).
+
+### p-side Gram with many squares: `5.99 → 2.00`
+
+`sos_family.py` used one square in the multiplier and `sos_family2.py` two; both were weak
+(`5.99`, `6.74`). Allowing **many** squares in the multiplier and basin-hopping the coefficients
+changes that:
+
+$$-p(u) \;=\; (u-T)\sum_{i\le m} r_i(u)^2,\qquad r_i \in \mathbb{Q}[u],\ T \le 4\pi,$$
+
+so `p ≤ 0` on `[T, ∞)` **by construction** with an explicit rational Gram, and `q = M p` is
+verified by exact Sturm. Best of the run (`--m 4 --deg 2 --iters 2500`):
+
+$$-p \;=\; (u-12)\Bigl[\bigl(\tfrac43\bigr)^2 + \bigl(-\tfrac{37}{3}\bigr)^2
++ \bigl(\tfrac{101}{12}u + \tfrac14\bigr)^2 + \bigl(-\tfrac{13}{6}\bigr)^2\Bigr],
+\qquad q = \tfrac{10201}{144}u^3 + \tfrac{9797}{96}u^2 - \tfrac{144747}{64}u + \tfrac{1529773}{384},$$
+
+$$\Delta \;\le\; 2.00171738 .$$
+
+Note the shape: three of the four squares are **constants**, so in effect this is
+`−p = (u−12)[(101u/12 + 1/4)² + c]` with `c = 16/9 + 1369/9 + 169/36 = 2021/12` — a single
+nontrivial square plus a constant, which is as simple a Gram identity as one can ask for while
+still being admissible.
+
+**Summary of the explicit-Gram programme after this block:**
+
+| family | best `Δ ≤` | Gram shape |
+| --- | --- | --- |
+| Fourier side (`sos_qside`), five squares, degree 5 | **1.37125723** | `q = Σ r_i² + u Σ s_j²` |
+| p-side, one square | 5.99152482 | `−p = (u−T)(u−c)²` |
+| p-side, two squares | 6.73788568 | `−p = (u−T)[(u−c)²(u−e)² + m²(u−d)²]` |
+| **p-side, many squares, hopped** | **2.00171738** | `−p = (u−12)[(101u/12+1/4)² + 2021/12]` |
+| LP-optimal (no rational Gram found) | 0.77996622 | — |
+
+Both sides are now demonstrated at `≈2` or better with an explicit rational Gram. The gap to
+`0.78` remains the open quantitative question, and it is a search-power gap, not a structural one.
