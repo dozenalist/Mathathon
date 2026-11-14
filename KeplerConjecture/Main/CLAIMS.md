@@ -5646,3 +5646,30 @@ improvement exists on this route; what improves is the rate in `ρ_ε`.
 
 *Status.* `TESTED_FINITE` (the `ε` table is arithmetic; the ratio table is sampled). `L1'` unproved.
 `C124` `PENDING_REVIEW`.
+
+#### `C143` addendum — what `C146`'s `ε = 0.2` value would buy, and for whom
+
+With `δ₀ = 0.086376` (`C146`) and `ρ_ε = 1/2` the largest possible matching density,
+`C108`'s Theorem C gives
+
+```
+δ  ≤  (4π/3)/(V_dod + δ₀/2)  =  0.748870280 .
+```
+
+| comparison | value | this bound |
+| --- | --- | --- |
+| `π/√18` (truth) | `0.740480490` | above by `0.008390` |
+| Hales–McLaughlin | `0.754697399` | **below by `0.005827`** (`0.77%`) |
+| Cohn–de Laat–Salmon three-point | `0.770271` | below by `0.021401` |
+| Cohn–Elkies two-point | `0.779747` | below by `0.030877` |
+| project `K33b` | `0.779966` | below by `0.031096` |
+
+**So conditional on `L1'`, the pair route would give a bound below every published value — but only for
+packings whose near-contact matching density is `1/2`.** For `ρ_ε = t` the improvement shrinks linearly
+(`C143`'s table), and the `ρ_ε → 0` limit is `ML` itself, so there is **no** uniform improvement and
+**no** new packing bound. What this table establishes is where the route is strong — dense-contact
+packings — and how much the missing factor is worth: the whole difference between `0.7489` and `0.7547`
+is `δ₀`, and the whole difference between `0.7489` and truth is the remaining `2.5×` in `δ₀`.
+
+**Not claimed.** No packing bound, no improvement over truth, no reviewed theorem. `L1'` is unproved;
+`C124` is `PENDING_REVIEW`; `RESULTS.md` does not move.
