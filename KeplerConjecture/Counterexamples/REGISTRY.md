@@ -1655,3 +1655,13 @@ returns are `120°` rotations — symmetries of the icosahedron, i.e. the same c
 `d = 6cos ρ_c = 4.767926834` the identity placement gives exactly `2`. So the parallel placement is
 optimal among everything scanned, consistent with `X-C096`'s threshold. Numerical, not a proof: it bounds
 the threshold from above by `6cos ρ_c` and finds nothing below it.
+
+### K15-X-C100 — E's `0.768212` inradius reproduces, and `C135`'s five-way tie is exact
+
+(i) `radius_witness` on the exact `c5_centres` normals (rationalised to `10⁻¹⁸`) gives
+`c = 0.768212391` with `20` supporting planes, matching E's quoted exact inradius `0.768212` and
+exceeding the mesh estimate `0.730508` — so the exact-radius run's improvement is real.
+(ii) In `C135`'s coordinates, for every `k = 0..4` the pair `(U_k, L_{k+2})` at `d = 2` gives
+`A = 68/5 − 16√5/5 = 6.444582472`, `B = ∓32/5`, `C = 0` exactly — so the "five-way tie, all with
+`R = 32/5`" is exact (the sign of `B` depends on which of `±L_{k+2}` is used; the violation arc has the
+same length `2π − 2·112.4555° = 135.089°` either way).
