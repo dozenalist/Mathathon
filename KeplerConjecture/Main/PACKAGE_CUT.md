@@ -32,9 +32,11 @@ Why this form:
   transfer exists. By `K15-C080` that case is exactly E's `(T')`. Settling whether a
   saturated packing can have such a component is the **first** obligation; a single
   example closes the transfer route (though not Kepler).
-- **It has a proved floor.** `t* ≥ 0.0088803` at `R = 2.09` on any packing containing
-  the 13-cluster (`K15-C081r`, singleton cut). So `Φ₀ ≥ 0.0088803`, and a candidate
-  below that is refuted outright.
+- **It has a proved floor, for one witness.** `t* ≥ 0.0088803` at `R = 2.09` on any
+  packing containing the 13-cluster (`K15-C081r`). So `Φ₀ ≥ 0.0088803` as a bound on
+  the *supremum*, because that packing is one of the packings being maximised over.
+  The per-packing bound is `t* ≥ max_v b(v)/deg(v)`, which may be smaller; a fixture
+  with `t* < 0.0088803` is **not** a contradiction unless it contains the witness.
 
 ## 2. What is already known, and where the difficulty sits
 

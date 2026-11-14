@@ -2451,7 +2451,10 @@ with `t*` the minimal transfer bound (LP duality, `K15-C044`). Reasons this is t
 right form: (i) it is exactly what the rate `O(Φ/r)` needs; (ii) a single periodic
 packing with `t* > Φ₀` refutes a claimed `Φ₀`, so candidates are testable
 (`C-TRANSFER-001` computes `t*`); (iii) it has a proved floor `Φ₀ ≥ 0.0088803`
-(`K15-C081r`).
+(`K15-C081r`) — **witness-specific**: that floor holds for packings containing the
+icosahedral singleton, not for every packing with `b > 0`. The per-packing necessary
+bound is `t* ≥ max_v b(v)/deg(v)`; the two must not be confused (review 0308
+continuation).
 - **Correction (in the same entry).** The first version said "existence cannot be
   refuted by a packing". **False.** If a packing has a **closed** component `C` (no
   edges leaving at range `R`) with `Σ_C b > 0`, then `t*(Λ) = ∞` and **no transfer
@@ -2492,3 +2495,92 @@ recorded in `K15-C089`'s step 0.
 
 *Status.* `PROVED` (exact icosahedral geometry; computed and checked numerically to
 `1e−9`). Reviewer X.
+
+### K15-C091 — Barlow cell volumes: six mixed stackings tested, all cells `√32` (`TESTED_FINITE`, proof open)
+
+**Construction (validated).** Layer `k` at height `k·h`, `h = √(8/3)`, on the
+triangular lattice `⟨(2,0),(1,√3)⟩`, shifted by `s_k·(a₁+a₂)/3`; a stacking is the
+sequence `(s_k)` with consecutive differences `±1 mod 3` (a hollow move) and the wrap
+step also `±1 mod 3`. Cells computed on a `3×3×3`-replicated periodic set with the
+half-space/ConvexHull machinery; **minimum separation over all pairs checked** (`2.0000`
+in every legal case).
+
+| stacking | period | min sep | cell volumes |
+| --- | --- | --- | --- |
+| `ABC` (fcc) | 3 | 2.0000 | `5.656854 ×3` |
+| `ABA` (hcp) | 2 | 2.0000 | `5.656854 ×2` |
+| `ABAC` | 4 | 2.0000 | `5.656854 ×4` |
+| `ABCB` | 4 | 2.0000 | `5.656854 ×4` |
+| `ABABAC` | 6 | 2.0000 | `5.656854 ×6` |
+| `ABCACB` | 6 | 2.0000 | `5.656854 ×6` |
+| `ABACABA` | 7 | 1.6330 | **illegal**: wrap step `0 ≢ ±1 mod 3` |
+
+`√32 = 5.656854249…`, so **every cell in every legal stacking tested has volume
+`√32` to six decimals** — the uniformity claim survives six distinct local environments
+(including `ABAC`, where the four sites have different neighbourhoods).
+
+**What is proved, and what is not.**
+- *Average*: `√32` in every Barlow stacking, since the density is `π/√18` (each layer
+  carries `1/(2√3)` points per unit area and the layer spacing is `h`).
+- *Uniformity*: **not proved**. The six cases are evidence; the cell volume is a
+  function of the local offset pattern and no argument is known to Main showing the
+  function is constant. (This is the corrected status of `K15-C078`: fcc/hcp are proved;
+  general Barlow is evidenced, not proved.)
+- *Degree facts vs volume facts* (`K15-C054` vs `C078`): the degree bound `≤ 12` at
+  `R = 2.09` holds for **every** 2-separated set (`C013`), Barlow or not; the vanishing
+  of `b` holds only where the volumes are `√32`, i.e. fcc/hcp by proof and Barlow by
+  evidence.
+
+**Construction bug found and recorded.** The first version added the height to the
+*y*-coordinate (`np.array([0.0, k*h])` added to a 2-D base) instead of using it as `z`;
+it produced "packings" with minimum separation `1.70` and meaningless cell volumes. The
+same mistake had invalidated Main's earlier numerical checks of `C033`/`C078`. Fixed
+before any number above was recorded.
+
+### K15-C092 — closed components: one obstruction proved, no counterexample found (`TESTED_FINITE` ledger)
+
+`Main/CLOSED_COMPONENT.md` records four attempted constructions with their exact
+failed conditions and one proved necessary obstruction:
+
+**Covering lemma.** An isolated vertex (no centre within `2.09`) in a *saturated*
+packing has at least **five** other centres in the annulus `(2.09, 4]`. *Proof:*
+saturation forces, for each direction `u`, a centre within `2` of `v + 2u`, hence a
+cap of directions of area `2π(1 − ρ/4)`; covering `S²` with caps of area `< 0.4775·2π`
+needs five of them. ∎ (Weak but real.)
+
+**Attempts and exact failures** (no construction succeeded):
+- *A1*: icosahedral directions pushed to `2.09` (legal, mutual `2.1976`): cell volume
+  `6.333804 > √32`, i.e. **negative** deficit — the natural candidate has the wrong
+  sign by 12%;
+- *A2*: general singleton needs `vol ∈ (V_dod, √32)` with all faces `≥ 1.045` — a
+  1.9% window; Hales–McLaughlin does not close it, and a *stability* version would;
+- *A3*: isolated dimer — the far-face argument fails (a face at distance 1); no
+  conclusion;
+- *A4*: clusters `≥ 3` — every cell has a near face inside the cluster; open.
+
+So the closed-component question stays open, with one proved constraint and a documented
+set of failures. Reviewer X.
+
+### K15-C093 — finite-to-infinite cut/flow theorem with a free boundary (`PROVED`)
+
+`Main/CUT_FLOW_THEOREM.md` proves, in the convention actually used (`div φ ≥ b`,
+signed `b`, antisymmetric `φ`, uniform capacity):
+
+- **Theorem 1 (finite, free boundary).** With demands on `F ⊆ V` only, a transfer
+  exists **iff** `Σ_U b ≤ cap(U)` for every `U ⊆ F`. (The free boundary is what makes
+  the reduction to Gale–Hoffman go through; the induced-subgraph formulation would be
+  *stronger* than the hypothesis and hence unusable.)
+- **Theorem 2 (infinite).** For locally finite `G`, an exhaustion `{F_n}`, the cut
+  condition for all finite `U`, and `sup Φ < ∞`: a transfer exists. Proof by Theorem 1
+  on `F_n ∪ N(F_n)` plus Tychonoff on `∏_e [−Φ₀,Φ₀]` and the finite intersection
+  property. **Tychonoff needs no degree bound; local finiteness is needed only for the
+  divergence to be a finite sum** — a refinement of `K15-C067`'s statement, where
+  compactness and bounded degree were conflated.
+- **Separation of concerns**: Theorems 1–2 are pure graph theory (existence from cuts);
+  the geometry enters only in verifying the cuts — fcc/hcp `b ≡ 0` (`C078`), the
+  witness-specific floor `0.0088803` (`C081r`), the large-ball cut being the density
+  bound (`C087`), and the closed component needing `Σ_C b ≤ 0` (`C080`).
+- **Worked examples**: the dumbbell `b = (1,−1/3,−1/3,−1/3)` has `t* = 1/3` with the
+  exact transfer `φ(a,l_i) = 1/3` and the tight singleton cut as dual witness; the
+  variant `b(a) = 4` is infeasible at `Φ = 1` with the violating cut `{a}`; and a
+  two-hop path `(+1,0,0,−1)` has `t* = 1` with a unique flow and three tight prefix cuts.
