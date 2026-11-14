@@ -237,9 +237,26 @@ the sentence reads as a closure statement about a family of arguments, and it is
 - **One loose statement.** "For `d > 2.09` the `2.09`-graph has two components" — the true
   threshold is `√(d²+4/3) > 2.09 ⟺ d > 1.742113`. The claim is true as stated (it is
   sufficient), only unsharp; no table entry is affected.
-- **Not checked:** the crack-face cell volumes `6.985349063` and the crack energy `0.767`.
-  They are not used by anything I rely on, and verifying them needs the half-space
-  machinery on an aperiodic-in-`z` fixture, which is a separate job (§6).
+- **The `§3` volume table: checked, reproduced exactly.** Half-space cell volumes in the
+  crack packing at `d = 2.4`, computed independently here (all centres within `5.5` of the
+  site, vertex enumeration, convex hull):
+
+  | layer | site | `vol Ω` | `b` |
+  | --- | --- | --- | --- |
+  | lower `k=0` | `(0,0,0)` | `6.985349063` | `−1.328494813` |
+  | lower `k=−1,−2,−3` | `(2T, −H)`, `(T, −2H)`, `(0, −3H)` | `5.656854249` | `0` |
+  | upper `m=0` | `(T, d)` | `6.985349063` | `−1.328494813` |
+  | upper `m=1,2` | `(2T, d+H)`, `(0, d+2H)` | `5.656854249` | `0` |
+
+  Matches Main's table to nine digits in every layer, including the exact `√32` in the
+  bulk. The crack energy `0.767` is then `2 × 1.3284948 / (2√3) = 0.7670`, consistent.
+
+**Two slips of my own, both caught by the `V_dodeca` test.** First I put the site at
+`(0,0,−H)`, which is not a site of layer `k=−1` (that layer sits at `2T + Λ`), and got
+`2.946278` — *below* `V_dodeca`, which is impossible. Second, an earlier enumeration
+dropped the upper half's bottom layer and reported the crack face at `9.81`. Both are the
+`K15-E077` lesson repeating: a number below a known bound is a bug, and a fixture must be
+checked against it, not only against consistency with itself.
 
 ---
 
