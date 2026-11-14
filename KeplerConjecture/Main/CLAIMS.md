@@ -5771,3 +5771,150 @@ and should not be attempted.** All three are conditional on `L1'`, which is unpr
 
 *Status.* `TESTED_FINITE` (the slack table is sampled; the `ε`/`δ₀` columns are arithmetic). No bound, no
 review.
+
+### K15-C147 — the GLOBAL-TO-LOCAL ENTRY is a separate obligation, and it reduces to `C125`'s branch (`CORRECTION`)
+
+Review 0823: *"do not call `L1` the only remaining obligation without checking these"* — specifically the
+**global-to-local entry**. Checked, and **it is a separate obligation.** This entry corrects `C142`/`C146`,
+which presented `δ₀` as explicit modulo `L1'` alone.
+
+**The gap.** The chain needs `vol ≤ V_dod + η ⟹ d(θ,Rot) ≤ θ_max`. `L1'` supplies that only for `θ` in the
+ball, because it is a *local* inequality. Nothing in it, and nothing in Fejes Tóth, forbids the sublevel set
+`{vol ≤ V_dod + η}` from having a **second component far from the icosahedral orbit** — and if it does, a
+near-icosahedral argument says nothing about that packing at all.
+
+**And the sphere form does not fix it.** I first thought that certifying `min over {d = θ_max} of (vol −
+V_dod) > η` would localise, since the sublevel set is connected to `0`. **That is false**: along a ray from
+`0` through a far point, `vol` can rise above `V_dod + η` at the sphere and fall back below it further out,
+so the sphere test is consistent with a far component. A one-line model makes it explicit
+(`f(t) = A sin πt − Bt`: `f(0) = 0`, `f(0.3) > 0`, `f(1) < 0`). **The entry needs a bound on the
+*complement* `{d ≥ θ_max}`, not on the sphere.**
+
+**What is true, and what it costs.** The entry *holds*: modulo rotations the configuration space of 12 unit
+normals is compact, `vol` is lower semicontinuous (`+∞` on degenerate configurations), Fejes Tóth gives the
+global minimum `V_dod`, and `C115` gives that the minimiser is exactly the icosahedral orbit. So
+`η₀ := min over {d ≥ θ_max} of (vol − V_dod) > 0` — **by compactness, with no modulus.** Hence the chain
+gives `δ₀ = 2V_dod·min(η₀, c θ_max²)`, and since `η₀` is not explicit, **the `δ₀` is not explicit either.**
+The explicitness claimed in `C142` covers the *local rate*, not the constant.
+
+**Where the entry actually lives.** `{d ≥ θ_max}` contains configurations far from icosahedral. On those the
+cell either degenerates (`vol = ∞`, harmless) or has **13 or more facets** — so an explicit `η₀` is a lower
+bound for cells with `≥ 13` facets at distance `≥ θ_max` from icosahedral. **That is `C125`'s stopped branch**
+(the circumscribed-volume constants unproved for `F = 13, 15, …, 20`), reappearing from the other side. The
+entry and the 13-face branch are the *same* obstruction.
+
+**Consequences, stated plainly.**
+
+1. **`δ₀` is conditional on two things, not one**: the local rate (`L1'`) **and** the entry `η₀`. Both are
+   open; the first is measured and plausible, the second is unmeasured and reduces to `C125`.
+2. **`C142`'s and `C146`'s ladders are a *design tool*, not a proof of an explicit constant.** Their
+   `δ₀` values (`0.0029`, `0.0325`, `0.0864`) are what one would get *if* both ingredients were proved.
+3. **No packing bound, and no explicit strictness**, beyond what `C108`'s compactness already gave. The
+   ledger's `G11` stays exactly as open as it was, now with its two halves named.
+
+*Status.* `CORRECTION` (of my own `C142`/`C146` framing). The entry is `OPEN`; it is `C125`'s branch in
+different clothes.
+
+### K15-C148 — `M-CERT-002` as a runnable pilot: what it proves, what it refuses to prove (`PROVED` for T1/T2; value bound `OPEN`)
+
+`Computation/l1_remainder.py` is now a real file (`sha256` pinned in the request), and the 0738
+specification it replaces had four defects, all named by review 0823 and all fixed:
+
+| 0738 defect | repair |
+| --- | --- |
+| named a file that did not exist | `l1_remainder.py` implemented, 7-case self-test, in `run_all_checks` |
+| no full source hash | `sha256` + the commit that first contains it, both in `LOCAL_COMPUTE_REQUESTS.md` |
+| prose `c = 0.13`, command/acceptance `0.17`, non-quotiented | the whole spec is regenerated from the code: `--c 0.13`, quotient form, exit-code acceptance |
+| "strictly positive minimum over a ball containing `θ = 0`" | impossible, and it is not what is certified: the pilot certifies the **ratio** on `0 < d ≤ θ_max` and a **sphere** form, and says so |
+
+**What it proves (`PROVED`, exit 0 on `--margins`).**
+
+- **T1 (feasibility).** All `160` triples keep `|det| > 0`: `min |det| = 0.470228202` at `θ = 0`, and
+  Hadamard (`|det| ≥ min|det| − 3θ`) leaves `0.336265` at `θ_max`. No vertex escapes to infinity.
+- **T2 (type).** The `20` active triples stay active and the `140` inactive stay slack: `1.236067977` at
+  `θ = 0`, vertex motion `≤ |A^{-1}|² R = 2.1563` per unit `θ`, leaving `1.095124` at `θ_max`. So the cell
+  has **exactly 12 facets** and `vol` is smooth on the closed ball.
+- Together: **the certified ball radius is `0.156743`**, three and a half times `θ_max = 0.0446545`. This is
+  a real theorem about the configuration, and it is what makes a Taylor argument well-posed.
+
+**What it refuses to prove.** The value bound. Given the measured minimum quotient ratio `0.2029…0.2412`
+and the measured `M₃ = 0.075…0.20`, the Taylor criterion `M₃ ≤ 6(ratio − c)/θ_max` needs `M₃ ≤ 9.80`, and
+a rigorous enclosure is exactly what the pilot does not have. `--m3-bound X` lets an *independent* interval
+computation supply it: with `X = 9.0 ≤ 9.80` the pilot returns 0, with `X = 20` it returns 1 — so the
+certification path is exercised, not decorative.
+
+**The obstruction to the obvious alternative.** A covering argument on the quotient sphere `S²⁰` needs, at
+the available Lipschitz bound `L = 21.81` (surface area × circumradius), a net radius `r = 1.01·10⁻⁵`, i.e.
+about `9·10⁹⁹` points. **Not a gap in effort — infeasible by a hundred orders of magnitude.** So the Taylor
+route with a rigorous `M₃` is the only viable one, and the pilot says so with numbers.
+
+**What a rigorous `M₃` would buy** (`δ₀ ∝ M₃⁻²`, capped at the certified radius):
+
+| `M₃` bound | `θ_max` | `δ₀` |
+| --- | --- | --- |
+| `≤ 2.79` | `0.1567` (capped) | `3.55·10⁻²` |
+| `10` | `4.38·10⁻²` | `2.76·10⁻³` |
+| `100` | `4.38·10⁻³` | `2.76·10⁻⁵` |
+| `1000` | `4.38·10⁻⁴` | `2.76·10⁻⁷` |
+
+So a crude bound costs accuracy but never closes the route; the measured `M₃` is `0.075`, a factor `37`
+below the cap. The elementary-partial route is `24^{3/2} = 118` times the largest third partial, so a
+rigorous computation needs elementary partials `≤ 0.083` to reach the required `M₃` — a demanding but finite
+target, and the concrete thing for the next block or `M-CERT-002` to attack.
+
+**And `C147` stands outside all of it.** The pilot certifies a local rate; the entry is `C147`'s problem.
+
+*Status.* T1/T2 `PROVED`; value bound `OPEN`; the pilot's own self-test (7 cases) is in `run_all_checks`
+(21 checks).
+
+### K15-C149 — X's one-cell restatement of `C133` is false without the contact exception (`CORRECTION`)
+
+Review 0823: *"X `c40fdcb` also over-weakens `C133` to only one dodecahedral cell: the central icosahedral
+shell has legitimate contact centres at distance `2`."* **Correct, and the two-cell form is the one of
+record.**
+
+`C133` says: *two* cells, both congruent to the regular dodecahedron of inradius 1, need `|v − w| ≥
+4cos ρ_c = 3.1786179`. A **one-cell** version — "a dodecahedral cell has no centre within `3.1786` of it" —
+is **false**: its own twelve contacts sit at distance **exactly `2`**, and each is a legitimate centre.
+Nothing is wrong with `C133`; the one-cell restatement drops the hypothesis that makes it true.
+
+**What the chain uses.** `C114`/`C124` need the *pair* statement: `σ₀(ε) > 2V_dod` quantifies over pairs of
+dodecahedral cells, so both cells are dodecahedral by construction and no exception is needed. **The
+exception is only needed if the statement is weakened to one cell**, and then it reads "…other than its
+twelve face-contacts", which is a strictly weaker and less useful form.
+
+**Standing rule.** Until independently settled, `C133` stays in the two-cell form, and any one-cell
+restatement must carry the exception explicitly. X's `X-C099` (the parallel-placement threshold
+`6cos ρ_c = 4.7679`, `1.5×` larger and not attained) is a *different* configuration and does not bear on
+`C133`'s constant; `X-C096`'s "not attained" is consistent with `C133`'s "`< 3.1786` implies clash" being
+strict.
+
+*Status.* `CORRECTION` (a restatement hazard, not an error in `C133`). X is the reviewer of record.
+
+### K15-C150 — C's `check_certificate` accepts two exact wrong cubes; generic certification suspended (`REFUTED`)
+
+Review 0823 supplies two witnesses against `Computation`'s standalone `check_certificate` (source
+`fbb124e`), both reproducing exactly:
+
+1. **Duplicate `cert["facets"]`** with `volume = "16"` returns `16` for a **true volume `8`**.
+2. **Appending `["1","0","0","1/2"]` to `cert["planes"]`** while leaving `candidate_planes` unchanged
+   returns `8` for a **true volume `6`**.
+
+So the routine validates *self-consistency*, not the volume of the polytope it is handed. Both witnesses are
+the same defect in different clothes: **the certificate is trusted on the face list it supplies, and the
+external `candidate_planes` is not used to check that the face list is complete and duplicate-free.**
+
+**Consequences.**
+
+- **Generic certification is suspended** pending a proof and a fix. `K15-C-CUTIMPLIES-003`'s flow and cut
+  witnesses are unaffected (they re-verify exactly), and `C137`'s remark stands: the *fixed* dense-shell
+  fixture remains separate evidence for itself only.
+- The repair is a completeness/duplication check against `candidate_planes`: every facet must be supported
+  by at least one candidate plane, no two facets may share a plane, and the facet normals must positively
+  span. That is the same criterion `C137` specified for the exact-volume path (`|p−v| ≤ 2h_Ω`), applied to
+  the certificate instead of the enumeration.
+- **E's duplicate-plane controls pass** (`814f213`, `6.75 s`) — E is ahead of C here, and C should adopt
+  them.
+
+*Status.* `REFUTED` for the standalone checker (two exact witnesses); generic certification suspended. C owns
+the fix.

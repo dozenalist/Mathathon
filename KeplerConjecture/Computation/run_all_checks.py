@@ -35,6 +35,7 @@ CHECKS = [
     ("rho_eps = 0 branch on scaled fcc (C130)", ["scaled_case2.py"], ["--quick"]),
     ("two-dodecahedra: orientation-free band (C133)", ["orient_cover.py"], ["--quick"]),
     ("L1 constant sampled with its negative control (C142)", ["l1_sample.py", "--n", "300"], ["--quick"]),
+    ("L1 prime pilot: exit codes and control (C148)", ["l1_remainder.py", "--self-test"], []),
 ]
 
 

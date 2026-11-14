@@ -243,49 +243,67 @@ their own role directories and identify them in the final response for Main
 or Astra to collect.
 
 
-### M-CERT-002 — make `C142`'s `L1` rigorous (the only gap left in the explicit `δ₀`)
+### M-CERT-002 — make `L1'` rigorous: the runnable handoff (supersedes the 0738 form)
 
-**What it must certify.** On the ball `{Σ_j θ_j² ≤ 0.002}` in the 24 tangent parameters of the 12
-icosahedral normals,
+> **The 0738 form of this request is withdrawn.** Four defects, all named by review 0823: it named
+> `l1_remainder.py` before the file existed; it pinned no source hash; its prose said `c = 0.13` while its
+> command and acceptance said `0.17` and used the non-quotiented expression; and it demanded a "strictly
+> positive minimum over a ball containing `θ = 0`", which is impossible. See `C148`. Everything below is
+> generated from the code, and the pilot is now in the tree.
 
-```
-vol(θ) − V_dod  ≥  c · d(θ, Rot)²        (V_dod = 5.550291028515510, c = 0.13)
-```
-
-where `vol(θ)` is the volume of `{x·n_j(θ) ≤ 1}`, `n_j(θ)` the normalised perturbed normals.
-
-**Why this is enough.** `C142` addendum proves `L2` (a legal 13th neighbour's bisector lies at
-`2cos ρ_c = 1.589309 > R_dod = 1.258409`, so it creates no facet). So on the ball the cell has exactly
-12 facets and `vol` is a smooth function of `θ`; with the Hessian `λ₁ = 0.353298` and a bounded cubic
-term, `L1` follows. The measured cubic coefficient over 12 random directions is `|c₃| ≤ 0.075`, against
-the `0.494` that the constant `0.17` tolerates — a factor `6.6` of margin, and the cubic term is `2.0%`
-of the quadratic budget at the needed `θ = 0.0447`.
-
-**Type robustness is already certified (`C142` addendum 3).** All 20 tight triples have
-`|det| = 0.760845213` and the vertex radius is `1.258408572`; with `θ ≤ 0.05` the determinant stays
-`≥ 0.610845 > 0`, so no triple degenerates and `vol` is smooth on the whole ball. No combinatorial
-cover is needed — only a derivative bound.
-
-**Method (bounded, no search).** Taylor bound with interval arithmetic:
-
-1. On each box of a cover of the ball, interval-evaluate the vertex coordinates (solving the `3×3`
-   systems of tight planes; the combinatorial type is fixed by `L2` and checked once per box).
-2. Interval-bound the second, third and fourth derivatives of `vol` from the same expressions.
-3. Report `min over the ball of (vol − V_dod − 0.17Σθ²)` as an interval.
-
-**Pinned request.**
+**File and source.**
 
 ```
-command      python3 Computation/l1_remainder.py --certify --ball 0.002 --c 0.17
-deps         python3 (stdlib), numpy, scipy.spatial  — no Lean, no network
-resources    1 CPU, 1 GiB RAM, wall <= 120 s     (estimate: ~10^4 volume evaluations, ~1 ms each)
-acceptance   exit 0, prints an interval [lo,hi] with lo > 0, and a box count
-must fail on the negative control:  c = 0.30 is REJECTED (that constant is too large)
+path      KeplerConjecture/Computation/l1_remainder.py
+sha256    bd2f24c28e469f3315d046bd1d445287cf6f26b8bc056d8ba3e97f440ab2f2ac
+source    the commit that first contains it (this block's tip; hash in AgentReports/
+          REVIEW_2026-11-14_0823.md, which is pushed after the file)
+deps      python3 (stdlib), numpy, scipy.spatial   -- no Lean, no network, no GPU
+runtime   ~1 s measured; budget 1 CPU / 1 GiB / 120 s
 ```
 
-The negative control matters: a certifier that cannot reject `c = 0.30` is not measuring anything, and
-this project has had three unsound checkers.
+**What is already proved by the pilot (no local work needed).** On the ball `d(θ,Rot) ≤ 0.156743`:
 
-**If it succeeds.** `δ₀ ≥ 2.8775·10⁻³` becomes a theorem, `C124`'s strictness becomes explicit, and the
-pair route produces its first number. It still does not improve `0.7546974` by itself — the hybrid needs
-`ρ_ε`, and `C139` shows the bound is a monotone function of `δ₀`.
+- **T1** every one of the 160 triples keeps `|det| > 0` (slack `0.336265` at `θ_max`);
+- **T2** the 20 active triples stay active and the 140 inactive stay slack (slack `1.095124` at `θ_max`),
+
+so the cell has exactly 12 facets and `vol` is smooth there. `--margins` exits 0.
+
+**What only a local run can supply: a rigorous `M₃`.** The value bound is
+`vol − V_dod ≥ (ratio)d² − (M₃/6)d³`, sufficient for `c = 0.13` at `θ_max = 0.0446545` iff
+
+```
+M₃  ≤  6(ratio_min − c)/θ_max  =  9.80        (measured M₃ = 0.075; ratio_min = 0.203..0.241)
+```
+
+**Pinned command.**
+
+```
+python3 KeplerConjecture/Computation/l1_remainder.py --certify --theta 0.0446545 --c 0.13 --m3-bound X
+```
+
+where `X` is *your* rigorous third-derivative bound. Acceptance is by **exit code**, not by a printed
+minimum (there is no positive minimum over a ball through `θ = 0` — the pilot certifies the ratio on
+`0 < d ≤ θ_max`, and says so):
+
+| exit | meaning | acceptable? |
+| --- | --- | --- |
+| `0` | T1/T2 certified **and** `X ≤ 9.80`: the value bound follows | **this is the target** |
+| `1` | T1/T2 certified, value bound not certified (no bound or `X` too large) | expected if `X` is crude |
+| `2` | a sound part failed (a ball beyond `0.156743`, or T1/T2 broken) | a real problem |
+| `3` | the negative control was not rejected, i.e. the pilot is inert | discard the run |
+
+**Required negative control** (the pilot must be able to fail):
+
+```
+python3 .../l1_remainder.py --certify --c 0.30 --seed 3     # must exit 3
+python3 .../l1_remainder.py --certify --theta 0.30          # must exit 2 (beyond the certified ball)
+```
+
+**If `X` comes out above `9.80` but below `100`.** Do not discard the run: the pilot's ladder shows
+`δ₀ ∝ M₃⁻²`, so `X = 10` still gives `δ₀ ≈ 2.8·10⁻³` and `X = 100` gives `2.8·10⁻⁵`. Report `X` and the
+ladder row; the constant degrades gracefully.
+
+**Not in scope here.** `C147`'s global-to-local entry is a *separate* obligation (it reduces to the
+`≥ 13`-facet branch, `C125`) and no run of this pilot addresses it. Do not report "`δ₀` proved" from an
+exit-0 run; report "the local rate is proved, entry open".

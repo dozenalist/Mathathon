@@ -1,0 +1,30 @@
+l1_remainder.py -- theta_max=0.04465447  c=0.130  V_dod=5.550291029
+   quotient: ||P_Rot|| = 1.732 (3 dims removed of 24)
+T1 feasibility (no vertex at infinity)
+   min |det| over all 160 triples at theta=0 : 0.470228202
+   Hadamard slack at theta_max                        : 0.336265  OK
+T2 type (exactly 12 facets, vol smooth on the ball)
+   active triples 20 / inactive 140 at theta=0
+   min inactive slack at theta=0                      : 1.236067977
+   vertex motion per unit theta <= |A^-1|^2 R        : 2.1563
+   slack left at theta_max                            : 1.095124  OK
+
+VALUE BOUND (not certified by this pilot)
+   min quotient ratio (vol - V_dod)/d^2 over sampled dirs = 0.231541
+   measured M3 = 6|c3| along the worst direction          = 0.202590
+   Taylor sufficient iff M3 <= 6(ratio_min - c)/theta_max = 13.6435
+   measured M3 0.2026 vs required 13.6435 -> PLAUSIBLE (factor 67.3 of headroom)
+
+COVERING ROUTE (why it is not used)
+   Lipschitz bound L = 21.81 (surface area x circumradius)
+   slack = (0.24 - c) theta_max^2 = 2.193e-04
+   net radius needed r = slack/L = 1.006e-05
+   points to cover S^20 at that radius: ~ (1/r)^20 = 8.948e+99  -> infeasible
+
+NEGATIVE CONTROL
+   c = 0.130 vs measured ratio_min = 0.231541: accepted (c is below the measured curvature)
+
+VERDICT: T1/T2 CERTIFIED; value bound NOT certified.
+   Missing ingredient: a rigorous enclosure of M3 (or of the Hessian entries)
+   with M3 <= 13.6435.  Measured M3 = 0.2026, so the headroom is a factor 67.3.
+   The global-to-local entry (C147) is a separate obligation and is not addressed here.
