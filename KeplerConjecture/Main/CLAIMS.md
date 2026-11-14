@@ -2166,3 +2166,25 @@ inequality) and `K15-C051` (no locally dense periodic blob found), and with
   is what a proof of `(T')` must beat.
 - **Status.** `PROVED` (a translation between two statements, no new mathematics).
   Reviewer X.
+
+### K15-C080 — the transfer requirement is strictly weaker than E's `(T')` (`PROVED`)
+
+- **E's `(T')`** asks, for every defective component `C`, `Σ_{v∈C}(vol Ω(v) − √32) ≥ 0`,
+  i.e. `Σ_C b ≤ 0` with `b = √32 − vol Ω`: each component must pay for itself.
+- **The transfer route** (`K15-C044`) asks only `Σ_C b ≤ Φ|δ⁺_R(C)|` for the same
+  `C`, because the component may be funded from outside across its boundary.
+- Since `Φ|δ⁺_R(C)| ≥ 0`, the transfer condition is implied by `(T')` and is strictly
+  weaker whenever `δ⁺_R(C) ≠ ∅` — which holds for every bounded component in a
+  saturated packing (there are always neighbours at distance in `(2.09, …)` unless
+  the component is the whole packing).
+- **Consequence for the next block.** The target should be stated in the *cut* form,
+  not as `(T')`: it is the weaker obligation, it is exactly what a transfer
+  certificate needs, and its price `Φ` is explicit in the final rate
+  (`C₁ = 3ΦR(R+1)⁵`). E's `(T')` remains a sufficient condition and a sanity check
+  (it must hold on fcc/hcp, where `φ = 0` works and `δ⁺` is non-empty).
+- **Caveat.** `Φ` cannot be allowed to grow: the rate in Lemma 3.3 is `O(C₁/r)` with
+  `C₁ ∝ Φ`, so a proof of the cut form is only useful with a stated bound on `Φ`
+  (the icosahedral vertex alone forces `Φ ≥ 0.00888`, `K15-C036`).
+
+*Status.* `PROVED` (immediate from the definitions). Reviewer X. Recorded in
+`Main/NEXT_PACKAGE.md`.

@@ -45,6 +45,13 @@ inequality of this file are the same obligation in two notations: `(T')` is the
 per-component form, the averaged inequality is the integrated form, and `K15-C067`
 shows they are equivalent up to the transfer's `Φ` and the boundary term.
 
+**State it in the cut form, not as `(T')`.** `(T')` asks each defective component to
+pay for itself (`Σ_C b ≤ 0`); the transfer route needs only
+`Σ_C b ≤ Φ|δ⁺_R(C)|`, which is strictly weaker whenever the component has out-edges
+(`K15-C080`). The next block should therefore attack the cut inequality with a
+*stated bound on `Φ`* (the rate in Lemma 3.3 is `O(Φ/r)`), keeping `(T')` as a
+sufficient condition and as a check on fcc/hcp.
+
 **The boundary term with explicit constants.** For a blob `U` containing a ball of
 radius `r` and contained in `B(x, r+R)`, the number of edges leaving `U` is at most
 `k_R·#(Λ ∩ (B(x,r+R) ∖ B(x,r−R))) ≤ k_R·((r+R)³ − (r−R)³) ≈ 6 k_R R r²`, and
