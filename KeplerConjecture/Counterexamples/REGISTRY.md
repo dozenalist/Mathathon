@@ -834,3 +834,24 @@ inequality is stated for **every 2-separated point set**, not only saturated pac
 what Theorem D's minimiser is. Caveats: the source is computer-assisted (interval arithmetic over
 tame Voronoi graphs), and its `Λ_dod` has inradius 2 with pairwise distances `≥ 2`, so a conversion
 to this project's inradius-1 normalisation is needed.
+
+### K15-X-C048 — "twelve centres at mutual distance ≥ 2 on radius 2 is exactly the icosahedral twelve" is false
+
+`GEOMETRIC_LEMMA_0438.md` line 204 asserts uniqueness of the twelve-point configuration. The
+icosahedral twelve on radius 2 have minimum mutual distance `4√2/√(5+√5) = 2.102924448 > 2`, so
+every sufficiently small perturbation is still admissible and the admissible set is
+**positive-dimensional**; Tammes-12 is the optimiser of the minimum distance, not the solution set
+of the inequality. Second reason (after `K_{1,3}`) that "the failure is exactly an isolated
+icosahedral cluster" is too strong. Also: `K_{1,3}` is geometrically realisable — `v = 0` plus
+`2·(1,1,1)/√3`, `2·(1,−1,−1)/√3`, `2·(−1,1,−1)/√3`, mutual distances `√(32/3) = 3.266 ≥ 2` — so
+`(M)` fails on a legal configuration of four points, not only on the 13-cluster.
+
+### K15-X-C049 — the "equality case is empty" corollary is true, in two lines from Hales
+
+`π/√18 = 0.740480489693 < 0.754697399337 = (4π/3)/V_dod`, so Hales' theorem alone forbids equality in
+the dodecahedral bound. The corollary is therefore **true**, and it cannot be used as independent
+evidence inside a route whose purpose is to prove Kepler — which is what `X-C041` records as the gap
+in Main's route (that route goes through Theorem C and needs a stability version of
+Hales–McLaughlin). A swarm finding, checked and corrected: its derivation addressed "`vol Ω = V_dod`
+off a density-zero set", which is stronger than density equality, so it proves the different (also
+true) statement that almost-everywhere exact dodecahedral cells are impossible.
