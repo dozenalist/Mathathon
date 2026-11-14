@@ -1598,3 +1598,20 @@ as `X-C051`/`X-C064`. Its endpoint scope (open arc of length exactly `2π/5` at 
 inconclusive there) is correct. Separately, the `c5_centres` fixture is 2-separated *including* the
 origin (distances `2.0`×7, `2.102924448`×5), and its half-space distances are `1.0`×7 and
 `1.051462224`×5 — exactly `ring_excess.py`'s `b`, so the lemma is applied to the right configuration.
+
+### K15-X-C096 — the parallel two-dodecahedra threshold is exactly `6cos ρ_c = 4.767926833750597`
+
+**Proposition.** Two regular dodecahedra of inradius 1 with parallel contact icosahedra, centres
+separated along a common face normal, are 2-separated **iff** `d ≥ 6cos ρ_c = 4.767926833750597…`.
+*Proof.* Contacts `2u_i` and `d e + 2u_i`; `e` the centre of the face `F = {a_1,a_2,a_3}` with
+`e·a_k = cos ρ_c = c`. The binding cross pair is `(2a_i, d e − 2a_k)` with `a_i, a_k` adjacent in `F`:
+`|d e − 2a_k − 2a_i|² = d² + 4(2 + 2/√5) − 8dc`, which equals 4 exactly when
+`d² − 8cd + 4 + 8/√5 = 0`, i.e. `d = 4c ± √(16c² − 4 − 8/√5) = 4c ± 2c`, the larger root being `6c` by
+`3c² = 1 + 2/√5` (sympy: the larger root is exactly `6cos ρ_c`; the smaller is `2cos ρ_c = 1.5893 < 2`).
+Other pairs are further: same-face `23.8`, antipodal `16 − 12c² = 8.42`, same-icosahedron `≥ 2.102924`.
+∎ Numerically (`c133_parallel_threshold.py`, 40 digits): `mindist(6c) = 2.000000`, `mindist(6c−10⁻⁹) =
+1.9999999992`.
+
+So the true threshold is in `[4cos ρ_c, 6cos ρ_c]`, and `C133`'s constant is exactly `2/3` of the natural
+one. `4cos ρ_c` is **not attained** (`c133_attain.py`): at that `d` the face-centre alignment is forced
+and the best twist still leaves a pair at `1.214124`.
