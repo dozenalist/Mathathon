@@ -5379,3 +5379,26 @@ compete for the same `η`: `vol − V_dod ≥ A_0Σε_i + 0.17Σθ_i²`. With `�
 So the pure-normal case is the binding one and it is *exactly* tight — which is what makes the inequality
 strict at `η` below the stated value and not at it. Any face excess buys room. **The number `δ₀ ≥ 3.76·10⁻³`
 therefore stands, with the strictness coming from `η < 0.17θ_max²` and not from a slack in this table.**
+
+#### `C142` addendum 5 — `L2`'s perturbation margin, measured (the constant I had left implicit)
+
+Addendum 1 argued `L2` by comparing the 13th neighbour's bisector distance `2cos ρ_c = 1.589309` with the
+dodecahedron's circumradius `R_dod = 1.258409`, margin `0.330900` — but a near-dodecahedral cell's
+circumradius is *larger*, and I had written "`O(θ) ≲ 0.05`" without bounding the constant. Measured
+(vertex enumeration under both deformations):
+
+| `θ` | `R` under tilt-all-toward-axis | `R` under independent random tilts |
+| --- | --- | --- |
+| `0` | `1.258409` | `1.258409` |
+| `0.0200` | `1.275644` (`+0.0172`) | `1.274798` (`+0.0164`) |
+| `0.0447` | `1.298242` (`+0.0398`) | `1.292256` (`+0.0338`) |
+| `0.0800` | `1.333256` (`+0.0748`) | `1.308908` (`+0.0505`) |
+
+So the growth is `≈ 0.9θ ≤ 0.040` at the needed `θ = 0.0447`, against the budget
+`2(cos ρ_c − θ) = 1.499909`: the comparison is `1.499909 > 1.298242`, **margin `0.201667`**, i.e. five
+times the growth. `L2` therefore survives perturbation with room, and the bound is now explicit rather
+than `O(θ)`.
+
+**What this does not do.** It measures the circumradius growth; it does not *prove* the `1.30` bound for
+all directions. That is a derivative bound of the same kind as `L1` and belongs in the same
+`M-CERT-002` job (vertex coordinates, hence their norms, are explicit functions of the 24 parameters).
