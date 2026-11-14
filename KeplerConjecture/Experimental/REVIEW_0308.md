@@ -796,3 +796,31 @@ first-order excess of `5 x 1.387572757 x 0.051462 = 0.357` over `V_dodeca`, whic
 **Revised status of `(P')`.** Sharp at fcc/hcp, survives every fixture, strictly stronger than the
 one-cell bound (§14.1), and at genuine risk at the icosahedral pair (§14.3). It is a well-posed
 target and a cheap one to test; it is not established and it is not safe.
+
+### 14.4 The best *elementary* bound for a payer, and it still loses to the imported theorem
+
+The five relaxed bisectors do buy something elementary, and it is worth recording as the strongest
+bound available without importing anything.
+
+`w_1`'s constraints around `c` are: the bisector with `c` at distance `1` (tangency), and the five
+bisectors with the outer neighbours at `b = 1.051462224`. Since `b > 1`, the ball `B(w_1, b)` is
+tangent to the five relaxed bisectors and is cut only by `c`'s bisector, so
+
+```
+vol Omega(w_1)  >=  (4pi/3) b^3  -  (pi h^2 / 3)(3b - h),    h = b - 1
+               =  4.869334759  -  0.008605516
+               =  4.860729243 .
+```
+
+That is a genuine improvement on the inscribed ball (`4.188790`, `+16.0 %`) and it uses the one
+feature that distinguishes these payers from a generic centre — that its five non-central
+neighbours sit just beyond tangency. But it is still well below
+
+```
+V_dodeca = 5.550291   (McLaughlin, imported)
+```
+
+so the imported theorem remains the best per-cell bound, and the ranking of §10c is unchanged. The
+value of recording this is that it closes the "did you use the relaxed neighbours?" question: yes,
+and they are not enough. Any proof of the cut must use the *simultaneity* of the twelve cells, not
+finer per-cell information.
