@@ -316,7 +316,7 @@ Checked, all consistent once Lemma 1′ is in place:
   that conclusion.
 - **The theorem itself, on stackings Main never enumerated.** `barlow_random_stackings.py`
   generates random legal period-`p` stackings (a closed `±1` walk on `Z/3`) and computes
-  every layer's cell: **67 layers over 8 random stackings of period 7-11, every one with
+  every layer's cell: **270 layers over 40 random stackings of period 3-12, every one with
   volume `4√2 = 5.656854249`, 12 contacts at distance 2, next distance `2√2 = 2.828427`,
   and an fcc or hcp fingerprint**. The type sequence also follows the theoretical rule — a
   layer is hcp exactly when the two adjacent `±1` steps have opposite signs — so the two-cell
