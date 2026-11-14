@@ -149,6 +149,17 @@ The optimum's cell is **exact** too, not merely an upper bound: at `θ = 111.797
 covering bound is `γ = 41.85°`, `max|vertex| = 1.304007` and the kill quantity is
 `3.0532 < 4`, so the §2 argument applies there verbatim.
 
+**And the optimum is attainable exactly.** `cos θ = −13/35` gives `θ = 111.8037°`,
+`sin θ = 4√66/35`, so the coordinates lie in `Q(√5, √66)`, and
+
+```
+cos theta = -13/35 :  vol = 5.897967157   max|vertex| = 1.303944   kill = 3.0529
+```
+
+— the family optimum to `3.5e-8`, with the same exact-cell theorem. So the `5.0e-5` by
+which the frozen fixture (`cos θ = −3/8`) sits above the optimum is a **choice of angle for
+a simpler field**, not a limitation of what can be frozen exactly.
+
 The legal window also has a clean interpretation: below `≈105.2°` the pentagon penetrates
 the ring (contact at `1.9938` at `105°`), and above `120°` it penetrates the *lower* ring —
 at `120°` the added margin is exactly `2.000000`, so the window closes on a contact at both
