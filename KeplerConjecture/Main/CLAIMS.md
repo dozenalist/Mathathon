@@ -4747,23 +4747,42 @@ with `ρ_r = 8/√(10+2√5) = 2.1029244485` (the ring centre-to-centre distance
 The `d²`-style monotonicity is genuine, not assumed: `α(ρ)` increases with `ρ` more slowly than
 `arccos((ρ/2)/√(R²+t²))` does, so the worst case really is the smallest admissible `ρ`.
 
-**(3) The one step that is not complete: the disk must lie inside the face.** Step (3) bounds the
-**uncut part of the ring plane**, not of the ring *face*. The face is that plane intersected with the
-other half-spaces, so
+**(3) The step that needed checking: does the ring *face* contain the disk? — it does, and the
+constant is EXACTLY tight.** Step (3) bounds the **uncut part of the ring plane**, not of the ring
+*face*; the face is that plane intersected with the other half-spaces, so `A_ring ≥ πt*²` needs the
+face's **inradius** to be `≥ t*`. It does not follow from the face's *area* (an elongated pentagon of
+area `1.25` can have a much smaller inradius), so it has to be computed. For a convex face with the
+contact point `y₀ = b n_r`, the in-plane reach in the direction of another face `j` at distance `d_j`
+and normal angle `θ_j` from `n_r` is
 
 ```
-A_ring  ≥  area( uncut disk ∩ face )
+reach_j  =  (d_j − b cos θ_j) / sin θ_j ,
 ```
 
-and `A_ring ≥ π t*²` needs the face to contain a disk of radius `t*` about the face's contact point —
-i.e. **the face's inradius must be `≥ ρ_r/4` along the whole path**. Nothing E states proves this, and
-it does not follow from the face's *area*: a pentagon of area `1.25` can have inradius well below
-`0.5257` if it is elongated. In the `C5` configuration the margin is comfortable — the binding
-half-space is the neighbouring ring face, which allows in-plane radius
-`b(1 − cos 63.43°)/sin 63.43° = 0.650` against `t* = 0.5257`, a `24%` margin — but **that is an
-estimate in one configuration, not a proof along the path**, and it is the concrete obligation to
-close. (It should be easy: the same `aφ`-type constraint that fixes the ring angle bounds the face's
-inradius from below, and the path's endpoints are the two extremal configurations.)
+and the inradius is `min_j reach_j`. With `d_j ≥ 1` for every face of the cell (the inradius of `Ω`
+is 1), the two binding candidates are:
+
+| face | `d_j` | `θ_j` | `reach_j` |
+| --- | --- | --- | --- |
+| axial contact `c` | `1` | `58.28252559°` | **`0.525731`** |
+| neighbouring ring face | `b` | `63.43494882°` | `0.649839` |
+
+So **`min_j reach_j = ρ_r/4 = t*` exactly**, attained in the direction of the *axial* face, with **zero
+margin**. Two consequences, and the second corrects an error in my first pass:
+
+- `A_ring ≥ πt*² = 0.868314853691` is **proved**, and `reach` is increasing in `θ`, so the only thing it
+  needs is `θ_j ≥ 58.28252559°` for every face `j` — which is exactly the *declared* constraint of E's
+  admissible family (`c` at `58.2825°`, the six free normals at `≥ 58.28°` from each ring direction).
+  The step is therefore sound **within the family as defined**, and the family's angle bound is
+  load-bearing, not decorative.
+- **The constant is exactly attained**, so it is *sharp*: any relaxation of the family's `58.28°`
+  bound breaks `A_min ≥ πt*²` immediately (`reach` at `50°` is `0.423`, at `40°` it is `0.303`). My
+  first pass reported a "`24%` margin" from the ring-ring constraint `0.649839` — that was the same
+  error I was auditing: it used one constraint and ignored a tighter one. **Corrected: the margin is
+  zero.**
+- Along the path the inradius is `(1 − R cos θ)/sin θ`, increasing as `R` decreases, so the minimum
+  over `R ∈ [1, b]` is at `R = b` — consistent with E's "worst `R` is `b`", and now proved rather than
+  sampled.
 
 **(4) What this audit does and does not accept.** The ring-excess lemma itself (§6.1) is correct and
 self-contained: `vol P(b) − vol P = (b−1)Σ d_i ∫A_i` is a homothety of face planes with an absolutely
@@ -4771,9 +4790,11 @@ continuous volume, and the finitely many combinatorial-type changes do not affec
 `D' ≥ V_dod` from Fejes Tóth, `(P')` for the twelve-face class is a theorem **given (3)**. It is not a
 universal pair claim, it is not a packing bound, and `RESULTS.md` does not move.
 
-*Status.* `AUDITED`. Premise re-attributed to Fejes Tóth via Hales–McLaughlin Thm 4.1 (primary source
-in hand); offset argument verified; face-inradius obligation recorded as the remaining gap. E owns the
-repair.
+*Status.* `AUDITED` — and, on the second pass, **complete**: premise re-attributed to Fejes Tóth via
+Hales–McLaughlin Thm 4.1 (primary source in hand); offset calculus verified; face-inradius proved and
+shown to be exactly tight, with the family's `58.28°` bound identified as the load-bearing hypothesis.
+E's twelve-face theorem `(P')` therefore stands *within the admissible family*, sharp. It is still not
+a universal pair claim and not a packing bound.
 
 ### K15-C137 — C's exact-volume completeness: a derived edge range is not a completeness proof (`OBLIGATION`)
 
@@ -4854,7 +4875,10 @@ structural.** The comparison that was asked for, with the numbers the ledger alr
 The hybrid's *shape* is `δ ≤ max{ (4π/3)/(V_dod + δ₀ρ_ε), 8/d³ }` with `d` the minimal separation.
 Every 3D control it is compared against collapses to the same obstruction: the term `δ₀ρ_ε` is
 non-explicit (`G11`), so the first branch returns strictness and no constant, and the second branch is
-`0.296` at `ε = 1` — far *below* truth, hence vacuous for dense packings. **A geometric/CE hybrid
+`0.296` at `ε = 1`. **CORRECTED at `C139`**: "vacuous for dense packings" is the wrong diagnosis —
+with the sharp `δ₀` the hybrid beats ML at *every* positive `ρ` (table in `C139`); what is true is that
+its output is a strictly monotone function of `δ₀` alone, so it is *entirely conditional*, not vacuous.
+**A geometric/CE hybrid
 cannot beat `0.7546974` here without `δ₀`, and with `δ₀` it would beat it only by the amount
 `δ₀ρ_ε/(V_dod(V_dod+δ₀ρ_ε))`, which is not evaluable.** This is the same conclusion as `D19` reached
 from the other side: the pointwise route is capped at `8/V_dod`, and the pair route is only as strong
@@ -4865,3 +4889,79 @@ not an improvement on `0.779747`, and `C124` is `PENDING_REVIEW`.
 
 *Status.* `TESTED_FINITE` for the numeric comparison, `OPEN` for the stability estimate. Attempts
 recorded: (2) partial with an explicit constant in one direction; (3) failed, with the reason.
+
+### K15-C139 — `G11` fallback, second attempt: stability must come from 2-separation, and the hybrid is *exactly* `δ₀` (`REFUTED` for one route, `TESTED_FINITE` for the comparison)
+
+`C138` recorded the `G11` reduction and a partial estimate. This entry records a sharper negative
+result about the *route* and a verified comparison that changes the diagnosis.
+
+**(1) The near-counterexamples, and why they matter.** Two polyhedra of inradius 1 have volume **below**
+`V_dod` and are the obvious way to build a "small cell":
+
+| polyhedron | facets | volume | deficit below `V_dod` | its contact directions, at distance `2` would be |
+| --- | --- | --- | --- | --- |
+| regular icosahedron | `20` | `5.0540561436` | `0.496235` | `1.427288` apart |
+| vertex-truncated dodecahedron (truncation plane at distance exactly `1`) | `13` | `5.499079004` | `0.051212` | `1.281704` apart |
+
+Both are excluded as Voronoi cells by exactly one thing: their contacts are not `2`-separated. (The
+truncated dodecahedron's new normal is at `37.377368°` from the three adjacent face normals — the same
+`ρ_c = 37.3774°` that `C133` uses, appearing a third time in this ledger.) **Consequence for `G11`:**
+no argument of the form "move a face / cut a vertex and watch the volume" can give stability, because
+the family it would produce is illegal only through `2`-separation, and volume is *not* monotone in
+that constraint. Any explicit `δ₀` must be proved **from the `2`-separation of the contact set**.
+
+**(2) The one explicit estimate available, and why it is not uniform.** With the `12` normals fixed and
+face distances `1 + e_i`, the ring-excess lemma (`C136` §4, E's) gives exactly
+
+```
+vol Ω − V_dod  =  Σ_i ∫₀^{e_i} A_i(t) dt  ≥  A_min · Σ_i e_i ,
+```
+
+so stability *would* follow from a **uniform lower bound `A_min > 0` on face areas**. There is none: a
+Voronoi cell can have an arbitrarily small facet (a distant neighbour clips off a sliver), and the
+sliver's area can be made arbitrarily small while the volume changes arbitrarily little. So this route
+gives an explicit rate only in families where a face-area bound is separately available (E's
+twelve-face family, `C136`, where `A_min ≥ π(ρ_r/4)² = 0.868315`). **Not a proof of `G11`.**
+
+**(3) The hybrid, compared against the 3D controls — the comparison is exactly `δ₀` and nothing else.**
+`C108`'s Theorem C gives `δ ≤ (4π/3)/(V_dod + δ₀ρ)`. Evaluating it with the **sharp** (unproved)
+`δ₀ = 2√32 − 2V_dod = 0.213126442`:
+
+| `ρ` | hybrid bound | vs ML `0.754697399` |
+| --- | --- | --- |
+| `0.50` | `0.740480490` | **= truth exactly** |
+| `0.40` | `0.743280859` | better by `0.011416540` |
+| `0.30` | `0.746102490` | better by `0.008594910` |
+| `0.20` | `0.748945625` | better by `0.005751775` |
+| `0.10` | `0.751810511` | better by `0.002886888` |
+| `0.05` | `0.753251189` | better by `0.001446210` |
+| `0.01` | `0.754407713` | better by `0.000289686` |
+
+So the hybrid is **not** vacuous — with the sharp `δ₀` it beats Hales–McLaughlin at *every* positive
+`ρ`, and reproduces the truth exactly at `ρ = 1/2` (which is `C108` (iii), now verified numerically
+rather than asserted). But its output is a **strictly monotone function of `δ₀` alone**: the map
+`ρ ↦` bound is fixed once `δ₀` is. **`C138`'s phrase "vacuous for dense packings" was wrong** and is
+corrected here: the hybrid is *entirely conditional*, not vacuous. Comparing it against the CE/CDS22
+controls therefore has no independent content — CE two-point `0.779747` (`+5.303%` over truth), CDS22
+three-point `0.770271` (`+4.023%`), `K33b` `0.779966` (`+5.332%`), ML `0.754697399` (`+1.920%`) are all
+*above* ML and none of them enters the hybrid's formula.
+
+**(4) What would close `G11`, stated as a target someone can attack.** By (1) and (2), the needed
+statement is:
+
+> **Target.** There is an explicit `c > 0` such that every Voronoi cell of a `2`-separated set whose
+> `12` contact directions are `2`-separated and whose volume is `≤ V_dod + η` has contact directions
+> within `O(√η)` of icosahedral (in Hausdorff distance on `S²`).
+
+The `√η` is the natural rate (`vol` is quadratic in normal displacements at a maximiser), `C133`'s
+covering-radius argument converts normal proximity into `O(·)` in the exclusion distance, and that
+composition would give an explicit `δ₀`. **Not attempted here beyond the statement**: the hard part is
+the lower bound on `vol − V_dod` in terms of normal displacement for `12` points on `S²` with pairwise
+angular distance `≥ 60°`, which is a stability statement about the icosahedral code.
+
+**Not accepted.** No packing bound; `RESULTS.md` does not move. `C124` remains `PENDING_REVIEW`, and
+`G11` remains open.
+
+*Status.* (1) `REFUTED` (the volume-monotonicity route to stability); (2) explicit but non-uniform;
+(3) `TESTED_FINITE` with the table verified; (4) `OPEN` target stated. No claim of progress on `G11`
+beyond narrowing it.

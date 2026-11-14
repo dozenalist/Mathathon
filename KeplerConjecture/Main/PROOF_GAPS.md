@@ -139,3 +139,16 @@ The first version of the `ρ_ε = 0` branch used the *coverage* lower bound on `
 an upper bound. The upper bound comes from saturation + disjointness + `Ω(v) ⊆ B(0,R+2)`. Both bounds
 and both density cases are now stated separately in `C132`. Recorded because the same shape of error
 (using a bound in the direction it does not have) has now occurred three times in this project.
+
+## G17 — CLOSED and SHARP (review block 0738, `C136` second pass)
+
+The obligation was: does the ring **face** contain the disk of radius `t* = ρ_r/4 = 0.5257311121` whose
+uncut-ness step (3) proves in the ring **plane**? For a convex face the in-plane reach toward another
+face at distance `d_j` and normal angle `θ_j` is `(d_j − b cos θ_j)/sin θ_j`, and with all face
+distances `≥ 1` the binding constraint is the **axial** face at `θ = 58.28252559°`, giving exactly
+`t*` — **zero margin**. So `A_min ≥ πt*² = 0.868314853691` is proved, `reach` is increasing in `θ`, and
+the load-bearing hypothesis is the family's declared `≥ 58.28°` bound. (My first pass reported a `24%`
+margin from the ring-ring constraint `0.649839`; that was the same error I was auditing — one
+constraint consulted, a tighter one ignored. Corrected.)
+
+**`G18` (C's exact-volume completeness) remains open**, as does `G11`.
