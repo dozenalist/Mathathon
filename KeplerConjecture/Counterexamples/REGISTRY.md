@@ -493,3 +493,156 @@ every sign condition reduced to three rational PSD tests.
 
 Reproduce: `python3 both_sides_gmargin.py` (single configuration, ≈6 s); verify:
 `python3 verify_all.py` (**ALL PASS**).
+
+### K15-X-C018 — the repaired flow theorem is correct at all six requested points
+
+`Main/CUT_FLOW_THEOREM.md` at `aa52147` (main tip `9d6414d`) passes the audit Main requested in
+`AUDIT_REQUEST_X.md` §5: directed model, cut orientation with `X = ∅` forced, demand satisfaction
+including `b(v) = 0`, Farkas + coarea, Theorem 2 without `sup_e Φ_e < ∞`, and the two-branch
+threshold formula. No fifth defect found. Evidence: `Reviews/audit_cutflow_repair.py` (exits 0),
+which agrees with a direct LP on 115 random instances: `(C) ⟺ LP feasible ⟺ Φ ≥ t*`. One instance
+needs both threshold branches at once (isolated `+1` vertex disjoint from the §5(b′) star:
+finite branch `4/3`, answer `+∞`).
+
+### K15-X-C019 — `X_C017_small`: 3.80× smaller certificate at `0.782267254856`
+
+`X_C017_small.json`: same both-sides Gram construction, entries on the grid `2⁻²⁴`, ≤ 20 digits
+(was 281), 2,646 bytes (was 10,056), density `0.782267254856` (`3.5·10⁻⁸` weaker than `X-C017`).
+`L p = 0` exactly; `G, A, B ⪰ 0` by rational `LDLᵀ`; no sign predicate. Verified by
+`python3 verify_XC017_readable.py X_C017_small.json`. Not a new best bound, not a Kepler proof.
+
+### K15-X-C020 — erratum: witness W6 of `REVIEW_0353` §3 is wrong
+
+The two-disjoint-edges row (`b = (1,−1)` and `(2,−2)`, `F = V`) is neither "infeasible" nor
+"feasible for every `Φ > 0`": the singleton cuts bind, so `t* = 2` and it is feasible iff
+`Φ ≥ 2`. The point the row was meant to pin is still valid — `U = V` has `Σ_U b = 0 ≤ 0` with
+`δ⁺(U) = ∅`, so an empty boundary with zero sum is **not** an obstruction. W1–W5 stand.
+
+### K15-X-C021 — the height of `X_C017` is lcm blow-up, not the pivot block
+
+Each term of a constraint row has a `≤ 17`-digit denominator; the terms' denominators are
+mutually coprime and the lcm of 21 of them is 118 digits. Rounding to `10⁻ᵐ` cannot help; rounding
+to the dyadic grid `2⁻ᵐ` that `S = 8` already uses removes the blow-up. Grids coarser than `10⁻⁶`
+break `A`, whose margin was forced to `10⁻⁶` by the SDP (`G` survives coarser grids: `ε_G = 10⁻²`).
+
+### K15-X-C022 — no small-denominator both-sides triple exists in the `S = 8` Gram basis
+
+Frontier over the forced margin `ε_AB` (each row: the coarsest dyadic grid that survives exact
+`LDLᵀ`, and the resulting size): `ε_AB = 10⁻⁶` → density `0.7822673`, grid `2⁻²⁴`, 20 digits,
+2,646 bytes; `10⁻³` → `0.783625`, `2⁻¹⁸`, 18 digits, 2,231 bytes; `10⁻²` → `0.795846`, `2⁻¹²`,
+16 digits, 1,833 bytes; `5·10⁻²` → `0.850160`, `2⁻¹⁰`, 16 digits, 1,732 bytes. Every row cheaper
+than 2,646 bytes is worse than `X-C016` (`0.783097911`), so nothing is gained at comparable
+strength. The digit floor is structural: row 11's pivot coefficient is `S⁻¹⁰`, so the solve
+multiplies by `8¹⁰ ≈ 1.07·10⁹` (~9–10 digits; corrected from an earlier `8¹¹`) on top of magnitude
+and grid. A 5-digit certificate in this basis does not exist; `S = 1` would remove `8¹⁰` but reintroduce the lcm problem through
+the Fourier map's own denominators. Reproduce: `python3 x_c017_shrink.py`.
+
+### K15-X-C023 — C's four `cut_flow.py` defects are reproducible by one portable script
+
+`python3 Reviews/repro_c_cutflow_defects.py` (7/7 checks, exit 0) against
+`Reviews/C_cut_flow_4bcbd3a.py`, a byte copy of blob `700e44f6` (unchanged at the current `comp`
+tip `790efa73`): (D1) `V_DOD_LO − V_dod = +3.861·10⁻¹²`, so the whole enclosure is above the
+truth and `b0 = √32 − V_DOD` is over-estimated; (D2) `build_13(2.1029)` returns 42 edges, not
+12 — the gate is `2.4448·10⁻⁵` below the true edge `4√2/√(5+√5) = 2.102924448476534`, and
+phantom edges make every cut cheaper, so the row's `t*` is too small and belongs to
+`R ≥ 2.1029244`; (D3) `build_fcc_patch(1)` raises `TypeError` before any geometry; (D4) at
+period 16 the copies do not interact (gap 12 > R) and all 12 ring cells are extreme points of
+the cluster's convex hull, hence unbounded, hence `b = −∞` on them — `(C)` holds at `Φ = 0` for
+every `U` and the fixture is no evidence at any `Φ`.
+
+### K15-X-C024 — Theorem 1 and the threshold formula, decided in exact arithmetic
+
+`Reviews/audit_cutflow_repair.py` §E: 196 random small instances (`n ≤ 5`, `b ∈ {−2..2}⁵`,
+`Φ ∈ {0,1,2,3}`, random `F ⊆ V`) decided by **Fourier–Motzkin elimination over ℚ** agree with the
+cut condition in every case (`0/196`). Combined with §D (115 instances via HiGHS and via
+`Φ ≥ t*`), Theorem 1's statement and the threshold formula are verified against two independent
+decision procedures, one of which uses no floating point at all.
+
+### K15-X-C025 — Main's `η ≥ 0` guard closes the REVIEW_0308 §17 witness without moving a number
+
+`Reviews/verify_eta_closed.py` (exit 0): blob `909a50a` on C's row `n = 27`, `ρ = 41/20`, with
+`η = −7611431/500000000` returns density `0.015185801` (the 1.5% witness); blob `5caa1c9` returns
+`None`; the `η = 0` control returns `0.780370311` on both, unchanged. The three adversarial
+families (`Reviews/x_family_check.py`) give **0 wrong verdicts** against `5caa1c9`. Integration
+note: `check()` now returns `None` for `η < 0`, so a caller that computes `η` as `max p` on the
+shell will fail loudly (intended); `shell_fixture.py` exits 2, `checker_adversarial.py` tests it.
+
+### K15-X-C026 — the repaired checker passes 3,600 further adversarial queries
+
+`Reviews/x_family_check.py Reviews/shell_check_5caa1c9.py 1200 11`: **0 wrong verdicts in 3,600
+random-family queries** (roots in `[0,2]`, multiplicities 1–2, both signs of the leading
+coefficient), 0 in the probe-targeted family, 0/8 in the near-touching family `(u−r)² ∓ ε`. The
+truth is the proven algebraic rule, computed independently of any checker. This is a regression
+check on the predicate part only: the `5caa1c9` change is the `η ≥ 0` precondition, so no
+predicate should have moved, and none did.
+
+**Correction to X-C025's scope.** C's `solve_laguerre` has carried the constraint `−η ≥ 0` since
+at least `4bcbd3a` (with a comment recording that the opposite sign let the objective drive `η` to
+the `−1e5` box bound). So the C-side pipeline was already guarded; the exposure was confined to
+the checker's licence, which is what `5caa1c9` closes. The `X_eta_negative_witness` input is
+synthetic (C's committed row with `η` replaced by the shell maximum), not a run C produced.
+
+### K15-X-C027 — the readable verifier rejects tampered certificates
+
+`Reviews/negative_control_readable.py` (exit 0): of four copies of `X_C017_small.json`,
+`G[0,1] += 1/1000`, `A[1,1] += 10⁻⁶` and `A[0,1] = 100` are all REJECTED by
+`verify_XC017_readable.py`, and the unmodified copy is VALID. The `10⁻⁶` perturbation moves the
+density in the 7th decimal only, so it would pass any float comparison of the bound; it fails
+because the exact identity `L p = 0` breaks. A verifier that accepted it would be checking nothing.
+
+### K15-X-C028 — Main's D18 reverse condition is not triggered; D3 and D16 states
+
+`X-C018` found no fifth defect in the repaired `CUT_FLOW_THEOREM.md`, so D18's reverse condition
+("reverse if X's audit of the repaired statement finds a further defect") is **not** triggered.
+D16's acceptance test stands at `5caa1c9` on the evidence of `X-C025`/`X-C026`, with generic
+predicate soundness still `SUSPENDED` as Main's docstring says. D3's anchor is respected: nothing
+here is progress below `0.754697399337`. Still live and unchanged from an earlier block:
+`Main/NEXT_PACKAGE.md` item 1 asks for `Σ_{v∈K} vol Ω(v) ≥ 13V` with "even `V = 5.40`", which
+Hales–McLaughlin already implies (`13 V_dod = 72.1538 > 70.2`); the item needs rewording before a
+block follows it.
+
+### K15-X-C029 — `CLAIMS.md` `K15-C093` still states two claims its own repair note refutes
+
+The bullet list at the head of the `K15-C093` entry carries pre-repair text: Theorem 2 "and
+`sup Φ < ∞`" with "Tychonoff on `∏_e[−Φ₀,Φ₀]`" (removed by the repair), and "the variant
+`b(a) = 4` is infeasible at `Φ = 1` with the violating cut `{a}`" (the violating cut is `F`, and
+infeasibility holds at every `Φ`). The repair note 20 lines below says both are wrong. Editorial,
+not mathematical: the document is correct, the ledger's summary of it is not. Consequence if
+unfixed: a reader takes away a superfluous hypothesis and `4/3` as the threshold of a vector that
+has none. No published claim depends on either (`C084`, `C085` do not use `4/3`), so this is
+documentation only.
+
+### K15-X-C030 — `0.008880268414417` is a lower bound, not "the exact threshold"
+
+The exact singleton constant is `(4√2 − V_dod)/12 = 0.0088802684147391605…` with
+`V_dod = 100(3√10+7√2)/(25+11√5)^{3/2}`. Main's `0.008880268414417` is lower by `3.22·10⁻¹³ =
+3.8607·10⁻¹²/12`, i.e. it inherits C's `V_DOD` enclosure error (D1 of `X-C023`), and the claim
+that "the two routes give the same number" holds only because both use that enclosure. The
+direction is safe (an over-estimate of `V_dod` weakens a necessary condition), so the number is a
+valid floor; the word "exact" is what is wrong. Quote `0.0088802684147391605`, or call it a bound.
+
+### K15-X-C031 — the family suite catches `a8526a8` (50/900) and `5619c1d` (8/308), and is blind to others
+
+Same three families against five checker blobs, blob ids verified by `git hash-object`:
+`a8526a8` (`Reviews/shell_check_main.py`) **50/900 random, 3 probe-targeted wrong**; `5619c1d`
+(`shell_check_9461aae.py`) 0/900, **5 targeted**, **3/8 near-touching**; `7dc6be58`
+(`shell_check_0a85bee.py`) 0/900, 0, 0/8; `909a50a` (`shell_check_7c56c5ee.py`) 0/900, 0, 0/8;
+`5caa1c9` 0/3600, 0, 0/8. The suite is therefore not vacuous. It is blind to two defect kinds: a
+missing precondition (`909a50a`'s `η` licence, caught by `X-C025`'s witness instead) and whatever
+`7dc6be58` is — that blob is not in my recorded sequence `a8526a8 → 5619c1d → 812105c3 → 909a50a`,
+so no claim is made about it. Passing the families is evidence, not proof; `K15-C098`'s
+`SUSPENDED` label stays correct. **Correction recorded here:** my first version of this table
+labelled `shell_check_0a85bee.py` as `a8526a8`; it is `7dc6be58`, and running the real `a8526a8`
+changed the conclusion from "the suite misses this one" to "the suite catches it 50/900".
+
+**Latent fifth defect (not live).** `exhaustive_cut_scan(b_lo, edges)` raises
+`TypeError: 'NoneType' object is not subscriptable` when no subset has a crossing edge — `best`
+stays `None` and is indexed at `best[0]`. `main()` guards this with `if not edges`, so
+`python3 cut_flow.py` runs; the gap is in the function's contract (its docstring promises `None`
+only for an oversized scan) and for any caller that evaluates the `R < 2` regime through it.
+Recorded in `Reviews/repro_c_cutflow_defects.py` as D5, labelled latent.
+
+**Cosmetic mismatch (D7).** `exhaustive_cut_scan` returns `t_star = max_U Σ_U b/|δ⁺(U)|` without
+the repaired theorem's `max(0,·)`, so on an all-negative instance it reports `t_star = −1` where
+`t* = 0`. `Φ ≥ t*` is unaffected (`Φ ≥ 0` is a hypothesis); the number itself is not the theorem's
+`t*`.
