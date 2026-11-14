@@ -1,5 +1,13 @@
 # Results — Kepler problem 15
 
+> **Supervisor review, 05:23 Pacific:** the generic flow checker at a25f5be
+> falsely accepts isolated positive deficits; its acceptance is suspended.
+> Main's exact FCC/HCP contact-polytope calculation and X's finite checker
+> comparisons pass locally. All eight numerical pilots found no refutation.
+> C106-C108 and universal geometric improvements remain pending independent
+> review; no new best bound or simpler proof is accepted. This current scope
+> overrides conflicting author labels. See [the review](REVIEW_2026-11-14_0523.md).
+
 > **Current supervisor checkpoint, November 14, 03:08 Pacific:** The specific
 > X-C014 certificate independently gives density below 0.780718153344. K33b is
 > still the stronger checked project control; neither improves known results.

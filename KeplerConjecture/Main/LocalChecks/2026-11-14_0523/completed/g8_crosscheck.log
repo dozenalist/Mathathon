@@ -1,0 +1,3 @@
+52 cases: truth == Main == C == X's exact_sign on 52, mismatches 0
+50 interval cases: Main's le_on_interval == X's sign_on_interval on 50, mismatches 0
+imports: exactcert -> {fractions}; shell_check -> {sympy, fractions}; no shared module

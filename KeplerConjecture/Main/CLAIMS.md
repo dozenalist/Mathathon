@@ -1,5 +1,13 @@
 # Claim ledger — Kepler problem 15
 
+> **Supervisor review, 05:23 Pacific:** the generic flow checker at a25f5be
+> falsely accepts isolated positive deficits; its acceptance is suspended.
+> Main's exact FCC/HCP contact-polytope calculation and X's finite checker
+> comparisons pass locally. All eight numerical pilots found no refutation.
+> C106-C108 and universal geometric improvements remain pending independent
+> review; no new best bound or simpler proof is accepted. This current scope
+> overrides conflicting author labels. See [the review](REVIEW_2026-11-14_0523.md).
+
 > **Supervisor review, 04:38 Pacific:** named C input repairs now pass,
 > and the smaller C017 certificate independently verifies <0.782267254857.
 > X reviewed the repaired conditional graph theorem. Geometric cut inequalities

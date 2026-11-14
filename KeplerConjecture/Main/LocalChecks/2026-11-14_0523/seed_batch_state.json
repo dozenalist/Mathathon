@@ -1,0 +1,70 @@
+{
+  "started_utc": "2026-11-14T12:50:14.088649+00:00",
+  "status": "finished",
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "per_seed_search_seconds": 45,
+  "per_seed_hard_cap_seconds": 60,
+  "total_hard_cap_seconds": 420,
+  "cpu_affinity_bit": 1,
+  "memory_cap_bytes": 1073741824,
+  "results": [
+    {
+      "seed": 1,
+      "status": "completed",
+      "exit_code": 0,
+      "elapsed_seconds": 47.172,
+      "peak_observed_bytes": 78430208
+    },
+    {
+      "seed": 2,
+      "status": "completed",
+      "exit_code": 0,
+      "elapsed_seconds": 46.656,
+      "peak_observed_bytes": 79265792
+    },
+    {
+      "seed": 3,
+      "status": "completed",
+      "exit_code": 0,
+      "elapsed_seconds": 47.141,
+      "peak_observed_bytes": 78774272
+    },
+    {
+      "seed": 4,
+      "status": "completed",
+      "exit_code": 0,
+      "elapsed_seconds": 47.047,
+      "peak_observed_bytes": 78807040
+    },
+    {
+      "seed": 5,
+      "status": "completed",
+      "exit_code": 0,
+      "elapsed_seconds": 46.75,
+      "peak_observed_bytes": 78106624
+    },
+    {
+      "seed": 6,
+      "status": "completed",
+      "exit_code": 0,
+      "elapsed_seconds": 47.578,
+      "peak_observed_bytes": 78508032
+    },
+    {
+      "seed": 7,
+      "status": "completed",
+      "exit_code": 0,
+      "elapsed_seconds": 47.359,
+      "peak_observed_bytes": 78630912
+    }
+  ],
+  "finished_utc": "2026-11-14T12:55:43.784202+00:00"
+}

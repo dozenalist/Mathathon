@@ -1,16 +1,13 @@
 # Kepler Conjecture: progress so far
 
-Updated at the November 14, 2026, 04:38 Pacific scheduled review, published with
-the preceding 03:53 checkpoint. Explicit rational-matrix certificates now have
-independent checks and a smaller version. The strongest such certificate remains
-below 0.782267220134; the smaller version is slightly weaker. Named geometric
-input defects are repaired and pass targeted local checks. The graph theorem
-has an independent review, while the global geometric inequalities and exact
-Barlow/C5 certification remain open. Main received another full-hour Ultramath
-assignment; the other three chats were actively continuing theirs. One local
-search pilot found no improvement, and seven capped seeds are running locally.
-No new best bound, simpler Kepler proof or new Lean result is accepted. Checks
-remain every 45 minutes, with Sair-Watch stopped.
+Updated at the November 14, 2026, 05:23 Pacific scheduled review. An independent
+probe reproduced a serious flow-checker error, which is now assigned for repair.
+An exact contact-cell calculation passed locally. Eight short geometric
+searches found no counterexample, and the new general geometric argument is
+still under review. All four chats have new verified Ultramath assignments;
+their earlier work did not establish full substantive hours. No local job is
+still running. No new best packing bound, simpler Kepler proof or new Lean
+result is accepted. Checks continue every 45 minutes without Sair-Watch.
 
 ## Where the project stands
 
@@ -283,6 +280,30 @@ The other three chats were already doing substantive work when refreshed, so
 they were left on their existing tasks. No full substantive hour is inferred
 from an interim push or a self-reported clock. The [04:38 review](Main/REVIEW_2026-11-14_0438.md)
 records the exact source cutoff, scope and delivery evidence.
+
+## What the 05:23 scheduled review established
+
+The flow checker could overlook a vertex absent from its edge list. An isolated
+vertex with a positive deficit was therefore accepted even though it cannot
+receive any flow. We reproduced this independently on the current source,
+including an entirely edgeless example. This refutes the software's acceptance,
+not the correctly stated graph theorem. Computation is repairing the public
+interface and Counterexamples will audit the fix.
+
+Main's replacement calculation for the two Barlow contact-cell types uses
+exact field arithmetic with directed interval signs. It passes locally and
+supports the repaired contact-only containment step. A separate check found
+agreement on 102 selected polynomial-sign cases; general soundness remains
+an open proof obligation.
+
+The seven delayed geometric searches all finished. Across the eight short
+pilots the best value was 5.898007181138247, above the target needed for a
+counterexample. These runs neither prove the proposed pair bound nor certify
+all configurations. Main has drafted a conditional route from pair volumes to
+density, but its matching hypothesis and compactness/equality arguments still
+need independent checking. Those are now explicit worker assignments, not
+accepted improvements. The [05:23 technical review](Main/REVIEW_2026-11-14_0523.md)
+records sources, objections and exact delivery evidence.
 
 ## How the next stages will run
 

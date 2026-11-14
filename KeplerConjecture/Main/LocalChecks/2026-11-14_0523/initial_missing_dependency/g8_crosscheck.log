@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\carte\lean\Mathathon\.sair\runs\01a1d8c0-f50f-7352-a61a-3927660a8eea\kepler15\review-20261114-0523\sources\Counterexamples\KeplerConjecture\Counterexamples\Reviews\g8_checker_independence.py", line 17, in <module>
+    import sympy as sp
+ModuleNotFoundError: No module named 'sympy'

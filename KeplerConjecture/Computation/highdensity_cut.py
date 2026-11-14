@@ -99,7 +99,7 @@ def self_test():
     check("FCC's covering radius sqrt2 = 1.41421 exceeds R_0, so FCC is not caught",
           mp.sqrt(2) > R_Phi(0))
     check("HD3: b_min(R) > 0 exactly when R < R_0", b_min(R_Phi(0)) > 0 and b_min(R_Phi(0)) < mp.mpf("1e-25"))
-    check("HD3: b_min(1.10) > 0 > b_min(1.11), so the sign changes at R_0", 
+    check("HD3: b_min(1.10) > 0 > b_min(1.11), so the sign changes at R_0",
           b_min("1.10") > 0 and b_min("1.11") < 0, (float(b_min("1.10")), float(b_min("1.11"))))
     # with |delta^+| <= C rho R L^2 and C = 8 (a crude but explicit boundary constant), the cut
     # fails once L > Phi C R / b_min: a finite threshold for every finite Phi, growing linearly.

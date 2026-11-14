@@ -659,3 +659,21 @@ interim completions did not trigger duplicate assignments. Main received local
 results at its next step without resetting its new hour. Exact IDs and times:
 Main/ASSIGNMENTS_2026-11-14_0438.json. Detailed scope, sources and pending jobs:
 Main/REVIEW_2026-11-14_0438.md. No new best bound or simpler Kepler proof accepted.
+
+## Supervisor checkpoint: November 14, 05:23 Pacific
+
+Merged M c4134c2, C a25f5be, E 93c61a8, X a35b713 with original authorship.
+K15-SUP-0523-01 independently reproduces isolated-vertex and edgeless false
+accepts in the flow checker; generic acceptance is suspended. The exact
+FCC/HCP contact-polytope calculation passes (-02), and 52 half-line plus 50
+interval checker vectors agree (-03, finite tests only). All eight bounded
+local geometry pilots finished without refutation (-04). Main's C106-C108
+pair bridge/compactness statements retain independent proof obligations (-05).
+No new best bound, simpler Kepler proof or Lean result is accepted.
+
+All four chats received one fresh full-hour assignment, and actual model calls
+verify Ultramath. Earlier wall-clock spans do not establish 60 substantive
+minutes. Prompt IDs, actual starts and earliest finishes are recorded in
+Main/ASSIGNMENTS_2026-11-14_0523.json. Sources, rejected artifacts and limitations
+are in Main/SYNC_2026-11-14_0523.json and Main/REVIEW_2026-11-14_0523.md.
+All local jobs ended; 45-minute checks persist and watchers remain stopped.

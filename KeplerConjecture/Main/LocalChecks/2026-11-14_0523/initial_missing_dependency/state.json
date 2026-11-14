@@ -1,0 +1,29 @@
+{
+  "started_utc": "2026-11-14T13:31:22.844876+00:00",
+  "status": "finished",
+  "cpu_affinity_bit": 1,
+  "memory_cap_bytes": 1073741824,
+  "jobs": [
+    {
+      "name": "contact_polytope",
+      "role": "Main",
+      "script": "Computation/contact_cell_exact.py",
+      "cap_seconds": 90,
+      "exit_code": 1,
+      "status": "completed",
+      "elapsed_seconds": 0.265,
+      "peak_observed_bytes": 2076672
+    },
+    {
+      "name": "g8_crosscheck",
+      "role": "Counterexamples",
+      "script": "Counterexamples/Reviews/g8_checker_independence.py",
+      "cap_seconds": 60,
+      "exit_code": 1,
+      "status": "completed",
+      "elapsed_seconds": 0.25,
+      "peak_observed_bytes": 2080768
+    }
+  ],
+  "finished_utc": "2026-11-14T13:31:23.373238+00:00"
+}

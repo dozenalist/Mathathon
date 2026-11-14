@@ -28,5 +28,8 @@
       "elapsed_seconds": 46.656,
       "peak_observed_bytes": 79265792
     }
-  ]
+  ],
+  "completion_review": "../2026-11-14_0523/README.md",
+  "completed_utc": "2026-11-14T12:55:43.784202+00:00",
+  "result": "All seven completed; finite numerical experiments, no refutation found"
 }
