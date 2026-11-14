@@ -63,16 +63,29 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--iters", type=int, default=900)
     ap.add_argument("--seed", type=int, default=2026)
+    ap.add_argument("--uphill", type=float, default=0.0,
+                    help="basin-hopping tolerance: accept moves up to this relative worsening")
+    ap.add_argument("--degree", type=int, default=5,
+                    help="5 or 7; the degree-5 optimum is embedded as the degree-7 start")
     ap.add_argument("--out", default="out/sos_qside_polish.json")
     a = ap.parse_args()
     import importlib.util
     spec = importlib.util.spec_from_file_location("sc", "/tmp/sc662.py")
     SC = importlib.util.module_from_spec(spec); spec.loader.exec_module(SC)
-    K = 5
+    K = a.degree
     random.seed(a.seed)
-    # known admissible start
-    rs = [[F(0)], [F(3)], [F(-6), F(3, 2)]]
-    ss = [[F(3, 2), F(-2, 3)]]
+    if K == 5:
+        rs = [[F(0)], [F(3)], [F(-6), F(3, 2)]]
+        ss = [[F(3, 2), F(-2, 3)]]
+    elif K == 7:
+        # the degree-5 optimum, PADDED to degree 3 factors.  Padding with zeros keeps q and p
+        # unchanged, so the start is admissible and the hill-climb begins at 1.99064200.
+        rs = [[F(0)], [F(-1, 12)], [F(-19, 4), F(11, 6)]]
+        ss = [[F(7, 4), F(-2, 3)]]
+        rs = [r + [F(0)] * (4 - len(r)) for r in rs] + [[F(0)]]
+        ss = [s + [F(0)] * (4 - len(s)) for s in ss] + [[F(0)]]
+    else:
+        raise SystemExit("degree must be 5 or 7")
     def score(rs, ss):
         q = build(rs, ss)
         if sp.degree(q) > K:
@@ -91,17 +104,23 @@ def main():
     best = (base[0], copy.deepcopy(rs), copy.deepcopy(ss), base[2], base[3], base[4])
     print("start: p0/q0 = %.10f  -> Delta = %.8f" % (best[0], best[0] * 4 * 3.141592653589793 / 3))
     improved = 0
+    cur = (best[0], copy.deepcopy(best[1]), copy.deepcopy(best[2]))
     for it in range(a.iters):
-        rs2 = copy.deepcopy(best[1]); ss2 = copy.deepcopy(best[2])
+        rs2 = copy.deepcopy(cur[1]); ss2 = copy.deepcopy(cur[2])
         # pick a random polynomial and a random coefficient, perturb
         which = random.random() < 0.6
         pool = rs2 if which else ss2
         i = random.randrange(len(pool)); j = random.randrange(len(pool[i]))
         pool[i][j] += F(random.choice([-2, -1, 1, 2]), random.choice([1, 2, 3, 4]))
         r = score(rs2, ss2)
-        if r is not None and r[0] < best[0] - 1e-12:
-            best = (r[0], rs2, ss2, r[2], r[3], r[4]); improved += 1
-            if improved % 5 == 0:
+        if r is not None:
+            # basin-hopping: move to the new point if it is better than the CURRENT one, or
+            # within UPHILL of it; keep `best` separately so a bad walk cannot lose the record.
+            if r[0] < cur[0] or (a.uphill > 0 and r[0] < cur[0] * (1 + a.uphill)):
+                cur = (r[0], rs2, ss2)
+            if r[0] < best[0] - 1e-12:
+                best = (r[0], rs2, ss2, r[2], r[3], r[4]); improved += 1
+            if improved % 5 == 0 and r[0] < best[0] - 1e-12:
                 print("  iter %4d improved: p0/q0 = %.10f  Delta = %.8f"
                       % (it, best[0], best[0] * 4 * 3.141592653589793 / 3))
     print("\nimprovements: %d ; best p0/q0 = %.10f" % (improved, best[0]))

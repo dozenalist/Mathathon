@@ -520,3 +520,19 @@ fixtures are exact equality cases.
 **Progression recorded in full** so the shape of the search is visible: random `2.8236` → wider
 random `2.6199` → hill-climb `1.9906`. Acceptance at every step was exact (`exactcert`), with the
 float screen used only to steer.
+
+### K15-COMP-028 — 2026-11-14 — Computation (role C), basin-hopping breakthrough
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-SOSQSIDE-005** | **VERIFIED_EXACT** | best explicit-Gram certificate: **`Δ ≤ 1.41370455`**, with `q = Σ r_i² + u Σ s_j²` over five rational squares of degree ≤ 2, and the Gram identity re-checked by expanding both sides. `4.2×` better than the `p`-side cubic family, `1.4×` better than the previous Fourier-side record | `out/hop_u0.05_s17.json`, `REVIEW_0138.md` §13 |
+| K15-C-SOSLOCALOPT-001 | measured | the `1.99064200` plateau was a **local** optimum: 2 500 single-coefficient moves from the degree-7 embedding found **zero** improvements, but allowing uphill moves (basin-hopping) escaped to `1.41791658` and then `1.41370455` | same |
+
+**Search ladder recorded in full** (it is the useful part): random `2.8236` → wider random
+`2.6199` → hill-climb `1.9906` → no improvement at larger degree → basin-hopping `1.4179` →
+`1.4137`. Spread across adjacent seeds `1.4137–1.6957`, so the landscape is rough and the search
+is **not converged**: `1.41370455` is best-found, and no optimality is claimed.
+
+**Why this vindicates the review's language discipline:** one block ago I would have written
+"the family plateaus at 2" after the hill-climb stalled. That was false — it was a local optimum,
+and only basin-hopping revealed it.

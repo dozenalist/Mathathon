@@ -1,0 +1,45 @@
+{
+ "script": "KeplerConjecture/Computation/sos_qside_polish.py",
+ "start_delta": 2.61993314,
+ "status": "VERIFIED_EXACT",
+ "note": "q certified by construction as a sum of squares; p by exact Sturm with Computation's checker. Float screen used to steer only.",
+ "delta": "1.69567366",
+ "p0_q0": 0.4048122660636307,
+ "q": "u**5/16 - 19*u**4/18 + 551*u**3/144 + 443*u**2/24 - 5021*u/48 + 1603/12",
+ "p": "-u**5/16 + 191*u**4/288 - 85*u**3/288 + 2501*u**2/192 + 8021*u/768 + 27687/512",
+ "r": [
+  [
+   "-29/12",
+   "7/12",
+   "1/12",
+   "0"
+  ],
+  [
+   "17/4",
+   "-3/2",
+   "1/4",
+   "0"
+  ],
+  [
+   "-125/12",
+   "21/4",
+   "-1/2",
+   "0"
+  ],
+  [
+   "-13/12"
+  ]
+ ],
+ "s": [
+  [
+   "13/3",
+   "-11/4",
+   "1/4",
+   "0"
+  ],
+  [
+   "-5/4"
+  ]
+ ],
+ "improvements": 6
+}

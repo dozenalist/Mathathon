@@ -15,7 +15,7 @@ open. Full detail in `PROGRESS.md`, `CERTIFIER.md`, `SHELL_PROPOSE_RESULTS.md`, 
 | **K15-C-XVAL-002** | the two exact checkers accept **each other's** certificates, in both directions, agreeing to ten digits | `CROSSVALIDATION.md` |
 | **K15-C-FAMTESTED-001** | `TESTED_FAMILY`: best value found in the tested family is `0.78037032` at `(K, Umax) = (33, 120)`; **not an optimum** — the ladder is non-monotone, so the search is not exhaustive | finite search over a parameter grid |
 | **K15-C-POSCERT-001** | `c = (4,1)` ⟹ `Δ ≤ 44π/15 = 9.215339` | elementary, hand-checkable, positive control |
-| **K15-C-SOSQSIDE-003/004** | `Δ ≤ 1.99064200` with `q = (1/12)² + (11u/6 − 19/4)² + u(7/4 − 2u/3)²` | **explicit rational Gram on the Fourier side**, hand-checkable; hill-climbed, plateau at ≈2 |
+| **K15-C-SOSQSIDE-003/004/005** | `Δ ≤ 1.41370455` with `q = Σ r_i² + u Σ s_j²` (five rational squares, degrees ≤ 2) | **explicit rational Gram on the Fourier side**; basin-hopped; **best-found**, spread across seeds 1.41–1.70 |
 | **K15-C-SOSFAMILY-001** / **SOSGRAM2-001** | `Δ ≤ 5.99152482` (cubic) / `6.73788568` (quintic) | explicit rational Gram on the **p** side |
 | **K15-C-SOSSHELL-002** | in the cubic family any admissible shell allowance is `> 0`, so every shell member is strictly worse than `η = 0` | family-restricted **proof** (corrected; `tests_0138.py` T4) |
 | **K15-C-CUTEQUIV-001** | the full-period blob makes the cut condition read `ρ ≤ 1/√32` — **the Kepler bound itself** | `PROVED`, elementary |

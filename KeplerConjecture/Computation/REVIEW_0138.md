@@ -415,3 +415,48 @@ stored, so running it with a small `--iters` as a smoke test overwrites the good
 0-improvement run. I did exactly that; the JSON was restored by re-running the recorded
 configuration (`--iters 2600 --seed 2026`), which reproduces `1.99064200` exactly. A smoke test
 should use `--out` to a scratch path.
+
+## 13. A much better explicit-Gram certificate: `Δ ≤ 1.41370455`
+
+The hill-climb of §11 stalled at `1.99064200` and **zero** improvements were found when the
+degree-5 optimum was embedded in the degree-7 space (2 500 single-coefficient moves, no gain), so
+the point was a local optimum. Allowing **uphill moves** (basin-hopping, `--uphill`) escapes it
+decisively:
+
+| search | `Δ ≤` |
+| --- | --- |
+| random, degree 5 (26 000 trials) | 2.61993314 |
+| hill-climb from that point | 1.99064200 |
+| degree-7 embedding, uphill 0 | 1.99064200 (no improvement — local optimum) |
+| basin-hopping `uphill=0.03`, seed 5 | **1.41791658** |
+| basin-hopping `uphill=0.05`, seed 17 | **1.41370455** ← best |
+| basin-hopping `uphill=0.05`, seed 5 | 1.47789897 |
+| basin-hopping `uphill=0.08`, seed 9 | 1.69567366 |
+
+**The certificate** (`out/hop_u0.05_s17.json`), with the Gram identity re-checked independently by
+expanding both sides:
+
+$$q(u) = \tfrac{9}{16}u^5 - \tfrac{229}{36}u^4 + \tfrac{1511}{144}u^3 + \tfrac{7393}{72}u^2
+- \tfrac{55453}{144}u + \tfrac{26935}{72},$$
+
+realised as $\;q = \sum_i r_i^2 + u\sum_j s_j^2\;$ with
+
+```
+r = [(-37/4 + 85u/12 - 3u^2/4), (31/2 - 97u/12 + 5u^2/6), (-83/12 + 3u - u^2/12), (2/3)]
+s = [(37/6 - 61u/12 + 3u^2/4), (1/12)]
+```
+
+and $\;p = -\tfrac{9}{16}u^5 + \tfrac{2623}{288}u^4 - \tfrac{10141}{288}u^3 + \tfrac{57023}{576}u^2
+- \tfrac{8419}{768}u + \tfrac{581791}{4608}$, giving
+
+$$\Delta \;\le\; 1.41370455 .$$
+
+This is the best explicit-Gram certificate in the directory — `4.2×` better than the `p`-side
+cubic family and `1.4×` better than the previous Fourier-side record. The Gram identity is
+verified by expansion; `p ≤ 0` on `[4π, ∞)` by exact Sturm with Computation's checker.
+
+**Status discipline:** `1.41370455` is **best-found**. The spread across adjacent seeds
+(`1.4137 … 1.6957`) shows the landscape is rough and the search is not converged, so no optimality
+claim is made. The one *structural* fact established is that the degree-5 hill-climb's plateau was
+a local optimum, not a global one — which is exactly why the review's insistence on
+"tested-family" language matters.
