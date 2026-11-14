@@ -5079,3 +5079,87 @@ the icosahedron gives `2.102924`). **The search failed its positive control, so 
 nothing**, in either direction; X's numbers stand as reported. This does not affect `C132`: the bound in
 use, `D(ε) = (3+ε)³ − 1`, is valid for every `ε` and equals `63` at `ε = 1`, so no threshold on
 `deg ≤ 12` is needed anywhere in the chain.
+
+### K15-C142 — an explicit `δ₀` candidate: the volume–deviation Hessian, and the two lemmas that would make it a theorem (`TESTED_FINITE` + two `OPEN` lemmas)
+
+`C139` narrowed `G11` to "stability of the icosahedral code". This entry makes that quantitative and
+produces **the project's first explicit number for `δ₀`** — conditional on two named lemmas, so not a
+result, but no longer a bare target.
+
+**(1) The identity that makes volume–deviation bookkeeping exact.** For a polyhedron containing the
+origin with faces at distance `d_i` and area `A_i`,
+
+```
+vol  =  (1/3) Σ_i d_i A_i              (pyramids over each face)
+⟹  vol − V_dod  =  (1/3) Σ_i [d_i A_i(d) − A_i(1)]   =   Σ_i (d_i − 1)·mean_i A_i ,
+```
+
+because `A_i` is nondecreasing in every `d_j` (relaxing a constraint only enlarges the other faces).
+So with `A_0 := 3V_dod/12 = 1.387572757…` (the dodecahedron's face area at inradius 1),
+
+> **Face-distance stability, explicit and unconditional on the normal set.** With the normals fixed and
+> every `d_i ≥ 1`: `vol − V_dod ≥ A_0 Σ_i (d_i − 1)`.
+
+That half of `G11` is done: the rate in the face distances is `1.3876` per unit, and it is sharp to
+first order.
+
+**(2) What is left is the normals, and it is quadratic.** `Computation/orient_cover.py`'s frame gives the
+12 icosahedral normals; parametrising each normal's two tangent degrees of freedom gives a 24-dimensional
+family. The volume's Hessian at the dodecahedron (`ConvexHull` vertex enumeration, central differences at
+`ε = 2·10⁻⁴`):
+
+```
+eigenvalues   ≈ 0 (×3),  0.3533, … , 1.7409      ← exactly 3 zero modes = the global rotations ✓
+λ₁ (smallest nonzero) = 0.353298      ⟹  vol − V_dod ≈ ½ θᵀHθ ≥ 0.176649 ‖θ‖²
+```
+
+The three zero modes are the correct answer (volume is rotation-invariant), which is the check that the
+Hessian is right. **The dodecahedron is stationary in the normal directions** — first-order in `θ` is
+zero, so the rate is `√η`, exactly as `C139` §4 guessed.
+
+**(3) The exact-tight constant fails by 0.03% at the deviation we need — so use 3% of slack.** Along the
+`λ₁` eigenvector (the worst direction), `vol − V_dod` divided by `½λ₁θ²` is
+
+```
+θ = 0.005 … 0.0447 … 0.10   →   ratio 1.0001 … 0.9997 … 0.9982
+```
+
+so the quadratic form slightly *under*-estimates at the scale that matters. Taking `c = 0.17`
+(`96.2%` of `½λ₁`) gives `vol − V_dod ≥ 0.17·Σ_j angle_j²` with margin at every `θ ≤ 0.05` tested.
+This is the sort of detail that a "close enough" treatment would have got wrong.
+
+**(4) The number.** `C132` fixes `ε = 1`, so the pair exclusion must cover `d ≤ 3`. With the perturbed
+covering radius `ρ ≤ ρ_c + θ` (`θ` = the largest single-normal angular deviation, `≤ ‖θ‖`), the
+exclusion survives while
+
+```
+4cos(ρ_c + θ) ≥ 3   ⟺   θ ≤ cos ρ_c − cos(arccos 0.75) = 0.7946545 − 0.75 = 0.044655 rad = 2.5585° .
+```
+
+Hence any cell with `vol ≤ V_dod + 0.17·(0.044655)² = V_dod + 3.3898·10⁻⁴` is excluded from every
+dodecahedral pair at `d ≤ 3`, and
+
+```
+σ₀  ≥  2V_dod + 2V_dod·(3.3898·10⁻⁴)   ⟹   δ₀  ≥  3.76·10⁻³   explicitly.
+```
+
+**(5) The two lemmas that would turn it into a theorem.** Stated so they can be attacked:
+
+- **L1 (quantitative).** There is a proof that `vol − V_dod ≥ 0.17 Σ_j angle_j²` for every `12`-face
+  cell whose normals are within `0.05 rad` of icosahedral, i.e. a bound on the cubic remainder. The
+  numerics say the ratio degrades smoothly to `0.998` at `θ = 0.1`, so a rigorous constant near `0.17`
+  should be attainable; **it is not proved here.**
+- **L2 (reduction).** A cell with `vol ≤ V_dod + 3.4·10⁻⁴` has exactly `12` faces (no redundant 13th),
+  or else its 13th normal is `≥ 0.65 rad` from an icosahedral position, which `L1`'s form already
+  charges `0.17·0.65² = 0.072 ≫ 3.4·10⁻⁴` for. The obstruction to `L2` is the same one `C139` §1
+  records: a 13-facet polyhedron can have volume *below* `V_dod` (`5.4991`), so `L2` cannot come from
+  volume monotonicity and must use `2`-separation of the contacts.
+
+**What this is and is not.** It is the first explicit number for `δ₀` in this project, it is a factor
+`1/56.6` of the sharp `2√32 − 2V_dod = 0.213126`, and it is **conditional on L1 and L2** and therefore
+**not a theorem and not a bound**. `RESULTS.md` does not move, `C124` stays `PENDING_REVIEW`, and
+`G11` remains open — but it is now an inequality with a constant and two named gaps, which is a
+better target than a definition.
+
+*Status.* `TESTED_FINITE` (the Hessian, the zero modes and the worst-direction test) + `OPEN` (L1, L2).
+No claim of a proved `δ₀`.
