@@ -413,12 +413,14 @@ The decisive observation is a one-liner: **`tau <= 1.045` everywhere**, not mere
 caps, because inside a cap `tau` is the minimum of a known value and `1.045`. Therefore
 
 ```
-vol Omega(w) >= (1/3) int tau^3 <= (4 pi/3)(1.045)^3 = 4.779767... ,
+vol Omega(w) <= (4 pi/3)(1.045)^3 = 4.780105486... ,
 ```
 
-which is the **absolute ceiling of every bound of this form**, independent of cap layout,
-quadrature or optimisation. It sits `0.885968` (i.e. `15.6 %`) below the required
-`5.665735`, and it already exceeds the inscribed ball by `14.1 %`. The computed `4.734` is
+(the upper limit on what such a bound can *prove*; the inequality direction is
+`vol >= (1/3) int tau^3`, and `(1/3) int tau^3 <= 4.780105486` is the ceiling on the
+right-hand side). This is the **absolute ceiling of every bound of this form**, independent
+of cap layout, quadrature or optimisation. It sits `0.885629` (i.e. `15.63 %`) below the
+required `5.665735`, and it already exceeds the inscribed ball by `14.1 %`. The computed `4.734` is
 therefore within `1 %` of the theoretical maximum for this technique, confirming that the
 optimisation of `K15-E042` was essentially exhaustive rather than merely unlucky.
 
