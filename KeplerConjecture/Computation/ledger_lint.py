@@ -153,9 +153,50 @@ def self_test():
     return 0 if ok else 1
 
 
+
+def gap_audit():
+    """Warn where a PROVED/AUDITED entry cites a gap that is still open (K15-C144).
+
+    A gap may be reopened and later closed, so the LAST entry in PROOF_GAPS.md wins --
+    a first-wins parse reported G13/G14/G17 as open after they had been closed, which
+    is the same duplication bug the status check had.  Warnings only: most citations
+    are scope statements ("this does not close G11"), which are correct and wanted.
+    """
+    gpath = os.path.join(ROOT, 'KeplerConjecture', 'Main', 'PROOF_GAPS.md')
+    claims = open(CLAIMS, encoding='utf-8').read()
+    gaps = open(gpath, encoding='utf-8').read()
+    gstat = {}
+    for m in re.finditer(r'^#{2,3}\s*(G\d{1,2})\s*(?:[\u2014-]+)\s*(.*)$', gaps, re.M):
+        gstat[m.group(1)] = bool(re.search(r'CLOSED|SUPERSEDED|WITHDRAWN|DOWNGRADED',
+                                           m.group(2), re.I))
+    for m in re.finditer(r'^\|\s*(G\d{1,2})\s*\|(.*)$', gaps, re.M):
+        gstat[m.group(1)] = bool(re.search(r'closed|supplied|done', m.group(2), re.I))
+    out = []
+    for part in re.split(r'^###\s+', claims, flags=re.M)[1:]:
+        head = part.split('\n', 1)[0]
+        mm = re.match(r'K15-(C\d{3}[a-z]?)', head)
+        if not mm:
+            continue
+        st = re.findall(r'\*Status\.\*\s*(.{0,90})', part)
+        if not re.search(r'PROVED|AUDITED', st[-1] if st else head, re.I):
+            continue
+        cited = sorted({g for g in re.findall(r'\b(G\d{1,2})\b', part)
+                        if g in gstat and not gstat[g]})
+        if cited:
+            out.append((mm.group(1), cited))
+    print(f'\ngap cross-check: {len(out)} PROVED/AUDITED entr(ies) cite an open gap')
+    for cid, cited in out:
+        print(f'   {cid:8s} cites {", ".join(cited)}   (expect a scope statement, not a dependency)')
+    print('   [warning only: a citation is not a dependency, and the ledger states scope explicitly]')
+    return out
+
+
 def main():
     if '--self-test' in sys.argv:
         return self_test()
+    if '--audit-gaps' in sys.argv:
+        gap_audit()
+        return 0
     text = open(CLAIMS, encoding='utf-8').read()
     problems = []
 

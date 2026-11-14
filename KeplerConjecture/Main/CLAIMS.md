@@ -5302,3 +5302,48 @@ improvement on `0.779747`, the `ρ = 1/2` entry is a bound *for packings with co
 
 *Status.* `PROVED` conditional on `L1` (`M-CERT-002`). The table is the honest ceiling of this route as
 it stands.
+
+#### `C136` addendum — E's thirteen-face arithmetic, checked
+
+E's §8 states the remaining gap for the thirteen-face case. The arithmetic is right:
+
+```
+(5.763417470 − 5.498284)/0.257311121 = 1.030400   ✓ E's A_min requirement
+5(b−1) = 0.257311121  and  2√32 − V_dod = 5.763417470   ✓
+```
+
+The uncut-disk bound `0.868315` is **15.7% short** of the `1.030400` the thirteen-face case needs, i.e.
+`0.041705` of volume at the per-unit-area rate `0.257311`. That is the whole of the thirteen-face gap, and
+it is arithmetic plus one lemma, not geometry: the disk bound takes each admissible neighbour at its worst
+independently of the others, ignoring that the cutting centres are `2`-separated *from each other*. E's own
+diagnosis is correct and the number is reproducible. **Not verified:** E's "true `A_min` `1.249–1.276` in
+the configurations measured", which needs their configuration set.
+
+### K15-C144 — a cross-check that no `PROVED` entry depends on an open gap (`PROVED`, warning-only)
+
+`ledger_lint.py --audit-gaps` lists every entry whose `*Status.*` says `PROVED`/`AUDITED` and which cites
+a gap that `PROOF_GAPS.md` still records as open. Six entries do:
+
+```
+C036  cites G4, G5, G7        C133  cites G11        C141  cites G11
+C115  cites G11               C140  cites G11, G12
+C125  cites G11
+```
+
+Each was read, and each citation is a **scope statement**, not a dependency: "`G5` is the single remaining
+obligation on the geometric route" (`C036`), "`δ₀` is still non-explicit (`G11`)" (`C115`, `C125`,
+`C133`, `C141`), "`G12` untouched" (`C140`). The one genuine dependency in the ledger — `C124` on `G11`
+for a *number* — is labelled as such in `C124` and `C141`, and `C124` is `PENDING_REVIEW` rather than
+`PROVED`-and-settled.
+
+**A bug in this check, found while writing it, and it is the same one three times.** The first version took
+the *first* entry for a gap id; because `G13`, `G14` and `G17` were each written twice (open, then closed),
+it reported them as open after they had been closed. **Last entry wins** is the right rule for an
+append-only ledger. This is the third checker defect in this block (`C140`'s two, this one), all of the same
+kind: a check that looks at the wrong subset and therefore reports success.
+
+**Scope.** It is a **warning**, not a failure: a citation is not a dependency, and the ledger's whole style
+is to state scope explicitly. It cannot detect a dependency that is *not* named — that still needs a
+reader.
+
+*Status.* `PROVED` (mechanical, and its own first version was wrong; the rule is stated above).
