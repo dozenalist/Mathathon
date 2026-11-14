@@ -846,7 +846,10 @@ icosahedral twelve on radius 2 have minimum mutual distance `4√2/√(5+√5) =
 every sufficiently small perturbation is still admissible and the admissible set is
 **positive-dimensional**; Tammes-12 is the optimiser of the minimum distance, not the solution set
 of the inequality. Second reason (after `K_{1,3}`) that "the failure is exactly an isolated
-icosahedral cluster" is too strong. Also: `K_{1,3}` is geometrically realisable — `v = 0` plus
+icosahedral cluster" is too strong. **Explicit family:** keeping eleven icosahedral points fixed and rotating the twelfth about `e₁`
+by `t` (renormalised to radius 2) keeps the minimum mutual distance `≥ 2` for `t = 0.5°, 1°, 2°, 4°,
+6°` (`2.0955, 2.0880, 2.0730, 2.0427, 2.0120`), so the admissible set is at least one-dimensional.
+Also: `K_{1,3}` is geometrically realisable — `v = 0` plus
 `2·(1,1,1)/√3`, `2·(1,−1,−1)/√3`, `2·(−1,1,−1)/√3`, mutual distances `√(32/3) = 3.266 ≥ 2` — so
 `(M)` fails on a legal configuration of four points, not only on the 13-cluster.
 

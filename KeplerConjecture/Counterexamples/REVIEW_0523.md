@@ -187,8 +187,10 @@ says "twelve centres on the sphere of radius 2 about `v` with mutual distance `�
 icosahedral twelve (Tammes-12)". That is false: the icosahedral twelve on radius 2 have minimum
 mutual distance `4√2/√(5+√5) = 2.102924448`, which is *strictly* greater than 2, so every small
 perturbation of the icosahedron is still admissible. The set of twelve-point configurations on the
-sphere with mutual distance `≥ 2` is positive-dimensional; Tammes-12 is the *optimiser* of the
-minimum distance, not the solution set of `≥ 2`. Consequence: the failure set of `(M)` is much
+sphere with mutual distance `≥ 2` is positive-dimensional — explicitly, keeping eleven icosahedral
+points fixed and rotating the twelfth about `e₁` by `t` (renormalised to radius 2) keeps the minimum
+at `≥ 2` for `t` up to at least `6°` (`2.0955, 2.0880, 2.0730, 2.0427, 2.0120` at `t = 0.5°, 1°,
+2°, 4°, 6°`); Tammes-12 is the *optimiser* of the minimum distance, not the solution set of `≥ 2`. Consequence: the failure set of `(M)` is much
 larger than "the icosahedral 13-cluster", which is the second reason (after `K_{1,3}`) that
 "exactly" is the wrong word at line 199.
 
