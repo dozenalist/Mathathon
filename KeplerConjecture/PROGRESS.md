@@ -313,6 +313,20 @@ Correct certified ordering per outer cell:
 dodecahedral theorem, giving a shortfall of `1.385321873` (`2.08 %`). The next missing
 inequality must use a body that is **not** star-shaped about `w`.
 
+**`K15-E048` — directional per-cell bounds provably capped.** Since
+`tau = min(known value, 1.045)` inside a cap and `1.045` outside it, `tau <= 1.045` **everywhere**,
+so `(1/3) int tau^3 <= (4pi/3)(1.045)^3 = 4.780105486` is the absolute ceiling of every bound of
+this form, independent of cap layout, quadrature or optimisation. It is `0.885629` (`15.63 %`)
+below the required `5.665735`. The computed `4.734` is within `1 %` of the ceiling, so the earlier
+optimisation was essentially exhaustive. Equivalently: `1.045^3 = 1.1413 < 1.7052` and the
+outward hemisphere would need mean `t >= 1.194696`, while one completion centre at distance
+`2.09` excludes `12.5 %` of that hemisphere. So the per-cell route needs either a sharper count
+than twelve (a spherical-code statement at radius `2.09` with one neighbour fixed at `2`) or a
+collective block inequality.
+
+`LOCAL_LEAN_REQUEST.md` (`K15-EXP-004`): the `R2'` partition lemma, `PROPOSED`, awaiting X
+freezing the statement. Stable and independent of all numerical inputs.
+
 Gaps: `(T'-R2')` open; best certified per-cell bound `5.550291` (McLaughlin) vs required
 `5.665735`, shortfall `2.08 %`;
 `icosa_dense_optimize.py` unauthored (`LOCAL_ICOSA_SEARCH.md` BLOCKED on authoring).
