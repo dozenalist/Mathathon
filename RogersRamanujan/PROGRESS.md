@@ -1,17 +1,72 @@
 # Rogers--Ramanujan / SAIR problem 127: progress
 
-## Current state (2026-11-13, America/Los_Angeles)
+## Current state (2026-11-14, America/Los_Angeles)
 
 | Area | State | Next action |
 | --- | --- | --- |
-| Target | Official formulation verified: seek a more natural first-identity bijection | Main freezes interfaces |
-| Coordination | Five Ultramath role assignments and staged roadmap prepared | Human lead instantiates the roles |
-| Literature | Source notes, machine-readable catalog, bibliography, and Hexagon source/search log prepared | Read core sources; resolve full-paper access gaps if needed |
-| Computation | No project enumerator or baseline map implemented yet | C implements and X independently checks |
-| Counterexamples | No new research claim refuted in this preparation | X audits candidate claims and Soodak's conjecture |
-| Experimental | Routes proposed; no new candidate established | E supplies forward/inverse specifications |
-| Lean | Local pinned library inspected; no project proof added | L defines families and proves the staircase bridge |
-| Main result | No new all-n bijection or theorem claimed | Develop a proved component or precisely scoped partial result |
+| Target | Official formulation unchanged; seek a more natural first-identity bijection | Keep the objective explicit in every artifact |
+| Coordination | Main + 4 Ultramath specialists (`smwfxwsqf`) run; 4 of 4 reports accepted | Next cycle: 2 specialists on R1/R2, plus Lean |
+| Literature | BZ82 scan retrieved in full and read (all 3 pages); GM81a/GM81b full text still not retrieved | Resolve GM81b access before any novelty claim |
+| Computation | Contract + six-method counts + working BZ82 reference map, verified `n <= 50` | Prove termination; add operation counts |
+| Counterexamples | Independent checker PASS at `n = 30`; 5 registry entries; 2 obstructions PROVED | Audit any proposed preserved statistic first |
+| Experimental | Level-splitting reformulation; 3 natural level rules refuted | Prove or refute Lemma LS exactly |
+| Lean | 6 staircase theorems kernel-checked, axioms `{propext, Quot.sound}` | Fix toolchain mismatch; add `T`; add `Nat.Partition` bridge |
+| Main result | No new natural bijection. Foundation complete, obstructions proved | Attack the residue-to-staircase step (R2) |
+
+## Status at a glance
+
+PROVED: RR-C003 (length), RR-C004 (largest part, all `n>=2`), RR-C008 (BZ82
+`psi` involutive for all `n`), RR-C010 (cutoff witness).
+LEAN_VERIFIED: RR-C005 (staircase bridge, 6 theorems).
+TESTED_FINITE: RR-C002 (`n<=50`), RR-C006, RR-C007 (`n<=50`), RR-C009, RR-C011.
+OPEN: RR-C012, the official objective.
+
+## 2026-11-14 / RR-M001 / checkpoint 1: contract, BZ82 reference map, staircase in Lean
+
+- **Agent and reviewer:** M (Main, coordinator); X-role review is
+  `Counterexamples/checker.py`; worker reports refereed by M.
+- **Status:** PROVED for RR-C003/004/008/010; LEAN_VERIFIED for RR-C005;
+  TESTED_FINITE for RR-C002/006/007/009/011. The official objective (RR-C012) is
+  **OPEN**; nothing here is presented as a natural bijection.
+- **Statement and hypotheses:** see `Main/CLAIMS.md`. In one line: the BZ82 1982
+  reference map now runs in both directions with a stated inverse, verified on
+  every object for `0 <= n <= 50`; the staircase reduction is kernel-checked;
+  and two candidate design requirements (preserve length, preserve largest part)
+  are refuted for all `n`.
+- **Evidence/artifacts:** `Main/CLAIMS.md`, `Main/DECISIONS.md`,
+  `Main/RESULTS.md`, `Computation/{rr_core,bz82,run_checks}.py`,
+  `Computation/results.json`, `Counterexamples/{checker.py,REGISTRY.md}`,
+  `Lean/Staircase.lean`, `Lean/README.md`. Sources: BZ82 (full scan, pp.313-315),
+  BP06 and PAK06 as read in the preparation bundle.
+- **Source work:** retrieved and read the complete BZ82 scan
+  (`https://sites.math.rutgers.edu/~zeilberg/mamarimY/rrDG.pdf`,
+  sha256 `403543088ed9465bc8e3f9918defd22a57c86a21493226c9852729af614483c6`).
+  All three printed examples on p.315 reproduce exactly, including the nine-state
+  chain of example (3). One printed rule is underdetermined; the reconstruction
+  and its justification are `Main/DECISIONS.md` D-3.
+- **Reproduction commands:**
+  `python3 RogersRamanujan/Computation/run_checks.py 30` -> 4.3 s, all checks true.
+  `python3 RogersRamanujan/Computation/run_checks.py 50` -> 257 s, bijection
+  verified through weight 50.
+  `python3 RogersRamanujan/Counterexamples/checker.py 30` -> PASS, 0 fails.
+  `lean RogersRamanujan/Lean/Staircase.lean` -> exit 0, ~14 s.
+- **Environment:** Python 3.12.14 (stdlib only). `lean --version` = **4.33.1**,
+  which does **not** match the pinned `v4.35.0`; `import Mathlib` could not be
+  elaborated on this VM (measured thrash on the 6.4 GB olean import), so the Lean
+  module is Mathlib-free and **no `lake build` is claimed**.
+- **What this establishes:** a reviewable foundation and two closed routes.
+- **What remains unproved/untested:** all-n termination of the BZ82 iteration;
+  the `phi` involution for all `n`; the `T`/`Nat.Partition` Lean bridge; and the
+  actual objective.
+- **Worker reports (swarm `smwfxwsqf`, all 4 accepted):** m1 counts (independent
+  reproduction, identical table); m2 largest-part obstruction (reproduced by M,
+  promoted to an all-`n` proof); m3 `psi` involution (all-`n` written argument,
+  refereed and promoted to PROVED); m4 level-splitting reformulation with three
+  refuted candidate level rules.
+- **Next action / owner / dependency:** R2 on the residue side: can residue
+  multiplicities determine the level `k` and the residual partition without a
+  global search? Owner: next Experimental specialist, with Main. Dependency:
+  `T` formalized, and GM81b text for a fair naturalness comparison.
 
 ## 2026-11-13 / PREP-001 / research preparation
 

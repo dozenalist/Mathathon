@@ -226,3 +226,39 @@ asymptotics. Review and search details are in [HEXAGON_REVIEW](HEXAGON_REVIEW.md
   “bijective” or “simple.” Preserve the source's own domain and codomain.
 - A preprint's version and retrieval date matter. Do not silently replace
   a cited version after a new result has depended on it.
+
+## Event-cycle update: BZ82 full text retrieved (2026-11-14)
+
+The scan `https://sites.math.rutgers.edu/~zeilberg/mamarimY/rrDG.pdf`
+(sha256 `403543088ed9465bc8e3f9918defd22a57c86a21493226c9852729af614483c6`,
+3 pages) was downloaded and read **in full**, closing the earlier "first page
+only" access gap for this source. Extractable text covers all of pp.313-315;
+several inequality signs are corrupted by OCR and were reconstructed from the
+paper's own worked examples rather than guessed.
+
+What the full text adds to the preparation cards:
+
+* p.313 fixes the notation bridge exactly: their `A(n)` is our `D_n`, their
+  `C(n)` is our `A_n`, their `B(n)` = {smallest part >= length} = `T(D_n)`, and
+  the displayed shift `(lambda_i - t + 2i - 1)` is our `T`.
+* p.313 defines `X(n) = {(j; lam) : |lam| + j(5j-1)/2 = n}`; the shift is the
+  *5-pentagonal* number, not `j(3j-1)/2`.
+* p.314 gives `phi` (the Jacobi-triple-product involution, cases I/II with a
+  parameter `m`) and `psi` (the residue involution, cases I(a)/I(b)/II(a)/II(b)).
+  Both are asserted to be involutions changing the parity of `j`.
+* p.315 gives three examples. All three are reproduced exactly by our
+  implementation, including the nine-state chain of example (3).
+
+**Source defect found (RR-L004).** The printed `phi` Case II rule
+`m = Max{z <= a+2j-2 : z + lam(a+2j-1-z) <= t+5j-2}` is inconsistent with the
+paper's own example (3): its admissible set is empty at the state
+`(0;2,1,1,1)`, which the printed chain sends to `(-1;1,1)`. Taken literally, the
+rule gives 2 692 defects among the 3 198 in-domain states of weight <= 18 and
+the endpoint iteration cycles at `n = 2`. The reconstruction used, and why it is
+the unique consistent completion, is `../Main/DECISIONS.md` D-3. Consequence for
+citation: our `forward`/`inverse` are a **faithful reimplementation with one
+reconstructed rule**, not a verbatim transcription.
+
+**Still open.** GM81a and GM81b remain abstract/metadata only; no claim in this
+cycle compares our work to Garsia--Milne's map, and none should be made until
+`GM81b` pp.289-339 is read.

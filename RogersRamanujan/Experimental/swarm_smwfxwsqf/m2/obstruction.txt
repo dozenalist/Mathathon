@@ -1,0 +1,199 @@
+==========================================================================
+m2 / swarm smwfxwsqf -- RR127 refinement obstruction (quantified)
+==========================================================================
+
+[DICT] staircase/shift dictionary, 434 D-partitions, n <= 25
+  verified: mu_i = b_i - k (all i);  mu_1 = lam_1-2k+1;  mu_k = lam_k-1;
+            b_1 = lam_1-k+1;  b_k = lam_k+k-1 >= k
+  so the two contract reductions differ only by the constant shift k,
+  i.e. b = mu + k componentwise and lam = mu + staircase(k).
+
+[COARS] minimum number of contiguous blocks of the value line
+        needed before the A- and D-distributions can agree
+        (min=1 with max>1 means the statistic must be thrown away)
+   n   largest part      number of parts
+       min/max levels    min/max levels
+   0       1 / 1            1 / 1  
+   1       1 / 1            1 / 1  
+   2       1 / 2            1 / 2  
+   3       1 / 2            1 / 2  
+   4       2 / 3            2 / 3  
+   5       1 / 3            1 / 3  
+   6       2 / 4            2 / 4  
+   7       1 / 5            1 / 4  
+   8       1 / 6            1 / 5  
+   9       2 / 7            2 / 6  
+  10       1 / 7            1 / 7  
+  11       2 / 8            2 / 7  
+  12       1 / 9            1 / 8  
+
+[LEN] enforced length law: #{lam in D_n : len = k} = p(n-k^2 into <= k parts)
+  n= 0  k=0.. 0 : [1]
+  n= 1  k=0.. 1 : [0, 1]
+  n= 2  k=0.. 2 : [0, 1]
+  n= 3  k=0.. 3 : [0, 1]
+  n= 4  k=0.. 4 : [0, 1, 1]
+  n= 5  k=0.. 5 : [0, 1, 1]
+  n= 6  k=0.. 6 : [0, 1, 2]
+  n= 7  k=0.. 7 : [0, 1, 2]
+  n= 8  k=0.. 8 : [0, 1, 3]
+  n= 9  k=0.. 9 : [0, 1, 3, 1]
+  n=10  k=0..10 : [0, 1, 4, 1]
+  n=11  k=0..11 : [0, 1, 4, 2]
+  n=12  k=0..12 : [0, 1, 5, 3]
+  n=13  k=0..13 : [0, 1, 5, 4]
+  n=14  k=0..14 : [0, 1, 6, 5]
+  n=15  k=0..15 : [0, 1, 6, 7]
+  pairs (n,k) with n<=25 tested: 351 ; violations: none
+
+[SCAN] 31 statistics, full-distribution agreement on n = 0..12
+  APPROVED invariants (may be claimed preserved): ['weight mod 2 (trivial control: equals n mod 2)']
+  BANNED (first divergent n, witnesses):
+    largest part                                 n= 2
+        A side (1, 1) (value 1) has no partner with that value;
+        D side (2,) (value 2) is unmatched
+    smallest part                                n= 2
+        A side (1, 1) (value 1) has no partner with that value;
+        D side (2,) (value 2) is unmatched
+    number of parts                              n= 2
+        A side (1, 1) (value 2) has no partner with that value;
+        D side (2,) (value 1) is unmatched
+    number of distinct parts                     n= 4
+        A side (4,) (value 1) has no partner with that value;
+        D side (3, 1) (value 2) is unmatched
+    parity of number of parts                    n= 2
+        A side (1, 1) (value 0) has no partner with that value;
+        D side (2,) (value 1) is unmatched
+    number of parts mod 5                        n= 2
+        A side (1, 1) (value 2) has no partner with that value;
+        D side (2,) (value 1) is unmatched
+    parity of largest part                       n= 2
+        A side (1, 1) (value 1) has no partner with that value;
+        D side (2,) (value 0) is unmatched
+    largest part mod 5                           n= 2
+        A side (1, 1) (value 1) has no partner with that value;
+        D side (2,) (value 2) is unmatched
+    number of parts equal to 1                   n= 2
+        A side (1, 1) (value 2) has no partner with that value;
+        D side (2,) (value 0) is unmatched
+    number of parts = 0 mod 5                    n= 5
+        A side (4, 1) (value 0) has no partner with that value;
+        D side (5,) (value 1) is unmatched
+    number of parts = 1 mod 5                    n= 2
+        A side (1, 1) (value 2) has no partner with that value;
+        D side (2,) (value 0) is unmatched
+    number of parts = 2 mod 5                    n= 2
+        A side (1, 1) (value 0) has no partner with that value;
+        D side (2,) (value 1) is unmatched
+    number of distinct residues mod 5            n= 4
+        A side (4,) (value 1) has no partner with that value;
+        D side (3, 1) (value 2) is unmatched
+    max multiplicity                             n= 2
+        A side (1, 1) (value 2) has no partner with that value;
+        D side (2,) (value 1) is unmatched
+    repeated part? 0/1                           n= 2
+        A side (1, 1) (value 1) has no partner with that value;
+        D side (2,) (value 0) is unmatched
+    number of odd parts                          n= 2
+        A side (1, 1) (value 2) has no partner with that value;
+        D side (2,) (value 0) is unmatched
+    number of even parts                         n= 2
+        A side (1, 1) (value 0) has no partner with that value;
+        D side (2,) (value 1) is unmatched
+    spread largest-smallest                      n= 4
+        A side (4,) (value 0) has no partner with that value;
+        D side (3, 1) (value 2) is unmatched
+    largest minus 1                              n= 2
+        A side (1, 1) (value 0) has no partner with that value;
+        D side (2,) (value 1) is unmatched
+    number of parts >= 2                         n= 2
+        A side (1, 1) (value 0) has no partner with that value;
+        D side (2,) (value 1) is unmatched
+    number of parts >= 5                         n= 5
+        A side (4, 1) (value 0) has no partner with that value;
+        D side (5,) (value 1) is unmatched
+    sum of parts = 1 mod 5                       n= 2
+        A side (1, 1) (value 2) has no partner with that value;
+        D side (2,) (value 0) is unmatched
+    sum of parts = 4 mod 5                       n= 7
+        A side (4, 1, 1, 1) (value 4) has no partner with that value;
+        D side (7,) (value 0) is unmatched
+    sum of parts = 0 mod 5                       n= 5
+        A side (4, 1) (value 0) has no partner with that value;
+        D side (5,) (value 5) is unmatched
+    multiplicity of the largest part             n= 2
+        A side (1, 1) (value 2) has no partner with that value;
+        D side (2,) (value 1) is unmatched
+    number of parts in a run of length >= 2      n= 2
+        A side (1, 1) (value 2) has no partner with that value;
+        D side (2,) (value 0) is unmatched
+    second largest part (0 if none)              n= 2
+        A side (1, 1) (value 1) has no partner with that value;
+        D side (2,) (value 0) is unmatched
+    largest - second largest                     n= 2
+        A side (1, 1) (value 0) has no partner with that value;
+        D side (2,) (value 2) is unmatched
+    number of parts = 4 mod 5                    n= 7
+        A side (4, 1, 1, 1) (value 1) has no partner with that value;
+        D side (7,) (value 0) is unmatched
+    number of parts = 3 mod 5                    n= 3
+        A side (1, 1, 1) (value 0) has no partner with that value;
+        D side (3,) (value 1) is unmatched
+
+[COARSEN] binary coarsenings 1_{f(.) = t} and 1_{f(.) <= t}:
+  tested 425 such statistics; agree on all n <= 12: 36
+    agrees: largest part == 0
+    agrees: largest part == 9
+    agrees: largest part == 11
+    agrees: largest part <= 0
+    agrees: smallest part == 0
+    agrees: smallest part == 9
+    agrees: smallest part == 11
+    agrees: smallest part <= 0
+    agrees: number of parts == 0
+    agrees: number of parts <= 0
+    agrees: number of distinct parts == 0
+    agrees: number of distinct parts <= 0
+    agrees: number of distinct residues mod 5 == 0
+    agrees: number of distinct residues mod 5 <= 0
+    agrees: max multiplicity == 0
+    agrees: max multiplicity <= 0
+    agrees: number of even parts == 3
+    agrees: number of even parts <= 2
+    agrees: spread largest-smallest == 10
+    agrees: spread largest-smallest <= 7
+    agrees: spread largest-smallest <= 9
+    agrees: largest minus 1 == 8
+    agrees: largest minus 1 == 10
+    agrees: number of parts >= 2 == 3
+    agrees: number of parts >= 2 <= 2
+    agrees: number of parts >= 5 == 2
+    agrees: number of parts >= 5 <= 1
+    agrees: sum of parts = 4 mod 5 == 9
+    agrees: multiplicity of the largest part == 0
+    agrees: multiplicity of the largest part <= 0
+    agrees: second largest part (0 if none) <= 4
+    agrees: largest - second largest == 1
+    agrees: largest - second largest == 11
+    agrees: weight mod 2 (trivial control: equals n mod 2) == 0
+    agrees: weight mod 2 (trivial control: equals n mod 2) == 1
+    agrees: weight mod 2 (trivial control: equals n mod 2) <= 0
+
+[FORCED] A-partitions whose largest part never occurs in D_n
+   n  |A_n|  #forced   examples
+   0      1        0   []
+   1      1        0   []
+   2      1        1   [(1, 1)]
+   3      1        1   [(1, 1, 1)]
+   4      2        1   [(1, 1, 1, 1)]
+   5      2        1   [(1, 1, 1, 1, 1)]
+   6      3        1   [(1, 1, 1, 1, 1, 1)]
+   7      3        2   [(4, 1, 1, 1), (1, 1, 1, 1, 1, 1, 1)]
+   8      4        3   [(4, 4), (4, 1, 1, 1, 1), (1, 1, 1, 1, 1, 1, 1, 1)]
+   9      5        3   [(4, 4, 1), (4, 1, 1, 1, 1, 1), (1, 1, 1, 1, 1, 1, 1, 1, 1)]
+  10      6        3   [(4, 4, 1, 1), (4, 1, 1, 1, 1, 1, 1), (1, 1, 1, 1, 1, 1, 1, 1, 1, 1)]
+  11      7        3   [(4, 4, 1, 1, 1), (4, 1, 1, 1, 1, 1, 1, 1), (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)]
+  12      9        4   [(4, 4, 4), (4, 4, 1, 1, 1, 1), (4, 1, 1, 1, 1, 1, 1, 1, 1), (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)]
+
+==========================================================================
+ALL CHECKS PASSED

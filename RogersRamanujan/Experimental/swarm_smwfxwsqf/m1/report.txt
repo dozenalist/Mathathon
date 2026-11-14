@@ -1,0 +1,25 @@
+D1 EXACT ENUMERATION (RR127), m1. Files in .ultramath/smwfxwsqf/m1/:
+d1_results.md (full note: 31-row table, n<=6 sets, boundary discussion),
+d1_enum.py + d1_enum.log + d1_counts.json/.tsv (four counters),
+d1_refine.py + d1_by_length.json (parts-count refinement),
+d1_sets.py + d1_sets_n0_30.json (exact sets A_n,D_n for n<=30).
+
+Command: `timeout 300 python3 d1_enum.py` -> exit 0.
+(A-i) canonical descending tuples over parts =1,4 mod 5, size cap; (A-ii) coin-change DP;
+(D-i) canonical tuples with gap>=2, size cap; (D-ii) d(n,m)=d(n,m-1)+d(n-m,m-2) with
+d(0,m)=1, d(n,m)=0 for n<0 or (n>0 and m<1); third check: brute force over all p(n)
+partitions (p(30)=5604).
+
+|A_n|=|D_n| for n=0..30, all counters identical:
+1 1 1 1 2 2 3 3 4 5 6 7 9 10 12 14 17 19 23 26 31 35 41 46 54 61 70 79 91 102 117
+Fixtures: A_2={(1,1)}, D_2={(2)}, D_5={(5),(4,1)}, A_5={(1,1,1,1,1),(4,1)}. Boundary:
+d(1,1)=1 (lone part 1 survives), d(2,1)=0, d(2,2)=1, d(0,-5)=1.
+Log: `CHECK |A_n| == |D_n| (RR): True`, `CHECK A direct == A dp: True`,
+`CHECK D direct == D dp: True`, `CHECK A direct == A brute: True`,
+`CHECK D direct == D brute: True`. Wall 0.24-0.59 s.
+
+Negative result for the bijection directions: parts-spectra differ already at n=2
+(A_2={(1,1)}, D_2={(2)}), so no bijection A_n->D_n preserves the number of parts
+(n>=2); nothing length-preserving through T can work.
+
+Not done: no bijection built; staircase/T inverse laws untested (other directions).

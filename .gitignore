@@ -1,2 +1,4 @@
 .lake/
 .sair/
+.scratch/
+__pycache__/
