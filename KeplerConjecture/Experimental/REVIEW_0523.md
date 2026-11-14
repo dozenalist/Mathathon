@@ -72,6 +72,12 @@ so
 
 Both bracketing polytopes have **rational** data, so their volumes are computed exactly.
 
+`R` itself is not assumed: since the true cell is contained in the outer polytope, it suffices
+that every *outer* vertex satisfies `|y| ≤ R`, and the code checks that exactly and raises if it
+fails. `R = 3/2` certifies for all four controls. Without that check the error term `R e_i`
+would be an assumption rather than a bound, which is the sort of thing an artifact called
+"exact" must not contain.
+
 ### 2.2 The exact polytope volume, and the bug it replaced
 
 Vertices are the feasible triple-plane intersections, by Cramer's rule over `Fraction`s, with

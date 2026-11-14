@@ -90,7 +90,7 @@ def polytope_volume(normals, dists):
             if x not in verts:
                 verts.append(x)
     if len(verts) < 4:
-        return None, 0
+        return None, 0, []
     total = F(0)
     for i in range(N):
         on = [x for x in verts
@@ -101,7 +101,7 @@ def polytope_volume(normals, dists):
         for t in range(1, len(cyc) - 1):
             a, b, c = cyc[0], cyc[t], cyc[t + 1]
             total += det3([a, b, c])                  # signed, relative to the origin
-    return abs(total) / 6, len(verts)
+    return abs(total) / 6, len(verts), verts
 
 
 def _cyclic_order(normal, pts):
@@ -155,7 +155,7 @@ def _cube_test():
     n = [(F(1), F(0), F(0)), (F(-1), F(0), F(0)), (F(0), F(1), F(0)),
          (F(0), F(-1), F(0)), (F(0), F(0), F(1)), (F(0), F(0), F(-1))]
     d = [F(1)] * 6
-    v, nv = polytope_volume(n, d)
+    v, nv, _pts = polytope_volume(n, d)
     return v == 8 and nv == 8
 
 
@@ -195,8 +195,16 @@ def sandwich(centres, R):
         slacks.append(R * eq + fq)
     inner = [b_rat[i] - slacks[i] for i in range(len(b_rat))]
     outer = [b_rat[i] + slacks[i] for i in range(len(b_rat))]
-    v_in, nvi = polytope_volume(n_rat, inner)
-    v_out, nvo = polytope_volume(n_rat, outer)
+    v_in, nvi, vin_pts = polytope_volume(n_rat, inner)
+    v_out, nvo, vout_pts = polytope_volume(n_rat, outer)
+    # CERTIFY R: the true cell is contained in the outer polytope, so it suffices that every
+    # outer vertex satisfies |y| <= R.  Without this check the sandwich's error term R*e_i is
+    # an assumption rather than a bound.
+    if vout_pts:
+        rmax = max((x[0] * x[0] + x[1] * x[1] + x[2] * x[2]) for x in vout_pts)
+        if rmax > R * R:
+            raise ValueError(f"R = {float(R)} is not valid: an outer vertex has |y| = "
+                             f"{float(rmax) ** 0.5:.6f}.  Increase R and rerun.")
     return v_in, v_out, nvi, nvo
 
 
@@ -271,8 +279,8 @@ def main():
     print(f"  C5:  [{float(v_in):.15f}, {float(v_out):.15f}]  "
           f"width {float(v_out - v_in):.1e}  vertices {ni}/{no}  contains 5.8980173718: {enc}")
     ok &= bool(enc)
-    print(f"\n  (R = 3/2 was used; the true cell has max|vertex| = 1.3017, so R is valid if "
-          f"the outer polytope's vertices satisfy |y| <= 3/2)")
+    print("\n  R = 3/2 was CERTIFIED against the outer polytope in every sandwich above "
+          "(the check raises if an outer vertex exceeds it)")
     print("\n" + ("ALL CONTROLS PASS" if ok else "CONTROL FAILED"))
     return 0 if ok else 1
 
