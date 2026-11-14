@@ -445,3 +445,16 @@ solver-dependent, hence a local request).
 **Scope guard, applied to my own result:** `K15-C-SOSSHELL-001` is a statement about *one cubic
 family*. It does not say shell allowances never help elsewhere, and it is not to be quoted as
 support for a general negative claim.
+
+### K15-COMP-021 — 2026-11-14 — Computation (role C), Fourier-side explicit Gram
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-SOSQSIDE-001** | **VERIFIED_EXACT** | `q(u) = Σ r_i² + u Σ s_j²` makes `q ≥ 0` on `[0,∞)` hold **by construction** with an explicit rational Gram; `p` is then determined by the involution `a = M b` and its sign is decided by exact Sturm. Best at degree 5: `Δ ≤ 2.82361314` with `q = (5−u)² + (4/3)² + (5−2u)² + u[1 + (4u/3 − 5/2)² + 1/9]` — hand-checkable | `sos_qside.py`, `out/sos_qside.json` |
+| K15-C-SOSQSIDE-002 | measured | degree 7 is **worse** (`38.13600953`): with full-length factors the coefficients grow and the random search finds poor ratios (289/5000 survivors). Recorded because it bounds what a naive search may claim | `out/sos_qside_K7.json` |
+
+**Both sides of the certificate are now individually demonstrable with an explicit rational Gram**
+(`K15-C-SOSQSIDE-001` for the Fourier side, `K15-C-SOSGRAM-001`/`SOSGRAM2-001` for the `p` side).
+What does **not** yet exist is one certificate with explicit rational Gram on **both** sides at
+useful strength. That needs an SDP with rational Gram rounding — no solver on the SAIR VM, so it
+is a local request (obligation 1 in `REVIEW_0138.md` §10).
