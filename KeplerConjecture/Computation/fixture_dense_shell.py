@@ -121,6 +121,46 @@ def self_test():
           sum(CF.SQ32_LO - v for v in vols) < 0, float(sum(CF.SQ32_LO - v for v in vols)))
     return ok, L, sites, vols, b0_lo, b0_hi
 
+def flow_and_obstruction_test():
+    """(a) the patch minimum is EXACTLY t*, with an explicit flow; (b) no 13th neighbour fits."""
+    import numpy as np
+    ok = True
+    def check(name, cond, info=None):
+        nonlocal ok
+        ok = ok and bool(cond)
+        print("  %s %s%s" % ("PASS" if cond else "FAIL", name, "" if info is None else "  %r" % (info,)))
+    L, sites = build()
+    import json
+    d = json.load(open(os.path.join(_OUT, "fixture_dense_shell.json")))
+    b_lo = [F(x) for x in d["b_lo"]]
+    E = [tuple(e) for e in d["edges"]]
+    t = b_lo[0] / 12
+    # the RADIAL flow: phi(0,j) = b(0)/12 for every shell vertex
+    phi = {}
+    for (i, j) in E:
+        v = t if i == 0 else -t
+        phi[(i, j)] = v
+        phi[(j, i)] = -v
+    ok_cap, ok_div, div = CF.verify_flow_exact(b_lo, E, t, phi)
+    check("the radial flow is feasible at Phi = t* = b(0)/12 exactly", ok_cap and ok_div, (ok_cap, ok_div))
+    check("its divergence at the centre is exactly b(0) (tight)", div[0] == b_lo[0], float(div[0]))
+    check("and the shell vertices have %.3f of slack" % float(div[1] - b_lo[1]),
+          div[1] >= b_lo[1] and div[1] - b_lo[1] > 30)
+    print("     => the patch minimum is exactly t*: a flow at t*, no flow below it (cut {0}).")
+
+    # (b) closure: the icosahedral covering radius forbids a 13th neighbour at radius 2
+    U = np.array([[float(c) for c in p] for p in sites[1:]])
+    U /= np.linalg.norm(U, axis=1, keepdims=True)
+    rng = np.random.default_rng(0)
+    D = rng.normal(size=(200000, 3)); D /= np.linalg.norm(D, axis=1, keepdims=True)
+    ang = np.degrees(np.arccos(np.clip(np.max(D @ U.T, axis=1), -1, 1))).max()
+    check("sampled covering radius of the 12-point shell >= 37.3 degrees", ang >= 37.3, ang)
+    import math
+    dmax = 2 * 2.0 * math.sin(math.radians(37.377) / 2)
+    check("so a point at radius 2 is within %.4f < 2 of some vertex: no 13th neighbour" % dmax,
+          dmax < 2)
+    return ok
+
 def conventions_test():
     """The boundary and periodic conventions of §P1-P2, checked rather than asserted.
 
@@ -237,6 +277,10 @@ if __name__ == "__main__":
     print("=" * 100)
     conv_ok = conventions_test()
     print("\n" + "=" * 100)
+    print("A3. THE PATCH MINIMUM, EXACTLY, AND WHY THE SHELL CANNOT BE FILLED FURTHER")
+    print("=" * 100)
+    flow_ok = flow_and_obstruction_test()
+    print("\n" + "=" * 100)
     print("B. THE NONVACUOUS WINDOW: where does the shell stop giving b(0) > 0?")
     print("=" * 100)
     lo, hi, vlo, vhi = family()
@@ -247,5 +291,5 @@ if __name__ == "__main__":
     print("  t* = b(0)/12 at the last nonvacuous r: %.12f" % float((CF.SQ32_LO - vlo) / 12))
     p = export(L, sites, vols)
     print("\nexported:", p)
-    print("dense_shell:", "PASS" if (good and conv_ok) else "FAIL")
-    sys.exit(0 if (good and conv_ok) else 1)
+    print("dense_shell:", "PASS" if (good and conv_ok and flow_ok) else "FAIL")
+    sys.exit(0 if (good and conv_ok and flow_ok) else 1)

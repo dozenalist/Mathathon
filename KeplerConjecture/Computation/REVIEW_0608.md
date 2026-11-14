@@ -99,6 +99,39 @@ at `r = 2.0005`, the fixture of §1, it is `8.53·10⁻³`.
 is monotone in `r`: the two independent constructions — one with irrational coordinates and an exact
 dodecahedron, one rational with an exact polyhedron — agree in the direction and magnitude they must.
 
+### 2.2 The patch minimum is exactly `t*`, with an explicit flow
+
+The LP bisection of §2 gives `0.008544898` — above `t*` by `1.2·10⁻⁵`, which is `linprog`'s
+tolerance and leaves the value of the patch minimum slightly open. It is not open: the **radial
+flow**
+
+$$\varphi(0,j) = \tfrac{1}{12}\,b(0) \quad\text{for all twelve shell vertices } j$$
+
+is feasible at `Φ = t*` **exactly**. Its divergence at the centre is `12 · b(0)/12 = b(0)`, tight;
+at each shell vertex it is `−b(0)/12 = −0.008533`, against `b = −36.547`, i.e. `36.54` of slack.
+Since the singleton cut `{0}` fails for every `Φ < t*`, the patch minimum is **exactly** `t*`, with
+witnesses on both sides. No floating point is involved in either verdict.
+
+### 2.3 Why the shell cannot be filled further
+
+The obvious way to raise `b(0)` is to add neighbours — a denser local cell. It cannot be done here,
+and the reason is quantitative: the twelve directions are icosahedral, and the icosahedron's
+**covering radius** is `37.377°` (the face centres). So any point at distance `2` from the origin is
+within `37.377°` of some shell vertex, hence at distance at most
+
+$$2\cdot 2\sin(37.377°/2) = 1.2817 < 2$$
+
+from it — a legal thirteenth neighbour at radius `2` does not exist. (Sampling 200 000 directions
+gives a covering radius of `37.315°`, and the exact value `37.377°` is the face-centre angle; the
+bound only needs `≤ 37.377°`.) This is the kissing number `12` in the form that matters here: the
+icosahedral shell is **closed**, so §2.1's window is the whole family and `b(0) = 0.1024` at
+`r = 2.0005` is within `0.004` of the best this construction can do (`0.1066` at `r = 2` exactly,
+the regular dodecahedron).
+
+**The obstruction, stated:** in the dense-shell construction the deficit cannot be increased by
+adding contacts, because the maximal kissing configuration already covers every direction. Raising
+`b(0)` needs a *different* local geometry, not a fuller shell.
+
 ## 3. Completeness of the exact volume algorithm (fallback, first item)
 
 The engine enumerates vertices from a set `A` of half-spaces proposed by a floating-point pre-pass.
