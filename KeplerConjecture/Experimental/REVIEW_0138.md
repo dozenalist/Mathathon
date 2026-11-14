@@ -467,3 +467,65 @@ Reading 2 is the substantive one and it is consistent with everything else in th
 empirical route to `(H_R)` is closed not for want of a better optimiser but because the target
 configuration is not reachable by completion. Recorded so that no further search budget is spent
 on it.
+
+## 9. First attempts at `(Q)` — two controls, no answer
+
+### 9.1 A15 is the project's first genuinely saturated fixture
+
+`Experimental/scripts/frank_kasper_test.py` builds the A15 (β-W / Cr₃Si) structure, scales it
+so the minimum distance is exactly `2`, and computes cell volumes.
+
+```
+A15: min separation = 2.000000 (exact after scaling), conventional cube edge L = 4.0
+     cell volumes: 7.812500000 and 8.062500000        sqrt(32) = 5.656854249
+     cell extents: 1.443376  (< 2, so Omega subset B(v,2) holds)
+     packing density: 0.523599
+```
+
+Two things follow, and the first matters more than the second.
+
+- **This is the first fixture in the project whose cells satisfy the saturation criterion**
+  `extent <= 2` established in Section 5. Every earlier fixture failed it. So A15 is a genuine
+  saturated test case, and the evaluator's machinery (defect detection, extent flag, block
+  construction) is now exercised on a configuration where the numbers actually mean what they
+  claim. Run on a 1439-point build it reports `0` defects among the valid interior cells and
+  `520` boundary cells correctly flagged — the flag works.
+- **A15 has no defective cell**: `7.8125` and `8.0625`, both far above `5.6569`. So it does not
+  answer `(Q)`. Its density `0.5236` is far below fcc's `0.7405`, so this is unsurprising.
+
+**A failed attempt, recorded.** I first tried the Laves phase C15 (MgCu₂) as a denser
+candidate, since its mean cell volume (≈ `5.90` at density `0.71`) sits close enough to `√32`
+that individual cells could dip below. My construction used an **8-atom** basis (one Mg plus one
+Cu orbit) when C15 has **24** atoms per conventional cell (8 Mg at 8a + 16 Cu at 16d). The
+result was nonsense — all cells `98.53` with extent `4.12`, density `0.0425` — and I discarded
+it rather than patching the geometry from memory. Anyone continuing this should take the Wyckoff
+positions from a crystallographic source, not reconstruct them.
+
+### 9.2 Periodic relaxation recovers fcc, and finds nothing denser
+
+`Experimental/scripts/periodic_relax.py` relaxes `N` points in a periodic cube, minimising
+`L^3 + P·Σ max(0, 2 − d_ij)^2`, i.e. driving density up until contacts lock.
+
+| `N` | `L` | density | mean cell volume |
+| --- | --- | --- | --- |
+| 4 | `2.827432` | `0.741262` | `5.650888` |
+| 8 | `3.793810` | `0.613694` | `6.825535` |
+| 12 | `4.601329` | `0.515965` | `8.118368` |
+
+The `N = 4` optimum is `L = 2.8274` against `2√2 = 2.8284` for fcc, with density `0.7413`
+against `0.7405` — the relaxation has recovered **fcc**, which is the correct answer and a good
+validation of the harness. The larger cells find only sparser structures, so the search is not
+finding a denser Frank–Kasper competitor.
+
+All runs landed marginally below the legality threshold (`min_d` in `[1.9956, 1.9993]`), i.e. the
+penalty weight was too small to hold separation exactly; none was accepted as legal. That is a
+parameter defect in the harness, not a mathematical result, and it is why `best legal: none` is
+printed.
+
+**Where `(Q)` stands.** Unanswered. Two saturated configurations have been examined (fcc via the
+relaxation, A15 explicitly) and neither has a defective cell; the one configuration that *does*
+have a defective cell (the icosahedral cluster) cannot be saturated. That is consistent with —
+but does not establish — the possibility that `(Q) = no`, which as noted would collapse the
+route to the per-cell inequality. Settling `(Q)` needs a certified periodic construction (correct
+Wyckoff data, exact coordinates, periodic Voronoi decomposition) or an impossibility proof; it
+is the single highest-value next task and I make no claim about it.
