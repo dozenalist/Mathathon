@@ -217,6 +217,8 @@ def deficits(L, sites, rmax=6):
 
 def max_displacement_within_slack(L, sites, which=0):
     """Largest dx (moving site `which` in +x) keeping the minimum separation at least 2.  Exact."""
+    if min_separation(L, list(sites)) < 4:
+        raise ValueError("the unperturbed configuration already violates the separation")
     lo, hi = F(0), F(1)
     base = list(sites)
     while True:                                   # bracket
@@ -290,6 +292,60 @@ def self_test():
           abs(rows[-1][4] + 12 / 2 ** 0.5) < 1.5, rows[-1][4])
     return ok, rows
 
+def make_fixture(L, points, R, name="packing", rmax=6):
+    """GEOMETRY -> the external C044 fixture schema.  The hypotheses are checked, not assumed.
+
+    H1  min separation >= 2, checked exactly;
+    H2  the cells are computed on the torus and must sum to det L exactly (this is the check that
+        rmax was large enough to bound them: a truncated cell would show up here);
+    H3  b = sqrt(32) - vol Omega, enclosed between two rationals.
+
+    Returns the dict that cut_flow.load_external_fixture / evaluate_external consume.
+    """
+    q = min_separation(L, points)
+    if q < 4:
+        raise ValueError("minimum separation is %s < 2" % (float(q) ** 0.5))
+    detL, vols, info = evaluate(L, points, rmax=rmax)
+    if sum(vols) != detL:
+        raise RuntimeError("cell volumes sum to %s but the period volume is %s: rmax too small"
+                           % (sum(vols), detL))
+    E = edges_within(L, points, R)
+    return dict(name=name,
+                note=("built from rational geometry: period volume %s, cell volumes %s, "
+                      "min separation %s" % (detL, [str(v) for v in vols], float(q) ** 0.5)),
+                edges=[list(e) for e in E],
+                b_lo=[str(SQ32_LO - v) for v in vols],
+                b_hi=[str(SQ32_HI - v) for v in vols],
+                volumes_are_provisional=False,
+                cell_volumes_exact=[str(v) for v in vols],
+                period_volume_exact=str(detL))
+
+def family_scan():
+    """Is the cut condition ever non-vacuous in the near-contact band?
+
+    FCC of cubic side a has nearest-neighbour distance d = a/sqrt2 and density
+    4(4pi/3)/a^3.  For a from 3.0 down to 2.82 the density runs from 0.621 to 0.740 (Kepler is
+    0.7405), so this is the near-contact band.  At each a, displace one site by a fraction of the
+    maximum the contact slack allows, recompute the cells EXACTLY, and take t* from cut_flow's
+    exhaustive scan over the 4 vertices.
+    """
+    import cut_flow as CF
+    rows = []
+    for a in ("3.0", "2.95", "2.9", "2.87", "2.85", "2.83"):
+        Lf, S = fcc_cubic(a)
+        dx_max = max_displacement_within_slack(Lf, S, 0)
+        d = float(F(a)) / 2 ** 0.5
+        rho = float(4 * (4 * 3.141592653589793 / 3) / F(a) ** 3)
+        t_stars = []
+        for frac in (F(0), F(1, 2), F(1)):
+            dx = dx_max * frac
+            S2 = [(S[0][0] + dx, S[0][1], S[0][2])] + S[1:]
+            fx = make_fixture(Lf, S2, F("2.13"), name="fcc_a%s_frac%s" % (a, frac))
+            scan = CF.exhaustive_cut_scan([F(x) for x in fx["b_lo"]], [tuple(e) for e in fx["edges"]])
+            t_stars.append(scan["t_star"])
+        rows.append((float(a), d, rho, float(dx_max), [float(t) for t in t_stars]))
+    return rows
+
 def export(path=None):
     f = SMALLEST_NONUNIFORM
     vols, b_lo, b_hi, detL, _ = deficits(f["L"], f["sites"])
@@ -303,8 +359,24 @@ def export(path=None):
     json.dump(d, open(path, "w"), indent=1)
     return path
 
-if __name__ == "__main__":
+def main():
+    print("=" * 100)
+    print("A-C. the engine, the smallest nonuniform fixture, and the near-contact bound")
+    print("=" * 100)
     good, rows = self_test()
+    print("\n" + "=" * 100)
+    print("D. FAMILY SCAN: is the cut condition ever non-vacuous in the near-contact band?")
+    print("=" * 100)
+    print("   %-6s %-8s %-9s %-10s %s" % ("a", "d", "density", "delta_max", "t* at delta = 0, 1/2, 1"))
+    fam = family_scan()
+    for a, d, rho, dxm, ts in fam:
+        print("   %-6.3f %-8.4f %-9.5f %-10.4f %s" % (a, d, rho, dxm, ts))
+    allvac = all(all(t == 0 for t in ts) for _, _, _, _, ts in fam)
+    print("   => %s" % ("t* = 0 at EVERY instance: the cut condition is vacuous across the band"
+                        if allvac else "some instance has t* > 0"))
     print("\nexported:", export())
-    print("fixture_nonuniform self-test:", "PASS" if good else "FAIL")
-    sys.exit(0 if good else 1)
+    print("fixture_nonuniform:", "PASS" if (good and allvac) else "FAIL")
+    return 0 if (good and allvac) else 1
+
+if __name__ == "__main__":
+    sys.exit(main())
