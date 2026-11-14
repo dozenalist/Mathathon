@@ -2,7 +2,7 @@
 
 **The proof aims to produce a nonzero integer smaller than one.** It does this by constructing integer polynomials whose values at ζ(5) become extremely small. The difficult part is keeping those values small while making every coefficient an integer.
 
-The numbered results below refer to Chun Wing Lai, [*On Fauzan’s Proof that ζ(5) is Irrational*, version 1, 29 September 2026](https://ai.vixra.org/pdf/2609.0080v1.pdf). They are **Lai’s numbers**, which differ from the original paper’s. Read the numbered sections below from top to bottom to work backward through the argument.
+References to lemmas, propositions, and sections of the paper use Chun Wing Lai’s numbering in [*On Fauzan’s Proof that ζ(5) is Irrational*, version 1, 29 September 2026](https://ai.vixra.org/pdf/2609.0080v1.pdf). This overview’s own numbered headings follow the dependencies backward; they do not match the paper’s section numbers. Read them from top to bottom to work backward through the argument.
 
 **A note about this version:** Lai’s exposition abbreviates some essential arguments and contains an inconsistent correction term. The map below explains the intended dependencies; the [reading cautions](#reading-cautions) identify where a fuller source is needed.
 
@@ -18,6 +18,7 @@ The numbered results below refer to Chun Wing Lai, [*On Fauzan’s Proof that ζ
 | [6. The Hankel construction](ProofGuide/06_HANKEL_CONSTRUCTION.md) | How partial fractions give affine entries and a Vandermonde determinant gives exact degree. |
 | [7. The moment representation](ProofGuide/07_MOMENT_REPRESENTATION.md) | The definition of the functional and the two integral calculations behind it. |
 | [8. Reading cautions](ProofGuide/08_READING_CAUTIONS.md) | What the printed estimates leave to justify, and what the exponent 260 additionally requires. |
+| [The role of Lai’s Sections 8–12](ProofGuide/SECTIONS_8_12_ROLE.md) | How the local valuations, prime sum, arithmetic saving, and energy estimate feed into the final contradiction. |
 | [Exponent catalog from 5 to 7](EXPONENT_CATALOG.md) | The contribution of each prime range and the real estimate, with theorem references, exact arithmetic, and the remaining local proof obligations. |
 
 ## 1 The last step is an impossible integer
