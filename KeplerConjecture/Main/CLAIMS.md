@@ -3774,3 +3774,54 @@ no face count, and it beats `V_dod` once `ρ³ ≥ 3V_dod/(4π)`, i.e. `ρ ≥ 1
 below this, which is why Fejes Tóth's theorem is doing real work in the lemma above).
 
 *Status.* `PROVED` (elementary, from `K15-C115`'s quotation of Theorem 4.1). Reviewer X.
+
+### K15-C122 — the concrete target that would close the singleton case: a `20`-face circumscribed bound (`PROPOSED`, with numbers)
+
+`C121` settles the singleton closed-component question for cells with **at most 12 faces**. This
+entry states exactly what would extend it to all cells, with the target value computed.
+
+**The extension of `C121`'s argument.** Repeat its three lines with Fejes Tóth's Theorem 4.1
+replaced by any bound of the form
+
+> **(B_F)** *a convex body containing a unit ball with at most `F` faces and all faces at distance
+> `≥ ρ` has volume `≥ c_F ρ³`.*
+
+`C121` is the case `F = 12`, `c_F = V_dod`. Then `vol Ω(v) ≥ c_F ρ³`, and for the isolated-vertex
+value `ρ = 1.045` we need `c_F (1.045)³ > √32`, i.e.
+
+```
+c_F  >  √32 / 1.045³  =  4.95708216846 .
+```
+
+**What each candidate constant gives:**
+
+| `c_F` | source | `c_F·1.045³` | vs `√32 = 5.656854` |
+| --- | --- | --- | --- |
+| `V_dod = 5.550291` | Fejes Tóth, `F ≤ 12` (`C121`) | `6.333804` | `+11.97%` ✓ |
+| `V_ico = 5.054056` | regular icosahedron of inradius `1` | `5.767518` | `+1.96%` ✓ |
+| `4π/3 = 4.188790` | the inscribed ball (no face count) | `4.780105` | `−15.5%` ✗ |
+
+So **`V_ico` is already enough**, with `1.96%` to spare — and `V_ico = 5.0540561436` was computed
+here: with inradius `1` the regular icosahedron has edge `a = 12/(√3(3+√5)) = 1.3231690765` and
+volume `5(3+√5)a³/12 = 5.0540561436`.
+
+**The two gaps, precisely.**
+
+1. **No face count.** An isolated vertex's neighbours all lie at distance `≥ 2.09`, and only those
+   within `2R_cell` can cut. But `R_cell` is not bounded *a priori* without a volume bound, so the
+   face count is not automatically `≤ 20`; the residual range is `F ≥ 13`. This is the same
+   circularity `C108`'s compactness had to break, and it is not broken here.
+2. **`c_F` for `13 ≤ F ≤ 20`.** `C121` gives `c_12 = V_dod`; the value at `F = 20` is the minimum
+   volume of a circumscribed polyhedron with `20` faces, which is `≤ V_ico` (the regular icosahedron
+   attains `V_ico`, but whether it *minimises* over `20`-face circumscribed polyhedra is a classical
+   question Main has **not** resolved — no source for it is in the repository and it was not
+   searched). Since the minimum decreases with `F`, the target is a lower bound at `F = 20`:
+   **any `c ≥ 4.958` valid for circumscribed polyhedra with `≤ 20` faces would close the
+   `≤ 20`-face case.**
+
+**Why this is worth stating.** It converts "settle the singleton question" into two concrete
+sub-problems with numbers: a classical circumscribed-polyhedron bound at `F = 20` (target `4.958`),
+and a face-count bound. Neither is a sharpness barrier and both are finite-dimensional.
+
+*Status.* `PROPOSED`. The arithmetic in the table is `PROVED` and re-derived in
+`constants_check.py`; the two gaps are open. Reviewer X.

@@ -187,6 +187,16 @@ chk("so b(v) is negative", sqrt(32) - vdod * mpf('1.045') ** 3, -0.676949856141,
 chk("inball threshold rho = (3V_dod/4pi)^(1/3)", (3 * vdod / (4 * pi)) ** (mpf(1) / 3), 1.098354117, tol=1e-9)
 chk("2*R_cell at rho=1.045", 2 * mpf('1.045') * sqrt(mpf(2)), 2.955706345, tol=1e-9)
 
+# --- K15-C122: the F<=20 target ------------------------------------------------
+a_ico = 12 / (sqrt(mpf(3)) * (3 + sqrt(mpf(5))))          # icosahedron edge, inradius 1
+V_ico = mpf(5) / 12 * (3 + sqrt(mpf(5))) * a_ico ** 3
+chk("icosahedron edge, inradius 1", a_ico, 1.3231690765, tol=1e-9)
+chk("icosahedron volume, inradius 1", V_ico, 5.0540561436, tol=1e-9)
+chk("V_ico * 1.045^3", V_ico * mpf('1.045') ** 3, 5.76751766492, tol=1e-9)
+chk("V_ico * 1.045^3 exceeds sqrt32 by (%)", 100 * (V_ico * mpf('1.045') ** 3 / sqrt(32) - 1), 1.956, tol=1e-3)
+chk("target c_F = sqrt32/1.045^3", sqrt(32) / mpf('1.045') ** 3, 4.95708216846, tol=1e-9)
+chk("inball c = 4pi/3 falls short (product)", 4 * pi / 3 * mpf('1.045') ** 3, 4.780105486434, tol=1e-9)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)
