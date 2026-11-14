@@ -1615,3 +1615,17 @@ Other pairs are further: same-face `23.8`, antipodal `16 − 12c² = 8.42`, same
 So the true threshold is in `[4cos ρ_c, 6cos ρ_c]`, and `C133`'s constant is exactly `2/3` of the natural
 one. `4cos ρ_c` is **not attained** (`c133_attain.py`): at that `d` the face-centre alignment is forced
 and the best twist still leaves a pair at `1.214124`.
+
+### K15-X-C097 — correction to `X-C089`/`X-C090`: the main theorem has no face bound, so Consequence 1 is sound by citation
+
+The Hales–McLaughlin paper's introduction (p1) states the **unrestricted** form and its equality case:
+
+> "`vol(Ω(Λ,v)) ≥ vol(Ω(Λ_dod,0))` for every `v ∈ Λ`, and for every set of points `Λ ⊂ R³` whose pairwise
+> distances are at least the diameter 2. The case of equality occurs exactly when `Ω(Λ,v)` is congruent to
+> a regular dodecahedron of inradius 1."
+
+Theorem 4.1 (p16) is Fejes Tóth's **`≤ 12`-face reduction** used inside that proof. So `C133`'s
+Consequence 1 and `C108` step (3) — "volume `= V_dod` ⟹ dodecahedron" — are **sound**, but must cite the
+main theorem, not 4.1. `X-C089`'s "unstated hypothesis" is right about Theorem 4.1 and wrong about the
+paper; `X-C090`'s counterexample stands, but only as a statement about the *polyhedral* strengthening of
+4.1 (the circumscribed icosahedron, 20 faces, `5.054056 < V_dod`), which the conjecture does not need.
