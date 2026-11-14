@@ -820,3 +820,17 @@ into root-free rational zones) — 0 mismatches. Records the two implementation 
 wrong answers first (endpoint values decide nothing when an endpoint is a root; the shrink point
 must not be a zero of `p`). G8 stays open: finite sample, and no proof of correctness for any of
 the three implementations.
+
+### K15-X-C047 — Hales–McLaughlin's equality case verified from the primary source
+
+The load-bearing external input of Theorem D (`C108`) step (3) is
+"`vol Ω(v) = V_dod` ⟺ `Ω(v)` regular dodecahedron of inradius 1". It is **stated explicitly** in
+Hales–McLaughlin, *The dodecahedral conjecture*, arXiv:math/9811079v3 §1: "…for every set of points
+`Λ ⊂ R³` whose pairwise distances are at least the diameter `2`. **The case of equality occurs
+exactly when `Ω(Λ,v)` is congruent to a regular dodecahedron of inradius 1**", and again in the
+strong form (§2.1): "Equality holds exactly when `Ω(Λ,v₀)` is congruent to `Ω(Λ_dod,0)`". Two
+consequences: step (3) is exactly as strong as the source (no hidden stability assumption), and the
+inequality is stated for **every 2-separated point set**, not only saturated packings — which is
+what Theorem D's minimiser is. Caveats: the source is computer-assisted (interval arithmetic over
+tame Voronoi graphs), and its `Λ_dod` has inradius 2 with pairwise distances `≥ 2`, so a conversion
+to this project's inradius-1 normalisation is needed.

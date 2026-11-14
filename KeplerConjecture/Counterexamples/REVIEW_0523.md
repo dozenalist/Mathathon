@@ -181,13 +181,27 @@ the one place where "no other centre contributes" needs the word "closed" rather
 **(e) The cardinality bound** `N_max = vol(B(0,2R_max))/(4π/3)` is a constant factor off (the
 disjoint unit balls lie in `B(0,2R_max+1)`), which does not matter for compactness ✓.
 
-**Step (3) is where a referee should push, and the document says so itself** (line 448–451): it
-uses Hales–McLaughlin's *equality* case, `vol Ω = V_dod ⟺ Ω` regular dodecahedron. That is a
-published theorem with an equality statement, not re-derived here; if the equality case were
-weaker than "iff regular dodecahedron" then step (3) fails and Theorem D with it. I did **not**
-find an independent statement of the equality case in this repository, and I am not able to verify
-it from the primary source in this block. **Recorded as the load-bearing external dependency of
-`C108`.**
+**Step (3) is where the document says a referee should push** (line 448–451): it uses
+Hales–McLaughlin's *equality* case, `vol Ω = V_dod ⟺ Ω` regular dodecahedron. **I checked it
+against the primary source and it is stated there explicitly** — Hales–McLaughlin,
+arXiv:math/9811079v3, §1:
+
+> "…the inequality `vol(Ω(Λ,v)) ≥ vol(Ω(Λ_dod,0))` for every `v ∈ Λ`, and for every set of points
+> `Λ ⊂ R³` whose pairwise distances are at least the diameter `2`. **The case of equality occurs
+> exactly when `Ω(Λ,v)` is congruent to a regular dodecahedron of inradius 1.**"
+
+and in the strong (truncated-cell) form, §2.1: "Equality holds exactly when `Ω(Λ,v₀)` is congruent
+to `Ω(Λ_dod,0)`." Two things matter here and both are in the quoted sentence: the equality case is
+**exactly** dodecahedral (so step (3) is exactly as strong as the source), and the inequality is
+stated for **every 2-separated point set**, not only saturated packings — which is what Theorem D
+needs, since its minimiser is an arbitrary configuration. So the one external dependency of `C108`
+is a published, quotable statement, not a folklore strengthening. (Main's line 448–451 flags it as
+"the softer dependency … the place a referee should push"; the push succeeds.)
+
+Two caveats worth keeping: the source is computer-assisted (interval arithmetic over tame Voronoi
+graphs), so the equality case inherits that, and the paper's `Λ_dod` is the dodecahedron **of
+inradius 2** with pairwise distances `≥ 2` in their normalisation — the numbers in this project use
+inradius 1, so a reader converting must keep the factor. Both are bookkeeping, not gaps.
 
 **Step (4) is correct, and I confirm the constant independently.** `Reviews/two_dodecahedra_indep.py`
 builds the two icosahedral rings from the dodecahedron's own face normals, puts the centres at
