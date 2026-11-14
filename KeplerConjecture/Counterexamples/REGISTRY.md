@@ -524,3 +524,15 @@ Each term of a constraint row has a `≤ 17`-digit denominator; the terms' denom
 mutually coprime and the lcm of 21 of them is 118 digits. Rounding to `10⁻ᵐ` cannot help; rounding
 to the dyadic grid `2⁻ᵐ` that `S = 8` already uses removes the blow-up. Grids coarser than `10⁻⁶`
 break `A`, whose margin was forced to `10⁻⁶` by the SDP (`G` survives coarser grids: `ε_G = 10⁻²`).
+
+### K15-X-C022 — no small-denominator both-sides triple exists in the `S = 8` Gram basis
+
+Frontier over the forced margin `ε_AB` (each row: the coarsest dyadic grid that survives exact
+`LDLᵀ`, and the resulting size): `ε_AB = 10⁻⁶` → density `0.7822673`, grid `2⁻²⁴`, 20 digits,
+2,646 bytes; `10⁻³` → `0.783625`, `2⁻¹⁸`, 18 digits, 2,231 bytes; `10⁻²` → `0.795846`, `2⁻¹²`,
+16 digits, 1,833 bytes; `5·10⁻²` → `0.850160`, `2⁻¹⁰`, 16 digits, 1,732 bytes. Every row cheaper
+than 2,646 bytes is worse than `X-C016` (`0.783097911`), so nothing is gained at comparable
+strength. The digit floor is structural: row 11's pivot coefficient is `S⁻¹⁰`, so the solve
+multiplies by `8¹¹ ≈ 8.6·10⁹` (~10 digits) on top of magnitude and grid. A 5-digit certificate
+in this basis does not exist; `S = 1` would remove `8¹¹` but reintroduce the lcm problem through
+the Fourier map's own denominators. Reproduce: `python3 x_c017_shrink.py`.
