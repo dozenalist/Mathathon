@@ -115,3 +115,150 @@ further `2.08 %` is strictly more expensive than a route that needs neither.
 `Omega(c) ⊆ D` are unconditional. The equality needs the import. The observation that the
 computed centre cell was `5.550291028515513` to `1e-15` in twelve runs is consistent with, and
 now explained by, the conditional statement.
+
+## 3. The collective target, formulated as an exact finite inequality (`K15-E060`)
+
+### 3.1 What "two shells" has to mean
+
+Adding cells to a block is not automatically helpful: the block inequality
+`sum_{v in B} c(v) >= sqrt32 |B|` gains `c(u)` on the left and `sqrt32` on the right for
+each added cell `u`, so adding `u` helps exactly when `c(u) > sqrt32`. So "use two shells"
+is a real hypothesis, not a free weakening. Two further points had to be settled before the
+target is even well posed:
+
+- **Thresholds are forced, not chosen.** One-shell blocks `C u N(C)` are disjoint iff
+  components are taken at `tau = 2 rho = 4.18`, because `s in N(C1) cap N(C2)` forces
+  `dist(v1,v2) <= 2 rho`. Two-shell blocks `C u N(C) u N(N(C))` need `tau = 4 rho = 8.36`,
+  because the chain is `dist <= 2 rho` twice. Both are proved in `GEOMETRIC_PARTITION.md`
+  and *tested* (max pairwise overlap `0` in every fixture).
+- **Boundary cost grows.** `diam Block2 <= diam(C) + 4 rho`, so `K15-E001` Step 2 runs with
+  `D = diam(C) + 8.36`; the estimate stays `O(r^2)`, so the conclusion `delta <= pi/sqrt18 + C/r`
+  survives with a larger `C`. Nothing breaks, but the constant is worse and must be stated.
+
+### 3.2 The evaluator
+
+`Experimental/scripts/block_evaluator.py` (numpy/scipy only; **one CPU, under 10 s, under
+200 MB** for all fixtures). It computes Voronoi volumes with an explicit buffer, flags every
+cell that the buffer cuts (so an unbounded cell can never be silently counted), finds the
+defective set, extracts components at both thresholds, builds one- and two-shell blocks,
+checks disjointness and overlap, and reports `D`, `S`, `S - D`, diameters and the
+buffer flag per block. Command:
+
+```
+python3 Experimental/scripts/block_evaluator.py            # all fixtures
+python3 Experimental/scripts/block_evaluator.py --fixture two_icosa
+```
+
+Inputs are generated in-script (no data files); output is
+`Experimental/evidence/block_evaluator.json`. Success criterion: for each block,
+`disjoint=True`, `block_has_buffer_cell=False`, and `S - D` positive; a **negative** `S - D`
+in a buffer-free block would refute the target. Failure criterion for the *evaluator*:
+any block reported with a buffer-cut cell, since the volume is then not the true one.
+
+### 3.3 Fixtures and results (TESTED_FINITE)
+
+| fixture | defects | blocks | `S - D`, one shell | `S - D`, two shells |
+| --- | --- | --- | --- | --- |
+| `fcc_plain` (500 pts) | 0 | vacuous: all singletons | — (holds by definition) | — |
+| `hcp` (175) | 0 | vacuous | — | — |
+| `random_fill` (107) | 0 | vacuous — sparse, cells large | — | — |
+| `icosa_fill` (131) | 1 | 1 / 1 | `+61.504` | `+66.526` |
+| `icosa_fill_b` (131) | 1 | 1 / 1 | `+52.016` | `+84.547` |
+| `icosa_fcc_shell` (189) | 1 | 1 / 1 | `+94.064` | `+94.064` |
+| `icosa_fcc_shell_b` (189) | 1 | 1 / 1 | `+94.036` | `+94.036` |
+| `two_icosa` (two clusters) | 2 | 2 / 2 | `+50.052`, `+50.732` | `+68.518`, `+76.450` |
+
+The deficit being repaid is `D = 0.106563`. So across seven non-vacuous blocks the observed
+surplus exceeds the deficit by a factor between `470` and `880`, and **no block comes close to
+failing**. `two_icosa` exercises the overlap accounting with two components and reports
+`max_pairwise_overlap = 0`, confirming the `4.18` / `8.36` thresholds empirically as well as
+by proof.
+
+**Two fixtures could not be built, and that is informative.**
+
+- `perturbed_fcc` is **impossible**: in fcc all twelve neighbours of a centre lie at distance
+  exactly `2`, so *any* nonzero displacement violates 2-separation. Creating a defect requires
+  a locally compressed motif, and the icosahedral cluster is the natural one. Recorded so that
+  no one spends time trying.
+- A *dense* completion of the icosahedral cluster is not achievable by random sequential
+  adsorption: densities reached are `0.10` against `0.177` for fcc. This is the same
+  undersaturation that limits `K15-E040`, and it means the `S - D` values above are inflated
+  by free space. Since computed cell volumes are **upper** bounds, the test remains one-sided:
+  a positive `S - D` does not certify, only a negative one refutes.
+
+### 3.4 Antisymmetric transfer: the fallback, and it does better than expected (`K15-E061`)
+
+The block formulation needs a partition, components, ordering and overlap accounting. There is
+a formulation that needs none of it and restores the **pointwise** condition, so that Hales's
+Lemma 3.3 applies directly with the singleton partition.
+
+**Setup.** `R > 0`. For defective `v` set `d(v) = sqrt32 - c(v) > 0`, and `N_R(S)` for the
+`R`-neighbourhood. A *transfer* is a skew-symmetric `phi(v,u) = -phi(u,v)` supported on
+`0 < |v-u| <= R`; set `A(v) = sum_u phi(v,u)`.
+
+**Hypothesis (Hall condition, `H_R`).** For every finite set `S` of defective centres,
+
+```
+sum_{v in S} d(v)  <=  sum_{u in N_R(S) \ S} ( c(u) - sqrt32 ) .
+```
+
+**Theorem.** Assume `(H_R)`. Then:
+
+1. *Pointwise FCC-compatibility.* There is a transfer with `c(v) + A(v) >= sqrt32` for every
+   `v in Lambda`. This is max-flow/min-cut: deficits on one side, surpluses on the other, and
+   `(H_R)` is exactly the family of cut conditions.
+2. *Exact cancellation.* For every finite `S subset Lambda`,
+   `sum_{v in S} A(v) = sum_{v in S, u notin S, |v-u|<=R} phi(v,u)`, because the pairs internal
+   to `S` cancel pairwise by skew-symmetry.
+3. *Negligibility.* For `S = Lambda(x,r)` the boundary pairs have `u in B(x,r+R) \ B(x,r)`,
+   a shell of `O(r^2)` centres, and for each such `u` at most `|Lambda cap B(u,R)| <= (R+1)^3`
+   partners. Hence `|sum_{v in Lambda(x,r)} A(v)| <= ||phi||_inf (R+1)^3 |shell| = O(r^2)`.
+4. *(C3) is automatic.* Pacers never pay more than `c(u) - sqrt32`, and receivers only gain,
+   so `c(v) + A(v) >= 0` everywhere.
+
+Consequently `A` is negligible and fcc-compatible, and **Lemma 3.3 applies with no cluster
+machinery at all**.
+
+**Implemented and tested.** `Experimental/scripts/transfer_evaluator.py` constructs the
+transfer explicitly (pro rata, capped by each payer's surplus, payers restricted to
+non-defective centres) and verifies the conclusions numerically:
+
+| fixture | pointwise FCC | `min (c + A)` | range of `A` | `|sum A|` | defects paid |
+| --- | --- | --- | --- | --- | --- |
+| `icosa_fill` | yes | `5.656854249` | `[-0.0112, +0.1066]` | `1.4e-17` | 1 / 1 |
+| `icosa_fill_b` | yes | `5.656854249` | `[-0.0111, +0.1066]` | `6.9e-18` | 1 / 1 |
+| `icosa_fcc_shell` | yes | `5.656854249` | `[-0.0102, +0.1066]` | `0` | 1 / 1 |
+| `two_icosa` | yes | `5.656854249` | `[-0.0160, +0.1066]` | `0` | 2 / 2 |
+| `hcp`, `fcc_plain` | yes | `5.656854249` | `[0, 0]` | `0` | 0 |
+
+Three features are worth stating plainly.
+
+- **The transfer is inert on the equality family.** `A ≡ 0` on fcc and hcp, so the rule cannot
+  disturb the configurations that attain `pi/sqrt18`. This was the main risk of any
+  correction scheme and it is settled here for this rule.
+- **`A` is tiny**: `|A| <= 0.106563 = sqrt32 - V_dodeca`, i.e. at most `1.9 %` of a cell
+  volume. So the correction is a small perturbation, and (C3) has enormous margin.
+- **Each deficit is paid in full by exactly twelve payers**, matching `K15-E014`'s count.
+
+**Equivalence, stated honestly.** `(H_R)` with `S` the defect set of a single component *is*
+`(T')` on the block `S u N_R(S)`. So the transfer does **not** remove the mathematical
+content; it repackages it. What it genuinely removes is (i) the partition, (ii) the component
+/ threshold / overlap bookkeeping, (iii) the need for `K15-E001`'s cluster criterion at all,
+and (iv) the negligibility proof, which becomes a two-line telescoping argument with an
+explicit `O(r^2)` boundary. That is a real improvement in the *interface* and in what a
+formalisation would have to carry, and it should not be described as a reduction in difficulty.
+
+### 3.5 The remaining local inequality, stated exactly
+
+`(H_R)` is unproved. What is needed, minimally, is:
+
+```
+for every finite set S of defective centres (c(v) < sqrt32),
+    sum_{v in S} (sqrt32 - c(v))  <=  sum_{u in N_R(S) \ S} (c(u) - sqrt32) ,
+with R = 2.09.
+```
+
+Everything else in the chain is now either proved (`K15-E014` for the count, the transfer
+theorem above) or imported and charged (`V_dodeca`). The measurements say the inequality holds
+with a factor of `470`-`880` to spare on every constructible fixture; the obstruction is that
+no technique proves even a factor of `1`.
