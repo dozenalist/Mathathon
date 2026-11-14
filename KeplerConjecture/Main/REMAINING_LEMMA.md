@@ -22,21 +22,37 @@ What is *not* implied: any `|U|^{2/3}` form for arbitrary `U` (`K15-C079`
 corrected). For ball cuts `U = B(x,r) ∩ Λ` one has `|δ⁺(U)| ≤ 3k_RR r²`, so the
 slack is explicit there; for general `U` the only bound is `k_R|U|`.
 
-## 2. Hales' accounting lemma, precisely
+## 2. Hales' accounting lemma, from his own text
 
-Hales does **not** prove a cut condition. His structure (from the unabridged text,
-§3–5 and Ch. 7) is:
+Read from `Literature/Papers/Hales2005-unabridged.pdf`, Ch. 7 (§7.3–7.4):
 
-1. a **score function** `σ` on Delaunay stars (and on "quad clusters"), defined from
-   an explicit transfer of volume between neighbouring cells;
-2. an **exact rearrangement**: `Σ_{v∈Λ∩B} (vol Ω(v) + A(v)) = Σ_{stars D ⊆ B} σ(D)`
-   up to an explicit boundary term — this is where his four-way cancellation
-   (`Σ_{i=1..4} A₁(S,c,v_i) = 0`, Lemma 7.10) lives;
-3. a **pointwise inequality** `σ(D) ≥ 0` for every *tame* star, verified by interval
-   arithmetic and LP over the finite list of tame combinatorial types.
+> **Definition 7.12.** `σ(D) = −4δ_oct(vol Ω(D) + A₀(D)) + 16π/3`, "the score of the
+> decomposition star".
+>
+> **Lemma 7.13.** The following are equivalent: (1) the minimum over `DS` of
+> `vol Ω(D) + A₀(D)` is `√32`; (2) the maximum of `σ` on `DS` is `8 pt`
+> (`pt ≈ 0.05537`). Moreover these imply that `A` is fcc-compatible for every
+> saturated packing.
+>
+> **Theorem 7.14.** If `max_DS σ = 8 pt`, then every saturated packing admits a
+> negligible fcc-compatible `A`.
+>
+> **Definition 7.15.** A *standard cluster* is a pair `(R, D)` …; §7.4 expresses `σ`
+> as a sum of terms attached to standard regions, and Ch. 10 bounds the score in
+> triangular and quadrilateral regions.
 
-The quantitative content is that his list of shapes is **finite** (delinearisation +
-tameness, Ch. 18–19), so the verification is a finite computation.
+**The decisive structure.** `DS` — the set of *decomposition stars* — is a **compact,
+finite-dimensional** space of local configurations (bounded radius, finitely many
+combinatorial types after tameness). Hales' Lemma 7.13 converts the pointwise
+inequality over *all packings* into an optimisation over `DS`, and §7.4 + Ch. 10 convert
+that into finitely many LP problems. That is where his finitisation happens, and it is
+what makes his proof computable.
+
+Our cut condition has **no analogue of `DS`**: it quantifies over subsets of a packing,
+not over local configurations, so there is no compact reduction to appeal to. This is
+the precise structural difference, and it is sharper than "finite vs infinite": Hales'
+obligation is an optimisation over a compact space; ours is a family of inequalities
+indexed by all cuts.
 
 ## 3. Comparison
 

@@ -2385,3 +2385,20 @@ condition as though it were easier than Kepler.
 
 *Status.* `PROVED` (asymptotic identity from the tiling, plus `K15-C043`'s chain in
 the other direction). Reviewer X.
+
+### K15-C088 — Hales' accounting read from the text (`AUDITED`; the structural difference is compactness)
+
+Quoting `Literature/Papers/Hales2005-unabridged.pdf`, Ch. 7: **Definition 7.12**
+defines the score `σ(D) = −4δ_oct(vol Ω(D)+A₀(D)) + 16π/3` on *decomposition stars*;
+**Lemma 7.13** shows `min_DS(vol Ω + A₀) = √32` ⟺ `max_DS σ = 8 pt`; **Theorem 7.14**
+turns `max_DS σ = 8 pt` into existence of a negligible fcc-compatible `A` for every
+saturated packing; **Definition 7.15** and §7.4 decompose `σ` over standard clusters,
+and Ch. 10 bounds it region by region.
+
+**The structural difference, precisely.** `DS` is a *compact finite-dimensional* space
+of local configurations. Hales' Lemma 7.13 converts a pointwise statement about all
+packings into an optimisation over that compact space, which is then a finite
+computation (interval arithmetic + LPs). The cut condition has **no `DS`**: it
+quantifies over subsets of a packing, so no compact reduction is available. That is a
+sharper statement than "finite vs infinite", and it explains why the transfer route
+cannot be finitised the way Hales' can.
