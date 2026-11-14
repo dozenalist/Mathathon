@@ -71,7 +71,7 @@ if __name__=="__main__":
     ap=argparse.ArgumentParser(); ap.add_argument("--seconds",type=float,default=120.0)
     ap.add_argument("--starts",type=int,default=6); a=ap.parse_args()
     sec=min(max(a.seconds,1.0),600.0); t0=time.time()
-    best=None; recs=[]
+    best=None; recs=[]; perN={}
     for N in (4,6,8,12,16):
         for s in range(max(1,a.starts//3)):
             if time.time()-t0>sec: break
@@ -87,8 +87,24 @@ if __name__=="__main__":
                  "mean_cell":float((4*np.pi/3)/densp)}
             if best is None or densp>best["density"]:
                 best=dict(rec); best["_f"]=f.tolist(); best["_L"]=float(Lp)
+            # keep the best per N so every N gets its cells examined
+            if N not in perN or densp>perN[N]["density"]:
+                perN[N]={"density":float(densp),"f":f.tolist(),"L":float(Lp),
+                         "mean_cell":float((4*np.pi/3)/densp)}
             recs.append(rec)
             print(json.dumps({k:v for k,v in rec.items() if k!="_f"}))
+    print("\n=== per-N: does any optimised phase have a cell below sqrt32? ===")
+    perN_out={}
+    for N in sorted(perN):
+        f=np.array(perN[N]["f"]); L=perN[N]["L"]
+        cv=cell_volumes(f,L)
+        vals=sorted(v[0] for v in cv.values() if v is not None)
+        if not vals: continue
+        flag="  <-- HAS A CELL BELOW sqrt32" if vals[0]<R32-1e-9 else ""
+        print(f"  N={N:2d} density={perN[N]['density']:.6f} mean={perN[N]['mean_cell']:.6f} "
+              f"min_cell={vals[0]:.6f} max_cell={vals[-1]:.6f}{flag}")
+        perN_out[N]={"density":perN[N]['density'],"min_cell":vals[0],"max_cell":vals[-1],
+                     "any_below":bool(vals[0]<R32-1e-9)}
     print("\nbest (after projection):", json.dumps({k:v for k,v in best.items() if k!="_f"},indent=1))
     f=np.array(best["_f"]); L=best["_L"]
     cv=cell_volumes(f,L)
@@ -98,5 +114,6 @@ if __name__=="__main__":
     print("ANY cell below sqrt32?", (min(vals)<R32-1e-9) if vals else "n/a")
     json.dump({"best":{k:v for k,v in best.items() if k!="_f"},
                "cell_volumes":{str(k):v for k,v in cv.items()},
-               "sqrt32":R32,"any_below":bool(vals and min(vals)<R32-1e-9)},
+               "sqrt32":R32,"any_below":bool(vals and min(vals)<R32-1e-9),
+               "per_N":perN_out},
               open("Experimental/evidence/periodic_relax.json","w"), indent=1)

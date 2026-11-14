@@ -557,3 +557,29 @@ had a systematic error in the volume or the periodic convention, it would not re
 The `N = 6, 8, 12, 16` runs found nothing denser than the `N = 4` (fcc) optimum, so the search
 offers no Frank–Kasper competitor with a small cell. `(Q)` remains open, and the next step is a
 certified periodic construction from crystallographic data rather than a relaxed search.
+
+### 9.4 Per-`N` cell scan: no phase found with a cell below `√32`
+
+Computing cell volumes for the best projected structure at each `N`, not only the global best:
+
+| `N` | density | mean cell | min cell | max cell | below `√32`? |
+| --- | --- | --- | --- | --- | --- |
+| 4 | `0.740480` | `5.656855` | `5.656855` | `5.656855` | no (equal) |
+| 6 | `0.509767` | `8.217065` | `7.343968` | `8.913087` | no |
+| 8 | `0.553512` | `7.567662` | `7.290192` | `7.799182` | no |
+| 12 | `0.426657` | `9.817693` | `8.602567` | `11.549929` | no |
+| 16 | `0.394533` | `10.617081` | `8.543155` | `12.670254` | no |
+
+Only `N = 4` reaches a competitive density, and it is fcc, where every cell equals `√32`
+exactly. The `N >= 6` runs stall at densities `0.39`-`0.55`, far below the `0.71`-`0.74` needed
+for a cell-volume spread to reach down to `√32`, so they cannot produce a defect **whatever
+their geometry**. Note the spread is real (for `N = 16`, min `8.54` to max `12.67`, a factor
+`1.48`) — the optimiser is finding genuinely irregular structures, just sparse ones.
+
+**Reading.** The local optimiser is not strong enough to locate dense Frank–Kasper phases, and
+global packing-density optimisation is exactly the hard problem one should not expect a bounded
+local search to solve. So this line produces no evidence either way about `(Q)`, and it should
+not be extended by more seeds or larger `N`. A decision on `(Q)` needs a *certified* periodic
+construction from crystallographic data (correct Wyckoff positions, exact coordinates, certified
+periodic Voronoi decomposition) — the C15 attempt in Section 9.1 was abandoned for exactly that
+reason, and it is where the next block should start.
