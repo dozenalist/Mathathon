@@ -1401,3 +1401,23 @@ radius, i.e. `C124` cannot replace `deg ≤ 12` by a counting argument at that s
 itself holds depends on the radius over which neighbours are counted, which `C124` does not state at the
 place I can see; the safe statement is that it needs the kissing-number-12 theorem (Schütte–van der
 Corput) applied to a *sphere of contacts*, and that substituting a finite-ball count is invalid.
+
+### K15-X-C082 — a correct replacement for the boundedness gate (exact, rational, no plane scan)
+
+`Reviews/twist/fixed_boundedness.py` (exit 0) decides `{y : y·n_i ≤ d_i}` bounded **exactly** and without
+E's plane scan. Criterion: the recession cone `R = {d : d·n_i ≤ 0 ∀i}` is `{0}`; `R` is a polyhedral cone,
+so if `R ≠ {0}` it contains a nonzero candidate among `±n_i` (when `R` is a halfspace or a line) or
+`±(n_i × n_j)` (an extreme ray is the intersection of two of the planes). Rational arithmetic, finite
+check.
+
+| case | verdict |
+| --- | --- |
+| `[(1,0,0),(0,1,0),(0,0,1)]` (triangle, origin outside) | **False** — E's helper says True |
+| `[(1,0,0),(0,1,0),(0,0,1),(1,1,1)]` (all `x+y+z=1`) | **False** — E's helper says True |
+| tetra `e1,e2,e3,(−1,−1,−1)` | True |
+| cube's six normals | True, and `{|y_i| ≤ 1}` has 8 vertices |
+| octahedron's six normals | True |
+| unbounded tetra `{y·n_i ≤ 1}` | **refused**, with the ray `(0,−1,0)` |
+
+This is the fix to file against `X-C080`: replace the gate, keep E's `√3`-slack and inner inclusion, and
+make `spanning_constant` rational as `X-C080` §3 says.
