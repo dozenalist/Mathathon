@@ -3,6 +3,9 @@
 
 Usage:  python3 verify_XC017_readable.py [certificate.json]
 
+Works on any both-sides Gram certificate in this directory (X_C015, X_C016, X_C017,
+X_C017_small); the stored `density` may be a string or a number.
+
 Why this script exists.  Every other X certificate needs a decision about the sign of a
 polynomial on an interval, and every sign tester in this project has been unsound at least
 once (shell_check.py: a8526a8 -> 5619c1d -> 812105c3 -> 909a50a).  X-C017 needs none: the
@@ -33,7 +36,8 @@ import ce_exact_gauss as G
 path = sys.argv[1] if len(sys.argv) > 1 else 'X_C017_certificate.json'
 d = json.load(open(path))
 m, S = d['m'], d['S']
-print("certificate: %s   (m=%d, S=%d, stored density %.12f)" % (path, m, S, d['density']))
+stored = sp.N(sp.sympify(d['density']), 20)     # some files store a formula, e.g. over sqrt(pi)
+print("certificate: %s   (m=%d, S=%d, stored density %s)" % (path, m, S, sp.N(stored, 12)))
 v = lambda x: sp.Matrix([x**i for i in range(m+1)])
 M = {k: sp.Matrix([[R(c) for c in row] for row in d[k]]) for k in ('G','A','B')}
 

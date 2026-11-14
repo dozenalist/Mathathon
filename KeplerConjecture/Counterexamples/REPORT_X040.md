@@ -201,7 +201,10 @@ but the two should not be quoted interchangeably.
 `verify_XC017_readable.py` reloads a certificate from disk and prints, step by step, (1) symmetry,
 (2) rational `LDL^T` with every pivot printed, (3) the identity `v^TAv + w v^TBv = Fourier(P)`
 by expansion, (4) `P(0)`, `Q(0)`, the exact ratio and the density, (5) what is and is not claimed.
-It runs on both `X_C017_certificate.json` and `X_C017_small.json` and exits 0 on both.
+It runs on **all four** both-sides certificates — `X_C015`, `X_C016`, `X_C017`, `X_C017_small` —
+and prints VALID for each. (Two robustness fixes were needed to get there: `X_C015` stores its
+density as an expression over `sqrt(pi)` rather than a float, and `X_C016`/`X_C017` as floats. A
+verifier that only ever sees one certificate's format is a verifier that has not been tried.)
 
 The exposition the block asked for is short: **CE1 and CE2 are not sign conditions here.** For
 `H = v(s/S)^T G v(s/S)` with `G ⪰ 0`, `H ≥ 0` identically; `P = −(s−4)H = (4−s)H` is then `≥ 0`
