@@ -257,14 +257,15 @@ def main():
                          ("added constraint", lambda c: (c["planes"].append(["1", "0", "0", "1/2"]), c)[-1])):
         bad_c = _copy.deepcopy(cert8)
         bad_c = mutate(bad_c)
-        _json.dump({"certificate": bad_c}, open(".tmp_cert.json", "w"))
+        _tmp = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".tmp_cert.json")
+        _json.dump({"certificate": bad_c}, open(_tmp, "w"))
         try:
-            VI.verify(".tmp_cert.json")
+            VI.verify(_tmp)
             check("the standalone verifier rejects the %s witness" % name, False, "accepted")
         except SystemExit:
             check("the standalone verifier rejects the %s witness" % name, True)
         finally:
-            _os.remove(".tmp_cert.json")
+            _os.remove(_tmp)
 
     # (3) closure alone is not boundedness: the four side faces of a prism close, rank 2
     check("the four side-face normals span only 2 dimensions",
