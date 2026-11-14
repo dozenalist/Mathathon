@@ -435,6 +435,44 @@ def export(path=None):
     json.dump(d, open(path, "w"), indent=1)
     return path
 
+def cli(argv):
+    """Feed a rational periodic packing without editing code:
+
+        python3 fixture_nonuniform.py --lattice 4,4,4 --points 0,0,0:2,0,0:0,2,0 --R 2 \
+                                      --json out/my_fixture.json
+
+    The hypotheses are checked as in make_fixture (separation >= 2 exactly; cells sum to the period
+    volume), so a rejected input is a geometry error, not a parsing accident.
+    """
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--lattice", help="three diagonal entries, e.g. 4,4,4 (a diagonal lattice)")
+    ap.add_argument("--points", help="sites as x,y,z:x,y,z:...")
+    ap.add_argument("--R", default="2", help="edge range for the cut graph")
+    ap.add_argument("--json", default="", help="write the fixture here")
+    a = ap.parse_args(argv)
+    if not a.lattice or not a.points:
+        ap.error("--lattice and --points are required together")
+    diag_entries = [F(x) for x in a.lattice.split(",")]
+    if len(diag_entries) != 3:
+        ap.error("--lattice needs three entries")
+    L = diag(*diag_entries)
+    pts = []
+    for chunk in a.points.split(":"):
+        xyz = [F(x) for x in chunk.split(",")]
+        if len(xyz) != 3:
+            ap.error("each point needs three coordinates: %r" % chunk)
+        pts.append(tuple(xyz))
+    fx = make_fixture(L, pts, F(a.R), name="cli_fixture")
+    path = a.json or os.path.join(_OUT, "cli_fixture.json")
+    json.dump(fx, open(path, "w"), indent=1)
+    print("wrote", path)
+    print("  vertices %d, edges %d, cell volumes %s" % (len(pts), len(fx["edges"]),
+                                                      fx["cell_volumes_exact"]))
+    print("  b in %s" % ["[%.6f, %.6f]" % (float(F(lo)), float(F(hi)))
+                         for lo, hi in zip(fx["b_lo"], fx["b_hi"])])
+    return 0
+
 def main():
     print("=" * 100)
     print("A-C. the engine, the smallest nonuniform fixture, and the near-contact bound")
@@ -459,4 +497,7 @@ def main():
     return 0 if (good and allvac and eng_ok) else 1
 
 if __name__ == "__main__":
+    if any(x.startswith("--lattice") or x.startswith("--points") or x.startswith("--json") or
+           x.startswith("--R") for x in sys.argv[1:]):
+        sys.exit(cli(sys.argv[1:]))
     sys.exit(main())
