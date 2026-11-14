@@ -173,3 +173,16 @@ composition of standard regions, so it is not an independent route.
 - **The equality family** FCC / HCP / Barlow stackings has constant cell volume `sqrt(32)`
   in all members, so any criterion that is tight on FCC and not on HCP is defective. All
   three candidates are checked against this.
+
+## Status after block `K15-REVIEW-0138-E`
+
+**`REVIEW_0138.md` is authoritative; this file's tables are from the 09:16 block.** Changes:
+
+- `K15-E060` and `K15-E061` now give the collective target an exact form: forced thresholds
+  (`4.18` one shell, `8.36` two shells), boundary cost `diam C + 4 rho`, and a transfer theorem
+  that restores the *pointwise* condition from a Hall condition — so `K15-E001`'s cluster
+  machinery is no longer needed.
+- `K15-E062` retracts every `S - D` number and slack factor in this file; none may be used.
+- `K15-E049` is narrowed to the estimator family F, so `K15-E1`'s "route closed" framing is
+  wrong: multi-radius counts, convexity-based per-cell bounds and collective arguments remain open.
+- `K15-E063`: A15 is the first genuinely saturated fixture (no defective cell).
