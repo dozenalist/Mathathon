@@ -852,3 +852,39 @@ family is excluded (§10c).
 `K15-E070` and §10c) but "show that two adjacent cells cannot both be small" (`P'`). That is the
 honest state of the geometric route after this block, and it is a considerably sharper question
 than the one the block started with.
+
+### 14.5 An apparent refutation of `(P')` that was a bug — and how it was caught
+
+I tried to refute `(P')` by optimizing a completion of `w_1` directly. The first run returned
+
+```
+vol Omega(w_1) = 3.237838,   reported legal,   threshold for (P') = 5.763417
+```
+
+which would have refuted `(P')` outright — and also `vol Omega >= V_dodeca`, i.e. **McLaughlin's
+theorem**, since `3.2378 < 5.5503`. That impossibility is what identified the error: the penalty
+function required the added centres to be `>= 2` from `c` and from the five outer neighbours, but
+**never from `w_1` itself**, so the optimizer was free to place them inside `w_1`.
+
+After adding the `|z| >= 2` term and re-running with an independent legality check:
+
+```
+trial 0: vol = 11.674097   legal = False
+trial 1: vol = 11.674092   legal = False
+trial 2: vol =  8.965142   legal = False
+trial 3: vol = 11.673844   legal = False
+```
+
+No legal completion was found, and the volumes reported are for *infeasible* configurations, so they
+say nothing either way. **So this test neither confirms nor refutes `(P')`**; it is recorded because
+the failure mode is instructive:
+
+- A number below a *known theorem's* bound is a bug, not a discovery. Comparing against
+  `V_dodeca` is what caught it, and the same check is what the reviewers of `K15-E062` did not have.
+- The optimizer is not a reliable feasibility engine: L-BFGS-B on a penalty returns whatever
+  balances the two terms, and `penalty_ok` must be verified independently of the objective (it is
+  now, and it disagreed with the penalty in the buggy version).
+
+**Status of `(P')` after this attempt: unchanged** — survives every *legal* test performed, is not
+proved, and remains at risk at this very pair (§14.3). The decisive computation still does not
+exist.
