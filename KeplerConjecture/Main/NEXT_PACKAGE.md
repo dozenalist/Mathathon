@@ -53,9 +53,10 @@ pay for itself (`Σ_C b ≤ 0`); the transfer route needs only
 sufficient condition and as a check on fcc/hcp.
 
 **The floor on `Φ`.** `K15-C081` shows the icosahedral cluster forces
-`Φ ≥ 13(√32 − V_dod)/|δ⁺(C)| ≥ 1.3853/144 = 0.00962` at `R = 2.09` (and `0.010495` if
-the leaving-edge count is `132`). A candidate claiming a smaller `Φ` is refuted
-outright; the target is a transfer with `Φ` at or just above that floor.
+`Φ ≥ 13(√32 − V_dod)/|δ⁺(C)|`, and the cluster geometry (`K15-C012`, outer–outer
+distances `2.102924 > 2.09`) gives `|δ⁺(C)| ≤ 132`, hence **`Φ ≥ 0.0104949`** at
+`R = 2.09`. A candidate claiming a smaller `Φ` is refuted outright; the target is a
+transfer with `Φ` at or just above that floor.
 
 **The boundary term with explicit constants.** For a blob `U` containing a ball of
 radius `r` and contained in `B(x, r+R)`, the number of edges leaving `U` is at most
