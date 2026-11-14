@@ -1,6 +1,11 @@
 # Status summary for Main — role E, 2026-11-14 full-hour block
 
-One page. Branch `kepler15/experimental/run-01`, latest `f59135f9` (then any later commit in
+> **Superseded in part.** This page describes the `K15-REVIEW-0138-E` block. For the current
+> block see `REVIEW_0308.md` (authoritative) and `CLAIM_LEDGER.md`. The two headline changes:
+> `(Q)` is settled **YES** (`K15-E070`), and `(P')` survives at the icosahedral pair with
+> margin `+0.134590` rather than `+0.500` (`K15-E077`/`E078`, `REVIEW_0308.md` §18).
+
+One page. Branch `kepler15/experimental/run-01`, latest `1be2c51` (then any later commit in
 the final report). Everything below is under `KeplerConjecture/Experimental/`.
 
 ## Proved
