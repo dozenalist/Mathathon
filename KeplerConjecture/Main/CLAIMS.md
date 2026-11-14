@@ -5624,6 +5624,13 @@ type can genuinely change — so a rigorous `L1'` at `ε = 0.2` must handle type
 the difficulty `M-CERT-002` avoids at `ε = 1`. **The lever moves the difficulty from the constant to the
 combinatorics.**
 
+**`ε = 0.2` is a balanced choice, and the balance is numerical.** Two constraints bound `ε` from below
+and above at this value: the `ρ_ε = 0` branch must stay under `ML`, `1/(1+ε/2)³ < 0.754697399`, which
+holds for `ε = 0.2` by `0.003382`; and the pair branch must overlap `C119`'s inball range
+`d ≥ 2.1967082337`, which holds by `0.003292`. The two margins agree to `3%`, so `ε = 0.2` sits in the
+middle of the admissible window `(0.1967082, …)` where both are satisfied — pushing `ε` down improves
+`δ₀` and destroys the overlap; pushing it up destroys the case-2 margin.
+
 **A margin to watch at `ε = 0.2`.** The two branches must meet: `C119`'s inball bound covers `d ≥
 2.1967082337` and the pair bound covers `d ≤ 2+ε = 2.2`, so the overlap is `0.003292` wide. It closes, but
 only just, and any future tightening of `ε` towards `0.1967` must respect it — `ε = 0.2` is a sensible
