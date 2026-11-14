@@ -217,8 +217,18 @@ subsets:
 | 2.830 | 2.0011 | 0.73925 | 0.0016 | 0, 0, 0 |
 
 `t* = 0` at all 18 instances: the cut condition is vacuous throughout the near-contact band **for
-this family**. Stated conditionally, as required: this is FCC plus a single-site displacement, not a
-statement about all packings, and it is evidence, not proof.
+this family**. That is a thin sample, so `nearcontact_scan.py` widens it to three families:
+
+| family | what it is | instances | with `t* > 0` |
+| --- | --- | --- | --- |
+| F1 | FCC `a ∈ [2.83, 3.00]`, one site displaced along `+x` by 0, 0.1, …, 1.0 of the slack | 198 | **0** |
+| F2 | tetragonal FCC, lattice `(a,a,a·t)`, `t ∈ [0.94, 1.06]` — breaks the cubic symmetry, so cells are genuinely unequal | 14 | **0** |
+| F3 | FCC with the displacement in a random rational direction | 72 | **0** |
+| | **total**, densities `0.6206 – 0.7392` against Kepler's `0.7405` | **284** | **0** |
+
+`max t* = 0` over the whole scan: every deficit is negative, so every finite `U` is satisfied at
+`Φ = 0`. Stated conditionally, as required — this is evidence about three families of near-contact
+packings, not a theorem about all packings.
 
 ## 6. What this block does NOT establish
 
@@ -241,6 +251,7 @@ python3 tests_cut_flow.py         # S1-S18 including the witness; exit 0
 python3 cut_flow.py --fixture out/fixture_C034_witness.json   # the witness: no flow, UNBOUNDED cut
 python3 fixture_nonuniform.py     # exact volumes, the 3-point fixture, the near-contact scan (~30 s)
 python3 fixture_cluster_robust.py # the 13-cluster's b(0) survives filling the void
+python3 nearcontact_scan.py       # 284 near-contact instances in three families (~9 min)
 python3 cut_flow.py --fixture out/fixture_nonuniform_3pt.json  # the nonuniform fixture: vacuous
 ```
 
