@@ -1,14 +1,14 @@
 {
  "counts": {
   "examples": 3,
-  "forward": 3251,
-  "forward_injective": 3251,
-  "forward_onto_D": 41,
+  "forward": 893,
+  "forward_injective": 893,
+  "forward_onto_D": 31,
   "inverse": 0,
-  "phi": 541114,
-  "phi_domain": 544365,
-  "psi": 541114,
-  "psi_domain": 544365
+  "phi": 66658,
+  "phi_domain": 67551,
+  "psi": 66658,
+  "psi_domain": 67551
  },
  "discrepancies": [],
  "examples": [
@@ -90,5 +90,5 @@
   }
  ],
  "n_discrepancies": 0,
- "nmax": 40
+ "nmax": 30
 }

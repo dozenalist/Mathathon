@@ -1,0 +1,325 @@
+{
+ "PHI-1_position_deletion": {
+  "defects": {
+   "closure": 0,
+   "not_partition": 0,
+   "raised": 0,
+   "square": 742,
+   "total": 66658,
+   "weight": 371
+  },
+  "first": {
+   "square": [
+    0,
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     -1,
+     []
+    ],
+    [
+     0,
+     [
+      1,
+      1,
+      1,
+      1
+     ]
+    ]
+   ],
+   "weight": [
+    -1,
+    [],
+    [
+     0,
+     [
+      1,
+      1,
+      1,
+      1
+     ]
+    ],
+    4,
+    3
+   ]
+  }
+ },
+ "PHI-2_zge1_with_fallback": {
+  "defects": {
+   "closure": 0,
+   "not_partition": 0,
+   "raised": 0,
+   "square": 0,
+   "total": 66658,
+   "weight": 0
+  },
+  "first": {}
+ },
+ "PHI-3_zge1_no_fallback": {
+  "defects": {
+   "closure": 0,
+   "not_partition": 0,
+   "raised": 2605,
+   "square": 2605,
+   "total": 66658,
+   "weight": 0
+  },
+  "first": {
+   "raised": [
+    0,
+    [
+     1,
+     1,
+     1
+    ],
+    "ValueError('empty (z>=1)')"
+   ],
+   "square": [
+    -1,
+    [],
+    [
+     0,
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    "raised"
+   ]
+  }
+ },
+ "PSI-1_flip_Ia_tie": {
+  "defects": {
+   "closure": 0,
+   "not_partition": 0,
+   "raised": 11918,
+   "square": 11918,
+   "total": 66658,
+   "weight": 0
+  },
+  "first": {
+   "raised": [
+    1,
+    [
+     2
+    ],
+    "ValueError('I(b) with negative copy count')"
+   ],
+   "square": [
+    0,
+    [
+     2,
+     2
+    ],
+    [
+     1,
+     [
+      2
+     ]
+    ],
+    "raised"
+   ]
+  }
+ },
+ "PSI-2_flip_IIa_tie": {
+  "defects": {
+   "closure": 0,
+   "not_partition": 0,
+   "raised": 0,
+   "square": 3980,
+   "total": 66658,
+   "weight": 1493
+  },
+  "first": {
+   "square": [
+    0,
+    [
+     3
+    ],
+    [
+     1,
+     [
+      3
+     ]
+    ],
+    [
+     0,
+     [
+      3,
+      2
+     ]
+    ]
+   ],
+   "weight": [
+    0,
+    [
+     3
+    ],
+    [
+     1,
+     [
+      3
+     ]
+    ],
+    5,
+    3
+   ]
+  }
+ },
+ "PSI-3_IIa_keep_zero": {
+  "defects": {
+   "closure": 0,
+   "not_partition": 1949,
+   "raised": 0,
+   "square": 1949,
+   "total": 66658,
+   "weight": 0
+  },
+  "first": {
+   "not_partition": [
+    0,
+    [
+     3
+    ],
+    [
+     -1,
+     [
+      0
+     ]
+    ]
+   ],
+   "square": [
+    -1,
+    [],
+    [
+     0,
+     [
+      3
+     ]
+    ],
+    [
+     -1,
+     [
+      0
+     ]
+    ]
+   ]
+  }
+ },
+ "baseline_phi": {
+  "defects": {
+   "closure": 0,
+   "not_partition": 0,
+   "raised": 0,
+   "square": 0,
+   "total": 66658,
+   "weight": 0
+  },
+  "first": {}
+ },
+ "baseline_psi": {
+  "defects": {
+   "closure": 0,
+   "not_partition": 0,
+   "raised": 0,
+   "square": 0,
+   "total": 66658,
+   "weight": 0
+  },
+  "first": {}
+ },
+ "generated": "2026-11-14 06:31:25",
+ "nmax": 30,
+ "z_domain_census": {
+  "caseII": 34222,
+  "witnesses": [
+   {
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [],
+    "m_zge0": null,
+    "m_zge1_fallback": 0,
+    "n": 0
+   },
+   {
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [
+     1
+    ],
+    "m_zge0": null,
+    "m_zge1_fallback": 0,
+    "n": 1
+   },
+   {
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [
+     2
+    ],
+    "m_zge0": null,
+    "m_zge1_fallback": 0,
+    "n": 2
+   },
+   {
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [
+     3
+    ],
+    "m_zge0": null,
+    "m_zge1_fallback": 0,
+    "n": 3
+   },
+   {
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [
+     4
+    ],
+    "m_zge0": null,
+    "m_zge1_fallback": 0,
+    "n": 4
+   },
+   {
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [
+     2,
+     2
+    ],
+    "m_zge0": null,
+    "m_zge1_fallback": 0,
+    "n": 4
+   },
+   {
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [
+     5
+    ],
+    "m_zge0": null,
+    "m_zge1_fallback": 0,
+    "n": 5
+   },
+   {
+    "in_phi_domain": false,
+    "j": 0,
+    "lam": [
+     3,
+     2
+    ],
+    "m_zge0": null,
+    "m_zge1_fallback": 0,
+    "n": 5
+   }
+  ],
+  "zge1_empty": 3498,
+  "zge1_empty_in_domain": 2605,
+  "zge1_fallback_differs_from_z0": 893
+ }
+}

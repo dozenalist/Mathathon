@@ -21,7 +21,11 @@ never used to promote anything above TESTED_FINITE.
 | RR-C009 | BZ82 `phi` involution on `X(n) minus {0} x B_n`; **faithful transcription, no reconstruction** | TESTED_FINITE (`n <= 30`) |
 | RR-C010 | Equal largest-part cutoffs are **not** an identity (`n=5, m=4`) | PROVED (witness) |
 | RR-C011 | BZ82 alternating-path lengths: raw max/mean per weight, extremal objects | TESTED_FINITE (no growth class claimed) |
-| RR-C012 | A "more natural" bijection meeting all criteria | OPEN |
+| RR-C013 | **Theorem F**: closed form for the all-ones ray $(1^s)$ under BZ82, 4 of 5 residue classes | **PROVED** (written case analysis; endpoints verified `s<=60` by Main) |
+| RR-C014 | **Theorem G**: closed forms for the all-fours ray $(4^r)$ | **PROVED** (same caveat) |
+| RR-C015 | $(1^s)$ with $s\equiv0\ (5)$, $s\ge30$: **provably** not closable in 2 steps; measured path lengths 44–672 | **PROVED** (lower bound) + TESTED_FINITE (lengths) |
+| RR-C016 | Candidate mechanisms M1 (collapse-and-singleton), M2 (free window) | OPEN; neither meets the objective |
+| RR-C012 | A "more natural" bijection meeting all criteria | **OPEN** |
 
 ## Details
 
@@ -244,3 +248,57 @@ No candidate has been exhibited that improves on BZ82 on the project's
 naturalness criteria (rule count, auxiliary state, inverse recoverability,
 termination, intermediate size, structural consequence). Remaining gap stated
 precisely in `Main/RESULTS.md` section 5.
+
+### RR-C013 — Theorem F: a closed form for the all-ones ray. Status: **PROVED**
+(cycle-2 worker m4, `Experimental/cycle2/PROOF_families.md`), with a stated caveat.
+
+For $s\ge3$ one application of $\varphi$ collapses the ones-ray:
+`varphi(0;(1^s)) = (-1;(s-3))`. All remaining work is `psi` on a *singleton*,
+which is closed form in all five residue classes of $p \bmod 5$ (Lemma 1), with
+one class needing a six-step chain (Lemma 2). The D-side images
+
+$$b(1^s)=\begin{cases}(s) & s\equiv3\\ (s-2,2) & s\equiv2,4\\ (s-4,4) & s\equiv1,\ s\ge11\\ (6+k-2i),\ k=s/5 & s\equiv0,\ s\le25\end{cases}$$
+
+with exceptions $s=4\mapsto(3,1)$, $s=6\mapsto(4,2)$, hold with path length
+$\le6$ throughout.
+
+**Main's independent verification.** Computed `forward((1^s))` for every
+$s\le60$ with the committed `bz82.py` and compared to the formula: **every value
+matches**. Path lengths are 2 for the generic classes and 6 for $s\equiv1\ (5)$,
+$s\ge11$.
+**Correction to the worker's report:** the $s\equiv2,4$ formula also fails at
+$s=2$ (actual image `(2)`); the report lists only $s=4,6$ as exceptions, so the
+prose exception list is incomplete even though their harness reports 0
+mismatches to $s=120$.
+**Scope caveat, stated rather than implied:** I verified the *endpoint values*
+and read the case structure; I did **not** referee each QED of Lemmas 0–2 line by
+line. So PROVED here means "written residue-class case analysis, independently
+value-checked", not "fully refereed".
+
+### RR-C014 — Theorem G: the all-fours ray. Status: **PROVED** (same caveat).
+`varphi(0;(4^r))` is undefined for $r\le4$ — because $(4^r)\in 0\times B(n)$, since
+its smallest part 4 is at least its length — then equals
+`(1;(5^{r-2},1^{8-r}))` for $5\le r\le8$ and `(-1;(r-6,3,3^r))` for $r\ge9$.
+Verified exactly for $r\le12$ by Main, including the merge of the leading $r-6$
+into the threes at $r=9$.
+
+### RR-C015 — where BZ82's cost actually lives. Status: PROVED lower bound + measured.
+For $s\equiv0\ (5)$ the two-step output is $(5^{s/5})$, which lies in $B(n)$ iff
+$5\ge s/5$, i.e. **iff $s\le25$**. So for $s\ge30$ this class **cannot** be
+closed in two steps — a short, complete argument, not an observation. Measured
+path lengths for $s=30,35,40,45,50,55,60$ are
+220, 574, 124, 452, 44, 454, 672, against $\le6$ for every other residue class
+of $s\le60$. This is the first result in the project that locates BZ82's cost
+structurally rather than tabulating it: the all-ones ray is closed-form and cheap
+in four classes and provably expensive in the fifth. It does **not** give a new
+bijection and does not bear on the objective directly.
+
+### RR-C016 — candidate mechanisms. Status: OPEN, neither meets the objective.
+M1 (collapse-and-singleton) and M2 (free window, reaching 7.8% of $A_n$ objects)
+each have a forward rule, recoverable inverse, admissible set, invariant and
+termination measure, and each is blocked by one named lemma (L-M1: the natural
+continuation fails on $B$-membership `5 >= k`). Worker m4 states plainly that
+neither meets the objective; that assessment is accepted. Also **refuted** on
+held-out parameters: $b(5k)=(5^k)$ for $k\ge6$ (7/7 fail), $b(5k)$ affine in
+$k$, $\mathrm{len}(b(4^r))\le2$ (fails at $r=7$), and $\kappa$ a function of
+$s\bmod5$. No rule was found for $(4^r,1^s)$.

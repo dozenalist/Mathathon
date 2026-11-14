@@ -85,6 +85,24 @@ Over all of `X(n)`, `n <= 30` (67 551 states), the case split gives
 | distribution of `|S|` | 1:2605, 2:8403, 3:11317, 4:7974, 5:2691, 6:333, 7:6 |
 | `z >= 0` vs "all integers `z <= a+2j-2`": differing `m` | **0** |
 
+**Shape of the set, and a closed existence criterion.** Two further structural
+facts were tested on all 34 222 Case-II states of `n <= 30`, 0 failures each:
+
+* `S` is always a **prefix** `{0,1,...,m}` -- 0 holes -- so `|S| = m+1` always
+  and `Max` is never a maximum over a non-convex set;
+* `S` is non-empty **iff** `a+2j-2 >= 0` **and** `lam(a+2j-1) <= t+5j-2`
+  (0 criterion mismatches over the same 34 222 states).
+
+The criterion is not my derivation: member m1 of this swarm (direction B)
+derived it from the monotonicity of `i |-> lam(i) - i`, which makes the
+admissible `z`-set a down-set. I checked it and the prefix property against my
+own independent state enumeration rather than accepting them, and the check is
+in `run_audit.py::admissible_shape` (`results_cycle2.json`
+`admissible_shape`). Its value is that "does the maximum exist for every `n`"
+is thereby reduced from a max over an unexplained finite set to two explicit
+inequalities -- and the empirical content of (i) is then exactly that both
+inequalities hold on every in-domain Case-II state of `n <= 30`.
+
 Two consequences worth stating separately.
 
 * **The 893 empty sets are exactly the 893 states of `0 x B(n)`**, i.e. exactly
@@ -294,6 +312,9 @@ the other within this artifact.
 3. The Case-II admissibility test of (i) and the involution test of (ii). A
    rule can have `m` always defined and still fail `phi^2 = id` -- variant
    `PHI-1` in section 9 is exactly such a rule (0 raises, 1 113 defects).
+   Within (i), the prefix test and the criterion test of section 3 are also
+   independent of each other: the last admissible integer is in the set by
+   construction, so a hole would move the maximum without emptying the set.
 4. The comparison with `bz82.py` is independent of my implementation in the
    sense that the two programs were written separately from the same source;
    it is *not* independent evidence about the source.
@@ -394,6 +415,15 @@ proposals, not edits.
   `rr_core.A003114` or replace it with the computed first 31 values and a note
   that the identification with `A003114` is unverified here (I did not consult
   OEIS; the claim is only that 55 is wrong *for this family*).
+* **F7 (cross-direction, confirmed independently).** Direction B's `z`-set
+  down-set lemma, and its criterion `nonempty iff a+2j-2 >= 0 and
+  lam(a+2j-1) <= t+5j-2`, hold on all 34 222 Case-II states of `n <= 30` when
+  tested against my state enumeration (0 failures, `admissible_shape` in
+  `results_cycle2.json`), as does the stronger statement that the set is always
+  a prefix `{0,...,m}`. *Proposed:* record in `CLAIMS.md` RR-C009 that
+  `phi`'s Case-II existence question is settled *per state* by two
+  inequalities, and that the only remaining content is proving those two for
+  every in-domain state -- not an existence question about a maximum.
 * **F6 (C6 blind spot).** In this artifact the generic-filter route is not a
   separate method at all: `independent_counts` uses `A`-enumeration,
   `D`-enumeration and the Jacobi sum, all three of which enter the agreement

@@ -1,7 +1,5 @@
 == RR127 cycle 2, direction A (COMPUTATION) -- run log ==
 host: Linux 7.0.0-31-generic x86_64, python: Python 3.12.14 (main, Sep  2 2026, 23:27:36) [GCC 15.3.0]
-sha256sum: ../../../.scratch/rrDG.pdf: No such file or directory
-source scan sha256:   (not part of the artifact)
 
 ### python3 run_audit.py 30
 NMAX = 30
@@ -53,6 +51,7 @@ path stats (n: count, max, mean):
    n=28  |A_n|= 91  max=416  mean=8780/91 = 96.484  argmax=[9, 6, 6, 6, 1]
    n=29  |A_n|=102  max=560  mean=5419/51 = 106.255  argmax=[11, 11, 1, 1, 1, 1, 1, 1, 1]
    n=30  |A_n|=117  max=646  mean=4468/39 = 114.564  argmax=[4, 4, 4, 4, 4, 4, 4, 1, 1]
+admissible z-set over all 34222 Case-II states: not a prefix 0 ; size != max+1 0 ; criterion-mismatches 0
 psi branch pairing:
    IIa->IIb  3405
    IIb->IIa  3405
@@ -72,7 +71,7 @@ NOTES: 1588
    {'note': "phi lands in 0 x A (psi's excluded set)", 'state': [1, [1, 1, 1]], 'image': [0, [4, 1]]}
    {'note': "phi lands in 0 x A (psi's excluded set)", 'state': [-1, [2]], 'image': [0, [1, 1, 1, 1, 1]]}
    {'note': "psi lands in 0 x B (phi's excluded set)", 'state': [-1, [2]], 'image': [0, [5]]}
-elapsed 10.21 s
+elapsed 12.87 s
 exit=0
 
 ### python3 negative_control.py 18
@@ -111,8 +110,3 @@ examples through the committed code: [True, True, True]
 exit=0
 
 ### python3 compare_bz82.py 40
-NMAX = 40
-compared: phi 541114, psi 541114, domains 544365+544365, forward 3251, onto-D per weight 41/41, examples 3
-DISCREPANCIES: 0
-examples through the committed code: [True, True, True]
-exit=0

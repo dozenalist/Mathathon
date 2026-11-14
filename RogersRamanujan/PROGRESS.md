@@ -305,3 +305,41 @@ of active work, as specified in ROADMAP.
   `abbrev`, because with `def` the subtypes are opaque to importers.
 - **Still open:** `T` and `B_n`; the `Nat.Partition` bridge; a 4.35.0 run; and
   nothing here touches `A_n`, `phi`, `psi`, so the objective is untouched.
+
+## 2026-11-14 / RR-M007 / first new mathematics: closed form on the all-ones ray, and where BZ82's cost lives
+
+- **Agent and reviewer:** worker m4 (swarm `smwg03n61`, direction C,
+  `Experimental/cycle2/`), independently verified by Main against the committed
+  implementation.
+- **Status:** RR-C013, RR-C014 **PROVED** (written residue-class case analysis,
+  endpoint values verified by Main, individual QEDs not line-by-line refereed);
+  RR-C015 PROVED lower bound + TESTED_FINITE lengths; RR-C016 OPEN.
+- **Theorem F.** For `s >= 3`, `phi(0;(1^s)) = (-1;(s-3))`, so the whole ray
+  reduces to `psi` on a **singleton**, which is closed form in all five residue
+  classes of `p mod 5`, one class needing a six-step chain. Endpoints
+  `b(1^s)` are `(s)` for `s=3 (5)`, `(s-2,2)` for `s=2,4 (5)`, `(s-4,4)` for
+  `s=1 (5), s>=11`, and an explicit arithmetic progression on `(5^{s/5})` for
+  `s=0 (5), s<=25`; exceptions `s=4 -> (3,1)`, `s=6 -> (4,2)` (and `s=2 -> (2)`,
+  which the worker's prose omits - Main's correction). Path length <= 6.
+- **Main's verification.** Forward images computed for all `s <= 60` with the
+  committed `bz82.py`: every value matches. Path lengths 2 generically, 6 for
+  `s = 1 (5), s >= 11`.
+- **Theorem G.** `phi(0;(4^r))` is undefined for `r <= 4` (because
+  `(4^r) in 0 x B(n)`), equals `(1;(5^{r-2},1^{8-r}))` for `5 <= r <= 8`, and
+  `(-1;(r-6,3,3^r))` for `r >= 9`. Verified exactly for `r <= 12`.
+- **The obstruction (the valuable half).** For `s = 0 (5)` the two-step output is
+  `(5^{s/5})`, which lies in `B` iff `5 >= s/5`, i.e. iff `s <= 25`. So for
+  `s >= 30` that class provably cannot close in two steps. Measured lengths at
+  `s = 30,35,40,45,50,55,60`: 220, 574, 124, 452, 44, 454, 672, against <= 6 for
+  every other class. This locates BZ82's cost structurally: cheap and closed-form
+  on four residues of the all-ones ray, provably expensive on the fifth.
+- **Refuted, kept:** `b(5k) = (5^k)` for `k >= 6` (7/7 fail); `b(5k)` affine in
+  `k`; `len(b(4^r)) <= 2` (fails `r=7`); `kappa` a function of `s mod 5`; and no
+  rule for `(4^r,1^s)`. M1/M2 both remain open with L-M1 the named blocking
+  lemma, and neither meets the objective.
+- **Reproduction:** `cd RogersRamanujan/Experimental/cycle2 && sh run_all.sh`
+  -> "ALL LEMMA CHECKS PASS", "Theorem F end-to-end: claimed s = 0..120,
+  mismatches = 0", "TOTAL failures ... 0"; plus Main's independent `s <= 60`
+  comparison.
+- **Scope:** this is roadmap level 2 (proved infinite-subfamily result). It is
+  **not** a new bijection and does not by itself advance RR-C012.

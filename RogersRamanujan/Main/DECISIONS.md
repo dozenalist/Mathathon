@@ -111,3 +111,29 @@ orbit reaches `{0} x A_n`". That question is **mis-posed** — the orbits of an
 involution are 2-cycles and never reach the fixed set; the correct statement is
 the disjoint decomposition `X(n) = ({0} x A_n) ⊔ 2-cycles`. The worker caught
 this. Same correction applies to the earlier phrasing in `Main/CLAIMS.md` RR-C008.
+
+## D-6 (2026-11-14, cycle 2) Route status after the subfamily results.
+
+R1 ("simplify a recurring orbit segment with a proved arithmetic rule") is
+**partially achieved and closed on one ray**: Theorem F gives a closed form for
+`(1^s)` in four of five residue classes with at most six steps, and RR-C015
+proves the fifth class cannot close in two steps for `s >= 30`. So the segment
+`(0;(1^s)) -> (-1;(s-3)) -> ...` is understood rather than merely tabulated.
+
+What this does and does not buy:
+* It is a **proved infinite-subfamily result**, which is roadmap level 2, and it
+  is the first project result that engages the naturalness question with a
+  theorem.
+* It does **not** give a new bijection: it describes BZ82's own endpoints on a
+  thin ray. Nothing here replaces iteration globally.
+* The obstruction is the useful part: the difficulty is concentrated in
+  `s = 0 (mod 5)`, and RR-C015 says why (`(5^{s/5})` leaves `B` exactly when
+  `s > 25`). Any future closed-form proposal for a family should be tested
+  against that same `B`-membership criterion first.
+
+Route selection for cycle 3: **stop** broad mechanism search (M1/M2 both blocked
+on a named lemma, and 4 refutations on held-out parameters are recorded);
+**continue** only the `B`-membership-criterion route on families, and put the
+effort saved into the two open proof obligations (all-`n` `phi` case stability
+and `phi^2 = id`), because those are now the only things between this project and
+a completely proved reference map.
