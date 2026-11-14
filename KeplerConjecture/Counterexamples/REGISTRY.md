@@ -1870,3 +1870,21 @@ inside `Computation/`. `run_all_checks.py` handles this (`cwd=str(HERE.parent.pa
 the error. Worth either resolving the path against `__file__` or documenting "run from the repository root".
 (`ce_laguerre.py` also exited `1` from the root with no output on my two attempts; I did not investigate
 further — it generates a Laguerre certificate and is not on the path I was asked to audit.)
+
+### K15-X-C122 — the 12-face theorem's step (1): cite Fejes Tóth/HL 4.1, not Lindelöf alone
+
+`pair_theorem_12faces.py` (`6ae7dbf`, exit 0) proves: if the icosahedral cluster is present and `Ω(w1)` has
+**exactly twelve faces**, then `vol Ω(w1) > 5.763417470`, with margin **`+0.010300627`**
+(`ρ_r = 2.102924448477`, `b = 1.051462224238`, `t* = ρ_r/4`, uncut disk area `πt*² = 0.868314853691`,
+`5(b−1)A_min ≥ 0.223427068550`, `V_dod + that = 5.773718097066`). The numbers reproduce.
+
+Its step (1) is attributed to **Lindelöf (1869)** alone, and that is the weakest link. Lindelöf's theorem
+gives the minimum surface area — hence volume — among polyhedra **circumscribed** about a sphere (every face
+tangent) with **exactly `n`** faces, `n = 4, 6, 12`. To apply it the script pushes the faces in to distance 1,
+which (a) requires the push-in not to degenerate any face (otherwise the count drops below 12 and Lindelöf's
+`n = 12` no longer applies) and (b) is unnecessary. **The primary source should be Fejes Tóth as restated in
+Hales–McLaughlin Theorem 4.1 (p16)**: *"any polyhedron with **at most 12 faces** that contains a unit sphere
+… the volume of the intersection of `P` with `B` is at least `ω_dod`"* — which needs no tangency, handles
+`≤ 12` faces including the degenerate push-in, and gives the equality case. So the theorem's conclusion
+stands, with a stronger and simpler citation; the script's own footnote ("step (1) is Lindelof, not
+Hales-McLaughlin") should be replaced.
