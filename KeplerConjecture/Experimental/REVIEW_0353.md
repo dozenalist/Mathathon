@@ -200,10 +200,28 @@ seed 1, 900 s   : started from the empty set (not the C5 basin)
 seed 2, 900 s   : started from the C5 configuration and allowed to break symmetry
 ```
 
-The 20-second run reproduces the symmetric optimum exactly, which is the expected
-behaviour when the seeded basin is the global one. The two 900-second runs are the ones
-that test the claim; **their results are reported in the final message for this block and,
-if they find nothing, change no statement in this file.**
+The two 900-second runs are the ones that test the claim, and both completed:
+
+```
+seed 1, 900 s, from the empty set            : best 5.898473397  legal, 6 free centres
+seed 2, 900 s, from C5 with symmetry broken  : best 5.898007181  legal, 6 free centres
+refutation threshold 5.763417471;  V_dodeca floor 5.550291029
+```
+
+**Neither refutes `(P')`, and neither beats the symmetric family optimum `5.897967122`.**
+Two things are worth reading off:
+
+- Both runs converge to **six** free centres — the pentagon-plus-south-pole structure. The
+  symmetric optimum is a strong attractor, not an artefact of the seeding.
+- The unseeded run (seed 1) never found the symmetric optimum at all and stopped at
+  `5.898473`, `5.1e-4` above it. That is the same phenomenon as `§14.7` of the previous
+  block, in reverse: local search in this landscape is *worse* than the structured ansatz
+  by a margin larger than the `(P')` margin itself. So "a search found nothing better" is
+  weak evidence here, and the load-bearing statement remains the theorem of §2, not these
+  runs.
+
+This is an upper-bound search: it can refute `(P')` and it did not. It cannot prove
+anything, and nothing in this file depends on it.
 
 The bounded version is deliberately small (`≤ 1` core, no I/O in the loop). The larger
 sweep, with the same code and inputs, is filed for Astra in `COMPUTE_REQUEST_0353.md`.
