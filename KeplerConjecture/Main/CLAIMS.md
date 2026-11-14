@@ -1305,3 +1305,63 @@ names differ in v4.35.0.
   shortfall" figure — the shortfall against `√32` is `2.30%`.
 - **Status.** `ACCEPTED WITH SCOPE` (Main's reading of the argument), the
   shortfall arithmetic **disputed pending the constant's definition**. Reviewer X.
+
+### K15-C043 — Hales Lemma 3.3: independent re-derivation of the chain (`AUDITED`)
+
+From the hypotheses of `K15-C002`'s companion (saturated `Λ`, negligible and
+fcc-compatible `A`, `√32 ≤ vol Ω(v) + A(v)`), the inequality
+`δ(x,r,Λ) ≤ π/√18 + C/r` follows in three steps. Main re-derived each:
+
+1. **Occupied volume to count.** For a saturated packing,
+   `vol B(x,r,Λ) = Σ_{v∈Λ(x,r+1)} vol(B(v,1) ∩ B(x,r)) ≤ |Λ(x,r+1)|·(4π/3)`:
+   each ball contributes at most its own volume, and only centres within
+   `r+1` can contribute. ✓
+2. **Count to corrected volume.** `√32·|Λ(x,r+1)| ≤ Σ_{v∈Λ(x,r+1)}(vol Ω(v)+A(v))`
+   by fcc-compatibility, and
+   `Σ_{v∈Λ(x,r+1)} vol Ω(v) ≤ vol B(x,r+3)` because saturated packings have
+   `Ω(v) ⊆ B(v,2)` and hence `∪_{v∈Λ(x,r+1)} Ω(v) ⊆ B(x,r+3)`; the `A`-sum is
+   `≤ C₁(r+1)²` by negligibility. ✓ (So the correction may be *negative*
+   anywhere — only the pointwise sum matters, which is why one-sided negligibility
+   suffices.)
+3. **Divide.**
+   `δ(x,r,Λ) ≤ (4π/3)/√32 · (vol B(x,r+3) + C₁(r+1)²)/vol B(0,r)
+   = (π/√18)(1+3/r)³ + (4π/3)C₁(r+1)²/(√32·(4π/3)r³)`.
+   The first term tends to `π/√18` and the second is `O(1/r)`. ✓
+
+**Verdict.** The chain is correct as printed (the page image `X-SRC-01` shows the
+`√32` that the text layer drops). No gap found. This is the *only* place the
+dodecahedral constant enters the project's target: Lemma 3.3 needs
+`√32 = 5.656854`, not `5.550291`. Reviewer X.
+
+### K15-C044 — a transfer exists iff the cluster inequalities hold (`PROVED`)
+
+**Setting.** `Λ` a packing; `b(v) := √32 − vol Ω(v)`; a transfer of range `R` and
+bound `Φ` as in `K15-C035`. Existence of `φ` with `A(v) = Σ_w φ(v,w) ≥ b(v)` is a
+feasibility problem for a signed flow on the graph `G_R` joining centres at
+distance `≤ R`.
+
+**Lemma.** If `φ` is such a transfer, then for every finite region `U` whose
+boundary partners are included — precisely, for every `U` with
+`{w : |w−v| ≤ R for some v ∈ U} ⊆ U` (a union of connected components of `G_R`) —
+one has `Σ_{v∈U} b(v) ≤ 0`. Conversely, if that holds for every union of
+components, a transfer exists (with `Φ` bounded by the flow value), and it may be
+assumed supported on `G_R`.
+
+*Proof.* (⟹) Sum `A(v) ≥ b(v)` over `U`; internal pairs cancel by antisymmetry
+and there are no boundary pairs, so `0 = Σ_U A ≥ Σ_U b`. (⟸) This is the
+Hoffman circulation theorem on `G_R`: the demands `b(v)` are feasible iff every
+subset `U` satisfies `Σ_{v∈U} b(v) ≤ 0` (no edge leaves `U` in the normal
+orientation), which is the stated hypothesis; a feasible circulation is exactly an
+antisymmetric `φ` with `Σ_w φ(v,w) = b(v)`. ∎
+
+**Consequence — no free lunch, and where the gain actually is.**
+The transfer formulation is *equivalent* to the cluster-average formulation
+(`K15-C015`), not weaker: it neither weakens nor strengthens the geometric
+content. Its only gain is `K15-C035`: negligibility (Hales' Chapter 5) becomes a
+two-line estimate. So a transfer construction cannot succeed unless the cluster
+inequalities hold — and `K15-C036` says those cannot be verified on a finite
+completion. The two facts together locate the whole difficulty in one place:
+**an analytic lower bound for `Σ_{v∈U} vol Ω(v)` on a union of transfer-components.**
+
+*Status.* `PROVED` (the ⟸ direction invokes Hoffman's theorem, a standard
+flow-feasibility result). Reviewer X.
