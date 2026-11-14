@@ -1747,3 +1747,11 @@ the cell — the test is `max over the cell's 20 vertices of ⟨c,y⟩ ≤ |c|²
 list. The cell's volume is `5.898017371803716` (matching the `C5` control). So the C5 fixture admits no
 admissible 13th centre at all that changes its cell. This is the `C102`-style *13th-centre stability* of the
 C5 payer cell, and it is why the polyhedral counterexample `X-C090` had to be a non-packing polytope.
+
+### K15-X-C109 — the two Barlow contact-cell implementations agree exactly, and both are exact
+
+Main's `contact_cell_exact.py` uses `Q(√2,√3)` as 4-tuples of `Fraction` with 60-digit interval sign
+decisions; E's `barlow_contact_cell.py` uses `sympy`. Independent methods, same answer: for the **fcc**
+and **hcp** local types, `12` contacts at distance 2, `14` vertices with `|x|² = 3/2` (×8) and `2` (×6),
+`K ⊆ B(0,√2)` with equality attained, `12` faces carrying vertices, and `vol K = 4√2 = 5.6568542494923802`
+exactly for both. So the contact-polytope bound (`C104`'s repair of `C094`'s Lemma 1) is doubly verified.
