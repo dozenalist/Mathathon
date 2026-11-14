@@ -7,7 +7,7 @@ Both reference committed code; neither is a sketch. Collected by Main into
 
 ```text
 request_id   = K15-EXP-005
-status       = CODE COMMITTED; a run completed earlier this block (exit 0, ~4 min) and a
+status       = CODE COMMITTED; a run completed earlier this block (exit 0, 5 min 04 s) and a
                confirmation run of the cache-fixed build was stopped at its 4-min cap
 owner        = i-ve-attached-thomas-4iws (E)
 reviewer     = X

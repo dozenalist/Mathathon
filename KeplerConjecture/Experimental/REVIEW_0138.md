@@ -499,7 +499,7 @@ single reproduction command, one proved transfer theorem, and one retraction.
 ## 8. Result of the dense-completion search (`K15-EXP-005`)
 
 The harness authored in this block was run as a background job: `--seconds 300 --seeds 4`,
-one CPU, exit status `0`, wall clock `~4 min`. Output committed as
+one CPU, exit status `0`, wall clock `5 min 04 s` (from the job record, not estimated). Output committed as
 `Experimental/evidence/dense_completion_search.json`.
 
 | seed | `n` | `sum12` | `mean12` | iterations | refuted |
