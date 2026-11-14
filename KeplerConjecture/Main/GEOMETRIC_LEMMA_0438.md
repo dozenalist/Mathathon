@@ -240,7 +240,19 @@ known witness is `0.1345`, i.e. `1.19%` of `2√32`. **That is the number a proo
 **Comparison with the closest published result.** `(L)` is a two-cell version of the
 dodecahedral inequality. The published one-cell bound gives `δ ≤ 0.754697399337`; `(L)` with
 Corollary B1 gives `δ ≤ 0.740480489693`, the exact value — so the target is strictly stronger
-than the published bound and clears the brief's bar. **Novelty is not established**: a
+than the published bound and clears the brief's bar.
+
+**And the retained literature already says the multi-cell step is *necessary*, not merely
+promising.** `Literature/sharp-bounds-in-dimension-3.md` §5.3(i) records that *"the entire
+per-point-volume family is provably capped at `1.4413658597`, so beating it **requires** a
+genuine multi-cell (cluster) inequality"*, and names as the plausible route *"a two- or
+three-cell inequality (a small LP over the shapes of adjacent Voronoi cells and their shared
+facet), which is exactly the 'average over clusters' mechanism Hales uses in the Kepler proof."*
+That is precisely `(L)`. So this file's choice of lemma is not a new guess: it is the object the
+project's own earlier analysis identified as the only way past the cap, now with an explicit
+statement, a bridge, and a proof of its qualitative form. (`1.4413658597 = 8/V_dod` in the centre-
+density convention, i.e. the same number as `0.754697399337` in the density convention —
+re-derived in `constants_check.py`.) **Novelty is not established**: a
 web search for a two-cell version of the dodecahedral inequality returned nothing usable, and
 E independently records the same caution ("it should be checked before being called new"). It
 is therefore carried as `PROPOSED`, not as new.

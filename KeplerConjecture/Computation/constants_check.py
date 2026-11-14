@@ -150,6 +150,14 @@ chk("ML gap and pair window are the SAME number", 100 * (mpf('0.754697399337') /
 chk("b(v0) = sqrt32 - V_dod", sqrt(32) - vdod, 0.106563220977, tol=1e-12)
 chk("C's t* = b(v0)/12 = 0.008880268414739", (sqrt(32) - vdod) / 12, 0.008880268414739, tol=1e-15)
 
+# --- the per-point cap (Liter ature 5.3(i)), reconciled -----------------------
+chk("per-point family cap 8/V_dod", 8 / vdod, 1.4413658597, tol=1e-10)
+# the literature's convention has min separation 1, so volumes scale by 8 and
+# delta = (pi/6) * (number density) = (pi/6) * 8/V_dod
+chk("same number as the density-convention 0.754697399337",
+    (pi / 6) * (8 / vdod), 0.754697399337, tol=1e-12)
+chk("equivalently (4pi/3)/V_dod", (4 * pi / 3) / vdod, 0.754697399337, tol=1e-12)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)
