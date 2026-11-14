@@ -22,6 +22,7 @@ in the project lives in Computation's own branch (`exactcert.py`, `out/…K33b.j
 | `barlow_cells.py` | `K15-C094`: Barlow cells — 12 contacts, cell volume `√32`, the fcc/hcp two-shape dichotomy and its tangency slack; `--sweep N` adds random stackings of period 3–10 | `python3 barlow_cells.py [--sweep 6]` | 23 s; 6 min with `--sweep 6` |
 | `gap_fixture.py` | `K15-C095`: the crack packing — min separation, cross-crack distance, sampled covering radius over a range of `d` | `python3 gap_fixture.py` | 6 s |
 | `rho_probe.py` | `K15-C096`: the icosahedral-scaled cell volume against `√32`, and whether a 13th point in an icosahedral hole can cut it | `python3 rho_probe.py` | 1 s |
+| `nearest_13th.py` | `K15-C102`: how close a 13th centre can get to the icosahedral twelve at radius `rho` (closed form for the admissible radius per direction), and whether that is inside `2·R_cell` | `python3 nearest_13th.py` | 1 s |
 
 ## Conventions
 

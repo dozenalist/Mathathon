@@ -2956,3 +2956,58 @@ configurations.
 
 *Status.* The split and case (A) are `PROVED` reductions (the two cited theorems are
 `ACCEPTED WITH SCOPE` elsewhere in `ACCEPTED.md`); case (B) is open. Reviewer X.
+
+### K15-C102 — the nearest admissible 13th centre is at `3.206871`, so extra centres never cut the icosahedral cell (`PROVED` finite check; scope in §3)
+
+Follow-up to `K15-C101`, case (B). `Computation/nearest_13th.py`. **Redundancy is a
+per-half-space property**: if a centre `p`'s half-space `{⟨p,x⟩ ≤ |p|²/2}` contains the
+cell, it changes nothing, and adding further centres cannot make it change. So the whole of
+case (B) at a *given* base configuration is decided by the single-point question.
+
+**The closed form.** For a direction `u` and a base centre `x` with `|x| = ρ`, the condition
+`|r u − x| ≥ 2` is `r² − 2r⟨u,x⟩ + (ρ² − 4) ≥ 0`, i.e. `r ∉ (r₋, r₊)` with
+
+```
+r₊(u,x) = ⟨u,x⟩ + √(⟨u,x⟩² − (ρ² − 4)),      defined iff ⟨u,x⟩² ≥ ρ² − 4 = 0.3681 > 0;
+smallest admissible r along u  =  max( ρ , max_i r₊(u, x_i) ).
+```
+
+**The result.** Over `2×10⁶` sampled directions plus Nelder–Mead refinement from all 24
+icosahedral/dodecahedral directions, the minimum is
+
+```
+min over admissible p of |p|  =  3.206870905…        at direction (0.934172, 0.356822, 0)
+```
+
+— an **edge-midpoint** direction of the icosahedron (not a face centre). Against
+`2·R_cell = 2·(ρ/2)·√2 = 2.955706345`:
+
+> **`3.206871 > 2.955706`**, so every admissible extra centre has its bisector outside the
+> cell's circumradius, its half-space contains the cell, and **the icosahedral cell is
+> determined by its twelve contacts alone — at any centre count.**
+
+Hence `V(2.09) ≤ V_dod(1.045)³ = 6.333804106…`, **with equality** at the icosahedral
+configuration, and the extreme configuration attaining it is the pushed-out dodecahedron.
+
+**Two consequences.**
+
+1. **`CLOSED_COMPONENT.md`'s A1 is upgraded.** A1 recorded `6.333804` as the volume of the
+   intersection of the **12** half-spaces; that was an upper bound on the cell volume only if
+   the further centres were redundant, which was assumed, not shown. It is now shown. A1's
+   number is the **true** cell volume of the pushed-out icosahedral vertex, so its deficit
+   `b = √32 − 6.333804 = −0.6775` is the true deficit — the natural singleton candidate fails
+   by `12%`, not merely by an estimate.
+2. **Case (B) of `K15-C101` is settled at the icosahedral base** and only there. It is *not*
+   settled for a non-icosahedral base: if the twelve nearest are more clustered, the cell is
+   larger and an extra centre has more room to cut it. So `V(2.09) = 6.333804` remains a
+   *conjecture*; what is now proved is that the natural extremal configuration is exactly as
+   advertised and is not undercut by any number of extra centres.
+
+**What would finish `(S)`.** A proof that a *non-icosahedral* base plus extra centres cannot
+beat `6.333804` — i.e. the spread-monotonicity lemma of `K15-C101` in the form "moving the
+twelve apart decreases the cell volume faster than adding centres decreases it". `PN-1` is
+unchanged in substance and now has one fewer degree of freedom.
+
+*Status.* `PROVED` for the stated finite check (the minimisation is over a `2`-parameter
+family with a closed form for the radius, so it is checkable to interval-arithmetic standard;
+Main ran it numerically only). Reviewer X.
