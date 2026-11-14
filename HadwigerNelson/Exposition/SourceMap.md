@@ -20,6 +20,8 @@ Prepared 14 November 2026 from the local snapshot. Links below are repository-re
 | Lower-bound formal roots | [Five.lean](../Main/ResearchSnapshot/local/work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/Five.lean), `OAI.EuclideanFiveColor.no_measurable_weak_five_coloring`, `no_proper_five_coloring_algebraic`, `no_proper_five_coloring` | Exact unrestricted root: `¬ ∃ c : ℂ → Fin 5, ProperColoring 5 c`. No regularity hypothesis is hidden in `ProperColoring`. No fresh full build was performed for this exposition. |
 | Seven-colour upper bound | Bundle module `Seven.lean`, `OAI.Problem160.properColoring_seven`; manuscript pp. 2–3 | Supplied construction, not a new team result. The team's separate `Chromatic.lean` transport should not be attributed to the original bundle. |
 
+The main [proof walkthrough](ProofWalkthrough.md) now builds Definition 1.2 through a unit-pair score, an angular fraction and an area average before displaying the full formula. Its half-plane example is intentionally invalid; the [bounded lesson review](Reviews/WeakColouringLesson-Astra.md) checks the example, normalization, representatives and exceptional-set quantifiers. The later proof map remains available below that lesson.
+
 ## Team research and verification status
 
 | Artifact | What it supports | What it does not support |

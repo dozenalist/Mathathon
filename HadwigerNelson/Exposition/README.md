@@ -1,8 +1,15 @@
-# Understanding the Mathathon mathematics
+# Read the proof with us
 
-The aim is to make the proof something a reader can reason with: see the geometric object, understand the need for a lemma, and follow the exact implication it supplies. Our first synthesis focuses on the supplied proof that the plane is not five-colourable, and on the team's subsequent local results.
+**[Open the proof walkthrough →](ProofWalkthrough.md)**
 
-Start with [the proof walkthrough](ProofWalkthrough.md). It follows the two difficult bridges: from an arbitrary colouring to measurable structure, and from measurable structure to geometric contradictions. The [source map](SourceMap.md) gives exact statements and locators.
+This is the single main reading path and the place to give feedback. The first lesson builds the weak-measurable condition slowly: test one unit ruler, turn it, then move its starting point. Pictures, a paced animation and short checks lead to the formula one piece at a time.
+
+Future showcases will deepen this same reader. The priority is to make each conceptual bridge understandable before expanding the coverage.
+
+<details>
+<summary>Supporting material and the full proof roadmap</summary>
+
+The material below supplies references and later examples. It is optional for the first lesson.
 
 ![Proof roadmap: assume a proper five-colouring, build a weak measurable colouring, extract angular palettes, force a cycle of transitions, construct connected interfaces with colour exclusions, rule out cycles of length three, four, or five, and reach a contradiction.](Figures/proof-roadmap.svg)
 
@@ -32,6 +39,8 @@ The arrows summarize the supplied argument, not new theorems proved by this guid
 | [Completed Claude reader reviews](Reviews/Claude-FirstReview.md) | Checked geometry and measure-theoretic clarifications incorporated into the walkthrough |
 | [First showcase](Showcases/2026-11-14-01.md) | A short route through the first teaching materials |
 
-Hourly showcases will demonstrate newly built or improved explanations. Separate mathematical progress briefings are reserved for major contributions. Between showcases, the priority is a coherent synthesis of the proof, supported by worked examples and independent reader reviews.
+Separate mathematical progress briefings are reserved for major contributions. Worked examples and independent reviews support the main reader.
 
 **Attribution.** The September 2026 OpenAI manuscript and formalization are the starting material. Three Astra agents drafted and checked these explanations; two focused Claude Opus 5.5 reviews improved the geometry and measure-theoretic wording. These bounded reviews do not independently verify the entire supplied proof. The exposition director checks the integrated claims and keeps source pointers. [Mathathon's official overview](https://competition.sair.foundation/competitions/mathathon/overview) describes understanding and explanatory work as central objectives.
+
+</details>

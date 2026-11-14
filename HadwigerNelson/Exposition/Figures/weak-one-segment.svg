@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="658" viewBox="0 0 720 658" role="img" aria-labelledby="title desc">
+<title id="title">One unit ruler, two outcomes</title><desc id="desc">Red is horizontal coordinate less than zero; blue is zero or greater. Both starts are at minus one half, zero. A unit step right reaches blue and scores zero; a unit step up stays red and scores one.</desc>
+<rect width="720" height="658" fill="white"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="360" y="48" font-size="31" fill="#172c43" text-anchor="middle" font-weight="600">One unit ruler, two outcomes</text>
+<rect x="28" y="82" width="332" height="228" fill="#fbe9e5"/>
+<rect x="360" y="82" width="332" height="228" fill="#e7f0fb"/>
+<line x1="360" y1="82" x2="360" y2="310" stroke="#235f9d" stroke-width="2" />
+<text x="50" y="118" font-size="23" fill="#b33d39" text-anchor="start" font-weight="600">RED</text>
+<text x="670" y="118" font-size="23" fill="#235f9d" text-anchor="end" font-weight="600">BLUE</text>
+<line x1="300" y1="208" x2="420.0" y2="208.0" stroke="#172c43" stroke-width="6" />
+<circle cx="300" cy="208" r="7" fill="#b33d39" stroke="#172c43" stroke-width="2"/>
+<circle cx="420.0" cy="208.0" r="7" fill="#235f9d" stroke="#172c43" stroke-width="2"/>
+<text x="275" y="239" font-size="24" fill="#172c43" text-anchor="start" font-weight="400">start</text>
+<text x="436.0" y="198.0" font-size="24" fill="#172c43" text-anchor="start" font-weight="400">end</text>
+<text x="360" y="294" font-size="26" fill="#172c43" text-anchor="middle" font-weight="600">Point right: different colours. Score 0.</text>
+<rect x="28" y="328" width="332" height="260" fill="#fbe9e5"/>
+<rect x="360" y="328" width="332" height="260" fill="#e7f0fb"/>
+<line x1="360" y1="328" x2="360" y2="588" stroke="#235f9d" stroke-width="2" />
+<text x="50" y="364" font-size="23" fill="#b33d39" text-anchor="start" font-weight="600">RED</text>
+<text x="670" y="364" font-size="23" fill="#235f9d" text-anchor="end" font-weight="600">BLUE</text>
+<line x1="300" y1="500" x2="300.0" y2="380.0" stroke="#172c43" stroke-width="6" />
+<circle cx="300" cy="500" r="7" fill="#b33d39" stroke="#172c43" stroke-width="2"/>
+<circle cx="300.0" cy="380.0" r="7" fill="#b33d39" stroke="#172c43" stroke-width="2"/>
+<text x="275" y="531" font-size="24" fill="#172c43" text-anchor="start" font-weight="400">start</text>
+<text x="316.0" y="370.0" font-size="24" fill="#172c43" text-anchor="start" font-weight="400">end</text>
+<text x="360" y="572" font-size="26" fill="#172c43" text-anchor="middle" font-weight="600">Point up: same colour. Score 1.</text>
+<text x="360" y="634" font-size="25" fill="#172c43" text-anchor="middle" font-weight="400">The ruler's interior does not enter the test.</text>
+</g></svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="586" viewBox="0 0 720 586" role="img" aria-labelledby="title desc">
+<title id="title">Average over a bounded observation window</title><desc id="desc">A starting point p is chosen uniformly by area inside a disk B. Independently a unit direction is chosen. The illustrated endpoint p plus u lies outside B, which is allowed. Averaging local angular bad fractions over B gives the bad-pair probability P sub B.</desc>
+<rect width="720" height="586" fill="white"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="360" y="48" font-size="29" fill="#172c43" text-anchor="middle" font-weight="600">Move the start; then choose a direction</text>
+<text x="360" y="89" font-size="25" fill="#172c43" text-anchor="middle" font-weight="400">Two independent choices</text>
+<circle cx="220" cy="280" r="132" fill="#f1f5f9" stroke="#63758a" stroke-width="3"/>
+<text x="105" y="278" font-size="30" fill="#172c43" text-anchor="start" font-weight="600">disk B</text>
+<text x="108" y="313" font-size="25" fill="#172c43" text-anchor="start" font-weight="400">area |B|</text>
+<circle cx="295" cy="266" r="7" fill="#172c43"/>
+<line x1="295" y1="266" x2="495" y2="202" stroke="#172c43" stroke-width="6" />
+<circle cx="495" cy="202" r="7" fill="#172c43"/>
+<text x="294" y="306" font-size="27" fill="#172c43" text-anchor="start" font-weight="400">p</text>
+<text x="510" y="206" font-size="27" fill="#172c43" text-anchor="start" font-weight="400">p + u</text>
+<text x="366" y="216" font-size="24" fill="#172c43" text-anchor="start" font-weight="400">length 1</text>
+<text x="360" y="462" font-size="27" fill="#172c43" text-anchor="middle" font-weight="600">1. Choose p by area inside B.</text>
+<text x="360" y="505" font-size="27" fill="#172c43" text-anchor="middle" font-weight="600">2. Choose a unit direction independently.</text>
+<text x="360" y="555" font-size="26" fill="#172c43" text-anchor="middle" font-weight="400">The endpoint may lie outside B.</text>
+</g></svg>
