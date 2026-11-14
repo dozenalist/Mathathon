@@ -677,3 +677,41 @@ attack next if the geometric route is continued.
 I make no claim that case (b) is tractable, and no claim that this split is new — it is the
 standard "if the local inequality fails then the configuration is far from extremal" pattern,
 and it should be compared with the existing stability literature before anything is built on it.
+
+## 11. Numerical check of the negligibility estimate in `K15-E061`
+
+The transfer theorem has two halves: pointwise FCC-compatibility (a max-flow statement) and
+negligibility (a boundary count). The second is checkable independently of any volume
+reliability, because `A` is built from the transfer *amounts*, and the identity
+`sum_{v in S} A(v) = sum_{v in S, u notin S} phi(v,u)` is pure bookkeeping.
+
+**Global cancellation.** On every fixture, `|sum_v A(v)|` is at machine precision:
+`1.4e-17` (icosa_fill), `6.9e-18` (icosa_fill_b), `0` (icosa_fcc_shell), `-1.4e-17`
+(two_icosa, 8-defect grid). This is the skew-symmetry working.
+
+**The per-pair bound is attained exactly.** `||A||_inf = 0.10656322097686655` on the 8-defect
+grid, which equals `sqrt32 - V_dodeca = 0.10656322097686993` to `1e-15`. So the transfer pays
+each defect in full and never more — the cap in the construction is active, as designed.
+
+**Boundary scaling.** With eight defects spread over a `9`-unit lattice, `|sum A|` over
+`B(0,r)` is zero for `r <= 7` (the ball contains no complete transfer that straddles its
+boundary), becomes nonzero for `8 <= r <= 16`, and:
+
+| `r` | `|sum A|` | `/r^2` | `/r^3` |
+| --- | --- | --- | --- |
+| 9 | `2.622e-01` | `3.24e-03` | `3.60e-04` |
+| 12 | `7.83e-02` | `5.44e-04` | `4.53e-05` |
+| 16 | `5.62e-02` | `2.20e-04` | `1.37e-05` |
+
+`/r^2` stays bounded (at most `3.2e-3`) while `/r^3` decays by an order of magnitude over the
+same range, which is the signature of an `O(r^2)` boundary term rather than an `O(r^3)` bulk
+term. The values are jagged rather than monotone because the ball boundaries sweep across
+discrete lattice shells, which is expected.
+
+**What this establishes and what it does not.** It confirms the *mechanism* of the negligibility
+argument — exact cancellation, a boundary crossing, and the right scaling — and it confirms that
+the per-pair cap `sqrt32 - V_dodeca` is achieved. It does **not** verify the model bound
+`||phi||_inf (R+1)^3 |shell|` numerically; that bound is very loose (it would allow `~27.5 x
+|shell| x 0.1066`, far above the observed values) and its role is only to establish `C_1 <
+infinity`, which is what the proof needs. So the numbers support the proof's shape without being
+needed for it: the negligibility claim is a proof, not an observation.
