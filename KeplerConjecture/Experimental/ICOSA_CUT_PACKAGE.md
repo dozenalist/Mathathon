@@ -83,6 +83,36 @@ lower bounds do not even give a nonnegative surplus.** That is the obstruction i
 the only certified per-cell bound, the surplus is bounded below by `-1.279`, while the deficit to
 be covered is `+0.1066`.
 
+## 4b. The check script — written and run
+
+`Experimental/scripts/icosa_cut_check.py` (exact sympy over `Q(sqrt2,sqrt5)`; 1 CPU, ~2 s,
+< 100 MB). Its output, committed at `Experimental/evidence/icosa_cut_check.json`:
+
+```
+(1) distance centre->neighbour, exact: 2 ;  all twelve exactly 2
+    R = 2.09 -> |N_R({c})| = 12 ;  R = 2.11 -> 12 ;  R = 2.2 -> 12
+(2) distance sqrt(8 - 8*sqrt(5)/5)  = 2.1029244485   count 30
+    distance sqrt(8*sqrt(5)/5 + 8)  = 3.4026032334   count 30
+    distance 4                      = 4.0000000000   count  6      total 66
+(3) deficit d(c)                  = 0.106563220977
+    certified LOWER bound on surplus = 12*(V_dodeca - sqrt32) = -1.278758652
+    gap to the requirement          = 1.385321873
+(4) sample completion n=131: payer cells flagged (extent > 2) = 12 of 12 -> UNRELIABLE
+```
+
+**A cross-check worth noting.** The gap in (3), `1.385321873`, is *exactly* the shortfall of
+`K15-E041` (`12 V_dodeca` against the threshold). That is as it should be — both express "twelve
+cells at the dodecahedral minimum fall short of the requirement by `1.3853`" — and the numerical
+agreement between two independently coded expressions is a small but real check that the
+constants in this directory are consistent.
+
+**The substantive content of (3).** The certified lower bound on the cut surplus is
+`-1.278758652`, which is *negative*: the only per-cell bound we have (McLaughlin) does not merely
+fail to cover the deficit, it points the wrong way. So the cut cannot be discharged by per-cell
+minima, which is `K15-E041` restated as a statement about this specific cut. **That is the
+obstruction in its sharpest form**: the twelve payers must exceed the dodecahedral minimum in
+total by `1.385321873` over what the minimum allows, and the minimum is attained — at `c` itself.
+
 ## 5. What an evaluator should test
 
 1. Confirm `|N_R({c})| = 12` for `R = 2.09`, `2.11`, `2.2` (it is 12 for all: the payers are at

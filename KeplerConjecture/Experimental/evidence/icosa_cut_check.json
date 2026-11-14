@@ -1,0 +1,49 @@
+{
+ "log": [
+  "=== (1) the cut: |N_R({c})| ===",
+  "  distance centre->neighbour, exact: 2",
+  "  all twelve centre-neighbour distances are exactly 2 (tangency)",
+  "  R =  2.09 -> |N_R({c})| = 12",
+  "  R =  2.11 -> |N_R({c})| = 12",
+  "  R =   2.2 -> |N_R({c})| = 12",
+  "",
+  "=== (2) exact distance table among the twelve outer centres ===",
+  "  distance sqrt(8 - 8*sqrt(5)/5)  (=2.1029244485)  count 30",
+  "  distance sqrt(8*sqrt(5)/5 + 8)  (=3.4026032334)  count 30",
+  "  distance 4  (=4.0000000000)  count 6",
+  "  total pairs = 66 (must be 66)",
+  "",
+  "=== (3) certified surplus bracket on the cut ===",
+  "  deficit d(c) = sqrt32 - V_dodeca = 0.106563220977",
+  "  certified LOWER bound on the cut surplus = 12*(V_dodeca - sqrt32) = -1.278758652",
+  "  required: surplus >= d(c) = 0.1065632210",
+  "  => the certified bound does NOT cover the deficit; gap = 1.385321873",
+  "",
+  "=== (4) extent flag on a sample completion (PROVISIONAL) ===",
+  "  completion n=131; payer cells flagged (extent > 2): 12 of 12",
+  "  => UNRELIABLE as surplus data (K15-E062)",
+  "",
+  "(1)-(2) exact and PASS; (3) certified lower bound is negative, so the cut cannot be discharged by per-cell minima; (4) flagged if not saturated."
+ ],
+ "cut_size": {
+  "2.09": 12,
+  "2.11": 12,
+  "2.2": 12
+ },
+ "distance_table": {
+  "sqrt(8 - 8*sqrt(5)/5)": 30,
+  "sqrt(8*sqrt(5)/5 + 8)": 30,
+  "4": 6
+ },
+ "surplus_bracket": {
+  "lower_certified": -1.2787586517224392,
+  "required": 0.10656322097686993,
+  "upper": "infinity (no certified upper bound)"
+ },
+ "sample_completion": {
+  "n": 131,
+  "payers_flagged": 12,
+  "usable": false
+ },
+ "verdict": "(1)-(2) exact and PASS; (3) certified lower bound is negative, so the cut cannot be discharged by per-cell minima; (4) flagged if not saturated."
+}
