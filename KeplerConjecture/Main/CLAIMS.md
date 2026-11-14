@@ -5918,3 +5918,48 @@ external `candidate_planes` is not used to check that the face list is complete 
 
 *Status.* `REFUTED` for the standalone checker (two exact witnesses); generic certification suspended. C owns
 the fix.
+
+### K15-C151 — C's fix closes both witnesses, but a THIRD one survives (`REFUTED`; fix specified)
+
+Independent run of C's repaired verifier (`verify_certificate_independent.py` at C's tip `b61f175`,
+the file changed by `b9fb345`), against the stored `out/certificate_dense_shell_centre.json` and four
+mutations of it. **C's fix works for the two witnesses it was given, and one more survives.**
+
+| probe | mutation | verdict | |
+| --- | --- | --- | --- |
+| legit | none | **ACCEPTED** (volume reproduced, triangles close) | ✓ no over-fitting |
+| `W1` | duplicate `facets`, volume doubled | **REJECTED** "two facets share a plane index" | ✓ fixed |
+| `W2` | `["1","0","0","1/2"]` appended to `planes` | **REJECTED** "a vertex violates a constraint" | ✓ fixed |
+| `W3` | delete a plane from `planes`, `candidate_planes` intact | ACCEPTED | ✓ legitimate (the audit list is intact) |
+| `W4` | delete a `candidate_plane` | **REJECTED** "a facet vertex is not on its plane" | ✓ |
+| **`W5`** | a **violated** plane added to **`candidate_planes` only** | **ACCEPTED** | ✗ **hole** |
+
+**The defect, stated exactly.** The new constraint check uses
+
+```python
+allp = [tuple(F(x) for x in p) for p in cert["planes"]]        # <-- producer's own list
+planes = [tuple(F(x) for x in p) for p in cert.get("candidate_planes", cert["planes"])]
+```
+
+so the *vertex-versus-constraint* test is run against `cert["planes"]`, while `candidate_planes` — the
+independent audit list — is used only for the facet tests. A violated constraint that appears **only** in
+`candidate_planes` is therefore never tested against the vertices, and W5 is accepted. The same family as
+the original two witnesses: **a producer-supplied list is trusted where the audit list should be.** `W3`
+shows the mirror image: `planes` and `candidate_planes` may disagree with nothing noticing.
+
+**Fix, one line.** Test the vertices against the **union** `allp ∪ planes`, and reject when both lists are
+present and disagree (`planes != candidate_planes` sets). Then `W5` is rejected (the added plane has
+`d = max_x/2 < max_x` for some vertex, by construction) and the legitimate certificate is unaffected —
+`W1`–`W4` verdicts are unchanged.
+
+**What is *not* in question.** C's 25 tests pass, the dense-shell signed-volume sum reproduces, and the two
+supplied witnesses are now genuinely rejected. The remaining hole is narrow and mechanical. But generic
+certification stays **suspended** until it is closed: `C150`'s standing rule is that a certificate is trusted
+only when the *audit* list constrains the *claimed* vertices, and W5 shows that is still not the case.
+
+**Reproduce** (C's tree, `KeplerConjecture/Computation/`): load
+`out/certificate_dense_shell_centre.json`, take `mx = max` of the vertices' `x`, append
+`["1","0","0",str(mx/2)]` to `cert["candidate_planes"]`, and call `verify_certificate_independent.verify` —
+it returns normally.
+
+*Status.* `REFUTED` (third witness). C owns the fix; the one-line change is specified above.
