@@ -228,3 +228,46 @@ A proof that `vol D' ≥ 5.54` (or the sharper `≥ V_dod`) for every admissible
 Equivalently, a lower bound on the volume of a twelve-face unit-distance polytope whose five
 "ring" directions are held at `58.2825°`. This is a stability statement about the dodecahedron's
 neighbourhood, and it is the smallest remaining target on the pair route.
+
+---
+
+## 7. The premise is TRUE, by Lindelöf 1869 — the twelve-face theorem is restored
+
+The audit of §6.3 was overtaken by a literature check, and the outcome is better than "the
+premise holds numerically".
+
+**Lindelöf (1869).** Among convex polyhedra with `n` faces circumscribed about a sphere of radius
+`r`, the surface area is minimised by the regular polyhedron, and for `n = 4, 6, 12` the
+minimiser is the regular tetrahedron, hexahedron and **dodecahedron** respectively. Since
+`V = S·r/3`, this minimises the volume too.
+
+**Application.** `D'` is an intersection of twelve half-spaces at distance `≥ 1` from the origin.
+Move every face that lies farther than `1` in to `1`: the volume can only decrease, and the
+result is a twelve-faced polyhedron circumscribed about the unit ball. By Lindelöf its volume is
+at least `V_dod`. Hence
+
+```
+vol D'  >=  V_dod = 5.550291029  >=  5.540000 ,
+```
+
+**the premise of §6.2 holds unconditionally**, and the conditional theorem of `REVIEW_0608` §11
+becomes a theorem modulo Lindelöf (imported, exactly as Hales–McLaughlin is imported elsewhere in
+this project).
+
+This also explains the audit of §6.3 rather than contradicting it: seven starts converged to
+`5.567413`, which is `0.0171` above `V_dod`, and Lindelöf says the true minimum over *all*
+twelve-faced unit-distance polytopes is `V_dod`, attained at the icosahedral directions — which
+our family cannot reach because the ring is pinned at `58.2825°` instead of `63.43°`. The two
+numbers are consistent, and the `0.0171` is the price of the pinned ring.
+
+**What this does NOT do.** It does not extend to thirteen or more faces: Lindelöf's bound for
+`n = 13` is a different (smaller) regular-polyhedron value only for `n = 4, 6, 12` — for other
+`n` the minimiser is a non-regular polyhedron and its volume is smaller than `V_dod`. The
+thirteen-face case remains open, with the `0.042` gap recorded in `REVIEW_0608` §11.1.
+
+**Citation.** L. Lindelöf, *Propriétés générales des polyèdres qui, sous une étendue superficielle
+donnée, renferment le plus grand volume*, Bull. Acad. Sci. St. Pétersbourg **14** (1869),
+257–269. Located via the survey arXiv:1509.08859, which states Theorem 2.1 in the form used
+above and records `f = 4, 6, 12` as the equality cases. **Not verified in the original**: I have
+the secondary statement only, and a referee should confirm that Lindelöf's theorem is stated for
+polyhedra circumscribed about a sphere with the equality cases as quoted.
