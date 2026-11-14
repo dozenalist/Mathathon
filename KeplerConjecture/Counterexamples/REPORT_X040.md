@@ -217,15 +217,17 @@ adversarial families (`Reviews/x_family_check.py`) against `5caa1c9`: **0 wrong 
 predicate repair — but it is worth having on record that the precondition added no regression in
 the part of the checker that has failed three times before.
 
-One integration note for C, with the call sites named. `shell_propose.py:202` writes
-`eta=str(er2)` into its rows, where `er2 = round(η·D)/D` comes from `solve_laguerre(..., use_eta,
-...)` — so the `eta_free` branch can hand `check()` a *negative* `η` whenever the shell maximum of
-`p` is negative. Before the guard that produced a silent 1.5% "bound"; with `5caa1c9` the same
-call returns `None`, `exact_verdict` reports failure, and the loop moves on — a loud failure
-instead of a quiet unsound success. That is the fix working. `shell_bench.py:132` records the same
-quantity as `held_shell_max_f_minus_eta` and is diagnostic only. No published row is affected:
-all four rows of `C_shell_propose.json` carry `eta = "0"`, and the `η = 0` control is numerically
-unchanged.
+One integration note, and a correction to what I was about to write. I expected the guard to
+break C's `eta_free` branch, because `shell_propose.py:202` writes `eta=str(er2)` from
+`solve_laguerre(..., use_eta, ...)` and that solver can in principle return a negative `η`. It
+does not: `solve_laguerre` already carries the row `−η ≥ 0`, **present at `4bcbd3a`**, with a
+comment recording that the opposite sign let the objective drive `η` to the `−1e5` box bound. So
+the C-side pipeline was already guarded and the exposure was only in the checker's licence — which
+is exactly what `5caa1c9` closes. No published row is affected: all four rows of
+`C_shell_propose.json` carry `eta = "0"`, and the `η = 0` control is numerically unchanged. My
+§17 witness was therefore always a *synthetic* input (C's own row, with `η` replaced by the shell
+maximum), not a run C ever produced; that does not weaken it — the licence was wrong — but it
+should not be described as a pipeline bug, and I am correcting my own earlier framing here.
 
 ---
 

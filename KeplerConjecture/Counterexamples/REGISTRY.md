@@ -575,3 +575,9 @@ coefficient), 0 in the probe-targeted family, 0/8 in the near-touching family `(
 truth is the proven algebraic rule, computed independently of any checker. This is a regression
 check on the predicate part only: the `5caa1c9` change is the `η ≥ 0` precondition, so no
 predicate should have moved, and none did.
+
+**Correction to X-C025's scope.** C's `solve_laguerre` has carried the constraint `−η ≥ 0` since
+at least `4bcbd3a` (with a comment recording that the opposite sign let the objective drive `η` to
+the `−1e5` box bound). So the C-side pipeline was already guarded; the exposure was confined to
+the checker's licence, which is what `5caa1c9` closes. The `X_eta_negative_witness` input is
+synthetic (C's committed row with `η` replaced by the shell maximum), not a run C produced.
