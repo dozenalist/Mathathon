@@ -2815,6 +2815,22 @@ packings. That floor is already independently valid: `K15-C081r` uses the icosah
 so `Φ ≥ b(v₀)/12 ≥ 0.1065632/12 = 0.00888027…`. The two routes give the same number, and
 the saturated one is the one the ledger relies on.
 
+**2a. Main's audit of E's threshold.** E's target is stated as "required `5.763417`"; Main
+identifies it exactly as
+
+```
+5.763417470…  =  2√32 − V_dod  =  √32 + (√32 − V_dod),
+```
+
+i.e. **the volume the partner of a minimum (dodecahedral) cell must have for a two-cell
+cluster to average `√32`.** The quantity is coherent and the number is right. Two things
+follow for how the margin should be read: E's best `6.263608` is `0.500` above the threshold
+in *volume*, but the **pair mean** of `(V_dod, 6.263608)` is `5.906950`, which is `0.2500`
+above `√32` — a `4.42%` shortfall in the normalised quantity. So the gap is not small and it
+*grew* when the search was widened to 30 centres; that is a cleaner statement of E's revised
+verdict than "the margin halved at each step", and it is the form in which the number should
+be quoted.
+
 **2. E, `82689ba1999a1ca240e480f9bc90121101f9e801` — the trend claim corrected.** The
 30-centre search gives `6.494845` and `6.968035`, **worse** than the 18-centre `6.263608`,
 so the sequence is not monotone and the earlier framing ("every improvement found a smaller
