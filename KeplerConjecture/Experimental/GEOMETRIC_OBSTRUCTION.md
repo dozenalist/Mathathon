@@ -377,3 +377,76 @@ outward hemisphere that is not reduced to a per-direction cap.
 This is the precise state of the geometric route. I flag it rather than leave the earlier,
 more optimistic pointer standing, because a reader following `K15-E046` would spend effort on
 an estimate that the rigorous computation contradicts.
+
+## K15-E048 — why *no* directional per-cell bound can reach the threshold
+
+This closes the per-cell question rather than leaving it to successive refinements.
+
+Any bound of the form "`t(u) >= tau(u)` for every direction `u`" — which is what every
+estimate in `K15-E042`, `K15-E044` and `K15-E046` amounts to — must produce `tau` from the
+available information: the six known neighbour directions exactly, and `d >= 2.09` for every
+other centre. The latter gives the uniform floor
+
+```
+every non-near centre contributes  d/(2 cos phi) >= 2.09/2 = 1.045 ,
+```
+
+so outside the (at most twelve) caps where a known neighbour is closer, **`tau(u) <= 1.045`**.
+`tau` can exceed `1.045` only where it is known that *no* centre lies within `2.09`, and that
+is exactly what the count of twelve does not provide.
+
+Now compute what would be needed. The bisector with `c` caps the inward direction at distance
+`1`, so the inward half-ball contributes exactly
+
+```
+(2/3) pi (1)^3 = 2.09439510239 .
+```
+
+The required total is `5.66573451791`, so the outward hemisphere must supply
+
+```
+3.57133941551 = (1/3) * 2 pi * M     =>     M = 1.705188964 ,
+i.e. a mean of  t^3 >= 1.7052  over the outward hemisphere,  i.e.  mean t >= 1.194696 .
+```
+
+But `tau <= 1.045` outside the caps, and `1.045^3 = 1.1413 < 1.7052`. Uncovered directions
+would have to compensate: with a free fraction `f` (where `tau` may be larger) and
+`1 - f` at `1.1413`, reaching `1.7052` needs `f * T^3 = 1.7052 - 1.1413 (1 - f)`, which for
+`T = 2` (i.e. `tau = 2`, far above anything available) already requires
+
+```
+f >= 0.0826 .
+```
+
+So the bound needs **at least 8.3 % of the outward hemisphere to be provably free of centres
+within 2.09**. A completion centre at distance `2.09` excludes an angular cap of radius
+`28.99 deg`, i.e. solid angle `0.7873 sr` out of `2 pi = 6.2832`, so one such centre removes
+
+```
+0.7873 / 6.2832 = 12.5 %  of the outward hemisphere.
+```
+
+**One completion centre in the outward hemisphere destroys the bound.** Since `K15-E014`
+permits up to twelve and any fcc-type neighbourhood supplies six, no directional per-cell
+bound of this form can work. This is independent of how cleverly the caps are arranged or how
+finely the quadrature is done, and it explains all three numerical ceilings (`4.485`,
+`4.734`, `~4.9`) at once.
+
+**Therefore** the per-cell route requires a *sharper count* — fewer than twelve centres in
+`[2, 2.09]` around an outer centre, i.e. a spherical-code statement at radius `2.09` with one
+neighbour already fixed at distance `2`. That is a genuine question of the same character as
+`K15-E014` but strictly harder, and it is the honest next missing inequality. Alternatively
+the inequality must be collective over the block (no per-cell bound at all), which is what
+`(T'-2)` gestures at.
+
+## Fixtures and controls recorded this block
+
+| check | result |
+| --- | --- |
+| kissing number at `rho = 2` recovered by the same code | **12** (`K15`-control, `Schutte-van der Waerden`) |
+| count 12 at `rho = 2.05` | `cos = 881/1681`, margin `+1.854e-02` |
+| count 12 at `rho = 2.09` | `cos = 23681/43681`, margin `+4.939e-04` |
+| Barlow stackings, `ABC`/`AB`/`ABCB`/`ABAC` | 12 in `[2,2.09]`, next shell `2 sqrt2` |
+| centre cell in all 12 completions | `5.550291028515513`, i.e. `V_dodeca` to `1e-15` |
+| every accepted configuration | `minsep = 2.0` |
+| interval self-audit | 118 checks pass; corruption detected 50/50 |
