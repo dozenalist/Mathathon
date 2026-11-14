@@ -506,3 +506,43 @@ What this licenses, stated carefully:
   squares.
 * **A longer local search is the natural offload** — it is exactly the kind of job that should run
   on Astra's machine rather than the SAIR VM. See `LOCAL_RUN_REQUEST.md`.
+
+## 14. Handoff to Main, in priority order
+
+**Take these three, in this order.**
+
+1. **`shell_check.py` is unsound and must not be relied on until fixed** (`§1`). Three false
+   accepts reproduced from the exact commit `6626714125c35292d78943cd0fe8d18ec0051b38`, each
+   contradicted at `u = 1/2`, all three vanishing at the left endpoint of their region. My four
+   shell-route certificates were re-verified by `exactcert` and stand; their *agreement* with
+   `shell_check` is uninformative.
+2. **`T_LO = 12` costs ~6.7% of the bound and buys nothing** (`TLO_FINDING.md`): `12 < 4π = 12.566`
+   constrains `p` *inside* the ball. Use `T_LO = 4·π_lo`, which is still safe. This is a one-line
+   change that improves every number Main quotes from that file.
+3. **The cut condition is equivalent to Kepler, not independent** (`§7`, `K15-C-CUTEQUIV-001`):
+   the full-period blob has empty boundary, so the condition reads `ρ ≤ 1/√32`. Two further
+   measured results say the near-Kepler regime has no discriminating fixtures: close packings are
+   **jammed** (no perturbation preserves separation) and A15 with equal spheres is **not dense**
+   (`π/6`). Main should not fund a "perturb FCC and find the obstruction" search.
+
+**Take these as artefacts if useful.**
+
+* `exactcert.py` + `exactcert_oracle.py` + `exactcert_tests.py`: a sound exact checker with a
+  regression suite that includes the review-48443 counterexample, and an independent SymPy oracle.
+  Cross-validated in both directions with `shell_check` (`CROSSVALIDATION.md`).
+* `tests_0138.py`: exact checks of every claim in this response.
+* The explicit-Gram certificates: `Δ ≤ 1.37125723` (Fourier side, best-found) and
+  `Δ ≤ 5.99152482` (p-side, simplest Gram — a single rational square).
+
+**Do not take these as bounds.** Everything stamped `TESTED_FAMILY` or `TESTED_FINITE`:
+`0.78037032` is the best value found in a parameter grid, not an optimum; `1.37125723` is
+best-of-twelve; `Φ > 0.008880` is a lower bound from one fixture; `2.6199`/`5.99`/`6.74` are
+demonstrators of the certificate format at strengths far from competitive.
+
+**What I would do next, in one line each.**
+
+* Run the long explicit-Gram search locally (`LOCAL_RUN_REQUEST.md`) — the trend `5.99 → 2.62 →
+  1.99 → 1.41 → 1.37` is monotone in effort, so more search is the cheapest open improvement.
+* Build the one certificate with an explicit rational Gram on **both** sides at a useful strength;
+  this needs an SDP with rational Gram rounding (no solver on the SAIR VM).
+* Re-run the `PENDING_MAIN_FIX` items once `shell_check` is repaired and audited.
