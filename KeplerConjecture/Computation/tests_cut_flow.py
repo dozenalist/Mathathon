@@ -230,6 +230,29 @@ def main():
     ok_cap, ok_div, _ = CF.verify_flow_exact(b_lo, E, F(1, 50), phi02)
     check("the flow returned at Phi = 0.02 passes the exact verifier", ok_cap and ok_div)
 
+    print("S15 EXTERNAL PATH: a fixture exported to JSON reproduces the internal numbers")
+    import json as _json, os as _os
+    fxpath = "out/example_external_icos13.json"
+    check("the worked example exists", _os.path.exists(fxpath))
+    if _os.path.exists(fxpath):
+        fx = CF.load_external_fixture(fxpath)
+        check("13 vertices, 12 edges at R = 2", len(fx["b_lo"]) == 13 and len(fx["edges"]) == 12)
+        check("b_lo <= b_hi at every vertex", all(a <= b for a, b in zip(fx["b_lo"], fx["b_hi"])))
+        check("the example declares its volumes certified, not provisional", fx["provisional"] is False)
+        out = CF.evaluate_external(fx)
+        cuts = [r for r in out["rows"] if r["kind"] == "violating_cut"]
+        check("the external path finds the singleton cut", len(cuts) == 1 and cuts[0]["U"] == [0],
+              [r.get("U") for r in cuts])
+        b_lo, b_hi = CF.icos_b()
+        n_i, E_i = CF.build_13(F(2), direction="refute")
+        internal = CF.cut_value(b_lo, E_i, [0])
+        check("the external threshold equals the internal one exactly",
+              F(cuts[0]["phi_threshold"]) == internal[0] / internal[1],
+              float(F(cuts[0]["phi_threshold"])))
+        flows = [r for r in out["rows"] if r["kind"] == "flow"]
+        check("the external flow is exactly verified", flows and flows[0].get("cap_ok")
+              and flows[0].get("divergence_ok"), flows)
+
     print()
     if FAILS:
         print("FAILED: %d -> %s" % (len(FAILS), FAILS)); return 1

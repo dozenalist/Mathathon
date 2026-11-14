@@ -1,6 +1,30 @@
 {
  "script": "KeplerConjecture/Computation/cut_flow.py",
- "external": [],
+ "external": [
+  {
+   "fixture": "icos13_R2",
+   "provisional": false,
+   "note": "the periodised 13-cluster at R = 2, exported as a worked example of the external fixture format.  Volumes are certified: the torus cells partition the section, the central cell is the exact dodecahedron, and the twelve ring cells are congruent (octahedral symmetry), so b_ring = sqrt32 - (4096 - V_dod)/12 exactly.  See period_convention.py.",
+   "rows": [
+    {
+     "kind": "violating_cut",
+     "U": [
+      0
+     ],
+     "sum_b": "147128616315367406415229968514563035544879134735720331331611471130202505614128898495042779364993684669/1380669756100018784681920170563748550164389573711054740954124096956039342364213311500000000000000000000",
+     "boundary": 12,
+     "phi_threshold": "147128616315367406415229968514563035544879134735720331331611471130202505614128898495042779364993684669/16568037073200225416183042046764982601972674884532656891449489163472472108370559738000000000000000000000"
+    },
+    {
+     "kind": "flow",
+     "Phi": "1/100",
+     "cap_ok": true,
+     "divergence_ok": true,
+     "status": "PATCH_FEASIBLE"
+    }
+   ]
+  }
+ ],
  "convention": "K15-C044: b(v)=sqrt32-vol Omega(v); G_R edges <= R, capacity Phi; transfer exists iff sum_U b <= Phi|delta^+(U)| for every finite U",
  "arithmetic": "rational enclosures b_lo <= b <= b_hi; b_lo used to refute, b_hi used for feasibility",
  "rows": [

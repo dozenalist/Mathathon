@@ -436,8 +436,8 @@ def evaluate_external(fx, Phi_trials=(F(1, 1000), F(1, 100), F(1, 10), F(1))):
     sb_rows, infeas = singleton_bounds(fx["b_lo"], fx["edges"])
     for r in sb_rows:
         if r["verdict"] == "SINGLETON_BOUND":
-            print("   singleton bound v%d: b/deg = %s/%d = %.12f"
-                  % (r["vertex"], r["b"], r["degree"], float(F(r["singleton"]))))
+            print("   singleton bound v%d: b/deg = %.15f  (deg %d)"
+                  % (r["vertex"], float(F(r["singleton"])), r["degree"]))
     if infeas:
         print("   POSITIVE DEFICIT AT DEGREE ZERO at %s: INFEASIBLE at any Phi" % infeas)
     tot, ok_global = global_necessary_condition(fx["b_lo"])
