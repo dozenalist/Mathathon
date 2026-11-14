@@ -154,3 +154,15 @@ candidate: rational input, failure reporting unconditional, exact Sturm verdicts
 directed `π`. A number that has not passed it is `TESTED_FINITE` regardless of the
 tool that produced it. **Reverse if** X's audit finds an error in it, in which
 case the corrected file is the acceptance test and the old one is preserved.
+
+## D17 — Next target: E's `(H_R)` in cluster-average form, not `(Q)` and not 3-point (M)
+
+`K15-C069` refutes `(Q)` (a saturated packing *does* contain a cell below `√32` —
+the dodecahedral one), so no pointwise cell statement can be the target. C's exact
+SOS family plateaus at `Δ ≈ 1.99` and its higher-degree exact certificates at
+`0.77996622`, so the two-point route has no slack left; the three-point
+specification has never been implemented and there is no evidence it would pay
+within the remaining budget. The target is therefore `Main/NEXT_PACKAGE.md`:
+`Σ_U vol Ω ≥ √32|U| − O(Φ|U|^{2/3})` with `Φ` from `K15-C044`, plus E's `(H_R)`
+as its formal version. **Reverse if** a worker produces a 3-point certificate
+whose exact value beats `0.77996622`.

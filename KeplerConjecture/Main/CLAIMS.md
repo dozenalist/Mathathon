@@ -1966,3 +1966,62 @@ uniform upper density for 2-separated packings (boundary term `O(R²)/R³ → 0`
 CE numbers may be quoted; Hales' route needs no bridge at all; and the open items
 (uniformity bookkeeping, the `δ = 0` case, the Zorn saturation step) are listed
 with what would close each.
+
+### K15-C071 — proof complexity of the transfer route (`PROVED` assessment)
+
+What a transfer certificate would cost, in the three senses that matter for this
+project's "simpler proof" objective.
+
+1. **Logical strength.** Existence of `φ` from the cut condition is *non-effective*:
+   the infinite case uses Tychonoff compactness (`K15-C067`), so the argument does
+   not exhibit `φ`. For a **periodic** packing it is effective: the quotient graph
+   is finite and the cut condition is a finite LP (`C-TRANSFER-001`), decidable in
+   polynomial time by max-flow. So the non-constructive step is confined to the
+   aperiodic case, and no number in the proof depends on it.
+2. **Verification cost.** Checking the cut condition for a *given finite* `U` is a
+   sum over vertices plus an edge count — `O(|U|·k_R)`. Checking it for all `U` is
+   a min-cut computation on the finite quotient (periodic case), i.e. polynomial.
+   The expensive part is not the flow but the cell volumes: computing `vol Ω(v)`
+   exactly for a `d`-facet cell costs a half-space intersection, and no exact
+   arithmetic version is available at the scale Hales needs (`10⁵` configurations).
+   **This is where a transfer-based proof would be more expensive than Hales': he
+   never needs exact volumes, only interval bounds on a finite list of scores.**
+3. **Comparison with the source.** Hales' `A` is a transfer whose negligibility he
+   proves by the `Q`-system and the four-way cancellation; the transfer packaging
+   replaces that with `K15-C035` (two lines) at the price of making the *pointwise*
+   inequality explicit, which `K15-C036` shows cannot be verified by computation.
+   So the packaging trades "hard bookkeeping, computable geometry" (Hales) for
+   "easy bookkeeping, uncomputable geometry". That trade is favourable only if an
+   analytic averaged cell bound exists; if it does not, Hales' route is the
+   cheaper one and the transfer route is a dead end. This is the honest cost model
+   and it should temper any claim that `K15-C035` "simplifies the proof".
+
+*Status.* `PROVED` (an assessment from the established lemmas, no new theorem).
+Reviewer X.
+
+### K15-C072 — decision: the next target, from worker evidence (`DECISION`, D17 recorded)
+
+**Evidence on the table (this block's reads).**
+- **C** (`b51129e`): exact explicit-Gram SOS certificates reach
+  `Δ ≤ 1.99064200` and *plateau at ≈ 2* (three further seeds: `1.99889`,
+  `1.99578`, `1.99725`). Higher-degree exact certificates saturate at
+  `0.77996622`. Nothing in the C family is near a competitive bound, and the
+  search is no longer productive.
+- **E** (`846f221`): the Laves-phase witness is blocked on primary crystallographic
+  data; the dense-completion search neither refuted `(T')` nor beat the sparse
+  baseline ("density is not what makes `(T')` hard, saturation is"); `(Q)` was
+  proposed as a shortcut.
+- **X** (`9dc2ab2`): level 3; `O2` (a soft proof of CE non-sharpness in 3D) named
+  as its most promising open question.
+
+**Decision.** `K15-C069` kills `(Q)` (the dodecahedral cell is a saturated cell
+below `√32`). So the geometric target is E's **`(H_R)`/`(T')` in cluster-average
+form with the explicit `Φ`** of `K15-C044` — i.e. `Main/NEXT_PACKAGE.md` — and not
+any pointwise cell statement. The higher-point alternative is **not** chosen this
+cycle: C's three-point specification remains unimplemented and its own two-point
+work plateaus three orders of magnitude away, so there is no evidence a 3-point
+implementation would land anywhere useful within the project's remaining budget.
+`X`'s `O2` is recorded as the most interesting *analytic* question but is not a
+density bound.
+
+*Status.* `DECISION` (D17). Reviewer X.
