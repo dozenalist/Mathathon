@@ -39,6 +39,14 @@ roadmap vocabulary with two additions used only where the reviewer required them
 | `K15-C-D4RECON-001` | `PROVED` | the period-16 13-cluster's cut condition reduces to **one** inequality: over all 8191 subsets exactly one has `Σ_U b > 0`, the singleton `{0}`, since any subset containing a ring vertex has `Σ_U b ≤ −335.1`. The fixture is unsaturated (`max hole ≥ 12.327`) so it supports no Hales-type argument, but its torus cells are bounded (they sum to 4096), so `b` is finite and the fixture *is* a legitimate C044 test set | `cut_flow.py`, `period_convention.py`, `REVIEW_0523.md` §4 |
 | `X-C034 / D8` | `CLOSED` | `verify_flow_exact` false-accepted an isolated positive-deficit vertex; `feasible_flow` and `find_violating_cut` shared the defect. Repaired at `ae545b9`; the witness is retained and every path now rejects it, including the `PATCH_FEASIBLE` output | `audit_cut_flow_api.py` §A |
 
+## The exact-volume path (review 07:38)
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| `K15-C-EXACTVOL-VERIFIER-001` | `PROVED` (checker) + `VERIFIED_EXACT` (fixtures) | a proof-carrying exact-volume verifier for a rational polyhedron: search and check are separate, and the volume is returned only after the certificate passes seven exact obligations — vertices satisfy every plane; the interior point is strictly inside; every facet is outward-oriented with its area vector **recomputed from the vertex order**; every vertex lies on ≥3 facets; **the area vectors close**, which is the boundedness gate (closure exhibits `Σ λ_f a_f = 0` with all `λ_f > 0`, so the normals positively span `R³`); facets are complete because any supporting plane meeting the polytope in a 2-set is a facet; and the divergence-theorem volume agrees. A float pre-pass may propose candidates: the certificate proves the polytope for `⋂A`, and every other plane is checked against every vertex, so `⋂(all) = ⋂A` | `exact_volume.py`, `exact_volume.md`, `tests_exact_volume.py` (25 checks), `out/exact_volume_adversarial.json` (8 fixtures) |
+| `K15-C-EXACTVOL-DEFECTS-002` | `PROVED` (defects) | four defects in the previous cell-volume code, all repaired: a float determinant filter that skipped real vertices; a circular completeness check; no boundedness; and dedupe by raw tuple, so `(1,0,0,1)` and `(2,0,0,2)` — the same half-space — counted as two faces (cube `8 + 4/3 = 28/3`, E's defect). Two further bugs found while writing the verifier: `solve3` divided ints so Python returned `2⁻⁵³`-rounded vertices, and a sign convention turned `−x ≤ 1` into `x ≤ −1` | `REVIEW_2026-11-14_0738.md` §2 |
+| `K15-C-EXACTVOL-CROSSCHECK-003` | `TESTED_FINITE` | the certified volume agrees with an independent rejection sampler on ~190 random rational polytopes (worst 2.9σ), and every V5 rejection carries an explicit unbounded ray | `crosscheck_volume.py` |
+
 ## Exact geometry of periodic fixtures (this block)
 
 | claim | status | statement | evidence |
