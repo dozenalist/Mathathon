@@ -1,0 +1,49 @@
+{
+  "started_utc": "2026-11-14T16:25:54.144483+00:00",
+  "status": "finished",
+  "cpu_affinity_bit": 1,
+  "memory_cap_bytes": 1073741824,
+  "jobs": [
+    {
+      "name": "volume_v4_controls",
+      "role": "Experimental",
+      "script": "Experimental/scripts/cell_certificate.py",
+      "cap_seconds": 30,
+      "exit_code": 0,
+      "status": "completed",
+      "elapsed_seconds": 6.75,
+      "peak_observed_bytes": 53661696
+    },
+    {
+      "name": "certificate_probe",
+      "role": "Computation",
+      "script": "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0823\\certificate_probe.py",
+      "cap_seconds": 30,
+      "exit_code": 0,
+      "status": "completed",
+      "elapsed_seconds": 0.562,
+      "peak_observed_bytes": 12607488
+    },
+    {
+      "name": "exact_volume_tests",
+      "role": "Computation",
+      "script": "Computation/tests_exact_volume.py",
+      "cap_seconds": 90,
+      "exit_code": 0,
+      "status": "completed",
+      "elapsed_seconds": 0.516,
+      "peak_observed_bytes": 13393920
+    },
+    {
+      "name": "independent_volume",
+      "role": "Computation",
+      "script": "Computation/verify_certificate_independent.py",
+      "cap_seconds": 30,
+      "exit_code": 0,
+      "status": "completed",
+      "elapsed_seconds": 0.515,
+      "peak_observed_bytes": 12746752
+    }
+  ],
+  "finished_utc": "2026-11-14T16:26:02.502534+00:00"
+}

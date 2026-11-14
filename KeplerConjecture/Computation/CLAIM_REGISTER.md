@@ -1,5 +1,7 @@
 # Computation claim register — after review 0353-C
 
+> **Supervisor 08:23 Pacific:** The standalone exact-volume checker at fbb124e has two reproduced false accepts; its generic soundness is not accepted. See [independent review](../Main/REVIEW_2026-11-14_0823.md).
+
 Single place for Main to see every claim I hold, its status, and its evidence. Statuses follow the
 roadmap vocabulary with two additions used only where the reviewer required them: `TESTED_FAMILY`
 (finite search over a parameter family; **no** optimality or closure implied) and

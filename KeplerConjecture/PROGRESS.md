@@ -734,3 +734,22 @@ and previous duration audit are in Main/ASSIGNMENTS_2026-11-14_0738.json. Both
 local jobs finished; the inconsistent/redundant premise scan is deferred with
 its reason. See Main/REVIEW_2026-11-14_0738.md and SYNC_2026-11-14_0738.json.
 The next review remains on the 45-minute schedule; watchers remain stopped.
+
+## Supervisor checkpoint: November 14, 08:23 Pacific
+
+Merged completed M 89a9c54 and E 814f213, plus busy C fbb124e and X c40fdcb
+captured at review start. Main's colliding authored review is preserved exactly
+under Main/AgentReports; all author commits are retained. K15-SUP-0823-01 closes
+the named E duplicate-plane regression on local controls. C's 25 tests and
+stored signed-volume reproduction pass, but two independent exact witnesses
+break its standalone verifier (-02). Main corrects the old inequality and
+minimum inference; its stability candidate and missing executable request
+remain conditional/needs implementation (-03). X's one-cell weakening is false;
+geometric scope and ring-face proof remain under audit (-04).
+
+M/E ended early (43.812/21.538 minutes) and received new full-hour assignments.
+C/X continued; C received next-step evidence without a clock reset. All new
+deliveries and actual Ultramath calls are confirmed in Main/ASSIGNMENTS_2026-11-14_0823.json.
+All four local jobs finished. No new best bound, simpler proof or Lean result
+accepted. See Main/REVIEW_2026-11-14_0823.md and SYNC_2026-11-14_0823.json.
+Checks stay every 45 minutes; no watcher started or resumed.

@@ -1,0 +1,12 @@
+{
+  "original_cube_volume": "8",
+  "doubled_facets": {
+    "accepted": true,
+    "volume": "16"
+  },
+  "unverified_non_candidate_cut": {
+    "accepted": true,
+    "volume": "8",
+    "true_volume": "6"
+  }
+}

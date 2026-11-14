@@ -1,14 +1,13 @@
 # Kepler Conjecture: progress so far
 
-Updated at the November 14, 2026, 07:38 Pacific scheduled review. The latest
-worker sources are synchronized. The origin and radius checks now pass local
-controls, but another exact example exposes duplicate-face overcounting. A
-primary source supports the twelve-face premise; the surrounding geometric
-argument still needs proof review. Main has a shorter candidate exclusion
-argument, while its global counting proof still contains an inequality error.
-All four agents ended early and received new full-hour Ultramath assignments;
-their actual runtime mode is verified. No new best packing bound or simpler
-proof is accepted. Checks continue every 45 minutes, with watchers stopped.
+Updated at the November 14, 2026, 08:23 Pacific scheduled review. Experimental's
+duplicate-face repair passes local controls. Computation has a more explicit
+exact-volume certificate, but two new independent probes still make its checker
+accept wrong cube volumes. Main corrected two earlier proof errors and developed
+a conditional stability estimate; the proposed certificate program is not yet
+implemented. Main and Experimental ended early and received new full-hour
+Ultramath assignments; the other two continued. No new best packing bound or
+simpler proof is accepted. Checks remain every 45 minutes, with watchers stopped.
 
 ## Where the project stands
 
@@ -422,3 +421,31 @@ substantive fallback work and exact review criteria, and all four are confirmed
 to run Ultramath. The supervisor ran the small checks locally, integrated the
 captured sources with authorship intact and preserved every failed version.
 No mathematical improvement to the best known packing bound is claimed.
+
+## November 14, 08:23 Pacific: repairs and a more concrete stability target
+
+The duplicate-plane bug found last check is repaired on the tested inputs.
+Experimental's controls, including redundant and scaled planes, now pass locally.
+Computation replaced its floating determinant shortcut with exact enumeration
+and a separate certificate checker. Twenty-five supplied tests pass, and another
+volume formula reproduces the saved dense-shell result. Independent probes still
+found two ways to fool the standalone checker: duplicate the entire boundary,
+or add a cutting plane that only the producer checks. Both exact witnesses were
+sent back immediately. The finite fixture remains useful; generic soundness is
+still an open proof and implementation obligation.
+
+Main repaired the reversed volume inequality and withdrew its inference from
+example polyhedra to optimal values. Its new stability estimate is more concrete,
+but remains based on sampling and unproved steps. The requested local certificate
+command names a missing file and has inconsistent constants and success criteria.
+Main now owns a runnable, properly scoped handoff. Independent review also found
+that dropping the second-cell hypothesis from a geometric exclusion loses the
+ordinary distance-two contacts. These distinctions prevent a local lemma or a
+successful numerical sample from being mistaken for a universal packing bound.
+
+Main and Experimental finished after roughly 44 and 22 minutes and were restarted
+with substantive full-hour tasks and fallbacks. Computation and Counterexamples
+kept their existing tasks. Runtime Ultramath and message deliveries are verified;
+an hour of substantive work is still something to check, not assume. Four bounded
+local checks finished, source authorship and rejected versions were preserved,
+and both the agent and supervisor reports survived a filename collision.

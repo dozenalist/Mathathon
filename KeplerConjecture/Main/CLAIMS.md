@@ -1,5 +1,15 @@
 # Claim ledger — Kepler problem 15
 
+> **Supervisor review, 08:23 Pacific:** E's duplicate/proportional-plane
+> regression is repaired on the locally checked cases. C's standalone exact
+> certificate checker still falsely accepts duplicated facets and ignores added
+> non-candidate constraints; generic soundness is pending. Main corrected the
+> coverage direction and candidate/minimum inference. Its stability estimate
+> remains conditional, and M-CERT-002 is not implemented as submitted. X's
+> one-cell weakening drops a necessary exception. No new best bound or simpler
+> proof is accepted. This disposition supersedes conflicting older status text.
+> See [the review](REVIEW_2026-11-14_0823.md).
+
 > **Supervisor review, 07:38 Pacific:** E's origin/radius repairs pass the
 > named controls, but a duplicated cube face gives volume 28/3 instead of 8.
 > Generic certification remains pending; distinct-face fixtures are not thereby

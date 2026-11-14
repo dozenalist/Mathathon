@@ -1,5 +1,7 @@
 # Counterexamples / independent-audit registry
 
+> **Supervisor 08:23 Pacific:** The one-dodecahedral-cell weakening in the 07:38 review fails on genuine distance-2 contacts. Preserve the two-cell exception; broader numerical separation claims remain scoped. See [independent review](../Main/REVIEW_2026-11-14_0823.md).
+
 Role **X** for Mathathon problem 15. Branch `kepler15/counterexamples/run-01`, based on
 source commit `69f3213aa6f2b636ec1b0e25a7394acfecae986b` (`origin/kepler15/setup-01a1d8c0`).
 Every tracked change is under `KeplerConjecture/`.

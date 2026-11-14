@@ -228,3 +228,19 @@ per-start cap and may be redundant after the source correction; its disposition
 is explicit in the review. All Lean and heavy work must be routed locally.
 Main leads proof choices and integration. The next scheduled review must inspect
 the exact verifier/geometry repairs and substantive duration, not just labels.
+
+### 08:23 review
+
+E was idle; M completed during review; C/X stayed busy. M/E's 43.812/21.538
+elapsed minutes do not satisfy the required hour. Their new full-hour website
+assignments have confirmed delivery and actual Ultramath calls. Earliest finish
+M 09:32:03 Pacific, E 09:27:29. C/X clocks are unchanged; C's exact checker
+evidence was delivered at its next step. ASSIGNMENTS_2026-11-14_0823.json records
+IDs, prior durations and all four live runtime snapshots. No busy call was
+interrupted and no extra chat or swarm was started.
+
+All four local jobs ended. M-CERT-002 is missing its named implementation and
+has inconsistent acceptance conditions; Main must supply a concrete corrected
+handoff. Existing C/E multi-minute VM scans are recorded as offload failures.
+Next scheduled check: generic certificate fixes, geometric scope, a runnable
+stability job and substantive duration. Keep 45-minute checks and stopped watchers.

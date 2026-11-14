@@ -1,5 +1,15 @@
 # Local computation handoff
 
+## Supervisor queue disposition — 08:23 Pacific
+
+M-CERT-002: **NEEDS_IMPLEMENTATION / NEEDS_REVISION** at completed Main source
+89a9c5494a6ead7424caeffc4b5053ae800512b9. The named `l1_remainder.py` is absent;
+the command, constants, quotient and strict-positive acceptance need reconciliation.
+Main received a bounded executable-handoff assignment. No corresponding job is running.
+E's premise scan was explicitly withdrawn by its author. Four local validation
+jobs finished; see LocalChecks/2026-11-14_0823. No new Lean target was submitted.
+Older request statuses below are historical unless explicitly reconciled here.
+
 The Astra supervisor runs Lean and heavy numerical work on the user's local
 computer. Main collects requests from the four Kepler sessions and maintains
 this queue. Submit the source and request in a pushed Kepler-only checkpoint,
