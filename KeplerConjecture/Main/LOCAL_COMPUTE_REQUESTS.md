@@ -288,6 +288,10 @@ ratio_min = 0.20 is a FIXED conservative constant (the sampled value is reported
 to decide); measured M₃ = 0.075…0.213 across seeds, so the headroom is a factor 13…36
 ```
 
+**One-command acceptance.** `sh KeplerConjecture/Computation/l1_handoff_check.sh [Q] [X]` runs the pinned
+command plus every control (self-test, margins, `c = 0.30`, `eps = 0.2`, invalid inputs) and prints one
+verdict. Verified from an unrelated working directory with numpy 2.5.3 / scipy 1.18.1; runtime a few seconds.
+
 **Pinned command.**
 
 ```
