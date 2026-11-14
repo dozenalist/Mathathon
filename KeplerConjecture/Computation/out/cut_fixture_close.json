@@ -1,0 +1,10 @@
+{
+ "script": "KeplerConjecture/Computation/cut_fixture_close.py",
+ "status": "TESTED_FINITE (negative result)",
+ "finding": "FCC/HCP at minimum separation 2 are jammed: every centre has 12 contacts at distance exactly 2, so any perturbation breaks the separation constraint. amplitudes tried: 0.06 -> 1.894, 0.01 -> 1.982, both < 2. No near-Kepler perturbation exists.",
+ "implication": "a near-Kepler fixture with unequal cell volumes must be a different combinatorial type (Frank-Kasper: A15, sigma); the cut condition's interesting regime is the jammed regime, consistent with K15-C-CUTEQUIV-001",
+ "amplitudes_tried": [
+  0.06,
+  0.01
+ ]
+}

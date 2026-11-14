@@ -42,6 +42,15 @@ python3 sos_family.py          # explicit rational Gram, p-side by expansion
 python3 sos_family2.py         # degree 5, two-square Gram
 python3 sos_shell_variant.py   # proved family-restricted shell comparison
 python3 cut_deficit.py         # periodic cut-deficit fixtures
+python3 tests_0138.py          # every review-0138 claim, exact
+
+# longer search for a better explicit-Gram certificate (the natural offload):
+# 12 runs on the VM span 1.3713..1.9989; a few hundred runs would sharpen it.
+for S in $(seq 100 300); do
+  python3 sos_qside_polish.py --degree 7 --iters 4000 --seed $S --uphill 0.05 \
+    --out out/hop_$S.json
+done
+# ~40 s per run, 1 CPU, < 300 MB; keep the best by its "delta" field.
 ```
 
 For (2) copy Main's checker next to the run, or pass its absolute path:

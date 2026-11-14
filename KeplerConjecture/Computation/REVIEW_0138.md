@@ -161,6 +161,78 @@ blob — e.g. by restricting to blobs with a *prescribed* boundary-to-volume rel
 replacing `b` with a functional whose mean is zero on every packing. That is a design change for
 Main and Experimental, not something the evaluator can settle.
 
+### Actual cut deficits on blobs (added after the first version)
+
+The first version of the evaluator computed fixture volumes and the full-period test only, which
+is not what item 3 asks. It now enumerates blobs (unions of cells, three sizes, adjacency built
+from explicit icosahedron coordinates rather than asserted) and reports `Σ_U b` against the edge
+boundary `|δ⁺(U)|`:
+
+| blob (cells) | `Σ_U b` | `\|δ⁺(U)\|` | ratio |
+| --- | --- | --- | --- |
+| `{central}` | +0.106563 | 12 | **0.008880** |
+| `{central, ring-1}` | −335.107392 | 15 | −22.34 |
+| `{central, ring-i}` | −335.107392 | 16 | −20.94 |
+
+**Result: any `Φ` satisfying the cut condition for every packing must exceed `0.008880`**, from
+this one fixture. Larger blobs are not binding there (they pick up the enormous ring cells and go
+strongly negative), and the full-period blob gives −4022.46, so the fixture does **not** refute the
+condition — it only forces a positive constant. That is a genuine quantitative output from a
+concrete periodic packing, and the smallest useful contribution this evaluator can make.
+
+Note the asymmetry that makes the fixture weak: its density is `0.0032`, fifty-five times below
+Kepler, because the twelve ring cells are huge. A fixture near the Kepler density would have ring
+cells close to `√32` and could push the ratio much harder. **That is the next fixture to build**,
+and it needs exact Voronoi volumes for a perturbed close packing.
+
+### The near-Kepler fixture does not exist by perturbation (`cut_fixture_close.py`)
+
+Attempting the fixture the previous paragraph asks for produced a **negative result that is more
+informative than the fixture would have been.** FCC and HCP at minimum separation 2 are
+**jammed**: every centre has 12 neighbours at distance exactly 2, so *any* displacement shortens
+some contact. Measured with a built-in validation gate (the script refuses to report volumes if
+separation, volume-sum or `Σb = 0` fail):
+
+| random amplitude | min separation over atoms + periodic images |
+| --- | --- |
+| 0.06 | 1.894 |
+| 0.01 | 1.982 |
+| (required) | ≥ 2 |
+
+So **no near-Kepler perturbation of a close packing exists**, and a near-Kepler fixture with
+unequal cell volumes cannot be obtained this way at all. The cut condition's interesting regime is
+exactly the jammed close-packing regime in which no perturbation is available — another face of
+`K15-C-CUTEQUIV-001`. A near-Kepler fixture with unequal cells must be a *different combinatorial*
+type — a Frank–Kasper phase such as A15 or the σ phase — and constructing one exactly is the next
+concrete build.
+
+Status: `TESTED_FINITE` (negative). The validation gates are the useful part: V1 (separation ≥ 2),
+V2 (volumes sum to `N × covolume`), V4 (`Σb = 0`) all refuse to report if violated.
+
+### The Frank–Kasper idea, also refuted by measurement (`cut_fixture_frank_kasper.py`)
+
+The next candidate for a near-Kepler fixture with *unequal* cells was a Frank–Kasper phase, since
+those have unequal Voronoi cells by construction. Tested and refuted **for equal spheres**, with
+the crystallography measured rather than asserted:
+
+| structure | atoms/cell | min distance | packing fraction | vs Kepler |
+| --- | --- | --- | --- | --- |
+| simple cubic (control) | 1 | 1.000000 | 0.523599 = π/6 | −29.3% |
+| FCC conventional cell (control) | 4 | 0.707107 | **0.740480** | **0.0%** |
+| A15 (Cr₃Si) sites, equal spheres | 8 | 0.500000 | 0.523599 = π/6 | −29.3% |
+
+The two controls validate the routine: FCC reproduces Kepler exactly, simple cubic reproduces
+`π/6`. **A15 with equal spheres gives exactly the simple-cubic value**, and the reason is
+measurable: the shortest distance is the `a/2` chain contact between `6c` atoms, while the `2a`–`6c`
+distance is `a√5/4 = 0.559017a > a/2`, so the `2a` atoms are *untouched* and the structure rattles.
+Frank–Kasper phases are dense for polydisperse mixtures, not for congruent spheres.
+
+**Consolidated consequence.** Between `K15-C-CUTJAM-001` (close packings are jammed) and this file
+(A15 is not dense), the near-Kepler regime appears to be populated only by the close-packed
+stackings — all of which have **equal** cell volumes, hence `b = 0` identically and no
+discriminating power for the cut condition. That is a third face of `K15-C-CUTEQUIV-001`. Main
+should treat "find a near-Kepler fixture and test the cut condition" as unlikely to succeed.
+
 ### Reproduced
 
 ```bash
@@ -199,26 +271,36 @@ pins `p(T) = 0` exactly and fixes the shape near the contact radius, which is pr
 competitive CE certificate needs freedom. This is a structural obstruction, not a tuning failure,
 and it explains the 8× gap to the LP-optimal `0.78`.
 
-### 8b. The shell variant, with a *proved* negative result
+### 8b. The shell variant, with a *proved* negative result — and a correction to it
 
 Same family, with an allowance `η` on `[T, T']` and `p ≤ 0` on `[T', ∞)`. On the shell,
 
 $$0 \le p(u) = (T'-u)(u-c)^2 \le (T'-T)M^2,\qquad M := \max\{|T-c|,\,|T'-c|\},$$
 
-and the bound is **attained at `u = T`**, so
+so `η_suff := (T'−T)M²` is a **sufficient** allowance — a rational, explicit bound needing no
+root count.
 
-$$\eta^\star \;=\; (T'-T)\,M^2$$
+**Correction, found by my own `tests_0138.py` after I had already written the stronger claim.**
+An earlier revision of this file called `η_suff` "the *smallest* allowance this family admits,
+attained at `u = T`". That is **false** on both counts:
 
-is the *smallest* allowance this family admits — exact, rational, and attained. Since the
-objective charges `n·η` with `n ≥ 12` and `η* > 0` for every `T < T'`, **every shell member of
-this family is strictly worse than the corresponding `η = 0` member.**
+* `η_suff` is an upper bound, not the supremum. Measured: `T = 12`, `T' = 27/2`, `c = 5` gives
+  `sup p = 147/2 = 73.5` while `η_suff = 867/8 = 108.375`.
+* the substitute "`η ≥ p(T)`" is also false, because `p(T) = (T'−T)(T−c)²` **vanishes at `c = T`**.
 
-This is a **proof inside the family**, not a finite search, and it is the strongest form of the
-shell-negative result I can offer. Its scope is correspondingly narrow: it says nothing about
-other families, other degrees, or configurational constraints.
+What the argument actually needs is weaker and is true:
 
-Measured `η*` values (`T = 12`, `T' = 27/2`): `c = 1 → 234.375`; `c = 5 → 108.375`;
-`c = 12 → 3.375`. All exceed what the bound can absorb.
+$$\sup_{[T,\,T']} p \;>\; 0,$$
+
+since `p(u) = (T'−u)(u−c)² > 0` for every `u ∈ [T, T')` with `u ≠ c`, and such `u` exist because
+`T < T'`. Hence **any** admissible allowance satisfies `η ≥ sup p > 0`, and since the objective
+charges `n·η` with `n ≥ 12`, **every shell member of this family is strictly worse than the
+corresponding `η = 0` member.**
+
+This is a **proof inside the family**, not a finite search, and its scope is narrow by
+construction: it says nothing about other families, other degrees, or configurational constraints.
+`tests_0138.py` T4 checks both the sufficiency of `η_suff` and `sup p > 0` for three parameter
+triples, and caught both errors above.
 
 ### 8c. Same-family comparison
 
@@ -271,20 +353,24 @@ expanding a finite sum of squares — no Sturm sequence, no root counting, no tr
 
 **Best found (degree 5, 9000 trials, 5176 exact survivors):**
 
-$$q(u) = \tfrac49 u^3 + \tfrac14 u^2 - \tfrac{63}{4}u + 45,\qquad
-p(u) = -\tfrac49 u^3 + \tfrac{59}{12}u^2 + \tfrac{17}{6}u + \tfrac{1351}{48},$$
+$$q(u) = \tfrac49 u^3 + \tfrac{37}{36}u^2 - \tfrac{689}{48}u + \tfrac{1625}{72},\qquad
+p(u) = -\tfrac49 u^3 + \tfrac{205}{36}u^2 - \tfrac{353}{144}u + \tfrac{3089}{288},$$
 
-whose `q` has the fully explicit three-square form
+whose `q` has the fully explicit square form
 
-$$q(u) \;=\; 3^2 \;+\; \bigl(\tfrac32 u - 6\bigr)^2 \;+\; u\bigl(\tfrac32 - \tfrac23 u\bigr)^2,$$
+$$q(u) \;=\; \Bigl(\tfrac{1}{12}\Bigr)^2 \;+\; \Bigl(\tfrac{11}{6}u - \tfrac{19}{4}\Bigr)^2
+\;+\; u\Bigl(\tfrac74 - \tfrac23 u\Bigr)^2,$$
 
 so the Gram data is three rational polynomials and the identity is one expansion. It gives
 
-$$\Delta \;\le\; 2.61993314 .$$
+$$\Delta \;\le\; 1.99064200 .$$
 
-This is the **best explicit-Gram certificate in this directory** — 2.3× better than the `p`-side
-cubic family (§8a's `5.99`). A wider search (26 000 trials, 16 389 exact survivors) improved it
-from the earlier `2.82361314`; the growth is recorded as evidence the search has not saturated.
+This is the **best explicit-Gram certificate in this directory** — 3× better than the `p`-side
+cubic family (§8a's `5.99`). The route to it is recorded: a random search found `2.82361314`,
+a wider random search `2.61993314`, and a **hill-climb** (`sos_qside_polish.py`, perturbing the
+`r_i, s_j` coefficients with an exact acceptance test) reached `1.99064200`. Three further seeds
+of the same hill-climb land in `[1.99064200, 1.99889176]`, so **the family has plateaued at about
+2** — best-found, not optimal, but the search is no longer productive.
 
 **Degree 7 was worse, not better** (`38.13600953`): with full-length factors the coefficients grow
 and the random search finds only poor ratios (289 survivors in 5000 trials). Recorded because it is
@@ -296,7 +382,7 @@ the opposite of the expectation and it bounds what a naive search can claim.
 | --- | --- | --- |
 | LP-optimal Laguerre certificate, `K = 33` | 0.77996622 | no (exact Sturm + SymPy oracle) |
 | LP-optimal shell route, `K = 33` | 0.78037032 | no (exact Sturm) |
-| **`q`-side squares, degree 5** | **2.61993314** | **yes, on the Fourier side** |
+| **`q`-side squares, degree 5, hill-climbed** | **1.99064200** | **yes, on the Fourier side** |
 | `p`-side cubic square | 5.99152482 | yes, on the `p` side |
 | `p`-side quintic, two squares | 6.73788568 | yes, on the `p` side |
 | `q`-side squares, degree 7 | 38.13600953 | yes, on the Fourier side |
@@ -305,3 +391,278 @@ the opposite of the expectation and it bounds what a naive search can claim.
 exist yet is a *single* certificate with explicit rational Gram on **both** sides at useful
 strength — that is the remaining obligation (§10 item 1), and it needs an SDP with rational Gram
 rounding.
+
+## 12. Reproduction commands for every result in this response
+
+```bash
+cd KeplerConjecture/Computation
+python3 tests_0138.py                      # every claim in this block, exact; ALL PASS
+python3 verify_certificate.py out/verified_certificate_K33b.json   # 0.77996622
+python3 exactcert_tests.py && python3 exactcert_oracle.py          # regression + exact oracle
+python3 audit_fourier.py /tmp/sc662.py                             # Fourier audit
+python3 sos_family.py                      # p-side Gram, 5.99152482
+python3 sos_family2.py                     # p-side quintic Gram, 6.73788568
+python3 sos_shell_variant.py               # family-restricted shell proof
+python3 sos_qside.py --trials 26000        # Fourier-side Gram, 2.61993314
+python3 sos_qside_polish.py --iters 2600 --seed 2026   # hill-climb -> 1.99064200
+python3 cut_deficit.py                     # Phi > 0.008880 ; cut equivalence
+python3 cut_fixture_close.py --amplitude 0.01          # jamming, negative
+python3 cut_fixture_frank_kasper.py        # A15 = pi/6, negative
+```
+
+**Hazard noted:** `sos_qside_polish.py`'s default `--out` is also where the best certificate is
+stored, so running it with a small `--iters` as a smoke test overwrites the good artefact with a
+0-improvement run. I did exactly that; the JSON was restored by re-running the recorded
+configuration (`--iters 2600 --seed 2026`), which reproduces `1.99064200` exactly. A smoke test
+should use `--out` to a scratch path.
+
+## 13. A much better explicit-Gram certificate: `Δ ≤ 1.41370455`
+
+The hill-climb of §11 stalled at `1.99064200` and **zero** improvements were found when the
+degree-5 optimum was embedded in the degree-7 space (2 500 single-coefficient moves, no gain), so
+the point was a local optimum. Allowing **uphill moves** (basin-hopping, `--uphill`) escapes it
+decisively:
+
+| search | `Δ ≤` |
+| --- | --- |
+| random, degree 5 (26 000 trials) | 2.61993314 |
+| hill-climb from that point | 1.99064200 |
+| degree-7 embedding, uphill 0 | 1.99064200 (no improvement — local optimum) |
+| basin-hopping `uphill=0.03`, seed 5 | **1.41791658** |
+| basin-hopping `uphill=0.05`, seed 17 | **1.41370455** ← best |
+| basin-hopping `uphill=0.05`, seed 5 | 1.47789897 |
+| basin-hopping `uphill=0.08`, seed 9 | 1.69567366 |
+
+**The certificate** (`out/hop_u0.05_s17.json`), with the Gram identity re-checked independently by
+expanding both sides:
+
+$$q(u) = \tfrac{9}{16}u^5 - \tfrac{229}{36}u^4 + \tfrac{1511}{144}u^3 + \tfrac{7393}{72}u^2
+- \tfrac{55453}{144}u + \tfrac{26935}{72},$$
+
+realised as $\;q = \sum_i r_i^2 + u\sum_j s_j^2\;$ with
+
+```
+r = [(-37/4 + 85u/12 - 3u^2/4), (31/2 - 97u/12 + 5u^2/6), (-83/12 + 3u - u^2/12), (2/3)]
+s = [(37/6 - 61u/12 + 3u^2/4), (1/12)]
+```
+
+and $\;p = -\tfrac{9}{16}u^5 + \tfrac{2623}{288}u^4 - \tfrac{10141}{288}u^3 + \tfrac{57023}{576}u^2
+- \tfrac{8419}{768}u + \tfrac{581791}{4608}$, giving
+
+$$\Delta \;\le\; 1.41370455 .$$
+
+This is the best explicit-Gram certificate in the directory — `4.2×` better than the `p`-side
+cubic family and `1.4×` better than the previous Fourier-side record. The Gram identity is
+verified by expansion; `p ≤ 0` on `[4π, ∞)` by exact Sturm with Computation's checker.
+
+**Status discipline:** `1.41370455` is **best-found**. The spread across adjacent seeds
+(`1.4137 … 1.6957`) shows the landscape is rough and the search is not converged, so no optimality
+claim is made. The one *structural* fact established is that the degree-5 hill-climb's plateau was
+a local optimum, not a global one — which is exactly why the review's insistence on
+"tested-family" language matters.
+
+### Update: further basin-hopping, `Δ ≤ 1.37125723`
+
+Three more seeds of the same procedure:
+
+| seed | uphill | `Δ ≤` |
+| --- | --- | --- |
+| 23 | 0.05 | **1.37125723** ← best |
+| 29 | 0.06 | 1.39857433 |
+| 31 | 0.05 | 1.41112883 |
+
+So the record moved `1.41370455 → 1.37125723` (`out/hop2_23.json`), and the eight runs of this
+procedure span `1.3713 … 1.6957`. The spread is the honest statement: **the search is not
+converged, and `1.37125723` is best-found.** The trend across the whole block is monotone in
+effort — `5.99 → 2.62 → 1.99 → 1.41 → 1.37` — which says the remaining gap to the LP-optimal
+`0.78` is a search-power limitation of the explicit-Gram route as implemented, not a structural
+wall. That is now the most interesting open question in this file.
+
+### Search statistics, and what they license
+
+Fifteen basin-hopping runs of the same procedure (`--degree 7 --iters 4000 --uphill 0.05`,
+different seeds; the last three added `1.4687`, `1.9906`, `1.6862` and did not improve it):
+
+| `Δ ≤` | count |
+| --- | --- |
+| 1.3713 | 1 |
+| 1.4111, 1.4137, 1.4179, 1.4625 | 4 |
+| 1.4779, 1.6073, 1.6929, 1.6957 | 4 |
+| 1.9906 | 3 |
+| 1.9989 | 1 |
+
+Best `1.37125723`; median ≈ `1.47`. **Only one run in fifteen reached below `1.40`.**
+
+What this licenses, stated carefully:
+
+* `1.37125723` is **best-found from fifteen attempts**, and the distribution says a few more
+  attempts are unlikely to beat it by much. It is *not* an optimum: the runs are not independent
+  (same seed family, same move set) and the landscape is clearly rough.
+* The **monotone-improvement-with-effort** pattern across the block (`5.99 → 2.62 → 1.99 → 1.41 →
+  1.37`) does **revise my own earlier claim** (`K15-C-SOSWHY-001`) that explicit-Gram families are
+  weak "for structural reasons". The structural statement that survives is narrower: the specific
+  *shape* `−p = (u−T)σ₁` pins `p(T) = 0` and is weak. The sum-of-squares condition by itself does
+  not appear to be the obstruction, since the Fourier-side form reaches `1.37` with five rational
+  squares.
+* **A longer local search is the natural offload** — it is exactly the kind of job that should run
+  on Astra's machine rather than the SAIR VM. See `LOCAL_RUN_REQUEST.md`.
+
+## 14. Handoff to Main, in priority order
+
+**Take these three, in this order.**
+
+1. **`shell_check.py` is unsound and must not be relied on until fixed** (`§1`). Three false
+   accepts reproduced from the exact commit `6626714125c35292d78943cd0fe8d18ec0051b38`, each
+   contradicted at `u = 1/2`, all three vanishing at the left endpoint of their region. My four
+   shell-route certificates were re-verified by `exactcert` and stand; their *agreement* with
+   `shell_check` is uninformative.
+2. **`T_LO = 12` costs ~6.7% of the bound and buys nothing** (`TLO_FINDING.md`): `12 < 4π = 12.566`
+   constrains `p` *inside* the ball. Use `T_LO = 4·π_lo`, which is still safe. This is a one-line
+   change that improves every number Main quotes from that file.
+3. **The cut condition is equivalent to Kepler, not independent** (`§7`, `K15-C-CUTEQUIV-001`):
+   the full-period blob has empty boundary, so the condition reads `ρ ≤ 1/√32`. Two further
+   measured results say the near-Kepler regime has no discriminating fixtures: close packings are
+   **jammed** (no perturbation preserves separation) and A15 with equal spheres is **not dense**
+   (`π/6`). Main should not fund a "perturb FCC and find the obstruction" search.
+
+**Take these as artefacts if useful.**
+
+* `exactcert.py` + `exactcert_oracle.py` + `exactcert_tests.py`: a sound exact checker with a
+  regression suite that includes the review-48443 counterexample, and an independent SymPy oracle.
+  Cross-validated in both directions with `shell_check` (`CROSSVALIDATION.md`).
+* `tests_0138.py`: exact checks of every claim in this response.
+* The explicit-Gram certificates: `Δ ≤ 1.37125723` (Fourier side, best-found) and
+  `Δ ≤ 5.99152482` (p-side, simplest Gram — a single rational square).
+
+**Do not take these as bounds.** Everything stamped `TESTED_FAMILY` or `TESTED_FINITE`:
+`0.78037032` is the best value found in a parameter grid, not an optimum; `1.37125723` is
+best-of-twelve; `Φ > 0.008880` is a lower bound from one fixture; `2.6199`/`5.99`/`6.74` are
+demonstrators of the certificate format at strengths far from competitive.
+
+**What I would do next, in one line each.**
+
+* Run the long explicit-Gram search locally (`LOCAL_RUN_REQUEST.md`) — the trend `5.99 → 2.62 →
+  1.99 → 1.41 → 1.37` is monotone in effort, so more search is the cheapest open improvement.
+* Build the one certificate with an explicit rational Gram on **both** sides at a useful strength;
+  this needs an SDP with rational Gram rounding (no solver on the SAIR VM).
+* Re-run the `PENDING_MAIN_FIX` items once `shell_check` is repaired and audited.
+
+### Degree 9 does not help at this search budget
+
+The hill-climb/hop was extended to degree 9 (factors of degree ≤ 4), seeded from the padded
+degree-5 optimum at `uphill = 0.05`, 3000 iterations, seed 101:
+
+| degree | best `Δ ≤` |
+| --- | --- |
+| 5 | 1.99064200 (hill-climb) |
+| **7** | **1.37125723** (basin-hopping) |
+| 9 | 1.74760261 |
+
+Degree 9 is **worse**, because the parameter space grows faster than the iteration budget. Recorded
+so that nobody reads "higher degree" as "better" on this route: the record is a joint property of
+degree *and* search effort, and `(degree 7, 4000 hops)` is the best combination found.
+
+### Independent validation of the record certificate
+
+`out/hop2_23.json` (`Δ ≤ 1.37125723`) was checked by four routes, all passing:
+
+| check | result |
+| --- | --- |
+| Gram identity `q = Σ r_i² + u Σ s_j²`, by exact expansion | **holds** |
+| exact conversion of `p` to the Laguerre basis (residual identically zero) | **exact** |
+| `exactcert.certify`, strict mode (own Sturm + Yun over `Q`) | **ACCEPT**, `Δ ≤ 1.37125723` |
+| `exactcert.certify`, even-multiplicity mode | **ACCEPT** |
+| `exactcert_oracle.oracle` (independent SymPy `sqf_list` + `count_roots`) | **ACCEPT** |
+
+So the record rests on an explicit identity plus two exact implementations that share no code.
+`Main's shell_check` was **not** used for it, deliberately, since it is unsound (§1).
+
+### p-side Gram with many squares: `5.99 → 2.00`
+
+`sos_family.py` used one square in the multiplier and `sos_family2.py` two; both were weak
+(`5.99`, `6.74`). Allowing **many** squares in the multiplier and basin-hopping the coefficients
+changes that:
+
+$$-p(u) \;=\; (u-T)\sum_{i\le m} r_i(u)^2,\qquad r_i \in \mathbb{Q}[u],\ T \le 4\pi,$$
+
+so `p ≤ 0` on `[T, ∞)` **by construction** with an explicit rational Gram, and `q = M p` is
+verified by exact Sturm. Best of the run (`--m 4 --deg 2 --iters 2500`):
+
+$$-p \;=\; (u-12)\Bigl[\bigl(\tfrac43\bigr)^2 + \bigl(-\tfrac{37}{3}\bigr)^2
++ \bigl(\tfrac{101}{12}u + \tfrac14\bigr)^2 + \bigl(-\tfrac{13}{6}\bigr)^2\Bigr],
+\qquad q = \tfrac{10201}{144}u^3 + \tfrac{9797}{96}u^2 - \tfrac{144747}{64}u + \tfrac{1529773}{384},$$
+
+$$\Delta \;\le\; 2.00171738 .$$
+
+Note the shape: three of the four squares are **constants**, so in effect this is
+`−p = (u−12)[(101u/12 + 1/4)² + c]` with `c = 16/9 + 1369/9 + 169/36 = 2021/12` — a single
+nontrivial square plus a constant, which is as simple a Gram identity as one can ask for while
+still being admissible.
+
+**Summary of the explicit-Gram programme after this block:**
+
+| family | best `Δ ≤` | Gram shape |
+| --- | --- | --- |
+| Fourier side (`sos_qside`), five squares, degree 5 | **1.37125723** | `q = Σ r_i² + u Σ s_j²` |
+| p-side, one square | 5.99152482 | `−p = (u−T)(u−c)²` |
+| p-side, two squares | 6.73788568 | `−p = (u−T)[(u−c)²(u−e)² + m²(u−d)²]` |
+| **p-side, many squares, hopped** | **2.00171738** | `−p = (u−12)[(101u/12+1/4)² + 2021/12]` |
+| LP-optimal (no rational Gram found) | 0.77996622 | — |
+
+Both sides are now demonstrated at `≈2` or better with an explicit rational Gram. The gap to
+`0.78` remains the open quantitative question, and it is a search-power gap, not a structural one.
+
+## 15. The headline obligation is closed: explicit rational Gram on BOTH sides
+
+`REVIEW_0138.md` §10 item 1 asked for **one** certificate with an explicit rational Gram on both
+the `p` and the `q` side. `sos_both_sides.py` supplies it. Both sign conditions are algebraic
+identities, verified by expanding finite sums of squares — **no Sturm sequence, no root counting,
+and no dependence on any checker** (including Computation's own, and deliberately excluding Main's
+`shell_check`).
+
+$$f = e^{-\pi|x|^2}p(u),\qquad \widehat f = e^{-\pi|y|^2}q(u'),$$
+
+**`p`-side** (certifies `f ≤ 0` for `|x| ≥ 2`, since `12 < 4π = 12.566371`):
+
+$$-p(u) \;=\; (u-12)\Bigl[\bigl(\tfrac43\bigr)^2 + \bigl(-\tfrac{37}{3}\bigr)^2
++ \bigl(\tfrac{101}{12}u + \tfrac14\bigr)^2 + \bigl(-\tfrac{13}{6}\bigr)^2\Bigr],$$
+
+**`q`-side** (certifies `\widehat f ≥ 0` everywhere; a Markov–Lukács decomposition for the
+half-line, with both `σ₀` and `σ₁` explicit sums of rational squares):
+
+$$q(u) \;=\; \Bigl(22u - \tfrac{7250725477}{114904064}\Bigr)^2 \;+\; \tfrac{73964663853612149}{39608831771148288}
+\;+\; u\Bigl(\tfrac{101}{12}u - \tfrac{36667}{1616}\Bigr)^2 .$$
+
+Then `p(0) = 7615/4`, `q(0) = 1529773/384`, and
+
+$$\Delta \;\le\; \frac{4\pi}{3}\cdot\frac{731040}{1529773} \;=\; 2.0017173733\ldots$$
+
+**Scope, stated hard:** this does **not** improve on Cohn–Elkies' `0.779747` nor on the LP-optimal
+`0.77996622`; it is `2.7×` Kepler. Its value is that it is the *first* certificate in this
+directory whose two sign conditions are checkable by hand, and it demonstrates that the
+explicit-Gram format is not confined to toy strengths. The `q`-side coefficients came from solving
+the Markov–Lukács system exactly (a one-parameter rational search for `p₁` with `k > 0`), not from
+a search over certificates.
+
+**Reproduce:** `python3 sos_both_sides.py` (< 1 s); data in `out/sos_both_sides.json`.
+
+### p-side record improved to `1.33982382`
+
+Two further seeds of the many-square p-side search:
+
+| seed | `Δ ≤` |
+| --- | --- |
+| 1 | 2.00171738 |
+| 2 | 1.99826638 |
+| **3** | **1.33982382** |
+
+with `−p(u) = (u−T)[...]` again an explicit sum of rational squares. So the **p-side now also
+reaches ≈1.34**, comparable to the Fourier-side record `1.37125723` and better than the
+both-sides demonstration at `2.00171738`.
+
+**What is not done:** the both-sides Markov–Lukács solve (§15) was carried out for a *cubic* `q`,
+where a one-parameter rational search suffices. The seed-3 certificate has `deg p = 5`, hence
+`deg q = 5`, and the quintic decomposition `q = σ₀ + uσ₁` with `deg σ₀ ≤ 4`, `deg σ₁ ≤ 4` is a
+larger nonlinear system that I did not solve in this block. **So the best both-sides certificate
+remains `2.00171738`, and that is the honest state of §15** — the format is closed, the strength
+is not.

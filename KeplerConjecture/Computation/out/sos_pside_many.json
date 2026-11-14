@@ -1,0 +1,18 @@
+{
+ "script": "KeplerConjecture/Computation/sos_pside_many.py",
+ "family": "-p = (u-T) * sum r_i^2",
+ "status": "VERIFIED_EXACT",
+ "note": "p certified by construction with an explicit rational Gram; q by exact Sturm with Computation's checker, not Main's (unsound)",
+ "T": "12",
+ "m": 4,
+ "deg": 2,
+ "delta": "2.00171738",
+ "squares": [
+  "4/3",
+  "-37/3",
+  "101*u/12 + 1/4",
+  "-13/6"
+ ],
+ "q": "10201*u**3/144 + 9797*u**2/96 - 144747*u/64 + 1529773/384",
+ "p": "-10201*u**3/144 + 6767*u**2/8 - 5191*u/48 + 7615/4"
+}

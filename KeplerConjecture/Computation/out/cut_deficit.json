@@ -59,5 +59,115 @@
    }
   }
  ],
- "structural_conclusion": "Taking U = the whole period makes the boundary term vanish, so the cut condition reads N(sqrt32 - 1/rho) <= 0, i.e. rho <= 1/sqrt32: the Kepler bound itself. The cut condition is therefore EQUIVALENT to Kepler for periodic packings, not an independent analytic inequality, and a search finding no counterexample is vacuous rather than weak evidence. Both FCC and HCP are exact equality cases (b = 0 for every cell), so they cannot discriminate; the icosahedral-cluster fixture has b > 0 on its central cell but a mean cell volume far ABOVE sqrt32, so its full-period sum is negative and it does not refute."
+ "structural_conclusion": "Taking U = the whole period makes the boundary term vanish, so the cut condition reads N(sqrt32 - 1/rho) <= 0, i.e. rho <= 1/sqrt32: the Kepler bound itself. The cut condition is therefore EQUIVALENT to Kepler for periodic packings, not an independent analytic inequality, and a search finding no counterexample is vacuous rather than weak evidence. Both FCC and HCP are exact equality cases (b = 0 for every cell), so they cannot discriminate; the icosahedral-cluster fixture has b > 0 on its central cell but a mean cell volume far ABOVE sqrt32, so its full-period sum is negative and it does not refute.",
+ "blobs": [
+  {
+   "blob": [
+    0
+   ],
+   "sum_b": 0.10656322097686993,
+   "boundary": 12,
+   "ratio": 0.008880268414739162
+  },
+  {
+   "blob": [
+    0,
+    4
+   ],
+   "sum_b": -335.1073916104878,
+   "boundary": 16,
+   "ratio": -20.944211975655488
+  },
+  {
+   "blob": [
+    0,
+    5
+   ],
+   "sum_b": -335.1073916104878,
+   "boundary": 16,
+   "ratio": -20.944211975655488
+  },
+  {
+   "blob": [
+    0,
+    12
+   ],
+   "sum_b": -335.1073916104878,
+   "boundary": 16,
+   "ratio": -20.944211975655488
+  },
+  {
+   "blob": [
+    0,
+    1
+   ],
+   "sum_b": -335.1073916104878,
+   "boundary": 15,
+   "ratio": -22.34049277403252
+  },
+  {
+   "blob": [
+    0,
+    3
+   ],
+   "sum_b": -335.1073916104878,
+   "boundary": 15,
+   "ratio": -22.34049277403252
+  },
+  {
+   "blob": [
+    0,
+    7
+   ],
+   "sum_b": -335.1073916104878,
+   "boundary": 15,
+   "ratio": -22.34049277403252
+  },
+  {
+   "blob": [
+    0,
+    8
+   ],
+   "sum_b": -335.1073916104878,
+   "boundary": 15,
+   "ratio": -22.34049277403252
+  },
+  {
+   "blob": [
+    0,
+    9
+   ],
+   "sum_b": -335.1073916104878,
+   "boundary": 15,
+   "ratio": -22.34049277403252
+  },
+  {
+   "blob": [
+    0,
+    10
+   ],
+   "sum_b": -335.1073916104878,
+   "boundary": 15,
+   "ratio": -22.34049277403252
+  },
+  {
+   "blob": [
+    0,
+    11
+   ],
+   "sum_b": -335.1073916104878,
+   "boundary": 15,
+   "ratio": -22.34049277403252
+  },
+  {
+   "blob": [
+    0,
+    2
+   ],
+   "sum_b": -335.1073916104878,
+   "boundary": 14,
+   "ratio": -23.936242257891987
+  }
+ ],
+ "phi_lower_bound_from_fixture": 0.008880268414739162
 }
