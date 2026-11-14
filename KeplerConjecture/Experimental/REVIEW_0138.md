@@ -715,3 +715,31 @@ the per-pair cap `sqrt32 - V_dodeca` is achieved. It does **not** verify the mod
 |shell| x 0.1066`, far above the observed values) and its role is only to establish `C_1 <
 infinity`, which is what the proof needs. So the numbers support the proof's shape without being
 needed for it: the negligibility claim is a proof, not an observation.
+
+## 12. Direct check: does anything here use the invalid `C029` step?
+
+The assignment records that Main's `C029` "subset-to-total signed-sum proof is invalid" and that
+one may not assume negligibility bounds the positive-part sum. That is correct as a general
+point — `sum A <= C1 r^2` does **not** give `sum max(A,0) <= C1 r^2`, because `A` may have a
+large negative part — so I checked every place my own arguments touch `A`.
+
+**`K15-E001` (the cluster criterion).** Two places.
+- Step 1 uses `sum_{v in S'} c(v) <= sum_{v in S} c(v)`, which is valid only because `c >= 0`
+  by hypothesis (C3), and nonnegativity is a *pointwise* assumption on `c = vol Omega + A`,
+  not a bound on `A^+`. No positive-part step.
+- Step 4 uses `sum_{v in S}(vol Omega(v) + A(v)) <= vol B(x,r+3) + C1 (r+1)^2`. This is an
+  upper bound on the *signed total*, obtained from negligibility of `A` directly; it is exactly
+  the direction negligibility provides. No positive-part step.
+So `K15-E001` does not use the invalid inference. Its (C3) is doing real work, which is one
+reason the criterion is stated with nonnegativity as an explicit hypothesis.
+
+**`K15-E061` (the transfer).** Negligibility comes from the identity
+`sum_{v in S} A(v) = sum_{v in S, u notin S} phi(v,u)`, which bounds the *signed* sum by the
+boundary crossing — again the direction negligibility needs, with no reference to `A^+`.
+Pointwise FCC-compatibility is a separate max-flow statement about `c`, not about `|A|`.
+
+**Conclusion.** Neither `K15-E001` nor `K15-E061` relies on the `C029` inference, so the
+retraction of `C029` does not affect anything in this directory. I state this explicitly rather
+than leaving it to be inferred, because a reader who has seen `C029` withdrawn would reasonably
+want to know whether the same slip appears here. It does not. I have not audited `C029` itself
+and make no claim about what it should be replaced with.
