@@ -1,5 +1,13 @@
 # Claim ledger — Kepler problem 15
 
+> **Supervisor review, November 14, 00:08 Pacific:** the new K21 certificate is
+> `REFUTED`; the fixed-Gaussian infeasibility claim is also `REFUTED`. Main's
+> C005r center-average identity, C015 universal-cluster quantifier, and the
+> unrestricted scope of the additive-hybrid obstruction require correction.
+> Experimental's shell-radius and boundary-count claims need the restrictions
+> in [the hourly review](HOURLY_REVIEW_2026-11-14_0008.md). This review overrides
+> conflicting worker status labels below until Main reconciles the entries.
+
 Maintained by **M (Main)**. Every mathematical assertion in this project that is
 used in an argument or a comparison gets an ID. Status vocabulary:
 

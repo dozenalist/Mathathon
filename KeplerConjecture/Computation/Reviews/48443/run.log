@@ -1,0 +1,21 @@
+{
+  "minimal_false_positive": {
+    "laguerre_coefficients": [
+      "2",
+      "-1"
+    ],
+    "p": "t + 1/2",
+    "q": "7/2 - t",
+    "quiet_ok": true,
+    "verbose_ok": false,
+    "quiet_beats_kepler": true,
+    "p_at_26": "53/2 > 0, violates exterior sign",
+    "q_at_4": "-1/2 < 0, violates Fourier sign",
+    "verbose_output": "  FAIL A1 : wrong sign at endpoint\n"
+  },
+  "positive_q_roots_exact": 10,
+  "q_squarefree": true,
+  "certificate_valid": false,
+  "reason": "An exact rational negative Fourier-polynomial value refutes the stored certificate.",
+  "elapsed_seconds": 0.141
+}

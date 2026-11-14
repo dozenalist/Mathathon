@@ -1,5 +1,12 @@
 # Exact certificate checker and candidate generator
 
+> **Certification withdrawn by independent review, November 14, 00:08 Pacific.**
+> The submitted K21 Fourier polynomial is negative at an exact rational point.
+> Quiet-mode failure handling and the odd-part sign are also incorrect.
+> [The audit](Reviews/48443/README.md) supersedes the `PROVED` and numeric-bound
+> assertions below. Original claims and inputs remain as historical evidence;
+> no certificate from this implementation is accepted without fresh checking.
+
 Owner: Computation. Branch `kepler15/comp-01a1d8c0`. Files: `exactcert.py` (checker),
 `gen_candidate.py` (generator). Both are runnable; execution is offloaded to Astra
 (`REQUESTS/K15-C-REQ-002.md`).

@@ -21,3 +21,10 @@ The historical `Computation/ce_laguerre.py` retains a known missing-constraint
 bug for provenance. Its claimed negative result was withdrawn. Use the review
 in `Computation/Reviews/27616/` to understand that failure and the canonical
 Computation requests for subsequent work.
+
+The November 14 hourly review also rejected the submitted K21 certificate.
+`Computation/exactcert.py` is the unsound original pending worker repair;
+use [the exact rejection](Computation/Reviews/48443/README.md), not its success
+flag. The [Gaussian-driver audit](Counterexamples/Reviews/41644/README.md)
+documents a separate normalization and solver-status failure. Frozen source
+copies in the review directories exist solely to reproduce those failures.

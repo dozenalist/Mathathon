@@ -1,13 +1,29 @@
 {
-  "checkpoint": "2026-11-14 hourly-supervision transition, America/Los_Angeles",
+  "checkpoint": "2026-11-14 00:08 Pacific hourly review",
   "publication_branch": "kepler15/setup-01a1d8c0",
   "pull_request": "https://github.com/dozenalist/Mathathon/pull/1",
   "synchronization": "All four source revisions merged with authorship retained. Only KeplerConjecture paths changed. Conflicting progress records preserved separately.",
-  "review_status": "Newest worker claims await independent supervisor review; synchronization is not mathematical acceptance.",
+  "review_status": "Reviewed: K21 certificate refuted; Gaussian infeasibility refuted; geometric claims narrowed. No accepted new packing bound. See HOURLY_REVIEW_2026-11-14_0008.md.",
   "sources": [
-    {"role": "Main", "branch": "kepler15/main", "commit": "0c3ee751254b1b61f16eb175d9bd8d571f842b18"},
-    {"role": "Computation", "branch": "kepler15/comp-01a1d8c0", "commit": "633da8e9db3987ec8c56a7c1eb628f3d47402bc2"},
-    {"role": "Experimental", "branch": "kepler15/experimental/run-01", "commit": "b84f9a05eebf810a5522bd9c275df0a1e77d3fce"},
-    {"role": "Counterexamples", "branch": "kepler15/counterexamples/run-01", "commit": "87db0319217b99eafd66d96fff0e9ab75caa2127"}
+    {
+      "role": "Main",
+      "branch": "kepler15/main",
+      "commit": "0c3ee751254b1b61f16eb175d9bd8d571f842b18"
+    },
+    {
+      "role": "Computation",
+      "branch": "kepler15/comp-01a1d8c0",
+      "commit": "633da8e9db3987ec8c56a7c1eb628f3d47402bc2"
+    },
+    {
+      "role": "Experimental",
+      "branch": "kepler15/experimental/run-01",
+      "commit": "b84f9a05eebf810a5522bd9c275df0a1e77d3fce"
+    },
+    {
+      "role": "Counterexamples",
+      "branch": "kepler15/counterexamples/run-01",
+      "commit": "87db0319217b99eafd66d96fff0e9ab75caa2127"
+    }
   ]
 }

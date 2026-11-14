@@ -1,5 +1,16 @@
 # Completion review and duplicate handling
 
+## Scheduled review — November 14, 00:08 PST
+
+The hourly review independently checked completions Main 30102, Computation
+48443, Experimental 35401 and Counterexamples 41644. Follow-ups were confirmed
+delivered at 00:25; see
+[the exact IDs](HOURLY_DELIVERIES_2026-11-14_0008.json) and
+[the review](HOURLY_REVIEW_2026-11-14_0008.md). Any later queued watcher callback
+for these completions is stale and must not start an extra assignment.
+The old Counterexamples watcher completion field is stale; live history was
+used for its completed sequence. All four historical states remain stopped.
+
 ## Computation 48443 — retired watcher notification, November 14, 00:06 PST
 
 The report `sair-result-f336af2034ff465db6ef4546b8560816.json` matches ownership

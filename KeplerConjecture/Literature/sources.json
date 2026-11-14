@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "review_date": "2026-11-13",
+  "review_date": "2026-11-14",
   "timezone": "America/Los_Angeles",
   "scope": "Mathathon problem 15, KeplerConjecture",
   "local_reproduction_status": "Source statements inspected as indicated. Ancillary computations and external proof assistant builds have not been rerun in this literature preparation.",
@@ -183,6 +183,24 @@
       "locator": "Manuscript and verification READMEs; see HEXAGON_REVIEW.md",
       "access_status": "README_AND_INVENTORY_CHECKED_BY_RECENT_LITERATURE_REVIEW",
       "role": "Potential certificate techniques; 3D transfer and local verifier run pending"
+    },
+    {
+      "id": "MT12",
+      "title": "The strong thirteen spheres problem",
+      "authors": [
+        "Oleg R. Musin",
+        "Alexey S. Tarasov"
+      ],
+      "version": "arXiv:1002.1439v3, identifier date 2012-01-16; PDF title page displays 2018-10-31",
+      "url": "https://arxiv.org/abs/1002.1439v3",
+      "download_url": "https://arxiv.org/pdf/1002.1439v3",
+      "locator": "Section 2, Theorem 1, printed page 3; preceding Remark gives defining equations",
+      "access_status": "THEOREM_AND_DEFINING_EQUATIONS_CHECKED",
+      "access_date": "2026-11-14",
+      "local_file": "Papers/MusinTarasov2012-v3.pdf",
+      "bytes": 432657,
+      "sha256": "bd8c8bf9a7aad40d276584086756b92247f989b24f44df938866825b7a08da9a",
+      "role": "Primary quantitative Tammes-13 source for thin-shell neighbor count; computer-assisted proof not reproduced"
     }
   ]
 }

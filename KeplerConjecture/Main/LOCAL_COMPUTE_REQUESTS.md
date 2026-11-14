@@ -18,10 +18,16 @@ shared `K15-COMPUTE-001/002` names are retired and mapped at the bottom.
 | `M-LEAN-001` | M | pinned Lean 4.35.0 build of `Lean/Kepler15/Normalisation.lean` | **COMPLETE** — exit 0, axioms `[propext, Classical.choice, Quot.sound]`, algebraic identity only |
 | `M-NUM-001` | M | degree-8 grid control in `Computation/ce_laguerre.py` | **COMPLETE but INVALID as a claim** — script omitted Fourier positivity (K15-C014r); repaired variant locally re-run gives `f(0) = 0.2182024…` |
 | `C-NUM-001` | C | CE control, `K = 31/41`, grids 1200/4000 | **COMPLETE, `TESTED_FINITE`** — `Δ = 0.779702445785607`, `0.779745768082807`; `min f̂ ≈ −3·10⁻⁶` |
-| `C-CERT-001` | C | exact Sturm sign driver in the Laguerre family | **REQUESTED** (Q1, Q2) |
+| `C-CERT-001` / `K15-C-REQ-002` | C | exact Sturm sign driver and K21 verification | **COMPLETE: REFUTED** — exact negative Fourier witness; ladder deferred until checker repaired; `Computation/Reviews/48443/` |
 | `E-CERT-001` | E | interval certification for cluster cell volumes | **REQUESTED — driver missing** (Q3) |
-| `X-R01` | X | exact optimisation over the Laguerre family (semialgebraic) | **SPECIFIED** in X's registry; not run |
+| `X-R01` | X | rational Gaussian driver | **DIAGNOSTIC COMPLETE; NEEDS_REVISION** — exact feasible control, factor-pi error, solver Model error; `Counterexamples/Reviews/41644/` |
 | `M-NUM-002` | M | rational SOS certificate for a frozen profile | **SPECIFIED, superseded by C-CERT-001** |
+
+The 00:08 Pacific hourly review completed both actionable diagnostic jobs locally.
+No job remains running. The requested degree ladder was not extended after its
+certification prerequisite failed. New bounded offloads for the repaired checker,
+Gaussian driver and shell-count benchmark are assigned but not yet submitted.
+No new Lean source arrived in the four reviewed completions.
 
 ### M-NUM-002 — rational SOS certificate, revised specification (not to be run before C-CERT-001)
 

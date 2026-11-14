@@ -16,10 +16,45 @@ supervisor reviews identify which claims have actually been checked.
 | Numerical reproduction | Main bug reproduced; three independent CE grid controls run locally; no certificate | Computation/Reviews/27616/README.md | Computation and Counterexamples |
 | Local Lean proofs | Targeted-import algebraic normalization passed locally; geometric bridges remain open | Lean/Review/README.md | Main and Astra |
 | Publication and response logs | Four SAIR branches synchronized; hourly updates and cumulative summary required | Main/HOURLY_SYNC.json, PROGRESS_SUMMARY.md and HourlyUpdates/ | Astra |
-| New rational certificate | Worker reports a bound near 0.78010544; independent local verification pending | Computation/CERTIFIER.md and Main/HOURLY_SYNC.json | Astra and Counterexamples |
+| New rational certificate | REFUTED: exact negative Fourier value; quiet checker accepts failures | Computation/Reviews/48443/README.md | Computation repair; Counterexamples review |
+| Rational Gaussian control | Exact feasible point found; density factor and solver-error handling require repair | Counterexamples/Reviews/41644/README.md | Counterexamples and Astra |
+| Geometric and strengthened analytic targets | Restricted shell lemma and existential partition remain open; no implemented improved bound accepted | Main/HOURLY_REVIEW_2026-11-14_0008.md | Experimental, Computation and Main |
 | Review cadence | Hourly schedule active; all four Sair-Watch processes stopped | Main/SUPERVISION.md | Astra |
 
 ## History
+
+### K15-HOURLY-001 — 2026-11-14, 00:08 Pacific scheduled review
+
+Author/reviewer: Astra, with independent code and mathematical audits. Reviewed
+owned completions M30102, C48443, E35401, X41644 at the immutable four branch
+tips in `Main/HOURLY_SYNC.json`; a fresh fetch found no new source commits beyond
+the prior synchronization. All changes remain confined to KeplerConjecture.
+
+`REFUTED`: Computation's K21 Fourier polynomial is negative at the rational
+point `57955199/21687900`. Independent SymPy reconstruction and the full rational
+value are saved in `Computation/Reviews/48443/`. The quiet checker ignores
+failures, and its odd-part routine loses the leading sign. The pi bracket
+passes a separate exact check; this does not validate the candidate. Further
+ladder runs were deferred because the certifier is unsound.
+
+`REFUTED`: Counterexamples' fixed-family infeasibility conclusion. The exact
+Gaussian pair `P=2-2s/3`, `Q=1+2v/3` is feasible. A local run reports a HiGHS
+Model error, not infeasibility. Its density formula is too large by pi. Evidence
+and frozen original sources are in `Counterexamples/Reviews/41644/`.
+
+Reviewed narrow repairs to periodic approximation and fixed-coset counting;
+flagged center-versus-spatial averages and overly broad hybrid exclusions.
+Repaired the intended range of the radial shell argument and boundary-count
+estimate; required an existential controlled partition instead of a false
+universal cluster inequality. Added a hashed Tammes-13 primary source, with
+its computer-assisted dependency explicit. Radius 2.09 and the shell-allowance
+benchmark remain pending proof and numerical evaluation.
+
+Both local diagnostic runs completed in under a second each. No new Lean
+module or long-running task remains. Four focused follow-ups, at most 35 minutes
+and checkpoint by 01:00 Pacific, were delivered to the existing owned chats at
+00:25. Main integrates; delivery IDs and dedup evidence are recorded in the
+hourly review. Watch-Sair remains stopped. No new Kepler bound is accepted.
 
 ### K15-HOURLY-SETUP — 2026-11-14, America/Los_Angeles
 

@@ -1,9 +1,9 @@
 # Kepler Conjecture: progress so far
 
-Updated November 14, 2026, 00:06 Pacific. A queued watcher notification was
-reconciled; the mathematical status is unchanged. This is the cumulative
-human-readable account; each hourly check updates
-it and adds a short entry in [HourlyUpdates](HourlyUpdates/).
+Updated November 14, 2026, at the 00:08 Pacific hourly review. Independent exact
+checks rejected the newly submitted certificate. This is the cumulative
+human-readable account; each hourly check updates it and adds a short entry in
+[HourlyUpdates](HourlyUpdates/).
 
 ## Where the project stands
 
@@ -22,7 +22,7 @@ itself a route to the exact Kepler value.
 ## Work completed and checked
 
 The roadmap follows the requested seven-part structure. The literature
-collection contains 16 source records, precise theorem locators, three selected
+collection contains 17 source records, precise theorem locators, four selected
 primary-source PDFs, and a versioned review of recent Hexagon material. It
 connects Hales's local accounting lemma with Cohn–Elkies and the dimension-eight
 and dimension-24 constructions, while keeping their differing hypotheses clear.
@@ -46,28 +46,45 @@ and only the permitted axioms. It proves an algebraic normalization identity.
 It does not prove the geometric ball-volume formula, the counting-to-volume
 bridge, or Kepler's theorem.
 
-## New SAIR work awaiting the next independent review
+## What the first hourly review established
 
 The latest four SAIR branch checkpoints have been combined into the public
 review branch. Their source hashes are in [HOURLY_SYNC.json](Main/HOURLY_SYNC.json).
-They are working research artifacts, with the following review priorities.
+They remain working research artifacts. The new independent review found two
+concrete failures and narrowed several geometric claims.
 
-- Computation now supplies an exact rational sign checker and reports a
-  certificate giving density at most about 0.78010544. This is weaker than the
-  classical analytic control, and it has not yet been independently reproduced
-  locally. Its potential value is a small, checkable baseline. The next review
-  must inspect the Fourier map, rational arithmetic, treatment of pi, roots and
-  signs at infinity before accepting the claim.
-- Experimental has clarified a conditional cluster-averaging criterion and a
-  proposed way to add local neighbor counts to a higher-point analytic method.
-  The difficult geometric inequality remains open. A proposed explicit thin-shell
-  neighbor bound still needs its primary-source constant and varying-radius
-  argument checked. No proof simplification is claimed from the accounting
-  reformulation alone.
-- Main has withdrawn the faulty numerical conclusion and proposed repairs to
-  its counting and hybrid arguments. Counterexamples has supplied a new
-  independent review. These need reconciliation before they become accepted
-  statements in the consolidated account.
+- Computation's claimed certificate near 0.78010544 is invalid. Its checker
+  ignores failures when logging is disabled, and independent exact arithmetic
+  finds a negative value in the Fourier polynomial where nonnegativity is
+  required. We saved the precise rational counterexample and original inputs.
+  The entire claimed certified ladder needs fresh checking after the software
+  is repaired. No new packing bound was accepted.
+- Counterexamples' Gaussian search reported infeasibility, but a simple exact
+  feasible example disproves that conclusion. Running its actual model locally
+  produced a solver model error. We also corrected its density normalization,
+  which was wrong by a factor of pi. These are useful repairs to the research
+  tools, not an improvement to the known bound.
+- Some periodic-counting repairs survive review. Several other arguments need
+  narrower statements: averaging over space differs from averaging over sphere
+  centers, the shell-angle estimate has a restricted radius range, and a local
+  geometric strategy must construct suitable groups of cells rather than
+  demand that every possible group works. An elementary boundary-shell estimate
+  repairs one accounting step.
+
+The next concrete analytic experiment allows a small positive auxiliary-function
+value in a thin shell while charging for at most twelve nearby centers. Its
+proposed radius, 2.09, still needs a rigorous justification from the added
+Tammes-13 source and the repaired geometry. That source uses computer-assisted
+enumeration, which must be included when comparing proof complexity. The actual
+three-dimensional numerical strength of this experiment is still unknown.
+Alongside it, Experimental is assigned an explicit geometric partition rule,
+so analytic reformulations do not displace the local-geometry route.
+
+Both actionable diagnostic jobs ran locally with small resource budgets. There
+is no outstanding long-running job and no newly submitted Lean module. Four
+focused follow-ups were delivered at 00:25 Pacific, with pushed checkpoints
+due by 01:00. The detailed review and delivery records are in
+[Main's hourly review](Main/HOURLY_REVIEW_2026-11-14_0008.md).
 
 ## How the next stages will run
 
@@ -84,7 +101,8 @@ claims from independently accepted results. The current publication destination
 is the review branch in [PR #1](https://github.com/dozenalist/Mathathon/pull/1).
 Integration into the shared default branch remains pending authorization.
 
-The immediate priorities are to validate the new certificate, check the local
-geometric lemmas, and test whether one concrete hybrid candidate improves on
-the controls. The final part of the event is reserved for independent checking,
+The immediate priorities are to repair and independently test certification,
+finish the local geometric lemmas, and numerically evaluate the shell-count
+candidate against an ordinary analytic control. Approximately the final nine
+hours before November 15 at noon Pacific are reserved for independent checking,
 integration and an honest exposition of the strongest result obtained.
