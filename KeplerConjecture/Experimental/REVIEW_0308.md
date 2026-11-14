@@ -962,3 +962,52 @@ sharp, cheap-to-state sufficient condition this block produced.
 
 All three are open, and none of them can be settled by more of the same search. **`(P')` should be
 carried as a conjecture in doubt, not as a route.**
+
+## 17. Final summary of the block
+
+**Settled.**
+
+- `K15-E070`: **`(Q)` is YES.** A saturated packing with a cell of volume `< sqrt32` exists. Four
+  lines, no imports: the icosahedral cluster's centre cell is the dodecahedron
+  (`5.5503 < 5.6569`), cells shrink under adding centres, and Zorn extends the cluster to a maximal
+  (hence saturated) set. This corrects my previous block, which left `(Q)` open after failing to
+  *construct* a completion — the upper bound from the cluster alone settles it without one.
+- `K15-E045a/b` split so that the conditional and unconditional parts are no longer conflated;
+  `(Q)` uses only the unconditional `a`.
+
+**Structural results.**
+
+- `K15-E071`: the transfer form needs no bound on component diameter (`kappa <= 12` from
+  `K15-E014` plus finite Hall conditions give a global flow by compactness); the block form does.
+  The obstruction `(T'')` is therefore removed rather than proved.
+- The component reduction for the Hall condition, and the finding that ball-shaped cuts are neither
+  necessary nor sufficient (`REVIEW_0138.md` §14, §4 above).
+- `K15-E073`: on components `(H_R)` is monotone in `R`, and degenerates to the density bound as
+  `R -> infinity`. So the radius is a genuine parameter, and the useful question is whether some `R`
+  makes `(H_R)` both true and provable.
+
+**Obstructions.**
+
+- `K15-E072`: four families of per-cell sufficient condition are quantitatively excluded — balls
+  `50.265482`, dodecahedral minimum `66.603492`, outward collar `66.916356`, finite constraint sets
+  (upper bounds only) — against `67.988814` required, best ratio `0.984`.
+- The collar is excluded twice: capped at depth `1` (short) and blockable for free by a legal centre
+  at `w_i + 2 w_hat_i`.
+- The best *elementary* payer bound, using the relaxed bisectors, is `4.860729` — better than the
+  inscribed ball by `16 %` and still below `V_dodeca`.
+
+**A proposal, in doubt.**
+
+- `K15-E074` `(P')`: adjacent cells sum to at least `2 sqrt32`. Sharp at fcc/hcp (every pair of
+  1752 and 212 respectively attains it exactly), implies the cut with `1.72 %` margin, strictly
+  stronger than `2 V_dodeca` (`K15-E075`: two adjacent cells cannot both be dodecahedral — the
+  rings clash at `1.056` against `2`). **But at the icosahedral pair it needs
+  `vol Omega(w_1) >= 5.763417`, and the best legal values found fell `8.543 -> 6.731 -> 6.264` as
+  the search improved, the margin halving each time.** So it is recorded as a conjecture in doubt.
+
+**The honest state of the geometric route.** It is a strengthening of Kepler (it implies the
+theorem), its per-cell families are exhausted, and its content now sits in either `(CUT)`/`(H_R)`
+itself or the stability statement `(S_dod)`. `(P')` was the one cheap sufficient condition
+produced, and it is now in doubt. That is not progress toward a bound, but it is a much sharper
+statement of where the difficulty is than the block started with, and every claim above is
+accompanied by the numbers and the tool that produced it.
