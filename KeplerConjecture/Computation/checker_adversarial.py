@@ -99,6 +99,20 @@ def cases():
     near_end = (u - sp.Rational(1, 5)) ** 2 - eps
     out.append(("(u-1/5)^2 - 2e-40 >= 0 on [0,1] : dip inside, must FAIL",
                 le_on_interval(coeffs(-near_end), 0, 0, 1), False))
+    # --- review 0223, second batch: domain boundaries, multiplicities, clusters.
+    out.append(("roots exactly at both endpoints, negative between, must PASS",
+                le_on_interval(coeffs((u - 1) * (u - 3)), 0, 1, 3), True))
+    out.append(("root exactly at the domain start, must PASS",
+                le_on_interval(coeffs(u * (u - 2)), 0, 0, 2), True))
+    out.append(("triple root (u-2)^3 >= 0 on [0,inf) : sign change, must FAIL",
+                nonneg_on_half_line(coeffs((u - 2) ** 3)), False))
+    out.append(("(u-2)^4 >= 0 : even multiplicity everywhere, must PASS",
+                nonneg_on_half_line(coeffs((u - 2) ** 4)), True))
+    out.append(("(u-2)^4 <= 0 on [0,3] : positive away from 2, must FAIL",
+                le_on_interval(coeffs((u - 2) ** 4), 0, 0, 3), False))
+    cluster = (u - 1) ** 2 * (u - 1 - sp.Rational(1, 10 ** 15)) ** 2 - sp.Rational(1, 10 ** 30)
+    out.append(("clustered roots with a 1e-30 dip, must FAIL",
+                nonneg_on_half_line(coeffs(cluster)), False))
     return out
 
 

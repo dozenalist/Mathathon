@@ -2025,3 +2025,22 @@ implementation would land anywhere useful within the project's remaining budget.
 density bound.
 
 *Status.* `DECISION` (D17). Reviewer X.
+
+### K15-C073 — regression coverage completed for the third repair (`TESTED_FINITE`)
+
+Six further cases were added after the `C068` repair, covering the classes the
+earlier suites missed, and all pass (suite now **35 cases**):
+
+| Class | Case | Expected |
+| --- | --- | --- |
+| roots exactly at both domain endpoints | `(u−1)(u−3)` ≤ 0 on `[1,3]` | PASS (negative between) |
+| root exactly at the domain start | `u(u−2)` ≤ 0 on `[0,2]` | PASS |
+| odd multiplicity | `(u−2)³ ≥ 0` on `[0,∞)` | FAIL |
+| even multiplicity everywhere | `(u−2)⁴ ≥ 0` | PASS |
+| even multiplicity but positive elsewhere | `(u−2)⁴ ≤ 0` on `[0,3]` | FAIL |
+| clustered roots (separation `10⁻¹⁵`) with a `10⁻³⁰` dip | product of squares minus `10⁻³⁰` | FAIL |
+
+Plus the earlier near-double witnesses (`7/5 ± 2·10⁻⁴⁰`). The `transfer_check`
+fixture was re-run with the corrected constant `3ΦR(R+1)⁵` at `R = 2.51`
+(bound `144421.90`, observed sum `0.75`): the bound still holds, as it must since
+the corrected constant is larger.
