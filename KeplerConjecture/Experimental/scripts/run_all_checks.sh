@@ -35,6 +35,7 @@ run barlow_contact_cell     "exact: contact-only K subset B(v,sqrt2), both types
 run barlow_random_stackings "random Barlow stackings: every layer 4sqrt2 and fcc/hcp typed"
 run rational_interval      "exact rational intervals; pi/sin/cos with remainder bounds"
 run cell_certificate        "REPAIRED enclosure: witnesses W1,W2 + cube/tet/fcc/hcp/C5 controls"
+run ring_excess             "ring-excess lemma: C5 configuration cleared by proof, margin +0.109"
 # evidence integrity: every JSON must parse, every TXT must be non-empty
 bad=0
 for f in Experimental/evidence/*.json; do
