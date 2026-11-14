@@ -226,11 +226,24 @@ to Main.**
 | fcc | 1752 (E's count) | `11.313708499` | **equality** |
 | hcp | 212 (E's count) | `11.313708499` | **equality** |
 | every Barlow stacking | all | `11.313708499` | **equality** — *proved*, `C094`+`C106` |
-| A15 | 10098 | `15.875` | above |
+| A15 (Cr₃Si) | all B–B chain bonds (`a/2 = 2`) | `16.125 = 129/8` | above — **Main's value; E's `15.875` is the A–B pair, see below** |
 | crack packing (`C095`) | bulk–bulk | `11.313708499` | equality in the bulk; crack–bulk pairs larger (crack cells are `6.985`) |
 | icosahedral pair, E's `C5` payer | 1 | `5.550291 + 5.897967 = 11.448258` | above by `0.134549` |
 
-The last row is the near-critical one and is E's: `v` is the dodecahedral centre (`vol = V_dod`
+**E's A15 row is measuring the wrong pair type, and Main found it.** Computing A15 directly
+(`Computation/a15_pair.py`): with `a = 4` so that the nearest distance `a/2 = 2` is exact, the
+eight sites per cell have Voronoi volumes `125/16 = 7.8125` (the two A sites) and
+`129/16 = 8.0625` (the six B sites), whose weighted sum is `2(125/16) + 6(129/16) = 64 = a³`
+exactly — an internal consistency check that validates the volumes. The **contact** pairs in A15
+are the B–B chain bonds at `a/2 = 2`, giving `2·129/16 = 129/8 = 16.125`. The A–B distance is
+`√5 = 2.236068`, so A–B pairs are **not contacts**, and `125/16 + 129/16 = 127/8 = 15.875` — E's
+quoted value — is the A–B sum. Since `(P′)` quantifies over *contact* pairs only, E's number is
+not the relevant quantity for that row. Nothing is refuted: both `15.875` and `16.125` exceed
+`2√32`, and A15 is far from the extremal regime. But the row should be corrected to `16.125`, and
+this is the second convention error found in the workers' pair tables (the first was E's pole
+convention in `E075`, `C108`).
+
+The near-critical row is E's: `v` is the dodecahedral centre (`vol = V_dod`
 exactly) and `w` the best completion found, `5.897967122` over the `C5`-symmetric family with
 the cell **exact** (no legal centre can cut it, E's `K15-E081`). So the margin at the sharpest
 known witness is `0.1345`, i.e. `1.19%` of `2√32`. **That is the number a proof has to beat**:

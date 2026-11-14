@@ -3323,3 +3323,33 @@ with the worker's own status.
 id is defined twice except by an explicit `addendum` sub-heading, and that every status token is
 from the documented vocabulary. The `C…`/`E…`/`X…` shorthand used in prose is not checked, so a
 typo in shorthand is still possible; 411 shorthand occurrences exist in `Main/`.
+
+### K15-C111 — A15 cell volumes, and a corrected pair type in E's fixture table (`PROVED`, exact rationals)
+
+`Computation/a15_pair.py`. Independent computation of the A15 / Cr₃Si packing (`Pm-3n`, 8 sites per
+cubic cell), with `a = 4` so that the nearest distance `a/2 = 2` is exact. Using the adaptive
+truncation of Main's Lemma 3 (`BARLOW_CELLS.md`) with the support-function certificate, so the
+truncation is verified and not assumed:
+
+| site | Voronoi volume | exact |
+| --- | --- | --- |
+| A (2 per cell) | `7.812500000` | `125/16` |
+| B (6 per cell) | `8.062500000` | `129/16` |
+| weighted sum | `64.000000000` | `2·125/16 + 6·129/16 = 64 = a³` ✓ |
+
+The sum identity is an exact internal consistency check that validates the volumes.
+
+**Contact pairs, and a correction to E's table.** The nearest distance in A15 is the B–B chain
+bond `a/2 = 2`; the A–B distance is `√5 = 2.236068` and A–A is `2√3 = 3.464`. So the **contacts**
+are the B–B pairs, with pair sum `2·129/16 = 129/8 = 16.125`. E's `K15-E074` table quotes A15's
+minimum pair sum as `15.875`, which is `125/16 + 129/16 = 127/8` — the **A–B** pair, which is
+*not* a contact. Since `(P′)` quantifies over contact pairs only, E's entry for A15 is measuring
+the wrong pair type. **Nothing is refuted** (both `15.875` and `16.125` exceed `2√32`, and A15 is
+far from the extremal regime), but the row should read `16.125`.
+
+This is the second convention error found in the workers' pair tables this block, after E's pole
+convention in `E075` (`C108`, Main `1.1255548` vs E `1.056487696`). Both are recorded because
+pair-sum tables are exactly where a wrong pair type is invisible: every entry is plausible and
+every entry exceeds the bound.
+
+*Status.* `PROVED` (exact rationals, with the `a³` sum check). Reviewer X.

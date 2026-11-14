@@ -158,6 +158,14 @@ chk("same number as the density-convention 0.754697399337",
     (pi / 6) * (8 / vdod), 0.754697399337, tol=1e-12)
 chk("equivalently (4pi/3)/V_dod", (4 * pi / 3) / vdod, 0.754697399337, tol=1e-12)
 
+# --- K15-C111: A15 cell volumes, exact rationals --------------------------------
+chk("A15 vol_A = 125/16", mpf(125) / 16, 7.8125, tol=1e-15)
+chk("A15 vol_B = 129/16", mpf(129) / 16, 8.0625, tol=1e-15)
+chk("A15 2*vol_A + 6*vol_B = a^3 = 64", 2 * mpf(125) / 16 + 6 * mpf(129) / 16, 64, tol=1e-12)
+chk("A15 contact pair (B-B) = 129/8", 2 * mpf(129) / 16, 16.125, tol=1e-12)
+chk("A15 A+B (NON-contact pair) = 127/8", (mpf(125) + mpf(129)) / 16, 15.875, tol=1e-12)
+chk("A15 A-B distance = sqrt5 (not 2)", sqrt(mpf(5)), 2.2360679774997896964, tol=1e-15)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)
