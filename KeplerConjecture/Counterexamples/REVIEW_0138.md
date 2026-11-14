@@ -458,3 +458,61 @@ Checkpoints pushed: `7de7bee` (Task 1), `9d85f3b` (Task 2), `a65a705` (Task 3 + 
 near-tangency "correction"), `1fc26ac` (X-C012), and this final commit. Everything reported above is
 reproducible from `Counterexamples/` with the commands in each section; Ultramath is the actual
 runtime per the supervisor, which I accept.
+
+---
+
+## 12. Predicate specification, completed: closed interval vs half-line
+
+### 12.1 The two rules, stated independently of any implementation
+
+Let `p = c·Π f_i^{m_i}` be the squarefree decomposition and `u = Π_{m_i odd} f_i` the
+odd-multiplicity part. Then the sign of `p` is constant on every gap between distinct real roots,
+and on a gap it equals `sign(c)·sign(u)`. From this:
+
+* **(H) half-line `[a,∞)`.** `sign(p) = want` on `[a,∞)` iff
+  (i) `u` has **no** real root in `(a,∞)` (remove a factor `(t−a)^m` first: a zero *at* `a` is
+  allowed), (ii) `sign(c)·sign(lc u) = want`, (iii) `p(a)` does not contradict `want`.
+  On a half-line the rightmost gap is the one involved, so **`sign(lc u)` is the right sign** —
+  provided (i) holds.
+* **(I) closed interval `[lo,hi]`.** Same, except that the interior sign must be read from `u`
+  **evaluated at a point strictly inside** `(lo,hi)`: `sign(lc u)` is the rightmost-gap sign and
+  is *wrong* for a bounded interval whenever `u` has a root above `hi`. Conditions:
+  (i) `u` has no root strictly inside, (ii) `sign(c)·sign(u(mid)) = want`,
+  (iii) `p(lo), p(hi)` do not contradict.
+
+Zero polynomial: accepted for `want = 0`, rejected otherwise. Even-multiplicity zeros: never
+rejected, and never used as evidence of sign (that is the probe trap).
+
+### 12.2 The mistake I made while building this, recorded
+
+Using rule (H) as a substitute for rule (I) — i.e. testing `[lo,∞)` when the question was
+`[lo,hi]` — produced **9 false rejects** in my self-audit (e.g. `(u−1)²(3u−7)/3 ≤ 0` on `[0,1]` is
+true, but `(H)` sees the odd root at `7/3 > 1` and rejects). That is the *safe* direction
+(over-rejection, not false acceptance), but it is still wrong, and it is the mirror image of the
+error in the opposite direction that Main's probes make. **Both rules are needed; neither
+substitutes for the other.**
+
+### 12.3 Self-audit of `exact_sign.py` on the failure class
+
+`Reviews/x_selftest_run.py` drives my predicate through the same generators used against other
+checkers:
+
+| family | queries | wrong verdicts |
+| --- | --- | --- |
+| random (roots in `[0,2]`, exponents `{1,2}`, both signs) | 180 | **0** |
+| **probe-targeted** (roots at the probe positions, `{2,2,2}` and `{2,2,1}`) | 12 | **0** |
+| hand controls in `exact_sign.py` (`controls()`) | 21 | **0** |
+
+The 21 hand controls now include six closed-interval cases (odd root outside → accept; odd roots
+inside → reject; even zero inside in both directions; wrong sign inside → reject), so the
+interval rule is exercised in both directions. **`exact_sign.py` is the authority for X's sign
+decisions; the earlier `half_line_verdict` and `sign_on_half_line` uses in
+`Reviews/K33/audit_K33_signs.py` are superseded** (old outputs preserved).
+
+### 12.4 What this does and does not license
+
+* It licenses: my own certificates (`K15-X-C010`, `K15-X-C013`) and my re-verification of `K33` —
+  all of which now rest on a predicate that passes both families plus witness-anchored controls.
+* It does **not** license any statement about Main's checker, which remains **PENDING** with the
+  three confirmed false accepts plus two more that I found. Main owns that repair, and I will audit
+  the next immutable revision with rule (H)/(I) as the oracle — not with a case list.

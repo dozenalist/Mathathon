@@ -60,6 +60,54 @@ def sign_on_half_line(p, a, want, full=False, var=None):
     r = (ok, reason)
     return r if full else r[0]
 
+def sign_on_interval(p, lo, hi, want, full=False, var=None):
+    """EXACT: is sign(p) == want (-1/0/+1) on the CLOSED interval [lo, hi]?
+
+    Same algebraic rule as the half-line version, but the interior sign must be read from the
+    odd part EVALUATED INSIDE the interval: sign(lc) is only the sign on the rightmost gap, so
+    using it here would be wrong (that is the trap in Main's le_on_interval and in my own first
+    oracle draft).  A root of the odd part strictly inside forces a sign change -> reject.
+    Endpoint zeros are allowed.
+    """
+    p = sp.expand(p)
+    fs = p.free_symbols
+    if var is not None: t = var
+    elif len(fs) == 1:  t = list(fs)[0]
+    elif len(fs) == 0:  t = _T
+    else: raise ValueError("need a univariate polynomial")
+    lo = sp.nsimplify(lo); hi = sp.nsimplify(hi)
+    if sp.simplify(p.subs(t, lo)) == 0 and sp.simplify(p.subs(t, hi)) == 0 and lo == hi:
+        r = (want == 0), "degenerate point interval"
+        return r if full else r[0]
+    P = sp.Poly(p, t)
+    if P.is_zero:
+        r = (want == 0), "zero polynomial"
+        return r if full else r[0]
+    coeff, facs = sp.sqf_list(p)
+    u = sp.Integer(1)
+    for f, m in facs:
+        if m % 2 == 1: u = sp.expand(u * f)
+    U = sp.Poly(u, t)
+    # odd-multiplicity roots strictly inside (lo, hi): remove endpoint factors, then count
+    W = U
+    for a in (lo, hi):
+        while W.degree() >= 1 and sp.simplify(W.eval(a)) == 0:
+            q, r = sp.div(W.as_expr(), (t - a), t)
+            if sp.simplify(r) != 0: break
+            W = sp.Poly(sp.expand(q), t)
+    if W.degree() >= 1 and W.count_roots(lo, hi) > 0:
+        r = (False, "odd-multiplicity root strictly inside (%s,%s)" % (lo, hi))
+        return r if full else r[0]
+    mid = (lo + hi) / 2
+    s_in = sp.sign(coeff) * sp.sign(sp.simplify(sp.expand(u).subs(t, mid)))
+    ok = (s_in == want); reason = "interior sign = %s" % s_in
+    for a, nm in ((lo, "p(lo)"), (hi, "p(hi)")):
+        va = sp.simplify(P.eval(a))
+        if va < 0 and want >= 0: ok, reason = False, nm + " < 0"
+        if va > 0 and want <= 0: ok, reason = False, nm + " > 0"
+    r = (ok, reason)
+    return r if full else r[0]
+
 def controls():
     t = sp.Symbol('t')
     cases = [
@@ -75,6 +123,13 @@ def controls():
         ((t-4), 4, -1, False, "endpoint zero but sign wrong to the right"),
         (-(t-30), sp.Rational(251327,10000), -1, False, "30-t is POSITIVE just above a (sign not constant)"),
         ((t-30), sp.Rational(251327,10000), +1, False, "simple root above a, wrong sign"),
+        # ---- closed-interval cases: these exercise sign_on_interval, NOT the half-line rule ----
+        ((t-1)**2*(3*t-7)/3, 0, -1, True,  "interval [0,1]: odd root 7/3 OUTSIDE -> accept le 0"),
+        (-(t-1)**2*(3*t-7)/3, 0, +1, True, "interval [0,1]: negated -> accept ge 0"),
+        (t*(t-sp.Rational(1,2))*(t-1), 0, -1, False, "interval [0,1]: odd roots INSIDE -> reject"),
+        (-(t-1)**2*(3*t-7)/3, 0, -1, False, "interval [0,1]: wrong sign inside -> reject"),
+        ((t-1)**2, 0, +1, True,  "interval [0,1]: even zero inside, >= 0 -> accept"),
+        ((t-1)**2, 0, -1, False, "interval [0,1]: even zero inside, <= 0 false -> reject"),
         (sp.Integer(0), 0, +1, False, "identically zero, want +1"),
         (sp.Integer(0), 0, 0, True,  "identically zero, want 0"),
         (-(t**2+1), 0, -1, True, "always negative"),
@@ -83,7 +138,10 @@ def controls():
     print("%-58s %-8s %-8s %s" % ("control","expected","got","verdict"))
     bad=0
     for poly, a, want, exp, label in cases:
-        got, reason = sign_on_half_line(poly, a, want, full=True)
+        if "interval" in label:
+            got, reason = sign_on_interval(poly, sp.Integer(0), sp.Integer(1), want, full=True)
+        else:
+            got, reason = sign_on_half_line(poly, a, want, full=True)
         ok = (got == exp)
         if not ok: bad+=1
         print("%-58s %-8s %-8s %s   [%s]" % (label[:58], exp, got, "OK" if ok else "*** MISMATCH ***", reason[:44]))
