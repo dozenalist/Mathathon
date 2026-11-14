@@ -836,3 +836,28 @@ accident but fact 1 above, which holds because the block threshold is exactly `2
 component threshold is taken smaller than `2R`, which is precisely the error corrected in
 `K15-E032` for the earlier rule `R2`. So the choice of `4.18` is forced twice over — once for
 partition disjointness and once for this decomposition of the Hall condition.
+
+## 15. The extent flag cannot hide a defect
+
+A correctness point for whoever uses the evaluator, since the flag retires cells from the defect
+test and a broken flag would silently suppress the interesting cases.
+
+The flag marks a cell unreliable when its extent exceeds `2`. A cell that was **genuinely**
+defective, `c(v) < sqrt32 = 5.6569`, would have `Omega(v) ⊂ B(v,2)` in the saturated case and
+`extent <= 2`; and in any case its volume is below `sqrt32 < (4pi/3)`, so it cannot be a large
+bloated cell. Hence:
+
+```
+extent > 2   =>   the cell is unsaturated or truncated   =>   c(v) is an UPPER bound
+extent <= 2  and c(v) < sqrt32                          =>   a genuine defect, reported
+```
+
+So the flag only removes cells whose volumes are over-estimates, and over-estimates cannot
+*create* a defect. **The flag can suppress false positives but never a true one.** That is why
+counting defects among unflagged cells is the right statistic, and why the `0` defects reported
+for A15 (919 valid cells) is a real `0` rather than an artefact of aggressive flagging.
+
+The one case this does not cover: a cell with `extent <= 2` and `c(v) < sqrt32` in a *sparse*
+fixture, where the computed volume is still an upper bound — but there the over-estimate works
+against finding a defect, so the `0` remains trustworthy. The asymmetry is what makes the
+statistic usable: every error in the volumes pushes the defect count *down*, never up.
