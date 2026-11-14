@@ -1840,3 +1840,13 @@ conclusion.
 **`shell_fixture.py`** exits `2`, but by design: it is a *proposer* (`C028`) whose only FAIL is "`f ≤ eta` on
 the shell", i.e. its coarse enumeration found no admissible fixture — consistent with `C028`'s negative
 conclusion that the shell allowance cannot pay. Correctly excluded from `run_all_checks.py`.
+
+### K15-X-C119 — `verify_comp_cert.py` matches no certificate in the tree
+
+At main `2c41311`, `Computation/verify_comp_cert.py` reads `d["coefficients_rational"]` — a field that
+appears in **none** of the committed certificates: it raises `KeyError` on `out/ce_d8.json`,
+`out/interface_xcheck.json`, and on my Counterexamples `X_C017_certificate.json` (a different schema,
+`m/S/G`). `run_all_checks.py` documents this ("The certificate check needs an external file and is skipped
+unless `--cert` is given") and does skip it, so the suite's 18/18 pass says nothing about the certificate
+path. Not an error in any number — a gap in the executable interface: the one verifier that could check a
+Main-basis certificate has no input in the repository, so that path is untested.
