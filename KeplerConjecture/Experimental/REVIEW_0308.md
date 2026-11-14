@@ -727,3 +727,31 @@ record the failure rather than presenting `22.58` as evidence for anything.
 question is whether the extremal pair is fcc's `2 sqrt32` or something strictly between. Deciding
 that is a two-cell isoperimetric problem, and it is the cleanest open target this block has
 produced.
+
+## 15. Status at the 40-minute checkpoint
+
+Checkpoint taken at `11:39:30Z` (nominal `11:56:52Z`; recorded early with the work done, not padded
+to the nominal time — see `TIMING_CORRECTION.md`). Verified at the checkpoint:
+`bash Experimental/scripts/run_all_checks.sh` gives **14 rows, all PASS** (13 checks plus the
+evidence-integrity row), in about 27 s on one CPU.
+
+**Work completed since the 20-minute checkpoint.**
+
+| item | state |
+| --- | --- |
+| four excluded families tabulated (§10c) | balls `50.265482`, dodecahedral `66.603492`, collar `66.916356`, finite sets (upper bounds only); best `0.984` of the requirement |
+| outward-collar family (§9.1) | excluded twice: depth capped at `1` (giving `5.576363`), and blockable for free by a legal centre at `w_i + 2 w_hat_i` |
+| radius parameter (§10b) | monotone on components, degenerating to the density bound as `R -> infinity` |
+| search for the smallest payer cell (§12) | seven completions, best `8.543387`, all upper bounds |
+| **`(P')` proposed (§14)** | pair bound `>= 2 sqrt32`, **sharp at fcc/hcp** (1752 and 212 pairs at equality), implies the cut with `1.72 %` margin |
+| **ring-clash result (§14.1, `K15-E075`)** | two adjacent cells cannot both be dodecahedral: clash at `1.056487696` against `2`, for every twist |
+| two-cell model (§14.2) | `(P')` survives; greedy gives `22.58`–`27.99`, uninformative (upper bounds) |
+| machine checks | eleven 0308 items added to `verify_all_claims.py` |
+| ledger | `E072`–`E075` added; `(P')` and `(S_dod)` listed as the open targets |
+
+**The one-line state of the route.** `(Q)` is settled (`E070`); the diameter obligation is removed
+(`E071`); four per-cell families are excluded (`E072`); and the whole remaining content is now
+concentrated in either `(P')` (a two-cell isoperimetric statement, sharp at fcc/hcp) or `(S_dod)`
+(a stability version of the dodecahedral theorem). Both are precise, both are unproved, and `(P')`
+is the more attractive target because it is sharp at the equality family and needs no new
+machinery to state.
