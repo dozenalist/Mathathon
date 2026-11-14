@@ -2415,7 +2415,10 @@ with `t*` the minimal transfer bound (LP duality, `K15-C044`). Reasons this is t
 right form: (i) it is exactly what the rate `O(Φ/r)` needs; (ii) a single periodic
 packing with `t* > Φ₀` refutes a claimed `Φ₀`, so candidates are testable
 (`C-TRANSFER-001` computes `t*`); (iii) it has a proved floor `Φ₀ ≥ 0.0088803`
-(`K15-C081r`).
+(`K15-C081r`) — **witness-specific**: that floor holds for packings containing the
+icosahedral singleton, not for every packing with `b > 0`. The per-packing necessary
+bound is `t* ≥ max_v b(v)/deg(v)`; the two must not be confused (review 0308
+continuation).
 - **Correction (in the same entry).** The first version said "existence cannot be
   refuted by a packing". **False.** If a packing has a **closed** component `C` (no
   edges leaving at range `R`) with `Σ_C b > 0`, then `t*(Λ) = ∞` and **no transfer

@@ -19,9 +19,14 @@ chosen this cycle (`D17`).
 1. **`C-CUT-001` (new, highest value).** Implement the bounded cut/flow solver of
    `C-TRANSFER-001` for *periodic* packings: periodic Voronoi volumes (replicate
    `3×3×3`), `b(v)`, the `R`-graph at `R = 2.09`, and the minimal `Φ` by LP
-   (`min t s.t. div φ ≥ b, |φ| ≤ t`). Acceptance: `fcc` and `hcp` return `t* = 0`;
-   any packing with `b > 0` returns `t* ≥ 0.0088803` (the floor is a theorem, so a
-   smaller value is a bug); the binding cut is reported.
+   (`min t s.t. div φ ≥ b, |φ| ≤ t`). **Acceptance (corrected):**
+   (i) `fcc` and `hcp` return `t* = 0`;
+   (ii) for **every** packing, `t* ≥ max_v b(v)/deg(v)` — the singleton cut `{v}` gives
+   `b(v) ≤ Φ·deg(v)`, so a smaller `t*` is a bug;
+   (iii) the *universal* floor `0.0088803` applies **only** to packings containing the
+   icosahedral singleton witness, where `b(v₀) ≥ 0.1065632` and `deg(v₀) = 12`; it is
+   not a rejection rule for arbitrary packings, whose `b(v)/deg(v)` may be smaller.
+   The binding cut is reported.
 2. **`C-GRAM-001`.** Keep the exact Gram certificates at their current best
    (`1.3398` p-side, `1.3713` Fourier-side, `2.0017` both-sides) and record them as
    controls; **do not** spend the block improving them — they are three orders from
