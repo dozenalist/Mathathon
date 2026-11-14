@@ -435,3 +435,13 @@ work. Fix the number, keep the verdict.
 | `X-C076` | `rho_probe.py` consistent with C102; its `ρ = 2.0127` row is *below* `√32` | **checked** | `rho_probe.py` run |
 
 Nothing here is a bound on packing density, and none of it is a Kepler proof.
+
+## 17. Main's constants check does not cover C102
+
+`Computation/constants_check.py` has 143 `chk(...)` calls. Two compare a value with itself —
+`degrees(acos(c))` vs `degrees(acos(c))`, and `3.206870905` vs `3.206870905` — and the second is the
+**only** ledger entry for `C102`'s nearest-thirteenth constant. A third, `chk("2.09 is below the
+13-point threshold", mpf('2.09'), 2.09)`, compares `2.09` with `2.09` and tests nothing. So
+`run_all_checks.py`'s "every ledger constant re-derived — PASS" (`X-C071`-era tip, all 17 checks pass
+once `Main/` is present) is accurate for 140 of 143 entries and silent on the one that decides
+`C101` case (B). The number is right (`X-C070`); the regression net has a hole where that number lives.

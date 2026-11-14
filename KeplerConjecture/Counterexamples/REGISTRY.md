@@ -1257,3 +1257,24 @@ Three points.
    probe's first row is not a "singleton works" case at all — it is the knife edge where the singleton
    *fails* — and C102's redundancy statement is load-bearing precisely there. Main's `C101` text reads
    as if all three radii are above target; only two are.
+
+### K15-X-C077 — `constants_check.py` ("every ledger constant re-derived") does not re-derive C102's constant
+
+Parsed all **143** `chk(...)` calls in `Computation/constants_check.py` at main `4dc1cc9` and compared the
+`got` and `want` arguments textually. **Two are self-comparisons** — identical expressions, so they
+cannot fail:
+
+- `chk("  theta_min (deg) at rho=%s" % rho, degrees(acos(c)), degrees(acos(c)))` (inside the `rho` loop);
+- `chk("nearest admissible 13th centre at rho=2.09", 3.206870905, 3.206870905, tol=1e-9)` — and this is
+  the only ledger line for `C102`'s constant, which is the value that matters for `C101` case (B).
+
+A third is a semantic self-comparison with a mislabelled name:
+`chk("2.09 is below the 13-point threshold", mpf('2.09'), 2.09)` compares `2.09` with `2.09`; it does
+**not** test `2.09 < 2.091145548…`, and would pass at any radius.
+
+So `run_all_checks.py`'s row "constants: every ledger constant re-derived — PASS" is true of 140 of
+143 entries but not of `C102`'s. The value is nevertheless **correct** (`X-C070`, an independent
+mpmath recomputation plus a proof of the covering step), so this is a gap in the regression net, not a
+wrong number: if `nearest_13th.py` regressed, `constants_check.py` would not notice. The fix is a
+one-line `chk` against `nearest_13th.min_admissible`, or against the closed form
+`ρκ + √(ρ²κ²−ρ²+4)` used in `nearest_13th_indep.py`.
