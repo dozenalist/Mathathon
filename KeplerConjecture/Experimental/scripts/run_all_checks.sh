@@ -29,6 +29,7 @@ run frank_kasper_test       "A15 saturated fixture"
 run periodic_relax          "periodic relaxation recovers fcc / pi/sqrt18"
 run icosa_cut_check         "cut/flow fixture: 12 payers, exact distances, surplus bracket"
 run c5_completion           "C5 completion: vol Omega(w_1) = 5.898007, (P') margin 0.1346"
+run c5_fixture              "frozen fixture: exact coords, legality, exact cell theorem"
 # evidence integrity: every JSON must parse, every TXT must be non-empty
 bad=0
 for f in Experimental/evidence/*.json; do
