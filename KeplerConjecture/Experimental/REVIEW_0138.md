@@ -201,11 +201,13 @@ any block reported with a buffer-cut cell, since the volume is then not the true
 | `icosa_fcc_shell_b` (189) | 1 | 1 / 1 | `+94.036` | `+94.036` |
 | `two_icosa` (two clusters) | 2 | 2 / 2 | `+50.052`, `+50.732` | `+68.518`, `+76.450` |
 
-The deficit being repaid is `D = 0.106563`. So across seven non-vacuous blocks the observed
-surplus exceeds the deficit by a factor between `470` and `880`, and **no block comes close to
-failing**. `two_icosa` exercises the overlap accounting with two components and reports
-`max_pairwise_overlap = 0`, confirming the `4.18` / `8.36` thresholds empirically as well as
-by proof.
+The deficit being repaid is `D = 0.106563`. **These `S - D` figures are retracted as evidence
+and must not be read as support for `(T')` — see Section 5.** They were computed with a buffer
+flag that never fired, so the payers' volumes are inflated by free space and `S` is an
+over-estimate without bound. What *does* survive from this table is distance-only:
+`two_icosa` exercises the overlap accounting with two components and reports
+`max_pairwise_overlap = 0`, confirming the `4.18` / `8.36` thresholds empirically as well as by
+proof, and the `block_has_buffer_cell` column is what later exposed the flag's failure.
 
 **Two fixtures could not be built, and that is informative.**
 
