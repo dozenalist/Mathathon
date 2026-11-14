@@ -525,3 +525,65 @@ Substantive work completed in this block so far:
 | timing record | corrected; waiting does not establish compliance (`TIMING_CORRECTION.md`) |
 
 No early return; work continues.
+
+## 12. How small can a payer's cell actually be driven? A search, and what it does not show
+
+The decisive question for the cut is whether a completion can shrink `vol Omega(w_i)` to
+`5.665735`. I searched for the smallest achievable value, adding legal centres (2-separated, and
+`>= 2` from `w_i`) anywhere in the shell `[2, 4.2]`, greedily keeping any placement that reduced
+the cell volume, and capping every polytope by the saturation bound `Omega(w_i) subset B(w_i,2)`.
+
+| search | extra centres accepted | cell volume found |
+| --- | --- | --- |
+| greedy, 1 seed | 17 | `9.898520` |
+| greedy, 6 seeds | 11-16 | `8.543387` (best), `8.908`, `9.418`, `10.420`, `10.550`, `12.167` |
+
+So across seven independent completions the smallest cell found is `8.543387`, i.e.
+`2.878` above the requirement, and `2.887` above `sqrt32`. Notably only **11 to 17** extra centres
+could be placed at all before the greedy stalled: the six fixed neighbours at `2.1029` do not leave
+much room.
+
+**What this shows and what it does not.** Every value above is an **upper** bound on the true cell,
+because a finite constraint set can only be cut further by more centres. So the search cannot
+*prove* `(H_R)`: it is entirely possible in principle that a cleverer completion reaches `5.666`.
+What it does show is:
+
+1. **Reaching the requirement is not easy.** Random and greedy completions land near `9`-`12`, a
+   factor `1.5`-`2` above the threshold. Getting to `5.666` requires a completion that
+   approximates the dodecahedron's twelve faces closely, and the six fixed neighbours block exactly
+   the directions that would be needed (`REVIEW_0308.md` §9, and §9.1 on the collar blocker).
+2. **A sanity value is reproduced.** The polytope with the six known constraints capped by
+   `B(w_i,2)` has volume `16.958438`; with the cruder six-face box instead it is `26.508617`. The
+   difference between the two caps is a measure of how much the ball approximation matters, and it
+   is larger than I expected — worth knowing for anyone reusing these numbers.
+
+**Status: exploratory, one-sided.** This is the same failure mode as `K15-E062` and I flag it
+explicitly: a computed *upper* bound on a cell volume is not evidence that the cell is large. What
+the search legitimately supports is the *plausibility* that the payers have room to spare, and
+that is all.
+
+## 13. What this block establishes, and what it does not
+
+**Established.**
+
+- `K15-E070`: `(Q)` is **YES** — a saturated packing with a cell below `sqrt32` exists, proved
+  without imports. The defect is real and compensation is necessary.
+- `K15-E071`: the transfer form needs **no** bound on component diameter; the block form does.
+- The component reduction for the Hall condition; and that ball-shaped cuts are neither necessary
+  nor sufficient (`REVIEW_0138.md` §14, `REVIEW_0308.md` §4).
+- Four families of per-cell sufficient condition are **quantitatively excluded** (§8, §9.1, §10c);
+  the best reaches `66.916356` against `67.988814` required.
+- The radius `R` is a free parameter, monotone on components, degenerating to the theorem as
+  `R -> infinity` (§10b).
+- The missing input is a **stability version of the dodecahedral theorem** with gap `0.1154435`
+  (§10).
+
+**Not established.**
+
+- `(H_R)` itself, in any form, at any radius.
+- Any lower bound on a payer cell better than `V_dodeca`.
+- That the search in §12 is anywhere near optimal.
+
+**The honest summary of the route.** It is a strengthening of Kepler (§6.1) whose entire content now
+sits in one stability inequality about the icosahedral configuration. That is a much more precise
+statement than "the geometric route is promising", and it is the useful output of this block.
