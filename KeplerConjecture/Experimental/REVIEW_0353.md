@@ -460,12 +460,26 @@ whole of §1-§5 was in fact done in **nine minutes**, not fifty. The table is c
 | `12:19:39Z` | `f3d7fdd` — Main's `§3` crack volume table reproduced in every layer (`6.985349063` / `√32`); two slips of mine caught by the `V_dodeca` floor and recorded in §5.4 |
 | `12:19:59Z` | `c76194f` — review 0353 written; hashes recorded |
 | `12:20:43Z` | `d57587e` — rejected `3.237838` candidate recorded; offload request filed |
-| `12:2xZ` | §2.1 (family theorem over `θ ∈ [106°,120°]`), §5.3 fingerprint check, and this corrected table — see the final commit |
+| `12:21:37Z` | `3c9bbfe` — §2.1 family theorem: exact-cell property at all 15 legal `θ ∈ [106°,120°]` |
+| `12:22:40Z` | `18f6e1c` — crack density `→ 1/√32`; Main `§1`'s saturation sentence needs the upper bound `d ≤ 2H` |
+| `12:23:39Z` | `a72214f` — azimuth resolved: `φ = 36°` optimal and a mirror axis |
+| `12:24:57Z` | `bf95091` — Barlow Lemma 1′ made exact (symbolic, both types) |
+| `12:26:17Z` | `4b6b5fe` — 67 layers / 8 random stackings verified |
+| `12:26:55Z` | `37c66af` — what the withdrawal leaves standing (per-configuration yes, global no) |
+| `12:27:39Z` | `565b1f9` — crack at `d = 2.0, 3.0, 3.2`: surfaces defective, bulk `√32` |
+| `12:28:14Z` | `307eb8d` — family optimum `θ* = 111.7975`, `vol* = 5.897967122` |
+| `12:28:38Z` | `9d2ced7` — 270 layers / 40 stackings |
+| `12:28:57Z` | `1d57110` — optimum's cell exact too; `INTEGRATION_0353.md` |
+| `12:32:55Z` | `819e07c` — optimum exactly attainable at `cos θ = −13/35` |
+| `12:33:28Z` | `73f180e` — field corrected to `Q(√2,√3)` |
+| `12:34:08Z` | `8b0ab49` — 488 layers / 52 stackings, periods 3-20 |
+| `12:37Z` | two 900 s global searches land (§2.2) |
 
-What the remaining time of the hour was used for: verifying the results rather than adding
-to them — the `θ`-family (§2.1), the face-normal fingerprints (§5.3), Main's crack table
-(§5.4), and the full check suite. The honest statement of effort is that the block's
-content was produced quickly and then checked slowly.
+All times are commit timestamps. What the block's later part was used for was **verification
+rather than new claims** — the `θ`/`φ` family, the exact symbolic Barlow check, the
+out-of-sample stackings, the crack table at other widths, and the full suite (19 rows,
+green). Four separate errors of mine were caught that way, every one by the same
+`V_dodeca = 5.550291` floor.
 
 ## 8. Hashes for Main's integration record
 
