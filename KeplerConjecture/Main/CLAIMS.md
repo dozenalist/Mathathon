@@ -905,14 +905,20 @@ geometric route produces: a candidate profile ⇒ run `exactcert` and
 - **Status.** `TESTED_FINITE`; the verdicts inside are exact, the *values* are
   vacuous. Reviewer X. G10 remains open but with the cost structure now explicit.
 
-### K15-C029 — the usable objective for the geometric route (`PROVED`, a constraint on `A`)
+### K15-C029 — WITHDRAWN (proof invalid, review 0138; text kept as rejected evidence)
+
+> **Status: `WITHDRAWN`.** The proof below assumes `A ≥ 0` without saying so: from
+> `A ≥ θ` on `D_θ` and `Σ_Λ A ≤ C₁r²` one cannot bound `#D_θ`, because negative
+> terms of `A` outside `D_θ` cancel the positive ones inside. The corrected
+> estimate is `K15-C029r`; the conditional version under `A ≥ 0` is `K15-C029c`.
+> See `Main/REVIEW_0138.md`.
 
 The cluster criterion (K15-C025) needs `Σ_{v∈K}(vol Ω(v) + A(v)) ≥ V_0|K|` with
 `V_0 > 5.550291` to beat the dodecahedral bound, and `V_0 = √32 = 5.656854` to
 reach Kepler. This entry records what that forces on `A`, so that a proposed `A`
 can be tested before any cluster analysis is attempted.
 
-**Lemma (defect density is zero).** Let `Λ` be saturated with an fcc-compatible,
+**REJECTED Lemma (defect density is zero).** Let `Λ` be saturated with an fcc-compatible,
 negligible `A`: `vol Ω(v) + A(v) ≥ √32` for all `v`, and
 `Σ_{v∈Λ∩B(x,r)} A(v) ≤ C₁r²` for all `x`, `r ≥ 1`. Fix `θ > 0` and let
 `D_θ = {v : vol Ω(v) ≤ √32 − θ}`. Then `#(D_θ ∩ B(x,r)) ≤ C₁r²/θ` for all
@@ -1081,3 +1087,96 @@ from the committed script.
 `Main/INTERFACE.md` §4 was also corrected: the "conservative integer threshold"
 no longer exists — `4·PI_LO` and `PI_LO·ρ²` are rational and exact, so the
 threshold costs nothing.
+
+### K15-C029r — the correct signed estimate (`PROVED`)
+
+Same hypotheses as C029 (`Λ` saturated 2-separated, `vol Ω(v)+A(v) ≥ √32`,
+`Σ_{Λ∩B(x,r)} A ≤ C₁r²`). For `θ > 0` and `D_θ = {v : vol Ω(v) ≤ √32 − θ}`:
+
+```
+θ · #(D_θ ∩ B(x,r))  ≤  C₁ r²  +  N_A(x,r),     N_A(x,r) := Σ_{v∈Λ∩B(x,r)} max(−A(v),0).
+```
+
+*Proof.* `Σ_B A = Σ_{D∩B}A + Σ_{B∖D}A ≥ θ#(D∩B) − N_A`, using `A ≥ θ` on `D` and
+`A ≥ −max(−A,0)` everywhere; combine with `Σ_B A ≤ C₁r²`. ∎
+
+This is the only form that follows from the stated hypotheses. Any use must bound
+`N_A`; §2 of `Main/REVIEW_0138.md` lists the two available routes (conditional
+positivity, or the transfer construction of `K15-C035`). Reviewer X.
+
+### K15-C029c — the conditional version under `A ≥ 0` (`PROVED`, with an extra hypothesis)
+
+If in addition `A(v) ≥ 0` for all `v`, then `N_A = 0` and
+`#(D_θ ∩ B(x,r)) ≤ C₁r²/θ`: small cells have upper density zero. **This is the
+statement the withdrawn entry actually proved**, and it is true, but the
+hypothesis `A ≥ 0` is false for the corrections that matter (an `A` that is
+positive at the icosahedral vertex must be negative where cells exceed `√32`).
+Cite it only with the hypothesis attached. Reviewer X.
+
+### K15-C035 — bounded-range antisymmetric transfers make negligibility automatic (`PROVED`)
+
+**Definition.** A *transfer* of range `R ≥ 1` and bound `Φ ≥ 0` is an
+antisymmetric `φ : Λ×Λ → R` (`φ(v,w) = −φ(w,v)`) with `φ(v,w) = 0` when
+`|v−w| > R` and `|φ| ≤ Φ`. Its *correction* is `A(v) := Σ_{w∈Λ} φ(v,w)`.
+
+**Lemma.** Let `Λ` be 2-separated, `A` a transfer as above, and
+`k_R := max_v #{w ∈ Λ∖{v} : |w−v| ≤ R}`. Then
+(a) `|A(v)| ≤ Φ·k_R` and `k_R ≤ (R+1)³ − 1`;
+(b) `Σ_{v∈Λ∩B(x,r)} A(v) ≤ 3Φ(R+1)⁵ r²` for all `x` and all `r ≥ 1`, i.e. `A`
+is negligible with the **explicit packing-independent** constant
+`C₁ = 3Φ(R+1)⁵`.
+
+*Proof.* (a) Each term of the sum is bounded by `Φ` and there are at most `k_R`
+of them; the balls `B(w,1)`, `w ∈ Λ∩B(v,R+1)∖{v}`, are disjoint, lie in
+`B(v,R+2)∖B(v,1)` up to measure zero, and the volume comparison gives
+`k_R ≤ ((R+1)³ − 1)` (using `vol B(0,s) = (4π/3)s³`).
+(b) In `Σ_{B(x,r)} A` every pair with both ends inside `B(x,r)` contributes
+`φ(v,w)+φ(w,v) = 0`. What remains are pairs with `v ∈ B(x,r)`, `w ∉ B(x,r)`,
+`|v−w| ≤ R`: at most `k_R·#(Λ ∩ (B(x,r+R)∖B(x,r))) ≤ k_R·((r+R)³ − r³)` ordered
+pairs, each contributing at most `Φ`. Since
+`(r+R)³ − r³ = R(3r²+3rR+R²) ≤ 3R(R+1)²r²` for `r ≥ 1`, the bound follows:
+`3Φ k_R R(R+1)²r² ≤ 3Φ(R+1)⁵r²`. ∎
+
+**Why this matters for the project's goal.** Hales' proof spends a chapter
+(Chapter 5: the `Q`-system, compatibility Lemma 5.28, and the four-way
+cancellation of Lemma 7.10) establishing that `A` is negligible. If `A` is
+presented as an antisymmetric bounded-range transfer, negligibility is the
+two-line estimate above, with a constant that does not depend on the packing.
+His four-way cancellation is precisely the antisymmetry bookkeeping, so
+*recasting* his correction in transfer form is the natural simplification —
+**flagged as Main's reading of his construction, not as a verified claim about
+his text.**
+
+**What it does not give.** Fcc-compatibility stays pointwise:
+`Σ_w φ(v,w) ≥ √32 − vol Ω(v)` for every `v`. Summed over a region this says the
+transfer must move exactly the deficit `√32 − vol Ω(v)` into each vertex, and
+since the total flux over a large region is `O(r²)`, the *integrated* requirement
+is `Σ_{B}(vol Ω(v) − √32) ≥ −C₁r²`, i.e. an averaged cell inequality — which is
+`K15-C025`'s cluster form with H4 supplied. So `K15-C035` closes H4 and leaves
+H2/H3 untouched. Reviewer X.
+
+### K15-C036 — why the icosahedral fixture cannot test fcc-compatibility (`PROVED` obstruction)
+
+`K15-C035` reduces the remaining obligation to the pointwise inequality
+`Σ_w φ(v,w) ≥ √32 − vol Ω(v)`. A fixture would have to *verify* it at the
+icosahedral vertex, where the deficit is `√32 − 5.550291 = 0.106563`. But:
+
+- the Voronoi cells of a finite point set are unbounded, so a bare 13-point
+  cluster has no volumes to sum;
+- completing the cluster inside a finite region gives cells `Ω_K` *inside* the
+  completion, and `Ω_K ⊇ Ω_{K'}` for `K ⊆ K'` (more bisectors only shrink), so
+  every computed volume is an **upper** bound for the cell in any packing
+  containing the cluster (`K15-E003`).
+
+Hence a finite fixture can only ever **refute** the required lower bound; it can
+never confirm it. This is the exact sense in which the transfer route is blocked:
+`K15-C035` removes the negligibility work, and what remains is a pointwise
+*lower* bound on Voronoi volume — an analytic inequality (Rogers/Fejes Tóth type),
+not a computation. Main tested the arithmetic of the bound (the deficit is
+`0.106563`, and a transfer of range `R = 2`, `Φ` must satisfy `Φ k_2 ≥ 0.106563`
+at that vertex, i.e. `Φ ≥ 0.106563/26 ≈ 0.0041`) and did not run a completion
+search, because by the monotonicity above it could not settle the question.
+
+**Consequence for the ledger.** G5 (an analytic cluster-volume lower bound) is the
+single remaining obligation on the geometric route; G4 and G6 are supplied or
+bypassed by `K15-C035`; G7's "falsification test" is withdrawn with `C029`.

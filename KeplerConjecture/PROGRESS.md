@@ -376,3 +376,20 @@ historical `99/100` case under Main's re-run, and their acceptance threshold is
 intermediate arithmetic corrected before pushing); and the C028 reference output,
 with the note that an ad-hoc variant of the search produced a wrong `0.472025`
 which must never enter the ledger.
+
+### K15-MAIN-008 — 2026-11-14 — correction notice for K15-MAIN-007
+
+**K15-C029 and everything downstream of it is withdrawn** (independent review
+0138): the proof assumed `A ≥ 0` when bounding `#D_θ` from a signed sum, so the
+"defect density is zero" statement and the "`A` must be negative on a
+full-density set" objective are invalid. `Main/REVIEW_0138.md` records the
+withdrawal, the rejected text, and the corrected estimate
+`θ·#(D_θ ∩ B(x,r)) ≤ C₁r² + N_A(x,r)` (K15-C029r), together with the conditional
+version under `A ≥ 0` (K15-C029c).
+
+Two additions replace what was lost: `K15-C035` (bounded-range antisymmetric
+transfers are negligible with the explicit constant `3Φ(R+1)⁵` — negligibility
+becomes a two-line estimate) and `K15-C036` (no finite fixture can verify the
+remaining pointwise volume inequality, because computed cells are upper bounds).
+The negative results on the shell and two-point families are narrowed to their
+tested scope; neither family is called closed.
