@@ -34,6 +34,9 @@ python3 exactcert_oracle.py
 
 # 2. shell proposer against Main's exact checker, ~5 s for degree 9
 python3 shell_propose.py --checker /tmp/shell_check.py --degree 9
+# best exact value in the family (~10 s):
+python3 shell_propose.py --checker /tmp/shell_check.py --degree 33 --tlo-exact --Umax 120
+python3 audit_fourier.py /tmp/shell_check.py
 ```
 
 For (2) copy Main's checker next to the run, or pass its absolute path:
@@ -55,6 +58,8 @@ used on the VM: numpy 2.5.3, scipy 1.18.1, sympy current.
 | `exactcert_tests.py` | `ALL TESTS PASS` | exit 0, including the `K21` refutation |
 | `exactcert_oracle.py` | `ALL ORACLE CHECKS PASS` | exit 0 |
 | `shell_propose.py --degree 9` | `eta=0` and `eta_free` both EXACT PASS at `Delta <= 0.87227746`; gain exactly 0 | both rows PASS; gain printed as `+0.00000000` |
+| `shell_propose.py --degree 33 --tlo-exact --Umax 120` | `Delta <= 0.78037031`, gain exactly 0 | PASS at degree 33 |
+| `audit_fourier.py` | `AUDIT PASS` | exit 0, A1/A2 exact and A3 quadrature agree |
 
 ## Caps
 

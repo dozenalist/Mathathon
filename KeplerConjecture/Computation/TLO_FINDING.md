@@ -82,6 +82,12 @@ So the limit is conditioning of the monomial basis at large `u`, not a mathemati
 `Umax = 120` is the useful setting. Anyone extending this should raise `Umax` with the degree
 rather than concluding that high degree is hopeless.
 
+**The optimum of the family, swept:** `(K, Umax) = (33, 120)` gives `0.78037031`; `(35, 120)`
+gives `0.78043244`; `(37, 120)` gives `0.78052696`; `(33, 160)` gives `0.78041926`. Raising the
+degree without raising the horizon *worsens* the bound, and raising the horizon alone breaks
+conditioning — a genuine two-sided trade-off. **`0.78037031` at `(33, 120)` is therefore the best
+exact certificate this pipeline yields**, at `+0.080%` from Cohn–Elkies.
+
 ## Consequence for the record
 
 * **`0.78037031` (`K = 33`, `Umax = 120`, `T_LO = 4π_lo`, `n = 27`, `ρ = 2.05`,
