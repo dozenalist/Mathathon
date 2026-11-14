@@ -106,6 +106,39 @@ try:
     check("X-C015 > Kepler and > Li floor", float(densv)>0.74048049 and float(densv)>0.770657)
 except FileNotFoundError:
     check("X-C015 present", False, "file missing")
+
+# X-C016: both-sides Gram at useful strength (same checks, no sign predicate needed)
+try:
+    dv = json.load(open('X_C016_certificate.json'))
+    mv, Sv = dv['m'], dv['S']
+    Gm = sp.Matrix([[R(c) for c in row] for row in dv['G']])
+    Am = sp.Matrix([[R(c) for c in row] for row in dv['A']])
+    Bm = sp.Matrix([[R(c) for c in row] for row in dv['B']])
+    def _v2(x): return sp.Matrix([x**i for i in range(mv+1)])
+    Hb = sp.expand((_v2(s_/Sv).T*Gm*_v2(s_/Sv))[0])
+    Pv = sp.expand(-(s_-4)*Hb); Qv = sp.expand(G.apply_map(Pv))
+    Qb = sp.expand((_v2(G.v_/Sv).T*Am*_v2(G.v_/Sv))[0]
+                   + G.v_*(_v2(G.v_/Sv).T*Bm*_v2(G.v_/Sv))[0])
+    def _ldl(M):
+        nn=M.rows; cur=M[:,:]
+        for k in range(nn):
+            dd=cur[k,k]
+            if dd<0: return False
+            if dd==0:
+                if any(cur[k,j]!=0 for j in range(k,nn)): return False
+                continue
+            for i in range(k+1,nn):
+                f=cur[i,k]/dd
+                for j in range(k,nn): cur[i,j]=cur[i,j]-f*cur[k,j]
+        return True
+    check("X-C016 identity Q(A,B) == Q(Fourier map)", sp.simplify(Qb-Qv)==0)
+    check("X-C016 G,A,B PSD (exact rational LDL)", _ldl(Gm) and _ldl(Am) and _ldl(Bm))
+    P0v=Pv.subs(s_,0); Q0v=Qv.subs(G.v_,0)
+    densv=R(4,3)/sp.sqrt(sp.pi)*P0v/Q0v
+    check("X-C016 density matches stored", abs(float(densv)-float(dv['density']))<1e-12, "%.12f" % float(densv))
+    check("X-C016 > Kepler and > Li floor", float(densv)>0.74048049 and float(densv)>0.770657)
+except FileNotFoundError:
+    check("X-C016 present", False, "file missing")
 verify_json('X_C013_certificate.json', 'X-C013 (m=3,       0.794809296)')
 
 # X-C010 has no JSON; rebuild from its explicit formula

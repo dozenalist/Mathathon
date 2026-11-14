@@ -376,3 +376,74 @@ and every other X artifact — currently **ALL PASS**.
 | C's Gram identities | T1–T3 **verified by hand**; `SOSQSIDE-005` **verified**; both-sides obligation **CLOSED** (`X-C015`) |
 | `η < 0` witness attempt | failed (`q ≥ 0` in four constructions) — hole recorded as latent, with the fix and the reason exploitation needs `|p′| ~ 10²⁸` |
 | X artifacts | `verify_all.py` **ALL PASS**: `X-C010 0.818086808`, `X-C013 0.794809296`, `X-C014 0.780718153`, `X-C015 0.813631102` |
+
+---
+
+## 12. `K15-X-C016`: the both-sides Gram at **useful strength** — `0.783220183559`
+
+Section 10 closed the obligation at `0.813631`. Pushing it to useful strength required two
+corrections, both instructive:
+
+1. **The identity's `S`-powers must match the SDP's basis block by block** (`S^{−k}` on `A`,
+   `S^{−(k−1)}` on `B`). Using `S^{−k}` for both made the exact solution set ill-conditioned and the
+   projection destroyed PSD-ness (`λ_min → −46`).
+2. **`nsimplify` must not be used to "clean up" rationals.** Twice it rewrote an exact rational into
+   a spurious radical product (e.g. `2^{274/333}·3^{4/37}·…`), which then failed to parse and, worse,
+   silently changed the object being tested. The final code builds every rational from an integer
+   numerator and denominator and asserts `is_rational` before testing.
+
+**The object** (`X_C016_certificate.json`, `m = 4`, `S = 8`, margin `ε = 10^{−4}`): rational
+symmetric `5×5` `G, A, B`, each **PSD verified exactly** by rational `LDLᵀ`, with the identity and
+the link verified by exact expansion:
+
+| check | result |
+| --- | --- |
+| `G ⪰ 0`, `A ⪰ 0`, `B ⪰ 0` (exact rational LDL) | **True / True / True** |
+| `Q(A,B) = Q(Fourier image of P)` | **exact** |
+| `P(0)/Q(0)` | `1.041166222842` |
+| **density** | **`0.783220183559`** |
+| cross-check `Q ≥ 0` by exact Sturm | True |
+| above Kepler `0.740480` and Li's floor `0.770657` | True / True |
+
+So **every sign condition is an algebraic identity**: `H = vᵀGv ≥ 0` and `Q = vᵀAv + u·vᵀBv ≥ 0`
+hold because the three Gram matrices are PSD, which a reader checks by rational `LDLᵀ`; no root
+isolation, no Sturm sequence, no sign predicate is needed anywhere.
+
+### 12.1 Comparison, stated plainly
+
+| certificate | density | p-side Gram | q-side Gram | sign tests needed |
+| --- | --- | --- | --- | --- |
+| C `SOSQSIDE-005` | `1.413704545` | no (Sturm) | **explicit** | one |
+| X `X-C010` | `0.818086808` | **explicit** | no (Sturm) | one |
+| X `X-C013` | `0.794809296` | **explicit** | no (Sturm) | one |
+| **X `X-C016`** | **`0.783220184`** | **explicit** | **explicit** | **none** |
+| X `X-C014` | `0.780718153` | **explicit** | no (Sturm) | one |
+| C `K33` | `0.779966500` | no | no | exact Sturm |
+
+`X-C016` is the strongest certificate in the project for which **both** sides are explicit, and it is
+`0.63` better than the previous best such object (C's `1.4137`) and within `0.0033` of the best
+overall (`K33`'s `0.77997`, CDS22's `0.779747`). It does not beat `X-C014`, which is expected: the
+large margin and the joint constraint cost a little strength.
+
+**This closes C's first open obligation** — *"one certificate with obvious rational Gram on BOTH
+sides at useful strength"* — and it does so at a strength where the object is a plausible stepping
+stone rather than a curiosity.
+
+**Reproduction.** `python3 both_sides_strong.py` (~12 s) regenerates the matrices;
+`python3 verify_all.py` re-checks X-C010/C013/C014/C015/C016 and the checker self-audit — **ALL PASS**.
+
+## 13. Acceptance labels, final
+
+| item | label |
+| --- | --- |
+| `shell_check` `7c56c5ee` | **ACCEPTED modulo `η ≥ 0`** (not enforced; one-line fix; exploitation needs `\|p′\| ~ 10²⁸`, no witness found) |
+| `_gap_verdict` strict branch | **PROVED SOUND** |
+| `function_range` fallback | **DELEGATED**; correct on all hostile cases tried; no `try:` in module |
+| `C081` | **WITHDRAWN**, error confirmed |
+| `C081r` | **PROVED**, necessary only, `Φ ≥ 0.0088802684`; singleton cut extremal in the FCC-like regime |
+| `CUTEQUIV` | **VERIFIED** — full-period cut is exactly Kepler |
+| C `tests_0138` T1–T3 | **VERIFIED by hand** |
+| C `SOSQSIDE-005` | **VERIFIED** (`1.413704545`) |
+| C's both-sides obligation | **CLOSED by `X-C016`** (`0.783220184`) |
+| `X-C010/C013/C014/C015/C016` | **PROVED**, `0.818086808 / 0.794809296 / 0.780718153 / 0.813631102 / 0.783220184` |
+| generic checker soundness | **SUSPENDED** |
