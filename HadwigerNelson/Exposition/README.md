@@ -4,15 +4,20 @@ The aim is to make the proof something a reader can reason with: see the geometr
 
 Start with [the proof walkthrough](ProofWalkthrough.md). It follows the two difficult bridges: from an arbitrary colouring to measurable structure, and from measurable structure to geometric contradictions. The [source map](SourceMap.md) gives exact statements and locators.
 
-```mermaid
-flowchart TD
-  A[Assume a proper five-colouring of the plane] --> B[Build a weak measurable colouring]
-  B --> C[Extract limiting angular palettes]
-  C --> D[Topology forces a cycle of colour transitions]
-  D --> E[Actual connected interfaces exclude colour pairs]
-  E --> F[Rule out cycles of length 3, 4, and 5]
-  F --> G[Contradiction]
-```
+![Proof roadmap: assume a proper five-colouring, build a weak measurable colouring, extract angular palettes, force a cycle of transitions, construct connected interfaces with colour exclusions, rule out cycles of length three, four, or five, and reach a contradiction.](Figures/proof-roadmap.svg)
+
+<details>
+<summary>Read the proof roadmap as text</summary>
+
+1. Assume a proper five-colouring of the plane.
+2. Build a weak measurable colouring.
+3. Extract limiting angular palettes.
+4. Use topology to force a cycle of colour transitions.
+5. Construct actual connected interfaces that exclude colour pairs.
+6. Rule out cycles of length three, four, or five.
+7. Reach a contradiction.
+
+</details>
 
 The arrows summarize the supplied argument, not new theorems proved by this guide. The measurable replacement requires a substantial analytic theorem; the geometric interfaces are constructed, not assumed to be smooth boundaries.
 
