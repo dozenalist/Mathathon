@@ -8,11 +8,40 @@
 | Literature and modern obstructions | Source compilation | Literature/README.md and CORE_SOURCES.md | Main and Counterexamples |
 | Earlier SAIR work | First coordinator checkpoint reviewed; corrections required | Main/SUPERVISOR_REVIEW_23906.md | Main and Counterexamples |
 | New simpler general 3D proof | Open | No accepted new theorem at setup | Main |
-| Numerical reproduction | Proposed handoff needs normalization and executable-source repairs | Main/SUPERVISOR_REVIEW_23906.md | Computation and Astra |
+| Numerical reproduction | Main bug reproduced; three independent CE grid controls run locally; no certificate | Computation/Reviews/27616/README.md | Computation and Counterexamples |
 | Local Lean proofs | Targeted-import algebraic normalization passed locally; geometric bridges remain open | Lean/Review/README.md | Main and Astra |
 | Publication and response logs | Setup published in draft PR #1; save and push every final response | Main/SUPERVISION.md and ChatLogs/ | Astra |
 
 ## History
+
+### K15-REVIEW-003 — 2026-11-13, America/Los_Angeles
+
+Astra checked an old Main watcher error alert and found the replacement alive,
+waiting and already holding new completion 27616. All four owned watchers were
+alive; no restart or uncertain resend was needed. Exact project/session and
+completion binding was verified against state, ownership and live history.
+
+Reviewed Main source `a08f378be6a03f80ac075b34f8ba99aeb8201d9e` with an
+independent mathematical auditor. Several earlier corrections are sound, but
+the exported proofs retain counting, denominator and hybrid-sign gaps. The
+finite-zero objection was narrowed to preserve the stronger Fourier-positive
+theorem's hypotheses. See `Main/SUPERVISOR_REVIEW_27616.md`.
+
+Local computation reproduced an omitted Fourier-positivity constraint in
+Main's script, invalidating C014. The separate Computation code was executed
+at degree/grid (31,1200), (31,4000), and (41,4000). Its values approach the
+published control but all tested candidates retain sign violations. Status is
+`TESTED_FINITE`, with no new certified bound. The updated targeted-import Lean
+normalization passed under the pinned toolchain, with no geometric bridge
+claimed. Source hashes, commands, exact versions and output logs are committed.
+
+Main lacks a tool for contacting its existing workers. Astra therefore sent
+the four owned sessions coordinated 90-minute assignments directly and
+confirmed their delivered records. Main owns integration. The IDs and prior
+completion sequences are recorded in the review for duplicate suppression.
+The next block repairs the evidence and advances a concrete local geometric
+candidate plus a distinct strengthened analytic candidate, with heavy execution
+offloaded locally. No new chats or historical swarms were started.
 
 ### K15-OPS-002 — 2026-11-13, America/Los_Angeles
 

@@ -9,8 +9,18 @@ Continue independent mathematical work while an already-submitted job runs.
 
 ## Queue
 
-No computational request has been submitted at setup. No new Kepler theorem
-has been locally compiled or numerically certified at this checkpoint.
+Supervisor checkpoint after Main completion 27616:
+
+| Request | Local status | Evidence and limits |
+| --- | --- | --- |
+| Main 001 rev. 2 | Original and minimally repaired grid scripts executed | Computation/Reviews/27616/; omitted Fourier constraints invalidate the claimed negative theorem; exact SOS solver is not implemented |
+| Main 002 | Updated targeted-import normalization passed Lean 4.35.0 | Lean/Review/27616/; algebraic identity only; full import not rerun after timeout |
+| Computation 001 | Conversions, fixtures and three degree/grid controls completed | Computation/Reviews/27616/; sign violations remain; r0 variant deferred for density-scaling repair |
+| X-R01 | NEEDS_AUTHOR | Exact driver is a sketch; coefficient-field and Fourier-map review required |
+| Experimental interval job | NEEDS_AUTHOR | No executable certified outer-region enclosure supplied |
+
+Main and Computation reused request IDs 001/002. The next assignment requires
+distinct role-prefixed IDs. No new global sphere-packing certificate is claimed.
 
 ## Required request record
 

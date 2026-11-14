@@ -1,0 +1,31 @@
+{
+  "status": "EXPLORATORY / NEGATIVE RESULT - see conclusion",
+  "conclusion": "A grid-discretised Cohn-Elkies LP does not bound f(0)/fhat(0): the free LP is unbounded below (unbounded ray with f(0) -> -inf). With the rigorous floor f(0) >= 3/(32 pi) forced, the optimum is the floor itself, i.e. the grid conditions are vacuous. Exact SOS/Gram identities are therefore mandatory; do not submit grid baselines.",
+  "degree": 8,
+  "basis": "exp(-pi s) L_k^{1/2}(2 pi s), s = |x|^2",
+  "sign_region_f_nonpositive": "t = 2*pi*s >= 8*pi  (|x| >= 2)",
+  "grid_points": 1203,
+  "tmax": 40.0,
+  "lp_free_status": 0,
+  "lp_free_objective": -18719434.7288689,
+  "rigorous_floor_f0": 0.029841551829730376,
+  "lp_floored_status": 0,
+  "lp_floored_f0": 0.02984155248850584,
+  "delta_from_floor": 0.12499999999999999,
+  "coefficients": [
+    1000000.0,
+    -1000000.0,
+    1000000.0,
+    486830.13539235486,
+    1000000.0,
+    -1000000.0,
+    -681120.7867869216,
+    1000000.0,
+    -1000000.0
+  ],
+  "audit_min_fhat": -2.478274365778106e+41,
+  "audit_min_fhat_at_t": 100000.0,
+  "audit_max_f_on_region": -67881067540.178604,
+  "audit_max_f_at_t": 25.133,
+  "seconds": 0.15
+}

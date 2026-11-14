@@ -1,0 +1,16 @@
+{
+  "source_commit": "a08f378be6a03f80ac075b34f8ba99aeb8201d9e",
+  "source_file": "KeplerConjecture/Lean/Kepler15/Normalisation.lean",
+  "scope": "Definitional algebraic normalization only",
+  "exit_code": 0,
+  "changes": "Replace broad import with four targeted imports, append axiom print; mathematical declarations unchanged",
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "checked_file": "NormalisationTargeted.lean",
+  "lean_version": "4.35.0",
+  "sha256": "fc3be0de524aa203223be6e49b5d4c722f11f3d2ef425706dd966bcff4c5750e"
+}

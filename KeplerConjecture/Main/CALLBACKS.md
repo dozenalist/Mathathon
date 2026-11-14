@@ -1,5 +1,16 @@
 # Completion review and duplicate handling
 
+## Main completion 27616 — reviewed during watcher-error handling
+
+The alert was from an older failed watcher. Its replacement is alive and had
+already saved the new result. Source `a08f378be6a03f80ac075b34f8ba99aeb8201d9e`
+was reviewed, local numerical and Lean jobs were executed, and four follow-ups
+were confirmed delivered. See
+[SUPERVISOR_REVIEW_27616.md](SUPERVISOR_REVIEW_27616.md) for the findings and
+message IDs. This cycle also supplies the next assignments for Computation
+44212, Experimental 32222 and Counterexamples 35865. Their later callbacks
+must be deduplicated against the recorded prompt IDs, not trigger fresh sends.
+
 ## Main completion 23906 — duplicate callback, November 13, 2026 PST
 
 The callback report ending `3b12e1313ce0411a95b1525d49c25381.json` was checked

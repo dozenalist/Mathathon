@@ -1,0 +1,10 @@
+{
+  "degree": 8,
+  "lp_free_status": 0,
+  "lp_free_objective": -18719434.7288689,
+  "rigorous_floor_f0": 0.029841551829730376,
+  "lp_floored_status": 0,
+  "lp_floored_f0": 0.02984155248850584,
+  "delta_from_floor": 0.12499999999999999,
+  "seconds": 0.15
+}
