@@ -3,8 +3,38 @@
   "publication_branch": "kepler15/setup-01a1d8c0",
   "pull_request": "https://github.com/dozenalist/Mathathon/pull/1",
   "synchronization": "All four source revisions merged with authorship retained. Only KeplerConjecture paths changed. Conflicting progress records preserved separately.",
-  "review_status": "Reviewed: K21 certificate refuted; Gaussian infeasibility refuted; geometric claims narrowed. No accepted new packing bound. See HOURLY_REVIEW_2026-11-14_0008.md.",
+  "review_status": "Original K21 certificate refuted. Four subsequent repair checkpoints merged; local regression/diagnostic results recorded. Full repair review pending; no new accepted packing bound.",
   "sources": [
+    {
+      "role": "Main",
+      "branch": "kepler15/main",
+      "commit": "49c3d70ebbbb3a4b14bf4266be7961ece1d241cd",
+      "completion": 30821,
+      "review_status": "Synchronized; bounded checks recorded; full next-hour review pending"
+    },
+    {
+      "role": "Computation",
+      "branch": "kepler15/comp-01a1d8c0",
+      "commit": "8bb50f857916ba986f42690b0ec081edebc4efdc",
+      "completion": 49543,
+      "review_status": "Synchronized; bounded checks recorded; full next-hour review pending"
+    },
+    {
+      "role": "Experimental",
+      "branch": "kepler15/experimental/run-01",
+      "commit": "96fbf9bbcb6eef18b9f56ec926f226a6473fc22d",
+      "completion": 36801,
+      "review_status": "Synchronized; bounded checks recorded; full next-hour review pending"
+    },
+    {
+      "role": "Counterexamples",
+      "branch": "kepler15/counterexamples/run-01",
+      "commit": "3831361a0b4d9366597c82191e78327eee96e404",
+      "completion": 44182,
+      "review_status": "Synchronized; bounded checks recorded; full next-hour review pending"
+    }
+  ],
+  "reviewed_sources": [
     {
       "role": "Main",
       "branch": "kepler15/main",

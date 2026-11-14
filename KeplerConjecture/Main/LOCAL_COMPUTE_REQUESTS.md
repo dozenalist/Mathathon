@@ -29,6 +29,14 @@ certification prerequisite failed. New bounded offloads for the repaired checker
 Gaussian driver and shell-count benchmark are assigned but not yet submitted.
 No new Lean source arrived in the four reviewed completions.
 
+Publication supplement: C's repaired checker suite passed locally in 21 seconds;
+full independent validation remains open. E's floating shell diagnostic and X's
+one-iteration driver were run, and X's rational-truncation bug was reproduced.
+See `LocalChecks/2026-11-14_0008/`. New requests `K15-C-REQ-003` and
+`K15-EXP-002` explicitly refer to unwritten `shell_bench.py` and
+`tammes13_enclosure.py`; their state is **NEEDS_IMPLEMENTATION**. No heavy job
+is waiting on an executable handoff, and no local job remains running.
+
 ### M-NUM-002 — rational SOS certificate, revised specification (not to be run before C-CERT-001)
 
 The rev. 2 text of the old `K15-COMPUTE-001` was not a coherent certificate

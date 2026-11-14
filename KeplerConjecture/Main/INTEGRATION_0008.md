@@ -1,5 +1,11 @@
 # Integration note — hourly review 00:08 PST, 2026-11-14
 
+> Supervisor publication note: the previously unavailable review artifacts below
+> are now present at `b649a85` on the supervisor branch. The four subsequent
+> worker checkpoints and bounded local checks are listed in
+> [the hourly review](HOURLY_REVIEW_2026-11-14_0008.md). Historical statements
+> about unavailable files refer to Main's earlier fetch of `0e28e09`.
+
 Compact record of what this cycle integrated, from where, and what is still
 unattached. Sources by full hash. Nothing here is a new packing theorem.
 

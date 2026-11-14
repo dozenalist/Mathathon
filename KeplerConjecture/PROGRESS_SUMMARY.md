@@ -86,6 +86,16 @@ focused follow-ups were delivered at 00:25 Pacific, with pushed checkpoints
 due by 01:00. The detailed review and delivery records are in
 [Main's hourly review](Main/HOURLY_REVIEW_2026-11-14_0008.md).
 
+The workers completed that block before publication, and their new commits are
+also included. Main has reconciled the central retractions. Computation supplied
+a repaired checker whose regression tests pass locally, while Experimental
+supplied revised geometric statements and a partition candidate. These await
+full independent review. The strengthened benchmark and rigorous angle-enclosure
+programs are still unwritten. The repaired Gaussian driver reports its solver
+error honestly, but another local test found integer truncation in its comparison
+helper. All small checks have finished. No extra prompt cycle was started;
+these new completions are queued for the next hourly review.
+
 ## How the next stages will run
 
 The four Sair-Watch processes have been stopped. Hourly reviews in this Codex

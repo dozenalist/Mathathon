@@ -16,8 +16,8 @@ supervisor reviews identify which claims have actually been checked.
 | Numerical reproduction | Main bug reproduced; three independent CE grid controls run locally; no certificate | Computation/Reviews/27616/README.md | Computation and Counterexamples |
 | Local Lean proofs | Targeted-import algebraic normalization passed locally; geometric bridges remain open | Lean/Review/README.md | Main and Astra |
 | Publication and response logs | Four SAIR branches synchronized; hourly updates and cumulative summary required | Main/HOURLY_SYNC.json, PROGRESS_SUMMARY.md and HourlyUpdates/ | Astra |
-| New rational certificate | REFUTED: exact negative Fourier value; quiet checker accepts failures | Computation/Reviews/48443/README.md | Computation repair; Counterexamples review |
-| Rational Gaussian control | Exact feasible point found; density factor and solver-error handling require repair | Counterexamples/Reviews/41644/README.md | Counterexamples and Astra |
+| New rational certificate | REFUTED; repaired checker regression suite passes, full validation pending | Computation/Reviews/48443/README.md; Main/LocalChecks/2026-11-14_0008/ | Counterexamples and Astra |
+| Rational Gaussian control | Feasible control verified; density factor repaired; model error and comparison truncation remain | Counterexamples/Reviews/41644/README.md; Main/LocalChecks/2026-11-14_0008/ | Counterexamples and Astra |
 | Geometric and strengthened analytic targets | Restricted shell lemma and existential partition remain open; no implemented improved bound accepted | Main/HOURLY_REVIEW_2026-11-14_0008.md | Experimental, Computation and Main |
 | Review cadence | Hourly schedule active; all four Sair-Watch processes stopped | Main/SUPERVISION.md | Astra |
 
@@ -55,6 +55,31 @@ module or long-running task remains. Four focused follow-ups, at most 35 minutes
 and checkpoint by 01:00 Pacific, were delivered to the existing owned chats at
 00:25. Main integrates; delivery IDs and dedup evidence are recorded in the
 hourly review. Watch-Sair remains stopped. No new Kepler bound is accepted.
+
+### K15-HOURLY-001 publication supplement — 2026-11-14, 00:35 Pacific
+
+The four agents completed the new block before publication. M30821/C49543/
+E36801/X44182 correspond to sources `49c3d70e`/`8bb50f85`/`96fbf9bb`/`3831361a`.
+These checkpoints were merged with authorship retained; historical progress
+conflicts retain both sides. Full hashes and original reviewed inputs are in
+`Main/HOURLY_SYNC.json`. They await the next scheduled full review; no second
+prompt cycle was started.
+
+Four local bounded checks completed. C's regression suite passes in 21 seconds
+(finite samples are not a verifier proof). E's script computes the rational
+shell endpoint and floating margin but does not supply a directed enclosure.
+X's degree-six single iteration reproduces a Model error and no candidate;
+an exact regression finds `kepler_ok(99/100,1)` incorrectly true because it
+truncates the rationals. Logs, time caps and source hashes are in
+`Main/LocalChecks/2026-11-14_0008/`. E's actual enclosure program and C's
+strengthened benchmark are explicitly unwritten, so those requests require
+implementation before execution. No local job remains running.
+
+Main has integrated the principal retractions and narrowed its claims. Several
+claims in X's new note remain false; specific objections are recorded in the
+hourly review and prefixed to the report. The original exact audits are now
+available at `b649a85`, resolving the workers' temporary inability to fetch
+them. All four new completions are saved as pending for 01:00 Pacific.
 
 ### K15-HOURLY-SETUP — 2026-11-14, America/Los_Angeles
 

@@ -23,8 +23,9 @@ in `Computation/Reviews/27616/` to understand that failure and the canonical
 Computation requests for subsequent work.
 
 The November 14 hourly review also rejected the submitted K21 certificate.
-`Computation/exactcert.py` is the unsound original pending worker repair;
-use [the exact rejection](Computation/Reviews/48443/README.md), not its success
-flag. The [Gaussian-driver audit](Counterexamples/Reviews/41644/README.md)
-documents a separate normalization and solver-status failure. Frozen source
-copies in the review directories exist solely to reproduce those failures.
+The unsound original is frozen with [the exact rejection](Computation/Reviews/48443/README.md).
+The latest repaired checker passes its local regression suite but still awaits
+independent validation. The [Gaussian-driver audit](Counterexamples/Reviews/41644/README.md)
+documents a separate normalization and solver-status failure; the latest repair
+retains a rational-truncation bug described in [the new checks](Main/LocalChecks/2026-11-14_0008/README.md).
+Frozen source copies exist solely to reproduce the original failures.
