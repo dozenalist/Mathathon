@@ -34,8 +34,10 @@ command set to run before quoting anything.
 | `cut_isoperimetry.py` | 0.09 s | the FCC profile |
 | `cut_fixture_close.py` | 0.22 s | the jamming negative |
 | `cut_fixture_frank_kasper.py` | 0.10 s | the A15 negative |
-| `fixture_nonuniform.py` | 29 s | exact Voronoi volumes, the nonuniform fixture, the two-site theorem, the certificate and the sampler cross-check |
-| `fixture_dense_shell.py` | 34 s | the nonvacuous fixture, its conventions, the exact minimum, the closure obstruction, the profile and the convergence |
+| `fixture_nonuniform.py` | 28 s | exact Voronoi volumes, the nonuniform fixture, the two-site theorem, the certificate and the sampler cross-check |
+| `fixture_dense_shell.py` | 4 min 03 s | the nonvacuous fixture with CERTIFIED volumes at `rmax = 12` (the rmax gate forces it: the shell cells reach 5.47); conventions, exact minimum, closure obstruction, profile, convergence |
+| `tests_exact_volume.py` | 0.1 s | 25 adversarial checks of the exact-volume verifier |
+| `crosscheck_volume.py 100 200000 0` | 1.3 s | 100 random polytopes vs an independent sampler |
 
 ## One-line reproduction of everything quoted in `REVIEW_0353.md`
 

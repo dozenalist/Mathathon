@@ -108,7 +108,7 @@ def self_test():
           FN.edges_within(L, sites, 2) == [])
 
     print("\nP3  exact cell volumes on the torus")
-    detL, vols, info = FN.evaluate(L, sites, rmax=6)
+    detL, vols, info = FN.evaluate(L, sites, rmax=12)
     check("the thirteen cells sum to 512 exactly", sum(vols) == detL, (sum(vols), detL))
     v0 = vols[0]
     print("     central cell volume = %s = %.12f" % (v0, float(v0)))
@@ -317,7 +317,7 @@ def central_volume(r):
     sites = [(F(0), F(0), F(0))] + shell(r)
     if FN.min_separation(L, sites) < 4:
         return None
-    detL, vols, _ = FN.evaluate(L, sites, rmax=6)
+    detL, vols, _ = FN.evaluate(L, sites, rmax=12)
     return vols[0]
 
 def family():

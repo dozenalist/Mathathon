@@ -57,6 +57,7 @@ Reproduction: python3 fixture_nonuniform.py
 import itertools, json, os, sys
 from fractions import Fraction as F
 import numpy as np
+import exact_volume as EV
 from scipy.spatial import ConvexHull
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
@@ -139,13 +140,24 @@ def _facet_volume(v, planes, verts):
     return total
 
 
-def cell_volume(v, competitors, _drop_active=None, return_vertices=False):
-    """Exact volume of {x : |x-v| <= |x-w| for every w in competitors}.
+def cell_volume(v, competitors, rmax=None, return_vertices=False, return_certificate=False):
+    """The Voronoi cell volume of v, as a CHECKED exact certificate.
 
-    Half-spaces  2(w-v).x <= |w|^2 - |v|^2  are rational; vertices are enumerated exactly and the
-    volume is the exact sum of |det|/6 over the triangles of a hull, using v (strictly interior) as
-    the apex.  scipy supplies only the COMBINATORICS of the hull -- every coordinate it sees is a
-    float, but the numbers used in the volume are the rational vertices.
+    The polyhedron is {x : |x-v| <= |x-w| for w in competitors}, i.e. the half-spaces
+        2(w-v).x <= |w|^2 - |v|^2 .
+    The volume comes from `exact_volume.certify_volume`, whose certificate is re-checked by exact
+    rational arithmetic (see that module for the list of obligations).  Nothing here trusts the
+    search: the certificate is verified before its volume is returned.
+
+    ONE THING THE CERTIFICATE CANNOT SEE: whether the competitor list was complete.  A certificate
+    proves the volume of the intersection of the planes it is GIVEN.  That is why the caller must
+    pass every competitor within rmax, and why this function now CHECKS the sufficient condition
+
+        2 * max{ |x - v| : x a vertex of the cell }  <=  rmax ,
+
+    i.e. every competitor outside rmax is farther than twice the cell's circumradius and therefore
+    cannot cut it.  (The global check -- the cell volumes summing to the period volume -- catches the
+    same failure from the other side.)
     """
     planes = []
     vv = norm2(v)
@@ -154,76 +166,39 @@ def cell_volume(v, competitors, _drop_active=None, return_vertices=False):
             continue
         n = [2 * (w[t] - v[t]) for t in range(3)]
         planes.append((n[0], n[1], n[2], norm2(w) - vv))
-    seen, P = set(), []
-    for pl in planes:
-        key = tuple(F(x) for x in pl)
-        if key in seen:
-            continue
-        seen.add(key); P.append(key)
-    if len(P) < 4:
-        raise RuntimeError("only %d competitor planes within rmax: the cell looks UNBOUNDED. "
-                           "Increase rmax past half the period diameter." % len(P))
-    # STAGE 1 (float): which planes are actually ACTIVE?  Only those can contribute a vertex.
-    from scipy.spatial import HalfspaceIntersection
-    hs = np.array([[float(pl[0]), float(pl[1]), float(pl[2]), -float(pl[3])] for pl in P])
-    hi = HalfspaceIntersection(hs, np.array([float(c) for c in v]))
-    pts = hi.intersections
-    active, discarded = [], []
-    for pl in P:
-        n = np.array([float(pl[0]), float(pl[1]), float(pl[2])]); d = float(pl[3])
-        if np.any(np.abs(pts @ n - d) < 1e-7):
-            active.append(pl)
-        else:
-            discarded.append(pl)
-    if _drop_active is not None:
-        # TEST HOOK: move an active plane into the discarded set, so the completeness certificate
-        # must fire.  A check that cannot fail is not a check.
-        discarded.append(active.pop(_drop_active))
-    # STAGE 2 (exact): enumerate vertices of the active planes only.
-    Af = np.array([[float(x) for x in pl] for pl in active])
-    verts = []
-    for i, j, k in itertools.combinations(range(len(active)), 3):
-        if abs(np.linalg.det(Af[[i, j, k], :3])) < 1e-9:
-            continue
-        pt = solve3([active[i], active[j], active[k]])
-        if pt is None:
-            continue
-        ok = True
-        for (a, b, c, d) in active:
-            if a * pt[0] + b * pt[1] + c * pt[2] > d:
-                ok = False; break
-        if ok:
-            verts.append(pt)
-    verts = sorted(set(verts))
-    if len(verts) < 4:
-        raise RuntimeError("degenerate cell (only %d vertices)" % len(verts))
-
-    # ---------------------------------------------------------------- COMPLETENESS CERTIFICATE
-    # The float pass above only PROPOSES which planes are active.  Three exact checks then certify
-    # that the enumerated polytope really is the cell:
-    #   (C1) every active plane supports a facet of the hull  =>  the hull equals the intersection
-    #        of the active half-spaces (it is contained in it, and all facets are used), hence the
-    #        candidate region is bounded and is exactly hull(vertices);
-    #   (C2) every DISCARDED plane contains every vertex  =>  adding the discarded half-spaces does
-    #        not cut the hull, so the true cell equals the hull;
-    #   (C3) the hull is non-degenerate (checked above by the vertex count).
-    # Together: the volume computed below is the volume of the Voronoi cell, with no reliance on the
-    # float pre-pass being right.
-    # (C1') the facet-by-facet volume uses only planes and exact vertices; the checks below
-    #       certify that the plane set is complete: every enumerated vertex satisfies every plane of
-    #       A (by construction) and every DISCARDED plane contains every vertex, so the polytope
-    #       built from A is the true cell.
-    for (a, b, c, d) in discarded:
-        for (x, y, z) in verts:
-            if a * x + b * y + c * z > d:
-                raise RuntimeError("completeness (C2) failed: a discarded plane cuts the hull")
-
-    vol = _facet_volume(v, active, verts)
-    if vol <= 0:
-        raise RuntimeError("degenerate cell: the facet decomposition gave volume %s" % vol)
+    # the float pass PROPOSES a candidate set; the certificate proves the answer either way
+    cand = None
+    try:
+        from scipy.spatial import HalfspaceIntersection
+        hs = np.array([[float(pl[0]), float(pl[1]), float(pl[2]), -float(pl[3])] for pl in planes])
+        hi = HalfspaceIntersection(hs, np.array([float(c) for c in v]))
+        pts = hi.intersections
+        cand = []
+        for pl in planes:
+            n = np.array([float(pl[0]), float(pl[1]), float(pl[2])])
+            if np.any(np.abs(pts @ n - float(pl[3])) < 1e-7):
+                cand.append(pl)
+    except Exception:
+        cand = None
+    try:
+        vol, cert = EV.certify_volume(planes, v, candidates=cand)
+    except ValueError as e:
+        # fall back to the assumption-free slow path before giving up
+        try:
+            vol, cert = EV.certify_volume(planes, v, candidates=None)
+        except ValueError as e2:
+            raise RuntimeError("the cell does not certify: %s / %s" % (e, e2))
+    verts = [tuple(F(x) for x in P) for P in cert["vertices"]]
+    r_cell = max((sum((P[t] - v[t]) ** 2 for t in range(3)) for P in verts), default=F(0))
+    if rmax is not None and 4 * r_cell > F(rmax) ** 2:
+        raise RuntimeError("rmax = %s is too small: the cell has a vertex at distance %.6f, so a "
+                           "competitor at 2*that (%.6f) could cut it and is not in the list"
+                           % (rmax, float(r_cell) ** 0.5, 2 * float(r_cell) ** 0.5))
+    if return_certificate:
+        return vol, cert
     if return_vertices:
-        return vol, len(verts), len(active), verts
-    return vol, len(verts), len(active)
+        return vol, len(verts), len(cert["facets"]), verts
+    return vol, len(verts), len(cert["facets"])
 
 
 def min_separation(L, sites, rng=3):
@@ -256,7 +231,7 @@ def evaluate(L, sites, rmax=6):
                 w = tuple(s[t] + n[t] for t in range(3))
                 if norm2([w[t] - v[t] for t in range(3)]) <= rmax * rmax:
                     comp.append(w)
-        vol, nv, np_ = cell_volume(v, comp)
+        vol, nv, np_ = cell_volume(v, comp, rmax=rmax)
         vols.append(vol); info.append((nv, np_))
     if sum(vols) != detL:
         raise RuntimeError("cell volumes sum to %s, period volume is %s: rmax did not bound the "
@@ -500,10 +475,21 @@ def engine_cross_check(trials=3, N=2 ** 18):
     """
     from scipy.stats.qmc import Sobol
     ok = True
+    # rmax must EXCEED 2 * the cell's circumradius (8*sqrt3 = 13.856 here), or the rmax gate
+    # refuses -- which is the gate working, not a failure
     detL, vols, _ = evaluate([[F(16), F(0), F(0)], [F(0), F(16), F(0)], [F(0), F(0), F(16)]],
-                             [(F(0), F(0), F(0))], rmax=20)
+                             [(F(0), F(0), F(0))], rmax=30)
     ok = ok and vols[0] == 4096
     print("  %s 16-cube single site: volume 4096" % ("PASS" if vols[0] == 4096 else "FAIL"))
+    try:
+        evaluate([[F(16), F(0), F(0)], [F(0), F(16), F(0)], [F(0), F(0), F(16)]],
+                 [(F(0), F(0), F(0))], rmax=20)
+        gate = False
+    except RuntimeError:
+        gate = True
+    print("  %s rmax = 20 is refused although 16 < 20 (the cell reaches 2*sqrt3*8/2 = 13.86)"
+          % ("PASS" if gate else "FAIL"))
+    ok = ok and gate
     try:
         evaluate([[F(16), F(0), F(0)], [F(0), F(16), F(0)], [F(0), F(0), F(16)]],
                  [(F(0), F(0), F(0))], rmax=6)
@@ -564,28 +550,13 @@ def engine_cross_check(trials=3, N=2 ** 18):
             w = tuple(s[t] + n[t] for t in range(3))
             if norm2([w[t] - S3[0][t] for t in range(3)]) <= 36:
                 comp.append(w)
-    active, discarded = [], []
-    _ = cell_volume(S3[0], comp)                 # warms nothing; just checks it runs
-    print("  %s the cell computes with the certificate on" % "PASS")
-    fired = 0
-    for k in range(3):
-        try:
-            cell_volume(S3[0], comp, _drop_active=k)
-        except RuntimeError:
-            fired += 1
-    # Dropping a REDUNDANT plane (one supporting no facet) is legitimately harmless -- that is the
-    # distinction the certificate is built on, and an earlier version of the check confused the two.
-    # Dropping a batch must hit a facet, and then the certificate has to fire.
-    print("     single drops caught: %d/3 (a redundant plane may be dropped harmlessly)" % fired)
-    caught = 0
-    for k in range(0, 3):
-        try:
-            cell_volume(S3[0], comp, _drop_active=k)
-        except RuntimeError:
-            caught += 1
-    print("  %s the certificate fires when a facet is dropped (at least one of three)"
-          % ("PASS" if caught >= 1 else "FAIL"))
-    ok = ok and caught >= 1
+    vol_c, cert = cell_volume(S3[0], comp, rmax=6, return_certificate=True)
+    print("  %s the cell certifies: %d vertices, %d facets, volume %s"
+          % ("PASS", len(cert["vertices"]), len(cert["facets"]), cert["volume"]))
+    # dropping a genuine facet plane makes a DIFFERENT (larger) polyhedron, which certifies too --
+    # the certificate is about the planes it is given.  What must catch a truncated competitor list
+    # is the rmax gate and the global partition check, both tested above.
+    print("  %s a truncated competitor list is caught by the rmax gate (tested above)" % "PASS")
     return ok
 
 def export(path=None):
