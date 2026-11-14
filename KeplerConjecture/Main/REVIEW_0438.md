@@ -38,7 +38,8 @@ exactness `C094` now rests on — see §2 for why it is not E's script.
 | 6 | Main | first draft of Theorem C wrote `ρ = 1`, impossible for a matching (`P_B/|B| ≤ 1/2`), making the formula return `0.7268 < π/√18` | **Caught by `constants_check.py`**, corrected to `ρ ≤ 1/2`; recorded in `C108`. |
 | 7 | Main | first version of `two_dodecahedra.py` removed the wrong pole for `w` (the shared contact lies at `−2` in `w`'s frame) — the same bug E records | **Fixed**; the pole convention is now explicit in the script. |
 | 8 | Main | E's `K15-E075` quotes `1.056487696`, Main gets `1.12555484451` | **Recorded, not resolved.** Both `< 2`; conclusion identical; Main cites its own value. |
-| 9 | Main's rhetoric | "the cut condition implies Kepler, so the route is a reorganisation, not a simplification" | **Withdrawn** (`C105`). A sufficient criterion is not circular because it implies the target; only the "weaker target" reading is forbidden. Corrected in `ACCEPTED.md`, `C087`, `COMPLEXITY.md`. |
+| 9 | Main | E's A15 row (`15.875`) is the **A–B** pair at distance `2.236`, not a contact pair; A15's contact pairs are B–B at `a/2 = 2`, summing to `129/8 = 16.125` | **Confirmed by exact computation** (`C111`): `vol_A = 125/16`, `vol_B = 129/16`, weighted sum `= a³ = 64` exactly. Nothing refuted (both exceed `2√32`); the row is corrected. This is the second convention error in the workers' pair tables, after E's pole convention in `E075`. |
+| 10 | Main's rhetoric | "the cut condition implies Kepler, so the route is a reorganisation, not a simplification" | **Withdrawn** (`C105`). A sufficient criterion is not circular because it implies the target; only the "weaker target" reading is forbidden. Corrected in `ACCEPTED.md`, `C087`, `COMPLEXITY.md`. |
 
 **Also recorded:** Astra verified original X-C017 at `< 0.782267220134` and the 37 repaired
 checker regressions; the smaller C017 certificate gives strict `< 0.782267254857` (very slightly
@@ -184,3 +185,13 @@ quantification (`C107`), and `(L_δ)` by compactness with an unconditional stric
 (`C108`). **Not achieved:** any number, any improvement over `0.754697399337`, and any progress
 on the sharp `2√32`; the payer bound remains open and is now the single geometric item blocking
 the route.
+
+**Wall clock, honestly.** This block delivered twelve commits between `12:42:16Z` and `13:27Z`,
+i.e. about `45` minutes of real time for the work above, and reached its final push at `13:29Z`
+(`≈47` minutes). Roughly `25` of those minutes were consumed by **two timed-out attempts at the
+A15 computation** — the first enumerated `C(1000,3)` half-spaces and the second used a full point
+set without truncation; the third attempt, with the adaptive truncation of Lemma 3, ran in
+`0.3 s`. That is the honest accounting, and the lesson is worth recording next to it: the
+support-function truncation of `BARLOW_CELLS.md` Lemma 3 is not a nicety, it is what makes any
+dense fixture computable at all, and a fixture script that ignores it does not merely run slowly,
+it does not terminate.
