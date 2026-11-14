@@ -59,3 +59,23 @@ only thing the volume claim rests on.
   `2·max|x−v| ≤ r_max` (every competitor outside `r_max` is farther than twice the cell's
   circumradius) and, globally, with the cell volumes summing to the period volume.
 * Nothing here is a packing bound, and nothing here bears on Kepler.
+
+## 6. The audited path, in one paragraph (for X and Main)
+
+**What is audited.** Any volume produced by `fixture_nonuniform.evaluate`, `make_fixture`,
+`fixture_dense_shell` or `fixture_nonuniform.cell_volume` comes from `certify_volume`, which returns
+only after `check_certificate` has verified the seven obligations by exact rational arithmetic on the
+certificate's own data. A third party can re-run `check_certificate` on a stored certificate without
+trusting the search, the float pre-pass, scipy, or the person who ran it.
+
+**What is not.** (i) The certificate is about the *plane list it is given*; that the list contains
+every competitor within `r_max` is a separate hypothesis, checked by `2·max|x−v| ≤ r_max` and,
+globally, by the cells summing to the period volume. (ii) The search is not verified — only its
+output is. (iii) Nothing here is a packing bound, and nothing bears on Kepler. (iv) The verifier
+computes volumes of *rational* polyhedra; the irrational 13-cluster's dodecahedron enters only
+through the closed-form `V_dod` in `period_convention.py`, not through this verifier.
+
+**Where the evidence is.** `tests_exact_volume.py` (25 adversarial checks with hand values),
+`out/exact_volume_adversarial.json` (8 fixtures with planes and hand volumes), `crosscheck_volume.py`
+(~190 random polytopes against an independent sampler, all V5 rejections carrying an explicit
+unbounded ray).
