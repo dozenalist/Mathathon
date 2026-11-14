@@ -2044,3 +2044,19 @@ Plus the earlier near-double witnesses (`7/5 ± 2·10⁻⁴⁰`). The `transfer_
 fixture was re-run with the corrected constant `3ΦR(R+1)⁵` at `R = 2.51`
 (bound `144421.90`, observed sum `0.75`): the bound still holds, as it must since
 the corrected constant is larger.
+
+### K15-C074 — cross-run and a third structured fuzz family (`TESTED_FINITE`)
+
+- **Cross-run against Computation's engine including the new classes.** The
+  `--against-exactcert` mode now also submits the `C068`/`C073` classes:
+  `(u−2)³ → fail`, `(u−2)⁴ → pos`, `(u−7/5)² ± 2·10⁻⁴⁰ → fail / pos`. All agree.
+  One item had to be restated, and the reason is a genuine scope difference:
+  **`exactcert`'s engine decides half-lines only**, so a *compact-interval* claim
+  such as "(u−1)(u−3) ≤ 0 on [1,3]" is outside its scope; Main's compact claims are
+  covered by `function_range` instead. The harness now says so in its output rather
+  than reporting a spurious disagreement.
+- **Third structured fuzz family: nearly double roots.** `(u−r)² ∓ 10⁻ᵐ` with
+  `r` rational and `m ∈ [10,40]`: the "below" variant must be rejected in every
+  case, the "above" variant accepted. Seeds 7, 8, 12 (150–200 polynomials each):
+  zero failures. This is the family of the `C068` witness, now generated
+  systematically rather than only as a fixed regression.

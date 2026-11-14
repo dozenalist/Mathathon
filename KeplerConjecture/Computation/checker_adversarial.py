@@ -158,6 +158,12 @@ def against_exactcert(dirpath):
         ("p=-(u-T)^2", -(u - Tr) ** 2, Tr, 'neg'),   # even-multiplicity endpoint root: exactcert factors it out and decides
         ("p=(u-T)", u - Tr, Tr, 'fail'),
         ("p=-(u-T)", Tr - u, Tr, 'fail'),
+        # review 0223 classes (t in exactcert's variable, so substitute u = t/2)
+        ("(u-1)(u-3): exactcert sees a HALF-LINE from t=2, where it is not <= 0", (u - 1) * (u - 3), 2, 'fail'),
+        ("(u-2)^3 on [0,inf) (t >= 0)", (u - 2) ** 3, 0, 'fail'),
+        ("(u-2)^4 on [0,inf)", (u - 2) ** 4, 0, 'pos'),
+        ("near-double (u-7/5)^2-2e-40", (u - sp.Rational(7, 5)) ** 2 - sp.Rational(2, 10 ** 40), 0, 'fail'),
+        ("near-double above (u-7/5)^2+2e-40", (u - sp.Rational(7, 5)) ** 2 + sp.Rational(2, 10 ** 40), 0, 'pos'),
     ]
     ok = True
     for name, expr, A, want in items:
@@ -170,7 +176,9 @@ def against_exactcert(dirpath):
         ok = ok and good
         note = "   <- endpoint-root policy (shell_check accepts the touching zero)" if verdict == 'fail' and want == 'fail' and A != 0 else ""
         print(("PASS  " if good else "FAIL  ") + name + "  [exactcert: %s, expected %s]%s" % (verdict, want, note))
-    print("\nCROSS-RUN:", "AGREES with exactcert on every case" if ok else "DISAGREES")
+    print("\nNOTE: exactcert's engine decides HALF-LINES only; compact-interval claims"
+          "\n(such as [1,3]) are not in its scope and are covered by function_range instead.")
+    print("CROSS-RUN:", "AGREES with exactcert on every case" if ok else "DISAGREES")
     return 0 if ok else 1
 
 
