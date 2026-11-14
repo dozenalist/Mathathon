@@ -81,6 +81,35 @@ leaving the level-2 class. The three-point class is the next step and its genera
 `0.770271`, so three-point alone does not close it either; what would is a level-3 object
 that is sharp — a well-known open problem, not a computation.
 
+## 2a. The analytic gap, quantified exactly
+
+All four numbers below are re-derived in `constants_check.py`; the two middle ones are CDS22
+material quoted for their value, not re-proved here.
+
+| bound | value | above the truth |
+| --- | --- | --- |
+| truth, `π/√18` | `0.740480489693` | — |
+| three-point, **lattices only** | `0.741506` | **`+0.1385%`** |
+| three-point, **general** | `0.770271` | `+4.0231%` |
+| Hales–McLaughlin (dodecahedral) | `0.754697399337` | `+1.9200%` |
+
+Three exact statements, each of which decides something:
+
+1. **The lattice restriction costs `2.877` percentage points of density** (`+0.138%` → `+4.023%`,
+   a factor `1.03879`). That factor *is* the whole analytic gap: the three-point class is
+   `0.138%` from the truth when restricted to lattices and `4.02%` from it in general, so the
+   content of the missing step is entirely "lattices → all packings".
+2. **A three-point proof would need a `3.868%` improvement in the class optimum** (from
+   `0.770271` to `0.740480`). For comparison, the lattice-restricted optimum is already only
+   `0.138%` away — so the class is not far from being *able* to prove it, but the generality is
+   what is missing, not the constant.
+3. **`1.920%` appears twice and it is the same number.** Hales–McLaughlin sits `1.9200%` above
+   the truth, and the pair route's window in its constant is `√32/V_dod − 1 = 1.9199%`. That is
+   not a coincidence: both are `π/(4π/3·V_dod) − 1` up to the common factor, i.e. the *same*
+   deficit expressed in the two currencies (density and two-cell volume). So the pair route's
+   room and the dodecahedral bound's gap are the same quantity, which is why Theorem B with
+   `K = 2V_dod` reproduces `0.754697399337` exactly rather than approximately.
+
 ## 3. The geometric route's cost, after this block
 
 `K15-C087`: the cut condition **implies** `δ ≤ π/√18`, and nothing implies it from the

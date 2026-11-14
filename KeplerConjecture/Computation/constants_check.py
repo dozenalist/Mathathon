@@ -137,6 +137,15 @@ chk("Theorem C at rho=1/2 (perfect matching), sharp delta_0 -> pi/sqrt18",
 chk("V_dod + delta_0/2 = sqrt32 exactly", vdod + (2 * sqrt(32) - 2 * vdod) / 2, sqrt(32), tol=1e-18)
 chk("Theorem C at rho=1/4, sharp delta_0", (4 * pi / 3) / (vdod + (2 * sqrt(32) - 2 * vdod) / 4), 0.747521353722, tol=1e-11)
 
+# --- K15-C100/C109: the analytic ladder, exactly (review 0438) ------------------
+TRU = mpf('0.740480489693')
+chk("ML above truth (%)", 100 * (mpf('0.754697399337') / TRU - 1), 1.91996, tol=1e-5)
+chk("3-point lattice above truth (%)", 100 * (mpf('0.741506') / TRU - 1), 0.138493, tol=1e-5)
+chk("3-point general above truth (%)", 100 * (mpf('0.770271') / TRU - 1), 4.02313, tol=1e-4)
+chk("lattice -> general factor", mpf('0.770271') / mpf('0.741506'), 1.0387927, tol=1e-6)
+chk("3-point proof would need this % improvement", 100 * (1 - TRU / mpf('0.770271')), 3.86754, tol=1e-4)
+chk("ML gap and pair window are the SAME number", 100 * (mpf('0.754697399337') / TRU - 1), 100 * (sqrt(32) / vdod - 1), tol=2e-3)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)

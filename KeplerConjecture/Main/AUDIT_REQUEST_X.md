@@ -136,3 +136,45 @@ density argument needs only "one crack is a surface", i.e. that the displaced la
 **conjecture** (settled at the icosahedral base only); `b ≡ 0` does not characterise Barlow
 packings; and no bound in `RESULTS.md` moves. If a finding would make any of these look
 established, that is itself a defect to report.
+
+---
+
+## 7. Audit request — the pair route (`K15-C106`, `C107`, `C108`)
+
+New at review 0438 and **not** covered by items 1–6. This chain is the project's live geometric
+route, and its top-level claim is a *strictness* statement, so a defect here is silent.
+
+**7.1 `C106` Theorem B (the bridge).** Check, in this order:
+- the sum swap `Σ_{v∈B∖E_B}(Σ_{e∋v}c_e) vol Ω(v) = Σ_e c_e Σ_{v∈e∩(B∖E_B)}vol Ω(v)`;
+- the counting identity `|B| − |E_B| = 2Σ_{internal}c_e + C_R`, that it is an *identity*, and
+  that `C_R ≤ O(R²) + 12|E_B|` follows from 2-separation and `c_e ≤ 1`;
+- that `Σ_{v∈B}vol Ω(v) = (4π/3)R³ + O(R²)` uses **saturation** (`Ω(v) ⊆ B(v,2)`) and nothing
+  else, since that is the bridge's only point of failure. `Computation/bridge_boundary.py`
+  measures the term on fcc (`D/R² ∈ [0.17, 2.69]` for `R = 4…16`) — a measurement, not a proof.
+
+**7.2 `C107` the monotone payoff.** Check `δ ≤ 8π/(3K)`, that `K = 2V_dod` gives exactly
+`0.754697399337` and `K = 2√32` exactly `π/√18` (`constants_check.py` re-derives both), and that
+`√32/V_dod = 1.01919957` is the whole remaining gap in `K`.
+
+**7.3 `C108` Theorem D (`σ₀ > 2V_dod`).** Three places to attack:
+- **the cone bound**: a cell of volume `≤ C` containing the unit inball lies in `B(·,3C/π)`
+  (cone of volume `πr/3` over a perpendicular unit disc);
+- **compactness**: that the admissible set (contact pair `+ Φ ≤ C`) is compact after fixing
+  `v = 0`, `w = (2,0,0)`, and that `Φ` is continuous there;
+- **step (3)**: that `vol Ω = V_dod` forces the regular dodecahedron — **this is the equality
+  case of Hales–McLaughlin and it is the softest link in the whole chain.** It is standard and
+  not re-derived in `Main/`. If it needs a different citation or a stronger hypothesis, D falls.
+
+**7.4 `C108` Theorem C.** Check the split into "internal pairs" and `U_B` (a vertex matched to a
+partner *outside* `B` contributes only `V_dod` — an earlier draft got this wrong), and that
+maximality is used only for bookkeeping, not analysis.
+
+**7.5 What is *not* being claimed, so please do not accept it.** `(L)` (`≥ 2√32`) is unproved;
+`σ₀` and `δ₀` are **not** explicit and must not be quoted as constants; `ρ > 0` is a genuine
+hypothesis that can fail; and **nothing here is a bound** — `RESULTS.md` does not move. Universal
+lower-volume claims remain `PENDING_REVIEW` per the supervisor.
+
+**Cheapest way to find a fifth defect.** Try to make `C108`'s compactness step fail by a
+degenerating sequence — e.g. cells whose volumes stay `≤ C` while the configuration develops
+many centres just inside `6C/π` — or try to show `σ₀ = 2V_dod` by a limiting family that
+approaches two dodecahedra without attaining.

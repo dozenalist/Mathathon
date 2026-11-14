@@ -137,13 +137,23 @@ Written because a referee looks here first; the details are `GEOMETRIC_LEMMA_043
 
 ## 5. Next package for the three workers
 
+**Resource discipline for every request below.** All inputs are pushed on `kepler15/main`;
+the revision to quote in any request is the tip **at the time of dispatch**, which after this
+block's final push is the hash recorded in `SOURCE_MANIFEST.md`. Every computation is
+single-process, `≤ 1 CPU`, `≤ 1 GiB`, `≤ 300 s`, stdlib plus `numpy`/`scipy`/`sympy` only, and
+must exit non-zero on any internal inconsistency. Any Lean request additionally needs a
+narrow-import file and the `≤ 1 GiB` cap honoured (`M-LEAN-002` already failed at 60 s / 715 MB
+with a broad `Mathlib` import, so broad imports are not to be requested again).
+
+
 **PN-C — the pair constant by construction.** C owns the fixture machinery. Ask: for the
 two-centre model (centres at distance `d ∈ [2, 2.2]`, explicit local neighbourhoods, *validated*
 2-separation over all pairs), compute `vol Ω(v) + vol Ω(w)` and report whether the minimum over
 that family is bounded away from `2V_dod`, with the binding configuration named.
 *Acceptance:* a validated configuration table, a minimum, and the margin over `2V_dod`; **no
-claim that the minimum is the global one.** Portability: one file, stdlib only, ≤ 1 CPU, ≤ 1 GiB,
-≤ 300 s, exact or interval arithmetic for every inequality.
+claim that the minimum is the global one.** Portability: one file, stdlib only, `≤ 1 CPU`,
+`≤ 1 GiB`, `≤ 300 s`, exact or interval arithmetic for every inequality, exit non-zero on any
+validation failure.
 
 **PN-E — the payer bound, which is now the whole geometric content.** E's own statement of what
 it owes. Ask: a lower bound `vol Ω(w) ≥ 5.763417470` for the partner of a dodecahedral cell, or
@@ -151,7 +161,8 @@ it owes. Ask: a lower bound `vol Ω(w) ≥ 5.763417470` for the partner of a dod
 sufficient (`C107`, `C108`).
 *Acceptance:* a proof, or an explicit legal configuration with pair sum `< 2V_dod + 0.213126`
 (which would bound `δ₀` and is itself valuable), or a documented obstruction. **Priority: the
-weak form.**
+weak form.** Caps: `≤ 1 CPU`, `≤ 1 GiB`, `≤ 300 s` per run; a sweep may be a batch of such runs
+but each must validate the minimum separation over **all** pairs, including core–background.
 
 **PN-X — audit three things, in this order.** (i) `C104`: that `K ⊆ B(v,√2)` is what Lemma 1
 needs and that Main's exact script settles it; (ii) `C106`/`C108`: the bridge's counting
@@ -159,7 +170,8 @@ identity and the `ρ ≤ 1/2` range; (iii) the two-dodecahedra computation, incl
 discrepancy with E's `1.056487696`.
 *Acceptance:* a written verdict per item; the standing `shell_check` soundness argument
 (`AUDIT_REQUEST_X.md` item 5) is still outstanding and is the only thing keeping generic
-sounder status suspended.
+soundness suspended. `AUDIT_REQUEST_X.md` item 7 is the new pair-route request and names the
+softest link explicitly (the Hales–McLaughlin equality case).
 
 ## 6. Honest accounting for this block
 
