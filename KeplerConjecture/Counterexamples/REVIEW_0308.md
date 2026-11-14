@@ -531,3 +531,66 @@ the seven witnesses.
 proof of generic soundness. `909a50a`'s `η ≥ 0` gap (§1.2) is exactly such a case — no battery of
 sign witnesses would find it, because it is a *hypothesis of the argument*, not a property of the
 predicate. The proved rule in §1.3 plus the one-line fix are what close it.
+
+---
+
+## 17. The `η` condition is not technical — a **minimal unsoundness witness** (C's own profile)
+
+Section 1.2 called the unenforced `η ≥ 0` a "latent hole" and §6 failed to build a witness. **Both
+statements are now superseded: there is a one-line witness, and the reason is not the sliver at all.**
+
+### 17.1 The witness
+
+Take C's **own committed** profile (`out/shell_propose.json`, row `n = 27, ρ = 41/20`) — nothing is
+invented — and feed it to Main's checker with a **negative** allowance:
+
+| `η` | verdict | reported bound |
+| --- | --- | --- |
+| `0` (C's published setting) | PASS | `0.780370311` ✓ correct |
+| `−7611431/500000000 = −0.015222862` | **PASS** | **`δ ≤ 0.015185801`** ✗ **impossible** |
+
+A density bound of `1.5%` contradicts Kepler (`74%`), so the second verdict is unsound. Every check
+prints PASS, including "`f ≤ eta` on the shell". Reproducer:
+`Reviews/X_eta_negative_witness.py`.
+
+### 17.2 Why — and why my earlier diagnosis was wrong
+
+I had framed the gap as a *gluing* problem: `p ≤ 0` on `[T_HI, πρ²]` does not give `p ≤ η` when
+`η < 0`, across a sliver of width `8.7×10⁻²⁹`. That sliver really exists, and my four attempts to
+exploit it failed (§6). But the real fault is simpler and worse:
+
+> `K15-C003`'s price is `n·max(M, 0)`, not `n·M`. For `M < 0` the correct bound is the `η = 0` one,
+> because the bad terms are already `≤ 0` and can simply be dropped. **The formula
+> `(p(0)+nη)/q(0)` is valid only for `η ≥ 0`.**
+
+So negative `η` never buys anything, and the checker's acceptance of it produces a bound that is not
+merely unproved but **false**. The fix is one line — reject `η < 0`, or equivalently use `max(η,0)`
+in the formula — and it is a *validity* condition of the bound, not a patch to an argument.
+
+### 17.3 Consequences, stated precisely
+
+* **No published number is affected.** All four shell-route rows in `out/shell_propose.json` carry
+  `eta: "0"`, and C's register reports both `η = 0` and `η` free variants with identical values.
+  With `η = 0` the formula is exactly the theorem's statement ✓.
+* **My §6 "latent" framing is withdrawn** and replaced by this witness. The failed spike
+  constructions are still worth keeping as evidence that the *sliver* route is not exploitable, but
+  they were attacking the wrong mechanism.
+* **`η ≥ 0` is promoted** from "unstated hypothesis in the gluing" to "validity condition of the
+  reported bound". Label for the checker: **UNSOUND for `η < 0`, sound for `η ≥ 0`** (with the
+  count `n` a disclosed hypothesis).
+* **Cross-check of C's headline numbers.** Independently of Main's checker I recomputed both
+  shell-route values with my own Fourier map and my own sign predicate (§18), and they match.
+
+## 18. Independent recomputation of C's headline shell-route numbers
+
+Using my own Laguerre→monomial conversion and `exact_sign` (never Main's checker):
+
+| case | their value | my value | sign verdicts |
+| --- | --- | --- | --- |
+| `n = 27`, `ρ = 41/20` | `0.78037032` | **`0.780370311`** | `p ≤ 0` on `[T_LO,∞)` ✓, `p ≤ 0` on `[T_HI,∞)` ✓, `q ≥ 0` ✓ |
+| `n = 12`, `ρ = 209/100` | `0.78033446` | **`0.780334452`** | all three ✓ |
+
+Agreement to nine decimals (the last two digits differ only because I evaluate with `sp.pi` at
+15 digits while C uses a directed enclosure). **So the two headline shell-route numbers are
+independently confirmed**, with `η = 0` throughout, and the `η < 0` defect above has no bearing on
+them.
