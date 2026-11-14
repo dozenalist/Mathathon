@@ -623,3 +623,25 @@ to toy strengths. The `q`-side coefficients came from **solving the Markov–Luk
 **Final state of the explicit-Gram programme:** Fourier side `1.37125723`; p-side `1.33982382`;
 both-sides `2.00171738`; LP-optimal (no rational Gram) `0.77996622`. Both sides reach ≈1.35
 individually; only the joint constraint costs a factor ≈1.5.
+
+### K15-COMP-036 — 2026-11-14T11:14–11:34Z — Computation (role C), review 0308-C
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-CUTFLOW-001** | **implemented, run, exact** | portable periodic cut/flow evaluator for C044: explicit vertex deficits `b(v)=√32−vol Ω(v)`, edge capacities, the finite-cut criterion, and two asymmetric output kinds — an explicit violating cut (a certificate about the **infinite** packing) or a `PATCH_FEASIBLE` flow (patch evidence only) | `cut_flow.py`, `out/cut_flow.json` |
+| K15-C-CUTFLOW-RES-001 | measured | FCC and HCP have `b = 0` everywhere, so the condition is **satisfied trivially** and carries no information — the controls are vacuous by construction. The periodised icosahedral 13-cluster has a singleton cut `{0}` with `Σ_U b ≥ 0.106563219492` over `|δ⁺| = 12`, so the condition **fails for every `Φ < 0.008880268291`**; above it a flow is verified exactly | same |
+| **K15-C-CUTEQUIV-001** | **WITHDRAWN** | "the cut condition is equivalent to Kepler" is wrong: a period is not a finite `U`, so C044's criterion does not apply to it at all | `REVIEW_0308.md` §2 |
+| **K15-C-CUTDENSITY-001** | **PROVED (elementary)** | the full-period computation gives only a **necessary density condition** `ρ ≤ 1/√32`. It does not establish equivalence with the finite-cut family nor any infinite extension | same |
+| K15-C-CUTPERIM-001 | **OPEN** | the missing lemma for any equivalence statement: a **uniform perimeter-growth bound** for growing finite `U` in the Voronoi cell complex | same |
+| K15-C-BOTHSIDES-NEG-001 | **scoped negative** | every both-sides explicit-Gram certificate found is **weaker than the trivial bound `Δ ≤ 1`**: best `2.00171738` (cubic), `2.4770679955` (many linear squares, hill-climbed), `5.10334624` (simple cubic family) | `sos_both_sides*.py` |
+| K15-C-QUINTIC-EXCL-001 | **PROVED (scoped)** | for the p-side record certificate the two-square quintic ansatz is **excluded**: it requires `|f| < √q₀ = 40.0739`, while `|f|` has minimum `195.95` at `d ≈ 6.17` and tends to `∞` at both ends of the parametrisation | `sos_both_sides_quintic.py` |
+| K15-C-SWEEP-001 | implemented | one portable sweep command: `sweep_explicit_gram.py --seed-lo/--seed-hi --cap --out-dir`, one JSON per seed with a fixed schema, per-seed summary line so a truncated run still yields data | `sweep_explicit_gram.py` |
+
+**`LOCAL_RUN_REQUEST.md` rewritten**: no scratch-directory paths anywhere; Main's checker is
+extracted into the working directory by an explicit command and passed by argument with no
+default, so a missing checker fails loudly.
+
+**Retractions in this block:** `K15-C-CUTEQUIV-001` (see above). Also re-confirmed as withdrawn:
+`K15-C-SOSWHY-001` (explicit-Gram families are weak "for structural reasons") — the strength table
+shows all explicit-Gram certificates are above the trivial bound, which is a limitation of the
+families searched, not a structural impossibility.

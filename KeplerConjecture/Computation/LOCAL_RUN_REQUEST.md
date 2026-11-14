@@ -1,98 +1,125 @@
-# Computation local run request (bounded) — Astra
+# Computation local run request — Astra
 
-Written 2026-11-14T09:2xZ for block K15-HOUR-20261114-C. Owner: Computation
-(`kepler15/comp-01a1d8c0`). Reviewer: X, then Main. Main integrates.
+Owner: Computation (`kepler15/comp-01a1d8c0`). Reviewer: X, then Main.
+Everything here is **1 CPU, ≤ 1 GiB, ≤ 10 minutes** unless a row says otherwise. No Lean, no
+SDP, no network, no scratch-directory paths — every command runs inside `KeplerConjecture/Computation` and
+writes under `KeplerConjecture/Computation/out/`.
 
-Everything below is small: **1 CPU, under 1 GB, under 5 minutes**. No Lean, no SDP, no
-degree sweep beyond the stated caps. The VM has already run these; the purpose of the local
-run is independent reproduction on the pinned environment, not discovery.
+Two of the scripts need Main's exact checker. It is **not** fetched from a scratch directory: the
+command below writes it into the working directory, and the scripts take its path explicitly with
+no default, so a missing checker fails loudly instead of silently using something else.
 
-## The frozen object (already checked in and pushed)
-
-| item | path | revision |
-| --- | --- | --- |
-| verified certificate, degree 33, `Delta <= 0.77996622` | `Computation/out/verified_certificate_K33b.json` | `50727f1`, `90cc632` |
-| second verified certificate, `Delta <= 0.77996650` | `Computation/out/verified_certificate_K33.json` | `50727f1` |
-| rational checker (own Sturm + Yun) | `Computation/exactcert.py` | `ad7dd1c` |
-| independent exact oracle (SymPy `sqf_list` + `count_roots`) | `Computation/exactcert_oracle.py` | `ad7dd1c` |
-| re-verification driver | `Computation/verify_certificate.py` | `50727f1` |
-| regression suite (incl. the 48443 counterexample) | `Computation/exactcert_tests.py` | `ad7dd1c` |
-| shell proposer (this block) | `Computation/shell_sos.py` | this commit |
-
-Source commit for this request: the tip of `kepler15/comp-01a1d8c0` after this block.
-
-## Commands
+## 0. Setup (once)
 
 ```bash
 cd KeplerConjecture/Computation
-
-# 1. certificate + checkers, ~25 s, stdlib + sympy
-python3 verify_certificate.py out/verified_certificate_K33b.json
-python3 verify_certificate.py out/verified_certificate_K33.json
-python3 exactcert_tests.py
-python3 exactcert_oracle.py
-
-# 2. shell proposer, ~5 s for degree 9 (shell_check at 6626714 is UNSOUND -- see
-#    REVIEW_0138.md; use it only to reproduce, and take verdicts from exactcert)
-python3 shell_propose.py --checker /tmp/shell_check.py --degree 9
-# best exact value in the family (~10 s):
-python3 shell_propose.py --checker /tmp/shell_check.py --degree 33 --tlo-exact --Umax 120
-python3 audit_fourier.py /tmp/shell_check.py
-python3 sos_family.py          # explicit rational Gram, p-side by expansion
-python3 sos_family2.py         # degree 5, two-square Gram
-python3 sos_shell_variant.py   # proved family-restricted shell comparison
-python3 cut_deficit.py         # periodic cut-deficit fixtures
-python3 tests_0138.py          # every review-0138 claim, exact
-
-# longer search for a better explicit-Gram certificate (the natural offload):
-# 12 runs on the VM span 1.3713..1.9989; a few hundred runs would sharpen it.
-for S in $(seq 100 300); do
-  python3 sos_qside_polish.py --degree 7 --iters 4000 --seed $S --uphill 0.05 \
-    --out out/hop_$S.json
-done
-# ~40 s per run, 1 CPU, < 300 MB; keep the best by its "delta" field.
+git show omm/kepler15/main:KeplerConjecture/Computation/shell_check.py > shell_check_ext.py
 ```
 
-For (2) copy Main's checker next to the run, or pass its absolute path:
+## 1. Certificate and checker regressions (~30 s)
 
 ```bash
-git show omm/kepler15/main:KeplerConjecture/Computation/shell_check.py > /tmp/shell_check.py
-python3 shell_sos.py --checker /tmp/shell_check.py --degree 7   # ODD and <= 7 only
+cd KeplerConjecture/Computation
+python3 verify_certificate.py out/verified_certificate_K33b.json   # Delta <= 0.77996622
+python3 exactcert_tests.py                                       # ALL TESTS PASS
+python3 exactcert_oracle.py                                      # exact oracle, not sampled
+python3 tests_0138.py                                            # every 0138 claim, exact
 ```
 
-Dependencies: Python 3.12, `numpy`, `scipy` (HiGHS), `sympy`. No other packages. Versions
-used on the VM: numpy 2.5.3, scipy 1.18.1, sympy current.
+## 2. Cut/flow evaluator (~1 s) — the C044 package
 
-## Expected outputs and success criteria
+```bash
+cd KeplerConjecture/Computation
+python3 cut_flow.py                     # writes out/cut_flow.json
+```
 
-| command | expected | success criterion |
-| --- | --- | --- |
-| `verify_certificate.py K33b` | `ACCEPT` from both checkers, `0.779966216777` rounded up | exit 0; `Delta upper` identical to 12 dp |
-| `verify_certificate.py K33` | `ACCEPT`, `0.779966497785` | exit 0 |
-| `exactcert_tests.py` | `ALL TESTS PASS` | exit 0, including the `K21` refutation |
-| `exactcert_oracle.py` | `ALL ORACLE CHECKS PASS` | exit 0 |
-| `shell_propose.py --degree 9` | `eta=0` and `eta_free` both EXACT PASS at `Delta <= 0.87227746`; gain exactly 0 | both rows PASS; gain printed as `+0.00000000` |
-| `shell_propose.py --degree 33 --tlo-exact --Umax 120` | `Delta <= 0.78037031`, gain exactly 0 | PASS at degree 33 |
-| `audit_fourier.py` | `AUDIT PASS` | exit 0, A1/A2 exact and A3 quadrature agree |
+Expected: FCC and HCP report `TRIVIAL_SATISFIED` with `b = 0`; the icosahedral fixture reports the
+singleton-cut threshold `Phi >= 0.008880268291` and a `PATCH_FEASIBLE` flow above it.
+**No row may be read as a certificate except an explicit violating cut.**
 
-## Caps
+## 3. Explicit-Gram certificates (~5 s each)
 
-`timeout 300`, 1 CPU, `OMP_NUM_THREADS=1`, peak RAM well under 1 GB (the largest object is a
-degree-41 polynomial over `Q`). Disk: under 5 MB of JSON.
+```bash
+cd KeplerConjecture/Computation
+python3 sos_family.py                  # p-side, one square,   5.99152482
+python3 sos_family2.py                 # p-side, two squares,  6.73788568
+python3 sos_pside_many.py --m 4 --deg 2 --iters 2500 --seed 3     # 1.33982382
+python3 sos_both_sides.py              # both sides, cubic q,  2.00171738
+python3 sos_both_sides_lin.py --m 3 --iters 1200 --seed 1         # 2.4770679955
+python3 sos_both_sides_quintic.py      # scoped negative with a reason
+```
 
-## What these checkers actually prove (and do not)
+**Strength reminder, which the local run should confirm rather than override:** every one of these
+is **above the trivial bound `Δ ≤ 1`**. They demonstrate the certificate *format*, not a
+competitive bound.
 
-`verify_certificate.py` proves: the rational polynomials `p, q` in `out/verified_certificate_*.json`
-satisfy `p < 0` on `[8*PI_LO, ∞)` and `q > 0` on `[0, ∞)`, where `PI_LO < π`, so the region
-verified is *strictly larger* than `[8π, ∞)`; hence `f = p·e^{-t/2}` satisfies the
-Cohn–Elkies hypotheses, and `Δ ≤ (4π/3)·p(0)/q(0)` for every packing, by the cited CE theorem.
+## 4. Main's checker cross-checks (~10 s)
 
-**Tails are not an obligation for this basis.** `f = p(t)e^{-t/2}` is a polynomial times a
-Gaussian, so it is Schwartz: integrable, decaying faster than any power, and admissible in the
-sense the CE theorem requires. That is the one structural advantage of this family over
-compact-support or power-law candidates, and it is why the certificate needs no separate tail
-estimate.
+```bash
+cd KeplerConjecture/Computation
+python3 audit_fourier.py shell_check_ext.py
+python3 shell_propose.py --checker shell_check_ext.py --degree 9
+python3 shell_propose.py --checker shell_check_ext.py --degree 33 --tlo-exact --Umax 120
+python3 shell_sos.py --checker shell_check_ext.py --degree 7      # ODD and <= 7 only
+```
 
-What it does **not** prove: that `0.77996622` is optimal in any sense, or that any other
-degree improves it (measured: it does not, see `CERTIFIER.md`), or anything about the shell
-count hypothesis (that is X's and E's).
+`shell_check.py` at `6626714` is **unsound** (three false accepts reproduced in
+`REVIEW_0138.md` §1); these rows exist to reproduce and to cross-check, never as a source of
+truth.
+
+## 5. The sweep — one portable command, seed range, cap, schema
+
+```bash
+cd KeplerConjecture/Computation
+timeout 900 python3 sweep_explicit_gram.py --seed-lo 100 --seed-hi 120 \
+        --iters 4000 --uphill 0.05 --cap 120 --out-dir out/sweep
+```
+
+One JSON per seed, schema:
+
+```json
+{"seed": int, "degree": int, "iters": int, "uphill": float,
+ "status": "VERIFIED_EXACT" | "FAILED" | "TIMEOUT",
+ "delta": float | null, "q": "poly in u" | null, "p": "poly in u" | null,
+ "r": [[coeffs..]..] | null, "s": [[coeffs..]..] | null,
+ "verification": {"q_identity": bool}, "seconds": float}
+```
+
+A summary line per seed and a final best-seed line go to stdout, so a truncated run still yields
+usable data. 20 seeds at ~40 s each is about 13 minutes on one core.
+
+**Why the sweep matters.** The record moved `5.99 → 2.62 → 1.99 → 1.41 → 1.37` as search effort
+increased, and twelve basin-hopping runs span `1.37 … 2.00` with the best appearing once. A few
+hundred seeds is the cheapest open improvement, and it is a job for a bigger machine, not the
+SAIR VM.
+
+## 6. Resource caps and success criteria
+
+| row | wall time | RAM | success criterion |
+| --- | --- | --- | --- |
+| §1 | < 60 s | < 300 MB | all exit 0; `Delta upper` = `0.779966216777` at 12 dp |
+| §2 | ~1 s | < 100 MB | FCC/HCP `TRIVIAL_SATISFIED`; threshold `0.008880268291` |
+| §3 | ~30 s | < 500 MB | each prints an `EXACT` line; identities `True` |
+| §4 | ~15 s | < 300 MB | `AUDIT PASS`; the two degree rows pass |
+| §5 | ≤ 15 min | < 300 MB | one JSON per seed; at least one `VERIFIED_EXACT` |
+
+## 7. What the checkers actually prove
+
+`verify_certificate.py` proves: for the rational `p, q` in the JSON, `p < 0` on `[8·π_lo, ∞)` and
+`q > 0` on `[0, ∞)`, with `π_lo < π`, so the region verified is *strictly larger* than required;
+hence the Cohn–Elkies hypotheses hold and `Δ ≤ (4π/3) p(0)/q(0)` for every packing, by the cited
+CE theorem. **Tails are not an obligation for this basis**: `p(t)e^{-t/2}` is Schwartz.
+
+The both-sides certificates prove the same two sign conditions **by algebraic identity**, with no
+Sturm sequence at all — but at strengths above 1, so they are format demonstrators.
+
+`cut_flow.py` proves, for an explicit finite `U`, that `Σ_U b > Φ|δ⁺(U)|`. That is a genuine
+obstruction for the infinite packing. A flow it reports is `PATCH_FEASIBLE` and nothing more.
+
+## 8. Not shown, and open
+
+* No equivalence between the cut condition and Kepler (`K15-C-CUTEQUIV-001` **withdrawn**); the
+  missing lemma is a uniform perimeter-growth bound for finite `U`. See `REVIEW_0308.md` §2.
+* No competitive explicit-Gram certificate: all are above the trivial bound 1.
+* The quintic two-square ansatz is excluded for the p-side record certificate with a stated bound
+  (`|f| ≥ 195.95`, `REVIEW_0308.md` §4), not by a failed search.
