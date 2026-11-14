@@ -25,7 +25,11 @@ packing with unequal Voronoi cells" does not come from this structure either.
 This matters for Main/NEXT_PACKAGE.md item 3: between this file and K15-C-CUTJAM-001, the
 near-Kepler regime appears to be populated only by the close-packed stackings, all of which have
 EQUAL cell volumes, hence b = 0 identically and no discriminating power for the cut condition.
-That is a third face of K15-C-CUTEQUIV-001.
+That is a third reason the near-Kepler regime looks locally close-packed.  NOTE: the earlier
+reading of these three findings as "the cut condition is equivalent to Kepler"
+(K15-C-CUTEQUIV-001) is WITHDRAWN -- C044 quantifies over finite U and a period is not finite;
+what the three findings support is the difficulty of the CONVERSE direction, Kepler => a finite
+Phi works (K15-C-CUTIMPLIES-003 proves only the other direction).
 
 Output: out/cut_fixture_frank_kasper.json.  Reproduction: python3 cut_fixture_frank_kasper.py
 """
@@ -82,9 +86,10 @@ def main():
     print("so the 2a atoms are untouched and the structure rattles: equal-sphere A15 gives")
     print("packing fraction %.6f = pi/6 = the simple-cubic value, NOT a dense packing."
           % rows[2]["packing_fraction"])
-    print("\nCONCLUSION (matches K15-C-CUTJAM-001 as a third face of K15-C-CUTEQUIV-001):")
-    print("  the near-Kepler regime appears populated only by the close-packed stackings,")
-    print("  all of which have EQUAL cell volumes, hence b = 0 and no discriminating power.")
+    print("\nCONCLUSION (with K15-C-CUTJAM-001, a third reason the near-Kepler regime looks")
+    print("  close-packed): the near-Kepler regime appears populated only by the close-packed")
+    print("  stackings, all of which have EQUAL cell volumes, hence b = 0.  (The earlier")
+    print("  'equivalent to Kepler' reading, K15-C-CUTEQUIV-001, is WITHDRAWN.)")
     json.dump(dict(script="KeplerConjecture/Computation/cut_fixture_frank_kasper.py",
                    status="TESTED_FINITE (negative, measured)",
                    finding=("A15 Wyckoff sites with equal spheres give packing fraction pi/6 = "
