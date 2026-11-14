@@ -3623,3 +3623,49 @@ also be short. The primary source (`K15-C115`) contradicts that, and this entry 
 evidence it is easy. Neither cost has been estimated for `(L)`.
 
 *Status.* `AUDITED` (quotations read from the source). Reviewer X.
+
+### K15-C118 — E's frozen payer fixture reproduced independently (`AGREES`, 1e−15)
+
+`Computation/payer_reproduce.py`. This is the most load-bearing number in the pair route — the
+`(P′)` margin at the icosahedral pair — and until now it had only been produced by E's own scripts
+(the supervisor's local pilots ran E's code). Main rebuilt the configuration from E's written
+description and recomputed the cell with Main's own code.
+
+**Inputs, quoted verbatim from `COMPUTE_REQUEST_0353.md` (commit `c76194f`):**
+
+```
+c=(0,0,0), w1=(0,0,2), 5 ring at (4/sqrt5 cos 72k, 4/sqrt5 sin 72k, 2/sqrt5),
+5 pentagon at w1 + 2(s cos(36+72k), s sin(36+72k), 3/8), s = sqrt55/8,
+south=(0,0,4)
+```
+
+**Result.**
+
+| quantity | Main | E | difference |
+| --- | --- | --- | --- |
+| `vol Ω(w1)` | `5.89801737180372` | `5.898017371803720` | `1e−15` |
+| min separation, all `78` pairs | `2.0000000000000000000` | `≥ 2` | — |
+| cell vertices | 20 | (not quoted) | — |
+| margin over `(P′)`'s required `5.763417470` | `0.1345999018` | `0.134590`/`0.134549` | last-digit only |
+
+The margin needs care and Main resolves it: `(P′)` requires `5.763417470`, so the **frozen
+fixture's** margin is `5.898017372 − 5.763417470 = 0.134599902`, while the **C5 family optimum**
+`5.897967122` (E's `K15-E086`) gives `0.134549652`. The two numbers quoted across worker
+documents (`0.134590`, `0.134549`) are these two different objects; both exceed zero, so `(P′)`
+survives at the pair either way. Recorded because a factor-of-`10⁻⁵` disagreement in a *margin*
+is exactly what an error in the *value* would look like.
+
+**Two bugs in Main's own first attempt, recorded.** (i) The volume was computed by a fan
+triangulation over arbitrary vertex pairs, which does **not** tile a convex polytope and
+overcounted by `11×` (`66.13` against `5.898`); replaced by a convex hull. (ii) The legality test
+used `dmin ≥ 2` exactly, which fails by `1e−38` on an exactly-2 separation at 40 digits; replaced
+by `dmin ≥ 2 − 1e−15`. Both are the same class of error as `C104`'s normalisation slip: a check
+that reports a false failure of a true statement.
+
+**What this establishes and what it does not.** It removes the dependence on E's own code for the
+fixture value, and it confirms the margin is genuinely positive at the sharpest known witness.
+It does **not** make the fixture a proof of `(P′)`: E's own `K15-E090` notes the fixture is a
+*local* witness whose five pentagons would clash if repeated at all twelve outer centres, so it
+tests `(P′)` and says nothing about simultaneous compensation of the cluster.
+
+*Status.* `AGREES`. Reviewer X.

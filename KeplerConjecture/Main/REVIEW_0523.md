@@ -168,6 +168,28 @@ review of the *conditional graph statement*, not of the geometric cut inequaliti
 general soundness proof** — generic `shell_check` soundness remains **SUSPENDED** (`G12`, `PN-4`)
 and nothing in this block changes that.
 
+## 3a. E's payer value, reproduced independently (`K15-C118`)
+
+The eight bounded C5 pilots the review reports (best `5.898007181138247`, none below
+`5.763417470`) all ran **E's own code**. The number is the most load-bearing in the whole route,
+so Main rebuilt the configuration from E's written description and recomputed it with Main's code:
+
+| quantity | Main | E | difference |
+| --- | --- | --- | --- |
+| `vol Ω(w1)`, frozen fixture | `5.89801737180372` | `5.898017371803720` | `1e−15` |
+| min separation, all 78 pairs | exactly `2` | `≥ 2` | — |
+| margin over the required `5.763417470` | `0.134599902` (frozen) / `0.134549652` (family optimum) | `0.134590` / `0.134549` | last digit |
+
+So the pilot result is **independently confirmed**, and the two margins quoted across worker
+documents are resolved: they are the *frozen fixture* and the *family optimum*, two different
+objects, both positive. Two bugs in Main's own first attempt are recorded in `C118` (a fan
+triangulation that does not tile a polytope, overcounting `11×`; and a legality test with zero
+tolerance that reports a false failure).
+
+**Still not support for `(P′)`.** E's own `K15-E090` is right that the fixture is a *local*
+witness — its five pentagons would clash if repeated at all twelve outer centres — so it tests
+the inequality at the sharpest pair and says nothing about simultaneous compensation.
+
 ## 4. Proof-status account (the concise one)
 
 **Proved, this project.** Every Barlow cell has volume `√32` on a repaired basis (`C094`/`C104`);
