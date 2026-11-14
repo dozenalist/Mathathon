@@ -147,11 +147,15 @@ C5 normals:  mesh gave c >= 0.730508 ;  exact inradius c = 0.768212  (20 support
 region theta in [110,110.25] x phi in [35,35.25], 3 x 3 exact boxes
    mesh radius   [5.867852, 5.933758]   margin +0.104434
    exact radius  [5.869101, 5.932503]   margin +0.105684     <- tighter, as predicted
+
+region theta in [110,111] x phi in [35,36], 10 x 10 exact boxes
+   mesh radius   [5.859536, 5.940277]   margin +0.096119
+   exact radius  [5.860980, 5.938771]   margin +0.097563     <- tighter, as predicted
 ```
 
-`evidence/region_110_110p25_exactradius.json`. The `1°` region is re-running with the exact
-radius; its result is reported in the final message. Neither is a universal claim: both are
-continuum statements **within the C5 family**.
+`evidence/region_110_110p25_exactradius.json` and `evidence/region_110_111_exactradius.json`.
+Both are 100%-partition continuum certificates within the C5 family; neither is a universal
+claim, and neither covers the completion space.
 
 ---
 
