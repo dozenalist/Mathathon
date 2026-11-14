@@ -216,6 +216,42 @@ sits at `58.28°` instead of the icosahedral `63.43°`). Applied to the frozen c
 that the volume is at least the volume of the base polytope plus a prism, and the base polytope
 there is not the dodecahedron.
 
+### 8.3b A precise obstruction: the unit-distance relaxation is 0.19 short
+
+The one reduction that looked promising does not work, and *why* it fails is the most useful
+thing in this section.
+
+Every bisector sits at distance `b_i = |v_i|/2 ≥ 1`. Replacing each half-space by the
+distance-`1` bisector in the same direction can only **shrink** the cell, so for any completion
+
+```
+vol Omega(w1)  >=  min over the six free directions of  vol( 12 faces at distance 1 )
+```
+
+— a 6-direction problem with everything at unit distance, which is the only kind of statement a
+McLaughlin-type argument can see. Evaluating that relaxation at the C5 directions, certified by
+`cell_certificate`:
+
+```
+CERTIFIED   vol = [5.572648770, 5.572648771]
+threshold (P')  5.763417470          V_dod  5.550291029
+shortfall       0.190769
+```
+
+Since this is one admissible choice of the six free directions, the relaxation's **minimum** is
+at most `5.57265` — well below the threshold. So
+
+> **No argument that uses only "every bisector is at distance ≥ 1" can prove `(P')` at the
+> icosahedral pair.** It falls short by `0.19`, which is larger than the whole margin `0.135`
+> that `(P')` needs.
+
+That is the precise reason the payer problem is a *stability* question and not a one-cell
+question: the content is entirely in the five ring bisectors sitting at `1.051462` instead of
+`1`, and any bound that discards that excess — including the imported dodecahedral bound and
+every per-cell family tried in the earlier blocks — cannot reach the threshold. The target for
+a stability lemma is now explicit: with five of twelve faces at `b = 1.051462`, the volume must
+exceed `V_dod + 0.213126`.
+
 ### 8.4 One tightening attempt, measured and rejected
 
 The sandwich bounds the normal's motion by a *box* of half-width `e`, i.e. by `√3 e`, while the
