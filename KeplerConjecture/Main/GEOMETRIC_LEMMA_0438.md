@@ -100,6 +100,14 @@ so `Σ_{e⊆B∖E_B} c_e = (|B| − |E_B| − C_R)/2`, and therefore
 Σ_{v∈B} vol Ω(v)  ≥  √32 ( |B| − |E_B| − C_R ) .
 ```
 
+**A measurement of the error term (`Computation/bridge_boundary.py`).** Step (i) is the one
+estimate that could be over-optimistic, so it was measured on fcc (all cells `√32` exactly):
+`D(R) := √32·#{Λ ∩ B(0,R)} − (4π/3)R³` over `R = 4, 6, …, 16` gives `D/R² ∈ [0.17, 2.69]` and
+`D/R³` small and oscillating (`0.031, 0.126, 0.030` at `R = 12, 14, 16`). So `D = O(R²)` with an
+effective constant of order `1–3` in units of `√32`, consistent with step (i). The oscillation is
+the expected shell effect (`D` jumps when a lattice shell enters the ball); the measurement is a
+check of the *claim*, not its proof, which is the tiling argument.
+
 Two estimates close it. **(i)** `Σ_{v∈B} vol Ω(v) = (4π/3)R³ + O(R²)`: the cells tile space,
 `saturation` gives `Ω(v) ⊆ B(v,2)` (Hales' covering lemma, the same input `C087` needs), so
 the cells of `B` cover `B(0,R−2)` and lie in `B(0,R+2)`. **(ii)** `C_R` splits into two kinds

@@ -29,6 +29,44 @@ Two numbers carry all the information:
 2. **The general three-point bound is `4.0%` from the truth**, i.e. the lattice restriction
    is worth `0.029` of density — more than any improvement this project has produced.
 
+## 1a. The pair route as a cost object (added at review 0438)
+
+`GEOMETRIC_LEMMA_0438.md` introduces a route not in the ladder above, so it is placed here for
+comparison. Its content is a **two-cell** inequality, and its payoff is exact:
+
+| route | object | gives | status of the object |
+| --- | --- | --- | --- |
+| pointwise | `vol Ω(v) ≥ V_dod` | `0.754697399337` | **proved**, and **sharp** (attained), so closed |
+| pair, trivial constant | `vol Ω(v)+vol Ω(w) ≥ 2V_dod` | `0.754697399337` | proved (ML twice) — reproduces ML exactly |
+| pair, `(L_δ)` | `≥ 2V_dod + δ`, any `δ > 0` | `< 0.754697399337` | **proved non-explicit** (`C108`) |
+| pair, sharp `(L)` | `≥ 2√32` | `0.740480489693` | **open** (E's `E074`) |
+| three-point, general | an LP optimum | `0.770271` | proved (CDS22) — weaker than ML |
+| two-point | one `f` | `0.779747` | proved — and *provably* not sharp (Li) |
+
+Three cost observations that matter more than the numbers.
+
+1. **No sharpness barrier.** The pointwise route is not merely stuck: `V_dod` is *attained*, so
+   no pointwise improvement exists. The pair route's floor `2V_dod` is *unattainable* for a
+   contact pair, so the interval `[2V_dod, 2√32]` — a `1.92%` window — is entirely usable, and
+   every point in it yields a real improvement. This is the only route in the table with that
+   property.
+2. **The computational content is of a different kind.** Hales needs interval arithmetic on
+   `R⁵/R⁶` cells, `≈5×10³` planar maps and `≈10⁵` LPs. The pair route needs (i) one exact finite
+   polytope computation per local type (two types, 14 vertices each — `C104` does it in
+   ~0.3 s), and (ii) a combinatorial matching statement. **No large computation is in
+   prospect**: the local object is two cells, not a decomposition star.
+3. **The bridge is where the risk is, not the geometry.** `C106`/`C108` show the local bound is
+   converted to a density bound by a counting argument whose failure mode is `ρ = 0` (no
+   contacts at all), not a numerical threshold. So the pair route's risk profile is inverted
+   relative to the analytic route: its *inequality* is hard and its *bookkeeping* is easy, while
+   the two-point LP's inequality is easy and its sharpness impossible.
+
+**The honest comparison to Hales.** The pair route, if `(L)` were proved, would be a genuinely
+shorter proof of `δ ≤ π/√18` than Hales' — but it would still rest on a two-cell isoperimetric
+inequality that nobody has proved, and E's own best witness (`5.897967` against a required
+`5.763417`) shows the margin at the critical pair is only `1.19%`. So it is *promising*, not
+*short*.
+
 ## 2. The obstruction that decides the analytic route
 
 `K15-C094` (R. Li, Adv. Math. 460 (2024), Thm 6.1): the **plain** Cohn–Elkies LP is **not
