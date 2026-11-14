@@ -1,8 +1,9 @@
 # Kepler Conjecture: progress so far
 
-Updated November 14, 2026, at the 00:08 Pacific hourly review. Independent exact
-checks rejected the newly submitted certificate. This is the cumulative
-human-readable account; each hourly check updates it and adds a short entry in
+Updated November 14, 2026, after the 00:53 Pacific instruction to check every
+45 minutes. The mathematical status remains that of the preceding review,
+which rejected the submitted certificate. This cumulative account is updated
+at each scheduled check, with a short entry in
 [HourlyUpdates](HourlyUpdates/).
 
 ## Where the project stands
@@ -94,17 +95,27 @@ full independent review. The strengthened benchmark and rigorous angle-enclosure
 programs are still unwritten. The repaired Gaussian driver reports its solver
 error honestly, but another local test found integer truncation in its comparison
 helper. All small checks have finished. No extra prompt cycle was started;
-these new completions are queued for the next hourly review.
+these completions were triaged into the subsequent assignments.
 
 ## How the next stages will run
 
-The four Sair-Watch processes have been stopped. Hourly reviews in this Codex
-chat now read the existing SAIR sessions directly, review new evidence, run
-actionable heavy computations locally, and send concrete next prompts. There
-will be at most four active SAIR chats, including Main; historical swarms will
-not be resumed. Actual Ultramath runtime activation remains unresolved.
+The latest instruction sets checks every **45 minutes** and cancels Sair-Watch.
+A brief requested restoration was stopped when the user changed the cadence;
+all four monitor exits were verified. The active schedule reads the existing
+SAIR chats directly, reviews completed evidence, runs actionable heavy work
+locally and sends concise follow-ups to idle chats. Busy work continues.
 
-Each hourly push includes a short readable update, this refreshed cumulative
+All four chats received new research assignments and the requested **30–90
+minute work blocks, normally 60–90 minutes**. Main integrates; Computation
+implements the strengthened benchmark; Experimental develops the rigorous
+angle enclosure and partition route; Counterexamples audits and repairs the
+numerical tools. SAIR owns the bulk of the research. Delivery is confirmed for
+both assignments and timing updates. This verifies the instructions were received,
+not that each agent actually worked for the full requested duration. There are
+at most four owned chats; no historical swarms were resumed. Actual Ultramath
+runtime activation remains unresolved.
+
+Each scheduled push includes a short readable update, this refreshed cumulative
 summary, technical evidence, and a dated copy of the user-facing response.
 GitHub synchronization preserves worker commits and separates published working
 claims from independently accepted results. The current publication destination

@@ -1,37 +1,48 @@
 # Kepler supervision and response records
 
-## Current cadence: hourly reviews
+## Current cadence: checks every 45 minutes
 
-The user's latest instruction replaces Sair-Watch and ASTRA.md's continuous
-watcher/15-minute callback cadence for this project. All four owned watcher
-processes were stopped and their exits verified. Do not restart them or use
-old queued watcher notifications to launch extra research cycles. Preserve the
-old state and reports as evidence, and deduplicate callbacks against prior
-prompt IDs.
+The latest user instruction, November 14 at approximately 00:53 Pacific,
+cancels Sair-Watch after a brief restoration attempt. All four restored monitor
+processes were stopped and their exits verified. Do not restart any watcher.
+Preserve their stopped state and reports as historical evidence. Queued watcher
+notifications are stale triggers, not authority for extra research cycles.
 
-Automation `kepler-hourly-review-and-github-sync` is active in this Codex chat,
-at the top of every hour through November 15, 2026, noon Pacific (20:00 UTC).
-It reads the exact existing SAIR sessions through the API, reviews new progress,
-runs actionable Lean/heavy work locally, and sends concrete bounded prompts.
-Normally give up to 60 minutes to the next hourly review; do not interrupt a
-busy session merely because another hour has arrived. Stop research sends on
-user stop, verified completion, or the event deadline.
+Automation `kepler-hourly-review-and-github-sync` retains its historical ID but
+is now named **Kepler review every 45 minutes**, with
+`FREQ=MINUTELY;INTERVAL=45;UNTIL=20261115T200000Z`. It reads the four existing
+SAIR chats through the API, reviews completed work, runs actionable local jobs,
+and gives concise follow-ups to idle chats. Do not interrupt a busy session or
+duplicate an assignment. Check `ownership.json`, `supervision-state.json`, and
+the saved assignment and timing-update IDs before every send. Historical
+`hourly-state.json` is superseded by `supervision-state.json`.
 
-Every hourly checkpoint must synchronize the latest pushed Kepler worker
-artifacts into the public review branch, preserve authorship and source hashes,
-and keep unreviewed claims explicitly pending. Main owns mathematical
-integration. Request a push for useful work still present only on SAIR.
-Never overwrite unrelated changes or force-push teammates' work.
+SAIR does the bulk of mathematical research, implementation and independent
+auditing. Main owns choices and integration; Astra supervises, reviews evidence,
+routes messages, executes Lean/heavy work locally and publishes results. Give
+**30–90 minutes of substantive work per block, normally 60–90 minutes**. An
+interim push or one quick fix should lead into the next useful subtask, not end
+the block. Supply independent fallbacks when a worker is waiting on a dependency.
+Allow an early handoff for a genuine blocker, verified completion, user stop or
+the deadline. Keep long local checks explicit rather than blocking other review.
 
-Each push includes a brief plain-language `HourlyUpdates/<Pacific timestamp>.md`
-and an updated `PROGRESS_SUMMARY.md` describing the total progress so far.
-Update `PROGRESS.md`, evidence and claim records as needed. Save the exact final
-response in a dated `ChatLogs/` file, push the completed changes, and verify
-the remote before returning idle. A no-change hour still gets an honest update.
+Every scheduled checkpoint synchronizes the latest pushed Kepler artifacts into
+the review branch, preserves authorship/source hashes, and keeps unreviewed
+claims pending. Ask agents to push substantive work still only on SAIR. No force
+pushes, unrelated edits or shared-default-branch integration.
 
-This instruction supersedes older watcher instructions and 90-minute templates
-in historical prompts. Other projects' shared supervision code is not part of
-this Kepler-only transition.
+Each push includes a short plain-language update in `HourlyUpdates/` (directory
+name retained), a refreshed cumulative `PROGRESS_SUMMARY.md`, technical progress
+and evidence, and the exact final response in a dated `ChatLogs/` file. Verify
+the remote before idle. A no-change check still receives an honest update.
+Stop on user request, verified completion or November 15 at noon Pacific
+(20:00 UTC); reserve the final quarter for checking, integration and exposition.
+
+The actual assignments and subsequent longer-work instructions are recorded in
+`ASSIGNMENTS_2026-11-14_0040.json`. Their historical `Continuous-*` filenames
+record what was sent; they do not override this 45-minute policy. The brief
+watcher restoration and its retirement are operational history, not a new
+mathematical result. Other projects' shared supervision code was not changed.
 
 Standing user instruction received November 13, 2026: after handling each user
 message or monitored research response, report the progress made. Before every

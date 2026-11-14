@@ -3,8 +3,8 @@
 The Astra supervisor runs Lean and heavy numerical work on the user's local
 computer. Main collects requests from the four Kepler sessions and maintains
 this queue. Submit the source and request in a pushed Kepler-only checkpoint,
-then end the research turn when results are needed to proceed. The hourly
-supervisor review collects the request and executes it locally; Sair-Watch
+then continue an independent subtask where possible. The 45-minute scheduled
+supervisor check collects the request and executes it locally; Sair-Watch
 has been retired for this project by the latest user instruction.
 Continue independent mathematical work while an already-submitted job runs.
 

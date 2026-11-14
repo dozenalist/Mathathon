@@ -238,14 +238,17 @@ An empty default build provides no evidence about a Kepler module.
 
 ## 4. Work packages and acceptance gates
 
-The latest user instruction replaces Sair-Watch with hourly supervisor reviews.
-Normally use research blocks of up to 60 minutes to the next review. At each
-hourly check, review new completed work, send useful bounded follow-ups, and
-push the synchronized Kepler work with a brief hourly update and a refreshed
-cumulative `PROGRESS_SUMMARY.md`. Do not restart the retired watchers or
-duplicate a task because an old callback arrives. End a block early with a concrete offload
-handoff when local execution is the next dependency. Check the current event
-deadline and reserve the final quarter for review, integration, and exposition.
+The latest user instruction requires supervisor checks every **45 minutes**,
+with no Sair-Watch. SAIR leads research and implementation; Astra supervises
+and runs submitted heavy/Lean jobs locally. Give concise assignments for
+**30–90 minute work blocks, normally 60–90 minutes**, with concrete artifacts,
+reviewer and success criteria. Continue through interim pushes and use an
+independent fallback while a dependency is pending. Do not interrupt busy chats
+at a scheduled check. Reassign idle owned chats after reviewing their completion
+and checking prior prompt IDs. Push synchronized Kepler work with a brief update
+and refreshed `PROGRESS_SUMMARY.md` at every check. Do not restart watchers or
+launch extra cycles from stale callbacks. A genuine blocker can justify an early
+handoff. Reserve the final quarter for checking, integration and exposition.
 
 ### P0 — specification, source audit, and diversity (first block)
 
@@ -388,7 +391,7 @@ stress the global summation and boundary estimate.
 Workers write requests in their own role directories, push the required
 code and inputs, and alert Main. Main collects them in
 `Main/LOCAL_COMPUTE_REQUESTS.md` and includes pending requests in its completion
-response so the next hourly review collects them for local execution. If this is the critical
+response so the next 45-minute check collects them for local execution. If this is the critical
 dependency, hand off after 30–45 minutes rather than spending the rest of the
 block on the VM. Continue independent mathematical work while a request is pending.
 

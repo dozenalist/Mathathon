@@ -19,9 +19,30 @@ supervisor reviews identify which claims have actually been checked.
 | New rational certificate | REFUTED; repaired checker regression suite passes, full validation pending | Computation/Reviews/48443/README.md; Main/LocalChecks/2026-11-14_0008/ | Counterexamples and Astra |
 | Rational Gaussian control | Feasible control verified; density factor repaired; model error and comparison truncation remain | Counterexamples/Reviews/41644/README.md; Main/LocalChecks/2026-11-14_0008/ | Counterexamples and Astra |
 | Geometric and strengthened analytic targets | Restricted shell lemma and existential partition remain open; no implemented improved bound accepted | Main/HOURLY_REVIEW_2026-11-14_0008.md | Experimental, Computation and Main |
-| Review cadence | Hourly schedule active; all four Sair-Watch processes stopped | Main/SUPERVISION.md | Astra |
+| Review cadence | Every 45 minutes; Sair-Watch stopped; SAIR work blocks 30–90 minutes, normally 60–90 | Main/SUPERVISION.md | Astra |
 
 ## History
+
+### K15-OPS-004 — 2026-11-14, 00:53 Pacific
+
+Latest user instruction replaces the briefly restored Sair-Watch approach with
+checks every 45 minutes. The active automation's RRULE and target chat were
+verified. All four restored monitor PIDs were stopped in the host context;
+historical states, STOP files and reports were retained privately. No shared
+supervision code or unrelated project was modified. Old callbacks are stale.
+
+Before that cadence change, concise follow-ups were delivered to the four owned
+sessions for completions M30821/C49543/E36801/X44182. The user's subsequent
+30–90 minute budget (normally 60–90) was delivered to each session as steering,
+with exact message IDs in `Main/ASSIGNMENTS_2026-11-14_0040.json`. Main leads
+integration; C implements the missing benchmark, E the enclosure/partition work,
+and X independent checking and its driver repairs. No extra research assignment
+was sent after the final cadence instruction. Future checks will inspect actual
+history and avoid interrupting busy work or duplicating those prompts.
+
+This checkpoint changes supervision and documents delivery; it accepts no new
+mathematical claim. Current research results remain pending the next scheduled
+review. `supervision-state.json` is the authoritative private operational record.
 
 ### K15-HOURLY-001 — 2026-11-14, 00:08 Pacific scheduled review
 
