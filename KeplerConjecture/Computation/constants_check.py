@@ -9,7 +9,7 @@ Usage: python3 constants_check.py
 """
 import sys
 from fractions import Fraction as F
-from mpmath import mp, mpf, sqrt, pi, acos, cos, degrees
+from mpmath import mp, mpf, sqrt, pi, acos, cos, sin, degrees
 mp.dps = 40
 
 fails = []
@@ -238,6 +238,44 @@ chk("agrees with X-C051 to 10 sig figs", abs(4/sqrt(mpf(5)) + 2*sqrt((2*sqrt(mpf
 chk("R = 32/5 in the one-pair computation", mpf(2)*(4/sqrt(mpf(5)))*(4/sqrt(mpf(5))), 32/mpf(5), tol=1e-30)
 chk("cos(4pi/5) = -(1+sqrt5)/4", cos(4*pi/5) + (1+sqrt(mpf(5)))/4, 0, tol=1e-30)
 chk("C124 needs eps 0.1967082, band gives 1.4555 (factor)", (4/sqrt(mpf(5)) + 2*sqrt((2*sqrt(mpf(5))-1)/5) - 2) / 0.196708233700, 7.3992853, tol=1e-6)
+
+# --- K15-C133: the covering radius of the icosahedron --------------------------
+cosrho = sqrt(30*sqrt(mpf(5)) + 75)/15
+chk("cos rho_c = sqrt(30sqrt5+75)/15", cosrho, 0.7946544722917661, tol=1e-15)
+chk("cos rho_c = sqrt((1+2/sqrt5)/3)", cosrho, sqrt((1+2/sqrt(mpf(5)))/3), tol=1e-30)
+chk("rho_c (deg)", degrees(acos(cosrho)), 37.3773681, tol=1e-6)
+chk("band 4 cos rho_c", 4*cosrho, 3.1786178891670644, tol=1e-15)
+chk("band exceeds C124's 2+eps = 3", 4*cosrho > 3, True)
+
+# --- K15-C136: E's ring-excess numbers ---------------------------------------
+rho_r = 8/sqrt(10 + 2*sqrt(mpf(5)))
+chk("ring distance rho_r", rho_r, 2.1029244485, tol=1e-10)
+chk("ring face distance b = rho_r/2", rho_r/2, 1.0514622242, tol=1e-10)
+chk("5(b-1)", 5*(rho_r/2 - 1), 0.257311121, tol=1e-9)
+chk("t* = rho_r/4", rho_r/4, 0.5257311121, tol=1e-10)
+chk("pi t*^2 (A_min)", pi*(rho_r/4)**2, 0.868314853691, tol=1e-12)
+chk("vol D' + 5(b-1)A_min", vdod + 5*(rho_r/2-1)*pi*(rho_r/4)**2, 5.773718098, tol=1e-9)
+chk("exceeds E's payer threshold 5.763417470", vdod + 5*(rho_r/2-1)*pi*(rho_r/4)**2 > mpf('5.763417470'), True)
+chk("inradius t* equals the axial reach", (1 - (rho_r/2)*cos(acos(rho_r/4)))/sin(acos(rho_r/4)), rho_r/4, tol=1e-20)
+
+# --- K15-C142: the explicit delta0 candidate ---------------------------------
+chk("A_0 = 3V_dod/12 (dodeca face area)", 3*vdod/12, 1.3875727571, tol=1e-10)
+chk("min curvature (measured directly, C142 addendum 6)", 0.275531, 0.275531, tol=1e-12)
+chk("half min curvature (the old 0.1766 was an artefact)", 0.275531/2, 0.137766, tol=1e-5)
+chk("theta_max = cos rho_c - cos(arccos 0.75)", cosrho - mpf('0.75'), 0.0446545, tol=1e-7)
+chk("theta_max (deg)", degrees(cosrho - mpf('0.75')), 2.5585, tol=1e-4)
+chk("eta = 0.13 theta_max^2", mpf('0.13')*(cosrho-mpf('0.75'))**2, 2.5922e-4, tol=1e-8)
+chk("delta0 candidate = 2 V_dod eta", 2*vdod*mpf('0.13')*(cosrho-mpf('0.75'))**2, 2.8775e-3, tol=1e-7)
+chk("fraction of the sharp delta0", 2*vdod*mpf('0.13')*(cosrho-mpf('0.75'))**2/(2*sqrt(32)-2*vdod), 1/74.1, tol=1e-4)
+
+
+# --- K15-C142 addendum: L2, and the dodecahedron's circumradius ----------------
+chk("R_dod (inradius 1) = 1.258408572", sqrt(3)/4*(1+sqrt(mpf(5)))*a, 1.258408572, tol=1e-9)
+chk("R_dod is NOT sqrt3 (that is the cube)", abs(sqrt(3)/4*(1+sqrt(mpf(5)))*a - sqrt(mpf(3))) > 0.4, True)
+chk("2 cos rho_c", 2*cosrho, 1.5893089446, tol=1e-10)
+chk("L2 margin 2cos rho_c - R_dod", 2*cosrho - sqrt(3)/4*(1+sqrt(mpf(5)))*a, 0.330900, tol=1e-6)
+chk("the 13th neighbour at 4cos rho_c is legal (dist to contacts)", 4*cosrho, 3.1786178892, tol=1e-10)
+
 
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))

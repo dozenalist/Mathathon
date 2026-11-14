@@ -25,7 +25,8 @@ CHECKS = [
     ("interface: Main <-> Computation dictionary", ["interface_xcheck.py", "--degree", "3"], []),
     ("Barlow: contact polytope exact (C104)", ["contact_cell_exact.py"], ["--quick"]),
     ("Barlow: bridge boundary term measured (C106)", ["bridge_boundary.py"], ["--quick"]),
-    ("ledger: consistency lint (C110)", ["ledger_lint.py"], []),
+    ("ledger: consistency lint (C110/C140)", ["ledger_lint.py"], []),
+    ("ledger: linter self-test (C140)", ["ledger_lint.py", "--self-test"], []),
     ("A15 pair type corrected (C111)", ["a15_pair.py"], ["--quick"]),
     ("two-dodecahedra: all-twists cover (C112)", ["twist_cover.py"], ["--quick"]),
     ("two-dodecahedra: near-contact band (C116)", ["near_contact_band.py"], ["--quick"]),
@@ -33,6 +34,7 @@ CHECKS = [
     ("payer family scanned (C120)", ["payer_family.py"], ["--quick"]),
     ("rho_eps = 0 branch on scaled fcc (C130)", ["scaled_case2.py"], ["--quick"]),
     ("two-dodecahedra: orientation-free band (C133)", ["orient_cover.py"], ["--quick"]),
+    ("L1 constant sampled with its negative control (C142)", ["l1_sample.py", "--n", "300"], ["--quick"]),
 ]
 
 

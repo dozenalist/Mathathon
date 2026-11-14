@@ -138,3 +138,38 @@ returns to `PROVED`, and the local job is withdrawn.
 What remains open is unchanged: `δ₀(ε)` is still non-explicit (`G11`), so `C124` gives strictness and
 no constant, and `RESULTS.md` does not move. `C129`'s axial constant `3.4555` is still the better
 constant *on that sub-family*; `C133`'s `3.1786` is the orientation-free one.
+
+## G17 — OPEN (review block 0738, `C136`): E's ring face must contain the uncut disk
+
+The twelve-face part of E's `(P')` rests on: `vol D' ≥ V_dod` (Fejes Tóth, re-attributed at `C136` from
+Lindelöf) + the ring-excess lemma + `A_min ≥ π(ρ_r/4)²`. The third step bounds the uncut part of the
+ring **plane**; `A_ring ≥ πt*²` additionally needs the ring **face** to have inradius `≥ ρ_r/4 = 0.5257`
+along the whole homothety path. In the `C5` configuration the binding half-space gives `0.650` (a `24%`
+margin), but that is one configuration, not a proof. **Small, concrete, E's to close.**
+
+## G18 — OPEN (review block 0738, `C137`): exact-volume completeness is per-fixture, not generic
+
+`fixture_dense_shell.central_volume` fixes `rmax=6`, so its exact volume is exact for the neighbours
+found, not proved complete for generic input. The fixed fixture remains valid as separate evidence. The
+repair is the certified truncation `|p−v| ≤ 2h_Ω(p−v)` as an expanding-hull loop, which terminates with
+a completeness proof; it goes to Astra as a pinned job (owner C).
+
+## Note — `C132`'s density argument was repaired twice
+
+The first version of the `ρ_ε = 0` branch used the *coverage* lower bound on `Σ vol Ω(v)` as if it were
+an upper bound. The upper bound comes from saturation + disjointness + `Ω(v) ⊆ B(0,R+2)`. Both bounds
+and both density cases are now stated separately in `C132`. Recorded because the same shape of error
+(using a bound in the direction it does not have) has now occurred three times in this project.
+
+## G17 — CLOSED and SHARP (review block 0738, `C136` second pass)
+
+The obligation was: does the ring **face** contain the disk of radius `t* = ρ_r/4 = 0.5257311121` whose
+uncut-ness step (3) proves in the ring **plane**? For a convex face the in-plane reach toward another
+face at distance `d_j` and normal angle `θ_j` is `(d_j − b cos θ_j)/sin θ_j`, and with all face
+distances `≥ 1` the binding constraint is the **axial** face at `θ = 58.28252559°`, giving exactly
+`t*` — **zero margin**. So `A_min ≥ πt*² = 0.868314853691` is proved, `reach` is increasing in `θ`, and
+the load-bearing hypothesis is the family's declared `≥ 58.28°` bound. (My first pass reported a `24%`
+margin from the ring-ring constraint `0.649839`; that was the same error I was auditing — one
+constraint consulted, a tighter one ignored. Corrected.)
+
+**`G18` (C's exact-volume completeness) remains open**, as does `G11`.

@@ -28,6 +28,7 @@ shared `K15-COMPUTE-001/002` names are retired and mapped at the bottom.
 | `E-CERT-001` | E | interval certification for cluster cell volumes | **REQUESTED — driver missing** (Q3) |
 | `X-R01` | X | rational Gaussian driver | **DIAGNOSTIC COMPLETE; NEEDS_REVISION** — exact feasible control, factor-pi error, solver Model error; `Counterexamples/Reviews/41644/` |
 | `M-NUM-002` | M | rational SOS certificate for a frozen profile | **SPECIFIED, superseded by C-CERT-001** |
+| `M-CERT-002` | M | rigorous cubic-remainder bound for `C142`'s `L1` | **REQUESTED** (spec below) |
 
 The 00:08 Pacific hourly review completed both actionable diagnostic jobs locally.
 No job remains running. The requested degree ladder was not extended after its
@@ -266,3 +267,50 @@ or Astra to collect.
 ## Supervisor execution evidence at hourly transition
 
 The local execution record is in "Computation/Reviews/27616/README.md" and "Lean/Review/27616/README.md". These record the actual sources, commands, three grid controls, remaining sign violations, and the normalization-only Lean check. New certificate claims on the Computation branch are awaiting independent local review.
+
+### M-CERT-002 — make `C142`'s `L1` rigorous (the only gap left in the explicit `δ₀`)
+
+**What it must certify.** On the ball `{Σ_j θ_j² ≤ 0.002}` in the 24 tangent parameters of the 12
+icosahedral normals,
+
+```
+vol(θ) − V_dod  ≥  c · d(θ, Rot)²        (V_dod = 5.550291028515510, c = 0.13)
+```
+
+where `vol(θ)` is the volume of `{x·n_j(θ) ≤ 1}`, `n_j(θ)` the normalised perturbed normals.
+
+**Why this is enough.** `C142` addendum proves `L2` (a legal 13th neighbour's bisector lies at
+`2cos ρ_c = 1.589309 > R_dod = 1.258409`, so it creates no facet). So on the ball the cell has exactly
+12 facets and `vol` is a smooth function of `θ`; with the Hessian `λ₁ = 0.353298` and a bounded cubic
+term, `L1` follows. The measured cubic coefficient over 12 random directions is `|c₃| ≤ 0.075`, against
+the `0.494` that the constant `0.17` tolerates — a factor `6.6` of margin, and the cubic term is `2.0%`
+of the quadratic budget at the needed `θ = 0.0447`.
+
+**Type robustness is already certified (`C142` addendum 3).** All 20 tight triples have
+`|det| = 0.760845213` and the vertex radius is `1.258408572`; with `θ ≤ 0.05` the determinant stays
+`≥ 0.610845 > 0`, so no triple degenerates and `vol` is smooth on the whole ball. No combinatorial
+cover is needed — only a derivative bound.
+
+**Method (bounded, no search).** Taylor bound with interval arithmetic:
+
+1. On each box of a cover of the ball, interval-evaluate the vertex coordinates (solving the `3×3`
+   systems of tight planes; the combinatorial type is fixed by `L2` and checked once per box).
+2. Interval-bound the second, third and fourth derivatives of `vol` from the same expressions.
+3. Report `min over the ball of (vol − V_dod − 0.17Σθ²)` as an interval.
+
+**Pinned request.**
+
+```
+command      python3 Computation/l1_remainder.py --certify --ball 0.002 --c 0.17
+deps         python3 (stdlib), numpy, scipy.spatial  — no Lean, no network
+resources    1 CPU, 1 GiB RAM, wall <= 120 s     (estimate: ~10^4 volume evaluations, ~1 ms each)
+acceptance   exit 0, prints an interval [lo,hi] with lo > 0, and a box count
+must fail on the negative control:  c = 0.30 is REJECTED (that constant is too large)
+```
+
+The negative control matters: a certifier that cannot reject `c = 0.30` is not measuring anything, and
+this project has had three unsound checkers.
+
+**If it succeeds.** `δ₀ ≥ 2.8775·10⁻³` becomes a theorem, `C124`'s strictness becomes explicit, and the
+pair route produces its first number. It still does not improve `0.7546974` by itself — the hybrid needs
+`ρ_ε`, and `C139` shows the bound is a monotone function of `δ₀`.
