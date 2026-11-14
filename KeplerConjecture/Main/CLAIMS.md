@@ -1259,3 +1259,49 @@ not run Lean. Request `M-LEAN-002` (1 CPU, 1 GB, 300 s) asks Astra for the pinne
 build and axiom audit. Status stays `PROPOSED` until that log exists; the file
 contains no `sorry` and is meant to be *revised* rather than patched if the lemma
 names differ in v4.35.0.
+
+### K15-C041 — independent quadrature audit of Main's Fourier map (`VERIFIED`; two defects in the audit script)
+
+- **Run.** X's `Reviews/audit_shell_check.py` with their copy
+  `Reviews/shell_check_main.py` (branch `kepler15/counterexamples/run-01`,
+  `e3a63a1`) was executed by Main.
+- **What it confirms.** Against **direct 3-D radial quadrature**, Main's
+  `fourier_map` reproduces `f̂` with maximum relative errors `2.25e−15`,
+  `3.19e−16`, `1.79e−15`, `4.91e−15` for four coefficient vectors, and it prints
+  the same matrix `M` (column 3 = `(105/8, −105/4, 21/2, −1)`). This is a
+  **third independent confirmation** of the map — Main's Laguerre-consistency
+  check, Computation's `build_pq`, and now quadrature.
+- **Two defects in the audit script** (reported, not fixed by Main):
+  1. their copy hard-codes `PI_LO = PI_HI = float(π)`, so its "`PI_LO < π < PI_HI`"
+     line prints `False` and the threshold-direction check is vacuous — the real
+     file carries 29-digit rationals;
+  2. it crashes at section 3 (`sp.real_roots` returns `Float` objects in this
+     SymPy version, so `r.imag` raises), i.e. the odd-part part of their audit did
+     not run. Main's own `checker_adversarial.py` covers that ground (13 cases).
+- **Status.** `VERIFIED` for the quadrature confirmation; the audit script needs a
+  repair before it can be quoted as a complete audit. Reviewer: X (their script,
+  so the repair is theirs).
+
+### K15-C042 — E's per-cell ceiling import (`ACCEPTED WITH SCOPE`; one number to query)
+
+- **Claim (`K15-E048`, branch `kepler15/experimental/run-01`, `4ea4e8b`).** Every
+  directional per-cell bound of the form
+  `vol Ω(w) ≥ (1/3)∫_{S²} τ(u)³ du` with
+  `τ(u) = min(known-neighbour terms, 1.045)` is at most
+  `(4π/3)(1.045)³ = 4.780105…`; E's optimised value is `4.734`, within 1% of the
+  ceiling, and both are far below the `5.5…` required.
+- **Main's reading.** The ceiling is immediate once `τ ≤ 1.045` holds
+  *everywhere*, which it does by construction: an unknown neighbour is at
+  distance `≥ 2.09` (`K15-E014`), so its term is `≥ 2.09/(2cos φ) ≥ 1.045`. The
+  substantive content is therefore the numerical optimisation reaching `4.734`
+  and the conclusion that **this mechanism** cannot reach the threshold — not a
+  new inequality.
+- **Scope.** It bounds one *class* of directional arguments (those using `t ≥ min_z
+  d_z/(2cos φ_z)`); it does not bound per-cell arguments using a body that is not
+  star-shaped about `w`, as E says.
+- **Query for X/E.** E's note compares against `5.665735`, but `√32 = 5.656854`
+  and `(4π/3)/(π/√18) = 5.656854`; the origin of `5.665735` (`= 4√2·1.00157`) is
+  not explained in the pushed text. Until it is, do not quote the "2.08%
+  shortfall" figure — the shortfall against `√32` is `2.30%`.
+- **Status.** `ACCEPTED WITH SCOPE` (Main's reading of the argument), the
+  shortfall arithmetic **disputed pending the constant's definition**. Reviewer X.

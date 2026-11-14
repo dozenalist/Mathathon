@@ -64,3 +64,12 @@ python3 KeplerConjecture/Computation/checker_adversarial.py --against-exactcert 
 
 with the caveat that `exactcert.py` imports nothing else. `Computation/transfer_check.py`
 needs only numpy.
+
+## Additional runs this block (commands and outcomes)
+
+| Command | Outcome |
+| --- | --- |
+| `python3 Computation/transfer_check.py --R 2 --rmax 4` | bound of `K15-C035` holds at `r = 1..6` on fcc (1099 centres); sums `O(10)` vs bounds `O(10³)` |
+| `python3 Computation/cluster_fixture.py` | centre cell `5.550291` in every completion; nested sums `+157.87, +63.71, +17.91` decreasing, all upper bounds |
+| `python3 Reviews/audit_shell_check.py` (X's copy, from `e3a63a1`) | quadrature confirms `fourier_map` to `4.9e−15`; script then crashes at section 3 (SymPy `Float.imag`) |
+| `git show 5c10267:…/exactcert.py`-based cross-run (previous block) | 10/10 agreement, unchanged |
