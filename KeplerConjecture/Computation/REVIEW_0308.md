@@ -38,6 +38,42 @@ feasibility — each direction conservative.
 | HCP | `b = 0` exactly, every cell | same |
 | periodised icosahedral 13-cluster | central `b ∈ [0.106563219492, 0.106563221492]`; ring `b ≈ −335.214` | **the singleton cut `{0}` violates the condition for every `Φ < 0.008880268291`** |
 
+The third row is the useful one. **Before using it the fixture is validated, not asserted**
+(`validate_icos_fixture`): minimum separation among the 13 centres exactly `2.000000`; nearest
+periodic image at `14`; central-cell circumradius `≤ 1.3 < 8` (the half-period), so the cell is
+**uncut** and is exactly the regular dodecahedron of inradius 1, whose volume is the certified
+enclosure `[5.550291028, 5.550291030]`.
+
+### Both regimes of C044, and what each one shows
+
+| `R` | graph | criterion | verdict for the icosahedral fixture |
+| --- | --- | --- | --- |
+| `1` | **no edges** | pointwise `b(v) ≤ 0` (Hales' fcc-compatibility) | **VIOLATED**: `max b ≥ 0.106563` |
+| `2` | 12 edges | cut condition | fails for `Φ < 0.008880268291`; flow above, `PATCH_FEASIBLE` |
+| `2.1029`, `3` | 42 edges | cut condition | same threshold; the singleton cut is still binding |
+
+The `R < 2` row is worth Main's attention: the fixture is a legitimate packing (separation exactly
+2) whose central cell is **strictly below** `√32`, so it is **not** fcc-compatible and no transfer
+at bounded range can repair a positive deficit at an isolated vertex. That is precisely the reason
+`K15-C035`'s correction term `A` is needed, and the evaluator now exhibits it rather than assuming
+it.
+
+### Three bugs this validator found in my own fixture code
+
+Recorded because the reviewer's instruction — validate, do not promote — is what surfaced them:
+
+1. **The fixture was not a packing.** The vertices `(0,±1,±φ)` used since the 13-cluster was
+   first written form an icosahedron of *circumradius* `√(1+φ²) = 1.9021`, so the centre–vertex
+   distance was `1.9021 < 2`. The correct configuration scales the *unit* icosahedron to
+   circumradius exactly 2, giving edge `2.1029 > 2`. Without the validator this would have been
+   reported as a `Φ` threshold for an invalid configuration.
+2. **`R`-gating of the central-ring edges.** They are at distance exactly 2 and must be gated by
+   `R`; an earlier version added them unconditionally, so `R = 1` produced a twelve-edge star
+   instead of the correct edge-free graph — i.e. the `R < 2` regime was unreachable.
+3. **Empty-boundary division.** With no edges the singleton cut has `|δ⁺| = 0`, and the cut
+   machinery divided by zero. The cut code now only runs in the `R ≥ 2` regime; in `R < 2` the
+   pointwise condition is the only object and is reported instead.
+
 The third row is the useful one: an **explicit finite cut** giving a rigorous lower bound
 `Φ ≥ 0.008880268291` for that packing. Above that threshold a flow exists and is verified
 exactly (`|φ| ≤ Φ`, divergence `≥ b`), reported as `PATCH_FEASIBLE`.

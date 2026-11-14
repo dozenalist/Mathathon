@@ -17,20 +17,32 @@
   },
   {
    "fixture": "icos13",
+   "R": 1.0,
+   "n_edges": 0,
+   "b_central_lo": "5328160974619/50000000000000",
+   "b_central_hi": "106563221492381/1000000000000000",
+   "regime": "pointwise",
+   "max_b": "5328160974619/50000000000000",
+   "pointwise_violated": true,
+   "phi_threshold": null
+  },
+  {
+   "fixture": "icos13",
    "R": 2.0,
    "n_edges": 12,
    "b_central_lo": "5328160974619/50000000000000",
    "b_central_hi": "106563221492381/1000000000000000",
+   "regime": "cut",
    "singleton_sum_b": "5328160974619/50000000000000",
    "singleton_boundary": 12,
    "phi_threshold": "5328160974619/600000000000000",
-   "worst_cut": [
-    [
+   "worst_cut": {
+    "U": [
      0
     ],
-    "5328160974619/50000000000000",
-    12
-   ],
+    "sum_b": "5328160974619/50000000000000",
+    "boundary": 12
+   },
    "flow_status": "PATCH_FEASIBLE"
   },
   {
@@ -39,16 +51,17 @@
    "n_edges": 42,
    "b_central_lo": "5328160974619/50000000000000",
    "b_central_hi": "106563221492381/1000000000000000",
+   "regime": "cut",
    "singleton_sum_b": "5328160974619/50000000000000",
    "singleton_boundary": 12,
    "phi_threshold": "5328160974619/600000000000000",
-   "worst_cut": [
-    [
+   "worst_cut": {
+    "U": [
      0
     ],
-    "5328160974619/50000000000000",
-    12
-   ],
+    "sum_b": "5328160974619/50000000000000",
+    "boundary": 12
+   },
    "flow_status": "PATCH_FEASIBLE"
   },
   {
@@ -57,16 +70,17 @@
    "n_edges": 42,
    "b_central_lo": "5328160974619/50000000000000",
    "b_central_hi": "106563221492381/1000000000000000",
+   "regime": "cut",
    "singleton_sum_b": "5328160974619/50000000000000",
    "singleton_boundary": 12,
    "phi_threshold": "5328160974619/600000000000000",
-   "worst_cut": [
-    [
+   "worst_cut": {
+    "U": [
      0
     ],
-    "5328160974619/50000000000000",
-    12
-   ],
+    "sum_b": "5328160974619/50000000000000",
+    "boundary": 12
+   },
    "flow_status": "PATCH_FEASIBLE"
   }
  ]

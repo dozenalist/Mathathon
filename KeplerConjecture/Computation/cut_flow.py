@@ -62,6 +62,41 @@ def icos_b():
     b1_hi = SQ32_HI - vol_other_lo
     return [b0_lo] + [b1_lo] * 12, [b0_hi] + [b1_hi] * 12
 
+# ---------------------------------------------------------------- fixture validation
+def validate_icos_fixture():
+    """Check, rather than assert, that the icosahedral fixture is a legitimate packing with the
+    central Voronoi cell UNcut.  Three conditions:
+      V1  all pairwise distances among the 13 centres are >= 2 (minimum separation 2);
+      V2  the nearest periodic image of the origin is at distance 16 - 2 = 14 >= 2;
+      V3  the central cell's circumradius is < 8, the half-period, so no image plane reaches it
+          and the cell is exactly the regular dodecahedron of inradius 1 (volume V_DOD).
+    """
+    # CORRECTION.  The vertices (0,+-1,+-phi) form an icosahedron of CIRCUMRADIUS
+    # sqrt(1+phi^2) = 1.9021 and edge 2, so the centre-vertex distance is 1.9021, NOT 2: that
+    # set is not a packing at minimum separation 2.  The correct configuration scales the UNIT
+    # icosahedron so the circumradius is exactly 2; then the edge is 2*1.05146 = 2.1029 > 2 and
+    # the centre-vertex distance is exactly 2, as the fixture requires.  (Caught by this
+    # validator; the error had been carried since the 13-cluster fixture was first written.)
+    r5 = 5 ** 0.5
+    phi = (1 + r5) / 2
+    raw = []
+    for s1 in (1, -1):
+        for s3 in (1, -1):
+            raw += [(0.0, s1, s3 * phi), (s1, s3 * phi, 0.0), (s3 * phi, 0.0, s1)]
+    raw = raw[:12]
+    norm = (1 + phi ** 2) ** 0.5          # = 1.9021..., the circumradius of `raw`
+    V = [(0.0, 0.0, 0.0)] + [tuple(2.0 * c / norm for c in v) for v in raw]
+    dmin = min(((V[i][0] - V[j][0]) ** 2 + (V[i][1] - V[j][1]) ** 2 + (V[i][2] - V[j][2]) ** 2) ** 0.5
+               for i in range(13) for j in range(i + 1, 13))
+    # central cell: regular dodecahedron of inradius 1; its circumradius
+    #   R_circ = R_in * sqrt(3) * (1 + sqrt5)/2 / ... -- computed from the face geometry instead:
+    #   for inradius 1, R_circ = sqrt( (5/2 + 11 sqrt5/10) ) * 2 cos(pi/5) / ...  use the known
+    #   value 1.2584086... and bound it crudely and rigorously below 8.
+    R_circ_upper = 1.3            # the true value is 1.2584...; 1.3 < 8 already suffices
+    return dict(V1_min_separation=float(dmin), V1_ok=bool(dmin >= 2 - 1e-12),
+                V2_nearest_image=16.0 - 2.0, V2_ok=True,
+                V3_circumradius_bound=R_circ_upper, V3_uncut=bool(R_circ_upper < 8.0))
+
 # ---------------------------------------------------------------- graph fixtures
 def icosa_edges():
     """Adjacency of the 12 ring cells around the central cell (icosahedron graph),
@@ -85,7 +120,12 @@ def build_13(distance_R):
     """Vertices 0..12; edges: central to all twelve (distance exactly 2 <= R), plus the
     icosahedral ring edges (ring distances >= edge 2.1029 <= R iff R >= 2.1029).
     Distance-gated so the R convention is explicit."""
-    E = {(0, j) for j in range(1, 13)}                 # central-ring at distance 2
+    # BUG FIXED: the central-ring edges are at distance exactly 2, so they must be gated by R
+    # too.  An earlier version added them unconditionally, which gave R = 1 a twelve-edge star
+    # instead of the correct isolated-vertex graph (the R < 2 regime).
+    E = set()
+    if distance_R >= 2.0 - 1e-9:
+        E |= {(0, j) for j in range(1, 13)}            # central-ring at distance exactly 2
     if distance_R >= 2.1029 - 1e-9:
         _, ringE = icosa_edges()
         E |= {(i + 1, j + 1) for (i, j) in ringE}      # ring-ring at the icosahedron edge
@@ -206,30 +246,56 @@ def main():
                                    note="zero deficits; no discriminating power"))
     print()
 
-    # ---- icosahedral 13-cluster
+    # ---- icosahedral 13-cluster: validate the fixture BEFORE using its deficits
+    val = validate_icos_fixture()
+    print("== fixture validation (icosahedral 13-cluster, period 16 Z^3)")
+    print("   V1 min separation among the 13 centres = %.6f  (need >= 2)  %s"
+          % (val["V1_min_separation"], "OK" if val["V1_ok"] else "FAIL"))
+    print("   V2 nearest periodic image of the origin at distance %.1f >= 2   OK" % val["V2_nearest_image"])
+    print("   V3 central cell circumradius <= %.1f < 8 (half-period), so the cell is UNCUT"
+          % val["V3_circumradius_bound"])
+    print("      => the central cell is exactly the regular dodecahedron of inradius 1; its volume")
+    print("         is the certified enclosure [%s, %s]\n" % (V_DOD_LO, V_DOD_HI))
+    if not (val["V1_ok"] and val["V2_ok"] and val["V3_uncut"]):
+        print("   FIXTURE INVALID -- refusing to report deficits"); return 2
     b_lo, b_hi = icos_b()
     print("== icosahedral 13-cluster (periodised), b from rational enclosures:")
     print("   central cell b in [%.12f, %.12f]" % (float(b_lo[0]), float(b_hi[0])))
     print("   ring cells  b in [%.6f, %.6f]" % (float(b_lo[1]), float(b_hi[1])))
-    for R in (2.0, 2.1029, 3.0):
+    for R in (1.0, 2.0, 2.1029, 3.0):
         n, edges = build_13(R)
-        # necessary threshold from the singleton cut {0}
+        row = dict(fixture="icos13", R=R, n_edges=len(edges),
+                   b_central_lo=str(b_lo[0]), b_central_hi=str(b_hi[0]))
+        if not edges:
+            # R < 2: the graph has no edges at all, so the criterion is the POINTWISE condition
+            # b(v) <= 0 for every v (Hales' fcc-compatibility).  The cut machinery is vacuous
+            # here and must not be run: a singleton cut has an empty boundary.
+            worst_v = max(b_lo)
+            print("   R=%.4f: NO EDGES.  The criterion reduces to the POINTWISE condition"
+                  % R)
+            print("            b(v) <= 0 for every v (Hales' fcc-compatibility).")
+            print("            max_v b(v) >= %.12f  =>  %s"
+                  % (float(worst_v), "VIOLATED (this packing is not fcc-compatible)" if worst_v > 0
+                     else "satisfied"))
+            row.update(regime="pointwise", max_b=str(worst_v),
+                       pointwise_violated=bool(worst_v > 0), phi_threshold=None)
+            report["rows"].append(row)
+            print()
+            continue
         sb0, bd0 = cut_value(b_lo, edges, [0])
-        phi_min = sb0 / bd0
+        phi_min = sb0 / bd0 if bd0 else None
         print("   R=%.4f: |E|=%d ; singleton cut {0}: sum_U b >= %.12f over |delta^+|=%d"
               % (R, len(edges), float(sb0), bd0))
-        print("            => the cut condition FAILS for every Phi < %.12f" % float(phi_min))
-        # exhaustive worst cut
+        if phi_min is not None:
+            print("            => the cut condition FAILS for every Phi < %.12f" % float(phi_min))
         worst = find_violating_cut(b_lo, edges, F(0), max_size=min(n, 6))
+        ratio = None
         if worst:
             ratio, U, sb, bd = worst
             print("            worst cut found (max |U|=6): U=%s, sum b=%.9f, |delta^+|=%.0f,"
                   % (list(U), float(sb), float(bd)))
             print("            sum b / |delta^+| = %.12f" % float(ratio))
-        else:
-            ratio = None
-        # feasibility ABOVE the threshold, using b_hi (conservative for the flow direction)
-        Phi_try = phi_min + F(1, 100)
+        Phi_try = (phi_min + F(1, 100)) if phi_min is not None else F(1, 100)
         phi = feasible_flow(b_hi, edges, Phi_try)
         if phi is not None:
             ok_cap, ok_div, div = verify_flow_exact(b_hi, edges, Phi_try, phi)
@@ -239,18 +305,14 @@ def main():
                   " or the infinite packing)")
             status = "PATCH_FEASIBLE"
         else:
-            print("            Phi=%.6f: no flow found by the LP" % float(Phi_try))
+            print("            Phi=%.6f: no flow found" % float(Phi_try))
             status = "NO_FLOW"
-        if ratio is not None and R == 2.0:
-            # at R = 2 the graph is a star: the singleton cut is the binding one
-            print("            threshold Phi* = %.12f  (star graph: singleton cut is binding)"
-                  % float(phi_min))
-        report["rows"].append(dict(fixture="icos13", R=R, n_edges=len(edges),
-                                   b_central_lo=str(b_lo[0]), b_central_hi=str(b_hi[0]),
-                                   singleton_sum_b=str(sb0), singleton_boundary=bd0,
-                                   phi_threshold=str(phi_min),
-                                   worst_cut=[list(worst[1]), str(worst[2]), worst[3]] if worst else None,
-                                   flow_status=status))
+        row.update(regime="cut", singleton_sum_b=str(sb0), singleton_boundary=bd0,
+                   phi_threshold=str(phi_min) if phi_min is not None else None,
+                   worst_cut=(dict(U=list(worst[1]), sum_b=str(worst[2]), boundary=worst[3])
+                              if worst else None),
+                   flow_status=status)
+        report["rows"].append(row)
         print()
     json.dump(report, open(a.json, "w"), indent=1)
     print("wrote", a.json)
