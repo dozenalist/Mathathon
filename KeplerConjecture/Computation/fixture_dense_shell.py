@@ -165,6 +165,48 @@ def flow_and_obstruction_test():
           dmax < 2)
     return ok
 
+def ideal_family():
+    """THE CAPACITY STATEMENT, exactly: the ideal dense-shell family and its threshold.
+
+    For an ideal icosahedral shell at radius r the central Voronoi cell is the regular dodecahedron
+    of inradius r/2, so
+
+        vol(r) = (r/2)^3 * V_dod ,        b(0) = sqrt(32) - (r/2)^3 * V_dod ,
+
+    and b(0) > 0 exactly when r < r* = 2 (sqrt(32)/V_dod)^(1/3).  So EVERY r in (2, r*) gives a
+    nonvacuous fixture, with threshold t*(r) = b(0)/12, falling continuously to 0 at r*: a
+    one-parameter family, not one fixture.
+
+    r* is irrational, so it is BRACKETED with rationals using the rational enclosures of V_dod
+    (k15radicals) and of sqrt(32) (cut_flow): the test at each step is a rational comparison.
+    """
+    import k15radicals as RAD
+    V_lo, V_hi = RAD.dodeca_volume_enclosure(digits=40)
+    # bracket r* by bisection on the rational predicate  (r/2)^3 * V < sqrt32  (conservative both ways)
+    lo, hi = F(2), F(3)
+    def above(r, strict=True):
+        """Is (r/2)^3 V >= sqrt32, decided conservatively: True only if certain."""
+        x = (r / 2) ** 3
+        if strict:
+            return x * V_lo >= CF.SQ32_HI          # certainly >=
+        return x * V_hi <= CF.SQ32_LO              # certainly <=
+    assert above(hi), "the upper end must be beyond the threshold"
+    assert not above(lo), "the lower end must be below the threshold"
+    for _ in range(80):
+        mid = (lo + hi) / 2
+        if above(mid):
+            hi = mid
+        else:
+            lo = mid
+    return lo, hi, V_lo, V_hi
+
+def b_ideal(r):
+    """sqrt(32) - (r/2)^3 V_dod, enclosed: returns (lo, hi) with lo <= b <= hi."""
+    import k15radicals as RAD
+    V_lo, V_hi = RAD.dodeca_volume_enclosure(digits=40)
+    x = (F(r) / 2) ** 3
+    return CF.SQ32_LO - x * V_hi, CF.SQ32_HI - x * V_lo
+
 def cuboctahedral_shell(r):
     """The OTHER natural 12-shell: the cuboctahedron, which is exactly FCC's neighbourhood."""
     s_ = float(r) / 2 ** 0.5
@@ -412,6 +454,19 @@ if __name__ == "__main__":
     print("A5. THE CONTRAST: the same 12 contacts, the other arrangement, the opposite verdict")
     print("=" * 100)
     contrast_ok = contrast_test()
+
+    print("\n" + "=" * 100)
+    print("A6. THE CAPACITY STATEMENT: the ideal family and its exact threshold")
+    print("=" * 100)
+    lo, hi, V_lo, V_hi = ideal_family()
+    print("  V_dod in [%.15f, %.15f]" % (float(V_lo), float(V_hi)))
+    print("  ideal threshold r* = 2*(sqrt32/V_dod)^(1/3) in [%s, %s]" % (lo, hi))
+    print("  ... i.e. [%.12f, %.12f], width %.1e" % (float(lo), float(hi), float(hi - lo)))
+    print("  so every r in (2, r*) gives b(0) > 0 and t*(r) = b(0)/12 > 0:")
+    print("  %-12s %-28s %-28s" % ("r", "ideal b(0)", "rational fixture b(0)"))
+    for rs in ("2.0005", "2.005", "2.0127"):
+        bl, bh = b_ideal(F(rs))
+        print("  %-12s [%+.12f, %+.12f]" % (rs, float(bl), float(bh)))
 
     print("\n" + "=" * 100)
     print("B. THE NONVACUOUS WINDOW: where does the shell stop giving b(0) > 0?")
