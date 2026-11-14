@@ -163,3 +163,26 @@ bound is reported, and `ok=true` with a non-null `reason` is impossible by const
 `<=12` to `rho = 2.09`, objective `(4*pi/3)(f(0)+12 eta)/fhat(0)`). Per the assignment the
 checker repair takes precedence; the specification and handoff are in
 `Computation/REQUESTS/K15-C-REQ-003.md` for the next block.
+
+### K15-COMP-005 — 2026-11-15 — Computation (role C), shell bench
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-SHELLBENCH-001 | **TESTED_FINITE** | the count-strengthened two-point bound at `rho = 2.09` with 12-neighbour shell allowance is *identical* to the same-degree `eta = 0` CE control: the LP sets `eta = 0` at every degree (13, 21, 31, 41) and at every shell width tested (2.09, 2.3, 2.6, 2.83). Gain exactly 0 | `Computation/shell_bench.py`, `SHELLBENCH_RESULTS.md`, `out/sb_*.json` |
+| K15-C-HELDOUT-001 | **TESTED_FINITE** | held-out sign tests catch grid under-resolution: `K = 13` clean, `K = 21` and `K = 31` violate `f <= 0` on the held-out exterior grid, `K = 41` collapses to `f(0) = -6.3e5` (impossible since `fhat >= 0` forces `|f| <= f(0)`) | same |
+
+**Interpretation for R2.** This meets the roadmap's redirect criterion ("no numerical strength
+is demonstrated"), but the cause is specific and worth recording: the objective charges
+`12 eta` per unit of allowance while relaxing one active constraint can lower `f(0)` by at
+most about `eta`, so the trade cannot pay. The repair is *not* to abandon count-strengthening
+but to replace the uniform count 12 with a local statement about how many of the 12
+neighbours can simultaneously sit at the far end of the shell.
+
+**Process note.** My first draft of `shell_bench.py` omitted the `fhat >= 0` grid entirely —
+the same defect I audited in `Main/ce_laguerre.py` a block earlier. It was caught before the
+first successful run and is recorded here because repeating an audited defect is a process
+signal, not a detail.
+
+**Not done.** No global sign or tail certificate: the polynomial sign on `[Tmax, inf)` is
+open, and a compact-interval exponential bound plus tail estimate remains a separate
+obligation. Everything above is `TESTED_FINITE`.
