@@ -1,0 +1,18 @@
+Shell allowance in the family p = -(u-T')(u-c)^2
+eta* = (T'-T) * max(|T-c|,|T'-c|)^2   is the smallest admissible allowance
+
+  T=12  T'=27/2 c=1    M=25/2  eta* = 1875/8       = 234.375000   p(0) = 13.5000
+  T=12  T'=27/2 c=3    M=21/2  eta* = 1323/8       = 165.375000   p(0) = 121.5000
+  T=12  T'=27/2 c=5    M=17/2  eta* = 867/8        = 108.375000   p(0) = 337.5000
+  T=12  T'=27/2 c=8    M=11/2  eta* = 363/8        = 45.375000   p(0) = 864.0000
+  T=12  T'=27/2 c=12   M=3/2  eta* = 27/8         = 3.375000   p(0) = 1944.0000
+
+CONSEQUENCE (proved inside the family)
+  eta* > 0 for every T < T', and the objective charges n*eta* with n >= 12,
+  so every shell member of this family is STRICTLY WORSE than the corresponding
+  eta = 0 member.  No search is needed to see this: the family's shape forces it.
+
+  For comparison, the best eta = 0 member of the family (T' = T) is the cubic
+  certificate of sos_family.py, Delta <= 5.99152482.
+
+wrote out/sos_shell_variant.json

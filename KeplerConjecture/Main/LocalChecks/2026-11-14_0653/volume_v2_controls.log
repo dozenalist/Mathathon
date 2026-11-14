@@ -1,0 +1,14 @@
+================================================================================
+REGRESSION WITNESSES for the two defects of review 0608
+  W1 norm mismatch: y.dn = 8/9 vs R*e = 4/5, |dn|^2 = 4/5
+     ratio 1.111111 > 1  -> the infinity-norm slack is short: True
+  W2 unbounded polytope with four vertices refused: True  (0 is not in the interior of conv(n_i) (supporting planes checked: 1, margin 0))
+
+CONTROLS (the same five as before, now with the repaired slack)
+  cube: 8 (8 expected), 8 vertices
+  tetrahedron: 8/3 (8/3 expected), 4 vertices
+  fcc: [5.656854249492381, 5.656854249492381] width 1.2e-18 contains 4sqrt2: True
+  hcp: [5.656854249492381, 5.656854249492381] width 1.2e-18 contains 4sqrt2: True
+  C5: [5.898017371803721, 5.898017371803721] width 1.2e-18 contains 5.8980173718: True
+
+ALL CHECKS PASS

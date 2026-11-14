@@ -1,0 +1,39 @@
+{
+  "started_utc": "2026-11-14T15:00:05.923189+00:00",
+  "status": "finished",
+  "cpu_affinity_bit": 1,
+  "memory_cap_bytes": 1073741824,
+  "jobs": [
+    {
+      "name": "volume_v2_controls",
+      "role": "Experimental",
+      "script": "Experimental/scripts/cell_certificate.py",
+      "cap_seconds": 90,
+      "exit_code": 0,
+      "status": "completed",
+      "elapsed_seconds": 24.766,
+      "peak_observed_bytes": 61722624
+    },
+    {
+      "name": "dense_shell",
+      "role": "Computation",
+      "script": "Computation/fixture_dense_shell.py",
+      "cap_seconds": 120,
+      "exit_code": 1,
+      "status": "time_cap",
+      "elapsed_seconds": 120.188,
+      "peak_observed_bytes": 84267008
+    },
+    {
+      "name": "fixture_probe",
+      "role": "Computation",
+      "script": "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0653\\fixture_probe.py",
+      "cap_seconds": 30,
+      "exit_code": 0,
+      "status": "completed",
+      "elapsed_seconds": 0.828,
+      "peak_observed_bytes": 17625088
+    }
+  ],
+  "finished_utc": "2026-11-14T15:02:31.722890+00:00"
+}

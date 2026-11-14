@@ -1,0 +1,6 @@
+{
+  "file": "x_verify_all.log",
+  "normalization": "Removed trailing whitespace from two stdout lines; raw output retained privately; no content words changed",
+  "raw_sha256": "46619dec46a2b799ca7cd7f07ace3b72d66f52a09dc76fda4822c2355907beb3",
+  "published_sha256": "c834c5939e831b29ea1c0a44526ae788a2e12b6160e1710b02fc5d10c6f54413"
+}

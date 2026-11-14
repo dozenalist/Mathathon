@@ -1,0 +1,45 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "packages": {
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0"
+  },
+  "sources": {
+    "Experimental/scripts/cell_certificate.py": {
+      "commit": "814f213eb18d0b7c9aba92297d19161b368cf3fa",
+      "git_blob": "89e9c8d649b9eb8203d6ddc99f1b23e475e60411",
+      "sha256": "6f2bb258c273f75d83b09d283a14a5ca6b86ddab07c9d6673cbf1b2f0cab811b"
+    },
+    "Experimental/scripts/rational_interval.py": {
+      "commit": "814f213eb18d0b7c9aba92297d19161b368cf3fa",
+      "git_blob": "16703d14b3438be007b3031f4d67034d307c430e",
+      "sha256": "561f9167f716caeb21db70f46bc6d3ddf43b5b4683e491387be1035dc051fb8b"
+    },
+    "Computation/exact_volume.py": {
+      "commit": "fbb124e407688325c4f14d92b7c4808f23969c7c",
+      "git_blob": "5604ed6448c322f9e8b52ef46c5152a4f4cd9746",
+      "sha256": "83832eeff2044fa06fedb17558b4be91ac0c361ad4e571a15c470920ccd737d9"
+    },
+    "Computation/tests_exact_volume.py": {
+      "commit": "fbb124e407688325c4f14d92b7c4808f23969c7c",
+      "git_blob": "8c5e1188dce446463bbfe438f48dc2918aee1166",
+      "sha256": "7b5acd7e658873364fc25d24932c157b7e0dec75eeeeaefa7ffc3ee3c274ed9b"
+    },
+    "Computation/verify_certificate_independent.py": {
+      "commit": "fbb124e407688325c4f14d92b7c4808f23969c7c",
+      "git_blob": "a90e4bfc07e538d2287fb361232a70d45da6664a",
+      "sha256": "0de023f803e6aed05e42f58ea53bafcba7348218daf1a3d532fcd2bfc7e94054"
+    },
+    "Computation/out/certificate_dense_shell_centre.json": {
+      "commit": "fbb124e407688325c4f14d92b7c4808f23969c7c",
+      "git_blob": "065fbff516e9f2aab57cdb4e8896886535034816",
+      "sha256": "88d5cfb17de8cc1abfc3c6ba1f7ad4fda7aa02b3fa5e410561891f9e427f9281"
+    }
+  },
+  "cpu_affinity_bit": 1,
+  "memory_cap_bytes": 1073741824,
+  "threads": 1
+}

@@ -1,0 +1,14 @@
+
+== n=27 rho=2.05 UNCONDITIONAL (K15-C013a)   T_LO=12  T_HI=13202543/1000000
+   eta=0     EXACT PASS (eps=1e-06, D=1e6)  eta=0  delta <= 0.87227746
+   eta_free  EXACT PASS (eps=1e-06, D=1e6)  eta=0  delta <= 0.87227746
+
+== n=12 rho=2.09 CONDITIONAL (K15-C019)   T_LO=12  T_HI=1372279/100000
+   eta=0     EXACT PASS (eps=1e-06, D=1e6)  eta=0  delta <= 0.87227746
+   eta_free  EXACT PASS (eps=1e-06, D=1e6)  eta=0  delta <= 0.87227746
+
+== comparison (exact, Main's checker) ==
+  n=27 rho=2.05 UNCONDITIONAL (K15-C013a)  eta=0 0.87227746  eta>0 0.87227746  gain +0.00000000
+  n=12 rho=2.09 CONDITIONAL (K15-C019)     eta=0 0.87227746  eta>0 0.87227746  gain +0.00000000
+
+wrote C:\Users\carte\lean\Mathathon\.sair\runs\01a1d8c0-f50f-7352-a61a-3927660a8eea\kepler15\review-20261114-0138\local-jobs\shell_propose_degree9.json in 2.8s

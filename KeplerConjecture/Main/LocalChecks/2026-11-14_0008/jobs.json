@@ -1,0 +1,57 @@
+[
+  {
+    "job": "checker_regressions",
+    "source_commit": "8bb50f857916ba986f42690b0ec081edebc4efdc",
+    "args": [
+      "exactcert_tests.py"
+    ],
+    "workdir": "KeplerConjecture/Computation",
+    "cap_seconds": 120,
+    "exit_code": 0,
+    "status": "completed",
+    "elapsed_seconds": 21.219,
+    "log": "checker_regressions.log"
+  },
+  {
+    "job": "shell_float_diagnostic",
+    "source_commit": "96fbf9bbcb6eef18b9f56ec926f226a6473fc22d",
+    "args": [
+      "scripts/shell_2p09_interval.py"
+    ],
+    "workdir": "KeplerConjecture/Experimental",
+    "cap_seconds": 20,
+    "exit_code": 0,
+    "status": "completed",
+    "elapsed_seconds": 0.203,
+    "log": "shell_float_diagnostic.log"
+  },
+  {
+    "job": "gaussian_one_iteration",
+    "source_commit": "3831361a0b4d9366597c82191e78327eee96e404",
+    "args": [
+      "x_r01_driver.py",
+      "6",
+      "1"
+    ],
+    "workdir": "KeplerConjecture/Counterexamples",
+    "cap_seconds": 60,
+    "exit_code": 0,
+    "status": "completed",
+    "elapsed_seconds": 2.297,
+    "log": "gaussian_one_iteration.log"
+  },
+  {
+    "job": "gaussian_comparison_regression",
+    "source_commit": "3831361a0b4d9366597c82191e78327eee96e404",
+    "args": [
+      "-c",
+      "import sympy as s; import x_r01_driver as D; p=s.Rational(99,100); q=s.Integer(1); print(\"input:\",p,q); print(\"submitted helper:\",D.kepler_ok(p,q)); print(\"exact lhs:\",32*p*p); print(\"pi cubed:\",s.N(s.pi**3,30)); print(\"correct comparison:\",bool(32*p*p < s.pi**3)); assert D.kepler_ok(p,q) != bool(32*p*p < s.pi**3)"
+    ],
+    "workdir": "KeplerConjecture/Counterexamples",
+    "cap_seconds": 20,
+    "exit_code": 0,
+    "status": "completed",
+    "elapsed_seconds": 2.015,
+    "log": "gaussian_comparison_regression.log"
+  }
+]

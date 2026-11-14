@@ -1,0 +1,1 @@
+'Kepler15.centreDensity_eq' depends on axioms: [propext, Classical.choice, Quot.sound]

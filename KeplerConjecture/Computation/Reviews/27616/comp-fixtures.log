@@ -1,0 +1,6 @@
+F1 Gaussian duality           : (True, mpf('0.0'))
+F2 sinc control               : ok=True  int f=1.0  max|fhat(k)|=2.913e-63
+F3 ball difference body       : exact Delta<=1 -> ok=True  A(f)=0.2387324146  bound=1.0  lens_ok=True
+F4 density scaling (exact count): #=864 (expect 4M^3=864) exact=True
+   rhoA=1.414213562373 (sqrt2=1.414213562373)  rhoB=0.176776695297 (2^-2.5=0.176776695297)  vol ratio=8.000000
+F5 Poisson on FCC             : |lhs-rhs| = 2.012e-29  (lhs=2.439588401 rhs=2.439588401)

@@ -1,0 +1,62 @@
+{
+  "review": "2026-11-14_0008_PST",
+  "cadence": "hourly; Watch-Sair retired",
+  "deliveries": [
+    {
+      "completion_reviewed": 30102,
+      "role": "Main",
+      "prompt_sha256": "ae0b94e8d7636fbb2c33bd7f615b13519e7988a3c4c8804596dec2c1cb167b00",
+      "user_sequence": 30103,
+      "confirmed_utc": "2026-11-14T00:25:28.9815771-08:00",
+      "delivery_sequence": 30104,
+      "target": {
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "session": "based-on-the-chats-e0wz"
+      },
+      "message_id": "oc_c64b644a9f579281"
+    },
+    {
+      "completion_reviewed": 48443,
+      "role": "Computation",
+      "prompt_sha256": "4804b8b5bba2c1bbbf0544f6cc0400740c2734174ee38d28410a228f3cf8c47f",
+      "user_sequence": 48444,
+      "confirmed_utc": "2026-11-14T00:25:25.6768262-08:00",
+      "delivery_sequence": 48445,
+      "target": {
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "session": "using-the-chats-in-mcl6"
+      },
+      "message_id": "oc_68ebe1d67462d1a2"
+    },
+    {
+      "completion_reviewed": 35401,
+      "role": "Experimental",
+      "prompt_sha256": "e6da09875f621c69e8da082dfd22a3e80c9fb86f7035735184a48c5a6e0beb43",
+      "user_sequence": 35402,
+      "confirmed_utc": "2026-11-14T00:25:27.0357841-08:00",
+      "delivery_sequence": 35403,
+      "target": {
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "session": "i-ve-attached-thomas-4iws"
+      },
+      "message_id": "oc_ba20f9f628576ab2"
+    },
+    {
+      "completion_reviewed": 41644,
+      "role": "Counterexamples",
+      "prompt_sha256": "e966f7279123c9455204457c2b99d78b15358d4ad165d7bf350e3a1b8db95bf3",
+      "user_sequence": 41645,
+      "confirmed_utc": "2026-11-14T00:25:27.9835397-08:00",
+      "delivery_sequence": 41646,
+      "target": {
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "session": "i-ve-attached-viazovska-f7hh"
+      },
+      "message_id": "oc_921471466c4f989d"
+    }
+  ]
+}

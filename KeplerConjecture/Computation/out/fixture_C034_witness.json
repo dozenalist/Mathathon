@@ -1,0 +1,13 @@
+{
+ "name": "C034_witness_isolated_positive_vertex",
+ "note": "X-C034 / D8. Vertex 4 is isolated and has positive deficit +1, so the instance is infeasible at ANY capacity Phi (the singleton cut {4} has an empty boundary and sum_U b = +1 > 0). Any path that infers its vertex range from the edge list loses vertex 4 and false-accepts. Kept as the retained witness: every path must reject it.",
+ "edges": [[0, 1], [1, 2], [2, 3], [0, 3]],
+ "b_lo": ["-1", "-1", "-1", "-1", "1"],
+ "b_hi": ["-1", "-1", "-1", "-1", "1"],
+ "volumes_are_provisional": false,
+ "expected": {
+   "verdict": "INFEASIBLE_AT_EVERY_PHI",
+   "witness_cut": [4],
+   "reason": "delta^+({4}) is empty and sum_U b = +1 > 0"
+ }
+}

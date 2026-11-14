@@ -1,0 +1,8 @@
+degree K=31 grid=4000 r0=1.0000
+  rho_A <= 1.489210444     (FCC sqrt2 = 1.414213562)
+  Delta <= 0.779748765     (Kepler = 0.740480490)
+  gap    = +0.039268276  (+5.303% of Kepler)
+  reference: CE03 0.779747 | CDS general 3pt 0.770271 | Li lower 0.770657 | dodecahedral 0.7546974
+  diagnostics: max f outside r0 = 1.28e-08 (at r=2.667), min fhat = -2.64e-07 (at s=1.305)
+  status: TESTED_FINITE (grid evidence only; not a certificate)
+  wrote C:/Users/carte/lean/Mathathon/.sair/runs/01a1d8c0-f50f-7352-a61a-3927660a8eea/kepler15/review-27616/comp-K31-g4000.json in 33.6s

@@ -1,0 +1,326 @@
+# Local computation handoff
+
+## Supervisor queue disposition — 08:23 Pacific
+
+M-CERT-002: **NEEDS_IMPLEMENTATION / NEEDS_REVISION** at completed Main source
+89a9c5494a6ead7424caeffc4b5053ae800512b9. The named `l1_remainder.py` is absent;
+the command, constants, quotient and strict-positive acceptance need reconciliation.
+Main received a bounded executable-handoff assignment. No corresponding job is running.
+E's premise scan was explicitly withdrawn by its author. Four local validation
+jobs finished; see LocalChecks/2026-11-14_0823. No new Lean target was submitted.
+Older request statuses below are historical unless explicitly reconciled here.
+
+The Astra supervisor runs Lean and heavy numerical work on the user's local
+computer. Main collects requests from the four Kepler sessions and maintains
+this queue. Submit the source and request in a pushed Kepler-only checkpoint,
+then continue an independent subtask where possible. The 45-minute scheduled
+supervisor check collects the request and executes it locally; Sair-Watch
+has been retired for this project by the latest user instruction.
+Continue independent mathematical work while an already-submitted job runs.
+
+Supervisor checkpoint 01:38 Pacific: C-CERT-001's K33 files and regression/oracle
+commands ran locally. M-LEAN-002 reached the time/memory budgets without theorem
+verification and needs revision. Shell degree-8/9 commands had incompatible
+restrictions. See `Main/REVIEW_2026-11-14_0138.md` and its logs; older queue states
+below are historical until Main reconciles them.
+
+## Queue
+
+`Main/` owns the queue. IDs are distinct per role from this cycle onward; the old
+shared `K15-COMPUTE-001/002` names are retired and mapped at the bottom.
+
+| ID | Owner | Purpose | State |
+| --- | --- | --- | --- |
+| `M-LEAN-001` | M | pinned Lean 4.35.0 build of `Lean/Kepler15/Normalisation.lean` | **COMPLETE** — exit 0, axioms `[propext, Classical.choice, Quot.sound]`, algebraic identity only |
+| `M-NUM-001` | M | degree-8 grid control in `Computation/ce_laguerre.py` | **COMPLETE but INVALID as a claim** — script omitted Fourier positivity (K15-C014r); repaired variant locally re-run gives `f(0) = 0.2182024…` |
+| `C-NUM-001` | C | CE control, `K = 31/41`, grids 1200/4000 | **COMPLETE, `TESTED_FINITE`** — `Δ = 0.779702445785607`, `0.779745768082807`; `min f̂ ≈ −3·10⁻⁶` |
+| `C-CERT-001` / `K15-C-REQ-002` | C | exact Sturm sign driver and K21 verification | **COMPLETE: REFUTED** — exact negative Fourier witness; ladder deferred until checker repaired; `Computation/Reviews/48443/` |
+| `E-CERT-001` | E | interval certification for cluster cell volumes | **REQUESTED — driver missing** (Q3) |
+| `X-R01` | X | rational Gaussian driver | **DIAGNOSTIC COMPLETE; NEEDS_REVISION** — exact feasible control, factor-pi error, solver Model error; `Counterexamples/Reviews/41644/` |
+| `M-NUM-002` | M | rational SOS certificate for a frozen profile | **SPECIFIED, superseded by C-CERT-001** |
+| `M-CERT-002` | M | rigorous cubic-remainder bound for `C142`'s `L1` | **REQUESTED** (spec below) |
+
+The 00:08 Pacific hourly review completed both actionable diagnostic jobs locally.
+No job remains running. The requested degree ladder was not extended after its
+certification prerequisite failed. New bounded offloads for the repaired checker,
+Gaussian driver and shell-count benchmark are assigned but not yet submitted.
+No new Lean source arrived in the four reviewed completions.
+
+Publication supplement: C's repaired checker suite passed locally in 21 seconds;
+full independent validation remains open. E's floating shell diagnostic and X's
+one-iteration driver were run, and X's rational-truncation bug was reproduced.
+See `LocalChecks/2026-11-14_0008/`. New requests `K15-C-REQ-003` and
+`K15-EXP-002` explicitly refer to unwritten `shell_bench.py` and
+`tammes13_enclosure.py`; their state is **NEEDS_IMPLEMENTATION**. No heavy job
+is waiting on an executable handoff, and no local job remains running.
+
+### M-NUM-002 — rational SOS certificate, revised specification (not to be run before C-CERT-001)
+
+The rev. 2 text of the old `K15-COMPUTE-001` was not a coherent certificate
+specification: with rational `P` and rational sums of squares, a factor
+`(t − 8π)` carries irrational coefficients. Three coherent options; pick one and
+say which:
+
+1. **Conservative rational threshold.** Prove `−P(t) = Σ_i s_{0,i}(t)² + (t − 25)Σ_i s_{1,i}(t)²`
+   with `t = 2πs`. Since `25 < 8π = 25.1327…`, this implies `f ≤ 0` for
+   `t ≥ 8π`, i.e. for `|x| ≥ 2`. Purely rational, exact expansion check, no PSD
+   matrix needed (a univariate sum of squares *is* the certificate).
+   Cost: the threshold is stronger than needed, so the constant is slightly worse.
+2. **Formal `π`.** Verify the identity in `ℚ[t, π]` treating `π` as a
+   transcendental: both sides are polynomials in `(t, π)` and the identity is
+   checked coefficient-wise. Requires the certifier to accept a two-variable
+   coefficient ring. Do **not** write "`π² = π·π`" as if it were machinery.
+3. **Rational Gaussian scaling.** Replace `e^{−πs}` by `e^{−s}` and re-derive the
+   Fourier map (`φ̂(t) = π^{-3/2}·…`); then all constants become rational
+   multiples of `π^{3/2}` and the certificate lives in `ℚ(√π)`. Requires the
+   re-derivation to be written out and reviewed first.
+
+Acceptance for any of the three: exact rational identity, verified by an
+independent checker, with the sign regions `s ≥ 4` and `s ≥ 0` stated in `s`
+(never mixed with `t`), and `f̂(0) > 0` exhibited.
+
+### C-SHELL-001c — how to propose a candidate (after K15-C022)
+
+Do **not** propose by a dense grid LP: at degree 6 it returns a box vertex without
+`p(0) >= 0`, and objective exactly `0` with it (K15-C022). Two proposers that can
+work:
+(a) **exact Sturm bisection**: fix a small parametric family (e.g. `p` of degree
+`K` with roots pinned at `u = 13.5` and a movable double root), and bisect on the
+parameter with exact sign verdicts at each step;
+(b) **SOS/SDP**: minimise `p(0) + n*eta` subject to
+`q = s_0 + u s_1`, `-p + eta = t_0 + (u - T_LO)(T_HI - u) t_2 + (u - T_HI) s_3` with
+`s_i, t_j` sums of squares, then round the Gram data to rationals and let
+`shell_check` decide. The second is the only one that scales past degree ~10.
+
+### C-SHELL-001b — exact checker is now in the tree (use it)
+
+`Computation/shell_check.py` (new, runnable, no heavy numerics): rational profile
+`a` in the basis `u = π|x|²`, i.e. `f = e^{-π|x|²} Σ a_k u^k`, Fourier map `b = M a`
+with `M` rational (verified against the Hermite–Laguerre eigen-relation for
+`k ≤ 2`), then exact Sturm verdicts for `q ≥ 0` on `u ≥ 0`, `p ≤ η` on
+`[12, 27/2]`, `p ≤ 0` on `[27/2, ∞)`, and a directed-`π` output interval.
+Reproduce: `python3 KeplerConjecture/Computation/shell_check.py --self-test`
+(1.3 s, 1 core, stdlib+sympy). C's optimiser should emit candidates in exactly
+this format so that the same file certifies them; X should audit it before any
+number is quoted.
+
+### C-SHELL-001 — same-degree comparison at `η = 0` vs `η > 0` (K15-C018)
+
+Only a request if C's Sturm driver (C-CERT-001) exists; otherwise it stays a
+specification. Same degree, same grid, same normalisation on both sides, so the
+two numbers differ only by the relaxation.
+
+```text
+request_id = C-SHELL-001
+status = BLOCKED on C-CERT-001
+owner = C (Computation, kepler15/comp-01a1d8c0)
+reviewer = X, then M
+claim_id = K15-C018 (benchmark; not a bound until the count 12 is certified)
+purpose = measure whether a small allowance eta at rho = 2.09 buys more than the
+          12 eta / fhat(0) it costs, at fixed degree and fixed basis
+inputs   = a rational profile from C-CERT-001 at degree K <= 12,
+           plus its eta-shifted variants f -> f - eta on [2, rho] (i.e. the
+           profile whose value on the shell is capped at eta)
+success  = (4 pi/3)(f(0) + 12 eta)/fhat(0) computed for eta in {0, eta_1, eta_2}
+           with eta_j chosen so f stays admissible, all three verdicts exact
+blocking = rho = 2.09 needs a Tammes-13 enclosure; without it the count 12 is a
+           hypothesis, not an input
+certification = exact (Sturm) or none
+```
+
+
+### M-LEAN-002 — pinned build of `Lean/Kepler15/Volume.lean` (ball-volume identity)
+
+```text
+request_id = M-LEAN-002
+status = REQUESTED
+owner = M (Main); executed by Astra locally
+reviewer = X
+claim_id = K15-C024 item 1 (ball volume), K15-C039
+branch = kepler15/main
+source_commit = the pushed head that carries this file
+input_files = KeplerConjecture/Lean/Kepler15/Volume.lean
+              KeplerConjecture/Lean/Kepler15/Normalisation.lean
+command = lake env lean KeplerConjecture/Lean/Kepler15/Volume.lean
+          then append `#print axioms Kepler15.volume_ball_unit` and re-run
+dependencies = Lean v4.35.0, Mathlib v4.35.0 (local checkout)
+resources = 1 CPU, 1 GB RAM, 300 s cap (cold Mathlib read dominates)
+expected_outputs = KeplerConjecture/Lean/out/volume_build.log
+success_criteria = exit 0; `#print axioms` shows only
+                   [propext, Classical.choice, Quot.sound]; no `sorry`
+certification = Lean kernel (pinned toolchain only)
+note = the two proof routes are named in the file's header. If
+       `EuclideanSpace.volume_ball` or `Real.Gamma_nat_add_one_over_two` has a
+       different name in v4.35.0, report the diagnostic and do not patch with
+       `sorry`; Main revises the file.
+```
+
+
+### C-TRANSFER-001 — transfer feasibility and minimal `Φ` for a given periodic packing
+
+```text
+request_id = C-TRANSFER-001
+status = REQUESTED (specification only; no code yet)
+owner = C (Computation, kepler15/comp-01a1d8c0)
+reviewer = X, M for the mathematics
+claim_id = K15-C044 (cut condition), K15-C054 (degree bound), K15-C035 (C1)
+purpose = for a given PERIODIC packing and range R, compute the cell volumes,
+          b(v) = sqrt32 - vol Omega(v), and the minimal Phi for which a transfer
+          exists (equivalently min over cuts of sum_U b / |delta^+_R(U)|).
+inputs  = a periodic packing as (lattice basis, fractional coordinates) with all
+          separations >= 2; R in {2, 2.09}
+method  = (i) periodic Voronoi volumes (replicate 3x3x3, take the cell of each
+          representative; volume is translation invariant);
+          (ii) LP: minimise t subject to sum_w phi(v,w) - sum_w phi(w,v) >= b(v),
+          |phi| <= t, for the edges of G_R (minimum image);
+          (iii) report t*, the binding cut, and the implied C1 = 3 t* k_R R (R+1)^2.
+checks  = fcc and hcp must return t* = 0 (their cells are exactly sqrt32);
+          a locally-sparse test must return 0 as well (all b <= 0);
+          a configuration with some b > 0 is the informative case and none is
+          known yet (K15-C051)
+cap     = 1 CPU, 1 GB, 300 s for <= 400 centres
+output  = JSON: packing id, R, t*, binding cut, C1, per-vertex b
+note    = this is a TOOL, not a certificate: it decides feasibility for one
+          packing, while the theorem quantifies over all packings. Its value is to
+          test proposed transfers and to find the obstruction K15-C051 looks for.
+```
+
+
+### M-LEAN-003 — narrow-import build of `CubeDiff.lean` (supersedes `M-LEAN-002`)
+
+```text
+request_id = M-LEAN-003
+status = REQUESTED
+owner = M; executed by Astra locally
+reviewer = X
+claim_id = K15-C035 (arithmetic step), K15-C040
+branch = kepler15/main
+input_files = KeplerConjecture/Lean/Kepler15/CubeDiff.lean
+command = lake env lean KeplerConjecture/Lean/Kepler15/CubeDiff.lean
+          then append `#print axioms Kepler15.cube_diff_le` and re-run
+dependencies = Lean v4.35.0, Mathlib v4.35.0
+resources = 1 CPU, 1 GB, 300 s
+note = imports are limited to Mathlib.Tactic.Ring, Linarith, Positivity. If the
+       cap is still hit, report the peak RSS and stop: the statement is
+       PROPOSED and no claim depends on compiling it today.
+```
+
+`M-LEAN-002` (broad `import Mathlib`) is closed as **FAILED on resources**: 60 s
+cap (~715 MB) for the broad import, and the `VolumeOfBalls + Mathlib.Tactic`
+variant hit the monitored 1 GiB cap after 32.6 s with no theorem checked.
+`Volume.lean` therefore now carries the ball-volume statement as `Prop`-valued
+definitions (`BallVolumeClaim`, `BallVolumeScalingClaim`) with **no** `sorry` and
+**no** claimed proof.
+
+### M-QUEUE-001 — claims that must be re-anchored when the review lands (M)
+
+Not a computation: `Main/HOURLY_REVIEW_2026-11-14_0008.md` and
+`Computation/Reviews/48443/` were announced but are absent from the fetched
+branches. When they appear, K15-C017's witness
+(`q(57955199/21687900) ≈ −3.876231892749308e−5`) must be replaced by a citation of
+the pushed artifact plus its hash, and the K21 source hash re-checked.
+
+### Previously queued, unchanged
+
+`C-CERT-001` (exact Sturm driver — the single highest-value item in the project),
+`E-CERT-001` (interval certification for cluster volumes; driver still missing),
+`X-R01` (exact optimisation over the Laguerre family), `M-NUM-002` (rational SOS
+specification; superseded by C-CERT-001). `M-LEAN-001` and `C-NUM-001` are
+complete; `M-NUM-001` is complete and invalid as a claim (K15-C014r).
+
+### Retired IDs
+
+`K15-COMPUTE-001` → split into `C-CERT-001` (the real work) and `M-NUM-002`
+(this specification). `K15-COMPUTE-002` → `M-LEAN-001`, complete.
+
+## Required request record
+
+```text
+request_id = K15-COMPUTE-001
+status = REQUESTED | RUNNING | COMPLETE | FAILED | NEEDS_REVISION
+owner = SAIR session ID and role
+reviewer = independent session ID and role
+claim_id = precise claim or baseline tested
+source_commit = full pushed Git commit
+branch = exact branch
+working_directory = repository-relative path
+input_files = explicit KeplerConjecture paths and checksums where useful
+command = complete reproducible command with arguments
+dependencies = pinned Lean/mathlib or numerical package versions
+resources = requested wall time, threads, peak RAM, disk estimate
+parameters = dimension, scale, degree, grid, precision, seed, tolerances
+expected_outputs = explicit KeplerConjecture paths
+success_criteria = expected assertions, residuals, signs, or theorem names
+certification = exploratory floating point, interval, exact, or Lean kernel
+remaining_obligations = global signs, tails, realization, proof gaps
+```
+
+For Lean, identify the actual `.lean` module, imports, exact target statements,
+and declarations for `#print axioms`. The pinned project toolchain is Lean
+v4.35.0 with Mathlib v4.35.0. Build/cache preparation is a local supervisor task.
+Record compile exit status, complete relevant diagnostics, toolchain, source
+hash, and axiom output. A successful unrelated root build gives no evidence
+about an unimported Kepler file.
+
+For numerical work, save compact coefficients and solver output along with
+the generator. Report density normalization, objective, primal and dual
+residuals, global-sign/tail certification status, and independent validation.
+Request an initial small instance with a measured resource budget before
+expanding a large solve. The supervisor will run feasible requests and return
+logs or a concrete local limitation. Unexecuted jobs remain pending.
+
+Main owns integration of this queue. Workers can put standalone requests in
+their own role directories and identify them in the final response for Main
+or Astra to collect.
+
+
+## Supervisor execution evidence at hourly transition
+
+The local execution record is in "Computation/Reviews/27616/README.md" and "Lean/Review/27616/README.md". These record the actual sources, commands, three grid controls, remaining sign violations, and the normalization-only Lean check. New certificate claims on the Computation branch are awaiting independent local review.
+
+### M-CERT-002 — make `C142`'s `L1` rigorous (the only gap left in the explicit `δ₀`)
+
+**What it must certify.** On the ball `{Σ_j θ_j² ≤ 0.002}` in the 24 tangent parameters of the 12
+icosahedral normals,
+
+```
+vol(θ) − V_dod  ≥  c · d(θ, Rot)²        (V_dod = 5.550291028515510, c = 0.13)
+```
+
+where `vol(θ)` is the volume of `{x·n_j(θ) ≤ 1}`, `n_j(θ)` the normalised perturbed normals.
+
+**Why this is enough.** `C142` addendum proves `L2` (a legal 13th neighbour's bisector lies at
+`2cos ρ_c = 1.589309 > R_dod = 1.258409`, so it creates no facet). So on the ball the cell has exactly
+12 facets and `vol` is a smooth function of `θ`; with the Hessian `λ₁ = 0.353298` and a bounded cubic
+term, `L1` follows. The measured cubic coefficient over 12 random directions is `|c₃| ≤ 0.075`, against
+the `0.494` that the constant `0.17` tolerates — a factor `6.6` of margin, and the cubic term is `2.0%`
+of the quadratic budget at the needed `θ = 0.0447`.
+
+**Type robustness is already certified (`C142` addendum 3).** All 20 tight triples have
+`|det| = 0.760845213` and the vertex radius is `1.258408572`; with `θ ≤ 0.05` the determinant stays
+`≥ 0.610845 > 0`, so no triple degenerates and `vol` is smooth on the whole ball. No combinatorial
+cover is needed — only a derivative bound.
+
+**Method (bounded, no search).** Taylor bound with interval arithmetic:
+
+1. On each box of a cover of the ball, interval-evaluate the vertex coordinates (solving the `3×3`
+   systems of tight planes; the combinatorial type is fixed by `L2` and checked once per box).
+2. Interval-bound the second, third and fourth derivatives of `vol` from the same expressions.
+3. Report `min over the ball of (vol − V_dod − 0.17Σθ²)` as an interval.
+
+**Pinned request.**
+
+```
+command      python3 Computation/l1_remainder.py --certify --ball 0.002 --c 0.17
+deps         python3 (stdlib), numpy, scipy.spatial  — no Lean, no network
+resources    1 CPU, 1 GiB RAM, wall <= 120 s     (estimate: ~10^4 volume evaluations, ~1 ms each)
+acceptance   exit 0, prints an interval [lo,hi] with lo > 0, and a box count
+must fail on the negative control:  c = 0.30 is REJECTED (that constant is too large)
+```
+
+The negative control matters: a certifier that cannot reject `c = 0.30` is not measuring anything, and
+this project has had three unsound checkers.
+
+**If it succeeds.** `δ₀ ≥ 2.8775·10⁻³` becomes a theorem, `C124`'s strictness becomes explicit, and the
+pair route produces its first number. It still does not improve `0.7546974` by itself — the hybrid needs
+`ρ_ε`, and `C139` shows the bound is a monotone function of `δ₀`.

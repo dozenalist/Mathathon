@@ -1,0 +1,24 @@
+=== exact constants ===
+Kepler  Delta = pi/sqrt(18) = 0.740480489693061
+FCC     rho_A = sqrt(2)     = 1.4142135623731
+FCC     rho_B = 2^(-5/2)    = 0.176776695296637
+check Delta(FCC) via rho_B  = 0.740480489693061
+check Delta(FCC) via rho_A  = 0.740480489693061
+
+=== published references, converted both ways ===
+name                        Delta      rho_A      rho_B gap/Kepler
+kepler_exact           0.74048049 1.41421356 0.176776695    0.0000%
+cds22_lattice_3pt        0.741506 1.41617214 0.177021518    0.1385%
+dodecahedral_HM10       0.7546974 1.44136586 0.180170733    1.9200%
+cds22_general_3pt        0.770271 1.47110925 0.183888656    4.0231%
+dlov14_2pt_strength       0.77308 1.47647404 0.184559255    4.4025%
+ce03_lp                  0.779747 1.48920707 0.186150884    5.3028%
+
+=== consistency assertions (hard failures if violated) ===
+rounding audit: 4pi/3 * 0.18616 = 0.779785184523 vs CDS22 0.779747 (rel diff 4.90e-05)
+assertion 1: CE03 0.186157 CE-units -> Delta 0.779747            OK
+assertion 2: Li 0.18398089 -> Delta 0.77065735 > Kepler                  OK
+assertion 3: Li-quoted 0.183889 -> Delta 0.770271 = CDS general   OK
+assertion 4: FCC rho_A = sqrt2 -> Delta = pi/sqrt18                OK
+
+Li obstruction in sep1 units: ordinary CE optimum rho_A > 1.47184712  > sqrt2 = 1.41421356237

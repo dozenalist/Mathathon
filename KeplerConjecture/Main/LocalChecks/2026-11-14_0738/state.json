@@ -1,0 +1,29 @@
+{
+  "started_utc": "2026-11-14T15:46:55.426954+00:00",
+  "status": "finished",
+  "cpu_affinity_bit": 1,
+  "memory_cap_bytes": 1073741824,
+  "jobs": [
+    {
+      "name": "volume_v3_controls",
+      "role": "Experimental",
+      "script": "Experimental/scripts/cell_certificate.py",
+      "cap_seconds": 90,
+      "exit_code": 0,
+      "status": "completed",
+      "elapsed_seconds": 24.406,
+      "peak_observed_bytes": 56025088
+    },
+    {
+      "name": "origin_radius_probe",
+      "role": "Experimental",
+      "script": "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0738\\gate_probe.py",
+      "cap_seconds": 30,
+      "exit_code": 0,
+      "status": "completed",
+      "elapsed_seconds": 0.313,
+      "peak_observed_bytes": 2076672
+    }
+  ],
+  "finished_utc": "2026-11-14T15:47:20.146179+00:00"
+}

@@ -1,0 +1,13 @@
+{
+  "source": "d289bef49fa25aea10c4c8c0c7299d5d5449fdd0",
+  "path": "Experimental/scripts/certify_region.py",
+  "span": "6/25",
+  "width": "1/10",
+  "rounded_box_count": 2,
+  "covered_end": "1/5",
+  "uncovered_strip": [
+    "1/5",
+    "6/25"
+  ],
+  "scope": "generic nondivisible input; default one-degree region with 0.1-degree width is divisible"
+}

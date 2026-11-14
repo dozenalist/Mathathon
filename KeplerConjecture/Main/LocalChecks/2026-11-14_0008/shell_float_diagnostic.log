@@ -1,0 +1,7 @@
+cos(theta_min) exact = 23681/43681 = 0.54213502438131
+   numerator/denominator: 23681 / 43681
+1-2/R^2 - R/4 exact = 343071/17472400 >0 means equal-radius binds: True
+theta_min = 57.1709021867462 deg
+slack vs 57.1367 deg = 0.03420218675 deg
+slack rad           = 0.0005969407701
+required: a certified theta_13^+ strictly below theta_min

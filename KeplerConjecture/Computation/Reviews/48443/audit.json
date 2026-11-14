@@ -1,0 +1,49 @@
+{
+  "source_commit": "e681fbfddb8c5962333380c271d5f7a67f44a07b",
+  "checker_sha256": "901eecd12c1594284697393e3b93fdc1abdb3c746735e2fe5219d05f3fdf95b6",
+  "candidate_sha256": "babcdf12c045db2b8cb84ca307ab0c79ceeaac2dade2ed8a1276e0823ba468ed",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "sympy": "1.14.0",
+  "submitted_ok": true,
+  "submitted_reason": "A2: 10 simple root(s) of the odd part on the half-line",
+  "minimal_false_positive": {
+    "laguerre_coefficients": [
+      "2",
+      "-1"
+    ],
+    "p": "t + 1/2",
+    "q": "7/2 - t",
+    "quiet_ok": true,
+    "verbose_ok": false,
+    "quiet_beats_kepler": true,
+    "p_at_26": "53/2 > 0, violates exterior sign",
+    "q_at_4": "-1/2 < 0, violates Fourier sign",
+    "verbose_output": "  FAIL A1 : wrong sign at endpoint\n"
+  },
+  "lost_leading_sign": {
+    "input": "-t-1",
+    "returned_odd_part": [
+      "1",
+      "1"
+    ],
+    "input_at_0": -1,
+    "odd_part_at_0": "1"
+  },
+  "stored_polynomials_match_independent_reconstruction": true,
+  "positive_q_roots_exact": 10,
+  "q_squarefree": true,
+  "exact_negative_q_witness": {
+    "t": "57955199/21687900",
+    "q_at_t": "-3252543894566415491096021032097572401217419462509121325899891070735630146812068707017712863614173674108421450470910224258168572623298369166216703377802861376112264596621721851/83909941008701446272577992370400035466257402753500917198536868650209751131604050862286562053632321987118607373396816447074631680000000000000000000000000000000000000000000000000000",
+    "q_at_t_decimal": "-3.876231892749308e-5"
+  },
+  "certificate_valid": false,
+  "reason": "An exact rational negative Fourier-polynomial value refutes the stored certificate.",
+  "pi_check": {
+    "machin_lower": "303813021619815211127537023598466762462928562451138810952817612641378096120015743457898362871679747853349789150531360108636072503870855753190962676/96706688332956914460496363220965927597026084493028663225706878412607962454259611629265419178415748337738523654483202562914812006056308746337890625",
+    "machin_upper": "398907172869630098117422257486476202880195412962577875412979272217343686559665790743215939278838925583111817358716036231628307740643908609913888/126976096794029666576867128404132360599025863289808472224366097949013448365215435167362378781554614333264285885860545022296719253063201904296875",
+    "submitted_lower_strictly_below_proved_lower": true,
+    "submitted_upper_strictly_above_proved_upper": true
+  },
+  "elapsed_seconds": 0.141
+}

@@ -1,0 +1,59 @@
+{
+ "script": "KeplerConjecture/Computation/sos_shell_variant.py",
+ "family": "p = -(u-T')(u-c)^2 with shell allowance eta on [T,T']",
+ "identity": "eta* = (T'-T) * max(|T-c|,|T'-c|)^2, exact and attained at u=T",
+ "status": "PROVED_FAMILY_RESTRICTED",
+ "scope": "statement about THIS cubic family only; says nothing about other families, degrees or configurational constraints",
+ "rows": [
+  {
+   "T": "12",
+   "Tp": "27/2",
+   "c": "1",
+   "M": "25/2",
+   "eta_star": "1875/8",
+   "p0": "27/2",
+   "eta_star_float": 234.375,
+   "p0_float": 13.5
+  },
+  {
+   "T": "12",
+   "Tp": "27/2",
+   "c": "3",
+   "M": "21/2",
+   "eta_star": "1323/8",
+   "p0": "243/2",
+   "eta_star_float": 165.375,
+   "p0_float": 121.5
+  },
+  {
+   "T": "12",
+   "Tp": "27/2",
+   "c": "5",
+   "M": "17/2",
+   "eta_star": "867/8",
+   "p0": "675/2",
+   "eta_star_float": 108.375,
+   "p0_float": 337.5
+  },
+  {
+   "T": "12",
+   "Tp": "27/2",
+   "c": "8",
+   "M": "11/2",
+   "eta_star": "363/8",
+   "p0": "864",
+   "eta_star_float": 45.375,
+   "p0_float": 864.0
+  },
+  {
+   "T": "12",
+   "Tp": "27/2",
+   "c": "12",
+   "M": "3/2",
+   "eta_star": "27/8",
+   "p0": "1944",
+   "eta_star_float": 3.375,
+   "p0_float": 1944.0
+  }
+ ]
+}

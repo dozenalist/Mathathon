@@ -1,0 +1,20 @@
+{
+  "source": "d289bef49fa25aea10c4c8c0c7299d5d5449fdd0",
+  "theta_degrees": [
+    "110",
+    "110.1"
+  ],
+  "phi_degrees": [
+    "35",
+    "35.1"
+  ],
+  "display": [
+    5.874627182294318,
+    5.9274793116344116
+  ],
+  "vertices": [
+    20,
+    20
+  ],
+  "status": "reproduced_output_only; norm and boundedness proof obligations remain"
+}

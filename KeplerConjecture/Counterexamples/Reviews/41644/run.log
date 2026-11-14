@@ -1,0 +1,21 @@
+{
+  "source_commit": "87db0319217b99eafd66d96fff0e9ab75caa2127",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "numpy": "2.3.5",
+  "scipy": "1.16.3",
+  "sympy": "1.14.0",
+  "exact_feasible_P": "2 - 2*s/3",
+  "exact_feasible_Q": "2*v/3 + 1",
+  "proof": "For s>=4, P(s)<=-2/3; for v>=0, Q(v)>=1; Q(0)=1.",
+  "minimum_grid_slack": 0.6666666656666665,
+  "normalization_value": 1.0,
+  "max_abs_matrix_entry": 3710163427973736.5,
+  "raw_solver_status": 2,
+  "raw_solver_success": false,
+  "raw_solver_message": "(HiGHS Status 2: Model error)",
+  "correct_density_formula": "(4/(3*sqrt(pi)))*P(0)/Q(0)",
+  "submitted_density_formula": "(4*sqrt(pi)/3)*P(0)/Q(0)",
+  "submitted_over_correct_factor": "pi",
+  "correct_kepler_comparison": "32*P(0)^2 < pi^3*Q(0)^2, assuming positive P(0), Q(0)",
+  "elapsed_seconds": 0.156
+}

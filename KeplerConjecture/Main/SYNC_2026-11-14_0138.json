@@ -1,0 +1,30 @@
+{
+  "checkpoint": "2026-11-14 01:38 Pacific",
+  "publication_branch": "kepler15/setup-01a1d8c0",
+  "previous_publication": "3c8ea4b0dd5d2749bb3c2760afb59f3b642167a6",
+  "integrated_head": "bc120b954982ec83e8e8c6d36efb90f26b5777b9",
+  "source_cutoff_utc": "2026-11-14T10:04:32.4010482Z",
+  "sources": {
+    "Main": "9461aae1d57b17f3497c60531e120d3807cf3e90",
+    "Computation": "447da323575b71d94a8997d882293ba4c82d52d5",
+    "Experimental": "ec6601229569b3420f4c7d0637fe6bbdba54b219",
+    "Counterexamples": "cb3d76f44d2401fdbe1bfe37b751be84a4f2e1a3"
+  },
+  "local_first_snapshot": {
+    "Main": "6626714125c35292d78943cd0fe8d18ec0051b38",
+    "Computation": "92def301dee4ac9445d60f3a233f77aca79f993f",
+    "Experimental": "2f69047778590880124c9126de10741694285d02",
+    "Counterexamples": "a1fea98d3d3619f19aedb890cb89e1f111175466"
+  },
+  "local_second_snapshot": {
+    "Main": "96419eaa2067ea7baedc4608215fa6b6d7c7b6a7",
+    "Computation": "a13efc877eb3d22fc0a59176b1cdef4a74396557",
+    "Experimental": "4ea4e8b96eea76b9f045325f9d18229a2157aeb5",
+    "Counterexamples": "993019475dc813b2114edb1d3160fcb6ba572967"
+  },
+  "history_preserved": true,
+  "conflicts_preserved_in": "Main/AgentProgress",
+  "later_interim_pushes": "Public worker branches; pending next scheduled integration/review",
+  "jobs_running": [],
+  "review": "Main/REVIEW_2026-11-14_0138.md"
+}

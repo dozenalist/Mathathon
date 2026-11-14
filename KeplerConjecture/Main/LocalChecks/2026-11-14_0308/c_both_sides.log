@@ -1,0 +1,11 @@
+p-side  : -p = (u-12) * [ (4/3)^2 + (-37/3)^2 + (101*u/12 + 1/4)^2 + (-13/6)^2 ]
+q-side  :  q = (22*u - 7250725477/114904064)^2 + 73964663853612149/39608831771148288 + u(101*u/12 - 36667/1616)^2
+
+p(0) = 7615/4   q(0) = 1529773/384   p(0)/q(0) = 731040/1529773
+Delta <= (4 pi/3)(p(0)/q(0)) = 2.0017173733
+
+p-side identity verified by expansion : True
+q-side identity verified by expansion : True
+T = 12 <= 4*pi = 12.566371              : True
+
+wrote out/sos_both_sides.json

@@ -1,0 +1,19 @@
+icosa_fill: defective=1 pointwise_fcc=True min_corrected=5.656854249 (need 5.656854249) A in [-0.0112,+0.1066]
+    |sum A| over all points = 1.388e-17 (exact cancellation), subset sums: r=3.0:+0.0000, r=5.0:+0.0000, r=7.0:+0.0000
+    deficit=0.106563 payers=12 paid=0.106563 ok=True
+icosa_fill_b: defective=1 pointwise_fcc=True min_corrected=5.656854249 (need 5.656854249) A in [-0.0111,+0.1066]
+    |sum A| over all points = 6.939e-18 (exact cancellation), subset sums: r=3.0:+0.0000, r=5.0:+0.0000, r=7.0:+0.0000
+    deficit=0.106563 payers=12 paid=0.106563 ok=True
+icosa_fcc_shell: defective=1 pointwise_fcc=True min_corrected=5.656854249 (need 5.656854249) A in [-0.0102,+0.1066]
+    |sum A| over all points = 0.000e+00 (exact cancellation), subset sums: r=3.0:+0.0000, r=5.0:+0.0000, r=7.0:+0.0000
+    deficit=0.106563 payers=12 paid=0.106563 ok=True
+two_icosa: defective=2 pointwise_fcc=True min_corrected=5.656854249 (need 5.656854249) A in [-0.0160,+0.1066]
+    |sum A| over all points = 0.000e+00 (exact cancellation), subset sums: r=3.0:+0.0000, r=5.0:+0.0000, r=7.0:+0.0000
+    deficit=0.106563 payers=12 paid=0.106563 ok=True
+    deficit=0.106563 payers=12 paid=0.106563 ok=True
+hcp: defective=0 pointwise_fcc=True min_corrected=5.656854249 (need 5.656854249) A in [+0.0000,+0.0000]
+    |sum A| over all points = 0.000e+00 (exact cancellation), subset sums: r=3.0:+0.0000, r=5.0:+0.0000, r=7.0:+0.0000
+fcc_plain: defective=0 pointwise_fcc=True min_corrected=5.656854249 (need 5.656854249) A in [+0.0000,+0.0000]
+    |sum A| over all points = 0.000e+00 (exact cancellation), subset sums: r=3.0:+0.0000, r=5.0:+0.0000, r=7.0:+0.0000
+
+written Experimental/evidence/transfer_evaluator.json

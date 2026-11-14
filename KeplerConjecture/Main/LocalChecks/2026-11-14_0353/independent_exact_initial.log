@@ -1,0 +1,29 @@
+{"certificate": "X_C015", "exact_psd": true, "independent_fourier_identity": true, "rational_density_upper": "813631103/1000000000", "decimal_density": "0.8136311019500488451755972", "matrices": 3, "matrix_order": 3, "max_rational_chars": 113, "source_bytes": 1804}
+{"certificate": "X_C016", "exact_psd": true, "independent_fourier_identity": true, "rational_density_upper": "98/125", "decimal_density": "0.7830979111906058362952566", "matrices": 3, "matrix_order": 5, "max_rational_chars": 357, "source_bytes": 5596}
+{"certificate": "X_C017", "exact_psd": true, "independent_fourier_identity": true, "rational_density_upper": "391133610067/500000000000", "decimal_density": "0.7822672201338025247144318", "matrices": 3, "matrix_order": 6, "max_rational_chars": 563, "source_bytes": 10056}
+SQRT32 enclosure: True DODECA enclosure: False volume: 5.55029102851551026907043211366
+Icosahedron exact shortest ring edge: 2.102924448476534424102676 2.1029 below true edge: True
+build_13(2.1029) edge count: 42 ; expected 12 (ring edge > R)
+build_fcc_patch(1): TypeError can't multiply sequence by non-int of type 'float'
+Main star b=(4,-1,-1,-1): whole vertex set sum b = 1, boundary = 0; infeasible for EVERY capacity
+Fixture is unsaturated: point (8,8,8) lies >2 from every period-16 cluster centre
+Traceback (most recent call last):
+  File "C:\Users\carte\lean\Mathathon\.sair\worktrees\kepler15-01a1d8c0\KeplerConjecture\Main\LocalChecks\2026-11-14_0353\independent_checks.py", line 67, in <module>
+    (Path(__file__).parent/'independent_results.json').write_text(json.dumps(dict(certificates=results,sqrt32_enclosure=sqok,dodeca_enclosure=vok),indent=2)+'\n')
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\carte\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\carte\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\json\encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "C:\Users\carte\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\carte\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\carte\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\carte\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type BooleanTrue is not JSON serializable

@@ -1,0 +1,35 @@
+{
+  "status_at_publication": "running",
+  "unified_exec_session": 89440,
+  "private_state": "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0438\\remaining-seeds\\state.json",
+  "runner": "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0438\\run_remaining_seeds.py",
+  "runner_sha256": "92d736ce332eb54d9153b77dc2e5687f0c3879759faa26218892a5ca450ae132",
+  "started_utc": "2026-11-14T12:50:14.088649+00:00",
+  "per_seed_search_seconds": 45,
+  "per_seed_hard_cap_seconds": 60,
+  "total_hard_cap_seconds": 420,
+  "cpu_affinity_bit": 1,
+  "memory_cap_bytes": 1073741824,
+  "source": "498cfc3c0ce8d023fbf29b5810d06be115ac256b",
+  "request_source": "c76194f9abb914d9519ec86e0cb67a6cb55f85bb",
+  "initial_hidden_launch": "Exited without creating state; no mathematical output. Restarted in explicit exec session 89440.",
+  "results_at_publication": [
+    {
+      "seed": 1,
+      "status": "completed",
+      "exit_code": 0,
+      "elapsed_seconds": 47.172,
+      "peak_observed_bytes": 78430208
+    },
+    {
+      "seed": 2,
+      "status": "completed",
+      "exit_code": 0,
+      "elapsed_seconds": 46.656,
+      "peak_observed_bytes": 79265792
+    }
+  ],
+  "completion_review": "../2026-11-14_0523/README.md",
+  "completed_utc": "2026-11-14T12:55:43.784202+00:00",
+  "result": "All seven completed; finite numerical experiments, no refutation found"
+}

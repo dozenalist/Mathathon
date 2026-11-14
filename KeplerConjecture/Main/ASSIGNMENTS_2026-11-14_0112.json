@@ -1,0 +1,148 @@
+{
+  "checkpoint": "2026-11-14 01:22 Pacific",
+  "scope": "KeplerConjecture problem15 only",
+  "runtime_verification": "All four actual model_call records report ultramath after UI delivery",
+  "cadence_minutes": 45,
+  "watchers_stopped": true,
+  "mathematical_status": "No newly accepted theorem or best packing bound; fetched source revisions are worker claims awaiting Main integration and independent review",
+  "fetched_sources": [
+    {
+      "branch": "kepler15/main",
+      "commit": "bbad129dc00a6c75301fd03b05964531739b76ee",
+      "role": "Main"
+    },
+    {
+      "branch": "kepler15/comp-01a1d8c0",
+      "commit": "50727f1d90561d591bb1e9224e3ca3a4bb9c4dcd",
+      "role": "Computation"
+    },
+    {
+      "branch": "kepler15/experimental/run-01",
+      "commit": "8aca235ee15260c5bb5f3ffd8f5db3a2b1c3ebdc",
+      "role": "Experimental"
+    },
+    {
+      "branch": "kepler15/counterexamples/run-01",
+      "commit": "237cc3bd5bf51d1aefcb7e9d8dc98c2e901f081d",
+      "role": "Counterexamples"
+    }
+  ],
+  "assignments": [
+    {
+      "role": "Main",
+      "target": {
+        "session": "based-on-the-chats-e0wz",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "purpose": "Explicit user-requested full-hour Ultramath assignment",
+      "completion_reviewed": 34587,
+      "message_id": "u-f9028ce9-bef1-4af4-9072-0e2151fa012d",
+      "user_sequence": 34588,
+      "delivery_sequence": 34589,
+      "received_utc": "2026-11-14T09:13:49.1030000+00:00",
+      "earliest_finish_utc": "2026-11-14T10:13:49.1030000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/FullHour-2026-11-14_0112/Main.md",
+      "prompt_sha256": "c31bcd133419a0b69c3a57c456eb697314872abc9c9e552a2a0c070cdd7ab203",
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 39012,
+      "runtime_mode_utc": "2026-11-14T09:21:52.9930000+00:00",
+      "served_by": "deepseek/deepseek-v4.1-flash",
+      "reasoning_effort": "max",
+      "latest_sequence": 39079,
+      "latest_kind": "reasoning_delta",
+      "full_hour_observed": false,
+      "review_status": "Delivery and runtime confirmed; research claims pending independent audit",
+      "checked_utc": "2026-11-14T09:22:37.4921112+00:00"
+    },
+    {
+      "role": "Computation",
+      "target": {
+        "session": "using-the-chats-in-mcl6",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "purpose": "Explicit user-requested full-hour Ultramath assignment",
+      "completion_reviewed": 52418,
+      "message_id": "u-df2e68fa-7592-4aa0-8647-c074ad101c7b",
+      "user_sequence": 52419,
+      "delivery_sequence": 52420,
+      "received_utc": "2026-11-14T09:18:39.3480000+00:00",
+      "earliest_finish_utc": "2026-11-14T10:18:39.3480000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/FullHour-2026-11-14_0112/Computation.md",
+      "prompt_sha256": "52cb6604dd80d8b582d20f12aad207cceec6affc2b0c174a01f3803577eee4f8",
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 54459,
+      "runtime_mode_utc": "2026-11-14T09:21:57.7390000+00:00",
+      "served_by": "deepseek/deepseek-v4.1-flash",
+      "reasoning_effort": "max",
+      "latest_sequence": 54463,
+      "latest_kind": "tool_result",
+      "full_hour_observed": false,
+      "review_status": "Delivery and runtime confirmed; research claims pending independent audit",
+      "checked_utc": "2026-11-14T09:22:37.5686857+00:00"
+    },
+    {
+      "role": "Experimental",
+      "target": {
+        "session": "i-ve-attached-thomas-4iws",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "purpose": "Explicit user-requested full-hour Ultramath assignment",
+      "completion_reviewed": 41061,
+      "message_id": "u-79202358-2ba4-4eb6-887c-21de92cec54e",
+      "user_sequence": 41062,
+      "delivery_sequence": 41063,
+      "received_utc": "2026-11-14T09:15:53.6390000+00:00",
+      "earliest_finish_utc": "2026-11-14T10:15:53.6390000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/FullHour-2026-11-14_0112/Experimental.md",
+      "prompt_sha256": "1547831ef14c4261f331d2c72d53689ca44f066d54865ce9dd8236f566e2397d",
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 43870,
+      "runtime_mode_utc": "2026-11-14T09:21:40.2480000+00:00",
+      "served_by": "deepseek/deepseek-v4.1-flash",
+      "reasoning_effort": "max",
+      "latest_sequence": 43874,
+      "latest_kind": "tool_result",
+      "full_hour_observed": false,
+      "review_status": "Delivery and runtime confirmed; research claims pending independent audit",
+      "checked_utc": "2026-11-14T09:22:37.8914519+00:00"
+    },
+    {
+      "role": "Counterexamples",
+      "target": {
+        "session": "i-ve-attached-viazovska-f7hh",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "purpose": "Explicit user-requested full-hour Ultramath assignment",
+      "completion_reviewed": 48644,
+      "message_id": "u-616f57fc-f1e6-40a3-b5d1-251f112abbc9",
+      "user_sequence": 48645,
+      "delivery_sequence": 48646,
+      "received_utc": "2026-11-14T09:17:08.3220000+00:00",
+      "earliest_finish_utc": "2026-11-14T10:17:08.3220000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/FullHour-2026-11-14_0112/Counterexamples.md",
+      "prompt_sha256": "9d70ae39a9284632dec8649731027ec82fab260622681c6deed50addf4d179e5",
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 50313,
+      "runtime_mode_utc": "2026-11-14T09:20:21.0830000+00:00",
+      "served_by": "deepseek/deepseek-v4.1-flash",
+      "reasoning_effort": "max",
+      "latest_sequence": 50316,
+      "latest_kind": "tool_call",
+      "full_hour_observed": false,
+      "review_status": "Delivery and runtime confirmed; research claims pending independent audit",
+      "checked_utc": "2026-11-14T09:22:37.9435362+00:00"
+    }
+  ]
+}

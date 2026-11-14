@@ -1,0 +1,22 @@
+
+--- fcc ---
+  vertices found: 14
+  |x|^2 values (exact) with multiplicities:
+    3/2                                       multiplicity 8
+    2                                         multiplicity 6
+  max |x|^2 = 2;  K subset B(0,sqrt2): True
+  radius multiset is exactly {3/2, 2}: True
+  Euler: V=14, E=24, F=12, V-E+F=2
+
+--- hcp ---
+  vertices found: 14
+  |x|^2 values (exact) with multiplicities:
+    3/2                                       multiplicity 8
+    2                                         multiplicity 6
+  max |x|^2 = 2;  K subset B(0,sqrt2): True
+  radius multiset is exactly {3/2, 2}: True
+  Euler: V=14, E=24, F=12, V-E+F=2
+
+CONTACT-POLYTOPE BOUND: VERIFIED EXACTLY for both types
+Hence K <= B(v,sqrt2) and every non-contact half-space is redundant for K,
+so Omega = K.  Main's Lemma 1 is repaired (see K15-C104).

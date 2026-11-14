@@ -1,0 +1,165 @@
+{
+  "review": "2026-11-14 08:23 Pacific",
+  "ownership_verified": true,
+  "assignments": [
+    {
+      "role": "Main",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "based-on-the-chats-e0wz"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-a9bcb3a4-2a0b-47ba-a55b-f3412ec93bd5",
+      "user_sequence": 177862,
+      "delivery_sequence": 177863,
+      "completion_reviewed": 177861,
+      "purpose": "full-hour assignment",
+      "received_utc": "2026-11-14T16:32:03.209000+00:00",
+      "actual_start_utc": "2026-11-14T16:32:03.212000+00:00",
+      "actual_start_basis": "first completed model_call at_ms minus duration_ms, bounded below by delivery",
+      "earliest_finish_utc": "2026-11-14T17:32:03.212000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0823/Main.md",
+      "prompt_sha256": "e71d81c0b3b3c5d0496ec689086943ea5cc8e05c1087b3472ea3a411a7a33232",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 179318,
+      "runtime_mode_utc": "2026-11-14T16:33:06.018000+00:00",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T16:34:40.850641+00:00"
+    },
+    {
+      "role": "Experimental",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "i-ve-attached-thomas-4iws"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-e161e8cb-8489-4fae-aa30-132269f11aba",
+      "user_sequence": 145746,
+      "delivery_sequence": 145747,
+      "completion_reviewed": 145745,
+      "purpose": "full-hour assignment",
+      "received_utc": "2026-11-14T16:27:29.364000+00:00",
+      "actual_start_utc": "2026-11-14T16:27:29.369000+00:00",
+      "actual_start_basis": "first completed model_call at_ms minus duration_ms, bounded below by delivery",
+      "earliest_finish_utc": "2026-11-14T17:27:29.369000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0823/Experimental.md",
+      "prompt_sha256": "aac48593ca8753c7b7f44de2fa2f054c1953945fce201e7c736f3da1906db938",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 145849,
+      "runtime_mode_utc": "2026-11-14T16:27:37.191000+00:00",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T16:34:40.850641+00:00"
+    }
+  ],
+  "continued_assignments": [
+    {
+      "role": "Computation",
+      "message_id": "u-a9a34733-0379-44fa-8845-fe664a6d8079",
+      "actual_start_utc": "2026-11-14T15:49:27.205000+00:00",
+      "earliest_finish_utc": "2026-11-14T16:49:27.205000+00:00",
+      "disposition": "Busy; original full-hour assignment and clock preserved."
+    },
+    {
+      "role": "Counterexamples",
+      "message_id": "u-8e27f794-4c5a-4bce-b73b-99606cf32f21",
+      "actual_start_utc": "2026-11-14T15:45:09.121000+00:00",
+      "earliest_finish_utc": "2026-11-14T16:45:09.121000+00:00",
+      "disposition": "Busy; original full-hour assignment and clock preserved."
+    }
+  ],
+  "evidence_messages": [
+    {
+      "role": "Computation",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "using-the-chats-in-mcl6"
+      },
+      "message_id": "u-2ea81c90-df34-4006-919f-2ecf45846971",
+      "user_sequence": 123719,
+      "delivery_sequence": 124051,
+      "purpose": "evidence-only steering at next step; existing hour unchanged",
+      "parent_assignment_id": "u-a9a34733-0379-44fa-8845-fe664a6d8079",
+      "received_utc": "2026-11-14T16:29:57.538000+00:00",
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 124448,
+      "confirmed_delivery": true,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0823/Computation-evidence.md",
+      "prompt_sha256": "b9b1123966f5a9fa8671c8a7c6a81e8c7cb4166172da84a50dacef9261859b54"
+    }
+  ],
+  "prior_block_audit": [
+    {
+      "role": "Main",
+      "previous_prompt_id": "u-a0a1ce20-4e89-4f9e-875c-ca98fa8051aa",
+      "actual_start_utc": "2026-11-14T15:46:38.286000+00:00",
+      "completion_sequence": 177861,
+      "completion_utc": "2026-11-14T16:30:27.032000+00:00",
+      "elapsed_minutes": 43.812,
+      "full_substantive_hour_accepted": false,
+      "reason": "Ended before sixty minutes; fresh substantive continuation and independent fallback delivered."
+    },
+    {
+      "role": "Experimental",
+      "previous_prompt_id": "u-7c1a802c-aebc-4098-84fa-b478e9b6678a",
+      "actual_start_utc": "2026-11-14T15:48:14.087000+00:00",
+      "completion_sequence": 145745,
+      "completion_utc": "2026-11-14T16:09:46.350000+00:00",
+      "elapsed_minutes": 21.538,
+      "full_substantive_hour_accepted": false,
+      "reason": "Ended before sixty minutes; fresh substantive continuation and independent fallback delivered."
+    }
+  ],
+  "latest_activity": [
+    {
+      "role": "Main",
+      "latest_kind": "tool_call",
+      "latest_sequence": 179323,
+      "actual_reasoning_mode": "ultramath",
+      "model_call_sequence": 179318,
+      "current_assignment_id": "u-a9bcb3a4-2a0b-47ba-a55b-f3412ec93bd5",
+      "actual_start_utc": "2026-11-14T16:32:03.212000+00:00",
+      "earliest_finish_utc": "2026-11-14T17:32:03.212000+00:00",
+      "snapshot_utc": "2026-11-14T16:33:06.700055+00:00"
+    },
+    {
+      "role": "Computation",
+      "latest_kind": "tool_result",
+      "latest_sequence": 125012,
+      "actual_reasoning_mode": "ultramath",
+      "model_call_sequence": 125008,
+      "current_assignment_id": "u-a9a34733-0379-44fa-8845-fe664a6d8079",
+      "actual_start_utc": "2026-11-14T15:49:27.205000+00:00",
+      "earliest_finish_utc": "2026-11-14T16:49:27.205000+00:00",
+      "snapshot_utc": "2026-11-14T16:33:13.366145+00:00"
+    },
+    {
+      "role": "Experimental",
+      "latest_kind": "reasoning_delta",
+      "latest_sequence": 150473,
+      "actual_reasoning_mode": "ultramath",
+      "model_call_sequence": 147427,
+      "current_assignment_id": "u-e161e8cb-8489-4fae-aa30-132269f11aba",
+      "actual_start_utc": "2026-11-14T16:27:29.369000+00:00",
+      "earliest_finish_utc": "2026-11-14T17:27:29.369000+00:00",
+      "snapshot_utc": "2026-11-14T16:33:25.154984+00:00"
+    },
+    {
+      "role": "Counterexamples",
+      "latest_kind": "tool_result",
+      "latest_sequence": 178999,
+      "actual_reasoning_mode": "ultramath",
+      "model_call_sequence": 178995,
+      "current_assignment_id": "u-8e27f794-4c5a-4bce-b73b-99606cf32f21",
+      "actual_start_utc": "2026-11-14T15:45:09.121000+00:00",
+      "earliest_finish_utc": "2026-11-14T16:45:09.121000+00:00",
+      "snapshot_utc": "2026-11-14T16:33:33.722497+00:00"
+    }
+  ]
+}

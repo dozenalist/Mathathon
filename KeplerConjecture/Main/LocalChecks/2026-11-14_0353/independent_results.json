@@ -1,0 +1,39 @@
+{
+  "certificates": [
+    {
+      "certificate": "X_C015",
+      "exact_psd": true,
+      "independent_fourier_identity": true,
+      "rational_density_upper": "813631103/1000000000",
+      "decimal_density": "0.8136311019500488451755972",
+      "matrices": 3,
+      "matrix_order": 3,
+      "max_rational_chars": 113,
+      "source_bytes": 1804
+    },
+    {
+      "certificate": "X_C016",
+      "exact_psd": true,
+      "independent_fourier_identity": true,
+      "rational_density_upper": "98/125",
+      "decimal_density": "0.7830979111906058362952566",
+      "matrices": 3,
+      "matrix_order": 5,
+      "max_rational_chars": 357,
+      "source_bytes": 5596
+    },
+    {
+      "certificate": "X_C017",
+      "exact_psd": true,
+      "independent_fourier_identity": true,
+      "rational_density_upper": "391133610067/500000000000",
+      "decimal_density": "0.7822672201338025247144318",
+      "matrices": 3,
+      "matrix_order": 6,
+      "max_rational_chars": 563,
+      "source_bytes": 10056
+    }
+  ],
+  "sqrt32_enclosure": true,
+  "dodeca_enclosure": false
+}

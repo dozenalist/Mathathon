@@ -1,0 +1,41 @@
+{
+  "scope": "Generic sign-checker failures; not a refutation of stored K33 coefficients",
+  "source_sha256": {
+    "Computation\\shell_check.py": "ea67dbf5e04821ddf6f67db1378aca19eecdd3a5211e035049cd5358fa98166c",
+    "Counterexamples\\Reviews\\K33\\audit_K33_signs.py": "5a92a1fb3fdc0cd41cddac706dad96c01983ce0d698b541765c30fc6e11faef0"
+  },
+  "results": [
+    {
+      "test": "Main compact interval: u*(1-u) <= 0 on [0,1]",
+      "claimed_accept": true,
+      "correct_accept": false,
+      "witness_argument": "1/2",
+      "witness_value": "1/4"
+    },
+    {
+      "test": "Main half-line: u*(u-1) >= 0 on [0,infinity)",
+      "claimed_accept": true,
+      "correct_accept": false,
+      "witness_argument": "1/2",
+      "witness_value": "-1/4"
+    },
+    {
+      "test": "Main ray: u*(1-u) <= 0 on [0,infinity)",
+      "claimed_accept": true,
+      "correct_accept": false,
+      "witness_argument": "1/2",
+      "witness_value": "1/4"
+    },
+    {
+      "test": "X: (t^2-2)*(t^2-3) >= 0 on [0,infinity)",
+      "claimed_accept": true,
+      "correct_accept": false,
+      "witness_argument": "3/2",
+      "witness_value": "-3/16",
+      "ignored_irrational_roots": [
+        "sqrt(2)",
+        "sqrt(3)"
+      ]
+    }
+  ]
+}

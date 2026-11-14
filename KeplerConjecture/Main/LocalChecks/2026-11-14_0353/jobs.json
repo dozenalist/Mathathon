@@ -1,0 +1,70 @@
+[
+  {
+    "job": "independent_exact",
+    "workdir": ".",
+    "args": [
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\worktrees\\kepler15-01a1d8c0\\KeplerConjecture\\Main\\LocalChecks\\2026-11-14_0353\\independent_checks.py",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0353\\local-jobs\\KeplerConjecture"
+    ],
+    "status": "completed",
+    "exit_code": 1,
+    "cap_seconds": 90,
+    "elapsed_seconds": 2.796,
+    "peak_observed_bytes": 59412480,
+    "log": "independent_exact.log"
+  },
+  {
+    "job": "c_cut_tests",
+    "workdir": "Computation",
+    "args": [
+      "tests_cut_flow.py"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 30,
+    "elapsed_seconds": 2.297,
+    "peak_observed_bytes": 88117248,
+    "log": "c_cut_tests.log"
+  },
+  {
+    "job": "c_cut_flow",
+    "workdir": "Computation",
+    "args": [
+      "cut_flow.py",
+      "--fixture",
+      "out/fixture_example.json"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 45,
+    "elapsed_seconds": 2.578,
+    "peak_observed_bytes": 90152960,
+    "log": "c_cut_flow.log"
+  },
+  {
+    "job": "c_quintic2",
+    "workdir": "Computation",
+    "args": [
+      "sos_both_sides_quintic2.py"
+    ],
+    "status": "time_cap",
+    "exit_code": 1,
+    "cap_seconds": 45,
+    "elapsed_seconds": 45.063,
+    "peak_observed_bytes": 59928576,
+    "log": "c_quintic2.log"
+  },
+  {
+    "job": "e_icosa_constants",
+    "workdir": ".",
+    "args": [
+      "Experimental/scripts/icosa_cut_check.py"
+    ],
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 30,
+    "elapsed_seconds": 8.797,
+    "peak_observed_bytes": 121319424,
+    "log": "e_icosa_constants.log"
+  }
+]

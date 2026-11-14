@@ -1,0 +1,5 @@
+input: 99/100 1
+submitted helper: True
+exact lhs: 19602/625
+pi cubed: 31.0062766802998201754763150671
+correct comparison: False

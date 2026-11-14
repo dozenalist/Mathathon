@@ -1,0 +1,16 @@
+{
+  "review": "2026-11-14 08:23 Pacific",
+  "previous_publication": "8edb6fe115a72a9f7aa261f94ae6178568b75075",
+  "source_revisions": {
+    "Main": "89a9c5494a6ead7424caeffc4b5053ae800512b9",
+    "Computation": "fbb124e407688325c4f14d92b7c4808f23969c7c",
+    "Experimental": "814f213eb18d0b7c9aba92297d19161b368cf3fa",
+    "Counterexamples": "c40fdcbd7b2233e90a27caaa12ecaa5849f77d23"
+  },
+  "integration_head": "af7be06e324295a1c977e489fb3ede2a06d8b563",
+  "scope": "KeplerConjecture only",
+  "all_sources_are_ancestors": true,
+  "cutoff": "E completed before review; Main completed during review and its final 89a9c54 revision is included. C/X were busy; their pushed revisions captured at review start are included. Later ongoing work is next-check material.",
+  "conflicts": "Main LOCAL_COMPUTE_REQUESTS append conflict: preserved both execution history and new request. Main REVIEW_2026-11-14_0738 path collision: retained supervisor review and copied exact final worker report to Main/AgentReports/REVIEW_2026-11-14_0738-source89a9c54.md.",
+  "preservation": "Normal merges preserve source authorship, rejected claims and both colliding reports."
+}

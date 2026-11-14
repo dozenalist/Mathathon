@@ -1,0 +1,10 @@
+CONTROL CHECK (must certify; proves the family is non-empty):
+   P = 2 - 2s/3 , Q = 2*v/3 + 1 , P(0)=2 Q(0)=1
+   certified; density = 8/(3*sqrt(pi)) = 1.504506  (trivial >1, but a valid certificate)
+   => the fixed family IS feasible; a solver failure must not be reported as infeasibility.
+iter  0: SOLVER DID NOT RETURN A SOLUTION -- raw status 2, message '(HiGHS Status 2: Model error)'.
+           This is NOT a proof of infeasibility; check scaling first
+           (max |entry| of the constraint matrix here = 3.710e+15).
+----------------------------------------------------------------------
+NO CERTIFIED CANDIDATE in 1 iterations.
+  STATUS: exploratory only; no bound claimed.

@@ -1,0 +1,8 @@
+degree K=31 grid=1200 r0=1.0000
+  rho_A <= 1.489121981     (FCC sqrt2 = 1.414213562)
+  Delta <= 0.779702446     (Kepler = 0.740480490)
+  gap    = +0.039221956  (+5.297% of Kepler)
+  reference: CE03 0.779747 | CDS general 3pt 0.770271 | Li lower 0.770657 | dodecahedral 0.7546974
+  diagnostics: max f outside r0 = 1.20e-07 (at r=1.641), min fhat = -2.97e-06 (at s=1.304)
+  status: TESTED_FINITE (grid evidence only; not a certificate)
+  wrote comp-K31-g1200.json in 37.3s

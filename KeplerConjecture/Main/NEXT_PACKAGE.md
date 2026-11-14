@@ -1,0 +1,107 @@
+# Next research package (for the block after K15-REVIEW-0138-M)
+
+> **Superseded as the project's *chosen* target (review 0438, `D19`).** This file states the
+> **cut-condition** route. That route is intact but is no longer the live one: the pointwise cell
+> family is *provably capped* at `8/V_dod` (retained literature below);
+> `Literature/sharp-bounds-in-dimension-3.md` §5.3(i), so beating it requires a **multi-cell**
+> inequality, and the chosen object is now E's pair bound `vol Ω(v)+vol Ω(w) ≥ 2√32`
+> (`Main/GEOMETRIC_LEMMA_0438.md`, `C106`–`C108`). Read that file for the current target; read
+> this one for the cut route's own inequality, which is unchanged and still correct.
+
+
+Written by M. This is the concrete target the withdrawal leaves standing: after
+`K15-C035`/`C036`/`C044`/`C045`, the whole geometric route reduces to **one
+analytic inequality**, and this file says exactly which one, with the constants.
+
+## The inequality
+
+For a saturated packing `Λ` and every "blob" `U` (a union of Voronoi cells
+containing a ball, so that `|∂U| = O(|U|^{2/3})`):
+
+```
+Σ_{v∈U} vol Ω(v)  ≥  √32 · |U|  −  C · |U|^{2/3},        √32 = 5.656854249…
+```
+
+Equivalently, in the transfer language of `K15-C044`: the cut condition
+`Σ_U b ≤ Φ|δ⁺(U)|` with `b = √32 − vol Ω` and `Φ` fixed.
+
+## The constants, and what each would buy
+
+| cell-volume constant `V_0` | density bound `(4π/3)/V_0` | status |
+| --- | --- | --- |
+| `4.188790` | — | the inscribed ball (trivial) |
+| `5.372754` | `0.779636` | Rogers' simplex bound, `σ₃ = 0.779635570044…` |
+| `5.550291` | `0.754697` | dodecahedral (Hales–McLaughlin), the best known |
+| `5.656854` | `0.740480` | Kepler |
+
+So the required improvement over Rogers is `5.29%`, and over the dodecahedral
+theorem `1.92%`. **A bound at `5.550291` alone changes nothing**; the target is
+`> 5.550291`, and anything at `√32` is the theorem.
+
+## The same target in E's notation (from the worker branches)
+
+E states the two obligations as
+
+- **`(T')`** `S(C) ≥ D(C)` for every *defective component* `C` of the defect graph,
+  where the icosahedral component requires `S(C) ≥ 0.1065632` — i.e. the outer
+  cells must supply `0.1065632` of extra volume;
+- **`(T'')`** `diam(C) ≤ D_0`.
+
+E also quantifies the requirement as "outer cells must average
+`5.66573451791`", which Main identifies exactly as
+`√32 + (√32 − V_dod)/12 = 5.6657345…` (`K15-C042`). So E's `(T')` and the averaged
+inequality of this file are the same obligation in two notations: `(T')` is the
+per-component form, the averaged inequality is the integrated form, and `K15-C067`
+shows they are equivalent up to the transfer's `Φ` and the boundary term.
+
+**State it in the cut form, not as `(T')`.** `(T')` asks each defective component to
+pay for itself (`Σ_C b ≤ 0`); the transfer route needs only
+`Σ_C b ≤ Φ|δ⁺_R(C)|`, which is strictly weaker whenever the component has out-edges
+(`K15-C080`). The next block should therefore attack the cut inequality with a
+*stated bound on `Φ`* (the rate in Lemma 3.3 is `O(Φ/r)`), keeping `(T')` as a
+sufficient condition and as a check on fcc/hcp.
+
+**The floor on `Φ` (corrected, review 0308).** The only valid floor is the
+**singleton** one (`K15-C081r`): the central cell of the 13-cluster satisfies
+`vol Ω(v₀) ≤ V_dod` by monotonicity, so `b(v₀) ≥ √32 − V_dod = 0.1065632` and
+`Φ ≥ (√32 − V_dod)/12 = 0.0088803` at `R = 2.09`. The earlier cluster-level floor
+`0.0104949` came from using an **upper** bound on the cluster's signed deficit as a
+lower bound and is **withdrawn**; nothing here bounds that deficit from below.
+
+**The boundary term with explicit constants (corrected, review 0308).** For a
+**ball cut** `U = B(x,r) ∩ Λ`, `|δ⁺(U)| ≤ k_R((r+R)³ − r³) ≈ 3k_RRr²` and
+`|U| ≍ (4π/3)r³`, so the slack is `Φ·3k_RR·(3|U|/4π)^{2/3}`. For an arbitrary `U`
+the only valid bound is `|δ⁺(U)| ≤ k_R|U|`, i.e. slack `Φk_R|U|` — not `o(|U|)`.
+**Consequence for the target:** the `|U|^{2/3}` averaged inequality must be
+**hypothesised for ball-like cuts** (or proved by a separate argument); it is not a
+consequence of the cut condition, and the equivalence in `K15-C067` is between the
+cut condition and the *general* `Φ|δ⁺(U)|` form, not the `|U|^{2/3}` form.
+
+## What a block should attempt, in order
+
+1. **A cluster-averaged improvement over Rogers.** Take the icosahedral
+   13-cluster and prove `Σ_{v∈K} vol Ω(v) ≥ 13 V` for some `V > 5.372754` — even
+   `V = 5.40` would be a new cluster inequality (not yet a density bound, but a
+   step). Tools: Rogers' simplex decomposition restricted to the cluster; the
+   angular/`t`-bounding device of E's `outer_cell_angular_bound.py` with the
+   `K15-E048` ceiling removed by using a *body that is not star-shaped about w*.
+2. **A stability statement.** Cells with `vol Ω ≤ V_dod + ε` force a near-
+   icosahedral neighbourhood; if the neighbourhood is exactly icosahedral the
+   cluster cannot be periodic (frustration), so the neighbours must pay. Make
+   `ε ↦` the neighbours' excess explicit (`K15-C029r` is the bookkeeping form).
+3. **Falsification test first.** Before proving anything, search for a *periodic*
+   packing with a blob where `Σ_U b > 0` and `|δ⁺(U)|` small — that would refute
+   the cut condition at bounded `Φ`. Any such packing is a publishable
+   obstruction; a search finding none is weak evidence, not proof.
+
+## What not to do
+
+- Do not attempt the pointwise inequality by computation (`K15-C036`).
+- Do not reuse the withdrawn `K15-C029` in any form.
+- Do not claim that a saturated/finite search "closes" a family.
+
+## Deliverable boundary
+
+A block that produces (1) with an explicit `V` and a proof over all clusters of
+diameter `D ≤ 4`, or (3) with a concrete periodic witness, has succeeded. A block
+that only restates the ladder has not.

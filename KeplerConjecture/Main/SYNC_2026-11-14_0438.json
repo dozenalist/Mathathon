@@ -1,0 +1,12 @@
+{
+  "sources": {
+    "Main": "7ba71464259d9965e7e060c8a61ed981d0e2b0bc",
+    "Computation": "6fbd0a1bf214a92b625cee84e8ee95ac5da4b8d9",
+    "Experimental": "498cfc3c0ce8d023fbf29b5810d06be115ac256b",
+    "Counterexamples": "d64de362da7b6f52bd494d15364e67783a3b184b"
+  },
+  "all_original_commits_preserved": true,
+  "previous_checkpoint_commit": "e934b81",
+  "publication": "feature branch and existing PR only",
+  "source_cutoff": "fetched for the 04:38 scheduled review; later streaming work left to next check"
+}

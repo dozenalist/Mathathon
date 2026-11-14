@@ -1,0 +1,44 @@
+{
+  "checkpoint": "2026-11-14 02:23 Pacific scheduled review",
+  "source_cutoff_utc": "2026-11-14T10:23:00Z, plus Main completed report",
+  "publication_branch": "kepler15/setup-01a1d8c0",
+  "pull_request": "https://github.com/dozenalist/Mathathon/pull/1",
+  "sources": [
+    {
+      "role": "Main",
+      "branch": "kepler15/main",
+      "commit": "201974b0677d67bd87d60825fd88011ca9e0d7d1",
+      "tested_source": "e76a15709c5907f76bbbf482755e916c71be76d4",
+      "completion": 58136,
+      "status": "Integrated with authorship; scoped review in REVIEW_2026-11-14_0223.md"
+    },
+    {
+      "role": "Computation",
+      "branch": "kepler15/comp-01a1d8c0",
+      "commit": "dbeb320fb80be64799fc722174367ac61c387480",
+      "completion": null,
+      "status": "Integrated with authorship; scoped review in REVIEW_2026-11-14_0223.md"
+    },
+    {
+      "role": "Experimental",
+      "branch": "kepler15/experimental/run-01",
+      "commit": "e077495a70c9bad3128223ae25aa30828326f42d",
+      "completion": null,
+      "status": "Integrated with authorship; scoped review in REVIEW_2026-11-14_0223.md"
+    },
+    {
+      "role": "Counterexamples",
+      "branch": "kepler15/counterexamples/run-01",
+      "commit": "f7c9035c98497794806af352b36fe48a4b8ac821",
+      "completion": null,
+      "status": "Integrated with authorship; scoped review in REVIEW_2026-11-14_0223.md"
+    }
+  ],
+  "review": "Main/REVIEW_2026-11-14_0223.md",
+  "review_status": "No new best bound. X-C013 specific weak certificate independently checked; generic sign checker refuted.",
+  "conflict_snapshots": [
+    "Main/AgentProgress/Main-e76a1570.md",
+    "Main/AgentProgress/Computation-dbeb320f.md"
+  ],
+  "integration_note": "Preserved original commits; one trailing space normalized in Experimental/scripts/block_evaluator.py; later busy-session revisions pending review."
+}

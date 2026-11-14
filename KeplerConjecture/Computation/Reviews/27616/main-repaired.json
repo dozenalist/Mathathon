@@ -1,0 +1,31 @@
+{
+  "status": "EXPLORATORY local repair; finite grid only",
+  "conclusion": "Both sign matrices included; finite-grid diagnostic only, no global certificate.",
+  "degree": 8,
+  "basis": "exp(-pi s) L_k^{1/2}(2 pi s), s = |x|^2",
+  "sign_region_f_nonpositive": "t = 2*pi*s >= 8*pi  (|x| >= 2)",
+  "grid_points": 1203,
+  "tmax": 40.0,
+  "lp_free_status": 0,
+  "lp_free_objective": 0.21820243547088458,
+  "rigorous_floor_f0": 0.029841551829730376,
+  "lp_floored_status": 0,
+  "lp_floored_f0": 0.21820243547088458,
+  "delta_from_floor": 0.12499999999999999,
+  "coefficients": [
+    0.36048399494793554,
+    -0.1876315934296412,
+    0.11026101938048086,
+    -0.05269677920713756,
+    0.02117894714657306,
+    -0.0019884378592983855,
+    -0.00345148427378458,
+    0.003566281162077723,
+    -3.6055940049998855e-05
+  ],
+  "audit_min_fhat": -8.865648568698777e+30,
+  "audit_min_fhat_at_t": 100000.0,
+  "audit_max_f_on_region": -0.02235406526445638,
+  "audit_max_f_at_t": 25.133,
+  "seconds": 0.2
+}

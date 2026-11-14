@@ -1,0 +1,50 @@
+====================================================================================================
+A dense local cell: rational icosahedral shell, exact volumes
+====================================================================================================
+  PASS 13 points: the origin and a 12-point shell  13
+  PASS every coordinate is rational with denominator 10^6
+
+P1/P2  the packing and the period convention
+  PASS minimum separation >= 2 exactly (squared: 2001000129077/500000000000)  2.0005000020379904
+  PASS every shell point is at distance >= 2 from the origin, and < 2.01  (2.0005000020379904, 2.0005000020379904)
+  PASS the diameter is < 4.1, so period 8 leaves no wrap-around edge for R <= 3
+  PASS at R = 2.001 the graph has exactly the twelve shell edges  [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5)]
+  PASS at R = 2 it would have none (which is why R = 2.001 is the contact range)
+
+P3  exact cell volumes on the torus
+  PASS the thirteen cells sum to 512 exactly  (Fraction(512, 1), Fraction(512, 1))
+     central cell volume = 18842070507019013956653107809977422681162557/3392244814316620265216629000000000000000000 = 5.554454804529
+     Kepler cell sqrt(32) = 5.656854249492 (the comparison is rational)
+
+P4  the deficit at the centre, as a rational inequality
+  PASS b(0) > 0 STRICTLY (vol Omega(0) < SQ32_LO)  0.10239944496353436
+     b(0) in [0.102399444964, 0.102399444964]
+  PASS the twelve shell cells are all far below the Kepler cell (b < 0)  [42.20379543295593, 42.20379543295593, 42.20379543295593]
+  PASS the total deficit is negative, so a transfer is not pointwise impossible  -438.46089475659903
+
+====================================================================================================
+B. THE NONVACUOUS WINDOW: where does the shell stop giving b(0) > 0?
+====================================================================================================
+
+====================================================================================================
+A2. BOUNDARY AND PERIODIC CONVENTIONS
+====================================================================================================
+  PASS the central cell is identical at periods 8, 12, 16  [5.554454804528846, 5.554454804528846, 5.554454804528846]
+  PASS its circumradius 1.2587 is far inside the half-period 4  1.2587231916565988
+  PASS no wrap-around edge at R = 2
+  PASS exactly twelve at R = 2.001
+  PASS 42 at R = 3
+
+====================================================================================================
+A3. THE PATCH MINIMUM, EXACTLY, AND WHY THE SHELL CANNOT BE FILLED FURTHER
+====================================================================================================
+  PASS the radial flow is feasible at Phi = t* = b(0)/12 exactly  (True, True)
+  PASS its divergence at the centre is exactly b(0) (tight)  0.10239944496353436
+  PASS and the shell vertices have 36.538 of slack
+     => the patch minimum is exactly t*: a flow at t*, no flow below it (cut {0}).
+  PASS sampled covering radius of the 12-point shell >= 37.3 degrees  np.float64(37.31507802947114)
+  PASS so a point at radius 2 is within 1.2817 < 2 of some vertex: no 13th neighbour
+
+====================================================================================================
+B. THE NONVACUOUS WINDOW: where does the shell stop giving b(0) > 0?
+====================================================================================================

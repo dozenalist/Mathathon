@@ -1,0 +1,16 @@
+A. independent reconstruction from the 34 rational coefficients
+   deg p = 33, deg q = 33  (both ODD => each has a real root somewhere)
+   p matches JSON (ascending order assumed): True
+   q matches JSON                          : True
+   ... also try descending: p:False q:False
+   p(0) = 34348444182406109286461373/184467440737095516160000000
+     field p0 equal: True ; p0>0: True
+   q(0) = 922337221852734059145257073/922337203685477580800000000
+     field q0 equal: True ; q0>0: True
+   p0/q0 == ratio_exact: True
+B. the bound
+   Delta = (4pi/3)(p0/q0) in [0.779966497784296, 0.779966497784296]
+   delta_upper_exact is an UPPER bound: True  (slack 2.606e-30)
+   '0.77996650' >= true Delta: True ; '0.779966497785' >= true Delta: True
+   Kepler comparison 4 p0 sqrt18 <= 3 q0 ? False  (bound ABOVE Kepler)
+   Delta - pi/sqrt18 = 0.039486008 (positive => weaker than Kepler)

@@ -1,0 +1,151 @@
+[
+  {
+    "job": "independent_exact",
+    "args": [
+      "C:\\Users\\carte\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\worktrees\\kepler15-01a1d8c0\\KeplerConjecture\\Main\\LocalChecks\\2026-11-14_0223\\independent_checks.py",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0223\\local-jobs-v2\\KeplerConjecture"
+    ],
+    "workdir": ".",
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 45,
+    "elapsed_seconds": 2.828,
+    "peak_observed_bytes": 56086528,
+    "log": "independent_exact.log"
+  },
+  {
+    "job": "cube_diff_lean",
+    "args": [
+      "C:/Users/carte/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean.exe",
+      "-j1",
+      "-M1024",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\worktrees\\kepler15-01a1d8c0\\KeplerConjecture\\Main\\LocalChecks\\2026-11-14_0223\\CubeDiffAudit.lean"
+    ],
+    "workdir": ".",
+    "status": "memory_cap",
+    "exit_code": 1,
+    "cap_seconds": 300,
+    "elapsed_seconds": 8.828,
+    "peak_observed_bytes": 1078992896,
+    "log": "cube_diff_lean.log"
+  },
+  {
+    "job": "main_regressions",
+    "args": [
+      "C:\\Users\\carte\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "checker_adversarial.py"
+    ],
+    "workdir": "Computation",
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 45,
+    "elapsed_seconds": 2.781,
+    "peak_observed_bytes": 54366208,
+    "log": "main_regressions.log"
+  },
+  {
+    "job": "sos_family",
+    "args": [
+      "C:\\Users\\carte\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "sos_family.py",
+      "--checker",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0223\\local-jobs-v2\\KeplerConjecture\\Computation\\shell_check.py"
+    ],
+    "workdir": "Computation",
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 45,
+    "elapsed_seconds": 3.062,
+    "peak_observed_bytes": 58564608,
+    "log": "sos_family.log"
+  },
+  {
+    "job": "shell_variant",
+    "args": [
+      "C:\\Users\\carte\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "sos_shell_variant.py"
+    ],
+    "workdir": "Computation",
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 30,
+    "elapsed_seconds": 2.532,
+    "peak_observed_bytes": 52637696,
+    "log": "shell_variant.log"
+  },
+  {
+    "job": "periodic_cut_controls",
+    "args": [
+      "C:\\Users\\carte\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "cut_deficit.py"
+    ],
+    "workdir": "Computation",
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 30,
+    "elapsed_seconds": 0.515,
+    "peak_observed_bytes": 13479936,
+    "log": "periodic_cut_controls.log"
+  },
+  {
+    "job": "block_fixtures",
+    "args": [
+      "C:\\Users\\carte\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "Experimental/scripts/block_evaluator.py"
+    ],
+    "workdir": ".",
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 60,
+    "elapsed_seconds": 25.485,
+    "peak_observed_bytes": 96395264,
+    "log": "block_fixtures.log"
+  },
+  {
+    "job": "transfer_fixtures",
+    "args": [
+      "C:\\Users\\carte\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "Experimental/scripts/transfer_evaluator.py"
+    ],
+    "workdir": ".",
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 45,
+    "elapsed_seconds": 15.016,
+    "peak_observed_bytes": 89010176,
+    "log": "transfer_fixtures.log"
+  },
+  {
+    "job": "factor_rounded_sdp",
+    "args": [
+      "C:\\Users\\carte\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "x_r03b_sos_from_sdp.py"
+    ],
+    "workdir": "Counterexamples",
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 300,
+    "elapsed_seconds": 65.703,
+    "peak_observed_bytes": 301568000,
+    "log": "factor_rounded_sdp.log"
+  },
+  {
+    "job": "dense_completion_search",
+    "args": [
+      "C:\\Users\\carte\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "Experimental/scripts/dense_completion_search.py",
+      "--seconds",
+      "300",
+      "--seeds",
+      "4"
+    ],
+    "workdir": ".",
+    "status": "completed",
+    "exit_code": 0,
+    "cap_seconds": 320,
+    "elapsed_seconds": 317.484,
+    "peak_observed_bytes": 90914816,
+    "log": "dense_completion_search.log"
+  }
+]

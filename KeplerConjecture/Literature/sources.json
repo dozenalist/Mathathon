@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-11-14",
+  "timezone": "America/Los_Angeles",
+  "scope": "Mathathon problem 15, KeplerConjecture",
+  "local_reproduction_status": "Source statements inspected as indicated. Ancillary computations and external proof assistant builds have not been rerun in this literature preparation.",
+  "sources": [
+    {
+      "id": "H05U",
+      "title": "A Proof of the Kepler Conjecture (unabridged)",
+      "authors": ["Thomas C. Hales"],
+      "version": "2005-11-14 supplement",
+      "url": "https://annals.math.princeton.edu/supplemental/2005/162-3/p01/proof_kepler.pdf",
+      "locator": "Section 3.1, Definition 3.2 and Lemma 3.3, printed pp. 34-35, PDF pages 46-47",
+      "access_status": "FULL_TEXT_CHECKED",
+      "local_file": "Papers/Hales2005-unabridged.pdf",
+      "bytes": 1758442,
+      "sha256": "e892f799e9ad68983aa1aff6f10837b3acfec9e2a71ae687b2e06ff60cff5b68",
+      "role": "Local correction criterion and reference proof architecture"
+    },
+    {
+      "id": "CE03",
+      "title": "New upper bounds on sphere packings I",
+      "authors": ["Henry Cohn", "Noam Elkies"],
+      "version": "Annals of Mathematics 157 (2003), 689-714",
+      "url": "https://annals.math.princeton.edu/wp-content/uploads/annals-v157-n2-p09.pdf",
+      "arxiv": "math/0110009",
+      "locator": "Sections 2, 5, 7; Theorems 3.1-3.2, pp. 694-696",
+      "access_status": "FULL_TEXT_CHECKED",
+      "local_file": "Papers/CohnElkies2003.pdf",
+      "bytes": 199585,
+      "sha256": "d1aff813d5acd83679978ae771d76ef04b50a1bf9096b9bc09588d61d465cc5f",
+      "role": "Two-point baseline, Fourier normalization, numerical construction"
+    },
+    {
+      "id": "LI24",
+      "title": "Dual linear programming bounds for sphere packing via discrete reductions",
+      "authors": ["Rupert Li"],
+      "version": "arXiv:2206.09876v3, 2022-11-06; Adv. Math. 460 (2024), 110043",
+      "url": "https://arxiv.org/abs/2206.09876v3",
+      "download_url": "https://arxiv.org/pdf/2206.09876v3",
+      "doi": "10.1016/j.aim.2024.110043",
+      "locator": "Sections 3-5; Section 6, Theorem 6.1; Mu_3_53_sqrt89.txt and verify_dual.sage",
+      "access_status": "FULL_TEXT_CHECKED",
+      "local_file": "Papers/Li2022-v3.pdf",
+      "bytes": 259490,
+      "sha256": "678fc121696508a83df3c228821c14452d3e71675425df5b67e0d8c3a31e5af0",
+      "role": "Proven non-sharpness of ordinary CE in dimension 3; local certificate rerun pending"
+    },
+    {
+      "id": "V17",
+      "title": "The sphere packing problem in dimension 8",
+      "authors": ["Maryna S. Viazovska"],
+      "version": "arXiv:1603.04246v2, 2017-04-04; Annals 185 (2017), 991-1015",
+      "url": "https://arxiv.org/abs/1603.04246v2",
+      "doi": "10.4007/annals.2017.185.3.7",
+      "locator": "Theorems 2 and 3; modular construction and sign arguments",
+      "access_status": "FULL_TEXT_CHECKED",
+      "role": "Analytic auxiliary-function mechanism in dimension 8"
+    },
+    {
+      "id": "CKMRV17",
+      "title": "The sphere packing problem in dimension 24",
+      "authors": ["Henry Cohn", "Abhinav Kumar", "Stephen D. Miller", "Danylo Radchenko", "Maryna Viazovska"],
+      "version": "Annals 185 (2017), 1017-1033; current arXiv:1603.06518v4, 2026-09-06",
+      "url": "https://arxiv.org/abs/1603.06518v4",
+      "doi": "10.4007/annals.2017.185.3.8",
+      "locator": "Theorem 1.1; corrected ancillary appendix.txt, with appendix-original.txt retained upstream",
+      "access_status": "JOURNAL_THEOREM_AND_CURRENT_METADATA_CHECKED",
+      "role": "Dimension 24 comparison; current ancillary corrections require version-aware reproduction"
+    },
+    {
+      "id": "CDS22",
+      "title": "Three-point bounds for sphere packing",
+      "authors": ["Henry Cohn", "David de Laat", "Andrew Salmon"],
+      "version": "arXiv:2206.15373v1, 2022-06-30",
+      "url": "https://arxiv.org/abs/2206.15373",
+      "data_url": "https://dspace.mit.edu/entities/product/d32e22af-d2e4-4084-abd9-998c9604e0b1",
+      "locator": "Theorem 1.1 p. 3; Theorem 1.4 and Table 1.1 p. 5; Sections 2.2, 5, 6",
+      "access_status": "FULL_TEXT_CHECKED",
+      "role": "General and lattice three-point bounds, numerical benchmarks, exact certification"
+    },
+    {
+      "id": "DLOV14",
+      "title": "Upper bounds for packings of spheres of several radii",
+      "authors": ["David de Laat", "Fernando Mário de Oliveira Filho", "Frank Vallentin"],
+      "version": "Forum of Mathematics, Sigma 2 (2014), e23",
+      "url": "https://arxiv.org/abs/1206.2608",
+      "doi": "10.1017/fms.2014.24",
+      "locator": "Section 5, strengthening bounds for identical spheres",
+      "access_status": "ABSTRACT_AND_SECTION_SCOPE_CHECKED",
+      "role": "Local-information strengthening and novelty comparison"
+    },
+    {
+      "id": "DV15",
+      "title": "A semidefinite programming hierarchy for packing problems in discrete geometry",
+      "authors": ["David de Laat", "Frank Vallentin"],
+      "version": "Math. Programming 151 (2015), 529-553; arXiv:1311.3789v3, 2021-08-24",
+      "url": "https://arxiv.org/abs/1311.3789v3",
+      "locator": "Abstract; full convergence theorem hypotheses pending worker audit",
+      "access_status": "ABSTRACT_CHECKED",
+      "role": "Hierarchy framework; finite-level 3D effectiveness remains to be established"
+    },
+    {
+      "id": "DLM20",
+      "title": "Exact semidefinite programming bounds for packing problems",
+      "authors": ["Maria Dostert", "David de Laat", "Philippe Moustrou"],
+      "version": "arXiv:2001.00256v3, 2020-07-09",
+      "url": "https://arxiv.org/abs/2001.00256v3",
+      "doi": "10.1137/20M1351692",
+      "locator": "Abstract; rounding algorithm details pending worker audit",
+      "access_status": "ABSTRACT_CHECKED",
+      "role": "Exact rational and quadratic-field SDP certificates"
+    },
+    {
+      "id": "CZ14",
+      "title": "Sphere packing bounds via spherical codes",
+      "authors": ["Henry Cohn", "Yufei Zhao"],
+      "version": "Duke Mathematical Journal 163 (2014), 1965-2002",
+      "url": "https://arxiv.org/abs/1212.5966",
+      "locator": "Abstract; exact theorem locator pending worker audit",
+      "access_status": "ABSTRACT_CHECKED",
+      "role": "Angular constraints and secondary higher-dimensional comparisons"
+    },
+    {
+      "id": "HM10",
+      "title": "The dodecahedral conjecture",
+      "authors": ["Thomas C. Hales", "Sean McLaughlin"],
+      "version": "JAMS 23 (2010), 299-344; 49-page author manuscript inspected",
+      "url": "https://www.cs.cmu.edu/~seanmcl/papers/McLaughlin-Dodec.pdf",
+      "doi": "10.1090/S0894-0347-09-00647-X",
+      "locator": "Section 1 pp. 1-2; Theorem 2.1 p. 6; Section 3 p. 8; Section 4, Theorem 4.1, printed/PDF p. 16 (zero-based 15), author manuscript",
+      "access_status": "SELECTED_FULL_TEXT_CHECKED",
+      "role": "Known local-volume density benchmark about 0.7546974 with computational proof dependencies",
+      "additional_review": "2026-11-14 07:38 Pacific: Theorem 4.1 and attribution to Fejes Toth checked; see TWELVE_FACE_SOURCE_AUDIT.md"
+    },
+    {
+      "id": "H12",
+      "title": "Dense Sphere Packings: A Blueprint for Formal Proofs",
+      "authors": ["Thomas C. Hales"],
+      "version": "Cambridge University Press, LMS Lecture Note Series 400, 2012",
+      "url": "https://publicationsthomashales.wordpress.com/books/",
+      "locator": "Author's book description; exact book theorem locators pending access",
+      "access_status": "AUTHOR_METADATA_CHECKED",
+      "role": "Revised proof architecture for comparison with proposed simplifications"
+    },
+    {
+      "id": "FLY17",
+      "title": "A formal proof of the Kepler conjecture",
+      "authors": ["Thomas Hales", "21 coauthors listed in references.bib"],
+      "version": "Forum of Mathematics, Pi 5 (2017), e2; arXiv:1501.02155v1",
+      "url": "https://arxiv.org/abs/1501.02155v1",
+      "doi": "10.1017/fmp.2017.1",
+      "locator": "Introduction, formal theorem and verification architecture, Section 7 tame graphs",
+      "access_status": "SELECTED_FULL_TEXT_CHECKED",
+      "role": "Formal correctness baseline and computational obligation audit"
+    },
+    {
+      "id": "FORM26",
+      "title": "Progress in Formalizing Sphere Packing in Dimension 8",
+      "authors": ["Sidharth Hariharan", "Christopher Birkbeck", "Seewoo Lee", "Ho Kiu Gareth Ma", "Bhavik Mehta", "Auguste Poiroux", "Maryna Viazovska"],
+      "version": "arXiv:2604.23468v3, 2026-05-29",
+      "url": "https://arxiv.org/abs/2604.23468v3",
+      "locator": "Abstract and version history; repository build and theorem audit pending",
+      "access_status": "ABSTRACT_CHECKED",
+      "role": "Recent Lean infrastructure discovery"
+    },
+    {
+      "id": "HEX26",
+      "title": "A construction of the sphere-packing magic functions in dimensions 8 and 24",
+      "contributors": ["Thomas Hales"],
+      "version": "hexagon:2610.00330v1, 2026-10-18",
+      "url": "https://hexagonmath.org/2610.00330v1",
+      "locator": "Section 12, The remaining sign problem; TeX sec:signs; see HEXAGON_REVIEW.md",
+      "access_status": "SELECTED_SOURCE_CHECKED_BY_RECENT_LITERATURE_REVIEW",
+      "role": "AI-assisted candidate mechanism; simpler independent 3D application unestablished"
+    },
+    {
+      "id": "OAI26",
+      "title": "A sharp Fourier certificate for planar circle packing",
+      "authors": ["OpenAI"],
+      "version": "2026-09-23; repository commit 4eaee87548250b2682affda7d05d947c05554bae",
+      "url": "https://github.com/openai/math/tree/4eaee87548250b2682affda7d05d947c05554bae/preprints/A-sharp-Fourier-certificate-for-planar-circle-packing-September-23-2026",
+      "locator": "Manuscript and verification READMEs; see HEXAGON_REVIEW.md",
+      "access_status": "README_AND_INVENTORY_CHECKED_BY_RECENT_LITERATURE_REVIEW",
+      "role": "Potential certificate techniques; 3D transfer and local verifier run pending"
+    },
+    {
+      "id": "MT12",
+      "title": "The strong thirteen spheres problem",
+      "authors": [
+        "Oleg R. Musin",
+        "Alexey S. Tarasov"
+      ],
+      "version": "arXiv:1002.1439v3, identifier date 2012-01-16; PDF title page displays 2018-10-31",
+      "url": "https://arxiv.org/abs/1002.1439v3",
+      "download_url": "https://arxiv.org/pdf/1002.1439v3",
+      "locator": "Section 2, Theorem 1, printed page 3; preceding Remark gives defining equations",
+      "access_status": "THEOREM_AND_DEFINING_EQUATIONS_CHECKED",
+      "access_date": "2026-11-14",
+      "local_file": "Papers/MusinTarasov2012-v3.pdf",
+      "bytes": 432657,
+      "sha256": "bd8c8bf9a7aad40d276584086756b92247f989b24f44df938866825b7a08da9a",
+      "role": "Primary quantitative Tammes-13 source for thin-shell neighbor count; computer-assisted proof not reproduced"
+    }
+  ]
+}

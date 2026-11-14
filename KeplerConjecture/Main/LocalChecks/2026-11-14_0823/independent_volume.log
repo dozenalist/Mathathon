@@ -1,0 +1,5 @@
+independent re-check of C:\Users\carte\lean\Mathathon\.sair\runs\01a1d8c0-f50f-7352-a61a-3927660a8eea\kepler15\review-20261114-0823\sources\Computation\KeplerConjecture\Computation\out\certificate_dense_shell_centre.json
+  signed-tetrahedron volume : 18842070507019013956653107809977422681162557/3392244814316620265216629000000000000000000
+  certificate's volume      : 18842070507019013956653107809977422681162557/3392244814316620265216629000000000000000000
+  PASS: the origin-independent formula reproduces the certified volume
+  PASS: the oriented triangles close (sum of cross products is zero)

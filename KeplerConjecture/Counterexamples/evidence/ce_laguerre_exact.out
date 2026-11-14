@@ -1,0 +1,15 @@
+================================================================================
+0.  Verify the eigenbasis numerically from scratch (d=3 radial FT)
+================================================================================
+   k=0  f^(0.83) = +0.1148368126   (-1)^k f(0.83) = +0.1148368126   |diff| = 2.78e-17
+   k=1  f^(0.83) = +0.3248143579   (-1)^k f(0.83) = +0.3248143579   |diff| = 2.22e-16
+   k=2  f^(0.83) = +0.0484245228   (-1)^k f(0.83) = +0.0484245228   |diff| = 4.57e-15
+   k=3  f^(0.83) = -0.2895886279   (-1)^k f(0.83) = -0.2895886279   |diff| = 1.72e-15
+================================================================================
+1.  Search for certified members of the family (exact rational c)
+================================================================================
+   K=2 : no certified member in the probe set
+   K=3 : no certified member in the probe set
+   K=4 : no certified member in the probe set
+   K=5 : no certified member in the probe set
+   K=6 : no certified member in the probe set

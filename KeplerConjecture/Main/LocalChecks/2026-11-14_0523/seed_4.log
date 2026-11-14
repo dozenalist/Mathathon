@@ -1,0 +1,5 @@
+seeded search: fixed c + 5 ring; free <= 10 centres in 2 <= |z-w1| <= 2.8
+need < 5.763417470 to refute (P'); V_dodeca floor 5.550291029
+
+best 5.898007181 with 6 free centres; legal=True minsep=2.000000000
+  refutes (P')? False   gap to the threshold +0.134589711

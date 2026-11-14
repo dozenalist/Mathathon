@@ -1,0 +1,31 @@
+T1 verbosity invariance: ok/reason identical in both modes
+  REJECT: A1 needs p<0 on [8pi,inf); got p>0 there (ok)
+  REJECT: A1 needs p<0 on [8pi,inf); got p>0 there (ok)
+  REJECT: A2 needs q>0 on [0,inf); got q<0 there (ok)
+  REJECT: A1 needs p<0 on [8pi,inf); got p>0 there (ok)
+  REJECT: A1 needs p<0 on [8pi,inf); got p>0 there (ok)
+  REJECT: A1 needs p<0 on [8pi,inf); got p>0 there (ok)
+  REJECT: A1 needs p<0 on [8pi,inf); got p>0 there (ok)
+  PASS  verbosity invariance
+T2 [2,-1] must be rejected (review 48443 case; p = t+1/2 > 0 off the ball)
+  PASS  [2,-1] rejected
+  PASS  [2,-1] no beats_kepler field
+T3 yun_odd_part preserves leading sign (the -t-1 -> t+1 defect)
+  PASS  odd part monic both signs
+  PASS  leading coefficients differ
+  PASS  sign(p) = sign(c)*sign(u)
+T4 degenerate inputs fail closed
+  PASS  zero polynomial rejected
+  PASS  constant c rejected
+  PASS  yun(0) returns (None,None)
+  PASS  yun(constant) keeps sign
+T5 the submitted K21 certificate must be REJECTED (review 48443)
+  PASS  K21 rejected
+  PASS  K21 reason cites a failed condition
+  PASS  witness q(57955199/21687900) < 0
+  PASS  witness value matches review ~ -3.876e-5
+T6 independent oracle agreement (sympy), random low-degree c
+  PASS  no case accepted by me but rejected by oracle
+        (24 random candidates cross-checked)
+
+ALL TESTS PASS

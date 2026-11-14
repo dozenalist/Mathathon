@@ -1,0 +1,286 @@
+{
+  "review": "2026-11-14 01:38 Pacific scheduled check",
+  "ownership_verified": true,
+  "assignments": [
+    {
+      "role": "Main",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "based-on-the-chats-e0wz"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-22506793-43db-4313-beae-434bf7f68bcc",
+      "user_sequence": 44164,
+      "delivery_sequence": 44165,
+      "completion_reviewed": 44163,
+      "purpose": "full-hour assignment",
+      "received_utc": "2026-11-14T09:42:29.485000+00:00",
+      "earliest_finish_utc": "2026-11-14T10:42:29.485000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0138/Main.md",
+      "prompt_sha256": "4981a265f739651252010c3a11ea484815f44dca1ff46f6db0f161304907020b",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 44796,
+      "runtime_mode_utc": "2026-11-14T09:42:58.249000+00:00",
+      "served_by": "deepseek/deepseek-v4.1-flash",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T10:17:51.305610+00:00"
+    },
+    {
+      "role": "Main",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "based-on-the-chats-e0wz"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-e609f3bf-18bd-418a-b3cd-c519e6a11725",
+      "user_sequence": 50410,
+      "delivery_sequence": 50707,
+      "completion_reviewed": null,
+      "purpose": "evidence/continuation; current hour unchanged",
+      "received_utc": "2026-11-14T09:56:28.336000+00:00",
+      "earliest_finish_utc": null,
+      "required_substantive_minutes": null,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0138/Main-checker-evidence.md",
+      "prompt_sha256": "34548c00cf99496049db6f84665c8a142c7ecb5adbcfc6f0e22b51e67100ad1f",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 51436,
+      "runtime_mode_utc": "2026-11-14T09:57:17.444000+00:00",
+      "served_by": "deepseek/deepseek-v4.1-flash",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T10:17:51.305610+00:00"
+    },
+    {
+      "role": "Experimental",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "i-ve-attached-thomas-4iws"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-57af39b8-5d26-4bf7-a00a-3e26f77e3c1a",
+      "user_sequence": 51141,
+      "delivery_sequence": 51142,
+      "completion_reviewed": 51140,
+      "purpose": "full-hour assignment",
+      "received_utc": "2026-11-14T09:57:04.441000+00:00",
+      "earliest_finish_utc": "2026-11-14T10:57:04.441000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0138/Experimental.md",
+      "prompt_sha256": "e64de49e96a6f78774f75ddb6646001a02160159852c455e30bcb81f5b291ee3",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 51235,
+      "runtime_mode_utc": "2026-11-14T09:57:21.013000+00:00",
+      "served_by": "deepseek/deepseek-v4.1-flash",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T10:17:51.305610+00:00"
+    },
+    {
+      "role": "Counterexamples",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "i-ve-attached-viazovska-f7hh"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-57af1588-7849-4145-8d67-8272a7c06b42",
+      "user_sequence": 58146,
+      "delivery_sequence": 58147,
+      "completion_reviewed": 58145,
+      "purpose": "evidence/continuation; current hour unchanged",
+      "received_utc": "2026-11-14T09:58:33.849000+00:00",
+      "earliest_finish_utc": null,
+      "required_substantive_minutes": null,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0138/Counterexamples-checker-evidence.md",
+      "prompt_sha256": "eee309163baf9a63e179bcc3ac9e1296818cb2794be21478c1cb6806d71123ec",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 58933,
+      "runtime_mode_utc": "2026-11-14T09:59:33.108000+00:00",
+      "served_by": "deepseek/deepseek-v4.1-flash",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T10:17:51.305610+00:00"
+    },
+    {
+      "role": "Counterexamples",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "i-ve-attached-viazovska-f7hh"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-4d8a5aac-03f7-43eb-88cf-602e0469c05c",
+      "user_sequence": 59687,
+      "delivery_sequence": 59688,
+      "completion_reviewed": 59686,
+      "purpose": "full-hour assignment",
+      "received_utc": "2026-11-14T10:04:17.639000+00:00",
+      "earliest_finish_utc": "2026-11-14T11:04:17.639000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0138/Counterexamples.md",
+      "prompt_sha256": "292b1e42949c8a7a60627ca8f7fdc79277dc3b9d0d33a858233b876e8b54236e",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 59897,
+      "runtime_mode_utc": "2026-11-14T10:04:35.308000+00:00",
+      "served_by": "deepseek/deepseek-v4.1-flash",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T10:17:51.305610+00:00"
+    },
+    {
+      "role": "Computation",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "using-the-chats-in-mcl6"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-39b3da99-9731-4330-9654-fed9c2e71535",
+      "user_sequence": 59091,
+      "delivery_sequence": 59092,
+      "completion_reviewed": 59090,
+      "purpose": "full-hour assignment",
+      "received_utc": "2026-11-14T10:06:11.220000+00:00",
+      "earliest_finish_utc": "2026-11-14T11:06:11.220000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0138/Computation.md",
+      "prompt_sha256": "4f17c2c8396acdc5a1e95ff1ea21729dd9f56067d5c398abbbe016fa778f6cf9",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 60205,
+      "runtime_mode_utc": "2026-11-14T10:07:00.930000+00:00",
+      "served_by": "deepseek/deepseek-v4.1-flash",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T10:17:51.305610+00:00"
+    },
+    {
+      "role": "Main",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "based-on-the-chats-e0wz"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-0025c5c2-4fa3-47f2-a92e-fb7049a4c185",
+      "user_sequence": 54619,
+      "delivery_sequence": 54796,
+      "completion_reviewed": null,
+      "purpose": "evidence/continuation; current hour unchanged",
+      "received_utc": "2026-11-14T10:10:59.166000+00:00",
+      "earliest_finish_utc": null,
+      "required_substantive_minutes": null,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0138/Main-local-results.md",
+      "prompt_sha256": "fd6f1cf02b183bc4174516867892a4175f49154af96475373f561054b7338dec",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 55177,
+      "runtime_mode_utc": "2026-11-14T10:11:45.496000+00:00",
+      "served_by": "deepseek/deepseek-v4.1-flash",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T10:17:51.305610+00:00"
+    },
+    {
+      "role": "Counterexamples",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "i-ve-attached-viazovska-f7hh"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-12eeca39-cebc-42a2-b064-b086b88d7a35",
+      "user_sequence": 64150,
+      "delivery_sequence": 64716,
+      "completion_reviewed": null,
+      "purpose": "evidence/continuation; current hour unchanged",
+      "received_utc": "2026-11-14T10:14:00.821000+00:00",
+      "earliest_finish_utc": null,
+      "required_substantive_minutes": null,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0138/Counterexamples-local-results.md",
+      "prompt_sha256": "483faa13a00b9f06e910e8e22b192b468fe0d35db835fa5f58154d15a0963f39",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 65669,
+      "runtime_mode_utc": "2026-11-14T10:14:37.967000+00:00",
+      "served_by": "deepseek/deepseek-v4.1-flash",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T10:17:51.305610+00:00"
+    }
+  ],
+  "prior_early_completions": [
+    {
+      "role": "Main",
+      "completion_sequence": 44163,
+      "previous_prompt_id": "u-f9028ce9-bef1-4af4-9072-0e2151fa012d",
+      "received_utc": "2026-11-14T09:13:49.103000+00:00",
+      "completion_utc": "2026-11-14T09:36:04.767000+00:00",
+      "observed_minutes": 22.261,
+      "full_hour_observed": false
+    },
+    {
+      "role": "Experimental",
+      "completion_sequence": 51140,
+      "previous_prompt_id": "u-79202358-2ba4-4eb6-887c-21de92cec54e",
+      "received_utc": "2026-11-14T09:15:53.639000+00:00",
+      "completion_utc": "2026-11-14T09:41:19.856000+00:00",
+      "observed_minutes": 25.437,
+      "full_hour_observed": false
+    },
+    {
+      "role": "Computation",
+      "completion_sequence": 59090,
+      "previous_prompt_id": "u-df2e68fa-7592-4aa0-8647-c074ad101c7b",
+      "received_utc": "2026-11-14T09:18:39.348000+00:00",
+      "completion_utc": "2026-11-14T09:59:21.769000+00:00",
+      "observed_minutes": 40.707,
+      "full_hour_observed": false
+    },
+    {
+      "role": "Counterexamples",
+      "completion_sequence": 58145,
+      "previous_prompt_id": "u-616f57fc-f1e6-40a3-b5d1-251f112abbc9",
+      "received_utc": "2026-11-14T09:17:08.322000+00:00",
+      "completion_utc": "2026-11-14T09:58:25.937000+00:00",
+      "observed_minutes": 41.294,
+      "full_hour_observed": false
+    }
+  ],
+  "latest_activity": [
+    {
+      "role": "Main",
+      "latest_sequence": 56012,
+      "latest_kind": "tool_result",
+      "latest_model_sequence": 56010,
+      "actual_reasoning_mode": "ultramath",
+      "checked_utc": "2026-11-14T10:17:51.305610+00:00"
+    },
+    {
+      "role": "Computation",
+      "latest_sequence": 63674,
+      "latest_kind": "tool_call",
+      "latest_model_sequence": 63671,
+      "actual_reasoning_mode": "ultramath",
+      "checked_utc": "2026-11-14T10:17:51.305610+00:00"
+    },
+    {
+      "role": "Experimental",
+      "latest_sequence": 58381,
+      "latest_kind": "assistant_delta",
+      "latest_model_sequence": 58312,
+      "actual_reasoning_mode": "ultramath",
+      "checked_utc": "2026-11-14T10:17:51.305610+00:00"
+    },
+    {
+      "role": "Counterexamples",
+      "latest_sequence": 67243,
+      "latest_kind": "tool_call",
+      "latest_model_sequence": 67242,
+      "actual_reasoning_mode": "ultramath",
+      "checked_utc": "2026-11-14T10:17:51.305610+00:00"
+    }
+  ]
+}

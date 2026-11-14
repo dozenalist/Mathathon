@@ -1,0 +1,51 @@
+================================================================================================
+A. KNOWN VOLUMES, EXACT
+================================================================================================
+  PASS unit cube: volume 8  Fraction(8, 1)
+  PASS box 2x4x6: volume 48  Fraction(48, 1)
+  PASS octahedron |x|+|y|+|z| <= 1: volume 4/3  Fraction(4, 3)
+
+================================================================================================
+B. DUPLICATE AND REDUNDANT CONSTRAINTS  (E's duplicate-face defect: 28/3 instead of 8)
+================================================================================================
+  PASS identical duplicate cube: volume still 8  Fraction(8, 1)
+  PASS ... and it is reported as dropped  [[[1, 0, 0, Fraction(1, 1)], 'duplicate of (1, 0, 0, 1)']]
+  PASS scaled duplicate (2,0,0,2) of (1,0,0,1): volume still 8  Fraction(8, 1)
+  PASS ... reported as a duplicate, not a second face  [[[2, 0, 0, 2], 'duplicate of (1, 0, 0, 1)']]
+     (a naive fan over all six+1 planes would give 8 + 4/3 = 28/3 = 9.3333)
+  PASS a far redundant plane changes nothing  Fraction(8, 1)
+  PASS a plane 1e-12 outside a face is redundant: volume 8  Fraction(8, 1)
+  PASS ... and it is dropped as dominated  [[[0, 0, 1, Fraction(1000000000001, 1000000000000)], 'dominated by a parallel plane']]
+
+================================================================================================
+C. WHAT A FLOAT DETERMINANT FILTER GETS WRONG
+================================================================================================
+  PASS tilted-box volume is 8 (mean height 1)  Fraction(8, 1)
+  PASS ... with all 8 vertices found  8
+  PASS solve3 divides exactly (no float leak)  (Fraction(1, 1), Fraction(1, 1), Fraction(-999999999, 1000000000))
+  PASS ... and the result is a Fraction, not a float
+
+================================================================================================
+D. DEGENERACIES ARE REJECTED, NOT APPROXIMATED
+================================================================================================
+  PASS three planes (unbounded) are rejected  'only 1 vertices from 3 planes: the polytope is unbounded or '
+  PASS a flat slab is rejected  'the supposed interior point is not strictly inside (0, 0, 1, 0)'
+  PASS a zero normal is rejected
+  PASS three planes through a common line give no vertex
+
+================================================================================================
+E. A NON-SIMPLE POLYTOPE: vertices where FOUR planes meet
+================================================================================================
+  PASS truncated cube: volume 8 - 8*(1/6) = 20/3  Fraction(20, 3)
+  PASS the octahedron has vertices where four planes meet  4
+
+================================================================================================
+F. THE CERTIFICATE IS CHECKED INDEPENDENTLY
+================================================================================================
+  PASS tampering with volume is caught
+  PASS tampering with a vertex moved is caught
+  PASS tampering with a facet dropped is caught
+  PASS tampering with a facet reversed is caught
+  PASS tampering with the interior point moved out is caught
+
+ALL 25 EXACT-VOLUME TESTS PASS

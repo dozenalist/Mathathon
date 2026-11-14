@@ -1,0 +1,16 @@
+================================================================================
+CONTROL 0: exact polytope volumes of two bodies with rational volumes
+  cube [-1,1]^3: 8 (8 expected), 8 vertices
+  regular tetrahedron: 8/3 (8/3 expected), 4 vertices  <- non-symmetric, so
+     it detects a face-orientation error that the cube cannot
+
+CONTROL 1/2: Barlow contact cells must enclose 4 sqrt2 = 5.656854249492380
+  fcc:  [5.656854249492381, 5.656854249492381]  width 1.0e-18  vertices 18/18  contains 4sqrt2: True
+  hcp:  [5.656854249492381, 5.656854249492381]  width 1.0e-18  vertices 18/18  contains 4sqrt2: True
+
+CONTROL 3: the C5 payer fixture must enclose 5.898017371803720
+  C5:  [5.898017371803721, 5.898017371803721]  width 8.7e-19  vertices 20/20  contains 5.8980173718: True
+
+  R = 3/2 was CERTIFIED against the outer polytope in every sandwich above (the check raises if an outer vertex exceeds it)
+
+ALL CONTROLS PASS

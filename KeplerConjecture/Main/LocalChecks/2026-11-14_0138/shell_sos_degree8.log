@@ -1,0 +1,1 @@
+degree must be ODD. In this basis M is upper triangular with diagonal (-1)^i, so lc(q) = (-1)^K a_K and lc(p) = a_K. p <= 0 at infinity needs a_K <= 0 while q >= 0 at infinity needs (-1)^K a_K >= 0; both hold only for K odd (for K even they force a_K = 0, i.e. the degree drops). Verified numerically: M[K][K] = (-1)^K.

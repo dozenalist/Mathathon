@@ -1,0 +1,25 @@
+sqrt(32) = 5.656854249   (FCC/HCP cell volume at minimum separation 2)
+
+== FCC (=A_3 scaled), minimum separation 2
+   separation: centres sqrt2*D_3, min |x| = sqrt2*sqrt2 = 2
+   cell volume 5.656854249 ; b = 0.000000000000
+   full-period test: b = 0 for every cell, so the sum is 0 for every blob
+
+== HCP (ABAB stacking), minimum separation 2
+   separation: same cell volume as FCC
+   cell volume 5.656854249 ; b = 0.000000000000
+   full-period test: b = 0 for every cell, so the sum is 0 for every blob
+
+== periodised icosahedral 13-cluster, minimum separation 2
+   separation: icosahedron edge 2*sqrt(1-1/sqrt5) = 2.1029 > 2; origin-vertex distance 2 exactly
+   central cell 5.550291029 (b = +0.106563221) ; other cells 340.870809 ; mean 315.076923
+   full-period test: boundary of the full period is EMPTY, so the cut condition would read total_b <= 0; here total_b = -4022.460895
+   density 0.003174 vs Kepler 0.176777 -> at or below Kepler
+
+STRUCTURAL CONCLUSION
+  Taking U = the whole period makes the boundary term vanish, so the cut condition reads N(sqrt32 - 1/rho) <= 0, i.e.
+  rho <= 1/sqrt32: the Kepler bound itself.
+  The cut condition is therefore EQUIVALENT to Kepler for periodic packings, not an independent analytic inequality, and a search finding no counterexample is vacuous rather than weak evidence.
+  Both FCC and HCP are exact equality cases (b = 0 for every cell), so they cannot discriminate; the icosahedral-cluster fixture has b > 0 on its central cell but a mean cell volume far ABOVE sqrt32, so its full-period sum is negative and it does not refute.
+
+wrote out/cut_deficit.json

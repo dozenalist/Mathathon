@@ -1,0 +1,214 @@
+[
+  {
+    "job": "sign_helper_counterexamples",
+    "workdir": ".",
+    "args": [
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\worktrees\\kepler15-01a1d8c0\\KeplerConjecture\\Main\\LocalChecks\\2026-11-14_0138\\reproduce_sign_defects.py",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0138\\local-jobs\\KeplerConjecture"
+    ],
+    "cap_seconds": 30,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 2.531,
+    "peak_observed_bytes": 54796288,
+    "log": "sign_helper_counterexamples.log"
+  },
+  {
+    "job": "certificate_K33b",
+    "workdir": "Computation",
+    "args": [
+      "verify_certificate.py",
+      "out/verified_certificate_K33b.json"
+    ],
+    "cap_seconds": 120,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 6.656,
+    "peak_observed_bytes": 60362752,
+    "log": "certificate_K33b.log"
+  },
+  {
+    "job": "certificate_K33",
+    "workdir": "Computation",
+    "args": [
+      "verify_certificate.py",
+      "out/verified_certificate_K33.json"
+    ],
+    "cap_seconds": 120,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 6.688,
+    "peak_observed_bytes": 60649472,
+    "log": "certificate_K33.log"
+  },
+  {
+    "job": "checker_regressions",
+    "workdir": "Computation",
+    "args": [
+      "exactcert_tests.py"
+    ],
+    "cap_seconds": 60,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 44.796,
+    "peak_observed_bytes": 58908672,
+    "log": "checker_regressions.log"
+  },
+  {
+    "job": "checker_exact_oracle",
+    "workdir": "Computation",
+    "args": [
+      "exactcert_oracle.py"
+    ],
+    "cap_seconds": 60,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 2.782,
+    "peak_observed_bytes": 54931456,
+    "log": "checker_exact_oracle.log"
+  },
+  {
+    "job": "main_checker_self_test",
+    "workdir": "Computation",
+    "args": [
+      "shell_check.py",
+      "--self-test"
+    ],
+    "cap_seconds": 30,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 2.797,
+    "peak_observed_bytes": 55816192,
+    "log": "main_checker_self_test.log"
+  },
+  {
+    "job": "main_checker_adversarial",
+    "workdir": "Computation",
+    "args": [
+      "checker_adversarial.py"
+    ],
+    "cap_seconds": 30,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 3.031,
+    "peak_observed_bytes": 55619584,
+    "log": "main_checker_adversarial.log"
+  },
+  {
+    "job": "main_cross_K33b",
+    "workdir": "Computation",
+    "args": [
+      "verify_comp_cert.py",
+      "out/verified_certificate_K33b.json"
+    ],
+    "cap_seconds": 120,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 10.531,
+    "peak_observed_bytes": 68177920,
+    "log": "main_cross_K33b.log"
+  },
+  {
+    "job": "tammes_rational_enclosure",
+    "workdir": ".",
+    "args": [
+      "Experimental/scripts/tammes13_enclosure.py"
+    ],
+    "cap_seconds": 60,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 0.781,
+    "peak_observed_bytes": 13176832,
+    "log": "tammes_rational_enclosure.log"
+  },
+  {
+    "job": "barlow_finite_controls",
+    "workdir": ".",
+    "args": [
+      "Experimental/scripts/barlow_shell_check.py"
+    ],
+    "cap_seconds": 30,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 0.766,
+    "peak_observed_bytes": 22290432,
+    "log": "barlow_finite_controls.log"
+  },
+  {
+    "job": "x_K33_reconstruction",
+    "workdir": "Counterexamples/Reviews/K33",
+    "args": [
+      "audit_K33.py"
+    ],
+    "cap_seconds": 30,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 0.266,
+    "peak_observed_bytes": 2080768,
+    "log": "x_K33_reconstruction.log"
+  },
+  {
+    "job": "x_K33_signs",
+    "workdir": "Counterexamples/Reviews/K33",
+    "args": [
+      "audit_K33_signs.py"
+    ],
+    "cap_seconds": 120,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 9.234,
+    "peak_observed_bytes": 65802240,
+    "log": "x_K33_signs.log"
+  },
+  {
+    "job": "x_tammes_enclosure",
+    "workdir": "Counterexamples/Reviews/Tammes13",
+    "args": [
+      "audit_tammes13.py"
+    ],
+    "cap_seconds": 60,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 11.156,
+    "peak_observed_bytes": 59506688,
+    "log": "x_tammes_enclosure.log"
+  },
+  {
+    "job": "shell_propose_degree9",
+    "workdir": "Computation",
+    "args": [
+      "shell_propose.py",
+      "--checker",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0138\\local-jobs\\KeplerConjecture\\Computation\\shell_check.py",
+      "--degree",
+      "9",
+      "--out",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0138\\local-jobs\\shell_propose_degree9.json"
+    ],
+    "cap_seconds": 120,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 9.375,
+    "peak_observed_bytes": 157528064,
+    "log": "shell_propose_degree9.log"
+  },
+  {
+    "job": "shell_sos_degree8",
+    "workdir": "Computation",
+    "args": [
+      "shell_sos.py",
+      "--checker",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0138\\local-jobs\\KeplerConjecture\\Computation\\shell_check.py",
+      "--degree",
+      "8",
+      "--out",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0138\\local-jobs\\shell_sos_degree8.json"
+    ],
+    "cap_seconds": 120,
+    "status": "completed",
+    "exit_code": 1,
+    "elapsed_seconds": 3.297,
+    "peak_observed_bytes": 84619264,
+    "log": "shell_sos_degree8.log"
+  }
+]

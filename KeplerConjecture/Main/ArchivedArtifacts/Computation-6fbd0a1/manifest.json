@@ -1,0 +1,20 @@
+[
+  {
+    "original_path": "KeplerConjecture/Computation/.scratch/neg_p(0)_raised_by_1e-3.json",
+    "source": "6fbd0a1bf214a92b625cee84e8ee95ac5da4b8d9",
+    "archived_path": "KeplerConjecture/Main/ArchivedArtifacts/Computation-6fbd0a1/neg_p(0)_raised_by_1e-3.json",
+    "sha256": "56e055f8fea9bf0e4e505d423897723e8114734f3de5dbeff52b3eabdd4794a6"
+  },
+  {
+    "original_path": "KeplerConjecture/Computation/.scratch/neg_sign_of_the_k=5_Laguerre_coefficient_flipped.json",
+    "source": "6fbd0a1bf214a92b625cee84e8ee95ac5da4b8d9",
+    "archived_path": "KeplerConjecture/Main/ArchivedArtifacts/Computation-6fbd0a1/neg_sign_of_the_k=5_Laguerre_coefficient_flipped.json",
+    "sha256": "0c62b48e79239bc5d1ccba80cd56dd008a33da517a70ce388722012b35a03a9b"
+  },
+  {
+    "original_path": "KeplerConjecture/Computation/.scratch/o",
+    "source": "6fbd0a1bf214a92b625cee84e8ee95ac5da4b8d9",
+    "archived_path": "KeplerConjecture/Main/ArchivedArtifacts/Computation-6fbd0a1/o",
+    "sha256": "be6d3f824ee3071c9d9a19550412d3bcbede4c755413939f3cf36750c5048277"
+  }
+]

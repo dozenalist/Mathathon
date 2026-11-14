@@ -1,0 +1,132 @@
+{
+  "experimental_source": "f502b9a596be376cff60179ccd569e588876ef25",
+  "false_origin_certificate": {
+    "normals": [
+      [
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ]
+    ],
+    "returned": [
+      true,
+      "1",
+      1
+    ],
+    "reason": "all convex combinations have x+y+z=1, so origin is not even in the hull",
+    "polyhedron": "x<=1,y<=1,z<=1; unbounded in (-1,-1,-1)",
+    "scope": "false helper acceptance; full certify may still reject via its separate radius calculation"
+  },
+  "nearcontact_degree_witness": {
+    "points": [
+      [
+        -2,
+        -2,
+        0
+      ],
+      [
+        -2,
+        0,
+        -2
+      ],
+      [
+        -2,
+        0,
+        0
+      ],
+      [
+        -2,
+        0,
+        2
+      ],
+      [
+        -2,
+        2,
+        0
+      ],
+      [
+        0,
+        -2,
+        -2
+      ],
+      [
+        0,
+        -2,
+        0
+      ],
+      [
+        0,
+        -2,
+        2
+      ],
+      [
+        0,
+        0,
+        -2
+      ],
+      [
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        2,
+        -2
+      ],
+      [
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        2,
+        2
+      ],
+      [
+        2,
+        -2,
+        0
+      ],
+      [
+        2,
+        0,
+        -2
+      ],
+      [
+        2,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        2
+      ],
+      [
+        2,
+        2,
+        0
+      ]
+    ],
+    "min_squared_separation": 4,
+    "max_squared_radius": 8,
+    "neighbours": 18,
+    "conclusion": "degree<=12 fails already at radius sqrt(8), which is below 3.4555"
+  },
+  "at_most_faces": {
+    "reason": "feasible classes for <=F faces are nested; infima are nonincreasing",
+    "scope": "candidate volumes alone do not determine the infima"
+  }
+}

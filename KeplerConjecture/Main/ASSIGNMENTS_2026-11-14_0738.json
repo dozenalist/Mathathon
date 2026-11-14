@@ -1,0 +1,202 @@
+{
+  "review": "2026-11-14 07:38 Pacific",
+  "ownership_verified": true,
+  "assignments": [
+    {
+      "role": "Main",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "based-on-the-chats-e0wz"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-a0a1ce20-4e89-4f9e-875c-ca98fa8051aa",
+      "user_sequence": 153279,
+      "delivery_sequence": 153280,
+      "completion_reviewed": 153278,
+      "purpose": "full-hour assignment",
+      "received_utc": "2026-11-14T15:46:38.283000+00:00",
+      "actual_start_utc": "2026-11-14T15:46:38.286000+00:00",
+      "actual_start_basis": "first completed model_call at_ms minus duration_ms, bounded below by delivery",
+      "earliest_finish_utc": "2026-11-14T16:46:38.286000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0738/Main.md",
+      "prompt_sha256": "d25b297ed0b4e8f42b3e74cf0198867c4b6634f2c798216a84214b2eb89ff56c",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 153915,
+      "runtime_mode_utc": "2026-11-14T15:46:59.147000+00:00",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T15:50:50.823262+00:00"
+    },
+    {
+      "role": "Computation",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "using-the-chats-in-mcl6"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-a9a34733-0379-44fa-8845-fe664a6d8079",
+      "user_sequence": 118885,
+      "delivery_sequence": 118886,
+      "completion_reviewed": 118884,
+      "purpose": "full-hour assignment",
+      "received_utc": "2026-11-14T15:49:27.201000+00:00",
+      "actual_start_utc": "2026-11-14T15:49:27.205000+00:00",
+      "actual_start_basis": "first completed model_call at_ms minus duration_ms, bounded below by delivery",
+      "earliest_finish_utc": "2026-11-14T16:49:27.205000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0738/Computation.md",
+      "prompt_sha256": "ea230b0d9e130cb4b5f99264652507c90131573bcca24222c1cbed2d2725a1b1",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 119224,
+      "runtime_mode_utc": "2026-11-14T15:49:48.301000+00:00",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T15:50:50.823262+00:00"
+    },
+    {
+      "role": "Experimental",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "i-ve-attached-thomas-4iws"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-7c1a802c-aebc-4098-84fa-b478e9b6678a",
+      "user_sequence": 141960,
+      "delivery_sequence": 141961,
+      "completion_reviewed": 141959,
+      "purpose": "full-hour assignment",
+      "received_utc": "2026-11-14T15:48:14.084000+00:00",
+      "actual_start_utc": "2026-11-14T15:48:14.087000+00:00",
+      "actual_start_basis": "first completed model_call at_ms minus duration_ms, bounded below by delivery",
+      "earliest_finish_utc": "2026-11-14T16:48:14.087000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0738/Experimental.md",
+      "prompt_sha256": "fcc9f96ac52196ba56499f082b35da93e7f48452ebb5503da7688b61dec26472",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 142141,
+      "runtime_mode_utc": "2026-11-14T15:48:24.813000+00:00",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T15:50:50.823262+00:00"
+    },
+    {
+      "role": "Counterexamples",
+      "target": {
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "session": "i-ve-attached-viazovska-f7hh"
+      },
+      "supervisor": "01a1d8c0-f50f-7352-a61a-3927660a8eea",
+      "message_id": "u-8e27f794-4c5a-4bce-b73b-99606cf32f21",
+      "user_sequence": 158591,
+      "delivery_sequence": 158592,
+      "completion_reviewed": 158590,
+      "purpose": "full-hour assignment",
+      "received_utc": "2026-11-14T15:45:09.117000+00:00",
+      "actual_start_utc": "2026-11-14T15:45:09.121000+00:00",
+      "actual_start_basis": "first completed model_call at_ms minus duration_ms, bounded below by delivery",
+      "earliest_finish_utc": "2026-11-14T16:45:09.121000+00:00",
+      "required_substantive_minutes": 60,
+      "prompt_path": "KeplerConjecture/Main/Prompts/Review-2026-11-14_0738/Counterexamples.md",
+      "prompt_sha256": "580b7dfb928e83e2aa895e1f8361deabe1aa48935203b6a25041e4dbdecc0920",
+      "confirmed_delivery": true,
+      "runtime_mode": "ultramath",
+      "runtime_mode_sequence": 158715,
+      "runtime_mode_utc": "2026-11-14T15:45:16.138000+00:00",
+      "full_hour_observed": false,
+      "checked_utc": "2026-11-14T15:50:50.823262+00:00"
+    }
+  ],
+  "prior_block_audit": [
+    {
+      "role": "Main",
+      "previous_prompt_id": "u-a70c7980-d124-429a-b736-1886b659b4e1",
+      "actual_start_utc": "2026-11-14T14:57:16.887000+00:00",
+      "completion_sequence": 153278,
+      "completion_utc": "2026-11-14T15:07:50.327000+00:00",
+      "elapsed_minutes": 10.557,
+      "full_substantive_hour_accepted": false,
+      "reason": "Ended before sixty minutes; a new substantive assignment with independent fallback was delivered. VM scan time is not accepted as evidence of sixty substantive minutes."
+    },
+    {
+      "role": "Computation",
+      "previous_prompt_id": "u-48b97a50-a379-42a9-922a-b320395891ee",
+      "actual_start_utc": "2026-11-14T14:28:19.725000+00:00",
+      "completion_sequence": 118884,
+      "completion_utc": "2026-11-14T15:19:39.809000+00:00",
+      "elapsed_minutes": 51.335,
+      "full_substantive_hour_accepted": false,
+      "reason": "Ended before sixty minutes; a new substantive assignment with independent fallback was delivered. VM scan time is not accepted as evidence of sixty substantive minutes."
+    },
+    {
+      "role": "Experimental",
+      "previous_prompt_id": "u-af57c9be-719b-41a9-97af-921e9969eacc",
+      "actual_start_utc": "2026-11-14T15:03:56.862000+00:00",
+      "completion_sequence": 141959,
+      "completion_utc": "2026-11-14T15:27:43.368000+00:00",
+      "elapsed_minutes": 23.775,
+      "full_substantive_hour_accepted": false,
+      "reason": "Ended before sixty minutes; a new substantive assignment with independent fallback was delivered. VM scan time is not accepted as evidence of sixty substantive minutes."
+    },
+    {
+      "role": "Counterexamples",
+      "previous_prompt_id": "u-ef51bb81-6839-4131-abaf-535eccd0e760",
+      "actual_start_utc": "2026-11-14T14:20:21.461000+00:00",
+      "completion_sequence": 158590,
+      "completion_utc": "2026-11-14T15:14:44.691000+00:00",
+      "elapsed_minutes": 54.387,
+      "full_substantive_hour_accepted": false,
+      "reason": "Ended before sixty minutes; a new substantive assignment with independent fallback was delivered. VM scan time is not accepted as evidence of sixty substantive minutes."
+    }
+  ],
+  "latest_activity": [
+    {
+      "role": "Main",
+      "latest_kind": "tool_result",
+      "latest_sequence": 156056,
+      "actual_reasoning_mode": "ultramath",
+      "model_call_sequence": 156052,
+      "current_assignment_id": "u-a0a1ce20-4e89-4f9e-875c-ca98fa8051aa",
+      "actual_start_utc": "2026-11-14T15:46:38.286000+00:00",
+      "earliest_finish_utc": "2026-11-14T16:46:38.286000+00:00",
+      "snapshot_utc": "2026-11-14T15:48:32.315407+00:00"
+    },
+    {
+      "role": "Computation",
+      "latest_kind": "tool_result",
+      "latest_sequence": 119228,
+      "actual_reasoning_mode": "ultramath",
+      "model_call_sequence": 119224,
+      "current_assignment_id": "u-a9a34733-0379-44fa-8845-fe664a6d8079",
+      "actual_start_utc": "2026-11-14T15:49:27.205000+00:00",
+      "earliest_finish_utc": "2026-11-14T16:49:27.205000+00:00",
+      "snapshot_utc": "2026-11-14T15:49:48.819473+00:00"
+    },
+    {
+      "role": "Experimental",
+      "latest_kind": "tool_result",
+      "latest_sequence": 142379,
+      "actual_reasoning_mode": "ultramath",
+      "model_call_sequence": 142375,
+      "current_assignment_id": "u-7c1a802c-aebc-4098-84fa-b478e9b6678a",
+      "actual_start_utc": "2026-11-14T15:48:14.087000+00:00",
+      "earliest_finish_utc": "2026-11-14T16:48:14.087000+00:00",
+      "snapshot_utc": "2026-11-14T15:48:45.808264+00:00"
+    },
+    {
+      "role": "Counterexamples",
+      "latest_kind": "tool_result",
+      "latest_sequence": 162921,
+      "actual_reasoning_mode": "ultramath",
+      "model_call_sequence": 162917,
+      "current_assignment_id": "u-8e27f794-4c5a-4bce-b73b-99606cf32f21",
+      "actual_start_utc": "2026-11-14T15:45:09.121000+00:00",
+      "earliest_finish_utc": "2026-11-14T16:45:09.121000+00:00",
+      "snapshot_utc": "2026-11-14T15:48:53.766224+00:00"
+    }
+  ]
+}

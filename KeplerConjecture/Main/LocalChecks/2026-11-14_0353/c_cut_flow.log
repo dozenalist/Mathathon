@@ -1,0 +1,75 @@
+K15-C044 cut/flow evaluator
+b(v) = sqrt(32) - vol Omega(v);  sqrt(32) in [2828427124746190097603/500000000000000000000, 5656854249492380195207/1000000000000000000000]
+
+== FCC control: b = 0 exactly, so every cut has sum_U b = 0 <= Phi|delta^+| for
+   every Phi >= 0: the condition is SATISFIED TRIVIALLY and carries no information.
+== HCP control: b = 0 exactly, so every cut has sum_U b = 0 <= Phi|delta^+| for
+   every Phi >= 0: the condition is SATISFIED TRIVIALLY and carries no information.
+
+== fixture validation (icosahedral 13-cluster, period 16 Z^3)
+   V1 min separation among the 13 centres = 2.000000  (need >= 2)  OK
+   V2 nearest periodic image of the origin at distance 14.0 >= 2   OK
+   V3 central cell circumradius <= 1.3 < 8 (half-period), so the cell is UNCUT
+      => the central cell is exactly the regular dodecahedron of inradius 1; its volume
+         is the certified enclosure [5550291028519371/1000000000000000, 1387572757129843/250000000000000]
+
+== icosahedral 13-cluster (periodised), b from rational enclosures:
+   central cell b in [0.106563220973, 0.106563220973]
+   ring cells  b in [-335.213955, -335.213955]
+   R=1.0000: NO EDGES.  The criterion reduces to the POINTWISE condition
+            b(v) <= 0 for every v (Hales' fcc-compatibility).
+            max_v b(v) >= 0.106563220973  =>  VIOLATED (this packing is not fcc-compatible)
+
+   per-fixture singleton bounds b(v)/deg(v): v0: 53281610486504097603/500000000000000000000/12 = 0.008880268414
+   global necessary condition: sum_v b >= -4022.460894757  ->  satisfied
+   R=2.0000: |E|=12 ; singleton cut {0}: sum_U b >= 0.106563220973 over |delta^+|=12
+            => for THIS fixture the cut condition fails for every Phi < 0.008880268414
+               (this constrains a Phi that must serve ALL packings only
+                because this packing exists; it is not implied by b > 0 in an
+                arbitrary fixture)
+            period vs R: copies are >= 12.0000 apart, R = 2.0000 -> DECOUPLED (patch threshold is exact for the infinite packing)
+            EXACT scan of all 8191 subsets: t* = 0.008880268414417 at U=[0]  (singleton is optimal)
+            worst cut found (max |U|=6): U=[0], sum b=0.106563221, |delta^+|=12,
+            sum b / |delta^+| = 0.008880268414
+            Phi=0.018880: flow found, |phi|<=Phi: True, divergence>=b: True
+            (PATCH_FEASIBLE only: this says nothing about other finite U or the infinite packing)
+
+   per-fixture singleton bounds b(v)/deg(v): v0: 53281610486504097603/500000000000000000000/12 = 0.008880268414
+   global necessary condition: sum_v b >= -4022.460894757  ->  satisfied
+   R=2.1029: |E|=42 ; singleton cut {0}: sum_U b >= 0.106563220973 over |delta^+|=12
+            => for THIS fixture the cut condition fails for every Phi < 0.008880268414
+               (this constrains a Phi that must serve ALL packings only
+                because this packing exists; it is not implied by b > 0 in an
+                arbitrary fixture)
+            period vs R: copies are >= 12.0000 apart, R = 2.1029 -> DECOUPLED (patch threshold is exact for the infinite packing)
+            EXACT scan of all 8191 subsets: t* = 0.008880268414417 at U=[0]  (singleton is optimal)
+            worst cut found (max |U|=6): U=[0], sum b=0.106563221, |delta^+|=12,
+            sum b / |delta^+| = 0.008880268414
+            Phi=0.018880: flow found, |phi|<=Phi: True, divergence>=b: True
+            (PATCH_FEASIBLE only: this says nothing about other finite U or the infinite packing)
+
+   per-fixture singleton bounds b(v)/deg(v): v0: 53281610486504097603/500000000000000000000/12 = 0.008880268414
+   global necessary condition: sum_v b >= -4022.460894757  ->  satisfied
+   R=3.0000: |E|=42 ; singleton cut {0}: sum_U b >= 0.106563220973 over |delta^+|=12
+            => for THIS fixture the cut condition fails for every Phi < 0.008880268414
+               (this constrains a Phi that must serve ALL packings only
+                because this packing exists; it is not implied by b > 0 in an
+                arbitrary fixture)
+            period vs R: copies are >= 12.0000 apart, R = 3.0000 -> DECOUPLED (patch threshold is exact for the infinite packing)
+            EXACT scan of all 8191 subsets: t* = 0.008880268414417 at U=[0]  (singleton is optimal)
+            worst cut found (max |U|=6): U=[0], sum b=0.106563221, |delta^+|=12,
+            sum b / |delta^+| = 0.008880268414
+            Phi=0.018880: flow found, |phi|<=Phi: True, divergence>=b: True
+            (PATCH_FEASIBLE only: this says nothing about other finite U or the infinite packing)
+
+== external fixture 'example: two-cell ladder (illustrative only)'  (3 vertices, 2 edges)   [VOLUMES PROVISIONAL]
+   note: hand-made example of the input schema; deficits are made up, volumes PROVISIONAL
+   singleton bound v0: b/deg = 1/10/1 = 0.100000000000
+   singleton bound v2: b/deg = 1/20/1 = 0.050000000000
+   global necessary condition sum_v b >= -0.050000000 -> satisfied
+   worst cut (|U| <= 6): U=[0]  sum b >= 1/10  |delta^+|=1  ratio=0.100000000000
+   => for THIS fixture the cut condition fails for every Phi < 0.100000000000  (PROVISIONAL)
+      (a per-fixture threshold, not a universal constant)
+   Phi=1/10     flow found; |phi|<=Phi True, divergence>=b True   PATCH_FEASIBLE only
+
+wrote C:\Users\carte\lean\Mathathon\.sair\runs\01a1d8c0-f50f-7352-a61a-3927660a8eea\kepler15\review-20261114-0353\local-jobs\KeplerConjecture\Computation\out\cut_flow.json

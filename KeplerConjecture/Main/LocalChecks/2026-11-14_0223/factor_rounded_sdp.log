@@ -1,0 +1,17 @@
+C:\Users\carte\lean\Mathathon\.sair\runs\01a1d8c0-f50f-7352-a61a-3927660a8eea\kepler15\review-20261114-0223\local-jobs-v2\KeplerConjecture\Counterexamples\x_r03b_sdp.py:120: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  try: prob.solve(verbose=False)
+NOTE: Q(0)=0 is inadmissible because the density uses P(0)/Q(0).
+So the correct Lukacs form for Q>=0 on [0,inf) with Q(0)>0 is Q = a + s b, a,b SOS.
+m   SDP value      density      certified
+1   1.082867       -            no (rounding of the factor still broke CE2)
+2   1.077796       0.810774753  YES  P0/Q0=10847793329288
+3   0.992307       -            no (rounding of the factor still broke CE2)
+4   0.354460       -            no (rounding of the factor still broke CE2)
+5   0.001533       -            no (rounding of the factor still broke CE2)
+------------------------------------------------------------------
+BEST CERTIFIED: m=2  density=0.810774753
+  H(s) = (284521650149167500097748685037088741209758417313*s**4 - 13980364322723650089330205512929007328906955713632*s**3 + 166049643786910909451500234064183860515052187665596*s**2 + 119483245693661578902105881028447605527525660796736*s + 533914827925929640910550544700140707154306736504340)/1981506825503426819854266545672027740430060216549904
+  q_j  = [-(752400440961*s**2 - 18949818187248*s + 3060058336238)/66945123798436, (748892423467*s**2 - 15016249221372*s - 93174256513317)/180197237252697]
+  CE1: H = sum q_j^2 >= 0 exactly;  CE2: Q >= 0 on [0,inf) exact.
+  reference: Kepler 0.740480489 ; CDS22 CE 0.779747 ; Li's CE floor ~0.770657 ;
+             previous X best 0.818086808 (from the explicit SOS descent)

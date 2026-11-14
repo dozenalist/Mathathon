@@ -1,0 +1,75 @@
+{
+  "flow_repair": {
+    "isolated_positive_rejected": true,
+    "edgeless_positive_rejected": true,
+    "violating_cut": "(Fraction(1000000000000000000, 1), (4,), Fraction(1, 1), 0)",
+    "scan_isolated": "{'t_star': Fraction(1000000000000000000, 1), 't_star_raw': None, 'U': [4], 'sum_b': Fraction(1, 1), 'boundary': 0, 'subsets_scanned': 31, 'empty_boundary_positive': [([4], '1')]}",
+    "scan_edgeless": "{'t_star': Fraction(1000000000000000000, 1), 't_star_raw': None, 'U': [0], 'sum_b': Fraction(1, 1), 'boundary': 0, 'subsets_scanned': 1, 'empty_boundary_positive': [([0], '1')]}",
+    "scan_all_negative": "{'t_star': Fraction(0, 1), 't_star_raw': Fraction(-1, 1), 'U': [0], 'sum_b': Fraction(-1, 1), 'boundary': 1, 'subsets_scanned': 3, 'empty_boundary_positive': []}"
+  },
+  "norm_bound_counterexample": {
+    "n0": [
+      "1",
+      "0",
+      "0"
+    ],
+    "n": [
+      "3/5",
+      "4/5",
+      "0"
+    ],
+    "y": [
+      "-4/9",
+      "8/9",
+      "0"
+    ],
+    "R": "1",
+    "component_error": "4/5",
+    "dot": "8/9",
+    "y_norm_squared": "80/81",
+    "claimed_upper": "4/5"
+  },
+  "unbounded_cell_false_enclosure": {
+    "centres": [
+      [
+        2,
+        0,
+        0
+      ],
+      [
+        -2,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        -2,
+        0
+      ],
+      [
+        0,
+        0,
+        -2
+      ]
+    ],
+    "R": "2",
+    "reported_lower": "999999999999999999910000000000000000002699999999999999999973/750000000000000000000000000000000000000000000000000000000000",
+    "reported_upper": "1000000000000000000090000000000000000002700000000000000000027/750000000000000000000000000000000000000000000000000000000000",
+    "vertex_counts": [
+      4,
+      4
+    ],
+    "recession_ray": [
+      0,
+      0,
+      1
+    ],
+    "true_volume": "infinite",
+    "reported_upper_float": 1.3333333333333333
+  }
+}

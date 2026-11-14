@@ -1,0 +1,7 @@
+SMALL CERTIFICATE: exact PSD and independent Fourier identity PASS; density < 0.782267254857
+density approx: 0.7822672548563024133037246 max rational characters: 41
+DODECAHEDRON exact interval: PASS
+RING edge threshold controls: PASS
+FCC constructor: PASS
+SPARSE FIXTURE explicitly unsaturated: PASS
+These controls do not certify every flow verdict or the new geometric theorems.

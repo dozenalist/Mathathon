@@ -1,0 +1,123 @@
+{
+  "cadence": "45 minutes; no Sair-Watch",
+  "initial_assignments": [
+    {
+      "target": {
+        "session": "based-on-the-chats-e0wz",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7"
+      },
+      "message_id": "oc_de515ad3f4933a73",
+      "completion_reviewed": 30821,
+      "user_sequence": 30822,
+      "delivery_sequence": 30823,
+      "confirmed_utc": "2026-11-14T00:43:29.9598686-08:00",
+      "role": "Main",
+      "prompt_sha256": "03cf2da5389e9073a433a99734b91a9e4544c83763a5f61ce00217f9435d9a5c",
+      "owned_completion": 30821
+    },
+    {
+      "target": {
+        "session": "using-the-chats-in-mcl6",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7"
+      },
+      "message_id": "oc_b1dc48912f361b40",
+      "completion_reviewed": 49543,
+      "user_sequence": 49544,
+      "delivery_sequence": 49545,
+      "confirmed_utc": "2026-11-14T00:43:26.738149-08:00",
+      "role": "Computation",
+      "prompt_sha256": "d22f3567675b93d1cef398d3bcd6d52ead8f3c30ba46016fb1501d8217dcb8ee",
+      "owned_completion": 49543
+    },
+    {
+      "target": {
+        "session": "i-ve-attached-thomas-4iws",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7"
+      },
+      "message_id": "oc_a18a217d56b2e9df",
+      "completion_reviewed": 36801,
+      "user_sequence": 36802,
+      "delivery_sequence": 36803,
+      "confirmed_utc": "2026-11-14T00:43:27.9914789-08:00",
+      "role": "Experimental",
+      "prompt_sha256": "cd4e00f7e03e14334ecc85a13cd487b66b8512a198d91ecd9953f6adc5544fe1",
+      "owned_completion": 36801
+    },
+    {
+      "target": {
+        "session": "i-ve-attached-viazovska-f7hh",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7"
+      },
+      "message_id": "oc_878717c6af1badcb",
+      "completion_reviewed": 44182,
+      "user_sequence": 44183,
+      "delivery_sequence": 44184,
+      "confirmed_utc": "2026-11-14T00:43:28.9715551-08:00",
+      "role": "Counterexamples",
+      "prompt_sha256": "7022f36438f820925b1e79509488cfe6ff2f0bfa60357c838ed7739712855e83",
+      "owned_completion": 44182
+    }
+  ],
+  "subsequent_work_duration_updates": [
+    {
+      "user_sequence": 33094,
+      "delivery_sequence": 33095,
+      "purpose": "User timing steering",
+      "confirmed_utc": "2026-11-14T00:54:18.0480297-08:00",
+      "role": "Main",
+      "confirmed_delivery": true,
+      "message_id": "oc_ef53608a4bce580f",
+      "target": {
+        "session": "based-on-the-chats-e0wz",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7"
+      }
+    },
+    {
+      "user_sequence": 50957,
+      "confirmed_delivery": true,
+      "role": "Computation",
+      "message_id": "oc_a225a0789f1e17b0",
+      "delivery_sequence": 51213,
+      "purpose": "User timing steering",
+      "target": {
+        "session": "using-the-chats-in-mcl6",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7"
+      },
+      "confirmed_utc": "2026-11-14T00:54:18.3717551-08:00"
+    },
+    {
+      "user_sequence": 39015,
+      "delivery_sequence": 39016,
+      "purpose": "User timing steering",
+      "confirmed_utc": "2026-11-14T00:54:18.6140598-08:00",
+      "role": "Experimental",
+      "confirmed_delivery": true,
+      "message_id": "oc_e0a147166e52de1d",
+      "target": {
+        "session": "i-ve-attached-thomas-4iws",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7"
+      }
+    },
+    {
+      "user_sequence": 46708,
+      "delivery_sequence": 46709,
+      "purpose": "User timing steering",
+      "confirmed_utc": "2026-11-14T00:54:18.8458921-08:00",
+      "role": "Counterexamples",
+      "confirmed_delivery": true,
+      "message_id": "oc_a30e1810e82b5dc2",
+      "target": {
+        "session": "i-ve-attached-viazovska-f7hh",
+        "project": "p-36b7a2950416475fab4b275b5afdfeb2",
+        "team": "o-67dc4eac-a86a-439c-9459-ef86c31aeaa7"
+      }
+    }
+  ]
+}

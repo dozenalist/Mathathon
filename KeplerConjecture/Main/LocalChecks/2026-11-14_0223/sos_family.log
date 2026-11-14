@@ -1,0 +1,11 @@
+Searching p(u) = -(u-T)(u-c)^2 for a certificate with an explicit rational Gram.
+T must satisfy T <= 4*pi = 12.566...
+
+certificates found: 63
+BEST in the family: T=314/25 c=12
+  p(u) = -u**3 + 914*u**2/25 - 11136*u/25 + 45216/25
+  q(u) = u**3 + 1303*u**2/50 + 28889*u/100 + 252891/200
+  Gram identity: -p = 0 + (u-314/25)*(u-12)^2   verified by expansion: True
+  q >= 0 on [0,inf) by exact Sturm (my checker): True
+  Delta <= 5.99152482   (Kepler 0.74048049, CE 0.779747)
+wrote out/sos_family.json

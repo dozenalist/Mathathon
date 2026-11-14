@@ -1,0 +1,39 @@
+{
+ "script": "KeplerConjecture/Computation/sos_both_sides.py",
+ "status": "VERIFIED_EXACT (both sides by explicit rational Gram)",
+ "convention": "unit radius, minimum separation 2, u = pi|x|^2",
+ "theorem": "every packing of unit-radius spheres in R^3 has occupied-volume density Delta <= 2.00171738",
+ "does_not_improve_on": "Cohn-Elkies 2003 (0.779747) nor the LP-optimal 0.77996622; this is a format demonstrator at 2.7x Kepler",
+ "p_side": {
+  "T": "12",
+  "squares": [
+   "4/3",
+   "-37/3",
+   "101*u/12 + 1/4",
+   "-13/6"
+  ],
+  "identity": "-p = (u-T) * sum_i r_i^2"
+ },
+ "q_side": {
+  "squares0": [
+   "22*u - 7250725477/114904064"
+  ],
+  "constant0": "73964663853612149/39608831771148288",
+  "squares1": [
+   "101*u/12 - 36667/1616"
+  ],
+  "identity": "q = sigma_0 + u sigma_1, both explicit sums of squares"
+ },
+ "p": "-10201*u**3/144 + 6767*u**2/8 - 5191*u/48 + 7615/4",
+ "q": "10201*u**3/144 + 9797*u**2/96 - 144747*u/64 + 1529773/384",
+ "p0": "7615/4",
+ "q0": "1529773/384",
+ "ratio": "731040/1529773",
+ "delta": "2.0017173733",
+ "verification": {
+  "p_identity": true,
+  "q_identity": true,
+  "T_le_4pi": true,
+  "cross_check": "the same p is accepted by exactcert and the independent SymPy oracle via out/sos_pside_many.json"
+ }
+}

@@ -1,0 +1,19 @@
+1. MY OWN rigorous bracket for the root of g
+   a=12113/10000 g in [+0.00135704, +0.00135704]  POSITIVE
+   a=6057/5000 g in [-0.00155318, -0.00155318]  NEGATIVE
+   => root in [1.2113,1.2114]; g strictly decreasing => unique
+
+2. monotonicity, checked symbolically
+   g'(a) = 2*sin(a)/cos(a)**2 - 2*sin(a)/cos(a)**3 - 1/(2*sin(a/4 + pi/8)**2)
+   equals -(1/2)sec^2(.) - 2 sin a (1-cos a)/cos^3 a : True
+
+3. the identity claimed to validate transcription
+   cos d = cos a/(1-cos a)  =>  cos d/(1+cos d) = cos a IDENTICALLY.
+   So alpha(d)=a holds for EVERY solution of (E2), whatever (E1) is.
+   => that identity validates (E2) only; (E1) is pinned by the NUMERICAL match.
+   variant (1-2cos a)/cos a     a=76.3997 deg d=72.0949 deg ; identity residual 2.77555756156289e-17 (automatic)
+   variant (1-2cos a)/cos^3 a   a=65.6177 deg d=45.3267 deg ; identity residual 0 (automatic)
+
+4. the final bound E needs
+   cos(a*) >= 0.351709193286  => h >= 0.542517631970 => delta_13 <= 57.1448100216 deg
+   required <= 57.1709 deg ; margin 0.0261 deg ; shell lemma at 2.09 holds: True

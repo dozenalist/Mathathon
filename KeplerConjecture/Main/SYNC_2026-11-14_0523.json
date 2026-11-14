@@ -1,0 +1,35 @@
+{
+  "review": "2026-11-14 05:23 Pacific",
+  "previous_publication": "194b40cffe972aed96e14ad0445da18728c14f5f",
+  "source_revisions": {
+    "Main": "c4134c26aca42379559932ba85836e75b2dc0bcb",
+    "Computation": "a25f5be90ab17bc4eb768e16411ae04d0df56dc7",
+    "Experimental": "93c61a8b926eeece8ea0abff10e231757d76a2cc",
+    "Counterexamples": "a35b71346d0f0e976b63c6da2a243fac64b75d0a"
+  },
+  "integration_head": "8ecf6f5eac947a89da6d239935ef885e63ca3cce",
+  "all_sources_are_ancestors": true,
+  "preserved_deleted_artifacts": [
+    {
+      "original_path": "KeplerConjecture/Computation/.scratch/neg_p(0)_raised_by_1e-3.json",
+      "source": "6fbd0a1bf214a92b625cee84e8ee95ac5da4b8d9",
+      "archived_path": "KeplerConjecture/Main/ArchivedArtifacts/Computation-6fbd0a1/neg_p(0)_raised_by_1e-3.json",
+      "sha256": "56e055f8fea9bf0e4e505d423897723e8114734f3de5dbeff52b3eabdd4794a6"
+    },
+    {
+      "original_path": "KeplerConjecture/Computation/.scratch/neg_sign_of_the_k=5_Laguerre_coefficient_flipped.json",
+      "source": "6fbd0a1bf214a92b625cee84e8ee95ac5da4b8d9",
+      "archived_path": "KeplerConjecture/Main/ArchivedArtifacts/Computation-6fbd0a1/neg_sign_of_the_k=5_Laguerre_coefficient_flipped.json",
+      "sha256": "0c62b48e79239bc5d1ccba80cd56dd008a33da517a70ce388722012b35a03a9b"
+    },
+    {
+      "original_path": "KeplerConjecture/Computation/.scratch/o",
+      "source": "6fbd0a1bf214a92b625cee84e8ee95ac5da4b8d9",
+      "archived_path": "KeplerConjecture/Main/ArchivedArtifacts/Computation-6fbd0a1/o",
+      "sha256": "be6d3f824ee3071c9d9a19550412d3bcbede4c755413939f3cf36750c5048277"
+    }
+  ],
+  "scope": "KeplerConjecture only",
+  "cutoff": "Completed reports captured in this review; ongoing new assignment pushes deferred to the next scheduled review",
+  "conflict_resolution": "X report closing paragraph: replaced historical PENDING with the completed author report; only prior supervisor change was trailing blank-line removal"
+}

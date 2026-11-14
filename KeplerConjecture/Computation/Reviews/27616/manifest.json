@@ -1,0 +1,142 @@
+{
+  "main_commit": "a08f378be6a03f80ac075b34f8ba99aeb8201d9e",
+  "computation_commit": "4b509e33fe1f5d50d37f7dd19b698d708312d35a",
+  "sources": {
+    "main-original.py": {
+      "commit": "a08f378be6a03f80ac075b34f8ba99aeb8201d9e",
+      "source": "KeplerConjecture/Computation/ce_laguerre.py",
+      "sha256": "b17badbc43e491d8ec79b339760467c550bb1a59d1bbba87923a21d3c4a9da9c"
+    },
+    "main-repaired.py": {
+      "derived_from": "main-original.py",
+      "changes": "Add omitted Fourier-positivity matrix to both LPs and replace unsupported output conclusion",
+      "sha256": "8715445cc7f96eab7cfa9f6c99c7dbcbc8641db3a7cec768ded282e189d6a682"
+    },
+    "comp/ce3_baseline.py": {
+      "commit": "4b509e33fe1f5d50d37f7dd19b698d708312d35a",
+      "source": "KeplerConjecture/Computation/ce3_baseline.py",
+      "sha256": "fe0d06418bde0607a2e5e2e27c9e9a1080b4fab7fcde19983973a5562ee40678"
+    },
+    "comp/k15conv.py": {
+      "commit": "4b509e33fe1f5d50d37f7dd19b698d708312d35a",
+      "source": "KeplerConjecture/Computation/k15conv.py",
+      "sha256": "b551ba725a88821b6ffc86d5d2e6dcd6f194ef19b01c21a301331ff2cf3fe0da"
+    },
+    "comp/fixtures.py": {
+      "commit": "4b509e33fe1f5d50d37f7dd19b698d708312d35a",
+      "source": "KeplerConjecture/Computation/fixtures.py",
+      "sha256": "07ccc0bfa22ef03da0a1055d38e43a34047101aa1ce78cb44a7e7418d9613569"
+    }
+  },
+  "runs": [
+    {
+      "name": "main-original",
+      "args": [
+        "main-original.py",
+        "--degree",
+        "8",
+        "--grid",
+        "1200",
+        "--tmax",
+        "40",
+        "--out",
+        "main-original.json"
+      ],
+      "exit": 0,
+      "seconds": 9.812,
+      "timeout_s": 150
+    },
+    {
+      "name": "main-repaired",
+      "args": [
+        "main-repaired.py",
+        "--degree",
+        "8",
+        "--grid",
+        "1200",
+        "--tmax",
+        "40",
+        "--out",
+        "main-repaired.json"
+      ],
+      "exit": 0,
+      "seconds": 2.214,
+      "timeout_s": 150
+    },
+    {
+      "name": "comp-conversions",
+      "args": [
+        "comp/k15conv.py"
+      ],
+      "exit": 0,
+      "seconds": 0.266,
+      "timeout_s": 150
+    },
+    {
+      "name": "comp-fixtures",
+      "args": [
+        "comp/fixtures.py"
+      ],
+      "exit": 0,
+      "seconds": 2.328,
+      "timeout_s": 150
+    },
+    {
+      "name": "comp-K31-g1200",
+      "args": [
+        "comp/ce3_baseline.py",
+        "--degree",
+        "31",
+        "--grid",
+        "1200",
+        "--r0",
+        "1.0",
+        "--out",
+        "comp-K31-g1200.json"
+      ],
+      "exit": 0,
+      "seconds": 38.906,
+      "timeout_s": 240
+    },
+    {
+      "name": "comp-K41-g4000",
+      "args": [
+        "comp/ce3_baseline.py",
+        "--degree",
+        "41",
+        "--grid",
+        "4000",
+        "--r0",
+        "1.0",
+        "--out",
+        "comp-K41-g4000.json"
+      ],
+      "exit": 0,
+      "seconds": 67.579,
+      "timeout_s": 360
+    },
+    {
+      "name": "comp-K31-g4000",
+      "args": [
+        "comp/ce3_baseline.py",
+        "--degree",
+        "31",
+        "--grid",
+        "4000",
+        "--r0",
+        "1.0",
+        "--out",
+        "comp-K31-g4000.json"
+      ],
+      "exit": 0,
+      "seconds": 35.872
+    }
+  ],
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0"
+  }
+}

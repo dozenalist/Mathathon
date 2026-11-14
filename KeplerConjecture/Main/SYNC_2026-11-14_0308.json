@@ -1,0 +1,43 @@
+{
+  "review": "2026-11-14 03:08 Pacific",
+  "sources": [
+    {
+      "role": "Main",
+      "branch": "kepler15/main",
+      "commit": "7c56c5ee4a2fb515a35c6f7734bfd06adf63b2f5",
+      "completion": 64506
+    },
+    {
+      "role": "Main correction",
+      "branch": "kepler15/main",
+      "commit": "f1e4d8b417bae998d3dbc46d5d4fae73e36bf0ed",
+      "completion": 68798
+    },
+    {
+      "role": "Computation",
+      "branch": "kepler15/comp-01a1d8c0",
+      "commit": "9d9ff68227362fa10e4841dbfcd82f6c12a1a8f8",
+      "completion": 68682
+    },
+    {
+      "role": "Experimental",
+      "branch": "kepler15/experimental/run-01",
+      "commit": "9a46efcbb771deef30c88fde761587c79eb96847",
+      "completions": [
+        63870,
+        64075
+      ]
+    },
+    {
+      "role": "Counterexamples",
+      "branch": "kepler15/counterexamples/run-01",
+      "commit": "6535e768657ae6cb7f44259079bd42570dc979ef",
+      "completion": 72088
+    }
+  ],
+  "publication_branch": "kepler15/setup-01a1d8c0",
+  "pull_request": "https://github.com/dozenalist/Mathathon/pull/1",
+  "review_status": "No new best bound. X-C014 and C explicit identities independently checked. C081 inference rejected and withdrawn; replacement scope pending.",
+  "source_cutoff": "Completed reports collected at 11:08 UTC, plus Main completion 68798 during review. Later busy-session work awaits the next check.",
+  "integration": "Original authorship retained; conflicting PROGRESS histories retained under Main/AgentProgress; one extra EOF blank line removed from Experimental/REVIEW_CHECKLIST_X.md."
+}

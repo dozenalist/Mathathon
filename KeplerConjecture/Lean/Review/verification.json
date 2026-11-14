@@ -1,0 +1,15 @@
+{
+  "source_commit": "c91007ff11844f179921fadfb2e90d352b8c0090",
+  "original_source_sha256": "dc360ce6d3bdde93d740abe241d0b54aa05e4ecb2d9bf54a62558a0d807c70c1",
+  "checked_file": "NormalisationTargeted.lean",
+  "checked_sha256": "bd4be2e99c6d7fa0d42c930558342807f154beaeb78547ace9057bf47d37cba7",
+  "changes": "Replaced import Mathlib with four targeted imports and appended #print axioms; definitions and theorem unchanged",
+  "lean_version": "4.35.0",
+  "lean_commit": "eb6cafb7290e8bd5f2937522d8d804f58f02bafc",
+  "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "exit_code": 0,
+  "declaration": "Kepler15.centreDensity_eq",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"],
+  "scope": "Definitional algebraic normalization only; no counting-volume bridge or Kepler bound",
+  "shared_dependencies_modified": false
+}

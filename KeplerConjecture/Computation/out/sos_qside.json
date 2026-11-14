@@ -1,0 +1,40 @@
+{
+ "script": "KeplerConjecture/Computation/sos_qside.py",
+ "family": "q = sum r_i^2 + u sum s_j^2, p = M q",
+ "status": "VERIFIED_EXACT",
+ "note": "q-side certified by construction with an explicit rational Gram; p-side by exact Sturm with Computation's checker, NOT Main's (unsound per review 0138-C)",
+ "best": {
+  "rs": [
+   [
+    "1"
+   ],
+   [
+    "-6",
+    "1/2"
+   ],
+   [
+    "5",
+    "-2/3"
+   ]
+  ],
+  "ss": [
+   [
+    "4",
+    "-4/3"
+   ],
+   [],
+   []
+  ],
+  "q": "16*u**3/9 - 359*u**2/36 + 10*u/3 + 62",
+  "p": "-16*u**3/9 + 313*u**2/36 - 5*u/36 + 847/16",
+  "delta": "3.57651745",
+  "delta_float": 3.5765174429980573,
+  "gram": "G = sum_i vec(r_i)vec(r_i)^T ; u-block from s_j",
+  "verdict": {
+   "gram_by_construction": true,
+   "exact_sturm": true
+  }
+ },
+ "trials": 4000,
+ "found": 2517
+}
