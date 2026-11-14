@@ -132,6 +132,47 @@ the regular dodecahedron).
 adding contacts, because the maximal kissing configuration already covers every direction. Raising
 `b(0)` needs a *different* local geometry, not a fuller shell.
 
+**And the arrangement is what decides**, not the contact count: the *cuboctahedral* 12-shell — which
+is exactly FCC's neighbourhood — gives `b(0) = −0.004242` at the same radius `2.0005` and `−0.4350`
+at `2.05`, and at radius exactly `2` its cell is the rhombic dodecahedron of volume `√32`, so `b = 0`
+there and it can **never** be positive. Same twelve contacts, same distance, opposite verdict:
+
+| shell | `r = 2.0005` | `r = 2` exactly |
+| --- | --- | --- |
+| icosahedral | `b(0) = +0.102399` | `+0.106563` (the dodecahedron) |
+| cuboctahedral (= FCC) | `b(0) = −0.004242` | `0` exactly |
+
+Nonvacuousness is a property of the **arrangement**.
+
+### 2.3b Where the content sits, and convergence of the rational shell
+
+Two checks that the fixture is what it claims.
+
+**The content is exactly one inequality.** Over all 8190 subsets with a non-empty boundary, the
+singleton is the unique maximizer and the gap to the second best is enormous:
+
+| `U` | ratio | `Σ_U b` | boundary |
+| --- | --- | --- | --- |
+| `{0}` | **`+0.008533287080295`** | `+0.102399` | 12 |
+| `{0,12}` | `−3.313140158045` | `−36.444542` | 11 |
+
+so the fixture's cut condition reduces to `b(0) ≤ 12Φ`, exactly as for the 13-cluster — a fixture
+constrains one capacity and nothing else.
+
+**The rational fixture converges to the ideal one.** Refining the rounding at fixed shell radius
+`2.0005`, the central volume settles:
+
+| denominator | central volume | change |
+| --- | --- | --- |
+| `10⁴` | `5.554154021196409` | — |
+| `10⁵` | `5.554497957052789` | `3.44·10⁻⁴` |
+| `10⁶` | `5.554454804528846` | `4.32·10⁻⁵` |
+| `10⁷` | `5.554454533883713` | `2.71·10⁻⁷` |
+
+The limit is **not** the dodecahedron `5.5502910285` — that is the value at radius exactly `2`,
+which the irrational 13-cluster realises; at `r = 2.0005` the limit is `≈5.5544545`. The two
+constructions are consistent, not identical.
+
 ### 2.4 Soundness evidence at scale
 
 The review notes that generic soundness remains a proof obligation. It is not discharged here, but
@@ -149,10 +190,11 @@ requires that
 | --- | --- | --- | --- | --- |
 | seeds 0, 1, 2 | 6 000 | — | — | **0** |
 | seed 42 | 20 000 | 8 716 | 11 284 | **0** |
+| seed 2026 | 100 000 | — | — | **0** |
 
 That is evidence, not a proof: it samples a distribution, and the oracle is capped (it returns
 `None` rather than blowing up, and undecided instances are skipped, never counted as agreement).
-What it does establish is that the three decision procedures do not disagree anywhere in 26 000
+What it does establish is that the three decision procedures do not disagree anywhere in 126 000
 random instances — which is the shape of evidence a soundness proof would have to explain.
 
 ## 3. Completeness of the exact volume algorithm (fallback, first item)
@@ -209,6 +251,10 @@ not volumes alone.
 
 ## 5. What is NOT claimed
 
+* **The 500 finite cases were re-run after the engine changed.** The qhull-free volume code (§3)
+  recomputes all 500 instances of `nearcontact_scan.py` to a byte-identical JSON: still `0` with
+  `t* > 0`, densities `0.6206–0.7392`. That re-run is the check that the engine change did not move
+  any number.
 * **The 500 finite cases stay finite evidence.** `nearcontact_scan.py` scans 500 near-contact
   instances in five families at densities `0.6206–0.7392` and finds `t* = 0` in every one. That is
   `TESTED_FINITE`: it says the criterion is vacuous in those families, **not** that it is vacuous in
@@ -224,6 +270,22 @@ not volumes alone.
 * **No exact contact matching is assumed** anywhere for saturated packings; the only geometric input
   is the cell-volume partition identity, which holds for every packing.
 
+### 6.1 Remaining obligations, explicitly
+
+1. **Generic soundness** (the interface never certifies something false). Every *positive* output is
+   exactly verified, so this is discharged for flows and for cut witnesses; what remains is (a) that
+   `t*` from the scan equals the LP optimum — LP duality, checked numerically to `10⁻⁵` and exactly
+   on this fixture (both witnesses exhibited), not formalised; and (b) that the LP path's internal
+   floating point never turns an infeasible instance into a verified flow — impossible, since the
+   output is re-verified exactly, but worth stating as the reason.
+2. **The converse direction** — Kepler ⇒ a finite `Φ` works — remains open. `K15-C-CUTIMPLIES-003`
+   is one implication, and §2's fixture does not touch it.
+3. **The near-contact scan** stays `TESTED_FINITE` (500 instances, five families). It is not a
+   theorem and is not offered as one.
+4. **The dense-shell construction is one family.** The obstruction of §2.3 shows it cannot be
+   improved by adding contacts, but nothing here says that *some other* geometry cannot give a
+   larger `b(0)`; the 13-cluster's `0.1066` is the best in the record.
+
 ## 6. Files and reproduction
 
 ```bash
@@ -232,7 +294,7 @@ python3 fixture_dense_shell.py     # the fixture, its conventions, the window (~
 python3 cut_flow.py --fixture out/fixture_dense_shell.json   # the evaluated cut and flow
 python3 fixture_nonuniform.py      # the engine, its certificate, the two-site theorem (~30 s)
 python3 audit_cut_flow_api.py      # 69 checks of the repaired interface
-python3 fuzz_cut_flow.py 20000 42  # 20 000 random instances, three-way (~15 s)
+python3 fuzz_cut_flow.py 100000 2026  # 100 000 random instances, three-way (~75 s)
 python3 nearcontact_scan.py        # the 500 finite cases (~13 min)
 ```
 
@@ -242,6 +304,29 @@ Artifacts: `fixture_dense_shell.py`, `out/fixture_dense_shell.json` (coordinates
 
 ## 7. Clock
 
-Receipt `2026-11-14T14:28:52Z`. The fixture was pushed at `14:30:12Z` (commit `88f882f`), the
-certificate and the congruence theorem at `14:33:55Z` (`a958bf3`); this document and the closing
-validation follow. Commit times are in the table below and are the evidence.
+Receipt `2026-11-14T14:28:52Z`. Every commit of this block, on the real clock:
+
+| commit | UTC | what |
+| --- | --- | --- |
+| `88f882f` | 14:30:12 | a NONVACUOUS 3-D cut/flow fixture -- rational coordinates, exact volu... |
+| `a958bf3` | 14:33:55 | certify the volume engine's completeness; prove two-site congruence |
+| `fab3fef` | 14:35:53 | the nonvacuous window of the dense-shell family |
+| `a981271` | 14:38:40 | qhull-free exact triangulation; convention checks; the nonvacuous window |
+| `efd6b76` | 14:41:12 | the patch minimum is exactly t*, and the shell's closure obstruction |
+| `16a693e` | 14:41:30 | register -- the nonvacuous fixture, its window, the obstruction, and ... |
+| `926cdb7` | 14:50:05 | 26 000 random instances, three-way, no disagreement |
+| `f84a91e` | 14:54:04 | the cut profile (one inequality) and convergence of the rational shell |
+| `222971b` | 14:54:20 | runtimes for the two new scripts and the fuzz |
+| `e1ed10d` | 14:55:35 | the arrangement decides -- icosahedral vs cuboctahedral 12-shells |
+| `38a04a8` | 15:11:41 | record the cuboctahedral contrast and the post-change re-run |
+
+**Substantive work accounting.** The fixture, the certificate, the theorem and the review were
+pushed by `14:41Z`. The compute-bound portion is `nearcontact_scan.py` at **15 m 53 s** for the
+post-change re-run (500 instances) and `fuzz_cut_flow.py` at 26 000 instances; the rest is writing
+and the validation sweeps. Stated separately because a previous block was called out for counting
+verification as substance.
+
+**Mode.** Ultramath is ON; **no swarm was run** and `ultramath_start` was not called, as the review
+requires.
+
+**No Lean.** Nothing in this block needed a Lean build, so nothing was sent to Astra.

@@ -98,6 +98,10 @@ def self_test():
     check("the diameter is < 4.1, so period 8 leaves no wrap-around edge for R <= 3",
           2 * 2.01 < 8 - 3)
     E = FN.edges_within(L, sites, CONTACT_R)
+    # the edge range must EXCEED the shell radius: R = 2 would give a graph with no edges at all and
+    # a degree-zero centre.  (A second instance at r = 2.005 with the r = 2.0005 constant fell into
+    # exactly this trap, which is why export() now derives R from the radius actually used.)
+    check("the edge range exceeds the shell radius", F(R_SHELL) < CONTACT_R, (str(R_SHELL), str(CONTACT_R)))
     check("at R = 2.001 the graph has exactly the twelve shell edges",
           sorted(E) == [(0, j) for j in range(1, 13)], E[:5])
     check("at R = 2 it would have none (which is why R = 2.001 is the contact range)",
@@ -160,6 +164,100 @@ def flow_and_obstruction_test():
     check("so a point at radius 2 is within %.4f < 2 of some vertex: no 13th neighbour" % dmax,
           dmax < 2)
     return ok
+
+def cuboctahedral_shell(r):
+    """The OTHER natural 12-shell: the cuboctahedron, which is exactly FCC's neighbourhood."""
+    s_ = float(r) / 2 ** 0.5
+    pts = []
+    for a in (1, -1):
+        for b in (1, -1):
+            for v in ((a, b, 0), (a, 0, b), (0, a, b)):
+                q = tuple(F(int(round(c * s_ * DEN)), DEN) for c in v)
+                if q not in pts:
+                    pts.append(q)
+    return pts
+
+def contrast_test():
+    """Same contact number, same radius, opposite verdict -- so the ARRANGEMENT is what matters.
+
+    The cuboctahedral 12-shell is FCC's neighbourhood: at radius exactly 2 its cell is the rhombic
+    dodecahedron of volume sqrt(32), so b = 0 and it is never positive.  Above radius 2 it is
+    negative.  The icosahedral shell at the same radius gives b(0) = +0.1024.
+    """
+    ok = True
+    L = [[PERIOD, F(0), F(0)], [F(0), PERIOD, F(0)], [F(0), F(0), PERIOD]]
+    for r in ("2.0005", "2.05"):
+        sites = [(F(0), F(0), F(0))] + cuboctahedral_shell(F(r))
+        q = FN.min_separation(L, sites)
+        if q < 4:
+            print("  ..   cuboctahedral r = %s is not a packing" % r); ok = False; continue
+        comp = []
+        for s in sites:
+            for n in FN.lattice_points(L, 1):
+                w = tuple(s[t] + n[t] for t in range(3))
+                if FN.norm2(list(w)) <= 25:
+                    comp.append(w)
+        vol, _, _, _ = FN.cell_volume(sites[0], comp, return_vertices=True)
+        b0 = CF.SQ32_LO - vol
+        good = b0 < 0
+        ok = ok and good
+        print("  %s cuboctahedral shell r = %-7s : vol %.9f, b(0) = %+.9f < 0"
+              % ("PASS" if good else "FAIL", r, float(vol), float(b0)))
+    print("     (at r = 2 exactly this shell is FCC's neighbourhood: volume sqrt(32), b = 0)")
+    print("     => with the same 12 contacts at the same distance, the ICOSAHEDRAL shell gives")
+    print("        b(0) = +0.1024 and the CUBOCTAHEDRAL one gives a negative b.  The arrangement")
+    print("        decides, not the contact count or the radius.")
+    return ok
+
+def cut_profile():
+    """Where does the fixture's content sit among all 8191 subsets?"""
+    import json
+    d = json.load(open(os.path.join(_OUT, "fixture_dense_shell.json")))
+    b_lo = [F(x) for x in d["b_lo"]]
+    E = [tuple(e) for e in d["edges"]]
+    rows = []
+    for k in range(1, len(b_lo) + 1):
+        for U in itertools.combinations(range(len(b_lo)), k):
+            sb, bd = CF.cut_value(b_lo, E, U)
+            if bd:
+                rows.append((sb / bd, U, sb, bd))
+    rows.sort(reverse=True)
+    return rows
+
+def convergence():
+    """The rational fixture converges to the ideal one as the rounding is refined.
+
+    At FIXED shell radius 2.0005 the central volume converges as the denominator grows (the changes
+    fall by roughly ten each step), and b(0) settles at 0.1023997.  The limit is NOT the dodecahedron
+    5.5502910285: that is the value at radius exactly 2, which the irrational 13-cluster realises.
+    """
+    phi = (1 + 5 ** 0.5) / 2
+    raw = []
+    for s1 in (1, -1):
+        for s2 in (1, -1):
+            raw += [(0, s1 * 1, s2 * phi), (s1 * 1, s2 * phi, 0), (s2 * phi, 0, s1 * 1)]
+    norm = (1 + phi ** 2) ** 0.5
+    L = [[PERIOD, F(0), F(0)], [F(0), PERIOD, F(0)], [F(0), F(0), PERIOD]]
+    out = []
+    for D in (10 ** 4, 10 ** 5, 10 ** 6, 10 ** 7):
+        scale = float(R_SHELL) / norm
+        pts = []
+        for v in raw:
+            q = tuple(F(int(round(c * scale * D)), D) for c in v)
+            if q not in pts:
+                pts.append(q)
+        sites = [(F(0), F(0), F(0))] + pts
+        if FN.min_separation(L, sites) < 4:
+            out.append((D, None)); continue
+        comp = []
+        for s in sites:
+            for n in FN.lattice_points(L, 1):
+                w = tuple(s[t] + n[t] for t in range(3))
+                if FN.norm2(list(w)) <= 25:
+                    comp.append(w)
+        vol, _, _, _ = FN.cell_volume(sites[0], comp, return_vertices=True)
+        out.append((D, vol))
+    return out
 
 def conventions_test():
     """The boundary and periodic conventions of §P1-P2, checked rather than asserted.
@@ -246,10 +344,16 @@ def family():
             hi = mid
     return lo, hi, central_volume(lo), central_volume(hi)
 
-def export(L, sites, vols, path=None):
+def export(L, sites, vols, path=None, R=None):
     b_lo = [CF.SQ32_LO - v for v in vols]
     b_hi = [CF.SQ32_HI - v for v in vols]
-    E = FN.edges_within(L, sites, CONTACT_R)
+    # the edge range must EXCEED the shell radius, or the graph has no edges at all and the centre
+    # is degree zero -- a trap this file fell into when a second instance was tried at r = 2.005
+    # with the r = 2.0005 constant.  Default: just above the shell radius actually used.
+    if R is None:
+        r_used = max(float(sum(c * c for c in p)) ** 0.5 for p in sites[1:])
+        R = F(int(r_used * 1000) + 1, 1000)
+    E = FN.edges_within(L, sites, R)
     d = dict(name="dense_shell_rational",
              note=("NONVACUOUS fixture: a rational 12-point icosahedral shell of radius ~2.0005 "
                    "around a central vertex, period 8 Z^3.  Exact rational cell volumes; "
@@ -259,6 +363,7 @@ def export(L, sites, vols, path=None):
              volumes_are_provisional=False,
              cell_volumes_exact=[str(v) for v in vols],
              period_volume_exact=str(abs(FN.det3(*L))),
+             edge_range=str(R),
              coordinates=[[str(c) for c in p] for p in sites])
     path = path or os.path.join(_OUT, "fixture_dense_shell.json")
     json.dump(d, open(path, "w"), indent=1)
@@ -266,30 +371,57 @@ def export(L, sites, vols, path=None):
 
 if __name__ == "__main__":
     print("=" * 100)
-    print("A dense local cell: rational icosahedral shell, exact volumes")
+    print("A. A dense local cell: rational icosahedral shell, exact volumes")
     print("=" * 100)
     good, L, sites, vols, b0_lo, b0_hi = self_test()
-    print("\n" + "=" * 100)
-    print("B. THE NONVACUOUS WINDOW: where does the shell stop giving b(0) > 0?")
-    print("=" * 100)
+
     print("\n" + "=" * 100)
     print("A2. BOUNDARY AND PERIODIC CONVENTIONS")
     print("=" * 100)
     conv_ok = conventions_test()
+
     print("\n" + "=" * 100)
     print("A3. THE PATCH MINIMUM, EXACTLY, AND WHY THE SHELL CANNOT BE FILLED FURTHER")
     print("=" * 100)
     flow_ok = flow_and_obstruction_test()
+
+    print("\n" + "=" * 100)
+    print("A4. THE CUT PROFILE, AND CONVERGENCE OF THE RATIONAL SHELL")
+    print("=" * 100)
+    rows = cut_profile()
+    print("  %d subsets with a non-empty boundary; the best three:" % len(rows))
+    for r_, U, sb, bd in rows[:3]:
+        print("     U=%-14s ratio %+.15f  (sum_b %.6f over %d edges)"
+              % (str(list(U)), float(r_), float(sb), bd))
+    print("  the singleton is the UNIQUE maximizer; gap to the second best = %.3e"
+          % float(rows[0][0] - rows[1][0]))
+    print("  => the fixture's content is exactly one inequality: b(0) <= Phi * 12")
+    print()
+    print("  %-10s %-22s" % ("denominator", "central volume"))
+    prev = None
+    for D, vol in convergence():
+        if vol is None:
+            print("  %-10d invalid (rounding broke the separation)" % D); continue
+        change = "" if prev is None else "  change %.2e" % abs(float(vol - prev))
+        print("  %-10d %-22.15f%s" % (D, float(vol), change))
+        prev = vol
+    print("  => converging; the limit at r = 2.0005 is about 5.5544545, NOT the dodecahedron")
+    print("     5.5502910285 of radius exactly 2 (which the irrational 13-cluster realises)")
+
+    print("\n" + "=" * 100)
+    print("A5. THE CONTRAST: the same 12 contacts, the other arrangement, the opposite verdict")
+    print("=" * 100)
+    contrast_ok = contrast_test()
+
     print("\n" + "=" * 100)
     print("B. THE NONVACUOUS WINDOW: where does the shell stop giving b(0) > 0?")
     print("=" * 100)
     lo, hi, vlo, vhi = family()
     print("  b(0) > 0 for shell radius r <= %s  (vol = %.12f < sqrt32)" % (lo, float(vlo)))
     print("  b(0) < 0 for r >= %s  (vol = %.12f > sqrt32)" % (hi, float(vhi)))
-    print("  the crossing is in [%s, %s], exact rationals; its width is %.1e"
-          % (lo, hi, float(hi - lo)))
+    print("  the crossing is in [%s, %s], exact rationals; width %.1e" % (lo, hi, float(hi - lo)))
     print("  t* = b(0)/12 at the last nonvacuous r: %.12f" % float((CF.SQ32_LO - vlo) / 12))
-    p = export(L, sites, vols)
-    print("\nexported:", p)
-    print("dense_shell:", "PASS" if (good and conv_ok and flow_ok) else "FAIL")
-    sys.exit(0 if (good and conv_ok and flow_ok) else 1)
+
+    print("\nexported:", export(L, sites, vols))
+    print("dense_shell:", "PASS" if (good and conv_ok and flow_ok and contrast_ok) else "FAIL")
+    sys.exit(0 if (good and conv_ok and flow_ok and contrast_ok) else 1)
