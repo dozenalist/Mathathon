@@ -106,77 +106,135 @@ def poly_from(coeffs, var):
     return sum(sp.Rational(c) * var ** i for i, c in enumerate(coeffs))
 
 
-def _roots_and_gaps(poly_expr, lo, hi):
-    """Test points that meet every interval of constant sign of `poly_expr` on the
-    closed region [lo, hi] (hi may be oo): the endpoints, and one rational point in
-    every gap between consecutive real roots.
+def _isolating(expr, lo, hi, eps_den=10 ** 8):
+    """Isolating rational intervals for the real roots of `expr` meeting [lo,hi].
 
-    The points are derived from the roots of the polynomial ITSELF, never from its
-    odd part.  Using the odd part loses polynomials all of whose roots have even
-    multiplicity -- e.g. [u(u-1/2)(u-1)]^2, which is +9/4096 at u = 1/4 and was
-    accepted as "<= 0" by the previous revision (review 0138, second round).
+    Returns (intervals, strict) where `intervals` is a sorted list of (a, b) and
+    `strict` says whether consecutive intervals are separated by a non-empty
+    rational gap (b_i < a_{i+1}).  `strict = False` means the gap argument below
+    is NOT conclusive.
     """
     uu = sp.Symbol('u')
-    P = sp.Poly(poly_expr, uu)
+    P = sp.Poly(expr, uu)
     lo = sp.Rational(lo)
-    pts = [lo]
-    if hi is not sp.oo:
-        hi = sp.Rational(hi)
-        pts.append(hi)
     if P.degree() < 1:
-        return pts
-    iv = P.intervals(eps=sp.Rational(1, 10) ** 8)
-    roots = []
-    for (ivl, m) in iv:
+        return [], True
+    out = []
+    for (ivl, m) in P.intervals(eps=sp.Rational(1, eps_den)):
         a, b = (ivl, ivl) if not isinstance(ivl, tuple) else ivl
         if b < lo:
             continue
-        if hi is not sp.oo and a > hi:
+        if hi is not sp.oo and a > sp.Rational(hi):
             continue
-        roots.append((a, b))
-    roots.sort(key=lambda t: t[0])
+        out.append((a, b))
+    out.sort(key=lambda t: t[0])
+    strict = True
+    for (a1, b1), (a2, b2) in zip(out, out[1:]):
+        if not (b1 < a2):
+            strict = False
+    return out, strict
+
+
+def _gap_verdict(expr, lo, hi, want_nonneg):
+    """Decide by testing one point per component of the region minus its roots.
+
+    CORRECTNESS.  A polynomial has constant sign on every component of
+    `[lo,hi] \\ {roots}`, and equals 0 at the roots, so testing one point per
+    component decides the sign everywhere.  The components are separated by the
+    roots; with isolating intervals `[a_i, b_i]` (r_i in the interior, or the
+    interval degenerate at a rational root) the components are met by:
+      * `lo` and `hi`,
+      * the midpoint of every gap `(b_i, a_{i+1})` when the gap is non-empty,
+      * the shared endpoint when `b_i = a_{i+1}` (that point is strictly between
+        the two roots unless it IS one of them).
+    This routine returns True/False only when it is conclusive, and None
+    otherwise.  In particular it returns None as soon as two isolating intervals
+    touch or overlap, which is the case that produced the false accept of
+    `(u-7/5)^2 - 2/10^40` (two intervals sharing the endpoint 7/5, so no gap
+    midpoint existed and the negative dip was never sampled).
+    """
+    uu = sp.Symbol('u')
+    P = sp.Poly(expr, uu)
+    lo = sp.Rational(lo)
+    # Refine the isolation once before giving up: a finer eps separates intervals
+    # that merely touched.  COST NOTE: refinement and `function_range` are both
+    # expensive at high degree with clustered roots (a degree-35 polynomial with a
+    # pair 1e-10 apart takes minutes), so the ladder stops at eps = 1e-14.  No
+    # certificate in this project reaches this branch: on the sign regions the
+    # polynomials have no real root and the first pass is already strict.
+    intervals, strict = None, False
+    for den in (10 ** 8, 10 ** 14):
+        intervals, strict = _isolating(P.as_expr(), lo, hi, den)
+        if strict:
+            break
+    if not strict:
+        return None
+    pts = [lo] + ([sp.Rational(hi)] if hi is not sp.oo else [])
     prev = lo
-    for (a, b) in roots:
+    for (a, b) in intervals:
         if a > prev:
             pts.append((prev + a) / 2)
         prev = max(prev, b)
     if hi is sp.oo:
         pts.append(prev + 1)
-    elif hi > prev:
-        pts.append((prev + hi) / 2)
-    # a second interior point per gap guards against a test point that is itself a
-    # root of a factor the isolating interval merged
-    extra = []
-    for x, y in zip(pts, pts[1:]):
-        if x < y:
-            extra.append((2 * x + y) / 3)
-            extra.append((x + 2 * y) / 3)
-    return pts + extra
+    elif sp.Rational(hi) > prev:
+        pts.append((prev + sp.Rational(hi)) / 2)
+    vals = [P.eval(x) for x in pts]
+    if want_nonneg:
+        return all(v >= 0 for v in vals)
+    return all(v <= 0 for v in vals)
+
+
+def _decide(expr, lo, hi, want_nonneg) -> bool:
+    """Complete decision: p >= 0 (or p <= 0) on [lo,hi], hi possibly oo.
+
+    ORDER OF BUSINESS.
+      1. The gap argument of `_gap_verdict`, when conclusive.  This is the path
+         taken by every certificate in this project: on the sign regions the
+         polynomials have no real root, the isolating list is empty, and the
+         verdict rests on probes at rational points only.
+      2. Otherwise `function_range`, which computes the exact range of a
+         polynomial on an interval (its extrema are attained at the endpoints or
+         at critical points).  It is the complete rule; it is slower and is NOT
+         used on the certificate path, so the certificate checks do not depend on
+         it.
+    Nothing here samples a grid: both branches are exact.
+    """
+    v = _gap_verdict(expr, lo, hi, want_nonneg)
+    if v is not None:
+        return v
+    from sympy.calculus.util import function_range
+    uu = sp.Symbol('u')
+    iv = sp.Interval(sp.Rational(lo), sp.oo if hi is sp.oo else sp.Rational(hi))
+    rng = function_range(sp.expand(expr), uu, iv)
+    if want_nonneg:
+        return bool(rng.inf >= 0)
+    return bool(rng.sup <= 0)
 
 
 def le_on_interval(coeffs, eta, lo, hi) -> bool:
-    """p(u) <= eta for all u in the closed interval [lo, hi], decided exactly."""
+    """p(u) <= eta for all u in the closed interval [lo, hi]."""
     u_ = sp.Symbol('u')
-    r = sp.Poly(sp.expand(poly_from(coeffs, u_) - sp.Rational(eta)), u_)
-    return all(r.eval(x) <= 0 for x in _roots_and_gaps(r.as_expr(), lo, hi))
+    r = sp.expand(poly_from(coeffs, u_) - sp.Rational(eta))
+    return _decide(r, lo, hi, want_nonneg=False)
 
 
 def nonneg_on_half_line(coeffs) -> bool:
-    """q(u) >= 0 for all u >= 0, decided exactly."""
+    """q(u) >= 0 for all u >= 0."""
     u_ = sp.Symbol('u')
-    q = sp.Poly(poly_from(coeffs, u_), u_)
-    if q.degree() < 0:
+    q = sp.expand(poly_from(coeffs, u_))
+    if sp.Poly(q, u_).degree() < 0:
         return True
-    return all(q.eval(x) >= 0 for x in _roots_and_gaps(q.as_expr(), 0, sp.oo))
+    return _decide(q, 0, sp.oo, want_nonneg=True)
 
 
 def _ray(coeffs, hi) -> bool:
-    """p(u) <= 0 for all u >= hi, decided exactly."""
+    """p(u) <= 0 for all u >= hi."""
     u_ = sp.Symbol('u')
-    p_ = sp.Poly(poly_from(coeffs, u_), u_)
-    if p_.degree() < 0:
+    p_ = sp.expand(poly_from(coeffs, u_))
+    if sp.Poly(p_, u_).degree() < 0:
         return True
-    return all(p_.eval(x) <= 0 for x in _roots_and_gaps(p_.as_expr(), hi, sp.oo))
+    return _decide(p_, hi, sp.oo, want_nonneg=False)
 
 
 def _sign_at(poly_expr, x):

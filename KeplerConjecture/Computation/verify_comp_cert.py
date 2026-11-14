@@ -55,4 +55,6 @@ def main(path):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
+        print("usage: python3 verify_comp_cert.py <certificate.json>"); sys.exit(0 if len(sys.argv) > 1 else 2)
     sys.exit(main(sys.argv[1]))

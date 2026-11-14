@@ -148,6 +148,21 @@ def main():
         if claim and any(v > 0 for v in vals):
             print("FALSE ACCEPT (irrational roots, interval):", sp.factor(expr), lo, hi)
             ibad += 1
+    # structured pass 3: NEARLY double roots (review 0223).  (u-r)^2 -/+ tiny.
+    nbad = 0
+    for _ in range(max(20, args.n // 10)):
+        r = sp.Rational(rng.randint(1, 40), rng.choice([3, 7, 11, 20]))
+        mag = sp.Rational(1, 10 ** rng.randint(10, 40))
+        below = (uu - r) ** 2 - mag          # negative dip at r
+        above = (uu - r) ** 2 + mag          # strictly positive
+        if nonneg_on_half_line(coeffs_of(below, uu)):
+            print("FALSE ACCEPT (near-double below):", sp.factor(sp.expand(below)))
+            nbad += 1
+        if not nonneg_on_half_line(coeffs_of(above, uu)):
+            print("FALSE REJECT (near-double above):", sp.factor(sp.expand(above)))
+            nbad += 1
+    print("structured (near-double) cases also checked; failures:", nbad)
+    ibad += nbad
     print("structured (irrational-root) cases also checked; false accepts:", ibad)
     sbad += ibad
     print("structured (perfect-square) cases also checked; false accepts:", sbad)

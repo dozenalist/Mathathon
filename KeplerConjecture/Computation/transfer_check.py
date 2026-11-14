@@ -3,7 +3,7 @@
 
 Statement under test.  Let Lambda be 2-separated, phi antisymmetric with
 phi(v,w) = 0 when |v-w| > R and |phi| <= Phi, and A(v) = sum_w phi(v,w).  Then
-    sum_{v in Lambda cap B(x,r)} A(v)  <=  3 Phi (R+1)^5 r^2      for all r >= 1.
+    sum_{v in Lambda cap B(x,r)} A(v)  <=  3 Phi R (R+1)^5 r^2    for all r >= 1.
 The bound is proved; this script checks it on a concrete packing (fcc) with a
 random rational antisymmetric transfer, over a range of radii.  It is a test of
 the *arithmetic* of the constant, not a substitute for the proof.
@@ -70,10 +70,10 @@ def main():
     for r in (1.0, 2.0, 3.0, 4.0, 5.0, 6.0):
         S = sum(a for n, a in A.items()
                 if np.linalg.norm(pts[n]) <= r + 1e-12)
-        bound = 3 * Phi * (R + 1) ** 5 * r ** 2
+        bound = 3 * Phi * R * (R + 1) ** 5 * r ** 2
         good = float(S) <= bound + 1e-9
         ok = ok and good
-        print("  r = %.1f : sum A = %+.6f   bound 3*Phi*(R+1)^5*r^2 = %.6f   %s"
+        print("  r = %.1f : sum A = %+.6f   bound 3*Phi*R*(R+1)^5*r^2 = %.6f   %s"
               % (r, float(S), bound, "OK" if good else "VIOLATED"))
     print("\nRESULT:", "bound holds on this instance" if ok else "BOUND VIOLATED")
     return 0 if ok else 1

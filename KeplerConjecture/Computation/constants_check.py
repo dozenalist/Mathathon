@@ -48,9 +48,10 @@ for rho in (mpf('2.02'), mpf('2.05'), mpf('2.09')):
 chk("cos theta_min at 2.09 = 23681/43681", mpf(23681) / 43681, float(1 - 2 / mpf('2.09') ** 2), tol=1e-15)
 
 # --- transfer constant --------------------------------------------------------
-for R, Phi in ((2, 1), (mpf('2.51'), 1)):
-    chk("3 Phi (R+1)^5 at Phi=%s R=%s" % (Phi, R), 3 * Phi * (R + 1) ** 5,
-        3 * float(Phi) * (float(R) + 1) ** 5, tol=1e-9)
+for R, Phi in ((2, 1), (mpf('2.51'), 1), (mpf('2.09'), 1)):
+    chk("3 Phi R (R+1)^5 at Phi=%s R=%s" % (Phi, R), 3 * Phi * R * (R + 1) ** 5,
+        3 * float(Phi) * float(R) * (float(R) + 1) ** 5, tol=1e-6)
+chk("k_R = 12 form at R = 2.09: 3*12*R*(R+1)^2", 3 * 12 * mpf('2.09') * mpf('3.09') ** 2, 718.40, tol=1e-2)
 chk("Phi needed at the icosahedral vertex, R=2", 0.106563 / 26, 0.004098576923076923)
 
 # --- verified certificate -----------------------------------------------------

@@ -124,6 +124,24 @@ Every certificate must therefore state the sign regions in the *polynomial's own
 variable*, and the checker's output must name the condition that failed, not
 merely return a boolean.
 
+**The complete rule, stated for audit.** Let `p ∈ ℚ[u]` and let
+`R = {r_1 < … < r_K}` be its distinct real roots in the region `I` (an interval
+`[lo,hi]`, possibly unbounded). Then:
+
+1. `p` has constant sign on each component of `I ∖ R`, and `p = 0` on `R`;
+2. hence `p ≤ 0` on `I` iff `p ≤ 0` at one point of each component;
+3. the components are met by `lo`, `hi`, and the midpoints of the gaps between
+   *consecutive isolating intervals* — **provided those gaps are non-empty**;
+4. if two isolating intervals touch or overlap, step 3 is not available and the
+   checker must not guess: it falls back to an exact range computation
+   (`function_range`, whose algorithm is "extrema at the endpoints and at critical
+   points").
+
+Steps 1–3 are the whole proof of the gap rule; step 4 is why the rule is *complete*
+and not merely sound. The failure in review 0223 was a silent violation of the
+proviso in step 3 — the intervals shared the endpoint `7/5`, the gap was empty, and
+the negative dip between the two roots was never sampled.
+
 ## 8. What a *transfer* certificate would look like (for the geometric route)
 
 No transfer certificate exists yet. If one is ever proposed, this is the data it

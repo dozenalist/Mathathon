@@ -81,6 +81,38 @@ def cases():
                 le_on_interval(coeffs(sq1), 0, 2, 3), False))
     out.append(("(-[u(u-1)(u-2)]^2 <= 0 on [0,3] : square with a sign, must PASS",
                 le_on_interval(coeffs(-sq3), 0, 0, 3), True))
+    # --- review 0223: a NEARLY double root.  The two isolating intervals of
+    # (u-7/5)^2 - eps share the rational endpoint 7/5, so any "test the gaps
+    # between intervals" scheme sees no gap and misses the negative dip between
+    # the two roots.  Four witnesses, plus the sign-flipped controls.
+    eps = sp.Rational(2, 10 ** 40)
+    near_neg = (u - sp.Rational(7, 5)) ** 2 - eps
+    near_pos = (u - sp.Rational(7, 5)) ** 2 + eps
+    out.append(("(u-7/5)^2 - 2e-40 >= 0 : negative dip of size 2e-40, must FAIL",
+                nonneg_on_half_line(coeffs(near_neg)), False))
+    out.append(("-(u-7/5)^2 + 2e-40 <= 0 from 0 : must FAIL",
+                _ray(coeffs(-near_neg), 0), False))
+    out.append(("-(u-7/5)^2 + 2e-40 <= 0 on [0,3] : must FAIL",
+                le_on_interval(coeffs(-near_neg), 0, 0, 3), False))
+    out.append(("(u-7/5)^2 + 2e-40 >= 0 : strictly positive, must PASS",
+                nonneg_on_half_line(coeffs(near_pos)), True))
+    near_end = (u - sp.Rational(1, 5)) ** 2 - eps
+    out.append(("(u-1/5)^2 - 2e-40 >= 0 on [0,1] : dip inside, must FAIL",
+                le_on_interval(coeffs(-near_end), 0, 0, 1), False))
+    # --- review 0223, second batch: domain boundaries, multiplicities, clusters.
+    out.append(("roots exactly at both endpoints, negative between, must PASS",
+                le_on_interval(coeffs((u - 1) * (u - 3)), 0, 1, 3), True))
+    out.append(("root exactly at the domain start, must PASS",
+                le_on_interval(coeffs(u * (u - 2)), 0, 0, 2), True))
+    out.append(("triple root (u-2)^3 >= 0 on [0,inf) : sign change, must FAIL",
+                nonneg_on_half_line(coeffs((u - 2) ** 3)), False))
+    out.append(("(u-2)^4 >= 0 : even multiplicity everywhere, must PASS",
+                nonneg_on_half_line(coeffs((u - 2) ** 4)), True))
+    out.append(("(u-2)^4 <= 0 on [0,3] : positive away from 2, must FAIL",
+                le_on_interval(coeffs((u - 2) ** 4), 0, 0, 3), False))
+    cluster = (u - 1) ** 2 * (u - 1 - sp.Rational(1, 10 ** 15)) ** 2 - sp.Rational(1, 10 ** 30)
+    out.append(("clustered roots with a 1e-30 dip, must FAIL",
+                nonneg_on_half_line(coeffs(cluster)), False))
     return out
 
 
@@ -126,6 +158,12 @@ def against_exactcert(dirpath):
         ("p=-(u-T)^2", -(u - Tr) ** 2, Tr, 'neg'),   # even-multiplicity endpoint root: exactcert factors it out and decides
         ("p=(u-T)", u - Tr, Tr, 'fail'),
         ("p=-(u-T)", Tr - u, Tr, 'fail'),
+        # review 0223 classes (t in exactcert's variable, so substitute u = t/2)
+        ("(u-1)(u-3): exactcert sees a HALF-LINE from t=2, where it is not <= 0", (u - 1) * (u - 3), 2, 'fail'),
+        ("(u-2)^3 on [0,inf) (t >= 0)", (u - 2) ** 3, 0, 'fail'),
+        ("(u-2)^4 on [0,inf)", (u - 2) ** 4, 0, 'pos'),
+        ("near-double (u-7/5)^2-2e-40", (u - sp.Rational(7, 5)) ** 2 - sp.Rational(2, 10 ** 40), 0, 'fail'),
+        ("near-double above (u-7/5)^2+2e-40", (u - sp.Rational(7, 5)) ** 2 + sp.Rational(2, 10 ** 40), 0, 'pos'),
     ]
     ok = True
     for name, expr, A, want in items:
@@ -138,7 +176,9 @@ def against_exactcert(dirpath):
         ok = ok and good
         note = "   <- endpoint-root policy (shell_check accepts the touching zero)" if verdict == 'fail' and want == 'fail' and A != 0 else ""
         print(("PASS  " if good else "FAIL  ") + name + "  [exactcert: %s, expected %s]%s" % (verdict, want, note))
-    print("\nCROSS-RUN:", "AGREES with exactcert on every case" if ok else "DISAGREES")
+    print("\nNOTE: exactcert's engine decides HALF-LINES only; compact-interval claims"
+          "\n(such as [1,3]) are not in its scope and are covered by function_range instead.")
+    print("CROSS-RUN:", "AGREES with exactcert on every case" if ok else "DISAGREES")
     return 0 if ok else 1
 
 

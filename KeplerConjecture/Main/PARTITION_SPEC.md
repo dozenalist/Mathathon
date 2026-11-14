@@ -47,7 +47,7 @@ For every cluster `K` produced by R1 with `diam K ≤ D`:
    the contact graph's structure is controlled, which is the hard part.
 
 If `A` is a bounded-range antisymmetric transfer (K15-C035) then `Σ A ≤ C₁r²`
-holds automatically with `C₁ = 3Φ(R+1)⁵`, so negligibility is not a separate
+holds automatically with `C₁ = 3ΦR(R+1)⁵` (factor `R` restored, review 0223), so negligibility is not a separate
 obligation; what remains is the pointwise inequality `Σ_w φ(v,w) ≥ √32 − vol Ω(v)`
 and hence the analytic cluster-volume bound. *(The earlier sentence here — that
 `A` must be "negative on a full-density set" — came from K15-C029 and is

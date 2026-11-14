@@ -902,7 +902,7 @@ geometric route produces: a candidate profile ⇒ run `exactcert` and
 - **Status.** `ACCEPTED_WITH_SCOPE`. Reviewer: X (to check the (E1)
   transcription against the paper and the enumeration's scope).
 
-### K15-C028 — exact shell fixture at degree 3, and why the allowance cannot pay (`TESTED_FINITE` with an exact verdict)
+### K15-C028 — exact shell fixture at degree 3: why the allowance cannot pay (`TESTED_FINITE`, exact verdicts)
 
 - **Family (admissible by construction).** `P(u) = (T − u)·S(u)` with `S(u) = Σ_{j≤2} s_j u^j`,
   all `s_j ≥ 0`, `T = π_lo ρ²`. Then `p ≤ 0` for `u ≥ T` and `p(0) = T s_0 > 0`
@@ -1100,7 +1100,7 @@ by the definition, not by a computation.
   remains `TESTED_FINITE` (their own report says so).
 - **Status.** `VERIFIED` (Main re-ran the exact historical failure). Reviewer X.
 
-### K15-C028 addendum — reference output of the fixture (reproducible)
+### K15-C028 addendum — reference output of the fixture (`TESTED_FINITE`, reproducible)
 
 `python3 KeplerConjecture/Computation/shell_fixture.py --m 2 --rho 2 --eta 0`
 reports `R = p(0)/q(0) = 1675516081914556393846743137744/3112130939427411660770593506033
@@ -1151,9 +1151,17 @@ antisymmetric `φ : Λ×Λ → R` (`φ(v,w) = −φ(w,v)`) with `φ(v,w) = 0` wh
 **Lemma.** Let `Λ` be 2-separated, `A` a transfer as above, and
 `k_R := max_v #{w ∈ Λ∖{v} : |w−v| ≤ R}`. Then
 (a) `|A(v)| ≤ Φ·k_R` and `k_R ≤ (R+1)³ − 1`;
-(b) `Σ_{v∈Λ∩B(x,r)} A(v) ≤ 3Φ(R+1)⁵ r²` for all `x` and all `r ≥ 1`, i.e. `A`
+(b) `Σ_{v∈Λ∩B(x,r)} A(v) ≤ 3ΦR(R+1)⁵ r²` for all `x` and all `r ≥ 1`, i.e. `A`
 is negligible with the **explicit packing-independent** constant
-`C₁ = 3Φ(R+1)⁵`.
+`C₁ = 3ΦR(R+1)⁵`.
+
+**Correction (review 0223, X).** The first version of this entry printed
+`C₁ = 3Φ(R+1)⁵`, which **drops a factor `R`**: the count of crossing pairs is
+`k_R·((r+R)³ − r³)`, and `(r+R)³ − r³ ≤ 3R(R+1)²r²` already carries `R`, so
+`k_R ≤ (R+1)³` gives `3ΦR(R+1)⁵r²`. At `R = 2.09, Φ = 1` the correct value is
+`1766.28`, not `845.11`. The *sharper* numbers quoted later are unaffected
+because they were computed from `3·k_R·R·(R+1)²` with the `R` included:
+`718.40` at `k_R = 12` and `1556.53` at `k_R = 26`.
 
 *Proof.* (a) Each term of the sum is bounded by `Φ` and there are at most `k_R`
 of them; the balls `B(w,1)`, `w ∈ Λ∩B(v,R+1)∖{v}`, are disjoint, lie in
@@ -1167,7 +1175,7 @@ pairs, each contributing at most `Φ`.
 `r ≥ 1 ≥ R·0`:
 `R² ≤ 3r²R²`, `3rR ≤ 6r²R` (as `r ≥ 1`), `3r² ≤ 3r²` — so
 `R(3r²+3rR+R²) ≤ 3Rr²(R+1)²` after dividing by `R > 0`. Hence
-`3Φk_R·Rr²(R+1)² ≤ 3Φ(R+1)³·r²(R+1)² = 3Φ(R+1)⁵r²`. ∎
+`3Φk_R·Rr²(R+1)² ≤ 3ΦR(R+1)³·r²(R+1)² = 3ΦR(R+1)⁵r²`. ∎
 (The termwise form replaces the earlier "checked numerically" remark; it is also
 the form the Lean lemma `cube_diff_le` states.)
 
@@ -1256,7 +1264,7 @@ auditing Main's own repair, so an outside check is still required).
 
 - **Artifact.** `Computation/transfer_check.py` — builds fcc (1099 centres),
   draws a random rational antisymmetric transfer with `R = 2`, `Φ = 1`, forms
-  `A(v) = Σ_w φ(v,w)`, and compares `Σ_{Λ∩B(0,r)} A` with `3Φ(R+1)⁵r²` for
+  `A(v) = Σ_w φ(v,w)`, and compares `Σ_{Λ∩B(0,r)} A` with `3ΦR(R+1)⁵r²` for
   `r = 1..6`.
 - **Result.** The bound holds at every radius, with observed sums of order
   `10⁰`–`10¹` against bounds of order `10³`–`10⁴`; `max|A| = 7.25` against
@@ -1580,15 +1588,15 @@ last two blocks' verification was version-specific.
 
 ### K15-C052 — every quoted constant re-derived by one script (`VERIFIED`)
 
-- **Artifact.** `Computation/constants_check.py`: 22 checks, **ALL PASS**, of
+- **Artifact.** `Computation/constants_check.py`: 28 checks, **ALL PASS**, of
   every constant the ledger quotes — `4π/3`, `V_dod = 5.550291028515510`,
   `0.754697399337`, `π/√18 = 0.740480489693`, `√32 = 5.656854249492`,
   `σ₃ = 0.779635570044` and `V_Rogers = 5.372754099135`, the two required
   improvements (`1.05288` over Rogers, `1.0192` over dodecahedral, i.e. 5.29% and
   1.92%), the Tammes thresholds at `ρ = 2.02, 2.05, 2.09` (`0.509852, 0.524093,
   0.542135` and `59.346°, 58.393°, 57.171°`), `23681/43681` at `ρ = 2.09`, the
-  transfer constants `3Φ(R+1)⁵ = 729` at `(Φ,R) = (1,2)` and `1598.29` at
-  `R = 2.51`, `Φ ≥ 0.0041` at the icosahedral vertex, and the K33b ratio and
+  transfer constants `3ΦR(R+1)⁵ = 1458` at `(Φ,R) = (1,2)` and `4011.72` at
+  `R = 2.51` (the pre-0223 figures `729` and `1598.29` dropped the factor `R`), `Φ ≥ 0.0041` at the icosahedral vertex, and the K33b ratio and
   `Δ = 0.779966216777`.
 - **What it caught.** Three of the script's first-run failures were *my own*
   rounded placeholders in the check (`1.01920` against `1.01919957…`), not ledger
@@ -1599,7 +1607,7 @@ last two blocks' verification was version-specific.
 ### K15-C053 — one command runs every check (`VERIFIED`: 8/8 in 6.8 s)
 
 - **Artifact.** `Computation/run_all_checks.py`: runs the constants re-derivation,
-  the sign-predicate self-test, the 19 adversarial cases, the differential fuzz, the
+  the sign-predicate self-test, the adversarial suite (35 cases), the differential fuzz, the
   transfer-lemma fixture, the cluster fixture and the interface dictionary, and —
   with `--cert` — a certificate verification. Final run: **8 checks, 0 failed,
   6.8 s, 1 core**.
@@ -1622,15 +1630,15 @@ last two blocks' verification was version-specific.
 - **Why it is the right range.** `R = 2` is the contact graph; `R = 2.09` is the
   widest range the Tammes enclosure covers. Within it the transfer graph is
   **local and degree-bounded**, which is exactly the structure the cut condition
-  of `K15-C044` and the constant of `K15-C035` (`3Φ(R+1)⁵`) want: `k_R ≤ 12`
+  of `K15-C044` and the constant of `K15-C035` (`3ΦR(R+1)⁵`) want: `k_R ≤ 12`
   beats the volume bound `(R+1)³ − 1 = 26` by a factor 2, and the shell count is
   a *theorem*, not an assumption (K15-C027).
 - **Consequence for the constant, computed.** From the proof of `K15-C035`,
   `C₁/Φ = 3·k_R·R·(R+1)²`. With `R = 2.09`: `k_R = 12` (this lemma) gives
   `C₁/Φ = 718.40`, while the volume bound `k_R ≤ 26` gives `1556.53` and the
-  published general form `3(R+1)⁵ = 845.11` sits between them. So the shell count
-  buys **15% off** the general constant at the widest certified range (not a
-  factor of two, because `3(R+1)⁵` mixes the `k_R` and shell factors).
+  general form (corrected, `3R(R+1)⁵`) gives `1766.28`. So the shell count buys
+  **59% off** the general constant at the widest certified range, and **2.2×** off
+  the volume-bound version.
 - **Quantitative footprint of a hypothetical transfer.** Combining the two
   constraints: the icosahedral vertex forces `Φ ≥ 0.00888` (12 neighbours) and the
   negligibility constant at `R = 2.09` is `C₁/Φ = 718.40` (this lemma), so
@@ -1689,7 +1697,7 @@ last two blocks' verification was version-specific.
   reproducibility check plus a methodological endorsement, not independence).
   Reviewer X.
 
-### K15-C028 addendum 2 — the `η > 0` path passes exactly (vacuous, as predicted)
+### K15-C028 addendum 2 — the `η > 0` path passes exactly (`TESTED_FINITE`, vacuous as predicted)
 
 After the `K15-C049` repair, the fixture's shell family was exercised end-to-end
 with a genuine allowance: `--m 2 --rho 209/100 --eta 3` returns **all conditions
@@ -1913,3 +1921,352 @@ things must be said.
    two-line estimate with a packing-independent constant and isolates the remaining
    obligation (an analytic averaged cell bound). Claiming more than that would be
    overreach.
+
+### K15-C068 — THIRD-round predicate defect: touching isolating intervals (`REFUTED`, repaired; complete rule adopted)
+
+- **Witness (review 0223).** `q(u) = (u − 7/5)² − 2·10⁻⁴⁰` — value `−2·10⁻⁴⁰` at
+  `u = 7/5` — was accepted by `nonneg_on_half_line`, and `_ray(−q, 0)` and
+  `le_on_interval(−q, 0, 0, 3)` likewise. SymPy's two isolating intervals are
+  `(…, 7/5)` and `(7/5, …)`: they **share the rational endpoint** `7/5`, so the
+  gap between them is empty and the negative dip (width `9·10⁻²¹`) was never
+  sampled.
+- **Correctness argument for the new rule (stated before promotion).** A
+  polynomial has constant sign on every component of `[lo,hi] ∖ {roots}` and is
+  zero at the roots, so one point per component decides the sign. The components
+  are met by `lo`, `hi`, and the midpoints of the **gaps between consecutive
+  isolating intervals** — but only when those gaps are non-empty. The routine
+  returns `None` (inconclusive) as soon as two intervals touch or overlap, and the
+  decision then falls to `function_range`, whose algorithm is the exact
+  characterisation "extrema at endpoints and critical points". Formally:
+  `p ≤ 0` on `I` ⟺ `sup_{I} p ≤ 0`, and `function_range` returns that sup exactly.
+  Half-lines are handled by the same routine (SymPy supports unbounded intervals);
+  alternatively a Cauchy-bound reduction would do.
+- **Why the certificate path is unaffected.** On the sign regions of a
+  certificate the polynomials have no real root, the isolating list is empty, the
+  gap argument is conclusive, and no call to `function_range` occurs. So the
+  certificate checks remain independent of SymPy's range code, and the genuinely
+  independent oracle remains Computation's `exactcert`.
+- **Regressions kept permanently** (`checker_adversarial.py`, now **29** cases):
+  the three new witnesses, the sign-flipped controls `(u−7/5)² + 2·10⁻⁴⁰ ≥ 0`
+  (must PASS) and `(u−1/5)² − 2·10⁻⁴⁰ ≤ 0 on [0,1]` (must FAIL).
+- **Re-verified.** All six earlier witnesses still reject; all valid/touching
+  cases still accept; K33b still `ACCEPT` at `0.779966216777`; fuzz clean.
+- **Status.** `REFUTED` (the gap-only algorithm) → repaired with a complete rule.
+  Three repairs in three rounds; the checker's *general* soundness remains
+  suspended for X.
+
+### K15-C069 — E's question `(Q)` is false, by E's own fixture plus `X-C003` (`PROVED` refutation)
+
+**E's `(Q)`.** "Does a saturated packing contain a cell with `vol Ω < √32`?" E notes
+that `(Q) = no` would give the density bound immediately. **The answer is yes**, and
+the witness is the project's own:
+
+1. the 13-cluster (centre + 12 icosahedral neighbours at distance exactly 2) is a
+   legal packing fragment;
+2. it extends to a *saturated* packing (`X-C003(iii)`, Zorn);
+3. in that packing the centre's cell is the regular dodecahedron of volume
+   `5.550291… < √32 = 5.656854…`.
+
+So `(Q)` is answered **yes**, and `(Q)` cannot be a target: it is strictly stronger
+than Kepler and false. This also disposes of any plan of the form "show every cell
+is at least `√32`" — that is refuted by the dodecahedral configuration, which is
+exactly Hales–McLaughlin's point. What can be true is the **averaged** statement
+`Σ_{v∈K} vol Ω(v) ≥ √32|K|` over clusters, i.e. E's `(H_R)`/`(T')` and
+`Main/NEXT_PACKAGE.md` — not the pointwise one.
+
+- **Status.** `PROVED` (two-line argument from accepted results). Reviewer X.
+- **Consequence for the next block.** Do not pursue `(Q)`; pursue `(H_R)` with the
+  cluster-average form and the explicit `Φ` of `K15-C044`.
+
+### K15-C070 — the periodic bridge compared with Cohn–Elkies' Appendix A (`AUDITED`)
+
+`Main/BRIDGE_AUDIT.md` reads CE's Appendix A from the retained PDF (Annals 157,
+pp. 708–709) and compares it with `K15-C002b`: CE start from a **uniformly dense
+extremal** packing (existence via Groemer) and assert that "only a negligible
+fraction of the spheres can intersect the sides"; `K15-C002b` starts from **any**
+packing and pays two explicit losses (`O(S/R)` tile geometry, `O(1/S)` boundary
+slabs) with `O(R²S)` boundary centres counted via disjoint unit balls. Neither
+follows from the other by rearranging constants.
+
+Also recorded there: the project's `limsup`-at-a-fixed-centre density equals CE's
+uniform upper density for 2-separated packings (boundary term `O(R²)/R³ → 0`), so
+CE numbers may be quoted; Hales' route needs no bridge at all; and the open items
+(uniformity bookkeeping, the `δ = 0` case, the Zorn saturation step) are listed
+with what would close each.
+
+### K15-C071 — proof complexity of the transfer route (`PROVED` assessment)
+
+What a transfer certificate would cost, in the three senses that matter for this
+project's "simpler proof" objective.
+
+1. **Logical strength.** Existence of `φ` from the cut condition is *non-effective*:
+   the infinite case uses Tychonoff compactness (`K15-C067`), so the argument does
+   not exhibit `φ`. For a **periodic** packing it is effective: the quotient graph
+   is finite and the cut condition is a finite LP (`C-TRANSFER-001`), decidable in
+   polynomial time by max-flow. So the non-constructive step is confined to the
+   aperiodic case, and no number in the proof depends on it.
+2. **Verification cost.** Checking the cut condition for a *given finite* `U` is a
+   sum over vertices plus an edge count — `O(|U|·k_R)`. Checking it for all `U` is
+   a min-cut computation on the finite quotient (periodic case), i.e. polynomial.
+   The expensive part is not the flow but the cell volumes: computing `vol Ω(v)`
+   exactly for a `d`-facet cell costs a half-space intersection, and no exact
+   arithmetic version is available at the scale Hales needs (`10⁵` configurations).
+   **This is where a transfer-based proof would be more expensive than Hales': he
+   never needs exact volumes, only interval bounds on a finite list of scores.**
+3. **Comparison with the source.** Hales' `A` is a transfer whose negligibility he
+   proves by the `Q`-system and the four-way cancellation; the transfer packaging
+   replaces that with `K15-C035` (two lines) at the price of making the *pointwise*
+   inequality explicit, which `K15-C036` shows cannot be verified by computation.
+   So the packaging trades "hard bookkeeping, computable geometry" (Hales) for
+   "easy bookkeeping, uncomputable geometry". That trade is favourable only if an
+   analytic averaged cell bound exists; if it does not, Hales' route is the
+   cheaper one and the transfer route is a dead end. This is the honest cost model
+   and it should temper any claim that `K15-C035` "simplifies the proof".
+
+*Status.* `PROVED` (an assessment from the established lemmas, no new theorem).
+Reviewer X.
+
+### K15-C072 — decision: the next target, from worker evidence (`DECISION`, D17 recorded)
+
+**Evidence on the table (this block's reads).**
+- **C** (`b51129e`): exact explicit-Gram SOS certificates reach
+  `Δ ≤ 1.99064200` and *plateau at ≈ 2* (three further seeds: `1.99889`,
+  `1.99578`, `1.99725`). Higher-degree exact certificates saturate at
+  `0.77996622`. Nothing in the C family is near a competitive bound, and the
+  search is no longer productive.
+- **E** (`846f221`): the Laves-phase witness is blocked on primary crystallographic
+  data; the dense-completion search neither refuted `(T')` nor beat the sparse
+  baseline ("density is not what makes `(T')` hard, saturation is"); `(Q)` was
+  proposed as a shortcut.
+- **X** (`9dc2ab2`): level 3; `O2` (a soft proof of CE non-sharpness in 3D) named
+  as its most promising open question.
+
+**Decision.** `K15-C069` kills `(Q)` (the dodecahedral cell is a saturated cell
+below `√32`). So the geometric target is E's **`(H_R)`/`(T')` in cluster-average
+form with the explicit `Φ`** of `K15-C044` — i.e. `Main/NEXT_PACKAGE.md` — and not
+any pointwise cell statement. The higher-point alternative is **not** chosen this
+cycle: C's three-point specification remains unimplemented and its own two-point
+work plateaus three orders of magnitude away, so there is no evidence a 3-point
+implementation would land anywhere useful within the project's remaining budget.
+`X`'s `O2` is recorded as the most interesting *analytic* question but is not a
+density bound.
+
+*Status.* `DECISION` (D17). Reviewer X.
+
+### K15-C073 — regression coverage completed for the third repair (`TESTED_FINITE`)
+
+Six further cases were added after the `C068` repair, covering the classes the
+earlier suites missed, and all pass (suite now **35 cases**):
+
+| Class | Case | Expected |
+| --- | --- | --- |
+| roots exactly at both domain endpoints | `(u−1)(u−3)` ≤ 0 on `[1,3]` | PASS (negative between) |
+| root exactly at the domain start | `u(u−2)` ≤ 0 on `[0,2]` | PASS |
+| odd multiplicity | `(u−2)³ ≥ 0` on `[0,∞)` | FAIL |
+| even multiplicity everywhere | `(u−2)⁴ ≥ 0` | PASS |
+| even multiplicity but positive elsewhere | `(u−2)⁴ ≤ 0` on `[0,3]` | FAIL |
+| clustered roots (separation `10⁻¹⁵`) with a `10⁻³⁰` dip | product of squares minus `10⁻³⁰` | FAIL |
+
+Plus the earlier near-double witnesses (`7/5 ± 2·10⁻⁴⁰`). The `transfer_check`
+fixture was re-run with the corrected constant `3ΦR(R+1)⁵` at `R = 2.51`
+(bound `144421.90`, observed sum `0.75`): the bound still holds, as it must since
+the corrected constant is larger.
+
+### K15-C074 — cross-run and a third structured fuzz family (`TESTED_FINITE`)
+
+- **Cross-run against Computation's engine including the new classes.** The
+  `--against-exactcert` mode now also submits the `C068`/`C073` classes:
+  `(u−2)³ → fail`, `(u−2)⁴ → pos`, `(u−7/5)² ± 2·10⁻⁴⁰ → fail / pos`. All agree.
+  One item had to be restated, and the reason is a genuine scope difference:
+  **`exactcert`'s engine decides half-lines only**, so a *compact-interval* claim
+  such as "(u−1)(u−3) ≤ 0 on [1,3]" is outside its scope; Main's compact claims are
+  covered by `function_range` instead. The harness now says so in its output rather
+  than reporting a spurious disagreement.
+- **Third structured fuzz family: nearly double roots.** `(u−r)² ∓ 10⁻ᵐ` with
+  `r` rational and `m ∈ [10,40]`: the "below" variant must be rejected in every
+  case, the "above" variant accepted. Seeds 7, 8, 12 (150–200 polynomials each):
+  zero failures. This is the family of the `C068` witness, now generated
+  systematically rather than only as a fixed regression.
+
+### K15-C075 — cost profile of the complete rule, and the one branch certificates never take (`TESTED_FINITE`)
+
+Timings on this VM, one core:
+
+| Input | Verdict | Time | Branch |
+| --- | --- | --- | --- |
+| the `C068` witness `(u−7/5)²−2·10⁻⁴⁰` | reject | 0.07 s | one refinement, then `function_range` |
+| its mirror `(u−7/5)²+2·10⁻⁴⁰` | accept | < 0.01 s | gap rule, first pass |
+| degree 33, seven rational roots in `[12,30]` | reject | 0.02 s | gap rule (degenerate intervals, strict) |
+| degree 35 with a root pair `1.4·10⁻¹⁰` apart | not measured | **> 20 s** | refinement/`function_range` |
+| `(u−7/5)² − 2·10⁻⁴⁰` times `(u+1)³`, `(u+1)⁵`, `(u+1)⁷` | reject | 0.16 / 0.18 / 0.24 s | refinement then `function_range` |
+
+**Recorded limitation.** At high degree with clustered roots the complete rule is
+*exact but slow* — both the refinement ladder (capped at `ε = 10⁻¹⁴` to bound the
+cost) and `function_range` can take minutes. This is a genuine limitation of the
+implementation, not of the mathematics, and it is harmless here: **no certificate
+in this project enters that branch**, because on the sign regions the polynomials
+have no real roots and the gap rule is already strict on the first pass. If a future
+use needs fast decisions at degree ≥ 20 with clustered roots, the right fix is an
+exact sign test at the critical points (algebraic-number arithmetic), not more
+refinement.
+
+The certificate path's cost is unchanged: K33b verifies in ≈ 2 s including the basis
+conversion, and `run_all_checks` in ≈ 6 s.
+
+### K15-C076 — audit of X's repaired `exact_sign` (`AGREES`; second complete implementation available)
+
+- **What was run.** `Counterexamples/exact_sign.py` (branch
+  `kepler15/counterexamples/run-01`, `9dc2ab2`) was extracted and exercised by Main
+  on the two defect families and on the standard controls:
+  `(t²−2)(t²−3) ≥ 0` on `[0,∞)` (the irrational-root witness) → **False** ✓;
+  `(t−7/5)² − 2·10⁻⁴⁰ ≥ 0` (the near-double witness) → **False** ✓; its mirror
+  `+2·10⁻⁴⁰` → **True** ✓; `(t−5)²` → **True**; `(t−5)³` → **False**;
+  `t(t−1)` → **False**.
+- **Cross-check against Main's predicate.** The same claims were evaluated through
+  `shell_check` after the exact substitution `t = 2u`: **zero disagreements** on all
+  seven. (One of my own expectations was wrong in the first pass —
+  `−t(t−1) ≥ 0` on `[1,∞)` is false, since the expression is `t(1−t) ≤ 0` there —
+  and X's answer was the correct one.)
+- **Method.** Their repair is the right one: no root is ever converted; the
+  squarefree odd part `u` is formed and its roots in the open half-line are counted
+  by Sturm (`count_roots`), with the endpoint handled by exact multiplicity. That is
+  a *complete* decision and independent of Main's (different formulation, different
+  root treatment).
+- **Consequence for the project.** There are now **two complete implementations**
+  of the half-line predicate (Main's and X's) that agree on both defect families,
+  plus Computation's half-line engine. Main's compact-interval decision still has no
+  external cross-check beyond `function_range`; that is the remaining gap.
+- **Status.** `AGREES` (finite test evidence, not a soundness proof). Reviewer X.
+
+### K15-C077 — systematic cross-run against X's `exact_sign` (`AGREES`: 10/10)
+
+- **Artifact.** `Computation/xsign_crossrun.py <dir>`: runs the half-line claims of
+  the adversarial suite plus both defect families through Main's predicates and
+  through X's independent `sign_on_half_line`, after the exact substitution
+  `t = 2u`. Result: **10 claims, 10 agreements, 0 skips** — including
+  `(t²−2)(t²−3)` (irrational roots), `(t−7/5)² ∓ 2·10⁻⁴⁰` (near-double), the odd
+  part `(t−3)²(t−1)`, and the two `_ray` claims.
+- **What it buys.** The project now has two *complete* and *independent*
+  implementations of the half-line predicate that agree claim by claim, so a defect
+  in either would have to be mirrored in the other to survive. That is the strongest
+  evidence available before a full soundness proof.
+- **Still uncovered.** Main's *compact-interval* decision (`le_on_interval`) has no
+  external cross-check other than `function_range`, which Main also uses as a
+  fallback — so compact claims remain less protected than half-line claims. Closing
+  this needs a compact-interval mode in one of the other checkers; recorded for X.
+
+### K15-C078 — the cut condition is trivial on fcc and hcp (`PROVED` for those two)
+
+For **fcc** and **hcp**, every Voronoi cell is the rhombic dodecahedron or the hcp
+cell respectively, each of volume exactly `√32` (classical; equivalently, both attain
+density `π/√18` with congruent cells). Hence `b(v) = √32 − vol Ω(v) = 0` at every
+vertex, the cut condition of `K15-C044` holds with `Φ = 0`, and `φ ≡ 0` is a valid
+transfer. The transfer route therefore costs nothing on the two structures that
+attain the bound.
+
+**Correction to the first version of this entry.** The first version claimed the
+same for *every* Barlow stacking and cited a numerical check; both were wrong: the
+numerical stack I built was not a packing (minimum separation `1.70 < 2`, a
+construction bug), and for a *mixed* Barlow stacking (e.g. `ABAC…`) the cells need
+not be congruent, so pointwise `b ≤ 0` does not follow from the density alone —
+only the *average* volume is `√32` there. The claim is therefore restricted to fcc
+and hcp, where congruence is standard.
+
+**What stands.** On fcc/hcp the transfer costs nothing; all the content is in defect
+configurations, consistent with `K15-C036` (no finite fixture decides the pointwise
+inequality) and `K15-C051` (no locally dense periodic blob found), and with
+`K15-C069` (cells below `√32` do exist in saturated packings).
+
+*Status.* `PROVED` (fcc, hcp; standard cell geometry). Reviewer X.
+
+### K15-C079 — the target in E's notation, and the boundary constant (`PROVED` correspondence)
+
+- **E's obligations**: `(T')` `S(C) ≥ D(C)` per defective component (icosahedral
+  case: `S(C) ≥ 0.1065632`), and `(T'')` `diam(C) ≤ D_0`.
+- **Correspondence**: `(T')` is the per-component form of the averaged inequality
+  `Σ_U vol Ω ≥ √32|U| − O(Φ|U|^{2/3})` of `Main/NEXT_PACKAGE.md`; by `K15-C067` the
+  two are equivalent up to `Φ` and the boundary term. E's own figure "outer cells
+  must average `5.66573451791`" is exactly `√32 + (√32 − V_dod)/12` (`K15-C042`), so
+  the two sessions' constants agree.
+- **Boundary constant, explicit**: for a blob containing a ball of radius `r`,
+  `|δ⁺(U)| ≤ k_R((r+R)³ − (r−R)³) ≈ 6k_RRr²`, and `|U| ≍ (4π/3)r³`, so the slack is
+  `Φ·6k_RR·(3|U|/4π)^{2/3}` — a `|U|^{2/3}` term with an explicit coefficient, which
+  is what a proof of `(T')` must beat.
+- **Status.** `PROVED` (a translation between two statements, no new mathematics).
+  Reviewer X.
+
+### K15-C080 — the transfer requirement is strictly weaker than E's `(T')` (`PROVED`)
+
+- **E's `(T')`** asks, for every defective component `C`, `Σ_{v∈C}(vol Ω(v) − √32) ≥ 0`,
+  i.e. `Σ_C b ≤ 0` with `b = √32 − vol Ω`: each component must pay for itself.
+- **The transfer route** (`K15-C044`) asks only `Σ_C b ≤ Φ|δ⁺_R(C)|` for the same
+  `C`, because the component may be funded from outside across its boundary.
+- Since `Φ|δ⁺_R(C)| ≥ 0`, the transfer condition is implied by `(T')`, and it is
+  *strictly* weaker exactly when `δ⁺_R(C) ≠ ∅`.
+- **Precision (corrected in the same entry).** The first version claimed every bounded
+  component has out-edges in a saturated packing. That is **not proved**: a closed
+  finite component would need every centre within `R` of it to be inside it, and while
+  saturation forbids leaving room for a *new* sphere, it does not by itself forbid a
+  cluster whose nearest outside neighbour is farther than `R = 2.09`. What is true is
+  the conditional statement: **if** the component has out-edges, the cut form is
+  weaker; **if** it is closed, the cut condition *is* `(T')`. So a proof of the cut
+  form must handle both, and a closed component is exactly the case where E's `(T')`
+  cannot be avoided.
+- **Consequence for the next block.** The target should be stated in the *cut* form,
+  not as `(T')`: it is the weaker obligation, it is exactly what a transfer
+  certificate needs, and its price `Φ` is explicit in the final rate
+  (`C₁ = 3ΦR(R+1)⁵`). E's `(T')` remains a sufficient condition and a sanity check
+  (it must hold on fcc/hcp, where `φ = 0` works and `δ⁺` is non-empty).
+- **Caveat.** `Φ` cannot be allowed to grow: the rate in Lemma 3.3 is `O(C₁/r)` with
+  `C₁ ∝ Φ`, so a proof of the cut form is only useful with a stated bound on `Φ`
+  (the icosahedral vertex alone forces `Φ ≥ 0.00888`, `K15-C036`).
+
+*Status.* `PROVED` (immediate from the definitions). Reviewer X. Recorded in
+`Main/NEXT_PACKAGE.md`.
+
+### K15-C081 — a cluster-level lower bound on `Φ` (`PROVED`)
+
+**Setup.** Take the icosahedral 13-cluster `C`. By Hales–McLaughlin every cell has
+volume `≥ V_dod = 5.5502910285…`, so the cluster's total deficit is at most
+`13(√32 − V_dod) = 1.3853218727…`. By `K15-C044` the cut condition for `U = C` reads
+`Σ_C b ≤ Φ|δ⁺_R(C)|`, i.e.
+
+```
+Φ  ≥  13(√32 − V_dod) / |δ⁺_R(C)|  =  1.3853218727… / |δ⁺_R(C)|.
+```
+
+At `R = 2.09`, each of the twelve outer vertices has at most `k_R ≤ 12` edges, one
+of which is the spoke to the centre (distance exactly `2`), and the spoke-free ones
+must be counted as leaving. The **outer–outer distances in the cluster are
+`2.102924… > 2.09`**, so no outer–outer edge exists at this range: each outer vertex
+has at most `11` leaving edges, `|δ⁺(C)| ≤ 132`, and
+
+```
+Φ  ≥  1.3853218727 / 132  =  0.0104949…        (not 0.009620, the value obtained
+                                                 from the crude 144-edge count)
+```
+
+**What it is.** A *cluster-level* refinement of the vertex-level bound
+`Φ ≥ 0.00888` (`K15-C036`): the cluster must shed `1.3853` of deficit across its
+boundary, so a smaller `Φ` is impossible regardless of how the transfer is arranged.
+It gives the next block a definite floor to beat — a transfer with
+`Φ ∈ [0.0096, …]` is the smallest that can work, and a candidate claiming a smaller
+`Φ` is refuted outright.
+
+**Caveat.** The bound uses only HM and the cut condition; it does not show such a
+transfer exists.
+
+*Status.* `PROVED` (arithmetic from accepted lemmas). Reviewer X.
+
+### K15-C082 — E's Barlow spectrum re-run, and the `Φ` floor published (`AGREES`)
+
+- **Run.** `Experimental/scripts/barlow_shell_check.py` (branch
+  `kepler15/experimental/run-01`, `846f221`) executed by Main. For fcc (`ABC`) it
+  reports the distance spectrum `2.000 (12), 2.828 (6), 3.464 (24), 4.000 (4)` and
+  "centres in `[2,2.09]`: 12" — i.e. **no distance in `(2, 2.09)`**, which agrees with
+  Main's structural proof (`K15-C033`) and with their `K15-E013`. (Main's own
+  attempt at the same numerical check had a construction bug; E's does not.)
+- **Published.** The `Φ` floor of `K15-C081` (`0.00962` at `R = 2.09`) is now in
+  `Main/NEXT_PACKAGE.md` as the floor any transfer candidate must clear.
+- **Status.** `AGREES` (finite numerical evidence consistent with a proof).
+  Reviewer X.
