@@ -1,0 +1,94 @@
+{
+ "script": "KeplerConjecture/Computation/shell_sos.py",
+ "degree": 7,
+ "basis": "u = pi|x|^2 monomial (Main's)",
+ "checker": "/tmp/shell_check.py",
+ "status": "TESTED_FINITE for proposer; exact for any verdict != null",
+ "rows": [
+  {
+   "case": "n=27 rho=2.05 UNCONDITIONAL (K15-C013a)",
+   "count": 27,
+   "rho": "41/20",
+   "shell_status": "unconditional",
+   "variant": "eta=0",
+   "feasible": true,
+   "lp_objective": 0.3161329320345854,
+   "eta": 0.0,
+   "coefficients": [
+    0.3161329320345854,
+    0.11555376950498222,
+    0.08431021131150107,
+    -0.0014488552280723579,
+    0.006366713601425389,
+    -0.00041152263374485596,
+    -1.3717421124828532e-05,
+    4.5724737082761776e-20
+   ],
+   "verdict": null
+  },
+  {
+   "case": "n=27 rho=2.05 UNCONDITIONAL (K15-C013a)",
+   "count": 27,
+   "rho": "41/20",
+   "shell_status": "unconditional",
+   "variant": "eta_free",
+   "feasible": true,
+   "lp_objective": -163906.9715046296,
+   "eta": -6090.940410879628,
+   "coefficients": [
+    548.4195891203702,
+    -333.3333333333333,
+    -11.11111111111111,
+    -0.37037037037037035,
+    -0.012345679012345678,
+    -0.00041152263374485596,
+    -1.3717421124828532e-05,
+    4.5724737082761776e-20
+   ],
+   "verdict": null
+  },
+  {
+   "case": "n=12 rho=2.09 CONDITIONAL (K15-C019)",
+   "count": 12,
+   "rho": "209/100",
+   "shell_status": "conditional",
+   "variant": "eta=0",
+   "feasible": true,
+   "lp_objective": 0.3161329320345854,
+   "eta": 0.0,
+   "coefficients": [
+    0.3161329320345854,
+    0.11555376950498222,
+    0.08431021131150107,
+    -0.0014488552280723579,
+    0.006366713601425389,
+    -0.00041152263374485596,
+    -1.3717421124828532e-05,
+    4.5724737082761776e-20
+   ],
+   "verdict": null
+  },
+  {
+   "case": "n=12 rho=2.09 CONDITIONAL (K15-C019)",
+   "count": 12,
+   "rho": "209/100",
+   "shell_status": "conditional",
+   "variant": "eta_free",
+   "feasible": true,
+   "lp_objective": -72542.86534143516,
+   "eta": -6090.940410879628,
+   "coefficients": [
+    548.4195891203702,
+    -333.3333333333333,
+    -11.11111111111111,
+    -0.37037037037037035,
+    -0.012345679012345678,
+    -0.00041152263374485596,
+    -1.3717421124828532e-05,
+    4.5724737082761776e-20
+   ],
+   "verdict": null
+  }
+ ],
+ "runtime_s": 1.8
+}

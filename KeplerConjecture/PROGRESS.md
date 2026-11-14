@@ -516,3 +516,7 @@ Lean job was launched by this operational checkpoint.
 ### 2026-11-14 01:38 Pacific - Main source synchronization
 
 Imported Main revision 6626714125c35292d78943cd0fe8d18ec0051b38. Its full conflicting progress record is preserved in Main/AgentProgress/Main-66267141.md; all prior supervisor and worker records are retained. Research claims await the current review. K15-C029 has an invalid signed-subset summation step and is not accepted; Main has been assigned its correction.
+
+### 2026-11-14 01:38 Pacific - Computation source synchronization
+
+Imported revision 92def301dee4ac9445d60f3a233f77aca79f993f. Full conflicting worker progress retained in Main/AgentProgress/Computation-92def301.md. Existing supervisor and other worker histories are preserved. Imported claims remain subject to this checkpoint's independent review.
