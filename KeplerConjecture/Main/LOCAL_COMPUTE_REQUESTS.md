@@ -9,18 +9,48 @@ Continue independent mathematical work while an already-submitted job runs.
 
 ## Queue
 
-Supervisor checkpoint after Main completion 27616:
+`Main/` owns the queue. IDs are distinct per role from this cycle onward; the old
+shared `K15-COMPUTE-001/002` names are retired and mapped at the bottom.
 
-| Request | Local status | Evidence and limits |
-| --- | --- | --- |
-| Main 001 rev. 2 | Original and minimally repaired grid scripts executed | Computation/Reviews/27616/; omitted Fourier constraints invalidate the claimed negative theorem; exact SOS solver is not implemented |
-| Main 002 | Updated targeted-import normalization passed Lean 4.35.0 | Lean/Review/27616/; algebraic identity only; full import not rerun after timeout |
-| Computation 001 | Conversions, fixtures and three degree/grid controls completed | Computation/Reviews/27616/; sign violations remain; r0 variant deferred for density-scaling repair |
-| X-R01 | NEEDS_AUTHOR | Exact driver is a sketch; coefficient-field and Fourier-map review required |
-| Experimental interval job | NEEDS_AUTHOR | No executable certified outer-region enclosure supplied |
+| ID | Owner | Purpose | State |
+| --- | --- | --- | --- |
+| `M-LEAN-001` | M | pinned Lean 4.35.0 build of `Lean/Kepler15/Normalisation.lean` | **COMPLETE** — exit 0, axioms `[propext, Classical.choice, Quot.sound]`, algebraic identity only |
+| `M-NUM-001` | M | degree-8 grid control in `Computation/ce_laguerre.py` | **COMPLETE but INVALID as a claim** — script omitted Fourier positivity (K15-C014r); repaired variant locally re-run gives `f(0) = 0.2182024…` |
+| `C-NUM-001` | C | CE control, `K = 31/41`, grids 1200/4000 | **COMPLETE, `TESTED_FINITE`** — `Δ = 0.779702445785607`, `0.779745768082807`; `min f̂ ≈ −3·10⁻⁶` |
+| `C-CERT-001` | C | exact Sturm sign driver in the Laguerre family | **REQUESTED** (Q1, Q2) |
+| `E-CERT-001` | E | interval certification for cluster cell volumes | **REQUESTED — driver missing** (Q3) |
+| `X-R01` | X | exact optimisation over the Laguerre family (semialgebraic) | **SPECIFIED** in X's registry; not run |
+| `M-NUM-002` | M | rational SOS certificate for a frozen profile | **SPECIFIED, superseded by C-CERT-001** |
 
-Main and Computation reused request IDs 001/002. The next assignment requires
-distinct role-prefixed IDs. No new global sphere-packing certificate is claimed.
+### M-NUM-002 — rational SOS certificate, revised specification (not to be run before C-CERT-001)
+
+The rev. 2 text of the old `K15-COMPUTE-001` was not a coherent certificate
+specification: with rational `P` and rational sums of squares, a factor
+`(t − 8π)` carries irrational coefficients. Three coherent options; pick one and
+say which:
+
+1. **Conservative rational threshold.** Prove `−P(t) = Σ_i s_{0,i}(t)² + (t − 25)Σ_i s_{1,i}(t)²`
+   with `t = 2πs`. Since `25 < 8π = 25.1327…`, this implies `f ≤ 0` for
+   `t ≥ 8π`, i.e. for `|x| ≥ 2`. Purely rational, exact expansion check, no PSD
+   matrix needed (a univariate sum of squares *is* the certificate).
+   Cost: the threshold is stronger than needed, so the constant is slightly worse.
+2. **Formal `π`.** Verify the identity in `ℚ[t, π]` treating `π` as a
+   transcendental: both sides are polynomials in `(t, π)` and the identity is
+   checked coefficient-wise. Requires the certifier to accept a two-variable
+   coefficient ring. Do **not** write "`π² = π·π`" as if it were machinery.
+3. **Rational Gaussian scaling.** Replace `e^{−πs}` by `e^{−s}` and re-derive the
+   Fourier map (`φ̂(t) = π^{-3/2}·…`); then all constants become rational
+   multiples of `π^{3/2}` and the certificate lives in `ℚ(√π)`. Requires the
+   re-derivation to be written out and reviewed first.
+
+Acceptance for any of the three: exact rational identity, verified by an
+independent checker, with the sign regions `s ≥ 4` and `s ≥ 0` stated in `s`
+(never mixed with `t`), and `f̂(0) > 0` exhibited.
+
+### Retired IDs
+
+`K15-COMPUTE-001` → split into `C-CERT-001` (the real work) and `M-NUM-002`
+(this specification). `K15-COMPUTE-002` → `M-LEAN-001`, complete.
 
 ## Required request record
 
@@ -61,3 +91,8 @@ logs or a concrete local limitation. Unexecuted jobs remain pending.
 Main owns integration of this queue. Workers can put standalone requests in
 their own role directories and identify them in the final response for Main
 or Astra to collect.
+
+
+## Supervisor execution evidence at hourly transition
+
+The local execution record is in "Computation/Reviews/27616/README.md" and "Lean/Review/27616/README.md". These record the actual sources, commands, three grid controls, remaining sign violations, and the normalization-only Lean check. New certificate claims on the Computation branch are awaiting independent local review.
