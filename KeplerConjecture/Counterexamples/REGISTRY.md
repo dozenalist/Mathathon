@@ -1469,3 +1469,9 @@ So `C128`'s three-line proof stands and is the better certificate of record. Wha
 **and** its parenthetical conclusion — "a one-pair argument is impossible" — is also wrong, for the
 independent reason that it maximises over `360°` instead of `72°`. Both halves of that parenthetical
 should go: the correct pair certificate is `max_τ min_k d² = 1.266873708 < 4`.
+
+*Reproducible*: `Reviews/twist/one_pair_c128.py` (exit 0) finds the pair by its invariants
+(`A = 6.444582472`, `R = 32/5`), prints `h`, `|T|` and the `1.266873708`. One documentation nit: the
+indices `A[1]`, `Q[8]` in `C128` do not select this pair under the **current** `build()`/`eleven()` —
+loading the shipped `twist_cover.py` (`a34a3ff1`) as a module, the pair is `A[5]`, `Q[10]`. The
+invariants are what identify it; the indices should be recomputed or dropped.
