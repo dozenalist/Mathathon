@@ -967,3 +967,39 @@ No numerical input is used.
   positive), which is a small demonstration that it discriminates.
 - **Status.** `VERIFIED` for Main's `shell_check`; `OPEN` for `exactcert` until X
   runs it there. Reviewer X.
+
+### K15-C031 — cross-run of the adversarial suite against `exactcert` (`VERIFIED`: agrees on all ten)
+
+- **What was run.** `python3 Computation/checker_adversarial.py --against-exactcert
+  <dir>` extracts Computation's `exactcert` from branch `90cc632`, substitutes
+  `u = t/2` into each adversarial polynomial, and calls their engine
+  (`yun_odd_part` then `_half_line_sign`).
+- **Result.** Ten of ten agree, including the subtle cases: `(u−5)² → pos`,
+  `(u−5)³ → fail`, `(u−1)²(u−2)² → pos`, `(u−1)²(u−2) → fail`, `u² → pos`,
+  `∏_{1..10}(u−k) → fail`. Two findings that only a cross-run could produce:
+  1. `− (u − T)²` at the threshold `T` is decided **`neg`** by `exactcert` (it
+     factors the even-multiplicity root out and decides the sign), so its
+     fail-closed policy is *sharper* than assumed: it declines only at
+     **odd**-multiplicity endpoint roots, where the sign genuinely changes.
+  2. Consequently `exactcert` and `shell_check` have the same semantics on every
+     case tested; a certificate with a touching zero at the threshold is
+     acceptable to both.
+- **Status.** `VERIFIED` (G8 partially closed: the two engines agree on a
+  designed adversarial set, in different bases). Remaining for G8: an argument
+  that they share no code (they do not — Main wrote `shell_check` from the
+  Fourier side, Computation wrote `exactcert` from the Laguerre side) and X's
+  independent review of both.
+- **Artifact.** `Computation/checker_adversarial.py` (both modes; `--self` uses no
+  external code).
+
+### K15-C032 — imports from C and X (unreviewed by X; recorded, not promoted)
+
+| Item | Source | Statement | Status |
+| --- | --- | --- | --- |
+| `K15-C-SATURATION-001` | C `90cc632`, `out/verified_certificate_K33b.json` | the exact-certificate pipeline saturates at degree 33: `Δ ≤ 0.77996622`; degrees 37 and 41 fail exact verification at every grid/margin tried | `VERIFIED_CROSS` for the K33b value (K15-C023); the *saturation* claim is `TESTED_FINITE` |
+| `K15-C-SATLIMIT-001` | C | the residual `+0.03%` above CE03 is the price of the strict-sign margin plus rational rounding | `TESTED_FINITE`; the reasoning is consistent with the strict-sign policy in `exactcert`'s docstring |
+| `K15-C-SHELLBENCH-001` | C | the shell allowance's joint optimisation chooses `η = 0` at degree 21, grid 500, `ρ = 2.09` (gain exactly 0) | `TESTED_FINITE`; K15-C028 explains the cost structure |
+| X free-width family | X `237cc3b`, `ce_exact_gauss.py`, `REPORT_width_and_E030.md` | `f = P(s)e^{−a s}`, exact map to `Q(w)`, density `= (4a^{3/2}/(3√π))P(0)/Q(0)`, Kepler test `32a³P(0)² < π³Q(0)²`; verified against 3-D quadrature at `a ∈ {1/2,1,3/2,2}` | recorded as the **third convention** in `Main/INTERFACE.md` §1; the quadrature agreement is X's evidence, not audited here |
+
+None of these is promoted to a bound. The numbers in the first row are the ones
+Main independently reproduced (K15-C023).
