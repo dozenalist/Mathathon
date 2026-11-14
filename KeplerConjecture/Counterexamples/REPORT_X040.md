@@ -287,32 +287,34 @@ shows up; the first is C's own reported `Φ` at the scanned row.
 
 ### 4.3 The family suite discriminates, but it is not a universal detector
 
-A test suite that never fails is worthless, so I ran the same three families against the three
-earlier checker blobs I hold copies of:
+A test suite that never fails is worthless, so I ran the same three families against every checker
+blob I hold a copy of. The blob ids below are `git hash-object` of the files, verified — my first
+version of this table labelled `shell_check_0a85bee.py` as `a8526a8`, which is wrong: that file is
+`7dc6be58`, and `a8526a8` is `shell_check_main.py`. Running the real `a8526a8` changed the
+conclusion, so the correction matters.
 
 | blob | file | random | probe-targeted | near-touching |
 | --- | --- | --- | --- | --- |
-| `a8526a8` | `Reviews/shell_check_0a85bee.py` | 0/900 | 0 | 0/8 |
+| `a8526a8` | `Reviews/shell_check_main.py` | **50/900 wrong** | **3 wrong** | 0/8 |
 | `5619c1d` | `Reviews/shell_check_9461aae.py` | 0/900 | **5 wrong** | **3/8 wrong** |
+| `7dc6be58` | `Reviews/shell_check_0a85bee.py` | 0/900 | 0 | 0/8 |
 | `909a50a` | `Reviews/shell_check_7c56c5ee.py` | 0/900 | 0 | 0/8 |
 | `5caa1c9` | `Reviews/shell_check_5caa1c9.py` | 0/3600 | 0 | 0/8 |
 
 Two things follow, and both belong in the record rather than in a footnote.
 
-1. The suite **does** discriminate: `5619c1d` fails it on 8 of 308 adversarial queries, so a
-   clean run is informative rather than vacuous.
-2. It **does not** catch everything. `a8526a8` passes all three families although it was a
-   defective revision, and `909a50a` passes them while carrying the `η` licence defect. The
-   families test one failure mode — sign decisions that depend on where probes land relative to
-   roots — because that is the mode that produced three rounds of false accepts. A defect of a
-   different kind (a missing precondition, a wrong sign convention on the *model*) needs a
-   different test, and the `η` witness is the example.
+1. The suite **discriminates strongly**: `a8526a8` is wrong on 50 of 900 random queries and 3 of
+   the probe-targeted ones, `5619c1d` on 8 of 308 adversarial queries. A clean run is therefore
+   informative rather than vacuous.
+2. It **does not catch everything**. `7dc6be58` passes all three families; I do not know its
+   lineage position (it is not one of the four blobs in my recorded sequence
+   `a8526a8 → 5619c1d → 812105c3 → 909a50a`), so I make no claim about whether it was defective.
+   `909a50a` passes the families while carrying the `η` licence defect — a defect of a different
+   kind (a missing precondition) that needs a different test, and the `η` witness is that test.
 
-So "0 wrong verdicts on `5caa1c9`" is evidence about one failure mode at one revision. It is not
-a soundness proof, and `K15-C098`'s `SUSPENDED` label on generic checker soundness remains the
-right one.
-
----
+So "0 wrong verdicts on `5caa1c9`" is evidence about one failure mode at one revision. It is not a
+soundness proof, and `K15-C098`'s `SUSPENDED` label on generic checker soundness remains the right
+one.
 
 ## 5. Ledger
 

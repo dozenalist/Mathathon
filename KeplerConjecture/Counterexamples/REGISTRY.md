@@ -621,11 +621,16 @@ that "the two routes give the same number" holds only because both use that encl
 direction is safe (an over-estimate of `V_dod` weakens a necessary condition), so the number is a
 valid floor; the word "exact" is what is wrong. Quote `0.0088802684147391605`, or call it a bound.
 
-### K15-X-C031 — the family suite discriminates on `5619c1d` and is blind to two other defect kinds
+### K15-X-C031 — the family suite catches `a8526a8` (50/900) and `5619c1d` (8/308), and is blind to others
 
-Same three families against four checker blobs: `a8526a8` 0/900, 0 targeted, 0/8 near-touching;
-**`5619c1d` 0/900, 5 targeted, 3/8 near-touching** (so the suite is not vacuous); `909a50a` 0/900,
-0, 0/8 (its defect was the `η` licence, not a predicate); `5caa1c9` 0/3600, 0, 0/8. The families
-test one failure mode — probe placement relative to roots. A missing precondition or a wrong model
-sign needs a different test, which is why `K15-C098`'s `SUSPENDED` label on generic soundness is
-correct and passing the families is evidence, not proof.
+Same three families against five checker blobs, blob ids verified by `git hash-object`:
+`a8526a8` (`Reviews/shell_check_main.py`) **50/900 random, 3 probe-targeted wrong**; `5619c1d`
+(`shell_check_9461aae.py`) 0/900, **5 targeted**, **3/8 near-touching**; `7dc6be58`
+(`shell_check_0a85bee.py`) 0/900, 0, 0/8; `909a50a` (`shell_check_7c56c5ee.py`) 0/900, 0, 0/8;
+`5caa1c9` 0/3600, 0, 0/8. The suite is therefore not vacuous. It is blind to two defect kinds: a
+missing precondition (`909a50a`'s `η` licence, caught by `X-C025`'s witness instead) and whatever
+`7dc6be58` is — that blob is not in my recorded sequence `a8526a8 → 5619c1d → 812105c3 → 909a50a`,
+so no claim is made about it. Passing the families is evidence, not proof; `K15-C098`'s
+`SUSPENDED` label stays correct. **Correction recorded here:** my first version of this table
+labelled `shell_check_0a85bee.py` as `a8526a8`; it is `7dc6be58`, and running the real `a8526a8`
+changed the conclusion from "the suite misses this one" to "the suite catches it 50/900".
