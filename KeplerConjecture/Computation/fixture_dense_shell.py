@@ -121,6 +121,55 @@ def self_test():
           sum(CF.SQ32_LO - v for v in vols) < 0, float(sum(CF.SQ32_LO - v for v in vols)))
     return ok, L, sites, vols, b0_lo, b0_hi
 
+def shell(r):
+    """The 12 shell points at radius r (rational), rounded to denominator 10^6."""
+    phi = (1 + 5 ** 0.5) / 2
+    raw = []
+    for s1 in (1, -1):
+        for s2 in (1, -1):
+            raw += [(0, s1 * 1, s2 * phi), (s1 * 1, s2 * phi, 0), (s2 * phi, 0, s1 * 1)]
+    norm = (1 + phi ** 2) ** 0.5
+    scale = float(r) / norm
+    out = []
+    for v in raw:
+        q = tuple(F(int(round(c * scale * DEN)), DEN) for c in v)
+        if q not in out:
+            out.append(q)
+    return out
+
+def central_volume(r):
+    """Exact central cell volume for the fixture with shell radius r."""
+    L = [[PERIOD, F(0), F(0)], [F(0), PERIOD, F(0)], [F(0), F(0), PERIOD]]
+    sites = [(F(0), F(0), F(0))] + shell(r)
+    if FN.min_separation(L, sites) < 4:
+        return None
+    detL, vols, _ = FN.evaluate(L, sites, rmax=6)
+    return vols[0]
+
+def family():
+    """Where does the construction stop being nonvacuous?
+
+    The central cell grows with the shell radius r, so b(0) = sqrt(32) - vol Omega(0) decreases.  The
+    crossing vol Omega(0) = sqrt(32) cannot be found exactly (sqrt(32) is irrational), so it is
+    BRACKETED with rationals: the last rational r with b(0) > 0 and the first with b(0) < 0.
+    """
+    lo, hi = F(20005, 10000), F(21, 10)          # 2.0005 .. 2.1
+    v_lo = central_volume(lo)
+    v_hi = central_volume(hi)
+    if v_lo is None or v_hi is None:
+        raise RuntimeError("the family lost its separation")
+    assert v_lo < CF.SQ32_LO and v_hi > CF.SQ32_HI, (float(v_lo), float(v_hi))
+    for _ in range(30):
+        mid = (lo + hi) / 2
+        v = central_volume(mid)
+        if v is None:
+            hi = mid; continue
+        if v < CF.SQ32_LO:
+            lo = mid
+        else:
+            hi = mid
+    return lo, hi, central_volume(lo), central_volume(hi)
+
 def export(L, sites, vols, path=None):
     b_lo = [CF.SQ32_LO - v for v in vols]
     b_hi = [CF.SQ32_HI - v for v in vols]
@@ -144,6 +193,15 @@ if __name__ == "__main__":
     print("A dense local cell: rational icosahedral shell, exact volumes")
     print("=" * 100)
     good, L, sites, vols, b0_lo, b0_hi = self_test()
+    print("\n" + "=" * 100)
+    print("B. THE NONVACUOUS WINDOW: where does the shell stop giving b(0) > 0?")
+    print("=" * 100)
+    lo, hi, vlo, vhi = family()
+    print("  b(0) > 0 for shell radius r <= %s  (vol = %.12f < sqrt32)" % (lo, float(vlo)))
+    print("  b(0) < 0 for r >= %s  (vol = %.12f > sqrt32)" % (hi, float(vhi)))
+    print("  the crossing is in [%s, %s], exact rationals; its width is %.1e"
+          % (lo, hi, float(hi - lo)))
+    print("  t* = b(0)/12 at the last nonvacuous r: %.12f" % float((CF.SQ32_LO - vlo) / 12))
     p = export(L, sites, vols)
     print("\nexported:", p)
     print("dense_shell:", "PASS" if good else "FAIL")
