@@ -252,8 +252,21 @@ quietly amended:
 
 ## 4. Both-sides Gram: scoped negative, with the honest strength comparison
 
-The task asked to derive the quintic construction and to seek simpler structure with an honest
-3D strength comparison. Three attempts, all with exact identities:
+**The quintic construction now works** (`sos_both_sides_quintic2.py`). The one-square ansatz was
+excluded, but allowing **two** squares in `σ₀` turns the system linear: choosing `(β, γ, d, e)`
+rationally, `g` comes from `d² + g² = R`, then `h`, then `(f, i)` from a `2×2` linear system by
+Cramer, then `k = q₀ − f² − i² > 0`. For the p-side record certificate it succeeds:
+
+$$q(u) = \Bigl(-\tfrac74u^2 + 19u - \tfrac{25115432387}{806373792}\Bigr)^2
++ \Bigl(\tfrac74u^2 - \tfrac{3881}{252}u + \tfrac{322498331}{12799584}\Bigr)^2
++ \tfrac{322991273685970819}{325119346212229632}
++ u\Bigl(\tfrac76u^2 - \tfrac{35}{3}u + 18\Bigr)^2,$$
+
+with both identities verified by expansion, giving `Δ ≤ 1.33982381256` — the **best both-sides
+explicit-Gram certificate in this directory**, down from `2.00171738`, and equal to the best
+one-sided p-side value. It remains `1.34×` the trivial bound.
+
+Earlier attempts, retained:
 
 | attempt | family | best `Δ ≤` |
 | --- | --- | --- |
@@ -283,7 +296,7 @@ claim about sums of squares in general.
 | Kepler | 0.74048049 | the theorem |
 | Cohn–Elkies 2003 | 0.779747 | best explicit published certificate |
 | LP-optimal in this basis | 0.77996622 | exact certificate, no rational Gram |
-| **best both-sides explicit Gram** | **2.00171738** | `2.0×` the trivial bound |
+| **best both-sides explicit Gram (quintic, two squares)** | **1.33982381256** | `1.34×` the trivial bound |
 | p-side only, many squares | 1.33982382 | `1.34×` trivial |
 | Fourier-side only, five squares | 1.37125723 | `1.37×` trivial |
 

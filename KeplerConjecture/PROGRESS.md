@@ -691,3 +691,19 @@ not merely asymptotic.
 
 **Scope guard:** this does *not* say finite cuts are uninformative; a violating cut remains a
 genuine obstruction. It says existence of a transfer is strictly stronger than the density bound.
+
+### K15-COMP-040 — 2026-11-14 — Computation (role C), quintic both-sides Gram solved
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-BOTHSIDES-QUINTIC-001** | **VERIFIED_EXACT** | the quintic both-sides Gram is **solved** once `σ₀` is allowed **two** squares: for the p-side record certificate, `q(u) = (−7u²/4 + 19u − 25115432387/806373792)² + (7u²/4 − 3881u/252 + 322498331/12799584)² + 322991273685970819/325119346212229632 + u(7u²/6 − 35u/3 + 18)²`, both identities verified by expansion, giving **`Δ ≤ 1.33982381256`** — the best both-sides certificate here, down from `2.00171738` | `sos_both_sides_quintic2.py`, `out/sos_both_sides_quintic2.json` |
+| K15-C-QUINTIC-EXCL-001 | **superseded** | the earlier one-square exclusion stands as stated (it is a bound within *that* parametrisation), and the two-square enrichment is what makes the construction succeed. The distinction is exactly why the exclusion was reported as scoped rather than as impossibility | same |
+
+**Method, which is the reusable part:** with `σ₁ = (αu²+βu+γ)²` and `σ₀ = (du²+eu+f)² +
+(gu²+hu+i)² + k`, choosing `(β, γ, d, e)` rationally makes `g` come from `d²+g² = R`, then `h`,
+then `(f, i)` from a `2×2` linear system by Cramer, then `k = q₀ − f² − i²`. So the nonlinear
+Markov–Lukács system reduces to a **four-parameter rational search plus exact linear algebra**.
+
+**Strength, stated honestly:** `1.33982381256` is `1.34×` the trivial bound `Δ ≤ 1`, so this is
+still a format demonstrator, not a competitive bound. The gap in `p(0)/q(0)` is `34%` (see
+`REVIEW_0308.md` §4).
