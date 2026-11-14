@@ -5263,3 +5263,42 @@ is far too lossy on its own — it would allow the cubic term to swamp the quadr
 it does not replace the measurement in addendum 2, which says the true cubic coefficient is `≤ 0.075`.
 The job is to convert that measurement into a bound, and the type-robustness above is what makes it a
 finite calculation rather than a covering problem.
+
+### K15-C143 — what the explicit `δ₀` does and does not buy (`PROVED` conditional on `L1`; **no new bound**)
+
+`C142` produces `δ₀ ≥ 3.7629·10⁻³` conditional on `L1`. Before anyone quotes a number, here is exactly
+what that converts into. `C108`'s Theorem C reads `δ ≤ (4π/3)/(V_dod + δ₀ρ)` with `ρ = ρ_ε` the
+density of matched near-contact pairs (`ρ ≤ 1/2`).
+
+| `ρ_ε` | bound with `δ₀ = 3.7629·10⁻³` | improvement over ML `0.754697399` |
+| --- | --- | --- |
+| `0.50` | `0.754441656` | `2.56·10⁻⁴` |
+| `0.25` | `0.754569506` | `1.28·10⁻⁴` |
+| `0.10` | `0.754646237` | `5.12·10⁻⁵` |
+| `0.01` | `0.754692283` | `5.12·10⁻⁶` |
+| `→ 0` | `0.754697399` | `0` |
+
+**So: no uniform improvement.** The supremum over `ρ_ε > 0` of the bound is `ML` itself, approached as
+`ρ_ε → 0`. This is structural, not a defect of the constant: `C124`'s case 2 (`ρ_ε = 0` exactly) gives
+`0.296`, but for `ρ_ε = t` small only case 1 is available, and it degrades as `O(t)`. A *uniform*
+improvement would need a rate at which `ρ_ε` can go to zero — a different and harder statement, and not
+one this ledger has.
+
+**What it does buy.** Three things, all modest and all previously non-explicit:
+
+1. **Strictness without compactness.** `C108`'s `δ₀ > 0` came from a compactness argument ("the infimum
+   is attained, and the attained value is impossible"). With `L1` the strictness is an inequality with a
+   constant, which is the difference between `C124` standing on an existence proof and on an estimate.
+2. **A rate in the contact density**: the improvement is `δ₀ρ_ε/(V_dod(V_dod + δ₀ρ_ε))`, i.e. linear in
+   `ρ_ε` for small `ρ_ε`. That is a quantitative statement about dense-contact packings, and the ledger
+   had none before.
+3. **A concrete target for the next factor of 57**: the sharp `2√32 − 2V_dod = 0.213126` would make the
+   `ρ = 1/2` entry equal the truth `π/√18` (`C108` (iii)). Every improvement of `L1`'s constant, or of
+   the band `ε`, moves the table directly.
+
+**Explicitly not claimed.** No new packing bound. `RESULTS.md` does not move, `K33b` is not an
+improvement on `0.779747`, the `ρ = 1/2` entry is a bound *for packings with contact density at least
+`1/2`* and not for all packings, and `C124` is `PENDING_REVIEW`.
+
+*Status.* `PROVED` conditional on `L1` (`M-CERT-002`). The table is the honest ceiling of this route as
+it stands.
