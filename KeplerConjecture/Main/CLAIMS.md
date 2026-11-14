@@ -5496,3 +5496,31 @@ it was the search sliding into a symmetry orbit, and a zero mode that is a *symm
 failure. (ii) The matrix Hessian's `λ_min/2 = 0.1753` exceeding a directly measured directional curvature
 `0.1375` is a self-contradiction, which is how the matrix approach was caught: **a Hessian whose
 eigenvalues contradict a directional second difference is wrong, whatever its spectrum looks like.**
+
+#### `C142` addendum 8 — an unexplained factor `1.5` in the quotient constant, left open on purpose
+
+Two numbers do not agree, and the ledger records the disagreement rather than averaging it away.
+
+- The **unprojected** second difference along the sample-868 direction is `0.275531` (step-independent),
+  i.e. `c₂ = 0.1378` per unit `‖θ‖`.
+- If the kernel of the quadratic form were exactly the 3 rotation modes, projecting that direction
+  (`|u_proj|² ≈ 0.875`) would give a quotient curvature of `0.1378/0.875 = 0.157`.
+- The **sampler measures `0.241`** for the projected direction (and `0.2253` as its minimum over 4000
+  projected directions). That is a factor `1.5` above the scaling prediction.
+
+At most one of the three can be right. What is *not* in doubt: the direct second differences are stable
+(they were reproduced with 15-digit rounding and five step sizes), the sampler's quotient minimum is
+`0.2253` over 4000 directions, and **`c = 0.13` is below every number in this addendum** — so the
+`δ₀ = 2.8775·10⁻³` conclusion does not depend on resolving it.
+
+**Why it is left open.** A factor `1.5` in a stability constant is exactly the kind of thing `M-CERT-002`
+will settle, since it must bound the second variation rigorously over the whole ball rather than sample
+it. Guessing a reconciliation now would be the eighth error of the block rather than the eighth
+correction.
+
+**What a resolution must decide.** Whether the quadratic form's kernel is larger than the rotation
+subspace (in which case the true infimum is `0` and `L1'` is false for every `c > 0` — a *serious*
+outcome), or whether the 24-parameter finite-difference Hessian is unreliable for a fourth reason. The
+second is more likely, since a kernel larger than the symmetry would show up as ratios near `0` in the
+sampler, and `16 000` samples show none below `0.2253`. **Until it is settled, `L1'` is a measured
+conjecture, `c = 0.13` is a guess with slack, and `δ₀` is conditional.**
