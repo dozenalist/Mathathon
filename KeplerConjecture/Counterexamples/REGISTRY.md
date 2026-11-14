@@ -1665,3 +1665,11 @@ exceeding the mesh estimate `0.730508` — so the exact-radius run's improvement
 `A = 68/5 − 16√5/5 = 6.444582472`, `B = ∓32/5`, `C = 0` exactly — so the "five-way tie, all with
 `R = 32/5`" is exact (the sign of `B` depends on which of `±L_{k+2}` is used; the violation arc has the
 same length `2π − 2·112.4555° = 135.089°` either way).
+
+### K15-X-C101 — at `d = 6cos ρ_c` both cells are *exactly* the dodecahedra
+
+`certify` on `w`'s own twelve contacts gives `[5.550291028516, 5.550291028516] = V_dod`, and adding `p`'s
+twelve contacts changes nothing — the enclosure is identical. So in the parallel configuration at
+`d = 6cos ρ_c` both Voronoi cells **are** the regular dodecahedra of inradius 1 (the other cluster's
+contacts are redundant). That closes `X-C096`: the threshold is not just a separation threshold of a point
+set, it is a threshold for *two dodecahedral cells*.
