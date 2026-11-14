@@ -98,6 +98,20 @@ a *non-orthonormal* basis, which silently scaled every area by `|e1||e2|` and re
 removes the failure mode rather than patching it, since there is no scale factor to get wrong.
 A cube (`volume 8`, eight vertices) is checked before any geometric control.
 
+**A correction to the block's own commit messages, and the price of the speed fix.** Commit
+`7a0d901` says that 70-digit denominators made "one control run 15 minutes". That is not what
+happened: the controls ran in **71 s** at full precision, and the 15-minute figure was the
+fifteen-box *scaling loop*, not a single control. The quantisation to `10^-20` (with the error
+folded into the certified bound) buys roughly a 10× speedup and costs 41 digits of tightness:
+
+```
+no quantisation   fcc width 3.5e-59    C5 width 6.5e-37    controls 71 s
+quantised (1e-20) fcc width 1.0e-18    C5 width 8.7e-19    controls 6.7 s
+```
+
+Both are far tighter than anything the geometry needs; the `1e-18` figure is what the rest of
+this file quotes.
+
 ### 2.3 Scope: one payer, not the cluster
 
 This machinery bounds **one** payer's cell for **one** configuration. By `K15-E090` the twelve
