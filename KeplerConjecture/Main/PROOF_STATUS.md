@@ -24,7 +24,7 @@ single missing object is an explicit constant.
 | The dodecahedral bound is implied by the trivial inball bound for `d ≥ 2.1967082` | `C119` | locates the route: it is needed only on `2 ≤ d < 2.1967082` |
 | E's payer fixture reproduced to `1e−15`, and its family scanned | `C118`, `C120` | independent of E's code |
 | **A one-pair proof** that two adjacent dodecahedral centres are impossible | `C128` | one pair has a violation set of `135.09° > 72°`, so it meets every coset; hand-checkable |
-| **No contact-density hypothesis needed**: `δ < 0.754697399337` strictly for every saturated packing | `C124` | two-case split (`26·|M|` counting vs the inball bound); `ρ_ε > 0` is *not* assumed |
+| **No contact-density hypothesis needed**: `δ < 0.754697399337` strictly for every saturated packing | `C124` | two-case split (`2(1+D_ε)·|M|` counting with `D_ε ≤ (3+ε)³−1` and an explicit `O(R²)` boundary term — `C132` — vs the inball bound); `ρ_ε > 0` is *not* assumed; the two-dodecahedra exclusion is **orientation-free** (`C133`) |
 | **Explicit stability**: `≤ 12`-face cell with all neighbours `≥ 2ρ` has `vol ≥ V_dod·ρ³` | `C121` | the first *explicit* stability bound here; at `ρ = 1.045` it gives `b(v) < 0` with `12%` margin |
 
 ## Conditional, non-explicit, or open
