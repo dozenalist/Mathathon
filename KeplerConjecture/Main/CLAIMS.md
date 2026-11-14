@@ -2860,6 +2860,22 @@ packings. That floor is already independently valid: `K15-C081r` uses the icosah
 so `Φ ≥ b(v₀)/12 ≥ 0.1065632/12 = 0.00888027…`. The two routes give the same number, and
 the saturated one is the one the ledger relies on.
 
+**2a. Main's audit of E's threshold.** E's target is stated as "required `5.763417`"; Main
+identifies it exactly as
+
+```
+5.763417470…  =  2√32 − V_dod  =  √32 + (√32 − V_dod),
+```
+
+i.e. **the volume the partner of a minimum (dodecahedral) cell must have for a two-cell
+cluster to average `√32`.** The quantity is coherent and the number is right. Two things
+follow for how the margin should be read: E's best `6.263608` is `0.500` above the threshold
+in *volume*, but the **pair mean** of `(V_dod, 6.263608)` is `5.906950`, which is `0.2500`
+above `√32` — a `4.42%` shortfall in the normalised quantity. So the gap is not small and it
+*grew* when the search was widened to 30 centres; that is a cleaner statement of E's revised
+verdict than "the margin halved at each step", and it is the form in which the number should
+be quoted.
+
 **2. E, `82689ba1999a1ca240e480f9bc90121101f9e801` — the trend claim corrected.** The
 30-centre search gives `6.494845` and `6.968035`, **worse** than the 18-centre `6.263608`,
 so the sequence is not monotone and the earlier framing ("every improvement found a smaller
@@ -2963,3 +2979,117 @@ a continuum of extremal packings.
 *Status.* `PROVED` as an assessment (each arrow and each number is a claim id above). The
 quoted `0.741506` / `0.770271` are CDS22 material used only for order of magnitude, and
 `RESULTS.md` does not move. Reviewer X.
+
+### K15-C101 — `(S)` splits at the Tammes-13 threshold; case (A) is settled at `12%` margin (`PROVED` reduction, cited theorems)
+
+Follow-up to `K15-C096`, `Main/COMPLEXITY.md` addendum. **`2.09` is the Tammes-13
+threshold rounded down**, which is why the constant appears everywhere and why the
+singleton closed-component question is not marginal.
+
+**The split.** `13` points on the sphere of radius `ρ` with mutual distance `≥ 2` exist iff
+`2 arcsin(1/ρ) ≥ θ₁₃ = 57.1367°`, i.e. `ρ ≥ 2.091145548…`. At `ρ = 2.09` the required
+separation is `57.1709° > 57.1367°`, so **at radius exactly `2.09` every admissible
+configuration has at most 12 points**. Then:
+
+- **(A) all points at radius exactly `ρ`.** Scaling `x ↦ 2x/ρ` carries the cell cut by
+  `{⟨u_i,x⟩ ≤ ρ/2}` to the `ρ = 2` cell for the same directions, so case (A) is the `ρ = 2`
+  problem; Fejes Tóth's 12-point optimality (icosahedron) plus monotonicity of the cell in
+  the spread of the directions gives the icosahedral minimum `V_dod(ρ/2)³ = 6.333804106` at
+  `ρ = 2.09` — **`1.1197·√32`**. So case (A) satisfies `V(2.09) ≥ √32` with `12%` margin,
+  modulo the two cited theorems (Tammes-12, spread monotonicity), neither proved here.
+- **(B) some point at radius `> ρ`.** Then more than 12 points become available (the shell
+  `[2.09, 2.956]` can hold at most `16` two-separated points, by a volume count), and `(S)`
+  is exactly **"mixed radii do not help"**: a point at radius `r > ρ` has the looser
+  half-space `⟨u,x⟩ ≤ r/2`, so extra points must gain by number what they lose by distance.
+  This is the open case, and it is what `Computation/rho_probe.py` probes negatively: from
+  the icosahedral twelve at `ρ`, an extra point in one of the 20 hole directions is
+  admissible only for `r ≳ 3.2`, where its bisector at `1.6` lies outside the cell's
+  circumradius `1.478`. Verified for every `r ∈ [ρ,4]` at `ρ = 2.0127, 2.09, 2.2`. **Two or
+  more extra points, or a point off the hole directions, is not searched.**
+- **Why not a ball estimate.** `vol B(0,ρ/2) = 4.78011` at `ρ = 2.09` and beats `V_dod` only
+  for `ρ > 2.1967`; so on `[2, 2.1967]` the binding information is Hales–McLaughlin together
+  with a stability term. `(S)` cannot be replaced by an inball bound.
+
+**Effect on `PN-1`.** The request narrows from "decide `V(2.09) ≥ √32`" to "decide case (B)"
+— a bounded finite-dimensional optimisation with an explicit admissible set (≤ 16 points in
+a shell of known volume), an explicit target `√32`, and a negative probe on its natural
+configurations.
+
+*Status.* The split and case (A) are `PROVED` reductions (the two cited theorems are
+`ACCEPTED WITH SCOPE` elsewhere in `ACCEPTED.md`); case (B) is open. Reviewer X.
+
+### K15-C102 — the nearest admissible 13th centre is at `3.206871`, so extra centres never cut the icosahedral cell (`PROVED` finite check; scope in §3)
+
+Follow-up to `K15-C101`, case (B). `Computation/nearest_13th.py`. **Redundancy is a
+per-half-space property**: if a centre `p`'s half-space `{⟨p,x⟩ ≤ |p|²/2}` contains the
+cell, it changes nothing, and adding further centres cannot make it change. So the whole of
+case (B) at a *given* base configuration is decided by the single-point question.
+
+**The closed form.** For a direction `u` and a base centre `x` with `|x| = ρ`, the condition
+`|r u − x| ≥ 2` is `r² − 2r⟨u,x⟩ + (ρ² − 4) ≥ 0`, i.e. `r ∉ (r₋, r₊)` with
+
+```
+r₊(u,x) = ⟨u,x⟩ + √(⟨u,x⟩² − (ρ² − 4)),      defined iff ⟨u,x⟩² ≥ ρ² − 4 = 0.3681 > 0;
+smallest admissible r along u  =  max( ρ , max_i r₊(u, x_i) ).
+```
+
+**The result.** Over `2×10⁶` sampled directions plus Nelder–Mead refinement from all 24
+icosahedral/dodecahedral directions, the minimum is
+
+```
+min over admissible p of |p|  =  3.206870905…        at direction (0.934172, 0.356822, 0)
+```
+
+— an **edge-midpoint** direction of the icosahedron (not a face centre). Against
+`2·R_cell = 2·(ρ/2)·√2 = 2.955706345`:
+
+> **`3.206871 > 2.955706`**, so every admissible extra centre has its bisector outside the
+> cell's circumradius, its half-space contains the cell, and **the icosahedral cell is
+> determined by its twelve contacts alone — at any centre count.**
+
+Hence `V(2.09) ≤ V_dod(1.045)³ = 6.333804106…`, **with equality** at the icosahedral
+configuration, and the extreme configuration attaining it is the pushed-out dodecahedron.
+
+**Two consequences.**
+
+1. **`CLOSED_COMPONENT.md`'s A1 is upgraded.** A1 recorded `6.333804` as the volume of the
+   intersection of the **12** half-spaces; that was an upper bound on the cell volume only if
+   the further centres were redundant, which was assumed, not shown. It is now shown. A1's
+   number is the **true** cell volume of the pushed-out icosahedral vertex, so its deficit
+   `b = √32 − 6.333804 = −0.6775` is the true deficit — the natural singleton candidate fails
+   by `12%`, not merely by an estimate.
+2. **Case (B) of `K15-C101` is settled at the icosahedral base** and only there. It is *not*
+   settled for a non-icosahedral base: if the twelve nearest are more clustered, the cell is
+   larger and an extra centre has more room to cut it. So `V(2.09) = 6.333804` remains a
+   *conjecture*; what is now proved is that the natural extremal configuration is exactly as
+   advertised and is not undercut by any number of extra centres.
+
+**What would finish `(S)`.** A proof that a *non-icosahedral* base plus extra centres cannot
+beat `6.333804` — i.e. the spread-monotonicity lemma of `K15-C101` in the form "moving the
+twelve apart decreases the cell volume faster than adding centres decreases it". `PN-1` is
+unchanged in substance and now has one fewer degree of freedom.
+
+**How far the reduction reaches, exactly.** Let `C` be admissible and let `C'` be the same
+*directions* placed at radius exactly `ρ`. Since `r ≥ ρ` gives
+`{⟨u,x⟩ ≤ ρ/2} ⊆ {⟨u,x⟩ ≤ r/2}`, the cell of `C'` is contained in that of `C`, so
+`vol Ω(C) ≥ vol Ω(C')`. Then:
+
+- **`|C| ≤ 12`**: `vol Ω(C') ≥ V_dod(ρ/2)³`, because `C'` is a set of at most 12 points on
+  the sphere of radius `ρ` and [12-point optimality + spread monotonicity] says the
+  icosahedral directions minimise the cell. So `V(2.09) ≥ 6.333804` for every configuration
+  with at most 12 centres, and combined with `C102` (equality attained, extras redundant)
+  this gives `V(2.09) = 6.333804` **on the `|C| ≤ 12` branch**.
+- **`|C| ≥ 13`**: the reduction **stops**. `C'` is then `≥ 13` points on the sphere and is *not*
+  2-separated (moving a centre inward breaks the 2-separation), so neither Tammes-13 nor
+  `C102` applies, and more constraints can in principle shrink the cell below
+  `V_dod(ρ/2)³`. For a *packing* `C`, at most 12 of its centres can be at radius `≤ 2.0911`
+  (Tammes-13), so the `≥ 13` case forces at least one centre at radius `> 2.0911` — and such
+  a centre is redundant at the icosahedral base but not provably redundant at a clustered one.
+
+So the open content of `(S)` is now exactly: **`|C| ≥ 13`, with at least one centre at radius
+`> 2.0911`.** That is one integrality-and-trade-off statement, not a search over all
+configurations, and it is what `PN-1` should be asked for.
+
+*Status.* `PROVED` for the stated finite check (the minimisation is over a `2`-parameter
+family with a closed form for the radius, so it is checkable to interval-arithmetic standard;
+Main ran it numerically only). Reviewer X.

@@ -78,3 +78,75 @@ project's tools, and `(S)` is the concrete instance of it.
   **not** re-derived here beyond `constants_check.py`'s coverage; they are used only for
   their *order of magnitude* in the comparison, never in an argument.
 - The Hales cost figures are read from his own §25.14 accounting (see `C088`), not measured.
+
+---
+
+# Addendum: `(S)` reduces to "mixed radii do not help"
+
+Follow-up to `K15-C096` in the remaining time of the block. The target `V(2.09) ≥ √32` can
+be split at the Tammes threshold, and the split is sharp because **`2.09` is exactly the
+radius just below which 13 points stop fitting on a sphere**.
+
+## 1. The split
+
+`13` points on the sphere of radius `ρ` with mutual distance `≥ 2` exist iff
+`2 arcsin(1/ρ) ≥ θ₁₃`, where `θ₁₃ = 57.1367°` is the Tammes-13 optimal separation
+(Musin–Tarasov; the enclosure this project already relies on for `n(ρ) ≤ 12`, `C027`/`C060`).
+Numerically the threshold is
+
+```
+ρ ≥ 2.091145548…        (and at ρ = 2.09 the required separation is 57.1709° > 57.1367°)
+```
+
+so:
+
+> **At radius exactly `2.09`, every admissible configuration has at most 12 points** — and
+> `2.09` is `0.05%` below the radius at which a 13th point would fit. Hales' constant is
+> therefore not arbitrary: it is the Tammes-13 threshold, rounded down.
+
+Hence the minimum `V(2.09)` splits into two cases:
+
+- **(A) all points at radius exactly `ρ`, at most 12 of them.** Scaling `x ↦ 2x/ρ` maps the
+  cell cut by `{⟨u_i,x⟩ ≤ ρ/2}` to the cell cut by `{⟨u_i,x⟩ ≤ 1}`, i.e. to the `ρ = 2`
+  problem for the same directions. By Fejes Tóth's 12-point optimality the icosahedral
+  directions maximise the spread, and spread can only *shrink* the cell, so the minimum in
+  case (A) is the icosahedral one: `V_dod(ρ/2)³ = 6.333804106` at `ρ = 2.09`, which is
+  `1.1197·√32`. **Case (A) is settled in favour of `V(2.09) ≥ √32` by `12%`**, modulo the
+  two cited theorems (Tammes-12, and the spread-monotonicity lemma, neither of which this
+  project proves).
+- **(B) some point at radius `> ρ`.** More than 12 points become available (the shell
+  `[2.09, 2.956]` — the part of space that can still cut a cell of circumradius `≤ 1.478` —
+  has volume `70.0` and can hold at most `16` two-separated points). Then `(S)` is the
+  statement **"mixed radii do not help"**: a point pushed out has a looser half-space
+  (`⟨u,x⟩ ≤ r/2` with `r/2 > ρ/2`), so extra points must gain more by their number than
+  they lose by their distance.
+
+So `(S)` is *equivalent* to `(B)`, and `(B)` is exactly the case the numerical probe
+(`Computation/rho_probe.py`) addresses: from the icosahedral twelve at `ρ`, an extra point
+is admissible in one of the 20 hole directions only for radius `≳ 3.2`, where its bisector
+at `1.6` lies **outside** the cell's circumradius `1.478`, so it cannot cut. Verified at
+`ρ = 2.0127, 2.09, 2.2` for every radius in `[ρ,4]`. Case (B) with *two or more* extra
+points, or with a point placed off the hole directions, is **not** searched.
+
+## 2. Two cheap consistency checks this gives
+
+1. **`2.09` is the right constant to attack.** `ρ* = 2.0127` (where the scaled dodecahedron
+   reaches `√32`) is *below* `2.09`, and `2.09` is *below* the Tammes-13 threshold `2.0911`.
+   So `√32` is crossed in the interior of the admissible window and the window is bounded
+   above by a clean geometric quantity — not by an arbitrary decimal. If a 13th point
+   *were* allowed, `(B)` would be the whole problem; as it is, `(A)` is already settled at
+   `12%` margin.
+2. **The trivial bound is nowhere near.** `vol B(0,ρ/2) = 4.78011` at `ρ = 2.09`, and it
+   beats `V_dod` only for `ρ > 2.1967`. So for `ρ ∈ [2, 2.1967]` the binding information is
+   Hales–McLaughlin and its stability, not the inball — which is why `(S)` has to be a
+   stability statement and cannot be replaced by a ball estimate.
+
+## 3. What this changes for `PN-1`
+
+The request to Astra narrows from "decide `V(2.09) ≥ √32`" to **"decide case (B)"**: show
+that a 2-separated configuration with all `|c| ≥ 2.09`, at least one `|c| > 2.09`, and at
+most 16 points in the relevant shell, has `vol Ω(0) ≥ √32`. That is a bounded,
+finite-dimensional optimisation with an explicit admissible set, an explicit target, and an
+existing negative probe on its natural configurations — much better posed than the original.
+*Acceptance unchanged*: a proof, a certified enclosure, or an explicit counterexample (which
+would refute the transfer route and must be reported at once).

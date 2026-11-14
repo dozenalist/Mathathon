@@ -85,3 +85,54 @@ whether the reduction is written correctly. Nothing here bears on the density bo
 **One specific thing to try to break.** Find a deficit vector and a graph where the two
 proofs disagree, or where the threshold formula's two branches are both needed for the same
 instance. That would be the cheapest way to find a fifth defect.
+
+---
+
+## 6. Audit request — the Barlow chain (`K15-C094`, `C095`, `C096`, `C101`, `C102`)
+
+This is a chain: each claim is used by the next, so a defect anywhere invalidates the
+downstream statements. Please audit in this order and stop at the first failure.
+
+**6.1 `K15-C094` — every Barlow cell is `√32`.** `BARLOW_CELLS.md` §1–§3. Four steps.
+- (F1) distances: exactly 12 at 2, everything else `≥ 2√2`. Check the three-Λ-point claim
+  (`T` is the centroid of `{0,a₁,a₂}`, so `|T| = 2/√3` with multiplicity exactly 3) and the
+  enumeration of the distance spectrum in the table.
+- (F3) covering radius `≤ √2` via `(2/√3)² + (H/2)² = 2`. Check that the slab argument
+  covers *every* point, not just those in the layer planes.
+- Lemma 1 (cell = contact cell) and Lemma 2 (two contact configurations up to isometry).
+  **Lemma 2 is the load-bearing one**: the two non-zero cosets of `Λ` in `(1/3)Λ` are `±T`,
+  their in-plane nearest sets are `𝒜 = {30°,150°,270°}` and `ℬ = 𝒜+60°`, and a `60°`
+  rotation plus `z ↦ −z` collapse four sign combinations to two. Check that the `60°`
+  rotation is used only as an isometry of `R³` and **not** as a packing symmetry (it is not
+  one: fcc has three-fold, not six-fold, symmetry about `[111]`).
+- Step 4: the average is `2√3·H = 4√2` in *every* Barlow packing, `ABC…` is fcc-configured
+  in every layer, `ABA…` hcp-configured in every layer, hence both cell volumes are `4√2`.
+  Check the "every layer" part — this is where a slip would let one case escape.
+- **Specifically try to break Lemma 2** by finding a Barlow stacking whose contact set is
+  neither of the two. `Computation/barlow_cells.py --sweep 6` runs 48 random stackings
+  (346 layers) and prints the classification per layer; all were one of the two.
+
+**6.2 `K15-C095` — the crack packing.** Two analytic bounds (`H ≤ d ≤ 2H` for 2-separation
+respectively saturation), the two infinite closed components at `d > 2.09`, the crack-face
+`b = −1.328495`, and the density claim `δ = π/√18` (the `O(r²)` count). Check that the
+density argument needs only "one crack is a surface", i.e. that the displaced layers number
+`O(1)` and not `O(r)`.
+
+**6.3 `K15-C096`/`C101`/`C102` — the `V(2.09)` chain.**
+- `ρ* = 2(√32/V_dod)^{1/3} = 2.012718662` and `V_dod(1.045)³ = 6.333804106`.
+- `C101`: the Tammes-13 split. **This one leans on `θ₁₃ = 57.1367°` from Musin–Tarasov**,
+  which is `ACCEPTED WITH SCOPE` in `ACCEPTED.md`; check the direction of the inequality
+  (`2.09` is *below* the threshold, so at most 12 points) and that case (A)'s scaling
+  `x ↦ 2x/ρ` is legitimate.
+- `C102`: the nearest admissible extra centre. The minimisation is over a 2-parameter family
+  with the closed form `r₊ = ⟨u,x⟩ + √(⟨u,x⟩² − (ρ²−4))`, so it is *checkable to interval
+  arithmetic standard* — Main ran it numerically only (**2×10⁶ directions + Nelder–Mead**).
+  **This is the weakest link in the chain and the one place where a certified computation
+  would upgrade a `PROVED` claim.** Target: certify `min|p| ≥ 2.955706346`.
+- `BARLOW_CELLS.md` Lemma 3 (support-function truncation criterion) and the tangency remark
+  (`2R_cell = 2√2` = the next distance).
+
+**6.4 What is *not* claimed, so do not accept it as a target.** `V(2.09) = 6.333804` is a
+**conjecture** (settled at the icosahedral base only); `b ≡ 0` does not characterise Barlow
+packings; and no bound in `RESULTS.md` moves. If a finding would make any of these look
+established, that is itself a defect to report.
