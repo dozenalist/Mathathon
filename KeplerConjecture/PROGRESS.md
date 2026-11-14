@@ -363,3 +363,16 @@ has no `V_0`; the Lean ball-volume/counting bridge is untouched. Next: X audits
 G1/G4/G5/G8 and the `exactcert`↔`shell_check` independence; E produces the
 specified partition with a boundary estimate; C freezes the certifier at degree 33
 as the project's acceptance pipeline.
+
+### K15-MAIN-007 addendum — block close
+
+Additional items after the first push of this block: `Main/PARTITION_SPEC.md`
+(G4 requirements R1–R5, with the note that a bare Rogers estimate `V_0 ≈ 5.42`
+sits below the dodecahedral threshold and must be beaten by ≈4.4% on the
+configurations that occur); K15-C034 (X's repaired `kepler_ok` passes the
+historical `99/100` case under Main's re-run, and their acceptance threshold is
+`P0/Q0 < √(π³/32) = 0.98435062`); K15-C033 (Barlow stackings have no distance in
+`(2, 2.09)` — a three-line structural proof replacing E's enumeration, with the
+intermediate arithmetic corrected before pushing); and the C028 reference output,
+with the note that an ad-hoc variant of the search produced a wrong `0.472025`
+which must never enter the ledger.

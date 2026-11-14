@@ -67,14 +67,20 @@ Non-negotiable: the checker's verdict must be **unconditional** (no failure path
 behind a verbosity flag — review 48443), the coefficients must be **rational**,
 and the printed bound must be a rational interval, never a float.
 
-## 4. The conservative threshold, and the loss it costs
+## 4. The rational threshold, and why there is no loss
 
-To decide `p ≤ 0` on `t ≥ 8π` with rational data, one proves `p ≤ 0` on
-`t ≥ T_HI` for a rational `T_HI ≤ 8π`. Since `8π = 25.1327…`, the largest simple
-choice is `T_HI = 25`. This is *stronger* than required, hence safe and slightly
-lossy. `shell_check.t_hi_for(ρ)` derives the analogous window per `ρ`
-(`T_HI ≤ πρ²`), which is why a `ρ` change cannot silently invalidate a
-certificate: the containment is checked and printed on every run.
+`π` is carried as a rational interval `[PI_LO, PI_HI]` with 29 digits (the same
+pair Computation uses). Because `PI_LO < π`, the thresholds
+`T_LO = 4·PI_LO` and `T_HI = PI_LO·ρ²` are **rational and ≤ the true ones**, so
+proving a sign on them proves it on the true regions — with *no* rounding loss.
+(The earlier revision used integer stand-ins such as `T_HI = 25`, which is
+strictly stronger than needed and therefore lossy; that is superseded.)
+
+Direction of the inequalities, once and for all: a *smaller* start point for a
+`≤ 0` region makes the requirement **stronger**, and a smaller `T_HI` for the
+"beyond ρ" region makes it stronger too — so using `PI_LO` everywhere is safe in
+both places. The containment is recomputed and printed on every run, so a change
+of `ρ` cannot silently invalidate a certificate.
 
 ## 5. The cross-check performed (evidence)
 

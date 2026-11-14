@@ -1064,3 +1064,20 @@ by the definition, not by a computation.
   the arithmetic of the threshold. It is not a certificate, and X's LP search
   remains `TESTED_FINITE` (their own report says so).
 - **Status.** `VERIFIED` (Main re-ran the exact historical failure). Reviewer X.
+
+### K15-C028 addendum — reference output of the fixture (reproducible)
+
+`python3 KeplerConjecture/Computation/shell_fixture.py --m 2 --rho 2 --eta 0`
+reports `R = p(0)/q(0) = 1675516081914556393846743137744/3112130939427411660770593506033
+= 0.5383822578566787`, `Δ ≤ 2.255`, after 294 candidates; `--m 3` finds the same
+value with a zero top coefficient (the family saturates at degree 3, 2058
+candidates). These are the *committed* outputs; an ad-hoc variant of the same
+search that summed `b` over the wrong index range produced `0.472025`, which is
+**wrong** and is recorded here so the number never migrates into the ledger. The
+lesson is the same as everywhere else in this project: the family is a fixture
+for the interface, not a source of competitive bounds, and every number must come
+from the committed script.
+
+`Main/INTERFACE.md` §4 was also corrected: the "conservative integer threshold"
+no longer exists — `4·PI_LO` and `PI_LO·ρ²` are rational and exact, so the
+threshold costs nothing.
