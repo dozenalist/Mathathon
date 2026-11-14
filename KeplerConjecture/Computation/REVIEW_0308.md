@@ -383,6 +383,12 @@ on the SAIR VM, but seeds that hit a 90 s cap locally — so budget `--cap 300` 
 | item | status |
 | --- | --- |
 | `K15-C-CUTFLOW-001` | **implemented and run**; exact thresholds; FCC/HCP controls vacuous by construction |
+| `K15-C-DECOUPLE-001` | **PROVED**: the fixture's copies are decoupled (period 16 vs `R ≤ 3`), so its `t*` is exact for the **infinite** packing |
+| `K15-C-TRANSFER-DENSITY-001` | **PROVED**: a transfer implies `ρ ≤ 1/√32`, so the transfer route presupposes the bound it is meant to prove |
+| `K15-C-CHECKPOINT-001` | fixed: capped runs now leave their best-so-far (verified under a 10 s kill) |
+| `K15-C-BOTHSIDES-QUINTIC-001` | **VERIFIED_EXACT**: the quintic both-sides Gram is solved; `Δ ≤ 1.33982381256` |
+| `K15-C-FLOWASYM-001`, `-FLOWGLOBAL-001` | two flow-model bugs found by the test suite and fixed |
+| `K15-C-SILENTEXC-001` | a bare `except: pass` hid a `NameError`; handlers are now loud |
 | `K15-C-CUTDENSITY-001` | **PROVED** (elementary): full-period ⇒ necessary density condition `ρ ≤ 1/√32` only |
 | `K15-C-CUTEQUIV-001` | **WITHDRAWN** |
 | uniform perimeter growth | **OPEN** — the missing lemma for any equivalence statement |
