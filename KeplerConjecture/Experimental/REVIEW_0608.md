@@ -409,3 +409,99 @@ to the next block: a finite optimisation over six points on a sphere with a `60�
 constraint, asking whether the five ring faces can be driven below `0.828283`. That is *far*
 smaller than the 135-coordinate completion space, and the lemma turns it into a statement about
 areas rather than volumes.
+
+---
+
+## 11. Theorem: `(P')` at the icosahedral pair holds for every twelve-face completion
+
+This is the block's main positive result, and it is a proof, not a computation.
+
+> **Theorem (`K15-E099`).** Let the icosahedral cluster be present — `c` at distance `2` from
+> `w1`, five ring centres at `ρ_r = 2.102924…` in the ring directions. Let `z_1..z_6` be any
+> further centres at distance `≥ 2` from `w1`, all 2-separated, and suppose `Ω(w1)` has
+> **exactly twelve faces**. Then
+>
+> ```
+> vol Ω(w1)  >  5.773718  >  5.763417470 = 2√32 − V_dod .
+> ```
+
+*Proof.*
+
+**(1) Base polytope.** Let `D'` be `Ω(w1)` with the five ring faces moved in to distance `1`,
+every other face left where it is. Then `D' ⊇ Ω(w1)`, so `vol D' ≥ vol Ω(w1) ≥ V_dod` — the last
+step being the imported Hales–McLaughlin bound — and every face of `D'` is at distance `≥ 1`.
+
+**(2) Ring-excess lemma (§9).** Moving the five ring faces from `1` to `b = ρ_r/2` gains
+`5(b−1)·mean_t A_ring(t)` where the mean is over the path and `A_ring` are the ring-face areas
+of the polytope at that point. Hence
+
+```
+vol Ω(w1) ≥ vol D' + 5(b−1)·A_min ≥ V_dod + 5(b−1)·A_min ,
+```
+
+with `A_min` the least ring-face area anywhere on the path.
+
+**(3) A guaranteed uncut disk, at every point of the path.** Put the ring plane at distance
+`R ∈ [1,b]` and take `y` on it with in-plane radius `t`, so `|y| = √(R²+t²)` and the angle
+between `y` and the ring normal is `arctan(t/R)`. A centre `z` at distance `ρ` cuts `y` only if
+`y·n_z > ρ/2`, i.e. only if
+
+```
+angle(y, n_z)  <  arccos( (ρ/2)/√(R²+t²) ) .
+```
+
+But `angle(y,n_z) ≥ α(ρ) − arctan(t/R)` with `cos α(ρ) ≤ (ρ² + ρ_r² − 4)/(2ρρ_r)` (the
+constraint `|z − ring| ≥ 2`). So `y` is **uncut** whenever
+
+```
+arctan(t/R)  ≤  α(ρ) − arccos( (ρ/2)/√(R²+t²) ) .
+```
+
+Evaluating over `ρ ∈ [2, 2.603447]` (centres beyond cannot cut, `REVIEW_0353` §2) the worst case
+is `ρ = 2` at every `R`, and the worst `R` is `b = ρ_r/2`, where the boundary is `t/R = 1/2`
+exactly:
+
+```
+t* = R/2 = ρ_r/4 = 0.525731112119…      π t*² = 0.868314853691…
+```
+
+(At `R = 1` the same computation gives `t* = 0.557537`, so the minimum really is at `b`.) Every
+ring face of every polytope on the path therefore contains an uncut disk of area
+`≥ π(ρ_r/4)² = 0.868315`, so `A_min ≥ 0.868315`.
+
+**(4) Conclusion.**
+
+```
+vol Ω(w1) ≥ 5.550291029 + 5·0.051462224238·0.868314854
+          = 5.550291029 + 0.223427069  =  5.773718097  >  5.763417470 .   ∎
+```
+
+All quantities in the chain are rational intervals from `rational_interval.py`;
+`pair_theorem_12faces.py` computes it and prints `margin ≥ +0.010301`.
+
+### 11.1 Scope, and where it stops
+
+- **Proved**: `(P')` at the icosahedral pair for **every** completion whose payer cell has
+  exactly twelve faces. No search, no enumeration, no floating point in the conclusion.
+- **Not proved**: thirteen or more faces. That is not an oversight — it is where the argument
+  fails, and the failure is quantifiable. Adding one face at distance `1` to the dodecahedral
+  cell costs `0.052007` in volume (computed over a direction grid: `5.550291 → 5.498284`), while
+  the ring-excess gain is only `0.223427`; the thirteen-face bound would be `5.721711`, which is
+  `0.042` **below** the threshold. So a proof for `≥ 13` faces needs a genuinely different input,
+  not a better constant here.
+- **The margin is small**: `0.0103`, i.e. `0.18 %`. It is a real inequality but not a comfortable
+  one, and a referee should expect it to be the first thing to break if any hypothesis is
+  weakened.
+
+### 11.2 What changed against the earlier blocks
+
+The previous state was: `5.550291 ≤ inf vol Ω(w1) ≤ 5.897967`, threshold `5.763417`, with the
+upper end a computation and no lower bound beyond the imported one. The state now is:
+
+| class | lower bound | status |
+| --- | --- | --- |
+| twelve-face completions | `5.773718` | **proved** (this section) |
+| thirteen or more faces | `V_dod = 5.550291` | imported only; argument fails at `0.042` short |
+
+So the payer problem is now **solved on the twelve-face class** and open only where more than
+twelve constraints are active.
