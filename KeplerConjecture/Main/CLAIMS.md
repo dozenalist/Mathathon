@@ -5551,3 +5551,35 @@ here the explanation was a `30`-line computation.
 
 *Status.* `L1'` remains a measured conjecture with a stated constant; `M-CERT-002` is the proof route;
 `δ₀ = 2.8775·10⁻³` is conditional on it.
+
+### K15-C145 — end-to-end check of the `δ₀` argument, and where its robustness actually lies (`TESTED_FINITE`)
+
+`C142`'s chain is: `vol ≤ V_dod + η` ⟹ (via `L1'`) the cell's normals are within `θ ≤ √(η/c)` of
+icosahedral ⟹ (via `C133`'s covering radius) some contact lands within `2` of the other centre ⟹ no
+dodecahedral pair at `d ≤ 3`. The middle and last steps are geometric and can be checked end-to-end
+without `L1'`:
+
+| `θ` (both cells) | `min cross-distance` over 120 random near-dodecahedral pairs at `d = 3` |
+| --- | --- |
+| `0` | `0.345708` |
+| `0.020` | `0.324762` |
+| `0.0447` | `0.311862` |
+| `0.060` | `0.253685` |
+| `0.080` | `0.251929` |
+| `0.120` | `0.170136` |
+
+Every entry is far below the required `2`, so the geometric exclusion at `d = 3` holds with a large
+margin — and it keeps holding at `θ = 0.12`, **2.7 times** the `θ ≤ 0.0447` the volume budget allows.
+
+**Why that matters: the binding constraint is `L1'`, not the geometry.** The argument survives as long as
+`θ_max = √(η/c) ≤ 0.12`, i.e. for any `c ≥ η/0.12² = 2.59·10⁻⁴/1.44·10⁻² = 0.018`. So the measured
+`c = 0.2253` has a factor of **12** of slack against the geometric requirement, and even a constant as
+small as `0.02` would still give `δ₀ = 2.88·10⁻³` at the same `η`. **The risk in this route is entirely
+in `L1'`, and none of it is in the clash geometry** — which is the useful thing to know when deciding
+where to spend the next block.
+
+**Not a proof of anything.** The table samples perturbations; it does not cover all of them, and it is
+`TESTED_FINITE`. Its role is to localise the risk, and it does: `L1'`'s constant could be wrong by a
+factor `12` and the conclusion would not change.
+
+*Status.* `TESTED_FINITE`. Reviewer X.
