@@ -2195,3 +2195,31 @@ inequality) and `K15-C051` (no locally dense periodic blob found), and with
 
 *Status.* `PROVED` (immediate from the definitions). Reviewer X. Recorded in
 `Main/NEXT_PACKAGE.md`.
+
+### K15-C081 — a cluster-level lower bound on `Φ` (`PROVED`)
+
+**Setup.** Take the icosahedral 13-cluster `C`. By Hales–McLaughlin every cell has
+volume `≥ V_dod = 5.5502910285…`, so the cluster's total deficit is at most
+`13(√32 − V_dod) = 1.3853218727…`. By `K15-C044` the cut condition for `U = C` reads
+`Σ_C b ≤ Φ|δ⁺_R(C)|`, i.e.
+
+```
+Φ  ≥  13(√32 − V_dod) / |δ⁺_R(C)|  =  1.3853218727… / |δ⁺_R(C)|.
+```
+
+At `R = 2.09` each of the twelve outer vertices has at most `k_R ≤ 12` edges, and at
+most `12·12 = 144` of them leave `C`, so `Φ ≥ 1.3853/144 = 0.009620`. (With a
+sharper count of the leaving edges the bound improves proportionally:
+`|δ⁺| ≤ 132 ⇒ Φ ≥ 0.010495`.)
+
+**What it is.** A *cluster-level* refinement of the vertex-level bound
+`Φ ≥ 0.00888` (`K15-C036`): the cluster must shed `1.3853` of deficit across its
+boundary, so a smaller `Φ` is impossible regardless of how the transfer is arranged.
+It gives the next block a definite floor to beat — a transfer with
+`Φ ∈ [0.0096, …]` is the smallest that can work, and a candidate claiming a smaller
+`Φ` is refuted outright.
+
+**Caveat.** The bound uses only HM and the cut condition; it does not show such a
+transfer exists.
+
+*Status.* `PROVED` (arithmetic from accepted lemmas). Reviewer X.
