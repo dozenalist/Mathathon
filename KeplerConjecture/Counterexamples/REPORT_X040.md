@@ -200,6 +200,30 @@ period-16 13-cluster is unsaturated, so `b = −∞` and every cut is satisfied 
 geometric content. W1–W6 in `REVIEW_0353.md` §3 remain the acceptance tests, with W6 restated as
 in §1.1 above.
 
+### 4.1 Main's `η ≥ 0` guard closes the §17 witness, and the predicates are undisturbed
+
+`shell_check.py` moved `909a50a → 5caa1c9`, which adds `if eta < 0: return None` before any other
+work. `Reviews/verify_eta_closed.py` checks the three things that matter at once:
+
+| object | result |
+| --- | --- |
+| blob `909a50a` on C's own row (`n = 27`, `ρ = 41/20`), `η = −7611431/500000000` | density `0.015185801` — the witness |
+| blob `5caa1c9`, same input | `None` — rejected |
+| blob `5caa1c9`, `η = 0` control | `0.780370311`, unchanged (C published `0.78037032`) |
+
+So the guard closes the witness and moves no published number. I also re-ran the three
+adversarial families (`Reviews/x_family_check.py`, 300 random + probe-targeted + near-touching)
+against `5caa1c9`: **0 wrong verdicts**. That is expected — the change is a precondition, not a
+predicate repair — but it is worth having on record that the precondition added no regression in
+the part of the checker that has failed three times before.
+
+One integration note for C: because `check()` now returns `None` rather than a number,
+`Computation/shell_fixture.py` will report failure (exit 2) on a negative `η` instead of printing
+a density, and `checker_adversarial.py` already tests for exactly that. Any C-side caller that
+*computes* `η` as `max p` on the shell rather than passing `0` will now break loudly. That is the
+intended behaviour, but it is a behaviour change and should be checked on C's side before the next
+`shell_propose` run.
+
 ---
 
 ## 5. Ledger

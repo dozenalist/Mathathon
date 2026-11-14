@@ -557,3 +557,12 @@ every `U` and the fixture is no evidence at any `Φ`.
 cut condition in every case (`0/196`). Combined with §D (115 instances via HiGHS and via
 `Φ ≥ t*`), Theorem 1's statement and the threshold formula are verified against two independent
 decision procedures, one of which uses no floating point at all.
+
+### K15-X-C025 — Main's `η ≥ 0` guard closes the REVIEW_0308 §17 witness without moving a number
+
+`Reviews/verify_eta_closed.py` (exit 0): blob `909a50a` on C's row `n = 27`, `ρ = 41/20`, with
+`η = −7611431/500000000` returns density `0.015185801` (the 1.5% witness); blob `5caa1c9` returns
+`None`; the `η = 0` control returns `0.780370311` on both, unchanged. The three adversarial
+families (`Reviews/x_family_check.py`) give **0 wrong verdicts** against `5caa1c9`. Integration
+note: `check()` now returns `None` for `η < 0`, so a caller that computes `η` as `max p` on the
+shell will fail loudly (intended); `shell_fixture.py` exits 2, `checker_adversarial.py` tests it.
