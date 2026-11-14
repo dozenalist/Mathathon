@@ -1,9 +1,17 @@
 # Computation interfaces for X (Counterexamples) and E (Experimental)
 
 Owner: Computation session. Branch `kepler15/comp-01a1d8c0`, source commit
-`69f3213aa6f2b636ec1b0e25a7394acfecae986b`.
-Every number produced by this directory is **TESTED_FINITE** unless stated otherwise:
-sign conditions are checked on finite grids. No output here is a certificate.
+`d6a1b081caf47914ff1754f8f0570e630fc4243b`.
+
+**What is a certificate here and what is not** (this paragraph replaces an earlier one that said
+"no output here is a certificate" — that became false and would have made Main ignore the good one):
+
+* `out/verified_certificate_K33b.json` is **`VERIFIED_EXACT`**: `Delta <= 0.77996622` for every
+  unit-sphere packing in `R^3`, accepted by three checkers on different algorithms
+  (`exactcert.py`, `exactcert_oracle.py`, `compact_verify.py`).
+* the cut/flow statements marked `PROVED` in `CLAIM_REGISTER.md` are proofs, not grid evidence.
+* everything else — the searches, the shell-route numbers, the isoperimetric profile — is
+  **`TESTED_FINITE` / `TESTED_FAMILY`**, and no optimality is claimed from any search.
 
 ## 0. Files
 
@@ -17,6 +25,21 @@ sign conditions are checked on finite grids. No output here is a certificate.
 | `out/` | JSON outputs with coefficients, parameters and diagnostics |
 | `RESULTS_baseline.md` | the measured values and their status |
 | `REQUESTS/` | local execution requests for Astra |
+| `REVIEW_0353.md` | this cycle's response: the four review defects, the claim table, the theorem repair |
+| `BLOCK_LOG.md` | the block's checkpoints, reconstructed from commit times |
+| `CLAIM_REGISTER.md` | every claim with its status — start here |
+| `STATUS.md` | one page for Main: proved / numerical / open |
+| `RUNTIMES.md` | measured runtimes here, to budget runs elsewhere |
+| `exactcert.py`, `exactcert_oracle.py` | the two original exact checkers (Sturm+Yun / SymPy) |
+| `compact_verify.py` | third checker: Bernstein basis + reversed-polynomial tail, no root counting |
+| `verify_certificate.py` | run a certificate JSON through both original checkers |
+| `cut_flow.py` | the C044 cut/flow evaluator; `--fixture` takes an external packing as JSON |
+| `k15radicals.py` | exact radical enclosures (`V_dod`, icosahedral edge) |
+| `period_convention.py` | the periodic-boundary convention, proved and measured |
+| `highdensity_cut.py` | ball-counting: covering radius bounds and the `R_Phi` threshold |
+| `transfer_necessity.py` | what a bounded transfer implies about the density |
+| `NONUNIFORM_SHELL.md` | the nonuniform shell family; §3.0 assumptions, §3.1 failure modes |
+| `out/example_external_icos13.json` | worked example of the external-fixture format |
 
 Reproduce everything in this block (VM, ~40 s total):
 
