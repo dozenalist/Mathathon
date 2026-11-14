@@ -337,3 +337,83 @@ Musin–Tarasov being computer-assisted** — which they already disclose.
 
 Ultramath: **not active** in this block — no swarm was created, resumed, or queried; the tool
 surface contained no Ultramath capability and reasoning effort is not evidence of it.
+
+## Structural-SOS line: improved bound, and a negative result for the hybrid form
+
+**Improved certified value.** Coordinate descent inside the structural family (every step
+re-certified exactly) improved the random-search winner:
+
+| stage | `P(0)/Q(0)` | certified density |
+| --- | --- | --- |
+| random search, `r=4` | `2032/1867` | `0.818734679` |
+| + coordinate descent | `38888/35753` | `0.818214025` |
+| + lift to quadratic `H`, descend | `60952/56047` | **`0.818086808`** |
+
+**Final certificate.**
+$$H(s)=\frac{17}{4096}\bigl(6144s^2+6848s+22857\bigr)>0,\qquad P(s)=-(s-4)H(s),\qquad
+\frac{P(0)}{Q(0)}=\frac{60952}{56047},$$
+$$\boxed{\ \Delta\le\frac{4}{3\sqrt\pi}\cdot\frac{60952}{56047}=0.818086808\ }\quad
+\text{(all unit-ball packings)} .$$
+CE1 is structural (`H > 0` everywhere, `s−4 ≥ 0` on the domain). CE2 verified twice: by my
+`sign_on_half_line` (Sturm with even-multiplicity handling) and independently by
+`sympy.count_roots(Q, 0, ∞) = 0` with `Q(0) = 2858397/8192 > 0`. **No numerical residual.**
+The descent also shows the family saturates: `H` collapses to a single quadratic, so `P` stays
+cubic and the achievable value moves by `<1e-3` per added degree. This class is far too small to
+compete with degree-33 Laguerre certificates.
+
+**Interface finding (why K33 cross-checked and this certificate cannot).** C's and Main's
+checkers both use the *width-π* Gaussian (`e^{−π|x|²}`, Laguerre basis), related by the
+**rational** substitution `t = 2u`. My structural family uses the *width-1* Gaussian
+(`e^{−|x|²}`), and the rescaling that maps one to the other sends the polynomial argument
+`s = |x|² ↦ u/π²` — **irrational in `u`**. So a certificate cannot be transported between the two
+widths by a change of variable; each must be re-derived in the target width, and the
+`t = 2u` cross-check that succeeded for K33 is unavailable here. This is a genuine interface
+constraint for C and Main, not a defect in either checker.
+
+**Negative result: the naive structural hybrid is worse.** Relaxing CE1 on the contact shell and
+paying the count price is the DLOV mechanism, so I tried the structural form
+`P(s) = −(s−S₀)H(s)` with `S₀ = (209/100)² = 4.3681`, `η = (S₀−4)H(4)`, and the hybrid bound
+`(4π/3)(P(0)+12η)/Q(0)` (count `n = 12` from `K15-C019`/`E015`). Scanning 2028 positive
+quadratic `H` (`x_r03_hybrid_sos.py`): best certified value **`2.304231488`** — *much worse*
+than the plain `0.818086808`. The reason is structural: this ansatz **forces `P(S₀) = 0`**, i.e.
+a contact zero at the *outer* edge of the shell, whereas the hybrid wants to *lift* `P` across
+the whole shell; and with `n = 12` the price `12η` dominates `P(0)` as soon as `η ≳ 0.09`.
+So the naive relocation of the root from `s = 4` to `s = S₀` does **not** realise the DLOV gain.
+This is *family evidence*: the parameterisation fails, not the hybrid route. The correct shape
+needs a free positive bound `η` on the shell with `P` not forced to vanish at `S₀` — an SDP in
+`(H, η)`, filed as X-R03b.
+
+## Timing note
+
+The block ran from `09:17:25Z`; checkpoints were pushed at 23, 33, 35 and 43 minutes of elapsed
+work (commits `a1fea98`, `e3a63a1`, `8b79dd1`, `9930194`). Every priority item was completed and
+the fallback advanced twice.
+
+## Clarification for integration: what in the K33 JSON is *certificate* and what is *search*
+
+The K33 object contains `degree: 33`, `grid: 10000`, `epsilon: 1e-07`, `denominator: 1e8`.
+`degree` and the rational coefficient vector are **certificate data**; `grid`, `epsilon` and
+`denominator` describe how the candidate was *found* (discretisation, slack floor, rationalisation
+precision) and play **no role in verification**. The bound `Δ ≤ 0.77996650` rests only on:
+(i) the exact coefficients, (ii) `p ≤ 0` on `[8π,∞)`, (iii) `q ≥ 0` on `[0,∞)`, (iv) the directed
+π enclosure, all of which I re-verified independently. **A reader must not treat the bound as
+grid-dependent, and a critic cannot attack it by attacking the grid.** The same statement applies
+to my `K15-X-C010`: its `P` and its structural CE1 argument are all that matter.
+
+## Consolidated verification ledger (this block)
+
+| object | verified how | independent of the author's code? |
+| --- | --- | --- |
+| `K15-C033` p, q, p0, q0, ratio | my own Laguerre recurrence, exact | yes |
+| `K15-C033` CE1 / CE2 | my own Sturm + even-multiplicity test | yes |
+| `K15-C033` global signs | root census: 1 root each, p's below `8π`, q's negative | yes |
+| `K15-C033` rounded bound | my own 60-term Machin π enclosure | yes |
+| `K15-C033` full object | **Main's** `shell_check` after exact `t = 2u` conversion | third implementation |
+| `K15-E015` bracket `a* ∈ [1.2113,1.2114]` | my own rational Taylor sin/cos/tan | yes |
+| `K15-E015` monotonicity | sympy `diff` identity, both terms negative | yes |
+| `K15-E015` final `δ₁₃ ≤ 57.1448°` | my own enclosure + `arccos` monotonicity | yes |
+| Main `shell_check.fourier_map` | direct 3-D quadrature, `4.9e-15`; and exact on K33 | yes |
+| Main π constants | against my Machin enclosure, exact | yes |
+| Main `_odd_part` | 5 synthetic fixtures | yes |
+| Main `K15-C019` | re-derived; sharpened range; mixed case corrected | yes |
+| `K15-X-C010` | CE1 structural (a one-line argument) + CE2 by two exact routes | self, audited by construction |
