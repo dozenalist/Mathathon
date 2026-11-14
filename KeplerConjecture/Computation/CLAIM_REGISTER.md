@@ -39,6 +39,14 @@ roadmap vocabulary with two additions used only where the reviewer required them
 | `K15-C-D4RECON-001` | `PROVED` | the period-16 13-cluster's cut condition reduces to **one** inequality: over all 8191 subsets exactly one has `Σ_U b > 0`, the singleton `{0}`, since any subset containing a ring vertex has `Σ_U b ≤ −335.1`. The fixture is unsaturated (`max hole ≥ 12.327`) so it supports no Hales-type argument, but its torus cells are bounded (they sum to 4096), so `b` is finite and the fixture *is* a legitimate C044 test set | `cut_flow.py`, `period_convention.py`, `REVIEW_0523.md` §4 |
 | `X-C034 / D8` | `CLOSED` | `verify_flow_exact` false-accepted an isolated positive-deficit vertex; `feasible_flow` and `find_violating_cut` shared the defect. Repaired at `ae545b9`; the witness is retained and every path now rejects it, including the `PATCH_FEASIBLE` output | `audit_cut_flow_api.py` §A |
 
+## Exact geometry of periodic fixtures (this block)
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| `K15-C-EXACTVORONOI-001` | `VERIFIED_EXACT` | an exact rational Voronoi-cell engine for periodic packings: rational half-spaces, exact vertex enumeration, volume as `Σ|det|/6` over hull triangles. Reproduces the known cells (`2Z³` → 8, BCC → `a³/2`), satisfies the partition identity `Σ vol = |det L|`, and agrees with an independent Sobol sampler to 0.2σ on random 1-, 2- and 4-site packings. Refuses a too-small `rmax` explicitly instead of crashing inside qhull | `fixture_nonuniform.py` §A/E |
+| `K15-C-NONUNIFORM-001` | `VERIFIED_EXACT` (fixture) + `TESTED_FAMILY` (the 2-point claim) | the smallest nonuniform periodic fixture has **three** points per cell: `L = 4Z³`, `(0,0,0), (2,0,0), (0,2,0)`, minimum separation exactly 2, **exact** cell volumes `16, 24, 24`, period volume 64. Every 2-point periodic packing tried has congruent cells. All its deficits are negative, so its cut condition is vacuous — unequal cells alone give the criterion nothing | `fixture_nonuniform.py` §B, `out/fixture_nonuniform_3pt.json` |
+| `K15-C-NEARCONTACT-001` | `PROVED` (FCC cell formula) + `TESTED_FINITE` (the scan) | for FCC at nearest-neighbour distance `d` the cell is `d³/√2`, so `b > 0` needs `d < 2`. A single-site displacement changes the cell by `≈0.7δ²` while the contact slack is `ε = d−2`; taking `δ` to the exact bisected maximum at four values of `ε`, `b(0)/ε → −12/√2 = −8.485` (measured −8.4926) and `b < 0` at every vertex. `family_scan()`: `t* = 0` at all 18 instances across densities 0.6206–0.7393. Conditional: one family, single-site displacements | `fixture_nonuniform.py` §C/D |
+
 ## Finite-search evidence — **not** optima, **not** closures
 
 | claim | status | statement |

@@ -119,29 +119,111 @@ all 8191 subsets, exactly one has `Σ_U b > 0` — the singleton `{0}` — becau
 a ring vertex has `Σ_U b ≤ −335.1`. So the fixture yields the number `0.008880268414739` and nothing
 else. It is evidence, but thin evidence, and it is not evidence of the Hales type.
 
-## 5. What this block does NOT establish
+## 5. The geometric item: a near-contact evaluator and the smallest nonuniform fixture
+
+The review's fallback asked for "a concrete near-contact version of the finite cut evaluator with
+precisely stated geometric hypotheses and a smallest nonuniform periodic fixture". `fixture_nonuniform.py`.
+
+### 5.1 An exact volume engine, checked three ways
+
+Cell volumes are computed in ℚ: rational half-spaces `2(w−v)·x ≤ |w|²−|v|²`, exact vertex
+enumeration, exact volume as `Σ|det|/6` over the triangles of the hull with the site as apex. scipy
+supplies only the hull combinatorics; every number in the result is a `Fraction`. Checked against:
+
+* known cells — `2Z³` gives 8, BCC gives `a³/2` exactly;
+* the **partition identity** — the cells must sum to `|det L|`, which is also the check that `rmax`
+  bounded them (a truncated cell shows up here);
+* an independent **scrambled-Sobol sampler** on random rational packings with 1, 2 and 4 sites:
+  worst deviation 0.2σ over the trials.
+
+Two of my own bugs were caught by these checks, not by reading the code: `rmax` too small threw an
+`IndexError` from inside qhull instead of saying "the cell looks unbounded", and `min_separation`
+skipped *every* zero displacement, so two coincident sites passed the separation test and their
+cells double-counted — which the partition check then flagged as overlapping cells.
+
+### 5.2 The smallest nonuniform periodic fixture has three points per cell
+
+Every 2-point periodic packing tried has **congruent** cells (exact volumes and sampling agree, e.g.
+62.5/62.5 for `B = (2.1,0,0)` in a 5-cube, where no symmetry of the pair is obvious). The three-point
+fixture
+
+$$L = 4\mathbb{Z}^3,\quad A=(0,0,0),\ B=(2,0,0),\ C=(0,2,0)$$
+
+has minimum separation exactly 2 (A–B and A–C are contacts), **exact** cell volumes `16, 24, 24`,
+period volume `64`, and at `R = 2` the edges A–B, A–C. Its deficits are `−10.34, −18.34, −18.34`, all
+negative, so its cut condition holds at **every** Φ and it constrains nothing. That is the useful
+negative content: unequal cell volumes alone give the criterion nothing. What it needs is a cell
+smaller than the Kepler cell `√32 = 5.657`, i.e. `b(v) > 0` somewhere.
+
+### 5.3 Near-contact cannot supply `b > 0` — a conditional theorem-let with 3-D evidence
+
+For FCC at nearest-neighbour distance `d` the cell volume is `d³/√2`, so
+
+$$b = \frac{8-d^3}{\sqrt2} > 0 \iff d < 2,$$
+
+below contact. Perturbing one site by `δ` changes its cell only by `≈ 0.7δ²`, while contact
+(here, the slack `ε = d−2`) limits `δ`. Taking `δ` to the **exact bisected maximum** and recomputing
+the cells exactly:
+
+| `d` | `ε` | `δ_max` | `b(0)` at `δ_max` |
+| --- | --- | --- | --- |
+| 2.1213 | 0.1213 | 0.1771 | −1.132 |
+| 2.0506 | 0.0506 | 0.0725 | −0.447 |
+| 2.0153 | 0.0153 | 0.0217 | −0.131 |
+| 2.0011 | 0.0011 | 0.0016 | −0.0094 |
+
+`b(0)/ε → −12/√2 = −8.485` (measured −8.4926 at the smallest `ε`). So **no single-site perturbation
+of a close packing, within its own contact slack, produces a positive deficit at any vertex.** This is
+the quantitative form of `K15-C-CUTJAM-001`, and it explains why the only fixture in the record with
+`b > 0` (the 13-cluster, `b(0) = +0.1066`) is nowhere near Kepler.
+
+### 5.4 The near-contact band is vacuous for this family
+
+`family_scan()` walks FCC from `a = 3.0` down to `2.83` — density `0.6206` to `0.7393` against
+Kepler's `0.7405` — displacing one site by `0`, `1/2` and all of the slack, and scanning all `2⁴`
+subsets:
+
+| `a` | `d` | density | `δ_max` | `t*` at `δ = 0, ½, 1` |
+| --- | --- | --- | --- | --- |
+| 3.000 | 2.1213 | 0.62056 | 0.1771 | 0, 0, 0 |
+| 2.950 | 2.0860 | 0.65265 | 0.1243 | 0, 0, 0 |
+| 2.900 | 2.0506 | 0.68700 | 0.0725 | 0, 0, 0 |
+| 2.870 | 2.0294 | 0.70877 | 0.0419 | 0, 0, 0 |
+| 2.850 | 2.0153 | 0.72379 | 0.0217 | 0, 0, 0 |
+| 2.830 | 2.0011 | 0.73925 | 0.0016 | 0, 0, 0 |
+
+`t* = 0` at all 18 instances: the cut condition is vacuous throughout the near-contact band **for
+this family**. Stated conditionally, as required: this is FCC plus a single-site displacement, not a
+statement about all packings, and it is evidence, not proof.
+
+## 6. What this block does NOT establish
 
 * The repair is about the **API's contract**, not about the geometry. Nothing here changes any bound.
 * `K15-C-CUTIMPLIES-003` remains **one implication**: the finite-`U` cut condition forces
   `ρ ≤ 1/√32`. The converse — Kepler ⇒ a finite `Φ` works — is open, and **no equivalence is claimed**.
-* Nothing here assumes or asserts exact contact matchings for saturated packings. The only geometric
-  statement used is the cell-volume partition identity, which holds for every packing.
+* No exact contact matching is assumed for saturated packings anywhere. The only geometric statement
+  used in the cut work is the cell-volume partition identity, which holds for every packing.
+* §5.3 is a **single-site perturbation** statement; multi-site rearrangements are not covered, and
+  §5.4 is one family.
 * The audit's oracle decides feasibility of the *finite* LP. It says nothing about the infinite
-  packing; that is what `cut_flow.py`'s "PATCH_FEASIBLE only" label is for, and it is unchanged.
+  packing; that is what the `PATCH_FEASIBLE only` label is for, and it is unchanged.
 
-## 6. Files and how to run
+## 7. Files and how to run
 
 ```bash
 cd KeplerConjecture/Computation
 python3 audit_cut_flow_api.py     # 66 checks, three-way; exit 0
 python3 tests_cut_flow.py         # S1-S18 including the witness; exit 0
 python3 cut_flow.py --fixture out/fixture_C034_witness.json   # the witness: no flow, UNBOUNDED cut
+python3 fixture_nonuniform.py     # exact volumes, the 3-point fixture, the near-contact scan (~30 s)
+python3 cut_flow.py --fixture out/fixture_nonuniform_3pt.json  # the nonuniform fixture: vacuous
 ```
 
 Artifacts: `cut_flow.py` (contract + repair), `audit_cut_flow_api.py`,
-`out/fixture_C034_witness.json`, `tests_cut_flow.py` S16–S18, `CLAIM_REGISTER.md`.
+`out/fixture_C034_witness.json`, `tests_cut_flow.py` S16–S18, `fixture_nonuniform.py`,
+`out/fixture_nonuniform_3pt.json`, `CLAIM_REGISTER.md`.
 
-## 7. Clock
+## 8. Clock
 
 Receipt `2026-11-14T13:29:44Z`. The repair was pushed at `13:33:03Z` (commit `ae545b9`); this
 document, the register update and the geometric item follow, and the closing line is written from

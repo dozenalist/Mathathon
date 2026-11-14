@@ -111,6 +111,9 @@ def cell_volume(v, competitors):
         if key in seen:
             continue
         seen.add(key); P.append(key)
+    if len(P) < 4:
+        raise RuntimeError("only %d competitor planes within rmax: the cell looks UNBOUNDED. "
+                           "Increase rmax past half the period diameter." % len(P))
     # STAGE 1 (float): which planes are actually ACTIVE?  Only those can contribute a vertex.
     from scipy.spatial import HalfspaceIntersection
     hs = np.array([[float(pl[0]), float(pl[1]), float(pl[2]), -float(pl[3])] for pl in P])
@@ -152,15 +155,20 @@ def cell_volume(v, competitors):
 
 
 def min_separation(L, sites, rng=3):
-    """Exact squared minimum distance over distinct points of the periodic set."""
+    """Exact squared minimum distance over distinct points of the periodic set.
+
+    The skip is (same SITE and zero shift), not "zero displacement": two distinct sites that
+    coincide, or differ by a lattice vector, are distance 0 apart and must be caught.  The earlier
+    version skipped every zero displacement, so a duplicate site passed the separation test and its
+    cell was double-counted -- which the partition check then flagged as overlapping cells.
+    """
     best = None
-    for s in sites:
-        for t in sites:
+    for i, s in enumerate(sites):
+        for j, t in enumerate(sites):
             for n in lattice_points(L, rng):
-                d = [s[j] - t[j] - n[j] for j in range(3)]
-                if all(x == 0 for x in d):
+                if i == j and all(x == 0 for x in n):
                     continue
-                q = norm2(d)
+                q = norm2([s[k] - t[k] - n[k] for k in range(3)])
                 if best is None or q < best:
                     best = q
     return best
@@ -178,6 +186,9 @@ def evaluate(L, sites, rmax=6):
                     comp.append(w)
         vol, nv, np_ = cell_volume(v, comp)
         vols.append(vol); info.append((nv, np_))
+    if sum(vols) != detL:
+        raise RuntimeError("cell volumes sum to %s, period volume is %s: rmax did not bound the "
+                           "cells (a truncated cell shows up here)" % (sum(vols), detL))
     return detL, vols, info
 
 def diag(x, y, z):
@@ -346,6 +357,71 @@ def family_scan():
         rows.append((float(a), d, rho, float(dx_max), [float(t) for t in t_stars]))
     return rows
 
+def engine_cross_check(trials=3, N=2 ** 18):
+    """Validate the exact engine against an independent sampler and against a known case.
+
+    A bug here would corrupt every number this file produces, so it is checked two ways:
+      * a single site in a 16-cube must give volume 4096 (and rmax = 6 must be REFUSED, because
+        the nearest image is at 16);
+      * random rational packings (2 to 4 sites), exact volumes vs scrambled-Sobol assignment.
+    """
+    from scipy.stats.qmc import Sobol
+    ok = True
+    detL, vols, _ = evaluate([[F(16), F(0), F(0)], [F(0), F(16), F(0)], [F(0), F(0), F(16)]],
+                             [(F(0), F(0), F(0))], rmax=20)
+    ok = ok and vols[0] == 4096
+    print("  %s 16-cube single site: volume 4096" % ("PASS" if vols[0] == 4096 else "FAIL"))
+    try:
+        evaluate([[F(16), F(0), F(0)], [F(0), F(16), F(0)], [F(0), F(0), F(16)]],
+                 [(F(0), F(0), F(0))], rmax=6)
+        refused = False
+    except RuntimeError:
+        refused = True
+    print("  %s rmax = 6 is refused (the nearest image is at 16)" % ("PASS" if refused else "FAIL"))
+    ok = ok and refused
+
+    def sample(L, sites):
+        a, b, c = (float(L[i][i]) for i in range(3))
+        S = np.array([[float(x) for x in s] for s in sites])
+        eng = Sobol(d=3, scramble=True, seed=11)
+        cnt = np.zeros(len(sites), dtype=np.int64)
+        for _ in range(8):
+            P = eng.random(N // 8) * np.array([a, b, c])
+            D = P[:, None, :] - S[None, :, :]
+            D -= np.array([a, b, c]) * np.round(D / np.array([a, b, c]))
+            cnt += np.bincount(np.argmin(np.einsum("ijk,ijk->ij", D, D), axis=1),
+                               minlength=len(sites))
+        return cnt / cnt.sum() * a * b * c
+
+    rng = np.random.default_rng(0)
+    worst = 0.0
+    for _ in range(trials):
+        a = F(3) + F(int(rng.integers(0, 16)), 10)
+        L = diag(a, a, a)
+        sites = [(F(0), F(0), F(0))]
+        cand = [(F(i, 2), F(j, 2), F(k, 2))
+                for i in range(2 * int(a)) for j in range(2 * int(a)) for k in range(2 * int(a))]
+        rng.shuffle(cand)
+        for p in cand:
+            if len(sites) >= 4:
+                break
+            # cheap local check while building (shift range 1 is enough for a >= 3, sep 2);
+            # the finished set is verified once with the full scan below
+            if min_separation(L, sites + [p], rng=1) >= 4:
+                sites.append(p)
+        if min_separation(L, sites) < 4:
+            continue
+        detL, vols, _ = evaluate(L, sites)
+        ref = sample(L, sites)
+        sig = float(detL) * 0.5 / np.sqrt(N)
+        dev = max(abs(float(vols[i]) - ref[i]) for i in range(len(sites))) / sig
+        worst = max(worst, dev)
+        print("     a=%-5s vols %s   deviation %.1f sigma"
+              % (a, ["%.3f" % float(v) for v in vols], dev))
+        ok = ok and dev < 6
+    print("  %s worst deviation %.1f sigma (< 6)" % ("PASS" if worst < 6 else "FAIL", worst))
+    return ok
+
 def export(path=None):
     f = SMALLEST_NONUNIFORM
     vols, b_lo, b_hi, detL, _ = deficits(f["L"], f["sites"])
@@ -374,9 +450,13 @@ def main():
     allvac = all(all(t == 0 for t in ts) for _, _, _, _, ts in fam)
     print("   => %s" % ("t* = 0 at EVERY instance: the cut condition is vacuous across the band"
                         if allvac else "some instance has t* > 0"))
+    print("\n" + "=" * 100)
+    print("E. ENGINE CROSS-CHECK: a bug here would corrupt every number above")
+    print("=" * 100)
+    eng_ok = engine_cross_check()
     print("\nexported:", export())
-    print("fixture_nonuniform:", "PASS" if (good and allvac) else "FAIL")
-    return 0 if (good and allvac) else 1
+    print("fixture_nonuniform:", "PASS" if (good and allvac and eng_ok) else "FAIL")
+    return 0 if (good and allvac and eng_ok) else 1
 
 if __name__ == "__main__":
     sys.exit(main())
