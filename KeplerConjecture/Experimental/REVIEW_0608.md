@@ -352,3 +352,52 @@ against the cube, where every face area is exactly `4`, and against §2's determ
   i.e. a lower bound on a *product* of the base volume and the ring face areas. That is a
   different object from the stability statement of §8.3, and it is the concrete form the
   obstruction of §8.3b suggests.
+
+---
+
+## 10. The reduction the lemma gives: `(P')` becomes a face-area inequality
+
+The ring-excess lemma applied with `vol D ≥ V_dod` gives, for **any** completion whose cell has
+exactly twelve faces,
+
+```
+vol Omega(w1)  >=  V_dod + 5 (b − 1) · A_min ,      b = 1.051462224238
+```
+
+so the inequality `(P')` follows as soon as `A_min`, the smallest area of the five ring faces in
+the unit-distance polytope, clears
+
+```
+A*  =  (5.763417470 − 5.550291029) / (5 · 0.051462224238)  =  0.828283 .
+```
+
+That is a **geometric inequality about five face areas**, and it is not tight in practice:
+
+| configuration | faces | ring face areas | `A_min` | margin `A_min − A*` |
+| --- | --- | --- | --- | --- |
+| C5 (`θ=112°`, centre distance `2`) | 12 | `1.275974` ×5 | `1.275974` | `+0.448` |
+| global search best, non-family | 12 | `1.2748 … 1.2794` (min `1.249221`) | `1.249221` | `+0.421` |
+
+Both are certified, both clear the requirement by a factor of about `1.5`, and the resulting
+bounds are `5.872319` (C5) and `5.871765` (non-family) — each about `0.109` above the threshold.
+
+### 10.1 Status, stated precisely
+
+- **Proved**: `(P')` at the icosahedral pair for every completion whose cell has exactly twelve
+  faces and whose ring-face areas are at least `0.828283`. Both configurations ever found lie in
+  this class with `50 %` slack.
+- **Open (i)**: that every twelve-face completion has `A_min ≥ 0.828283`. The six free directions
+  are `60°`-separated from each other and from the five ring directions; a free face at `60°`
+  from a ring face can remove roughly half of it, so a *priori* the area could fall to about
+  `0.6` — below `A*`. Whether six such faces can crowd one ring face simultaneously is exactly
+  the question, and it is a finite sphere-packing question, not an analytic one.
+- **Open (ii)**: completions with thirteen or more faces. There `vol D ≥ V_dod` is false, the
+  lemma's base term shrinks, and a separate argument is needed. (§8.1 allows up to 45 centres in
+  the cutting shell; the searches never found more than six free centres to be useful, but "the
+  searches never found" is not a proof.)
+
+**Open (i) is the cheaper target of the two**, and it is the concrete deliverable I would hand
+to the next block: a finite optimisation over six points on a sphere with a `60°` code
+constraint, asking whether the five ring faces can be driven below `0.828283`. That is *far*
+smaller than the 135-coordinate completion space, and the lemma turns it into a statement about
+areas rather than volumes.

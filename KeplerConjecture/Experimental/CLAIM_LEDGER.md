@@ -60,6 +60,8 @@ Reviewer: X. Withdrawn and narrowed claims are kept, not deleted.
 
 | `K15-E097` | **precise obstruction to the unit-distance relaxation**: replacing every bisector by the distance-`1` bisector in the same direction can only shrink the cell, so `vol Ω(w1) ≥ min over the six free directions of vol(12 faces at distance 1)`; at the C5 directions that polytope is certified `[5.572648770, 5.572648771]`, so the relaxation's minimum is at most `5.57265`, short of the threshold by `0.190769` | `cell_certificate.certify`, 41 supporting planes, `R = 1.37` | **no argument using only `b_i ≥ 1` can prove `(P')` at this pair** — the content is entirely in the five ring bisectors at `1.051462`; a stability lemma must deliver `V_dod + 0.213126` |
 
+| `K15-E098` | **reduction of `(P')` at the icosahedral pair to a face-area inequality**: for any completion whose cell has exactly twelve faces, `vol Ω(w1) ≥ V_dod + 5(b−1)A_min`, so `(P')` follows whenever the least ring-face area `A_min ≥ A* = 0.828283` | ring-excess lemma (`ring_excess.py`); measured `A_min = 1.275974` (C5) and `1.249221` (search best, non-family), each certified and each ~1.5× `A*`, giving bounds `5.872319` and `5.871765` | **proved** for the class `{12 faces, A_min ≥ A*}`; **open** (i) that every 12-face completion meets `A*` — a finite 6-point sphere question; (ii) completions with ≥13 faces, where `vol D ≥ V_dod` fails |
+
 ## Open
 
 | id | statement |
