@@ -318,16 +318,30 @@ def box_volume(theta_box, phi_box):
     taken as the hull of the corner values, which is valid here because on both boxes each of
     sin and cos is monotone (theta in the second quadrant, phi in the first), so no interior
     extremum exists.  A box crossing a quadrant boundary would need the extremum added."""
-    def hull(vals):
-        return Iv(min(v.lo for v in vals), max(v.hi for v in vals))
-    th_vals = [ _sincos(t) for t in theta_box ]
-    s_th = hull([v[0] for v in th_vals])
-    c_th = hull([v[1] for v in th_vals])
+    def _stationary(lo, hi):
+        """The quarter-turn points inside [lo,hi]: sin and cos attain +-1 only there, so
+        including them makes the hull the true range even when the box crosses a quadrant."""
+        out = []
+        k = -8
+        while k * F(1, 2) <= hi:
+            q = k * F(1, 2)
+            if lo <= q <= hi:
+                out.append(q)
+            k += 1
+        return out
+
+    def range_of(lo, hi, idx):
+        pts = [lo, hi] + _stationary(lo, hi)
+        vs = [_sincos(t)[idx] for t in pts]
+        return Iv(min(v.lo for v in vs), max(v.hi for v in vs))
+
+    s_th = range_of(theta_box[0], theta_box[1], 0)
+    c_th = range_of(theta_box[0], theta_box[1], 1)
     ph_vals = []
     for k in range(5):
-        base = [phi_box[0] + F(2 * k, 5), phi_box[1] + F(2 * k, 5)]
-        vs = [_sincos(t) for t in base]
-        ph_vals.append((hull([v[0] for v in vs]), hull([v[1] for v in vs])))
+        lo = phi_box[0] + F(2 * k, 5)
+        hi = phi_box[1] + F(2 * k, 5)
+        ph_vals.append((range_of(lo, hi, 0), range_of(lo, hi, 1)))
     r5 = sqrt_iv(Iv(5))
     R5 = Iv(4) / r5
     Z5 = Iv(2) / r5
