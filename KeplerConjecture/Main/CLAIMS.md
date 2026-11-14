@@ -946,3 +946,24 @@ Summing over `D_θ ∩ B(x,r) ⊆ Λ ∩ B(x,r)` and using negligibility,
 
 *Status.* `PROVED` (elementary; the `θ`-quantification is Main's). Reviewer X.
 No numerical input is used.
+
+### K15-C030 — adversarial sign-checker suite (`VERIFIED`: 13/13 expectations hold)
+
+- **Artifact.** `Computation/checker_adversarial.py` — thirteen cases designed so
+  that a plausible but wrong checker fails at least one. It is stated
+  implementation-independently, so the same list can be run against
+  Computation's `exactcert` after conversion with
+  `interface_xcheck.main_to_comp`; running both and getting the same thirteen
+  verdicts is the evidence G8 asks for.
+- **The cases that matter.** `(u−5)²` must PASS (a checker that counts all roots
+  rejects it — the bug Main actually had, K15-C026); `(u−5)³` must FAIL;
+  `(u−1)²(u−2)²` must PASS while `(u−1)²(u−2)` must FAIL (the odd part is what
+  counts); `u²` must PASS (double root at the endpoint 0); the product of ten
+  simple positive roots must FAIL (the historical K21 failure mode, review
+  48443); `−(u−T)²` must PASS while `u−T` must FAIL (behaviour exactly at the
+  threshold `T = π_lo ρ²`); and the compact-window cases at `[4π_lo, T]`.
+- **Result on Main's checker.** 13/13 pass. The suite also caught an error in
+  *the test itself* on first run (a double negative made the "must PASS" case
+  positive), which is a small demonstration that it discriminates.
+- **Status.** `VERIFIED` for Main's `shell_check`; `OPEN` for `exactcert` until X
+  runs it there. Reviewer X.
