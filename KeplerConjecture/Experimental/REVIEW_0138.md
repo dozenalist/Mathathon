@@ -310,3 +310,65 @@ Receipt `2026-11-14T09:57:21Z`. Checkpoints taken at approximately +20 and +40 m
 `date -u` at the start of each tool call, and the final report is issued no earlier than
 `10:57:21Z`. No sleeping or busy-waiting was used; pauses between pushes were spent on the
 fixtures, the transfer theorem and the obstruction in Section 3.6.
+
+## 5. Correction: the empirical support for `(H_R)` was an artefact
+
+This is the most important finding of the block, and it retracts a number I published last
+block.
+
+**The bug.** `vor_volumes` flagged a cell as buffer-limited only if one of its vertices lay at
+radius `> R - 1e-6`, with the buffer sphere at `R = 26`. That test never fires: the buffer is a
+*sphere* of points, so the buffer points themselves have unbounded cells, and a core cell is
+truncated by the bisectors with buffer points at radius roughly `13`-`18`, well inside `R`.
+Diagnosed concretely: the largest fcc "boundary" cell had volume `602.709` with maximum vertex
+radius `17.9205`, and the Vornoi diagram reported `3000` unbounded regions — one per buffer
+point. So no cell was ever flagged, and `interior = 500` for a 500-point fcc block, which is
+absurd.
+
+**The correct test.** In a *saturated* packing, `Omega(v) subset B(v,2)`. A cell whose extent
+from its own centre exceeds `2` therefore cannot be the cell of a saturated packing, and its
+computed volume is meaningless for the packing bound — whether it was truncated by the buffer,
+or is simply unsaturated free space. That is the semantics the flag should carry, and it is now
+implemented (`extent_cap = 2.0`).
+
+**Consequence: every block I tested is unreliable.**
+
+| fixture | cells flagged unreliable | block flagged |
+| --- | --- | --- |
+| `fcc_plain` (500) | `244` | — (no defects) |
+| `hcp` (175) | `130` | — (no defects) |
+| `icosa_fill` (131) | `126` | yes |
+| `two_icosa` (281) | `241` | yes |
+| `icosa_fcc_shell` (189) | `188` | yes |
+
+Every non-vacuous block is flagged. So the values `S - D = +50` to `+95` reported in Section
+3.3, and the "factor `470`-`880`" I quoted in the previous completion, are **artefacts of free
+space**: computed cell volumes are upper bounds, the inflated cells are exactly the payers, and
+`S` is therefore overestimated without bound. The true `S - D` could be small, or negative. I
+retract the slack claim.
+
+**Why this is a genuine obstruction and not just a code fix.** It is not that the fixtures were
+built carelessly; it is that **no constructible completion of the icosahedral cluster is locally
+saturated**. Saturation requires every point of space to be within `2` of a centre, and the
+icosahedral motif is frustrated: the outer twelve are at `2.1029` from the defect and cannot be
+completed densely without displacing them. Random sequential adsorption reaches density `0.10`
+against `0.177` for fcc, and the fcc shell is incommensurate and leaves gaps. So the
+configuration that would make `(T')` / `(H_R)` testable is exactly the configuration we cannot
+build.
+
+**What therefore remains meaningful in this block.**
+
+- The `(T')`/`(H_R)` statements themselves, and their equivalence (Section 3.4). ✓
+- The transfer theorem: pointwise FCC-compatibility *given* `(H_R)`, exact cancellation, and the
+  `O(r^2)` boundary estimate. These are proofs and do not depend on volumes being accurate. ✓
+- The disjointness/overlap results: `max_pairwise_overlap = 0` in every fixture, and the
+  thresholds `4.18` / `8.36`. These depend only on distances, not on volumes, so they survive. ✓
+- The transfer *implementation* check: `c + A >= sqrt32` pointwise, `|sum A| <= 1.4e-17`, `A = 0`
+  on fcc/hcp. This validates the code path, not the geometry. ✓ (should be described that way)
+- The numerics `S - D`: **unreliable**, retracted as evidence.
+
+**What would be needed to test `(T')` at all.** A certified lower bound on `c(u) - sqrt32` for
+the payers that is valid for *every* completion, which is precisely the missing inequality — so
+the inequality cannot be tested by constructing completions. This closes the empirical route to
+the question, and it is the honest end state: the two-shell and transfer formulations are now
+exact and cleanly stated, and there is no numerical shortcut to settling them.

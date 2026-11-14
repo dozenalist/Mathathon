@@ -124,9 +124,18 @@ FIXTURES={
 }
 
 # ---------------- Voronoi with buffer + unbounded detection ----------------
-def vor_volumes(P, R=26.0, nbuf=3000):
-    """Returns (vol, buffer_face_flag).  A cell with buffer_face_flag True is
-    cut by the buffer and its computed volume is NOT the true cell volume."""
+def vor_volumes(P, R=26.0, nbuf=3000, extent_cap=2.0):
+    """Returns (vol, unreliable_flag).
+
+    A cell is flagged UNRELIABLE when its computed extent from its own centre
+    exceeds `extent_cap`.  Two things make that the right test:
+      * in a SATURATED packing Omega(v) is contained in B(v,2), so a cell with
+        extent > 2 cannot be the cell of a saturated packing;
+      * a sparse finite fixture (or one truncated by the buffer) produces exactly
+        such cells, and their volumes are meaningless for the packing bound.
+    An earlier version tested only "vertex radius > R - 1e-6", which silently
+    missed cells truncated at radius ~18 by an unbounded buffer sphere."""
+    
     buf=fib(nbuf)*R
     A=np.vstack([P,buf]); vor=Voronoi(A); n=len(P)
     vol=np.zeros(len(A)); touched=np.zeros(len(A),bool)
@@ -140,8 +149,8 @@ def vor_volumes(P, R=26.0, nbuf=3000):
         V=vor.vertices[reg]
         try: vol[i]=ConvexHull(V).volume
         except Exception: touched[i]=True; continue
-        # a cell touching the buffer is buffer-limited
-        if np.max(np.linalg.norm(V,axis=1)) > R-1e-6: touched[i]=True
+        # unreliable if the cell reaches farther than a saturated cell may
+        if np.max(np.linalg.norm(V-P[i],axis=1)) > extent_cap+1e-9: touched[i]=True
     return vol[:n], touched[:n]
 
 # ---------------- graph / blocks ----------------
