@@ -71,13 +71,12 @@ def icos_b():
 
     WHAT "SHARE" MEANS (period_convention.py).  The torus cells partition the period cube, so
         sum_{v in X} vol Omega(v) = 4096   exactly,   and   vol Omega(0) = V_dod exactly,
-    hence the twelve ring cells sum to 4096 - V_dod and their MEAN is (4096 - V_dod)/12.  That
-    mean is not each cell's volume: the symmetry group preserving both the register and 16 Z^3 has
-    order 8 with three orbits of four ring vertices (the icosahedral group is not crystallographic),
-    so congruence is not available.  Measured with a scrambled Sobol sequence (2.1e7 points) the
-    three orbits agree to 0.02, far inside the 0.25 sampling error, so the mean is accurate to
-    ~0.03 in b.  Every verdict here is insensitive to that: a subset containing a ring vertex has
-    sum_U b <= 0.11 - 334 < 0, while the maximum is 0.00888.
+    hence the twelve ring cells sum to 4096 - V_dod and, being congruent, each has volume
+    (4096 - V_dod)/12 = 340.870809080957.  Congruence is not assumed: the icosahedron in cyclic
+    coordinates is invariant under coordinate permutations and even sign changes, so the octahedral
+    group preserves both the register and 16 Z^3 and acts transitively on the twelve ring vertices
+    (orbit size 12).  Measured with half-space intersection (float, ~1e-12): the twelve agree to
+    3.4e-13 and the thirteen sum to 4096.000000000.
     """
     period = F(4096)
     b0_lo = SQ32_LO - V_DOD_HI
@@ -491,9 +490,9 @@ def main():
     b_lo, b_hi = icos_b()
     print("== icosahedral 13-cluster (periodised), b from rational enclosures:")
     print("   central cell b in [%.12f, %.12f]" % (float(b_lo[0]), float(b_hi[0])))
-    print("   ring cells  b in [%.6f, %.6f]  (MEAN over the twelve; the cells are not congruent,"
+    print("   ring cells  b in [%.6f, %.6f]  (each of the twelve; congruent by the octahedral"
           % (float(b_lo[1]), float(b_hi[1])))
-    print("               measured per-cell agreement 0.02 -- see period_convention.py)")
+    print("               symmetry, measured to 3.4e-13 -- see period_convention.py)")
     for R in (1.0, 2.0, 2.1029, 3.0):
         n, edges = build_13(R)
         row = dict(fixture="icos13", R=R, n_edges=len(edges),

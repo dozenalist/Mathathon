@@ -41,7 +41,7 @@ Vocabulary: `PROVED` / `VERIFIED_EXACT` / `TESTED_FINITE` / `TESTED_FAMILY` / `P
 | `K15-C-TRANSFER-DENSITY-001` | `REFUTED` | the periodic-sum version: summing the divergence over one period is valid only if `φ` is periodic, and periodicity of the *packing* does not make `φ` periodic — the flux across a period boundary need not cancel | retained in git history |
 | `K15-C-CUTEQUIV-001` | `WITHDRAWN` | "the full-period blob makes the cut condition read `ρ ≤ 1/√32`, so the condition is equivalent to Kepler". The derivation is invalid: C044 quantifies over **finite** `U`, and a period is not finite. The *one-directional* statement that survives is `K15-C-CUTIMPLIES-003`; the converse (Kepler ⇒ a finite `Φ` works) is **open** and is exactly where the transfer has to be earned | `cut_deficit.py` history; §3 below |
 | `K15-C-DECOUPLE-001` | `PROVED` | in the 13-cluster fixture copies are ≥ 12 apart while `R ≤ 3`, so every finite `U` splits into copies and `Σ_U b/|δ⁺(U)|` is a weighted average of copy ratios: the patch extremum equals the infinite-packing extremum | `cut_flow.py: period_decoupling` |
-| `K15-C-PERIODCONV-001` | `PROVED` Q1/Q2, `TESTED_FINITE` per-cell | the periodic-boundary convention, proved: `diam X = 4` so for `R ≤ 3` no lattice shift occurs (the periodic graph **is** the register graph, checked against `build_13` at four radii); torus cells partition the cube, so `Σ vol = 4096` exactly and the central cell is the true dodecahedron. The twelve ring cells have the stated *mean* volume but are **not** congruent — the group preserving register and lattice has order 8 with three orbits of four, since the icosahedral group is not crystallographic. Measured class means agree to 0.02 within 0.25 sampling error | `period_convention.py` |
+| `K15-C-PERIODCONV-001` | `PROVED` Q1/Q2, measured Q2 | the periodic-boundary convention, proved: `diam X = 4` so for `R ≤ 3` no lattice shift occurs (the periodic graph **is** the register graph, checked against `build_13` at four radii); torus cells partition the cube, so `Σ vol = 4096` exactly and the central cell is the true dodecahedron. The twelve ring cells are **congruent** — the icosahedron in cyclic coordinates is invariant under coordinate permutations and even sign changes, so the octahedral group preserves register and lattice and acts transitively (orbit size 12) — hence `(4096−V_dod)/12 = 340.870809080957` is *each* cell's volume. Measured by half-space intersection: the twelve agree to `3.4·10⁻¹³` and the thirteen sum to `4096.000000000` | `period_convention.py` |
 | `K15-C-HIGHDENS-001` | `PROVED` | `R`-saturated ⇒ `Ω(v) ⊆ B(v,R)` ⇒ `b(v) ≥ √32 − (4π/3)R³`, so every packing with covering radius `≤ R_Φ = ((√32−12Φ)·3/(4π))^{1/3}` fails C044 at capacity `Φ`. `R_0 = 1.105339`, and `R_Φ` barely moves with `Φ` (1.105 at `Φ=0` → 1.065 at `Φ=0.05`): the constraint is on the covering radius, not the capacity. No packing is constructed | `highdensity_cut.py` |
 | `K15-C-CUTBLOB-001` | `PROVED` (fixture-restricted) | for the period-16 13-cluster and `R ∈ {2, 2.1029, 3}`: `max_U Σ_U b/|δ⁺(U)| ≥ 0.008880268414739`, attained at the singleton, over **all 8191** subsets. A lower bound on `t*`, and a constraint on any `Φ` that must serve every packing — **not** a refutation of the transfer route | `cut_flow.py`, output row `R = 2` |
 | `K15-C-SOSSHELL-002` | `PROVED` (family-restricted) | in the cubic family every admissible shell allowance is `> 0` (`sup p > 0`), so every shell member is strictly worse than `η = 0`. The earlier "`η*` is smallest/attained" and the repair `η ≥ p(T)` are both **false** and are recorded as such | `sos_shell_variant.py`, `tests_0138.py` T4 |
@@ -89,20 +89,45 @@ A consequence worth recording: since *any* finite `Φ` suffices for the first di
 content is not in the size of `Φ` but in whether a finite `Φ` can be exhibited at all. That is the
 precise sense in which "exhibiting a bounded transfer is strictly stronger than the density bound".
 
-## 4. Deferred, as instructed
+## 4. The independent compact verifier the review asked for
+
+`compact_verify.py` (170 lines, one file, standard library only) verifies the K33b certificate by a
+third algorithm. The two existing checkers both *count roots* — `exactcert.py` with hand-rolled
+Sturm + Yun, `exactcert_oracle.py` with SymPy's `sqf_list`/`count_roots`. This one counts nothing:
+
+* positivity is proved with the **Bernstein basis** on an interval (all Bernstein coefficients
+  positive ⇒ positive there, since the basis is a partition of unity), recursing by exact de
+  Casteljau subdivision when the test is inconclusive;
+* the **half-line** is closed by the reversed polynomial, which is an identity, not an estimate:
+  `s^n f(a + 1/s) = Σ_j Q_j s^{n−j}` for `f(a+s) = Σ_j Q_j s^j`, so `f > 0` on `[a+T,∞)` is an
+  inequality on `[0, 1/T]`. This matters: the leading coefficient is `8.75·10⁻⁴⁴`, so a direct
+  magnitude bound for the tail would need `T ~ 10⁴⁴`;
+* the Fourier content is checked independently as `p = Σ c_k L_k^{(1/2)}` and
+  `q = Σ (−1)^k c_k L_k^{(1/2)}`, rebuilt from `c` with exact rational Laguerre polynomials.
+
+Result: **ACCEPT, `Δ ≤ 0.7799662167769938 ≤ 0.77996622`**, in 41 + 9 Bernstein pieces for `q` and
+1 + 11 for `p`. Negative controls (`--self-test`) require rejection of a perturbed `p(0)`, of a
+flipped Laguerre sign, and of the tighter claim `0.7797`; all three are rejected.
+
+## 5. Deferred, as instructed
 
 The large above-one Gram sweep is deferred: X now supplies both-sides certificates below
 `0.782267220134`, which is better than anything the sweep was going to reach on this side. Effort
 this block went into trustworthy geometry (the four defects, and §2) instead.
 
-## 5. The rest of the review's list — done in the remainder of the block
+## 6. The rest of the review's list — done in the remainder of the block
 
 1. **`period_convention.py`** — the periodic-boundary convention, proved and tested (see
    `K15-C-PERIODCONV-001` above). Two corrections came out of it that I did not expect:
-   * the twelve ring cells are **not** congruent, so `(4096 − V_dod)/12` is their *mean*, not each
-     cell's volume; `cut_flow.py` was relabelled accordingly and a Sobol measurement bounds the
-     per-cell agreement at 0.02. Every verdict is insensitive (a subset containing a ring vertex
-     has `Σ_U b ≤ 0.11 − 334 < 0` against a maximum of `0.00888`).
+   * the twelve ring cells: I first recorded them as **not** congruent, on the grounds that the
+     icosahedral group is not crystallographic. That argument is irrelevant — the icosahedron in
+     cyclic coordinates is invariant under coordinate permutations and even sign changes, so the
+     *octahedral* subgroup (which is crystallographic) already acts transitively on the twelve
+     vertices. Measured by half-space intersection, the twelve volumes agree to `3.4·10⁻¹³` and sum
+     with the central cell to `4096.000000000`, so `(4096 − V_dod)/12` is each cell's volume. The
+     earlier "mean, not each" label in `cut_flow.py` was reverted. **The correction came from
+     measuring, not from re-reading the argument** — recorded because that is the pattern worth
+     keeping.
    * a criterion I had carried in my own plan, `r_∞(Q) < ρ(Λ)/2 ⇒ Q = B(0,1)`, is **refuted**:
      it would give `b(v) = √32 − 4π/3 = 1.468 > 0` at every vertex, contradicting `Σ_U b ≤ 0` for
      `U` the whole register (`−4022.46`), and the inequality points the wrong way for what the
@@ -124,7 +149,7 @@ Still open: a Frank–Kasper fixture with unequal cell volumes; exact (not measu
 volumes, needed only if a verdict ever depends on one ring cell individually; and the above-one
 Gram sweep, deferred as instructed.
 
-## 6. Clock
+## 7. Clock
 
 | event | UTC |
 | --- | --- |
