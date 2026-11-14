@@ -3280,3 +3280,24 @@ exact field arithmetic and interval sign decisions (`C104`), and that is what `C
 *Status.* Theorem D `PROVED` modulo the two named inputs; **universal lower-volume claims are
 `PENDING_REVIEW`** per the supervisor's standing instruction, and `(L)`/`σ₀` must not be quoted
 as established constants. Reviewer X.
+
+### K15-C109 — a compressed symmetric pair family does not probe `(L)` (`TESTED_FINITE`, negative result)
+
+`Computation/pair_family.py`. E's search for `(L)` is one-sided (a dodecahedral `v` and the best
+payer `w`), so a *different* family was tried: configurations symmetric under `x ↦ 2−x`, so both
+cells are congruent and the pair sum is `2·vol`. A point at distance 2 from **both** centres lies
+on the circle `x = 1`, radius `√3`; `n` such points form a ring with mutual separation
+`2√3 sin(π/n)`, which is `≥ 2` only for `n ≤ 5`, so the pentagon is the largest admissible ring.
+Nine to twelve configurations were evaluated: `ring5 ph0.31` is the best at pair sum
+`20.989006`, i.e. `+9.675` above `2√32`, and the rest are worse (`ring4`: `23.111`; `ring3`:
+`30.022`). Both cap-ring variants are illegal (min separation `1.732051`).
+
+**Result: the family is far too sparse to probe `(L)`, and this is worth recording as a
+negative.** A cell needs about twelve neighbours to approach `V_dod`; the family supplies at most
+six per centre, so the cells come out at `11.5`–`15` each instead of `5.6`, and the test can
+only ever fail to refute. Since computed volumes are *upper* bounds for any saturated completion,
+a value above `2√32` is not evidence *for* `(L)` either. **So this file is neither support nor
+counterexample, and it should not be quoted as either.** The only family that reaches the
+relevant regime is E's icosahedral one, which is why the payer search is E's.
+
+*Status.* `TESTED_FINITE` (negative). Reviewer X.

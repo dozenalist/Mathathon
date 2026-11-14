@@ -345,11 +345,14 @@ improvement over the published dodecahedral bound, via a weaker bridge that need
 > δ(Λ)  ≤  (4π/3) / ( V_dod + δ₀·ρ )  <  0.754697399337     whenever ρ > 0.
 > ```
 
-*Proof.* Every vertex is either matched or (by maximality) has all its neighbours matched.
-Summing cell volumes over `B = Λ ∩ B(0,R)`,
+*Proof.* Split `B = Λ ∩ B(0,R)` into the vertices lying in one of the `P_B` **internal** pairs
+and the rest — call the latter `U_B`, so `|U_B| = |B| − 2P_B`. A vertex of `U_B` is either
+unmatched or matched to a partner outside `B`; in either case it contributes `vol Ω(v) ≥ V_dod`
+by Hales–McLaughlin. (Maximality is *not* needed for this step — only for the interpretation of
+`ρ`, since it guarantees `U_B` is not large.) So
 
 ```
-Σ_{v∈B} vol Ω(v) ≥ Σ_{pairs ⊆ B} (vol Ω(v) + vol Ω(w)) + Σ_{unmatched ∈ B} vol Ω(v)
+Σ_{v∈B} vol Ω(v) ≥ Σ_{internal pairs} (vol Ω(v) + vol Ω(w)) + Σ_{v∈U_B} vol Ω(v)
                  ≥ (2V_dod + δ₀) P_B + V_dod (|B| − 2P_B)
                  = V_dod |B| + δ₀ P_B .
 ```
@@ -382,6 +385,38 @@ Four consequences worth stating plainly.
 4. **What it does not buy: a number.** With `δ₀` non-explicit the improvement has no
    quantitative value, so nothing here may be quoted as a bound. It is a strictness statement,
    not a constant.
+
+## 4.1a Hostile self-audit of Theorems B, C, D (review 0438)
+
+Done deliberately against Main's own work, since a referee will look here first.
+
+- **B, the sum swap.** `Σ_{v∈B∖E_B} (Σ_{e∋v}c_e) vol Ω(v) = Σ_e c_e Σ_{v∈e∩(B∖E_B)}vol Ω(v)` is
+  a finite rearrangement; both factors are `≥ 0`, and discarding the `v ∈ E_B` terms is
+  legitimate because volumes are `≥ 0`. ✓
+- **B, the counting identity.** `|B| − |E_B| = 2Σ_{internal}c_e + C_R` where `C_R` collects
+  every edge with exactly one endpoint in `B∖E_B`. That is an identity, not an inequality;
+  `C_R` then splits as claimed into shell edges `O(R²)` and `E_B`-incident edges `≤ 12|E_B|`. ✓
+- **B, the tiling.** `Σ_{v∈B}vol Ω(v) = (4π/3)R³ + O(R²)` uses `Ω(v) ⊆ B(v,2)`, which needs
+  **saturation** — this is the one place the bridge can break, and it is why Theorem B is stated
+  for saturated packings. ✓ (Measured on fcc in `bridge_probability`… see `bridge_boundary.py`.)
+- **C, the split.** The first draft said "unmatched"; the correct split is "not in an internal
+  pair", because a vertex matched to a partner *outside* `B` still contributes only `V_dod`, not
+  `2V_dod + δ₀`. Corrected above; the inequality is unaffected. ✓
+- **C, no maximality needed.** The volume inequality holds for *any* matching; maximality only
+  makes `U_B` small. Recorded so nobody thinks a maximal matching is doing analytic work. ✓
+- **D, the cone bound.** The cone from a point `x` at distance `r` in the cell over a unit disc
+  perpendicular to `x` lies inside the cell by convexity and has volume `πr/3`, so
+  `r ≤ 3 vol(Ω)/π`. This is the only estimate in D and it is elementary. ✓
+- **D, compactness.** The admissible set for the minimisation is `{2-separated configurations
+  with a contact pair and Φ ≤ C}`; the bound on `r` puts both cells in `B(·,3C/π)`, so only
+  centres within `6C/π` can contribute, a bounded region in which 2-separated sets form a
+  compact family and `Φ` is continuous. A finite configuration is admissible only if `Φ` is
+  finite, which forces both cells bounded, so the degenerate case is excluded rather than
+  overlooked. ✓
+- **D, the two inputs.** ML's equality case, and the two-dodecahedra impossibility. The second is
+  now Main's own computation. The first is **not** re-derived here and is the softer dependency:
+  if the equality case of Hales–McLaughlin were not "iff regular dodecahedron", step (3) fails
+  and D with it. Flagged as the place a referee should push.
 
 ## 4.2 The two things that would make it a bound
 

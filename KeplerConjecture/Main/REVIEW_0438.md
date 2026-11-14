@@ -114,6 +114,27 @@ universal lower-volume claim is accepted pending review.
 - `DECISIONS.md`: `D18` (repair discipline: two proofs, rejected text retained, hypotheses
   itemised), `D19` (pair route is the live geometric route; pointwise is closed by sharpness).
 
+## 4a. A hostile self-audit of the two new theorems
+
+Written because a referee looks here first; the details are `GEOMETRIC_LEMMA_0438.md` §4.1a.
+
+- **Theorem B** survives: the sum swap is finite, both factors non-negative, the counting
+  identity `|B| − |E_B| = 2Σ_{internal}c_e + C_R` is an identity and not an estimate, and the
+  tiling step is the only place saturation is used. **Saturation is the bridge's single point of
+  failure**, which is why B is stated for saturated packings.
+- **Theorem C had a wording defect, now fixed**: the first version said "unmatched" where the
+  correct split is "not in an *internal* pair" — a vertex matched to a partner outside `B`
+  contributes only `V_dod`. The inequality is unaffected; the justification is now right.
+  Also recorded: **maximality is not doing analytic work**, only bookkeeping on `ρ`.
+- **Theorem D** survives its own audit, with one flagged dependency: it needs the *equality
+  case* of Hales–McLaughlin ("`vol Ω = V_dod` iff the regular dodecahedron"). That is standard,
+  and it is **not** re-derived here — **it is the softest link in the chain and the place a
+  referee should push.**
+- **A negative result recorded rather than hidden.** The compressed symmetric pair family
+  (`C109`) is too sparse to probe `(L)`: it gives pair sums `20.99`–`30.02`, far *above*
+  `2√32`, and since computed volumes are upper bounds it is neither support nor counterexample.
+  It is reported as what it is.
+
 ## 5. Next package for the three workers
 
 **PN-C — the pair constant by construction.** C owns the fixture machinery. Ask: for the
