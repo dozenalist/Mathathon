@@ -230,3 +230,82 @@ that the free directions are closed not by the six known neighbours but by the u
 completion, and only the `12`-count of `K15-E014` constrains the completion. Combining
 `K15-E014` with the above integral is the concrete next step, and it is where I would
 continue.
+
+## K15-E032 — R2's disjointness threshold was wrong: it must be 2*2.09 = 4.18
+
+Following the "check block disjointness/coverage" instruction uncovered a genuine defect in
+R2 as first stated. R2 defined components of `G_def` using adjacency at distance
+`<= 2.09`, and set `Block(C) = C union N(C)` with `N` the `2.09`-neighbourhood. **Those
+blocks need not be disjoint.**
+
+Counterexample to disjointness. Let `u`, `v` be defective with `2.09 < |u - v| <= 4.18`.
+Then `u` and `v` lie in different components (they are not adjacent at threshold `2.09`),
+yet a centre `s` placed at the midpoint-like position with `|s-u| <= 2.09` and
+`|s-v| <= 2.09` lies in both `N(C_u)` and `N(C_v)`. So `Block(C_u)` and `Block(C_v)`
+overlap and the family is not a partition. The overlap can only *remove* surplus from one
+of the two blocks, so `(T')` need not survive it.
+
+**Corrected rule R2'.** Define adjacency at threshold
+
+```
+tau := 2 * (209/100) = 418/100 = 4.18 ,
+```
+
+i.e. `u ~ v` iff `|u - v| <= 4.18`. Then:
+
+*Disjointness.* If `s in N(C_1) cap N(C_2)` there are `v_1 in C_1`, `v_2 in C_2` with
+`|s - v_1| <= 2.09` and `|s - v_2| <= 2.09`, hence `|v_1 - v_2| <= 4.18`, so `v_1 ~ v_2`
+and `C_1 = C_2`. Therefore distinct blocks have disjoint neighbourhoods, and since the
+components are disjoint the blocks are disjoint.
+
+*Coverage.* Every defective centre lies in its component. Every sound centre is either
+within `2.09` of some component — in which case it lies in exactly one block by the above —
+or at distance `> 2.09` from every component, in which case it is a singleton block.
+So the blocks cover `Lambda` exactly once.
+
+*Boundedness.* `diam Block(C) <= diam(C) + 2 (2.09) = diam(C) + 4.18`, so `(T'')` becomes
+`diam(C) <= D_0` with the block diameter `D_0 + 4.18`, and the boundary constant in
+`K15-E001` Step 2 uses `D = D_0 + 4.18`.
+
+**Effect on the inequality.** Widening the adjacency threshold *merges* components, which
+can only increase `S(C)` relative to `D(C)` (more surplus in the block) while the deficit
+`D(C)` grows by the merged defectives. So `(T')` is neither uniformly easier nor harder: it
+must be restated for the merged components. The corrected statement is
+
+```
+(T'-R2')   S(C) >= D(C)   for every component C of G_def at threshold 4.18,
+```
+
+and this is the form to attack. The earlier `(T')` at threshold `2.09` is withdrawn as
+ill-posed (its blocks are not a partition).
+
+## K15-E041 — second, sharper obstruction: the dodecahedral theorem is not enough
+
+Independently of `K15-E040`, the best available *per-cell* lower bound cannot reach the
+threshold. The dodecahedral theorem gives `vol Omega(w) >= 5.5502910285155` for every cell
+of every packing, hence
+
+```
+12 * 5.5502910285155 = 66.6034923422   against the required   67.9888142149 ,
+shortfall 1.385321873 , i.e. 2.0376 % .
+```
+
+**Consequences.**
+
+1. No argument that bounds the twelve outer cells *independently* by the single-cell
+   minimum can prove `(T'-R2')`. The proof must use configuration-specific information:
+   the six fixed neighbours of each outer centre (`1` at distance `2`, `5` at `2.102851`).
+   This is a sharp statement about where the difficulty lies, and it rules out the whole
+   family of "apply McLaughlin twelve times" arguments before any work is spent on them.
+   The dodecahedral theorem is itself computer-assisted, so importing it would also cost
+   more than the estimate it buys.
+2. Combined with `K15-E040` (local distance data gives only `4 pi/3 = 4.188790205`), the
+   certified bracket on a single outer cell is `[4.188790205, 8.167277]`, and *even its
+   best possible value* `5.550291029` is `2.04 %` short of what the sum requires. So the
+   deficiency is structural, not an artefact of weak bounds.
+
+**What this leaves.** The only viable shape of proof is an estimate
+`vol Omega(w) >= Phi(angular data)` with `Phi > 5.665735` for the *specific* outer
+configuration, using that the five non-central neighbours sit at `2.102851 > 2` (their
+bisectors are at `1.051426 > 1`, i.e. strictly weaker than tangency) and that at most `12`
+centres lie in `[2, 2.09]` (`K15-E014`). That is the next missing inequality.
