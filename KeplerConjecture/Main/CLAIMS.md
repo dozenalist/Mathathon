@@ -2109,3 +2109,20 @@ conversion, and `run_all_checks` in ≈ 6 s.
   plus Computation's half-line engine. Main's compact-interval decision still has no
   external cross-check beyond `function_range`; that is the remaining gap.
 - **Status.** `AGREES` (finite test evidence, not a soundness proof). Reviewer X.
+
+### K15-C077 — systematic cross-run against X's `exact_sign` (`AGREES`: 10/10)
+
+- **Artifact.** `Computation/xsign_crossrun.py <dir>`: runs the half-line claims of
+  the adversarial suite plus both defect families through Main's predicates and
+  through X's independent `sign_on_half_line`, after the exact substitution
+  `t = 2u`. Result: **10 claims, 10 agreements, 0 skips** — including
+  `(t²−2)(t²−3)` (irrational roots), `(t−7/5)² ∓ 2·10⁻⁴⁰` (near-double), the odd
+  part `(t−3)²(t−1)`, and the two `_ray` claims.
+- **What it buys.** The project now has two *complete* and *independent*
+  implementations of the half-line predicate that agree claim by claim, so a defect
+  in either would have to be mirrored in the other to survive. That is the strongest
+  evidence available before a full soundness proof.
+- **Still uncovered.** Main's *compact-interval* decision (`le_on_interval`) has no
+  external cross-check other than `function_range`, which Main also uses as a
+  fallback — so compact claims remain less protected than half-line claims. Closing
+  this needs a compact-interval mode in one of the other checkers; recorded for X.
