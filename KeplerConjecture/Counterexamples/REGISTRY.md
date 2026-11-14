@@ -1850,3 +1850,13 @@ appears in **none** of the committed certificates: it raises `KeyError` on `out/
 unless `--cert` is given") and does skip it, so the suite's 18/18 pass says nothing about the certificate
 path. Not an error in any number — a gap in the executable interface: the one verifier that could check a
 Main-basis certificate has no input in the repository, so that path is untested.
+
+### K15-X-C120 — `X-C065`'s grid defect demonstrated arithmetically (no scan needed)
+
+`certify_region.py`'s partition is `n = int(round(span/width))` and then `n` boxes of `width`.
+Reproducing that arithmetic: `[110, 111.05]` at `0.1` gives `n = round(10.499999999999972) = 10` boxes,
+reaching `111.000000` — **gap `0.05`**; `[110, 111]` at `0.3` gives `n = 3`, reaching `110.900000` —
+**gap `0.1`**; `[110, 111]` at `0.1` is exact (`gap 0`), which is why the shipped run is unaffected. In the
+first two cases the old script still prints "CERTIFIED for the whole region". `certify_region_v2.py` fixes
+it with `n = ceil(span/width)` and box width `span/n` plus an exact tiling assertion ✓. The defective file
+is still in the tree (`X-C107`).
