@@ -2084,3 +2084,28 @@ refinement.
 
 The certificate path's cost is unchanged: K33b verifies in ≈ 2 s including the basis
 conversion, and `run_all_checks` in ≈ 6 s.
+
+### K15-C076 — audit of X's repaired `exact_sign` (`AGREES`; second complete implementation available)
+
+- **What was run.** `Counterexamples/exact_sign.py` (branch
+  `kepler15/counterexamples/run-01`, `9dc2ab2`) was extracted and exercised by Main
+  on the two defect families and on the standard controls:
+  `(t²−2)(t²−3) ≥ 0` on `[0,∞)` (the irrational-root witness) → **False** ✓;
+  `(t−7/5)² − 2·10⁻⁴⁰ ≥ 0` (the near-double witness) → **False** ✓; its mirror
+  `+2·10⁻⁴⁰` → **True** ✓; `(t−5)²` → **True**; `(t−5)³` → **False**;
+  `t(t−1)` → **False**.
+- **Cross-check against Main's predicate.** The same claims were evaluated through
+  `shell_check` after the exact substitution `t = 2u`: **zero disagreements** on all
+  seven. (One of my own expectations was wrong in the first pass —
+  `−t(t−1) ≥ 0` on `[1,∞)` is false, since the expression is `t(1−t) ≤ 0` there —
+  and X's answer was the correct one.)
+- **Method.** Their repair is the right one: no root is ever converted; the
+  squarefree odd part `u` is formed and its roots in the open half-line are counted
+  by Sturm (`count_roots`), with the endpoint handled by exact multiplicity. That is
+  a *complete* decision and independent of Main's (different formulation, different
+  root treatment).
+- **Consequence for the project.** There are now **two complete implementations**
+  of the half-line predicate (Main's and X's) that agree on both defect families,
+  plus Computation's half-line engine. Main's compact-interval decision still has no
+  external cross-check beyond `function_range`; that is the remaining gap.
+- **Status.** `AGREES` (finite test evidence, not a soundness proof). Reviewer X.
