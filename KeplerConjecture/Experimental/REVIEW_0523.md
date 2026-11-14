@@ -159,7 +159,13 @@ box around `(θ, φ) = (111.7975°, 36°)`:
  3     0.0125           [5.8946326818, 5.9013008823]    6.67e-03
  4     0.00625          [5.8962999874, 5.8996340814]    3.33e-03
  5     0.003125         [5.8971335748, 5.8988006202]    1.67e-03
+ 6     0.0015625        [5.8975503521, 5.8983838744]    8.34e-04   <- first below 1e-3
 ```
+
+so reaching a `1e-3` enclosure costs `(14/0.0015625)² ≈ 8×10⁷` boxes over the legal window —
+three orders of magnitude more than the `2×10⁴` that the *useful* (0.1°) box already needs.
+That is the quantitative form of "fine certification is the wrong target": the coarse boxes
+already answer the only question a lower bound asks.
 
 **The width is linear in the box width**, as the dependency argument predicts, and — this is
 the useful part — **the lower end is already useful at the coarsest box**: `0.1°` certifies
