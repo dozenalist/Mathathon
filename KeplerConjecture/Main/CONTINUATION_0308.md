@@ -365,3 +365,60 @@ bounds (`H ≤ d ≤ 2H`) are stated as inequalities rather than as sampled valu
 
 **Still not established: any new bound on the density of a packing in `R³`.** The record
 bound to beat analytically remains Hales–McLaughlin's `0.754697399337`.
+
+---
+
+# R6 — Barlow / complexity work continued after the repairs (`K15-C100`–`C102`)
+
+Three further results, all obtained after the review's repairs and none of them requiring any
+tool the review put in doubt.
+
+**`K15-C100` — the cost scorecard** (`Main/COMPLEXITY.md`). The two numbers that decide the
+project's goal: the **lattice-restricted** three-point bound is `0.741506` against the truth
+`0.740480489693` — a gap of `+0.00103`, i.e. **`0.14%`** — while the **general** three-point
+bound is `0.770271`, a gap of `4.0%`. So the lattice restriction is worth `0.029` of density,
+and every non-computational object within `0.14%` of the truth is three-point-and-lattice.
+Since the plain two-point LP is *proved* not sharp in `d = 3` (Li 2024, Thm 6.1) and
+`K15-C095` exhibits the mechanism concretely (any planar fault is an equality case, so a
+sharp certificate needs `f` to vanish on a continuum of shell radii), the analytic route
+cannot be a shortcut below level 3; and the transfer route is at least as strong as the
+theorem (`C087`) with no slack at the extremal family (`C094`). **The one well-posed
+improvement target with this project's tools is a pointwise cell inequality strictly better
+than `0.754697399337`.**
+
+**`K15-C101` — `(S)` splits at the Tammes-13 threshold.** `2.09` is the Tammes-13 threshold
+rounded down: 13 points on a sphere of radius `ρ` with mutual `≥ 2` exist iff
+`ρ ≥ 2.091145548`, and at `ρ = 2.09` the required separation is `57.1709° > θ₁₃ = 57.1367°`,
+so at radius exactly `2.09` **every admissible configuration has at most 12 points**. That
+splits `V(2.09) ≥ √32` into case **(A)** (all at radius `ρ`: scaling maps it to the `ρ = 2`
+problem, giving the icosahedral `V_dod(ρ/2)³ = 6.333804106 = 1.1197·√32`, settled at `12%`
+margin modulo Tammes-12 and spread monotonicity) and case **(B)** (`some` point farther out:
+exactly "mixed radii do not help", the open case). Also: the trivial inball bound
+`4π/3(ρ/2)³ = 4.78011` beats `V_dod` only for `ρ > 2.1967`, so `(S)` must be a stability
+statement and cannot be replaced by a ball estimate.
+
+**`K15-C102` — no extra centre ever cuts the icosahedral cell.** Redundancy is per
+half-space, so case (B) at a fixed base is decided by the single-point question, and that
+question has a closed form (`r₊ = ⟨u,x⟩ + √(⟨u,x⟩² − (ρ²−4))`). Over `2×10⁶` directions plus
+refinement from all 24 icosahedral/dodecahedral directions, the nearest admissible extra
+centre is at
+
+```
+|p| = 3.206870905…   (edge-midpoint direction)   vs   2·R_cell = 2.955706345,
+```
+
+a margin of `8.5%`. Hence `V(2.09) ≤ V_dod(1.045)³ = 6.333804106` **with equality** at the
+icosahedral configuration, and — the part that matters for the ledger —
+`CLOSED_COMPONENT.md`'s **A1 is upgraded**: `6.333804` is the *true* cell volume of the
+pushed-out icosahedral vertex, so its deficit `b = −0.677` is true, not an estimate. The
+natural singleton candidate fails by `12%` as a matter of fact rather than under an
+assumption.
+
+**A by-product worth having** (`BARLOW_CELLS.md`, Lemma 3): the exact truncation criterion
+`|p−v| ≥ 2h_Ω(p−v)` (support function), which makes every "centres within `2R_cell`" claim in
+the project rigorous, and which explains a number the numerics produced: for a Barlow packing
+`R_cell = √2`, so the truncation radius is `2√2` — **exactly the next distance** — which is
+why the far-centre slack is `0` to `1e−16` (tangency) and not negative. Step 2 of `C094`
+therefore cannot be sharpened to a strict inequality.
+
+**Status unchanged: no new bound on the density of a packing in `R³`.**

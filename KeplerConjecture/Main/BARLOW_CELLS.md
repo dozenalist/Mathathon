@@ -233,3 +233,42 @@ test (F3): largest sampled value `1.379` at `ABC`, against the proved bound `√
 - **Not an improvement to the cut condition.** The corollary makes it *harder*, not
   easier: it removes the possibility of a slack argument. That is a real cost and it is
   the main reason to record it.
+
+---
+
+# Addendum: the exact truncation criterion (why step 2 is tangent, not slack)
+
+Step 2 above says a non-contact is redundant because its half-space contains `B(v,√2) ⊇ Ω(v)`.
+That is a *sufficient* test. The exact test is one line and it is worth stating once, because
+several fixtures in this project (Main's, C's, E's) decide "which centres can affect this
+cell" informally.
+
+> **Lemma 3 (support-function criterion).** Let `Ω` be the Voronoi cell of `v` in a packing,
+> and let `p` be another centre. Then `p`'s half-space `{x : ⟨p−v, x−v⟩ ≤ |p−v|²/2}` is
+> **redundant** (does not alter `Ω`) iff
+>
+> ```
+> |p − v|  ≥  2·h_Ω(p − v),      h_Ω(w) := max_{x ∈ Ω} ⟨w⟩,  the support function of Ω.
+> ```
+>
+> In particular, writing `R_cell := max_{x∈Ω}|x−v|`, every centre at distance `> 2R_cell` is
+> redundant, and the truncation radius `2R_cell` is optimal.
+
+*Proof.* The half-space is redundant iff `Ω` is contained in it, i.e. iff
+`max_{x∈Ω} ⟨p−v, x−v⟩ ≤ |p−v|²/2`, i.e. `h_Ω(p−v) ≤ |p−v|/2`. Since `h_Ω(w) ≤ R_cell|w|`,
+`|p−v| > 2R_cell` implies the criterion. ∎
+
+**What this explains.** For a Barlow packing, `R_cell = √2` (the cell is one of the two
+14-vertex dodecahedra of §3, both of circumradius `√2`), so the truncation radius is
+`2√2` — **exactly the next distance in the packing** (F1). So the truncation is *tight*: the
+second-neighbour shell sits precisely on the boundary of the criterion, which is why the
+numerics in §5 find the far-centre slack at `0` to `1e−16` and not at a negative value. The
+tangency is not an accident of the two dodecahedra; it is forced by `R_cell = 2√2/2` and the
+distance spectrum. (It is also why step 2 cannot be sharpened to a strict inequality, and
+why no argument of the form "the next shell is strictly farther" is available.)
+
+**Use elsewhere.** The same criterion decides the truncation in `K15-C102`
+(`min|p| = 3.20687` against `2R_cell = 2.95571` at the pushed-out icosahedral vertex) and in
+`K15-C095`'s crack packing, where `R_cell > √2` — which is exactly why the centres across a
+crack of width `2.663` *do* cut the crack-face cells and why those cells are larger than
+`√32`.
