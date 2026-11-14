@@ -492,3 +492,32 @@ secondary implementation that removes the faithfulness bottleneck.
   stability, `phi^2 = id`, the alternating endpoint theorem, `T` and `B_n`, the
   `Nat.Partition` bridge — and the Mathathon objective itself.
 - **GitHub:** local merge only; export bundle below.
+
+## 2026-11-14 / RR-M010 / case stability both directions; fast regression; a-shift symmetry
+
+- **Author:** Main. **Reviewer:** machine checks; the proof auditor (cycle-3
+  swarm `smwg1kdjq`, member m4) is assigned the written proof of the same facts.
+- **Status:** **TESTED_FINITE** for the transitions, **PROVED** for the weight
+  identity. New file `Computation/cycle3_fast_regression.py` (0.11 s, 11 checks).
+- **Case stability holds in BOTH directions, with no overlap:** over all
+  10 285 Case-I and 10 285 Case-II states of `weight <= 26`, every Case-I state
+  maps to a state selecting Case II (10 285/10 285) and every Case-II state maps
+  to a state selecting Case I (10 285/10 285).
+- **New structural fact, the `a`-shift symmetry.** Case I gives `a' = a-1` and
+  Case II gives `a' = a+1`, each in 10 285/10 285 states. So `phi`'s two branches
+  are inverse *at the level of the index `a`*: `phi` deletes/recreates the slot
+  pair in a mirror image. This is the structural reason `phi(phi(s)) = s`, and it
+  is the thing a written proof should explain. Recorded in
+  `Main/LEMMA_MAXEXIST.md` as Lemma CI.2 and Lemma CII.
+- **Honest statement of the remaining difficulty:** `t' - t` is NOT a simple
+  function (measured range `-24..+2`, spread), because the created parts `m` and
+  `t+5j-3-m` may be `1`s while decremented parts vanish. So the *length* is not
+  preserved and cannot serve as a progress measure; a proof of `phi^2 = id` must
+  track the multiset of values. This is why the naive "same length" argument
+  fails, stated precisely.
+- **Fast regression** (`Computation/cycle3_fast_regression.py`, 0.11 s, exit 0):
+  the three printed examples incl. the nine-state chain, `T(7,3,1)=(5,3,3)`,
+  `phi^2 = psi^2 = id` to weight 18, both bijection laws `A_n <-> D_n` to
+  weight 18, the `n=0,2` fixtures, Lemma MX.2's criterion (1 739 Case-II states),
+  and both `a`-shift facts. Deliberately small bounds: a smoke test, not evidence.
+- **Reproduction:** `python3 RogersRamanujan/Computation/cycle3_fast_regression.py`

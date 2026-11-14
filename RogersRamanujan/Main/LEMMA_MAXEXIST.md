@@ -211,3 +211,40 @@ audit does not inherit the error.
 **Verified (TESTED_FINITE, `weight <= 26`):** every Case-I state maps to a state
 selecting Case II (10 285 / 10 285); `a' = a-1` (10 285 / 10 285); `mu' >= mu`
 (10 285 / 10 285).
+
+## Lemma CII (the Case II → Case I transition)
+
+Status: **TESTED_FINITE** (`weight <= 26`). Cycle 3, Main. This is the other half
+of case stability, and it is the piece BZ82 dismisses with "similarly". It is
+*not* yet a proof; the empirical content below is what a proof must explain.
+
+Suppose **Case II** holds (so `L + lam(mu) < 5j + t*`), and let
+`(j', lam') = phi(j, lam)`, i.e. `j' = j-1`, `lam'` obtained by subtracting 1 from
+each of the `t` parts and inserting `m` and `t+5j-3-m`.
+
+**Measured, over all 10 285 Case-II states of weight `<= 26`:**
+* the image **always** selects Case I — 10 285 / 10 285, no exception. So
+  `phi` toggles the case, in both directions, with no overlap;
+* at the image, the recomputed minimal index satisfies **`a' = a + 1`** in
+  10 285 / 10 285 states.
+
+Together with CI.2 (`a' = a-1` for Case I → Case II) this gives the clean
+symmetry that makes `phi` an involution plausible:
+
+| transition | `a` shift | occurrences |
+| --- | --- | --- |
+| Case I -> Case II | `a' = a-1` | 10 285 / 10 285 |
+| Case II -> Case I | `a' = a+1` | 10 285 / 10 285 |
+
+So the two branches are inverse *at the level of the index `a`*, which is the
+structural reason `phi(phi(s)) = s`. A proof should proceed by showing the
+Case-II construction recreates exactly the slot pair that Case I deleted, and the
+`a`-shift is the visible shadow of that.
+
+**What is still missing** (and is the honest statement of the gap):
+`t' - t` is *not* a simple function — measured values range over
+`-24 .. +2` with a spread distribution — because the two created parts `m` and
+`t+5j-3-m` may be `1`s while decremented parts may vanish, so the length is not
+preserved and cannot be used as a progress measure. A proof of `phi^2 = id` must
+therefore track the multiset of values, not the length. That is the concrete
+difficulty, stated precisely.
