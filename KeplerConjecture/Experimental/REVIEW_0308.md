@@ -363,6 +363,32 @@ I record this as a failed attempt rather than deleting it, because the failure m
 finite constraint set and reading it as a lower bound) is exactly the one that produced the
 retracted `S - D` figures, and it recurs.
 
+### 9.1 A fourth family, also excluded: the outward collar
+
+One more natural body suggests itself. `Omega(w_i)` contains `B(w_i,1)`, and it also contains the
+pyramid from the dodecahedral face outward: points just *beyond* the face are closer to `w_i` than
+to `c`. That collar is disjoint from `B(w_i,1)`, and its volume is `A_pent x tau` with
+`A_pent = 1.387572757` and `tau` the depth. So
+
+```
+vol Omega(w_i)  >=  4.188790205 + 1.387572757 tau ,
+```
+
+and reaching `5.665735` would need depth `tau >= 1.06441`.
+
+**It fails twice over.**
+
+1. **Even unblocked it is short.** The largest possible depth is `1`: a point at distance `1 + t`
+   from `w_i` is in `Omega(w_i)` only if no centre is nearer, and centres can sit at distance `2`
+   from `w_i`, giving depth at most `1`. At `tau = 1` the bound is `5.576362962 < 5.665735`.
+2. **And it is blockable for free.** A centre at `w_i + 2 w_hat_i` is at distance exactly `2` from
+   each of the twelve outer centres and `4` from `c`, so it is **legal** — verified numerically —
+   and it reduces the collar depth to `0`.
+
+So the collar family is excluded by an adversary that pays nothing and violates nothing. This is the
+cleanest illustration of why per-cell lower bounds cannot work here: the completion is free to sit
+exactly where the bound needs room.
+
 ## 10. The obstruction in the form it actually takes: a stability gap
 
 Combining §8 (two families excluded) and §9 (finite sets give upper bounds), the requirement
