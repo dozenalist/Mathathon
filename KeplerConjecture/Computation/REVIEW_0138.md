@@ -480,22 +480,22 @@ wall. That is now the most interesting open question in this file.
 
 ### Search statistics, and what they license
 
-Twelve basin-hopping runs of the same procedure (`--degree 7 --iters 4000 --uphill 0.05`,
-different seeds):
+Fifteen basin-hopping runs of the same procedure (`--degree 7 --iters 4000 --uphill 0.05`,
+different seeds; the last three added `1.4687`, `1.9906`, `1.6862` and did not improve it):
 
 | `Δ ≤` | count |
 | --- | --- |
 | 1.3713 | 1 |
 | 1.4111, 1.4137, 1.4179, 1.4625 | 4 |
 | 1.4779, 1.6073, 1.6929, 1.6957 | 4 |
-| 1.9906 | 2 |
+| 1.9906 | 3 |
 | 1.9989 | 1 |
 
-Best `1.37125723`; median ≈ `1.47`. **Only one run in twelve reached below `1.40`.**
+Best `1.37125723`; median ≈ `1.47`. **Only one run in fifteen reached below `1.40`.**
 
 What this licenses, stated carefully:
 
-* `1.37125723` is **best-found from twelve attempts**, and the distribution says a few more
+* `1.37125723` is **best-found from fifteen attempts**, and the distribution says a few more
   attempts are unlikely to beat it by much. It is *not* an optimum: the runs are not independent
   (same seed family, same move set) and the landscape is clearly rough.
 * The **monotone-improvement-with-effort** pattern across the block (`5.99 → 2.62 → 1.99 → 1.41 →
