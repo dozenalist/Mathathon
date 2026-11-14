@@ -361,7 +361,7 @@ def c5_no_thirteenth(verbose=True, n_grid=600):
 
 
 
-def push_in(verbose=True, iters=4500, seed=12345):
+def push_in(verbose=True, iters=4500, seed=12345, start=None, kick=0.0):
     """Push the witness in while KEEPING the thirteenth facet.  Deterministic.
 
     The section-5 witness is a genuine thirteen-facet cell at 6.719022368.  Shrinking the seven
@@ -418,7 +418,11 @@ def push_in(verbose=True, iters=4500, seed=12345):
         return min(d)
 
     rng = np.random.default_rng(seed)
-    P = np.array([[float(F(str(x))) for x in p] for p in WITNESS])
+    P = np.array([[float(F(str(x))) for x in p] for p in WITNESS]) if start is None else np.array(start, float)
+    if kick > 0:                       # optional larger perturbation of the starting point
+        P = jam(P + rng.normal(scale=kick, size=P.shape))
+        if minsep(P) < 2 - 1e-9:
+            P = np.array([[float(F(str(x))) for x in p] for p in WITNESS])
     v0, nf0 = vol_facets(P)
     best = (v0, P.copy())
     if verbose:
@@ -448,6 +452,18 @@ def main():
     print("=" * 78)
     if "--push" in sys.argv:
         push_in()
+        return 0
+    # A second round with larger kicks (seeds 20-33, kicks 0.5 and 0.8, same iteration budget)
+    # did not improve on the result below: best 6.461008754.  Recorded, not repeated.
+    if "--push-multi" in sys.argv:
+        best = (1e9, None, None)
+        for k, (sd, kick) in enumerate([(s, kk) for s in range(1, 13) for kk in (0.0, 0.25)]):
+            v, P = push_in(verbose=False, seed=sd, kick=kick, iters=2500)
+            if v < best[0]:
+                best = (v, sd, kick)
+                print(f"  seed {sd:2d} kick {kick:.2f}: {v:.9f}  <-- best so far", flush=True)
+        print(f"\n  smallest thirteen-facet cell over {k} starts: {best[0]:.9f}"
+              f"  (seed {best[1]}, kick {best[2]})  margin {best[0] - 5.763417470:+.6f}")
         return 0
     if "--search" in sys.argv:
         P, ang = search()
