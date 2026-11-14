@@ -2,7 +2,7 @@
  "icosa_fill": {
   "n": 131,
   "n_defective": 1,
-  "buffer_limited": 0,
+  "buffer_limited": 126,
   "transfers": [
    {
     "v": 0,
@@ -44,7 +44,7 @@
  "icosa_fill_b": {
   "n": 131,
   "n_defective": 1,
-  "buffer_limited": 0,
+  "buffer_limited": 113,
   "transfers": [
    {
     "v": 0,
@@ -86,7 +86,7 @@
  "icosa_fcc_shell": {
   "n": 189,
   "n_defective": 1,
-  "buffer_limited": 0,
+  "buffer_limited": 188,
   "transfers": [
    {
     "v": 0,
@@ -128,7 +128,7 @@
  "two_icosa": {
   "n": 281,
   "n_defective": 2,
-  "buffer_limited": 0,
+  "buffer_limited": 241,
   "transfers": [
    {
     "v": 0,
@@ -178,7 +178,7 @@
  "hcp": {
   "n": 175,
   "n_defective": 0,
-  "buffer_limited": 0,
+  "buffer_limited": 130,
   "transfers": [],
   "A_min": 0.0,
   "A_max": 0.0,
@@ -211,7 +211,7 @@
  "fcc_plain": {
   "n": 500,
   "n_defective": 0,
-  "buffer_limited": 0,
+  "buffer_limited": 244,
   "transfers": [],
   "A_min": 0.0,
   "A_max": 0.0,

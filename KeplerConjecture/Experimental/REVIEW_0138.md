@@ -364,7 +364,10 @@ build.
 - The disjointness/overlap results: `max_pairwise_overlap = 0` in every fixture, and the
   thresholds `4.18` / `8.36`. These depend only on distances, not on volumes, so they survive. ✓
 - The transfer *implementation* check: `c + A >= sqrt32` pointwise, `|sum A| <= 1.4e-17`, `A = 0`
-  on fcc/hcp. This validates the code path, not the geometry. ✓ (should be described that way)
+  on fcc/hcp. This validates the **code path only**. It does not confirm `(H_R)`, because the
+  payers' volumes in these fixtures are among the unreliable cells of Section 5 — the algorithm
+  is being fed surpluses that a saturated packing need not have. Stated explicitly so the table
+  in Section 3.4 is not read as geometric evidence.
 - The numerics `S - D`: **unreliable**, retracted as evidence.
 
 **What would be needed to test `(T')` at all.** A certified lower bound on `c(u) - sqrt32` for
