@@ -318,3 +318,48 @@ and useful.
   small family, or an SOS/SDP with Markov–Lukács multipliers (C-SHELL-001c).
 * `shell_check.check` gains a `count` parameter (12 conditional, 27
   unconditional); self-test still passes.
+
+### K15-MAIN-007 — 2026-11-14 09:14:25Z–(block) — integration and a checked component
+
+Author **M (Main)**, branch `kepler15/main`. Block start `09:14:25Z`. Sources
+read: supervisor `83cb448`, Computation `90cc632`, Experimental `8aca235`,
+Counterexamples `237cc3b`. No chat created, no swarm, no Lean build, no heavy
+solve on the VM.
+
+* **K15-C023 `VERIFIED_CROSS`.** Computation's `verified_certificate_K33b.json`
+  (degree 33) is accepted by **two independent exact checkers** — their
+  `exactcert` (`t = 2π|x|²`) and Main's `shell_check` (`u = π|x|²`) — with the
+  same ratio `42935541634304122537361009/230584315533749727927712550` and
+  `Δ ≤ 0.779966216777`. Not an improvement on CE03; the first certificate-grade
+  object in the project. Reproduce: `verify_comp_cert.py` (4 s).
+* **K15-C027 `ACCEPTED_WITH_SCOPE`.** E's Tammes-13 enclosure re-run and audited:
+  the arithmetic is a rational interval certificate (strictly decreasing `g`,
+  rational `h` comparison, proved Taylor remainder lemma), margin `0.0342°`; the
+  identification of the constant rests on Musin–Tarasov's computer enumeration.
+  Consequence: the shell count `n = 12` at `ρ = 2.09` is available (G2/G3 closed
+  pending X).
+* **K15-C026.** `shell_check` had a real bug: it counted *all* distinct roots, so
+  polynomials **touching** zero (exactly the CE equality case `f(2) = 0`) were
+  rejected. Fixed by counting sign changes on the odd part; `--self-test` §S4
+  locks the behaviour; C's certificate still verifies unchanged.
+* **K15-C030/C031.** A ten-case adversarial suite, run against both engines:
+  `exactcert` agrees on every case, and decides even-multiplicity *endpoint*
+  roots (so its fail-closed policy is sharper than assumed). G8 partially closed.
+* **K15-C028.** Exact degree-3 shell fixture: the allowance's cost `12η` scales
+  with the amplitude of the profile on the shell (`η = 50.4` at degree 3), so the
+  trade is hopeless there — the precise form of C's measured gain 0.
+* **K15-C029 `PROVED`.** Defect-density lemma: fcc-compatible negligibility forces
+  the set of cells with `vol Ω ≤ √32 − θ` to have zero density, so any `A` must be
+  negative on a full-density set. This is the usable objective for the geometric
+  route and a falsification test for proposals.
+* **K15-C024/C025** written out: the density normalisation item by item, and the
+  next theorem with H1–H5 and their status.
+* `Main/INTERFACE.md` (three conventions, dictionaries, certificate schema) and
+  `Main/PROOF_GAPS.md` (G1–G10) added; `Main/RESULTS.md` rewritten to the state
+  above.
+
+Gaps: no new bound; X has not reviewed the repaired statements; the cluster route
+has no `V_0`; the Lean ball-volume/counting bridge is untouched. Next: X audits
+G1/G4/G5/G8 and the `exactcert`↔`shell_check` independence; E produces the
+specified partition with a boundary estimate; C freezes the certifier at degree 33
+as the project's acceptance pipeline.
