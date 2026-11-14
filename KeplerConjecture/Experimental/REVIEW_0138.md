@@ -608,3 +608,40 @@ outer cells are genuinely unsaturated. The right move is not to subset but to ev
 build and count defects only among the cells the extent criterion certifies — which is what the
 figures above do. Recorded because the mistake is easy to repeat: restricting a fixture to its
 interior destroys the very density that makes the fixture meaningful.
+
+## 10. A case split that follows from the above, and why it is not a shortcut
+
+Sections 5 and 9 establish two things about defects: the only configuration known to have one
+(the icosahedral cluster) cannot be saturated, and the saturated configurations examined (fcc,
+A15) have none. That suggests the following split, which I record as a *shape of argument* and
+explicitly **not** as a result.
+
+**Case (a): no cell is defective.** Then `vol Omega(v) >= sqrt(32)` for every `v`, so Hales's
+Lemma 3.3 applies with `A = 0` and the singleton partition, and the density bound follows at
+once. No transfer, no clusters, no blocks.
+
+**Case (b): some cell is defective.** Then the average cell volume over any large region is at
+least `sqrt(32)` only if the deficits are compensated, so the packing must carry compensating
+surplus somewhere — and, by the dodecahedral theorem, the deficit of any single cell is at most
+`sqrt(32) - V_dodeca = 0.106563`, i.e. at most `1.9 %` of a cell volume. A packing in case (b) is
+therefore measurably away from the fcc/hcp equality configurations, in which every cell is
+*exactly* `sqrt(32)` with no deficit at all.
+
+**Why the split is not a shortcut.** Case (b) would need a *quantitative stability* statement: a
+defect of size `d` forces the density to be at most `pi/sqrt(18) - eps(d)` for some explicit
+positive `eps`. That is exactly the kind of statement that is hard here, for the reason
+identified back in the Cohn–Elkies comparisons: the extremal set is a continuum (all Barlow
+stackings), so there is no isolated configuration to linearise about, and the "distance from
+extremality" has no canonical measure. So the split relocates the difficulty rather than
+removing it, in the same way `(T')` and `(H_R)` do.
+
+**What it does buy.** It says where effort should go. Case (a) needs nothing beyond the
+dodecahedral theorem, which is already imported. Everything therefore hangs on case (b), and
+case (b) is a statement about *how much slack* a defective packing must have — a question about
+the second-order structure of the problem, not about any individual cell's volume. That is a
+different question from the ones `K15-E040`-`K15-E049` were asking, and it is the one I would
+attack next if the geometric route is continued.
+
+I make no claim that case (b) is tractable, and no claim that this split is new — it is the
+standard "if the local inequality fails then the configuration is far from extremal" pattern,
+and it should be compared with the existing stability literature before anything is built on it.
