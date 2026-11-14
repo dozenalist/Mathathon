@@ -1215,6 +1215,13 @@ directions (it is neither the value nor the limit of the corrected certificate, 
 The consequence for `C114`/Theorem D is favourable: the near-contact band is `1.4555` wide, not
 `0.6833` — 2.13× wider than claimed.
 
+Its **module docstring is also stale and self-contradictory**: lines 10–12 still say "the 'closer than
+2' set of each pair is a single arc in the twist, the arcs are inflated by EPS", while the `covers()`
+docstring ten lines below says the opposite ("Uses `twist_cover.inner_arcs`, i.e. rigorous inner arcs …
+An earlier version of this file inflated endpoints OUTWARD by 1e-20, which cannot certify an
+all-twists exclusion"). `EPS` is now referenced only in that dead sentence. The prose should be
+corrected with the number.
+
 ### K15-X-C075 — `ACCEPTED.md:28`'s parenthetical cites the *defective* constant, but its conclusion survives
 
 `ACCEPTED.md:28` justifies citing `C112` (rather than a single-pair argument) with "a one-pair argument
