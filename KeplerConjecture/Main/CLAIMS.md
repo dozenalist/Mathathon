@@ -1638,3 +1638,22 @@ last two blocks' verification was version-specific.
   through Main's repaired checker and of *Main's* checker through known-good data.
 - Neither is an improvement on CE03 (`0.779747`); both are `VERIFIED_CROSS`-grade
   components at their stated scope.
+
+### K15-C057 — E's interval self-audit re-run by Main (`PASSED`; method worth copying)
+
+- **Run.** `Experimental/scripts/interval_selfaudit.py` (branch
+  `kepler15/experimental/run-01`, `4ea4e8b`, cwd set so that its relative import
+  of `Experimental/scripts/tammes13_enclosure.py` resolves).
+- **Result.** `118` point-interval soundness checks with `0` failures; monotone
+  wrapper endpoints `0` failures; a **deliberately corrupted** primitive
+  (swapped endpoints) detected in `50/50` intervals; the constructor rejects
+  `lo > hi`; `333/106 < π < 355/113` confirmed.
+- **Why it matters beyond E's own use.** The audit has two halves —
+  *soundness* (enclosures contain the true value, checked against high-precision
+  arithmetic) and *sensitivity* (a known corruption **must** be caught). That
+  second half is exactly what was missing from Main's sign-predicate tests, which
+  passed while the predicates were unsound (`K15-C049`). Recommend the pattern for
+  every checker in this project: a test suite is not evidence unless it can fail.
+- **Status.** `PASSED` (Main re-ran it; E wrote the audit, so this is a
+  reproducibility check plus a methodological endorsement, not independence).
+  Reviewer X.

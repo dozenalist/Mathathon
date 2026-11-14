@@ -123,3 +123,13 @@ This is the second withdrawal of the block (the first was `K15-C029`) and the
 lesson is the same in both: a claim was supported by *tests that could not have
 failed*. The countermeasures are now mechanical — `Computation/run_all_checks.py`
 (8 checks, one command) and the fuzz script `K15-C050`.
+
+## 7. Method note carried forward
+
+The two defects found this block (`K15-C029`'s implicit `A ≥ 0`, and the sign
+predicates of `K15-C049`) have the same shape: a claim whose *tests* could not
+fail. E's `interval_selfaudit.py` is the model to copy — it checks soundness
+*and* that a deliberately corrupted primitive is detected (`K15-C057`).
+`Computation/run_all_checks.py` (`K15-C053`) is Main's version of the same idea,
+and `predicate_fuzz.py` / `predicate_crosscheck.py` are the independent supports
+for the repair. Any future checker in this project should ship with all three.
