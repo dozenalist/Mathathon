@@ -2,3 +2,5 @@
 .sair/
 .scratch/
 __pycache__/
+*.olean
+*.ilean

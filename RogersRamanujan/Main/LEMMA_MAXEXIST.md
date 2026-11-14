@@ -144,6 +144,18 @@ are Case II**; 0 occurrences in Case I. The fallback in
 `Computation/bz82.py` is therefore unreachable and is retained only as an
 assertion.
 
+**Cross-check from an independent worker (cycle 3).** `smwg1kdjq`'s m3 wrote a
+per-step skeleton auditor whose assertion P3 was the *stronger* claim "`a = mu`
+implies `a > t` (both slots virtual)". P3 **fails**, with the minimal witness
+`j = 1, lam = (2,)` (weight 4): there `a = mu = 1`, `L = 2 = 2j`, and `a = 1 = t`,
+so the surviving slot is **real**. That witness is Case II
+(`L + lam(mu) = 4 < 5j + t* = 6`), which is exactly what Lemma MX.5 allows: MX.5
+constrains `a = mu` only **inside Case I**, where it forbids it. So the worker's
+failed assertion does not threaten MX.5; it *confirms* the boundary, and it shows
+that "`a = mu` implies both slots are virtual" is false in Case II. The correct
+statement is the one MX.5 proves: `a = mu` never occurs in Case I, hence the
+Case-I double deletion always acts on two distinct slots.
+
 ## What this does not do
 
 Theorem MX.3 and Corollaries MX.4/MX.5 establish the **definedness** of the

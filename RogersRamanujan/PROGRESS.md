@@ -557,3 +557,23 @@ secondary implementation that removes the faithfulness bottleneck.
 - **Why this is recorded rather than promoted:** the supervisor's rule is
   explicit that a running worker's partial file is not an accepted audit. The
   snapshot above is reproducible and useful, and it is labelled as a snapshot.
+
+## 2026-11-14 / RR-M012 / worker skeleton auditor: P3 fails, confirming Lemma MX.5's boundary
+
+- **Source:** `smwg1kdjq` member m3's `Computation/cycle3/phi_skeleton_c3.py`
+  (still running; observed on disk, not a submitted audit).
+- **What it does:** a per-step assertion skeleton P0-P9 over all in-domain states
+  to weight 30, with a cross-check against `Computation/bz82.py`. Its last
+  observed run: **0 cross-check mismatches over 66 658 states**, P0-P2 and P4-P9
+  PASS, **P3 FAIL with 5 565 failed assertions**.
+- **P3 as written is too strong.** It asserted "`a = mu` implies `a > t`, i.e.
+  both slots are virtual". Minimal witness `j = 1, lam = (2,)` (weight 4): there
+  `a = mu = 1`, `L = 2 = 2j`, and `a = 1 = t`, so the surviving slot is **real**.
+- **This confirms rather than threatens Lemma MX.5.** That witness is Case II
+  (`L + lam(mu) = 4 < 5j + t* = 6`), and MX.5 constrains `a = mu` only *inside*
+  Case I, where it proves `a = mu` cannot occur. So the correct statement is: the
+  Case-I double deletion always acts on two distinct slots; `a = mu` is possible
+  in Case II, where no deletion happens. Recorded in `LEMMA_MAXEXIST.md`.
+- **Value:** a third independent implementation cross-checking the map (0
+  mismatches over 66 658 states), and an honest self-reported failure that
+  sharpened a boundary claim rather than being hidden.
