@@ -256,7 +256,7 @@ or Astra to collect.
 
 ```
 path      KeplerConjecture/Computation/l1_remainder.py
-sha256    c5608652818349336ddfea3f707c10033c211a3b0712b60acb55190d9e383caa
+sha256    fd375ff8b4eb3dff4130c62f2e146bacda71bdc0fdbe035dd79c22a40c993ba0
 commit    1d2db443359ad57dddb6e8ac00212044dc7777af   (first commit containing the file)
 deps      python3 (stdlib), numpy, scipy.spatial   -- no Lean, no network, no GPU
 runtime   ~1 s measured; budget 1 CPU / 1 GiB / 120 s
@@ -291,15 +291,24 @@ to decide); measured M₃ = 0.075…0.213 across seeds, so the headroom is a fac
 **Pinned command.**
 
 ```
-python3 KeplerConjecture/Computation/l1_remainder.py --certify --eps 1.0 --c 0.13 --m3-bound X
+python3 KeplerConjecture/Computation/l1_remainder.py --certify --eps 1.0 --c 0.13 \
+        --hessian-bound Q --m3-bound X
 ```
 
-`X` is *your* rigorous third-derivative bound. Acceptance is by **exit code**:
+**TWO rigorous inputs are required**, and the pilot refuses to certify with either alone (its self-test
+asserts `--m3-bound` alone returns exit 1):
+
+- `Q` — a rigorous lower bound for the **quadratic coefficient** (the quotient `λ_min/2`). Without it the
+  quadratic term is only *measured*, and a Taylor certificate would claim more than Taylor's theorem gives.
+  The measured value is `≈ 0.24`; `Q ≥ 0.20` is what the chain needs.
+- `X` — a rigorous **third-derivative** bound.
+
+Acceptance is by **exit code**:
 
 | exit | meaning | acceptable? |
 | --- | --- | --- |
-| `0` | T1/T2 certified **and** `X ≤ 2.7151`: the local rate follows | **the target** |
-| `1` | T1/T2 certified, value bound open (no `X`, or `X` too large) | expected with a crude `X` |
+| `0` | T1/T2 certified, `Q ≥ c`, and `X ≤ 6(Q − c)/θ_max = 2.7151` (at `Q = 0.20`) | **the target** |
+| `1` | T1/T2 certified, value bound open (no `Q`, no `X`, or `X` too large) | expected with a crude `X` |
 | `2` | a sound part failed (e.g. a ball outside `0.163600`) | a real problem |
 | `3` | the negative control was not rejected, i.e. the pilot is inert | discard the run |
 

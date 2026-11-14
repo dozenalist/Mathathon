@@ -174,6 +174,16 @@ def volume(N):
     return tot
 
 
+def dv_bound(m):
+    """Vertex motion per unit theta: R|A^-1| sqrt(6).
+
+    sqrt(6) because a unit theta spreads over the six components (three planes, two
+    tangents each) that fix a vertex.  ONE definition, used by both certify_margins and
+    certified_radius -- they disagreed twice when each computed its own.
+    """
+    return 1.258408572 * (1.0 / m["min_det"]) * np.sqrt(6.0)
+
+
 def margins_at_zero():
     """Classify ALL triples, not just the feasible ones.
 
@@ -225,7 +235,7 @@ def certify_margins(theta_max, verbose=True):
     # components, so the directional derivative is sqrt(6) times one component.
     # The first version used |A^-1|^2 R = 2.1563 and was UNSOUND: the measured rate of
     # the slack is 5.4-7.2 per unit theta (adversarial check), which exceeds it.
-    dv = rmax * inv * np.sqrt(6.0)                  # vertex motion per unit theta
+    dv = dv_bound(m)                                # vertex motion per unit theta
     # Only the 20 ACTIVE triples need a positive determinant: if one of those vanished its
     # vertex would run to infinity and the volume formula would break.  An INACTIVE triple
     # going singular only sends a would-be vertex away, and T2 already keeps it out of the
@@ -300,9 +310,10 @@ def certified_taylor(theta_max, c, ratio_min, m3_measured):
 def certified_radius():
     """The largest theta on which T1 and T2 are proved by this pilot."""
     m = margins_at_zero()
-    inv = 1.0 / m["min_det"]
-    dv = inv * inv * 1.258408572
-    t1 = m["min_det_all"] / 3.0                      # Hadamard on the determinants
+    dv = dv_bound(m)
+    t1 = m["min_det_active"] / 3.0                   # Hadamard on the ACTIVE determinants
+    # (certify_margins uses the same set; using min_det_all here made the two functions
+    #  disagree about the certified radius -- 0.1567 vs 0.2536)
     t2 = m["min_inactive_slack"] / (dv + 1.0)        # the type margin (+1: the normal's own motion)
     return min(t1, t2), t1, t2
 
@@ -348,6 +359,10 @@ def main():
     ap.add_argument("--ratio-min", type=float, default=RATIO_MIN,
                     help="conservative quotient ratio used for the ACCEPTANCE test; "
                          "the sampled value is reported but never decides")
+    ap.add_argument("--hessian-bound", type=float, default=None,
+                    help="a RIGOROUS lower bound for the quotient quadratic coefficient "
+                         "(lam_min/2).  Without it the quadratic term is only MEASURED, "
+                         "and no Taylor certificate is sound, whatever M3 is supplied")
     ap.add_argument("--m3-bound", type=float, default=None,
                     help="a RIGOROUS third-derivative bound from an independent "
                          "interval computation; without it the value bound cannot "
@@ -369,8 +384,16 @@ def main():
     print("\nVALUE BOUND (not certified by this pilot)")
     print(f"   min quotient ratio (vol - V_dod)/d^2 over sampled dirs = {ratio_min:.6f}")
     print(f"   measured M3 = 6|c3| along the worst direction          = {m3:.6f}")
-    need, enough = certified_taylor(a.theta, a.c, a.ratio_min, m3)
-    print(f"   ACCEPTANCE uses the conservative ratio_min = {a.ratio_min:.4f} (not the sample):")
+    # The Taylor criterion needs TWO rigorous inputs: the quadratic coefficient and M3.
+    # Using the sampled (or the fixed conservative) ratio for the quadratic term is NOT
+    # sound: it would certify a bound stronger than Taylor's theorem gives.
+    q = a.hessian_bound if a.hessian_bound is not None else a.ratio_min
+    need, enough = certified_taylor(a.theta, a.c, q, m3)
+    if a.hessian_bound is None:
+        print(f"   ACCEPTANCE: the quadratic coefficient is MEASURED (ratio_min = {a.ratio_min:.4f}),")
+        print("   not proved.  Supply --hessian-bound with a rigorous lam_min/2 to certify.")
+    else:
+        print(f"   ACCEPTANCE uses the supplied rigorous quadratic bound {a.hessian_bound:.6f}:")
     print(f"   Taylor sufficient iff M3 <= 6(ratio_min - c)/theta_max = {need:.4f}")
     print(f"   measured M3 {m3:.4f} vs required {need:.4f} -> "
           f"{'PLAUSIBLE (factor %.1f of headroom)' % (need / m3) if m3 > 0 and need > m3 else 'NOT SUFFICIENT'}")
@@ -412,7 +435,7 @@ def main():
     if not inert:
         print("\nVERDICT: INERT — the pilot accepted a constant above the measured curvature")
         return 3
-    if a.m3_bound is not None:
+    if a.m3_bound is not None and a.hessian_bound is not None:
         if a.m3_bound <= need:
             print(f"\nVERDICT: CERTIFIED (Taylor) with the supplied rigorous M3 bound "
                   f"{a.m3_bound:.4f} <= {need:.4f}")
@@ -420,6 +443,10 @@ def main():
             return 0
         print(f"\nVERDICT: NOT CERTIFIED — the supplied M3 bound {a.m3_bound:.4f} "
               f"exceeds the required {need:.4f}")
+        return 1
+    if a.m3_bound is not None:
+        print("\nVERDICT: NOT CERTIFIED — an M3 bound alone is not enough: the quadratic")
+        print("   coefficient must also be supplied rigorously (--hessian-bound).")
         return 1
     print("\nVERDICT: T1/T2 CERTIFIED; value bound NOT certified.")
     print("   Missing ingredient: a rigorous enclosure of M3 (or of the Hessian entries)")
@@ -437,8 +464,12 @@ def self_test():
     cases = [
         (["--margins"], 0, "T1/T2 margins certify"),
         (["--certify", "--c", "0.30", "--seed", "3"], 3, "negative control rejected (inert)"),
-        (["--certify", "--seed", "3", "--m3-bound", "0.5"], 0, "certifies with a tight bound"),
-        (["--certify", "--seed", "3", "--m3-bound", "1e6"], 1, "rejects a loose bound"),
+        (["--certify", "--seed", "3", "--m3-bound", "0.5", "--hessian-bound", "0.24"], 0,
+         "certifies with BOTH rigorous inputs"),
+        (["--certify", "--seed", "3", "--m3-bound", "1e6", "--hessian-bound", "0.24"], 1,
+         "rejects a loose M3"),
+        (["--certify", "--seed", "3", "--m3-bound", "0.5"], 1,
+         "rejects an M3-only run (the quadratic term is unproved)"),
         (["--certify", "--seed", "3"], 1, "uncertified without a rigorous M3"),
         (["--certify", "--theta", "0.30", "--seed", "3"], 2, "a ball beyond the certified radius FAILS"),
         (["--certify", "--eps", "1.0", "--seed", "3"], 1, "the eps=1 ball is inside, value bound open"),
@@ -451,11 +482,17 @@ def self_test():
         print(f"  [{'ok' if good else 'FAIL'}] exit {r.returncode} (want {want}) -- {why}")
         ok = ok and good
     tcert, t1c, t2c = certified_radius()
+    # the two functions must agree about the radius; they did not, twice
+    okm, m, feas, tm = certify_margins(0.0, verbose=False)
+    agree = (abs((m["min_det_active"] / 3.0) - t1c) < 1e-12
+             and abs((m["min_inactive_slack"] / (dv_bound(m) + 1.0)) - t2c) < 1e-12)
+    print(f"  [{'ok' if agree else 'FAIL'}] certified_radius agrees with certify_margins "
+          f"({tcert:.4f})")
     inside = tcert > THETA_MAX
     print(f"  [{'ok' if inside else 'FAIL'}] certified radius {tcert:.4f} exceeds the "
           f"default ball {THETA_MAX:.4f}")
-    print("  SELF-TEST:", "PASS" if (ok and inside) else "FAIL")
-    return 0 if (ok and inside) else 1
+    print("  SELF-TEST:", "PASS" if (ok and inside and agree) else "FAIL")
+    return 0 if (ok and inside and agree) else 1
 
 
 if __name__ == "__main__":
