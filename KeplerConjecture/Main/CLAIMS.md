@@ -5209,3 +5209,57 @@ rather than merely excluded: the truncated dodecahedron's 13th neighbour is at d
 (illegal, `1.2817` from the nearest contact); a *legal* 13th neighbour is at `≥ 3.1786` and its plane
 never reaches the cell. So `ML`'s unrestricted volume bound and this ledger's numbers are consistent, and
 **`C108` step (1) stands** — which it would not have if the legal 13th neighbour had cut the cell.
+
+#### `C142` addendum 2 — the cubic remainder, measured, and the job that would make `L1` a theorem
+
+`L1` is now the **only** gap (see addendum 1: `L2` is proved). Its content is a cubic-remainder bound on
+`vol(θ)` over the ball `Σθ² ≤ 0.002`. Measured, over 12 random directions in the 24 tangent parameters
+(least-squares fit of `vol − V_dod = c₂θ² + c₃θ³`):
+
+| quantity | value |
+| --- | --- |
+| `c₂` range over the sample | `0.1766 … 0.584` (minimum at the `λ₁` eigenvector, as it must be) |
+| `max |c₃|` | `0.0752` |
+| `|c₃|` the constant `0.17` tolerates at `θ = 0.0447` | `0.494` |
+| cubic term as a fraction of the quadratic budget at the needed `θ` | `2.0%` |
+
+So `L1` has a factor `6.6` of margin in the cubic term and needs only a *bound*, not a better constant.
+The rigorous version is a bounded interval-arithmetic job (**`M-CERT-002`**, specified in
+`LOCAL_COMPUTE_REQUESTS.md` with its pinned command, dependencies, `1 CPU / 1 GiB / 120 s` budget, and a
+negative control `c = 0.30` that it must reject). It is not run here: no heavy numerics on the VM.
+
+**Status of the explicit `δ₀`.** `δ₀ ≥ 3.76·10⁻³` is **conditional on `L1` alone**. `L2` is proved; the
+face-distance half is proved and explicit; the normal half is measured with a wide margin. `G11` stays
+open until `M-CERT-002` returns, and `C124` stays `PENDING_REVIEW` regardless.
+
+#### `C142` addendum 3 — the combinatorial type is robust, so `M-CERT-002` is well-conditioned
+
+One more thing `L1` needs, and it is now in hand. The volume is computed from the 20 vertices, each the
+solution of `A x = 1` for a triple of tight planes. At the dodecahedron **all 20 tight triples have the
+same determinant**,
+
+```
+|det| = 0.760845213   (all 20; vertex radius 1.258408572, both exact by symmetry)
+```
+
+Perturbing the normals by at most `θ` changes each row of `A` by at most `θ`, so
+`|det A' − det A| ≤ 3θ` (Hadamard), giving
+
+```
+θ ≤ 0.05   ⟹   |det A'| ≥ 0.760845 − 0.15 = 0.610845 > 0
+```
+
+for **every** triple, on the whole ball `Σθ² ≤ 0.002`. Hence no triple degenerates, no vertex enters or
+leaves the convex hull, and `vol` is a **smooth** function of `θ` on the entire ball — the branch structure
+that makes a naive interval certifier explode does not exist here.
+
+**This de-risks the job in `LOCAL_COMPUTE_REQUESTS.md`:** `M-CERT-002` does not need a combinatorial
+cover, only a derivative bound. The constants it should carry are `|det| ≥ 0.610845`, vertex radius
+`≤ 1.258408572 + O(θ)`, surface area `3V_dod = 16.650873086` (an immediate Lipschitz bound
+`|∂vol/∂θ_j| ≤ S·R ≤ 16.651 × 1.31 = 21.8`).
+
+**Two things this does *not* do.** It does not bound the third derivative (a Lipschitz bound of `21.8`
+is far too lossy on its own — it would allow the cubic term to swamp the quadratic at `θ = 0.045`), and
+it does not replace the measurement in addendum 2, which says the true cubic coefficient is `≤ 0.075`.
+The job is to convert that measurement into a bound, and the type-robustness above is what makes it a
+finite calculation rather than a covering problem.
