@@ -262,6 +262,15 @@ cell has volume `√32` exactly). It does not show **equality ⟹ Barlow**, and 
 > volume `√32`, so `vol Ω(v) + vol Ω(w) = 2√32` — equality in `(L)` — in a packing that is not
 > Barlow.
 
+A second, independent realisation of the same construction (the block's swarm member `m5`): take
+fcc with nearest-neighbour distance 2, `{√2(m,n,p) : m+n+p even}`, and translate the half-space
+`{m+n+p > 0}` by `δ(1,1,1)/√3` with `0 < δ < 2−√2`. Then the minimum distance is still exactly 2
+(a translation only increases cross distances), the covering radius is at most `√2 + δ < 2` so the
+packing is **saturated**, bulk cells are unmodified fcc cells of volume `√32` (so bulk–bulk pairs
+sit exactly at `2√32`), and the crack-adjacent cells are strictly larger — so it is not Barlow.
+Same conclusion, one more construction, and it makes the counterexample independent of the details
+of `C095`.
+
 The document's own §5 table says the same thing ("crack packing | bulk–bulk | `11.313708499` |
 equality in the bulk"), so line 40 contradicts line 240 of the same file. **Repair:** the heading
 should read "*`(L)` is attained on every Barlow packing, and also on the bulk of every planar-fault
@@ -313,6 +322,14 @@ their derivation addressed "`vol Ω = V_dod` off a density-zero set", which is s
 equality, so it does not prove the corollary either — it proves the different statement that
 almost-everywhere exact dodecahedral cells are impossible.)
 
+**A partial result worth keeping (swarm member `m5`, checked).** For `Z := {v : vol Ω(v) = V_dod}`
+in a saturated packing: each `v ∈ Z` is dodecahedral, hence has exactly 12 contacts; no two points
+of `Z` are at distance 2 (that is step 4 of Theorem D); so all 12 contacts of every `v ∈ Z` lie in
+`Z^c`, giving `12|Z ∩ B_R| ≤ Σ_{w∈Z^c∩B_{R+2}} deg(w) ≤ 12|Z^c∩B_{R+2}|`, i.e.
+**`density(Z) ≤ 1/2`**. That is a real theorem about the exact-equality set and it is the part of
+the corollary that *does* follow from the two-dodecahedra step. It does not close the density
+statement, because `Z^c` may consist entirely of cells of volume `V_dod + ε_v` with `ε_v → 0`.
+
 **What is unaffected:** Theorem C itself (line 352) is correct — I checked the split into internal
 pairs and `U_B`, the two-sided volume estimate, `P_B ≤ |B|/2` hence `ρ ≤ 1/2`, and the final
 division. `δ ≤ (4π/3)/(V_dod + δ₀ρ)` for `ρ > 0` stands. Only the *corollary* about the equality
@@ -342,11 +359,15 @@ So the correct inequality has
 - coefficient `√32` on `Σd_v`, not `2√32 − 2V_dod` (which is `0.213`, thirty times smaller), and
 - coefficient `√32 − V_dod = 0.1066` on `C_R`, not `√32`,
 
-and it is *weaker* than the displayed one. The displayed version is not what the split gives. Since
-both `Σ_{v∈B}d_v` and `C_R` are `o(R³)` in the intended regime (density-zero unmatched set,
-`C_R ≤ O(R²) + 12|E_B|`), **the conclusion is the same under either coefficient**, so this is a
-derivation slip, not a broken argument — but a reader who checks line 215 against line 94 will not
-be able to reproduce it, and the numbers are thirty-fold different in one case.
+and it is *weaker* than the displayed one — the displayed slack coefficient is exactly twice the
+correct one. So the displayed inequality is **not** what the split gives; it is strictly stronger,
+and it is plausibly false: at a vertex with a dodecahedral cell (`vol Ω = V_dod = 5.5503`) whose
+matching weight happens to be `0.6` (so `d = 0.4`, which the normalisation allows), the displayed
+RHS per vertex is `√32 − 0.213126·0.4 = 5.5719 > 5.5503 = vol Ω`. Nothing in the argument
+establishes it. The correct form has coefficient `√32 − V_dod = 0.106563221` on `Σd_v`; since
+`Σ_{v∈B}d_v` and `C_R` are both `o(R³)` in the intended regime, **the conclusion is the same with
+the correct coefficient**, so the repair is one symbol — but a reader who checks line 215 against
+line 94 will not be able to reproduce it, and the displayed version should not be quoted.
 
 ---
 
@@ -389,7 +410,7 @@ be able to reproduce it, and the numbers are thirty-fold different in one case.
 | `X-C039` | "the failure is *exactly* an isolated icosahedral cluster" — the mechanism is "some `S` with `iso(G−S) > |S|`"; the 13-cluster is its extremal geometric case, not the only one (`K_{1,3}` fails too) | **Wording**, not a defect; witness W3 |
 | `X-C040` | Line 40's "equality case is exactly the Barlow family" asserts an unproved converse that `C095`'s crack packing refutes (bulk–bulk pairs at equality, packing not Barlow) | **REFUTED as stated**; demote the heading |
 | `X-C041` | Theorem C consequence 2 ("the equality case is empty") infers a pointwise statement from an average and needs a stability version of Hales–McLaughlin that the exposition says is unavailable | **GAP (not refuted)**; the corollary may be true, the argument is not a proof |
-| `X-C042` | Line 215's coefficients (`2√32−2V_dod` on `Σd_v`, `√32` on `C_R`) are not what the split gives (`√32`, `√32−V_dod`); conclusion unaffected | **DEFECT (derivation)**, cosmetic |
+| `X-C042` | Line 215's coefficients (`2√32−2V_dod` on `Σd_v`, `√32` on `C_R`) are not what the split gives (`√32`, `√32−V_dod`); the slack coefficient is exactly twice the correct one, so the displayed inequality is stronger than the argument and is not established (and plausibly false: at a dodecahedral vertex with matching weight 0.6, `d = 0.4` and the displayed RHS exceeds `vol Ω = V_dod`). Conclusion unaffected if the correct form is used | **DEFECT (false as displayed; correct form supplied)** |
 | `X-C043` | Theorem D step 4 confirmed independently: `sup_t m(t) = 1.125554844510 < 2`; and E's `1.056487696` is `m` at twist `33.636862°`/`38.363138°`, so the "unresolved discrepancy" is resolved in Main's favour | **VERIFIED / RESOLVED** |
 | `X-C048` | Line 204's "twelve centres on the sphere of radius 2 with mutual distance ≥ 2 is exactly the icosahedral twelve" is **false**: the icosahedral twelve have min distance `2.102924448 > 2`, so the admissible set is positive-dimensional; `K_{1,3}` is realisable at `2·(±1,±1,±1)/√3`, so the failure set of `(M)` is much larger than "the 13-cluster" | **REFUTED (over-claim)**; verified |
 | `X-C049` | Theorem C's corollary "the equality case is empty" is **true** but follows in two lines from Hales (`π/√18 = 0.740480 < 0.754697 = (4π/3)/V_dod`), so it cannot be evidence inside a chain meant to prove Kepler; the route through Theorem C needs the missing stability statement | **TRUE but not from the chain** (`X-C041` stands as the gap) |
