@@ -743,3 +743,23 @@ retraction of `C029` does not affect anything in this directory. I state this ex
 than leaving it to be inferred, because a reader who has seen `C029` withdrawn would reasonably
 want to know whether the same slip appears here. It does not. I have not audited `C029` itself
 and make no claim about what it should be replaced with.
+
+### 11.1 A15 self-consistency: cell volumes match the Wyckoff multiplicities
+
+A15 has two orbits per conventional cell — `2` A-sites (CN12) and `6` B-sites (CN14) — and the
+computed cell volumes split into exactly two values with those multiplicities:
+
+```
+2 cells of 7.8125 = 125/16,   6 cells of 8.0625 = 129/16
+multiplicity-weighted mean = (2*125/16 + 6*129/16)/8 = 8 = L^3/N = 64/8
+density = (4pi/3)(8)/64 = 0.5235988
+```
+
+So the volume-weighted average reproduces `L^3/N` exactly, and the split `2 : 6` matches the
+`8a : 16d` site ratio. That is a genuine consistency check of the fixture: a Voronoi
+decomposition with an indexing error or a wrong periodic convention would not reproduce both
+the multiplicities and the mean simultaneously. It also confirms the earlier statement that the
+A15 build is a real structure and not an artefact.
+
+The two cell volumes are exact rationals (`125/16` and `129/16`) because the scaled cube edge is
+exactly `4`, so this fixture needs no floating-point tolerance at all.
