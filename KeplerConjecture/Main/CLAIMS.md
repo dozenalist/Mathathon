@@ -1814,3 +1814,25 @@ slowest real use and stays far below the 300 s cap.
 Seeds `55, 61, 62` (600 polynomials total) clean. The point of these passes is
 that **uniform random coefficients never produce either family**, which is why
 three successive checkers passed their "random" tests while being wrong.
+
+### K15-C065 — C's bidirectional cross-validation, imported with one caveat (`IMPORTED`)
+
+- **Their claim (`K15-C-XVAL-002`, branch `kepler15/comp-01a1d8c0`).** Both
+  directions work: their degree-33 certificate (`0.77996622`) is accepted by
+  Main's `shell_check` at `T_LO = 4π_lo`, and a degree-33 *shell* certificate is
+  accepted by their `exactcert` in strict mode at `0.780338357535` against
+  `shell_check`'s `0.780338357611` — agreement to ten digits.
+- **Why it is good news.** A wrong entry in `M`, a wrong `π` enclosure direction,
+  or a mis-mapped `t ↔ u` would break one of the two directions. Neither breaks, so
+  the convention dictionary of `Main/INTERFACE.md` is now tested in both
+  directions on real degree-33 data.
+- **Caveat Main adds.** Their note reads "`shell_check`'s `T_LO = 12` default is
+  sound but pessimistic (it can only reject valid certificates, never accept
+  invalid ones)". The second half of that sentence is **false for the predicates**:
+  `K15-C049` and `K15-C058` were both false-*accept* defects, unrelated to `T_LO`.
+  The threshold argument is correct in itself (a smaller start point only
+  strengthens a `≤ 0` requirement); the general soundness inference is not, and
+  must not be used as evidence. Also, `T_LO` is now `4·PI_LO`, not `12`.
+- **Status.** `IMPORTED` (their evidence, verified in one direction by Main's own
+  runs in `K15-C023`/`C056`). Full acceptance awaits X's audit of the repaired
+  predicates (`Main/AUDIT_REQUEST_X.md`).
