@@ -1,5 +1,26 @@
 # Completion review and duplicate handling
 
+## Computation 48443 — retired watcher notification, November 14, 00:06 PST
+
+The report `sair-result-f336af2034ff465db6ef4546b8560816.json` matches ownership
+and stopped watcher state for team `o-67dc4eac-a86a-439c-9459-ef86c31aeaa7`,
+project `p-36b7a2950416475fab4b275b5afdfeb2`, session
+`using-the-chats-in-mcl6`, and supervisor
+`01a1d8c0-f50f-7352-a61a-3927660a8eea`. Live history confirms completion 48443
+and no later user prompt. The watcher process remains stopped.
+
+The reported source `633da8e9db3987ec8c56a7c1eb628f3d47402bc2` is confirmed on
+GitHub and already included in the public consolidated checkpoint
+`1803de0e60eb8f282ef4a82842de4f5c7af03f82`. The exact-checker request and its
+certificate claim remain pending independent local review.
+
+The latest human instruction replaced watcher-triggered reviews with hourly
+reviews. Accordingly this queued notification was reconciled without restarting
+monitoring, running a new research block, or sending a prompt. There is no new
+prompt ID. Keep 48443 pending for the next scheduled review; do not mark it as
+mathematically reviewed or already assigned. The prior prompt
+`oc_2bcef4e61f800df6` belongs to completion 44212, not this one.
+
 ## Main completion 27616 — reviewed during watcher-error handling
 
 The alert was from an older failed watcher. Its replacement is alive and had

@@ -1,7 +1,8 @@
 # Kepler Conjecture: progress so far
 
-Updated at the transition to hourly supervision, November 14, 2026, Pacific
-time. This is the cumulative human-readable account; each hourly check updates
+Updated November 14, 2026, 00:06 Pacific. A queued watcher notification was
+reconciled; the mathematical status is unchanged. This is the cumulative
+human-readable account; each hourly check updates
 it and adds a short entry in [HourlyUpdates](HourlyUpdates/).
 
 ## Where the project stands
