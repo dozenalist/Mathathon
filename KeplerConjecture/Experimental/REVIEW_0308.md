@@ -474,6 +474,33 @@ value of `R` at which `(H_R)` is both true and provable"**. Nothing in this bloc
 an `R`; the icosahedral fixture only tells us `R = 2.09` is *admissable* (twelve payers), not that
 it is *sufficient*.
 
+## 10c. The four excluded families, in one table
+
+The cut `S = {c}` requires `sum_{i=1..12} c(w_i) >= 67.9888142149`. Every per-cell lower bound
+attempted falls into one of four families, and each is excluded with an explicit number:
+
+| family | bound it gives | shortfall | why it fails |
+| --- | --- | --- | --- |
+| inscribed balls | `12 (4pi/3) = 50.265482` | `17.723332` | `c` is at distance exactly `2`, so no ball of radius `> 1` is guaranteed |
+| dodecahedral minimum (McLaughlin) | `12 V_dodeca = 66.603492` | `1.385322` | the minimum is **attained**, at `c` itself; no improvement possible |
+| outward collar | `<= 12 (4pi/3 + A_pent x 1) = 66.916356` | `1.072458` | depth capped at `1`, and the collar is blockable for free by a legal centre at `w_i + 2 w_hat_i` |
+| finite constraint sets | any computed polytope | — | a finite constraint set bounds the cell **above**, never below |
+
+Best of the four: `66.916356` against `67.988814` required, a ratio of `0.984`. So the shortfall is
+`1.072` at best, i.e. `1.6 %`.
+
+**The pattern.** Each family supplies a *lower* bound of the form "some explicit body sits inside
+the cell". Adding centres never removes those bodies, so the bounds are valid — but each body is
+capped by a constraint that the cluster itself forces (tangency at `c`) or that the completion can
+supply for free (the collar blocker). **Per-cell bodies are structurally the wrong tool**: they can
+only see what is *forced* into the cell, and the completion is free to remove everything that is not
+forced.
+
+**What is not excluded.** A bound that uses the *simultaneity* of the twelve cells — i.e. that the
+completion cannot shrink all twelve at once because doing so would require the twelve to be
+mutually too close. That is a global statement about the twelve, not a per-cell one, and it is
+exactly what `(H_R)` encodes. Nothing in this block proves it or refutes it.
+
 ## 11. Status at the 20-minute checkpoint
 
 Checkpoint `11:36:52Z`. Substantive work completed in this block so far:
