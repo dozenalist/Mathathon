@@ -256,10 +256,21 @@ inside it. `certify_region.py` does not re-check legality, so this is inherited 
 earlier computation and stated as such rather than implied. It is a `2`-parameter slice of the completion
 space, not the space itself (§3), and it is reported as such.
 
-*(A `1° × 1°` region — 100 boxes, 4 workers, about 8 minutes — was also launched; its result is
-reported in the final message for this block. The `0.1°` box is the one that matters: at that
-width the enclosure is `5.3e-2` and the margin to the threshold is `0.11`, so the coarsest
-useful grid already closes.)*
+The larger run completed:
+
+```
+region  theta in [110, 111], phi in [35, 36]          (100 boxes of 0.1 deg, 4 workers)
+CERTIFIED for the whole region:  vol Omega(w1) in [5.872109779, 5.927479312]
+worst box at theta = 110.9, phi = 35.7
+(P') threshold 5.763417470        margin of the lower end  +0.108692
+ran 10 min 39 s wall (about 18 s of CPU per box)
+```
+
+**One full square degree of the family is certified**, and the lower end does not move much as
+the region grows (`+0.109590` for the `0.2°` square, `+0.108692` for the `1°` square): the
+enclosure widens with the box, but the margin is `0.109` and the box contributes `0.053`, so the
+coarsest useful grid closes with room. That is the quantitative reason the region is certifiable
+at all, and it is why the `8×10⁷` boxes of a `1e-3` enclosure are not needed.
 
 ---
 
