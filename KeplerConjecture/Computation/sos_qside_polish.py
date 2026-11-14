@@ -84,8 +84,13 @@ def main():
         ss = [[F(7, 4), F(-2, 3)]]
         rs = [r + [F(0)] * (4 - len(r)) for r in rs] + [[F(0)]]
         ss = [s + [F(0)] * (4 - len(s)) for s in ss] + [[F(0)]]
+    elif K == 9:
+        rs = [[F(0)], [F(-1, 12)], [F(-19, 4), F(11, 6)]]
+        ss = [[F(7, 4), F(-2, 3)]]
+        rs = [r + [F(0)] * (5 - len(r)) for r in rs] + [[F(0)], [F(0)]]
+        ss = [s + [F(0)] * (5 - len(s)) for s in ss] + [[F(0)]]
     else:
-        raise SystemExit("degree must be 5 or 7")
+        raise SystemExit("degree must be 5, 7 or 9")
     def score(rs, ss):
         q = build(rs, ss)
         if sp.degree(q) > K:

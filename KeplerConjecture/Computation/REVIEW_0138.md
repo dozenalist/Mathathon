@@ -546,3 +546,18 @@ demonstrators of the certificate format at strengths far from competitive.
 * Build the one certificate with an explicit rational Gram on **both** sides at a useful strength;
   this needs an SDP with rational Gram rounding (no solver on the SAIR VM).
 * Re-run the `PENDING_MAIN_FIX` items once `shell_check` is repaired and audited.
+
+### Degree 9 does not help at this search budget
+
+The hill-climb/hop was extended to degree 9 (factors of degree ≤ 4), seeded from the padded
+degree-5 optimum at `uphill = 0.05`, 3000 iterations, seed 101:
+
+| degree | best `Δ ≤` |
+| --- | --- |
+| 5 | 1.99064200 (hill-climb) |
+| **7** | **1.37125723** (basin-hopping) |
+| 9 | 1.74760261 |
+
+Degree 9 is **worse**, because the parameter space grows faster than the iteration budget. Recorded
+so that nobody reads "higher degree" as "better" on this route: the record is a joint property of
+degree *and* search effort, and `(degree 7, 4000 hops)` is the best combination found.

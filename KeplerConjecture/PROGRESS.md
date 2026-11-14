@@ -559,3 +559,13 @@ interesting open question in this file and the natural next task.
 **Local request extended:** a longer search for the explicit-Gram certificate (a few hundred runs
 at ~40 s, 1 CPU, < 300 MB) is now in `LOCAL_RUN_REQUEST.md` — this is exactly the job that belongs
 on Astra's machine rather than the SAIR VM.
+
+### K15-COMP-031 — 2026-11-14 — Computation (role C), degree 9 does not help
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-SOSDEG-001 | measured | degree 9 (factors of degree ≤ 4, 3000 hops, seed 101) gives `1.74760261` — **worse** than degree 7's `1.37125723` — because the parameter space grows faster than the iteration budget. The record is a joint property of degree *and* search effort, and `(degree 7, 4000 hops)` is the best combination found | `out/hopK9.json` |
+
+**Closing record for the block:** explicit-Gram certificates improved `5.99 → 2.62 → 1.99 → 1.41 →
+1.37125723`, with degree 9 worse at the same budget. All statuses are best-found / tested-family;
+no optimality is claimed anywhere.
