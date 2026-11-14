@@ -577,3 +577,44 @@ secondary implementation that removes the faithfulness bottleneck.
 - **Value:** a third independent implementation cross-checking the map (0
   mismatches over 66 658 states), and an honest self-reported failure that
   sharpened a boundary claim rather than being hidden.
+
+## 2026-11-14 / RR-M013 / RR-C006 promoted: T is LEAN_VERIFIED (4.33.1; pin pending)
+
+- **Agent and reviewer:** cycle-3 worker m2 (swarm `smwg1kdjq`, direction B);
+  every claim below re-verified independently by Main.
+- **Status:** RR-C006 **TESTED_FINITE -> LEAN_VERIFIED**, with the toolchain
+  caveat stated. This is a real ledger promotion, the first since RR-C005.
+- **What is proved** (`Lean/ShiftT.lean`): `sum_shiftT` (weight preserved
+  exactly, `k*k` cancels, no inequality needed), `mem_shiftT_ge` (image entries
+  `>= k`, the `B_n` condition), `weakDec_shiftT` (image is a partition — the
+  substantive half), `shiftInv_shiftT` and `shiftT_shiftInv` (both laws, length
+  kept as data), plus `shiftInv_pos`, `shiftInv_gap` and the subtype bijection
+  `toB : DGap -> BSmall` with `toD_toB`, `toB_toD`, `weight_toB`.
+- **Main's verification.** `lean RogersRamanujan/Lean/ShiftT.lean` exit 0, 0
+  errors, no `sorryAx`; 41 `#print axioms` directives print 40 results, 33 with
+  axioms (`[propext]` 7, `[propext, Quot.sound]` 26) and 7 with none — all inside
+  the allowed set. `python3 Lean/cycle3/check_encoding.py` exit 0, **10 checks,
+  0 FAIL**, 197 `D`- and 197 `B`-objects at `n <= 20`, including the important
+  row **`T(D_n) = B_n` as sets for every `n <= 20`** — surjectivity, so this is a
+  genuine bijection, stronger than the brief asked for.
+- **Three hypothesis-necessity witnesses kernel-checked by Main** in a separate
+  file (exit 0): `(shiftT [1,3]).sum ≠ 4` with `[1,3]` `Pos` but not `Gap`;
+  `shiftT [0] = shiftT [1]`, so `Pos` is needed for injectivity; and
+  `shiftInv [2,5] = [3,4]` which is `¬ Gap`, so the entry bound alone does not
+  land in `D_n`. The hypotheses are load-bearing, not decoration.
+- **Correcting one of my own earlier readings:** when I first tested an
+  intermediate state of the worker's file I recorded "33 axiom lines, not 40" and
+  treated that as a reporting discrepancy. That was my error: 33 was only the
+  "depends on axioms" subset, and 33+7 = 40 is exactly what the worker claimed.
+  No defect in their report.
+- **Integration fixes by Main:** the delivered file inlined a verbatim copy of
+  `Staircase.lean`, which re-defines `Pos`/`Gap`/`subStair`/`addStair` and so
+  cannot be imported alongside the original; Main replaced it with
+  `import RogersRamanujan.Lean.Staircase` and added the module to
+  `RogersRamanujan.lean`. The aggregator now compiles exit 0 with all three
+  modules.
+- **Reproduction:** `lean RogersRamanujan/Lean/ShiftT.lean`;
+  `cd RogersRamanujan/Lean/cycle3 && python3 check_encoding.py`.
+- **Remaining:** a 4.35.0 run of this file (the supervisor has the pinned
+  toolchain); `lake build RogersRamanujan` with the new module; the
+  `Nat.Partition` bridge; `phi`/`psi` untouched by this module; RR-C012 OPEN.

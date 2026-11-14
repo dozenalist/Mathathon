@@ -1,7 +1,8 @@
--- GENERATED FILE -- do not edit. Assembled by build.py from
---   RogersRamanujan/Lean/Staircase.lean (sha256 c7acbcd74866958596acc458a7231939ebe01969a0723179bfdaaf263cbeb280)
--- plus the cycle-3 block(s) listed in Lean/cycle3/README.md.
--- The Staircase.lean part is byte-identical to the source slice.
+-- GENERATED FILE -- do not edit by hand; rebuild with build.py from
+--   RogersRamanujan/Lean/Staircase.lean  (sha256 c7acbcd74866958596acc458a7231939ebe01969a0723179bfdaaf263cbeb280)
+-- plus the cycle-3 blocks named on build.py's command line.
+-- The Staircase.lean part is byte-identical to that source slice; only its
+-- trailing '#print axioms' lines are re-emitted at the end.
 /-
 RR127 / SAIR Mathathon problem 127 -- Level 3 reusable foundation.
 

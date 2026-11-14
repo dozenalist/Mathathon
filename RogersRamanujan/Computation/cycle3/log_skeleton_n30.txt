@@ -1,0 +1,23 @@
+phi skeleton audit (corrected), all signed states of weight <= 30
+states in X(n): 67551  in phi domain: 66658  excluded {0}xB(n): 893
+Case I: 33329   Case II: 33329
+a == mu: 6458  (a <= t: 5565, a > t: 893)   a == mu AND Case I: 0
+Case II: p2 = 0 in 3, m = 0 in 2605, m = hi in 22527, m < hi in 10802, image lost a 1 in 22759
+p2 certificate: C-a only 10805, C-b only 0, both 22524, neither 0
+Case I virtual slots: a only 2605, mu only 3, both 3; r > 0 in 29588
+
+P0  PASS  68444 checks  domain = X(n) \ {0}xB(n)
+P1  PASS 135102 checks  a exists, a >= 1, minimal, a <= max(t+1, 1-2j)
+P2  PASS 135102 checks  mu = k+1-L is a slot index, 1 <= mu <= a+2j
+P3  PASS  12916 checks  a == mu <=> L = 2j, and then a > t (both slots virtual)
+P4  PASS 133316 checks  weight preserved, every image part >= 1
+P5  PASS 133316 checks  Case II: z-set is 0..m, hi >= 0, p2 = t+5j-3-m >= 0
+P6  PASS  66658 checks  Case I: r = L+lam(mu)-5j-t* >= 0, slot count = t*
+P7  PASS 133316 checks  Case I <-> Case II, image stays in the domain
+P8  PASS  66658 checks  phi(phi(s)) = s (finite evidence, not a proof)
+P9  PASS 133316 checks  j flips parity, |lam| + P(j) invariant
+
+cross-check vs Computation/bz82.py: 66658 states, 0 mismatches
+
+TOTAL: PASS  (0 failed assertions, 0 cross-check mismatches, 1.3 s)
+wrote results_skeleton_c3.json

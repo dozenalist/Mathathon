@@ -1,0 +1,12 @@
+slab sweep:  |j| <= 30, |lam| <= 30   (28629 partitions)
+states 1746369  Case I 875587  Case II 870782
+a == mu: 33723 (with a <= t: 32830)   a == mu AND Case I: 0
+states outside phi's domain ({0}xB(n)): 893
+Case II: p2 < 0 0, C-a fails 0, criterion violations 0
+Case II outside phi's domain: hi < 0 0, admissible empty 892 (these ARE the excluded states)
+Case II INSIDE phi's domain: hi < 0 0, admissible empty 0
+Case I: r < 0 0;  min r = 0 at {'j': -5, 'lam': [2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'r': 0}
+min p2 = 0 at {'j': -5, 'lam': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'm': 0, 'p2': 0, 'weight': 93}
+
+TOTAL: PASS  (0 violations, 3.4 s)
+wrote /workspace/nucleus/work/projects/p-9021becf3f0d47a89b3f3c794c1e872b/repo/RogersRamanujan/Computation/cycle3/results_slab_c3.json

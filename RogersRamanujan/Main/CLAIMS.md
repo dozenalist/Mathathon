@@ -15,7 +15,7 @@ never used to promote anything above TESTED_FINITE.
 | RR-C003 | No weight-preserving bijection preserves the **length** | PROVED |
 | RR-C004 | No weight-preserving bijection preserves the **largest part** | PROVED |
 | RR-C005 | Staircase **equivalence**: order, both inverse laws on the correct subtypes, length retained, padding explicit | **LEAN_VERIFIED** (4.35.0 for the base module; order module on 4.33.1 only) |
-| RR-C006 | Shift `T : D_n -> B_n` (smallest part >= length), both laws | TESTED_FINITE |
+| RR-C006 | Shift `T : D_n -> B_n` (smallest part >= length): **bijection**, both laws | **LEAN_VERIFIED** (4.33.1; pin pending) |
 | RR-C007 | BZ82 reference map: our implementation is a bijection `A_n -> D_n` | TESTED_FINITE (n <= 50); BZ82's theorem is PROVED in the literature |
 | RR-C008 | BZ82 `psi` involution on `X(n) minus {0} x A_n`, **all n** | **PROVED (amended, independently audited, gap list empty)** |
 | RR-C009 | BZ82 `phi` involution on `X(n) minus {0} x B_n`; **faithful transcription, no reconstruction** | TESTED_FINITE (`n <= 30`) |
@@ -112,13 +112,46 @@ Owner L (Main cycle 1), reviewer: the supervisor's independent compilation, plus
 X. Obligations: the order lemma; `T`; the `Nat.Partition` bridge (D-4); and a
 named build target so these modules are actually compiled by the reported build.
 
-### RR-C006 — shift T. Status: TESTED_FINITE.
+### RR-C006 — shift T. Status: **LEAN_VERIFIED** (Lean 4.33.1; pinned-4.35.0 run pending).
 Statement: `T(lambda)_i = lambda_i - k + 2i - 1` is a weight-preserving bijection
 from `D_n` onto `B_n` = {length `k`, smallest part `>= k`}, inverse
 `lambda_i = b_i + k - 2i + 1`, and `T(lambda)_i = mu_i + k`.
-Evidence: `results.json` `staircase_and_T.ok = true` for `n <= 50` (every
-`D_n` object), `T(7,3,1) = (5,3,3)` specifically checked.
-Obligations: needs RR-C005-style Lean proof for LEAN_VERIFIED.
+Evidence, computational: `results.json` `staircase_and_T.ok = true` for `n <= 50`
+(every `D_n` object), `T(7,3,1) = (5,3,3)` checked.
+
+**Formalized in cycle 3** (`Lean/ShiftT.lean`, integrated by Main from cycle-3
+worker m2's `Lean/cycle3/`). Encoding: `shiftT l = (subStair l).map (· + l.length)`
+and `shiftInv l = (addStair l).map (· - l.length)`, i.e. `T(lam)_i = mu_i + k`
+*by construction*, so that obligation is definitional; faithfulness to the
+contract's formula `T(lam)_i = lam_i - k + 2i - 1` is checked against Python, not
+assumed. Main's own verification:
+* `lean RogersRamanujan/Lean/ShiftT.lean` exit 0, 0 errors, **no `sorryAx`**;
+  the worker's 41 `#print axioms` directives print 40 results — 33 with axioms
+  (`[propext]` 7, `[propext, Quot.sound]` 26) and 7 with none — all inside the
+  event's allowed set;
+* `python3 Lean/cycle3/check_encoding.py` exit 0, **10 checks, 0 FAIL**,
+  197 `D`-objects and 197 `B`-objects at `n <= 20`. Key rows: `shiftT` equals the
+  integer formula on all of `D_n`; image `⊆ B_n`; weight preserved; injective;
+  both inverse laws; and **`T(D_n) = B_n` as sets for every `n <= 20`** — i.e.
+  surjectivity, so this is a bijection and not merely an injection;
+* Main **kernel-checked the three hypothesis-necessity witnesses** in a separate
+  file: `(shiftT [1,3]).sum ≠ 4` with `[1,3]` `Pos` but not `Gap` (so `Gap` is
+  needed for weight preservation); `shiftT [0] = shiftT [1]` (so `Pos` is needed
+  for injectivity); and `shiftInv [2,5] = [3,4]` which is `¬ Gap`, with `[2,5]`
+  `¬ WeakDec` (so the entry bound alone does not land in `D_n`). All exit 0.
+* Also present: `weakDec_shiftT`, `shiftInv_pos`, `shiftInv_gap`, and the subtype
+  bijection `toB : DGap -> BSmall` with `toD_toB`, `toB_toD`, `weight_toB`.
+
+**Toolchain, stated precisely:** this module is verified on the VM's Lean
+**4.33.1** only. The pinned 4.35.0 is not installed here. So RR-C006 is
+**LEAN_VERIFIED modulo the pin**, i.e. Lean-conditional on running this file on
+4.35.0, exactly as RR-C005's `StaircaseOrder` module was until the supervisor
+compiled it. `lake build RogersRamanujan` with this module has **not** been run
+(no `.lake` checkout in this container).
+**Note:** `ShiftT.lean` as delivered inlined a verbatim copy of `Staircase.lean`,
+which would make it unimportable alongside the original; Main replaced that with
+`import RogersRamanujan.Lean.Staircase` and added it to the aggregator
+`RogersRamanujan.lean`, which now compiles exit 0.
 
 ### RR-C007 — the BZ82 reference bijection. Status: TESTED_FINITE for our
 implementation, `n <= 50`; the underlying theorem is PROVED in the literature

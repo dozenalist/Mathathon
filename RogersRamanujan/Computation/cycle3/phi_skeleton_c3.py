@@ -39,10 +39,12 @@ on all of X(n), not only on phi's domain, so the domain claim is itself data:
   P2  FIND-mu       mu = 2j+a-L is an integer with 1 <= mu <= a+2j, i.e.
                     mu = k+1-L with 0 <= L = lam(a) <= k = a+2j-1.
   P3  a == mu       characterisation a == mu <=> L = 2j, and the sharp
-                    question: a == mu must never co-occur with a real slot, so
-                    it always forces a > t and both deleted slots are virtual.
-                    A co-occurrence with a <= t is reported as a minimal
-                    witness, never patched.
+                    obligation: a == mu MUST NEVER CO-OCCUR WITH CASE I, since
+                    only Case I deletes the two slots and the slot at position a
+                    would then have to be deleted twice.  This is checked
+                    directly, and the two-case argument is in the module note
+                    below ("NOTE ON a == mu").  A co-occurrence is reported as a
+                    minimal witness and never patched with a fallback.
   P4  WEIGHT        the image has the same weight and every part is >= 1, in
                     both cases.
   P5  CASE-II-BOX   the admissible z-set is the down-set {0..m}, the index
@@ -64,6 +66,21 @@ through the committed Computation/bz82.py and the images compared.
 
 Usage:  python3 phi_skeleton_c3.py [NMAX] [--json OUT]
 Default NMAX = 30.  Exit code 0 iff every step passed on every state.
+
+NOTE ON a == mu.  Main's obligation (iii) asks whether a = mu is impossible in
+Case I.  It is impossible, and the argument needs no computation:
+
+  * If a <= t then L = lam(a) = 2j and L >= 1, so j >= 1.  Also mu = a <= t, so
+    lam(mu) = L = 2j and t* = t.  Case I would need L + lam(mu) = 4j >=
+    5j + t*, i.e. j + t <= 0, contradicting j >= 1 and t >= 0.
+  * If a > t then L = lam(a) is the padded zero, so 2j = 0, i.e. j = 0.  Then
+    mu = a > t as well, so lam(mu) = 0 and t* = t + 2.  Case I would need
+    0 >= 5*0 + t* = t + 2, impossible.
+
+So a = mu implies Case II, where no slot is deleted and the collision is
+harmless; the "delete the slot at a and the slot at mu" reading needs no second
+removal anywhere in Case I, and no fallback is required.  The finite census
+below re-confirms it, and the auditor records the two sub-cases separately.
 """
 
 import json
@@ -280,11 +297,11 @@ class Checker:
 
 CENSUS_KEYS = [
     'states', 'domain', 'excluded', 'case_I', 'case_II',
-    'a_eq_mu', 'a_eq_mu_real_slot',
+    'a_eq_mu', 'a_eq_mu_real_slot', 'a_eq_mu_virtual', 'a_eq_mu_case_I',
     'case_I_ones_pos', 'case_I_virtual_a', 'case_I_virtual_mu',
     'case_I_both_virtual', 'case_II_part_dropped',
     'cert_Ca', 'cert_Cb', 'cert_both', 'cert_neither',
-    'p2_zero', 'm_zero', 'stability_checked',
+    'p2_zero', 'm_zero', 'stability_checked', 'm_eq_hi', 'm_lt_hi',
 ]
 
 
@@ -327,6 +344,8 @@ def main(argv):
             # ------------- P2: mu is a genuine slot index
             k = a + 2 * j - 1
             mu = 2 * j + a - L
+            is_case1 = (L + lam_padded(lam, mu) >= 5 * j
+                        + t + (1 if a > t else 0) + (1 if mu > t else 0))
             ck.check('P2', 1 <= mu <= a + 2 * j, j, lam,
                      'mu=%d a+2j=%d' % (mu, a + 2 * j))
             ck.check('P2', mu == k + 1 - L and 0 <= L <= k, j, lam,
@@ -334,17 +353,20 @@ def main(argv):
             # ------------- P3: the a == mu collision
             if a == mu:
                 st.bump('a_eq_mu')
+                # (i) characterisation: mu = a  <=>  2j - L = 0
                 ck.check('P3', L == 2 * j, j, lam,
                          'a=mu=%d but L=%d, 2j=%d' % (a, L, 2 * j))
-                ck.check('P3', a > t, j, lam,
-                         'a=mu=%d <= t=%d: one real slot, second deletion '
-                         'impossible' % (a, t))
-                if a <= t:
-                    st.bump('a_eq_mu_real_slot')
+                # (ii) the collision never meets Case I
+                ck.check('P3', not is_case1, j, lam,
+                         'a == mu = %d CO-OCCURS WITH CASE I (a would have to be '
+                         'deleted twice)' % a)
+                st.bump('a_eq_mu_real_slot' if a <= t else 'a_eq_mu_virtual')
+                if is_case1:
+                    st.bump('a_eq_mu_case_I')
                     if len(a_mu_witness) < 5:
                         a_mu_witness.append({'weight': n, 'j': j,
                                              'lam': list(lam), 'a': a, 'mu': mu,
-                                             'L': L, 't': t})
+                                             'L': L, 't': t, 'case': 'I'})
             # ------------- P0: the domain
             computes = phi_computes(j, lam)
             expect_excluded = (j == 0 and in_B(lam))
@@ -378,6 +400,7 @@ def main(argv):
                     st.bump('p2_zero')
                 if rec['m'] == 0:
                     st.bump('m_zero')
+                st.bump('m_eq_hi' if rec['m'] == rec['hi'] else 'm_lt_hi')
                 cert = rec['p2_cert']
                 if 'C-a' in cert and 'C-b' in cert:
                     st.bump('cert_both')
@@ -461,10 +484,13 @@ def main(argv):
     print('states in X(n): %d  in phi domain: %d  excluded {0}xB(n): %d'
           % (st.d['states'], st.d['domain'], st.d['excluded']))
     print('Case I: %d   Case II: %d' % (st.d['case_I'], st.d['case_II']))
-    print('a == mu: %d   (a == mu with a <= t, i.e. a real slot: %d)'
-          % (st.d['a_eq_mu'], st.d['a_eq_mu_real_slot']))
-    print('Case II: p2 = 0 in %d, m = 0 in %d, image lost a 1 in %d'
-          % (st.d['p2_zero'], st.d['m_zero'], st.d['case_II_part_dropped']))
+    print('a == mu: %d  (a <= t: %d, a > t: %d)   a == mu AND Case I: %d'
+          % (st.d['a_eq_mu'], st.d['a_eq_mu_real_slot'],
+             st.d['a_eq_mu_virtual'], st.d['a_eq_mu_case_I']))
+    print('Case II: p2 = 0 in %d, m = 0 in %d, m = hi in %d, m < hi in %d, '
+          'image lost a 1 in %d'
+          % (st.d['p2_zero'], st.d['m_zero'], st.d['m_eq_hi'],
+             st.d['m_lt_hi'], st.d['case_II_part_dropped']))
     print('p2 certificate: C-a only %d, C-b only %d, both %d, neither %d'
           % (st.d['cert_Ca'], st.d['cert_Cb'], st.d['cert_both'],
              st.d['cert_neither']))

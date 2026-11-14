@@ -1,0 +1,40 @@
+'RR127.Shift.sum_map_add' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.addStair_map_add' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.map_add_sub_cancel' depends on axioms: [propext]
+'RR127.Shift.map_sub_add_of_le' depends on axioms: [propext]
+'RR127.Shift.subStair_addStair_map_sub' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.length_shiftT' depends on axioms: [propext]
+'RR127.Shift.length_shiftInv' depends on axioms: [propext]
+'RR127.Shift.sum_shiftT' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.mem_shiftT_ge' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.mem_shiftT_iff' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.shiftT_entry' depends on axioms: [propext]
+'RR127.Shift.shiftInv_entry' depends on axioms: [propext]
+'RR127.Shift.shiftInv_shiftT' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.shiftT_shiftInv' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.weakDec_map_add' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.weakDec_subStair' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.weakDec_shiftT' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.addStair_pos' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.weakDec_addStair' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.addStair_gt' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.pos_map_sub' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.gap_map_sub' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.shiftInv_pos' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.shiftInv_gap' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.toD_toB' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.toB_toD' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.weight_toB' depends on axioms: [propext, Quot.sound]
+'RR127.Shift.witness_T_531' does not depend on any axioms
+'RR127.Shift.witness_T_41' does not depend on any axioms
+'RR127.Shift.witness_T_641' does not depend on any axioms
+'RR127.Shift.witness_inv_443' does not depend on any axioms
+'RR127.Shift.witness_gap_needed' does not depend on any axioms
+'RR127.Shift.witness_not_injective' does not depend on any axioms
+'RR127.Shift.witness_weakDec_needed' does not depend on any axioms
+'RR127.head_bound' depends on axioms: [propext, Quot.sound]
+'RR127.addStair_subStair' depends on axioms: [propext, Quot.sound]
+'RR127.subStair_addStair' depends on axioms: [propext]
+'RR127.sum_addStair' depends on axioms: [propext, Quot.sound]
+'RR127.weight_subStair' depends on axioms: [propext, Quot.sound]
+'RR127.subStair_nonneg' depends on axioms: [propext, Quot.sound]

@@ -1,0 +1,430 @@
+{
+ "bounds": {
+  "case_II": 30,
+  "involutions": 18
+ },
+ "checks": 0,
+ "checks_passed": 8,
+ "elapsed_seconds": 0.395,
+ "results": {
+  "BIJ": {
+   "bound": 18,
+   "description": "forward/inverse are mutually inverse bijections A_n <-> D_n, n <= 18",
+   "objects": 140,
+   "ok": true,
+   "per_weight": [
+    {
+     "A": 1,
+     "D": 1,
+     "n": 0
+    },
+    {
+     "A": 1,
+     "D": 1,
+     "n": 1
+    },
+    {
+     "A": 1,
+     "D": 1,
+     "n": 2
+    },
+    {
+     "A": 1,
+     "D": 1,
+     "n": 3
+    },
+    {
+     "A": 2,
+     "D": 2,
+     "n": 4
+    },
+    {
+     "A": 2,
+     "D": 2,
+     "n": 5
+    },
+    {
+     "A": 3,
+     "D": 3,
+     "n": 6
+    },
+    {
+     "A": 3,
+     "D": 3,
+     "n": 7
+    },
+    {
+     "A": 4,
+     "D": 4,
+     "n": 8
+    },
+    {
+     "A": 5,
+     "D": 5,
+     "n": 9
+    },
+    {
+     "A": 6,
+     "D": 6,
+     "n": 10
+    },
+    {
+     "A": 7,
+     "D": 7,
+     "n": 11
+    },
+    {
+     "A": 9,
+     "D": 9,
+     "n": 12
+    },
+    {
+     "A": 10,
+     "D": 10,
+     "n": 13
+    },
+    {
+     "A": 12,
+     "D": 12,
+     "n": 14
+    },
+    {
+     "A": 14,
+     "D": 14,
+     "n": 15
+    },
+    {
+     "A": 17,
+     "D": 17,
+     "n": 16
+    },
+    {
+     "A": 19,
+     "D": 19,
+     "n": 17
+    },
+    {
+     "A": 23,
+     "D": 23,
+     "n": 18
+    }
+   ],
+   "seconds": 0.046
+  },
+  "C2BOX": {
+   "bound": 30,
+   "case_I": 33329,
+   "case_II": 33329,
+   "description": "created parts/inserted ones are nonnegative, n <= 30",
+   "m_zero": 2605,
+   "negative_ones": 0,
+   "negative_part": 0,
+   "ok": true,
+   "p2_zero": 3,
+   "r_zero": 3741,
+   "seconds": 0.14
+  },
+  "C2MAX": {
+   "bound": 30,
+   "checked": 34222,
+   "criterion_violations": 0,
+   "description": "Case-II maximum exists iff k>=1 and lam(k)<=R, n <= 30",
+   "domain_mismatch": 0,
+   "downset_violations": 0,
+   "empty": 893,
+   "empty_in_domain": 0,
+   "empty_out_of_domain": 893,
+   "nonempty": 33329,
+   "ok": true,
+   "seconds": 0.153
+  },
+  "EX-1": {
+   "a": 4,
+   "case": "I",
+   "description": "BZ82 p.315 example (1), phi: a=4 mu=1 Case I",
+   "got": [
+    3,
+    [
+     10,
+     9,
+     7,
+     2,
+     2,
+     2
+    ]
+   ],
+   "input": [
+    2,
+    [
+     11,
+     9,
+     8,
+     7,
+     6,
+     1,
+     1,
+     1
+    ]
+   ],
+   "mu": 1,
+   "ok": true,
+   "ones_inserted": 0,
+   "printed_a": 4,
+   "printed_case": "I",
+   "printed_mu": 1,
+   "seconds": 0.0,
+   "want": [
+    3,
+    [
+     10,
+     9,
+     7,
+     2,
+     2,
+     2
+    ]
+   ]
+  },
+  "EX-2": {
+   "description": "BZ82 p.315 example (2), psi: t0=3 m2=2 Case I(a)",
+   "got": [
+    -3,
+    [
+     14,
+     10,
+     9,
+     9,
+     8,
+     8,
+     8,
+     4,
+     3,
+     2,
+     2,
+     1
+    ]
+   ],
+   "input": [
+    -2,
+    [
+     15,
+     14,
+     9,
+     9,
+     8,
+     8,
+     8,
+     5,
+     5,
+     4,
+     3,
+     2,
+     1
+    ]
+   ],
+   "m0": 15,
+   "m2": 2,
+   "m3": 8,
+   "ok": true,
+   "printed_case": "I(a)",
+   "printed_m2": 2,
+   "printed_t0": 3,
+   "seconds": 0.0,
+   "sub": "a",
+   "t0": 3,
+   "want": [
+    -3,
+    [
+     14,
+     10,
+     9,
+     9,
+     8,
+     8,
+     8,
+     4,
+     3,
+     2,
+     2,
+     1
+    ]
+   ]
+  },
+  "EX-3": {
+   "Tinv_of_endpoint": [
+    4,
+    1
+   ],
+   "chain_matches": true,
+   "description": "BZ82 p.315 example (3), nine-state chain, pi((4,1))=(3,2)",
+   "endpoint": [
+    0,
+    [
+     3,
+     2
+    ]
+   ],
+   "forward_of_41": [
+    4,
+    1
+   ],
+   "got_chain": [
+    [
+     0,
+     [
+      4,
+      1
+     ]
+    ],
+    [
+     1,
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    [
+     0,
+     [
+      2,
+      1,
+      1,
+      1
+     ]
+    ],
+    [
+     -1,
+     [
+      1,
+      1
+     ]
+    ],
+    [
+     0,
+     [
+      3,
+      1,
+      1
+     ]
+    ],
+    [
+     1,
+     [
+      2,
+      1
+     ]
+    ],
+    [
+     0,
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    [
+     1,
+     [
+      3
+     ]
+    ],
+    [
+     0,
+     [
+      3,
+      2
+     ]
+    ]
+   ],
+   "ok": true,
+   "printed_chain": [
+    [
+     0,
+     [
+      4,
+      1
+     ]
+    ],
+    [
+     1,
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    [
+     0,
+     [
+      2,
+      1,
+      1,
+      1
+     ]
+    ],
+    [
+     -1,
+     [
+      1,
+      1
+     ]
+    ],
+    [
+     0,
+     [
+      3,
+      1,
+      1
+     ]
+    ],
+    [
+     1,
+     [
+      2,
+      1
+     ]
+    ],
+    [
+     0,
+     [
+      2,
+      2,
+      1
+     ]
+    ],
+    [
+     1,
+     [
+      3
+     ]
+    ],
+    [
+     0,
+     [
+      3,
+      2
+     ]
+    ]
+   ],
+   "seconds": 0.0,
+   "steps": 8
+  },
+  "PHI": {
+   "bound": 18,
+   "checked": 3198,
+   "description": "phi^2 = id and closure on X(n)\\{0}xB(n), n <= 18",
+   "ok": true,
+   "seconds": 0.027
+  },
+  "PSI": {
+   "bound": 18,
+   "checked": 3198,
+   "description": "psi^2 = id and closure on X(n)\\{0}xA(n), n <= 18",
+   "ok": true,
+   "seconds": 0.028
+  }
+ },
+ "script": "regression_c3.py",
+ "verdict": "PASS"
+}

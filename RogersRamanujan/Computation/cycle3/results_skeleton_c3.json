@@ -1,0 +1,110 @@
+{
+ "a_eq_mu_witnesses": [],
+ "census": {
+  "a_eq_mu": 6458,
+  "a_eq_mu_case_I": 0,
+  "a_eq_mu_real_slot": 5565,
+  "a_eq_mu_virtual": 893,
+  "case_I": 33329,
+  "case_II": 33329,
+  "case_II_part_dropped": 22759,
+  "case_I_both_virtual": 3,
+  "case_I_ones_pos": 29588,
+  "case_I_virtual_a": 2605,
+  "case_I_virtual_mu": 3,
+  "cert_Ca": 10805,
+  "cert_Cb": 0,
+  "cert_both": 22524,
+  "cert_neither": 0,
+  "domain": 66658,
+  "excluded": 893,
+  "m_eq_hi": 22527,
+  "m_lt_hi": 10802,
+  "m_zero": 2605,
+  "p2_zero": 3,
+  "stability_checked": 66658,
+  "states": 67551
+ },
+ "crosscheck_bz82": {
+  "checked": 66658,
+  "examples": [],
+  "mismatch": 0
+ },
+ "elapsed_seconds": 1.334,
+ "nmax": 30,
+ "p2_uncertified_witnesses": [],
+ "script": "phi_skeleton_c3.py",
+ "steps": {
+  "P0": {
+   "checks": 68444,
+   "failures": 0,
+   "first_failure": null,
+   "label": "domain = X(n) \\ {0}xB(n)",
+   "status": "PASS"
+  },
+  "P1": {
+   "checks": 135102,
+   "failures": 0,
+   "first_failure": null,
+   "label": "a exists, a >= 1, minimal, a <= max(t+1, 1-2j)",
+   "status": "PASS"
+  },
+  "P2": {
+   "checks": 135102,
+   "failures": 0,
+   "first_failure": null,
+   "label": "mu = k+1-L is a slot index, 1 <= mu <= a+2j",
+   "status": "PASS"
+  },
+  "P3": {
+   "checks": 12916,
+   "failures": 0,
+   "first_failure": null,
+   "label": "a == mu <=> L = 2j, and then a > t (both slots virtual)",
+   "status": "PASS"
+  },
+  "P4": {
+   "checks": 133316,
+   "failures": 0,
+   "first_failure": null,
+   "label": "weight preserved, every image part >= 1",
+   "status": "PASS"
+  },
+  "P5": {
+   "checks": 133316,
+   "failures": 0,
+   "first_failure": null,
+   "label": "Case II: z-set is 0..m, hi >= 0, p2 = t+5j-3-m >= 0",
+   "status": "PASS"
+  },
+  "P6": {
+   "checks": 66658,
+   "failures": 0,
+   "first_failure": null,
+   "label": "Case I: r = L+lam(mu)-5j-t* >= 0, slot count = t*",
+   "status": "PASS"
+  },
+  "P7": {
+   "checks": 133316,
+   "failures": 0,
+   "first_failure": null,
+   "label": "Case I <-> Case II, image stays in the domain",
+   "status": "PASS"
+  },
+  "P8": {
+   "checks": 66658,
+   "failures": 0,
+   "first_failure": null,
+   "label": "phi(phi(s)) = s (finite evidence, not a proof)",
+   "status": "PASS"
+  },
+  "P9": {
+   "checks": 133316,
+   "failures": 0,
+   "first_failure": null,
+   "label": "j flips parity, |lam| + P(j) invariant",
+   "status": "PASS"
+  }
+ },
+ "verdict": "PASS"
+}
