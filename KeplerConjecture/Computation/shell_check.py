@@ -106,7 +106,7 @@ def poly_from(coeffs, var):
     return sum(sp.Rational(c) * var ** i for i, c in enumerate(coeffs))
 
 
-def _isolating(expr, lo, hi):
+def _isolating(expr, lo, hi, eps_den=10 ** 8):
     """Isolating rational intervals for the real roots of `expr` meeting [lo,hi].
 
     Returns (intervals, strict) where `intervals` is a sorted list of (a, b) and
@@ -120,7 +120,7 @@ def _isolating(expr, lo, hi):
     if P.degree() < 1:
         return [], True
     out = []
-    for (ivl, m) in P.intervals(eps=sp.Rational(1, 10) ** 8):
+    for (ivl, m) in P.intervals(eps=sp.Rational(1, eps_den)):
         a, b = (ivl, ivl) if not isinstance(ivl, tuple) else ivl
         if b < lo:
             continue
@@ -156,7 +156,17 @@ def _gap_verdict(expr, lo, hi, want_nonneg):
     uu = sp.Symbol('u')
     P = sp.Poly(expr, uu)
     lo = sp.Rational(lo)
-    intervals, strict = _isolating(P.as_expr(), lo, hi)
+    # Refine the isolation once before giving up: a finer eps separates intervals
+    # that merely touched.  COST NOTE: refinement and `function_range` are both
+    # expensive at high degree with clustered roots (a degree-35 polynomial with a
+    # pair 1e-10 apart takes minutes), so the ladder stops at eps = 1e-14.  No
+    # certificate in this project reaches this branch: on the sign regions the
+    # polynomials have no real root and the first pass is already strict.
+    intervals, strict = None, False
+    for den in (10 ** 8, 10 ** 14):
+        intervals, strict = _isolating(P.as_expr(), lo, hi, den)
+        if strict:
+            break
     if not strict:
         return None
     pts = [lo] + ([sp.Rational(hi)] if hi is not sp.oo else [])

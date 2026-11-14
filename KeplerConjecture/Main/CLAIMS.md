@@ -2060,3 +2060,27 @@ the corrected constant is larger.
   case, the "above" variant accepted. Seeds 7, 8, 12 (150–200 polynomials each):
   zero failures. This is the family of the `C068` witness, now generated
   systematically rather than only as a fixed regression.
+
+### K15-C075 — cost profile of the complete rule, and the one branch certificates never take (`TESTED_FINITE`)
+
+Timings on this VM, one core:
+
+| Input | Verdict | Time | Branch |
+| --- | --- | --- | --- |
+| the `C068` witness `(u−7/5)²−2·10⁻⁴⁰` | reject | 0.07 s | one refinement, then `function_range` |
+| its mirror `(u−7/5)²+2·10⁻⁴⁰` | accept | < 0.01 s | gap rule, first pass |
+| degree 33, seven rational roots in `[12,30]` | reject | 0.02 s | gap rule (degenerate intervals, strict) |
+| degree 35 with a root pair `1.4·10⁻¹⁰` apart | not measured | **> 20 s** | refinement/`function_range` |
+
+**Recorded limitation.** At high degree with clustered roots the complete rule is
+*exact but slow* — both the refinement ladder (capped at `ε = 10⁻¹⁴` to bound the
+cost) and `function_range` can take minutes. This is a genuine limitation of the
+implementation, not of the mathematics, and it is harmless here: **no certificate
+in this project enters that branch**, because on the sign regions the polynomials
+have no real roots and the gap rule is already strict on the first pass. If a future
+use needs fast decisions at degree ≥ 20 with clustered roots, the right fix is an
+exact sign test at the critical points (algebraic-number arithmetic), not more
+refinement.
+
+The certificate path's cost is unchanged: K33b verifies in ≈ 2 s including the basis
+conversion, and `run_all_checks` in ≈ 6 s.
