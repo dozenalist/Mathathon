@@ -29,6 +29,32 @@ packing satisfies it, the sign conditions being decided by exact Sturm over `Q` 
 rounding to survive; both are costs of this route, not of the mathematics. It is **not** a
 competitive bound and is not offered as one.
 
+## 0. Degree ladder (all exact, Main's checker)
+
+Extending the headline beyond degree 9. Every row is an `EXACT PASS` from `shell_check`:
+
+| `K` | `Δ ≤`, `n = 27`, `ρ = 2.05` | `Δ ≤`, `n = 12`, `ρ = 2.09` | gain from allowance |
+| --- | --- | --- | --- |
+| 9 | 0.87227746 | 0.87227746 | 0 |
+| 11 | 0.84955233 | 0.84954631 | 0 |
+| 13 | 0.84002473 | 0.84001557 | 0 |
+| 15 | 0.83934127 | 0.83934849 | 0 |
+| 17 | 0.84248135 | 0.84246458 | 0 |
+| 19 | 0.83687486 | 0.83687262 | 0 |
+| 21 | 0.83632450 | 0.83628884 | 0 |
+
+Two things to note, both honest:
+
+* **The gain is exactly 0 at every degree** — six degrees, two `(n, ρ)` cases, the same
+  answer. The uniform allowance is never used.
+* **The ladder is not monotone** (`K = 17` is worse than `K = 15`). The cutting-plane loop and
+  the rational rounding are not fully converged at every degree, so these are *best found* values
+  at each degree, not a converged sequence. Nothing mathematical depends on monotonicity — each
+  row is separately verified — but a reader should not infer a rate of convergence from it.
+
+The `K = 21` value `0.8363` is the best exact certificate in this table. It remains far above
+Cohn–Elkies' `0.779747`, for the structural reasons in §2.
+
 ## 1. Why `η` is never used
 
 The constraint set with an allowance is *weaker* than `η = 0` on the shell, but the objective

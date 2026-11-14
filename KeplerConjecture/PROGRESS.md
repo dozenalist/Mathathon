@@ -306,3 +306,19 @@ certificate of `K15-C-SHELLPROP-002` rests on a verified transform.
 (the second fallback item). `K15-C-SHELLGAIN-002` shows the *uniform* allowance does not pay;
 whether a nonuniform one can is untested, and the present negative result must not be quoted as
 a general impossibility.
+
+### K15-COMP-012 — 2026-11-14 — Computation (role C), degree ladder for the shell proposer
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-SHELLLADDER-001 | **VERIFIED_EXACT** | the shell proposer produces exact certificates at degrees 9, 11, 13, 15, 17, 19, 21, improving from `0.87227746` to **`0.83632450`** (`n = 27, ρ = 2.05`, unconditional) and `0.83628884` (`n = 12, ρ = 2.09`, conditional) | `shell_propose.py`, `SHELL_PROPOSE_RESULTS.md` §0 |
+| K15-C-SHELLGAIN-003 | **VERIFIED_EXACT** | the allowance gain is **exactly 0 at every degree tested** (9, 11, 13, 15, 17, 19, 21) and in both `(n, ρ)` cases. Sixteen independent exact comparisons, no exception | same |
+
+**Caveat recorded:** the ladder is **not monotone** (`K = 17` gives `0.8425`, worse than `K = 15`'s
+`0.8393`), because the cutting-plane loop and rational rounding are not converged at every degree.
+Each row is separately verified, so nothing mathematical depends on monotonicity, but no
+convergence rate should be inferred.
+
+**Best exact certificate in Computation's possession is now `0.83632450`**, still far above
+Cohn–Elkies' `0.779747` for the structural reasons in the results file (§2): `T_LO = 12 < 4π` and
+a mandatory `ε_q ≥ 1e-5` margin on `q ≥ 0`.
