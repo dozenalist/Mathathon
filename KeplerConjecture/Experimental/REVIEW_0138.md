@@ -763,3 +763,35 @@ A15 build is a real structure and not an artefact.
 
 The two cell volumes are exact rationals (`125/16` and `129/16`) because the scaled cube edge is
 exactly `4`, so this fixture needs no floating-point tolerance at all.
+
+## 13. C15 attempted from secondary sources — blocked on provenance, deliberately not used
+
+I tried to settle `(Q)` with the Laves phase C15 (MgCu₂), which is the natural candidate: its
+mean cell volume (`~5.90` at density `~0.71`) sits close enough to `√32 = 5.6569` that an
+individual cell could fall below, and unlike A15 it is dense.
+
+**The attempt is blocked, and I am not using it.** A web search for the Wyckoff positions
+returned conflicting values for the same site in the same space group:
+
+| source | `8a` (Mg) | `16d` (Cu) |
+| --- | --- | --- |
+| materials-database summary | `(1/8,1/8,1/8)` | `(5/8,5/8,5/8)` |
+| another summary | `(1/8,1/8,1/8)` | `(1/2,1/2,1/2)` |
+| a third | `(1/8,1/8,1/8)` | `(0,0,1/2)` |
+
+At most one of these can be right. All three are secondary or AI-generated materials pages, not
+crystallographic tables, and I am not willing to build a geometric fixture — let alone a claim
+about `(Q)` — on a coordinate I cannot source. This is the same judgement that made me discard
+the earlier 8-atom C15 build rather than patch it from memory.
+
+**What is needed, precisely.** The `Fd-3m` (No. 227) Wyckoff positions for `8a` and `16d` from a
+primary crystallographic source (ICSD, the *International Tables*, or the original
+Strukturbericht entry), with the origin choice stated — `Fd-3m` has two origin conventions, and
+confusing them shifts every coordinate, which is a likely explanation for at least some of the
+disagreement above. Then: build the 24-atom cell, scale to minimum separation `2`, and compute
+the periodic Voronoi decomposition. Success criterion as for A15: check that the cell volumes
+weight `8 : 16` and that the multiplicity-weighted mean equals `L^3/24`; if either fails, the
+construction is wrong, not the physics.
+
+**Status of `(Q)`: unchanged, unanswered.** This section records a blocked attempt and the exact
+input required, not a result. I make no claim about C15's cell volumes.
