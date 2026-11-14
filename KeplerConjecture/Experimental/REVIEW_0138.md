@@ -2,6 +2,38 @@
 
 Role E. Started 2026-11-14T09:57:21Z. Source reviewed: `4ea4e8b9`.
 
+## Summary
+
+What this block actually produced, in one place.
+
+**Corrections (the first two were requested).**
+- `K15-E049` is narrowed: it is a ceiling for the *uniform-floor directional estimator family*
+  (conditions F1-F3), **not** a closure of per-cell methods or of the geometric route. The
+  dependent "closes the per-cell route" / "only one option remains" claims are withdrawn.
+- `K15-E045` is corrected to **conditional** on the imported dodecahedral theorem (the
+  containment `Omega(c) subset D` is unconditional; the equality is not), with that theorem's
+  computer-assisted proof charged.
+- A broken buffer flag in `vor_volumes` is fixed, and the consequence is a **retraction**: the
+  "slack factor 470-880" I reported previously is an artefact of unsaturated cells (Section 5).
+
+**New and proved.**
+- `K15-E060`: the two-shell target stated exactly, with *forced* thresholds (`2 rho = 4.18`,
+  `4 rho = 8.36`), explicit boundary cost and a proved disjointness/coverage argument.
+- `K15-E061`: the antisymmetric bounded-range transfer theorem — pointwise FCC-compatibility
+  from a Hall condition, exact cancellation, an explicit `O(r^2)` boundary, and `(C3)` automatic;
+  inert (`A = 0`) on FCC and HCP. It removes the partition, the component bookkeeping and
+  `K15-E001`'s cluster machinery, and **does not** reduce the mathematical content.
+- `K15-E063`: A15 (β-W) is the project's first genuinely **saturated** fixture — 919 valid
+  interior cells, none defective.
+
+**Implementation.** Four new runnable scripts (`block_evaluator`, `transfer_evaluator`,
+`dense_completion_search`, `periodic_relax`, plus `frank_kasper_test`), all committed and all
+verified to run; `verify_all_claims.py` now covers the 0138 constants too. A blind periodic
+relaxation independently recovers fcc and `pi/sqrt18` to `1.6e-07` — a calibration, not evidence.
+
+**Not delivered.** No new density bound and no proof of `(H_R)`. The sharp remaining question is
+`(Q)` (Section 6), and it is not a computation.
+
 ## 0. Reporting correction, accepted
 
 My completion 51140 reported "40 minutes, finished 09:56Z". Both figures were **wrong**. I
@@ -186,7 +218,7 @@ by proof.
   by free space. Since computed cell volumes are **upper** bounds, the test remains one-sided:
   a positive `S - D` does not certify, only a negative one refutes.
 
-### 3.4 Antisymmetric transfer: the fallback, and it does better than expected (`K15-E061`)
+### 3.4 Antisymmetric transfer: the fallback (`K15-E061`) — a cleaner interface, not less mathematics
 
 The block formulation needs a partition, components, ordering and overlap accounting. There is
 a formulation that needs none of it and restores the **pointwise** condition, so that Hales's
@@ -443,7 +475,7 @@ retraction.
 
 ## 8. Result of the dense-completion search (`K15-EXP-005`)
 
-The harness of Section 8-authoring was run as a background job: `--seconds 300 --seeds 4`,
+The harness authored in this block was run as a background job: `--seconds 300 --seeds 4`,
 one CPU, exit status `0`, wall clock `~4 min`. Output committed as
 `Experimental/evidence/dense_completion_search.json`.
 
