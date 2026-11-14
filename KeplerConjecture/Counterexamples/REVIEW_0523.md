@@ -310,6 +310,22 @@ be able to reproduce it, and the numbers are thirty-fold different in one case.
 - **The labelling**: nothing in either file is quoted as a bound, and both say so repeatedly. The
   exposition's §3 table of what is *not* established is accurate and I could not add an item to it
   except the four in this review.
+- **Every quoted constant re-derived.** `2V_dod = 11.1005820570`; `2√32 = 11.3137084990`;
+  `12·2√32 − 12V_dod = 69.1610096456` and `13√32 − V_dod = 67.9888142149` (margin `1.172195431`,
+  `1.7241%`); `√32/V_dod = 1.019199574`; `8π/(3·2V_dod) = 0.754697399337`;
+  `8π/(3·2√32) = 0.740480489693`; and `(4π/3)/(V_dod + (2√32−2V_dod)/2) = 0.740480489693 = π/√18`
+  — so the claim that the entire gap is a `1.92%` increase in `K` is arithmetically exact, and the
+  interpolation `(B_K)` really does hit both endpoints.
+- **One constant in the compactness section is stated with the sharper bound.** Step (2) restricts
+  to `Φ ≤ 2V_dod + 1 = 12.1006` and then writes `R_max = 3C/π`; the value `10.932` quoted at
+  §4.1b uses `C = σ₀ ≤ 11.4483` from E's witness instead. Both are correct — the proof just uses
+  the larger `R_max = 11.556` — but the two numbers appear with the same symbol, and a reader
+  recomputing `3·12.1006/π` will not get `10.932`.
+- **Newer main tip.** Between the audit target `a6f3935` and the current `c4134c2` Main rewrote the
+  A15 row of the §5 table (E's `15.875` is the A–B pair at distance `√5 = 2.236`, not a contact;
+  the B–B chain bonds at `a/2 = 2` give `129/8 = 16.125`). That is outside this audit's target and
+  I have not re-derived `129/16` myself; I note it because it changes a number in the table above
+  and because it is the second convention error in a worker's pair table.
 
 ## 9. Status changes this review asks for
 
