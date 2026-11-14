@@ -1927,3 +1927,26 @@ things must be said.
 - **Status.** `REFUTED` (the gap-only algorithm) → repaired with a complete rule.
   Three repairs in three rounds; the checker's *general* soundness remains
   suspended for X.
+
+### K15-C069 — E's question `(Q)` is false, by E's own fixture plus `X-C003` (`PROVED` refutation)
+
+**E's `(Q)`.** "Does a saturated packing contain a cell with `vol Ω < √32`?" E notes
+that `(Q) = no` would give the density bound immediately. **The answer is yes**, and
+the witness is the project's own:
+
+1. the 13-cluster (centre + 12 icosahedral neighbours at distance exactly 2) is a
+   legal packing fragment;
+2. it extends to a *saturated* packing (`X-C003(iii)`, Zorn);
+3. in that packing the centre's cell is the regular dodecahedron of volume
+   `5.550291… < √32 = 5.656854…`.
+
+So `(Q)` is answered **yes**, and `(Q)` cannot be a target: it is strictly stronger
+than Kepler and false. This also disposes of any plan of the form "show every cell
+is at least `√32`" — that is refuted by the dodecahedral configuration, which is
+exactly Hales–McLaughlin's point. What can be true is the **averaged** statement
+`Σ_{v∈K} vol Ω(v) ≥ √32|K|` over clusters, i.e. E's `(H_R)`/`(T')` and
+`Main/NEXT_PACKAGE.md` — not the pointwise one.
+
+- **Status.** `PROVED` (two-line argument from accepted results). Reviewer X.
+- **Consequence for the next block.** Do not pursue `(Q)`; pursue `(H_R)` with the
+  cluster-average form and the explicit `Φ` of `K15-C044`.
