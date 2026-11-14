@@ -478,3 +478,19 @@ the same status discipline the review required elsewhere.
 
 **Honest status:** `0.008880` is a *lower bound* on `Φ` from one fixture, not a refutation. The
 fixture's full-period blob gives `Σb = −4022.46`, so the condition is satisfied there.
+
+### K15-COMP-024 — 2026-11-14 — Computation (role C), jammed-close-packing negative result
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-CUTJAM-001** | **TESTED_FINITE (negative, structural)** | FCC and HCP at minimum separation 2 are **jammed**: every centre has 12 contacts at distance exactly 2, so any displacement shortens some contact. Measured with a validation gate: random amplitude `0.06 → min sep 1.894`, `0.01 → 1.982`, both `< 2`. **No near-Kepler perturbation of a close packing exists**, so a near-Kepler fixture with unequal cell volumes cannot be built that way | `cut_fixture_close.py`, `out/cut_fixture_close.json` |
+| K15-C-CUTNEXT-001 | open | a near-Kepler fixture with unequal cells must be a *different combinatorial type* — a Frank–Kasper phase (A15, σ). Constructing one exactly is the next concrete build | same |
+
+**Why this matters more than the fixture would have.** The cut condition's interesting regime is
+exactly the jammed close-packing regime in which no perturbation is available — another face of
+`K15-C-CUTEQUIV-001` (the condition is equivalent to Kepler). Main should not expect a
+"perturb FCC and find the obstruction" search to work.
+
+**Validation gates built in and doing their job:** V1 (separation ≥ 2), V2 (volumes sum to
+`N × covolume`), V4 (`Σb = 0`). The script refuses to report volumes when any fails, which is why
+the first two runs produced no numbers rather than wrong ones.

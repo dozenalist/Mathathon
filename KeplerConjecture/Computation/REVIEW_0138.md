@@ -185,6 +185,30 @@ Kepler, because the twelve ring cells are huge. A fixture near the Kepler densit
 cells close to `√32` and could push the ratio much harder. **That is the next fixture to build**,
 and it needs exact Voronoi volumes for a perturbed close packing.
 
+### The near-Kepler fixture does not exist by perturbation (`cut_fixture_close.py`)
+
+Attempting the fixture the previous paragraph asks for produced a **negative result that is more
+informative than the fixture would have been.** FCC and HCP at minimum separation 2 are
+**jammed**: every centre has 12 neighbours at distance exactly 2, so *any* displacement shortens
+some contact. Measured with a built-in validation gate (the script refuses to report volumes if
+separation, volume-sum or `Σb = 0` fail):
+
+| random amplitude | min separation over atoms + periodic images |
+| --- | --- |
+| 0.06 | 1.894 |
+| 0.01 | 1.982 |
+| (required) | ≥ 2 |
+
+So **no near-Kepler perturbation of a close packing exists**, and a near-Kepler fixture with
+unequal cell volumes cannot be obtained this way at all. The cut condition's interesting regime is
+exactly the jammed close-packing regime in which no perturbation is available — another face of
+`K15-C-CUTEQUIV-001`. A near-Kepler fixture with unequal cells must be a *different combinatorial*
+type — a Frank–Kasper phase such as A15 or the σ phase — and constructing one exactly is the next
+concrete build.
+
+Status: `TESTED_FINITE` (negative). The validation gates are the useful part: V1 (separation ≥ 2),
+V2 (volumes sum to `N × covolume`), V4 (`Σb = 0`) all refuse to report if violated.
+
 ### Reproduced
 
 ```bash
