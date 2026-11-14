@@ -795,3 +795,44 @@ construction is wrong, not the physics.
 
 **Status of `(Q)`: unchanged, unanswered.** This section records a blocked attempt and the exact
 input required, not a result. I make no claim about C15's cell volumes.
+
+## 14. Why checking one component at a time suffices for the Hall condition
+
+`K15-E061` needs `(H_R)` for **every** finite set `S` of defective centres. The evaluator only
+checks single components, so this needs justification, and it is a short lemma.
+
+**Lemma.** With `R = 2.09`, `tau = 2R = 4.18`, and components taken at threshold `tau`, the
+satisfaction of
+
+```
+sum_{v in S} (sqrt32 - c(v))  <=  sum_{u in N_R(S) \ S} (c(u) - sqrt32)          (*)
+```
+
+for every **component** implies `(*)` for every finite `S` of defective centres.
+
+*Proof.* Let `S` be a finite set of defective centres and let `C_1, ..., C_k` be the components
+meeting `S`, so `S = (S cap C_1) u ... u (S cap C_k)` is a disjoint union. Two facts:
+
+1. **Neighbourhoods of distinct components are disjoint.** If `s in N_R(C_i) cap N_R(C_j)` with
+   `i != j`, there are `v_i in C_i`, `v_j in C_j` with `|s - v_i| <= R` and `|s - v_j| <= R`,
+   hence `|v_i - v_j| <= 2R = tau`, so `v_i` and `v_j` would be adjacent and in the *same*
+   component — a contradiction. So `N_R(C_i) cap N_R(C_j) = empty`.
+2. **Defective centres are never payers.** The transfer only draws on `c(u) - sqrt32 > 0`, and a
+   defective `u` has `c(u) < sqrt32`, so it contributes nothing. In particular for
+   `S cap C_i ⊂ C_i`, the set `N_R(S cap C_i) \ S` differs from `N_R(C_i) \ C_i` only by other
+   defective centres of `C_i`, which are excluded from the sum either way.
+
+Therefore `sum_{u in N_R(S)\S}` splits as a disjoint sum over `i` of `sum_{u in N_R(C_i)\C_i}`,
+and `sum_{v in S}` splits as `sum_i sum_{v in S cap C_i}`. Applying `(*)` to each *component*
+would give the component version with `C_i` in place of `S cap C_i`; since
+`sum_{v in S cap C_i} <= sum_{v in C_i}` the sub-sum is even smaller, and the right-hand sides
+add. Hence `(*)` holds for `S`. ∎
+
+**Consequence.** The evaluator's per-component check is the right one, and this is why. It also
+explains the measured `max_pairwise_overlap = 0` in every fixture: it is not a numerical
+accident but fact 1 above, which holds because the block threshold is exactly `2R`.
+
+**Caveat, stated honestly.** Fact 1 uses `tau = 2R` *exactly*; the argument breaks if the
+component threshold is taken smaller than `2R`, which is precisely the error corrected in
+`K15-E032` for the earlier rule `R2`. So the choice of `4.18` is forced twice over — once for
+partition disjointness and once for this decomposition of the Hall condition.
