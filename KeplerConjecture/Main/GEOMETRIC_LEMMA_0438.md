@@ -351,6 +351,12 @@ starts at 0: yes     reaches the period end: yes     gaps: 0
 Hence for **every** relative twist some pair is closer than `2`. Γ `σ₀ ≠ 2V_dod`, and with (1),
 `σ₀ > 2V_dod`. ∎
 
+> **SUPERSEDED (review 0608): `K15-C128`/`C129`.** The two-dodecahedra step now has a **closed-form**
+> band end, `d_max = 4/√5 + 2√((2√5−1)/5) = 3.4555003444…`, proved from a **single pair**
+> (`a = (2/√5,0,−4/√5)`, `q = (−2/√5,0,4/√5)`, `R = 32/5` constant in `d`, one quadratic). It needs
+> no arc cover and no sampling. The arc-cover material below is retained as the record of two
+> rounding/trig errors and their repair; the *statement* was always correct.
+
 **Retraction (review 0523).** An earlier version of this step reported
 `max over a twist grid of the min cross-distance = 1.12555484451`, sampled at
 `t = 0°, 18°, 36°, 54°`. **A sampled maximum is not an all-twists proof**, and the number is

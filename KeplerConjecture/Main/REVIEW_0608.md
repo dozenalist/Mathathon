@@ -221,4 +221,10 @@ only by cross-checking against an independent computation and against X's number
 reasons:** the `13–20`-face branch (§2), three independent reasons, locators given. **Succeeded:**
 `C124`, which removes the hypothesis the brief said not to assume and closes `G13` (as a hypothesis)
 and `G14`. **Not achieved:** any number, any improvement over `0.754697399337`, any progress on the
-sharp `2√32`. **Timing** is stated in the covering message as measured.
+sharp `2√32`. **Artifacts pushed** (all on `kepler15/main`): this file, `Main/PROOF_STATUS.md`, `PROOF_GAPS.md`
+(`G13`, `G14` closed, `G15` downgraded), and `Computation/twist_cover.py` (corrected violation sets),
+`near_contact_band.py`, `payer_family.py` wiring, plus `count26_check.py`. Check suite 16 checks,
+all green; ledger lint green. Rejected versions preserved: `C126` (dropped `2u_xq_x`), `C127`
+(safe sets instead of violation sets), `C116`'s `6/√5`, `C125` (the stalled branch).
+
+**Timing** is stated in the covering message as measured.

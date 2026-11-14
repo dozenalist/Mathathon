@@ -3840,6 +3840,12 @@ and a face-count bound. Neither is a sharpness barrier and both are finite-dimen
 
 ### K15-C123 — the arc cover is re-done with rigorous **inner** arcs (`PROVED`; supersedes `C112`'s rounding)
 
+> **SUPERSEDED as the certificate of record by `K15-C128`/`C129`** (review 0608). The band now has a
+> closed form from a *single pair* in exact arithmetic (`d_max = 4/√5 + 2√((2√5−1)/5)`), needing no
+> covering, no period reduction and no bisection. This entry is kept because it records the rounding
+> repair and because the covering tooling still exists — but **do not use the cover where the closed
+> form applies.**
+
 Review 0608: *"Your arc cover must use rigorous INNER safe arcs for a cover by strict violations;
 inflating outer numerical endpoints cannot certify an all-twists exclusion."* **Correct, and it is
 a soundness error in `C112` as written.**
@@ -4202,6 +4208,17 @@ so the band is `[2, d_max)` with
 **Scope.** Proves the two-dodecahedra impossibility for centre separation `d < d_max`, hence
 `σ₀(ε) > 2V_dod` for `ε < 1.4555003444` (`C114`), hence `C124` with any such `ε`. It says nothing
 beyond `d_max`, and it is **not** a density bound.
+
+**Verified across the whole band, not just at the ends.** For `d` at `0, 10, 25, …, 95, 99.9, 100.1%`
+of the way from `2` to `d_max`, the quantity `max over τ of min over shifts k of d²(τ + 72k°)` is
+
+```
+1.2669, 1.3495, 1.5529, 1.8517, 2.2458, 2.7352, 3.3199, 3.7627, 3.9952, | 4.0049
+                                                                       ↑ d_max
+```
+
+— strictly below `4` everywhere up to `99.9%` of the band and strictly above just past `d_max`. So the
+closed form is the true crossing for this pair, and its whole range behaves as claimed.
 
 *Status.* `PROVED` (exact). `PENDING_REVIEW` with the rest of the pair chain; X is the gate, and this
 is the cleanest thing for X to check.
