@@ -193,6 +193,17 @@ def main():
     check("the new enclosure lies below that old bound", float(v_hi) < 5.550291028519371,
           float(v_hi))
 
+    print("S13 BRACKETING: t* is pinned from BOTH sides, not just below")
+    b_lo, b_hi = CF.icos_b()
+    for R in (F(2), F(3)):
+        n_r, E = CF.build_13(R, direction="refute")
+        br = CF.bracket_t_star(b_lo, b_hi, E)
+        check("R = %s: b_lo and b_hi scans agree on the maximizer" % R, br["same_argmax"],
+              (br["U_lo"], br["U_hi"]))
+        check("R = %s: the bracket is narrower than 1e-20, so t* is pinned" % R,
+              br["width"] < F(1, 10 ** 20), float(br["width"]))
+        check("R = %s: the maximizer is the singleton" % R, br["U_lo"] == [0], br["U_lo"])
+
     print()
     if FAILS:
         print("FAILED: %d -> %s" % (len(FAILS), FAILS)); return 1

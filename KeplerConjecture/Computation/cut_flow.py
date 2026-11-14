@@ -321,6 +321,22 @@ def exhaustive_cut_scan(b_lo, edges, cap_subsets=1 << 16):
                 empty_boundary_positive=[(list(U), str(sb)) for (U, sb) in empty_boundary_positive])
 
 
+def bracket_t_star(b_lo, b_hi, edges):
+    """Pin t* between two exhaustive scans:  t_lo <= t* <= t_hi.
+
+    b_lo <= b <= b_hi componentwise, so for EVERY subset U the ratio is monotone in b, and taking
+    the max over U preserves both inequalities.  Hence the scan on b_lo gives a lower bound and the
+    scan on b_hi an upper bound -- an interval, not a one-sided bound.  Reported only when the two
+    scans agree on the maximizing U, which is what makes the interval tight.
+    """
+    lo = exhaustive_cut_scan(b_lo, edges)
+    hi = exhaustive_cut_scan(b_hi, edges)
+    if lo is None or hi is None:
+        return None
+    return dict(t_lo=lo["t_star"], t_hi=hi["t_star"], U_lo=lo["U"], U_hi=hi["U"],
+                same_argmax=bool(lo["U"] == hi["U"]), width=hi["t_star"] - lo["t_star"])
+
+
 def feasible_flow(b, edges, Phi):
     """Max-flow with a supersource feeding b(v) and capacity Phi per edge.
     Returns a rational flow dict or None.  Uses scipy for the search, then ROUNDS TO RATIONALS
@@ -546,11 +562,18 @@ def main():
                  else "INTERACTING (patch result is PATCH_ONLY)"))
         ex = exhaustive_cut_scan(b_lo, edges)
         if ex is not None:
-            print("            CERTIFIED LOWER BOUND on t* from all %d subsets: %.15f at U=%s  %s"
+            print("            t* from all %d subsets (b_lo scan): %.15f at U=%s  %s"
                   % (ex["subsets_scanned"], float(ex["t_star"]), ex["U"],
                      "(singleton attains it)" if ex["U"] == [0] else ""))
-            print("            (computed with b_lo, so this is a LOWER bound on the true ratio;")
-            print("             equality would need interval arithmetic on both sides)")
+            br = bracket_t_star(b_lo, b_hi, edges)
+            if br is not None:
+                print("            BRACKET on the true t*: [%.15f, %.15f]  width %.1e  %s"
+                      % (float(br["t_lo"]), float(br["t_hi"]), float(br["width"]),
+                         "(same maximizer)" if br["same_argmax"] else
+                         "(DIFFERENT maximizers -- read both)"))
+                row["t_star_bracket"] = [str(br["t_lo"]), str(br["t_hi"])]
+                row["t_star_width"] = str(br["width"])
+                row["t_star_argmax_stable"] = br["same_argmax"]
             if ex["empty_boundary_positive"]:
                 print("            NOTE: %d empty-boundary subset(s) have sum_U b > 0 -> infeasible"
                       " at any Phi" % len(ex["empty_boundary_positive"]))
