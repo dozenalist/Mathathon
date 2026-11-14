@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # One-command reproduction of every Experimental check.
-# One CPU, under 1 GiB, under 10 minutes total (measured: ~2 min).
+# One CPU, under 1 GiB, under 10 minutes total (measured: ~30 s).
 # Usage: bash Experimental/scripts/run_all_checks.sh
 set -u
 cd "$(dirname "$0")/../.." || exit 1

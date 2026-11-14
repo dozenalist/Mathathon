@@ -2,7 +2,7 @@
 
 Role E. Started 2026-11-14T09:57:21Z. Source reviewed: `4ea4e8b9`.
 
-**Reproduce everything in one command** (one CPU, ~2 min, under 1 GiB):
+**Reproduce everything in one command** (one CPU, ~30 s measured, under 200 MB):
 
 ```
 bash Experimental/scripts/run_all_checks.sh
