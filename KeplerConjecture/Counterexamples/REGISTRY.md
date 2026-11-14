@@ -600,3 +600,14 @@ here is progress below `0.754697399337`. Still live and unchanged from an earlie
 `Main/NEXT_PACKAGE.md` item 1 asks for `Σ_{v∈K} vol Ω(v) ≥ 13V` with "even `V = 5.40`", which
 Hales–McLaughlin already implies (`13 V_dod = 72.1538 > 70.2`); the item needs rewording before a
 block follows it.
+
+### K15-X-C029 — `CLAIMS.md` `K15-C093` still states two claims its own repair note refutes
+
+The bullet list at the head of the `K15-C093` entry carries pre-repair text: Theorem 2 "and
+`sup Φ < ∞`" with "Tychonoff on `∏_e[−Φ₀,Φ₀]`" (removed by the repair), and "the variant
+`b(a) = 4` is infeasible at `Φ = 1` with the violating cut `{a}`" (the violating cut is `F`, and
+infeasibility holds at every `Φ`). The repair note 20 lines below says both are wrong. Editorial,
+not mathematical: the document is correct, the ledger's summary of it is not. Consequence if
+unfixed: a reader takes away a superfluous hypothesis and `4/3` as the threshold of a vector that
+has none. No published claim depends on either (`C084`, `C085` do not use `4/3`), so this is
+documentation only.

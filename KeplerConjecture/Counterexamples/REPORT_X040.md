@@ -68,6 +68,32 @@ nor "feasible for every `Φ > 0`". The audit script checks `Φ = 2` (feasible) a
 (infeasible). W1–W5 stand as written; the repaired document passes W1–W5, and passes W6 once W6
 is stated correctly.
 
+### 1.2 `CLAIMS.md` `K15-C093`: the bullet list still states the two refuted claims
+
+The repaired `CUT_FLOW_THEOREM.md` is correct (§1). The *ledger entry* for it is not
+self-consistent. `Main/CLAIMS.md` `K15-C093` opens with a bullet list, and two of its bullets are
+the pre-repair text; twenty lines below, the entry's own repair note says they are wrong:
+
+| ledger bullet (still present) | what the same entry's repair note says |
+| --- | --- |
+| "Theorem 2 … the cut condition for all finite `U`, **and `sup Φ < ∞`**: a transfer exists. Proof … Tychonoff on `∏_e [−Φ₀,Φ₀]`" | "`sup_e Φ_e < ∞` is **not** a hypothesis of Theorem 2 and is removed … Tychonoff gives `∏_e [−Φ_e, Φ_e]` compact from the compactness of each factor" |
+| "the variant `b(a) = 4` is infeasible at `Φ = 1` with the violating cut `{a}`" | "the violating cut is `F` … `b = (4,−1,−1,−1)` is **infeasible at every `Φ`**, not infeasible at a threshold `4/3`" |
+
+This is exactly the failure mode `D9` is meant to prevent: the corrected text and the rejected
+text are both in the file, and the rejected text comes *first*. A reader who stops at the bullet
+list takes away a theorem with a superfluous hypothesis and an example with the wrong violating
+cut — and the second one matters, because `{a}` is precisely the cut that produces the number
+`4/3`, so the bullet teaches `4/3` as the threshold of a vector that has none. No published claim
+currently depends on either statement (`C084`, `C085` do not use `4/3` — I checked before writing
+this sentence), so this is a documentation defect; it is the kind that gets quoted later. The fix is editorial (delete the two
+bullets and let the repair note stand, or move the bullets below it and label them rejected); I
+have not made it, because `CLAIMS.md` is Main's file and the repair is Main's to record. It is
+recorded here so that the next reader does not take the bullet list as current.
+
+One thing in the same entry that is *right* and easy to miss: the repair note's item 3 now names
+where each hypothesis is used, which is what `D18` item 4 asks for, and it matches the table in
+`CUT_FLOW_THEOREM.md` §2 exactly.
+
 ---
 
 ## 2. X-C017: 10,056 → 2,646 bytes, 281 → 20 digits, same density to `3.5·10⁻⁸`
