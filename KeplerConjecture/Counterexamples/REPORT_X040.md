@@ -2,8 +2,8 @@
 
 Receipt `2026-11-14T12:05:55Z`. Work on this block's continuation started `12:09:02Z`
 (`date -u`, first command); this report is written at `12:20Z`. The block's substantive hour
-runs to `13:05:55Z`; the timestamps at each checkpoint and at the final push are in the
-commit messages, and the final line of this file is filled in at close. No full-hour claim is
+runs to `13:05:55Z`; each checkpoint has a commit whose time is in the `git log` (§8 records them),
+and the close timestamp is written into §8 at the end of the block. No full-hour claim is
 made before `13:05:55Z` — the two previous false claims (`41.969` and `43.565` minutes delivered)
 were false because I inferred elapsed time instead of reading the clock, and the fix is that
 every timestamp in this file is a `date -u` output, not an estimate.
