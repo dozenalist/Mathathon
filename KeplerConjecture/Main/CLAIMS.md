@@ -1508,3 +1508,29 @@ last two blocks' verification was version-specific.
   deterministic given `--seed`.
 - **Status.** `TESTED_FINITE`. Reviewer X: run it with a different seed and a
   higher degree, and audit the `_test_points` gap construction.
+
+### K15-C051 — search for a periodic witness that a blob needs out-flux (`NEGATIVE SEARCH`)
+
+- **Target (from `K15-C044`).** A periodic packing with a blob `U` where
+  `Σ_U b > 0` (i.e. locally denser than fcc) and `|δ⁺(U)|` small would show that
+  the cut condition genuinely needs out-edges at bounded `Φ`.
+- **What was tried.** The 13-cluster centred in a cubic box of side `L` with the
+  eight corners occupied (periodic Voronoi cells computed on a 3×3×3 replication,
+  `L = 5.0` to `6.6`, all with minimum separation exactly 2):
+  `Σ_{13}(vol Ω − √32) = +34.94, +61.41, +91.51, +125.41, +163.29`.
+  All **positive**, and growing with `L`: the cluster's neighbours' cells are
+  inflated by the empty space around them, so the box density (not the cluster)
+  dominates.
+- **Why this is expected, and why it is not a refutation.** A blob with
+  `Σ_U b > 0` is precisely a region whose *local* density exceeds fcc. Simple
+  periodic constructions put the cluster in a *sparse* environment, which makes
+  every cell large; producing a locally dense environment around an icosahedral
+  core is the Frank–Kasper problem, and icosahedral order is famously incompatible
+  with periodicity. So the search is a negative result about *easy* witnesses, not
+  about the cut condition.
+- **What it means for the programme.** The cut condition is not refuted; the open
+  problem is *quantitative*: either exhibit a periodic packing with
+  `Σ_U b > Φ|δ⁺(U)|` for `Φ` below the transfer needed elsewhere, or prove the cut
+  condition with an explicit `Φ`. `Main/NEXT_PACKAGE.md` item 3 stands with this
+  lesson recorded.
+- **Status.** `NEGATIVE SEARCH` (nothing found in the tested family). Reviewer X.
