@@ -602,3 +602,27 @@ factor `√3` looks to be missing from the displayed formula (the decimal is the
 gives for `√3 tan(π/5)`). I have not read the paper's own definition of `t_dod`, so this is a flag
 to check against the source rather than a verdict — but it is a formula and a decimal that do not
 agree with each other, in an entry whose purpose is to be the quotable primary source.
+
+**`C116`'s constant is valid but not sharp — it can be improved from `6/√5` to `2φ`.** `C116` proves
+that two dodecahedral cells are impossible when their centres are closer than `6/√5 =
+2.683281573`, and says the sharpness is only for its arc-cover certificate. Computing the same
+obstruction from the other side (`Reviews/near_contact_band_indep.py`): put `v` at the origin with
+its twelve icosahedral neighbours at `2uᵢ`, and `w` at `d·u₀` with its twelve neighbours at
+`d·u₀ + 2R_t u_j` (twist `t` about the `v`–`w` axis). Any packing containing two dodecahedral cells
+contains such a configuration, so if a cross-distance is `< 2` for every twist, no such packing
+exists. The maximum over the twist of the minimum cross-distance is
+
+```
+at d = 2φ = 3.2360679775 :   2.000000000000000   (twist 36°)
+just below (−10⁻⁶)      :   1.999999105573
+just above (+10⁻⁶)      :   2.000000894427
+```
+
+so the pairwise condition alone already forbids `d < 2φ`, and `2φ/(6/√5) = 1.206011`: the constant
+can be widened by **20.6%**. This is consistent with `C116`'s own caveat ("it is entirely possible
+that two dodecahedral cells stay impossible to larger `d` by an argument this one cannot see") — this
+is that argument's conclusion, to numerical exactness at `2φ`. Two things it does not do: it does
+not show that two dodecahedral cells are *attainable* at `d = 2φ` (the "no other centre cuts either
+cell" condition is not checked here), so `2φ` is a lower bound for the true threshold; and it does
+not affect the route, since `C114` only needs `ε < 0.6832816` and `2φ − 2 = 1.236` is more than
+enough.
