@@ -824,3 +824,31 @@ so the imported theorem remains the best per-cell bound, and the ranking of §10
 value of recording this is that it closes the "did you use the relaxed neighbours?" question: yes,
 and they are not enough. Any proof of the cut must use the *simultaneity* of the twelve cells, not
 finer per-cell information.
+
+## 16. The hierarchy of conditions, from needed to false
+
+This is the cleanest summary of where the cut stands.
+
+```
+(CUT)      sum_{i=1..12} vol Omega(w_i) >= 13 sqrt32 - V_dodeca = 67.9888142149
+             ^ needed; equivalent to (H_R) for S = {c}
+             |
+(P')       vol Omega(v) + vol Omega(w) >= 2 sqrt32  for adjacent pairs
+             ^ SUFFICIENT (gives the cut with 1.72 % margin), SHARP at fcc/hcp,
+               strictly stronger than 2 V_dodeca, at risk at the icosahedral pair (§14.3)
+             |
+(CELL)     vol Omega(v) >= sqrt32  for every v
+             ^ SUFFICIENT but FALSE for saturated packings (K15-E070: the icosahedral cell is
+               V_dodeca = 5.550 < 5.657)
+```
+
+The three levels are ordered by strength: `(CELL) => (P') => (CUT)` for the cut at least, and
+`(CELL)` is refuted. `(P')` is the interesting level: it is the strongest condition that is *not*
+already refuted, it is sharp at the equality family, and it is stated about two cells rather than
+one — which is the smallest amount of "simultaneity" that can work, given that every single-cell
+family is excluded (§10c).
+
+**Where the difficulty has moved.** It is no longer "find a big enough per-cell bound" (impossible,
+`K15-E070` and §10c) but "show that two adjacent cells cannot both be small" (`P'`). That is the
+honest state of the geometric route after this block, and it is a considerably sharper question
+than the one the block started with.
