@@ -47,6 +47,12 @@ residual constraint was mistaken for an unconditional one, 12/196 wrong), and th
 fixed elimination order that ran out of memory at `n = 6`. Each was caught by exactly this
 cross-check, not by reading the code.
 
+**A fourth decision procedure, this one on C's side.** C's `feasible_flow` (scipy max-flow, then
+rounded to rationals and re-verified exactly) agrees with the cut condition on 38 random instances
+(25 infeasible, 13 feasible, 0 mismatches). So the theorem's statement, my LP, my exact
+Fourier–Motzkin routine and C's independent flow constructor all say the same thing on the same
+instances — `Reviews/audit_cutflow_repair.py` §F.
+
 **The thing to try to break.** One instance does need both threshold branches at once, so the
 formula's shape is load-bearing rather than cosmetic: take the star of §5(b′) (`b = (4,−4/3,−4/3,−4/3)`,
 finite-branch sup `= 4/3`) **disjoint union** an isolated vertex with `b = +1`. The finite branch
@@ -385,6 +391,7 @@ proved".
 | `X-C028` | Main's `D18` reverse condition is not triggered (no fifth defect); `D16`'s acceptance test stands with generic soundness still `SUSPENDED`; `D3`'s anchor is respected. `NEXT_PACKAGE` item 1 (`V = 5.40`) is already implied by Hales–McLaughlin. | **VERIFIED** / one wording defect open in Main's file |
 | `X-C029` | `CLAIMS.md` `K15-C093` still states `sup Φ < ∞` and the `{a}`-cut `4/3` example in its bullet list, both refuted by its own repair note. | **DEFECT** (documentation, Main's file) |
 | `X-C030` | `0.008880268414417` inherits C's `V_DOD` enclosure error: the exact value is `0.0088802684147391605`, so the number is a valid lower bound but not "the exact threshold". | **CORRECTION** |
+| `X-C033` | C's own `feasible_flow` agrees with the cut condition on 38 random instances (25 infeasible, 13 feasible): a fourth independent decision procedure for Theorem 1, on C's side. | **VERIFIED**, `Reviews/audit_cutflow_repair.py` §F |
 | `X-C032` | `PROOF_GAPS` G8, partially: C's `exactcert` imports only `fractions` and Main's `shell_check` only `sympy`+`fractions`, so they share no code path; **four** routes (Main, C, X's `exact_sign`, algebraic rule) agree on `q ≥ 0` for all 52 adversarial vectors tried, including near-touching `(t−r)²∓ε`. Sample is finite; `p ≤ η` is not covered. | **PARTIAL**, `Reviews/g8_checker_independence.py` |
 | `X-C031` | The family suite catches `a8526a8` (50/900) and `5619c1d` (8/308) and is blind to a missing precondition and to `7dc6be58`; passing it is evidence, not proof. | **VERIFIED**, §4.3 |
 

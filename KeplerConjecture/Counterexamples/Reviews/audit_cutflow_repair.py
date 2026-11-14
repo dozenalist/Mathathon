@@ -16,7 +16,7 @@ Theorem 2 (infinite) is not testable numerically; its hypotheses are audited by 
 
 Exit 0 iff every check passes.  Run:  python3 Reviews/audit_cutflow_repair.py
 """
-import itertools, sys
+import importlib.util, itertools, sys
 from fractions import Fraction as F
 
 def ck(name, cond, detail=""):
@@ -238,6 +238,30 @@ for trial in range(300):
         print("    mismatch:", G, b, sorted(Fset), Phi, "cut=%s FM=%s" % (ok, ex))
 ck("300 random instances (n<=6): exact FM == cut condition", bad_n == 0,
    "%d/%d mismatches, %d undecided (guard)" % (bad_n, n, und))
+
+print("="*86); print("F. C's own max-flow constructor, against the cut condition"); print("="*86)
+try:
+    _spec = importlib.util.spec_from_file_location("cf_copy", "Reviews/C_cut_flow_4bcbd3a.py")
+    _cf = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(_cf)
+    bad_n, n, none_flow = 0, 0, 0
+    random.seed(7)
+    for trial in range(40):
+        k = random.choice([3, 4, 5])
+        G = [[] for _ in range(k)]
+        for i, j in itertools.combinations(range(k), 2):
+            if random.random() < 0.5: G[i].append(j); G[j].append(i)
+        E = edges_of(G)
+        if not E: continue
+        b = [F(random.randint(-2, 2)) for _ in range(k)]
+        Ph = F(random.choice([0, 1, 2, 3]))
+        ok, _ = cut_holds(G, b, set(range(k)), {e: Ph for e in E})
+        fl = _cf.feasible_flow(b, E, Ph)
+        n += 1; none_flow += (fl is None)
+        if ok != (fl is not None): bad_n += 1
+    ck("38 instances: (C) == C's feasible_flow", bad_n == 0,
+       "%d/%d mismatches, %d infeasible" % (bad_n, n, none_flow))
+except FileNotFoundError:
+    print("  [SKIP] Reviews/C_cut_flow_4bcbd3a.py not present")
 
 print("="*86)
 print("RESULT:", "ALL PASS" if not FAIL else "FAILURES: %s" % FAIL)

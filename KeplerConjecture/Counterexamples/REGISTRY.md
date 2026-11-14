@@ -661,3 +661,11 @@ the repaired theorem's `max(0,·)`, so on an all-negative instance it reports `t
 near-touching cases `(t−r)² ∓ ε` with `ε = 10⁻²⁰, 10⁻⁸`. **Not closed:** finite sample, `q`-side
 only; the `p ≤ η` predicate and the `η` precondition are outside it (the latter is `X-C025`). G8
 should read "independence established; agreement sampled, not proved".
+
+### K15-X-C033 — C's `feasible_flow` agrees with the cut condition on 38 instances
+
+`Reviews/audit_cutflow_repair.py` §F: C's max-flow constructor (blob `700e44f6`, scipy search,
+then rounded to rationals and re-verified exactly) returns a flow exactly when the cut condition
+holds, on 38 random instances with `n ≤ 5` (25 infeasible, 13 feasible, 0 mismatches). That makes
+four independent decision procedures for Theorem 1 on the same instances — the cut scan, my
+HiGHS LP, my exact Fourier–Motzkin routine, and C's flow constructor.
