@@ -1,34 +1,29 @@
 {
  "script": "KeplerConjecture/Computation/transfer_necessity.py",
- "claim": "K15-C-TRANSFER-DENSITY-001",
- "status": "PROVED (elementary)",
- "statement": "a periodic transfer implies rho <= 1/sqrt(32); hence no transfer exists for any packing that violates the Kepler bound",
- "consequence": "the transfer/Hoffman route cannot establish the density bound for the packings that matter: it applies only where the conclusion already holds",
- "not_claimed": "that finite cuts are uninformative; a violating cut remains a genuine obstruction",
+ "claim": "K15-C-TRANSFER-DENSITY-002",
+ "status": "PROVED (large-box averaging; no periodicity of phi required)",
+ "statement": "a bounded transfer (|phi| <= Phi, divergence >= b) on a packing of finite density implies rho <= 1/sqrt(32)",
+ "method": "sum the divergence bound over a box of side L; antisymmetry cancels interior edges; crossing edges are O(rho R L^2) and the volume is L^3, so the mean of b tends to 0 and sqrt32 rho - 1 <= 0",
+ "supersedes": "the earlier periodic-sum argument, which needed phi periodic -- a hypothesis the conclusion does not supply",
+ "withdrawn": "the inference that this implication makes the transfer route 'circular'; a sufficient condition implying Kepler is not circular unless its proof assumes Kepler",
  "rows": [
   {
-   "fixture": "FCC (period 1 cell)",
-   "N": 1,
-   "V": "5.65685424949",
+   "fixture": "FCC (one cell)",
    "sum_b": "0.0",
    "rho": "0.176776695297",
-   "density_ok": true
+   "at_or_below": true
   },
   {
-   "fixture": "HCP (period 1 cell)",
-   "N": 1,
-   "V": "5.65685424949",
+   "fixture": "HCP (one cell)",
    "sum_b": "0.0",
    "rho": "0.176776695297",
-   "density_ok": true
+   "at_or_below": true
   },
   {
    "fixture": "periodised 13-cluster",
-   "N": 13,
-   "V": "4096.0",
    "sum_b": "-4022.46089476",
    "rho": "0.003173828125",
-   "density_ok": true
+   "at_or_below": true
   }
  ]
 }

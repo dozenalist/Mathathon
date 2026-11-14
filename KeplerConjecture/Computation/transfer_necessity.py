@@ -1,40 +1,51 @@
 #!/usr/bin/env python3
-"""The transfer route PRESUPPOSES the density bound it is meant to prove.
+"""What a bounded transfer implies about the density -- with the hypothesis made exact.
 
-This is the correct, proved version of a claim I previously made from a full-period cut
-(which was invalid, because C044's criterion quantifies over FINITE U and a period is not a
-finite subset -- see REVIEW_0308.md section 2).  The argument below goes through the TRANSFER
-side instead, where it is elementary and rigorous.
+HISTORY, because the earlier version was wrong.  I first argued from a full-period cut, which is
+invalid: C044 quantifies over FINITE U and a period is not a finite subset.  I then argued from
+"sum the divergence over one period", which is valid ONLY IF the transfer is periodic -- and
+periodicity of the PACKING does not make an arbitrary bounded transfer periodic: the flux
+crossing a period boundary need not cancel.  Review 0353-C caught both.  The argument below needs
+NO periodicity: it uses a large-box averaging passage, which is what the review asked for.
 
-THEOREM (K15-C-TRANSFER-DENSITY-001).  Let Lambda be a periodic packing, period lattice with
-N centres per fundamental domain and volume V, centre density rho = N/V.  Suppose a transfer
-exists: an antisymmetric phi on the range-R graph with |phi| <= Phi and
+THEOREM A (K15-C-TRANSFER-DENSITY-002).  Let Lambda be a packing of finite upper density and let
+G_R be its range-R graph.  Suppose there is an antisymmetric phi on the edges with |phi| <= Phi
+and
 
-        sum_w phi(v,w) >= b(v) = sqrt(32) - vol Omega(v)      for every centre v.
+        sum_{w ~ v} phi(v, w)  >=  b(v) = sqrt(32) - vol Omega(v)        for every centre v.
 
-Then  rho <= 1/sqrt(32),  i.e. the density is at most the Kepler density.
+Then rho <= 1/sqrt(32).
 
-PROOF.  Phi is periodic (the packing and the cell complex are), so summing the inequality over
-the N centres of one fundamental domain gives
+PROOF (large-box averaging).  Let B be a box of side L.  Summing the hypothesis over v in B:
 
-        sum_v sum_w phi(v,w)  >=  sum_v b(v) = N*sqrt(32) - V .
+        sum_{v in B} b(v)  <=  sum_{v in B} sum_{w ~ v} phi(v,w).
 
-The left side is a sum over ordered pairs of centres, and by antisymmetry phi(w,v) = -phi(v,w)
-each unordered pair contributes zero -- this includes pairs whose members lie in different
-copies of the domain, since periodicity identifies them consistently.  Hence the left side is
-exactly 0 and N*sqrt(32) <= V, i.e. rho = N/V <= 1/sqrt(32) = 0.176776695...  QED.
+The right side counts each edge with BOTH endpoints in B twice, with opposite signs, so those
+cancel by antisymmetry; only edges CROSSING the boundary survive, each contributing at most Phi in
+absolute value.  Hence
 
-CONSEQUENCE.  For any packing with rho > 1/sqrt(32) -- i.e. any packing that would violate
-Kepler -- NO transfer exists at any capacity Phi.  So the transfer/Hoffman route of C035/C044
-cannot be used to *establish* the bound for the packings that matter: it applies only where the
-conclusion already holds.  The route is therefore circular as a proof of the density bound, and
-its real content is confined to C035's negligibility bookkeeping (which is genuine but is not
-the geometry).
+        sum_{v in B} b(v)  <=  Phi * #{(v,w) : v in B, w not in B, |v-w| <= R}.
 
-WHAT THIS DOES NOT SAY.  It does not say the cut INEQUALITIES are false or vacuous, nor that
-individual finite cuts are uninformative -- a violating cut is still a genuine obstruction
-(REVIEW_0308.md section 1).  It says the existence of a transfer is a strictly stronger
-requirement than the density bound.
+Every such v lies within distance R of the boundary of B, so #crossing <= #(Lambda cap
+(dB + B_R)), which for a packing of finite density is O(rho R L^2).  Also
+sum_{v in B} vol Omega(v) = |B| + O(L^2) because the cells tile space, and #(Lambda cap B) =
+rho |B| + O(L^2).  Therefore
+
+        sum_{v in B} b(v) = sqrt(32) rho |B| - |B| + O(L^2),
+
+and dividing by |B| = L^3 and letting L -> infinity gives sqrt(32) rho - 1 <= 0.  QED.
+
+REMARKS.
+* No periodicity of phi is used, and none of Lambda beyond finite density.  This replaces the
+  earlier periodic-sum argument, which needed a hypothesis the conclusion does not.
+* The periodic case is the sharp special case: for FCC and HCP every cell has vol Omega = sqrt32,
+  so b = 0 and the inequality holds with equality -- that is where the constant is attained.
+* SCOPE OF WHAT THIS SAYS ABOUT THE ROUTE.  It does NOT say the transfer route is circular, and the
+  earlier word "circular" is WITHDRAWN.  A sufficient condition that implies Kepler is not thereby
+  circular; it becomes circular only if its own proof assumes Kepler.  What the theorem does say,
+  and all it says, is that exhibiting a bounded transfer is a requirement strictly stronger than
+  the density bound -- so a proof of Kepler by this route has to earn the transfer, and the earning
+  cannot be easier than the bound itself.
 
 Reproduction: python3 transfer_necessity.py
 """
@@ -44,44 +55,46 @@ import mpmath as mp
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _OUT = os.path.join(_HERE, "out")
 mp.mp.dps = 30
+KEPLER_RHO = 1 / (4 * mp.sqrt(2))
 
 def main():
-    print("THEOREM: a transfer requires rho <= 1/sqrt(32) = %s" % mp.nstr(1 / (4 * mp.sqrt(2)), 12))
-    print()
-    print("Check the identity sum_v b(v) = N*sqrt32 - V on the fixtures:")
+    print("THEOREM A (large-box averaging, no periodicity hypothesis):")
+    print("  a bounded transfer implies rho <= 1/sqrt(32) = %s\n" % mp.nstr(KEPLER_RHO, 12))
     rows = []
-    # FCC and HCP: every cell is sqrt32, so sum b = 0 exactly and the condition is rho <= 1/sqrt32
-    # with rho = 1/sqrt32 -- EQUALITY, as expected for the extremal packings.
-    for name, N, V in (("FCC (period 1 cell)", 1, 4 * mp.sqrt(2)),
-                       ("HCP (period 1 cell)", 1, 4 * mp.sqrt(2)),
+    print("Check the sharp cases and the counting error terms on the fixtures:")
+    for name, N, V in (("FCC (one cell)", 1, 4 * mp.sqrt(2)),
+                       ("HCP (one cell)", 1, 4 * mp.sqrt(2)),
                        ("periodised 13-cluster", 13, mp.mpf(4096))):
         sb = N * 4 * mp.sqrt(2) - V
         rho = mp.mpf(N) / V
-        print("  %-24s N=%-3d V=%-12s sum_v b = %-14s rho = %-12s rho <= 1/sqrt32 ? %s"
-              % (name, N, mp.nstr(V, 10), mp.nstr(sb, 10), mp.nstr(rho, 8),
-                 "yes" if rho <= 1 / (4 * mp.sqrt(2)) + mp.mpf("1e-25") else "NO"))
-        rows.append(dict(fixture=name, N=N, V=mp.nstr(V, 12), sum_b=mp.nstr(sb, 12),
-                         rho=mp.nstr(rho, 12),
-                         density_ok=bool(rho <= 1 / (4 * mp.sqrt(2)) + mp.mpf("1e-25"))))
+        print("  %-24s sum_v b = %-14s rho = %-12s at/below 1/sqrt32 ? %s"
+              % (name, mp.nstr(sb, 10), mp.nstr(rho, 8),
+                 "yes" if rho <= KEPLER_RHO + mp.mpf("1e-25") else "NO"))
+        rows.append(dict(fixture=name, sum_b=mp.nstr(sb, 12), rho=mp.nstr(rho, 12),
+                         at_or_below=bool(rho <= KEPLER_RHO + mp.mpf("1e-25"))))
     print()
-    print("Reading:")
-    print("  * FCC and HCP sit exactly AT the boundary: sum_v b = 0, so the transfer condition is")
-    print("    satisfied with equality and the theorem is sharp there.")
-    print("  * The icosahedral cluster has sum_v b = %.2f < 0 and rho = %.6f << 1/sqrt32,"
-          % (-4022.46, 0.003174))
-    print("    so a transfer CAN exist for it -- consistent with cut_flow.py finding a flow.")
-    print("  * Any packing with rho > 1/sqrt(32) has sum_v b > 0 and therefore NO transfer at any")
-    print("    Phi.  That is exactly the packings the route would need to rule out.")
+    print("The averaging passage, made explicit: for a box of side L,")
+    print("  sum_B b <= Phi * #crossing  and  #crossing = O(rho R L^2),")
+    print("  so  sum_B b / |B| <= C Phi rho R / L  ->  0.")
+    print("  Meanwhile sum_B b / |B| -> sqrt32 rho - 1, hence rho <= 1/sqrt32.")
+    print()
+    print("WITHDRAWN: the earlier inference that this implication makes the transfer route")
+    print("'circular'.  A sufficient condition implying Kepler is not circular; it is circular")
+    print("only if its proof assumes Kepler.  The correct statement is that exhibiting a bounded")
+    print("transfer is STRICTLY STRONGER than the density bound, so the route must earn it.")
     json.dump(dict(script="KeplerConjecture/Computation/transfer_necessity.py",
-                   claim="K15-C-TRANSFER-DENSITY-001",
-                   status="PROVED (elementary)",
-                   statement=("a periodic transfer implies rho <= 1/sqrt(32); hence no transfer "
-                              "exists for any packing that violates the Kepler bound"),
-                   consequence=("the transfer/Hoffman route cannot establish the density bound "
-                                "for the packings that matter: it applies only where the "
-                                "conclusion already holds"),
-                   not_claimed=("that finite cuts are uninformative; a violating cut remains a "
-                                "genuine obstruction"),
+                   claim="K15-C-TRANSFER-DENSITY-002",
+                   status="PROVED (large-box averaging; no periodicity of phi required)",
+                   statement=("a bounded transfer (|phi| <= Phi, divergence >= b) on a packing of "
+                              "finite density implies rho <= 1/sqrt(32)"),
+                   method=("sum the divergence bound over a box of side L; antisymmetry cancels "
+                           "interior edges; crossing edges are O(rho R L^2) and the volume is "
+                           "L^3, so the mean of b tends to 0 and sqrt32 rho - 1 <= 0"),
+                   supersedes=("the earlier periodic-sum argument, which needed phi periodic -- a "
+                               "hypothesis the conclusion does not supply"),
+                   withdrawn=("the inference that this implication makes the transfer route "
+                              "'circular'; a sufficient condition implying Kepler is not circular "
+                              "unless its proof assumes Kepler"),
                    rows=rows), open(os.path.join(_OUT, "transfer_necessity.json"), "w"), indent=1)
     print("\nwrote out/transfer_necessity.json")
 

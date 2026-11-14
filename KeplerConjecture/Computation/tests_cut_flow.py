@@ -144,6 +144,55 @@ def main():
     w = CF.find_violating_cut(b, E, F(0), max_size=3)
     check("the exhaustive worst cut agrees with the singleton here", w[0] == F(1, 4), w[0])
 
+    print("S10 GEOMETRY: the ring-edge threshold is the exact icosahedral edge")
+    import k15radicals as RAD
+    e_lo, e_hi = RAD.icosa_edge_enclosure(digits=40)
+    check("edge enclosure brackets 2.102924448476534",
+          float(e_lo) <= 2.102924448476534424 <= float(e_hi),
+          (float(e_lo), float(e_hi)))
+    # BOTH SIDES of the threshold, tested against the enclosure
+    below = (e_lo + e_hi) / 2 - F(1, 10 ** 6)      # strictly inside the band, below the edge
+    above = (e_lo + e_hi) / 2 + F(1, 10 ** 6)      # strictly inside the band, above the edge
+    for R, expect_ring, tag in ((F(2), False, "R = 2 below the edge"),
+                                (below, None, "just below the edge (band)"),
+                                (above, None, "just above the edge (band)"),
+                                (F(3), True, "R = 3 above the edge")):
+        n_r, e_r = CF.build_13(R, direction="refute")
+        n_f, e_f = CF.build_13(R, direction="flow")
+        if expect_ring is False:
+            check("%s: no ring edges (12 total)" % tag, len(e_r) == 12 and len(e_f) == 12,
+                  (len(e_r), len(e_f)))
+        elif expect_ring is True:
+            check("%s: ring edges present (42 total)" % tag, len(e_r) == 42 and len(e_f) == 42,
+                  (len(e_r), len(e_f)))
+        else:
+            # inside the uncertainty band the two directions differ, which is the point:
+            # refute must use the SUPERGRAPH (42), flow the SUBGRAPH (12)
+            if R < e_lo:
+                check("%s: refute also excludes (12)" % tag, len(e_r) == 12, len(e_r))
+            if R > e_hi:
+                check("%s: flow also includes (42)" % tag, len(e_f) == 42, len(e_f))
+    check("R = 2.1029 gives 12 edges, NOT 42 (the review's defect)",
+          len(CF.build_13(F("2.1029"), direction="refute")[1]) == 12)
+    check("R = 2.10296 gives 42 edges",
+          len(CF.build_13(F("2.10296"), direction="refute")[1]) == 42)
+
+    print("S11 GEOMETRY: the FCC constructor actually runs")
+    for n_cell in (1, 2):
+        sites, S = CF.build_fcc_patch(n_cell)
+        check("build_fcc_patch(%d) returns %d sites" % (n_cell, n_cell ** 3),
+              len(sites) == n_cell ** 3, len(sites))
+        check("build_fcc_patch(%d) supercell is 3x3" % n_cell, len(S) == 3 and len(S[0]) == 3)
+
+    print("S12 GEOMETRY: the dodecahedral enclosure brackets the true volume")
+    v_lo, v_hi = RAD.dodeca_volume_enclosure(digits=40)
+    check("V_dod enclosure brackets 5.550291028515510269",
+          float(v_lo) <= 5.550291028515510269 <= float(v_hi), (float(v_lo), float(v_hi)))
+    check("the OLD lower bound 5.550291028519371 was ABOVE the true value (the review's defect)",
+          5.550291028515510269 < 5.550291028519371)
+    check("the new enclosure lies below that old bound", float(v_hi) < 5.550291028519371,
+          float(v_hi))
+
     print()
     if FAILS:
         print("FAILED: %d -> %s" % (len(FAILS), FAILS)); return 1
