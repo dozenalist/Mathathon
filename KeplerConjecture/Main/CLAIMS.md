@@ -4093,3 +4093,46 @@ precisely that it *could* disagree.
 
 *Status.* `CORRECTION` + `PROVED` (corrected certificate, cross-checked two ways and against X).
 `C112`/`C123`/`C127` remain `PENDING_REVIEW`: X's audit is the gate, and review 0608 says so.
+
+### K15-C128 — a ONE-PAIR proof of the two-dodecahedra step (`PROVED`, and much simpler)
+
+With `C127`'s corrected violation sets, the arc cover turns out to be wildly redundant: **a single
+pair settles the whole step.** This is the cleanest form of Theorem D's step (4) and should replace
+the 65-piece cover as the certificate of record.
+
+**The pair.** With `v`'s eleven at `A` and `w`'s eleven at `Q` (both lists in the order produced by
+`build()`/`eleven()`), take `a = A[1]`, `q = Q[8]`, and `d = 2`. Then
+
+```
+A = 6.444582472…,   R = 6.4 = 32/5,   c = (4 − A)/R = −(3 − √5)/2 = −0.38196601125…,
+h = arccos(c) = 112.4555152…°      ⟹   |T| = 2π − 2h = 135.0889696…° .
+```
+
+**The argument, in three lines.** The violation set of this pair is `T = {|t − ψ| > h}`, an arc of
+length `135.089°`. The physical twist space is `R/(2π/5)`, i.e. a circle of circumference `72°`,
+because rotating one icosahedron by `72°` about its own vertex axis maps it to itself. Since
+`|T| > 72°`, **`T` meets every coset of `2π/5`**: for every physical twist `τ` there is a
+representative `t ≡ τ` with `t ∈ T`. At that representative the configuration contains the point
+`w + R_t q`, at distance `< 2` from `a`. So **every relative twist produces a clash**, and two
+adjacent dodecahedral centres are impossible.
+
+**Verified directly, without any covering bookkeeping.** Maximising over physical twists of the best
+representative's squared distance:
+
+```
+max over τ ∈ [0°, 72°)  of  min over k∈{0..4} d²(τ + 72k°)  =  1.266873708  <  4 .
+```
+
+So the one pair is closer than `2` at some representative of *every* physical twist, which is exactly
+the claim. This number also matches the earlier all-twist scan's `max over t of min_pq d² =
+1.266873708` — as it must, since the scan minimises over all pairs.
+
+**Why this is better than the cover.** The 65-piece cover required `C127`'s mod-period reduction and
+a merge test, both of which had already produced two errors. The one-pair argument needs no merge, no
+reduction and no interval bookkeeping: one algebraic identity (`R = 32/5`), one comparison
+(`h < 4π/5 = 144°`), and the `72°` symmetry. **It is hand-checkable**, which the cover was not.
+
+**Scope.** This proves the step at `d = 2` exactly, which is all Theorem D needs. It says nothing
+about `d > 2`; the band constant remains `X-C051`'s `3.4555003444` (`C127`).
+
+*Status.* `PROVED`. `PENDING_REVIEW` with the rest of the pair chain; X is the gate.

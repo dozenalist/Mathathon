@@ -223,6 +223,14 @@ chk("so eps_needed = d_ML - 2", 2 * ((1 / mpf('0.754697399337')) ** (mpf(1)/3) -
 chk("eps_needed equals C119 d_ML - 2", 2 * ((1 / mpf('0.754697399337')) ** (mpf(1)/3) - 1), (8 / mpf('0.754697399337')) ** (mpf(1)/3) - 2, tol=1e-12)
 chk("band / needed room (x)", (mpf('3.4555003444044642049') - 2) / (2 * ((1 / mpf('0.754697399337')) ** (mpf(1)/3) - 1)), 7.4, tol=0.05)
 
+# --- K15-C128: the one-pair certificate ---------------------------------------
+chk("one-pair R = 32/5", mpf(32)/5, 6.4, tol=1e-15)
+chk("one-pair c = -(3-sqrt5)/2", -(3-sqrt(mpf(5)))/2, -0.381966011250105, tol=1e-14)
+chk("one-pair h (deg)", degrees(mp.acos(-(3-sqrt(mpf(5)))/2)), 112.455515, tol=1e-5)
+chk("one-pair |T| (deg)", degrees(2*pi-2*mp.acos(-(3-sqrt(mpf(5)))/2)), 135.08897, tol=1e-4)
+chk("one-pair |T| > 72 deg (the twist period)", 2*pi-2*mp.acos(-(3-sqrt(mpf(5)))/2) > 2*pi/5, True)
+chk("equivalently h < 4pi/5 = 144 deg", mp.acos(-(3-sqrt(mpf(5)))/2) < 4*pi/5, True)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)

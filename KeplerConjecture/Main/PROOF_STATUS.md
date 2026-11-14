@@ -23,6 +23,8 @@ single missing object is an explicit constant.
 | Monotone bridge: pair constant `K` ⟹ `δ ≤ 8π/(3K)` | `C106`, `C107` | `K = 2V_dod` reproduces `0.754697399337` exactly; `K = 2√32` reproduces `π/√18` |
 | The dodecahedral bound is implied by the trivial inball bound for `d ≥ 2.1967082` | `C119` | locates the route: it is needed only on `2 ≤ d < 2.1967082` |
 | E's payer fixture reproduced to `1e−15`, and its family scanned | `C118`, `C120` | independent of E's code |
+| **A one-pair proof** that two adjacent dodecahedral centres are impossible | `C128` | one pair has a violation set of `135.09° > 72°`, so it meets every coset; hand-checkable |
+| **No contact-density hypothesis needed**: `δ < 0.754697399337` strictly for every saturated packing | `C124` | two-case split (`26·|M|` counting vs the inball bound); `ρ_ε > 0` is *not* assumed |
 | **Explicit stability**: `≤ 12`-face cell with all neighbours `≥ 2ρ` has `vol ≥ V_dod·ρ³` | `C121` | the first *explicit* stability bound here; at `ρ = 1.045` it gives `b(v) < 0` with `12%` margin |
 
 ## Conditional, non-explicit, or open
@@ -32,9 +34,9 @@ single missing object is an explicit constant.
 | `(L)`: pair bound `≥ 2√32` | **open** (E's conjecture) | would give `π/√18` outright |
 | An explicit `δ₀ > 0` | **open** | the only thing between `C108` and a *number* |
 | A `≤ 20`-face circumscribed-polyhedron bound at `c ≥ 4.958`, and whether an isolated cell can have `> 12` faces | **open** (`C122`) | the two finite-dimensional sub-problems that would close the singleton case outright |
-| `ρ_ε > 0` (density of close pairs) | **open**, and false for scaled examples | `G13`; the real residue |
+| `ρ_ε > 0` (density of close pairs) | **no longer a hypothesis** — removed by `C124` | was `G13`; the strictness no longer depends on it |
 | `σ₀` attained by a legal configuration | n/a | the infimum is attained in the compactified local space only |
-| Emptiness of the dodecahedral equality case | **open** — retracted at `C113` | the average-to-pointwise inference is invalid |
+| Emptiness of the dodecahedral equality case | **closed on a sound proof** (`C124`) — was retracted at `C113` for the invalid average-to-pointwise step; the new argument has no such step | `G14` |
 | Equality in `(L)` implies Barlow | **not claimed** | Barlow ⟹ equality only (`C106`) |
 | Generic `shell_check` soundness | **suspended** | `G12`; a soundness argument is owed |
 | Novelty of the two-cell inequality | **not established** | a search found nothing usable |

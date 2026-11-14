@@ -148,13 +148,36 @@ discrepancy** (different twist origins; both numbers right). `X-C051` gives the 
 `C127` — every claim on the pair chain. Per review 0608 they stay `PENDING_REVIEW` until X checks the
 exact statements.
 
+## 4a. A by-product worth more than the repair: a ONE-PAIR certificate (`C128`)
+
+Fixing `C127` made the arc cover *work*, and then showed it was wildly redundant: **one pair settles
+the whole step.** With `a = A[1]`, `q = Q[8]`, `d = 2`,
+
+```
+R = 6.4 = 32/5,   c = (4−A)/R = −(3−√5)/2,   h = arccos(c) = 112.4555°,
+|T| = 2π − 2h = 135.0890°  >  72° = the twist period,
+```
+
+and since the physical twist space is `R/(2π/5)` (a `72°` rotation about the shared vertex axis is a
+symmetry of the icosahedron), `T` meets every coset of `72°`. So for every physical twist some
+representative puts a point at distance `< 2` from `a`. Verified directly:
+`max over τ of min over shifts of d²(τ + 72k°) = 1.266873708 < 4`.
+
+**This is better than the cover** and should be the certificate of record. The cover needed the
+mod-period reduction and a merge test — both of which had already produced two errors in this
+object. The one-pair argument needs one algebraic identity (`R = 32/5`), one comparison
+(`h < 4π/5 = 144°`) and the `72°` symmetry. **It is hand-checkable.**
+
 ## 5. What is standing, and what is not
 
 **Proved and not in doubt:** `C094`/`C104` (Barlow cells, repaired), `C093`/`D18` (cut/flow),
 `C115` (primary-source equality case), `C119`/`C125` (the locating bounds and the stalled branch),
 `C121` (the explicit `≤ 12`-face stability bound).
 
-**Proved but pending X:** `C124` and the corrected arc machinery.
+**Proved but pending X:** `C124` (the contact-density-free strictness) and `C128` (the one-pair
+certificate). **Open and recorded as `G15`:** whether the mod-period reduction inside the arc test is
+sound for arcs longer than the period — it does not matter any more, because `C128` proves the
+`d = 2` case without that machinery.
 
 **Open:** an explicit `δ₀ > 0` (`G11`); the sharp `(L)`; the `13–20`-face constants (branch stopped);
 `shell_check` soundness (`G12`).

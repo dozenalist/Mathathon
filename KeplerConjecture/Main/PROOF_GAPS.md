@@ -71,3 +71,25 @@ Previously recorded as proved via `C108`. **Reopened**: the argument went from "
 volume equals the pointwise infimum" to "every cell is dodecahedral", which is invalid in a
 limit. What is proved is only: if `ρ > 0` (G13), equality is impossible. **Closure:** rule out
 `ρ = 0` at equality, or find another route.
+
+## G13 — CLOSED as a hypothesis (review 0608, `C124`)
+
+`ρ_ε > 0` was required by `C108`/`C114` and can fail (scaled packings). `C124` removes the
+requirement with a two-case split: `|S_ε| ≤ 26|M|` for a maximal matching turns `ρ_ε = 0` into
+"asymptotically ε-loose", which the inball bound handles (`δ ≤ 1/(1+ε/2)³ = 0.414086` at
+`ε = 0.6832816`). **No contact-density hypothesis is needed for the strictness statement.**
+
+## G14 — CLOSED (review 0608, `C124`)
+
+The emptiness of the dodecahedral equality case is restored on a sound proof. It was retracted at
+`C113` because the original used an average-to-pointwise inference; `C124` bounds the density
+directly from the cell-volume sum in the `ρ_ε = 0` branch and needs no termwise statement.
+
+## G15 — the arc test above `d ≈ 3.5` (open, review 0608)
+
+The corrected arc test (`C127`) agrees with an independent twist scan at every `d` tested and
+reproduces `X-C051`'s `3.4555003444` to ten digits, but Main has **not** proved that the mod-period
+reduction is sound for arcs longer than the period. The `d = 2` case is now proved *without* that
+machinery (`C128`, one-pair argument), so nothing load-bearing depends on it. **Closure:** a written
+argument that the reduction preserves the cover, or replace the band computation with a projection
+argument like `C128`'s.
