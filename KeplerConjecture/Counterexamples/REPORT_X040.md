@@ -560,5 +560,6 @@ is the `p ≤ η` predicate, which neither C's module nor this block tested.
    one and say which.
 
 **What I did not attempt, deliberately.** No new certificate search at `m ≥ 6` (the block was told
-not to spend its fallback on high-degree optimisation); no Lean; no heavy computation (the biggest
-single run here was 200 s of exact Fourier–Motzkin at `n ≤ 6`, single-threaded, under 1 GiB).
+not to spend its fallback on high-degree optimisation); no Lean; no heavy computation. The heaviest
+single run in this block was the 9,000-query family sweep (≈14 s, one core); `verify_all.py` is
+≈10 s. Everything else is seconds. Nothing was run on Astra's machine, and nothing needed to be.
