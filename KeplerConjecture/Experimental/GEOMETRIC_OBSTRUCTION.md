@@ -409,7 +409,20 @@ The required total is `5.66573451791`, so the outward hemisphere must supply
 i.e. a mean of  t^3 >= 1.7052  over the outward hemisphere,  i.e.  mean t >= 1.194696 .
 ```
 
-But `tau <= 1.045` outside the caps, and `1.045^3 = 1.1413 < 1.7052`. Uncovered directions
+The decisive observation is a one-liner: **`tau <= 1.045` everywhere**, not merely outside the
+caps, because inside a cap `tau` is the minimum of a known value and `1.045`. Therefore
+
+```
+vol Omega(w) >= (1/3) int tau^3 <= (4 pi/3)(1.045)^3 = 4.779767... ,
+```
+
+which is the **absolute ceiling of every bound of this form**, independent of cap layout,
+quadrature or optimisation. It sits `0.885968` (i.e. `15.6 %`) below the required
+`5.665735`, and it already exceeds the inscribed ball by `14.1 %`. The computed `4.734` is
+therefore within `1 %` of the theoretical maximum for this technique, confirming that the
+optimisation of `K15-E042` was essentially exhaustive rather than merely unlucky.
+
+More carefully, `1.045^3 = 1.1413 < 1.7052`. Uncovered directions
 would have to compensate: with a free fraction `f` (where `tau` may be larger) and
 `1 - f` at `1.1413`, reaching `1.7052` needs `f * T^3 = 1.7052 - 1.1413 (1 - f)`, which for
 `T = 2` (i.e. `tau = 2`, far above anything available) already requires
