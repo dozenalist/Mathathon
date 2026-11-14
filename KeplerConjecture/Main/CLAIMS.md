@@ -5022,3 +5022,60 @@ right. `G12` (generic checker soundness for `shell_check`) is untouched.
 
 *Status.* `PROVED` (mechanical, with a self-test that exercises both directions). Runs in
 `run_all_checks.py`.
+
+### K15-C141 — the pair chain, audited link by link (`AUDITED`; integration record)
+
+The block was asked to lead and integrate. This is the chain as a dependency list, so that a reader can
+see which link carries which hypothesis and where the chain actually stops. Every numeric relation in
+the table was re-derived mechanically in this block, not transcribed.
+
+| # | link | statement | depends on | status |
+| --- | --- | --- | --- | --- |
+| 1 | `C115` | equality in Hales–McLaughlin forces a regular dodecahedron of inradius 1 | ML PDF, `sha256 beab1f4a…` | `AUDITED` |
+| 2 | `C108` Thm D | `σ₀ > 2V_dod` over **contact** pairs, by compactness | 1, and the two-dodecahedra exclusion at `d = 2` | `PROVED`, non-explicit `δ₀` |
+| 3 | `C128` | at `d = 2` two dodecahedral cells clash for **every** relative twist | polar duality | `PROVED` |
+| 4 | `C133` | **orientation-free**: two dodecahedral cells need `d ≥ 4cos ρ_c = 3.1786179` | 3, covering radius `ρ_c` | `PROVED`, **not reviewed** |
+| 5 | `C114` | `σ₀(ε) > 2V_dod` for `ε < 0.6832816` (near-contact) | 4 (was the arc cover `C116`/`C127`) | `PROVED` |
+| 6 | `C129` | axial band to `d_max = 3.4555` | — | `PROVED`, axial only |
+| 7 | `C119` | `δ ≤ 8/d³`; meets ML at `d = 2.1967082337` | arithmetic | `PROVED` |
+| 8 | `C132` | the `ρ_ε = 0` branch: `δ ≤ 1/(1+ε/2)³` | saturation + disjointness | `PROVED` (repaired twice) |
+| 9 | `C124` | two-case split: `δ < 0.754697399337` strictly, no contact-density hypothesis | 2, 5, 7, 8 | `PROVED`, `PENDING_REVIEW` |
+| 10 | `C135` | `C128`/`C129` restated self-containedly | — | `PROVED` |
+
+**The numerics, re-derived in this block.**
+
+```
+C133 band            4cos ρ_c = 3.1786178892      ε = 1 ⟹ 2+ε = 3 inside, margin 0.1786
+C114 band            0.6832816 < 1.1786179        (its stated band is inside C133's)
+C119 crossover       2.1967082337 < 2+ε = 3       and 8/d³ there = 0.754697399 = ML
+sharp δ₀             0.2131264420 ; V_dod + δ₀/2 = 5.6568542495 = √32
+                     (4π/3)/√32 = 0.740480489693 = π/√18
+ρ_ε = 0 branch       1/1.5³ = 0.296296296
+counting             D(1) = 63 ; constant 2(1+D) = 128
+√32/V_dod            1.0191995736 = ML/truth
+```
+
+**What the audit shows.**
+
+1. **No link is missing and none is circular.** The only imports are (i) Hales–McLaughlin, in two
+   places (the volume bound and, via `C115`, its equality case), and (ii) polar duality. Both are
+   stated, sourced and verified from a PDF in hand.
+2. **The chain's only open dependency is `G11`** — the non-explicitness of `δ₀`. Everything else is
+   discharged: the orientation gap (`X-ORIENT-001`) at `C133`, the counting at `C132`, the axial scope
+   at `C128`/`C135`.
+3. **It still yields no number.** With `δ₀` non-explicit, link 9 is a strict inequality and not a
+   bound. `RESULTS.md` does not move, and `K33b` (`0.779966`) is not an improvement on the published
+   `0.779747`.
+4. **`C124` is not reviewed.** Links 4 and 9 carry `PENDING_REVIEW`; X's audit is the gate, and the
+   `C133` proof is the item to check first because it is the one that changed the chain's shape.
+
+*Status.* `AUDITED` (integration record; no new mathematics). Reviewer X.
+
+**Addendum — an independent check of X's `deg ≤ 12` threshold that failed its own positive control.**
+`K15-XC083` reports that `deg ≤ 12` survives only for `ε ≲ 0.31` (12 at `0.30`, 13 at `0.35`). I tried to
+reproduce it. A greedy insertion search found only `10` points at `ε = 0.35` and `13` at `ε = 1`, and a
+simulated-annealing search returned `0.361` for the *control* case (12 points at radius exactly 2, where
+the icosahedron gives `2.102924`). **The search failed its positive control, so it is evidence for
+nothing**, in either direction; X's numbers stand as reported. This does not affect `C132`: the bound in
+use, `D(ε) = (3+ε)³ − 1`, is valid for every `ε` and equals `63` at `ε = 1`, so no threshold on
+`deg ≤ 12` is needed anywhere in the chain.
