@@ -180,6 +180,13 @@ chk("inball meets ML at d", (8 / mpf('0.754697399337')) ** (mpf(1) / 3), 2.19670
 chk("inball meets the truth at d", (8 / mpf('0.740480489693')) ** (mpf(1) / 3), 2.21067782856, tol=1e-9)
 chk("inball at 6/sqrt5", inball(6 / sqrt(mpf(5))), 0.41408665, tol=1e-7)
 
+# --- K15-C121: explicit stability for <= 12-face cells --------------------------
+chk("V_dod*(1.045)^3", vdod * mpf('1.045') ** 3, 6.33380410563330904910)
+chk("that over sqrt32", vdod * mpf('1.045') ** 3 / sqrt(32), 1.11966895845012715101)
+chk("so b(v) is negative", sqrt(32) - vdod * mpf('1.045') ** 3, -0.676949856141, tol=1e-12)
+chk("inball threshold rho = (3V_dod/4pi)^(1/3)", (3 * vdod / (4 * pi)) ** (mpf(1) / 3), 1.098354117, tol=1e-9)
+chk("2*R_cell at rho=1.045", 2 * mpf('1.045') * sqrt(mpf(2)), 2.955706345, tol=1e-9)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)

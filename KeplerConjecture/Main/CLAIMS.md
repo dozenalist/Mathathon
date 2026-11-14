@@ -3727,3 +3727,50 @@ family and an independent confirmation of its numbers. The household caveat stil
 (`E090`): this is a *local* witness, not a completion of the cluster.
 
 *Status.* `AGREES`. Reviewer X.
+
+### K15-C121 — an explicit stability bound for cells with `≤ 12` faces (`PROVED`, elementary)
+
+This is the first **explicit** stability statement in the project, and it is three lines. It comes
+straight out of Fejes Tóth's Theorem 4.1 as quoted in `K15-C115`.
+
+> **Lemma (explicit stability).** Let `Ω(v)` be a Voronoi cell with **at most 12 faces**, and
+> suppose every neighbour of `v` is at distance `≥ 2ρ` with `ρ ≥ 1` — equivalently every face of
+> `Ω(v)` is at distance `≥ ρ`. Then
+>
+> ```
+> vol Ω(v)  ≥  V_dod · ρ³ .
+> ```
+
+*Proof.* Scale by `1/ρ`. The body `P := Ω(v)/ρ` is convex, contains `B(0,1)` (since it contains
+`B(0,ρ)/ρ`), has at most 12 faces ✓, and each face is at distance `≥ 1` from the origin. So
+Fejes Tóth's Theorem 4.1 applies and gives `vol P ≥ ω_dod = V_dod`. Hence
+`vol Ω(v) = ρ³ vol P ≥ V_dod ρ³`. ∎
+
+**Why this matters.** `Main/CLOSED_COMPONENT.md` A2 recorded the obstruction to the singleton
+closed-component question as: *"what a proof needs is stability of the dodecahedral inequality:
+cells with inradius `≥ 1.045` have volume `≥ V_dod·(1.045)³` — neither is available."* That is
+exactly the lemma, and it **is** available, with the one hypothesis "at most 12 faces". Feeding in
+the isolated-vertex value `ρ = 1.045`:
+
+```
+vol Ω(v)  ≥  V_dod·(1.045)³  =  6.333804106  =  1.1197·√32  >  √32 .
+```
+
+So **an isolated vertex whose cell has at most 12 faces has `b(v) = √32 − vol Ω(v) < 0` outright**,
+and the singleton closed-component question is settled in that case — the deficit is negative by
+`12%`, with no compactness and no unspecified constant.
+
+**Where it falls short, stated exactly.** The hypothesis is a *face count*, and it is not automatic:
+an isolated vertex has all bisectors at distance `≥ 1.045`, so every neighbour within `2·R_cell`
+cuts, and with `R_cell` up to `≈1.48` that admits neighbours out to `2.96` — potentially more than
+twelve of them (a volume count allows up to `≈16` in the annulus `[2.09, 2.956]`, `C101`). So the
+lemma covers the `≤ 12`-face case and not the rest. What it does establish is that the
+`C096`/`C101` "case (A)" is now **explicit** rather than compactness-based, and that the residual
+gap in the singleton question is exactly: *can an isolated vertex's cell have more than 12 faces?*
+
+**A second, weaker form with no face-count hypothesis at all.** If every neighbour is at distance
+`≥ 2ρ` then `B(v,ρ) ⊆ Ω(v)`, so `vol Ω(v) ≥ (4π/3)ρ³` for every cell. That needs no Fejes Tóth and
+no face count, and it beats `V_dod` once `ρ³ ≥ 3V_dod/(4π)`, i.e. `ρ ≥ 1.0983541` (`ρ = 1.045` is
+below this, which is why Fejes Tóth's theorem is doing real work in the lemma above).
+
+*Status.* `PROVED` (elementary, from `K15-C115`'s quotation of Theorem 4.1). Reviewer X.
