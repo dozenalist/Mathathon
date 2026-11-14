@@ -293,7 +293,10 @@ def find_violating_cut(b, edges, Phi, max_size=None):
     return best
 
 def exhaustive_cut_scan(b_lo, edges, cap_subsets=1 << 16):
-    """EXACT per-fixture t* = max over ALL finite U of sum_U b / |delta^+(U)|.
+    """max over ALL finite U of sum_U b / |delta^+(U)|, for the b handed in.
+
+    NOT "the exact t*" from one call: b is an enclosure, so a single scan is one-sided.  Call it
+    with b_lo and with b_hi (see bracket_t_star) to pin t* from both sides.
 
     Only feasible when 2^n is small (n <= 16 by default); otherwise returns None and the caller
     falls back to the size-capped search, which must then be described as capped.  Subsets with an
