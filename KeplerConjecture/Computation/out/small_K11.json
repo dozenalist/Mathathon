@@ -8,6 +8,8 @@
  "r0": 1.0,
  "rmax": 5.0,
  "smax": 5.0,
+ "r0_scale_factor": 1.0,
+ "r0_note": "rho_A = r0^3 * f(0)/fhat(0); the r0^3 is the sphere-volume scaling and is 1 only at r0 = 1",
  "solver": "scipy.optimize.linprog / HiGHS",
  "numpy": "2.5.3",
  "rho_A_bound": 1.4920159363761414,
@@ -32,18 +34,21 @@
  "status": "TESTED_FINITE",
  "certification": "none: sign conditions imposed on a finite grid only",
  "coefficients": [
-  0.908506198733,
-  0.101709469921,
-  -0.05666372472,
-  0.001151034585,
-  0.014668006432,
-  0.004383379348,
-  -0.001384547093,
-  -0.001072817227,
-  9.4129809e-05,
-  0.000350604376,
-  0.000136318974,
-  1.8167309e-05
+  0.9085061987325095,
+  0.10170946992103658,
+  -0.05666372471985451,
+  0.0011510345849053494,
+  0.01466800643234283,
+  0.004383379347603635,
+  -0.0013845470934311934,
+  -0.0010728172266264689,
+  9.412980894925946e-05,
+  0.00035060437625233107,
+  0.00013631897382192874,
+  1.8167309119675106e-05
  ],
- "runtime_s": 8.0
+ "coefficient_format": "IEEE double, repr precision (17 significant digits)",
+ "Delta_from_stored_coefficients": 0.7812177174596973,
+ "runtime_s": 22.48,
+ "re_evaluation_gap": 2.220446049250313e-16
 }

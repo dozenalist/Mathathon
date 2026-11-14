@@ -104,7 +104,12 @@ def main():
         print("SOLVER FAILED:", res.message); sys.exit(2)
     c = res.x
     fh0 = float(-res.fun)
-    rhoA = 1.0 / fh0
+    # CE Theorem 3.2 form: a certificate with f(0)=1 and f <= 0 off radius r0 bounds
+    # the centre density of a minimum-distance-r0 packing by r0^n f(0)/fhat(0).  On
+    # rescaling to minimum distance 1 the count density scales by r0^n, so the native
+    # number density here is r0^3/fhat(0).  Omitting r0^3 (as an earlier revision did)
+    # understates every r0 != 1 run by that factor -- e.g. 2^(1/2) at r0 = 2^(1/6).
+    rhoA = (a.r0 ** 3) / fh0
     D = float(CV.rhoA_to_Delta(rhoA))
     kep = float(CV.KEPLER_DELTA)
     diag = diagnose(c, a.degree, a.r0)
@@ -114,6 +119,9 @@ def main():
         transform="fhat(t) = int f(x) exp(-2 pi i <x,t>) dx",
         basis="L_k^{1/2}(2 pi |x|^2) exp(-pi |x|^2), eigenvalue (-1)^k",
         degree=a.degree, grid=a.grid, r0=a.r0, rmax=a.rmax, smax=a.smax,
+        r0_scale_factor=a.r0 ** 3,
+        r0_note=("rho_A = r0^3 * f(0)/fhat(0); the r0^3 is the sphere-volume scaling "
+                 "and is 1 only at r0 = 1"),
         solver="scipy.optimize.linprog / HiGHS", numpy=np.__version__,
         rho_A_bound=rhoA, fhat0=fh0,
         Delta_bound=D, Kepler=kep,
@@ -124,12 +132,22 @@ def main():
         Delta_dodecahedral=float(CV.PUBLISHED["dodecahedral_HM10"][0]),
         diagnostics=diag, status="TESTED_FINITE",
         certification="none: sign conditions imposed on a finite grid only",
-        coefficients=[round(float(x), a.digits) for x in c],
+        # store full double precision (17 sig digits) so that re-evaluation from the
+        # stored file reproduces Delta; a fixed low-digit rounding changes fhat(0) and
+        # with it the reported bound, which was a real inconsistency in revision 1.
+        coefficients=[float(x) for x in c],
+        coefficient_format="IEEE double, repr precision (17 significant digits)",
+        Delta_from_stored_coefficients=None,   # filled below
         runtime_s=round(time.time() - t0, 2),
     )
+    import evaluator as EV
+    rt = EV.bound_from_coefficients(out["coefficients"], r0=a.r0)
+    out["Delta_from_stored_coefficients"] = rt["Delta_bound"]
+    out["re_evaluation_gap"] = rt["Delta_bound"] - D
     with open(a.out, "w") as fh:
         json.dump(out, fh, indent=1)
     print("degree K=%d grid=%d r0=%.4f" % (a.degree, a.grid, a.r0))
+    print("  r0 = %.6f -> scale factor r0^3 = %.6f" % (a.r0, a.r0 ** 3))
     print("  rho_A <= %.9f     (FCC sqrt2 = %.9f)" % (rhoA, float(CV.FCC_RHO_A)))
     print("  Delta <= %.9f     (Kepler = %.9f)" % (D, kep))
     print("  gap    = %+.9f  (%+.3f%% of Kepler)" % (D - kep, 100 * (D / kep - 1)))
