@@ -1589,3 +1589,12 @@ sphere/shell confusion. But `E014` is `ACCEPTED_WITH_SCOPE` — "accepted subjec
 Main recording that it did **not** verify the `(E1)` transcription against the paper nor the enumeration —
 while `ACCEPTED.md:20` lists `C054` as plain `PROVED`. The status should be `PROVED modulo
 Musin–Tarasov`, or the transcription should be checked.
+
+### K15-X-C095 — `C135`'s closed form checked; the ring-excess premise is exact
+
+`C135`: with `q = −a = (−2/√5, 0, 4/√5)` and `x = d − 2/√5`, `A = x² − (4/√5)x + 36/5`, `B = 32/5`,
+`C = 0`; then `h < 4π/5 ⟺ x² − (4/√5)x + (8−8√5)/5 < 0 ⟺ d < 4/√5 + 2√((2√5−1)/5) = 3.455500344` ✓ same
+as `X-C051`/`X-C064`. Its endpoint scope (open arc of length exactly `2π/5` at `d_max`, hence
+inconclusive there) is correct. Separately, the `c5_centres` fixture is 2-separated *including* the
+origin (distances `2.0`×7, `2.102924448`×5), and its half-space distances are `1.0`×7 and
+`1.051462224`×5 — exactly `ring_excess.py`'s `b`, so the lemma is applied to the right configuration.
