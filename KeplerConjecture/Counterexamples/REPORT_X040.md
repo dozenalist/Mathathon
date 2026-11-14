@@ -142,10 +142,10 @@ reduction's status is: *same construction, same structural properties, `3.5·10�
 **Comparison with the other certified objects** (the comparison the block asked for):
 `C`'s `SOSQSIDE-005` carries a single explicit rational Gram (`Reviews/C_SOSQSIDE005.json`:
 22 numeric entries, median 2 digits, max 19) at `1.413704545` — smaller entries, useless bound. `C`'s K33 certificates are `29`-digit
-rationals at `0.779966500`, i.e. better bound and about 1.5× the entry size of `X_C017_small`;
-but K33 needs a **sign predicate on neither side only because it has one side**, whereas `X_C017`
-and `X_C017_small` are the only objects in the project with **both** sides witnessed by rational
-PSD matrices — which is the property that removes the predicate obligation entirely (§3). The `B` block of the stored certificate already has only `≤ 11`-digit
+rationals (Main's figure) at `0.779966497784` (K33a) and `0.779966216777` (K33b): a better bound,
+at about 1.5× the entry size of `X_C017_small`. But K33 has an explicit rational Gram on the `p`
+side only, so its `q` side still needs a sign decision; `X_C017` and `X_C017_small` are the only
+objects in the project with **both** sides witnessed by rational PSD matrices — which is the property that removes the predicate obligation entirely (§3). The `B` block of the stored certificate already has only `≤ 11`-digit
 entries, which shows the `B` side was always cheap; the size
 was entirely a `G`/`A` artefact of the pivot solve.
 
