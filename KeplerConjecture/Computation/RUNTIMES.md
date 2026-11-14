@@ -20,6 +20,7 @@ time, this repo's `python3`, warm cache.
 | `period_convention.py` | 5.16 s | the convention, the congruence group, the Sobol and half-space volumes |
 | `exactcert_tests.py` | 13.24 s | the checker's own regression suite, incl. the K = 9…21 rejections |
 | `audit_cut_flow_api.py` | 0.3 s | 69 adversarial checks of the cut/flow API (X-C034/D8) |
+| `fuzz_cut_flow.py 20000 42` | 15 s | 20 000 random instances, three-way against the exact oracle |
 
 **Whole verification set: about 22 s here, so roughly 75 s on a host 3.3× slower.** That is the
 command set to run before quoting anything.
@@ -33,7 +34,8 @@ command set to run before quoting anything.
 | `cut_isoperimetry.py` | 0.09 s | the FCC profile |
 | `cut_fixture_close.py` | 0.22 s | the jamming negative |
 | `cut_fixture_frank_kasper.py` | 0.10 s | the A15 negative |
-| `fixture_nonuniform.py` | 29 s | exact Voronoi volumes, the nonuniform fixture, the near-contact scan and the engine cross-check |
+| `fixture_nonuniform.py` | 29 s | exact Voronoi volumes, the nonuniform fixture, the two-site theorem, the certificate and the sampler cross-check |
+| `fixture_dense_shell.py` | 34 s | the nonvacuous fixture, its conventions, the exact minimum, the closure obstruction, the profile and the convergence |
 
 ## One-line reproduction of everything quoted in `REVIEW_0353.md`
 
