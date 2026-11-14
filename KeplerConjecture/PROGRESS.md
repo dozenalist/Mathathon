@@ -458,3 +458,13 @@ support for a general negative claim.
 What does **not** yet exist is one certificate with explicit rational Gram on **both** sides at
 useful strength. That needs an SDP with rational Gram rounding — no solver on the SAIR VM, so it
 is a local request (obligation 1 in `REVIEW_0138.md` §10).
+
+### K15-COMP-022 — 2026-11-14 — Computation (role C), improved Fourier-side demonstrator
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-SOSQSIDE-003 | **VERIFIED_EXACT** | improved explicit-Gram certificate: `q = 3² + (3u/2 − 6)² + u(3/2 − 2u/3)²` (three rational squares, hand-checkable), `p = −4u³/9 + 59u²/12 + 17u/6 + 1351/48`, giving **`Δ ≤ 2.61993314`** | `sos_qside.py` (26 000 trials, 16 389 exact survivors), `out/sos_qside_wide.json` |
+
+Supersedes `K15-C-SOSQSIDE-001`'s `2.82361314`. The improvement from a wider search is recorded as
+evidence the search **has not saturated**, so `2.61993314` is a best-found value, not an optimum —
+the same status discipline the review required elsewhere.

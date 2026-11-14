@@ -271,16 +271,20 @@ expanding a finite sum of squares — no Sturm sequence, no root counting, no tr
 
 **Best found (degree 5, 9000 trials, 5176 exact survivors):**
 
-$$q(u) = \tfrac{16}{9}u^3 - \tfrac53 u^2 - \tfrac{815}{36}u + \tfrac{466}{9},\qquad
-p(u) = -\tfrac{16}{9}u^3 + 17u^2 - \tfrac{565}{36}u + \tfrac{2513}{72},$$
+$$q(u) = \tfrac49 u^3 + \tfrac14 u^2 - \tfrac{63}{4}u + 45,\qquad
+p(u) = -\tfrac49 u^3 + \tfrac{59}{12}u^2 + \tfrac{17}{6}u + \tfrac{1351}{48},$$
 
-with the underlying squares `r = [5-u,\ -4/3,\ 5-2u]`, `s = [1,\ -5/2+4u/3,\ -1/3]`, giving
+whose `q` has the fully explicit three-square form
 
-$$\Delta \;\le\; 2.82361314 .$$
+$$q(u) \;=\; 3^2 \;+\; \bigl(\tfrac32 u - 6\bigr)^2 \;+\; u\bigl(\tfrac32 - \tfrac23 u\bigr)^2,$$
 
-This is the **best explicit-Gram certificate in this directory** — 2.1× better than the `p`-side
-cubic family (§8a's `5.99`) and hand-checkable in full: `q = (5-u)^2 + (4/3)^2 + (5-2u)^2 +
-u[1^2 + (4u/3 - 5/2)^2 + (1/3)^2]`.
+so the Gram data is three rational polynomials and the identity is one expansion. It gives
+
+$$\Delta \;\le\; 2.61993314 .$$
+
+This is the **best explicit-Gram certificate in this directory** — 2.3× better than the `p`-side
+cubic family (§8a's `5.99`). A wider search (26 000 trials, 16 389 exact survivors) improved it
+from the earlier `2.82361314`; the growth is recorded as evidence the search has not saturated.
 
 **Degree 7 was worse, not better** (`38.13600953`): with full-length factors the coefficients grow
 and the random search finds only poor ratios (289 survivors in 5000 trials). Recorded because it is
@@ -292,7 +296,7 @@ the opposite of the expectation and it bounds what a naive search can claim.
 | --- | --- | --- |
 | LP-optimal Laguerre certificate, `K = 33` | 0.77996622 | no (exact Sturm + SymPy oracle) |
 | LP-optimal shell route, `K = 33` | 0.78037032 | no (exact Sturm) |
-| **`q`-side squares, degree 5** | **2.82361314** | **yes, on the Fourier side** |
+| **`q`-side squares, degree 5** | **2.61993314** | **yes, on the Fourier side** |
 | `p`-side cubic square | 5.99152482 | yes, on the `p` side |
 | `p`-side quintic, two squares | 6.73788568 | yes, on the `p` side |
 | `q`-side squares, degree 7 | 38.13600953 | yes, on the Fourier side |

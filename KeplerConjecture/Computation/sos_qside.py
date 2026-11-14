@@ -66,7 +66,7 @@ def main():
     best = None; found = 0
     print("q built as sum r_i^2 + u sum s_j^2 (explicit Gram), p = M q, screening p <= 0 ...")
     for trial in range(a.trials):
-        nq = random.choice([2, 3, 4])
+        nq = random.choice([3, 4, 5])
         dmax = 3 if K >= 7 else 2
         full = (K >= 7)
         rs = [[F(random.randint(-6, 6), random.choice([1, 2, 3]))
