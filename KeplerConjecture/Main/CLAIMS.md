@@ -5347,3 +5347,35 @@ is to state scope explicitly. It cannot detect a dependency that is *not* named 
 reader.
 
 *Status.* `PROVED` (mechanical, and its own first version was wrong; the rule is stated above).
+
+#### `C142` addendum 4 — the `η` budget split, and the correct composition of the covering radius
+
+Two things a referee would ask, both now pinned down.
+
+**(a) The covering radius degrades *linearly*, not through `arccos`.** If every normal moves by at most
+`θ`, then `⟨e, u_i'⟩ ≥ ⟨e,u_i⟩ − θ ≥ cos ρ_c − θ`, so the new covering radius `ρ'` satisfies
+
+```
+cos ρ'  ≥  cos ρ_c − θ        (NOT  cos(ρ_c + θ):  arccos(cos ρ_c − θ) = 0.722734 > ρ_c + θ = 0.697013)
+```
+
+and the clash condition `d² + 4 − 4d cos ρ' < 4` becomes `d < 4(cos ρ_c − θ)`. At `d = 3` this is
+`θ < cos ρ_c − 3/4 = 0.0446545` ✓ — the number used in §(4), which came from the linear form. A first
+version of this check composed the perturbation as `cos(ρ_c + θ)` and got a *weaker* condition
+(`θ < 0.070376`), which would have over-stated `δ₀` by a factor `2.2`. Recorded because the wrong
+composition is the natural mistake.
+
+**(b) The `η` budget is shared, and the split is exactly tight at `ε = 0`.** Face distances and normals
+compete for the same `η`: `vol − V_dod ≥ A_0Σε_i + 0.17Σθ_i²`. With `η = 3.3898·10⁻⁴`,
+`Σε ≤ η/A_0 = 2.443·10⁻⁴`. The clash value at `d = 3` is `9 + 4(1+ε)² − 12(1+ε)(cos ρ_c − θ)`:
+
+| fraction `t` of `η` spent on distances | `ε` | `θ` | clash value | margin |
+| --- | --- | --- | --- | --- |
+| `0` | `0` | `0.044654` | `4.000000` | `0` (tight by construction) |
+| `0.25` | `6.11·10⁻⁵` | `0.038672` | `3.928144` | `7.2·10⁻²` |
+| `0.50` | `1.221·10⁻⁴` | `0.031575` | `3.842911` | `1.6·10⁻¹` |
+| `1` | `2.443·10⁻⁴` | `0` | `3.463771` | `5.4·10⁻¹` |
+
+So the pure-normal case is the binding one and it is *exactly* tight — which is what makes the inequality
+strict at `η` below the stated value and not at it. Any face excess buys room. **The number `δ₀ ≥ 3.76·10⁻³`
+therefore stands, with the strictness coming from `η < 0.17θ_max²` and not from a slack in this table.**
