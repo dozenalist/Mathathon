@@ -190,10 +190,11 @@ requires that
 | --- | --- | --- | --- | --- |
 | seeds 0, 1, 2 | 6 000 | — | — | **0** |
 | seed 42 | 20 000 | 8 716 | 11 284 | **0** |
+| seed 2026 | 100 000 | — | — | **0** |
 
 That is evidence, not a proof: it samples a distribution, and the oracle is capped (it returns
 `None` rather than blowing up, and undecided instances are skipped, never counted as agreement).
-What it does establish is that the three decision procedures do not disagree anywhere in 26 000
+What it does establish is that the three decision procedures do not disagree anywhere in 126 000
 random instances — which is the shape of evidence a soundness proof would have to explain.
 
 ## 3. Completeness of the exact volume algorithm (fallback, first item)
@@ -277,7 +278,7 @@ python3 fixture_dense_shell.py     # the fixture, its conventions, the window (~
 python3 cut_flow.py --fixture out/fixture_dense_shell.json   # the evaluated cut and flow
 python3 fixture_nonuniform.py      # the engine, its certificate, the two-site theorem (~30 s)
 python3 audit_cut_flow_api.py      # 69 checks of the repaired interface
-python3 fuzz_cut_flow.py 20000 42  # 20 000 random instances, three-way (~15 s)
+python3 fuzz_cut_flow.py 100000 2026  # 100 000 random instances, three-way (~75 s)
 python3 nearcontact_scan.py        # the 500 finite cases (~13 min)
 ```
 
