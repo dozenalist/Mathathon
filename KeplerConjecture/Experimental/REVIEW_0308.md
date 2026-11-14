@@ -605,3 +605,64 @@ strict excess over the optimal local arrangement, which is why no per-cell minim
 **The honest summary of the route.** It is a strengthening of Kepler (§6.1) whose entire content now
 sits in one stability inequality about the icosahedral configuration. That is a much more precise
 statement than "the geometric route is promising", and it is the useful output of this block.
+
+## 14. The positive proposal: a *pair* bound, sharp at fcc/hcp (`K15-E074`)
+
+Every per-cell approach above failed because the completion can shrink one cell at a time. The
+multiplication by twelve in the cut suggests a different shape of statement: bound **pairs** of
+adjacent cells.
+
+**Conjecture (P').** For every pair of adjacent centres `v, w` of a saturated 2-separated set,
+
+```
+vol Omega(v) + vol Omega(w)  >=  2 sqrt32  =  11.3137084990... .
+```
+
+**Why it is the right shape.** It is *not* a per-cell bound: one cell may be as small as
+`V_dodeca` provided its neighbour is correspondingly large, which is exactly how compensation works.
+It is strictly stronger than the elementary consequence of McLaughlin's theorem
+(`2 V_dodeca = 11.10058206 < 2 sqrt32`), yet weaker than a per-cell `sqrt32` bound — and it is
+exactly what the summation in the cut needs:
+
+```
+12 pairs (c, w_i) with vol Omega(c) = V_dodeca :
+     sum_i vol Omega(w_i)  >=  12 * 2 sqrt32 - 12 * V_dodeca  =  69.1610096456
+     required                                                  =  67.9888142149
+     margin                                                    =  1.172195431  (1.724 %) .
+```
+
+So **(P') implies the cut, with `1.72 %` to spare.**
+
+**It is sharp, so it cannot be improved.** Tested on every fixture with `vor_volumes` and the
+extent flag (`TESTED_FINITE`):
+
+| fixture | adjacent pairs | min pair sum | vs `2 sqrt32` |
+| --- | --- | --- | --- |
+| fcc (500) | 1752 | `11.313708499` | **exactly equal** |
+| hcp (175) | 212 | `11.313708499` | **exactly equal** |
+| A15 (1439) | 10098 | `15.875000000` | above |
+| icosa_fill (131) | 1 | `19.759139872` | above |
+| icosa_fcc_shell (189) | — | all cells flagged | not usable |
+
+Every one of `1752` fcc pairs and `212` hcp pairs attains the bound **exactly**, so `(P')` is a
+sharp statement with the extremal configurations as its equality cases. That is the profile a
+correct conjecture should have, and it is the first statement in this directory that is both
+sharp at fcc/hcp and satisfied by every fixture.
+
+**What is not established.** `(P')` is unproved. The evidence is one-sided: computed volumes are
+*upper* bounds, so agreement here cannot certify it — only a violation could have refuted it, and
+none was found. Nor do I claim `(P')` is new: a two-cell version of the dodecahedral problem is a
+natural object and may well appear in the literature; it should be checked before being called new.
+
+**Why it might be provable where per-cell bounds are not.** The obstruction in §10c was that any
+single cell can be cut down by the completion. A *pair* bound forbids the simultaneous shrinking of
+two adjacent cells, and the two cells are coupled through their shared face: making one smaller
+pushes the shared face and enlarges the other. That coupling is exactly the mechanism the per-cell
+families could not see, and it is the same coupling that `(H_R)` encodes. So `(P')` is a
+finite-object, two-cell version of the collective target — the smallest instance of it that is not
+a per-cell statement.
+
+**Next step.** Test `(P')` on a two-cell local model: two centres at distance `d ∈ [2, 2.5]` with
+their full local neighbourhoods, minimising `vol Omega(v) + vol Omega(w)` over completions. If the
+minimum over that model exceeds `2 sqrt32`, `(P')` gains real support and the model is small enough
+to be a candidate for a rigorous proof.
