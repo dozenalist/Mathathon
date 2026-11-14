@@ -139,3 +139,80 @@ repaired region     Experimental/scripts/certify_region_v2.py
 witnesses           cell_certificate.witness_1, .witness_2  (run: python3 cell_certificate.py)
 ledger              K15-E095 (repair), E096 (region repair); K15-E091 repaired, E094 pending
 ```
+
+---
+
+## 8. Beyond the C5 family: the obstruction, quantified, and the cheaper task
+
+The brief asked, after the repair, for a rigorous tighter enclosure or a stability lemma that
+advances beyond the restricted C5 family — and, if that is blocked, for a precise obstruction
+and a cheaper geometric task. It is blocked, and here is the obstruction in numbers.
+
+### 8.1 Why the sandwich cannot reach the completion space
+
+A centre that can cut the cell lies in `2 ≤ |z − w1| < 2.603447`. Those centres are 2-separated,
+so their unit balls are disjoint and lie in `B(0, 3.603)`, giving
+
+```
+N ≤ (4π/3)(3.603³ − 1)/(4π/3) = 45.8   ⟹   at most 45 free centres   ⟹   up to 135 coordinates
+```
+
+covering that space at any resolution `w` needs `(1/w)^d` boxes:
+
+```
+w = 0.1   d = 2: 1.0e2      d = 45: 1.0e45      d = 135: 1.0e135
+w = 0.01  d = 2: 1.0e4      d = 45: 1.0e90      d = 135: 1.0e270
+```
+
+The atom is not the issue: at `d = 2` the whole family closes in `10^2` boxes. **The obstruction
+is the dimension**, and no refinement of the sandwich touches it — even a perfect atom would
+face `(1/w)^{135}`. This is the precise form of what `REVIEW_0523` §2.5 measured as the `6e5`
+dependency overhead: that overhead is a *constant*, and it is irrelevant next to a `10^135`
+box count.
+
+### 8.2 The cheaper task: the shell-2 sub-problem
+
+The C5 optimum lives in the sub-problem where **every added centre is at distance exactly `2`
+from `w1`**. There the structure collapses:
+
+- the added centres are points on a sphere of radius `2`, 2-separated, hence **`60°`-separated**;
+- with `c` already a neighbour, the kissing bound allows **at most 11** of them;
+- `K15-E014` (from the earlier blocks, exact) already caps the count in `[2, 2.09]` at `12`
+  including the fixed ones, so at most `6` free centres lie in that inner shell;
+- each must keep distance `≥ 2` from the five ring centres, i.e. lie `≥ 58.28°` from each ring
+  direction.
+
+So the shell-2 problem is *at most 11 points on a sphere with a 60° code constraint and five
+forbidden caps* — 22 angular parameters under strong combinatorial restrictions, not 135 free
+coordinates. `(1/w)^22` at `w = 0.01` is `10^44`, still out of reach, but the kissing constraint
+means the configurations are discrete-ish rather than a continuum of independent points; that is
+where a *combinatorial* enumeration (which subsets of the "gaps" are occupied) could beat a grid.
+
+**I have not proved that the infimum over completions is attained in the shell-2 sub-problem.**
+The natural argument — project a centre radially inward to distance `2`, which only strengthens
+its half-space — fails on legality: the projection can land within `2` of another centre. So
+shell-2 is a sub-problem, not (provably) the whole problem, and it must be labelled that way.
+What the searches say is only this: seeds that were allowed to use radii up to `2.8` settled at
+six free centres and never beat `5.897967`, which is the shell-2 optimum found by the C5 family.
+
+### 8.3 The stability route, and what it would take
+
+The alternative is a stability theorem: any cell that is not the exact icosahedral one has
+volume at least `V_dod + δ` for an explicit `δ`. That is `(S_dod)`, unproved, and the one
+elementary estimate available is weaker than it looks:
+
+> **Prism lemma (true, elementary).** For any normals `n_i` and `b_i ≥ 1`, if `F_j` is the face
+> of `D = ⋂{y·n_i ≤ 1}` on the plane `y·n_j = 1` with area `A_j`, then
+> `vol ⋂{y·n_i ≤ b_i} ≥ vol D + A_j(b_j − 1)`.
+> *Proof.* The prism `P_j = {1 ≤ y·n_j ≤ b_j, y·n_i ≤ 1 (i≠j)}` lies in the larger polytope and
+> is disjoint from `D`; its volume is `A_j(b_j − 1)`. ∎
+
+It is true for *any* normals, which is exactly why it does not help: it bounds the gain from
+moving one face of a *fixed* base polytope, and the payer problem varies the normals (the ring
+sits at `58.28°` instead of the icosahedral `63.43°`). Applied to the frozen cell it says only
+that the volume is at least the volume of the base polytope plus a prism, and the base polytope
+there is not the dodecahedron.
+
+**So: no tighter enclosure and no stability lemma beyond the family is delivered here.** What is
+delivered is the repaired certificate, the quantified obstruction, and the shell-2 sub-problem
+identified as the cheapest place to attack — with its own gap stated rather than papered over.
