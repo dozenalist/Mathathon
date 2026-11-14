@@ -82,3 +82,107 @@ write-up). Recorded as the remaining Priority-2 gap.
 Audit Main's shell-density theorem write-up, then attempt the disjoint-bodies proof of (T):
 inner ball plus bisector-plane caps inside the twelve outer cells, with the 2.08% target as the
 acceptance criterion.
+
+## Fallback (continued) — a dense-completion test of E's (T)
+
+`Reviews/E030/t_test.py`. The 13-cluster (centre + 12 at distance exactly 2, outer mutual
+distance `2.102924`) is embedded in a dense FCC background of minimum separation 2: 512
+background points kept out of 555 inside radius 9, all pairwise distances `≥ 2.000000000000`.
+Voronoi cell volumes computed by convex hull of each cell.
+
+| quantity | value |
+| --- | --- |
+| `vol Ω(centre)` | **5.5502910** (= `V_dod` exactly — a self-check: the twelve tangent neighbours pin the regular dodecahedron, and the background does not cut it further) |
+| `Σ_{i=1..12} vol Ω(w_i)` | **122.3902491** (mean `10.1991874`) |
+| (T) threshold | `67.9888142` |
+| margin | **`+54.4014349`** |
+
+**Reading.** (T) does not come close to failing in a dense completion: the required 2.08%
+surplus over the dodecahedral minimum is dwarfed by the observed ~80% surplus. Two caveats,
+both required:
+
+1. **This is an upper bound, not a proof.** By monotonicity (E003) any finite completion gives
+   `vol Ω ≥` the saturated value is false the other way: adding centres only shrinks cells, so
+   the computed volumes are *upper* bounds on the saturated ones. A positive margin is therefore
+   evidence of plausibility, not a certificate.
+2. **The completion is dense but not maximal.** The icosahedral cluster is frustrated — there
+   are voids behind the twelve outer spheres that the FCC background cannot fill while keeping
+   separation 2 (points closer than 2 to a cluster centre were excluded). A truly saturated
+   completion would fill what it can, so the saturated sum is *smaller* than `122.39`, by an
+   amount this computation does not bound.
+
+**Strategic conclusion for E.** (T) is *not* numerically knife-edge, so the difficulty is
+structural rather than quantitative: what is missing is a **lower** bound mechanism, and the
+only available one is explicit disjoint bodies inside the twelve outer cells. The natural
+candidate is the inner ball `B(w_i,1)` (volume `4.18879`, giving only `50.27` in total — 26%
+short) plus the caps cut by the bisector planes to the eleven other outer centres and to
+`v`. Those caps are where the 2.08% must come from, and their size is governed by the
+`2.102924` opening angle rather than by `2` — which is exactly why the icosahedral cluster's
+frustration is the crux.
+
+## Third-opinion cross-check of K33 through *Main's* implementation
+
+`Reviews/crosscheck_K33_via_main.py`. C's certificate lives in `t = 2π|x|²`; Main's checker
+lives in `u = π|x|²`. The conversion is exact: `P(u) = p(2u) = Σc_kL_k(2u)`, so I expanded C's
+34 coefficients into Main's monomial basis in `u` and ran **Main's** routines.
+
+1. **Main's `fourier_map(33)` reproduces my direct `L_k(2u)` expansion exactly** on this real
+   degree-33 vector (`b_M − b_mine = 0` componentwise). A much stronger test of their matrix
+   than my `K=3` quadrature check.
+2. **Main's checker accepts the converted certificate**: `_ray(a, T_LO) = True` (CE1),
+   `nonneg_on_half_line(b) = True` (CE2), `p(0) > 0`, `q(0) > 0`.
+3. Recomputing the bound with *Main's* π constants gives `0.779966497784296` in both
+   directions, and C's `delta_upper_exact` still dominates it.
+
+So `K15-C033` is now verified by **three independent implementations in two coordinate systems**
+(mine, C's `exactcert` + `sympy_oracle`, Main's `shell_check`), with a lossless exact conversion
+between conventions. That is the specific protection the assignment asked for: two checkers
+sharing a sign misconception cannot explain this agreement, and my eight controls — including
+the discriminating simple-vs-double-root cases — show the sign logic is exercised in both
+directions.
+
+## Main `K15-C019` (shell count = a Tammes-13 number): ACCEPTED, one algebra correction
+
+Their lemma: for `2 ≤ |y_i| ≤ ρ` with `|y_i − y_j| ≥ 2`, the directions satisfy
+`⟨u_i,u_j⟩ ≤ f(r_i,r_j) = (r_i²+r_j²−4)/(2r_ir_j)`, and `f` is increasing, so
+`f ≤ f(ρ,ρ) = 1 − 2/ρ²`, giving `θ ≥ arccos(1 − 2/ρ²)` and hence `n(ρ) ≤ 12` whenever
+`θ₁₃ < arccos(1 − 2/ρ²)`. **This is exactly the reduction I derived independently** in two
+earlier blocks; the monotonicity step and the partial derivative `∂_a f = (a²−b²+4)/(2a²b)`
+agree.
+
+*Sharpening of their hypothesis.* They require `ρ ≤ √6 ≈ 2.449` (from `a²+4 ≥ 8 > ρ² ≥ b²`).
+The condition actually needed is `a² + 4 > b²` in the worst case `a = 2, b = ρ`, i.e.
+**`ρ < 2√2 = 2.828`**. Their bound is sufficient but not sharp.
+
+*Correction to the mixed-case remark.* They write that `f(2,ρ) = ρ/4 < 1 − 2/ρ²` holds
+"exactly when `ρ² − 4ρ + 8 > 0`, true for all `ρ`". That polynomial has discriminant `−16`, so it
+is *always* positive and **cannot be the criterion**. Exactly:
+$$1-\frac{2}{\rho^2}-\frac{\rho}{4} = -\frac{(\rho-2)(\rho^2-2\rho-4)}{4\rho^2},$$
+whose roots are `2` and **`1+√5 = 3.236`**. So the mixed case is subdominant precisely for
+`2 < ρ < 1+√5` (verified: true at `ρ = 2.09, 2.5, 3.2`; false at `3.3, 3.5`). **The conclusion
+is unaffected for `ρ = 2.09`**, but the stated reason is wrong and the sharp admissible range of
+`C019` as proved is
+$$\boxed{2<\rho<\min\{2\sqrt2,\,1+\sqrt5\}=2\sqrt2=2.828},$$
+not "all ρ". Anyone extending the shell bound to larger ρ must redo the mixed case.
+
+## Final status of this block
+
+| Item | Status |
+| --- | --- |
+| `K15-C033` (K33 certificate) | **ACCEPTED by 3 independent implementations in 2 conventions** |
+| `K15-C033` near-tangency metadata | **CORRECTED** (`min q ≈ 3.7e-06`, not `3.5e-29`) |
+| K33 minimal witness | `c₅ −= 3/2²¹` breaks it (fragility `1.431e-06`) |
+| `K15-E015` Tammes-13 enclosure | **UPHELD** (`δ₁₃ ≤ 57.1448° < 57.1709°`); justification `E2`-only corrected |
+| `K15-E030` partition structure | **CONFIRMED** (disjoint, covering, no hidden obligation) |
+| `K15-E030` (T) | **OPEN**; exact form: outer mean `≥ V_dod(1+0.020804)`; dense completion gives `122.39` vs threshold `67.99`, so not knife-edge |
+| Main `shell_check` | **ACCEPTED** (Fourier matrix, π enclosure, threshold direction, odd-part) |
+| Main `K15-C019` | **ACCEPTED** with sharper hypothesis `ρ < 2√2` and corrected mixed-case algebra (`ρ < 1+√5`) |
+| Main shell-density *write-up* | **NOT AUDITED** (only the checker and C019; the optimisation spec was read, not verified) |
+| Ultramath | **not active** (no swarm created, resumed or queried) |
+
+## Next task
+
+Either (i) prove `K15-E030`'s (T) by exhibiting disjoint bodies in the twelve outer cells — the
+`2.08%` surplus and the `50.27 < 67.99` ball-only shortfall show the caps must carry the whole
+weight; or (ii) run the X-R03 SDP with `P = −(s−4)H`, `H` SOS, which is the only route on my
+side that can still produce a certified 3-D CE number.
