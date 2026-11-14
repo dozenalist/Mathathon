@@ -1540,3 +1540,23 @@ Consequence 1 — "volume `= V_dod` ⟹ dodecahedron" — carries the unstated h
 conditional and unaffected. (ii) The quantity is the *truncated* volume `vol(P ∩ B_{t_dod})`. (iii) The
 source is Fejes Tóth, *Regular Figures* §§33, 41 (note p265) as restated there — **not** Lindelöf, which
 does not give the covering radius.
+
+### K15-X-C090 — Theorem 4.1's `≤ 12 faces` is essential, and the 20-face analogue is false
+
+The circumscribed icosahedron has **20 faces** and volume `70√3 − 30√15 = 5.054056143599 < V_dod`;
+so "at most 20 faces" makes the theorem false. 13-face polyhedra with volume exactly `V_dod` exist by
+continuity (push a dodecahedron face out by `δ`, truncate a vertex by `ε`; one equation, two parameters).
+Hence `C133`'s Consequence 1 must carry the `≤ 12` hypothesis. `c133_12face_essential.py` (exit 0).
+What is *not* settled: whether a Voronoi cell of a 2-separated packing can have `≥ 13` faces and volume
+`≤ V_dod` — `C125`/`X-C066`, open.
+
+### K15-X-C091 — the volume engines: exact one sound, floating one scoped
+
+`contact_cell_exact.py` (main `2c41311`) runs clean: exact `Q(√2,√3)`, hcp cell `14` vertices with
+`|x|² ∈ {3/2 (×8), 2 (×6)}`, Euler `14−24+12 = 2`, `K ⊆ B(0,√2)` ✓ — the contact-polytope bound is
+verified, not sampled; its only limit is a `1e-59` sign-resolution floor. `barlow_cells.cell()` is a
+floating half-space intersection (`1e-9` acceptance, `round(V,8)` dedup, `len(V)<4 → 0.0`): no
+completeness guarantee for arbitrary input, and the `0.0` is silent, but I could not break it on the
+family I tried (three faces through a common point with normals `δ` apart keep their vertex to
+`δ = 10⁻⁸`), and on its actual inputs it agrees with the exact routine (`V12 = Vfull = 5.656854249492`
+on all 34 layer analyses, `0` violations). `audit_volume_filter.py`.
