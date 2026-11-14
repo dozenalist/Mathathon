@@ -1168,6 +1168,12 @@ which covers the ~`1e-16` conversion error but is a fudge, not an interval compu
 `certify_region.py`/`rigorous_cell_volume.py` are still in the tree, so any number they produce keeps
 the old defects — only the `_v2` path is repaired.
 
+**Run at one box.** `certify_region_v2.py 110 110.1 35 35.1 0.1` (the worst corner of the default
+region; 31 s) exits 0 with enclosure **`[5.861826587058, 5.940277014469]`**, above the `5.763417470`
+target by `0.098409`. At ~31 s per box the full default `[110,111]×[35,36]` at `0.1°` is 100 boxes,
+~50 minutes, and is running as a background job; **the end-to-end default-region claim is not
+reproduced in this block** — only the corner box is, and it holds with room.
+
 ### K15-X-C073 — C's *extended* near-contact scan (two- and three-site displacements) still gives `t* = 0`, and its tiling identity is exact on all 500 rows
 
 C added families `F4` (two sites displaced in opposite directions — the multi-site case their own
@@ -1185,3 +1191,26 @@ So the multi-site families — the ones the single-site argument misses — beha
 single-site ones on these instances, and C's bookkeeping is exact. Scope unchanged: this is finite
 evidence, as the module docstring says, and `X-C068`'s reading of `t* = 0` (some cut attains `Σ_U b = 0`
 exactly, because `exhaustive_cut_scan` has no `max(0,·)`) applies here too.
+
+### K15-X-C074 — C116's `6/√5` is contradicted by Main's own corrected machinery: its script certifies to `d = 3.00`
+
+After the third `twist_cover.py` (`a34a3ff1`, `X-C071`), `near_contact_band.py` at main `4dc1cc9`
+imports the repaired `inner_arcs`. Run as shipped (`Reviews` copy under `.scratch`, exit 0):
+
+```
+       d   cover?   coverage
+    2.00     True     1.2566      ...     2.80     True     1.2566
+    3.00     True     1.2566
+largest tested d with a certified cover: 3.00
+```
+
+So Main's own script **certifies the two-dodecahedra clash out to `d = 3.00`**, the end of its table —
+well beyond `6/√5 = 2.6832816`, which `CLAIMS.md:3561` still states as `PROVED` and "sharp". The
+documents are inconsistent with each other: `CLAIMS.md:3340` already records `K15-X-C051` —
+"the two-dodecahedra threshold is `3.4555003444`; Main's `6/√5` was wrong (missing term, `C126`)" — as
+**adopted by Main**, while `C116` (`:3561`), `Computation/README.md:28` and `CONTINUATION_0308.md:407`
+still carry `6/√5`. The certified value is `X-C051`'s `3.4555003444`, reproduced by `X-C064`'s
+`certified_threshold.py`; `6/√5` is a lower bound, not the threshold, and "sharp" is wrong in both
+directions (it is neither the value nor the limit of the corrected certificate, which reaches `3.4555`).
+The consequence for `C114`/Theorem D is favourable: the near-contact band is `1.4555` wide, not
+`0.6833` — 2.13× wider than claimed.

@@ -368,6 +368,12 @@ Two limits, stated as such: `spanning_constant` evaluates the rational normals i
 flat `1e-9`, which covers the `~1e-16` conversion error but is a fudge rather than an interval
 computation; and the repaired path is `_v2` only — the old modules remain in the tree.
 
+**What I ran of it.** The worst corner of the default region, `[110°,110.1°]×[35°,35.1°]`, certifies
+in 31 s with enclosure **`[5.861826587058, 5.940277014469]`**, above the `5.763417470` target by
+`0.098409`. The full default region is 100 such boxes (~50 min at that rate); that run is in flight as
+a background job and **its end-to-end verdict is not part of this block** — I have only the corner box
+and the soundness audit above.
+
 ## 13. C's extended near-contact scan (two- and three-site displacements)
 
 `nearcontact_scan.py` moved `9b41169a → 9c37b1d4` (comp tip `926cdb7`) and gained `F4` (two sites
@@ -379,3 +385,17 @@ identity holds in every row** (`Σvol = a³` for `F1/F3/F4/F5`, `Σvol = a³·t_
 density equals `(4π/3)/mean(vols)` in 500/500 rows. So the multi-site families behave like the
 single-site ones on these instances and the bookkeeping is exact. Scope is unchanged — finite evidence,
 as the module's own docstring says.
+
+## 14. C116's `6/√5` is now contradicted by Main's own script
+
+With `twist_cover.py` repaired (`X-C071`), `near_contact_band.py` at main `4dc1cc9` — unmodified, run as
+shipped — prints `cover? True` at every tabulated `d` up to **`3.00`**, its table's last row, and
+"largest tested d with a certified cover: 3.00". `CLAIMS.md:3561` still states `C116` as `PROVED` at
+`6/√5 = 2.6832816` and "sharp", and `Computation/README.md:28`, `CONTINUATION_0308.md:407` carry the
+same number. `CLAIMS.md:3340` in the very same file already lists `K15-X-C051` — "the threshold is
+`3.4555003444`; Main's `6/√5` was wrong (missing term, `C126`)" — as **adopted by Main**.
+
+So the correct statement is the one in `X-C051`/`X-C064`: the certified band is `[2, 3.4555003444)`,
+2.13× wider than C116 claims, and `6/√5` is a lower bound only. This is a documentation/consistency
+defect, not a new mathematical one, and it resolves *in Main's favour*: Theorem D's near-contact
+widening `ε < 1.4555` rather than `ε < 0.6833`.
