@@ -245,71 +245,132 @@ if __name__ == "__main__":
 
 # ---------------------------------------------------------------- multiplicity
 def yun_odd_part(p):
-    """Return u, squarefree, with sign(p) == sign(u) away from roots.
+    """Squarefree odd-multiplicity part WITH its leading sign. Exact, fail-closed.
 
-    p = prod_i f_i^i (Yun's squarefree decomposition, f_i the part of multiplicity i).
-    Then sign(p) = prod_{i odd} sign(f_i), so u := prod_{i odd} f_i is squarefree and
-    carries the sign of p.  This is what lets us certify a certificate whose
-    polynomial TOUCHES zero (even multiplicity) instead of rejecting it outright;
-    the equality case forces such touching at a true optimum, so without this the
-    strict-sign test is needlessly lossy.
+    ALGORITHM (Yun's squarefree decomposition).  Let p in Q[t], p != 0, and let
+    c = lc(p), P = p/c (monic).  Then P = prod_i f_i^i with the f_i MONIC,
+    pairwise coprime and squarefree.  Define u := prod_{i odd} f_i.  Then u is monic
+    and squarefree, and for every real t that is not a root of p,
+
+        sign(p(t)) = sign(c) * prod_i sign(f_i(t))^i = sign(c) * sign(u(t)),
+
+    because the even-multiplicity factors contribute +1.  So the sign of p is carried
+    exactly by the pair (c, u); u alone does NOT carry it (that was the defect: p = -t-1
+    has u = t+1, which has the opposite sign).
+
+    INVARIANT: returns (c, u) with p == c * (square) * u as polynomials, u monic
+    squarefree, and the identity above for the sign.  For p constant it returns
+    (c, [1]) so that sign(p) == sign(c).
+
+    RETURNS (None, None) on p == 0; callers must treat that as a rejection.
     """
     p = trim(list(p))
-    if len(p) <= 1:
-        return p
-    d = pder(p)
-    a = pgcd(p, d)
-    b, r = pdivmod(p, a)
-    assert r == [0]
-    c, r = pdivmod(d, a)
-    assert r == [0]
-    dd = padd(c, pscale(pder(b), F(-1)))
-    out = [F(1)]
+    if p == [0]:
+        return None, None
+    c = p[-1]
+    P = pscale(p, 1 / c)                      # monic
+    if len(P) <= 1:                           # constant
+        return c, [F(1)]
+    d = pder(P)
+    a = pgcd(P, d)
+    b, r = pdivmod(P, a); assert r == [0], "yun: P/a not exact"
+    e, r = pdivmod(d, a); assert r == [0], "yun: P'/a not exact"
+    dd = padd(e, pscale(pder(b), F(-1)))
+    u = [F(1)]
     i = 1
     while len(b) > 1:
         f = pgcd(b, dd)
         if i % 2 == 1:
-            out = pmul(out, f)
-        bn, r = pdivmod(b, f); assert r == [0]; b = bn
-        cn, r = pdivmod(dd, f); assert r == [0]; c = cn
-        dd = padd(c, pscale(pder(b), F(-1)))
+            u = pmul(u, f)
+        bn, r = pdivmod(b, f); assert r == [0], "yun: b/f not exact"
+        b = bn
+        en, r = pdivmod(dd, f); assert r == [0], "yun: d/f not exact"
+        dd = padd(en, pscale(pder(b), F(-1)))
         i += 1
-    return trim(out)
+        if i > 10000:
+            raise RuntimeError("yun: no convergence")
+    return c, trim(u)
 
-def certify_relaxed(c, verbose=True):
-    """Same as certify(), but allows the polynomials to touch zero (even multiplicity).
-    Still exact: sign is decided by Sturm on the squarefree odd part."""
-    c = [F(x) for x in c]
-    p, q = build_pq(c)
-    A1 = 8 * PI_LO
-    rec = {"degree": len(c) - 1, "c": [str(x) for x in c],
-           "p": [str(x) for x in p], "q": [str(x) for x in q],
-           "endpoint_A1": str(A1), "mode": "relaxed (even multiplicity allowed)", "ok": False}
-    if p == [0] or q == [0]:
-        rec["reason"] = "identically zero"; return rec
-    up = yun_odd_part(p)
-    uq = yun_odd_part(q)
-    for name, u, A, want in (("A1", up, A1, -1), ("A2", uq, F(0), +1)):
-        if u == [0] or len(u) == 1:
-            rec["reason"] = "%s: odd part constant" % name; return rec
+
+def _half_line_sign(c, u, A):
+    """Decide sign of p = c*(square)*u on [A, inf) exactly.
+
+    Returns (verdict, reason) with verdict in {'pos','neg','fail'}.
+    FAIL-CLOSED: an endpoint root, a non-squarefree u, or a root on the half-line
+    all return 'fail' rather than being guessed.
+    """
+    if u is None:
+        return "fail", "identically zero polynomial"
+    if roots_in_half_line(u, A) if peval(u, A) != 0 else 1:
+        # count roots only when A is not itself a root; otherwise fail closed below
+        if peval(u, A) == 0:
+            return "fail", "odd-part vanishes at the endpoint %s" % A
         n = roots_in_half_line(u, A)
         if n != 0:
-            rec["reason"] = "%s: %d simple root(s) of the odd part on the half-line" % (name, n)
-            if verbose: print("  FAIL", name, ":", n, "root(s)"); return rec
-        v = peval(u, A)
-        if v == 0:
-            rec["reason"] = "%s: odd part vanishes at the endpoint" % name; return rec
-        if (v > 0) != (want > 0):
-            rec["reason"] = "%s: wrong sign at the endpoint" % name
-            if verbose: print("  FAIL", name, ": wrong sign at endpoint"); return rec
-    p0, q0 = peval(p, F(0)), peval(q, F(0))
-    if q0 <= 0:
-        rec["reason"] = "q(0) <= 0"; return rec
-    s_hi = F(4242640687119285147, 10 ** 18)          # > sqrt(18)
-    rec.update({"p0": str(p0), "q0": str(q0), "ratio_f0_fhat0": str(p0 / q0),
-                "beats_kepler": bool(4 * p0 * s_hi <= 3 * q0) if p0 > 0 else False, "ok": True})
+            return "fail", "%d root(s) of the odd part on [%s, inf)" % (n, A)
+    if peval(u, A) == 0:
+        return "fail", "odd-part vanishes at the endpoint %s" % A
+    sgn = (1 if c > 0 else -1) * (1 if peval(u, A) > 0 else -1)
+    return ("pos" if sgn > 0 else "neg"), "ok"
+
+
+def certify(c, allow_touching=True, verbose=False):
+    """Exact verdict on a candidate.  ONE decision, ONE return path.
+
+    Verbosity affects printing only: `ok` and `reason` are computed before any
+    printing, so a quiet call and a loud call can never disagree.  This is enforced
+    structurally (no `print` precedes a `return`), and tested in exactcert_tests.py.
+
+    allow_touching=True  permits even-multiplicity zeros (needed: an optimum forces
+                         double zeros) and still rejects odd-multiplicity crossings.
+    allow_touching=False demands strict sign and rejects every root on the half-line.
+    """
+    c = [F(x) for x in c]
+    K = len(c) - 1
+    A1 = 8 * PI_LO                      # < 8*pi, the safe direction
+    p, q = build_pq(c)
+    rec = {"degree": K, "c": [str(x) for x in c], "endpoint_A1": str(A1),
+           "mode": "relaxed" if allow_touching else "strict", "ok": False, "reason": None}
+    reason = None
+    if p == [0] or q == [0]:
+        reason = "p or q identically zero"
+    else:
+        cp, up = (yun_odd_part(p) if allow_touching else (p[-1], pscale(p, 1 / p[-1])))
+        cq, uq = (yun_odd_part(q) if allow_touching else (q[-1], pscale(q, 1 / q[-1])))
+        v1, r1 = _half_line_sign(cp, up, A1)
+        v2, r2 = _half_line_sign(cq, uq, F(0))
+        if v1 != "neg":
+            reason = ("A1 needs p<0 on [8pi,inf); got %s (%s)"
+                      % ({"pos": "p>0 there", "fail": "undecided"}.get(v1, v1), r1))
+        elif v2 != "pos":
+            reason = ("A2 needs q>0 on [0,inf); got %s (%s)"
+                      % ({"neg": "q<0 there", "fail": "undecided"}.get(v2, v2), r2))
+        else:
+            p0, q0 = peval(p, F(0)), peval(q, F(0))
+            if q0 <= 0:
+                reason = "q(0) = %s <= 0" % q0
+            elif p0 >= 0:
+                reason = "p(0) = %s >= 0 (bound would be non-positive)" % p0
+            else:
+                rec["p0"], rec["q0"] = str(p0), str(q0)
+                rec["ratio_f0_fhat0"] = str(p0 / q0)
+                # VALID UPPER BOUND on Delta, rounded UP:  Delta = (4pi/3)(p0/q0) < (4*PI_HI/3)(p0/q0)
+                rec["delta_upper_exact"] = str(4 * PI_HI * p0 / (3 * q0))
+                rec["ok"] = True
+    rec["reason"] = reason
     if verbose:
-        print("  PASS A1/A2 via squarefree odd parts (roots counted exactly)")
-        print("  f(0)/fhat(0) = %.12f   certified Delta <= %.12f"
-              % (float(p0 / q0), float(p0 / q0) * 4 * 3.141592653589793 / 3))
+        if rec["ok"]:
+            print("  PASS A1/A2 (mode=%s); p0/q0 = %s" % (rec["mode"], rec["ratio_f0_fhat0"]))
+            print("  Delta upper bound (exact, rounded up) = %s" % rec["delta_upper_exact"])
+        else:
+            print("  REJECT: %s" % reason)
     return rec
+
+
+def delta_upper_decimal(rec, digits=8):
+    """Render the certified upper bound rounded UP to `digits` decimals (never down)."""
+    from fractions import Fraction as Fr
+    x = Fr(rec["delta_upper_exact"])
+    scale = 10 ** digits
+    n = -((-x.numerator * scale) // x.denominator)      # ceiling division
+    return ("%d.%0*d" % (n // scale, digits, n % scale)) if n >= 0 else None

@@ -1,5 +1,27 @@
 # Exact certificate checker and candidate generator
 
+> ## WITHDRAWN — review 48443
+>
+> **The certified bounds previously claimed in this file are REFUTED and withdrawn.**
+> Review 48443 reconstructed the `K = 21` certificate independently with exact SymPy
+> Laguerre polynomials, matched the stored `p` and `q`, and found **ten simple positive
+> roots of `q`**, with `q(57955199/21687900) ≈ -3.8762318927e-05 < 0`. The witness is
+> reproduced exactly by `exactcert_tests.py` T5.
+>
+> Root cause, now fixed: in `certify_relaxed` the line
+> `if verbose: print(...); return rec` puts **both** statements inside the `if`, so a
+> failing candidate returned normally when `verbose=False` and fell through to the success
+> path. Additionally `yun_odd_part` returned a monic odd part and **discarded the leading
+> sign**, so `-t-1` and `t+1` were treated alike.
+>
+> Consequences recorded here rather than removed:
+> * every JSON in `out/certificate_K*.json` is a **failed candidate**, retained as evidence;
+> * re-running them through the repaired checker **rejects all seven** (A1 or A2);
+> * no bound in this directory is currently proved. `K15-C-EXACTCERT-001` is `REFUTED`.
+>
+> The design discussion below (§2 coefficient field, Fourier map, endpoints; §3 multiplicity)
+> is retained because it is still the right design; the *numbers* were not valid.
+
 Owner: Computation. Branch `kepler15/comp-01a1d8c0`. Files: `exactcert.py` (checker),
 `gen_candidate.py` (generator). Both are runnable; execution is offloaded to Astra
 (`REQUESTS/K15-C-REQ-002.md`).
@@ -10,16 +32,15 @@ For every packing of unit spheres in `R^3` (centre separation at least 2), the
 occupied-volume upper density satisfies
 
 \[
-\Delta \le 0.78010544 .
+\Delta \le 0.78010544 \qquad\text{(WITHDRAWN — not proved)}
 \]
 
 This is **+5.351% above the Kepler value** `pi/sqrt(18) = 0.74048049`, so it is a loose
 bound, not a competitive one. It is, however, obtained without any discretisation
 assumption: the two sign conditions are decided in exact rational arithmetic.
 
-**Status: `PROVED`, conditional only on the Cohn–Elkies theorem, which is cited, not
-re-proved.** The certificate itself is an explicit rational polynomial pair; everything
-else is exact.
+**Status: `REFUTED` (review 48443).** No valid certificate in this family has yet been
+exhibited. The repaired checker rejects every stored candidate.
 
 ## 2. Coefficient field, scale, Fourier map, endpoints
 
@@ -67,7 +88,11 @@ Effect, measured at `K = 9`: strict-sign certification gives `Delta <= 2.50596`;
 squarefree route gives `0.82276`. The strict test is not merely conservative, it is
 useless in practice.
 
-## 4. Certified results
+## 4. Results — WITHDRAWN (see banner)
+
+The table below records what the **buggy** checker reported. None of it is valid; all seven
+candidates are rejected by the repaired checker. It is retained only to document the
+failure:
 
 `gen_candidate.py`, grid of 300–320 points on each region, `Tmax = 70–80`, coefficients
 rounded to denominator `10^6`, then verified exactly.
