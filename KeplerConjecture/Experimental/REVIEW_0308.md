@@ -503,7 +503,12 @@ exactly what `(H_R)` encodes. Nothing in this block proves it or refutes it.
 
 ## 11. Status at the 20-minute checkpoint
 
-Checkpoint `11:36:52Z`. Substantive work completed in this block so far:
+Checkpoint taken at **`11:31:05Z`** (nominal `11:36:52Z`; run early because the work was
+complete, not padded to the nominal time). Scripts verified at the checkpoint:
+`verify_all_claims`, `icosa_cut_check`, `block_evaluator`, `transfer_evaluator` — all pass, tree
+clean.
+
+Substantive work completed in this block so far:
 
 | item | state |
 | --- | --- |
@@ -514,7 +519,9 @@ Checkpoint `11:36:52Z`. Substantive work completed in this block so far:
 | `STATUS_FOR_MAIN` | reconciled: 44 % removed, `E045` split, `E048`/`E049` restricted (§5) |
 | Main's `0.0104949` floor | not adopted (§5) |
 | fixture + script | `ICOSA_CUT_PACKAGE.md`, `icosa_cut_check.py` written and run (§4b) |
-| obstruction | two families excluded (§8); stability gap `0.1154435` identified as the missing input (§10) |
+| obstruction | **four** families excluded (§8, §9.1, §10c), best `66.916356` against `67.988814` required; stability gap `0.1154435` identified as the missing input (§10) |
+| radius parameter | `(H_R)` is monotone in `R` on components but degenerates to the theorem as `R` grows (§10b) |
+| fixture data | rational coordinates with a `4.28e-15` separation budget for a flow solver (§1b) |
 | timing record | corrected; waiting does not establish compliance (`TIMING_CORRECTION.md`) |
 
 No early return; work continues.
