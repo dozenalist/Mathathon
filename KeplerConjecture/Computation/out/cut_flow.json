@@ -1,21 +1,6 @@
 {
  "script": "KeplerConjecture/Computation/cut_flow.py",
- "external": [
-  {
-   "fixture": "cli_fixture",
-   "provisional": false,
-   "note": "built from rational geometry: period volume 64, cell volumes ['16', '24', '24'], min separation 2.0",
-   "rows": [
-    {
-     "kind": "flow",
-     "Phi": "1/1000",
-     "cap_ok": true,
-     "divergence_ok": true,
-     "status": "PATCH_FEASIBLE"
-    }
-   ]
-  }
- ],
+ "external": [],
  "convention": "K15-C044: b(v)=sqrt32-vol Omega(v); G_R edges <= R, capacity Phi; transfer exists iff sum_U b <= Phi|delta^+(U)| for every finite U",
  "arithmetic": "rational enclosures b_lo <= b <= b_hi; b_lo used to refute, b_hi used for feasibility",
  "rows": [

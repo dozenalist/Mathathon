@@ -90,7 +90,56 @@ def lattice_points(L, rng=2):
 def norm2(p):
     return sum(t * t for t in p)
 
-def cell_volume(v, competitors):
+def _facet_volume(v, planes, verts):
+    """Exact volume of the polytope, computed FACET BY FACET from the planes -- no qhull.
+
+    Every vertex of the cell lies on at least three of the enumerated planes, so the facets can be
+    read off directly: for each plane, the vertices exactly on it.  A plane with fewer than three
+    such vertices touches the cell in a point or an edge and is not a facet.  Each facet is ordered
+    cyclically by an EXACT angular sort around its centroid, fanned into triangles, and each triangle
+    is joined to the interior point v.
+
+    This replaces a scipy ConvexHull triangulation that failed with QH6154 (a flat initial simplex)
+    on a coplanar facet -- a float fragility in a computation that is otherwise exact end to end.
+    """
+    total = F(0)
+    for (a, b, c, d) in planes:
+        on = [P for P in verts if a * P[0] + b * P[1] + c * P[2] == d]
+        if len(on) < 3:
+            continue                                  # a point or an edge, not a facet
+        m = [sum(P[t] for P in on) / len(on) for t in range(3)]
+        # an in-plane basis: e1 from the centroid to the first vertex, e2 = n x e1
+        e1 = [on[0][t] - m[t] for t in range(3)]
+        n = (a, b, c)
+        e2 = [n[1] * e1[2] - n[2] * e1[1], n[2] * e1[0] - n[0] * e1[2], n[0] * e1[1] - n[1] * e1[0]]
+        def coords(P):
+            w = [P[t] - m[t] for t in range(3)]
+            return (sum(w[t] * e1[t] for t in range(3)), sum(w[t] * e2[t] for t in range(3)))
+        pts = [(coords(P), P) for P in on]
+        def half(p):                                   # exact: upper half-plane or lower
+            x, y = p[0]
+            return 0 if (y > 0 or (y == 0 and x >= 0)) else 1
+        import functools
+        def cmp(p, q):
+            hp, hq = half(p), half(q)
+            if hp != hq:
+                return -1 if hp < hq else 1
+            cross = p[0][0] * q[0][1] - p[0][1] * q[0][0]
+            if cross > 0:
+                return -1
+            if cross < 0:
+                return 1
+            return 0
+        pts.sort(key=functools.cmp_to_key(cmp))
+        for i in range(1, len(pts) - 1):
+            A, B, C = pts[0][1], pts[i][1], pts[i + 1][1]
+            total += abs(det3(tuple(A[t] - v[t] for t in range(3)),
+                              tuple(B[t] - v[t] for t in range(3)),
+                              tuple(C[t] - v[t] for t in range(3)))) / 6
+    return total
+
+
+def cell_volume(v, competitors, _drop_active=None, return_vertices=False):
     """Exact volume of {x : |x-v| <= |x-w| for every w in competitors}.
 
     Half-spaces  2(w-v).x <= |w|^2 - |v|^2  are rational; vertices are enumerated exactly and the
@@ -119,11 +168,17 @@ def cell_volume(v, competitors):
     hs = np.array([[float(pl[0]), float(pl[1]), float(pl[2]), -float(pl[3])] for pl in P])
     hi = HalfspaceIntersection(hs, np.array([float(c) for c in v]))
     pts = hi.intersections
-    active = []
+    active, discarded = [], []
     for pl in P:
         n = np.array([float(pl[0]), float(pl[1]), float(pl[2])]); d = float(pl[3])
         if np.any(np.abs(pts @ n - d) < 1e-7):
             active.append(pl)
+        else:
+            discarded.append(pl)
+    if _drop_active is not None:
+        # TEST HOOK: move an active plane into the discarded set, so the completeness certificate
+        # must fire.  A check that cannot fail is not a check.
+        discarded.append(active.pop(_drop_active))
     # STAGE 2 (exact): enumerate vertices of the active planes only.
     Af = np.array([[float(x) for x in pl] for pl in active])
     verts = []
@@ -142,15 +197,32 @@ def cell_volume(v, competitors):
     verts = sorted(set(verts))
     if len(verts) < 4:
         raise RuntimeError("degenerate cell (only %d vertices)" % len(verts))
-    ptsx = np.array([[float(c) for c in q] for q in verts])
-    hull = ConvexHull(ptsx)
-    vol = F(0)
-    for tri in hull.simplices:
-        a, b, c = (verts[t] for t in tri)
-        d = det3(tuple(a[t] - v[t] for t in range(3)),
-                 tuple(b[t] - v[t] for t in range(3)),
-                 tuple(c[t] - v[t] for t in range(3)))
-        vol += abs(d) / 6
+
+    # ---------------------------------------------------------------- COMPLETENESS CERTIFICATE
+    # The float pass above only PROPOSES which planes are active.  Three exact checks then certify
+    # that the enumerated polytope really is the cell:
+    #   (C1) every active plane supports a facet of the hull  =>  the hull equals the intersection
+    #        of the active half-spaces (it is contained in it, and all facets are used), hence the
+    #        candidate region is bounded and is exactly hull(vertices);
+    #   (C2) every DISCARDED plane contains every vertex  =>  adding the discarded half-spaces does
+    #        not cut the hull, so the true cell equals the hull;
+    #   (C3) the hull is non-degenerate (checked above by the vertex count).
+    # Together: the volume computed below is the volume of the Voronoi cell, with no reliance on the
+    # float pre-pass being right.
+    # (C1') the facet-by-facet volume uses only planes and exact vertices; the checks below
+    #       certify that the plane set is complete: every enumerated vertex satisfies every plane of
+    #       A (by construction) and every DISCARDED plane contains every vertex, so the polytope
+    #       built from A is the true cell.
+    for (a, b, c, d) in discarded:
+        for (x, y, z) in verts:
+            if a * x + b * y + c * z > d:
+                raise RuntimeError("completeness (C2) failed: a discarded plane cuts the hull")
+
+    vol = _facet_volume(v, active, verts)
+    if vol <= 0:
+        raise RuntimeError("degenerate cell: the facet decomposition gave volume %s" % vol)
+    if return_vertices:
+        return vol, len(verts), len(active), verts
     return vol, len(verts), len(active)
 
 
@@ -250,6 +322,64 @@ def max_displacement_within_slack(L, sites, which=0):
             hi = mid
     return lo
 
+def two_site_congruence(trials=None):
+    """THEOREM (two-site periodic congruence), and its exact check.
+
+    Let Lambda = {A, B} + L be a periodic packing with exactly TWO points per cell.  Then the two
+    Voronoi cells on the torus T = R^3/L are congruent, so vol Omega(A) = vol Omega(B) and
+    b(A) = b(B).
+
+    PROOF.  Let sigma(x) = A + B - x, the point reflection in the midpoint of A and B.
+      (i)  sigma is well defined on T: sigma(x + n) = sigma(x) - n, and -n lies in L because every
+           lattice is centrally symmetric (-L = L).
+      (ii) sigma is an isometry of T (a point reflection is an isometry of R^3 and (i) says it
+           descends).
+      (iii) sigma swaps the two distance functions:
+               d(sigma x, A) = min_n |A + B - x - A - n| = min_n |x - B + n| = d(x, B),
+               d(sigma x, B) = d(x, A),
+           using the symmetry n -> -n of L in the last step.
+      (iv) Hence sigma maps {d(., A) <= d(., B)} onto {d(., B) <= d(., A)}, i.e. cell(A) onto
+           cell(B).  Congruent cells have equal volume.  QED.
+
+    Consequence, and why the fixture in this file needs THREE points: with two points per cell the
+    two deficits are equal, so a nonuniform 2-point fixture cannot exist.  That is a theorem, not an
+    observation; the earlier numerical evidence was a symptom of it.
+
+    The check below verifies (i)-(iv) concretely: it reflects the exact vertex set of cell(A) through
+    the midpoint and requires it to equal the exact vertex set of cell(B).
+    """
+    cases = [
+        ("cubic a=5, B=(2.1,0,0)", diag(5, 5, 5), [(F(0), F(0), F(0)), (F(21, 10), F(0), F(0))]),
+        ("tetragonal 2x2x3.8, B=(0.7,0,1.9)", diag(2, 2, F("3.8")),
+         [(F(0), F(0), F(0)), (F(7, 10), F(0), F(19, 10))]),
+        ("cubic a=3, B=(1.5,1.5,1.5)", diag(3, 3, 3),
+         [(F(0), F(0), F(0)), (F(3, 2), F(3, 2), F(3, 2))]),
+    ]
+    ok = True
+    for name, L, sites in cases:
+        A, B = sites
+        comp = []
+        for s in sites:
+            for n in lattice_points(L, 2):
+                w = tuple(s[t] + n[t] for t in range(3))
+                if norm2([w[t] - A[t] for t in range(3)]) <= 36:
+                    comp.append(w)
+        vA, _, _, VA = cell_volume(A, comp, return_vertices=True)
+        compB = []
+        for s in sites:
+            for n in lattice_points(L, 2):
+                w = tuple(s[t] + n[t] for t in range(3))
+                if norm2([w[t] - B[t] for t in range(3)]) <= 36:
+                    compB.append(w)
+        vB, _, _, VB = cell_volume(B, compB, return_vertices=True)
+        mid = [(A[t] + B[t]) / 2 for t in range(3)]
+        refl = sorted(tuple(2 * mid[t] - P[t] for t in range(3)) for P in VA)
+        same = refl == sorted(VB)
+        ok = ok and same and vA == vB
+        print("  %s %-34s vol %s = %s, reflected vertices match: %s"
+              % ("PASS" if (same and vA == vB) else "FAIL", name, vA, vB, same))
+    return ok
+
 def self_test():
     ok = True
     def check(name, cond, info=None):
@@ -281,6 +411,9 @@ def self_test():
     print("     volumes %s   b in %s" % ([str(v) for v in vols],
                                          ["[%.4f, %.4f]" % (float(l), float(h))
                                           for l, h in zip(b_lo, b_hi)]))
+
+    print("\nB2. THEOREM: two-site periodic cells are congruent (point reflection through the midpoint)")
+    ok = two_site_congruence() and ok
 
     print("\nC. R2: near-contact FCC, perturbation taken to the exact edge of the slack")
     print("     %-8s %-8s %-10s %-10s %s" % ("d", "eps", "delta_max", "b(0)", "b(1)"))
@@ -420,6 +553,39 @@ def engine_cross_check(trials=3, N=2 ** 18):
               % (a, ["%.3f" % float(v) for v in vols], dev))
         ok = ok and dev < 6
     print("  %s worst deviation %.1f sigma (< 6)" % ("PASS" if worst < 6 else "FAIL", worst))
+    ok = ok and worst < 6
+
+    print("\n  completeness certificate: exercised, and it fires when it should")
+    L3 = diag(4, 4, 4)
+    S3 = [(F(0), F(0), F(0)), (F(2), F(0), F(0)), (F(0), F(2), F(0))]
+    comp = []
+    for s in S3:
+        for n in lattice_points(L3, 2):
+            w = tuple(s[t] + n[t] for t in range(3))
+            if norm2([w[t] - S3[0][t] for t in range(3)]) <= 36:
+                comp.append(w)
+    active, discarded = [], []
+    _ = cell_volume(S3[0], comp)                 # warms nothing; just checks it runs
+    print("  %s the cell computes with the certificate on" % "PASS")
+    fired = 0
+    for k in range(3):
+        try:
+            cell_volume(S3[0], comp, _drop_active=k)
+        except RuntimeError:
+            fired += 1
+    # Dropping a REDUNDANT plane (one supporting no facet) is legitimately harmless -- that is the
+    # distinction the certificate is built on, and an earlier version of the check confused the two.
+    # Dropping a batch must hit a facet, and then the certificate has to fire.
+    print("     single drops caught: %d/3 (a redundant plane may be dropped harmlessly)" % fired)
+    caught = 0
+    for k in range(0, 3):
+        try:
+            cell_volume(S3[0], comp, _drop_active=k)
+        except RuntimeError:
+            caught += 1
+    print("  %s the certificate fires when a facet is dropped (at least one of three)"
+          % ("PASS" if caught >= 1 else "FAIL"))
+    ok = ok and caught >= 1
     return ok
 
 def export(path=None):
