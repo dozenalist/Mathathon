@@ -2431,3 +2431,28 @@ denominator, `Σ_U b` controlled only by `√32|U|`) and large cuts (density con
 `Σ_U b`, but the boundary grows like `|U|^{2/3}`). Three steps are specified:
 compute `t*` on four non-trivial periodic packings; prove the ball-cut case; then show
 the maximum is attained on ball-like cuts.
+
+### K15-C090 — a fit position on the icosahedral cluster at radius 3.4026 (`PROVED`, exact geometry)
+
+For the 13-cluster, over each of the 30 edges of the outer icosahedron there are two
+positions at distance exactly `2` from the two edge endpoints; the **outward** one lies
+at radius
+
+```
+r_fit = √(4 − (2.1029244485/2)²) + √(4 − (2.1029244485/2)²) = 2·1.7013016167… = 3.4026032334…
+```
+
+from the centre, and its distance to every cluster point is `≥ 2` (minimum exactly `2`,
+attained at the two edge endpoints). So it is a legal **fit position**: a sphere may be
+placed there without overlap.
+
+**What it does and does not show.** It shows the cluster is not "closed by geometry":
+there is room outside it. It does **not** settle the closed-component question
+(`K15-C080`, `E-COMPONENT-001`): saturation guarantees a centre within distance `2` of
+that fit position, but such a centre may be as far as `4` from the cluster, hence not
+within `2.09`. Since a transfer edge needs distance `≤ 2.09`, the fit position does not
+by itself produce an out-edge. The closed-component case therefore remains open, as
+recorded in `K15-C089`'s step 0.
+
+*Status.* `PROVED` (exact icosahedral geometry; computed and checked numerically to
+`1e−9`). Reviewer X.
