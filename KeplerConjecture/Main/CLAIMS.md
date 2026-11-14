@@ -618,3 +618,474 @@ assignment text and must be re-anchored to their artifacts when those land.
 Kept as narrow positive results, with their hypotheses: **K15-C002b** (additive
 periodic estimate) and **K15-C003r** (fixed-coset counting). Neither is affected
 by any finding above.
+
+---
+
+## Continuous block, November 14 — shell count reduced, exact checker written
+
+### K15-C019 — the shell count is a single Tammes-13 number (PROVED reduction)
+
+- **Lemma.** Let `y_1, …, y_13 ∈ R³` with `2 ≤ |y_i| ≤ ρ` and `|y_i − y_j| ≥ 2`
+  for `i ≠ j`. Then the directions `u_i = y_i/|y_i|` satisfy
+  `⟨u_i, u_j⟩ ≤ 1 − 2/ρ²`, i.e. every pair subtends an angle
+  `≥ arccos(1 − 2/ρ²)`.
+- **Proof.** With `r_i = |y_i| ∈ [2, ρ]`,
+  `4 ≤ |y_i − y_j|² = r_i² + r_j² − 2r_ir_j⟨u_i,u_j⟩`, so
+  `⟨u_i,u_j⟩ ≤ f(r_i,r_j) := (r_i² + r_j² − 4)/(2r_ir_j)`.
+  For `2 ≤ a, b ≤ ρ` with `ρ ≤ √6` (our `ρ ≈ 2.09`), `f` is increasing in each
+  argument: `∂_a f = (a² − b² + 4)/(2a²b)`-signed quantity is positive because
+  `a² + 4 ≥ 8 > ρ² ≥ b²`. Hence `f(r_i,r_j) ≤ f(ρ,ρ) = 1 − 2/ρ²`. ∎
+  *(The mixed case is subdominant: `f(2,ρ) = ρ/4 < 1 − 2/ρ²` exactly when
+  `ρ² − 4ρ + 8 > 0`, true for all `ρ`.)*
+- **Corollary.** If the maximal number of points on `S²` with mutual angular
+  distance `≥ θ` is at most 12 — equivalently, if the Tammes value `θ₁₃` for 13
+  points satisfies `θ₁₃ < arccos(1 − 2/ρ²)` — then every 2-separated set has at
+  most 12 points in the annulus `[2, ρ]`, i.e. `n(ρ) = 12` in K15-C018.
+  The value 12 is **attained** by the icosahedral twelve (mutual distances
+  `2.1029… > 2`), so the maximum equals 12, not merely at most 12.
+- **Numerical content (checked).**
+
+  | `ρ` | `1 − 2/ρ²` | required `θ_min` | margin over `θ₁₃ = 57.1367°` | `πρ²` |
+  | --- | --- | --- | --- | --- |
+  | 2.02 | 0.509852 | 59.346° | **+2.209°** | 12.819 |
+  | 2.05 | 0.524093 | 58.393° | **+1.256°** | 13.202 |
+  | 2.09 | 0.542135 | 57.171° | **+0.034°** | 13.723 |
+
+  So `ρ = 209/100` is admissible **only** with a Tammes-13 enclosure accurate to
+  better than 0.03°; `ρ = 2.05` leaves 1.26° and is the recommended first target.
+  This matches E's diagnostic (`cos θ_min = 23681/43681` exactly for `ρ = 2.09`).
+- **Status.** `PROVED` (the lemma and corollary; Main). **Reviewer** X.
+  The Tammes value itself is *cited*, not proved here: a rigorous enclosure of
+  `θ₁₃` (Schütte–van der Waerden; Musin–Tarasov for computer-assisted
+  certification) is the outstanding input, and it must be enclosed, not rounded.
+
+### K15-C020 — path from E's count to C's evaluated benchmark (specification)
+
+1. **E** produces `θ₁₃ < arccos(1 − 2/ρ²)` as a *directed enclosure* for a chosen
+   `ρ` (recommended `ρ = 2.05`), or cites a published rigorous value with its
+   precise scope. Output: an inequality between exact rationals.
+2. **M** applies K15-C019 to get `n(ρ) ≤ 12`, with attainability, and fixes the
+   rational thresholds `T_LO ≤ 4π` and `T_HI ≤ πρ²` (directed `π` bounds).
+3. **C** runs the optimisation: find rational `a` minimising
+   `(p(0) + 12η)/q(0)` subject to `q = M a ≥ 0` on `u ≥ 0`, `p ≤ η` on
+   `[T_LO, T_HI]`, `p ≤ 0` on `u ≥ T_HI`, `q(0) > 0`.
+4. **Anyone** verifies the candidate with `Computation/shell_check.py`
+   (`--self-test` passes; a bad profile is rejected with its failing condition).
+   Only a `PASS` on every line yields a bound, and the printed value is an exact
+   rational times a directed `π` enclosure.
+5. **Honest calibration.** With `η = 0` this is ordinary CE and Li blocks it; the
+   realised gain from DLOV14-type relaxations is `0.779747 → 0.773080`, i.e.
+   `0.0067` in `δ`. Beating `0.754697` would need `0.025`. So the benchmark's
+   realistic target is the **first certified number in this project** and, at
+   best, `0.770271`; it is not a route past the dodecahedral barrier, and saying
+   otherwise would be a domain error.
+
+### K15-C021 — checker bugs to record (from X and the local checks)
+
+- `kepler_ok` truncated positive rationals to integers before comparison:
+  `P(0) = 99/100`, `Q(0) = 1` gives exact left side `32P(0)² = 19602/625 > π³`
+  yet the helper returned **true**. Exact rationals and a directed `π` comparison
+  are required; the truncation is a bug, not a certificate (agrees with the local
+  check `gaussian_comparison_regression.log`).
+- X's pair-average and existential-partition arguments remain **wrong** as
+  stated and are not imported. E's Tammes script is floating-point arithmetic
+  (`mpmath`), not a directed enclosure: its exact endpoint `23681/43681` is
+  reusable, its angle comparison is illustrative only.
+- C's regressions pass (exit 0) but produce **no new certificate**; `shell_bench.py`
+  is still unwritten, so `C-SHELL-001` remains blocked.
+
+### K15-C022 — the shell benchmark's unconditional form, and why a grid LP cannot propose it
+
+- **Unconditional count.** With no Tammes input, K15-C013(a) gives
+  `n(ρ) ≤ ⌊(ρ+1)³⌋ − 1`, e.g. `n ≤ 27` at `ρ = 2.05` and `n ≤ 28` at `ρ = 2.09`.
+  So K15-C018 holds **unconditionally** with those counts:
+  `δ ≤ (4π/3)(f(0) + 27η)/f̂(0)`. `shell_check.check(..., count=27)` evaluates it.
+  The Tammes route (K15-C019) only improves `27 → 12`; it is not needed for the
+  theorem to be true, only for it to be sharp enough to matter.
+- **Negative result: a dense-grid LP cannot propose a candidate.** Main attempted
+  the obvious proposer (minimise `p(0)` subject to grid samples of the three sign
+  conditions, degree 6, 900 points, `u` up to 80). Three failure modes, all
+  structural:
+  1. without the (true) constraint `p(0) ≥ 0`, which follows from
+     `f(0) = ∫f̂ ≥ 0`, the LP is degenerate and returns a box vertex
+     (`a = (−1000, 1000, −1000, …)`);
+  2. **with** `p(0) ≥ 0` the optimum is exactly `0` — the grid conditions are
+     vacuous, so the objective can be driven to the constraint boundary;
+  3. at `u` up to `8000` HiGHS returns NaN unless every constraint row is scaled,
+     and the scaled solution rounds to a profile with `q(0) ≈ −2.5·10⁶`.
+  **Conclusion for C:** propose candidates by exact Sturm bisection over a
+  low-dimensional family, or by an SDP with SOS multipliers in `u`
+  (Markov–Lukács makes the half-line conditions exact), never by dense grids over
+  monomial coefficients. This is the same lesson as K15-C014r, in a second guise;
+  it is recorded so that no worker spends a local run on it.
+- **Status.** `TESTED_FINITE` (the failure modes were observed) / `PROVED` for the
+  unconditional count. Reviewer X. Script not retained: it produced no candidate
+  and would only invite reuse.
+
+---
+
+## Block K15-HOUR-20261114-M (start 2026-11-14T09:14:25Z)
+
+### K15-C023 — independent cross-verification of Computation's K33 certificate (`VERIFIED_CROSS`)
+
+- **Object.** `KeplerConjecture/Computation/out/verified_certificate_K33b.json`
+  from branch `kepler15/comp-01a1d8c0` (`sha256 525d1d55…`), degree 33, convention
+  `t = 2π|x|²`, claimed `Δ ≤ 0.77996622`.
+- **Two independent verifications, both run by Main on this VM.**
+  1. Computation's own two implementations (`exactcert.certify`, and the SymPy
+     oracle): `ACCEPT`, `p0/q0 = 42935541634304122537361009/230584315533749727927712550`,
+     `Δ_upper = 0.779966216777`.
+  2. Main's independent checker (`Computation/verify_comp_cert.py` +
+     `shell_check.py`, written in the *different* variable `u = π|x|²` with its
+     own Sturm chain): the coefficients are converted by `P(u) = Σ c_k L_k(2u)`,
+     and both sign conditions pass (`q ≥ 0` on `u ≥ 0`; `p ≤ 0` on
+     `u ≥ 4π_lo`), giving the **same** rational ratio and
+     `Δ ∈ (0.779966216777, 0.779966216777)`.
+- **What it establishes.** The inequality `Δ(Λ) ≤ 0.77996622` for every packing of
+  unit balls, conditional only on the two checkers being correct — and they are
+  independent code, in different variables, agreeing on the object and the value.
+  Achieved by exact rational arithmetic with the *exact* rational thresholds
+  `T_LO = 4π_lo`, `T_HI = π_lo ρ²` (no integer rounding, so no conservatism).
+- **What it does not establish.** It is **not** an improvement: `0.77996622 >
+  0.779747` (Cohn–Elkies 2003). It says nothing about sharpness. It is a
+  reusable, checked component — the first object in this project confirmed by two
+  independent exact implementations.
+- **Reproduce.**
+  `python3 KeplerConjecture/Computation/verify_comp_cert.py <cert.json>` (≈4 s,
+  1 core, sympy only). Hashes: cert `525d1d55…`, `shell_check.py ca976ce4…`,
+  `verify_comp_cert.py 6a179b34…`.
+- **Status.** `VERIFIED_CROSS` (new status: a bound confirmed by ≥2 independent
+  exact implementations). Reviewer X: to confirm that the two implementations are
+  genuinely independent (they share no code and use different bases; Main wrote one).
+
+### K15-C024 — the density normalisation, proved (`PROVED`)
+
+Every bound in this project is a statement about
+`Δ(Λ) = limsup_R vol(B(0,R) ∩ ⋃_{λ∈Λ} B(λ,1))/vol B(0,R)`. The chain of
+identities used everywhere, now written out:
+
+1. **Ball volume.** `vol B(0,1) = 4π/3` in `R³`.
+2. **Occupied volume of a saturated packing.** For a saturated packing the balls
+   cover a neighbourhood; for a general packing, `Δ` as defined is the occupied
+   fraction and is `≤ 1`.
+3. **Counting-to-volume.** If `Λ` is 2-separated, then
+   `#(Λ ∩ B(0,R))·vol(B_1) ≤ vol(⋃_{λ∈Λ∩B(0,R)} B(λ,1)) ≤ vol B(0,R)`, hence
+   every finite packing has `#·(4π/3) ≤ vol B(0,R) + O(R²)`. For an infinite
+   packing with a limiting centre density `c = lim_R #(Λ∩B(0,R))/vol B(0,R)`,
+   the boundary error is `O(R²)/R³ → 0` and `Δ = c·4π/3`.
+4. **Centre density.** `c = Δ/(4π/3) = 3Δ/(4π)`; for fcc, `c = 1/(4√2)` and
+   `Δ = π/√18` exactly.
+5. **The CE bound in these units.** For admissible `f` with `f̂ ≥ 0`,
+   `f ≤ 0` off `|x| ≥ 2`, `f̂(0) > 0`: `c ≤ f(0)/f̂(0)` and
+   `Δ ≤ (4π/3)f(0)/f̂(0)` (K15-C002b for the passage to all packings).
+6. **Conversions from the older convention** (radius 1/2, separation 1, number
+   density `n`): `c = n/8`, `Δ = (π/6)n`. Verified exactly (K15-C007).
+
+*Status.* Items 1–4 and 6 are `PROVED`; item 5 depends on K15-C002b, whose
+periodic estimate is repaired but still awaits X. The Lean module
+`Lean/Kepler15/Normalisation.lean` formalises only the *algebraic* part (3)–(4)
+as a definitional identity and does **not** prove the ball volume or the
+counting-to-volume bridge; the pinned build is `M-LEAN-001` (complete, axioms
+`[propext, Classical.choice, Quot.sound]`).
+
+### K15-C025 — the next theorem, with every missing hypothesis named
+
+**Target theorem (local/cluster form).** Let `Λ` be saturated, `A : Λ → R`, and
+`Π` a partition of `Λ` into clusters with `diam K ≤ D`, `|K| ≤ V_max`, such that
+(a) `vol Ω(v) + A(v) ≥ 0` for all `v`; (b) `Σ_{v∈K}(vol Ω(v)+A(v)) ≥ √32|K|` for
+all `K ∈ Π`; (c) `Σ_{v∈Λ(x,r)} A(v) ≤ C₁r²`. Then
+`Δ ≤ π/√18 + C(C₁,D,V_max)/r`.
+
+| # | Obligation | Status |
+| --- | --- | --- |
+| H1 | the criterion itself (cluster averages + negligibility ⇒ bound) | `PROPOSED` (E's `K15-E001`); Main read the proof, X to audit |
+| H2 | a *specified* partition rule with a boundary estimate (the universal quantifier over clusters is false: a singleton at the icosahedral vertex gives `5.55029 < √32`) | **MISSING** |
+| H3 | an analytic lower bound for `Σ_{v∈K} vol Ω(v)` over that partition, `D = 2` first | **MISSING** — and sampling can only refute it (`K15-E003`) |
+| H4 | negligibility (c) for the chosen `A` | **MISSING** |
+| H5 | a numerical value of `V_0 = √32` once (b) is replaced by `≥ V_0|K|`; beating the dodecahedral barrier needs `V_0 > 5.550291` | **MISSING** |
+
+**Why this and not the shell allowance.** Computation measured the shell
+benchmark at degree 21, grid 500, `ρ = 2.09`: the jointly optimised allowance
+chose `η = 0`, i.e. **gain exactly 0** (`K15-C-SHELLBENCH-001`, `TESTED_FINITE`,
+not an impossibility proof). Two readings, both consistent with the data:
+(i) at the CE optimum the sign condition is active only at `|x| = 2`, a
+measure-zero set, so relaxing the sign on a positive-width shell is a
+*second-order* gain against a first-order cost `12η`; (ii) the solve is a coarse
+grid LP whose control value (`0.78017286`) is itself worse than CE03, so it may
+lack the resolution to see a small gain. Either way the shell route has produced
+no number, and the local/cluster route (K15-C015r) is where the remaining
+mathematical content is.
+
+**Analytic comparator kept alive.** `K15-C023` shows the exact-certificate
+pipeline works end to end at degree 33. It is the fallback for any candidate the
+geometric route produces: a candidate profile ⇒ run `exactcert` and
+`verify_comp_cert` ⇒ `VERIFIED_CROSS` or nothing.
+
+### K15-C026 — `shell_check` accepts tight (even-multiplicity) zeros (`VERIFIED` by self-test)
+
+- **Bug found and fixed in Main's checker.** The first revision decided
+  `q ≥ 0` and `p ≤ 0` by counting *all* distinct real roots on the half-line or
+  interval. A polynomial that *touches* zero without changing sign was therefore
+  rejected — and that is exactly the shape of a CE optimum, where `f(2) = 0` is
+  forced by the equality case. The earlier checker would have rejected every
+  tight certificate while accepting only slack ones.
+- **Fix.** Sign changes are now counted on the **odd part** of the polynomial
+  (`sqf_list`, keep factors of odd multiplicity), with endpoints tested for the
+  required sign, and `≤` (not `<`) as the verdict. Regression cases are now
+  permanent in `--self-test` §S4: `(u−5)² ≤ 0` on `[0,10]` must FAIL,
+  `−(u−5)² ≤ 0` must PASS, `u² ≥ 0` on `[0,∞)` must PASS, `u−1 ≥ 0` must FAIL.
+- **Effect on the earlier result.** C's K33b certificate is still `ACCEPT` with
+  the same exact value (it happens to have strict signs, so the fix changes
+  nothing there). The fix matters for any future tight candidate.
+- **Artifact.** `Computation/shell_check.py`
+  `sha256 4f4a0ba8aee4fc765a204c6ad925e064bb036af2f437a22c669092e4f3f85eb3`.
+  Reproduce: `python3 KeplerConjecture/Computation/shell_check.py --self-test`.
+- **Status.** `VERIFIED` (self-test + re-verification of C's certificate).
+  Reviewer X: the odd-part argument is two lines (`q ≥ 0` on an interval iff the
+  odd part has no root there and `q ≥ 0` at the endpoints); confirm it agrees
+  with `exactcert.yun_odd_part`.
+
+### K15-C027 — audit of E's Tammes-13 enclosure (`ACCEPTED WITH SCOPE`; closes G2/G3 pending X)
+
+- **Object.** `Experimental/TAMMES13_ENCLOSURE.md` (branch
+  `kepler15/experimental/run-01`, revision `8aca235`), `K15-E015` and `K15-E014`.
+- **What was independently executed by Main.** E's script
+  `Experimental/scripts/tammes13_enclosure.py` was extracted from the branch and
+  re-run in a scratch directory: it reproduces the certificate
+  (`δ₁₃ < 57.1387…° < θ_min = 57.1709…°`, `margin ≈ 4.9e−4`) and fails only at the
+  final relative-path write, which is an environment artefact, not a mathematical
+  failure. Main also recomputed the defining equations independently at 40 digits:
+  `a* = 69.405050103707°`, `d* = 57.136703077578°`,
+  `θ_min = arccos(23681/43681) = 57.170902186746°`, margin `0.0342°`, and the
+  consistency identity `α(d) = a` holds to all printed digits.
+- **Structural audit, accepted.** (i) `g` is strictly decreasing on `(0, π/2)`
+  (both terms negative), so one sign change pins the root; (ii) the chain
+  `a* ≤ a_hi ⇒ h(a*) ≥ h(a_hi) ⇒ d ≤ arccos(h(a_hi))` is correct with `h`
+  decreasing and `arccos` decreasing, so the comparison `d < θ_min` becomes the
+  **rational** inequality `h(a_hi) > 23681/43681`; (iii) the Taylor remainder
+  lemma is proved, not asserted, and its hypothesis `x ≤ 8/5` covers the ranges
+  used; (iv) `π ∈ (333/106, 355/113)` is valid.
+- **Scope, and what Main does not verify.** The identification
+  `δ₁₃ = arccos(cos a/(1 − cos a))` at the root of (E1) is **Theorem 1 of
+  Musin–Tarasov (arXiv:1002.1439v3)**, proved by computer enumeration of
+  irreducible contact graphs. E's certificate covers the *arithmetic* of the
+  constant only. Main did not verify the transcription of (E1) against the paper
+  (internal consistency is not proof), nor the enumeration. A complexity claim
+  for the shell lemma must charge that enumeration.
+- **Consequence.** `K15-E014` — at most 12 centres of a 2-separated set in
+  `[2, 2.09]` — is accepted subject to Musin–Tarasov; hence K15-C018's sharp
+  form (`n = 12` at `ρ = 2.09`) is available, and the count is no longer the
+  weakest link. The measured gain of the shell allowance remains 0
+  (`K15-C-SHELLBENCH-001`), so this closes a question rather than opening a
+  route. G2 and G3 move to `closed pending X`.
+- **Status.** `ACCEPTED_WITH_SCOPE`. Reviewer: X (to check the (E1)
+  transcription against the paper and the enumeration's scope).
+
+### K15-C028 — exact shell fixture at degree 3, and why the allowance cannot pay (`TESTED_FINITE` with an exact verdict)
+
+- **Family (admissible by construction).** `P(u) = (T − u)·S(u)` with `S(u) = Σ_{j≤2} s_j u^j`,
+  all `s_j ≥ 0`, `T = π_lo ρ²`. Then `p ≤ 0` for `u ≥ T` and `p(0) = T s_0 > 0`
+  hold *identically*, with no grid. The only remaining conditions (`q ≥ 0` on
+  `u ≥ 0`, and `p ≤ η` on the shell) are decided exactly.
+- **Exact measurements (degree 3, 125 candidates each).**
+
+  | family | best `R = p(0)/q(0)` | `Δ ≤ (4π/3)R` |
+  | --- | --- | --- |
+  | `ρ = 2`, pure CE (`T = 4π_lo`) | `0.538382` | `2.255170` |
+  | `ρ = 2.09`, shell (`T = π_lo ρ²`) | `0.527491` | `2.209550` |
+
+  Both bounds are vacuous, and the second is **not** a bound at `η = 0`: the
+  profile is positive on the shell, so it needs an allowance. Required
+  `η = max_{shell} P = 50.4431`, hence the true objective is
+  `p(0) + 12η = 13.7228 + 605.3168 = 619.04` and `Δ ≤ 2593.0` — vacuous by three
+  orders of magnitude.
+- **The arithmetic of why.** The cost `12η` is proportional to the *amplitude* of
+  `P` on the shell. At low degree that amplitude is huge (`50.4` here) because `P`
+  must fall from `p(0)` to `0` across a shell of width `0.09` in `√s`. The
+  allowance can only pay when `P ≈ 0` on the shell — i.e. in the CE regime where
+  the constraint is nearly binding. This is the precise form of the trade that
+  C measured as "gain 0" at degree 21 (`K15-C-SHELLBENCH-001`), and it explains
+  why raising the degree alone will not rescue the route.
+- **Deliverable.** `Computation/shell_fixture.py` — an exact proposer + verdict
+  fixture (`python3 shell_fixture.py --m 2`), usable at any `m`, `ρ`, `η`.
+  It is the first *exact* evaluation of the shell allowance in this project;
+  C's `shell_bench.py` is grid-based and cannot certify.
+- **Status.** `TESTED_FINITE`; the verdicts inside are exact, the *values* are
+  vacuous. Reviewer X. G10 remains open but with the cost structure now explicit.
+
+### K15-C029 — the usable objective for the geometric route (`PROVED`, a constraint on `A`)
+
+The cluster criterion (K15-C025) needs `Σ_{v∈K}(vol Ω(v) + A(v)) ≥ V_0|K|` with
+`V_0 > 5.550291` to beat the dodecahedral bound, and `V_0 = √32 = 5.656854` to
+reach Kepler. This entry records what that forces on `A`, so that a proposed `A`
+can be tested before any cluster analysis is attempted.
+
+**Lemma (defect density is zero).** Let `Λ` be saturated with an fcc-compatible,
+negligible `A`: `vol Ω(v) + A(v) ≥ √32` for all `v`, and
+`Σ_{v∈Λ∩B(x,r)} A(v) ≤ C₁r²` for all `x`, `r ≥ 1`. Fix `θ > 0` and let
+`D_θ = {v : vol Ω(v) ≤ √32 − θ}`. Then `#(D_θ ∩ B(x,r)) ≤ C₁r²/θ` for all
+`x, r`, hence `D_θ` has upper density zero.
+
+*Proof.* For `v ∈ D_θ`, fcc-compatibility gives `A(v) ≥ √32 − vol Ω(v) ≥ θ`.
+Summing over `D_θ ∩ B(x,r) ⊆ Λ ∩ B(x,r)` and using negligibility,
+`θ·#(D_θ ∩ B(x,r)) ≤ Σ A ≤ C₁r²`. Divide by `vol B(x,r) ≍ r³`. ∎
+
+**Consequences, in the order they matter.**
+1. Any packing that is fcc-compatible in this sense has `o(r³)` vertices with cell
+   volume below `√32 − θ`, for every fixed `θ`. So the *only* way a cell can be
+   small is for it to be rare: the geometric content is a statement about
+   densities, not about individual cells.
+2. Conversely, a proposed `A` that is uniformly positive on a positive-density
+   set of vertices **cannot be negligible** — an immediate falsification test.
+   (The same test with `θ = 0.106563` is X's `X-C003(2)`; this makes the constant
+   arbitrary and the statement quantitative.)
+3. On the icosahedral 13-cluster, `vol Ω = 5.550291` so `A ≥ 0.106563` there; by
+   1, such clusters must have density zero in any admissible packing. **This is
+   the precise sense in which the icosahedral configuration is the obstruction**,
+   and it is why a successful `A` must be negative on the generic (near-fcc)
+   vertices: the average of `A` over a large region is `≤ C₁r²/vol = o(1)`, while
+   its value at defect vertices is `≥ 0.106563`.
+4. **The usable objective** for the next geometric attempt is therefore:
+   `A` with (i) `A(v) ≥ √32 − vol Ω(v)` on defect vertices, (ii) `Σ A ≤ C₁r²`,
+   (iii) cluster average `≥ V_0|K|` with `V_0 > 5.550291`. Condition (ii) forces
+   `A` to be negative on a set of vertices of full density, so any candidate must
+   exhibit its negative part explicitly. A candidate that only specifies the
+   positive part is incomplete by construction.
+
+*Status.* `PROVED` (elementary; the `θ`-quantification is Main's). Reviewer X.
+No numerical input is used.
+
+### K15-C030 — adversarial sign-checker suite (`VERIFIED`: 13/13 expectations hold)
+
+- **Artifact.** `Computation/checker_adversarial.py` — thirteen cases designed so
+  that a plausible but wrong checker fails at least one. It is stated
+  implementation-independently, so the same list can be run against
+  Computation's `exactcert` after conversion with
+  `interface_xcheck.main_to_comp`; running both and getting the same thirteen
+  verdicts is the evidence G8 asks for.
+- **The cases that matter.** `(u−5)²` must PASS (a checker that counts all roots
+  rejects it — the bug Main actually had, K15-C026); `(u−5)³` must FAIL;
+  `(u−1)²(u−2)²` must PASS while `(u−1)²(u−2)` must FAIL (the odd part is what
+  counts); `u²` must PASS (double root at the endpoint 0); the product of ten
+  simple positive roots must FAIL (the historical K21 failure mode, review
+  48443); `−(u−T)²` must PASS while `u−T` must FAIL (behaviour exactly at the
+  threshold `T = π_lo ρ²`); and the compact-window cases at `[4π_lo, T]`.
+- **Result on Main's checker.** 13/13 pass. The suite also caught an error in
+  *the test itself* on first run (a double negative made the "must PASS" case
+  positive), which is a small demonstration that it discriminates.
+- **Status.** `VERIFIED` for Main's `shell_check`; `OPEN` for `exactcert` until X
+  runs it there. Reviewer X.
+
+### K15-C031 — cross-run of the adversarial suite against `exactcert` (`VERIFIED`: agrees on all ten)
+
+- **What was run.** `python3 Computation/checker_adversarial.py --against-exactcert
+  <dir>` extracts Computation's `exactcert` from branch `90cc632`, substitutes
+  `u = t/2` into each adversarial polynomial, and calls their engine
+  (`yun_odd_part` then `_half_line_sign`).
+- **Result.** Ten of ten agree, including the subtle cases: `(u−5)² → pos`,
+  `(u−5)³ → fail`, `(u−1)²(u−2)² → pos`, `(u−1)²(u−2) → fail`, `u² → pos`,
+  `∏_{1..10}(u−k) → fail`. Two findings that only a cross-run could produce:
+  1. `− (u − T)²` at the threshold `T` is decided **`neg`** by `exactcert` (it
+     factors the even-multiplicity root out and decides the sign), so its
+     fail-closed policy is *sharper* than assumed: it declines only at
+     **odd**-multiplicity endpoint roots, where the sign genuinely changes.
+  2. Consequently `exactcert` and `shell_check` have the same semantics on every
+     case tested; a certificate with a touching zero at the threshold is
+     acceptable to both.
+- **Status.** `VERIFIED` (G8 partially closed: the two engines agree on a
+  designed adversarial set, in different bases). Remaining for G8: an argument
+  that they share no code (they do not — Main wrote `shell_check` from the
+  Fourier side, Computation wrote `exactcert` from the Laguerre side) and X's
+  independent review of both.
+- **Artifact.** `Computation/checker_adversarial.py` (both modes; `--self` uses no
+  external code).
+
+### K15-C032 — imports from C and X (unreviewed by X; recorded, not promoted)
+
+| Item | Source | Statement | Status |
+| --- | --- | --- | --- |
+| `K15-C-SATURATION-001` | C `90cc632`, `out/verified_certificate_K33b.json` | the exact-certificate pipeline saturates at degree 33: `Δ ≤ 0.77996622`; degrees 37 and 41 fail exact verification at every grid/margin tried | `VERIFIED_CROSS` for the K33b value (K15-C023); the *saturation* claim is `TESTED_FINITE` |
+| `K15-C-SATLIMIT-001` | C | the residual `+0.03%` above CE03 is the price of the strict-sign margin plus rational rounding | `TESTED_FINITE`; the reasoning is consistent with the strict-sign policy in `exactcert`'s docstring |
+| `K15-C-SHELLBENCH-001` | C | the shell allowance's joint optimisation chooses `η = 0` at degree 21, grid 500, `ρ = 2.09` (gain exactly 0) | `TESTED_FINITE`; K15-C028 explains the cost structure |
+| X free-width family | X `237cc3b`, `ce_exact_gauss.py`, `REPORT_width_and_E030.md` | `f = P(s)e^{−a s}`, exact map to `Q(w)`, density `= (4a^{3/2}/(3√π))P(0)/Q(0)`, Kepler test `32a³P(0)² < π³Q(0)²`; verified against 3-D quadrature at `a ∈ {1/2,1,3/2,2}` | recorded as the **third convention** in `Main/INTERFACE.md` §1; the quadrature agreement is X's evidence, not audited here |
+
+None of these is promoted to a bound. The numbers in the first row are the ones
+Main independently reproduced (K15-C023).
+
+### K15-C033 — Barlow stackings have no distance in `(2, 2.09)` (`PROVED`; closes E's `K15-E013`)
+
+E's `K15-E013` asked for Barlow stackings to be shown to have at most 12 centres
+in `[2, 2.09]`; E proposed a numerical check. It has a three-line structural
+proof, which Main supplies here.
+
+**Setting.** A Barlow stacking is: the triangular lattice
+`L = ⟨(2,0), (1,√3)⟩` in each horizontal layer `z = kc` with `c = √(8/3)`, each
+layer displaced by a hollow of the layer below, i.e. by `±s`,
+`s = (a₁+a₂)/3`, `|s| = 2/√3`.
+
+**Lemma.** Every inter-centre distance is either `2` or `≥ 2.828`. Hence there is
+no distance in `(2, 2.09)`, and the only centres within `2.09` are the contacts at
+distance exactly `2`, of which there are at most 12 (kissing number; exactly 12
+for fcc and hcp).
+
+*Proof.* Three cases.
+1. **Same layer.** Distances are those of `L`, i.e. `≥ 2`, with equality for the
+   six nearest neighbours, and next value `2√3 = 3.464`.
+2. **Adjacent layers.** Vertical separation `c`, so the 3-D distance is
+   `√(d² + c²) = √(d² + 8/3)` where `d` is the horizontal distance between the two
+   lattices. The horizontal distance spectrum between `L` and `L + s` is
+   `2/√3 = 1.1547` (the hollow), then `4/√3 = 2.3094`, `3.0550`, `4.1633`.
+   The first is `|s|² = 4/3`; the second is
+   `|a₁ − a₂ + s|² = |(2, −2/√3)|² = 4 + 4/3 = 16/3`. Hence the 3-D distances
+   are `√(4/3 + 8/3) = 2` and then `√(16/3 + 8/3) = √8 = 2.828`. Both facts were
+   also checked numerically this block (spectrum `2.0, 2.828, 3.464, 4.472`), and
+   `2.828 > 2.09`.
+3. **Non-adjacent layers.** Vertical separation `≥ 2c = 3.266 > 2.09`. ∎
+
+**Verified numerically** (this block): with `c = √(8/3)` the adjacent-layer 3-D
+spectrum begins `2.0, 2.828, 3.464, 4.472` and no value lies in `(2, 2.09)`;
+the same holds for every allowed offset sequence of length 3.
+
+**Status.** `PROVED` (Main). Reviewer X. **Scope:** this closes the "Barlow"
+item of E's enclosure note; the Tammes-13 input (K15-C027) supplies the `≤ 12`
+count for *arbitrary* 2-separated sets, which subsumes this lemma — so the lemma
+is a redundancy check on E's enumeration rather than a new ingredient.
+
+*Note on the definition.* "Each layer over a hollow of the one below" is what
+makes the family dense; if layers may sit above lattice points the packing
+overlaps (`c = 1.633 < 2`), so those sequences are not packings and are excluded
+by the definition, not by a computation.
+
+### K15-C034 — X's repaired `kepler_ok` passes the historical counterexample (`VERIFIED` by re-run)
+
+- **Re-run by Main.** `Counterexamples/ce_exact_gauss.py` (branch
+  `kepler15/counterexamples/run-01`, revision `237cc3b`) was extracted and
+  executed. The case that previously failed — `P(0)/Q(0) = 99/100`, where
+  `32P(0)² = 313632 > π³Q(0)² = 310062.8` — now returns `kepler_ok = False`, i.e.
+  the truncation bug is fixed and the verdict is the correct one.
+- **The useful by-product.** In X's normalisation the Kepler test is
+  `P(0)/Q(0) < √(π³/32) = 0.98435062…`, and the script prints the exact rational
+  comparisons for six sample ratios. That is a concrete, checkable acceptance
+  threshold for any candidate in X's Gaussian family, in the same spirit as the
+  `f(0)/f̂(0) ≤ 0.186150827` threshold in the `π`-normalisation.
+- **Scope.** This verifies the repair of a *comparison helper* on one case and
+  the arithmetic of the threshold. It is not a certificate, and X's LP search
+  remains `TESTED_FINITE` (their own report says so).
+- **Status.** `VERIFIED` (Main re-ran the exact historical failure). Reviewer X.
+
+### K15-C028 addendum — reference output of the fixture (reproducible)
+
+`python3 KeplerConjecture/Computation/shell_fixture.py --m 2 --rho 2 --eta 0`
+reports `R = p(0)/q(0) = 1675516081914556393846743137744/3112130939427411660770593506033
+= 0.5383822578566787`, `Δ ≤ 2.255`, after 294 candidates; `--m 3` finds the same
+value with a zero top coefficient (the family saturates at degree 3, 2058
+candidates). These are the *committed* outputs; an ad-hoc variant of the same
+search that summed `b` over the wrong index range produced `0.472025`, which is
+**wrong** and is recorded here so the number never migrates into the ledger. The
+lesson is the same as everywhere else in this project: the family is a fixture
+for the interface, not a source of competitive bounds, and every number must come
+from the committed script.
+
+`Main/INTERFACE.md` §4 was also corrected: the "conservative integer threshold"
+no longer exists — `4·PI_LO` and `PI_LO·ρ²` are rational and exact, so the
+threshold costs nothing.

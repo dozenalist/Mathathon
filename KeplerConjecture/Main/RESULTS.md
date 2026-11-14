@@ -1,120 +1,84 @@
-# Strongest current results — Kepler problem 15
+# Results — Kepler problem 15
 
-Checkpoint 2026-11-14 (cycle 1). This file states only what survives review at
-this checkpoint. Nothing here is a proof of the Kepler bound; see
-`Main/CLAIMS.md` for statuses.
+Current state after block `K15-HOUR-20261114-M` (start `2026-11-14T09:14:25Z`).
+Only two statuses count here: `VERIFIED_CROSS` (confirmed by two independent
+exact implementations) and `PROVED` (a written argument). Everything else lives
+in `Main/CLAIMS.md` and is *not* a bound. The sharp theorem is already known
+(Hales, formally verified); nothing below reproves it.
 
-## 1. A complete, self-contained proof of the two-point bound for all packings (K15-C002)
+## 1. The one checked bound (K15-C023, `VERIFIED_CROSS`)
 
-Cohn–Elkies' Theorem 3.1 is stated for all packings but proved for periodic
-ones, with the reduction relegated to an appendix. The recovered proof
-(`.ultramath/smwg019eu/m2/proof.md`) supplies the missing step as an explicit
-estimate:
+`Δ(Λ) ≤ 0.779966216777` for every packing of unit balls in `R³`, where the
+certificate is Computation's degree-33 rational data
+(`out/verified_certificate_K33b.json`, `sha256 525d1d55…`) and the verdict comes
+from **two independently written exact checkers**: Computation's `exactcert`
+(variable `t = 2π|x|²`) and Main's `shell_check` (variable `u = π|x|²`),
+disagreeing on nothing, agreeing on the rational ratio
 
-- **Lemma 1.2 (periodic approximation).** For every packing `Λ` with minimum
-  separation 2 and every `ε > 0` there is a periodic packing `Π` with
-  `δ(Π) ≥ δ(Λ) − ε`. Proof: tile by cubes of side `S`, take the tile with the
-  most centres, delete the two-unit slabs at its boundary, and periodise. Losses
-  are `O(S/R) + O(1/S)`, both explicit; no saturation, ergodicity or limiting
-  density is assumed.
-- **Lemma 1.3.** Poisson summation for `k` translates produces
-  `|Σ_j e^{2πi⟨v_j,t⟩}|² ≥ 0`, so multiple translates are covered.
-- **Conclusion.** `c(Λ) ≤ f(0)/f̂(0)`, i.e. `δ(Λ) ≤ (4π/3)f(0)/f̂(0)`.
+    p(0)/q(0) = 42935541634304122537361009/230584315533749727927712550.
 
-Status: `PROPOSED`; Main read the argument and found it complete; X's
-independent review is outstanding. Value: clarity, not a new constant.
+This is **not** an improvement on Cohn–Elkies 2003 (`0.779747`); it is the first
+object in this project whose proof is a finite certificate two independent
+programs accept. Reproduce: `python3 KeplerConjecture/Computation/verify_comp_cert.py
+<cert.json>` (4 s). The interface that makes it reusable — three conventions, exact
+dictionaries, certificate schema — is `Main/INTERFACE.md`; the dictionary is
+tested, not asserted (`Computation/interface_xcheck.py`).
 
-## 2. The hybrid two-point bound with a local-count price (K15-C003)
+## 2. Proved statements that do not depend on computation
 
-**Theorem B.** If `f` is admissible, `f̂ ≥ 0`, and `f > 0` only on a set `A` with
-contact number `n` (at most `n` `A`-differences from any centre of any
-2-separated set), with `max_A f ≤ M`, then
-`c(Λ) ≤ (f(0) + n·max(M,0))/f̂(0)` for every packing.
+1. **Two-point bound for all packings** (K15-C002b): with `f, f̂` continuous, CE
+   decay, `f ≤ 0` off `|x| ≥ 2`, `f̂ ≥ 0`, `f̂(0) > 0`, every packing satisfies
+   `δ ≤ (4π/3)f(0)/f̂(0)`. The periodic-approximation step has an explicit
+   two-loss proof (`O(S/R) + O(1/S)`); its inequality was repaired after review
+   (the count of interior tiles must be bounded *above*).
+2. **Count-price hybrid** (K15-C003r): if `f > 0` only on a set `A` of contact
+   number `n`, with `f ≤ M` there, then `δ ≤ (4π/3)(f(0)+nM)/f̂(0)`. The indexing
+   was repaired (fix the base centre `l`, not `j`).
+3. **Contact-shell relaxation is vacuous** (K15-C004): if `A` has empty interior,
+   a continuous `f ≤ 0` off `A` is `≤ 0` everywhere on `{|x| ≥ 2}`. No
+   counterexample exists; Main's earlier "rational points" objection was wrong.
+4. **Count on a shell, reduced to one number** (K15-C019): 13 points in
+   `2 ≤ |y| ≤ ρ` with pairwise distances `≥ 2` force angular separation
+   `≥ arccos(1 − 2/ρ²)`; hence `n(ρ) = 12` exactly, provided the Tammes-13 angle
+   is below that threshold (`ρ = 2.05` leaves `1.26°`, `ρ = 2.09` leaves
+   `0.034°`). The Tammes input is E's enclosure (K15-C027), which Main re-ran and
+   accepts with the scope that the constant's *identification* rests on
+   Musin–Tarasov's computer enumeration.
+5. **Defect density is zero** (K15-C029): with an fcc-compatible negligible `A`,
+   `#{v : vol Ω(v) ≤ √32 − θ} ∩ B(x,r) ≤ C₁r²/θ`, so small cells must be rare.
+   Any proposed `A` must therefore be *negative* on a set of vertices of full
+   density; a candidate that specifies only its positive part is incomplete.
+6. **Density normalisation** (K15-C024), item by item, including the
+   counting-to-volume bridge and the older-convention conversions
+   (`c = n/8`, `Δ = (π/6)n`).
 
-This replaces the unprovable "integral tail" of the earlier brief by a finite
-count. Consequences already verified: `A = ∅` recovers (1); relaxing on a closed
-measure-zero set (the contact sphere) buys nothing (K15-C004/C011); the winning
-region for a shell relaxation is controlled by `n·M/f̂(0)`, and the count `n` may be taken as
-`⌊(3+δ)³⌋ − 1` for a shell of width `δ` (K15-C013(a), a volume bound). That is an
-*upper* bound on the contact number, not a lower one. The true maximum is
-exactly 12 for all sufficiently thin shells (K15-C013(b), compactness plus the
-kissing number); an explicit width is open.
+## 3. What the two live routes now are, and what each is missing
 
-## 3. Local geometry: the live route (K15-C015, with K15-C005r as the fence)
+| Route | State | Missing |
+| --- | --- | --- |
+| **Cluster/partition (geometric)** — E's criterion, cluster averages instead of pointwise fcc-compatibility | criterion proposed; universal quantifier refuted (a singleton at the icosahedral vertex); repaired to a *specified* partition | a partition rule with a boundary estimate; an analytic cluster-volume lower bound at `D = 2`; an explicit `A` satisfying K15-C029 |
+| **Exact-certificate pipeline (analytic)** — rational data + Sturm verdicts | working end to end at degree 33, cross-verified | nothing structural; its ceiling is obstructed by Li, so it is a control and a component, not the theorem |
 
-- **Contact-sphere relaxation is vacuous (K15-C004, stands).** If `A` has empty
-  interior then `R³∖A` is dense, so a continuous `f` that is `≤ 0` on
-  `{|x| ≥ 2}∖A` is `≤ 0` on `{|x| ≥ 2}`. Pricing `f > 0` on `{|x| = 2}` by the
-  kissing number 12 cannot improve any two-point constant. (At checkpoint 1 this
-  entry was marked refuted by Main on the strength of a bad example; the review
-  is right and the entry is restored.)
-- **Additive two-point corrections to Voronoi volume (K15-C005r): closed, for a
-  correct reason.** For an admissible kernel the *off-diagonal* score
-  `S_f(v) = Σ_{μ≠v} f(v−μ)` is `≤ 0` at **every** vertex of **every** packing
-  (all separations are `≥ 2`). So a centred score `vol Ω + κS_f ≥ V_0` forces
-  `vol Ω(v) ≥ V_0`, giving `V_0 ≤ V_dod` and no improvement; the raw score that
-  keeps the self-term gives only `V_0 ≤ V_dod + κf(0)`, which is *worse* for every
-  `κ > 0`. Both signs are now derived, not transcribed.
-- **The live candidate is cluster-averaged (K15-C015, E's criterion).** Replace
-  pointwise fcc-compatibility by `Σ_{v∈K}(vol Ω(v) + A(v)) ≥ √32|K|` on clusters of
-  diameter `≤ D`. This strictly relaxes Hales's Lemma 3.3 and is the natural home
-  for Fejes Tóth averaging. Its price is proved and steep: finite-cluster volume
-  computations are *upper* bounds, so sampling can refute a cluster inequality but
-  never establish one (`K15-E003`). Promotion therefore needs an analytic
-  cluster-volume lower bound, not a computation.
-- **Analytic comparator kept distinct: exact sign certification in the
-  Laguerre–Gaussian family (X-C008).** `f = Σ c_k L_k^{1/2}(2πs)e^{−πs}`,
-  `f̂ = Σ(−1)^k c_k L_k^{1/2}(2πs)e^{−πs}`, so both sign conditions are
-  polynomial sign questions on half-lines decided exactly by Sturm sequences.
-  This is the only route in the project that can produce a *certified* number, and
-  its ceiling is above `π/√18` by Li, so it is a control and a component — never
-  the theorem.
+Two routes are **closed with evidence**, and should not be reopened without new
+information: the shell allowance (measured gain 0 at degree 21, and K15-C028
+shows why: the cost `12η` scales with the amplitude of the profile on the shell)
+and degree escalation of the two-point family (C's saturation at degree 33,
+`+0.03%` above CE03).
 
-## 4. The frontier, fixed in one place (K15-C008)
+## 4. The frontier, in one place
 
 `0.740480` (Kepler, Hales) < `0.754697` (dodecahedral, Hales–McLaughlin) <
-`0.770271` (three-point, CDS22) < `0.773055` (Muder 1998) < **`0.779636`
-(Rogers 1958) < `0.779747` (Cohn–Elkies 2003)**. The last two are in the right
-order as written and the two-point bound is the *worse* of them; checkpoint 1
-had them transposed. `0.741506` (CDS22) is **lattice-only** and is not a general
-bound. No novelty is claimed for anything in this file: the unrestricted sharp
-bound is already a theorem (Hales), and "first below 0.754697" would be a claim
-about a restricted class that has not been compared with the literature.
-
-## 4b. The two live candidates (after hourly review 00:08)
-
-1. **Benchmark (analytic): the shell allowance.** `f̂ ≥ 0`, `f ≤ η` on `[2, ρ]`,
-   `f ≤ 0` beyond `ρ`, at most 12 shell neighbours `⟹`
-   `δ ≤ (4π/3)(f(0) + 12η)/f̂(0)` (K15-C018). Its proof is two paragraphs
-   (K15-C003 + K15-C002b); its whole content is the count 12 on a shell of width
-   `ρ − 2`. `ρ = 209/100` is **provisional** until a Tammes-13 enclosure is cited
-   or proved. With `η = 0` it is ordinary CE and Li's theorem blocks it, so its
-   only possible value is a small `η` at a fixed `ρ` that costs less than
-   `12η/f̂(0)`.
-2. **Target (geometric): E's constructive partition.** Cluster averages instead of
-   pointwise fcc-compatibility, with the partition *specified* — the universal
-   quantifier over clusters is false (a singleton at the icosahedral vertex gives
-   `5.55029 < √32`). Sampling can refute but never establish a cluster inequality
-   (K15-E003), so this needs an analytic lower bound.
-
-A third object is a **mechanism**, not a candidate: the exact-Sturm Laguerre family
-(X-C008), which can certify a number but whose ceiling is obstructed by Li.
+`0.770271` (three-point, CDS22) < `0.773055` (Muder) < `0.779636` (Rogers) <
+`0.779747` (Cohn–Elkies) < `0.779966` (this project, verified). `0.741506`
+(CDS22) is **lattice-only** and is not a general bound. No novelty is claimed for
+anything in this file.
 
 ## 5. What is not established
 
-- A value near `Δ = 0.78010544` attributed to Computation is **withdrawn**
-  (K15-C017): its checker reports nothing unless verbose, and the rebuilt `q` is
-  negative at a rational point. Do not cite it.
-- No new numerical bound and no certificate. C's local controls are
-  `TESTED_FINITE`: `Δ = 0.779702445785607` (`K = 31`, grid 1200) and
-  `Δ = 0.779745768082807` (`K = 41`, grid 4000), with `min f̂` of order `−3·10⁻⁶`
-  and `−3·10⁻⁷` respectively — i.e. numerically feasible, globally uncertified.
-  The review's repaired degree-8 control gives `f(0) = 0.2182024…`
-  (`Δ = 0.9141`), which is a legality check, not a competitive value.
-- `Main/Computation/ce_laguerre.py` remains in the tree **with its bug**
-  (Fourier positivity not imposed); K15-C014r explains it and withdraws the claim
-  that grids cannot give exploratory values.
-- Li's `0.18398089` is quoted, not reproduced.
-- The recovered sharpness/uniqueness material is unreviewed and partly
-  retracted (`Literature/RECOVERED.md`).
-- No Lean module has been kernel-checked under the pinned toolchain.
+- No new numerical bound, no improvement over any published value.
+- The verified certificate's scope is conditional on both checkers being correct;
+  X's independent review of that independence is outstanding.
+- No Lean claim beyond an algebraic identity (`centreDensity = 3δ/(4π)`, pinned
+  Lean 4.35.0, axioms `[propext, Classical.choice, Quot.sound]`). The ball-volume
+  and counting-to-volume identities are **not** formalised (G9).
+- The cluster route has no value of `V_0` and no cluster-volume bound.

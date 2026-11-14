@@ -512,3 +512,7 @@ control and E's directed enclosure; E continues the geometric compensation
 problem; C implements a structured strengthened benchmark. The original failed
 certificate and subsequent corrections remain retained. No new local heavy or
 Lean job was launched by this operational checkpoint.
+
+### 2026-11-14 01:38 Pacific - Main source synchronization
+
+Imported Main revision 6626714125c35292d78943cd0fe8d18ec0051b38. Its full conflicting progress record is preserved in Main/AgentProgress/Main-66267141.md; all prior supervisor and worker records are retained. Research claims await the current review. K15-C029 has an invalid signed-subset summation step and is not accepted; Main has been assigned its correction.
