@@ -618,3 +618,45 @@ secondary implementation that removes the faithfulness bottleneck.
 - **Remaining:** a 4.35.0 run of this file (the supervisor has the pinned
   toolchain); `lake build RogersRamanujan` with the new module; the
   `Nat.Partition` bridge; `phi`/`psi` untouched by this module; RR-C012 OPEN.
+
+## 2026-11-14 / RR-M014 / slot identities R2 verified: the phi^2 = id mechanism is now explicit
+
+- **Agents:** cycle-3 swarm `smwg1kdjq` — m4 (direction A', phi obligations) and
+  m1 (direction D, the `(4^r,1^s)` family). Both reports refereed and
+  independently re-checked by Main. Two more members collected; m3 still running.
+- **The key result (RR-C021).** Over all 10 285 Case-II states of weight `<= 26`,
+  at the image `lam'(a') = m` (10 285/10 285) and `lam'(mu') = p2`
+  (10 285/10 285). With the `a`-shift (`a'=a-1` for Case I, `a'=a+1` for Case II),
+  this is the complete mechanism of `phi^2 = id`: Case II creates `m` and `p2`, they
+  land exactly at slots `a'` and `mu'`, and Case I applied there deletes exactly
+  them and increments back. The missing step is no longer a search — it is R2 plus
+  the inequalities R1. **The composition itself is still not proved.**
+- **RR-C022 (PROVED, all n).** `N >= 0` is Case I's own guard; both deletions are
+  valid and `a != mu` in Case I (m4's proof, cleaner than Main's MX.5: `a = mu`
+  gives `2j = L`, so `j >= 1`, while Case I forces `t* <= -j <= -1`); `p2 >= 0`
+  from `m <= R` plus the Case-II dichotomy excluding `m = R`; signed weight
+  preserved by identity. **Essential caveat:** `a = mu` *does* occur in Case II
+  (6 458 states, e.g. `j=1, lam=(2,)`) — a same-swarm worker's assertion failed
+  precisely by omitting the Case-I restriction.
+- **RR-C020 (PROVED).** `phi`, `psi∘phi` and the `r=1` two-step endpoint are
+  closed-form on the **whole** `(4^r,1^s)` family, all four regimes, plus Lemma 2
+  (`()`,`(1)`,`(4^r)` for `r<=4` are off-domain) which *derives* RR-C014's
+  `r <= 4`. Main re-implemented all regimes and compared with `bz82.py` for
+  `r <= 10`, `s <= 25`: **280/280 agree**.
+- **RR-C023 (headline on cost).** On this family BZ82 is much more expensive than
+  on the ones-ray: 21 of 80 parameters in the `r=1, s = 0,4 (5)` classes exceed a
+  20 000-step cap, finite chains to 18 702 and 15 452, against 672 for `(1^60)`.
+  First measurement of BZ82's cost on a family with more than one object per
+  weight, and it shows the difficulty is not confined to the ones-ray.
+- **RR-C024 CONJECTURE** `b(4^2,1^s) = (s-1,6,3)` for `s = 2 (5)`: 80 held-out
+  parameters, 0 failures. Not a theorem.
+- **RR-C025 REFUTED, with a corrected witness.** The analogous `r=3` shape holds at
+  `s = 27..57` and fails at `s = 62`, but the worker's printed image
+  `(25,17,8,8,8,8)` after 1911 steps is wrong on two counts: the committed map
+  (verified by Main: valid gap partition, weight 74, inverse recovers) gives
+  `(30,20,9,7,5,3)` in **5** steps, and the reported tuple has adjacent
+  differences `8,9,0,0,0` — it is not a gap partition and cannot be any image.
+  The refutation stands; the witness does not. Their check tested only whether the
+  conjectured shape fails, not what the actual image is.
+- **Reproduction:** `python3 RogersRamanujan/Experimental/cycle3/fam45.py`
+  (9/9, 4.5 s, 0 mismatches vs `bz82.py`).

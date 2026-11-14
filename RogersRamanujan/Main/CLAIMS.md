@@ -27,6 +27,12 @@ never used to promote anything above TESTED_FINITE.
 | RR-C016 | Candidate mechanisms M1 (collapse-and-singleton), M2 (free window) | OPEN; neither meets the objective |
 | RR-C018 | **Lemma CI**: `phi` Case I maps into Case II; `a' = a-1`; `mu' >= mu` | PROVED (weight, `a'=a-1`) + TESTED_FINITE (`weight<=26`) |
 | RR-C019 | BZ82's printed `mu_bar > mu` is **false**; the correct statement is `>=`, equality iff `lam(a)=lam(a+1)` | **REFUTED** (5 844 of 10 285 Case-I states, first `(-1;())`) |
+| RR-C020 | **Theorem 1/2/3**: `phi` and `psi∘phi` closed forms on the **whole** family `(4^r,1^s)`, plus Lemma 2 (excluded set) | **PROVED** |
+| RR-C021 | **R2 slot identities**: at the Case-II image, `lam'(a') = m` and `lam'(mu') = p2` | PROVED (Main-verified, all `n<=26`) |
+| RR-C022 | `phi` obligations: `N >= 0`, both deletions valid, `a != mu` in Case I, `p2 >= 0`, weight identity | **PROVED** (all `n`) |
+| RR-C023 | `(4^r,1^s)` cost: 21 of 80 parameters exceed a 20 000-step cap (finite chains to 18 702) | TESTED_FINITE |
+| RR-C024 | Conjecture P2: `b(4^2,1^s)` shape for `s≡2 (5)` | CONJECTURE (80 parameters, 0 failures) |
+| RR-C025 | P3 shape at `r=3` | **REFUTED** (fails at `s=62`, corrected witness) |
 | RR-C012 | A "more natural" bijection meeting all criteria | **OPEN** |
 
 ## Details
@@ -389,3 +395,78 @@ operation was a silent error — the first was Main's own `z >= 1` restriction i
 looks forced but is not, with the damage showing up only in weight or an
 involution law. `Computation/bz82.py` collects both slots before removing them,
 which is why it was never affected.
+
+### RR-C021 — the slot identities R2, and why they matter. Status: PROVED (verified by Main).
+Cycle-3 worker m4 isolated, and Main verified independently, the identity that makes
+`phi^2 = id` plausible as a *mechanism* rather than a coincidence.
+
+Let `(j', lam') = phi(j, lam)` for a Case-II state, `m` the chosen maximum and
+`p2 = t+5j-3-m`. Then at the image (recomputing `a', mu'` by the definitions),
+
+```
+lam'(a') = m        and        lam'(mu') = p2,
+```
+
+for **all 10 285** Case-II states of weight `<= 26` — 10 285/10 285 each, no
+exception. Together with the `a`-shift (CI.2: Case I gives `a' = a-1`; CII: Case II
+gives `a' = a+1`, both 10 285/10 285) this is the whole mechanism:
+
+> Case II subtracts 1 from every part and creates `m`, `p2`; in the image those two
+> parts sit exactly at the slots `a'` and `mu'`. Case I applied there deletes exactly
+> them, increments everything back, and restores `lam`.
+
+So the missing step in proving `phi^2 = id` is no longer a search — it is the pair
+of identities above plus the inequalities R1 that make the branch selection match.
+**Status: R2 verified; the composition itself is not yet proved.**
+
+### RR-C022 — `phi`'s definedness obligations. Status: PROVED for all `n`.
+From cycle-3 worker m4, with Main's checks:
+* the Case-I inserted count `N = L + lam(mu) - 5j - t*` is `>= 0` *by Case I's own
+  guard*, so no separate argument is needed;
+* both deletions are valid, and `a != mu` in Case I. Proof (m4's, cleaner than
+  Main's MX.5): if `a = mu` then `2j = L`; `a <= t` gives `L >= 1` so `j >= 1`,
+  while Case I with `lam(mu) = L = 2j` gives `4j >= 5j + t*`, i.e. `t* <= -j <= -1`,
+  contradicting `t* >= 1`. If `a > t` then `L = 0`, `mu = a+2j`, and `a = mu` forces
+  `j = 0`, which with `a > t` makes `lam` lie in `B` and hence off the domain.
+  **Caveat that matters:** `a = mu` *does* occur in Case II (6 458 states at
+  `weight <= 30`, e.g. `j=1, lam=(2,)`); the restriction to Case I is essential.
+* `p2 = t+5j-3-m >= 0` follows from `m <= R` (because `m + lam(k-m) <= R` and
+  `lam >= 0`) together with the Case-II dichotomy excluding `m = R`;
+* signed weight is preserved by an explicit identity (Lemma CI.1).
+**Not proved:** case stability and `phi^2 = id`, now reduced to R1 (explicit
+inequalities) plus RR-C021.
+
+### RR-C020 — closed forms on the whole `(4^r,1^s)` family. Status: PROVED.
+Cycle-3 worker m1. `t = r+s`, `j = 0`, and `phi` is closed form on all four regimes
+(`r = 0`; `1 <= r <= 4` split at `t <= 5`; `r >= 5` split at `t <= 8`), with
+`a != mu` throughout, created parts nonnegative, and inserted count nonnegative;
+`psi ∘ phi` is closed form on the complete 20-element Case-I parameter set; and for
+`r = 1` the full endpoint is reached in two steps.
+
+**Main's independent check:** re-implemented all four regimes and compared with the
+committed `bz82.py` for `r <= 10`, `s <= 25` — **280 of 280 agree**. (A first pass
+showed one mismatch at `r=0, s=3`; that was Main's encoding slip — the tuple `(0,)`
+against BZ82's zero-part convention — so the statement is right but the proof text
+should state the vanishing-part convention explicitly.) Lemma 2 is confirmed
+exactly: `()`, `(1)`, `(4^r)` for `1 <= r <= 4` are outside `phi`'s domain, `(4^5)`
+is inside — so RR-C014's `r <= 4` is *derived*, not assumed.
+
+### RR-C023 / RR-C024 / RR-C025 — cost, conjecture, refutation.
+* **RR-C023 (headline).** On this family BZ82 is far more expensive than on the
+  ones-ray: 21 of 80 parameters in the `r=1, s ≡ 0,4 (5)` classes exceed a
+  20 000-step cap, with the largest *finite* chains 18 702 and 15 452, against 672
+  for `(1^60)`. This is the first measurement of BZ82's cost on a family with more
+  than one object per weight, and it says the difficulty is *not* confined to the
+  ones-ray.
+* **RR-C024 (CONJECTURE, not theorem).** `b(4^2,1^s) = (s-1,6,3)` for `s ≡ 2 (5)`:
+  80 held-out parameters to `s = 402`, chain length exactly 8, 0 failures. Recorded
+  as a conjecture.
+* **RR-C025 (REFUTED).** The analogous shape at `r = 3` holds at
+  `s = 27,32,37,42,47,52,57` (all `(s+4,7,1)` in 2 steps) and **fails at `s = 62`**
+  — and also at 67, 72, 77.
+  **Corrected witness.** The worker reported the `s=62` image as
+  `(25,17,8,8,8,8)` after 1911 steps. That is wrong twice over: the committed map
+  (verified by Main three ways — valid gap partition, weight 74, inverse recovers)
+  gives **`(30,20,9,7,5,3)` in 5 steps**, and the reported tuple has adjacent
+  differences `8,9,0,0,0`, so it is not a gap partition and cannot be an image at
+  all. The refutation stands; the printed witness does not.
