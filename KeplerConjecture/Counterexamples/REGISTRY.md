@@ -649,3 +649,15 @@ Recorded in `Reviews/repro_c_cutflow_defects.py` as D5, labelled latent.
 the repaired theorem's `max(0,·)`, so on an all-negative instance it reports `t_star = −1` where
 `t* = 0`. `Φ ≥ t*` is unaffected (`Φ ≥ 0` is a hypothesis); the number itself is not the theorem's
 `t*`.
+
+### K15-X-C032 — `PROOF_GAPS` G8, part one: the two exact checkers share no code
+
+`Reviews/g8_checker_independence.py` (exit 0). **No shared code path:** `exactcert.py` (comp
+`5c10267`) imports `fractions.Fraction` only and hand-writes `pmul`, `pdivmod`, `pgcd`,
+`sturm_chain`, `sign_variations`, `cauchy_bound`; `shell_check.py` (`5caa1c9`) imports `sympy` +
+`fractions` and delegates root isolation to SymPy; neither imports the other. **Agreement:** on
+`q ≥ 0` on `[0,∞)`, Main's SymPy predicate, C's hand-rolled Sturm and the algebraic odd-part rule
+agree on all 52 vectors tried — both leading signs, roots at 0, repeated roots, and 12
+near-touching cases `(t−r)² ∓ ε` with `ε = 10⁻²⁰, 10⁻⁸`. **Not closed:** finite sample, `q`-side
+only; the `p ≤ η` predicate and the `η` precondition are outside it (the latter is `X-C025`). G8
+should read "independence established; agreement sampled, not proved".

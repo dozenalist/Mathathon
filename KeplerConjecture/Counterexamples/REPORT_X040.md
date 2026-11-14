@@ -357,6 +357,7 @@ one.
 | `X-C028` | Main's `D18` reverse condition is not triggered (no fifth defect); `D16`'s acceptance test stands with generic soundness still `SUSPENDED`; `D3`'s anchor is respected. `NEXT_PACKAGE` item 1 (`V = 5.40`) is already implied by Hales–McLaughlin. | **VERIFIED** / one wording defect open in Main's file |
 | `X-C029` | `CLAIMS.md` `K15-C093` still states `sup Φ < ∞` and the `{a}`-cut `4/3` example in its bullet list, both refuted by its own repair note. | **DEFECT** (documentation, Main's file) |
 | `X-C030` | `0.008880268414417` inherits C's `V_DOD` enclosure error: the exact value is `0.0088802684147391605`, so the number is a valid lower bound but not "the exact threshold". | **CORRECTION** |
+| `X-C032` | `PROOF_GAPS` G8, partially: C's `exactcert` imports only `fractions` and Main's `shell_check` only `sympy`+`fractions`, so they share no code path; the two agree on `q ≥ 0` for all 52 adversarial vectors tried, including near-touching `(t−r)²∓ε`. The sample is finite and the `p ≤ η` predicate is not covered. | **PARTIAL**, `Reviews/g8_checker_independence.py` |
 | `X-C031` | The family suite catches `a8526a8` (50/900) and `5619c1d` (8/308) and is blind to a missing precondition and to `7dc6be58`; passing it is evidence, not proof. | **VERIFIED**, §4.3 |
 
 ---

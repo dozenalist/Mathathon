@@ -40,6 +40,7 @@ None of these is a Kepler proof, and none is a new best bound: `0.782267 > 0.740
 | `Reviews/audit_cutflow_repair.py` | the repaired theorem, 6 checks + 115 LP + 196 exact-FM instances | ALL PASS |
 | `Reviews/repro_c_cutflow_defects.py` | C's four `cut_flow.py` defects (+1 latent), portably | 10/10 checks |
 | `Reviews/verify_eta_closed.py` | whether Main's `5caa1c9` closed the `η` witness | closed, control unchanged |
+| `Reviews/g8_checker_independence.py` | `PROOF_GAPS` G8: do the two exact checkers share code, and do they agree | no shared code; 52/52 agreement on the `q` side |
 
 ## Known-wrong things in the tree (kept deliberately, do not quote)
 
