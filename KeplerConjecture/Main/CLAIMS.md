@@ -875,7 +875,7 @@ geometric route produces: a candidate profile ⇒ run `exactcert` and
 - **Status.** `ACCEPTED_WITH_SCOPE`. Reviewer: X (to check the (E1)
   transcription against the paper and the enumeration's scope).
 
-### K15-C028 — exact shell fixture at degree 3, and why the allowance cannot pay (`TESTED_FINITE` with an exact verdict)
+### K15-C028 — exact shell fixture at degree 3: why the allowance cannot pay (`TESTED_FINITE`, exact verdicts)
 
 - **Family (admissible by construction).** `P(u) = (T − u)·S(u)` with `S(u) = Σ_{j≤2} s_j u^j`,
   all `s_j ≥ 0`, `T = π_lo ρ²`. Then `p ≤ 0` for `u ≥ T` and `p(0) = T s_0 > 0`
@@ -1073,7 +1073,7 @@ by the definition, not by a computation.
   remains `TESTED_FINITE` (their own report says so).
 - **Status.** `VERIFIED` (Main re-ran the exact historical failure). Reviewer X.
 
-### K15-C028 addendum — reference output of the fixture (reproducible)
+### K15-C028 addendum — reference output of the fixture (`TESTED_FINITE`, reproducible)
 
 `python3 KeplerConjecture/Computation/shell_fixture.py --m 2 --rho 2 --eta 0`
 reports `R = p(0)/q(0) = 1675516081914556393846743137744/3112130939427411660770593506033
@@ -1670,7 +1670,7 @@ last two blocks' verification was version-specific.
   reproducibility check plus a methodological endorsement, not independence).
   Reviewer X.
 
-### K15-C028 addendum 2 — the `η > 0` path passes exactly (vacuous, as predicted)
+### K15-C028 addendum 2 — the `η > 0` path passes exactly (`TESTED_FINITE`, vacuous as predicted)
 
 After the `K15-C049` repair, the fixture's shell family was exercised end-to-end
 with a genuine allowance: `--m 2 --rho 209/100 --eta 3` returns **all conditions

@@ -102,3 +102,18 @@ The authoritative values are the hashes printed by
 `kepler15/main`; they are recorded in the block's final commit message rather than
 in this file, so that this file does not have to be edited whenever the code moves.
 Any audit should quote the `kepler15/main` commit it used.
+
+## Block K15-REVIEW-0223-M — revisions read
+
+| Source | Full hash |
+| --- | --- |
+| supervisor `kepler15/setup-01a1d8c0` | `a2237aa` |
+| Computation `kepler15/comp-01a1d8c0` | `b51129e` |
+| Experimental `kepler15/experimental/run-01` | `846f221` |
+| Counterexamples `kepler15/counterexamples/run-01` | `9dc2ab2` |
+| Main at receipt | `201974b0677d67bd87d60825fd88011ca9e0d7d1` |
+
+Runs executed by Main this block: E's `barlow_shell_check.py` (spectrum + count 12,
+`K15-C082`); X's `exact_sign.py` (10/10 agreement, `K15-C076`/`C077`); the full
+`run_all_checks.py` suite with and without `--cert`; the fuzz at degrees 6–12 with
+seven seeds; `constants_check.py` (29 checks); `function_range` cross-checks.
