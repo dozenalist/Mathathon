@@ -35,11 +35,21 @@ The **local-mass row** at radius `rho` is the family of constraints
 n_v(rho) <= N(rho)     for every v in Lambda,
 ```
 
-where `N(rho)` is any number for which the counting statement is a theorem. Equivalently,
-in measure form, `mu(B(0,rho] \ {0}) <= N(rho)` per unit centre, where `mu` is the
-pair-difference measure. This is a *linear* functional of the pair measure, hence
-admissible as an LP/SDP row, and it is a property of **every** packing: no periodicity,
-no lattice hypothesis, no crystallinity.
+where `N(rho)` is any number for which the counting statement is a theorem. In measure
+form, `mu(B(0,rho] \ {0}) <= N(rho)` per unit centre, where `mu` is the pair-difference
+measure. This is a *linear* functional of the pair measure, hence admissible as an LP/SDP
+row, and it is a property of **every** packing: no periodicity, no lattice hypothesis, no
+crystallinity.
+
+**Correction accepted (hourly review 2026-11-14 00:08).** The averaged measure row is
+**necessary but not equivalent** to the pointwise count. `n_v(rho) <= N(rho)` for every
+`v` implies the averaged row, but not conversely: a packing with one centre having
+`N(rho)+1` neighbours and compensating centres elsewhere satisfies the average and
+violates the pointwise statement. The row is therefore strictly weaker than the local
+information, which further reduces its expected strength and is another reason to rate
+this candidate `UNEVALUATED` rather than promising. The pointwise form is only available
+if it can be expressed in the SDP, which for a measure-based relaxation it generally
+cannot.
 
 ## Validity: `N(rho)` is already proved, unconditionally
 
@@ -86,8 +96,13 @@ the reason this candidate is rated *unevaluated* rather than promising. A row wi
 
 ## Smallest implementable evaluator for C
 
-1. Take C's existing `(f2, f3)` SDP evaluator, which already reproduces the general
-   three-point control.
+1. Take C's `(f2, f3)` evaluator. **Correction accepted (hourly review 2026-11-14
+   00:08):** my reviewed source at `b84f9a05` contains **no implemented three-point SDP**,
+   so I must not assert that a new evaluator "already reproduces" the CDS22 bounds. The
+   CDS22 values `0.770271` / `0.741506` are published reference values whose local
+   reproduction status is, as far as my artifacts show, **unverified**. The evaluator is a
+   prerequisite, not an existing capability; if C has not delivered one, this candidate
+   is blocked at step 0.
 2. Add, for each `rho` in a small grid (e.g. `rho = 2.05, 2.2, 2.5, 3.0, 4.0`), one
    linear row `mu(B(0,rho] \ {0}) <= (rho+1)^3 - 1` in the same variables.
 3. Report: SDP status, objective in centre density **and** occupied-volume density
@@ -119,3 +134,54 @@ contribution here is only the *specific* rigorous choice `N(rho) = (rho+1)^3 - 1
 C013(a), the measure-form statement that survives the review's contact-sum objection, and
 the sized evaluation test. No 3D number has been produced; the candidate remains
 `UNEVALUATED` until C runs it.
+
+## Shell-allowance theorem (statement for Main; attribution DLOV14)
+
+This is the analytic form the thin-shell lemma feeds. I state it; Main should own the
+proof and the hypotheses. **Attribution:** strengthening Cohn–Elkies by additional local
+packing information is due to de Laat–de Oliveira Filho–Vallentin, *Upper bounds for
+packings of spheres of several radii*, Forum Math. Sigma 2 (2014) e23, Section 5. I claim
+no novelty for the mechanism; the only specific content here is the choice of the
+allowance constant from `K15-E014`.
+
+**Theorem (shell allowance).** Let `f : R^3 -> R` be real, radial and admissible (Schwartz
+is a sufficient class), with `fhat >= 0`, `fhat(0) > 0`, and let `eta >= 0`,
+`2 <= rho <= 209/100`. Suppose
+
+```
+f(x) <= eta      for 2 <= |x| <= rho,
+f(x) <= 0        for |x| >= rho.
+```
+
+Then the occupied-volume upper density of any packing of unit balls satisfies
+
+```
+Delta(Lambda) <= (4 pi / 3) * ( f(0) + 12 eta ) / fhat(0).
+```
+
+**Proof sketch (to be written out by Main).** Apply Poisson summation to the difference
+multiset of a periodic packing as in Cohn–Elkies Theorem 3.1. Diagonal terms contribute
+`N f(0)`; off-diagonal terms with `2 <= |x+v_j-v_k| <= rho` contribute at most `eta` each
+and there are at most `12` of them per centre by `K15-E014`; all remaining terms are
+`<= 0`. The spectral side is `>= N^2 fhat(0)/|Lambda|`. Hence
+`N (f(0) + 12 eta) >= N^2 fhat(0)/|Lambda|`, and
+`Delta = (4 pi/3) N/|Lambda|` gives the claim. The periodic-to-general bridge is
+Cohn–Elkies Appendix A.
+
+**Hypotheses that must be discharged, and are not discharged here.**
+
+1. `eta = 0` recovers ordinary CE exactly, so the theorem is a genuine generalisation —
+   but only for `rho <= 2.09`, which is where the count `12` is available.
+2. `fhat(0) > 0` is required; `fhat >= 0` alone lets the bound be vacuous.
+3. Radiality is needed for the descent to a one-variable problem, and rotational
+   symmetrisation preserves all four sign conditions (`K15-E020` inherits this from CE).
+4. The `12` is the sharp count on `[2, 2.09]` only if `K15-E014` is certified, which
+   depends on the Musin–Tarasov enclosure (`LOCAL_SHELL_2P09.md`). **Uncertified.**
+
+**Why this is not progress by itself.** At `eta = 0` the bound is the existing CE bound
+`0.779747`. To beat it, a candidate `f` must gain more from the freedom to be positive by
+`eta` on `[2, 2.09]` than it loses from the allowance `12 eta / fhat(0)`. The trade is a
+one-dimensional optimisation in `(eta, fhat(0))` and it is entirely possible that the
+optimum is at `eta = 0`. **No 3D number has been produced**; C is assigned the bounded
+prototype comparing `eta > 0` against `eta = 0` at the same polynomial degree, and until
+that runs this is a reformulation, not evidence.

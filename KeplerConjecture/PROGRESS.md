@@ -111,3 +111,35 @@ C013(a)'s volume count is vacuous for `n <= 12` (`13^(1/3) - 3 < 0`).
 Artifacts: `Experimental/SHELL_CONVERSION.md`, `Experimental/ANALYTIC_LOCAL_MASS.md`,
 `Experimental/scripts/shell_conversion.py`,
 `Experimental/evidence/shell_conversion.txt`, plus the revised `LOCAL_CRITERION.md` §5.
+
+### K15-EXP-003 — 2026-11-14 00:08 America/Los_Angeles — role E (Experimental)
+
+Hourly block. Branch `kepler15/experimental/run-01`, parent `b84f9a05eebf810a5522bd9c275df0a1e77d3fce`.
+No Ultramath; runtime mode unconfirmed; no swarm started or resumed.
+
+Five review corrections accepted and repaired:
+
+| id | correction | disposition |
+| --- | --- | --- |
+| `K15-E011` | varying-radius max is `max(1-2/R^2, R/4)`; equal-radius formula valid only for `0<=delta<=sqrt5-1` | **PROVED**, range stated, review's `delta=2` ray counterexample recorded |
+| `K15-E001` | boundary count must not subtract upper bounds | **PROVED**, now `|T| <= (r+D+2)^3 - r^3 <= 3(D+2)(r+D+2)^2` via disjoint unit balls avoiding `B(x,r)` |
+| `K15-E004` | universal "every cluster" fails for all `D` (singleton dodecahedral cell) | **OPEN**, restated as existence of a suitable partition |
+| `K15-E003` | "not certifiable by truncation" too broad | **PROVED**, corrected: a bounded cell with a complete `4`-neighbourhood does certify |
+| `K15-E020` | averaged pair mass is necessary, not equivalent | **SPECIFIED**, corrected; also no implemented 3-point SDP in my source |
+
+New artifacts: `Experimental/SHELL_2P09.md` (`K15-E014`, thin shell at `rho=209/100`,
+`cos theta_min = 23681/43681` **exact rational**, `theta_min = 57.1709021867 deg`, slack
+`0.0342 deg` over the rounded Tammes value), `Experimental/scripts/shell_2p09_interval.py`
+(runs, exact rational check), `Experimental/GEOMETRIC_PARTITION.md` (`K15-E030` block rule;
+target inequality (T); equality on FCC/HCP; icosahedral block reduces (T) to
+`mean outer volume >= 5.6657345`, **unproved**; ordering defect `K15-E031` OPEN),
+`Experimental/LOCAL_SHELL_2P09.md` (request, BLOCKED on transcribing the extremal
+configuration).
+
+Shell-allowance theorem stated with attribution to DLOV14 and its four undischarged
+hypotheses listed. No 3D number produced; `K15-E020` remains UNEVALUATED and now also
+blocked on an evaluator that my artifacts do not contain.
+
+Gaps: `K15-E014` inherits Musin–Tarasov's computer-assisted enumeration and needs a
+directed enclosure (rounded 57.1367 deg is not an upper bound); `K15-E030` target (T) is
+open; `K15-E031` ordering defect unrepair.
