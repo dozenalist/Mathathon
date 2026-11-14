@@ -29,10 +29,36 @@ def det3(u, v, w):
 def verify(path):
     blob = json.load(open(path))
     cert = blob.get("certificate", blob)
+    allp = [tuple(F(x) for x in p) for p in cert["planes"]]
     planes = [tuple(F(x) for x in p) for p in cert.get("candidate_planes", cert["planes"])]
     verts = [tuple(F(x) for x in P) for P in cert["vertices"]]
     facets = cert["facets"]
     vol = F(cert["volume"])
+
+    # (0) FACET UNIQUENESS and CONSTRAINT SATISFACTION -- the two things Astra's witnesses attack.
+    #     Without them this checker shares the blind spots it is supposed to expose: a doubled facet
+    #     list also doubles the signed-tetrahedron sum, so the two formulas would "agree" at 2V.
+    if len({f["plane"] for f in facets}) != len(facets):
+        raise SystemExit("FAIL: two facets share a plane index")
+    for pt in verts:
+        for (a, b, c, d) in allp:
+            if a * pt[0] + b * pt[1] + c * pt[2] > d:
+                raise SystemExit("FAIL: a vertex violates a constraint")
+    #     and the normals must span R^3, or closure does not bound the polyhedron (a prism closes)
+    for i in range(len(facets)):
+        for j in range(i + 1, len(facets)):
+            for k in range(j + 1, len(facets)):
+                u, w, z = (planes[facets[t]["plane"]][:3] for t in (i, j, k))
+                if det3(u, w, z) != 0:
+                    break
+            else:
+                continue
+            break
+        else:
+            continue
+        break
+    else:
+        raise SystemExit("FAIL: the facet normals span fewer than 3 dimensions")
 
     # (1) every facet's vertices lie on its plane and are outward ordered -- checked by the sign of
     #     the triangle orientation against the plane normal, which needs no area vector

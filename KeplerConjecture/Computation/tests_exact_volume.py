@@ -250,6 +250,22 @@ def main():
     except ValueError as e:
         check("a candidate plane outside the constraints is REJECTED", True, str(e)[:50])
 
+    # (2c) the STANDALONE verifier must reject both witnesses too, independently of the producer
+    import json as _json, os as _os
+    import verify_certificate_independent as VI
+    for name, mutate in (("duplicated facets", lambda c: (c.__setitem__("facets", c["facets"] + _copy.deepcopy(c["facets"])), c.__setitem__("volume", "16"), c)[-1]),
+                         ("added constraint", lambda c: (c["planes"].append(["1", "0", "0", "1/2"]), c)[-1])):
+        bad_c = _copy.deepcopy(cert8)
+        bad_c = mutate(bad_c)
+        _json.dump({"certificate": bad_c}, open(".tmp_cert.json", "w"))
+        try:
+            VI.verify(".tmp_cert.json")
+            check("the standalone verifier rejects the %s witness" % name, False, "accepted")
+        except SystemExit:
+            check("the standalone verifier rejects the %s witness" % name, True)
+        finally:
+            _os.remove(".tmp_cert.json")
+
     # (3) closure alone is not boundedness: the four side faces of a prism close, rank 2
     check("the four side-face normals span only 2 dimensions",
           EV._rank3([(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0)]) is False)
