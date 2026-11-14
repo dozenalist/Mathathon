@@ -8,6 +8,12 @@ supervisor check collects the request and executes it locally; Sair-Watch
 has been retired for this project by the latest user instruction.
 Continue independent mathematical work while an already-submitted job runs.
 
+Supervisor checkpoint 01:38 Pacific: C-CERT-001's K33 files and regression/oracle
+commands ran locally. M-LEAN-002 reached the time/memory budgets without theorem
+verification and needs revision. Shell degree-8/9 commands had incompatible
+restrictions. See `Main/REVIEW_2026-11-14_0138.md` and its logs; older queue states
+below are historical until Main reconciles them.
+
 ## Queue
 
 `Main/` owns the queue. IDs are distinct per role from this cycle onward; the old

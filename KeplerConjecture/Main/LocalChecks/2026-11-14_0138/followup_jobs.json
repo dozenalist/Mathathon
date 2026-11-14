@@ -1,0 +1,96 @@
+[
+  {
+    "job": "volume_original",
+    "args": [
+      "C:\\Users\\carte\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\lean.exe",
+      "-j1",
+      "-M1024",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0138\\followup-jobs\\KeplerConjecture\\Lean\\Kepler15\\Volume.lean"
+    ],
+    "workdir": ".",
+    "cap_seconds": 60,
+    "status": "time_cap",
+    "exit_code": 1,
+    "elapsed_seconds": 60.266,
+    "peak_observed_bytes": 714915840,
+    "log": "volume_original.log"
+  },
+  {
+    "job": "volume_targeted",
+    "args": [
+      "C:\\Users\\carte\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\lean.exe",
+      "-j1",
+      "-M1024",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\worktrees\\kepler15-01a1d8c0\\KeplerConjecture\\Main\\LocalChecks\\2026-11-14_0138\\VolumeTargeted.lean"
+    ],
+    "workdir": ".",
+    "cap_seconds": 240,
+    "status": "memory_cap",
+    "exit_code": 1,
+    "elapsed_seconds": 32.641,
+    "peak_observed_bytes": 1075310592,
+    "log": "volume_targeted.log"
+  },
+  {
+    "job": "shell_sos_degree9",
+    "args": [
+      "C:\\Users\\carte\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "shell_sos.py",
+      "--checker",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0138\\followup-jobs\\KeplerConjecture\\Computation\\shell_check.py",
+      "--degree",
+      "9",
+      "--out",
+      "C:\\Users\\carte\\lean\\Mathathon\\.sair\\runs\\01a1d8c0-f50f-7352-a61a-3927660a8eea\\kepler15\\review-20261114-0138\\followup-jobs\\shell_sos_degree9.json"
+    ],
+    "workdir": "Computation",
+    "cap_seconds": 120,
+    "status": "completed",
+    "exit_code": 1,
+    "elapsed_seconds": 3.031,
+    "peak_observed_bytes": 86573056,
+    "log": "shell_sos_degree9.log"
+  },
+  {
+    "job": "transfer_fcc_fixture",
+    "args": [
+      "C:\\Users\\carte\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "transfer_check.py"
+    ],
+    "workdir": "Computation",
+    "cap_seconds": 60,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 1.546,
+    "peak_observed_bytes": 99057664,
+    "log": "transfer_fcc_fixture.log"
+  },
+  {
+    "job": "cluster_monotonicity_fixture",
+    "args": [
+      "C:\\Users\\carte\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "cluster_fixture.py"
+    ],
+    "workdir": "Computation",
+    "cap_seconds": 60,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 3.297,
+    "peak_observed_bytes": 79331328,
+    "log": "cluster_monotonicity_fixture.log"
+  },
+  {
+    "job": "experimental_constants",
+    "args": [
+      "C:\\Users\\carte\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "Experimental/scripts/verify_all_claims.py"
+    ],
+    "workdir": ".",
+    "cap_seconds": 30,
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 2.297,
+    "peak_observed_bytes": 52707328,
+    "log": "experimental_constants.log"
+  }
+]

@@ -1,5 +1,14 @@
 # Claim ledger — Kepler problem 15
 
+> **Current supervisor review, November 14, 01:38 Pacific:** C029's proof is
+> withdrawn. Main's sign predicates at 66267141 and their 9461aae repair have
+> exact false accepts; general soundness and Main-only acceptance claims are
+> suspended. X's old irrational-root predicate is unsound; its replacement has
+> passed named local controls only. K33/K33b separately passed Computation's
+> strict checker and SymPy oracle. Scope and pending obligations are recorded in
+> [REVIEW_2026-11-14_0138.md](REVIEW_2026-11-14_0138.md), which overrides conflicting
+> worker labels. No new best bound or simpler Kepler proof is accepted.
+
 > **Supervisor review, November 14, 00:08 Pacific:** the new K21 certificate is
 > `REFUTED`; the fixed-Gaussian infeasibility claim is also `REFUTED`. Main's
 > C005r center-average identity, C015 universal-cluster quantifier, and the

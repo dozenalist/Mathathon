@@ -1,0 +1,8 @@
+certificate: out/verified_certificate_K33b.json
+  degree      : 33
+  exactcert   : ACCEPT
+  p0/q0       : 42935541634304122537361009/230584315533749727927712550
+  Delta upper : 0.779966216777 (rounded up)
+  stored ratio matches: True
+  sympy oracle: ACCEPT
+  VERIFIED

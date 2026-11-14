@@ -1,0 +1,19 @@
+E1 POSITIVE valid example, degree 1:  c = (4, 1)
+   p = 11/2 - t  < 0 for t > 11/2, so certainly on [8pi, inf)
+   q =  5/2 + t  > 0 on [0, inf)
+   exactcert ok=True  oracle ok=True
+   exact p0/q0 = 11/5 ; Delta upper (rounded up) = 9.215339
+
+E2 even multiplicity inside the half-line is ALLOWED
+   -(t-30)^2  double root at 30 (in-line) sympy=neg  exactcert=neg   AGREE
+   -(t-30)^3  triple root at 30 (in-line) sympy=fail exactcert=fail  AGREE
+    (t-30)^2  double, positive      sympy=pos  exactcert=pos   AGREE
+   -(t-10)^3  triple root at 10 (OUTSIDE) sympy=neg  exactcert=neg   AGREE
+
+E3 endpoint root fails closed in both implementations
+   sympy=fail  exactcert=fail
+
+E4 exact agreement on random candidates (no sampling)
+   20 candidates, 20 agree, 0 disagree
+
+ALL ORACLE CHECKS PASS (exact, not sampled)

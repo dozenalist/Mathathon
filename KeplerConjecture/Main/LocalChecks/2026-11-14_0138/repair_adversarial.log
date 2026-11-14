@@ -1,0 +1,16 @@
+Original Main witnesses (must now be False):
+interval endpoint roots False
+nonnegative half-line endpoint root False
+nonpositive ray endpoint root False
+Additional Main witnesses (all false inequalities):
+interval squared roots at all three probes accepted= True exact witness= 9/4096 at 1/4
+half-line negative square at all four probes accepted= True exact witness= -441/65536 at 1/4
+ray positive square at all three probes accepted= True exact witness= 9/64 at 1/2
+X repaired predicate: irrational simple/double roots and endpoints
+(u**2 - 3)*(u**2 - 2) 0 1 False expected False
+(u**2 - 2)**2 0 1 True expected True
+-(u**2 - 2)**2 0 -1 True expected True
+u*(u - 1) 0 1 False expected False
+(u - 1)**2 1 1 True expected True
+-(u - 1)**2 1 -1 True expected True
+REPRODUCED: Main repair still has three false accepts; X named controls pass.

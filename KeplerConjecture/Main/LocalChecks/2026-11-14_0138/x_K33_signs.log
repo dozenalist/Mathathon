@@ -1,0 +1,32 @@
+A. exact sign conditions (my own Sturm implementation, my own p,q)
+   A_lo = 8*PI_LO < 8*pi ; testing the STRONGER condition on [A_lo, inf)
+   (CE1) p <= 0 on [A_lo, inf): True
+        roots of p above A_lo (should be none): [] ; sign at A_lo = -1 (mult 0) ; leading sign -1
+   (CE2) q >= 0 on [0, inf): True
+        roots of q above 0 (should be none): [] ; q(0)>0: True ; leading sign 1
+
+   where does p cross zero? (contact location)
+      p(25.0) = 1
+      p(25.1) = 1
+      p(25.13) = 1
+      p(25.1327) = -1
+      p(25.132741) = -1
+      p(25.132742) = -1
+      p(25.2) = -1
+      p(30) = -1
+   8*pi = 25.1327412287 ; so p > 0 just below 8pi and < 0 above => the zero is at the contact radius 2
+
+   total real roots of p: 1  of q: 1
+   real roots of q in (-inf,0): 1
+
+B. near-tangency of q (the float-checker trap)
+   min q on [0,300] = 3.708e-06 at t = 10.332028  (positive: True)
+   => q is strictly positive yet ~1e-29 at its minimum: any float-based sign test is unsafe here.
+
+C. independent controls (my checker, not C's)
+   positive control p=25-t (c=[47/2,1]), q=22+t :
+   POSITIVE c=(47/2,1): p=25-t, q=22+t            ACCEPT   (CE1=True, CE2=True)  Delta=4.759988869
+   K33 (should ACCEPT)                            ACCEPT   (CE1=True, CE2=True)  Delta=0.779966498
+   NEGATIVE: -K33 (p0<0)                          REJECT (p0=False, q0=False)
+   NEGATIVE: K33 with c0 += 1/1000                ACCEPT   (CE1=True, CE2=True)  Delta=0.783371916
+   NEGATIVE: K33 with c1 += 1/1000                ACCEPT   (CE1=True, CE2=True)  Delta=0.787430829

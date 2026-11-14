@@ -1,0 +1,18 @@
+adversarial sign-checker suite (T = pi_lo*rho^2 = 13722790870145575844928672562461687/1000000000000000000000000000000000)
+PASS  q=(u-5)^2 : touching zero, must PASS
+PASS  q=-(u-5)^2 : negative, must FAIL
+PASS  q=(u-5)^3 : sign change, must FAIL
+PASS  q=(u-1)^2(u-2)^2 : two touching zeros, must PASS
+PASS  q=(u-1)^2(u-2) : one sign change, must FAIL
+PASS  q=u^2 : double root at the endpoint 0, must PASS
+PASS  q=prod_{k=1..10}(u-k) : ten simple positive roots, must FAIL
+PASS  p=-(u-T)^2 : touching at T, must PASS
+PASS  p=(u-T) : crosses at T, must FAIL
+PASS  p=-(u-T) : negative beyond T, must PASS
+PASS  p=-(u-13)^2 <= 0 on the window, must PASS
+PASS  p=(u-13)^2 <= 0 on the window, must FAIL
+PASS  p=-1 <= 0 on the window, must PASS
+
+SUITE: ALL EXPECTATIONS HOLD
+These same cases should be run against Computation's exactcert;
+they are stated in Main's basis, so convert with interface_xcheck.main_to_comp.

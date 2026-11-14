@@ -1,0 +1,10 @@
+R = 2.0  Phi = 1.0  |Lambda| = 2457
+max |A(v)| = 7.25  bound Phi*k_R = 26.0
+  r = 1.0 : sum A = -2.000000   bound 3*Phi*(R+1)^5*r^2 = 729.000000   OK
+  r = 2.0 : sum A = +13.000000   bound 3*Phi*(R+1)^5*r^2 = 2916.000000   OK
+  r = 3.0 : sum A = +11.500000   bound 3*Phi*(R+1)^5*r^2 = 6561.000000   OK
+  r = 4.0 : sum A = -6.000000   bound 3*Phi*(R+1)^5*r^2 = 11664.000000   OK
+  r = 5.0 : sum A = -18.500000   bound 3*Phi*(R+1)^5*r^2 = 18225.000000   OK
+  r = 6.0 : sum A = -3.250000   bound 3*Phi*(R+1)^5*r^2 = 26244.000000   OK
+
+RESULT: bound holds on this instance

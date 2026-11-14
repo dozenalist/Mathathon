@@ -46,6 +46,12 @@ read-only history, ownership and deduplication checks. This change does not
 authorize extra chats, swarms or a watcher restart.
 
 The full hour is an assignment requirement, not yet an observed completion.
+The 01:38 Pacific review observed early endings in all four earlier assignments;
+follow-ups and runtime evidence are in `ASSIGNMENTS_2026-11-14_0138.json`.
+Worker elapsed-time claims must be checked against actual API timestamps and
+turn completions. Finishing an initial checklist is not verified completion
+of the Kepler project; proceed to substantive fallbacks. Evidence-only messages
+do not restart a busy assignment's hour.
 Interim pushes must lead to further useful work; do not fill time with sleeping
 or artificial loops. The 45-minute cadence remains in force.
 

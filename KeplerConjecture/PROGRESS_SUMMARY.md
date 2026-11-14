@@ -1,12 +1,12 @@
 # Kepler Conjecture: progress so far
 
-Updated November 14, 2026, at the 01:20 Pacific user-requested restart of
-research assignments. All four existing chats are now verified to be running
-in Ultramath mode and have received full-hour assignments. Sair-Watch remains
-stopped; the 45-minute review cadence is unchanged. New worker results are
-published on their feature branches and await integration and independent
-review through Main. No new best packing bound or simpler Kepler proof has
-been accepted. This cumulative account is updated
+Updated at the November 14, 2026, 01:38 Pacific scheduled review. Worker commits
+and corrections are combined in the review branch. Local checking found a
+geometric proof gap and additional sign-verifier defects. The agents received
+further full-hour work after early endings; actual Ultramath runtime is verified,
+but an hour of continuous work has not been established. Sair-Watch remains
+stopped and the 45-minute cadence is unchanged. No new best packing bound or
+simpler Kepler proof has been accepted. This cumulative account is updated
 at each scheduled check, with a short entry in
 [HourlyUpdates](HourlyUpdates/).
 
@@ -102,6 +102,49 @@ error honestly, but another local test found integer truncation in its compariso
 helper. All small checks have finished. No extra prompt cycle was started;
 these completions were triaged into the subsequent assignments.
 
+## What the 01:38 scheduled review established
+
+Main withdrew a proposed geometric proof after we found that it bounded a
+positive subset sum using a total that could contain negative contributions.
+The corrected accounting statement includes those negative contributions.
+The transfer and cluster arguments remain under independent review, with
+their boundary and realizability assumptions explicit.
+
+Two general sign checkers had exact false accepts. One ignored irrational
+roots; another mishandled endpoint roots. Main's first repair fixed the reported
+examples but still accepted squared polynomials that vanished at every chosen
+test point. We reproduced these failures exactly and returned the witnesses to
+Main and Counterexamples. General checker acceptance remains suspended. X's
+replacement passed the named local controls; independent audit continues.
+
+The particular degree-33 rational certificates separately passed Computation's
+strict checker and SymPy oracle. The better file's recomputed upper display is
+approximately 0.77996622, weaker than known results. The verifier defects do not
+by themselves refute those files, and the successful checks do not establish
+a new best bound or validate every generic checker.
+
+The rational Tammes comparison reproduced locally. Its connection to the
+optimal thirteen-point spherical configuration still depends on the primary
+theorem and its computer enumeration. Barlow, transfer, cluster and arithmetic
+scripts passed finite controls. These are not universal geometric certificates.
+The tested thin-shell allowance gave no gain. Neither that finite experiment
+nor the ceiling for one directional estimator closes an entire research route.
+
+The new ball-volume Lean draft did not verify within the local budgets: its
+broad import timed out, and an import-only diagnostic version reached the
+one-gigabyte memory limit. Main received the logs and owns revision. The earlier
+algebraic normalization remains the only accepted Lean component. The submitted
+shell proposer command had incompatible degree restrictions; Computation has
+the correction task. All local jobs for these snapshots finished.
+
+Main and Experimental ended prior blocks after about 22 and 25 minutes;
+Computation and Counterexamples ended after about 40. These do not count as
+full-hour completion. Fresh substantive tasks, independent fallbacks and
+actual-clock requirements were delivered in verified Ultramath mode. Main leads
+the mathematical choices and integration; the supervisor supplies evidence and
+local execution. Source revisions, failures, pending work and delivery IDs are
+recorded in [the review](Main/REVIEW_2026-11-14_0138.md).
+
 ## How the next stages will run
 
 The latest instruction sets checks every **45 minutes** and cancels Sair-Watch.
@@ -122,10 +165,11 @@ in standard mode. Delivery is confirmed; the full hour of work is not yet
 observed. The scheduled review checks for early endings and continues useful
 unfinished work. No historical swarms or extra chats were created.
 
-The latest fetched worker checkpoints report a new rational control near
+At the earlier 01:20 checkpoint, fetched worker commits reported a rational control near
 0.7799665, repaired positive test fixtures, a directed Tammes enclosure, an
 exact Barlow shell argument and a free-width Gaussian implementation. These
-are pending independent audit and integration. The reported control is weaker
+were pending independent audit and integration; the subsequent review above
+records the local results and remaining obligations. The reported control is weaker
 than known bounds and is not a new best packing result. Finite failures of
 particular optimizers do not establish that a whole mathematical family is
 impossible. The new assignments explicitly require correcting that distinction.

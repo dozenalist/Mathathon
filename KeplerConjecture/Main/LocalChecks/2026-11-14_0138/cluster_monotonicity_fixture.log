@@ -1,0 +1,8 @@
+13-cluster: centre + 12 at distance 2.000000, min mutual 2.102924
+vol Omega(centre) inside the bare 13-cluster (box-truncated): 5.550291  (sqrt32 = 5.656854)
+completion radius 5.0 (2140 extra points): centre 5.550291, sum_K(vol - sqrt32) = +157.870540
+completion radius 3.5 (2178 extra points): centre 5.550291, sum_K(vol - sqrt32) = +63.709288
+completion radius 2.7 (2190 extra points): centre 5.550291, sum_K(vol - sqrt32) = +17.908537
+
+Monotonicity: every entry above is an UPPER bound for the packing value, so a
+positive sum at a finite stage cannot certify the inequality (K15-C036).

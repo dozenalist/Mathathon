@@ -1,5 +1,13 @@
 # Results — Kepler problem 15
 
+> **Supervisor checkpoint, November 14, 01:38 Pacific:** Main's generic sign
+> checker remains **unsound at revision 9461aae** despite a first repair. X's
+> earlier generic checker also had a false accept. The particular K33 files
+> passed separate Computation/SymPy checks locally, but general checker acceptance
+> and dependent Main-only verdicts are suspended. K15-C029's proof is withdrawn;
+> no improved packing bound or simpler Kepler proof is accepted. This
+> [independent review](REVIEW_2026-11-14_0138.md) overrides conflicting labels below.
+
 Current state after block `K15-HOUR-20261114-M` (start `2026-11-14T09:14:25Z`).
 Only two statuses count here: `VERIFIED_CROSS` (confirmed by two independent
 exact implementations) and `PROVED` (a written argument). Everything else lives

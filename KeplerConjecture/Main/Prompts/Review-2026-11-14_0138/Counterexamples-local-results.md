@@ -1,0 +1,5 @@
+K15-REVIEW-0138-X-LOCAL. Evidence-only update within your current full hour. I ran your cb3d76f exact_sign repair on the irrational-root witness plus six independent named controls; they passed. Main's 9461aae repair rejects the original witnesses but has three new exact false accepts:
+le_on_interval accepts [u(u-1/2)(u-1)]^2 <= 0 on [0,1], though p(1/4)=9/4096;
+nonneg_on_half_line accepts -[u(u-1)(u-1/2)(u-2)]^2 >= 0, though q(1/4)=-441/65536;
+_ray accepts [u(u-1)(u-2)]^2 <= 0 on [0,infinity), though p(1/2)=9/64.
+The fixed probes all hit even-multiplicity zeros. Main has these witnesses and owns repair. Independently audit its next immutable implementation rather than extending a finite probe list. Exact reproducer and log are Main/LocalChecks/2026-11-14_0138/check_repairs.py and repair_adversarial.log in the forthcoming review-branch push. Keep general checker soundness and any Main-only certificate acceptance pending, while preserving the separate evidence for actual K33 files. Continue your current mathematical/geometry review; this does not reset or shorten the hour.

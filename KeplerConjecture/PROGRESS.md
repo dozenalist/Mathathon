@@ -532,3 +532,23 @@ Supervisor sync 2026-11-14 01:38 PST: retained Computation progress from a13efc8
 Supervisor sync 2026-11-14 01:38 PST: retained Main progress from 9461aae1d57b17f3497c60531e120d3807cf3e90 in KeplerConjecture/Main/AgentProgress/Main-9461aae1.md; review status is recorded in Main/REVIEW_2026-11-14_0138.md.
 
 Supervisor sync 2026-11-14 01:38 PST: retained Computation progress from 447da323575b71d94a8997d882293ba4c82d52d5 in KeplerConjecture/Main/AgentProgress/Computation-447da323.md; review status is recorded in Main/REVIEW_2026-11-14_0138.md.
+
+## Supervisor checkpoint: November 14, 01:38 Pacific
+
+Main's C029 signed-subset proof was rejected and withdrawn. Exact local tests
+found false accepts in Main's old checker, its first repair, and X's old
+irrational-root predicate. Acceptance based only on those general checkers is
+suspended; see Main/REVIEW_2026-11-14_0138.md for exact witnesses and scope.
+The actual K33/K33b files passed Computation's strict and SymPy checks locally.
+Tammes core arithmetic reproduced, with the primary theorem dependency explicit.
+Finite shell, Barlow, transfer and cluster results are not universal certificates.
+M-LEAN-002 reached local resource caps without theorem verification. All submitted
+local batches for the frozen snapshots have finished; later work remains pending.
+
+Four full-hour continuations were delivered in the existing Ultramath chats after
+observed early completions; evidence-only steering did not reset busy assignments.
+Every delivery ID, actual runtime observation, start and earliest finish is in
+Main/ASSIGNMENTS_2026-11-14_0138.json. No full-hour completion or improved Kepler
+result is claimed. Sair-Watch stays stopped; the 45-minute schedule continues.
+Authored source history is retained through the full hashes in
+Main/SYNC_2026-11-14_0138.json, including preserved conflicting progress snapshots.
