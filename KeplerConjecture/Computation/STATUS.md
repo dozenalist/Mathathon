@@ -18,7 +18,7 @@ python3 compact_verify.py                                          # third algor
 | `K15-C-XVAL-002` | two checkers sharing no code accept it, and accept each other's output | `CROSSVALIDATION.md` |
 | `compact_verify.py` | a **third** checker on a different algorithm: Bernstein basis + reversed-polynomial tail, no root counting | 41+9 pieces for `q`, 1+11 for `p`; negative controls reject a perturbed `p(0)`, a flipped Laguerre sign, and the claim `0.7797` |
 | `K15-C-REVALIDATE-001` | four shell-route verdicts survive exact basis conversion (`0.78037032`, `0.78033446`) | `REVIEW_0138.md` §2 |
-| `K15-C-BOTHSIDES-QUINTIC-001` | quintic both-sides Gram `Δ ≤ 1.33982381256` | `sos_both_sides_quintic2.py` |
+| `K15-C-BOTHSIDES-QUINTIC-001` | quintic both-sides Gram `Δ ≤ 1.33982381256` — **above the trivial bound 1**, so a format demonstrator, not a competitive bound | `sos_both_sides_quintic2.py` |
 
 ## The cut/flow geometry — what it does and does not give
 
@@ -43,7 +43,7 @@ C044 quantifies over finite `U` and a period is not finite.
 
 ## Numerical only (`TESTED_FINITE` / `TESTED_FAMILY`) — not certificates
 
-`SOSQSIDE-004` (`1.37125723` Fourier side, `1.33982382` `p` side — best found), `ISOPERIM-001`
+`SOSQSIDE-004` (`1.37125723` Fourier side, `1.33982382` `p` side — best found, **all above the trivial bound 1**, i.e. demonstrators), `ISOPERIM-001`
 (profile exponent `−0.3230 ≈ −1/3`, one complex), `FAMTESTED-001`, `SHELLBENCH-001`,
 `SHELLGAIN-002/003`, `CUTJAM-001`, `SOSIRRED-001`, `SATURATION-001`. `shell_bench.py`,
 `search_*.py`, `ce3_*.py` are all in this class.
