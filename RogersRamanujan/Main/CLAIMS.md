@@ -28,7 +28,7 @@ never used to promote anything above TESTED_FINITE.
 | RR-C018 | **Lemma CI**: `phi` Case I maps into Case II; `a' = a-1`; `mu' >= mu` | PROVED (weight, `a'=a-1`) + TESTED_FINITE (`weight<=26`) |
 | RR-C019 | BZ82's printed `mu_bar > mu` is **false**; the correct statement is `>=`, equality iff `lam(a)=lam(a+1)` | **REFUTED** (5 844 of 10 285 Case-I states, first `(-1;())`) |
 | RR-C020 | **Theorem 1/2/3**: `phi` and `psi∘phi` closed forms on the **whole** family `(4^r,1^s)`, plus Lemma 2 (excluded set) | **PROVED** |
-| RR-C021 | **R2 slot identities** (three, plus Case-I duals); only the positional sharpening R2.1'' is checked | TESTED_FINITE |
+| RR-C021 | **R2 slot identities** (R2.1 multiset, R2.2, and both Case-I duals) verified; all-input proof open | TESTED_FINITE (widened in cycle 4) |
 | RR-C022 | `phi` obligations: `N >= 0`, both deletions valid, `a != mu` in Case I, `p2 >= 0` (**sharp**: attained), weight identity | **PROVED** (all `n`) |
 | RR-C026 | Dead code retired: `phi` Case I never deletes one slot twice | **PROVED** (2 routes) + 0 hits in 1 746 369 states |
 | RR-C023 | `(4^r,1^s)` cost: 21 of 80 parameters exceed a 20 000-step cap (finite chains to 18 702) | TESTED_FINITE |
@@ -437,8 +437,29 @@ about positive parts misses this case entirely.
 of `a'`. So R2 and the shift currently cite each other's vocabulary. Breaking that
 circle — defining `a'` intrinsically at the image rather than through the shift —
 is part of what a proof of R2 must do.
-**Obligation:** an all-input proof of (R2.1)–(R2.3) and their duals, with the
-multiset and virtual-slot cases handled, independently reviewed.
+**Cycle-4 widening of the finite evidence.** Beyond the `R2.1''` fragment above,
+Main has now checked, over all in-domain states of `weight <= 23` (6 224 Case-II and
+6 224 Case-I states, 0 failures in each group):
+* **(R2.1) as a multiset**, with virtual slots (`pad(lam',x) = lam'_x` for
+  `x > len(lam')`): `{pad(lam',a'), pad(lam',mu')} = {m, p2}`;
+* **(R2.2)**: `N' = L' + lam'(mu') - 5j' - t*'` equals `#{i : lam_i = 1}`;
+* **(R2.1')**: `{m', p2'} = {L, lam(mu)}` for the Case-I image, recomputing `m', p2'`
+  from the image;
+* **(R2.2')**: `#{x in lam' : x = 1} = N`.
+So the whole of R2.1/R2.2 in both directions is now supported finitely, not just one
+inequality pair. (R2.3 and R2.3' were not re-checked here.)
+
+**Why the multiset form is the right one — a proof hint, not a proof.** A created
+part may **tie** with a decremented part (e.g. `lam_i - 1 = m`), and it may be `0`
+and live in a virtual slot. A positional statement then has to say *which copy* sits
+at `a'`, which is ill-defined under ties. The multiset statement is invariant under
+that ambiguity, so it is exactly the form that survives ties; and since Case I
+deletes **both** slots, order is irrelevant to the involution. This suggests the
+proof should proceed through the multiset and never through sorted positions — and it
+explains why the positional sharpening `R2.1''` is a *consequence* on the tested
+range rather than the natural hypothesis.
+**Obligation:** an all-input proof of (R2.1), (R2.2) and their duals, plus R2.3/R2.3',
+with the tie and virtual-slot cases handled as above, independently reviewed.
 
 ### RR-C022 — `phi`'s definedness obligations. Status: PROVED for all `n`.
 From cycle-3 worker m4, with Main's checks:

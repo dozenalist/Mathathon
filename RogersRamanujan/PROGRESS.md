@@ -718,3 +718,49 @@ secondary implementation that removes the faithfulness bottleneck.
   were not attempted as proofs and P8 is finite evidence only. So `phi` remains a
   **reduction** (R1 inequalities + R2 slot identities) rather than a proved
   involution, and RR-C012 stays OPEN.
+
+## 2026-11-14 / RR-M016 / cycle 4: B/D retraction, full R2 checked, six evidence repairs
+
+- **Author / reviewer:** Main. Supervisor's `SUPERVISOR_REVIEW_26480.md` merged
+  (origin/rr127/main `c8eeb4a`). Ultramath is OFF per user instruction; this block
+  was Main solo, no live workers at handoff.
+- **RETRACTION (the important item).** Cycle 3 "corrected" worker m1's P3 witness.
+  **That correction is withdrawn and the worker was right.** `(25,17,8,8,8,8)` is
+  the **`B`-endpoint** from `pi_forward` — a valid `B_74` object (length 6, smallest
+  part 8) that is not required to have gaps. Main applied the `D_n` gap test to a
+  `B`-object, and separately mis-measured the path: `tr, _ = pi_forward(p)` binds
+  the **endpoint** to `tr`, so the reported "5 steps" was
+  `len((30,20,9,7,5,3)) - 1`. The true figures are **1 910 edges / 1 911 states**.
+  `T^{-1}(25,17,8,8,8,8) = (30,20,9,7,5,3)` entry by entry, so both tuples are
+  correct and live on opposite sides of `T`. The P3 refutation stands, in `B`-space.
+- **Repairs applied** (all in `Main/CLAIMS.md`): psi check was `psi_ok > 0` and is
+  now full equality against its denominator, with two negative controls (deliberate
+  `j`-sign slips in psi and phi) required to be detected on every state — 224/224
+  each, 13 checks, 0 failed; MX.3's "monotone on all of `Z`" corrected (false across
+  `z = k`, counterexample `k=10, lam(1)=5`: `f(9)=14 > f(10)=10`); **RR-C021
+  downgraded PROVED -> TESTED_FINITE**; `PROOF_fam45.md` Lemma 1 split at `s=1`,
+  `a != mu` restricted to Case I, the two-step endpoint claim restricted to the
+  derived classes; the bogus divisibility-by-five obligation removed; the
+  "length cannot be a measure" overstatement weakened to "`t` is not monotone";
+  RR-C019 given the clean **real-slot** witness `j=0, lam=(4,1,1)` with `mu'=mu=1`,
+  and the mathematical counterexample separated from any claim about the printed
+  symbol (not visually verified).
+- **New finite evidence (widening R2).** Over all in-domain states of
+  `weight <= 23` — 6 224 Case-II and 6 224 Case-I — **0 failures** for: (R2.1) as a
+  multiset with virtual slots, (R2.2), (R2.1') `{m',p2'} = {L,lam(mu)}`, and (R2.2')
+  `#{x in lam' : x=1} = N`. So the whole of R2.1/R2.2 both ways is now supported,
+  not just one inequality pair. **Still TESTED_FINITE**; R2.3/R2.3' not re-checked.
+- **Proof hint recorded (not a proof):** a created part may tie with a decremented
+  one, and may be `0` in a virtual slot, so a *positional* statement must say which
+  copy sits at `a'` — ill-defined under ties. The **multiset** statement is exactly
+  the form that survives ties, and since Case I deletes both slots, order is
+  irrelevant. A proof should go through the multiset, not sorted positions.
+- **Decisions:** D-9 (never conflate `B` and `D`; name the side in every statement
+  and test; report states and edges separately) and D-10 (read what a worker claims
+  before promoting; a Main-run census cannot lift a claim past TESTED_FINITE).
+- **Lean:** supervisor confirms `ShiftT.lean` passes the named
+  `lake build RogersRamanujan` on Lean 4.35.0, six jobs, exit 0. RR-C006 supported
+  on the pin for its list/subtype `D`/`B` statement. It does **not** formalize
+  `phi`, `psi` or `A`/`D`.
+- **Still open:** all-input proof of R2 and R1, hence `phi^2 = id`; the alternating
+  endpoint theorem; and **RR-C012**, the objective.
