@@ -2150,3 +2150,19 @@ inequality) and `K15-C051` (no locally dense periodic blob found), and with
 `K15-C069` (cells below `√32` do exist in saturated packings).
 
 *Status.* `PROVED` (fcc, hcp; standard cell geometry). Reviewer X.
+
+### K15-C079 — the target in E's notation, and the boundary constant (`PROVED` correspondence)
+
+- **E's obligations**: `(T')` `S(C) ≥ D(C)` per defective component (icosahedral
+  case: `S(C) ≥ 0.1065632`), and `(T'')` `diam(C) ≤ D_0`.
+- **Correspondence**: `(T')` is the per-component form of the averaged inequality
+  `Σ_U vol Ω ≥ √32|U| − O(Φ|U|^{2/3})` of `Main/NEXT_PACKAGE.md`; by `K15-C067` the
+  two are equivalent up to `Φ` and the boundary term. E's own figure "outer cells
+  must average `5.66573451791`" is exactly `√32 + (√32 − V_dod)/12` (`K15-C042`), so
+  the two sessions' constants agree.
+- **Boundary constant, explicit**: for a blob containing a ball of radius `r`,
+  `|δ⁺(U)| ≤ k_R((r+R)³ − (r−R)³) ≈ 6k_RRr²`, and `|U| ≍ (4π/3)r³`, so the slack is
+  `Φ·6k_RR·(3|U|/4π)^{2/3}` — a `|U|^{2/3}` term with an explicit coefficient, which
+  is what a proof of `(T')` must beat.
+- **Status.** `PROVED` (a translation between two statements, no new mathematics).
+  Reviewer X.

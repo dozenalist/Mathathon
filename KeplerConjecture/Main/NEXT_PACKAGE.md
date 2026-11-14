@@ -29,6 +29,29 @@ So the required improvement over Rogers is `5.29%`, and over the dodecahedral
 theorem `1.92%`. **A bound at `5.550291` alone changes nothing**; the target is
 `> 5.550291`, and anything at `√32` is the theorem.
 
+## The same target in E's notation (from the worker branches)
+
+E states the two obligations as
+
+- **`(T')`** `S(C) ≥ D(C)` for every *defective component* `C` of the defect graph,
+  where the icosahedral component requires `S(C) ≥ 0.1065632` — i.e. the outer
+  cells must supply `0.1065632` of extra volume;
+- **`(T'')`** `diam(C) ≤ D_0`.
+
+E also quantifies the requirement as "outer cells must average
+`5.66573451791`", which Main identifies exactly as
+`√32 + (√32 − V_dod)/12 = 5.6657345…` (`K15-C042`). So E's `(T')` and the averaged
+inequality of this file are the same obligation in two notations: `(T')` is the
+per-component form, the averaged inequality is the integrated form, and `K15-C067`
+shows they are equivalent up to the transfer's `Φ` and the boundary term.
+
+**The boundary term with explicit constants.** For a blob `U` containing a ball of
+radius `r` and contained in `B(x, r+R)`, the number of edges leaving `U` is at most
+`k_R·#(Λ ∩ (B(x,r+R) ∖ B(x,r−R))) ≤ k_R·((r+R)³ − (r−R)³) ≈ 6 k_R R r²`, and
+`|U| ≍ (4π/3)r³` in the worst case, so the slack is
+`Φ·6k_R R r² = Φ·6k_R R·(3|U|/4π)^{2/3}` — a `|U|^{2/3}` term with an explicit
+constant. That is the form in which `(T')` and the cut condition meet.
+
 ## What a block should attempt, in order
 
 1. **A cluster-averaged improvement over Rogers.** Take the icosahedral
