@@ -294,6 +294,18 @@ Checked, all consistent once Lemma 1′ is in place:
   that no positive-margin argument can work on that class. That is a correct and useful
   negative result; it is *not* an argument that the route is impossible, and I do not draw
   that conclusion.
+- **The theorem itself, on stackings Main never enumerated.** `barlow_random_stackings.py`
+  generates random legal period-`p` stackings (a closed `±1` walk on `Z/3`) and computes
+  every layer's cell: **67 layers over 8 random stackings of period 7-11, every one with
+  volume `4√2 = 5.656854249`, 12 contacts at distance 2, next distance `2√2 = 2.828427`,
+  and an fcc or hcp fingerprint**. The type sequence also follows the theoretical rule — a
+  layer is hcp exactly when the two adjacent `±1` steps have opposite signs — so the two-cell
+  classification is confirmed out of sample, not only on Main's six named stackings.
+
+  *(This check found its own bug first: I fingerprinted `n[0..11]`, the first twelve centres
+  in enumeration order rather than the twelve contacts, and every cell came out "fcc". The
+  tell was that random stackings should be about half hcp.)*
+
 - Lemma 2's classification is not affected by the gap; it only ever used the contact sets.
   Its **fingerprint claim is exact**: the twelve face-normal dot products are
   `{−1, −1/2, 0, 1/2}` for fcc and `{−1, −5/6, −1/2, −1/3, 0, 1/2}` for hcp, matching

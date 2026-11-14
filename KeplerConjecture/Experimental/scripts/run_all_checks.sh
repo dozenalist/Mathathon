@@ -32,6 +32,7 @@ run c5_completion           "C5 completion: vol Omega(w_1) = 5.898007, (P') marg
 run c5_fixture              "frozen fixture: exact coords, legality, exact cell theorem"
 run c5_family               "theta family [106,120]: exact-cell property at every legal angle"
 run barlow_contact_cell     "exact: contact-only K subset B(v,sqrt2), both types, vol K = 4sqrt2"
+run barlow_random_stackings "random Barlow stackings: every layer 4sqrt2 and fcc/hcp typed"
 # evidence integrity: every JSON must parse, every TXT must be non-empty
 bad=0
 for f in Experimental/evidence/*.json; do
