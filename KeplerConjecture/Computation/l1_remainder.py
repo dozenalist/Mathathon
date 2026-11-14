@@ -58,7 +58,12 @@ import numpy as np
 PHI = (1 + 5 ** 0.5) / 2
 V_DOD = 5.550291028515510
 COVER = np.sqrt(30 * np.sqrt(5) + 75) / 15      # cos(rho_c) = 0.7946544723
-THETA_MAX = 0.0446544723                        # cos(rho_c) - 3/4, from d <= 3
+# The chain needs a bound on the LARGEST per-normal angle.  L1' is stated in the
+# quadratic form sum_j angle_j^2, so a uniform per-normal allowance theta_pn means the
+# ball has radius sqrt(12)*theta_pn -- and sqrt(12) is a factor 3.46 that decides
+# whether the ball is inside the type-robust region at all.
+THETA_PN = 0.0446544723                         # cos(rho_c) - 3/4, from d <= 3
+THETA_MAX = (12 ** 0.5) * THETA_PN              # = 0.15469..., the ball for eps = 1
 
 
 def normals():
@@ -318,7 +323,11 @@ def main():
     ap.add_argument("--certify", action="store_true")
     ap.add_argument("--margins", action="store_true")
     ap.add_argument("--obstruction", action="store_true")
-    ap.add_argument("--theta", type=float, default=THETA_MAX)
+    ap.add_argument("--theta", type=float, default=THETA_MAX,
+                    help="ball radius in the sum-of-squares metric")
+    ap.add_argument("--eps", type=float, default=None,
+                    help="derive the ball from eps: theta_pn = cos(rho_c) - (2+eps)/4, "
+                         "ball = sqrt(12)*theta_pn")
     ap.add_argument("--c", type=float, default=0.13)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--m3-bound", type=float, default=None,
@@ -326,8 +335,12 @@ def main():
                          "interval computation; without it the value bound cannot "
                          "be certified, only shown plausible")
     a = ap.parse_args()
+    if a.eps is not None:
+        a.theta = (12 ** 0.5) * (COVER - (2.0 + a.eps) / 4.0)
 
     print(f"l1_remainder.py -- theta_max={a.theta:.8f}  c={a.c:.3f}  V_dod={V_DOD:.9f}")
+    print(f"   per-normal angle implied: {a.theta / 12 ** 0.5:.8f} "
+          f"(a uniform allowance over all 12 normals)")
     print(f"   quotient: ||P_Rot|| = {np.linalg.norm(P_ROT):.3f} (3 dims removed of 24)")
 
     ok, m, feas, type_margin = certify_margins(a.theta)
@@ -405,10 +418,12 @@ def self_test():
     cases = [
         (["--margins"], 0, "T1/T2 margins certify"),
         (["--certify", "--c", "0.30", "--seed", "3"], 3, "negative control rejected (inert)"),
-        (["--certify", "--seed", "3", "--m3-bound", "9.0"], 0, "certifies with a tight bound"),
-        (["--certify", "--seed", "3", "--m3-bound", "20.0"], 1, "rejects a loose bound"),
+        (["--certify", "--seed", "3", "--m3-bound", "0.5"], 0, "certifies with a tight bound"),
+        (["--certify", "--seed", "3", "--m3-bound", "1e6"], 1, "rejects a loose bound"),
         (["--certify", "--seed", "3"], 1, "uncertified without a rigorous M3"),
         (["--certify", "--theta", "0.30", "--seed", "3"], 2, "a ball beyond the certified radius FAILS"),
+        (["--certify", "--eps", "1.0", "--seed", "3"], 1, "the eps=1 ball is inside, value bound open"),
+        (["--certify", "--eps", "0.2", "--seed", "3"], 2, "the eps=0.2 ball is OUTSIDE the type region"),
     ]
     ok = True
     for argv, want, why in cases:

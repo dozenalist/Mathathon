@@ -5837,11 +5837,11 @@ specification it replaces had four defects, all named by review 0823 and all fix
 - Together: **the certified ball radius is `0.156743`**, three and a half times `θ_max = 0.0446545`. This is
   a real theorem about the configuration, and it is what makes a Taylor argument well-posed.
 
-**What it refuses to prove.** The value bound. Given the measured minimum quotient ratio `0.2029…0.2412`
-and the measured `M₃ = 0.075…0.20`, the Taylor criterion `M₃ ≤ 6(ratio − c)/θ_max` needs `M₃ ≤ 9.80`, and
-a rigorous enclosure is exactly what the pilot does not have. `--m3-bound X` lets an *independent* interval
-computation supply it: with `X = 9.0 ≤ 9.80` the pilot returns 0, with `X = 20` it returns 1 — so the
-certification path is exercised, not decorative.
+**What it refuses to prove.** The value bound. Given the measured minimum quotient ratio `0.2039` and the
+measured `M₃ = 0.0752`, the Taylor criterion `M₃ ≤ 6(ratio − c)/θ_max` needs **`M₃ ≤ 2.86`** at the `ε = 1`
+ball, and a rigorous enclosure is exactly what the pilot does not have. `--m3-bound X` lets an
+*independent* interval computation supply it: with `X = 0.5` the pilot returns 0, with `X = 10⁶` it returns
+1 — so the certification path is exercised, not decorative.
 
 **The obstruction to the obvious alternative.** A covering argument on the quotient sphere `S²⁰` needs, at
 the available Lipschitz bound `L = 21.81` (surface area × circumradius), a net radius `r = 1.01·10⁻⁵`, i.e.
@@ -5880,6 +5880,15 @@ recorded because the project has had three unsound checkers and this is the same
 
 Neither bug changes any conclusion, and both were caught by the pilot checking its own margin against a
 measurement — which is why the pilot reports the measured slope alongside the bound.
+
+**A third defect, in the metric rather than in the code: the ball is `√12·θ_pn`, not `θ_pn`.** `L1'` is
+stated in `Σ_j angle_j²`, so a uniform per-normal allowance `θ_pn = 0.0446545` (the `ε = 1` route) means a
+ball of radius **`0.154688`**, and that is only **1.3%** inside the certified type radius `0.156743`
+(T1 slack `0.006165`, T2 slack `0.067366` — thin, but positive). The pilot's first default used `θ_pn`
+itself, which understated the ball by a factor `3.46` and made the type certification look comfortable. The
+default and the `--eps` option now use the correct metric, and the self-test asserts that the `ε = 0.2` ball
+(`0.8476`) is **outside** the certified region — which is `C146`'s bifurcation, now a test rather than a
+paragraph.
 
 **The certified radius is conservative.** T1/T2 prove `0.156743`; the measured type margin is still positive
 at `θ = 0.30` (facet counts stay at 12), so Hadamard is the crude step. That is a fact about the *proof*, not

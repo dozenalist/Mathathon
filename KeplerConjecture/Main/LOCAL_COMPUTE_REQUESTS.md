@@ -248,8 +248,9 @@ or Astra to collect.
 > **The 0738 form of this request is withdrawn.** Four defects, all named by review 0823: it named
 > `l1_remainder.py` before the file existed; it pinned no source hash; its prose said `c = 0.13` while its
 > command and acceptance said `0.17` and used the non-quotiented expression; and it demanded a "strictly
-> positive minimum over a ball containing `θ = 0`", which is impossible. See `C148`. Everything below is
-> generated from the code, and the pilot is now in the tree.
+> positive minimum over a ball containing `θ = 0`", which is impossible. See `C148`. Two further defects
+> were found here: the **derivative constant was too small** and the **ball was in the wrong metric**
+> (§"the ball", below). Everything below is generated from the code.
 
 **File and source.**
 
@@ -261,48 +262,55 @@ deps      python3 (stdlib), numpy, scipy.spatial   -- no Lean, no network, no GP
 runtime   ~1 s measured; budget 1 CPU / 1 GiB / 120 s
 ```
 
+**The ball, in the right metric.** `L1'` is stated in the quadratic form `Σ_j angle_j²`, so a uniform
+per-normal allowance `θ_pn` means a ball of radius **`√12·θ_pn`**, not `θ_pn`. For `ε = 1`,
+`θ_pn = cos ρ_c − 3/4 = 0.044654` and the ball is **`0.154688`** — which is only **1.3%** inside the
+certified type radius `0.156743`. That margin is the tightest number in the whole chain and is why `ε = 0.2`
+is *not* available: its ball (`√12 × 0.2447 = 0.8476`) is far outside, and the pilot returns exit 2 for it
+(the self-test asserts exactly this).
+
 **What is already proved by the pilot (no local work needed).** On the ball `d(θ,Rot) ≤ 0.156743`:
 
-- **T1** every one of the 160 triples keeps `|det| > 0` (slack `0.336265` at `θ_max`);
-- **T2** the 20 active triples stay active and the 140 inactive stay slack (slack `0.898693` at `θ_max`),
+- **T1** every one of the 160 triples keeps `|det| > 0` — at the `ε = 1` ball the slack is **`0.006165`**;
+- **T2** the 20 active triples stay active and the 140 inactive stay slack — slack **`0.067366`**,
 
-so the cell has exactly 12 facets and `vol` is smooth there. `--margins` exits 0.
+so the cell has exactly 12 facets and `vol` is smooth there. `--margins` exits 0. **Both slacks are thin**
+(1.3% and 5.4% of their base values); a sharper determinant bound than Hadamard's `3θ` would widen them and
+is the obvious first improvement.
 
 **What only a local run can supply: a rigorous `M₃`.** The value bound is
-`vol − V_dod ≥ (ratio)d² − (M₃/6)d³`, sufficient for `c = 0.13` at `θ_max = 0.0446545` iff
+`vol − V_dod ≥ (ratio)d² − (M₃/6)d³`, sufficient for `c = 0.13` iff
 
 ```
-M₃  ≤  6(ratio_min − c)/θ_max  =  9.80        (measured M₃ = 0.075; ratio_min = 0.203..0.241)
+M₃  ≤  6(ratio_min − c)/θ_max  =  2.86   at the ε = 1 ball
+measured: ratio_min = 0.2039, M₃ = 0.0752   ->  a factor 38 of headroom
 ```
 
 **Pinned command.**
 
 ```
-python3 KeplerConjecture/Computation/l1_remainder.py --certify --theta 0.0446545 --c 0.13 --m3-bound X
+python3 KeplerConjecture/Computation/l1_remainder.py --certify --eps 1.0 --c 0.13 --m3-bound X
 ```
 
-where `X` is *your* rigorous third-derivative bound. Acceptance is by **exit code**, not by a printed
-minimum (there is no positive minimum over a ball through `θ = 0` — the pilot certifies the ratio on
-`0 < d ≤ θ_max`, and says so):
+`X` is *your* rigorous third-derivative bound. Acceptance is by **exit code**:
 
 | exit | meaning | acceptable? |
 | --- | --- | --- |
-| `0` | T1/T2 certified **and** `X ≤ 9.80`: the value bound follows | **this is the target** |
-| `1` | T1/T2 certified, value bound not certified (no bound or `X` too large) | expected if `X` is crude |
-| `2` | a sound part failed (a ball beyond `0.156743`, or T1/T2 broken) | a real problem |
+| `0` | T1/T2 certified **and** `X ≤ 2.86`: the local rate follows | **the target** |
+| `1` | T1/T2 certified, value bound open (no `X`, or `X` too large) | expected with a crude `X` |
+| `2` | a sound part failed (e.g. a ball outside `0.156743`) | a real problem |
 | `3` | the negative control was not rejected, i.e. the pilot is inert | discard the run |
 
-**Required negative control** (the pilot must be able to fail):
+**Required negative controls.**
 
 ```
-python3 .../l1_remainder.py --certify --c 0.30 --seed 3     # must exit 3
-python3 .../l1_remainder.py --certify --theta 0.30          # must exit 2 (beyond the certified ball)
+python3 .../l1_remainder.py --certify --c 0.30 --seed 3    # must exit 3
+python3 .../l1_remainder.py --certify --eps 0.2            # must exit 2 (ball outside the type region)
 ```
 
-**If `X` comes out above `9.80` but below `100`.** Do not discard the run: the pilot's ladder shows
-`δ₀ ∝ M₃⁻²`, so `X = 10` still gives `δ₀ ≈ 2.8·10⁻³` and `X = 100` gives `2.8·10⁻⁵`. Report `X` and the
-ladder row; the constant degrades gracefully.
+**If `X` is above `2.86`.** Report it and the ladder row: `δ₀ ∝ M₃⁻²`, so `X = 10` gives `δ₀ ≈ 2.8·10⁻³`,
+`X = 100` gives `2.8·10⁻⁵`. Nothing fails; the constant degrades.
 
-**Not in scope here.** `C147`'s global-to-local entry is a *separate* obligation (it reduces to the
-`≥ 13`-facet branch, `C125`) and no run of this pilot addresses it. Do not report "`δ₀` proved" from an
-exit-0 run; report "the local rate is proved, entry open".
+**Not in scope.** `C147`'s global-to-local entry is a separate obligation (it reduces to the `≥13`-facet
+branch, `C125`) and no run of this pilot addresses it. Do not report "`δ₀` proved" from an exit-0 run;
+report "the local rate is proved, entry open".
