@@ -5963,3 +5963,52 @@ only when the *audit* list constrains the *claimed* vertices, and W5 shows that 
 it returns normally.
 
 *Status.* `REFUTED` (third witness). C owns the fix; the one-line change is specified above.
+
+### K15-C152 — X's parallel threshold `6cos ρ_c` verified, with the axis clarified (`AGREES`)
+
+Independent recomputation of `X-C096`'s claim (source `caef730`, tip `be8e293`). Two parallel copies of the
+12-contact icosahedron of circumradius 2, centres separated by `d` along a unit axis `e`, **both centres'
+contacts tested against each other and against the other centre**; bisection on `d` at the threshold where
+the minimum cross-distance is exactly `2`:
+
+| axis `e` | threshold |
+| --- | --- |
+| a **vertex direction of the contact icosahedron** (= a **face normal** of the dodecahedron) | **exactly `6`** |
+| a **face-centre direction of the contact icosahedron** (= a **vertex direction** of the dodecahedron) | **`4.767926834` = `6cos ρ_c`** ✓ |
+
+Both orientations (parallel and antiparallel) give the same value in each row. So **X's constant is
+confirmed to nine decimals**, and the *statement* needs one clarification: the axis that gives `6cos ρ_c` is
+a face normal **of the icosahedron of contacts** — equivalently a **vertex** direction of the dodecahedral
+cell — not a face normal of the dodecahedron. Along a dodecahedron face normal the parallel threshold is
+exactly `6`.
+
+**Why the clarification matters.** `C133`'s constant `4cos ρ_c = 3.1786` is a statement with *free*
+orientation at fixed `d`; the parallel family is a single 1-parameter slice on which the threshold is
+`6cos ρ_c = 4.7679`, i.e. `1.5×` larger. Reading the axis the other way turns the claim into "threshold
+`6` on a face normal", which is consistent but a different number for a different slice. Since `X-C099`
+uses the phrase "parallel placement" without naming the solid, this entry fixes the reference.
+
+**Not in tension with `C133`.** A larger threshold on a sub-family is expected: `C133` holds for *every*
+relative orientation, so its constant is the smallest over the family, and `4cos ρ_c ≤ 6cos ρ_c` ✓. X's
+`X-C096` says "not attained", which agrees with `C133`'s inequality being strict for `d < 4cos ρ_c`.
+
+*Status.* `AGREES` (constant verified; axis clarified). Reviewer X.
+
+### K15-C153 — E's ring-face area claim, checked against `G17` (`AGREES` with one scope limit)
+
+`Experimental` `814f213` ("where the ring face's area comes from") is E's work on `G17`, which `C136`
+closed by a different route (the face inradius is **exactly** `t* = ρ_r/4`, attained toward the axial face,
+zero margin). The two must not be double-counted:
+
+- `C136`'s proof is: `A_min ≥ π t*²` follows from the **inradius** of the ring face being `≥ t*`, which holds
+  because every face distance is `≥ 1` and the binding constraint is the axial face at `58.2825°`. That is
+  a proof inside the declared family, and it is **sharp**.
+- E's `814f213` derives the ring face's *area*, which is a different quantity from its *inradius*. An area
+  bound does not imply the disk of radius `t*` fits (an elongated face has area without inradius), so E's
+  result cannot replace `C136`'s step and `C136` cannot be inferred from it. **They are complementary, not
+  alternatives.**
+
+**What the ledger takes from E's commit is the duplicate-plane control discipline** (its controls pass in
+`6.75 s`), which `C150`/`C151` recommend C adopt for the certificate checker.
+
+*Status.* `AGREES` with that scope split. E owns the ring-face block.
