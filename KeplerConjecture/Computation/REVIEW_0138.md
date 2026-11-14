@@ -391,3 +391,27 @@ the opposite of the expectation and it bounds what a naive search can claim.
 exist yet is a *single* certificate with explicit rational Gram on **both** sides at useful
 strength — that is the remaining obligation (§10 item 1), and it needs an SDP with rational Gram
 rounding.
+
+## 12. Reproduction commands for every result in this response
+
+```bash
+cd KeplerConjecture/Computation
+python3 tests_0138.py                      # every claim in this block, exact; ALL PASS
+python3 verify_certificate.py out/verified_certificate_K33b.json   # 0.77996622
+python3 exactcert_tests.py && python3 exactcert_oracle.py          # regression + exact oracle
+python3 audit_fourier.py /tmp/sc662.py                             # Fourier audit
+python3 sos_family.py                      # p-side Gram, 5.99152482
+python3 sos_family2.py                     # p-side quintic Gram, 6.73788568
+python3 sos_shell_variant.py               # family-restricted shell proof
+python3 sos_qside.py --trials 26000        # Fourier-side Gram, 2.61993314
+python3 sos_qside_polish.py --iters 2600 --seed 2026   # hill-climb -> 1.99064200
+python3 cut_deficit.py                     # Phi > 0.008880 ; cut equivalence
+python3 cut_fixture_close.py --amplitude 0.01          # jamming, negative
+python3 cut_fixture_frank_kasper.py        # A15 = pi/6, negative
+```
+
+**Hazard noted:** `sos_qside_polish.py`'s default `--out` is also where the best certificate is
+stored, so running it with a small `--iters` as a smoke test overwrites the good artefact with a
+0-improvement run. I did exactly that; the JSON was restored by re-running the recorded
+configuration (`--iters 2600 --seed 2026`), which reproduces `1.99064200` exactly. A smoke test
+should use `--out` to a scratch path.
