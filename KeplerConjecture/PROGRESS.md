@@ -548,3 +548,14 @@ best-found. **The trend across the block is monotone in effort — `5.99 → 2.6
 1.37`** — which indicates the remaining gap to the LP-optimal `0.78` is a *search-power*
 limitation of the explicit-Gram route as implemented, not a structural wall. That is the most
 interesting open question in this file and the natural next task.
+
+### K15-COMP-030 — 2026-11-14 — Computation (role C), search statistics and a revision of my own claim
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-SOSDIST-001 | measured | twelve basin-hopping runs (`--degree 7 --iters 4000 --uphill 0.05`, different seeds) give `1.3713` once, four in `1.41–1.46`, four in `1.48–1.70`, three at `1.99–2.00`; median ≈ `1.47`. **Only one run in twelve reached below `1.40`** | `out/hop*_*.json` |
+| **K15-C-SOSWHY-002** | **REVISES K15-C-SOSWHY-001** | the earlier claim that explicit-Gram families are weak "for structural reasons" is **too strong**. What survives: the specific *shape* `−p = (u−T)σ₁` pins `p(T)=0` and is weak. The sum-of-squares condition *by itself* is not the obstruction — the Fourier-side form reaches `1.37` with five rational squares | `REVIEW_0138.md` §13 |
+
+**Local request extended:** a longer search for the explicit-Gram certificate (a few hundred runs
+at ~40 s, 1 CPU, < 300 MB) is now in `LOCAL_RUN_REQUEST.md` — this is exactly the job that belongs
+on Astra's machine rather than the SAIR VM.

@@ -477,3 +477,32 @@ converged, and `1.37125723` is best-found.** The trend across the whole block is
 effort — `5.99 → 2.62 → 1.99 → 1.41 → 1.37` — which says the remaining gap to the LP-optimal
 `0.78` is a search-power limitation of the explicit-Gram route as implemented, not a structural
 wall. That is now the most interesting open question in this file.
+
+### Search statistics, and what they license
+
+Twelve basin-hopping runs of the same procedure (`--degree 7 --iters 4000 --uphill 0.05`,
+different seeds):
+
+| `Δ ≤` | count |
+| --- | --- |
+| 1.3713 | 1 |
+| 1.4111, 1.4137, 1.4179, 1.4625 | 4 |
+| 1.4779, 1.6073, 1.6929, 1.6957 | 4 |
+| 1.9906 | 2 |
+| 1.9989 | 1 |
+
+Best `1.37125723`; median ≈ `1.47`. **Only one run in twelve reached below `1.40`.**
+
+What this licenses, stated carefully:
+
+* `1.37125723` is **best-found from twelve attempts**, and the distribution says a few more
+  attempts are unlikely to beat it by much. It is *not* an optimum: the runs are not independent
+  (same seed family, same move set) and the landscape is clearly rough.
+* The **monotone-improvement-with-effort** pattern across the block (`5.99 → 2.62 → 1.99 → 1.41 →
+  1.37`) does **revise my own earlier claim** (`K15-C-SOSWHY-001`) that explicit-Gram families are
+  weak "for structural reasons". The structural statement that survives is narrower: the specific
+  *shape* `−p = (u−T)σ₁` pins `p(T) = 0` and is weak. The sum-of-squares condition by itself does
+  not appear to be the obstruction, since the Fourier-side form reaches `1.37` with five rational
+  squares.
+* **A longer local search is the natural offload** — it is exactly the kind of job that should run
+  on Astra's machine rather than the SAIR VM. See `LOCAL_RUN_REQUEST.md`.
