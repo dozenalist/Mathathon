@@ -10,10 +10,11 @@ from the C5 fixture and the Barlow controls, and eliminating floating sign tests
 artifact called exact.
 
 **What is delivered.** A certified volume enclosure that decides everything by exact rational
-comparison (`rational_interval.py`, `rigorous_cell_volume.py`), validated on three controls
-with known answers; the finite domain and its completeness argument (§3); the statement of
-what it does and does not bound (§2.3); and two audit findings on Main's file, one of which is
-an error in **my own** published constant (§5).
+comparison (`rational_interval.py`, `rigorous_cell_volume.py`), validated on five controls with
+known answers and out of sample at random parameters; the finite domain and its completeness
+argument (§3); **a certified region of the family, not a sample** (§2.6); the statement of what
+it does and does not bound (§2.3); and two audit findings on Main's file, one of which is an
+error in **my own** published constant (§5).
 
 ---
 
