@@ -322,9 +322,19 @@ one.
 | id | claim | status |
 | --- | --- | --- |
 | `X-C018` | The repaired `CUT_FLOW_THEOREM.md` (`aa52147`) is correct at all six points Main listed (directed model, cut orientation, demand satisfaction, Farkas+coarea, Theorem 2 without a uniform bound, threshold formula with both branches); no fifth defect found; 115 random instances agree across cut condition, LP and threshold formula. | **VERIFIED**, `Reviews/audit_cutflow_repair.py` exits 0 |
-| `X-C019` | `X_C017_small.json` is a valid CE certificate at density `0.782267254856` (`2⁻²⁴` grid, ≤ 20-digit entries, 2,646 bytes), `3.5·10⁻⁸` below `X-C017` and 3.80× smaller; `L p = 0` exactly, `G, A, B ⪰ 0` by rational `LDL^T`. | **VERIFIED**, `verify_XC017_readable.py X_C017_small.json` exits 0 |
+| `X-C019` | `X_C017_small.json` is a valid CE certificate at density `0.782267254856` (`2⁻²⁴` grid, ≤ 20-digit entries, 2,646 bytes), `3.5·10⁻⁸` *weaker* (higher) than `X-C017` and 3.80× smaller; `L p = 0` exactly, `G, A, B ⪰ 0` by rational `LDL^T`. | **VERIFIED**, `verify_XC017_readable.py X_C017_small.json` exits 0 |
 | `X-C020` | Erratum: `REVIEW_0353.md` §3 row W6 is wrong in both directions; correct verdict `t* = 2`, feasible iff `Φ ≥ 2`. The empty-boundary `0/0` case is *not* an obstruction when `Σ_U b = 0`. | **CORRECTION**, supersedes that row |
 | `X-C021` | The height of `X_C017` is lcm blow-up of mutually coprime term denominators (each `≤ 17` digits, lcm `118` digits), not the pivot block; dyadic rounding at `S = 8` removes it. Coarser than `10⁻⁶` breaks `A`'s forced margin. | **VERIFIED** by the table in §2 |
+| `X-C022` | No small-denominator both-sides triple exists in the `S = 8` basis: the frontier over `ε_AB` shows every sub-2,646-byte certificate is worse than `X-C016`, and the digit floor is ~12–13 (from `S⁻¹⁰`) plus the grid's resolution. | **VERIFIED**, table in §2.1 |
+| `X-C023` | C's four `cut_flow.py` defects reproduce portably (`7/7`) from a byte copy of blob `700e44f6`, unchanged at the current `comp` tip. | **VERIFIED**, `Reviews/repro_c_cutflow_defects.py` |
+| `X-C024` | Theorem 1 and the threshold formula are confirmed against exact Fourier–Motzkin elimination over ℚ (`0/196` mismatches), in addition to the LP (`0/115`). | **VERIFIED**, §E of the audit script |
+| `X-C025` | Main's `η ≥ 0` guard (`5caa1c9`) closes the §17 witness and leaves the `η = 0` control at `0.780370311`; C's solver already had `−η ≥ 0` since `4bcbd3a`, so the witness is synthetic and the exposure was the checker's licence only. | **VERIFIED**, `Reviews/verify_eta_closed.py` |
+| `X-C026` | `5caa1c9` passes 3,600 further random-family queries with 0 wrong verdicts (plus targeted and near-touching families). | **VERIFIED** |
+| `X-C027` | The readable verifier rejects all three tampered certificates and accepts the honest one; the `10⁻⁶` perturbation is invisible to a float comparison of the bound and is caught only by the exact identity. | **VERIFIED**, `Reviews/negative_control_readable.py` |
+| `X-C028` | Main's `D18` reverse condition is not triggered (no fifth defect); `D16`'s acceptance test stands with generic soundness still `SUSPENDED`; `D3`'s anchor is respected. `NEXT_PACKAGE` item 1 (`V = 5.40`) is already implied by Hales–McLaughlin. | **VERIFIED** / one wording defect open in Main's file |
+| `X-C029` | `CLAIMS.md` `K15-C093` still states `sup Φ < ∞` and the `{a}`-cut `4/3` example in its bullet list, both refuted by its own repair note. | **DEFECT** (documentation, Main's file) |
+| `X-C030` | `0.008880268414417` inherits C's `V_DOD` enclosure error: the exact value is `0.0088802684147391605`, so the number is a valid lower bound but not "the exact threshold". | **CORRECTION** |
+| `X-C031` | The family suite catches `a8526a8` (50/900) and `5619c1d` (8/308) and is blind to a missing precondition and to `7dc6be58`; passing it is evidence, not proof. | **VERIFIED**, §4.3 |
 
 ---
 
