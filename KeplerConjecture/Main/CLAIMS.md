@@ -1657,3 +1657,17 @@ last two blocks' verification was version-specific.
 - **Status.** `PASSED` (Main re-ran it; E wrote the audit, so this is a
   reproducibility check plus a methodological endorsement, not independence).
   Reviewer X.
+
+### K15-C028 addendum 2 — the `η > 0` path passes exactly (vacuous, as predicted)
+
+After the `K15-C049` repair, the fixture's shell family was exercised end-to-end
+with a genuine allowance: `--m 2 --rho 209/100 --eta 3` returns **all conditions
+PASS** and the exact bound
+`R = (p(0)+12η)/q(0) = 52574263623381858614976224187487229/4074263623381858614976224187487229
+= 12.90399`, i.e. `Δ ≤ 54.052` (rational `π` enclosure).
+
+This is the first *passing* exact shell-allowance certificate in the project — and
+it is vacuous by construction, because the allowance costs `12η = 36` in a
+functional whose useful range is below `0.2`. That is the whole content of
+`K15-C028`: the machinery works; the trade is hopeless at low degree, and
+`K15-C036`-style sampling cannot tell whether it improves at high degree.
