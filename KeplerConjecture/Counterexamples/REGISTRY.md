@@ -1230,3 +1230,30 @@ correct `A` over the same 121 pairs (`A − R ≤ d²(t) ≤ A + R`, `R = √(B�
 
 So: correct the number in the parenthetical to `12.844582472`, keep the conclusion. Same pattern as
 `X-C062` — a display that is right in its verdict and stale in its constant.
+
+### K15-X-C076 — `rho_probe.py` is consistent with C102, and its three test radii straddle the threshold
+
+`Computation/rho_probe.py` at main `4dc1cc9`, run as shipped (1.0 s, exit 0):
+
+```
+rho = 2.0127   vol = 5.656696899  (V_dod (rho/2)^3, identical)   vs sqrt32 -0.0028%
+rho = 2.09     vol = 6.333804106                                 vs sqrt32 +11.9669%
+rho = 2.2      vol = 7.387437359                                 vs sqrt32 +30.5927%
+      no extra point in a face-centre direction is admissible AND cuts the cell   (all three)
+```
+
+Three points.
+
+1. **The construction is right.** The 20 directions in `dodeca_dir()` are the dodecahedron vertices
+   (4 of type `(0,±1/φ,±φ)` plus 16 of type `(±1/φ,±φ,0)`, `(±φ,0,±1/φ)`), i.e. the icosahedron's
+   face centres — the correct set, by `X-C070` the very set where the nearest admissible radius is
+   minimised. The half-spaces are `⟨p,x⟩ ≤ |p|²/2` with the extra centre at its own radius, and the
+   base cell `⟨x_i,x⟩ ≤ ρ²/2` is the dodecahedron of inradius `ρ/2`, not the ball — correct.
+2. **The negative output is exactly what C102 predicts**: along a face centre the smallest admissible
+   radius is `3.206870905`, and any cutter needs `|p| < 2·R_cell = 2.63 < 3.2069`, so no `r` can be
+   both admissible and cutting, at any `ρ` in the swept range.
+3. **The three radii straddle the crossing.** `V_dod(ρ/2)³ = √32` at `ρ = 2.0127…`, and at
+   `ρ = 2.0127` the cell is **`0.0028%` below** `√32`, while at `2.09` it is `11.97%` above. So the
+   probe's first row is not a "singleton works" case at all — it is the knife edge where the singleton
+   *fails* — and C102's redundancy statement is load-bearing precisely there. Main's `C101` text reads
+   as if all three radii are above target; only two are.
