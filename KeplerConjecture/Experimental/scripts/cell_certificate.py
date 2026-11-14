@@ -58,6 +58,19 @@ from rational_interval import Iv, sqrt_iv, sin_cos_iv_of_pi_multiple
 
 SQRT3_UB = F(7, 4)          # a rational upper bound for sqrt(3)
 CERT_DIGITS = 40
+SLACK_DIGITS = 30           # slacks are rounded UP to this many decimals
+
+
+def round_up(fr, digits=SLACK_DIGITS):
+    """Round a positive Fraction UP to `digits` decimals.
+
+    PERFORMANCE FIX from review 2026-11-14_0738: the interval widths e_i, f_i are tiny but
+    carry the enormous denominators of the transcendental chain (measured: numerators of
+    25 000 bits), and every later Fraction inherits them -- one C5 certification took 116 s
+    instead of 9 s.  Rounding the slack UP keeps it an upper bound and costs nothing."""
+    q = F(10) ** digits
+    n = fr * q
+    return F(-((-n.numerator) // n.denominator), q)
 
 
 def outward(fr, up):
@@ -200,8 +213,61 @@ def radius_witness(normals):
     return best, nsup, wit
 
 
+def _cross(u, v):
+    return (u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0])
+
+
+def _dot(u, v):
+    return u[0] * v[0] + u[1] * v[1] + u[2] * v[2]
+
+
+def canonicalise(normals, dists):
+    """Reduce a plane set to pairwise NON-PROPORTIONAL half-spaces, keeping the tightest.
+
+    DEFECT FOUND IN REVIEW 2026-11-14_0738 AND REPAIRED HERE.  `polytope_volume` summed
+    d_i A_i / 3 over the planes as given, so a plane listed twice counted its facet twice.
+    Witness W5: the six cube normals with offsets 1 give 8, but appending a duplicate of
+    (e1, 1) returned 28/3 -- an excess of exactly d A / 3 = 4/3, the doubled face.
+
+    The half-space {y.n <= d} with d > 0 is {y.u <= 1} with u = n/d, so two planes are the
+    same half-space iff their u agree, and one implies the other iff they are on the same ray
+    and one has the larger |u| (a larger |u| is a tighter constraint).  This function returns
+    one (u, 1) per surviving ray, keeping the largest |u| in each ray and breaking ties by
+    index, so the polytope is unchanged and every facet has exactly one plane."""
+    if len(normals) != len(dists):
+        raise ValueError("normals and dists must have equal length")
+    planes = []
+    for n, d in zip(normals, dists):
+        if d <= 0:
+            raise ValueError("offsets must be positive (the origin must be interior)")
+        planes.append(tuple(F(x) / F(d) for x in n))
+    n2 = [_dot(u, u) for u in planes]
+    for i, u in enumerate(planes):
+        if n2[i] == 0:
+            raise ValueError("zero normal")
+    keep = []
+    for i, u in enumerate(planes):
+        dominated = False
+        for j, v in enumerate(planes):
+            if i == j:
+                continue
+            if _cross(u, v) == (0, 0, 0) and _dot(u, v) > 0:
+                if n2[j] > n2[i] or (n2[j] == n2[i] and j < i):
+                    dominated = True
+                    break
+        if not dominated:
+            keep.append(i)
+    return [planes[i] for i in keep], [F(1)] * len(keep)
+
+
 def polytope_volume(normals, dists, require_bounded=True):
-    """Exact volume of {y : y.n_i <= d_i}.  REFUSES an unbounded polyhedron."""
+    """Exact volume of {y : y.n_i <= d_i}.  REFUSES an unbounded polyhedron.
+
+    SUPPORTED INPUT DOMAIN (documented after review 2026-11-14_0738): normals nonzero,
+    offsets d_i > 0 (the origin is interior), the set positively spanning so the polytope is
+    bounded, and -- after `canonicalise`, which is applied here -- no two half-spaces
+    proportional.  Duplicate or dominated planes are accepted and reduced."""
+    normals, dists = canonicalise(normals, dists)
     inside, margin, nsup = origin_interior_certificate(normals)
     if not inside:
         if require_bounded:
@@ -343,7 +409,7 @@ def certify(centres, name="", verbose=False):
         raise Unbounded("the a priori radius bound fails: c <= sqrt3 e_max")
     R = b_max / denom
     R = F(int(R * 1000) + 2, 1000)          # round up, generously
-    slack = [R * SQRT3_UB * e_i[i] + f_i[i] for i in range(len(e_i))]
+    slack = [round_up(R * SQRT3_UB * e_i[i] + f_i[i]) for i in range(len(e_i))]
     inn = [b_rat[i] - slack[i] for i in range(len(b_rat))]
     out = [b_rat[i] + slack[i] for i in range(len(b_rat))]
     v_out, nvo, vout_pts = polytope_volume(n_rat, out)          # raises if unbounded
@@ -438,6 +504,45 @@ def main():
     print(f"  W4 exact radius on the cube's normals: c = {float(c):.12f}  "
           f"(1/sqrt3 = {float(F(1)/sqrt_iv(Iv(3)).lo):.12f}), {nsup} supporting planes")
     ok &= abs(c - F(1) / sqrt_iv(Iv(3)).lo) < F(1, 10 ** 12)
+
+    # ---- W5: duplicate and proportional supporting planes -----------------
+    print("\nW5 DUPLICATE / PROPORTIONAL PLANES (defect of review 2026-11-14_0738)")
+    cube6 = [(F(1), F(0), F(0)), (F(-1), F(0), F(0)), (F(0), F(1), F(0)),
+             (F(0), F(-1), F(0)), (F(0), F(0), F(1)), (F(0), F(0), F(-1))]
+    one6 = [F(1)] * 6
+    dup_tests = [
+        ("cube", cube6, one6, F(8)),
+        ("+ duplicate e1", cube6 + [(F(1), F(0), F(0))], one6 + [F(1)], F(8)),
+        ("+ duplicate -e2", cube6 + [(F(0), F(-1), F(0))], one6 + [F(1)], F(8)),
+        ("+ duplicate e1 twice", cube6 + [(F(1), F(0), F(0))] * 2, one6 + [F(1)] * 2, F(8)),
+        ("+ 2e1 at offset 1 (y1<=1/2)", cube6 + [(F(2), F(0), F(0))], one6 + [F(1)], F(6)),
+        ("+ e1 at offset 2 (redundant)", cube6 + [(F(1), F(0), F(0))], one6 + [F(2)], F(8)),
+        ("+ e1 at offset 1/2 (y1<=1/2)", cube6 + [(F(1), F(0), F(0))], one6 + [F(1, 2)], F(6)),
+    ]
+    for name, nn, dd, exp in dup_tests:
+        got = polytope_volume(nn, dd)[0]
+        good = (got == exp)
+        print(f"  {name:32s} -> {str(got):>4s}  expected {str(exp):>4s}  {'OK' if good else 'WRONG'}")
+        ok &= good
+    print(f"     (the first version returned 28/3 for the duplicate case: the doubled face")
+    print(f"      contributed d*A/3 = 4/3 twice)")
+
+    # ---- W5b: supporting planes that support no facet ---------------------
+    print("\nW5b SUPPORTING PLANES MEETING P IN < 2 DIMENSIONS (facet accounting, step (i))")
+    facet_tests = [
+        ("cube alone", cube6, one6, F(8)),
+        ("+ y.(1,1,0) <= 2 : edge only", cube6 + [(F(1), F(1), F(0))], one6 + [F(2)], F(8)),
+        ("+ y.(1,1,1) <= 3 : vertex only", cube6 + [(F(1), F(1), F(1))], one6 + [F(3)], F(8)),
+        ("+ y.(1,1,0) <= 3/2 : real facet", cube6 + [(F(1), F(1), F(0))], one6 + [F(3, 2)], F(31, 4)),
+    ]
+    for name, nn, dd, exp in facet_tests:
+        got = polytope_volume(nn, dd)[0]
+        good = (got == exp)
+        print(f"  {name:34s} -> {str(got):>4s}  expected {str(exp):>4s}  {'OK' if good else 'WRONG'}")
+        ok &= good
+    print("     (a supporting plane meeting P in an edge or a vertex supports no facet and")
+    print("      must contribute nothing; 31/4 checks by hand: 8 minus a prism of section")
+    print("      1/2 * 0.5 * 0.5 and depth 2)")
 
     # ---- the volume contract ---------------------------------------------
     print("\nVOLUME CONTRACT: bodies with known volumes, and a degenerate one")
