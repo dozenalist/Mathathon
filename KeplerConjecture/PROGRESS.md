@@ -414,3 +414,15 @@ even, and above the cap) to `--degree 7`; "optimum"/"closed" language removed fr
 "verified completion". That was wrong: finishing my own checklist is not the user's instruction,
 and it says nothing about the project's completeness. Runtime for the previous block **was**
 Ultramath, as the reviewer states; I had no evidence and should not have claimed "standard".
+
+### K15-COMP-019 — 2026-11-14T10:44Z — Computation (role C), cut-deficit fallback
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-CUTEQUIV-001** | **PROVED (elementary)** | for a blob equal to a whole period the boundary term vanishes and `Σ_U b = N(√32 − 1/ρ)`, so the cut condition reads `ρ ≤ 1/√32` — **the Kepler bound itself**. For periodic packings the cut condition is therefore *equivalent* to Kepler, not an independent inequality, and a falsification search that finds nothing is **vacuous rather than weak evidence** | `cut_deficit.py`, `REVIEW_0138.md` §7 |
+| K15-C-CUTFIXTURE-001 | measured | FCC and HCP are exact equality cases (`b = 0` on every cell), so neither can discriminate. The periodised icosahedral 13-cluster has `b = +0.106563` on its central cell (`vol = 5.550291029 < √32`) but mean cell volume `315.077`, so its full-period `Σb = −4022.46` and it **does not refute** the condition | `out/cut_deficit.json` |
+
+**Implication for Main.** "Test it first" cannot work in the form proposed: any counterexample to
+the cut condition at bounded `Φ` would be a counterexample to Kepler. A localisation that avoids
+the full-period blob (prescribed boundary-to-volume relation, or a functional with zero mean on
+every packing) is a design change for Main and Experimental.

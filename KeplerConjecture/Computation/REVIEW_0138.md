@@ -113,3 +113,62 @@ can check by hand, which is exactly the property the review asked to see demonst
 3. The collective geometric inequality is Experimental's; my `NONUNIFORM_SHELL.md` only argues
    that a *count* cannot suffice.
 4. `shell_sos.py`'s SOS structure remains unimplemented; it is an LP.
+
+## 7. Independent fallback: periodic cut-deficit evaluator (`cut_deficit.py`)
+
+Built for `Main/NEXT_PACKAGE.md` item 3 (the falsification test), with exact separation and
+periodic-boundary conventions and the FCC control requested. It produces one result that Main
+should have before investing in the inequality, and it is not the result the search was
+expected to produce.
+
+### The structural point
+
+Take the blob `U` to be **the whole period**. Then `δ⁺(U)` is empty, `|δ⁺(U)| = 0`, and
+
+$$\sum_{v\in U} b(v) \;=\; N\sqrt{32} \;-\; (\text{period volume}) \;=\; N\Big(\sqrt{32} - \frac{1}{\rho}\Big),$$
+
+with `ρ` the centre density. So the cut condition at the full period reads
+`ρ ≤ 1/√32` — **which is the Kepler bound itself**.
+
+Therefore, for periodic packings, the cut condition quantified over all blobs with a boundary
+term is **equivalent to Kepler, not an independent analytic inequality.** It can only fail for a
+packing whose density exceeds Kepler, and no such packing is known or believed to exist. The
+consequence for the search in items 1–3 is uncomfortable but should be stated: **a
+falsification search that finds no counterexample is vacuous rather than weak evidence**, because
+any counterexample would be a counterexample to Kepler. The inequality is not testable
+independently of the theorem it is meant to prove.
+
+This does *not* make the route wrong — an equivalent reformulation is a legitimate proof strategy,
+and the value of `NEXT_PACKAGE.md` is that it localises the difficulty. But "test it first" cannot
+work in the form stated.
+
+### The evaluator, and what it does establish
+
+| fixture | separation convention | cell volumes | `b` | full-period `Σb` |
+| --- | --- | --- | --- | --- |
+| FCC (`√2·D₃`) | min `|x| = 2` exactly | `4√2 = 5.656854249` for every cell | **0** | 0 |
+| HCP (ABAB) | same cell volume | `5.656854249` | **0** | 0 |
+| periodised icosahedral 13-cluster, `16ℤ³` | edge `2√(1−1/√5) = 2.1029 > 2`; origin–vertex distance `2` | central `5.550291029`, others `340.870809`, mean `315.076923` | central `+0.106563`, others large negative | **−4022.46** |
+
+Both close-packed stackings are **exact equality cases** (`b = 0` on every cell), so neither FCC
+nor HCP can discriminate; a test built only on them has no power. The icosahedral fixture — the
+natural candidate, since its central cell is *strictly* below `√32` — has `b > 0` on that one cell
+but a mean cell volume `55×` above `√32`, because the twelve surrounding cells are enormous. Its
+full-period sum is strongly negative and **it does not refute the condition.**
+
+A correct localisation of the inequality, if one is wanted, must therefore avoid the full-period
+blob — e.g. by restricting to blobs with a *prescribed* boundary-to-volume relation, or by
+replacing `b` with a functional whose mean is zero on every packing. That is a design change for
+Main and Experimental, not something the evaluator can settle.
+
+### Reproduced
+
+```bash
+cd KeplerConjecture/Computation && python3 cut_deficit.py    # < 1 s, stdlib + mpmath
+```
+
+Output `out/cut_deficit.json`. **One error found and fixed while writing it:** the first version
+multiplied the dodecahedral cell volume by 8 on the grounds of rescaling to separation 2, which
+double-scaled it (the helper already returns the inradius-1 volume). Caught by checking against
+the value `5.5502910` used elsewhere in this directory; recorded because it is the same class of
+error as the four the reviewer caught last block.
