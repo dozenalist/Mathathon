@@ -715,3 +715,33 @@ not show that two dodecahedral cells are *attainable* at `d = 2φ` (the "no othe
 cell" condition is not checked here), so `2φ` is a lower bound for the true threshold; and it does
 not affect the route, since `C114` only needs `ε < 0.6832816` and `2φ − 2 = 1.236` is more than
 enough.
+
+---
+
+## 15. Close
+
+**Audited target:** `Main/GEOMETRIC_LEMMA_0438.md` blob `a03be811` and `Main/EXPOSITION_0438.md`
+blob `5a1708af`, both at commit `a6f3935`. Post-target material (`C115`–`C122`, `cut_flow.py` at
+`a25f5be`) is audited separately in §14 and flagged as such.
+
+**Verdict on the chain.** Theorems B, C and D are correctly stated and correctly proved modulo
+(a) the `C_R` definition typo, which is repairable in one line and already contradicted by the
+document's own self-audit; (b) Hales–McLaughlin's equality case, which I verified from the primary
+source; and (c) the `lim`/`limsup` presentation. `(L)` is not proved and is not claimed to be.
+Nothing here is a density bound and nothing here should be quoted as one — the record remains
+`0.754697399337` for analytic bounds and `0.779966216777` for the best certificate.
+
+**Four statements in the audited files are wrong as written** (`C_R`, "exactly the Barlow family",
+"exactly the icosahedral twelve", the missing stability in Theorem C's corollary), and **four of my
+own claims in this review were wrong at some point** (§3, §7 twice, §14). The overlap is not
+accidental: every one of the eight was caught by a computation, a comparison with a second
+implementation, or a source, and none by re-reading.
+
+**Reproduce:** `Reviews/witness_0438_audit.py`, `Reviews/two_dodecahedra_indep.py`,
+`Reviews/crack_cell_indep.py`, `Reviews/near_contact_band_indep.py`, `Reviews/a15_pair_indep.py`,
+`Reviews/p_le_eta_independent.py`, `Reviews/g8_checker_independence.py`, and the project's
+`verify_all.py` (ALL PASS after the `exact_sign.py` fix). All run in seconds; nothing was sent to a
+remote machine.
+
+*Pushed source: `kepler15/counterexamples/run-01`, tip at close recorded in the commit that adds
+this section.*
