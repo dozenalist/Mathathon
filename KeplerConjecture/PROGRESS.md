@@ -6,12 +6,43 @@
 | --- | --- | --- | --- |
 | Problem 15 roadmap | Prepared research plan | ROADMAP.md and Literature/PROBLEM_SPEC.md | Main |
 | Literature and modern obstructions | Source compilation | Literature/README.md and CORE_SOURCES.md | Main and Counterexamples |
-| Earlier SAIR work | Pending independent review | Literature/PRIOR_WORK.md | All four assigned sessions |
+| Earlier SAIR work | First coordinator checkpoint reviewed; corrections required | Main/SUPERVISOR_REVIEW_23906.md | Main and Counterexamples |
 | New simpler general 3D proof | Open | No accepted new theorem at setup | Main |
-| Numerical reproduction | Awaiting recovered inputs | Main/LOCAL_COMPUTE_REQUESTS.md | Computation and Astra |
-| Local Lean proofs | No new module submitted | Lean/README.md | Main and Astra |
+| Numerical reproduction | Proposed handoff needs normalization and executable-source repairs | Main/SUPERVISOR_REVIEW_23906.md | Computation and Astra |
+| Local Lean proofs | Targeted-import algebraic normalization passed locally; geometric bridges remain open | Lean/Review/README.md | Main and Astra |
+| Publication and response logs | Setup published in draft PR #1; save and push every final response | Main/SUPERVISION.md and ChatLogs/ | Astra |
 
 ## History
+
+### K15-REVIEW-001 — 2026-11-13, America/Los_Angeles
+
+Author: Astra supervisor `01a1d8c0-f50f-7352-a61a-3927660a8eea`.
+Independent reviewer: separate mathematical audit agent. Status: corrections
+required; no new Kepler theorem accepted. Reviewed Main completion 23906 and
+source commit `c91007ff11844f179921fadfb2e90d352b8c0090` on `kepler15/main`.
+The detailed review records false rational-point and finite-bandwidth claims,
+an inequality-sign error, incomplete CE hypotheses, a numerical normalization
+mismatch, and evidence/certification gaps. These are not accepted obstructions
+to entire research routes. Main owns corrections and independent re-review.
+
+The setup checkpoint `69f3213aa6f2b636ec1b0e25a7394acfecae986b` was confirmed
+on GitHub branch `kepler15/setup-01a1d8c0` and is exposed in
+[draft PR #1](https://github.com/dozenalist/Mathathon/pull/1). Its validation
+included source-card review, catalog parsing, PDF checksums, local Markdown
+links, secret-pattern checks and `git diff --check`. The compiled bibliography
+contains 16 source records and three selected accessible primary-source PDFs.
+
+Four existing Kepler SAIR sessions received bounded research assignments with
+local Lean/heavy-computation offload. Ultramath-selected UI follow-ups were
+submitted, but activation in the running model calls remains unconfirmed.
+Continuous watchers save and queue completion reports; automatic resume after
+idle has not yet been observed successfully. See `Main/SUPERVISION.md` for the
+precise ownership and operational limitations. The user stopped Computer Use
+with Escape and browser operations ended.
+
+The new standing requirement to report progress, save the exact final response
+in dated `ChatLogs/` files, and push before idle is recorded in
+`Main/SUPERVISION.md`. The current mathematical objective remains open.
 
 ### K15-SETUP-001 — 2026-11-13, America/Los_Angeles
 
