@@ -5712,3 +5712,37 @@ should be its own job if the large-ball route is pursued.
 **Consequence for the recommendation.** `ε = 1` (`M-CERT-002` as pinned: `c = 0.13` on `Σθ² ≤ 0.002`, no
 type changes, `|det| ≥ 0.61`) remains the safe step. The `ε = 0.2` extension is worth `30×` on `δ₀` but
 needs this slackness analysis first, and the analysis is delicate precisely where the gain is largest.
+
+#### `C146` addendum 2 — the `ε = 0.2` route sits at a BIFURCATION, measured
+
+The previous addendum worried about the *determinant*, which is the wrong diagnostic: a vanishing `|det|`
+means the would-be vertex runs away to infinity, and its slack then *grows*. The right diagnostic is the
+**slackness**: for each of the 140 inactive triples, `max over the other 9 planes of (x·n_j − 1)`, which
+must stay positive for the 12-facet type to persist.
+
+| `θ` | min slack over the 140 inactive triples | active triples |
+| --- | --- | --- |
+| `0` | `1.236068` (`= 2/φ` exactly) | `20` |
+| `0.05` | `0.876618` | `20` |
+| `0.10` | `0.593997` | `20` |
+| `0.15` | `0.354170` | `20` |
+| `0.20` | `0.151489` | `20` |
+| **`0.2447`** | **`0.001869`** | `20` |
+| `0.30` | `0.000845` | `20` |
+
+**So the `ε = 0.2` route needs `θ_max = 0.2446545`, and the min slack there is `0.0019` — the type is
+*just* stable and about to change.** The active count stays 20 throughout, but an inactive triple is
+approaching activity and arrives at `θ ≈ 0.25`. A rigorous `L1'` at the `ε = 0.2` ball would therefore sit
+*at a bifurcation*, where the volume functional's Taylor expansion has a singularity in its derivatives
+(the vertex is leaving the hull). That is a much worse place to prove a bound than `ε = 1`.
+
+**Revised recommendation, with the numbers.** Stay at `ε = 1`: there `θ_max = 0.0447`, the min inactive
+slack is `≈ 0.9`, the type is robust by a wide margin, and `M-CERT-002` is a clean computation. The
+`ε = 0.2` extension is worth `30×` on `δ₀` and is *not* worth it: it requires controlling a bifurcation
+for a factor that a sharper `c` at `ε = 1` might supply more cheaply.
+
+**What this also explains.** The measured quotient ratio stayed `0.27–0.32` out to `θ = 0.30` even though
+the type is about to change at `0.25` — the volume is continuous through a bifurcation (a vertex passing
+through a face changes the hull discretely but the volume continuously, to first order). That is why a
+*ratio* measurement looked harmless while the *derivative* structure degenerates. **A sampled function can
+look smooth where its derivatives are not**, and only the slackness showed it.
