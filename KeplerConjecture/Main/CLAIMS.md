@@ -1767,3 +1767,34 @@ correct (`False`, `False`, `False`, as the root pattern requires).
 
 Scope: timing on this VM, single core, sympy only. The certificate path is the
 slowest real use and stays far below the 300 s cap.
+
+### K15-C063 — X's `audit_K33_signs.half_line_verdict`: exact diagnosis (`REFUTED`, fix identified)
+
+- **Reproduced.** On the file at `e3a63a1`
+  (`Counterexamples/Reviews/K33/audit_K33_signs.py`), the call
+  `half_line_verdict((t²−2)(t²−3), a = 0, want = +1)` returns **`True`**, although
+  the polynomial equals `−3/16` at `t = 3/2`.
+- **Exact cause, in their code:**
+  ```python
+  try: rn = sp.Rational(sp.nsimplify(r))
+  except Exception: rn = None
+  if rn is not None and rn > a: odd.append(...)
+  ```
+  For `r = √2` (returned by `real_roots` as a radical, as the code prints
+  `[-sqrt(2), sqrt(2)]`), `sp.Rational(√2)` raises `TypeError`; the `except` sets
+  `rn = None` and the root is **silently dropped**. The `try/except` turns "this
+  root is irrational" into "there is no root", which is the failure the review
+  named.
+- **Fix (one line).** Never convert the root: test `sp.sign(sp.N(r - a, 30)) > 0`,
+  or keep the algebraic number and compare symbolically. More generally: an
+  exception in a sign test must be a *failure*, never an absence.
+- **Also confirmed good.** The same file, run on the real data, `ACCEPT`s K33 with
+  `Δ = 0.779966498`, matching Main (`0.779966497784`) and Computation — three
+  implementations, one value — and reports that `q`'s minimum on `[0,300]` is
+  `3.708e−6` near `t = 10.332`, i.e. the certificate is legitimately
+  near-tangency and float checks are unsafe there. Its two "NEGATIVE" controls
+  (`c0 += 1/1000`, `c1 += 1/1000`) are accepted with worse bounds
+  (`0.783371916`, `0.787430829`), which is correct behaviour — a worse bound is
+  still a bound — and the label is misleading, not the verdict.
+- **Status.** `REFUTED` (their routine), routed to X with the fix. No project claim
+  used their routine; the K33 value above is unaffected.
