@@ -1047,3 +1047,20 @@ is a redundancy check on E's enumeration rather than a new ingredient.
 makes the family dense; if layers may sit above lattice points the packing
 overlaps (`c = 1.633 < 2`), so those sequences are not packings and are excluded
 by the definition, not by a computation.
+
+### K15-C034 — X's repaired `kepler_ok` passes the historical counterexample (`VERIFIED` by re-run)
+
+- **Re-run by Main.** `Counterexamples/ce_exact_gauss.py` (branch
+  `kepler15/counterexamples/run-01`, revision `237cc3b`) was extracted and
+  executed. The case that previously failed — `P(0)/Q(0) = 99/100`, where
+  `32P(0)² = 313632 > π³Q(0)² = 310062.8` — now returns `kepler_ok = False`, i.e.
+  the truncation bug is fixed and the verdict is the correct one.
+- **The useful by-product.** In X's normalisation the Kepler test is
+  `P(0)/Q(0) < √(π³/32) = 0.98435062…`, and the script prints the exact rational
+  comparisons for six sample ratios. That is a concrete, checkable acceptance
+  threshold for any candidate in X's Gaussian family, in the same spirit as the
+  `f(0)/f̂(0) ≤ 0.186150827` threshold in the `π`-normalisation.
+- **Scope.** This verifies the repair of a *comparison helper* on one case and
+  the arithmetic of the threshold. It is not a certificate, and X's LP search
+  remains `TESTED_FINITE` (their own report says so).
+- **Status.** `VERIFIED` (Main re-ran the exact historical failure). Reviewer X.
