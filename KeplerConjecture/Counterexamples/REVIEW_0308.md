@@ -439,7 +439,7 @@ stone rather than a curiosity.
 
 | item | label |
 | --- | --- |
-| `shell_check` `7c56c5ee` | **ACCEPTED modulo `η ≥ 0`** (not enforced; one-line fix; exploitation needs `\|p′\| ~ 10²⁸`, no witness found) |
+| `shell_check` `7c56c5ee` | **SOUND for `η ≥ 0`, UNSOUND for `η < 0`** — the latter is now *witnessed* (§17: C's own profile with `η = −0.0152` yields `δ ≤ 0.0152`). `η ≥ 0` is a **validity condition of the bound** (`n·max(M,0)`), not a gluing technicality. All published numbers use `η = 0` and are unaffected. |
 | `_gap_verdict` strict branch | **PROVED SOUND** |
 | `function_range` fallback | **DELEGATED**; correct on all hostile cases tried; no `try:` in module |
 | `C081` | **WITHDRAWN**, error confirmed |
