@@ -1439,3 +1439,53 @@ After C advanced to `5c102677…`, Main re-ran both checks:
 
 So the interface (`K15-C023`, `K15-C031`) survives C's updates; nothing in the
 last two blocks' verification was version-specific.
+
+### K15-C049 — sign predicates falsely accepted positivity between endpoint roots (`REFUTED`, repaired, re-verified)
+
+- **The defect (reported by local reproduction at `6626714`).** The three
+  predicates `le_on_interval`, `nonneg_on_half_line`, `_ray` returned `True` for
+  - `u(1−u) ≤ 0` on `[0,1]` — value `+1/4` at `u = 1/2`;
+  - `u(u−1) ≥ 0` on `[0,∞)` — value `−1/4` at `u = 1/2`;
+  - `u(1−u) ≤ 0` on `[0,∞)` — the same `+1/4`.
+- **Root cause, two independent faults.**
+  1. `_count_roots`/`_roots_in` used `V(lo) − V(hi)`, which counts the distinct
+     roots in `(lo, hi]`, and then subtracted a root at **`lo`** instead of `hi`.
+     A root at `hi` was therefore counted and never removed, and a root at `lo`
+     was removed twice.
+  2. Even with a correct count, testing **only the endpoints** when the odd part
+     had no root strictly inside is invalid whenever *both* endpoints are roots:
+     `u(1−u)` has odd roots exactly at `0` and `1`, is zero at both ends, and is
+     positive in between.
+- **The repair (general, not special-cased).** Sign changes are counted on the odd
+  part with the correct endpoint convention; when the count is zero the sign is
+  constant and three probes (endpoints and midpoint) decide it; when the count is
+  positive, roots are isolated (`Poly.intervals`) and one rational test point is
+  taken in **every gap between consecutive roots** plus the endpoints. That is
+  exact: a polynomial's sign is constant between consecutive roots.
+- **Regression fixtures, kept permanently** in `Computation/checker_adversarial.py`
+  (now 19 cases): the three reported polynomials must FAIL;
+  `−(u−1/2)² ≤ 0` on `[0,1]` and `(u−1/2)² ≥ 0` on `[0,∞)` must PASS (touching);
+  `u(u−1) ≤ 0` on `[0,1]` must PASS (negative between two endpoint roots — the
+  exact mirror of the reported case). The suite also caught an error in *one of my
+  own new fixtures* (`u(u−1) ≤ 0` on `[1,3]`, which is false), which is the point
+  of keeping it.
+- **Re-verification after the repair.** `--self-test` ALL PASS; adversarial suite
+  19/19; the K33b certificate still `ACCEPT` with the **identical** ratio
+  `42935541634304122537361009/230584315533749727927712550` and
+  `Δ ≤ 0.779966216777`; `shell_fixture.py` returns the **unchanged**
+  `R = 0.5383822578566787`; the `--against-exactcert` cross-run still agrees.
+  So no published number moved — but the *general* soundness claim does move:
+- **Suspended until audited.** The sentence "the two checkers agree and are
+  therefore both correct" in `K15-C023`/`C031` is downgraded: the checkers agree,
+  and the K33b certificate passes a repaired checker, but the repaired predicate
+  has **not** been independently audited. Per instruction, general acceptance
+  claims are suspended until X audits `shell_check.py` at this revision. The
+  *particular* K33b certificate does not depend on that audit: Computation's
+  strict checker and the SymPy oracle both accepted it, and it is unchanged.
+- **Not mine, reported for routing.** X's `audit_K33_signs.py` accepts
+  `(t²−2)(t²−3) ≥ 0` on `[0,∞)` although its value at `3/2` is `−3/16`: irrational
+  roots are silently discarded by its root handling — the same class of defect.
+  Routed to X (their file).
+- **File.** `Computation/shell_check.py`, repaired this block; the reproducer
+  lives at `Main/LocalChecks/2026-11-14_0138/reproduce_sign_defects.py`
+  (supervisor branch).

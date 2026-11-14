@@ -73,3 +73,12 @@ needs only numpy.
 | `python3 Computation/cluster_fixture.py` | centre cell `5.550291` in every completion; nested sums `+157.87, +63.71, +17.91` decreasing, all upper bounds |
 | `python3 Reviews/audit_shell_check.py` (X's copy, from `e3a63a1`) | quadrature confirms `fourier_map` to `4.9e−15`; script then crashes at section 3 (SymPy `Float.imag`) |
 | `git show 5c10267:…/exactcert.py`-based cross-run (previous block) | 10/10 agreement, unchanged |
+
+## Sign-predicate repair (K15-C049)
+
+| What | Where |
+| --- | --- |
+| Reproducer of the three false accepts | supervisor branch, `Main/LocalChecks/2026-11-14_0138/reproduce_sign_defects.py` |
+| Repaired predicates | `Computation/shell_check.py` (`_count_roots_open`, `_test_points`, and the three predicates) |
+| Permanent regressions | `Computation/checker_adversarial.py` (19 cases, incl. the three reported) |
+| Re-verified | `--self-test` ALL PASS; adversarial 19/19; `verify_comp_cert.py` on K33b → ACCEPT, unchanged value; `shell_fixture.py --m 2 --rho 2` → unchanged `R` |

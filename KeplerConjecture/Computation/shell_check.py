@@ -124,10 +124,14 @@ def _odd_part(poly_expr):
     return out
 
 
-def _roots_in(poly_expr, lo, hi, closed_lo=False) -> int:
-    """Number of DISTINCT real roots of poly in (lo, hi) (or [lo, hi))."""
+def _count_roots_open(expr, lo, hi):
+    """Number of distinct real roots in the OPEN interval (lo, hi); hi may be oo.
+
+    Sturm's V(a) - V(b) counts the distinct roots in (a, b], so a root exactly at
+    `hi` must be subtracted.  (The previous version subtracted a root at `lo`
+    instead, which is why u^2 - u on [0, inf) was misclassified.)"""
     uu = sp.Symbol('u')
-    P = sp.Poly(poly_expr, uu)
+    P = sp.Poly(expr, uu)
     if P.degree() < 1:
         return 0
     seq = sp.sturm(P.as_expr(), uu)
@@ -135,10 +139,91 @@ def _roots_in(poly_expr, lo, hi, closed_lo=False) -> int:
         vals = [_sign_at(t, x) for t in seq]
         vals = [v for v in vals if v != 0]
         return sum(1 for a, b in zip(vals, vals[1:]) if a * b < 0)
-    n = sc(lo) - sc(hi)
-    if not closed_lo and _sign_at(P.as_expr(), lo) == 0:
+    n = sc(sp.Rational(lo) if not (hi is sp.oo) else sp.Rational(lo)) - sc(hi)
+    if hi is not sp.oo and _sign_at(P.as_expr(), hi) == 0:
         n -= 1
     return n
+
+
+def _test_points(expr, lo, hi):
+    """Rational points that meet every interval of constant sign of `expr` on
+    [lo, hi] (hi may be oo), together with the endpoints.
+
+    Exact: the sign of a polynomial is constant between consecutive real roots,
+    so testing one point per gap plus the endpoints decides the whole interval."""
+    uu = sp.Symbol('u')
+    P = sp.Poly(expr, uu)
+    pts = []
+    lo = sp.Rational(lo)
+    if hi is not sp.oo:
+        hi = sp.Rational(hi)
+    iv = P.intervals(eps=sp.Rational(1, 10) ** 8) if P.degree() >= 1 else []
+    roots = []
+    for (ivl, m) in iv:
+        a, b = (ivl, ivl) if not isinstance(ivl, tuple) else ivl
+        if b < lo:
+            continue
+        if hi is not sp.oo and a > hi:
+            continue
+        roots.append((a, b))
+    roots.sort(key=lambda t: t[0])
+    pts.append(lo)
+    if hi is not sp.oo:
+        pts.append(hi)
+    prev = lo
+    for (a, b) in roots:
+        if a > prev:
+            pts.append((prev + a) / 2)
+        prev = max(prev, b)
+    if hi is sp.oo:
+        beyond = prev + 1
+        pts.append(beyond)
+    else:
+        if hi > prev:
+            pts.append((prev + hi) / 2)
+    return pts
+
+
+def le_on_interval(coeffs, eta, lo, hi) -> bool:
+    """p(u) <= eta for all u in the closed interval [lo, hi], decided exactly."""
+    u_ = sp.Symbol('u')
+    r = sp.Poly(poly_from(coeffs, u_), u_)
+    r = sp.Poly(r.as_expr() - sp.Rational(eta), u_)
+    od = _odd_part(r.as_expr())
+    if _count_roots_open(od.as_expr(), lo, hi) == 0:
+        # sign constant on the interval: three probes suffice
+        probes = [sp.Rational(lo), (sp.Rational(lo) + sp.Rational(hi)) / 2, sp.Rational(hi)]
+        return all(r.eval(x) <= 0 for x in probes)
+    return all(r.eval(x) <= 0 for x in _test_points(r.as_expr(), lo, hi))
+
+
+def nonneg_on_half_line(coeffs) -> bool:
+    """q(u) >= 0 for all u >= 0, decided exactly."""
+    u_ = sp.Symbol('u')
+    q = sp.Poly(poly_from(coeffs, u_), u_)
+    if q.degree() < 0:
+        return True
+    od = _odd_part(q.as_expr())
+    if _count_roots_open(od.as_expr(), 0, sp.oo) == 0:
+        probes = [sp.Integer(0), sp.Integer(1), sp.Rational(1, 2), sp.Integer(2)]
+        vals = [q.eval(x) for x in probes]
+        if all(v == 0 for v in vals):
+            return True           # identically zero on a set of 4 points => zero poly
+        return all(v >= 0 for v in vals)
+    return all(q.eval(x) >= 0 for x in _test_points(q.as_expr(), 0, sp.oo))
+
+
+def _ray(coeffs, hi) -> bool:
+    """p(u) <= 0 for all u >= hi, decided exactly."""
+    u_ = sp.Symbol('u')
+    p_ = sp.Poly(poly_from(coeffs, u_), u_)
+    if p_.degree() < 0:
+        return True
+    od = _odd_part(p_.as_expr())
+    if _count_roots_open(od.as_expr(), hi, sp.oo) == 0:
+        probes = [sp.Rational(hi), sp.Rational(hi) + 1, sp.Rational(hi) + 2]
+        return all(p_.eval(x) <= 0 for x in probes)
+    return all(p_.eval(x) <= 0 for x in _test_points(p_.as_expr(), hi, sp.oo))
 
 
 def _sign_at(poly_expr, x):
@@ -149,54 +234,6 @@ def _sign_at(poly_expr, x):
         return 0 if lc == 0 else (1 if lc > 0 else -1)
     v = P.eval(x)
     return 0 if v == 0 else (1 if v > 0 else -1)
-
-
-def nonneg_on_half_line(coeffs) -> bool:
-    """q(u) >= 0 for all u >= 0, decided exactly (Sturm / root counting)."""
-    u = sp.Symbol('u')
-    q = sp.Poly(poly_from(coeffs, u), u)
-    if q.degree() < 0:
-        return True
-    if q.eval(0) < 0:
-        return False
-    from sympy import sturm, oo
-    od = _odd_part(q.as_expr())
-    if _roots_in(od.as_expr(), sp.Integer(0), sp.oo) > 0:
-        return False
-    # no sign change on [0, inf): the sign is that of q at any non-root point
-    for probe in (0, 1, 2, 3, sp.Rational(1, 2), 10):
-        if q.eval(probe) != 0:
-            return q.eval(probe) > 0
-    return False
-
-
-def le_on_interval(coeffs, eta, lo, hi) -> bool:
-    """p(u) <= eta for all u in [lo, hi], decided exactly."""
-    u = sp.Symbol('u')
-    r = sp.Poly(poly_from(coeffs, u) - sp.Rational(eta), u)
-    from sympy import sturm, oo
-    if r.degree() < 0:
-        return True
-    od = _odd_part(r.as_expr())
-    if _roots_in(od.as_expr(), sp.Rational(lo), sp.Rational(hi)) > 0:
-        return False
-    # no sign change inside: the sign on [lo, hi] is the endpoint sign, and the
-    # condition is r = p - eta <= 0 there (this routine certifies an UPPER bound).
-    return r.eval(sp.Rational(lo)) <= 0 and r.eval(sp.Rational(hi)) <= 0
-
-
-def _ray(coeffs, hi) -> bool:
-    from sympy import sturm, oo
-    u = sp.Symbol('u')
-    r = sp.Poly(poly_from(coeffs, u), u)
-    if r.degree() < 0:
-        return True
-    if r.LC() > 0:
-        return False                      # p -> +inf
-    od = _odd_part(r.as_expr())
-    if _roots_in(od.as_expr(), sp.Rational(hi), sp.oo) > 0:
-        return False
-    return r.eval(sp.Rational(hi)) <= 0
 
 
 def check(a, rho=F(209, 100), eta=F(0), K=None, count=12, verbose=True):
