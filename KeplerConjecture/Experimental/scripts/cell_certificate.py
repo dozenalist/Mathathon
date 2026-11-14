@@ -527,6 +527,23 @@ def main():
     print(f"     (the first version returned 28/3 for the duplicate case: the doubled face")
     print(f"      contributed d*A/3 = 4/3 twice)")
 
+    # ---- W5b: supporting planes that support no facet ---------------------
+    print("\nW5b SUPPORTING PLANES MEETING P IN < 2 DIMENSIONS (facet accounting, step (i))")
+    facet_tests = [
+        ("cube alone", cube6, one6, F(8)),
+        ("+ y.(1,1,0) <= 2 : edge only", cube6 + [(F(1), F(1), F(0))], one6 + [F(2)], F(8)),
+        ("+ y.(1,1,1) <= 3 : vertex only", cube6 + [(F(1), F(1), F(1))], one6 + [F(3)], F(8)),
+        ("+ y.(1,1,0) <= 3/2 : real facet", cube6 + [(F(1), F(1), F(0))], one6 + [F(3, 2)], F(31, 4)),
+    ]
+    for name, nn, dd, exp in facet_tests:
+        got = polytope_volume(nn, dd)[0]
+        good = (got == exp)
+        print(f"  {name:34s} -> {str(got):>4s}  expected {str(exp):>4s}  {'OK' if good else 'WRONG'}")
+        ok &= good
+    print("     (a supporting plane meeting P in an edge or a vertex supports no facet and")
+    print("      must contribute nothing; 31/4 checks by hand: 8 minus a prism of section")
+    print("      1/2 * 0.5 * 0.5 and depth 2)")
+
     # ---- the volume contract ---------------------------------------------
     print("\nVOLUME CONTRACT: bodies with known volumes, and a degenerate one")
     oct_n = [(F(a), F(b), F(cc)) for a in (1, -1) for b in (1, -1) for cc in (1, -1)]
