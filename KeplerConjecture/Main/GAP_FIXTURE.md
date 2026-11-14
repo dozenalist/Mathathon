@@ -35,8 +35,11 @@ across a wide crack (it makes the in-plane nearest distance `2/√3` instead of 
 | 2.800 | 2.000000 | 3.028751 | **disconnected** | 1.754 |
 | 3.200 | 2.000000 | 3.401960 | **disconnected** | 1.932 |
 
-So for `d > 1.633` the packing is 2-separated **and saturated**, and for `d > 2.09` the
-`2.09`-graph has two connected components, each closed (no edge crosses the crack). Two
+So for `1.633 < d ≤ 3.266` the packing is 2-separated **and saturated** (the upper bound is
+required: `d ≤ 2H = 3.265986` is exactly the saturation condition, and without it the crack
+is a void too wide to be covered — E's review catches this as an overstatement in the first
+version, which said only `d > 1.633`), and for `2.09 < d ≤ 3.266` the `2.09`-graph has two
+connected components, each closed (no edge crosses the crack). Two
 bounds are analytic, not just sampled:
 
 - *2-separation across the crack* needs `d² + 4/3 ≥ 4`, i.e. `d ≥ √(8/3) = H = 1.633`

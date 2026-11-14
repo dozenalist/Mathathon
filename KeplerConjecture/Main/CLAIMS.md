@@ -2401,6 +2401,18 @@ the cut condition is **at least as strong as** Kepler, and `K15-C080`'s "strictl
 must be read against the *open* `(T')`, not against Kepler. See
 `Main/ACCEPTED.md` §"One-way implications".
 
+> **Correction (`K15-REVIEW-0438-M`): the direction is not a circularity, and an earlier note
+> here said so wrongly.** The rejected phrasing was: *"nothing implies it from the density
+> bound, so the transfer route is a reorganisation whose price is the full geometric content"*
+> — used as though the implication *disqualified* the route. That inference is invalid. A
+> **sufficient** condition implies its target by definition; that is what "sufficient" means,
+> and it says nothing against it. Circularity would require the criterion to *assume* the
+> target. What the one-way arrow does establish is narrower and still worth having: the cut
+> form is not a weakening of Kepler, so it cannot be advertised as an easier target. Whether
+> the cut form is *simpler to verify* is an open cost question (`C071`, `C100`), not a
+> consequence of the implication. (The genuinely circular step found this block was `C094`'s
+> Lemma 1, repaired in `C104` — a different defect.)
+
 *Status.* `PROVED` (asymptotic identity from the tiling, plus `K15-C043`'s chain in
 the other direction). Reviewer X.
 
@@ -3048,3 +3060,107 @@ configurations, and it is what `PN-1` should be asked for.
 *Status.* `PROVED` for the stated finite check (the minimisation is over a `2`-parameter
 family with a closed form for the radius, so it is checkable to interval-arithmetic standard;
 Main ran it numerically only). Reviewer X.
+
+### K15-C103 — reconciliation of the three frozen worker inputs at review 0438 (`IMPORTED`, with two Main corrections)
+
+Sources read by exact hash, confirmed against the remote; nothing merged.
+
+- **C `6fbd0a1bf214a92b625cee84e8ee95ac5da4b8d9`** — `Computation/STATUS.md` rewritten for Main.
+  Substantive content: `TRANSFER-DENSITY-002` (a bounded antisymmetric transfer on a
+  finite-upper-density packing that is `D`-**saturated** implies `ρ ≤ 1/√32`), `CUTIMPLIES-003`
+  (the finite-`U` cut condition at any *one* finite capacity forces `ρ ≤ 1/√32`, because
+  `U = Λ ∩ B` is finite), `HIGHDENS-001` (every packing with covering radius `≤ R_Φ` fails
+  `C044` at capacity `Φ`; `R_0 = 1.105339`), `PERIODCONV-001` (no wrap-around edges for
+  `R ≤ 3`; the twelve ring cells congruent, volume `340.870809080957`, to `3.4e−13`),
+  `CUTBLOB-001` (`t*` pinned to width `8.3e−23`, maximiser `{0}`). **`CUTEQUIV-001` ("cut
+  condition ⟺ Kepler") is WITHDRAWN by C** — correct, and consistent with `C087`'s one-way
+  statement. C also records that the converse Kepler ⟹ some finite `Φ` works is open.
+- **E `498cfc3c0ce8d023fbf29b5810d06be115ac256b`** — `Experimental/REVIEW_0353.md` +
+  `INTEGRATION_0353.md`. Three items Main must act on, all checked: (i) **`K15-E083`**, the
+  contact-only `K ⊆ B(v,√2)` repair of Main's circular Lemma 1 — adopted and independently
+  re-verified (`C104`); (ii) `K15-E078` ("97.4% irremovable") **WITHDRAWN** by E because it
+  rested on failed searches, leaving only `K15-E082`, an angular exclusion for head-on cuts;
+  (iii) E's payer fixture: `(θ,φ) = (111.80°, 36°)` minimises `vol Ω(w1) = 5.897967122` over the
+  `C5` family, frozen fixture at `cos θ = −3/8` gives `5.898017372` (`5.0e−5` above), against
+  `(P′)`'s required `5.763417470` — margin `+0.1345`. E's covering-radius certificate converges
+  (`47.01, 43.22, 41.85, 40.79` at subdiv `3,4,5,6`, requirement `48.88`).
+- **X `d64de362da7b6f52bd494d15364e67783a3b184b`** — `Counterexamples/REPORT_X040.md`
+  self-audit (an `8^10` typo in §2, `P ≤ 0` beyond `4`, `NEXT_PACKAGE` wording). Astra has
+  independently verified the original X-C017 at `< 0.782267220134` and the 37 repaired checker
+  regressions; **the smaller C017 certificate and the geometric repairs still need local
+  review** and are therefore `PENDING_REVIEW` here, not accepted.
+
+**Main's two corrections to worker material.**
+1. **C's `shell_check` unsoundness report is against a stale revision of Main's own branch.**
+   C names `shell_check.py` at `6626714`; that commit *is* an ancestor of `kepler15/main`, but it
+   predates the `C058`/`C068` repairs and still contains `_odd_part`. Main ran C's three
+   witnesses against the current file: `le_on_interval([0,1,−1],0,0,1)`, `nonneg_on_half_line
+   ([0,−1,1])` and `_ray([0,1,−1],0)` all return **False**, i.e. correctly rejected (`u−u² = 1/4
+   > 0` at `u = 1/2`). So the defect C reports is **already repaired**, and C's advice to "not
+   rely on it until the fix is audited" is right in form: generic checker soundness remains
+   **SUSPENDED** (`PN-4`), but not for the reason C gives. Recorded with the exact revision so
+   it is not re-litigated.
+2. **Main's `BARLOW_CELLS.md` Lemma 1 was circular** (E's finding, confirmed). Repaired in
+   `C104`; `K15-C094`'s acceptance is restored on the repaired proof, not on the old one.
+
+*Status.* `IMPORTED`; per-source statuses above. Reviewer X.
+
+### K15-C104 — independent verification of the contact-polytope bound; `C094`'s Lemma 1 repaired (`PROVED`)
+
+**The defect (E's `K15-E083`, confirmed).** `C094`'s Lemma 1 argued: a non-contact `c` has
+`|c−v| ≥ 2√2`, so `H_c ⊇ B(v,√2)`; and `Ω(v) ⊆ B(v,√2)` by (F3); "so every non-contact
+half-space contains `Ω(v)`, hence is redundant". **Circular**: `Ω ⊆ H_c` is true *by
+definition* for every defining half-space. Redundancy needs `K ⊆ H_c` for the **contact-only**
+polytope `K`. The rejected text is preserved in `BARLOW_CELLS.md`.
+
+**The repair.** Two steps: (1) `K ⊆ B(v,√2)`, an exact finite statement about the contact
+polytope that never mentions `Ω`; (2) for a non-contact `c` and `x ∈ K`,
+`|x−c| ≥ |c−v| − |x−v| ≥ 2√2 − √2 = √2 ≥ |x−v|`, so `K ⊆ H_c`; hence `Ω = K`.
+
+**Independent verification (`Computation/contact_cell_exact.py`, exit 0).** Written against
+E's *statement*, not E's code: exact arithmetic in `Q(√2,√3)` as 4-tuples over `Fraction`,
+Cramer solves, exact feasible-set tests, and **rigorous interval sign decisions** (`mpmath.iv`,
+increasing precision until the sign is certified; exact zeros detected structurally as the
+all-zero tuple). Result for both local types:
+
+| type | vertices | `|x|²` (mult.) | `max|x|²` | `K ⊆ B(v,√2)` | Euler |
+| --- | --- | --- | --- | --- | --- |
+| fcc | 14 | `3/2` (8), `2` (6) | `2` | **yes** | `14−24+12 = 2` ✓ |
+| hcp | 14 | `3/2` (8), `2` (6) | `2` | **yes** | `2` ✓ |
+
+This reproduces E's table exactly. Agrees with Main's own float enumeration (8 vertices at
+`√(3/2)`, 6 at `√2`) and with E's `vol K = 4√2` cross-check against (F4)'s `2√3·H`.
+
+**Two bugs in the verifying implementation, recorded because one of them is a false
+refutation.** (i) `T` was coded `(1/3, √3/3)` instead of `(1, √3/3)`; (ii) the normals were
+coded `p/4` instead of `p/2` (the bisector is `x·p = |p|²/2 = 2`, so `n = p/2`). With the
+second bug the polytope is twice too large, `max|x|² = 8`, and the check prints
+**`K ⊄ B(v,√2)`** — i.e. a silent scaling slip manufactures a refutation of a true statement.
+The bound is exactly attained (`max = 2`), so it is not robust to scaling error; any future
+re-derivation must check `|p_i|² = 4` for all twelve contacts before trusting the output, which
+the script now asserts.
+
+**Consequence for `K15-C094`.** Acceptance restored on the repaired proof. `(F3)` is no longer
+used by the theorem (it survives as a true remark on the covering radius), so the repaired chain
+is also shorter: (F1) → `Ω = K` → two types (Lemma 2) → `vol = 4√2`.
+
+*Status.* `PROVED`. Independent reviewer: X (requested); the verification above is Main's own
+second implementation and does not substitute for X's.
+
+### K15-C105 — a sufficient criterion is not circular because it implies the target (`CORRECTION` of Main's own rhetoric)
+
+Main had written, in four places, that because the cut condition **implies** `δ ≤ π/√18`
+(`C087`) and nothing implies it from the density bound, "the transfer route is a
+reorganisation, not a simplification" — as though the implication were a verdict on the route.
+**That inference is invalid.** A sufficient condition implies its target *by definition*; that
+is what "sufficient" means, and it is no argument against it. A stronger statement can perfectly
+well be **simpler** to prove. Circularity requires *assuming* the target, which is a different
+error — and precisely the error that `C094`'s Lemma 1 actually committed (`C104`).
+
+What survives, and is worth keeping: the cut form is **not a weakening** of Kepler, so it must
+not be advertised as an easier target. What does not survive: any suggestion that the
+implication disqualifies the route. Whether the route is *cheaper* is an open cost comparison
+(`C071`, `C100`), not a logical consequence.
+
+Corrected in `ACCEPTED.md` §"One-way implications" (with a standing caution), `C087` (rejected
+phrasing preserved), `COMPLEXITY.md` §3–§4. *Status.* `CORRECTION`; no mathematics changes.

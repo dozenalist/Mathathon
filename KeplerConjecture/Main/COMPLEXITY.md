@@ -46,8 +46,19 @@ that is sharp — a well-known open problem, not a computation.
 ## 3. The geometric route's cost, after this block
 
 `K15-C087`: the cut condition **implies** `δ ≤ π/√18`, and nothing implies it from the
-density bound. So the transfer route is a reorganisation whose price is the full geometric
-content. Three further costs, all established this block:
+density bound.
+
+> **Correction (`K15-REVIEW-0438-M`).** An earlier version of this section concluded "so the
+> transfer route is a reorganisation whose price is the full geometric content", treating the
+> implication as a verdict on the route. **That inference is invalid and is withdrawn.** A
+> sufficient condition implies its target by definition; that is not circularity and it is not
+> a defect. Circularity would require assuming the target — which is what `C094`'s Lemma 1
+> actually did, and what `C104` repaired. The correct content of the one-way arrow is narrow:
+> the cut form cannot be sold as a **weaker** target than Kepler. Its **cost** relative to
+> Hales' proof — how hard it is to verify the cuts — is an open comparison (`C071`, `C100`),
+> not something the implication decides.
+
+Three further costs, all established this block:
 
 - **no slack** (`K15-C094`): on every Barlow packing `b ≡ 0`, so *every* cut is tight;
   a proof by a positive margin on a compact class cannot work;
@@ -61,10 +72,11 @@ decide its remaining inequality (`G5`), and that assessment is unchanged.
 
 ## 4. What this means for "simpler", in one paragraph
 
-A simpler proof of `δ ≤ π/√18` is not available in this project and no route explored here
-is a shortcut. The honest statement of the frontier: the only bound within `0.14%` of the
-truth is the **lattice** three-point bound, the plain LP is *proved* not sharp, and the
-transfer route is at least as strong as the theorem. So the realistic outcomes, in
+A simpler proof of `δ ≤ π/√18` is not available in this project, and none of the routes
+explored here is *known* to be cheaper. The honest statement of the frontier: the only bound
+within `0.14%` of the truth is the **lattice** three-point bound, and the plain LP is *proved*
+not sharp. The transfer route is at least as strong as the theorem — which, per the
+correction in §3, is a statement about its logical strength and not a verdict on its cost. So the realistic outcomes, in
 increasing order of difficulty, are (i) a certified improvement over `0.754697399337`
 (pointwise cell inequalities — Hales–McLaughlin plus a stability term, `K15-C096`'s `(S)` is
 exactly such a term); (ii) a general three-point bound strictly better than `0.770271`;
