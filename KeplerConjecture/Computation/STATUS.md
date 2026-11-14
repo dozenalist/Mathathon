@@ -15,6 +15,28 @@ open. Full detail in `PROGRESS.md`, `CERTIFIER.md`, `SHELL_PROPOSE_RESULTS.md`, 
 | **K15-C-XVAL-002** | the two exact checkers accept **each other's** certificates, in both directions, agreeing to ten digits | `CROSSVALIDATION.md` |
 | **K15-C-FAMTESTED-001** | `TESTED_FAMILY`: best value found in the tested family is `0.78037032` at `(K, Umax) = (33, 120)`; **not an optimum** — the ladder is non-monotone, so the search is not exhaustive | finite search over a parameter grid |
 | **K15-C-POSCERT-001** | `c = (4,1)` ⟹ `Δ ≤ 44π/15 = 9.215339` | elementary, hand-checkable, positive control |
+| **K15-C-SOSQSIDE-003** | `Δ ≤ 2.61993314` with `q = 3² + (3u/2−6)² + u(3/2−2u/3)²` | **explicit rational Gram on the Fourier side**, hand-checkable |
+| **K15-C-SOSFAMILY-001** / **SOSGRAM2-001** | `Δ ≤ 5.99152482` (cubic) / `6.73788568` (quintic) | explicit rational Gram on the **p** side |
+| **K15-C-SOSSHELL-002** | in the cubic family any admissible shell allowance is `> 0`, so every shell member is strictly worse than `η = 0` | family-restricted **proof** (corrected; `tests_0138.py` T4) |
+| **K15-C-CUTEQUIV-001** | the full-period blob makes the cut condition read `ρ ≤ 1/√32` — **the Kepler bound itself** | `PROVED`, elementary |
+| **K15-C-TESTS-0138** | every claim above is checked by exact expansion in `tests_0138.py` | machine-checked |
+
+> **Status note on the shell-route numbers** (`0.78037031`/`0.78037032`): the *certificates* were
+> re-verified by my own checker after exact basis conversion (`REVIEW_0138.md` §2) and stand. Their
+> *agreement* with `shell_check` is uninformative until Main's fix is audited, so any number resting
+> on `shell_check` alone is `PENDING_MAIN_FIX`.
+
+## Negative results from the cut-condition direction (this block)
+
+| claim | finding |
+| --- | --- |
+| `K15-C-CUTBLOB-001` | `Φ > 0.008880` from the 13-cluster fixture (a **lower bound**, not a refutation) |
+| `K15-C-CUTJAM-001` | FCC/HCP are **jammed** (12 contacts at exactly 2): no perturbation preserves separation, so no near-Kepler fixture that way |
+| `K15-C-FKNEG-001` | A15 with **equal** spheres gives `π/6 = 0.5236`, not a dense packing (the `2a` site is untouched at the `a/2` chain contact) |
+
+Together: the near-Kepler regime appears populated only by the close-packed stackings — all with
+**equal** cell volumes, hence `b = 0` and no discriminating power. **Three faces of
+`K15-C-CUTEQUIV-001`.**
 
 ## Actionable for Main
 
