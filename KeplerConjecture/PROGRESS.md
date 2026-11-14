@@ -393,3 +393,24 @@ breaks.
 **And it pins the only remaining difference between the pipelines:** `shell_check`'s
 `T_LO = 12` default is *sound but pessimistic* (it can only reject valid certificates, never
 accept invalid ones), which is why direction 1 needed `T_LO = 4π_lo` to pass.
+
+### K15-COMP-018 — 2026-11-14T10:07–10:35Z — Computation (role C), review 0138-C corrections
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-MAINCHECK-UNSOUND-001 | **CONFIRMED** | `shell_check.py` at `6626714125c35292d78943cd0fe8d18ec0051b38` falsely accepts `le_on_interval([0,1,-1],0,0,1)`, `nonneg_on_half_line([0,-1,1])` and `_ray([0,1,-1],0)`; all three are contradicted at `u = 1/2`. All three vanish at the left endpoint of the region, which is where the sign-change count is presumably mis-indexed | `REVIEW_0138.md` §1 (reproduced) |
+| K15-C-REVALIDATE-001 | **VERIFIED_EXACT (my checker)** | all four shell-route verdicts at `K = 33, Umax = 120` survive `exactcert.certify` after exact conversion to the Laguerre basis: `0.78037032` (`n=27`, unconditional) and `0.78033446` (`n=12`, conditional), in both `η` variants. The certificates stand; only `shell_check`'s automation was unsound | `REVIEW_0138.md` §2 |
+| K15-C-FAMTESTED-001 | **TESTED_FAMILY** (demoted from "optimum") | best value found in the tested family is `0.78037032` at `(K, Umax) = (33, 120)` over the parameter grid searched. **Not an optimum and not a closure**: the ladder is non-monotone (`K=17` worse than `K=15`), which is positive evidence the search is not exhaustive | `TLO_FINDING.md`, §3 of the review response |
+| K15-C-SOSFAMILY-001 | **VERIFIED_EXACT** (demonstrator) | the family `p(u) = -(u-T)(u-c)^2` has the explicit rational identity `-p = 0 + (u-T)(u-c)^2`, a Markov–Lukács representation whose multiplier is a **single rational square**; best found is `Δ ≤ 5.99152482` at `T = 314/25, c = 12`. A format demonstrator, **8× worse than CE**, not a competitive bound | `sos_family.py`, `out/sos_family.json` |
+| K15-C-SOSIRRED-001 | **TESTED_FAMILY (negative)** | the LP-optimal certificates admit **no factorisation-based rational Gram export**: at degrees 5, 7, 9, 13, 33 both `q` and `-p` are irreducible over `Q` with multiplicity 1 | `REVIEW_0138.md` §5(a) |
+
+**Corrections applied to artefacts:** `shell_sos.py` relabelled (numeric LP proposer, SOS structure
+**not** implemented); `LOCAL_RUN_REQUEST.md` command corrected from `--degree 8` (unrunnable:
+even, and above the cap) to `--degree 7`; "optimum"/"closed" language removed from
+`STATUS.md`; `SHELL_PROPOSE_RESULTS.md` and `TLO_FINDING.md` retain the numbers with
+`TESTED_FAMILY` status.
+
+**Process correction accepted.** The previous block was ended at 40 of 60 minutes and reported as
+"verified completion". That was wrong: finishing my own checklist is not the user's instruction,
+and it says nothing about the project's completeness. Runtime for the previous block **was**
+Ultramath, as the reviewer states; I had no evidence and should not have claimed "standard".

@@ -32,7 +32,8 @@ python3 verify_certificate.py out/verified_certificate_K33.json
 python3 exactcert_tests.py
 python3 exactcert_oracle.py
 
-# 2. shell proposer against Main's exact checker, ~5 s for degree 9
+# 2. shell proposer, ~5 s for degree 9 (shell_check at 6626714 is UNSOUND -- see
+#    REVIEW_0138.md; use it only to reproduce, and take verdicts from exactcert)
 python3 shell_propose.py --checker /tmp/shell_check.py --degree 9
 # best exact value in the family (~10 s):
 python3 shell_propose.py --checker /tmp/shell_check.py --degree 33 --tlo-exact --Umax 120
@@ -43,7 +44,7 @@ For (2) copy Main's checker next to the run, or pass its absolute path:
 
 ```bash
 git show omm/kepler15/main:KeplerConjecture/Computation/shell_check.py > /tmp/shell_check.py
-python3 shell_sos.py --checker /tmp/shell_check.py --degree 8
+python3 shell_sos.py --checker /tmp/shell_check.py --degree 7   # ODD and <= 7 only
 ```
 
 Dependencies: Python 3.12, `numpy`, `scipy` (HiGHS), `sympy`. No other packages. Versions
