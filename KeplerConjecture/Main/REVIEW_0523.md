@@ -248,9 +248,26 @@ in §2.2, to confirm nothing downstream still assumes the emptiness.
 
 ## 6. Honest accounting
 
-**Fixed:** six review items, one Main-found defect (the sampled twist maximum), two retractions
-with rejected text preserved (`C113`), one superseded `C093` bullet struck. **Added:** `C112`, a
-certified all-twists theorem. **Verified independently:** C's D8 repair on the exact witness;
-C's `t*` value `= (√32 − V_dod)/12`; A15's contact pair type `16.125`. **Not achieved:** any
-number, any improvement over `0.754697399337`, any progress on the sharp `2√32`, and no proof of
-`ρ > 0`. **Timing** is reported in the covering message.
+**Fixed:** six review items, one Main-found defect (the sampled twist maximum), three retractions
+with rejected text preserved (`C113`), one superseded `C093` bullet struck, and one cost claim of
+my own withdrawn (`C117`).
+
+**Added:** `C112` (certified all-twists theorem), `C114` (near-contact widening), `C116` (the band
+`6/√5`, sharp), `C115` (primary-source equality case, audited), `C119` (where the dodecahedral
+bound does work), and `Main/PROOF_STATUS.md`.
+
+**Verified independently of worker code:** C's D8 repair on the exact witness (§1); E's payer
+fixture to `1e−15` and its whole `14°` family (`C118`, `C120`); C's `t*` value
+`= (√32 − V_dod)/12`; A15's contact-pair type `16.125`.
+
+**Not achieved:** any number, any improvement over `0.754697399337`, any progress on the sharp
+`2√32`, and no proof of `ρ > 0`.
+
+**Artifacts pushed** (all on `kepler15/main`): this file, `Main/PROOF_STATUS.md`, and
+`Computation/{twist_cover, twist_all_t, near_contact_band, payer_reproduce, payer_family}.py`;
+reconciled `CLAIMS.md` (`C112`–`C120`, `C093` bullet struck), `ACCEPTED.md`, `RESULTS.md`,
+`PROOF_GAPS.md` (`G13` new, `G14` reopened), `COMPLEXITY.md` (§1b and the §2a correction),
+`EXPOSITION_0438.md`, `SOURCE_MANIFEST.md`. The check suite grew from 12 to 16 checks, all green in
+`6.3 s`; the ledger linter passes.
+
+**Timing** is stated in the covering message as measured — actual elapsed, not assigned.

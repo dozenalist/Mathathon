@@ -3700,3 +3700,30 @@ this entry the pair route's applicability range had not been compared with the r
 target bound is non-trivial, and the check comes out favourably by a wide margin.
 
 *Status.* `PROVED` (elementary). Reviewer X.
+
+### K15-C120 — E's C5 payer family scanned; the margin is a window, not a knife-edge (`AGREES`)
+
+`Computation/payer_family.py`, extending `C118`'s reproduction from the frozen point to the whole
+family. Parameter `dz` = the pentagon's height above `w1`; E's polar angle is `θ` measured from the
+inward direction, so `dz = −2 cos θ`.
+
+| claim (E's `K15-E085`/`E086`) | Main's scan | agree? |
+| --- | --- | --- |
+| legal window `θ ∈ [106°, 120°]` | legal `dz ∈ [0.55, ≥0.90]`, illegal at `0.50` (`min sep 1.9806`); `θ=106°` ↔ `dz=0.551`, `θ=120°` ↔ `dz=1.0` | **yes**, lower end matched exactly; upper end `≥0.90` is consistent with closing at `1.0` |
+| `Ω(w1)` has exactly **twelve** faces for every legal `θ` | **12 active half-spaces at every one of 37 sampled `dz`**, legal or not; 20 vertices, Euler `20−30+12 = 2` | **yes**, and stronger |
+| family minimum on the 1° grid `= 5.898007181` at `θ = 112°` | min on a `0.05` grid in `dz`: `5.898017372` at `dz = 0.75`; `θ=112°` ↔ `dz=0.7492`, between grid points | **consistent** — the `0.0006` gap is the `Δθ = 0.02°` between the two points |
+| continuous optimum `5.897967122` | bracketed by `5.898017372` (`dz=0.75`) and `5.898007181` (E, `dz=0.7492`) | **consistent** |
+| margin over the required `5.763417470` | `0.134599902` at the frozen fixture | **yes** |
+
+**The point of the scan.** E's claim is that the `(P′)` margin is a property of a whole `14°`
+window rather than of one tuned angle. The scan confirms it independently: the value varies
+smoothly (`5.932` at `dz=0.55` down to `5.898` at `dz=0.75` and back to `5.922` at `dz=0.90`) and
+stays above `5.932` throughout the window, i.e. **at least `0.169` above the requirement at every
+legal point**, not merely at the optimum. So the margin is robust to the angle, which is what makes
+it a meaningful margin at all.
+
+**Not claimed.** Nothing here is a proof of `(P′)`; it is an independent reconstruction of E's
+family and an independent confirmation of its numbers. The household caveat still applies
+(`E090`): this is a *local* witness, not a completion of the cluster.
+
+*Status.* `AGREES`. Reviewer X.
