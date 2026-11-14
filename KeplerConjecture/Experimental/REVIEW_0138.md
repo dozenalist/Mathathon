@@ -236,8 +236,17 @@ Three features are worth stating plainly.
 - **The transfer is inert on the equality family.** `A ≡ 0` on fcc and hcp, so the rule cannot
   disturb the configurations that attain `pi/sqrt18`. This was the main risk of any
   correction scheme and it is settled here for this rule.
-- **`A` is tiny**: `|A| <= 0.106563 = sqrt32 - V_dodeca`, i.e. at most `1.9 %` of a cell
-  volume. So the correction is a small perturbation, and (C3) has enormous margin.
+- **The *per-pair* transfer is tiny**: `||phi||_inf <= sqrt32 - V_dodeca = 0.106563`, i.e. at
+  most `1.9 %` of a cell volume, because a defect's deficit never exceeds that (using
+  `vol Omega >= V_dodeca`). Note the distinction I got wrong on first writing: this bounds
+  each `phi(v,u)`, **not** each `A(v)`. A vertex `u` that pays `K(u)` defects can have
+  `|A(u)| <= K(u) * 0.106563`, and `K(u)` is not bounded by `1`. Only the per-pair bound enters
+  negligibility, via `||phi||_inf` in `C1`, so the argument is unaffected — but the stronger
+  per-vertex claim was unjustified and is corrected here. In all six fixtures `K(u) = 1` and the
+  reported `|A| <= 0.016` is consistent with both bounds.
+- **(C3) has genuine margin.** A payer never gives more than `c(u) - sqrt32`, so
+  `c(u) + A(u) >= sqrt32 > 0`; a receiver only gains. So `c + A >= 0` holds by construction, not
+  by smallness.
 - **Each deficit is paid in full by exactly twelve payers**, matching `K15-E014`'s count.
 
 **Equivalence, stated honestly.** `(H_R)` with `S` the defect set of a single component *is*
