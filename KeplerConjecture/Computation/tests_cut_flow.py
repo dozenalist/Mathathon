@@ -242,7 +242,7 @@ def main():
 
     print("S15 EXTERNAL PATH: a fixture exported to JSON reproduces the internal numbers")
     import json as _json, os as _os
-    fxpath = "out/example_external_icos13.json"
+    fxpath = os.path.join(_HERE, "out", "example_external_icos13.json")
     check("the worked example exists", _os.path.exists(fxpath))
     if _os.path.exists(fxpath):
         fx = CF.load_external_fixture(fxpath)
@@ -264,8 +264,8 @@ def main():
               and flows[0].get("divergence_ok"), flows)
         # the PROVISIONAL stamping path: a fixture whose volumes are estimated must be marked,
         # and the flag must survive into every row of the report.  Never exercised before.
-        _os.makedirs(".scratch", exist_ok=True)
-        tmp = _os.path.join(".scratch", "provisional.json")
+        _os.makedirs(_os.path.join(_HERE, ".scratch"), exist_ok=True)
+        tmp = _os.path.join(_HERE, ".scratch", "provisional.json")
         prov = dict(name="provisional_copy", note="volumes estimated, must be stamped",
                     edges=[[int(a), int(b)] for (a, b) in fx["edges"]],
                     b_lo=[str(x) for x in fx["b_lo"]], b_hi=[str(x) for x in fx["b_hi"]],
@@ -280,7 +280,7 @@ def main():
         finally:
             _os.remove(tmp)
             try:
-                _os.rmdir(".scratch")           # leave no empty directory behind
+                _os.rmdir(_os.path.join(_HERE, ".scratch"))           # leave no empty directory behind
             except OSError:
                 pass
 
@@ -300,10 +300,10 @@ def main():
     check("exhaustive_cut_scan reports t* = +inf", CF.exhaustive_cut_scan(b8, E8)["t_star"] == CF.UNBOUNDED)
     # the same through the external fixture path, which must not print PATCH_FEASIBLE
     import io as _io, contextlib as _ctx, json as _json2
-    fxp = _json2.load(open("out/fixture_C034_witness.json"))
+    fxp = _json2.load(open(os.path.join(_HERE, "out", "fixture_C034_witness.json")))
     buf = _io.StringIO()
     with _ctx.redirect_stdout(buf):
-        outw = CF.evaluate_external(CF.load_external_fixture("out/fixture_C034_witness.json"))
+        outw = CF.evaluate_external(CF.load_external_fixture(os.path.join(_HERE, "out", "fixture_C034_witness.json")))
     check("the external path claims no flow", all(r.get("status") != "PATCH_FEASIBLE"
                                                   for r in outw["rows"] if r["kind"] == "flow"))
     check("the external path does not print PATCH_FEASIBLE", "PATCH_FEASIBLE" not in buf.getvalue())

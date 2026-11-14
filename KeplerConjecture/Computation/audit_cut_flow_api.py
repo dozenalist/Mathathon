@@ -241,12 +241,12 @@ def main():
     print("\n" + "=" * 100)
     print("D2. THE LOADER's own validation (untested before this block)")
     print("=" * 100)
-    os.makedirs(".scratch", exist_ok=True)
+    os.makedirs(os.path.join(_HERE, ".scratch"), exist_ok=True)
     for name, blob in (
             ("length mismatch", dict(edges=[], b_lo=["0", "0"], b_hi=["0"])),
             ("b_lo > b_hi", dict(edges=[], b_lo=["1", "0"], b_hi=["0", "0"])),
             ("edge out of range", dict(edges=[[0, 5]], b_lo=["0", "0"], b_hi=["0", "0"]))):
-        path = os.path.join(".scratch", "bad.json")
+        path = os.path.join(_HERE, ".scratch", "bad.json")
         json.dump(blob, open(path, "w"))
         try:
             CF.load_external_fixture(path)
@@ -258,7 +258,7 @@ def main():
         finally:
             os.remove(path)
     with contextlib.suppress(OSError):
-        os.rmdir(".scratch")
+        os.rmdir(os.path.join(_HERE, ".scratch"))
 
     print("\n" + "=" * 100)
     print("E.  INTERVAL ENDPOINTS: the two directions are not interchangeable")
@@ -275,8 +275,8 @@ def main():
     prov = dict(name="straddling_enclosure", note="b_lo < b < b_hi",
                 edges=[], b_lo=[str(x) for x in b_lo], b_hi=[str(x) for x in b_hi],
                 volumes_are_provisional=False)
-    os.makedirs(".scratch", exist_ok=True)
-    path = os.path.join(".scratch", "straddling.json")
+    os.makedirs(os.path.join(_HERE, ".scratch"), exist_ok=True)
+    path = os.path.join(_HERE, ".scratch", "straddling.json")
     json.dump(prov, open(path, "w"))
     try:
         fxs = CF.load_external_fixture(path)
@@ -290,7 +290,7 @@ def main():
     finally:
         os.remove(path)
         with contextlib.suppress(OSError):
-            os.rmdir(".scratch")
+            os.rmdir(os.path.join(_HERE, ".scratch"))
 
     print("\n" + "=" * 100)
     print("F.  THE OLD API's BLIND SPOT, AS A REGRESSION GUARD")
