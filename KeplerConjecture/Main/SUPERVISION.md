@@ -196,3 +196,19 @@ prohibit extra sessions and swarm utilities. Preserve this operational evidence
 without calling it proof of extra top-level owned chats. All local jobs finished.
 Next check: verify geometric certificate repairs and a nonvacuous 3D fixture,
 route independent reviews through Main, and continue the 45-minute schedule.
+
+### 06:53 review
+
+Main/E ended early at 20.504/40.461 minutes. Their fresh full-hour website
+assignments have confirmed delivery and actual Ultramath model calls. C/X
+continue their existing clocks; X received next-step evidence, with no reset.
+ASSIGNMENTS_2026-11-14_0653.json records all IDs and exact timing. C's active
+SAIR call runs nearcontact_scan.py with a 2400-second limit despite the standing
+local-offload instruction. It was not interrupted. At the next check distinguish
+VM waiting from substantive work and route future heavy work locally.
+
+All local jobs stopped. The dense-shell program reached its 120-second cap
+after reproducing the base fixture, before completing the parameter sweep.
+Review its generic volume completeness separately from exact flow arithmetic.
+The next checkpoint must inspect repaired origin-interior/radius proofs and
+the global geometry hypotheses. Keep the 45-minute cadence and stopped watchers.

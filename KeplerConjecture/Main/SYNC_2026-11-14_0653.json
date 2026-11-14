@@ -1,0 +1,16 @@
+{
+  "review": "2026-11-14 06:53 Pacific",
+  "previous_publication": "8c1a686ee3274030449cc0c0e28feaab9dea28c8",
+  "source_revisions": {
+    "Main": "4dc1cc9085bf6864898db10c0ef95d374dd3cb33",
+    "Computation": "926cdb709a29fff7ac8dfb4b72a03a2ca1af19c0",
+    "Experimental": "e71a1779bddaa47693b153106af6ee8521af9ab6",
+    "Counterexamples": "95772421aabcaf445a171a0905fe68c2ea80f79f"
+  },
+  "integration_head": "3a6b7aba8f9c24211c2ae5223ede9f5d854d5397",
+  "all_sources_are_ancestors": true,
+  "scope": "KeplerConjecture only",
+  "cutoff": "Main and E completed sources; C and X interim pushed sources captured at start. Later work remains with active assignments for the next scheduled check.",
+  "conflicts": "none",
+  "preservation": "normal merges preserve authorship and rejected source history"
+}

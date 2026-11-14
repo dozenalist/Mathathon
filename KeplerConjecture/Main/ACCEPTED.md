@@ -1,5 +1,15 @@
 # Accepted lemmas, open gaps, and closest sources — the one-page account
 
+> **Supervisor review, 06:53 Pacific:** C's nonvacuous periodic fixture has
+> locally reproduced values and independently checked legality/flow, conditional
+> on its volume data; the generic volume algorithm remains under review.
+> E's replacement origin-interior helper has a new exact false acceptance and
+> its radius mesh lacks a proved error bound. Main C124/C125 retain degree,
+> boundary, limit and face-class errors; G13/G14 are not accepted as closed.
+> Axial twist repairs do not yet prove the all-orientation near-contact bridge.
+> No new best bound or simpler proof is accepted. This scope overrides author
+> labels below. See [the review](REVIEW_2026-11-14_0653.md).
+
 > **Supervisor review, 06:08 Pacific:** the named isolated/edgeless flow
 > defects are repaired and 69 cases pass locally; generic soundness is unproved.
 > E's generic volume enclosure argument fails norm and boundedness checks.

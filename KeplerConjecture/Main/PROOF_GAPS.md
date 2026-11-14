@@ -1,5 +1,15 @@
 # Proof-gap ledger
 
+> **Supervisor review, 06:53 Pacific:** C's nonvacuous periodic fixture has
+> locally reproduced values and independently checked legality/flow, conditional
+> on its volume data; the generic volume algorithm remains under review.
+> E's replacement origin-interior helper has a new exact false acceptance and
+> its radius mesh lacks a proved error bound. Main C124/C125 retain degree,
+> boundary, limit and face-class errors; G13/G14 are not accepted as closed.
+> Axial twist repairs do not yet prove the all-orientation near-contact bridge.
+> No new best bound or simpler proof is accepted. This scope overrides author
+> labels below. See [the review](REVIEW_2026-11-14_0653.md).
+
 Every open obligation, its owner, and precisely what would close it. "Closed"
 means an artifact exists and has survived review; nothing here is closed by
 assertion. Maintained by M; reviewer X.

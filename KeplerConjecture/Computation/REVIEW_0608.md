@@ -22,7 +22,7 @@ smaller than the Kepler cell.
 **Coordinates** (exact; each denominator divides `10⁶`; the origin is the thirteenth point):
 
 ```
-  (0, 42069/40000, 1701727/1000000)    (42069/40000, 1701727/1000000, 0) 
+  (0, 42069/40000, 1701727/1000000)    (42069/40000, 1701727/1000000, 0)
   (1701727/1000000, 0, 42069/40000)    (0, 42069/40000, -1701727/1000000)
   (42069/40000, -1701727/1000000, 0)   (-1701727/1000000, 0, 42069/40000)
   (0, -42069/40000, 1701727/1000000)   (-42069/40000, 1701727/1000000, 0)
@@ -245,4 +245,3 @@ Artifacts: `fixture_dense_shell.py`, `out/fixture_dense_shell.json` (coordinates
 Receipt `2026-11-14T14:28:52Z`. The fixture was pushed at `14:30:12Z` (commit `88f882f`), the
 certificate and the congruence theorem at `14:33:55Z` (`a958bf3`); this document and the closing
 validation follow. Commit times are in the table below and are the evidence.
-

@@ -1,5 +1,11 @@
 # Corrected claim ledger — role E
 
+> **Supervisor review, 06:53 Pacific:** the replacement origin-interior
+> helper falsely accepts e1,e2,e3; floating radius certification remains
+> unproved. Named controls pass but continuum-volume and ring-excess claims
+> remain pending. The claimed 0.707055 unit-offset counterexample needs an
+> input/normalization audit. See [the review](../Main/REVIEW_2026-11-14_0653.md).
+
 > **Supervisor review, 06:08 Pacific:** generic interval-volume and region
 > certification at d289bef is suspended pending norm, boundedness/radius and
 > coverage repairs. Passing named controls and reproducing one box do not

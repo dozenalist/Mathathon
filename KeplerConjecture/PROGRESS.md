@@ -698,3 +698,22 @@ All local jobs finished; the first box run's serialization failure and its
 bounded successful retry are preserved. SYNC_2026-11-14_0608.json and
 REVIEW_2026-11-14_0608.md record the sources, scope and next tasks. Checks stay
 at 45 minutes; no watcher was launched or restarted.
+
+## Supervisor checkpoint: November 14, 06:53 Pacific
+
+Merged M 4dc1cc9, C 926cdb7, E e71a177, X 9577242 with original authorship.
+K15-SUP-0653-01 records local reproduction of C's positive-deficit periodic
+fixture and an independent exact legality/flow probe conditional on volume
+data; the family scan hit 120 seconds and generic volume completeness remains
+open. E's new origin-interior helper falsely accepts e1,e2,e3 (-02); its mesh
+radius is still not rigorously bounded. Main's degree-12 and face-monotonicity
+premises fail (-03); boundary and asymptotic-limit details remain open. The
+repaired axial twist argument does not supply all-orientation near-contact
+geometry (-04). No new best bound, simpler Kepler proof or Lean result accepted.
+
+M/E ended at 20.504/40.461 elapsed minutes; fresh full-hour tasks and actual
+Ultramath calls are recorded in ASSIGNMENTS_2026-11-14_0653.json. X received
+evidence without a clock reset; C stayed busy without duplicate assignment.
+Its heavy VM scan violates the standing offload instruction and is recorded
+for the next review. All local jobs stopped. Source hashes and limits are in
+SYNC_2026-11-14_0653.json and REVIEW_2026-11-14_0653.md. Watchers remain stopped.
