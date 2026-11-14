@@ -1738,3 +1738,12 @@ cases — the *midpoints* are fine, because the defect is in the enclosure width
 numbers are harmless here (the slack difference is of order the interval widths, `~10⁻⁴⁰`), but the word
 "certified" is not earned by that code path; it should call `cell_certificate.certify`. Same class as
 `X-C060`: the defective module is still load-bearing for anything that imports it.
+
+### K15-X-C108 — the C5 cell is 13th-centre stable in *all* directions, not just along the vertex ray
+
+Stronger than `X-C102`: sampling `4000` random directions and radii `t ∈ [2,5]`, `1692` of the candidates are
+admissible (at distance `≥ 2` from all twelve contacts, i.e. `≥ 2` from the origin too), and **none** cuts
+the cell — the test is `max over the cell's 20 vertices of ⟨c,y⟩ ≤ |c|²/2`, so it is exact given the vertex
+list. The cell's volume is `5.898017371803716` (matching the `C5` control). So the C5 fixture admits no
+admissible 13th centre at all that changes its cell. This is the `C102`-style *13th-centre stability* of the
+C5 payer cell, and it is why the polyhedral counterexample `X-C090` had to be a non-packing polytope.
