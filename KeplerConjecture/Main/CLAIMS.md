@@ -2257,3 +2257,35 @@ review notes. Hales–McLaughlin is not used.)
   `Main/NEXT_PACKAGE.md` as the floor any transfer candidate must clear.
 - **Status.** `AGREES` (finite numerical evidence consistent with a proof).
   Reviewer X.
+
+### K15-C083 — the bridge's relative loss is `12/S`, not `1/S` (`PROVED`, quantitative refinement)
+
+`K15-C002b` deletes the two-unit slabs at the tile boundary, so the kept region is
+the inner cube of side `S − 4` and the relative kept volume is
+
+```
+(1 − 4/S)³  ≥  1 − 12/S        for  S ≥ 4  (verified for 4 ≤ S < 500).
+```
+
+So the loss in the bridge is `O(1/S)` **with constant 12**, not 1 — the `O(1/S)`
+notation is correct but the constant matters for any quantitative use:
+
+| `S` | kept fraction | `12/S` |
+| --- | --- | --- |
+| 6 | 0.037 | 2.00 |
+| 10 | 0.216 | 1.20 |
+| 20 | 0.512 | 0.60 |
+| 50 | 0.779 | 0.24 |
+| 100 | 0.885 | 0.12 |
+
+**Empirical check of the construction itself (fcc, `S = 4, 6`, `R = 20, 40`).** Tiling
+`fcc` by cubes of side `S`, taking the tile with the most centres and periodising
+after deleting the slabs reproduces exactly the loss predicted: at `S = 6, R = 40`
+the periodic packing has `δ = 0.0194` against fcc's `0.7405`, i.e. the scheme is
+**vacuous below `S ≈ 12`** but correct as `S → ∞` with `R/S → ∞`.
+
+**Consequence.** The bridge is a *qualitative* reduction: it shows periodic packings
+are dense in density, but with a loss of `12/S` it says nothing quantitative at any
+computable scale. That is fine for its use (an upper bound proved for all periodic
+packings transfers to all packings), and it is worth stating so that nobody tries to
+make the bridge carry numerical weight.
