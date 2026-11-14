@@ -4220,5 +4220,24 @@ of the way from `2` to `d_max`, the quantity `max over τ of min over shifts k o
 — strictly below `4` everywhere up to `99.9%` of the band and strictly above just past `d_max`. So the
 closed form is the true crossing for this pair, and its whole range behaves as claimed.
 
+**The pair is optimal among single-pair certificates.** Running the same closed-form band end over
+all `121` pairs (`R = 0` pairs — pole–pole, whose distance is constant in the twist — excluded and
+checked separately: they never violate at `d = 2`, their constant `d²` being `4.0` or `7.2`):
+
+| | |
+| --- | --- |
+| non-degenerate pairs whose single-pair band reaches past `d = 2` | `25` |
+| pairs attaining the maximum | **`5`**, all with `R = 6.4`: `(a[2],q[7])`, `(a[3],q[7])`, `(a[4],q[10])`, `(a[1],q[10])`, `(a[5],q[10])` |
+| the maximum | `3.45550034440446` — **equal to the closed form** |
+
+The five-way tie is the icosahedron's `5`-fold symmetry about the shared vertex axis, which is also
+why the twist period is `72°`. So no single pair certifies more than `d_max`, and `C129`'s choice is
+one of the `5` optimal ones.
+
+**What is *not* claimed by that.** Optimality *among single-pair certificates* is not optimality of
+the union of pairs. Both X's `X-C051` and Main's twist scan put the true threshold at the same
+`3.4555003444`, so no union does better — but Main does not prove that here, and does not need it:
+`C124` requires only `ε > 0.1967`, which every candidate supplies by a factor of `7.4`.
+
 *Status.* `PROVED` (exact). `PENDING_REVIEW` with the rest of the pair chain; X is the gate, and this
 is the cleanest thing for X to check.
