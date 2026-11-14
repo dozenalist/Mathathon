@@ -27,6 +27,22 @@ run transfer_evaluator      "antisymmetric transfer, pointwise FCC, cancellation
 run multi_defect_test       "defect isolation; 2x2x2 grid"
 run frank_kasper_test       "A15 saturated fixture"
 run periodic_relax          "periodic relaxation recovers fcc / pi/sqrt18"
+# evidence integrity: every JSON must parse, every TXT must be non-empty
+bad=0
+for f in Experimental/evidence/*.json; do
+  [ -e "$f" ] || continue
+  python3 -c "import json,sys; json.load(open('$f'))" 2>/dev/null || { echo "INVALID JSON: $f"; bad=1; }
+done
+for f in Experimental/evidence/*.txt; do
+  [ -e "$f" ] || continue
+  [ -s "$f" ] || { echo "EMPTY: $f"; bad=1; }
+done
+if [ "$bad" -eq 0 ]; then
+  printf '%-28s %-8s %s\n' "evidence integrity" "PASS" "all JSON parses, all TXT non-empty"
+else
+  printf '%-28s %-8s %s\n' "evidence integrity" "FAIL" "see above"; fail=1
+fi
+
 echo
 if [ "$fail" -eq 0 ]; then
   echo "ALL CHECKS PASSED"
