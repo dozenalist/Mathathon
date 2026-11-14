@@ -28,7 +28,7 @@ minimum-separation-1 convention are in K15-C007.
 - **Obligation.** Any worker result stated in another scale must carry its
   conversion (K15-C007) in the same paragraph.
 
-## K15-C002 — two-point (Cohn–Elkies) bound for all packings, with the periodic approximation proved
+## K15-C002 — two-point bound for all packings  [proof gap found; corrected version C002b]
 
 - **Statement (corrected hypotheses, review objection 5).** Let `f: R³ → R` be
   continuous with `f̂` continuous, both satisfying `|f(x)|, |f̂(x)| ≤ C(1+|x|)^{−3−η}`
@@ -60,7 +60,7 @@ minimum-separation-1 convention are in K15-C007.
   place where "clarity" costs nothing — the appendix step is replaced by an
   explicit two-loss estimate a referee can audit in a page.
 
-## K15-C003 — truncated/hybrid two-point bound with a *count* price
+## K15-C003 — truncated/hybrid two-point bound with a *count* price  [indexing gap; corrected C003r]
 
 - **Statement (Theorem B).** Let `f` satisfy the hypotheses of K15-C002
   (`f, f̂` continuous, the decay bound, `f ≤ 0` off `|x| ≥ 2` away from `A`,
@@ -100,7 +100,7 @@ minimum-separation-1 convention are in K15-C007.
 - **Consequence.** The contact-sphere route stays closed (D5) — now for the
   right reason, which survives review.
 
-## K15-C005 — two-point + Voronoi additive hybrids: obstruction WITHDRAWN
+## K15-C005 — additive two-point score hybrids: third correction, valid obstruction restored
 
 - **What was claimed at checkpoint 1.** That a hybrid of the shape
   "`vol Ω(v) ≥ V_0 − κ B_κ(v)`" cannot reach `V_0 > V_HM`, on the grounds that
@@ -184,7 +184,7 @@ minimum-separation-1 convention are in K15-C007.
   the recovered brief is preserved verbatim for provenance. This ledger entry
   supersedes it.
 
-## K15-C010 — bandwidth budget from finitely many zeros: REFUTED as stated
+## K15-C010 — bandwidth budget: REFUTED without hypotheses; positive-definite form open
 
 - **What was claimed at checkpoint 1.** "If `supp f̂ ⊆ B(0,R)` and `f` vanishes at
   the first `K` shell radii, then `R ≳ K/(2r_K)`."
@@ -259,7 +259,7 @@ minimum-separation-1 convention are in K15-C007.
 - **Reviewer.** X. Used by K15-C003 with `n = ⌊(3+δ)³⌋ − 1` (conservative) or
   `n = 12` (sharper, but only for an unspecified `δ_0`).
 
-## K15-C014 — a grid-discretised Cohn–Elkies LP does not bound anything (negative result)
+## K15-C014 — WITHDRAWN: Main's grid LP omitted Fourier positivity (bug)
 
 - **Statement (`TESTED_FINITE`).** Imposing the two sign conditions of K15-C002 on
   finite grids and minimising `f(0)` with `f̂(0) = 1` gives an LP that is
@@ -328,3 +328,185 @@ Ten required corrections were received from the independent review
 
 The old versions of K15-C004, C005, C010 and C011 are quoted inside the entries
 above rather than deleted, so that any note citing them can be traced.
+
+---
+
+## Cycle 27616 corrections and new claims
+
+### K15-C002b — periodic approximation, repaired proof (supersedes the printed inequality)
+
+- **Status.** `PROPOSED`; reviewer X. What was wrong in `Main/Evidence/m2-proof.md`
+  (lines 125–131): after dividing by the number of interior tiles `#C_in(R)`, the
+  printed estimate used a *lower* bound for `#C_in` in the direction that requires an
+  upper one. The fix is to use `#C_in(R) ≤ vol(B(0,R))/S³` and keep every error
+  additive.
+- **Repaired chain.** Let `Λ` be a packing, `c = c(Λ)`, and fix `S ≥ 10`. Tiling by
+  cubes `C_z = z + [0,S)³`, `z ∈ Sℤ³`:
+  (i) `#C_in(R) ≤ vol B(0,R)/S³` (each interior cube has volume `S³`);
+  (ii) `Σ_{C ∈ C_in} n(C) ≥ N(0,R) − O(R²S)` (the boundary shell holds `O(R²S)`
+  centres, since `Λ` is 2-separated);
+  (iii) hence for the maximal tile `C*`,
+  `n(C*) ≥ (N(0,R) − O(R²S))·S³/vol B(0,R) = c S³(1 + o(1))`,
+  the `o(1)` being `O(S/R) + O(S³R²S/R³)`-free: the two errors are `S/R` and `1/S`
+  and are kept *additive*, never multiplied.
+  (iv) Periodising `Λ ∩ (z + [2, S−2]³)` loses at most `O(S²)` centres, so
+  `c(Π) ≥ c(1 − O(1/S))`.
+  **Case `c(Λ) = 0`:** the conclusion `c(Λ) ≤ f(0)/f̂(0)` is then trivial; the
+  argument above is applied only when `c > 0` (otherwise `N(0,R)/vol B(0,R) → 0`
+  makes every displayed ratio void).
+- **Note.** The corrected proof is *weaker in constants but correct*, and it is the
+  version any Lean formalisation must follow.
+
+### K15-C003r — count-price indexing, repaired
+
+- **Status.** `PROPOSED`; reviewer X. The gap in `m2-proof.md` (lines 256–265): the
+  proof fixes `j` and gets `≤ nk` bad pairs, then uses `nk` as the total over all
+  `j`, which would need `nk` per `j`. **Fix: fix `l`, not `j`.** For each base
+  centre `v_l` the map `(x,j) ↦ (v_l, x+v_j)` is a bijection onto
+  `{v_l} × Π`; the condition `x + v_j − v_l ∈ A` becomes `c' − c ∈ A` with
+  `c = v_l`, so by `(LC(A,n))` there are at most `n` such `c'` for this `l`.
+  Summing over the `k` values of `l` gives at most `nk` bad pairs in total, hence
+  `Σ_bad f ≤ nk·max(M,0)`, and
+  `k(f(0) + n max(M,0)) ≥ S(f) ≥ k²f̂(0)/|L|` gives
+  `c(Π) ≤ (f(0) + n max(M,0))/f̂(0)`. Statement unchanged; proof now correct.
+- **Hypotheses to restate in `RESULTS.md`:** `f̂(0) > 0`; the positivity set `A` lives
+  in the **exterior** `|x| ≥ 2` and `f ≤ 0` off `A` there — `f` may be positive
+  inside `|x| < 2` with no penalty.
+
+### K15-C005r — one frozen score, its Poisson mean, and the valid obstruction
+
+Review objection (3rd round) accepted: the previous sign claims mixed two different
+objects and the retained `mean B_κ ≤ −κc f̂(0)` has the wrong sign. Freeze both:
+
+- **(S1) raw score** `σ₁(v) = vol Ω(v) + κ·B_κ(v)`, `B_κ(v) = κ⁻¹σ₁`… precisely
+  `B_κ(v) = Σ_{μ∈Λ} f(v−μ)` (self-term `f(0)` **included**) — this is m1's object.
+- **(S2) centred score** `σ₂(v) = vol Ω(v) + κ·S_f(v)`, `S_f(v) = Σ_{μ≠v} f(v−μ)`.
+
+**Facts (all `PROVED`).**
+(F1) `S_f(v) ≤ 0` for every `v` and every packing: every difference has length
+`≥ 2`, where `f ≤ 0`; the sum converges by the decay hypothesis. *This is the
+distant-neighbour content the review asked for: the sign is pointwise, not an
+average, and it uses every neighbour, not the twelve nearest.*
+(F2) `f(0) + 12f(2) ≥ f̂(0)/(4√2) > 0`. Proof: Poisson at fcc gives
+`Σ_{λ∈fcc} f(λ) = (1/(4√2))Σ_{μ∈fcc*} f̂(μ) ≥ f̂(0)/(4√2)`; the left side is
+`f(0) + 12f(2) + Σ_{|λ|≥√6} f(λ) ≤ f(0) + 12f(2)` because `f ≤ 0` there. So at the
+isolated icosahedral 13-cluster, `B_κ = f(0) + 12f(2) > 0` — positive, as the review
+says.
+(F3) For a **lattice** (one centre per cell) the mean of `S_f` is exactly
+`c f̂(0) − f(0)`; for `k > 1` there is no such identity (the phases do not average
+out), and only (F1) is available. *Scope: (F3) is a lattice statement.*
+
+**Consequence (the obstruction, corrected).**
+- With (S1): `σ₁(v) ≥ V₀` gives `vol Ω(v) ≥ V₀ − κf(0) − κS_f(v) ≥ V₀ − κf(0)` by
+  (F1), so `V₀ ≤ inf_v vol Ω(v) + κf(0) = V_dod + κf(0)`, which is **worse than
+  `V_dod` for every κ > 0**. The raw score cannot help; the positive value at the
+  icosahedral cell is exactly the `κf(0)` shift.
+- With (S2): `σ₂(v) ≥ V₀` gives `vol Ω(v) ≥ V₀` by (F1), so
+  `V₀ ≤ inf_v vol Ω(v) = V_dod` (Hales–McLaughlin) and the bound `V_dod` is
+  attained (X-C003(iii): the 13-cluster embeds in a saturated packing). So the
+  centred score is exactly the dodecahedral barrier and cannot pass it.
+- **Conclusion.** No additive hybrid of one admissible two-point kernel with a
+  Voronoi volume reaches below `0.754697399337`, and this is now a *derived*
+  consequence of (F1) + Hales–McLaughlin + attainability, not of a mis-read
+  inequality. The mechanism is also instructive: a correction built from an
+  admissible kernel is non-positive everywhere, so a successful `A` must be
+  *positive at defect vertices* and is not of this form — which is precisely why
+  Hales's `A` is a geometric transfer, not a kernel.
+- **Reviewer.** X. **Artifacts.** `Main/Evidence/m1-certificate.json` (for (S1) and
+  the numerics), and this entry for (F1)–(F3).
+
+### K15-C010r — bandwidth: what is and is not refuted
+
+- **Refuted (as stated by Main at checkpoint 1):** the *unrestricted* finite-zero
+  claim. Counterexample stands (`f = g·∏(|x|²−r_j²)`, `supp ĝ ⊆ B(0,ε)`), but it
+  **destroys Fourier positivity**, so it refutes only the hypothesis-free form.
+- **Not refuted:** the positive-definite form of `smwfyzz1k/m3` Theorem 4.1, which
+  needs `f̂ ≥ 0`, radiality (or vanishing on whole spheres), `f̂ ∈ L¹`, `f(0) > 0`.
+  In that class `‖f̂‖₁ = ∫f̂ = f(0)`, so the logarithmic term of the budget
+  **vanishes identically** and the budget reduces to `R ≥ K log 2/(2π r_K) − o(1)`.
+  Whether that yields a usable obstruction with the CE sign conditions is `OPEN`
+  here; X-C004 accepts the band-limited statement with that scope.
+- **Status.** `C010`: `REFUTED` (unrestricted form only). `C010r`: `PROPOSED`,
+  reviewer X.
+- **Corrections to the recovered m3 note** (review, accepted): line 164 concerns
+  zeros of `f̂`; the dual estimates at lines 217–229 need
+  `log(‖f‖₁/|f̂(0)|)`, which need not vanish; the contact outward derivative is
+  `≤ 0`; the contact-Laplacian display omits off-contact contributions and is an
+  inequality, not an equality; and with the sign threshold matched, the `E₈`
+  contact shell is a boundary shell too, so the contrast drawn there is invalid.
+  Recorded so no worker builds on the note as written.
+
+### K15-C013r — counting envelope: corrected statements
+
+- (a) `n ≤ ⌊(3+δ)³⌋ − 1` — an **upper** bound (K15-C013(a), unchanged), with the
+  exact threshold `δ < ∛28 − 3 = 0.03658897…` for `n ≤ 26`.
+- (b) existence of `δ₀ > 0` with `n = 12` for `0 < δ ≤ δ₀`: correct, and
+  **attainability** should be added: the value 12 *is* attained, by the icosahedral
+  twelve, whose mutual distances are `2.1029… > 2` (X-C003; E's fixture). So for
+  small `δ` the maximum is exactly 12, not merely at most 12.
+- (c) The spherical-cap computation: `13·2π(1 − cos(θ/2)) ≤ 4π` implies
+  `θ ≤ 2 arccos(11/13) = 64.4°`, **not** `θ ≥ 64.4°`. Since the needed separation
+  satisfies `θ < 60°`, the area bound contradicts nothing — it is vacuous, as
+  intended, but the inequality must be written the right way round.
+- (d) Do not claim novelty for an explicit tolerance width: quantitative `N = 13`
+  Tammes results exist in the literature and must be located and cited before any
+  such claim (`TASKS` Q5).
+
+### K15-C014r — grid-LP claim withdrawn; the bug and the real numbers
+
+- **Status.** `WITHDRAWN`. The submitted `Computation/ce_laguerre.py`
+  (`sha256 b17badbc…`) builds `M_hat_s` and then **never passes it, or its negative,
+  to either `linprog` call**: Fourier positivity was not imposed. Both calls also
+  used the box `|a_k| ≤ 10⁶`, so the large negative objective was a bounded
+  minimum, not an unbounded ray, and `status = 0` is "optimal", not "unbounded".
+  The saved `audit_*` fields evaluate the polynomials `P, Q` **without** the
+  Gaussian factor `e^{−πs}`: their signs are meaningful, their magnitudes are not
+  values of `f` or `f̂`. The recorded maximum of `P` on the tested exterior was
+  negative, so the data never showed "violations of both signs". The `3/(32π)` floor
+  is also redundant for feasible data (it follows from `f̂ ≥ 0` and `|f| ≤ f(0)`).
+- **What is actually true (local, from the review's rerun).** With `−M_hat_s`
+  added to both constraint matrices, the degree-8, grid-1200, tmax-40 control gives
+  `f(0) = 0.21820243547088458` (occupied density `0.9141`), not the floor, and it
+  still fails global Fourier positivity (leading even-degree coefficient negative).
+  So: **grid optimisation produces exploratory candidates, not certificates, and
+  its value is not even close to the CE optimum at degree 8** — but grids are not
+  worthless, which is what C014 wrongly asserted.
+- **Replacement record.** K15-C014 is kept, with the bug, so that the mistake is
+  traceable. The correct lesson is X-C007/X-C008: certify with an exact sign
+  decision (Sturm in the univariate Laguerre family), and impose `f(0) > 0`.
+- **Reviewer.** X (X-C007 independently reproduced the same failure mode).
+
+### K15-C015 — cluster-averaged local criterion (E's `K15-E001`), integrated
+
+- **Statement.** Let `Λ` be saturated, `A : Λ → R`, `Π` a partition of `Λ` into
+  finite clusters with `diam K ≤ D` and `|K| ≤ V_max` for all `K`, and suppose
+  (C3) `vol Ω(v) + A(v) ≥ 0` for all `v`; (C4) `Σ_{v∈K}(vol Ω(v) + A(v)) ≥ √32·|K|`
+  for all `K ∈ Π`; (C5) `Σ_{v∈Λ(x,r)} A(v) ≤ C₁r²`. Then
+  `δ(x,r,Λ) ≤ π/√18 + C(C₁, D, V_max)/r`.
+- **Why it matters.** Lemma 3.3 of Hales is the case `Π` = singletons; (C4) is a
+  strict relaxation, so the pointwise fcc-compatibility can be replaced by a
+  cluster average. Proof in `Experimental/LOCAL_CRITERION.md` §1.
+- **Status.** `PROPOSED` (author E), reviewer M and X. Main read the proof: the
+  cluster accounting and the boundary term are of the same shape as Lemma 3.3 and
+  appear correct; the constant `C` depends on `D` and `V_max`, which must be stated
+  explicitly in `RESULTS.md` before use.
+- **Priced objection (E's own `K15-E003`, `PROVED`).** Finite-cluster computations
+  of Voronoi volumes are *upper* bounds (adding bisector constraints only shrinks
+  cells), so a cluster-average lower bound can be **refuted but never established**
+  by sampling. Any promotion of C015 needs an analytic lower bound over clusters
+  (Rogers-simplex or Fejes Tóth type) or a certified saturation of the outer region.
+- **Open question (`K15-E004`).** With `A = 0`: is `Σ_{v∈K} vol Ω(v) ≥ √32|K|` for
+  every cluster of diameter `≤ D`? `D = ∞` is Kepler; the content is the smallest
+  admissible `D`, with the icosahedral 13-cluster as first test case.
+
+### K15-C016 — cross-review verdicts imported from X and E
+
+| Item | Verdict | Where |
+| --- | --- | --- |
+| X-C001 contact-shell Laplacian `< 0` forced positive somewhere | accepted as `PROVED` | X registry |
+| X-C002 3D maximisers are not unique (HCP, Barlow family) | accepted; binds every equality argument | X registry |
+| X-C003 icosahedral cell `V_dod`, deficit `0.106563` | accepted; matches E's `K15-E002` | X, E |
+| X-C005 "all higher-point methods obstructed" | `REFUTED` (was never asserted here; recorded) | X registry |
+| X-C006/Viazovska no smooth sharp certificate | `REFUTED` | X registry |
+| X-C007 grid feasibility ≠ certificate | accepted; matches the C014r story | X registry |
+| X-C008 exact Sturm certification in the Laguerre family | accepted as the acceptance test | X registry |

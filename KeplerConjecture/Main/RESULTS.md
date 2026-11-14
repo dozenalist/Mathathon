@@ -40,7 +40,7 @@ region for a shell relaxation is controlled by `n·M/f̂(0)`, and the count `n` 
 exactly 12 for all sufficiently thin shells (K15-C013(b), compactness plus the
 kissing number); an explicit width is open.
 
-## 3. One obstruction, one withdrawal (K15-C004, K15-C005)
+## 3. Local geometry: the live route (K15-C015, with K15-C005r as the fence)
 
 - **Contact-sphere relaxation is vacuous (K15-C004, stands).** If `A` has empty
   interior then `R³∖A` is dense, so a continuous `f` that is `≤ 0` on
@@ -48,12 +48,27 @@ kissing number); an explicit width is open.
   kissing number 12 cannot improve any two-point constant. (At checkpoint 1 this
   entry was marked refuted by Main on the strength of a bad example; the review
   is right and the entry is restored.)
-- **Additive two-point corrections to Voronoi volume (K15-C005): obstruction
-  WITHDRAWN, route re-opened.** The two computations are real — the
-  positive-definite correction is `≥ κf̂(0)/(4√2) > 0` at the icosahedral cell
-  and has non-positive mean — but they do not exclude the family: in
-  `V_0 ≤ vol Ω(v) + κB_κ(v)` a positive value at the icosahedral configuration
-  *permits* a larger `V_0`. No bound is obtained, in either direction.
+- **Additive two-point corrections to Voronoi volume (K15-C005r): closed, for a
+  correct reason.** For an admissible kernel the *off-diagonal* score
+  `S_f(v) = Σ_{μ≠v} f(v−μ)` is `≤ 0` at **every** vertex of **every** packing
+  (all separations are `≥ 2`). So a centred score `vol Ω + κS_f ≥ V_0` forces
+  `vol Ω(v) ≥ V_0`, giving `V_0 ≤ V_dod` and no improvement; the raw score that
+  keeps the self-term gives only `V_0 ≤ V_dod + κf(0)`, which is *worse* for every
+  `κ > 0`. Both signs are now derived, not transcribed.
+- **The live candidate is cluster-averaged (K15-C015, E's criterion).** Replace
+  pointwise fcc-compatibility by `Σ_{v∈K}(vol Ω(v) + A(v)) ≥ √32|K|` on clusters of
+  diameter `≤ D`. This strictly relaxes Hales's Lemma 3.3 and is the natural home
+  for Fejes Tóth averaging. Its price is proved and steep: finite-cluster volume
+  computations are *upper* bounds, so sampling can refute a cluster inequality but
+  never establish one (`K15-E003`). Promotion therefore needs an analytic
+  cluster-volume lower bound, not a computation.
+- **Analytic comparator kept distinct: exact sign certification in the
+  Laguerre–Gaussian family (X-C008).** `f = Σ c_k L_k^{1/2}(2πs)e^{−πs}`,
+  `f̂ = Σ(−1)^k c_k L_k^{1/2}(2πs)e^{−πs}`, so both sign conditions are
+  polynomial sign questions on half-lines decided exactly by Sturm sequences.
+  This is the only route in the project that can produce a *certified* number, and
+  its ceiling is above `π/√18` by Li, so it is a control and a component — never
+  the theorem.
 
 ## 4. The frontier, fixed in one place (K15-C008)
 
@@ -68,8 +83,15 @@ about a restricted class that has not been compared with the literature.
 
 ## 5. What is not established
 
-- No new numerical bound has been produced in this project. CDS22 Table 1.1
-  values have not been reproduced locally (`K15-COMPUTE-001`).
+- No new numerical bound and no certificate. C's local controls are
+  `TESTED_FINITE`: `Δ = 0.779702445785607` (`K = 31`, grid 1200) and
+  `Δ = 0.779745768082807` (`K = 41`, grid 4000), with `min f̂` of order `−3·10⁻⁶`
+  and `−3·10⁻⁷` respectively — i.e. numerically feasible, globally uncertified.
+  The review's repaired degree-8 control gives `f(0) = 0.2182024…`
+  (`Δ = 0.9141`), which is a legality check, not a competitive value.
+- `Main/Computation/ce_laguerre.py` remains in the tree **with its bug**
+  (Fourier positivity not imposed); K15-C014r explains it and withdraws the claim
+  that grids cannot give exploratory values.
 - Li's `0.18398089` is quoted, not reproduced.
 - The recovered sharpness/uniqueness material is unreviewed and partly
   retracted (`Literature/RECOVERED.md`).

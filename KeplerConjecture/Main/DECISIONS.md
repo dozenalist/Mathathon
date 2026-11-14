@@ -90,3 +90,30 @@ Both are stable, small, and serve a concrete dependency. Everything else waits.
 are committed unchanged, with checksums, and are marked superseded. Editing them
 would destroy the audit trail for K15-C009 and D4. Corrections live in
 `Main/CLAIMS.md`.
+
+## D10 — K15-C014 withdrawn; grids are exploratory, Sturm is the acceptance test (M)
+
+The submitted grid LP never imposed Fourier positivity and used a coefficient box.
+The universal conclusion drawn from it is withdrawn (K15-C014r). Standing rule:
+a candidate in the univariate Laguerre–Gaussian family is accepted only with an
+exact sign decision (Sturm) on both half-lines, as in X-C008; anything else is
+`TESTED_FINITE` at best. **Reverse if** a rigorous interval/ball-arithmetic
+certificate covering both half-lines is produced with its driver.
+
+## D11 — The lead local route is cluster-averaged, with its cost priced (M, E)
+
+Adopt K15-C015 (E's `K15-E001`) as the project's local-geometric candidate: it
+strictly relaxes Lemma 3.3 to cluster averages. Adopt E's `K15-E003` with it: the
+criterion cannot be established by finite computations, so the next proof
+obligation is an analytic cluster-volume lower bound (Rogers-simplex/Fejes Tóth
+type), starting from the icosahedral 13-cluster. **Reverse if** the cluster
+inequality fails on an explicit cluster (that would be a refutation, and E's
+fixture is the first test).
+
+## D12 — One hybrid score, frozen (M)
+
+Any future hybrid must state which of the two scores it uses, with the self-term
+in or out: (S1) `σ₁ = vol Ω + κ·Σ_μ f(v−μ)`, (S2) `σ₂ = vol Ω + κ·Σ_{μ≠v} f(v−μ)`.
+No further hybrid obstruction or promotion may be discussed without naming the
+score and its Poisson mean. K15-C005r settles both: (S1) degrades the bound by
+`κf(0)`, (S2) is capped at `V_dod`.

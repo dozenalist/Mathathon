@@ -9,103 +9,48 @@ Continue independent mathematical work while an already-submitted job runs.
 
 ## Queue
 
-Two requests submitted 2026-11-14 from branch `kepler15/main`. Both are
-**independent**: 001 is the numerical baseline, 002 is the Lean build. Neither
-has been executed; nothing in `Main/CLAIMS.md` depends on them yet.
+`Main/` owns the queue. IDs are distinct per role from this cycle onward; the old
+shared `K15-COMPUTE-001/002` names are retired and mapped at the bottom.
 
-### K15-COMPUTE-001 (rev. 2) — exact SOS certificate for a two-point profile, d = 3
+| ID | Owner | Purpose | State |
+| --- | --- | --- | --- |
+| `M-LEAN-001` | M | pinned Lean 4.35.0 build of `Lean/Kepler15/Normalisation.lean` | **COMPLETE** — exit 0, axioms `[propext, Classical.choice, Quot.sound]`, algebraic identity only |
+| `M-NUM-001` | M | degree-8 grid control in `Computation/ce_laguerre.py` | **COMPLETE but INVALID as a claim** — script omitted Fourier positivity (K15-C014r); repaired variant locally re-run gives `f(0) = 0.2182024…` |
+| `C-NUM-001` | C | CE control, `K = 31/41`, grids 1200/4000 | **COMPLETE, `TESTED_FINITE`** — `Δ = 0.779702445785607`, `0.779745768082807`; `min f̂ ≈ −3·10⁻⁶` |
+| `C-CERT-001` | C | exact Sturm sign driver in the Laguerre family | **REQUESTED** (Q1, Q2) |
+| `E-CERT-001` | E | interval certification for cluster cell volumes | **REQUESTED — driver missing** (Q3) |
+| `X-R01` | X | exact optimisation over the Laguerre family (semialgebraic) | **SPECIFIED** in X's registry; not run |
+| `M-NUM-002` | M | rational SOS certificate for a frozen profile | **SPECIFIED, superseded by C-CERT-001** |
 
-Revision 2 after review objections 4, 7 and 8. The rev. 1 specification had the
-variable mismatch `t = 2πr²` against a sign interval starting at 4; it also asked
-for a sympy check of a floating-point optimum, which is not a certificate, and it
-used language that could be read as expecting convergence to Li's lower bound.
+### M-NUM-002 — rational SOS certificate, revised specification (not to be run before C-CERT-001)
 
-```text
-request_id = K15-COMPUTE-001
-status = REQUESTED (rev. 2)
-owner = C (Computation, using-the-chats-in-mcl6)
-reviewer = X (Counterexamples, i-ve-attached-viazovska-f7hh)
-claim_id = K15-C002 control; no new bound is claimed
-source_commit = the pushed head of kepler15/main that carries this revision
-working_directory = repository root
-input_files = KeplerConjecture/Computation/ce_laguerre.py  (runnable; sha256 in
-              Computation/out/MANIFEST.txt), KeplerConjecture/Main/CLAIMS.md
-command = python3 KeplerConjecture/Computation/ce_laguerre.py --degree 8             --grid 1200 --tmax 40 --out KeplerConjecture/Computation/out/ce_d8.json
-dependencies = python3 >= 3.11, numpy, scipy (scipy.sparse.linalg), sympy;
-              record exact versions with `pip freeze`
-resources = 1 core, < 2 GB RAM; the submitted instance runs in 1.1 s. The
-              SDP/SOS instance at degree n <= 24 should be capped at 15 min and
-              is expected to need < 4 GB.
-parameters = s = |x|^2 >= 0; Laguerre argument t = 2*pi*s.
-              (A1) f <= 0 for |x| >= 2  <=>  P(t) <= 0 for t >= 8*pi  [NOT 4]
-              (A2) fhat >= 0           <=>  Q(t) >= 0 for t >= 0
-              f = sum_{k<=n} a_k exp(-pi s) L_k^(1/2)(t),
-              fhat = sum_k (-1)^k a_k exp(-pi s) L_k^(1/2)(t),
-              c_k = L_k^(1/2)(0) = (2k+1) C(2k,k)/4^k, fhat(0) > 0 required.
-expected_outputs = Computation/out/ce_<n>.json (coefficients, f(0), fhat(0),
-              ratio, both normalisations, solver status, residuals) and
-              Computation/out/ce_<n>.txt
-success_criteria = ONE of:
-              (a) an exact rational identity -P(t) = s0(t) + (t - 8*pi) s1(t) and
-                  Q(t) = u0(t) + t u1(t) with s_i, u_i sums of squares of
-                  polynomials with rational coefficients (pi treated as a formal
-                  transcendental; any pi^2 appearing is reduced via pi^2 = pi*pi
-                  and the identity checked coefficient-wise), verified by exact
-                  arithmetic; or
-              (b) a rigorous residual bound on the whole half-line.
-              A floating-point optimum is EXPLORATORY and must be labelled so.
-certification = exact or none. `TESTED_FINITE` at best for a float optimum.
-remaining_obligations = the reduction from the univariate family to the full
-              admissible class must be stated as an inclusion and proved;
-              Li's theorem bounds the optimum of ordinary CE and says nothing
-              about convergence of this particular sequence - do not compare
-              a finite-degree value with 0.18398089 as if it were a limit.
-```
+The rev. 2 text of the old `K15-COMPUTE-001` was not a coherent certificate
+specification: with rational `P` and rational sums of squares, a factor
+`(t − 8π)` carries irrational coefficients. Three coherent options; pick one and
+say which:
 
-**Already run on the VM (exploratory, negative result).** The submitted script
-implements the *grid* version of the two sign conditions and demonstrates that
-this approach cannot work: the LP is unbounded below, and with the rigorous floor
-`f(0) >= 3/(32 pi)` forced it attains the floor with fine-grid violations of
-order `10^10`. See K15-C014 and `Computation/out/ce_d8.json`. The lesson is
-carried by rev. 2 above: the identity, not the grid.
+1. **Conservative rational threshold.** Prove `−P(t) = Σ_i s_{0,i}(t)² + (t − 25)Σ_i s_{1,i}(t)²`
+   with `t = 2πs`. Since `25 < 8π = 25.1327…`, this implies `f ≤ 0` for
+   `t ≥ 8π`, i.e. for `|x| ≥ 2`. Purely rational, exact expansion check, no PSD
+   matrix needed (a univariate sum of squares *is* the certificate).
+   Cost: the threshold is stronger than needed, so the constant is slightly worse.
+2. **Formal `π`.** Verify the identity in `ℚ[t, π]` treating `π` as a
+   transcendental: both sides are polynomials in `(t, π)` and the identity is
+   checked coefficient-wise. Requires the certifier to accept a two-variable
+   coefficient ring. Do **not** write "`π² = π·π`" as if it were machinery.
+3. **Rational Gaussian scaling.** Replace `e^{−πs}` by `e^{−s}` and re-derive the
+   Fourier map (`φ̂(t) = π^{-3/2}·…`); then all constants become rational
+   multiples of `π^{3/2}` and the certificate lives in `ℚ(√π)`. Requires the
+   re-derivation to be written out and reviewed first.
 
-### K15-COMPUTE-002 — build the frozen definitions under the pinned toolchain
+Acceptance for any of the three: exact rational identity, verified by an
+independent checker, with the sign regions `s ≥ 4` and `s ≥ 0` stated in `s`
+(never mixed with `t`), and `f̂(0) > 0` exhibited.
 
-```text
-request_id = K15-COMPUTE-002
-status = REQUESTED
-owner = M (Main), executed by Astra locally
-reviewer = X
-claim_id = K15-C001 (definitions), K15-C012 (constant, later)
-source_commit = the pushed head of kepler15/main that carries this file
-branch = kepler15/main
-purpose = kernel-check the frozen scale definitions and the identity
-          centreDensity = 3 * upperDensity / (4 pi) under Lean v4.35.0
-working_directory = repository root
-input_files = KeplerConjecture/Lean/Kepler15/Normalisation.lean
-command = lake env lean KeplerConjecture/Lean/Kepler15/Normalisation.lean
-          then, in a scratch copy of the file, append
-          #print axioms Kepler15.centreDensity_eq
-dependencies = Lean v4.35.0, Mathlib v4.35.0 (source checkout already present)
-resources = 1 core, ~2 GB RAM, < 5 min after the Mathlib cache is warm
-parameters = none
-expected_outputs = KeplerConjecture/Lean/out/normalisation_build.log
-success_criteria = exit status 0, no `sorry`, no warnings promoted to errors,
-             and `#print axioms` output exactly
-             [propext, Classical.choice, Quot.sound]
-certification = Lean kernel (pinned toolchain only)
-remaining_obligations = the module contains no analysis; it fixes notation.
-             The Fourier transform and the Cohn-Elkies admissibility class are
-             deliberately deferred to a second module.
-```
+### Retired IDs
 
-**Pre-check already done (not a substitute).** The same file was elaborated on
-the VM with Lean 4.33.1 and the VM's Mathlib: exit status 0, no diagnostics, and
-`#print axioms Kepler15.centreDensity_eq` gives
-`[propext, Classical.choice, Quot.sound]`. That is evidence of well-typedness,
-**not** of the pinned build, and it is recorded as `LEAN_CONDITIONAL` evidence
-only. Expect possible renaming in `Filter.limsup` / `MeasureTheory.volume`
-between 4.33.1 and 4.35.0; the proof is one `unfold` + `field_simp`.
+`K15-COMPUTE-001` → split into `C-CERT-001` (the real work) and `M-NUM-002`
+(this specification). `K15-COMPUTE-002` → `M-LEAN-001`, complete.
 
 ## Required request record
 
