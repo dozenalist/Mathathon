@@ -135,3 +135,35 @@ total by `1.385321873` over what the minimum allows, and the minimum is attained
 - **Boundary scope:** the centre cell is determined by the twelve neighbours alone (`E045a`), so
   `vol Omega(c)` needs no boundary treatment at all. The *payer* cells do, and no such treatment
   is available.
+
+## 1b. Rational coordinates with a certified error budget
+
+Exact `Q(sqrt5)` arithmetic may be inconvenient for a flow solver, so here is a rational
+approximation and its error analysis.
+
+```
+s   = 2 sqrt2 / sqrt(5+sqrt5) = 1.0514622242382672121...
+phi = 1.6180339887498948482...
+
+s   ~ 1051462224238267 / 10^15      |s   - p/q| < 2.12e-16
+phi ~ 1618033988749894 / 10^15      |phi - p/q| < 8.49e-16
+```
+
+Each vertex coordinate is `s` or `s*phi`, so the absolute coordinate error is below
+`1.235e-15`, and a separation `|x - y|` inherits at most `2 * 1.235e-15 * sqrt3 = 4.28e-15`.
+The twelve vertices are then, for example,
+
+```
+(0, 1051462224238267, 1701301616704079) / 10^15
+(1051462224238267, 1701301616704079, 0) / 10^15
+(1701301616704079, 0, 1051462224238267) / 10^15        and sign/coordinate permutations
+```
+
+Verified numerically on the rational fixture itself: `|c - w_i| = 2` to `1e-15` and the minimum
+separation over all `13` centres is `>= 2 - 5e-15`, so the rational fixture is legal within its
+budget.
+
+**Instruction to the evaluator.** Use the error budget, not a rounded comparison: `|c - w_i| = 2`
+must be tested as `| |c-w_i| - 2 | <= 5e-15`, and `R = 2.09` versus the edge `2.1029` differ by
+far more than the budget, so the cut membership `{|c - w_i| <= R}` is decided without ambiguity at
+either radius.
