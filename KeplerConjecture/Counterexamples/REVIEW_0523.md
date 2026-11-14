@@ -328,6 +328,16 @@ their derivation addressed "`vol Ω = V_dod` off a density-zero set", which is s
 equality, so it does not prove the corollary either — it proves the different statement that
 almost-everywhere exact dodecahedral cells are impossible.)
 
+**And stability of the *volume* would not be enough anyway (swarm member `m7`, checked).** Twelve
+centres in the icosahedral directions at circumradius `r > 2` are legal (`2·1.0514622242 =
+2.1029244485 > 2` whenever `r ≤ 2.10`), and the Voronoi cell of the centre is then the regular
+dodecahedron of inradius `r/2`, so `vol Ω(0) = V_dod·(r/2)³ → V_dod` as `r → 2⁺` **while the centre
+has degree 0**. So even a quantitative volume-stability theorem would not deliver "many contacts" —
+the route needs stability in the *distance* (the twelve neighbours within `2+η`), not only in the
+volume. That is a second, independent reason why the corollary does not follow from Theorem C, and
+it is sharper than the averaging objection: it survives the repair I suggested in the previous
+paragraph.
+
 **A partial result worth keeping (swarm member `m5`, checked).** For `Z := {v : vol Ω(v) = V_dod}`
 in a saturated packing: each `v ∈ Z` is dodecahedral, hence has exactly 12 contacts; no two points
 of `Z` are at distance 2 (that is step 4 of Theorem D); so all 12 contacts of every `v ∈ Z` lie in
@@ -381,6 +391,20 @@ with `Σ_{e∋v}c_e ≤ 1` for every `v` and `= 1` for every `v` outside a densi
 reading the derivation above is valid.
 
 ---
+
+## 7.1 A presentation gap that is not a mathematical one: `lim` should be `limsup`
+
+Theorems B and C divide by `|B|` and let `R → ∞`, writing `c(Λ) = lim |Λ∩B(0,R)|/((4π/3)R³)` and
+`ρ = lim P_B/|B|`. Neither limit need exist: a saturated 2-separated packing can have a slab
+structure — slabs of thickness `T_k → ∞` with in-plane cubic lattices of spacing alternating between
+`2` and `2.25`, half-thickness `1` at the faces — whose centre density oscillates between `1/8` and
+`1/2.25³ = 0.0878` without converging. (It is 2-separated: spacing `≥ 2` in-plane and `1+1 = 2`
+across the faces; and saturated: covering radius `√(1.125² + (2.25/√2)²) = 1.9486 < 2`.)
+This does not break anything, because every inequality in both theorems is one-sided and the
+project's contract defines `δ` as the **upper** density: replacing each `lim` by `limsup` leaves
+`√32·c⁺ ≤ 1` and `c⁺ ≤ 1/(V_dod + δ₀ρ⁺)` unchanged. But as written the proofs assume limits that
+the hypotheses do not provide, and a referee will ask. (Swarm member `m7`; I checked the covering
+radius and the 2-separation.)
 
 ## 8. What stands
 
