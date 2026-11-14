@@ -216,6 +216,25 @@ sits at `58.28°` instead of the icosahedral `63.43°`). Applied to the frozen c
 that the volume is at least the volume of the base polytope plus a prism, and the base polytope
 there is not the dodecahedron.
 
+### 8.4 One tightening attempt, measured and rejected
+
+The sandwich bounds the normal's motion by a *box* of half-width `e`, i.e. by `√3 e`, while the
+normals lie on the unit sphere and move along an arc. Measured over `0.1°` and `0.01°` boxes the
+over-estimate is a constant factor:
+
+```
+0.1 deg box : sqrt(3) e = 2.961e-03 ,  true max |dn| = 1.197e-03 ,  ratio 2.47
+0.01 deg box: sqrt(3) e = 2.960e-04 ,  true max |dn| = 1.197e-04 ,  ratio 2.47
+```
+
+so `2.47×` of the slack is an artefact of using a box for an arc. It is **not recoverable cheaply**:
+for the pentagon centres `|v| = 2` exactly, so the parameter-Lipschitz route gives
+`|n_θ| ≤ 1`, `|n_φ| ≤ sin θ`, hence `|δn| ≤ (1 + sin θ)·δθ = 3.380e-03` — **1.14× worse** than the
+box bound it was meant to beat. Recovering the `2.47×` needs the actual displacement over the
+box rather than a sup-norm constant, which is what the sandwich already approximates. A `2.47×`
+slack reduction would cut the box count by about `6×` in two dimensions; against `10^135` that
+is nothing.
+
 **So: no tighter enclosure and no stability lemma beyond the family is delivered here.** What is
 delivered is the repaired certificate, the quantified obstruction, and the shell-2 sub-problem
 identified as the cheapest place to attack — with its own gap stated rather than papered over.
