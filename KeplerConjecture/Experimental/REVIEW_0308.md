@@ -1047,3 +1047,136 @@ structured (non-local-search) construction does better.
 **What I would not do.** Report `6.264` as evidence *for* `(P')`, or the earlier trajectory as
 evidence *against*. Both are the same kind of number: an upper bound from a search that has stopped
 improving.
+
+## 18. The structured construction: `(P')` survives at `0.135`, not `0.500`
+
+`§17`'s first next step was to test `(P')` with a structured construction rather than more
+local search. Done. The answer is that **`(P')` survives at the icosahedral pair, with its
+margin cut from `0.500` to `0.135`** — and, more usefully, the reason the margin cannot be
+driven much lower is now identifiable and structural.
+
+### 18.1 Why a symmetric family is the right structured object
+
+The cluster `K` is invariant under the 5-fold rotation about the axis `c -> w_1`: `c` is at
+the origin, `w_1` at the north pole, and `w_1`'s five icosahedral neighbours form a regular
+pentagon at polar angle `58.28 deg`. So every structured completion is a union of
+**pentagonal orbits** `(r cos(f+72k), r sin(f+72k), z)`, `k = 0..4`, plus optional points on
+the axis. This is a 3-parameter family per orbit instead of a 3-parameter family *per
+centre*, and it is a family that one-centre-at-a-time local search cannot reach: no sequence
+of single-centre moves out of a greedy fill assembles a pentagonal shell, which is why
+`§12`-`§14.7` bottomed out at `6.263608`.
+
+### 18.2 The construction, and the number
+
+Take `c`, the five ring neighbours (at `2.102924`, fixed by the cluster), a **staggered
+pentagon** of five centres at distance exactly `2` from `w_1` with polar angle `112 deg` and
+azimuth `36 + 72k` deg, and the **south-pole point** `(0,0,4)`:
+
+```
+12 centres besides w_1 (13 including w_1)
+min separation over all pairs incl w_1                        = 2.000000000000
+min separation on pairs (added centre, c or ring)             = 2.170617049
+vol Omega(w_1)                                                = 5.898007181138
+max |cell vertex|                                             = 1.301968  (<= 2, ball inactive)
+independent Monte Carlo, 4e6 samples                          = 5.901938
+```
+
+so
+
+```
+threshold for (P') at this pair   =  5.763417470
+vol Omega(w_1)                    =  5.898007181     margin +0.134589711
+previous best (local search)      =  6.263608        margin +0.500
+```
+
+The only tangency is the constructed one, `|pentagon - w_1| = 2`; every other distance
+involving an added centre is `>= 2.1706`, so the configuration is legal with room and the
+optimum in `theta` is *interior*, not contact-determined. By Zorn the set extends to a
+saturated packing, in which the cell only shrinks, so `5.898007181` is an upper bound on
+`inf vol Omega(w_1)` over saturated packings containing the cluster.
+
+### 18.3 Why this is near the floor: the ring excess is irremovable
+
+Five of `w_1`'s twelve neighbours sit at `2.102924` instead of `2`, so five of the twelve
+bisectors sit at `b = 1.051462224` instead of `1`. The cell is therefore the dodecahedron
+with five of its faces pushed out by `b - 1 = 0.051462`, and the excess is
+
+```
+first-order        5 * A_pent * (b-1)  =  0.357037902
+observed           5.898007181 - 5.550291029 = 0.347716153      97.4 % of it survives
+```
+
+That excess is **not removable by adding centres**: a centre cutting the collar around a ring
+face would have to lie within about `58 deg` of that ring direction, but any centre at
+distance `rho` from `w_1` must satisfy `rho >= 4 cos(alpha)` in angular distance `alpha` from
+an existing shell centre, so anything that clears the ring at `2.102924` is at distance
+`>= 3.4` from `w_1` — and a bisector at `rho/2 >= 1.7` lies outside the cell, whose vertices
+are all within `1.302`. The ring excess is structural, not a search artefact.
+
+This is the corrected form of `§14.3`'s question. There the open question was whether the
+`5 x 1.387573 x 0.051462 = 0.357` excess could be cut; the perturbation heuristic
+(`K15-E046`) that guessed "yes, fully" is still withdrawn, and the answer is now the
+opposite one: at most `2.6 %` of it is cuttable.
+
+### 18.4 Local minimality, tested three ways
+
+| test | result |
+| --- | --- |
+| single-centre addition, `rho in [2.0, 2.6]`, 5382 positions | **0 legal** |
+| two pentagons, `theta_1, theta_2 in [80,144]`, `rho in {2.0,2.05,2.1}` | **0 legal** |
+| 8000-move anneal with symmetry breaking allowed, from the symmetric optimum | **no improvement** |
+
+The first row is the meaningful one: the shell around `w_1` is saturated at radius `2`, so
+every further legal centre is far away and cuts nothing.
+
+### 18.5 Method correction: a test that could never fire
+
+The first version of the sweep reported `minsep = 2.000000000` for every legal row, which
+looks like a knifes-edge optimum and is not: the cluster's **own** `c`-`w_1` tangency is
+exactly `2`, so `min` over all pairs is always exactly `2` and a real penetration by an added
+centre is only visible if it is *below* that. At `theta = 105` the pentagon penetrates at
+`1.993806` and the sweep did flag it, but the margin reported for legal rows was vacuous —
+the same failure mode as the `K15-E062` buffer flag, which tested a condition that never
+fired. The test is now `added_margin`, over pairs involving an added centre against everything
+except `w_1`, and it reports `2.170617049` for the optimum.
+
+*(Two smaller ones: `|p - w_1| >= 2` must be checked separately, because `w_1` is the centre
+whose cell is being computed and so is absent from its own constraint set; and the first-order
+excess formula was coded with the wrong `b` and printed `-0.339563` before being fixed. Neither
+affected a reported legal value.)*
+
+### 18.6 What this changes
+
+- **`(P')` is still unproved, and still survives.** Its margin at the configuration that
+  motivates it is now `+0.134590`, not `+0.500`. The `§14.7` fear that "the margin halves at
+  every improvement" is replaced by something better: the floor is set by the ring excess, and
+  `97.4 %` of that excess is provably-or-empirically irremovable, so there is no reason to
+  expect `(P')` to fail at this pair.
+- **But it also shows `(P')` is only `2.3 %` away from failing.** Cutting `39 %`
+  (`0.1346 / 0.3477`) of the ring excess would refute it. Nothing found cuts any of it; the
+  argument in `18.3` says nothing can.
+- **The pair route is therefore alive but thin, and the arithmetic is now explicit.** With
+  `vol Omega(c) = V_dodeca` fixed, `(P')` asks each payer for
+
+  ```
+  vol Omega(w_1)  >=  2 sqrt32 - V_dodeca = sqrt32 + 0.106563 = 5.763417
+  ```
+
+  and the construction delivers `5.898007 = sqrt32 + 0.241153`, i.e. **`2.26` times the
+  required excess over an fcc cell**, with `0.134590` to spare. Equivalently, since the cell
+  sits `0.347716` above `V_dodeca` and `(P')` tolerates only `5.763417 - V_dodeca = 0.213126`,
+  the whole of `(P')` at this pair is the single statement
+
+  > **the payer's dodecahedral excess cannot be cut by `39 %`.**
+
+  Every construction in `18.4` cuts `2.6 %` of it and no more, which is why the conjecture
+  survives — and is also exactly what would have to break for it to fail.
+- **Lower bound unchanged.** Nothing here improves on `V_dodeca` as a lower bound, so `(P')`
+  is not proved either. The window at this pair is `[5.550291, 5.898007]` with the threshold
+  `5.763417` inside it.
+
+### 18.7 The honest one-line status
+
+`(P')` at the icosahedral pair: `5.550291 <= inf vol Omega(w_1) <= 5.898007`, threshold
+`5.763417`; the upper end is `0.135` above the threshold, the excess that separates them is
+the five-ring dodecahedral collar, and three independent searches fail to cut any of it.
