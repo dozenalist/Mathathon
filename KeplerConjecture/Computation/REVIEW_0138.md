@@ -460,3 +460,20 @@ verified by expansion; `p ≤ 0` on `[4π, ∞)` by exact Sturm with Computation
 claim is made. The one *structural* fact established is that the degree-5 hill-climb's plateau was
 a local optimum, not a global one — which is exactly why the review's insistence on
 "tested-family" language matters.
+
+### Update: further basin-hopping, `Δ ≤ 1.37125723`
+
+Three more seeds of the same procedure:
+
+| seed | uphill | `Δ ≤` |
+| --- | --- | --- |
+| 23 | 0.05 | **1.37125723** ← best |
+| 29 | 0.06 | 1.39857433 |
+| 31 | 0.05 | 1.41112883 |
+
+So the record moved `1.41370455 → 1.37125723` (`out/hop2_23.json`), and the eight runs of this
+procedure span `1.3713 … 1.6957`. The spread is the honest statement: **the search is not
+converged, and `1.37125723` is best-found.** The trend across the whole block is monotone in
+effort — `5.99 → 2.62 → 1.99 → 1.41 → 1.37` — which says the remaining gap to the LP-optimal
+`0.78` is a search-power limitation of the explicit-Gram route as implemented, not a structural
+wall. That is now the most interesting open question in this file.

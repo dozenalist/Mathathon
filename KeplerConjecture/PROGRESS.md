@@ -536,3 +536,15 @@ is **not converged**: `1.41370455` is best-found, and no optimality is claimed.
 **Why this vindicates the review's language discipline:** one block ago I would have written
 "the family plateaus at 2" after the hill-climb stalled. That was false — it was a local optimum,
 and only basin-hopping revealed it.
+
+### K15-COMP-029 — 2026-11-14 — Computation (role C), explicit-Gram record
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-SOSQSIDE-006** | **VERIFIED_EXACT** | explicit-Gram record for this directory: **`Δ ≤ 1.37125723`** (`q = Σ r_i² + u Σ s_j²`, degree 5, five rational squares), reached by basin-hopping | `out/hop2_23.json`, `REVIEW_0138.md` §13 update |
+
+Eight basin-hopping runs span `1.3713 … 1.6957`; the search is **not converged** and this is
+best-found. **The trend across the block is monotone in effort — `5.99 → 2.62 → 1.99 → 1.41 →
+1.37`** — which indicates the remaining gap to the LP-optimal `0.78` is a *search-power*
+limitation of the explicit-Gram route as implemented, not a structural wall. That is the most
+interesting open question in this file and the natural next task.
