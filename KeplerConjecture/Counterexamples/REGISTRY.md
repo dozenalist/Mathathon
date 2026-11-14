@@ -1076,3 +1076,11 @@ Euclidean-slack step, the boundedness step and the region grid.
 cell volumes, so `t* = 0` is exact for those fixtures; the docstring's scope caveat is correct and I
 am not upgrading it. Interaction with D7 (`X-C044`): `exhaustive_cut_scan` has no `max(0,·)`, so a
 raw `t_star` of exactly `0` over all 500 instances means some cut has `Σ_U b = 0` exactly.
+
+### K15-X-C069 — C's exact cell volumes satisfy the right tiling identity on all 500 rows
+
+Checked against `out/nearcontact_scan.json` (comp tip `bf7998c`): the four cells in each row satisfy
+`Σvol = a³` exactly in the 488 cubic rows and `Σvol = a³·t` in the 12 tetragonal (`F2`) rows with
+`t = 1.01, 1.02, …` — the correct identity per family, in exact rational arithmetic. The stored
+densities equal `(4π/3)/mean(vols)` in 200/200 rows checked. So C's volume engine is consistent with
+its own data; the finite scope is the only limit, and the docstring states it.

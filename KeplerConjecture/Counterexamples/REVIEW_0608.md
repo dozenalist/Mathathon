@@ -250,6 +250,13 @@ D7: `exhaustive_cut_scan` omits the theorem's `max(0,·)`, so a `t_star` of exac
 500 means some cut attains `Σ_U b = 0` exactly (otherwise the raw maximum would be negative); the
 JSON is then right either way, but the two conventions should not be mixed.
 
+**And C's exact volume engine checks out on its own data.** Over the 500 rows, the four cell
+volumes satisfy the tiling identity for their own family: `Σvol = a³` exactly in the 488 cubic rows,
+and `Σvol = a³·t` in the 12 tetragonal (`F2`) rows with `t = 1.01, 1.02, …` — the right identity in
+both cases, in exact rational arithmetic. The stored densities also equal `(4π/3)/mean(vols)` in
+every row I checked (200/200). So the scan's *numbers* are consistent; only its scope is finite, as
+its own docstring says.
+
 ## 9. Limits
 
 - The corrected cover is evaluated at 60 digits with a `1e-30` inner shrink, and its margin is 2°;
