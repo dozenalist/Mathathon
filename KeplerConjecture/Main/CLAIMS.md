@@ -4965,3 +4965,60 @@ angular distance `≥ 60°`, which is a stability statement about the icosahedra
 *Status.* (1) `REFUTED` (the volume-monotonicity route to stability); (2) explicit but non-uniform;
 (3) `TESTED_FINITE` with the table verified; (4) `OPEN` target stated. No claim of progress on `G11`
 beyond narrowing it.
+
+### K15-C110 — the ledger linter, and the two holes it had (`PROVED`; holes repaired at `C140`)
+
+`Computation/ledger_lint.py` checks four things about `Main/`: every heading carries a `K15-xNNN` id and
+a status token from `VOCAB`; no id is defined twice (an explicit `addendum` sub-heading is allowed); every
+**fully-qualified** reference under `KeplerConjecture/` resolves; and no status token is outside the
+vocabulary. It exits non-zero on any violation and is part of `run_all_checks.py`.
+
+The reference from `run_all_checks.py` (`ledger: consistency lint (C110)`) pointed at this entry, which
+had never been written. Writing it exposed **two holes in the checker itself**, both repaired at `C140`:
+
+1. **The reference regex was inert.** It required a dash after the class letter (`K15-C-110`) while the
+   ledger writes `K15-C110`, so almost every fully-qualified reference was *invisible* and the check
+   reported "0 dangling" by examining nearly nothing.
+2. **Ids were collected from headings only**, so the whole `K15-R001…R005` family (defined as table rows)
+   and the ids announced in bold bullets looked dangling.
+
+Neither hole could be caught by the linter's own output — a checker that cannot fail. `C140` adds the
+shorthand check and an explicit `--self-test` with eleven synthetic cases, including the two shapes that
+were invisible before.
+
+*Status.* `PROVED` (the checks are mechanical and self-tested); the two holes are recorded here rather
+than hidden because the project's checker history is three unsound checkers (`C049`, `C058`, `C068`).
+
+### K15-C140 — shorthand and fully-qualified reference checking: three linter defects, repaired (`PROVED`, self-tested)
+
+Review block 0738 asked for a corrected ledger. The obvious check — "every shorthand `C094`, `G11`,
+`PN-4` resolves" — could not be written without first repairing the linter, because the same blindness
+affects both halves. Three defects, all found by building the check:
+
+**(1) `ref_re` required a dash that the ledger does not use.** `K15-([CERX])-(…)` matched
+`K15-C-110`; the ledger writes `K15-C110`. Every such reference was skipped. After the repair the
+checker examines the real population instead of almost none.
+
+**(2) Ids were collected from headings only.** `K15-R001…R005` are defined as **table rows**, and
+`PN-1…PN-5` as **bold bullets** in `CONTINUATION_0308.md`; both families therefore looked dangling.
+Definitions are now recognised in the three shapes the ledger actually uses — headings, table rows, bold
+announcements.
+
+**(3) Two ids were announced and never defined.** `C010b` and `C015r` are referred to in prose; the
+entries of record are `C010r` and `C015`. They are aliased, not silently dropped, and the alias table is
+in the linter with a comment.
+
+**What the check now covers.** 528 shorthand occurrences in `Main/` — `C`=400, `G`=65, `D`=50, `PN`=13 —
+with **0 dangling**, alongside workers' ids (`E`=77, `X`=73) which are external and only counted.
+
+**And it is self-tested, because that is the failure mode this project has hit three times.** `python3
+ledger_lint.py --self-test` runs eleven synthetic ledgers and requires the checker to flag a bare
+dangling `C`/`G`/`PN` id and to accept each definition shape, the alias, a fully-qualified reference, the
+`C5` family and the polytope `D'`. All eleven pass; a checker that cannot fail is not a checker.
+
+**Not claimed.** This validates *reference hygiene*, not mathematics: a resolving reference can still
+point at a wrong claim, and the shorthand check says nothing about whether `C133`'s covering radius is
+right. `G12` (generic checker soundness for `shell_check`) is untouched.
+
+*Status.* `PROVED` (mechanical, with a self-test that exercises both directions). Runs in
+`run_all_checks.py`.
