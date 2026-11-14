@@ -304,9 +304,13 @@ with R = 2.09.
 ```
 
 Everything else in the chain is now either proved (`K15-E014` for the count, the transfer
-theorem above) or imported and charged (`V_dodeca`). The measurements say the inequality holds
-with a factor of `470`-`880` to spare on every constructible fixture; the obstruction is that
-no technique proves even a factor of `1`.
+theorem above) or imported and charged (`V_dodeca`).
+
+**There is currently no numerical evidence either way on `(H_R)`.** An earlier version of this
+paragraph said the inequality holds "with a factor of `470`-`880` to spare"; that is retracted by
+Section 5, because the payers' volumes in those fixtures were unreliable. The obstruction is that
+no technique proves even a factor of `1`, and it is now clear that no completion we can build
+will settle it either.
 
 ### 3.6 A structural finding: defects are isolated, so surplus is never shared
 
