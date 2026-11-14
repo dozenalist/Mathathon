@@ -1763,3 +1763,12 @@ with `20` vertices and cell circumradius `1.301723341`, and `cell_certificate`'s
 configuration is `[5.898017371, 5.898017371]`. So the independent float and exact paths agree to `1e-12` on
 the C5 cell, and the 12-point fixture is 2-separated *including* the central `C = (0,0,0)` (distances
 `2.0`×7, `2.102924448`×5, pairwise min `2.0`).
+
+### K15-X-C111 — `C133`'s Delaunay claim verified: the icosahedron's 20 faces are Delaunay triangles with circumradius `ρ_c`
+
+`ConvexHull` of the 12 vertices gives 20 triangles; every one is equilateral with spherical circumradius
+`37.377368141° = ρ_c`; and the largest `ρ_face − dist(face centre, non-face vertex)` is **`−41.810315°`**,
+i.e. every circumcap is strictly empty — so the faces *are* Delaunay triangles and, all circumradii being
+`ρ_c`, the covering radius is `ρ_c`. (My first run of this check initialised the maximum at `0` and so could
+never go negative; the corrected run is the one reported. The claim itself was never in doubt — the
+`−41.81°` margin is large.)
