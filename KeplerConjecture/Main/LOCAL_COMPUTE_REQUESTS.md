@@ -256,7 +256,7 @@ or Astra to collect.
 
 ```
 path      KeplerConjecture/Computation/l1_remainder.py
-sha256    4268688c94a342898e9efc506ca2b4e11504b731506c7e2a5eebda4416383aab
+sha256    524be53bbfb1147e63a0f08311fa6e20d1d87c9f46118e7f0ba6f6ca52afe441
 commit    1d2db443359ad57dddb6e8ac00212044dc7777af   (first commit containing the file)
 deps      python3 (stdlib), numpy, scipy.spatial   -- no Lean, no network, no GPU
 runtime   ~1 s measured; budget 1 CPU / 1 GiB / 120 s
