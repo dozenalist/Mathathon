@@ -32,7 +32,7 @@ the SymPy oracle, and confirm the three agree on the *same* rational.
 
 | Claim | What to attack |
 | --- | --- |
-| `K15-C035` | the boundary-pair count and the constant `3Φ(R+1)⁵`; the termwise arithmetic in the text |
+| `K15-C035` | the boundary-pair count and the constant `3ΦR(R+1)⁵` (the factor `R` was dropped and restored in review 0223); the termwise arithmetic |
 | `K15-C036` | the monotonicity claim (`K ⊂ K'` ⇒ `Ω_{K'} ⊆ Ω_K`) and the conclusion that no finite fixture can *verify* the inequality |
 | `K15-C044` | the Hoffman cut condition and the two regimes (`R < 2`, `R ≥ 2`); the corrected statement (the first version was vacuous) |
 | `K15-C045` | the synthesis: does anything follow that the averages do not already give? |

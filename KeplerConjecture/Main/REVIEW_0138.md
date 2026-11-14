@@ -106,7 +106,7 @@ merged; artifacts are imported by reference with full hashes in
 
 Block content beyond the withdrawal: `K15-C029r` (correct signed estimate),
 `K15-C029c` (conditional), `K15-C035` (transfer ⇒ negligibility, explicit
-`C₁ = 3Φ(R+1)⁵`), `K15-C036` (no finite fixture can decide), `K15-C037` (C002b
+`C₁ = 3ΦR(R+1)⁵` — factor `R` restored in review 0223), `K15-C036` (no finite fixture can decide), `K15-C037` (C002b
 audit), `K15-C038`/`C039` (transfer and cluster fixtures, both with the
 monotonicity lesson), `K15-C043` (Lemma 3.3 chain re-derived), `K15-C044`
 (transfer feasibility, corrected in-block), `K15-C045` (structural synthesis),

@@ -52,7 +52,8 @@ tested, not asserted (`Computation/interface_xcheck.py`).
    is recorded separately as K15-C029c.
 6. **Transfers make negligibility automatic** (K15-C035): if `A` is an
    antisymmetric transfer of range `R` and bound `Φ`, it is negligible with the
-   explicit packing-independent constant `C₁ = 3Φ(R+1)⁵`. This removes Hales'
+   explicit packing-independent constant `C₁ = 3ΦR(R+1)⁵` (factor `R` restored after
+   review 0223; the earlier text dropped it). This removes Hales'
    Chapter 5 machinery *if* his correction is recast in transfer form (Main's
    reading, not verified against his text), and leaves only the pointwise
    inequality `Σ_w φ(v,w) ≥ √32 − vol Ω(v)`.

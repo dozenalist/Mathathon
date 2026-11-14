@@ -1237,7 +1237,7 @@ auditing Main's own repair, so an outside check is still required).
 
 - **Artifact.** `Computation/transfer_check.py` — builds fcc (1099 centres),
   draws a random rational antisymmetric transfer with `R = 2`, `Φ = 1`, forms
-  `A(v) = Σ_w φ(v,w)`, and compares `Σ_{Λ∩B(0,r)} A` with `3Φ(R+1)⁵r²` for
+  `A(v) = Σ_w φ(v,w)`, and compares `Σ_{Λ∩B(0,r)} A` with `3ΦR(R+1)⁵r²` for
   `r = 1..6`.
 - **Result.** The bound holds at every radius, with observed sums of order
   `10⁰`–`10¹` against bounds of order `10³`–`10⁴`; `max|A| = 7.25` against
@@ -1561,15 +1561,15 @@ last two blocks' verification was version-specific.
 
 ### K15-C052 — every quoted constant re-derived by one script (`VERIFIED`)
 
-- **Artifact.** `Computation/constants_check.py`: 22 checks, **ALL PASS**, of
+- **Artifact.** `Computation/constants_check.py`: 28 checks, **ALL PASS**, of
   every constant the ledger quotes — `4π/3`, `V_dod = 5.550291028515510`,
   `0.754697399337`, `π/√18 = 0.740480489693`, `√32 = 5.656854249492`,
   `σ₃ = 0.779635570044` and `V_Rogers = 5.372754099135`, the two required
   improvements (`1.05288` over Rogers, `1.0192` over dodecahedral, i.e. 5.29% and
   1.92%), the Tammes thresholds at `ρ = 2.02, 2.05, 2.09` (`0.509852, 0.524093,
   0.542135` and `59.346°, 58.393°, 57.171°`), `23681/43681` at `ρ = 2.09`, the
-  transfer constants `3Φ(R+1)⁵ = 729` at `(Φ,R) = (1,2)` and `1598.29` at
-  `R = 2.51`, `Φ ≥ 0.0041` at the icosahedral vertex, and the K33b ratio and
+  transfer constants `3ΦR(R+1)⁵ = 1458` at `(Φ,R) = (1,2)` and `4011.72` at
+  `R = 2.51` (the pre-0223 figures `729` and `1598.29` dropped the factor `R`), `Φ ≥ 0.0041` at the icosahedral vertex, and the K33b ratio and
   `Δ = 0.779966216777`.
 - **What it caught.** Three of the script's first-run failures were *my own*
   rounded placeholders in the check (`1.01920` against `1.01919957…`), not ledger
@@ -1580,7 +1580,7 @@ last two blocks' verification was version-specific.
 ### K15-C053 — one command runs every check (`VERIFIED`: 8/8 in 6.8 s)
 
 - **Artifact.** `Computation/run_all_checks.py`: runs the constants re-derivation,
-  the sign-predicate self-test, the 19 adversarial cases, the differential fuzz, the
+  the sign-predicate self-test, the adversarial suite (35 cases), the differential fuzz, the
   transfer-lemma fixture, the cluster fixture and the interface dictionary, and —
   with `--cert` — a certificate verification. Final run: **8 checks, 0 failed,
   6.8 s, 1 core**.
@@ -1603,7 +1603,7 @@ last two blocks' verification was version-specific.
 - **Why it is the right range.** `R = 2` is the contact graph; `R = 2.09` is the
   widest range the Tammes enclosure covers. Within it the transfer graph is
   **local and degree-bounded**, which is exactly the structure the cut condition
-  of `K15-C044` and the constant of `K15-C035` (`3Φ(R+1)⁵`) want: `k_R ≤ 12`
+  of `K15-C044` and the constant of `K15-C035` (`3ΦR(R+1)⁵`) want: `k_R ≤ 12`
   beats the volume bound `(R+1)³ − 1 = 26` by a factor 2, and the shell count is
   a *theorem*, not an assumption (K15-C027).
 - **Consequence for the constant, computed.** From the proof of `K15-C035`,
