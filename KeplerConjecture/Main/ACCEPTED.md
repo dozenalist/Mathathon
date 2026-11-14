@@ -18,6 +18,7 @@ strength of its author's label.
 | Transfer ⇒ negligibility with `C₁ = 3ΦR(R+1)⁵` (`K15-C035`, factor `R` restored) | `PROVED` | Hales 2005 Ch. 5 / Lemma 7.10 (the same content, differently organised) | a two-line estimate instead of the `Q`-system; *not* a new idea (`C067`) |
 | Transfer feasibility = Hoffman cut condition (`K15-C044`); compactness needs bounded degree (`C067`) | `PROVED` | Hoffman/Gale flow duality | the application is this project's |
 | Transfer graph has degree ≤ 12 at `R ≤ 2.09` (`K15-C054`) | `PROVED` | — | follows from `C013`/`E014` |
+| `Φ ≥ 0.0088803` for any transfer on a packing containing the 13-cluster (`K15-C081r`) | `PROVED` | — | singleton cut; the cluster-level `0.0104949` is withdrawn (review 0308) |
 | Hales Lemma 3.3 chain (`K15-C043`) | `AUDITED` | Hales 2005 p. 34 | re-derived, no gap |
 | No finite completion can verify the pointwise cell inequality (`K15-C036`) | `PROVED` | E's `K15-E003` (same idea, independently) | stated as an obstruction to a route |
 | `(Q)` is false (`C069`) | `PROVED` | Hales–McLaughlin (the dodecahedral cell) | the observation that this kills the shortcut is this project's |

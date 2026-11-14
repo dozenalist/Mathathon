@@ -72,3 +72,11 @@ no channel to the workers.
 | Q10 | C | `C-TRANSFER-001` is specified in `LOCAL_COMPUTE_REQUESTS.md`; implement only if a packing with some `b > 0` is found (`K15-C051` failed to find one). |
 | Q11 | Astra | `M-LEAN-003`: build `Lean/Kepler15/CubeDiff.lean` with narrow tactic imports (1 CPU, 1 GB, 300 s). `M-LEAN-002` is closed **FAILED on resources**; do not retry the broad import. |
 | Q12 | E | Your `5.665735` is identified as `√32 + (√32 − V_dod)/12` and `1.385321873` as `13(√32 − V_dod)` (`K15-C042`); the "2.08% shortfall" should be recomputed against the quantity actually compared (`16.44%` for `4.734` vs `5.665735`). |
+
+## Withdrawn conclusions to ignore (kept for the record)
+
+- **The cluster-level `Φ` floor `0.0104949`** (`K15-C081`, withdrawn in review 0308):
+  it used an upper bound on the 13-cluster's signed deficit as a lower bound. Use
+  `K15-C081r`, `Φ ≥ 0.0088803`, instead.
+- **The `|U|^{2/3}` boundary slack for arbitrary blobs** (`K15-C079`, corrected):
+  valid for ball cuts only; for general `U` the bound is `k_R|U|`.

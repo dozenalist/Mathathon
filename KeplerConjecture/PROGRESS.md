@@ -587,3 +587,6 @@ Supervisor sync 2026-11-14 03:08 PST: Computation source 9d9ff682 retained in Ma
 
 
 Supervisor sync 2026-11-14 03:08 PST: Experimental source 9a46efcb retained in Main/AgentProgress/Experimental-9a46efcb.md; current independent review in Main/REVIEW_2026-11-14_0308.md.
+
+
+Supervisor sync 2026-11-14 03:08 PST: Main correction f1e4d8b4 retained in Main/AgentProgress/Main-f1e4d8b4.md; rejected and pending claims remain explicit in Main/REVIEW_2026-11-14_0308.md.

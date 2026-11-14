@@ -1342,7 +1342,7 @@ names differ in v4.35.0.
   repair before it can be quoted as a complete audit. Reviewer: X (their script,
   so the repair is theirs).
 
-### K15-C042 — E's per-cell ceiling import (`ACCEPTED WITH SCOPE`; constant identified)
+### K15-C042 — E's per-cell ceiling import (`ACCEPTED_WITH_SCOPE`; constant identified)
 
 - **Claim (`K15-E048`, branch `kepler15/experimental/run-01`, `4ea4e8b`).** Every
   directional per-cell bound of the form
@@ -2197,10 +2197,15 @@ inequality) and `K15-C051` (no locally dense periodic blob found), and with
   two are equivalent up to `Φ` and the boundary term. E's own figure "outer cells
   must average `5.66573451791`" is exactly `√32 + (√32 − V_dod)/12` (`K15-C042`), so
   the two sessions' constants agree.
-- **Boundary constant, explicit**: for a blob containing a ball of radius `r`,
-  `|δ⁺(U)| ≤ k_R((r+R)³ − (r−R)³) ≈ 6k_RRr²`, and `|U| ≍ (4π/3)r³`, so the slack is
-  `Φ·6k_RR·(3|U|/4π)^{2/3}` — a `|U|^{2/3}` term with an explicit coefficient, which
-  is what a proof of `(T')` must beat.
+- **Boundary constant (CORRECTED, review 0308)**: the estimate holds for **ball
+  cuts** `U = B(x,r) ∩ Λ`, where `|δ⁺(U)| ≤ k_R·#(Λ ∩ (B(x,r+R)∖B(x,r))) ≤
+  k_R((r+R)³ − r³) ≈ 3k_RRr²` and `|U| ≍ (4π/3)r³`, giving the slack
+  `Φ·3k_RR·(3|U|/4π)^{2/3}`. For an **arbitrary** `U` the correct trivial bound is
+  `|δ⁺(U)| ≤ k_R|U|`, i.e. slack `Φk_R|U|`, which is *not* `o(|U|)`: merely
+  containing a ball does not control an arbitrary cut's boundary (a comb-shaped `U`
+  has boundary comparable to its size). So the `|U|^{2/3}` form is a **hypothesis
+  about ball-like cuts**, not a consequence. The first version of this entry applied
+  it to arbitrary blobs; that was wrong.
 - **Status.** `PROVED` (a translation between two statements, no new mathematics).
   Reviewer X.
 
@@ -2233,39 +2238,48 @@ inequality) and `K15-C051` (no locally dense periodic blob found), and with
 *Status.* `PROVED` (immediate from the definitions). Reviewer X. Recorded in
 `Main/NEXT_PACKAGE.md`.
 
-### K15-C081 — a cluster-level lower bound on `Φ` (`PROVED`)
+### K15-C081 — WITHDRAWN: the cluster-level `Φ` floor was an invalid inference
 
-**Setup.** Take the icosahedral 13-cluster `C`. By Hales–McLaughlin every cell has
-volume `≥ V_dod = 5.5502910285…`, so the cluster's total deficit is at most
-`13(√32 − V_dod) = 1.3853218727…`. By `K15-C044` the cut condition for `U = C` reads
-`Σ_C b ≤ Φ|δ⁺_R(C)|`, i.e.
+> **Status: `WITHDRAWN` (review 0308).** The original text is retained below as
+> rejected evidence.
+>
+> **The error.** `C081` derived `Σ_C b ≤ 13(√32 − V_dod)` — an **upper** bound on the
+> cluster's signed deficit — and then used it as though it were a **lower** bound, to
+> conclude `Φ|δ⁺(C)| ≥ Σ_C b` and hence a floor on `Φ`. That inference is invalid:
+> if the thirteen cells are on average *larger* than `√32` (so `Σ_C b < 0`) the cut
+> condition is satisfied with `Φ = 0`. Nothing in the ledger bounds `Σ_C b` from
+> below, and the claim that all thirteen cells attain `V_dod` was never proved — and
+> is false in general.
+>
+> **Superseded by `C081r`** (the singleton bound), which is valid and weaker.
+
+*Rejected text (kept):* "By Hales–McLaughlin every cell has volume `≥ V_dod`, so the
+cluster's total deficit is at most `13(√32 − V_dod) = 1.3853218727…`; by `K15-C044`
+… `Φ ≥ 13(√32 − V_dod)/|δ⁺_R(C)|`" — with the outer–outer observation giving
+`Φ ≥ 0.0104949`. **This conclusion does not follow and is withdrawn.**
+
+### K15-C081r — the valid necessary condition: the singleton cut (`PROVED`)
+
+For a packing containing the 13-cluster, let `v₀` be the centre. Its cell satisfies
+`Ω(v₀) ⊆` the dodecahedron determined by the twelve neighbours, hence
+`vol Ω(v₀) ≤ V_dod` (monotonicity: more bisectors only shrink; `K15-C036`), and
+therefore
 
 ```
-Φ  ≥  13(√32 − V_dod) / |δ⁺_R(C)|  =  1.3853218727… / |δ⁺_R(C)|.
+b(v₀) = √32 − vol Ω(v₀)  ≥  √32 − V_dod  =  0.1065632…,
 ```
 
-At `R = 2.09`, each of the twelve outer vertices has at most `k_R ≤ 12` edges, one
-of which is the spoke to the centre (distance exactly `2`), and the spoke-free ones
-must be counted as leaving. The **outer–outer distances in the cluster are
-`2.102924… > 2.09`**, so no outer–outer edge exists at this range: each outer vertex
-has at most `11` leaving edges, `|δ⁺(C)| ≤ 132`, and
+a **lower** bound on the signed deficit at that vertex — which is what the cut
+condition needs. With `U = {v₀}` and `R ≤ 2.09`, at most `k_R ≤ 12` edges leave:
 
 ```
-Φ  ≥  1.3853218727 / 132  =  0.0104949…        (not 0.009620, the value obtained
-                                                 from the crude 144-edge count)
+Φ  ≥  (√32 − V_dod)/12  =  0.0088803….
 ```
 
-**What it is.** A *cluster-level* refinement of the vertex-level bound
-`Φ ≥ 0.00888` (`K15-C036`): the cluster must shed `1.3853` of deficit across its
-boundary, so a smaller `Φ` is impossible regardless of how the transfer is arranged.
-It gives the next block a definite floor to beat — a transfer with
-`Φ ∈ [0.0096, …]` is the smallest that can work, and a candidate claiming a smaller
-`Φ` is refuted outright.
+(Equality `vol Ω(v₀) = V_dod` is *not* needed — only the inclusion, exactly as the
+review notes. Hales–McLaughlin is not used.)
 
-**Caveat.** The bound uses only HM and the cut condition; it does not show such a
-transfer exists.
-
-*Status.* `PROVED` (arithmetic from accepted lemmas). Reviewer X.
+*Status.* `PROVED`. Reviewer X. This is the only `Φ` floor the project has.
 
 ### K15-C082 — E's Barlow spectrum re-run, and the `Φ` floor published (`AGREES`)
 
@@ -2279,3 +2293,202 @@ transfer exists.
   `Main/NEXT_PACKAGE.md` as the floor any transfer candidate must clear.
 - **Status.** `AGREES` (finite numerical evidence consistent with a proof).
   Reviewer X.
+
+### K15-C083 — the bridge's relative loss is `12/S`, not `1/S` (`PROVED`, quantitative refinement)
+
+`K15-C002b` deletes the two-unit slabs at the tile boundary, so the kept region is
+the inner cube of side `S − 4` and the relative kept volume is
+
+```
+(1 − 4/S)³  ≥  1 − 12/S        for  S ≥ 4  (verified for 4 ≤ S < 500).
+```
+
+So the loss in the bridge is `O(1/S)` **with constant 12**, not 1 — the `O(1/S)`
+notation is correct but the constant matters for any quantitative use:
+
+| `S` | kept fraction | `12/S` |
+| --- | --- | --- |
+| 6 | 0.037 | 2.00 |
+| 10 | 0.216 | 1.20 |
+| 20 | 0.512 | 0.60 |
+| 50 | 0.779 | 0.24 |
+| 100 | 0.885 | 0.12 |
+
+**Empirical check of the construction itself (fcc, `S = 4, 6`, `R = 20, 40`).** Tiling
+`fcc` by cubes of side `S`, taking the tile with the most centres and periodising
+after deleting the slabs reproduces exactly the loss predicted: at `S = 6, R = 40`
+the periodic packing has `δ = 0.0194` against fcc's `0.7405`, i.e. the scheme is
+**vacuous below `S ≈ 12`** but correct as `S → ∞` with `R/S → ∞`.
+
+**Consequence.** The bridge is a *qualitative* reduction: it shows periodic packings
+are dense in density, but with a loss of `12/S` it says nothing quantitative at any
+computable scale. That is fine for its use (an upper bound proved for all periodic
+packings transfers to all packings), and it is worth stating so that nobody tries to
+make the bridge carry numerical weight.
+
+### K15-C084 — the remaining lemma compared with Hales' accounting (`AUDITED`)
+
+`Main/REMAINING_LEMMA.md` states the cut condition exactly, and compares it with
+Hales' accounting: his structure is (i) a score on Delaunay stars from an explicit
+volume transfer, (ii) an **exact rearrangement**
+`Σ_{v∈B}(vol Ω(v)+A(v)) = Σ_{D⊆B} σ(D)` (his four-way cancellation), (iii) a
+pointwise `σ(D) ≥ 0` verified over a **finite** list of tame combinatorial types.
+The cut condition has the same shape — a transfer plus an identity — but its
+quantifier (every finite `U` in every packing) is not finitised, so it is *harder to
+verify mechanically* and *weaker as a statement*. No published source proves a cut
+form; the pointwise results (Rogers `5.372754`, Muder `5.41848`, Hales–McLaughlin
+`5.550291`) cannot reach `√32` because `V_dod` is pointwise optimal.
+
+Also recorded there: the most promising unexplored route — an **explicit local**
+`φ(v,w) = ψ(|v−w|)(b(v)−b(w))`, for which the cut condition reduces to a per-edge
+inequality and *is* finitely verifiable. No one has attempted it.
+
+### K15-C085 — the naive explicit-transfer ansatz fails (`PROVED` negative on a model)
+
+`Main/REMAINING_LEMMA.md` §5 flags "an explicit local `φ`" as the most promising
+route. Main tested the obvious ansatz:
+
+```
+φ(v,w) = ψ(v−w)·(b(v) − b(w)),      ψ ≥ 0,  supp ψ ⊆ [−R,R],
+s := Σ_w ψ(v−w)   (constant on a lattice-shaped neighbourhood).
+```
+
+Then `Σ_w φ(v,w) = s·b(v) − (ψ*b)(v)`, so the requirement `Σ_w φ(v,w) ≥ b(v)` is
+
+```
+(s − 1)·b(v)  ≥  (ψ*b)(v)          for every v.        (★)
+```
+
+**`(★)` fails on the simplest defect model.** Take a line of seven sites with
+`b = (0,0,0, +1, −0.5, 0, 0)` (a unit deficit funded by a neighbouring surplus) and
+any of `ψ = (0.25,0.25)`, `(0.5,0.5)`, `(0.4,0.1)`. The left side is *negative* at
+the surplus site while `(ψ*b)` is positive there, so `(★)` fails by `O(b)` at exactly
+the vertices that are supposed to fund the deficit. The ansatz transfers the full
+difference, which overshoots: the deficit site receives `s·1 − ψ(2)(−0.5)` but the
+surplus site *pays* `s·0.5 + ψ(2)·1`, more than its surplus allows.
+
+So the naive form does not work, and the "local formula ⇒ finitely verifiable"
+hope is not realised by it. What is needed is a genuine flow — i.e. the min-cut
+solution of `K15-C044` — and there is no reason to expect it to have a closed local
+form. This is recorded so the next block does not spend its budget on the ansatz.
+
+*Status.* `PROVED` (a counterexample to a proposed route on an explicit model).
+Reviewer X.
+
+### K15-C086 — worker sources integrated at review 0308 (`IMPORTED`, pending X's own review)
+
+| Source | Revision | What it says | Main's disposition |
+| --- | --- | --- | --- |
+| X `Counterexamples/REVIEW_0138.md` | `6535e76` | audited Main's checker at **`9461aae`** on a 23-test battery: 0 mismatches; also records X's own four wrong expectations and the witness-anchored fix | **superseded**: the supervisor's local reproduction found **three false accepts at that same revision** (`K15-C058`'s witnesses). A 23-test battery that passes on an unsound revision is the third instance this project has of "tests that could not fail" — the lesson stands and is recorded |
+| X `REGISTRY.md` additions | `6535e76` | three certified CE bounds in X's own family: `0.818086808`, `0.794809296`, **`0.780718153`** (current best for X) | imported as *independent implementations*, not as bounds to quote; all are worse than CDS22's `0.779747`. `X-C014` awaits Astra's local check. X's own `P(0)/Q(0) ≥ 1.024466` filter from Li is a useful guard and is recorded |
+| C `sos_pside_many.py`, `sos_both_sides.py`, `sos_qside_polish.py` | `9d9ff68` | explicit-Gram states: p-side `1.33982382`, Fourier-side `1.37125723`, both-sides `2.00171738`; the LP-optimal value without a rational Gram is `0.77996622` | imported as **controls**; three orders from competitive; `D17` says do not spend a block improving them |
+| E `CANDIDATES.md` | `9a46efc` | `E1` criterion proved, block rule `R2'` corrected, `(T'-R2')` open and quantitatively obstructed; `E2` (3-point hybrid) specified but **blocked on a three-point evaluator**; `E3` (pure Delaunay) obstructed at the `(2,2,2,2,l,l)` simplex | imported; `E1` is the project's target (`D17`), `E2` is not chosen, `E3` recorded as obstructed |
+
+**Consistency check on the three CE families.** They are independent *implementations*
+in different parametrisations: C's Laguerre certificates, X's `P(s)e^{−s}` family, and
+Main's `u = π|x|²` checker. Their bare numbers are not comparable across normalisations —
+X's bound is `(4/(3√π))P(0)/Q(0)`, Main's is `(4π/3)R` — and only the converted
+occupied-volume values may be compared. All three are above `0.779747`.
+
+### K15-C087 — the cut condition is not a weaker target: large ball cuts *are* the theorem (`PROVED`)
+
+For a ball cut `U = B(x,r) ∩ Λ` with `r` large, the cells of the vertices in `U` tile
+`B(x,r)` up to a boundary layer, so
+
+```
+Σ_{v∈U} b(v) = √32|U| − Σ_{v∈U} vol Ω(v)
+             = √32 c·(4π/3)r³ − (4π/3)r³ + O(r²)
+             = (4π/3)r³ (√32 c − 1) + O(r²),
+```
+
+while the right side of the cut condition is `Φ|δ⁺(U)| ≤ Φ·3k_R R r² = O(r²)`. So the
+cut condition for large balls reads
+
+```
+(√32 c − 1)·r³ ≤ O(r²),      i.e.   c ≤ 1/√32 + O(1/r),
+```
+
+which is exactly `δ ≤ π/√18` in the limit. **The cut condition for large ball cuts is
+the Kepler bound itself**, not a weakening of it.
+
+**What this settles.** `K15-C080`'s "strictly weaker than `(T')`" applies only to
+*small* components: the cut condition must also hold for large balls, and there it
+is the theorem. So the transfer route is not a way to weaken the target; it is a way
+to *reorganise* the proof (negligibility for free, `K15-C035`) whose price is that
+the geometric content reappears at full strength. This is the precise form of
+`K15-C071`'s "trade", and it should stop any future block from pursuing the cut
+condition as though it were easier than Kepler.
+
+*Status.* `PROVED` (asymptotic identity from the tiling, plus `K15-C043`'s chain in
+the other direction). Reviewer X.
+
+### K15-C088 — Hales' accounting read from the text (`AUDITED`; the structural difference is compactness)
+
+Quoting `Literature/Papers/Hales2005-unabridged.pdf`, Ch. 7: **Definition 7.12**
+defines the score `σ(D) = −4δ_oct(vol Ω(D)+A₀(D)) + 16π/3` on *decomposition stars*;
+**Lemma 7.13** shows `min_DS(vol Ω + A₀) = √32` ⟺ `max_DS σ = 8 pt`; **Theorem 7.14**
+turns `max_DS σ = 8 pt` into existence of a negligible fcc-compatible `A` for every
+saturated packing; **Definition 7.15** and §7.4 decompose `σ` over standard clusters,
+and Ch. 10 bounds it region by region.
+
+**The structural difference, precisely.** `DS` is a *compact finite-dimensional* space
+of local configurations. Hales' Lemma 7.13 converts a pointwise statement about all
+packings into an optimisation over that compact space, which is then a finite
+computation (interval arithmetic + LPs). The cut condition has **no `DS`**: it
+quantifies over subsets of a packing, so no compact reduction is available. That is a
+sharper statement than "finite vs infinite", and it explains why the transfer route
+cannot be finitised the way Hales' can.
+
+### K15-C089 — the next geometric package: `sup_Λ t*(Λ) ≤ Φ₀` (`PROPOSED` package)
+
+`Main/PACKAGE_CUT.md` restates the geometric target as a *quantitative* inequality:
+
+```
+t*(Λ) = max over finite U of  Σ_U b / |δ⁺_R(U)|   ≤   Φ₀(R)      for every saturated Λ, R ≤ 2.09,
+```
+
+with `t*` the minimal transfer bound (LP duality, `K15-C044`). Reasons this is the
+right form: (i) it is exactly what the rate `O(Φ/r)` needs; (ii) a single periodic
+packing with `t* > Φ₀` refutes a claimed `Φ₀`, so candidates are testable
+(`C-TRANSFER-001` computes `t*`); (iii) it has a proved floor `Φ₀ ≥ 0.0088803`
+(`K15-C081r`).
+- **Correction (in the same entry).** The first version said "existence cannot be
+  refuted by a packing". **False.** If a packing has a **closed** component `C` (no
+  edges leaving at range `R`) with `Σ_C b > 0`, then `t*(Λ) = ∞` and **no transfer
+  exists** — such a packing refutes the transfer route (not Kepler). By `K15-C080` a
+  closed component reduces the cut condition exactly to E's `(T')`. So the package has
+  a prior obligation: **show that no saturated packing has a positive-deficit closed
+  component**, or restrict the target to packings without one. This is E's
+  `E-COMPONENT-001`, and it is the first thing to settle — a single example would
+  close the route.
+
+The difficulty is located precisely in the trade-off between small cuts (small
+denominator, `Σ_U b` controlled only by `√32|U|`) and large cuts (density controls
+`Σ_U b`, but the boundary grows like `|U|^{2/3}`). Three steps are specified:
+compute `t*` on four non-trivial periodic packings; prove the ball-cut case; then show
+the maximum is attained on ball-like cuts.
+
+### K15-C090 — a fit position on the icosahedral cluster at radius 3.4026 (`PROVED`, exact geometry)
+
+For the 13-cluster, over each of the 30 edges of the outer icosahedron there are two
+positions at distance exactly `2` from the two edge endpoints; the **outward** one lies
+at radius
+
+```
+r_fit = √(4 − (2.1029244485/2)²) + √(4 − (2.1029244485/2)²) = 2·1.7013016167… = 3.4026032334…
+```
+
+from the centre, and its distance to every cluster point is `≥ 2` (minimum exactly `2`,
+attained at the two edge endpoints). So it is a legal **fit position**: a sphere may be
+placed there without overlap.
+
+**What it does and does not show.** It shows the cluster is not "closed by geometry":
+there is room outside it. It does **not** settle the closed-component question
+(`K15-C080`, `E-COMPONENT-001`): saturation guarantees a centre within distance `2` of
+that fit position, but such a centre may be as far as `4` from the cluster, hence not
+within `2.09`. Since a transfer edge needs distance `≤ 2.09`, the fit position does not
+by itself produce an out-edge. The closed-component case therefore remains open, as
+recorded in `K15-C089`'s step 0.
+
+*Status.* `PROVED` (exact icosahedral geometry; computed and checked numerically to
+`1e−9`). Reviewer X.

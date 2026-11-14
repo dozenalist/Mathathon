@@ -52,18 +52,21 @@ pay for itself (`Σ_C b ≤ 0`); the transfer route needs only
 *stated bound on `Φ`* (the rate in Lemma 3.3 is `O(Φ/r)`), keeping `(T')` as a
 sufficient condition and as a check on fcc/hcp.
 
-**The floor on `Φ`.** `K15-C081` shows the icosahedral cluster forces
-`Φ ≥ 13(√32 − V_dod)/|δ⁺(C)|`, and the cluster geometry (`K15-C012`, outer–outer
-distances `2.102924 > 2.09`) gives `|δ⁺(C)| ≤ 132`, hence **`Φ ≥ 0.0104949`** at
-`R = 2.09`. A candidate claiming a smaller `Φ` is refuted outright; the target is a
-transfer with `Φ` at or just above that floor.
+**The floor on `Φ` (corrected, review 0308).** The only valid floor is the
+**singleton** one (`K15-C081r`): the central cell of the 13-cluster satisfies
+`vol Ω(v₀) ≤ V_dod` by monotonicity, so `b(v₀) ≥ √32 − V_dod = 0.1065632` and
+`Φ ≥ (√32 − V_dod)/12 = 0.0088803` at `R = 2.09`. The earlier cluster-level floor
+`0.0104949` came from using an **upper** bound on the cluster's signed deficit as a
+lower bound and is **withdrawn**; nothing here bounds that deficit from below.
 
-**The boundary term with explicit constants.** For a blob `U` containing a ball of
-radius `r` and contained in `B(x, r+R)`, the number of edges leaving `U` is at most
-`k_R·#(Λ ∩ (B(x,r+R) ∖ B(x,r−R))) ≤ k_R·((r+R)³ − (r−R)³) ≈ 6 k_R R r²`, and
-`|U| ≍ (4π/3)r³` in the worst case, so the slack is
-`Φ·6k_R R r² = Φ·6k_R R·(3|U|/4π)^{2/3}` — a `|U|^{2/3}` term with an explicit
-constant. That is the form in which `(T')` and the cut condition meet.
+**The boundary term with explicit constants (corrected, review 0308).** For a
+**ball cut** `U = B(x,r) ∩ Λ`, `|δ⁺(U)| ≤ k_R((r+R)³ − r³) ≈ 3k_RRr²` and
+`|U| ≍ (4π/3)r³`, so the slack is `Φ·3k_RR·(3|U|/4π)^{2/3}`. For an arbitrary `U`
+the only valid bound is `|δ⁺(U)| ≤ k_R|U|`, i.e. slack `Φk_R|U|` — not `o(|U|)`.
+**Consequence for the target:** the `|U|^{2/3}` averaged inequality must be
+**hypothesised for ball-like cuts** (or proved by a separate argument); it is not a
+consequence of the cut condition, and the equivalence in `K15-C067` is between the
+cut condition and the *general* `Φ|δ⁺(U)|` form, not the `|U|^{2/3}` form.
 
 ## What a block should attempt, in order
 

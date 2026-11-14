@@ -117,3 +117,17 @@ Runs executed by Main this block: E's `barlow_shell_check.py` (spectrum + count 
 `K15-C082`); X's `exact_sign.py` (10/10 agreement, `K15-C076`/`C077`); the full
 `run_all_checks.py` suite with and without `--cert`; the fuzz at degrees 6–12 with
 seven seeds; `constants_check.py` (29 checks); `function_range` cross-checks.
+
+## Block K15-REVIEW-0308-M — revisions read
+
+| Source | Full hash |
+| --- | --- |
+| supervisor `kepler15/setup-01a1d8c0` | `58d06dd` |
+| Computation `kepler15/comp-01a1d8c0` | `9d9ff68` |
+| Experimental `kepler15/experimental/run-01` | `9a46efc` |
+| Counterexamples `kepler15/counterexamples/run-01` | `6535e76` |
+| Main at receipt | `7c56c5ee4a2fb515a35c6f7734bfd06adf63b2f5` |
+
+Runs executed by Main this block: the fcc tiling audit of the bridge (`K15-C083`),
+the explicit-transfer ansatz model (`K15-C085`), `run_all_checks` and the fuzz
+suites. No Lean, no heavy solve.
