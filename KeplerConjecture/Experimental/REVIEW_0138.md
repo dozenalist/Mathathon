@@ -960,3 +960,29 @@ check that the lemma's hypothesis is not vacuous. Note also that the same grid r
 `203` cells flagged unreliable, so its `S - D` figures are among the retracted ones — the
 distance-only content is what survives here, which is exactly why the overlap check is the
 useful thing to have run.
+
+## 17. Proof obligations, for integration
+
+Each item states what is proved, what it depends on, and what would discharge it. Ordered by
+dependency, so `Main` can integrate from the top down.
+
+| # | obligation | status | depends on | discharge |
+| --- | --- | --- | --- | --- |
+| 1 | `K15-E014`: at most 12 centres in `[2,2.09]` and `[2,2.05]` | **proved** | Tammes-13 constant (imported); `K15-E011` | nothing further, but the import must be charged |
+| 2 | `K15-E015`: `delta_13 < 57.138726938 deg` | **proved** | rational interval arithmetic; Taylor lemma | validate the Taylor remainder bound (short) |
+| 3 | `K15-E011`: radius conversion `max(1-2/R^2, R/4)` | **proved** | elementary | — |
+| 4 | `K15-E013`: Barlow stackings have 12 in `[2,2.09]` | **proved** | elementary geometry | — |
+| 5 | `K15-E045`: centre cell equals `V_dodeca` | **proved, conditional** | dodecahedral theorem (imported, computer-assisted) | verify that theorem's exact hypotheses |
+| 6 | `K15-E060`: two-shell thresholds `4.18`/`8.36`, disjointness, coverage, boundary `diam C + 8.36` | **proved** | elementary | — |
+| 7 | `K15-E061`: transfer theorem (pointwise FCC from Hall; exact cancellation; `O(r^2)`; `(C3)`) | **proved** | max-flow/min-cut; skew-symmetry | — |
+| 8 | Hall decomposition: per-component checks suffice | **proved** | `tau = 2R` exactly | — |
+| 9 | `(H_R)` with `R = 2.09` | **open** | — | a proof, or a counterexample (none found; no numerical evidence either way) |
+| 10 | `(Q)`: a saturated packing with a cell below `sqrt32` | **open** | — | certified periodic construction from primary crystallographic data, or an impossibility proof |
+
+**Chain.** `(H_R)` (row 9) plus row 7 gives pointwise FCC-compatibility; with rows 1-2 providing
+`A = 0` in the equality cases and row 5 fixing `V_dodeca`, Hales's Lemma 3.3 would then give
+`delta <= pi/sqrt18 + C/r`. Rows 1-8 are done; **the whole route currently rests on row 9.** Row
+10 is the sharper question that would tell us whether row 9 is even necessary.
+
+**What is *not* an obligation.** The `S - D` magnitudes, the `4.733968`/`8.167277` bounds, and
+the `470-880` slack are withdrawn (`K15-E062`) and should not appear in any integration record.
