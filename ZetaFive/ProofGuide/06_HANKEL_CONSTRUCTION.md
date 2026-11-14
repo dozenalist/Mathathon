@@ -2,6 +2,8 @@
 
 [Overview](../PROOF_OVERVIEW.md) · [Previous: positivity](05_POSITIVITY.md) · [Next: moments](07_MOMENT_REPRESENTATION.md)
 
+For a short explanation of why this matrix is used, see [the role of Definition 5.1](DEFINITION_5_1_ROLE.md).
+
 **Corollary 5.5 gives the degree bound needed for irrationality. Proposition 6.1 shows that the degree is exactly $h=37n$.** Both facts come from the simple poles of the rational functions used in the matrix.
 
 Recall $D_r(t)=\prod_{j=1}^r(t+j^2)$, $W(t)=D_N(t)^6/D_K(t)$, and $h=K-N$. The rational-function variable $t$ and the polynomial variable $X$ are independent. The rule $\mu_X$ is rational-linear and takes rational functions in $t$ to affine polynomials in $X$; its full definition appears in [companion 7](07_MOMENT_REPRESENTATION.md).
