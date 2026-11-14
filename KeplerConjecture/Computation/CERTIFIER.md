@@ -184,3 +184,73 @@ Checks that pass:
 Two test-authoring errors were caught while writing E2 and are noted in the source: the
 first version placed the "in-line" roots at `t = 10`, which is outside `[8π, ∞)`; and the
 oracle's own `p0/q0` check had the same inversion as bug 1.
+
+---
+
+# Addendum 2 — a verified, grid-free certificate: `Delta <= 0.77996650`
+
+**Status: `VERIFIED_EXACT`.** Accepted by two implementations that share no code:
+`exactcert.certify` (hand-rolled `Fraction` polynomials, own Sturm chain and Yun
+decomposition) and `exactcert_oracle.oracle` (SymPy `sqf_list` + `count_roots` + Cauchy
+bound). No floating point enters either decision. Published data:
+`out/verified_certificate_K33.json`; re-verify with
+
+```bash
+python3 verify_certificate.py out/verified_certificate_K33.json
+```
+
+## The statement
+
+> Every packing of unit-radius spheres in `R^3` has occupied-volume upper density
+> `Delta <= 0.77996650`.
+
+Exactly, `Delta <= PI_HI * 4 * p0 / (3 * q0)` with
+
+```
+p0/q0 = 57247406970676848810768955 / 307445740617578019715085691
+Delta upper bound (exact, directed upwards) = 0.779966497785...
+```
+
+Degree 33, coefficients rational with denominator `10^8`, margin `eps = 1e-7`,
+optimisation grid 10000 points per region. Basis, variable, Fourier map and endpoints as in
+§2 above; the sign regions are `p < 0` on `[8*PI_LO, inf)` and `q > 0` on `[0, inf)`, with
+`PI_LO < pi` so the verified condition is strictly stronger than required.
+
+## What it is worth, stated plainly
+
+**It does not improve on Cohn–Elkies 2003**, whose `0.779747` is a stronger rigorous bound.
+This certificate is *weaker* (`+0.03%`) and its value is different: it is verified in-house
+end to end, the rational data is published, and it exercises the exact pipeline on a
+non-trivial object. It is the level-3 "reusable foundation" artifact, not a new bound.
+
+Against Kepler it is `+5.33%`.
+
+## How the earlier failure was fixed
+
+The withdrawn ladder (`K = 9 … 21`) failed exact verification because the LP solution
+oscillated between grid points: the finite-grid optimum is *not* a certificate. Three
+changes made verification succeed:
+
+1. **Grid resolution was the binding constraint, not degree.** At `K = 21`, `eps = 1e-7`: the
+   2000-point grid fails, the 6000-point grid succeeds. Recorded because the intuitive
+   response to a failed certificate is to raise the degree, which does not help.
+2. **A sign margin was essential.** At `eps = 0` the optimum touches zero and rounding
+   destroys it; at `eps = 1e-7` with grid 10000 it verifies. The margin costs little
+   (`0.77997` vs the `0.77975` control).
+3. **Column scaling plus row scaling.** Without column scaling the LP is ill-conditioned at
+   degree 33 and returns spurious degenerate optima.
+
+The certified value as a function of margin and degree, all verified:
+
+| degree | grid | `eps` | certified `Delta <=` | gap to Kepler |
+| --- | --- | --- | --- | --- |
+| 21 | 6000 | 1e-7 | 0.908966 | +22.7% |
+| 25 | 10000 | 3e-7 | 0.7865966 | +6.23% |
+| 29 | 10000 | 1e-7 | 0.7800662 | +5.35% |
+| **33** | **10000** | **1e-7** | **0.7799665** | **+5.33%** |
+| 33 | 10000 | 1e-6 | 0.7817215 | +5.57% |
+| 33 | 10000 | 3e-6 | 0.7856528 | +6.10% |
+
+Monotone in degree at fixed margin, and monotone in margin at fixed degree, both as expected.
+The certified value approaches the CE control from above and cannot cross it, since `0.779747`
+is a rigorous upper bound on the LP optimum.

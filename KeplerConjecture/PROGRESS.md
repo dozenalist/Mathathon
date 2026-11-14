@@ -203,3 +203,26 @@ narrow excursion and is not treated as evidence of a sign condition anywhere in 
 *positive* example was added. Both the checker and the oracle were rejecting everything and
 said so consistently; agreement between two implementations that are both wrong is not
 corroboration. Every checker in this directory now carries at least one accepted case.
+
+### K15-COMP-007 — 2026-11-15 — Computation (role C), verified certificate
+
+**Replaces the retracted ladder with a genuinely verified result.**
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-VERIFIEDCERT-001 | **VERIFIED_EXACT** | every packing of unit-radius spheres in `R^3` has `Delta <= 0.77996650`, exactly `Delta <= PI_HI·4·p0/(3·q0)` with `p0/q0 = 57247406970676848810768955/307445740617578019715085691` | `out/verified_certificate_K33.json`; accepted by `exactcert.py` (own Sturm + Yun) **and** `exactcert_oracle.py` (SymPy `sqf_list` + `count_roots`), which share no code; no floating point in either decision |
+| K15-C-GRIDRES-001 | measured | the earlier failures were **grid resolution**, not degree: at `K=21, eps=1e-7` a 2000-point grid fails exact verification and a 6000-point grid succeeds | `search_grid_resolution.py` |
+| K15-C-MARGIN-001 | measured | exact verification requires a sign margin: at `eps=0` the optimum touches zero and rounding destroys it; at `eps=1e-7` with grid 10000 it verifies, costing `0.77997` vs the `0.77975` control | `CERTIFIER.md` Addendum 2 table |
+
+**Explicit scope.** This does **not** improve on Cohn–Elkies 2003, whose `0.779747` is
+stronger. It is `+5.33%` above Kepler. Its value is that it is verified in-house end to end,
+the rational data is published, and the pipeline now works on a non-trivial object — so any
+future candidate from the shell bench or a hybrid route can be certified the same way.
+Classified as a level-3 "reusable foundation" artifact, not a new bound.
+
+**Three verified facts about the pipeline**, all recorded because the intuitive responses are
+wrong: (i) raising the degree does not repair a failed certificate, refining the grid does;
+(ii) `eps = 0` cannot be verified even though it gives the best objective; (iii) column
+scaling is necessary at degree 33, without it the LP returns spurious degenerate optima.
+
+**Reproduction:** `python3 verify_certificate.py out/verified_certificate_K33.json` (5 s).
