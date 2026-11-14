@@ -2006,3 +2006,12 @@ a failure).
 `Experimental/scripts/c5_global_search.py` did not finish within 300 s at `6ae7dbf` (exit 124 under
 `timeout`); its sibling `c5_family.py` covers the same family and does finish. Nothing in this block depends
 on it; recorded so that a later run does not mistake the timeout for a defect.
+
+### K15-X-C134 — if `6cos ρ_c` were proved for all orientations, the near-contact band would be 2.35× wider
+
+`4cos ρ_c − 2 = 1.1786178891670644` is `C133`'s band (`C114`'s `ε`-range), and
+`6cos ρ_c − 2 = 2.7679268337505967` would be the band from `X-C096`'s threshold — a factor `2.347` wider.
+So the `2/3` gap between `C133`'s constant and the parallel threshold is not cosmetic: it is the difference
+between `ε < 1.179` and `ε < 2.768` in `C114`/`C124`. Nothing changes today (`C124` uses `ε = 1`), but if the
+parallel placement is ever proved optimal (`X-C099` is numerical only), `C133`'s consequence 1 improves by
+that factor for free.
