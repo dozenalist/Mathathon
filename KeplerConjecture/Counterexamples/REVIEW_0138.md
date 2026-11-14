@@ -516,3 +516,77 @@ decisions; the earlier `half_line_verdict` and `sign_on_half_line` uses in
 * It does **not** license any statement about Main's checker, which remains **PENDING** with the
   three confirmed false accepts plus two more that I found. Main owns that repair, and I will audit
   the next immutable revision with rule (H)/(I) as the oracle — not with a case list.
+
+---
+
+## 13. `K15-X-C014`: basis rescaling reaches **`0.780718153343`**
+
+### 13.1 The fix that unlocked `m ≥ 4`
+
+The plain Gram basis `{1, s, …, s^m}` spans `30^k` over the region of interest, which is why
+CLARABEL raised `SolverError` and SCS returned garbage. Replacing it by the scaled basis
+`{(s/S)^i}`, i.e. `H = Σ_j q_j²` with `q_j(s) = Σ_i L_ij (s/S)^i`, conditions the SDP. The Fourier
+map is still applied in `s`, so **nothing is approximated** — the only change is the basis in which
+the SOS block is expressed, and `H ≥ 0` remains exact by construction.
+
+### 13.2 The certificate (`X_C014_certificate.json`, `m = 5`, `S = 8`)
+
+Seven rational quintics `q_1,…,q_7` in `s/8` (listed in the JSON), with
+$$H=\sum_{j=1}^{7}q_j^2\ (\deg 10),\qquad P=-(s-4)H,\qquad f(x)=P(|x|^2)e^{-|x|^2},$$
+$$\frac{P(0)}{Q(0)}=1.0378401730236737,\qquad
+\boxed{\ \Delta\le\frac{4}{3\sqrt\pi}\cdot 1.0378401730236737=\mathbf{0.780718153343}\ }$$
+
+**Re-verified end-to-end from the file on disk** (not from the solver's memory): `H` is an explicit
+sum of seven squares (CE1 structural, no sign test); `Q ≥ 0` on `[0,∞)` decided exactly, with **no
+real root in `[0,∞)`**; the value is above Kepler and above Li's floor.
+
+### 13.3 The ladder, with no inflation
+
+| bound | value |
+| --- | --- |
+| Kepler | `0.740480489` |
+| **Li's floor for any ordinary CE certificate** | `0.770657` |
+| CDS22 optimised CE (published) | `0.779747` |
+| C `K15-C033` (in-house, verified) | `0.779966500` |
+| **X `K15-X-C014`** | **`0.780718153`** |
+| X `K15-X-C013` | `0.794809296` |
+| X `K15-X-C010` | `0.818086808` |
+
+So the SDP route moved X's own certified bound by `0.037` in this block, and now sits `0.0010`
+above the published optimised CE value and `0.00075` above C's `K33`. **It does not beat either, and
+no such claim is made.** What it establishes is that X can generate and exactly certify competitive
+ordinary-CE bounds independently of C's and Main's code, on a certificate that is a short explicit
+list of rational polynomials.
+
+`m = 6` still fails (`SolverError` at `S = 2,3`; Li-floor violations at `S = 12`), so `m = 5` is the
+practical limit of this implementation. The `S`-scan matters: `S = 6 → 0.780720`, `S = 8 →
+0.780718`, `S = 12 → 0.781630`, so `S ≈ 8` is near-optimal for `m = 5`.
+
+**Bounded local request (final, executable).**
+```text
+commit      <this commit>     branch kepler15/counterexamples/run-01
+cwd         KeplerConjecture/Counterexamples
+command     python3 x_r03b_rescaled.py        # ~140 s, reproduces the m=4..6 scan
+            python3 x_r03b_sos_from_sdp.py    # the strict-margin m=2,3 route
+deps        python3.12, cvxpy 1.9.2, numpy 2.5.3, scipy 1.18.1, sympy 1.14.0
+cap         20 min, 1 CPU, 2 GB
+goal        m in 6..9 with S in {6,8,10}, CLARABEL margin eps=1e-6; report only
+            exact-certified values. Anything below P0/Q0 = 1.024466 is infeasible (Li) and is
+            a bug, not a discovery.
+success     a certified value < 0.780718153
+```
+
+## 14. Closing state of this block
+
+| item | verdict |
+| --- | --- |
+| Main `shell_check` `9461aae` | **PENDING** — 3 confirmed + 2 further false accepts; repair owned by Main |
+| X `exact_sign.py` | **repaired, extended with a closed-interval rule**, 21 controls + 0/180 random + 0/12 probe-targeted |
+| `K15-C033` (C) | **evidence stands** (independent SymPy + my repaired predicate + hand-decidable root structure) |
+| C's near-tangency `3.5e−29` | **correct**; my earlier contradiction of it retracted as a category error |
+| Main `C035` / `C044` / `NEXT_PACKAGE` | factor-`R` correction; isoperimetry scope; `V=5.40` already implied |
+| E `E048` / `E049` / `E040` | ceiling verified; `E049` original wording refuted; `E040` shortfall `17.7233318` not `19.08483258` |
+| `K15-X-C010` / `C013` / `C014` | **PROVED** `0.818086808` / `0.794809296` / **`0.780718153`** |
+| my invalid `0.810774751` | **retracted** before it could propagate |
+
+Ultramath is the actual runtime, per the supervisor; I accept that and make no contrary claim.
