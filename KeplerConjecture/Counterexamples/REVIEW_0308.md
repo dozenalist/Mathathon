@@ -379,10 +379,13 @@ and every other X artifact — currently **ALL PASS**.
 
 ---
 
-## 12. `K15-X-C016`: the both-sides Gram at **useful strength** — `0.783220183559`
+## 12. `K15-X-C016`: the both-sides Gram at **useful strength** — `0.783097911`
 
 Section 10 closed the obligation at `0.813631`. Pushing it to useful strength required two
-corrections, both instructive:
+corrections, both instructive. *(Provenance note: this certificate was improved inside the same block
+— `m = 4, S = 8` with `ε = 10⁻⁴` gave `0.783220`, and re-running with `ε = 10⁻⁷` gave the value
+quoted here, `0.783097911`; the JSON holds the latter and `verify_all.py` checks it against the file.
+The earlier figure is superseded, not withdrawn.)*
 
 1. **The identity's `S`-powers must match the SDP's basis block by block** (`S^{−k}` on `A`,
    `S^{−(k−1)}` on `B`). Using `S^{−k}` for both made the exact solution set ill-conditioned and the
@@ -401,7 +404,7 @@ the link verified by exact expansion:
 | `G ⪰ 0`, `A ⪰ 0`, `B ⪰ 0` (exact rational LDL) | **True / True / True** |
 | `Q(A,B) = Q(Fourier image of P)` | **exact** |
 | `P(0)/Q(0)` | `1.041166222842` |
-| **density** | **`0.783220183559`** |
+| **density** | **`0.783097911`** |
 | cross-check `Q ≥ 0` by exact Sturm | True |
 | above Kepler `0.740480` and Li's floor `0.770657` | True / True |
 
@@ -416,7 +419,7 @@ isolation, no Sturm sequence, no sign predicate is needed anywhere.
 | C `SOSQSIDE-005` | `1.413704545` | no (Sturm) | **explicit** | one |
 | X `X-C010` | `0.818086808` | **explicit** | no (Sturm) | one |
 | X `X-C013` | `0.794809296` | **explicit** | no (Sturm) | one |
-| **X `X-C016`** | **`0.783220184`** | **explicit** | **explicit** | **none** |
+| **X `X-C016`** | **`0.783097911`** | **explicit** | **explicit** | **none** |
 | X `X-C014` | `0.780718153` | **explicit** | no (Sturm) | one |
 | C `K33` | `0.779966500` | no | no | exact Sturm |
 
@@ -444,8 +447,8 @@ stone rather than a curiosity.
 | `CUTEQUIV` | **VERIFIED** — full-period cut is exactly Kepler |
 | C `tests_0138` T1–T3 | **VERIFIED by hand** |
 | C `SOSQSIDE-005` | **VERIFIED** (`1.413704545`) |
-| C's both-sides obligation | **CLOSED by `X-C016`** (`0.783220184`) |
-| `X-C010/C013/C014/C015/C016` | **PROVED**, `0.818086808 / 0.794809296 / 0.780718153 / 0.813631102 / 0.783220184` |
+| C's both-sides obligation | **CLOSED**, best at `X-C017` (`0.782267220`) |
+| `X-C010/C013/C014/C015/C016/C017` | **PROVED**, `0.818086808 / 0.794809296 / 0.780718153 / 0.813631102 / 0.783097911 / 0.782267220` |
 | generic checker soundness | **SUSPENDED** |
 
 ---
