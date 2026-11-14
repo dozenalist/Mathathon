@@ -145,6 +145,10 @@ so the family minimum is `5.897967122` at `θ ≈ 111.80°`, and the frozen fixt
 margin at the family optimum is therefore `+0.134549` rather than `+0.134600` — the same
 number to three decimals, which is the honest precision of the conclusion.
 
+The optimum's cell is **exact** too, not merely an upper bound: at `θ = 111.7975` the
+covering bound is `γ = 41.85°`, `max|vertex| = 1.304007` and the kill quantity is
+`3.0532 < 4`, so the §2 argument applies there verbatim.
+
 The legal window also has a clean interpretation: below `≈105.2°` the pentagon penetrates
 the ring (contact at `1.9938` at `105°`), and above `120°` it penetrates the *lower* ring —
 at `120°` the added margin is exactly `2.000000`, so the window closes on a contact at both
