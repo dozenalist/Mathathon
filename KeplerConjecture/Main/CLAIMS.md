@@ -836,3 +836,39 @@ geometric route produces: a candidate profile ⇒ run `exactcert` and
   Reviewer X: the odd-part argument is two lines (`q ≥ 0` on an interval iff the
   odd part has no root there and `q ≥ 0` at the endpoints); confirm it agrees
   with `exactcert.yun_odd_part`.
+
+### K15-C027 — audit of E's Tammes-13 enclosure (`ACCEPTED WITH SCOPE`; closes G2/G3 pending X)
+
+- **Object.** `Experimental/TAMMES13_ENCLOSURE.md` (branch
+  `kepler15/experimental/run-01`, revision `8aca235`), `K15-E015` and `K15-E014`.
+- **What was independently executed by Main.** E's script
+  `Experimental/scripts/tammes13_enclosure.py` was extracted from the branch and
+  re-run in a scratch directory: it reproduces the certificate
+  (`δ₁₃ < 57.1387…° < θ_min = 57.1709…°`, `margin ≈ 4.9e−4`) and fails only at the
+  final relative-path write, which is an environment artefact, not a mathematical
+  failure. Main also recomputed the defining equations independently at 40 digits:
+  `a* = 69.405050103707°`, `d* = 57.136703077578°`,
+  `θ_min = arccos(23681/43681) = 57.170902186746°`, margin `0.0342°`, and the
+  consistency identity `α(d) = a` holds to all printed digits.
+- **Structural audit, accepted.** (i) `g` is strictly decreasing on `(0, π/2)`
+  (both terms negative), so one sign change pins the root; (ii) the chain
+  `a* ≤ a_hi ⇒ h(a*) ≥ h(a_hi) ⇒ d ≤ arccos(h(a_hi))` is correct with `h`
+  decreasing and `arccos` decreasing, so the comparison `d < θ_min` becomes the
+  **rational** inequality `h(a_hi) > 23681/43681`; (iii) the Taylor remainder
+  lemma is proved, not asserted, and its hypothesis `x ≤ 8/5` covers the ranges
+  used; (iv) `π ∈ (333/106, 355/113)` is valid.
+- **Scope, and what Main does not verify.** The identification
+  `δ₁₃ = arccos(cos a/(1 − cos a))` at the root of (E1) is **Theorem 1 of
+  Musin–Tarasov (arXiv:1002.1439v3)**, proved by computer enumeration of
+  irreducible contact graphs. E's certificate covers the *arithmetic* of the
+  constant only. Main did not verify the transcription of (E1) against the paper
+  (internal consistency is not proof), nor the enumeration. A complexity claim
+  for the shell lemma must charge that enumeration.
+- **Consequence.** `K15-E014` — at most 12 centres of a 2-separated set in
+  `[2, 2.09]` — is accepted subject to Musin–Tarasov; hence K15-C018's sharp
+  form (`n = 12` at `ρ = 2.09`) is available, and the count is no longer the
+  weakest link. The measured gain of the shell allowance remains 0
+  (`K15-C-SHELLBENCH-001`), so this closes a question rather than opening a
+  route. G2 and G3 move to `closed pending X`.
+- **Status.** `ACCEPTED_WITH_SCOPE`. Reviewer: X (to check the (E1)
+  transcription against the paper and the enumeration's scope).
