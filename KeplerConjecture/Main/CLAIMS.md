@@ -1950,3 +1950,19 @@ exactly Hales–McLaughlin's point. What can be true is the **averaged** stateme
 - **Status.** `PROVED` (two-line argument from accepted results). Reviewer X.
 - **Consequence for the next block.** Do not pursue `(Q)`; pursue `(H_R)` with the
   cluster-average form and the explicit `Φ` of `K15-C044`.
+
+### K15-C070 — the periodic bridge compared with Cohn–Elkies' Appendix A (`AUDITED`)
+
+`Main/BRIDGE_AUDIT.md` reads CE's Appendix A from the retained PDF (Annals 157,
+pp. 708–709) and compares it with `K15-C002b`: CE start from a **uniformly dense
+extremal** packing (existence via Groemer) and assert that "only a negligible
+fraction of the spheres can intersect the sides"; `K15-C002b` starts from **any**
+packing and pays two explicit losses (`O(S/R)` tile geometry, `O(1/S)` boundary
+slabs) with `O(R²S)` boundary centres counted via disjoint unit balls. Neither
+follows from the other by rearranging constants.
+
+Also recorded there: the project's `limsup`-at-a-fixed-centre density equals CE's
+uniform upper density for 2-separated packings (boundary term `O(R²)/R³ → 0`), so
+CE numbers may be quoted; Hales' route needs no bridge at all; and the open items
+(uniformity bookkeeping, the `δ = 0` case, the Zorn saturation step) are listed
+with what would close each.
