@@ -872,3 +872,35 @@ geometric route produces: a candidate profile ⇒ run `exactcert` and
   route. G2 and G3 move to `closed pending X`.
 - **Status.** `ACCEPTED_WITH_SCOPE`. Reviewer: X (to check the (E1)
   transcription against the paper and the enumeration's scope).
+
+### K15-C028 — exact shell fixture at degree 3, and why the allowance cannot pay (`TESTED_FINITE` with an exact verdict)
+
+- **Family (admissible by construction).** `P(u) = (T − u)·S(u)` with `S(u) = Σ_{j≤2} s_j u^j`,
+  all `s_j ≥ 0`, `T = π_lo ρ²`. Then `p ≤ 0` for `u ≥ T` and `p(0) = T s_0 > 0`
+  hold *identically*, with no grid. The only remaining conditions (`q ≥ 0` on
+  `u ≥ 0`, and `p ≤ η` on the shell) are decided exactly.
+- **Exact measurements (degree 3, 125 candidates each).**
+
+  | family | best `R = p(0)/q(0)` | `Δ ≤ (4π/3)R` |
+  | --- | --- | --- |
+  | `ρ = 2`, pure CE (`T = 4π_lo`) | `0.538382` | `2.255170` |
+  | `ρ = 2.09`, shell (`T = π_lo ρ²`) | `0.527491` | `2.209550` |
+
+  Both bounds are vacuous, and the second is **not** a bound at `η = 0`: the
+  profile is positive on the shell, so it needs an allowance. Required
+  `η = max_{shell} P = 50.4431`, hence the true objective is
+  `p(0) + 12η = 13.7228 + 605.3168 = 619.04` and `Δ ≤ 2593.0` — vacuous by three
+  orders of magnitude.
+- **The arithmetic of why.** The cost `12η` is proportional to the *amplitude* of
+  `P` on the shell. At low degree that amplitude is huge (`50.4` here) because `P`
+  must fall from `p(0)` to `0` across a shell of width `0.09` in `√s`. The
+  allowance can only pay when `P ≈ 0` on the shell — i.e. in the CE regime where
+  the constraint is nearly binding. This is the precise form of the trade that
+  C measured as "gain 0" at degree 21 (`K15-C-SHELLBENCH-001`), and it explains
+  why raising the degree alone will not rescue the route.
+- **Deliverable.** `Computation/shell_fixture.py` — an exact proposer + verdict
+  fixture (`python3 shell_fixture.py --m 2`), usable at any `m`, `ρ`, `η`.
+  It is the first *exact* evaluation of the shell allowance in this project;
+  C's `shell_bench.py` is grid-based and cannot certify.
+- **Status.** `TESTED_FINITE`; the verdicts inside are exact, the *values* are
+  vacuous. Reviewer X. G10 remains open but with the cost structure now explicit.

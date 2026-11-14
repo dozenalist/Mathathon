@@ -15,7 +15,7 @@ assertion. Maintained by M; reviewer X.
 | G7 | A value `V_0 > 5.550291` for the cluster inequality | beating the dodecahedral barrier | E | G4+G5+G6 and a computation of the cluster minimum | open |
 | G8 | Independence audit of the two exact checkers | `VERIFIED_CROSS` C023's status | X | confirm C's `exactcert` and Main's `shell_check` share no code path and agree on adversarial vectors (the interface test `interface_xcheck.py` is a start) | open |
 | G9 | Lean: ball-volume identity and counting-to-volume bridge | any Lean-verified density claim | Astra (local) | a pinned build of a module proving `volume (ball 0 1) = 4π/3` and the count bound; current `Normalisation.lean` proves neither | not started |
-| G10 | Shell-allowance gain: is it 0 in reality or only at degree 21 / grid 500? | whether the shell route is dead | C, or M's duality sketch | an exact-certified `η > 0` candidate at any degree, or a duality argument that the CE optimum's shell multiplier vanishes | open (measured 0 once; the count is no longer the obstruction after G2/G3) |
+| G10 | Shell-allowance gain | whether the shell route is dead | C/M | an exact-certified `η > 0` candidate whose objective beats the same-degree `η = 0` value | open; K15-C028 quantifies the obstruction: the cost `12η` scales with the *amplitude* of `P` on the shell, so only profiles already near-binding there can pay |
 
 ## Rules the ledger enforces
 
