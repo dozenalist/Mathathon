@@ -17,7 +17,7 @@ PY = sys.executable
 CHECKS = [
     ("constants: every ledger constant re-derived", ["constants_check.py"], []),
     ("sign predicates: self-test", ["shell_check.py", "--self-test"], []),
-    ("sign predicates: 19 adversarial cases", ["checker_adversarial.py"], []),
+    ("sign predicates: adversarial suite", ["checker_adversarial.py"], []),
     ("sign predicates: differential fuzz", ["predicate_fuzz.py", "--n", "300", "--seed", "7"], ["--quick"]),
     ("transfer lemma: negligibility on fcc", ["transfer_check.py", "--R", "2", "--rmax", "4"], []),
     ("cluster fixture: dodecahedral cell", ["cluster_fixture.py"], []),

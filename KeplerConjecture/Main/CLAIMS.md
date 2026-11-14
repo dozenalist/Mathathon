@@ -821,9 +821,11 @@ geometric route produces: a candidate profile ⇒ run `exactcert` and
   rejected — and that is exactly the shape of a CE optimum, where `f(2) = 0` is
   forced by the equality case. The earlier checker would have rejected every
   tight certificate while accepting only slack ones.
-- **Fix.** Sign changes are now counted on the **odd part** of the polynomial
-  (`sqf_list`, keep factors of odd multiplicity), with endpoints tested for the
-  required sign, and `≤` (not `<`) as the verdict. Regression cases are now
+- **Fix (SUPERSEDED by K15-C058, which found three new witnesses against it).**
+  The first repair counted sign changes on the **odd part** and probed endpoints
+  and midpoint; that is unsound for perfect squares, where every root has even
+  multiplicity. The current algorithm uses the polynomial's own roots (see
+  K15-C058). Regression cases are now
   permanent in `--self-test` §S4: `(u−5)² ≤ 0` on `[0,10]` must FAIL,
   `−(u−5)² ≤ 0` must PASS, `u² ≥ 0` on `[0,∞)` must PASS, `u−1 ≥ 0` must FAIL.
 - **Effect on the earlier result.** C's K33b certificate is still `ACCEPT` with
@@ -1248,13 +1250,15 @@ auditing Main's own repair, so an outside check is still required).
   `3, 4, 6, 9`) and completion-independent whenever the completion keeps distance
   `≥ 2·1.2584 = 2.5168` from the centre. That is an independent numerical
   confirmation of `K15-C012` and a useful sanity check on the whole cell pipeline.
-- **Not robust, and corrected here.** The *cluster sums*
+- **Not robust, and corrected twice.** The *cluster sums*
   `Σ_{v∈K}(vol Ω_K(v) − √32)` are dominated by the cavity between the core and the
-  completion, not by the cluster: with a dense fcc completion at distance `≥ 2.52`
-  the sum is `+54.40`; with the sparse nested completions of the first run it went
-  `+157.87 → +63.71 → +17.91`. The *trend* (decreasing as more points are added)
-  is the monotonicity of `K15-E003`/`K15-C036` and is real; the *values* carry no
-  information about the clubster inequality in a packing.
+  completion. With completions now **validated** to be packings (minimum over *all*
+  pairs, including core–background, is `2.0000`), the nested sequence is
+  `+157.87 → +63.71 → +63.71`. The original table (`… → +17.91`) came from
+  completions that **overlapped the core** (minimum separation `1.25`) and was
+  therefore meaningless. The *trend* (non-increasing as points are added) is the
+  monotonicity of `K15-E003`/`K15-C036` and is real; the values carry no
+  information about the cluster inequality in a packing.
 - **What the fixture therefore establishes.** (i) `V_dod = 5.550291` numerically;
   (ii) nested completions shrink cell volumes monotonically, so every finite value
   is an upper bound and no finite stage decides the sign — the numerical form of
@@ -1671,3 +1675,38 @@ it is vacuous by construction, because the allowance costs `12η = 36` in a
 functional whose useful range is below `0.2`. That is the whole content of
 `K15-C028`: the machinery works; the trade is hopeless at low degree, and
 `K15-C036`-style sampling cannot tell whether it improves at high degree.
+
+### K15-C058 — SECOND-round predicate defect: perfect squares defeat the odd part (`REFUTED`, repaired; supersedes C049's algorithm)
+
+- **What was still wrong.** After the `K15-C049` repair, three *new* witnesses were
+  found by fixed probes:
+  1. `[u(u−1/2)(u−1)]² ≤ 0` on `[0,1]` returned `True`, though the value at `1/4`
+     is `+9/4096`;
+  2. `−[u(u−1)(u−1/2)(u−2)]² ≥ 0` on `[0,∞)` returned `True`, though the value at
+     `1/4` is `−441/65536`;
+  3. `[u(u−1)(u−2)]² ≤ 0` on `[0,∞)` returned `True`, though the value at `1/2` is
+     `+9/64`.
+- **Root cause.** The `C049` algorithm decided the sign from the **odd part** and,
+  when the odd part had no root in the region, probed only `lo`, `(lo+hi)/2`, `hi`.
+  For a perfect square every factor has even multiplicity, so the odd part is a
+  **constant**: the count is zero and the three probes can all land exactly on
+  roots (indeed `0, 1/2, 1` are the roots of the first witness). Concluding "sign
+  constant, probes ≤ 0, accept" was then wrong. The earlier code comment claimed
+  "three roots at these points ⇒ `p ≡ 0`", which is false for degree ≥ 4.
+- **The repair (algorithm changed, not patched).** The odd part is **removed
+  entirely**. Test points now come from the roots of the polynomial *itself*:
+  isolate all real roots in the region, and evaluate at the endpoints plus one
+  rational point in every gap between consecutive roots (and two more per gap for
+  safety). A root is a test point with value `0`, so touching cases pass, and a
+  gap always carries a point where the sign is decided. `_odd_part` and
+  `_count_roots_open` are deleted from `shell_check.py`.
+- **Regressions kept permanently** (`Computation/checker_adversarial.py`, now 24
+  cases): the three new witnesses, a variant on `[2,3]` where the square is
+  positive, and `−[u(u−1)(u−2)]² ≤ 0` on `[0,3]` which must PASS.
+- **Re-verified after the second repair.** All six witnesses (three old, three new)
+  rejected; all valid/touching cases accepted; suite 24/24; the K33b and K33
+  certificates still `ACCEPT` with unchanged ratios; `shell_fixture` unchanged.
+- **Status.** `REFUTED` (the `C049` algorithm) → repaired. **Generic checker
+  acceptance stays suspended** until X audits this revision; X's own `exact_sign`
+  repair (`cb3d76f`) passed the irrational-root witness and six named controls
+  locally, which is finite test evidence, not blanket soundness.

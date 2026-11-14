@@ -153,6 +153,33 @@ note    = this is a TOOL, not a certificate: it decides feasibility for one
           test proposed transfers and to find the obstruction K15-C051 looks for.
 ```
 
+
+### M-LEAN-003 — narrow-import build of `CubeDiff.lean` (supersedes `M-LEAN-002`)
+
+```text
+request_id = M-LEAN-003
+status = REQUESTED
+owner = M; executed by Astra locally
+reviewer = X
+claim_id = K15-C035 (arithmetic step), K15-C040
+branch = kepler15/main
+input_files = KeplerConjecture/Lean/Kepler15/CubeDiff.lean
+command = lake env lean KeplerConjecture/Lean/Kepler15/CubeDiff.lean
+          then append `#print axioms Kepler15.cube_diff_le` and re-run
+dependencies = Lean v4.35.0, Mathlib v4.35.0
+resources = 1 CPU, 1 GB, 300 s
+note = imports are limited to Mathlib.Tactic.Ring, Linarith, Positivity. If the
+       cap is still hit, report the peak RSS and stop: the statement is
+       PROPOSED and no claim depends on compiling it today.
+```
+
+`M-LEAN-002` (broad `import Mathlib`) is closed as **FAILED on resources**: 60 s
+cap (~715 MB) for the broad import, and the `VolumeOfBalls + Mathlib.Tactic`
+variant hit the monitored 1 GiB cap after 32.6 s with no theorem checked.
+`Volume.lean` therefore now carries the ball-volume statement as `Prop`-valued
+definitions (`BallVolumeClaim`, `BallVolumeScalingClaim`) with **no** `sorry` and
+**no** claimed proof.
+
 ### M-QUEUE-001 — claims that must be re-anchored when the review lands (M)
 
 Not a computation: `Main/HOURLY_REVIEW_2026-11-14_0008.md` and

@@ -79,12 +79,14 @@ def cell_volume(points, i, box=6.0):
     return ConvexHull(hi.intersections).volume
 
 
-def completion(centre, radius, extent=6, spacing=2.2):
+def completion(centre, radius, core=None, extent=6, spacing=2.2):
     """2-separated lattice points at distance >= radius from the centre.
 
-    The lattice EXTENT is fixed (so the sets are nested as `radius` decreases);
-    only the inner cutoff varies.  Spacing 2.2 >= 2 keeps the completion itself
-    2-separated, and radius >= 2.5188 keeps it from cutting the centre's cell.
+    Two conditions are ESSENTIAL and were missing from the first version:
+      * distance >= 2 from every CORE point (otherwise the "completion" overlaps
+        the cluster and the point set is not a packing at all), and
+      * distance >= 2.5188 from the centre, so the centre's cell is not cut.
+    The lattice EXTENT is fixed so the sets are nested as `radius` decreases.
     """
     out = []
     steps = np.arange(-extent, extent + 1) * spacing
@@ -92,8 +94,11 @@ def completion(centre, radius, extent=6, spacing=2.2):
         for y in steps:
             for z in steps:
                 q = np.array([x, y, z]) + centre
-                if np.linalg.norm(q - centre) >= radius:
-                    out.append(q)
+                if np.linalg.norm(q - centre) < max(radius, 2.5188):
+                    continue
+                if core is not None and len(core) and np.min(np.linalg.norm(core - q, axis=1)) < 2 - 1e-9:
+                    continue
+                out.append(q)
     return np.array(out) if out else np.zeros((0, 3))
 
 
@@ -111,12 +116,18 @@ def main():
     # as rad DECREASES.  Iterating 5.0 -> 3.5 -> 2.6 adds points at each step,
     # which is what makes the comparison a test of monotonicity.
     for rad in (5.0, 3.5, 2.7):
-        ext = completion(centre, rad)
+        ext = completion(centre, rad, core=core)
         pts = np.vstack([core, ext]) if len(ext) else core
+        # VALIDATION (required before any claim about this fixture): the whole
+        # point set must be a genuine packing, so the minimum over ALL pairs --
+        # core-core, core-background AND background-background -- must be >= 2.
+        from scipy.spatial.distance import pdist
+        dmin = float(pdist(pts).min()) if len(pts) > 1 else 0.0
+        assert dmin >= 2 - 1e-9, "completion is not a packing: min separation %.6f" % dmin
         vols = [cell_volume(pts, i) for i in range(13)]
         s = sum(v - SQ32 for v in vols)
-        print("completion radius %.1f (%4d extra points): centre %.6f, sum_K(vol - sqrt32) = %+.6f"
-              % (rad, len(ext), vols[0], s))
+        print("completion radius %.1f (%4d extra points): min sep %.4f, centre %.6f, sum_K(vol - sqrt32) = %+.6f"
+              % (rad, len(ext), dmin, vols[0], s))
     print("\nMonotonicity: every entry above is an UPPER bound for the packing value, so a")
     print("positive sum at a finite stage cannot certify the inequality (K15-C036).")
     return 0

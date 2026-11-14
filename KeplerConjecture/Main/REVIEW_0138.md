@@ -19,10 +19,16 @@ not among the hypotheses — and is not true for the `A` Hales actually uses
 
 **Minimal illustration of the logical gap** (arithmetic, not a geometric packing
 counterexample): let `Λ = 2ℤ³` and let `S ⊂ Λ` be a sublattice of density `δ`.
-Set `A = θ` off `S` and `A = −θ/δ` on `S`. Then `Σ_{Λ∩B(x,r)} A = o(r³)` while
-`A ≥ θ` on a set of full density, so no bound of the form `#D_θ ≤ C₁r²/θ` can
-follow. Whether such an `A` is *realizable* by a packing is a separate question;
-it does not need to be, because the step being refuted is logical, not geometric.
+Set `A = θ` off `S` and `A = −θ(1−δ)/δ` on `S`. Then the mean of `A` is exactly
+zero — `(1−δ)θ + δ·(−θ(1−δ)/δ) = 0` — while `A ≥ θ` on the full-density set
+`Λ ∖ S`, so no bound of the form `#D_θ ≤ C₁r²/θ` can follow.
+*(Correction, review 0138-local: the first version of this paragraph wrote
+`A = −θ/δ` on `S`, whose mean is `−δθ`, not zero. The coefficient
+`−θ(1−δ)/δ` is the one that gives zero mean; both versions satisfy the
+one-sided negligibility bound — a negative mean is still `≤ C₁r²` — so the
+illustration survives, but the stated arithmetic did not.)*
+Whether such an `A` is *realizable* by a packing is a separate question; it does
+not need to be, because the step being refuted is logical, not geometric.
 
 ## 2. Withdrawn text (kept as rejected evidence)
 
@@ -133,3 +139,23 @@ fail. E's `interval_selfaudit.py` is the model to copy — it checks soundness
 `Computation/run_all_checks.py` (`K15-C053`) is Main's version of the same idea,
 and `predicate_fuzz.py` / `predicate_crosscheck.py` are the independent supports
 for the repair. Any future checker in this project should ship with all three.
+
+## 8. Third finding, received near the end of the block: the first repair was wrong too
+
+`K15-C049`'s algorithm (odd part plus three probes) accepted three *new*
+impossible inputs, all perfect squares — `[u(u−1/2)(u−1)]² ≤ 0` on `[0,1]` (value
+`+9/4096` at `1/4`), `−[u(u−1)(u−1/2)(u−2)]² ≥ 0` (value `−441/65536`) and
+`[u(u−1)(u−2)]² ≤ 0` on `[0,∞)` (value `+9/64`). The odd part of a square is a
+constant, so the count was zero and the three probes landed on roots.
+
+The algorithm is now changed rather than patched: test points come from the
+polynomial's own roots, one per constant-sign gap, with the odd part removed from
+the code. `K15-C058` records this; the suite is at 24 cases and includes all six
+witnesses. **Every general soundness claim about the checker remains suspended**,
+and the block's own record now contains three of them (C029, C049, C058) — the
+reason the project's summary asks for X's audit before any of it is relied upon.
+
+Two further corrections from the same evidence round: the signed toy example in
+§1 had the wrong coefficient for a zero mean (`−θ(1−δ)/δ`, not `−θ/δ`; corrected
+in place), and the cluster fixture's completions were **not packings** until a
+cross-distance filter against the core was added (`K15-C039`, updated).
