@@ -3164,3 +3164,119 @@ implication disqualifies the route. Whether the route is *cheaper* is an open co
 
 Corrected in `ACCEPTED.md` §"One-way implications" (with a standing caution), `C087` (rejected
 phrasing preserved), `COMPLEXITY.md` §3–§4. *Status.* `CORRECTION`; no mathematics changes.
+
+### K15-C106 — the global bridge for the pair bound, and the `1.92%` gap (`PROVED`)
+
+`Main/GEOMETRIC_LEMMA_0438.md` §1–§3.
+
+**The local statement.** E's pair conjecture `(P′)`/`K15-E074`: for every contact pair
+(`|v−w| = 2`) of a saturated 2-separated packing, `vol Ω(v) + vol Ω(w) ≥ 2√32 =
+11.3137084990`. Strictly stronger than the pointwise bound, since Hales–McLaughlin gives only
+`2V_dod = 11.100582057`, and E's `K15-E075` shows `2V_dod` is unattainable for a contact pair.
+**Equality holds on every Barlow packing** — proved here from `K15-C094` (every Barlow cell is
+`√32`), so the equality family is exactly the known extremal one and `2√32` cannot be improved.
+
+**The bridge (new).** E's justification for `(P′)` is "it implies the cut with `1.72%` margin";
+that arithmetic is correct but it is the cut at `U =` the 13-cluster only, not a density bound.
+
+> **Theorem B.** If `Λ` is saturated, satisfies `(P′)`, and carries weights `c_e ≥ 0` on the
+> contact edges with `Σ_{e∋v} c_e = 1` for every `v` outside a set of upper density zero, then
+> `δ(Λ) ≤ π/√18`.
+> **Corollary B1.** If `deg(v) = 12` for every `v`, `c_e = 1/12` works, so `(P′)` alone gives
+> `δ ≤ π/√18`. This covers every Barlow packing.
+
+*Proof sketch* (full in the file): sum `vol Ω(v) = Σ_{e∋v}c_e vol Ω(v)` over a ball, discard
+the crossing edges (`O(R²)` of them by 2-separation, `c_e ≤ 1`), use `(P′)` on the internal
+edges, and `Σ_{v∈B}vol Ω(v) = (4π/3)R³ + O(R²)` from saturation; divide by `(4π/3)R³`.
+
+**The quantitative point (`K15-C107`).** The bridge is monotone: any pair constant `K` gives
+`δ ≤ 8π/(3K)`. Two evaluations:
+
+| `K` | `8π/(3K)` |
+| --- | --- |
+| `2V_dod = 11.100582057` (ML twice) | `0.754697399337` — exactly the dodecahedral bound |
+| `2√32 = 11.313708499` (`(P′)`) | `0.740480489693` — exactly `π/√18` |
+
+So the route interpolates from the published bound to the truth with **no sharpness barrier**,
+and since `√32/V_dod = 1.01919957`,
+
+> **the entire remaining gap is a `1.92%` increase in one two-cell constant**, and any
+> `K > 2V_dod` already beats `0.754697399337`.
+
+That is the structural difference from the routes already closed in this project: pointwise
+cell bounds are dead by sharpness (`V_dod` is attained), and the two-point LP by Li's
+obstruction, but the pair functional has room.
+
+*Status.* `PROVED` (bridge). `(P′)` itself is E's and **unproved**. Reviewer X.
+
+### K15-C107 — the target restated weakly: `(L_δ)` suffices (`PROVED` reduction)
+
+Because of the monotonicity in `C106`, the sharp constant is not needed. Let
+
+> **(L_δ)** there is `δ > 0` with `vol Ω(v) + vol Ω(w) ≥ 2V_dod + δ` for every contact pair.
+
+Then `(L_δ)` for *any* `δ > 0` gives `δ(Λ) ≤ 8π/(3(2V_dod+δ)) < 0.754697399337` via Theorem B,
+with the improvement proportional to `δ`. `(L_δ)` is strictly weaker than `(P′)`. Recorded so
+that the workers are asked for the monotone form, not only the sharp one: the sharp `2√32` is a
+*bonus*, not a requirement.
+
+*Status.* `PROVED` (reduction). Reviewer X.
+
+### K15-C108 — `(L_δ)` is true (compactness), and what it buys (`PROVED`, non-explicit; universal lower-volume claim PENDING review)
+
+`Main/GEOMETRIC_LEMMA_0438.md` §4.
+
+> **Theorem D.** `σ₀ := inf{vol Ω(v) + vol Ω(w) : 2-separated configurations with a contact
+> pair v,w}` satisfies `σ₀ > 2V_dod`.
+
+*Proof.* (1) `σ₀ ≥ 2V_dod` by Hales–McLaughlin. (2) **The infimum is attained**: a cell of
+volume `≤ C` contains the unit inball and is convex, so a point at distance `r` in it carries a
+cone of volume `≥ πr/3`, whence `r ≤ 3C/π`; so for configurations with `Φ ≤ 2V_dod+1` both cells
+are determined by the centres in a bounded region, where 2-separated configurations form a
+compact set and `Φ` is continuous. (3) At a minimiser with `σ₀ = 2V_dod`, both cells have
+volume exactly `V_dod`, so by the **equality case of Hales–McLaughlin** both are regular
+dodecahedra of inradius 1. (4) But `v` and `w` are at distance 2, so each is a contact of the
+other, and **two adjacent centres cannot both be dodecahedral** — verified independently by
+Main (`Computation/two_dodecahedra.py`): with both icosahedral twelve-point sets share-axis, the
+two eleven-point sets have minimum mutual distance `1.12555484451` for every relative twist
+(`t = 0, 18°, 36°, 54°` give `1.1256, 0.5982, 0.2111, 0.5982`), against a required `2`. Hence
+`σ₀ ≠ 2V_dod`. ∎
+
+`δ₀ := σ₀ − 2V_dod > 0` is **not explicit** — step 2 is compactness. Two inputs are used and
+neither is re-proved: ML's equality case (standard), and the two-dodecahedra impossibility
+(now Main's own computation, `1.1255548 < 2`).
+
+> **Theorem C.** With `M` a **maximal** contact matching, `P_B` its edges in `B(0,R)`,
+> `ρ := lim P_B/|B| ≤ 1/2`:
+> `δ(Λ) ≤ (4π/3)/(V_dod + δ₀ρ) < 0.754697399337` whenever `ρ > 0`.
+
+**Consequences.** (i) Any saturated packing with a positive density of contact pairs has
+density **strictly** below the dodecahedral bound — unconditionally, since a maximal matching
+always exists and `δ₀ > 0` is proved. (ii) The equality case of the dodecahedral density bound
+is **empty** (equality would need every cell dodecahedral, hence every centre with twelve
+contacts, hence `ρ > 0`). (iii) With `ρ = 1/2` and the sharp `δ₀ = 2√32 − 2V_dod`:
+`V_dod + δ₀/2 = √32` and `c ≤ 1/√32`, the truth. **(iv) With `δ₀` non-explicit there is no
+number**: this is a strictness statement, not a bound, and `RESULTS.md` does not move.
+
+**Main's own error, recorded.** The first draft wrote `ρ = 1` in (iii), which is impossible for
+a matching (`P_B/|B| ≤ 1/2`) and made the formula appear to return `0.7268 < π/√18` — a bound
+below the truth, hence obviously wrong. Caught by `constants_check.py`. Corrected.
+
+**Discrepancy with E, recorded not resolved.** E's `K15-E075` quotes `1.056487696`; Main gets
+`1.12555484451` for the same stated configuration. Both are `< 2`, so the impossibility
+conclusion agrees and Theorem D is unaffected; Main cites **its own** value. E's number was not
+reverse-engineered. Note also that Main's own first version removed the wrong pole for `w` (the
+shared contact is at `−2` in `w`'s frame, not `+2`) — the same bug E records — which is why the
+check now states the pole convention explicitly.
+
+**Exactness caveat (supervisor, `K15-REVIEW-0438-M-LOCAL`).** E's `barlow_contact_cell.py`
+admits vertices via `sp.N(...,30) > 1e-25` and compares radii numerically; it is **not** to be
+advertised as fully exact. Main's `contact_cell_exact.py` is a separate implementation with
+exact field arithmetic and interval sign decisions (`C104`), and that is what `C094` rests on.
+`two_dodecahedra.py` is high-precision (40 digits) but not certified; the conclusion
+(`1.1256 < 2`) has a `44%` margin and is insensitive to convention, so it is recorded as
+`TESTED_FINITE` rather than `PROVED`.
+
+*Status.* Theorem D `PROVED` modulo the two named inputs; **universal lower-volume claims are
+`PENDING_REVIEW`** per the supervisor's standing instruction, and `(L)`/`σ₀` must not be quoted
+as established constants. Reviewer X.

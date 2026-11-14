@@ -126,6 +126,17 @@ chk("sqrt32 / V_dod = the whole-gap factor", sqrt(32) / vdod, 1.019199573577, to
 chk("density at K = 2V_dod*(1.01)", dens_from_K(2 * vdod * mpf('1.01')), 0.7472251479, tol=1e-9)
 chk("density at K = 2V_dod*(1.0192)", dens_from_K(2 * vdod * mpf('1.0192')), 0.7404801799, tol=1e-8)
 
+# --- K15-C108: Theorem D / Theorem C bookkeeping -------------------------------
+chk("witness sigma_0 (icosahedral pair)", vdod + mpf('5.897967122'), 11.4482581505, tol=1e-10)
+chk("delta_0 bound from the witness", vdod + mpf('5.897967122') - 2 * vdod, 0.3476760935, tol=1e-9)
+chk("delta_0 as % of 2V_dod", 100 * (mpf('5.897967122') - vdod) / (2 * vdod), 3.132, tol=1e-2)
+chk("delta_0 if the sharp (L) held", 2 * sqrt(32) - 2 * vdod, 0.213126442, tol=1e-8)
+chk("delta_0_sharp as % of 2V_dod", 100 * (2 * sqrt(32) - 2 * vdod) / (2 * vdod), 1.9199, tol=1e-3)
+chk("Theorem C at rho=1/2 (perfect matching), sharp delta_0 -> pi/sqrt18",
+    (4 * pi / 3) / (vdod + (2 * sqrt(32) - 2 * vdod) / 2), 0.740480489693, tol=1e-12)
+chk("V_dod + delta_0/2 = sqrt32 exactly", vdod + (2 * sqrt(32) - 2 * vdod) / 2, sqrt(32), tol=1e-18)
+chk("Theorem C at rho=1/4, sharp delta_0", (4 * pi / 3) / (vdod + (2 * sqrt(32) - 2 * vdod) / 4), 0.747521353722, tol=1e-11)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)

@@ -251,3 +251,156 @@ problem: "nothing in this block supplies one"). The matching hypothesis `(M)`, o
 density-zero-unmatched repair. Novelty.
 
 **Independent reviewer:** X. **Not a density result yet, and not to be quoted as one.**
+
+---
+
+# 4. `(L_δ)` is true: a compactness proof, and what it buys
+
+The last section reduced everything to `(L_δ)`: *some* `δ > 0` with
+`vol Ω(v) + vol Ω(w) ≥ 2V_dod + δ` for every contact pair. That looks like a weaker
+conjecture, but it is not a conjecture at all.
+
+> **Theorem D (`K15-C108`).** Let
+> `σ₀ := inf { vol Ω(v) + vol Ω(w) : 2-separated configurations in R³ containing a pair
+> v, w at distance exactly 2 }`, the cells taken in the full configuration. Then
+> `σ₀ > 2V_dod`.
+
+*Proof.* Four steps.
+
+**(1) `σ₀ ≥ 2V_dod`.** Hales–McLaughlin gives `vol Ω ≥ V_dod` for each cell.
+
+**(2) The infimum is attained.** Let `Φ = vol Ω(v) + vol Ω(w)`. Restrict to configurations
+with `Φ ≤ 2V_dod + 1 =: C`. Each cell contains the ball of radius 1 (every bisector is at
+distance `≥ 1` because every neighbour is at distance `≥ 2`), and it is convex; so for any
+`x` in the cell at distance `r` from the centre, the cone from `x` over a unit disc
+perpendicular to `x` lies inside the cell and has volume `πr/3`. Hence `r ≤ 3C/π =: R_max`
+and both cells lie in `B(·, R_max)`. A centre whose distance from `v` exceeds `2R_max` has its
+bisector outside `B(v,R_max) ⊇ Ω(v)` and cannot cut `Ω(v)`; so **`Φ` is determined by the
+centres within `2R_max` of `v` or `w`.** That region is bounded, the centres in it are
+2-separated so there are at most `N_max = vol(B(0,2R_max))/ (4π/3)` of them, and the set of
+such local configurations — after fixing `v = 0`, `w = (2,0,0)`, which uses the translation
+and rotation freedom — is closed and bounded, hence compact. `Φ` depends continuously on the
+local configuration (a cell is the intersection of the half-spaces of the centres within
+`2R_max`, and no other centre contributes). So `Φ` attains its minimum on the admissible set
+and `σ₀ = min Φ ≥ 2V_dod`.
+
+**(3) The minimiser is two dodecahedra.** Suppose `σ₀ = 2V_dod`. Then at a minimiser both
+`vol Ω(v)` and `vol Ω(w)` equal `V_dod` (each is `≥ V_dod`). By the **equality case of
+Hales–McLaughlin**, `vol Ω = V_dod` forces `Ω` to be the regular dodecahedron of inradius 1,
+i.e. the centre has twelve neighbours at distance exactly 2 in the icosahedral directions and
+no other centre cuts the cell.
+
+**(4) Contradiction.** `v` and `w` are at distance 2, so each is among the other's twelve
+contacts, and both cells would be dodecahedral. **Two adjacent centres cannot both be
+dodecahedral**, and Main verified this independently (`Computation/two_dodecahedra.py`) rather
+than citing E: with both twelve-point sets icosahedral about the shared `v`–`w` axis, the two
+eleven-point sets (partner pole removed — the shared contact is at `+2` in `v`'s frame and `−2`
+in `w`'s) have minimum mutual distance
+
+```
+max over the relative twist  of  min cross-distance  =  1.12555484451 ,
+t = 0°, 18°, 36°, 54°:   1.1256,  0.5982,  0.2111,  0.5982     (required: 2)
+```
+
+so for **every** twist some pair is closer than `2`, with a shortfall of `0.874`. Hence
+`σ₀ ≠ 2V_dod`, and with (1), `σ₀ > 2V_dod`. ∎
+
+Three things are used and none is re-proved: the **equality case** of Hales–McLaughlin
+(standard, from their proof); that a dodecahedral cell forces twelve tangent neighbours in the
+icosahedral arrangement (the same equality case); and the two-dodecahedra impossibility (Main's
+own computation, `1.1255548 < 2`, a `44%` shortfall so convention-insensitive).
+
+**Discrepancy with E, recorded and not resolved.** E's `K15-E075` quotes `1.056487696`; Main
+gets `1.12555484451` for the same stated configuration. Both are `< 2` and the conclusion is
+identical, so Theorem D is unaffected; Main cites its own value and does not use E's. Main's
+first version also removed the wrong pole for `w`, which is the same bug E records having made,
+so the convention is now stated explicitly in the script.
+
+**A caveat on exactness, per the supervisor.** E's `barlow_contact_cell.py` admits vertices by
+`sp.N(...,30) > 1e-25` and compares radii numerically, so **it is not fully exact and is not
+advertised as such here**; the exactness `C094` now rests on is Main's own
+`contact_cell_exact.py` (`C104`), which uses exact field arithmetic and interval sign
+decisions. `two_dodecahedra.py` is 40-digit numerics, not certified, and is recorded
+`TESTED_FINITE`.
+
+## 4.1 What Theorem D buys, and what it does not
+
+`δ₀ := σ₀ − 2V_dod > 0` is the explicit number `(L_δ)` needs. It is **not** explicit — step 2
+is a compactness argument and gives no value. What it does give is a genuine *qualitative*
+improvement over the published dodecahedral bound, via a weaker bridge that needs no matching.
+
+> **Theorem C (`K15-C108`).** Let `Λ` be saturated, let `M` be a **maximal** matching of its
+> contact graph with `P_B` edges inside `B(0,R)`, and suppose `P_B/|B| → ρ`. Note
+> **`0 ≤ ρ ≤ 1/2`**, because each edge of `M` uses two vertices of `B`. Then
+>
+> ```
+> δ(Λ)  ≤  (4π/3) / ( V_dod + δ₀·ρ )  <  0.754697399337     whenever ρ > 0.
+> ```
+
+*Proof.* Every vertex is either matched or (by maximality) has all its neighbours matched.
+Summing cell volumes over `B = Λ ∩ B(0,R)`,
+
+```
+Σ_{v∈B} vol Ω(v) ≥ Σ_{pairs ⊆ B} (vol Ω(v) + vol Ω(w)) + Σ_{unmatched ∈ B} vol Ω(v)
+                 ≥ (2V_dod + δ₀) P_B + V_dod (|B| − 2P_B)
+                 = V_dod |B| + δ₀ P_B .
+```
+
+Now `Σ_{v∈B} vol Ω(v) = (4π/3)R³ + O(R²)` by saturation (Theorem B step (i)), and
+`P_B = (ρ + o(1))|B| = (ρ + o(1)) c(Λ)(4π/3)R³`. Dividing by `(4π/3)R³` and letting `R → ∞`,
+
+```
+1  ≥  V_dod c + δ₀ ρ c  =  c (V_dod + δ₀ ρ) ,      so  c ≤ 1/(V_dod + δ₀ρ) . ∎
+```
+
+Four consequences worth stating plainly.
+
+1. **The pair route beats the dodecahedral bound in principle, unconditionally.** No fractional
+   matching, no `(M)`, no compactness theorem: a *maximal* matching always exists, and `δ₀ > 0`
+   is proved. For any saturated packing with a positive density of contact pairs,
+   `δ < 0.754697399337` — strictly.
+2. **The equality case of the dodecahedral bound is empty.** Equality in
+   `δ ≤ (4π/3)/V_dod` would need *every* cell to be a dodecahedron, hence (step 3) every centre
+   to have twelve contacts, hence a positive density of contact pairs, which Theorem C forbids.
+   So the dodecahedral density bound is **never attained** — a clean corollary that does not
+   need the matching machinery at all.
+3. **The gain is proportional to the matching density `ρ ≤ 1/2`**, and the maximum
+   `ρ = 1/2` (a perfect matching) together with the sharp `δ₀ = 2√32 − 2V_dod` gives
+   `V_dod + δ₀/2 = √32`, hence `c ≤ 1/√32` — the truth. (Main's first draft of this display
+   wrote `ρ = 1`, which is impossible for a matching and made the formula appear to beat the
+   truth; corrected here. Any reader re-deriving it should keep `P_B/|B| ≤ 1/2` in view.) So
+   the whole remaining content of the pair route is concentrated in two numbers: `δ₀`
+   (geometric, E's payer problem) and `ρ` (combinatorial).
+4. **What it does not buy: a number.** With `δ₀` non-explicit the improvement has no
+   quantitative value, so nothing here may be quoted as a bound. It is a strictness statement,
+   not a constant.
+
+## 4.2 The two things that would make it a bound
+
+- **An explicit `δ₀`.** This is precisely E's "payer" problem in a different guise. Careful
+  bookkeeping: `δ₀ = σ₀ − 2V_dod` is measured from the **trivial** pair bound, not from the
+  sharp one, so the witness gives `δ₀ ≤ 11.448258 − 11.100582 = 0.347676`
+  (`3.13%` of `2V_dod`), while the *sharp* conjecture `(L)` would put
+  `δ₀ = 2√32 − 2V_dod = 0.213126` (`1.92%`). The icosahedral witness's margin to the **sharp**
+  bound is the separate number `0.134549` (`1.19%` of `2√32`) quoted in §5. Any explicit
+  `δ₀ > 0` — even far below `0.213126` — combines with Theorem C to give a number, which is
+  why `(L_δ)` is the right target and `(L)` is a bonus.
+- **`ρ > 0` for every saturated packing.** This is the *combinatorial* half and it can fail:
+  a saturated packing in which no two centres are at distance exactly `2` has `ρ = 0` and
+  Theorem C says nothing. Whether such packings can be dense is a separate question — and by
+  Hales' theorem a densest packing has plenty of contacts, so this is a statement about
+  *sub*-densest packings, which is where a density bound is not needed. **This is the cleanest
+  division of labour this project has produced: the pair route needs geometry for `δ₀` and
+  combinatorics for `ρ`, and neither is a sharpness barrier.**
+
+## 4.3 Status
+
+| item | status |
+| --- | --- |
+| `(L)` sharp pair bound `≥ 2√32` | `PROPOSED`, E's `K15-E074`; equality proved on all Barlow packings (`C106`) |
+| `(L_δ)` weak pair bound, some `δ > 0` | **`PROVED`** (Theorem D, `C108`) — non-explicit |
+| Theorem B / B1: bridge via fractional matching / degree 12 | **`PROVED`** (`C106`) |
+| Theorem C: bridge via a maximal matching + `δ₀` | **`PROVED`** (`C108`) |
+| explicit value of `δ₀` | **open** — E's payer problem; `δ₀ ≤ 0.1345496515` from the icosahedral witness |
+| `ρ > 0` for every saturated packing | **open**, and can fail; not needed for dense packings |
+| improvement on `0.754697399337` as a *number* | **not achieved** |
