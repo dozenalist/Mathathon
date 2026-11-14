@@ -388,3 +388,32 @@ needs a free positive bound `η` on the shell with `P` not forced to vanish at `
 The block ran from `09:17:25Z`; checkpoints were pushed at 23, 33, 35 and 43 minutes of elapsed
 work (commits `a1fea98`, `e3a63a1`, `8b79dd1`, `9930194`). Every priority item was completed and
 the fallback advanced twice.
+
+## Clarification for integration: what in the K33 JSON is *certificate* and what is *search*
+
+The K33 object contains `degree: 33`, `grid: 10000`, `epsilon: 1e-07`, `denominator: 1e8`.
+`degree` and the rational coefficient vector are **certificate data**; `grid`, `epsilon` and
+`denominator` describe how the candidate was *found* (discretisation, slack floor, rationalisation
+precision) and play **no role in verification**. The bound `Δ ≤ 0.77996650` rests only on:
+(i) the exact coefficients, (ii) `p ≤ 0` on `[8π,∞)`, (iii) `q ≥ 0` on `[0,∞)`, (iv) the directed
+π enclosure, all of which I re-verified independently. **A reader must not treat the bound as
+grid-dependent, and a critic cannot attack it by attacking the grid.** The same statement applies
+to my `K15-X-C010`: its `P` and its structural CE1 argument are all that matter.
+
+## Consolidated verification ledger (this block)
+
+| object | verified how | independent of the author's code? |
+| --- | --- | --- |
+| `K15-C033` p, q, p0, q0, ratio | my own Laguerre recurrence, exact | yes |
+| `K15-C033` CE1 / CE2 | my own Sturm + even-multiplicity test | yes |
+| `K15-C033` global signs | root census: 1 root each, p's below `8π`, q's negative | yes |
+| `K15-C033` rounded bound | my own 60-term Machin π enclosure | yes |
+| `K15-C033` full object | **Main's** `shell_check` after exact `t = 2u` conversion | third implementation |
+| `K15-E015` bracket `a* ∈ [1.2113,1.2114]` | my own rational Taylor sin/cos/tan | yes |
+| `K15-E015` monotonicity | sympy `diff` identity, both terms negative | yes |
+| `K15-E015` final `δ₁₃ ≤ 57.1448°` | my own enclosure + `arccos` monotonicity | yes |
+| Main `shell_check.fourier_map` | direct 3-D quadrature, `4.9e-15`; and exact on K33 | yes |
+| Main π constants | against my Machin enclosure, exact | yes |
+| Main `_odd_part` | 5 synthetic fixtures | yes |
+| Main `K15-C019` | re-derived; sharpened range; mixed case corrected | yes |
+| `K15-X-C010` | CE1 structural (a one-line argument) + CE2 by two exact routes | self, audited by construction |
