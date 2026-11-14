@@ -372,3 +372,68 @@ the payers that is valid for *every* completion, which is precisely the missing 
 the inequality cannot be tested by constructing completions. This closes the empirical route to
 the question, and it is the honest end state: the two-shell and transfer formulations are now
 exact and cleanly stated, and there is no numerical shortcut to settling them.
+
+## 6. The precise open problem, and why it is not a computational one
+
+The retraction in Section 5 leaves one question that has to be settled before `(T')` or `(H_R)`
+can be attacked intelligently:
+
+> **(Q)** Does there exist a **saturated** 2-separated set containing a centre with
+> `vol Omega(v) < sqrt(32)`?
+
+Everything in this block assumed yes, and built the whole compensation apparatus on the
+icosahedral motif, which is the only defect we can actually exhibit. But the motif is not
+saturated, and Section 5 shows that no completion of it that we can construct is either.
+
+**Why (Q) matters.** If the answer is *no* — if every cell of every saturated packing already
+has volume `>= sqrt32` — then Hales's correction is unnecessary: the per-cell inequality
+`vol Omega(v) >= sqrt32` holds outright, Lemma 3.3 applies with `A = 0` and the singleton
+partition, and the density bound follows with no transfer, no clusters and no blocks. So **(Q) =
+no collapses the entire geometric route to the per-cell inequality.**
+
+**But (Q) is at least as strong as Kepler.** If every cell of every saturated packing has volume
+`>= sqrt32`, then summing gives density `<= (4pi/3)/sqrt32 = pi/sqrt18` immediately. So a proof
+of `(Q) = no` would be a proof of the theorem, and any proof of the theorem does **not** give
+`(Q) = no` (Kepler does not force every cell to be large). (Q) is therefore strictly stronger
+than the target and must not be adopted as a strategy.
+
+**What is known.** The dodecahedral theorem gives `vol Omega(v) >= V_dodeca = 5.550291 <
+5.656854`, so known theory *permits* defects and does not rule them out. The gap between
+`V_dodeca` and `sqrt32` is `0.106563`, which is exactly the deficit of the icosahedral motif —
+i.e. the motif realises the smallest cell the dodecahedral theorem allows. So the question is
+whether the extremal cell of the dodecahedral theorem can be embedded in a *saturated* packing at
+all.
+
+**Why it is not computational.** Deciding (Q) requires an infinite condition (saturation is a
+statement about all of `R^3`), and Section 5 shows that finite completions cannot even make the
+relevant cell volumes meaningful: the cells we would measure are truncated or unsaturated, and
+their computed volumes are upper bounds that the true packing may never attain. So no amount of
+search settles (Q); it needs either an explicit periodic saturated construction with a certified
+Voronoi cell (finite data, but the certification must cover the infinite periodic repetition), or
+a proof that none exists.
+
+**A concrete first attempt at a positive answer**, which I did not complete: a Frank–Kasper
+phase. Those are the standard periodic sphere packings with icosahedral coordination, and the
+`A15` structure in particular has 12- and 14-coordinated sites. If any of them has a Voronoi cell
+of volume below `sqrt32`, that settles (Q) = yes with fully explicit data and makes `(T')`
+testable. This is a bounded, checkable computation (one periodic cell, exact coordinates,
+certified Voronoi decomposition) and it is the natural next step; I flag it as the highest-value
+follow-up rather than claim it.
+
+## 7. Where the geometric route stands after this block
+
+1. `(T'-R2')` and `(H_R)` are now stated exactly, with forced thresholds (`4.18`, `8.36`), the
+   boundary cost (`diam C + 8.36`) and a proved equivalence between the block and transfer forms.
+2. The transfer form is the better interface: it needs no partition, and it proves negligibility
+   by a two-line telescoping argument with an explicit `O(r^2)` boundary. Its theorem
+   (`K15-E061`) is independent of any numerical input.
+3. The empirical support I previously offered is withdrawn (Section 5). There is currently **no
+   evidence either way** on `(H_R)`, and the reason is structural: the configuration that would
+   test it cannot be built.
+4. `(Q)` is the sharp question to settle next, and it is not a search.
+5. `K15-E049` is narrowed to the estimator family `F`; multi-radius counts, convexity-based
+   per-cell bounds and collective arguments are all still open.
+
+Nothing here closes the geometric route, and nothing here should be read as showing the route is
+promising. The deliverable of this block is an auditable target, two runnable evaluators, and one
+retraction.
