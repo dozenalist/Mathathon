@@ -2524,3 +2524,27 @@ needs five of them. ∎ (Weak but real.)
 
 So the closed-component question stays open, with one proved constraint and a documented
 set of failures. Reviewer X.
+
+### K15-C093 — finite-to-infinite cut/flow theorem with a free boundary (`PROVED`)
+
+`Main/CUT_FLOW_THEOREM.md` proves, in the convention actually used (`div φ ≥ b`,
+signed `b`, antisymmetric `φ`, uniform capacity):
+
+- **Theorem 1 (finite, free boundary).** With demands on `F ⊆ V` only, a transfer
+  exists **iff** `Σ_U b ≤ cap(U)` for every `U ⊆ F`. (The free boundary is what makes
+  the reduction to Gale–Hoffman go through; the induced-subgraph formulation would be
+  *stronger* than the hypothesis and hence unusable.)
+- **Theorem 2 (infinite).** For locally finite `G`, an exhaustion `{F_n}`, the cut
+  condition for all finite `U`, and `sup Φ < ∞`: a transfer exists. Proof by Theorem 1
+  on `F_n ∪ N(F_n)` plus Tychonoff on `∏_e [−Φ₀,Φ₀]` and the finite intersection
+  property. **Tychonoff needs no degree bound; local finiteness is needed only for the
+  divergence to be a finite sum** — a refinement of `K15-C067`'s statement, where
+  compactness and bounded degree were conflated.
+- **Separation of concerns**: Theorems 1–2 are pure graph theory (existence from cuts);
+  the geometry enters only in verifying the cuts — fcc/hcp `b ≡ 0` (`C078`), the
+  witness-specific floor `0.0088803` (`C081r`), the large-ball cut being the density
+  bound (`C087`), and the closed component needing `Σ_C b ≤ 0` (`C080`).
+- **Worked examples**: the dumbbell `b = (1,−1/3,−1/3,−1/3)` has `t* = 1/3` with the
+  exact transfer `φ(a,l_i) = 1/3` and the tight singleton cut as dual witness; the
+  variant `b(a) = 4` is infeasible at `Φ = 1` with the violating cut `{a}`; and a
+  two-hop path `(+1,0,0,−1)` has `t* = 1` with a unique flow and three tight prefix cuts.
