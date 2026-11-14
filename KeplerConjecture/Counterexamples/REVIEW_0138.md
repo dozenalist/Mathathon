@@ -657,3 +657,41 @@ generations of Main's witnesses without modification: it was never probe-based.
 | `K15-X-C014` | factor-rounded SDP running in Astra's private CVXPY environment; **not duplicated here** |
 | transfer constant / cut hypotheses (`C035`/`C044`) | **reconciliation routed through Main**, as instructed |
 | generic checker soundness | **suspended** — no statement about any checker beyond the tested families |
+
+---
+
+## 16. Final artifact state
+
+Three adversarial families now live in `Reviews/x_family_check.py` (they can be pointed at **any**
+checker exposing the `le_on_interval` / `nonneg_on_half_line` / `_ray` interface), with truth from
+the algebraic rules of §12.1 rather than from a case list:
+
+| family | what it targets | X's `exact_sign` |
+| --- | --- | --- |
+| random (roots in `[0,2]`, exponents `{1,2}`, both signs) | generic correctness | **0 / 120** |
+| probe-targeted (roots at the implementation's fixed probes) | the "sign is constant, 3 probes suffice" shortcut | **0** |
+| near-touching (`(u−r)² ∓ ε`, `ε` down to `10⁻⁶⁰`) | midpoint sampling when isolating intervals share an endpoint | **0 / 8** |
+
+Running the same three families against Main's `9461aae` gives `0/180` on the random family and
+**5 false accepts** on the probe-targeted one; against `e76a1570…` the near-touching family produces
+the seventh witness. **The contrast is the whole point:** an audit that only ran the random family
+would have certified a checker that accepts three sign errors, because the failures live in
+structured coincidences that random draws hit with probability `~10⁻⁴`.
+
+Two mistakes of mine, recorded because they shaped the artifact: a `sp.Rational(0,0)` in the family
+definition (fixed), and using a half-line rule where an interval rule was needed (§12.2, 9 false
+rejects). Neither reached a claim.
+
+**Files.** `exact_sign.py` (authority: `sign_on_half_line`, `sign_on_interval`, 21 witness-anchored
+controls); `Reviews/x_family_check.py`; `Reviews/x_selftest_run.py`; `Reviews/x_selftest_exact_sign.py`;
+`Reviews/x_adversarial_shellcheck.py`; certificates `X_C012_certificate.json`, `X_C013_certificate.json`,
+`X_C014_certificate.json`; SDP `x_r03b_sdp.py`, `x_r03b_sos_from_sdp.py`, `x_r03b_rescaled.py`.
+
+**Status of every claim in this review, in one line each.** `K15-C033` accepted on independent
+evidence; Main's checker **suspended** (7 false accepts, 3 revisions); `C035` needs a factor `R`;
+`C044`'s isoperimetry is ball-only and its finite-to-infinite step is missing; `NEXT_PACKAGE`'s
+`V=5.40` is implied by the dodecahedral theorem; `C029r`/`C029c` correct, the withdrawn text's
+item 4 false; `E048` ceiling verified; `E049` original wording refuted; `E040`'s shortfall is
+`17.7233318`; C's near-tangency `3.5e−29` correct and my contradiction of it retracted; `X-C010`,
+`X-C013`, `X-C014` proved at `0.818086808`, `0.794809296`, `0.780718153`; my `0.810774751` retracted
+as invalid.
