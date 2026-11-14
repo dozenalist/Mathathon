@@ -436,6 +436,44 @@ extremal shape. So on present evidence `(S_dod)` is **harder** than the Hales st
 replace, not easier. That is the honest complexity verdict and it is weaker than the one I gave in
 §6, which spoke only of machinery.
 
+## 10b. The radius `R` is a free parameter, and enlarging it only helps — on components
+
+`(H_R)` carries a tunable radius. This matters because it gives the route a parameter to
+optimise, and because the monotonicity in `R` is **not** automatic.
+
+**Why monotonicity can fail.** `N_R(S) \ S` may contain *defective* centres, whose "surplus"
+`c(u) - sqrt32` is **negative**. Enlarging `R` can therefore add negative terms, so
+`(H_R) => (H_{R'})` is false for `R' > R` in general.
+
+**Why it holds for components.** If `C` is a component of the defective graph at threshold
+`tau = 2R`, then by the disjointness lemma (`REVIEW_0138.md` §14) no other defective centre lies
+within `R` of `C`. Hence every `u in N_R(C) \ C` is **non-defective**, so every term on the
+right is `>= 0`, and enlarging `R` only adds non-negative terms:
+
+```
+(H_R) on a component C   ==>   (H_{R'}) on C   for every R' >= R .
+```
+
+So on components the condition is **monotone**, and one may take the largest admissable radius.
+
+**What that buys, and the limit of it.** Enlarging `R` weakens the requirement — the compensation
+is allowed to come from further away — which is progress, since the local version at `R = 2.09` is
+the hardest. But it cannot be pushed far:
+
+- The radius at which the count `12` holds is capped at `2.091145548` (`K15-E012`); beyond that the
+  degree bound must come from `C013(a)`'s volume count, which is much weaker but still finite, so
+  the bounded-degree input to `K15-E071` survives for every fixed `R`.
+- As `R -> infinity` the condition degenerates: summing `c(u) - sqrt32` over a large neighbourhood
+  and comparing it with the deficit becomes, in the large, the statement
+  `vol B(x,r-2) >= sqrt32 |Lambda cap B(x,r)|`, i.e. **the density bound itself**. So the
+  `R -> infinity` limit of `(H_R)` is the theorem, not a lemma about it.
+
+**Conclusion.** There is a genuine trade-off: small `R` is a strong local statement, large `R`
+approaches the theorem. The useful question is therefore not "is `(H_R)` true" but **"is there a
+value of `R` at which `(H_R)` is both true and provable"**. Nothing in this block identifies such
+an `R`; the icosahedral fixture only tells us `R = 2.09` is *admissable* (twelve payers), not that
+it is *sufficient*.
+
 ## 11. Status at the 20-minute checkpoint
 
 Checkpoint `11:36:52Z`. Substantive work completed in this block so far:
