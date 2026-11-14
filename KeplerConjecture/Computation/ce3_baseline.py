@@ -29,7 +29,7 @@ STATUS
 USAGE
   python3 ce3_baseline.py --degree 11 --grid 400 --r0 1.0 --out out/small.json
 """
-import argparse, json, sys, time
+import argparse, json, os, sys, time
 import numpy as np
 from scipy.optimize import linprog
 from scipy.special import eval_genlaguerre
@@ -93,7 +93,7 @@ def main():
     ap.add_argument("--r0", type=float, default=1.0)
     ap.add_argument("--rmax", type=float, default=5.0)
     ap.add_argument("--smax", type=float, default=5.0)
-    ap.add_argument("--out", default="ce3_baseline_out.json")
+    ap.add_argument("--out", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "out", "ce3_baseline_out.json"))
     ap.add_argument("--digits", type=int, default=12, help="rounding digits for stored coefficients")
     a = ap.parse_args()
     if a.degree % 2 == 0:

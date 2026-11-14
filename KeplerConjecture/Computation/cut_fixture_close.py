@@ -116,8 +116,9 @@ def main():
         print("   near-Kepler PERTURBATION of a close packing, so a near-Kepler fixture with")
         print("   UNEQUAL cell volumes cannot be obtained this way at all.")
         print("   Consequence for Main: the cut condition's interesting regime is exactly the")
-        print("   jammed close-packing regime where no perturbation is available, which is another")
-        print("   face of K15-C-CUTEQUIV-001 (the condition is equivalent to Kepler).  A near-Kepler")
+        print("   jammed close-packing regime where no perturbation is available -- one of the")
+        print("   reasons the near-Kepler regime looks locally close-packed.  (The earlier reading")
+        print("   'the cut condition is equivalent to Kepler' is WITHDRAWN.)  A near-Kepler")
         print("   fixture with unequal cells must be a DIFFERENT combinatorial type -- a")
         print("   Frank-Kasper phase such as A15 or the sigma phase -- and constructing one exactly")
         print("   is the next concrete build.")
@@ -129,8 +130,9 @@ def main():
                                 "0.01 -> 1.982, both < 2. No near-Kepler perturbation exists."),
                        implication=("a near-Kepler fixture with unequal cell volumes must be a "
                                     "different combinatorial type (Frank-Kasper: A15, sigma); the "
-                                    "cut condition's interesting regime is the jammed regime, "
-                                    "consistent with K15-C-CUTEQUIV-001"),
+                                    "cut condition's interesting regime is the jammed regime; "
+                                    "that is the difficulty of the CONVERSE direction of "
+                                    "K15-C-CUTIMPLIES-003, not an equivalence with Kepler"),
                        amplitudes_tried=[0.06, 0.01]), open("out/cut_fixture_close.json", "w"), indent=1)
         print("   wrote out/cut_fixture_close.json")
         return

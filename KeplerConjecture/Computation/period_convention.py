@@ -96,6 +96,52 @@ def shift_edges(X, R, period=16.0):
                         used.add(s)
     return E, sorted(used)
 
+def octahedral_generators():
+    """Generators of the symmetry group used for the congruence argument.
+
+    The icosahedron in cyclic coordinates is invariant under
+      * the cyclic permutation of the coordinates,
+      * an even sign flip,
+      * a pi-rotation about a coordinate axis,
+    all of which are SIGNED PERMUTATIONS, hence map the cubic lattice 16 Z^3 to itself.  So the
+    symmetry group of the pair (register, lattice) contains the group they generate -- and that is
+    all the congruence argument needs.  (The full icosahedral group is not crystallographic; it is
+    not needed, because the subgroup above already acts transitively.)
+    """
+    cyc = np.array([[0, 1, 0], [0, 0, 1], [1, 0, 0]], float)
+    sgn = np.diag([-1.0, -1.0, 1.0])
+    pix = np.diag([1.0, -1.0, -1.0])
+    return [("cyclic permutation", cyc), ("even sign flip", sgn), ("pi about x", pix)]
+
+def group_closure(gens, tol=1e-9):
+    """All products of the generators (a finite group), as 3x3 arrays."""
+    I = np.eye(3)
+    seen = {tuple(np.round(I, 9).ravel()): I}
+    frontier = [I]
+    while frontier:
+        M = frontier.pop()
+        for G in gens:
+            N = M @ G
+            k = tuple(np.round(N, 9).ravel())
+            if k not in seen:
+                seen[k] = N
+                frontier.append(N)
+    return list(seen.values())
+
+def orbit_size(M_list, V, tol=1e-9):
+    """Number of distinct vertices reachable from V[0] under the group M_list."""
+    orb = set()
+    for M in M_list:
+        p = V @ M.T
+        for i, v in enumerate(V):
+            if np.linalg.norm(p[0] - v) < tol:
+                orb.add(i)
+    return len(orb)
+
+def preserves_vertex_set(M, V, tol=1e-9):
+    P = V @ M.T
+    return all(any(np.linalg.norm(a - b) < tol for b in V) for a in P)
+
 def cell_volumes_halfspace(X, period=16.0, D=20.0):
     """Torus Voronoi volumes by half-space intersection (float, ~1e-12).
 
@@ -153,7 +199,20 @@ def self_test():
         check("R = %-8s shift graph == build_13 (%d edges), shifts used %s"
               % (R, len(E_shift), used), same and used == [], (len(E_shift), len(E_build)))
 
-    print("Q2 CELLS: the partition identity, and what the symmetric average is")
+    print("Q2a CONGRUENCE PROOF: the octahedral subgroup is transitive on the 12 ring vertices")
+    gens = octahedral_generators()
+    for name, G in gens:
+        check("%s preserves the 12 vertices" % name, preserves_vertex_set(G, X[1:]))
+        check("%s is a signed permutation (so it preserves 16 Z^3)" % name,
+              sorted(np.abs(G).sum(axis=1).tolist()) == [1.0, 1.0, 1.0]
+              and sorted(np.abs(G).sum(axis=0).tolist()) == [1.0, 1.0, 1.0])
+    grp = group_closure([G for _, G in gens])
+    check("the group has at least 12 elements", len(grp) >= 12, len(grp))
+    orb = orbit_size(grp, X[1:])
+    check("the orbit of one ring vertex has size 12 -- so the cells are congruent", orb == 12, orb)
+    print("     (this is the proof obligation; the numerical equality below is the check on it)")
+
+    print("Q2b MEASUREMENT: the partition identity, and the per-cell volumes")
     vol = cell_volumes(X)
     check("sum of torus cell volumes = 4096", abs(vol.sum() - 4096.0) < 1e-6, vol.sum())
     check("central cell agrees with the exact dodecahedron 5.5503 within sampling error",

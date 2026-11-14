@@ -204,6 +204,76 @@ def main():
               br["width"] < F(1, 10 ** 20), float(br["width"]))
         check("R = %s: the maximizer is the singleton" % R, br["U_lo"] == [0], br["U_lo"])
 
+    print("S14 DUALITY: the minimum feasible Phi equals t* from the cut scan")
+    # LP duality on a finite graph: min{Phi : exists flow, |phi|<=Phi, div>=b} = max_U sum_U b/|d^+(U)|.
+    # The two sides are computed by completely different code paths, so agreement is a real check.
+    b_lo, b_hi = CF.icos_b()
+    n_r, E = CF.build_13(F(2), direction="refute")
+    t_star = CF.exhaustive_cut_scan(b_lo, E)["t_star"]
+    lo, hi = F(0), F(1, 50)
+    check("no flow at Phi = 0 (the singleton cut forbids it)", CF.feasible_flow(b_lo, E, F(0)) is None)
+    check("a flow exists at Phi = 0.02", CF.feasible_flow(b_lo, E, F(1, 50)) is not None)
+    for _ in range(40):
+        mid = (lo + hi) / 2
+        if CF.feasible_flow(b_lo, E, mid) is not None:
+            hi = mid
+        else:
+            lo = mid
+    # The LP is solved in floating point, so the resolved threshold is limited by linprog's
+    # tolerance; what must be EXACT is that any flow we return verifies.  Agreement of the two
+    # independent code paths to 1e-6 is the check.
+    check("the patch's minimum capacity agrees with the cut scan to 1e-6",
+          abs(hi - t_star) < F(1, 10 ** 6), (float(lo), float(hi), float(t_star)))
+    check("the bisection never certifies a capacity below t* minus the LP tolerance",
+          hi > t_star - F(1, 10 ** 6), float(t_star - hi))
+    phi02 = CF.feasible_flow(b_lo, E, F(1, 50))
+    ok_cap, ok_div, _ = CF.verify_flow_exact(b_lo, E, F(1, 50), phi02)
+    check("the flow returned at Phi = 0.02 passes the exact verifier", ok_cap and ok_div)
+
+    print("S15 EXTERNAL PATH: a fixture exported to JSON reproduces the internal numbers")
+    import json as _json, os as _os
+    fxpath = "out/example_external_icos13.json"
+    check("the worked example exists", _os.path.exists(fxpath))
+    if _os.path.exists(fxpath):
+        fx = CF.load_external_fixture(fxpath)
+        check("13 vertices, 12 edges at R = 2", len(fx["b_lo"]) == 13 and len(fx["edges"]) == 12)
+        check("b_lo <= b_hi at every vertex", all(a <= b for a, b in zip(fx["b_lo"], fx["b_hi"])))
+        check("the example declares its volumes certified, not provisional", fx["provisional"] is False)
+        out = CF.evaluate_external(fx)
+        cuts = [r for r in out["rows"] if r["kind"] == "violating_cut"]
+        check("the external path finds the singleton cut", len(cuts) == 1 and cuts[0]["U"] == [0],
+              [r.get("U") for r in cuts])
+        b_lo, b_hi = CF.icos_b()
+        n_i, E_i = CF.build_13(F(2), direction="refute")
+        internal = CF.cut_value(b_lo, E_i, [0])
+        check("the external threshold equals the internal one exactly",
+              F(cuts[0]["phi_threshold"]) == internal[0] / internal[1],
+              float(F(cuts[0]["phi_threshold"])))
+        flows = [r for r in out["rows"] if r["kind"] == "flow"]
+        check("the external flow is exactly verified", flows and flows[0].get("cap_ok")
+              and flows[0].get("divergence_ok"), flows)
+        # the PROVISIONAL stamping path: a fixture whose volumes are estimated must be marked,
+        # and the flag must survive into every row of the report.  Never exercised before.
+        _os.makedirs(".scratch", exist_ok=True)
+        tmp = _os.path.join(".scratch", "provisional.json")
+        prov = dict(name="provisional_copy", note="volumes estimated, must be stamped",
+                    edges=[[int(a), int(b)] for (a, b) in fx["edges"]],
+                    b_lo=[str(x) for x in fx["b_lo"]], b_hi=[str(x) for x in fx["b_hi"]],
+                    volumes_are_provisional=True)
+        import json as _j
+        _j.dump(prov, open(tmp, "w"))
+        try:
+            fxp = CF.load_external_fixture(tmp)
+            check("volumes_are_provisional is read as True", fxp["provisional"] is True)
+            outp = CF.evaluate_external(fxp)
+            check("the provisional flag appears in the report", outp["provisional"] is True)
+        finally:
+            _os.remove(tmp)
+            try:
+                _os.rmdir(".scratch")           # leave no empty directory behind
+            except OSError:
+                pass
+
     print()
     if FAILS:
         print("FAILED: %d -> %s" % (len(FAILS), FAILS)); return 1

@@ -293,7 +293,10 @@ def find_violating_cut(b, edges, Phi, max_size=None):
     return best
 
 def exhaustive_cut_scan(b_lo, edges, cap_subsets=1 << 16):
-    """EXACT per-fixture t* = max over ALL finite U of sum_U b / |delta^+(U)|.
+    """max over ALL finite U of sum_U b / |delta^+(U)|, for the b handed in.
+
+    NOT "the exact t*" from one call: b is an enclosure, so a single scan is one-sided.  Call it
+    with b_lo and with b_hi (see bracket_t_star) to pin t* from both sides.
 
     Only feasible when 2^n is small (n <= 16 by default); otherwise returns None and the caller
     falls back to the size-capped search, which must then be described as capped.  Subsets with an
@@ -366,13 +369,21 @@ def feasible_flow(b, edges, Phi):
     res = linprog(c, A_ub=A, b_ub=bb, bounds=bounds, method="highs")
     if not res.success:
         return None
-    # round and verify EXACTLY
-    phi = {}
-    for (i, j), k in idx.items():
-        q = F(int(round(res.x[k] * 10 ** 9)), 10 ** 9)
-        phi[(i, j)] = q
-        phi[(j, i)] = -q
-    return phi
+    # ROUND AND VERIFY EXACTLY.  The docstring used to claim this re-verification without doing
+    # it: the 1e-9 grid alone can break the divergence bound by up to deg * 1e-9 ~ 1.2e-8, which
+    # showed up as a "minimum capacity" 8.3e-9 BELOW the cut scan's t* -- impossible by LP duality,
+    # and the symptom that exposed the missing check.  Now a flow is returned only if it passes the
+    # exact verifier; otherwise a finer grid is tried, and failing that, None.
+    for den in (10 ** 9, 10 ** 12, 10 ** 15):
+        phi = {}
+        for (i, j), k in idx.items():
+            q = F(int(round(res.x[k] * den)), den)
+            phi[(i, j)] = q
+            phi[(j, i)] = -q
+        ok_cap, ok_div, _ = verify_flow_exact(b, edges, Phi, phi)
+        if ok_cap and ok_div:
+            return phi
+    return None
 
 def verify_flow_exact(b, edges, Phi, phi):
     """Exact check of |phi| <= Phi and divergence >= b at every vertex."""
@@ -425,8 +436,8 @@ def evaluate_external(fx, Phi_trials=(F(1, 1000), F(1, 100), F(1, 10), F(1))):
     sb_rows, infeas = singleton_bounds(fx["b_lo"], fx["edges"])
     for r in sb_rows:
         if r["verdict"] == "SINGLETON_BOUND":
-            print("   singleton bound v%d: b/deg = %s/%d = %.12f"
-                  % (r["vertex"], r["b"], r["degree"], float(F(r["singleton"]))))
+            print("   singleton bound v%d: b/deg = %.15f  (deg %d)"
+                  % (r["vertex"], float(F(r["singleton"])), r["degree"]))
     if infeas:
         print("   POSITIVE DEFICIT AT DEGREE ZERO at %s: INFEASIBLE at any Phi" % infeas)
     tot, ok_global = global_necessary_condition(fx["b_lo"])
