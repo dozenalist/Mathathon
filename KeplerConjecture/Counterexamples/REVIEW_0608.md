@@ -226,6 +226,19 @@ Vincent–Descartes decider, 92 cases, 0 mismatches, and the `nsimplify` defect 
 | `X-C061` | E's `rigorous_cell_volume.py`: unbounded cell returns a finite enclosure (`[4/3, 4/3]` for `{|x|≤1,|y|≤1,z≥−1}`) | **DEFECT (false upper bound)** |
 | `X-C062` | the §4 slack display still appears in three `main` files and is true only with `E = ∅` | **scope correction** |
 
+## 8.1 C's near-contact scan: independent of the arc machinery, and honestly labelled
+
+`nearcontact_scan.py` at comp `cde39fa` imports `fixture_nonuniform` and `cut_flow` — **not**
+`twist_cover` — so it does not inherit `X-C057`. Its output (`out/nearcontact_scan.json`, tip
+`bf7998c`): **500 instances, `with_positive_t_star: 0`, every `t_star` exactly `0`**, density range
+`[0.620562, 0.739247]` — all below Kepler. The scan is exhaustive over the `2^4` subsets of a
+four-site patch with exact rational cell volumes, so `t* = 0` is exact *for those fixtures*; the
+docstring's own caveat ("evidence about the geometry of the near-contact regime, not a theorem about
+all packings") is the right scope, and I am not upgrading it. Note the interaction with `X-C044`'s
+D7: `exhaustive_cut_scan` omits the theorem's `max(0,·)`, so a `t_star` of exactly `0` across all
+500 means some cut attains `Σ_U b = 0` exactly (otherwise the raw maximum would be negative); the
+JSON is then right either way, but the two conventions should not be mixed.
+
 ## 9. Limits
 
 - The corrected cover is evaluated at 60 digits with a `1e-30` inner shrink, and its margin is 2°;

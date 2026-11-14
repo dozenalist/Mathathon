@@ -1066,3 +1066,13 @@ gives **504 samples over 12 random boxes, 0 outside the interval**. Recorded so 
 `X-C061` are not read as "E's arithmetic is wrong": the rational polytope machinery (cube `8`,
 tetrahedron `8/3`, fcc `4√2`) and the trigonometric enclosure are exact; the defects are the
 Euclidean-slack step, the boundedness step and the region grid.
+
+### K15-X-C068 — C's near-contact scan does not inherit the arc defect, and its 500 instances are exact
+
+`nearcontact_scan.py` (comp `cde39fa`) imports `fixture_nonuniform` and `cut_flow`, not
+`twist_cover`, so `X-C057` does not touch it. Its output at comp tip `bf7998c`:
+**500 instances, `with_positive_t_star: 0`, all `t_star` exactly `0`**, density range
+`[0.620562, 0.739247]` — below Kepler throughout. Exhaustive over `2^4` subsets with exact rational
+cell volumes, so `t* = 0` is exact for those fixtures; the docstring's scope caveat is correct and I
+am not upgrading it. Interaction with D7 (`X-C044`): `exhaustive_cut_scan` has no `max(0,·)`, so a
+raw `t_star` of exactly `0` over all 500 instances means some cut has `Σ_U b = 0` exactly.
