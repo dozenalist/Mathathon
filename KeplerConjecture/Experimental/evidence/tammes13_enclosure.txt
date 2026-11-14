@@ -12,8 +12,17 @@ h(a*) >= h(a_hi) >= 0.542629006047203655
 threshold cos(theta_min) = 23681/43681 = 0.542135024381310004
 margin = 4.939817e-04  (>0 CERTIFIED)
 
+rho = 2.05 : cos(theta_min) = 881/1681 = 0.524092801903628835
+   R/4 = 0.512499999999999956  (equal-radius case binds iff thr2 >= R/4: True)
+   h(a*) >= 0.542629006047203655 ; margin = 1.853620e-02  (>0 CERTIFIED)
+   => at most 12 centres in [2, 2.05] as well
+
+rho = 2.09 : margin = 4.939817e-04  (>0 CERTIFIED)
+Both radii certified against the same bracket on a*, with no floating estimate.
+
 delta_13 < 57.138726938 deg   (rigorous upper bound)
-theta_min   > 57.170897332 deg   (rigorous lower bound)
+theta_min   > 57.170897332 deg   (rigorous lower bound, rho=2.09)
+theta_min(2.05) > 58.392803861 deg   (rigorous lower bound, rho=2.05)
 
 CONCLUSION: delta_13 < theta_min, so K15-E014 holds at rho = 209/100:
   at most 12 centres of a 2-separated set lie in [2, 2.09].

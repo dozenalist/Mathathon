@@ -175,6 +175,21 @@ def main():
     say(f"margin = {float(margin):.6e}  ({'>0 CERTIFIED' if margin > 0 else 'FAILED'})")
     assert margin > 0
 
+    # --- second radius: rho = 2.05 must also give count 12 ---
+    R2 = F(205,100)
+    thr2 = 1 - F(2,1)/(R2*R2)          # exact rational
+    say("")
+    say(f"rho = 2.05 : cos(theta_min) = {thr2.numerator}/{thr2.denominator} = {float(thr2):.18g}")
+    say(f"   R/4 = {float(R2/4):.18g}  (equal-radius case binds iff thr2 >= R/4: {thr2 >= R2/4})")
+    m2 = h_lo_val - thr2
+    say(f"   h(a*) >= {float(h_lo_val):.18g} ; margin = {float(m2):.6e}  "
+        f"({'>0 CERTIFIED' if m2 > 0 else 'FAILED'})")
+    assert m2 > 0 and thr2 >= R2/4
+    say("   => at most 12 centres in [2, 2.05] as well")
+    say("")
+    say(f"rho = 2.09 : margin = {float(margin):.6e}  (>0 CERTIFIED)")
+    say("Both radii certified against the same bracket on a*, with no floating estimate.")
+
     # report degrees rigorously by bisection (cos decreasing)
     def deg_upper(c_target, lo=F(0), hi=F(157,100)):
         """smallest rational t with cos(t) <= c_target, i.e. an upper bound on arccos(c_target)."""
@@ -193,7 +208,9 @@ def main():
     th_min = deg_upper(threshold)
     say("")
     say(f"delta_13 < {float(d_up*180/PI.lo):.9f} deg   (rigorous upper bound)")
-    say(f"theta_min   > {float(th_min*180/PI.hi):.9f} deg   (rigorous lower bound)")
+    say(f"theta_min   > {float(th_min*180/PI.hi):.9f} deg   (rigorous lower bound, rho=2.09)")
+    th2 = deg_upper(thr2)
+    say(f"theta_min(2.05) > {float(th2*180/PI.hi):.9f} deg   (rigorous lower bound, rho=2.05)")
     say("")
     say("CONCLUSION: delta_13 < theta_min, so K15-E014 holds at rho = 209/100:")
     say("  at most 12 centres of a 2-separated set lie in [2, 2.09].")

@@ -200,3 +200,34 @@ a neighbour-count-versus-volume estimate. Recorded along with the incomplete `t(
 
 Gaps: `(T')` open; `(T'')` diameter bound not attempted; `K15-E020` still blocked on a
 three-point evaluator; the Taylor lemma and the enclosure want independent review.
+
+### K15-EXP-006 — 2026-11-14T09:16:38Z America/Los_Angeles — role E (Experimental)
+
+Full 60-minute block, task `K15-HOUR-20261114-E`. Ultramath not used; no swarm created or
+resumed. Standard runtime.
+
+**Frozen and extended (`K15-E015`).** Count-12 at BOTH radii, no floating estimate:
+
+| radius | exact cos(theta_min) | margin | verdict |
+| --- | --- | --- | --- |
+| `2.05` | `881/1681 = 0.524092802` | `+1.854e-02` | CERTIFIED |
+| `2.09` | `23681/43681 = 0.542135024` | `+4.939e-04` | CERTIFIED |
+
+Equal-radius case verified to bind exactly at both radii (`thr >= R/4`). `delta_13 <
+57.138726938 deg`. Both comparisons made in cos-space, so no arccos enters either
+certificate. Review checklist for X in `REVIEW_CHECKLIST_X.md`.
+
+**Geometric route (`K15-E040`, OBSTRUCTED quantitatively).** Proved that local distance data
+can give only `vol Omega(w) >= 4 pi/3`: for every direction either a known neighbour forces
+`t >= 1` or no known neighbour constrains `t` at all. So inscribed bodies inside the outer
+cells cannot close `(T')`, which falls short by `19.08483258`. Bracketed the infimum over
+completions in `[4.188790205, 8.167277]` per cell (window factor `1.987`) with the threshold
+`5.665734518` inside it, so `(T')` is not decidable from certified data. Noted that the
+threshold is only `2.080 %` above the dodecahedral floor, which makes `(T')` implausible.
+Derived the corrected condition `(T'-2) S2(C) >= D(C)` over two shells, strictly weaker.
+Targeted completions (rings at distance 2 in the free outward hemisphere) did not reduce
+the sum below `99.8`; random completions reach `98.0`.
+
+Gaps: `(T')`/`(T'-2)` unproved; the upper bounds are `TESTED_FINITE` and undersaturated
+(density `0.10` vs `0.177`); the next missing inequality is an angular
+neighbour-count-versus-volume estimate. Offload `LOCAL_ICOSA_SEARCH.md` filed.
