@@ -1483,3 +1483,175 @@ invariants are what identify it; the indices should be recomputed or dropped.
 **proved** shell bound (`deg_ε ≤ 12` for `ε ≤ 0.3`, which is a spherical-code statement, not the
 kissing number), and the choice of `ε` interacts with the other branch, whose bound
 `1/(1+ε/2)³` improves as `ε` grows. Whether a compatible `ε` exists is not settled here.
+
+### K15-X-C085 — `C133` audited: the conditional theorem is sound, and its constant is `C102`'s `ρ = 2` value
+
+`audit_c133.py` (exit 0). Exact: `cos ρ_c = √((1+2/√5)/3) = √(30√5+75)/15 = 0.7946544722917661`,
+`4cos ρ_c = 3.1786178891670644`, `ρ_c = 37.37736814065°`; the spherical-law identity
+`cos a = cos²ρ_c + sin²ρ_c cos(2π/3)` with `cos a = 1/√5` holds symbolically; the 12 contacts are distinct
+and mutually `≥ 2.102924`; the covering radius is attained at the 20 face centres (`37.377368141°`) and a
+`2·10⁶`-direction scan does not exceed it; `max over directions of min_i |d e − 2u_i| < 2` for every tested
+`d < 4cos ρ_c` (worst `1.998195` at `d = 4cos ρ_c − 10⁻⁶`); and at `d = 4cos ρ_c` the face-centre direction
+gives exactly `2.000000000000`, `2.017033` at `d = 3.2`. The escape case reduces correctly to `C128`'s axial
+family. **`3.178617889` is exactly the `ρ = 2` value of `C102`'s nearest-admissible-13th-centre function**
+(`X-C070`, `nearest_13th_indep.py`) — two independent derivations of one constant. Scope remark: the proof
+uses only `w`'s cell, so the hypothesis can be weakened to "`w`'s cell is a regular dodecahedron of inradius 1".
+
+### K15-X-C086 — `C132`'s displayed chain is reversed; the conclusion is unchanged
+
+The display `(4π/3)R³ − O(R²) ≥ Σ_{v∈B_R} vol Ω(v)` uses **coverage** as if it were an upper bound.
+Coverage gives `Σ ≥ (4π/3)R³ − O(R²)` (cells of centres with `|v| ≤ R+2` cover `B(0,R)`, shell cells
+`≤ 32π/3` each, `O(R²)` of them); **disjointness + saturation** give the upper bound
+`Σ_{|v|≤R} ≤ vol B(0,R+2) = (4π/3)R³ + O(R²)`. The conclusion needs the second:
+`N_R(1+ε/2)³ ≤ (R+2)³ + S_R(1+ε/2)³` ⟹ `limsup` and `liminf` of `N_R/R³` are both `≤ 1/(1+ε/2)³`.
+Constants re-derived (`D(1) = 63`, `D(1.4555) = 87`, `2+2D = 128/176`, `1/1.5³ = 0.296296`, crossover
+`0.1967082337`). Witness that the mis-sign is not vacuous: the saturated lattice `2·{i+j+k even}` (cells of
+volume `16`, covering radius `2`) has `Σ/((4π/3)R³) = 1.013658, 1.000110, 0.999759` at `R = 20, 40, 80`,
+so no negative slack is available. Notation defect: `|B_R|` is a cardinality on the right of the same
+display where `(4π/3)R³` is a volume.
+
+### K15-X-C087 — Experimental `6ae7dbf`: my `X-C080` is closed; the gate and the radius are now exact
+
+`origin_interior_certificate` requires affine dimension 3 and uses `(b−a)×(c−a)`; witness `W3` is exactly my
+probe and it is now refused. `radius_witness` replaces the float mesh with the inradius of `conv{n_i}` about
+the origin (exact `Iv`/`Fraction`), and `W4` reports `c = 1/√3` on the cube's normals — the correct value.
+`certify`'s chain re-checked end to end; the exact-radius region certificate is
+`[5.860980375091257, 5.938771084479131]` vs target `5.76341747` (margin `0.097563`), `R = 1.387`,
+`rmax = 1.3174 < R`, `20` supporting planes. Both `X-C080` defects are repaired rather than bypassed.
+
+### K15-X-C088 — `ring_excess.py`: the calculus is right, two statements are not
+
+`d/db vol K(b) = Σ_{i≤5} A_i(b)` is correct and the bound is applied conservatively with `V_dod ≤ vol D`.
+Run: `vol D = 5.572648770`, `b = 1.051462224238`, `A_min = 1.251511009`, bound `5.872318729 > 5.763417470`
+(margin `+0.108901`). Two defects: (i) "with every centre at distance exactly 2" is false — at all-radius
+`2` the twelve points have minimum distance `1.947858 < 2`, so that is not a packing; the lemma needs the
+five ring centres at `2b = 2.102924`, and then the minimum distance is `2.000000`; (ii) the docstring's
+`A = 1.063151` and margin `0.060` are stale — the run's `A_min` is `1.251511` and the margin `0.109`.
+Limit: `A_min` is a minimum over 21 sampled `b`, not a certified minimum over `[1,b]`; the areas are
+rational on each combinatorial chamber, so an interval evaluation on the 20 subintervals would close it.
+
+### K15-X-C089 — attribution: Hales–McLaughlin Theorem 4.1 is "at most 12 faces", and the equality case is inside that class
+
+Read p16 of `https://www.cs.cmu.edu/~seanmcl/papers/McLaughlin-Dodec.pdf`: *"Let P be any polyhedron with
+at most 12 faces that contains a unit sphere S² ... The volume of the intersection of P with B is at least
+ω_dod. Equality holds exactly [if] P is congruent to the regular dodecahedron."* So (i) `C133`'s
+Consequence 1 — "volume `= V_dod` ⟹ dodecahedron" — carries the unstated hypothesis `≤ 12` faces, and a
+13-face Voronoi cell of volume exactly `ω_dod` is not excluded by this source; the theorem of `C133` is
+conditional and unaffected. (ii) The quantity is the *truncated* volume `vol(P ∩ B_{t_dod})`. (iii) The
+source is Fejes Tóth, *Regular Figures* §§33, 41 (note p265) as restated there — **not** Lindelöf, which
+does not give the covering radius.
+
+### K15-X-C090 — Theorem 4.1's `≤ 12 faces` is essential, and the 20-face analogue is false
+
+The circumscribed icosahedron has **20 faces** and volume `70√3 − 30√15 = 5.054056143599 < V_dod`;
+so "at most 20 faces" makes the theorem false. 13-face polyhedra with volume exactly `V_dod` exist by
+continuity (push a dodecahedron face out by `δ`, truncate a vertex by `ε`; one equation, two parameters).
+Hence `C133`'s Consequence 1 must carry the `≤ 12` hypothesis. `c133_12face_essential.py` (exit 0).
+What is *not* settled: whether a Voronoi cell of a 2-separated packing can have `≥ 13` faces and volume
+`≤ V_dod` — `C125`/`X-C066`, open.
+
+### K15-X-C091 — the volume engines: exact one sound, floating one scoped
+
+`contact_cell_exact.py` (main `2c41311`) runs clean: exact `Q(√2,√3)`, hcp cell `14` vertices with
+`|x|² ∈ {3/2 (×8), 2 (×6)}`, Euler `14−24+12 = 2`, `K ⊆ B(0,√2)` ✓ — the contact-polytope bound is
+verified, not sampled; its only limit is a `1e-59` sign-resolution floor. `barlow_cells.cell()` is a
+floating half-space intersection (`1e-9` acceptance, `round(V,8)` dedup, `len(V)<4 → 0.0`): no
+completeness guarantee for arbitrary input, and the `0.0` is silent, but I could not break it on the
+family I tried (three faces through a common point with normals `δ` apart keep their vertex to
+`δ = 10⁻⁸`), and on its actual inputs it agrees with the exact routine (`V12 = Vfull = 5.656854249492`
+on all 34 layer analyses, `0` violations). `audit_volume_filter.py`.
+
+### K15-X-C092 — `4cos ρ_c` is not attained: the true two-dodecahedra threshold is ≈ 4.7, not 3.18
+
+`c133_attain.py` (exit 0): at `d = 4cos ρ_c` the placement of `p`'s icosahedron is *forced* to the
+face-centre alignment (`|p+2v_j| ≥ 2` needs `v_j·e ≥ −d/4`, and the covering radius gives
+`max_j(−v_j·e) ≥ cos ρ_c`), and in that alignment the best twist leaves a pair at **`1.214124`**.
+`c133_threshold.py`: maximising the minimum pairwise distance over the relative rotation gives
+`1.2141, 1.2559, 1.4659, 1.7222, 1.8693, 2.000000` at `d = 3.18, 3.5, 4.0, 4.4, 4.6, 4.8` — so two
+dodecahedral cells coexist from about `d = 4.7` on this family, and the true threshold is in
+`[3.1786, 4.8]`. C133's constant is a valid **bound** (sufficient for `C124`, which needs `d ≤ 3`) and
+must not be quoted as the threshold. The `2.000000` values are the cap, not evidence of contact: `w` and
+`p` each have twelve contacts at exactly 2.
+
+### K15-X-C093 — the exact-radius region certificate reproduces at its worst box
+
+`certify_region_v2.py 110.9 111.0 35.6 35.7 0.1` (20 s) gives `[5.860980375091, 5.936347031671]`, whose
+lower end equals the shipped `vol_lo = 5.860980375091257…` of
+`Experimental/evidence/region_110_111_exactradius.json` exactly. The full region's `vol_hi = 5.938771` is
+higher than this box's, i.e. `worst_box` is selected by the *lower* end — correct for a lower-bound
+target. So the headline number is reproducible from one box; the 100-box scan was not re-run.
+
+### K15-X-C094 — `C054`'s `PROVED` inherits `E014`'s `ACCEPTED_WITH_SCOPE`
+
+`C132(1)`'s account is correct: `C054` is the punctual statement for `2 ≤ R ≤ 2.09`, and `E014` really is
+the *shell* statement ("at most 12 centres of a 2-separated set in `[2, 2.09]`"), so there is no
+sphere/shell confusion. But `E014` is `ACCEPTED_WITH_SCOPE` — "accepted subject to Musin–Tarasov", with
+Main recording that it did **not** verify the `(E1)` transcription against the paper nor the enumeration —
+while `ACCEPTED.md:20` lists `C054` as plain `PROVED`. The status should be `PROVED modulo
+Musin–Tarasov`, or the transcription should be checked.
+
+### K15-X-C095 — `C135`'s closed form checked; the ring-excess premise is exact
+
+`C135`: with `q = −a = (−2/√5, 0, 4/√5)` and `x = d − 2/√5`, `A = x² − (4/√5)x + 36/5`, `B = 32/5`,
+`C = 0`; then `h < 4π/5 ⟺ x² − (4/√5)x + (8−8√5)/5 < 0 ⟺ d < 4/√5 + 2√((2√5−1)/5) = 3.455500344` ✓ same
+as `X-C051`/`X-C064`. Its endpoint scope (open arc of length exactly `2π/5` at `d_max`, hence
+inconclusive there) is correct. Separately, the `c5_centres` fixture is 2-separated *including* the
+origin (distances `2.0`×7, `2.102924448`×5), and its half-space distances are `1.0`×7 and
+`1.051462224`×5 — exactly `ring_excess.py`'s `b`, so the lemma is applied to the right configuration.
+
+### K15-X-C096 — the parallel two-dodecahedra threshold is exactly `6cos ρ_c = 4.767926833750597`
+
+**Proposition.** Two regular dodecahedra of inradius 1 with parallel contact icosahedra, centres
+separated along a common face normal, are 2-separated **iff** `d ≥ 6cos ρ_c = 4.767926833750597…`.
+*Proof.* Contacts `2u_i` and `d e + 2u_i`; `e` the centre of the face `F = {a_1,a_2,a_3}` with
+`e·a_k = cos ρ_c = c`. The binding cross pair is `(2a_i, d e − 2a_k)` with `a_i, a_k` adjacent in `F`:
+`|d e − 2a_k − 2a_i|² = d² + 4(2 + 2/√5) − 8dc`, which equals 4 exactly when
+`d² − 8cd + 4 + 8/√5 = 0`, i.e. `d = 4c ± √(16c² − 4 − 8/√5) = 4c ± 2c`, the larger root being `6c` by
+`3c² = 1 + 2/√5` (sympy: the larger root is exactly `6cos ρ_c`; the smaller is `2cos ρ_c = 1.5893 < 2`).
+Other pairs are further: same-face `27.155`, antipodal `16 − 12c² = 8.42`, same-icosahedron `≥ 2.102924`.
+∎ Numerically (`c133_parallel_threshold.py`, 40 digits): `mindist(6c) = 2.000000`, `mindist(6c−10⁻⁹) =
+1.9999999992`.
+
+So the true threshold is in `[4cos ρ_c, 6cos ρ_c]`, and `C133`'s constant is exactly `2/3` of the natural
+one. `4cos ρ_c` is **not attained** (`c133_attain.py`): at that `d` the face-centre alignment is forced
+and the best twist still leaves a pair at `1.214124`.
+
+### K15-X-C097 — correction to `X-C089`/`X-C090`: the main theorem has no face bound, so Consequence 1 is sound by citation
+
+The Hales–McLaughlin paper's introduction (p1) states the **unrestricted** form and its equality case:
+
+> "`vol(Ω(Λ,v)) ≥ vol(Ω(Λ_dod,0))` for every `v ∈ Λ`, and for every set of points `Λ ⊂ R³` whose pairwise
+> distances are at least the diameter 2. The case of equality occurs exactly when `Ω(Λ,v)` is congruent to
+> a regular dodecahedron of inradius 1."
+
+Theorem 4.1 (p16) is Fejes Tóth's **`≤ 12`-face reduction** used inside that proof. So `C133`'s
+Consequence 1 and `C108` step (3) — "volume `= V_dod` ⟹ dodecahedron" — are **sound**, but must cite the
+main theorem, not 4.1. `X-C089`'s "unstated hypothesis" is right about Theorem 4.1 and wrong about the
+paper; `X-C090`'s counterexample stands, but only as a statement about the *polyhedral* strengthening of
+4.1 (the circumscribed icosahedron, 20 faces, `5.054056 < V_dod`), which the conjecture does not need.
+
+*Detail at `d = 6c`* (numerical, exact structure): the global minimum is `2.0`, attained by **six** cross
+pairs among the vertices of the face `F` and of `−F`; same-face cross pairs are at `d² + 4(2−2/√5) =
+27.155`, antipodal cross pairs at `d² + 16 − 8dc = 8.422`, and pairs inside one icosahedron are at
+`≥ 2.102924`. (An earlier line here said `23.8` for the same-face value — that dropped the factor 4 on
+`2−2/√5`; corrected.)
+
+### K15-X-C098 — the repaired gate passes a six-case unit suite, including cases beyond E's own witnesses
+
+Run against `6ae7dbf`'s `cell_certificate.py`: `[(1,0,0),(0,1,0),(0,0,1)]` → affine dim 2, refused ✓;
+four coplanar points `(0,0,0),(1,0,0),(0,1,0),(1,1,0)` → refused ✓ (**not** one of E's witnesses); the
+cube's and the octahedron's six normals → affine dim 3 and interior ✓; `[(1,0,0),(0,1,0),(0,0,1),(1,1,1)]`
+→ 3-dimensional but refused ✓ (my full-dimensional witness); `[...,(−1,−1,−1)]` → interior ✓. So the
+affine-dimension test and the edge-normal supporting-plane scan are both doing their jobs, not just
+passing the printed witnesses. `radius_witness` gives `1/√3` on the cube ✓ and `0.301511344578 = 1/√11` on
+`conv{e1,e2,e3,−(1,1,1)}` ✓.
+
+### K15-X-C099 — numerics: no relative orientation beats the parallel placement, so `6cos ρ_c` stands as the threshold
+
+For `d = 4.60, 4.70, 4.75, 4.767, 4.7679` the maximum of the minimum pairwise distance over 120 random
+rotations (Nelder–Mead from each) equals the **identity-rotation** value exactly
+(`1.869337900, 1.946458478, 1.985784182, 1.999263567, 1.999978677`), and the "optimal" rotations it
+returns are `120°` rotations — symmetries of the icosahedron, i.e. the same configuration. At
+`d = 6cos ρ_c = 4.767926834` the identity placement gives exactly `2`. So the parallel placement is
+optimal among everything scanned, consistent with `X-C096`'s threshold. Numerical, not a proof: it bounds
+the threshold from above by `6cos ρ_c` and finds nothing below it.
