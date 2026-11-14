@@ -63,16 +63,30 @@ Single runs (`shell_propose.py --tlo-exact --degree K`), `n = 27`, `ρ = 2.05`, 
 | 31 | no exact candidate | — |
 | 33 | no exact candidate | — |
 
-The pipeline **saturates at degree 25**: beyond it the cutting-plane loop and the rational
-rounding no longer converge, and exact verification refuses. (This mirrors the independent
-saturation found in the Laguerre basis at degree 33 in `CERTIFIER.md`; the monomial conversion
-of Main's checker reaches its limit sooner, as expected from `M[0][k] = (2k+1)!!/2^k`.)
+**Correction — the "saturation" was a finite-horizon artefact, not a limit.** At first degrees
+29–33 produced no exact candidate. The cause was located: the LP constrains `p ≤ 0` only on
+`[T_HI, Umax]`, and a degree-29 polynomial constrained on `[13.2, 40]` can rise again before the
+leading term takes over — measured `max p = 5.4 × 10^46` on `[T_LO, 400]`, far outside the
+horizon the LP ever saw. The exact checker, which tests the whole ray, correctly refused.
+
+Raising the horizon repairs it:
+
+| `K` | `Umax` | `Δ ≤` | gap to CE |
+| --- | --- | --- | --- |
+| 29 | 40 | no exact candidate | — |
+| 29 | 120 | 0.78039846 | +0.084% |
+| **33** | **120** | **0.78037031** | **+0.080%** |
+| 29, 33 | 250 | no exact candidate | numerical conditioning fails at large `u` |
+
+So the limit is conditioning of the monomial basis at large `u`, not a mathematical bound, and
+`Umax = 120` is the useful setting. Anyone extending this should raise `Umax` with the degree
+rather than concluding that high degree is hopeless.
 
 ## Consequence for the record
 
-* **`0.78055517` (`K = 25`, `T_LO = 4π_lo`, `n = 27`, `ρ = 2.05`, unconditional)** is the best
-  exactly-certified shell-route bound: **0.086%** above Cohn–Elkies' `0.779747`, rather than 7%
-  above it. The pipeline saturates at degree 25.
+* **`0.78037031` (`K = 33`, `Umax = 120`, `T_LO = 4π_lo`, `n = 27`, `ρ = 2.05`,
+  unconditional)** is the best exactly-certified shell-route bound: **0.080%** above
+  Cohn–Elkies' `0.779747`, rather than 7% above it.
 * The remaining 0.11% is the cost of the mandatory `ε_q ≥ 1e-5` margin on `q ≥ 0` alone, since
   the `T_LO` cost has now been removed.
 * Anyone quoting a shell-route number computed with `T_LO = 12` should scale it: the true

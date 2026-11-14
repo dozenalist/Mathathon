@@ -352,3 +352,15 @@ independently written checker. Three actionable defects/findings for Main (`T_LO
 `T_HI` invalid at `ρ = 2.05`, do not optimise in the monomial basis). Five defects in my own code
 found, four caught only by the independent checker. The uniform shell allowance is confirmed
 useless at seven degrees in two bases.
+
+### K15-COMP-015 — 2026-11-14 — Computation (role C), horizon correction
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-UMAX-001 | **PROVED (defect, corrected)** | the apparent saturation at degrees 29–33 was a **finite-horizon artefact**: the LP constrains `p ≤ 0` only on `[T_HI, Umax]` and a degree-29 polynomial on `[13.2, 40]` rises again to `max p = 5.4×10^46` before the leading term takes over. The exact checker, which tests the whole ray, correctly refused | `TLO_FINDING.md` |
+| K15-C-BESTCERT-001 | **VERIFIED_EXACT** | with `Umax = 120` the route reaches **`Δ ≤ 0.78037031`** (degree 33, `T_LO = 4π_lo`, `n = 27`, `ρ = 2.05`, unconditional) — **0.080%** above Cohn–Elkies' `0.779747` | `shell_propose.py --degree 33 --tlo-exact --Umax 120` |
+
+**The lesson, worth keeping:** a functional constrained on a finite horizon can be driven far
+outside it, and an exact checker over the whole ray will (correctly) reject the result. The
+repair is to extend the horizon with the degree, not to abandon high degree. `Umax = 250` fails on
+conditioning, so `Umax ≈ 120` is the practical setting for the monomial basis.
