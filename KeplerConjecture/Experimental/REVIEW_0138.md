@@ -266,9 +266,12 @@ non-defective centres) and verifies the conclusions numerically:
 
 Three features are worth stating plainly.
 
-- **The transfer is inert on the equality family.** `A ≡ 0` on fcc and hcp, so the rule cannot
-  disturb the configurations that attain `pi/sqrt18`. This was the main risk of any
-  correction scheme and it is settled here for this rule.
+- **The transfer is inert on the equality family — by proof, not only by fixture.** In fcc and
+  hcp every Voronoi cell has volume exactly `sqrt32` (the rhombic dodecahedron, inradius `1`), so
+  the defective set is *empty*, so no transfer is ever created and `A ≡ 0`. The fixtures agree,
+  but the statement does not depend on them: it follows from the rule plus the standard cell
+  volume. So the correction cannot disturb the configurations that attain `pi/sqrt18`. This was
+  the main risk any correction scheme runs, and for this rule it is closed.
 - **The *per-pair* transfer is tiny**: `||phi||_inf <= sqrt32 - V_dodeca = 0.106563`, i.e. at
   most `1.9 %` of a cell volume, because a defect's deficit never exceeds that (using
   `vol Omega >= V_dodeca`). Note the distinction I got wrong on first writing: this bounds
