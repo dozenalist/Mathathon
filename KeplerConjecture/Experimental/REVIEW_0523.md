@@ -183,7 +183,7 @@ bound (differentiate `V` in `(θ, φ)`) rather than a finer sandwich. That is a 
 input, not a repair done here.
 
 The catch is the one that matters: **that is the C5 family, not the completion space.** The
-domain of §3 has up to 200 coordinates, and no 0.1°-granular grid over it is remotely
+domain of §3 has up to 46 coordinates, and no 0.1°-granular grid over it is remotely
 reachable. So the atom is not the obstruction — the *dimension* is. A branch-and-bound would
 have to be preceded by a reduction to a low-dimensional family, and no such reduction is known.
 That is the honest state of the route, and it is the number the next block needs.
@@ -205,12 +205,15 @@ distance `≥ ρ_max/2 = 1.301724 > max|vertex| = 1.301723`, so it cannot meet t
 (`REVIEW_0353` §2, where the two numbers are certified). (ii) A centre with `|z − w_1| < 2`
 is illegal. (iii) Every legal `z` has a unique `(ρ, θ, φ) ∈ [2, ρ_max) × [0,π] × [0,2π)`, and
 a finite set of centres is unordered, so sorting the tuples gives a unique representative.
-(iv) The number of centres is bounded: they are 2-separated inside the shell, so
-`N ≤ vol(B(0, ρ_max + 1))/(4π/3) = (ρ_max+1)³ ≈ 200` — crude but finite and explicit.
+(iv) The number of centres is bounded: they are 2-separated inside the shell, so their unit
+balls are disjoint and lie in `B(0, ρ_max+1)`, giving
+`N ≤ vol(B(0, ρ_max+1))/(4π/3) = (ρ_max+1)³ = 46.8`, i.e. **`N ≤ 46`** — crude, finite and
+explicit. (An earlier draft of this section wrote "≈200"; the arithmetic does not support it,
+and 46 is the bound the argument gives.)
 
-So `D ⊂ ⋃_{N≤200} ([2,ρ_max]×[0,π]×[0,2π))^N / 𝔖_N`, a finite union of compacta, and
+So `D ⊂ ⋃_{N≤46} ([2,ρ_max]×[0,π]×[0,2π))^N / 𝔖_N`, a finite union of compacta, and
 `inf vol Ω(w_1)` over completions equals the infimum of the continuous functional over `D`.
-**That is a genuine completeness statement, and it is not a size reduction**: 200 coordinates
+**That is a genuine completeness statement, and it is not a size reduction**: 46 coordinates
 is far past exhaustive search, and the bracketing volume of §2 is the only piece of it that is
 currently rigorous.
 

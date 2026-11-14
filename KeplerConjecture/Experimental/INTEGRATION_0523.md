@@ -32,7 +32,7 @@ this block         7a0d9011becb3014b29b7b179560759156309bf5   certified enclosur
    former only, and says so in §2.3.
 3. **The atom is calibrated and the obstruction is dimension, not cost** (`K15-E092`). A `0.1°`
    box already certifies `vol > 5.8712`, so the two-parameter C5 family is exhaustively
-   certifiable with `~2×10⁴` boxes. The completion domain has up to 200 coordinates, so no such
+   certifiable with `~2×10⁴` boxes. The completion domain has up to 46 coordinates, so no such
    grid is reachable. The sandwich is also dependency-dominated (`6×10⁵` on a `1°` box), and a
    parameter-Lipschitz bound would give `~4e-3` per degree instead — the right next step.
 4. **`K15-E075`'s constant was wrong and is corrected** (`K15-E093`): `1.125554845`, not
