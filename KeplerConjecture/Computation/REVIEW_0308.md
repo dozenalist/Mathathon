@@ -262,7 +262,10 @@ $$q(u) = \Bigl(-\tfrac74u^2 + 19u - \tfrac{25115432387}{806373792}\Bigr)^2
 + \tfrac{322991273685970819}{325119346212229632}
 + u\Bigl(\tfrac76u^2 - \tfrac{35}{3}u + 18\Bigr)^2,$$
 
-with both identities verified by expansion, giving `Δ ≤ 1.33982381256` — the **best both-sides
+with both identities verified by expansion. **Independently cross-checked three ways:** the exact
+conversion of `p` to the Laguerre basis has zero residual; `exactcert.certify` (own Sturm + Yun
+over `Q`) **accepts** the certificate and reports `Δ = 1.3398238126`; and `q` computed from the
+Fourier map `M p` equals the certified `q` identically. This gives `Δ ≤ 1.33982381256` — the **best both-sides
 explicit-Gram certificate in this directory**, down from `2.00171738`, and equal to the best
 one-sided p-side value. It remains `1.34×` the trivial bound.
 

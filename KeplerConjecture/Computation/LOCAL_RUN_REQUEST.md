@@ -33,6 +33,8 @@ cd KeplerConjecture/Computation
 python3 cut_flow.py                     # writes out/cut_flow.json
 python3 tests_cut_flow.py               # truth-known tests: ALL CUT/FLOW TESTS PASS
 python3 cut_isoperimetry.py             # FCC isoperimetric profile: exponent ~ -1/3
+python3 transfer_necessity.py           # a transfer implies rho <= 1/sqrt(32)
+python3 k15fourier.py                   # M upper triangular, diag (-1)^i, M^2 = I
 python3 cut_flow.py --fixture out/fixture_example.json   # external-fixture path
 ```
 
@@ -49,7 +51,8 @@ python3 sos_family2.py                 # p-side, two squares,  6.73788568
 python3 sos_pside_many.py --m 4 --deg 2 --iters 2500 --seed 3     # 1.33982382
 python3 sos_both_sides.py              # both sides, cubic q,  2.00171738
 python3 sos_both_sides_lin.py --m 3 --iters 1200 --seed 1         # 2.4770679955
-python3 sos_both_sides_quintic.py      # scoped negative with a reason
+python3 sos_both_sides_quintic.py      # one-square ansatz: scoped negative with its bound
+python3 sos_both_sides_quintic2.py     # two squares: SOLVED, Delta 1.33982381256
 ```
 
 **Strength reminder, which the local run should confirm rather than override:** every one of these
@@ -112,7 +115,7 @@ SAIR VM.
 | --- | --- | --- | --- |
 | §1 | < 60 s | < 300 MB | all exit 0; `Delta upper` = `0.779966216777` at 12 dp |
 | §2 | ~10 s | < 200 MB | FCC/HCP `TRIVIAL_SATISFIED`; threshold `0.008880268291`; `tests_cut_flow.py` all pass; isoperimetry exponent between `-0.30` and `-0.36` |
-| §3 | ~30 s | < 500 MB | each prints an `EXACT` line; identities `True` |
+| §3 | ~5 s | < 500 MB | each prints an `EXACT` line; identities `True`; `quintic2` reports `1.33982381256` |
 | §4 | ~15 s | < 300 MB | `AUDIT PASS`; the two degree rows pass |
 | §5 | ≤ 15 min | < 300 MB | one JSON per seed; at least one `VERIFIED_EXACT` |
 
