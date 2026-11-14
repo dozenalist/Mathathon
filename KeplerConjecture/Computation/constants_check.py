@@ -215,6 +215,14 @@ chk("that threshold sits just below 2 sqrt3", 2 * sqrt(3) - mpf('3.4555003444'),
 chk("X band width 3.4555 - 2 covers C124's eps", mpf('3.4555003444') - 2 > mpf('0.6832816'), True)
 chk("C124 case-2 density at eps = 0.6832816", 1 / (1 + mpf('0.6832816') / 2) ** 3, 0.414086, tol=1e-6)
 
+# --- K15-C127: the corrected band ------------------------------------------------
+chk("two-dodecahedra threshold, corrected arc test", mpf('3.4555003444044642049'), 3.4555003444, tol=1e-9)
+chk("band width", mpf('3.4555003444044642049') - 2, 1.4555003444, tol=1e-9)
+chk("C124 needs eps/2 > this (inball radius 1.0983541)", (1 / mpf('0.754697399337')) ** (mpf(1)/3) - 1, 0.098354116850, tol=1e-9)
+chk("so eps_needed = d_ML - 2", 2 * ((1 / mpf('0.754697399337')) ** (mpf(1)/3) - 1), 0.196708233700, tol=1e-9)
+chk("eps_needed equals C119 d_ML - 2", 2 * ((1 / mpf('0.754697399337')) ** (mpf(1)/3) - 1), (8 / mpf('0.754697399337')) ** (mpf(1)/3) - 2, tol=1e-12)
+chk("band / needed room (x)", (mpf('3.4555003444044642049') - 2) / (2 * ((1 / mpf('0.754697399337')) ** (mpf(1)/3) - 1)), 7.4, tol=0.05)
+
 print()
 print("constants checked:", len(fails) == 0 and "ALL PASS" or ("FAILURES: %s" % fails))
 sys.exit(0 if not fails else 1)

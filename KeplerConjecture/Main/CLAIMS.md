@@ -4029,3 +4029,67 @@ monotone in the way the scan is. Both were caught by comparing with an independe
 is the only reason they surfaced. `C112`, `C123` and this entry stay **`PENDING_REVIEW`**.
 
 *Status.* `CORRECTION`; `C116`'s constant retired in favour of X's `X-C051`.
+
+### K15-C127 — the violation arcs were the *opposite* inequality: second bug, fixed, band reinstated (`CORRECTION` + `PROVED`)
+
+`C126` fixed a missing constant term in the twist sinusoid. Checking further — the supervisor's
+`K15-REVIEW-0608-M-LOCAL` names both defects independently — Main found a **second and worse bug** in
+the same object, in the *set* being covered rather than in the arithmetic.
+
+**The bug.** The violation set of a pair is
+
+```
+T_pq = { t : d²(t) < thr² } = { t : cos(t − ψ) < c },        c = (thr² − A)/R .
+```
+
+Since `cos` is **decreasing** on `[0, π]`, `cos(t−ψ) < c ⟺ |t−ψ| > h` with `h = arccos(c)`. So
+`T_pq` is the **complement** of the arc around `ψ` — equivalently the arc **centred at `ψ + π` with
+half-width `π − h`**, which is the supervisor's formulation and is what the code now uses. Every
+earlier version covered the arcs *around* `ψ`, i.e. the **safe** sets, so its "cover" was a cover by
+the complement of what was needed and **proved nothing**.
+
+**Why the earlier versions looked plausible.** At `d = 2` the safe sets do cover, and they keep
+covering for every larger `d` — so the test was *monotone in the wrong direction* and reported
+"certified" out to `d = 3.5` where the scan says a clash stops at `3.4555`. That disagreement is what
+exposed the bug; it is recorded in `C126`.
+
+**The fix, and its confirmation.** Violation arcs are now the complement, reduced into the five
+period cells of `R/(2π/5)` (`2π = 5·(2π/5)` exactly), endpoints shrunk inward by `1e−30` so each
+piece is a strict subset. Then:
+
+| `d` | corrected arc test | independent twist scan | agree? |
+| --- | --- | --- | --- |
+| `2.0` | cover | clash everywhere (`max min dist = 1.1255548`) | **yes** |
+| `2.6` | cover | `1.3712215` | **yes** |
+| `3.0` | cover | `1.6398674` | **yes** |
+| `3.4` | cover | `1.9539912` | **yes** |
+| `3.4555` | cover | `1.9999997` | **yes** |
+| `3.46` | **no cover** | `2.0037512` | **yes** |
+| `3.5` | **no cover** | `2.0372311` | **yes** |
+
+Bisecting the corrected test (50 iterations, 50 digits) gives the threshold
+**`3.4555003444044642049`**, and X's `K15-X-C051` value `3.4555003444` agrees to **ten significant
+figures**. Two independent methods now agree at every point tested, and an independent worker's
+number is reproduced.
+
+**Consequences.**
+
+1. **`C116`'s constant is reinstated, attributed to X:** the two-dodecahedra threshold is
+   `3.4555003444044642…` (X `X-C051`, reproduced here), not `6/√5`, and the band is
+   `ε < 1.4555003444`. `C126`'s withdrawal is itself withdrawn as a *constant* — the band exists and
+   has X's value; what `C126` correctly recorded was that Main's `6/√5` was wrong.
+2. **`C124` is safe with room to spare.** It needs one `ε` with `ε > 0.1967` for the inball branch to
+   beat `0.754697399337`; the band provides `ε < 1.4555`, i.e. **7.4× more than needed**. `C124`'s
+   conclusion stands with `ε = 0.6832816` (or any value in `(0.1967, 1.4555)`).
+3. **Theorem D step (4) is certified** by a corrected, sound certificate, and independently by the
+   scan. `C112`/`C123`'s *statement* was always right; only their certificates were void.
+
+**What this says about Main's method, recorded because it is the pattern.** The same object produced
+two independent errors (a dropped algebraic term, and the direction of a trigonometric inequality),
+both of which made the test report success. Neither was caught by Main's own checks; the first was
+caught by reconciling X's number, the second by noticing that two of Main's own computations
+disagreed. **A certificate that cannot fail is not a certificate** — the value of the twist scan was
+precisely that it *could* disagree.
+
+*Status.* `CORRECTION` + `PROVED` (corrected certificate, cross-checked two ways and against X).
+`C112`/`C123`/`C127` remain `PENDING_REVIEW`: X's audit is the gate, and review 0608 says so.

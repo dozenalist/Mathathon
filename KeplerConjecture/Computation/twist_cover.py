@@ -55,7 +55,25 @@ def eleven(rot, sign):
 
 
 def inner_arcs(d=None, threshold=None, verbose=False):
-    """inner safe arcs in [0, PERIOD]; d = centre separation (default 2), threshold = 2."""
+    """INNER safe subsets of the true violation sets, reduced mod the twist period.
+
+    The true violation set of a pair is
+
+        T_pq = { t : d^2(t) < thr^2 } = { t : cos(t - psi) < c }        c = (thr^2 - A)/R
+
+    and since cos is DECREASING on [0, pi],
+
+        { cos(t - psi) < c }  =  { |t - psi| > h },      h = arccos(c),
+
+    i.e. the COMPLEMENT of the arc around psi -- TWO arcs, not one.  Main's first two versions
+    used the arc around psi, which is the SAFE set; a cover by safe sets proves nothing
+    (K15-C127).  This version is correct.
+
+    The physical twist space is R/(2*pi/5): rotating one icosahedron by 72 deg about its own
+    vertex axis maps it to itself, so twist and twist + 2*pi/5 are the SAME configuration.
+    Each violation set is reduced into the five period cells and clipped to [0, 2*pi/5].
+    Endpoints are shrunk inward by MARGIN, so the pieces used are strict subsets of T_pq.
+    """
     rot = build()
     A = eleven(rot, +1)
     Q = eleven(rot, -1)
@@ -64,40 +82,35 @@ def inner_arcs(d=None, threshold=None, verbose=False):
     t2 = thr * thr
     w = (dd, mpf(0), mpf(0))
     out, kinds = [], {'whole': 0, 'empty': 0, 'arc': 0}
+    two_pi = 2 * pi
     for a in A:
         u = (w[0] - a[0], w[1] - a[1], w[2] - a[2])
         for q in Q:
-            # d^2(t) = |u|^2 + |q|^2 + 2<u, R_t q> with R_t a rotation about the x-axis, so
-            #   <u, R_t q> = u_x q_x + (u_y q_y + u_z q_z) cos t + (u_z q_y - u_y q_z) sin t
-            # and the CONSTANT piece is |u|^2 + |q|^2 + 2 u_x q_x.  Main omitted 2 u_x q_x in
-            # the first version (K15-C126): the x-components are untouched by the rotation, so
-            # that term does not vanish.  The omission made every pair look farther apart and
-            # produced a wrong threshold (6/sqrt5 instead of ~3.4555).
             Aij = ((u[0]**2 + u[1]**2 + u[2]**2) + (q[0]**2 + q[1]**2 + q[2]**2)
-                   + 2 * u[0] * q[0])
+                   + 2 * u[0] * q[0])          # + 2 u_x q_x: x is untouched by the rotation
             B = 2 * (u[1] * q[1] + u[2] * q[2])
             C = 2 * (u[2] * q[1] - u[1] * q[2])
             R = sqrt(B * B + C * C)
-            if Aij + R < t2:
+            if Aij + R < t2:                    # closer than thr for EVERY twist
                 out.append((mpf(0), PERIOD)); kinds['whole'] += 1; continue
-            if Aij - R > t2:
+            if Aij - R > t2:                    # never closer
                 kinds['empty'] += 1; continue
             psi = atan2(C, B)
             c = (t2 - Aij) / R
             c = max(min(c, mpf(1)), mpf(-1))
-            h = acos(c)
-            left = psi - h + MARGIN
-            right = psi + h - MARGIN
-            if right <= left:
-                kinds['empty'] += 1; continue
+            h = acos(c)                          # violation = |t - psi| > h
+            lo, hi = psi + h, psi + two_pi - h   # one interval in R, length 2pi - 2h
+            # shrink the TRUE endpoints inward FIRST, then split by period cell; shrinking the
+            # split artifacts instead would leave a spurious 2*MARGIN gap at t = 0
+            lo, hi = lo + MARGIN, hi - MARGIN
             kinds['arc'] += 1
-            k0 = int(math.floor(float(left) / float(PERIOD))) - 2
-            for k in range(k0, k0 + 6):
-                l2, h2 = left + k * PERIOD, right + k * PERIOD
-                L = max(l2, mpf(0))
-                Hh = min(h2, PERIOD)
-                if Hh > L:
-                    out.append((L, Hh))
+            for k in range(5):                   # 2*pi = 5 * PERIOD exactly
+                L = max(lo, k * PERIOD) - k * PERIOD
+                H = min(hi, (k + 1) * PERIOD) - k * PERIOD
+                L = max(L, mpf(0))
+                H = min(H, PERIOD)
+                if H > L:
+                    out.append((L, H))
     if verbose:
         print(f"  kinds: whole {kinds['whole']} empty {kinds['empty']} proper {kinds['arc']}")
     return out, kinds
