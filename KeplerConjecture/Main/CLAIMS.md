@@ -5583,3 +5583,41 @@ where to spend the next block.
 factor `12` and the conclusion would not change.
 
 *Status.* `TESTED_FINITE`. Reviewer X.
+
+### K15-C146 — the `ε` lever: `δ₀ = 0.0864` at `ε = 0.2`, at the price of proving `L1'` on a larger ball (`TESTED_FINITE`)
+
+`C142` fixed `ε = 1` (so `d ≤ 3`), which forced `θ_max = 0.0447` and a small `δ₀`. But `C124` only needs
+**some** `ε > 0.1967082337`, and `θ_max(ε) = cos ρ_c − (2+ε)/4` grows as `ε` shrinks. Re-optimising:
+
+| `ε` | `θ_max` | `η = 0.13θ_max²` | `δ₀ = 2V_dod·η` | `ρ_ε = 0` branch | bound at `ρ = 1/2` |
+| --- | --- | --- | --- | --- | --- |
+| `0.20` | `0.244654` | `7.781·10⁻³` | **`0.086376`** | `0.751315` ✓ | **`0.748870`** |
+| `0.50` | `0.169654` | `3.742·10⁻³` | `0.041536` | `0.512000` ✓ | `0.751884` |
+| `1.00` | `0.044654` | `2.592·10⁻⁴` | `0.002878` | `0.296296` ✓ | `0.754502` |
+
+So `ε = 0.2` gives `δ₀ = 0.0864`, which is **`40%` of the sharp `0.213126`**, and the `ρ = 1/2` bound
+becomes `0.748870` — `0.0058` below Hales–McLaughlin rather than `0.0002`. Every case-2 value stays below
+`ML`, so the split still closes.
+
+**And the measurement supports it.** The quotient ratio `(vol − V_dod)/d(θ,Rot)²` does **not** decay with
+`θ`; over 300 directions at each radius the minimum is `0.277` (`θ=0.045`), `0.294` (`0.08`), `0.313`
+(`0.12`), `0.265` (`0.16`), `0.316` (`0.20`), `0.288` (`0.2455`), `0.320` (`0.30`). So `L1'` with
+`c = 0.13` is comfortably satisfied at the `θ_max = 0.2455` that `ε = 0.2` needs.
+
+**The price, stated exactly.** `θ_max = 0.2455` requires `L1'` on the ball `Σθ² ≤ 0.0599`, thirty times
+the ball `Σθ² ≤ 0.002` that `ε = 1` needs, and **`L2`'s type-robustness is proved only for `θ ≤ 0.05`**
+(`|det| ≥ 0.760845 − 3θ ≥ 0.61`). At `θ = 0.245` the determinant bound is vacuous and the combinatorial
+type can genuinely change — so a rigorous `L1'` at `ε = 0.2` must handle type changes, which is exactly
+the difficulty `M-CERT-002` avoids at `ε = 1`. **The lever moves the difficulty from the constant to the
+combinatorics.**
+
+**Recommendation for the next block.** Prove `L1'` at `ε = 1` first (`M-CERT-002` as specified: no type
+changes, `c = 0.13`, `δ₀ = 2.88·10⁻³`), then extend the ball to `Σθ² ≤ 0.06` if the combinatorics can be
+tamed, which multiplies `δ₀` by `30`. Do not attempt the large ball first: `ε = 1` already gives a
+theorem, and a factor `30` is not worth risking the proof.
+
+**Nothing here is a packing bound.** The `ρ_ε → 0` limit is `ML` for every `ε` (`C143`), so no uniform
+improvement exists on this route; what improves is the rate in `ρ_ε`.
+
+*Status.* `TESTED_FINITE` (the `ε` table is arithmetic; the ratio table is sampled). `L1'` unproved.
+`C124` `PENDING_REVIEW`.
