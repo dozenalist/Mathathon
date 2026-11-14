@@ -153,6 +153,15 @@ def cut_value(b, edges, U):
     bd = sum(1 for (i, j) in edges if (i in U) != (j in U))
     return sb, bd
 
+def global_necessary_condition(b_lo):
+    """The cheapest necessary condition of all: summing div(v) >= b(v) over EVERY vertex gives
+    0 = sum_v div(v) >= sum_v b(v), so a transfer requires sum_v b(v) <= 0.  Checked separately
+    because an exhaustive search capped at max_size cannot reach U = everything for n > max_size,
+    and that is exactly the cut that carries this constraint."""
+    tot = sum(b_lo)
+    return tot, bool(tot <= 0)
+
+
 def find_violating_cut(b, edges, Phi, max_size=None):
     """Exhaustive over subsets up to max_size; returns (U, sum_b, boundary) of the worst
     ratio sum_b / boundary, or None if no violation.  n is small by design."""
@@ -166,6 +175,15 @@ def find_violating_cut(b, edges, Phi, max_size=None):
         for U in itertools.combinations(range(n), k):
             sb, bd = cut_value(b, edges, U)
             if bd == 0:
+                # An empty boundary means U is everything.  For a FINITE vertex set this is a
+                # legitimate obstruction: summing the divergence bound over all vertices gives
+                # 0 = sum_v div(v) >= sum_v b(v), so sum b > 0 is infeasible at ANY Phi.
+                # (This is the only place where the empty-boundary case carries content, and an
+                # earlier version skipped it, hiding the constraint.)
+                if sb > 0:
+                    ratio = F(10) ** 18          # represent as "unbounded"
+                    if best is None or ratio > best[0]:
+                        best = (ratio, U, sb, bd)
                 continue
             if sb > Phi * bd:
                 ratio = sb / bd
@@ -185,15 +203,17 @@ def feasible_flow(b, edges, Phi):
     n = max(max(e) for e in edges) + 1 if edges else 0
     if n == 0:
         return {}
-    # variable per oriented arc (both directions), |phi| <= Phi handled by bounds
-    arcs = [(i, j) for (i, j) in edges] + [(j, i) for (i, j) in edges]
-    idx = {a: k for k, a in enumerate(arcs)}
-    m = len(arcs)
-    # constraints: sum_w phi(v,w) >= b(v)  ->  -sum <= -b
+    # ONE variable per UNDIRECTED edge, with phi(i,j) in [-Phi, Phi].  An earlier version gave
+    # each orientation its own variable and symmetrised afterwards, which does not enforce
+    # antisymmetry inside the LP and can produce "flows" that violate the divergence bound.
+    idx = {(i, j): k for k, (i, j) in enumerate(edges)}
+    m = len(edges)
+    # constraints: sum_w phi(v,w) >= b(v)   with phi(w,v) = -phi(v,w)  ->  -sum <= -b
     A = np.zeros((n, m)); bb = np.zeros(n)
+    for (i, j) in edges:
+        A[i, idx[(i, j)]] -= 1.0        # i sends +phi
+        A[j, idx[(i, j)]] += 1.0        # j receives -phi
     for v in range(n):
-        for (i, j) in arcs:
-            if i == v: A[v, idx[(i, j)]] -= 1.0
         bb[v] = -float(b[v])
     bounds = [(-float(Phi), float(Phi))] * m
     c = np.zeros(m)
@@ -202,13 +222,10 @@ def feasible_flow(b, edges, Phi):
         return None
     # round and verify EXACTLY
     phi = {}
-    for a, k in idx.items():
+    for (i, j), k in idx.items():
         q = F(int(round(res.x[k] * 10 ** 9)), 10 ** 9)
-        phi[a] = q
-    # antisymmetry: enforce by using the difference
-    for (i, j) in edges:
-        d = (phi[(i, j)] - phi[(j, i)]) / 2
-        phi[(i, j)] = d; phi[(j, i)] = -d
+        phi[(i, j)] = q
+        phi[(j, i)] = -q
     return phi
 
 def verify_flow_exact(b, edges, Phi, phi):
@@ -259,7 +276,12 @@ def evaluate_external(fx, Phi_trials=(F(1, 1000), F(1, 100), F(1, 10), F(1))):
              "   [VOLUMES PROVISIONAL]" if fx["provisional"] else "   [volumes certified]"))
     if fx["note"]:
         print("   note:", fx["note"])
+    tot, ok_global = global_necessary_condition(fx["b_lo"])
+    print("   global necessary condition sum_v b >= %.9f -> %s"
+          % (float(tot), "satisfied" if ok_global else "VIOLATED (no transfer at any Phi)"))
     worst = find_violating_cut(fx["b_lo"], fx["edges"], F(0), max_size=min(len(fx["b_lo"]), 6))
+    if not ok_global:
+        worst = (F(10) ** 18, tuple(range(len(fx["b_lo"]))), tot, 0)
     if worst:
         ratio, U, sb, bd = worst
         print("   worst cut (|U| <= 6): U=%s  sum b >= %s  |delta^+|=%d  ratio=%.12f"
@@ -347,6 +369,10 @@ def main():
             report["rows"].append(row)
             print()
             continue
+        tot, ok_global = global_necessary_condition(b_lo)
+        print("   global necessary condition: sum_v b >= %.9f  ->  %s"
+              % (float(tot), "satisfied" if ok_global else
+                 "VIOLATED (no transfer exists at ANY Phi)"))
         sb0, bd0 = cut_value(b_lo, edges, [0])
         phi_min = sb0 / bd0 if bd0 else None
         print("   R=%.4f: |E|=%d ; singleton cut {0}: sum_U b >= %.12f over |delta^+|=%d"
@@ -354,6 +380,8 @@ def main():
         if phi_min is not None:
             print("            => the cut condition FAILS for every Phi < %.12f" % float(phi_min))
         worst = find_violating_cut(b_lo, edges, F(0), max_size=min(n, 6))
+        if not ok_global:
+            worst = (F(10) ** 18, tuple(range(n)), tot, 0)
         ratio = None
         if worst:
             ratio, U, sb, bd = worst

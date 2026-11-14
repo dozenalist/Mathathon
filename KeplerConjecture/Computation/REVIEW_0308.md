@@ -26,6 +26,28 @@ for every **finite** `U ⊆ Λ`.
 | an **explicit violating cut** (finite `U`) | a genuine obstruction for the **infinite packing**: `U` is finite, so it is a legitimate test set. Unconditional. |
 | a **feasible flow** on a periodic patch | `PATCH_FEASIBLE` — evidence about *that patch only*. It does not prove the cut condition for other finite `U`, and it does not prove the infinite extension. Never reported as a certificate. |
 
+### Two correctness bugs in the flow model, found by a truth-known test suite
+
+`tests_cut_flow.py` checks the evaluator against cases with **analytically known** answers. It
+found two substantive errors, both now fixed:
+
+1. **The flow formulation was not antisymmetric.** Each oriented arc `(i,j)` and `(j,i)` had its
+   own variable with independent bounds, and antisymmetry was imposed only *after* the LP. That
+   allows a "flow" that violates the divergence bound, and the verifier rejected some of them —
+   inconsistently, which is what exposed it. Now there is **one variable per undirected edge**,
+   with `φ(i,j) ∈ [−Φ, Φ]` and `φ(j,i) = −φ(i,j)` inside the LP.
+2. **The strongest necessary condition was being skipped.** Summing `div(v) ≥ b(v)` over *every*
+   vertex gives `0 = Σ_v div(v) ≥ Σ_v b(v)`, so `Σ_v b ≤ 0` is necessary. That is the
+   empty-boundary cut `U = everything`, and `find_violating_cut` skipped empty boundaries (to
+   avoid dividing by zero) — hiding the condition entirely. It is now checked separately
+   (`global_necessary_condition`) in both the built-in and the external paths.
+
+The distinction the tests forced is worth stating as a matter of the mathematics, not of code: on
+a **finite** vertex set the empty-boundary cut carries content (`Σ_U b ≤ 0`), whereas for the
+**infinite** packing the whole space is not a finite test set. A star with a positive centre and
+zero leaves therefore has **no transfer at any `Φ`**, while a star whose leaves sum to `−b₀` has
+threshold exactly `b₀/m`; both are now tested, and the earlier version got the first case wrong.
+
 Arithmetic: FCC and HCP have `b = 0` exactly. The icosahedral fixture's cell volume involves
 `√5`, so the file carries rational enclosures and uses `b_lo` to refute and `b_hi` for
 feasibility — each direction conservative.

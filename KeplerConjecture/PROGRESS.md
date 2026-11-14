@@ -659,3 +659,18 @@ families searched, not a structural impossibility.
 
 **Second memory bug fixed:** `cut_isoperimetry.py` first built a full distance matrix on `33³`
 points (~31 GB) and was killed; adjacency now comes from the 12 explicit contact offsets.
+
+### K15-COMP-038 — 2026-11-14 — Computation (role C), two flow-model bugs fixed
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-FLOWASYM-001** | **PROVED (defect, fixed)** | the transfer LP gave each oriented arc its own variable with independent bounds and imposed antisymmetry only *after* the solve, which admits "flows" violating the divergence bound. Now **one variable per undirected edge** with `φ(i,j) ∈ [−Φ,Φ]`, `φ(j,i) = −φ(i,j)` inside the LP | `cut_flow.py`, `tests_cut_flow.py` |
+| **K15-C-FLOWGLOBAL-001** | **PROVED (defect, fixed)** | summing `div(v) ≥ b(v)` over all vertices gives `0 ≥ Σ_v b(v)`, so `Σ_v b ≤ 0` is **necessary** — the empty-boundary cut `U = everything`. `find_violating_cut` skipped empty boundaries to avoid dividing by zero, **hiding the condition**. Now checked separately as `global_necessary_condition` | same |
+| K15-C-FLOWSTAR-001 | measured | consequences the tests now pin down: a star with a positive centre and **zero** leaves has **no transfer at any `Φ`** (because `Σb > 0`), while a star whose leaves sum to `−b₀` has threshold exactly **`b₀/m`**. The first case was wrong in the earlier version | `tests_cut_flow.py` S1a/S1b |
+
+**The distinction the tests forced, as mathematics rather than code:** on a *finite* vertex set the
+empty-boundary cut carries content (`Σ_U b ≤ 0`); for the *infinite* packing the whole space is not
+a finite test set. Both facts are now represented explicitly.
+
+`tests_cut_flow.py` cases S1a, S1b, S2, S3, S4, S5, S6 all pass; the suite checks the
+implementation against analytic thresholds rather than against itself.
