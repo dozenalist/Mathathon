@@ -3584,3 +3584,42 @@ straddles it).
 
 *Status.* `PROVED` on `[2, 6/√5)` modulo 50-digit arithmetic and the `1e-20` inflation; `TESTED`
 for the sharpness claim. Reviewer X.
+
+### K15-C117 — the dodecahedral bound's true cost, read from the primary source (`AUDITED`; corrects `K15-C100`)
+
+`K15-C100`'s cost table attributed Hales–McLaughlin to "one cell inequality (dodecahedron)" — a
+row that reads as a short proof and invites the inference that a **two**-cell inequality would
+also be short. The primary source (`K15-C115`) contradicts that, and this entry corrects it.
+
+**What the proof actually costs** (quotations from Hales & McLaughlin, §3 and §1.3):
+
+- Three programs: *"graph generation"*, *"a linear programming package"*, and *"a piece of code
+  based on interval arithmetic that automatically proves nonlinear inequalities"*; the paper
+  refers to *"several hundred linear programs"*.
+- The reduction is by **hypermaps**: *"each tame Voronoi graph can be encoded as a hypermap `H` …
+  the computer code repository specifies a hypermap system, called the Voronoi hypermap system,
+  for each case `H` arising in the classification"*, with infeasibility via LP.
+- Two cases: `n ≤ 12` (Fejes Tóth) and `n ≥ 13` (the full machinery plus a local-deformation
+  argument, §6, Theorems 6.2–6.3).
+- On the relation to Kepler: *"the two solutions follow a similar outline and share a significant
+  number of methods. Both are based on long computer calculations. Computer code was freely
+  exchanged between the two projects."*
+
+**Three consequences.**
+
+1. **`0.754697399337` is Kepler-scale, not cheap.** The pair route must not be advertised as
+   "a shorter proof than Hales" on the strength of the ML precedent; the nearest precedent for a
+   multi-cell tightening is itself a major computation plus a delicate deformation argument.
+   `K15-C100`'s column is corrected accordingly.
+2. **The differentiator is the reparametrisation, not the scale.** ML's mechanism is a *weight
+   assignment* — an LP duality over clusters — not a two-cell volume inequality, so a pair bound
+   would be a genuinely different object; but nothing here suggests it is *easier*.
+3. **Independent confirmation that the pointwise family is rigid** (`D19`): *"With the
+   Dodecahedral problem, there is no such flexibility. The problem about finite clusters of balls
+   is fixed from the outset. This gives the problem a degree of rigidity that is not present in
+   the sphere packing problem."*
+
+**What is not claimed.** Not that the pair bound is hard — only that the ML precedent gives no
+evidence it is easy. Neither cost has been estimated for `(L)`.
+
+*Status.* `AUDITED` (quotations read from the source). Reviewer X.

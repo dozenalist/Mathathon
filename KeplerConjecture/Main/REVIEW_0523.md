@@ -126,6 +126,29 @@ Three things this pins down, all of which the ledger had been assuming:
 remains non-explicit and `G11`/`G14` are unaffected. The verification removes an assumption; it
 adds no number.
 
+## 2.4 Honest comparison with known work: the dodecahedral bound is Kepler-scale
+
+Reading the primary source (§2.3) also corrected a cost claim of my own, and this belongs in the
+review record because the review's success criterion is "an honest comparison with known work".
+
+`K15-C100`'s table put Hales–McLaughlin's cost down as *"one cell inequality (dodecahedron)"*, a
+row that reads as a short proof and invites the inference that a **two**-cell inequality would
+also be short. The source says otherwise: three programs (graph generation, a linear-programming
+package, an interval-arithmetic inequality prover), *"several hundred linear programs"*, a
+hypermap classification with LP infeasibility per hypermap system, and a local-deformation
+argument for the `n ≥ 13` case. And on the comparison with the other proof: *"the two solutions
+follow a similar outline and share a significant number of methods. Both are based on long
+computer calculations."*
+
+**So `0.754697399337` is Kepler-scale, not cheap**, and the pair route must not be advertised as
+"a shorter proof than Hales" on the strength of that precedent. Withdrawn in `COMPLEXITY.md`; what
+stands is narrower and still worth having: *if* `(L)` were proved, the remaining step to
+`π/√18` is the elementary bridge of `C106`, so the proof's cost would be the cost of `(L)` alone.
+
+The source also independently confirms `D19`: *"With the Dodecahedral problem, there is no such
+flexibility. The problem about finite clusters of balls is fixed from the outset."* The per-cell
+family is rigid — from the primary source, not from this project's inference.
+
 ## 3. Worker results integrated
 
 **E's payer search — eight bounded C5 pilots** (45 s each, one CPU, 1 GiB): best
