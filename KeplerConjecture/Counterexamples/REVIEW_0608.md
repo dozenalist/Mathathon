@@ -170,12 +170,36 @@ an exact multiple, so *that* run is unaffected; any other region is not, and the
   `(M)`, not the only one, and the twelve-point set at distance ≥ 2 on radius 2 is
   positive-dimensional (`X-C048`) — nothing in this review rests on either uniqueness.
 
-## 7. Fallback (not needed)
+## 7. The 13–20-face route: no obstruction, but the constant it needs is a *conjecture*
 
-The fallback asked for was either a proof of the general bounded-interval sign method under its
-input contract, or a near-contact obstruction for the 13–20-face route. Both were addressed earlier
-(`X-C046`: the Vincent–Descartes decider with 92 cases and the `nsimplify` defect it found; `X-C051`:
-the `3.4555003` threshold). Nothing new is claimed here beyond pointing `C116` at `X-C051`.
+`C122` asks for a bound (B_F): a convex body containing the unit ball, with at most `F` faces all at
+distance `≥ ρ`, has volume `≥ c_F ρ³`, and the isolated-vertex argument needs
+`c_F > √32/1.045³ = 4.957082168`.
+
+- **No obstruction exists for `F ≤ 20`.** The best 20-faced constant is `V_ico = 5.054056144`, and
+  `V_ico·1.045³ = 5.767517665 > 5.656854249 = √32` — a **1.96% margin**. So if the 20-faced
+  optimum is the icosahedron, the whole 13–20-face range is settled, with the dodecahedron's
+  `11.97%` at `F = 12` and the icosahedron's `1.96%` at `F = 20` bracketing it.
+- **But that constant is not proved.** Lindelöf's theorem constrains the *shape* of an optimal
+  circumscribed polyhedron (all faces tangent, at their centroids); the *optimality* of the
+  icosahedron among 20-faced bodies is classical *conjecture* with strong numerical support
+  (Goldberg's optimised geometries, Mutoh's computer-aided search for `4 ≤ n ≤ 30`), and Fejes Tóth's
+  proof covers only `n = 4, 5, 6, 12` — the same `≤ 12` boundary as the dodecahedral theorem itself.
+  So `(B_20)` with `c_20 = V_ico` is **conditional on an unproved classical conjecture**, and the
+  honest statement of the 13–20-face route is: *it closes if the icosahedron is the 20-face
+  optimum, and the margin it would have is 1.96%.*
+- **The route does fail for large `F`**: `4π/3 = 4.188790 < 4.957082`, so no ball-like bound can
+  work beyond the crossover; the exact crossover needs the `n`-face optima, which are unknown.
+
+So the answer to "give an explicit near-contact obstruction" is: none for `F ≤ 20`, and the
+obstruction for large `F` is the ball itself (`4π/3`). What the route actually needs is not an
+obstruction but the `n`-face optimality for `13 ≤ n ≤ 20`.
+
+## 7.1 The other fallback (already done)
+
+The general bounded-interval sign method was addressed in the previous block (`X-C046`: the
+Vincent–Descartes decider, 92 cases, 0 mismatches, and the `nsimplify` defect it found in
+`exact_sign.py`).
 
 ## 8. Status changes asked for
 

@@ -1044,3 +1044,16 @@ regardless. Replicating the index arithmetic: `[110°, 111.05°]` at `w = 0.1°`
 `[110,111] × [35,36]` at `0.1°` is an exact multiple, so that run is unaffected. Fix: require the
 extent to be an integer multiple of `w`, or add the remainder box. (Independently, the region's
 certification inherits `X-C060`/`X-C061` through `rigorous_cell_volume.box_volume`.)
+
+### K15-X-C066 — the 13–20-face route has no obstruction but needs an unproved classical constant
+
+`C122`'s (B_F) needs `c_F > √32/1.045³ = 4.957082168`. No obstruction exists for `F ≤ 20`: the
+20-faced constant is `V_ico = 5.054056144` (regular icosahedron of inradius 1) and
+`V_ico·1.045³ = 5.767517665 > √32`, a **1.96% margin** (against the dodecahedron's `11.97%` at
+`F = 12`). **But the optimality of the icosahedron among 20-faced circumscribed bodies is not
+proved**: Lindelöf's theorem gives only the shape of an optimum (faces tangent at centroids);
+proved optimality covers `n = 4, 5, 6, 12` (Fejes Tóth) — the same `≤ 12` boundary as the
+dodecahedral theorem — while `n = 20` is classical conjecture with numerical support (Goldberg;
+Mutoh's computer-aided search, `4 ≤ n ≤ 30`). So the 13–20-face case closes *if* that conjecture
+holds, with 1.96% margin, and the route does fail for large `F` since `4π/3 = 4.188790 < 4.957082`.
+The obstruction the brief asked for exists only in the large-`F` direction, and it is the ball.
