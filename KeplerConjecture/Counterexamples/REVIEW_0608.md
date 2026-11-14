@@ -559,3 +559,17 @@ the degree is at least 17 and the constant is at least `2 + 2·17 = 36`, not 26.
 This refutes the step, not the theorem: the density-zero conclusion only needs a finite multiplier, and
 a shell-kissing bound `deg_ε ≤ C(1+ε/2)²` would carry it. But `26` and `deg ≤ 12` cannot be used as
 written, and `C124` is marked `PROVED`.
+
+## 24. Erratum: `C128`'s one-pair proof is valid; my §15 was wrong
+
+§15 ("`ACCEPTED.md:28`'s parenthetical number is the defective one") concluded that the parenthetical's
+*verdict* — "a one-pair argument is impossible" — was right and only its number stale. **The verdict is
+wrong too, and `C128` is right.** I maximised over the full `360°` twist circle; the physical twist space
+is `72°` (`R/(2π/5)`, since a `72°` rotation about the vertex axis is an icosahedral symmetry). For the
+pair with `A = 6.444582472`, `R = 6.4`: `h = arccos(−(3−√5)/2) = 112.4555152°`, so its violation arc has
+length `2π − 2h = 135.0889696° > 72°` and meets every coset of `72°`; directly,
+`max over τ ∈ [0°,72°) of min over k d²(τ + 72k°) = 1.266873708 < 4`, reproducing `C128`'s number to
+`1e-9`. So a single pair does settle the step, and `C128` should replace the 65-piece cover.
+
+What survives from §15: `8.4223` is the defective `A`, and the true `A + R` is `12.844582472`. But the
+parenthetical in `ACCEPTED.md:28` is wrong on both counts and should be replaced by the pair certificate.

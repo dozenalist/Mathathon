@@ -1446,3 +1446,26 @@ stand.
 
 Also note the safe direction: 12 *is* the bound for neighbours at distance **exactly** 2 on a sphere
 (kissing number, Schütte–van der Corput), which is why `C112`-type contact arguments are unaffected.
+
+### K15-X-C084 — ERRATUM to `X-C075`: `C128`'s one-pair argument is VALID; my "no single pair" was computed on the wrong twist space
+
+`X-C075` above says "no single pair clashes for every twist — the conclusion `ACCEPTED.md` draws is
+correct". **That is wrong**, and `C128` is right. My statement used `A − R ≤ d² ≤ A + R` over the whole
+`360°` twist circle; the physical twist space is `R/(2π/5)`, a circle of circumference **`72°`**, because
+a `72°` rotation about the vertex axis maps the icosahedron to itself. A violation set that is an arc of
+length `> 72°` meets **every** coset, so one pair suffices.
+
+Checked exactly for the pair with `A = 6.444582472`, `R = 6.4` (in my `build()` ordering it is
+`A[5]`, `Q[10]`, not `A[1]`, `Q[8]`; the pair is identified by its invariants):
+
+- `c = (4−A)/R = −(3−√5)/2 = −0.381966011250`, `h = arccos c = 112.4555152°`, `|T| = 2π − 2h =
+  135.0889696° > 72°` ✓ — so `T` meets every coset;
+- direct maximisation, `max over τ ∈ [0°,72°) of min over k∈{0..4} d²(τ + 72k°)` =
+  **`1.266873708`** at `τ = 0`, matching `C128` to `1e-9` — and `1.2669 < 4`, i.e. this one pair is
+  closer than `2` at some representative of every physical twist.
+
+So `C128`'s three-line proof stands and is the better certificate of record. What remains true from
+`X-C075`: `ACCEPTED.md:28`'s number `8.4223` is the defective `A` (the true `A + R` is `12.844582472`),
+**and** its parenthetical conclusion — "a one-pair argument is impossible" — is also wrong, for the
+independent reason that it maximises over `360°` instead of `72°`. Both halves of that parenthetical
+should go: the correct pair certificate is `max_τ min_k d² = 1.266873708 < 4`.
