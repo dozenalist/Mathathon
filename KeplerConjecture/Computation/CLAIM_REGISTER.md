@@ -27,6 +27,8 @@ the roadmap vocabulary with two additions used only where the reviewer required 
 | `K15-C-SHELLGAIN-002/003` | `TESTED_FAMILY` | the *uniform* `n`-neighbour allowance was not used by the LP in the cases tested (16 exact comparisons, two bases). Says **nothing** about local/configurational strengthenings |
 | `K15-C-SHELLBENCH-001` | `TESTED_FINITE` | grid LP, `η = 0` throughout; held-out tests exposed under-resolution at `K ≥ 21` |
 | `K15-C-CUTBLOB-001` | measured | `Φ > 0.008880` from one fixture; a **lower bound**, not a refutation |
+| `K15-C-CUTJAM-001` | `TESTED_FINITE` (negative) | FCC/HCP at separation 2 are jammed (12 contacts at exactly 2), so no perturbation preserves separation: amplitudes 0.06 → 1.894, 0.01 → 1.982. **No near-Kepler cut fixture by perturbation** |
+| `K15-C-SOSQSIDE-002` | measured | degree-7 `q`-side squares give `38.136` — worse than degree 5; bounds what a naive search may claim |
 | `K15-C-SOSIRRED-001` | `TESTED_FAMILY` (negative) | LP-optimal certificates are irreducible over `Q` at degrees 5, 7, 9, 13, 33, so no factorisation-based rational Gram export exists |
 | `K15-C-SATURATION-001` | `TESTED_FAMILY` | the Laguerre pipeline's best is at degree 33 (`0.77996622`); degree 37–41 failed at every grid/margin tried |
 
@@ -48,8 +50,8 @@ the roadmap vocabulary with two additions used only where the reviewer required 
 1. **One certificate with obvious rational Gram on BOTH sides at useful strength.** Each side is
    individually demonstrable (`K15-C-SOSQSIDE-003` Fourier side, `K15-C-SOSFAMILY-001` `p` side);
    doing both needs an SDP with rational Gram rounding — no solver on the SAIR VM.
-2. **A near-Kepler fixture with unequal cell volumes** for the cut-deficit scan. The present
-   fixture's density is 55× below Kepler because its ring cells are huge; a close-packing
-   perturbation needs a periodic Voronoi volume routine. This is the next concrete build.
+2. **A near-Kepler fixture with unequal cell volumes** for the cut-deficit scan. Perturbation is
+   *ruled out* (`K15-C-CUTJAM-001`: close packings are jammed), so this needs a Frank–Kasper phase
+   (A15, σ) constructed exactly. This is the next concrete build.
 3. **Re-run every `PENDING_MAIN_FIX` item** after Main's `shell_check` fix is audited.
 4. `shell_sos.py`'s SOS structure is unimplemented; it is an LP.
