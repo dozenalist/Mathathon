@@ -1057,3 +1057,12 @@ dodecahedral theorem — while `n = 20` is classical conjecture with numerical s
 Mutoh's computer-aided search, `4 ≤ n ≤ 30`). So the 13–20-face case closes *if* that conjecture
 holds, with 1.96% margin, and the route does fail for large `F` since `4π/3 = 4.188790 < 4.957082`.
 The obstruction the brief asked for exists only in the large-`F` direction, and it is the ball.
+
+### K15-X-C067 — E's sin/cos interval extension is sound (checked), unlike the enclosing steps
+
+`range_of` in `rigorous_cell_volume.py` (blob `d015a2e1...`) returns the hull of the corner values
+plus the quarter-turn points inside the box; that is a valid interval extension, and a direct test
+gives **504 samples over 12 random boxes, 0 outside the interval**. Recorded so that `X-C060`/
+`X-C061` are not read as "E's arithmetic is wrong": the rational polytope machinery (cube `8`,
+tetrahedron `8/3`, fcc `4√2`) and the trigonometric enclosure are exact; the defects are the
+Euclidean-slack step, the boundedness step and the region grid.

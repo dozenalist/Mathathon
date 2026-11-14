@@ -152,6 +152,12 @@ test**. So requirement (1) below is really "boundedness *plus* the covering chec
 5. **domain coverage** — bounding one cell of one configuration is not bounding a family; the
    branch-and-bound must cover the parameter domain exactly, boundary included.
 
+**What in E's chain is sound.** Checked separately, so the audit does not overstate: the
+sin/cos interval extension `range_of` (hull of corner values plus the quarter-turn points inside
+the box) contains the true range — 504 samples over 12 random boxes, 0 outside; and the rational
+polytope machinery is exact (cube `8`, tetrahedron `8/3`, fcc `4√2`). The failures are the two
+enclosure steps and the grid, not the arithmetic.
+
 **Requirement 5 also fails, in `certify_region.py` itself.** The box grid is
 `n = int(round((hi − lo)/w))` followed by `n` boxes at `lo + i·w`, and nothing checks the
 remainder: a region `[110°, 111.05°]` at `w = 0.1°` is covered only to `111°` (**a 0.05° gap**), and
