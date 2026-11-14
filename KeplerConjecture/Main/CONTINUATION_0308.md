@@ -252,3 +252,116 @@ routes explored here are each at least as strong as the theorem they would prove
   (it belongs to C) and no `t*` was computed for any new packing.
 - **`C096`'s conjecture `(S)` is not proved**, and the `13`-point search is not exhaustive —
   it probes the natural positions only.
+
+---
+
+# Review `K15-REVIEW-0353-M-EVIDENCE` — repairs and integration
+
+Received after the block's first push (`b42c8d1`). All four objections to `K15-C093` are
+**confirmed against the text**; the three worker revisions are integrated by hash; one
+further defect was found by Main while integrating them. **No new best packing bound is
+established** by any of this, and `RESULTS.md` does not move.
+
+## R1 — the cut/flow theorem: four defects, all real (`D18`)
+
+`CUT_FLOW_THEOREM.md` is rewritten; the rejected wording is retained there in §6 and in the
+ledger under `C093`, per the standing convention.
+
+| # | Defect | Repair |
+| --- | --- | --- |
+| 1 | cut orientation **reversed**: the text said the infinite arcs make `X ⊇ N(U)∖F` optimal for `X = S∖F` | finite-capacity cuts have `X = ∅` — an outside vertex on the source side puts its infinite arc `w→t` across the cut, so outside vertices are forced onto the **sink** side and there is no minimisation. Conclusion `Σ_U b ≤ cap(U)` unchanged. **Both directed arcs now written out** (`v→w` and `w→v`, each with the full capacity) and the transfer is their net `ψ(v,w) = f(v→w) − f(w→v)`, so `|ψ| ≤ Φ_{vw}`; conversely every transfer arises this way |
+| 2 | threshold formula divided by a **zero boundary**, and the example was wrong | `t* = +∞` if some `U ⊆ F` has `δ⁺(U) = ∅` and `Σ_U b > 0`; otherwise `max(0, sup_{δ⁺(U)≠∅} Σ_U b/|δ⁺(U)|)`. Hence `b = (4,−1,−1,−1)` is infeasible at **every** `Φ` (`Σ_F b = 1 > 0 = cap(F)`), not at a threshold `4/3`; the genuine threshold example is `b = (4,−4/3,−4/3,−4/3)` with `t* = 4/3`. `Φ ≥ 0` is now a stated hypothesis and the `max(0,·)` branch is what makes `Φ = 0` available when every cut has `Σ_U b < 0` |
+| 3 | compactness assumed a **uniform bound** | `∏_e [−Φ_e, Φ_e]` is compact by Tychonoff from the compactness of each factor; `sup_e Φ_e < ∞` is **removed** as a hypothesis. A table now names where each remaining hypothesis is used: `Φ_e ≥ 0` (non-degenerate interval), `Φ_e < ∞` (compact factor), local finiteness (**only** so that `div` is a finite sum, hence continuous), `F_n` finite with `⋃F_n = V` |
+| 4 | the density implication read as settling the strength | §4: `(C) ⟹ Kepler` (`C087`), no converse, **no equivalence**; `(C)` is at least as strong as Kepler |
+
+**A second, independent proof of (⟸) was added** rather than only patching the first:
+Farkas for `{Aφ ≥ b, |φ_e| ≤ Φ_e}` *keeping the box multipliers* gives the alternative
+`∃y ≥ 0 : Σ_F y_v b(v) > Σ_e Φ_e|y_v − y_w|`, and the coarea identities
+`Σ_F y_v b = ∫_0^∞ Σ_{U_t} b`, `Σ_e Φ_e|y_v − y_w| = ∫_0^∞ cap(U_t)` with
+`U_t = {v : y_v > t}` then produce a cut violating `(C)`. This is the proof that survives
+signed capacities, and it is what established that the cut condition is *exactly*
+equivalent (not merely sufficient). The audit request for X is `AUDIT_REQUEST_X.md` item 5,
+with a specific "try to break it" target: an instance where the two proofs disagree.
+
+## R2 — the shell allowance's missing precondition (`K15-C098`)
+
+Confirmed: `check(a, rho, eta, …)` accepted any `eta`. The count-price bound is licensed
+only for `η ≥ 0`; for `η < 0` the correct statement replaces `η` by `max(η,0) = 0`, because
+`f ≤ 0` off the shell already supplies the stronger hypothesis. So an `η < 0` call returned
+a **smaller** number than the argument licenses for the parameter the caller believes it
+passed. `check` now rejects `η < 0` with an explicit message and
+`checker_adversarial.py` gains two cases (suite now 37 cases). **This is a precondition
+validation, not a soundness argument**: generic checker soundness stays **SUSPENDED**
+(`PN-4`), exactly as X asks.
+
+## R3 — three worker revisions integrated by hash (`K15-C097`)
+
+**(a) C `4bcbd3a` — `C-DECOUPLE-001`.** For the icosahedral fixture the periodic graph is a
+disjoint union of identical copies (centres within 2 of their copy origin, so copies are
+`≥ 16 − 4 = 12` apart while `R ≤ 3`), so a finite `U` splits with **no cross edges** and the
+ratio's maximum is attained inside one copy: `t* = 0.008880268414417` is exact for the
+infinite packing, not a patch proxy. Accepted, with C's own caveat (dense packings have
+period comparable to `R`). **Main adds two limits:** the fixture is **unsaturated**, so this
+is a statement about an unsaturated periodic packing and **not** a floor for saturated ones;
+that floor is independently valid from `K15-C081r` (Zorn extension to a saturated packing,
+adding centres only shrinks `Ω(v₀)`, `deg(v₀) = 12` by `K15-C054`), giving the same number
+`0.1065632/12 = 0.00888027…`.
+
+**(b) E `82689ba` — the trend claim corrected.** The 30-centre search gives `6.494845` and
+`6.968035`, *worse* than the 18-centre `6.263608`, so the sequence is not monotone and the
+"margin halving at each step" framing is withdrawn by E itself. `(P′)` has survived every
+legal test, best `6.263608` against a required `5.763417`; the evidence is **one-sided, so
+not support**. Recorded `PROPOSED`, unproved — and Main states why plainly: **numerical
+upper volumes cannot validate it**, since an upper bound on a computed volume is not a lower
+bound on the true infimum and no interval arithmetic was used.
+
+**(c) X `118ecd1` — `K15-X-C017`.** Both sides explicit: rational symmetric `6×6` `G,A,B`,
+`m = 5`, `S = 8`; all PSD by exact rational LDL; `Q(A,B)` equals the Fourier image of `P`
+exactly; `P(0)/Q(0) = 1.039899410072` hence `Δ ≤ 0.782267220134`; `Q ≥ 0` cross-checked by
+exact Sturm. X also corrects its own earlier assumption that `G` had to be singular (`P =
+−(s−4)H` gives `P(4) = 0` for any `H`). **`0.782267220134` is worse than the project's best
+`0.779966216777`, so it is not an improvement.** Its value is methodological and it is
+significant: **no sign predicate, no root isolation and no Sturm is needed anywhere — every
+sign condition is a rational PSD test.** Given three unsound revisions of `shell_check.py`,
+that is the trust profile the project should prefer, and it motivates
+
+**`K15-C099` (proposal, needs the person's sign-off):** make "both sides, all sign
+conditions rational PSD" the *acceptance* criterion for certificates, and mark any
+certificate needing `shell_check` as `PENDING` until the soundness argument of `PN-4`
+exists. It costs nothing numerically (no candidate is competitive with published values)
+and it removes the project's most-repeated failure. Reverse if `PN-4` lands and X accepts it.
+
+## R4 — the 13-cluster: X's flag confirmed, with the exact numbers
+
+X flagged that C's sparse periodic 13-cluster is unsaturated and that `build_13(2.1029)` adds
+ring edges below the true separation. **Both confirmed**, and Main found the closed form is
+also mis-stated:
+
+- the exact ring (outer-icosahedron edge) at circumradius 2 is
+  `4/√(1+φ²) = 4√2/√(5+√5) = 2√(2 − 2/√5) = 2.102924448476534…`;
+- C's comment gives `2√(1 − 1/√5) = 2.1029`, which evaluates to `1.48699` — **it is missing
+  a factor `√2`**; and the decimal `2.1029` is short by `2.4448e−5`;
+- `build_13` gates on `distance_R >= 2.1029 − 1e−9`, so at the scanned row `R = 2.1029` the
+  graph gains 30 ring edges whose actual separation `2.102924448…` **exceeds** `R`.
+
+*Consequences, stated at their true size.* The affected row is mislabelled — its reported
+`t*` is the value at `R ≥ 2.1029244`, not at `R = 2.1029` — and the qualitative conclusion
+(the singleton cut binds, threshold unchanged) is unaffected because it is driven by the
+singleton. But **no finite scan from that fixture is promoted here**, the fixture is not used
+as a saturated witness anywhere in `Main/`, and exact geometric validation
+(`validate_icos_fixture` extended to the ring-edge threshold, with the closed form above)
+is requested before any of its rows is quoted.
+
+## R5 — Barlow work continues after the repairs
+
+The Barlow programme was not blocked by any of the above and is unaffected: `K15-C094`
+(every Barlow cell `√32`, proof + 346 layer analyses), `K15-C095` (the crack packing:
+infinite closed components, `b = −1.3285` at the faces, a second equality case of Kepler's
+bound), `K15-C096` (singleton closed components reduced to `V(2.09) ≥ √32`, sharp threshold
+`ρ* = 2.012718662`, margin `12%` under conjecture `(S)`). The repair discipline of `D18`
+was applied to them as well: `C094`'s step 2 has an equality/tangency case that the
+numerics check explicitly (`slack = 0` to `1e−16`, not `< 0`), and `C095`'s two analytic
+bounds (`H ≤ d ≤ 2H`) are stated as inequalities rather than as sampled values.
+
+**Still not established: any new bound on the density of a packing in `R³`.** The record
+bound to beat analytically remains Hales–McLaughlin's `0.754697399337`.

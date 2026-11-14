@@ -123,7 +123,20 @@ def main():
         good = (got == want)
         ok = ok and good
         print(("PASS  " if good else "FAIL  ") + name + ("" if good else "   (got %s)" % got))
-    n = len(cases())
+    # --- review 0353: PRECONDITIONS of check() (K15-C098).  A negative shell
+    # allowance is not a sign-predicate question; check() must refuse it, because the
+    # count-price bound is licensed only for eta >= 0 and the eta < 0 statement is the
+    # plain two-point bound.  Passing eta < 0 used to return a smaller number.
+    print("\npreconditions of check() (not sign predicates):")
+    from shell_check import check
+    a_ok = [F(1), F(-11), F(1)]
+    for eta, want_none, label in ((-F(1, 10), True, "eta = -1/10 rejected"),
+                                 (-F(1), True, "eta = -1 rejected")):
+        got = check(a_ok, rho=F(209, 100), eta=eta, verbose=False)
+        good = (got is None) == want_none
+        ok = ok and good
+        print(("PASS  " if good else "FAIL  ") + label)
+    n = len(cases()) + 2
     print("\n%d cases; SUITE: %s" % (n, "ALL EXPECTATIONS HOLD" if ok else "MISMATCH"))
     print("These same cases should be run against Computation's exactcert;"
           "\nthey are stated in Main's basis, so convert with "

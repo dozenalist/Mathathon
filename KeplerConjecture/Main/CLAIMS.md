@@ -2579,6 +2579,46 @@ signed `b`, antisymmetric `φ`, uniform capacity):
   variant `b(a) = 4` is infeasible at `Φ = 1` with the violating cut `{a}`; and a
   two-hop path `(+1,0,0,−1)` has `t* = 1` with a unique flow and three tight prefix cuts.
 
+> **REPAIRED (`D18`; review `K15-REVIEW-0353-M-EVIDENCE`).** Four defects were found by
+> the reviewer and are all confirmed against the text. `Main/CUT_FLOW_THEOREM.md` is
+> rewritten; the first version's statements are retained there in §6 as rejected evidence.
+>
+> 1. **Cut orientation reversed.** The first version said the infinite arcs to the sink make
+>    `X ⊇ N(U)∖F` optimal for `X = S∖F`. Wrong: an outside vertex on the **source** side
+>    puts its infinite arc `w→t` across the cut, so finite cuts have `X = ∅` — outside
+>    vertices are forced onto the **sink** side, and there is no minimisation. The
+>    conclusion `Σ_U b ≤ cap(U)` is unchanged. Also now written out: **two directed arcs
+>    `v→w` and `w→v`, each with the full capacity `Φ_{vw}`**, and the transfer is their net
+>    `ψ(v,w) = f(v→w) − f(w→v)`, so `|ψ| ≤ Φ_{vw}` and conversely every transfer arises
+>    this way.
+> 2. **Threshold formula divided by a zero boundary.** The first version's
+>    `t* = max_{U⊆F} Σ_U b/|δ⁺(U)|` is undefined when `δ⁺(U) = ∅`, and that case is an
+>    obstruction at *every* capacity. Corrected:
+>    `t* = +∞` if some `U ⊆ F` has `δ⁺(U) = ∅` and `Σ_U b > 0`, else
+>    `max(0, sup_{U: δ⁺(U)≠∅} Σ_U b/|δ⁺(U)|)`. The `max(0,·)` is needed because the minimal
+>    capacity must be non-negative. Consequently the first version's example
+>    `b = (4,−1,−1,−1)` is **infeasible at every `Φ`** (`Σ_F b = 1 > 0 = cap(F)`), not
+>    infeasible at a threshold `4/3`; the genuine threshold example is `b = (4,−4/3,−4/3,−4/3)`,
+>    where `t* = 4/3`.
+> 3. **Compactness assumed a uniform bound.** Tychonoff gives `∏_e [−Φ_e, Φ_e]` compact from
+>    the compactness of each factor, so `sup_e Φ_e < ∞` is **not** a hypothesis of Theorem 2
+>    and is removed. What *is* used: `Φ_e ≥ 0` (non-degenerate intervals), `Φ_e < ∞` per
+>    edge (compact factor), local finiteness (only for `div` to be a finite sum, hence
+>    continuous), and `F_n` finite with `⋃F_n = V`.
+> 4. **The density implication is one-directional.** `K15-C087` gives `(C) ⟹ Kepler`;
+>    there is no converse and no equivalence between `(C)` and the density statement.
+>
+> **Second, independent proof of (⟸)** added, by duality + coarea: the Farkas alternative
+> for `{Aφ ≥ b, |φ_e| ≤ Φ_e}` (box multipliers kept) is `Σ_F y_v b(v) > Σ_e Φ_e|y_v − y_w|`
+> for some `y ≥ 0`; the coarea identities `Σ_F y_v b = ∫_0^∞ Σ_{U_t} b` and
+> `Σ_e Φ_e|y_v−y_w| = ∫_0^∞ cap(U_t)` with `U_t = {v : y_v > t}` then produce a cut
+> violating `(C)`. This proof is the one that survives signed capacities, where the box
+> multipliers matter.
+>
+> *Status.* `PROVED` (both proofs written out). Reviewer X — the reviewer asked for an
+> independent audit of the repaired statement; the request is in `Main/AUDIT_REQUEST_X.md`
+> item 5.
+
 ### K15-C094 — every Voronoi cell of a Barlow packing has volume `√32` (`PROVED`)
 
 `Main/BARLOW_CELLS.md`. Closes the uniformity left open in `K15-C091`.
@@ -2750,3 +2790,100 @@ distance 2, so `(S)` does not apply to it).
 
 *Status.* `PROPOSED` (`(S)` is open); the reduction, the threshold `ρ*` and the numbers
 are `PROVED`/`TESTED_FINITE` respectively. Reviewer X.
+
+### K15-C097 — integration at review 0353: the decoupling lemma, E's trend correction, X-C017 (`IMPORTED`)
+
+Three worker revisions read this block, by hashes. None is merged; integration is by
+reference.
+
+**1. C, `4bcbd3a0ee94bd29d2f1fdcc5e69aaf1f0ed0a62` — `C-DECOUPLE-001` (`PROVED`,
+elementary).** For the icosahedral fixture the periodic graph is a **disjoint union of
+identical copies**: registered centres lie within `2` of their copy's origin, so distinct
+copies are at distance `≥ 16 − 4 = 12`, while `R ≤ 3 ≪ 12`. A finite `U` therefore splits
+into pieces in separate copies with **no edges between them**, so `Σ_U b/|δ⁺(U)|` is a
+weighted average of the pieces' ratios and its maximum is attained **inside one copy**.
+Consequently `t* = 0.008880268414417` is the exact threshold for the **infinite** packing,
+not a finite-patch proxy. **Caveat C records and Main endorses:** a *dense* packing has
+period comparable to `R`, so decoupling is a property of sparse fixtures only.
+
+*Main's audit.* The argument is correct as stated for the fixture. Two limits Main adds:
+(i) the fixture is **unsaturated** (X's flag), so this is a statement about an unsaturated
+periodic packing; (ii) it therefore does **not** by itself give a floor for saturated
+packings. That floor is already independently valid: `K15-C081r` uses the icosahedral
+13-cluster extended to a saturated packing by Zorn (`X-C003(iii)`), adding centres can only
+*shrink* `Ω(v₀)` (hence only increase `b(v₀)`), and `deg(v₀) = 12` exactly by `K15-C054`,
+so `Φ ≥ b(v₀)/12 ≥ 0.1065632/12 = 0.00888027…`. The two routes give the same number, and
+the saturated one is the one the ledger relies on.
+
+**2. E, `82689ba1999a1ca240e480f9bc90121101f9e801` — the trend claim corrected.** The
+30-centre search gives `6.494845` and `6.968035`, **worse** than the 18-centre `6.263608`,
+so the sequence is not monotone and the earlier framing ("every improvement found a smaller
+cell", "margin halving at each step") overstates the trend; the likely cause is method
+limitation (twice the degrees of freedom for the same iteration budget). Revised verdict:
+**(P′) has survived every legal test, best `6.263608` against a required `5.763417`; the
+evidence is one-sided, so not support.** E explicitly records what not to do: report
+`6.264` as evidence *for* (P′), or the trajectory as evidence *against*. **Main records
+(P′) as `PROPOSED`, unproved; numerical upper volumes cannot validate it** (an upper bound
+on a computed volume is not a lower bound on the true infimum, and no interval arithmetic
+was used).
+
+**3. X, `118ecd1601bb500f7d305ce299dcb00f73a66772` — `K15-X-C017` (`VERIFIED` by X's own
+exact arithmetic; Main has not re-run it).** Both sides explicit: rational symmetric `6×6`
+`G, A, B`, `m = 5`, `S = 8`, `eps_G = 1e−2`, `eps_AB = 1e−6`; all PSD verified exactly by
+rational LDL; `Q(A,B)` equals the Fourier image of `P` exactly; `P(0)/Q(0) = 1.039899410072`
+giving `Δ ≤ 0.782267220134` for every packing of unit balls; `Q ≥ 0` cross-checked by exact
+Sturm. X also corrects its own earlier wrong assumption (it had treated `G` as necessarily
+singular "because `P(4)=0`"; false, since `P = −(s−4)H` gives `P(4)=0` for any `H`).
+
+*Assessment.* `0.782267220134` is **worse** than the project's best (`0.779966216777`), so
+it is not an improvement and does not change `RESULTS.md`. Its value is **methodological
+and it is significant**: *no sign predicate, no root isolation and no Sturm is needed
+anywhere — every sign condition is a rational PSD test.* The ladder is C `SOSQSIDE-005`
+`1.413704545` → X-C015 `0.813631102` → X-C016 `0.783097911` → X-C017 `0.782267220`; X-C014
+`0.780718153` has the p-side only and C's K33 `0.779966500` has neither side. Given that
+`Computation/shell_check.py` has been unsound three times (`C049`, `C058`, `C068`) **this
+is the trust profile the project should prefer**: a both-sides certificate whose every sign
+condition is a rational LDL test is outside the failure mode entirely. Recorded as the
+first candidate for the acceptance pipeline of `K15-C099`.
+
+*Status.* `IMPORTED`; per-claim statuses as above. Reviewer X.
+
+### K15-C098 — the shell allowance's `η ≥ 0` precondition, and what it is not (`PROVED`, narrow)
+
+X flags that `Computation/shell_check.py` did not check `η ≥ 0`. Confirmed: `check(a, rho,
+eta, …)` accepted any rational `eta` and the reported bound is
+`R = (p(0) + count·η)/q(0)` with the displayed verdict `f ≤ η` on the shell `[2, ρ]`.
+
+**What was wrong.** The count-price bound (`K15-C003r`) is
+`δ ≤ (4π/3)(f(0) + n·M)/f̂(0)` where `f ≤ M` on a set `A` of contact number `≤ n` and `f ≤ 0`
+off `A` outside radius 2. With `M = η`, the formula is the intended one **only for `η ≥ 0`**;
+for `η < 0` the *correct* statement replaces `η` by `max(η,0) = 0` (the plain two-point
+bound), because `f ≤ 0` off `A` already supplies the stronger hypothesis. So an `η < 0` call
+returned a *smaller* number than the argument licenses for the parameter the user believes
+they passed. That is a precondition defect, not a sign-predicate defect.
+
+**Fix.** `check` now rejects `η < 0` explicitly, with the message that the plain bound is
+`η = 0`; and `checker_adversarial.py` gains the case. **This is a precondition validation
+and it is not a soundness argument.** Generic checker soundness remains **SUSPENDED**: the
+three historical repairs were all in the sign-decision path, and no written argument that
+the accepted set is contained in `{p ≤ 0 on the region}` exists yet (`PN-4`).
+
+*Status.* `PROVED` (the `η < 0` claim, two lines). Reviewer X.
+
+### K15-C099 — acceptance-pipeline proposal: prefer certificates with no sign predicate (`PROPOSED`)
+
+Motivated by `K15-C098` and X-C017. The project's weakest link is not the mathematics but
+`shell_check.py`, unsound three times, each caught by outside reproduction. X-C017's
+certificate needs **no** sign decision: `Q ≥ 0`, `A ⪰ 0`, `B ⪰ 0` are three rational LDL
+tests, and `Q(A,B) = Fourier image of P` is an exact polynomial identity. Such a certificate
+has no `≤ 0 on an interval` step at all, so it is not exposed to the failure mode.
+
+**Proposal.** Make "both sides, all sign conditions rational PSD" the *acceptance* criterion
+for certificates, and treat any certificate that needs `shell_check` as `PENDING` until the
+soundness argument of `PN-4` exists. This costs nothing numerically (`K15-C017` is `0.7823`
+against `0.7800` for the best p-side-only object, and the current best `0.779966216777` is
+not an improvement over published values anyway) and it removes the project's
+most-repeated failure. **Reverse if** `PN-4`'s argument is written and X accepts it.
+
+*Status.* `PROPOSED` (a process decision, not a theorem). Needs the person's sign-off
+because it changes what "accepted" means.

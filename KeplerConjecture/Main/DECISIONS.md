@@ -166,3 +166,32 @@ within the remaining budget. The target is therefore `Main/NEXT_PACKAGE.md`:
 `Σ_U vol Ω ≥ √32|U| − O(Φ|U|^{2/3})` with `Φ` from `K15-C044`, plus E's `(H_R)`
 as its formal version. **Reverse if** a worker produces a 3-point certificate
 whose exact value beats `0.77996622`.
+
+## D18 — the cut/flow theorem is repaired, not re-argued (M, after review `K15-REVIEW-0353-M-EVIDENCE`)
+
+The reviewer found four defects in `K15-C093`/`CUT_FLOW_THEOREM.md`; all four were
+confirmed against the text and are repaired in place with the rejected wording retained
+(`CUT_FLOW_THEOREM.md` §6, ledger `C093`). The decision this records is *how* they were
+repaired, because the tempting repair was the wrong one.
+
+1. **Established convention now: a theorem gets two independent proofs before it is used
+   as load-bearing.** The cut/flow theorem is now proved twice — once by max-flow on an
+   explicit directed network (constructive, gives the algorithm) and once by LP duality
+   plus the coarea formula (gives the exact dual, and is the one that survives signed
+   capacities). The second proof is what found that the cut condition is *exactly*
+   equivalent to feasibility and not merely sufficient.
+2. **A rejected example is not deleted; it is replaced by the correct one.** `b =
+   (4,−1,−1,−1)` is retained as rejected evidence with its actual status (infeasible at
+   every capacity, `Σ_F b = 1 > 0 = cap(F)`), and the threshold example it was meant to be
+   is added as `b = (4,−4/3,−4/3,−4/3)`, `t* = 4/3`.
+3. **Empty boundaries are a separate case by default.** Any statement of the form
+   `Σ_U b ≤ Φ|δ⁺(U)|` must say what happens at `δ⁺(U) = ∅`; here that case is an
+   obstruction at every `Φ` and is capacity-free. This is now the standing rule for cut
+   statements in this project.
+4. **Hypotheses are audited for use.** `sup_e Φ_e < ∞` was in the theorem and is not used
+   (Tychonoff needs only per-factor compactness). Any hypothesis in a `PROVED` claim must
+   now name where it is used, as the table in `CUT_FLOW_THEOREM.md` §2 does.
+
+**Reverse if** X's independent audit of the repaired statement finds a further defect; in
+that case the pattern above (two proofs, rejected text retained, hypotheses itemised) is
+still the right one, and the fix goes into the same two places.
