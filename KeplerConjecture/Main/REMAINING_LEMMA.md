@@ -79,7 +79,9 @@ statement with an explicit constant, and that the negligibility half is proved.
 1. **Prove it for ball cuts** first (the boundary term is explicit there), then ask
    whether ball cuts suffice — they do not suffice for Hoffman in general, so this
    needs a separate argument or a *specific* `φ` built by a local formula.
-2. **Try an explicit local `φ`**: e.g. `φ(v,w) = ψ(|v−w|)·(b(v) − b(w))` normalised;
-   for such a formula the cut condition reduces to a per-edge inequality, which *is*
-   finitely verifiable. This is the most promising route and nobody has attempted it.
+2. ~~Try an explicit local `φ`~~ — **attempted and refuted** in `K15-C085`: the ansatz
+   `φ(v,w) = ψ(v−w)(b(v)−b(w))` reduces the requirement to `(s−1)b(v) ≥ (ψ*b)(v)`,
+   which fails on a three-line defect model at exactly the vertices that must fund the
+   deficit (the formula overshoots). The remaining honest route is a genuine
+   min-cut flow; a closed local form is not expected.
 3. Keep `Φ` bounded: the rate in Lemma 3.3 is `O(Φ/r)`.

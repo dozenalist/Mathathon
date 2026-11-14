@@ -2306,3 +2306,35 @@ form; the pointwise results (Rogers `5.372754`, Muder `5.41848`, Hales–McLaugh
 Also recorded there: the most promising unexplored route — an **explicit local**
 `φ(v,w) = ψ(|v−w|)(b(v)−b(w))`, for which the cut condition reduces to a per-edge
 inequality and *is* finitely verifiable. No one has attempted it.
+
+### K15-C085 — the naive explicit-transfer ansatz fails (`PROVED` negative on a model)
+
+`Main/REMAINING_LEMMA.md` §5 flags "an explicit local `φ`" as the most promising
+route. Main tested the obvious ansatz:
+
+```
+φ(v,w) = ψ(v−w)·(b(v) − b(w)),      ψ ≥ 0,  supp ψ ⊆ [−R,R],
+s := Σ_w ψ(v−w)   (constant on a lattice-shaped neighbourhood).
+```
+
+Then `Σ_w φ(v,w) = s·b(v) − (ψ*b)(v)`, so the requirement `Σ_w φ(v,w) ≥ b(v)` is
+
+```
+(s − 1)·b(v)  ≥  (ψ*b)(v)          for every v.        (★)
+```
+
+**`(★)` fails on the simplest defect model.** Take a line of seven sites with
+`b = (0,0,0, +1, −0.5, 0, 0)` (a unit deficit funded by a neighbouring surplus) and
+any of `ψ = (0.25,0.25)`, `(0.5,0.5)`, `(0.4,0.1)`. The left side is *negative* at
+the surplus site while `(ψ*b)` is positive there, so `(★)` fails by `O(b)` at exactly
+the vertices that are supposed to fund the deficit. The ansatz transfers the full
+difference, which overshoots: the deficit site receives `s·1 − ψ(2)(−0.5)` but the
+surplus site *pays* `s·0.5 + ψ(2)·1`, more than its surplus allows.
+
+So the naive form does not work, and the "local formula ⇒ finitely verifiable"
+hope is not realised by it. What is needed is a genuine flow — i.e. the min-cut
+solution of `K15-C044` — and there is no reason to expect it to have a closed local
+form. This is recorded so the next block does not spend its budget on the ansatz.
+
+*Status.* `PROVED` (a counterexample to a proposed route on an explicit model).
+Reviewer X.
