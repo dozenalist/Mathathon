@@ -47,17 +47,18 @@ def states(n):
         j+=1
         if j>0 and bz82.f(j)>n: break
     return out
-phi_ok=psi_ok=n=n_psi=0
+phi_ok=psi_ok=n=npsi=0
 for w in range(0,19):
     for st in states(w):
         if bz82.phi_domain(st,w):
             n+=1; phi_ok += (bz82.phi(bz82.phi(st))==st)
         if bz82.psi_domain(st,w):
-            n_psi += 1
-            psi_ok += (bz82.psi(bz82.psi(st))==st)
-check("phi^2 = id on domain, weight<=18", phi_ok==n, "(%d states)"%n)
-check("psi^2 = id on domain, weight<=18", n_psi>0 and psi_ok==n_psi,
-      "(%d/%d states)" % (psi_ok,n_psi))
+            npsi+=1; psi_ok += (bz82.psi(bz82.psi(st))==st)
+# CYCLE 4 REPAIR: the previous version asserted only `psi_ok > 0`, which passes
+# even if every single psi state fails. Both involutions now require full equality
+# against their own denominator, and the denominators are printed.
+check("phi^2 = id on domain, weight<=18", phi_ok==n, "(%d/%d)"%(phi_ok,n))
+check("psi^2 = id on domain, weight<=18", psi_ok==npsi, "(%d/%d)"%(psi_ok,npsi))
 
 # 3. the map is a bijection A_n -> D_n, weight <= 18
 bij=True; tot=0
@@ -105,6 +106,35 @@ for w in range(0,19):
             n_j+=1; cj += (a2==a+1)
 check("Case I  -> a' = a-1 (Lemma CI.2)", ci==n_i, "(%d/%d)"%(ci,n_i))
 check("Case II -> a' = a+1 (Lemma CII)", cj==n_j, "(%d/%d)"%(cj,n_j))
+
+# 6. NEGATIVE CONTROLS: deliberately wrong local results must make the checks fail.
+#    A check that cannot fail is indistinguishable from a correct one, so each
+#    invariant is re-run against a corrupted substitute and REQUIRED to report
+#    failure on every state whose output the corruption actually changes.
+def psi_sign_slip(state):
+    """Valid but wrong: get the sign of the j-shift backwards."""
+    j, lam = bz82.psi(state)
+    return (j + 2, lam)
+
+def phi_sign_slip(state):
+    """Valid but wrong: same slip on the phi side."""
+    j, lam = bz82.phi(state)
+    return (j + 2, lam)
+
+for name, corrupt in (("psi sign slip", psi_sign_slip),
+                      ("phi sign slip", phi_sign_slip)):
+    ncb = nct = 0
+    for w in range(0,11):
+        for st in states(w):
+            dom = bz82.psi_domain(st, w) if corrupt is psi_sign_slip else bz82.phi_domain(st, w)
+            if not dom:
+                continue
+            nct += 1
+            c = corrupt
+            if c(c(st)) != st:
+                ncb += 1
+    check("NEG CONTROL %-18s caught" % name, nct > 0 and ncb == nct,
+          "(%d/%d states detected)" % (ncb, nct))
 
 print()
 print("elapsed %.2f s" % (time.time()-t0))

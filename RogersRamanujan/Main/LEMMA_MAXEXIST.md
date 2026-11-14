@@ -41,48 +41,48 @@ is an initial segment of `{0,...,k-1}`, and
 *Proof.* If `k <= 0` the interval is empty. If `k >= 1`, `z = 0` is admissible iff
 `lam(k) <= R`, and by MX.1 that is the least element, so it suffices. QED
 
-## Theorem MX.3 (where the printed maximum is defined)
+## Theorem MX.3 (where the printed maximum is defined) — CORRECTED in cycle 4
 
 Let `S_Z = { z in Z : z <= k-1, z + lam(k-z) <= R }`, i.e. the printed rule read
-literally with **no lower bound on z** (BZ82 p.314 prints `z <= a+2j-2 = k-1`
-and nothing more). Then:
+literally: BZ82 p.314 prints the **upper** bound `z <= a+2j-2 = k-1` and no lower
+bound, so `z` ranges over the integers below `k-1`.
 
-1. **`S_Z` has a maximum on every state.** On the restricted half-line
-   `z <= k-1`, all indices `k-z` are positive, and the argument of MX.1 proves
-   strict increase. For sufficiently negative `z`, `k-z > t`, so
-   `z + lam(k-z) = z <= R`. Thus `S_Z` is nonempty and bounded above by `k-1`;
-   a nonempty subset of the integers bounded above has a maximum. This does
-   not assert monotonicity on all of `Z`: crossing `z=k` can decrease the
-   expression because `lam(0)=0`. Supervisor correction, November 13, 2026 PST.
-2. **On `phi`'s domain**, the maximum of `S_Z` equals the maximum of `S`, and the
-   two created parts `m` and `t+5j-3-m` are both `>= 0`.
-3. **Off `phi`'s domain** — that is, on `{0} x B(n)` — the maximum of `S_Z` is
-   negative, and `t+5j-3-m <= 0`. Such a state would create a non-positive part.
+1. **`S_Z` has a maximum on every state.** On `z <= k-1` the index `k-z` is `>= 1`,
+   so both terms are in their positive range and `z |-> z + lam(k-z)` is
+   *strictly* increasing (increase `z` by 1: `z` gains 1 and `lam(k-z)` is
+   non-decreasing because its index falls). A strictly increasing function is
+   bounded above by `k-1`, so the admissible `z` form a finite initial segment.
+2. **On `phi`'s domain** some `z` with `0 <= z <= k-1` is admissible (Lemma MX.4),
+   so the maximum of `S_Z` is attained in `{0,...,k-1}` and both created parts
+   `m` and `t+5j-3-m` are `>= 0`.
+3. **Off `phi`'s domain** (`{0} x B(n)`) the admissible `z` are all negative, the
+   maximum of `S_Z` is negative, and `t+5j-3-m <= 0`, so the rule would create a
+   non-positive part.
+
+**Cycle-3 error corrected here, and the reason it mattered.** Cycle 3 stated that
+`z |-> z + lam(k-z)` is "strictly increasing on **all** of `Z`, and it tends to
+`+infinity` as `z -> +infinity`". The monotonicity claim is **false across
+`z = k`**: at `z = k` the index is `0` and `lam(0) = 0`, so `f(k) = k` while
+`f(k-1) = k-1 + lam(1)`, which is `> k` whenever `lam(1) >= 2`. Example: `k = 10`,
+`lam(1) = 5` gives `f(9) = 14 > f(10) = 10`. Monotonicity holds only on `z <= k-1`,
+where the indices are positive — which is exactly the printed range, so nothing is
+lost by restricting, but the un-restricted claim was wrong. The worker m3 had in
+fact flagged this boundary ("it steps DOWN past hi — the trap") in the cycle-3
+swarm; cycle 3 recorded the trap in one place and asserted the false version in
+another. Main's own m3 report noted it; the ledger did not follow.
+
+**Two questions that cycle 3 ran together, kept apart now:**
+* *Where is the printed maximum?* Always defined; attained in `{0,...,k-1}` iff the
+  state is on `phi`'s domain.
+* *When is some non-negative `z` admissible?* Exactly when `k >= 1` and
+  `lam(k) <= R` (Lemma MX.2). This is the criterion an implementation needs, and
+  it is the one the domain equivalence rests on.
 
 *Verified:* over all 34 222 Case-II states of weight `<= 30`, `S_Z` has a maximum
-in every case; on the 33 329 states of `phi`'s domain the maximum of `S_Z` equals
-that of `S` in all 33 329 (0 disagreements); on the 893 excluded states the
-maximum is negative and the second created part is `<= 0`, with first witnesses
-`(0;())` giving `m = -2`, second part `-1`, and `(0;(1))` giving `m = -1`, `-1`.
-
-**Why this matters, and what cycle 2 got wrong.** Cycle 2 asserted that the
-lower bound `z >= 0` is *part of the printed rule*. It is not: the scan prints
-only `z <= k-1`. The lower bound is a **consequence** on the domain, and Theorem
-MX.3(2) is exactly the statement that justifies replacing the printed maximum over
-`Z` by the maximum over `{0,...,k-1}` — which is what the implementation does.
-Theorem MX.3(3) then explains the excluded set: on it the rule, read literally,
-does produce a maximum, but a negative one. So "the maximum fails to exist" was
-never the right description. The correct description is:
-
-> On the whole of `Case II` the printed rule's maximum exists. It is attained at
-> a non-negative `z` exactly on `phi`'s domain, where both created parts are
-> non-negative; off the domain it is negative and one created part is
-> non-positive. Hence "admit only `z >= 0`" and "restrict to `phi`'s domain" cut
-> out the same states, and Lemma MX.2 (non-negative admissibility) is precisely
-> what licenses discarding negative `z`.
-
-This also disposes of the cycle-2 phrase "empty admissible set": the set of
-`z >= 0` is empty on exactly the 893 excluded states, but the printed set is not.
+in every case; on the 33 329 domain states the maximum lies in `{0,...,k-1}` and
+both created parts are `>= 0`; on the 893 excluded states the maximum is negative
+with `t+5j-3-m <= 0`, first witnesses `(0;())` giving `m = -2`, second part `-1`,
+and `(0;(1))` giving `m = -1`, `-1`.
 
 ## Corollary MX.4 (the case analysis, and the excluded set)
 
@@ -212,16 +212,27 @@ mu' - mu = lam(a) - lam(a+1) = L - lam(a+1) >= 0,
 with equality **iff** `lam(a+1) = lam(a)`, i.e. iff the value at the deletion slot
 `a` is repeated.
 
-BZ82 p.314 asserts `mu_bar = 2j + a - lam(a+1) > mu`. That is true only in the
-non-repeated case. **Measured** over all 10 285 Case-I states of weight `<= 26`,
-the difference `mu' - mu` takes the values `0 (5 844 states), 1 (2 918),
-2 (1 087), 3 (344), 4 (80), 5 (12)` — so the strict inequality fails on 5 844
-states (57%), the first being `(-1;())`. Nothing is broken: the conclusion BZ82
-actually needs is that Case II is selected at the image, and that holds in
-**all 10 285** states with no exception. But a reader re-deriving the proof from
-the printed line will be unable to prove the strict inequality, and a
-formalization that assumes it will get stuck. Recorded so that the cycle-3 proof
-audit does not inherit the error.
+**The clean witness (cycle 4), on a real slot.** `j = 0, lam = (4,1,1)`:
+`a = 2` (a **real** slot, since `a <= t = 3`), `L = 1`, `k = 1`, `mu = 1`, and
+`phi(0;(4,1,1)) = (1;(2,1,1))`, at which `a' = 1`, `mu' = 1 = mu`. So the printed
+strict inequality fails on a state where both slots are genuine parts — not only
+in virtual-slot cases. Cycle 3's example `(-1;())` was a virtual-slot instance;
+this one is stronger and should be quoted in preference.
+
+**Source caveat, stated properly (cycle 4).** BZ82 p.314, in the paragraph
+following the Case I definition, prints the conclusion
+`mu_bar = 2j + a - lam(a+1) > mu` as part of its involution check. **Two separate
+claims must not be conflated:** (i) *mathematically*, the strict inequality is
+false, with the counterexample above and 5 844 further states at `weight <= 26`
+where `mu' - mu = 0`; (ii) *as a reading of the source*, the statement sits in a
+three-page note whose OCR corrupts several inequality symbols, and the symbol at
+that point has **not** been visually re-verified against a rendered image of
+p.314. Main asserts (i) only. The measured distribution of `mu' - mu` over the
+10 285 Case-I states of `weight <= 26` is
+`0 (5 844), 1 (2 918), 2 (1 087), 3 (344), 4 (80), 5 (12)`.
+
+Nothing is broken by this: the conclusion BZ82 actually needs is that Case II is
+selected at the image, and that holds in **all 10 285** states with no exception.
 
 **Verified (TESTED_FINITE, `weight <= 26`):** every Case-I state maps to a state
 selecting Case II (10 285 / 10 285); `a' = a-1` (10 285 / 10 285); `mu' >= mu`

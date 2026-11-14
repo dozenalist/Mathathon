@@ -152,3 +152,31 @@ than by review: Main's `z >= 1` restriction (RR-X005, retracted) and the stale
 index in `phi` Case I (RR-C017). The rule to carry into cycle 3: after changing a
 local rule, re-check the involution law and the weight — not just the examples,
 because both traps reproduced the printed examples perfectly.
+
+## D-9 (2026-11-14, cycle 4) B and D are never to be conflated in any statement or test.
+
+`B_n` = partitions whose smallest part is at least their length; `D_n` = partitions
+with successive gaps at least 2. `T : D_n -> B_n` (RR-C006) is the only bridge.
+A `B`-object need satisfy no gap condition: `(25,17,8,8,8,8)` (adjacent differences
+`8,9,0,0,0`) is a valid `B_74` element.
+
+Cycle 3 violated this: Main rejected a worker's **`B`-endpoint** on the grounds that
+it "lacks gaps", i.e. by applying `is_gap` to a `B`-object, and compounded it with a
+measurement bug (`tr, _ = pi_forward(...)` takes the *endpoint* as `tr`, so
+`len(tr)-1` was the endpoint's part count, not a path length). The worker was right
+and the rejection is retracted (RR-C025).
+
+Rule for every future statement and test: **name the side.** `pi_forward` returns a
+`B`-object and a trace; `forward = T^{-1} o pi_forward` returns a `D`-object. Report
+path lengths as `len(trace)` states and `len(trace)-1` edges, never as a derived
+quantity whose meaning depends on an unpacking order.
+
+## D-10 (2026-11-14, cycle 4) Status discipline for worker claims.
+
+RR-C021 was promoted to PROVED on the strength of a Main-run finite census, while
+the worker's own artifact said "NOT PROVED; reduced to R2". Two failures in one: a
+finite census cannot promote past TESTED_FINITE, and the worker had claimed *less*
+than Main attributed to it. Rule: read what the worker claims before promoting, and
+never let a Main-run check substitute for the worker's proof obligation. The worker's
+artifact is now committed verbatim under `Counterexamples/cycle4/` so its actual
+claims are auditable.

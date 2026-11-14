@@ -111,8 +111,9 @@ a successful build of unrelated modules does **not** establish the research
 claim. Specifically this checkpoint does **not** show:
 
 * that BZ82's map is correct for all `n` (only `n <= 50`, plus source fidelity);
-* that the iteration terminates in general — `Theta(n)` growth is measured
-  (max 646 steps at `n = 30`), never proved;
+* that the iteration terminates in general — measured trace lengths reach 646
+  edges at `n = 30` (see RR-C011, raw data only; an earlier "`Theta(n)`" phrasing
+  is withdrawn), and nothing here proves a bound;
 * that any map is "more natural" — no candidate beats BZ82 on the criteria;
 * anything about `Nat.Partition` or a full `lake build` (section 6).
 
@@ -165,3 +166,54 @@ proposals fail, and why the residue-to-staircase step is the hard part.
   `Lean/Staircase.lean` is Mathlib-free and **no `lake build` is claimed**.
 * All timings are wall-clock on this shared VM and include contention with a
   background job; they are reproducibility notes, not benchmarks.
+
+---
+
+## 7. Cycle 4: corrections to this document
+
+This section exists because the earlier sections, while labelled with their scope,
+contained claims that turned out to be wrong. They are corrected here rather than
+edited away.
+
+**7.1 `B` is not `D`.** `B_n` = partitions whose smallest part is at least their
+length; `D_n` = partitions with successive gaps at least 2. `T` (RR-C006) bridges
+them, and every statement must name which side it is on. A `B`-object need satisfy
+no gap condition at all: `(25,17,8,8,8,8)`, adjacent differences `8,9,0,0,0`, is a
+valid `B_74` element.
+
+**7.2 The cycle-3 rejection of a worker's witness is retracted.** Main reported
+that the committed map gives `(30,20,9,7,5,3)` "in 5 steps" for `(4^3,1^62)` and
+that the worker's `(25,17,8,8,8,8)` "cannot be an image". Both halves were wrong:
+* `(25,17,8,8,8,8)` is the **`B`-endpoint** (`pi_forward`), correct and valid
+  in `B_74`; `(30,20,9,7,5,3)` is the **`D`-image** (`forward = T^{-1} ∘ pi_forward`),
+  and `T^{-1}(25,17,8,8,8,8) = (30,20,9,7,5,3)` entry by entry. Main tested a
+  `B`-object with the `D` predicate `is_gap`.
+* "5 steps" was a measurement bug: `tr, _ = pi_forward(p)` binds the **endpoint**
+  to `tr`, so `len(tr)-1` was the endpoint's part count. The trace is
+  **1 911 states = 1 910 edges**.
+The worker's P3 refutation therefore stands, in `B`-space, with its own witness.
+
+**7.3 The R2 slot identities are TESTED_FINITE, not proved.** They were briefly
+labelled PROVED on the strength of a Main-run census, while the worker's artifact
+said "NOT PROVED; reduced to R2". What is now verified finitely, over all in-domain
+states of `weight <= 23` (6 224 each way), is R2.1 as a **multiset** with virtual
+slots, R2.2, and both Case-I duals R2.1′/R2.2′. R2.3/R2.3′ are not re-checked and
+no all-input proof exists. A created part may tie with a decremented one or be `0`
+in a virtual slot, so a *positional* statement is ill-defined under ties while the
+*multiset* statement is tie-invariant — that is the form a proof should target.
+
+**7.4 Overstatements removed.** "`z ↦ z+λ(k−z)` is monotone on all of `Z`" is false
+across `z = k`, where `λ(0) = 0` makes it step down (`k=10, λ(1)=5`: `f(9)=14 >
+f(10)=10`); it is monotone only on `z <= k-1`, which is the printed range.
+"Non-preservation of length shows it cannot be a progress measure" is also too
+strong: what is true is that `t` is not monotone along a path. The claim that the
+Case-I insert count needed a divisibility-by-five check was simply wrong.
+
+**7.5 Current status of the objective.** Unchanged and open. What cycle 4 adds is
+negative knowledge and a cleaner gap: `phi` is a *reduction* (R1 inequalities plus
+R2 multiset identities) rather than a proved involution; the family `(4^r,1^s)` has
+closed forms for `phi` and `psi∘phi` on all parameters but no inverse
+characterisation of its image, and its cost varies from two edges to beyond a
+20 000-edge cap. No candidate map is more natural than BZ82 on this project's
+criteria, and no comparison with Garsia–Milne is possible because GM81b remains
+inaccessible.

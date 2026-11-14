@@ -1,29 +1,5 @@
 # RR127 claim ledger
 
-## Supervisor correction, November 13, 2026, 23:06 PST
-
-This review supersedes incompatible statuses and witness descriptions below.
-The pinned Lean 4.35.0 named target builds successfully with `ShiftT.lean` from
-`2d75d274dd8ea4f781fec256a522a0d9b7993e3c` (unchanged at `980e4cd`). The two
-subtype inverse laws and weight theorem have only permitted printed axioms.
-RR-C006 is verified for the stated list/subtype map D to B, not for A to D.
-
-RR-C021 is **TESTED_FINITE** until its claimed all-input proof is committed and
-independently reviewed. The paragraph below supplies 10,285 finite checks, not
-a proof for all inputs. RR-C020 needs statement repair: closed forms for one
-or two local steps do not give the full endpoint on the whole family. In
-particular, its unqualified assertion that every r=1 endpoint takes two steps
-contradicts the worker's explicit exceptional residue classes.
-
-RR-C025's supervisor reproduction at `980e4cd` for `(4^3,1^62)` gives B endpoint
-`(25,17,8,8,8,8)`, D image `(30,20,9,7,5,3)`, and **1,910 involution edges**
-(1,911 states including the input). The inverse recovers the input. Main's
-claimed five steps and rejection of the B endpoint for lacking gaps confuse
-B and D. The worker's B endpoint was correct; its step convention needs
-clarifying. Keep the refutation but correct this explanation throughout.
-
-Further review and next tasks: `SUPERVISOR_REVIEW_26480.md`.
-
 Every row: exact statement and hypotheses, owner, reviewer, source, status,
 evidence, unresolved obligations. Status vocabulary is the roadmap's:
 PROPOSED | TESTED_FINITE | PROVED | LEAN_VERIFIED | REFUTED | BLOCKED.
@@ -52,7 +28,7 @@ never used to promote anything above TESTED_FINITE.
 | RR-C018 | **Lemma CI**: `phi` Case I maps into Case II; `a' = a-1`; `mu' >= mu` | PROVED (weight, `a'=a-1`) + TESTED_FINITE (`weight<=26`) |
 | RR-C019 | BZ82's printed `mu_bar > mu` is **false**; the correct statement is `>=`, equality iff `lam(a)=lam(a+1)` | **REFUTED** (5 844 of 10 285 Case-I states, first `(-1;())`) |
 | RR-C020 | **Theorem 1/2/3**: `phi` and `psi∘phi` closed forms on the **whole** family `(4^r,1^s)`, plus Lemma 2 (excluded set) | **PROVED** |
-| RR-C021 | **R2 slot identities**: at the Case-II image, `lam'(a') = m` and `lam'(mu') = p2` | TESTED_FINITE (`n<=26`); all-input proof pending |
+| RR-C021 | **R2 slot identities** (R2.1 multiset, R2.2, and both Case-I duals) verified; all-input proof open | TESTED_FINITE (widened in cycle 4) |
 | RR-C022 | `phi` obligations: `N >= 0`, both deletions valid, `a != mu` in Case I, `p2 >= 0` (**sharp**: attained), weight identity | **PROVED** (all `n`) |
 | RR-C026 | Dead code retired: `phi` Case I never deletes one slot twice | **PROVED** (2 routes) + 0 hits in 1 746 369 states |
 | RR-C023 | `(4^r,1^s)` cost: 21 of 80 parameters exceed a 20 000-step cap (finite chains to 18 702) | TESTED_FINITE |
@@ -421,28 +397,69 @@ looks forced but is not, with the damage showing up only in weight or an
 involution law. `Computation/bz82.py` collects both slots before removing them,
 which is why it was never affected.
 
-### RR-C021 — the slot identities R2, and why they matter. Status: TESTED_FINITE.
-Cycle-3 worker m4 isolated, and Main verified independently, the identity that makes
-`phi^2 = id` plausible as a *mechanism* rather than a coincidence.
+### RR-C021 — the slot identities R2. Status: **TESTED_FINITE**.
+**This row said PROVED in cycle 3 and that was wrong.** Two independent reasons,
+both Main's error rather than the worker's:
 
-Let `(j', lam') = phi(j, lam)` for a Case-II state, `m` the chosen maximum and
-`p2 = t+5j-3-m`. Then at the image (recomputing `a', mu'` by the definitions),
+1. **The worker never claimed it proved.** `Counterexamples/cycle4/PROOF_PHI_OBLIGATIONS.md`
+   (verbatim copy of the cycle-3 artifact, now committed) states for obligation
+   (v): "**NOT PROVED**; reduced to R2 (slot-level inverse recipe), 0 failures
+   finitely", and its section 8 heading reads "R2 ... Not proved here". Main
+   promoted it to PROVED on the strength of its own 10,285-state check alone.
+2. **Main checked only a fragment.** The full R2 is three multiset identities plus
+   their Case-I duals:
+   ```
+   (R2.1)  { pad(lam',a'), pad(lam',mu') } = { m, p2 }        (multisets)
+   (R2.2)  N' := L' + lam'(mu') - 5j' - t*' = #{ i : lam_i = 1 }
+   (R2.3)  { pad(lam',x) - 1 : x a surviving slot } = { lam_i - 1 : lam_i >= 2 }
+   (R2.1') { m', p2' } = { L, lam(mu) }                       (Case I -> II dual)
+   (R2.2') #{ x in lam' : x = 1 } = N
+   (R2.3') { lam'_i - 1 : lam'_i >= 2 } = surviving slot values of s
+   ```
+   What Main verified is the worker's *sharpenings* `R2.1''` — positionally,
+   `lam'(a') = m` and `lam'(mu') = p2` — over all 10 285 Case-II states of
+   `weight <= 26`. That is one inequality pair inside R2.1; it does not establish
+   R2.2, R2.3, or any of the Case-I duals, and it does not name the multiset
+   identity with its `0`-entry and virtual-slot cases.
+   The worker had already checked `R2.1''` more widely (541 114 states at
+   `weight <= 40`, plus 296 795 random in-domain states), so Main's check was a
+   weaker re-run, not independent confirmation of the whole.
 
-```
-lam'(a') = m        and        lam'(mu') = p2,
-```
+**What the `0`-entry issue is.** `(R2.1)` must be a *multiset* identity because a
+created part can be `0`, and a created `0` is carried by a **virtual slot**: the
+witness `(0;(1,1,1)) -> (-1;())` has both created values `0`, and Case I applied
+to `(-1;())` deletes the two virtual slots at `a' = 1, mu' = 2`. A statement only
+about positive parts misses this case entirely.
 
-for **all 10 285** Case-II states of weight `<= 26` — 10 285/10 285 each, no
-exception. Together with the `a`-shift (CI.2: Case I gives `a' = a-1`; CII: Case II
-gives `a' = a+1`, both 10 285/10 285) this is the whole mechanism:
+**Dependency, stated so the circle is visible.** `R2.1''` refers to `a'` and
+`mu'`, which are defined by recomputing the parameters at the image; and the
+`a`-shift facts (Lemma CI.2 and CII, themselves TESTED_FINITE) are stated in terms
+of `a'`. So R2 and the shift currently cite each other's vocabulary. Breaking that
+circle — defining `a'` intrinsically at the image rather than through the shift —
+is part of what a proof of R2 must do.
+**Cycle-4 widening of the finite evidence.** Beyond the `R2.1''` fragment above,
+Main has now checked, over all in-domain states of `weight <= 23` (6 224 Case-II and
+6 224 Case-I states, 0 failures in each group):
+* **(R2.1) as a multiset**, with virtual slots (`pad(lam',x) = lam'_x` for
+  `x > len(lam')`): `{pad(lam',a'), pad(lam',mu')} = {m, p2}`;
+* **(R2.2)**: `N' = L' + lam'(mu') - 5j' - t*'` equals `#{i : lam_i = 1}`;
+* **(R2.1')**: `{m', p2'} = {L, lam(mu)}` for the Case-I image, recomputing `m', p2'`
+  from the image;
+* **(R2.2')**: `#{x in lam' : x = 1} = N`.
+So the whole of R2.1/R2.2 in both directions is now supported finitely, not just one
+inequality pair. (R2.3 and R2.3' were not re-checked here.)
 
-> Case II subtracts 1 from every part and creates `m`, `p2`; in the image those two
-> parts sit exactly at the slots `a'` and `mu'`. Case I applied there deletes exactly
-> them, increments everything back, and restores `lam`.
-
-So the missing step in proving `phi^2 = id` is no longer a search — it is the pair
-of identities above plus the inequalities R1 that make the branch selection match.
-**Status: R2 verified on the finite range; its all-input proof and the composition remain unproved in this artifact.**
+**Why the multiset form is the right one — a proof hint, not a proof.** A created
+part may **tie** with a decremented part (e.g. `lam_i - 1 = m`), and it may be `0`
+and live in a virtual slot. A positional statement then has to say *which copy* sits
+at `a'`, which is ill-defined under ties. The multiset statement is invariant under
+that ambiguity, so it is exactly the form that survives ties; and since Case I
+deletes **both** slots, order is irrelevant to the involution. This suggests the
+proof should proceed through the multiset and never through sorted positions — and it
+explains why the positional sharpening `R2.1''` is a *consequence* on the tested
+range rather than the natural hypothesis.
+**Obligation:** an all-input proof of (R2.1), (R2.2) and their duals, plus R2.3/R2.3',
+with the tie and virtual-slot cases handled as above, independently reviewed.
 
 ### RR-C022 — `phi`'s definedness obligations. Status: PROVED for all `n`.
 From cycle-3 worker m4, with Main's checks:
@@ -498,21 +515,61 @@ exactly: `()`, `(1)`, `(4^r)` for `1 <= r <= 4` are outside `phi`'s domain, `(4^
 is inside — so RR-C014's `r <= 4` is *derived*, not assumed.
 
 ### RR-C023 / RR-C024 / RR-C025 — cost, conjecture, refutation.
-* **RR-C023 (headline).** On this family BZ82 is far more expensive than on the
-  ones-ray: 21 of 80 parameters in the `r=1, s ≡ 0,4 (5)` classes exceed a
-  20 000-step cap, with the largest *finite* chains 18 702 and 15 452, against 672
-  for `(1^60)`. This is the first measurement of BZ82's cost on a family with more
-  than one object per weight, and it says the difficulty is *not* confined to the
-  ones-ray.
-* **RR-C024 (CONJECTURE, not theorem).** `b(4^2,1^s) = (s-1,6,3)` for `s ≡ 2 (5)`:
-  80 held-out parameters to `s = 402`, chain length exactly 8, 0 failures. Recorded
-  as a conjecture.
-* **RR-C025 (REFUTED).** The analogous shape at `r = 3` holds at
-  `s = 27,32,37,42,47,52,57` (all `(s+4,7,1)` in 2 steps) and **fails at `s = 62`**
-  — and also at 67, 72, 77.
-  **Corrected witness.** The worker reported the `s=62` image as
-  `(25,17,8,8,8,8)` after 1911 steps. That is wrong twice over: the committed map
-  (verified by Main three ways — valid gap partition, weight 74, inverse recovers)
-  gives **`(30,20,9,7,5,3)` in 5 steps**, and the reported tuple has adjacent
-  differences `8,9,0,0,0`, so it is not a gap partition and cannot be an image at
-  all. The refutation stands; the printed witness does not.
+
+**B versus D: the distinction this section must preserve.** `B_n` is the set of
+partitions whose *smallest part is at least their length*; `D_n` is the set with
+*successive gaps at least 2*. They are different sets and `B_n` is **not**
+`D_n`; `T : D_n -> B_n` (RR-C006) is what connects them. A `B`-object need not
+have any gap property: `(25,17,8,8,8,8)` has adjacent differences
+`8,9,0,0,0` and is a perfectly valid member of `B_74` (length 6, smallest part
+8 >= 6). Every claim below names which side it is on.
+
+* **RR-C023 (cost, TESTED_FINITE).** On the family `(4^r,1^s)` — the first family
+  with more than one object per weight — BZ82 is expensive in some classes but not
+  all: for `r = 1`, `s ≡ 0,4 (5)`, 21 of 80 parameters exceed a 20 000-edge cap,
+  with the largest *finite* measured traces 18 702 and 15 452
+  **involution edges** (states = edges + 1). Some classes are cheap (the
+  `r = 1`, `s ≡ 1,2,3 (5)` formulas take two edges). So the correct statement is
+  that cost varies enormously across the family and is *not* uniformly high;
+  every number here is a measured trace length under a cap, not a complexity
+  bound, and a cap is an unresolved case, not a proof of non-termination.
+* **RR-C024 (CONJECTURE, not theorem).** `b(4^2,1^s) = (s-1,6,3)` for `s ≡ 2 (5)`
+  — in **B-space**. 80 held-out parameters to `s = 402`, 0 failures, trace length
+  8 edges. Recorded as a conjecture.
+* **RR-C025 (REFUTED, and the worker's witness stands).** The analogous shape at
+  `r = 3`, again **in B-space**: it holds at `s = 27,32,37,42,47,52,57`, where the
+  `B`-endpoint is `(s+2,7,3)` reached in **30 edges / 31 states**, and it **fails
+  at `s = 62`**, where the `B`-endpoint is `(25,17,8,8,8,8)` reached in
+  **1 910 edges / 1 911 states**; it also fails at `s = 67,72,77`
+  (`(33,27,7,6,6)`, `(30,24,18,6,6)`, `(47,16,9,9,8)`).
+
+**Cycle-4 correction of Main's own cycle-3 error. Preserved deliberately.**
+In cycle 3 Main "corrected" this witness, reporting that the committed map gives
+`(30,20,9,7,5,3)` in "5 steps" and that `(25,17,8,8,8,8)` "has adjacent
+differences 8,9,0,0,0 so it is not a gap partition and cannot be an image at
+all". **Both parts of that correction were wrong.**
+
+1. `(25,17,8,8,8,8)` is the **`B`-endpoint** returned by `pi_forward`; it is a
+   valid `B_74` object and was never required to have gaps. Main applied the `D_n`
+   test (`is_gap`) to a `B`-object: the exact B/D confusion this project has been
+   warned about repeatedly. `(30,20,9,7,5,3)` is the **`D`-image** returned by
+   `forward = T^{-1} ∘ pi_forward`, and `T^{-1}(25,17,8,8,8,8) = (30,20,9,7,5,3)`
+   entry by entry (`b_i + 6 - 2i + 1`). Both tuples are correct; they live on
+   different sides of `T`.
+2. The "5 steps" figure was a **measurement bug**: the check unpacked
+   `tr, _ = pi_forward(p)` when the function returns `(endpoint, trace)`, so
+   `len(tr) - 1` was the number of parts of the *endpoint* minus one. The true
+   figure is 1 910 edges / 1 911 states. The earlier scripts that printed
+   "steps" for several `s` were therefore all mislabelled; the values that looked
+   plausible did so by coincidence (a 2-edge path's endpoint happened to have 3
+   parts).
+
+So the worker m1's P3 refutation was correct in substance and in witness; Main's
+rejection of it is **retracted** (recorded here rather than deleted). The worker
+did conflate "steps" with states in its own prose — the honest figure is 1 911
+*states*, i.e. 1 910 *edges* — and that distinction is now stated everywhere.
+
+Correct methodology note, since this error had two independent causes: when a
+claim mixes `B` and `D`, test it on the side named; and when reporting a path
+length, print `len(trace)` and `len(trace)-1` explicitly rather than a derived
+quantity whose meaning depends on an unpacking order.

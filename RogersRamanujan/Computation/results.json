@@ -2,7 +2,7 @@
  "environment": {
   "python": "3.12.14",
   "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.43",
-  "nmax": 18
+  "nmax": 20
  },
  "fixtures": {
   "0": {
@@ -359,6 +359,30 @@
    "q_series": 23,
    "generic_filter_residue": 23,
    "generic_filter_gap": 23,
+   "agree": true
+  },
+  {
+   "n": 19,
+   "direct_residue": 26,
+   "direct_gap": 26,
+   "dp_residue": 26,
+   "dp_gap": 26,
+   "product_series": 26,
+   "q_series": 26,
+   "generic_filter_residue": 26,
+   "generic_filter_gap": 26,
+   "agree": true
+  },
+  {
+   "n": 20,
+   "direct_residue": 31,
+   "direct_gap": 31,
+   "dp_residue": 31,
+   "dp_gap": 31,
+   "product_series": 31,
+   "q_series": 31,
+   "generic_filter_residue": 31,
+   "generic_filter_gap": 31,
    "agree": true
   }
  ],
@@ -858,9 +882,62 @@
     "max_state_parts": 18,
     "max_abs_j": 2,
     "ok": true
+   },
+   {
+    "n": 19,
+    "count": 26,
+    "forward_in_A": true,
+    "forward_values_in_D": true,
+    "forward_injective": true,
+    "forward_surjective": true,
+    "inverse_values_in_A": true,
+    "inverse_left": true,
+    "inverse_right": true,
+    "deterministic": true,
+    "weight_preserved": true,
+    "max_iteration_steps": 196,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 38.615,
+    "total_iteration_steps": 1004,
+    "extremal_A_object": [
+     11,
+     6,
+     1,
+     1
+    ],
+    "max_state_parts": 19,
+    "max_abs_j": 2,
+    "ok": true
+   },
+   {
+    "n": 20,
+    "count": 31,
+    "forward_in_A": true,
+    "forward_values_in_D": true,
+    "forward_injective": true,
+    "forward_surjective": true,
+    "inverse_values_in_A": true,
+    "inverse_left": true,
+    "inverse_right": true,
+    "deterministic": true,
+    "weight_preserved": true,
+    "max_iteration_steps": 224,
+    "min_iteration_steps": 0,
+    "mean_iteration_steps": 41.29,
+    "total_iteration_steps": 1280,
+    "extremal_A_object": [
+     11,
+     6,
+     1,
+     1,
+     1
+    ],
+    "max_state_parts": 20,
+    "max_abs_j": 2,
+    "ok": true
    }
   ],
-  "verified_through": 18
+  "verified_through": 20
  },
  "extremal_traces": [
   {
@@ -1602,31 +1679,23 @@
    ]
   },
   {
-   "n": 18,
+   "n": 20,
    "kind": "longest",
    "source": [
-    4,
-    4,
-    4,
-    1,
-    1,
-    1,
+    11,
+    6,
     1,
     1,
     1
    ],
-   "steps": 110,
+   "steps": 224,
    "path": [
     {
      "step": 0,
      "j": 0,
      "lam": [
-      4,
-      4,
-      4,
-      1,
-      1,
-      1,
+      11,
+      6,
       1,
       1,
       1
@@ -1635,25 +1704,25 @@
     },
     {
      "step": 1,
-     "j": -1,
+     "j": 1,
      "lam": [
-      4,
-      3,
-      3,
-      3,
-      2
+      12,
+      2,
+      2,
+      1,
+      1
      ],
      "involution_applied": "phi"
     },
     {
      "step": 2,
-     "j": 0,
+     "j": 2,
      "lam": [
       5,
-      4,
-      3,
-      3,
-      3
+      2,
+      2,
+      1,
+      1
      ],
      "involution_applied": "psi"
     },
@@ -1661,10 +1730,9 @@
      "step": 3,
      "j": 1,
      "lam": [
-      5,
+      8,
       4,
       4,
-      1,
       1,
       1
      ],
@@ -1674,10 +1742,10 @@
      "step": 4,
      "j": 0,
      "lam": [
-      7,
+      8,
       4,
       4,
-      1,
+      2,
       1,
       1
      ],
@@ -1685,12 +1753,12 @@
     },
     {
      "step": 5,
-     "j": -1,
+     "j": 1,
      "lam": [
-      6,
-      3,
-      3,
-      3
+      9,
+      5,
+      2,
+      2
      ],
      "involution_applied": "phi"
     },
@@ -1698,11 +1766,10 @@
      "step": 6,
      "j": 0,
      "lam": [
-      6,
-      3,
-      3,
-      3,
-      3
+      9,
+      7,
+      2,
+      2
      ],
      "involution_applied": "psi"
     },
@@ -1710,9 +1777,11 @@
      "step": 7,
      "j": 1,
      "lam": [
-      4,
-      4,
-      4,
+      8,
+      3,
+      1,
+      1,
+      1,
       1,
       1,
       1,
@@ -1724,10 +1793,12 @@
      "step": 8,
      "j": 0,
      "lam": [
-      4,
-      4,
-      4,
+      8,
+      3,
       2,
+      1,
+      1,
+      1,
       1,
       1,
       1,
@@ -1737,14 +1808,16 @@
     },
     {
      "step": 9,
-     "j": -1,
+     "j": 1,
      "lam": [
-      3,
-      3,
-      3,
-      3,
+      4,
       2,
-      1
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
      ],
      "involution_applied": "phi"
     },
@@ -1752,23 +1825,31 @@
      "step": 10,
      "j": 0,
      "lam": [
-      5,
-      3,
-      3,
-      3,
-      3,
-      1
+      4,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
      ],
      "involution_applied": "psi"
     },
     {
      "step": 11,
-     "j": 1,
+     "j": -1,
      "lam": [
-      4,
-      4,
-      4,
-      2,
+      5,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
       1
      ],
@@ -1778,11 +1859,15 @@
      "step": 12,
      "j": 0,
      "lam": [
-      4,
-      4,
-      4,
-      2,
-      2,
+      8,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
       1
      ],
@@ -1792,12 +1877,9 @@
      "step": 13,
      "j": -1,
      "lam": [
-      3,
-      3,
-      3,
-      3,
-      1,
-      1,
+      7,
+      7,
+      2,
       1
      ],
      "involution_applied": "phi"
@@ -1806,28 +1888,23 @@
      "step": 14,
      "j": 0,
      "lam": [
-      3,
-      3,
-      3,
-      3,
-      3,
-      1,
-      1,
+      7,
+      5,
+      5,
+      2,
       1
      ],
      "involution_applied": "psi"
     },
     {
      "step": 15,
-     "j": -1,
+     "j": 1,
      "lam": [
-      3,
+      8,
+      6,
       2,
-      2,
-      2,
-      2,
-      2,
-      2
+      1,
+      1
      ],
      "involution_applied": "phi"
     },
@@ -1835,13 +1912,12 @@
      "step": 16,
      "j": 0,
      "lam": [
-      5,
-      3,
+      8,
+      6,
       2,
       2,
-      2,
-      2,
-      2
+      1,
+      1
      ],
      "involution_applied": "psi"
     },
@@ -1849,24 +1925,28 @@
      "step": 17,
      "j": 1,
      "lam": [
-      4,
+      7,
       3,
-      3,
-      3,
-      3
+      2,
+      2,
+      1,
+      1,
+      1,
+      1
      ],
      "involution_applied": "phi"
     },
     {
      "step": 18,
-     "j": 0,
+     "j": 2,
      "lam": [
-      4,
       3,
-      3,
-      3,
-      3,
-      2
+      2,
+      2,
+      1,
+      1,
+      1,
+      1
      ],
      "involution_applied": "psi"
     },
@@ -1874,10 +1954,10 @@
      "step": 19,
      "j": 1,
      "lam": [
-      4,
-      4,
-      4,
+      11,
       3,
+      2,
+      1,
       1
      ],
      "involution_applied": "phi"
@@ -1886,11 +1966,11 @@
      "step": 20,
      "j": 0,
      "lam": [
-      4,
-      4,
-      4,
+      11,
       3,
       2,
+      2,
+      1,
       1
      ],
      "involution_applied": "psi"
@@ -1899,10 +1979,16 @@
      "step": 21,
      "j": 1,
      "lam": [
-      5,
-      5,
+      4,
       3,
       2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1
      ],
      "involution_applied": "phi"
@@ -1911,25 +1997,28 @@
      "step": 22,
      "j": 0,
      "lam": [
-      12,
+      4,
       3,
       2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1
      ],
      "involution_applied": "psi"
     },
     {
      "step": 23,
-     "j": 1,
+     "j": -1,
      "lam": [
-      4,
+      8,
+      3,
       2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
       1,
       1,
       1,
@@ -1941,15 +2030,9 @@
      "step": 24,
      "j": 0,
      "lam": [
-      4,
-      2,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
+      8,
+      5,
+      3,
       1,
       1,
       1,
@@ -1961,11 +2044,10 @@
      "step": 25,
      "j": -1,
      "lam": [
-      9,
-      3,
-      1,
-      1,
-      1
+      7,
+      4,
+      4,
+      2
      ],
      "involution_applied": "phi"
     },
@@ -1973,23 +2055,21 @@
      "step": 26,
      "j": 0,
      "lam": [
-      9,
-      3,
-      3,
-      1,
-      1,
-      1
+      5,
+      5,
+      4,
+      4,
+      2
      ],
      "involution_applied": "psi"
     },
     {
      "step": 27,
-     "j": -1,
+     "j": 1,
      "lam": [
-      8,
-      2,
-      2,
-      2,
+      6,
+      6,
+      5,
       1
      ],
      "involution_applied": "phi"
@@ -1998,10 +2078,9 @@
      "step": 28,
      "j": 0,
      "lam": [
-      8,
-      5,
-      2,
-      2,
+      7,
+      6,
+      6,
       1
      ],
      "involution_applied": "psi"
@@ -2010,11 +2089,8 @@
      "step": 29,
      "j": 1,
      "lam": [
-      6,
-      3,
-      2,
-      1,
-      1,
+      8,
+      7,
       1,
       1,
       1
@@ -2023,14 +2099,9 @@
     },
     {
      "step": 30,
-     "j": 0,
+     "j": 2,
      "lam": [
-      6,
-      3,
-      2,
-      2,
-      1,
-      1,
+      8,
       1,
       1,
       1
@@ -2039,43 +2110,31 @@
     },
     {
      "step": 31,
-     "j": -1,
+     "j": 1,
      "lam": [
-      5,
-      5,
-      2,
-      1,
-      1,
-      1
+      7,
+      7,
+      4
      ],
      "involution_applied": "phi"
     },
     {
      "step": 32,
-     "j": -2,
+     "j": 2,
      "lam": [
-      2,
-      2,
-      1,
-      1,
-      1
+      7,
+      4
      ],
      "involution_applied": "psi"
     },
     {
      "step": 33,
-     "j": -1,
+     "j": 1,
      "lam": [
+      6,
+      6,
       3,
-      2,
-      2,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
+      3
      ],
      "involution_applied": "phi"
     },
@@ -2083,26 +2142,22 @@
      "step": 34,
      "j": 0,
      "lam": [
-      5,
+      6,
+      6,
       3,
-      2,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
+      3,
+      2
      ],
      "involution_applied": "psi"
     },
     {
      "step": 35,
-     "j": -1,
+     "j": 1,
      "lam": [
-      6,
+      7,
       4,
-      2,
+      3,
+      1,
       1,
       1,
       1
@@ -2111,11 +2166,11 @@
     },
     {
      "step": 36,
-     "j": 0,
+     "j": 2,
      "lam": [
-      6,
-      5,
       4,
+      3,
+      1,
       1,
       1,
       1
@@ -2124,12 +2179,12 @@
     },
     {
      "step": 37,
-     "j": -1,
+     "j": 1,
      "lam": [
-      5,
-      4,
+      10,
       3,
-      3
+      3,
+      2
      ],
      "involution_applied": "phi"
     },
@@ -2137,10 +2192,11 @@
      "step": 38,
      "j": 0,
      "lam": [
-      8,
-      4,
+      7,
+      5,
       3,
-      3
+      3,
+      2
      ],
      "involution_applied": "psi"
     },
@@ -2148,10 +2204,9 @@
      "step": 39,
      "j": 1,
      "lam": [
-      5,
+      6,
       4,
-      1,
-      1,
+      3,
       1,
       1,
       1,
@@ -2164,10 +2219,10 @@
      "step": 40,
      "j": 0,
      "lam": [
-      7,
+      6,
       4,
-      1,
-      1,
+      3,
+      2,
       1,
       1,
       1,
@@ -2180,29 +2235,36 @@
      "step": 41,
      "j": -1,
      "lam": [
-      6,
-      6,
-      3
+      5,
+      5,
+      3,
+      2,
+      1,
+      1
      ],
      "involution_applied": "phi"
     },
     {
      "step": 42,
-     "j": 0,
+     "j": -2,
      "lam": [
-      6,
-      6,
       3,
-      3
+      2,
+      2,
+      1,
+      1
      ],
      "involution_applied": "psi"
     },
     {
      "step": 43,
-     "j": 1,
+     "j": -1,
      "lam": [
-      7,
       4,
+      3,
+      2,
+      2,
+      1,
       1,
       1,
       1,
@@ -2213,9 +2275,13 @@
     },
     {
      "step": 44,
-     "j": 2,
+     "j": 0,
      "lam": [
+      5,
       4,
+      3,
+      2,
+      1,
       1,
       1,
       1,
@@ -2226,11 +2292,14 @@
     },
     {
      "step": 45,
-     "j": 1,
+     "j": -1,
      "lam": [
-      10,
+      5,
+      4,
       3,
-      3
+      2,
+      2,
+      1
      ],
      "involution_applied": "phi"
     },
@@ -2238,10 +2307,11 @@
      "step": 46,
      "j": 0,
      "lam": [
-      7,
-      5,
+      10,
+      4,
       3,
-      3
+      2,
+      1
      ],
      "involution_applied": "psi"
     },
@@ -2249,13 +2319,9 @@
      "step": 47,
      "j": 1,
      "lam": [
-      6,
+      11,
       4,
-      1,
-      1,
-      1,
-      1,
-      1,
+      2,
       1
      ],
      "involution_applied": "phi"
@@ -2264,25 +2330,27 @@
      "step": 48,
      "j": 0,
      "lam": [
-      6,
+      11,
       4,
       2,
-      1,
-      1,
-      1,
-      1,
-      1,
+      2,
       1
      ],
      "involution_applied": "psi"
     },
     {
      "step": 49,
-     "j": -1,
+     "j": 1,
      "lam": [
       5,
-      5,
       3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
       1
      ],
@@ -2290,10 +2358,17 @@
     },
     {
      "step": 50,
-     "j": -2,
+     "j": 0,
      "lam": [
+      7,
       3,
       2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
       1
      ],
@@ -2303,15 +2378,9 @@
      "step": 51,
      "j": -1,
      "lam": [
-      3,
+      7,
+      6,
       2,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
       1,
       1
      ],
@@ -2321,15 +2390,10 @@
      "step": 52,
      "j": 0,
      "lam": [
+      6,
       5,
-      3,
+      5,
       2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
       1,
       1
      ],
@@ -2337,25 +2401,23 @@
     },
     {
      "step": 53,
-     "j": -1,
+     "j": 1,
      "lam": [
       7,
-      4,
+      6,
       2,
-      1,
+      2,
       1
      ],
      "involution_applied": "phi"
     },
     {
      "step": 54,
-     "j": 0,
+     "j": 2,
      "lam": [
-      5,
-      5,
-      4,
+      6,
       2,
-      1,
+      2,
       1
      ],
      "involution_applied": "psi"
@@ -2364,10 +2426,10 @@
      "step": 55,
      "j": 1,
      "lam": [
-      6,
+      7,
       5,
-      2,
-      2,
+      4,
+      1,
       1
      ],
      "involution_applied": "phi"
@@ -2377,9 +2439,9 @@
      "j": 0,
      "lam": [
       7,
-      6,
-      2,
-      2,
+      7,
+      4,
+      1,
       1
      ],
      "involution_applied": "psi"
@@ -2388,26 +2450,20 @@
      "step": 57,
      "j": 1,
      "lam": [
-      7,
-      3,
-      2,
-      1,
-      1,
-      1,
-      1
+      8,
+      8,
+      2
      ],
      "involution_applied": "phi"
     },
     {
      "step": 58,
-     "j": 2,
+     "j": 0,
      "lam": [
-      3,
+      8,
+      8,
       2,
-      1,
-      1,
-      1,
-      1
+      2
      ],
      "involution_applied": "psi"
     },
@@ -2415,9 +2471,13 @@
      "step": 59,
      "j": 1,
      "lam": [
-      10,
+      9,
       3,
-      2,
+      1,
+      1,
+      1,
+      1,
+      1,
       1
      ],
      "involution_applied": "phi"
@@ -2426,10 +2486,14 @@
      "step": 60,
      "j": 0,
      "lam": [
-      7,
-      5,
+      9,
       3,
       2,
+      1,
+      1,
+      1,
+      1,
+      1,
       1
      ],
      "involution_applied": "psi"
@@ -2438,8 +2502,12 @@
      "step": 61,
      "j": 1,
      "lam": [
-      8,
       4,
+      2,
+      2,
+      2,
+      2,
+      2,
       2,
       1,
       1
@@ -2450,8 +2518,12 @@
      "step": 62,
      "j": 0,
      "lam": [
-      8,
       4,
+      2,
+      2,
+      2,
+      2,
+      2,
       2,
       2,
       1,
@@ -2461,12 +2533,14 @@
     },
     {
      "step": 63,
-     "j": 1,
+     "j": -1,
      "lam": [
-      5,
+      6,
       3,
-      2,
-      2,
+      1,
+      1,
+      1,
+      1,
       1,
       1,
       1,
@@ -2478,10 +2552,13 @@
      "step": 64,
      "j": 0,
      "lam": [
-      7,
+      6,
       3,
-      2,
-      2,
+      3,
+      1,
+      1,
+      1,
+      1,
       1,
       1,
       1,
@@ -2491,15 +2568,13 @@
     },
     {
      "step": 65,
-     "j": 1,
+     "j": -1,
      "lam": [
-      4,
-      3,
+      6,
+      5,
       2,
       2,
-      2,
-      2,
-      1
+      2
      ],
      "involution_applied": "phi"
     },
@@ -2507,24 +2582,21 @@
      "step": 66,
      "j": 0,
      "lam": [
-      4,
-      3,
+      10,
+      6,
       2,
-      2,
-      2,
-      2,
-      2,
-      1
+      2
      ],
      "involution_applied": "psi"
     },
     {
      "step": 67,
-     "j": -1,
+     "j": 1,
      "lam": [
-      4,
+      7,
       3,
-      2,
+      1,
+      1,
       1,
       1,
       1,
@@ -2536,11 +2608,11 @@
     },
     {
      "step": 68,
-     "j": 0,
+     "j": 2,
      "lam": [
-      5,
-      4,
       3,
+      1,
+      1,
       1,
       1,
       1,
@@ -2552,12 +2624,10 @@
     },
     {
      "step": 69,
-     "j": -1,
+     "j": 1,
      "lam": [
-      4,
-      4,
+      13,
       3,
-      2,
       2
      ],
      "involution_applied": "phi"
@@ -2566,10 +2636,9 @@
      "step": 70,
      "j": 0,
      "lam": [
-      5,
-      4,
-      4,
+      13,
       3,
+      2,
       2
      ],
      "involution_applied": "psi"
@@ -2578,9 +2647,16 @@
      "step": 71,
      "j": 1,
      "lam": [
-      5,
-      5,
+      4,
       3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
       1,
       1
@@ -2591,8 +2667,17 @@
      "step": 72,
      "j": 0,
      "lam": [
-      12,
+      4,
       3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
       1,
       1
@@ -2603,9 +2688,11 @@
      "step": 73,
      "j": -1,
      "lam": [
-      11,
+      10,
+      3,
       2,
-      2
+      1,
+      1
      ],
      "involution_applied": "phi"
     },
@@ -2613,9 +2700,10 @@
      "step": 74,
      "j": 0,
      "lam": [
-      11,
-      5,
-      2
+      15,
+      3,
+      1,
+      1
      ],
      "involution_applied": "psi"
     },
@@ -2623,17 +2711,8 @@
      "step": 75,
      "j": 1,
      "lam": [
-      6,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
+      16,
+      2
      ],
      "involution_applied": "phi"
     },
@@ -2641,27 +2720,30 @@
      "step": 76,
      "j": 0,
      "lam": [
-      6,
+      16,
       2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
+      2
      ],
      "involution_applied": "psi"
     },
     {
      "step": 77,
-     "j": -1,
+     "j": 1,
      "lam": [
-      8,
-      5,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
       1
      ],
@@ -2671,8 +2753,21 @@
      "step": 78,
      "j": 0,
      "lam": [
-      8,
-      8,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
       1
      ],
@@ -2680,13 +2775,10 @@
     },
     {
      "step": 79,
-     "j": 1,
+     "j": -1,
      "lam": [
-      9,
+      13,
       2,
-      1,
-      1,
-      1,
       1,
       1
      ],
@@ -2696,12 +2788,8 @@
      "step": 80,
      "j": 0,
      "lam": [
-      9,
-      2,
-      2,
-      1,
-      1,
-      1,
+      13,
+      5,
       1,
       1
      ],
@@ -2711,13 +2799,8 @@
      "step": 81,
      "j": 1,
      "lam": [
-      3,
+      14,
       2,
-      2,
-      2,
-      2,
-      2,
-      1,
       1,
       1
      ],
@@ -2727,14 +2810,9 @@
      "step": 82,
      "j": 0,
      "lam": [
-      3,
+      14,
       2,
       2,
-      2,
-      2,
-      2,
-      2,
-      1,
       1,
       1
      ],
@@ -2742,10 +2820,15 @@
     },
     {
      "step": 83,
-     "j": -1,
+     "j": 1,
      "lam": [
-      6,
+      3,
       2,
+      2,
+      1,
+      1,
+      1,
+      1,
       1,
       1,
       1,
@@ -2760,8 +2843,14 @@
      "step": 84,
      "j": 0,
      "lam": [
-      6,
-      5,
+      3,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
       1,
       1,
       1,
@@ -2776,79 +2865,71 @@
      "step": 85,
      "j": -1,
      "lam": [
-      5,
-      5,
-      4,
+      11,
+      2,
+      1,
+      1,
+      1,
       1
      ],
      "involution_applied": "phi"
     },
     {
      "step": 86,
-     "j": -2,
+     "j": 0,
      "lam": [
-      4,
-      2,
+      11,
+      5,
+      1,
+      1,
+      1,
       1
      ],
      "involution_applied": "psi"
     },
     {
      "step": 87,
-     "j": -1,
+     "j": 1,
      "lam": [
-      3,
+      12,
       2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
+      2,
+      2
      ],
      "involution_applied": "phi"
     },
     {
      "step": 88,
-     "j": 0,
+     "j": 2,
      "lam": [
       5,
-      3,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
+      2,
+      2,
+      2
      ],
      "involution_applied": "psi"
     },
     {
      "step": 89,
-     "j": -1,
+     "j": 1,
      "lam": [
-      8,
+      7,
       4,
-      2,
+      4,
+      1,
+      1,
       1
      ],
      "involution_applied": "phi"
     },
     {
      "step": 90,
-     "j": 0,
+     "j": 2,
      "lam": [
-      8,
-      5,
       4,
+      4,
+      1,
+      1,
       1
      ],
      "involution_applied": "psi"
@@ -2858,8 +2939,9 @@
      "j": 1,
      "lam": [
       9,
-      6,
-      1
+      3,
+      3,
+      3
      ],
      "involution_applied": "phi"
     },
@@ -2868,9 +2950,10 @@
      "j": 0,
      "lam": [
       9,
-      6,
-      2,
-      1
+      3,
+      3,
+      3,
+      2
      ],
      "involution_applied": "psi"
     },
@@ -2878,8 +2961,9 @@
      "step": 93,
      "j": 1,
      "lam": [
-      7,
-      2,
+      4,
+      4,
+      3,
       1,
       1,
       1,
@@ -2892,8 +2976,11 @@
     },
     {
      "step": 94,
-     "j": 2,
+     "j": 0,
      "lam": [
+      4,
+      4,
+      3,
       2,
       1,
       1,
@@ -2907,20 +2994,26 @@
     },
     {
      "step": 95,
-     "j": 1,
+     "j": -1,
      "lam": [
-      12,
+      6,
       3,
+      3,
+      2,
+      2,
       1
      ],
      "involution_applied": "phi"
     },
     {
      "step": 96,
-     "j": 2,
+     "j": 0,
      "lam": [
+      6,
       5,
       3,
+      3,
+      2,
       1
      ],
      "involution_applied": "psi"
@@ -2931,8 +3024,11 @@
      "lam": [
       6,
       4,
-      4,
-      2
+      3,
+      2,
+      1,
+      1,
+      1
      ],
      "involution_applied": "phi"
     },
@@ -2942,19 +3038,25 @@
      "lam": [
       6,
       4,
-      4,
+      3,
       2,
-      2
+      2,
+      1,
+      1,
+      1
      ],
      "involution_applied": "psi"
     },
     {
      "step": 99,
-     "j": 1,
+     "j": -1,
      "lam": [
-      7,
       5,
+      4,
       3,
+      2,
+      1,
+      1,
       1
      ],
      "involution_applied": "phi"
@@ -2963,19 +3065,23 @@
      "step": 100,
      "j": 0,
      "lam": [
-      7,
-      7,
+      10,
+      4,
       3,
+      1,
+      1,
       1
      ],
      "involution_applied": "psi"
     },
     {
      "step": 101,
-     "j": 1,
+     "j": -1,
      "lam": [
-      8,
-      8
+      9,
+      3,
+      3,
+      2
      ],
      "involution_applied": "phi"
     },
@@ -2983,9 +3089,10 @@
      "step": 102,
      "j": 0,
      "lam": [
-      8,
-      8,
-      2
+      9,
+      5,
+      3,
+      3
      ],
      "involution_applied": "psi"
     },
@@ -2993,7 +3100,9 @@
      "step": 103,
      "j": 1,
      "lam": [
-      9,
+      6,
+      4,
+      1,
       1,
       1,
       1,
@@ -3008,8 +3117,10 @@
      "step": 104,
      "j": 0,
      "lam": [
-      9,
+      6,
+      4,
       2,
+      1,
       1,
       1,
       1,
@@ -3024,17 +3135,22 @@
      "step": 105,
      "j": -1,
      "lam": [
-      8,
-      6,
+      7,
+      5,
+      3,
+      1,
       1
      ],
      "involution_applied": "phi"
     },
     {
      "step": 106,
-     "j": -2,
+     "j": 0,
      "lam": [
-      6,
+      10,
+      5,
+      3,
+      1,
       1
      ],
      "involution_applied": "psi"
@@ -3043,6 +3159,1240 @@
      "step": 107,
      "j": -1,
      "lam": [
+      9,
+      4,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 108,
+     "j": 0,
+     "lam": [
+      9,
+      5,
+      4,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 109,
+     "j": 1,
+     "lam": [
+      10,
+      5,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 110,
+     "j": 0,
+     "lam": [
+      12,
+      5,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 111,
+     "j": 1,
+     "lam": [
+      13,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 112,
+     "j": 0,
+     "lam": [
+      13,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 113,
+     "j": 1,
+     "lam": [
+      3,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 114,
+     "j": 0,
+     "lam": [
+      3,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 115,
+     "j": -1,
+     "lam": [
+      10,
+      2,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 116,
+     "j": 0,
+     "lam": [
+      15,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 117,
+     "j": -1,
+     "lam": [
+      14,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 118,
+     "j": 0,
+     "lam": [
+      14,
+      5,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 119,
+     "j": 1,
+     "lam": [
+      15,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 120,
+     "j": 0,
+     "lam": [
+      10,
+      7,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 121,
+     "j": 1,
+     "lam": [
+      11,
+      2,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 122,
+     "j": 0,
+     "lam": [
+      11,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 123,
+     "j": 1,
+     "lam": [
+      3,
+      3,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 124,
+     "j": 0,
+     "lam": [
+      3,
+      3,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 125,
+     "j": -1,
+     "lam": [
+      8,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 126,
+     "j": 0,
+     "lam": [
+      8,
+      5,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 127,
+     "j": 1,
+     "lam": [
+      6,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 128,
+     "j": 0,
+     "lam": [
+      6,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 129,
+     "j": -1,
+     "lam": [
+      5,
+      5,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 130,
+     "j": -2,
+     "lam": [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 131,
+     "j": -1,
+     "lam": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 132,
+     "j": 0,
+     "lam": [
+      5,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 133,
+     "j": -1,
+     "lam": [
+      7,
+      4,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 134,
+     "j": 0,
+     "lam": [
+      5,
+      5,
+      4,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 135,
+     "j": -1,
+     "lam": [
+      4,
+      4,
+      4,
+      3,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 136,
+     "j": 0,
+     "lam": [
+      5,
+      4,
+      4,
+      4,
+      3
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 137,
+     "j": 1,
+     "lam": [
+      6,
+      5,
+      5,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 138,
+     "j": 0,
+     "lam": [
+      12,
+      6,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 139,
+     "j": 1,
+     "lam": [
+      13,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 140,
+     "j": 0,
+     "lam": [
+      13,
+      2,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 141,
+     "j": 1,
+     "lam": [
+      3,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 142,
+     "j": 0,
+     "lam": [
+      3,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 143,
+     "j": -1,
+     "lam": [
+      10,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 144,
+     "j": 0,
+     "lam": [
+      15,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 145,
+     "j": 1,
+     "lam": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 146,
+     "j": 0,
+     "lam": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 147,
+     "j": -1,
+     "lam": [
+      11,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 148,
+     "j": 0,
+     "lam": [
+      11,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 149,
+     "j": -1,
+     "lam": [
+      10,
+      5,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 150,
+     "j": -2,
+     "lam": [
+      5,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 151,
+     "j": -1,
+     "lam": [
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 152,
+     "j": 0,
+     "lam": [
+      3,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 153,
+     "j": -1,
+     "lam": [
+      9,
+      2,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 154,
+     "j": 0,
+     "lam": [
+      9,
+      5,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 155,
+     "j": 1,
+     "lam": [
+      6,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 156,
+     "j": 0,
+     "lam": [
+      6,
+      3,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 157,
+     "j": -1,
+     "lam": [
+      5,
+      5,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 158,
+     "j": -2,
+     "lam": [
+      2,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 159,
+     "j": -1,
+     "lam": [
+      3,
+      3,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 160,
+     "j": 0,
+     "lam": [
+      5,
+      3,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 161,
+     "j": -1,
+     "lam": [
+      5,
+      4,
+      2,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 162,
+     "j": 0,
+     "lam": [
+      10,
+      4,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 163,
+     "j": 1,
+     "lam": [
+      5,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 164,
+     "j": 0,
+     "lam": [
+      7,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 165,
+     "j": -1,
+     "lam": [
+      6,
+      6,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 166,
+     "j": 0,
+     "lam": [
+      6,
+      6,
+      5,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 167,
+     "j": 1,
+     "lam": [
+      7,
+      6,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 168,
+     "j": 2,
+     "lam": [
+      6,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 169,
+     "j": 1,
+     "lam": [
+      8,
+      5,
+      4,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 170,
+     "j": 0,
+     "lam": [
+      8,
+      7,
+      4,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 171,
+     "j": 1,
+     "lam": [
+      9,
+      8,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 172,
+     "j": 0,
+     "lam": [
+      9,
+      8,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 173,
+     "j": 1,
+     "lam": [
+      9,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 174,
+     "j": 0,
+     "lam": [
+      9,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 175,
+     "j": 1,
+     "lam": [
+      3,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 176,
+     "j": 0,
+     "lam": [
+      3,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 177,
+     "j": -1,
+     "lam": [
+      6,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 178,
+     "j": 0,
+     "lam": [
+      6,
+      5,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 179,
+     "j": -1,
+     "lam": [
+      7,
+      5,
+      4,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 180,
+     "j": 0,
+     "lam": [
+      10,
+      5,
+      4,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 181,
+     "j": 1,
+     "lam": [
+      11,
+      6,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 182,
+     "j": 0,
+     "lam": [
+      11,
+      6,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 183,
+     "j": 1,
+     "lam": [
+      7,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 184,
+     "j": 2,
+     "lam": [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 185,
+     "j": 1,
+     "lam": [
+      14,
+      3,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 186,
+     "j": 0,
+     "lam": [
+      14,
+      3,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 187,
+     "j": 1,
+     "lam": [
+      4,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 188,
+     "j": 0,
+     "lam": [
+      4,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 189,
+     "j": -1,
+     "lam": [
+      11,
+      3,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 190,
+     "j": 0,
+     "lam": [
+      11,
+      3,
+      3,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 191,
+     "j": -1,
+     "lam": [
+      10,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 192,
+     "j": 0,
+     "lam": [
+      15,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 193,
+     "j": 1,
+     "lam": [
+      3,
       2,
       1,
       1,
@@ -3061,10 +4411,12 @@
      "involution_applied": "phi"
     },
     {
-     "step": 108,
+     "step": 194,
      "j": 0,
      "lam": [
-      5,
+      3,
+      2,
+      2,
       1,
       1,
       1,
@@ -3082,20 +4434,404 @@
      "involution_applied": "psi"
     },
     {
-     "step": 109,
+     "step": 195,
      "j": -1,
      "lam": [
-      11,
-      4
+      12,
+      2,
+      1,
+      1,
+      1
      ],
      "involution_applied": "phi"
     },
     {
-     "step": 110,
+     "step": 196,
      "j": 0,
      "lam": [
-      11,
+      5,
+      5,
+      5,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 197,
+     "j": 1,
+     "lam": [
+      6,
+      6,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 198,
+     "j": 0,
+     "lam": [
+      6,
+      6,
+      2,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 199,
+     "j": 1,
+     "lam": [
+      7,
+      3,
+      3,
+      3,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 200,
+     "j": 2,
+     "lam": [
+      3,
+      3,
+      3,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 201,
+     "j": 1,
+     "lam": [
+      9,
+      3,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 202,
+     "j": 0,
+     "lam": [
+      9,
+      3,
+      2,
+      2,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 203,
+     "j": 1,
+     "lam": [
       4,
+      3,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 204,
+     "j": 0,
+     "lam": [
+      4,
+      3,
+      3,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 205,
+     "j": -1,
+     "lam": [
+      5,
+      3,
+      2,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 206,
+     "j": 0,
+     "lam": [
+      10,
+      3,
+      2,
+      2,
+      2,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 207,
+     "j": 1,
+     "lam": [
+      4,
+      3,
+      3,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 208,
+     "j": 0,
+     "lam": [
+      4,
+      3,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 209,
+     "j": -1,
+     "lam": [
+      6,
+      3,
+      2,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 210,
+     "j": 0,
+     "lam": [
+      6,
+      5,
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 211,
+     "j": 1,
+     "lam": [
+      7,
+      4,
+      3,
+      2,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 212,
+     "j": 2,
+     "lam": [
+      4,
+      3,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 213,
+     "j": 1,
+     "lam": [
+      8,
+      3,
+      3,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 214,
+     "j": 0,
+     "lam": [
+      8,
+      3,
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 215,
+     "j": -1,
+     "lam": [
+      7,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 216,
+     "j": 0,
+     "lam": [
+      5,
+      5,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 217,
+     "j": -1,
+     "lam": [
+      4,
+      4,
+      4,
+      2,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 218,
+     "j": 0,
+     "lam": [
+      5,
+      4,
+      4,
+      4,
+      1,
+      1,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 219,
+     "j": -1,
+     "lam": [
+      4,
+      3,
+      3,
+      3,
+      3,
+      1
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 220,
+     "j": 0,
+     "lam": [
+      4,
+      3,
+      3,
+      3,
+      3,
+      3,
+      1
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 221,
+     "j": 1,
+     "lam": [
+      4,
+      4,
+      4,
+      4,
+      2
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 222,
+     "j": 0,
+     "lam": [
+      4,
+      4,
+      4,
+      4,
+      2,
+      2
+     ],
+     "involution_applied": "psi"
+    },
+    {
+     "step": 223,
+     "j": 1,
+     "lam": [
+      5,
+      5,
+      5,
+      3
+     ],
+     "involution_applied": "phi"
+    },
+    {
+     "step": 224,
+     "j": 0,
+     "lam": [
+      17,
       3
      ],
      "involution_applied": "psi"
@@ -3103,11 +4839,11 @@
    ]
   },
   {
-   "n": 18,
+   "n": 20,
    "kind": "shortest",
    "source": [
     6,
-    4,
+    6,
     4,
     4
    ],
@@ -3118,7 +4854,7 @@
      "j": 0,
      "lam": [
       6,
-      4,
+      6,
       4,
       4
      ],
@@ -3281,8 +5017,24 @@
     "psi_domain": 814,
     "phi_involutive": true,
     "psi_involutive": true
+   },
+   {
+    "n": 19,
+    "states": 1082,
+    "phi_domain": 1056,
+    "psi_domain": 1056,
+    "phi_involutive": true,
+    "psi_involutive": true
+   },
+   {
+    "n": 20,
+    "states": 1395,
+    "phi_domain": 1364,
+    "psi_domain": 1364,
+    "phi_involutive": true,
+    "psi_involutive": true
    }
   ]
  },
- "elapsed_seconds": 0.099
+ "elapsed_seconds": 0.206
 }
