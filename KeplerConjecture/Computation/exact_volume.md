@@ -28,11 +28,12 @@ Let `P = ⋂{planes}` and `Q = conv(vertices)`.
 
 | id | obligation | what it buys |
 | --- | --- | --- |
-| V1 | every vertex satisfies every plane | `Q ⊆ P` |
-| V2 | `a·v < d` for every plane | a valid apex for the fans |
+| V1 | every vertex satisfies every plane **in `cert["planes"]`** — all the constraints, not only the candidate ones | `Q ⊆ P` |
+| V2 | `a·v < d` for every plane in `cert["planes"]` | a valid apex for the fans |
 | V3 | each facet's vertices lie on its plane, `≥ 3`, non-collinear, and the area vector **recomputed from the vertex order** is a positive multiple of the outward normal | the facet is a genuine, outward-oriented 2-face |
 | V4 | every vertex lies on `≥ 3` facets | no spurious vertices |
-| V5 | the area vectors sum to `0` | **boundedness**: `Σ λ_f a_f = 0` with all `λ_f > 0` (from V3), so the normals positively span `R³` and the recession cone is `{0}` |
+| V5 | the area vectors sum to `0` **and** the facet normals have rank 3 | **boundedness**. Closure gives `Σ λ_f a_f = 0` with `λ_f > 0`; on its own that does *not* bound the polyhedron (the side faces of an infinite triangular prism close with positive weights and the prism is unbounded). With rank 3 it does: any `x` in the recession cone is orthogonal to every `a_f` (`0 = Σλ_f a_f·x = Σλ_f(a_f·x) ≤ 0` forces every `a_f·x = 0`), and a rank-3 family has zero orthogonal complement |
+| V6a | the facets are **unique**: distinct plane indices, in range, and no two on the same half-space | without it, duplicating the facet list doubles every area vector, closure still holds (`0 = 2·0`), and the divergence theorem reports twice the volume |
 | V6 | (derived) every facet of `P` is listed | a face is `P ∩ {supporting plane}`; any plane meeting `P` in a 2-set is a facet, so the listed facets are all of them, the rest are redundant, and V1 shows they do not cut |
 | V7 | `(1/3) Σ_f x_f·A_f > 0` and equal to the certificate's volume | the divergence theorem on a closed oriented surface |
 | V8 | the fan volume `Σ_f Σ_triabs det/6` with apex `v` equals V7 | a second derivation that uses **no area vectors**, so it catches an error in the area formula that V5 and V7 both depend on. It is a consistency check between two formulas over the same vertices, not an independent measurement |

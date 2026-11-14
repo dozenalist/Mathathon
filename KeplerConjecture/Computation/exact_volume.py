@@ -225,21 +225,36 @@ def facets_of(planes, verts):
 # ------------------------------------------------------------------ the checker
 def check_certificate(cert):
     """Re-verify a certificate from its own data.  Exact; raises ValueError on any failure."""
+    # TWO lists: `cand` are the planes the facets live on (facet indices refer to them); `allp`
+    # are ALL the constraints the volume claims to be the intersection of.  An earlier version read
+    # only candidate_planes, so a plane added to `planes` alone was invisible and a cube could be
+    # certified with the wrong volume (reviewer witness: add x <= 1/2, claim 8 instead of 6).
+    allp = [tuple(F(x) for x in pl) for pl in cert["planes"]]
     planes = [tuple(F(x) for x in pl) for pl in cert.get("candidate_planes", cert["planes"])]
     v = tuple(F(x) for x in cert["interior"])
     verts = [tuple(F(x) for x in P) for P in cert["vertices"]]
     facets = cert["facets"]
     vol = F(cert["volume"])
     P = lambda pt, pl: pl[0] * pt[0] + pl[1] * pt[1] + pl[2] * pt[2]
-    # V1
+    # V1 -- against EVERY constraint in cert["planes"], not only the candidate ones
     for pt in verts:
-        for pl in planes:
+        for pl in allp:
             if P(pt, pl) > pl[3]:
                 raise ValueError("V1: vertex %r violates plane %r" % (pt, pl))
-    # V2
-    for pl in planes:
+    # V2 -- the interior point is strictly inside every constraint
+    for pl in allp:
         if not P(v, pl) < pl[3]:
             raise ValueError("V2: the interior point is not strictly inside plane %r" % (pl,))
+    # V6a: the facets are UNIQUE and their plane indices are in range.  Without this, duplicating
+    # the facet list doubles every area vector, the closure still holds (0 = 2*0) and the divergence
+    # theorem reports twice the volume (reviewer witness: cube 8 certified as 16).
+    if len({f["plane"] for f in facets}) != len(facets):
+        raise ValueError("V6a: two facets share a plane index")
+    if any(not (0 <= f["plane"] < len(planes)) for f in facets):
+        raise ValueError("V6a: a facet's plane index is out of range")
+    if len({normalise(planes[f["plane"]]) for f in facets}) != len(facets):
+        raise ValueError("V6a: two facets lie on the SAME half-space (geometrically duplicate)")
+
     # V3 + V5
     total_area = [F(0), F(0), F(0)]
     for f in facets:
@@ -269,10 +284,20 @@ def check_certificate(cert):
         if cross != (0, 0, 0) or dot <= 0:
             raise ValueError("V3: facet on plane %d is not outward oriented" % f["plane"])
         total_area = [total_area[t] + A[t] for t in range(3)]
-    # V5: closure == positive spanning == bounded
+    # V5: closure, AND the normals must SPAN R^3.
+    #   Closure gives sum_f lambda_f a_f = 0 with all lambda_f > 0 (lambda_f > 0 by V3).  That alone
+    #   does NOT bound the polyhedron: the side faces of an infinite triangular prism close with
+    #   positive weights and the prism is unbounded in the third direction.  What makes
+    #   {x : a_f.x <= 0 for all f} equal {0} is closure PLUS rank 3: any such x is orthogonal to
+    #   every a_f (0 = sum lambda_f a_f . x = sum lambda_f (a_f.x) <= 0 forces every a_f.x = 0), and
+    #   a rank-3 family has only the zero orthogonal complement.
     if tuple(total_area) != (F(0), F(0), F(0)):
         raise ValueError("V5: the area vectors do not close (%r): the surface is not a closed "
                          "boundary, so boundedness is not certified" % (total_area,))
+    normals = [planes[f["plane"]][:3] for f in facets]
+    if not _rank3(normals):
+        raise ValueError("V5: the facet normals span fewer than 3 dimensions, so the recession cone "
+                         "{x : a_f.x <= 0} is larger than {0} and the polyhedron may be unbounded")
     # V4: every vertex is on at least three facets
     for idx, pt in enumerate(verts):
         k = sum(1 for f in facets if idx in f["verts"])
@@ -305,6 +330,13 @@ def check_certificate(cert):
         raise ValueError("V8: the fan volume %s disagrees with the divergence-theorem volume %s"
                          % (fan, computed))
     return computed
+
+def _rank3(normals):
+    """Do the given 3-vectors span R^3?  Exact: some triple has a nonzero determinant."""
+    for i, j, k in itertools.combinations(range(len(normals)), 3):
+        if det3(normals[i], normals[j], normals[k]) != 0:
+            return True
+    return False
 
 def certify_volume(planes, interior, candidates=None):
     """SEARCH: build a certificate for {x : a.x <= d for every plane}, then CHECK it.

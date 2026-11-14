@@ -216,6 +216,37 @@ def main():
     except ValueError:
         check("cube + (x >= 1) is rejected (empty)", True)
 
+    print("\n" + "=" * 96)
+    print("H. THE REVIEWER'S TWO FALSE ACCEPTS (Astra, at fbb124e)")
+    print("=" * 96)
+    import copy as _copy
+    spec, v = box(1, 1, 1)
+    P = planes_of(spec)
+    vol8, cert8 = EV.certify_volume(P, v)
+    check("the cube certifies at volume 8", vol8 == 8, vol8)
+    # (1) duplicate the complete facet list and claim 16: closure still holds (0 = 2*0)
+    bad = _copy.deepcopy(cert8)
+    bad["facets"] = bad["facets"] + _copy.deepcopy(bad["facets"])
+    bad["volume"] = "16"
+    try:
+        EV.check_certificate(bad)
+        check("duplicated facets with volume 16 is REJECTED", False, "accepted")
+    except ValueError as e:
+        check("duplicated facets with volume 16 is REJECTED", True, str(e)[:50])
+    # (2) a constraint added to cert["planes"] only: the true volume is 6, not 8
+    bad2 = _copy.deepcopy(cert8)
+    bad2["planes"].append(["1", "0", "0", "1/2"])
+    try:
+        EV.check_certificate(bad2)
+        check("an added constraint (volume would be 6) is REJECTED", False, "accepted")
+    except ValueError as e:
+        check("an added constraint (volume would be 6) is REJECTED", True, str(e)[:50])
+    # (3) closure alone is not boundedness: the four side faces of a prism close, rank 2
+    check("the four side-face normals span only 2 dimensions",
+          EV._rank3([(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0)]) is False)
+    check("the cube's six normals span 3",
+          EV._rank3([pl[:3] for pl in P]) is True)
+
     print()
     if FAILS:
         print("FAILED: %d -> %s" % (len(FAILS), FAILS))
