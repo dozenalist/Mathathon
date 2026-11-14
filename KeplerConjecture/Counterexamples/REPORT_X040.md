@@ -135,7 +135,7 @@ destroys that margin. `G` survives coarser grids because it was given `ε_G = 10
 and that a 3.8× smaller representative of a nearby certificate exists and verifies exactly. It
 does **not** show that a small-denominator triple exists at exactly `0.782267220134`: the
 constraint rows carry `S^{−k}`, so pinning the density to 12 digits pins the denominators to
-roughly `8^{11} ≈ 10^{10}` times whatever the free entries carry. The honest statement of the
+roughly `8^{10} ≈ 1.1·10⁹` times whatever the free entries carry. The honest statement of the
 reduction's status is: *same construction, same structural properties, `3.5·10⁻⁸` weaker,
 3.8× smaller.*
 
@@ -145,8 +145,8 @@ reduction's status is: *same construction, same structural properties, `3.5·10�
 rationals at `0.779966500`, i.e. better bound and about 1.5× the entry size of `X_C017_small`;
 but K33 needs a **sign predicate on neither side only because it has one side**, whereas `X_C017`
 and `X_C017_small` are the only objects in the project with **both** sides witnessed by rational
-PSD matrices — which is the property that removes the predicate obligation entirely (§3). The
-`10`-digit `B` block of the stored certificate shows that the `B` side was always cheap; the size
+PSD matrices — which is the property that removes the predicate obligation entirely (§3). The `B` block of the stored certificate already has only `≤ 11`-digit
+entries, which shows the `B` side was always cheap; the size
 was entirely a `G`/`A` artefact of the pivot solve.
 
 ### 2.1 Is a *smaller* triple possible at comparable strength?  No — and the reason is structural
@@ -199,8 +199,9 @@ by expansion, (4) `P(0)`, `Q(0)`, the exact ratio and the density, (5) what is a
 It runs on both `X_C017_certificate.json` and `X_C017_small.json` and exits 0 on both.
 
 The exposition the block asked for is short: **CE1 and CE2 are not sign conditions here.** For
-`H = v(s/S)^T G v(s/S)` with `G ⪰ 0`, `H ≥ 0` identically; `P = −(s−4)H` is then `≥ 0` on `[0,4]`
-and `< 0` beyond `4` *because of the factor*, with no root isolation. For
+`H = v(s/S)^T G v(s/S)` with `G ⪰ 0`, `H ≥ 0` identically; `P = −(s−4)H = (4−s)H` is then `≥ 0`
+on `[0,4]` and `≤ 0` beyond `4` (strictly negative wherever `H > 0`) *because of the factor*, with
+no root isolation. For
 `Q = v(w/S)^T A v(w/S) + w·v(w/S)^T B v(w/S)` with `A, B ⪰ 0`, `Q ≥ 0` on `[0,∞)` because both
 summands are. The only remaining obligation is a polynomial **identity**, decided by expansion in
 exact arithmetic. So the entire certificate is: three rational PSD tests (`LDL^T`) plus one
@@ -221,10 +222,11 @@ which is the whole certificate. A verifier that passed it would be checking noth
 
 ---
 
-## 4. C's `cut_flow.py`: unchanged, so all four defects stand
+## 4. C's `cut_flow.py`: unchanged, so all four defects stand — plus two smaller ones
 
 `Computation/cut_flow.py` is blob `700e44f6c92563b66b4146106cfe8e00cd5a3455` at `4bcbd3a` **and**
-at the current `comp` tip `790efa73` — Main's repair touched only the theorem, not the script. So
+at the current `comp` tip `790efa73` — Main's repair touched only the theorem, not the script, and
+C has not revised the file since. So
 the four findings of `REVIEW_0353.md` §2 remain open on C's side. They are now reproducible by
 one script that does not import anything of mine except a byte copy of C's own file:
 `python3 Reviews/repro_c_cutflow_defects.py` → **7/7 checks reproduce, all four defects**.
@@ -378,10 +380,12 @@ One live inconsistency outside Main's changed files, unchanged from my earlier b
 `Main/NEXT_PACKAGE.md` item 1 asks the next block to prove `Σ_{v∈K} vol Ω(v) ≥ 13V` for "even
 `V = 5.40`". Hales–McLaughlin already gives `vol Ω(v) ≥ V_dod = 5.550291029` **per cell**, hence
 `13 V_dod = 72.1538 > 70.2 = 13·5.40` for the cluster. The item as written therefore asks for
-something already implied; the content it means to ask for must be a *different* inequality (for
-instance one that does not follow from the per-cell bound, such as a lower bound on the cluster
-sum that is strictly stronger than `13 V_dod`, which is impossible, or a bound on a cluster with
-a *prescribed* outer-cell structure). This is a wording defect in an instruction, not a
+something already implied. Note there is no "stronger" version available either — a bound
+`Σ_{v∈K} vol Ω(v) ≥ 13V` with `V > V_dod` would be *false* for the dodecahedral packing. So the
+content the item means to carry must be a different statement: either a bound on `Σ_{v∈K} vol Ω(v)`
+under a *prescribed* outer-cell structure (where the per-cell bound does not apply because the
+outer cells are the ones being constrained), or an inequality with a correction term rather than a
+constant `13V`. This is a wording defect in an instruction, not a
 mathematical error in a claim, but it will waste a block if it is followed literally.
 
 ## 6. Limits of this block
