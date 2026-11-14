@@ -1772,3 +1772,10 @@ i.e. every circumcap is strictly empty — so the faces *are* Delaunay triangles
 `ρ_c`, the covering radius is `ρ_c`. (My first run of this check initialised the maximum at `0` and so could
 never go negative; the corrected run is the one reported. The claim itself was never in doubt — the
 `−41.81°` margin is large.)
+
+### K15-X-C112 — `C132`'s domination step and degree bound tested on a random 2-separated set
+
+Greedy 60-point 2-separated set in a box, `ε = 1`: `S_ε` has 53 points, a greedy maximal matching of the
+`(2+ε)`-graph has 24 edges/48 matched points, and **`S_ε ⊆ matched ∪ N(matched)` holds with 0 exceptions** —
+the combinatorial core of `C132(2)` is right. The maximum degree in the `(2+ε)`-graph there is 4, well below
+`D(1) = 63`, consistent with `D` being a crude but sufficient bound (as `C132` says).
