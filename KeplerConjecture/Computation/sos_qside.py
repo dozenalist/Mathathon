@@ -34,6 +34,17 @@ import argparse, json, random
 from fractions import Fraction as F
 import numpy as np
 import sympy as sp
+
+import k15fourier
+
+
+class _FourierShim:
+    """Minimal stand-in for the external checker: only fourier_map was ever used."""
+    @staticmethod
+    def fourier_map(K):
+        # a sympy Matrix so that both M[i, k] and M[i][k] indexing work from every call site
+        return sp.Matrix(k15fourier.M_matrix(K))
+
 import exactcert as EC
 
 def q_from_squares(rs, ss):
@@ -57,9 +68,7 @@ def main():
     ap.add_argument("--degree", type=int, default=5)
     ap.add_argument("--out", default="out/sos_qside.json")
     a = ap.parse_args()
-    import importlib.util
-    spec = importlib.util.spec_from_file_location("sc", "/tmp/sc662.py")
-    SC = importlib.util.module_from_spec(spec); spec.loader.exec_module(SC)
+    SC = _FourierShim()
     K = a.degree
     random.seed(7)
     T_LO = float(4 * np.pi)

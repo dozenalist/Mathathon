@@ -105,6 +105,32 @@ Recorded because the reviewer's instruction — validate, do not promote — is 
 The third row is the useful one: an **explicit finite cut** giving a rigorous lower bound
 `Φ ≥ 0.008880268414` for that packing.
 
+### Corrections demanded by the evidence review, applied
+
+1. **The singleton floor is not universal.** `0.008880268414` is necessary for a constant `Φ`
+   serving **all** packings — or for any packing that *contains* the icosahedral witness — but it
+   does **not** follow from `b > 0` in an arbitrary fixture. `cut_flow.py` now reports the
+   **per-fixture** singleton bound `b(v)/deg(v)` explicitly (printed as
+   `v0: 0.106563220973/12 = 0.008880268414`) and labels the value "for THIS fixture", with the
+   universal reading spelled out separately. A valid *smaller* per-fixture `t*` is not rejected
+   because of the universal floor.
+2. **Positive deficit at degree zero is infeasible, and is reported as such.** It is *pointwise*
+   infeasibility (the divergence bound cannot be met at that vertex at all), not a cut violation;
+   it gets its own verdict `INFEASIBLE_POINTWISE` and no singleton bound is quoted for it
+   (`tests_cut_flow.py` S8).
+3. **Portability: every scratch-directory dependency removed.** Six scripts loaded the rational
+   Fourier matrix from a hardcoded scratch path; there is now a local module `k15fourier.py` with
+   its own self-test (upper-triangular, diagonal `(−1)^i`, `M² = I` at `K = 3, 5, 7`), and
+   `audit_fourier.py` requires its checker path as an argument with **no default**. `grep -c /tmp
+   *.py` now returns zero for every file.
+4. **The resource estimate was wrong.** Measured here: `sos_qside_polish.py --degree 7
+   --iters 4000 --seed 100 --uphill 0.05` takes **27 s** on the SAIR VM. On the reviewer's host,
+   seeds 100–102 all hit a 90 s cap without producing a final candidate. So the estimate is
+   **machine-dependent by at least 3×**, and the portable command must carry a larger default cap:
+   `--cap 300` per seed, and a sweep of 20 seeds should be budgeted at **~30–100 minutes**, not
+   the 13 minutes I quoted. The sweep's per-seed timeout marks `TIMEOUT` and continues, so a
+   longer-than-expected run degrades gracefully rather than losing data.
+
 **Caveat the test suite forced (`tests_cut_flow.py` S7), and it matters for reading that
 threshold.** The binding cut need **not** be a singleton: absorbing a *positive*-deficit
 neighbour into `U` costs something but removes an edge from the boundary, and when the neighbour's
@@ -298,7 +324,10 @@ timeout 600 python3 sweep_explicit_gram.py --seed-lo 100 --seed-hi 120 \
 ```
 
 and prints a summary line per seed, so a truncated run still yields usable data.
-`timeout 600` bounds each seed; the whole sweep is `20 × ~40 s ≈ 13 min` on one core.
+Each seed is bounded by `--cap` (default 120 s) and a capped seed is reported as `TIMEOUT`.
+**Measured runtimes differ by more than 3× between machines** — 27 s per seed at `--iters 4000`
+on the SAIR VM, but seeds that hit a 90 s cap locally — so budget `--cap 300` and expect
+**30–100 minutes** for 20 seeds.
 
 ## 6. Status and obligations
 

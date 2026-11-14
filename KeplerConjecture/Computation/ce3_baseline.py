@@ -27,7 +27,7 @@ STATUS
   certified tails. Reported values are therefore numerical evidence, never certificates.
 
 USAGE
-  python3 ce3_baseline.py --degree 11 --grid 400 --r0 1.0 --out /tmp/small.json
+  python3 ce3_baseline.py --degree 11 --grid 400 --r0 1.0 --out out/small.json
 """
 import argparse, json, sys, time
 import numpy as np

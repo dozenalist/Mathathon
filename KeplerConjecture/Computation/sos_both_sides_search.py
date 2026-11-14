@@ -34,7 +34,7 @@ TRIVIAL = 1.0
 
 def M_matrix(K):
     """Rational Fourier matrix in the basis u = pi|x|^2: b = M a.
-    Rebuilt here so the file has no external checker dependency (no /tmp paths)."""
+    Rebuilt here so the file has no external checker dependency and no scratch-directory paths."""
     t = sp.Symbol('t')
     def lag(j):
         return sp.expand(sp.assoc_laguerre(j, sp.Rational(1, 2), t))

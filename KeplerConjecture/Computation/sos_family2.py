@@ -30,6 +30,17 @@ Usage:  python3 sos_family2.py [--checker PATH]
 import argparse, itertools, json
 from fractions import Fraction as F
 import sympy as sp
+
+import k15fourier
+
+
+class _FourierShim:
+    """Minimal stand-in for the external checker: only fourier_map was ever used."""
+    @staticmethod
+    def fourier_map(K):
+        # a sympy Matrix so that both M[i, k] and M[i][k] indexing work from every call site
+        return sp.Matrix(k15fourier.M_matrix(K))
+
 import exactcert as EC
 
 def build(T, c, d, e, m):
@@ -85,9 +96,7 @@ def main():
                    p=str(sp.expand(p)), bracket=str(sp.expand(bracket)),
                    r1=str(sp.expand(r1)), r2=str(sp.expand(r2)))
         # q from Main's matrix
-        import importlib.util
-        spec = importlib.util.spec_from_file_location("sc", "/tmp/sc662.py")
-        SC = importlib.util.module_from_spec(spec); spec.loader.exec_module(SC)
+        SC = _FourierShim()
         M = SC.fourier_map(5)
         b = [sum(M[i, k] * sp.Rational(av[k]) for k in range(6)) for i in range(6)]
         rec["b"] = [str(x) for x in b]; rec["p0"] = av[0]; rec["q0"] = str(b[0])

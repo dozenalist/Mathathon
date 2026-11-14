@@ -75,7 +75,7 @@ truth.
 ```bash
 cd KeplerConjecture/Computation
 timeout 900 python3 sweep_explicit_gram.py --seed-lo 100 --seed-hi 120 \
-        --iters 4000 --uphill 0.05 --cap 120 --out-dir out/sweep
+        --iters 4000 --uphill 0.05 --cap 300 --out-dir out/sweep
 ```
 
 One JSON per seed, schema:
@@ -91,10 +91,15 @@ One JSON per seed, schema:
 A summary line per seed and a final best-seed line go to stdout, so a truncated run still yields
 usable data. 20 seeds at ~40 s each is about 13 minutes on one core.
 
-**Pilot result (measured on the VM).** Eight seeds at `--iters 1500` all returned the identical
-start value `1.99064200`; `1500` iterations does not escape the local optimum. The runs that
-reached `1.37125723` used `--iters 4000`. **Use `--iters 4000` or more** — at ~27 s per seed, 200
-seeds is roughly 90 minutes on one core.
+**Pilot results, and why the cap is 300 s.**
+* Eight seeds at `--iters 1500` all returned the identical start value `1.99064200`: `1500`
+  iterations does **not** escape the local optimum. The runs that reached `1.37125723` used
+  `--iters 4000`, so **use `--iters 4000` or more**.
+* Runtimes differ by **more than 3× between machines**: `--degree 7 --iters 4000` takes **27 s**
+  here, while seeds 100–102 hit a **90 s cap** on the reviewer's host without producing a final
+  candidate. Hence `--cap 300` and a budget of **30–100 minutes** for 20 seeds, not the 13 minutes
+  quoted earlier. A capped seed is recorded as `TIMEOUT` and the sweep continues, so this degrades
+  gracefully.
 
 **Why the sweep matters.** The record moved `5.99 → 2.62 → 1.99 → 1.41 → 1.37` as search effort
 increased, and twelve basin-hopping runs span `1.37 … 2.00` with the best appearing once. A few

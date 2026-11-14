@@ -124,6 +124,26 @@ def main():
     check("search finds the pair value (%s) not the singleton" % pair, ratio == pair, ratio)
     check("binding U is the pair {0,1}", sorted(U) == [0, 1], U)
 
+    print("S8 positive deficit at degree zero is POINTWISE infeasibility, not a cut violation")
+    b = [F(1, 4), F(-1, 4)]
+    E = []                                   # both vertices isolated
+    rows, infeas = CF.singleton_bounds(b, E)
+    check("vertex 0 flagged degree zero", 0 in infeas, infeas)
+    check("its verdict is INFEASIBLE_POINTWISE",
+          rows[0]["verdict"] == "INFEASIBLE_POINTWISE", rows[0])
+    check("no singleton bound is quoted for it", rows[0]["singleton"] is None)
+    tot, ok = CF.global_necessary_condition(b)
+    check("global condition holds (sum b = 0), so the obstruction is pointwise", tot == 0 and ok, tot)
+
+    print("S9 the singleton bound is b(v)/deg(v), a PER-FIXTURE threshold")
+    b = [F(1, 2), F(-1, 4), F(-1, 4)]
+    E = [(0, 1), (0, 2)]
+    rows, infeas = CF.singleton_bounds(b, E)
+    check("no degree-zero vertices", not infeas)
+    check("b0/deg = (1/2)/2 = 1/4", F(rows[0]["singleton"]) == F(1, 4), rows[0]["singleton"])
+    w = CF.find_violating_cut(b, E, F(0), max_size=3)
+    check("the exhaustive worst cut agrees with the singleton here", w[0] == F(1, 4), w[0])
+
     print()
     if FAILS:
         print("FAILED: %d -> %s" % (len(FAILS), FAILS)); return 1

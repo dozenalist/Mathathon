@@ -157,6 +157,39 @@ def cut_value(b, edges, U):
     bd = sum(1 for (i, j) in edges if (i in U) != (j in U))
     return sb, bd
 
+def singleton_bounds(b_lo, edges):
+    """Per-vertex singleton bounds b(v)/deg(v), and the degree-zero flag.
+
+    Two distinct statements, which an earlier version conflated:
+      * for a vertex of POSITIVE deficit and degree ZERO, no transfer exists at any Phi: the
+        divergence bound cannot be met at that vertex at all.  This is not a cut violation, it
+        is pointwise infeasibility, and it is reported as such.
+      * for a vertex of positive deficit and degree d > 0, the singleton cut gives the lower
+        bound Phi >= b(v)/d for THIS fixture.  This is a per-fixture threshold, not a universal
+        constant: it constrains any Phi that must serve all packings only because this particular
+        packing exists.
+    """
+    n = len(b_lo)
+    deg = [0] * n
+    for (i, j) in edges:
+        deg[i] += 1; deg[j] += 1
+    out = []
+    infeasible = []
+    for v in range(n):
+        if b_lo[v] > 0:
+            if deg[v] == 0:
+                infeasible.append(v)
+                out.append(dict(vertex=v, b=str(b_lo[v]), degree=0, singleton=None,
+                                verdict="INFEASIBLE_POINTWISE"))
+            else:
+                out.append(dict(vertex=v, b=str(b_lo[v]), degree=deg[v],
+                                singleton=str(b_lo[v] / deg[v]), verdict="SINGLETON_BOUND"))
+        else:
+            out.append(dict(vertex=v, b=str(b_lo[v]), degree=deg[v], singleton=None,
+                            verdict="no constraint"))
+    return out, infeasible
+
+
 def global_necessary_condition(b_lo):
     """The cheapest necessary condition of all: summing div(v) >= b(v) over EVERY vertex gives
     0 = sum_v div(v) >= sum_v b(v), so a transfer requires sum_v b(v) <= 0.  Checked separately
@@ -280,6 +313,13 @@ def evaluate_external(fx, Phi_trials=(F(1, 1000), F(1, 100), F(1, 10), F(1))):
              "   [VOLUMES PROVISIONAL]" if fx["provisional"] else "   [volumes certified]"))
     if fx["note"]:
         print("   note:", fx["note"])
+    sb_rows, infeas = singleton_bounds(fx["b_lo"], fx["edges"])
+    for r in sb_rows:
+        if r["verdict"] == "SINGLETON_BOUND":
+            print("   singleton bound v%d: b/deg = %s/%d = %.12f"
+                  % (r["vertex"], r["b"], r["degree"], float(F(r["singleton"]))))
+    if infeas:
+        print("   POSITIVE DEFICIT AT DEGREE ZERO at %s: INFEASIBLE at any Phi" % infeas)
     tot, ok_global = global_necessary_condition(fx["b_lo"])
     print("   global necessary condition sum_v b >= %.9f -> %s"
           % (float(tot), "satisfied" if ok_global else "VIOLATED (no transfer at any Phi)"))
@@ -290,8 +330,9 @@ def evaluate_external(fx, Phi_trials=(F(1, 1000), F(1, 100), F(1, 10), F(1))):
         ratio, U, sb, bd = worst
         print("   worst cut (|U| <= 6): U=%s  sum b >= %s  |delta^+|=%d  ratio=%.12f"
               % (list(U), sb, bd, float(ratio)))
-        print("   => the cut condition FAILS for every Phi < %.12f%s"
+        print("   => for THIS fixture the cut condition fails for every Phi < %.12f%s"
               % (float(ratio), "  (PROVISIONAL)" if fx["provisional"] else ""))
+        print("      (a per-fixture threshold, not a universal constant)")
         out["rows"].append(dict(kind="violating_cut", U=list(U), sum_b=str(sb), boundary=bd,
                                 phi_threshold=str(ratio)))
     for Phi in Phi_trials:
@@ -373,6 +414,17 @@ def main():
             report["rows"].append(row)
             print()
             continue
+        sb_rows, infeas = singleton_bounds(b_lo, edges)
+        pos = [r for r in sb_rows if r["verdict"] == "SINGLETON_BOUND"]
+        if pos:
+            print("   per-fixture singleton bounds b(v)/deg(v): "
+                  + ", ".join("v%d: %s/%d = %.12f"
+                              % (r["vertex"], r["b"], r["degree"], float(F(r["singleton"])))
+                              for r in pos))
+        if infeas:
+            print("   POSITIVE DEFICIT AT DEGREE ZERO at vertices %s: no transfer exists at any"
+                  % infeas)
+            print("   Phi (pointwise infeasibility, not a cut violation)")
         tot, ok_global = global_necessary_condition(b_lo)
         print("   global necessary condition: sum_v b >= %.9f  ->  %s"
               % (float(tot), "satisfied" if ok_global else
@@ -382,7 +434,11 @@ def main():
         print("   R=%.4f: |E|=%d ; singleton cut {0}: sum_U b >= %.12f over |delta^+|=%d"
               % (R, len(edges), float(sb0), bd0))
         if phi_min is not None:
-            print("            => the cut condition FAILS for every Phi < %.12f" % float(phi_min))
+            print("            => for THIS fixture the cut condition fails for every Phi < %.12f"
+                  % float(phi_min))
+            print("               (this constrains a Phi that must serve ALL packings only")
+            print("                because this packing exists; it is not implied by b > 0 in an")
+            print("                arbitrary fixture)")
         worst = find_violating_cut(b_lo, edges, F(0), max_size=min(n, 6))
         if not ok_global:
             worst = (F(10) ** 18, tuple(range(n)), tot, 0)
