@@ -50,6 +50,20 @@ holds for every *saturated* packing, then for any packing `Λ` choose a saturate
 
 ---
 
+### 1a. The near-critical row: two different payer values, both above target
+
+The §5 table quotes the icosahedral payer as `5.897967122`, margin `0.134549` over
+`2√32 − V_dod = 5.763417470`. Main's post-target `C118` writes E's fixture in closed form
+(`c = 0`, `w1 = (0,0,2)`, five ring points at `(4/√5 cos72k, 4/√5 sin72k, 2/√5)`, five pentagon
+points at `w1 + 2(s cos(36+72k), s sin(36+72k), 3/8)` with `s = √55/8`, `south = (0,0,4)`) and
+reproduces `5.89801737180372`. I recomputed it independently
+(`Counterexamples/Reviews/payer_fixture_indep.py`): **`5.89801737180372`, 20 cell vertices,
+minimum pairwise distance exactly 2** — `C118` is sound to every digit it quotes. **But that is not
+the `5.897967122` of §5**: two different completions from the same `C5` family, differing in the
+fifth decimal, both above the target (`0.134599902` and `0.134549652`). No claim is affected — §5
+quotes the sharper one — but the two must not be quoted interchangeably, and a later comparison of
+"the payer value" should say which fixture it means.
+
 ## 2. Theorem B: the definition of `C_R` is not the one the identity needs
 
 **Line 90:** `C_R := Σ_{e : e ⊄ B∖E_B} c_e` — the sum over **every** edge that is not contained in
