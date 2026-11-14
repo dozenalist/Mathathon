@@ -182,7 +182,7 @@ def margins_at_zero():
     version of this function failed for exactly that reason.  The inactive triples
     are the ones a vertex would come FROM, so they must be enumerated separately.
     """
-    dets = []
+    dets, act_dets = [], []
     act, inact = [], []
     for t in TRIPLES:
         A = U[list(t)]
@@ -193,7 +193,11 @@ def margins_at_zero():
         x = np.linalg.solve(A, np.ones(3))
         others = [j for j in range(12) if j not in t]
         s = max(x @ U[j] - 1.0 for j in others)
-        (act if s <= 1e-9 else inact).append(s)
+        if s <= 1e-9:
+            act.append(s)
+            act_dets.append(d)
+        else:
+            inact.append(s)
     alldet = [abs(np.linalg.det(U[list(t)])) for t in TRIPLES
               if abs(np.linalg.det(U[list(t)])) > 1e-13]
     return dict(active=len(act), inactive=len(inact),
@@ -202,6 +206,7 @@ def margins_at_zero():
                 # slack -- the first version wrote min(act), which is ~0, making
                 # 1/min_det a huge negative number and the T2 test pass VACUOUSLY.
                 min_det=min(dets),
+                min_det_active=min(act_dets) if act_dets else min(dets),
                 min_det_all=min(alldet), n_triples=len(alldet))
 
 
@@ -221,12 +226,18 @@ def certify_margins(theta_max, verbose=True):
     # The first version used |A^-1|^2 R = 2.1563 and was UNSOUND: the measured rate of
     # the slack is 5.4-7.2 per unit theta (adversarial check), which exceeds it.
     dv = rmax * inv * np.sqrt(6.0)                  # vertex motion per unit theta
-    feas = m["min_det_all"] - 3.0 * theta_max        # Hadamard on the determinants
+    # Only the 20 ACTIVE triples need a positive determinant: if one of those vanished its
+    # vertex would run to infinity and the volume formula would break.  An INACTIVE triple
+    # going singular only sends a would-be vertex away, and T2 already keeps it out of the
+    # hull.  The first version used min over all 160 triples (0.470) instead of the active
+    # 20 (0.7608) and so reported a feasibility slack of 0.006 instead of ~0.30.
+    feas = m["min_det_active"] - 3.0 * theta_max    # Hadamard on the active determinants
     type_margin = m["min_inactive_slack"] - (dv + 1.0) * theta_max
     ok = (feas > 0) and (m["active"] == 20) and (type_margin > 0)
     if verbose:
         print("T1 feasibility (no vertex at infinity)")
-        print(f"   min |det| over all {m['n_triples']} triples at theta=0 : {m['min_det_all']:.9f}")
+        print(f"   min |det| over the 20 ACTIVE triples at theta=0 : {m['min_det_active']:.9f}")
+        print(f"   (min over all {m['n_triples']} triples, for reference     : {m['min_det_all']:.9f})")
         print(f"   Hadamard slack at theta_max                        : {feas:.6f}  "
               f"{'OK' if feas > 0 else 'FAIL'}")
         print("T2 type (exactly 12 facets, vol smooth on the ball)")

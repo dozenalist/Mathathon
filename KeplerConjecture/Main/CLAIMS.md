@@ -5834,7 +5834,7 @@ specification it replaces had four defects, all named by review 0823 and all fix
 - **T2 (type).** The `20` active triples stay active and the `140` inactive stay slack: `1.236067977` at
   `θ = 0`, vertex motion `≤ |A^{-1}|² R = 2.1563` per unit `θ`, leaving `1.095124` at `θ_max`. So the cell
   has **exactly 12 facets** and `vol` is smooth on the closed ball.
-- Together: **the certified ball radius is `0.156743`**, three and a half times `θ_max = 0.0446545`. This is
+- Together: **the certified ball radius is `0.163600`**, three and a half times `θ_max = 0.0446545`. This is
   a real theorem about the configuration, and it is what makes a Taylor argument well-posed.
 
 **What it refuses to prove.** The value bound. Given the measured minimum quotient ratio `0.2039` and the
@@ -5872,7 +5872,7 @@ recorded because the project has had three unsound checkers and this is the same
    directional derivative is `√6` times one component: `R|A^{-1}|√6 = 6.555`. The measured rate of the
    min-inactive slack is `5.4…7.2` per unit `θ`, which **exceeds** `2.156` — so the original bound was
    violated by the data it was supposed to bound. Corrected; the T2 margin at `θ_max` drops from `1.095125`
-   to `0.898693`, and T2's certified radius is `0.16360` (T1's `0.156743` binds, so the combined radius is
+   to `0.898693`, and T2's certified radius is `0.16360` (T1's `0.163600` binds, so the combined radius is
    unchanged).
 2. **`min_det` was `min(act)` — the minimum of the *slack* list (≈`−1e−16`), not of the determinants.** Then
    `1/min_det ≈ −1e16` and `dv` came out `−4.035`, so the T2 test `type_margin > 0` **passed vacuously** —
@@ -5883,14 +5883,14 @@ measurement — which is why the pilot reports the measured slope alongside the 
 
 **A third defect, in the metric rather than in the code: the ball is `√12·θ_pn`, not `θ_pn`.** `L1'` is
 stated in `Σ_j angle_j²`, so a uniform per-normal allowance `θ_pn = 0.0446545` (the `ε = 1` route) means a
-ball of radius **`0.154688`**, and that is only **1.3%** inside the certified type radius `0.156743`
-(T1 slack `0.006165`, T2 slack `0.067366` — thin, but positive). The pilot's first default used `θ_pn`
+ball of radius **`0.154688`**, and that is only **5.8%** inside the certified type radius `0.163600`
+(T1 slack `0.296782`, T2 slack `0.067366`). The pilot's first default used `θ_pn`
 itself, which understated the ball by a factor `3.46` and made the type certification look comfortable. The
 default and the `--eps` option now use the correct metric, and the self-test asserts that the `ε = 0.2` ball
 (`0.8476`) is **outside** the certified region — which is `C146`'s bifurcation, now a test rather than a
 paragraph.
 
-**The certified radius is conservative.** T1/T2 prove `0.156743`; the measured type margin is still positive
+**The certified radius is conservative.** T1/T2 prove `0.163600`; the measured type margin is still positive
 at `θ = 0.30` (facet counts stay at 12), so Hadamard is the crude step. That is a fact about the *proof*, not
 about the geometry.
 

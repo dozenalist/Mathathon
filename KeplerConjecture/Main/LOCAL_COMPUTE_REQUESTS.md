@@ -256,7 +256,7 @@ or Astra to collect.
 
 ```
 path      KeplerConjecture/Computation/l1_remainder.py
-sha256    cd855d86dd4536961e06db03b1b2553613c3e566025f19011d60a7b1eeab5335
+sha256    c5608652818349336ddfea3f707c10033c211a3b0712b60acb55190d9e383caa
 commit    1d2db443359ad57dddb6e8ac00212044dc7777af   (first commit containing the file)
 deps      python3 (stdlib), numpy, scipy.spatial   -- no Lean, no network, no GPU
 runtime   ~1 s measured; budget 1 CPU / 1 GiB / 120 s
@@ -265,17 +265,18 @@ runtime   ~1 s measured; budget 1 CPU / 1 GiB / 120 s
 **The ball, in the right metric.** `L1'` is stated in the quadratic form `Σ_j angle_j²`, so a uniform
 per-normal allowance `θ_pn` means a ball of radius **`√12·θ_pn`**, not `θ_pn`. For `ε = 1`,
 `θ_pn = cos ρ_c − 3/4 = 0.044654` and the ball is **`0.154688`** — which is only **1.3%** inside the
-certified type radius `0.156743`. That margin is the tightest number in the whole chain and is why `ε = 0.2`
+certified type radius `0.163600` (margin 5.8%) and is why `ε = 0.2`
 is *not* available: its ball (`√12 × 0.2447 = 0.8476`) is far outside, and the pilot returns exit 2 for it
 (the self-test asserts exactly this).
 
-**What is already proved by the pilot (no local work needed).** On the ball `d(θ,Rot) ≤ 0.156743`:
+**What is already proved by the pilot (no local work needed).** On the ball `d(θ,Rot) ≤ 0.163600`:
 
-- **T1** every one of the 160 triples keeps `|det| > 0` — at the `ε = 1` ball the slack is **`0.006165`**;
+- **T1** the **20 active** triples keep `|det| > 0` (the other 140 need not: an inactive triple going
+  singular only sends a would-be vertex away, which T2 excludes) — at the `ε = 1` ball the slack is
+  **`0.296782`**;
 - **T2** the 20 active triples stay active and the 140 inactive stay slack — slack **`0.067366`**,
 
-so the cell has exactly 12 facets and `vol` is smooth there. `--margins` exits 0. **Both slacks are thin**
-(1.3% and 5.4% of their base values); a sharper determinant bound than Hadamard's `3θ` would widen them and
+so the cell has exactly 12 facets and `vol` is smooth there. `--margins` exits 0. **T1 has a wide margin** (`0.297` of `0.761`); **T2's is thin** (`0.067` of `1.236`, 5.4%); a sharper determinant bound than Hadamard's `3θ` would widen them and
 is the obvious first improvement.
 
 **What only a local run can supply: a rigorous `M₃`.** The value bound is
@@ -299,7 +300,7 @@ python3 KeplerConjecture/Computation/l1_remainder.py --certify --eps 1.0 --c 0.1
 | --- | --- | --- |
 | `0` | T1/T2 certified **and** `X ≤ 2.7151`: the local rate follows | **the target** |
 | `1` | T1/T2 certified, value bound open (no `X`, or `X` too large) | expected with a crude `X` |
-| `2` | a sound part failed (e.g. a ball outside `0.156743`) | a real problem |
+| `2` | a sound part failed (e.g. a ball outside `0.163600`) | a real problem |
 | `3` | the negative control was not rejected, i.e. the pilot is inert | discard the run |
 
 **Required negative controls.**
