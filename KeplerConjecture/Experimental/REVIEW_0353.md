@@ -552,3 +552,54 @@ ledger ids                 K15-E080, E081, E082, E083, E084; K15-E078 WITHDRAWN
 
 Run `python3 Experimental/scripts/c5_fixture.py` (0.6 s) for the fixture checks and
 `bash Experimental/scripts/run_all_checks.sh` (~35 s) for the whole suite.
+
+---
+
+## 9. What a lower bound would need (the one open item)
+
+`(P')` at the icosahedral pair is now pinned between
+
+```
+5.550291028   <=   inf vol Omega(w1)   <=   5.897967122        threshold  5.763417470
+McLaughlin (imported)                    K15-E081 exact, C5 optimum
+```
+
+The upper end is a theorem-like statement (§2). The lower end is a twenty-year-old imported
+result that knows nothing about this environment. **Everything left is in the lower bound**,
+and it is worth being precise about why the existing tools do not give it.
+
+**The difficulty in one line.** `V_dodeca` is the minimum over *all* saturated packings, and
+it is attained when the twelve neighbours are exactly icosahedral at distance `2`. The
+icosahedral pair sits `0.05` *away* from that configuration — five neighbours at `2.102924`
+instead of `2` — so a bound that beats `V_dodeca` must be a **stability** statement: it must
+convert "five of the twelve are at `2.05` instead of `2`" into "the volume is at least
+`V_dodeca + c`". No such statement is available, and `(S_dod)` (any non-icosahedral cell has
+`vol >= V_dodeca + 0.1154435`) would be more than enough but is itself unproved.
+
+**Two routes, with their real costs.**
+
+1. *Quantitative stability of the dodecahedral theorem.* Prove: if `vol Ω(v) <= V_dodeca + δ`
+   then the contact set of `v` is within `ε(δ)` of the icosahedral one (in Hausdorff
+   distance on the sphere). Then exhibit `ε` such that the ring configuration admits no
+   completion within `ε`. This is the classical shape of such results (Bezdek–Böröczky type)
+   and it is a research programme, not a block.
+
+2. *Certified branch-and-bound over the shell.* This one is finite and, unusually, small.
+   By §2, every centre that can cut the cell lies in `2 ≤ |z − w1| < 2.604` and must be
+   `>= 2` from `c` and from the five ring centres. That region is a union of small pockets,
+   and the covering argument says it is nearly empty. A rigorous version would subdivide the
+   pockets and bound `vol Ω(w1)` from below on each piece — monotonicity makes this
+   legitimate: on a piece where the centres are confined to boxes, the cell is *at least*
+   the cell cut by the box corners. What is missing is an interval-arithmetic polytope
+   volume with a usable error bound, plus an argument that the number of centres per pocket
+   is bounded (the covering radius gives at most a handful).
+
+   The reason this is not done here is scope, not principle: it needs a verified polytope
+   volume under interval input, which is a small library, and a careful pocket decomposition.
+   `COMPUTE_REQUEST_0353.md` is deliberately *not* this — it is an upper-bound search, and
+   an upper-bound search can never prove `(P')`.
+
+**What I would not do.** Quote the gap between `5.897967` and `5.763417` as evidence that
+`(P')` is "close to proved", or the failed searches as evidence that it is true. The first
+is a statement about our constructions, the second about our search, and neither touches the
+lower bound.
