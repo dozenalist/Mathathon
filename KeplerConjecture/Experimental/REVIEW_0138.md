@@ -248,7 +248,7 @@ sum_{v in S} d(v)  <=  sum_{u in N_R(S) \ S} ( c(u) - sqrt32 ) .
 3. *Negligibility.* For `S = Lambda(x,r)` the boundary pairs have `u in B(x,r+R) \ B(x,r)`,
    a shell of `O(r^2)` centres, and for each such `u` at most `|Lambda cap B(u,R)| <= (R+1)^3`
    partners. Hence `|sum_{v in Lambda(x,r)} A(v)| <= ||phi||_inf (R+1)^3 |shell| = O(r^2)`.
-4. *(C3) is automatic.* Pacers never pay more than `c(u) - sqrt32`, and receivers only gain,
+4. *(C3) is automatic.* Payers never pay more than `c(u) - sqrt32`, and receivers only gain,
    so `c(v) + A(v) >= 0` everywhere.
 
 Consequently `A` is negligible and fcc-compatible, and **Lemma 3.3 applies with no cluster
