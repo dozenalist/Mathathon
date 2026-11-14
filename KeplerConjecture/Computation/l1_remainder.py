@@ -465,8 +465,12 @@ def main():
         print("   coefficient must also be supplied rigorously (--hessian-bound).")
         return 1
     print("\nVERDICT: T1/T2 CERTIFIED; value bound NOT certified.")
-    print("   Missing ingredient: a rigorous enclosure of M3 (or of the Hessian entries)")
-    print("   with M3 <= %.4f.  Measured M3 = %.4f, so the headroom is a factor %.1f." % (need, m3, need / m3))
+    print("   Missing ingredients, BOTH required:")
+    print("     (a) a rigorous lower bound Q <= lam_min/2 for the QUADRATIC coefficient"
+          + ("" if a.hessian_bound is not None else "   <- absent"))
+    print("     (b) a rigorous M3 bound" + ("" if a.m3_bound is not None else "   <- absent"))
+    print("   Given Q, the threshold is M3 <= 6(Q - c)/theta_max; with Q = %.4f it is %.4f."
+          % (q, need))
     print("   The global-to-local entry (C147) is a separate obligation and is not addressed here.")
     return 1
 
