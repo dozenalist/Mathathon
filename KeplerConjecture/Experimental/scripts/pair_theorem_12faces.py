@@ -1,16 +1,22 @@
 #!/usr/bin/env python3
 """
-CONDITIONAL THEOREM (this script) -- corrected status.
+THEOREM modulo Lindelof 1869 (this script).
 
-An earlier version called this a theorem.  It is not: step (1) is not established, and its
-pure form is false (see REVIEW_0608 section 11).  What is proved is the implication
+History, kept because it is the point.  The first version claimed this as a theorem on the
+strength of Hales-McLaughlin applied to D'.  That was wrong: D' is not a Voronoi cell of a
+legal packing (scaling the ring inward puts it 1.902 from c).  The second version made it
+conditional on vol D' >= 5.5400.  The premise is in fact TRUE, for an older reason:
 
-    vol D' >= V_dod - 5(b-1) A_min   ==>   vol Omega(w1) > 5.763417470 ,
+  Lindelof (1869): among convex polyhedra with n faces circumscribed about a sphere, the
+  surface area -- hence the volume, V = S r / 3 -- is minimised by the regular polyhedron,
+  with equality for n = 4, 6, 12 at the tetrahedron, hexahedron and DODECAHEDRON.
 
-for a twelve-face completion, where D' is the cell with the ring faces moved in to distance 1.
-The hypothesis holds with slack +0.033 in every configuration ever constructed, and is NOT
-proved in general: D' is not a Voronoi cell of a legal packing (the inward-scaled ring sits
-1.902 from c), and "twelve half-spaces at distance 1" alone can have volume 0.707055.
+  D' has twelve faces at distance >= 1; moving those farther than 1 in to 1 only decreases
+  the volume, so D' contains a twelve-faced polyhedron circumscribed about the unit ball,
+  of volume >= V_dod.  Hence vol D' >= V_dod unconditionally.
+
+(The "counterexample" 0.707055 that briefly refuted the pure statement was an unbounded
+polytope artefact and is retracted -- REVIEW_0653 section 3.)
 
 Statement.  Let the icosahedral cluster be present (c at distance 2 from w1, five ring
 centres at 2.102924 in the ring directions).  Let z_1..z_6 be any further centres at
@@ -95,8 +101,8 @@ def main():
     print(f"V_dod + that  >= {float(bound.lo):.12f}")
     print(f"threshold        {float(THRESH.lo):.9f}")
     ok = bound.lo > THRESH.hi
-    print(f"\nCONDITIONAL: vol Omega(w1) > threshold for every 12-face completion with")
-    print(f"  vol D' >= 5.5400: {ok}   (the hypothesis itself is NOT proved -- see section 11)")
+    print(f"\nTHEOREM (modulo Lindelof 1869): vol Omega(w1) > threshold for every")
+    print(f"  12-face completion: {ok}   [step (1) is Lindelof, not Hales-McLaughlin]")
     print(f"         margin >= {float(bound.lo - THRESH.hi):+.9f}")
     return 0 if ok else 1
 
