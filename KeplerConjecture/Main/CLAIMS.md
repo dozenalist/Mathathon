@@ -5636,6 +5636,15 @@ middle of the admissible window `(0.1967082, …)` where both are satisfied — 
 only just, and any future tightening of `ε` towards `0.1967` must respect it — `ε = 0.2` is a sensible
 choice precisely because it leaves `0.0033` of overlap while keeping `δ₀` within a factor `2.5` of sharp.
 
+**And the type does not actually change.** `L2`'s determinant bound is crude (`|det| ≥ 0.760845 − 3θ`
+vanishes at `θ = 0.25`, because Hadamard's bound is worst-case). Measured directly — how many of the 12
+planes support a facet — every one of `300` random directions keeps **exactly 12 facets** at `θ = 0.02,
+0.05, 0.08, 0.12, 0.20, 0.2447` and even `0.30`. So the large-ball route is not obstructed by type changes
+in practice; what is missing is a *bound* better than Hadamard, not a different geometry. That makes the
+`ε = 0.2` extension (`δ₀ = 0.0864`) more attractive than the price paragraph above suggests — the proof
+would need a sharper determinant bound, e.g. the exact `|det|` for the dodecahedron's 20 triples perturbed
+by `θ`, which is a finite computation of the same kind as `M-CERT-002`.
+
 **Recommendation for the next block.** Prove `L1'` at `ε = 1` first (`M-CERT-002` as specified: no type
 changes, `c = 0.13`, `δ₀ = 2.88·10⁻³`), then extend the ball to `Σθ² ≤ 0.06` if the combinatorics can be
 tamed, which multiplies `δ₀` by `30`. Do not attempt the large ball first: `ε = 1` already gives a
