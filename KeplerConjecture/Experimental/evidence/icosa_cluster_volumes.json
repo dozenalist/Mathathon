@@ -1,0 +1,15 @@
+{
+  "dodecahedron_volume_exact": "64*(15/4 + 7*sqrt(5)/4)/(22*sqrt(5)/5 + 10)**(3/2)",
+  "dodecahedron_volume": 5.5502910285155105,
+  "sqrt32": 5.656854249492381,
+  "dodeca_deficit": 0.1065632209768701,
+  "pointwise_dodeca_refutes_L_above": 5.5502910285155105,
+  "icosa_core_minsep": 2.0,
+  "cluster_size": 163,
+  "minsep_all": 2.0,
+  "centre_cell_volume": 5.550291028515513,
+  "twelve_mean": 8.955021279382398,
+  "cluster13_sum": 113.01054638110429,
+  "cluster13_mean": 8.693118952392638,
+  "cluster13_mean_minus_sqrt32": 3.036264702900257
+}

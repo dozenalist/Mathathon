@@ -1,0 +1,18 @@
+{
+  "tetra_regular_edge2": {
+    "vol_simplex": 0.942809041582063,
+    "samples": 193578,
+    "covered_fraction": 0.7789779830352622
+  },
+  "half_octahedron": {
+    "vol_simplex": 0.9428090415820635,
+    "samples": 193053,
+    "covered_fraction": 0.7224285558887974
+  },
+  "hales_extremal_l": 3.301360247771569,
+  "hales_extremal": {
+    "vol_simplex": 1.0487547899806575,
+    "samples": 142673,
+    "covered_fraction": 0.7831685042019163
+  }
+}

@@ -1,0 +1,20 @@
+k=12: k*2pi(1-cos(th/2)) <= 4pi  <=>  theta <= 2*arccos(1-2/k) = 1.17137108691 rad
+k=13: k*2pi(1-cos(th/2)) <= 4pi  <=>  theta <= 2*arccos(1-2/k) = 1.12413960601 rad
+k=14: k*2pi(1-cos(th/2)) <= 4pi  <=>  theta <= 2*arccos(1-2/k) = 1.08219905191 rad
+cap identity check: 13*2pi*(1-11/13) = 4*pi ; 4pi = 4*pi ; ratio = 1
+cos(theta_min) for radii r,s : (r**2 + s**2 - 4)/(2*r*s)
+   binding case r=s=t: 1 - 2/t**2
+   d/dr of 1-2/r^2 at r>0 : 4/r**3  (increasing => largest radius is weakest)
+
+delta(theta) = sqrt(2/(1-cos theta)) - 2
+  Tammes N=13 (57.1367 deg)        theta=57.136700 deg  ->  delta=0.091145548
+  cap bound 2arccos(11/13)         theta=64.408455 deg  ->  delta=-0.12361163
+  kissing 60 deg                   theta=60.000000 deg  ->  delta=0
+
+C013(a): n <= (3+delta)^3 - 1.  n<=12  <=>  delta <= 13^(1/3)-3 = -0.6486653123
+         n<=26  <=>  delta < 27^(1/3)-3 = 0
+         28^(1/3)-3 = 0.0365889718757   [(3+delta)^3 = 28]
+   at delta=28^(1/3)-3: (3+delta)^3 = 28.0000000000
+
+FCC/HCP: 12 neighbours at |y|=2, next shell at 2*sqrt2 = 2.8284271
+  => 12-shell holds for delta < 2sqrt2-2 = 0.82842712
