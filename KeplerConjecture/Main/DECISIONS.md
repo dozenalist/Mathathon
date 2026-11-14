@@ -117,3 +117,24 @@ in or out: (S1) `σ₁ = vol Ω + κ·Σ_μ f(v−μ)`, (S2) `σ₂ = vol Ω + �
 No further hybrid obstruction or promotion may be discussed without naming the
 score and its Poisson mean. K15-C005r settles both: (S1) degrades the bound by
 `κf(0)`, (S2) is capped at `V_dod`.
+
+## D13 — Claim-admission rules (M, after K15-C017)
+
+A computational bound may enter `Main/CLAIMS.md` only with: (i) failure reporting
+that is on by default — never inside a verbosity conditional; (ii) an exact
+verdict at an adversarial witness point (a rational input that *must* fail);
+(iii) the hash of the exact source that produced it, and a re-run of that source
+by someone other than its author. A difficulty reported by a solver (for example
+HiGHS "Model error") is a fault of the formulation until proven otherwise; it is
+never evidence of infeasibility. **Reverse if** Astra's environment requires a
+different reporting channel — then record the equivalent check explicitly.
+
+## D14 — Two candidates, one benchmark, one target (M)
+
+After this review the project carries exactly: (a) the **benchmark** of
+K15-C018 (shell allowance, `ρ = 209/100` pending, `η ≥ 0`, count 12) as the
+analytic candidate to evaluate, and (b) E's **constructive partition route** as
+the geometric target, with K15-C015r's specified-partition formulation. The
+exact-Sturm Laguerre family (X-C008) remains the only certification mechanism.
+No third route is opened this cycle; no route is closed on the strength of a
+wrong universal quantifier.

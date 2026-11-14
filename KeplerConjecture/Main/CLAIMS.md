@@ -400,9 +400,14 @@ average, and it uses every neighbour, not the twelve nearest.*
 `f(0) + 12f(2) + Σ_{|λ|≥√6} f(λ) ≤ f(0) + 12f(2)` because `f ≤ 0` there. So at the
 isolated icosahedral 13-cluster, `B_κ = f(0) + 12f(2) > 0` — positive, as the review
 says.
-(F3) For a **lattice** (one centre per cell) the mean of `S_f` is exactly
-`c f̂(0) − f(0)`; for `k > 1` there is no such identity (the phases do not average
-out), and only (F1) is available. *Scope: (F3) is a lattice statement.*
+(F3) **Corrected (hourly review 00:08).** For a lattice `Λ = L`, `S_f` is constant
+(translation invariant) and
+`S_f = c·Σ_{ξ∈L*} f̂(ξ) − f(0) ≥ c f̂(0) − f(0)`, with equality **only if** `f̂`
+vanishes on `L* ∖ {0}`. The previous line called this "the mean of `S_f`" and put
+`c f̂(0) − f(0)` as an equality: both were wrong. A spatial integral of `S_f` over a
+fundamental cell is *not* an average over packing centres; the identity above is
+Poisson summation, and `Σ_{ξ≠0} f̂(ξ) ≥ 0` is exactly the slack. For `k > 1` no such
+identity is available and only (F1) survives.
 
 **Consequence (the obstruction, corrected).**
 - With (S1): `σ₁(v) ≥ V₀` gives `vol Ω(v) ≥ V₀ − κf(0) − κS_f(v) ≥ V₀ − κf(0)` by
@@ -413,10 +418,13 @@ out), and only (F1) is available. *Scope: (F3) is a lattice statement.*
   `V₀ ≤ inf_v vol Ω(v) = V_dod` (Hales–McLaughlin) and the bound `V_dod` is
   attained (X-C003(iii): the 13-cluster embeds in a saturated packing). So the
   centred score is exactly the dodecahedral barrier and cannot pass it.
-- **Conclusion.** No additive hybrid of one admissible two-point kernel with a
-  Voronoi volume reaches below `0.754697399337`, and this is now a *derived*
-  consequence of (F1) + Hales–McLaughlin + attainability, not of a mis-read
-  inequality. The mechanism is also instructive: a correction built from an
+- **Conclusion (narrowed).** Discarding `S_f ≤ 0` cannot improve the cell-volume
+  minimum, so a hybrid that uses *only* the pointwise sign of the kernel cannot
+  pass `V_dod`. That is all this argument proves. It does **not** rule out a hybrid
+  that couples the pointwise inequality to additional geometric control of the
+  *average* of `S_f` (for instance, that `S_f` is very negative on most vertices and
+  the deficit is carried by few) — such a coupling would use information the
+  argument above throws away. Route R1 stays open in that narrowed sense. The mechanism is also instructive: a correction built from an
   admissible kernel is non-positive everywhere, so a successful `A` must be
   *positive at defect vertices* and is not of this form — which is precisely why
   Hales's `A` is a geometric transfer, not a kernel.
@@ -431,7 +439,8 @@ out), and only (F1) is available. *Scope: (F3) is a lattice statement.*
 - **Not refuted:** the positive-definite form of `smwfyzz1k/m3` Theorem 4.1, which
   needs `f̂ ≥ 0`, radiality (or vanishing on whole spheres), `f̂ ∈ L¹`, `f(0) > 0`.
   In that class `‖f̂‖₁ = ∫f̂ = f(0)`, so the logarithmic term of the budget
-  **vanishes identically** and the budget reduces to `R ≥ K log 2/(2π r_K) − o(1)`.
+  **vanishes identically** and the budget is the *finite* statement `R ≥ K log 2/(2π r_K)` — the earlier `− o(1)`
+was unexplained and is removed; the Jensen estimate has no asymptotic slack here.
   Whether that yields a usable obstruction with the CE sign conditions is `OPEN`
   here; X-C004 accepts the band-limited statement with that scope.
 - **Status.** `C010`: `REFUTED` (unrestricted form only). `C010r`: `PROPOSED`,
@@ -459,6 +468,11 @@ out), and only (F1) is available. *Scope: (F3) is a lattice statement.*
 - (d) Do not claim novelty for an explicit tolerance width: quantitative `N = 13`
   Tammes results exist in the literature and must be located and cited before any
   such claim (`TASKS` Q5).
+- (e) **Scope corrections (hourly review 00:08, from E's repair).** The
+  varying-radius angular lemma is valid only for `0 ≤ δ ≤ √5 − 1`. The boundary
+  count must be written `(r + D + 2)³ − r³ ≤ 3(D + 2)(r + D + 2)²`, not with `r³`
+  alone on the right. Both are hypotheses of the shell argument and neither may be
+  quoted outside that range.
 
 ### K15-C014r — grid-LP claim withdrawn; the bug and the real numbers
 
@@ -494,7 +508,17 @@ out), and only (F1) is available. *Scope: (F3) is a lattice statement.*
 - **Why it matters.** Lemma 3.3 of Hales is the case `Π` = singletons; (C4) is a
   strict relaxation, so the pointwise fcc-compatibility can be replaced by a
   cluster average. Proof in `Experimental/LOCAL_CRITERION.md` §1.
-- **Status.** `PROPOSED` (author E), reviewer M and X. Main read the proof: the
+- **Status.** `REFUTED as a universal statement; repaired (C015r).` A singleton
+  cluster `K = {v}` is a cluster of diameter `0 ≤ D` for every `D`, and (C4) then
+  demands `vol Ω(v) ≥ √32 = 5.65685…`, which is false at the icosahedral vertex
+  (`V_dod = 5.55029…`, X-C003/E-K15-E002). So "for every cluster of diameter
+  `≤ D`" cannot hold for any `D`; the partition must be a *specified* one that
+  exists for each packing (e.g. clusters produced by a rule with a boundary
+  estimate), never a universal quantifier over clusters. **Do not close the
+  geometric avenue because the quantifier was wrong:** the repair is to state the
+  partition and its boundary term, which is what E's constructive route does.
+  Remaining status: `PROPOSED` after that repair (author E), reviewers M and X.
+  Main read the proof: the
   cluster accounting and the boundary term are of the same shape as Lemma 3.3 and
   appear correct; the constant `C` depends on `D` and `V_max`, which must be stated
   explicitly in `RESULTS.md` before use.
@@ -518,3 +542,79 @@ out), and only (F1) is available. *Scope: (F3) is a lattice statement.*
 | X-C006/Viazovska no smooth sharp certificate | `REFUTED` | X registry |
 | X-C007 grid feasibility ≠ certificate | accepted; matches the C014r story | X registry |
 | X-C008 exact Sturm certification in the Laguerre family | accepted as the acceptance test | X registry |
+
+---
+
+## Hourly review 00:08 (November 14, 2026) — integration
+
+Reviewed completion `30102`, source `0c3ee751254b1b61f16eb175d9bd8d571f842b18`.
+The supervisor's own review text and exact local evidence are being published on
+`kepler15/setup-01a1d8c0`; at the time of this checkpoint
+`Main/HOURLY_REVIEW_2026-11-14_0008.md` and `Computation/Reviews/48443/` were **not
+yet on the fetched branch**, so the findings below are integrated from the
+assignment text and must be re-anchored to their artifacts when those land.
+
+### K15-C017 — Computation's K21 "certification" REFUTED (claims, not a bound)
+
+- **Claim withdrawn.** A value near `Δ = 0.78010544` presented as certified, from
+  source `e681fbfddb8c5962333380c271d5f7a67f44a07b`, tip
+  `633da8e9db3987ec8c56a7c1eb628f3d47402bc2`.
+- **Why it fails (two independent reasons).**
+  1. The checker's failure reporting sits inside `if verbose`, so sign failures are
+     silent unless verbose mode is on. A validation test whose input `[2, −1]` is
+     *impossible* returns success: the checker does not check.
+  2. The rebuilt `q` has **ten simple positive roots** and takes a negative value at
+     a rational point: `q(57955199/21687900) ≈ −3.876231892749308e−5`. An exact
+     rational witness beats any amount of sampling.
+- **Status.** `REFUTED`. Reviewers: Astra and X (X independently reviews the
+  checker). **Main has not re-derived `q`** — the witness and hashes are to be cited
+  from `Computation/Reviews/48443/` once pushed.
+- **Standing rule (added to D13).** No computational bound enters this ledger
+  without (i) failure reporting on by default, (ii) an exact verdict at an
+  adversarial witness point, (iii) a hash of the exact source that produced it.
+  The π interval in the same artifact passes a separate audit; its decimal upward
+  rounding still needs repair, so even that piece is not yet usable.
+
+### K15-C018 — the shell allowance: one fully specified analytic benchmark
+
+- **Statement (benchmark, `PROPOSED`).** Fix `ρ > 2` and `η ≥ 0`. Let `f` satisfy
+  the K15-C002 hypotheses (continuous `f, f̂` with the CE decay,
+  `f̂ ≥ 0`, `f̂(0) > 0`), plus
+  `f(x) ≤ η` for `2 ≤ |x| ≤ ρ` and `f(x) ≤ 0` for `|x| > ρ`.
+  If every 2-separated set has at most **12** points at `A`-differences from any of
+  its points, `A = {2 ≤ |x| ≤ ρ}`, then every packing satisfies
+  `δ ≤ (4π/3)(f(0) + 12η)/f̂(0)`.
+- **Proof.** K15-C003 (Theorem B) with `A = {2 ≤ |x| ≤ ρ}`, `n = 12`, `M = η`,
+  plus the periodic-to-general bridge of K15-C002b. Nothing else is needed; the
+  only non-trivial input is the count `n = 12`.
+- **The counting input is PENDING.** `ρ = 209/100` is provisional: it needs a
+  rigorous Tammes-13 / kissing-with-tolerance enclosure to certify that 13 points
+  cannot be 2-separated in the annulus `[2, 2.09]`, and E's repaired radial
+  argument (scope `0 ≤ δ ≤ √5 − 1`, boundary count
+  `(r+D+2)³ − r³ ≤ 3(D+2)(r+D+2)²`). Until then `ρ` is a placeholder, not a theorem.
+- **Attribution.** The truncated-shell relaxation is the Cohn–Elkies truncation
+  idea; the same mechanism underlies de Laat–de Oliveira Filho–Vallentin's
+  strengthened two-point bound (DLOV14) and the truncation step in
+  Musin–Tarasov's computer-assisted work. This benchmark is **not** a three-point
+  SDP and must never be reported as one.
+- **Status.** `PROPOSED`; reviewers X and Astra. It is a *benchmark to evaluate*,
+  not a result: with `η = 0` it collapses to ordinary CE (K15-C002) and is
+  obstructed by Li; its interest is entirely in whether a small `η` at
+  `ρ = 2.09` buys more than `12η/f̂(0)` costs.
+- **Comparison requested from C:** same degree, `η = 0` versus `η > 0`, and the
+  same normalisation — so that the two numbers differ only by the relaxation.
+
+### Fixes to earlier entries in this section (accepted)
+
+| Entry | What was wrong | Repair |
+| --- | --- | --- |
+| K15-C005r (F3) | "mean of `S_f` equals `c f̂(0) − f(0)`" | `S_f = c Σ_{ξ∈L*} f̂(ξ) − f(0) ≥ c f̂(0) − f(0)`, equality only if `f̂` vanishes on `L*∖{0}`; a cell integral is not a centre average |
+| K15-C005r conclusion | claimed to close all additive hybrids | narrowed: only pointwise-sign hybrids are closed; hybrids using control of the *average* are not excluded (R1 open) |
+| K15-C010r | "`R ≥ K log2/(2π r_K) − o(1)`" | finite estimate: `R ≥ K log2/(2π r_K)`, no asymptotic slack |
+| K15-C015 | "for every cluster of diameter `≤ D`" | false for every `D` (singleton at the icosahedral vertex); partition must be specified |
+| K15-C013 | angular lemma / boundary count unqualified | valid for `0 ≤ δ ≤ √5 − 1`; boundary count `(r+D+2)³ − r³ ≤ 3(D+2)(r+D+2)²` |
+| X's Gaussian driver (X-C008 family) | factor-`π` density error; HiGHS "Model error" read as infeasibility | exact feasible point `P = 2 − 2s/3`, `Q = 1 + 2v/3` exists; the model error is a formulation/scaling fault, not infeasibility |
+
+Kept as narrow positive results, with their hypotheses: **K15-C002b** (additive
+periodic estimate) and **K15-C003r** (fixed-coset counting). Neither is affected
+by any finding above.

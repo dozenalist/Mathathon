@@ -81,8 +81,30 @@ bound. No novelty is claimed for anything in this file: the unrestricted sharp
 bound is already a theorem (Hales), and "first below 0.754697" would be a claim
 about a restricted class that has not been compared with the literature.
 
+## 4b. The two live candidates (after hourly review 00:08)
+
+1. **Benchmark (analytic): the shell allowance.** `f̂ ≥ 0`, `f ≤ η` on `[2, ρ]`,
+   `f ≤ 0` beyond `ρ`, at most 12 shell neighbours `⟹`
+   `δ ≤ (4π/3)(f(0) + 12η)/f̂(0)` (K15-C018). Its proof is two paragraphs
+   (K15-C003 + K15-C002b); its whole content is the count 12 on a shell of width
+   `ρ − 2`. `ρ = 209/100` is **provisional** until a Tammes-13 enclosure is cited
+   or proved. With `η = 0` it is ordinary CE and Li's theorem blocks it, so its
+   only possible value is a small `η` at a fixed `ρ` that costs less than
+   `12η/f̂(0)`.
+2. **Target (geometric): E's constructive partition.** Cluster averages instead of
+   pointwise fcc-compatibility, with the partition *specified* — the universal
+   quantifier over clusters is false (a singleton at the icosahedral vertex gives
+   `5.55029 < √32`). Sampling can refute but never establish a cluster inequality
+   (K15-E003), so this needs an analytic lower bound.
+
+A third object is a **mechanism**, not a candidate: the exact-Sturm Laguerre family
+(X-C008), which can certify a number but whose ceiling is obstructed by Li.
+
 ## 5. What is not established
 
+- A value near `Δ = 0.78010544` attributed to Computation is **withdrawn**
+  (K15-C017): its checker reports nothing unless verbose, and the rebuilt `q` is
+  negative at a rational point. Do not cite it.
 - No new numerical bound and no certificate. C's local controls are
   `TESTED_FINITE`: `Δ = 0.779702445785607` (`K = 31`, grid 1200) and
   `Δ = 0.779745768082807` (`K = 41`, grid 4000), with `min f̂` of order `−3·10⁻⁶`

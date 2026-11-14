@@ -262,3 +262,94 @@ the CE control `0.779747` from above as it must.
 and have X independently re-verify one certificate (e.g. `out/certificate_K21.json`) with a
 non-shared implementation. Secondary: compare E's local-mass/three-point candidate against
 FCC/HCP/Barlow fixtures and the zero-kernel degeneration, on a matched family.
+
+**K15-C014 withdrawn (My bug).** `Computation/ce_laguerre.py` built `M_hat_s`
+and never passed it to either `linprog` call, so Fourier positivity was not
+imposed; both calls also used a box `|a_k| ≤ 10⁶`, so the large negative
+objective was a bounded optimum, not an unbounded ray. The script is kept in the
+tree with the bug and a withdrawal note (K15-C014r). The review's repaired rerun
+gives `f(0) = 0.21820243547088458` at degree 8 — not the floor `3/(32π)` — and
+still fails global Fourier positivity. Lesson recorded: grids are exploratory;
+exact sign decisions (Sturm) are the acceptance test.
+
+**K15-C002b / C003r.** Two proof gaps in the recovered m2 argument repaired: the
+periodic-approximation estimate now uses `#C_in ≤ vol/S³` with additive errors and
+a separate `c = 0` case; the count-price indexing now fixes `l` (not `j`), which
+gives `≤ n` bad pairs per base centre and `≤ nk` overall. Both statements survive.
+
+**K15-C005r.** One score frozen and both signs derived: the off-diagonal score
+`S_f(v) = Σ_{μ≠v} f(v−μ) ≤ 0` at every vertex of every packing, so a centred
+score `vol Ω + κS_f ≥ V_0` forces `V_0 ≤ V_dod` (no improvement), while keeping
+the self-term gives only `V_0 ≤ V_dod + κf(0)` (strictly worse for `κ > 0`).
+Also proved: `f(0) + 12f(2) ≥ f̂(0)/(4√2)` for every admissible `f`, so the raw
+score is positive at the icosahedral cluster — the fact the earlier ledger stated
+with the wrong sign. D12 freezes the score definitions.
+
+**K15-C010r / C013r.** The bandwidth claim is refuted only in its hypothesis-free
+form (the product counterexample destroys Fourier positivity); in the
+Fourier-positive class `‖f̂‖₁ = f(0)` and the log term vanishes, so the budget is
+`R ≥ K log2/(2π r_K) − o(1)` and its usefulness is open. Counting envelope: 12 is
+both an upper bound for thin shells and attained (icosahedral twelve, mutual
+distance 2.1029); the cap inequality gives `θ ≤ 2 arccos(11/13)`, not `≥`; the
+exact threshold is `δ < ∛28 − 3`.
+
+**Integrated worker evidence** (read from their branches, not accepted wholesale):
+E's cluster-averaged criterion `K15-E001` (relaxes Lemma 3.3 to cluster averages)
+and E's `K15-E003` monotonicity obstruction (finite-cluster volumes are upper
+bounds, so sampling can only refute) → K15-C015, now the lead local route (D11).
+X's registry: X-C001 (contact-shell Laplacian forced positive somewhere), X-C002
+(3D maximisers not unique: HCP and the Barlow family), X-C003 (icosahedral cell
+`V_dod`, deficit 0.106563), X-C007 (grid feasibility ≠ certificate) and X-C008
+(exact Sturm certification) → K15-C016. C's controls: `Δ = 0.779702445785607`
+(K=31/g1200) and `0.779745768082807` (K=41/g4000), `TESTED_FINITE`, `min f̂` of
+order `1e−6`, no certificate.
+
+**Queue consolidated** with distinct IDs (`Main/LOCAL_COMPUTE_REQUESTS.md`):
+`M-LEAN-001` complete, `C-NUM-001` complete/exploratory, `C-CERT-001`,
+`E-CERT-001`, `X-R01` open, `M-NUM-002` respecified (rational threshold `t ≥ 25`
+or formal `π`), old `K15-COMPUTE-001/002` retired.
+
+**Handoff questions** Q1–Q6 in `Main/TASKS.md`: C's `r ∈ [1,5]` grid versus the
+`r ≥ 2` contract; C's Sturm driver; E's choice of cluster-volume machine; X's
+audit of C002b/C003r/C005r/C015; the quantitative Tammes-13 literature; and
+routing of the three open requests.
+
+Not done: no certificate, no new bound, no worker contact (no channel). Next: X
+audits the four repaired items; C delivers the Sturm driver; E prices a cluster
+lower bound at `D = 2`.
+
+### K15-MAIN-005 — 2026-11-14 00:08 PST — hourly review integration
+
+Author **M (Main)**. Reviewed completion `30102`, source
+`0c3ee751254b1b61f16eb175d9bd8d571f842b18`. Supervisor branch fetched at
+`0e28e093fbe13fdc4e7aad684536547e3f539e06`. No chat created; no swarm; nothing
+run on the VM.
+
+* **K15-C017 (new, `REFUTED`)**: Computation's K21 certification is withdrawn.
+  Its checker reports failures only under `if verbose` — the impossible input
+  `[2, −1]` passes — and the rebuilt `q` has ten simple positive roots with
+  `q(57955199/21687900) ≈ −3.876231892749308e−5`. No accepted bound near
+  `0.78010544`. The π interval passes its own audit; its upward rounding does not.
+* **K15-C018 (new, `PROPOSED`)**: the shell-allowance benchmark
+  `f̂ ≥ 0`, `f ≤ η` on `[2, ρ]`, `f ≤ 0` beyond `ρ`, count 12
+  `⟹ δ ≤ (4π/3)(f(0)+12η)/f̂(0)`; proof is K15-C003 + K15-C002b. `ρ = 209/100`
+  is pending a Tammes-13 enclosure and E's repaired radial argument. Attribution:
+  CE truncation, DLOV14, Musin–Tarasov. Not a three-point SDP.
+* **K15-C005r corrected twice**: lattice identity is
+  `S_f = c Σ_{ξ∈L*} f̂(ξ) − f(0) ≥ c f̂(0) − f(0)` (not an average over cells, and
+  not an equality); the conclusion is narrowed to pointwise-sign hybrids.
+* **K15-C010r**: `− o(1)` removed (finite Jensen estimate).
+* **K15-C013**: angular lemma scope `0 ≤ δ ≤ √5 − 1`; boundary count
+  `(r+D+2)³ − r³ ≤ 3(D+2)(r+D+2)²`.
+* **K15-C015 refuted as universal** (singleton cluster at the icosahedral vertex:
+  `5.55029 < √32`) and repaired to a specified-partition statement; the geometric
+  route stays open (D14).
+* **K15-C002b and K15-C003r kept** as narrow positive results, hypotheses intact.
+* X's Gaussian driver: factor-`π` density error; a HiGHS "Model error" was read as
+  infeasibility although `P = 2 − 2s/3`, `Q = 1 + 2v/3` is feasible.
+* `D13` claim-admission rules; `D14` portfolio = one benchmark + one geometric
+  target. `Main/INTEGRATION_0008.md` records sources and hashes.
+
+Not fetchable at this checkpoint: `Main/HOURLY_REVIEW_2026-11-14_0008.md` and
+`Computation/Reviews/48443/` (announced, absent from `0e28e09`). K15-C017's
+witness is therefore carried from the assignment text (`M-QUEUE-001`).

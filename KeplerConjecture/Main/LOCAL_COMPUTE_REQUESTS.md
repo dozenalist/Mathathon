@@ -54,6 +54,46 @@ Acceptance for any of the three: exact rational identity, verified by an
 independent checker, with the sign regions `s ≥ 4` and `s ≥ 0` stated in `s`
 (never mixed with `t`), and `f̂(0) > 0` exhibited.
 
+### C-SHELL-001 — same-degree comparison at `η = 0` vs `η > 0` (K15-C018)
+
+Only a request if C's Sturm driver (C-CERT-001) exists; otherwise it stays a
+specification. Same degree, same grid, same normalisation on both sides, so the
+two numbers differ only by the relaxation.
+
+```text
+request_id = C-SHELL-001
+status = BLOCKED on C-CERT-001
+owner = C (Computation, kepler15/comp-01a1d8c0)
+reviewer = X, then M
+claim_id = K15-C018 (benchmark; not a bound until the count 12 is certified)
+purpose = measure whether a small allowance eta at rho = 2.09 buys more than the
+          12 eta / fhat(0) it costs, at fixed degree and fixed basis
+inputs   = a rational profile from C-CERT-001 at degree K <= 12,
+           plus its eta-shifted variants f -> f - eta on [2, rho] (i.e. the
+           profile whose value on the shell is capped at eta)
+success  = (4 pi/3)(f(0) + 12 eta)/fhat(0) computed for eta in {0, eta_1, eta_2}
+           with eta_j chosen so f stays admissible, all three verdicts exact
+blocking = rho = 2.09 needs a Tammes-13 enclosure; without it the count 12 is a
+           hypothesis, not an input
+certification = exact (Sturm) or none
+```
+
+### M-QUEUE-001 — claims that must be re-anchored when the review lands (M)
+
+Not a computation: `Main/HOURLY_REVIEW_2026-11-14_0008.md` and
+`Computation/Reviews/48443/` were announced but are absent from the fetched
+branches. When they appear, K15-C017's witness
+(`q(57955199/21687900) ≈ −3.876231892749308e−5`) must be replaced by a citation of
+the pushed artifact plus its hash, and the K21 source hash re-checked.
+
+### Previously queued, unchanged
+
+`C-CERT-001` (exact Sturm driver — the single highest-value item in the project),
+`E-CERT-001` (interval certification for cluster volumes; driver still missing),
+`X-R01` (exact optimisation over the Laguerre family), `M-NUM-002` (rational SOS
+specification; superseded by C-CERT-001). `M-LEAN-001` and `C-NUM-001` are
+complete; `M-NUM-001` is complete and invalid as a claim (K15-C014r).
+
 ### Retired IDs
 
 `K15-COMPUTE-001` → split into `C-CERT-001` (the real work) and `M-NUM-002`
