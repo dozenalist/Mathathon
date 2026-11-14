@@ -291,6 +291,14 @@ previous block was called out for counting verification as substance.
 **Mode.** Ultramath is ON for the session; **no swarm was run**, as the four-chat structure is fixed
 and the review forbids new swarms. Nothing was written to `.ultramath/`.
 
+**A portability defect found while closing.** Running the suite from the repository root instead of
+the computation directory failed: `tests_cut_flow.py` (and, it turned out, `compact_verify.py`) opened
+`out/...` and created `.scratch` relative to the *current directory*. Every earlier clean-clone check
+had `cd`'d into the directory first, which is exactly why it went unnoticed. All fixture and scratch
+paths now resolve from `os.path.dirname(__file__)`; verified from the repository root, from the
+computation directory, and by absolute path from `/`. A script that only runs from one directory is
+not portable, whatever its mathematics.
+
 **Final state.** Every checker green at the pushed head, from a clean clone of the branch:
 `audit_cut_flow_api` 69/69, `tests_cut_flow`, `tests_0138`, `exactcert_tests`, `period_convention`,
 `highdensity_cut`, `k15radicals`, `fixture_cluster_robust` all pass; `compact_verify` accepts

@@ -28,7 +28,8 @@ Usage: python3 compact_verify.py [certificate.json]
 Exit 0 iff every check passes.  Corrupt the certificate by hand and it exits 1 (negative controls
 are run by --self-test).
 """
-import json, sys
+import json, os, sys
+_HERE = os.path.dirname(os.path.abspath(__file__))
 from fractions import Fraction as F
 from math import comb
 
@@ -175,7 +176,7 @@ def verify(path, claim=None):
     return out, delta
 
 def main(argv):
-    path = argv[1] if len(argv) > 1 else "out/verified_certificate_K33b.json"
+    path = argv[1] if len(argv) > 1 else os.path.join(_HERE, "out", "verified_certificate_K33b.json")
     print("compact verifier (Bernstein + reversed polynomial; no Sturm, no root counting)")
     print("certificate:", path)
     out, delta = verify(path)
@@ -188,17 +189,18 @@ def main(argv):
     print("\nACCEPT: Delta <= %s" % float(delta))
     return 0
 
-def negative_controls(path="out/verified_certificate_K33b.json"):
+def negative_controls(path=None):
+    path = path or os.path.join(_HERE, "out", "verified_certificate_K33b.json")
     """A verifier that only ever accepts proves nothing: corrupt the certificate and require REJECT."""
-    import os, json as _json
+    import json as _json
     d = _json.load(open(path))
-    os.makedirs(".scratch", exist_ok=True)
+    os.makedirs(os.path.join(_HERE, ".scratch"), exist_ok=True)
     cases = []
 
     def run(name, mutate, claim=None):
         e = _json.loads(_json.dumps(d))
         mutate(e)
-        f = os.path.join(".scratch", "neg_%s.json" % name.replace(" ", "_"))
+        f = os.path.join(_HERE, ".scratch", "neg_%s.json" % name.replace(" ", "_"))
         _json.dump(e, open(f, "w"))
         out, _ = verify(f, claim=claim)
         ok = not all(ok_ for _, ok_ in out)
@@ -219,10 +221,10 @@ def negative_controls(path="out/verified_certificate_K33b.json"):
     print("  %s the tighter claim 0.7797 is REJECTED" % ("PASS" if ok else "FAIL"))
     cases.append(("tighter claim", ok))
     # leave no scratch files behind: the corrupted copies are inputs to a test, not outputs
-    for f in os.listdir(".scratch"):
-        os.remove(os.path.join(".scratch", f))
+    for f in os.listdir(os.path.join(_HERE, ".scratch")):
+        os.remove(os.path.join(_HERE, ".scratch", f))
     try:
-        os.rmdir(".scratch")
+        os.rmdir(os.path.join(_HERE, ".scratch"))
     except OSError:
         pass
     return all(ok for _, ok in cases)
