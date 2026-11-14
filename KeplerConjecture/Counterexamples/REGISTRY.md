@@ -1979,3 +1979,11 @@ For the parallel configuration, the minimum **cross** distance is `1.960502258` 
 `2.102924` throughout and `d ≥ 4.77 > 2`, so the cross pairs are the binding ones ✓. My first table of this
 check included `i = j` in the "all pairs" minimum and so printed `0.000000` in that column; the cross
 column, which is the one that matters, was right.)
+
+### K15-X-C131 — three more Experimental searches run clean, with correct caveats
+
+`local_mass_search.py`, `dense_completion_search.py` and `icosa_targeted_completion.py` all exit 0 from
+`KeplerConjecture/` at `6ae7dbf`; the last two say "not refuted" / "inconclusive" explicitly, and
+`dense_completion_search` notes "computed sum is an UPPER bound so this is inconclusive" — the monotonicity
+direction is stated correctly, as in `cluster_fixture` (`X-C116`). That is **27** Experimental programs run
+this block, every one passing from the documented directory.
