@@ -396,6 +396,14 @@ bounds are `5.872319` (C5) and `5.871765` (non-family) — each about `0.109` ab
   the cutting shell; the searches never found more than six free centres to be useful, but "the
   searches never found" is not a proof.)
 
+**Numerical support for open (i), such as it is.** Sampling 400 random legal six-direction sets
+(the free directions `60°`-separated from each other and from `c`, and at least `58.28°` from
+each ring direction), the smallest ring face area found is `1.275974` — attained at the C5
+configuration itself, which is `54 %` above `A*`. The search's best completion gives `1.249221`.
+So every configuration examined has about half again the area the lemma needs. That is a
+numerical observation and not a proof — 400 samples over a 12-dimensional legal set is a
+gesture, not a covering — but it says the target is not knife-edge.
+
 **Open (i) is the cheaper target of the two**, and it is the concrete deliverable I would hand
 to the next block: a finite optimisation over six points on a sphere with a `60°` code
 constraint, asking whether the five ring faces can be driven below `0.828283`. That is *far*
