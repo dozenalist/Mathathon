@@ -92,6 +92,9 @@ def main():
     print(f"  target {float(TARGET):.9f}:  every configuration above it: {ok}"
           f"  (margin {float(lo - TARGET):+.6f})")
     if out:
+        import os
+        out = os.path.abspath(out)
+        os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
         cert = dict(
             domain=dict(theta=[str(outward_down(th_lo)), str(outward_up(th_hi))],
                         phi=[str(outward_down(ph_lo)), str(outward_up(ph_hi))],

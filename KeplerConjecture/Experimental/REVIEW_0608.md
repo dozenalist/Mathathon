@@ -109,13 +109,22 @@ boxes of `0.1°` and silently missed the strip `[110.2, 110.25] × [35.2, 35.25]
 | claim | status |
 | --- | --- |
 | `K15-E091` certified enclosure | **repaired** (`K15-E095`). The old numbers are right to the digits quoted, because the missing slack is `~1e-18` at a fixed configuration; the *certificate* was not sound |
-| `K15-E094` certified regions | **PENDING**. Produced with a slack short by up to `√3` and an incomplete partition. Not withdrawn as observations, not certified |
+| `K15-E094` certified regions | **RERUN and re-certified** (`K15-E096`). `[5.872110, 5.927479]` → `[5.859536, 5.940277]`, margin `+0.096119`: the conclusion survives, the numbers moved by `0.026` as the repair predicts |
 | five controls | **re-pass** with the repaired slack, width `1.2e-18` |
 | a non-family configuration | **certified**: the global search's best legal completion (6 free centres, `5.898473397`) encloses to width `1.2e-10` with `R = 1.449` and a 30-plane boundedness certificate. This is the first end-to-end use of the verifier on something that is not a C5 configuration |
 | the two-dodecahedra and Theorem D audits | unaffected (they use no volume) |
 
-The repaired region run over `θ ∈ [110,111] × φ ∈ [35,36]` is in flight; its result is reported
-in the final message and in `evidence/`.
+**The rerun is done.** With the repaired certifier, exact partition and `√3`-slack:
+
+| region | before the repair | after the repair |
+| --- | --- | --- |
+| `θ ∈ [110,111] × φ ∈ [35,36]`, 100 boxes | `[5.872110, 5.927479]`, margin `+0.108692` | **`[5.859536, 5.940277]`**, margin **`+0.096119`** |
+| `θ ∈ [110,110.25] × φ ∈ [35,35.25]`, 3 × 3 exact boxes | — | `[5.867852, 5.933758]`, margin `+0.104434` |
+
+So the *conclusion* survives — the region is still certified above the threshold — while the
+enclosure widened by `0.026` on each side, which is what the missing `√3` and the larger a
+priori radius predict. The second row's certificate is in
+`evidence/region_110_110p25.json` (1.8 kB, exact rationals rounded outward).
 
 ---
 
