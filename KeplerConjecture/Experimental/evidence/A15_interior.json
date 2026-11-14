@@ -1,0 +1,19 @@
+{
+ "fixture": "A15_interior",
+ "n": 66,
+ "minsep": 2.0,
+ "buffer_limited_cells": 52,
+ "n_defective": 0,
+ "defective_vols": [],
+ "defective_touched": 0,
+ "r2": {
+  "R2_one_shell": {
+   "components": 0,
+   "note": "no defects: all blocks are singletons; (T) holds by definition"
+  },
+  "R2pp_two_shell": {
+   "components": 0,
+   "note": "no defects: all blocks are singletons; (T) holds by definition"
+  }
+ }
+}

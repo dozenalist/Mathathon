@@ -583,3 +583,28 @@ not be extended by more seeds or larger `N`. A decision on `(Q)` needs a *certif
 construction from crystallographic data (correct Wyckoff positions, exact coordinates, certified
 periodic Voronoi decomposition) — the C15 attempt in Section 9.1 was abandoned for exactly that
 reason, and it is where the next block should start.
+
+### 9.5 A15 stated precisely, and a subsetting error I made
+
+The correct statement of the A15 result, on the full 1439-point build:
+
+```
+n = 1439,  min separation = 2.000000
+boundary cells correctly flagged unreliable: 520
+VALID interior cells:                        919
+defects among valid cells:                     0
+cell volumes of valid cells:  7.8125  and  8.0625      (sqrt32 = 5.656854)
+```
+
+So A15 supplies **919 valid, saturated cells and none is defective**. That is the first time in
+this project that a defect question could be asked of cells whose volumes actually mean what the
+saturation criterion requires, and the answer for A15 is: no defect, because `7.81` and `8.06`
+are far above `5.66`.
+
+**An error I made and corrected.** I first tried to obtain a "fully clean" fixture by taking the
+subset of points with `|r| < 5` from the 1439-point build. That flagged `52` of `66` cells, which
+looked like a failure but was my mistake: *a subset of a dense packing is itself sparse*, so its
+outer cells are genuinely unsaturated. The right move is not to subset but to evaluate the full
+build and count defects only among the cells the extent criterion certifies — which is what the
+figures above do. Recorded because the mistake is easy to repeat: restricting a fixture to its
+interior destroys the very density that makes the fixture meaningful.
