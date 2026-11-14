@@ -6,6 +6,19 @@ The numbered results below refer to Chun Wing Lai, [*On Fauzan’s Proof that ζ
 
 **A note about this version:** Lai’s exposition abbreviates some essential arguments and contains an inconsistent correction term. The map below explains the intended dependencies; the [reading cautions](#reading-cautions) identify where a fuller source is needed.
 
+**Expanded companions.** Each section has a separate explanation below, following the same backward order. Read them in sequence for cumulative notation; links between them also support looking up one step. Each companion defines its new symbols and recalls the earlier notation it needs.
+
+| Companion | What it explains |
+| --- | --- |
+| [1. The irrationality criterion](ProofGuide/01_IRRATIONALITY_CRITERION.md) | Why small nonzero polynomial values produce an impossible integer. |
+| [2. Normalization and decay](ProofGuide/02_NORMALIZATION_AND_DECAY.md) | The parameters, the two scaling factors, and the negative margin needed at the end. |
+| [3. Arithmetic estimates](ProofGuide/03_ARITHMETIC_ESTIMATES.md) | How valuations, a change of basis, and sums over primes control the coefficients. |
+| [4. Analytic estimates](ProofGuide/04_ANALYTIC_ESTIMATES.md) | How a comparison measure bounds the determinant integral, including the singularity and the tail. |
+| [5. Positivity](ProofGuide/05_POSITIVITY.md) | Why the moment matrix is positive definite and its determinant cannot vanish. |
+| [6. The Hankel construction](ProofGuide/06_HANKEL_CONSTRUCTION.md) | How partial fractions give affine entries and a Vandermonde determinant gives exact degree. |
+| [7. The moment representation](ProofGuide/07_MOMENT_REPRESENTATION.md) | The definition of the functional and the two integral calculations behind it. |
+| [8. Reading cautions](ProofGuide/08_READING_CAUTIONS.md) | What the printed estimates leave to justify, and what the exponent 260 additionally requires. |
+
 ## 1 The last step is an impossible integer
 
 **Lemma 3.1 gives irrationality.** To apply it to ζ(5), we need a sequence of polynomials with all four properties below.
@@ -89,7 +102,7 @@ $$
 2U^\rho(t)-V(t)\leq M_0.
 $$
 
-Here Uρ(t) is the average logarithmic distance from t to the comparison distribution.
+Here Uρ(t) is the integral of logarithmic distance from t against the comparison measure. Its total mass is λ = 37/40, so this is not a probability average.
 
 **Third, Lemma 11.5 lets that one comparison control all other distributions of the same mass.** Subtract ρ from a competing distribution σ. The difference has total mass zero, so its logarithmic energy is nonpositive. Expanding this statement gives
 
