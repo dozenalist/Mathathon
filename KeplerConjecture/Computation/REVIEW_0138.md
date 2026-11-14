@@ -645,3 +645,24 @@ the Markov–Lukács system exactly (a one-parameter rational search for `p₁` 
 a search over certificates.
 
 **Reproduce:** `python3 sos_both_sides.py` (< 1 s); data in `out/sos_both_sides.json`.
+
+### p-side record improved to `1.33982382`
+
+Two further seeds of the many-square p-side search:
+
+| seed | `Δ ≤` |
+| --- | --- |
+| 1 | 2.00171738 |
+| 2 | 1.99826638 |
+| **3** | **1.33982382** |
+
+with `−p(u) = (u−T)[...]` again an explicit sum of rational squares. So the **p-side now also
+reaches ≈1.34**, comparable to the Fourier-side record `1.37125723` and better than the
+both-sides demonstration at `2.00171738`.
+
+**What is not done:** the both-sides Markov–Lukács solve (§15) was carried out for a *cubic* `q`,
+where a one-parameter rational search suffices. The seed-3 certificate has `deg p = 5`, hence
+`deg q = 5`, and the quintic decomposition `q = σ₀ + uσ₁` with `deg σ₀ ≤ 4`, `deg σ₁ ≤ 4` is a
+larger nonlinear system that I did not solve in this block. **So the best both-sides certificate
+remains `2.00171738`, and that is the honest state of §15** — the format is closed, the strength
+is not.

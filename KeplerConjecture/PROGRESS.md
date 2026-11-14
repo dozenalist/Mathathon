@@ -612,3 +612,14 @@ Scope stated hard: it does **not** improve on `0.779747` or `0.77996622`; it is 
 value is that both sign conditions are hand-checkable and the format is shown not to be confined
 to toy strengths. The `q`-side coefficients came from **solving the Markov–Lukács system exactly**
 (a one-parameter rational search for `p₁` with `k > 0`), not from searching over certificates.
+
+### K15-COMP-035 — 2026-11-14 — Computation (role C), p-side record
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| **K15-C-SOSPSIDE-003** | **VERIFIED_EXACT** | p-side record improved to **`Δ ≤ 1.33982382`** (many-square family, seed 3), comparable to the Fourier-side `1.37125723` and better than the both-sides demonstration at `2.00171738` | `out/ps3.json`, `sos_pside_many.py` |
+| K15-C-BOTHSIDES-LIMIT | open | the both-sides Markov–Lukács solve was done for a **cubic** `q` (one-parameter rational search). The seed-3 certificate has `deg q = 5`, and the quintic decomposition is a larger nonlinear system not solved in this block. **The best both-sides certificate remains `2.00171738`** — format closed, strength not | `REVIEW_0138.md` §15 |
+
+**Final state of the explicit-Gram programme:** Fourier side `1.37125723`; p-side `1.33982382`;
+both-sides `2.00171738`; LP-optimal (no rational Gram) `0.77996622`. Both sides reach ≈1.35
+individually; only the joint constraint costs a factor ≈1.5.
