@@ -290,6 +290,20 @@ def check_certificate(cert):
     if computed != vol:
         raise ValueError("V7: the certificate says %s, the divergence theorem gives %s"
                          % (vol, computed))
+    # V8: the SAME volume by a different formula -- fan every facet into triangles and sum the
+    # tetrahedra with apex v.  This does not use the area vectors at all, so it catches a facet
+    # whose ordering closes (V5) but whose areas are wrong.
+    fan = F(0)
+    for f in facets:
+        poly = [verts[t] for t in f["verts"]]
+        for i in range(1, len(poly) - 1):
+            A_, B_, C_ = poly[0], poly[i], poly[i + 1]
+            fan += abs(det3(tuple(A_[t] - v[t] for t in range(3)),
+                            tuple(B_[t] - v[t] for t in range(3)),
+                            tuple(C_[t] - v[t] for t in range(3)))) / 6
+    if fan != computed:
+        raise ValueError("V8: the fan volume %s disagrees with the divergence-theorem volume %s"
+                         % (fan, computed))
     return computed
 
 def certify_volume(planes, interior, candidates=None):

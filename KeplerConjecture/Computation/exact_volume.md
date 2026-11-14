@@ -35,6 +35,7 @@ Let `P = ⋂{planes}` and `Q = conv(vertices)`.
 | V5 | the area vectors sum to `0` | **boundedness**: `Σ λ_f a_f = 0` with all `λ_f > 0` (from V3), so the normals positively span `R³` and the recession cone is `{0}` |
 | V6 | (derived) every facet of `P` is listed | a face is `P ∩ {supporting plane}`; any plane meeting `P` in a 2-set is a facet, so the listed facets are all of them, the rest are redundant, and V1 shows they do not cut |
 | V7 | `(1/3) Σ_f x_f·A_f > 0` and equal to the certificate's volume | the divergence theorem on a closed oriented surface |
+| V8 | the fan volume `Σ_f Σ_triabs det/6` with apex `v` equals V7 | a second derivation that uses **no area vectors**, so it catches an error in the area formula that V5 and V7 both depend on. It is a consistency check between two formulas over the same vertices, not an independent measurement |
 
 `Q ⊆ P` (V1) and `P ⊆ Q` (V3+V6) give `P = Q`; V5 gives boundedness, so `V` is the complete vertex
 set of `P`. Every step is rational arithmetic.
