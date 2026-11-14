@@ -132,8 +132,11 @@ Sturm + Yun, `exactcert_oracle.py` with SymPy's `sqf_list`/`count_roots`. This o
 * the Fourier content is checked independently as `p = Σ c_k L_k^{(1/2)}` and
   `q = Σ (−1)^k c_k L_k^{(1/2)}`, rebuilt from `c` with exact rational Laguerre polynomials.
 
-Result: **ACCEPT, `Δ ≤ 0.7799662167769938 ≤ 0.77996622`**, in 41 + 9 Bernstein pieces for `q` and
-1 + 11 for `p`. Negative controls (`--self-test`) require rejection of a perturbed `p(0)`, of a
+Result on K33b: **ACCEPT, `Δ ≤ 0.7799662167769938 ≤ 0.77996622`**, in 41 + 9 Bernstein pieces for
+`q` and 1 + 11 for `p`. On the older `out/verified_certificate_K33.json` — a different certificate,
+not a different run — it accepts `Δ ≤ 0.7799664977842958 ≤ 0.7799665`. A verifier tried on one input
+is weak evidence; it has now been tried on two, and it rejects three deliberate corruptions of the
+first. Negative controls (`--self-test`) require rejection of a perturbed `p(0)`, of a
 flipped Laguerre sign, and of the tighter claim `0.7797`; all three are rejected.
 
 ## 5. Deferred, as instructed
@@ -217,7 +220,12 @@ block also re-ran and re-checked, against the artifacts:
   byte-identical across seeds;
 * all **42** modules in the directory compiled, and the command `INTERFACE.md` documents for
   `ce3_constrained.py` run for the first time — it reproduces `out/constrained_K25.json`
-  byte-for-byte.
+  byte-for-byte;
+* the default invocation of `verify_certificate.py` (no argument, the older K33 certificate) checked,
+  and the same certificate passed through `compact_verify.py` as a second input;
+* all 70 JSON outputs parsed, and the declared decimal bound checked to be a genuine rounding **up**
+  of the exact one: `0.77996622 ≥ 0.779966216776994`, with the 12-digit form 6.2·10⁻¹⁵ above the
+  exact value.
 
 **Reproducibility of the pushed branch, checked at the end of the block**: a clean `git clone` of
 `kepler15/comp-01a1d8c0` at `e3948da` (42 `.py`, 68 `.json`) runs `exactcert_tests`,
