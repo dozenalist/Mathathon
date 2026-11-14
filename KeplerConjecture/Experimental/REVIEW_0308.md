@@ -699,3 +699,31 @@ corrected run gives `11` and `11` points, as it must.)*
 and that its equality cases are not the ones that would make it look weak. It does **not** prove
 `(P')`: the minimum pair sum could still lie between `11.100582` and `11.313708`. Locating that
 minimum is the open question, and the two-cell model in §14 is the natural setting for it.
+
+### 14.2 The two-cell model, first attempt: survives, but uninformatively
+
+Minimising `vol Omega(v) + vol Omega(w)` over completions of a pair at distance `d`, adding legal
+centres greedily and capping by `Omega subset B(v,2)`:
+
+| `d` | extra centres | pair sum found |
+| --- | --- | --- |
+| 2.0 | 31-32 | `22.582789`, `27.144119` |
+| 2.1 | 31-33 | `22.979911`, `26.366818` |
+| 2.2 | 32 | `25.648744`, `26.329563` |
+| 2.4 | 31-34 | `24.895546`, `27.987444` |
+
+**`(P')` survives — no value below `2 sqrt32 = 11.313708` — but this is uninformative**, for the
+now-familiar reason: these are *upper* bounds on the cell volumes, and the completions are sparse
+(~32 centres around a pair), so the cells are inflated by free space. fcc attains `11.313708`
+exactly and my greedy cannot build anything near fcc density around a pair.
+
+**So the two-cell model needs a better method than greedy insertion**: either a dense periodic
+two-cell environment (fcc-like, with one parameter varied), or a genuine minimization over
+completion directions. The greedy used here cannot approach the extremal configuration, and I
+record the failure rather than presenting `22.58` as evidence for anything.
+
+**What would be informative.** A *lower* bound. The one structural handle found this block is
+§14.1: two dodecahedral cells cannot be adjacent, so the extremal pair is *not* `2 V_dodeca`. The
+question is whether the extremal pair is fcc's `2 sqrt32` or something strictly between. Deciding
+that is a two-cell isoperimetric problem, and it is the cleanest open target this block has
+produced.
