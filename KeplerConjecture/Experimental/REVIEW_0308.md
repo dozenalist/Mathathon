@@ -1011,3 +1011,39 @@ itself or the stability statement `(S_dod)`. `(P')` was the one cheap sufficient
 produced, and it is now in doubt. That is not progress toward a bound, but it is a much sharper
 statement of where the difficulty is than the block started with, and every claim above is
 accompanied by the numbers and the tool that produced it.
+
+### 14.8 Correction: the decline is not monotone, and `(P')` survives at `6.264`
+
+A third search with 30 legal centres returns
+
+```
+restart 0: 30 centres,  vol Omega(w_1) = 6.494845301
+restart 1: 30 centres,  vol Omega(w_1) = 6.968034515
+```
+
+— **worse** than the 18-centre result of `6.263608`. So the sequence is *not* monotonically
+decreasing, and §14.7's framing ("every improvement found a smaller cell", "margin halving at each
+step") overstates the trend. The corrected picture:
+
+| centres | best `vol Omega(w_1)` |
+| --- | --- |
+| 11-17 (greedy) | `8.543387` |
+| 12 (legal local search) | `6.730974` |
+| 18 (harder search) | `6.263608` ← best |
+| 30 (harder still) | `6.494845` |
+
+**The most likely explanation is a limitation of the method, not a feature of the geometry**: with 30
+centres the local search has twice the degrees of freedom for the same iteration budget, and it does
+worse. So `6.2636` is the best this approach reaches, and it is `0.500` above the threshold `(P')`
+requires.
+
+**Revised verdict on `(P')`.** It has survived every legal test performed, with the best value
+`6.263608` against a required `5.763417`. The evidence is one-sided (upper bounds) so this is not
+support, but the earlier concern that the margin was collapsing is now weaker: one increase in the
+number of centres made the result *worse*, which is what a method at its limit looks like rather
+than a method converging past the threshold. `(P')` remains unproved, and it remains possible that a
+structured (non-local-search) construction does better.
+
+**What I would not do.** Report `6.264` as evidence *for* `(P')`, or the earlier trajectory as
+evidence *against*. Both are the same kind of number: an upper bound from a search that has stopped
+improving.
