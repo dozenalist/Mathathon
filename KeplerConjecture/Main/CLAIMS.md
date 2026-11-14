@@ -1185,10 +1185,15 @@ Hence a finite fixture can only ever **refute** the required lower bound; it can
 never confirm it. This is the exact sense in which the transfer route is blocked:
 `K15-C035` removes the negligibility work, and what remains is a pointwise
 *lower* bound on Voronoi volume — an analytic inequality (Rogers/Fejes Tóth type),
-not a computation. Main tested the arithmetic of the bound (the deficit is
-`0.106563`, and a transfer of range `R = 2`, `Φ` must satisfy `Φ k_2 ≥ 0.106563`
-at that vertex, i.e. `Φ ≥ 0.106563/26 ≈ 0.0041`) and did not run a completion
-search, because by the monotonicity above it could not settle the question.
+not a computation. Main tested the arithmetic of the bound and did not run a completion search,
+because by the monotonicity above it could not settle the question. **Two
+different necessary bounds on `Φ`, which must not be confused:** at the
+icosahedral vertex there are exactly **12** neighbours within range `R = 2`, so the
+transfer must satisfy `Φ ≥ 0.106563/12 = 0.00888`; the counting bound
+`k_R ≤ (R+1)³ − 1 = 26` gives only the weaker uniform statement
+`Φ ≥ 0.106563/26 ≈ 0.0041`, which is a bound *every* packing satisfies but is not
+what that vertex forces. (The earlier text quoted the 26-based figure as if it
+were the vertex condition — corrected here.)
 
 **Consequence for the ledger.** G5 (an analytic cluster-volume lower bound) is the
 single remaining obligation on the geometric route; G4 and G6 are supplied or
@@ -1243,26 +1248,28 @@ auditing Main's own repair, so an outside check is still required).
 - **Status.** `TESTED_FINITE` (arithmetic of the constant on one instance). The
   proof of `K15-C035` does not depend on this run.
 
-### K15-C039 — icosahedral cluster fixture: monotonicity of finite completions (`TESTED_FINITE`)
+### K15-C039 — icosahedral cluster fixture: what it shows and what it does not (`TESTED_FINITE`, scope corrected in-block)
 
 - **Artifact.** `Computation/cluster_fixture.py` (scipy half-space intersections).
-- **Numbers.** The 13-cluster (centre + 12 at distance exactly 2, mutual minimum
-  `2.102924`) has its centre cell computed as **5.550291** — reproducing
-  `V_dod` to six decimals, an independent numerical confirmation of
-  `K15-C012`. Completions on a spacing-`2.2` lattice at distance `≥ 5.0`, `≥ 3.5`,
-  `≥ 2.7` (nested, `2140 ⊂ 2178 ⊂ 2190` points) give
-  `Σ_{v∈K}(vol Ω_K(v) − √32) = +157.87, +63.71, +17.91`: **decreasing as the
-  completion grows**, exactly the monotonicity behind `K15-E003`/`K15-C036`, and
-  still far from the packing value because the completions are sparse.
-- **What it shows.** (i) the centre's cell is untouched by any completion at
-  distance `≥ 2·1.2584 = 2.5168` (its circumradius), which is why such
-  completions are legitimate tests of the neighbours; (ii) every finite value is
-  an upper bound and the sequence decreases toward the truth, so **no finite
-  stage decides the sign** — the numerical form of the `K15-C036` obstruction.
-- **What it does not show.** It gives no lower bound, hence no evidence for or
-  against the cluster inequality at the icosahedral configuration.
-- **Status.** `TESTED_FINITE`. Reviewer X.
-
+- **Robust output.** The centre's Voronoi cell computes to **5.550291**, matching
+  `V_dod` to six decimals, and is **box-independent** (identical for boxes
+  `3, 4, 6, 9`) and completion-independent whenever the completion keeps distance
+  `≥ 2·1.2584 = 2.5168` from the centre. That is an independent numerical
+  confirmation of `K15-C012` and a useful sanity check on the whole cell pipeline.
+- **Not robust, and corrected here.** The *cluster sums*
+  `Σ_{v∈K}(vol Ω_K(v) − √32)` are dominated by the cavity between the core and the
+  completion, not by the cluster: with a dense fcc completion at distance `≥ 2.52`
+  the sum is `+54.40`; with the sparse nested completions of the first run it went
+  `+157.87 → +63.71 → +17.91`. The *trend* (decreasing as more points are added)
+  is the monotonicity of `K15-E003`/`K15-C036` and is real; the *values* carry no
+  information about the clubster inequality in a packing.
+- **What the fixture therefore establishes.** (i) `V_dod = 5.550291` numerically;
+  (ii) nested completions shrink cell volumes monotonically, so every finite value
+  is an upper bound and no finite stage decides the sign — the numerical form of
+  `K15-C036`. Nothing else.
+- **Status.** `TESTED_FINITE`. Reviewer X. (First version of the script used
+  non-nested completions and a wrong fcc scaling; both were caught and fixed
+  before the numbers were recorded.)
 ### K15-C040 — Lean: ball-volume identity drafted, build requested (`PROPOSED`)
 
 `Lean/Kepler15/Volume.lean` states `volume (ball 0 1) = ofReal (4π/3)` and its
@@ -1312,10 +1319,17 @@ names differ in v4.35.0.
 - **Scope.** It bounds one *class* of directional arguments (those using `t ≥ min_z
   d_z/(2cos φ_z)`); it does not bound per-cell arguments using a body that is not
   star-shaped about `w`, as E says.
-- **Query for X/E.** E's note compares against `5.665735`, but `√32 = 5.656854`
-  and `(4π/3)/(π/√18) = 5.656854`; the origin of `5.665735` (`= 4√2·1.00157`) is
-  not explained in the pushed text. Until it is, do not quote the "2.08%
-  shortfall" figure — the shortfall against `√32` is `2.30%`.
+- **Query resolved by Main.** E's `5.665735` is `√32 + (√32 − V_dod)/12
+  = 5.656854249 + 0.008880268 = 5.665734518` (agrees to `5e−7`): a threshold in
+  which each of a vertex's twelve neighbours absorbs a twelfth of the icosahedral
+  deficit. It is *not* `√32`, and the two must not be used interchangeably.
+  Likewise E's `1.385321873` equals `13·(√32 − V_dod) = 1.385319…`, a 13-cluster
+  total, not a per-cell difference. Consequently the quoted "2.08% shortfall" does
+  not follow from either comparison: Main computes `16.44%` for `4.734` against
+  `5.665735`, `16.31%` for `4.734` against `√32`, and `1.88%` for
+  `√32 − V_dod` against `√32`. **Report the quantity being compared**; the
+  arithmetic in the note is a factor/identity mix-up, not an error in E's
+  optimisation.
 - **Status.** `ACCEPTED WITH SCOPE` (Main's reading of the argument), the
   shortfall arithmetic **disputed pending the constant's definition**. Reviewer X.
 
@@ -1445,3 +1459,153 @@ After C advanced to `5c102677…`, Main re-ran both checks:
 
 So the interface (`K15-C023`, `K15-C031`) survives C's updates; nothing in the
 last two blocks' verification was version-specific.
+
+### K15-C049 — sign predicates falsely accepted positivity between endpoint roots (`REFUTED`, repaired, re-verified)
+
+- **The defect (reported by local reproduction at `6626714`).** The three
+  predicates `le_on_interval`, `nonneg_on_half_line`, `_ray` returned `True` for
+  - `u(1−u) ≤ 0` on `[0,1]` — value `+1/4` at `u = 1/2`;
+  - `u(u−1) ≥ 0` on `[0,∞)` — value `−1/4` at `u = 1/2`;
+  - `u(1−u) ≤ 0` on `[0,∞)` — the same `+1/4`.
+- **Root cause, two independent faults.**
+  1. `_count_roots`/`_roots_in` used `V(lo) − V(hi)`, which counts the distinct
+     roots in `(lo, hi]`, and then subtracted a root at **`lo`** instead of `hi`.
+     A root at `hi` was therefore counted and never removed, and a root at `lo`
+     was removed twice.
+  2. Even with a correct count, testing **only the endpoints** when the odd part
+     had no root strictly inside is invalid whenever *both* endpoints are roots:
+     `u(1−u)` has odd roots exactly at `0` and `1`, is zero at both ends, and is
+     positive in between.
+- **The repair (general, not special-cased).** Sign changes are counted on the odd
+  part with the correct endpoint convention; when the count is zero the sign is
+  constant and three probes (endpoints and midpoint) decide it; when the count is
+  positive, roots are isolated (`Poly.intervals`) and one rational test point is
+  taken in **every gap between consecutive roots** plus the endpoints. That is
+  exact: a polynomial's sign is constant between consecutive roots.
+- **Regression fixtures, kept permanently** in `Computation/checker_adversarial.py`
+  (now 19 cases): the three reported polynomials must FAIL;
+  `−(u−1/2)² ≤ 0` on `[0,1]` and `(u−1/2)² ≥ 0` on `[0,∞)` must PASS (touching);
+  `u(u−1) ≤ 0` on `[0,1]` must PASS (negative between two endpoint roots — the
+  exact mirror of the reported case). The suite also caught an error in *one of my
+  own new fixtures* (`u(u−1) ≤ 0` on `[1,3]`, which is false), which is the point
+  of keeping it.
+- **Re-verification after the repair.** `--self-test` ALL PASS; adversarial suite
+  19/19; the K33b certificate still `ACCEPT` with the **identical** ratio
+  `42935541634304122537361009/230584315533749727927712550` and
+  `Δ ≤ 0.779966216777`; `shell_fixture.py` returns the **unchanged**
+  `R = 0.5383822578566787`; the `--against-exactcert` cross-run still agrees.
+  So no published number moved — but the *general* soundness claim does move:
+- **Suspended until audited.** The sentence "the two checkers agree and are
+  therefore both correct" in `K15-C023`/`C031` is downgraded: the checkers agree,
+  and the K33b certificate passes a repaired checker, but the repaired predicate
+  has **not** been independently audited. Per instruction, general acceptance
+  claims are suspended until X audits `shell_check.py` at this revision. The
+  *particular* K33b certificate does not depend on that audit: Computation's
+  strict checker and the SymPy oracle both accepted it, and it is unchanged.
+- **Not mine, reported for routing.** X's `audit_K33_signs.py` accepts
+  `(t²−2)(t²−3) ≥ 0` on `[0,∞)` although its value at `3/2` is `−3/16`: irrational
+  roots are silently discarded by its root handling — the same class of defect.
+  Routed to X (their file).
+- **File.** `Computation/shell_check.py`, repaired this block; the reproducer
+  lives at `Main/LocalChecks/2026-11-14_0138/reproduce_sign_defects.py`
+  (supervisor branch).
+
+### K15-C050 — differential fuzz of the repaired predicates (`TESTED_FINITE`; no false accept in 799 random cases)
+
+- **Artifact.** `Computation/predicate_fuzz.py`. For random integer polynomials of
+  degree ≤ 6 it compares the exact predicate against a 40 001-point sample on
+  `[0,40]` (resp. `[A,40]`, `[lo,hi]`) and flags only the dangerous direction:
+  *predicate says the condition holds* while the sample exhibits a violation.
+- **Result.** 799 random polynomials, **zero** false accepts, across all three
+  predicates (`nonneg_on_half_line`, `_ray`, `le_on_interval`). The reverse
+  disagreement is expected and not counted (a violation may lie beyond the sampled
+  range).
+- **Scope.** This is a bug-hunt, not a proof: it cannot establish the predicates'
+  soundness, and by construction it only sees violations inside `[0,40]`. The
+  soundness argument is the mathematical one in `K15-C049` (sign constant between
+  consecutive roots, one test point per gap).
+- **Timing note.** An earlier run with `--n 800` was used; the script is
+  deterministic given `--seed`.
+- **Status.** `TESTED_FINITE`. Reviewer X: run it with a different seed and a
+  higher degree, and audit the `_test_points` gap construction.
+
+### K15-C051 — search for a periodic witness that a blob needs out-flux (`NEGATIVE SEARCH`)
+
+- **Target (from `K15-C044`).** A periodic packing with a blob `U` where
+  `Σ_U b > 0` (i.e. locally denser than fcc) and `|δ⁺(U)|` small would show that
+  the cut condition genuinely needs out-edges at bounded `Φ`.
+- **What was tried.** The 13-cluster centred in a cubic box of side `L` with the
+  eight corners occupied (periodic Voronoi cells computed on a 3×3×3 replication,
+  `L = 5.0` to `6.6`, all with minimum separation exactly 2):
+  `Σ_{13}(vol Ω − √32) = +34.94, +61.41, +91.51, +125.41, +163.29`.
+  All **positive**, and growing with `L`: the cluster's neighbours' cells are
+  inflated by the empty space around them, so the box density (not the cluster)
+  dominates.
+- **Why this is expected, and why it is not a refutation.** A blob with
+  `Σ_U b > 0` is precisely a region whose *local* density exceeds fcc. Simple
+  periodic constructions put the cluster in a *sparse* environment, which makes
+  every cell large; producing a locally dense environment around an icosahedral
+  core is the Frank–Kasper problem, and icosahedral order is famously incompatible
+  with periodicity. So the search is a negative result about *easy* witnesses, not
+  about the cut condition.
+- **What it means for the programme.** The cut condition is not refuted; the open
+  problem is *quantitative*: either exhibit a periodic packing with
+  `Σ_U b > Φ|δ⁺(U)|` for `Φ` below the transfer needed elsewhere, or prove the cut
+  condition with an explicit `Φ`. `Main/NEXT_PACKAGE.md` item 3 stands with this
+  lesson recorded.
+- **Status.** `NEGATIVE SEARCH` (nothing found in the tested family). Reviewer X.
+
+### K15-C052 — every quoted constant re-derived by one script (`VERIFIED`)
+
+- **Artifact.** `Computation/constants_check.py`: 22 checks, **ALL PASS**, of
+  every constant the ledger quotes — `4π/3`, `V_dod = 5.550291028515510`,
+  `0.754697399337`, `π/√18 = 0.740480489693`, `√32 = 5.656854249492`,
+  `σ₃ = 0.779635570044` and `V_Rogers = 5.372754099135`, the two required
+  improvements (`1.05288` over Rogers, `1.0192` over dodecahedral, i.e. 5.29% and
+  1.92%), the Tammes thresholds at `ρ = 2.02, 2.05, 2.09` (`0.509852, 0.524093,
+  0.542135` and `59.346°, 58.393°, 57.171°`), `23681/43681` at `ρ = 2.09`, the
+  transfer constants `3Φ(R+1)⁵ = 729` at `(Φ,R) = (1,2)` and `1598.29` at
+  `R = 2.51`, `Φ ≥ 0.0041` at the icosahedral vertex, and the K33b ratio and
+  `Δ = 0.779966216777`.
+- **What it caught.** Three of the script's first-run failures were *my own*
+  rounded placeholders in the check (`1.01920` against `1.01919957…`), not ledger
+  errors: the ledger's percentages (5.29%, 1.92%) are correct. The placeholders
+  were replaced by the exact values with a `1e−5` tolerance.
+- **Status.** `VERIFIED`. Reviewer X: run it before quoting any constant.
+
+### K15-C053 — one command runs every check (`VERIFIED`: 8/8 in 6.8 s)
+
+- **Artifact.** `Computation/run_all_checks.py`: runs the constants re-derivation,
+  the sign-predicate self-test, the 19 adversarial cases, the differential fuzz, the
+  transfer-lemma fixture, the cluster fixture and the interface dictionary, and —
+  with `--cert` — a certificate verification. Final run: **8 checks, 0 failed,
+  6.8 s, 1 core**.
+- **Why it matters for the next block.** The review-0138 defect survived both a
+  self-test and a hand-written adversarial suite; what finally caught it was a
+  *local reproduction of the reported inputs*. A single entry point makes such a
+  regression runnable in one command by Astra and by X, so a repair cannot be
+  reported as complete without it.
+- **Reproduce.**
+  `python3 KeplerConjecture/Computation/run_all_checks.py --cert <certificate.json>`
+  (`--quick` skips the fuzz).
+- **Status.** `VERIFIED`. Reviewer X.
+
+### K15-C054 — the transfer graph at range `R ≤ 2.09` has degree `≤ 12` (`PROVED`, from the count)
+
+- **Statement.** Let `Λ` be 2-separated and `G_R` the graph joining centres at
+  distance `≤ R`. For `2 ≤ R ≤ 2.09` every vertex of `G_R` has degree `≤ 12`,
+  because every neighbour lies in the annulus `[2, 2.09]` and `K15-E014` bounds
+  that count by 12.
+- **Why it is the right range.** `R = 2` is the contact graph; `R = 2.09` is the
+  widest range the Tammes enclosure covers. Within it the transfer graph is
+  **local and degree-bounded**, which is exactly the structure the cut condition
+  of `K15-C044` and the constant of `K15-C035` (`3Φ(R+1)⁵`) want: `k_R ≤ 12`
+  beats the volume bound `(R+1)³ − 1 = 26` by a factor 2, and the shell count is
+  a *theorem*, not an assumption (K15-C027).
+- **Consequence for the constant, computed.** From the proof of `K15-C035`,
+  `C₁/Φ = 3·k_R·R·(R+1)²`. With `R = 2.09`: `k_R = 12` (this lemma) gives
+  `C₁/Φ = 718.40`, while the volume bound `k_R ≤ 26` gives `1556.53` and the
+  published general form `3(R+1)⁵ = 845.11` sits between them. So the shell count
+  buys **15% off** the general constant at the widest certified range (not a
+  factor of two, because `3(R+1)⁵` mixes the `k_R` and shell factors).
+- **Status.** `PROVED` (immediate from `K15-E014`). Reviewer X.

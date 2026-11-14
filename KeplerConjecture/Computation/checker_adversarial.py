@@ -50,6 +50,21 @@ def cases():
     out.append(("p=-(u-13)^2 <= 0 on the window, must PASS", le_on_interval(coeffs(-(u - 13) ** 2), 0, TL, T), True))
     out.append(("p=(u-13)^2 <= 0 on the window, must FAIL", le_on_interval(coeffs((u - 13) ** 2), 0, TL, T), False))
     out.append(("p=-1 <= 0 on the window, must PASS", le_on_interval(coeffs(-sp.Integer(1)), 0, TL, T), True))
+    # --- review 0138 evidence: positivity BETWEEN two endpoint roots.
+    # These were falsely accepted by the pre-0138 predicates, which tested the
+    # endpoints only when the odd part had no root strictly inside.
+    out.append(("u(1-u) <= 0 on [0,1] : +1/4 inside, must FAIL",
+                le_on_interval([0, 1, -1], 0, 0, 1), False))
+    out.append(("u(u-1) >= 0 on [0,inf) : -1/4 inside, must FAIL",
+                nonneg_on_half_line([0, -1, 1]), False))
+    out.append(("u(1-u) <= 0 on [0,inf) : +1/4 inside, must FAIL",
+                _ray([0, 1, -1], 0), False))
+    out.append(("-(u-1/2)^2 <= 0 on [0,1] : touching only, must PASS",
+                le_on_interval(coeffs(-(u - sp.Rational(1, 2)) ** 2), 0, 0, 1), True))
+    out.append(("(u-1/2)^2 >= 0 on [0,inf) : touching only, must PASS",
+                nonneg_on_half_line(coeffs((u - sp.Rational(1, 2)) ** 2)), True))
+    out.append(("u(u-1) <= 0 on [0,1] : NEGATIVE between two endpoint roots, must PASS",
+                le_on_interval([0, -1, 1], 0, 0, 1), True))
     return out
 
 
