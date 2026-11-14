@@ -17,11 +17,11 @@ the final report). Everything below is under `KeplerConjecture/Experimental/`.
 | `K15-E014` | at most 12 centres in `[2,2.09]`, and in `[2,2.05]` | the thin-shell count |
 | `K15-E032` | `R2'` partition with adjacency threshold `4.18`: disjoint, covers, `diam <= diam(C) + 4.18` | the block rule is well posed |
 | `K15-E041` | `12 V_dodeca = 66.6035` against `67.9888` required, shortfall `2.04 %` | kills per-cell-independent arguments |
-| `K15-E045` | the centre cell is **exactly** dodecahedral in every completion | deficit `0.1065632` is exact |
-| `K15-E048` | `tau <= 1.045` everywhere, so any directional per-cell bound is `<= 4.780105486` | **closes the per-cell route**, `15.63 %` short |
+| `K15-E045a` | `Omega(c) subset D` for the icosahedral centre in **any** 2-separated superset | **unconditional**, elementary; this is what `(Q)` uses |
+| `K15-E048` | for estimators in the family F (uniform floor, single-radius count): `tau <= 1.045` everywhere, so the bound is `<= 4.780105486` | ceiling for **family F only**; not a closure of per-cell methods |
 | `K15-E042` | the computed angular bound is `4.734076`, within `1 %` of that ceiling | the optimisation was exhaustive |
 | `K15-E049` | the count-12 radius is capped at `2.091145548` by Tammes-13, so the ceiling is `4.787969853`, i.e. `15.49 %` short | **NARROWED**: a ceiling for the uniform-floor directional estimator family (F1-F3) only, not a closure of per-cell methods |
-| `K15-E045` | centre cell equals `V_dodeca` | **CONDITIONAL** on the imported dodecahedral theorem; only the containment is unconditional |
+| `K15-E045b` | `vol Omega(c) = V_dodeca` | **CONDITIONAL** on the imported dodecahedral theorem (`<=` is `E045a` + `vol D`; `>=` is McLaughlin) |
 
 ## Obstructed / withdrawn
 
@@ -30,7 +30,9 @@ the final report). Everything below is under `KeplerConjecture/Experimental/`.
   block gives `5.5503 >= 5.6569`, false).
 - `K15-E046` perturbation heuristic: **withdrawn**, non-additive.
 - `K15-E047` the angular technique is *weaker* than quoting the dodecahedral theorem.
-- `K15-E043` my earlier "implausible" reading of `(T')`: **withdrawn**; `(T')` has `44 %` slack
+- `K15-E043` my earlier "implausible" reading of `(T')`: **withdrawn**. Note: the reason I gave
+  ("`(T')` has `44 %` slack") is **itself withdrawn** (`K15-E062`) — those figures came from the
+  broken buffer flag. `(T')`/`(H_R)` currently have **no numerical evidence either way**.
   in every completion examined (`98.007` against `67.989`), so it is plausibly *true*.
 - `K15-E3` pure Delaunay: obstructed by a source-documented configuration.
 - `K15-E020` local-mass row: **blocked**, no three-point evaluator exists in these artifacts.
