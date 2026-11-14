@@ -9,7 +9,7 @@ open. Full detail in `PROGRESS.md`, `CERTIFIER.md`, `SHELL_PROPOSE_RESULTS.md`, 
 | --- | --- | --- |
 | **K15-C-VERIFIEDCERT-001** | `Δ ≤ 0.77996622` | every unit-sphere packing in `R³`; degree-33 rational certificate; accepted by two checkers sharing no code |
 | **K15-C-TLOCOST-001 / XVAL-001** | the same certificate is **accepted by Main's `shell_check.py`** once `T_LO = 4·π_lo` is used | cross-session verification |
-| **K15-C-SHELLPROP-002 / SHELLLADDER-001** | `Δ ≤ 0.78055517` at degree 25 via the shell route, `T_LO = 4π_lo`, `n = 27`, `ρ = 2.05` | unconditional count; saturates at degree 25 |
+| **K15-C-SHELLPROP-002 / SHELLLADDER-001** | `Δ ≤ 0.78037031` at degree 33, `Umax = 120`, `T_LO = 4π_lo`, `n = 27`, `ρ = 2.05` | unconditional count; **0.080% above CE's 0.779747** |
 | **K15-C-SHELLGAIN-002 / -003** | the uniform shell allowance gives **exactly 0** gain, at every degree 9–21 and both `(n, ρ)` cases | 16+ exact comparisons |
 | **K15-C-FOURIER-AUDIT-001** | Main's `fourier_map` verified: exact matrix agreement, `M² = I`, and quadrature to `1e-13` | A1/A2 exact, A3 float |
 | **K15-C-POSCERT-001** | `c = (4,1)` ⟹ `Δ ≤ 44π/15 = 9.215339` | elementary, hand-checkable, positive control |
@@ -22,6 +22,9 @@ open. Full detail in `PROGRESS.md`, `CERTIFIER.md`, `SHELL_PROPOSE_RESULTS.md`, 
    the parameterised predicates with `T_HI(ρ) = ⌊π_lo ρ²⌋`.
 3. Do not optimise in the monomial basis; propose in Laguerre and convert exactly
    (`shell_propose.py`). The monomial basis returns box vertices (reproduces `K15-C022`).
+4. **Raise the constraint horizon with the degree.** A degree-29 polynomial constrained on
+   `[13.2, 40]` rises to `5.4×10^46` outside it; the exact checker rejects that, correctly.
+   `Umax ≈ 120` works, `250` breaks on conditioning.
 
 ## Numerical only (`TESTED_FINITE`) — not certificates
 

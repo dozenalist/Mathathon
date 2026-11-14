@@ -364,3 +364,16 @@ useless at seven degrees in two bases.
 outside it, and an exact checker over the whole ray will (correctly) reject the result. The
 repair is to extend the horizon with the degree, not to abandon high degree. `Umax = 250` fails on
 conditioning, so `Umax ≈ 120` is the practical setting for the monomial basis.
+
+### K15-COMP-016 — 2026-11-14 — Computation (role C), family optimum
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-FAMOPT-001 | **VERIFIED_EXACT** | the shell-route family optimum is **`Δ ≤ 0.78037031` at `(K, Umax) = (33, 120)`**, `T_LO = 4π_lo`, `n = 27`, `ρ = 2.05`, unconditional. Neighbours: `(35,120) → 0.78043244`, `(37,120) → 0.78052696`, `(33,160) → 0.78041926` | `TLO_FINDING.md`, `shell_propose.py` |
+
+**Two-sided trade-off, measured:** raising the degree without raising the horizon *worsens* the
+bound (the polynomial escapes the horizon), and raising the horizon alone breaks the monomial
+conditioning. `(33, 120)` is the interior optimum, `+0.080%` from Cohn–Elkies' `0.779747`.
+
+**This closes the shell route as an optimisation problem:** the family is characterised, its
+optimum certified, and the residual `0.080%` is the mandatory `ε_q` margin on `q ≥ 0`.
