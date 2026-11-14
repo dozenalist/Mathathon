@@ -220,10 +220,23 @@ claim about sums of squares in general.
 | Fourier-side only, five squares | 1.37125723 | `1.37×` trivial |
 
 **So: every both-sides explicit-Gram certificate in this directory is weaker than the trivial
-bound, and so are the one-sided ones.** They are format demonstrators only. That is the honest
-statement, and it is scoped to the families searched and to the constructions implemented — the
-evidence does not support "explicit Gram certificates cannot be competitive", only that these
-small-square families do not reach 1.
+bound, and so are the one-sided ones.** They are format demonstrators only.
+
+**How far, quantitatively — this is the honest version of the comparison.** `Δ < 1` is equivalent
+to `p(0)/q(0) < 3/(4π) = 0.238732`:
+
+| family | `Δ` | `p(0)/q(0)` | above the threshold |
+| --- | --- | --- | --- |
+| Fourier side, five squares | 1.37125723 | 0.327364 | **+37.1%** |
+| p-side, many squares | 1.33982382 | 0.319859 | **+34.0%** |
+| both sides, best | 2.00171737 | 0.477875 | +100.2% |
+| LP-optimal (no rational Gram) | 0.77996622 | 0.186203 | −22.0% |
+
+So the best explicit-Gram certificate needs `p(0)/q(0)` to fall by about **34%** to beat the
+trivial bound. The search ladder `5.99 → 2.62 → 1.99 → 1.41 → 1.37` moved that ratio by a factor of
+`4.4`, so a further `34%` is **plausible with more search power**. This is a **search-power gap,
+quantified** — not an impossibility claim, and not a statement that explicit Gram certificates
+cannot be competitive.
 
 ## 5. One portable command for the local pilot, and the sweep
 
