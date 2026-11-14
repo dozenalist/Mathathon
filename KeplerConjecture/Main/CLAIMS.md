@@ -445,7 +445,7 @@ was unexplained and is removed; the Jensen estimate has no asymptotic slack here
   contact shell is a boundary shell too, so the contrast drawn there is invalid.
   Recorded so no worker builds on the note as written.
 
-### K15-C013r — counting envelope: corrected statements
+### K15-C013r — counting envelope: corrected statements (`PROVED` for (a)-(c), open for an explicit width `δ₀`)
 
 - (a) `n ≤ ⌊(3+δ)³⌋ − 1` — an **upper** bound (K15-C013(a), unchanged), with the
   exact threshold `δ < ∛28 − 3 = 0.03658897…` for `n ≤ 26`.
@@ -651,7 +651,7 @@ by any finding above.
   `θ₁₃` (Schütte–van der Waerden; Musin–Tarasov for computer-assisted
   certification) is the outstanding input, and it must be enclosed, not rounded.
 
-### K15-C020 — path from E's count to C's evaluated benchmark (specification)
+### K15-C020 — path from E's count to C's evaluated benchmark (specification, `PROPOSED`)
 
 1. **E** produces `θ₁₃ < arccos(1 − 2/ρ²)` as a *directed enclosure* for a chosen
    `ρ` (recommended `ρ = 2.05`), or cites a published rigorous value with its
@@ -672,7 +672,7 @@ by any finding above.
    best, `0.770271`; it is not a route past the dodecahedral barrier, and saying
    otherwise would be a domain error.
 
-### K15-C021 — checker bugs to record (from X and the local checks)
+### K15-C021 — checker bugs recorded from X and the local checks (`REFUTED` items, kept as evidence)
 
 - `kepler_ok` truncated positive rationals to integers before comparison:
   `P(0) = 99/100`, `Q(0) = 1` gives exact left side `32P(0)² = 19602/625 > π³`
@@ -1298,7 +1298,7 @@ names differ in v4.35.0.
   repair before it can be quoted as a complete audit. Reviewer: X (their script,
   so the repair is theirs).
 
-### K15-C042 — E's per-cell ceiling import (`ACCEPTED WITH SCOPE`; one number to query)
+### K15-C042 — E's per-cell ceiling import (`ACCEPTED WITH SCOPE`; constant identified)
 
 - **Claim (`K15-E048`, branch `kepler15/experimental/run-01`, `4ea4e8b`).** Every
   directional per-cell bound of the form
