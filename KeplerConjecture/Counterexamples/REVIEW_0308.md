@@ -512,3 +512,19 @@ timeout at 900 s, not a mathematical obstruction).
 
 **Nothing in X's own earlier claims is retracted by this block**, and the one over-claim I caught
 mid-flight (an LDL test run on floats rather than rationals) was fixed before any push.
+
+---
+
+## 16. Provenance note: the audited checker is still current
+
+`Computation/shell_check.py` at commit `7c56c5ee` is blob **`909a50a52929165d8333b075aa47e8de820bb393`**,
+and that same blob is at the current main tip **`e70dd10c64a305f0c6bba3401fc20c8b3d7eb7cd`** (main has
+advanced without touching the checker). So the audit in §1–§2 applies to the **live** implementation,
+not to a superseded revision. The three revisions that produced false accepts were
+`a8526a8` → `5619c1d` → `812105c3`; `909a50a` is the one that passes the three generated families and
+the seven witnesses.
+
+**Standing caveat, restated because it is the point of the exercise:** a passing battery is not a
+proof of generic soundness. `909a50a`'s `η ≥ 0` gap (§1.2) is exactly such a case — no battery of
+sign witnesses would find it, because it is a *hypothesis of the argument*, not a property of the
+predicate. The proved rule in §1.3 plus the one-line fix are what close it.
