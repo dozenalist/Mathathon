@@ -186,3 +186,20 @@ signal, not a detail.
 **Not done.** No global sign or tail certificate: the polynomial sign on `[Tmax, inf)` is
 open, and a compact-interval exponential bound plus tail estimate remains a separate
 obligation. Everything above is `TESTED_FINITE`.
+
+### K15-COMP-006 — 2026-11-15 — Computation (role C), exactcert validation
+
+| claim | status | statement | evidence |
+| --- | --- | --- | --- |
+| K15-C-POSCERT-001 | **PROVED (elementary, hand-checkable)** | with `c = (4,1)` in the Laguerre basis, `p(t) = 11/2 - t` and `q(t) = 5/2 + t`, so `p<0` on `[8pi,inf)`, `q>0` on `[0,inf)`, and `Delta <= 44pi/15 = 9.215339` for every unit-sphere packing. Exact rational data published in `CERTIFIER.md` | `exactcert.py`, `exactcert_oracle.py` E1 |
+| K15-C-BUG-003 | **PROVED (defect)** | `certify` required `p(0) < 0` and rejected otherwise; a CE certificate needs `f(0)=p(0)>0`. Every valid certificate was rejected, and the defect was invisible because the regression suite held only rejections | `CERTIFIER.md` addendum |
+| K15-C-BUG-004 | **PROVED (defect)** | the independent oracle contained the identical inverted test, written separately. Recorded because an oracle sharing an author's misconception is weak evidence even when it shares no code | same |
+| K15-C-ORACLE-001 | tested | `exactcert_oracle.py` decides the predicate exactly with SymPy `sqf_list` + `count_roots` + a Cauchy bound, sharing no code with `exactcert.py`. 20/20 exact agreement on random candidates; in-line double roots allowed, in-line triple roots rejected, roots outside the half-line ignored, endpoint roots fail closed | `exactcert_oracle.py`, all E1–E4 pass |
+
+**The sampled oracle in `exactcert_tests.py` T6 is downgraded to a smoke test**; it can miss a
+narrow excursion and is not treated as evidence of a sign condition anywhere in this file.
+
+**Process note.** Two of the four defects found in this cycle were only detectable because a
+*positive* example was added. Both the checker and the oracle were rejecting everything and
+said so consistently; agreement between two implementations that are both wrong is not
+corroboration. Every checker in this directory now carries at least one accepted case.

@@ -349,8 +349,11 @@ def certify(c, allow_touching=True, verbose=False):
             p0, q0 = peval(p, F(0)), peval(q, F(0))
             if q0 <= 0:
                 reason = "q(0) = %s <= 0" % q0
-            elif p0 >= 0:
-                reason = "p(0) = %s >= 0 (bound would be non-positive)" % p0
+            elif p0 <= 0:
+                # BUG FOUND BY THE POSITIVE-EXAMPLE TEST: a Cohn-Elkies certificate needs
+                # f(0) = p(0) > 0.  An earlier revision required p(0) < 0, which rejected
+                # every valid certificate (e.g. c = (4,1): p = 11/2 - t, q = 5/2 + t).
+                reason = "p(0) = %s <= 0 (f(0) must be positive)" % p0
             else:
                 rec["p0"], rec["q0"] = str(p0), str(q0)
                 rec["ratio_f0_fhat0"] = str(p0 / q0)

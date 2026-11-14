@@ -124,3 +124,63 @@ to the rounded coefficients, never the float objective.**
 * Not a certificate that the family is rich: it says nothing about degrees above 21.
 * The `Tmax` grid used to *find* candidates is heuristic. It plays no role in
   verification — a candidate that fails the exact test is discarded, whatever the grid.
+
+---
+
+# Addendum — exact independent oracle and a verified positive example
+
+## A verified certificate (small but real)
+
+With `c = (4, 1)` in the basis of §2 the polynomials are, by hand,
+
+$$p(t) = \tfrac{11}{2} - t, \qquad q(t) = \tfrac{5}{2} + t .$$
+
+`p < 0` for `t > 11/2`, hence on `[8π, ∞)`; `q > 0` for `t > -5/2`, hence on `[0, ∞)`. Both
+are decided exactly, and the bound follows with no remainder:
+
+$$\Delta \;\le\; \frac{4\pi}{3}\cdot\frac{11/5}{1} \;=\; \frac{44\pi}{15} \;=\; 9.215339\ldots$$
+
+This is worthless as a density bound and valuable as a **positive control**: it is a
+hand-checkable certificate that exercises the whole pipeline (basis → Fourier map →
+Sturm/Yun → directed rounding up) on an input whose correctness no reader has to trust the
+code for. It also found two real bugs (below).
+
+`delta_upper_decimal` renders the bound by exact ceiling division on `4·PI_HI·p0/(3·q0)`, so
+the displayed value is an upper bound, not a truncation.
+
+## Bugs found by the positive example
+
+1. **Inverted sign test in `certify`.** The code required `p(0) < 0` and rejected otherwise.
+   A Cohn–Elkies certificate needs `f(0) = p(0) > 0`. Every valid certificate was being
+   rejected, and the error was invisible while the regression suite contained only
+   *rejections*. Fixed to `p(0) <= 0` ⇒ reject.
+2. **The same inverted test in the independent oracle.** Written separately, wrong
+   identically. Recorded because "independent" is not the same as "correct", and an oracle
+   that shares an author's misconception is weak evidence even when it shares no code.
+
+Lesson for the file: a regression suite of only-rejected cases cannot detect a checker that
+rejects everything. Every future checker here carries at least one accepted case.
+
+## The exact oracle (`exactcert_oracle.py`)
+
+The oracle in `exactcert_tests.py` T6 samples a grid; **sampling is not a proof** and this
+addendum does not treat it as one. `exactcert_oracle.py` decides the same predicate by exact
+means using SymPy's independent polynomial algebra — `sqf_list` for the squarefree odd part
+and `count_roots` for exact real-root counting over a rational interval — with a Cauchy bound
+to close the half-line. It shares no code with `exactcert.py`.
+
+Checks that pass:
+
+| check | result |
+| --- | --- |
+| E1 positive certificate `c = (4,1)` accepted by both | `p0/q0 = 11/5`, `Delta <= 9.215339` |
+| E2 in-line **double** root (`-(t-30)^2`) allowed | both give `neg` |
+| E2 in-line **triple** root (`-(t-30)^3`) rejected | both give `fail` |
+| E2 in-line double, positive (`(t-30)^2`) | both give `pos` |
+| E2 root **outside** the half-line (`-(t-10)^3`, `10 < 8π`) ignored | both give `neg` |
+| E3 root exactly at the endpoint | both fail closed |
+| E4 20 random candidates | 20/20 exact agreement |
+
+Two test-authoring errors were caught while writing E2 and are noted in the source: the
+first version placed the "in-line" roots at `t = 10`, which is outside `[8π, ∞)`; and the
+oracle's own `p0/q0` check had the same inversion as bug 1.
