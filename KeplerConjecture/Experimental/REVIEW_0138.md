@@ -1012,3 +1012,22 @@ Identical to twelve decimal places and equal to the exact rational `125/16`. Tha
 failure mode that ruined the earlier fixtures — a volume that drifts with the buffer because the
 cell is really unbounded — and it is the check that the *flag* in Section 5 was designed to make
 unnecessary but which is still worth having for a fixture whose cells are genuinely bounded.
+
+## 18. What Main may cite from this block
+
+**Cite as proved:** `K15-E060` (two-shell thresholds and boundary cost), `K15-E061` (the
+transfer theorem, conditional on `(H_R)` — state the condition every time), `K15-E063` (A15 as a
+saturated fixture), `K15-E011`/`E014`/`E015` (the shell count and its enclosure, with the imported
+Tammes-13 constant named), `K15-E013` (Barlow), `K15-E032` (the `4.18` partition), and the
+Hall-decomposition lemma.
+
+**Cite only with its condition:** `K15-E045` (needs the dodecahedral theorem), `K15-E012` (needs
+`theta_13 < 57.1367 deg`), `K15-E049` (only for the estimator family F).
+
+**Do not cite:** any `S - D` value, the `470-880` slack, `4.733968`, `8.167277`, the "per-cell
+route is closed" phrasing, or `K15-E046`/`E047`/`E043` as current claims. These are withdrawn or
+narrowed and appear here only for the record.
+
+**Do not describe the geometric route as promising or as closed.** Its state is: one exact target
+(`(H_R)`), one proved transfer theorem contingent on it, no numerical evidence either way, and a
+clear next question (`(Q)`) that is not computational.
