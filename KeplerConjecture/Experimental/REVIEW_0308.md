@@ -888,3 +888,37 @@ the failure mode is instructive:
 **Status of `(P')` after this attempt: unchanged** — survives every *legal* test performed, is not
 proved, and remains at risk at this very pair (§14.3). The decisive computation still does not
 exist.
+
+### 14.6 A legal completion at `6.730974`, and `(P')` survives
+
+After the bug of §14.5, the search was rebuilt to move **only inside the legal set** (start from a
+greedy legal completion, then perturb one centre at a time, rejecting any move that breaks
+2-separation from `w_1`, from `c`, from the five outer neighbours, or among the added centres):
+
+```
+start:                        12 legal centres,  vol Omega(w_1) = 11.009236
+after local search:           12 legal centres,  vol Omega(w_1) =  6.730974
+   V_dodeca (McLaughlin) = 5.550291   <- any value below this would be a bug
+   NEED for (P') on this pair = 5.763417
+   => (P') survives, margin 0.968
+```
+
+Two things follow.
+
+- **`(P')` survives a much harder test than before.** The previous best legal value was `8.543`
+  (§12); this is `6.731`, and it is still above the `5.763417` that `(P')` requires. The margin has
+  shrunk from `2.878` to `0.968`.
+- **The search is now trustworthy in a way the previous one was not.** Every accepted configuration
+  is checked legal by an independent function, and the result sits above McLaughlin's bound, so the
+  two known constraints are consistent. The buggy run's `3.238` is excluded by exactly this check.
+
+**Still not decisive.** `6.731` is an *upper* bound on the true minimum: the local search moves one
+centre at a time and cannot restructure the completion. A better search could conceivably reach
+`5.763`. So `(P')` remains unproved and at risk, but it has now survived the strongest test this
+block could mount, with a reduced but positive margin.
+
+**What the trajectory suggests.** Across this block the best legal values found for
+`vol Omega(w_1)` went `13.51 -> 11.01 -> 8.543 -> 6.731`, decreasing steadily as the search
+improved, while the threshold for `(P')` is `5.763`. The downward trend is not a proof of anything —
+it is a warning that better searches have kept finding smaller cells, and it is why I will not
+describe `(P')` as safe.
