@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "builtAtUtc": "2026-11-15T04:06Z",
+  "builtAtUtc": "2026-11-15T04:08Z",
   "workspaceRoot": "I = C:/Users/jarom/Documents/Codex/2026-11-13/i (research workspace, outside the repo)",
   "statusVocabulary": [
     "LEAN_VERIFIED",
@@ -2840,6 +2840,19 @@
       ]
     },
     {
+      "id": "LEAN-435",
+      "theme": "Infrastructure",
+      "status": "RETRACTED_OR_REFUTED",
+      "title": "Rebuild under Lean 4.35.0: not attempted (team decision)",
+      "statement": "Not attempted, by team decision (Jarom, 2026-11-15). All Lean evidence in this ledger is Lean 4.34.1 with pinned Mathlib d13f23b; no team result has a 4.35.0 build.",
+      "provenance": "Team decision relayed by the supervisor; earlier feasibility note: work/simplification-desk/lean435/FEASIBILITY.md (toolchain present, no Mathlib oleans or cache).",
+      "checked": "Not applicable.",
+      "corrections": [
+        "was OPEN; withdrawn as a goal (not refuted)"
+      ],
+      "artifacts": []
+    },
+    {
       "id": "LEAN-FAILED-REVISIONS",
       "theme": "Infrastructure",
       "status": "RETRACTED_OR_REFUTED",
@@ -2909,16 +2922,6 @@
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261115t001551-0.python.log"
         }
       ]
-    },
-    {
-      "id": "LEAN-435",
-      "theme": "Infrastructure",
-      "status": "OPEN",
-      "title": "Rebuild under the event Lean 4.35.0 toolchain",
-      "statement": "No team Lean result has been rebuilt under Lean 4.35.0. The simplification desk reports that the 4.35.0 toolchain and Mathlib v4.35.0 sources are present but without oleans or a cache, so a rebuild is infeasible without a download.",
-      "provenance": "Simplification desk, work/simplification-desk/lean435/FEASIBILITY.md (01:20Z).",
-      "checked": "Not checked.",
-      "artifacts": []
     }
   ]
 }
