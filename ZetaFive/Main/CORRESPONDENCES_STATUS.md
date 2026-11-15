@@ -303,3 +303,75 @@ both already located in the transcripts); (b) m2 alone does `transportRep`;
 (c) m3 alone does the `ℚ[X]` specialisation bridge; (d) reviewer audits whatever
 actually landed, or the ledger if nothing did. Smaller steps, one lemma per
 submission rather than one module per member.
+
+## Final block — 2026-11-15 03:05 UTC: `eq:EM` NOT proved
+
+**Status: `eq:EM` remains OPEN.** The retained commit is `0bb6991`; no proof
+module was committed this block. The two-minute coordinator attempt was
+abandoned at the hard 03:04 UTC proof-work cutoff and its file removed, so the
+tree is unchanged and every claim in this ledger stands as previously audited.
+
+### Exact remaining obligation, with the route already located
+
+Target (all `P : PolyX`, no extra hypotheses; finite range covers `P = 0` and
+`deg P < 3`):
+
+`τ P = (∑ k ∈ Finset.range ((derivative^[3] P).natDegree + 1),
+        (bernoulli k / (Nat.factorial k : ℚ)) * ((derivative^[k+3] P).eval 0)) / 24`
+
+Located and confirmed in pinned Mathlib v4.35.0
+(`.lake/packages/mathlib/Mathlib/Algebra/Polynomial/Derivative.lean`):
+
+* `Polynomial.coeff_iterate_derivative (p : R[X]) (m : ℕ) :
+    (derivative^[k] p).coeff m = (m + k).descFactorial k • p.coeff (m + k)`
+  — line 276, the coefficient bridge. **Must be called with the implicit
+  `k` named explicitly** (`coeff_iterate_derivative (k := k) Q 0`), otherwise
+  elaboration fails with "don't know how to synthesize implicit argument `k`".
+  This exact failure was hit this block and is the one thing to avoid repeating.
+* `Nat.descFactorial_self`, and `Function.iterate_add_apply` (in
+  `Mathlib/Logic/Function/Iterate.lean`), for `D^[k+3] = D^[k] ∘ D^[3]`.
+* `M1.L_eq_sum_range` (already proved, `Candm1.lean`), the Bernoulli half.
+
+Remaining work is one lemma plus one sum-congruction:
+
+1. `eval_zero_iterate_derivative : ((derivative^[k]) Q).eval 0 =
+   (Nat.factorial k : ℚ) * Q.coeff k`. A correct path that failed only on
+   tactic plumbing: rewrite `← Polynomial.eval_zero` *first* (turning the goal
+   into a statement about `.coeff 0`), then `Polynomial.coeff_iterate_derivative`,
+   then `Nat.descFactorial_self` and `nsmul_eq_mul`/`Nat.cast` to convert the
+   `•` into `*`. The mistake made this block was rewriting with `h` before
+   `Polynomial.eval_zero`, which leaves no `coeff 0` occurrence to rewrite.
+2. Assemble: unfold `τ` as `L Q / 24` for `Q = derivative^[3] P`, `rw` the
+   Bernoulli sum, `Finset.sum_div`, then `Finset.sum_congr` with
+   `field_simp` using `Nat.factorial_ne_zero k` to cancel `k!`.
+
+No power series, convergence, or analytic input is needed.
+
+### Reviewer record
+
+**Independent review of this block did not occur.** The prescribed two-member
+DeepSeek group (8 min × 40 steps) could not fit inside the remaining 9-minute
+window together with integration, build and audit, so the instruction to prove
+it with the coordinator instead was followed. The attempt did not succeed, so
+there is nothing for a reviewer to accept; the ledger above records the failure
+mode honestly rather than presenting partial work as progress.
+
+### Targets 1–3 limitations (unchanged)
+
+* **Target 1**: polynomial transport proved (`μpoly_eq_τ_pull`); representation
+  assembly (`transportRep`) OPEN; `RatFunc` descent OPEN.
+* **Target 2**: `μ_u(R) = μ_v(R) + (u−v)Λ(R)` proved over `u v : ℚ`; `ℚ[X]` and
+  `ℝ` parameter extension OPEN (`OBL-parameter`) — the previously claimed
+  `mu_affine_polynomial` does not exist and that claim stays retracted.
+* **Target 3**: `det(CᵀGC) = (det C)²det G`, `det(A+δB) = det A·det(I+δA⁻¹B)` and
+  the entrywise array-level pencil proved; *actual* Gram-form domain membership
+  (`W_Kpq/T_K ∈ Rep`) OPEN; spectral/root-exclusion results OPEN. Nonzero
+  functionals are not a nondegenerate bilinear form.
+* Nothing here constitutes any part of an irrationality proof.
+
+### Setup-script caveat
+
+`.scratch-elan-setup.sh` is verified only on a machine where a validated
+v4.35.0 installation already exists (it resolved it, cleared a polluted
+`LEAN_PATH`, and built). Its **fresh-machine cold-bootstrap branch has not been
+tested** and must not be described as verified.
