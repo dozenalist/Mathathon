@@ -1,0 +1,16 @@
+G1-Finish-mB-r2.lean:96:16: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+G1-Finish-mB-r2.lean:96:30: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+G1-Finish-mB-r2.lean:220:26: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+G1-Finish-mB-r2.lean:220:40: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'OAI.EuclideanFiveColor.A6.cos_sign_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.A6.sign_of_paired_fin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.A6.signTableT_of_paired' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.A6.signTableT_of_paired_fin' depends on axioms: [propext, Classical.choice, Quot.sound]

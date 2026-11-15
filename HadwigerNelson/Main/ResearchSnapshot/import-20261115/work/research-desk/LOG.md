@@ -25,3 +25,12 @@
 2026-11-15T00:13:17Z coordinator was down (STOP_COORDINATION created 23:49:28Z by unknown session; PC slept 23:50-23:59). Asked parent at ~00:00Z, no reply by 00:12Z; ran reload_console_coordination.ps1: coordinator 46100, console 39292. Cycle 001250 running
 2026-11-15T00:15:49Z answered needs_parent (rev5 superseded; no SAT solver locally), reported G1-r2 standalone, asked to queue Bridge-r2-G3/FiveSupport-swap/CyclicCoreConsumerFromV2; woke coordinator
 2026-11-15T00:18:17Z found: 10 lanes added 00:12:28Z have string cursors -> transport errors; messaged parent with int() fix, will apply at 00:35Z if no reply. Also: coordinator can't review inbox .lean >24KB (prompt filter), so Bridge-r2-G3 needs desk compile
+2026-11-15T00:29:23Z compiling A6-Bridge-r2-G3 at desk (queue idle; simplification desk lean running alongside, 6.7 GB free)
+2026-11-15T00:32:22Z A6-Bridge-r2-G3 desk compile PASSED exit 0 167 s; ae_canonical_subpalette_unconditional std axioms; no sorry
+2026-11-15T00:34:32Z CyclicCoreConsumerFromV2-r2 (inbox file minus stray '\' line 1) desk compile PASSED exit 0 122 s; #check pair identical; _from_v2 std axioms
+2026-11-15T00:34:39Z parent restarted coordinator 00:15Z (pid 13480) and fixed string cursors; my int() patch plan cancelled
+2026-11-15T00:35:14Z compiling FiveSupport-swap (inbox 001250-download-0, 27 KB) standalone + 31 #check, and original FiveSupport #check for signature diff
+2026-11-15T00:40:42Z FiveSupport-swap targets encoding-r4 (fails on R1: palette_neighbor_* redeclared, strict_state_no_unit_support unknown). Ported to R1 (research-desk/FiveSupport-swap/FiveSupportSwapR1.lean), compiling + 31 #check diff
+2026-11-15T00:55:44Z [resume after power loss] rerunning FiveSupportSwapR1 compile (no -o)
+2026-11-15T01:01:32Z FiveSupportSwapR1 PASSED exit 0 323 s; five_opposite_contacts_false + five_support_step_ban_v2 std axioms; 31/31 public #check signatures identical to R1 FiveSupport. Deleted desk .olean/.ilean outputs (disk rule)
+2026-11-15T01:01:59Z reported Bridge-r2-G3, CyclicCore-r2, FiveSupportSwapR1 passes to coordinator; ledger updated

@@ -1,6 +1,6 @@
 # Import 2026-11-15 (results desk)
 
-Captured 2026-11-15T00:23:02.218Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
+Captured 2026-11-15T01:03:16.687Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
 
 ## Banked Lean results: exit code and `#print axioms` excerpts
 
@@ -65,6 +65,50 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 
 ```
 'OAI.EuclideanFiveColor.A6.arcCover' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+### G1-R2 (standalone)
+
+- Desk compile (research desk, same toolchain). Source `work/research-desk/G1-r2/G1-Finish-mB-r2.lean` sha256 `fd3549e5acccd7b5ed18dbcc09c0e91c0dc03e638b6ee48d2efea734e27385d4`
+- Desk log line: `2026-11-14T23:49:28Z G1-Finish-mB-r2 desk compile PASSED (100 s, std axioms); ledger updated`
+- Axioms from `work/research-desk/G1-r2/compile.log`
+
+```
+'OAI.EuclideanFiveColor.A6.cos_sign_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.A6.sign_of_paired_fin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.A6.signTableT_of_paired' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.A6.signTableT_of_paired_fin' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+### A6-BRIDGE-R2-G3
+
+- Desk compile (research desk, same toolchain). Source `work/research-desk/Bridge-r2-G3/A6-Bridge-r2-G3.lean` sha256 `2e04f2115ac3b561f59946c652d8010005f88da57fe3eea782a0d5ef71e77334`
+- Desk log line: `2026-11-15T00:32:22Z A6-Bridge-r2-G3 desk compile PASSED exit 0 167 s; ae_canonical_subpalette_unconditional std axioms; no sorry`
+- Axioms from `work/research-desk/Bridge-r2-G3/compile.log`
+
+```
+'OAI.EuclideanFiveColor.A6.ae_canonical_subpalette_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+### STEPBAN-CYCLICCORE
+
+- Desk compile (research desk, same toolchain). Source `work/research-desk/CyclicCore-r2/CyclicCoreConsumerFromV2-r2.lean` sha256 `1212d4e1825c0b652219956445909cbaa96700f3ad7d1016737b369c515a61cc`
+- Desk log line: `2026-11-15T00:34:32Z CyclicCoreConsumerFromV2-r2 (inbox file minus stray '\' line 1) desk compile PASSED exit 0 122 s; #check pair identical; _from_v2 std axioms`
+- Axioms from `work/research-desk/CyclicCore-r2/compile.log`
+
+```
+'OAI.EuclideanFiveColor.five_sequence_small_no_accumulation_from_v2' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+### FIVESUPPORT-SWAP (R1 port)
+
+- Desk compile (research desk, same toolchain). Source `work/research-desk/FiveSupport-swap/FiveSupportSwapR1.lean` sha256 `e531cf133a213e524b00008a9956c9206d98f09fb1a0faff3ae5ff35080f2c9f`
+- Desk log line: `2026-11-15T01:01:32Z FiveSupportSwapR1 PASSED exit 0 323 s; five_opposite_contacts_false + five_support_step_ban_v2 std axioms; 31/31 public #check signatures identical to R1 FiveSupport. Deleted desk .olean/.ilean outputs (disk rule)`
+- Axioms from `work/research-desk/FiveSupport-swap/swapR1.log`
+
+```
+'OAI.EuclideanFiveColor.five_opposite_contacts_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.five_support_step_ban_v2' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
 
 ### EVENWALK-R6
@@ -173,8 +217,8 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/lean-queue/threecentre-r1-27-transfer.python.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `work/lean-queue/threecentre-r1-axiomroots.progress.json` | 3345 | `ca4b961283a98933d08ccfdd6ca490e05945bbd4f6a12c065b1c2dbd52f173a9` |
 | `work/lean-queue/threecentre-r1-axiomroots.python.log` | 3506 | `85aaef1671d5777e50378e07a2f2c94cedd630c610fbe9fc7c4d0601c8d6df29` |
-| `work/research-desk/BANKED.md` | 3005 | `11eb30e070d5dc1d4b26248dcba5bfd481e132162bdc6927d33d7d255b7b61a5` |
-| `work/research-desk/LOG.md` | 5829 | `bd2f55785a239bb2ad0885388014f0a2a59df46217a2bd528e979fd8b5136598` |
+| `work/research-desk/BANKED.md` | 4117 | `4b808ce3b38631d3ca13769909522087455dfbbcca4b14510c172d342ec506b3` |
+| `work/research-desk/LOG.md` | 7207 | `9d59092dd3e19302af52029b7c83be60e7b7056f0e9dfa48d32b0bedb32d51e1` |
 | `work/research-desk/G3-r2/G3-ArcCover-r2.lean` | 9476 | `39a02e68c878c0d0df0493d53114679ffd6cb01c3354329cd33f3867b9558c6e` |
 | `work/research-desk/G3-r2/compile.log` | 96 | `e1a47fad00213af7a5bfff1a1a8db0403e6d941814cc164b7dc6b8177767203a` |
 | `work/research-desk/EvenWalk-rev6/EvenWalkReachability-rev6.lean` | 19063 | `4439cf5dd4088ea6765337286399f5af462fd1c3f4976c82c99d77019bfb9904` |
@@ -185,11 +229,37 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/research-desk/census/census_full.out` | 313 | `a2c2df5acae23a79aa8b12f780f40019ad206a88e85f5b46927eb149c6b75d2f` |
 | `work/research-desk/census/independent_census.py` | 3232 | `175b6861afbe4467071da852cc977adbe74d2d028dfd1bbaf0f9bf3a0f4dbf81` |
 | `work/research-desk/census/independent_census.out` | 213 | `1ac79d65205b9e49cb28f886a33c7517c7ca6bee27a58e071ea56681ca191282` |
+| `work/research-desk/G1-r2/G1-Finish-mB-r2.lean` | 18901 | `fd3549e5acccd7b5ed18dbcc09c0e91c0dc03e638b6ee48d2efea734e27385d4` |
+| `work/research-desk/G1-r2/compile.log` | 1147 | `fbf7d62384b9f62cf60b14cf64f30f35a71fac30469ed4ff5bfea8df5a37e572` |
+| `work/research-desk/Bridge-r2-G3/A6-Bridge-r2-G3.lean` | 44390 | `2e04f2115ac3b561f59946c652d8010005f88da57fe3eea782a0d5ef71e77334` |
+| `work/research-desk/Bridge-r2-G3/compile.log` | 847 | `b670399ddedbfdc832cd408da6cb7824f1c3471351006cec790ae77879baca2c` |
+| `work/research-desk/CyclicCore-r2/CyclicCoreConsumerFromV2-r2.lean` | 8165 | `1212d4e1825c0b652219956445909cbaa96700f3ad7d1016737b369c515a61cc` |
+| `work/research-desk/CyclicCore-r2/compile.log` | 804 | `b90e12cf06aa5cf556c3c11eb5c4375d12688dfeed9eee1d8abcdaaa4d2cccd2` |
+| `work/research-desk/FiveSupport-swap/swap.log` | 10430 | `41d849c3929bf37bf3bb8cdf365d360d1e0567d87142b458a2f8521afff9c419` |
+| `work/research-desk/FiveSupport-swap/FiveSupportSwapR1.lean` | 25380 | `e531cf133a213e524b00008a9956c9206d98f09fb1a0faff3ae5ff35080f2c9f` |
+| `work/research-desk/FiveSupport-swap/swapR1.log` | 10325 | `7bbaece10131d754ed62845653384de4a7534b9a8b9e0a7c07b25a319cc09092` |
+| `work/research-desk/FiveSupport-swap/orig.log` | 10103 | `749c21cfff0461ad92f6640ad7e8c82a18386f9b625cc9ef3feeb75d928012a9` |
+| `work/research-desk/FiveSupport-swap/OrigChecks.lean` | 1697 | `235cefcf2e8c0923843244e49d0849a24eac8d42ff56d2da32e8ec05d84f6e11` |
+| `work/research-desk/FiveSupport-swap/FiveSupportSwap.lean` | 28320 | `aa0c4cb692f6e8e8a131825050e02bc433dd9d201b3bdc1b0eadf099de933e7e` |
 | `work/cloud-supervisor/a5-sliver/CERTIFICATE.md` | 4646 | `b6ac39dd14d55157abb05a593a775bf84362b71da007e1edf3d3c71eb9e5ca33` |
 | `work/cloud-supervisor/a5-sliver/README.md` | 1427 | `ed053b8bcbf63e10111957f57b9a61a73183b7d7b8c30284303b5b30bd28adba` |
 | `work/cloud-supervisor/a5-sliver/certify_sliver.py` | 11877 | `63e84a36bfa95ea99103e314530dbaf38a9fa42667a8ac85b960882ff351e341` |
 | `work/cloud-supervisor/a5-sliver/certificate_output.txt` | 2677 | `68507c241873c543d5e56d7c6e162fb46ba96c1d19bbd431ad4b763fb4bfba41` |
 | `work/automation-supervisor/inbox/20261114T224105-download-4-A5-SLIVER-DEFS.md` | 15314 | `714b2eb2a7eeb9a899774748855d2e6ec65ce231075579df145464ab04849f6d` |
+| `work/automation-supervisor/inbox/20261115T002122-download-1-FiveSupport-swap.lean` | 27124 | `3291ad95a0c3cc82b71df83ef16ebb63e6fe0691721c391815e7298dc3c732ff` |
+| `work/automation-supervisor/inbox/20261115T002122-download-2-FiveSupport-swap.diff` | 6625 | `a33fa8dbccaae12b8f885dcae96ea1da7f017b2b761e531150ea07488268b9ba` |
+| `work/automation-supervisor/inbox/20261115T002122-download-3-REFEREE.md` | 25682 | `4aa0931aefc47eb10ef7301b7309efe51b0161d63f29aa4c279390a223d48ced` |
+| `work/automation-supervisor/inbox/20261115T002122-download-5-STATUS.json` | 69078 | `ccc9384768d9534a579ab4045fe30742a2f910dd2405bc2028ae60c0c5ccfbc6` |
+| `work/automation-supervisor/inbox/20261114T205744-download-5-ALL-PHASE-REFEREE.md` | 10612 | `087e6efc55b766cdf07bd4a8abd9c4f77896a300bcc6010a6d87ad72783c33e2` |
+| `work/openmath-supervisor/checkins/20261114T191820Z/inner-outer-orbit-certificates.json` | 115033 | `6f546fb260b779a5bd05cee38bebd01894224da23861fd97c74fb990f185d67e` |
+| `work/openmath-supervisor/checkins/20261114T191820Z/verify-inner-outer-orbits.js` | 1648 | `ae6c4d2beebe8c96c35cc9335ba6df34910693d7a498e81137903a585b2ce279` |
+| `work/openmath-supervisor/checkins/20261114T191820Z/PROGRESS-REPORT.txt` | 2112 | `8973d2a1936137675d767cab21f0795d39193288a4596acd57ff1615618c3d96` |
+| `work/openmath-supervisor/checkins/20261114T194118Z/graph-m2-REPORT.txt` | 11109 | `826555e70beeed2d6b1f8bf0559f5d0cfc9886087b7f8b5c033bce39e0f2eadc` |
+| `work/openmath-supervisor/checkins/20261114T194118Z/q4-q5-forced-palette.json` | 2319 | `c7a71a223470b5b00db33d2ad901954907f0ffb441c9e7119ef292ba06e1641b` |
+| `work/openmath-supervisor/checkins/20261114T194118Z/corner-all-phase-validation.json` | 1957 | `15a31adcb7c5ee267ca1e7d0c66b27d322bc36d518265d91ef991fd619efbcf6` |
+| `work/openmath-supervisor/checkins/20261114T194118Z/PROGRESS-REPORT.txt` | 3586 | `8f6744bf837882600e2f7b71b2dce0cb048efecf36b39f13d6ea3d56b578ca33` |
+| `work/openmath-supervisor/checkins/20261114T183522Z/PROGRESS-REPORT.txt` | 2480 | `c2aa01a9d8cebfd1dcd5f81c9c61c9434fbcef4c2d6bdc42858564fbb46444fc` |
+| `work/openmath-supervisor/checkins/20261114T183522Z/TWO-TRIANGLE.md` | 4257 | `507982dc9879158e42512a5e09ee41e84e88d99f2b74a62c3d3966542caadb87` |
 | `work/openmath-supervisor/checkins/20261114T200919Z/PROGRESS-REPORT.txt` | 7525 | `4a8423bb7092235b8bc6ce95b471938ee9e1e2cad5915eb2180afdec7eaa0fc8` |
 | `work/openmath-supervisor/checkins/20261114T200919Z/CHECKIN.json` | 780 | `8f4c53eb956044f424de14b213c589b2d16983bc754d1726d0f6c5e6b7f8650b` |
 | `work/openmath-supervisor/checkins/20261114T200919Z/fixed-phase-census.json` | 1447788 | `82a316c947daf743df9c5913e147834e004fac701f7ca4e44564bbe823390edc` |
@@ -214,7 +284,15 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/automation-supervisor/replies/20261114T232732.json` | 3095 | `12d89f3952e85c526b7d20442eb284059bf637c2e21e50c915a150dcd879484f` |
 | `work/automation-supervisor/replies/20261115T001250.json` | 3887 | `de2ae43d01c0af00985c42a77faabbf3f85bf3ab3b461759cac24fb0f510ea53` |
 | `work/automation-supervisor/replies/20261115T001551.json` | 4227 | `43534fdb10bbb9e1086dba16298839aa9ab097a3be3e0cf85344033cf48fdee7` |
-| `work/automation-supervisor/research-plan.json` | 1241 | `4d3dd58ecfc1fc1454f364d82bc7a94a89c7f826521ab685b36029e8df12859f` |
+| `work/automation-supervisor/replies/20261115T002122.json` | 3871 | `d3add921516ef36bb467c50447e99339f7432904ce0994a3e9d79cb71f883b76` |
+| `work/automation-supervisor/replies/20261115T005413.json` | 3303 | `a29f684e3e0e6c68328d15fd182a9ac46052ed3e6597228da44686e740fa511d` |
+| `work/automation-supervisor/research-plan.json` | 1294 | `2d2caa285e21446eab02b463fca39dea7c02685482ccce0e87d2d06e0f502525` |
+| `work/results-desk/L-R1/L-R1-QUEUE.md` | 2065 | `685ea860f1a2f695b709d6e1d86f77e220c26c5bd661468c6f8b827dbc708f99` |
+| `work/results-desk/L-R1/R1-1.txt` | 3964 | `8a68f825005a91644cb3363627eb25a41ee0c9d0441279a2222c43ce174a9ac9` |
+| `work/results-desk/L-R1/R1-2.txt` | 3572 | `b3ae2032ed83e40c417222310b770e75a6bfb9ec0303b8ba650bd8226c829ede` |
+| `work/results-desk/L-R1/R1-3.txt` | 4202 | `94b2f187c4151e6659a11543db6d1284d2a39a7d9d2eb36209a0829b97732822` |
+| `work/results-desk/L-R1/R1-4.txt` | 3961 | `796478a36119a6cbddabb51a3ac2dc44a5c17ab172ac977ee813e28347828e60` |
+| `work/results-desk/L-R1/SENT.log` | 88 | `42bdf9ab79bf66de5eef56ab6e1642afd94a4e5ffea3f9f4c6ddabf18a5ea29f` |
 | `outputs/ASTRA-DISJUNCTIVE-PALETTE-A8.txt` | 15221 | `d292fa5a44fa857d957ed8eeb4895b192d4ca505f6f872c1ba5e644b80a6b437` |
 | `outputs/ASTRA-FOUR-LIST-A5.txt` | 15053 | `799cef0737b23deb8e17d1cb5ca197b394c4e9a19e3c5a79acebed2671f3955e` |
 | `outputs/ASTRA-FOUR-LIST-REFEREE.txt` | 15430 | `29e3800ecb740d9699254787d5a5b8689372d505b69a178eb08e447eada7548f` |
@@ -231,13 +309,4 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `outputs/RunLeanQueue.py` | 9451 | `c063969225cec881cdb63ebea165434a2fdc7d3d381528cc6d8e870dd286b2b6` |
 | `outputs/LeanSourceGate.py` | 2246 | `721e47d80c4459e9125a9b66fe880ab31c37260e9797d23669a9a228c8f4e721` |
 | `work/cloud-supervisor/RESEARCH-STATUS.md` | 3506 | `461dfcc8d25a2971038bbff6a6d691701008009583c04f8c8f7cca030ff3de50` |
-| `work/cloud-supervisor/LOG.md` | 5757 | `9d66d7dabb4f66a71b4d9193d02737730a82df977f0bcd5ce53f27c40bc003ea` |
-| `work/openmath-supervisor/checkins/20261114T191820Z/inner-outer-orbit-certificates.json` | 115033 | `6f546fb260b779a5bd05cee38bebd01894224da23861fd97c74fb990f185d67e` |
-| `work/openmath-supervisor/checkins/20261114T191820Z/verify-inner-outer-orbits.js` | 1648 | `ae6c4d2beebe8c96c35cc9335ba6df34910693d7a498e81137903a585b2ce279` |
-| `work/openmath-supervisor/checkins/20261114T191820Z/PROGRESS-REPORT.txt` | 2112 | `8973d2a1936137675d767cab21f0795d39193288a4596acd57ff1615618c3d96` |
-| `work/openmath-supervisor/checkins/20261114T194118Z/graph-m2-REPORT.txt` | 11109 | `826555e70beeed2d6b1f8bf0559f5d0cfc9886087b7f8b5c033bce39e0f2eadc` |
-| `work/openmath-supervisor/checkins/20261114T194118Z/q4-q5-forced-palette.json` | 2319 | `c7a71a223470b5b00db33d2ad901954907f0ffb441c9e7119ef292ba06e1641b` |
-| `work/openmath-supervisor/checkins/20261114T194118Z/corner-all-phase-validation.json` | 1957 | `15a31adcb7c5ee267ca1e7d0c66b27d322bc36d518265d91ef991fd619efbcf6` |
-| `work/openmath-supervisor/checkins/20261114T194118Z/PROGRESS-REPORT.txt` | 3586 | `8f6744bf837882600e2f7b71b2dce0cb048efecf36b39f13d6ea3d56b578ca33` |
-| `work/openmath-supervisor/checkins/20261114T183522Z/PROGRESS-REPORT.txt` | 2480 | `c2aa01a9d8cebfd1dcd5f81c9c61c9434fbcef4c2d6bdc42858564fbb46444fc` |
-| `work/openmath-supervisor/checkins/20261114T183522Z/TWO-TRIANGLE.md` | 4257 | `507982dc9879158e42512a5e09ee41e84e88d99f2b74a62c3d3966542caadb87` |
+| `work/cloud-supervisor/LOG.md` | 7720 | `397340290552e9ec736bbf6c58d4a8c453d86ea5eb8506016d9f7efd7738d442` |

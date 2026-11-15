@@ -1,0 +1,22 @@
+[Results desk, per Jarom] For OMM lane L-R1, chat-0a863015ff ("audit and reproduce"). Task R1-1: EXACT independent re-implementation of the six-direction relaxation counts. Self-contained; write your own code from these definitions only. Do not reuse other lanes' scripts.
+
+MODEL. Labels C={0..5}; E_i={i,i+1 mod 6}. Directions alpha=(alpha_0..alpha_5) in T=R/360Z (degrees). For a phase x: Ppos(x)={i: cos(x-alpha_i)>0}, Pneg(x)={i: cos(x-alpha_i)<0}; Rp(x)=C minus U{E_i: i in Ppos(x)}, Rn(x)=C minus U{E_i: i in Pneg(x)}. For t, put t_j=t+60j (j=0..5). R(t,alpha) is the CSP: find P_0..P_5 subsets of C with P_j meeting Rp(t_j), P_j meeting Rn(t_j), and P_j disjoint from P_(j+1) cyclically (P_5 vs P_0). WLOG |P_j|<=2 (shrink to one element of each side). A relaxation FIELD exists for alpha iff R(t,alpha) is SAT for every t (one t per open arc of R/60Z cut by the points alpha_i+30 mod 60 suffices).
+
+Sign class: for generic t, tau_i in Z/6 with cos(t+60j-alpha_i)>0 iff (j-tau_i) mod 6 in {0,1,5}; i.e. sign pattern PAT=[+,+,-,-,-,+] indexed by (j-tau_i) mod 6. Classes are tau mod adding a constant (normalise tau_0=0): 6^5=7776.
+
+Staircase: as t increases through one 60-degree period, coordinates step tau_i -> tau_i - 1 in some order with ties; an ordered set partition (B_1..B_k) of {0..5} (Fubini number 4683) gives the chain of classes tau - 1_{B_1 U..U B_m}, m=1..k. A staircase SURVIVES iff every class in its chain is SAT.
+
+CLAIMS TO REPRODUCE (all currently UNAUDITED or single-lane):
+(a) Fixed-phase census: SAT 177, UNSAT 7599; 862 UNSAT classes have no empty side set (Rp,Rn nonempty at all six phases); every UNSAT class is refuted by forced-label (unit) propagation.
+(b) Staircase census: survivors by k=1..6 = [177, 2576, 12762, 26928, 25200, 8640], total 76283 of 7776*4683 = 36415008.
+(c) All-phase measure: resonance cells = components of T^6 minus {alpha_i = alpha_j mod 60}, counted with alpha_0 fixed: 933120 cells; 1440 admit a field; 919512 fail by an empty Rp or Rn at some arc; 12168 fail by the cyclic disjointness system alone; hence Lebesgue measure of the field set = exactly 1/648 (argue why all cells have equal measure).
+(d) "only 16 of the 3840 sign cells meet the SAT set" versus a later wording "16 of 120 base chambers". Define both cell systems explicitly (e.g. sign cells via alpha_i mod 180 with a fractional-part ordering; base chambers = the 5! orderings of the fractional parts (alpha_i mod 60)), compute both counts, and say which statement(s) are true.
+(e) Explicit pair inside one sign cell: (0,30,90,150,240,300) has a field; (0,108.75,123.75,142.5,292.5,315) has none.
+
+SOURCE ARTIFACTS (provenance only; you cannot read them): census work/research-desk/census/{census.py, independent_census.py}; checkins/20261114T200919Z/fixed-phase-census.json; inbox/20261114T205744-download-5-ALL-PHASE-REFEREE.md section 8 (m2 referee6.py, unaudited).
+
+METHOD. Two genuinely different implementations for each count (e.g. bitmask transfer over all 63 palettes AND explicit DFS/SAT search; exact rational or integer-angle arithmetic, no floating point in decisions). For (c), enumerate cells combinatorially (integer parts in 60-degree units x orderings of fractional parts), choose an exact interior representative per cell, and test all arcs.
+
+DELIVERABLE: R1-1-REPORT.md with: each number and whether it matches; any mismatch with a minimal witness; the exact cell definitions in (c),(d); runtimes; and the code files (sha256 of each). Also a JSON with fields {fixed:{sat,unsat,nonempty_unsat,propagation_incomplete}, staircase:{by_k,total}, allphase:{cells,field,empty_side,c2_only,measure}, signcells:{total,meeting}, basechambers:{total,meeting}}.
+
+ACCEPTANCE: both implementations agree on every figure; every agreement or disagreement with the claims above is stated explicitly; any figure you cannot reproduce is reported as NOT REPRODUCED with the reason. Report rather than guess. No chromatic-number claims.

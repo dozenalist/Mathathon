@@ -1,0 +1,892 @@
+{
+ "block": "discover-cone",
+ "updated_utc": "2026-11-15T00:19:31Z",
+ "mode": "ACTUAL ULTRAMATH (not prompting-only). One bounded swarm, two mathematical members, no recursive swarms.",
+ "swarm": {
+  "id": "smwgphe8q",
+  "dir": ".ultramath/smwgphe8q",
+  "members": [
+   "m1",
+   "m2"
+  ],
+  "model": "deepseek/deepseek-v4.1-flash",
+  "reasoning_effort": "max",
+  "member_steps": 60,
+  "minutes_requested": 60,
+  "started_utc": "2026-11-14T17:55:05Z",
+  "deadline_utc": "2026-11-14T18:55:05Z",
+  "status": "ENDED (exhausted). 0 accepted. d1 dead after 2 rejections; d2 abandoned after its single run. Both members used their model budget; no second swarm was created.",
+  "directions": {
+   "m1": "d1 active, runs 2, 1 rejection (scope, correctness confirmed), now redirected to the 4/5/6-distinct target",
+   "m2": "d2 ABANDONED: run ended without a solution (step budget or model stop). One finding banked and independently verified below. No tool can restart an ended member; ultramath_resume applies only to a VM-restart interruption, and a new swarm is forbidden."
+  },
+  "accepted_by_verdict": [],
+  "coordinator_note": "Coordinator reasoning effort is max; that alone does not activate Ultramath. Activation is the ultramath_start call returning smwgphe8q.",
+  "verdicts": [
+   {
+    "member": "m1",
+    "direction": "d1",
+    "accept": false,
+    "kind": "SCOPE rejection, correctness confirmed not refuted",
+    "submission": "exact solution set of CC60-arc = nine strict non-adjacent pair constraints; degenerates; openness and 6-dimensionality; v* certificate; 4-parameter family; width threshold 2pi/3; maximal confinement forces the alternating grid",
+    "coordinator_independent_check": "referee_check3.py: direct closed-arc enumeration at critical endpoints over all 64 subsets, 0 mismatches vs the pairwise form on 46656 grid tuples and 6000 random rational tuples; 36 grid survivors; six q0=0 survivors match AC-CONE-SIX; v* min 13/20 pi with 19deg box inside; 606/606 family points in V; Theorem 7 reduction re-derived by hand and correct; Corollary 7-prime 0 counterexamples",
+    "reason_for_rejection": "duplicates the externally completed Astra classification, which the block was told not to duplicate; the target moved to 4/5/6 distinct directions",
+    "banked": "the survivor set is open and 6-dimensional, so the interface combinatorics forces no excluded arc (the pivot justification)",
+    "delivered_to_member": "pivot, T1/T2/T3 deliverables, banned grounds, second-rejection warning"
+   },
+   {
+    "member": "m1",
+    "direction": "d1",
+    "accept": false,
+    "kind": "second rejection: one precise gap, remainder verified; direction dead",
+    "submission": "T3 de-pairing family v(a,b,c)=(0,a,2pi/3,2pi/3+b,4pi/3,4pi/3+c), 0<=a,b,c<=pi/4, claimed to certify 4/5/6 distinct directions as CC60 survivors with no supplied input firing",
+    "verified_correct": "whole family satisfies CC60 with residual exactly 3 on tight arcs (729-point exact box check); cluster centres exactly equilateral; census 3+#nonzero as algebra; explicit 6-distinct witness (0,1,120,121,240,241) valid including MC120(a)",
+    "gap": "claim 4 checks only closed pi/3 arcs. The supplied outer-arc clause applies to any subset with residual exactly 2, i.e. any non-consecutive pair (|E_i union E_j| = 4), requiring common outer arc <= 60 deg, i.e. dist >= 120 deg. Exact witnesses in the family: (pi/4,0,0) pair {1,3} distance 75 deg outer arc 105 deg residual {0,5}; (0,pi/4,0) pair {3,5}; (0,0,pi/4) pair {1,5}. So the 4- and 5-distinct points fail; only the diagonal a=b=c survives.",
+    "consequence": "the reduced constraint is: all nine prism pairs >= 120 deg. See TWO-TRIANGLE.md"
+   }
+  ],
+  "final_board": {
+   "m1": "2 runs, 2 findings, 2 rejections, state dead",
+   "m2": "1 run, 1 finding, 0 rejections, state abandoned (step budget or model stop)",
+   "accepted": 0
+  }
+ },
+ "conveyance": {
+  "asked": "deliver the Astra/MC120 updates to the running members through the actual swarm communication tool",
+  "actual_channel": "Ultramath exposes no broadcast or inbox operation. The only member-facing write is ultramath_verdict, which requires a submitted report; ultramath_status reports waiting_for_verdict = [] and submission = null for both directions.",
+  "action_taken": "No verdict was issued and none was fabricated. The update was written to the swarm's shared directory .ultramath/smwgphe8q/COORDINATOR-UPDATES.md and mirrored to supervisor/discover-cone/UPDATES.md; it is delivered at the next verdict boundary or the members' next run, whichever comes first.",
+  "not_done": "I did not send a synthetic rejection to force delivery: a rejection is recorded as a judgement of a submission, and no submission exists, so that would put a false entry in the record."
+ },
+ "verification_by_coordinator": [
+  {
+   "claim": "m1 f1 Step 1: |union_{i in S} E_i| <= 3 iff S lies in two cyclically consecutive slots",
+   "check": "exhaustive over all 64 subsets S of Z/6, exact integers",
+   "result": "0 mismatches"
+  },
+  {
+   "claim": "m1 f1 witness v* = (9,45,126,162,252,288) deg satisfies all 9 non-adjacent constraints",
+   "check": "exact Fractions, circular distance",
+   "result": "min non-adjacent distance 117 deg > 60; margin 57 > 2*19, so the 19 deg sup-box is inside the survivor set"
+  },
+  {
+   "claim": "cone filter over all 7776 words q with q0=0 gives exactly six survivors",
+   "check": "exact recomputation",
+   "result": "6, matching supervisor/solve-graphs/AC-CONE-SIX.md"
+  },
+  {
+   "claim": "q=(0,0,1,3,3,4) excluded by edges 0,1,2",
+   "check": "exact recomputation",
+   "result": "rejected at d=0 by edges 0,1,2 (labels 0,1,2,3) AND at d=3 by edges 3,4,5 (labels 0,3,4,5) \u2014 two independent exclusions, stronger than the brief states"
+  }
+ ],
+ "external_results_do_not_duplicate": [
+  "Astra CC60 continuous classification: CC60-arc iff non-adjacent edge-index pair distances > 60 deg; gap form g_r > 60 for non-adjacent consecutive indices and g_r + g_{r+1} > 60; 57/60 six-distinct cyclic orders feasible.",
+  "MC120: excluded-label union >= 5 cannot fit a STRICT cone of width < 120 deg; a common positive outer arc > 60 deg gives a monochromatic open region with a unit pair; with empty-residual prohibition at < 180 deg, all actual three-paired-direction configurations force exact equilateral 120 deg.",
+  "Angular-inequality classification: another graph swarm. Canonical palette producer: another independent swarm. Neither is this block's target."
+ ],
+ "target_now": {
+  "short": "4/5/6 DISTINCT signed directions at one shared centre: a geometric source-compatible obstruction, or the actual equilateral paired exclusion, or a certified surviving family.",
+  "excluded": [
+   "restating CC60",
+   "re-deriving the Astra classification",
+   "angular-inequality tables",
+   "canonical palette producer",
+   "global plane claims",
+   "chi(R^2) claims"
+  ],
+  "m1_second_run": "4/5/6 distinct signed directions at one shared centre: T1 geometric obstruction, T2 equilateral paired exclusion, or T3 certified surviving family"
+ },
+ "containment": {
+  "heavy_compute": "none; global heavy compute remains serialized",
+  "no": [
+   "Lean builds",
+   "cloud Lean",
+   "downloads",
+   "solver installs",
+   "background processes",
+   "sub-agents",
+   "recursive swarms",
+   "second swarm"
+  ]
+ },
+ "corrections_this_block": [
+  "Retracted my OA120 objection: q(s) = x + s*exp(i*beta) has modulus exactly s > 1, so the outer strip applies at every s; no segment must stay in W; the second nonparallel unit neighbour comes from perturbing q inside the open W.",
+  "Straddle (AngularBoundary.lean:147) is {z | exists p,q in K, dist z p < 1 and 1 < dist z q}."
+ ],
+ "missing_artifact": "outputs/ASTRA-NONALIGNED-A3.txt was cited in the brief but no such file exists anywhere in the tree.",
+ "research_until_utc": "2026-11-15T17:35:13Z",
+ "referee_artifacts": [
+  "supervisor/discover-cone/REFEREE-m1.md",
+  "supervisor/discover-cone/TWO-TRIANGLE.md",
+  "supervisor/discover-cone/referee_check.py",
+  "supervisor/discover-cone/referee_check3.py"
+ ],
+ "m2_banked": {
+  "finding": "dual arc: D(I) = {t : <t,v_i> > 0 for all i in I} has |D(I)| = max(0, pi - w(I)) with w(I) the length of the smallest closed arc carrying the SET {v_i : i in I}, and D(I) is a single OPEN arc when w(I) < pi",
+  "coordinator_check": "exact independent sweep over the critical endpoints, 20000 random rational tuples, 0 mismatches; boundary w = pi gives |D| = 0; a pi/3 cone gives |D| = 2pi/3; multiplicity is invisible, as m2 flagged",
+  "why_it_matters": "this is the quantitative form of the empty-residual prohibition: the strip layer threshold is pi (180 degrees), not pi/3. It supports the MC120 chain and does not contradict it.",
+  "caveat": "my first re-check got 25 mismatches because I computed w on the multiset instead of the direction set; the direction set plus w = 0 for a singleton is the correct reading, which is exactly the one m2 states"
+ },
+ "m2_audit_of_m1": {
+  "artifact": ".ultramath/smwgphe8q/m2/audit_d1_reduction.py",
+  "result": "T1 (Step 1, all 64 subsets), T2 (Step 2, exact rational tuples), T3 (v* certificate), T5 (maximal confinement, lattice search at steps pi/12, pi/24, pi/60: only the grid and its mirror) all PASS",
+  "only_FAIL": "T4 asserts the max over a denominator-20 rational triple lattice equals 2/3 pi; it found 13/20 pi. 2/3 is not on that lattice, and 13/20 < 2/3, so the found value is strictly BELOW the ceiling: a mis-stated expected value in the check, not a refutation. The lemma itself (three circle points are never pairwise > 2/3 pi apart) is true.",
+  "verdict_impact": "none: it corroborates m1 Theorem 6 rather than damaging it"
+ },
+ "referee_derived": {
+  "file": "supervisor/discover-cone/TWO-TRIANGLE.md",
+  "status": "REFEREE-DERIVED, NOT INDEPENDENTLY VERIFIED",
+  "statement": "Under CC60 + MC120(a) + MC120(b): all nine non-consecutive pair distances >= 120 deg, equivalently the six directions are two equilateral triangles with relative rotation delta in [0,120 deg]. Distinct-direction count is 3 (delta in {0,120}) or 6 (0<delta<120). Hence 4 and 5 distinct approach directions are IMPOSSIBLE.",
+  "evidence": "Lemma 1 both directions; the three-point gap argument (m1 Theorem 6, reused); delta in [0,120] from the matching pair {0,3}; exact spot checks over delta = 0..120 step 10 and the three off-diagonal witnesses",
+  "caveat": "the referee mis-analysed MC120(a) once (pair distance 120-c vs span pinned at 120 deg); corrected before the verdict. The classification still needs an independent referee."
+ },
+ "retractions": [
+  {
+   "file": "supervisor/discover-cone/TWO-TRIANGLE.md",
+   "withdrawn": "under CC60 + MC120 + empty-residual prohibition the six directions are two equilateral triangles with relative rotation delta in [0,120 deg], hence 4 and 5 distinct directions impossible",
+   "status": "FALSE as a consequence of those three constraints \u2014 refuted, not open",
+   "counters": {
+    "q4": "(0,0,120,150,240,240) deg, 4 distinct",
+    "q5": "(0,30,120,150,240,240) deg, 5 distinct",
+    "q6": "(0,30,120,150,240,250) deg, 6 distinct, not two triangles"
+   },
+   "my_check": "all 63 nonempty slot subsets exact rational spans: union>=4 => span>60, union>=5 => span>=120, union=6 => span>=180, zero failures for all three; none is of the two-triangle form; q4/q5 violate the lifted clause at pair {3,5} (span 90), q6 at span 100",
+   "incorrect_implication": "\"the outer-arc/unit-pair mechanism is a standalone prohibition, hence every residual-2 subset has span >= 120, hence all nine prism pairs >= 120\" \u2014 lifted an internal MC120 mechanism (driven by PAIR intersections, full intersection may be empty) to a universal constraint",
+   "supersedes": "my earlier referee reasoning in the m1 verdicts used the same lifted clause against m1 T3; with the clause unlicensed, m1 4/5-distinct points are NOT excluded by the cone package. The m1 submissions were still not accepted for the reasons on their own record (duplication of Astra; then a false no-input-fires claim), but the specific exclusion witnesses in my second verdict rest on the withdrawn clause."
+  }
+ ],
+ "blocks": [
+  {
+   "block": "discover-cone-2",
+   "swarm": {
+    "id": "smwgrv6jp",
+    "dir": ".ultramath/smwgrv6jp",
+    "members": [
+     "m1",
+     "m2"
+    ],
+    "model": "deepseek/deepseek-v4.1-flash",
+    "reasoning_effort": "max",
+    "member_steps": 60,
+    "minutes_requested": 60,
+    "started_utc": "2026-11-14T19:01:48Z",
+    "deadline_utc": "2026-11-14T20:01:48Z",
+    "status": "ENDED SOLVED with 2 accepted solutions. m1 accepted (hitting relaxation + D1), m2 accepted (bundle CSP + two-centre CLASH). Swarm closed by finish:true.",
+    "supersedes": "smwgphe8q (ended exhausted, 0 accepted, no member running at start)"
+   },
+   "task": "source-audit and prove the ALL-ANGLE INNER+OUTER palette-hitting relaxation; then seek an analytic strengthening that could eliminate q4/q5 while the cone constraints cannot. Handle producer, a.e. quantifiers, shift phase alignments, and which sets are HITS rather than subsets. If a finite SAT witness survives, name the smallest missing cross-centre lemma; no SAT-to-plane jump, no unsupported cyclic order.",
+   "anchors": [
+    "lean/OAI/Geometry/PlaneColoring/AngularBoundary.lean:259-300 (continuum_outer_restriction / continuum_inner_restriction: hitting conclusion palette INTERSECT J nonempty, not a subset statement)",
+    "lean/OAI/Geometry/PlaneColoring/PaletteTransport.lean:450 (palette_sixty_disjoint: palettes at f and f+60 are disjoint a.e.)"
+   ],
+   "members": {
+    "m1": "producer and HITTING semantics; a.e. quantifier bookkeeping; sixty-degree shift vs outer/inner split; all-angle relaxation with no fixed global cone",
+    "m2": "strengthening and elimination; q4/q5 target; residual freedom; smallest cross-centre lemma if a finite phase-cell witness survives"
+   },
+   "do_not_duplicate": [
+    "Astra: MC120 endpoint/tangency, four-list colouring/obstruction",
+    "graphs swarm: finite exact phase cells and certificates",
+    "Opus MAX: generic CC60 sharpness palette reduction beyond trivial 16",
+    "Astra: CC60 classification (done)"
+   ],
+   "constraints": "no heavy compute, no Lean build (local three-centre 27-module build active elsewhere \u2014 do not request one), no downloads/installs/background processes, no recursive swarms; tiny exact checks only, larger jobs returned as script + manifest",
+   "accepted": [
+    {
+     "member": "m1",
+     "id": 1,
+     "accept": true,
+     "deliverable": "Theorem C all-angle INNER+OUTER palette-hitting relaxation + Corollary C-prime per-slot finite-null form (no global cone); Corollary D1: span<120deg => |J_i|>=2, sharp at 120deg; F2 exact palette models showing q4/q5 are NOT eliminated at the palette level; F3 inclusion palette(x,t) subset J_i over active slots would kill q4/q5/q6; X1/X0 the smallest missing hypothesis and the cross-centre lemma it would need",
+     "coordinator_verification": [
+      "source statements checked in the tree: both restriction lemmas conclude (palette inter J).Nonempty \u2014 hitting, not subset; strip sector open of positive area so hJ is non-vacuous",
+      "D1 derivation re-done: |J_i|=1 would put that label in palette(t) and palette(t+60) a.e., contradicting palette_sixty_disjoint; only disjointness used, not palette_cardinality",
+      "ran verify_hitting.py (all sections pass) and independently recomputed the palette models WITH the full cyclic 60-deg disjointness including the wrap pairs (10,0),(11,1)",
+      "closed m1 GAP: its model is the 5-label singleton reading; I verified the six-interface reading (|L|=6, H_i=E_i, all |J_i|=3) also admits models for q4,q5 AND q6, and that the inclusion obstruction survives it (active {0,2,3,4} at cell (0,30) has empty joint residual)"
+     ],
+     "caveats_recorded": [
+      "D1 is attributed in m1 header to disjointness + palette_cardinality but needs only disjointness",
+      "D2 uses card<=2 which is k=5 only, so it does not transport to six labels",
+      "closed endpoint span=120deg left to Astra as instructed"
+     ]
+    },
+    {
+     "member": "m2",
+     "id": 2,
+     "accept": true,
+     "deliverable": "one-centre bundle relaxation R(q,r); Lemma 3 finite orbit-CSP equivalence; q4/q5 SAT at every r>=2 so no single-centre strengthening eliminates them; forced sets nonempty in all 12 cells for q4/q5/eq; containment reading impossible in every cell; two-centre CLASH under CROSS-2 eliminates q4/q5 AND eq while q6/grid/v* survive; smallest missing lemma CROSS-2 / CROSS-2*",
+     "coordinator_verification": [
+      "palette_neighbor_disjoint confirmed in source: FiveSupport.lean:23, k-generic, y = x+direction a (distance exactly 1)",
+      "gateway error on MY side: I first reran the table with the per-slot pair reading and got no forced labels; the correct reading is the bundle I_t={i : <dir t,v_i>>0}; with it m2 table reproduces cell for cell",
+      "reproduced exactly: q4 forced [1,4],[2],[2,5],[3],[0,3],[1] x2 orbit; q5 same; eq only 2 solutions with larger forced sets",
+      "reproduced the discriminating counts: empty forced sets 12/12 cells (60deg grid), 6/18 (q6), 10/12 on my 30deg decomposition of v*",
+      "checked the clash logic: same q => same sign vectors => same cell complex => same forced sets => both palettes contain F(c) nonempty a.e. => contradicts palette_neighbor_disjoint"
+     ],
+     "caveats_recorded": [
+      "CROSS-2 geometric satisfiability OPEN: no lemma supplies a unit neighbour with the same six-slot data; m2 states this",
+      "CROSS-2 also kills eq; if available it would make the three-paired case impossible outright, stronger than the paper bound for that case \u2014 flagged as a consistency signal, not resolved",
+      "the UNSAT rates 5172/6234 and 362/400 were not independently reproduced by me (family definitions not re-derived)"
+     ]
+    }
+   ],
+   "block_result": {
+    "accepted": 2,
+    "new_lemmas": [
+     "all-angle INNER+OUTER palette-hitting relaxation (Theorem C) and its per-slot finite-null form (Corollary C-prime)",
+     "D1: span(v_i,v_{i+1}) < 120 deg => |J_i| >= 2, sharp at 120 deg (from hitting + palette_sixty_disjoint only)",
+     "one-centre bundle relaxation is a finite orbit CSP (Lemma 3)",
+     "two-centre CLASH theorem: under CROSS-2, q4, q5 and the equilateral are impossible; q6, the 60deg grid and v* survive"
+    ],
+    "decided": [
+     "q4/q5 are SAT at every r>=2 in the one-centre relaxation, so no single-centre strengthening inside it eliminates them",
+     "the containment reading (palette inside the residual) is impossible in every cell, in both readings"
+    ],
+    "open": [
+     "CROSS-2 satisfiability in the actual configuration",
+     "closed 120-deg endpoint (Astra)",
+     "whether CROSS-2 killing eq signals that CROSS-2 fails"
+    ],
+    "do_not_requote": [
+     "the two-triangle classification (retracted)"
+    ]
+   }
+  },
+  {
+   "block": "cone-circuit",
+   "swarm": {
+    "id": "smwgt4w0z",
+    "dir": ".ultramath/smwgt4w0z",
+    "members": [
+     "m1",
+     "m2"
+    ],
+    "model": "deepseek/deepseek-v4.1-flash",
+    "reasoning_effort": "max",
+    "member_steps": 60,
+    "minutes_requested": 60,
+    "started_utc": "2026-11-14T19:37:20Z",
+    "deadline_utc": "2026-11-14T20:37:20Z",
+    "status": "ENDED SOLVED with 2 accepted solutions (m2 audit of the 15-degree claim; m1 the two-front six-phase circuit lemma). Closed by finish:true.",
+    "supersedes": "smwgrv6jp (ended SOLVED, 2 accepted, no member running at start)"
+   },
+   "task": "derive concise reusable analytic/combinatorial obstruction lemmas explaining the six new UNSAT configurations and the 15-degree open neighbourhoods. m1: minimal row/circuit contradictions WITHOUT any palette-cardinality assumption, each row tied to its actual source consumer. m2: audit of the 15-degree claim, edge cases, a.e. quantifiers, larger open regions.",
+   "parent_inputs": {
+    "six_vectors": [
+     [
+      "V1",
+      [
+       0,
+       30,
+       90,
+       120,
+       180,
+       210
+      ],
+      "(0,30)"
+     ],
+     [
+      "V2",
+      [
+       0,
+       30,
+       90,
+       120,
+       270,
+       300
+      ],
+      "(30,60)"
+     ],
+     [
+      "V3",
+      [
+       0,
+       30,
+       180,
+       210,
+       270,
+       300
+      ],
+      "(0,30)"
+     ],
+     [
+      "V4",
+      [
+       0,
+       60,
+       90,
+       150,
+       180,
+       330
+      ],
+      "(30,60)"
+     ],
+     [
+      "V5",
+      [
+       0,
+       60,
+       90,
+       240,
+       270,
+       330
+      ],
+      "(0,30)"
+     ],
+     [
+      "V6",
+      [
+       0,
+       150,
+       180,
+       240,
+       270,
+       330
+      ],
+      "(30,60)"
+     ]
+    ],
+    "sat_reference": "q4,q5,q6 SAT with pair-witness counts per phase (1,6),(1,6),(1,4,6); paired (1,1); 60-grid (4,4)",
+    "open_neighbourhood_claim": "coordinatewise 15-degree neighbourhoods around each UNSAT vector: bad-phase midpoint 15 or 45, every cosine zero at margin >= 15 deg, perturb each direction < 15 deg, all six orbit signs persist on a positive open phase interval"
+   },
+   "scope_rules_given": [
+    "CROSS-2 has no actual producer and is not needed for the paired case; no universal cross-centre claim",
+    "previous no-single-centre-strengthening wording restricted to the specified relaxation R(q,r) only",
+    "A5/A6 exclude the exact paired configuration and an existential open neighbourhood without CROSS-2; <=3 distinct directions closed via CC60 + strict MC120 + A6",
+    "no global bound, no exclusion of all 4/5/6; CSP models are not actual WeakColourings",
+    "graph coordinator owns the continuous cell representation/enumerator: no duplicate enumeration",
+    "do not infer actual palette cardinality <= 2; two hit witnesses preserve disjointness"
+   ],
+   "coordinator_baseline_check": {
+    "superseded": "the earlier entry in this block claiming a discrepancy with the parent is WITHDRAWN. It was my error, twice over.",
+    "error_1_aggregation": "I summed solutions over the two phase orbits and read 11 as SAT. The requirement is a.e. feasibility on EACH positive-length phase cell; 11 = 0 + 11 means one orbit has NO cyclic selection, which is exactly UNSAT. q4/q5 7 = 1 + 6 are SAT, the six V are UNSAT.",
+    "error_2_breakpoints": "my cell generator used a fixed 30-degree grid. The correct breakpoints are {0,60} \u222a {(theta_i+90) mod 60}, so q6 = (0,30,120,150,240,250) splits at 40 deg into [0,30],[30,40],[40,60] with counts 1,4,6 = 11, not the 7 I reported.",
+    "reproduced_parent": "independent Python reimplementation of the parent verifier matches exactly: V1..V6 counts [0,11] or [11,0] (per-cell feasibility False); q4 [1,6]; q5 [1,6]; q6 [1,4,6]; paired [1,1]; grid [4,4]. Row masks and choice sets also match, e.g. V1 cell [0,30], j=0: outer 48, inner 6, choices [18,20,34,36].",
+    "margin_check": "confirmed: each of V1..V6 has minimum distance exactly 15 deg from its stated midpoint to the cosine-zero set, so the coordinatewise 15-degree radius is tight at all six",
+    "circuit_baseline": "referee baseline for m1: for V1 [0,30], V2 [30,60], V3 [0,30], V6 [30,60] the MINIMAL UNSAT row set is the FULL 6-cycle; no smaller subset is UNSAT and no single adjacency lacks a disjoint option (choices per slot 3 or 4). So the obstruction is cyclic, not a two-row clash, and the reusable lemma must be a cycle lemma."
+   },
+   "accepted": [
+    {
+     "member": "m2",
+     "id": 1,
+     "accept": true,
+     "deliverable": "AUDIT OF THE 15-DEGREE CLAIM: correct and exactly sharp. Minimal contradictory subsystem of each V1..V6 is the WHOLE 6-cell orbit (every 5-subset SAT). Per-slot margin over the six used phases = 15 for every slot of every vector (Lemma G: directions on the 30-grid with midpoint at 15 mod 30 force distances 15 mod 30, and the constraint set is offset at 45 so the nearest is -15 below / +45 above). Sign-preserving region is the product of asymmetric intervals (-15,45) or (-45,15) per slot, no compensation. Exactly 16 of the 64 corners of the closed 15-cube are SAT, so the open 15-cube is inside the UNSAT set and no closed one is; 15 is the exact symmetric coordinatewise radius.",
+     "coordinator_verification": [
+      "minimality re-checked for all SIX vectors: full 6-cycle UNSAT, every 5-subset SAT (this also settled V4 and V5, unchecked before)",
+      "margins re-checked: [15,15,15,15,15,15] per-slot minimum for all six vectors",
+      "asymmetric box re-derived: constraint set for slot 0 of V1 is {45,105,...,345}, so the interval is (-15,45); my first check computed only the weaker symmetric bound",
+      "corner count re-checked: 16/64 SAT for each of the six, and the example corners match m2 exactly"
+     ],
+     "not_verified": [
+      "the claim that larger non-product open sets exist with axis arms to 30",
+      "\"h = 15+d for every d>0\" as a separate assertion (implied by the corner count, not separately checked)"
+     ]
+    },
+    {
+     "member": "m1",
+     "id": 2,
+     "accept": true,
+     "deliverable": "Two-front six-phase circuit. Lemma 0: mu_j = lambda_{j+3} (inner residual at the antipodal phase equals the outer residual). Lemma C: if lambda_j={x}, lambda_{j+1}={y}, mu_{j+2} minus {x,y}={z}, mu_{j-1} minus {x,y}={w}, mu_j minus {y,w}={u}=mu_{j+1} minus {x,z}, then the 13 rows {O_j,O_{j+1}} + {I_i : all i} + {D_e : e != j+3} are unsatisfiable. Each of V1..V6 instantiates it twice (j and j+3, outer/inner exchanged); those are exactly its two minimal cores. No cardinality row, no nonemptiness row, no cross-centre row, none of the 63 cone checks.",
+     "coordinator_verification": [
+      "Lemma 0 verified entry for entry on V1",
+      "Lemma C proof checked line by line, every exclusion licensed by a row in the 13 and never by the omitted D_{j+3}; palette only ever bounded below (x in P), never above",
+      "cores found for all six vectors at j0 and j0+3, UNSAT and minimal (removing any one row gives SAT, monotonicity then covers all proper subsets)",
+      "exhaustive: exactly 2 of the 8568 13-subsets of the 18 source rows are UNSAT, and they are exactly the two cores (checked for V1)",
+      "no cardinality assumption: palettes allowed unbounded, only minimal hitting sets used"
+     ],
+     "not_verified": [
+      "claim that the other 15 reference orbits are not the pattern P*"
+     ]
+    }
+   ],
+   "granularity_note": "Two minimality statements coexist in this block and both are correct at their own granularity. Bundled phase rows (one row per phase carrying outer+inner) give the whole six-phase cycle as minimal, every 5-subset SAT (my baseline, and m2 accepted audit). Splitting each phase row into its two source rows gives m1 finer statement: 13 of the 18 source rows suffice, the 6 inner rows are all needed, only 2 of 6 outer rows are, and 5 of 6 disjointness rows are. The finer statement does not contradict the coarser one.",
+   "block_result": {
+    "accepted": 2,
+    "new_lemmas": [
+     "Lemma 0 (antipodal sign flip: mu_j = lambda_{j+3})",
+     "Lemma C (two-front six-phase circuit, 13 rows, no palette bound)",
+     "Lemma G (midpoint 15 mod 30 forces all distances 15 mod 30, so the per-slot margin is exactly 15)",
+     "sharpness: sign-preserving box is the product of asymmetric intervals (-15,45) or (-45,15) per slot; exactly 16 of 64 closed-cube corners are SAT, so 15 is the exact symmetric coordinatewise radius"
+    ],
+    "decided": [
+     "the six V1..V6 are UNSAT inside one +60 orbit, minimally by 13 source rows",
+     "the 15-degree open neighbourhoods around them are exact and sharp",
+     "the obstruction is invisible to CC60, strict MC120 and the |Lambda|=6 => span>=180 clause: all six satisfy all 63 cone checks"
+    ],
+    "open": [
+     "the other 15 reference orbits being non-P* (unchecked)",
+     "axis arms to 30 (unchecked)"
+    ]
+   },
+   "parent_chains_crosscheck": {
+    "status": "parent supplied six exact forced-membership contradictions; swarm was already ENDED (solved, 2 accepted, both members stopped) so there was no running m1 to receive them and no extra swarm is permitted. I checked them myself against the exact rows instead.",
+    "method": "membership propagation at fixpoint: forced[j] = labels that must lie in P_j; excluded[j] = forced[j-1] union forced[j+1]; a side S with S subset excluded[j] is a contradiction; a side with |S minus excluded[j]| = 1 forces its last label. No cardinality assumption anywhere.",
+    "result_all_six": "V1..V6 each reach a contradiction in 13 forced steps. For V1 the closure reproduces the parent seeds exactly: P1 contains 5, P2 contains 1, P4 contains 5, P5 contains 1, then P0 superset {2,4}, P3 superset {2,4}, P1 contains 3, dead side mu_1 = {1,2,3}.",
+    "discrimination": "the same propagation finds NO contradiction on q4, q5, q6, the paired configuration or the 60-grid, so the method separates the six from the references.",
+    "singleton_counts": "each of V1..V6 has exactly 4 sides of size 1 (matching the parent pattern); q4/q5/q6/paired have 6, the grid has 0. So four singletons is necessary but not sufficient.",
+    "mapping_to_lemma_C": "the parent chains are instances of the already-accepted Lemma C with t = j-1: x = lambda_{t+1}, y = lambda_{t+2}, and by Lemma 0 mu_{t+4} = lambda_{t+1}, mu_{t+5} = lambda_{t+2}, which is why rows t+1 and t+4 force the same x. For V1, j=1 and the Lemma C hypotheses (2) and (3) hold with z=4, w=2, u=3.",
+    "relation_to_minimal_core": "the parent chains are valid but not minimal: they use four outer rows plus all six inner rows, whereas the exhaustive minimum is 13 rows of which exactly two 13-subsets are UNSAT (checked over all 8568). So the minimal clauses and the abstract cycle lemma are both already banked from the accepted m1 submission.",
+    "terminal_step_differs": "m1 terminates by forcing the same label u into both P_j and P_{j+1} against disjointness; the parent terminates by excluding every label of one side against hitting. Both are sound consequences of the same rows."
+   },
+   "distinctions_recorded": {
+    "fixed_phase_sign_box": "perturbations that keep the signs of the six sampled phases unchanged; for each slot this is the asymmetric interval (-15,45) or (-45,15).",
+    "global_simultaneous_radius": "the l-infinity (Chebyshev) radius: exactly 15, sharp, confirmed by the parent across ALL positive phase cells and matching my own 16/64 corner count.",
+    "single_coordinate_arms": "larger along one coordinate (to 30) while the simultaneous radius stays 15: the set is not a box. Parent-corroborated; I have not verified it myself.",
+    "actual_colouring_obstruction": "the relaxation is a NECESSARY condition derived from continuum_outer/inner_restriction and palette_sixty_disjoint, so UNSAT of the relaxation excludes any weak colouring with that direction data. SAT of the relaxation does NOT give a colouring: CSP models are not WeakColorings and no realizable colouring may be inferred. The 15-degree statement is about the relaxation only."
+   }
+  },
+  {
+   "block": "sign-class",
+   "swarm": {
+    "id": "smwgui6l9",
+    "dir": ".ultramath/smwgui6l9",
+    "members": [
+     "m1",
+     "m2"
+    ],
+    "model": "deepseek/deepseek-v4.1-flash",
+    "reasoning_effort": "max",
+    "member_steps": 60,
+    "minutes_requested": 60,
+    "started_utc": "2026-11-14T20:15:40Z",
+    "deadline_utc": "2026-11-14T21:15:40Z",
+    "status": "ENDED SOLVED with 2 accepted solutions (m2 classifier + 13 survivor orbits; m1 Hall capacity theorem + propagation completeness). Closed by finish:true.",
+    "supersedes": "smwgt4w0z (ended SOLVED, 2 accepted, running=[] verified before launch)"
+   },
+   "task": "symbolic classification of the full fixed-phase relaxation. m1: structural theorem for unit-propagation completeness on the six-cycle edge-exclusion tables, or a small COMPLETE list of forbidden circuit schemas. m2: independently written classifier reproducing the census on a sample, plus classification of the 177 surviving classes into symmetry orbits with normal forms and minimal surviving patterns.",
+   "parent_inputs": {
+    "census": "177 SAT / 7599 UNSAT of 7776 = 6^5 sign classes (quotient by rotation)",
+    "propagation": "every UNSAT class refuted by forced-label propagation, no cardinality assumption",
+    "nontrivial": "862 UNSAT classes have both sides nonempty in every row (not decided by an empty side)",
+    "structure": "labels L={0..5}, real source edges E_i={i,i+1}, six phases at +60 shifts, column signs are cyclic shifts of (+,+,-,-,-,+)",
+    "palettes": "unrestricted subsets; no cardinality cap"
+   },
+   "containment_changed": "ALL Lean compilation and exhaustive runs are now LOCAL on the parent computer. Remote members get no Lean, no builds, no installs, no background jobs, no memory-cap changes, and only sub-second exact checks; larger work returns as script plus manifest. This supersedes the earlier note about a local three-centre build on the VM.",
+   "banked_not_to_redo": [
+    "Lemma 0 (mu_j = lambda_{j+3})",
+    "Lemma C (two-front six-phase circuit, 13 rows, no palette bound) \u2014 covers only six classes"
+   ],
+   "do_not_duplicate": [
+    "the parent 7776-class census (parent owns exhaustive runs)",
+    "all-phase staircase enumeration (graph team)",
+    "the banked six-case lemma"
+   ],
+   "scope": "no plane chromatic bound; a CSP model is not a WeakColoring; UNSAT of the relaxation does exclude weak colourings with that direction data, SAT does not give one; small-palette satisfiability search must never be reported as a palette bound",
+   "accepted": [
+    {
+     "member": "m2",
+     "id": 1,
+     "accept": true,
+     "deliverable": "Independent classifier reproducing the parent census with three procedures, plus full survivor classification: 13 orbits of the 177 surviving sign classes under the order-144 group D6 x D6, gauge normal forms, orbit sizes, witnesses; proved lemmas L1 (A_j cap B_j = empty and the phase-antipode row swap), L2 (run formula), L3 (2-set palette reduction is an exact equivalence for deciding, not a palette bound), L4 (arc-block availability), L5 (period-3 shortening).",
+     "coordinator_verification": [
+      "rebuilt the classifier as a FOURTH independent implementation: census 177 SAT / 7599 UNSAT / 862 two-sided \u2014 exact match",
+      "13 orbits under D6 x D6 with sizes 24,24,24,24,12,12,12,12,12,12,4,3,2 summing to 177 \u2014 exact match",
+      "L1 over all 46656 row instances: 0 exceptions for A_j cap B_j = empty, 0 for row j+3 = row j with sides swapped",
+      "L4 checked structurally and on an instance",
+      "14 of 177 survivors are permutation words \u2014 match",
+      "\"survival iff period-2 or period-3 palette solution\": 177/177, with 174 admitting period 3"
+     ],
+     "defects": [
+      "L2 formula |A_j| = 6 - a_j - k_j is false at a_j = 6 (returns -1, true value 0); exactly 729 row instances, all with S_j = all six slots; the derived two-sided criterion stays correct there and such rows cannot occur in the 862 two-sided classes",
+      "m2 A_j/B_j are swapped relative to the parent outer/inner convention: m2 A_j = f(T_j) is the NEGATIVE side residual; satisfiability symmetric so no downstream change, but it must be stated to avoid conflating with Lemma C naming"
+     ],
+     "not_reproduced": "\"period-2 alone only 17/177\" \u2014 under palette period p_{j+2}=p_j I get 3 of 177, not 17; definition needed",
+     "not_verified": [
+      "the three-procedure agreement inside m2 own code (I ran one)",
+      "L5 period-3 shortening",
+      "141/177 single-block S_j"
+     ]
+    },
+    {
+     "member": "m1",
+     "id": 2,
+     "accept": true,
+     "deliverable": "Structural theorem for the fixed-phase relaxation. Side formula A_j = {y : a_{y-1}, a_y in W_j}, B_j = A_{j+3}, A_j cap B_j = empty; conservation sum_j |A_j| = 18 - D with D = sum_y dist(d_y); HALL CAPACITY THEOREM: SAT implies m_0 >= 2 m_3, which refutes 4436 of the 7599 UNSAT classes with no search and leaves a residual family of 3340 (3163 UNSAT + 177 SAT); vacuity dichotomy: exactly 17 classes have all twelve sides of size >= 2 and all 17 are SAT, so every UNSAT class has a side of size <= 1; parameterised schema list S_0..S_k, sound by proof, complete only by verification.",
+     "coordinator_verification": [
+      "Hall law: exactly 4436 classes with m_0 < 2 m_3 and zero of them SAT; residual 3340 = 3163 + 177 \u2014 exact",
+      "conservation sum|A_j| = 18 - sum dist: 7776/7776",
+      "vacuity: exactly 17 classes with all sides >= 2, all SAT",
+      "UNSAT by number of sides of size <= 1: 2:156, 4:996, 6:3090, 8:2420, 10:812, 12:125, total 7599 \u2014 all six entries exact",
+      "propagation completeness re-run on my own closure: refutes exactly 7599, agrees with the truth on all 7776 classes, 0 disagreements",
+      "cross-check 1039 all-sides-nonempty = 862 two-sided UNSAT + 177 SAT"
+     ],
+     "honest_limits_in_the_submission": [
+      "schema list is NOT small as raw patterns (754 unrenamed); m1 refuses the small-list framing",
+      "Theorem E (propagation complete) is VERIFIED only; the reconstruction lemma (stable closure implies a palette) is a named GAP"
+     ],
+     "note": "m1 parametrises by d with sum d = 0 and a_y indexing; the parent parametrises by t with t_0 = 0. Different encodings of the same 7776 classes; counts agree exactly. A dictionary line should be added to theorem.md."
+    }
+   ],
+   "block_result": {
+    "accepted": 2,
+    "proved": [
+     "Hall capacity theorem: SAT implies m_0 >= 2m_3, refuting 4436/7599 without search",
+     "conservation sum_j |A_j| = 18 - D",
+     "side formula and phase-antipode identity A_j cap B_j = empty, B_j = A_{j+3}",
+     "vacuity dichotomy: exactly 17 all-sides->=2 classes, all SAT",
+     "each parameterised schema S_k is sound"
+    ],
+    "verified_only": [
+     "propagation (unit closure) is complete on all 7776 classes: refutes exactly 7599, no residue \u2014 confirmed independently by me",
+     "schema completeness = the same statement"
+    ],
+    "open_gap": "reconstruction lemma (stable closure implies a palette). Proving it would turn the whole census into a theorem with no enumeration.",
+    "all_lean_local": "no Lean or build was run anywhere in this block; all exhaustive work was local to the parent except the sub-second checks I ran and the sub-second checks the members ran."
+   }
+  },
+  {
+   "block": "all-phase",
+   "swarm": {
+    "id": "smwgw43qj",
+    "dir": ".ultramath/smwgw43qj",
+    "members": [
+     "m1",
+     "m2"
+    ],
+    "model": "deepseek/deepseek-v4.1-flash",
+    "reasoning_effort": "max",
+    "member_steps": 60,
+    "minutes_requested": 60,
+    "started_utc": "2026-11-14T21:30:00Z",
+    "deadline_utc": "2026-11-14T22:30:00Z",
+    "status": "ENDED SOLVED with 2 accepted solutions (m2 criterion decision; m1 symbolic 1440 count + rigidity). Closed by finish:true.",
+    "supersedes": "smwgui6l9 (verified solved, running=[] before launch)"
+   },
+   "task": "symbolic classification of the ALL-PHASE relaxation (not the fixed-phase census). m1: audit the definitions in smwgukvpp/m2/referee6.py and cert3.py against the source data, then prove the 1440 count symbolically via orbit structure on (R/60Z)^6 plus the empty-residual rule with one exact representative alpha per orbit. m2: independently prove or refute the completeness criterion \"the fixed-phase census decides the relaxation iff all alpha_i - alpha_j in 60Z\", and re-check the counterexample alpha* = (0,2,3,184,185,186) at t = 92.5 deg.",
+   "claims_to_audit": [
+    "933120 resonance cells, 1440 admit a relaxation field",
+    "SAT set has measure exactly 1/648, matching 8640/(7776*720)",
+    "it meets only 16 of the 3840 sign cells"
+   ],
+   "source_of_claims": ".ultramath/smwgukvpp/m2/referee6.py (134 lines) and cert3.py (83 lines) \u2014 ANOTHER LANE, read-only; claims reproduced there but not audited",
+   "banked_not_to_redo": [
+    "fixed-phase census 177 SAT / 7599 UNSAT / 862 two-sided of 7776 sign classes",
+    "every UNSAT class refuted by forced-label propagation (verified twice)",
+    "Hall capacity law SAT implies m_0 >= 2 m_3, killing 4436 by counting",
+    "13 survivor orbits under D6 x D6 with sizes summing to 177"
+   ],
+   "containment": "no remote Lean/builds/installs/background jobs; tiny exact checks under one second; checkers returned to the parent for local execution; own directories only; .ultramath/smwgukvpp/ is another lane and is read-only",
+   "scope": "the relaxation is a necessary condition only: UNSAT excludes weak colourings with that data, SAT implies no colouring; no claim of SAT to WeakColoring",
+   "accepted": [
+    {
+     "member": "m2",
+     "id": 1,
+     "accept": true,
+     "deliverable": "Decision of the completeness criterion. The criterion \"the fixed-phase census decides the all-phase relaxation iff all alpha_i - alpha_j in 60 Z\" is FALSE as an iff: sufficiency is TRUE (Thm A), pointwise necessity is FALSE (alpha+ = (5,15,85,155,225,295) has nu = 6, is not in R_all, yet Rel = census = SAT), method-level necessity is TRUE. Corrected criterion Thm B-prime: Rel(alpha) iff census_0 and one test per other component of [0,60) minus X(alpha). Witnesses: alpha* = (0,2,3,184,185,186) has census SAT and Rel UNSAT by an empty side on the whole arc; alpha# = (181,79,38,340,232,215) has census SAT and Rel UNSAT with NO empty side anywhere (pure (C2) obstruction). Three corrigenda to smwgukvpp: (0.1) fails at critical phases, theorem.md 6.1 witness degenerate, referee6.in_R is R which strictly contains R_all.",
+     "coordinator_verification": [
+      "rebuilt the component-wise criterion independently: Rel(alpha) = every component of [0,60) minus X(alpha) admits a cyclic palette selection, palettes as arbitrary subsets reduced to pair witnesses",
+      "alpha*: Rel UNSAT, census SAT, empty sides at phases 1 and 4 in components (32,33),(33,34),(34,35) \u2014 confirmed on the whole component, not only at 92.5",
+      "alpha+: Rel = census = SAT with nu = 6, so pointwise necessity fails \u2014 confirmed",
+      "alpha#: Rel UNSAT, census SAT, and NO component has an empty side \u2014 a pure (C2) cycle obstruction, strictly stronger than alpha* \u2014 confirmed",
+      "grid alpha = 60 sigma: Rel == census on all 7776 with SAT total 177, matching the banked census",
+      "Lemma 2 (orbit decomposition) checked structurally: sign vectors depend only on u mod 60, critical set mod 60 is exactly X(alpha), distinct components give disjoint orbits",
+      "corrigendum (0.1) checked: s = (-1,-1,-1,-1,0,0) gives J(S+) = L but {j : s_j = s_{j-1} = -1} = {1,2,3}; R strictly larger than R_all via alpha = (0,60,2,3,4,5), nu = 5"
+     ],
+     "not_audited_by_m2": "claims (i)-(iii) of the block (933120 cells, 1440 fields, measure 1/648, 16 of 3840 sign cells) are m1 lane and remain unaudited",
+     "to_tighten": "the statement that the conjunction has nu(alpha) terms should note the terms are indexed by components and the count is nu(alpha) only when no component is empty; the degenerate 0 in X(alpha) needs the tie-breaking remark already made in Lemma 1"
+    },
+    {
+     "member": "m1",
+     "id": 2,
+     "accept": true,
+     "deliverable": "Symbolic settlement of the all-phase relaxation. Definitions audited (both files compute s from cos so the word conventions agree; E_i enters only via J(F) = {c : c notin F, c-1 notin F}; closure Q_5 cap Q_0 load-bearing). Theorem 1: verdict constant on resonance cells, exact reduction to sigma in (Z/6)^6, |W| = 1062 and census 177 = |W|/6. Theorem 2 (rigidity): a relaxation field exists iff for some phase orbit u and c, sigma_i(u) = c + i for all i or c - i for all i (circulant sign matrix); the <= direction proved with an explicit field, the => verified on all 720 rooted orders. Count: 933120 = 120*6^5, 1440 = 120*12 by 12 circulant lifts per cyclic order, so measure 1/648. Corrections: claim (iii) is 8 sign cells of 180 not 16 of 90; an earlier orbit count 13 becomes 6.",
+     "coordinator_verification": [
+      "Theorem 2 tested against an independent implementation of Rel (every component of [0,60) minus X(alpha) admits a cyclic palette selection): 19477 random generic alpha, 19477 agreements, 0 mismatches; SAT rate 29/19477 consistent with 1/648",
+      "my first run gave 27 apparent counterexamples, all because I fixed u to the first arc instead of taking the existential over phase orbits \u2014 my error, not m1 s",
+      "arithmetic: 933120 = 120 * 6^5 and 1440 = 120 * 12, so measure 1/648 = 8640/(7776*720)",
+      "|W| = 1062 with 177 = 1062/6 matches the banked census; 12 circulant sigma per cyclic order reproduces 12 of 7776 lifts"
+     ],
+     "not_verified": [
+      "the => direction is verified on 720 rooted orders, not hand-proved (m1 says so)",
+      "corrected claim (iii): 8 sign cells of 180 each \u2014 the sign-cell granularity belongs to the other lane; 8*180 = 16*90 = 1440 is consistent either way",
+      "the (C2) closure claim (1594 cells without the Q_5 cap Q_0 constraint) was not recomputed at cell level"
+     ],
+     "notes": "m1 checker runs ~2 s, over the sub-second block budget; m1 also notes that m2 justification of 1/648 by transitivity is false although the conclusion holds by equal cell volumes \u2014 m2 never claimed the measure, so nothing previously accepted is disturbed"
+    }
+   ],
+   "block_result": {
+    "accepted": 2,
+    "settled": [
+     "the all-phase relaxation criterion: census decides iff all alpha_i - alpha_j in 60Z is FALSE as an iff; sufficiency true, pointwise necessity false, corrected criterion is one test per component of [0,60) minus X(alpha)",
+     "the all-phase rigidity: a field exists iff some phase orbit has a circulant sign matrix",
+     "the counts 933120 cells and 1440 SAT cells with measure 1/648, derived symbolically as 120 cyclic orders times 12 circulant lifts"
+    ],
+    "witnesses": [
+     "alpha* = (0,2,3,184,185,186): census SAT, Rel UNSAT by an empty side",
+     "alpha# = (181,79,38,340,232,215): census SAT, Rel UNSAT with no empty side anywhere (pure (C2))",
+     "alpha+ = (5,15,85,155,225,295): Rel = census = SAT with nu = 6, refuting pointwise necessity"
+    ],
+    "open": [
+     "hand proof of the => direction of the rigidity theorem",
+     "audit trail for the sign-cell claim (iii) belongs to the other lane"
+    ]
+   }
+  },
+  {
+   "block": "rigidity-forward",
+   "swarm": {
+    "id": "smwgylyok",
+    "dir": ".ultramath/smwgylyok",
+    "members": [
+     "m1",
+     "m2"
+    ],
+    "model": "deepseek/deepseek-v4.1-flash",
+    "reasoning_effort": "max",
+    "member_steps": 60,
+    "minutes_requested": 60,
+    "started_utc": "2026-11-14T22:30:00Z",
+    "deadline_utc": "2026-11-14T23:30:00Z",
+    "status": "ENDED (solved, 1 accepted of 2). m2 accepted; m1 direction d2 dead after two rejections. The ==> direction is REDUCED but NOT hand-proved.",
+    "supersedes": "smwgw43qj (verified ended: solved, running [], both stopped, minutes_left 0)"
+   },
+   "target": "hand proof of the ==> direction of the rigidity. Statement quoted verbatim in the task from .ultramath/smwgw43qj/m1/theorem.md Theorem 2 and m2/criterion.md (A3).",
+   "verbatim_A3": "Relaxation field Q : T -> 2^L minus {empty} with (C1) Q(t) cap J(S_+(t)) != empty != Q(t) cap J(S_-(t)) for a.e. t, and (C2) Q(t) cap Q(t+60 deg) = empty for a.e. t. Rel(alpha) = such a Q exists.",
+   "verbatim_Theorem2": "For alpha not in R, with sigma(u) as in Lemma 2: relaxation field exists iff exists u and c in Z/6 with sigma_i(u) = c + i for all i, or sigma_i(u) = c - i for all i.",
+   "state_of_the_direction": {
+    "proved": "the <== direction, with an explicit field",
+    "open": "the ==> direction: verified on all 720 rooted orders and on 19477 random vectors against an independent Rel, never proved"
+   },
+   "members": {
+    "m1": "complete refereeable paper proof of ==>; real edges E_i = {i,i+1}; state the sign convention; NO palette-cardinality assumption (a shrink-to-two-set lemma must be proved and its preservation stated); handle the a.e. quantifier pointwise where possible",
+    "m2": "adversarial: ties (alpha in R), boundary and null-set effects in the a.e. formulation, critical phases alpha_i +- 90 = 0 mod 60, whether the existential over u can be weakened; plus a compact exact checker under one second"
+   },
+   "containment": "no remote Lean/builds/installs/background jobs; local Python on the parent handles reviewed Lean and exhaustive runs; tiny exact checks only; own directories; .ultramath/smwgukvpp read-only; no duplicate staircase census",
+   "accepted": [
+    {
+     "member": "m2",
+     "id": 1,
+     "accept": true,
+     "deliverable": "Adversarial attack on the ==> direction plus an independent two-way checker. Could NOT break ==> for alpha not in R. Broke it completely at alpha in R, so the hypothesis is essential: at alpha = 60 sigma the relaxation is SAT for all 1062 sigma in W while only 12 are circulant. Also refuted an intermediate lemma of m1 (sigma = (4,4,4,1,1,1) is solvable but not circulant), proved at most one orbit state can be circulant (so no for-all-u strengthening), and showed weakenings fail (144 of 1050 non-circulant sigma in W agree with a circulant on 5 of 6 coordinates).",
+     "coordinator_verification": [
+      "|W| = 1062 over all 6^6 sigma; exactly 12 circulant sigma, all in W",
+      "sigma = (4,4,4,1,1,1): solvable TRUE, circulant FALSE \u2014 the refutation of m1 Lemma C is real",
+      "Rel(60*sigma) == solvable(sigma) over ALL 46656 sigma, 0 mismatches: at alpha in R the ==> fails on 1050 of 1062 sigma",
+      "alpha = (5,15,85,155,225,245) deg: nu = 5, Rel SAT, not circulant \u2014 confirmed",
+      "at most one circulant orbit state: confirmed structurally, no difference of two circulant vectors is a 0/1 vector with 1..5 ones (144 pairs, 0 hits)",
+      "of 1050 non-circulant sigma in W, exactly 144 agree with a circulant on 5 of 6 coordinates \u2014 exact"
+     ],
+     "not_verified": [
+      "the 9x9 search at two critical phases (unproved, m2 says so)",
+      "pointwise-versus-a.e. divergence beyond the sampled cells",
+      "the (F) check over all 720 orders: m2 ran a 120-order sample, full run left to the parent"
+     ],
+     "note": "m2 refuted an intermediate lemma of m1 while m1 is still running. If m1 final proof of ==> uses that lemma the proof fails; I will check its statement and its use at judgement."
+    }
+   ],
+   "verdicts": [
+    {
+     "member": "m2",
+     "accept": true,
+     "kind": "adversarial + checker; ==> survived, hypothesis sharp"
+    },
+    {
+     "member": "m1",
+     "accept": false,
+     "kind": "reduction correct, but not the hand proof requested; gap = Lemma 4.1",
+     "verified": "partition |W|=1062=378+378+306 with Ap cap Am = 0; max J-chain inside W = 3 over all 720 orders; every one of the 51840 full chains inside W contains a circulant state (0 exceptions); stability: a chain inside W starting in Ap stays in Ap, likewise Am (0 violations)",
+     "defect": "Ap and Am are NOT unions of decrement-components as stated \u2014 Ap is not closed under decrement by an arbitrary unit vector; only the conditioned stability along W-chains is true, which is what the argument uses",
+     "gap": "Lemma 4.1 (the partition, the J-bound, the stability) is machine-verified only; my brief required the finite statement proved by hand",
+     "guidance": "counting part should fall directly; the J-bound is the crux; report precisely which of the three remain"
+    }
+   ],
+   "referee_state_of_the_problem": {
+    "equivalent_forms": [
+     "Rel(alpha) iff all six states sigma - chi_{P_t} lie in W",
+     "Rel(alpha) iff every component of [0,60) minus X(alpha) admits a cyclic palette selection",
+     "a relaxation field exists iff some phase orbit carries a circulant sign matrix (the ==> direction, now reduced)"
+    ],
+    "verified_statements": [
+     "the ==> holds at chain level: 51840 chains, all contain a circulant state",
+     "at alpha in R the ==> fails on 1050 of 1062 sigma, so the hypothesis is sharp"
+    ],
+    "remaining_gap": "a hand proof of Lemma 4.1 in smwgylyok/m1 (partition sizes, J-chain bound 3, stability along W-chains)"
+   },
+   "final_state_of_the_rigidity": {
+    "statement": "For alpha not in R, a relaxation field exists iff some phase orbit u carries sigma_i(u) = c + i for all i, or c - i for all i (circulant sign matrix).",
+    "proved_by_hand": [
+     "<== with an explicit field Q_k = {(k-c)+2, (k-c)-1}",
+     "Rel(alpha) iff all six chain states sigma - chi_{P_t} lie in W, with explicit a.e. bookkeeping",
+     "the two-element reduction (a decision reduction, explicitly not a palette bound)",
+     "Ap and Am lie in W with explicit fields",
+     "the chain lemma: six states inside Ap (or Am) produce a constant, hence circulant, state",
+     "the count |Ap| = |Am| = 378, Ap cap Am = empty, 1062 = 378+378+306",
+     "conditioned stability: type (Ap/Am/J) is preserved along any decrement inside W; transitions Ap->Ap 1152, Am->Am 1152, J->J 288, no cross transitions"
+    ],
+    "machine_verified_only": [
+     "J-depth: from sigma in J no six-state chain stays inside W; the longest has 3 states. This single statement is all that separates the reduction from a hand proof of ==>."
+    ],
+    "supporting_structure": [
+     "J is exactly the solvable vectors whose consecutive difference sequence mixes an up step (1,2) with a down step (4,5), or contains a 3",
+     "W cap {differences in {0,1,2}} = Ap and W cap {differences in {0,4,5}} = Am"
+    ],
+    "checked_at_chain_level": "all 51840 full chains inside W contain a circulant state, 0 exceptions \u2014 so the statement is true, only the J-depth lemma lacks a proof",
+    "sharpness": "at alpha in R the ==> fails on 1050 of 1062 sigma, so the hypothesis alpha not in R is essential",
+    "suggested_next_attack": "show that a mixed-step vector cannot survive three consecutive decrements inside W, using the difference-sequence description as a finite automaton rather than case analysis on 46656 vectors"
+   }
+  },
+  {
+   "block": "jdepth",
+   "swarm": {
+    "id": "smwh11ydr",
+    "dir": ".ultramath/smwh11ydr",
+    "members": [
+     "m1",
+     "m2",
+     "m3",
+     "m4",
+     "m5",
+     "m6"
+    ],
+    "model": "deepseek/deepseek-v4.1-flash",
+    "reasoning_effort": "max",
+    "member_steps": 150,
+    "minutes_requested": 120,
+    "budget": 1800,
+    "started_utc": "2026-11-14T23:59:00Z",
+    "deadline_utc": "2026-11-15T01:59:00Z",
+    "status": "ENDED SOLVED with 5 accepted solutions of 6 members (m1 produced nothing). Closed by finish:true.",
+    "supersedes": "smwgylyok (verified ended: solved, 1 of 2 accepted, running [])"
+   },
+   "target": "HAND PROOF of J-depth: for sigma in J no chain of six states stays inside W; the longest initial run is 3 states. This is the last gap in the ==> direction of the rigidity.",
+   "given_structure": [
+    "|W| = 1062 = |Ap| + |Am| + |J| = 378 + 378 + 306, Ap and Am disjoint, Ap from two consecutive residues of (sigma_i - i), Am from (sigma_i + i)",
+    "type preserved along decrements inside W: Ap->Ap 1152, Am->Am 1152, J->J 288, no cross transitions",
+    "chain = states sigma - P_t along a permutation of the six slots",
+    "chain lemma hand-proved: six states in Ap give a circulant state; likewise Am",
+    "all 51840 full chains inside W contain a circulant state",
+    "J = solvable sigma whose difference sequence mixes up (1,2) with down (4,5) or contains a 3; W cap diffs in {0,1,2} = Ap, W cap diffs in {0,4,5} = Am"
+   ],
+   "assignments": {
+    "m1": "finite automaton route A on cyclic difference sequences; how a decrement acts on d; show J->J cannot compose three times; characterise J states admitting two steps",
+    "m2": "independent route B from the palette side, no shared key lemma; local criterion for a decrement staying in W; derive the depth bound",
+    "m3": "exact checker under 1 s over all 46656 vectors verifying EVERY lemma of m1 and m2, with sha256 of checker and data plus a manifest",
+    "m4": "separate target: small parameterised list of forbidden circuit schemas explaining unit-propagation completeness on the 7599 UNSAT fixed-phase classes; either a genuinely small list or a PROVED negative at stated granularity",
+    "m5": "independent referee of m1 and m2, PASS/FAIL per step, own exact recomputation",
+    "m6": "adversarial hunt for a false intermediate claim in m1, m2 or m4, with exact witnesses"
+   },
+   "containment": "no Lean/builds/installs/background; exact/interval/finite computation inside the swarm encouraged; local Python handles reviewed Lean; own directories only; no duplicate staircase census; SAT never implies a colouring",
+   "accepted": [
+    {
+     "member": "m4",
+     "id": 1,
+     "accept": true,
+     "deliverable": "Small schema list for the fixed-phase census. 18 sound parameterised schemas (A/B demand equations in free labels) cover the 862 hard classes, 43 minimal propagation certificates up to granularity G (phase rotation, reflection k->-k, label renaming), with a set-cover lower bound showing 18 is minimal at G. Complete decomposition: 6737 classes die on an empty side, 4436 violate the Hall law m_0 >= 2m_3 (472 of them hard), and the remaining 390 hard classes are covered by the 18 schemas.",
+     "coordinator_verification": [
+      "7776 = 177 SAT + 7599 UNSAT, and exactly 862 hard classes with all twelve sides non-empty \u2014 exact",
+      "Hall kills exactly 472 of the hard 862, leaving 390 \u2014 exact",
+      "sigma = (0,0,0,3,3,3): d = (3,0,0,3,0,0), m_0 = 4 = 2*m_3, and it is SAT, so the law is tight there \u2014 exact",
+      "schema S1 (A_k = A_{k+1} = {x}) covers exactly 664 of 862 \u2014 exact",
+      "schema S3 (B_{k-1}={x}, B_k={x,y}, B_{k+1}={y}) covers exactly 90 \u2014 exact",
+      "the literal reading of \"Q_k meets A_k\" is confirmed: an empty side kills the class, which is why the relaxed 5576-SAT reading is wrong"
+     ],
+     "correction_given": "m4 lists the Hall hand proof as not done; it is already banked in .ultramath/smwgui6l9/m1/theorem.md (twelve demands, per-label capacity 3/2/2/0 summing to 12 + m_0 - 2m_3). Propagation completeness is likewise already verified twice. Only the hand proofs of propagation completeness remain open on that target.",
+     "not_verified": [
+      "43 minimal certificates up to G",
+      "optimality of 18 and the pairwise-non-co-coverable classes behind the lower bound",
+      "the 754-to-43 collapse under G"
+     ]
+    },
+    {
+     "member": "m2",
+     "id": 2,
+     "accept": true,
+     "deliverable": "ROUTE B proof of J-depth. Palette-side structure: palettes shrink to pairs, symmetric palettes P_k = {x_k, x_{k+3}} are exactly SDRs of (A_0..A_5); a decrement at row i touches only phases s_i-1 and s_i+2 and only labels {i,i+1}. Criterion: sigma - e_i in W iff some SDR x has x_{(sigma_i-1) mod 6} not in {i,i+1}. Rank r(sigma) = #{i : sigma - e_i in W} is at most 2 on J and strictly decreases on J->J steps, so a J-run has at most 3 states; depth 3 attained at (2,2,4,0,5,3). Four small finite lemmas machine-checked (FL1-prime 1836 cases, FL2 18 sinks, FL3, FL4).",
+     "coordinator_verification": [
+      "SDR criterion: 6372 tests over all sigma in W and all six rows, 0 violations (iff, both directions)",
+      "exactly 18 sigma in W admit no SDR, all of type J, and all are sinks (no decrement stays in W)",
+      "SDR-count distribution on J = {0: 18, 1: 288}, so FL4 holds",
+      "rank distribution on J = {0: 90, 1: 144, 2: 72}, so FL3 holds",
+      "J->J rank transitions exactly (2->1) 144 and (1->0) 144, no others \u2014 the crux",
+      "(2,2,4,0,5,3) is in W, type J, rank 2 \u2014 depth exactly 3"
+     ],
+     "caveats": [
+      "checker runs 8 s, over the sub-second budget: parent-side script",
+      "proof.md sections 1-4 not re-derived line by line, only their consequences",
+      "the 3-distinct-usable-rows contradiction not checked in strongest form"
+     ],
+     "consequence": "J-depth is now PROVED on route B. The ==> direction of the rigidity is complete modulo four small finite lemmas. m1 route A still running as the independence check."
+    },
+    {
+     "member": "m5",
+     "id": 3,
+     "accept": true,
+     "deliverable": "Independent referee pass. Rebuilt the object from the raw definitions, re-derived m2 route B step by step (PASS on every step, no failing step), re-ran m2 checker from a copy with matching sha. Found one bookkeeping defect: FL4 is labelled \"not needed\" but is used at step 3->4. Refuted m1 unqualified identity J = delta-word containing a 2 or mixing {0,1} with {3,4} with witness (0,0,0,0,0,3). Corrections: per-sigma depth is not always 3; both-sides-nonempty is necessary not sufficient (6234 pass, 1062 SAT).",
+     "coordinator_verification": [
+      "6234 sigma over 46656 have all twelve sides non-empty, and exactly 1062 of them are in W \u2014 exact",
+      "J chain depth distribution {1: 90, 2: 144, 3: 72} and J out-degree {0: 90, 1: 144, 2: 72} \u2014 so depth is at most 3 with the sup attained, NOT 3 for every sigma",
+      "witness (0,0,0,0,0,3): difference sequence (3,0,0,0,0,3) contains a 3 yet the sigma is not in W, so m1 unqualified identity is false \u2014 exact",
+      "J digraph 72 diamonds + 18 isolated sinks is consistent with the out-degree counts and with no three-edge J path"
+     ],
+     "correction_propagated": "RECORD FIX: earlier entries in this block and the previous one said the longest J-run \"is exactly 3\" or \"has 3 states\". The correct statement is AT MOST 3, with the supremum attained. Per-sigma depths are 1 (90 states), 2 (144), 3 (72).",
+     "not_checked_by_m5": [
+      "m4 (since accepted on my own verification)",
+      "m3 certificate layer"
+     ]
+    },
+    {
+     "member": "m6",
+     "id": 4,
+     "accept": true,
+     "deliverable": "HAND PROOF of J-depth by the difference-sequence route. Lemma 0 palette normal form; Lemma 1 closed form A_k = {x : sigma_x, sigma_{x-1} not in T_k} with T_k = {k-2,k-1,k}; Lemma 2 sigma -> d has kernel the six constants so |D(X)| = |X|/6; Lemma 3 the decrement symmetries G = <R,M> of order 12, with the NEGATION TRAP (N preserves W and J but destroys decrements, so the 4-orbit quotient is bogus); Lemma 4 D(J) is exactly 51 words in five G-orbits of sizes 12,12,12,12,3; Lemma 6 the quotient digraph A->C, B->A, B->D, D->C with C and E isolated, longest path 2 edges, lifted by G-transitivity. Hence at most 3 chain states inside W from J, attained.",
+     "coordinator_verification": [
+      "|D(J)| = 51 and the 51 listed words equal D(J) as sets \u2014 exact",
+      "five orbits under G=<R,M> of sizes {3,12,12,12,12} \u2014 exact",
+      "out-degrees by orbit A:1, B:2, C:0, D:1, E:0 with the stated targets, total edges 48 \u2014 exact",
+      "orbit-wise depths reproduce my independently computed sigma-level distribution {1:90, 2:144, 3:72} exactly",
+      "the negation trap witness verified: sigma0=(0,1,3,4,2,0) has d=(0,1,2,1,4,4) with out_J {0,3}; N(sigma0)=(0,5,3,2,4,0) has d=(0,5,4,5,2,2) with out_J empty"
+     ],
+     "adversarial_findings_recorded": [
+      "J-depth and type preservation FAIL at other parameters: at m=7, w=3 the longest in-W run from a J state is 8, so the statement is specific to six slots and a three-window",
+      "propagation decomposition 6737 empty-row + 862 AC + 177 surviving, AC refutes no SAT class \u2014 cross-confirms m4"
+     ],
+     "caveats": [
+      "proof takes (G1) and (G2) as machine-verified inputs, declared; I verified both independently",
+      "checker runs 4.2 s, parent-side script",
+      "the |D(J)| = 51 equality leans on the kernel argument Lemma 2(i), not on eyeballing the list"
+     ]
+    },
+    {
+     "member": "m3",
+     "id": 5,
+     "accept": true,
+     "deliverable": "Certificate layer. jdepth_check.py: 55 assertions (A01-A31), 12 mutation controls all LIVE, 0.752 s, stdlib only, exit 0, deterministic. sha256 jdepth_check.py = 29f7001b..., certificate.json = 946142fc... . Each lemma is a named clause with its own corrupted-input control. Independently recomputes 1062, 378/378 disjoint, 306, transitions 1152/1152/288 with no cross-type edge, 51840 chains each with a circulant of its own type, max initial W-run = 3; certifies A_k/B_k in terms of the sign matrix; I(sigma) form and r = |I|+1 strictly decreasing on J->J; the local rank table valid on J only; the 18 SDR-less sinks = the 18 J-vectors with a 3 in d.",
+     "coordinator_verification": [
+      "ran the checker myself: exit 0, ALL PASS, 12 LIVE controls, 0.752 s, inside budget",
+      "both published sha256 match the files on disk and the hashes the script prints",
+      "recomputations agree with mine independently across all listed counts",
+      "the local rank table agrees with truth on every sigma in J and fails on 756 vectors of W, so the J-restriction warning is correct",
+      "I(sigma) form: TRUE on J, FALSE over W (648 counterexamples, all Ap/Am) \u2014 a scope slip in the summary sentence, not a mathematical error"
+     ],
+     "defects": [
+      "the sentence \"I(sigma) lies in {empty,{i},{i,i+3}}\" omits the J qualifier it correctly applies one line earlier to the rank table",
+      "the checker rewrites certificate.json on every run (identical content, hash unchanged) without saying so"
+     ]
+    }
+   ],
+   "member_states": {
+    "m1": "ended, direction d4 (route C nested-subset) ABANDONED with no submission \u2014 the independence check for J-depth did not happen",
+    "m2": "stopped, accepted: route B proof of J-depth",
+    "m3": "running: certificate-carrying verification with canonical orbit representatives and a closed-form W predicate",
+    "m4": "stopped, accepted: 18-schema list with optimality at granularity G",
+    "m5": "running: independent referee, own model built from the definitions",
+    "m6": "running: parameter-deformation falsification across (modulus, window, n), hunting universal-quantifier failures and boundary cases"
+   },
+   "risk_noted": "J-depth now rests on ONE proof route (m2 route B) plus my independent verification of every finite step, not on two independent routes as the brief required. The 6-member split was designed to give m1 and m2 separate routes; m1 produced nothing, so the redundancy is gone. m5 (referee) and m3 (certificates) may supply partial corroboration, but neither is a second construction.",
+   "block_result": {
+    "accepted": 5,
+    "members": 6,
+    "primary_target_met": "J-depth is proved by TWO independent routes: m2 (palette side, SDR criterion + rank strictly decreasing) and m6 (difference side, D(J) in five orbits + five-node quotient digraph), with m3 supplying a certificate layer (55 assertions, 12 live mutation controls, sha256, 0.75 s) and m5 an independent referee pass (PASS on m2 step by step, one bookkeeping defect found).",
+    "secondary_result": "m4 produced an 18-schema list covering the 862 hard fixed-phase UNSAT classes, with a set-cover lower bound at granularity G, plus the complete decomposition 6737 empty-row + 4436 Hall-violating (472 hard) + 18 schemas on the remaining 390.",
+    "corrections_banked": [
+     "J-depth is AT MOST 3 with the supremum attained; per-sigma depths 1 (90), 2 (144), 3 (72). The phrase \"exactly 3 for every rho\" is false.",
+     "the negation N(sigma)_i = -sigma_i preserves W and J but NOT the decrement structure, so the 4-orbit quotient is bogus; G = <R,M> of order 12 is the right group",
+     "the local rank table and the I(sigma) form hold on J only, not on W",
+     "m1 unqualified identity \"J = difference word with a 2 or mixing {0,1} with {3,4}\" is false; witness (0,0,0,0,0,3)"
+    ],
+    "scoping": "J-depth and type preservation are NOT generic in the parameters: at (m,w) = (7,3) J-depth fails outright (longest in-W run from a J state is 8). Six slots and a three-window are essential.",
+    "still_open": [
+     "a single document assembling the ==> direction of the rigidity end to end",
+     "a Lean build of any of this (all local, none run)"
+    ]
+   }
+  }
+ ]
+}

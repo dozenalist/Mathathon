@@ -92366,19 +92366,19 @@
     },
     {
       "path": "import-20261115/work/research-desk/BANKED.md",
-      "bytes": 3005,
-      "sha256": "11eb30e070d5dc1d4b26248dcba5bfd481e132162bdc6927d33d7d255b7b61a5",
+      "bytes": 4117,
+      "sha256": "4b808ce3b38631d3ca13769909522087455dfbbcca4b14510c172d342ec506b3",
       "source": "research-workspace/work/research-desk/BANKED.md",
-      "sourceModifiedUtc": "2026-11-14T23:49:28.351Z",
-      "capturedAtUtc": "2026-11-15T00:17:44.200Z"
+      "sourceModifiedUtc": "2026-11-15T01:01:44.229Z",
+      "capturedAtUtc": "2026-11-15T01:03:16.687Z"
     },
     {
       "path": "import-20261115/work/research-desk/LOG.md",
-      "bytes": 5829,
-      "sha256": "bd2f55785a239bb2ad0885388014f0a2a59df46217a2bd528e979fd8b5136598",
+      "bytes": 7207,
+      "sha256": "9d59092dd3e19302af52029b7c83be60e7b7056f0e9dfa48d32b0bedb32d51e1",
       "source": "research-workspace/work/research-desk/LOG.md",
-      "sourceModifiedUtc": "2026-11-15T00:18:17.218Z",
-      "capturedAtUtc": "2026-11-15T00:23:02.218Z"
+      "sourceModifiedUtc": "2026-11-15T01:01:59.054Z",
+      "capturedAtUtc": "2026-11-15T01:03:16.687Z"
     },
     {
       "path": "import-20261115/work/research-desk/G3-r2/G3-ArcCover-r2.lean",
@@ -92694,11 +92694,11 @@
     },
     {
       "path": "import-20261115/work/automation-supervisor/research-plan.json",
-      "bytes": 1241,
-      "sha256": "4d3dd58ecfc1fc1454f364d82bc7a94a89c7f826521ab685b36029e8df12859f",
+      "bytes": 1294,
+      "sha256": "2d2caa285e21446eab02b463fca39dea7c02685482ccce0e87d2d06e0f502525",
       "source": "research-workspace/work/automation-supervisor/research-plan.json",
-      "sourceModifiedUtc": "2026-11-15T00:17:30.614Z",
-      "capturedAtUtc": "2026-11-15T00:17:44.200Z"
+      "sourceModifiedUtc": "2026-11-15T00:57:12.192Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
     },
     {
       "path": "import-20261115/outputs/ASTRA-DISJUNCTIVE-PALETTE-A8.txt",
@@ -92830,18 +92830,18 @@
     },
     {
       "path": "import-20261115/work/cloud-supervisor/LOG.md",
-      "bytes": 5757,
-      "sha256": "9d66d7dabb4f66a71b4d9193d02737730a82df977f0bcd5ce53f27c40bc003ea",
+      "bytes": 7720,
+      "sha256": "397340290552e9ec736bbf6c58d4a8c453d86ea5eb8506016d9f7efd7738d442",
       "source": "research-workspace/work/cloud-supervisor/LOG.md",
-      "sourceModifiedUtc": "2026-11-15T00:20:01.301Z",
-      "capturedAtUtc": "2026-11-15T00:23:02.218Z"
+      "sourceModifiedUtc": "2026-11-15T01:01:29.023Z",
+      "capturedAtUtc": "2026-11-15T01:03:16.687Z"
     },
     {
       "path": "import-20261115/IMPORT-NOTES.md",
-      "bytes": 26317,
-      "sha256": "5742c338b704d8f577923cd6f0f31dc7fc5ffc8c6aebf90629419434c201a0e9",
+      "bytes": 32393,
+      "sha256": "ef0f388c9b05c5a58a418daae3f2c40f8c76ec62ecc273a8619e0fe27f4c54a0",
       "source": "results-desk (generated)",
-      "capturedAtUtc": "2026-11-15T00:23:02.218Z"
+      "capturedAtUtc": "2026-11-15T01:03:16.687Z"
     },
     {
       "path": "import-20261115/work/openmath-supervisor/checkins/20261114T191820Z/inner-outer-orbit-certificates.json",
@@ -92914,6 +92914,206 @@
       "source": "research-workspace/work/openmath-supervisor/checkins/20261114T183522Z/TWO-TRIANGLE.md",
       "sourceModifiedUtc": "2026-11-14T19:02:14.405Z",
       "capturedAtUtc": "2026-11-15T00:23:02.218Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/G1-r2/G1-Finish-mB-r2.lean",
+      "bytes": 18901,
+      "sha256": "fd3549e5acccd7b5ed18dbcc09c0e91c0dc03e638b6ee48d2efea734e27385d4",
+      "source": "research-workspace/work/research-desk/G1-r2/G1-Finish-mB-r2.lean",
+      "sourceModifiedUtc": "2026-11-14T23:47:40.299Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/G1-r2/compile.log",
+      "bytes": 1147,
+      "sha256": "fbf7d62384b9f62cf60b14cf64f30f35a71fac30469ed4ff5bfea8df5a37e572",
+      "source": "research-workspace/work/research-desk/G1-r2/compile.log",
+      "sourceModifiedUtc": "2026-11-14T23:49:18.090Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/Bridge-r2-G3/A6-Bridge-r2-G3.lean",
+      "bytes": 44390,
+      "sha256": "2e04f2115ac3b561f59946c652d8010005f88da57fe3eea782a0d5ef71e77334",
+      "source": "research-workspace/work/research-desk/Bridge-r2-G3/A6-Bridge-r2-G3.lean",
+      "sourceModifiedUtc": "2026-11-15T00:18:44.744Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/Bridge-r2-G3/compile.log",
+      "bytes": 847,
+      "sha256": "b670399ddedbfdc832cd408da6cb7824f1c3471351006cec790ae77879baca2c",
+      "source": "research-workspace/work/research-desk/Bridge-r2-G3/compile.log",
+      "sourceModifiedUtc": "2026-11-15T00:32:09.584Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/CyclicCore-r2/CyclicCoreConsumerFromV2-r2.lean",
+      "bytes": 8165,
+      "sha256": "1212d4e1825c0b652219956445909cbaa96700f3ad7d1016737b369c515a61cc",
+      "source": "research-workspace/work/research-desk/CyclicCore-r2/CyclicCoreConsumerFromV2-r2.lean",
+      "sourceModifiedUtc": "2026-11-15T00:19:08.294Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/CyclicCore-r2/compile.log",
+      "bytes": 804,
+      "sha256": "b90e12cf06aa5cf556c3c11eb5c4375d12688dfeed9eee1d8abcdaaa4d2cccd2",
+      "source": "research-workspace/work/research-desk/CyclicCore-r2/compile.log",
+      "sourceModifiedUtc": "2026-11-15T00:34:23.093Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/FiveSupport-swap/swap.log",
+      "bytes": 10430,
+      "sha256": "41d849c3929bf37bf3bb8cdf365d360d1e0567d87142b458a2f8521afff9c419",
+      "source": "research-workspace/work/research-desk/FiveSupport-swap/swap.log",
+      "sourceModifiedUtc": "2026-11-15T00:37:41.533Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/automation-supervisor/inbox/20261115T002122-download-1-FiveSupport-swap.lean",
+      "bytes": 27124,
+      "sha256": "3291ad95a0c3cc82b71df83ef16ebb63e6fe0691721c391815e7298dc3c732ff",
+      "source": "research-workspace/work/automation-supervisor/inbox/20261115T002122-download-1-FiveSupport-swap.lean",
+      "sourceModifiedUtc": "2026-11-15T00:24:18.286Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/automation-supervisor/inbox/20261115T002122-download-2-FiveSupport-swap.diff",
+      "bytes": 6625,
+      "sha256": "a33fa8dbccaae12b8f885dcae96ea1da7f017b2b761e531150ea07488268b9ba",
+      "source": "research-workspace/work/automation-supervisor/inbox/20261115T002122-download-2-FiveSupport-swap.diff",
+      "sourceModifiedUtc": "2026-11-15T00:24:18.288Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/automation-supervisor/inbox/20261115T002122-download-3-REFEREE.md",
+      "bytes": 25682,
+      "sha256": "4aa0931aefc47eb10ef7301b7309efe51b0161d63f29aa4c279390a223d48ced",
+      "source": "research-workspace/work/automation-supervisor/inbox/20261115T002122-download-3-REFEREE.md",
+      "sourceModifiedUtc": "2026-11-15T00:24:18.291Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/automation-supervisor/inbox/20261115T002122-download-5-STATUS.json",
+      "bytes": 69078,
+      "sha256": "ccc9384768d9534a579ab4045fe30742a2f910dd2405bc2028ae60c0c5ccfbc6",
+      "source": "research-workspace/work/automation-supervisor/inbox/20261115T002122-download-5-STATUS.json",
+      "sourceModifiedUtc": "2026-11-15T00:24:18.296Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/automation-supervisor/inbox/20261114T205744-download-5-ALL-PHASE-REFEREE.md",
+      "bytes": 10612,
+      "sha256": "087e6efc55b766cdf07bd4a8abd9c4f77896a300bcc6010a6d87ad72783c33e2",
+      "source": "research-workspace/work/automation-supervisor/inbox/20261114T205744-download-5-ALL-PHASE-REFEREE.md",
+      "sourceModifiedUtc": "2026-11-14T21:00:18.587Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/automation-supervisor/replies/20261115T002122.json",
+      "bytes": 3871,
+      "sha256": "d3add921516ef36bb467c50447e99339f7432904ce0994a3e9d79cb71f883b76",
+      "source": "research-workspace/work/automation-supervisor/replies/20261115T002122.json",
+      "sourceModifiedUtc": "2026-11-15T00:24:18.334Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/automation-supervisor/replies/20261115T005413.json",
+      "bytes": 3303,
+      "sha256": "a29f684e3e0e6c68328d15fd182a9ac46052ed3e6597228da44686e740fa511d",
+      "source": "research-workspace/work/automation-supervisor/replies/20261115T005413.json",
+      "sourceModifiedUtc": "2026-11-15T00:57:12.246Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/results-desk/L-R1/L-R1-QUEUE.md",
+      "bytes": 2065,
+      "sha256": "685ea860f1a2f695b709d6e1d86f77e220c26c5bd661468c6f8b827dbc708f99",
+      "source": "research-workspace/work/results-desk/L-R1/L-R1-QUEUE.md",
+      "sourceModifiedUtc": "2026-11-15T00:58:53.392Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/results-desk/L-R1/R1-1.txt",
+      "bytes": 3964,
+      "sha256": "8a68f825005a91644cb3363627eb25a41ee0c9d0441279a2222c43ce174a9ac9",
+      "source": "research-workspace/work/results-desk/L-R1/R1-1.txt",
+      "sourceModifiedUtc": "2026-11-15T00:39:13.847Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/results-desk/L-R1/R1-2.txt",
+      "bytes": 3572,
+      "sha256": "b3ae2032ed83e40c417222310b770e75a6bfb9ec0303b8ba650bd8226c829ede",
+      "source": "research-workspace/work/results-desk/L-R1/R1-2.txt",
+      "sourceModifiedUtc": "2026-11-15T00:41:08.582Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/results-desk/L-R1/R1-3.txt",
+      "bytes": 4202,
+      "sha256": "94b2f187c4151e6659a11543db6d1284d2a39a7d9d2eb36209a0829b97732822",
+      "source": "research-workspace/work/results-desk/L-R1/R1-3.txt",
+      "sourceModifiedUtc": "2026-11-15T00:41:08.927Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/results-desk/L-R1/R1-4.txt",
+      "bytes": 3961,
+      "sha256": "796478a36119a6cbddabb51a3ac2dc44a5c17ab172ac977ee813e28347828e60",
+      "source": "research-workspace/work/results-desk/L-R1/R1-4.txt",
+      "sourceModifiedUtc": "2026-11-15T00:58:25.469Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/results-desk/L-R1/SENT.log",
+      "bytes": 88,
+      "sha256": "42bdf9ab79bf66de5eef56ab6e1642afd94a4e5ffea3f9f4c6ddabf18a5ea29f",
+      "source": "research-workspace/work/results-desk/L-R1/SENT.log",
+      "sourceModifiedUtc": "2026-11-15T00:39:30.117Z",
+      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/FiveSupport-swap/FiveSupportSwapR1.lean",
+      "bytes": 25380,
+      "sha256": "e531cf133a213e524b00008a9956c9206d98f09fb1a0faff3ae5ff35080f2c9f",
+      "source": "research-workspace/work/research-desk/FiveSupport-swap/FiveSupportSwapR1.lean",
+      "sourceModifiedUtc": "2026-11-15T00:40:42.206Z",
+      "capturedAtUtc": "2026-11-15T01:03:16.687Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/FiveSupport-swap/swapR1.log",
+      "bytes": 10325,
+      "sha256": "7bbaece10131d754ed62845653384de4a7534b9a8b9e0a7c07b25a319cc09092",
+      "source": "research-workspace/work/research-desk/FiveSupport-swap/swapR1.log",
+      "sourceModifiedUtc": "2026-11-15T01:01:08.071Z",
+      "capturedAtUtc": "2026-11-15T01:03:16.687Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/FiveSupport-swap/orig.log",
+      "bytes": 10103,
+      "sha256": "749c21cfff0461ad92f6640ad7e8c82a18386f9b625cc9ef3feeb75d928012a9",
+      "source": "research-workspace/work/research-desk/FiveSupport-swap/orig.log",
+      "sourceModifiedUtc": "2026-11-15T00:39:27.517Z",
+      "capturedAtUtc": "2026-11-15T01:03:16.687Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/FiveSupport-swap/OrigChecks.lean",
+      "bytes": 1697,
+      "sha256": "235cefcf2e8c0923843244e49d0849a24eac8d42ff56d2da32e8ec05d84f6e11",
+      "source": "research-workspace/work/research-desk/FiveSupport-swap/OrigChecks.lean",
+      "sourceModifiedUtc": "2026-11-15T00:35:08.221Z",
+      "capturedAtUtc": "2026-11-15T01:03:16.687Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/FiveSupport-swap/FiveSupportSwap.lean",
+      "bytes": 28320,
+      "sha256": "aa0c4cb692f6e8e8a131825050e02bc433dd9d201b3bdc1b0eadf099de933e7e",
+      "source": "research-workspace/work/research-desk/FiveSupport-swap/FiveSupportSwap.lean",
+      "sourceModifiedUtc": "2026-11-15T00:35:08.219Z",
+      "capturedAtUtc": "2026-11-15T01:03:16.687Z"
     }
   ]
 }
