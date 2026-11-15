@@ -10,7 +10,7 @@ Each status label comes from [RESULTS-LEDGER.md](RESULTS-LEDGER.md), which gives
   - the encoding refactor removes 126 lines ([ENC-R4](RESULTS-LEDGER.md#enc-r4));
   - the three-centre integration removes 24 more ([R1](RESULTS-LEDGER.md#r1)).
   
-  R1's contract and dependency gates pass ([R1-GATES](RESULTS-LEDGER.md#r1-gates), `TESTED_FINITE`). Two further deletion passes are in progress and are not counted: [S1](RESULTS-LEDGER.md#s1) (−265 lines, `CANDIDATE`) and S2, which is still compiling and has no ledger entry yet.
+  R1's contract and dependency gates pass ([R1-GATES](RESULTS-LEDGER.md#r1-gates), `TESTED_FINITE`). Two further deletion passes are in progress and are not counted: [S1](RESULTS-LEDGER.md#s1) (−265 lines, `CANDIDATE`), and [S2](RESULTS-LEDGER.md#s2), which is S1 plus more deletions (−727 lines against R1; `CANDIDATE`, gates pending).
 - **CC60, a closed $60^\circ$ cone obstruction** ([CC60](RESULTS-LEDGER.md#cc60), `LEAN_VERIFIED`). Suppose sets meet at one centre in a weak measurable colouring, their approach directions fit in a closed $60^\circ$ arc, and each set excludes some labels from its straddle region. Then at least three labels are excluded by none of them.
 - **Refereed paper results** (`PROVED_PAPER_REVIEWED`):
   - CC60 cannot be widened for arbitrary finite palettes ([SHARPNESS-20](RESULTS-LEDGER.md#sharpness-20), a 20-colour construction).
