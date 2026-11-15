@@ -1,5 +1,5 @@
 name = "mathathon"
-defaultTargets = ["Mathathon"]
+defaultTargets = ["Mathathon", "ZetaFive"]
 
 [[require]]
 name = "mathlib"
@@ -16,3 +16,7 @@ name = "Mathathon"
 # Build:  lake build RogersRamanujan
 [[lean_lib]]
 name = "RogersRamanujan"
+
+# Shared Hankel-polynomial framework and zeta-index-dependent family.
+[[lean_lib]]
+name = "ZetaFive"
