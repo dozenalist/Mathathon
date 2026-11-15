@@ -1,6 +1,6 @@
 # Import 2026-11-15 (results desk)
 
-Captured 2026-11-15T03:28:19.146Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
+Captured 2026-11-15T03:29:55.786Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
 
 ## Banked Lean results: exit code and `#print axioms` excerpts
 
@@ -336,7 +336,8 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/automation-supervisor/replies/20261115T024133.json` | 3454 | `bb174bcb83faaff428201fefd877b3032c4f1674440f6d1f2f70f715a726b598` |
 | `work/automation-supervisor/replies/20261115T025639.json` | 4208 | `813afa68526ba1c06666cac03ff2f2ece5eacf04939710425e0c9791ac7ebd44` |
 | `work/automation-supervisor/replies/20261115T031143.json` | 3618 | `a48e073f270b6f30c19c023d70cab95529efb57e8eef59117b244c2439175377` |
-| `work/automation-supervisor/research-plan.json` | 1192 | `5697373f373a8ce36f91041a011bb224630127943efa1ab8d699fc9ad4063377` |
+| `work/automation-supervisor/replies/20261115T032647.json` | 4159 | `c6b695dc42397184e77a3f083f17d3778af9747d9c32d189e91874ccacb04113` |
+| `work/automation-supervisor/research-plan.json` | 1235 | `624ffecab16a95ef6f34f653b8c9582b788d67e01f11d18796f4f1ae17b3248b` |
 | `work/simplification-desk/s1/logs/01-States.log` | 1250 | `dd82f0b2a9712e7059fb82e748346594d2c6b441782f07389899abcd7a45eba3` |
 | `work/simplification-desk/s1/logs/02-BoundaryTrace.log` | 1257 | `0d94aaaf275e19626c107e8b0fcacc0668f3f36cd3897eb5e7da933e8095b029` |
 | `work/simplification-desk/s1/logs/03-AngularBoundary.log` | 1259 | `53844dfe64b3bd7b29d3ea921ec358982420d7c1303955aa8cbccc7371712382` |
@@ -386,6 +387,7 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/simplification-desk/s1/logs-r2/17-DiskExtension.log` | 1260 | `a7f31254ef2f3122e3ffb22ff962a0c426722d5dbbcbf0bee424d62779364e91` |
 | `work/simplification-desk/s1/logs-r2/18-GraphCuts.log` | 1257 | `4ac39cf249625d1cb593b824477b02bd587a941be3629782e5543dca9e74c513` |
 | `work/simplification-desk/s1/logs-r2/19-HoleApproximation.log` | 1265 | `f8ae27beee055dc4869d6b7b68f4f200b199a318188fafffdbb21217585248b6` |
+| `work/simplification-desk/s1/logs-r2/20-GraphPatches.log` | 1259 | `3e4bd735c2c9eea6271a218d33151eae522904dfe7b57f0488d06a15e949beb9` |
 | `work/simplification-desk/s1/MANIFEST.md` | 4411 | `0105cf6203b8a1da174e5196ab58a83df5a2b01c799085b0149840b5c58e0c57` |
 | `work/simplification-desk/s2/MANIFEST.md` | 7823 | `2a1f2db900a2f2401795b5270aaf3d5003655d6feb73b3c98e03ca6bb408320c` |
 | `work/simplification-desk/s2/AxiomRoots.lean` | 3814 | `4dda63592232d24a6da91e045980d93e2761c14488fcd427c82c3baa7d3842f5` |

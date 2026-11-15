@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "builtAtUtc": "2026-11-15T03:28Z",
+  "builtAtUtc": "2026-11-15T03:30Z",
   "workspaceRoot": "I = C:/Users/jarom/Documents/Codex/2026-11-13/i (research workspace, outside the repo)",
   "statusVocabulary": [
     "LEAN_VERIFIED",
@@ -1427,7 +1427,7 @@
         {
           "role": "import validation record",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "05b983f982845df869751e39011f405d6248038853062fcecbd341011b490960"
+          "sha256": "6fa8400276b52c98a02b6f77f4f48be05ec8ff05b7f862ace84a4582d72e3135"
         }
       ]
     },
@@ -2776,7 +2776,7 @@
         {
           "role": "recorded run (18:58Z)",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "05b983f982845df869751e39011f405d6248038853062fcecbd341011b490960"
+          "sha256": "6fa8400276b52c98a02b6f77f4f48be05ec8ff05b7f862ace84a4582d72e3135"
         }
       ]
     },

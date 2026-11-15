@@ -92694,11 +92694,11 @@
     },
     {
       "path": "import-20261115/work/automation-supervisor/research-plan.json",
-      "bytes": 1192,
-      "sha256": "5697373f373a8ce36f91041a011bb224630127943efa1ab8d699fc9ad4063377",
+      "bytes": 1235,
+      "sha256": "624ffecab16a95ef6f34f653b8c9582b788d67e01f11d18796f4f1ae17b3248b",
       "source": "research-workspace/work/automation-supervisor/research-plan.json",
-      "sourceModifiedUtc": "2026-11-15T03:13:39.511Z",
-      "capturedAtUtc": "2026-11-15T03:15:21.555Z"
+      "sourceModifiedUtc": "2026-11-15T03:29:09.691Z",
+      "capturedAtUtc": "2026-11-15T03:29:55.786Z"
     },
     {
       "path": "import-20261115/outputs/ASTRA-DISJUNCTIVE-PALETTE-A8.txt",
@@ -92838,10 +92838,10 @@
     },
     {
       "path": "import-20261115/IMPORT-NOTES.md",
-      "bytes": 58813,
-      "sha256": "e6642f59af41508d6c6e542861aa18fe6d7f22a3b125657955a02130a0fef4f3",
+      "bytes": 59089,
+      "sha256": "9a8ba66e2da958046ffbe8dac398d19bbb71c1d6aaec1670fad9be2d28e56f45",
       "source": "results-desk (generated)",
-      "capturedAtUtc": "2026-11-15T03:28:19.146Z"
+      "capturedAtUtc": "2026-11-15T03:29:55.786Z"
     },
     {
       "path": "import-20261115/work/openmath-supervisor/checkins/20261114T191820Z/inner-outer-orbit-certificates.json",
@@ -94490,6 +94490,22 @@
       "source": "research-workspace/work/simplification-desk/s2/logs-attempt1-failed-omit-prefix/12-RelativeCenters.log",
       "sourceModifiedUtc": "2026-11-15T02:59:42.733Z",
       "capturedAtUtc": "2026-11-15T03:28:19.146Z"
+    },
+    {
+      "path": "import-20261115/work/automation-supervisor/replies/20261115T032647.json",
+      "bytes": 4159,
+      "sha256": "c6b695dc42397184e77a3f083f17d3778af9747d9c32d189e91874ccacb04113",
+      "source": "research-workspace/work/automation-supervisor/replies/20261115T032647.json",
+      "sourceModifiedUtc": "2026-11-15T03:29:09.725Z",
+      "capturedAtUtc": "2026-11-15T03:29:55.786Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s1/logs-r2/20-GraphPatches.log",
+      "bytes": 1259,
+      "sha256": "3e4bd735c2c9eea6271a218d33151eae522904dfe7b57f0488d06a15e949beb9",
+      "source": "research-workspace/work/simplification-desk/s1/logs-r2/20-GraphPatches.log",
+      "sourceModifiedUtc": "2026-11-15T03:29:29.894Z",
+      "capturedAtUtc": "2026-11-15T03:29:55.786Z"
     }
   ]
 }
