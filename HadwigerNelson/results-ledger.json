@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "builtAtUtc": "2026-11-15T03:25Z",
+  "builtAtUtc": "2026-11-15T03:28Z",
   "workspaceRoot": "I = C:/Users/jarom/Documents/Codex/2026-11-13/i (research workspace, outside the repo)",
   "statusVocabulary": [
     "LEAN_VERIFIED",
@@ -61,6 +61,12 @@
         "`CANDIDATE`: rebuild and signature tables check out; the archived root-axiom and signature-dump logs are failed reruns",
         "**−265 claimed and recounted** (14 files)",
         "would make the realised total −415; not counted until the axiom print is on file"
+      ],
+      [
+        "[S2](#s2) S1 + 55 more unreachable declarations in the spectral, compact-factor and palette layers",
+        "`CANDIDATE`: gates not yet run (first build attempt failed and was fixed)",
+        "**−727 vs R1 claimed and recounted** (41 files; −462 beyond S1)",
+        "would make the realised total −877 (−126 −24 −727); not counted"
       ],
       [
         "[JOINT-SUPPORT](#joint-support) joint-pair support theorem",
@@ -623,7 +629,7 @@
       "statement": "On top of the accepted R1 tree: 25 declarations unreachable from every root are deleted (e.g. States varying_pullback_L1, near_identity_circle_in, circleEndpoint_identity_neighborhood; BoundaryTrace unit_antipodes_of_no_positive, four_split_antipodes; CyclicCore cyclicCore_closed), `five_forced_label` is replaced by `five_state_forced_label`, and `five_support_step_ban` is rewritten branch-free under its original name; empty sections removed. 14 files change: States 566→461, BoundaryTrace 367→313, CyclicCore 280→256, FiveSupport 354→337, ContinuumLimits 353→337, Interfaces 528→517, DiskExtension 611→603, AngularBoundary 503→497, FourContinuity 509→503, GraphRealization 415→410, HoleApproximation 328→323, GraphCuts 314→310, Exclusion 165→163, Sectors 453→451: net −265 physical (−255 code).",
       "hypotheses": "Every remaining declaration keeps its exact statement (claimed and, from the signature tables, confirmed for 3,094 declarations incl. five_support_step_ban, no_proper_five_coloring, five_opposite_contacts_false).",
       "evidence": "Simplification desk: 27-module closure rebuilt from the S1 sources, logs 01–27 exit 0; claims 14 roots on standard axioms and an identical signature dump.",
-      "checked": "2026-11-15 ~02:50Z. PASSED: (1) the 14 S1 sources hash to the sha256 values in BANKED-S1.json and their physical line counts recount to exactly −265; the other 13 closure modules are byte-identical to R1. (2) All 27 module logs show exit 0, no error or sorry, and a logged sha256 equal to the current S1 source. (3) Comparing sigs-s1.tsv with sigs-r1.tsv myself: 3,094 common declarations identical in kind, levels, type hash, binder flags and value hash; 28 removed (26 intended + 2 auto-generated equation lemmas); 1 added (five_state_forced_label). NOT ON FILE: logs/axiomroots.log (started 02:01:31Z), logs/sigdump-s1.log (02:02:04Z) and logs/deadaudit14-s1.log all record exit 1 \"unknown module prefix OAI\", i.e. reruns after s1/build was deleted; they overwrote any passing runs. So the root-axiom print for S1 has no surviving evidence, and the provenance of sigs-s1.tsv (written 02:01:18Z) has no passing log. Requested from the simplification desk, which confirmed the incident (a surviving inner shell of a stopped chain re-ran the gates after s1/build was deleted, 02:45:47Z), downgraded S1 to CANDIDATE itself and queued s1_reverify. Status stays CANDIDATE until passing axiom-root and signature-dump logs are archived.",
+      "checked": "2026-11-15 ~02:50Z. PASSED: (1) the 14 S1 sources hash to the sha256 values in BANKED-S1.json and their physical line counts recount to exactly −265; the other 13 closure modules are byte-identical to R1. (2) All 27 module logs show exit 0, no error or sorry, and a logged sha256 equal to the current S1 source. (3) Comparing sigs-s1.tsv with sigs-r1.tsv myself: 3,094 common declarations identical in kind, levels, type hash, binder flags and value hash; 28 removed (26 intended + 2 auto-generated equation lemmas); 1 added (five_state_forced_label). NOT ON FILE: logs/axiomroots.log (started 02:01:31Z), logs/sigdump-s1.log (02:02:04Z) and logs/deadaudit14-s1.log all record exit 1 \"unknown module prefix OAI\", i.e. reruns after s1/build was deleted; they overwrote any passing runs. So the root-axiom print for S1 has no surviving evidence, and the provenance of sigs-s1.tsv (written 02:01:18Z) has no passing log. Requested from the simplification desk, which confirmed the incident (a surviving inner shell of a stopped chain re-ran the gates after s1/build was deleted, 02:45:47Z), downgraded S1 to CANDIDATE itself and queued s1_reverify. Status stays CANDIDATE until passing axiom-root and signature-dump logs are archived. Re-verification in progress at 03:26Z: a fresh build in s1/build-r2 with logs s1/logs-r2/01–27 (18 modules done), then axiomroots-s1-r2.log and sigdump-s1-r2.log.",
       "provenance": "Simplification desk, 00:38–02:01Z (s1/, LOG.md \"S1 BANKED\" 02:01:43Z).",
       "usedFor": "Would bring the realised simplification to −415 lines (ENC-R4 −126, R1 −24, S1 −265).",
       "dependsOn": [
@@ -632,6 +638,12 @@
         "STEPBAN-V3"
       ],
       "artifacts": [
+        {
+          "role": "S1 manifest (claim, per-file sha256, expected gate outputs)",
+          "workspacePath": "I/work/simplification-desk/s1/MANIFEST.md",
+          "sha256": "0105cf6203b8a1da174e5196ab58a83df5a2b01c799085b0149840b5c58e0c57",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/MANIFEST.md"
+        },
         {
           "role": "banked record",
           "workspacePath": "I/work/simplification-desk/s1/BANKED-S1.json",
@@ -679,6 +691,56 @@
           "workspacePath": "I/work/simplification-desk/s1/logs/sigdump-s1.STALE-RUN-0201Z-failed.log",
           "sha256": "6eed4e4eafb7e29bf66a11bbc66eaec54594e9e090b339b719e8a72b5f055f0c",
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s1/logs/sigdump-s1.STALE-RUN-0201Z-failed.log"
+        }
+      ]
+    },
+    {
+      "id": "S2",
+      "theme": "Simplification of the supplied proof",
+      "status": "CANDIDATE",
+      "title": "S2: S1 plus 55 more unreachable declarations deleted outside the R1 closure (−727 physical lines vs R1; gates pending)",
+      "statement": "Cumulative on S1: 55 further declarations that no root theorem reaches are deleted from 27 modules outside the R1 closure (spectral, compact-factor and palette layers), each with any `omit/include .. in` prefix. 41 files change versus R1 (e.g. PhaseCollision 537→471, InvariantMean 1078→1031, Compactness 379→353); in total 80 unreachable declarations plus `five_forced_label` are removed and `five_state_forced_label` is added. Net −727 physical lines (−723 non-blank, −710 code) versus R1; −877 versus the supplied original.",
+      "hypotheses": "Claimed: every surviving declaration keeps its exact statement (to be checked by the signature gate).",
+      "evidence": "None yet beyond source accounting: the first 67-module rebuild attempt failed at RelativeCenters (a dangling `omit .. in` prefix left by a deletion); the deletion tool was fixed and the rebuild re-queued. No axiom-root or signature-dump log exists yet.",
+      "checked": "2026-11-15 ~03:30Z: the 41 changed S2 sources hash to the sha256 values in MANIFEST.md; their physical lines recount to exactly −727 against the R1 tree; changed-modules.txt equals the manifest set; the other 42 S2 modules are byte-identical to R1. No compile evidence checked (none passing exists yet).",
+      "provenance": "Simplification desk, 01:32–03:12Z (s2/, LOG.md; manifest generated 03:12Z).",
+      "corrections": [
+        "attempt 1 failed (12/67 modules) on a dangling omit prefix; logs kept in s2/logs-attempt1-failed-omit-prefix/"
+      ],
+      "usedFor": "Would bring the realised simplification to −877 lines (ENC-R4 −126, R1 −24, S2 −727 including S1).",
+      "dependsOn": [
+        "S1"
+      ],
+      "artifacts": [
+        {
+          "role": "S2 manifest (claim, per-file sha256, expected gate outputs)",
+          "workspacePath": "I/work/simplification-desk/s2/MANIFEST.md",
+          "sha256": "2a1f2db900a2f2401795b5270aaf3d5003655d6feb73b3c98e03ca6bb408320c",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/MANIFEST.md"
+        },
+        {
+          "role": "line accounting vs R1",
+          "workspacePath": "I/work/simplification-desk/s2/line-accounting-s2-vs-r1.json",
+          "sha256": "e9755b05fdd423ef3f3649ee6ba24f99bf18cfb4eea68f5bac23fbf0699b0579",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/line-accounting-s2-vs-r1.json"
+        },
+        {
+          "role": "line accounting vs S1",
+          "workspacePath": "I/work/simplification-desk/s2/line-accounting-s2-vs-s1.json",
+          "sha256": "49f95959fef349ec3391c7816ba4b77a124b31134bbdd6efd719bd375692a36a",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/line-accounting-s2-vs-s1.json"
+        },
+        {
+          "role": "deleted declarations",
+          "workspacePath": "I/work/simplification-desk/s2/dead-deletions.json",
+          "sha256": "cd86b21d5ffbe71d05e45443f7ac2fb91fd98a77812f416f329981079dee82f2",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/dead-deletions.json"
+        },
+        {
+          "role": "the 41 changed modules",
+          "workspacePath": "I/work/simplification-desk/s2/changed-modules.txt",
+          "sha256": "b536c876c4733000820586c4b2b9c911cf6370656d82b40d38b328b254c15cc0",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/changed-modules.txt"
         }
       ]
     },
@@ -1365,7 +1427,7 @@
         {
           "role": "import validation record",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "92c2f8c269fe7d21cf2fff78e4fe18429bcd50a5149609d8dad4384e56a58a88"
+          "sha256": "05b983f982845df869751e39011f405d6248038853062fcecbd341011b490960"
         }
       ]
     },
@@ -2714,7 +2776,7 @@
         {
           "role": "recorded run (18:58Z)",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "92c2f8c269fe7d21cf2fff78e4fe18429bcd50a5149609d8dad4384e56a58a88"
+          "sha256": "05b983f982845df869751e39011f405d6248038853062fcecbd341011b490960"
         }
       ]
     },

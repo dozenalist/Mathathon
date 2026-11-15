@@ -1,6 +1,6 @@
 # Import 2026-11-15 (results desk)
 
-Captured 2026-11-15T03:25:42.441Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
+Captured 2026-11-15T03:28:19.146Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
 
 ## Banked Lean results: exit code and `#print axioms` excerpts
 
@@ -367,6 +367,85 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/simplification-desk/s1/logs/axiomroots.STALE-RUN-0201Z-failed.log` | 2506 | `522675612c257677c2d5a35ba1c7e231cbe4406ee4b17f2e567e3c3911707729` |
 | `work/simplification-desk/s1/logs/deadaudit14-s1.STALE-RUN-0201Z-failed.log` | 2513 | `87cb0d40aa98eec6741777809529e6c36fb03ba3974ecc7e2fd099b081286e12` |
 | `work/simplification-desk/s1/logs/sigdump-s1.STALE-RUN-0201Z-failed.log` | 2505 | `6eed4e4eafb7e29bf66a11bbc66eaec54594e9e090b339b719e8a72b5f055f0c` |
+| `work/simplification-desk/s1/logs-r2/01-States.log` | 1253 | `513b026b8e4c3a651018712d271e190b65b1f23bdcef8cad3287c9caf2860045` |
+| `work/simplification-desk/s1/logs-r2/02-BoundaryTrace.log` | 1260 | `10577969d1ea6ac2846691402fca213852149349c327535edff1a21755ed2b95` |
+| `work/simplification-desk/s1/logs-r2/03-AngularBoundary.log` | 1262 | `85dcf22d756c71275aba27e3e01d254c845a2de63f63d44a9f6ba5b4a831b133` |
+| `work/simplification-desk/s1/logs-r2/04-Exclusion.log` | 1256 | `6fa122d352661681b7286a1b18a8860ea3c35ba226e3450428d9cdce4b3c0055` |
+| `work/simplification-desk/s1/logs-r2/05-AvoidingTrace.log` | 1512 | `68df0f4395cfd963d23ec48cbeb405d4d5b79b008818334ef3ee5214c7c32f62` |
+| `work/simplification-desk/s1/logs-r2/06-FourContinuity.log` | 1261 | `42b6dc00b968397f33ff252b10518af196dd21a11d3d53bcafc100a6330d52c3` |
+| `work/simplification-desk/s1/logs-r2/07-FourTransport.log` | 1260 | `2a89e42f9ffb490dfdfe02b921f573428375a18dda6bebaddc42537b172410d4` |
+| `work/simplification-desk/s1/logs-r2/08-Accumulation.log` | 1259 | `2486b4aca7fae63081b397d26448dcc90206015b90c3a9eb124ea586914edcfd` |
+| `work/simplification-desk/s1/logs-r2/09-FiveSupport.log` | 1258 | `358d7e5ec3bc1393280f4331bf4dbd1677c9024215926883db629d24df0f5442` |
+| `work/simplification-desk/s1/logs-r2/10-CyclicCore.log` | 1257 | `975b2f87078bbcf0282ec16ce6a759a97b3132f55f38bd57a9d7da14ee6c338e` |
+| `work/simplification-desk/s1/logs-r2/11-DiskAverages.log` | 1259 | `24caf2c11f650fed9c20a353bf67c6095349d8930d880871ad18481d6944ac61` |
+| `work/simplification-desk/s1/logs-r2/12-PlanarCovers.log` | 1259 | `9769475d3dedb3e1cf4e70f7381c28fd84483c995388ed670efeeae64f630add` |
+| `work/simplification-desk/s1/logs-r2/13-GraphRealization.log` | 1263 | `9bf1e53fe0fc58c98d85da36225e85517c629bd664d844ee76f6889b7e578e8d` |
+| `work/simplification-desk/s1/logs-r2/14-Interfaces.log` | 1257 | `062987665775c324b6eb290559522f906552fce38e3625edcc03e11a8d4cd731` |
+| `work/simplification-desk/s1/logs-r2/15-Sectors.log` | 1254 | `c0a62833509b9d1237b70a72d5ab21b1c28673336e5186d800ffb8023ae0a79c` |
+| `work/simplification-desk/s1/logs-r2/16-ContinuumLimits.log` | 1262 | `8e8caf5aaeadf050b1fc78fa3a4a6f1a000c1cff29a5a1e368b0d5801c70552e` |
+| `work/simplification-desk/s1/logs-r2/17-DiskExtension.log` | 1260 | `a7f31254ef2f3122e3ffb22ff962a0c426722d5dbbcbf0bee424d62779364e91` |
+| `work/simplification-desk/s1/logs-r2/18-GraphCuts.log` | 1257 | `4ac39cf249625d1cb593b824477b02bd587a941be3629782e5543dca9e74c513` |
+| `work/simplification-desk/s1/logs-r2/19-HoleApproximation.log` | 1265 | `f8ae27beee055dc4869d6b7b68f4f200b199a318188fafffdbb21217585248b6` |
+| `work/simplification-desk/s1/MANIFEST.md` | 4411 | `0105cf6203b8a1da174e5196ab58a83df5a2b01c799085b0149840b5c58e0c57` |
+| `work/simplification-desk/s2/MANIFEST.md` | 7823 | `2a1f2db900a2f2401795b5270aaf3d5003655d6feb73b3c98e03ca6bb408320c` |
+| `work/simplification-desk/s2/AxiomRoots.lean` | 3814 | `4dda63592232d24a6da91e045980d93e2761c14488fcd427c82c3baa7d3842f5` |
+| `work/simplification-desk/s2/changed-modules.txt` | 1688 | `b536c876c4733000820586c4b2b9c911cf6370656d82b40d38b328b254c15cc0` |
+| `work/simplification-desk/s2/dead-deletions.json` | 7119 | `cd86b21d5ffbe71d05e45443f7ac2fb91fd98a77812f416f329981079dee82f2` |
+| `work/simplification-desk/s2/line-accounting-s2-vs-r1.json` | 18494 | `e9755b05fdd423ef3f3649ee6ba24f99bf18cfb4eea68f5bac23fbf0699b0579` |
+| `work/simplification-desk/s2/line-accounting-s2-vs-s1.json` | 12246 | `49f95959fef349ec3391c7816ba4b77a124b31134bbdd6efd719bd375692a36a` |
+| `work/simplification-desk/s2/OAI/Analysis/PlaneSpectrum/CircleOperator.lean` | 17281 | `1a1523f435af9f6efbb10806ef4dc5ccd76f69b226642b997ad0c98398287de1` |
+| `work/simplification-desk/s2/OAI/Analysis/PlaneSpectrum/ConditionalSpectrum.lean` | 26846 | `fcb77a76a2023bce5438bd5736984c50f07ba5f6e82cd1b765a8aa550eef693f` |
+| `work/simplification-desk/s2/OAI/Analysis/PlaneSpectrum/Energy.lean` | 21763 | `10895c85c9d1ca9be76885fec41c4a1c63dc009ce0e6b2d4e8af47b16dc1adca` |
+| `work/simplification-desk/s2/OAI/Analysis/PlaneSpectrum/FourierTests.lean` | 12526 | `73910dcd4dfda8fcf3491dccabe81d99322abe3452d5939859315a1895c29216` |
+| `work/simplification-desk/s2/OAI/Analysis/PlaneSpectrum/InvariantMean.lean` | 45768 | `db71947b617c30ef32bff4cb2761ba9979d91339c216713213cb5e3a3952d769` |
+| `work/simplification-desk/s2/OAI/Analysis/PlaneSpectrum/Multipliers.lean` | 13716 | `9437aff41e64bac8f6b4d476f1471e82bd42368f1fc839823474504f1b6949c3` |
+| `work/simplification-desk/s2/OAI/Analysis/PlaneSpectrum/PhaseCollision.lean` | 21625 | `01d0a2f337e6f80cce42f67566df0109bbaddf2dc44df131aafe9b3648557f98` |
+| `work/simplification-desk/s2/OAI/Analysis/PlaneSpectrum/Representations.lean` | 25402 | `a2880f4e65bdbf701589b4ea50e35fae7e1fec623cf0c32a1060c6636578d799` |
+| `work/simplification-desk/s2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean` | 20431 | `d30c8e2cbff7e17a2d86368515f5b7968388c2fb01a9b1736267b3cc46fe2520` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/AngularBoundary.lean` | 25509 | `796414de07e4fb2ce5ae862530bc85742e6ba318ce6c12307644265d08e6c663` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/BinaryPalettes.lean` | 20217 | `5e2ffdb80a1afd9101bf21b9e5a81a1874fb5dcc91ca485ae0679ac75eca25b3` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/BorelTransfer.lean` | 25485 | `4e90138bb6baea8806982342fb74ec4aa702c4edb35645a11a732fe67887c441` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/BoundaryTrace.lean` | 18356 | `6bb884aa073edd320672ede4145b8488af533c82550606603ea3da49683ab017` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/Compactness.lean` | 20667 | `51897e8f294ca13bc33798bf36c3ee3f9bccd1b40e9ae628dc1184bf5d598930` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/ContinuumLimits.lean` | 17828 | `cfa79b5f6d8e9449b0ef6beb8a8d40265cec5a9d939dfb14979389fed5081ca0` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/CyclicCore.lean` | 13402 | `d55a1601a3d9d3679cc2ae6d16302f1eac71d71ace20a21c276c81e2e3d164ab` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/DiskExtension.lean` | 29141 | `ef64358d8261d6a96c8b03469bee12f2ab0abd4647a9f1230b41059fc914ac64` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/Exclusion.lean` | 8799 | `1613d1543f72813e05301a0e141e684bb4289e65a8d4905cc4f47b32057c8b67` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/Expansion.lean` | 37338 | `b3684b996cc4bbf40eaf5697b8fa747b053f4c098f585f17e2e4298a21e4e348` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/FiveSupport.lean` | 19132 | `b12dad93faddcbaf07dcb6e92a86c36ffb1e3a80f62192e64916ae936599eb65` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/FourContinuity.lean` | 29242 | `46efa82aa091fd03ebe10a4d61142f96ad4f8a8533d7c84fa2d8117d5e18c6c9` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/GraphCuts.lean` | 15270 | `9aa4f41d6e5ffc105ef0d1e416491e0c7dce2fd59735179545730098a4f06830` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/GraphRealization.lean` | 20835 | `def12054e6260a4b85dfd13d19a06dc6355f39fb8cbeadbfe1ef1fa45f2e2d7a` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/HoleApproximation.lean` | 16915 | `cbee4d2ae2fcf691333a7d21b274ddbb549cc30d39d00918f873e75b2c50176e` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/Interfaces.lean` | 30004 | `c3348acdd555cc4196de9c9f14f1f32cb37f2f59dbfd54fccf591a3303b88e02` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/Lattice.lean` | 2113 | `688cc2b73931dbdd4a05148d5c8e53d155ce976d587d40308c627a53a2db669f` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/Moser.lean` | 20769 | `b2da0e254b41919a3858d23acf72bc643339871d1a4f0951d5ceb32f1a3fedcf` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/PaletteDensity.lean` | 24503 | `c3c5d1341ae107f5b0ca94df0788d801f36eb6169f19b291d6ad04f66824d3f8` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/Palettes.lean` | 6689 | `74585bde311823dbb9b9fbabce6ec89415134a8b298f7da66c31207e37e2646b` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/Sectors.lean` | 23972 | `8acd47b52ea091d61506b8cbf529be6f59626812e90dddec6c7c1de7430e9e62` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/States.lean` | 25612 | `7b411cc583485431fa957070a8d4c678ed35ba8cc7cec8b465925a0e03744520` |
+| `work/simplification-desk/s2/OAI/Geometry/PlaneColoring/WeakColoring.lean` | 9687 | `7994f86994c903d2fb76cb60dcbe02cbb3f53047d282d42170122b578bf3c90b` |
+| `work/simplification-desk/s2/OAI/MeasureTheory/CompactFactors/Amenability.lean` | 17452 | `08d0ae62ede2e89c3328801e0cbd5fbbde35c1cb8d4af3ae39e4f6406b9f8c19` |
+| `work/simplification-desk/s2/OAI/MeasureTheory/CompactFactors/BoundedFunctions.lean` | 9681 | `f1750185aa305ce18f0937b6949d898d686e2dcdc297606f7c14aef5607bc58e` |
+| `work/simplification-desk/s2/OAI/MeasureTheory/CompactFactors/Centers.lean` | 30205 | `51a370e921f6fcb8825d502538d5871d53bcb4f546f0d95580351bb63275019c` |
+| `work/simplification-desk/s2/OAI/MeasureTheory/CompactFactors/ConditionalLimits.lean` | 23314 | `675f780669891ce6ff5bc604670da0be6c1f12391ee6eac052598a444807396a` |
+| `work/simplification-desk/s2/OAI/MeasureTheory/CompactFactors/Factors.lean` | 27873 | `548ec497e431bf2cff7165b4b0ce39f6d8a5b7542dcfe476ac67a30d4ea6c291` |
+| `work/simplification-desk/s2/OAI/MeasureTheory/CompactFactors/Functions.lean` | 45777 | `c3ffaf6e817bf4fdcc8f51d9355c7b6a56d2a6a2e22c835b6d463845cf60e902` |
+| `work/simplification-desk/s2/OAI/MeasureTheory/CompactFactors/RelativeCenters.lean` | 27057 | `40010491b6e6f343d1b4191471f930fb5b18817a29a072c4180fbbfa8e03eb13` |
+| `work/simplification-desk/s2/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean` | 20863 | `204a28c8ee71b5ffe188f748437dae086937fd1191ab416e51545cd5cd2fbf55` |
+| `work/simplification-desk/s2/OAI/MeasureTheory/CompactFactors/Separability.lean` | 25596 | `bd2e5ea3afc7843aa5d2d269882c92db1cc8cb3779fd5d2108a1f8e936c01c1c` |
+| `work/simplification-desk/s2/logs-attempt1-failed-omit-prefix/01-WeakColoring.log` | 1256 | `cbb5e121311f6d0bfe583155c508c39f9d7fda2d4420707201528e950c3b9d6c` |
+| `work/simplification-desk/s2/logs-attempt1-failed-omit-prefix/02-Compactness.log` | 1256 | `a8b9473ff9f723089b6f353cafe1fb27b1c0a7865e4ab948d7e08cb87b6465e0` |
+| `work/simplification-desk/s2/logs-attempt1-failed-omit-prefix/03-CircleOperator.log` | 1258 | `ea9bc571a140f296f6477b44e2f7d4e6780381354382a293ae97553a544d4fb2` |
+| `work/simplification-desk/s2/logs-attempt1-failed-omit-prefix/04-InvariantMean.log` | 1257 | `54a089cb364babff10e1ac37171d16c37f221f96be5764ff09d4f183c26da1e0` |
+| `work/simplification-desk/s2/logs-attempt1-failed-omit-prefix/05-Multipliers.log` | 1256 | `cae525cfefc2790404862faacddd444e43c34d4fece9bc2ee1bd14c934303b59` |
+| `work/simplification-desk/s2/logs-attempt1-failed-omit-prefix/06-FourierTests.log` | 1256 | `89f100301f8d586b9660b9c916ba5cdbb96d82b5bf60b87a545ba53956085602` |
+| `work/simplification-desk/s2/logs-attempt1-failed-omit-prefix/07-PhaseCollision.log` | 1259 | `a9c7f0095a0d6dd99d77b376717d47ff6608d93faf39ab1e518f4264400c5d1b` |
+| `work/simplification-desk/s2/logs-attempt1-failed-omit-prefix/08-ConditionalSelection.log` | 1270 | `1457e209ee04171bd9dae9d20545a80dc17e20a946a723794496897c7085fd8e` |
+| `work/simplification-desk/s2/logs-attempt1-failed-omit-prefix/09-ConditionalSpectrum.log` | 1263 | `ae7fda7b08781e9902f8945cb3f0e5d2604f9ea2d13dd91962333ce803b245af` |
+| `work/simplification-desk/s2/logs-attempt1-failed-omit-prefix/10-Amenability.log` | 1261 | `cfea264f8fc2bef6123ad201020890859bdc37fef534734616016aa965278123` |
+| `work/simplification-desk/s2/logs-attempt1-failed-omit-prefix/11-Centers.log` | 1257 | `5ef3fb4f478e1aa9d6db008440d674610a66bd18ee312e47e665fb9d9f201dfa` |
+| `work/simplification-desk/s2/logs-attempt1-failed-omit-prefix/12-RelativeCenters.log` | 19385 | `80e4ee9936f66237cbdc69ca7b9ffbc2bb2485b6b14861335b8506aa68d34d13` |
 | `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/States.lean` | 25612 | `7b411cc583485431fa957070a8d4c678ed35ba8cc7cec8b465925a0e03744520` |
 | `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/BoundaryTrace.lean` | 18356 | `6bb884aa073edd320672ede4145b8488af533c82550606603ea3da49683ab017` |
 | `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/CyclicCore.lean` | 13402 | `d55a1601a3d9d3679cc2ae6d16302f1eac71d71ace20a21c276c81e2e3d164ab` |
@@ -429,4 +508,4 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `outputs/RunLeanQueue.py` | 9451 | `c063969225cec881cdb63ebea165434a2fdc7d3d381528cc6d8e870dd286b2b6` |
 | `outputs/LeanSourceGate.py` | 2246 | `721e47d80c4459e9125a9b66fe880ab31c37260e9797d23669a9a228c8f4e721` |
 | `work/cloud-supervisor/RESEARCH-STATUS.md` | 3506 | `461dfcc8d25a2971038bbff6a6d691701008009583c04f8c8f7cca030ff3de50` |
-| `work/cloud-supervisor/LOG.md` | 12264 | `d76b84f0d809ba9a667eb83e0510739f6a7019432f558ef43befae012885d8c0` |
+| `work/cloud-supervisor/LOG.md` | 12449 | `f2d7e319c7a8d7b40ae72e40fa7722a7ab8fb17e499c32d27b7a65d4c9ca779b` |

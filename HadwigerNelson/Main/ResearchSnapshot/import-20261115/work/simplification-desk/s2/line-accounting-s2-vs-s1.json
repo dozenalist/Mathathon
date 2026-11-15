@@ -1,0 +1,605 @@
+{
+ "files": [
+  {
+   "module": "OAI.Analysis.PlaneSpectrum.CircleOperator",
+   "old": {
+    "physical": 308,
+    "nonblank": 301,
+    "code": 301,
+    "audit": 0
+   },
+   "new": {
+    "physical": 292,
+    "nonblank": 285,
+    "code": 285,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -16,
+    "nonblank": -16,
+    "code": -16,
+    "audit": 0
+   },
+   "newSha256": "1a1523f435af9f6efbb10806ef4dc5ccd76f69b226642b997ad0c98398287de1"
+  },
+  {
+   "module": "OAI.Analysis.PlaneSpectrum.ConditionalSpectrum",
+   "old": {
+    "physical": 530,
+    "nonblank": 488,
+    "code": 470,
+    "audit": 0
+   },
+   "new": {
+    "physical": 529,
+    "nonblank": 487,
+    "code": 469,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -1,
+    "nonblank": -1,
+    "code": -1,
+    "audit": 0
+   },
+   "newSha256": "fcb77a76a2023bce5438bd5736984c50f07ba5f6e82cd1b765a8aa550eef693f"
+  },
+  {
+   "module": "OAI.Analysis.PlaneSpectrum.Energy",
+   "old": {
+    "physical": 453,
+    "nonblank": 421,
+    "code": 416,
+    "audit": 0
+   },
+   "new": {
+    "physical": 449,
+    "nonblank": 417,
+    "code": 412,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -4,
+    "nonblank": -4,
+    "code": -4,
+    "audit": 0
+   },
+   "newSha256": "10895c85c9d1ca9be76885fec41c4a1c63dc009ce0e6b2d4e8af47b16dc1adca"
+  },
+  {
+   "module": "OAI.Analysis.PlaneSpectrum.FourierTests",
+   "old": {
+    "physical": 295,
+    "nonblank": 267,
+    "code": 261,
+    "audit": 0
+   },
+   "new": {
+    "physical": 287,
+    "nonblank": 259,
+    "code": 253,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -8,
+    "nonblank": -8,
+    "code": -8,
+    "audit": 0
+   },
+   "newSha256": "73910dcd4dfda8fcf3491dccabe81d99322abe3452d5939859315a1895c29216"
+  },
+  {
+   "module": "OAI.Analysis.PlaneSpectrum.InvariantMean",
+   "old": {
+    "physical": 1078,
+    "nonblank": 934,
+    "code": 886,
+    "audit": 0
+   },
+   "new": {
+    "physical": 1031,
+    "nonblank": 887,
+    "code": 839,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -47,
+    "nonblank": -47,
+    "code": -47,
+    "audit": 0
+   },
+   "newSha256": "db71947b617c30ef32bff4cb2761ba9979d91339c216713213cb5e3a3952d769"
+  },
+  {
+   "module": "OAI.Analysis.PlaneSpectrum.Multipliers",
+   "old": {
+    "physical": 314,
+    "nonblank": 276,
+    "code": 269,
+    "audit": 0
+   },
+   "new": {
+    "physical": 300,
+    "nonblank": 262,
+    "code": 255,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -14,
+    "nonblank": -14,
+    "code": -14,
+    "audit": 0
+   },
+   "newSha256": "9437aff41e64bac8f6b4d476f1471e82bd42368f1fc839823474504f1b6949c3"
+  },
+  {
+   "module": "OAI.Analysis.PlaneSpectrum.PhaseCollision",
+   "old": {
+    "physical": 537,
+    "nonblank": 497,
+    "code": 480,
+    "audit": 0
+   },
+   "new": {
+    "physical": 471,
+    "nonblank": 431,
+    "code": 417,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -66,
+    "nonblank": -66,
+    "code": -63,
+    "audit": 0
+   },
+   "newSha256": "01d0a2f337e6f80cce42f67566df0109bbaddf2dc44df131aafe9b3648557f98"
+  },
+  {
+   "module": "OAI.Analysis.PlaneSpectrum.Representations",
+   "old": {
+    "physical": 477,
+    "nonblank": 464,
+    "code": 463,
+    "audit": 0
+   },
+   "new": {
+    "physical": 471,
+    "nonblank": 458,
+    "code": 457,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -6,
+    "nonblank": -6,
+    "code": -6,
+    "audit": 0
+   },
+   "newSha256": "a2880f4e65bdbf701589b4ea50e35fae7e1fec623cf0c32a1060c6636578d799"
+  },
+  {
+   "module": "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
+   "old": {
+    "physical": 388,
+    "nonblank": 378,
+    "code": 378,
+    "audit": 0
+   },
+   "new": {
+    "physical": 385,
+    "nonblank": 375,
+    "code": 375,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -3,
+    "nonblank": -3,
+    "code": -3,
+    "audit": 0
+   },
+   "newSha256": "d30c8e2cbff7e17a2d86368515f5b7968388c2fb01a9b1736267b3cc46fe2520"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.BinaryPalettes",
+   "old": {
+    "physical": 375,
+    "nonblank": 365,
+    "code": 365,
+    "audit": 0
+   },
+   "new": {
+    "physical": 365,
+    "nonblank": 355,
+    "code": 355,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -10,
+    "nonblank": -10,
+    "code": -10,
+    "audit": 0
+   },
+   "newSha256": "5e2ffdb80a1afd9101bf21b9e5a81a1874fb5dcc91ca485ae0679ac75eca25b3"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.BorelTransfer",
+   "old": {
+    "physical": 458,
+    "nonblank": 444,
+    "code": 441,
+    "audit": 0
+   },
+   "new": {
+    "physical": 454,
+    "nonblank": 440,
+    "code": 437,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -4,
+    "nonblank": -4,
+    "code": -4,
+    "audit": 0
+   },
+   "newSha256": "4e90138bb6baea8806982342fb74ec4aa702c4edb35645a11a732fe67887c441"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.Compactness",
+   "old": {
+    "physical": 379,
+    "nonblank": 370,
+    "code": 369,
+    "audit": 0
+   },
+   "new": {
+    "physical": 353,
+    "nonblank": 344,
+    "code": 343,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -26,
+    "nonblank": -26,
+    "code": -26,
+    "audit": 0
+   },
+   "newSha256": "51897e8f294ca13bc33798bf36c3ee3f9bccd1b40e9ae628dc1184bf5d598930"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.Expansion",
+   "old": {
+    "physical": 725,
+    "nonblank": 709,
+    "code": 708,
+    "audit": 0
+   },
+   "new": {
+    "physical": 715,
+    "nonblank": 699,
+    "code": 698,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -10,
+    "nonblank": -10,
+    "code": -10,
+    "audit": 0
+   },
+   "newSha256": "b3684b996cc4bbf40eaf5697b8fa747b053f4c098f585f17e2e4298a21e4e348"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.Lattice",
+   "old": {
+    "physical": 66,
+    "nonblank": 51,
+    "code": 47,
+    "audit": 0
+   },
+   "new": {
+    "physical": 63,
+    "nonblank": 48,
+    "code": 44,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -3,
+    "nonblank": -3,
+    "code": -3,
+    "audit": 0
+   },
+   "newSha256": "688cc2b73931dbdd4a05148d5c8e53d155ce976d587d40308c627a53a2db669f"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.Moser",
+   "old": {
+    "physical": 439,
+    "nonblank": 432,
+    "code": 430,
+    "audit": 0
+   },
+   "new": {
+    "physical": 436,
+    "nonblank": 429,
+    "code": 427,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -3,
+    "nonblank": -3,
+    "code": -3,
+    "audit": 0
+   },
+   "newSha256": "b2da0e254b41919a3858d23acf72bc643339871d1a4f0951d5ceb32f1a3fedcf"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.PaletteDensity",
+   "old": {
+    "physical": 485,
+    "nonblank": 472,
+    "code": 472,
+    "audit": 0
+   },
+   "new": {
+    "physical": 455,
+    "nonblank": 442,
+    "code": 442,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -30,
+    "nonblank": -30,
+    "code": -30,
+    "audit": 0
+   },
+   "newSha256": "c3c5d1341ae107f5b0ca94df0788d801f36eb6169f19b291d6ad04f66824d3f8"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.Palettes",
+   "old": {
+    "physical": 124,
+    "nonblank": 120,
+    "code": 120,
+    "audit": 0
+   },
+   "new": {
+    "physical": 115,
+    "nonblank": 111,
+    "code": 111,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -9,
+    "nonblank": -9,
+    "code": -9,
+    "audit": 0
+   },
+   "newSha256": "74585bde311823dbb9b9fbabce6ec89415134a8b298f7da66c31207e37e2646b"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.WeakColoring",
+   "old": {
+    "physical": 176,
+    "nonblank": 171,
+    "code": 170,
+    "audit": 0
+   },
+   "new": {
+    "physical": 174,
+    "nonblank": 169,
+    "code": 168,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -2,
+    "nonblank": -2,
+    "code": -2,
+    "audit": 0
+   },
+   "newSha256": "7994f86994c903d2fb76cb60dcbe02cbb3f53047d282d42170122b578bf3c90b"
+  },
+  {
+   "module": "OAI.MeasureTheory.CompactFactors.Amenability",
+   "old": {
+    "physical": 411,
+    "nonblank": 349,
+    "code": 344,
+    "audit": 0
+   },
+   "new": {
+    "physical": 401,
+    "nonblank": 339,
+    "code": 334,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -10,
+    "nonblank": -10,
+    "code": -10,
+    "audit": 0
+   },
+   "newSha256": "08d0ae62ede2e89c3328801e0cbd5fbbde35c1cb8d4af3ae39e4f6406b9f8c19"
+  },
+  {
+   "module": "OAI.MeasureTheory.CompactFactors.BoundedFunctions",
+   "old": {
+    "physical": 223,
+    "nonblank": 175,
+    "code": 175,
+    "audit": 0
+   },
+   "new": {
+    "physical": 219,
+    "nonblank": 171,
+    "code": 171,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -4,
+    "nonblank": -4,
+    "code": -4,
+    "audit": 0
+   },
+   "newSha256": "f1750185aa305ce18f0937b6949d898d686e2dcdc297606f7c14aef5607bc58e"
+  },
+  {
+   "module": "OAI.MeasureTheory.CompactFactors.Centers",
+   "old": {
+    "physical": 703,
+    "nonblank": 596,
+    "code": 596,
+    "audit": 0
+   },
+   "new": {
+    "physical": 700,
+    "nonblank": 593,
+    "code": 593,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -3,
+    "nonblank": -3,
+    "code": -3,
+    "audit": 0
+   },
+   "newSha256": "51a370e921f6fcb8825d502538d5871d53bcb4f546f0d95580351bb63275019c"
+  },
+  {
+   "module": "OAI.MeasureTheory.CompactFactors.ConditionalLimits",
+   "old": {
+    "physical": 542,
+    "nonblank": 509,
+    "code": 494,
+    "audit": 0
+   },
+   "new": {
+    "physical": 446,
+    "nonblank": 413,
+    "code": 401,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -96,
+    "nonblank": -96,
+    "code": -93,
+    "audit": 0
+   },
+   "newSha256": "675f780669891ce6ff5bc604670da0be6c1f12391ee6eac052598a444807396a"
+  },
+  {
+   "module": "OAI.MeasureTheory.CompactFactors.Factors",
+   "old": {
+    "physical": 586,
+    "nonblank": 511,
+    "code": 507,
+    "audit": 0
+   },
+   "new": {
+    "physical": 584,
+    "nonblank": 509,
+    "code": 505,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -2,
+    "nonblank": -2,
+    "code": -2,
+    "audit": 0
+   },
+   "newSha256": "548ec497e431bf2cff7165b4b0ce39f6d8a5b7542dcfe476ac67a30d4ea6c291"
+  },
+  {
+   "module": "OAI.MeasureTheory.CompactFactors.Functions",
+   "old": {
+    "physical": 884,
+    "nonblank": 837,
+    "code": 828,
+    "audit": 0
+   },
+   "new": {
+    "physical": 864,
+    "nonblank": 817,
+    "code": 808,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -20,
+    "nonblank": -20,
+    "code": -20,
+    "audit": 0
+   },
+   "newSha256": "c3ffaf6e817bf4fdcc8f51d9355c7b6a56d2a6a2e22c835b6d463845cf60e902"
+  },
+  {
+   "module": "OAI.MeasureTheory.CompactFactors.RelativeCenters",
+   "old": {
+    "physical": 598,
+    "nonblank": 527,
+    "code": 515,
+    "audit": 0
+   },
+   "new": {
+    "physical": 588,
+    "nonblank": 517,
+    "code": 506,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -10,
+    "nonblank": -10,
+    "code": -9,
+    "audit": 0
+   },
+   "newSha256": "40010491b6e6f343d1b4191471f930fb5b18817a29a072c4180fbbfa8e03eb13"
+  },
+  {
+   "module": "OAI.MeasureTheory.CompactFactors.RelativeProducts",
+   "old": {
+    "physical": 472,
+    "nonblank": 412,
+    "code": 412,
+    "audit": 0
+   },
+   "new": {
+    "physical": 444,
+    "nonblank": 384,
+    "code": 384,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -28,
+    "nonblank": -28,
+    "code": -28,
+    "audit": 0
+   },
+   "newSha256": "204a28c8ee71b5ffe188f748437dae086937fd1191ab416e51545cd5cd2fbf55"
+  },
+  {
+   "module": "OAI.MeasureTheory.CompactFactors.Separability",
+   "old": {
+    "physical": 573,
+    "nonblank": 529,
+    "code": 527,
+    "audit": 0
+   },
+   "new": {
+    "physical": 546,
+    "nonblank": 502,
+    "code": 500,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -27,
+    "nonblank": -27,
+    "code": -27,
+    "audit": 0
+   },
+   "newSha256": "bd2e5ea3afc7843aa5d2d269882c92db1cc8cb3779fd5d2108a1f8e936c01c1c"
+  }
+ ],
+ "netDelta": {
+  "physical": -462,
+  "nonblank": -462,
+  "code": -455,
+  "audit": 0
+ },
+ "netCodeExclAudit": -455
+}

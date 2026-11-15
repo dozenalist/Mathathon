@@ -51,3 +51,5 @@
 - 03:17Z Report LN1 row completed, published 98ee817.
 - 03:21Z heartbeat: all desks idle on background jobs; simplification -> pre-draft S1/S2 report text; research left waiting on its checkers (tasked 10 min ago); services alive; 1 lean.exe; cycle 031143 ok.
 - 03:24Z Jarom: commit everything; outside AI will compare HN vs ZetaFive. Repo HN tree clean (only grep.exe.stackdump stray). Asked results desk for urgent batch 6 incl. L-N2/L-N3 + S1/S2 as CANDIDATE; exposition desk to rewrite HadwigerNelson/README.md front page + fix stale ROADMAP. Jarom.lean and research-scale-up/ at repo root left uncommitted pending Jarom.
+- 03:26Z README front page + ROADMAP refresh published 1cdbd8c.
+- 03:27Z Results batch 6 published f05f23e (99 entries; LN2-COUNTERMODEL, LN3-T1-T3). S1/S2 candidates not yet imported.
