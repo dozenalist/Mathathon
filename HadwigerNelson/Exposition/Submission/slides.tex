@@ -1,6 +1,7 @@
 % Slides for the Hadwiger--Nelson entry. Every result here also appears in report.tex
 % (section given on each slide). Figures are PNG renders of the reader's SVGs
-% (slide-figures/, rendered by Edge headless at 2x from HadwigerNelson/Exposition/Figures/).
+% (slide-figures/, rendered by Edge headless at 2x from HadwigerNelson/Exposition/Figures/),
+% plus simplification-modules.png from Figures/build-simplification.py (numbers from the results ledger).
 \documentclass[aspectratio=169,11pt]{beamer}
 \usetheme{default}
 \setbeamertemplate{navigation symbols}{}
@@ -9,19 +10,20 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
+\usepackage{appendixnumberbeamer}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\st}[1]{{\footnotesize\textsc{[#1]}}}
 \newcommand{\src}[1]{\par\vfill{\scriptsize\color{gray} Report #1}}
 
 \title{Five colours are not enough}
-\subtitle{A guided reading of the supplied proof, and two local results about interfaces at a common centre}
+\subtitle{A guided reading of the supplied proof, and local results about interfaces at a common centre}
 \author{[TEAM: names]\\[2pt]{\footnotesize\url{https://github.com/dozenalist/Mathathon}}}
 \date{15 November 2026}
 
 \begin{document}
 \frame{\titlepage}
 
-\begin{frame}{1. The question}
+\begin{frame}{The question}
 Colour the plane so that any two points at distance exactly $1$ get different colours. How many colours are needed?
 \begin{itemize}
 \item $\chi(\R^2)\ge4$: the Moser spindle (1961) \st{cited}
@@ -31,33 +33,48 @@ Colour the plane so that any two points at distance exactly $1$ get different co
 \src{\S1}
 \end{frame}
 
-\begin{frame}{2. What was supplied}
+\begin{frame}{What was supplied}
 \begin{itemize}
 \item OpenAI, \emph{The Euclidean plane is not five-colorable} (23 September 2026): every five-colouring has a monochromatic unit pair, so $6\le\chi(\R^2)\le7$. \textbf{Prior work, not ours.} \st{cited}
 \item Two moves:
   \begin{enumerate}
-  \item a transfer from a proper colouring to a \emph{weak measurable} one (Theorem 1.3);
+  \item a proper colouring yields a \emph{weak measurable} one (Theorem 1.3);
   \item no weak measurable five-colouring exists (Theorem 1.4).
   \end{enumerate}
 \end{itemize}
 \src{\S1, \S2}
 \end{frame}
 
-\begin{frame}{3. What we did in 40 hours}
+\begin{frame}{What we did in 40 hours}
 \begin{itemize}
 \item A six-lesson reader of the second move: refereed, with checked figures.
 \item A three-centre proof of the manuscript's strict-state separation (Lemma 6.3) \st{proved; Lean 4.34.1}
 \item CC60, a closed $60^\circ$ cone obstruction \st{Lean 4.34.1}, and its sharpness above $60^\circ$ for arbitrary finite palettes \st{proved}
-\item Finite computations, negative results and corrections.
+\item A Lean proof of the supplied theorem that is 415 lines shorter \st{Lean 4.34.1}
+\item Refereed local lemmas, finite certificates and corrections.
 \end{itemize}
 \medskip
+\textbf{What is new:} everything above except the five-colour theorem itself, which is OpenAI's. CC60's novelty against the literature is not established: a bounded search found it only as a new candidate.
+\smallskip
+
 \textbf{No global chromatic result.} The bounds $6\le\chi\le7$ are inherited.
-\src{abstract, \S1}
+\src{abstract, \S1, ``Our main results at a glance''}
 \end{frame}
 
-\begin{frame}{4. Weakness as a ruler experiment}
+\begin{frame}{Why a local cone obstruction matters for 6 versus 7}
+\begin{itemize}
+\item The supplied proof ends at one centre: a cycle of interfaces meets there, one-sided strips restrict the labels near the unit circle, and every cycle length is refuted.
+\item Ruling out six colours the same way would mean refuting the interface configurations that six colours allow.
+\item CC60 refutes every such configuration whose directions fit in a closed $60^\circ$ arc. On a finite direction grid the cone test leaves 6 of 174 candidates \st{computation}.
+\item The only recorded route to $\chi\ge7$: proper six-colouring $\Rightarrow$ weak measurable six-colouring (supplied), then two \textbf{open} lemmas, L6 (the cyclic transition core is locally finite) and F6 (the common-interface graph is acyclic), would give a planar contradiction.
+\end{itemize}
+\textbf{L6 and F6 are open: we claim nothing about seven colours.}
+\src{``Our main results at a glance'', \S5}
+\end{frame}
+
+\begin{frame}{Weakness as a ruler experiment}
 \begin{columns}[T]
-\column{0.48\textwidth}
+\column{0.44\textwidth}
 Drop a unit ruler in a window and turn it at random. It is \emph{bad} if both ends get the same colour.
 \smallskip
 
@@ -65,65 +82,59 @@ Weak colouring: the bad share is zero in every window.
 \smallskip
 
 Half-plane colouring: half a unit from the boundary, $240^\circ$ of the $360^\circ$ of directions are bad, a share of $2/3$. So it is not weak.
-\column{0.5\textwidth}
-\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{slide-figures/weak-turning-ruler.png}
+\column{0.54\textwidth}
+\centering\includegraphics[height=0.74\textheight,width=\linewidth,keepaspectratio]{slide-figures/weak-turning-ruler.png}
 \end{columns}
 \src{\S2.1, \S6}
 \end{frame}
 
-\begin{frame}{5. ``Almost never'' becomes ``never'' (Lemma 4.3)}
+\begin{frame}{``Almost never'' becomes ``never'' (Lemma 4.3)}
 \begin{columns}[T]
-\column{0.48\textwidth}
+\column{0.44\textwidth}
 Suppose $a$ and $b$, one unit apart, are both robustly inside colour $i$.
 \begin{itemize}
-\item Start the ruler in $B(a,h)$ and turn it within angle $h$; the tip lands in $B(b,2h)$.
+\item Start the ruler in $B(a,h)$ and turn it within angle $h$: the tip lands in $B(b,2h)$.
 \item The landing disk has $4\times$ the area, so at most $\varepsilon+4\varepsilon$ of starts fail.
 \item For $\varepsilon<1/5$ a positive share of rulers is bad, contradicting weakness.
 \end{itemize}
 \st{cited: manuscript Lemma 4.3}
-\column{0.5\textwidth}
-\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{slide-figures/density-turn.png}
+\column{0.54\textwidth}
+\centering\includegraphics[height=0.74\textheight,width=\linewidth,keepaspectratio]{slide-figures/density-turn.png}
 \end{columns}
 \src{\S2.2, \S6}
 \end{frame}
 
-\begin{frame}{6. Straddling a connected set}
+\begin{frame}{Straddling a connected set}
 \begin{columns}[T]
-\column{0.4\textwidth}
-$\Delta(K)=\{z:\min_K|z-q|<1<\max_K|z-q|\}$.
-\smallskip
-
+\column{0.44\textwidth}
+{\footnotesize\[\Delta(K)=\{z:\ \min_{K}|z-q|<1<\max_{K}|z-q|\}.\]}
 If $K$ is connected, every $z\in\Delta(K)$ is exactly one unit from some point of $K$ (intermediate value theorem).
 \smallskip
 
-So a connected set of centres turns one zero-area circle into a band of positive area. Without connectedness the contact can be missing.
-\column{0.29\textwidth}
-\includegraphics[width=\linewidth]{slide-figures/straddle-band.png}
-\column{0.29\textwidth}
-\includegraphics[width=\linewidth]{slide-figures/straddle-gap.png}
+So a connected set of centres turns one zero-area circle into a band of positive area. Without connectedness the contact can be missing (backup slide).
+\column{0.54\textwidth}
+\centering\includegraphics[height=0.74\textheight,width=\linewidth,keepaspectratio]{slide-figures/straddle-band.png}
 \end{columns}
 \src{\S2.3, \S6}
 \end{frame}
 
-\begin{frame}{7. Interfaces at a centre}
+\begin{frame}{Interfaces at a centre}
 \begin{columns}[T]
-\column{0.36\textwidth}
-Proposition 7.1 builds connected interfaces $K_j$ through a common centre $x$; both labels of a cycle edge occupy zero area of $\Delta(K_j)$.
+\column{0.44\textwidth}
+Proposition 7.1 builds connected interfaces $K_j$ through a common centre $x$. Both labels of a cycle edge occupy zero area of $\Delta(K_j)$.
 \smallskip
 
 A tiny interface casts its exclusion on a thin band hugging the unit circle: outside it on the side $K$ points to, inside it on the far side.
-\column{0.31\textwidth}
-\includegraphics[width=\linewidth]{slide-figures/interface-model.png}
-\column{0.31\textwidth}
-\includegraphics[width=\linewidth]{slide-figures/interface-shadow.png}
+\column{0.54\textwidth}
+\centering\includegraphics[height=0.74\textheight,width=\linewidth,keepaspectratio]{slide-figures/interface-shadow.png}
 \end{columns}
 \src{\S2.5, \S6}
 \end{frame}
 
-\begin{frame}{8. The proof map}
+\begin{frame}{The proof map}
 \begin{columns}[T]
-\column{0.55\textwidth}
-\footnotesize
+\column{0.46\textwidth}
+\small
 \begin{tabular}{@{}ll@{}}
 Density & Lemma 4.3\\
 Palettes & Def.~5.1, Remark 5.3, Cor.~5.4\\
@@ -131,92 +142,190 @@ Two labels & Lemma 5.5, Prop.~5.6\\
 States & Lemmas 6.2--6.4, Thm 6.5\\
 Interfaces & Prop.~7.1\\
 Strips & Lemma 8.1\\
-Cycles & Props 8.2, 8.5, 8.10 (Moser spindle)
+Cycles & Props 8.2, 8.5, 8.10
 \end{tabular}
-\smallskip
+\medskip
 
 \normalsize The interface step (Prop.~7.1) has exactly three branches, cycle lengths 5, 4 and 3, and each ends in a contradiction.
-\column{0.43\textwidth}
-\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{slide-figures/proof-casefan.png}
+\column{0.52\textwidth}
+\centering\includegraphics[height=0.76\textheight,width=\linewidth,keepaspectratio]{slide-figures/proof-casefan.png}
 \end{columns}
 \src{\S2.6}
 \end{frame}
 
-\begin{frame}{9. Three centres, one leftover label}
+\begin{frame}{Three centres, one leftover label}
 \begin{columns}[T]
-\column{0.4\textwidth}
-\footnotesize
+\column{0.5\textwidth}
 \textbf{Theorem.} If $(A,J)$ and $(B,K)$ are states at $x$, $|A|>0$, and $X$ is the only label outside $J\cup K$, then no two support directions of $B$ are $60^\circ$ apart.
 \smallskip
 
-\textbf{Proof.} $x$, $y=x+e^{ib}$ and $z=x+e^{id}$ are mutually one unit apart, so their palettes are disjoint. $P_y$ and $P_z$ are not inside $K$, and $J\subseteq P_x$. Each of $P_y$, $P_z$ must contain $X$: contradiction.
+\textbf{Idea.} The centres $x$, $x+e^{ib}$, $x+e^{id}$ are mutually one unit apart, so their palettes are disjoint. Each outer palette needs a label outside $K$, and $J$ is used up at $x$, so both must contain $X$: contradiction. (Full proof: backup slide.)
 \smallskip
 
 \st{proved; Lean 4.34.1; integrated in the team build R1}
-\column{0.29\textwidth}
-\includegraphics[width=\linewidth]{slide-figures/three-centre-triangle.png}
-\column{0.29\textwidth}
-\includegraphics[width=\linewidth]{slide-figures/three-centre-count.png}
+\column{0.48\textwidth}
+\centering\includegraphics[height=0.74\textheight,width=\linewidth,keepaspectratio]{slide-figures/three-centre-triangle.png}
 \end{columns}
 \src{\S3}
 \end{frame}
 
-\begin{frame}{10. CC60: a closed $60^\circ$ cone}
+\begin{frame}{CC60: a closed $60^\circ$ cone}
 \begin{columns}[T]
-\column{0.5\textwidth}
-\footnotesize
-Weak measurable colouring with any finite number of labels; finitely many sets $K_i\ni x$ approaching $x$ from signed directions $v_i$, all in one \emph{closed} $60^\circ$ arc; each label of $F_i$ occupies zero area of $\Delta(K_i)$.
-\smallskip
+\column{0.46\textwidth}
+Weak measurable colouring, any finite number of labels. Finitely many sets $K_i\ni x$ approach $x$ from signed directions $v_i$, all in one \emph{closed} $60^\circ$ arc. Each label of $F_i$ occupies zero area of $\Delta(K_i)$.
+\medskip
 
 \textbf{Then at least three labels lie outside every $F_i$.}
+\medskip
+
+The sets need not be connected or compact. Equality at $60^\circ$ is included.
 \smallskip
 
-Sets need not be connected or compact. Equality at $60^\circ$ is included.
-\smallskip
-
-\st{proved, refereed; Lean 4.34.1: \texttt{closed60\_exclusions\_three\_le}}
-\column{0.48\textwidth}
-\includegraphics[width=\linewidth,height=0.7\textheight,keepaspectratio]{slide-figures/interface-cone.png}
+\st{proved, refereed; Lean 4.34.1}
+\column{0.52\textwidth}
+\centering\includegraphics[height=0.74\textheight,width=\linewidth,keepaspectratio]{slide-figures/interface-cone.png}
 \end{columns}
 \src{\S4}
 \end{frame}
 
-\begin{frame}{11. Sharpness and limits of CC60}
+\begin{frame}{CC60: the key step}
+Suppose only two labels $a,b$ survive. Let $W=\bigcap_i\Delta(K_i)$, an open set.
+\begin{enumerate}
+\item \textbf{One pair on $W$.} Then $c\in\{a,b\}$ almost everywhere on $W$.
+\item \textbf{Outer strips.} Every direction in the open $120^\circ$ arc $I$ around the cone is less than $90^\circ$ from every $v_i$, so $W$ contains a thin strip just outside the unit circle over $I$.
+\item \textbf{One radius.} By compactness, one $r\in(1,2)$ puts the arc $S=x+re^{iJ}$ inside $W$, where $J$ is the closed $60^\circ$ middle of $I$.
+\item \textbf{Rigidity.} Turning by $\gamma=\arccos(r/2)<60^\circ$ towards the axis gives each $p\in S$ a unit neighbour in $W$. Binary rigidity (four-step unit walks must alternate $a,b$) then makes one colour almost everywhere near all of the connected arc $S$.
+\item \textbf{Unit pair.} The ends of $S$ are $r>1$ apart, so two points of $S$ are exactly one unit apart with the same colour. This contradicts weakness.
+\end{enumerate}
+\textbf{Where $60^\circ$ is used:} step 2 needs an arc of $180^\circ-60^\circ=120^\circ$; step 4 needs $\gamma<60^\circ$, i.e.\ $r>1$.
+\src{\S4, ``Proof sketch''}
+\end{frame}
+
+\begin{frame}{Sharpness and limits of CC60}
 \begin{itemize}
-\item For every cone wider than $60^\circ$, a Borel, pointwise proper 20-colouring with two segment interfaces leaves only two labels. So CC60 cannot be widened for arbitrary finite palettes. \st{proved, refereed; not Lean}
+\item For every cone wider than $60^\circ$, a Borel, pointwise proper 20-colouring with two segment interfaces leaves only two labels. So CC60 cannot be widened for arbitrary finite palettes \st{proved, refereed; not Lean}. Construction: backup slide.
 \item Six-colour sharpness and novelty priority are \textbf{not} established.
 \item CC60 forbids a kind of local configuration. Nothing shows that a six-colouring must produce it.
 \end{itemize}
 \src{\S4}
 \end{frame}
 
-\begin{frame}{12. Further local results}
+\begin{frame}{A 415-line shorter Lean proof}
+\centering\includegraphics[height=0.66\textheight,width=\linewidth,keepaspectratio]{slide-figures/simplification-modules.png}
+\par\smallskip\raggedright\footnotesize
+Encoding refactor $-126$; three-centre integration R1 $-24$ (gates pass); dead-code pass S1 $-265$, which also proves Lemma 6.7 branch-free under its own name. The root theorems are unchanged and use only the standard axioms \st{Lean 4.34.1}. A further pass, S2, is a candidate and is not counted.
+\src{\S5}
+\end{frame}
+
+\begin{frame}{Further local results}
 \begin{itemize}
 \item \textbf{Canonical paired palette excluded.} In a weak measurable six-colouring, no centre has a palette containing the canonical paired palette $P(t)$ for almost every $t$. The reason is a finite unit-distance configuration with no proper list colouring. \st{proved, refereed}
 \item \textbf{Even walks.} In an open set where every point of a connected piece has a unit neighbour, any two points are joined by an even unit walk. This gives finite list and parity obstructions for weak measurable $k$-colourings. \st{Lean 4.34.1}
 \item \textbf{Six-colour producer pieces.} Each piece compiles, but the glued statement still assumes two hypotheses (SignTable, ForcingLemma). \st{Lean 4.34.1, conditional}
-\item None of these is a global chromatic result. The open lemmas behind a route to $\chi\ge7$ are listed in the report.
 \end{itemize}
 \src{\S5}
 \end{frame}
 
-\begin{frame}{13. Computations and corrections}
+\begin{frame}{Computations and corrections}
 \begin{itemize}
 \item Exact certificates for a translated union of Heule graphs (1,048 vertices) and for no forced-equal pairs \st{computation}
 \item Direction filtering on a grid: 7,776 $\to$ 1,420 $\to$ 174 $\to$ 6 (an earlier count of 95 was a bug) \st{computation}
 \item The closed-$120^\circ$ ``monochromatic'' endpoint claim is false: a refereed 19-colour counterexample \st{proved}
-\item Simplification of the supplied Lean proof: 415 lines shorter in the team build (126 from the encoding refactor, 24 net from R1, 265 from a dead-code pass with an in-place step ban) \st{Lean 4.34.1}
 \end{itemize}
 \src{\S5}
 \end{frame}
 
-\begin{frame}{14. Honest status}
+\begin{frame}{Honest status}
 \begin{itemize}
 \item \textbf{No global chromatic result.} $6\le\chi(\R^2)\le7$ is unchanged.
-\item Lean checks ran under 4.34.1; the event's Lean track needs 4.35.0, and nothing has been rebuilt under it.
+\item Lean checks ran under 4.34.1; the event's Lean track needs 4.35.0, and nothing has been rebuilt under it yet.
 \item AI use: Claude drafted the exposition and this report, and refereed the exposition. Research workers did the reviews and Lean work [TEAM: confirm roles]. Every claim was checked against the sources, the logs or exact scripts.
 \item Ask us about the definitions, the key step, what is new versus cited, and how sure we are.
 \end{itemize}
 \src{\S7--\S10}
+\end{frame}
+
+\appendix
+\begin{frame}{Backup: definitions}
+\small
+\begin{itemize}
+\item \textbf{Weak measurable colouring:} measurable colour classes, with almost every unit pair (by position $\times$ direction) getting distinct colours.
+\item \textbf{Robust point:} small disks around it are almost entirely one colour (density one).
+\item \textbf{Straddle region} $\Delta(K)$: points closer than 1 to some point of $K$ and farther than 1 from another.
+\item \textbf{Trace / palette:} weak limits of colour records on typical circles of radius $\to1$ near a centre; the palette $P_x(e)$ is the set of labels that persist at direction $e$.
+\item \textbf{State} $(A,J)$: a positive-measure set of directions on which the palette contains the labels $J$.
+\item \textbf{Approach direction} $v$ of $K$ at $x$: the limit of the directions of points of $K$ tending to $x$ (signed).
+\end{itemize}
+\src{\S2}
+\end{frame}
+
+\begin{frame}{Backup: why a proper colouring gives a weak measurable one}
+\small
+\begin{enumerate}
+\item Restrict to the countable algebraic plane; average translates and rotations to get a symmetry-invariant random labelling.
+\item Translations act on its square-integrable variables; split the spectrum into ordinary characters $\exp(i\xi\cdot z)$ and an irregular part.
+\item Manuscript Theorem 2.3 (Haar rigidity): the irregular part is decorrelated under every nonzero algebraic translation.
+\item Project each colour indicator onto the ordinary part. This is a conditional expectation, so values stay nonnegative with sum one, and unit-translation correlations stay zero.
+\item The fields extend continuously to $\R^2$. Pick the least label with positive value: equal labels at unit distance would force a positive correlation. So the colouring is weak.
+\end{enumerate}
+\st{cited: manuscript Sections 2--4, Proposition 4.2}
+\src{\S2.1, ``How the transfer works''}
+\end{frame}
+
+\begin{frame}{Backup: the three-centre proof in full}
+\begin{columns}[T]
+\column{0.5\textwidth}
+\footnotesize
+Let $b,d\in\operatorname{supp}B$ with $|e^{ib}-e^{id}|=1$; put $y=x+e^{ib}$, $z=x+e^{id}$.
+\begin{itemize}
+\item Unit-separated centres have disjoint palettes in a common direction (supplied), so $P_x(t),P_y(t),P_z(t)$ are pairwise disjoint for almost every $t$.
+\item A support direction gives a trace vanishing on $K$ (supplied), so $P_y(t),P_z(t)\not\subseteq K$ almost everywhere.
+\item $J\subseteq P_x(t)$ for almost every $t\in A$, and $|A|>0$.
+\end{itemize}
+Fix one such $t$. Take $j\in P_y(t)\setminus K$; $j\notin J\subseteq P_x(t)$, so $j=X$. Likewise $X\in P_z(t)$: contradiction. The centres are fixed first, so only three null sets are removed.
+\column{0.48\textwidth}
+\centering\includegraphics[height=0.72\textheight,width=\linewidth,keepaspectratio]{slide-figures/three-centre-count.png}
+\end{columns}
+\src{\S3}
+\end{frame}
+
+\begin{frame}{Backup: the 20-colour sharpness construction}
+\small
+For a cone of width $\Delta\in(\pi/3,\pi)$, take segments $K_\pm=[0,\rho e^{\pm i\Delta/2}]$ with small $\rho$.
+\begin{itemize}
+\item $W=\Delta(K_+)\cap\Delta(K_-)$ lies in the band $1-\rho<|z|<1+\rho$: an outer horn around angle $0$ of half-width $(\pi-\Delta)/2<\pi/3$, and an inner horn around $\pi$.
+\item Each half-horn has diameter below one and opposite horns are over one apart, so colour $0$ above the real axis and $1$ below colours $W$ properly.
+\item Two disjoint copies of a proper nine-colouring by squares of side $3/5$ colour the rest: labels $2$--$10$ off $\Delta(K_+)$, labels $11$--$19$ on $\Delta(K_+)\setminus\Delta(K_-)$.
+\item Only labels $0,1$ survive both exclusions, yet the cone is wider than $60^\circ$.
+\end{itemize}
+\st{proved, refereed; not Lean}
+\src{\S4, ``Sharpness above $60^\circ$''}
+\end{frame}
+
+\begin{frame}{Backup: the interface model and the missing contact}
+\begin{columns}[T]
+\column{0.49\textwidth}
+\centering\includegraphics[width=\linewidth]{slide-figures/interface-model.png}
+\par\footnotesize A unit circle crossing an interface between colours $A$ and $B$ passes through robust points of both, so its centre is robust in neither.
+\column{0.49\textwidth}
+\centering\includegraphics[width=\linewidth]{slide-figures/straddle-gap.png}
+\par\footnotesize With $K$ only the two endpoints of a length-2 segment, $z$ straddles $K$ but nothing in $K$ is exactly one unit away.
+\end{columns}
+\src{\S6}
+\end{frame}
+
+\begin{frame}{Backup: AI use and checking}
+\small
+\begin{itemize}
+\item \textbf{Claude} (Anthropic): exposition drafting, lesson integration, figure generators, independent referee passes, and drafting this report and these slides. [TEAM: confirm whether to also credit research and Lean work.]
+\item \textbf{Astra / Codex} (OpenAI tooling) and an \textbf{OMM} research swarm: research worker and reviewer roles, including the refereed paper results.
+\item \textbf{Checking:}
+  \begin{itemize}
+  \item every lesson had an independent referee pass against the manuscript and the Lean sources;
+  \item every Lean claim rests on archived compiler logs and axiom audits, with matching source hashes;
+  \item every figure for Lessons 3--6 was checked by an archived script.
+  \end{itemize}
+\end{itemize}
+\src{\S8}
 \end{frame}
 \end{document}

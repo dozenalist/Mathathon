@@ -38,6 +38,21 @@ Commit: [PIN: full 40-character hash of the frozen revision]}
 The chromatic number of the plane, $\chi(\R^2)$, is the least number of colours needed so that no two points at distance exactly one share a colour. A manuscript supplied to this event (OpenAI, September 2026) proves that five colours never suffice, so $6\le\chi(\R^2)\le7$. That theorem is prior work and is not ours. During the event we did three things. First, we wrote a staged, figure-supported explanation of the manuscript's proof, checked step by step against the manuscript and its Lean development. Second, we proved local results about the manuscript's ``interfaces'' at a common centre. The main ones are a closed $60^\circ$ cone obstruction (CC60), which cannot be widened for arbitrary finite palettes, and a three-centre proof of the manuscript's strict-state separation lemma. The latter is integrated into a Lean build of the supplied proof that, together with an encoding refactor and a dead-code and step-ban pass, is 415 lines shorter. Both have archived Lean~4.34.1 checks. Third, we recorded further refereed local results, finite computations, negative results and corrections, each with its status in the team's results ledger. \textbf{No global chromatic result.} The bounds $6\le\chi(\R^2)\le7$ are inherited from the supplied proof and the classical seven-colouring; nothing we add changes them. Every claim below carries its status.
 \end{abstract}
 
+\section*{Our main results at a glance}
+\addcontentsline{toc}{section}{Our main results at a glance}
+\textbf{No global chromatic result.} Every item below is local, conditional, finite, or a simplification of the supplied proof.
+\begin{enumerate}
+\item \textbf{A shorter Lean proof of the supplied theorem} \st{Lean 4.34.1}: 415 lines shorter than the supplied 82-module development (encoding refactor $-126$, three-centre integration R1 $-24$, dead-code pass S1 $-265$), with the root theorems unchanged and on the standard axioms (Section~5, with a per-module chart).
+\item \textbf{A three-centre proof of strict state separation} (manuscript Lemma~6.3, fixed-centre part) \st{proved; Lean 4.34.1}: three centres on a unit triangle and a one-line counting argument replace an implicit-function argument (Section~3).
+\item \textbf{CC60, a closed $60^\circ$ cone obstruction} \st{Lean 4.34.1}: if sets through one centre approach it from directions in a closed $60^\circ$ arc and each excludes some labels from its straddle region, at least three labels survive. A 20-colour construction shows that $60^\circ$ cannot be widened for arbitrary finite palettes \st{proved} (Section~4).
+\item \textbf{Refereed local lemmas and counterexamples} \st{proved}: the canonical paired palette is impossible at a centre of a weak measurable six-colouring; the closed-$120^\circ$ form of MC120 is false; and others (Section~5).
+\item \textbf{Finite certificates} \st{computation}, and a \textbf{six-lesson checked reader} of the supplied proof (Sections~5--6).
+\end{enumerate}
+
+\paragraph{Why a local cone obstruction matters for six versus seven.} The supplied proof ends at one centre: a cycle of interfaces meets there, the one-sided strips of manuscript Lemma~8.1 restrict the labels near the unit circle, and every cycle length is refuted. A proof that six colours fail would have to refute the interface configurations that six colours allow. CC60 rules out every such configuration whose approach directions fit in a closed $60^\circ$ arc; on a finite grid of directions, the cone test leaves 6 of 174 candidate configurations (DIR-FILTER, Section~5). The only recorded route to $\chi\ge7$ (L6-F6) runs: a proper six-colouring gives a weak measurable one (the supplied transfer); then two open lemmas, L6 (the cyclic transition core is locally finite) and F6 (the common-interface graph is acyclic), would give a full approximation and a planar mesh contradiction. L6 and F6 are open, so we claim nothing about seven colours.
+
+\paragraph{What is new.} The five-colour theorem and its proof are OpenAI's. New here are the three-centre proof of Lemma~6.3, CC60 and its 20-colour sharpness, the 415-line shorter Lean proof, the refereed local lemmas and counterexamples, and the checked exposition. A bounded literature search classed CC60 only as a new candidate, so its novelty is not established.
+
 \paragraph{How to read the status labels.}
 Each main claim is marked with one of the following labels.
 \begin{itemize}
@@ -84,6 +99,8 @@ This section summarises manuscript Sections~4--8 at the level of our reader, Les
 
 \subsection{Weak measurable colourings}
 A colouring $c:\R^2\to\{1,\dots,k\}$ with measurable classes is \emph{weak} if almost every unit pair has distinct colours, with respect to the measure $dx\,d\sigma(u)$ on positions $x$ and unit directions $u$. Our reader explains this with a unit ruler: place it at random in a window $B$ and turn it uniformly. A placement is \emph{bad} if both ends get the same colour. Weakness says the probability $P_B$ of a bad placement is zero in every window. A proper colouring forbids bad placements outright. A weak one forbids them only up to a null set, so changing a colouring on a null set preserves weakness. Theorem~1.3 shows that a proper $k$-colouring yields a weak measurable $k$-colouring. The proof is spectral and uses a Haar-rigidity theorem (manuscript Theorem~2.3). We summarise it but do not re-derive it.
+
+\paragraph{How the transfer works.} \st{cited} Restrict the assumed proper colouring to the countable algebraic plane, and average its translates and algebraic rotations to obtain a symmetry-invariant probability law on labelings; this gives symmetry but not yet measurability. Translations act on square-integrable random variables with a spectral description by characters. Manuscript Theorem~2.3 shows that a rotation-invariant law concentrated away from the ordinary characters $z\mapsto\exp(i\xi\cdot z)$ must be Haar probability, so the irregular part of the spectrum has zero correlation under every nonzero algebraic translation. Projecting each colour indicator onto the ordinary-character part is a conditional expectation: it keeps the coordinates nonnegative with sum one, and keeps the zero correlations at unit translations. The resulting fields extend continuously to the real plane. Choosing the least label with positive field value, and a fixed label on the remaining null set, gives a measurable colouring in which two equal labels at unit distance would force a positive correlation; so it is weak (manuscript Sections~2--4, Proposition~4.2).
 
 \subsection{From ``almost never'' to ``never'' (manuscript Lemma 4.3)}
 Call $a$ \emph{robust} in colour $i$ if the proportion of colour $i$ in small disks around $a$ tends to $1$; by Lebesgue's density theorem almost every point of colour $i$ is robust in $i$.
@@ -745,6 +762,8 @@ Lean~4.34.1 (archived logs), appear only in Table~\ref{tab:lean-other}.
 % LEDGER: DIAMOND = LEAN_VERIFIED ; FIVE-CYCLE-RESIDUES = LEAN_VERIFIED ; CONNECTED-SET = LEAN_VERIFIED ; NULL-TRANSFER = LEAN_VERIFIED
 
 % ----------------------------------------------------------------------
+\paragraph{The simplification by module.} The accompanying chart \texttt{Figures/\allowbreak{}simplification-\allowbreak{}modules.png} (generated by \texttt{build-\allowbreak{}simplification.py} from the ledger statements of ENC-R4, R1 and S1) shows, for each of the 17 modules that changed, its physical line count in the supplied original and in the team build. In words: \texttt{States} falls from 764 to 461 lines ($-303$), \texttt{ConditionalLimits} from 701 to 542 ($-159$), \texttt{BoundaryTrace} from 367 to 313 ($-54$), \texttt{FourContinuity} from 551 to 503 ($-48$), \texttt{FiveSupport} from 376 to 337 ($-39$), \texttt{CyclicCore} from 280 to 256 ($-24$), and nine further modules lose between 2 and 16 lines each; \texttt{ConditionalSpectrum} grows by 33 lines and the new module \texttt{AvoidingTrace} adds 237. The net change is $-415$ lines.
+
 \subsection{New local mathematics}
 
 \begin{itemize}
@@ -1032,7 +1051,7 @@ family, canonical 3-cycle.
 \item PALETTE-RIGIDITY: $|J\cup K|\ge3$ with real states on both sectors.
 \item STAIRCASE-CONVERSE: realise or classify the surviving staircases.
 \item K6-PRODUCER: two missing declarations for the $m=3$ case at $k=6$.
-\item L6-F6: the only recorded route to $\chi\ge7$, conditional on the open
+\item L6-F6: the only recorded route to $\chi\ge7$ (see ``Our main results at a glance''), conditional on the open
 lemmas L6 and F6.
 \item LOCALIZED-TWO-STATE: every positive-measure partial two-state field is
 impossible.
