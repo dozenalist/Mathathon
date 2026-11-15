@@ -1,6 +1,6 @@
 # Results ledger — Hadwiger–Nelson Mathathon entry
 
-Built 2026-11-15T06:07Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
+Built 2026-11-15T06:38Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
 
 **No global chromatic result. The bounds 6 ≤ χ(ℝ²) ≤ 7 come from the supplied proof ("The Euclidean plane is not five-colorable") and the classical 7-colouring; nothing the team has added changes them. Every entry below is a simplification of the supplied proof, a local or conditional lemma, a finite computation, or a negative result. The only route to χ ≥ 7 on record is conditional on the open lemmas L6 and F6 (see L6-F6).**
 
@@ -616,20 +616,24 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 
 ### A5-SLIVER
 
-**A5 sliver interval certificate (R ≥ 0 on the three uncovered pieces)** — `TESTED_FINITE`
+**A5 apex exclusion: exact interval certificate over the full domain (including the corner where the bound is attained)** — `TESTED_FINITE`
 
-- **Statement:** On the three pieces P1, P2, P3 left uncovered by the F5 exclusion boxes in arc1 × arc3, the quantity R = (1 − |D|²/4)·D_x² − |D|²·Δ² is ≥ 0, so the lower apex A1 has m_floor(A1) ≤ 0 and lies outside the open region H; equality only at the exact corner, where the apex is ci ∈ ∂H.
-- **Hypotheses:** Assumes the complement decomposition is exactly P1 ∪ P2 ∪ P3 and that the 1,469 + 889 F5 boxes are certified elsewhere (C2); non-corner arc ends taken from the domain file without re-verification.
-- **Evidence:** certify_sliver.py: exact Fraction intervals rounded outward to 2⁻¹²⁰, interval forward-mode derivatives, rational trig parametrisation; 0.4 s, "ALL PIECES CERTIFIED: True".
+- **Statement:** Full domain (update 2026-11-15, certify_full.py): for every (u1,u3) in arc1 × arc3 of both blocks B1 and B2, both unit apexes of (v1,v3) lie outside the open region H (all five margins m_lo, m_lo2, m_hi, m_edge, m_floor > 0, block4_check.py:65–75): near each corner by monotonicity (dR/du1 < 0, dR/du3 > 0) and the exact corner identity; elsewhere by 580 exact interval sub-boxes, each with a margin of A1 strictly negative and A2 excluded by m_hi. All 8 arc ends are certified unique roots (certify_arc_ends.py). Earlier piece: on the three pieces P1, P2, P3 left uncovered by the F5 exclusion boxes in arc1 × arc3, the quantity R = (1 − |D|²/4)·D_x² − |D|²·Δ² is ≥ 0, so the lower apex A1 has m_floor(A1) ≤ 0 and lies outside the open region H; equality only at the exact corner, where the apex is ci ∈ ∂H.
+- **Hypotheses:** The one stated assumption is the reading of the claim (both unit apexes lie outside the open H) with the quoted margin definitions. The earlier dependencies (complement exactly P1 ∪ P2 ∪ P3; the 1,469 + 889 F5 boxes certified elsewhere; unverified non-corner arc ends) are superseded: the full-domain certificate re-derives C2 and certifies all arc ends.
+- **Evidence:** certify_full.py (exact Fraction intervals, outward rounding 2⁻¹²⁰, √ constants by isqrt, no floats in any decision; "ALL BLOCKS CERTIFIED: True") and certify_arc_ends.py ("ALL ARC ENDS CERTIFIED: True"). Earlier: certify_sliver.py: exact Fraction intervals rounded outward to 2⁻¹²⁰, interval forward-mode derivatives, rational trig parametrisation; 0.4 s, "ALL PIECES CERTIFIED: True".
 - **Artifacts:**
-  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/CERTIFICATE.md` — certificate write-up — `b6ac39dd14d55157…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/CERTIFICATE.md` — certificate write-up — `d09708787fbe0e41…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/certify_sliver.py` — certifier — `63e84a36bfa95ea9…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/certificate_output.txt` — output — `68507c241873c543…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/certify_full.py` — full-domain certifier — `25ab2cfa85d28bf2…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/full_output.txt` — full-domain output — `c076169b95b00432…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/certify_arc_ends.py` — arc-end certifier — `8ea21bf663493518…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/arc_ends_output.txt` — arc-end output — `045489e1e380f161…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261114T224105-download-4-A5-SLIVER-DEFS.md` — domain/target definitions (swarm smwgy3s8k m2) — `714b2eb2a7eeb9a8…`
-- **Checked by the results desk:** Hashes recomputed; read CERTIFICATE.md. Not re-run by the results desk (script outside the repo).
+- **Checked by the results desk:** ~07:00Z (exposition desk, ledger owner): re-ran certify_full.py (sha256 25ab2cfa85d28bf2…) and certify_arc_ends.py (8ea21bf663493518…) in a scratch copy with python -I: "ALL BLOCKS CERTIFIED: True (1.2 s)" and "ALL ARC ENDS CERTIFIED: True". Earlier: hashes recomputed and CERTIFICATE.md read by the results desk.
 - **Provenance:** Verifier lane m2 definitions; certificate by the research desk 2026-11-14 23:45:56Z.
 - **Correction history:** the domain file's claim |A_far − ci| > 1.5 is false on part of P1 (|A2−ci|² ∈ [2.2004, 2.2339]); the weaker > 1 is certified everywhere (see A5-FAR-APEX)
-- **Used for:** Closes the sliver gap in [A5-ODD-WALK](#a5-odd-walk).
+- **Used for:** Closes the sliver gap and the C2-box dependency in [A5-ODD-WALK](#a5-odd-walk); the walk coordinates there are still not enumerated.
 
 ### DIR-FILTER
 
@@ -677,7 +681,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-CERTIFICATE.json` — certificate — `cd3f9ff3a47f93d5…`
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/Verify-HeuleUnion.mjs` — verifier — `ca9510a2dfd81fbb…`
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-VALIDATION.txt` — validation — `e611fb63e2086a00…`
-  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `d51b4ca9756f14f5…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `6016a27ed9bba204…`
 - **Checked by the results desk:** 2026-11-14 23:50Z: re-ran `node HadwigerNelson/Main/verify-snapshot.mjs` (exit 0, 11 s), which re-runs Verify-HeuleUnion.mjs: passed, 548,628 pairs, 1,048 vertices, 5,487 edges, proper 5-colouring.
 - **Provenance:** Graph lanes (graph-union-audit), 2026-11-14; import validation 18:58Z.
 - **Correction history:** 17 colourings reduced candidate pairs 110,015 → 1,145, then 34 colourings separated all 543,141 nonadjacent pairs; unreconciled wording: 177 survivor pairs inside the original H locally vs 112 in remote wording (HEULE-UNION-VALIDATION.txt records remainingPairsInsideOriginalH 177); moot after the full separation certificate
@@ -1274,7 +1278,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 
 - **Statement:** The A5 domain file (§4, quoting the m2 report) claims |A_far − ci| > 1.5. This is false on part of P1: on u1 ∈ [0.201000, 0.204437], u3 ∈ [−0.215250438, −0.2152], |A2 − ci|² ∈ [2.2004, 2.2339] < 9/4. The weaker |A2 − ci| > 1 holds everywhere, so the conclusion that the far apex is outside H survives.
 - **Artifacts:**
-  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/CERTIFICATE.md` — certificate (Discrepancy section) — `b6ac39dd14d55157…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/CERTIFICATE.md` — certificate (Discrepancy section) — `d09708787fbe0e41…`
 - **Provenance:** Research desk certificate 23:45:56Z.
 - **Depends on:** [A5-SLIVER](#a5-sliver)
 
@@ -1368,7 +1372,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Statement:** All 11,556 archived files (358,349,948 bytes) match MANIFEST.json, the frozen Lean source hashes match their validation records, and the finite graph certificates verify.
 - **Artifacts:**
   - `HadwigerNelson/Main/verify-snapshot.mjs` — verifier — `eb40b4b59188cd81…`
-  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `d51b4ca9756f14f5…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `6016a27ed9bba204…`
 - **Checked by the results desk:** Re-ran 2026-11-14 23:50Z: status passed, exit 0, 11 s.
 - **Provenance:** Supervisor import, 2026-11-14 18:57Z.
 

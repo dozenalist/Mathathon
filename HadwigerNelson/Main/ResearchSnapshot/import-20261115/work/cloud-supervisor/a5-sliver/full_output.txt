@@ -1,0 +1,10 @@
+A5 FULL-DOMAIN apex exclusion (desk re-derivation of C2); exact Fraction intervals 2^-120
+  B1: corner box u1 in [0.245044118,0.255989078], u3 in [-0.215250438,-0.165154202] certified by monotonicity (19 sub-boxes; dR/du1<0, dR/du3>0, Dx<0, Delta>0, |D|<2, A2 outside H)
+  B1: rest of domain certified=True boxes=460 failures=0
+     A1 excluded by: {'m_lo': 13, 'm_floor': 174, 'm_lo2': 142}
+     A2 excluded by: {'m_hi': 230}
+  B2: corner box u1 in [0.165154202,0.215250438], u3 in [-0.245375380,-0.226057916] certified by monotonicity (5 sub-boxes; dR/du1<0, dR/du3>0, Dx<0, Delta>0, |D|<2, A2 outside H)
+  B2: rest of domain certified=True boxes=120 failures=0
+     A1 excluded by: {'m_lo': 28, 'm_floor': 42, 'm_lo2': 7}
+     A2 excluded by: {'m_hi': 60}
+ALL BLOCKS CERTIFIED: True   (1.1 s)

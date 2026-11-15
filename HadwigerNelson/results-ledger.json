@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "builtAtUtc": "2026-11-15T06:07Z",
+  "builtAtUtc": "2026-11-15T06:38Z",
   "workspaceRoot": "I = C:/Users/jarom/Documents/Codex/2026-11-13/i (research workspace, outside the repo)",
   "statusVocabulary": [
     "LEAN_VERIFIED",
@@ -1456,21 +1456,21 @@
       "id": "A5-SLIVER",
       "theme": "New mathematics",
       "status": "TESTED_FINITE",
-      "title": "A5 sliver interval certificate (R ≥ 0 on the three uncovered pieces)",
-      "statement": "On the three pieces P1, P2, P3 left uncovered by the F5 exclusion boxes in arc1 × arc3, the quantity R = (1 − |D|²/4)·D_x² − |D|²·Δ² is ≥ 0, so the lower apex A1 has m_floor(A1) ≤ 0 and lies outside the open region H; equality only at the exact corner, where the apex is ci ∈ ∂H.",
-      "hypotheses": "Assumes the complement decomposition is exactly P1 ∪ P2 ∪ P3 and that the 1,469 + 889 F5 boxes are certified elsewhere (C2); non-corner arc ends taken from the domain file without re-verification.",
-      "evidence": "certify_sliver.py: exact Fraction intervals rounded outward to 2⁻¹²⁰, interval forward-mode derivatives, rational trig parametrisation; 0.4 s, \"ALL PIECES CERTIFIED: True\".",
-      "checked": "Hashes recomputed; read CERTIFICATE.md. Not re-run by the results desk (script outside the repo).",
+      "title": "A5 apex exclusion: exact interval certificate over the full domain (including the corner where the bound is attained)",
+      "statement": "Full domain (update 2026-11-15, certify_full.py): for every (u1,u3) in arc1 × arc3 of both blocks B1 and B2, both unit apexes of (v1,v3) lie outside the open region H (all five margins m_lo, m_lo2, m_hi, m_edge, m_floor > 0, block4_check.py:65–75): near each corner by monotonicity (dR/du1 < 0, dR/du3 > 0) and the exact corner identity; elsewhere by 580 exact interval sub-boxes, each with a margin of A1 strictly negative and A2 excluded by m_hi. All 8 arc ends are certified unique roots (certify_arc_ends.py). Earlier piece: on the three pieces P1, P2, P3 left uncovered by the F5 exclusion boxes in arc1 × arc3, the quantity R = (1 − |D|²/4)·D_x² − |D|²·Δ² is ≥ 0, so the lower apex A1 has m_floor(A1) ≤ 0 and lies outside the open region H; equality only at the exact corner, where the apex is ci ∈ ∂H.",
+      "hypotheses": "The one stated assumption is the reading of the claim (both unit apexes lie outside the open H) with the quoted margin definitions. The earlier dependencies (complement exactly P1 ∪ P2 ∪ P3; the 1,469 + 889 F5 boxes certified elsewhere; unverified non-corner arc ends) are superseded: the full-domain certificate re-derives C2 and certifies all arc ends.",
+      "evidence": "certify_full.py (exact Fraction intervals, outward rounding 2⁻¹²⁰, √ constants by isqrt, no floats in any decision; \"ALL BLOCKS CERTIFIED: True\") and certify_arc_ends.py (\"ALL ARC ENDS CERTIFIED: True\"). Earlier: certify_sliver.py: exact Fraction intervals rounded outward to 2⁻¹²⁰, interval forward-mode derivatives, rational trig parametrisation; 0.4 s, \"ALL PIECES CERTIFIED: True\".",
+      "checked": "~07:00Z (exposition desk, ledger owner): re-ran certify_full.py (sha256 25ab2cfa85d28bf2…) and certify_arc_ends.py (8ea21bf663493518…) in a scratch copy with python -I: \"ALL BLOCKS CERTIFIED: True (1.2 s)\" and \"ALL ARC ENDS CERTIFIED: True\". Earlier: hashes recomputed and CERTIFICATE.md read by the results desk.",
       "provenance": "Verifier lane m2 definitions; certificate by the research desk 2026-11-14 23:45:56Z.",
       "corrections": [
         "the domain file's claim |A_far − ci| > 1.5 is false on part of P1 (|A2−ci|² ∈ [2.2004, 2.2339]); the weaker > 1 is certified everywhere (see A5-FAR-APEX)"
       ],
-      "usedFor": "Closes the sliver gap in [A5-ODD-WALK](#a5-odd-walk).",
+      "usedFor": "Closes the sliver gap and the C2-box dependency in [A5-ODD-WALK](#a5-odd-walk); the walk coordinates there are still not enumerated.",
       "artifacts": [
         {
           "role": "certificate write-up",
           "workspacePath": "I/work/cloud-supervisor/a5-sliver/CERTIFICATE.md",
-          "sha256": "b6ac39dd14d55157abb05a593a775bf84362b71da007e1edf3d3c71eb9e5ca33",
+          "sha256": "d09708787fbe0e41b96b7ebac5c3cc5bed60d06baebfb08c14dd75434edfa173",
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/CERTIFICATE.md"
         },
         {
@@ -1484,6 +1484,30 @@
           "workspacePath": "I/work/cloud-supervisor/a5-sliver/certificate_output.txt",
           "sha256": "68507c241873c543d5e56d7c6e162fb46ba96c1d19bbd431ad4b763fb4bfba41",
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/certificate_output.txt"
+        },
+        {
+          "role": "full-domain certifier",
+          "workspacePath": "I/work/cloud-supervisor/a5-sliver/certify_full.py",
+          "sha256": "25ab2cfa85d28bf232b6fc5c92e4242d1b74504af40e5ff09c9760c42b00a429",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/certify_full.py"
+        },
+        {
+          "role": "full-domain output",
+          "workspacePath": "I/work/cloud-supervisor/a5-sliver/full_output.txt",
+          "sha256": "c076169b95b00432534c462f82ca9e69b07fa2c2157385ed31a905173de34839",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/full_output.txt"
+        },
+        {
+          "role": "arc-end certifier",
+          "workspacePath": "I/work/cloud-supervisor/a5-sliver/certify_arc_ends.py",
+          "sha256": "8ea21bf663493518696487cea22fa433521122e6840a7bf1b330706e0df8a6f5",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/certify_arc_ends.py"
+        },
+        {
+          "role": "arc-end output",
+          "workspacePath": "I/work/cloud-supervisor/a5-sliver/arc_ends_output.txt",
+          "sha256": "045489e1e380f1618c0a29884b25f0a5e7441c488776d34b0758cf04db04c903",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/arc_ends_output.txt"
         },
         {
           "role": "domain/target definitions (swarm smwgy3s8k m2)",
@@ -1617,7 +1641,7 @@
         {
           "role": "import validation record",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "d51b4ca9756f14f55d85ead1b07a71bcf198bf1251a2f594fc8bfa28e9d4fba1"
+          "sha256": "6016a27ed9bba20404c0f5f4242f5254a2a950414055be5d0feaf1ed11f29f85"
         }
       ]
     },
@@ -2759,7 +2783,7 @@
         {
           "role": "certificate (Discrepancy section)",
           "workspacePath": "I/work/cloud-supervisor/a5-sliver/CERTIFICATE.md",
-          "sha256": "b6ac39dd14d55157abb05a593a775bf84362b71da007e1edf3d3c71eb9e5ca33",
+          "sha256": "d09708787fbe0e41b96b7ebac5c3cc5bed60d06baebfb08c14dd75434edfa173",
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/CERTIFICATE.md"
         }
       ]
@@ -2939,7 +2963,7 @@
         {
           "role": "recorded run (18:58Z)",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "d51b4ca9756f14f55d85ead1b07a71bcf198bf1251a2f594fc8bfa28e9d4fba1"
+          "sha256": "6016a27ed9bba20404c0f5f4242f5254a2a950414055be5d0feaf1ed11f29f85"
         }
       ]
     },

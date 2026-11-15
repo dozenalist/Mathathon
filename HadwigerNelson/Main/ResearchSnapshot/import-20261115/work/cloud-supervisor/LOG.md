@@ -95,3 +95,7 @@
 - 05:44Z heartbeat: research waiting on A6-GLUE files from formal lane (reported <20 min); exposition idle; no collaborator commits; services alive; 0 lean.exe; cycle 05:43Z.
 - 05:54Z heartbeat: research A6-GLUE chain pending (reported <20 min); no collaborator commits; services alive; 0 lean.exe.
 - 06:04Z heartbeat: A6-GLUE chain compiling (1 lean.exe); no collaborator commits; services alive; cycle 05:58Z.
+- 06:09Z A6-GLUE LEAN_VERIFIED (conditional) pushed 85a7a3c.
+- 06:14Z heartbeat: only A5 caveats outstanding (verifier lane); desks idle, reported <20 min; no collaborator commits; services alive; cycle 06:13Z.
+- 06:24Z heartbeat: waiting on A5 caveat data; no collaborator commits; services alive.
+- 06:34Z heartbeat: research idle 20+ min -> A5 caveats push (lane check, desk-derive, 10:00Z fallback); services alive; cycle 06:29Z; no collaborator commits.

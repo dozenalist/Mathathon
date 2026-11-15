@@ -68,3 +68,34 @@ conclusion "the far apex is outside H" survives.
 2. **The model.** H is the open region where all five margins are positive. The relevant apex is A1 = M + h·n.
    The target R ≥ 0 is equivalent to the needed statement (A5). Only the m_floor margin is used.
 3. No global chromatic result follows from this.
+
+---
+
+# Update 2026-11-15 ~06:45Z: all three caveats CLOSED at the desk
+
+**Verdict: the A5 apex exclusion is PROOF-GRADE over the FULL domain arc1 x arc3 of both blocks, by desk-derived
+exact interval certificates.** It no longer depends on the lane's C2 boxes. Remaining assumption: the model,
+i.e. the margin definitions quoted below and the reading of the claim.
+
+Margin definitions, quoted by the verifier lane from `block4_check.py:65-75` (smwguidy9 m2):
+c1=(sqrt3/2,1/2), c3=(-sqrt3/2,1/2), ci=(0,1); m_lo=|p-c1|^2-1, m_lo2=|p-c3|^2-1, m_hi=1-|p-ci|^2,
+m_edge=3/4-p_x^2, m_floor=p_y-1; H = {all five > 0}, which is open.
+
+1. **Arc ends, caveat (b)**: `certify_arc_ends.py` (sha 8ea21bf663493518696487cea22fa433521122e6840a7bf1b330706e0df8a6f5), output `arc_ends_output.txt` (sha 045489e1e380f1618c0a29884b25f0a5e7441c488776d34b0758cf04db04c903).
+   All 8 arc ends (4 non-corner, where m_lo=0 or m_lo2=0, and 4 corner, where m_hi=0) are certified unique roots in their +/-1e-9
+   brackets: strict sign change, a one-signed derivative, and the margin positive on the arc side.
+2. **m_hi, caveat (c)**: m_hi = 1-|p-ci|^2, so m_hi < 0 <=> |p-ci| > 1. The far-apex bound '> 1.5' in the domain file
+   is false (§ "Discrepancy" above); '> 1' is what is needed and what is certified.
+3. **C2, caveat (a), re-derived**: `certify_full.py` (sha 25ab2cfa85d28bf232b6fc5c92e4242d1b74504af40e5ff09c9760c42b00a429), output `full_output.txt` (sha c076169b95b00432534c462f82ca9e69b07fa2c2157385ed31a905173de34839), 1.1 s.
+   Claim (the desk's explicit reading of C2): for EVERY (u1,u3) in arc1 x arc3 (rational boxes reaching 1e-9 past every
+   certified end), both unit apexes A1, A2 of (v1, v3) lie outside H.
+   Method:
+   - Corner boxes B1 [0.245044,0.255989] x [-0.215250,-0.165154] and B2 [0.165154,0.215250] x [-0.245375,-0.226058]
+     are certified by monotonicity (dR/du1<0, dR/du3>0, D_x<0, Delta>0, |D|<2) plus the exact corner identity, so R>=0,
+     i.e. m_floor(A1)<=0. On those boxes A2 is outside H by m_hi<0.
+   - The rest of B1 is 460 boxes and the rest of B2 is 120. On every box some margin of A1 and some margin of A2 is strictly
+     negative: A1 by m_floor, m_lo or m_lo2; A2 by m_hi throughout.
+   This covers the F5 boxes AND the slivers, so it supersedes both C2 and the sliver-only certificate (which it re-proves).
+
+Supporting script: `certify_sliver.py` (sha 63e84a36bfa95ea99103e314530dbaf38a9fa42667a8ac85b960882ff351e341) supplies the exact interval and derivative machinery.
+No global chromatic result follows from A5 alone.

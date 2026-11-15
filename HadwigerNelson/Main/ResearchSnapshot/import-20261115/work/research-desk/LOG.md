@@ -77,3 +77,5 @@
 2026-11-15T05:59:16Z chains deadlocked (self-matching process patterns); killed; running Hsupp, SignTable, ForcingLemma, Bridge-v4-r2 in ONE sequential chain via desk_lean --wait
 2026-11-15T06:03:04Z Bridge-v4-r2 PASSED (std axioms x3); SignTable PASSED; Hsupp r2 (end order) and ForcingLemma r2 (def g body from Bridge-v4 + end order) compiling
 2026-11-15T06:05:53Z BANKED A6-GLUE: Bridge-v4-r2 PASS (endgame A5Obstruction+A6Pairing+hsupp->False; hforce/hsign/hcover discharged), Hsupp-r2/SignTable/ForcingLemma-r2 PASS; remaining hyps: A5Obstruction, hsupp
+2026-11-15T06:36:25Z A5 caveats (b) arc ends + (c) m_hi CLOSED by certify_arc_ends.py (desk-derived); attempting (a) C2 full-domain re-derivation certify_full.py
+2026-11-15T06:37:00Z A5 ALL CAVEATS CLOSED: certify_full.py (full domain, 1.1 s) + certify_arc_ends.py; CERTIFICATE.md updated; banked

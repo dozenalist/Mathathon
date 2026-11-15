@@ -1,6 +1,6 @@
 # Import 2026-11-15 (results desk)
 
-Captured 2026-11-15T06:07:28.872Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
+Captured 2026-11-15T06:37:51.125Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
 
 ## Banked Lean results: exit code and `#print axioms` excerpts
 
@@ -247,8 +247,8 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/lean-queue/threecentre-r1-27-transfer.python.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `work/lean-queue/threecentre-r1-axiomroots.progress.json` | 3345 | `ca4b961283a98933d08ccfdd6ca490e05945bbd4f6a12c065b1c2dbd52f173a9` |
 | `work/lean-queue/threecentre-r1-axiomroots.python.log` | 3506 | `85aaef1671d5777e50378e07a2f2c94cedd630c610fbe9fc7c4d0601c8d6df29` |
-| `work/research-desk/BANKED.md` | 9456 | `d595122b8935973c1caa8671e0c979548be0b59759b7f232755ab9d316bee084` |
-| `work/research-desk/LOG.md` | 14409 | `52a26d9e201f72d8a8ac9ff407c157e92be799873de49d6bbfe10410c8d3d5fd` |
+| `work/research-desk/BANKED.md` | 9903 | `d5ba3a6f80cd6c8ac1ba82168ba614fa31d8263476b6ae5746f2f399212dd437` |
+| `work/research-desk/LOG.md` | 14706 | `5ae120414f51f6d718d87977496060e3a8d27dd144980d1d7a019353b9fefb56` |
 | `work/research-desk/G3-r2/G3-ArcCover-r2.lean` | 9476 | `39a02e68c878c0d0df0493d53114679ffd6cb01c3354329cd33f3867b9558c6e` |
 | `work/research-desk/G3-r2/compile.log` | 96 | `e1a47fad00213af7a5bfff1a1a8db0403e6d941814cc164b7dc6b8177767203a` |
 | `work/research-desk/EvenWalk-rev6/EvenWalkReachability-rev6.lean` | 19063 | `4439cf5dd4088ea6765337286399f5af462fd1c3f4976c82c99d77019bfb9904` |
@@ -289,10 +289,14 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/research-desk/ln-checks/SIGNCELL/desk_sat177.txt` | 2301 | `9d5c7686b6064a181da7c2b60386ba48e4834abd99169c5adf2d82ee6317d909` |
 | `work/research-desk/contracts/ConsumerContracts.lean` | 4690 | `a3ea701ab15d29a7941f27ac02566feca014b4ae241d5a1b49abba404055c57f` |
 | `work/research-desk/contracts/compile.log` | 16399 | `6ee4315e14db61b84f3d4b15c05fb2c1bdc0f198ec26844ed104aeb3eef05eb7` |
-| `work/cloud-supervisor/a5-sliver/CERTIFICATE.md` | 4646 | `b6ac39dd14d55157abb05a593a775bf84362b71da007e1edf3d3c71eb9e5ca33` |
+| `work/cloud-supervisor/a5-sliver/CERTIFICATE.md` | 7196 | `d09708787fbe0e41b96b7ebac5c3cc5bed60d06baebfb08c14dd75434edfa173` |
 | `work/cloud-supervisor/a5-sliver/README.md` | 1427 | `ed053b8bcbf63e10111957f57b9a61a73183b7d7b8c30284303b5b30bd28adba` |
 | `work/cloud-supervisor/a5-sliver/certify_sliver.py` | 11877 | `63e84a36bfa95ea99103e314530dbaf38a9fa42667a8ac85b960882ff351e341` |
 | `work/cloud-supervisor/a5-sliver/certificate_output.txt` | 2677 | `68507c241873c543d5e56d7c6e162fb46ba96c1d19bbd431ad4b763fb4bfba41` |
+| `work/cloud-supervisor/a5-sliver/certify_full.py` | 7210 | `25ab2cfa85d28bf232b6fc5c92e4242d1b74504af40e5ff09c9760c42b00a429` |
+| `work/cloud-supervisor/a5-sliver/full_output.txt` | 806 | `c076169b95b00432534c462f82ca9e69b07fa2c2157385ed31a905173de34839` |
+| `work/cloud-supervisor/a5-sliver/certify_arc_ends.py` | 4239 | `8ea21bf663493518696487cea22fa433521122e6840a7bf1b330706e0df8a6f5` |
+| `work/cloud-supervisor/a5-sliver/arc_ends_output.txt` | 2512 | `045489e1e380f1618c0a29884b25f0a5e7441c488776d34b0758cf04db04c903` |
 | `work/automation-supervisor/inbox/20261114T224105-download-4-A5-SLIVER-DEFS.md` | 15314 | `714b2eb2a7eeb9a899774748855d2e6ec65ce231075579df145464ab04849f6d` |
 | `work/automation-supervisor/inbox/20261115T002122-download-1-FiveSupport-swap.lean` | 27124 | `3291ad95a0c3cc82b71df83ef16ebb63e6fe0691721c391815e7298dc3c732ff` |
 | `work/automation-supervisor/inbox/20261115T002122-download-2-FiveSupport-swap.diff` | 6625 | `a33fa8dbccaae12b8f885dcae96ea1da7f017b2b761e531150ea07488268b9ba` |
@@ -352,7 +356,9 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/automation-supervisor/replies/20261115T052726.json` | 3789 | `b0711c2e2d0f875e1a70558a12e9bc96d408eebcce8d1f9d499e3346d021a69e` |
 | `work/automation-supervisor/replies/20261115T054231.json` | 2925 | `1291827247eae690d7b3e1cfc7052682255a84bad84957e292c01121510ead46` |
 | `work/automation-supervisor/replies/20261115T055734.json` | 3213 | `bc91ca308d57b05f6c4a54dcd3ce02716fc386d501786b0fb951f413b10a818b` |
-| `work/automation-supervisor/research-plan.json` | 1469 | `ce0ae88951abe701943b5340fc8451738e7ddbb330e723b00b8134da9b5a37c9` |
+| `work/automation-supervisor/replies/20261115T061238.json` | 2417 | `022fc311372492e75253a4bcb85708c07b5db8b3cb52b37cfbfbb9ab285dc57f` |
+| `work/automation-supervisor/replies/20261115T062744.json` | 3841 | `d9955b9829fb94042e33780b6b32285d8fd99aafbabcd8b6066db489f903fe61` |
+| `work/automation-supervisor/research-plan.json` | 1287 | `01f297f0eae4e0c1b400247bdd9b64fed3ca5a13d1d654b01d723665b8400b95` |
 | `work/simplification-desk/s1/logs/01-States.log` | 1250 | `dd82f0b2a9712e7059fb82e748346594d2c6b441782f07389899abcd7a45eba3` |
 | `work/simplification-desk/s1/logs/02-BoundaryTrace.log` | 1257 | `0d94aaaf275e19626c107e8b0fcacc0668f3f36cd3897eb5e7da933e8095b029` |
 | `work/simplification-desk/s1/logs/03-AngularBoundary.log` | 1259 | `53844dfe64b3bd7b29d3ea921ec358982420d7c1303955aa8cbccc7371712382` |
@@ -612,8 +618,4 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `outputs/RunLeanQueue.py` | 9451 | `c063969225cec881cdb63ebea165434a2fdc7d3d381528cc6d8e870dd286b2b6` |
 | `outputs/LeanSourceGate.py` | 2246 | `721e47d80c4459e9125a9b66fe880ab31c37260e9797d23669a9a228c8f4e721` |
 | `work/cloud-supervisor/RESEARCH-STATUS.md` | 3506 | `461dfcc8d25a2971038bbff6a6d691701008009583c04f8c8f7cca030ff3de50` |
-| `work/cloud-supervisor/LOG.md` | 18786 | `50cd37141c0f1a2b6549e186bb89429bb58a3e7ca8ab9f028e92ad99d921e5c4` |
-| `work/research-desk/Bridge-v4/A6-Bridge-v4-r2.lean` | 73405 | `74759b093f94e62285d0fb916ffee5ac1d72e80544caca9c0a9a9cfea702de39` |
-| `work/research-desk/Bridge-v4/compile-r2.log` | 10915 | `721cfe4bd5298ad538f2595c536274996480e9a3213abf363ea72980ff619e4b` |
-| `work/research-desk/contracts/ConsumerContracts-r2.lean` | 4654 | `5ecda4d6d18c1c3f123be5e86ff710e547c635d2bd74510791b7386aaba564db` |
-| `work/research-desk/contracts/compile-r2.log` | 16936 | `96d620b6f0ebd89cff5b56e2f70ad0fef90a108cda3f2c51686acf9ea13922d6` |
+| `work/cloud-supervisor/LOG.md` | 19245 | `13ccbdfb14837d21bda83d36ed14ee42cb354f277ea2cd6c4734b564e5adae33` |
