@@ -1,0 +1,70 @@
+indep_ln3.py sha256 = fdbaf0c04632ea1bab408f144a897e74c934869ae6045f891473e2473d4eb3d6
+python 3.12.10
+
+=== T1: A6 paired-palette claims ===
+f = (1, 5, 3, 1, 5, 3)
+g = (4, 2, 0, 4, 2, 0)  (g == f+3 mod 6: True)
+T = [[3, 4, 5], [1, 2, 3], [0, 1, 5], [3, 4, 5], [1, 2, 3], [0, 1, 5]]
+h = (3, 1, 5, 3, 1, 5)  (h == f+2 mod 6: True)
+
+[1] per-position #(P subset Fin6 : H1 & H2) = [28, 28, 28, 28, 28, 28]; product = 481,890,304
+    closed-form check 2^5 - 2^2 = 28 (valid since f_j not in T_j: True)
+  => T1.1 (28 each, 28^6 = 481,890,304): CONFIRMED  [[28, 28, 28, 28, 28, 28], 481890304]
+
+[2] W1 = [(1, 3), (1, 5), (3, 5), (1, 3), (1, 5), (3, 5)]
+    H1 True  H2 True  misses g at all 6 positions True  H3(cyclic) False  H3 failures [(0, 1, (1,)), (1, 2, (5,)), (2, 3, (3,)), (3, 4, (1,)), (4, 5, (5,)), (5, 0, (3,))]
+  => T1.2 (W1 meets H1&H2 and misses g): CONFIRMED  [H1=True H2=True misses-g=True; note W1 violates H3 at 6 pairs]
+
+[3] R1 {f_j,v_j}, v_j in T_j: 729 of 729 satisfy H1&H2
+    R2 {f_j,v_j}, v_j != f_j : 729 of 15625 satisfy H1&H2; set equals R1: True
+    R3 any 2-subsets (15^6)    : 729 satisfy H1&H2; per-position they are exactly {f_j,t}, t in T_j: True
+  => T1.3 (all 729 two-label families satisfy H1&H2): CONFIRMED  [729/729 (R1), 729/15625 (R2), 729 (R3) -- same set under every reading]
+
+[4] R1 two-label families with H1&H2&H3(cyclic): 1 -> [[(1, 4), (2, 5), (0, 3), (1, 4), (2, 5), (0, 3)]]
+    all families (28^6 space) with H1&H2&H3(cyclic): backtracking 1, transfer-matrix trace 1
+    unique model = {f_j,g_j}: True ; model = [(1, 4), (2, 5), (0, 3), (1, 4), (2, 5), (0, 3)]
+  => T1.4 (adding H3 leaves exactly 1): CONFIRMED  [1 in the 729 two-label space and 1 in the full 28^6 space, = {f_j,g_j}]
+
+[5] all families (28^6 space) with H1&H2&H3(path only): backtracking 64, transfer-matrix sum 64
+    (for reference: inside the 729 two-label space the path-only count is 4)
+    palette-size profiles among the path-only models: {(2, 2, 2, 2, 2, 2): 4, (2, 2, 2, 2, 2, 3): 6, (2, 2, 2, 2, 2, 4): 2, (2, 2, 2, 2, 3, 2): 2, (2, 2, 2, 2, 3, 3): 2, (2, 3, 2, 2, 2, 2): 2, (2, 3, 2, 2, 2, 3): 3, (2, 3, 2, 2, 2, 4): 1, (2, 3, 2, 2, 3, 2): 1, (2, 3, 2, 2, 3, 3): 1, (3, 2, 2, 2, 2, 2): 6, (3, 2, 2, 2, 2, 3): 9, (3, 2, 2, 2, 2, 4): 3, (3, 2, 2, 2, 3, 2): 3, (3, 2, 2, 2, 3, 3): 3, (3, 3, 2, 2, 2, 2): 2, (3, 3, 2, 2, 2, 3): 3, (3, 3, 2, 2, 2, 4): 1, (3, 3, 2, 2, 3, 2): 1, (3, 3, 2, 2, 3, 3): 1, (4, 2, 2, 2, 2, 2): 2, (4, 2, 2, 2, 2, 3): 3, (4, 2, 2, 2, 2, 4): 1, (4, 2, 2, 2, 3, 2): 1, (4, 2, 2, 2, 3, 3): 1}
+  => T1.5 (path-only gives exactly 64): CONFIRMED  [full-family space: 64 (two-label space: 4)]
+T1 runtime 0.18 s
+
+=== T3: J-depth (calibration at N=6, then claim at (m,w)=(7,3)) ===
+
+[N=6, w=3] |W| = 1062  |Ap| = 378  |Am| = 378  |Ap&Am| = 0  |J| = 306   (W built in 0.3 s; W invariant under +1 shift: True)
+    unreduced (all-subsets) W test over all 46656 sigma: mismatches = 0  (10.2 s)
+    permutation-chain depth from J: max = 3; distribution {1: 90, 2: 144, 3: 72}; attaining states 72, e.g. (0, 0, 1, 3, 4, 2)
+    decrement subgraph of W reachable from J: 306 states {'J': 306}, 288 edges, SCCs 306, non-trivial SCCs 0 (sizes []), self-loops 0
+    graph is acyclic -> exact longest simple path from J (states): 3; distribution {1: 90, 2: 144, 3: 72}
+    a longest path: 001342 -> 051342 -> 051332
+    [N=6] T3 runtime 10.5 s
+    calibration vs record (1062, 378, 378, 306, depth 3, {1:90,2:144,3:72}): MATCH
+
+[N=7, w=3] |W| = 5320  |Ap| = 889  |Am| = 889  |Ap&Am| = 0  |J| = 3542   (W built in 6.6 s; W invariant under +1 shift: True)
+    permutation-chain depth from J: max = 8; distribution {1: 112, 2: 490, 3: 588, 4: 686, 5: 98, 8: 1568}; attaining states 1568, e.g. (0, 0, 0, 1, 3, 4, 4)
+    decrement subgraph of W reachable from J: 5320 states {'J': 3542, 'Ap': 889, 'Am': 889}, 14504 edges, SCCs 1486, non-trivial SCCs 2 (sizes [1918, 1918]), self-loops 0
+    graph has cycles: no DAG longest-path DP; rigorous bounds computed below
+    [N=7] T3 runtime 8.5 s
+  => T3a (7,3) permutation-chain J-depth = 8: CONFIRMED  [computed 8]
+
+    FINDINGS 13-state witness: start in J True, all in W True, single decrements True, distinct True; types JJPPPPPPPPPPJ
+    non-trivial SCC #343: 1918 states, types {'J': 1029, 'Ap': 889}
+    non-trivial SCC #687: 1918 states, types {'J': 1029, 'Am': 889}
+    rigorous upper bound on a simple in-W path from J (|SCC|-weighted condensation path): 1928
+    constructive lower bound (greedy over 122 J starts): explicit simple in-W path of 226 states from J; re-verified (start in J, all in W, distinct, unit decrements): True
+    first 20 states: 5400133 -> 5400123 -> 4400123 -> 4400113 -> 4406113 -> 4406013 -> 4466013 -> 4456013 -> 3456013 -> 3456003 -> 2456003 -> 2356003 -> 2346003 -> 2346002 -> 2346001 -> 2345001 -> 2344001 -> 1344001 -> 1344061 -> 1344060 ...
+    => longest simple in-W path from a J state at (7,3) lies in [226, 1928]
+  => T3b (7,3) simple-path J-depth = 13: DISAGREES  [as an exact maximum; value in [226, 1928]]
+
+=== SUMMARY ===
+CONFIRMED    T1.1 (28 each, 28^6 = 481,890,304)  [[28, 28, 28, 28, 28, 28], 481890304]
+CONFIRMED    T1.2 (W1 meets H1&H2 and misses g)  [H1=True H2=True misses-g=True; note W1 violates H3 at 6 pairs]
+CONFIRMED    T1.3 (all 729 two-label families satisfy H1&H2)  [729/729 (R1), 729/15625 (R2), 729 (R3) -- same set under every reading]
+CONFIRMED    T1.4 (adding H3 leaves exactly 1)  [1 in the 729 two-label space and 1 in the full 28^6 space, = {f_j,g_j}]
+CONFIRMED    T1.5 (path-only gives exactly 64)  [full-family space: 64 (two-label space: 4)]
+CONFIRMED    T3a (7,3) permutation-chain J-depth = 8  [computed 8]
+DISAGREES    T3b (7,3) simple-path J-depth = 13  [13 is only a lower bound (FINDINGS' witness re-verified); exact value UNDETERMINED, in [226, 1928]]
+T3 calibration at N=6: MATCH
+total runtime 19.4 s

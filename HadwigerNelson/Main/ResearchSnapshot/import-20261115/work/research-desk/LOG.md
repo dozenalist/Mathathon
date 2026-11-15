@@ -49,3 +49,8 @@
 2026-11-15T03:08:46Z per supervisor: not running lane scripts; launched 3 subagents writing independent checkers for L-N1 (orbits/orbit65), L-N2 (counter-model/ladder), L-N3 (T1 counts) under research-desk/ln-checks/LN*/
 2026-11-15T03:12:05Z lane audit: specs sent for referee successor (R1-3, R1-4, sign-cell dispute), L-N4 status+successor, L-N2 successor (C9 colouring-level), verifier A5 caveat closure
 2026-11-15T03:12:57Z BANKED L-N1 independent check (indep_ln1.py b6c3e7b4): orbits 89/35/18 confirmed, 13 with negation; shard 22=8 orbits; orbit-65 confirmed; 126/51 reproduced
+2026-11-15T03:15:24Z desk compile start: research-desk/contracts/ConsumerContracts.lean
+2026-11-15T03:16:18Z BANKED L-N3 independent check (indep_ln3.py fdbaf0c0): T1 x5 confirmed, T3 perm-chain 8 confirmed, simple-path in [226,1928] (13 is a lower bound only)
+2026-11-15T03:16:57Z desk compile end: research-desk/contracts/ConsumerContracts.lean exit=1
+2026-11-15T03:17:17Z ConsumerContracts (R1 contract gate) r1: axiom prints OK for 3 consumers + 3 headline roots (std axioms); examples failed only on missing opens. r2 adds 'open EuclideanFiveColor Filter Topology MeasureTheory'
+2026-11-15T03:22:47Z BANKED L-N2 independent check (indep_ln2.py 7b92389e): counter-model confirmed; C12 sub-claim wrong under Lean BinaryCenter; ladder facts confirmed

@@ -46,3 +46,8 @@
 - 03:11Z heartbeat: all desks idle-waiting on background jobs; research -> lane audit + A5 status; simplification -> pre-stage S1/S2 manifests; services alive; 1 lean.exe; last cycle 02:59Z (<40 min).
 - 03:12Z Research desk: A5 sliver proof-grade (exact Fraction interval cert, 2^-120 outward rounding, full P1-P3); overall still caveated by C2 F5-box, 4 non-corner arc-end margins, m_hi def (spec 94d110b1). 11/12 lanes live; referee successor covers R1-3/R1-4/sign-cell dispute; L-N4 silent 6 cycles -> status+successor; L-N2 -> C9 content.
 - 03:12Z Simplification: S1/S2 manifests pre-staged. Claims S1 -265 vs R1 (-415 vs original); S2 cumulative -727 vs R1 (-877 vs original). S1 reverify running (s1/logs-r2), S2 rebuild next.
+- 03:16Z Results batch 5 published 30d8883 (97 entries; LN1-ORBITS TESTED_FINITE; sign-cell 16/3840 resolved).
+- 03:17Z Report LN1-ORBITS row published ea1fdf1.
+- 03:17Z Report LN1 row completed, published 98ee817.
+- 03:21Z heartbeat: all desks idle on background jobs; simplification -> pre-draft S1/S2 report text; research left waiting on its checkers (tasked 10 min ago); services alive; 1 lean.exe; cycle 031143 ok.
+- 03:24Z Jarom: commit everything; outside AI will compare HN vs ZetaFive. Repo HN tree clean (only grep.exe.stackdump stray). Asked results desk for urgent batch 6 incl. L-N2/L-N3 + S1/S2 as CANDIDATE; exposition desk to rewrite HadwigerNelson/README.md front page + fix stale ROADMAP. Jarom.lean and research-scale-up/ at repo root left uncommitted pending Jarom.

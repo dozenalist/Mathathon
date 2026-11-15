@@ -1,6 +1,6 @@
 # Results ledger — Hadwiger–Nelson Mathathon entry
 
-Built 2026-11-15T03:15Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
+Built 2026-11-15T03:25Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
 
 **No global chromatic result. The bounds 6 ≤ χ(ℝ²) ≤ 7 come from the supplied proof ("The Euclidean plane is not five-colorable") and the classical 7-colouring; nothing the team has added changes them. Every entry below is a simplification of the supplied proof, a local or conditional lemma, a finite computation, or a negative result. The only route to χ ≥ 7 on record is conditional on the open lemmas L6 and F6 (see L6-F6).**
 
@@ -47,15 +47,15 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 | Theme | LEAN_VERIFIED | PROVED_PAPER_REVIEWED | TESTED_FINITE | CANDIDATE | UNAUDITED_NUMBER | RETRACTED_OR_REFUTED | OPEN |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Simplification of the supplied proof | 10 | 1 | 1 | 2 |  |  | 1 |
-| New mathematics | 9 | 6 | 9 | 20 |  |  | 6 |
-| Negative results and counterexamples | 1 | 7 | 5 | 7 |  | 8 |  |
+| New mathematics | 9 | 6 | 10 | 20 |  |  | 6 |
+| Negative results and counterexamples | 1 | 7 | 6 | 7 |  | 8 |  |
 | Infrastructure | 1 |  | 1 |  |  | 1 | 1 |
 
 ## Index
 
 - **Simplification of the supplied proof**: [DIAMOND](#diamond) `LEAN_VERIFIED`, [ENC-R4](#enc-r4) `LEAN_VERIFIED`, [FIVE-CYCLE-RESIDUES](#five-cycle-residues) `LEAN_VERIFIED`, [FIVESUPPORT-SWAP](#fivesupport-swap) `LEAN_VERIFIED`, [JOINT-SUPPORT](#joint-support) `LEAN_VERIFIED`, [R1](#r1) `LEAN_VERIFIED`, [STEPBAN-CONSUMER](#stepban-consumer) `LEAN_VERIFIED`, [STEPBAN-CYCLICCORE](#stepban-cycliccore) `LEAN_VERIFIED`, [STEPBAN-V2](#stepban-v2) `LEAN_VERIFIED`, [THREE-CENTRE](#three-centre) `LEAN_VERIFIED`, [LEMMA67-IDENTITY](#lemma67-identity) `PROVED_PAPER_REVIEWED`, [R1-GATES](#r1-gates) `TESTED_FINITE`, [S1](#s1) `CANDIDATE`, [STEPBAN-V3](#stepban-v3) `CANDIDATE`, [STEPBAN-SWAP](#stepban-swap) `OPEN`
-- **New mathematics**: [A6-BRIDGE-R2](#a6-bridge-r2) `LEAN_VERIFIED`, [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) `LEAN_VERIFIED`, [A6-FORCING](#a6-forcing) `LEAN_VERIFIED`, [CC60](#cc60) `LEAN_VERIFIED`, [CONNECTED-SET](#connected-set) `LEAN_VERIFIED`, [EVENWALK-R6](#evenwalk-r6) `LEAN_VERIFIED`, [G1-R2](#g1-r2) `LEAN_VERIFIED`, [G3-R2](#g3-r2) `LEAN_VERIFIED`, [NULL-TRANSFER](#null-transfer) `LEAN_VERIFIED`, [A5-FOUR-LIST](#a5-four-list) `PROVED_PAPER_REVIEWED`, [AC-ALIGNED](#ac-aligned) `PROVED_PAPER_REVIEWED`, [NR-TC](#nr-tc) `PROVED_PAPER_REVIEWED`, [RESIDUAL-GRAPH](#residual-graph) `PROVED_PAPER_REVIEWED`, [SHARPNESS-20](#sharpness-20) `PROVED_PAPER_REVIEWED`, [STRAIGHT-NEEDLE](#straight-needle) `PROVED_PAPER_REVIEWED`, [A5-SLIVER](#a5-sliver) `TESTED_FINITE`, [DIR-FILTER](#dir-filter) `TESTED_FINITE`, [FIXED-PHASE-CENSUS](#fixed-phase-census) `TESTED_FINITE`, [HEULE-UNION](#heule-union) `TESTED_FINITE`, [HONEYCOMB-73](#honeycomb-73) `TESTED_FINITE`, [LN1-ORBITS](#ln1-orbits) `TESTED_FINITE`, [RELAX-1-648](#relax-1-648) `TESTED_FINITE`, [SIX-ORBIT](#six-orbit) `TESTED_FINITE`, [STAIRCASE-CENSUS](#staircase-census) `TESTED_FINITE`, [A5-ODD-WALK](#a5-odd-walk) `CANDIDATE`, [A6-COROLLARIES](#a6-corollaries) `CANDIDATE`, [A6-PAIRED-PRODUCER](#a6-paired-producer) `CANDIDATE`, [A7-PARTIAL-INDEPENDENT](#a7-partial-independent) `CANDIDATE`, [AMPLIFIER](#amplifier) `CANDIDATE`, [CENSUS-COMPLETE-60Z](#census-complete-60z) `CANDIDATE`, [CLAUDE-LEMMA-A](#claude-lemma-a) `CANDIDATE`, [CONTINUOUS-SIX](#continuous-six) `CANDIDATE`, [HONEYCOMB-RESTRICTED](#honeycomb-restricted) `CANDIDATE`, [J-DEPTH](#j-depth) `CANDIDATE`, [K6-M3-DOOR](#k6-m3-door) `CANDIDATE`, [LIST-FIELD-A4](#list-field-a4) `CANDIDATE`, [MC120-STRICT](#mc120-strict) `CANDIDATE`, [Q4Q5-PINNING](#q4q5-pinning) `CANDIDATE`, [R0-CHI4](#r0-chi4) `CANDIDATE`, [RELAX-CIRCULANT](#relax-circulant) `CANDIDATE`, [T6-B2](#t6-b2) `CANDIDATE`, [THM-BPRIME](#thm-bprime) `CANDIDATE`, [TRANSLATION-CRITERION](#translation-criterion) `CANDIDATE`, [WILD-LAW](#wild-law) `CANDIDATE`, [A6-GLUE](#a6-glue) `OPEN`, [K6-PRODUCER](#k6-producer) `OPEN`, [L6-F6](#l6-f6) `OPEN`, [LOCALIZED-TWO-STATE](#localized-two-state) `OPEN`, [PALETTE-RIGIDITY](#palette-rigidity) `OPEN`, [STAIRCASE-CONVERSE](#staircase-converse) `OPEN`
-- **Negative results and counterexamples**: [A6-CONTAINMENT](#a6-containment) `LEAN_VERIFIED`, [A7-CONTACT](#a7-contact) `PROVED_PAPER_REVIEWED`, [ANNULUS-3COL](#annulus-3col) `PROVED_PAPER_REVIEWED`, [FOUR-STATE-ANGULAR](#four-state-angular) `PROVED_PAPER_REVIEWED`, [LOCAL-TRANSITIONS](#local-transitions) `PROVED_PAPER_REVIEWED`, [MC120-ENDPOINT](#mc120-endpoint) `PROVED_PAPER_REVIEWED`, [SUPPORT-FLIP](#support-flip) `PROVED_PAPER_REVIEWED`, [VARIABLE-TRIANGLE](#variable-triangle) `PROVED_PAPER_REVIEWED`, [HEULE-NO-FORCING](#heule-no-forcing) `TESTED_FINITE`, [HISTORIC-8](#historic-8) `TESTED_FINITE`, [HONEYCOMB-K16](#honeycomb-k16) `TESTED_FINITE`, [Q4Q5-CONTROLS](#q4q5-controls) `TESTED_FINITE`, [RELAX-WITNESSES](#relax-witnesses) `TESTED_FINITE`, [A8-PALETTE](#a8-palette) `CANDIDATE`, [ALPHA-SHARP](#alpha-sharp) `CANDIDATE`, [FOURWAY-SPLIT](#fourway-split) `CANDIDATE`, [GEOM-Q4Q5](#geom-q4q5) `CANDIDATE`, [GEOM-TWO-STEP](#geom-two-step) `CANDIDATE`, [Q4Q5-APEX](#q4q5-apex) `CANDIDATE`, [TERNARY-COUNTERMODEL](#ternary-countermodel) `CANDIDATE`, [A5-FAR-APEX](#a5-far-apex) `RETRACTED_OR_REFUTED`, [A5-M5-TEMPLATE](#a5-m5-template) `RETRACTED_OR_REFUTED`, [AC-AXIS](#ac-axis) `RETRACTED_OR_REFUTED`, [ALT-TRIPLE](#alt-triple) `RETRACTED_OR_REFUTED`, [CLAUDE05-VERDICT](#claude05-verdict) `RETRACTED_OR_REFUTED`, [OVERNIGHT-WITHDRAWN](#overnight-withdrawn) `RETRACTED_OR_REFUTED`, [PALETTE-EQ-F](#palette-eq-f) `RETRACTED_OR_REFUTED`, [TWO-TRIANGLE](#two-triangle) `RETRACTED_OR_REFUTED`
+- **New mathematics**: [A6-BRIDGE-R2](#a6-bridge-r2) `LEAN_VERIFIED`, [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) `LEAN_VERIFIED`, [A6-FORCING](#a6-forcing) `LEAN_VERIFIED`, [CC60](#cc60) `LEAN_VERIFIED`, [CONNECTED-SET](#connected-set) `LEAN_VERIFIED`, [EVENWALK-R6](#evenwalk-r6) `LEAN_VERIFIED`, [G1-R2](#g1-r2) `LEAN_VERIFIED`, [G3-R2](#g3-r2) `LEAN_VERIFIED`, [NULL-TRANSFER](#null-transfer) `LEAN_VERIFIED`, [A5-FOUR-LIST](#a5-four-list) `PROVED_PAPER_REVIEWED`, [AC-ALIGNED](#ac-aligned) `PROVED_PAPER_REVIEWED`, [NR-TC](#nr-tc) `PROVED_PAPER_REVIEWED`, [RESIDUAL-GRAPH](#residual-graph) `PROVED_PAPER_REVIEWED`, [SHARPNESS-20](#sharpness-20) `PROVED_PAPER_REVIEWED`, [STRAIGHT-NEEDLE](#straight-needle) `PROVED_PAPER_REVIEWED`, [A5-SLIVER](#a5-sliver) `TESTED_FINITE`, [DIR-FILTER](#dir-filter) `TESTED_FINITE`, [FIXED-PHASE-CENSUS](#fixed-phase-census) `TESTED_FINITE`, [HEULE-UNION](#heule-union) `TESTED_FINITE`, [HONEYCOMB-73](#honeycomb-73) `TESTED_FINITE`, [LN1-ORBITS](#ln1-orbits) `TESTED_FINITE`, [LN3-T1-T3](#ln3-t1-t3) `TESTED_FINITE`, [RELAX-1-648](#relax-1-648) `TESTED_FINITE`, [SIX-ORBIT](#six-orbit) `TESTED_FINITE`, [STAIRCASE-CENSUS](#staircase-census) `TESTED_FINITE`, [A5-ODD-WALK](#a5-odd-walk) `CANDIDATE`, [A6-COROLLARIES](#a6-corollaries) `CANDIDATE`, [A6-PAIRED-PRODUCER](#a6-paired-producer) `CANDIDATE`, [A7-PARTIAL-INDEPENDENT](#a7-partial-independent) `CANDIDATE`, [AMPLIFIER](#amplifier) `CANDIDATE`, [CENSUS-COMPLETE-60Z](#census-complete-60z) `CANDIDATE`, [CLAUDE-LEMMA-A](#claude-lemma-a) `CANDIDATE`, [CONTINUOUS-SIX](#continuous-six) `CANDIDATE`, [HONEYCOMB-RESTRICTED](#honeycomb-restricted) `CANDIDATE`, [J-DEPTH](#j-depth) `CANDIDATE`, [K6-M3-DOOR](#k6-m3-door) `CANDIDATE`, [LIST-FIELD-A4](#list-field-a4) `CANDIDATE`, [MC120-STRICT](#mc120-strict) `CANDIDATE`, [Q4Q5-PINNING](#q4q5-pinning) `CANDIDATE`, [R0-CHI4](#r0-chi4) `CANDIDATE`, [RELAX-CIRCULANT](#relax-circulant) `CANDIDATE`, [T6-B2](#t6-b2) `CANDIDATE`, [THM-BPRIME](#thm-bprime) `CANDIDATE`, [TRANSLATION-CRITERION](#translation-criterion) `CANDIDATE`, [WILD-LAW](#wild-law) `CANDIDATE`, [A6-GLUE](#a6-glue) `OPEN`, [K6-PRODUCER](#k6-producer) `OPEN`, [L6-F6](#l6-f6) `OPEN`, [LOCALIZED-TWO-STATE](#localized-two-state) `OPEN`, [PALETTE-RIGIDITY](#palette-rigidity) `OPEN`, [STAIRCASE-CONVERSE](#staircase-converse) `OPEN`
+- **Negative results and counterexamples**: [A6-CONTAINMENT](#a6-containment) `LEAN_VERIFIED`, [A7-CONTACT](#a7-contact) `PROVED_PAPER_REVIEWED`, [ANNULUS-3COL](#annulus-3col) `PROVED_PAPER_REVIEWED`, [FOUR-STATE-ANGULAR](#four-state-angular) `PROVED_PAPER_REVIEWED`, [LOCAL-TRANSITIONS](#local-transitions) `PROVED_PAPER_REVIEWED`, [MC120-ENDPOINT](#mc120-endpoint) `PROVED_PAPER_REVIEWED`, [SUPPORT-FLIP](#support-flip) `PROVED_PAPER_REVIEWED`, [VARIABLE-TRIANGLE](#variable-triangle) `PROVED_PAPER_REVIEWED`, [HEULE-NO-FORCING](#heule-no-forcing) `TESTED_FINITE`, [HISTORIC-8](#historic-8) `TESTED_FINITE`, [HONEYCOMB-K16](#honeycomb-k16) `TESTED_FINITE`, [LN2-COUNTERMODEL](#ln2-countermodel) `TESTED_FINITE`, [Q4Q5-CONTROLS](#q4q5-controls) `TESTED_FINITE`, [RELAX-WITNESSES](#relax-witnesses) `TESTED_FINITE`, [A8-PALETTE](#a8-palette) `CANDIDATE`, [ALPHA-SHARP](#alpha-sharp) `CANDIDATE`, [FOURWAY-SPLIT](#fourway-split) `CANDIDATE`, [GEOM-Q4Q5](#geom-q4q5) `CANDIDATE`, [GEOM-TWO-STEP](#geom-two-step) `CANDIDATE`, [Q4Q5-APEX](#q4q5-apex) `CANDIDATE`, [TERNARY-COUNTERMODEL](#ternary-countermodel) `CANDIDATE`, [A5-FAR-APEX](#a5-far-apex) `RETRACTED_OR_REFUTED`, [A5-M5-TEMPLATE](#a5-m5-template) `RETRACTED_OR_REFUTED`, [AC-AXIS](#ac-axis) `RETRACTED_OR_REFUTED`, [ALT-TRIPLE](#alt-triple) `RETRACTED_OR_REFUTED`, [CLAUDE05-VERDICT](#claude05-verdict) `RETRACTED_OR_REFUTED`, [OVERNIGHT-WITHDRAWN](#overnight-withdrawn) `RETRACTED_OR_REFUTED`, [PALETTE-EQ-F](#palette-eq-f) `RETRACTED_OR_REFUTED`, [TWO-TRIANGLE](#two-triangle) `RETRACTED_OR_REFUTED`
 - **Infrastructure**: [ENC-R4-AUX](#enc-r4-aux) `LEAN_VERIFIED`, [SNAPSHOT-VALIDATION](#snapshot-validation) `TESTED_FINITE`, [LEAN-FAILED-REVISIONS](#lean-failed-revisions) `RETRACTED_OR_REFUTED`, [LEAN-435](#lean-435) `OPEN`
 
 ## Simplification of the supplied proof
@@ -256,7 +256,9 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/r1-gates/sigs-r1.tsv` — R1 signature table — `87804fe988c547df…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/r1-gates/sig-compare-r4-r1.json` — desk comparison — `62c8e7ef17fb446e…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/r1-gates/MANIFEST-COMPLETENESS.md` — manifest completeness note — `5521b496101778f1…`
-- **Checked by the results desk:** 2026-11-15 ~02:50Z: read both dump logs (exit 0) and re-did the comparison myself from the two .tsv tables: 3,124 vs 3,122 names, 3,116 common, 0 differing in kind/levels/type/binders/value, 2 moved, the 8 removed and 6 added exactly as listed. PaletteTransport byte-identity was checked by the results desk earlier. I did not re-run SigDump.
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/contracts/ConsumerContracts.lean` — research-desk contract gate source — `a3ea701ab15d29a7…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/contracts/compile.log` — contract gate log (axioms OK; binder examples failed on missing opens) — `6ee4315e14db61b8…`
+- **Checked by the results desk:** 2026-11-15 ~02:50Z: read both dump logs (exit 0) and re-did the comparison myself from the two .tsv tables: 3,124 vs 3,122 names, 3,116 common, 0 differing in kind/levels/type/binders/value, 2 moved, the 8 removed and 6 added exactly as listed. PaletteTransport byte-identity was checked by the results desk earlier. I did not re-run SigDump. Supporting (research desk contracts gate, contracts/compile.log, Lean 4.34.1 on the R1 build): #print axioms gives the standard three for no_proper_five_coloring, properColoring_seven, chromaticNumber_bounds, four_support_sequence_no_unit, interfaceStateSupport_no_unit and five_support_no_sixty (parsed by the results desk); the binder-contract `example`s in that file failed only on missing `open` lines (25 unknown-identifier errors); r2 with one added `open` line is compiling.
 - **Provenance:** Simplification desk, 01:13–01:29Z (R1-GATES.md); manifest completeness 00:26Z.
 - **Correction history:** was OPEN (caveats recorded with the acceptance of R1 at 23:25Z)
 - **Depends on:** [R1](#r1)
@@ -594,7 +596,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-CERTIFICATE.json` — certificate — `cd3f9ff3a47f93d5…`
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/Verify-HeuleUnion.mjs` — verifier — `ca9510a2dfd81fbb…`
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-VALIDATION.txt` — validation — `e611fb63e2086a00…`
-  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `e6c17419c2c90bc4…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `92c2f8c269fe7d21…`
 - **Checked by the results desk:** 2026-11-14 23:50Z: re-ran `node HadwigerNelson/Main/verify-snapshot.mjs` (exit 0, 11 s), which re-runs Verify-HeuleUnion.mjs: passed, 548,628 pairs, 1,048 vertices, 5,487 edges, proper 5-colouring.
 - **Provenance:** Graph lanes (graph-union-audit), 2026-11-14; import validation 18:58Z.
 - **Correction history:** 17 colourings reduced candidate pairs 110,015 → 1,145, then 34 colourings separated all 543,141 nonadjacent pairs; unreconciled wording: 177 survivor pairs inside the original H locally vs 112 in remote wording (HEULE-UNION-VALIDATION.txt records remainingPairsInsideOriginalH 177); moot after the full separation certificate
@@ -630,6 +632,22 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Provenance:** L-N1 lane (chat-8cf5afe743, swarm smwh3vfw7, owner research desk); independent checker by a research-desk subagent, banked 03:12:57Z.
 - **Correction history:** new beyond the lane claim: the negation symmetry reduces 18 dihedral orbits to 13
 - **Depends on:** [FIXED-PHASE-CENSUS](#fixed-phase-census), [STAIRCASE-CENSUS](#staircase-census)
+- **Caveats:** Orbit 65 is an obstruction only for generic (one coordinate at a time) staircases: it survives tied-coordinate staircases with 2–3 blocks (ordered-partition counts by blocks {1: 1, 2: 2, 3: 1}).
+
+### LN3-T1-T3
+
+**A6 paired-palette counts (T1) and J-depth at (m,w) = (7,3) (T3)** — `TESTED_FINITE`
+
+- **Statement:** T1: per position, 28 subsets of Fin 6 satisfy the hit conditions H1 and H2 (28^6 = 481,890,304 families); exactly 729 two-label families satisfy H1 and H2 (the same set under every reading); adding H3 (cyclic disjointness) leaves exactly one family, {f_j, g_j}; with the path-only version of H3 there are 64 families (4 in the two-label space). T3: at (m,w) = (7,3) the permutation-chain J-depth is 8; the longest simple in-W path from a J state is NOT 13 — an explicit verified simple path of 226 states exists and a rigorous upper bound is 1,928. Calibration at N = 6: exact longest simple path 3 (agrees with J-DEPTH).
+- **Hypotheses:** Finite relaxation statements; T1 uses the A6 source table; T3 uses the discovery-lane state graph definitions (W, J).
+- **Evidence:** Independent checker by the research desk (indep_ln3.py); T1 by backtracking and transfer matrix; T3 by exact DAG longest path at N = 6 and SCC-condensation bounds at N = 7.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/ln-checks/LN3/indep_ln3.py` — independent checker — `fdbaf0c04632ea1b…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/ln-checks/LN3/indep_ln3.out` — output — `9f478cfc9519b8bd…`
+- **Checked by the results desk:** 2026-11-15 ~03:25Z: re-ran indep_ln3.py from a scratch copy (python -I, exit 0): output identical to the archived one apart from timings, no FAIL lines.
+- **Provenance:** L-N3 lane (chat-4ac4b34cf7, owner research desk); research-desk checker 03:15Z.
+- **Correction history:** T3b: the lane figure "13" for the simple-path depth at (7,3) is only a lower bound and is refuted as an exact maximum (true value in [226, 1928]); the permutation-chain value 8 is confirmed (the earlier "≥ 13, not 8" coordinator wording mixed the two notions)
+- **Depends on:** [A6-FORCING](#a6-forcing), [J-DEPTH](#j-depth)
 
 ### RELAX-1-648
 
@@ -796,7 +814,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261115T002122-download-5-STATUS.json` — discovery swarm STATUS (route B proof outline, finite lemmas FL1-FL4) — `ccc9384768d9534a…`
 - **Checked by the results desk:** Read the STATUS.json: route B claims rank r(sigma) <= 2 on J and strictly decreasing on J->J steps, so a J-run has at most 3 states; depth 3 attained at (2,2,4,0,5,3); four finite lemmas machine-checked (FL1-prime 1836 cases, FL2 18 sinks, FL3, FL4); all 51,840 full chains inside W contain a circulant state. Not reproduced by the desk; route A independence check was still running. Queued for L-R1 (R1-6).
 - **Provenance:** Discovery swarm smwh11ydr (5/6 members accepted); cycles 001250, 002122.
-- **Correction history:** related but separate: the synthesis lane (L-N3) T3 run length at (m,w) = (7,3) was reported as at least 13, not 8 (cycle 024133), then retracted; the T3 target is 8 (cycle 031143; research desk 03:05Z). Unsettled, not entered as a result
+- **Correction history:** related but separate: the synthesis lane (L-N3) T3 run length at (m,w) = (7,3) was reported as at least 13, not 8 (cycle 024133), then retracted; the T3 target is 8 (cycle 031143; research desk 03:05Z). Now settled by the research desk checker: see LN3-T1-T3
 - **Depends on:** [RELAX-CIRCULANT](#relax-circulant)
 
 ### K6-M3-DOOR
@@ -1095,6 +1113,21 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Checked by the results desk:** 2026-11-15 ~00:36Z: re-ran the archived verify_quotient16.py on a scratch copy of the certificate: exit 0, "checks run; failures = 0", "CERTIFICATE VALID".
 - **Provenance:** Overnight 13–14 Nov graph lane.
 
+### LN2-COUNTERMODEL
+
+**Palette-level counter-model: no palette-level producer of binary collapse (L-N2)** — `TESTED_FINITE`
+
+- **Statement:** On the unit triangle A = 0, B = 1, C = 1/2 + (sqrt3/2) i, the L-N2 palette field (sector-constant palettes with declared traces) satisfies, exactly in Q(sqrt3): unit sides; palette disjointness at every unit pair for all a.e. directions (the Lean palette_neighbor_disjoint reading); disjointness under the pi/3 shift including the wrap 5 -> 0; 18 valid traces (entries in [0,1], sum 1, positivity set = palette); |P_A| + |P_C| = 5 (saturating); C11 absent sets {4,5}, {0,1,2,5}, {1,2,3} with the cap |P_x| <= |supp_x| - 1; and all 19 lane predicates as coded (4 of them carry no model information). So the palette-level conditions alone do not force binary collapse at k = 6. The ladder finite facts (L5–L7: two-complement predicate over Fin 5 and Fin 6; hcomp unsatisfiable at k = 6; C = {0,1,3,4} plus {2,5} covers Fin 6 without an alternating triple) are confirmed.
+- **Hypotheses:** Palette-field class only; 3 centres; condition C9 checked only at t = 0. Not a colouring.
+- **Evidence:** Independent checker by the research desk (indep_ln2.py, exact Q(sqrt3) arithmetic).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/ln-checks/LN2/indep_ln2.py` — independent checker — `7b92389eb27be76e…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/ln-checks/LN2/indep_ln2.out` — output — `7b424bb78c677c2f…`
+- **Checked by the results desk:** 2026-11-15 ~03:25Z: re-ran indep_ln2.py from a scratch copy (python -I, exit 0): output identical to the archived one apart from timings, no FAIL lines.
+- **Provenance:** L-N2 lane (chat-bb40251b97, owner research desk); research-desk checker 03:1xZ.
+- **Correction history:** DISAGREES with the lane sub-claim C12 "A/C not binary for any pair": under the Lean BinaryCenter definition A is binary for {0,3}, {1,3}, {2,3} and C for {0,4}, {0,5}; nothing downstream is violated; ladder file:line citations only partly match (6/10); the ladder TRUE/UNPROVED verdicts on Lean steps are proof-status claims, not checked
+- **Depends on:** [A6-PAIRED-PRODUCER](#a6-paired-producer)
+
 ### Q4Q5-CONTROLS
 
 **q4, q5, q6 and controls are SAT in every phase cell of the relaxation** — `TESTED_FINITE`
@@ -1282,7 +1315,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Statement:** All 11,556 archived files (358,349,948 bytes) match MANIFEST.json, the frozen Lean source hashes match their validation records, and the finite graph certificates verify.
 - **Artifacts:**
   - `HadwigerNelson/Main/verify-snapshot.mjs` — verifier — `eb40b4b59188cd81…`
-  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `e6c17419c2c90bc4…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `92c2f8c269fe7d21…`
 - **Checked by the results desk:** Re-ran 2026-11-14 23:50Z: status passed, exit 0, 11 s.
 - **Provenance:** Supervisor import, 2026-11-14 18:57Z.
 

@@ -1,0 +1,147 @@
+================================================================================================
+indep_ln2.py  --  independent exact checker, L-N2 (m7 palette/trace field at k=6 + Step-1 ladder)
+self sha256: 7b92389eb27be76e2cfc92df0d432ce9b6380d9bbc551700430044db60faf839
+================================================================================================
+
+[0] Validating the exact sign routine of Q(sqrt3) against 80-digit Decimal evaluation
+  6096 elements (incl. 96 Pell-type a^2-3b^2=1 near-zero cases up to a~1e7): mismatches = 0
+
+[1] Rotation by pi/3 and the six sectors, generated exactly
+  R: cos = 1/2, sin = sqrt3/2 > 0, det = 1; R^k = I for k in 1..6 only at k = [6]
+  boundaries LO[j] = R^j(sqrt3/2,-1/2) (angle j*pi/3 - pi/6); arc LO[j]->LO[j+1] has cos 1/2, sin>0,
+  i.e. length exactly pi/3; bisector of sector 0 is (1,0); dir(j) = R^j(1,0) lies strictly inside sector j.
+  angular measure: each open sector = pi/3, total 2*pi; the 6 boundary directions are null.
+  exact sample directions: 3124 unit vectors in Q(sqrt3)^2; 3112 strictly inside a sector,
+  12 on a boundary (skipped: null set).  Every sample classified into exactly one sector or boundary.
+  'e in sector j => e+pi/3 in sector j+1 (mod 6)' on all 3112 interior samples: True
+  (exact proof for ALL e: R maps LO[j] -> LO[j+1] incl. LO[5] -> LO[6] = LO[0], and det R = 1 preserves
+   the sign of cross(LO[j], e) and cross(e, LO[j+1]); so R(sector j) = sector j+1 exactly.)
+
+[2] Model data, transcribed from the TEXT of model_check.py (lines 66-102), cross-checked by regex
+  lane model_check.py sha256: 983ef7e993587ce27eebd19754e06f199b0e6f895dd1f7a9e7861bd24f8ac481
+  11/11 transcribed data strings found verbatim (whitespace-normalised)
+  check ids declared in the lane text (19): H1 H2 C1 C2 C3 C4 C5 C6 C7 C8a C8b C8c C9a C9b C10 C11 C12 X1 G1
+  A = (0, 0):  P even = {0,1,2}, odd = {3};  trace even = ['1/3', '1/3', '1/3', '0', '0', '0'], odd = ['0', '0', '0', '1', '0', '0']
+  B = (1, 0):  P even = {3}, odd = {4};  trace even = ['0', '0', '0', '1', '0', '0'], odd = ['0', '0', '0', '0', '1', '0']
+  C = (1/2, (0+1/2*r3)):  P even = {4,5}, odd = {0};  trace even = ['0', '0', '0', '0', '1/2', '1/2'], odd = ['1', '0', '0', '0', '0', '0']
+
+[3] Source statements (Lean TEXT, read as data) that fix the readings used below
+  full-original FiveSupport.lean:23
+     | lemma palette_neighbor_disjoint (hw : WeakColoring k c) (x : ℂ) (a : ℝ) :
+     |     ∀ᵐt∂angularMeasure,Disjoint (palette c hc (x+direction (a : Angles)) t) (palette c hc x t) := by
+  full-original PaletteTransport.lean:450
+     | lemma palette_sixty_disjoint (hw : WeakColoring k c) (x : ℂ) :
+     |     ∀ᵐ f ∂angularMeasure, Disjoint (palette c hc x f) (palette c hc x (f+(sixty : Angles))) := by
+  full-original Compactness.lean:297
+     | lemma trace_bounds {x : ℂ} {b : TraceVector k} (hb : IsTrace c hc x b) :
+     |     (∀ i, 0 ≤ᵐ[angularMeasure] traceValue b i) ∧
+     |     (∀ i, traceValue b i ≤ᵐ[angularMeasure] (fun _ => (1 : ℝ))) ∧
+     |     ∑ i, traceValue b i = oneL2 angularMeasure := by
+  full-original BoundaryTrace.lean:53
+     | lemma avoiding_trace_palette {x : ℂ} {b : TraceVector k} (hb : IsTrace c hc x b)
+     |     {J : Finset (Fin k)} (hJ : ∀i∈J,traceValue b i=0) :
+     |     ∀ᵐt∂angularMeasure,¬palette c hc x t⊆J := by
+  full-original BinaryPalettes.lean:9
+     | def BinaryCenter (x : ℂ) (i j : Fin k) : Prop :=
+     |   ∀ᵐ t ∂angularMeasure, t ∈ paletteSet c hc x i ∨ t ∈ paletteSet c hc x j
+  full-original BinaryPalettes.lean:11
+     | lemma binary_alternation (hw : WeakColoring k c) {x : ℂ} {i j : Fin k}
+     |     (hb : BinaryCenter c hc x i j) :
+     |     ∀ᵐ t ∂angularMeasure, (t+(sixty : Angles) ∈ paletteSet c hc x i ↔ t ∉ paletteSet c hc x i) ∧
+     |       (t ∈ paletteSet c hc x j ↔ t ∉ paletteSet c hc x i) := by
+  full-original BinaryPalettes.lean:123
+     | lemma binary_centers_separated {k : ℕ} (c : ℂ → Fin k) (hc : Measurable c) (hw : WeakColoring k c) :
+     |     ∃ δ > 0, ∀ (x z : ℂ) (i j : Fin k), BinaryCenter c hc x i j → BinaryCenter c hc z i j →
+     |       x ≠ z → δ ≤ dist x z := by
+  Readings used:
+   TE  : for each fixed unit displacement a with x and x+dir(a) both centres, Disjoint(P_{x+dir a}(t), P_x(t))
+         for a.e. palette direction t -- i.e. for ALL directions t, not only t = a.  (palette_neighbor_disjoint)
+   5.7 : for a.e. f, Disjoint(P_x(f), P_x(f+pi/3)).  (palette_sixty_disjoint)
+   trace: 0 <= b_i <= 1 a.e., sum_i b_i = 1; palette = (essential) union over traces of {t : b_i(t) > 0};
+          the model declares exactly ONE trace per centre (a function of t, constant on sectors).
+   BinaryCenter x i j (Lean): a.e. t, i in P_x(t) OR j in P_x(t).  The lane's C12 instead uses P_x(t) subset {i,j}.
+
+[4] Independent evaluation of the model (exhaustive over the 6 sectors; spot-checked on exact samples)
+  |XY|^2 exact: AB=1, AC=1, BC=1
+  unit-displacement instances x + dir(j*pi/3) = y found by search: A+dir(0)=B, A+dir(1)=C, B+dir(2)=C, B+dir(3)=A, C+dir(4)=A, C+dir(5)=B
+  H1   PASS  all three squared side lengths == 1 exactly in Q(sqrt3); 6 ordered unit instances
+  H2   PASS  distinct palette values per centre {'A': 2, 'B': 2, 'C': 2}, trace values {'A': 2, 'B': 2, 'C': 2}   (structural: sector-constant on open arcs => Borel; true by construction of the data)
+  C1   PASS  every P_x(sector) nonempty; min size = 1
+  C2   PASS  max |P_x(e)| over centres/sectors = 3 (<= k-3 = 3, attained)   (the source of the k-3 ceiling is not cited; only the numeric fact is checked)
+  C3   PASS  Disjoint(P_y(t),P_x(t)) for all 6 instances x+dir(a)=y and ALL 6 sectors t (36 cases) + 3112 exact sample directions per instance
+        (A,B): even {0,1,2} vs {3} -> {};  odd {3} vs {4} -> {}
+        (A,C): even {0,1,2} vs {4,5} -> {};  odd {3} vs {0} -> {}
+        (B,C): even {3} vs {4,5} -> {};  odd {4} vs {0} -> {}
+  C4   PASS  Disjoint(P_x(f),P_x(f+pi/3)) for 3 centres x 6 sectors (wrap 5->0 verified: R dir(5) in sector 0 = True) + 3112 exact samples per centre
+  C5   PASS  every trace entry in [0,1] and each trace sums to exactly 1 (Fractions)
+  C6   PASS  {i : b_x(e)_i > 0} == P_x(e) for all centres and sectors
+  C7   PASS  for every J within the a.e.-zero labels {'A': '{4,5}', 'B': '{0,1,2,5}', 'C': '{1,2,3}'}: P_x(e) not subset of J, every sector   (hypothesis non-vacuous (Z nonempty), but the conclusion is implied by C1+C6 (P nonempty, P cap Z = empty))
+  C8a  PASS  (1,0) strictly inside sector 0 by exact cross-product signs
+  C8b  PASS  P_A((1,0)) = {0,1,2}, size 3 > 2
+  C8c  PASS  angular measure of {t : {0,1,2} subset P_A(t)} = 1*pi > 0
+  C9a  PASS  A + dir(0) == B exactly
+  C9b  PASS  P_B(t) meets T = {3,4,5} in every sector (hits: ['{3}', '{4}', '{3}', '{4}', '{3}', '{4}'])   (this is a single direction t=0 from A (a null set); it does not refute an a.e.-in-t statement)
+  C10  PASS  max over unit pairs/sectors of |P_x|+|P_y| = 5, attained at (pair, parity) [('A', 'C', 0)]
+  C11  PASS  labels absent from every palette (and identically 0 in the trace): {'A': '{4,5}', 'B': '{0,1,2,5}', 'C': '{1,2,3}'}
+  C12  PASS  lane reading (P subset {i,j}): {'A': [], 'B': [(3, 4)], 'C': []}   (PASS only under the lane's reading; see C12-Lean below)
+  C12-Lean  BinaryCenter per Lean def (ordered pairs): {'A': [(0, 3), (1, 3), (2, 3), (3, 0), (3, 1), (3, 2)], 'B': [(3, 4), (4, 3)], 'C': [(0, 4), (0, 5), (4, 0), (5, 0)]}
+            sub-claim 'A is not binary for any pair, C similarly' under the Lean def: False
+            binary_alternation holds for every Lean binary pair: True;  binary_ne (i != j): True;  same pair at two distinct centres (binary_centers_separated): none
+  X1   PASS  every nonempty P has P cap P != empty (all 63 nonempty subsets of Fin 6)   (TAUTOLOGY: carries no information about the model)
+  G1   PASS  C={0,1,3,4}: 14 ordered splits into disjoint nonempty V,W with V u W = C; 8 non-binary; all max side <= 3; {0,1,3}/{4} present   (pure finite combinatorics, independent of the model)
+
+  my evaluation covers 19 ids: H1 H2 C1 C2 C3 C4 C5 C6 C7 C8a C8b C8c C9a C9b C10 C11 C12 X1 G1
+  lane ids == my ids: True
+
+[5] Verdicts on the numbered claims of the brief
+  => Claim 1 (sides exactly 1): CONFIRMED  [|AB|^2=|AC|^2=|BC|^2=1 in Q(sqrt3); A+dir(0)=B, A+dir(pi/3)=C, B+dir(2pi/3)=C exactly]
+  => Claim 2 (TE disjointness): CONFIRMED  [required (Lean palette_neighbor_disjoint) for ALL a.e. directions t at each unit pair, not only t = the displacement; holds for all 3 pairs x all 6 sectors (A,B even {0,1,2}/{3}, odd {3}/{4}; A,C {0,1,2}/{4,5}, {3}/{0}; B,C {3}/{4,5}, {4}/{0})]
+  => Claim 3 (pi/3 disjointness incl. wrap): CONFIRMED  [sector j -> j+1 under +pi/3 proved exactly via R; all 18 (centre,sector) cases incl. 5->0 disjoint]
+  => Claim 4 (traces): CONFIRMED  [18 declared traces: entries in [0,1], sum exactly 1, positivity set == palette]
+  => Claim 5 (|P_A|+|P_C| = 3+2 = 5, saturating): CONFIRMED  [even sectors: |{0,1,2}|+|{4,5}| = 5; max over all unit pairs/sectors = 5 (<= 5)]
+  support_x = labels used at x: {A: {0,1,2,3}, B: {3,4}, C: {0,4,5}}; max|P_x| = {'A': 3, 'B': 1, 'C': 2}; |supp_x|-1 = {'A': 3, 'B': 1, 'C': 2}
+  general bound from C1+C4 (P(f), P(f+pi/3) disjoint nonempty within supp): |P| <= |supp|-1  (exhaustive: True)
+  => Claim 6 (C11 absent sets; caps at support-1 = 3, not 2): CONFIRMED  [absent sets ['{4,5}', '{0,1,2,5}', '{1,2,3}'] == claimed; at A |supp|=4, max|P_A|=3=|supp|-1 > 2; max|P_x| = |supp_x|-1 at every centre (B: 1, C: 2), the C1+C4 ceiling, attained]
+  => Claim 7 (19/19 lane predicates as coded): CONFIRMED  [all 19 predicates evaluate True independently (fails: none). Trivial/structural, carry no model information: X1 (tautology), G1 (model-free combinatorics), H2 (by construction), C7 (implied by C1+C6)]
+  => Claim 7 / C12 sub-claim 'A not (i,j)-binary for any pair, C similarly' (Lean BinaryCenter def): DISAGREES  [Lean def (a.e. i in P or j in P): A binary for [(0, 3), (1, 3), (2, 3)], B for [(3, 4)], C for [(0, 4), (0, 5)]; the lane tested P subset {i,j} instead. Headline survives: binary_alternation holds for all True, i != j True, no pair shared by two centres]
+
+[6] Step-1 ladder (LADDER-k6.md): stated finite facts, recomputed with bitmasks
+  L6: Fin5: 10 3-sets, all complements of card 2: True;  Fin6: 20 3-sets, all complements card 3: True
+  L5: two_complement_pred (univ\S={i,j}, a notin S => a in {i,j}) holds exhaustively for Fin5, Fin6: True
+  L7: hcomp univ\S={i,j} satisfiable for every 3-set at k=5: True; for NO 3-set at k=6: True
+  alternating triples {i,i+2,i+4} of Z/6: ['{0,2,4}', '{1,3,5}']
+  [2] P1={0,1,3,4}, P2={2,5}: union = Fin6: True; P1 alt? False; P2 alt? False
+  [3] avoiding both alternating triples by card: {0: 1, 1: 6, 2: 15, 3: 18, 4: 9, 5: 0, 6: 0} (totals {0: 1, 1: 6, 2: 15, 3: 20, 4: 15, 5: 6, 6: 1}); card>=3 total = 27
+  sec.4 cited REPORT.md arithmetic 354+150+6 = 510: True  (the counts themselves: source not available locally)
+  ladder_k6.py (inbox copy) sha256 = f940486855ee15ec2c66364fbeb95c27639a4d55536ee24d3bcb07ab7183ffcb; LF-normalised = 627ff696648a30397768f96eac47a6fefcdb98a3e73a8544a38f5b00dd079876; stated 627ff696...: MATCH
+  LADDER-k6.md (inbox copy) sha256 = 872fa891768753f8e2524f4f5c825ae7803783bccae6d03ec708b4ffaab2851b
+  cite Palettes.lean:47   palette_nonempty               found at lines [31, 40] -> MISMATCH
+  cite BinaryPalettes.lean:218  ae_circle_palette_exclusion    found at lines [208, 218] -> match
+  cite BinaryPalettes.lean:229  ae_circle_typicalSampling      found at lines [219, 229] -> match
+  cite BinaryPalettes.lean:213  typical_sample_palette         found at lines [203, 213] -> match
+  cite BinaryPalettes.lean:182  ae_not_binary_circle           found at lines [172, 182] -> match
+  cite BinaryPalettes.lean:236  two_complement_pred            found at lines [226, 236] -> match
+  cite BinaryPalettes.lean:242  circle_complement_binary       found at lines [233, 243] -> MISMATCH
+  cite BinaryPalettes.lean:253  palette_triple_null            found at lines [242, 252] -> MISMATCH
+  cite BinaryPalettes.lean:260  palette_cardinality            found at lines [250, 260] -> match
+  cite Palettes.lean:124  edge_palette_not_pair          found at lines [94, 103] -> MISMATCH
+  'hSc' (L6 cite 255-256) found at full-original BinaryPalettes.lean lines [255]
+  => Ladder finite facts (L5-L7, sec.2, sec.3): CONFIRMED  [10/10 Fin5 3-sets have complement 2, 20/20 Fin6 have 3; hcomp unsatisfiable at k=6; C={0,1,3,4}+{2,5} covers Fin6 w/o alternating triple; 18/20, 9/15, 27 avoiders; 2 of 20 contain one]
+  => Ladder file:line citations: PARTIAL  [6/10 match a local Lean tree; mismatches: palette_nonempty cited 47, found [31, 40]; circle_complement_binary cited 242, found [233, 243]; palette_triple_null cited 253, found [242, 252]; edge_palette_not_pair cited 124, found [94, 103]]
+  => Ladder TRUE/UNPROVED verdicts on Lean steps (L0-L4, L8-L10): UNDETERMINED  [these are proof-status claims about Lean declarations, not finite facts; no Lean run (out of scope)]
+
+================================================================================================
+SUMMARY
+  CONFIRMED    Claim 1 (sides exactly 1)
+  CONFIRMED    Claim 2 (TE disjointness)
+  CONFIRMED    Claim 3 (pi/3 disjointness incl. wrap)
+  CONFIRMED    Claim 4 (traces)
+  CONFIRMED    Claim 5 (|P_A|+|P_C| = 3+2 = 5, saturating)
+  CONFIRMED    Claim 6 (C11 absent sets; caps at support-1 = 3, not 2)
+  CONFIRMED    Claim 7 (19/19 lane predicates as coded)
+  DISAGREES    Claim 7 / C12 sub-claim 'A not (i,j)-binary for any pair, C similarly' (Lean BinaryCenter def)
+  CONFIRMED    Ladder finite facts (L5-L7, sec.2, sec.3)
+  PARTIAL      Ladder file:line citations
+  UNDETERMINED Ladder TRUE/UNPROVED verdicts on Lean steps (L0-L4, L8-L10)
+runtime 4.037 s;  self sha256 7b92389eb27be76e2cfc92df0d432ce9b6380d9bbc551700430044db60faf839
+================================================================================================

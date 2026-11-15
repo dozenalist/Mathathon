@@ -1,0 +1,208 @@
+research-desk/contracts/ConsumerContracts.lean:42:12: error(lean.unknownIdentifier): Unknown identifier `WeakColoring`
+
+Note: It is not possible to treat `WeakColoring` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:43:17: error(lean.unknownIdentifier): Unknown identifier `FourCenter`
+
+Note: It is not possible to treat `FourCenter` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:43:43: error(lean.unknownIdentifier): Unknown identifier `FourCenter`
+
+Note: It is not possible to treat `FourCenter` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:44:13: error(lean.unknownIdentifier): Unknown identifier `Tendsto`
+
+Note: It is not possible to treat `Tendsto` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:46:12: error(lean.unknownIdentifier): Unknown identifier `Tendsto`
+
+Note: It is not possible to treat `Tendsto` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:46:42: error(lean.unknownIdentifier): Unknown identifier `Tendsto`
+
+Note: It is not possible to treat `Tendsto` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:47:24: error(lean.unknownIdentifier): Unknown identifier `fourSupport`
+
+Note: It is not possible to treat `fourSupport` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:48:24: error(lean.unknownIdentifier): Unknown identifier `fourSupport`
+
+Note: It is not possible to treat `fourSupport` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:49:7: error(lean.unknownIdentifier): Unknown identifier `direction`
+
+Note: It is not possible to treat `direction` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:49:33: error(lean.unknownIdentifier): Unknown identifier `direction`
+
+Note: It is not possible to treat `direction` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:57:12: error(lean.unknownIdentifier): Unknown identifier `WeakColoring`
+
+Note: It is not possible to treat `WeakColoring` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:58:18: error(lean.unknownIdentifier): Unknown identifier `angularMeasure`
+
+Note: It is not possible to treat `angularMeasure` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:59:38: error(lean.unknownIdentifier): Unknown identifier `Angles`
+
+Note: It is not possible to treat `Angles` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:59:38: error(lean.unknownIdentifier): Unknown identifier `Angles`
+
+Note: It is not possible to treat `Angles` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:60:16: error(lean.unknownIdentifier): Unknown identifier `interfaceStateSupport`
+
+Note: It is not possible to treat `interfaceStateSupport` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:60:56: error(lean.unknownIdentifier): Unknown identifier `interfaceStateSupport`
+
+Note: It is not possible to treat `interfaceStateSupport` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:61:7: error(lean.unknownIdentifier): Unknown identifier `direction`
+
+Note: It is not possible to treat `direction` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:61:21: error(lean.unknownIdentifier): Unknown identifier `direction`
+
+Note: It is not possible to treat `direction` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:58:34: error(lean.unknownIdentifier): Unknown identifier `fourGroup`
+
+Note: It is not possible to treat `fourGroup` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:58:67: error(lean.unknownIdentifier): Unknown identifier `palette`
+
+Note: It is not possible to treat `palette` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:58:34: warning: Ambiguous use of subset notation: the type is a metavariable.
+Consider adding a type annotation, e.g. `(_ : Set _) ⊆ _`.
+The term will elaborate to a different constant depending on whether the type is tagged with `@[use_set_notation_for_order]`.
+
+Note: This linter can be disabled with `set_option linter.setNotationForOrder false`
+research-desk/contracts/ConsumerContracts.lean:68:12: error(lean.unknownIdentifier): Unknown identifier `WeakColoring`
+
+Note: It is not possible to treat `WeakColoring` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:68:44: error(lean.unknownIdentifier): Unknown identifier `FiveCenter`
+
+Note: It is not possible to treat `FiveCenter` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:69:16: error(lean.unknownIdentifier): Unknown identifier `fiveSupport`
+
+Note: It is not possible to treat `fiveSupport` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:69:51: error(lean.unknownIdentifier): Unknown identifier `fiveSupport`
+
+Note: It is not possible to treat `fiveSupport` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+research-desk/contracts/ConsumerContracts.lean:69:43: error(lean.unknownIdentifier): Unknown identifier `sixty`
+
+Note: It is not possible to treat `sixty` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.
+EuclideanFiveColor.four_support_sequence_no_unit : ∀
+  (c : Complex → Fin (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+  (hc :
+    @Measurable Complex (Fin (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) Complex.measurableSpace
+      (Fin.instMeasurableSpace (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) c),
+  EuclideanFiveColor.WeakColoring (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) c →
+    ∀ {x : Nat → Complex} {y : Complex},
+      (∀ (n : Nat), EuclideanFiveColor.FourCenter c (x n)) →
+        EuclideanFiveColor.FourCenter c y →
+          @Filter.Tendsto Nat Complex x (@Filter.atTop Nat Nat.instPreorder)
+              (@nhds Complex
+                (@UniformSpace.toTopologicalSpace Complex
+                  (@PseudoMetricSpace.toUniformSpace Complex
+                    (@SeminormedRing.toPseudoMetricSpace Complex
+                      (@SeminormedCommRing.toSeminormedRing Complex
+                        (@NormedCommRing.toSeminormedCommRing Complex
+                          (@CommCStarAlgebra.toNormedCommRing Complex instCommCStarAlgebraComplex))))))
+                y) →
+            ∀ {s : Fin (@OfNat.ofNat Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))},
+              @Ne (Fin (@OfNat.ofNat Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) s
+                  (@OfNat.ofNat (Fin (@OfNat.ofNat Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) (nat_lit 0)
+                    (@Fin.instOfNat (@OfNat.ofNat Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) ⋯ (nat_lit 0))) →
+                ∀ {b d : Nat → Real} {b₀ d₀ : Real},
+                  @Filter.Tendsto Nat Real b (@Filter.atTop Nat Nat.instPreorder)
+                      (@nhds Real
+                        (@UniformSpace.toTopologicalSpace Real
+                          (@PseudoMetricSpace.toUniformSpace Real Real.pseudoMetricSpace))
+                        b₀) →
+                    @Filter.Tendsto Nat Real d (@Filter.atTop Nat Nat.instPreorder)
+                        (@nhds Real
+                          (@UniformSpace.toTopologicalSpace Real
+                            (@PseudoMetricSpace.toUniformSpace Real Real.pseudoMetricSpace))
+                          d₀) →
+                      (∀ (n : Nat),
+                          @Membership.mem Real (Set Real) (@Set.instMembership Real)
+                            (EuclideanFiveColor.fourSupport c hc (x n) s) (b n)) →
+                        (∀ (n : Nat),
+                            @Membership.mem Real (Set Real) (@Set.instMembership Real)
+                              (EuclideanFiveColor.fourSupport c hc (x n) s) (d n)) →
+                          @Ne Real
+                            (@norm Complex Complex.instNorm
+                              (@HSub.hSub Complex Complex Complex (@instHSub Complex Complex.instSub)
+                                (EuclideanFiveColor.direction
+                                  (@QuotientAddGroup.mk Real (@AddCommGroup.toAddGroup Real Real.instAddCommGroup)
+                                    (@AddSubgroup.zmultiples Real (@AddCommGroup.toAddGroup Real Real.instAddCommGroup)
+                                      (@HMul.hMul Real Real Real (@instHMul Real Real.instMul)
+                                        (@OfNat.ofNat Real (nat_lit 2)
+                                          (@instOfNatAtLeastTwo Real (nat_lit 2) Real.instNatCast
+                                            EuclideanFiveColor.Angles._proof_1))
+                                        Real.pi))
+                                    b₀))
+                                (EuclideanFiveColor.direction
+                                  (@QuotientAddGroup.mk Real (@AddCommGroup.toAddGroup Real Real.instAddCommGroup)
+                                    (@AddSubgroup.zmultiples Real (@AddCommGroup.toAddGroup Real Real.instAddCommGroup)
+                                      (@HMul.hMul Real Real Real (@instHMul Real Real.instMul)
+                                        (@OfNat.ofNat Real (nat_lit 2)
+                                          (@instOfNatAtLeastTwo Real (nat_lit 2) Real.instNatCast
+                                            EuclideanFiveColor.Angles._proof_1))
+                                        Real.pi))
+                                    d₀))))
+                            (@OfNat.ofNat Real (nat_lit 1) (@One.toOfNat1 Real Real.instOne))
+@EuclideanFiveColor.interfaceStateSupport_no_unit : ∀
+  {c : Complex → Fin (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))}
+  (hc :
+    @Measurable Complex (Fin (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) Complex.measurableSpace
+      (Fin.instMeasurableSpace (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) c),
+  EuclideanFiveColor.WeakColoring (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) c →
+    ∀ {x : Complex},
+      @Filter.Eventually EuclideanFiveColor.Angles
+          (fun t =>
+            @LE.le (Finset (Fin (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+              (@Preorder.toLE (Finset (Fin (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+                (@PartialOrder.toPreorder (Finset (Fin (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))
+                  (@Finset.instPartialOrder (Fin (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))))))
+              (EuclideanFiveColor.fourGroup (EuclideanFiveColor.fourState c hc x t))
+              (@EuclideanFiveColor.palette (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) c hc x t))
+          (@MeasureTheory.ae EuclideanFiveColor.Angles
+            (@MeasureTheory.Measure EuclideanFiveColor.Angles
+              (@QuotientAddGroup.measurableSpace Real (@AddCommGroup.toAddGroup Real Real.instAddCommGroup)
+                Real.measurableSpace
+                (@AddSubgroup.zmultiples Real (@AddCommGroup.toAddGroup Real Real.instAddCommGroup)
+                  (@HMul.hMul Real Real Real (@instHMul Real Real.instMul)
+                    (@OfNat.ofNat Real (nat_lit 2)
+                      (@instOfNatAtLeastTwo Real (nat_lit 2) Real.instNatCast EuclideanFiveColor.Angles._proof_1))
+                    Real.pi))))
+            (@MeasureTheory.Measure.instFunLike EuclideanFiveColor.Angles
+              (@QuotientAddGroup.measurableSpace Real (@AddCommGroup.toAddGroup Real Real.instAddCommGroup)
+                Real.measurableSpace
+                (@AddSubgroup.zmultiples Real (@AddCommGroup.toAddGroup Real Real.instAddCommGroup)
+                  (@HMul.hMul Real Real Real (@instHMul Real Real.instMul)
+                    (@OfNat.ofNat Real (nat_lit 2)
+                      (@instOfNatAtLeastTwo Real (nat_lit 2) Real.instNatCast EuclideanFiveColor.Angles._proof_1))
+                    Real.pi))))
+            ⋯ EuclideanFiveColor.angularMeasure) →
+        ∀ {s : Fin (@OfNat.ofNat Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))},
+          @Ne (Fin (@OfNat.ofNat Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) s
+              (@OfNat.ofNat (Fin (@OfNat.ofNat Nat (nat_lit 3) (instOfNatNat (nat_lit 3)))) (nat_lit 0)
+                (@Fin.instOfNat (@OfNat.ofNat Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) ⋯ (nat_lit 0))) →
+            ∀ {t u : EuclideanFiveColor.Angles},
+              @Membership.mem EuclideanFiveColor.Angles (Set EuclideanFiveColor.Angles)
+                  (@Set.instMembership EuclideanFiveColor.Angles) (@EuclideanFiveColor.interfaceStateSupport c hc x s)
+                  t →
+                @Membership.mem EuclideanFiveColor.Angles (Set EuclideanFiveColor.Angles)
+                    (@Set.instMembership EuclideanFiveColor.Angles) (@EuclideanFiveColor.interfaceStateSupport c hc x s)
+                    u →
+                  @Ne Real
+                    (@norm Complex Complex.instNorm
+                      (@HSub.hSub Complex Complex Complex (@instHSub Complex Complex.instSub)
+                        (EuclideanFiveColor.direction t) (EuclideanFiveColor.direction u)))
+                    (@OfNat.ofNat Real (nat_lit 1) (@One.toOfNat1 Real Real.instOne))
+EuclideanFiveColor.five_support_no_sixty : ∀
+  (c : Complex → Fin (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))
+  (hc :
+    @Measurable Complex (Fin (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) Complex.measurableSpace
+      (Fin.instMeasurableSpace (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))) c),
+  EuclideanFiveColor.WeakColoring (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5))) c →
+    ∀ {x : Complex},
+      EuclideanFiveColor.FiveCenter c x →
+        ∀ {a : Real} {i : Fin (@OfNat.ofNat Nat (nat_lit 5) (instOfNatNat (nat_lit 5)))},
+          @Membership.mem Real (Set Real) (@Set.instMembership Real) (EuclideanFiveColor.fiveSupport c hc x i) a →
+            @HAdd.hAdd Real Real Real (@instHAdd Real Real.instAdd) a EuclideanFiveColor.sixty ∉
+              EuclideanFiveColor.fiveSupport c hc x i
+'OAI.EuclideanFiveColor.four_support_sequence_no_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.interfaceStateSupport_no_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.five_support_no_sixty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_proper_five_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.properColoring_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.chromaticNumber_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
