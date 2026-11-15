@@ -89,3 +89,9 @@
 - 05:05Z heartbeat: exposition checking eps0 claim; research waiting on S2; no collaborator commits; services alive; 1 lean.exe; cycle 04:58Z.
 - 05:14Z heartbeat: S2 ~58 logs; desks waiting; no collaborator commits; services alive; 1 lean.exe; cycle 05:13Z.
 - 05:24Z heartbeat: S2 finishing; desks waiting; no collaborator commits; services alive; 1 lean.exe.
+- 05:34Z S2-DONE 05:24Z (67/67, 14 roots std, sigdump 3038/84/1, 4 changed value hashes = aux renames per research desk). Exposition to confirm identical types before LEAN_VERIFIED + s2 swap.
+- 05:35Z S2 LEAN_VERIFIED pushed bf5f2e1: realised -867.
+- 05:37Z usage check run (see usage-log.jsonl); swarms at max, research narrowed; no change.
+- 05:44Z heartbeat: research waiting on A6-GLUE files from formal lane (reported <20 min); exposition idle; no collaborator commits; services alive; 0 lean.exe; cycle 05:43Z.
+- 05:54Z heartbeat: research A6-GLUE chain pending (reported <20 min); no collaborator commits; services alive; 0 lean.exe.
+- 06:04Z heartbeat: A6-GLUE chain compiling (1 lean.exe); no collaborator commits; services alive; cycle 05:58Z.

@@ -88,7 +88,7 @@ The manuscript is accompanied by a Lean development, pinned to OpenAI commit \te
 \item \textbf{Exposition (Sections~2 and~6).} A canonical reader, \texttt{Hadwiger\allowbreak{}Nelson/\allowbreak{}Exposition/\allowbreak{}Proof\allowbreak{}Walkthrough.\allowbreak{}md}. It teaches the second bridge in six lessons with checked figures, and each lesson was checked by an independent referee against the manuscript and the Lean sources.
 \item \textbf{Three-centre strict-state separation (Section~3).} A short replacement proof of the fixed-centre part of manuscript Lemma~6.3, with the identical Lean statement \st{Lean 4.34.1}.
 \item \textbf{CC60 (Section~4).} Interfaces at one common centre whose approach directions lie in a closed $60^\circ$ arc cannot leave fewer than three labels \st{Lean 4.34.1}. A 20-colour construction shows the arc cannot be widened for arbitrary palettes \st{proved}.
-\item \textbf{Further results, computations and corrections (Section~5).} The Lean simplification of the supplied proof (867 lines shorter) \st{Lean 4.34.1}. A four-list obstruction for weak measurable six-colourings and other refereed local lemmas \st{proved}. Even-walk parity obstructions \st{Lean 4.34.1}. Lean-checked pieces of a six-colour producer chain \st{Lean 4.34.1, conditional}: the latest bridge still assumes \texttt{SignTable} and \texttt{ForcingLemma}, and the glued statement is open. Exact censuses and certificates \st{computation}. Refereed counterexamples and corrections.
+\item \textbf{Further results, computations and corrections (Section~5).} The Lean simplification of the supplied proof (867 lines shorter) \st{Lean 4.34.1}. A four-list obstruction for weak measurable six-colourings and other refereed local lemmas \st{proved}. Even-walk parity obstructions \st{Lean 4.34.1}. A glued six-colour endgame in Lean \st{Lean 4.34.1, conditional}: for exactly paired interfaces it reduces the contradiction to two named inputs, the A5 obstruction (refereed on paper) and the support exclusions. Exact censuses and certificates \st{computation}. Refereed counterexamples and corrections.
 \end{enumerate}
 [TEAM: confirm which items began before the event window; prior work ``does not count as event work''. The research records are dated 13--14 November 2026.]
 
@@ -866,9 +866,8 @@ a standalone desk compile.
 A later version, \texttt{ae\_\allowbreak{}canonical\_\allowbreak{}subpalette\_\allowbreak{}unconditional}, glues in the G3 proof and so discharges
 \texttt{ArcCover}; it still assumes \texttt{SignTable} and
 \texttt{ForcingLemma} (A6-BRIDGE-R2-G3, checked in Lean~4.34.1).
-\emph{Not shown:} the fully glued theorem (A6-GLUE, open). The bridge remains
-conditional on \texttt{SignTable} and \texttt{ForcingLemma}, so exclusion of
-the paired configuration is not established in Lean.
+The fully glued endgame now compiles (A6-GLUE, checked in Lean~4.34.1: one file, exit code~0, standard axioms only). Its theorem \texttt{no\_\allowbreak{}six\_\allowbreak{}paired\_\allowbreak{}interfaces\_\allowbreak{}of\_\allowbreak{}arcCover} derives a contradiction from a measurable weak six-colouring with six interfaces in the exact paired directions; \texttt{ForcingLemma}, \texttt{SignTable} and \texttt{ArcCover} are all proved inside the file.
+\emph{Not shown in Lean:} two named hypotheses remain, the A5 obstruction (\texttt{A5Obstruction}, supported by the refereed paper result A5-FOUR-LIST but not formalised) and the support exclusions \texttt{hsupp} (an input). So in Lean the A6 endgame reduces to these two inputs.
 \end{itemize}
 
 % ----------------------------------------------------------------------
@@ -1049,7 +1048,6 @@ family, canonical 3-cycle.
 \subsection{Open problems}
 % LEDGER: each item below = OPEN
 \begin{itemize}
-\item A6-GLUE: discharge \texttt{SignTable} and \texttt{ForcingLemma} inside the glued bridge (G3 is already glued in; see A6-BRIDGE-R2-G3).
 \item PALETTE-RIGIDITY: $|J\cup K|\ge3$ with real states on both sectors.
 \item STAIRCASE-CONVERSE: realise or classify the surviving staircases.
 \item K6-PRODUCER: two missing declarations for the $m=3$ case at $k=6$.
@@ -1158,7 +1156,7 @@ Lean simplification of the supplied proof, 867 lines shorter (ENC-R4, R1, S1, S2
 Branch-free step ban (STEPBAN-V3, STEPBAN-SWAP via S1); the earlier v2 route (STEPBAN-V2, -CONSUMER, -CYCLICCORE, FIVESUPPORT-SWAP) is superseded & \st{Lean 4.34.1} & Section 5\\
 Four-list obstruction and other local lemmas (A5-FOUR-LIST, AC-ALIGNED, NR-TC, RESIDUAL-GRAPH, STRAIGHT-NEEDLE, MC120-STRICT, A6-PAIRED-PRODUCER) & \st{proved} & Section 5; referee reports\\
 Even-walk parity obstructions (EVENWALK-R6) & \st{Lean 4.34.1} & Section 5\\
-Six-colour producer pieces (A6-FORCING, A6-BRIDGE-R2, A6-BRIDGE-R2-G3, G1-R2, G3-R2); still conditional on SignTable and ForcingLemma (A6-GLUE open) & \st{Lean 4.34.1}, conditional & Section 5\\
+Glued six-colour endgame (A6-GLUE; pieces A6-FORCING, A6-BRIDGE-R2, A6-BRIDGE-R2-G3, G1-R2, G3-R2); conditional on two named inputs, the A5 obstruction and the support exclusions & \st{Lean 4.34.1}, conditional & Section 5\\
 Censuses and certificates (HEULE-UNION, HEULE-NO-FORCING, DIR-FILTER, FIXED-PHASE-CENSUS, STAIRCASE-CENSUS, SIX-ORBIT, A5-SLIVER, HONEYCOMB-73, HONEYCOMB-K16, HISTORIC-8, LN1-ORBITS) & \st{computation} & Section 5, Table~\ref{tab:finite}\\
 Counterexamples and negative results (MC120-ENDPOINT, ANNULUS-3COL, SUPPORT-FLIP, FOUR-STATE-ANGULAR, VARIABLE-TRIANGLE, A7-CONTACT, LOCAL-TRANSITIONS) & \st{proved} & Section 5\\
 A route to $\chi\ge7$ (L6-F6) & open; not claimed & Section 5\\

@@ -1,6 +1,6 @@
 # Results ledger — Hadwiger–Nelson Mathathon entry
 
-Built 2026-11-15T05:33Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
+Built 2026-11-15T06:07Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
 
 **No global chromatic result. The bounds 6 ≤ χ(ℝ²) ≤ 7 come from the supplied proof ("The Euclidean plane is not five-colorable") and the classical 7-colouring; nothing the team has added changes them. Every entry below is a simplification of the supplied proof, a local or conditional lemma, a finite computation, or a negative result. The only route to χ ≥ 7 on record is conditional on the open lemmas L6 and F6 (see L6-F6).**
 
@@ -27,7 +27,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 
 - [CC60](#cc60) — closed 60° cone obstruction (equality case included), Lean-verified with standard axioms; sharp for arbitrary finite palettes by the reviewed 20-colour construction [SHARPNESS-20](#sharpness-20).
 - [ENC-R4](#enc-r4), [R1](#r1) and [S1](#s1) — the supplied proof now compiles in a simplified form 867 lines shorter (with [S2](#s2)), with Lemma 6.7 branch-free under its original name, every surviving statement unchanged, and the root theorems (incl. `no_proper_five_coloring`, `weakMeasurableColoring_seven`) on standard axioms only.
-- A6 six-colour producer chain in Lean: [A6-FORCING](#a6-forcing), [A6-BRIDGE-R2](#a6-bridge-r2) (with [G1-R2](#g1-r2)), [G3-R2](#g3-r2), and [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) with the arc cover discharged; SignTable and ForcingLemma are still hypotheses there ([A6-GLUE](#a6-glue) open).
+- A6 six-colour producer chain in Lean: [A6-FORCING](#a6-forcing), [G1-R2](#g1-r2), [G3-R2](#g3-r2), [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) and the glued endgame [A6-GLUE](#a6-glue): SignTable, ForcingLemma and ArcCover are discharged, so the A6 endgame reduces to two named inputs, `A5Obstruction` and `hsupp`.
 - [A5-FOUR-LIST](#a5-four-list) — refereed: no centre of a weak measurable 6-colouring has an actual palette containing the canonical paired palette; with the paired producer [A6-PAIRED-PRODUCER](#a6-paired-producer) (paper, its finite core Lean-verified) this excludes the paired interface configuration.
 - [MC120-ENDPOINT](#mc120-endpoint) — refereed 19-colour counterexample: the closed-120° version of MC120 is false; [SIX-ORBIT](#six-orbit) — six direction configurations that pass every cone test are excluded by the exact relaxation.
 - [EVENWALK-R6](#evenwalk-r6) — even unit-distance walk reachability and the finite list / two-list parity obstructions for weak measurable k-colourings, Lean-verified.
@@ -36,7 +36,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 ### Main open gaps
 
 - **No global chromatic result.** No reviewed proof changes any bound on χ(ℝ²) or on the measurable chromatic number.
-- [A6-GLUE](#a6-glue): ArcCover is now discharged (A6-BRIDGE-R2-G3), but no compiled file discharges `SignTable` and `ForcingLemma` together with it; hsupp, the pairing hypothesis and the A5 obstruction (no Lean declaration) remain.
+- [A6-GLUE](#a6-glue): the glued endgame compiles, but `A5Obstruction` (paper, not in Lean) and the support exclusions `hsupp` remain named hypotheses.
 - [PALETTE-RIGIDITY](#palette-rigidity), [STAIRCASE-CONVERSE](#staircase-converse), [K6-PRODUCER](#k6-producer): the missing lemmas for the six-colour programme.
 - [SHARPNESS-20](#sharpness-20): six-colour sharpness of CC60 and novelty priority are not established.
 - [MC120-STRICT](#mc120-strict): strict MC120 is called "accepted paper" in the status file but has no referee file; [A6-COROLLARIES](#a6-corollaries) and [CONTINUOUS-SIX](#continuous-six) depend on it.
@@ -47,14 +47,14 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 | Theme | LEAN_VERIFIED | PROVED_PAPER_REVIEWED | TESTED_FINITE | CANDIDATE | UNAUDITED_NUMBER | RETRACTED_OR_REFUTED | OPEN |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Simplification of the supplied proof | 14 | 1 | 1 |  |  |  |  |
-| New mathematics | 9 | 8 | 10 | 18 |  |  | 6 |
+| New mathematics | 10 | 8 | 10 | 18 |  |  | 5 |
 | Negative results and counterexamples | 1 | 7 | 6 | 7 |  | 8 |  |
 | Infrastructure | 1 |  | 1 |  |  | 1 | 1 |
 
 ## Index
 
 - **Simplification of the supplied proof**: [DIAMOND](#diamond) `LEAN_VERIFIED`, [ENC-R4](#enc-r4) `LEAN_VERIFIED`, [FIVE-CYCLE-RESIDUES](#five-cycle-residues) `LEAN_VERIFIED`, [FIVESUPPORT-SWAP](#fivesupport-swap) `LEAN_VERIFIED`, [JOINT-SUPPORT](#joint-support) `LEAN_VERIFIED`, [R1](#r1) `LEAN_VERIFIED`, [S1](#s1) `LEAN_VERIFIED`, [S2](#s2) `LEAN_VERIFIED`, [STEPBAN-CONSUMER](#stepban-consumer) `LEAN_VERIFIED`, [STEPBAN-CYCLICCORE](#stepban-cycliccore) `LEAN_VERIFIED`, [STEPBAN-SWAP](#stepban-swap) `LEAN_VERIFIED`, [STEPBAN-V2](#stepban-v2) `LEAN_VERIFIED`, [STEPBAN-V3](#stepban-v3) `LEAN_VERIFIED`, [THREE-CENTRE](#three-centre) `LEAN_VERIFIED`, [LEMMA67-IDENTITY](#lemma67-identity) `PROVED_PAPER_REVIEWED`, [R1-GATES](#r1-gates) `TESTED_FINITE`
-- **New mathematics**: [A6-BRIDGE-R2](#a6-bridge-r2) `LEAN_VERIFIED`, [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) `LEAN_VERIFIED`, [A6-FORCING](#a6-forcing) `LEAN_VERIFIED`, [CC60](#cc60) `LEAN_VERIFIED`, [CONNECTED-SET](#connected-set) `LEAN_VERIFIED`, [EVENWALK-R6](#evenwalk-r6) `LEAN_VERIFIED`, [G1-R2](#g1-r2) `LEAN_VERIFIED`, [G3-R2](#g3-r2) `LEAN_VERIFIED`, [NULL-TRANSFER](#null-transfer) `LEAN_VERIFIED`, [A5-FOUR-LIST](#a5-four-list) `PROVED_PAPER_REVIEWED`, [A6-PAIRED-PRODUCER](#a6-paired-producer) `PROVED_PAPER_REVIEWED`, [AC-ALIGNED](#ac-aligned) `PROVED_PAPER_REVIEWED`, [MC120-STRICT](#mc120-strict) `PROVED_PAPER_REVIEWED`, [NR-TC](#nr-tc) `PROVED_PAPER_REVIEWED`, [RESIDUAL-GRAPH](#residual-graph) `PROVED_PAPER_REVIEWED`, [SHARPNESS-20](#sharpness-20) `PROVED_PAPER_REVIEWED`, [STRAIGHT-NEEDLE](#straight-needle) `PROVED_PAPER_REVIEWED`, [A5-SLIVER](#a5-sliver) `TESTED_FINITE`, [DIR-FILTER](#dir-filter) `TESTED_FINITE`, [FIXED-PHASE-CENSUS](#fixed-phase-census) `TESTED_FINITE`, [HEULE-UNION](#heule-union) `TESTED_FINITE`, [HONEYCOMB-73](#honeycomb-73) `TESTED_FINITE`, [LN1-ORBITS](#ln1-orbits) `TESTED_FINITE`, [LN3-T1-T3](#ln3-t1-t3) `TESTED_FINITE`, [RELAX-1-648](#relax-1-648) `TESTED_FINITE`, [SIX-ORBIT](#six-orbit) `TESTED_FINITE`, [STAIRCASE-CENSUS](#staircase-census) `TESTED_FINITE`, [A5-ODD-WALK](#a5-odd-walk) `CANDIDATE`, [A6-COROLLARIES](#a6-corollaries) `CANDIDATE`, [A7-PARTIAL-INDEPENDENT](#a7-partial-independent) `CANDIDATE`, [AMPLIFIER](#amplifier) `CANDIDATE`, [CENSUS-COMPLETE-60Z](#census-complete-60z) `CANDIDATE`, [CLAUDE-LEMMA-A](#claude-lemma-a) `CANDIDATE`, [CONTINUOUS-SIX](#continuous-six) `CANDIDATE`, [HONEYCOMB-RESTRICTED](#honeycomb-restricted) `CANDIDATE`, [J-DEPTH](#j-depth) `CANDIDATE`, [K6-M3-DOOR](#k6-m3-door) `CANDIDATE`, [LIST-FIELD-A4](#list-field-a4) `CANDIDATE`, [Q4Q5-PINNING](#q4q5-pinning) `CANDIDATE`, [R0-CHI4](#r0-chi4) `CANDIDATE`, [RELAX-CIRCULANT](#relax-circulant) `CANDIDATE`, [T6-B2](#t6-b2) `CANDIDATE`, [THM-BPRIME](#thm-bprime) `CANDIDATE`, [TRANSLATION-CRITERION](#translation-criterion) `CANDIDATE`, [WILD-LAW](#wild-law) `CANDIDATE`, [A6-GLUE](#a6-glue) `OPEN`, [K6-PRODUCER](#k6-producer) `OPEN`, [L6-F6](#l6-f6) `OPEN`, [LOCALIZED-TWO-STATE](#localized-two-state) `OPEN`, [PALETTE-RIGIDITY](#palette-rigidity) `OPEN`, [STAIRCASE-CONVERSE](#staircase-converse) `OPEN`
+- **New mathematics**: [A6-BRIDGE-R2](#a6-bridge-r2) `LEAN_VERIFIED`, [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) `LEAN_VERIFIED`, [A6-FORCING](#a6-forcing) `LEAN_VERIFIED`, [A6-GLUE](#a6-glue) `LEAN_VERIFIED`, [CC60](#cc60) `LEAN_VERIFIED`, [CONNECTED-SET](#connected-set) `LEAN_VERIFIED`, [EVENWALK-R6](#evenwalk-r6) `LEAN_VERIFIED`, [G1-R2](#g1-r2) `LEAN_VERIFIED`, [G3-R2](#g3-r2) `LEAN_VERIFIED`, [NULL-TRANSFER](#null-transfer) `LEAN_VERIFIED`, [A5-FOUR-LIST](#a5-four-list) `PROVED_PAPER_REVIEWED`, [A6-PAIRED-PRODUCER](#a6-paired-producer) `PROVED_PAPER_REVIEWED`, [AC-ALIGNED](#ac-aligned) `PROVED_PAPER_REVIEWED`, [MC120-STRICT](#mc120-strict) `PROVED_PAPER_REVIEWED`, [NR-TC](#nr-tc) `PROVED_PAPER_REVIEWED`, [RESIDUAL-GRAPH](#residual-graph) `PROVED_PAPER_REVIEWED`, [SHARPNESS-20](#sharpness-20) `PROVED_PAPER_REVIEWED`, [STRAIGHT-NEEDLE](#straight-needle) `PROVED_PAPER_REVIEWED`, [A5-SLIVER](#a5-sliver) `TESTED_FINITE`, [DIR-FILTER](#dir-filter) `TESTED_FINITE`, [FIXED-PHASE-CENSUS](#fixed-phase-census) `TESTED_FINITE`, [HEULE-UNION](#heule-union) `TESTED_FINITE`, [HONEYCOMB-73](#honeycomb-73) `TESTED_FINITE`, [LN1-ORBITS](#ln1-orbits) `TESTED_FINITE`, [LN3-T1-T3](#ln3-t1-t3) `TESTED_FINITE`, [RELAX-1-648](#relax-1-648) `TESTED_FINITE`, [SIX-ORBIT](#six-orbit) `TESTED_FINITE`, [STAIRCASE-CENSUS](#staircase-census) `TESTED_FINITE`, [A5-ODD-WALK](#a5-odd-walk) `CANDIDATE`, [A6-COROLLARIES](#a6-corollaries) `CANDIDATE`, [A7-PARTIAL-INDEPENDENT](#a7-partial-independent) `CANDIDATE`, [AMPLIFIER](#amplifier) `CANDIDATE`, [CENSUS-COMPLETE-60Z](#census-complete-60z) `CANDIDATE`, [CLAUDE-LEMMA-A](#claude-lemma-a) `CANDIDATE`, [CONTINUOUS-SIX](#continuous-six) `CANDIDATE`, [HONEYCOMB-RESTRICTED](#honeycomb-restricted) `CANDIDATE`, [J-DEPTH](#j-depth) `CANDIDATE`, [K6-M3-DOOR](#k6-m3-door) `CANDIDATE`, [LIST-FIELD-A4](#list-field-a4) `CANDIDATE`, [Q4Q5-PINNING](#q4q5-pinning) `CANDIDATE`, [R0-CHI4](#r0-chi4) `CANDIDATE`, [RELAX-CIRCULANT](#relax-circulant) `CANDIDATE`, [T6-B2](#t6-b2) `CANDIDATE`, [THM-BPRIME](#thm-bprime) `CANDIDATE`, [TRANSLATION-CRITERION](#translation-criterion) `CANDIDATE`, [WILD-LAW](#wild-law) `CANDIDATE`, [K6-PRODUCER](#k6-producer) `OPEN`, [L6-F6](#l6-f6) `OPEN`, [LOCALIZED-TWO-STATE](#localized-two-state) `OPEN`, [PALETTE-RIGIDITY](#palette-rigidity) `OPEN`, [STAIRCASE-CONVERSE](#staircase-converse) `OPEN`
 - **Negative results and counterexamples**: [A6-CONTAINMENT](#a6-containment) `LEAN_VERIFIED`, [A7-CONTACT](#a7-contact) `PROVED_PAPER_REVIEWED`, [ANNULUS-3COL](#annulus-3col) `PROVED_PAPER_REVIEWED`, [FOUR-STATE-ANGULAR](#four-state-angular) `PROVED_PAPER_REVIEWED`, [LOCAL-TRANSITIONS](#local-transitions) `PROVED_PAPER_REVIEWED`, [MC120-ENDPOINT](#mc120-endpoint) `PROVED_PAPER_REVIEWED`, [SUPPORT-FLIP](#support-flip) `PROVED_PAPER_REVIEWED`, [VARIABLE-TRIANGLE](#variable-triangle) `PROVED_PAPER_REVIEWED`, [HEULE-NO-FORCING](#heule-no-forcing) `TESTED_FINITE`, [HISTORIC-8](#historic-8) `TESTED_FINITE`, [HONEYCOMB-K16](#honeycomb-k16) `TESTED_FINITE`, [LN2-COUNTERMODEL](#ln2-countermodel) `TESTED_FINITE`, [Q4Q5-CONTROLS](#q4q5-controls) `TESTED_FINITE`, [RELAX-WITNESSES](#relax-witnesses) `TESTED_FINITE`, [A8-PALETTE](#a8-palette) `CANDIDATE`, [ALPHA-SHARP](#alpha-sharp) `CANDIDATE`, [FOURWAY-SPLIT](#fourway-split) `CANDIDATE`, [GEOM-Q4Q5](#geom-q4q5) `CANDIDATE`, [GEOM-TWO-STEP](#geom-two-step) `CANDIDATE`, [Q4Q5-APEX](#q4q5-apex) `CANDIDATE`, [TERNARY-COUNTERMODEL](#ternary-countermodel) `CANDIDATE`, [A5-FAR-APEX](#a5-far-apex) `RETRACTED_OR_REFUTED`, [A5-M5-TEMPLATE](#a5-m5-template) `RETRACTED_OR_REFUTED`, [AC-AXIS](#ac-axis) `RETRACTED_OR_REFUTED`, [ALT-TRIPLE](#alt-triple) `RETRACTED_OR_REFUTED`, [CLAUDE05-VERDICT](#claude05-verdict) `RETRACTED_OR_REFUTED`, [OVERNIGHT-WITHDRAWN](#overnight-withdrawn) `RETRACTED_OR_REFUTED`, [PALETTE-EQ-F](#palette-eq-f) `RETRACTED_OR_REFUTED`, [TWO-TRIANGLE](#two-triangle) `RETRACTED_OR_REFUTED`
 - **Infrastructure**: [ENC-R4-AUX](#enc-r4-aux) `LEAN_VERIFIED`, [SNAPSHOT-VALIDATION](#snapshot-validation) `TESTED_FINITE`, [LEAN-FAILED-REVISIONS](#lean-failed-revisions) `RETRACTED_OR_REFUTED`, [LEAN-435](#lean-435) `OPEN`
 
@@ -332,6 +332,8 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/r1-gates/sig-compare-r4-r1.json` — desk comparison — `62c8e7ef17fb446e…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/r1-gates/MANIFEST-COMPLETENESS.md` — manifest completeness note — `5521b496101778f1…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/contracts/ConsumerContracts.lean` — research-desk contract gate source — `a3ea701ab15d29a7…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/contracts/ConsumerContracts-r2.lean` — contract gate r2 source — `5ecda4d6d18c1c3f…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/contracts/compile-r2.log` — contract gate r2 log (exit 0, 75 s; binder/type contracts; axioms standard for 3 consumers and 3 headline roots; checked by the exposition desk ~06:10Z) — `96d620b6f0ebd89c…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/contracts/compile.log` — contract gate log (axioms OK; binder examples failed on missing opens) — `6ee4315e14db61b8…`
 - **Checked by the results desk:** 2026-11-15 ~02:50Z: read both dump logs (exit 0) and re-did the comparison myself from the two .tsv tables: 3,124 vs 3,122 names, 3,116 common, 0 differing in kind/levels/type/binders/value, 2 moved, the 8 removed and 6 added exactly as listed. PaletteTransport byte-identity was checked by the results desk earlier. I did not re-run SigDump. Supporting (research desk contracts gate, contracts/compile.log, Lean 4.34.1 on the R1 build): #print axioms gives the standard three for no_proper_five_coloring, properColoring_seven, chromaticNumber_bounds, four_support_sequence_no_unit, interfaceStateSupport_no_unit and five_support_no_sixty (parsed by the results desk); the binder-contract `example`s in that file failed only on missing `open` lines (25 unknown-identifier errors); r2 with one added `open` line is compiling.
 - **Provenance:** Simplification desk, 01:13–01:29Z (R1-GATES.md); manifest completeness 00:26Z.
@@ -391,6 +393,21 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Correction history:** A6 finite check corrected to "exactly one model P=[{1,4},{2,5},{0,3}]×2, with no cardinality premise" (cycle 204019)
 - **Used for:** Discharges `ForcingLemma` in the A6 bridge once glued; it is the finite core of A6-PAIRED-PRODUCER.
 - **Caveats:** `a6_canonical_pair_subset` has no printed axiom list (the other 7 endpoints do).
+
+### A6-GLUE
+
+**Glued A6 endgame (A6-Bridge-v4-r2): SignTable, ForcingLemma and ArcCover discharged in one compiled file; two named hypotheses remain** — `LEAN_VERIFIED`
+
+- **Statement:** `no_six_paired_interfaces_of_arcCover`: assuming the named Prop `A5Obstruction` (no measurable WeakColoring 6 has, at any centre, a palette carrying the canonical pairs a.e.), for every measurable `c : ℂ → Fin 6` with `WeakColoring 6 c`, six `ApproachingContinuum x (K i) (v i)` in the exact paired directions (`A6Pairing v`) and support exclusions `hsupp : ∀ i, ∀ j ∈ eSet i, Disjoint (spatialSupport c j) (Straddle (K i))`: False. Inside the file ForcingLemma is proved (`forcingLemma_proof`), SignTable follows from `A6Pairing`, and ArcCover is the G3 `arcCover`; also `ae_palette_eq_pair_unconditional` (the palette is exactly {f j, f j+3} a.e.) and `ae_canonical_subpalette_unconditional`.
+- **Hypotheses:** Two named hypotheses are NOT discharged in Lean: `A5Obstruction` (supported by the refereed paper result A5-FOUR-LIST and the A5-SLIVER interval certificate; no Lean declaration) and `hsupp` (the support-exclusion data, an input; Hsupp-r2 gives only equivalent reformulations). Exact three-fold pairing only (R1-4 referee C1).
+- **Evidence:** Research desk desk compile (desk_lean, Lean 4.34.1 / Mathlib d13f23b, on R1): A6-Bridge-v4-r2.lean (formal-lane v4 minus one redundant `decide`), exit 0, 53 s; `#print axioms` standard-only for no_six_paired_interfaces_of_arcCover, ae_palette_eq_pair_unconditional, ae_canonical_subpalette_unconditional.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/Bridge-v4/A6-Bridge-v4-r2.lean` — glued bridge source — `74759b093f94e622…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/Bridge-v4/compile-r2.log` — compile log with #print axioms (exit 0) — `721cfe4bd5298ad5…`
+- **Checked by the results desk:** ~06:10Z (exposition desk, ledger owner): source sha256 matches BANKED.md and the log header; log `exit 0`; the 3 printed axiom lists are exactly [propext, Classical.choice, Quot.sound]; no sorryAx in the log; the 3 textual hits for sorry/admit in the source are comments; read the endgame theorem statement and the `A5Obstruction` definition (lines 1167–1190, 1301–1317). Not recompiled.
+- **Provenance:** Formal lane L1 (v4) + research desk (r2 fix and compile), ~05:50–06:05Z; earlier A6-Bridge-r2-G3 (00:32Z).
+- **Used for:** In Lean, the A6 six-colour endgame reduces to two named inputs: the A5 obstruction and the support exclusions.
+- **Depends on:** [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3), [A6-BRIDGE-R2](#a6-bridge-r2), [G1-R2](#g1-r2), [G3-R2](#g3-r2), [A6-FORCING](#a6-forcing), [A5-FOUR-LIST](#a5-four-list)
 
 ### CC60
 
@@ -660,7 +677,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-CERTIFICATE.json` — certificate — `cd3f9ff3a47f93d5…`
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/Verify-HeuleUnion.mjs` — verifier — `ca9510a2dfd81fbb…`
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-VALIDATION.txt` — validation — `e611fb63e2086a00…`
-  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `7238725f26019c08…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `d51b4ca9756f14f5…`
 - **Checked by the results desk:** 2026-11-14 23:50Z: re-ran `node HadwigerNelson/Main/verify-snapshot.mjs` (exit 0, 11 s), which re-runs Verify-HeuleUnion.mjs: passed, 548,628 pairs, 1,048 vertices, 5,487 edges, proper 5-colouring.
 - **Provenance:** Graph lanes (graph-union-audit), 2026-11-14; import validation 18:58Z.
 - **Correction history:** 17 colourings reduced candidate pairs 110,015 → 1,145, then 34 colourings separated all 543,141 nonadjacent pairs; unreconciled wording: 177 survivor pairs inside the original H locally vs 112 in remote wording (HEULE-UNION-VALIDATION.txt records remainingPairsInsideOriginalH 177); moot after the full separation certificate
@@ -956,14 +973,6 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Artifacts:**
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-WILD-LAW-REVIEW.txt` — review — `1cd50f017d08e779…`
 - **Provenance:** Overnight 13–14 Nov.
-
-### A6-GLUE
-
-**Glued A6 producer (WITH_G3): discharge SignTable, ForcingLemma and ArcCover in one compiled file** — `OPEN`
-
-- **Statement:** Compile A6-Bridge-r2 with G1, G3 and the A6 forcing lemma spliced in, so that `ae_canonical_subpalette_global` holds for paired directions without the three hypotheses.
-- **Provenance:** Formal lane L1; cycles 232057–002122. A6-Bridge-r2-G3.lean (864 lines, LF sha256 164f26bb…) arrived 00:12Z and PASSED a desk compile 00:32Z (see A6-BRIDGE-R2-G3). It discharges ArcCover only (`ae_canonical_subpalette_unconditional` still takes `hsign` and `hforce`). Formal lane: ForcingLemma is proved from the table and the palette is pinned to exactly {f j, f j+3}; the endgame reduces A6 exactly to a named Prop `A5Obstruction` (A5 has no Lean declaration). Still open: hsupp, the pairing hypothesis, v4 assembly.
-- **Depends on:** [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3), [A6-BRIDGE-R2](#a6-bridge-r2), [G1-R2](#g1-r2), [G3-R2](#g3-r2), [A6-FORCING](#a6-forcing)
 
 ### K6-PRODUCER
 
@@ -1359,7 +1368,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Statement:** All 11,556 archived files (358,349,948 bytes) match MANIFEST.json, the frozen Lean source hashes match their validation records, and the finite graph certificates verify.
 - **Artifacts:**
   - `HadwigerNelson/Main/verify-snapshot.mjs` — verifier — `eb40b4b59188cd81…`
-  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `7238725f26019c08…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `d51b4ca9756f14f5…`
 - **Checked by the results desk:** Re-ran 2026-11-14 23:50Z: status passed, exit 0, 11 s.
 - **Provenance:** Supervisor import, 2026-11-14 18:57Z.
 

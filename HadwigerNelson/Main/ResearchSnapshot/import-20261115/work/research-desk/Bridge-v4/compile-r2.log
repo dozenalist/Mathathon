@@ -1,0 +1,141 @@
+started 2026-11-15T06:01:43.878655+00:00
+src C:/Users/jarom/Documents/Codex/2026-11-13/i/work/research-desk/Bridge-v4/A6-Bridge-v4-r2.lean
+sha256 74759b093f94e62285d0fb916ffee5ac1d72e80544caca9c0a9a9cfea702de39
+LEAN_PATH C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/build;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\Qq\.lake\build\lib\lean
+exit 0
+elapsed 53.2
+--- stdout
+C:/Users/jarom/Documents/Codex/2026-11-13/i/work/research-desk/Bridge-v4/A6-Bridge-v4-r2.lean:464:16: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+C:/Users/jarom/Documents/Codex/2026-11-13/i/work/research-desk/Bridge-v4/A6-Bridge-v4-r2.lean:464:30: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+C:/Users/jarom/Documents/Codex/2026-11-13/i/work/research-desk/Bridge-v4/A6-Bridge-v4-r2.lean:588:26: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+C:/Users/jarom/Documents/Codex/2026-11-13/i/work/research-desk/Bridge-v4/A6-Bridge-v4-r2.lean:588:40: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'OAI.EuclideanFiveColor.A6.ae_canonical_subpalette_unconditional' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.EuclideanFiveColor.A6.ae_palette_eq_pair_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.A6.no_six_paired_interfaces_of_arcCover' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+OAI.EuclideanFiveColor.A6.pred_succ (j : Fin 6) : j - 1 + 1 = j
+OAI.EuclideanFiveColor.A6.hit_sdiff (j : Fin 6) : hit j \ {f (j - 1), f (j + 1)} = {f j + 3}
+OAI.EuclideanFiveColor.A6.cover_neighbours (j y : Fin 6) :
+  y ≠ f j → y ≠ f j + 3 → y = f (j - 1) ∨ y = f (j - 1) + 3 ∨ y = f (j + 1) ∨ y = f (j + 1) + 3
+OAI.EuclideanFiveColor.A6.f_ne_add_three (j : Fin 6) : f j ≠ f j + 3
+OAI.EuclideanFiveColor.A6.forcingLemma_proof : ForcingLemma
+OAI.EuclideanFiveColor.A6.palette_eq_pair (Q : Fin 6 → Finset (Fin 6)) (hf : ∀ (j : Fin 6), f j ∈ Q j)
+  (hH : ∀ (j : Fin 6), (Q j ∩ hit j).Nonempty) (hd : ∀ (j : Fin 6), Disjoint (Q j) (Q (j + 1))) (j : Fin 6) :
+  Q j = {f j, f j + 3}
+OAI.EuclideanFiveColor.A6.palette_card_two (Q : Fin 6 → Finset (Fin 6)) (hf : ∀ (j : Fin 6), f j ∈ Q j)
+  (hH : ∀ (j : Fin 6), (Q j ∩ hit j).Nonempty) (hd : ∀ (j : Fin 6), Disjoint (Q j) (Q (j + 1))) (j : Fin 6) :
+  (Q j).card = 2
+OAI.EuclideanFiveColor.A6.ae_palette_eq_pair_global (c : ℂ → Fin 6) (hc : Measurable c)
+  (hw : OAI.EuclideanFiveColor.WeakColoring 6 c) {x : ℂ} {K : Fin 6 → Set ℂ} {v : Fin 6 → ℂ}
+  (hK : (i : Fin 6) → OAI.EuclideanFiveColor.ApproachingContinuum x (K i) (v i))
+  (hsupp :
+    ∀ (i j : Fin 6),
+      j ∈ eSet i → Disjoint (OAI.EuclideanFiveColor.spatialSupport c j) (OAI.EuclideanFiveColor.Straddle (K i)))
+  (hsign : SignTable v) (hcover : ArcCover) :
+  ∀ᵐ (θ : OAI.EuclideanFiveColor.Angles) ∂OAI.EuclideanFiveColor.angularMeasure,
+    ∃ j, OAI.EuclideanFiveColor.palette c hc x θ = {f j, f j + 3}
+OAI.EuclideanFiveColor.A6.ae_canonical_subpalette_global_noForcing (c : ℂ → Fin 6) (hc : Measurable c)
+  (hw : OAI.EuclideanFiveColor.WeakColoring 6 c) {x : ℂ} {K : Fin 6 → Set ℂ} {v : Fin 6 → ℂ}
+  (hK : (i : Fin 6) → OAI.EuclideanFiveColor.ApproachingContinuum x (K i) (v i))
+  (hsupp :
+    ∀ (i j : Fin 6),
+      j ∈ eSet i → Disjoint (OAI.EuclideanFiveColor.spatialSupport c j) (OAI.EuclideanFiveColor.Straddle (K i)))
+  (hsign : SignTable v) (hcover : ArcCover) :
+  ∀ᵐ (θ : OAI.EuclideanFiveColor.Angles) ∂OAI.EuclideanFiveColor.angularMeasure,
+    ∃ j, f j ∈ OAI.EuclideanFiveColor.palette c hc x θ ∧ f j + 3 ∈ OAI.EuclideanFiveColor.palette c hc x θ
+OAI.EuclideanFiveColor.A6.ae_canonical_subpalette_unconditional_noForcing (c : ℂ → Fin 6) (hc : Measurable c)
+  (hw : OAI.EuclideanFiveColor.WeakColoring 6 c) {x : ℂ} {K : Fin 6 → Set ℂ} {v : Fin 6 → ℂ}
+  (hK : (i : Fin 6) → OAI.EuclideanFiveColor.ApproachingContinuum x (K i) (v i))
+  (hsupp :
+    ∀ (i j : Fin 6),
+      j ∈ eSet i → Disjoint (OAI.EuclideanFiveColor.spatialSupport c j) (OAI.EuclideanFiveColor.Straddle (K i)))
+  (hsign : SignTable v) :
+  ∀ᵐ (θ : OAI.EuclideanFiveColor.Angles) ∂OAI.EuclideanFiveColor.angularMeasure,
+    ∃ j, f j ∈ OAI.EuclideanFiveColor.palette c hc x θ ∧ f j + 3 ∈ OAI.EuclideanFiveColor.palette c hc x θ
+OAI.EuclideanFiveColor.A6.ae_palette_eq_pair_unconditional (c : ℂ → Fin 6) (hc : Measurable c)
+  (hw : OAI.EuclideanFiveColor.WeakColoring 6 c) {x : ℂ} {K : Fin 6 → Set ℂ} {v : Fin 6 → ℂ}
+  (hK : (i : Fin 6) → OAI.EuclideanFiveColor.ApproachingContinuum x (K i) (v i))
+  (hsupp :
+    ∀ (i j : Fin 6),
+      j ∈ eSet i → Disjoint (OAI.EuclideanFiveColor.spatialSupport c j) (OAI.EuclideanFiveColor.Straddle (K i)))
+  (hsign : SignTable v) :
+  ∀ᵐ (θ : OAI.EuclideanFiveColor.Angles) ∂OAI.EuclideanFiveColor.angularMeasure,
+    ∃ j, OAI.EuclideanFiveColor.palette c hc x θ = {f j, f j + 3}
+OAI.EuclideanFiveColor.A6.CanonicalPairAE (c : ℂ → Fin 6) (hc : Measurable c) (x : ℂ) : Prop
+OAI.EuclideanFiveColor.A6.A5ObstructionAt (c : ℂ → Fin 6) (hc : Measurable c) (x : ℂ) : Prop
+OAI.EuclideanFiveColor.A6.A5Obstruction : Prop
+OAI.EuclideanFiveColor.A6.a5Obstruction_at (h : A5Obstruction) (c : ℂ → Fin 6) (hc : Measurable c)
+  (hw : OAI.EuclideanFiveColor.WeakColoring 6 c) (x : ℂ) : A5ObstructionAt c hc x
+OAI.EuclideanFiveColor.A6.a5Obstruction_of_at
+  (h :
+    ∀ (c : ℂ → Fin 6) (hc : Measurable c),
+      OAI.EuclideanFiveColor.WeakColoring 6 c → ∀ (x : ℂ), A5ObstructionAt c hc x) :
+  A5Obstruction
+OAI.EuclideanFiveColor.A6.pairIdx (i : Fin 6) : Fin 6
+OAI.EuclideanFiveColor.A6.A6Pairing (v : Fin 6 → ℂ) : Prop
+OAI.EuclideanFiveColor.A6.pairIdx_zero : pairIdx 0 = 0
+OAI.EuclideanFiveColor.A6.pairIdx_one : pairIdx 1 = 0
+OAI.EuclideanFiveColor.A6.pairIdx_two : pairIdx 2 = 2
+OAI.EuclideanFiveColor.A6.pairIdx_three : pairIdx 3 = 2
+OAI.EuclideanFiveColor.A6.pairIdx_four : pairIdx 4 = 4
+OAI.EuclideanFiveColor.A6.pairIdx_five : pairIdx 5 = 4
+OAI.EuclideanFiveColor.A6.signTable_of_a6Pairing (v : Fin 6 → ℂ) (hv : A6Pairing v) : SignTable v
+OAI.EuclideanFiveColor.A6.a6Pairing_norm (v : Fin 6 → ℂ) (hv : A6Pairing v) (i : Fin 6) : ‖v i‖ = 1
+OAI.EuclideanFiveColor.A6.a6Pairing_canonical :
+  A6Pairing fun i => OAI.EuclideanFiveColor.direction (OAI.EuclideanFiveColor.sixAngle (pairIdx i))
+OAI.EuclideanFiveColor.A6.a6Pairing_zero_one (v : Fin 6 → ℂ) (hv : A6Pairing v) : v 0 = v 1
+OAI.EuclideanFiveColor.A6.a6Pairing_two_three (v : Fin 6 → ℂ) (hv : A6Pairing v) : v 2 = v 3
+OAI.EuclideanFiveColor.A6.a6Pairing_four_five (v : Fin 6 → ℂ) (hv : A6Pairing v) : v 4 = v 5
+OAI.EuclideanFiveColor.A6.canonicalPairAE_of_signTable (c : ℂ → Fin 6) (hc : Measurable c)
+  (hw : OAI.EuclideanFiveColor.WeakColoring 6 c) {x : ℂ} {K : Fin 6 → Set ℂ} {v : Fin 6 → ℂ}
+  (hK : (i : Fin 6) → OAI.EuclideanFiveColor.ApproachingContinuum x (K i) (v i)) (hsign : SignTable v)
+  (hsupp :
+    ∀ (i j : Fin 6),
+      j ∈ eSet i → Disjoint (OAI.EuclideanFiveColor.spatialSupport c j) (OAI.EuclideanFiveColor.Straddle (K i)))
+  (hcover : ArcCover) : CanonicalPairAE c hc x
+OAI.EuclideanFiveColor.A6.canonicalPairAE_of_a6 (c : ℂ → Fin 6) (hc : Measurable c)
+  (hw : OAI.EuclideanFiveColor.WeakColoring 6 c) {x : ℂ} {K : Fin 6 → Set ℂ} {v : Fin 6 → ℂ}
+  (hK : (i : Fin 6) → OAI.EuclideanFiveColor.ApproachingContinuum x (K i) (v i)) (hpair : A6Pairing v)
+  (hsupp :
+    ∀ (i j : Fin 6),
+      j ∈ eSet i → Disjoint (OAI.EuclideanFiveColor.spatialSupport c j) (OAI.EuclideanFiveColor.Straddle (K i)))
+  (hcover : ArcCover) : CanonicalPairAE c hc x
+OAI.EuclideanFiveColor.A6.no_six_interfaces_of_signTable (hA5 : A5Obstruction) (c : ℂ → Fin 6) (hc : Measurable c)
+  (hw : OAI.EuclideanFiveColor.WeakColoring 6 c) {x : ℂ} {K : Fin 6 → Set ℂ} {v : Fin 6 → ℂ}
+  (hK : (i : Fin 6) → OAI.EuclideanFiveColor.ApproachingContinuum x (K i) (v i)) (hsign : SignTable v)
+  (hsupp :
+    ∀ (i j : Fin 6),
+      j ∈ eSet i → Disjoint (OAI.EuclideanFiveColor.spatialSupport c j) (OAI.EuclideanFiveColor.Straddle (K i)))
+  (hcover : ArcCover) : False
+OAI.EuclideanFiveColor.A6.no_six_paired_interfaces (hA5 : A5Obstruction) (c : ℂ → Fin 6) (hc : Measurable c)
+  (hw : OAI.EuclideanFiveColor.WeakColoring 6 c) {x : ℂ} {K : Fin 6 → Set ℂ} {v : Fin 6 → ℂ}
+  (hK : (i : Fin 6) → OAI.EuclideanFiveColor.ApproachingContinuum x (K i) (v i)) (hpair : A6Pairing v)
+  (hsupp :
+    ∀ (i j : Fin 6),
+      j ∈ eSet i → Disjoint (OAI.EuclideanFiveColor.spatialSupport c j) (OAI.EuclideanFiveColor.Straddle (K i)))
+  (hcover : ArcCover) : False
+OAI.EuclideanFiveColor.A6.no_six_paired_interfaces_of_arcCover (hA5 : A5Obstruction) (c : ℂ → Fin 6) (hc : Measurable c)
+  (hw : OAI.EuclideanFiveColor.WeakColoring 6 c) {x : ℂ} {K : Fin 6 → Set ℂ} {v : Fin 6 → ℂ}
+  (hK : (i : Fin 6) → OAI.EuclideanFiveColor.ApproachingContinuum x (K i) (v i)) (hpair : A6Pairing v)
+  (hsupp :
+    ∀ (i j : Fin 6),
+      j ∈ eSet i → Disjoint (OAI.EuclideanFiveColor.spatialSupport c j) (OAI.EuclideanFiveColor.Straddle (K i))) :
+  False
+OAI.EuclideanFiveColor.A6.not_a5Obstruction_of_canonicalPairAE (c : ℂ → Fin 6) (hc : Measurable c)
+  (hw : OAI.EuclideanFiveColor.WeakColoring 6 c) {x : ℂ} (h : CanonicalPairAE c hc x) : ¬A5Obstruction
+OAI.EuclideanFiveColor.A6.a6Pairing_not_automatic :
+  ¬A6Pairing fun x => OAI.EuclideanFiveColor.direction (OAI.EuclideanFiveColor.sixAngle 1)
+
+--- stderr
+

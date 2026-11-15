@@ -73,3 +73,7 @@
 2026-11-15T05:30:31Z S2 PASS: AuxCheck shows 4 'changed' RelativeProducts defs identical modulo aux _proof_N renaming (projectCLM->toL2); report draft finalized; sent to exposition desk
 2026-11-15T05:30:43Z deleted simplification-desk/s2/build after recording (disk rule); R1 build intact
 2026-11-15T05:31:49Z A6-GLUE: Hsupp (8a94424e, has (c := c) fix), SignTable (09622e1a), ForcingLemma (249c21d7) staged in research-desk/A6-glue; chained after r2/Bridge-v4
+2026-11-15T05:34:11Z contracts r2 PASSED (75 s; all examples + 6 std-axiom prints) banked; Bridge-v4 failed only 'No goals' at L1021 (redundant decide after rw); r2 drops it; queued after A6-glue chain
+2026-11-15T05:59:16Z chains deadlocked (self-matching process patterns); killed; running Hsupp, SignTable, ForcingLemma, Bridge-v4-r2 in ONE sequential chain via desk_lean --wait
+2026-11-15T06:03:04Z Bridge-v4-r2 PASSED (std axioms x3); SignTable PASSED; Hsupp r2 (end order) and ForcingLemma r2 (def g body from Bridge-v4 + end order) compiling
+2026-11-15T06:05:53Z BANKED A6-GLUE: Bridge-v4-r2 PASS (endgame A5Obstruction+A6Pairing+hsupp->False; hforce/hsign/hcover discharged), Hsupp-r2/SignTable/ForcingLemma-r2 PASS; remaining hyps: A5Obstruction, hsupp

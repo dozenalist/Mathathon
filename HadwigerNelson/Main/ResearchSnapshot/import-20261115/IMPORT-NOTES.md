@@ -1,6 +1,6 @@
 # Import 2026-11-15 (results desk)
 
-Captured 2026-11-15T05:32:26.153Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
+Captured 2026-11-15T06:07:28.872Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
 
 ## Banked Lean results: exit code and `#print axioms` excerpts
 
@@ -247,8 +247,8 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/lean-queue/threecentre-r1-27-transfer.python.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `work/lean-queue/threecentre-r1-axiomroots.progress.json` | 3345 | `ca4b961283a98933d08ccfdd6ca490e05945bbd4f6a12c065b1c2dbd52f173a9` |
 | `work/lean-queue/threecentre-r1-axiomroots.python.log` | 3506 | `85aaef1671d5777e50378e07a2f2c94cedd630c610fbe9fc7c4d0601c8d6df29` |
-| `work/research-desk/BANKED.md` | 7506 | `13473da020099cded9898e4389b6feb6ebe496ef2f228e457b9e7a61084b2f3a` |
-| `work/research-desk/LOG.md` | 13648 | `3b2678ad92918ff0aac45f18cf28da6a1609f158e96e0258ebc5c200518cae7e` |
+| `work/research-desk/BANKED.md` | 9456 | `d595122b8935973c1caa8671e0c979548be0b59759b7f232755ab9d316bee084` |
+| `work/research-desk/LOG.md` | 14409 | `52a26d9e201f72d8a8ac9ff407c157e92be799873de49d6bbfe10410c8d3d5fd` |
 | `work/research-desk/G3-r2/G3-ArcCover-r2.lean` | 9476 | `39a02e68c878c0d0df0493d53114679ffd6cb01c3354329cd33f3867b9558c6e` |
 | `work/research-desk/G3-r2/compile.log` | 96 | `e1a47fad00213af7a5bfff1a1a8db0403e6d941814cc164b7dc6b8177767203a` |
 | `work/research-desk/EvenWalk-rev6/EvenWalkReachability-rev6.lean` | 19063 | `4439cf5dd4088ea6765337286399f5af462fd1c3f4976c82c99d77019bfb9904` |
@@ -350,7 +350,9 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/automation-supervisor/replies/20261115T045717.json` | 3039 | `e4287b444310018b5489166214bc2dfe0789b9cff810a153742c50c582cc5d93` |
 | `work/automation-supervisor/replies/20261115T051222.json` | 2310 | `0a56680724587f16c03295e1286d5de95b692a74efe51dd8a66e8c7d721ca0e6` |
 | `work/automation-supervisor/replies/20261115T052726.json` | 3789 | `b0711c2e2d0f875e1a70558a12e9bc96d408eebcce8d1f9d499e3346d021a69e` |
-| `work/automation-supervisor/research-plan.json` | 1328 | `6acbaa5e815efc42414c5cc2190d2a3d706a098920bbcddb7f27467e05b37073` |
+| `work/automation-supervisor/replies/20261115T054231.json` | 2925 | `1291827247eae690d7b3e1cfc7052682255a84bad84957e292c01121510ead46` |
+| `work/automation-supervisor/replies/20261115T055734.json` | 3213 | `bc91ca308d57b05f6c4a54dcd3ce02716fc386d501786b0fb951f413b10a818b` |
+| `work/automation-supervisor/research-plan.json` | 1469 | `ce0ae88951abe701943b5340fc8451738e7ddbb330e723b00b8134da9b5a37c9` |
 | `work/simplification-desk/s1/logs/01-States.log` | 1250 | `dd82f0b2a9712e7059fb82e748346594d2c6b441782f07389899abcd7a45eba3` |
 | `work/simplification-desk/s1/logs/02-BoundaryTrace.log` | 1257 | `0d94aaaf275e19626c107e8b0fcacc0668f3f36cd3897eb5e7da933e8095b029` |
 | `work/simplification-desk/s1/logs/03-AngularBoundary.log` | 1259 | `53844dfe64b3bd7b29d3ea921ec358982420d7c1303955aa8cbccc7371712382` |
@@ -610,4 +612,8 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `outputs/RunLeanQueue.py` | 9451 | `c063969225cec881cdb63ebea165434a2fdc7d3d381528cc6d8e870dd286b2b6` |
 | `outputs/LeanSourceGate.py` | 2246 | `721e47d80c4459e9125a9b66fe880ab31c37260e9797d23669a9a228c8f4e721` |
 | `work/cloud-supervisor/RESEARCH-STATUS.md` | 3506 | `461dfcc8d25a2971038bbff6a6d691701008009583c04f8c8f7cca030ff3de50` |
-| `work/cloud-supervisor/LOG.md` | 18032 | `9130836f64655d335c762555e5f0276b4de457ca073299656fae1091c9093c9c` |
+| `work/cloud-supervisor/LOG.md` | 18786 | `50cd37141c0f1a2b6549e186bb89429bb58a3e7ca8ab9f028e92ad99d921e5c4` |
+| `work/research-desk/Bridge-v4/A6-Bridge-v4-r2.lean` | 73405 | `74759b093f94e62285d0fb916ffee5ac1d72e80544caca9c0a9a9cfea702de39` |
+| `work/research-desk/Bridge-v4/compile-r2.log` | 10915 | `721cfe4bd5298ad538f2595c536274996480e9a3213abf363ea72980ff619e4b` |
+| `work/research-desk/contracts/ConsumerContracts-r2.lean` | 4654 | `5ecda4d6d18c1c3f123be5e86ff710e547c635d2bd74510791b7386aaba564db` |
+| `work/research-desk/contracts/compile-r2.log` | 16936 | `96d620b6f0ebd89cff5b56e2f70ad0fef90a108cda3f2c51686acf9ea13922d6` |
