@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="490" viewBox="0 0 720 490" role="img" aria-labelledby="title desc">
+<title id="title">Each neighbouring palette must contain the one leftover label</title><desc id="desc">A table with rows P, Q and R, one for each of the three palettes at a common direction, and columns for the labels 0 to 4, bracketed as J = {0,1}, K = {2,3} and X = 4. In row P, cells 0 and 1 are filled: P contains J. In rows Q and R, cells 0 and 1 are crossed out because Q and R are disjoint from P, cells 2 and 3 are hatched because labels of K may be present but cannot be the witness outside K, and cell 4 is marked forced. A red box around column 4 in rows Q and R shows that 4 lies in both, so Q and R are not disjoint.</desc>
+<defs><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#e9edf2"/><line x1="0" y1="0" x2="0" y2="10" stroke="#63758a" stroke-width="3"/></pattern></defs>
+<rect width="720" height="490" fill="white"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="360.0" y="44.0" font-size="28" fill="#172c43" text-anchor="middle" font-weight="600">The counting step: one leftover label is forced twice</text>
+<text x="360.0" y="78.0" font-size="21" fill="#172c43" text-anchor="middle" font-weight="400">Labels 0–4 split as J = {0,1}, K = {2,3}, X = 4.</text>
+<line x1="156.00" y1="136.00" x2="296.00" y2="136.00" stroke="#235f9d" stroke-width="3" />
+<line x1="156.00" y1="136.00" x2="156.00" y2="144.00" stroke="#235f9d" stroke-width="3" />
+<line x1="296.00" y1="136.00" x2="296.00" y2="144.00" stroke="#235f9d" stroke-width="3" />
+<text x="226.0" y="128.0" font-size="21" fill="#235f9d" text-anchor="middle" font-weight="600">J</text>
+<line x1="308.00" y1="136.00" x2="448.00" y2="136.00" stroke="#63758a" stroke-width="3" />
+<line x1="308.00" y1="136.00" x2="308.00" y2="144.00" stroke="#63758a" stroke-width="3" />
+<line x1="448.00" y1="136.00" x2="448.00" y2="144.00" stroke="#63758a" stroke-width="3" />
+<text x="378.0" y="128.0" font-size="21" fill="#63758a" text-anchor="middle" font-weight="600">K</text>
+<line x1="460.00" y1="136.00" x2="524.00" y2="136.00" stroke="#b33d39" stroke-width="3" />
+<line x1="460.00" y1="136.00" x2="460.00" y2="144.00" stroke="#b33d39" stroke-width="3" />
+<line x1="524.00" y1="136.00" x2="524.00" y2="144.00" stroke="#b33d39" stroke-width="3" />
+<text x="492.0" y="128.0" font-size="21" fill="#b33d39" text-anchor="middle" font-weight="600">X</text>
+<text x="188.0" y="164.0" font-size="20" fill="#63758a" text-anchor="middle" font-weight="400">0</text>
+<text x="264.0" y="164.0" font-size="20" fill="#63758a" text-anchor="middle" font-weight="400">1</text>
+<text x="340.0" y="164.0" font-size="20" fill="#63758a" text-anchor="middle" font-weight="400">2</text>
+<text x="416.0" y="164.0" font-size="20" fill="#63758a" text-anchor="middle" font-weight="400">3</text>
+<text x="492.0" y="164.0" font-size="20" fill="#63758a" text-anchor="middle" font-weight="400">4</text>
+<text x="134.0" y="208.0" font-size="26" fill="#172c43" text-anchor="end" font-weight="600">P</text>
+<rect x="150" y="170" width="76" height="58" fill="#e7f0fb" stroke="#63758a" stroke-width="1.5"/>
+<text x="188.0" y="207.0" font-size="18" fill="#235f9d" text-anchor="middle" font-weight="600">in P</text>
+<rect x="226" y="170" width="76" height="58" fill="#e7f0fb" stroke="#63758a" stroke-width="1.5"/>
+<text x="264.0" y="207.0" font-size="18" fill="#235f9d" text-anchor="middle" font-weight="600">in P</text>
+<rect x="302" y="170" width="76" height="58" fill="white" stroke="#63758a" stroke-width="1.5"/>
+<rect x="378" y="170" width="76" height="58" fill="white" stroke="#63758a" stroke-width="1.5"/>
+<rect x="454" y="170" width="76" height="58" fill="white" stroke="#63758a" stroke-width="1.5"/>
+<text x="544.0" y="206.0" font-size="17" fill="#172c43" text-anchor="start" font-weight="400">contains J</text>
+<text x="134.0" y="266.0" font-size="26" fill="#172c43" text-anchor="end" font-weight="600">Q</text>
+<rect x="150" y="228" width="76" height="58" fill="white" stroke="#63758a" stroke-width="1.5"/>
+<line x1="166.00" y1="240.00" x2="210.00" y2="274.00" stroke="#63758a" stroke-width="3" />
+<line x1="210.00" y1="240.00" x2="166.00" y2="274.00" stroke="#63758a" stroke-width="3" />
+<rect x="226" y="228" width="76" height="58" fill="white" stroke="#63758a" stroke-width="1.5"/>
+<line x1="242.00" y1="240.00" x2="286.00" y2="274.00" stroke="#63758a" stroke-width="3" />
+<line x1="286.00" y1="240.00" x2="242.00" y2="274.00" stroke="#63758a" stroke-width="3" />
+<rect x="302" y="228" width="76" height="58" fill="url(#hatch)" stroke="#63758a" stroke-width="1.5"/>
+<rect x="378" y="228" width="76" height="58" fill="url(#hatch)" stroke="#63758a" stroke-width="1.5"/>
+<rect x="454" y="228" width="76" height="58" fill="#fbe9e5" stroke="#63758a" stroke-width="1.5"/>
+<text x="492.0" y="265.0" font-size="18" fill="#b33d39" text-anchor="middle" font-weight="600">forced</text>
+<text x="544.0" y="254.0" font-size="17" fill="#172c43" text-anchor="start" font-weight="400">disjoint from P,</text>
+<text x="544.0" y="274.0" font-size="17" fill="#172c43" text-anchor="start" font-weight="400">not inside K</text>
+<text x="134.0" y="324.0" font-size="26" fill="#172c43" text-anchor="end" font-weight="600">R</text>
+<rect x="150" y="286" width="76" height="58" fill="white" stroke="#63758a" stroke-width="1.5"/>
+<line x1="166.00" y1="298.00" x2="210.00" y2="332.00" stroke="#63758a" stroke-width="3" />
+<line x1="210.00" y1="298.00" x2="166.00" y2="332.00" stroke="#63758a" stroke-width="3" />
+<rect x="226" y="286" width="76" height="58" fill="white" stroke="#63758a" stroke-width="1.5"/>
+<line x1="242.00" y1="298.00" x2="286.00" y2="332.00" stroke="#63758a" stroke-width="3" />
+<line x1="286.00" y1="298.00" x2="242.00" y2="332.00" stroke="#63758a" stroke-width="3" />
+<rect x="302" y="286" width="76" height="58" fill="url(#hatch)" stroke="#63758a" stroke-width="1.5"/>
+<rect x="378" y="286" width="76" height="58" fill="url(#hatch)" stroke="#63758a" stroke-width="1.5"/>
+<rect x="454" y="286" width="76" height="58" fill="#fbe9e5" stroke="#63758a" stroke-width="1.5"/>
+<text x="492.0" y="323.0" font-size="18" fill="#b33d39" text-anchor="middle" font-weight="600">forced</text>
+<text x="544.0" y="312.0" font-size="17" fill="#172c43" text-anchor="start" font-weight="400">disjoint from P,</text>
+<text x="544.0" y="332.0" font-size="17" fill="#172c43" text-anchor="start" font-weight="400">not inside K</text>
+<rect x="450" y="224" width="84" height="124" fill="none" stroke="#b33d39" stroke-width="4" rx="6"/>
+<text x="134.0" y="384.0" font-size="18" fill="#63758a" text-anchor="end" font-weight="400">Key:</text>
+<line x1="154.00" y1="372.00" x2="172.00" y2="390.00" stroke="#63758a" stroke-width="3" />
+<line x1="172.00" y1="372.00" x2="154.00" y2="390.00" stroke="#63758a" stroke-width="3" />
+<text x="182.0" y="387.0" font-size="17" fill="#172c43" text-anchor="start" font-weight="400">ruled out (in P)</text>
+<rect x="350" y="370" width="22" height="22" fill="url(#hatch)" stroke="#63758a"/>
+<text x="380.0" y="387.0" font-size="17" fill="#172c43" text-anchor="start" font-weight="400">may be present, cannot be the witness</text>
+<text x="360.0" y="440.0" font-size="19" fill="#172c43" text-anchor="middle" font-weight="400">Q and R each need a label outside K. Striking out J leaves only 4,</text>
+<text x="360.0" y="466.0" font-size="19" fill="#172c43" text-anchor="middle" font-weight="600">so 4 lies in both Q and R, and they are not disjoint.</text>
+</g></svg>
