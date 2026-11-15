@@ -1,6 +1,6 @@
 # Results ledger — Hadwiger–Nelson Mathathon entry
 
-Built 2026-11-15T03:30Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
+Built 2026-11-15T03:44Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
 
 **No global chromatic result. The bounds 6 ≤ χ(ℝ²) ≤ 7 come from the supplied proof ("The Euclidean plane is not five-colorable") and the classical 7-colouring; nothing the team has added changes them. Every entry below is a simplification of the supplied proof, a local or conditional lemma, a finite computation, or a negative result. The only route to χ ≥ 7 on record is conditional on the open lemmas L6 and F6 (see L6-F6).**
 
@@ -290,19 +290,18 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 
 **S2: S1 plus 52 more unreachable declarations deleted outside the R1 closure (−717 physical lines vs R1; gates pending)** — `CANDIDATE`
 
-- **Statement:** Cumulative on S1: 52 further declarations that no root theorem reaches are deleted from 27 modules outside the R1 closure (spectral, compact-factor and palette layers), each with any `omit/include .. in` prefix. 41 files change versus R1 (e.g. PhaseCollision 537→471, InvariantMean 1078→1031, Compactness 379→353); in total 80 unreachable declarations plus `five_forced_label` are removed and `five_state_forced_label` is added. Net −717 physical lines (−723 non-blank, −710 code) versus R1; −867 versus the supplied original.
+- **Statement:** Cumulative on S1: 52 further declarations that no root theorem reaches are deleted from 27 modules outside the R1 closure (spectral, compact-factor and palette layers), each with any `omit/include .. in` prefix. 41 files change versus R1 (e.g. PhaseCollision 537→471, InvariantMean 1078→1031, Compactness 379→353); in total 77 unreachable declarations plus `five_forced_label` are removed and `five_state_forced_label` is added. Net −717 physical lines versus R1; −867 versus the supplied original (manifest of 03:39Z).
 - **Hypotheses:** Claimed: every surviving declaration keeps its exact statement (to be checked by the signature gate).
 - **Evidence:** None yet beyond source accounting: the first 67-module rebuild attempt failed at RelativeCenters (a dangling `omit .. in` prefix left by a deletion); the deletion tool was fixed and the rebuild re-queued. No axiom-root or signature-dump log exists yet.
 - **Artifacts:**
-  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/MANIFEST.md` — S2 manifest (claim, per-file sha256, expected gate outputs) — `2a1f2db900a2f240…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/MANIFEST.md` — S2 manifest (claim, per-file sha256, expected gate outputs) — `1ce5d245e687c015…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/line-accounting-s2-vs-r1.json` — line accounting vs R1 — `e9755b05fdd423ef…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/line-accounting-s2-vs-s1.json` — line accounting vs S1 — `49f95959fef349ec…`
-  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/dead-deletions.json` — deleted declarations — `cd86b21d5ffbe71d…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/dead-deletions.json` — deleted declarations — `9c25a6e0604a51a1…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/changed-modules.txt` — the 41 changed modules — `b536c876c4733000…`
-- **Checked by the results desk:** 2026-11-15 ~03:30Z: the 41 changed S2 sources hash to the sha256 values in MANIFEST.md; their physical lines recount to exactly −727 against the R1 tree; changed-modules.txt equals the manifest set; the other 42 S2 modules are byte-identical to R1. No compile evidence checked (none passing exists yet).
-- **Correction 2026-11-15 ~03:40Z: an Open Math review (lane L-S3) found two S2 deletions still referenced by qualified name in simp lists; the simplification desk restored them, giving 52 deletions beyond S1 and −717 vs R1 (−867 vs the original). The −727 recount above applied to the previous version; the corrected tree has not yet been recounted by the results desk.**
+- **Checked by the results desk:** 2026-11-15 ~03:45Z, on the CORRECTED tree: the 41 changed S2 sources hash to the sha256 values in the 03:39Z MANIFEST.md; their physical lines recount to exactly −717 against the R1 tree; still 41 changed files (changed-modules.txt equals the manifest set); the other 42 S2 modules are byte-identical to R1. (The earlier 03:30Z recount of −727 matched the previous manifest.) No compile evidence checked (none passing exists yet).
 - **Provenance:** Simplification desk, 01:32–03:12Z (s2/, LOG.md; manifest generated 03:12Z).
-- **Correction history:** attempt 1 failed (12/67 modules) on a dangling omit prefix; logs kept in s2/logs-attempt1-failed-omit-prefix/
+- **Correction history:** ~03:40Z: an Open Math review (lane L-S3) found two S2 deletions still referenced by qualified name in simp lists; the simplification desk restored them: 55 → 52 deletions beyond S1, −727 → −717 vs R1 (−877 → −867 vs the original); carried into the ledger by the supervisor (commit 49f745d) and recounted by the results desk; attempt 1 failed (12/67 modules) on a dangling omit prefix; logs kept in s2/logs-attempt1-failed-omit-prefix/
 - **Used for:** Would bring the realised simplification to −867 lines (ENC-R4 −126, R1 −24, S2 −717 including S1).
 - **Depends on:** [S1](#s1)
 
@@ -618,7 +617,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-CERTIFICATE.json` — certificate — `cd3f9ff3a47f93d5…`
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/Verify-HeuleUnion.mjs` — verifier — `ca9510a2dfd81fbb…`
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-VALIDATION.txt` — validation — `e611fb63e2086a00…`
-  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `6fa8400276b52c98…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `e3d39d833f870a3f…`
 - **Checked by the results desk:** 2026-11-14 23:50Z: re-ran `node HadwigerNelson/Main/verify-snapshot.mjs` (exit 0, 11 s), which re-runs Verify-HeuleUnion.mjs: passed, 548,628 pairs, 1,048 vertices, 5,487 edges, proper 5-colouring.
 - **Provenance:** Graph lanes (graph-union-audit), 2026-11-14; import validation 18:58Z.
 - **Correction history:** 17 colourings reduced candidate pairs 110,015 → 1,145, then 34 colourings separated all 543,141 nonadjacent pairs; unreconciled wording: 177 survivor pairs inside the original H locally vs 112 in remote wording (HEULE-UNION-VALIDATION.txt records remainingPairsInsideOriginalH 177); moot after the full separation certificate
@@ -1337,7 +1336,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Statement:** All 11,556 archived files (358,349,948 bytes) match MANIFEST.json, the frozen Lean source hashes match their validation records, and the finite graph certificates verify.
 - **Artifacts:**
   - `HadwigerNelson/Main/verify-snapshot.mjs` — verifier — `eb40b4b59188cd81…`
-  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `6fa8400276b52c98…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `e3d39d833f870a3f…`
 - **Checked by the results desk:** Re-ran 2026-11-14 23:50Z: status passed, exit 0, 11 s.
 - **Provenance:** Supervisor import, 2026-11-14 18:57Z.
 

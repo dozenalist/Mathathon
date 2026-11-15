@@ -265,6 +265,7 @@ def orbit (φ : G →+ G) (f : Func X) : Family G X :=
     fun g x => BoundedMeasurable.norm_le_bound f (φ g +ᵥ x)⟩
 @[simp] lemma orbit_apply (φ : G →+ G) (f : Func X) (g : G) : orbit φ f g = act (φ g) f := rfl
 lemma orbit_add (φ : G →+ G) (f h : Func X) : orbit φ (f+h) = orbit φ f + orbit φ h := rfl
+lemma orbit_sub (φ : G →+ G) (f h : Func X) : orbit φ (f-h) = orbit φ f - orbit φ h := rfl
 
 end Family
 end EuclideanFiveColor.BoundedMeasurable

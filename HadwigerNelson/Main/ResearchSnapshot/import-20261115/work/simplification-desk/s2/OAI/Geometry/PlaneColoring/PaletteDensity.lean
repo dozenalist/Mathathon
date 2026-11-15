@@ -193,6 +193,14 @@ lemma volume_image_bound {F : ℝ × ℝ → ℝ × ℝ} {s : Set (ℝ × ℝ)} 
   rw [he1,hausdorffMeasure_prod_real,ENNReal.rpow_two] at ha
   rw [he2,hausdorffMeasure_prod_real] at hi
   rwa [← hi] at ha
+lemma FlatDensityZero.mono_ae {A B : Set (ℝ × ℝ)} {p : ℝ × ℝ}
+    (hb : FlatDensityZero B p) (hAB : A ≤ᵐ[volume] B) : FlatDensityZero A p := by
+  apply squeeze_zero (fun r => div_nonneg (measureReal_nonneg) (sq_nonneg r)) _ hb
+  intro r
+  apply div_le_div_of_nonneg_right _ (sq_nonneg r)
+  apply ENNReal.toReal_mono
+  · exact ne_top_of_le_ne_top (isCompact_closedBall p r).measure_ne_top (measure_mono inter_subset_right)
+  · exact measure_mono_ae (hAB.mono fun z hz h => ⟨hz h.1,h.2⟩)
 lemma flatDensityZero_prod {D : Set ℝ} {t u : ℝ} (hD : LineDensityZero D t) :
     FlatDensityZero (D ×ˢ univ) (t,u) := by
   have h := hD.const_mul 2

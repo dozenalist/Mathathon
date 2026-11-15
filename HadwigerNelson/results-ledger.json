@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "builtAtUtc": "2026-11-15T03:30Z",
+  "builtAtUtc": "2026-11-15T03:44Z",
   "workspaceRoot": "I = C:/Users/jarom/Documents/Codex/2026-11-13/i (research workspace, outside the repo)",
   "statusVocabulary": [
     "LEAN_VERIFIED",
@@ -699,12 +699,13 @@
       "theme": "Simplification of the supplied proof",
       "status": "CANDIDATE",
       "title": "S2: S1 plus 52 more unreachable declarations deleted outside the R1 closure (−717 physical lines vs R1; gates pending)",
-      "statement": "Cumulative on S1: 52 further declarations that no root theorem reaches are deleted from 27 modules outside the R1 closure (spectral, compact-factor and palette layers), each with any `omit/include .. in` prefix. 41 files change versus R1 (e.g. PhaseCollision 537→471, InvariantMean 1078→1031, Compactness 379→353); in total 80 unreachable declarations plus `five_forced_label` are removed and `five_state_forced_label` is added. Net −717 physical lines (−723 non-blank, −710 code) versus R1; −867 versus the supplied original.",
+      "statement": "Cumulative on S1: 52 further declarations that no root theorem reaches are deleted from 27 modules outside the R1 closure (spectral, compact-factor and palette layers), each with any `omit/include .. in` prefix. 41 files change versus R1 (e.g. PhaseCollision 537→471, InvariantMean 1078→1031, Compactness 379→353); in total 77 unreachable declarations plus `five_forced_label` are removed and `five_state_forced_label` is added. Net −717 physical lines versus R1; −867 versus the supplied original (manifest of 03:39Z).",
       "hypotheses": "Claimed: every surviving declaration keeps its exact statement (to be checked by the signature gate).",
       "evidence": "None yet beyond source accounting: the first 67-module rebuild attempt failed at RelativeCenters (a dangling `omit .. in` prefix left by a deletion); the deletion tool was fixed and the rebuild re-queued. No axiom-root or signature-dump log exists yet.",
-      "checked": "2026-11-15 ~03:30Z: the 41 changed S2 sources hash to the sha256 values in MANIFEST.md; their physical lines recount to exactly −727 against the R1 tree; changed-modules.txt equals the manifest set; the other 42 S2 modules are byte-identical to R1. No compile evidence checked (none passing exists yet). Correction 2026-11-15 ~03:40Z: an Open Math review (lane L-S3) found two S2 deletions still referenced by qualified name in simp lists; the simplification desk restored them, giving 52 deletions beyond S1 and −717 vs R1 (−867 vs the original). The −727 recount above applied to the previous version; the corrected tree has not yet been recounted by the results desk.",
+      "checked": "2026-11-15 ~03:45Z, on the CORRECTED tree: the 41 changed S2 sources hash to the sha256 values in the 03:39Z MANIFEST.md; their physical lines recount to exactly −717 against the R1 tree; still 41 changed files (changed-modules.txt equals the manifest set); the other 42 S2 modules are byte-identical to R1. (The earlier 03:30Z recount of −727 matched the previous manifest.) No compile evidence checked (none passing exists yet).",
       "provenance": "Simplification desk, 01:32–03:12Z (s2/, LOG.md; manifest generated 03:12Z).",
       "corrections": [
+        "~03:40Z: an Open Math review (lane L-S3) found two S2 deletions still referenced by qualified name in simp lists; the simplification desk restored them: 55 → 52 deletions beyond S1, −727 → −717 vs R1 (−877 → −867 vs the original); carried into the ledger by the supervisor (commit 49f745d) and recounted by the results desk",
         "attempt 1 failed (12/67 modules) on a dangling omit prefix; logs kept in s2/logs-attempt1-failed-omit-prefix/"
       ],
       "usedFor": "Would bring the realised simplification to −867 lines (ENC-R4 −126, R1 −24, S2 −717 including S1).",
@@ -715,7 +716,7 @@
         {
           "role": "S2 manifest (claim, per-file sha256, expected gate outputs)",
           "workspacePath": "I/work/simplification-desk/s2/MANIFEST.md",
-          "sha256": "2a1f2db900a2f2401795b5270aaf3d5003655d6feb73b3c98e03ca6bb408320c",
+          "sha256": "1ce5d245e687c015c0b97d3729a5699870a92c1d5ae9d4916e74f338d13b252e",
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/MANIFEST.md"
         },
         {
@@ -733,7 +734,7 @@
         {
           "role": "deleted declarations",
           "workspacePath": "I/work/simplification-desk/s2/dead-deletions.json",
-          "sha256": "cd86b21d5ffbe71d05e45443f7ac2fb91fd98a77812f416f329981079dee82f2",
+          "sha256": "9c25a6e0604a51a18306a4c63d42cb81411fbee72e401a31ceca37d777490230",
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/dead-deletions.json"
         },
         {
@@ -1427,7 +1428,7 @@
         {
           "role": "import validation record",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "6fa8400276b52c98a02b6f77f4f48be05ec8ff05b7f862ace84a4582d72e3135"
+          "sha256": "e3d39d833f870a3fd17e4a9d1882f1430aa9cebf0ca1886215a23352b4512f62"
         }
       ]
     },
@@ -2776,7 +2777,7 @@
         {
           "role": "recorded run (18:58Z)",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "6fa8400276b52c98a02b6f77f4f48be05ec8ff05b7f862ace84a4582d72e3135"
+          "sha256": "e3d39d833f870a3fd17e4a9d1882f1430aa9cebf0ca1886215a23352b4512f62"
         }
       ]
     },

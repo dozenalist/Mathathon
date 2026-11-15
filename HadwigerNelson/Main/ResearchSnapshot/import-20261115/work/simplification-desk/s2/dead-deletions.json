@@ -108,12 +108,6 @@
   "OAI.EuclideanFiveColor.CommutingSpectral.character_apply"
  ],
  [
-  "OAI.Analysis.PlaneSpectrum.SpectralMeasure",
-  368,
-  368,
-  "OAI.EuclideanFiveColor.CompactIntegral.apply_clm"
- ],
- [
   "OAI.Geometry.PlaneColoring.BinaryPalettes",
   28,
   37,
@@ -172,12 +166,6 @@
   143,
   150,
   "OAI.EuclideanFiveColor.palette_transfer_pair"
- ],
- [
-  "OAI.Geometry.PlaneColoring.PaletteDensity",
-  212,
-  219,
-  "OAI.EuclideanFiveColor.FlatDensityZero.mono_ae"
  ],
  [
   "OAI.Geometry.PlaneColoring.PaletteDensity",
@@ -274,12 +262,6 @@
   267,
   272,
   "OAI.EuclideanFiveColor.BoundedMeasurable.Family.avg_congr_ae"
- ],
- [
-  "OAI.MeasureTheory.CompactFactors.RelativeProducts",
-  281,
-  281,
-  "OAI.EuclideanFiveColor.BoundedMeasurable.Family.orbit_sub"
  ],
  [
   "OAI.MeasureTheory.CompactFactors.RelativeProducts",

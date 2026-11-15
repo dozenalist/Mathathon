@@ -92366,19 +92366,19 @@
     },
     {
       "path": "import-20261115/work/research-desk/BANKED.md",
-      "bytes": 6392,
-      "sha256": "a1fd76883e8546e737265de2fe7a531998bba496e25bedd981f09781b679b114",
+      "bytes": 6783,
+      "sha256": "69c147e0b962a413065dfa6d8d863f139e81ceb3e4de147c9acec6061a685ebd",
       "source": "research-workspace/work/research-desk/BANKED.md",
-      "sourceModifiedUtc": "2026-11-15T03:22:47.857Z",
-      "capturedAtUtc": "2026-11-15T03:25:42.441Z"
+      "sourceModifiedUtc": "2026-11-15T03:33:32.391Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
     },
     {
       "path": "import-20261115/work/research-desk/LOG.md",
-      "bytes": 10153,
-      "sha256": "4bdffe9c038307c1e57f7c541c572be7dabb3629bc89cd93148af0b35a2d997f",
+      "bytes": 10601,
+      "sha256": "523bd6f1ea17315f142010d1dfc1e99856c6ccdd8f3f3f7206f067c4e70725eb",
       "source": "research-workspace/work/research-desk/LOG.md",
-      "sourceModifiedUtc": "2026-11-15T03:22:47.931Z",
-      "capturedAtUtc": "2026-11-15T03:25:42.441Z"
+      "sourceModifiedUtc": "2026-11-15T03:38:39.559Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
     },
     {
       "path": "import-20261115/work/research-desk/G3-r2/G3-ArcCover-r2.lean",
@@ -92830,18 +92830,18 @@
     },
     {
       "path": "import-20261115/work/cloud-supervisor/LOG.md",
-      "bytes": 12449,
-      "sha256": "f2d7e319c7a8d7b40ae72e40fa7722a7ab8fb17e499c32d27b7a65d4c9ca779b",
+      "bytes": 14004,
+      "sha256": "7c2a543874fa655bc8fe50f195acf8c409bbd9db8a5b19eb9c0033dc80ebd52a",
       "source": "research-workspace/work/cloud-supervisor/LOG.md",
-      "sourceModifiedUtc": "2026-11-15T03:27:30.148Z",
-      "capturedAtUtc": "2026-11-15T03:28:19.146Z"
+      "sourceModifiedUtc": "2026-11-15T03:42:47.421Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
     },
     {
       "path": "import-20261115/IMPORT-NOTES.md",
-      "bytes": 59089,
-      "sha256": "9a8ba66e2da958046ffbe8dac398d19bbb71c1d6aaec1670fad9be2d28e56f45",
+      "bytes": 60173,
+      "sha256": "84bd2a6bad80de749fc414eaae29d1d6e7c7b6bf09aaaa21a63f7698f10abd9a",
       "source": "results-desk (generated)",
-      "capturedAtUtc": "2026-11-15T03:29:55.786Z"
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
     },
     {
       "path": "import-20261115/work/openmath-supervisor/checkins/20261114T191820Z/inner-outer-orbit-certificates.json",
@@ -93733,11 +93733,11 @@
     },
     {
       "path": "import-20261115/work/simplification-desk/LOG.md",
-      "bytes": 7846,
-      "sha256": "bd85c38d5e4855c33d71f8bbc1e37e5f268fd54163212103c874dfc972e18ffb",
+      "bytes": 8465,
+      "sha256": "c651963932eb840f9067cea7d06dd1b7af0bf08037b341d3d85553a0d6383b2a",
       "source": "research-workspace/work/simplification-desk/LOG.md",
-      "sourceModifiedUtc": "2026-11-15T03:21:23.424Z",
-      "capturedAtUtc": "2026-11-15T03:25:42.441Z"
+      "sourceModifiedUtc": "2026-11-15T03:38:56.092Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
     },
     {
       "path": "import-20261115/work/results-desk/L-R1/R1-1-followup-d.txt",
@@ -94022,10 +94022,10 @@
     {
       "path": "import-20261115/work/simplification-desk/s2/MANIFEST.md",
       "bytes": 7823,
-      "sha256": "2a1f2db900a2f2401795b5270aaf3d5003655d6feb73b3c98e03ca6bb408320c",
+      "sha256": "1ce5d245e687c015c0b97d3729a5699870a92c1d5ae9d4916e74f338d13b252e",
       "source": "research-workspace/work/simplification-desk/s2/MANIFEST.md",
-      "sourceModifiedUtc": "2026-11-15T03:12:25.649Z",
-      "capturedAtUtc": "2026-11-15T03:28:19.146Z"
+      "sourceModifiedUtc": "2026-11-15T03:39:01.710Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
     },
     {
       "path": "import-20261115/work/simplification-desk/s2/AxiomRoots.lean",
@@ -94045,11 +94045,11 @@
     },
     {
       "path": "import-20261115/work/simplification-desk/s2/dead-deletions.json",
-      "bytes": 7119,
-      "sha256": "cd86b21d5ffbe71d05e45443f7ac2fb91fd98a77812f416f329981079dee82f2",
+      "bytes": 6722,
+      "sha256": "9c25a6e0604a51a18306a4c63d42cb81411fbee72e401a31ceca37d777490230",
       "source": "research-workspace/work/simplification-desk/s2/dead-deletions.json",
-      "sourceModifiedUtc": "2026-11-15T03:01:06.637Z",
-      "capturedAtUtc": "2026-11-15T03:28:19.146Z"
+      "sourceModifiedUtc": "2026-11-15T03:38:13.354Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
     },
     {
       "path": "import-20261115/work/simplification-desk/s2/line-accounting-s2-vs-r1.json",
@@ -94133,11 +94133,11 @@
     },
     {
       "path": "import-20261115/work/simplification-desk/s2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
-      "bytes": 20431,
-      "sha256": "d30c8e2cbff7e17a2d86368515f5b7968388c2fb01a9b1736267b3cc46fe2520",
+      "bytes": 20499,
+      "sha256": "376c8087607945e0074d19c28516a73e05e91a272593c45019b623d9739af96b",
       "source": "research-workspace/work/simplification-desk/s2/OAI/Analysis/PlaneSpectrum/SpectralMeasure.lean",
-      "sourceModifiedUtc": "2026-11-15T03:01:06.608Z",
-      "capturedAtUtc": "2026-11-15T03:28:19.146Z"
+      "sourceModifiedUtc": "2026-11-15T03:38:13.327Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
     },
     {
       "path": "import-20261115/work/simplification-desk/s2/OAI/Geometry/PlaneColoring/AngularBoundary.lean",
@@ -94285,11 +94285,11 @@
     },
     {
       "path": "import-20261115/work/simplification-desk/s2/OAI/Geometry/PlaneColoring/PaletteDensity.lean",
-      "bytes": 24503,
-      "sha256": "c3c5d1341ae107f5b0ca94df0788d801f36eb6169f19b291d6ad04f66824d3f8",
+      "bytes": 25009,
+      "sha256": "24d1525a3efafe117962d32aff754f30949371234d7d14f3099361e1c0b0d68c",
       "source": "research-workspace/work/simplification-desk/s2/OAI/Geometry/PlaneColoring/PaletteDensity.lean",
-      "sourceModifiedUtc": "2026-11-15T03:01:06.619Z",
-      "capturedAtUtc": "2026-11-15T03:28:19.146Z"
+      "sourceModifiedUtc": "2026-11-15T03:38:13.336Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
     },
     {
       "path": "import-20261115/work/simplification-desk/s2/OAI/Geometry/PlaneColoring/Palettes.lean",
@@ -94381,11 +94381,11 @@
     },
     {
       "path": "import-20261115/work/simplification-desk/s2/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean",
-      "bytes": 20863,
-      "sha256": "204a28c8ee71b5ffe188f748437dae086937fd1191ab416e51545cd5cd2fbf55",
+      "bytes": 20960,
+      "sha256": "f5abd2b8e32dae69da826d234f3310c41813989deb1438c0354795935c4c8d76",
       "source": "research-workspace/work/simplification-desk/s2/OAI/MeasureTheory/CompactFactors/RelativeProducts.lean",
-      "sourceModifiedUtc": "2026-11-15T03:01:06.634Z",
-      "capturedAtUtc": "2026-11-15T03:28:19.146Z"
+      "sourceModifiedUtc": "2026-11-15T03:38:13.351Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
     },
     {
       "path": "import-20261115/work/simplification-desk/s2/OAI/MeasureTheory/CompactFactors/Separability.lean",
@@ -94506,6 +94506,70 @@
       "source": "research-workspace/work/simplification-desk/s1/logs-r2/20-GraphPatches.log",
       "sourceModifiedUtc": "2026-11-15T03:29:29.894Z",
       "capturedAtUtc": "2026-11-15T03:29:55.786Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s1/logs-r2/21-FullApproximation.log",
+      "bytes": 1265,
+      "sha256": "5b2ca42d9ce915557aeb1853869cab59885dabf9b0c1df1a4ff178781fb2a7ad",
+      "source": "research-workspace/work/simplification-desk/s1/logs-r2/21-FullApproximation.log",
+      "sourceModifiedUtc": "2026-11-15T03:32:04.110Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s1/logs-r2/22-Mesh.log",
+      "bytes": 1251,
+      "sha256": "5606c90483db7d2479f446acc62371050c798be3e0d71769aaee5ccf9cda95a8",
+      "source": "research-workspace/work/simplification-desk/s1/logs-r2/22-Mesh.log",
+      "sourceModifiedUtc": "2026-11-15T03:33:36.865Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s1/logs-r2/23-Five.log",
+      "bytes": 1251,
+      "sha256": "d4a750d93cecfa421c3b882f9f2984dcb1be28f27d717f7d7ccc132616cceb8a",
+      "source": "research-workspace/work/simplification-desk/s1/logs-r2/23-Five.log",
+      "sourceModifiedUtc": "2026-11-15T03:34:55.383Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s1/logs-r2/24-Chromatic.log",
+      "bytes": 1836,
+      "sha256": "9fd1054a8a879244c5d54845cfec6c4d47cb6e84cf769afd035bf0570fe9a132",
+      "source": "research-workspace/work/simplification-desk/s1/logs-r2/24-Chromatic.log",
+      "sourceModifiedUtc": "2026-11-15T03:36:14.735Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s1/logs-r2/25-Converse.log",
+      "bytes": 1256,
+      "sha256": "fd918622123cc60fc8861fe3cad6313ee59c76d9475c4d6c975a856c5d3f3dc3",
+      "source": "research-workspace/work/simplification-desk/s1/logs-r2/25-Converse.log",
+      "sourceModifiedUtc": "2026-11-15T03:38:13.366Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s1/logs-r2/26-NullSetRobust.log",
+      "bytes": 1260,
+      "sha256": "4e83255b60d98343a8269007a39b7f53f70315cbb14a561cc64d63d423707796",
+      "source": "research-workspace/work/simplification-desk/s1/logs-r2/26-NullSetRobust.log",
+      "sourceModifiedUtc": "2026-11-15T03:39:51.104Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s1/logs-r2/27-Transfer.log",
+      "bytes": 1255,
+      "sha256": "bce6876fa9716f5b05dd6b978af04e7918f8cc6c4ac4aa1dec9678cab7f12ccd",
+      "source": "research-workspace/work/simplification-desk/s1/logs-r2/27-Transfer.log",
+      "sourceModifiedUtc": "2026-11-15T03:41:03.728Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s1/logs-r2/axiomroots-s1-r2.log",
+      "bytes": 5360,
+      "sha256": "02c2e87433f6b37d0b1e0a47c0f05f49e8c4304d19b15b1e83ce479d12bdb110",
+      "source": "research-workspace/work/simplification-desk/s1/logs-r2/axiomroots-s1-r2.log",
+      "sourceModifiedUtc": "2026-11-15T03:43:11.601Z",
+      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
     }
   ]
 }

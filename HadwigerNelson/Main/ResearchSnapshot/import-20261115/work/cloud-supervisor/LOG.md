@@ -53,3 +53,13 @@
 - 03:24Z Jarom: commit everything; outside AI will compare HN vs ZetaFive. Repo HN tree clean (only grep.exe.stackdump stray). Asked results desk for urgent batch 6 incl. L-N2/L-N3 + S1/S2 as CANDIDATE; exposition desk to rewrite HadwigerNelson/README.md front page + fix stale ROADMAP. Jarom.lean and research-scale-up/ at repo root left uncommitted pending Jarom.
 - 03:26Z README front page + ROADMAP refresh published 1cdbd8c.
 - 03:27Z Results batch 6 published f05f23e (99 entries; LN2-COUNTERMODEL, LN3-T1-T3). S1/S2 candidates not yet imported.
+- 03:30Z Results batch 7 published 3be707e (S1/S2 CANDIDATE imports). Repo now holds all HN work.
+- 03:31Z Batch 7b published f7eef5d (S1 reverify 20/27).
+- 03:31Z README S2 link published c014189.
+- 03:32Z heartbeat: desks idle-waiting; S1 reverify at module 21/27 (rebuild.py healthy, between modules); research -> act on 03:29 cycle, L-N4, referee verdicts; services alive; cycle 032909 ok.
+- 03:33Z Research desk: cycle needs_parent answered; L-N4 active again (24 records); referee swarm smwh90qeq (14 members) on R1-3, R1-4 + sign-cell queued; contract r2 waits for Lean slot.
+- 03:35Z Jarom: no more continuous GitHub updates; heartbeat now holds commit requests in PENDING-COMMITS.md. Readiness check of c014189: 107 relative links in README/PROGRESS/ROADMAP resolve, PDFs valid, no junk; report/slides still have [TEAM]/[PIN] placeholders; no repo-root README (shared repo).
+- 03:37Z COMMIT FREEZE (Jarom): main held at c014189 for neutral evaluator; all 4 desks told to keep working locally; heartbeat records requests in PENDING-COMMITS.md; 11:00 PT checkpoint now asks before pushing.
+- 03:38Z usage: week $117.35 (23.5%), $9.11/h, projected $244.5; swarms -> 16 members / 400 steps (max).
+- 03:41Z Jarom-approved exception to freeze: S2 corrected -727 -> -717 (52 deletions; -867 vs original) in README/PROGRESS/ledger, pushed 49f745d. Freeze otherwise continues.
+- 03:42Z heartbeat: research+simplification waiting on background jobs reported <20 min ago (not pinged); results working; services alive; 1 lean.exe; coordinator cycle running.

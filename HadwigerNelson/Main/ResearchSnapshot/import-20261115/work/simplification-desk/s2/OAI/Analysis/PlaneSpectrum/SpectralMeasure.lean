@@ -363,6 +363,7 @@ lemma norm_le (f : C(X,ℂ)) : ‖linear μ f‖ ≤ μ.real Set.univ * ‖f‖ 
   simpa only [linear,LinearMap.coe_mk,AddHom.coe_mk,mul_comm] using
     norm_integral_le_of_norm_le_const (μ := μ) (Filter.Eventually.of_forall (ContinuousMap.norm_coe_le_norm f))
 def clm : C(X,ℂ) →L[ℂ] ℂ := (linear μ).mkContinuous (μ.real Set.univ) (norm_le μ)
+lemma apply_clm (f : C(X,ℂ)) : clm μ f = ∫ x, f x ∂μ := rfl
 end EuclideanFiveColor.CompactIntegral
 namespace EuclideanFiveColor.CommutingSpectral
 variable {G : Type*} [CommGroup G] [TopologicalSpace G] [DiscreteTopology G]
