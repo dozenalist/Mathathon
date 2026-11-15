@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "builtAtUtc": "2026-11-15T04:08Z",
+  "builtAtUtc": "2026-11-15T04:10Z",
   "workspaceRoot": "I = C:/Users/jarom/Documents/Codex/2026-11-13/i (research workspace, outside the repo)",
   "statusVocabulary": [
     "LEAN_VERIFIED",
@@ -2840,19 +2840,6 @@
       ]
     },
     {
-      "id": "LEAN-435",
-      "theme": "Infrastructure",
-      "status": "RETRACTED_OR_REFUTED",
-      "title": "Rebuild under Lean 4.35.0: not attempted (team decision)",
-      "statement": "Not attempted, by team decision (Jarom, 2026-11-15). All Lean evidence in this ledger is Lean 4.34.1 with pinned Mathlib d13f23b; no team result has a 4.35.0 build.",
-      "provenance": "Team decision relayed by the supervisor; earlier feasibility note: work/simplification-desk/lean435/FEASIBILITY.md (toolchain present, no Mathlib oleans or cache).",
-      "checked": "Not applicable.",
-      "corrections": [
-        "was OPEN; withdrawn as a goal (not refuted)"
-      ],
-      "artifacts": []
-    },
-    {
       "id": "LEAN-FAILED-REVISIONS",
       "theme": "Infrastructure",
       "status": "RETRACTED_OR_REFUTED",
@@ -2922,6 +2909,19 @@
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261115t001551-0.python.log"
         }
       ]
+    },
+    {
+      "id": "LEAN-435",
+      "theme": "Infrastructure",
+      "status": "OPEN",
+      "title": "Rebuild under Lean 4.35.0: assigned to Carter",
+      "statement": "Port and rebuild the team Lean results under the event toolchain (repo root: lean-toolchain leanprover/lean4:v4.35.0, lakefile Mathlib rev v4.35.0). All current Lean evidence in this ledger is Lean 4.34.1 with pinned Mathlib d13f23b; no team result has a 4.35.0 build yet. Handoff notes: HadwigerNelson/Lean/PORT-4.35.0-NOTES.md.",
+      "provenance": "Team decision (Jarom, 2026-11-15): reopened and assigned to Carter after a brief \"not attempted\" closure.",
+      "checked": "Not applicable.",
+      "corrections": [
+        "briefly closed as \"not attempted (team decision)\", then reopened and assigned to Carter"
+      ],
+      "artifacts": []
     }
   ]
 }
