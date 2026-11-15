@@ -141,7 +141,11 @@ theorem τ_reflect (P : PolyX) : τ (reflect P) = -τ P := by
 
 /-! ## The reflection at simple integer poles (`Transport.lean`'s `XRep`) -/
 
-/-- The reflection sends the pole at `r` to the pole at `-1-r`. -/
+/-- The reflection sends the pole at `r` to the pole at `-1-r`.
+(Statement duplicated as `d_reflect` in `Candm4.lean`; both are kept because each
+candidate file is preserved verbatim as delivered by its swarm member. The
+statements are identical, so a future integration should keep one and delete the
+other. `M4.H5Z_reflect` is the only consumer.) -/
 lemma d_neg_one_sub (r : ℤ) : d (-1 - r) = d r := by
   simp only [d]
   split_ifs with h1 h2

@@ -200,3 +200,22 @@ worker, so the independent-review role was not cleanly separated this block; the
 coordinator performed the review of all four submissions. Also, m4's file
 carries the `Cand` namespace as delivered; the coordinator rewrote only the
 namespace lines, not the proofs.
+
+### Post-block review notes (from the members' own reports, recorded here on purpose)
+
+**Sign reading of the pole values.** `M4.eq_sub_H5Z` states `a r = c + H5Z r`
+with `c = a 0`. m4 flagged the risk: substituting `c = −X` gives
+`a_r = H_r^{(5)} − X`, i.e. `eq:poles` — the sign is correct **only because `c`
+already carries the minus**. Written as `c + H5Z r` the theorem is right, but a
+reader who supplies `c = X` will silently get `H_r^{(5)} + X`, the wrong sign.
+When this is restated for the rational domain, state it as
+`τ_X(1/(x−r)) = H_{d(r)}^{(5)} − X` directly rather than through `c`, or name the
+constant `c = −X` in the statement.
+
+**Known duplicate left in the tree.** `M3.d_neg_one_sub` and `M4.d_reflect`
+(`Candm4.lean:230`) are identical statements, `d (−1 − r) = d r`. Both are
+committed because each candidate file is preserved verbatim as its member
+delivered it; `M4.H5Z_reflect` is the only consumer. A later integration should
+keep `M3.d_neg_one_sub` (which m3 also uses inside `poleSum_reflect`) and delete
+`M4.d_reflect`. This is cosmetic, not a soundness issue — flagged rather than
+silently tidied, so the record shows the candidates are unedited.
