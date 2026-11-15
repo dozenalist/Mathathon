@@ -1,6 +1,6 @@
 # Understanding the five-colour obstruction
 
-**Start here.** This is the main reading path through our exposition. Lesson 1 builds one idea carefully: what a *weak measurable colouring* means, and why the proof needs it. Lesson 2 shows how that “almost never” condition still forbids some unit distances exactly. You can give feedback on this page without following the supporting folders.
+**Start here.** This is the main reading path through our exposition. Lesson 1 builds one idea carefully: what a *weak measurable colouring* means, and why the proof needs it. Lesson 2 shows how that “almost never” condition still forbids some unit distances exactly. Lesson 3 shows how a connected set of robust points turns that exact exclusion on a circle into an exclusion on a band with positive area. You can give feedback on this page without following the supporting folders.
 
 The supplied OpenAI proof, *The Euclidean plane is not five-colorable* (23 September 2026), rules out a proper five-colouring even when its colour classes are not measurable. Together with the classical seven-colouring construction, this gives $6\leq\chi(\mathbb R^2)\leq7$. It does not decide between six and seven. We are explaining that supplied result; our team's local contributions come later.
 
@@ -410,6 +410,407 @@ Try to answer these before opening the comparison.
 
 **Feedback on Lesson 2:** name the first sentence where you had to take something on trust, or the first picture that did not help you make a new inference. The three Lesson 2 figures are first drafts.
 
+## Lesson 3: from a circle to a band — straddling a connected set
+
+Lesson 2 showed that a robust point excludes its own colour, exactly, from the robust points on its unit circle. But a circle has zero area, and weakness cannot feel zero area. This lesson shows how a *connected* set of robust points thickens that circle into a band with positive area.
+
+The tool is elementary: the intermediate value theorem. It is the geometric engine behind the manuscript's “straddle” regions. The manuscript applies it to constructed two-colour interfaces. Here we use the simplest model, a set lying robustly inside one colour. That model is our illustration, not the manuscript's statement.
+
+## 15. What one robust point excludes
+
+Let $q$ be robustly inside colour $i$. By Section 13, no point at distance exactly 1 from $q$ is robustly inside colour $i$.
+
+That is exact, but it lives on a circle, and a circle has zero area. Recolouring the whole circle with colour $i$ would change no window average (compare the recoloured line in Section 14). To reach a statement with area in it, we need many centres whose unit circles sweep out a region.
+
+## 16. Many centres: the straddle region
+
+Let $K$ be a set of centres, for example a short segment. For a point $z$, look at its distances to all the points of $K$. Say that $z$ **straddles** $K$ when some point of $K$ is closer than 1 and some point of $K$ is farther than 1:
+
+$$
+\Delta(K)=\{z:\ \min_{q\in K}|z-q|<1<\max_{q\in K}|z-q|\}.
+$$
+
+This is the manuscript's straddle region (Section 7; `Straddle` in the Lean development). Section 17 shows that when $K$ is connected, every straddling point lies on the unit circle of some point of $K$. So $\Delta(K)$ sits inside the region swept by those circles.
+
+![A short horizontal segment K of length 0.6 with its endpoints and midpoint marked. The shaded region Delta(K) is the open radius-one capsule around K with a white lens removed, the lens where the two closed unit disks centred at the endpoints overlap; inside the lens every point of K is within 1. The shaded band is thick to the left and right of K and thin above and below it. The unit circle of the midpoint of K is drawn dashed in blue and runs through both thick parts of the band.](Figures/straddle-band.svg)
+
+The inference to take from the picture is that a segment of centres turns a single unit circle, which has zero area, into a band $\Delta(K)$ with positive area, swept by the unit circles of the points of $K$.
+
+## 17. Straddling forces an exact contact
+
+**Contact lemma.** If $K$ is connected and $z$ straddles $K$, then some point of $K$ is at distance exactly 1 from $z$.
+
+For a segment, walk along $K$ from a point closer than 1 to a point farther than 1. The distance to $z$ changes continuously, without jumps, so at some moment it equals 1.
+
+![A point z at the lower left and a horizontal segment K above it. The left end of K is closer than 1 to z and the right end is farther than 1. Three rulers run from z to points of K, of lengths 0.9, exactly 1 (highlighted in red) and 1.1. A dashed arc of the unit circle around z crosses K at the end of the highlighted ruler.](Figures/straddle-contact.svg)
+
+Read the picture as the walk itself: as the far end of the ruler moves along $K$ its length passes from below 1 to above 1, so it must cross the dashed unit circle of $z$ at a point of $K$.
+
+A general connected set may contain no path to walk along, but the conclusion survives. The distance $q\mapsto|z-q|$ is continuous, and a continuous function on a connected set takes every value between any two values it takes. This is a classical fact of topology, not part of the manuscript.
+
+**Connectedness is essential.** Let $K$ be only the two endpoints of a segment of length 2, and let $z$ be the first endpoint. Its distances to $K$ are 0 and 2, so $z$ straddles $K$, yet no point of $K$ is exactly one unit away. Restore the whole segment and the midpoint supplies the contact. The missing middle is exactly where the contact would have been.
+
+![Two points of K, two units apart, joined by a dashed line showing the missing middle of the segment. The left point is z itself, at distance 0; the right point is at distance 2. At the midpoint, where a dashed arc of the unit circle around z crosses the line, a dashed red circle marks the missing contact: it is at distance 1 from z but does not belong to K.](Figures/straddle-gap.svg)
+
+The picture shows that without connectedness the distance can jump straight from 0 to 2, so straddling alone does not force a point of $K$ onto the unit circle of $z$.
+
+## 18. A band that colour $i$ cannot occupy
+
+Combine the contact lemma with Lesson 2. Suppose $K$ is compact and connected, contains at least two points, and every point of $K$ is robustly inside colour $i$.
+
+Take any $z$ in $\Delta(K)$. By the contact lemma, some $q$ in $K$ satisfies $|z-q|=1$. Since $q$ is robustly inside colour $i$, Section 13 says $z$ is not.
+
+So no point of $\Delta(K)$ is robustly inside colour $i$. By Lebesgue's density theorem (Section 9), all colour-$i$ points outside a zero-area set are robust in colour $i$. Therefore **colour $i$ occupies zero area of $\Delta(K)$**.
+
+This is now a statement with area in it, because $\Delta(K)$ has positive area. Take $K$ to be a segment of length $L>0$, and put $z$ on its perpendicular bisector at distance $d$ from the midpoint, with $d$ slightly less than 1. The nearest point of $K$ is the midpoint, at distance $d<1$. The endpoints are at distance $\sqrt{d^2+L^2/4}$, which exceeds 1 once $d$ is close enough to 1. Both the nearest and the farthest distance change continuously as $z$ moves, so every point near this $z$ also straddles $K$. A whole small disk lies in $\Delta(K)$.
+
+One robust point excluded its colour on a circle, which weakness cannot see. A robust connected set excludes it on a band, which weakness can.
+
+**Sanity check.** In the proper hexagon colouring, let $K$ be a short segment inside an open hexagon of colour $i$. Every point of $\Delta(K)$ is exactly one unit from some point of $K$, so properness forbids colour $i$ there, with no exceptions. The weak version says the same thing up to zero area.
+
+<details>
+<summary>A precision note</summary>
+
+The nearest and farthest distances to a compact $K$ are continuous in $z$; each changes by at most $|z-z'|$ when $z$ moves to $z'$. So $\Delta(K)$ is open and therefore measurable. The contact lemma needs no compactness, only connectedness: with infimum and supremum in place of minimum and maximum, the argument is unchanged.
+
+</details>
+
+## 19. What the manuscript actually needs
+
+Our model assumed that $K$ lies robustly inside one colour. In the proof, the connected sets come from a constructed loop of colour *interfaces*: compact connected sets $K_j$ sharing a centre $x$. Each carries a **pair** of labels, and the manuscript shows that both are absent almost everywhere in $\Delta(K_j)$ (manuscript Section 7).
+
+Proving that two-label exclusion requires the manuscript's analytic interface construction. Connectedness alone does not give it. What carries over from this lesson is the geometric engine: straddling a connected set forces an exact unit contact, and the straddle region has area. The next lesson explains where the interfaces come from.
+
+## A third place to stop and respond
+
+1. Why does one robust point exclude its colour only on a zero-area set, while a robust segment excludes it on a region with area?
+2. With $K$ the two endpoints of a length-2 segment and $z$ the first endpoint, why is there no contact? What changes when $K$ is the whole segment?
+3. Must the contact point be unique?
+
+<details>
+<summary>Compare your reading</summary>
+
+1. One point's unit circle has zero area. A segment's points have unit circles that sweep the band $\Delta(K)$, and the contact lemma says every point of that band lies on one of those circles.
+2. The distances jump from 0 to 2 with nothing in between. The whole segment supplies every intermediate distance, and the midpoint is at exactly 1.
+3. No. If $z$ is less than 1 from the middle of a segment but more than 1 from both endpoints, the distance crosses 1 twice, once on each side.
+
+</details>
+
+**Feedback on Lesson 3:** name the first sentence where you had to take something on trust.
+
+## Lesson 4: interfaces, a common centre, and the 60° cone
+
+Lesson 3 used a connected set lying robustly inside one colour, and it excluded that one colour from a band. The proof needs more: connected sets that sit *between* two colours and exclude **both**. This lesson builds that idea in a model. It then shows where several such sets can meet at one centre, and states our team's CC60 theorem about that meeting.
+
+Source boundaries in this lesson:
+- The interface model in Section 20 and the shadow pictures in Sections 22–23 are our illustrations.
+- The constructed interfaces in Section 21 belong to the supplied manuscript.
+- CC60 in Section 24 is a team result, with a recorded Lean verification.
+- The six-colour instance and the hexagon check in Section 24 are our illustrations of CC60's statement.
+
+## 20. An interface excludes two colours: a model
+
+Take a short segment $K$ with an open region of colour $A$ along one side and an open region of colour $B$ along the other, each bordering the whole segment. Every point inside an open region of one colour is robustly inside that colour: small disks around it are 100% that colour.
+
+Let $z$ straddle $K$. Lesson 3's contact lemma gives a point $q$ of $K$ exactly one unit from $z$. More is true for a segment: the unit circle around $z$ **crosses** $K$ at a point strictly between its ends, rather than just touching it. Near that crossing, the circle passes into the $A$ side and into the $B$ side.
+
+So the unit circle around $z$ contains robust points of colour $A$ and robust points of colour $B$. By Section 13, $z$ is robustly inside neither. By Lebesgue's density theorem, **colours $A$ and $B$ both occupy zero area of $\Delta(K)$**.
+
+![A short vertical segment K with a strip of colour A on its left and a strip of colour B on its right. A point z to the upper left straddles K. Part of the unit circle around z is drawn dashed; it crosses K at a point q strictly between the ends of K, with a red ruler of length 1 from z to q. Just below q the circle runs through the A strip, drawn thick in blue, and just above q through the B strip, drawn thick in green.](Figures/interface-model.svg)
+
+The inference to take from the picture is that a unit circle crossing the interface passes through robust points of both colours, so its centre $z$ is robustly inside neither.
+
+**Check with the hexagon colouring.** Let $K$ be an edge shared by an $A$-hexagon and a $B$-hexagon. Every point of $\Delta(K)$ has a unit circle that dips into both hexagons, so properness forbids both $A$ and $B$ there, with no exceptions.
+
+<details>
+<summary>Why the circle crosses rather than touches</summary>
+
+Measure the distance from $z$ along the segment. That distance is a convex function of position, and it passes from below 1 to above 1. A convex function cannot be level at a point where it equals 1 when it is below 1 somewhere: that point would be a minimum. So the distance is strictly changing where it equals 1, and the circle is not tangent to the segment there. A circle that crosses a line at a point passes to both sides of the line nearby. The crossing is strictly between the ends: it lies strictly between a point of $K$ closer than 1 and the farther endpoint. (Both ends may be more than 1 away; then the circle crosses $K$ twice.)
+
+</details>
+
+## 21. What the proof actually constructs
+
+A weak colouring need not contain any clean edge between two open colour regions. Assuming a weak measurable five-colouring, the manuscript therefore **manufactures** interfaces from limiting data:
+
+- At a centre, it studies colour proportions on circles whose radii approach 1. Their limits, called palettes, record which labels persist in each direction (manuscript Section 5).
+- Changes between labels are organised into a graph on the labels (Section 6).
+- A topological argument produces compact connected sets $K_j$ sharing a centre $x$. Each carries the two labels at the ends of one edge of a cycle of 3, 4 or 5 labels; both are absent almost everywhere in $\Delta(K_j)$, and points of $K_j$ approach $x$ from a chosen direction (Proposition 7.1).
+
+That last conclusion is exactly what Section 20's model gives for free. In the manuscript it is a substantial analytic theorem, not a consequence of connectedness alone. From here on we use only its *conclusion*: an interface $K_j$, a pair of labels, and their absence from $\Delta(K_j)$.
+
+## 22. A tiny interface casts its shadow on the unit circle
+
+Suppose $K$ lies within distance $\delta$ of a centre $x$. Every distance from a point $z$ to $K$ is then within $\delta$ of $|z-x|$. For $z$ to straddle $K$, some of those distances must be below 1 and some above, so $|z-x|$ is within $\delta$ of 1. **The exclusion region of a tiny set near $x$ hugs the unit circle around $x$.**
+
+Which side of the circle? Model $K$ as a short segment of length $L$ leaving $x$ in direction $\theta$.
+
+- A point just **outside** the circle, on the half facing $\theta$, is more than 1 from $x$ but less than 1 from some point of the segment. It straddles.
+- A point just **inside** the circle, on the opposite half, is less than 1 from $x$ but more than 1 from the far end. It straddles too.
+
+So the shadow is a thin crescent outside the circle on the side the interface points toward, and a thin crescent inside on the far side. Each is about $L$ thick at its middle and only of order $L^2$ thick near the two directions perpendicular to $\theta$. There the inner crescent reaches slightly past the perpendiculars, onto the facing half.
+
+![A centre x with its unit circle drawn dashed in blue. A short segment K of length 0.25, exaggerated, leaves x to the east. The shaded region Delta(K) is a crescent just outside the circle on the east side and a matching crescent just inside the circle on the west side, each at most 0.25 thick; both thin out toward north and south, where the inner crescent reaches slightly past north and south.](Figures/interface-shadow.svg)
+
+Read the picture as one claim: every point of $\Delta(K)$ is within $L$ of the unit circle around $x$, outside it on the side $K$ points to and inside it on the far side, so a tiny interface excludes its labels only from a thin band hugging that circle.
+
+## 23. Several interfaces at one centre
+
+Now let several interfaces $K_1,\dots,K_n$ meet at the same centre $x$, leaving in directions $\theta_1,\dots,\theta_n$, with label pairs $P_1,\dots,P_n$.
+
+Where outer crescents overlap, every label in $P_1\cup\dots\cup P_n$ is excluded (almost everywhere). Each outer crescent covers every direction less than $90^\circ$ from its own $\theta_j$, so they overlap, in a thin band of positive area, over the directions less than $90^\circ$ from every $\theta_j$. If the $\theta_j$ spread over an angle $w$, these form an open arc of width exactly $180^\circ-w$. For $w\le 60^\circ$, that common arc is at least $120^\circ$ wide.
+
+So a narrow cone of interfaces leaves a long thin region, hugging the unit circle, where only the labels outside every pair may appear. How few can those leftover labels be?
+
+![A centre x with its unit circle dashed. Two short segments K1 and K2 of length 0.3, exaggerated, leave x in directions 20 degrees above and below east, 40 degrees apart. With six labels, the straddle region of K1, shaded blue, excludes labels 1 and 2, and that of K2, shaded green, excludes labels 3 and 4. Where they overlap, shaded red, only labels 5 and 6 could appear: a long thin crescent just outside the circle on the side the segments point to, and a matching crescent inside the circle on the far side.](Figures/interface-cone.svg)
+
+The picture shows that two interfaces $40^\circ$ apart leave a long band of positive area, hugging the unit circle, in which only the two leftover labels 5 and 6 could appear, up to zero area.
+
+## 24. CC60: at least three labels must survive
+
+**CC60 (closed $60^\circ$ cone; team result).** Take a weak measurable colouring, with any finite number of labels. Fix a centre $x$. Take finitely many sets $K_1,\dots,K_n$, each containing $x$, and for each a direction $v_i$ such that $K_i$ contains points tending to $x$ whose directions from $x$ tend to $v_i$. Suppose all the $v_i$ lie in one closed $60^\circ$ arc of directions. For each $i$, let $F_i$ be a set of labels, each occupying zero area of $\Delta(K_i)$. Then the labels outside every $F_i$ cannot fit into a pair: **at least three survive**. The sets need not be connected or compact.
+
+“Closed” matters: directions exactly $60^\circ$ apart are included. The team's [cone packet](../Main/ResearchSnapshot/local/outputs/cone/REPORT.txt) records successful Lean 4.34.1 checks of the statement and proof, with an axiom audit listing only `propext`, `Classical.choice` and `Quot.sound`. An [independent referee report](../Main/ResearchSnapshot/local/outputs/ASTRA-CONE-REFEREE.txt) reviews the hypotheses. This walkthrough has not rebuilt the Lean files, and this lesson does not reconstruct the proof.
+
+**A six-colour instance.** Two interfaces at $x$ carry the pairs $\{1,2\}$ and $\{3,4\}$, with directions $40^\circ$ apart. Their exclusions would leave only $\{5,6\}$. CC60 says this configuration cannot occur. If instead the pairs were $\{1,2\}$ and $\{1,3\}$, three labels, 4, 5 and 6, would survive: exactly the minimum CC60 allows, so it forbids nothing here.
+
+**A consistency check.** At a vertex of the hexagon colouring, three edges leave in directions $120^\circ$ apart. Each edge satisfies CC60's hypotheses for its pair, but no two edges fit in a $60^\circ$ cone. So CC60 applies to one edge at a time, where five of the seven labels survive. It forbids nothing that the valid colouring does.
+
+## 25. What CC60 does not say
+
+- **It is not a six-colour impossibility theorem.** It forbids a kind of local configuration. Nothing yet shows that every hypothetical six-colouring must produce it.
+- **It is about actual interfaces, not lists.** Its hypotheses are actual sets through one common centre, actual approach directions, and zero-area exclusions on their actual straddle regions. A list of arrows and label pairs supplies none of this; the sets and exclusions must be constructed, as the manuscript does for five colours.
+- **A direction records one way of approaching, not a shape.** Each $v_i$ says only that some points of $K_i$ approach $x$ from that direction. The set may also approach $x$ from other directions, and away from $x$ it may go anywhere. Directions are signed: $v_i$ and $-v_i$ differ, and a direction may not be reversed to fit the cone.
+- **It does not change the supplied bound.** The bound remains $6\le\chi(\mathbb R^2)\le7$.
+
+The next lesson shows how palettes at three centres one unit apart can contradict each other, and how that relates to the supplied proof's original machinery.
+
+## A fourth place to stop and respond
+
+1. In Section 20, why does an interface exclude **two** colours from $\Delta(K)$, when Lesson 3's single-colour set excluded one?
+2. A tiny interface leaves $x$ pointing east. Where, near the unit circle around $x$, does its shadow lie?
+3. Six labels. Interfaces at $x$ carry $\{1,2\}$ and $\{3,4\}$, with directions $50^\circ$ apart. What does CC60 conclude? What if they were $90^\circ$ apart?
+
+<details>
+<summary>Compare your reading</summary>
+
+1. The unit circle around a straddling point crosses the interface, so it meets both sides. Robust points of both colours lie on it, so by Section 13 $z$ is robustly inside neither colour, and Lebesgue's density theorem turns that into zero area for both.
+2. Just outside the circle on its eastern half, and just inside on its western half, thinning toward north and south.
+3. At $50^\circ$ apart, only $\{5,6\}$ would survive, so CC60 rules the configuration out. At $90^\circ$ apart, the two directions don't fit in one $60^\circ$ cone. CC60 then applies only to each interface alone, where four labels survive, and forbids nothing.
+
+</details>
+
+**Feedback on Lesson 4:** name the first sentence where you had to take something on trust.
+
+## Lesson 5: three centres and one leftover label
+
+Lesson 4 worked in the plane: interfaces, straddle regions, cones. The manuscript also argues one level up, with **palettes**, the limiting angular data that Section 21 introduced. This lesson takes one manuscript lemma about palettes and proves it twice.
+
+- The manuscript's own proof turns one direction slightly so that a distance becomes exactly 1.
+- Our team's replacement uses three centres at the corners of a unit triangle and a counting argument with labels.
+
+Source boundaries in this lesson:
+- Palettes, traces, states and the lemma itself belong to the supplied manuscript (Sections 5–6) and its Lean development.
+- The three-centre proof in Sections 29–30 is a team result, with recorded Lean checks. Its forced-label step already appears in the manuscript's proof of Lemma 6.7, with one shifted centre and the $60^\circ$ exclusion in place of the third centre.
+- The five-label example in Section 29 is our illustration.
+
+## 26. Palettes, a little more precisely
+
+Fix a centre $x$. Draw circles of radius close to 1 around centres close to $x$, and record which colour sits at each direction on each circle. Take limits of these records as the centres approach $x$ and the radii approach 1. The manuscript uses only *typical* circles, on which almost every point is typical, and allows the centre and radius to stay fixed at $x$ and 1. Its limits are weak limits of the colour records (1 for the colour present, 0 for the others), called **traces**. At almost every direction a trace gives a list of nonnegative numbers, one per label, that sum to 1.
+
+Roughly, the **palette** $P_x(e)$ is the set of labels that some trace makes positive at direction $e$. Traces are defined only up to null sets of directions, so manuscript Definition 5.1 takes an *essential union* over traces, and $P_x$ is likewise defined only up to a null set. Two facts are all this lesson needs.
+
+1. **One trace is enough to put a label in the palette.** If a single trace gives label $i$ positive weight at direction $e$, then $i\in P_x(e)$, for almost every $e$ (the null set may depend on the trace).
+2. **Palettes are almost never empty.** At almost every direction a trace's weights sum to 1, so some label has positive weight there; by fact 1 that label is in the palette.
+
+A palette is *not* the colour of the point $x+e$. It records which labels persist near that direction under limits, and it can contain several labels.
+
+## 27. Unit-separated centres have disjoint palettes
+
+Take two centres $x$ and $y$ exactly one unit apart. For every direction $e$, the points $x+e$ and $y+e$ are also exactly one unit apart: both centres have moved by the same vector.
+
+Heuristically, a label persisting at direction $e$ around both centres would put one colour near both ends of many unit segments, which weakness forbids. This is only intuition: passing from sampled colours to limiting palettes is the hard part. The manuscript proves it (Lemma 5.2 with Remark 5.3), and the Lean development states it as `palette_neighbor_disjoint`:
+
+$$
+P_x(t)\cap P_y(t)=\varnothing\quad\text{for almost every direction }t,\qquad |x-y|=1.
+$$
+
+The direction $t$ is **common** to both centres. That is what makes the next sections work.
+
+## 28. States, and traces that avoid a set of labels
+
+A **state** at $x$ is a measurable set $A$ of directions together with a set of labels $J$, such that $J\subseteq P_x(t)$ for almost every $t$ in $A$ (manuscript Section 6.2; `RealState` in Lean). A state asserts inclusion, not equality: the palette may contain more than $J$.
+
+The **support** of $A$ is the set of directions every neighbourhood of which meets $A$ in positive measure. Support is stronger than closure: a direction can be a limit of directions in $A$ without being in its support.
+
+Now the key supplied fact (`state_support_avoiding_trace`). Let $B$ be a state at $x$ with labels $K$, and let $b$ be a direction in the support of $B$. Then the centre $y=x+e^{ib}$, one unit from $x$ in direction $b$, carries a trace that gives **zero** weight to every label in $K$.
+
+Why support: the proof picks directions $t$ in $B$, outside null sets, ever closer to $b$. The radius-1 circle about $x+e^{it}$ avoids every label of $P_x(t)\supseteq K$ (manuscript (5.2)), and a weak limit of these circles is the trace. The manuscript's proof of Lemma 6.7 begins with the same construction.
+
+Combine this with fact 2 of Section 26. That trace sums to 1 but is zero on $K$, so it is positive on some label outside $K$. By fact 1 that label is in the palette. So:
+
+$$
+P_y(t)\not\subseteq K\quad\text{for almost every }t.
+$$
+
+Read the conclusion carefully. It says the palette at $y$ has *some* label outside $K$. It does not say the palette avoids $K$ entirely; other traces may contribute labels of $K$.
+
+## 29. The counting step, with five labels
+
+Here is the whole finite argument, on an example. Use labels $\{0,1,2,3,4\}$ and split them as
+
+$$
+J=\{0,1\},\qquad K=\{2,3\},\qquad X=4 .
+$$
+
+Suppose three palettes $P$, $Q$, $R$ (at one common direction) satisfy:
+
+- $J\subseteq P$;
+- $P$, $Q$, $R$ are pairwise disjoint;
+- neither $Q$ nor $R$ is contained in $K$.
+
+Pick a label $j$ in $Q$ but not in $K$. It is not 0 or 1, because those are in $P$ and $Q$ is disjoint from $P$. It is not 2 or 3, by the choice of $j$. So $j=4$. The same reasoning puts 4 in $R$. Now 4 lies in both $Q$ and $R$, which contradicts their disjointness.
+
+![A table with rows P, Q and R, one for each of the three palettes at a common direction, and columns for the labels 0 to 4, bracketed as J = {0,1}, K = {2,3} and X = 4. In row P, cells 0 and 1 are filled: P contains J. In rows Q and R, cells 0 and 1 are crossed out because Q and R are disjoint from P, cells 2 and 3 are hatched because labels of K may be present but cannot be the witness outside K, and cell 4 is marked forced. A red box around column 4 in rows Q and R shows that 4 lies in both.](Figures/three-centre-count.svg)
+
+Read the table as one claim: once $J$ is struck out by disjointness from $P$ and $K$ cannot supply the witness, label 4 is the only candidate left in both $Q$ and $R$, so they share it.
+
+We never showed $Q=\{4\}$; $Q$ might also contain 2 or 3. One forced common label is enough.
+
+The only feature of the split that matters is that **at most one label lies outside $J\cup K$**; $J$ and $K$ need not even be disjoint. With two leftover labels, $Q$ and $R$ could choose different ones, and the argument stops.
+
+## 30. Three centres on a unit triangle
+
+Now put the pieces together. Let $x$ carry two states:
+
+- $A$, with labels $J$ and positive measure;
+- $B$, with labels $K$;
+
+where $X$ is the only label in neither $J$ nor $K$ (the manuscript also takes $J$, $K$ disjoint; the Lean statement does not).
+
+**Strict state separation (manuscript Lemma 6.3, fixed-centre part).** Under these hypotheses, no two directions $b$, $d$ in the support of $B$ are $60^\circ$ apart.
+
+Why $60^\circ$? Two points of the unit circle are exactly one unit apart precisely when their directions differ by $60^\circ$.
+
+**The three-centre proof.** Suppose $b$ and $d$ in the support of $B$ are $60^\circ$ apart. Put
+
+$$
+y=x+e^{ib},\qquad z=x+e^{id}.
+$$
+
+Then $x$, $y$, $z$ are the corners of an equilateral triangle with side 1.
+
+![Part of the unit circle around a centre x, drawn dashed. Two short thick blue arcs mark the support of the state B, around the directions b = 0 degrees and d = 60 degrees. The points y = x + e^(ib) and z = x + e^(id) lie on the circle. The sides xy and xz are radii of length 1, and the chord yz, drawn in red, also has length 1. The 60 degree angle at x is marked.](Figures/three-centre-triangle.svg)
+
+The picture shows the one geometric fact the proof needs: because $b$ and $d$ are $60^\circ$ apart, the chord from $y$ to $z$ is a third unit side, so all three pairs of centres are one unit apart.
+
+- Section 27, applied to the three sides, makes $P_x(t)$, $P_y(t)$, $P_z(t)$ pairwise disjoint for almost every $t$. The three centres are fixed before $t$ is chosen, so only three exceptional null sets are removed.
+- Section 28, applied at $b$ and at $d$, makes neither $P_y(t)$ nor $P_z(t)$ contained in $K$, for almost every $t$.
+- The state $A$ puts $J$ inside $P_x(t)$ for almost every $t$ in $A$, and $A$ has positive measure.
+
+So some single direction $t$ satisfies all of these at once. At that $t$, Section 29's counting step applies with $P=P_x(t)$, $Q=P_y(t)$, $R=P_z(t)$, and gives a contradiction.
+
+**The manuscript's proof** is different. Support points need not be density-one directions, so it uses nearby density-one directions $b'$, $d'$ of $B$, whose chord is only close to 1. For a density-one direction $a$ of $A$, the point $x+a+b'$ is robustly inside colour $X$ (Lemma 6.3's first assertion, via Lemma 5.2). The implicit function theorem turns $a$ slightly into $c(a)$ so that $x+a+b'$ and $x+c(a)+d'$ are exactly one unit apart. An $L^1$ argument then finds such an $a$ with $c(a)$ also a density-one direction of $A$. Both points are robustly inside $X$, contradicting Lesson 2 (Section 13; manuscript Lemma 4.3). The three-centre proof adds no new analysis: it reuses Sections 27–28, whose proofs already rest on Lemma 5.2, plus the counting step.
+
+## 31. What the replacement changes, and what it does not
+
+**Lean status.** The team's file [`FixedStateThreeCentres.lean`](../Main/ResearchSnapshot/local/outputs/three-centre/FixedStateThreeCentres.lean) proves `fixed_state_no_unit_three_centres`. Its statement is identical, including binder order, to the supplied `strict_state_no_unit_support`, and its proof calls none of the original strict-state lemmas. Its [recorded check](../Main/ResearchSnapshot/local/outputs/three-centre/VALIDATION.txt) passed under Lean 4.34.1 with standard axioms and no admissions. A second file, [`MovingThreeCentres.lean`](../Main/ResearchSnapshot/local/outputs/three-centre/MovingThreeCentres.lean), lets the centres converge. It proves that centres carrying a $K$-avoiding trace form a closed set, so the limiting corners keep such traces, and it runs the triangle argument at the limit centre with a $J$-state there instead of the manuscript's $L^1$ convergence. It reproves the four-cycle lemma `four_support_sequence_no_unit` with an identical statement. Its [record](../Main/ResearchSnapshot/local/outputs/three-centre/MOVING-VALIDATION.txt) lists axioms `propext`, `Classical.choice` and `Quot.sound`, statement and binder checks, and a transitive check that no original strict-state lemma is reached. This walkthrough has not rebuilt these files.
+
+**Where the lemma is used.** The supplied development calls the strict-state lemma in the five-cycle argument (`five_support_no_sixty`: if a direction lies in the support of a state, the direction $60^\circ$ further on does not lie in the support of that same state), in the four-cycle continuity argument, and in the interface argument.
+
+**Integration.** The replacement is integrated into the team's full local Lean build, called R1, which the team accepted on 14 November 2026 (results ledger entries [R1](../RESULTS-LEDGER.md#r1) and [THREE-CENTRE](../RESULTS-LEDGER.md#three-centre)). All 27 affected modules and the root axiom check pass on Lean 4.34.1 with the pinned mathlib ([frozen manifest](../Main/ResearchSnapshot/local/work/lean-queue/threecentre-r1/frozen-manifest.json), [per-module compile logs](../Main/ResearchSnapshot/import-20261115/work/lean-queue/)). The old strict-state lemmas are removed: the R1 [`States.lean`](../Main/ResearchSnapshot/local/work/lean-queue/threecentre-r1/src/OAI/Geometry/PlaneColoring/States.lean) shrinks from 764 to 566 lines ([line accounting](../Main/ResearchSnapshot/local/work/lean-queue/threecentre-r1/line-accounting.json)). Independent re-runs of the contract and dependency checks, and one file missing from the build manifest, are still being followed up ([R1-GATES](../RESULTS-LEDGER.md#r1-gates)). The supplied OpenAI files themselves are unchanged.
+
+**What it does not change.**
+
+- **It proves the same statement.** The manuscript's theorem and the plane bound $6\le\chi(\mathbb R^2)\le7$ are unchanged. There is no global chromatic result here.
+- **It does not replace everything.** The manuscript's Lemma 6.7, the support-contact angular-step ban (`five_support_step_ban`), is still used. So is Lemma 6.3's first assertion (density one of $X$; `states_densityOne`), which the replacement does not reprove.
+
+## A fifth place to stop and respond
+
+1. Why must the three centres be fixed before the direction $t$ is chosen?
+2. In Section 29, change the split to $J=\{0,1\}$, $K=\{2\}$, leaving labels 3 and 4 outside. Find palettes $P$, $Q$, $R$ that satisfy all three bullet conditions.
+3. A trace at $y$ gives zero weight to labels 2 and 3. Must the palette at $y$ avoid 2 and 3?
+
+<details>
+<summary>Compare your reading</summary>
+
+1. Each pair of centres has its own exceptional null set of directions. Three null sets have a null union, so almost every $t$ works for all three. If the centres depended on $t$, there could be uncountably many null sets, and their union need not be null.
+2. For example $P=\{0,1\}$, $Q=\{3\}$, $R=\{4\}$. They are pairwise disjoint, $P$ contains $J$, and neither $Q$ nor $R$ lies inside $K=\{2\}$. With two leftover labels the counting step gives no contradiction. This does not show that such palettes occur in a colouring.
+3. No. At almost every direction, that one trace is positive on some label outside $\{2,3\}$, so the palette contains such a label. Another trace at $y$ may still give 2 or 3 positive weight.
+
+</details>
+
+**Feedback on Lesson 5:** name the first sentence where you had to take something on trust.
+
+## Lesson 6: the whole proof on one page
+
+The earlier lessons each opened one step of the supplied proof. This lesson puts the steps in order, so that you can say what each one contributes and what would break without it. Nothing here is new mathematics. Every step below is the supplied manuscript's, except the classical seven-colour upper bound and Section 35, which says where our team's results attach.
+
+## 32. A bridge and a contradiction
+
+The manuscript proves **Theorem 1.1: the plane has no proper five-colouring**, with no regularity assumed on the colour classes. It does so in two moves.
+
+1. **Bridge to measurability (Theorem 1.3, forward direction: Proposition 4.2).** If a proper $k$-colouring exists, then a weak measurable $k$-colouring exists. This is the analytic part, outlined in the technical map below. Lesson 1 explains what "weak" means.
+2. **No weak measurable five-colouring (Theorem 1.4).** This is Lemma 4.3 and Sections 5–8 of the manuscript. The technical map calls its central step, the construction of interfaces, "bridge two".
+
+Together these prove Theorem 1.1. The classical hexagon colouring (due to John Isbell; the manuscript recalls it after Theorem 1.1, and Lesson 1, Section 5 uses it) gives a proper seven-colouring, so $5<\chi(\mathbb R^2)\le 7$, that is, $6\le\chi(\mathbb R^2)\le 7$.
+
+## 33. The chain inside Theorem 1.4
+
+Assume a weak measurable five-colouring, and follow it to a contradiction.
+
+| Step | Manuscript | What it contributes | Where we met it |
+| --- | --- | --- | --- |
+| 1. Density | Lemma 4.3 | Two points robustly inside the same colour are never exactly one unit apart. Turns "almost never" into "never". | Lesson 2 |
+| 2. Palettes | Definition 5.1, Lemma 5.2, Remark 5.3, Corollary 5.4 | Limiting angular data at each centre. At one centre, palettes at directions $60^\circ$ apart are disjoint (Corollary 5.4). At two centres one unit apart, palettes in a common direction are disjoint (Remark 5.3). Both hold for almost every direction. | Lesson 4, Section 21; Lesson 5, Sections 26–27 |
+| 3. Two labels at most | Lemma 5.5, Proposition 5.6 | At every centre, the palette has one or two labels in almost every direction. The proof uses Lemma 5.5: distinct centres where one fixed pair of labels alternates every $60^\circ$ are at least a fixed distance apart. | — |
+| 4. Transitions and states | Lemmas 6.2–6.4, Theorem 6.5 | Join labels $i,j$ in the transition graph $\Gamma_x$ when $i$–$j$ colour changes are frequent near $x$. Each such edge gives a trace avoiding both labels (Lemma 6.2). If a complementary state has positive measure, the support of a state contains no two directions exactly $60^\circ$ apart (Lemma 6.3). A singleton state and a pair state cannot alternate every $60^\circ$ (Lemma 6.4). Centres whose transition graph has a cycle form a closed, locally finite set: only finitely many lie in any bounded region (Theorem 6.5). | Lesson 5 (Lemma 6.3) |
+| 5. Interfaces | Proposition 7.1 | A cycle of 3, 4 or 5 labels and a common centre $x$, one of step 4's cyclic centres. For each edge there is a compact connected set $K_j$ through $x$. It reaches a fixed circle around $x$, and some of its points approach $x$ from a limiting direction $v_j$. Both labels of the edge occupy zero area of $\Delta(K_j)$. The cycle need not consist of transition-graph edges. | Lessons 3–4 |
+| 6. One-sided strips | Lemma 8.1 | Just outside the unit circle around $x$, near direction $e$, only labels not excluded by the interfaces with $e\cdot v_j>0$ can appear; just inside, the same for the interfaces with $e\cdot v_j<0$. In almost every direction the palette contains an allowed label for each side (equation 8.1). | Lesson 4, Sections 22–23 |
+| 7. No cycle survives | Propositions 8.2, 8.5, 8.10 | A five-cycle forces a palette pattern on six directions $60^\circ$ apart that cannot close up (Proposition 8.2). A four-cycle forces its interface directions into two antipodal pairs and an impossible parity rule (Proposition 8.5). Both cases combine steps 2–4 with the strips of step 6. A three-cycle forces the two outside labels into six alternating $60^\circ$ sectors. That leaves an open region with only the three cycle labels, and an exact rational certificate places the Moser spindle there: a seven-point unit-distance graph that cannot be three-coloured (Proposition 8.10, Section 8.6). | — |
+
+Step 7 rules out every cycle length that step 5 can produce. So no weak measurable five-colouring exists.
+
+![A top box, weak measurable five-colouring assumed, has one arrow down to a box for step 5, Proposition 7.1: a cycle of length 3, 4 or 5. Exactly three arrows leave that box, labelled length 5, length 4 and length 3, to boxes for Proposition 8.2 (six-direction pattern), Proposition 8.5 (antipodal pairs and parity) and Proposition 8.10 (Moser spindle). Each of the three has an arrow into one shared box marked contradiction. A grey bracket on the left marks steps 1 to 4 and 6 as inputs used inside the branches.](Figures/proof-casefan.svg)
+
+The inference to take from the diagram is that step 5 has no fourth outgoing arrow, so every way the argument can continue ends in the same contradiction.
+
+## 34. Remove a step and see what breaks
+
+A good test of a proof map is to delete one step.
+
+- **Without step 1**, the almost-everywhere exclusions of a weak colouring never become exact. Nothing later could say "this point is not robustly inside colour $i$" (Lesson 2, Section 14).
+- **Without step 3**, palettes could hold three or more labels. The counting in the five-cycle case (Proposition 8.2) uses the bound of two.
+- **Without step 5**, step 7 has nothing to refute. Steps 2–4 only restrict palettes and say where cycles could sit. They never produce a cycle of labels, a common centre, or the strips of step 6. A list of arrows and label pairs is no substitute: the sets and their exclusions must be constructed (Lesson 4, Section 25).
+- **Without the connectedness in step 5**, a straddling point need not be one unit from the interface (Lesson 3, Section 17). The manuscript uses connectedness to put every point of $\Delta(K_j)$ at unit distance from $K_j$. It uses connectedness again to find points of $K_j$ at every small distance from $x$, which gives the directions $v_j$.
+
+## 35. Where our team's results attach
+
+These results are ours, not the manuscript's. None of them changes the bound: **there is no global chromatic result here.**
+
+- **Three-centre proof of Lemma 6.3 (steps 4 and 7).** A different proof of its separation part, using three centres on a unit triangle (Lesson 5). Checked in Lean 4.34.1 as fixed- and moving-centre modules, and integrated into the team's local Lean build (R1, accepted 14 November 2026). Lemma 6.3's density assertion and Lemma 6.7 are still used.
+- **Joint-pair support theorem (the five-cycle branch of step 4).** A standalone theorem checked in Lean 4.34.1. It is not by itself a deletion of the supplied state machinery.
+- **CC60 (about the configuration of steps 5–6; not used by the manuscript).** A local obstruction about interfaces at one common centre whose directions fit in a closed $60^\circ$ arc, for any finite number of labels. Checked in Lean 4.34.1 (Lesson 4). A 20-colour construction, proved at paper-review level, shows that the $60^\circ$ cannot be widened for arbitrary finite label sets. Six-colour sharpness is open.
+- **Common-encoding refactor (the transfer of Section 32).** A Lean simplification of the supplied spectral modules, net 126 lines shorter, checked in Lean 4.34.1. It passed a full build of the 82 affected modules, root axiom checks, and checks that the public theorem statements match the originals.
+- **Finite computations.** Exact certificates about two specific unit-distance graphs derived from Heule's, and an enumeration over one finite grid of directions. They test those objects only.
+
+## A sixth place to stop and respond
+
+1. Which step turns a statement that holds almost everywhere into one that holds at every point of a set?
+2. Which step supplies connected sets, and which earlier lesson explains why connectedness matters?
+3. Does CC60, or anything in this walkthrough, show that the plane cannot be six-coloured?
+
+<details>
+<summary>Compare your reading</summary>
+
+1. Step 1, the density lemma (Lesson 2). Later steps call it repeatedly: in the palette transfer of step 2, the state lemmas of step 4, the disk inequality behind step 5, and the placement of the Moser spindle in step 7.
+2. Step 5, Proposition 7.1. Lesson 3 explains that straddling a connected set forces an exact unit contact.
+3. No. CC60 forbids one kind of local configuration, and nothing shows that every six-colouring must produce it (Lesson 4, Section 25). The walkthrough leaves the bound $6\le\chi(\mathbb R^2)\le 7$ unchanged.
+
+</details>
+
+**Feedback on Lesson 6:** name the step in Section 33 whose contribution you could not state in your own words.
+
 ---
 
 <details>
@@ -467,7 +868,7 @@ The Lean assembly packages this geometry through continuous full approximations 
 
 ## What our team adds, and what remains open
 
-Our simplification work replaces part of the strict-state machinery by three-centre arguments. The latest inspected [research status](../Main/ResearchSnapshot/local/outputs/RESEARCH-STATUS.txt), saved at 10:25 Pacific on 14 November, reports separate fixed- and moving-centre passes but an ongoing integrated rebuild. It does not yet justify declaring the full replacement integrated.
+Our simplification work replaces the strict-state separation proof by a three-centre argument (Lesson 5). Standalone fixed- and moving-centre passes were followed by an integrated local build, R1, which the team accepted on 14 November 2026: all 27 affected modules and the root axiom check pass on Lean 4.34.1, with the old strict-state lemmas removed. Independent re-runs of the contract and dependency checks are still being followed up, and nothing here has been rebuilt under Lean 4.35.0.
 
 The team's local **CC60** theorem says that a finite family of actual approaching continua at one common centre, with signed approach directions in a closed cone of width at most $60^\circ$, cannot jointly exclude all but two labels. It assumes the actual spatial-support exclusions and a weak measurable colouring. It is generic in the number of colours and includes equality at $60^\circ$. The [cone packet](../Main/ResearchSnapshot/local/outputs/cone/REPORT.txt) records successful Lean checks and standard-only axiom audits; its [independent referee report](../Main/ResearchSnapshot/local/outputs/ASTRA-CONE-REFEREE.txt) explains the geometric hypotheses.
 
@@ -480,6 +881,15 @@ CC60 is a local obstruction, not an unrestricted six-colour impossibility theore
 
 The [manuscript](../Main/ResearchSnapshot/remote/attachments/here-are-three-files-ni5n/paper.pdf), Theorems 1.1–1.4, states the supplied result and transfer theorem. The [source bundle](../Main/ResearchSnapshot/remote/attachments/here-are-three-files-ni5n/hadwiger-nelson-lean-review-bundle.md) identifies OpenAI commit <code>fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb</code>, Lean 4.34.1, and mathlib commit <code>d13f23b723b8a846827a245b89c10fc7d3f11612</code>. The [source map](SourceMap.md) gives declaration names and distinguishes supplied results from team contributions.
 
-The exposition director prepared the initial lesson with an [Astra source audit](Reviews/WeakColouringLesson-Astra.md). Claude then led the final editorial integration, using focused reader reviews and two independent Claude checks. Lesson 2 was rewritten by the Claude exposition editor from a research-worker draft; its proof was checked by an independent Claude referee and the integrated text by a separate Claude reviewer. These are bounded checks of this explanation, not independent verification of the entire supplied proof. Figures illustrate the explicit half-plane example, the sampling definition, and the slide-and-turn argument of Lesson 2 (drawn to scale, with one unit equal to 360 pixels); they do not depict a valid colouring.
+How to read the claims in this walkthrough:
+
+- **Inherited manuscript results.** The steps of the supplied proof taught in Lessons 1–3, Section 21, Sections 26–28 and the technical map are the supplied manuscript's, with its supplied Lean development.
+- **Team results checked in Lean.** CC60 (Section 24) and the three-centre proof of Lemma 6.3 (Sections 29–31) have recorded Lean 4.34.1 checks with axioms `propext`, `Classical.choice` and `Quot.sound` only. The three-centre proof is integrated into the team's local Lean build (R1, accepted 14 November 2026); follow-up re-checks are listed in Section 31. This walkthrough has not rebuilt these files.
+- **Finite computations.** Statements about specific finite graphs or grids (listed in [PROGRESS.md](../PROGRESS.md)) test those objects only.
+- **Illustrations.** Worked examples, models and figures (the half-plane example, Lesson 3's single-colour model, the interface model of Section 20, the shadow pictures of Sections 22–23, the six-colour instance and the five-label example) show how a statement works; they are not part of any proof.
+
+**There is no global chromatic result here.** The bound remains $6\le\chi(\mathbb R^2)\le7$: the manuscript's lower bound and the classical hexagon upper bound. Nothing in this walkthrough rules out six colours or constructs a six-colouring.
+
+The exposition director prepared the initial lesson with an [Astra source audit](Reviews/WeakColouringLesson-Astra.md). Claude then led the final editorial integration, using focused reader reviews and two independent Claude checks. Lesson 2 was rewritten by the Claude exposition editor from a research-worker draft; its proof was checked by an independent Claude referee and the integrated text by a separate Claude reviewer. Lesson 3 was drafted by the Claude exposition editor and checked by an independent Claude referee. Lesson 4 was drafted by the Claude exposition editor, checked by an independent Claude referee against the cone Lean sources and their recorded checks, and corrected before integration. Lesson 5 was drafted by the Claude exposition editor from the manuscript and the supplied and team Lean sources, checked by an independent Claude referee, and corrected before integration. Lesson 6 was drafted by the Claude exposition editor from the manuscript, checked step by step by an independent Claude referee, and corrected before integration. These are bounded checks of this explanation, not independent verification of the entire supplied proof. Figures illustrate: in Lesson 1, the explicit half-plane example and the sampling definition; in Lesson 2, the slide-and-turn argument (drawn to scale, with one unit equal to 360 pixels); in Lesson 3, the band, the exact contact and the missing contact without connectedness; in Lesson 4, the interface model, the shadow of a short interface and two interfaces in a narrow cone (straddle regions drawn exactly, with segment lengths exaggerated); in Lesson 5, the unit triangle of centres and the label bookkeeping; in Lesson 6, the case fan of Theorem 1.4. Each Lesson 3–6 figure was checked by script against the exact region or distances it depicts. No figure depicts a valid colouring.
 
 </details>

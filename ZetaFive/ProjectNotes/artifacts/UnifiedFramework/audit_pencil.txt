@@ -1,0 +1,146 @@
+Independent audit of Sections 4, 6 and 7 of zeta5_unified_framework.tex
+14 November 2026
+
+Scope and verdict
+-----------------
+I checked the mathematical claims against their definitions and the supplied text of Fauzan's manuscript, rather than relying on framework_checks.py or on previous research notes. No numerical checks are used as proof here. No outside source is needed: the supplied manuscript contains the needed Gram, residue, energy, and normalization arguments.
+
+The new identities in these three sections are correct, with the qualifications below. I found no fatal sign error, dimension error, hidden assumption of the irrationality of xi, or circular proof in the audited claims. The exact Laurent functional, residue-algebra description, signed-measure packaging, and primitive-size notation are valid reorganizations. The all-real-roots statement is a valid elementary consequence. The energy lemma is conditional and is not by itself a substitute for the original circle regularization and tail estimates. Most of the underlying determinant and perturbation structure is already explicit in the manuscript, so the final claim of a "substantial" conceptual reduction should be moderated or made more specific.
+
+1. Laurent coefficient identity: correct, including the sign
+---------------------------------------------------------
+Synthesis lines 300-314; source (2.2), (2.3), Proposition 2.2.
+
+The domain consists of R(t)=P(t)+sum_j a_j/(t+j^2), with finitely many simple negative-square poles. Since polynomial moments are independent of X and the pole value has X coefficient j^4,
+
+  mu_X(R)-mu_xi(R)=(X-xi) sum_j a_j j^4.
+
+At infinity,
+
+  1/(t+j^2)=t^-1-j^2 t^-2+j^4 t^-3-...,
+
+so the sum is precisely [t^-3]_infinity R. Polynomial parts make no contribution. The ordinary residue convention gives Res_infinity f(t)dt=-[t^-1]_infinity f, so the equivalent expression -Res_infinity t^2 R(t)dt also has the correct sign. The analogous tau formula has a minus sign because the X coefficient in every pole value is -1.
+
+No asymptotic convergence is needed: these are Laurent coefficients of a rational function at infinity. No use of the arithmetic nature of xi occurs. The decomposition around xi is a real identity even though xi itself is not a rational coefficient; rationality of the original matrix follows directly from (2.2)-(2.3).
+
+2. Dimension, Gram form, and finite signed measure: correct
+--------------------------------------------------------
+Synthesis lines 51-68 and 316-364; source (2.1), (2.4), (2.9), (2.10), (6.10).
+
+T=D_K/D_N is monic of degree h=K-N=37n, with exactly h distinct roots s_j=-j^2 for N<j<=K. W=D_N^5 and D_N^6/D_K=W/T. E=Q[t]_<h has dimension h. Thus the h-by-h monomial Gram matrix is exactly the source's G_K, not a changed or enlarged determinant.
+
+For t>=0, W/T is strictly positive. The density dnu(t)=w(sqrt(t))/(2sqrt(t)) dt is locally integrable at zero, since w(y) tends to 1/pi, and decays exponentially in sqrt(t) at infinity. Multiplication by the fixed rational W/T preserves finiteness of all polynomial moments. Therefore the real Gram form is strictly positive on nonzero real polynomials of degree below h.
+
+Partial fractions give
+
+  R_K(p,q)=sum_j c_j p(s_j)q(s_j),
+  c_j=j^4 D_N(-j^2)^5/T'(-j^2).
+
+The continuous positive measure plus (X-xi) sum c_j delta_(s_j) is a finite real signed measure for every real X. It has all moments required by Andreief. Absolute integrability against the product of total variations follows by expanding the squared Vandermonde into finitely many monomials and using those moments. This justifies termwise expansion of the determinant for signed measures, not merely for positive measures.
+
+The h-fold integral should be understood over R^h, since the new atomic support is negative. The synthesis leaves its bounds implicit; adding R^h would remove a possible misreading inherited from the positive integral over (0,infinity)^h.
+
+The coefficient of (X-xi)^h selects h atomic factors. Terms with repeated nodes vanish, and the h! ordered selections of the h distinct nodes cancel the factor 1/h!. This gives (det V)^2 prod c_j and hence the correct leading coefficient. In particular this signed-measure identity is exact and not a heuristic interpolation of positive measures. It is positive only at X=xi (or where the resulting matrix happens to remain positive), not an assertion that all the perturbed measures are positive.
+
+3. Frobenius pairing and resultant: correct
+------------------------------------------
+Synthesis lines 326-347; source Section 2.3 and (2.9).
+
+Let F=t^2 W p q and divide F=QT+r, deg r<h. Then F/T=Q+r/T, and [t^-1] F/T is the coefficient of t^(h-1) in r. This proves R_K(p,q)=epsilon(Hpq) with H=t^2W, including the case where F has large polynomial part.
+
+For the unweighted form F0(p,q)=epsilon(pq), the entries below the anti-diagonal (i+j<h-1) vanish and the anti-diagonal entries equal one. Reversing the h columns produces a triangular matrix with diagonal ones, so
+
+  det F0=(-1)^(h(h-1)/2).
+
+Let A_H be the multiplication-by-H matrix in Q[t]/(T). The weighted Gram matrix is F0 A_H, so its determinant is det F0 times det A_H. Over a splitting field, evaluation at the distinct roots diagonalizes A_H with eigenvalues H(s_j). Since T is monic,
+
+  det A_H=prod_j H(s_j)=Res(T,H).
+
+At s_j=-j^2, H(s_j)=j^4 D_N(-j^2)^5, nonzero because j>N. This proves precisely
+
+  det R_K=(-1)^(h(h-1)/2) prod_(j=N+1)^K j^4 D_N(-j^2)^5.
+
+Thus the claimed sign, nondegeneracy, and exact degree h are correct. One can independently recover the sign from prod_j T'(s_j)=(-1)^(h(h-1)/2)(det V)^2. It is not necessary to use numerical examples to establish either formula.
+
+This residue-algebra language is new packaging in the synthesis. The source already proves the same nondegeneracy and leading coefficient by V diag(c_j) V^T, so it does not shorten a previously missing determinant argument. It gives a basis-independent explanation of that argument.
+
+4. Real roots, distance, and evaluation kernel: correct
+-----------------------------------------------------
+Synthesis lines 366-397; source Appendix C.1-C.3.
+
+G is positive definite and M is symmetric and invertible, so B=G^-1/2 M G^-1/2 is real symmetric and invertible. Direct multiplication yields the displayed congruence, and diagonalizing B gives
+
+  Delta(xi+delta)/Delta(xi)=prod_(j=1)^h(1+delta beta_j).
+
+All beta_j are real and nonzero. Therefore all h roots (with multiplicity) are xi-1/beta_j, and
+
+  dist(xi,roots Delta)=min_j |1/beta_j|=1/max_j |beta_j|=1/||B||_2.
+
+This is an exact identity, not only a lower bound. It allows repeated roots. It is not circular: G>0 comes from the known integral, and nondegeneracy comes from the rational residue form, neither of which assumes that xi is irrational.
+
+An additional sign check is available: sign c_j=(-1)^(j-1), because sign D_N(-j^2)^5=(-1)^(5N) and sign T'(-j^2)=(-1)^(j-N-1). Sylvester inertia therefore implies floor(h/2) positive eigenvalues and ceil(h/2) negative eigenvalues in the present K=40n, N=3n family. Accordingly there are floor(h/2) roots below xi and ceil(h/2) above xi, counting multiplicities. This is consistent with the asserted real-root description but need not be added to the synthesis.
+
+For any basis orthonormal for the positive form, the residue matrix is sum c_j v_j v_j^T. Every orthonormal change from G^-1/2 gives an orthogonally similar matrix, hence the same operator norm. The triangle inequality and ||vv^T||_2=||v||^2 establish the stated Christoffel-kernel bound. It does not provide the quantitative norm estimate for free; the original lower norm bound and exterior polynomial evaluation bound are still required.
+
+The manuscript already defines G^-1/2 M G^-1/2, proves a norm bound, uses det(I+delta B) to preserve positivity, and writes the eigenvalue product explicitly in C.3. The synthesis's root-distance formulation is a useful explicit corollary of that argument. Its other perturbation claims are explanations of arguments already there, not a new method or an avoided proof.
+
+5. Energy section: algebra correct, application needs retained hypotheses
+------------------------------------------------------------------------
+Synthesis lines 529-582; source Section 6, especially Lemma 6.2 and (6.6)-(6.13).
+
+The scaled field is correct. With old y=K sqrt(t), the rational weight contributes 6 sum_(j<=N) log(t+(j/K)^2)-sum_(j<=K) log(t+(j/K)^2), while w contributes the leading -2pi K sqrt(t). The squared Vandermonde contributes 2 sum_(i<j) log|t_i-t_j|. After powers of K and lower-order density factors are retained separately, this is the displayed discrete energy with the given V.
+
+For E_m(t), increasing log(t+u^2) gives E_m>=0 by right Riemann sums. For t>0 the derivative integrand 1/(t+u^2) is decreasing in u, so E_m'<=0. At zero,
+
+  E_m(0)=2 log(m!)-2m log m+2m,
+
+since the log K contributions cancel exactly. Elementary factorial bounds give O(1+log m), uniformly in t>=0. This part is already the source's (6.12), not an additional simplification of an endpoint gap in the source.
+
+The dual lemma is algebraically valid as stated: write nu=eta-rho, expand I(nu), use I(nu)<=0, and integrate the potential bound against eta. Equal mass explains why a suitable zero-mass negativity theorem is available; it does not by itself imply negativity under all possible vague meanings of "finite energies."
+
+For a complete standalone statement, define U^rho(t)=integral log|t-u| drho(u), which is currently missing from the synthesis. State the ambient space and explicit sufficient hypotheses. The source's precise usable version is: nu is a finite real signed measure on C, has compact support and total mass zero, and integral integral |log|z-w|| d|nu|(z)d|nu|(w)<infinity. Then I(nu)<=0. The source proves this by Gaussian positive definiteness and a dominated-convergence representation of log, so no external potential-theory authority is required here.
+
+There is an application issue that should be made explicit, although it does not invalidate the conditional lemma. The certificate inequality is stated for real t>=0, whereas the regularized eta=sigma lives on complex circles. One cannot simply apply the real-axis potential inequality on the support of sigma. The source instead compares integral U^rho d omega_i to U^rho(t_i), with a controlled O(sqrt(epsilon)) error, and applies the certificate at the real center t_i. It also separates each circle's self energy log epsilon. This gives (6.6). The synthesis acknowledges that "circle error" remains, so it does not explicitly make the invalid shortcut, but its phrase "the key certificate lemma is short" can conceal this additional step.
+
+Likewise the uniform upper bound on the discrete energy is insufficient for integrating over an unbounded configuration space. The retained exp(-sqrt(t)) factor, modified-field bound, and remaining polynomial density integration in (6.7)-(6.13) are essential. The synthesis correctly says that these remain to be controlled.
+
+Thus the dual lemma is a useful abstraction of the algebra in Section 6, but is not a replacement for the substantive regularization, certificate, and tail proof. Calling rho a dual certificate is apt, while the source already expressly says that the exact equilibrium measure is unnecessary.
+
+6. Primitive evaluation invariant and finishing principle: correct
+-----------------------------------------------------------------
+Synthesis lines 584-641; source Section 5, Section 7, Appendix C.3.
+
+For A=sum a_i X^i !=0, v_p^G(A)=min_(a_i!=0) v_p(a_i). Only finitely many primes have a nonzero minimum. The positive rational content c has exactly those valuations: clear denominators of the coefficients, take their integer gcd, and divide by the common denominator. Thus A/c is primitive in Z[X] and sum_p v_p^G(A) log p=log c.
+
+For rational r!=0, cont(rA)=|r|cont(A); hence J_xi(rA)=J_xi(A). The product identity for a rational scalar is used here; there is no p-adic evaluation of xi and no unproved product formula involving xi.
+
+If L_p<=v_p^G(F), m=prod p^-L_p, and the inequalities also hold outside the finite support (where L_p=0), then v_p^G(mF)>=0 for all p, so Q=mF is integral. Also
+
+  log Q(xi)-J_xi(F)=sum_p (v_p^G(F)-L_p)log p=log cont(Q)>=0,
+
+provided F(xi)>0 and m>0 as in the manuscript. This verifies the displayed direction and the treatment of negative L_p. If one discards negative L_p, denominators may remain; if one discards positive L_p, valid arithmetic savings are lost. The synthesis accurately distinguishes these roles.
+
+For xi=a/b and d=deg A, b^d A(a/b)/cont(A) is a nonzero integer, so J_xi(A)>=-d log b. Degree O(K) contradicts a negative quadratic upper bound. This is a correct criterion with no coefficient-height hypothesis. Nonvanishing is indispensable and is explicitly assumed. For approximation at a nearby rational point, the additional perturbation estimate remains necessary to obtain nonvanishing; the source and synthesis both retain it.
+
+The manuscript already introduces P_K=Delta_K/cont_Q(Delta_K), proves Q_K,M=a_K,M P_K with positive integer a_K,M, and transfers the upper bound to P_K. J_xi is therefore a convenient logarithmic notation for an already present scalar invariance, not a new cancellation or stronger irrationality criterion. It also does not remove the need to construct certified arithmetic normalization bounds.
+
+7. Genuine reorganization versus restatement
+--------------------------------------------
+Genuine useful additions in the audited sections:
+
+* Identifying the X slope with one Laurent coefficient and hence a residue at infinity.
+* Interpreting that slope as the Frobenius pairing epsilon(Hpq) on Q[t]/(T), with a signed resultant determinant.
+* Packaging the positive continuous form and finite residue form into one signed measure and one Andreief polynomial identity.
+* Explicitly interpreting the relative norm as exact reciprocal distance from xi to the real roots.
+* Giving the scalar bookkeeping a compact invariant J_xi and isolating the short integer obstruction.
+
+Already explicit in the supplied source:
+
+* The rational bilinear/moment matrix and cancellation D_N^6/D_K=D_N^5/(D_K/D_N).
+* Residue factorization V diag(c_j) V^T, degree h, leading coefficient and positive Gram representation.
+* Andreief at xi, scaled logarithmic energy, uniform endpoint sum-integral estimate, and equal-mass comparison measure.
+* The fact that the comparison measure need not be the equilibrium measure.
+* The matrix G^-1/2 M G^-1/2, its norm estimate, perturbation identity, eigenvalue product and coefficient-height consequence.
+* Primitive normalization and transfer of the explicit polynomial bound to it.
+
+Recommended edits are therefore modest: define U^rho, spell out the precise zero-mass lemma hypotheses or point directly to source Lemma 6.2, show the real-center-to-complex-circle error in one sentence/formula, make the signed integral's domain explicit, and replace the broad "conceptual reduction is substantial" claim with a specific statement that the note consolidates the dependence structure without removing the original quantitative estimates. This audit does not verify the source's sixteen-arcsine certificate, prime-budget inequalities, asymptotic uniformity, or final numerical sign. Those remain inputs rather than independently established conclusions.

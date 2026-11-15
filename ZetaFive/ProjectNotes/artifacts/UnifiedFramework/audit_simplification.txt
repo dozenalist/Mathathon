@@ -1,0 +1,232 @@
+Independent simplification and arithmetic-dependency audit
+14 November 2026
+
+ADDENDUM FOLLOWING USER CLARIFICATION
+
+The user clarified: "Interpretation is good. I'm not looking for a shorter
+argument, I'm looking for a better one." On that criterion the note has clear
+value. The length-focused conclusions below should be read as an inventory of
+what is and is not replaced, not an objection to useful explanatory structure.
+
+The six strongest improvements are:
+
+1. Axiomatic summation: the difference and reflection laws derive the harmonic
+   increments and isolate the single free boundary constant. This makes the
+   functional's apparently ad hoc signs and constants checkable and motivated.
+2. The Stieltjes function Phi: integer samples and large-parameter moments
+   explain why the pole and Bernoulli formulas belong together. This is a real
+   explanatory identity, not a similarity of notation.
+3. The affine Gram form: its positive value at xi and rational residue slope
+   turn Appendix C into an expected next step. Root distance is an informative
+   exact geometric consequence of the relative norm, even if not needed to
+   shorten the proof.
+4. Distinct local algebras and the rank defect: the actual-pole quotient handles
+   residues, the jet quotient organizes allocation, and polynomial quotients
+   explain why full arithmetic does not reduce to the finite residue algebra.
+   Explicitly stating these boundaries prevents a plausible incorrect shortcut.
+5. The primitive evaluation invariant: it reveals the actual scalar-independent
+   target and makes it clear why signed valuation gains must be retained.
+   Original normalization choices become certificates for one objective.
+6. The Gram measure versus the potential comparison measure: distinguishing the
+   actual moment measure from an independently chosen dual certificate explains
+   what is structural and what was optimized/chosen numerically.
+
+For a better argument, retain J and the exact degree/residue interpretation if
+they make those roles visible; brevity is not the controlling criterion. The
+optional deletion identified below remains true but should not dominate the
+revision. Keep Euler/cotangent context when it motivates the actual kernel,
+while placing the separate modular connection and regularized half-lattice
+formula where they do not interrupt the proof dependencies.
+
+The main exposition recommendation is to replace the broad assertion that all
+constructions are "the same object" by a small number of precise bridge lemmas,
+then label each later use as an identity, completion, estimate, or certificate.
+For example, a rational bilinear form on chosen degree<h representatives is
+not automatically a bilinear form descending to the quotient by T_K: only the
+residue slope enjoys that quotient interpretation. An explicit warning at this
+point is more informative than a large dictionary of purported synonyms.
+
+The original quantitative hypotheses should be visible at their point of use:
+coefficientwise Gauss valuation, unit-separated poles, leading-degree bound,
+actual Q_p rank, nonpositive half-integral weights, fixed cutoff before taking
+K to infinity, equal masses in the energy estimate, and integrable tail after
+uniform configuration bounds. Interpretation is most valuable when it explains
+why each restriction exists and makes invalid extensions easy to recognize.
+
+No numerical or proof-correctness conclusion about the original theorem follows
+merely from a successful conceptual organization. The dependency list below is
+therefore a useful part of a better presentation, not evidence against it.
+
+Scope: zeta5_unified_framework.tex versus the local text of Fauzan's manuscript,
+Sections 2--7 and Appendix C. This is a dependency/exposition audit, not an
+independent verification of every numerical certificate in Appendices A/B.
+
+MAIN CONCLUSION
+
+The note is a useful conceptual reformulation. It is not presently a shorter
+proof of the claimed irrationality theorem. Its arithmetic and potential bounds
+are imported, and almost every expensive part of the original proof remains.
+The new analytic representations, residue-algebra terminology, signed-measure
+Andreief formula, and invariant J add exposition unless they replace old work.
+Calling the conceptual reduction "substantial" is defensible only if explicitly
+limited to the organizational picture, not proof length or a reduction of the
+certified numerical work. Prefer "A conceptual organization of the same proof."
+
+A GENUINE, MODEST DELETION
+
+The proof of exact degree h, original Section 2.3/(2.9), is unnecessary for the
+irrationality argument and for the bounds in Appendix C.
+
+1. Each entry of the h by h matrix is affine in X, hence deg Delta <= h.
+2. The positive Gram realization at xi implies Delta(xi)>0, hence Delta is not
+   the zero polynomial.
+3. If Q is integral, b^h Q(a/b) is an integer for every degree <= h. Exact degree
+   is not used in the final contradiction.
+4. C.1 requires the formula for the slope M and its norm bound, but not det M != 0.
+   C.2 requires I+delta B positive; zero eigenvalues of B cause no difficulty.
+   C.3's eigenvalue product and coefficient bound also allow zero eigenvalues.
+
+Therefore remove Section 2.3 from the main proof and weaken the intermediate
+polynomial-existence statement from "degree h" to "degree at most h". The local
+bases retain dimension h; that is a distinct fact and is unaffected. If retaining
+the original exact-degree theorem verbatim, (2.9) remains a separate assertion.
+
+If the exact-degree assertion is desired for its own sake, the original proof is
+already extremely short: M=V diag(c_j) V^T and Vandermonde cancellation. The
+new quotient-algebra/Frobenius/resultant argument does not shorten it. Likewise,
+signed Andreief is a neat unification but longer than proving positivity by
+the positive Gram quadratic form and degree by the one Vandermonde calculation.
+
+ARITHMETIC CHECKS AND LIMITS
+
+I found no algebraic error in the note's weight-plus-rank lemma, the quoted
+limiting-profile identities, or the three displayed periodic Bernoulli tail
+identities. Their essential qualifications are correctly preserved:
+
+* Tate-algebra evaluation loses at most one p-adic power; integrality at low
+  degree and near-pole hypotheses are additional work, not consequences of
+  the formal summation symbol alone.
+* The near poles in original Lemma 3.1 must be unit separated, with d(r)<p;
+  the leading numerator's degree restriction is needed. The note says this.
+* The inner jet algebra and outer actual-pole algebra are different quotients.
+  The note correctly distinguishes them. Calling them one quotient algebra
+  would be false. They only provide coordinate frames on the same polynomial
+  space, with different useful congruence properties.
+* In A+p^{-1}L, nonpositive half-integral row weights are essential for the
+  correction min(rank L, number of zero weights). For arbitrary positive or
+  arbitrary real weights the simplified bound need not hold. The rank must
+  control actual minors over Q_p (or the coefficient fraction field), not only
+  rank after reduction modulo p. Original (4.10) gives genuine Q_p rank.
+* The residue algebra describes the coefficient of X, not the full rational
+  functional. Polynomial quotients produce the correction L and cannot be
+  discarded merely because the slope has a finite algebra description.
+* The p-adic far-pole Laurent series and the real asymptotic Laurent series
+  share formal coefficients. Their sums are not automatically one common
+  numerical object. The note's caveat is necessary and should remain.
+
+The small-prime f_i are not literally a basis of E_K=Q[t]_{<h}: f_i equals
+(D_N/(N!)^2)^3 q_i and generally has larger degree. The q_i are a rational basis
+of E_K; multiplication by the fixed weight identifies that space with the
+f_i-space. In the original denominator D_K, and with the (K!)^2 scalar, the
+resulting Gram determinant is F_K=S_K Delta_K. The note currently acknowledges
+this rescaling; make the identification explicit if asserting that every listed
+object is a basis of exactly E_K. "Normalized Newton basis on square nodes" is
+more precise for q_i than "interpolation polynomials", which might suggest a
+cardinal Lagrange basis.
+
+The rank-and-weight discussion is the original Lemma 4.2 in conceptual language.
+Its proof in the source is already short; no hard lemma has been removed.
+
+BERNOULLI TAIL: EXACT IDENTITIES, LIMITED UNIFICATION
+
+With alpha=3/40 and lambda=37/40, the source has
+F=4lambda+2lambda{x}-12lambda{alpha x},
+P=74{alpha x}(1-{alpha x})-lambda{x}(1-{x}),
+C=(74/alpha)G_0({alpha x})-lambda G_0({x}),
+G_0(v)=v(1-v)(2v-1)/6=-B_3(v)/3.
+Thus the note's equations are exact:
+F+lambda=2lambda B_1({x})-12lambda B_1({alpha x});
+P-Pbar=lambda B_2({x})-74 B_2({alpha x});
+C=(lambda/3)B_3({x})-(74/(3alpha))B_3({alpha x}),
+Pbar=(74-lambda)/6=2923/240.
+
+These identities explain why two integrations by parts work. They do not
+derive the allocation profile Gamma, the rank-corrected outer profile, the
+decomposition R=xF+Q, the Q bounds, the cutoff estimates, or the rational
+integrals. Bernoulli polynomials recur because both problems involve lattice
+summation. That is a genuine shared mechanism, but it does not make the tail
+profile the same functional as tau, or remove the arithmetic calculation.
+
+HARD INPUTS THAT REMAIN NECESSARY
+
+1. Original Proposition 2.2: the positive moment representation (or a fully
+   proved replacement with the same polynomial and pole moments).
+2. Lemma 3.1: analytic completion with one-power loss, principal parts,
+   unit separation, harmonic-index and degree conditions.
+3. Lemma 3.2: distribution with Y=p^5 X+C_p and C_p in p^5 Z_p.
+4. Lemma 3.3 and (3.11)--(3.12): small-prime integer-valued basis and coarse
+   denominator estimate; the exact scalar S_K must be tracked.
+5. Proposition 4.1: inner allocations, nonnegative block dimensions,
+   unimodularity, leading degrees <=p+1, and all cross-source weight checks.
+6. Outer (4.10)--(4.14)/Proposition 4.3: corrected moments, actual rank bound,
+   pole congruences and divided differences, zero-class cases, class counts,
+   and integrality for p>K. Lemma 4.2 alone is insufficient.
+7. Proposition 5.1: an explicit signed prime normalization and integrality
+   at all primes, including those outside the finite product.
+8. (5.7): uniform O_M(1) limiting errors, including allocation transitions;
+   Proposition 5.2: prime-number-theorem conversion and small-prime remainder.
+9. The exact outer integral, bounded inner integral, tail decomposition,
+   remainder bounds and cutoff arithmetic in Section 5/Appendix B.
+10. Lemma 6.1/Appendix A: the explicit positive comparison measure, global
+    potential inequality and energy/cost certificate. No generic Stieltjes,
+    modular or orthogonal-polynomial interpretation supplies these constants.
+11. Lemma 6.2 and Section 6.1: zero-mass energy, regularization, error control,
+    and the retained integrable factor on the unbounded domain.
+12. Section 6.2: scaled weight bound, Riemann-sum error, factorial estimate
+    and cancellation of K^2 log K terms.
+13. Section 7/Appendix B: the final strict sign margin at the selected cutoff.
+14. For the approximation/height extension only: C.1's interval restriction,
+    slope-residue estimates, Legendre evaluation bound and explicit exponent;
+    C.2's matching of constants. The spectral factorization alone does not
+    provide the relative norm exponent.
+
+MINIMAL CORE WORTH RETAINING
+
+For a genuinely concise reorganization, retain these four items:
+
+A. One short integer-polynomial criterion: degree O(K), positive/nonzero value
+   at xi, and exponentially small quadratic value imply irrationality.
+B. The weighted pullback mu_X(R)=tau_X(x^5R(-x^2)), together with an economical
+   definition of tau_X and the positive realization at xi.
+C. G_K(X)=G_K(xi)+(X-xi)M_K, with the positive Gram form and the finite residue
+   expression for M_K. Affine entries alone give the required degree bound.
+D. Two explicitly labelled quantitative inputs, finite-prime and real-place,
+   followed by the short sign comparison. Their proofs/appendices remain.
+
+For Appendix C retain B=G^{-1/2}MG^{-1/2} and det(I+delta B); these make the
+relative norm estimate's purpose clear. The real-root/root-distance observation
+is a valid useful corollary, but unnecessary to the irrationality proof.
+
+Move or cut from the main proof: the regularized half-lattice formula; the
+full Abel--Plana extension if only the pulled-back positive formula is needed;
+Eisenstein/Eichler context; sine/gamma product discussion; the Frobenius/resultant
+argument; signed-measure Andreief at arbitrary X; the optional reproducing
+kernel; most of the dictionary; and the periodic-Bernoulli rewriting if the
+original elementary primitives are already presented.
+
+The invariant J is correct and useful for seeing normalization independence.
+However, it is additional notation, not an arithmetic saving. Original C.3
+already compares the explicit integral normalization with the primitive one.
+One can give the final proof using Q=m S Delta without computing content or
+introducing J. Keep J as an optional remark, or use it consistently to replace
+other normalization prose; do not claim it removes the need to produce the
+finite-prime bounds L_p. Likewise the primes' valuations are of rational
+polynomial coefficients, not p-adic values assigned to zeta(5).
+
+SUGGESTED ACCURATE CLAIM
+
+"This reformulation identifies one functional family and one affine Gram
+matrix behind the original constructions. It clarifies their dependencies but
+retains the original local and potential estimates. For the irrationality and
+approximation conclusions alone, the exact-degree calculation can be omitted:
+the elementary upper bound deg Delta_K <=h is sufficient."

@@ -1,0 +1,49 @@
+{
+  "leanExe": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\elan\\toolchains\\leanprover--lean4---v4.34.1\\bin\\lean.exe",
+  "expectedVersion": "4.34.1",
+  "expectedCommit": "5045d0056413266e57c625dcd7c365b10e377c52",
+  "mathlibRoot": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4",
+  "requiredMathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "leanPath": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/build;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean",
+  "workingDirectory": "threecentre-r1/src",
+  "timeoutSeconds": 480,
+  "id": "threecentre-r1-16-continuumlimits",
+  "status": "passed",
+  "source": "threecentre-r1/src/OAI/Geometry/PlaneColoring/ContinuumLimits.lean",
+  "output": "threecentre-r1/build/OAI/Geometry/PlaneColoring/ContinuumLimits.olean",
+  "dependsOn": "threecentre-r1-15-sectors",
+  "expectedSourceSha256": "9dbc8bd1ea66d17652b64f98de2d2bbd6919fbbd8967bad36c84c08e15ba5ed3",
+  "purpose": "Fresh affected-closure rebuild after strict-state branch deletion and actual3centreconsumer integration; copiedbaselineoleans are not validation.",
+  "previousAttempt": {
+    "status": "blocked_dependency"
+  },
+  "priorAttempts": [
+    {
+      "status": "blocked_dependency",
+      "runner": "PowerShell legacy"
+    }
+  ],
+  "profile": false,
+  "maxRssMiB": 8192,
+  "maxPrivateMiB": 12288,
+  "startedUtc": "2026-11-14T20:32:20.005719+00:00",
+  "sourceSha256": "9dbc8bd1ea66d17652b64f98de2d2bbd6919fbbd8967bad36c84c08e15ba5ed3",
+  "actualVersion": "Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "runner": "python",
+  "command": [
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\elan\\toolchains\\leanprover--lean4---v4.34.1\\bin\\lean.exe",
+    "-o",
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\threecentre-r1\\build\\OAI\\Geometry\\PlaneColoring\\ContinuumLimits.olean",
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\threecentre-r1\\src\\OAI\\Geometry\\PlaneColoring\\ContinuumLimits.lean"
+  ],
+  "processId": 44660,
+  "elapsedSeconds": 89.09,
+  "availableMiB": 8915.80078125,
+  "workingSetMiB": 3283.0546875,
+  "privateMiB": 8100.81640625,
+  "peakWorkingSetMiB": 3283.0546875,
+  "peakPrivateMiB": 8100.81640625,
+  "exitCode": 0,
+  "finishedUtc": "2026-11-14T20:33:49.136020+00:00",
+  "log": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\threecentre-r1-16-continuumlimits.python.log"
+}

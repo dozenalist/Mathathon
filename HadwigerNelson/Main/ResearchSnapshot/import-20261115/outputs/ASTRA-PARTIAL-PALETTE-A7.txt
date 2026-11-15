@@ -1,0 +1,276 @@
+ASTRA PARTIAL PALETTE A7 — TWO EXACT LIMITS OF THE A5 MECHANISM
+14 November 2026. Focused paper-level research pass; no builds or searches.
+
+RESULTS
+
+(I) For the partial mandatory field F in the question, each entire
+two-list locus R_j={z:L(z)=A_j} is UNIT-DISTANCE INDEPENDENT: there is
+not even one unit edge between two vertices carrying the same two-list.
+This blocks the direct A5 binary-rigidity ignition from these lists.
+
+(II) More strongly, the entire support of the A5 construction,
+  e(pi/3)H union e(-pi/3)H union {i/2},
+has an explicit proper colouring from the NEW lists. This includes all
+possible choices of the odd walks inside those two H lobes. A suitable
+recolouring of a diameter-less-than-one subcell removes the obstruction.
+
+These are rigorous obstructions to that SPECIFIC method/configuration.
+They do NOT establish that the full partial list field is colourable,
+that q4 or q5 is realizable, or that all one-centre methods fail. Mixed
+3/4/5-list configurations elsewhere, or the richer actual hit constraints,
+remain possible sources of an obstruction. No global six-colouring is
+constructed. The result uses only the mandatory F, not additional hits.
+
+1. NORMALIZATION AND THE ACTUAL A.E. SOURCE BRIDGE
+
+Read certificate:
+  work/openmath-supervisor/checkins/20261114T194118Z/
+    q4-q5-forced-palette.json.
+Both records give masks 18,36,9 repeated on phase (0,30 degrees),
+which are exactly {1,4},{2,5},{0,3}. The other phase gives masks
+4,8,2 repeated, exactly {2},{3},{1}. This checks the label normalization
+and the reported field. I did not rerun the parent's witness enumeration.
+
+Put
+  A0={1,4}, A1={2,5}, A2={0,3},
+  a0=1, a1=2, a2=3.
+For i modulo 3, and with angular period pi,
+  F(theta)={a_i} on (i*pi/3-pi/6, i*pi/3),
+  F(theta)=A_i   on (i*pi/3, i*pi/3+pi/6).             (1)
+This is the six-bin field stated in the assignment. Its covariance is
+  F(theta+pi/3)=tau(F(theta)),
+where tau=(1 2 3)(4 5 0), not a numeric label shift modulo six.
+
+Boundary precision: F has changes at all multiples of pi/6, hence twelve
+boundary directions around the full circle. Generic interior sum
+representations avoid the corresponding twelve unit circles. If one
+retains the earlier domain excluding only the six original sector-boundary
+circles (directions pi/6+k*pi/3), there is a natural SOURCE-LICENSED
+completion at the six new nested jumps theta=i*pi/3: use the common
+singleton {a_i}, not the whole pair A_i. Indeed {a_i} occurs throughout
+the original open 60-degree sector on both sides of that jump.
+All results below hold on generic interior representations, and also
+with this conservative completion at the new jumps.
+
+Suppose the actual centre palette contains (1) almost everywhere.
+For each label forced on an open angular interval, its periodic real
+lift is a RealState. At every interior angle the complement of that
+interval has line-density zero. The same holds at a nested jump for
+the common singleton, using the entire original 60-degree sector.
+States.lean:106, states_densityOne, then gives
+  DensityOne {q:c(q) in L(z)} at x+z,
+where
+  L(z)=Fin 6\(F(a) union F(b)), z=e(a)+e(b),
+and the two directions are nonparallel. This needs no B2 or palette-size
+premise. The usual finite_density_realization consumer remains available
+for any actual finite obstruction. The issue below is geometric, not a
+missing a.e. or source-typing step.
+
+2. COMPLETE DESCRIPTION OF THE TWO-LIST LOCUS
+
+Translate x to 0. Write s=sqrt(3)/2 and e(t)=exp(it). Define
+  U=e((pi/3,pi/2)), V=e((2pi/3,5pi/6)),
+  K=U+V, M0=U-V.
+(The subscript distinguishes M0 from the different subcell M in Section 5.)
+
+The entire locus with L=A0 is exactly
+  R0=K union (-K) union M0 union (-M0).               (2)
+To leave only A0, the excluded union must have four labels. Since F has
+size at most two, this requires two FULL distinct pairs A1 and A2.
+Their full-pair direction arcs are U,-U and V,-V. The four combinations
+give exactly (2). No singleton endpoint, including a conservatively
+completed nested boundary, can produce a two-list.
+Rotation and the label permutation tau give
+  R_j=e(j*pi/3)R0, j=1,2.                             (3)
+There are no other two-lists.
+
+3. EACH OF THE FOUR PIECES HAS ALL DISTANCES <1
+
+Let d=2 sin(pi/12)=sqrt(2-sqrt(3)). A chord between two points of U has
+length <d, and, up to reversal, its direction lies in (5pi/6,pi).
+A chord between two points of V has length <d and direction, up to
+reversal, in (7pi/6,4pi/3). The angle between the two chosen chord
+directions lies between pi/6 and pi/2. Consequently, for any such
+chords h,k (zero chords included),
+  |h dot k| <= s |h| |k|.
+For either sign,
+  |h +/- k|^2 <= |h|^2+|k|^2+2s|h||k|
+                 < (2+sqrt(3))*d^2 = 1.              (4)
+Thus both K=U+V and M0=U-V have every pairwise distance strictly below
+one. Their negatives do too. The strict bound follows from the open
+30-degree arcs; no sampled grid or endpoint approximation is involved.
+
+4. EVERY CROSS-PIECE DISTANCE IS >1
+
+The source intervals immediately give the exact coordinate bounds
+  (u,v) in K:   -s<u<0,        s+1/2<v<1+s;
+  (x,y) in M0:   1/2<x<s+1/2, 0<y<1/2.              (5)
+Hence:
+  K versus M0: horizontal gap >1/2, vertical gap >s, so distance >1;
+  K versus -M0: vertical gap >s+1/2>1;
+  K versus -K: vertical gap >2s+1>1;
+  M0 versus -M0: horizontal gap >1;
+  M0 versus -K: vertical gap >s+1/2>1;
+  -K versus -M0: follows by negating the first case.
+These are all six unordered pairs of distinct pieces.
+
+Combining (4) and (5), NO TWO POINTS OF R0 ARE AT UNIT DISTANCE.
+Rotations prove the same for R1 and R2. In particular, arbitrary choices
+of one label from each two-list give a proper colouring of the entire
+two-list locus: within a fixed R_j there are no edges, and labels from
+different A_j are disjoint. One especially simple choice is the constant
+label a_j throughout R_j.
+
+Precise consequence for A5: the directly forced open binary regions
+cannot supply even one unit neighbour carrying the SAME forced pair.
+Thus binary_open_local_rigidity with binary restrictions obtained solely
+by these direct two-list inclusions has no geometric starting point.
+This does not forbid a later argument from proving stronger restrictions
+on some 3/4/5-list region and then applying rigidity there.
+
+5. AN EXPLICIT RECOLOURING OF THE ENTIRE OLD A5 SUPPORT
+
+Use the same full H lobe as in A5:
+  H=e((pi/6,pi/2))+e((pi/2,5pi/6)).
+Its NEW lists all contain A0, because its two source sectors never
+contain a label in A0. Define the smaller open subcell
+  M=e((pi/6,pi/3))+e((2pi/3,5pi/6)).                 (6)
+On M the first source palette is the singleton {2} and the second is
+A2={0,3}, so the NEW list is exactly
+  L=A0 union {5} on M.                                (7)
+
+M has diameter strictly below one. Its two 30-degree source arcs have
+chord directions (up to reversal) in (2pi/3,5pi/6) and (7pi/6,4pi/3).
+Their separation is between pi/3 and 2pi/3, so the absolute scalar
+product is at most half the product of chord lengths. With the same
+d as Section 3,
+  diam(M)^2 <= 3*d^2=6-3sqrt(3)<1.                    (8)
+The weak inequality on the diameter allows closure endpoints; every
+actual pair has the corresponding strict bound.
+
+Recall the accepted elementary H half-lobe fact (A4, Section 4c):
+each of H intersect {Re>=0} and H intersect {Re<=0} has all distances
+strictly below one. A short verification is as follows. The right half
+lies in the three open unit disks centred at
+  C=(0,1), Q=(s,3/2), E=(0,2),
+whose centres form a unit equilateral triangle. For C this is the H
+defining circle inequality; for Q use 0<=u<s and 1<v<2. For E use
+|q-E|^2=|q-C|^2+3-2v when v>=3/2, and when v<=3/2 use
+  u<sqrt(3)(v-1),
+  |q-E|^2<3(v-1)^2+(v-2)^2
+           =1+2(2v-3)(v-1)<=1.
+The Reuleaux triangle has diameter one; membership in all three OPEN
+disks makes the distances strict. Reflect for the left half.
+
+Consequently the following is a proper NEW-list colouring of ALL H:
+  colour 5 on M;
+  colour 1 on H\M with Re>=0;
+  colour 4 on H\M with Re<0.                          (9)
+The two old half-lobes remain independent, M is independent by (8),
+and its new label is distinct from both old labels. This is a pointwise
+proper colouring, not merely an a.e. assignment.
+
+6. ALL OLD CENTRAL CONTACTS LAND IN THE RECOLOURED SUBCELL
+
+Let A=e(pi/6)=(s,1/2), zprime=A/2=(s/2,1/4).
+The key exact contact-localization statement is
+  q in H and |q-zprime|=1  ==> q in M.                (10)
+It concerns the ENTIRE unit-circle intersection with H, not just the
+two explicit contacts formerly chosen in A5.
+
+Proof. Write q=(u,v). The unit equation gives
+  u^2+v^2=s*u+v/2+3/4.                               (11)
+From the exact H geometry (A5, Section 2),
+  |u|<s, 1<v<2, |q-A|>1,
+  |u|<sqrt(3)(v-1).                                  (12)
+The last inequality follows from the lower boundary arc lying above
+its chord from (0,1) to (+/-s,3/2).
+
+First v>21/20. Otherwise (12) gives |u|<sqrt(3)/20 and hence
+  |q-zprime|^2
+     <= (3sqrt(3)/10)^2+(4/5)^2=91/100<1,
+a contradiction.
+
+Let B=e(pi/3)=(1/2,s), D=e(2pi/3)=(-1/2,s). Using (11),
+  |q-B|^2-1=(s-1)u+(1/2-2s)v+3/4
+              < (s-s^2)+(1/2-2s)+3/4
+              =1/2-s<0,                             (13)
+where u>-s, v>1, and s^2=3/4 were used with the correct negative
+coefficient signs.
+Also |q-A|>1 and (11) imply
+  u<(3/2-v)/(2s).
+Therefore
+  |q-D|^2-1=(s+1)u+(1/2-2s)v+3/4
+              <3/2+3/(4s)-(2/s)v
+              <3/2-9sqrt(3)/10<0,                   (14)
+using v>21/20 and sqrt(3)>5/3.
+
+Finally write the unique H representation as q=e(a)+e(b), where
+  pi/6<a<pi/2<b<5pi/6.
+Put theta=(a+b)/2 and delta=(b-a)/2. For gamma=pi/3 or 2pi/3,
+the inequality |q-e(gamma)|<1 is equivalent to
+  delta>|theta-gamma|,
+by q=2cos(delta)e(theta). It says gamma lies strictly between a and b.
+Equations (13)-(14) thus give a<pi/3 and b>2pi/3, proving (6) and (10).
+
+7. COLOURING BOTH H COPIES AND THE FOUR-LIST VERTEX
+
+Put R=e(pi/3) and z0=i/2. The two original A5 lobes are
+  H1=R H, H2=R^(-1)H.
+Their NEW lists always contain A1 and A2 respectively. On their
+rotated subcells the extra labels are
+  L=A1 union {0} on R M,
+  L=A2 union {4} on R^(-1) M.                         (15)
+These follow directly from the source intervals in (6), shifted by
++pi/3 and -pi/3. In particular, the second line uses the singleton {1}
+on (-pi/6,0), together with the full A1 on (pi/3,pi/2).
+
+Define a colouring of H1 union H2 union {z0}:
+  On H1, write w=R^(-1)z:
+    if w in M use 0;
+    otherwise use 2 if Re(w)>=0, and 5 if Re(w)<0.
+  On H2, write w=R z:
+    if w in M use 4;
+    otherwise use 0 if Re(w)>=0, and 3 if Re(w)<0.
+  At z0 use 2.                                       (16)
+Each H-copy is properly list-coloured by precisely the argument for (9).
+
+There are NO unit edges between H1 and H2. Their angular ranges are
+(2pi/3,pi) and (0,pi/3), so their angular separation is strictly greater
+than pi/3 and less than pi. Both radii are greater than one. Therefore
+  |p-q|^2 > r^2+t^2-r*t=(r-t)^2+r*t>1.
+
+For contacts with z0, R^(-1)z0=zprime, so (10) places every H1 unit
+neighbour in R M, where (16) assigns label 0. Reflection in the imaginary
+axis fixes H and M and sends zprime to R z0. Hence every H2 unit
+neighbour lies in R^(-1)M, where (16) assigns label 4. Neither equals
+the chosen label 2 at z0. Its list is still A1 union A2: its source
+angles are arcsin(1/4) and pi-arcsin(1/4), whose forced sets are A0
+and {1}, respectively.
+
+Thus (16) is a concrete proper colouring from the NEW lists on the
+ENTIRE support H1 union H2 union {z0}. Restriction gives a valid
+colouring for every finite configuration inside that support, including
+every possible choice of A5's connecting odd walks and all extra unit
+edges among their vertices.
+
+8. PRECISE FRONTIER LEFT BY THIS PASS
+
+The two-list field itself has no same-list unit edges, so the old active
+binary lobes disappear completely. The stronger explicit map (16)
+shows that adding the particular four-list vertex i/2 and retaining the
+two old H regions does not restore the obstruction: newly available
+labels can absorb every central contact in independent subcells.
+
+This does not colour the whole radius-two domain. It does not check
+edges from (16) to other list regions, and it does not realize the
+additional disjunctive inner/outer hit conditions of q4 or q5. Either
+those richer constraints or a configuration using other mixed-list
+regions might still exclude the actual partial field. No assertion of
+general one-centre impossibility or sufficiency is made.
+
+Deliverable grade: COMPLETE exact proofs of (I) and (II), providing the
+requested rigorous obstruction to the specified A5 method. The full
+partial-field exclusion/colouring remains unresolved. No Lean or external
+service run, new numerical colouring bound, or exhaustive graph search
+is claimed.

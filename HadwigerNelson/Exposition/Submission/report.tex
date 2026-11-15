@@ -1,0 +1,1178 @@
+% Hadwiger--Nelson entry: self-contained report source.
+% Single file by rule: no \input, no external .bib. Figures are described in words (Section 6).
+% DRAFT STATUS: frame written 2026-11-15 ~00:40Z by the exposition desk. Items marked [TEAM]
+% are decisions or facts only the human team can supply. Claims freeze 18:00Z.
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs,tabularx,array}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\st}[1]{\textsc{[#1]}}
+
+\title{Five colours are not enough: a guided reading of the supplied proof,\\
+and local results about interfaces at a common centre}
+\author{[TEAM: names and affiliations --- title block only]\\
+Track: [TEAM: Geometry or Combinatorics]\\
+Repository: [TEAM: URL] at commit [PIN: full 40-character hash of the frozen revision]}
+\date{15 November 2026}
+
+\begin{document}
+\sloppy
+\maketitle
+
+\begin{abstract}
+The chromatic number of the plane, $\chi(\R^2)$, is the least number of colours needed so that no two points at distance exactly one share a colour. A manuscript supplied to this event (OpenAI, September 2026) proves that five colours never suffice, so $6\le\chi(\R^2)\le7$. That theorem is prior work and is not ours. During the event we did three things. First, we wrote a staged, figure-supported explanation of the manuscript's proof, checked step by step against the manuscript and its Lean development. Second, we proved local results about the manuscript's ``interfaces'' at a common centre. The main ones are a closed $60^\circ$ cone obstruction (CC60), which cannot be widened for arbitrary finite palettes, and a three-centre proof of the manuscript's strict-state separation lemma. The latter is integrated into a Lean build of the supplied proof that is 150 lines shorter. Both have archived Lean~4.34.1 checks. Third, we recorded further refereed local results, finite computations, negative results and corrections, each with its status in the team's results ledger. \textbf{No global chromatic result.} The bounds $6\le\chi(\R^2)\le7$ are inherited from the supplied proof and the classical seven-colouring; nothing we add changes them. Every claim below carries its status.
+\end{abstract}
+
+\paragraph{How to read the status labels.}
+Each main claim is marked with one of the following labels.
+\begin{itemize}
+\item \st{cited}: prior work, chiefly the supplied manuscript.
+\item \st{proved}: a paper argument given here, or one independently reviewed.
+\item \st{Lean 4.34.1}: checked in Lean~4.34.1 with archived logs, using only the axioms \texttt{propext}, \texttt{Classical.\allowbreak{}choice} and \texttt{Quot.sound}. The event's optional Lean track requires Lean~4.35.0. These files have \emph{not} been rebuilt under 4.35.0, so we do not call them ``Lean-verified'' in the event's sense.
+\item \st{computation}: an exact computation over a stated finite object.
+\item \st{illustration}: a model or picture that explains a statement but is not part of any proof.
+\end{itemize}
+These labels map onto the team's results ledger (\texttt{Hadwiger\allowbreak{}Nelson/\allowbreak{}RESULTS-\allowbreak{}LEDGER.\allowbreak{}md}), which gives every result an identifier, a statement, its hypotheses, artifact paths and SHA-256 hashes. Ledger status \texttt{LEAN\_\allowbreak{}VERIFIED} is our \st{Lean 4.34.1}; \texttt{PROVED\_\allowbreak{}PAPER\_\allowbreak{}REVIEWED} is \st{proved}; \texttt{TESTED\_\allowbreak{}FINITE} is \st{computation}. Ledger entries marked \texttt{CANDIDATE}, \texttt{UNAUDITED\_\allowbreak{}NUMBER} or \texttt{OPEN} are not claimed as results in this report.
+
+%======================================================================
+\section{Introduction}
+%======================================================================
+Colour every point of the plane so that any two points at distance exactly $1$ get different colours. How many colours are needed? The question goes back to Nelson and to Hadwiger \cite{Hadwiger}.
+
+\begin{itemize}
+\item Upper bound. A tiling by regular hexagons of diameter slightly below $1$, coloured in a repeating pattern of seven, shows that seven colours suffice \st{cited}.
+\item Lower bound four. The seven-point Moser spindle is a unit-distance graph that cannot be three-coloured \cite{MoserMoser} \st{cited}.
+\item Lower bound five. De Grey found the first $5$-chromatic unit-distance graphs in 2018 \cite{deGrey}; see also \cite{Heule,ExooIsmailescu,Parts} \st{cited}.
+\item Measurable colourings. When every colour class is Lebesgue measurable, Falconer had already shown in 1981 that five colours are needed \cite{Falconer} \st{cited}.
+\end{itemize}
+
+The supplied manuscript \cite{OAI} closes the gap from five to six. It proves that every five-colouring of the plane, with no regularity assumption, contains a monochromatic unit pair \st{cited}. Its proof has two bridges.
+\begin{enumerate}
+\item An analytic transfer turns a hypothetical proper colouring into a \emph{weak measurable} colouring (manuscript Theorem~1.3, Proposition~4.2).
+\item A geometric and topological argument shows that no weak measurable five-colouring exists (manuscript Theorem~1.4, Sections~5--8).
+\end{enumerate}
+The manuscript is accompanied by a Lean development, pinned to OpenAI commit \texttt{fd4aeeb2}, Lean~4.34.1 and mathlib \texttt{d13f23b7} \st{cited}.
+
+\paragraph{What we did during the event.}
+\begin{enumerate}
+\item \textbf{Exposition (Sections~2 and~6).} A canonical reader, \texttt{Hadwiger\allowbreak{}Nelson/\allowbreak{}Exposition/\allowbreak{}Proof\allowbreak{}Walkthrough.\allowbreak{}md}. It teaches the second bridge in six lessons with checked figures, and each lesson was checked by an independent referee against the manuscript and the Lean sources.
+\item \textbf{Three-centre strict-state separation (Section~3).} A short replacement proof of the fixed-centre part of manuscript Lemma~6.3, with the identical Lean statement \st{Lean 4.34.1}.
+\item \textbf{CC60 (Section~4).} Interfaces at one common centre whose approach directions lie in a closed $60^\circ$ arc cannot leave fewer than three labels \st{Lean 4.34.1}. A 20-colour construction shows the arc cannot be widened for arbitrary palettes \st{proved}.
+\item \textbf{Further results, computations and corrections (Section~5).} The Lean simplification of the supplied proof (150 lines shorter) \st{Lean 4.34.1}. A four-list obstruction for weak measurable six-colourings and other refereed local lemmas \st{proved}. Even-walk parity obstructions \st{Lean 4.34.1}. Lean-checked pieces of a six-colour producer chain, whose glued statement is still open. Exact censuses and certificates \st{computation}. Refereed counterexamples and corrections.
+\end{enumerate}
+[TEAM: confirm which items began before the event window; prior work ``does not count as event work''. The research records are dated 13--14 November 2026.]
+
+%======================================================================
+\section{The supplied proof, step by step \st{cited}}
+%======================================================================
+This section summarises manuscript Sections~4--8 at the level of our reader, Lessons~1--6. All results here are the manuscript's.
+
+\subsection{Weak measurable colourings}
+A colouring $c:\R^2\to\{1,\dots,k\}$ with measurable classes is \emph{weak} if almost every unit pair has distinct colours, with respect to the measure $dx\,d\sigma(u)$ on positions $x$ and unit directions $u$. Our reader explains this with a unit ruler: place it at random in a window $B$ and turn it uniformly. A placement is \emph{bad} if both ends get the same colour. Weakness says the probability $P_B$ of a bad placement is zero in every window. A proper colouring forbids bad placements outright. A weak one forbids them only up to a null set, so changing a colouring on a null set preserves weakness. Theorem~1.3 shows that a proper $k$-colouring yields a weak measurable $k$-colouring. The proof is spectral and uses a Haar-rigidity theorem (manuscript Theorem~2.3). We summarise it but do not re-derive it.
+
+\subsection{From ``almost never'' to ``never'' (manuscript Lemma 4.3)}
+Call $a$ \emph{robust} in colour $i$ if the proportion of colour $i$ in small disks around $a$ tends to $1$; by Lebesgue's density theorem almost every point of colour $i$ is robust in $i$.
+
+\begin{lemma}[manuscript Lemma 4.3]
+In a weak measurable colouring, two points robust in the same colour are never exactly one unit apart.
+\end{lemma}
+\noindent\emph{Idea.} Suppose $b=a+u_0$ with both points robust in $i$. Start a ruler anywhere in $B(a,h)$ and turn it within angle $h$ of $u_0$; its far end lands in $B(b,2h)$. For each direction in this fan, at most $\varepsilon$ of the start disk misses colour $i$, and at most $4\varepsilon$ of it lands outside colour $i$ (the landing disk has four times the area). So for $\varepsilon<1/5$ a positive fraction of starts gives a bad ruler. The fan has positive angular measure, hence $P_{B(a,h)}>0$, contradicting weakness.
+
+\subsection{Straddling a connected set}
+For compact $K\subset\R^2$ the manuscript defines the open \emph{straddle region}
+\[
+\Delta(K)=\{z:\ \min_{q\in K}|z-q|<1<\max_{q\in K}|z-q|\}.
+\]
+If $K$ is connected, every $z\in\Delta(K)$ is at distance exactly $1$ from some point of $K$. This is the intermediate value theorem applied to $q\mapsto|z-q|$ \st{cited; classical}. Our reader's illustration: if every point of a connected $K$ is robust in colour $i$, then by Lemma~4.3 no point of $\Delta(K)$ is robust in $i$, so colour $i$ has zero area in $\Delta(K)$ \st{illustration}. Connectedness is essential: with $K$ the two endpoints of a segment of length 2 and $z$ one of them, $z$ straddles $K$ but has no unit contact.
+
+\subsection{Palettes, transitions and states (manuscript Sections 5--6)}
+\begin{itemize}
+\item Traces and palettes. At a centre $x$, weak-$*$ limits of colour records on typical circles of radius tending to $1$ are \emph{traces}; at almost every direction a trace is a probability vector over labels. The \emph{palette} $P_x(e)$ is the essential union of the labels that traces make positive at direction $e$ (Definition~5.1).
+\item Palettes are small. Palettes at directions $60^\circ$ apart are almost surely disjoint (Corollary~5.4). In the five-colour setting almost every palette has one or two labels (Proposition~5.6).
+\item Transitions and states. Colour transitions near a centre give traces avoiding a pair of labels (Lemma~6.2). \emph{States}, angular sets on which the palette contains a given label group, obey a strict separation (Lemma~6.3) and cannot alternate in a singleton--pair pattern (Lemma~6.4). Centres whose transition graph contains a cycle form a closed, locally finite set (Theorem~6.5).
+\end{itemize}
+
+\subsection{Interfaces and the cycle contradiction (manuscript Sections 7--8)}
+Proposition~7.1 extracts, from a weak measurable five-colouring, three things:
+\begin{itemize}
+\item a simple cycle of $\ell\in\{3,4,5\}$ labels and a centre $x$;
+\item for each edge $i_ji_{j+1}$ of the cycle, a compact connected $K_j\ni x$ and a direction $v_j$, such that points of $K_j$ approach $x$ from direction $v_j$;
+\item the exclusion: both endpoint labels have closed essential supports disjoint from $\Delta(K_j)$.
+\end{itemize}
+Lemma~8.1 converts this into one-sided strips. For a direction $e$ not perpendicular to any $v_j$, a thin strip just \emph{outside} the unit circle about $x$ near direction $e$ uses only labels not excluded by the interfaces with $e\cdot v_j>0$. A thin strip just \emph{inside} uses only labels not excluded by those with $e\cdot v_j<0$. Propositions~8.2, 8.5 and~8.10 then exclude cycles of length $5$, $4$ and~$3$:
+\begin{itemize}
+\item length~5: palette rotation rules and the bound of two labels per palette;
+\item length~4: state continuity and projective ray geometry;
+\item length~3: placing the Moser spindle inside a region that uses only three labels, with a rational certificate in manuscript~\S8.6.
+\end{itemize}
+Hence no weak measurable five-colouring exists, and by the transfer no proper one.
+
+\subsection{The map in one table}
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}l l X l@{}}
+\toprule
+Step & Manuscript & Contribution & Reader\\
+\midrule
+Transfer & Thm 1.3, Prop 4.2 & proper $\Rightarrow$ weak measurable & Lesson 1\\
+Density & Lemma 4.3 & ``almost never'' becomes ``never'' at robust points & Lesson 2\\
+Palettes & Def 5.1, Cor 5.4, Prop 5.6 & limiting angular data; $60^\circ$ disjointness; at most two labels & Lessons 4--5\\
+States & Lemmas 6.2--6.4, Thm 6.5 & avoiding traces; strict separation; isolated cyclic centres & Lesson 5\\
+Interfaces & Prop 7.1 & connected $K_j$ through $x$ excluding both edge labels on $\Delta(K_j)$ & Lessons 3--4\\
+Strips & Lemma 8.1 & one-sided label restrictions near the unit circle & Lesson 4\\
+Cycles & Props 8.2, 8.5, 8.10 & lengths 5, 4, 3 impossible & Lesson 6 (map only)\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+%======================================================================
+\section{A three-centre proof of strict state separation}
+%======================================================================
+\emph{Status:} the counting lemma and the assembly are \st{proved} here. The theorem and its moving-centre extension are \st{Lean 4.34.1}. The two palette facts used are \st{cited}, with supplied Lean proofs. Integration: the replacement is part of the team's local Lean build R1, accepted on 14 November 2026. All 27 affected modules and the root axiom check pass on Lean~4.34.1, and the old strict-state lemmas are removed (\texttt{States.lean} shrinks from 764 to 566 lines). Re-runs of the contract and dependency checks, and one file missing from the build manifest, are follow-ups.
+
+\subsection{Statement}
+At a centre $x$, a \emph{state} $(A,J)$ is a measurable set $A$ of directions and a label set $J$ with $J\subseteq P_x(t)$ for almost every $t\in A$ (Lean: \texttt{RealState}). The \emph{support} of $B$ is the set of directions every neighbourhood of which meets $B$ in positive measure.
+
+\begin{theorem}[fixed-centre part of manuscript Lemma 6.3]\label{thm:three}
+Let $c$ be a weak measurable $k$-colouring and $x$ a centre. Let $(A,J)$ and $(B,K)$ be states at $x$ with $|A|>0$. Suppose $X$ is the only label in neither $J$ nor $K$. Then no two directions $b,d$ in the support of $B$ satisfy $|e^{ib}-e^{id}|=1$, that is, no two are $60^\circ$ apart.
+\end{theorem}
+The manuscript also takes $J$ and $K$ disjoint; the Lean statement does not need this.
+
+\subsection{Two supplied facts \st{cited}}
+\begin{enumerate}
+\item[(F1)] \emph{Unit-separated centres} (Lean \texttt{palette\_\allowbreak{}neighbor\_\allowbreak{}disjoint}; manuscript Lemma~5.2 with Remark~5.3). If $|y-x|=1$ then $P_x(t)\cap P_y(t)=\varnothing$ for almost every $t$.
+\item[(F2)] \emph{Avoiding traces at support points} (Lean \texttt{state\_\allowbreak{}support\_\allowbreak{}avoiding\_\allowbreak{}trace}, \texttt{avoiding\_\allowbreak{}trace\_\allowbreak{}palette}). If $(B,K)$ is a state at $x$ and $b$ is in the support of $B$, then $y=x+e^{ib}$ carries a trace that vanishes on $K$. Consequently $P_y(t)\not\subseteq K$ for almost every $t$.
+\end{enumerate}
+
+\subsection{Counting lemma \st{proved}}
+\begin{lemma}\label{lem:count}
+Let $P,Q,R$ be finite label sets and $J,K$ label sets such that every label outside $J\cup K$ equals $X$. If $J\subseteq P$, the sets $P,Q,R$ are pairwise disjoint, and $Q\not\subseteq K$, $R\not\subseteq K$, we reach a contradiction.
+\end{lemma}
+\begin{proof}
+Pick $j\in Q\setminus K$. Since $Q\cap P=\varnothing$ and $J\subseteq P$, $j\notin J$. So $j\notin J\cup K$, hence $j=X$. Likewise $X\in R$. Then $X\in Q\cap R$, contradicting disjointness.
+\end{proof}
+Only ``at most one label outside $J\cup K$'' is used; with two leftover labels, $P=\{0,1\}$, $Q=\{3\}$, $R=\{4\}$ (with $J=\{0,1\}$, $K=\{2\}$) satisfies every hypothesis. An exhaustive check of all triples of subsets of $\{0,\dots,4\}$ confirms 0 solutions for $J=\{0,1\}$, $K=\{2,3\}$ and 8 for $K=\{2\}$ \st{computation}.
+
+\subsection{Proof of Theorem~\ref{thm:three} \st{proved}}
+Suppose $b,d$ lie in the support of $B$ with $|e^{ib}-e^{id}|=1$. Put $y=x+e^{ib}$ and $z=x+e^{id}$; then $|x-y|=|x-z|=|y-z|=1$. These three centres are fixed before any direction $t$ is chosen.
+\begin{itemize}
+\item By (F1), applied to the three sides, $P_x(t),P_y(t),P_z(t)$ are pairwise disjoint for almost every $t$.
+\item By (F2) at $b$ and at $d$, neither $P_y(t)$ nor $P_z(t)$ is contained in $K$, for almost every $t$.
+\item Since $(A,J)$ is a state, $J\subseteq P_x(t)$ for almost every $t\in A$.
+\end{itemize}
+Finitely many null sets are removed and $|A|>0$, so some $t$ satisfies all of these. Lemma~\ref{lem:count} with $P=P_x(t)$, $Q=P_y(t)$, $R=P_z(t)$ gives the contradiction. \qed
+
+\subsection{Comparison with the manuscript's proof}
+The manuscript approximates support points by density-one directions $b',d'$ of $B$, whose chord is only close to $1$. For a density-one direction $a$ of $A$, the point $x+a+b'$ is robust in $X$. An implicit-function reparametrisation $a\mapsto c(a)$ makes $x+a+b'$ and $x+c(a)+d'$ exactly one unit apart, and an $L^1$ argument finds $a$ with $c(a)$ also a density direction. This contradicts Lemma~4.3. The three-centre proof adds no new analysis: it reuses (F1) and (F2), whose proofs already rest on manuscript Lemma~5.2. The forced-label step already appears in the manuscript's proof of Lemma~6.7, with one shifted centre and the $60^\circ$ exclusion in place of a third centre. What is new is using a third centre in place of the reparametrisation.
+
+\subsection{Moving centres}
+\texttt{Moving\allowbreak{}Three\allowbreak{}Centres.\allowbreak{}lean} lets the centres converge. Centres carrying a $K$-avoiding trace form a closed set (\texttt{is\allowbreak{}Closed\_\allowbreak{}avoiding\allowbreak{}Trace\allowbreak{}Centre}, using trace compactness), so the limiting corners keep such traces. The triangle argument is then run at the limit centre with a $J$-state there, in place of the manuscript's $L^1$ convergence. It reproves the four-cycle lemma \texttt{four\_\allowbreak{}support\_\allowbreak{}sequence\_\allowbreak{}no\_\allowbreak{}unit} with an identical statement \st{Lean 4.34.1}.
+
+\subsection{Lean declarations}
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}l X X@{}}
+\toprule
+Declaration & Claim supported & Difference from prose\\
+\midrule
+\texttt{fixed\_\allowbreak{}state\_\allowbreak{}no\_\allowbreak{}unit\_\allowbreak{}three\_\allowbreak{}centres} & Theorem~\ref{thm:three} & Statement identical, including binder order, to supplied \texttt{strict\_\allowbreak{}state\_\allowbreak{}no\_\allowbreak{}unit\_\allowbreak{}support}; does not require $J\cap K=\varnothing$.\\
+\texttt{four\_\allowbreak{}support\_\allowbreak{}sequence\_\allowbreak{}no\_\allowbreak{}unit\_\allowbreak{}three\_\allowbreak{}centres} & moving-centre four-cycle lemma & Identical statement to supplied \texttt{four\_\allowbreak{}support\_\allowbreak{}sequence\_\allowbreak{}no\_\allowbreak{}unit}.\\
+\texttt{triangle\_\allowbreak{}no\_\allowbreak{}unit\_\allowbreak{}of\_\allowbreak{}avoiding\_\allowbreak{}traces} & triangle step & internal lemma.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+\noindent Evidence: \texttt{outputs/\allowbreak{}three-\allowbreak{}centre/\allowbreak{}VALIDATION.\allowbreak{}txt} records a pass under Lean~4.34.1 with standard axioms and no admissions. \texttt{MOVING-\allowbreak{}VALIDATION.\allowbreak{}txt} lists the axioms \texttt{[propext, Classical.\allowbreak{}choice, Quot.\allowbreak{}sound]} for all four declarations, statement and binder checks, and a transitive check that no original strict-state lemma is reached (51,271 and 61,231 constants visited). Not done: a rebuild under Lean~4.35.0; independent re-runs of R1's contract and dependency checks. [PIN: R1 artifact path in the repository once imported.]
+
+%======================================================================
+% SECTION 4: CC60 --- merged from the CC60 drafting pass (report-cc60.tex) after review.
+%======================================================================
+% =====================================================================
+% Report section draft: CC60 (closed 60-degree cone obstruction) and its
+% sharpness. LaTeX fragment. Assumes amsmath, amssymb and amsthm, with the
+% environments theorem, corollary and remark defined in the preamble.
+% No \input, no figures. Drafted 14-15 November 2026 from the local snapshot.
+%
+% Path abbreviations used in the SOURCE comments (relative to repo root):
+%   CONE  = HadwigerNelson/Main/ResearchSnapshot/local/outputs/cone/
+%   OUT   = HadwigerNelson/Main/ResearchSnapshot/local/outputs/
+%   SRC   = HadwigerNelson/Main/ResearchSnapshot/local/work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/
+%   SCALE = HadwigerNelson/Main/ResearchSnapshot/scale-up/
+%   PAPER = HadwigerNelson/Main/ResearchSnapshot/remote/supervisor/simplify-exposition/notes/paper.txt
+%   HN    = HadwigerNelson/
+%   WALK  = HadwigerNelson/Exposition/ProofWalkthrough.md
+% Line numbers refer to the files as read on 14-15 November 2026.
+% =====================================================================
+
+\section{A closed $60^\circ$ cone obstruction (CC60)}
+\label{sec:cc60}
+
+The manuscript's final contradiction concerns exclusion sets meeting at one
+centre. CC60 shows that such a meeting leaves at least three labels
+available whenever the approach directions fit in a closed $60^\circ$
+cone. CC60 is a \emph{local obstruction}: it
+forbids one configuration inside a hypothetical measurable weak colouring.
+\textbf{No global chromatic result.} The bound remains
+$6\le\chi(\mathbb R^2)\le7$ \emph{(cited: manuscript, Theorem~1.1)}.
+% SOURCE: PAPER:56-60 (Theorem 1.1: 6 <= chi(R^2) <= 7; six vs seven unresolved)
+% SOURCE: HN/PROGRESS.md:9 ("a local obstruction, not a plane-colouring solution")
+% SOURCE: HN/RESULTS-LEDGER.md:5 (verbatim sentence "No global chromatic result."), :278 (CC60 "local obstruction only")
+
+\subsection{Setting}
+
+Identify the plane with $\mathbb C$ and use labels $[k]=\{0,\dots,k-1\}$.
+A map $c:\mathbb C\to[k]$ is a \emph{weak colouring} if it is
+almost-everywhere measurable and $c(z)\ne c(z+e^{i\theta})$ for almost
+every $(z,\theta)$, for area times angular measure. The manuscript turns
+any proper colouring into such a colouring \emph{(cited)}.
+% SOURCE: SRC/Coloring.lean:27-29 (def WeakColoring)
+% SOURCE: PAPER:64 (Definition 1.2); PAPER:60-62 (transfer from unrestricted proper colourings, every finite k); PAPER:89 (deduction of Theorem 1.1)
+The \emph{spatial support} $\operatorname{supp}_c(j)$ is the support of area
+measure restricted to $c^{-1}(j)$: the closed set of points whose every
+neighbourhood meets colour $j$ in positive area.
+% SOURCE: SRC/AngularBoundary.lean:307-308 (def spatialSupport); PAPER:2207-2208 ("closed essential supports H_i")
+
+For $K\subseteq\mathbb C$, the \emph{straddle region} is the open set
+\[
+  \Delta(K)=\{z\in\mathbb C:\ |z-p|<1<|z-q|\ \text{for some }p,q\in K\}.
+\]
+For nonempty compact $K$ it is the manuscript's
+$\min_{q\in K}|z-q|<1<\max_{q\in K}|z-q|$. Picture a tiny $K$ near $x$:
+$\Delta(K)$ is a thin crescent just outside the unit circle about $x$, on
+the side $K$ points towards, plus a thin crescent just inside it on the far
+side.
+% SOURCE: SRC/AngularBoundary.lean:146-155 (def Straddle, "equivalent witness form"; straddle_isOpen)
+% SOURCE: PAPER:2214-2221 (equation (7.1), openness); WALK:542-555 (Section 22, shadow of a tiny interface)
+
+We write $\mathrm{AC}(x,K,v)$, \emph{approaching-continuum data}, if
+$x\in K$ and there are $r_n>0$ with $r_n\to0$ and unit vectors $w_n\to v$
+with $x+r_nw_n\in K$. Despite the name, $K$ need not be connected, compact
+or bounded. The vector $v$ is \emph{signed}: it records one way in which
+$K$ approaches~$x$.
+% SOURCE: SRC/AngularBoundary.lean:233-243 (structure ApproachingContinuum; no connectedness/compactness fields)
+% SOURCE: HN/Exposition/SourceMap.md:42; OUT/ASTRA-CONE-REFEREE.txt:57-62
+
+\paragraph{Why this setting.} At one centre $x$, Proposition~7.1 of the
+manuscript gives a cycle of $3$--$5$ labels. For each edge
+$\{i_j,i_{j+1}\}$ it gives a compact connected $K_j\ni x$ and points
+$q_{j,n}\in K_j\setminus\{x\}$ tending to $x$ with directions tending to
+$v_j$. Both endpoint supports miss $\Delta(K_j)$ \emph{(cited)}. With
+$r_n=|q_{j,n}-x|$ this is $\mathrm{AC}(x,K_j,v_j)$ plus CC60's exclusion for
+$F_j=\{i_j,i_{j+1}\}$. CC60 keeps these two ingredients only; it drops
+compactness and connectedness and allows any label sets.
+% SOURCE: PAPER:2225-2237 (Proposition 7.1, items 1-3)
+% SOURCE: SRC/AngularBoundary.lean:233-234 (docstring: "approach data furnished by the manuscript interface proposition")
+Lemma~8.1 signs each edge by $e\cdot v_j$. For a positive edge, the identity
+$|x+e-q_{j,n}|^2=1+r_{j,n}^2-2r_{j,n}\,(e\cdot w_{j,n})$ puts a strip just
+outside radius one, near $e$, inside $\Delta(K_j)$, and the labels allowed
+there are nonempty \emph{(cited)}. In Lean this strip is
+\texttt{Approaching\allowbreak{}Continuum.\allowbreak{}outer\_\allowbreak{}strip}, the only geometric fact about
+$\Delta(K_i)$ that CC60 uses. CC60 strengthens ``nonempty'' to ``at least
+three'' for families in a closed $60^\circ$ cone.
+% SOURCE: PAPER:2683-2707 (Lemma 8.1 and proof)
+% SOURCE: SRC/AngularBoundary.lean:244-250 (ApproachingContinuum.outer_strip); CONE/ConeObstruction.lean:108 (its use)
+
+\begin{theorem}[CC60; \texttt{closed60\_\allowbreak{}exclusions\_\allowbreak{}three\_\allowbreak{}le}]\label{thm:cc60}
+Let $k\in\mathbb N$ and let $c:\mathbb C\to[k]$ be a measurable weak
+colouring. Let $\iota$ be a finite set, $x\in\mathbb C$ and
+$\varphi\in\mathbb R$. For each $i\in\iota$, let $K_i\subseteq\mathbb C$ and
+$\alpha_i\in[\varphi-\pi/6,\varphi+\pi/6]$ satisfy
+$\mathrm{AC}(x,K_i,e^{i\alpha_i})$. Let $F_i\subseteq[k]$ be an arbitrary set
+of labels with $\operatorname{supp}_c(j)\cap\Delta(K_i)=\emptyset$ for every
+$j\in F_i$. Then the residual set
+$R=\{j\in[k]: j\notin F_i\text{ for all }i\in\iota\}$ has $|R|\ge3$.
+\end{theorem}
+% SOURCE: CONE/ConeObstruction.lean:148-157 (exact statement); CONE/cone-audit-v3.log:18-25 (printed signature)
+\noindent\emph{Status: proved (paper argument, independently reviewed);
+checked in Lean 4.34.1 (archived logs).}
+% SOURCE: OUT/ASTRA-CONE-REFEREE.txt:4-10 (ACCEPT at paper level, aperture exactly 60 degrees), :43-55 (contract)
+% SOURCE: CONE/cone-obstruction-v3.log:1-4 (Lean 4.34.1, passed, exit 0)
+% LEDGER: CC60 (HN/RESULTS-LEDGER.md:262-278; HN/results-ledger.json id "CC60").
+%   Ledger status LEAN_VERIFIED is defined at HN/RESULTS-LEDGER.md:7 as a local
+%   Lean 4.34.1 compile; in this report's vocabulary that is "checked in Lean
+%   4.34.1 (archived logs)", not the event's "Lean-verified". Ledger artifact
+%   paths and SHA-256 values agree with the CONE files cited here.
+
+The directions are signed unit vectors in one closed arc of width $\pi/3$,
+endpoints included. As $\Delta(K_i)$ is open, the exclusion says that
+label $j$ occupies zero area of $\Delta(K_i)$.
+% NOTE: the zero-area equivalence for an open set is a standard measure-theory
+% fact, matching WALK:571 wording; it is not a separate Lean declaration.
+
+\begin{corollary}[Not binary; \texttt{closed60\_\allowbreak{}exclusions\_\allowbreak{}not\_\allowbreak{}binary}]\label{cor:notbinary}
+Under the hypotheses of Theorem~\ref{thm:cc60}, there are no labels
+$a,b\in[k]$, equal or not, such that every residual label is $a$ or~$b$.
+\end{corollary}
+% SOURCE: CONE/ConeObstruction.lean:131-140 (hres : forall j, (forall i, j notin F i) -> j = a or j = b; conclusion False)
+\noindent\emph{Status: checked in Lean 4.34.1 (archived logs).} In Lean the
+corollary comes first; the theorem follows by choosing $a,b$ covering $R$
+($a=b=c(x)$ if $R=\emptyset$). For six labels, two sets carrying disjoint
+label pairs leave two labels, so their signed directions cannot lie in a
+closed $60^\circ$ arc (an immediate specialisation, not a separate Lean
+declaration).
+% SOURCE: CONE/ConeObstruction.lean:158-174; WALK:575 (six-colour instance)
+
+\subsection{Proof sketch}
+
+The proof reduces CC60 to one open two-coloured region.
+
+\begin{theorem}[OA120; \texttt{outer120\_\allowbreak{}binary\_\allowbreak{}impossible}]\label{thm:oa120}
+Let $c$ be a measurable weak colouring, $a,b\in[k]$, and $W$ open with
+$c(z)\in\{a,b\}$ for almost every $z\in W$. Suppose $W$ has \emph{outer
+angular strips} about $x$ on $I=(\varphi-\pi/3,\varphi+\pi/3)$: for each
+$\theta\in I$ there is $\delta>0$ with $x+se^{i\beta}\in W$ whenever
+$|\beta-\theta|<\delta$ and $1<s<1+\delta$. This is impossible.
+\end{theorem}
+% SOURCE: CONE/ConeObstruction.lean:48-55; CONE/ConeGeometry.lean:9-12 (def OuterAngularStrips)
+\noindent\emph{Status: proved (paper argument, independently reviewed);
+checked in Lean 4.34.1 (archived logs).}
+% SOURCE: OUT/ASTRA-CONE-REFEREE.txt:104-214; CONE/cone-audit-v3.log:14-17,37
+
+\paragraph{Step 1: one pair on one open set.} Put $W=\bigcap_i\Delta(K_i)$,
+open as $\iota$ is finite. Finitely many support exclusions hold off one
+null set. So if $R\subseteq\{a,b\}$, then $c(z)\in\{a,b\}$ for almost every
+$z\in W$, with one pair throughout $W$.
+% SOURCE: CONE/ConeObstruction.lean:141-145; SRC/AngularBoundary.lean:317-327 (finite_support_exclusion_ae)
+
+\paragraph{Step 2: the closed cone gives strips on an open $120^\circ$ arc.}
+For $\theta\in I$, every $|\theta-\alpha_i|<\pi/2$, so
+$\cos(\theta-\alpha_i)>0$; this holds at endpoint $\alpha_i$ because $I$ is
+open. \texttt{outer\_\allowbreak{}strip} then gives $\delta_i>0$ such that points
+$x+se'$, with unit $e'$ near $e^{i\theta}$ and $1<s<1+\delta_i$, lie in
+$\Delta(K_i)$. Such points are farther than $1$ from $x\in K_i$ but closer
+than $1$ to some $x+r_nw_n\in K_i$. The minimum of the finitely many
+$\delta_i$ gives the strips of Theorem~\ref{thm:oa120}. Widths depend on
+$\theta$ and on the $K_i$; no uniform width is claimed.
+% SOURCE: CONE/ConeObstruction.lean:99-129 (closed60_continua_outer_strips); :90-97 (cone_exp_inner)
+% SOURCE: SRC/AngularBoundary.lean:160-172 (approaching_direction_inside), :186-199 (outer_straddle_strip)
+% SOURCE: OUT/MC120-ENDPOINT-CORRECTION.txt:22-25 (a universal width bound delta >= c<e,v> is false; not used here)
+
+\paragraph{Step 3a: one radius on a closed $60^\circ$ subarc.} The arc
+$J=[\varphi-\pi/6,\varphi+\pi/6]$ is compact in $I$. A finite subcover
+gives one $r\in(1,2)$ with $x+re^{i\theta}\in W$ for all $\theta\in J$. The
+arc $S=\{x+re^{i\theta}:\theta\in J\}$ is connected and lies in $W$.
+% SOURCE: CONE/ConeGeometry.lean:135-152 (outerAngularStrips_compact_radius); CONE/ConeObstruction.lean:56-68
+
+\paragraph{Step 3b: unit neighbours by rotation.} Let $p=x+re^{i\theta}\in S$
+and $\gamma=\arccos(r/2)$. Then $0<\gamma<\pi/3$, strictly because $r>1$.
+Rotate towards the axis: $\beta=\theta-\gamma$ if $\theta\ge\varphi$, else
+$\beta=\theta+\gamma$. Then $\beta\in I$. As $x+e^{i\beta}$ need not lie in
+$W$, take $q(s)=x+se^{i\beta(s)}$ with $\beta(s)=\theta\mp\arccos g(s)$ and
+$g(s)=(r^2+s^2-1)/(2rs)$. The law of cosines gives $|p-q(s)|=1$, and for
+$s>1$ near $1$, $q(s)$ lies in the strip at $\beta$.
+% SOURCE: CONE/ConeGeometry.lean:107-133 (outer120_point_has_unit_neighbour; sign choice; arccos(r/2) < pi/3)
+% SOURCE: CONE/ConeGeometry.lean:14-18, 31-33, 57-62, 76-105 (cosine law, coneRadialCos, coneNeighbourAngle_unit, outer_strip_actual_unit_neighbour)
+
+\paragraph{Step 3c: rigidity spreads one colour over $S$.} At each $p\in S$,
+openness of $W$ gives a second, non-parallel unit direction into $W$.
+OpenAI's binary local rigidity, with $U=V=W$, then makes $c$ almost
+everywhere constant near $p$. It uses four-edge unit walks from $q$ to $q+h$
+whose labels must alternate between $a$ and $b$. As $S$ is connected, one
+label $i$ is locally essentially constant at every point of $S$.
+% SOURCE: CONE/ConeObstruction.lean:29-46 (binary_connected_unit_neighbour_obstruction)
+% SOURCE: SRC/Rigidity.lean:177-206 (binary_open_local_rigidity, four-edge evenPath), :224-228 (open_two_unit_directions), :416-420 (connected_local_ae_constant)
+
+\paragraph{Step 3d: a unit pair in $S$.} The ends of $S$ are $r>1$ apart:
+a $60^\circ$ chord at radius $r$ has length $r$. The intermediate value
+theorem on connected $S$ gives $p,q'\in S$ with $|p-q'|=1$, both of
+essential colour $i$ nearby. A weak colouring separates almost every
+translate of a fixed unit pair: contradiction.
+% SOURCE: CONE/ConeObstruction.lean:72-88 (endpoints, cos(pi/3), intermediate_value); :9-27 (essentialLocalSet_no_unit_pair)
+% SOURCE: SRC/Rigidity.lean:171-176 (ae_translated_unit_pair); SRC/WeakColoring.lean:73-74 (weak_all_directions)
+
+\paragraph{Why a closed $60^\circ$ cone.} The width is used twice, without
+slack. In Step~2, a cone of width $w$ leaves a common outer arc of width
+$\pi-w$; $w=\pi/3$ gives exactly $2\pi/3$, and closed endpoints cost
+nothing. In Step~3b, the central point $\theta=\varphi$ rotates to
+$\varphi\mp\gamma$. This lies in $I$ only because $\gamma<\pi/3$, that is,
+because $r>1$ strictly. Strip widths, hence $r-1$, may be arbitrarily small,
+so $\gamma$ may approach $\pi/3$. With a wider cone the common outer arc $I$ would be shorter than $120^\circ$, and the rotated point could leave it.
+Section~\ref{sec:cc60-sharp} shows that the theorem itself fails for every
+wider cone.
+% SOURCE: CONE/ConeGeometry.lean:107-108 (docstring: strict r>1 keeps the neighbour inside the OPEN 120 arc with closed cone endpoints)
+% SOURCE: OUT/ASTRA-CONE-REFEREE.txt:100-102, 248-255; WALK:561 (arc of width 180 - w)
+% NOTE: "rotation argument" is read here as the rotation by gamma = arccos(r/2)
+% in Step 3b. "A shorter arc would break the argument" is a reading of the
+% proof, not a theorem; the sharpness theorem is the rigorous statement.
+
+\paragraph{Paper and Lean proofs.} The refereed paper proof uses a
+$90^\circ$ subarc, an open sector and an explicit unit pair at angles
+$\pm\arcsin(1/(2r_0))$. The Lean proof uses one radius on the closed
+$60^\circ$ subarc and the intermediate value theorem. This works because the
+source's connectedness lemma does not need $S$ to be open.
+% SOURCE: OUT/ASTRA-CONE-REFEREE.txt:109-124, 194-214; CONE/REPORT.txt:112-122
+
+\paragraph{Attribution.} All measure-theoretic steps use OpenAI's source
+declarations unchanged \emph{(cited)}. Local binary rigidity is the
+manuscript's Lemma~8.6, crediting Townsend's annulus argument; Kruskal's
+Lemmas~3.3--3.4 give a pointwise form. Townsend (1981) properly two-colours
+an \emph{inner} annular sector of angle $2\pi/3$, so ``outer'' cannot
+become ``inner'' at equality \emph{(cited; Kruskal and Townsend as reported
+by the team's novelty audit)}. That bounded search classed OA120/CC60 only
+as a new candidate: \textbf{novelty is not established}.
+% SOURCE: PAPER:2867-2872 (Townsend predecessor; Lemma 8.6 Local binary rigidity)
+% SOURCE: SCALE/ULTRA-CONE-NOVELTY-AUDIT.txt:6-18 (verdict), :51-73 (Kruskal 2008 Lemmas 3.3-3.4; Townsend 1981), :34-37 (OpenAI repo commit adc7f12...)
+% NOTE: the Kruskal and Townsend primary sources were not re-read for this section.
+
+\subsection{The equality case and a six-colour consumer}
+
+\begin{corollary}[\texttt{cone\_\allowbreak{}survivor\_\allowbreak{}001334\_\allowbreak{}impossible}]\label{cor:survivor}
+Let $c:\mathbb C\to[6]$ be a measurable weak colouring and $x\in\mathbb C$.
+There are no sets $K_0,K_1,K_2$ with $\mathrm{AC}(x,K_0,1)$,
+$\mathrm{AC}(x,K_1,1)$ and $\mathrm{AC}(x,K_2,e^{i\pi/3})$ such that the
+spatial supports of the labels in $\{0,1\}$, $\{1,2\}$ and $\{2,3\}$ miss
+$\Delta(K_0)$, $\Delta(K_1)$ and $\Delta(K_2)$ respectively.
+\end{corollary}
+% SOURCE: CONE/ConeSurvivor.lean:8-20 (angles ![0,0,pi/3], exclusions ![{0,1},{1,2},{2,3}], k = 6)
+\noindent\emph{Status: checked in Lean 4.34.1 (archived logs); proved
+(paper argument, independently reviewed).}
+% SOURCE: CONE/cone-survivor-v4.log:1-4; CONE/cone-audit-v3.log:26-35,39; OUT/ASTRA-CONE-REFEREE.txt:17-18, 278-280
+
+With $\varphi=\pi/6$, the directions $0,0,\pi/3$ sit at \emph{both}
+endpoints of the closed arc: this is the equality case. The exclusions
+leave $\{4,5\}$, so Corollary~\ref{cor:notbinary} applies. The sets are the
+first three edges of the six-cycle with pairs $\{i,i+1\bmod6\}$ and
+directions $q=(0,0,1,3,3,4)$ in sixth turns. The consumer is conditional:
+nothing shows that a weak six-colouring produces such data.
+% SOURCE: CONE/ConeSurvivor.lean:12-14, 21-32; OUT/ASTRA-CONE-REFEREE.txt:271-282
+
+\begin{remark}
+On the six-direction grid, the exact cone test requires, for each $d$, that
+the edges with $q_i\in\{d,d+1\}$ exclude at most three labels. The
+independent referee applied it to the $174$ tuples from an earlier
+enumeration: $168$ fail and six survive. \emph{Status: checked by
+computation (exact CC60 cone rule on the 174 supplied tuples in
+$(\mathbb Z/6)^6$). This does not validate the enumeration, and it
+classifies no continuous directions.}
+\end{remark}
+% SOURCE: OUT/ASTRA-CONE-REFEREE.txt:284-307; HN/PROGRESS.md:16
+% SOURCE: HN/RESULTS-LEDGER.md:457-465 (DIR-FILTER: 174 -> 6 step conditional on CC60; results desk did not re-run it)
+
+\subsection{Sharpness above $60^\circ$}
+\label{sec:cc60-sharp}
+
+\begin{theorem}[Generic sharpness]\label{thm:sharp}
+For every $\Delta\in(\pi/3,\pi)$ there are $\rho\in(0,1/2)$, segments
+$K_\pm=[0,\rho e^{\pm i\Delta/2}]$ and a Borel, pointwise proper colouring
+$c:\mathbb C\to[20]$ such that $\mathrm{AC}(0,K_\pm,e^{\pm i\Delta/2})$ holds,
+the supports of the labels in $F_+=\{2,\dots,10\}$ miss $\Delta(K_+)$, those
+in $F_-=\{11,\dots,19\}$ miss $\Delta(K_-)$, and the residual is exactly
+$\{0,1\}$. Hence, for every $A>\pi/3$, CC60 fails for cones of width $A$,
+already with $k=20$.
+\end{theorem}
+% SOURCE: SCALE/ULTRA-SHARPNESS-REFEREE.txt:15-39 (exact verified statement)
+\noindent\emph{Status: proved (paper argument, independently reviewed). Not
+checked in Lean.}
+% SOURCE: SCALE/ULTRA-SHARPNESS-REFEREE.txt:4-8; SCALE/ULTRA-CONE-NOVELTY-AUDIT.txt:173-177 (construction first derived there); HN/PROGRESS.md:15
+% LEDGER: SHARPNESS-20 (HN/RESULTS-LEDGER.md:408-421; HN/results-ledger.json id "SHARPNESS-20").
+%   Status PROVED_PAPER_REVIEWED; 20 colours; not a six-colour statement; six-colour
+%   sharpness and novelty priority not established. Artifact paths agree with SCALE above.
+
+\emph{Construction.} $W=\Delta(K_+)\cap\Delta(K_-)$ lies in the band
+$1-\rho<|z|<1+\rho$, in an outer horn around angle $0$ of half-width
+$a=(\pi-\Delta)/2<\pi/3$ and an inner horn around $\pi$ of half-width
+$a+\arcsin(\rho/(2(1-\rho)))$. For small $\rho$, each half-horn has diameter
+below one and opposite horns are over one apart, so $c=0$ for
+$\operatorname{Im}z\ge0$ and $c=1$ otherwise colours $W$ properly. Two
+disjoint copies of a proper nine-colouring by squares of side $3/5$ colour
+the rest: labels $2$--$10$ off $\Delta(K_+)$, labels $11$--$19$ on
+$\Delta(K_+)\setminus\Delta(K_-)$. Each excluded class lies in a closed set
+missing the relevant open straddle region, hence so does its support.
+% SOURCE: SCALE/ULTRA-SHARPNESS-REFEREE.txt:41-85 (parameters, horns, inequalities (I),(II)), :124-151 (colouring), :153-168 (supports, AC data)
+
+This mirrors the proof: the common outer arc has width $\pi-\Delta<2\pi/3$,
+and bisecting it gives exactly the two-colouring that
+Theorem~\ref{thm:oa120} forbids at full width. The theorem gives no
+counterexample for each $k$. \textbf{Six-colour sharpness is not
+established}, the interface-extraction hypotheses are not supplied, and
+\textbf{novelty priority is not established}.
+% SOURCE: SCALE/ULTRA-SHARPNESS-REFEREE.txt:33-39, 170-178; HN/PROGRESS.md:15
+
+\subsection{Lean declarations}
+
+{\footnotesize
+\setlength{\tabcolsep}{3pt}
+\noindent\begin{tabular}{P{0.27\linewidth}P{0.15\linewidth}P{0.17\linewidth}P{0.31\linewidth}}
+\hline
+Declaration & File, lines & Supports & Lean versus prose \\
+\hline
+\texttt{closed60\_\allowbreak{}exclusions\_\allowbreak{}three\_\allowbreak{}le}
+ & \texttt{ConeObstruction}, 148--174 & Theorem~\ref{thm:cc60}
+ & Labels \texttt{Fin k}; $F_i$ a \texttt{Finset}; real angles $\alpha_i$,
+   $v_i=\texttt{Circle.exp}\,\alpha_i$; \texttt{Measurable c} assumed besides
+   \texttt{WeakColoring}; $\iota$ may be empty. Derived from the
+   corollary. \\
+\texttt{closed60\_\allowbreak{}exclusions\_\allowbreak{}not\_\allowbreak{}binary}
+ & \texttt{ConeObstruction}, 131--146 & Corollary~\ref{cor:notbinary}
+ & Concludes \texttt{False} from $R\subseteq\{a,b\}$; $a=b$ allowed. \\
+\texttt{outer120\_\allowbreak{}binary\_\allowbreak{}impossible}
+ & \texttt{ConeObstruction}, 48--88 & Theorem~\ref{thm:oa120}
+ & Strips via \texttt{Outer\allowbreak{}Angular\allowbreak{}Strips} (\texttt{ConeGeometry}, 9--12). \\
+\texttt{closed60\_\allowbreak{}continua\_\allowbreak{}outer\_\allowbreak{}strips}
+ & \texttt{ConeObstruction}, 99--129 & Step 2
+ & Converts Euclidean direction closeness to angles. \\
+\texttt{outer\allowbreak{}Angular\allowbreak{}Strips\_\allowbreak{}compact\_\allowbreak{}radius},
+\texttt{outer120\_\allowbreak{}point\_\allowbreak{}has\_\allowbreak{}unit\_\allowbreak{}neighbour}
+ & \texttt{ConeGeometry}, 135--152, 107--133 & Steps 3a--3b
+ & Also requires $r<2$. Neighbours lie in $W$, not $S$. \\
+\texttt{binary\_\allowbreak{}connected\_\allowbreak{}unit\_\allowbreak{}neighbour\_\allowbreak{}obstruction},
+\texttt{essential\allowbreak{}Local\allowbreak{}Set\_\allowbreak{}no\_\allowbreak{}unit\_\allowbreak{}pair}
+ & \texttt{ConeObstruction}, 29--46, 9--27 & Steps 3c--3d
+ & Calls OpenAI's \texttt{binary\_\allowbreak{}open\_\allowbreak{}local\_\allowbreak{}rigidity} with $U=V=W$. \\
+\texttt{cone\_\allowbreak{}survivor\_\allowbreak{}001334\_\allowbreak{}impossible}
+ & \texttt{ConeSurvivor}, 8--32 & Corollary~\ref{cor:survivor}
+ & $k=6$, $\varphi=\pi/6$. Hypotheses not derived from any colouring. \\
+\hline
+\end{tabular}
+}
+% SOURCE: CONE/ConeObstruction.lean, CONE/ConeGeometry.lean, CONE/ConeSurvivor.lean at the line ranges given in the table
+% SOURCE: CONE/manifest.json:21-32 (list of main declarations)
+
+\paragraph{Toolchain and status.} \texttt{ConeGeometry},
+\texttt{ConeObstruction}, \texttt{ConeSurvivor} and \texttt{ConeAudit} were
+checked with Lean 4.34.1 (commit \texttt{5045d005}) and mathlib
+\texttt{d13f23b723b8a846827a245b89c10fc7d3f11612}, each with exit code $0$
+and no errors or warnings. The four archived sources match the SHA-256
+hashes in the logs \emph{(checked by computation: SHA-256 of these four
+files, recomputed for this section)}.
+% SOURCE: CONE/cone-geometry-v2.log:1-8; CONE/cone-obstruction-v3.log:1-8; CONE/cone-survivor-v4.log:1-8; CONE/cone-audit-v3.log:1-4,41-42
+% SOURCE: CONE/REPORT.txt:30 (mathlib prefix d13f23b); CONE/VALIDATION.json:4-5 (full mathlib hash)
+% SOURCE: CONE/VALIDATION.json:12-16 and log headers (hashes); recomputed with sha256sum on 14 Nov 2026: all four match
+The event's optional Lean submission requires Lean 4.35.0 with Mathlib
+v4.35.0. These files have not been rebuilt under 4.35.0, nor recompiled for
+this report. Under the event's definition they are \emph{checked in Lean
+4.34.1}, not \emph{Lean-verified}.
+% SOURCE: ASTRA.md:194 (event Lean rules: v4.35.0, permitted axioms)
+% SOURCE: HN/Lean/README.md:3-6 (preserved 4.34.1 environment differs from root 4.35.0); HN/PROGRESS.md:30-32 (no fresh rebuild, no 4.35.0 integration)
+% SOURCE: HN/RESULTS-LEDGER.md:275 (results desk "Did not recompile")
+% NOTE FOR EDITOR: HN/PROGRESS.md:9 and HN/RESULTS-LEDGER.md:7,264 use the team-internal
+% label LEAN_VERIFIED, which is defined there as a 4.34.1 compile. Do not carry
+% that label into the report; use "checked in Lean 4.34.1 (archived logs)".
+The axiom audit printed exactly \texttt{propext}, \texttt{Classical.\allowbreak{}choice}
+and \texttt{Quot.sound}, with no \texttt{sorryAx}, for
+\texttt{outer\_\allowbreak{}strip\_\allowbreak{}actual\_\allowbreak{}unit\_\allowbreak{}neighbour},
+\texttt{outer120\_\allowbreak{}binary\_\allowbreak{}impossible}, \texttt{closed60\_\allowbreak{}exclusions\_\allowbreak{}three\_\allowbreak{}le}
+and \texttt{cone\_\allowbreak{}survivor\_\allowbreak{}001334\_\allowbreak{}impossible}. The audit is transitive, so
+it covers the corollary and the OpenAI lemmas used.
+% AXIOM AUDIT EVIDENCE:
+%   CONE/ConeAudit.lean:8-11            -- the four #print axioms commands
+%   CONE/cone-audit-v3.log:1-4          -- Lean 4.34.1, commit 5045d005..., Status: passed, Exit code: 0
+%   CONE/cone-audit-v3.log:36-39        -- each "depends on axioms: [propext, Classical.choice, Quot.sound]"
+%   CONE/cone-audit-v3.log:41-42        -- STDERR empty
+%   CONE/VALIDATION.json:17-22          -- axioms list; "sorryAx": false
+%   CONE/REPORT.txt:14-18, 45-48        -- same result, stated by the packet author
+%   grep of the four CONE/*.lean files for sorry|admit|axiom|native_decide: no matches (run 14 Nov 2026)
+%   closed60_exclusions_not_binary is not printed separately; it is a dependency of
+%   closed60_exclusions_three_le (CONE/ConeObstruction.lean:173) and of the consumer (CONE/ConeSurvivor.lean:31).
+
+\paragraph{What CC60 does not say.} It is not a six-colour impossibility
+theorem: nothing shows that a hypothetical six-colouring produces the
+configuration it forbids. Its hypotheses are actual sets through one
+centre, with actual approach directions and support exclusions; a list of
+arrows and label pairs supplies none of them. Directions are signed and may
+not be reversed to fit the cone; the unsigned-axis extension was refuted.
+CC60 gives no uniform strip width, and it is not the withdrawn closed
+``monochromatic $120^\circ$'' endpoint claim. Its sharpness holds for
+arbitrary finite palettes, not for six colours, and its novelty is not
+established. The bound remains $6\le\chi(\mathbb R^2)\le7$.
+% SOURCE: WALK:579-584 (Section 25, refereed reader-level wording)
+% SOURCE: OUT/ASTRA-CONE-REFEREE.txt:12-15, 257-269 (unsigned-axis extension INVALID; K_+=[0,rho], K_-=[-rho,0] example), :319-324
+% SOURCE: OUT/MC120-ENDPOINT-CORRECTION.txt:1-4, 14-15, 22-25 (outer-strip-only endpoint argument and universal width bound rejected; CC60 unaffected)
+% SOURCE: SCALE/ULTRA-SHARPNESS-REFEREE.txt:33-39; SCALE/ULTRA-CONE-NOVELTY-AUDIT.txt:6-18; PAPER:56-60
+
+%======================================================================
+% SECTION 5: other team results --- merged from report-other.tex after review.
+%======================================================================
+% ======================================================================
+% report-other.tex -- "Further team results" (all results except CC60,
+% SHARPNESS-20, THREE-CENTRE and R1's mathematics, covered elsewhere).
+% Rebuilt from HadwigerNelson/RESULTS-LEDGER.md and results-ledger.json
+% (JSON builtAtUtc 2026-11-15T00:28Z; 85 entries). Each result carries
+%   % LEDGER: <id> = <ledger status, verbatim>
+%   % SOURCE: <file>:<line>   (paths relative to HadwigerNelson/)
+% Ledger line numbers moved during drafting, so the ledger is cited by id
+% (anchor RESULTS-LEDGER.md#<id-lowercase>); evidence files by line.
+% Display labels used below:
+%   LEAN_VERIFIED          -> checked in Lean 4.34.1 (archived logs)
+%   PROVED_PAPER_REVIEWED  -> proved (paper argument, independently reviewed)
+%   TESTED_FINITE          -> checked by computation
+%   CANDIDATE              -> not claimed (listed once, in the candidates sentence)
+%   OPEN / RETRACTED_OR_REFUTED -> Open problems / Retracted or refuted lists
+% Not cited as established: RELAX-1-648 = UNAUDITED_NUMBER.
+% Plain LaTeX; uses \mathbb (amssymb). No \input, no figures.
+% ======================================================================
+
+\section{Further team results}
+
+No global chromatic result.
+% LEDGER: L6-F6 = OPEN
+% SOURCE: RESULTS-LEDGER.md:5 (headline, verbatim "No global chromatic result.")
+% SOURCE: Main/ResearchSnapshot/local/outputs/ASTRA-SIX-COLOUR-LEAD.txt:89-91
+The bounds $6\le\chi(\mathbb{R}^2)\le 7$ come from the supplied OpenAI
+manuscript and the classical seven-colouring; nothing in this section changes
+them.
+
+\emph{Labels.} ``Checked in Lean~4.34.1 (archived logs)'' means an archived
+compile against Lean~4.34.1 and Mathlib \texttt{d13f23b} with exit code~0 and
+standard axioms. No item has a recorded Lean~4.35.0 build with exit status,
+so none is ``Lean-verified'' in the event's sense (DIAMOND, in
+Table~\ref{tab:lean-other}, is a partial exception). ``Proved (paper argument,
+independently reviewed)'' requires a referee report on file. ``Cited'' marks
+outside work that we did not re-check. Identifiers in capitals are
+results-ledger entries.
+% SOURCE: RESULTS-LEDGER.md:7 (status vocabulary; LEAN_VERIFIED = local 4.34.1 compile)
+% SOURCE: Main/ResearchSnapshot/import-20261115/IMPORT-NOTES.md:7 (Lean 4.34.1, Mathlib d13f23b)
+% SOURCE: PROGRESS.md (import section: "does not claim a fresh complete Lean rebuild, or integration into the repository's 4.35.0 target")
+
+% ----------------------------------------------------------------------
+\subsection{Simplification of the supplied proof}
+
+\begin{itemize}
+\item \textbf{Common-encoding refactor (ENC-R4).}
+% LEDGER: ENC-R4 = LEAN_VERIFIED ; ENC-R4-AUX = LEAN_VERIFIED
+The supplied spectral argument used two approximation hypotheses. Both are
+now definitional cases of one predicate: the conditional phase encoding of $b$
+given $p$ is $L^2(\mu)$-approximable within $\gamma$, uniformly in the
+character, by bounded sums $\sum_i a_i(Px)\,H_i(Sx)$. The old predicates are
+$(S,P)=(p,q\circ p)$ and $(\mathrm{id},q)$, and both uniform-precision
+contradictions become instances of one theorem. \texttt{Conditional\allowbreak{}Spectrum}
+goes from 497 to 530 lines and \texttt{Conditional\allowbreak{}Limits} from 701 to 542: net
+$-126$.
+% SOURCE: Main/ResearchSnapshot/local/outputs/encoding-refactor/ConditionalSpectrum.lean:267-293
+% SOURCE: Main/ResearchSnapshot/local/outputs/encoding-refactor/ConditionalSpectrum.lean:321-325 (no hypothesis added; hwild stays a hypothesis)
+% SOURCE: Main/ResearchSnapshot/local/outputs/encoding-refactor/ConditionalLimits.lean:369-376
+% SOURCE: Main/ResearchSnapshot/local/outputs/ENCODING-REFACTOR-VALIDATION.txt:6
+\emph{Status:} checked in Lean~4.34.1 (archived logs), in
+\texttt{ENCODING-\allowbreak{}REFACTOR-\allowbreak{}VALIDATION.\allowbreak{}txt}: the 82-module closure built, and
+nine roots, including \texttt{no\_\allowbreak{}proper\_\allowbreak{}five\_\allowbreak{}coloring}, use standard axioms.
+Public headers match after whitespace normalisation, and the old predicates
+pass \texttt{Iff.rfl}.
+% SOURCE: Main/ResearchSnapshot/local/outputs/ENCODING-REFACTOR-VALIDATION.txt:10-34,80-84
+% SOURCE: Main/ResearchSnapshot/local/work/lean-queue/encoding-r4/full-build-check.json:3-5,81-82
+% SOURCE: Main/ResearchSnapshot/local/work/lean-queue/encoding-r4/fidelity-check.json:138-148
+% SOURCE: Main/ResearchSnapshot/local/work/lean-queue/encoding-r4/binder-inspection-check.json:5-6,282 (6 declarations, 133 binders)
+\emph{Not shown:} any new bound; the wildness hypothesis is still assumed,
+not derived; proof-object identity is not claimed.
+
+\item \textbf{Three-centre integration, line accounting only (R1).}
+% LEDGER: R1 = LEAN_VERIFIED  (mathematics reported elsewhere)
+\texttt{States} $764\to566$, \texttt{FourContinuity} $551\to509$,
+\texttt{FiveSupport} $376\to354$, \texttt{Interfaces} $527\to528$, new
+\texttt{AvoidingTrace} $+237$: net $-24$. With ENC-R4 the integrated tree is
+$-150$ lines.
+% SOURCE: Main/ResearchSnapshot/local/work/lean-queue/threecentre-r1/line-accounting.json:1 (netDelta -24; "no compile acceptance implied")
+\emph{Status:} checked in Lean~4.34.1 (archived logs): 27 modules, nine
+roots. \emph{Not shown:} re-run contract and dependency gates (R1-GATES).
+
+\item \textbf{Branch-free step ban (STEPBAN-V2, STEPBAN-CONSUMER, STEPBAN-CYCLICCORE, FIVESUPPORT-SWAP).}
+% LEDGER: STEPBAN-V2 = LEAN_VERIFIED ; STEPBAN-CONSUMER = LEAN_VERIFIED ; STEPBAN-CYCLICCORE = LEAN_VERIFIED ; FIVESUPPORT-SWAP = LEAN_VERIFIED ; STEPBAN-SWAP = OPEN
+Let $c$ be a measurable weak 5-colouring, $x$ a five-centre, and $F_i$ the
+angular support of label~$i$. If $a\in F_i\cap F_j$ for adjacent $i,j$, then
+for almost every $t$ the angular state does not step $i\to j$ or $j\to i$
+across a $60^\circ$ shift. This is manuscript Lemma~6.7, now proved through a
+finite core checked by \texttt{decide}. Its consumer
+\texttt{five\_\allowbreak{}opposite\_\allowbreak{}contacts\_\allowbreak{}false} is re-proved on top.
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-admissions/claude-lean-20261114t220720-0/Candidate.lean:76
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t220720-0.python.log:23
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t232057-0.python.log:23,42
+\emph{Status:} checked in Lean~4.34.1 (archived logs), standalone, with
+\texttt{\#check} signatures equal to the originals. The CyclicCore consumer
+\texttt{five\_\allowbreak{}sequence\_\allowbreak{}small\_\allowbreak{}no\_\allowbreak{}accumulation} is also re-proved through the v2 step ban with the
+same statement, and a same-name swap inside \texttt{FiveSupport} compiles on
+R1 with all 31 public statements unchanged. This is a \emph{structural}
+simplification: it removes a case split and one finite lemma. It does
+\emph{not} shorten the code: the port adds 61 lines, and about 23 remain
+added even after the old proof is deleted. \emph{Not shown:} adoption of the
+swap into the integrated tree with a downstream rebuild (STEPBAN-SWAP, open).
+% SOURCE: RESULTS-LEDGER.md batch 2 (FIVESUPPORT-SWAP line accounting; STEPBAN-SWAP expected net change about +23)
+
+\item \textbf{Joint-pair support theorem (JOINT-SUPPORT).}
+% LEDGER: JOINT-SUPPORT = LEAN_VERIFIED
+Let $\iota$ be finite, $f:\mathbb{R}\to\iota$ measurable, $d\in\mathbb{R}$, and
+let $S_i$ be the essential support of $f^{-1}(i)$. Suppose that whenever
+$S_i\cap S_j\neq\emptyset$, the set $\{t: f(t)=i,\ f(t+d)=j\}$ is null. Then
+$a\in S_i$ implies $a+d\notin S_i$. Applied with Lemma~6.7, this re-proves the
+supplied statement $a\in F_i\Rightarrow a+60^\circ\notin F_i$ without the
+strict-state lemma.
+% SOURCE: Main/ResearchSnapshot/local/outputs/joint-support/JointPairSupport.lean:10-16,33-51
+% SOURCE: Main/ResearchSnapshot/local/work/encoding-integration/full-original/OAI/Geometry/PlaneColoring/FiveSupport.lean:138-146 (original uses strict_state_no_unit_support)
+\emph{Status:} checked in Lean~4.34.1 (archived logs) in
+\texttt{joint-\allowbreak{}pair-\allowbreak{}support-\allowbreak{}v2.\allowbreak{}log}. The mathematics is also proved (paper
+argument, independently reviewed) in \texttt{ASTRA-\allowbreak{}REBOOT-\allowbreak{}REFEREE.\allowbreak{}txt}.
+% SOURCE: Main/ResearchSnapshot/local/work/lean-queue/joint-pair-support-v2.log:1-8
+% SOURCE: Main/ResearchSnapshot/local/outputs/ASTRA-REBOOT-REFEREE.txt:5-10
+\emph{Not shown:} integration. It is standalone under a new name; the original
+and its consumers are unchanged.
+
+\item \textbf{Lemma~6.7 identity (LEMMA67-IDENTITY).}
+% LEDGER: LEMMA67-IDENTITY = PROVED_PAPER_REVIEWED
+Manuscript Lemma~6.7 is the Lean declaration \texttt{five\_\allowbreak{}support\_\allowbreak{}step\_\allowbreak{}ban},
+and it is retained. \emph{Status:} proved (paper argument, independently
+reviewed): identified from the source, and the reboot referee confirms it.
+% SOURCE: Main/ResearchSnapshot/local/work/checkin-artifacts/20261114T163226Z/MANUSCRIPT-LEMMA67.txt:19
+\emph{Not shown:} any shortening; it rules out saying that Lemma~6.7 was
+deleted.
+\end{itemize}
+
+DIAMOND, FIVE-CYCLE-RESIDUES, CONNECTED-SET and NULL-TRANSFER, all checked in
+Lean~4.34.1 (archived logs), appear only in Table~\ref{tab:lean-other}.
+% LEDGER: DIAMOND = LEAN_VERIFIED ; FIVE-CYCLE-RESIDUES = LEAN_VERIFIED ; CONNECTED-SET = LEAN_VERIFIED ; NULL-TRANSFER = LEAN_VERIFIED
+
+% ----------------------------------------------------------------------
+\subsection{New local mathematics}
+
+\begin{itemize}
+\item \textbf{Aligned exclusion (AC-ALIGNED).}
+% LEDGER: AC-ALIGNED = PROVED_PAPER_REVIEWED
+For a measurable weak $k$-colouring, let finitely many $K_i$ approach one
+centre in the same signed direction, each label in $H_i$ having essential
+support disjoint from $\mathrm{Straddle}(K_i)$. Then $\bigcup H_i$ leaves at
+least three labels.
+\emph{Status:} proved (paper argument, independently reviewed), in
+\texttt{ASTRA-\allowbreak{}AC-\allowbreak{}REFEREE.\allowbreak{}txt}.
+% SOURCE: Main/ResearchSnapshot/local/outputs/ASTRA-AC-REFEREE.txt:5
+\emph{Not shown:} anything about an unsigned axis, where the statement is
+false (AC-AXIS below).
+
+\item \textbf{Null return and triangle constraint (NR-TC).}
+% LEDGER: NR-TC = PROVED_PAPER_REVIEWED
+Set $\tau=\pi/3$ and $\gamma=\arccos(5/6)$. Assume at most two labels lie
+outside $J\cup K$, real states on the two sectors, and the $\tau$-swap law.
+Then the two sector sets satisfy $\mu(B_0\cap(B_0-\gamma))=0$ and
+$\mu(B_1\cap(B_1-\gamma))=0$. Now let $f$ be a finite represented state map
+with $f(t+2\tau)=f(t)$ almost everywhere. Then for almost every $t$, the union
+of the lists at $t$ and at $t+\pi+\gamma$ leaves at least three labels.
+\emph{Status:} proved (paper argument, independently reviewed).
+\emph{Not shown:} $\mu(B_0\cup B_1)=0$.
+% SOURCE: Main/ResearchSnapshot/local/outputs/ASTRA-AC-REFEREE.txt:17
+% SOURCE: Main/ResearchSnapshot/local/outputs/ASTRA-SIX-COLOUR-A2.txt:54-64,99
+
+\item \textbf{Residual graph (RESIDUAL-GRAPH).}
+% LEDGER: RESIDUAL-GRAPH = PROVED_PAPER_REVIEWED
+Given a positive $J$-state at $x$, every finite unit-distance graph on
+$Z_K\cap\{|z-x|=1\}$ can be coloured from the labels outside $J\cup K$.
+\emph{Status:} proved (paper argument, independently reviewed).
+\emph{Not shown:} an obstruction. Two residual labels force only
+bipartiteness, which already holds on one unit circle.
+% SOURCE: Main/ResearchSnapshot/local/outputs/ASTRA-A2-REFEREE.txt:230-232
+
+\item \textbf{Straight needles (STRAIGHT-NEEDLE).}
+% LEDGER: STRAIGHT-NEEDLE = PROVED_PAPER_REVIEWED
+For all $L_\pm>0$, the segments $[0,L_+e(\pi/3)]$ and $[0,L_-e(-\pi/3)]$ have
+a common straddling unit pair, with explicit witnesses. \emph{Status:} proved
+(paper argument, independently reviewed). \emph{Not shown:} the same for
+curved arcs, which is false (MC120-ENDPOINT).
+% SOURCE: Main/ResearchSnapshot/import-20261115/outputs/ASTRA-MC120-ENDPOINT-REFEREE.txt:19
+
+\item \textbf{Canonical paired palette excluded (A5-FOUR-LIST).}
+% LEDGER: A5-FOUR-LIST = PROVED_PAPER_REVIEWED
+Let $A_0=\{1,4\}$, $A_1=\{2,5\}$, $A_2=\{0,3\}$ and
+$P(t)=A_{\lfloor (t+\pi/6)/(\pi/3)\rfloor \bmod 3}$.
+(F)~The list field $L(e(a)+e(b))=\{0,\dots,5\}\setminus(P(a)\cup P(b))$
+contains a finite unit-distance configuration with no proper $L$-colouring.
+It consists of two odd walks in the two-list lobes and the four-list vertex
+$i/2$.
+(P)~For a measurable weak 6-colouring, no centre has an actual palette that
+contains $P(t)$ for almost every~$t$.
+\emph{Status:} proved (paper argument, independently reviewed), in
+\texttt{ASTRA-\allowbreak{}FOUR-\allowbreak{}LIST-\allowbreak{}REFEREE.\allowbreak{}txt}.
+% SOURCE: Exposition/Sources/2026-11-14-a5/ASTRA-FOUR-LIST-REFEREE.txt:6-25
+\emph{Not shown:} walk coordinates, or that interface data produce~$P$ (the
+producer is an unreviewed candidate).
+
+\item \textbf{Even walks (EVENWALK-R6).}
+% LEDGER: EVENWALK-R6 = LEAN_VERIFIED
+If $W$ is open, $T\subseteq W$ is connected, and every point of $T$ has a unit
+neighbour in $W$, then any two points of $T$ are joined by an even unit walk
+in~$W$. For measurable weak $k$-colourings: a finite pattern with density-one
+lists and no proper list colouring is impossible, and an even walk through
+density-one points of one list of at most two labels cannot have endpoints at
+unit distance.
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/research-desk/EvenWalk-rev6/EvenWalkReachability-rev6.lean:199,349,362
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/research-desk/EvenWalk-rev6/compile.log:21-23
+\emph{Status:} checked in Lean~4.34.1 (archived logs; desk compile).
+\emph{Not shown:} the A5 configuration, which is not formalised.
+
+\item \textbf{A6 producer chain (A6-FORCING, G1-R2, G3-R2, A6-BRIDGE-R2, A6-BRIDGE-R2-G3).}
+% LEDGER: A6-FORCING = LEAN_VERIFIED ; G1-R2 = LEAN_VERIFIED ; G3-R2 = LEAN_VERIFIED ; A6-BRIDGE-R2 = LEAN_VERIFIED ; A6-BRIDGE-R2-G3 = LEAN_VERIFIED ; A6-GLUE = OPEN
+\emph{Forcing:} let palettes $P_j\subseteq\mathrm{Fin}\,6$ satisfy an inner hit
+$f_j\in P_j$, an outer hit $P_j\cap H_j\neq\emptyset$, and
+$P_j\cap P_{j+1}=\emptyset$ cyclically. Then $\{f_j,f_j+3\}\subseteq P_j$.
+\emph{G1:} for $|s|<\pi/6$, $\cos(s+m\pi/3)>0$ exactly when
+$m\bmod 6\in\{0,1,5\}$, and paired directions satisfy \texttt{SignTable}.
+\emph{G3:} six translates of the open fundamental arc cover the circle almost
+everywhere.
+\emph{Bridge:} for a measurable weak 6-colouring with the interface
+exclusions, \emph{assuming} \texttt{SignTable}, \texttt{ForcingLemma} and
+\texttt{ArcCover}, almost every $\theta$ has a $j$ with $f_j,f_j+3$ in the
+palette.
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-admissions/claude-lean-20261114t212205-0/Candidate.lean:155,214
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-admissions/claude-lean-20261114t231544-0/Candidate.lean:368,417,441,447-451,521,739
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/research-desk/G3-r2/G3-ArcCover-r2.lean:219
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/research-desk/bridge-r2-axioms/axioms.log:1-8
+\emph{Status:} each part is checked in Lean~4.34.1 (archived logs). The
+forcing job printed no axiom list, and G1 compiled only inside the bridge job.
+A later version, \texttt{ae\_\allowbreak{}canonical\_\allowbreak{}subpalette\_\allowbreak{}unconditional}, glues in the G3 proof and so discharges
+\texttt{ArcCover}; it still assumes \texttt{SignTable} and
+\texttt{ForcingLemma} (A6-BRIDGE-R2-G3, checked in Lean~4.34.1).
+\emph{Not shown:} the fully glued theorem (A6-GLUE, open). The bridge remains
+conditional on \texttt{SignTable} and \texttt{ForcingLemma}, so exclusion of
+the paired configuration is not established in Lean.
+\end{itemize}
+
+% ----------------------------------------------------------------------
+\subsection{Finite computations}
+
+Every entry in Table~\ref{tab:finite} is labelled \emph{checked by
+computation}. For DIR-FILTER, let $Q=\{q\in(\mathbb{Z}/6)^6: q_0=0\}$, so
+$|Q|=7{,}776$, and let $E_i=\{i,i+1\}$.
+\begin{itemize}
+\item The AC filter requires $|\bigcup\{E_i: q_i=d\}|\le 3$ for every~$d$.
+\item The orbit relaxation asks for cyclic palettes $P_0,\dots,P_5$ with
+$1\le|P_j|\le 2$, $P_j\not\subseteq E_i$, $P_j\cap P_{j+1}=\emptyset$, and
+$P_j$ meeting the complement of $\bigcup\{E_i:\operatorname{sign}\cos((j-q_i)\pi/3)=\sigma\}$
+for both signs~$\sigma$.
+\item The cone filter requires $|\bigcup\{E_i:q_i\in\{d,d+1\}\}|\le 3$.
+\end{itemize}
+The counts are $7{,}776\to1{,}420\to174\to6$.
+% LEDGER: DIR-FILTER = TESTED_FINITE
+% SOURCE: Main/ResearchSnapshot/local/work/checkin-artifacts/20261114T172056Z/ac_filter_enum.py:8-16,40-51,75-83
+% SOURCE: Main/ResearchSnapshot/local/work/checkin-artifacts/20261114T172056Z/ac-independent-audit.json:3-6
+% SOURCE: Main/ResearchSnapshot/local/work/checkin-artifacts/20261114T172056Z/conditional-cone-filter.json:3-4
+% SOURCE: Main/ResearchSnapshot/local/outputs/ASTRA-CONE-REFEREE.txt:284-306 (cone rule; independent recomputation, 168 rejected, same six)
+% CHECK (this report, scratch copy): audit_ac_filter.py reproduced counts {7776,1420,174,95} and a byte-equal JSON; an independent cone-rule re-implementation gave the same 6 survivors.
+
+\begin{table}[ht]
+\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\caption{Finite computations (all: checked by computation).}\label{tab:finite}
+\begin{tabular}{P{0.15\textwidth}P{0.25\textwidth}P{0.15\textwidth}P{0.14\textwidth}P{0.21\textwidth}}
+\hline
+Object (ledger id) & What was checked & Size / range & Verifier & Does not show \\
+\hline
+Translated Heule union (HEULE-UNION) & Exact induced unit graph of $H\cup(H+(3/2,\sqrt3/2))$ in $\mathbb{Q}(\sqrt3,\allowbreak\sqrt5,\allowbreak\sqrt{11})$; proper 5-colouring & 1{,}048 vertices, 5{,}487 edges, 58 overlap, 184 new edges; all 548{,}628 pairs & \texttt{Verify-\allowbreak{}Heule\allowbreak{}Union\allowbreak{}.\allowbreak{}mjs} (exact, BigInt bound) & 5-chromaticity of $H$ (cited, Heule 2018; UNSAT not re-run); any plane bound \\
+No forcing (HEULE-NO-FORCING) & 34 proper 5-colourings give distinct signatures, so every pair is separated & 553/2{,}722 and 1{,}048/5{,}487 & \texttt{Verify-\allowbreak{}Heule\allowbreak{}No\allowbreak{}Forcing\allowbreak{}.\allowbreak{}py}; re-checked here & Anything beyond these two graphs \\
+Direction grid (DIR-FILTER) & AC, orbit relaxation, cone filter (above) & 7{,}776 vectors $\to$1{,}420$\to$174$\to$6 & \texttt{ac\_\allowbreak{}filter\_\allowbreak{}enum.\allowbreak{}py}, \texttt{audit\_\allowbreak{}ac\_\allowbreak{}filter.\allowbreak{}py}; referee recheck & Arbitrary directions; actual weak 6-colourings. The filters are conditional on AC and CC60 \\
+Fixed-phase census (FIXED-PHASE-CENSUS) & SAT/UNSAT of the six-direction palette CSP per sign class & 7{,}776 classes: 177 SAT, 7{,}599 UNSAT & Parent JS + independent Python; desk transfer matrix & Whole configurations (fixed phase only) \\
+Staircase census (STAIRCASE-CENSUS) & Survival of staircases & 76{,}283 of $7{,}776\cdot4{,}683=36{,}415{,}008$ & \texttt{census.py}, desk reimplementation & Sufficiency; the converse is open \\
+Six configurations (SIX-ORBIT) & UNSAT in the inner/outer-hit relaxation on one phase cell; $15^\circ$ $\ell^\infty$ neighbourhood & 6 configurations & Parent JS; graph lane & Actual-interface exclusion (needs an A6-type producer) \\
+A5 sliver (A5-SLIVER) & $R\ge0$ on three uncovered pieces (outward-rounded interval arithmetic) & 3 pieces & \texttt{certify\_\allowbreak{}sliver.\allowbreak{}py} & The 1{,}469+889 boxes (certified elsewhere) \\
+Honeycomb (HONEYCOMB-73; HONEYCOMB-K16) & No 6-colouring of the 73-cell conflict graph; period-4 quotient is $K_{16}$ & $a=1/5$: 888 edges; $a=1/4$: 723 edges; 120 edges for $K_{16}$ & \texttt{drat-trim} \texttt{s VERIFIED}; \texttt{verify\_\allowbreak{}quotient16.\allowbreak{}py} & Unrestricted colourings (cell-constant only) \\
+Historic list models (HISTORIC-8) & None of 8 models is a countermodel to JOINT-SUPPORT & $5^6$ words, 100 closed $C_5$ walks & \texttt{verify-\allowbreak{}certificates\allowbreak{}.\allowbreak{}mjs} & Exhaustiveness of the normalisation \\
+\hline
+\end{tabular}
+\end{table}
+% LEDGER: HEULE-UNION = TESTED_FINITE ; HEULE-NO-FORCING = TESTED_FINITE ; FIXED-PHASE-CENSUS = TESTED_FINITE ; STAIRCASE-CENSUS = TESTED_FINITE ; SIX-ORBIT = TESTED_FINITE ; A5-SLIVER = TESTED_FINITE ; HONEYCOMB-73 = TESTED_FINITE ; HONEYCOMB-K16 = TESTED_FINITE ; HISTORIC-8 = TESTED_FINITE
+% SOURCE: Main/ResearchSnapshot/local/outputs/HEULE-UNION-CERTIFICATE.json:2-4,13,16-19 (construction, tau, field, overlap 58, n 1048, m 5487, new_edges 184)
+% SOURCE: Main/ResearchSnapshot/local/outputs/HEULE-UNION-VALIDATION.txt:13-43 (pairsTested 548628; scope: Heule553 4-UNSAT not rechecked)
+% SOURCE: Main/ResearchSnapshot/local/outputs/Verify-\allowbreak{}Heule\allowbreak{}Union\allowbreak{}.mjs:47-49,52-59,64-65,71
+% SOURCE: Main/ResearchSnapshot/local/outputs/HEULE-UNION-VALIDATION.txt:273-306 (34 colourings, 1048 signatures, 0 unseparated)
+% SOURCE: Main/ResearchSnapshot/local/outputs/Verify-\allowbreak{}Heule\allowbreak{}No\allowbreak{}Forcing\allowbreak{}.py:6-14 ; HEULE553-NO-FORCING-CERTIFICATE.json:3,18883-18888
+% CHECK (this report): union certificate has 5487 unique edges, 0 monochromatic; union no-forcing has 34 proper witnesses, 1048 distinct signatures, edge set equal to the graph certificate; Verify-\allowbreak{}Heule\allowbreak{}No\allowbreak{}Forcing\allowbreak{}.py prints PASS.
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/research-desk/census/independent_census.out (SAT=177, UNSAT=7599; 76283 of 36415008)
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/research-desk/census/census_full.out (same counts)
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/openmath-supervisor/checkins/20261114T191820Z/inner-outer-orbit-certificates.json
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/certificate_output.txt:25
+% SOURCE: Main/ResearchSnapshot/local/work/patch25-audit/drat_run.log:1,7 ; A-QUARTER-AUDIT.md:16-17
+% SOURCE: Main/ResearchSnapshot/local/outputs/CONSOLIDATED-FINDINGS.txt:94 (a=1/5: 888 edges, 6496 clauses, remote drat-trim)
+% CITED: M. J. H. Heule, Computing small unit-distance graphs with chromatic number 5, Geombinatorics 28 (2018). [cited, not re-checked]
+
+% ----------------------------------------------------------------------
+\subsection{Negative results and counterexamples}
+
+\begin{itemize}
+\item \textbf{Closed-$120^\circ$ MC120 is false (MC120-ENDPOINT).}
+% LEDGER: MC120-ENDPOINT = PROVED_PAPER_REVIEWED
+Take the arcs $K_\pm=\{t\,e(\pm(\pi/3+2t)):0\le t\le 1/100\}$. They approach
+$0$ in directions exactly $120^\circ$ apart. A Borel, pointwise proper
+19-colouring has essential-support exclusions on $\mathrm{Straddle}(K_\pm)$
+that leave exactly one label, and
+$\mathrm{Straddle}(K_+)\cap\mathrm{Straddle}(K_-)$ contains no unit pair.
+\emph{Status:} proved (paper argument, independently reviewed), in
+\texttt{ASTRA-\allowbreak{}MC120-\allowbreak{}ENDPOINT-\allowbreak{}REFEREE.\allowbreak{}txt}.
+% SOURCE: Exposition/Sources/2026-11-14-a5/ASTRA-MC120-ENDPOINT-A5.txt:1-21
+% SOURCE: Exposition/Sources/2026-11-14-a5/ASTRA-MC120-ENDPOINT-REFEREE.txt:6-24
+% SOURCE: Exposition/Progress/2026-11-14-geometry-update.md:20-34
+\emph{Not shown:} anything for six colours or for apertures below
+$120^\circ$.
+
+\item \textbf{Local annulus (ANNULUS-3COL).} Nine $40^\circ$ sectors of
+$\{0.99<|z|<1.01\}$, coloured $j\bmod 3$, properly colour its unit pairs.
+\emph{Status:} proved (paper argument, independently reviewed).
+\emph{Not shown:} a global weak colouring.
+% LEDGER: ANNULUS-3COL = PROVED_PAPER_REVIEWED
+% SOURCE: Main/ResearchSnapshot/local/outputs/ASTRA-REBOOT-REFEREE.txt:211
+
+\item \textbf{Support flip (SUPPORT-FLIP).} A Borel $2\pi$-periodic
+$f:\mathbb{R}\to\{0,1\}$ with $f(t+\pi/3)=1-f(t)$ has both essential supports
+equal to $\mathbb{R}$. \emph{Status:} proved (paper argument, independently
+reviewed). \emph{Not shown:} a colouring of the plane.
+% LEDGER: SUPPORT-FLIP = PROVED_PAPER_REVIEWED
+% SOURCE: Main/ResearchSnapshot/local/outputs/ASTRA-REBOOT-REFEREE.txt:186
+
+\item \textbf{Four-state angular model (FOUR-STATE-ANGULAR).}
+$f(t)=\lfloor t/(\pi/6)\rfloor\bmod 4$ with palettes
+$\{0,2\},\{0,3\},\{3,5\},\{2,5\}$ satisfies orbitwise alternation, strip
+compatibility, NR and TC, yet has four palettes; no measure threshold below~1
+helps. \emph{Status:} proved (paper argument, independently reviewed).
+\emph{Not shown:} actual-interface realisation, which AC excludes.
+% LEDGER: FOUR-STATE-ANGULAR = PROVED_PAPER_REVIEWED
+% SOURCE: Main/ResearchSnapshot/local/outputs/ASTRA-AC-REFEREE.txt:19-20,208
+
+\item \textbf{Variable triangle (VARIABLE-TRIANGLE).} For the four-state
+palette at centre~0, no unit equilateral triangle lies in the closure of the
+partner-pair sum set. \emph{Status:} proved (paper argument, independently
+reviewed). \emph{Not shown:} anything beyond this fixed-base method.
+% LEDGER: VARIABLE-TRIANGLE = PROVED_PAPER_REVIEWED
+% SOURCE: Main/ResearchSnapshot/local/outputs/ASTRA-CLAUDE-TRIANGLE-REFEREE.txt:6
+
+\item \textbf{A7 contact (A7-CONTACT).} The old A5 support is properly
+colourable from the weaker A7 lists, so that construction cannot be reused.
+\emph{Status:} proved (paper argument, independently reviewed) for the three
+geometric sub-claims; the assembled colouring was checked only by the parent.
+\emph{Not shown:} a colouring of the full partial field.
+% LEDGER: A7-CONTACT = PROVED_PAPER_REVIEWED
+% SOURCE: Main/ResearchSnapshot/import-20261115/outputs/CLAUDE-A7-CONTACT-AUDIT.txt:1
+
+\item \textbf{Local transitions (LOCAL-TRANSITIONS).} A proper 6-colouring of
+a small disc has transition triangles at points tending to~0 while nearby
+palettes stay singletons. \emph{Status:} proved (paper argument,
+independently reviewed). \emph{Not shown:} a counterexample to L6.
+% LEDGER: LOCAL-TRANSITIONS = PROVED_PAPER_REVIEWED
+% SOURCE: Main/ResearchSnapshot/local/outputs/ASTRA-REBOOT-REFEREE.txt:264
+
+\item \textbf{Containment reading (A6-CONTAINMENT).} The conditions
+$f_j\in P_j$, $H_j\subseteq P_j$ and $P_j\cap P_{j+1}=\emptyset$ for all~$j$
+are inconsistent, so a containment-form forcing lemma would be vacuous.
+\emph{Status:} checked in Lean~4.34.1 (archived logs); no axiom list was
+printed.
+% LEDGER: A6-CONTAINMENT = LEAN_VERIFIED
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-admissions/claude-lean-20261114t212205-0/Candidate.lean:265
+\end{itemize}
+
+% ----------------------------------------------------------------------
+\subsection{Corrections and retractions}
+
+\begin{itemize}
+\item \emph{MC120 endpoint.} A claimed extension of the monochromatic-cone
+argument to aperture exactly $120^\circ$ was retracted. For
+$A,B,C=e(-\pi/6),e(\pi/6),(\sqrt3,0)$ and open unit discs,
+$B(A,1)\cap B(B,1)\cap B(C,1)\cap\{|z|>1\}$ has outer strips on an open
+$60^\circ$ arc but no unit pair. CC60 is unaffected.
+% SOURCE: Main/ResearchSnapshot/local/outputs/MC120-ENDPOINT-CORRECTION.txt:2-16
+% SOURCE: Main/ResearchSnapshot/local/outputs/RESEARCH-STATUS.txt:9
+\item \emph{Strip width.} The proposed universal bound
+$\delta\ge c\langle e,v\rangle$ is false. For $K=[0,\rho v]$, the straddle
+set along the ray $rv$ is $1<r<1+\rho$, so $\delta\le\rho$ while
+$\langle v,v\rangle=1$.
+% SOURCE: Main/ResearchSnapshot/local/outputs/MC120-ENDPOINT-CORRECTION.txt:22-25
+\item \emph{Direction count $95\to174$.} The first enumeration rebuilt
+witnesses greedily and dropped feasible vectors. Complete path reconstruction
+gives 174; 79 had been missed.
+% SOURCE: Main/ResearchSnapshot/local/work/checkin-artifacts/20261114T172056Z/ac_filter_enum.py:63-72 (greedy rebuild)
+% SOURCE: Main/ResearchSnapshot/local/work/checkin-artifacts/20261114T172056Z/REPORT.txt:10
+\item \emph{Staircase total.} 36{,}415{,}608 was a typo for 36{,}415{,}008.
+\end{itemize}
+% LEDGER: STAIRCASE-CENSUS correction history (staircase.md typo, cycle 211858)
+
+\emph{Retracted or refuted.}
+% LEDGER: each item below = RETRACTED_OR_REFUTED
+\begin{itemize}
+\item AC-AXIS: AC for an unsigned axis.
+\item TWO-TRIANGLE: ``4 or 5 distinct directions are impossible'' (q4, q5
+refute it).
+\item ALT-TRIPLE: ``covers all labels iff it contains an alternating triple''.
+\item PALETTE-EQ-F: a route assuming palette $=F$; only $F\subseteq$ palette
+holds.
+\item CLAUDE05-VERDICT: ``no one-centre condition excludes the canonical
+palette''.
+\item A5-FAR-APEX: $|A_{\mathrm{far}}-c_i|>1.5$; the weaker $>1$ holds.
+\item A5-M5-TEMPLATE: the $m=5$ template for the $k=6$ producer.
+\item OVERNIGHT-WITHDRAWN: five-cycle shortcut, H2 discharge, 681/720 cell
+family, canonical 3-cycle.
+\item LEAN-FAILED-REVISIONS: eight failed jobs, all superseded.
+\end{itemize}
+
+% ----------------------------------------------------------------------
+\subsection{Open problems}
+% LEDGER: each item below = OPEN
+\begin{itemize}
+\item A6-GLUE: compile the bridge with G1, G3 and the forcing lemma spliced in.
+\item STEPBAN-SWAP: adopt the compiled same-name swap into the integrated tree, delete the old step ban, rebuild downstream and re-run the root axiom check (expected net change about $+23$ lines: structural only).
+\item R1-GATES: re-run R1's contract and dependency gates.
+\item PALETTE-RIGIDITY: $|J\cup K|\ge3$ with real states on both sectors.
+\item STAIRCASE-CONVERSE: realise or classify the surviving staircases.
+\item K6-PRODUCER: two missing declarations for the $m=3$ case at $k=6$.
+\item L6-F6: the only recorded route to $\chi\ge7$, conditional on the open
+lemmas L6 and F6.
+\item LOCALIZED-TWO-STATE: every positive-measure partial two-state field is
+impossible.
+\end{itemize}
+
+Unreviewed candidates, not claimed: A6-PAIRED-PRODUCER, A6-COROLLARIES,
+MC120-STRICT, CONTINUOUS-SIX, LIST-FIELD-A4, A5-ODD-WALK and the remaining
+ledger candidates.
+% LEDGER: CANDIDATE ids (28 in results-ledger.json when last read; the ledger was still growing):
+%   (FIVESUPPORT-SWAP promoted to LEAN_VERIFIED in ledger batch 2; new candidates J-DEPTH R0-CHI4 Q4Q5-PINNING not cited)
+%   A5-ODD-WALK A6-COROLLARIES A6-PAIRED-PRODUCER A7-PARTIAL-INDEPENDENT AMPLIFIER
+%   CENSUS-COMPLETE-60Z CLAUDE-LEMMA-A CONTINUOUS-SIX HONEYCOMB-RESTRICTED J-DEPTH K6-M3-DOOR LIST-FIELD-A4
+%   MC120-STRICT Q4Q5-PINNING R0-CHI4 RELAX-CIRCULANT T6-B2 THM-BPRIME TRANSLATION-CRITERION WILD-LAW
+%   A8-PALETTE ALPHA-SHARP FOURWAY-SPLIT GEOM-Q4Q5 GEOM-TWO-STEP Q4Q5-APEX TERNARY-COUNTERMODEL
+% NOTE: RELAX-1-648 = UNAUDITED_NUMBER deliberately omitted from the text.
+
+% ----------------------------------------------------------------------
+\begin{table}[ht]
+\centering\scriptsize\setlength{\tabcolsep}{3pt}
+\caption{Lean declarations relied on (Lean~4.34.1, Mathlib \texttt{d13f23b}; none rebuilt under 4.35.0).}\label{tab:lean-other}
+\begin{tabular}{P{0.24\textwidth}P{0.21\textwidth}P{0.18\textwidth}P{0.27\textwidth}}
+\hline
+Declaration & File & Supports & Difference from prose \\
+\hline
+\texttt{Encoding\allowbreak{}Approximation\allowbreak{}At}; abbrevs \texttt{Finite\allowbreak{}Encoding\allowbreak Approximation\allowbreak{}At}, \texttt{Ambient\allowbreak{}Encoding\allowbreak{}At} & \texttt{Conditional\allowbreak{}Spectrum.\allowbreak{}lean}:273,291; \texttt{Conditional\allowbreak{}Limits.\allowbreak{}lean}:371 & ENC-R4 & Extra read-out type $Z$; aliases omit two instance binders on $Y$ \\
+\texttt{uniform\_\allowbreak{}precision\_\allowbreak{}contradiction} & \texttt{Conditional\allowbreak{}Spectrum.\allowbreak{}lean}:325 & ENC-R4 & Wildness is a hypothesis \\
+\texttt{finite\_\allowbreak{}/\allowbreak{}ambient\_\allowbreak{}uniform\_\allowbreak{}precision\_\allowbreak{}contradiction} & \texttt{Conditional\allowbreak{}Spectrum.\allowbreak{}lean}:494; \texttt{Conditional\allowbreak{}Limits.\allowbreak{}lean}:376 & ENC-R4, ENC-R4-AUX & Header match is textual (whitespace-normalised) \\
+\texttt{no\_\allowbreak{}proper\_\allowbreak{}five\_\allowbreak{}coloring} and 8 other roots & supplied \texttt{Five.lean} etc. & ENC-R4, R1 rebuilds & Supplied theorems, not team results \\
+\texttt{five\_\allowbreak{}support\_\allowbreak{}step\_\allowbreak{}ban\_\allowbreak{}v2}; \texttt{five\_\allowbreak{}opposite\_\allowbreak{}contacts\_\allowbreak{}false\_\allowbreak{}from\_\allowbreak{}v2} & StepBan \texttt{Candidate.lean}:76, :226 & STEPBAN-V2, -CONSUMER & Parallel names; originals still in use \\
+\texttt{state\allowbreak{}Support\_\allowbreak{}no\_\allowbreak{}shift\_\allowbreak{}of\_\allowbreak{}contact\_\allowbreak{}ban}; \texttt{five\_\allowbreak{}support\_\allowbreak{}no\_\allowbreak{}sixty\_\allowbreak{}joint\_\allowbreak{}pair} & \texttt{Joint\allowbreak{}Pair\allowbreak{}Support.\allowbreak{}lean}:10, :33 & JOINT-SUPPORT & New name; supplied lemma untouched; statement match by source reading \\
+\texttt{three\_\allowbreak{}color\_\allowbreak{}diamond\_\allowbreak{}omega}, \texttt{diamond\_\allowbreak{}tips} & \texttt{Diamond\allowbreak{}Standalone.\allowbreak{}lean}:23, :37 & DIAMOND & A 4.35.0 core-only run printed axioms but has no exit record \\
+\texttt{five\_\allowbreak{}residues\_\allowbreak{}reduce\_\allowbreak{}to\_\allowbreak{}two} and 34 others & \texttt{Five\allowbreak{}Cycle\allowbreak{}Residues\allowbreak{}V4.\allowbreak{}lean}:115 & FIVE-CYCLE-RESIDUES & Finite facts only \\
+\texttt{even\allowbreak{}Walk\_\allowbreak{}reachable}, \texttt{finite\_\allowbreak{}list\_\allowbreak{}obstruction}, \texttt{two\_\allowbreak{}list\_\allowbreak{}obstruction\_\allowbreak{}of\_\allowbreak{}even\_\allowbreak{}walk} & \texttt{Even\allowbreak{}Walk\allowbreak{}Reachability-\allowbreak{}rev6.\allowbreak{}lean}:199, :349, :362 & EVENWALK-R6 & Desk compile, not a queue job \\
+\texttt{a6\_\allowbreak{}canonical\_\allowbreak{}pairs\_\allowbreak{}add\_\allowbreak{}three}; \texttt{a6\_\allowbreak{}containment\_\allowbreak{}unsatisfiable} & A6 forcing \texttt{Candidate.lean}:155, :265 & A6-FORCING, A6-CONTAINMENT & No \texttt{\#print axioms} in the job \\
+\texttt{cos\_\allowbreak{}sign\_\allowbreak{}strict}, \texttt{sign\allowbreak{}Table\_\allowbreak{}of\_\allowbreak{}paired} & bridge \texttt{Candidate.lean}:521, :739 & G1-R2 & Compiled only inside the bridge job \\
+\texttt{arcCover} & \texttt{G3-\allowbreak{}Arc\allowbreak{}Cover-\allowbreak{}r2.\allowbreak{}lean}:219 & G3-R2 & Desk compile \\
+\texttt{ae\_\allowbreak{}canonical\_\allowbreak{}subpalette\_\allowbreak{}global} & bridge \texttt{Candidate.lean}:447 & A6-BRIDGE-R2 & \texttt{SignTable}, \texttt{ForcingLemma}, \texttt{ArcCover} are hypotheses \\
+\texttt{unit\allowbreak{}Free\_\allowbreak{}pairwise\_\allowbreak{}lt}, \texttt{diam\_\allowbreak{}le\_\allowbreak{}one\_\allowbreak{}of\_\allowbreak{}preconnected\_\allowbreak{}unit\allowbreak{}Free'} & \texttt{Connected\allowbreak{}Set\allowbreak{}Exclusion\allowbreak{}Minimal\allowbreak{}.\allowbreak{}lean}:62, :74 & CONNECTED-SET: connected unit-free sets have diameter $\le1$ & Sharp \\
+\texttt{exists\_\allowbreak{}proper\allowbreak{}Coloring\_\allowbreak{}of\_\allowbreak{}compl\_\allowbreak{}null} & \texttt{KGeneric\allowbreak{}Transfer.\allowbreak{}lean}:40 & NULL-TRANSFER: proper off a null set $\Rightarrow$ some proper colouring & Need not agree with $c$ \\
+\hline
+\end{tabular}
+\end{table}
+% LEDGER: DIAMOND = LEAN_VERIFIED ; FIVE-CYCLE-RESIDUES = LEAN_VERIFIED ; CONNECTED-SET = LEAN_VERIFIED ; NULL-TRANSFER = LEAN_VERIFIED ; ENC-R4-AUX = LEAN_VERIFIED
+% SOURCE: Main/ResearchSnapshot/local/work/lean-queue/diamond-standalone.log:1-4 (Lean 4.35.0 core run: axioms printed, no Status/Exit lines)
+% SOURCE: Main/ResearchSnapshot/local/work/lean-queue/diamond-pinned-core.log:1-9 (Lean 4.34.1, passed, exit 0)
+% SOURCE: Main/ResearchSnapshot/local/work/lean-queue/encoding-r4/src/SignatureEquivalenceR5.lean:101,107,120,139
+% SOURCE: Main/ResearchSnapshot/local/work/lean-queue/encoding-r4/src/KGenericTransfer.lean:40
+% SOURCE: Main/ResearchSnapshot/local/work/lean-queue/Connected\allowbreak{}Set\allowbreak{}Exclusion\allowbreak{}Minimal\allowbreak{}.lean:47,62,74,82
+% SOURCE: Main/ResearchSnapshot/import-20261115/work/research-desk/G3-r2/compile.log:1
+
+%======================================================================
+\section{The exposition and its figures (described in words)}
+%======================================================================
+The reader \texttt{Hadwiger\allowbreak{}Nelson/\allowbreak{}Exposition/\allowbreak{}Proof\allowbreak{}Walkthrough.\allowbreak{}md} is the event's main exposition product. It has six lessons, each ending with questions, model answers and a feedback prompt. Each lesson was drafted by a Claude exposition editor and checked by an independent Claude referee against primary sources; the referee's fixes were applied before integration. Each figure below enables one stated inference. Figures for Lessons~3--5 were generated by scripts and checked by point sampling against the exact predicate they depict.
+\begin{itemize}
+\item \textbf{Lesson 1 (weak colourings).} Three figures.
+  \begin{itemize}
+  \item A unit ruler in a red left half-plane and blue right half-plane: pointing right it scores 0, pointing up it scores 1.
+  \item The unit circle about a point half a unit left of the dividing line: a $120^\circ$ arc of directions reaches the other colour, so the bad fraction there is two thirds.
+  \item Two-stage sampling in a window: a start point by area, then a direction, with averaging of the local bad fractions.
+  \end{itemize}
+  \emph{Inference:} weakness is a statement about the share of bad placements in every window, and the invalid half-plane colouring has a positive share.
+\item \textbf{Lesson 2 (density).} Two disks of radius $h$ at $a$ and $b$, one unit apart, with parallel rulers between them. A fan of rulers whose tips land in a disk of radius $2h$. Three slices showing at most $1\%+4\%$ of failing starts per direction. \emph{Inference:} turning costs one doubling of the landing radius, hence a factor $4$ in area, and a positive share of bad rulers remains.
+\item \textbf{Lesson 3 (straddling).}
+  \begin{itemize}
+  \item The band $\Delta(K)$ for a segment of length $0.6$: the open radius-1 capsule minus the closed lens where the endpoint unit disks overlap, with the unit circle of the midpoint running through it. A $400\times400$ grid check gave 0 misclassified points among 153,900 checked, with points within 1\% of the boundary skipped.
+  \item A walk along $K$ whose distance from $z$ passes $0.9$, $1$, $1.1$.
+  \item Two points at distances $0$ and $2$ with the missing middle contact.
+  \end{itemize}
+  \emph{Inference:} a connected set of centres turns one zero-area circle into a band of positive area.
+\item \textbf{Lesson 4 (interfaces).}
+  \begin{itemize}
+  \item A unit circle crossing an interface between strips of colours $A$ and $B$ at the midpoint of $K$.
+  \item The exact $\Delta(K)$ of a segment of length $0.25$ leaving a centre $x$: a crescent just outside the unit circle on the side $K$ points to, and one just inside on the far side.
+  \item Two segments $40^\circ$ apart whose straddle regions overlap in a long thin band where only labels $5,6$ could appear.
+  \end{itemize}
+  Checks: 0 misclassified points among 153,768 and 151,176 checked; every straddling point lies within $L$ of the unit circle. \emph{Inference:} a narrow cone of interfaces leaves a long region for the leftover labels; CC60 says at least three must survive.
+\item \textbf{Lesson 5 (three centres).}
+  \begin{itemize}
+  \item The unit triangle $x$, $x+e^{ib}$, $x+e^{id}$ for support directions $0^\circ$ and $60^\circ$; side lengths check to $1\pm10^{-5}$.
+  \item A label table in which label $4$ is forced into two disjoint palettes.
+  \end{itemize}
+  \emph{Inference:} two support directions $60^\circ$ apart give three mutually unit-separated centres, and one leftover label is then forced twice.
+\end{itemize}
+Every figure is an illustration; none depicts a valid colouring.
+
+%======================================================================
+\section{Status of every main claim}
+%======================================================================
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}X l X@{}}
+\toprule
+Claim & Status & Evidence\\
+\midrule
+No proper five-colouring of the plane; $6\le\chi(\R^2)\le7$ & \st{cited} & manuscript \cite{OAI}, Thms 1.1, 1.4; seven-colour hexagon tiling\\
+Three-centre proof of Lemma 6.3 (fixed centre); moving-centre four-cycle lemma; integrated build R1 & \st{proved}, \st{Lean 4.34.1} & Section 3; three-centre validation logs; R1 manifest\\
+CC60 & \st{Lean 4.34.1} & Section 4; cone packet\\
+CC60 cannot be widened above $60^\circ$ for arbitrary finite palettes (SHARPNESS-20; 20 colours) & \st{proved} & Section 4; sharpness referee report\\
+Lean simplification of the supplied proof, 150 lines shorter (ENC-R4, R1) & \st{Lean 4.34.1} & Section 5; results ledger\\
+Branch-free step ban and its consumers (STEPBAN-V2, STEPBAN-CONSUMER, STEPBAN-CYCLICCORE, FIVESUPPORT-SWAP): structural, not shorter; adoption open & \st{Lean 4.34.1} & Section 5\\
+Four-list obstruction and other local lemmas (A5-FOUR-LIST, AC-ALIGNED, NR-TC, RESIDUAL-GRAPH, STRAIGHT-NEEDLE) & \st{proved} & Section 5; referee reports\\
+Even-walk parity obstructions (EVENWALK-R6) & \st{Lean 4.34.1} & Section 5\\
+Six-colour producer pieces (A6-FORCING, A6-BRIDGE-R2, A6-BRIDGE-R2-G3, G1-R2, G3-R2); still conditional on SignTable and ForcingLemma (A6-GLUE open) & \st{Lean 4.34.1}, conditional & Section 5\\
+Censuses and certificates (HEULE-UNION, HEULE-NO-FORCING, DIR-FILTER, FIXED-PHASE-CENSUS, STAIRCASE-CENSUS, SIX-ORBIT, A5-SLIVER, HONEYCOMB-73) & \st{computation} & Section 5, Table~\ref{tab:finite}\\
+Counterexamples and negative results (MC120-ENDPOINT, ANNULUS-3COL, SUPPORT-FLIP, FOUR-STATE-ANGULAR, VARIABLE-TRIANGLE, A7-CONTACT, LOCAL-TRANSITIONS) & \st{proved} & Section 5\\
+A route to $\chi\ge7$ (L6-F6) & open; not claimed & Section 5\\
+Exposition figures match their stated regions & \st{computation} & point-sampling checks, Section 6\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+%======================================================================
+\section{Use of AI tools and how output was checked}
+%======================================================================
+[TEAM: confirm the tool list and roles.] The records name these roles.
+\begin{itemize}
+\item \textbf{Claude} (Anthropic): exposition drafting, lesson integration, figure generators, independent referee passes, and drafting of this report.
+\item \textbf{Astra and Codex} (OpenAI tooling) and an \textbf{OMM} research swarm: research worker and reviewer roles, including the ASTRA-labelled paper reviews cited in Sections~4--5.
+\end{itemize}
+Checking was layered.
+\begin{itemize}
+\item Every lesson had an independent referee pass by a separate model instance that had not written it. The referee read the primary sources (manuscript text and Lean files).
+\item Every Lean claim rests on archived compiler logs and axiom audits; source hashes match the recorded hashes.
+\item Every figure was checked by an independent sampling script.
+\end{itemize}
+The team must be able to explain every claim; the reader's question-and-answer blocks are written for that purpose.
+
+%======================================================================
+\section{Attribution and prior work}
+%======================================================================
+\begin{itemize}
+\item The five-colour theorem, its proof and its Lean development are the supplied manuscript's \cite{OAI} and are not ours.
+\item The straddle region and the interface mechanism are the manuscript's. The manuscript credits the connected-interface idea to Sokolov and Voronov \cite{SokolovVoronov} and related one-sided strip arguments to \cite{SokolovVoronov,Voronov}.
+\item The Moser spindle is from \cite{MoserMoser}. The seven-colour hexagon tiling is classical; see \cite{Soifer} for history.
+\item Our contributions are the items in Sections~3--6 marked \st{proved}, \st{Lean 4.34.1} or \st{computation}, and the exposition.
+\end{itemize}
+
+%======================================================================
+\section{Limitations}
+%======================================================================
+\begin{itemize}
+\item \textbf{There is no global chromatic result here.} We neither exclude six colours nor construct a six-colouring.
+\item CC60 forbids a kind of local configuration at a common centre. Nothing shows that a hypothetical six-colouring must produce it.
+\item No Lean file of ours has been built under the event's Lean~4.35.0 environment.
+\item The three-centre replacement is integrated only in the team's local build R1 (Lean~4.34.1); its contract and dependency re-checks are follow-ups.
+\item The exposition's referee passes are bounded checks of the explanation, not an independent verification of the supplied proof.
+\end{itemize}
+
+\begin{thebibliography}{99}
+\bibitem{OAI} OpenAI. \emph{The Euclidean plane is not five-colorable.} Manuscript, 23 September 2026, with Lean development (OpenAI commit \texttt{fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb}).
+\bibitem{deGrey} A.~D.~N.~J. de~Grey. The chromatic number of the plane is at least 5. \emph{Geombinatorics} 28(1):18--31, 2018. arXiv:1804.02385.
+\bibitem{ExooIsmailescu} G.~Exoo and D.~Ismailescu. The chromatic number of the plane is at least 5: a new proof. \emph{Discrete Comput. Geom.} 64:216--226, 2020.
+\bibitem{Falconer} K.~J. Falconer. The realization of distances in measurable subsets covering $\R^n$. \emph{J. Combin. Theory Ser. A} 31(2):184--189, 1981.
+\bibitem{Hadwiger} H.~Hadwiger. Ungel\"oste Probleme Nr.~40. \emph{Elem. Math.} 16:103--104, 1961.
+\bibitem{Heule} M.~J.~H. Heule. Computing small unit-distance graphs with chromatic number 5. \emph{Geombinatorics} 28(1):32--50, 2018.
+\bibitem{MoserMoser} L.~Moser and W.~Moser. Solution to problem 10. \emph{Canad. Math. Bull.} 4(2):187--189, 1961.
+\bibitem{Parts} J.~Parts. The chromatic number of the plane is at least 5---a human-verifiable proof. \emph{Geombinatorics} 30(2):77--102, 2020.
+\bibitem{Soifer} A.~Soifer. The 50th anniversary of one problem: the chromatic number of the plane and its relatives, part 1. \emph{Mathematics Competitions} 16(1):9--41, 2003.
+\bibitem{SokolovVoronov} G.~Sokolov and V.~Voronov. On the chromatic number of the plane for map-type colorings. arXiv:2502.01958, 2025.
+\bibitem{Voronov} V.~Voronov. The chromatic number of the plane with an interval of forbidden distances is at least 7. arXiv:2304.10163, 2025.
+\end{thebibliography}
+\end{document}

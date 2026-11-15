@@ -1,0 +1,162 @@
+PROVENANCE AUDIT: DETERMINANT, RESIDUES, SPECTRAL ARGUMENT, ENERGY, NORMALIZATION
+
+Compared directly with sources/Fauzan_2026_zeta5.txt, the preserved 32-page
+manuscript, and zeta5_unified_framework.tex. Page numbers below are printed PDF
+page numbers, which agree with the PAGE markers. This is an attribution audit,
+not a new audit of the irrationality theorem.
+
+Main finding
+------------
+Much more of the proposed conceptual account is already explicit in Fauzan
+than the phrase 'one Gram pencil' might suggest. His introduction already
+connects the affine matrix, positive moment realization, Vandermonde integral,
+logarithmic energy, local bases, and relative matrix norm (pp. 2-3, section 1.1).
+Our residue language and invariant notation can improve navigation, but they
+do not introduce a different mathematical mechanism.
+
+1. The affine positive Gram pencil
+
+Original: section 2.1, pp. 3-4, (2.2)-(2.4), defines mu_X and G_K(X), and says
+explicitly that only simple-pole values depend on X, affinely. Section 2.4,
+p. 5, Proposition 2.2 and (2.10), realizes G_K(zeta(5)) as a positive Gram
+matrix and writes its positive quadratic form. Appendix C.1, p. 29, explicitly
+defines M_K=[X]G_K(X) and B_K=G^{-1/2}M_KG^{-1/2}.
+
+Our master pairing B_{K,X}=integral+(X-xi)R_K is a coordinate-free assembly of
+these displayed formulas. The Laurent-coefficient expression
+[t^{-3}]_infinity R and -Res_infinity(t^2 R dt) is not stated in the original,
+but follows immediately from its pole coefficient j^4 in (2.3).
+
+Attribution status: original construction; additional compact notation and
+interpretation. Do not describe the pencil or its link to positivity as a new
+observation of our note.
+
+2. The residue matrix, exact degree, and finite quotient algebra
+
+Original: section 2.3, p. 4, displays
+  [X]G_K(X)=V diag(j^4 D_N(-j^2)^5 / D_tail'(-j^2)) V^T
+and then (2.9), the exact nonzero leading coefficient
+  (-1)^{h(h-1)/2} product_{N<j<=K} j^4 D_N(-j^2)^5.
+Appendix C.1, p. 29, (C.3), uses the same residue expression as a quadratic
+form in evaluations at negative squares.
+
+Our A_K=Q[t]/(T_K), epsilon, unit H_K=t^2 W_K, Frobenius-style pairing and
+resultant proof are not presented under those names in the source. They are
+the standard finite-algebra reformulation of precisely that Vandermonde
+factorization. They reproduce the same determinant, with the same sign and
+factors. The original does use 'resultants' elsewhere, for unimodularity of
+local class factors on p. 12, but not this global resultant formula.
+
+Attribution status: a different elementary packaging/proof of an already
+proved identity. The claim that exact degree can be moved to a structural
+corollary is an added proof-dependency observation: the basic irrationality
+contradiction needs only degree <=h plus positivity. This does not replace
+the exact-degree proof when exact degree remains in the theorem statement.
+
+3. Signed-measure Andreief identity for every X
+
+Original: section 6.2, p. 19, (6.10), gives the positive-measure Andreief formula
+at X=xi, and cites Forrester. Section 2.3 provides the finite residue sum.
+
+Our signed measure nu_{K,X}=nu_K+(X-xi)sum c_j delta_{-j^2} and the all-X
+Andreief identity do not appear explicitly in the manuscript. They follow
+by combining those two original formulas with the standard signed-measure
+version of Andreief (or merely expanding determinants). Reading positivity
+and the leading coefficient as two specializations of this single formula
+is a real expository consolidation. It is not a new estimate or construction.
+
+Attribution status: added synthesis, transparently derived from sections 2.3
+and 6.2; attribute both and the classical identity.
+
+4. Spectral factorization and roots
+
+Original: Appendix C.1, p. 29, defines the real symmetric B_K and proves its
+operator norm bound. Appendix C.2, p. 30, gives
+  Q_K(a/b)=Q_K(xi) det(I+delta B_K)
+and uses positivity of all eigenvalues when |delta| ||B_K|| is small.
+Appendix C.3, p. 31, explicitly writes
+  Q_K(X)=Q_K(xi) product_j (1+(X-xi) beta_j)
+for the eigenvalues beta_j of B_K. The introduction already explains that
+the matrix bound excludes vanishing at nearby rational arguments (p. 3).
+
+Our displayed pencil congruence and eigenvalue product are the same spectral
+argument. 'All roots are real' and
+  dist(xi, zeros Delta_K)=1/||B_K||
+are not stated as corollaries in the source. They are immediate consequences
+of its explicit factorization and nonzero leading coefficient. They make
+the meaning of the norm bound easier to state, but should not be presented
+as a new spectral method or independent result of comparable depth.
+
+Our orthonormal-polynomial/reproducing-kernel expression
+  ||B|| <= sum |c_j| K_h(-j^2,-j^2)
+is an added standard reformulation. Original (C.2)-(C.5), p. 29, already does
+the operative comparison between negative-node evaluations and a positive
+integral norm, using Legendre polynomials. No stronger bound is obtained by
+the reformulation in our note.
+
+5. Energy and the comparison measure
+
+Original: section 6, p. 17, introduces exactly the external field V in (6.1),
+U_rho and I(rho), and the potential inequality (6.2). It explicitly says the
+argument needs a comparison measure, not an explicit solution of the
+equilibrium problem. Therefore describing rho as a 'dual certificate' adds
+a name, not a new mathematical distinction.
+
+Section 6.1, pp. 18-19, proves the zero-mass energy inequality (Lemma 6.2,
+(6.5)), uses circle regularization, derives the 60 sqrt(epsilon) circle
+averaging error, and obtains precisely the configuration estimate (6.6).
+Our abstract certificate lemma isolates the one-line expansion already used
+there. Our fuller regularization discussion restates the original safeguards.
+
+Section 6.2, p. 20, (6.12), already proves the uniform logarithmic
+sum-to-integral bound by monotonicity, decreasing dependence on t, and the
+factorial estimate at t=0. Our E_m(t) argument repeats that proof in named
+error-term notation. It must not be credited as a newly supplied repair of
+a nonuniform Stirling step: Fauzan already avoids that problem.
+
+Section 6.2, p. 20, (6.14)-(6.16), also already explains cancellation of
+K^2 log K by S_K. Appendix A constructs the sixteen-arcsine measure and
+verifies its numerical certificate.
+
+Attribution status: almost entirely restatement and terminology changes.
+The source is already clear about the roles of the measures and the need
+for error and tail bounds.
+
+6. Primitive normalization and J_xi
+
+Original: section 2.1, p. 4, (2.5)-(2.6), defines F_K=S_K Delta_K and
+Q_{K,M}=m_{K,M}F_K, and explicitly says m is specified through prime
+exponents without computing content. Section 7, p. 21, (7.1), combines the
+real and arithmetic costs, then gives the integer contradiction. The same
+contradiction is outlined on p. 2.
+
+Appendix C.3, p. 31, defines rational content exactly, sets
+  P_K=Delta_K/cont_Q(Delta_K),
+and proves Q_{K,M}=a_{K,M} P_K for a positive integer a_{K,M}. It explicitly
+states that this removes the cutoff from the canonical primitive polynomial
+and transfers the upper bounds; it is a consequence of explicit
+normalization rather than a second irrationality argument.
+
+Our J_xi(A)=log|A(xi)|-sum_p v_p^G(A)log p is not named in the source. But it
+is exactly log|A(xi)/cont_Q(A)|. Its rational-scale invariance and the fact
+that explicit normalization bounds it are immediate restatements of the
+primitive normalization already in Appendix C.3. The abstract primitive
+evaluation criterion merely abstracts the integer contradiction already on
+pp. 2 and 21.
+
+Attribution status: useful invariant notation and moving an existing
+Appendix C.3 observation to the organizing front of the exposition. No new
+local-to-global principle is needed or proved.
+
+Suggested honest positioning
+---------------------------
+'An explanatory reorganization of Fauzan's construction, with classical
+functional interpretations and a few elementary structural corollaries.'
+
+For this part of the note, the most useful added synthesis is the all-X
+signed-measure identity and the quotient-algebra viewpoint. The source
+already contains the positive Gram structure, residue matrix, spectral
+factorization, primitive normalization, comparison-measure strategy, uniform
+sum-to-integral bound, and the quantitative implementation. Reproducing them
+with attribution is legitimate exposition, but presenting those mechanisms
+as newly discovered would overstate the note's contribution.

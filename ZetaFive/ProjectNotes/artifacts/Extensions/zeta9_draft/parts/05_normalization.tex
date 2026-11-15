@@ -1,0 +1,224 @@
+\section{Normalization and the prime sum}
+\label{s5-normalization}
+
+We keep $K=40n$, $N=3n$, $h=37n$, $\alpha=3/40$, and
+$\lambda=37/40$.  In particular, the scalar $S_K$ is unchanged.
+The purpose of normalization is to turn the local determinant estimates
+into an integral polynomial while recording the entire cost, including
+positive valuations which permit division by a prime power.
+
+\paragraph{[Conditional] The normalization exponents.}
+The analogue of source (5.1)--(5.3), for fixed $M\geq40$ and
+$K\geq200M^2$, is
+\begin{equation}
+ L_{9,p}(K,M)=
+ \begin{cases}
+ -10h\lfloor\log_p(5K)\rfloor-hv_p(40320),&pM\leq K,\\
+ v_p(S_K)+\gamma^{\mathrm{in}}_{9,p},&pM>K,\ 3p\leq K,\\
+ v_p(S_K)+\gamma^{\mathrm{out}}_{9,p},&3p>K.
+ \end{cases}
+ \label{s5-local-exponents}
+\end{equation}
+Here the two $\gamma$'s are the explicit weight sums and outer formulas
+of Section~4, with $\gamma^{\mathrm{out}}_{9,p}=0$ for $p>K$.  Set
+\begin{equation}
+ m_{9,K,M}=\prod_{p\leq2h}p^{-L_{9,p}(K,M)},\qquad
+ Q_{9,K,M}=m_{9,K,M}F_{9,K}.
+ \label{s5-normalizing-product}
+\end{equation}
+No positive-part operation is applied to $-L_{9,p}$: the product is a
+positive rational number, not necessarily an integer.  Legendre's formula gives
+\begin{align}
+ v_p(S_K)={}&2h\sum_{a\geq1}\lfloor K/p^a\rfloor
+ -12h\sum_{a\geq1}\lfloor N/p^a\rfloor\notag\\
+ &-2\sum_{i=1}^{h-1}\sum_{a\geq1}\lfloor2i/p^a\rfloor
+ +(h-1)v_p(4).
+ \label{s5-legendre}
+\end{align}
+Subject to the local estimates identified in Sections~3--4,
+$Q_{9,K,M}\in\mathbb Z[X]$, the analogue of Proposition~5.1.
+Indeed, these estimates handle $p\leq2h$; for $p>2h$ every factorial
+in $S_K$ is a unit and the determinant is integral.  The analytic
+completion step needed for the inner estimate remains a stated
+dependency, rather than a theorem established by this normalization.
+
+\subsection{The inner limiting function}
+\label{s5-inner}
+
+\paragraph{[Derived] The change from $5$ to $9$.}
+For $x\geq3$ and $0<z<1/2$, put
+\[
+ \ell(x,z)=\lfloor x-z\rfloor+\lfloor x+z\rfloor+1,
+ \qquad b(x,z)=3\ell(\alpha x,z).
+\]
+With $H=23/20$, define
+$T=\lfloor2Hx\rfloor$, $s=Hx-T/2$, $q=\lfloor2x\rfloor$,
+and $n_+=(2x-q)/2$.  The limiting weight sum is
+\begin{align}
+ \Gamma_9(x)={}&\int_0^{1/2}(T-b(x,z))
+       (T+b(x,z)-\ell(x,z)-9)\,dz\notag\\
+ &+s(2T-q-9)+(s-n_+)_+.
+ \label{s5-gamma9}
+\end{align}
+Thus the constant $5$ in source (5.4) becomes $9$.  The allocation of
+rows, including the last positive-part term, stays the same.  Since
+$\int_0^{1/2}b(x,z)\,dz=3\alpha x$ and $H-3\alpha=\lambda$,
+subtracting the source expression gives exactly
+\[
+ \Gamma_9(x)-\Gamma_5(x)
+ =-4\left(T/2-3\alpha x+s\right)=-4\lambda x.
+\]
+The scalar still has limiting function
+\begin{gather}
+ J(u)=mu-\frac{m(m+1)}4,\quad m=\lfloor2u\rfloor,\qquad
+ \mathcal N(x)=2\lambda x\lfloor x\rfloor
+ -12\lambda x\lfloor\alpha x\rfloor-2J(\lambda x),\notag\\
+ R_9(x)=-\Gamma_9(x)-\mathcal N(x)=R_5(x)+4\lambda x.
+ \label{s5-r9-shift}
+\end{gather}
+Consequently, the analogue of (5.7) is
+\[
+ \gamma^{\mathrm{in}}_{9,p}=p\Gamma_9(K/p)+O_M(1),\qquad
+ v_p(S_K)=p\mathcal N(K/p)+O_M(1).
+\]
+The finitely many reserved zero-block rows affect only the error term.
+This is an algebraic comparison of the certificates; applying them to
+the actual determinant still needs the local input.
+
+\subsection{The outer limiting function}
+\label{s5-outer}
+
+\paragraph{[Derived] A vanishing rank correction.}
+Write $y=p/K$.  In this range $y>1/3$, so
+$(1+4\alpha-4y)_+=0$.  More concretely,
+$r_{9,p}=\max(0,K+4N-4p+4)=0$ for all sufficiently large $K$.
+The new raw determinant cost is therefore
+\begin{equation}
+ C_9(y)=
+ \begin{cases}
+ 11(1-y)-12\alpha-6\min(\alpha,1-2y)
+       -6(1+\alpha-3y)_+,&1/3<y<1/2,\\
+ 11(1-y)-6\min(\alpha,1-y)
+       -6(1+\alpha-2y)_+,&1/2<y<1,\\
+ 0,&y>1.
+ \end{cases}
+ \label{s5-c9}
+\end{equation}
+For example, when $K\geq2p$, the limits of $v/K$ and $u/K$ are
+$1-2y$ and $(1+\alpha-3y)_+$; inserting these in Section~4 gives
+the first line.  This replaces both $R_0-d$ in source (5.8)--(5.9).
+There is no additional limiting rank subtraction.
+
+The scalar contribution is unchanged:
+\[
+ S(y)=-2\lambda\lfloor1/y\rfloor+
+              \sum_{j=1}^{5}(2\lambda-jy)_+.
+\]
+Exact integration, detailed in Appendix~B, gives
+\begin{gather}
+ \int_{1/3}^{1}C_9(y)\,dy=\frac{14441}{7200},\qquad
+ \int_{1/3}^{2\lambda}S(y)\,dy=\frac{1851}{16000},\notag\\
+ I_{\mathrm{out},9}=\int_{1/3}^{2\lambda}(C_9(y)+S(y))\,dy
+                   =\frac{305479}{144000}.
+ \label{s5-iout9}
+\end{gather}
+Relative to the source's $I_{\mathrm{out},5}=127751/96000$, the
+increase is $45541/57600$.  This calculation includes the improvement
+in polynomial-moment integrality; it does not simply multiply every
+old local loss by a common factor.
+
+\paragraph{[Conditional] Summing over primes.}
+The analogue of Proposition~5.2 is
+\begin{equation}
+ \limsup_{\substack{K\to\infty\\40\mid K}}
+ \frac{\log m_{9,K,M}}{K^2}
+ \leq I_{\mathrm{out},9}+\frac{10\lambda}{M}
+                    +\int_3^M\frac{R_9(x)}{x^3}\,dx.
+ \label{s5-prime-sum}
+\end{equation}
+Primes $p\leq\sqrt{5K}$ contribute $O(K^{3/2}\log K)$; this also
+absorbs the fixed exceptional factors in $40320$.  For larger primes
+in the small range, the logarithmic factor is one, giving
+$10\lambda/M$ by the prime number theorem.  For bounded piecewise
+continuous $f$, partial summation gives
+\[
+ K^{-2}\sum_{K/M<p\leq K/3}p f(K/p)\log p
+       \longrightarrow\int_3^M f(x)x^{-3}\,dx.
+\]
+The $O_M(1)$ local errors contribute $o(K^2)$, and the same change of
+variables in the outer range gives \eqref{s5-iout9}.
+
+\subsection{The tail integral}
+\label{s5-tail}
+
+\paragraph{[Derived] The periodic part is unchanged.}
+Put $f=\{x\}$, $g=\{\alpha x\}$, $\tau=\{2Hx\}$,
+$\sigma=\{2x\}$, $\eta=\{2\lambda x\}$, and
+$A(z)=\ell(x,z)-2x$, $B(z)=\ell(\alpha x,z)-2\alpha x$.
+Expanding \eqref{s5-gamma9} gives the analogue of (5.12)--(5.14):
+\begin{align}
+ R_9(x)&=xF_9(x)+Q(x),\qquad
+ F_9(x)=8\lambda+2\lambda f-12\lambda g,\notag\\
+ Q(x)&=\frac{\tau(\tau-\sigma)-(\tau-\sigma)_+
+                     +\eta(1-\eta)}2
+       +9\int_0^{1/2}B^2\,dz-3\int_0^{1/2}AB\,dz,
+ \label{s5-tail-decomposition}\\
+ -\frac12&\leq Q(x)\leq\frac{13}{8}.\notag
+\end{align}
+Only the mean linear term has changed.  Define the same periodic primitives
+\begin{gather*}
+ P(x)=74g(1-g)-\lambda f(1-f),\qquad \overline P=\frac{2923}{240},\\
+ G_0(v)=\frac{v(1-v)(2v-1)}6,\qquad
+ C_{\mathrm{per}}(x)=\frac{74}{\alpha}G_0(g)-\lambda G_0(f).
+\end{gather*}
+Then $P'=F_9-3\lambda$, $C_{\mathrm{per}}'=P-\overline P$, and
+$|C_{\mathrm{per}}|<16$.  Thus source (5.15) becomes
+\begin{align}
+ \int_T^\infty\frac{R_9(x)}{x^3}\,dx
+ ={}&\frac{3\lambda}{T}-\frac{P(T)}{T^2}
+       +\frac{\overline P}{T^2}
+       -\frac{2C_{\mathrm{per}}(T)}{T^3}\notag\\
+ &+6\int_T^\infty\frac{C_{\mathrm{per}}(x)}{x^4}\,dx
+       +\int_T^\infty\frac{Q(x)}{x^3}\,dx.
+ \label{s5-tail-identity}
+\end{align}
+At $T=20$, $P(T)=37/2$ and $C_{\mathrm{per}}(T)=0$.  At $40\mid M$,
+both periodic primitives vanish.  Accordingly,
+\begin{align}
+ \int_{20}^\infty R_9(x)x^{-3}\,dx&\leq\frac{6191}{48000},
+ \label{s5-tail-upper}\\
+ \int_M^\infty R_9(x)x^{-3}\,dx&\geq\frac{3\lambda}{M}
+       +\frac{2923/240-1/4}{M^2}-\frac{32}{M^3}.
+ \label{s5-tail-lower}
+\end{align}
+Appendix~B evaluates the finite integral as
+\begin{equation}
+ \int_3^{20}R_9(x)x^{-3}\,dx
+ =\frac{8222332206149897772829}{7535670527041937280000}.
+ \label{s5-finite-inner}
+\end{equation}
+Combining these expressions yields the analogues of (5.19)--(5.21):
+\begin{align}
+ A_{9,*}&=\frac{25180312106351244019069}{7535670527041937280000},
+ \notag\\
+ A_{9,M}&=A_{9,*}+\frac{7\lambda}{M}
+             -\frac{2863}{240M^2}+\frac{32}{M^3},
+ \label{s5-final-A}\\
+ \limsup_{\substack{K\to\infty\\40\mid K}}
+ K^{-2}\log m_{9,K,M}&\leq A_{9,M}\qquad(40\mid M).
+ \notag
+\end{align}
+The last inequality is conditional on the local estimates, as before.
+The coefficient $7\lambda/M$ survives because the new small-prime cost
+$10\lambda/M$ is offset by the tail's $3\lambda/M$.
+An especially transparent comparison with the source is
+\begin{equation}
+ A_{9,M}-A_{5,M}
+ =\frac{45541}{57600}
+    +4\lambda\left(\frac13-\frac1M\right)+\frac{4\lambda}{M}
+ =\frac{116581}{57600}.
+ \label{s5-budget-increment}
+\end{equation}
+All displayed rational integrals are evaluated algebraically.  They
+describe the size of this proposed normalization; they do not supply a
+missing decay inequality or assert irrationality.

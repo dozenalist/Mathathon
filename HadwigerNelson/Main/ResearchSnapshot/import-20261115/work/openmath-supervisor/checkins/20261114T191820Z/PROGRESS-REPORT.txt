@@ -1,0 +1,11 @@
+MATHATHON CHECK — 14 November2026,11:38Pacific
+
+SOLVING: The paired-case proof now excludes configurations with at most3distinct approachdirections, using accepted strictMC120 at paper level. Independent audit also confirms an open neighborhood remains excluded under independent direction perturbations; its positive tolerance is existential, not numerical.
+
+Six additional six-direction configurations survive every weaker cone test but fail the stronger inner/outer palette-hitting constraints around a60degree orbit. Parent independently reproduced all6 exact finite checks and378conechecks. Certificates and a standaloneJavaScript verifier are saved in this check directory. A simple sign-margin argument extends each to an open coordinatewise15degree neighborhood; an independent source/robustness audit is underway. q4/q5/q6 remain feasible in this relaxation. No global chromaticbound is claimed.
+
+EXECUTION: All8current/previous swarmstarts are verified, including new verifier smwgsc6nc. Graph and discovery swarms completed and received2member successorassignments for continuousclassification and reusableobstructionlemmas; theirnewIDs need confirmation. Other6workblocks continue. Independent coordinator acknowledged no further unscheduledswarm/remoteLean and future2memberlimit. Astra21assignments complete; noneactive.
+
+SIMPLIFICATION:14/27fresh modules pass. Sectors timedout again. Even import-only controls against both new and previouslyvalidated libraries stall; measuredCPU75-95seconds per120seconds, RAM230-302MiB. No prooferror identified. The120second outside-sandbox control also timedout; minimalStd15second andMathlib120second controls now isolate thelibraryload; fullintegration remainsunaccepted. Runner now explicitlylimits1thread/4GiB and records CPU/RAM. StrictMC120 Lean source arrived but isuncompiled.
+
+CLAUDE: The30minuteMAX job ended withoutananswer. A narrowerMEDIUM-effort Opus5.5job is now constructing a compactexactoddwalk, bounded15minutes, independentlycomparingOpenMath. Expositiondirector received the exactA6producer andcorollaries. No resets orpaidextras used.

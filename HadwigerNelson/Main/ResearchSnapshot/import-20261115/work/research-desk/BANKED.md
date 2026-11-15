@@ -1,0 +1,25 @@
+# Research desk: banked local Lean results
+
+Pinned Lean 4.34.1 + Mathlib (threecentre-r1 pin). All are local checks and proof simplifications or partial results. No global chromatic result.
+R1 (threecentre-r1, 27 modules + root axiom check) was ACCEPTED by user decision on 2026-11-14 at about 23:25Z.
+
+| Result | Where compiled | Source (work/...) | sha256 (LF) | Outcome | Note |
+|---|---|---|---|---|---|
+| A6-Forcing-m1 | queue job claude-lean-20261114t212205-0 | `lean-queue/claude-admissions/claude-lean-20261114t212205-0/Candidate.lean` | `27e45caf4c79389767a97d8bf705980462849d4f0a6d268e849989b253a916c8` | exit 0, 62.7 s; spot-check 01:2xZ: 7 endpoints std axioms | Mathlib-only |
+| StepBanShort-r2 | queue job claude-lean-20261114t220720-0 | `lean-queue/claude-admissions/claude-lean-20261114t220720-0/Candidate.lean` | `19bffbcd71bed9b8e92daddf705df89963319604e1e20b4332d6b2f0cf717655` | exit 0, 64.6 s; five_support_step_ban_v2 standard axioms | same telescope as v1 |
+| G3-ArcCover-r2 | DESK compile | `research-desk/G3-r2/G3-ArcCover-r2.lean` | `39a02e68c878c0d0df0493d53114679ffd6cb01c3354329cd33f3867b9558c6e` | exit 0, 83 s; arcCover standard axioms | mA + le_or_gt (L160,L168) + #print axioms |
+| A6-Bridge-r2 (incl. G1-r2) | queue job claude-lean-20261114t231544-0 | `lean-queue/claude-admissions/claude-lean-20261114t231544-0/Candidate.lean` | `74402da9ef754964e3a732c879e1b31fa3af419db1a465255e6a78b467f9b333` | exit 0, 66.9 s; 8 endpoints standard axioms (desk check research-desk/bridge-r2-axioms/axioms.log) | G3 not glued |
+| StepBanConsumer | queue job claude-lean-20261114t232057-0 | `lean-queue/claude-admissions/claude-lean-20261114t232057-0/Candidate.lean` | `718b581518b553c471e9a984dc0dd44e8d6c54d3d9ed25209f1728a8a3a7310e` | exit 0, 58.6 s; both _v2 standard axioms; #check pairs identical (desk-verified) |  |
+| EvenWalkReachability-rev6 | DESK compile | `research-desk/EvenWalk-rev6/EvenWalkReachability-rev6.lean` | `4439cf5dd4088ea6765337286399f5af462fd1c3f4976c82c99d77019bfb9904` | exit 0, 63 s; evenWalk_reachable, finite_list_obstruction, two_list_obstruction_of_even_walk standard axioms | rev5 + one show line + #print axioms |
+| G1-Finish-mB-r2 (standalone) | DESK compile | `research-desk/G1-r2/G1-Finish-mB-r2.lean` | `fd3549e5acccd7b5ed18dbcc09c0e91c0dc03e638b6ee48d2efea734e27385d4` | exit 0, 100 s; cos_sign_strict, sign_of_paired_fin, signTableT_of_paired(_fin) standard axioms | mB + bridge's hm6 line + #print axioms |
+| A6-Bridge-r2-G3 (glued bridge; G3 discharged) | DESK compile | `research-desk/Bridge-r2-G3/A6-Bridge-r2-G3.lean` | `164f26bbf6414efcc56b1e3d9c91b82d9d32c6f08ae743a0e74efa186a22ebcd` | exit 0, 167 s; ae_canonical_subpalette_unconditional standard axioms; hyps hsupp/hsign/ForcingLemma remain | inbox 001250-download-3 verbatim |
+| CyclicCoreConsumerFromV2-r2 | DESK compile | `research-desk/CyclicCore-r2/CyclicCoreConsumerFromV2-r2.lean` | `884ed9bca9df9f0c32290ea529f74f06f66abc9c5fe2be8fa864476171c176a5` | exit 0, 122 s; five_sequence_small_no_accumulation_from_v2 standard axioms; #check pair identical | inbox 001250-download-2 minus stray "\" line 1 |
+| FiveSupportSwapR1 (step-ban in-place swap, R1 port) | DESK compile | `research-desk/FiveSupport-swap/FiveSupportSwapR1.lean` | `e531cf133a213e524b00008a9956c9206d98f09fb1a0faff3ae5ff35080f2c9f` | exit 0, 323 s; five_opposite_contacts_false + five_support_step_ban_v2 standard axioms; 31/31 public signatures identical to R1 FiveSupport | smwh11dth m1 swap targeted encoding-r4; ported onto R1 FiveSupport.lean (3-decl block + 2 callees) |
+| FiveSupportSwapR1-noV1 (v1 step_ban deleted) | DESK compile | `research-desk/FiveSupport-swap/FiveSupportSwapR1-noV1.lean` | `0aaee265081c94ba692f3d0c91ca9a58770108c99013942ab81ac390f7daea86` | exit 0, 181 s; std axioms; 30/30 remaining public signatures identical to R1; v1 had no other R1 consumers (grep) | code lines R1 341 -> 350 |
+
+## Exact computations / certificates
+
+| Result | Artifact | sha256 | Outcome |
+|---|---|---|---|
+| Staircase census (necessary condition) | `research-desk/census/` (census.py LF da28d617…, independent_census.py) | — | SAT 177/7599; 76283 of 36415008; by k [177,2576,12762,26928,25200,8640]; two implementations agree |
+| A5 sliver interval certificate | `cloud-supervisor/a5-sliver/certify_sliver.py` + CERTIFICATE.md | `63e84a36bfa95ea99103e314530dbaf38a9fa42667a8ac85b960882ff351e341` | ALL PIECES CERTIFIED (0.4 s); dependencies listed in CERTIFICATE.md |

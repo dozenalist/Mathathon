@@ -1,0 +1,114 @@
+\section{Combining the arithmetic and real estimates}
+\label{s7-completion}
+
+This section is the analogue of source Section~7, p.~21.  Its task is to
+put the two quadratic coefficients on the same scale.  We retain
+$K=40n$, $N=3n$, $h=37n$, and write $\xi=\zeta(9)$.  The outcome is a
+positive upper-bound budget; the final small-value step of the source
+therefore becomes a conditional implication.
+
+\subsection{The normalized polynomial and its budget}
+\label{s7-budget}
+
+\noindent\textbf{[Conditional]} With the arithmetic estimates used in
+Section~5, let
+\begin{equation}
+ Q_{9,K,M}(X)=m_{9,K,M}F_{9,K}(X)
+            =m_{9,K,M}S_K\Delta_{9,K}(X)\in\mathbb Z[X],
+ \qquad m_{9,K,M}>0.
+ \label{s7-normalized}
+\end{equation}
+The degree is $h$ by the leading-coefficient calculation in Section~2.
+The positive Gram representation and the positive scalar factors give
+$Q_{9,K,M}(\xi)>0$.  The normalization changes neither fact.  For fixed
+$M\in40\mathbb Z_{>0}$ the input estimates are
+\[
+ \log m_{9,K,M}\leq A_{9,M}K^2+o_M(K^2),\qquad
+ \log F_{9,K}(\xi)\leq UK^2+28K\log K+200K,
+ \qquad U=-\frac{2733991}{2000000}.
+\]
+The second estimate is \eqref{s6-final}; it uses the source Appendix~A
+numerical certificate discussed in Appendix~\ref{appa-measure}.
+Adding, and then dividing by $K^2$, gives the
+direct analogue of source (7.1):
+\begin{equation}
+ \limsup_{\substack{K\to\infty\\40\mid K}}
+  \frac{\log Q_{9,K,M}(\xi)}{K^2}
+ \leq B_{9,M},\qquad B_{9,M}:=A_{9,M}+U.
+ \label{s7-combined}
+\end{equation}
+Thus the arithmetic loss has to be paid before the negative real
+coefficient can be used to obtain a small integer polynomial value.
+The order of the limits matters here: $M$ is held fixed while $K$
+increases through multiples of forty.  The comparisons between cutoffs
+below compare the resulting constants.  They do not require a uniform
+error estimate with a cutoff $M$ depending on $K$.  In particular, the
+explicit $K\log K$ error in the real estimate does not upgrade the
+arithmetic remainder $o_M(K^2)$ to an error of that same order.
+
+\noindent\textbf{[Derived]} The arithmetic coefficient obtained with the
+unchanged $D_N^6$ construction is
+\begin{align}
+ A_{9,M}&=A_{5,M}+\frac{116581}{57600}
+ \notag\\
+ &=A_{9,*}+\frac{7\lambda}{M}
+       -\frac{2923/240-1/4}{M^2}+\frac{32}{M^3},
+ \qquad \lambda=\frac{37}{40},
+ \label{s7-arithmetic-coefficient}\\
+ A_{9,*}&=\frac{25180312106351244019069}
+                   {7535670527041937280000}
+           \simeq3.341482621353.
+ \label{s7-limit-coefficient}
+\end{align}
+Here $A_{5,M}$ denotes the source coefficient, rather than a new
+fifth-order construction.  The rational shift summarizes the increased
+denominator cost calculated in Section~5.  In particular, the comparison
+replacing the negative margins of source (7.2) is
+\begin{equation}
+ \begin{array}{c|c|c}
+ M&A_{9,M}&B_{9,M}=A_{9,M}+U\\ \hline
+ 200&3.373563392186\ldots&2.006567892186\ldots\\
+ 100000&3.341547370160\ldots&1.974551870160\ldots\\
+ \infty&3.341482621353\ldots&1.974487121353\ldots
+ \end{array}
+ \label{s7-sign-table}
+\end{equation}
+Increasing the cutoff does not change this sign.  Indeed, the correction
+to $A_{9,*}$ is
+\[
+ \frac{1554M^2-2863M+7680}{240M^3}>0\qquad(M\geq40),
+\]
+and even $A_{9,*}+U$ is positive.
+
+\subsection{The conditional final step}
+\label{s7-conditional-step}
+
+\noindent\textbf{[Blocked conclusion]} Substitution of $K=40n$ in
+\eqref{s7-combined} supplies an upper coefficient $1600B_{9,M}>0$ on
+the $n^2$ scale.  It supplies no decay rate of the type used in source
+(2.7)--(2.8).  This does not prove that the polynomial values grow: a
+positive upper bound alone does not decide their actual size.  It says
+precisely that the present arithmetic and real estimates do not close
+the small-value argument.
+
+\noindent\textbf{[Conditional]} The remaining manipulation can still be
+recorded.  Suppose some strengthened estimates, for a fixed cutoff,
+gave an $\varepsilon>0$ and
+\begin{equation}
+ 0<Q_{9,K,M}(\xi)\leq e^{-\varepsilon K^2}
+ \quad\text{for all sufficiently large }K\in40\mathbb Z_{>0}.
+ \label{s7-hypothetical-decay}
+\end{equation}
+If $\xi=a/b$ with $a\in\mathbb Z$ and $b\in\mathbb Z_{>0}$, degree
+$h=\lambda K$ and integrality would imply
+\[
+ 0<b^hQ_{9,K,M}(a/b)
+ \leq\exp\{\lambda K\log b-\varepsilon K^2\}\longrightarrow0,
+ \qquad b^hQ_{9,K,M}(a/b)\in\mathbb Z.
+\]
+This is the source's final contradiction, with the moment order changed
+to nine.  Its algebra is unchanged, but its negative-budget hypothesis
+is not furnished by \eqref{s7-sign-table}.  Appendix~C likewise records
+the rational-approximation implication under an explicit
+$\varepsilon$ hypothesis, while retaining the relative norm and height
+calculations that can be made with the present budget.

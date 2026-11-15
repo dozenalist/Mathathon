@@ -1,0 +1,23 @@
+Mathathon research check — 14 November 2026, 12:04 Pacific
+Trigger:11:41 Pacific; state reconciled through20:03UTC.
+
+New checked mathematics
+- Claude returned six short forced-label contradiction proofs in57seconds. All six independently checked against the exact inner/outer-hit and60degree-disjointness tables; no actual palette-cardinality assumption. See outputs/CLAUDE-SIX-ORBIT-PROOFS.txt.
+- Each of the six direction configurations has an open simultaneous15degree exclusion neighborhood. Parent checked all64 boundary corners for each configuration: exactly16 have SAT on EVERY positive phase cell. Thus15 is sharp for this relaxation in the simultaneous l-infinity metric; single-coordinate arms may be longer. SAT is not a realizable weak colouring.
+- Astra A7 gives exact proofs that each two-list locus for the weaker q4/q5 partial palette has no unit edges, and explicitly colours the entire old A5 support from the weaker lists. This rules out reusing that specific construction. It does not colour the full partial field. Parent reviewed; independent Claude contact audit currently running.
+- Adversarial coordinator withdrew its false objection to A6 open-neighborhood stability and now accepts the correctly quantified proof with fixed finite F and shrunken sectors.
+
+Work status
+- Geometry smwgtuolg and independent smwgtu4hh: actual two-member successor starts verified; mixed3/4-list geometry and actual C6 interface producer constraints. Geometry's bin-centre and order-of-shift errors corrected.
+- Discovery smwgt4w0z: last observed one member active on abstract short circuit proofs; Claude results relayed.
+- Graph smwgt58nz: completed finite representation,7776 phase classes. Full census not run; m2 report downloaded, m1 path download failed. Review scripts and execute bounded local census next.
+- Verifier smwgsc6nc: completed fallback only; explicit odd walk remains open, source-only even-walk lemma has an identified binder defect. Architecture waiting for integration validation.
+- Formal: first bounded remote attempt failed before elaboration due to partial OAI import-root shadowing,0.83seconds/158MB. One corrected private-overlay run acknowledged,60seconds/one thread/4GiB; not yet validated.
+- Astra22 assignments complete; none currently active. Claude12 MEDIUM/8192outputtokens/180seconds independently audits A7 contact geometry; one research job.
+
+Validation and resources
+- Existing R4 encoding reduction and four cone Lean modules remain validated. New three-centre integration remains14/27 modules passed and UNACCEPTED. Even unchanged baseline and minimal Mathlib imports timed out, including profiling-disabled control. Local queue idle pending diagnosis, no blind retries. High system CPU load observed; memory was not near exhaustion. Causality not established, user apps unchanged.
+- No new global chromatic bound or complete Hadwiger-Nelson solution. User controls resets; separate usage watcher remains responsible.
+- Approved exposition research handoff sent. Current reports and precise correction trail preserved in this check directory.
+
+20:06UTC ADDENDUM: Claude12 completed in134seconds and independently confirmed all three A7 contact/diameter/half-lobe claims; parent corrected one harmless arithmetic justification. Complete audit outputs/CLAUDE-A7-CONTACT-AUDIT.txt. Runner repaired to retain all final-answer fragments from automatic continuations; original response preserved.8192 is per-response cap, not total job output (job used9848 including thinking across continuation). Claude queue now IDLE; no duplicate job.

@@ -1,0 +1,23 @@
+five_support_step_ban : ∀ (c : ℂ → Fin 5) (hc : Measurable c),
+  WeakColoring 5 c →
+    ∀ {x : ℂ},
+      FiveCenter c x →
+        ∀ {a : ℝ} {i j : Fin 5},
+          a ∈ fiveSupport c hc x i →
+            a ∈ fiveSupport c hc x j →
+              fiveAdj i j →
+                ∀ᵐ (t : Angles) ∂angularMeasure,
+                  ¬(fiveState c hc x t = i ∧ fiveState c hc x (t + ↑sixty) = j) ∧
+                    ¬(fiveState c hc x t = j ∧ fiveState c hc x (t + ↑sixty) = i)
+five_support_step_ban_v2 : ∀ (c : ℂ → Fin 5) (hc : Measurable c),
+  WeakColoring 5 c →
+    ∀ {x : ℂ},
+      FiveCenter c x →
+        ∀ {a : ℝ} {i j : Fin 5},
+          a ∈ fiveSupport c hc x i →
+            a ∈ fiveSupport c hc x j →
+              fiveAdj i j →
+                ∀ᵐ (t : Angles) ∂angularMeasure,
+                  ¬(fiveState c hc x t = i ∧ fiveState c hc x (t + ↑sixty) = j) ∧
+                    ¬(fiveState c hc x t = j ∧ fiveState c hc x (t + ↑sixty) = i)
+'OAI.EuclideanFiveColor.five_support_step_ban_v2' depends on axioms: [propext, Classical.choice, Quot.sound]

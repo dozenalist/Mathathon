@@ -1,0 +1,191 @@
+\section{The real determinant estimate}
+\label{s6-real}
+
+We follow source Section~6, pp.~17--20, retaining $\alpha=3/40$,
+$\lambda=37/40$, $D_N^6$, and $S_K$.  Consequently the leading external
+field is literally the same function:
+\begin{equation}
+ V(t)=2\pi\sqrt t+\int_0^1\log(t+u^2)\,du
+             -6\int_0^\alpha\log(t+u^2)\,du.
+ \label{s6-field}
+\end{equation}
+Write $U_\rho(t)=\int\log|t-u|\,d\rho(u)$ and
+$I(\rho)=\iint\log|t-u|\,d\rho(t)d\rho(u)$.  The source's rational
+sixteen-component measure has mass $\lambda$, support in $(0,2)$, and
+component lengths exceeding $1/225$.  Its numerical certificate is the
+following \textbf{[Formal analogue: reused source input]}, corresponding
+to (6.2)--(6.4):
+\begin{align}
+ 2U_\rho(t)-V(t)&\le M_0=-\frac{1329}{200},\quad t\ge0,
+ \label{s6-potential}\\
+ C_*&=-2\lambda+12\alpha\lambda(1-\log\alpha)
+          +3\lambda^2-2\lambda^2\log(2\lambda),\\
+ \lambda M_0-I(\rho)+C_*&\le U=-\frac{2733991}{2000000}.
+ \label{s6-source-constant}
+\end{align}
+Appendix~\ref{appa-measure} gives the parameters and the certificate's
+procedure.  Reusing it is justified by equality of $V$; this draft does
+not independently rerun the source's interval checks.
+
+\subsection{A bound for every configuration}
+
+\textbf{[Derived]} The zero-mass energy argument of source Lemma~6.2
+does not involve the zeta index.  If a compactly supported real signed
+measure $\nu$ has mass zero and
+$\iint|\log|z-w||\,d|\nu|(z)d|\nu|(w)<\infty$, completing the square gives
+\[
+ e^{-s|z-w|^2}=\frac{4s}{\pi}\int_{\mathbb C}
+ e^{-2s|z-u|^2}e^{-2s|w-u|^2}\,dA(u),
+\]
+and hence
+\[
+ J(s):=\iint e^{-s|z-w|^2}\,d\nu(z)d\nu(w)
+ =\frac{4s}{\pi}\int_{\mathbb C}
+       \left(\int e^{-2s|z-u|^2}\,d\nu(z)\right)^2dA(u)\ge0.
+\]
+For $0<a<b$, put
+$L_{a,b}(r)=\tfrac12\int_a^b(e^{-s}-e^{-sr^2})\,ds/s$.
+The full integral is $\log r$, its integrand has constant sign, and
+$|L_{a,b}(r)|\le|\log r|$.  Mass zero therefore implies
+\[
+ \iint L_{a,b}(|z-w|)\,d\nu(z)d\nu(w)
+       =-\frac12\int_a^b\frac{J(s)}s\,ds\le0.
+\]
+The integrability hypothesis removes the diagonal and permits dominated
+convergence.  Thus $I(\nu)\le0$, the analogue of (6.5).
+
+For $t_1,\ldots,t_h\ge0$, let $\omega_i$ be unit arclength measure on
+the complex circle of radius $\varepsilon$ about $t_i$, and set
+$\sigma=K^{-1}\sum_i\omega_i$.  Then $\sigma-\rho$ has mass zero.
+Circle and arcsine potentials are continuous and finite; boundedness of
+the positive logarithmic kernel on their joint compact support then gives
+the required absolute integrability.  The circle-average formula is
+\[
+ \int\log|z-u|\,d\omega_i(z)=\log\max(|t_i-u|,\varepsilon).
+\]
+A unit arcsine measure on an interval of length $L$ assigns at most
+$4\sqrt{2r}/(\pi\sqrt L)$ to an interval of radius $r$.  Integrating
+this bound with $dr/r$ gives
+\[
+ \int U_\rho\,d\omega_i-U_\rho(t_i)
+ \le\sum_{j=1}^{16}\frac{8c_j\sqrt{2\varepsilon}}
+                              {\pi\sqrt{b_j-a_j}}
+ \le60\sqrt\varepsilon.
+\]
+Moreover $I(\omega_i)=\log\varepsilon$, and the mutual circle energy
+is at least $\log|t_i-t_j|$.  Expanding $I(\sigma-\rho)\le0$ and
+using \eqref{s6-potential} proves the analogue of (6.6):
+\begin{equation}
+ 2\sum_{i<j}\log|t_i-t_j|-K\sum_iV(t_i)
+ \le(\lambda M_0-I(\rho))K^2
+       +120\lambda K^2\sqrt\varepsilon-h\log\varepsilon.
+ \label{s6-smoothed}
+\end{equation}
+Coincident points give a left side of $-\infty$.
+
+To integrate over an unbounded domain we must retain decay.  For $t\ge2$,
+support of $\rho$ and $\log(1+x)\le x$ give
+\begin{equation}
+ 2U_\rho(t)-V(t)
+ \le(2\lambda-1+6\alpha)\log t+\frac{2\alpha^3}{t}-2\pi\sqrt t
+ \le\frac{13}{10}\log t+\frac{6\alpha^3}{t}-2\pi\sqrt t.
+ \label{s6-tail}
+\end{equation}
+After adding $\sqrt t/K$, the last expression decreases for $t\ge2$,
+$K\ge2$, and is below $M_0$ at $2$.  For $t\le2$ use
+\eqref{s6-potential}.  Thus
+$2U_\rho-V+\sqrt t/K\le M_0+\sqrt2/K$, as in (6.7)--(6.8).
+Apply \eqref{s6-smoothed} with this modified field and
+$\varepsilon=K^{-2}$ to obtain
+\begin{equation}
+ 2\sum_{i<j}\log|t_i-t_j|-K\sum_iV(t_i)+\sum_i\sqrt{t_i}
+ \le(\lambda M_0-I(\rho))K^2+(120+\sqrt2)h+2h\log K.
+ \label{s6-configuration}
+\end{equation}
+
+\subsection{The Gram integral and scaling}
+
+\textbf{[Derived]} Expanding the two Vandermonde determinants and
+integrating term by term gives Andr\'eief's identity, now with $w_9$:
+\begin{equation}
+ \Delta_{9,K}(\zeta(9))=\frac1{h!}\int_{(0,\infty)^h}
+ \prod_{i<j}(y_i^2-y_j^2)^2
+ \prod_{i=1}^h\frac{D_N(y_i^2)^6}{D_K(y_i^2)}w_9(y_i)\,dy_i.
+ \label{s6-andreief}
+\end{equation}
+This is the analogue of (6.10); the positive weight gives strict
+positivity, and exponential decay gives convergence.  With $q=e^{-2\pi y}$,
+\[
+ \sum_{\ell\ge1}\ell^8q^\ell
+ =\frac{q(1+247q+4293q^2+15619q^3+15619q^4
+                         +4293q^5+247q^6+q^7)}{(1-q)^9}.
+\]
+The numerator's coefficients sum to $40320$.  Using
+$1-e^{-u}\ge u/(1+u)$ and $\pi<4$ therefore proves the replacement
+for (6.11):
+\begin{equation}
+ w_9(y)\le\frac{(1+2\pi y)^9}{\pi}e^{-2\pi y}
+          \le C_9(1+y)^9e^{-2\pi y},\qquad C_9=2^{25}.
+ \label{s6-weight-bound}
+\end{equation}
+
+For $1\le m\le K$, monotonicity, followed by the factorial bound at
+$t=0$, yields the unchanged Riemann-sum error (6.12):
+\begin{equation}
+ 0\le\sum_{j=1}^m\log(t+(j/K)^2)
+       -K\int_0^{m/K}\log(t+u^2)\,du\le2\log K+2.
+ \label{s6-riemann}
+\end{equation}
+In particular the six numerator sums contribute at most $12\log K+12$;
+the denominator error has the favorable sign.  Put $y_i=K\sqrt{t_i}$
+in \eqref{s6-andreief}.  The powers from the Vandermonde, rational
+factor, weight bound, and Jacobian are respectively
+$2h(h-1)$, $(12N-2K)h$, $9h$, and $h$.  Including the Riemann-sum
+loss $12h$ gives the analogue of (6.13):
+\begin{align}
+ \Delta_{9,K}(\zeta(9))&\le
+ \frac{K^{2h(h+6N-K)+20h}(C_9e^{12}/2)^h}{h!}\notag\\
+ &\quad\times\int_{(0,\infty)^h}\prod_{i<j}(t_i-t_j)^2
+       \prod_i e^{-KV(t_i)}t_i^{-1/2}(1+\sqrt{t_i})^9\,dt_i.
+ \label{s6-scaled}
+\end{align}
+The remaining one-variable integral is explicit:
+\[
+ R_9=\int_0^\infty t^{-1/2}(1+\sqrt t)^9e^{-\sqrt t}\,dt
+     =2\int_0^\infty(1+u)^9e^{-u}\,du
+     =2\sum_{k=0}^9\binom9k k!=1972820.
+\]
+Apply \eqref{s6-configuration}; since
+$\log(C_9/2)+12+\log R_9+120+\sqrt2<170$, dropping $-\log h!$
+gives
+\begin{equation}
+ \log\Delta_{9,K}(\zeta(9))\le
+ 2h(h+6N-K)\log K+(\lambda M_0-I(\rho))K^2
+                 +22h\log K+170h.
+ \label{s6-delta-bound}
+\end{equation}
+
+The normalization also remains algebraically identical.  Expanding
+\[
+ \log S_K=2h\log(K!)-12h\log(N!)+(h-1)\log4
+                 -2\sum_{i=1}^{h-1}\log((2i)!)
+\]
+with $m\log m-m+1\le\log(m!)\le m\log m-m+\log m+2$ and
+$-2\sum_{i<h}\log((2i)!)\le-2h^2\log(2h)+3h^2+4h\log(2h)$
+gives source (6.15):
+\[
+ \log S_K\le(2\lambda-12\alpha\lambda-2\lambda^2)K^2\log K
+                         +C_*K^2+6h\log K+6h.
+\]
+The quadratic logarithmic terms cancel because
+$2\lambda(\lambda+6\alpha-1)+2\lambda-12\alpha\lambda-2\lambda^2=0$.
+Thus the real-estimate conclusion is
+\begin{equation}
+ \boxed{\quad 0<F_{9,K}(\zeta(9)),\qquad
+ \log F_{9,K}(\zeta(9))\le UK^2+28K\log K+200K.\quad}
+ \label{s6-final}
+\end{equation}
+\textbf{[Conditional]} The displayed numerical $U$ uses the source
+Appendix~A certificate as input.  All changes caused by $w_9$ are the
+explicit weight and scaling computations above.  This real decay alone
+does not assert decay after arithmetic denominator clearing.

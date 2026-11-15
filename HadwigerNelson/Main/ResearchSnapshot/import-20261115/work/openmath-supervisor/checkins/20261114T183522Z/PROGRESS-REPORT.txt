@@ -1,0 +1,13 @@
+MATHATHON CHECK — 14 November 2026, approximately11:15Pacific
+
+Browser login acknowledged; no browser-control tool is exposed in this chat. Open Math API requests are working.
+
+SOLVING: Two substantive paper results passed independent review. First, a finite list-colouring obstruction excludes the canonical paired palette even as an almost-everywhere subpalette of an actual weak six-colouring centre. Two odd unit-distance walks force all four allowed colours away from a central vertex. Complete walk coordinates and Lean verification remain pending. Second, an actual19colour curved-continuum counterexample disproves the generic CLOSED120-degree endpoint claim; strict<120 remains viable.
+
+A6 then supplies the exact missing producer for the equilateral paired-direction case: inner/outer palette hits and60-degree disjointness force the canonical field. Parent independently checked the six-row integer label table and source contracts. Composing A5/A6 excludes that precise configuration and its common symmetries. This is a paper theorem, not a new global chromatic bound. Other direction configurations remain open.
+
+SIMPLIFICATION:14/27 affected modules passed the fresh three-centre integration. Sectors reached its240-second time limit without proof errors; its unchanged source is retrying with600seconds, followed serially by remaining modules and the9root audit. Full integration remains unaccepted. Candidate net reduction is24lines; optional104additional unused-helper lines await a separate build. Existing126-line verified refactor remains banked.
+
+EXECUTION: Six two-member successor swarms verified; independent coordinator's current six-member successor also verified. Its autonomous8then6member expansion was corrected: current work finishes naturally, future swarms max2 and no unscheduled successors/remote builds. Verifier's new explicit-graph/generic-walk assignment is acknowledged; its actual new swarm ID needs next-check confirmation. All8 coordinators retained. Astra20 assignments complete, none active. Claude08 remains running Opus5.5/MAX, one30-minute bounded job, ~200MiB observed, improving generic sharpness construction.
+
+CORRECTION: exactq4/q5/q6 counterexamples refute the claimed two-triangle classification from cone tests alone. Stronger all-angle constraints are under study. Research handoff delivered to exposition director after explicit approval; no duplicate exposition Claude job queued. Twenty-minute supervision continues.

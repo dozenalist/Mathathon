@@ -1,0 +1,1264 @@
+# Results ledger — Hadwiger–Nelson Mathathon entry
+
+Built 2026-11-15T01:24Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
+
+**No global chromatic result. The bounds 6 ≤ χ(ℝ²) ≤ 7 come from the supplied proof ("The Euclidean plane is not five-colorable") and the classical 7-colouring; nothing the team has added changes them. Every entry below is a simplification of the supplied proof, a local or conditional lemma, a finite computation, or a negative result. The only route to χ ≥ 7 on record is conditional on the open lemmas L6 and F6 (see L6-F6).**
+
+Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEWED`, `TESTED_FINITE`, `CANDIDATE`, `UNAUDITED_NUMBER`, `RETRACTED_OR_REFUTED`, `OPEN`. `LEAN_VERIFIED` means a local Lean 4.34.1 compile against pinned Mathlib `d13f23b` with exit 0 and a printed axiom list. A coordinator or worker saying "banked" is treated as a claim; the "Checked by the results desk" line says what was actually re-checked.
+
+## Summary
+
+### Simplification of the supplied proof (net line deltas)
+
+| Item | Status | Line change | Notes |
+| --- | --- | --- | --- |
+| [ENC-R4](#enc-r4) common-encoding refactor | `LEAN_VERIFIED` | **−126** (ConditionalSpectrum 497→530, ConditionalLimits 701→542) | 82-module closure, 9 root axiom checks |
+| [R1](#r1) three-centre integration (threecentre-r1) | `LEAN_VERIFIED`, accepted by Jarom ~23:25Z | **−24 net** (States 764→566, FourContinuity 551→509, FiveSupport 376→354, Interfaces 527→528, new AvoidingTrace +237) | 27/27 modules + 9 roots; desk recount matches line-accounting.json |
+| [STEPBAN-V2](#stepban-v2) branch-free step ban | `LEAN_VERIFIED` (standalone) | proof body 21→15 lines; but the module grows (see FIVESUPPORT-SWAP) | jobs 220720-0, 232057-0 |
+| [STEPBAN-CONSUMER](#stepban-consumer) consumer on v2 | `LEAN_VERIFIED` (standalone) | 0 realised (swap pending) | job 232057-0; identical `#check` telescopes |
+| [STEPBAN-CYCLICCORE](#stepban-cycliccore) CyclicCore consumer on v2 | `LEAN_VERIFIED` (desk) | 0 realised (swap pending) | identical `#check` telescope |
+| [FIVESUPPORT-SWAP](#fivesupport-swap) same-name swap in FiveSupport (R1 port) | `LEAN_VERIFIED` (desk) | **+61 as ported** (v1 kept); **measured +33** with v1 deleted (354→387 physical; code lines only 341→350, +9) | 30/30 signatures identical after deleting v1; structural, not a length, simplification |
+| [STEPBAN-V3](#stepban-v3) simplification-desk step ban (staged) | `CANDIDATE` (not compiled) | FiveSupport −15 staged | branch-free and shorter than v1; compile tests r1, r2 failed, r3 queued |
+| [JOINT-SUPPORT](#joint-support) joint-pair support theorem | `LEAN_VERIFIED` (standalone) | not measured | does not by itself delete the original States development |
+| **Total realised in the integrated tree** |  | **−126 + −24 = −150 lines** (a coincidence with the rejected R4-only "−150" projection; see ENC-R4) | the step-ban work removes a case split but adds lines; R1 has an optional further 104 unused-helper lines pending a separate build |
+
+### Strongest new results
+
+- [CC60](#cc60) — closed 60° cone obstruction (equality case included), Lean-verified with standard axioms; sharp for arbitrary finite palettes by the reviewed 20-colour construction [SHARPNESS-20](#sharpness-20).
+- [R1](#r1) and [ENC-R4](#enc-r4) — the supplied proof now compiles in the simplified form, 150 lines shorter, with the nine root theorems (incl. `no_proper_five_coloring`, `weakMeasurableColoring_seven`) on standard axioms only.
+- A6 six-colour producer chain in Lean: [A6-FORCING](#a6-forcing), [A6-BRIDGE-R2](#a6-bridge-r2) (with [G1-R2](#g1-r2)), [G3-R2](#g3-r2), and [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) with the arc cover discharged; SignTable and ForcingLemma are still hypotheses there ([A6-GLUE](#a6-glue) open).
+- [A5-FOUR-LIST](#a5-four-list) — refereed: no centre of a weak measurable 6-colouring has an actual palette containing the canonical paired palette; with the paired producer [A6-PAIRED-PRODUCER](#a6-paired-producer) (paper, its finite core Lean-verified) this excludes the paired interface configuration.
+- [MC120-ENDPOINT](#mc120-endpoint) — refereed 19-colour counterexample: the closed-120° version of MC120 is false; [SIX-ORBIT](#six-orbit) — six direction configurations that pass every cone test are excluded by the exact relaxation.
+- [EVENWALK-R6](#evenwalk-r6) — even unit-distance walk reachability and the finite list / two-list parity obstructions for weak measurable k-colourings, Lean-verified.
+- Finite certificates: [HEULE-UNION](#heule-union) (1,048 vertices, exact) and [HEULE-NO-FORCING](#heule-no-forcing); [FIXED-PHASE-CENSUS](#fixed-phase-census) 177 SAT / 7,599 UNSAT; [STAIRCASE-CENSUS](#staircase-census) 76,283 of 36,415,008; [A5-SLIVER](#a5-sliver) interval certificate.
+
+### Main open gaps
+
+- **No global chromatic result.** No reviewed proof changes any bound on χ(ℝ²) or on the measurable chromatic number.
+- [A6-GLUE](#a6-glue): ArcCover is now discharged (A6-BRIDGE-R2-G3), but no compiled file discharges `SignTable` and `ForcingLemma` together with it; hsupp, the pairing hypothesis and the A5 obstruction (no Lean declaration) remain.
+- [STEPBAN-SWAP](#stepban-swap): the verified step-ban v2 has not been swapped in place, so its line savings are not realised.
+- [R1-GATES](#r1-gates): R1 contract and dependency gates were not independently re-run after acceptance.
+- [PALETTE-RIGIDITY](#palette-rigidity), [STAIRCASE-CONVERSE](#staircase-converse), [K6-PRODUCER](#k6-producer): the missing lemmas for the six-colour programme.
+- [SHARPNESS-20](#sharpness-20): six-colour sharpness of CC60 and novelty priority are not established.
+- [MC120-STRICT](#mc120-strict): strict MC120 is called "accepted paper" in the status file but has no referee file; [A6-COROLLARIES](#a6-corollaries) and [CONTINUOUS-SIX](#continuous-six) depend on it.
+- [L6-F6](#l6-f6): the only recorded route to χ ≥ 7 needs two open lemmas; [LOCALIZED-TWO-STATE](#localized-two-state) is open.
+
+### Counts
+
+| Theme | LEAN_VERIFIED | PROVED_PAPER_REVIEWED | TESTED_FINITE | CANDIDATE | UNAUDITED_NUMBER | RETRACTED_OR_REFUTED | OPEN |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Simplification of the supplied proof | 10 | 1 |  | 1 |  |  | 2 |
+| New mathematics | 9 | 6 | 8 | 20 |  |  | 6 |
+| Negative results and counterexamples | 1 | 7 | 5 | 7 |  | 8 |  |
+| Infrastructure | 1 |  | 1 |  |  | 1 | 1 |
+
+## Index
+
+- **Simplification of the supplied proof**: [DIAMOND](#diamond) `LEAN_VERIFIED`, [ENC-R4](#enc-r4) `LEAN_VERIFIED`, [FIVE-CYCLE-RESIDUES](#five-cycle-residues) `LEAN_VERIFIED`, [FIVESUPPORT-SWAP](#fivesupport-swap) `LEAN_VERIFIED`, [JOINT-SUPPORT](#joint-support) `LEAN_VERIFIED`, [R1](#r1) `LEAN_VERIFIED`, [STEPBAN-CONSUMER](#stepban-consumer) `LEAN_VERIFIED`, [STEPBAN-CYCLICCORE](#stepban-cycliccore) `LEAN_VERIFIED`, [STEPBAN-V2](#stepban-v2) `LEAN_VERIFIED`, [THREE-CENTRE](#three-centre) `LEAN_VERIFIED`, [LEMMA67-IDENTITY](#lemma67-identity) `PROVED_PAPER_REVIEWED`, [STEPBAN-V3](#stepban-v3) `CANDIDATE`, [R1-GATES](#r1-gates) `OPEN`, [STEPBAN-SWAP](#stepban-swap) `OPEN`
+- **New mathematics**: [A6-BRIDGE-R2](#a6-bridge-r2) `LEAN_VERIFIED`, [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) `LEAN_VERIFIED`, [A6-FORCING](#a6-forcing) `LEAN_VERIFIED`, [CC60](#cc60) `LEAN_VERIFIED`, [CONNECTED-SET](#connected-set) `LEAN_VERIFIED`, [EVENWALK-R6](#evenwalk-r6) `LEAN_VERIFIED`, [G1-R2](#g1-r2) `LEAN_VERIFIED`, [G3-R2](#g3-r2) `LEAN_VERIFIED`, [NULL-TRANSFER](#null-transfer) `LEAN_VERIFIED`, [A5-FOUR-LIST](#a5-four-list) `PROVED_PAPER_REVIEWED`, [AC-ALIGNED](#ac-aligned) `PROVED_PAPER_REVIEWED`, [NR-TC](#nr-tc) `PROVED_PAPER_REVIEWED`, [RESIDUAL-GRAPH](#residual-graph) `PROVED_PAPER_REVIEWED`, [SHARPNESS-20](#sharpness-20) `PROVED_PAPER_REVIEWED`, [STRAIGHT-NEEDLE](#straight-needle) `PROVED_PAPER_REVIEWED`, [A5-SLIVER](#a5-sliver) `TESTED_FINITE`, [DIR-FILTER](#dir-filter) `TESTED_FINITE`, [FIXED-PHASE-CENSUS](#fixed-phase-census) `TESTED_FINITE`, [HEULE-UNION](#heule-union) `TESTED_FINITE`, [HONEYCOMB-73](#honeycomb-73) `TESTED_FINITE`, [RELAX-1-648](#relax-1-648) `TESTED_FINITE`, [SIX-ORBIT](#six-orbit) `TESTED_FINITE`, [STAIRCASE-CENSUS](#staircase-census) `TESTED_FINITE`, [A5-ODD-WALK](#a5-odd-walk) `CANDIDATE`, [A6-COROLLARIES](#a6-corollaries) `CANDIDATE`, [A6-PAIRED-PRODUCER](#a6-paired-producer) `CANDIDATE`, [A7-PARTIAL-INDEPENDENT](#a7-partial-independent) `CANDIDATE`, [AMPLIFIER](#amplifier) `CANDIDATE`, [CENSUS-COMPLETE-60Z](#census-complete-60z) `CANDIDATE`, [CLAUDE-LEMMA-A](#claude-lemma-a) `CANDIDATE`, [CONTINUOUS-SIX](#continuous-six) `CANDIDATE`, [HONEYCOMB-RESTRICTED](#honeycomb-restricted) `CANDIDATE`, [J-DEPTH](#j-depth) `CANDIDATE`, [K6-M3-DOOR](#k6-m3-door) `CANDIDATE`, [LIST-FIELD-A4](#list-field-a4) `CANDIDATE`, [MC120-STRICT](#mc120-strict) `CANDIDATE`, [Q4Q5-PINNING](#q4q5-pinning) `CANDIDATE`, [R0-CHI4](#r0-chi4) `CANDIDATE`, [RELAX-CIRCULANT](#relax-circulant) `CANDIDATE`, [T6-B2](#t6-b2) `CANDIDATE`, [THM-BPRIME](#thm-bprime) `CANDIDATE`, [TRANSLATION-CRITERION](#translation-criterion) `CANDIDATE`, [WILD-LAW](#wild-law) `CANDIDATE`, [A6-GLUE](#a6-glue) `OPEN`, [K6-PRODUCER](#k6-producer) `OPEN`, [L6-F6](#l6-f6) `OPEN`, [LOCALIZED-TWO-STATE](#localized-two-state) `OPEN`, [PALETTE-RIGIDITY](#palette-rigidity) `OPEN`, [STAIRCASE-CONVERSE](#staircase-converse) `OPEN`
+- **Negative results and counterexamples**: [A6-CONTAINMENT](#a6-containment) `LEAN_VERIFIED`, [A7-CONTACT](#a7-contact) `PROVED_PAPER_REVIEWED`, [ANNULUS-3COL](#annulus-3col) `PROVED_PAPER_REVIEWED`, [FOUR-STATE-ANGULAR](#four-state-angular) `PROVED_PAPER_REVIEWED`, [LOCAL-TRANSITIONS](#local-transitions) `PROVED_PAPER_REVIEWED`, [MC120-ENDPOINT](#mc120-endpoint) `PROVED_PAPER_REVIEWED`, [SUPPORT-FLIP](#support-flip) `PROVED_PAPER_REVIEWED`, [VARIABLE-TRIANGLE](#variable-triangle) `PROVED_PAPER_REVIEWED`, [HEULE-NO-FORCING](#heule-no-forcing) `TESTED_FINITE`, [HISTORIC-8](#historic-8) `TESTED_FINITE`, [HONEYCOMB-K16](#honeycomb-k16) `TESTED_FINITE`, [Q4Q5-CONTROLS](#q4q5-controls) `TESTED_FINITE`, [RELAX-WITNESSES](#relax-witnesses) `TESTED_FINITE`, [A8-PALETTE](#a8-palette) `CANDIDATE`, [ALPHA-SHARP](#alpha-sharp) `CANDIDATE`, [FOURWAY-SPLIT](#fourway-split) `CANDIDATE`, [GEOM-Q4Q5](#geom-q4q5) `CANDIDATE`, [GEOM-TWO-STEP](#geom-two-step) `CANDIDATE`, [Q4Q5-APEX](#q4q5-apex) `CANDIDATE`, [TERNARY-COUNTERMODEL](#ternary-countermodel) `CANDIDATE`, [A5-FAR-APEX](#a5-far-apex) `RETRACTED_OR_REFUTED`, [A5-M5-TEMPLATE](#a5-m5-template) `RETRACTED_OR_REFUTED`, [AC-AXIS](#ac-axis) `RETRACTED_OR_REFUTED`, [ALT-TRIPLE](#alt-triple) `RETRACTED_OR_REFUTED`, [CLAUDE05-VERDICT](#claude05-verdict) `RETRACTED_OR_REFUTED`, [OVERNIGHT-WITHDRAWN](#overnight-withdrawn) `RETRACTED_OR_REFUTED`, [PALETTE-EQ-F](#palette-eq-f) `RETRACTED_OR_REFUTED`, [TWO-TRIANGLE](#two-triangle) `RETRACTED_OR_REFUTED`
+- **Infrastructure**: [ENC-R4-AUX](#enc-r4-aux) `LEAN_VERIFIED`, [SNAPSHOT-VALIDATION](#snapshot-validation) `TESTED_FINITE`, [LEAN-FAILED-REVISIONS](#lean-failed-revisions) `RETRACTED_OR_REFUTED`, [LEAN-435](#lean-435) `OPEN`
+
+## Simplification of the supplied proof
+
+### DIAMOND
+
+**Diamond equality lemma (three-colour diamond, tips equal)** — `LEAN_VERIFIED`
+
+- **Statement:** `SimplifyAngular.three_color_diamond_omega` and `SimplifyAngular.diamond_tips`: the diamond equality lemma and its corollary (finite colour argument).
+- **Evidence:** diamond-pinned-core.log: Lean 4.34.1, exit 0; axioms [propext, Quot.sound] (a subset of the standard three). First run on Lean 4.35.0 core Omega.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/DiamondStandalone.lean` — source — `67cdbc7be0b14601…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/diamond-pinned-core.log` — compile log (4.34.1) — `129eedc3a1694aeb…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/diamond-standalone.log` — first log — `6bfba1214e0f46f4…`
+- **Checked by the results desk:** Read the archived log: Version 4.34.1, "Status: passed", "Exit code: 0", logged Source SHA256 equals the archived source (hash recomputed), axiom lines parsed. Did not recompile.
+- **Provenance:** Simplification (angular) lane, overnight 13–14 Nov.
+
+### ENC-R4
+
+**Common-encoding refactor (encoding-r4) of the supplied spectral argument** — `LEAN_VERIFIED`
+
+- **Statement:** The supplied proof's conditional spectrum/limit development is rewritten over one common encoding; ConditionalSpectrum.lean 497→530 lines and ConditionalLimits.lean 701→542 lines, net −126. The public precision-contradiction theorem headers are unchanged (fidelity checked after whitespace/name normalisation).
+- **Hypotheses:** Same statements as the supplied proof; no new hypotheses. The nine root theorems include `OAI.EuclideanFiveColor.no_proper_five_coloring`, `OAI.Problem160.properColoring_seven`, `OAI.Problem160.weakMeasurableColoring_seven`.
+- **Evidence:** Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; full 82-module affected closure passed; nine root axiom sets exactly [propext, Classical.choice, Quot.sound]; no sorryAx; 6 declarations / 133 binders inspected (BINDER-INSPECTION.txt).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ENCODING-REFACTOR-VALIDATION.txt` — validation record — `b63f700ffed8eec1…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/encoding-refactor/ConditionalSpectrum.lean` — source — `d26d569088faea89…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/encoding-refactor/ConditionalLimits.lean` — source — `24f89dd33533a0f6…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/encoding-refactor/BINDER-INSPECTION.txt` — binder inspection — `27df4e42e37f6aca…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/encoding-r4-axiomroots.log` — root axiom log — `e6d173c7e694e64b…`
+- **Checked by the results desk:** 2026-11-14 23:50Z: re-ran `node HadwigerNelson/Main/verify-snapshot.mjs` (passed, 11 s), which re-hashes both sources against the pinned values; source hashes recomputed at build. Did not recompile.
+- **Provenance:** Local Lean queue, encoding-r2→r4 revisions, 2026-11-14 01:20–07:09Z (Pacific 07:09 binder inspection).
+- **Correction history:** a "−150 lines" projection and a 718-line deletion patch were not accepted (CONSOLIDATED-FINDINGS); r2/r3 revisions failed and were repaired (logs encoding-r2-*, encoding-r3-*); axiom-output parser fixed to allow an apostrophe in `exists_strictAnti_scale'`
+- **Used for:** Baseline for R1 (frozen-manifest "baseline: encoding-r4 verified"); simplification ledger.
+
+### FIVE-CYCLE-RESIDUES
+
+**Five-cycle residue finite facts (reflection lemmas and residue reductions)** — `LEAN_VERIFIED`
+
+- **Statement:** Finite facts about five-cycle residues: 14 reflection lemmas then 21 theorems, including `five_residues_reduce_to_two`, `label_transport`, `g_involutive`, `h_involutive`.
+- **Evidence:** five-cycle-residues-v4.log: Lean 4.34.1, exit 0, [propext, Classical.choice, Quot.sound].
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/FiveCycleResiduesV4.lean` — source — `602bda97b14d38eb…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/five-cycle-residues-v4.log` — compile log — `23bbd9363d30735d…`
+- **Checked by the results desk:** Read the archived log: Version 4.34.1, "Status: passed", "Exit code: 0", logged Source SHA256 equals the archived source (hash recomputed), axiom lines parsed. Did not recompile.
+- **Provenance:** Simplification lane, overnight 13–14 Nov.
+- **Correction history:** h(P_j) = P(−j), not P(hj)
+- **Caveats:** Supported the five-cycle shortcut, which was withheld (see OVERNIGHT-WITHDRAWN); Lemma 6.7 retained.
+
+### FIVESUPPORT-SWAP
+
+**Same-name step-ban swap inside FiveSupport (R1 port)** — `LEAN_VERIFIED`
+
+- **Statement:** FiveSupportSwapR1.lean = the accepted R1 FiveSupport.lean plus the block `five_outsider_unique`, `five_pair_meet`, `five_support_step_ban_v2` inserted before `five_opposite_contacts_false`, whose two callees are switched from `five_support_step_ban` to `_v2`. All 31 public declarations keep their exact statements.
+- **Hypotheses:** Unchanged statements (31/31 `#check` outputs identical to the R1 FiveSupport module). The old `five_support_step_ban` is still present (not deleted).
+- **Evidence:** Desk compile (research desk) exit 0, 323 s; `five_opposite_contacts_false` and `five_support_step_ban_v2` [propext, Classical.choice, Quot.sound].
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/FiveSupportSwapR1.lean` — R1 port source — `e531cf133a213e52…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/swapR1.log` — compile log: 31 #check outputs + axioms — `7bbaece10131d754…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/FiveSupportSwapR1-noV1.lean` — variant with the old step ban deleted — `0aaee265081c94ba…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/noV1.log` — compile log of the v1-deleted variant: 30 #check outputs + axioms — `4d9e0814064756a2…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/orig.log` — 31 #check outputs of the R1 FiveSupport module — `749c21cfff0461ad…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/swap.log` — first compile of the swarm file (failed on R1) — `41d849c3929bf37b…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261115T002122-download-1-FiveSupport-swap.lean` — swarm source (targets encoding-r4) — `3291ad95a0c3cc82…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261115T002122-download-3-REFEREE.md` — swarm referee report (m5) — `4aa0931aefc47eb1…`
+- **Checked by the results desk:** 2026-11-15 ~01:05Z: parsed the 31 `#check` blocks in swapR1.log and orig.log and compared them: 31 common names, 0 differences, none missing on either side; read both axiom lines. Line accounting (desk diff against R1 FiveSupport.lean, 354 lines): the port is 415 lines without #check/#print lines = 2 call lines changed + 3-line comment + 58-line v2 block inserted; nothing deleted. Deleting the old step ban (FiveSupport.lean:68–99, 32 lines) and `five_forced_label` (Exclusion.lean:26–28, 3 lines) would still leave about +23 lines, because the new block carries long docstrings and two helper lemmas. So this is a structural simplification (the case split and one finite lemma go away), not a line saving. Exit code from the desk LOG.md 01:01:32Z. UPDATE 01:21Z: the variant with the old step ban deleted (FiveSupportSwapR1-noV1, desk compile exit 0, 181 s) passes. I compared its 30 `#check` outputs with R1: 30 identical, only `five_support_step_ban` is gone (the desk grep found no other R1 consumer). Measured: 354 → 387 physical lines (+33, excluding the 3-line provenance comment and #check/#print lines), non-blank +26, code lines excluding comments 341 → 350 (+9, desk metric). The earlier +23 estimate is superseded.
+- **Provenance:** Architecture swarm smwh11dth (m1 swap, m5 referee); research desk R1 port and compile 00:40Z, rerun after the power loss 00:55–01:01Z.
+- **Correction history:** the swarm file targets encoding-r4 and fails on R1 (palette_neighbor_* redeclared; `strict_state_no_unit_support` unknown, removed by R1); the desk ported it; the "21→15 lines" figure is the proof body only; with the helper lemmas and docstrings the module grows; line estimate after deleting v1: about +23 (results desk, 01:05Z), measured +33 (01:21Z)
+- **Depends on:** [STEPBAN-V2](#stepban-v2), [STEPBAN-CONSUMER](#stepban-consumer), [R1](#r1)
+- **Caveats:** m4 branch-free `hdis` reconstruction (FiveSupport:205–216) is NOT in this port; still a swarm candidate. Not yet substituted into the tree or re-checked against downstream modules.
+
+### JOINT-SUPPORT
+
+**Joint-pair support theorem (generic finite contact-ban support)** — `LEAN_VERIFIED`
+
+- **Statement:** A generic finite contact-ban support theorem, and an unchanged-statement replacement of `five_support_no_sixty` that removes the strict-state-sequence call from this branch.
+- **Hypotheses:** Uses existing `stateSupport_shift_relation`; retains manuscript Lemma 6.7 (step ban) and upstream analysis.
+- **Evidence:** Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; two statements, [propext, Classical.choice, Quot.sound]; log joint-pair-support-v2.log.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/joint-support/JointPairSupport.lean` — source — `9a904d4d7165889a…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/joint-support/VALIDATION.txt` — validation — `036a3daf10b6e42d…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-REBOOT-REFEREE.txt` — paper referee ("ACCEPT the finite pair-support theorem and its proposed application") — `ceab2e0167e9fc5d…`
+- **Checked by the results desk:** Hash recomputed at build; referee quote confirmed verbatim. Did not recompile.
+- **Provenance:** Astra joint lead derivation, independent Astra referee + OS review; Codex local validation (before 18:39Z snapshot).
+- **Caveats:** Standalone; NOT integrated, by decision of the simplification desk: after R1, five_support_no_sixty is 8 lines and the joint-pair route is 41 (+33), and fixed_state_no_unit_three_centres stays live via Interfaces:278 (simplification-desk/jointpair/JOINT-PAIR-DECISION.md). Not validated against the competition 4.35 target.
+
+### R1
+
+**Three-centre integration (threecentre-r1): old strict-state branch replaced by AvoidingTrace** — `LEAN_VERIFIED`
+
+- **Statement:** The 27 affected modules of the supplied proof, with the three-centre argument routed through the new module `AvoidingTrace` (`fixed_state_no_unit_three_centres`, `strict_state_sequence_no_unit_three_centres`), all compile, and the nine root theorems (as in ENC-R4) depend only on standard axioms. Net −24 physical lines: States 764→566 (−198), FourContinuity 551→509 (−42), FiveSupport 376→354 (−22), Interfaces 527→528 (+1), AvoidingTrace new (+237).
+- **Hypotheses:** Statements of the supplied root theorems unchanged. Baseline oleans for unaffected modules (incl. PaletteTransport) are copied from encoding-r4 ("copiedBaselineOleansNotValidation": true).
+- **Evidence:** Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; modules 01–14 logs and 15–27 progress records all exit 0; axiomroots job: 9 roots [propext, Classical.choice, Quot.sound].
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/threecentre-r1/frozen-manifest.json` — frozen manifest (27 modules) — `a480c6759658b5a5…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/threecentre-r1/line-accounting.json` — line accounting — `e1dc97d513cca049…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/threecentre-r1/src/AxiomRoots.lean` — root axiom file — `cac851851383970f…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/threecentre-r1-axiomroots.progress.json` — root axiom job record (exit 0) — `ca4b961283a98933…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/threecentre-r1-axiomroots.python.log` — root axiom log — `85aaef1671d5777e…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/threecentre-r1-27-transfer.progress.json` — last module job record (exit 0) — `f0bf78d3b7b482a7…`
+  - `I/work/lean-queue/threecentre-r1-05-avoidingtrace.log` — AvoidingTrace log with axioms — `144a25e58697f00d…`
+- **Checked by the results desk:** 2026-11-15 ~00:00Z: recomputed SHA-256 of all 27 frozen sources — 27/27 match frozen-manifest.json; module logs 01–14 carry matching "Source SHA256" and "Exit code: 0"; progress records 15–27 have exitCode 0 and sourceSha256 equal to the manifest; axiomroots log prints 9 roots, all [propext, Classical.choice, Quot.sound], no sorryAx; recounted physical lines of the five changed files against encoding-r4/src — matches line-accounting.json exactly (−24). PaletteTransport.lean in the R1 tree is byte-identical to encoding-r4 (same SHA-256), so its absence from the frozen manifest is a manifest gap, not an unverified change. The workspace R1 sources equal the repo snapshot copies (404 files compared, 0 differ). Did not recompile.
+- **Provenance:** Lean queue jobs threecentre-r1-01…27 and -axiomroots, 2026-11-14 ~19:00–20:48Z; accepted by Jarom in the research-desk chat ~23:25Z (research-desk LOG.md 23:25:36Z).
+- **Correction history:** alternative metrics (simplification desk recount, r1-gates/line-accounting-r1-desk.json): physical −24 (matches), non-blank −41, code excluding comments −67; the ledger quotes the physical count; a private packet claim of "net −66" was rejected (it omitted 236 new-module lines); the accepted accounting is net −24 (check-ins 17:20:56Z, 18:15:21Z); optional further 104 unused-helper lines pending a separate build (check-in 18:35:22Z); Module 15 (Sectors) first .log run did not pass; re-run via the Python runner passed 20:32Z (sectors.progress.json); PROGRESS.md (snapshot 18:39Z) said "full consumer integration and deletion of the old branch remain pending"; R1 is that integration and is now accepted
+- **Used for:** Formal baseline pin for every later queue job (StepBan, A6 bridge, EvenWalk import R1 oleans).
+- **Depends on:** [ENC-R4](#enc-r4), [THREE-CENTRE](#three-centre)
+- **Caveats:** See [R1-GATES](#r1-gates): contract and dependency gates not independently re-run; PaletteTransport not listed in frozen-manifest.json.
+
+### STEPBAN-CONSUMER
+
+**Consumer `five_opposite_contacts_false_from_v2` rebuilt on the v2 step ban** — `LEAN_VERIFIED`
+
+- **Statement:** Same statement as `five_opposite_contacts_false`: for a weak measurable 5-colouring and a FiveCenter x, if b = a + 3·60°, a ∈ fiveSupport i ∩ fiveSupport (i+1) and b ∈ fiveSupport j ∩ fiveSupport (j+1), then False.
+- **Hypotheses:** Identical telescope to the original consumer (verified from the `#check` output).
+- **Evidence:** Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; job claude-lean-20261114t232057-0 exit 0, 58.6 s; both `_v2` declarations [propext, Classical.choice, Quot.sound].
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-admissions/claude-lean-20261114t232057-0/Candidate.lean` — source — `718b581518b553c4…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t232057-0.progress.json` — job record — `03d7116c943d8a29…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t232057-0.python.log` — compile log with #check pairs and #print axioms — `a8886d567be5d8d8…`
+- **Checked by the results desk:** Recomputed source hash = record; exit 0; read the log: both `#check` pairs (v1 vs `_v2`, consumer vs `_from_v2`) print identical signatures apart from the name; both axiom lines are the standard three. This answers the coordinator's needs_parent of cycle 232732.
+- **Provenance:** Architecture lane StepBanConsumer.lean (270 lines, 3-line diff claimed); coordinator cycle 232057; finished 23:23:27Z.
+- **Used for:** Unlocks the in-place same-name swap ([STEPBAN-SWAP](#stepban-swap)).
+- **Depends on:** [STEPBAN-V2](#stepban-v2)
+
+### STEPBAN-CYCLICCORE
+
+**CyclicCore consumer `five_sequence_small_no_accumulation` rerouted through the v2 step ban** — `LEAN_VERIFIED`
+
+- **Statement:** `five_sequence_small_no_accumulation_from_v2`: for measurable `c : ℂ → Fin 5` with `WeakColoring 5 c`, FiveCenters `yn n` converging to a FiveCenter x with `yn n ≠ x` and `‖yn n − x‖ < 2` for all n: False. Same statement as the CyclicCore original, proved through `five_support_step_ban_v2`.
+- **Hypotheses:** Identical telescope to `five_sequence_small_no_accumulation` (the `#check` pair in the log prints the same type).
+- **Evidence:** Desk compile exit 0, 122 s; `_from_v2` [propext, Classical.choice, Quot.sound].
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/CyclicCore-r2/CyclicCoreConsumerFromV2-r2.lean` — source (inbox file minus the stray backslash line 1; LF sha256 884ed9bc… as in desk BANKED.md) — `1212d4e1825c0b65…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/CyclicCore-r2/compile.log` — compile log with #check pair and #print axioms — `b90e12cf06aa5cf5…`
+- **Checked by the results desk:** Read compile.log: the two `#check` outputs are character-identical apart from the name; one axiom line, standard three. Exit code from desk LOG.md 00:34:32Z.
+- **Provenance:** Architecture lane CyclicCoreConsumerFromV2 (queue job 001551-0 failed on a staging defect); research desk r2 compile 00:32–00:34Z.
+- **Correction history:** queue job 001551-0 failed only because the staged text began with a stray backslash
+- **Depends on:** [STEPBAN-V2](#stepban-v2), [STEPBAN-CONSUMER](#stepban-consumer)
+
+### STEPBAN-V2
+
+**Branch-free step ban `five_support_step_ban_v2`** — `LEAN_VERIFIED`
+
+- **Statement:** For measurable `c : ℂ → Fin 5` with `WeakColoring 5 c`, a `FiveCenter c x`, and `a ∈ fiveSupport c hc x i ∩ fiveSupport c hc x j` with `fiveAdj i j`: for a.e. angle t, the state never steps i→j nor j→i across a 60° shift. Same statement as manuscript Lemma 6.7 `five_support_step_ban`; the proof replaces the two-branch case split by the finite core `five_pair_meet` (label-level `decide` over 625 quadruples).
+- **Hypotheses:** Identical telescope to `five_support_step_ban` (desk compared the `#check` output in job 232057-0).
+- **Evidence:** Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; job claude-lean-20261114t220720-0 exit 0, 64.6 s, `five_support_step_ban_v2` [propext, Classical.choice, Quot.sound]; duplicate job 222227-0 (same source hash) exit 0, 176.7 s; re-checked in 232057-0.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-admissions/claude-lean-20261114t220720-0/Candidate.lean` — source — `19bffbcd71bed9b8…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t220720-0.progress.json` — job record — `1bd90cc006806f4e…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t220720-0.python.log` — compile log with #print axioms — `d1e054998bdb19b5…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t222227-0.progress.json` — duplicate job record (not new evidence) — `f2803e863e1a8530…`
+- **Checked by the results desk:** Recomputed source SHA-256 = recorded sourceSha256; exitCode 0; parsed the axiom line from the log; no "declaration uses sorry". Counted the original proof body at FiveSupport.lean:72–92 = 21 lines (claim "21→15" consistent on the v1 side; v2 count not independently measured). `five_forced_label` (Exclusion.lean:26) is used only at FiveSupport.lean:83,85 in the R1 tree, so it becomes deletable after the swap. v2 adds helper lemmas `five_outsider_unique` and `five_pair_meet`, so the net physical-line change after the swap is not yet measured.
+- **Provenance:** Architecture lane (m1 `five_pair_meet` route); coordinator cycles 20:40Z–22:28Z; job 220720-0 finished 22:10:43Z (mapping corrected: 220720-0 is StepBanShort-r2, not G1).
+- **Correction history:** r1 (job 212205-1) failed: Decidable instance on `fiveAdj` not synthesised, and the log shows sorryAx in the v1 attempt; coordinator cycle 222227 briefly mapped job 220720-0 to G1; corrected by the research desk
+- **Used for:** Simplification of the supplied proof (removes a case split and the `five_forced_label` lemma).
+- **Depends on:** [R1](#r1)
+
+### THREE-CENTRE
+
+**Fixed and moving three-centre replacement theorems (standalone)** — `LEAN_VERIFIED`
+
+- **Statement:** Replacement proofs of the fixed-state and strict-state-sequence three-centre lemmas whose statements and binder flags match the original States declarations; transitive type/value dependency traversals (51,271 and 61,231 constants) contain none of `strict_state_sequence_local_false`, `strict_state_sequence_false`, `strict_state_no_unit_support` or sorryAx.
+- **Hypotheses:** Original statements (header identical after whitespace normalisation).
+- **Evidence:** Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; standard axioms; logs three-centre-fixed-v2, three-centre-moving-v4-audit.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/three-centre/MovingThreeCentres.lean` — source — `ee52e7412a673673…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/three-centre/FixedStateThreeCentres.lean` — source — `b812e7222f6a7dd8…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/three-centre/VALIDATION.txt` — validation — `c8f9c937b0001560…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/three-centre/MOVING-VALIDATION.txt` — validation — `9d66237c84b360bf…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-A2-REFEREE.txt` — paper referee ("ACCEPT both principal A2 claims at paper level") — `5adfbe3c70ff3ba2…`
+- **Checked by the results desk:** verify-snapshot.mjs (23:50Z) re-checked the MovingThreeCentres hash; referee quote confirmed verbatim. Did not recompile.
+- **Provenance:** Astra A2 lead paper proof + independent Astra A2 referee + OS reviews; local Lean queue, check-in 17:20:56Z.
+- **Used for:** Integrated into the tree by [R1](#r1) (AvoidingTrace).
+
+### LEMMA67-IDENTITY
+
+**Manuscript Lemma 6.7 is `five_support_step_ban`; it is retained** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** Manuscript Lemma 6.7 ("A support contact bans an angular step", The Euclidean plane is not five-colorable, 2026-09-23, p.41) is the Lean declaration `FiveSupport.five_support_step_ban`. Any description of the joint-support work as "Lemma 6.7 deleted" is rejected.
+- **Evidence:** Source identification; ASTRA-REBOOT-REFEREE confirms.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/checkin-artifacts/20261114T163226Z/MANUSCRIPT-LEMMA67.txt` — manuscript excerpt — `40dc2441cf4c283c…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-REBOOT-REFEREE.txt` — referee — `ceab2e0167e9fc5d…`
+- **Provenance:** Check-in 16:32:26Z.
+- **Used for:** STEPBAN-V2 re-proves this lemma with the same statement.
+
+### STEPBAN-V3
+
+**Simplification desk step ban v3: branch-free and shorter than v1 (staged, not compiled)** — `CANDIDATE`
+
+- **Statement:** A desk-written branch-free step ban, shorter than v1. The staged S1 tree (vs R1) has FiveSupport −15 physical lines, deletes five_forced_label and adds five_state_forced_label (3 lines, Exclusion). Not a result until compiled.
+- **Checked by the results desk:** Not checked. Compile tests: r1 failed (one rewrite elaboration error; the statement/binder Expr.equal check passed), r2 failed (Decidable synthesis), r3 queued.
+- **Provenance:** Simplification desk report 01:20Z (work/simplification-desk/s1, stepban).
+- **Depends on:** [STEPBAN-V2](#stepban-v2)
+
+### R1-GATES
+
+**R1 follow-ups: contract/dependency gates and manifest completeness** — `OPEN`
+
+- **Statement:** Re-run the R1 contract and dependency gates after acceptance. PART DONE (simplification desk, no Lean run): manifest completeness. frozen-manifest.json is exactly the 27-module downstream closure of the 5 changed files; the other 56 modules, including PaletteTransport, are byte-identical in source and olean to the R4 build (PaletteTransport sha256 2d9b3869…, raw = LF, identical in original, R4 and R1). STILL PENDING: the exact-type/binder gate (whole-closure signature, binder and value hash dump, R1 vs R4) and the forbidden-name check for the 7 deleted strict_state declarations.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/r1-gates/MANIFEST-COMPLETENESS.md` — manifest completeness note — `5521b496101778f1…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/r1-gates/manifest-complete.json` — 83-module completeness table — `4c24ee676e79c450…`
+- **Checked by the results desk:** PaletteTransport.lean is byte-identical to encoding-r4 (results-desk hash check, confirmed by the simplification desk), so the manifest gap does not hide a change. The type/binder gate result is not yet available.
+- **Provenance:** Caveats recorded with the acceptance by Jarom (research desk, 23:25Z; coordinator cycle 232732); simplification desk report 01:20Z.
+- **Depends on:** [R1](#r1)
+
+### STEPBAN-SWAP
+
+**In-place swap of the step ban into the CyclicCore/FiveSupport consumer** — `OPEN`
+
+- **Statement:** Substitute FiveSupportSwapR1 (compiled, 31/31 signatures identical) for FiveSupport in the tree, delete the old `five_support_step_ban` and `five_forced_label`, rebuild the downstream modules (incl. CyclicCore with the _from_v2 consumer) and re-run the root axiom check. Measured for FiveSupport after deleting v1: +33 physical lines (structural simplification only); deleting five_forced_label would save 3 more. The v1 deletion is verified in FiveSupportSwapR1-noV1 (30/30 signatures), but the module is not yet substituted into the tree.
+- **Provenance:** Coordinator cycles 231544, 232732 (architecture lane; hd/he capture unresolved).
+- **Depends on:** [STEPBAN-V2](#stepban-v2), [STEPBAN-CONSUMER](#stepban-consumer)
+
+## New mathematics
+
+### A6-BRIDGE-R2
+
+**A6 bridge r2: a.e. canonical subpalette, conditional on SignTable, ForcingLemma, ArcCover** — `LEAN_VERIFIED`
+
+- **Statement:** `ae_canonical_subpalette_global`: for measurable `c : ℂ → Fin 6` with `WeakColoring 6 c`, sets `K i` approaching x in directions `v i`, and support exclusion `Disjoint (spatialSupport c j) (Straddle (K i))` for `j ∈ eSet i`, together with `SignTable v`, `ForcingLemma` and `ArcCover`: for angular-a.e. θ there is j with `f j` and `f j + 3` in `palette c hc x θ`. Also `ae_six_inputs`, `ae_restrictions`, `ae_canonical_subpalette` (arc form).
+- **Hypotheses:** `hsign : SignTable v`, `hforce : ForcingLemma`, `hcover : ArcCover` are explicit hypotheses in this file (G3 not glued).
+- **Evidence:** Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; job claude-lean-20261114t231544-0 exit 0, 66.9 s, linter warnings only, unchanged maxHeartbeats. The job file prints no axioms; the research desk ran a separate `#print axioms` on its olean: 8 endpoints [propext, Classical.choice, Quot.sound].
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-admissions/claude-lean-20261114t231544-0/Candidate.lean` — source — `74402da9ef754964…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t231544-0.progress.json` — job record — `5c7b4cb2f3ff873b…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t231544-0.python.log` — compile log (warnings only) — `bdcc69a00d00bb0e…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/bridge-r2-axioms/Axioms.lean` — desk axiom-print file — `5c94e491337de75d…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/bridge-r2-axioms/axioms.log` — desk axiom log (8 endpoints) — `31893654154de1e6…`
+- **Checked by the results desk:** Recomputed source hash = record; exitCode 0; job log has no errors and no axiom lines; read the desk axioms.log: 8 lines, each the standard three. Confirmed in the source that SignTable/ForcingLemma/ArcCover are hypotheses of the global theorem.
+- **Provenance:** Formal lane B: swarm smwguinbz A6-Bridge-m2 + smwgwui56 G1-Finish-mB (folded at r2); r2 written by the coordinator; cycle 231544; finished 23:18:26Z; desk axiom check 23:20:56Z.
+- **Correction history:** Bridge-m2 (job 213711-0) failed: `ae_restrictions` whnf timeout and a genuine shift-direction bug in the ArcCover composition (must use −sixAngle j); fixed in r2
+- **Used for:** Six-colour producer chain (k=6); superseded for callers by A6-BRIDGE-R2-G3.
+- **Depends on:** [R1](#r1), [G1-R2](#g1-r2)
+
+### A6-BRIDGE-R2-G3
+
+**A6 bridge with G3 glued: a.e. canonical subpalette with the arc cover discharged** — `LEAN_VERIFIED`
+
+- **Statement:** `ae_canonical_subpalette_unconditional`: for measurable `c : ℂ → Fin 6` with `WeakColoring 6 c`, sets `K i` approaching x in directions `v i` with support exclusions `Disjoint (spatialSupport c j) (Straddle (K i))` for j ∈ eSet i, `SignTable v` and `ForcingLemma`: for angular-a.e. θ there is j with `f j` and `f j + 3` in `palette c hc x θ`. The `ArcCover` hypothesis of A6-BRIDGE-R2 is discharged by the glued G3 proof `arcCover`.
+- **Hypotheses:** `hsign : SignTable v` and `hforce : ForcingLemma` remain hypotheses in this file (G1-R2 proves SignTable for paired directions and A6-FORCING proves the finite lemma separately; the single fully glued statement is still A6-GLUE).
+- **Evidence:** Desk compile (research desk, same toolchain) exit 0, 167 s, linter warnings only; `ae_canonical_subpalette_unconditional` [propext, Classical.choice, Quot.sound]; no sorry.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/Bridge-r2-G3/A6-Bridge-r2-G3.lean` — source (864 lines; LF sha256 164f26bb…) — `2e04f2115ac3b561…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/Bridge-r2-G3/compile.log` — compile log with #print axioms — `b670399ddedbfdc8…`
+- **Checked by the results desk:** Recomputed the source hash (identical to inbox downloads 20261115T001250-3 and 001551-0); read compile.log: warnings only, one axiom line with the standard three. Exit code and runtime are from the desk LOG.md (00:32:22Z), not a queue record. Confirmed in the source that the theorem still takes hsign and hforce.
+- **Provenance:** Formal lane L1 (WITH_G3 splice); downloaded 00:12Z; research desk compile 00:29–00:32Z (too large for the coordinator review filter, so not queued).
+- **Depends on:** [A6-BRIDGE-R2](#a6-bridge-r2), [G3-R2](#g3-r2)
+
+### A6-FORCING
+
+**A6 finite forcing lemma (hit form), with necessity checks** — `LEAN_VERIFIED`
+
+- **Statement:** `A6Forcing.a6_canonical_pairs_add_three`: for any palettes `P : Fin 6 → Finset (Fin 6)` with an inner hit `(P j ∩ {f j}).Nonempty`, an outer hit `(P j ∩ H j).Nonempty` and cyclic adjacent disjointness `Disjoint (P j) (P (j+1))`, every `P j` contains `f j` and `f j + 3`. Here f = source table, H = ({3,4,5},{1,2,3},{0,1,5},…), g = f+3 = (4,2,0,4,2,0). The same file proves the hypotheses satisfiable (`a6_hypotheses_satisfiable`) and that disjointness and the outer hit are each necessary.
+- **Hypotheses:** Purely finite (Mathlib only); no cardinality premise. The link to geometry is via the A6 bridge hypotheses `ForcingLemma` (see A6-GLUE).
+- **Evidence:** Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; job claude-lean-20261114t212205-0 exit 0, 62.7 s, empty compiler output.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-admissions/claude-lean-20261114t212205-0/Candidate.lean` — source — `27e45caf4c793897…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t212205-0.progress.json` — job record — `729f92a0cf31b8e5…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t212205-0.python.log` — compile log (empty) — `e3b0c44298fc1c14…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/spotcheck/A6Forcing-axioms.lean` — desk spot-check: job source plus #print axioms lines only — `83e6dfa36be80807…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/spotcheck/A6Forcing-axioms.log` — spot-check log: 7 axiom lines — `31518f332044b24f…`
+- **Checked by the results desk:** Recomputed source hash = record; exitCode 0; the job log is empty (no sorry warning) because the source has no `#print axioms`. Flag CLOSED 01:20Z: the research desk recompiled the same source with axiom prints appended. I diffed the spot-check file against the job source: the only changes are 8 added `#print` lines. Its log lists 7 endpoints (a6_canonical_pairs, a6_canonical_pairs_add_three, a6_containment_unsatisfiable, a6_hypotheses_satisfiable, disjointness_necessary, outer_hit_necessary, A6canonical_hypotheses), each [propext, Classical.choice, Quot.sound].
+- **Provenance:** Formal lane A (swarm smwgviqtr m1, "A6-Forcing-m1"); coordinator cycle 212205; finished 21:25:32Z.
+- **Correction history:** A6 finite check corrected to "exactly one model P=[{1,4},{2,5},{0,3}]×2, with no cardinality premise" (cycle 204019)
+- **Used for:** Discharges `ForcingLemma` in the A6 bridge once glued; it is the finite core of A6-PAIRED-PRODUCER.
+
+### CC60
+
+**Closed 60° cone obstruction (CC60), equality case included** — `LEAN_VERIFIED`
+
+- **Statement:** `closed60_exclusions_three_le`: for a weak measurable colouring, a finite family of actual common-exclusion continua approaching one centre with signed directions in a closed cone of width ≤ 60° cannot leave only two labels — at least three labels remain. Also `outer120_binary_impossible`. Rules out q=(0,0,1,3,3,4).
+- **Hypotheses:** Same-centre approaching-continuum and support-exclusion hypotheses as stated in ConeObstruction.lean; no palette-size premise.
+- **Evidence:** Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; ConeGeometry v2, ConeObstruction v3, ConeSurvivor v4 (concrete six-colour consumer) and ConeAudit v3 all exit 0; four audited declarations [propext, Classical.choice, Quot.sound]; no sorryAx.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/cone/VALIDATION.json` — validation manifest — `37bf7b83026d665e…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/cone/ConeObstruction.lean` — source — `41298784d3226ccd…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/cone/ConeGeometry.lean` — source — `12c254d0520f7623…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/cone/ConeSurvivor.lean` — source — `527c74754eaa73c9…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/cone/cone-audit-v3.log` — axiom audit log — `15e9426040492af5…`
+- **Checked by the results desk:** verify-snapshot.mjs (23:50Z) re-checked all cone source hashes against VALIDATION.json, the audit log status, exit 0, absence of sorryAx and four axiom lines. Did not recompile.
+- **Provenance:** Paper theorem in ASTRA-NONALIGNED-A3 with independent ASTRA-CONE-REFEREE; formalised in ASTRA-CONE-FORMAL-A4; Lean queue ~09:56–10:12 Pacific (17:56–18:12Z) 2026-11-14.
+- **Correction history:** old AC-axis mixed inner/outer proof rejected (check-in 17:20:56Z)
+- **Used for:** Filters the discrete direction grid 174→6 ([DIR-FILTER](#dir-filter)); local obstruction only — not a plane-colouring result.
+
+### CONNECTED-SET
+
+**Connected unit-free sets: no straddling, pairwise distance < 1, diameter ≤ 1 (sharp)** — `LEAN_VERIFIED`
+
+- **Statement:** `unitFree_not_straddle`, `unitFree_pairwise_lt`, `diam_le_one_of_preconnected_unitFree'`: a preconnected set in a normed group with no unit-distance pair cannot straddle the unit sphere about any of its points, has all pairwise distances < 1, and has diameter ≤ 1; `unitFree_sharp` shows diameter 1 is attained (pairwise < 1 permits diameter = 1). Plus the IVT helper `preconnected_forall_lt_or_forall_gt`.
+- **Evidence:** connected-set-minimal.log: Lean 4.34.1, exit 0, five theorems [propext, Classical.choice, Quot.sound].
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/ConnectedSetExclusionMinimal.lean` — source — `c243da2d52bba6b2…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/connected-set-minimal.log` — compile log — `50b627e36e23c2e8…`
+- **Checked by the results desk:** Read the archived log: Version 4.34.1, "Status: passed", "Exit code: 0", logged Source SHA256 equals the archived source (hash recomputed), axiom lines parsed. Did not recompile.
+- **Provenance:** Overnight 13–14 Nov.
+- **Correction history:** a first narrowed-import local attempt failed (missing ContinuousSub instance, sorryAx); superseded by the minimal version
+
+### EVENWALK-R6
+
+**Even unit-distance walks: reachability and finite list / parity obstructions** — `LEAN_VERIFIED`
+
+- **Statement:** `evenWalk_reachable`: if W ⊆ ℂ is open, T ⊆ W connected and every point of T has a unit neighbour in W, any two points of T are joined by a finite even-length unit-distance walk in W. `finite_list_obstruction`: for a weak measurable k-colouring, a finite unit-distance pattern whose vertices carry lists of full density (`ListDensity`) and which has no list-respecting proper colouring is impossible. `two_list_obstruction_of_even_walk`: an even unit walk whose vertices are all density-one points of the same ≤2-element list cannot have endpoints at unit distance.
+- **Hypotheses:** `Measurable c`, `WeakColoring k c`; density hypotheses as stated; imports R1 `Rigidity` and `States`.
+- **Evidence:** Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; desk compile exit 0, 63 s; three endpoints [propext, Classical.choice, Quot.sound]; deprecation/linter warnings only.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/EvenWalk-rev6/EvenWalkReachability-rev6.lean` — source — `4439cf5dd4088ea6…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/EvenWalk-rev6/compile.log` — compile log with #print axioms — `23bc2c29a2846046…`
+- **Checked by the results desk:** Recomputed source hash = BANKED.md value; read compile.log: three standard axiom lines, warnings only, no errors. Exit code from desk LOG.md 23:27:27Z.
+- **Provenance:** Verifier lane (swarm smwguidy9 → smwgzthki); rev6 = rev5 + one `show` line before `rw [he]` at L90, research desk 23:26Z.
+- **Correction history:** rev1 job 205744-0 failed (28 errors); rev2 job 215215-0 failed (13 errors); rev3 job 222600-0 failed (5 errors); rev4 failed (min-clamp motive); rev5 job 232057-1 failed (1 error); superseded by rev6
+- **Used for:** A5 consumer chain (finite list obstructions for k=6).
+- **Depends on:** [R1](#r1)
+
+### G1-R2
+
+**G1: strict cosine sign table and `SignTable` from paired directions** — `LEAN_VERIFIED`
+
+- **Statement:** `cos_sign_strict`: for |s| < π/6 and m : ℕ, cos(s + m·π/3) > 0 iff m mod 6 ∈ {0,1,5}, and < 0 iff m mod 6 ∈ {2,3,4}. `signTable_of_paired`: if `v i = direction (sixAngle (k i))` with `(k i).val = 2·(i.val/2)`, then `SignTable v`.
+- **Hypotheses:** As stated (pure trigonometry plus the bridge definitions).
+- **Evidence:** Compiled inside A6-BRIDGE-R2 (job 231544-0); desk axiom log lists cos_sign_strict, sign_of_paired_fin, signTable_of_paired, signTable_of_paired_fin with standard axioms.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-admissions/claude-lean-20261114t231544-0/Candidate.lean` — source (§9) — `74402da9ef754964…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/bridge-r2-axioms/axioms.log` — desk axiom log — `31893654154de1e6…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/G1-r2/G1-Finish-mB-r2.lean` — standalone source — `fd3549e5acccd7b5…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/G1-r2/compile.log` — standalone compile log — `fbf7d62384b9f62c…`
+- **Checked by the results desk:** As A6-BRIDGE-R2; also read the standalone desk compile.log (23:49Z, 100 s): linter warnings only; cos_sign_strict, sign_of_paired_fin, signTableT_of_paired, signTableT_of_paired_fin with the standard three axioms.
+- **Provenance:** G1-Finish-mB (swarm smwgwui56), r2 with the `m % 6 < 6` bound before interval_cases.
+- **Correction history:** G1-Sign-m2 withdrawn as defective (missing Interfaces import, free-binder decide) — cycle 213711; G1-Finish-mB r1 (job 215215-1) failed on a missing `m%6<6` bound; G1-r2 was first banked only through the bridge; a standalone desk compile (G1-Finish-mB-r2, mB plus the hm6 line from the bridge) passed 23:49Z
+- **Used for:** Discharges `SignTable` in the A6 bridge for paired directions.
+
+### G3-R2
+
+**G3: six translates of the open fundamental arc cover the circle a.e.** — `LEAN_VERIFIED`
+
+- **Statement:** `arcCover : ∀ᵐ θ ∂angularMeasure, ∃ t ∈ arc, ∃ j : Fin 6, θ = t + sixAngle j` (the bridge's `ArcCover`); the exceptional set is the six points π/6 + m·60°.
+- **Hypotheses:** None beyond the definitions (Mathlib only, verbatim local copies of Angles/angularMeasure/sixty/sixAngle).
+- **Evidence:** Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; desk compile (not a queue job) exit 0, 83 s; `arcCover` [propext, Classical.choice, Quot.sound].
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/G3-r2/G3-ArcCover-r2.lean` — source — `39a02e68c878c0d0…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/G3-r2/compile.log` — compile log with #print axioms — `e1a47fad00213af7…`
+- **Checked by the results desk:** Recomputed source hash = BANKED.md value; read compile.log: one axiom line, standard three, no errors. Exit code is from the desk LOG.md (22:32:04Z), not from a queue record.
+- **Provenance:** Formal lane mA (G3-ArcCover-mA, inbox 20261114T215215-download-2); research desk r2 22:30Z (le_or_lt→le_or_gt at L160, L168).
+- **Correction history:** G3 standalone r1 (job 220720-1) failed only on removed `le_or_lt`
+- **Used for:** Discharges `ArcCover` once glued ([A6-GLUE](#a6-glue)).
+
+### NULL-TRANSFER
+
+**Proper colouring off a null set gives a global proper colouring** — `LEAN_VERIFIED`
+
+- **Statement:** `exists_properColoring_of_compl_null`: for k > 0, a set Z ⊆ ℂ with volume Z = 0 and any c : ℂ → Fin k that is proper on unit pairs outside Z, there is some proper k-colouring d of ℂ (no agreement with c promised).
+- **Hypotheses:** `[NeZero k]`, `volume Z = 0`, properness of c off Z.
+- **Evidence:** k-generic-transfer-v1.log: Lean 4.34.1, exit 0, [propext, Classical.choice, Quot.sound].
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/encoding-r4/src/KGenericTransfer.lean` — source — `8a8fc2cb095321cd…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/k-generic-transfer-v1.log` — compile log — `3e1d15f3b1fb548d…`
+- **Checked by the results desk:** Read the archived log: Version 4.34.1, "Status: passed", "Exit code: 0", logged Source SHA256 equals the archived source (hash recomputed), axiom lines parsed. Did not recompile.
+- **Provenance:** Independent lane; overnight 13–14 Nov (CONSOLIDATED-FINDINGS 02:51).
+- **Used for:** General transfer lemma (finite compactness); no bound by itself.
+
+### A5-FOUR-LIST
+
+**The canonical paired palette is excluded at one centre (finite four-list obstruction)** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** (P) For measurable `c : ℂ → Fin 6` with `WeakColoring 6 c`, no centre x has an actual palette containing the canonical paired palette P(t) = A_(⌊(t+π/6)/(π/3)⌋ mod 3), A0={1,4}, A1={2,5}, A2={0,3}, for a.e. t. (F) The underlying list field L has a finite unit-distance configuration with strict cell margins and no proper L-colouring: two odd walks in rotated H-lobes (lists A1, A2) whose endpoints are unit-adjacent to z0 = i/2 (list A1 ∪ A2), with explicit contacts q− = (−√3/24, (6+√429)/24), q+ = (√3/12, (3+2√33)/12).
+- **Hypotheses:** Containment P(t) ⊆ palette a.e. suffices; no palette-cardinality bound. Uses `states_densityOne` and `finite_density_realization` from the supplied source.
+- **Evidence:** Paper proof ASTRA-FOUR-LIST-A5; independent referee ASTRA-FOUR-LIST-REFEREE: "ACCEPT the complete candidate … at the mathematical paper level".
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-FOUR-LIST-A5.txt` — paper proof — `799cef0737b23deb…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-FOUR-LIST-REFEREE.txt` — referee (ACCEPT) — `29e3800ecb740d96…`
+- **Checked by the results desk:** Referee verdict quote confirmed verbatim in the referee file by the results desk (grep). Proof not re-derived by the desk.
+- **Provenance:** Astra A5 lane with independent referee; check-in 18:35:22Z; RESEARCH-STATUS.
+- **Correction history:** contradicts and supersedes Claude05's verdict that "none of the one-centre necessary conditions … excludes this field" (see CLAUDE05-VERDICT)
+- **Used for:** Endpoint of the A6 paired-producer route (A6-PAIRED-PRODUCER + A5 ⇒ False).
+- **Caveats:** Finite existence only: walk coordinates and vertex count are not enumerated (see A5-ODD-WALK, A5-SLIVER). Not Lean-checked; EVENWALK-R6 now supplies the generic Lean list/parity lemmas but the A5 configuration itself is not formalised. Does not by itself exclude any interface configuration.
+
+### AC-ALIGNED
+
+**Aligned exclusion (AC): same signed direction leaves at least three labels** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** For measurable weak `c : ℂ → Fin k`, one centre x, one unit vector v and finitely many K_i with `ApproachingContinuum x K_i v` and `Disjoint (spatialSupport c j) (Straddle K_i)` for j ∈ H_i: if ⋃H_i leaves at most two labels then False. Six-colour consumer: three consecutive cycle edges with a common oriented direction are impossible (kills q=(0,3,3,3,0,0)).
+- **Hypotheses:** Same SIGNED direction for every continuum (the unsigned-axis extension is false, see AC-AXIS).
+- **Evidence:** ASTRA-SIX-COLOUR-A2 §6; referee ASTRA-AC-REFEREE: "ACCEPT AC at paper level." AC is the zero-width case of the Lean-verified CC60.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-SIX-COLOUR-A2.txt` — paper proof — `fb2ad23a7600cde8…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-AC-REFEREE.txt` — referee (ACCEPT) — `56c5d614f875471b…`
+- **Checked by the results desk:** Referee verdict quote confirmed verbatim in the referee file by the results desk (grep). Proof not re-derived by the desk.
+- **Provenance:** Astra A2 lane, 2026-11-14 ~09:02Z; check-in 16:53:26Z.
+
+### NR-TC
+
+**Null return (NR) and triangle constraint (TC) at one centre** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** NR: for one centre, |Fin k∖(J∪K)| ≤ 2, RealStates on B̃0 (J) and B̃1 (K) and the τ-swap law (τ=π/3), μ(B0 ∩ (B0−γ)) = μ(B1 ∩ (B1−γ)) = 0 with γ = arccos(5/6). TC: if a finite measurable represented state map satisfies f(t+2τ)=f(t) a.e., then for a.e. t, |Fin k ∖ (L_f(t) ∪ L_f(t+π+γ))| ≥ 3; for 120°-periodic palettes |P(t) ∪ P(t+π+γ)| ≤ k−3 (= 3 at k=6).
+- **Hypotheses:** As stated; NR does not give μ(A) = 0.
+- **Evidence:** ASTRA-SIX-COLOUR-A2 §1–3; referee ASTRA-AC-REFEREE: "ACCEPT NR and TC as the stated null-return/necessary-condition theorems."
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-SIX-COLOUR-A2.txt` — paper proof — `fb2ad23a7600cde8…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-AC-REFEREE.txt` — referee (ACCEPT) — `56c5d614f875471b…`
+- **Checked by the results desk:** Referee verdict quote confirmed verbatim in the referee file by the results desk (grep). Proof not re-derived by the desk.
+- **Provenance:** Astra A2 lane, 2026-11-14.
+- **Caveats:** Referee notes `Accumulation.palette_eq_measurable` is typed Fin 5 and needs generalisation; use `angle_preimage_positive`.
+
+### RESIDUAL-GRAPH
+
+**Residual-colour graph on Z_K ∩ unit circle** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** Given a positive J-state at x, every finite unit-distance graph on Z_K ∩ unitCircle(x) is colourable by the residual labels outside J∪K. One residual label excludes unit edges; two give only bipartiteness, which already holds on one unit circle.
+- **Evidence:** ASTRA-JOINT-STATE-A2 §6; referee ASTRA-A2-REFEREE §6 (ACCEPT).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-JOINT-STATE-A2.txt` — paper proof — `53bee357f537e799…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-A2-REFEREE.txt` — referee — `5adfbe3c70ff3ba2…`
+- **Checked by the results desk:** Referee verdict quote confirmed verbatim in the referee file by the results desk (grep). Proof not re-derived by the desk.
+- **Provenance:** Astra A2 joint lane, 2026-11-14 ~08:57Z.
+
+### SHARPNESS-20
+
+**Generic sharpness above 60°: CC60 cannot be widened for arbitrary finite palettes** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** An explicit 20-colour construction shows the closed-cone width 60° in CC60 cannot be increased for arbitrary finite palettes.
+- **Hypotheses:** Arbitrary finite palette size (20 colours); not a six-colour statement.
+- **Evidence:** Construction and novelty audit, plus an independent referee report accepting it.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/scale-up/ULTRA-CONE-NOVELTY-AUDIT.txt` — construction + novelty audit — `40635be5b2a591ef…`
+  - `HadwigerNelson/Main/ResearchSnapshot/scale-up/ULTRA-SHARPNESS-REFEREE.txt` — independent referee — `1a91529aec65a9b7…`
+- **Checked by the results desk:** Hashes recomputed; referee quote "ACCEPT at the paper-proof level" confirmed. The author file exists only in the repo snapshot (scale-up/), not in the research workspace. Did not re-read the proof.
+- **Provenance:** Ultra scale-up lane, 2026-11-14 (before 18:39Z snapshot).
+- **Depends on:** [CC60](#cc60)
+- **Caveats:** Six-colour sharpness and novelty priority not established.
+
+### STRAIGHT-NEEDLE
+
+**Two straight needles at ±60° always have a common straddling unit pair** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** K+ = [0, L+·e(π/3)] and K− = [0, L−·e(−π/3)] always admit a common straddling unit pair; explicit witnesses d = t²/(2(t+√3)), z± = (−(√3/2−d), ±1/2).
+- **Evidence:** ASTRA-MC120-ENDPOINT-A5 §5; referee ASTRA-MC120-ENDPOINT-REFEREE §7 ("The exact straight-needle contrast is also CORRECT").
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-MC120-ENDPOINT-A5.txt` — paper — `78503d6ee09748ee…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-MC120-ENDPOINT-REFEREE.txt` — referee — `318773a2908246dc…`
+- **Checked by the results desk:** Referee verdict quote confirmed verbatim in the referee file by the results desk (grep). Proof not re-derived by the desk.
+- **Provenance:** Astra A5 lane, 2026-11-14.
+- **Used for:** Contrast with MC120-ENDPOINT (curved arcs needed).
+
+### A5-SLIVER
+
+**A5 sliver interval certificate (R ≥ 0 on the three uncovered pieces)** — `TESTED_FINITE`
+
+- **Statement:** On the three pieces P1, P2, P3 left uncovered by the F5 exclusion boxes in arc1 × arc3, the quantity R = (1 − |D|²/4)·D_x² − |D|²·Δ² is ≥ 0, so the lower apex A1 has m_floor(A1) ≤ 0 and lies outside the open region H; equality only at the exact corner, where the apex is ci ∈ ∂H.
+- **Hypotheses:** Assumes the complement decomposition is exactly P1 ∪ P2 ∪ P3 and that the 1,469 + 889 F5 boxes are certified elsewhere (C2); non-corner arc ends taken from the domain file without re-verification.
+- **Evidence:** certify_sliver.py: exact Fraction intervals rounded outward to 2⁻¹²⁰, interval forward-mode derivatives, rational trig parametrisation; 0.4 s, "ALL PIECES CERTIFIED: True".
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/CERTIFICATE.md` — certificate write-up — `b6ac39dd14d55157…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/certify_sliver.py` — certifier — `63e84a36bfa95ea9…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/certificate_output.txt` — output — `68507c241873c543…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261114T224105-download-4-A5-SLIVER-DEFS.md` — domain/target definitions (swarm smwgy3s8k m2) — `714b2eb2a7eeb9a8…`
+- **Checked by the results desk:** Hashes recomputed; read CERTIFICATE.md. Not re-run by the results desk (script outside the repo).
+- **Provenance:** Verifier lane m2 definitions; certificate by the research desk 2026-11-14 23:45:56Z.
+- **Correction history:** the domain file's claim |A_far − ci| > 1.5 is false on part of P1 (|A2−ci|² ∈ [2.2004, 2.2339]); the weaker > 1 is certified everywhere (see A5-FAR-APEX)
+- **Used for:** Closes the sliver gap in [A5-ODD-WALK](#a5-odd-walk).
+
+### DIR-FILTER
+
+**Discrete direction filtering: 7,776 → 1,420 → 174 → 6** — `TESTED_FINITE`
+
+- **Statement:** On the declared grid q ∈ {0}×{0..5}⁵ (7,776 vectors), 1,420 pass the aligned (AC) constraints, 174 also admit a cyclic palette witness, and the CC60 filter leaves six.
+- **Hypotheses:** Finite relaxation only; conditional on AC and the source premises; the 174→6 step is conditional on CC60. Not a classification of arbitrary directions or of actual WeakColoring 6.
+- **Evidence:** ac_filter_enum.py + independent complete path reconstruction audit_ac_filter.py; conditional-cone-filter.json.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/checkin-artifacts/20261114T172056Z/audit_ac_filter.py` — independent audit script — `2f33743108995cad…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/checkin-artifacts/20261114T172056Z/ac_filter_enum.py` — enumeration script — `83480a73b9f9936d…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/checkin-artifacts/20261114T172056Z/ac-independent-audit.json` — audit output (174 witnesses) — `5e1e25c4f2f013e3…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/checkin-artifacts/20261114T172056Z/conditional-cone-filter.json` — CC60 filter output (6 survivors) — `ddf2d42c1f449ab8…`
+- **Checked by the results desk:** 2026-11-15 ~00:05Z: copied the two archived scripts to a scratch folder and ran `python -I audit_ac_filter.py` (1 s): counts {total 7776, pass_ac 1420, true_survivors 174, old_survivors 95}; the regenerated JSON is identical to the archived ac-independent-audit.json (174 survivors, 79 previously missed). The 174→6 CC60 filter output was not re-run.
+- **Provenance:** Check-in 2026-11-14T17:20:56Z (parent audit + worker DP/DFS confirmation).
+- **Correction history:** 95 → 174: the earlier count 95 came from a greedy witness-reconstruction bug; complete path reconstruction gives 174 (79 missed)
+- **Depends on:** [CC60](#cc60)
+
+### FIXED-PHASE-CENSUS
+
+**Fixed-phase census of the six-direction relaxation: 177 SAT / 7,599 UNSAT** — `TESTED_FINITE`
+
+- **Statement:** Modulo phase rotation there are 7,776 sign classes of the six-direction palette CSP R(t,α); 177 are satisfiable and 7,599 unsatisfiable, and every UNSAT class is refuted by forced-label propagation (862 UNSAT classes have no empty hitting side).
+- **Hypotheses:** Fixed phase only. Lemma 0 (witness reduction) makes UNSAT a statement about the palette CSP, not a search restriction. Not a classification of whole direction configurations (every positive phase interval must be SAT).
+- **Evidence:** Parent unrestricted 64-palette check + reduced checks + independently authored Python DFS/half-cycle join agree on every class (census-crosscheck.json). The research desk also recomputed SAT=177/UNSAT=7599 with its own transfer-matrix implementation; SAT sets identical class by class.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/openmath-supervisor/checkins/20261114T200919Z/fixed-phase-census.json` — census — `82a316c947daf743…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/openmath-supervisor/checkins/20261114T200919Z/census-crosscheck.json` — cross-check — `d02d98585b61bd8f…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/openmath-supervisor/checkins/20261114T200919Z/census-verifier.js` — parent verifier — `c4fbde4ef0e3f086…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/openmath-supervisor/checkins/20261114T200919Z/phase-theorem.txt` — phase theorem (exact geometry, Lemma 0, zero lemma) — `75aeedd978c516c6…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/census/independent_census.py` — desk independent reimplementation — `175b6861afbe4467…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/census/independent_census.out` — desk output — `1ac79d65205b9e49…`
+- **Checked by the results desk:** 2026-11-15 ~00:40Z: ran the parent supervisor census-verifier.js (archived in import-20261115, pure computation, no I/O) from a scratch copy: {sat 177, unsat 7599, nonemptyUnsat 862, unitIncomplete 0, mismatches 0} — so every UNSAT class is refuted by propagation and the 2-palette and full-palette deciders agree on all 7,776 classes. Also read the research desk outputs (SAT=177, UNSAT=7599).
+- **Provenance:** Check-in 2026-11-14T20:09:19Z (parent supervisor); research-desk recomputation 23:30:52Z.
+- **Used for:** Base table for the staircase census and Thm B'.
+
+### HEULE-UNION
+
+**Translated Heule union: exact 1,048-vertex unit-distance graph with a proper 5-colouring** — `TESTED_FINITE`
+
+- **Statement:** The union of the 553-vertex Heule graph and a translate is an exact unit-distance graph with 1,048 vertices, 5,487 edges, 58 overlapping vertices and 184 new connecting edges; all 548,628 unordered pairs were tested in exact multiquadratic arithmetic, and an explicit proper 5-colouring is verified.
+- **Hypotheses:** Coordinates in ℚ(√3,√5,√11); the lower bound 5 comes from the embedded Heule553 subgraph whose 4-UNSAT proof is not re-run here.
+- **Evidence:** Independent strict-expression parser with exact arithmetic (Verify-HeuleUnion.mjs); safe-integer bound proved with BigInt.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-CERTIFICATE.json` — certificate — `cd3f9ff3a47f93d5…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/Verify-HeuleUnion.mjs` — verifier — `ca9510a2dfd81fbb…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-VALIDATION.txt` — validation — `e611fb63e2086a00…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `f96ec33ea8f235eb…`
+- **Checked by the results desk:** 2026-11-14 23:50Z: re-ran `node HadwigerNelson/Main/verify-snapshot.mjs` (exit 0, 11 s), which re-runs Verify-HeuleUnion.mjs: passed, 548,628 pairs, 1,048 vertices, 5,487 edges, proper 5-colouring.
+- **Provenance:** Graph lanes (graph-union-audit), 2026-11-14; import validation 18:58Z.
+- **Correction history:** 17 colourings reduced candidate pairs 110,015 → 1,145, then 34 colourings separated all 543,141 nonadjacent pairs; unreconciled wording: 177 survivor pairs inside the original H locally vs 112 in remote wording (HEULE-UNION-VALIDATION.txt records remainingPairsInsideOriginalH 177); moot after the full separation certificate
+- **Used for:** Finite evidence base; no new plane bound.
+
+### HONEYCOMB-73
+
+**73-cell honeycomb patches are not 6-colourable (a = 1/5 and a = 1/4)** — `TESTED_FINITE`
+
+- **Statement:** The 73-cell honeycomb conflict graph at a = 1/5 (888 edges, 6,496 clauses) and at a = 1/4 (723 edges, 5,506 clauses) has no proper 6-colouring; exact persistence intervals (1/√28, 1/√19) and (1/5, 1/√12).
+- **Hypotheses:** Restricted family: colourings constant on honeycomb cell interiors. Not a bound for unrestricted plane colourings.
+- **Evidence:** drat-trim "s VERIFIED" (remote, independent; local regeneration of edges/clauses with SHA match).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/CONSOLIDATED-FINDINGS.txt` — record (snapshot copy) — `eac30d0ed71409ec…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/patch25-audit/drat_run.log` — a=1/4 drat-trim log — `a02875f45b7a7ca3…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/patch25-audit/A-QUARTER-AUDIT.md` — a=1/4 audit — `adf745d81fc93870…`
+- **Checked by the results desk:** Not re-run by the results desk.
+- **Provenance:** Overnight 13–14 Nov graph lane (CONSOLIDATED-FINDINGS).
+- **Correction history:** a handwritten checker had a counting bug (superseded by drat-trim)
+
+### RELAX-1-648
+
+**All-phase relaxation: the field set has measure exactly 1/648 (1,440 of 933,120 resonance cells; 16 of 3,840 sign cells)** — `TESTED_FINITE`
+
+- **Statement:** For alpha in (R/360Z)^6 with alpha_0 = 0, call a resonance cell a component of the complement of {alpha_i - alpha_j in 60Z}: integer parts floor(alpha_i/60) and the order of the parts alpha_i mod 60, so 6^5 x 5! = 933,120 congruent cells. Exactly 1,440 cells admit a relaxation field (R(t,alpha) SAT for every t); 919,512 fail because some arc has an empty side (Rp or Rn empty) and 12,168 fail by the cyclic disjointness system alone. Hence the field set has Lebesgue measure exactly 1440/933120 = 1/648. With sign cells = components of the complement of {alpha_i - alpha_j in 180Z} (2^5 x 5! = 3,840), the field set meets exactly 16 sign cells; these lie in 16 distinct orders of the parts alpha_i mod 180 ("base chambers", 5! = 120), while all 120 orders of the parts mod 60 occur.
+- **Hypotheses:** Relaxation level only (inner/outer hits and 60-degree disjointness; palettes of size <= 2 WLOG). Says nothing directly about colourings.
+- **Evidence:** Two independent implementations agree: the discovery m2 scripts (referee6.py, run and reproduced by the all-phase referee, unaudited) and an exact implementation written by the results desk from the model definitions (allphase_desk.py, integer angles in units of 1/14 degree, one interior representative per cell, all six arcs tested).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/results-desk/allphase/allphase_desk.py` — results-desk independent implementation — `07c89fab37168a9e…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/results-desk/allphase/allphase_desk.out` — command and output (92.6 s) — `81f5c38f9adb36a5…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261114T205744-download-5-ALL-PHASE-REFEREE.md` — all-phase referee note, section 8 (m2 figures) — `087e6efc55b766cd…`
+- **Checked by the results desk:** 2026-11-15 ~01:20Z: wrote and ran allphase_desk.py (python -I, 92.6 s): cells 933,120; field 1,440; empty side 919,512; cyclic-disjointness only 12,168; measure 1/648; sign cells meeting the field set 16 of 3,840; mod-180 orders 16 of 120; mod-60 orders 120 of 120. Cells are congruent simplices (fixed integer parts and a fixed order of five fractional parts), so the measure is the cell fraction. L-R1 task R1-1 is an independent third implementation (pending).
+- **Provenance:** Discovery m2 (smwgui6l9 d1, unsubmitted) via the all-phase referee 20:57Z; adversarial final wording cycle 001250; results desk recount 01:20Z.
+- **Correction history:** RECONCILED (was UNRECONCILED): "16 of the 3840 sign cells" (referee addendum) and "16 of 120 base chambers" (adversarial lane, cycle 001250) are both true. The 16 met sign cells map to 16 distinct mod-180 orders. Read "base chamber" as an order of the parts mod 180; with orders mod 60 the count would be 120 of 120; the referee note called sign cells "finer" than resonance cells; they are coarser (each sign cell contains 243 resonance cells on average); status history: UNAUDITED_NUMBER until 01:20Z (coordinator cycle 213711 had called it "confirmed by three lanes" without an audit artifact); the 8640/(7776*720) "fully split rate" equals 1/648 exactly, consistent with the staircase k=6 count
+- **Used for:** Quantifies how rare relaxation fields are; explains the 0/400 and 1/900 random-sample observations.
+- **Depends on:** [FIXED-PHASE-CENSUS](#fixed-phase-census)
+
+### SIX-ORBIT
+
+**Six six-direction configurations excluded by the inner/outer-hit relaxation** — `TESTED_FINITE`
+
+- **Statement:** The configurations (0,30,90,120,180,210), (0,30,90,120,270,300), (0,30,180,210,270,300), (0,60,90,150,180,330), (0,60,90,240,270,330), (0,150,180,240,270,330) (degrees) survive CC60 and MC120 but are UNSAT in the relaxation R(t,α) (inner/outer hits + 60° disjointness, any palette size) on one positive phase cell; each has an open simultaneous ℓ∞ 15° exclusion neighbourhood (fixed-phase box radii 15/45). Dropping only the wrap edge leaves 2 of the 6 UNSAT.
+- **Hypotheses:** Excluded for actual interfaces only under the same source producers as A6 (R must hold a.e. in t). Relaxation-level statement.
+- **Evidence:** Parent reproduced all 6 exact checks and 378 cone checks; readable forced-label proofs (CLAUDE-SIX-ORBIT-PROOFS) checked against the exact tables; graph m2 confirms with three procedures incl. unreduced 64-palette DP.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/CLAUDE-SIX-ORBIT-PROOFS.txt` — forced-label proofs — `34ed301a1133977b…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/openmath-supervisor/checkins/20261114T191820Z/inner-outer-orbit-certificates.json` — certificates — `6f546fb260b779a5…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/openmath-supervisor/checkins/20261114T191820Z/verify-inner-outer-orbits.js` — parent verifier — `ae6c4d2beebe8c96…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/openmath-supervisor/checkins/20261114T194118Z/graph-m2-REPORT.txt` — graph m2 report — `826555e70beeed2d…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/openmath-supervisor/checkins/20261114T194118Z/corner-all-phase-validation.json` — 15° corner validation — `15a31adcb7c5ee26…`
+- **Checked by the results desk:** 2026-11-15 ~00:40Z: ran the parent supervisor verify-inner-outer-orbits.js (archived in import-20261115, pure computation) from a scratch copy; its output is identical to the `data` field of the archived inner-outer-orbit-certificates.json for all 11 vectors. Each of the six configurations has exactly one UNSAT cell — (0,30), (30,60), (0,30), (30,60), (0,30), (30,60) in table order — and the five controls have none. The 15° neighbourhood and chain results were not re-run.
+- **Provenance:** Claude09/11 proofs; parent check-ins 19:18:20Z and 19:41:18Z; graph m2 (smwgui92e).
+- **Correction history:** sixth vector's UNSAT cell corrected (0,30) → (30,60) by m1; an earlier m2 claim "all six survive the wrap-dropped chain test" came from a buggy solver and is void (2 of 6 stay UNSAT); 15° called "sharp" (simultaneous ℓ∞, parent) vs "not sharp" (single-coordinate moves <30°, m1): different metrics; exact global radius open
+
+### STAIRCASE-CENSUS
+
+**Staircase census: 76,283 surviving staircases of 36,415,008** — `TESTED_FINITE`
+
+- **Statement:** Over 7,776 sign classes × 4,683 ordered set partitions of {0..5} (= 36,415,008 staircases), exactly 76,283 survive; by number of blocks k=1..6: [177, 2576, 12762, 26928, 25200, 8640].
+- **Hypotheses:** A necessary condition only (survival is necessary, not sufficient, for a field); converse open.
+- **Evidence:** census.py --full (2.06 s) and an independent desk reimplementation (explicit enumeration of 4,683 ordered partitions, 13.3 s) agree exactly.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/census/census.py` — worker script (inbox 20261114T224105-download-1; LF sha256 da28d617…) — `fa6436d577d4a1c1…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/census/census_full.out` — output — `a2c2df5acae23a79…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/census/independent_census.py` — desk independent script — `175b6861afbe4467…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/census/independent_census.out` — desk output — `1ac79d65205b9e49…`
+- **Checked by the results desk:** Hashes recomputed; read both outputs (identical by_k and totals); checked 7776·4683 = 36,415,008 and that by_k sums to 76,283. 2026-11-15 ~00:45Z: re-ran the research desk independent_census.py (archived in import-20261115) from a scratch copy: SAT 177 / UNSAT 7599, 4,683 ordered partitions, by_k [177, 2576, 12762, 26928, 25200, 8640], total 76,283 of 36,415,008 (29.5 s). The worker census.py (inbox download) was not run by the results desk. Graph-swarm independent chain enumeration still pending.
+- **Provenance:** Graphs lane smwgui92e m2 census.py; coordinator cycles 204019–231544; run locally by the research desk 23:30:52Z.
+- **Correction history:** staircase.md total typo 36,415,608 → 36,415,008 (cycle 211858); Staircase.lean has a Fintype type error and `sorry` — not Lean evidence
+- **Used for:** Staircase classification ([STAIRCASE-CONVERSE](#staircase-converse)).
+- **Depends on:** [FIXED-PHASE-CENSUS](#fixed-phase-census)
+
+### A5-ODD-WALK
+
+**Explicit A5 odd walk needs at least 15 edges** — `CANDIDATE`
+
+- **Statement:** The explicit odd unit walk in the A5 four-list obstruction (A5-FOUR-LIST) needs at least 15 edges; walk coordinates and vertex count are still not enumerated.
+- **Hypotheses:** Relies on C1 exact margins, C2 interval boxes (1,469 + 889, verifier m2 report) and the A5 sliver certificate; C3 is a grid search only.
+- **Checked by the results desk:** Not checked by the results desk beyond A5-SLIVER. C2 boxes not re-run locally.
+- **Provenance:** Verifier lane (cycle 205744 "modulo one sliver not yet interval-certified").
+- **Depends on:** [A5-SLIVER](#a5-sliver), [A5-FOUR-LIST](#a5-four-list)
+
+### A6-COROLLARIES
+
+**A6 corollaries: ≤3 distinct directions impossible; uniform ε₀-neighbourhood of the paired configuration** — `CANDIDATE`
+
+- **Statement:** Under the common actual hypotheses the six edge directions cannot take ≤ 3 distinct values (CC60 ⇒ matching blocks; strict MC120 ⇒ 120° spacing; A6+A5 excludes it). There is ε₀ = min(η/4, π/24) > 0 such that every independent perturbation within ε₀ of the paired configuration is impossible.
+- **Hypotheses:** Explicitly conditional on strict MC120 (MC120-STRICT), which has no referee file.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-PAIRED-COROLLARIES-A6.txt` — paper ("concise independent audit", author-side) — `94a6b50a2c053055…`
+- **Provenance:** Astra A6 corollaries; check-ins 19:18:20Z, 19:41:18Z.
+- **Correction history:** adversarial coordinator withdrew its objection to the neighbourhood result (19:41:18Z)
+- **Depends on:** [A6-PAIRED-PRODUCER](#a6-paired-producer), [MC120-STRICT](#mc120-strict), [CC60](#cc60)
+
+### A6-PAIRED-PRODUCER
+
+**A6 paired producer: paired interface directions force the canonical palette (hence False with A5)** — `CANDIDATE`
+
+- **Statement:** For measurable WeakColoring 6, one centre x and six actual `ApproachingContinuum x K_i v_i` with v0=v1=e(0), v2=v3=e(2π/3), v4=v5=e(4π/3) and exclusions E_i={i,i+1}: the OUT/IN hits and `palette_sixty_disjoint` force f=(1,5,3,1,5,3), hit sets ({3,4,5},{1,2,3},{0,1,5})×2 and second labels g=(4,2,0,4,2,0), so the canonical paired palette P ⊆ palette a.e.; with A5-FOUR-LIST this gives False. Extends to common rotations, one reflection, relabelings.
+- **Hypotheses:** Actual common-interface hypotheses at one centre with the paired direction pattern.
+- **Evidence:** Paper (ASTRA-PAIRED-PRODUCER-A6 audits the parent sketch: "The parent six-shift sketch is correct"); parent independently checked the six-row label table. No independent referee file. Formal status: the finite core is LEAN_VERIFIED (A6-FORCING) and the a.e. bridge compiles conditionally (A6-BRIDGE-R2); glue open (A6-GLUE).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-PAIRED-PRODUCER-A6.txt` — paper — `2a7e4aed6b6db4eb…`
+- **Checked by the results desk:** Not reviewed by the desk. Status stays CANDIDATE until an independent referee artifact or the glued Lean file exists.
+- **Provenance:** Astra A6 lane + parent; check-in 18:35:22Z.
+- **Correction history:** formal coordinator claimed "A6 table false" after misreading hit sets as containment; retracted (RESEARCH-STATUS); A6-CONTAINMENT formalises why containment is vacuous
+- **Depends on:** [A5-FOUR-LIST](#a5-four-list), [A6-FORCING](#a6-forcing), [A6-BRIDGE-R2](#a6-bridge-r2)
+
+### A7-PARTIAL-INDEPENDENT
+
+**A7: every two-list locus of the q4/q5 partial field is unit-distance independent** — `CANDIDATE`
+
+- **Statement:** For the period-180° partial field F with bins {1,4},{2},{2,5},{3},{0,3},{1}, every two-list locus R_j is unit-distance independent (pieces of diameter < 1, cross gaps > 1), so binary-rigidity ignition has no starting point.
+- **Evidence:** Paper; "parent reviewed" (19:41:18Z); no referee file for this part.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-PARTIAL-PALETTE-A7.txt` — paper — `cfa34f367d772dd7…`
+- **Provenance:** Astra A7 lane.
+
+### AMPLIFIER
+
+**Amplifier: a forced-equal pair yields a finite (k+1)-chromatic unit-distance set** — `CANDIDATE`
+
+- **Statement:** A finite k-colourable induced unit-distance set with a distinct pair forced equal in every k-colouring yields a finite non-k-colourable point set (anchors only equal; D ≥ 1/2 allowed; coordinates in K(√(4n²‖v‖²−1))).
+- **Hypotheses:** Conditional route to a global bound: needs a forcing pair, and none exists in the studied Heule graphs (HEULE-NO-FORCING); a k=5 forcing pair would only reproduce χ ≥ 6.
+- **Evidence:** "ACCEPTED MATHEMATICAL IMPLICATION" by the supervisor (CONSOLIDATED-FINDINGS); no separate referee file; controls (13,13,2), (9,9,2), (7,11,3) checked exhaustively.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/CONSOLIDATED-FINDINGS.txt` — record — `eac30d0ed71409ec…`
+- **Provenance:** Overnight 13–14 Nov (02:06, 02:30).
+- **Correction history:** draft claim "all chain vertices monochromatic" false; 2nE+1 bound and H4 compatibility corrected
+
+### CENSUS-COMPLETE-60Z
+
+**Fixed-phase census is complete for the relaxation iff all pairwise α differences lie in 60°ℤ** — `CANDIDATE`
+
+- **Statement:** The fixed-phase census is complete for the relaxation if and only if all pairwise differences of α lie in 60°ℤ.
+- **Checked by the results desk:** No artifact located yet.
+- **Provenance:** Coordinator cycle 205744.
+- **Depends on:** [FIXED-PHASE-CENSUS](#fixed-phase-census)
+
+### CLAUDE-LEMMA-A
+
+**Claude Lemma A (triangle coincidence impossible) and Corollary B** — `CANDIDATE`
+
+- **Statement:** Measurable weak c, any x, |univ∖(J∪K)| ≤ 2 and μ(M_{J,K}) > 0 imply False, where M_{J,K} = {t : J ⊆ P(t+2jπ/3), K ⊆ P(t+2jπ/3+π+α)}. Corollary B: under H2, `two_state_impossible` applies iff the palette is essentially two-valued.
+- **Evidence:** Paper (Claude Max); same density-triangle mechanism as refereed NR/TC; no referee file for Lemma A itself.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/CLAUDE-FIRST-RESEARCH-2026-11-14.txt` — paper — `8c90ddb223c2b14e…`
+- **Provenance:** Claude first research run, 2026-11-14.
+
+### CONTINUOUS-SIX
+
+**Continuous CC60 classification of six-cycle directions (Theorems G, O, Corollary P)** — `CANDIDATE`
+
+- **Statement:** "Every closed 60° arc covers ≤ 3 labels" ⇔ circular distance > 60° for every nonadjacent edge-index pair; Theorem O: a cyclic order of six distinct directions is feasible iff it has a C6-adjacent consecutive pair (57 of 60; forbidden (0,2,4,1,5,3), (0,2,5,3,1,4), (0,3,1,5,2,4)); Corollary P: with three distinct directions the blocks are a perfect matching 120° apart (needs strict MC120); four-direction partial results.
+- **Evidence:** Paper; "independent remote review underway" (17:45Z); no verdict file found.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-CONTINUOUS-SIX-A4.txt` — paper — `70a91bc5d72681f2…`
+- **Provenance:** Astra A4 lane, 2026-11-14.
+- **Depends on:** [CC60](#cc60), [MC120-STRICT](#mc120-strict)
+
+### HONEYCOMB-RESTRICTED
+
+**No cell-constant proper 6-colouring of the honeycomb for a ∈ (1/√28, 1/2]** — `CANDIDATE`
+
+- **Statement:** For a ∈ (1/√28, 1/2] there is no proper 6-colouring constant on every honeycomb cell interior (HONEYCOMB-73 on (1/√28, 1/√12), K7 for a ∈ (1/√13, 1/2]; above 1/2 within-cell unit pairs prohibit any cell-constant colouring).
+- **Hypotheses:** Restricted family; does not bound unrestricted plane colourings.
+- **Evidence:** "ACCEPTED restricted-family theorem" by the supervisor (CONSOLIDATED-FINDINGS 01:27); no separate referee file.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/CONSOLIDATED-FINDINGS.txt` — record — `eac30d0ed71409ec…`
+- **Provenance:** Overnight 13–14 Nov.
+- **Depends on:** [HONEYCOMB-73](#honeycomb-73)
+
+### J-DEPTH
+
+**Relaxation rigidity: J-depth is at most 3, and 3 is attained** — `CANDIDATE`
+
+- **Statement:** In the discovery lane's rigidity reduction, the J-depth of states is ≤ 3 and the bound is attained; the I(σ) table holds on J only (648 counterexamples on W); the statement fails at (m,w) = (7,3).
+- **Evidence:** Swarm smwh11ydr: proved twice independently, 0.75 s certificate, 12/12 live mutation controls (coordinator report). No local artifact yet.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261115T002122-download-5-STATUS.json` — discovery swarm STATUS (route B proof outline, finite lemmas FL1-FL4) — `ccc9384768d9534a…`
+- **Checked by the results desk:** Read the STATUS.json: route B claims rank r(sigma) <= 2 on J and strictly decreasing on J->J steps, so a J-run has at most 3 states; depth 3 attained at (2,2,4,0,5,3); four finite lemmas machine-checked (FL1-prime 1836 cases, FL2 18 sinks, FL3, FL4); all 51,840 full chains inside W contain a circulant state. Not reproduced by the desk; route A independence check was still running. Queued for L-R1 (R1-6).
+- **Provenance:** Discovery swarm smwh11ydr (5/6 members accepted); cycles 001250, 002122.
+- **Depends on:** [RELAX-CIRCULANT](#relax-circulant)
+
+### K6-M3-DOOR
+
+**k=6, m=3 two-label door closed (Moser spindle is 3-degenerate, hence 4-choosable)** — `CANDIDATE`
+
+- **Statement:** In the k=6 producer audit, the m=3 two-label case closes because the Moser spindle is 3-degenerate and therefore 4-choosable.
+- **Checked by the results desk:** Graph fact is standard; the reduction to it is not checked by the results desk.
+- **Provenance:** Independent-route lane; coordinator cycle 205744.
+
+### LIST-FIELD-A4
+
+**Two-list locus of the canonical palette has an explicit Borel proper colouring** — `CANDIDATE`
+
+- **Statement:** For the canonical P, the set T of points of the radius-2 domain with |L(y)| = 2 (T = R0 ⊔ R1 ⊔ R2) has an explicit Borel proper L-colouring (bit rule by |z| ≤ 1 on ±V, Re z ≥ 0 on ±H, rotated); 2⁹ flip variants. Hence every finite obstruction must use a 4-list vertex.
+- **Evidence:** Paper; independent geometric referee was "running" (17:45Z), no verdict file found. The H half-lobe sub-claim (§4c) is independently re-verified in CLAUDE-A7-CONTACT-AUDIT §3.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-LIST-FIELD-A4.txt` — paper — `0f22a9a734746eb1…`
+- **Provenance:** Astra A4 lane.
+- **Used for:** Explains why A5-FOUR-LIST needs the 4-list vertex z0.
+
+### MC120-STRICT
+
+**Strict MC120: one residual label forbids a cone of aperture < 120°** — `CANDIDATE`
+
+- **Statement:** For actual same-centre continua with support exclusions leaving ≤ 1 residual label, the directions cannot lie in a cone of aperture strictly < 120°. (Table: ≥4 excluded ⇒ ≤60° forbidden (CC60); ≥5 ⇒ <120°; 6 ⇒ <180°.)
+- **Evidence:** ASTRA-CONTINUOUS-SIX-A4 §4–5; compactness step re-verified in MC120-ENDPOINT-CORRECTION; RESEARCH-STATUS calls it "accepted paper", but no referee verdict file exists; the Lean wrapper (StrictMC120) is uncompiled.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-CONTINUOUS-SIX-A4.txt` — paper — `70a91bc5d72681f2…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/MC120-ENDPOINT-CORRECTION.txt` — parent correction note — `ce20448c29cb9091…`
+- **Provenance:** Astra A4 lane; check-ins 18:15:21Z, 19:18:20Z.
+- **Caveats:** Closed 120° is false (MC120-ENDPOINT).
+
+### Q4Q5-PINNING
+
+**q4/q5: palette = F on the even 30° bins** — `CANDIDATE`
+
+- **Statement:** For the q4/q5 configurations the palette equals F on the even 30° bins: the complement of F(t) is F(t+60) ∪ F(t−60), and the even bins are closed under ±60° mod 180°.
+- **Checked by the results desk:** Not checked by the desk.
+- **Provenance:** Geometry lane (m2 even-bin pinning); cycles 001250, 001551.
+- **Depends on:** [Q4Q5-CONTROLS](#q4q5-controls)
+
+### R0-CHI4
+
+**The two-list region R0 has chromatic number ≥ 4; non-binary sector states are contradictory** — `CANDIDATE`
+
+- **Statement:** χ(R0) ≥ 4 is certified three ways, and the non-binary sector states are contradictory; whether R0 contains a 5-chromatic unit-distance graph is open.
+- **Checked by the results desk:** No artifact located yet.
+- **Provenance:** Independent lane; cycle 001250 (follow-up swarm smwh32u04 running).
+- **Depends on:** [K6-PRODUCER](#k6-producer)
+
+### RELAX-CIRCULANT
+
+**Relaxation classification: a field exists iff the configuration is a circulant orbit** — `CANDIDATE`
+
+- **Statement:** A field exists iff circulant orbit; the ⟸ direction was referee-tested, the ⟹ direction is verified on 720 orders only (not hand-proved); rigidity reduced to one machine-verified finite lemma (J-depth ≤ 3 states).
+- **Checked by the results desk:** No artifact checked.
+- **Provenance:** Discovery lane (smwgylyok → smwh11ydr); cycles 213711, 215215, 231544.
+
+### T6-B2
+
+**T6 implies B2 (palettes of size 1 or 2) for weak 6-colourings** — `CANDIDATE`
+
+- **Statement:** For measurable weak c : ℂ → Fin 6, if for every x and 3-set S, a.e. palette at x+e(t) misses S (T6), then 1 ≤ |P_x(t)| ≤ 2 for a.e. t (B2). T6 itself is a conjecture.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-SIX-COLOUR-LEAD.txt` — paper §2 — `19df768a00da39dd…`
+- **Checked by the results desk:** The reboot referee accepts the packet as local/finite obstructions but does not re-derive T6 ⇒ B2.
+- **Provenance:** Astra six-colour lead.
+
+### THM-BPRIME
+
+**Thm B': census₀ is sufficient but not necessary off R_all** — `CANDIDATE`
+
+- **Statement:** Census₀ plus one test per component is sufficient for the relaxation, but not necessary off R_all; witness α# is a pure (C2) obstruction with every side nonempty.
+- **Checked by the results desk:** No referee artifact located yet.
+- **Provenance:** Adversarial m2 (swarm smwgw43qj); "accepted" by the coordinator in cycle 212205.
+- **Depends on:** [FIXED-PHASE-CENSUS](#fixed-phase-census)
+
+### TRANSLATION-CRITERION
+
+**Finite translation criterion for k-colourability of the plane** — `CANDIDATE`
+
+- **Statement:** If every finite configuration translates into a properly k-coloured domain, the plane is k-colourable (finite-graph compactness); plane-null complements and half-planes satisfy the hypothesis.
+- **Evidence:** "PROOF ARGUMENT ACCEPTED" by the supervisor; generic Lean source pending; the converse was rejected.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/CONSOLIDATED-FINDINGS.txt` — record — `eac30d0ed71409ec…`
+- **Provenance:** Overnight 13–14 Nov (01:10, 01:27).
+
+### WILD-LAW
+
+**Wild-law lemma for K-invariant laws on the dual of F(i)** — `CANDIDATE`
+
+- **Statement:** For F the real algebraic numbers, E = F(i) discrete, D its dual and μ a K-invariant Borel probability on D: if |a_z| = 1 for some nonzero z then μ is the point mass at the trivial character; hence a wild law has |a_z| < 1 for all z ≠ 0.
+- **Evidence:** Reviewed by the supervisor only ("not Lean-checked"); corrects the DeepSeek packet (H_z not K-stable).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-WILD-LAW-REVIEW.txt` — review — `1cd50f017d08e779…`
+- **Provenance:** Overnight 13–14 Nov.
+
+### A6-GLUE
+
+**Glued A6 producer (WITH_G3): discharge SignTable, ForcingLemma and ArcCover in one compiled file** — `OPEN`
+
+- **Statement:** Compile A6-Bridge-r2 with G1, G3 and the A6 forcing lemma spliced in, so that `ae_canonical_subpalette_global` holds for paired directions without the three hypotheses.
+- **Provenance:** Formal lane L1; cycles 232057–002122. A6-Bridge-r2-G3.lean (864 lines, LF sha256 164f26bb…) arrived 00:12Z and PASSED a desk compile 00:32Z (see A6-BRIDGE-R2-G3). It discharges ArcCover only (`ae_canonical_subpalette_unconditional` still takes `hsign` and `hforce`). Formal lane: ForcingLemma is proved from the table and the palette is pinned to exactly {f j, f j+3}; the endgame reduces A6 exactly to a named Prop `A5Obstruction` (A5 has no Lean declaration). Still open: hsupp, the pairing hypothesis, v4 assembly.
+- **Depends on:** [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3), [A6-BRIDGE-R2](#a6-bridge-r2), [G1-R2](#g1-r2), [G3-R2](#g3-r2), [A6-FORCING](#a6-forcing)
+
+### K6-PRODUCER
+
+**k=6 producer: two named missing declarations** — `OPEN`
+
+- **Statement:** The m=3 case at k=6 reduces to either a binary collapse producer or a non-4-colourable finite certificate; Criterion C reduces the obligation to a unit-distance graph inside R0 with pair-complement lists (no candidate yet).
+- **Provenance:** Independent-route lane; cycles 215215, 224105.
+
+### L6-F6
+
+**Conditional route to χ ≥ 7: L6 (locally finite cyclic transition core) and F6 (acyclic common-interface graph)** — `OPEN`
+
+- **Statement:** proper 6-colouring → measurable weak 6-colouring (BorelTransfer, already in source); then L6 + F6 → FullApprox₆ → planar-cover/mesh contradiction. L6 and F6 are open; no arrow from B2 to L6 or F6 is proved. If both were proved the result would be χ ≥ 7.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-SIX-COLOUR-LEAD.txt` — roadmap §3 — `19df768a00da39dd…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-REBOOT-REFEREE.txt` — referee §7 ("supports their distinct roles") — `ceab2e0167e9fc5d…`
+- **Provenance:** Astra six-colour lead packet, 2026-11-14 ~08:22Z.
+- **Used for:** Explains the "No global chromatic result" headline: the route exists only conditionally.
+
+### LOCALIZED-TWO-STATE
+
+**Every positive-measure partial two-state field is impossible (colouring level)** — `OPEN`
+
+- **Statement:** Open; NR/TC and the near-full-measure model (FOUR-STATE-ANGULAR) show no measure threshold below 1 suffices.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-SIX-COLOUR-A2.txt` — statement — `fb2ad23a7600cde8…`
+- **Provenance:** Astra A2 lane.
+
+### PALETTE-RIGIDITY
+
+**Missing lemma: palette rigidity (M) / |J∪K| ≥ 3 with RealState on both sectors** — `OPEN`
+
+- **Statement:** The source licenses only |P| ≤ k−3, which is inert; the missing lemma is palette rigidity (M), equivalently |J∪K| ≥ 3 with RealState on both sectors.
+- **Provenance:** Coordinator cycles 205744, 211858.
+
+### STAIRCASE-CONVERSE
+
+**Staircase classification converse** — `OPEN`
+
+- **Statement:** Show that every surviving staircase (STAIRCASE-CENSUS) is realised, or classify the obstruction; Theorems A, B, C are consistent with Thm B'.
+- **Provenance:** Coordinator cycles 205744, 211858, 232732.
+- **Depends on:** [STAIRCASE-CENSUS](#staircase-census)
+
+## Negative results and counterexamples
+
+### A6-CONTAINMENT
+
+**Containment reading of the A6 source restriction is inconsistent** — `LEAN_VERIFIED`
+
+- **Statement:** `A6Forcing.a6_containment_unsatisfiable`: if `f j ∈ P j`, `H j ⊆ P j` and `Disjoint (P j) (P (j+1))` for all j, then False. So a forcing lemma stated with containment would be vacuous; the hit form is the right one.
+- **Hypotheses:** Finite statement over `Fin 6`.
+- **Evidence:** Same file and job as A6-FORCING.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-admissions/claude-lean-20261114t212205-0/Candidate.lean` — source — `27e45caf4c793897…`
+- **Checked by the results desk:** As A6-FORCING: `a6_containment_unsatisfiable` is [propext, Classical.choice, Quot.sound] in the desk spot-check log (01:20Z).
+- **Provenance:** As A6-FORCING.
+- **Depends on:** [A6-FORCING](#a6-forcing)
+
+### A7-CONTACT
+
+**The old A5 support is properly colourable from the A7 lists (A5 construction cannot be reused)** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** Every unit contact of z′ = (√3/4, 1/4) in H lies in M = e((π/6,π/3)) + e((2π/3,5π/6)); diam(M)² ≤ 6 − 3√3 < 1; H half-lobes have all distances < 1; hence H1 ∪ H2 ∪ {i/2} has an explicit proper colouring from the A7 lists.
+- **Evidence:** CLAUDE-A7-CONTACT-AUDIT: "Verdict: all three claims are true" (the three geometric sub-claims). The assembled colouring is parent-reviewed only.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-PARTIAL-PALETTE-A7.txt` — paper — `cfa34f367d772dd7…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/CLAUDE-A7-CONTACT-AUDIT.txt` — audit (all three claims true) — `596fdbac4c7bde20…`
+- **Checked by the results desk:** Referee verdict quote confirmed verbatim in the referee file by the results desk (grep). Proof not re-derived by the desk.
+- **Provenance:** Astra A7 + Claude audit.
+- **Correction history:** "since 27<36" is an arithmetic typo; correct justification 75 < 81; A7 v-bound "≤" corrected to strict
+
+### ANNULUS-3COL
+
+**Local annulus countermodel to ternary separation** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** On A = {0.99 < |z| < 1.01}, nine half-open 40° sectors coloured j mod 3 properly colour all unit pairs inside A (|z−w|² < 10207/15000 within a sector; > 3267/2500 between same-colour sectors). Refutes only the LOCAL implication to ternary separation.
+- **Hypotheses:** The extension outside A is not a WeakColoring.
+- **Evidence:** ASTRA-SIX-COLOUR-LEAD §4; referee ASTRA-REBOOT-REFEREE §5: "ACCEPTED WITH LOCAL SCOPE".
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-SIX-COLOUR-LEAD.txt` — paper — `19df768a00da39dd…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-REBOOT-REFEREE.txt` — referee — `ceab2e0167e9fc5d…`
+- **Checked by the results desk:** Referee verdict quote confirmed verbatim in the referee file by the results desk (grep). Proof not re-derived by the desk.
+- **Provenance:** Astra six-colour lead, 2026-11-14 ~08:22Z.
+
+### FOUR-STATE-ANGULAR
+
+**Four-state angular model refutes the orbitwise-to-global reduction; no measure threshold below 1** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** f(t) = ⌊t/(π/6)⌋ mod 4 with palettes {0,2},{0,3},{3,5},{2,5} satisfies orbitwise alternation, strip-side compatibility for v=(1,−1,−1,−1,1,1), NR and TC, yet has four palettes. Also: for every ε > 0 a τ-invariant A with μ(A) > 1−ε and a flipping Boolean with no same-phase γ-return.
+- **Hypotheses:** Angular models only; AC excludes the actual-interface realisation.
+- **Evidence:** Referee ASTRA-AC-REFEREE §6–7 (accepted as angular countermodels).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-SIX-COLOUR-A2.txt` — paper — `fb2ad23a7600cde8…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-AC-REFEREE.txt` — referee — `56c5d614f875471b…`
+- **Checked by the results desk:** Referee verdict quote confirmed verbatim in the referee file by the results desk (grep). Proof not re-derived by the desk.
+- **Provenance:** Astra A2 lane.
+- **Depends on:** [AC-ALIGNED](#ac-aligned)
+
+### LOCAL-TRANSITIONS
+
+**Local transition abundance and unit exclusions do not force L6** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** An actual local proper 6-colouring of B(0,ρ) (disks at q_n = ρ2⁻ⁿ with three 120° sectors 0,1,2 and annulus 3,4,5) has transition triangles at every q_n and at 0 while nearby palettes stay singleton.
+- **Hypotheses:** Local only; not a counterexample to L6 for global weak colourings.
+- **Evidence:** Referee ASTRA-REBOOT-REFEREE §6: "ACTUAL LOCAL INTERFACES AND TRANSITIONS — ACCEPTED".
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-SIX-COLOUR-LEAD.txt` — paper — `19df768a00da39dd…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-REBOOT-REFEREE.txt` — referee — `ceab2e0167e9fc5d…`
+- **Checked by the results desk:** Referee verdict quote confirmed verbatim in the referee file by the results desk (grep). Proof not re-derived by the desk.
+- **Provenance:** Astra six-colour lead.
+- **Depends on:** [L6-F6](#l6-f6)
+
+### MC120-ENDPOINT
+
+**Closed-120° MC120 is false (19-colour counterexample)** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** Curved arcs q±(t) = t·e(±(π/3+2t)), t ∈ [0, 1/100], approach 0 in directions ±60° (exactly 120° apart); there is a Borel pointwise-proper 19-colouring (9-colour grid background, P+={0..8}, P−={9..17}, a=18) whose exact support exclusions leave the residual {18}, and W = S+ ∩ S− has no unit pair.
+- **Hypotheses:** k = 19; only the limiting directions lie in the closed cone (the arcs bend outside). Not a six-colour statement.
+- **Evidence:** ASTRA-MC120-ENDPOINT-A5; referee ASTRA-MC120-ENDPOINT-REFEREE: "ACCEPT the complete paper proof in outputs/ASTRA-MC120-ENDPOINT-A5.txt." (adds nonemptiness margins −18071/4000000, 18729/4000000).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-MC120-ENDPOINT-A5.txt` — paper — `78503d6ee09748ee…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-MC120-ENDPOINT-REFEREE.txt` — referee (ACCEPT) — `318773a2908246dc…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/MC120-ENDPOINT-CORRECTION.txt` — parent correction (open-Reuleaux counterexample) — `ce20448c29cb9091…`
+- **Checked by the results desk:** Referee verdict quote confirmed verbatim in the referee file by the results desk (grep). Proof not re-derived by the desk.
+- **Provenance:** Astra A5 lane; check-ins 18:15:21Z, 18:35:22Z.
+- **Correction history:** geometry coordinator first claimed the closed-120 endpoint; the parent rejected it (open-Reuleaux counterexample, universal strip-width bound false) and the coordinator retracted (18:15:21Z)
+
+### SUPPORT-FLIP
+
+**Joint correlations plus adjacency do not upgrade level-set to support disjointness** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** There is a Borel 2π-periodic two-state angular f with f(t+π/3) = 1 − f(t) pointwise and S0 = S1 = ℝ (built from a Borel set of positive measure in every interval).
+- **Evidence:** Referee ASTRA-REBOOT-REFEREE §4: "ACCEPT the packet's periodic positive-measure angular countermodel".
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-JOINT-STATE-LEAD.txt` — paper — `ee5ea9f5091ca286…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-REBOOT-REFEREE.txt` — referee — `ceab2e0167e9fc5d…`
+- **Checked by the results desk:** Referee verdict quote confirmed verbatim in the referee file by the results desk (grep). Proof not re-derived by the desk.
+- **Provenance:** Astra joint lead A1.
+- **Correction history:** the indicator of the rationals is not an alternative counterexample (referee); an architecture "null dense-set counterexample" was retracted (check-in 16:12:25Z)
+
+### VARIABLE-TRIANGLE
+
+**Fixed-base partner-pair triangle method fails for the four-state palette** — `PROVED_PAPER_REVIEWED`
+
+- **Statement:** For base centre 0 and the half-open four-state palette, no unit equilateral triangle (any translation or rotation) has all three vertices in closure(G), G = {e(a)+e(b) : P(a), P(b) a partner pair}.
+- **Evidence:** CLAUDE-VARIABLE-TRIANGLE; referee ASTRA-CLAUDE-TRIANGLE-REFEREE: "ACCEPT the main geometric theorem, including its stronger closure version" (exact rational certificate, e.g. 39/50 − 547/703 = 67/35150).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/CLAUDE-VARIABLE-TRIANGLE-2026-11-14.txt` — paper — `2a27ff4ec3e0a0a5…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-CLAUDE-TRIANGLE-REFEREE.txt` — referee (ACCEPT with corrections) — `948cc794594192d0…`
+- **Checked by the results desk:** Referee verdict quote confirmed verbatim in the referee file by the results desk (grep). Proof not re-derived by the desk.
+- **Provenance:** Claude Max run + Astra referee, 2026-11-14.
+- **Correction history:** referee corrections: oriented-difference list omits (270°,330°); inner-spike condition half-open; reflection invariance only for the closure; Claude's ~2.3° decimal slack not certified
+
+### HEULE-NO-FORCING
+
+**No forced-equal pairs in the 553- and 1,048-vertex Heule graphs** — `TESTED_FINITE`
+
+- **Statement:** Each graph has 34 proper 5-colourings that give every vertex a distinct colour signature, so every pair of distinct vertices is separated by some proper 5-colouring: neither graph forces two vertices to share a colour.
+- **Hypotheses:** These two specific graphs only.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE553-NO-FORCING-CERTIFICATE.json` — certificate (553) — `9cb811e361ebc9d5…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-NO-FORCING.json` — certificate (1,048) — `4e8799e7d499804b…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/Verify-HeuleNoForcing.py` — verifier — `484ac96a160e3757…`
+- **Checked by the results desk:** 2026-11-14 23:50Z: verify-snapshot.mjs re-verified both: 553 vertices / 2,722 edges and 1,048 / 5,487, 34 proper colourings each, distinct signatures 553 and 1,048; the 1,048 edge set equals the geometric graph.
+- **Provenance:** Graph no-forcing audit, 2026-11-14 (before 18:39Z).
+- **Used for:** Closes these forcing-pair searches.
+
+### HISTORIC-8
+
+**The eight historic list models are not countermodels to the pair-support theorem** — `TESTED_FINITE`
+
+- **Statement:** All eight normalised historic V0/V3/D/N list models have exact projections of genuine closed C5 six-words (compatible counts 3,8,3,8,8,22,8,22; after contact bans 1,5,1,5,5,18,5,18), and every filtered family loses a required support projection; the referee enumerated 5⁶ words and found exactly 100 closed C5 walks.
+- **Hypotheses:** Claim is "none is a countermodel", not "zero surviving words"; normalisation exhaustiveness not checked by the referee.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/astra-referee/verify-certificates.mjs` — independent checker — `f4678bcb40700f92…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/astra-referee/certificate-check.json` — checker output — `b975a1e6220bfd78…`
+- **Checked by the results desk:** 2026-11-15 ~00:23Z: re-ran the archived verify-certificates.mjs in a scratch copy: PASS, closedC5Words 100, primary compatible/survivor counts exactly as stated, projectionRetained false for all eight.
+- **Provenance:** Astra joint lead + reboot referee §4.
+- **Depends on:** [JOINT-SUPPORT](#joint-support)
+
+### HONEYCOMB-K16
+
+**Period-4 honeycomb quotient at a = 1/5 is K16** — `TESTED_FINITE`
+
+- **Statement:** The period-4, 16-vertex honeycomb quotient at a = 1/5 is the complete graph K16 (all 120 strict interior-edge witnesses verified), which excludes that periodic family.
+- **Hypotheses:** Only the period-4 honeycomb family; no whole-plane conclusion.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/quotient16-audit/verify_quotient16.py` — exact verifier — `d61543f768451fa8…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/quotient16-audit/quotient16_cert.json` — certificate — `eb3a9f31a6c8652b…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/quotient16-audit/local-result.json` — recorded run — `d9273f0ea3ecd9df…`
+- **Checked by the results desk:** 2026-11-15 ~00:36Z: re-ran the archived verify_quotient16.py on a scratch copy of the certificate: exit 0, "checks run; failures = 0", "CERTIFICATE VALID".
+- **Provenance:** Overnight 13–14 Nov graph lane.
+
+### Q4Q5-CONTROLS
+
+**q4, q5, q6 and controls are SAT in every phase cell of the relaxation** — `TESTED_FINITE`
+
+- **Statement:** q4 (0,0,120,150,240,240), q5 (0,30,120,150,240,240), q6 (0,30,120,150,240,250), paired a (0,0,120,120,240,240) and b (0,60,…,300) are SAT on every positive phase cell, so the relaxation cannot exclude them; q4/q5 forced masks are pairs {1,4},{2,5},{0,3} on (0,30) and singletons {2},{3},{1} on (30,60).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/openmath-supervisor/checkins/20261114T194118Z/q4-q5-forced-palette.json` — forced palettes — `c7a71a223470b5b0…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/openmath-supervisor/checkins/20261114T194118Z/graph-m2-REPORT.txt` — graph m2 report §3 — `826555e70beeed2d…`
+- **Checked by the results desk:** Re-ran the parent supervisor verify-inner-outer-orbits.js (see SIX-ORBIT): q4 counts (1,6), q5 (1,6), q6 (1,4,6), paired a (1,1), b (4,4); every cell SAT.
+- **Provenance:** Parent + graph m2, check-in 19:41:18Z.
+- **Correction history:** control b witness count: the parent supervisor verifier (re-run by the results desk, ~00:40Z) gives cyclic witness counts 4 and 4 on its two cells, agreeing with the graph m2 count of 4; the parent-relayed "(1,1)" is not reproduced
+- **Used for:** Refutes TWO-TRIANGLE; motivates A7/A8.
+
+### RELAX-WITNESSES
+
+**Six-position interface relaxation is SAT for cycle lengths m = 3, 4, 5, 6** — `TESTED_FINITE`
+
+- **Statement:** Exact SAT witnesses: m=3 q=(0,0,0) J={3} K={4}; m=4 (0,0,0,0) {4} {5}; m=5 (0,3,3,0,0) {0,2} {5}; m=6 (0,3,3,3,0,0) {0,2} {3,5}. So R1–R6 alone do not imply "no cycle".
+- **Hypotheses:** Relaxation only; the m=6 geometry is excluded for actual interfaces by AC.
+- **Evidence:** exact_obstacles.mjs (19 ms) + independent checker verify-certificates.mjs (PASS, 17 ms); referee ASTRA-REBOOT-REFEREE §7.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/astra-six-colour/exact_obstacles.mjs` — producer — `58de9a1ac5d198b4…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/astra-six-colour/exact-obstacles.json` — witnesses — `a0ca6c8b048d7d17…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/astra-referee/verify-certificates.mjs` — independent checker — `f4678bcb40700f92…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/astra-referee/certificate-check.json` — checker output — `b975a1e6220bfd78…`
+- **Checked by the results desk:** 2026-11-15 ~00:23Z: copied the archived checker and its two input JSONs to a scratch folder and ran `node work/astra-referee/verify-certificates.mjs` (exit 0, 260 ms): status PASS, finiteCycles m=3,4,5,6 all accepted, 100 closed C5 words, 9 same-colour pairs; output matches the archived certificate-check.json apart from the runtime field.
+- **Provenance:** Astra six-colour lead.
+
+### A8-PALETTE
+
+**A8 disjunctive palette report (unbanked, unreviewed)** — `CANDIDATE`
+
+- **Statement:** Claims in ASTRA-DISJUNCTIVE-PALETTE-A8.txt; a claim-by-claim referee was requested but the geometry lane could not reach the file.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/ASTRA-DISJUNCTIVE-PALETTE-A8.txt` — report — `d292fa5a44fa857d…`
+- **Provenance:** Coordinator cycles 222600, 224105, 232732 ("A8 remains unbanked").
+
+### ALPHA-SHARP
+
+**α = (0,2,3,184,185,186): six-phase SAT does not imply a field; fixed phase is not all-phase** — `CANDIDATE`
+
+- **Statement:** For α* = (0,2,3,184,185,186) the configuration is SAT at the six census phases but fails by an empty residual at t = 92.5, so six-phase satisfiability does not imply a field.
+- **Checked by the results desk:** No certificate located yet; requested.
+- **Provenance:** Coordinator cycles 204019, 205744.
+
+### FOURWAY-SPLIT
+
+**Limits of the FiveSupport simplification: hn/hp are load-bearing; the four-way split is irreducible** — `CANDIDATE`
+
+- **Statement:** Deleting hn/hp is refuted (tauto closes those goals by `assumption`); the four-way split at FiveSupport:225–231 is irreducible (witness (0,1,1,0)). v1 step_ban has no further consumers once the swap lands.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261115T002122-download-3-REFEREE.md` — swarm referee report — `4aa0931aefc47eb1…`
+- **Checked by the results desk:** Not checked by the desk.
+- **Provenance:** Architecture swarm smwh11dth; cycles 001551, 002122.
+
+### GEOM-Q4Q5
+
+**No q4/q5 disjunctive or hit argument forces a colour (T1, T2)** — `CANDIDATE`
+
+- **Statement:** No q4/q5 disjunctive or hit argument forces a colour (lemmas T1 and T2); two referees agree.
+- **Checked by the results desk:** Referee artifacts not yet located; status will move to PROVED_PAPER_REVIEWED when they are.
+- **Provenance:** Geometry lane; coordinator cycle 231544.
+
+### GEOM-TWO-STEP
+
+**A unit triangle of two-step sums forces no colour (Theorems A and B)** — `CANDIDATE`
+
+- **Statement:** A unit triangle of two-step sums forces no colour; the list rule is sound only at a single anchor.
+- **Checked by the results desk:** No referee artifact located yet.
+- **Provenance:** Geometry lane; coordinator cycle 204019.
+
+### Q4Q5-APEX
+
+**q4/q5 field bounds the apex colour, not the apex palette** — `CANDIDATE`
+
+- **Statement:** Four geometry members agree that the q4/q5 field constrains the apex colour, not the apex palette; the open question is geometric reachability of the forcing bin triples (m4's 198 exact placements found none).
+- **Checked by the results desk:** Not checked by the desk.
+- **Provenance:** Geometry swarm smwh11xw7; cycle 001551.
+- **Depends on:** [Q4Q5-PINNING](#q4q5-pinning)
+
+### TERNARY-COUNTERMODEL
+
+**Countermodel (3,4,5,3,4,5) satisfies the six-position facts** — `CANDIDATE`
+
+- **Statement:** m1's countermodel (3,4,5,3,4,5) satisfies all six-position facts, so the k=6 ternary door needs a source-licensed third sector label.
+- **Provenance:** Coordinator cycle 211858.
+
+### A5-FAR-APEX
+
+**Refuted: |A_far − ci| > 1.5 on the A5 sliver** — `RETRACTED_OR_REFUTED`
+
+- **Statement:** The A5 domain file (§4, quoting the m2 report) claims |A_far − ci| > 1.5. This is false on part of P1: on u1 ∈ [0.201000, 0.204437], u3 ∈ [−0.215250438, −0.2152], |A2 − ci|² ∈ [2.2004, 2.2339] < 9/4. The weaker |A2 − ci| > 1 holds everywhere, so the conclusion that the far apex is outside H survives.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/cloud-supervisor/a5-sliver/CERTIFICATE.md` — certificate (Discrepancy section) — `b6ac39dd14d55157…`
+- **Provenance:** Research desk certificate 23:45:56Z.
+- **Depends on:** [A5-SLIVER](#a5-sliver)
+
+### A5-M5-TEMPLATE
+
+**k=6 producer audit: the m=5 template is refuted** — `RETRACTED_OR_REFUTED`
+
+- **Statement:** The m=5 template for the k=6 producer is refuted; the shortest open case is m=3 (triangle).
+- **Provenance:** Independent lane; coordinator cycle 204019.
+
+### AC-AXIS
+
+**Unsigned-axis extension of AC is invalid** — `RETRACTED_OR_REFUTED`
+
+- **Statement:** Extending AC to a common unsigned axis with per-continuum radial sides fails: K+ = [0,ρ], K− = [−ρ,0] have disjoint straddle sets (1,1+ρ) and (1−ρ,1) on the positive ray.
+- **Evidence:** ASTRA-NONALIGNED-A3 §1 ("The proposed AC-axis argument is INVALID"); cone referee concurs.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-NONALIGNED-A3.txt` — refutation — `ce6e2f5f9fc98fae…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-CONE-REFEREE.txt` — referee — `76052706cc46ff8b…`
+- **Provenance:** Astra A3; check-in 17:20:56Z.
+
+### ALT-TRIPLE
+
+**"A label set covers all labels iff it contains an alternating triple" is false** — `RETRACTED_OR_REFUTED`
+
+- **Statement:** C = {0,1,3,4} covers all six labels and contains neither alternating triple; the general index-cycle vertex-cover criterion is retained.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/outputs/RESEARCH-STATUS.txt` — ESSENTIAL CORRECTIONS — `01c6c9d311eeae6b…`
+- **Provenance:** Parent correction.
+
+### CLAUDE05-VERDICT
+
+**Claude05 verdict "no one-centre condition excludes the canonical palette" is contradicted** — `RETRACTED_OR_REFUTED`
+
+- **Statement:** CLAUDE-THREE-PALETTE says none of the source's one-centre necessary conditions excludes the canonical palette and hand checks "lean towards the lists being colourable"; A5-FOUR-LIST (refereed) excludes it at one centre. Its "iff/exhaustive" claims are rejected as unproved (ASTRA-LIST-FIELD-A4 §8). The list-field derivation itself is re-verified.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/CLAUDE-THREE-PALETTE-2026-11-14.txt` — superseded report — `362a1d4e413b6f4a…`
+- **Provenance:** Claude05 (Claude Max), 2026-11-14.
+- **Depends on:** [A5-FOUR-LIST](#a5-four-list)
+
+### OVERNIGHT-WITHDRAWN
+
+**Overnight withdrawals: five-cycle shortcut, P3/H2 discharge, 681/720 cell family, canonical 3-cycle** — `RETRACTED_OR_REFUTED`
+
+- **Statement:** Withheld or withdrawn: the angular five-cycle shortcut (8 countermodels to its licensed assumptions; Lemma 6.7 retained); the claimed H2 discharge (compact extensions do not compose) and related eigenfunction/uniform-deficit claims; the 681 excluded / 720 undecided cell-family theorem; "triple constraints force a canonical 3-cycle".
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/CONSOLIDATED-FINDINGS.txt` — record — `eac30d0ed71409ec…`
+- **Provenance:** Overnight 13–14 Nov.
+
+### PALETTE-EQ-F
+
+**"409/969 realised-palette" route rejected: assumes palette = F** — `RETRACTED_OR_REFUTED`
+
+- **Statement:** The route assumes palette = F, which is not licensed; the source gives only F ⊆ palette a.e.
+- **Provenance:** Geometry lane referees; coordinator cycle 231544.
+
+### TWO-TRIANGLE
+
+**"Two-triangle" direction classification refuted** — `RETRACTED_OR_REFUTED`
+
+- **Statement:** The claim that 4 or 5 distinct directions are impossible under CC60 + MC120(a) + a 60°-arc outer-strip premise is false: q4 (4 directions) and q5 (5 directions) pass the cone tests and are SAT; the premise misstates OA120 (needs an open 120° arc).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/openmath-supervisor/checkins/20261114T194118Z/q4-q5-forced-palette.json` — counterexamples — `c7a71a223470b5b0…`
+- **Provenance:** TWO-TRIANGLE.md (check-in 18:35:22Z, self-labelled not independently verified); refuted by the parent the same check-in.
+- **Depends on:** [Q4Q5-CONTROLS](#q4q5-controls)
+
+## Infrastructure
+
+### ENC-R4-AUX
+
+**Auxiliary checks for the R4 refactor: witness selection, signature equivalence, fresh contexts** — `LEAN_VERIFIED`
+
+- **Statement:** WitnessSelectionV4 (6 printed lemmas incl. `exists_strictAnti_scale'`), SignatureEquivalenceR5 (baseline theorem wrappers and definitional iff checks) and SignatureFreshR5 (control/fresh applications) compile; 14 printed axiom sets are standard.
+- **Evidence:** witness-selection-v4.log, signature-equivalence-r5.log, signature-fresh-r5.log: Lean 4.34.1, exit 0, [propext, Classical.choice, Quot.sound].
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/encoding-r4/src/WitnessSelectionV4.lean` — source — `3ff5d5c86fd49e42…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/encoding-r4/src/SignatureEquivalenceR5.lean` — source — `bbc58eac177e99a2…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/encoding-r4/src/SignatureCheckFreshR5.lean` — source — `b0853a037a55d465…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/witness-selection-v4.log` — log — `1ad17940631fac6c…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/signature-equivalence-r5.log` — log — `909ec5e630255e14…`
+  - `HadwigerNelson/Main/ResearchSnapshot/local/work/lean-queue/signature-fresh-r5.log` — log — `9e68cf42ede31dda…`
+- **Checked by the results desk:** Read the archived log: Version 4.34.1, "Status: passed", "Exit code: 0", logged Source SHA256 equals the archived source (hash recomputed), axiom lines parsed. Did not recompile.
+- **Provenance:** Encoding-r4 validation, 14 Nov ~03:00–07:09Z.
+- **Correction history:** V1–V3 and R4 attempts failed (sorryAx) and were superseded
+- **Depends on:** [ENC-R4](#enc-r4)
+
+### SNAPSHOT-VALIDATION
+
+**Repository research snapshot integrity** — `TESTED_FINITE`
+
+- **Statement:** All 11,556 archived files (358,349,948 bytes) match MANIFEST.json, the frozen Lean source hashes match their validation records, and the finite graph certificates verify.
+- **Artifacts:**
+  - `HadwigerNelson/Main/verify-snapshot.mjs` — verifier — `eb40b4b59188cd81…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `f96ec33ea8f235eb…`
+- **Checked by the results desk:** Re-ran 2026-11-14 23:50Z: status passed, exit 0, 11 s.
+- **Provenance:** Supervisor import, 2026-11-14 18:57Z.
+
+### LEAN-FAILED-REVISIONS
+
+**Failed Lean jobs (superseded) — kept for the correction history** — `RETRACTED_OR_REFUTED`
+
+- **Statement:** Jobs that exited 1 and were superseded: 205744-0 EvenWalk r1; 212205-1 StepBanShort r1 (Decidable; sorryAx in log); 213711-0 A6-Bridge-m2 (whnf timeout + shift-direction bug); 215215-0 EvenWalk r2; 215215-1 G1-Finish-mB r1; 220720-1 G3 standalone r1 (`le_or_lt`); 222600-0 EvenWalk r3; 232057-1 EvenWalk r5; 001551-0 CyclicCoreConsumerFromV2 (staged text began with a stray backslash, error "unexpected token" at 1:0; a staging defect, mathematics untested).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t205744-0.progress.json` — record — `60a193944c7f9708…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t212205-1.progress.json` — record — `81fa534eed8a1fae…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t213711-0.progress.json` — record — `4672cd9e5714d3e0…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t215215-0.progress.json` — record — `1f7cfbfc1bd3339c…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t215215-1.progress.json` — record — `f26f8e8d3fdd6ad4…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t220720-1.progress.json` — record — `77a4f9b146600054…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t222600-0.progress.json` — record — `6f2ea526d6d66806…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t232057-1.progress.json` — record — `511113316141b418…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261115t001551-0.progress.json` — record — `6abd117b03d0e180…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261115t001551-0.python.log` — log — `4b676e02a8b63d91…`
+- **Checked by the results desk:** Read every record: exitCode 1 and recorded source hash = recomputed hash for each.
+- **Provenance:** Local Lean queue, 2026-11-14 21:21–23:24Z.
+
+### LEAN-435
+
+**Rebuild under the event Lean 4.35.0 toolchain** — `OPEN`
+
+- **Statement:** No team Lean result has been rebuilt under Lean 4.35.0. The simplification desk reports that the 4.35.0 toolchain and Mathlib v4.35.0 sources are present but without oleans or a cache, so a rebuild is infeasible without a download.
+- **Checked by the results desk:** Not checked.
+- **Provenance:** Simplification desk, work/simplification-desk/lean435/FEASIBILITY.md (01:20Z).

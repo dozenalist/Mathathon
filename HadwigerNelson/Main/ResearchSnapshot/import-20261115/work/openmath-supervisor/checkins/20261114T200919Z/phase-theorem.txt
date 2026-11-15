@@ -1,0 +1,208 @@
+# R (six-direction relaxation): exact exclusion geometry, margins, and sharpness
+
+Member m1, swarm smwgt58nz, direction d2. All angles in **degrees**, all arithmetic exact
+(rationals, or integers in 1/12-degree units) — no floating point anywhere in the checks.
+Scripts: `audit.py` (layered-DP verifier), `final.py` (independent verifier: integer angles +
+boolean-matrix trace), `run_cells.py`, `run_final.py`, `run_radius3.py`, `run_evidence.py`,
+evidence in `evidence.txt`, `margins_final.json`.
+
+---
+
+## 0. Setting and the one reduction used
+
+Labels `C={0..5}`, `E_i={i,i+1 mod 6}`, directions `alpha = (alpha_0..alpha_5) in T^6`,
+`T = R/360Z`; phase `t`. For `x` a phase:
+
+    Ppos(x) = {i : cos(x-alpha_i) > 0},  Pneg(x) = {i : cos(x-alpha_i) < 0}
+    R+(x) = C \ U{E_i : i in Ppos(x)},  R-(x) = C \ U{E_i : i in Pneg(x)}
+    t_j := t + 60j   (j = 0..5)
+
+R(t, alpha) is the CSP in variables `P_0..P_5 subset C`:
+
+    (1) P_j /= {}    (2) P_j & R+(t_j) /= {}    (3) P_j & R-(t_j) /= {}
+    (4) P_j & P_{j+1} = {} for all j, cyclically (j=5 -> j=0)
+
+**Lemma 0 (witness reduction is an equivalence).** R(t,alpha) is satisfiable iff there are
+`w+_j in R+(t_j)`, `w-_j in R-(t_j)` with `{w+_j,w-_j} & {w+_{j+1},w-_{j+1}} = {}` for all j
+cyclically.
+*Proof.* (=>) Given palettes `P_j`, pick `w+-_j in P_j & R+-(t_j)` (nonempty by (2),(3)) and put
+`Q_j={w+_j,w-_j}`; `Q_j` still hits both sets and `Q_j subset P_j` so (4) is inherited; `Q_j`
+nonempty so (1) holds. (<=) `Q_j` is itself a palette. QED.
+Consequence: every UNSAT below is an UNSAT for the **palette** CSP, not merely for a search
+restriction; and no claim is made that a palette must have <= 2 elements.
+
+---
+
+## 1. Where the sign data changes: the zero lemma
+
+**Lemma 1.** Fix `i`, `t`. The set `{j : cos(t+60j-alpha_i) = 0}` is nonempty iff
+`t = alpha_i + 30 (mod 60)`, and then it has exactly **two** elements, namely
+`j = 1-s mod 3` where `t-alpha_i = 30+60s`.
+
+*Proof.* `cos(t+60j-alpha_i)=0` iff `t+60j-alpha_i = 90 (mod 180)`. Reducing mod 60 gives
+`t = alpha_i + 30 (mod 60)`, so the condition is independent of `j`; conversely if
+`t-alpha_i = 30+60s` then `t+60j-alpha_i = 30+60(s+j)`, which is `90 (mod 180)` iff
+`60(s+j) = 60 (mod 180)` iff `s+j = 1 (mod 3)`; among `j in {0..5}` exactly two satisfy that. QED.
+
+Consequences used below.
+* The **critical phases** of the configuration are `{alpha_i + 30 mod 60}`, independent of `j`
+  and of the integer parts of `alpha` (confirms the coordinator's observation, for the phase
+  variable).
+* In particular there is **no** critical phase at `t = alpha_i`, and at any non-critical phase
+  every one of the 36 entries is nonzero.
+
+**Lemma 2 (critical set of one row as a function of the direction).** Fix `t`, `i`. As a function
+of `alpha_i`, the entries `cos(t+60j-alpha_i)` (`j=0..5`) vanish only for
+`alpha_i = t+30 (mod 60)`, the same set for every `j`.
+
+*Proof.* `cos(t+60j-alpha_i)=0` iff `alpha_i = t+60j-90 (mod 180)`, and `-90 = 30`, `60j = 0`
+mod 60. QED.
+
+---
+
+## 2. Theorem B: canonical boxes; the excluded set is open
+
+**Theorem B.** Let `t0` be a phase with no vanishing entry for `alpha`, and put
+`c = t0+30 (mod 60)`. For each `i` let `I_i` be the connected component of
+`T \ {c+60k : k in Z}` containing `alpha_i` — an **open arc of length exactly 60**. Then
+
+    { alpha' in T^6 : sign cos(t0+60j-alpha'_i) = sign cos(t0+60j-alpha_i) for all i,j }
+        =  prod_i I_i ,
+
+and the box is exactly maximal (each of its `6*2` facets carries a zero entry). Consequently, if
+R(t0,alpha) is UNSAT, then R(t0,alpha') is UNSAT for **every** `alpha'` in the box.
+
+*Proof.* By Lemma 2 the `i`-th row of signs at phase `t0`, as a function of `alpha'_i` alone, can
+change only at `c+60Z`; hence it is constant on the component `I_i` and is not constant on any
+larger connected set. Rows are independent (row `i` depends on `alpha'_i` only), so the sign
+matrix is constant exactly on the product. The CSP is a function of the sign matrix alone (it
+enters only through `Ppos`, `Pneg`), so UNSAT is preserved. QED.
+
+**Corollary B1 (openness).** The set `E_t0 = {alpha : R(t0,alpha) is UNSAT}` is open in `T^6`,
+and is a union of the `6^6` boxes of Theorem B, which tile `T^6`. Each of the six UNSAT vectors
+below is therefore an **interior** point of an excluded set, not an isolated case.
+
+**Corollary B2 (the correct finite invariant; corrects the coordinator).** Call
+`k_i(alpha,t) = floor( (alpha_i - t - 30)/60 ) mod 6`, the index of the arc of `T` cut by
+`30+60Z` that contains `alpha_i - t`. Then
+
+    the whole 6x6 sign matrix at (alpha,t) is a function of k only,
+
+i.e. the arrangement `{alpha_i = t+30 (mod 60)}` cuts `T^6 x T` into exactly **`6^6 = 46656`
+chambers** `prod_i (t+30+60k_i, t+90+60k_i)`, each with constant sign matrix; each is realised
+(choose `t` freely and `alpha_i` in the arc). This holds because on a chamber no entry vanishes
+(Lemma 1) and the entries are continuous.
+
+*The coordinator's data `(n_i, b_i)` with `b_i = [ (t-r_i) mod 60 > 30 ]` is **not** correct as
+stated:* `b_i` is **not** constant on the open cell between consecutive elements of
+`B = {(r_i+30) mod 60}`; it flips at `t = r_i` (where `phi_i` wraps `60 -> 0`). What survives is
+the sign vector of row `i`, i.e. the pair (arc index of `alpha_i - t`, side), and the two changes
+at `t = r_i` cancel. Equivalently the formula
+`sign cos(t+60j-alpha_i) = sign cos(phi_i + 60*((j-n_i) mod 6))` is missing the carry
+`m_i = floor((t-alpha_i-phi_i)/60) = N - n_i - [t mod 60 < r_i]`; the correct statement is
+`sign cos(phi_i + 60*((j+m_i) mod 6))`. Also `k` is only defined up to a simultaneous shift
+`k -> k+1` (change of lift of `t`), and that shift is exactly the global relabelling `j -> j+1`,
+under which the CSP is invariant — so the CSP classes are the `6^6/6 = 7776` orbits,
+matching the coordinator's `6^5` count in the rotation-normalised chart, but indexed by `k`,
+not by `(n_i,b_i)`.
+*Check (not proof):* 2915 distinct `k` sampled, 0 conflicting sign matrices; and for 208 pairs
+`(k, k+1)` the CSP agrees with the rows cyclically shifted, 208/208. (`k`-test script in
+`run_k.py`, ~0.15 s.)
+
+---
+
+## 3. Theorem C: exact margins for the six UNSAT vectors
+
+For each vector and its UNSAT cell, `t0` = cell midpoint. `d_down`/`d_up` = distance from
+`alpha_i` to the nearest critical value `t0+30+60k` below/above it, i.e. exactly the one-sided
+radii of the box `prod_i I_i` of Theorem B.
+
+| alpha | UNSAT cell | t0 | (d_down, d_up) per i=0..5 | d* |
+|---|---|---|---|---|
+| (0,30,90,120,180,210) | (0,30) | 15 | (15,45)(45,15)(45,15)(15,45)(15,45)(45,15) | 15 |
+| (0,30,90,120,270,300) | (30,60) | 45 | (45,15)(15,45)(15,45)(45,15)(15,45)(45,15) | 15 |
+| (0,30,180,210,270,300) | (0,30) | 15 | (15,45)(45,15)(15,45)(45,15)(45,15)(15,45) | 15 |
+| (0,60,90,150,180,330) | (30,60) | 45 | (45,15)(45,15)(15,45)(15,45)(45,15)(15,45) | 15 |
+| (0,60,90,240,270,330) | (0,30) | 15 | (15,45)(15,45)(45,15)(15,45)(45,15)(45,15) | 15 |
+| (0,150,180,240,270,330) | (30,60) | 45 | (45,15)(15,45)(45,15)(45,15)(15,45)(15,45) | 15 |
+
+`d* := min_i min(d_down,d_up)` = **15 for all six**, and moreover **every one of the 36 slots
+binds at exactly 15** — there is no slack anywhere. Because every `alpha_i` is a multiple of 30
+and every critical value is `45` or `15` (mod 60), `d_down+d_up = 60` always holds with
+`{d_down,d_up} = {15,45}`.
+
+**Verdict on the parent's claim.** The 15-degree statement is TRUE and the constant is exactly right,
+but it is the *symmetric* reading of a much larger exclusion:
+
+    the exact statement is  prod_i I_i  :  six open arcs of length 60, one-sided radii 15 and 45.
+
+The correct quantitative rendering of "every cosine bounded away from zero by at least 15
+degrees" is **angular**: every entry is at angular distance >= 15 deg from a zero, hence
+`|cos| >= sin 15 = (sqrt6-sqrt2)/4 = 0.258819...` — *not* `cos 15 = 0.966`. The value
+`0.258819` is exactly attained (36/36 slots, closest entries are at 15 deg from a zero).
+
+All six UNSAT verdicts were recomputed independently twice (layered DP over the 6 layers with
+`(first,last)` states; and boolean product `M_0...M_5` with `trace > 0`), at 7 interior points of
+every phase cell, with the verdict constant in each cell (as Theorem B requires). Candidate tables
+and sign matrices are in `evidence.txt`; e.g. for the first vector at `t0=15` the six candidate
+families are `{14,15,24,25}, {15,25,35}, {13,14,15}, {14,15,24,25}, {15,25,35}, {13,14,15}`
+(written `ab` for `{a,b}`), and `trace(M_0...M_5) = 0` — a six-line exhausted table certificate.
+
+---
+
+## 4. Theorem D: sharpness of 15
+
+**(i) Sharp for the fixed-phase statement.** For every one of the six vectors and **every**
+coordinate `i`, moving `alpha_i` by `15 + 1/4` in the binding direction makes `R(t0,.)` SAT
+(explicit 2-element witnesses in `evidence.txt`). Hence for each vector
+
+    sup{ d : R(t0,alpha') is UNSAT for all alpha' with max_i |alpha'_i - alpha_i| < d } = 15 ,
+
+and by Theorem B the supremum is attained as a box (not just a radius). So 15 cannot be improved
+in that reading, in any of the six, in any coordinate.
+
+**(ii) NOT sharp for the global (exists-a-phase) statement — the exclusions are far more
+robust.** Since a genuine colouring must satisfy R at *every* phase (a.e. suffices), the right
+notion of exclusion is `E = {alpha : R(t,alpha) is UNSAT for some t}`. A scan of all
+`2 x 6 x 6 = 72` single-coordinate moves of modulus `d` gives (`A` = UNSAT in every phase cell,
+`L` = SAT in every phase cell so the exclusion is LOST, `M` = mixed, hence excluded):
+
+    d in {15.25, 20, 25}   : M for all 72 moves      (exclusion kept everywhere)
+    d in {30.25, 35, 40, 45.25, 50, 55}:
+        for each of the six vectors exactly TWO of the 12 (i,+-) moves are active;
+        one direction is A, the opposite direction is L; the other 10 moves stay M.
+
+Example (vector 1): `alpha_0 -> alpha_0 + d` for `d in (30,60)` is UNSAT in every cell
+(`d = 30.25` on), while `alpha_0 -> alpha_0 - d` is SAT in every cell — an explicit
+counterexample to any reading of "15" as the radius of the excluded set. So the parent's claim is
+true but weak: the exclusion around each of the six vectors contains the whole 60-arc box of
+Theorem B and much more.
+The transition is consistent with Corollary B2: moving one `alpha_i` changes the class only when
+`alpha_i` becomes congruent mod 60 to another `alpha_j`, i.e. exactly at `d = 30` here.
+
+**(iii)** The sixth vector's cell label in the problem statement is wrong: it is
+`(0,150,180,240,270,330) -> UNSAT on (30,60)`, SAT on `(0,30)` (7 interior points each, two
+independent verifiers). The other five labels are confirmed. The conclusion "UNSAT in one phase
+cell" is unaffected.
+
+---
+
+## 5. Controls reproduced (independent verifier)
+
+`q4`, `q5`, `q6`, the paired references `a=(0,0,120,120,240,240)`, `b=(0,60,120,180,240,300)`
+are SAT in **every** phase cell, with the cycles of 2-element palettes; e.g. `q4` at `t=15`:
+`{1,4},{2,5},{0,3},{1,4},{2,5},{0,3}`; `q5` likewise; `q6` likewise on all three of its cells;
+`a` and `b` have the single critical phase 30 (their `alpha_i` are all `= 0 mod 60`), i.e.
+one open cell `(30,60) u (0,30)` in `T`, SAT there.
+
+## 6. The one exact unresolved obligation
+
+**The global exclusion radius is not established exactly.** Verified: for each of the six, all 72
+single-coordinate moves of modulus `< 30` keep the exclusion (`M`), and for the 12 active moves the
+verdict on `(30,60)` is constant and extreme (`A` resp. `L`). *Not* established: (a) the status at
+the tie `d = 30` itself (a measure-zero but legitimate class, where two `alpha`'s coincide mod 60);
+(b) the exact maximal `d` with "all `alpha'` of `max_i |alpha'_i - alpha_i| < d` still excluded",
+which needs *multi*-coordinate moves; (c) the census of the `6^6` classes of Corollary B2 (how many
+are UNSAT in every / some / no phase cell), which would settle (a),(b) and is also the natural
+input for the parent's scheduling. Scripts + manifest for (c) are in `run_census.py`,
+`manifest.md`; they are **not** run here (estimated 46656 class evaluations, > 1 s).

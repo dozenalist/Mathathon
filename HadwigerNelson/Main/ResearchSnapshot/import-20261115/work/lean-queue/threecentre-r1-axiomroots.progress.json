@@ -1,0 +1,49 @@
+{
+  "leanExe": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\elan\\toolchains\\leanprover--lean4---v4.34.1\\bin\\lean.exe",
+  "expectedVersion": "4.34.1",
+  "expectedCommit": "5045d0056413266e57c625dcd7c365b10e377c52",
+  "mathlibRoot": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4",
+  "requiredMathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "leanPath": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/build;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean",
+  "workingDirectory": "threecentre-r1/src",
+  "timeoutSeconds": 480,
+  "id": "threecentre-r1-axiomroots",
+  "status": "passed",
+  "source": "threecentre-r1/src/AxiomRoots.lean",
+  "output": "threecentre-r1/build/AxiomRoots.olean",
+  "dependsOn": "threecentre-r1-27-transfer",
+  "expectedSourceSha256": "cac851851383970f3d33e42c8bf4ae4ce5963059f43c44328f12542bbf96f26d",
+  "purpose": "Final nine theorem roots axiom checks after fresh27moduleintegrationclosure.",
+  "previousAttempt": {
+    "status": "blocked_dependency"
+  },
+  "priorAttempts": [
+    {
+      "status": "blocked_dependency",
+      "runner": "PowerShell legacy"
+    }
+  ],
+  "profile": false,
+  "maxRssMiB": 8192,
+  "maxPrivateMiB": 12288,
+  "startedUtc": "2026-11-14T20:47:06.231669+00:00",
+  "sourceSha256": "cac851851383970f3d33e42c8bf4ae4ce5963059f43c44328f12542bbf96f26d",
+  "actualVersion": "Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "runner": "python",
+  "command": [
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\elan\\toolchains\\leanprover--lean4---v4.34.1\\bin\\lean.exe",
+    "-o",
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\threecentre-r1\\build\\AxiomRoots.olean",
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\threecentre-r1\\src\\AxiomRoots.lean"
+  ],
+  "processId": 34412,
+  "elapsedSeconds": 68.72,
+  "availableMiB": 9057.65234375,
+  "workingSetMiB": 3250.61328125,
+  "privateMiB": 8121.67578125,
+  "peakWorkingSetMiB": 3250.61328125,
+  "peakPrivateMiB": 8121.67578125,
+  "exitCode": 0,
+  "finishedUtc": "2026-11-14T20:48:14.977884+00:00",
+  "log": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\threecentre-r1-axiomroots.python.log"
+}

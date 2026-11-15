@@ -1,0 +1,66 @@
+SECTION 5 AND APPENDIX B HANDOFF
+
+Files: parts/05_normalization.tex; parts/B_arithmetic_integrals.tex.
+Source covered: all Section 5 and subsections 5.1--5.3, pp.13--17,
+equations (5.1)--(5.21); all Appendix B.1--B.3, pp.26--28,
+equations (B.1)--(B.3), Tables 3--4 and final margins.
+
+Incoming main construction: K40n,N3n,h37n,alpha3/40,lambda37/40,H23/20;
+D_N^6 and source S_K. Functional denominator40320. Local coarse10h;
+inner gamma9=gamma5-4h+O_M(1); outer formulas from Section4.
+
+Normalization: L9p=-10h floor(log_p5K)-h vp40320 for pM<=K;
+vpS+gamma9in for pM>K,3p<=K; vpS+gamma9out for3p>K.
+m9=product_{p<=2h}p^(-L9p), retaining signed exponents.
+Integrality and actual normalization growth remain CONDITIONAL on
+the local analytic completion/transplant assumptions in Sections3--4.
+
+Gamma9 is source Gamma with both occurrences of5 replaced by9;
+Gamma9=Gamma5-4lambda x; R9=R5+4lambda x. N(x) scalar unchanged.
+C9(y)=11(1-y)-12alpha-6min(alpha,1-2y)-6(1+alpha-3y)_+
+on1/3<y<1/2; C9=11(1-y)-6min(alpha,1-y)-6(1+alpha-2y)_+
+on1/2<y<1; C9=0 above1. Limiting rank correction vanishes.
+
+VERIFIED exact BigInt rational outer integrals:
+raw9=14441/7200; raw5=23329/19200;
+unchanged scalar=1851/16000; extraouter=45541/57600;
+Iout9=305479/144000.
+Prime sum bound: Iout9+10lambda/M+int_3^M R9/x^3.
+
+Finite integral independently recomputed from Gamma9 on source's143
+exact rational intervals (third interior-point affine check each):
+int_3^20 R9/x^3=8222332206149897772829/7535670527041937280000.
+Equals source integral+629/600; each source Table3 row atj shifts
+by37/[10j(j+1)]. Appendix supplies exact algorithm rather than17
+new long fractions. Outer table has9 affine pieces and is explicit.
+
+Tail: F9=8lambda+2lambda{x}-12lambda{alpha x}; Q unchanged.
+P9=P5, Cper9=Cper5; P'=F9-3lambda,Cper'=P-Pbar.
+Pbar2923/240, |Cper|<16, -1/2<=Q<=13/8.
+upper tail20=6191/48000.
+lower tailM=3lambda/M+(2923/240-1/4)/M^2-32/M^3 for40|M.
+
+FINAL INTERFACE:
+delta9=116581/57600 (~2.0239756944444444).
+A9M=A5M+delta9.
+A9star=25180312106351244019069/7535670527041937280000
+       =3.3414826213528155...
+A9M=A9star+7lambda/M-2863/(240M^2)+32/M^3.
+With U=-2733991/2000000:
+A9,200+U=189010431570697800693281/94195881588024216000000
+        =2.0065678921861485...
+A9,100000+U=11624665884437287177113589319057/
+           5887242599251513500000000000000
+           =1.9745518701599305...
+A9star+U=1.9744871213528152...
+Source Section7 margins -1600(A+U)>139/5 and>7907/100 now fail.
+Exact differences given in AppendixB.3. Positive upper coefficient
+does not establish actual determinant growth. No irrationality claim.
+
+Notation disambiguation: C9(y) is outer raw cost;
+C_per(x) is unchanged periodic primitive in tail integration.
+Unique labels s5-* and appb-* throughout.
+
+Reproducibility: checks/section5_exact.mjs is standalone Node.js,
+no packages; BigInt rational calculations and explicit assertions.
+Successful run saved in checks/section5_exact_results.json.

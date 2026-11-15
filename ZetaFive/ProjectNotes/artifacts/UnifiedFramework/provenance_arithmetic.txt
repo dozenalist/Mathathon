@@ -1,0 +1,163 @@
+PROVENANCE AUDIT: LOCAL ARITHMETIC AND PROOF NARRATIVE
+14 November 2026
+
+Sources directly compared:
+  sources/Fauzan_2026_zeta5.txt, extracted from the 32-page original PDF
+  zeta5_unified_framework.tex, especially lines 406-538 and 721-789
+Page numbers below are printed paper pages, matching the PAGE markers.
+
+VERDICT
+
+Almost all of the arithmetic content of our framework is already explicit in
+Fauzan, including several connections that we previously emphasized as an
+explanatory gain. It is appropriate to retain these as attributed exposition.
+They should not be presented as discoveries of a missing connection or as new
+arithmetic lemmas. Our added content in this family is mainly the Volkenborn
+interpretation and the link between the same Laurent coefficients in real
+Euler--Maclaurin asymptotics and p-adic convergence. Replacing the tail
+primitives by periodic Bernoulli notation is an exact classical identification,
+but algebraically a very light change to formulas already printed by Fauzan.
+
+1. THE PULLBACK AND THE REASON FOR LOCALIZATION: EXPLICIT IN ORIGINAL
+
+Original section 3 opening, p. 5, explicitly explains that t=-x^2 changes square
+poles to integer poles, allowing Bernoulli multiplication by residue class.
+It announces extension to convergent p-adic expansions and distribution.
+Equation (3.1), p. 6, is exactly mu_X(R)=tau_X(x^5 R(-x^2)). The polynomial
+functional tau(P)=L(P''')/24 with L(x^k)=B_k is on p. 5. Reflection and difference
+laws are equations (3.2)-(3.3), p. 6. None of these are new identifications.
+
+2. TATE COMPLETION, NEAR/FAR POLES: EXPLICIT IN ORIGINAL
+
+Section 3.1, pp. 6-7, defines the same continuous extension on Q_p<z>, proves
+the valuation bound on its moments, and constructs the direct sum with near
+principal parts. Lemma 3.1, equation (3.4), includes precisely the conditions
+on unit-separated poles, harmonic indices, and leading degree.
+Equation (3.5), p. 7, is the convergent far-pole Laurent series reproduced in
+our equation labelled farpole, after the harmless substitution s=-a.
+The analytic/principal-part decomposition and its uniqueness are already
+explained there. Our exposition changes terminology/order, not the construction.
+
+ADDED CLASSICAL INTERPRETATION: The original does not name Volkenborn integration.
+Writing L(P)=I_p(P), hence tau(P)=I_p(P''')/24, identifies the same Bernoulli
+functional with a standard p-adic integral. This is a legitimate additional
+interpretation, not a new distribution theorem. The original derives that
+theorem directly from Bernoulli multiplication.
+
+ADDED CROSS-REALIZATION OBSERVATION: The explicit statement that the far-pole
+coefficients are also the real asymptotic coefficients of -zeta(5,a) does not
+appear in the original. It is a meaningful bridge between its real Hermite
+calculation and p-adic completion, using classical Euler--Maclaurin. It must
+retain our qualification that convergence/asymptotics in different fields do
+not identify numerical values across those fields.
+
+3. THE PARAMETER Y=p^5 X+C_p IS FORCED AT 1/x: EXPLICIT IN ORIGINAL
+
+Section 3.2, p. 7, says explicitly that the new parameter is chosen so that
+distribution holds at 1/x, after which translation and reflection determine
+all integer poles. Equation (3.6) defines precisely our C_p and Y. Its
+C_p in p^5 Z_p estimate is given immediately after (3.6).
+Lemma 3.2, equation (3.7), pp. 7-8, is the same distribution identity.
+Its proof evaluates the right side at 1/x as p^-5(-Y+C_p)=-X, and then uses
+reflection and telescoping translation exactly as our note does.
+
+Thus the claim that the new parameter is forced, and the explanation of why
+the fifth power occurs, are already present in substance. Our 'four powers
+from the functional and one from the pole' wording is a gloss on the displayed
+calculation, not a missing conceptual result supplied by us.
+
+4. THREE ADAPTED BASES AND CRT: EXPLICIT IN ORIGINAL
+
+Section 3.3, pp. 8-9, expressly uses the binomial basis for integer-valued
+polynomials and then the weighted f_i, with matrix (3.11) and estimate (3.12).
+Section 4 opening, p. 9, explicitly says two different basis choices are needed:
+vanishing distributed among classes for inner primes, and separation of residue
+terms from a polynomial correction of bounded rank for outer primes.
+
+Inner: section 4.1, p. 10, equation (4.5), gives E_{a,i}. The paragraph after
+(4.5) explicitly invokes the Chinese remainder decomposition by powers of
+t+c^2 and proves the basis is Z_p-unimodular. It explains allocation of L_a
+so no class gives a smaller bound than the assigned row weights. Equations
+(4.6)-(4.8), pp. 10-11, give exactly the weights and determinant sum.
+Proposition 4.1's proof ends with the row-plus-column valuation argument and
+unimodular congruence. Our common-pairing language is coordinate-free restatement.
+
+Outer: section 4.2, pp. 11-12, first removes nonintegral polynomial moments and
+proves G_K=A+p^-1 L with the rank bound (4.10). It then gives the exact-class
+factors Q_a,P_a,E_a and rows P_a q_{a,i} in (4.11), with a unimodularity proof
+via monic degrees and unit resultants. Calling this the CRT algebra of T_K is
+an accurate packaging, but no newly discovered basis or mechanism.
+
+The distinction between the auxiliary inner jet algebra and the actual outer
+pole algebra is useful explicit bookkeeping in our note. It prevents a false
+identification; it does not replace any step in the source.
+
+5. WEIGHT-PLUS-RANK LEMMA: SAME STATEMENT AND PROOF
+
+Original Lemma 4.2, equation (4.13), p. 12, is exactly
+v det(A+p^-1 L) >= 2 sum w_i - min(r,z), with nonpositive half-integer weights
+and z zero weights. The original proof expands complementary minors, sorts
+the weights, writes the same maximal loss, and observes increments one at zero
+weights and nonpositive afterward. Our paragraph is effectively an abridged
+restatement of that proof, including closely matching mathematical wording.
+It needs a direct attribution to Lemma 4.2, not only the global Scope citation.
+
+The need to retain polynomial corrections is not our warning alone: it is
+explicitly highlighted already in the introduction, pp. 2-3, and implemented
+in (4.10). Our assertion that residue algebra does not determine the whole
+functional is explanatory confirmation of a concern the author anticipated.
+
+6. LOCAL COUNTS -> PROFILES -> PRIME INTEGRALS: EXPLICIT IN ORIGINAL
+
+Section 5.1, p. 14, begins by saying discrete pole counts become floor functions
+and the weighted allocation has a limiting form. Equations (5.4)-(5.7) give
+Gamma, N, R=-Gamma-N and the same asymptotic rescalings. The proof following
+(5.7) explicitly writes ell_A(a)=ell(A/p,a/p).
+Section 5.2, p. 15, separates the outer residue contribution and rank correction
+in (5.8)-(5.9) and writes the same -gamma_out=K(R0-d)+O(1). It explicitly says
+the prime number theorem converts the local bounds into integrals, proved in
+Proposition 5.2, equation (5.11).
+
+Calling these functions accounting profiles rather than new moment functionals
+is a helpful summary, but their relationship is fully spelled out in the source.
+
+7. PERIODIC BERNOULLI PRIMITIVES: EXACT REWRITING OF ORIGINAL FORMULAS
+
+Section 5.3, p. 16, gives F in (5.12), then explicitly defines P and C as
+continuous periodic functions, gives their derivatives P'=F+lambda and
+C'=P-Pbar, and carries out the same two integrations by parts in (5.15).
+The original's G0(v)=v(1-v)(2v-1)/6 equals -B_3(v)/3, while
+v(1-v)=1/6-B_2(v) and v-1/2=B_1(v). Substituting these three polynomial
+identities produces every formula labelled tail1-tail3 in our note.
+
+The phrase 'periodic Bernoulli primitives of the lattice-counting error' is an
+added classical interpretation. The primitive functions, their derivatives,
+their normalization constants, their bounds, and their use are all Fauzan's.
+This is not an independent Euler--Maclaurin evaluation or a replacement proof.
+
+8. OVERALL PROOF NARRATIVE: SOURCE IS ALREADY EXPLANATORY
+
+Section 1.1, pp. 2-3, already presents the argument as one affine Hankel matrix,
+positive moments at zeta(5), a squared Vandermonde integral/logarithmic energy
+bound, coefficientwise local estimates on the full functional, three prime
+ranges/bases, and normalization costs smaller than real decay. It then explains
+Appendix C as control of the slope matrix relative to the positive matrix.
+Section 2 opening, p. 3, even contrasts the residue source of degree with the
+integral source of positivity in adjacent sentences.
+
+Consequently our outline does reorganize the paper, but should not imply that
+Fauzan fails to connect these layers or leaves all the named functions unrelated.
+An honest description is 'a classical interpretation and reorganized exposition
+of Fauzan's existing architecture, supplemented by selected corollaries'.
+
+ATTRIBUTION RECOMMENDATIONS
+
+* State at the start that the exact pullback, positive integral, local analytic
+  completion, parameter distribution, basis mechanisms, rank lemma and profile
+  calculations are Fauzan's, with specific source equation references.
+* Label the rank lemma 'Fauzan, Lemma 4.2' wherever stated; its proof is also his.
+* Label periodic formulas 'Fauzan's section 5.3 in Bernoulli notation'.
+* Reserve 'additional interpretation' for Volkenborn realization, cross-field
+  Laurent-series correspondence, and the explicitly separated algebra viewpoint.
+* Do not market our proposed reordering as discovering the local-to-global
+  architecture; the author's introduction already supplies it.

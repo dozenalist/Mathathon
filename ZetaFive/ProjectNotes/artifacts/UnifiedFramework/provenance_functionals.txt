@@ -1,0 +1,168 @@
+FUNCTIONAL PROVENANCE AUDIT — 14 November 2026
+
+Compared directly: sources/Fauzan_2026_zeta5.txt, with the original PDF's
+printed page markers, against zeta5_unified_framework.tex. This is a comparison
+to this particular manuscript, not a global literature or novelty search.
+
+Main finding
+============
+The functional foundation of our framework is overwhelmingly Fauzan's own
+construction. In particular, neither the tau/mu correspondence nor the
+continuous Hurwitz-zeta function we named Phi was newly found by our note:
+both are explicit in the original. The added value is a change of starting
+point and a collection of classical interpretations, with a few additional
+elementary identities. The note should distinguish those categories clearly.
+
+1. EXACTLY PRESENT IN FAUZAN
+
+(a) Definitions of mu_X on monomials and square poles.
+Original: Section 2.1, p.3, equations (2.2) and (2.3).
+Our formulas are the same formulas with the same normalization, including
+the seemingly ad hoc -1/4 + 1/(2j). They must be attributed to Fauzan.
+
+(b) L(x^k)=B_k, tau(P)=L(P''')/24, and the harmonic-sum values of tau_X.
+Original: Section 3 opening, p.5 (definitions immediately following the
+Gauss-valuation paragraph). Same definitions in our note.
+
+(c) mu_X(R)=tau_X(x^5 R(-x^2)).
+Original: p.6, equation (3.1), with the exact same partial-fraction calculation
+for x^5/(j^2-x^2). Thus the original already says these are the same
+functional under a weighted pullback. Calling this an unidentified
+correspondence newly discovered by us would be incorrect.
+
+(d) Reflection and difference laws.
+Original: p.6, equations (3.2) and (3.3); the regular-at-zero qualification
+for the difference law is already present. Our axioms restate these laws.
+
+(e) One pole value determines the others by difference and reflection.
+Original: Section 3.2, pp.7–8, Lemma 3.2. Its introduction explicitly says
+the new parameter is chosen at 1/x and translation/reflection then determine
+every integer-pole value. The proof p.8 applies that argument. Our uniqueness
+proposition packages this already-used argument with the elementary
+surjectivity of forward difference on polynomials. It is a useful new ordering,
+not a newly discovered determination principle.
+
+(f) Positive density and moment representation.
+Original: Section 2.4, p.5, Proposition 2.2 and equation (2.10).
+mu_zeta(R)=integral R(y^2) w(y) dy, and the explicit exponential-series w,
+are identical. The proof already computes the polynomial moments from Euler's
+even-zeta formula.
+
+(g) w(y)=y^5 f^(4)(y)/12 with f(y)=1/(exp(2*pi*y)-1), the four integrations
+by parts, and Hermite's exact integral formula.
+Original: the proof of Proposition 2.2, p.5. The O(y) endpoint justification
+and exponential decay at infinity are also stated there. Our explanation of
+the fourth derivative and kernel is substantially a reformulation of this
+proof, not a replacement by another method.
+
+(h) The exact Phi function, for every real a>0, not just integer samples.
+Original: Proposition 2.2 proof, p.5, unnumbered displayed identity:
+  integral_0^infinity w(y)/(y^2+a^2) dy
+     = a^4 zeta(5,a) - 1/(2a) - 1/4.
+The subsequent sentence specializes a=j to obtain the simple-pole value.
+Our Phi gives a name to this very identity. Its positivity also follows
+immediately from Fauzan's displayed integral, so neither Phi nor positivity
+should be represented as an additional construction of ours.
+
+(i) p-adic analytic continuation, far-pole Laurent series, Cp, Y, distribution.
+Original: Section 3.1 pp.6–7, (3.5); Section 3.2 pp.7–8, (3.6)–(3.7),
+Lemmas 3.1–3.2. The forced relation Y=p^5 X+Cp, the calculation at 1/x,
+and Cp in p^5 Z_p are all explicit. Our note repeats these results and
+adds an interpretation of their polynomial part via Volkenborn integration.
+
+(j) Finite-product binomial identity and integer-valued q_i identity.
+Original: Section 3.3, p.9, unnumbered displays preceding (3.11).
+Our formulas D_m(-x^2)/(m!)^2=binom(m-x,m)binom(m+x,m) and
+q_i(-x^2)=binom(x+i,2i)+binom(x+i-1,2i) are already present (the former
+with m=N). Describing q_i as interpolation polynomials changes terminology,
+not content.
+
+2. ADDED PACKAGING OR CLASSICAL INTERPRETATIONS NOT STATED THIS WAY THERE
+
+(a) Euler–Maclaurin operator symbol
+  tau(P)=[partial^4/(24(exp(partial)-1)) P](0),
+  tau(exp(u*x))=u^4/(24(exp(u)-1)).
+These displayed forms do not appear in the manuscript. They follow directly
+from its L/Bernoulli definition and the classical Bernoulli generating
+function. They make the common source legible; they are not a new ingredient
+of the irrationality argument. The original itself also uses the related
+generating identity L((1+z)^x)=log(1+z)/z on p.8.
+
+(b) Promoting (3.2)–(3.3) and tau_X(1/x)=-X to the initial definition.
+This reorganizes the logic. Our Proposition 2.1 adds a concise complete
+uniqueness statement, but its key pole propagation already occurs in
+Fauzan's Lemma 3.2.
+
+(c) Phi as a Stieltjes transform, and one function carrying both the integer
+samples and all polynomial moments as asymptotic coefficients.
+The term Stieltjes and this combined interpretation are not in the original.
+The exact finite geometric-series remainder in our note is an added
+elementary identity. This is a worthwhile explanatory statement built on
+Fauzan's exact continuous-a integral, not an independently found kernel.
+
+(d) Volkenborn terminology/realization of polynomial tau, and matching the
+p-adic far-pole series with the real Euler–Maclaurin asymptotic expansion
+of -zeta(5,a).
+These comparisons are not stated in the manuscript. The underlying p-adic
+series and distribution law are already there. The Volkenborn facts are
+classical and do not independently establish the rational near-pole estimates.
+
+(e) Finite products as gamma quotients and truncations of sin(pi*x)/(pi*x).
+These interpretations are not stated in the manuscript. Its finite product
+and binomial expression are already explicit. Gamma and sine connections are
+classical contextual explanations.
+
+3. ADDITIONAL IDENTITIES OR DISCUSSION NOT FOUND IN THE ORIGINAL
+
+(a) The general Abel–Plana/Hermite formula for tau_zeta(g), with boundary
+term (g'''(0)-g^(4)(0)/2)/24 and integral of
+[g^(4)(iy)-g^(4)(-iy)]/(exp(2*pi*y)-1).
+The original instead proves the mu representation directly on monomial and
+pole bases. Our formula extends the presentation to the larger tau domain
+and then derives the same weighted-pullback integral. It is an additional
+classical representation, retaining the same Euler/Hermite mechanism.
+
+(b) The prescribed regularized lattice-sum formula
+  tau_zeta(g)=-(1/24) FP_{z=0} Z_g'(z).
+This is not in the manuscript. It is an optional classical reinterpretation,
+with its explicit regularization convention essential. It does not replace
+any quantitative estimate.
+
+(c) The cotangent lattice-row identity
+  E_5(z)=sum_{n in Z}(z+n)^(-5),
+  w(y)=(i/pi)y^5 E_5(iy).
+No cotangent/Eisenstein lattice-row interpretation appears in the manuscript.
+It follows from classical cotangent partial fractions and the already-present
+Fourier series for w. Do not call it a new density or a new positivity proof.
+
+(d) The separate E_6/Eichler-integral context.
+No such modular discussion appears in the manuscript. It is classical
+background, not a contribution to the proof as currently presented.
+
+4. ATTRIBUTION AND PRESENTATION RECOMMENDATIONS
+
+The note already identifies Fauzan as its source and explicitly calls itself
+an exposition note, so reuse of his formulas is not inherently problematic.
+But section-level attribution is less precise than the comparison now permits.
+At the key claims say:
+
+* 'Fauzan's pullback identity (3.1) ...'
+* 'The function Phi already occurs, without that name, in Fauzan's proof
+  of Proposition 2.2. We emphasize its Stieltjes-transform interpretation
+  and the connection between its samples and asymptotic coefficients.'
+* 'We take Fauzan's reflection and difference identities (3.2)–(3.3) as
+  defining axioms; the propagation argument used in Lemma 3.2 gives uniqueness.'
+* 'The Euler–Maclaurin symbol, Volkenborn, and cotangent descriptions below
+  are classical interpretations of these same formulas.'
+
+In particular, the current sentence 'Thus positivity is a consequence of
+the same Euler summation kernel, rather than an unrelated representation
+added later' risks implying Fauzan failed to connect the kernel and positivity.
+He explicitly proves their connection on p.5. A fairer claim is that our
+ordering puts this connection at the start of the functional discussion.
+
+Verdict: there is meaningful expository synthesis in the functional part,
+but most of its core identifications were already explicit. We should not
+describe Phi, the tau/mu pullback, the density, or the pole-boundary propagation
+as newly discovered mathematics. The additional classical views can improve
+understanding without changing the argument's core or establishing novelty.

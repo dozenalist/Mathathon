@@ -1,0 +1,121 @@
+THE D_N^8 REPAIR: WHAT IT FIXES, AND WHAT IT CHANGES
+
+This is a separate candidate construction. It keeps K=40n, N=3n,
+h=37n, but replaces the numerator D_N^6 by D_N^8. The integer-
+valued basis now uses (D_N/(N!)^2)^4 q_i, so the scalar becomes
+S8=(K!)^(2h)4^(h-1)/[(N!)^(16h) product_{i=1}^{h-1}((2i)!)^2].
+It is not legitimate to retain the old S_K or the old real bound U.
+
+For the inner prime range set b=4 ell(alpha x,z), H=lambda+4alpha
+=1+3alpha, T=floor(2Hx), rem=Hx-T/2, q=floor(2x),
+nplus=x-q/2. The new limiting functions are
+Gamma8(x)=integral_0^(1/2) (T-b)(T+b-ell(x,z)-7) dz
+          +rem(2T-q-7)+(rem-nplus)_+,
+N8(x)=2lambda x floor(x)-16lambda x floor(alpha x)-2J(lambda x),
+R8(x)=-Gamma8(x)-N8(x).
+The small-prime coefficient remains 8lambda/M. The numerator degree
+is <=16N+4h+3=4.9K+3, still below the original 5K threshold for
+the asymptotic values of K. The same inner CRT basis has
+nonnegative class dimensions; the source's degree bounds have ample
+room under p>200M.
+
+The outer polynomial correction has rank at most
+r8=max(0,K+6N-3p+3).
+Its residue weights are
+min(0,i+4delta-(ell+6)/2), i<ell-2, and zero otherwise.
+For delta=1, these equal the ORIGINAL zeta(5) weights exactly.
+Thus the removed-class cost and zero-weight table are restored.
+For delta=0, the cost is still 9(ell-2) instead of 7(ell-2).
+Writing v,u,t_p as in the paper gives
+gamma8_out=
+ -9(K-p)+8t_p-1-min(r8,p-1-N+u),             K<2p;
+ -9(K-p)+5+16N+7t_p-min(r8,p+u),            K>=2p.
+
+The limiting raw determinant cost is, with a=alpha and y=p/K,
+C8(y)=9(1-y)-16a-7min(a,1-2y)-7u
+       +min((1+6a-3y)_+,y+u),
+       u=(1+a-3y)_+,                         1/3<y<1/2;
+C8(y)=9(1-y)-8min(a,1-y)-8(1+a-2y)_+,        1/2<y<1.
+Beyond y=1 the cost is zero. The scalar contribution in the outer
+range is unchanged because p>N. Exact rational integration gives
+integral C8=84097/57600,
+Iout8=453803/288000=1.575704861111111...
+
+FINITE INNER INTEGRATION
+
+arithmetic_exact_inner.py evaluates R in rational arithmetic. All
+possible breakpoints on [3,M] occur when one of the following is an
+integer:
+x, 2x, 2alpha x, 2lambda x, 2Hx,
+(1-alpha)x, (1+alpha)x, 2(H-1)x.
+The first five freeze the floor values. The middle two determine
+when the jumps in ell(x,z) and ell(alpha x,z) exchange their order
+as functions of z. The last one covers the zero of rem-nplus.
+Between consecutive breakpoints the overlap lengths are affine in x
+and every floor value is fixed, so R is affine in x. Its integral
+against x^-3 is therefore rational and can be computed exactly.
+The script evaluates at rational points, verifies the affine identity
+at an additional point, and integrates the affine coefficients.
+
+Validation: for the original r=3,s=5, the result on [3,20] is
+322437603634266857629/7535670527041937280000, exactly the source's
+equation (5.18), not merely the same decimal.
+
+For D8 at zeta(7), the integral on [3,20] is
+120667538150827615739401/708353029541942104320000.
+The integral on [3,200] is an exact rational with a long numerator
+and denominator, stored in arithmetic_variant_results.json; its
+decimal value is 0.11039170983130402. It requires 1508 intervals.
+Thus the cutoff-M=200 normalization upper coefficient is exactly
+Iout8+8lambda/200+integral_3^200 R8(x)/x^3 dx,
+with decimal value 1.723096570942415.
+
+This is an exact integration of the proposed arithmetic certificate,
+not a formal proof of all generalized local estimates. Those
+estimates are supplied as mathematical derivations above and in
+arithmetic_notes.txt.
+
+THE ANALYTIC PRICE OF THIS REPAIR
+
+The field becomes
+V8(t)=V6(t)-2 integral_0^alpha log(t+u^2) du,
+and the scalar constant becomes
+C8*=C6*+4alpha lambda(1-log alpha).
+The latter increment is about 0.9962991384. The original comparison
+measure cannot simply be declared to satisfy the old bound for V8.
+The root agent separately evaluates its potential and records
+exploratory results. The arithmetic calculation by itself does not
+claim success or prove that every possible D8 certificate fails.
+
+A RIGOROUS SINGLE-POINT OBSTRUCTION FOR THE ORIGINAL MEASURE
+
+experiments/single_point_certificate.py supplies a stronger, narrowly
+scoped check than a numerical search for the maximum. Put t=3/4.
+This lies to the right of all sixteen intervals in the original
+measure. Let phi8(t)=2U_rho(t)-V8(t). Every admissible upper bound
+M8 for phi8 must satisfy M8>=phi8(3/4). Consequently the same-
+measure certificate coefficient obeys
+A8,200+lambda M8-I(rho)+C8*
+ >= A8,200+lambda phi8(3/4)-I(rho)+C8*.
+
+Rational interval arithmetic proves that the right side is in
+[1.305909182511730956, 1.305909182511731277], hence is >13/10.
+The real part lambda phi8(3/4)-I(rho)+C8* is approximately
+-0.417187388430684. This is a LOWER witness for the best possible
+upper-bound coefficient obtained from this particular measure; it
+is not an upper bound on the real determinant itself.
+
+The computation uses exact rational interval endpoints rounded
+outward to the grid 10^-18. Square roots use integer isqrt. Logs
+use log(x)=2 sum z^(2k+1)/(2k+1), z=(x-1)/(x+1), after range
+reduction to x in [1,2], with an explicit geometric remainder.
+Arctangents use a half-angle reduction and the alternating-series
+remainder. Pi uses Machin's identity 16atan(1/5)-4atan(1/239).
+All numerical output decimals are displays of certified rational
+intervals; they are not the source of the inequalities.
+
+Thus the D8 repair fails with the original parameters, original
+measure, and this arithmetic certificate, even if the maximum of
+the potential is bounded perfectly. This does NOT prove failure
+for a different comparison measure, better arithmetic content,
+different alpha, or every construction involving D_N^8.

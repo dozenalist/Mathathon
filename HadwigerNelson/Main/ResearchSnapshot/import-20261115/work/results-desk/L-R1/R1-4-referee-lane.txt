@@ -1,0 +1,23 @@
+[Results desk, per Jarom] For a free OMM REFEREE lane (proposed chat-2345d7f398 "Referee - adversarial theorem discovery" or L-N3 chat-4ac4b34cf7 "adversarial synthesis"; placed by the research desk). Task R1-4: independent REFEREE of the A6 paired producer (ledger A6-PAIRED-PRODUCER, now CANDIDATE: parent-checked, no referee file). Its finite core and a.e. bridge compile in Lean, but the paper theorem as a whole has no independent verdict. Be adversarial.
+
+SETTING (Astra A6). C={0..5}, c: plane -> C measurable, WeakColoring 6 c. ONE centre x. E_i={i,i+1} mod 6. Six sets K_i with ApproachingContinuum x K_i v_i (x in K_i; points x + r_n w_n in K_i with r_n -> 0+, unit w_n -> v_i; no connectedness or compactness), signed directions v_0=v_1=e(0), v_2=v_3=e(120), v_4=v_5=e(240) (degrees). Exclusion (EX): for each i and each label a in E_i, Disjoint(spatialSupport(c,a), Straddle(K_i)), where Straddle K = {z : some p in K has dist<1, some q in K has dist>1}.
+
+SOURCE TOOLS (quoted from the supplied Lean, take as given). For a.e. angle theta, the palette Q(theta) at x is the set of labels whose density survives in the direction e(theta) (essential range near x+e(theta) along the unit circle). (OUT) continuum_outer_restriction: for F a set of edge indices with <e(theta),v_i> > 0 for all i in F, Q(theta) meets J_F = C minus U_{i in F} E_i (a.e. theta). (IN) continuum_inner_restriction: same with < 0. (DIS) palette_sixty_disjoint: Q(theta) and Q(theta+60) are disjoint for a.e. theta. These give intersection HITS, not containment.
+
+CLAIMED TABLE. Blocks B0={0,1}, B1={2,3}, B2={4,5}; label unions U0={0,1,2}, U1={2,3,4}, U2={0,4,5}. For t in (-30,30) and theta_j = t + 60j:
+ j | positive blocks | OUT residual | negative blocks | IN residual
+ 0 | 0  | {3,4,5} | 12 | {1}
+ 1 | 01 | {5}     | 2  | {1,2,3}
+ 2 | 1  | {0,1,5} | 02 | {3}
+ 3 | 12 | {1}     | 0  | {3,4,5}
+ 4 | 2  | {1,2,3} | 01 | {5}
+ 5 | 02 | {3}     | 1  | {0,1,5}
+So f=(1,5,3,1,5,3) lies in Q_j, and Q_j meets T=({3,4,5},{1,2,3},{0,1,5}) x2. With (DIS) cyclically, Q_j cannot contain f_(j-1) or f_(j+1); the only label of T_j left is g_j = f_j + 3, so g = (4,2,0,4,2,0) in Q_j. Hence Q contains the canonical paired palette P(t) = A_(floor((t+30)/60) mod 3), A0={1,4}, A1={2,5}, A2={0,3}, for a.e. t. The refereed A5 theorem says no centre of a weak measurable 6-colouring has a palette containing P a.e.; so False. The authors claim extension to common rotations, one common reflection and global relabelings.
+
+CHECK. (1) Recompute every table cell from the cosine signs; note which phases are excluded (cos = 0) and that they are null. (2) Verify the forcing step exactly as a finite statement over Fin 6, including that no cardinality bound on Q_j is used, and that the containment reading (T_j subset of Q_j) would be inconsistent. (3) Check the a.e. bookkeeping: finitely many conull sets intersected at one centre; the 60-degree shift is measure-preserving; t ranges over a positive-measure arc so the conclusion holds for a.e. theta on the whole circle (the six translates of (-30,30) cover the circle off six points). (4) Check that the phase alignment of {f_j, g_j} matches P exactly (not shifted by 60 degrees). (5) Check the three extension claims, and say precisely which direction patterns are covered (e.g. is v_0 != v_1 with both near e(0) covered? It should NOT be, unless proved). (6) State whether the composition with A5 needs anything beyond palette containment.
+
+SOURCE ARTIFACTS (provenance only): outputs/ASTRA-PAIRED-PRODUCER-A6.txt; outputs/ASTRA-PAIRED-COROLLARIES-A6.txt; Lean finite core claude-lean-20261114t212205-0 (A6Forcing) and the desk compile A6-Bridge-r2-G3.lean.
+
+DELIVERABLE: R1-4-REFEREE.md with a verdict (ACCEPT / ACCEPT WITH CORRECTIONS / REJECT), the recomputed table, a short script (with sha256) that recomputes the table and the forcing step exhaustively, and a numbered list of gaps with fixes.
+
+ACCEPTANCE: the table is recomputed, not copied; every hypothesis used is one listed above; the extension claims are each marked proved / not proved. No chromatic-number claims.

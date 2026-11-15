@@ -1,0 +1,5 @@
+[sat] SAT = 177 UNSAT = 7599
+[partitions] ordered set partitions of {0..5}: 4683
+[census] surviving by k=1..6: [177, 2576, 12762, 26928, 25200, 8640]
+[census] total surviving = 76283 of 36415008
+[time] 13.3s

@@ -1,0 +1,43 @@
+Files: parts/06_real_determinant.tex and parts/A_measure.tex.
+Scope: all source Section 6 (6.1)-(6.16), pp. 17-20, and Appendix A
+(A.1)-(A.11), pp. 21-26. Both fragments have ordinary section headings;
+place A_measure.tex after the main document's appendix switch.
+
+Definitions retained: K=40n, N=3n, h=37n, alpha=3/40, lambda=37/40,
+D_N^6, S_K, V, rho (16 arcsine components), C_*, M0=-1329/200,
+U=-2733991/2000000. Source Table 1 is reproduced completely.
+
+Derived changed quantities:
+w9(y) <= C9(1+y)^9 exp(-2*pi*y), C9=2^25, using the full Eulerian
+polynomial with coefficients 1,247,4293,15619,15619,4293,247,1.
+R9 = integral t^(-1/2)(1+sqrt(t))^9 exp(-sqrt(t)) dt
+   = 2 sum_{k=0}^9 binom(9,k) k! = 1972820.
+Scaled determinant K exponent is 2h(h+6N-K)+20h (source: +16h).
+After configuration bound, log Delta has +22h log K+170h.
+Adding log S_K gives +28h log K+176h, hence safely
+log F9,K(zeta(9)) <= U K^2+28K log K+200K, with strict positivity.
+The directly evaluated linear coefficient before S_K is 164.5447204;
+170 is an intentionally enlarged bound, so 200K suffices without 300K.
+
+Numerical certificate status: source Table 2's 684 interval checks and
+the source enclosures of I(rho), C_*, kappa are retained INPUTS, not newly
+verified. V is exactly identical because D_N^6, alpha and lambda are
+fixed. Conditional status is clearly stated at Section 6's final bound.
+Appendix A gives A1-A11 algebra, dyadic enclosure procedure, partition
+rule, q-=59205077/10^10 and q+=59205079/10^10, and refers to exact source
+Table 2 row list rather than copying it.
+
+App C interface: kappa=2*pi/sqrt(3)+log(4/3)+(9/20)log18
++(37/40)(1+log(1600/111))+(37/20)log((43+4sqrt(114))/5).
+Source A11 bounds kappa between 2773171335773/200000000000 and
+6932928339433/500000000000, with upper bound 6933/500.
+This is the same leading exponent for fixed shape; changed weight
+alters lower-bound prefactors/powers, to be handled in Appendix C.
+
+Checks performed: direct sum of listed c_j integers =925000000000;
+R9 independently evaluated; changed K powers summed explicitly;
+all TeX environment counts and brace counts balance in both fragments.
+No PDF rendering or compilation performed. No unresolved local algebra
+mismatch identified. The negative arithmetic-plus-real quadratic sign
+is outside this assignment; real decay alone is explicitly not presented
+as an irrationality conclusion.

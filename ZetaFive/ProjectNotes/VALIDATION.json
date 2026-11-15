@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-14",
+  "timezone": "America/Los_Angeles",
+  "environment": {
+    "python": "Bundled Python 3.12, standard library; extension scripts used -S",
+    "node": "Available Node.js runtime, no additional packages",
+    "pdfs": "Preserved existing files without modification; original chats recorded render review"
+  },
+  "checks": [
+    {"working_directory": "artifacts/LaiArithmetic", "command": "python check_arithmetic.py", "result": "passed", "scope": "Eight table rows and 5738 rational identity inputs; recorded output reproduced"},
+    {"working_directory": "artifacts/UnifiedFramework", "command": "python framework_checks.py", "result": "passed", "scope": "Exact finite identities and numerical sanity checks; output JSON byte-identical to source"},
+    {"working_directory": "artifacts/Extensions", "command": "python experiments/exact_checks.py", "result": "passed", "scope": "Independent rational and modular determinant valuations, including the order-seven counterexample"},
+    {"working_directory": "artifacts/Extensions", "command": "python arithmetic_costs.py", "result": "passed", "scope": "Exact order-seven normalization increment 751/768"},
+    {"working_directory": "artifacts/Extensions", "command": "python arithmetic_exact_inner.py", "result": "passed", "scope": "Source equation 5.18 fraction and D6/D8 arithmetic JSON"},
+    {"working_directory": "artifacts/Extensions", "command": "python experiments/single_point_certificate.py", "result": "passed", "scope": "Specified D8 certificate coefficient exceeds 13/10"},
+    {"working_directory": "artifacts/Extensions", "command": "python experiments/main_measure_certificate.py", "result": "passed", "scope": "Specified refined D6 certificate coefficient exceeds 9/10"},
+    {"working_directory": "artifacts/Extensions", "command": "node zeta9_draft/checks/section5_exact.mjs", "result": "passed", "scope": "Proposed order-nine increment 116581/57600 and positive combined coefficients"},
+    {"working_directory": "artifacts/Extensions", "command": "matrix_affine(9,40,3), rational determinant and determinant_valuation_modular at p=29, as documented in README.md", "result": "passed", "scope": "Both give valuation -104; modular precision remaining 97 digits"}
+  ],
+  "archive_review": {
+    "independent_review": "Topic notes reviewed across reviewers; domain restrictions, source locators and chronology corrected before publication",
+    "artifact_identity": "Copied original artifacts matched source bytes after checks",
+    "markdown_targets": "Relative file targets checked locally",
+    "tex_includes": "Every included TeX part present"
+  },
+  "limits": [
+    "Finite checks are not uniform proofs of the determinant valuation estimates.",
+    "The source Appendix A certificate was not independently rerun.",
+    "The ninth-order inner analytic transfer remains formal.",
+    "No new Lean or Isabelle verification was performed by this archival task.",
+    "No new visual PDF audit or typesetting was performed; copies preserve original files.",
+    "The older ChatGPT dependency-map PDF was unavailable; only recoverable conclusions were consolidated."
+  ]
+}

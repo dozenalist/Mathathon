@@ -1,0 +1,7 @@
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\claude-admissions\claude-lean-20261114t215215-1\Candidate.lean:105:2: error: interval_cases failed: could not find upper bound on m % 6
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\claude-admissions\claude-lean-20261114t215215-1\Candidate.lean:219:26: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\claude-admissions\claude-lean-20261114t215215-1\Candidate.lean:219:40: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`

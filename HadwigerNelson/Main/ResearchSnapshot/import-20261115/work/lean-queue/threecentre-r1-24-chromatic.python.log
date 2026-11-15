@@ -1,0 +1,6 @@
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\threecentre-r1\src\OAI\Geometry\PlaneColoring\Chromatic.lean:40:8: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'OAI.Problem160.chromaticNumber_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.six_le_planeChromaticNumber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.not_properColoring_five' depends on axioms: [propext, Classical.choice, Quot.sound]

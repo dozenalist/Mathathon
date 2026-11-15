@@ -1,0 +1,25 @@
+A5 sliver certificate: exact rational interval arithmetic, outward rounding 2^-120
+Corner roots (g = 1 - |v - ci|^2), brackets from the domain file (A1):
+  root B1 u1* (qm, theta1=28.7175 deg): bracket [0.255989075987, 0.255989077987] g(lo)=[5.02243275055e-10, 5.02243275055e-10] g(hi)=[-5.02243745746e-10, -5.02243745746e-10] g'=[-0.502243529245, -0.502243491557] -> strict sign change True, one-signed derivative True
+  root B1 u3* (ap, theta3=155.7048 deg): bracket [-0.215250438022, -0.215250436022] g(lo)=[-2.5285940721e-09, -2.5285940721e-09] g(hi)=[2.52859506674e-09, 2.52859506674e-09] g'=[2.52859455309, 2.52859458574] -> strict sign change True, one-signed derivative True
+  root B2 u1* (am, theta1=24.2952 deg): bracket [0.215250436022, 0.215250438022] g(lo)=[2.52859506674e-09, 2.52859506674e-09] g(hi)=[-2.5285940721e-09, -2.5285940721e-09] g'=[-2.52859458574, -2.52859455309] -> strict sign change True, one-signed derivative True
+  root B2 u3* (qp, theta3=152.4268 deg): bracket [-0.245375380412, -0.245375378412] g(lo)=[-9.45771437914e-10, -9.45771437914e-10] g(hi)=[9.4577054765e-10, 9.4577054765e-10] g'=[0.945770974239, 0.945771011326] -> strict sign change True, one-signed derivative True
+  B1 corner orientation (v1-ci)x(v3-ci) = [0.977743318778, 0.977743326439] > 0: True
+  B2 corner orientation (v1-ci)x(v3-ci) = [0.952152493666, 0.952152501129] > 0: True
+== P1  B1 theta3-sliver: u1 in arc1(qm) (over-covered by [201/1000, u1*+1e-9]), u3 in [u3*-1e-9, -2152/10000]
+   certified=True  boxes=63  failures=0
+   sup dR/du1 <= -0.0933207 < 0 ; inf dR/du3 >= 2.42653 > 0 on the whole box
+   far apex: inf |A2-ci|^2 >= 2.19072 > 1, so |A2-ci| > 1
+   also certified on every sub-box: D_x < 0, Delta > 0, |D|^2 < 4
+== P2  B2 theta3-sliver: u1 in arc1(am) (over-covered by [-36/1000, u1*+1e-9]), u3 in [u3*-1e-9, -245/1000]
+   certified=True  boxes=15  failures=0
+   sup dR/du1 <= -0.534872 < 0 ; inf dR/du3 >= 0.00105267 > 0 on the whole box
+   far apex: inf |A2-ci|^2 >= 1.7085 > 1, so |A2-ci| > 1
+   also certified on every sub-box: D_x < 0, Delta > 0, |D|^2 < 4
+== P3  B2 theta1-sliver: u1 in [-36/1000, -35/1000], u3 in arc3(qp) (over-covered by [u3*-1e-9, -148/1000])
+   certified=True  boxes=1  failures=0
+   inf R >= 0.293651 > 0 on the whole box
+   far apex: inf |A2-ci|^2 >= 1.31776 > 1, so |A2-ci| > 1
+   also certified on every sub-box: D_x < 0, Delta > 0, |D|^2 < 4
+NOTE (disproof of the domain file claim |A_far - ci| > 1.5): on the P1 sub-box u1 in [0.201000, 0.204437], u3 in [-0.215250438, -0.215200] the enclosure |A2-ci|^2 in [2.200432838, 2.23387900854] has upper end < 9/4: True
+ALL PIECES CERTIFIED: True   (0.4 s)

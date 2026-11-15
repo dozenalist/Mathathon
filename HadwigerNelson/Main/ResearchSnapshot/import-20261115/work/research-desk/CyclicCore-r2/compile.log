@@ -1,0 +1,15 @@
+five_sequence_small_no_accumulation : ∀ (c : ℂ → Fin 5),
+  Measurable c →
+    WeakColoring 5 c →
+      ∀ {yn : ℕ → ℂ} {x : ℂ},
+        (∀ (n : ℕ), FiveCenter c (yn n)) →
+          FiveCenter c x → Tendsto yn atTop (𝓝 x) → (∀ (n : ℕ), yn n ≠ x) → (∀ (n : ℕ), ‖yn n - x‖ < 2) → False
+five_sequence_small_no_accumulation_from_v2 : ∀ (c : ℂ → Fin 5),
+  Measurable c →
+    WeakColoring 5 c →
+      ∀ {yn : ℕ → ℂ} {x : ℂ},
+        (∀ (n : ℕ), FiveCenter c (yn n)) →
+          FiveCenter c x → Tendsto yn atTop (𝓝 x) → (∀ (n : ℕ), yn n ≠ x) → (∀ (n : ℕ), ‖yn n - x‖ < 2) → False
+'OAI.EuclideanFiveColor.five_sequence_small_no_accumulation_from_v2' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

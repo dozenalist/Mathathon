@@ -1,0 +1,51 @@
+ADDITIONAL ANALYTIC CHECKS
+14 November 2026
+
+These observations are independent algebraic checks, not external results
+or computational experiments. They address simple changes of presentation.
+
+1. Multiplying the functional by a fixed nonzero rational constant
+
+An h by h determinant is multiplied by the h-th power of that constant.
+Since h is proportional to K, the logarithmic change is O(K), below the
+K^2 scale at which the obstruction occurs. This cannot repair the leading
+budget gap. More generally, even a K-dependent rational rescaling does
+not change the underlying primitive integer polynomial: clearing content
+undoes that scalar. A better arithmetic estimate is different from merely
+renaming the same rational polynomial with a scalar factor.
+
+2. Shifting or rescaling the polynomial variable by fixed rationals
+
+For a fixed prime p and r in Z_p, substitution X -> X+r preserves the
+Gauss valuation of a polynomial: it cannot decrease the valuation since
+the binomial coefficients and r are integral, and applying the inverse
+substitution X -> X-r gives the opposite inequality. A substitution
+X -> aX+b likewise preserves it when a is a p-adic unit and b is integral.
+
+For fixed rational a != 0 and b, these conditions hold at all but finitely
+many primes. Thus the general large-prime denominator obstruction cannot
+be removed by a fixed rational change of coordinate. The diagnostic at
+X=0 is relevant because the integrality requirement applies to every
+coefficient, not because zero is supposed to approximate zeta(7).
+
+This does not assert that a parameter-dependent affine change with growing
+denominators is harmless; it would require its own arithmetic accounting.
+
+3. Improving only the original numerical enclosures
+
+This escape route was tested more strongly in main_measure_certificate.py.
+Exact finite integration sharpens the local-cost bound, and the potential
+is tested at a single rational point. Even if the potential supremum for
+the original measure were bounded perfectly, the resulting coefficient
+would still exceed 0.9. This excludes improving only those enclosures as
+a repair of the specified local-valuation certificate. It does not
+exclude a different comparison measure or stronger local valuations.
+
+4. The smallest illustrative integer polynomial
+
+The K=2,N=0 example is useful for understanding the construction, but its
+positive value gives no irrationality criterion by itself. The proof
+requires an entire sequence with integrality, nonvanishing, degree O(K),
+and decay exp(-c K^2). Keeping these four obligations separate prevents
+the successful small example from being mistaken for progress on the
+final irrationality claim.

@@ -1,0 +1,14 @@
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\claude-admissions\claude-lean-20261114t213711-0\Candidate.lean:171:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\claude-admissions\claude-lean-20261114t213711-0\Candidate.lean:236:8: error: (kernel) unknown constant 'OAI.EuclideanFiveColor.A6.ae_restrictions'
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\claude-admissions\claude-lean-20261114t213711-0\Candidate.lean:321:17: error: Application type mismatch: The argument
+  harc
+has type
+  t ∈ arc
+but is expected to have type
+  t + sixAngle j + sixAngle j ∈ arc
+in the application
+  hθ j harc

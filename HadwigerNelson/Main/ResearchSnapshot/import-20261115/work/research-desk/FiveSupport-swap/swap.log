@@ -1,0 +1,156 @@
+FiveSupportSwap.lean:29:6: error: `OAI.EuclideanFiveColor.palette_neighbor_real` has already been declared
+FiveSupportSwap.lean:43:6: error: `OAI.EuclideanFiveColor.palette_neighbor_disjoint` has already been declared
+FiveSupportSwap.lean:164:8: error(lean.unknownIdentifier): Unknown identifier `strict_state_no_unit_support`
+@OAI.EuclideanFiveColor.stateSupport : {ι : Type u_1} → (ℝ → ι) → ι → Set ℝ
+@OAI.EuclideanFiveColor.ae_mem_stateSupport : ∀ {ι : Type u_1} [Fintype ι] [inst : MeasurableSpace ι]
+  [MeasurableSingletonClass ι] {f : ℝ → ι},
+  Measurable f → ∀ (i : ι), ∀ᵐ (t : ℝ), f t = i → t ∈ OAI.EuclideanFiveColor.stateSupport f i
+@OAI.EuclideanFiveColor.ae_state_support : ∀ {ι : Type u_1} [Fintype ι] [inst : MeasurableSpace ι]
+  [MeasurableSingletonClass ι] {f : ℝ → ι}, Measurable f → ∀ᵐ (t : ℝ), t ∈ OAI.EuclideanFiveColor.stateSupport f (f t)
+@OAI.EuclideanFiveColor.stateSupport_cover : ∀ {ι : Type u_1} [Fintype ι] [inst : MeasurableSpace ι]
+  [MeasurableSingletonClass ι] {f : ℝ → ι}, Measurable f → ∀ (a : ℝ), ∃ i, a ∈ OAI.EuclideanFiveColor.stateSupport f i
+@OAI.EuclideanFiveColor.stateSupport_shift_relation : ∀ {ι : Type u_1} [Fintype ι] [inst : MeasurableSpace ι]
+  [MeasurableSingletonClass ι] {f : ℝ → ι},
+  Measurable f →
+    ∀ {R : ι → ι → Prop} {d : ℝ},
+      (∀ᵐ (t : ℝ), R (f t) (f (t + d))) →
+        ∀ {i : ι} {a : ℝ},
+          a ∈ OAI.EuclideanFiveColor.stateSupport f i → ∃ j, R i j ∧ a + d ∈ OAI.EuclideanFiveColor.stateSupport f j
+@OAI.EuclideanFiveColor.stateSupport_nonempty_measure : ∀ {ι : Type u_1} {f : ℝ → ι} {i : ι} {a : ℝ},
+  a ∈ OAI.EuclideanFiveColor.stateSupport f i → 0 < MeasureTheory.volume {t | f t = i}
+OAI.EuclideanFiveColor.fiveRealState : (c : ℂ → Fin 5) → Measurable c → ℂ → Fin 5 → Set ℝ
+OAI.EuclideanFiveColor.fiveSupport : (c : ℂ → Fin 5) → Measurable c → ℂ → Fin 5 → Set ℝ
+OAI.EuclideanFiveColor.five_realState_measurable : ∀ (c : ℂ → Fin 5) (hc : Measurable c) (x : ℂ) (i : Fin 5),
+  MeasurableSet (OAI.EuclideanFiveColor.fiveRealState c hc x i)
+OAI.EuclideanFiveColor.five_support_trace : ∀ (c : ℂ → Fin 5) (hc : Measurable c),
+  OAI.EuclideanFiveColor.WeakColoring 5 c →
+    ∀ {x : ℂ},
+      OAI.EuclideanFiveColor.FiveCenter c x →
+        ∀ {a : ℝ} {i : Fin 5},
+          a ∈ OAI.EuclideanFiveColor.fiveSupport c hc x i →
+            ∃ b,
+              OAI.EuclideanFiveColor.IsTrace c hc (x + OAI.EuclideanFiveColor.direction ↑a) b ∧
+                ∀ j ∈ OAI.EuclideanFiveColor.fiveDiag i, OAI.EuclideanFiveColor.traceValue b j = 0
+OAI.EuclideanFiveColor.five_support_step_ban : ∀ (c : ℂ → Fin 5) (hc : Measurable c),
+  OAI.EuclideanFiveColor.WeakColoring 5 c →
+    ∀ {x : ℂ},
+      OAI.EuclideanFiveColor.FiveCenter c x →
+        ∀ {a : ℝ} {i j : Fin 5},
+          a ∈ OAI.EuclideanFiveColor.fiveSupport c hc x i →
+            a ∈ OAI.EuclideanFiveColor.fiveSupport c hc x j →
+              OAI.EuclideanFiveColor.fiveAdj i j →
+                ∀ᵐ (t : OAI.EuclideanFiveColor.Angles) ∂OAI.EuclideanFiveColor.angularMeasure,
+                  ¬(OAI.EuclideanFiveColor.fiveState c hc x t = i ∧
+                        OAI.EuclideanFiveColor.fiveState c hc x (t + ↑OAI.EuclideanFiveColor.sixty) = j) ∧
+                    ¬(OAI.EuclideanFiveColor.fiveState c hc x t = j ∧
+                        OAI.EuclideanFiveColor.fiveState c hc x (t + ↑OAI.EuclideanFiveColor.sixty) = i)
+OAI.EuclideanFiveColor.five_support_cover : ∀ (c : ℂ → Fin 5) (hc : Measurable c) (x : ℂ) (a : ℝ),
+  ∃ i, a ∈ OAI.EuclideanFiveColor.fiveSupport c hc x i
+OAI.EuclideanFiveColor.five_support_next : ∀ (c : ℂ → Fin 5) (hc : Measurable c),
+  OAI.EuclideanFiveColor.WeakColoring 5 c →
+    ∀ {x : ℂ},
+      OAI.EuclideanFiveColor.FiveCenter c x →
+        ∀ {a : ℝ} {i : Fin 5},
+          a ∈ OAI.EuclideanFiveColor.fiveSupport c hc x i →
+            ∃ j,
+              OAI.EuclideanFiveColor.fiveAdj i j ∧
+                a + OAI.EuclideanFiveColor.sixty ∈ OAI.EuclideanFiveColor.fiveSupport c hc x j
+OAI.EuclideanFiveColor.five_support_prev : ∀ (c : ℂ → Fin 5) (hc : Measurable c),
+  OAI.EuclideanFiveColor.WeakColoring 5 c →
+    ∀ {x : ℂ},
+      OAI.EuclideanFiveColor.FiveCenter c x →
+        ∀ {a : ℝ} {i : Fin 5},
+          a ∈ OAI.EuclideanFiveColor.fiveSupport c hc x i →
+            ∃ j,
+              OAI.EuclideanFiveColor.fiveAdj i j ∧
+                a - OAI.EuclideanFiveColor.sixty ∈ OAI.EuclideanFiveColor.fiveSupport c hc x j
+OAI.EuclideanFiveColor.five_support_no_sixty : ∀ (c : ℂ → Fin 5) (hc : Measurable c),
+  OAI.EuclideanFiveColor.WeakColoring 5 c →
+    ∀ {x : ℂ},
+      OAI.EuclideanFiveColor.FiveCenter c x →
+        ∀ {a : ℝ} {i : Fin 5},
+          a ∈ OAI.EuclideanFiveColor.fiveSupport c hc x i →
+            a + OAI.EuclideanFiveColor.sixty ∉ OAI.EuclideanFiveColor.fiveSupport c hc x i
+OAI.EuclideanFiveColor.FiveComb.Adj : Fin 5 → Fin 5 → Prop
+OAI.EuclideanFiveColor.FiveComb.contact_neighbors : ∀ (i : Fin 5) (L : Finset (Fin 5)),
+  i ∉ L →
+    i + 1 ∉ L →
+      (∃ j ∈ L, OAI.EuclideanFiveColor.FiveComb.Adj i j) →
+        (∃ j ∈ L, OAI.EuclideanFiveColor.FiveComb.Adj (i + 1) j) → i - 1 ∈ L ∧ i + 2 ∈ L
+OAI.EuclideanFiveColor.FiveComb.opposite_contacts : ∀ (i j : Fin 5),
+  Disjoint {i - 1, i + 2} {j - 1, j + 2} → j = i + 1 ∨ j + 1 = i
+OAI.EuclideanFiveColor.FiveComb.adjacent_oriented : ∀ (I : Finset (Fin 5)),
+  (∃ i ∈ I, ∃ j ∈ I, OAI.EuclideanFiveColor.FiveComb.Adj i j) → ∃ i ∈ I, i + 1 ∈ I
+OAI.EuclideanFiveColor.FiveComb.neighbors : ∀ (i j : Fin 5),
+  OAI.EuclideanFiveColor.FiveComb.Adj i j → j = i - 1 ∨ j = i + 1
+OAI.EuclideanFiveColor.FiveComb.two_bans : ∀ (i j : Fin 5),
+  j = i + 1 ∨ j + 1 = i →
+    ∃ s,
+      (s = i ∨ s = i + 1) ∧
+        (s = j ∨ s = j + 1) ∧
+          ∀ (t : Fin 5),
+            OAI.EuclideanFiveColor.FiveComb.Adj s t →
+              (s = i ∧ t = i + 1 ∨ s = i + 1 ∧ t = i) ∨ s = j ∧ t = j + 1 ∨ s = j + 1 ∧ t = j
+OAI.EuclideanFiveColor.fiveSupportList : (c : ℂ → Fin 5) → Measurable c → ℂ → ℝ → Finset (Fin 5)
+OAI.EuclideanFiveColor.five_contact_next : ∀ (c : ℂ → Fin 5) (hc : Measurable c),
+  OAI.EuclideanFiveColor.WeakColoring 5 c →
+    ∀ {x : ℂ},
+      OAI.EuclideanFiveColor.FiveCenter c x →
+        ∀ {a : ℝ} {i : Fin 5},
+          a ∈ OAI.EuclideanFiveColor.fiveSupport c hc x i →
+            a ∈ OAI.EuclideanFiveColor.fiveSupport c hc x (i + 1) →
+              i - 1 ∈ OAI.EuclideanFiveColor.fiveSupportList c hc x (a + OAI.EuclideanFiveColor.sixty) ∧
+                i + 2 ∈ OAI.EuclideanFiveColor.fiveSupportList c hc x (a + OAI.EuclideanFiveColor.sixty)
+OAI.EuclideanFiveColor.five_contact_prev : ∀ (c : ℂ → Fin 5) (hc : Measurable c),
+  OAI.EuclideanFiveColor.WeakColoring 5 c →
+    ∀ {x : ℂ},
+      OAI.EuclideanFiveColor.FiveCenter c x →
+        ∀ {a : ℝ} {i : Fin 5},
+          a ∈ OAI.EuclideanFiveColor.fiveSupport c hc x i →
+            a ∈ OAI.EuclideanFiveColor.fiveSupport c hc x (i + 1) →
+              i - 1 ∈ OAI.EuclideanFiveColor.fiveSupportList c hc x (a - OAI.EuclideanFiveColor.sixty) ∧
+                i + 2 ∈ OAI.EuclideanFiveColor.fiveSupportList c hc x (a - OAI.EuclideanFiveColor.sixty)
+OAI.EuclideanFiveColor.five_opposite_contacts_false : ∀ (c : ℂ → Fin 5) (hc : Measurable c),
+  OAI.EuclideanFiveColor.WeakColoring 5 c →
+    ∀ {x : ℂ},
+      OAI.EuclideanFiveColor.FiveCenter c x →
+        ∀ {a b : ℝ},
+          b = a + 3 * OAI.EuclideanFiveColor.sixty →
+            ∀ {i j : Fin 5},
+              a ∈ OAI.EuclideanFiveColor.fiveSupport c hc x i →
+                a ∈ OAI.EuclideanFiveColor.fiveSupport c hc x (i + 1) →
+                  b ∈ OAI.EuclideanFiveColor.fiveSupport c hc x j →
+                    b ∈ OAI.EuclideanFiveColor.fiveSupport c hc x (j + 1) → False
+@OAI.EuclideanFiveColor.plane_lipschitz_image_null : ∀
+  {F : OAI.EuclideanFiveColor.RealPlane → OAI.EuclideanFiveColor.RealPlane} {K : NNReal},
+  LipschitzWith K F →
+    ∀ {A : Set OAI.EuclideanFiveColor.RealPlane}, MeasureTheory.volume A = 0 → MeasureTheory.volume (F '' A) = 0
+@OAI.EuclideanFiveColor.palette_open_exclusion : ∀ {k : ℕ} (c : ℂ → Fin k) (hc : Measurable c),
+  OAI.EuclideanFiveColor.WeakColoring k c →
+    ∀ {x : ℂ} {i : Fin k} {a b : ℝ},
+      Real.sin (b - a) ≠ 0 →
+        ∀ {V : Set ℝ},
+          IsOpen V →
+            a ∈ V →
+              (∀ᵐ (t : ℝ), t ∈ V → ↑t ∈ OAI.EuclideanFiveColor.paletteSet c hc x i) →
+                ∃ U,
+                  IsOpen U ∧
+                    x + OAI.EuclideanFiveColor.direction ↑a + OAI.EuclideanFiveColor.direction ↑b ∈ U ∧
+                      MeasureTheory.volume (U ∩ {z | c z = i}) = 0
+@OAI.EuclideanFiveColor.transitionEdge_no_open_exclusion : ∀ {k : ℕ} (c : ℂ → Fin k) {i j : Fin k} {x : ℂ},
+  OAI.EuclideanFiveColor.TransitionEdge c i j x →
+    ∀ {U : Set ℂ}, IsOpen U → x ∈ U → MeasureTheory.volume (U ∩ {z | c z = i}) = 0 → False
+@OAI.EuclideanFiveColor.finite_closed_family_locally_subset : ∀ {ι : Type u_1} {X : Type u_2} [Finite ι]
+  [inst : TopologicalSpace X] {S : ι → Set X},
+  (∀ (i : ι), IsClosed (S i)) → ∀ (a : X), ∃ V, IsOpen V ∧ a ∈ V ∧ ∀ v ∈ V, ∀ (i : ι), v ∈ S i → a ∈ S i
+@OAI.EuclideanFiveColor.finite_closed_family_no_common_limit : ∀ {ι : Type u_1} {X : Type u_2} [Finite ι]
+  [inst : TopologicalSpace X] {S : ι → Set X},
+  (∀ (i : ι), IsClosed (S i)) →
+    ∀ {P : ι → Prop} {a : X} {an : ℕ → X},
+      Filter.Tendsto an Filter.atTop (nhds a) → (∀ (n : ℕ), ∃ i, an n ∈ S i ∧ P i) → ∃ i, a ∈ S i ∧ P i
+@OAI.EuclideanFiveColor.stateSupport_local_pred : ∀ {ι : Type u_1} [Fintype ι] [inst : MeasurableSpace ι]
+  [MeasurableSingletonClass ι] {f : ℝ → ι},
+  Measurable f →
+    ∀ {P : ι → Prop} {a : ℝ},
+      (∀ (i : ι), a ∈ OAI.EuclideanFiveColor.stateSupport f i → P i) →
+        ∃ V, IsOpen V ∧ a ∈ V ∧ ∀ᵐ (t : ℝ), t ∈ V → P (f t)

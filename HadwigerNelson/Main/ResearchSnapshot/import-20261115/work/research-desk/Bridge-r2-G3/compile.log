@@ -1,0 +1,15 @@
+A6-Bridge-r2-G3.lean:464:16: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+A6-Bridge-r2-G3.lean:464:30: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+A6-Bridge-r2-G3.lean:588:26: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+A6-Bridge-r2-G3.lean:588:40: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'OAI.EuclideanFiveColor.A6.ae_canonical_subpalette_unconditional' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

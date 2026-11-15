@@ -1,0 +1,20 @@
+{
+  "s": 9,
+  "K": 40,
+  "N": 3,
+  "h": 37,
+  "p": 29,
+  "Delta_at_X0_valuation_exact_rational": -104,
+  "Delta_at_X0_modular_check": {
+    "valuation": -104,
+    "remaining_precision": 97,
+    "initial_precision": 400,
+    "entry_scaling_power": 11
+  },
+  "original_zeta5_outer_lower_bound": -60,
+  "scalar_valuation": 14,
+  "F_at_X0_valuation": -90,
+  "comparison_previous_s5": -60,
+  "comparison_previous_s7": -82,
+  "scope": "Finite local counterexample to copying the original zeta5 bound, not a zeta9 asymptotic budget."
+}

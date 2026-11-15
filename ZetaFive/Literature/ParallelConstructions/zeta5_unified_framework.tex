@@ -1,0 +1,835 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,longtable,array,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black,citecolor=blue!45!black]{hyperref}
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{2em}
+\theoremstyle{definition}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}[proposition]{Lemma}
+\newtheorem{corollary}[proposition]{Corollary}
+\theoremstyle{remark}\newtheorem*{remark}{Remark}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\FP}{\operatorname{FP}}
+\newcommand{\cont}{\operatorname{cont}_{\Q}}
+\newcommand{\dd}{\,d}
+\newcommand{\Btil}{\widetilde B}
+\newcommand{\pair}{\mathcal B}
+\newcommand{\rpair}{\mathcal R}
+\newcommand{\ph}{\phantom{0}}
+\title{One summation functional, one Gram pencil\\[3pt]
+\large A common framework for the constructions in the $\zeta(5)$ manuscript}
+\author{Research and exposition note}
+\date{14 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+The most useful unification has two levels. The functionals are realizations of
+one Euler--Maclaurin summation rule, with one free constant at the integer poles.
+The determinant constructions are presentations of one rational bilinear form,
+positive at $X=\zeta(5)$ and deformed by a residue pairing at infinity.
+Local bases, prime valuations, logarithmic energy and the perturbation matrix
+then become ways to estimate this same form and its determinant. We derive
+these identifications, explain the precise role of Eisenstein and cotangent
+kernels, and propose an explanatory organization of the proof.
+\end{abstract}
+
+\textbf{Scope.} References such as (3.1) or Appendix C refer to Aabir Fauzan's
+17 September 2026 manuscript \cite{F}. The identities and elementary consequences
+in this note are derived below. The manuscript's quantitative local inequalities
+and its rational potential certificate are retained as inputs; this note does
+not independently reverify all of those certificates. A clearer framework does
+not by itself strengthen their numerical bounds.
+
+\section{The objects to keep in the foreground}
+
+Put $\xi=\zeta(5)$, $K=40n$, $N=3n$, $h=K-N$, and
+\[
+ D_m(t)=\prod_{j=1}^m(t+j^2),\qquad
+ T_K(t)=\frac{D_K(t)}{D_N(t)},\qquad W_K(t)=D_N(t)^5.
+\]
+The two organizing objects are
+\begin{equation}\label{eq:twoobjects}
+ \tau_X\quad\hbox{and}\quad
+ \pair_{K,X}(p,q)=\mu_X\!\left(\frac{W_Kpq}{T_K}\right),
+ \qquad p,q\in E_K:=\Q[t]_{<h}.
+\end{equation}
+Here $\mu_X$ is a weighted pullback of $\tau_X$, not independent data:
+\begin{equation}\label{eq:pullback}
+ \mu_X(R)=\tau_X\bigl(x^5R(-x^2)\bigr).
+\end{equation}
+The matrix $G_K(X)$ is the matrix of \eqref{eq:twoobjects} in the monomial basis,
+and $\Delta_K(X)=\det G_K(X)$. The equality
+$D_N^6/D_K=W_K/T_K$ is cancellation in the same rational weight.
+
+There are three useful levels of identification throughout:
+\begin{itemize}
+\item \emph{Exact representations}: the same functional, form or polynomial in
+different coordinates.
+\item \emph{Completions and estimates}: the same rational data viewed over
+$\R$ or $\Q_p$, with different norms and convergence statements.
+\item \emph{Auxiliary certificates}: chosen bases, allocation rules and a
+comparison measure. Their roles are unified, but their choices are not forced
+by one universal analytic function.
+\end{itemize}
+
+\section{Euler--Maclaurin is the source of the functional family}
+
+\subsection{One formal operator and one boundary constant}
+Let $\partial=d/dx$. The Bernoulli generating function gives the exact polynomial
+operator
+\begin{equation}\label{eq:EM}
+ \tau(P)=\left[\frac{\partial^4}{24(e^\partial-1)}P\right](0)
+ =\frac1{24}\sum_{k\ge0}\frac{B_k}{k!}P^{(k+3)}(0).
+\end{equation}
+The sum terminates. Thus no convergence of an infinite differential operator is
+being asserted. Equivalently, as a formal generating identity,
+\begin{equation}\label{eq:symbol}
+ \tau(e^{ux})=\frac{u^4}{24(e^u-1)}.
+\end{equation}
+The manuscript's intermediate $L$, with $L(x^k)=B_k$, is simply
+$[\partial/(e^\partial-1)]$ followed by evaluation at zero. Its $\tau$ is
+$L\circ\partial^3/24$. This is the usual Bernoulli summation symbol
+\cite{Bernoulli}, with three extra derivatives.
+
+\begin{proposition}[An economical definition]\label{prop:axioms}
+On rational functions with polynomial part and simple integer poles there is a
+unique $\Q$-linear functional $\tau_X$ with values in $\Q[X]$ such that
+\begin{align}
+ \tau_X(g(x+1)-g(x))&=\frac{g^{(4)}(0)}{24}
+                  &&\text{if $g$ is regular at zero},\label{eq:difference}\\
+ \tau_X(g(-1-x))&=-\tau_X(g(x)),\label{eq:reflection}\\
+ \tau_X(1/x)&=-X.\label{eq:basepole}
+\end{align}
+Its polynomial restriction is \eqref{eq:EM}, and
+\begin{equation}\label{eq:poles}
+ \tau_X\!\left(\frac1{x-r}\right)=H^{(5)}_{d(r)}-X,
+ \qquad d(r)=\begin{cases}r&r\ge0,\\-r-1&r<0.\end{cases}
+\end{equation}
+\end{proposition}
+\begin{proof}
+The forward-difference map on polynomials is surjective; \eqref{eq:difference}
+therefore fixes the polynomial restriction. Multiplying the symbol
+\eqref{eq:symbol} by $e^u-1$ verifies it. If
+$a_r=\tau_X(1/(x-r))$, the difference identity gives
+$a_{r-1}-a_r=-r^{-5}$ for $r\ne0$. Starting with $a_0=-X$ gives
+$a_r=H_r^{(5)}-X$ for $r\ge0$. Reflection gives $a_{-r-1}=a_r$.
+Partial fractions give uniqueness and existence. The polynomial reflection
+identity also follows from $e^{-u}\tau(e^{-ux})=-\tau(e^{ux})$.
+\end{proof}
+
+This explains the otherwise separate ingredients: Bernoulli moments are the
+polynomial part of Euler summation, fifth harmonic sums are its increments at
+simple poles, and $X$ is the one free pole-boundary value. For example,
+$\tau(x^3)=1/4$, and \eqref{eq:pullback} gives
+\[
+ \mu(t^e)=(-1)^e\frac{(2e+3)(2e+4)(2e+5)}{24}B_{2e+2}.
+\]
+For a pole use
+\[
+ \frac{x^5}{j^2-x^2}
+ =-x^3-j^2x-\frac{j^4}{2}\left(\frac1{x-j}+\frac1{x+j}\right).
+\]
+Equation \eqref{eq:poles} then gives exactly
+$\mu_X((t+j^2)^{-1})=j^4(X-H_j^{(5)})-1/4+1/(2j)$.
+
+\subsection{The real realization comes from the same summation kernel}
+Set $f(y)=(e^{2\pi y}-1)^{-1}$. For a real rational $g$ with simple integer
+poles and no pole at zero, an Abel--Plana/Hermite form of the same functional is
+\begin{equation}\label{eq:AP}
+ \tau_\xi(g)=\frac{g'''(0)-g^{(4)}(0)/2}{24}
+ -\frac{i}{24}\int_0^\infty
+ \frac{g^{(4)}(iy)-g^{(4)}(-iy)}{e^{2\pi y}-1}\dd y.
+\end{equation}
+This identity can be checked on polynomial monomials using Euler's formula for
+even zeta values, and on the pole basis using Hermite's formula
+\cite{Hurwitz,Euler}. Both sides are linear, so that check proves it on the
+whole stated domain. Near zero the numerator in the integral is $O(y)$; at
+infinity the exponential denominator controls every polynomial part.
+
+For $g(x)=x^5R(-x^2)$, the boundary derivatives in \eqref{eq:AP} vanish.
+Write $q(y)=y^5R(y^2)$. Then $g^{(4)}(iy)=iq^{(4)}(y)$ and
+$g^{(4)}(-iy)=-iq^{(4)}(y)$. Four integrations by parts give
+\begin{equation}\label{eq:positive}
+ \mu_\xi(R)=\frac1{12}\int_0^\infty q(y)f^{(4)}(y)\dd y
+ =\int_0^\infty R(y^2)w(y)\dd y,
+\end{equation}
+where
+\begin{equation}\label{eq:weight}
+ w(y)=\frac{y^5}{12}f^{(4)}(y)
+ =\frac{(2\pi)^4y^5}{12}\sum_{\ell\ge1}\ell^4e^{-2\pi\ell y}>0.
+\end{equation}
+Each integration-by-parts boundary product is $O(y)$ at zero and exponentially
+small at infinity. Thus positivity is a consequence of the same Euler summation
+kernel, rather than an unrelated representation added later.
+
+\subsection{One Stieltjes transform contains both definitions of \texorpdfstring{$\mu$}{mu}}
+Define the renormalized Hurwitz-zeta function
+\begin{equation}\label{eq:Phi}
+ \Phi(a)=a^4\zeta(5,a)-\frac1{2a}-\frac14
+       =\int_0^\infty\frac{w(y)}{a^2+y^2}\dd y,
+ \qquad a>0.
+\end{equation}
+Equivalently $\zeta(5,a)=-\psi^{(4)}(a)/24$, so this is a renormalized
+polygamma function \cite{Polygamma}. In the variable $z=a^2$, it is a Stieltjes
+transform of the positive measure
+\[
+ d\nu(t)=\frac{w(\sqrt t)}{2\sqrt t}\dd t,\qquad
+ \Phi(\sqrt z)=\int_0^\infty\frac{d\nu(t)}{z+t}\quad(z>0).
+\]
+Its integer samples and asymptotic coefficients give the two clauses of the
+manuscript's definition:
+\begin{align}
+ \Phi(j)&=j^4(\xi-H_j^{(5)})-\frac14+\frac1{2j},\label{eq:samples}\\
+ \Phi(a)&\sim\sum_{e\ge0}(-1)^e\mu(t^e)a^{-2e-2}.
+ \label{eq:PhiAsymp}
+\end{align}
+The first is the Hurwitz recurrence. The second is the Euler--Maclaurin expansion
+after its leading terms have been removed. An exact remainder, avoiding any
+interpretation of a divergent expansion as an equality, is
+\begin{equation}\label{eq:remainder}
+ \Phi(a)=\sum_{e=0}^{m-1}\frac{(-1)^e\mu(t^e)}{a^{2e+2}}
+ +\frac{(-1)^m}{a^{2m}}\int_0^\infty
+       \frac{y^{2m}w(y)}{a^2+y^2}\dd y.
+\end{equation}
+It follows by a finite geometric identity under the integral. The last term has
+sign $(-1)^m$ and absolute value at most $\mu(t^m)a^{-2m-2}$.
+
+\subsection{A literal regularized lattice sum, if desired}
+There is also one precise formula for the entire real functional, including
+polynomial parts and poles at zero. If
+$g=P+\sum_r c_r/(x-r)$ and $P'''(x)=\sum_k a_kx^k$, define
+\[
+ Z_g(z)=\sum_k a_k\zeta(-k,z)-6\sum_r c_r\zeta(4,z-r).
+\]
+This is exactly what is meant here by $\sum_{n\ge0}^{\zeta\text{-reg}}g'''(n+z)$:
+polynomial sums are defined by Hurwitz continuation and the proper part is
+summed by its convergent series, then continued. The identity
+\begin{equation}\label{eq:regsum}
+ \boxed{\displaystyle
+ \tau_\xi(g)=-\frac1{24}\FP_{z=0} Z_g'(z)}
+\end{equation}
+is verified from $\zeta(-k,z)=-B_{k+1}(z)/(k+1)$ and the Hurwitz recurrence.
+For a pole at $r\ge0$, the constant term of $\zeta(5,z-r)$ is
+$\xi-H_r^{(5)}$. For a negative pole $r=-j$, it is $\zeta(5,j)$.
+
+The derivative must be taken \emph{after} regularization. For $g=x^3$,
+$Z_g(z)=6\zeta(0,z)=3-6z$, giving $\tau(x^3)=1/4$.
+A naive sum of $g^{(4)}$ would give zero and lose this term. Formula
+\eqref{eq:regsum} explains the origin, but Proposition \ref{prop:axioms} is the
+lighter definition for a proof.
+
+\section{What the Eisenstein viewpoint does explain}
+
+\subsection{The exact kernel is one periodic lattice row}
+For $\operatorname{Im}z>0$, set
+\[
+ \mathcal E_5(z)=\sum_{n\in\Z}(z+n)^{-5}.
+\]
+Differentiating the classical cotangent partial fraction four times gives
+\begin{equation}\label{eq:cotrow}
+ \mathcal E_5(z)=\frac1{24}\frac{d^4}{dz^4}(\pi\cot\pi z)
+ =\frac{(-2\pi i)^5}{24}\sum_{\ell\ge1}\ell^4e^{2\pi i\ell z}.
+\end{equation}
+Consequently
+\begin{equation}\label{eq:rowweight}
+ \boxed{\displaystyle w(y)=\frac{i}{\pi}y^5\mathcal E_5(iy).}
+\end{equation}
+The Fourier expansion verifies the sign and makes positivity transparent.
+Thus the positive density is a fifth-order cotangent kernel on the integer
+lattice. This follows directly from the classical partial fractions
+\cite{Cotangent}; it is an exact Eisenstein-type interpretation.
+
+It is not the full weight-five level-one modular Eisenstein series.
+The absolutely convergent double sum
+$\sum_{(m,n)\ne(0,0)}(mz+n)^{-5}$ vanishes by pairing $(m,n)$ with $(-m,-n)$.
+The single row \eqref{eq:cotrow} does not have that cancellation and is not, by
+itself, a weight-five modular form.
+
+There is a separate genuine modular connection: if $q=e^{2\pi iz}$ and
+\[
+ \mathcal F_5(z)=\sum_{n\ge1}\sigma_{-5}(n)q^n,
+ \qquad \mathcal D=q\frac d{dq},
+\]
+then
+\[
+ \mathcal D^5\mathcal F_5=\sum_{n\ge1}\sigma_5(n)q^n
+ =\frac{1-E_6(z)}{504},
+\]
+using the convention $E_6=1-504\sum\sigma_5(n)q^n$.
+After the constant term is restored by a polynomial primitive, this is the
+Eichler-integral setting in which $\zeta(5)$ occurs in a period polynomial
+\cite{Ramanujan}. It explains the wider classical context. No identity found
+here makes the paper's local row allocations or potential certificate a
+consequence of the modular transformation law, so introducing that theory into
+the main proof would add machinery without replacing those estimates.
+
+\subsection{The products and bases also come from the integer lattice}
+The same lattice supplies the finite products:
+\begin{align}
+ \frac{D_m(-x^2)}{(m!)^2}
+ &=\prod_{j=1}^m\left(1-\frac{x^2}{j^2}\right)
+ =\binom{m-x}{m}\binom{m+x}{m},\label{eq:sinprod}\\
+ D_m(y^2)&=
+ \frac{\Gamma(m+1+iy)\Gamma(m+1-iy)}
+      {\Gamma(1+iy)\Gamma(1-iy)}.\label{eq:gammaprod}
+\end{align}
+For fixed $x$, \eqref{eq:sinprod} tends to $\sin(\pi x)/(\pi x)$;
+at $x=iy$ the corresponding limit is $\sinh(\pi y)/(\pi y)$.
+These finite sine products connect to the cotangent kernel through
+\[
+ \frac d{dx}\log\!\left(\frac{\sin\pi x}{\pi x}\right)
+ =\pi\cot\pi x-\frac1x
+\]
+away from the zeros, with the removable singularity at zero understood
+\cite{Cotangent,Gamma}.
+
+The $q_i$ are normalized interpolation polynomials on the nodes
+$0,-1,-4,\ldots$. Integer-valuedness follows from
+\[
+ q_i(-x^2)=\binom{x+i}{2i}+\binom{x+i-1}{2i}\quad(i\ge1),
+ \qquad q_0=1
+\]
+The factors in $f_i=(D_N/(N!)^2)^3q_i$ absorb half
+of the sixth-power weight into each argument of the bilinear form.
+Stirling/Euler summation and Legendre's factorial-valuation formula later
+measure this same product data at the real and finite places.
+
+\section{One Gram pencil and one residue pairing}
+
+\subsection{The parameter changes only a Laurent coefficient}
+For rational $R$ in the manuscript's domain, write $[t^{-3}]_\infty R$ for its
+Laurent coefficient at infinity. Partial fractions immediately give
+\begin{equation}\label{eq:mastermu}
+ \boxed{\displaystyle
+ \mu_X(R)=\int_0^\infty R(y^2)w(y)\dd y
+             +(X-\xi)[t^{-3}]_\infty R.}
+\end{equation}
+Indeed the coefficient of $t^{-3}$ in $(t+j^2)^{-1}$ is $j^4$, and polynomial
+parts contribute zero. Equivalently this last functional is
+$-\Res_{t=\infty}t^2R(t)\dd t$.
+Similarly $\tau_X(g)=\tau_\xi(g)-(X-\xi)[x^{-1}]_\infty g$.
+
+Define
+\[
+ d\nu_K(t)=\frac{W_K(t)}{T_K(t)}d\nu(t),\qquad
+ \rpair_K(p,q)=[t^{-1}]_\infty\frac{t^2W_K(t)p(t)q(t)}{T_K(t)}.
+\]
+Then the promised common object is
+\begin{equation}\label{eq:masterform}
+ \boxed{\displaystyle
+ \pair_{K,X}(p,q)=\int_0^\infty p(t)q(t)\,d\nu_K(t)
+                     +(X-\xi)\rpair_K(p,q).}
+\end{equation}
+The first form is positive definite on $E_K\otimes\R$. The second is rational
+and nondegenerate. Although the displayed real splitting contains $\xi$, the
+original $\pair_{K,X}$ has coefficients in $\Q[X]$ by the functional formulas.
+This is a one-parameter deformation, not a rank-one perturbation: the residue
+matrix has rank $h$, as the next calculation proves.
+
+\subsection{The slope is a finite residue algebra}
+Let $\mathcal A_K=\Q[t]/(T_K)$, and let $\epsilon$ extract the coefficient of
+$t^{h-1}$ in the unique remainder of degree less than $h$. Put $H_K=t^2W_K$.
+Then
+\begin{equation}\label{eq:frobenius}
+ \rpair_K(p,q)=\epsilon(H_Kpq)
+ =\sum_{j=N+1}^K c_jp(-j^2)q(-j^2),\quad
+ c_j=\frac{j^4D_N(-j^2)^5}{T_K'(-j^2)}.
+\end{equation}
+The multiplier $H_K$ is a unit in $\mathcal A_K$ because it has no common root
+with $T_K$. The matrix of $\epsilon(pq)$ has zero entries when $i+j<h-1$
+and ones when $i+j=h-1$, with indices starting at zero. Its determinant is
+$(-1)^{h(h-1)/2}$. Multiplication by $H_K$ has determinant
+$\Res(T_K,H_K)$. Therefore
+\begin{equation}\label{eq:resultant}
+ \det\rpair_K=(-1)^{h(h-1)/2}\Res(T_K,H_K)
+ =(-1)^{h(h-1)/2}\prod_{j=N+1}^K j^4D_N(-j^2)^5\ne0.
+\end{equation}
+This proves the degree-$h$ assertion and reproduces the manuscript's (2.9).
+The same residue form is $M_K=[X]G_K(X)$ in Appendix C.
+
+\subsection{One determinant identity explains degree and positivity}
+Equation \eqref{eq:masterform} is the moment form of the signed measure
+\[
+ d\nu_{K,X}=d\nu_K+(X-\xi)\sum_{j=N+1}^K c_j\delta_{-j^2}.
+\]
+Andr\'eief's identity \cite{Andreief} gives the polynomial identity
+\begin{equation}\label{eq:andreief}
+ \Delta_K(X)=\frac1{h!}\int_{\R^h}
+       \prod_{i<j}(t_i-t_j)^2\prod_{i=1}^h d\nu_{K,X}(t_i).
+\end{equation}
+For real $X$ this is an ordinary finite signed-measure identity; expansion
+gives its polynomial interpretation. At $X=\xi$ all measures are positive,
+giving strict positivity. The leading coefficient selects all $h$ atomic
+factors. Repeated nodes give zero; the $h!$ permutations of the $h$ distinct
+nodes give exactly \eqref{eq:resultant}. Thus the real nonvanishing argument and
+the degree argument are two parts of the same identity.
+
+\subsection{Appendix C is the spectral theory of the same pencil}
+Let $G=G_K(\xi)$, $M=M_K$ and $B=G^{-1/2}MG^{-1/2}$, with $\|B\|$
+the Euclidean operator norm. Then
+\begin{equation}\label{eq:pencil}
+ G_K(\xi+\delta)=G^{1/2}(I+\delta B)G^{1/2},\qquad
+ \frac{\Delta_K(\xi+\delta)}{\Delta_K(\xi)}
+     =\prod_{j=1}^h(1+\delta\beta_j),
+\end{equation}
+where $\beta_j$ are the real eigenvalues of $B$. Nondegeneracy of $M$ implies
+that none is zero.
+\begin{corollary}\label{cor:roots}
+All roots of $\Delta_K$ are real, with multiplicities allowed, and
+\[
+ \operatorname{dist}(\xi,\{X:\Delta_K(X)=0\})=\|B\|^{-1}.
+\]
+\end{corollary}
+This is a consequence of the manuscript's pencil, not an additional assumption.
+It makes the purpose of the relative norm estimate transparent: it is a
+root-exclusion estimate. Equation \eqref{eq:pencil} also bounds the determinant
+near $\xi$ and the coefficient height, so those are two consequences of one
+spectral estimate.
+
+Orthogonal polynomials give an optional exact description. If $p_0,\ldots,p_{h-1}$
+are orthonormal for $\nu_K$, then the relative residue matrix is
+$\sum_j c_j v_jv_j^T$, where $v_j=(p_i(-j^2))_i$. Hence
+\[
+ \|B\|\le\sum_j|c_j|\mathcal K_h(-j^2,-j^2),\qquad
+ \mathcal K_h(s,s)=\sum_{i=0}^{h-1}p_i(s)^2.
+\]
+Appendix C bounds this kind of polynomial evaluation relative to its integral
+norm using Legendre polynomials. Introducing the full orthogonal-polynomial
+theory is optional; the Gram-pencil identity already supplies the needed logic.
+
+\section{Local arithmetic from Volkenborn summation}
+
+\subsection{The \texorpdfstring{$p$}{p}-adic realization of the Euler functional}
+For polynomials define the Volkenborn integral
+\[
+ I_p(P)=\lim_{m\to\infty}p^{-m}\sum_{a=0}^{p^m-1}P(a),
+\]
+where the limit is in $\Q_p$. Its moments are $I_p(x^k)=B_k$, so
+\begin{equation}\label{eq:Volkenborn}
+ \tau(P)=\frac1{24}I_p(P''').
+\end{equation}
+For polynomials $f$, the translation defect is
+$I_p(f(x+1))-I_p(f(x))=f'(0)$.
+Splitting into residue classes and accounting for three derivatives gives
+\[
+ \tau(P)=p^{-4}\sum_{a=0}^{p-1}\tau(P(a+px)).
+\]
+These are standard Volkenborn identities \cite{Volkenborn,HuKim}; the rational
+value in \eqref{eq:Volkenborn} is independent of $p$.
+This integral is not translation-invariant Haar integration, and rational
+functions with poles in $\Z_p$ are not covered by its ordinary definition.
+The manuscript uses the algebraic extension of Proposition \ref{prop:axioms}.
+
+For $p\ge7$, the moments of $\tau$ have valuations at least $-1$, and are
+integral through degree $p+1$. This permits continuous evaluation on the Tate
+algebra. A far pole is represented by the convergent expansion
+\begin{equation}\label{eq:farpole}
+ \tau^{\rm an}\!\left(\frac1{x+a}\right)
+ =-\frac14\sum_{k\ge0}(-1)^k\binom{k+3}{3}B_k a^{-k-4},
+ \qquad |a|_p>1.
+\end{equation}
+The very same formal Laurent series is the real Euler--Maclaurin asymptotic
+expansion of $-\zeta(5,a)$. Real asymptotic summation and $p$-adic convergence
+are different realizations of the same coefficients, not equal numerical
+values in one field.
+
+For near poles, append their principal parts to the analytic space and use
+$\tau_Y(1/(x-r))=H_{d(r)}^{(5)}-Y$. This is $\tau_Y^{\rm ext}$.
+Demanding distribution at $1/x$ forces
+\begin{equation}\label{eq:param}
+ C_p=\sum_{a=1}^{p-1}\tau^{\rm an}\!\left(\frac1{x+a/p}\right),\quad
+ Y=p^5X+C_p,\quad
+ \tau_X(g)=p^{-4}\sum_{a=0}^{p-1}\tau_Y^{\rm ext}(g(a+px)).
+\end{equation}
+Indeed the right side at $1/x$ is $p^{-5}(-Y+C_p)=-X$.
+The fifth power is forced by four powers from the functional and one from
+rescaling the pole. Reflection and the difference law propagate the identity
+to the other poles. The low-degree integrality condition and the estimate
+$C_p\in p^5\Z_p$ remain substantive parts of the local proof. Lemma 3.1 also
+requires unit-separated near poles and harmonic indices $d(r)<p$ so that the
+principal-part values and partial-fraction decomposition are integral.
+
+\subsection{The three bases estimate the same pairing}
+Every change of basis $C$ satisfies
+\begin{equation}\label{eq:congruence}
+ G_{\rm new}=C^TG_{\rm old}C,\qquad
+ \det G_{\rm new}=(\det C)^2\det G_{\rm old}.
+\end{equation}
+The choices in the manuscript have distinct practical advantages:
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{.19\textwidth}>{\raggedright\arraybackslash}p{.28\textwidth}>{\raggedright\arraybackslash}p{.43\textwidth}}
+\toprule
+Prime range & Basis description & Purpose\\ \midrule
+Small & Integer-valued $q_i$; weighted $f_i$ & Use finite differences and the
+Bernoulli functional with coarse uniform losses.\\[4pt]
+Inner & $E_{a,i}$, with prescribed jets at $t=-a^2$ & Allocate vanishing so that
+every residue-class contribution respects assigned row weights.\\[4pt]
+Outer & $P_aq_{a,i}$ using exact class factors of $T_K$ & Cancel dangerous poles,
+separate residue blocks, and retain a controlled polynomial correction.\\
+\bottomrule
+\end{tabular}
+\end{center}
+The two local bases are unimodular. The small-prime calculation also rescales
+the pairing and incorporates its explicit determinant factor $S_K$.
+Precisely, the $q_i$ form a basis of $E_K$, whereas the $f_i$ are their images
+in the weighted space $D_N^3E_K$ under multiplication by
+$D_N^3/(N!)^6$. They are not literally a basis of $E_K$.
+The outer construction is the Chinese-remainder decomposition of the actual
+pole algebra $\Z_p[t]/(T_K)$. The inner construction instead uses an auxiliary
+jet algebra with modulus $\prod_a(t+a^2)^{L_a}$. They are bases of the same
+degree-$<h$ polynomial space, but these two quotient algebras need not be equal.
+
+The common determinant mechanism is elementary. If
+$v_p^G(A_{ij})\ge w_i+w_j$, every determinant term has valuation at least
+$2\sum_iw_i$. In the outer range the full form is
+$A+p^{-1}L$ with $L$ integral and rank at most $r$. When the $w_i$ are
+nonpositive half-integers and exactly $z$ are zero, complementary minors give
+\begin{equation}\label{eq:rank}
+ v_p^G\det(A+p^{-1}L)\ge2\sum_iw_i-\min(r,z).
+\end{equation}
+Minors of $L$ above rank $r$ vanish. If the weights are sorted in decreasing
+order, the possible loss is bounded by
+$\max_{0\le k\le r}(k+2\sum_{i=1}^k w_{(i)})$, with $k\le h$ understood.
+Its increments are one at zero weights and nonpositive thereafter.
+This gives $\min(r,z)$ and explains the correction.
+
+The finite residue algebra describes the slope and residue terms. It does not
+erase polynomial quotients in the full functional. Their contribution is
+precisely why the rank correction and the analytic completion cannot be dropped.
+
+\subsection{The profiles are sums of the same local weights}
+The floor-function count is an exact rescaling:
+\[
+ \ell_A(a)=\ell(A/p,a/p),\qquad
+ \ell(x,z)=\lfloor x-z\rfloor+\lfloor x+z\rfloor+1.
+\]
+The later functions summarize earlier local inequalities:
+\begin{align*}
+ \gamma_p^{\rm in}&=p\Gamma(K/p)+O_M(1),&
+ v_p(S_K)&=p\mathcal N(K/p)+O_M(1),\\
+ -\gamma_p^{\rm out}&=K(R_0(p/K)-d(p/K))+O(1),&
+ R(x)&=-\Gamma(x)-\mathcal N(x).
+\end{align*}
+Here $\mathcal N$ denotes the manuscript's function $N(x)$, to distinguish it
+from the integer $N$. The prime number theorem turns these valuation sums
+into the integrals of Section 5. These functions are accounting profiles,
+not new moment functionals.
+
+There is a second exact Euler--Maclaurin appearance in the tail estimate.
+Let $\alpha=3/40$, $\lambda=37/40$, and
+$\Btil_k(x)=B_k(\{x\})$. The manuscript's $F,P,C$ satisfy
+\begin{align}
+ F(x)+\lambda&=2\lambda\Btil_1(x)-12\lambda\Btil_1(\alpha x),\label{eq:tail1}\\
+ P(x)-\overline P&=\lambda\Btil_2(x)-74\Btil_2(\alpha x),\label{eq:tail2}\\
+ C(x)&=\frac\lambda3\Btil_3(x)-\frac{74}{3\alpha}\Btil_3(\alpha x),
+ \qquad \overline P=\frac{2923}{240}.\label{eq:tail3}
+\end{align}
+Since $74=6\lambda/\alpha$, differentiation gives $P'=F+\lambda$ and
+$C'=P-\overline P$ away from the breakpoints. The periodic functions $P,C$
+are thus Bernoulli primitives of the lattice-counting error. The two
+integrations by parts in (5.15) are the usual Euler--Maclaurin treatment of
+oscillatory counting errors. This is the same Bernoulli machinery as
+\eqref{eq:EM}, acting on a different task.
+
+\section{At the real place: determinant energy and its certificate}
+
+At $X=\xi$, \eqref{eq:andreief} is a positive Vandermonde integral. Under
+$y_i=K\sqrt{t_i}$, its configuration-dependent leading logarithm, after
+extracting deterministic powers of $K$, is
+\begin{equation}\label{eq:discreteenergy}
+ 2\sum_{i<j}\log|t_i-t_j|-K\sum_iV(t_i),
+\end{equation}
+where
+\[
+ V(t)=2\pi\sqrt t+\int_0^1\log(t+u^2)\dd u
+                   -6\int_0^\alpha\log(t+u^2)\dd u.
+\]
+The field is the continuum logarithm of the original rational weight, including
+the exponential decay of $w$. The sum-to-integral step is uniform even at $t=0$:
+if
+\[
+ E_m(t)=\sum_{j=1}^m\log(t+(j/K)^2)
+       -K\int_0^{m/K}\log(t+u^2)\dd u,
+\]
+then $E_m(t)\ge0$ by right Riemann sums, $E_m'(t)\le0$ for $t>0$, and
+\[
+ E_m(0)=2\log(m!)-2m\log m+2m=O(1+\log m).
+\]
+This justifies the field directly, without a nonuniform use of Stirling near an
+endpoint. The determinant and its energy are the same object at different
+scales, with the error terms kept in the proof.
+
+For a positive measure $\eta$ of mass $\lambda=h/K$, write
+$U^\rho(t)=\int\log|t-u|\,d\rho(u)$,
+$I(\eta)=\iint\log|t-u|\,d\eta(t)d\eta(u)$ and
+$\mathcal E_V(\eta)=I(\eta)-\int V\,d\eta$.
+The key certificate lemma is short.
+\begin{lemma}[A dual upper bound]\label{lem:energy}
+Suppose $\eta,\rho$ are positive measures of mass $\lambda$, with finite energies
+in the expressions below, and
+$2U^\rho(t)-V(t)\le M_0$ on the allowed support of $\eta$.
+If $I(\eta-\rho)\le0$, then
+\[
+ \mathcal E_V(\eta)\le\lambda M_0-I(\rho).
+\]
+\end{lemma}
+\begin{proof}
+Expand
+$I(\eta-\rho)=I(\eta)-2\int U^\rho\,d\eta+I(\rho)$ and use the potential
+inequality. The equal masses are what permit the zero-mass energy inequality.
+\end{proof}
+For point configurations the diagonal energy is infinite, so the paper replaces
+each point by a small circle and uses
+$\sigma=K^{-1}\sum_i\omega_i$. This is a regularization of the configuration,
+not a replacement of the original moment measure. The sixteen-arcsine $\rho$
+is a chosen \emph{dual certificate}: it need not be the exact equilibrium
+measure, and it is not $\nu_K$. The circle error and the retained integrable
+tail still have to be controlled as in Section 6. In detail, the zero-mass
+energy theorem applies to a compactly supported real signed measure $\theta$
+on $\C$ with
+\[
+ \theta(\C)=0,\qquad
+ \iint\bigl|\log|z-w|\bigr|\,d|\theta|(z)d|\theta|(w)<\infty.
+\]
+The real-axis inequality $2U^\rho-V\le M_0$ cannot simply be applied on the
+complex circle support of $\sigma$. The source instead proves
+\[
+ \int U^\rho\,d\omega_i\le U^\rho(t_i)+60\sqrt\varepsilon,
+ \qquad I(\omega_i)=\log\varepsilon,
+\]
+and bounds mutual circle energies below by $\log|t_i-t_j|$. Applied at the
+real centers, these give the necessary error terms
+\begin{align*}
+ 2\sum_{i<j}\log|t_i-t_j|-K\sum_iV(t_i)
+ &\le (\lambda M_0-I(\rho))K^2\\
+ &\quad+120\lambda K^2\sqrt\varepsilon-h\log\varepsilon.
+\end{align*}
+The abstract certificate lemma does not remove this regularization step.
+This is standard logarithmic
+potential theory in the particular setting of the manuscript \cite{Saff}.
+
+\section{One invariant for all the normalizations}
+
+For a nonzero $A\in\Q[X]$ with $A(\xi)\ne0$, define its primitive evaluation size
+\begin{equation}\label{eq:J}
+ \mathcal J_\xi(A)=\log|A(\xi)|-
+                  \sum_p v_p^G(A)\log p
+ =\log\left|\frac{A(\xi)}{\cont(A)}\right|.
+\end{equation}
+The sum is finite. The positive rational content has
+$v_p(\cont(A))=v_p^G(A)$, and $A/\cont(A)$ is a primitive integer polynomial.
+For every nonzero rational $c$,
+\begin{equation}\label{eq:invariant}
+ \mathcal J_\xi(cA)=\mathcal J_\xi(A),
+\end{equation}
+since $\log|c|=\sum_pv_p(c)\log p$. Thus $\Delta_K,F_K,Q_{K,M},P_K$
+all have the same primitive evaluation size. They are different explicit
+scalings of one polynomial line.
+
+This is an elementary form of local-to-global bookkeeping. Its finite terms
+are valuations of rational coefficients; it does not assign $p$-adic values
+to the real number $\xi$, or apply a number-field product formula to it.
+It is also an evaluation size, not the usual coefficient height.
+
+Here $F_K=S_K\Delta_K$, $Q_{K,M}=m_{K,M}F_K$, and
+$P_K=\Delta_K/\cont(\Delta_K)$, using the paper's notation.
+The factorial scalar $S_K$ is useful because it cancels the $K^2\log K$ term
+in the real estimate and is adapted to the small-prime basis. It cancels
+\emph{exactly} from \eqref{eq:J}. The remaining scalar
+$m_{K,M}=\prod_p p^{-L_p}$ is a finite product using certified bounds
+$L_p\le v_p^G(F_K)$; take $L_p=0$ outside it only where integrality is proved.
+For $Q=m_{K,M}F_K\in\Z[X]$ and $F_K(\xi)>0$,
+\begin{equation}\label{eq:certified}
+ \log Q(\xi)-\mathcal J_\xi(F_K)
+ =\sum_p\bigl(v_p^G(F_K)-L_p\bigr)\log p
+ =\log\cont(Q)\ge0.
+\end{equation}
+So the explicit normalization is an upper-bound certificate for the canonical
+primitive size. Positive $L_p$ allow division by primes; negative ones clear
+denominators. Discarding their signs would discard genuine savings.
+
+The abstract finishing principle can now be stated without any of the
+auxiliary names.
+\begin{proposition}[Primitive evaluation criterion]\label{prop:criterion}
+Suppose $A_K\in\Q[X]$ has degree $O(K)$, $A_K(\xi)\ne0$, and
+$\mathcal J_\xi(A_K)\le-cK^2+o(K^2)$ for some $c>0$.
+Then $\xi$ is irrational.
+\end{proposition}
+\begin{proof}
+If $\xi=a/b$ with $b>0$, and $d_K=\deg A_K$, then
+$b^{d_K}A_K(a/b)/\cont(A_K)$ is a nonzero integer. Consequently
+$\mathcal J_\xi(A_K)\ge-d_K\log b$, contradicting the quadratic bound.
+\end{proof}
+In the manuscript the estimates are
+$\log F_K(\xi)\le UK^2+o(K^2)$ and
+$\log m_{K,M}\le A_MK^2+o(K^2)$, with $A_M+U<0$ at the chosen cutoff.
+The irrationality proof and the approximation proof use the same integer
+criterion; the latter first uses \eqref{eq:pencil} to retain nonvanishing at
+nearby rational points.
+
+\section{A dictionary and a proposed presentation}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{.27\textwidth}>{\raggedright\arraybackslash}p{.66\textwidth}}
+\toprule
+Manuscript construction & Common object or operation\\ \midrule
+\endfirsthead
+\toprule Manuscript construction & Common object or operation\\ \midrule
+\endhead
+$L,\tau,\tau_X$ & Euler--Maclaurin operator; differentiated Bernoulli moments;
+one-parameter singular extension.\\[4pt]
+$\mu_X$ & Weighted square-coordinate pullback of $\tau_X$.\\[4pt]
+Pole values involving $H_j^{(5)}$; Bernoulli moments & Integer samples and asymptotic coefficients
+of the same Hurwitz/Stieltjes function $\Phi$.\\[4pt]
+$w$ & Fourth derivative of the Euler summation kernel; equivalently a
+fifth-order cotangent row.\\[4pt]
+$\tau^{\rm an},\tau_Y^{\rm ext}$ & Continuous $p$-adic evaluation of the same
+Bernoulli data, plus specified principal parts.\\[4pt]
+$Y,C_p$ & Forced change of the single boundary constant under residue-class
+dilation.\\[4pt]
+$D_m,W_K,T_K$ & Finite integer-lattice products and cancellation of one common
+rational weight.\\[4pt]
+$G_K,\Delta_K$ & Matrix and determinant of one bilinear pencil on $E_K$.\\[4pt]
+$[X]G_K,M_K$ & Residue-at-infinity pairing on $\Q[t]/(T_K)$; its determinant is
+a signed resultant.\\[4pt]
+$q_i,f_i,E_{a,i},P_aq_{a,i}$ & Frames adapted to integer-valuedness, jets or exact
+pole cancellation; all estimate the same bilinear form.\\[4pt]
+$w_{a,i},\gamma_p^{\rm in/out}$ & Entrywise valuation budgets and their induced
+determinant bounds, including a rank correction.\\[4pt]
+$\ell,\Gamma,\mathcal N,R,R_0,d$ & Rescaled counts and limiting profiles of those
+same local budgets.\\[4pt]
+Tail $F,P,C$ & Periodic Bernoulli errors and their successive primitives.\\[4pt]
+Vandermonde integral, $V,I$ & Determinant identity and its scaled logarithmic
+energy.\\[4pt]
+$\sigma,\rho$ & Regularized empirical configuration and an independently chosen
+equal-mass dual certificate.\\[4pt]
+$S_K,m_{K,M},F_K,Q_{K,M},P_K$ & Normalizing scalars and resulting representatives
+of one polynomial line, compared by $\mathcal J_\xi$.\\[4pt]
+$B_K$, eigenvalue product & The residue form in coordinates orthonormal for the
+positive form; root exclusion and coefficient control.\\
+\bottomrule
+\end{longtable}
+
+For a revised exposition, the following sequence would make the dependencies
+visible before introducing the technical formulas.
+\begin{enumerate}
+\item \textbf{State the target criterion.} Prove Proposition
+\ref{prop:criterion} first: the task is a nonzero determinant of degree $O(K)$
+whose primitive evaluation size decays quadratically.
+\item \textbf{Introduce one Euler functional.} Use Proposition
+\ref{prop:axioms}; derive $\mu_X$ by weighted pullback. Present \eqref{eq:Phi}
+as the explanation for the rational moments and pole values.
+\item \textbf{Prove the master Gram-pencil lemma.} Establish
+\eqref{eq:masterform}--\eqref{eq:resultant} and \eqref{eq:andreief} together.
+Degree, positivity, the residue matrix, and the later perturbation argument
+then have a single source.
+\item \textbf{Prove one finite-place bound.} Explain the three ranges as three
+adapted frames for this form. Isolate analytic completion and the
+weight-plus-rank determinant lemma before doing the class allocations.
+Put long allocation tables and exact prime-integral arithmetic in appendices.
+\item \textbf{Prove one real-place bound.} Derive $V$ from the rational weight;
+state Lemma \ref{lem:energy}; then supply the explicit $\rho$ and its interval
+certificate. State the regularization and tail errors explicitly.
+\item \textbf{Compare two costs.} Use \eqref{eq:certified}, the real estimate
+and the prime sum to obtain the negative quadratic coefficient.
+\item \textbf{Make Appendix C a Gram-pencil corollary.} Introduce the relative
+norm as a distance-to-roots bound, with approximation and coefficient height
+as its two applications.
+\end{enumerate}
+
+The cotangent/Eisenstein discussion and the regularized half-lattice formula
+are useful motivation or appendices. They need not be prerequisites for the
+main proof. Likewise, orthogonal polynomials give good interpretations but do
+not automatically supply the necessary arithmetic estimates.
+
+The explanatory gain is that one summation rule supplies the functional
+family, and one Gram pencil supplies the determinant family. This is a
+reorganization of structures largely already present in the manuscript,
+not a claim that a new analytic identity replaces its quantitative work.
+The local inequalities, their degree restrictions, their rank correction,
+uniform limiting errors, and the final sign comparison remain essential.
+
+\subsection*{Assessment after independent audit}
+Fresh reviews rederived the functional, determinant and arithmetic
+identifications. They found no substantive error in the central identities.
+The normalized sine-product logarithmic derivative, the domain of the
+Volkenborn translation law, and the energy-regularization hypotheses have
+been made explicit in this revision.
+
+The framework is best judged by explanation and checkability, rather than
+length. Its strongest benefits are that the functional axioms force the
+harmonic increments, the exact Hurwitz integral connects the two kinds of
+moment data, the residue slope makes Appendix C natural, and the primitive
+evaluation size exposes the signs in normalization. The asymptotic Bernoulli
+series alone would not determine $\Phi$ or establish positivity: the exact
+Hermite identity is indispensable. The regularized half-lattice formula is
+exact under the stated prescription, but does not supply a new uniqueness
+principle for regularization.
+
+Several layers should remain distinct. The order of the summation functional
+encodes the target $\zeta(5)$. The numerator power six, the ratio $N/K=3/40$,
+the local bases and the arcsine comparison measure are design choices for
+balancing the two estimates; they are not forced by the Euler kernel.
+The finite residue algebra controls the slope and residue terms, not the
+entire positive form. The comparison measure is a certificate, not the
+moment measure or an asserted equilibrium measure. These distinctions make
+the argument more robust against unjustified generalizations.
+
+One optional logical economy is worth recording. The main irrationality
+argument only needs $\deg\Delta_K\le h$, immediate from affine entries, and
+$\Delta_K(\xi)>0$, supplied by the Gram form. Thus the exact-degree/resultant
+calculation can be a structural corollary rather than a prerequisite for
+irrationality. The same degree upper bound suffices for Appendix C's integer
+and height arguments. If the stronger exact-degree statement is retained,
+its proof remains necessary. Keeping the residue calculation for its
+explanatory value is entirely consistent with this dependency distinction.
+
+\section*{Checks and reproducibility}
+The companion standard-library script \texttt{framework\_checks.py} verifies
+the polynomial translation, reflection and distribution identities through
+degree 24; the weighted moment identity through degree 11; and the residue
+pairing/resultant formula in three exact finite examples. It checks the
+periodic Bernoulli formulas at rational points and compares the Hurwitz and
+Stieltjes expressions, and the cotangent-row density, numerically. The output
+is \texttt{framework\_checks.json}. These are checks on the new identifications,
+not substitutes for the proofs above or for the original manuscript's global
+certificates. Separate research notes retain the three subagents' derivations
+for the functional, arithmetic and determinant families.
+
+\begin{thebibliography}{99}
+\bibitem{F} A. Fauzan, \emph{$\zeta(5)$ is irrational}, manuscript dated
+17 September 2026, v1. \url{https://zenodo.org/records/22826419}.
+The local copy is \texttt{sources/Fauzan\_2026\_zeta5.pdf}.
+\bibitem{Bernoulli} NIST DLMF, Bernoulli generating functions and identities,
+\url{https://dlmf.nist.gov/24.2} and \url{https://dlmf.nist.gov/24.4}.
+\bibitem{Hurwitz} NIST DLMF, Hurwitz zeta, recurrence, Euler--Maclaurin and
+Hermite representations, \url{https://dlmf.nist.gov/25.11}.
+\bibitem{Euler} NIST DLMF, even zeta values,
+\url{https://dlmf.nist.gov/25.6.E2}.
+\bibitem{Polygamma} NIST DLMF, polygamma functions,
+\url{https://dlmf.nist.gov/5.15}.
+\bibitem{Cotangent} NIST DLMF, sine product and cotangent partial fractions,
+\url{https://dlmf.nist.gov/4.22}.
+\bibitem{Gamma} NIST DLMF, gamma recurrence and reflection,
+\url{https://dlmf.nist.gov/5.5}.
+\bibitem{Ramanujan} B. C. Berndt and A. Straub, \emph{Ramanujan's Formula
+for $\zeta(2n+1)$}, especially Section 5,
+\url{https://arminstraub.com/downloads/pub/ramanujanzeta.pdf}.
+\bibitem{Volkenborn} A. Volkenborn, \emph{On generalized $p$-adic integration},
+M\'emoires de la Soci\'et\'e Math\'ematique de France 39--40 (1974), 375--384,
+\url{https://www.numdam.org/book-part/MSMF_1974__39-40__375_0/}.
+\bibitem{HuKim} S. Hu, D. Kim and M.-S. Kim, \emph{New identities involving
+Bernoulli, Euler and Genocchi numbers}, Advances in Difference Equations 2013,
+74, Section 2, \url{https://doi.org/10.1186/1687-1847-2013-74}.
+\bibitem{Andreief} P. J. Forrester, \emph{Meet Andr\'eief, Bordeaux 1886,
+and Andreev, Kharkov 1882--83},
+\url{https://arxiv.org/abs/1806.10411}.
+\bibitem{Saff} E. B. Saff, \emph{Logarithmic Potential Theory with Applications
+to Approximation Theory}, \url{https://www.math.vanderbilt.edu/saffeb/texts/230.pdf}.
+\end{thebibliography}
+\end{document}

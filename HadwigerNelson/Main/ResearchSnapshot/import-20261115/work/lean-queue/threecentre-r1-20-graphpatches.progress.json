@@ -1,0 +1,49 @@
+{
+  "leanExe": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\elan\\toolchains\\leanprover--lean4---v4.34.1\\bin\\lean.exe",
+  "expectedVersion": "4.34.1",
+  "expectedCommit": "5045d0056413266e57c625dcd7c365b10e377c52",
+  "mathlibRoot": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4",
+  "requiredMathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "leanPath": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/build;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean",
+  "workingDirectory": "threecentre-r1/src",
+  "timeoutSeconds": 480,
+  "id": "threecentre-r1-20-graphpatches",
+  "status": "passed",
+  "source": "threecentre-r1/src/OAI/Geometry/PlaneColoring/GraphPatches.lean",
+  "output": "threecentre-r1/build/OAI/Geometry/PlaneColoring/GraphPatches.olean",
+  "dependsOn": "threecentre-r1-19-holeapproximation",
+  "expectedSourceSha256": "5c29ae6acfa0868df4b791dd54514c0d1aaf26d5e5901c4a58e154ae13f1986d",
+  "purpose": "Fresh affected-closure rebuild after strict-state branch deletion and actual3centreconsumer integration; copiedbaselineoleans are not validation.",
+  "previousAttempt": {
+    "status": "blocked_dependency"
+  },
+  "priorAttempts": [
+    {
+      "status": "blocked_dependency",
+      "runner": "PowerShell legacy"
+    }
+  ],
+  "profile": false,
+  "maxRssMiB": 8192,
+  "maxPrivateMiB": 12288,
+  "startedUtc": "2026-11-14T20:37:14.933630+00:00",
+  "sourceSha256": "5c29ae6acfa0868df4b791dd54514c0d1aaf26d5e5901c4a58e154ae13f1986d",
+  "actualVersion": "Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "runner": "python",
+  "command": [
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\elan\\toolchains\\leanprover--lean4---v4.34.1\\bin\\lean.exe",
+    "-o",
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\threecentre-r1\\build\\OAI\\Geometry\\PlaneColoring\\GraphPatches.olean",
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\threecentre-r1\\src\\OAI\\Geometry\\PlaneColoring\\GraphPatches.lean"
+  ],
+  "processId": 44188,
+  "elapsedSeconds": 91.19,
+  "availableMiB": 11878.140625,
+  "workingSetMiB": 644.6484375,
+  "privateMiB": 1464.80078125,
+  "peakWorkingSetMiB": 3279.89453125,
+  "peakPrivateMiB": 8094.140625,
+  "exitCode": 0,
+  "finishedUtc": "2026-11-14T20:38:46.196505+00:00",
+  "log": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\threecentre-r1-20-graphpatches.python.log"
+}

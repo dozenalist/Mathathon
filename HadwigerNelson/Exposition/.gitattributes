@@ -3,3 +3,10 @@
 # Preserve the exact source bytes identified in provenance.json.
 Sources/**/*.txt -text
 Figures/*.gif -text
+# Binary formats: never apply end-of-line conversion.
+*.pdf -text
+*.png -text
+*.jpg -text
+*.jpeg -text
+*.webp -text
+*.zip -text

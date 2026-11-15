@@ -1,0 +1,41 @@
+SECTION 2 HANDOFF
+
+Owned output: parts/02_construction.tex.
+Source coverage: Section 2 and all four subsections, printed pp. 3-5;
+analogues of (2.1)-(2.10), Theorem 2.1 (conditional targets only), and
+Proposition 2.2 (worked positive representation).
+
+Definitions/interfaces:
+K=40n, N=3n, h=37n, alpha=3/40, lambda=37/40, H=23/20 unchanged.
+D_m(t)=product_(j=1)^m(t+j^2), with D_0=1.
+mu9(t^e)=(-1)^e B_(2e+2)*product_(r=3)^9(2e+r)/40320.
+mu9,X(1/(t+j^2))=j^8(X-H_j^(9))-1/8+1/(2j).
+Quick checks: mu9(1)=3/4, mu9(t)=11/8.
+G9,K=mu9,X(D_N^6*t^(i+j)/D_K), 0<=i,j<h; Delta9,K=det G9,K.
+S_K is exactly the source scalar; F9,K=S_K*Delta9,K.
+Q9,K,M=m9,K,M*F9,K, positive rational m to be supplied by Section 5.
+
+Outgoing identities:
+[X^h]Delta9,K=(-1)^(h(h-1)/2)*product_(j=N+1)^K j^8 D_N(-j^2)^5.
+w9(y)=(2*pi)^8*y^9/20160*sum_(ell>=1)ell^8 exp(-2*pi*ell*y).
+mu9,zeta9(R)=integral_0^infinity R(y^2)w9(y)dy.
+With f=(exp(2*pi*y)-1)^(-1), w9=y^9 f^(8)/20160.
+d^8/dy^8[y^9/(y^2+a^2)]=8!*a^8*Im(a-iy)^(-9).
+Eight IBPs; boundary terms O(y) at zero.
+Pole integral=a^8*zeta(9,a)-1/(2a)-1/8.
+w9->1/pi at zero; w9=O((1+y)^9 exp(-2*pi*y)) at infinity.
+The positive Gram quadratic form gives Delta9,K(zeta9)>0.
+
+Constants and conditional estimate:
+The draft theorem uses A9,M for log(m9,K,M)'s K^2 upper coefficient,
+and U=-2733991/2000000 for the inherited real coefficient. The desired
+combined bound is (A9,M+U)K^2+O_M(K log K). No negative sign is claimed.
+If Section 5 uses another symbol, replace A_{9,M} consistently here.
+No source numerical decay rates (2.7)/(2.8) are transplanted.
+
+Status and unresolved matters:
+Functional, pole, degree, and positivity formulas are locally derived.
+Integrality/cost and the real upper estimate are forward conditional
+targets, delegated to later sections. No irrationality assertion.
+No mismatch found in the Section 2 specialization. D_N^6 is preserved.
+Labels all start s2-. No preamble or bibliography commands are included.

@@ -1,0 +1,42 @@
+five_support_step_ban : ∀ (c : ℂ → Fin 5) (hc : Measurable c),
+  WeakColoring 5 c →
+    ∀ {x : ℂ},
+      FiveCenter c x →
+        ∀ {a : ℝ} {i j : Fin 5},
+          a ∈ fiveSupport c hc x i →
+            a ∈ fiveSupport c hc x j →
+              fiveAdj i j →
+                ∀ᵐ (t : Angles) ∂angularMeasure,
+                  ¬(fiveState c hc x t = i ∧ fiveState c hc x (t + ↑sixty) = j) ∧
+                    ¬(fiveState c hc x t = j ∧ fiveState c hc x (t + ↑sixty) = i)
+five_support_step_ban_v2 : ∀ (c : ℂ → Fin 5) (hc : Measurable c),
+  WeakColoring 5 c →
+    ∀ {x : ℂ},
+      FiveCenter c x →
+        ∀ {a : ℝ} {i j : Fin 5},
+          a ∈ fiveSupport c hc x i →
+            a ∈ fiveSupport c hc x j →
+              fiveAdj i j →
+                ∀ᵐ (t : Angles) ∂angularMeasure,
+                  ¬(fiveState c hc x t = i ∧ fiveState c hc x (t + ↑sixty) = j) ∧
+                    ¬(fiveState c hc x t = j ∧ fiveState c hc x (t + ↑sixty) = i)
+'OAI.EuclideanFiveColor.five_support_step_ban_v2' depends on axioms: [propext, Classical.choice, Quot.sound]
+five_opposite_contacts_false : ∀ (c : ℂ → Fin 5) (hc : Measurable c),
+  WeakColoring 5 c →
+    ∀ {x : ℂ},
+      FiveCenter c x →
+        ∀ {a b : ℝ},
+          b = a + 3 * sixty →
+            ∀ {i j : Fin 5},
+              a ∈ fiveSupport c hc x i →
+                a ∈ fiveSupport c hc x (i + 1) → b ∈ fiveSupport c hc x j → b ∈ fiveSupport c hc x (j + 1) → False
+five_opposite_contacts_false_from_v2 : ∀ (c : ℂ → Fin 5) (hc : Measurable c),
+  WeakColoring 5 c →
+    ∀ {x : ℂ},
+      FiveCenter c x →
+        ∀ {a b : ℝ},
+          b = a + 3 * sixty →
+            ∀ {i j : Fin 5},
+              a ∈ fiveSupport c hc x i →
+                a ∈ fiveSupport c hc x (i + 1) → b ∈ fiveSupport c hc x j → b ∈ fiveSupport c hc x (j + 1) → False
+'OAI.EuclideanFiveColor.five_opposite_contacts_false_from_v2' depends on axioms: [propext, Classical.choice, Quot.sound]

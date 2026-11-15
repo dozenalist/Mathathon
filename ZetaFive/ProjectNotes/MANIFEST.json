@@ -1,0 +1,579 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-11-14",
+  "timezone": "America/Los_Angeles",
+  "project": "Zeta 5",
+  "repository": "https://github.com/dozenalist/Mathathon",
+  "repository_path": "ZetaFive/ProjectNotes",
+  "source_coverage": "CHAT_INDEX.md",
+  "scope": "All available project chat histories at collection; useful information consolidated by subject. No raw transcript or credentials.",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 82,
+      "sha256": "9718a5ff04eb893545331a8849b318c3c2cd70a56ca20086d5f7adef787030c3",
+      "origin": "archive synthesis or index"
+    },
+    {
+      "path": "artifacts/Extensions/additional_checks.txt",
+      "bytes": 2680,
+      "sha256": "5b6f2bbba7e46b0360fbecf701c0e6e7d6126ebe974f26f30260b8a3ac4032e7",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "additional_checks.txt"
+    },
+    {
+      "path": "artifacts/Extensions/algebra_notes.txt",
+      "bytes": 14481,
+      "sha256": "f9d04eab981554c87d7e1fe3378ca18b5afc1298fc9baafbf6890cb3b82e6b68",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "algebra_notes.txt"
+    },
+    {
+      "path": "artifacts/Extensions/arithmetic_costs.py",
+      "bytes": 1314,
+      "sha256": "8f8896c6061586c5b63e6624532154f8bb03599343a847b9fd9ce4fa473cb939",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "arithmetic_costs.py"
+    },
+    {
+      "path": "artifacts/Extensions/arithmetic_exact_inner.py",
+      "bytes": 3267,
+      "sha256": "3bc8d6aa2e20d27961c4739dcf838f9ee3ad0755e2381efb6c2ad6733d52acdd",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "arithmetic_exact_inner.py"
+    },
+    {
+      "path": "artifacts/Extensions/arithmetic_notes.txt",
+      "bytes": 8795,
+      "sha256": "10f388d40e876c0216eea447d240d0ce3b0004cfa6374363d11782ac6c46f79b",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "arithmetic_notes.txt"
+    },
+    {
+      "path": "artifacts/Extensions/arithmetic_variant.py",
+      "bytes": 2331,
+      "sha256": "41c26953af9e1fa15dc986c5513fbf1fe7415aed2055c41f898f79a96fa01846",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "arithmetic_variant.py"
+    },
+    {
+      "path": "artifacts/Extensions/arithmetic_variant_notes.txt",
+      "bytes": 5698,
+      "sha256": "83a173db10805eecc5d90d6b6fdeaadef7da588078dfa3c121d4546151994a09",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "arithmetic_variant_notes.txt"
+    },
+    {
+      "path": "artifacts/Extensions/arithmetic_variant_results.json",
+      "bytes": 1285,
+      "sha256": "0eda594c507f65d9abd5e9bf64598debbd18730ebca84bd61a444b0e2d2ca29d",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "arithmetic_variant_results.json"
+    },
+    {
+      "path": "artifacts/Extensions/build_report.py",
+      "bytes": 30876,
+      "sha256": "655128f0592c19dca7a80fa0086dfb54905e29835b2c4fefbe64228f8bdd0724",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "build_report.py"
+    },
+    {
+      "path": "artifacts/Extensions/experiments/energy_probe.json",
+      "bytes": 531,
+      "sha256": "fe4f2a8bfccc22d1cbf97db3406be12b998bdbc5eb69eada3faa90d1256bd40d",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "experiments/energy_probe.json"
+    },
+    {
+      "path": "artifacts/Extensions/experiments/energy_probe.py",
+      "bytes": 3125,
+      "sha256": "542e81b20f192e5f2becce7ea86f0360776cee9f67980a2dfc6a320315715fae",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "experiments/energy_probe.py"
+    },
+    {
+      "path": "artifacts/Extensions/experiments/exact_checks.json",
+      "bytes": 30972,
+      "sha256": "db6a1d5af9982bab73bc9a6d2920a7ec96c0a92e8a8672dc0c0436497239d131",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "experiments/exact_checks.json"
+    },
+    {
+      "path": "artifacts/Extensions/experiments/exact_checks.py",
+      "bytes": 10092,
+      "sha256": "0ff63fb4ff049b6a0ee46ff4868689faf4ce6e6d588fd7620f2783b7b1d72691",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "experiments/exact_checks.py"
+    },
+    {
+      "path": "artifacts/Extensions/experiments/main_measure_certificate.json",
+      "bytes": 3098,
+      "sha256": "230693ab3b27424afc6a597d1aacb2776f7306ba89ab2d5a1a6d37776074239f",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "experiments/main_measure_certificate.json"
+    },
+    {
+      "path": "artifacts/Extensions/experiments/main_measure_certificate.py",
+      "bytes": 3734,
+      "sha256": "a3c15784b7bfe28f2c748ff814d0f4b9ce09d2c5d9bb633853eebba69c43fb92",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "experiments/main_measure_certificate.py"
+    },
+    {
+      "path": "artifacts/Extensions/experiments/single_point_certificate.json",
+      "bytes": 1586,
+      "sha256": "08472243cc71a125b903123fa6330964f80fd94b464b7c988a4583060df6aa6f",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "experiments/single_point_certificate.json"
+    },
+    {
+      "path": "artifacts/Extensions/experiments/single_point_certificate.py",
+      "bytes": 5450,
+      "sha256": "6b7f3bdd7a03748bddf16ee6562e9ff2bac990bef08d5410d35aeb0200d87592",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "experiments/single_point_certificate.py"
+    },
+    {
+      "path": "artifacts/Extensions/experiments/zeta9_local_check.json",
+      "bytes": 547,
+      "sha256": "3982541359e0d6b7e8d3d6427e01671b85a883e7e3af63916981c97b5a3bf90d",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "experiments/zeta9_local_check.json"
+    },
+    {
+      "path": "artifacts/Extensions/exploration_log.json",
+      "bytes": 1938,
+      "sha256": "3b6bba6177480026f75d5a5a60b29fc631c4512763c9e4848d5dd8894f0d02c6",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "exploration_log.json"
+    },
+    {
+      "path": "artifacts/Extensions/output/zeta7_argument_audit.pdf",
+      "bytes": 116039,
+      "sha256": "a4a63d9ff8f72f0415dc84f7eb78a69711c248419065694e11e031f1cdf2c954",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "output/zeta7_argument_audit.pdf"
+    },
+    {
+      "path": "artifacts/Extensions/output/zeta9_formal_analogue.pdf",
+      "bytes": 234935,
+      "sha256": "4dee692c837924f6537e9db488a53ea5de9e4647568f5dada837668f2c2c04db",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "output/zeta9_formal_analogue.pdf"
+    },
+    {
+      "path": "artifacts/Extensions/README.md",
+      "bytes": 4807,
+      "sha256": "35ab4c59fbb226bc599a92f1796cd70f6a28d8b433e5b0084e444452ea61cc07",
+      "origin": "archive synthesis or index"
+    },
+    {
+      "path": "artifacts/Extensions/README.txt",
+      "bytes": 3157,
+      "sha256": "ca473e3c72c2525846b5da05bc336ba758fe087409072f6ebb1f779d94ef718b",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "README.txt"
+    },
+    {
+      "path": "artifacts/Extensions/sources/source_ledger.json",
+      "bytes": 3761,
+      "sha256": "72ed5ac766528e5b052885ec588c9fffa162e29b66600b8645498db6a6e9631f",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "sources/source_ledger.json"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/checks/section5_exact.mjs",
+      "bytes": 6144,
+      "sha256": "2743eaf065322b9c9e8aafb1a64781b6816121b5b2c289e66db5a3c8a1d59356",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/checks/section5_exact.mjs"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/checks/section5_exact_results.json",
+      "bytes": 2095,
+      "sha256": "5ebce4d1633ca1e6ccaaa7835858db4e6b4dfeb97aaedcdbe14df5e393284f59",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/checks/section5_exact_results.json"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/coordination_log.txt",
+      "bytes": 2436,
+      "sha256": "9b28a8f79d8808f953939b5f93419fb13703afe51eb6fdc7935722cac4519017",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/coordination_log.txt"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/editorial_contract.txt",
+      "bytes": 3390,
+      "sha256": "53fe999f88d40e0b94c69eeb35ac1a699157f26bb3b135eaaad49acb3276a5ec",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/editorial_contract.txt"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/01_introduction.tex",
+      "bytes": 5893,
+      "sha256": "e37aa353bea637b90d720d0089adf6bc891eb65616ea42a968cfac5d0add6f06",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/01_introduction.tex"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/02_construction.tex",
+      "bytes": 10169,
+      "sha256": "95412a0e1a170c90f4ffec9972ba6984b84307ebc2ee4bad0db3955477232c39",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/02_construction.tex"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/02_handoff.txt",
+      "bytes": 1954,
+      "sha256": "6608918681387b51c2374de80187f5c6202007abacf6632a94bcd9dcdc8aea53",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/02_handoff.txt"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/03_functional.tex",
+      "bytes": 8801,
+      "sha256": "5b3eef76b8a29ad421d478cd70055e4a3cd2bbe088d7c7bccb61f6b5cddc868e",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/03_functional.tex"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/03_handoff.txt",
+      "bytes": 1720,
+      "sha256": "ef609cf8bbdcae9a4796aa85d83576bd9e217e4f7ce9205107de476b4d5ac34c",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/03_handoff.txt"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/04_handoff.txt",
+      "bytes": 2933,
+      "sha256": "d82ce72cc7f26ca54521db848bd34db342a75e5514e92b9596b99f2d2d098cb3",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/04_handoff.txt"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/04_local_determinant.tex",
+      "bytes": 10693,
+      "sha256": "f1848f001103ce1356086737be0f2da46b23411a177a0d7c39b0c141c14b99e9",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/04_local_determinant.tex"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/05_handoff.txt",
+      "bytes": 2949,
+      "sha256": "0f4b40a296a99e85d4c6defdc535136eb1d41f3d753c3ae2b97344d88b7bab25",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/05_handoff.txt"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/05_normalization.tex",
+      "bytes": 8418,
+      "sha256": "314cd453c8ff54c3649e9c4167fe4491c21f9c6ada6732b105c43adca92d3c63",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/05_normalization.tex"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/06_handoff.txt",
+      "bytes": 2383,
+      "sha256": "6e4cfe0cb1b9e286d291952f2dc7e3c5b5968d9fd55bd2f7909f245875fe000c",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/06_handoff.txt"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/06_real_determinant.tex",
+      "bytes": 7395,
+      "sha256": "789b291caf6fe03e0f0dc6a3b6931d02f9f3c41e8abda9226d5d97663923f7fc",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/06_real_determinant.tex"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/07_completion.tex",
+      "bytes": 4729,
+      "sha256": "51759a9c88c1d4f2bf098ea6e9425da95bace529c67a17d81cce97424f4f8ba1",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/07_completion.tex"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/07_handoff.txt",
+      "bytes": 3081,
+      "sha256": "286ab794b06699bd71225f5fadadae0d906672f9e52b0a6084f9215a78df6be3",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/07_handoff.txt"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/A_measure.tex",
+      "bytes": 6425,
+      "sha256": "cefc1332d203409f2b898b64f739815a2e0704f2e9dae5e404502131297d6556",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/A_measure.tex"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/B_arithmetic_integrals.tex",
+      "bytes": 4692,
+      "sha256": "25d2987fb5ea00ad4525121c2f9f0a2f6e4c544721593c7e864485991627d2cf",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/B_arithmetic_integrals.tex"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/C_approximation.tex",
+      "bytes": 10819,
+      "sha256": "58ab31169ea1427f23dc7714aa4a2b3c0c198e06b151692fa0b87df0be5e9107",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/C_approximation.tex"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/parts/sources_and_scope.tex",
+      "bytes": 3866,
+      "sha256": "af4c7eb941110e634721d2920f7b5a1204d8f52b5e4786f3f2d4bf56e3716a34",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/parts/sources_and_scope.tex"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/README.txt",
+      "bytes": 2460,
+      "sha256": "3de20e4cdba73efbb8ca32556311eebbc0b31e13a59df4af843dcf8583c58e0d",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/README.txt"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/source_ledger.json",
+      "bytes": 3016,
+      "sha256": "3d97d18b4999bb7a8b0709e5b40bc8a60a06f772e58a85149d1a246f4f18f095",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/source_ledger.json"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_draft/zeta9_formal_analogue.tex",
+      "bytes": 2857,
+      "sha256": "e01d3fb7f000494999ea97f4cdd59b6d29e43198e15872d66800048544d8edda",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_draft/zeta9_formal_analogue.tex"
+    },
+    {
+      "path": "artifacts/Extensions/zeta9_parity_notes.txt",
+      "bytes": 1878,
+      "sha256": "d407a51d8bf11551d9a28977574fb43eecf5bd294e9838ee667374d66f6e79b1",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta9_parity_notes.txt"
+    },
+    {
+      "path": "artifacts/LaiArithmetic/check_arithmetic.py",
+      "bytes": 3827,
+      "sha256": "335a758c634e3324923b14ffe5b7915bd4e64293f41603648e5e780762dfdd3c",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "tmp/lai_section_checks/check_arithmetic.py"
+    },
+    {
+      "path": "artifacts/LaiArithmetic/results.txt",
+      "bytes": 455,
+      "sha256": "3baa2700a8d690526cdbb254893edfacc4c12aec4fcb21932165981f7dd729ba",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "tmp/lai_section_checks/results.txt"
+    },
+    {
+      "path": "artifacts/ParallelSections/lai_parallel_constructions.pdf",
+      "bytes": 79449,
+      "sha256": "64539202cd89acd04ee9d3694c8e3d822e67994eb719dadcc3c8a1bebd827e95",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "parallel constructions for sections 1-7/lai_parallel_constructions.pdf"
+    },
+    {
+      "path": "artifacts/ParallelSections/lai_parallel_constructions.tex",
+      "bytes": 15248,
+      "sha256": "6b7cd74de7124ccd17eea73fe295aaedf04d1d1d1d7103fc9cd7025280685049",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "parallel constructions for sections 1-7/lai_parallel_constructions.tex"
+    },
+    {
+      "path": "artifacts/ParallelSections/README.txt",
+      "bytes": 1307,
+      "sha256": "4d097cb625a5929f011c1e3acbcb76c541524ba0499e485e07ec3d23192e4f3e",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "parallel constructions for sections 1-7/README.txt"
+    },
+    {
+      "path": "artifacts/ProofOverview/README.txt",
+      "bytes": 1649,
+      "sha256": "d1eef12571e5993f4a9a4c8f2c2093170ef53eca377b4f6223aedf3084aa55af",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "irrationality argument overview/README.txt"
+    },
+    {
+      "path": "artifacts/ProofOverview/zeta5_irrationality_overview.pdf",
+      "bytes": 74468,
+      "sha256": "f916b22535d40bf045f7bae01bed5f8588cad279535eb34e9eea5c98ca92d9c0",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "irrationality argument overview/zeta5_irrationality_overview.pdf"
+    },
+    {
+      "path": "artifacts/ProofOverview/zeta5_irrationality_overview.tex",
+      "bytes": 12700,
+      "sha256": "aa034e0f622d1a8ac04b801fa1c91aec9b30f187ee5656705f12c19ec1d5321b",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "irrationality argument overview/zeta5_irrationality_overview.tex"
+    },
+    {
+      "path": "artifacts/UnifiedFramework/audit_functionals.txt",
+      "bytes": 12613,
+      "sha256": "e111bc931fd4c9ebd1035f840d7bdfdc9ddd6dde23c8398788c802f7e74a8186",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "audit_functionals.txt"
+    },
+    {
+      "path": "artifacts/UnifiedFramework/audit_pencil.txt",
+      "bytes": 15385,
+      "sha256": "f9203e85c61be5552618c0e76943a68237fb2465a69b9501a2ed894cecfaa2b9",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "audit_pencil.txt"
+    },
+    {
+      "path": "artifacts/UnifiedFramework/audit_simplification.txt",
+      "bytes": 13856,
+      "sha256": "b2679de9923edb1545e50acfffc311538adfa5daf6835aad4af48feee6643778",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "audit_simplification.txt"
+    },
+    {
+      "path": "artifacts/UnifiedFramework/framework_arithmetic_notes.txt",
+      "bytes": 26062,
+      "sha256": "86828bb2c031da557a2971c8358da46d9af932ac5826f1fde37bc96409707170",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "framework_arithmetic_notes.txt"
+    },
+    {
+      "path": "artifacts/UnifiedFramework/framework_checks.json",
+      "bytes": 1538,
+      "sha256": "1b4c5908925504b77a5540a73e61b15b75827dbfd50adeb4a6fd7314465276be",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "framework_checks.json"
+    },
+    {
+      "path": "artifacts/UnifiedFramework/framework_checks.py",
+      "bytes": 6157,
+      "sha256": "6e2aeb2482adf2d224a2c659429ac06f619591c680fbf1471c44c231b186a832",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "framework_checks.py"
+    },
+    {
+      "path": "artifacts/UnifiedFramework/framework_determinant_notes.txt",
+      "bytes": 24805,
+      "sha256": "b6f56de3c21629be4e8abe3b71c0d24fc9c7cf3f4704d4ab158ce7f4c966cbe4",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "framework_determinant_notes.txt"
+    },
+    {
+      "path": "artifacts/UnifiedFramework/framework_functional_notes.txt",
+      "bytes": 15007,
+      "sha256": "dd2df6ad8c511e789c4e239e55dc712cb1245c38847ef15445d14febe76a1bf3",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "framework_functional_notes.txt"
+    },
+    {
+      "path": "artifacts/UnifiedFramework/provenance_arithmetic.txt",
+      "bytes": 9497,
+      "sha256": "6fc2e565f976b1a5a6fe0d9a6143badde95f1f646e27f3504fdea0b2efc1690f",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "provenance_arithmetic.txt"
+    },
+    {
+      "path": "artifacts/UnifiedFramework/provenance_functionals.txt",
+      "bytes": 8945,
+      "sha256": "8ae21d3d56b0f4fdc3056dc5a1f4d5faed19933d42d600e9b334194736bc318e",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "provenance_functionals.txt"
+    },
+    {
+      "path": "artifacts/UnifiedFramework/provenance_pencil.txt",
+      "bytes": 8462,
+      "sha256": "b92952917b4786df609f58cb10ee838ac2c5df11b815592fa125f179260146db",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "provenance_pencil.txt"
+    },
+    {
+      "path": "artifacts/UnifiedFramework/README.md",
+      "bytes": 1914,
+      "sha256": "977b7971c41aafb9488148dafe9ade76f01cb502491630c70cef6d140978d7d1",
+      "origin": "archive synthesis or index"
+    },
+    {
+      "path": "artifacts/UnifiedFramework/zeta5_unified_framework.pdf",
+      "bytes": 158221,
+      "sha256": "8a16b3b181d599f1329147e1ff3e894604c79dfbca23e8394313c3c894e15a34",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "output/pdf/zeta5_unified_framework.pdf"
+    },
+    {
+      "path": "artifacts/UnifiedFramework/zeta5_unified_framework.tex",
+      "bytes": 46671,
+      "sha256": "aa4d266a6cd21ec515e5290ad1a5f2a3b8734e842e00fcd3ee4ae10c59c91f72",
+      "origin": "unchanged workspace artifact",
+      "source_workspace_path": "zeta5_unified_framework.tex"
+    },
+    {
+      "path": "CHAT_INDEX.md",
+      "bytes": 5468,
+      "sha256": "13de808145e3a7e406d80f95060ba3ca6c5e68312034696fcf2ac840dd84af3f",
+      "origin": "archive synthesis or index"
+    },
+    {
+      "path": "EXTENSIONS.md",
+      "bytes": 14053,
+      "sha256": "3e042f1bb3a443e1b39438abfa9969191b8a60477a39feae295e6878f52879a4",
+      "origin": "archive synthesis or index"
+    },
+    {
+      "path": "FORMALIZATION_AND_WORKFLOW.md",
+      "bytes": 7374,
+      "sha256": "8b9ececfd6b6860429e6afa1f57c4f2193acdcb0e32040c04c830b552f35cfe7",
+      "origin": "archive synthesis or index"
+    },
+    {
+      "path": "PARALLEL_CONSTRUCTIONS.md",
+      "bytes": 18520,
+      "sha256": "adbd125749e1fb005a2038c392948156aea9666bdcb2e18637360cb3aed8d0e5",
+      "origin": "archive synthesis or index"
+    },
+    {
+      "path": "PROOF_AND_BOUNDS.md",
+      "bytes": 15989,
+      "sha256": "35130ee08482a1b5c1275b2b3e2fae51f1f8b9203f6fc5418f23e9b08d31d416",
+      "origin": "archive synthesis or index"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4330,
+      "sha256": "43a5d62abd79d74f174ad04d8476da4e91d32cfe90e1cfe1895a87b4cf781830",
+      "origin": "archive synthesis or index"
+    },
+    {
+      "path": "REPRODUCIBILITY.md",
+      "bytes": 4810,
+      "sha256": "e3bb8bfb916058653f855765e8cf62b4ec0c7ac7053cfece902a1a6a07f970eb",
+      "origin": "archive synthesis or index"
+    },
+    {
+      "path": "sources/EXTENSION_CHAT_SOURCES.md",
+      "bytes": 3293,
+      "sha256": "fd481682272b3c96924cd9e90240703107efc9cc9337d8e6b89f2a2dfbc0ac6b",
+      "origin": "archive synthesis or index"
+    },
+    {
+      "path": "sources/PARALLEL_CHAT_SOURCES.md",
+      "bytes": 3576,
+      "sha256": "2dfd6c062e3c18773ea43d03237d7e10d0ddca8b0251d1d72c13bf546e21d4a8",
+      "origin": "archive synthesis or index"
+    },
+    {
+      "path": "sources/PROOF_CHAT_SOURCES.md",
+      "bytes": 5957,
+      "sha256": "9e00c2449cf8d2b66f51dddb8a012dc66ecc675a6a0131565b7adeb6db5bdd34",
+      "origin": "archive synthesis or index"
+    },
+    {
+      "path": "VALIDATION.json",
+      "bytes": 3159,
+      "sha256": "50ebed398e0a857fc024e6989b4db6aed01988fbba31b7ae0db1163f5c1551cb",
+      "origin": "archive synthesis or index"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\claude-admissions\claude-lean-20261114t231544-0\Candidate.lean:533:16: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\claude-admissions\claude-lean-20261114t231544-0\Candidate.lean:533:30: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\claude-admissions\claude-lean-20261114t231544-0\Candidate.lean:657:26: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\claude-admissions\claude-lean-20261114t231544-0\Candidate.lean:657:40: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`

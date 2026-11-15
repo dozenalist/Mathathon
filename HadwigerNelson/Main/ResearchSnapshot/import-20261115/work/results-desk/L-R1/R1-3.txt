@@ -1,0 +1,23 @@
+[Results desk, per Jarom] For OMM lane L-R1, chat-0a863015ff. Task R1-3: independent REFEREE of strict MC120 and Corollary P. Status today: "accepted paper" in a status file, but NO referee verdict file exists; two downstream results depend on it. Be adversarial: find a gap or confirm.
+
+SOURCE DEFINITIONS (Lean, supplied proof; quoted exactly).
+- WeakColoring k c: c is a.e.-measurable and for (volume x angularMeasure)-a.e. (p,t), c p != c (p + direction t)  [direction t = unit vector at angle t].
+- Straddle K = {z | exists p in K, exists q in K, dist z p < 1 and 1 < dist z q}  (open).
+- ApproachingContinuum x K v: x in K, and there are r_n > 0, r_n -> 0, unit w_n -> v with x + r_n w_n in K. (No connectedness is assumed.)
+- spatialSupport c i = support of Lebesgue measure restricted to {c = i}; support exclusion "Disjoint (spatialSupport c j) (Straddle K)" implies c != j a.e. on Straddle K.
+- outer_strip: if ApproachingContinuum x K v, |e|=1 and <e,v> > 0, then there is delta>0 such that x + r e' is in Straddle K for all unit e' with dist(e',e)<delta and 1<r<1+delta.
+- Rigidity.ae_translated_unit_pair: if |a-b|=1 then c(q+a) != c(q+b) for a.e. q.
+
+THEOREM MC120 (as stated by Astra A4). Let c: C -> Fin k be measurable with WeakColoring k c. Finitely many K_i approach one centre x in unit directions v_i (ApproachingContinuum), with finite excluded sets H_i satisfying Disjoint(spatialSupport c j, Straddle K_i) for j in H_i. If the complement of U H_i has at most ONE label, the v_i cannot all lie in a cone of aperture STRICTLY less than 120 degrees.
+
+PROOF AS GIVEN (summarised). Residual label a (empty case handled by any vacuous cover). W = intersection of the Straddle K_i is open and c = a a.e. on W. If the span L < 120, the common positive directions (<e,v_i> > 0 for all i) form an open arc I of length 180 - L > 60. outer_strip at each angle of I plus a finite minimum gives strips in W. Choose a compact subinterval of I of length B > 60; a finite subcover gives eta > 0 with the polar sector {1 < r < 1+eta} over it inside W. At r0 = 1 + eta/2 take two angles symmetric about the sector centre with half-separation lambda = arcsin(1/(2 r0)) < 30 < B/2; the two points p, q are in W with |p - q| = 1. Small neighbourhoods of p and q are a.e. colour a; translating gives c(p+u) = a = c(q+u) on a positive-area set of u, contradicting ae_translated_unit_pair.
+
+COROLLARY P. If an actual six-cycle of interfaces (edges i=0..5, E_i = {i,i+1} excluded, as above) has only three distinct directions, the pairs form a perfect matching of the edge-index 6-cycle (from CC60: every closed 60-degree arc covers <= 3 labels) and the three directions are exactly 120 degrees apart: blocks (01),(23),(45) exclude {0,1,2},{2,3,4},{4,5,0}; any two blocks exclude five labels, so MC120 forces pairwise separation >= 120, hence exactly 120.
+
+QUESTIONS. (1) Is every step valid with ONLY the stated definitions (note: K_i need not be connected; outer_strip is pointwise in e with delta depending on e)? Check the compactness/uniform-width step, the claim that the common positive arc has length 180 - L, the strictness at aperture exactly 120, the empty-residual case, and the measure-theoretic step from "c = a a.e. near p and near q" to a contradiction. (2) Is Corollary P's matching step correct for every three-direction coincidence pattern, including blocks that are not consecutive pairs? (3) Known context, do not re-prove: the CLOSED-120 version is FALSE (refereed 19-colour counterexample with curved arcs), and outer strips alone cannot give the endpoint (open Reuleaux counterexample).
+
+SOURCE ARTIFACTS (provenance only): outputs/ASTRA-CONTINUOUS-SIX-A4.txt sections 4-5; outputs/MC120-ENDPOINT-CORRECTION.txt; outputs/ASTRA-PAIRED-COROLLARIES-A6.txt (dependent).
+
+DELIVERABLE: R1-3-REFEREE.md with a verdict line (ACCEPT / ACCEPT WITH CORRECTIONS / REJECT) for MC120 and separately for Corollary P, a numbered list of every gap or correction with its exact fix, and a full rewritten proof if you accept.
+
+ACCEPTANCE: the verdict is justified line by line against the definitions above; any counterexample is explicit; no appeal to unstated results. No chromatic-number claims.

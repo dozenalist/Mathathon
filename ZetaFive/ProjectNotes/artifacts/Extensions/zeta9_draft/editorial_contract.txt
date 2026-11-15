@@ -1,0 +1,60 @@
+ZETA(9) ANALOGUE: SHARED EDITORIAL CONTRACT
+
+User request: draft an analogue of every section of Fauzan's zeta(5) paper,
+showing what the algebraic manipulations become for zeta(9). Correctness
+and a proof of irrationality are NOT the goal. Give substantive local
+derivations, label uncertain steps, and avoid spending heavily on forcing
+all pieces to agree. All section agents: GPT-6 Astra, xhigh (not ultra).
+
+Canonical source: sources/Fauzan_2026_zeta5.pdf, 32 pages; extracted text
+sources/Fauzan_2026_zeta5.txt. Source equation numbers refer to this PDF.
+Primary URL: https://zenodo.org/records/22826419 . Prior local algebra and
+arithmetic notes are useful but the source is the reference for structure.
+
+MAIN CONSTRUCTION FOR THIS DRAFT (deliberately retain the original shape)
+K=40n, N=3n, h=37n=K-N, alpha=3/40, lambda=37/40, H=23/20.
+D_m(t)=product_{j=1}^m(t+j^2).
+G_{9,K}(X)_{ij}=mu_{9,X}(D_N(t)^6 t^(i+j)/D_K(t)), 0<=i,j<h.
+Delta_{9,K}=det G_{9,K}; F_{9,K}=S_K Delta_{9,K}.
+S_K=(K!)^(2h)4^(h-1)/[(N!)^(12h) product_{i=1}^{h-1}((2i)!)^2].
+Do NOT silently change D_N^6 to D_N^10. You may mention that as a separate
+unworked variant, but all main sections must use D_N^6 and the same S_K.
+
+FUNCTIONAL
+mu_9(t^e)=(-1)^e B_(2e+2) product_{r=3}^9(2e+r)/40320.
+mu_{9,X}(1/(t+j^2))=j^8(X-H_j^(9))-1/8+1/(2j).
+L(x^d)=B_d; tau_9(P)=L(P^(7))/40320.
+tau_{9,X}(1/(x-r))=H_{d(r)}^(9)-X,
+d(r)=r for r>=0 and -r-1 for r<0.
+mu_{9,X}(R)=tau_{9,X}(x^9 R(-x^2)).
+w9(y)=(2*pi)^8 y^9/20160 sum_{ell>=1} ell^8 exp(-2*pi*ell*y)>0.
+
+EXPECTED CHANGES TO CHECK, NOT ASSUMPTIONS TO HIDE
+Large-prime distribution p^-8; ordinary class loss -8; zero-class +1
+remains. Small-prime coarse coefficient expected 10h, with vp(40320).
+Polynomial moments expected integral for e<4p-5 (p sufficiently large).
+Outer polynomial correction rank expected max(0,K+4N-4p+4).
+Real leading field and constant U=-2733991/2000000 remain those of source
+when D_N^6 and S_K are fixed; subquadratic constants may change.
+Finite exact check already established: K40,N3,p29 gives
+v29(Delta9(0))=-104, versus -60 for5 and -82 for7.
+
+OUTPUT CONTRACT FOR EACH SECTION AGENT
+1. Write a self-contained UTF-8 .tex fragment in zeta9_draft/parts/,
+   with ordinary LaTeX section/subsection headings, equations, and prose.
+   No document preamble. Use amsmath syntax and explicit \\text labels.
+2. Write a short .txt handoff listing definitions, incoming/outgoing
+   constants, source equations covered, and unresolved mismatches.
+3. Aim roughly 700-1500 words plus equations per assignment. Enough to
+   see manipulations, not a polished proof or a symbolic placeholder list.
+4. Status labels: [Derived] for algebra actually worked out; [Formal
+   analogue] for an unproved transplant; [Conditional] for implications
+   needing an unproved estimate; [Blocked conclusion] where a needed sign
+   is missing. Avoid calling the draft a proof or claiming irrationality.
+5. Preserve source equation references in prose, e.g. 'Analogue of (3.7)'.
+   Use unique labels prefixed s2-, s3-, s4-, s5-, s6-, s7-, appc- etc.
+6. Human-readable intent: explain what each manipulation accomplishes.
+   Keep no dead ends hidden, but do not add long speculative excursions.
+7. Do not spawn more agents. Do not install dependencies or rewrite
+   another agent's file. No broad new web search needed; cite consulted
+   primary sources and exact source locators.

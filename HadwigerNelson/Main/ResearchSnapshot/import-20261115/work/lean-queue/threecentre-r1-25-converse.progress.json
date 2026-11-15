@@ -1,0 +1,49 @@
+{
+  "leanExe": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\elan\\toolchains\\leanprover--lean4---v4.34.1\\bin\\lean.exe",
+  "expectedVersion": "4.34.1",
+  "expectedCommit": "5045d0056413266e57c625dcd7c365b10e377c52",
+  "mathlibRoot": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4",
+  "requiredMathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "leanPath": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/build;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean",
+  "workingDirectory": "threecentre-r1/src",
+  "timeoutSeconds": 480,
+  "id": "threecentre-r1-25-converse",
+  "status": "passed",
+  "source": "threecentre-r1/src/OAI/Geometry/PlaneColoring/Converse.lean",
+  "output": "threecentre-r1/build/OAI/Geometry/PlaneColoring/Converse.olean",
+  "dependsOn": "threecentre-r1-24-chromatic",
+  "expectedSourceSha256": "5bde95d2ec3cb518a2ece36f544b69eb25f550f3f2f231a7df5c8a9ba4098248",
+  "purpose": "Fresh affected-closure rebuild after strict-state branch deletion and actual3centreconsumer integration; copiedbaselineoleans are not validation.",
+  "previousAttempt": {
+    "status": "blocked_dependency"
+  },
+  "priorAttempts": [
+    {
+      "status": "blocked_dependency",
+      "runner": "PowerShell legacy"
+    }
+  ],
+  "profile": false,
+  "maxRssMiB": 8192,
+  "maxPrivateMiB": 12288,
+  "startedUtc": "2026-11-14T20:43:50.898768+00:00",
+  "sourceSha256": "5bde95d2ec3cb518a2ece36f544b69eb25f550f3f2f231a7df5c8a9ba4098248",
+  "actualVersion": "Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "runner": "python",
+  "command": [
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\elan\\toolchains\\leanprover--lean4---v4.34.1\\bin\\lean.exe",
+    "-o",
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\threecentre-r1\\build\\OAI\\Geometry\\PlaneColoring\\Converse.olean",
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\threecentre-r1\\src\\OAI\\Geometry\\PlaneColoring\\Converse.lean"
+  ],
+  "processId": 30340,
+  "elapsedSeconds": 70.77,
+  "availableMiB": 10745.98828125,
+  "workingSetMiB": 983.00390625,
+  "privateMiB": 2338.4453125,
+  "peakWorkingSetMiB": 3249.671875,
+  "peakPrivateMiB": 8057.0859375,
+  "exitCode": 0,
+  "finishedUtc": "2026-11-14T20:45:01.674373+00:00",
+  "log": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\threecentre-r1-25-converse.python.log"
+}

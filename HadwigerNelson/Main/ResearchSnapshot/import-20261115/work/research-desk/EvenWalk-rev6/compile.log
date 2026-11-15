@@ -1,0 +1,23 @@
+EvenWalkReachability-rev6.lean:174:18: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+EvenWalkReachability-rev6.lean:177:18: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+EvenWalkReachability-rev6.lean:183:18: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+EvenWalkReachability-rev6.lean:183:31: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+EvenWalkReachability-rev6.lean:191:18: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+EvenWalkReachability-rev6.lean:243:2: warning: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+EvenWalkReachability-rev6.lean:283:2: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+'OAI.EuclideanFiveColor.evenWalk_reachable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.finite_list_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.two_list_obstruction_of_even_walk' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,40 @@
+Mathathon status — 2026-11-14T20:33:51.319Z
+
+LATEST USER POLICY
+Codex reports every45minutes. No Codex/Astra subagents; both active agents were interrupted. User explicitly clarified to KEEP OMM ULTRAMATH. Claude now handles routine OMM coordination every15minutes through a bounded Python service; unchanged healthy state skipsClaude. Lean runs locally using a serialPython queue. No remote builds.
+
+CURRENT EXECUTION
+Python Lean worker40432 andClaude coordination worker31484 started20:30UTC, hidden; status/config/logs under work/automation-supervisor. Python smoke proof passed6.09seconds with no axioms. Sectors now compiling under tested default settings. Claude firstcycle in progress when this report was written; consult coordination-status.json for later outcome. Codex/Astra active count0. No reset or purchase performed.
+
+LOCAL LEAN RECOVERY
+Full Mathlib import passed115.204seconds with default threading/no explicit compiler memory cap. Peakprivate commitment8016.98MiB; peakresident3214.78MiB. Earlier RSS-only diagnostics understated memory demand. Prior-j1/-M4096 imports timed out; remote4GiB attempt raised memory_exception. Do not assert a fully isolated cause. Python uses working defaults plus OS watchdog8GiBRSS/12GiBprivate/min2GiBfree, one child, source/pin checks,480s remainingmodule caps. FrozenR1 previous14/27modules passed; remaining13modules plus rootaxiomcheck requeued, no source edits. Full integration still UNACCEPTED until completeclosure/contracts/rootchecks. Prior attempts preserved.
+
+NEW MATHEMATICS THIS CHECK
+Complete fixed-phase census:7776 sign classes modulo phase rotation;177SAT,7599UNSAT,862UNSAT with no empty hitting side. ALL7599 refuted by forced-label propagation. Parent unrestricted64palette/reduced checks plus independently authored Python DFS/half-cycle join agree on every class. Local complete run~2secondsJS/~5.5secondsPython. Artifacts work/openmath-supervisor/checkins/20261114T200919Z/{fixed-phase-census.json,census-verifier.js,classes_all.jsonl,census-crosscheck.json}. This is NOT a classification of whole direction configurations: every positive phase interval must beSAT. New graph/referee work addresses full staircase sequences including ties.
+
+OMM ULTRAMATH
+Actual returned start IDs verified: geometry smwgtuolg; independent smwguo86y; architecture smwguim4i; verifier smwguidy9; graphs smwgui92e; formal smwguinbz; discovery smwgui6l9; adversarial smwgukvpp.2members each at launch,DeepSeekV4.1Flash/max,60steps/60min. A coordinator turn_complete does not mean its swarm ended. Claude should reconcile actual status before successors; do not duplicate.
+Assignments: geometry mixed3/4/5-list regions and sourceF producer; independent shortest unresolved3/4/5/6cycle cases and exactk5 dependence; architecture shorter used step_ban proof; verifier exact originalA5 oddwalk and repaired generic even-walk Lean; graphs all-phase staircase classification; formal finiteA6forcing/sourcebridge; discovery symbolic proof of unit-propagation completeness; adversarial independent staircase/realization referee. All computation/Lean above tinyremotechecks goes to parent local queue.
+
+ESSENTIAL CORRECTIONS
+Formal coordinator misread hitsets as contained/excluded, claimingA6tablefalse. Correct exact premise is f_j inP_j AND(P_j intersectT_j).Nonempty ANDadjacentdisjointness; f=(1,5,3,1,5,3),T=(345,123,015)repeated. Neighbor singletons force secondlabels(4,2,0), canonicalpairs nonvacuous. Parent clarified; coordinator acknowledged error. No palette-cardinality premise.
+Independent support-cover criterion may be useful for arbitrary measurable colourings, NOTWeakColoring. Claim covering all labels equivalent to containing an alternating triple is FALSE: C={0,1,3,4} coversall6labels and contains neither alternatingtriple. General index-cycle vertex-cover criterion retained; correction sent. Sourcek6audit must not assumeC6 is the only unresolved case.
+
+ACCEPTED BANK AND OPEN LIMITS
+R4 encoding refactor:126lines removed,82moduleclosure/9rootaxiom/133binder checksPASS. Four cone Lean modulesPASS, standardaxioms only: closed60degree finiteactualapproachcone cannotleave<=2labels. Fixed/movingthreecentre replacements/signaturesPASS, fullintegrationpending.
+Strict<120 one-residuallabel obstruction acceptedpaper, formalwrapperstilluncompiled. GenericCLOSED120versionfalse: actualcurvedcontinua+properBorel19colour extension, outputs/ASTRA-MC120-ENDPOINT-A5.txt and independentreferee.
+A5canonical60sector pair field is impossible even as a.e.SUBpalette ofactualWeakColoring6centre: finiteoddwalk obstruction +four-listvertex, sourceRealStates/densityrealizationaudited. Finiteexistenceaccepted, explicitfullcoordinategraphnotyetavailable. outputs/ASTRA-FOUR-LIST-A5.txt/referee.
+A6exactpairedactualdirections(0,0,120,120,240,240), E_i={i,i+1}: inner/outerhits+60disjointnessforcecanonicalsubpalette, henceA5contradiction. Corollaries:<=3distinctactualdirectionsimpossible(strictMC120input) andoneuniformopenpairedneighborhoodexcluded. Ffixedbeforecolouring; shrunken sectors/localRealStates matter. No numericalepsilon. outputs/ASTRA-PAIRED-PRODUCER-A6.txt andASTRA-PAIRED-COROLLARIES-A6.txt.
+Sixfurther configurations excluded bysix-orbitconstraints; readableClaudeproofs outputs/CLAUDE-SIX-ORBIT-PROOFS.txt independentlychecked. Each hasopen simultaneous15degree neighborhood;16/64 boundarycornersSATatALLphasecells, sharpforrelaxation notactualcolourings. q4/q5/q6 remainSAT controls(1,6)/(1,6)/(1,4,6).
+A7partialq4/q5F period180degree bins{1,4},{2},{2,5},{3},{0,3},{1}. Entire same-two-list loci have no unitedges; entireOLD A5support admitspropernew-listcolouring. outputs/ASTRA-PARTIAL-PALETTE-A7.txt; Claudecontactgeometry independentlyconfirmed outputs/CLAUDE-A7-CONTACT-AUDIT.txt withparentarithmetictypecorrection. Fullpartialfield remainsopen. A8interrupted peruser; artifactASTRA-DISJUNCTIVE-PALETTE-A8.txt is unreviewed, don'tbank it.
+
+NO GLOBAL CHROMATIC IMPROVEMENT OR COMPLETE HADWIGER-NELSON SOLUTION.
+Operational instructions: outputs/BACKGROUND-AUTOMATION.txt. Approvedexpositionhandoffalready sent; keepcross-chatcommunicationsminimal.
+
+
+PRIMARY SUPERVISOR UPDATE 2026-11-14T20:41:58.987Z: User delegated primary research supervision toClaude,15minute checks plus immediate console prompts. Localconsole http://127.0.0.1:8765/ viaoutputs/SupervisorConsole.py; directchat, checknow, pause/resume, OMMstatus, Leanprogress and researchplan. Codex only45minute oversight, NO Codex/Astra agents. CoordinatorPID44888,consolePID11312,LeanPID40432. Pythonqueue now22/27R1modulesPASS; Five currentlyrunning, so earlier14/27blocked text is historical. ExistingautomaticClaude cycle firstcompleted and sent2OMMmessages/staged5artifacts, writesacknowledged. Newprimary-role cycle and console setup prompt running. PureLean proposals accepted only throughsource gate/pinned-template/native lock; ambiguous codeheld. Usermessages remainqueueduntilsuccessfulreply, thenarchived; repliespersist inwork/automation-supervisor/replies.
+
+
+CONSOLE LIVE 2026-11-14T20:44:26.500Z: http://127.0.0.1:8765/ opened inbrowser. Authenticatedpromptqueued and triggered immediate follow-upcycle aftercurrentwork; firstprimary-supervisor reply written to replies/20261114T204019.json and renderedbyconsole. No runtimeerrors. HTTPmissingtoken403,route/status,clientJSsyntax,pureLeanadmission/unsafehold/idempotence testsPASS. Claude is primary15minute supervisor; Codex45minuteoversight; no Codex/Astra agents. Integration 24/27passed, compilationcontinues.
+
+2026-11-14T21:23:25.965Z Operational verification:27/27R1 modules and axiomroots passed; complete acceptance still pending contracts/closure. Reviewed EvenWalk source now actually compiled locally: FAILED exit1 after149.05s, not verified. Documentation false-positive and Windows newline hash bugs repaired; compiler diagnostics forwarded to Claude primary supervisor. Research15min/Codex45min. Two-channel console live at http://127.0.0.1:8765/.
