@@ -1,0 +1,314 @@
+ASTRA DISJUNCTIVE PALETTE A8 — EXACT ACTUAL-PALETTE NORMAL FORM
+14 November 2026. Paper proof and explicit finite-relaxation countermodel.
+
+RESULT
+
+For BOTH q4=(0,0,120,150,240,240) and
+q5=(0,30,120,150,240,240), the richer constraints on the second base
+phase have an exact common normal form, valid for ACTUAL palettes of
+arbitrary initial cardinality. It gives:
+
+* Exactly six minimal pair-witness words, but 26 actual set-valued words.
+* Every actual palette has size at most THREE. This is sharp for this
+  finite relaxation; there are valid words with three triple palettes.
+* A measurable selection of one of the six witnesses is source-licensed.
+  Some selection class has positive measure and supplies six translated
+  RealStates and a simultaneous density-point pattern.
+* There is nevertheless a Borel angular field satisfying ALL the q4/q5
+  inner/outer hits and all sixty-degree disjointness constraints, in which
+  all six minimal words occur with positive measure in EVERY open
+  subinterval of the second base phase. On no such interval is any fixed
+  witness present almost everywhere, and no extra mandatory label beyond
+  the parent's F can be forced almost everywhere even locally.
+
+Thus a fixed witness interval cannot be extracted from the six-case
+census plus measurability. The positive-measure RealStates remain valid,
+but replacing them by open angular sectors is an additional, unproved
+step. The direct twelve-vertex density fan produced at one density point
+is also explicitly list-colourable, as shown below.
+
+This countermodel is ONLY to the stated finite angular relaxation. It is
+not claimed to be the trace palette of any plane colouring, to satisfy
+other spatial source consequences, or to realize q4/q5 geometrically.
+No conclusion that all one-centre methods fail is drawn.
+
+SOURCE AND CERTIFICATE SCOPE
+
+Read:
+  work/openmath-supervisor/checkins/20261114T194118Z/
+    q4-q5-forced-palette.json;
+  outputs/ASTRA-PAIRED-PRODUCER-A6.txt;
+  original States/Palettes/PaletteTransport/AngularBoundary source bank.
+
+Actual producers, with the SAME centre and signed vectors:
+  AngularBoundary.finite_support_exclusion_ae (:317),
+  continuum_outer_restriction (:259), continuum_inner_restriction (:279),
+  PaletteTransport.palette_sixty_disjoint (:450).
+The last two continuum statements give intersection HITS, not palette
+containments. The proof below uses exactly those hits.
+Consumers for the measurable state extraction are States.RealState (:92),
+states_densityOne (:106), and finite_density_realization (:173).
+
+No B2 hypothesis is used. No global direction census was repeated.
+A tiny in-memory check of the six displayed words and the 26 analytically
+classified words verified their hits, cyclic disjointness, distinctness,
+and maximum cardinality; it was not a search or source build. No original
+files, queues, services, shared states, or other reports were changed.
+
+1. EXACT HIT TABLES ON THE SECOND BASE PHASE
+
+Use degrees in the finite tables. Let 30<t<60, theta_j=t+60j,
+Q_j=Q(theta_j), j modulo six, and E_i={i,i+1 modulo six}.
+The OUT/IN residuals are complements of the unions of E_i over positive
+and negative cosine signs respectively. Direct signs, constant throughout
+this open phase, give the following table for q4:
+
+ j     OUT residual       IN residual
+ ------------------------------------
+ 0       {4,5}             {1,2}
+ 1       {0,1,5}           {3}
+ 2       {1}               {3,4,5}
+ 3       {1,2}             {4,5}
+ 4       {3}               {0,1,5}
+ 5       {3,4,5}           {1}
+
+For q5 only rows 1 and 4 change:
+  j=1: OUT={0,5}, IN={2,3};
+  j=4: OUT={2,3}, IN={0,5}.
+All six palettes must hit both entries in their row, and
+  Q_j intersect Q_(j+1) is empty, cyclically.           (D)
+
+For example, at t=45 the positive edge indices for q4, j=0, are
+{0,1,2}; they exclude labels {0,1,2,3}, leaving {4,5}. At j=1 they
+are {2,3}, leaving {0,1,5}. For q5, j=1, they are {1,2,3}, leaving
+{0,5}. Opposite phases reverse all signs, giving rows j+3.
+
+2. NORMAL FORM FOR ACTUAL PALETTES; NO SHRINKING ASSUMPTION
+
+For both tables the actual palettes MUST contain
+  (a0,a1,a2,a3,a4,a5)=(2,3,1,2,3,1).                 (A)
+For q4, rows 1,2,4,5 directly force 3,1,3,1. Row 0 must hit {1,2}
+but its neighbour Q5 contains 1, so it contains 2. Row 3 is identical
+using neighbour Q2. For q5, rows 2 and 5 first force 1. These force
+2 in rows 3 and 0. The hit on {2,3} in rows 1 and 4 then forces 3,
+because their neighbours already contain 2.
+
+The two neighbouring mandatory labels at each j are precisely the other
+two elements of {1,2,3}. Therefore (D) excludes both of them from Q_j.
+Consequently the exact form is
+  Q_j={a_j} union B_j,    B_j subset {0,4,5},           (N1)
+where the B_j are nonempty and satisfy
+  B_j intersect B_(j+1) is empty;                      (N2)
+  B_j hits {4,5} for j=0,2,3,5;                       (N3)
+  B_j hits {0,5} for j=1,4.                           (N4)
+
+These conditions are EQUIVALENT to the original hit table plus (D),
+not merely necessary. For q4, deleting the forbidden neighbouring
+mandatory labels reduces the residual hits exactly to (N3)-(N4).
+The modified q5 rows reduce to the same conditions. Conversely (A)
+and (N3)-(N4) supply both original row hits, and (N2), together with
+distinct neighbouring a_j and {a_j} disjoint from {0,4,5}, supplies (D).
+
+3. THE SIX MINIMAL WITNESSES
+
+Write a two-digit entry such as 24 for the unordered pair {2,4}.
+The complete minimal pair table is:
+
+       j=0  j=1  j=2  j=3  j=4  j=5
+ W1     24   03   14   25   03   15
+ W2     24   35   14   25   03   15
+ W3     24   03   15   24   03   15
+ W4     25   03   14   25   03   14
+ W5     25   03   15   24   03   14
+ W6     25   03   15   24   35   14
+
+Here is an exhaustive derivation that also explains the actual-palette
+classification in Section 4. Because B5 and B0 both hit {4,5} and are
+disjoint, each contains EXACTLY one of 4,5 and they contain opposite
+ones. Likewise B2 and B3 contain opposite choices. Set
+  x=the {4,5} choice in B0,
+  y=the {4,5} choice in B2,
+and write opposite(4)=5, opposite(5)=4.
+
+For pair witnesses, choose one element b_j in each B_j. If x=y=4,
+then b3=b5=5, b4=0, and b1 is either 0 or 5: W1,W2.
+If (x,y)=(4,5), then b1=b4=0: W3.
+If (x,y)=(5,4), then b1=b4=0: W4.
+If x=y=5, then b3=b5=4, b1=0, and b4 is 0 or 5: W5,W6.
+These are all cases. Their positionwise intersections are exactly
+the singletons (2,3,1,2,3,1), agreeing with masks (4,8,2,4,8,2).
+
+Every ACTUAL word satisfying (N1)-(N4) contains one of these six
+witness words coordinatewise. Choose a hit from each residual, or use
+the classification below. This does not make the actual word equal
+to the chosen witness.
+
+4. EXACT 26-WORD ACTUAL CLASSIFICATION AND A SHARP B3 CONSEQUENCE
+
+When x=y=4, the complete possibilities are:
+  B3=B5={5};
+  B4 is {0} or {0,4};
+  B1 is {0}, {5}, or {0,5};
+  if 0 belongs to B1, then B0=B2={4};
+  if B1={5}, then B0 and B2 independently are {4} or {0,4}.
+This gives 2*2 + 1*2*2*2 = 12 actual words.
+
+To verify completeness, B1 is disjoint from the 4 in B0 and B2,
+while B4 is disjoint from the 5 in B3 and B5 and must hit {0,5}.
+Thus B4 contains 0, so B3 and B5 cannot acquire 0. The only possible
+extra label in B0 or B2 is 0, permitted exactly when B1 omits 0.
+No other label is available under (N1).
+
+The case x=y=5 is obtained by cyclically shifting every index by three
+and gives another 12 words. In each mixed case x!=y,
+  B1=B4={0},
+  B0={x}, B2={y}, B3={opposite(y)}, B5={opposite(x)},
+giving one word per mixed case. Total: 12+12+1+1=26.
+
+Every B_j has at most two elements. Therefore the ACTUAL source
+palettes satisfying these constraints have cardinality at most THREE
+on this phase, a genuine consequence without assuming B2. The first
+base phase has the unique full-pair word and hence cardinality two.
+Thus the same-centre hit/disjointness data imply |Q(theta)|<=3 a.e.
+
+This bound is sharp for the finite relaxation. For example the word
+  ({0,2,4}, {3,5}, {0,1,4}, {2,5}, {0,3,4}, {1,5})
+satisfies both q4 and q5 tables and all cyclic disjointness conditions.
+It has three triple palettes. It is not claimed to arise from an actual
+plane colouring, but it disproves a B2 inference from these finite
+constraints alone.
+
+5. WHAT THE ACTUAL SOURCE DOES LICENSE: SIX TRANSLATED REALSTATES
+
+For actual interface data, the source producers apply to finitely many
+sign subsets. Intersect their conull sets with the six translates of
+palette_sixty_disjoint, using Haar invariance. This supplies the entire
+six-row table simultaneously for almost every base phase t. As in A6,
+there is no mixing of different centres or inner/outer radial sides.
+
+Actual palette membership is measurable for each label, by
+Palettes.paletteSet_measurable. Hence the conditions
+  W^r_j subset Q(t+j*pi/3), for all j=0,...,5
+define measurable base-phase sets. Assign each admissible t to the
+first r satisfying these conditions; call the resulting six disjoint
+measurable sets E_r. They cover I=(pi/6,pi/3) up to a null set.
+At least one has positive measure (indeed at least |I|/6).
+
+For every r,j the translated set
+  E_r+j*pi/3
+is a RealState at the SAME centre with label set W^r_j. The inclusion
+is exactly the definition of E_r, transported by translation and the
+angular quotient. Indices can be extended periodically to all integers.
+
+Choose a Lebesgue density point t0 of a positive-measure E_r. Then
+ALL SIX translated sets have complement line-density zero at
+t0+j*pi/3. This supplies six simultaneous full-pair density states,
+even though no open interval of any fixed word has been proved.
+Applying states_densityOne to any two nonparallel members is fully
+source-licensed. This is a positive, rigorous state-extraction lemma.
+
+6. THE DIRECT DENSITY FAN IS COLOURABLE
+
+The immediately available sums at that one density point give twelve
+vertices, with tau=pi/3:
+  u_j=e(t0+j*tau),
+  v_j=u_j+u_(j+1), j modulo six.
+Their licensed lists are
+  J(u_j)=C\(W_(j-1) union W_(j+1)),
+  J(v_j)=C\(W_j union W_(j+1)),                       (FAN)
+where C={0,1,2,3,4,5}. The first formula uses
+u_j=u_(j-1)+u_(j+1), with angular gap 120 degrees; the second uses
+gap 60 degrees. Both gaps are nonparallel.
+
+For every one of the six words this twelve-vertex graph is explicitly
+list-colourable. At u_j use the mandatory label a_j. It belongs to
+W_j, which is disjoint from both neighbour pairs, so it belongs to
+J(u_j). At v_j choose any label outside W_j union W_(j+1); this is a
+two-element nonempty list because the adjacent pairs are disjoint.
+
+To check ALL edges, the inner vertices form a regular unit hexagon and
+only consecutive u_j are unit-adjacent. The outer vertices have radius
+sqrt(3), and no two are at unit distance. Cross distances squared are
+  |v_j-u_k|^2=4-2sqrt(3)cos((j+1/2-k)*pi/3),
+which take values 1,4,7; distance one occurs exactly for k=j or j+1.
+Thus this is a hexagon with six outward ear triangles. Neighbouring
+inner labels differ, and each outer label avoids both endpoint labels.
+
+This does not preclude larger configurations using other density points
+or angular relations. It shows that the mere extraction of one full
+six-shift word at one density point is not itself a finite contradiction.
+
+7. A BOREL COUNTERMODEL WITH NO ESSENTIALLY CONSTANT WITNESS INTERVAL
+
+There exists a Borel partition
+  I=(pi/6,pi/3)=E1 disjoint-union ... disjoint-union E6
+such that every E_r has POSITIVE measure in every nonempty open
+subinterval of I.
+
+Here is an explicit existence construction. Enumerate all rational open
+subintervals I_n compactly contained in I, and enumerate the pairs
+(n,r), r=1,...,6. At each finite stage choose a nonempty closed interval
+inside I_n avoiding the finitely many previously chosen compact nowhere
+dense sets. Inside it choose a closed nowhere dense set K_(n,r) of
+positive measure. Such a set is obtained, for example, by removing
+neighbourhoods of a countable dense set with total length less than half
+the interval length. The new K is disjoint from all previous ones.
+Set E_r=union_n K_(n,r) for r=1,...,5, and let E6 be the complement
+of their union in I. It contains all K_(n,6). Every set is Borel and
+has positive measure in every open subinterval, since that interval
+contains some I_n.
+
+Define a finite-valued angular field Qstar on a full circle as follows.
+For base phase 0<t<pi/6 and j=0,...,5, use the unique first-phase word:
+  Qstar(t+j*tau)=A_(j mod3),
+where A0={1,4}, A1={2,5}, A2={0,3}.
+For t in E_r subset (pi/6,pi/3), set
+  Qstar(t+j*tau)=W^r_j.                               (QSTAR)
+Assign any nonempty value at the finitely many phase boundaries.
+
+This is a Borel angular field. It satisfies all q4/q5 OUT and IN hits
+and sixty-degree disjointness almost everywhere. On the second phase
+this follows from the six verified words. On the first phase the cosine
+sign groups coincide with the exact paired configuration from A6;
+the word (A0,A1,A2,A0,A1,A2) hits every residual and has disjoint
+neighbours. One can also check it directly from the signs at t=15 degrees.
+Shifting by tau leaves the same base phase and advances the cyclic word,
+so no compatibility condition between different chosen base phases is
+being silently omitted.
+
+Now let J be ANY nonempty open subinterval of the second base phase.
+Every W^r occurs on a positive-measure subset E_r intersect J. Since
+Qstar's coordinates are exactly pairs, any pair witness contained in
+Qstar must equal it coordinatewise. Therefore no fixed witness word
+can be contained in Qstar almost everywhere on J.
+
+More generally, if a label i belongs to Qstar(t+j*tau) for almost every
+t in J, it must belong to W^r_j for EVERY r; otherwise E_r intersect J
+is a positive-measure counterexample. The intersection table in Section 3
+then gives i=a_j. Thus the parent's singleton lower bound is locally
+sharp on EVERY such interval, not just after global phase aggregation.
+
+The construction still has density points of each E_r, as it must.
+It refutes replacing the licensed positive-measure state in Section 5
+by a whole open interval; it does not refute the actual RealState lemma.
+
+8. EXACT IMPLICATION AND LIMITATION
+
+The finite angular data imply the normal form (N1)-(N4), the sharp B3
+bound, and measurable finite-word RealStates. They do NOT imply a B2
+bound, an interval-constant word, or any stronger locally mandatory
+label on the second phase than the supplied F. Qstar is a countermodel
+to those proposed deductions while satisfying every exact hit and
+sixty-disjointness constraint of both q4 and q5.
+
+Therefore a successful exclusion must use a relation not contained in
+that orbitwise hit/disjointness relaxation plus measurability. Possibilities
+include spatial finite-configuration coupling involving several phase
+values, or another actual trace/colouring consequence; none is asserted
+unavailable. The full q4/q5 exclusion remains unresolved by this pass.
+
+Deliverable: complete paper proofs of the actual-palette normal form,
+the source-licensed state extraction, the finite-fan colouring, and the
+Borel exact-relaxation countermodel. No actual plane-colouring model,
+global numerical bound, Lean elaboration, or exhaustive direction-space
+classification is claimed.

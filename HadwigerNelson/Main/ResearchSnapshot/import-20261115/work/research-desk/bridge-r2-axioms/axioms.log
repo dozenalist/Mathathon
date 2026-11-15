@@ -1,0 +1,8 @@
+'OAI.EuclideanFiveColor.A6.ae_restrictions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.A6.ae_six_inputs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.A6.ae_canonical_subpalette' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.A6.ae_canonical_subpalette_global' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.A6.cos_sign_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.A6.sign_of_paired_fin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.A6.signTable_of_paired' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.A6.signTable_of_paired_fin' depends on axioms: [propext, Classical.choice, Quot.sound]

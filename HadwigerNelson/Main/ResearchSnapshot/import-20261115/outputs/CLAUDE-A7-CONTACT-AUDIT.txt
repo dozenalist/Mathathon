@@ -1,0 +1,99 @@
+# Verdict: all three claims are true
+
+The proposed route is sound. The corrections and tightenings are noted inline below.
+
+Notation: q = e(a) + e(b) = (u, v), with a ∈ (30,90) and b ∈ (90,150). Let δ = (b−a)/2 ∈ (0,60) and m = (a+b)/2.
+
+**Key identity.** For any angle c:
+
+|q − e(c)|² − 1 = 2 + 2cos(b−a) − 2cos(a−c) − 2cos(b−c) = 4 cos δ · (cos δ − cos(m−c))
+
+Since cos δ > 0, this gives |q − e(c)| < 1 exactly when cos δ < cos(m−c).
+
+## 0. The region description of H
+
+The boundary of H consists of four arcs:
+- a = 90 or b = 90 gives the upper arc v = 1 + √(1−u²).
+- a = 30 (for u > 0) or b = 150 (for u < 0) gives the lower arc v = ½ + √(1−(s−|u|)²).
+
+The map (a,b) ↦ q is injective: e(a) and e(b) are the two intersections of the unit circles centred at 0 and at q, and the condition a < 90 < b fixes which is which. So H is the open region between these arcs, with |u| < s.
+
+Consequences, with w = s − |u| ∈ (0, s]:
+- **1 < v < 2.** The lower bound holds because √(1−w²) ≥ ½. The upper bound is immediate.
+- **v > 1 + |u|/√3** (strict for u ≠ 0). The inequality √(1−w²) ≥ 1 − w/√3 is equivalent to w ≤ s, after squaring both sides.
+- **|q − e(30)| > 1.** For u ≥ 0, use v − ½ > √(1−(s−u)²). For u < 0, (u−s)² > ¾ and (v−½)² > ¼.
+
+## 1. Every q in H with |q − z′| = 1 lies in M — **TRUE**
+
+**Contact equation.** Expanding |q − z′|² = 1 gives u² + v² = su + v/2 + ¾. This is exact, since s²/4 = 3/16.
+
+**Step 1: v > 21/20.** Suppose v ≤ 21/20. Then |u| < √3(v−1) ≤ √3/20, so:
+- |u − s/2| < √3/4 + √3/20 = 3√3/10, giving (u − s/2)² < 27/100.
+- v − ¼ ≤ 4/5, giving (v − ¼)² ≤ 64/100.
+
+So |q − z′|² < 91/100 < 1, a contradiction. (The route wrote ≤; the inequality is actually strict.)
+
+**Step 2: distance to B = e(60).**
+- |q−B|² − 1 = u² + v² − u − 2sv = (s−1)u + (½−2s)v + ¾.
+- Use u > −s (coefficient s−1 < 0) and v > 21/20 (coefficient ½−2s < 0).
+- This gives a bound below (1−s)s + (½−2s)(21/20) + ¾ = 21/40 − 11s/10 < ½ − s < 0.
+- The middle step is equivalent to s > ¼.
+- So |q − B| < 1.
+
+**Step 3: distance to D = e(120).**
+- From |q − e(30)| > 1: u² + v² > 2su + v. Combined with the contact equation, this gives u < (3/2 − v)/(2s). This is valid for either sign, because the coefficient of u below is s+1 > 0.
+- |q−D|² − 1 = (s+1)u + (½−2s)v + ¾ < 3/2 + 3/(4s) − v(1/√3 + √3).
+- Since 1/√3 + √3 = 2/s, the bound is 3/2 + 3/(4s) − (2/s)v.
+- With v > 21/20, this is less than 3/2 + √3/2 − 7√3/5 = 3/2 − 9√3/10.
+- That quantity is negative, because 243 > 225.
+- So |q − D| < 1.
+
+**Step 4: the disk inequalities force a < 60 and b > 120.**
+- **B (c = 60):** m − 60 ∈ (0,60) and δ ∈ (0,60), and cos is decreasing on [0,180]. So |q−B| < 1 ⇔ cos δ < cos(m−60) ⇔ m − 60 < δ ⇔ a < 60.
+- **D (c = 120):** 120 − m ∈ (0,60). So |q−D| < 1 ⇔ cos δ < cos(120−m) ⇔ 120 − m < δ ⇔ b > 120.
+- Both are exact equivalences, not just implications.
+- The representation (a,b) is unique (Part 0), so a ∈ (30,60) and b ∈ (120,150), i.e. q ∈ M.
+
+## 2. diam(M) < 1 — **TRUE**
+
+Take two points of M and write their difference as x + y, where x = e(a) − e(a′) with a, a′ ∈ (30,60) and y = e(b) − e(b′) with b, b′ ∈ (120,150).
+
+**Lengths.** |x| = 2 sin(|a−a′|/2) < 2 sin 15° = d, because 4 sin²15° = 2 − √3. Likewise |y| < d.
+
+**Directions.**
+- x is perpendicular to e((a+a′)/2), so its line direction lies in (120,150) mod 180.
+- y's line direction lies in (210,240) ≡ (30,60) mod 180.
+- The angle between the lines lies in (60,120), so |x·y| < ½|x||y|. (This is strict; the route's "≤ ½" is fine but not sharp.)
+
+**Conclusion.** |x+y|² ≤ |x|² + |y|² + |x||y| < 3d² = 6 − 3√3 ≈ 0.804 < 1, since 27 < 36. Even the closure of M satisfies this bound.
+
+## 3. Half-lobes of H have all pairwise distances < 1 — **TRUE**
+
+Take the right half, u ≥ 0. Centres P₁ = (0,1), P₂ = (s,3/2), P₃ = (0,2) are pairwise at distance exactly 1.
+
+**Open disk at P₁.** Here P₁ = e(90). |m − 90| < δ ⇔ a < 90 < b, which always holds. So all of H lies in this disk.
+
+**Open disk at P₃** (not of the form e(c), so the key identity does not apply):
+- From 1 + u/√3 < v < 2: 0 < 2 − v < 1 − u/√3.
+- So u² + (v−2)² < u² + (1 − u/√3)² = 1 + (2u/√3)(2u/√3 − 1) ≤ 1, using 0 ≤ u ≤ s.
+- Strict. The boundary point (s,3/2) is at distance exactly 1 from P₃, but it is excluded since |u| < s.
+
+**Open disk at P₂:**
+- Upper endpoint (sin θ, 1+cos θ) with θ ∈ (0,60): its squared distance to P₂ is 2 − 2cos(θ−60) < 1.
+- Lower endpoint, with w = s − u: its squared distance to P₂ is 2 − 2√(1−w²), which is < 1 ⇔ w < s ⇔ u > 0.
+- For u > 0, the open vertical segment between these endpoints lies in the open disk by convexity.
+- For u = 0, v ∈ (1,2): the squared distance is ¾ + (v − 3/2)² < 1.
+
+**Strictness.** The intersection K of the three closed disks is a Reuleaux triangle of diameter 1. The right half of H lies in its interior. For interior points p and p′, the point p″ = p′ + ε(p′ − p) is still in K for small ε > 0, so (1+ε)|p − p′| ≤ 1, giving |p − p′| < 1.
+
+**Left half.** Use the reflection u ↦ −u, which sends (a,b) to (180−b, 180−a) and preserves H. The centres become (0,1), (−s,3/2), (0,2).
+
+## Defects in the candidate route
+
+None are fatal.
+- The step "these force a < 60, b > 120" was asserted without proof. Part 1, Step 4 supplies the exact equivalence.
+- The bound on |q−B|² − 1 needs u > −s; that is supplied in Part 1, Step 2.
+- The containment in the third disk, centred at (0,2), needs v > 1 + |u|/√3, which is proved in Part 0.
+- Nothing here is claimed about a global six-colouring.
+
+PARENT REVIEW NOTE: The printed justification "since27<36" for6-3sqrt(3)<1 is an arithmetic typo. Correct justification:75<81 gives5<3sqrt(3). The claimed inequality and geometric conclusion are valid. Report assembled from two final assistant text fragments after an automatic output-limit continuation; no thinking text included.

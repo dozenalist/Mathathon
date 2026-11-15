@@ -1,0 +1,198 @@
+# Direction 2: enumerator, independent verifier, certificates
+### (complete finite representation of the continuous six-direction input)
+
+Files: `core.py` (exact arithmetic, class map, 3 decision procedures),
+`enumerate_classes.py` (enumerator over the finite classes),
+`certs.py` (certificate generator + independent checker), `certificates.json`
+(14 checked certificates), `CERT_FORMAT.md`, `MANIFEST.md`, `fixtures.py`,
+`unsat6.py`/`unsat6.json`, `audit15.py`, `link_check.py`, `classes.py`.
+Everything is exact: `Fraction`s and integer comparisons, no floats, no
+trigonometry library. Every claim below is reproducible with the scripts named.
+
+---
+
+## 0. Setting as used (verbatim, no reinterpretation)
+
+`C = {0..5}`, `E_i = {i,(i+1) mod 6}`, `alpha_i` a real direction in degrees,
+`Ppos(t) = {i : cos(t-alpha_i) > 0}`, `Pneg(t) = {i : cos(t-alpha_i) < 0}`,
+`R+(t) = C \ U{E_i : i in Ppos(t)}`, `R-(t) = C \ U{E_i : i in Pneg(t)}`.
+R(t) is: exists a palette per phase with (1) nonempty, (2) meets `R+(t)`,
+(3) meets `R-(t)`, (4) `palette(t+60j) cap palette(t+60(j+1)) = empty` for all j,
+cyclically incl. `j=5 -> 0`.  A palette HITS, it does not contain.
+
+**Reduction lemma (equivalence, both directions, used only as a search reduction).**
+For a fixed t, R(t) is satisfiable iff there are sets `P_0..P_5`, each of size <= 2,
+each meeting both `R+(t+60j)` and `R-(t+60j)`, pairwise disjoint cyclically.
+*Proof.* (=>) from a palette `P_j` choose `a_j in P_j cap R+`, `b_j in P_j cap R-`;
+then `{a_j,b_j} <= P_j` hits both and inherits nonemptiness and all disjointness.
+(<=) each `P_j` is itself a palette; (1)-(4) are exactly the stated conditions. QED
+The lemma says nothing about the true palette's cardinality; it is only an
+equivalence of satisfiability. It is *not* needed for any UNSAT claim made here:
+every UNSAT certificate is additionally checked with palettes of **any** size
+(all 64 subsets of C, `core.solve_full_palette`).
+
+---
+
+## 1. The finite class (complete representation)
+
+For a real pair `(alpha, t)` put `s = t mod 60 in [0,60)`,
+`n_i = floor((alpha_i mod 360)/60) in Z/6`, `r_i = (alpha_i mod 360) - 60 n_i in [0,60)`,
+`x_i = s - r_i in (-60,60)`, and
+
+    tau_i = n_i - [x_i > 30] + [x_i < -30]   (mod 6),      PAT = (+1,+1,-1,-1,-1,+1)
+
+**Theorem (finite representation).**
+(i) `sign cos(t + 60j - alpha_i) = PAT[(j + floor(t/60) - tau_i) mod 6]` for all
+`j in 0..5`, whenever no `|x_i| = 30`.
+(ii) Consequently the six-by-six sign matrix, hence `Ppos/Pneg` and `R+-/R--` at
+every one of the six phases, is a function of `t mod 60` alone.
+(iii) `floor(t/60)` only shifts the phase index `j`, and clause (4) is invariant
+under a cyclic relabelling of `j`; hence the CSP depends only on the class
+`[tau] in (Z/6)^6 / <(1,1,1,1,1,1)>`, which has **7776 elements** (representative
+`tau_0 = 0`).
+(iv) *Soundness*: every class is realised by a continuous input - take
+`alpha_i = 60 n_i` and any `t in (0,30)`, then `r_i = 0`, `x_i = t in (0,30)` and
+`tau = n`. All 7776 classes are hit (`classes.py`).
+(v) The CSP is constant on each maximal open interval of `[0,60) \ B` with
+`B = {(r_i+30) mod 60}`; `B` is exactly the set of residues where some cosine
+vanishes, both cosine zeros collapsing there modulo 60.
+
+**Status.** (i)-(v) are *verified* here for all non-degenerate random rational
+inputs: 3810 non-degenerate instances match (i) exactly (0 mismatches); 1442 non-degenerate instances are invariant
+under global rotation `alpha_i -> alpha_i + c, t -> t + c` and under `t -> t+60`
+(0 failures); 461 pairs of distinct inputs with the same class give identical
+`(R+,R-)` sequences up to a cyclic rotation of `j` (0 failures). The *proof* of
+(i)-(v) is the Direction-1 line, not this one. Two corrections to the
+coordinator's list:
+* the critical residues and the `t mod 60` reduction are right;
+* **the coordinator's sketch "cell CSP determined by `(n_1..n_5)` and
+  `b_i = [phi_i > 30]`" is WRONG and is withdrawn from the record**:
+for `phi_i in (30,60)` the pattern is `A(j-n_i)` when `s < r_i` but `A(j-n_i-1)`
+when `s > r_i`, so the sign of `x_i = s-r_i` enters, i.e. the *r_i* order, not
+merely the order type of `B`. **`tau` is the invariant, and its count is
+7776 = 6^5 - there is no factor 720.** (Confirmed independently by the coordinator.)
+
+## 2. Decision procedures (three, mutually independent)
+
+* `solve_dp` - DFS over the reduced alphabet with `P_0` fixed.
+* `solve_half` - split the 6-cycle at the cut edges `5-0` and `2-3`, enumerate the
+  two 3-chains, join. Different algorithm, used as the verifier.
+* `solve_full_palette` - bitmask reachability DP over all 64 palettes per phase,
+  no reduction, no `tau`: the ground truth for R itself.
+Cost per class: ~27 us measured (300-class random sample); memory O(1) beyond the
+<= 21-entry alphabet.
+
+## 3. Reproduced controls (exact, `fixtures.py`)
+
+`#w` = number of cyclic-disjoint reduced witnesses in the cell (my definition).
+
+| instance | cells | SAT | #w |
+|---|---|---|---|
+| q4 = (0,0,120,150,240,240) | (0,30),(30,60) | yes, yes | 1, 6 |
+| q5 = (0,30,120,150,240,240) | (0,30),(30,60) | yes, yes | 1, 6 |
+| q6 = (0,30,120,150,240,250) | (0,30),(30,40),(40,60) | yes x3 | 1, 4, 6 |
+| a = (0,0,120,120,240,240) | 1 cell | yes | 1 |
+| b = (0,60,120,180,240,300) | 1 cell | yes | 4 |
+
+Matches the parent on q4, q5, q6 and a. **b gives 4, not 1**: the relayed "(1,1)"
+does not reproduce under the stated definition; flagged, not resolved.
+
+## 4. The six UNSAT vectors (`unsat6.py`, `unsat6.json`, `certs.py`)
+
+All six are UNSAT in exactly the stated cell, SAT in the other, no cosine is zero
+at the probe, and the gap multiset is `{30,30,30,60,60,150}` in each.
+
+| alpha | probe t | class [tau] | reduced alphabet sizes | UNSAT |
+|---|---|---|---|---|
+| (0,30,90,120,180,210) | 15 | (0,0,1,2,3,3) | 4,3,3,4,3,3 | yes |
+| (0,30,90,120,270,300) | 45 | (0,1,2,2,5,5) | 3,4,3,3,4,3 | yes |
+| (0,30,180,210,270,300) | 15 | (0,0,3,3,4,5) | 4,3,3,4,3,3 | yes |
+| (0,60,90,150,180,330) | 45 | (0,1,2,3,3,0) | 3,3,4,3,3,4 | yes |
+| (0,60,90,240,270,330) | 15 | (0,1,1,4,4,5) | 3,4,3,3,4,3 | yes |
+| (0,150,180,240,270,330) | 45 | (0,3,3,4,5,0) | 3,3,4,3,3,4 | yes |
+
+Each is confirmed by all three procedures, including the **unreduced** one, so
+these are UNSAT for R, not just for the reduced problem. `link_check.py` closes
+the loop: the enumerator's decision on the class equals the continuum decision at
+the vector and reproduces the same exhausted table up to rotation.
+**Chain relaxation (the wrap edge `5->0` dropped, every other edge kept).**
+`core.solve_chain` / `core.count_chain`, run in `chain6.py`:
+
+| alpha | probe t | chain SAT | capped witnesses | unreduced witnesses |
+|---|---|---|---|---|
+| (0,30,90,120,180,210) | 15 | yes | 1 | 84 |
+| (0,30,90,120,270,300) | 45 | **NO** | 0 | 0 |
+| (0,30,180,210,270,300) | 15 | yes | 1 | 84 |
+| (0,60,90,150,180,330) | 45 | yes | 1 | 84 |
+| (0,60,90,240,270,330) | 15 | **NO** | 0 | 0 |
+| (0,150,180,240,270,330) | 45 | yes | 1 | 84 |
+
+Four of the six are SAT without the wrap; **two remain UNSAT**, namely
+`(0,30,90,120,270,300)` in cell `(30,60)` and `(0,60,90,240,270,330)` in cell
+`(0,30)`, and they remain UNSAT in the unreduced space as well. This confirms the
+relayed 4-of-6 split. *Correction of an earlier version of this report*: it stated
+that all six survive the wrap-dropped test. That was produced by a buggy variant
+(`solve_linear(tab,5)`) which stopped the recursion at `j = 5` and so dropped the
+edge `4->5` as well as the wrap - i.e. it decided a five-phase problem and its
+result is void. The procedure has been replaced by `solve_chain` (drop exactly the
+`5->0` edge) and `count_chain`; the table above is from the corrected code and its
+capped and unreduced counts agree with the coordinator's independently.
+
+## 5. 15-degree neighbourhood audit (`audit15.py`)
+
+At the stated midpoint `t`, `theta_i = (t - alpha_i) mod 60` is 15 or 45 for every
+`i`, so `margin_i = dist_60(theta_i, 30) = 15` **for all i, all six vectors**.
+The sign matrix is unchanged as long as `dist_60(theta_i - delta_i, 30) > 0`, i.e.
+`delta_i not in theta_i - 30 + 60 Z`. So the maximal open box around `delta = 0`
+which is still UNSAT is the product of the components of 0:
+`(-15,45)` where `theta_i = 15`, `(-45,15)` where `theta_i = 45` - **asymmetric**.
+729 interior sample points per vector: sign matrix constant and UNSAT. Hence
+(a) the claim is true; (b) 15 is *not* the maximal UNSAT radius, a maximal box has
+sides 15 and 45; (c) 15 *is* sharp for a symmetric ball: every coordinate has one
+face at exactly +-15 and, just past that face (`delta = -15-1/2` resp. `15+1/2`,
+other deltas 0), the CSP is SAT for at least one coordinate of each vector.
+Tight faces `(coordinate, sign)`: v1 (0,-); v2 (3,+),(4,-); v3 (1,+),(2,-);
+v4 (4,+),(5,-); v5 (2,+),(3,-); v6 (0,+),(1,-).
+
+## 6. Certificates
+
+See `CERT_FORMAT.md`. `certs.py` writes and re-checks 14 certificates: SAT
+witnesses for the eight control cells and UNSAT tables for the six vectors, all
+verifying. An UNSAT certificate is only accepted after the unreduced 64-palette
+check also fails, so the reduction never has to be trusted.
+
+## 7. Symmetries and orbit counts (`classes.py`)
+
+On the 7776 classes: `L: tau_k -> tau_{k-1}` (label cycle) is **not free** -
+1316 orbits, sizes 1282x6, 22x3, 6x2, 6x1. `R: beta_k = -alpha_{5-k}, t -> -t`
+(reflection) is an involution with `R L R = L^-1`. `<L,R>` has **730** orbits
+(578x12, 134x6, 6x3, 6x2, 6x1). So the exhaustive enumeration is 7776 classes or,
+using the symmetry lemma, 730 of them.
+
+## 8. Unresolved obligation (exact, single)
+
+**The full class enumeration has deliberately not been run.** The complete
+classification of the 7776 classes is therefore *not* asserted here; what is
+asserted is the finite reduction, the three decision procedures, the checker, the
+certificate format, the reproduced controls and the six UNSAT classes. The run to
+be scheduled is
+
+    python3 enumerate_classes.py --all --out classes_all.jsonl     # 7776 classes, ~0.21 s measured
+
+and the obligation is to classify its output: split the UNSAT classes into those
+with some `R+-`/`R--` empty (trivial) and those (like the six) needing clause (4),
+and certify the second list. Until that run exists, no statement about how many
+classes are UNSAT is available. Also outstanding, and outside this direction: the
+*proof* of Theorem 1 (it is verified numerically only here).
+
+## 9. Status of the correction in Sec.4 (what is and is not affected)
+
+Only the wrap-dropped sentence was wrong. It is a remark, not an input to
+anything else: **`7776` classes, `1316` orbits of `L`, `730` orbits of `<L,R>`,
+the per-coordinate boxes `(-15,45)`/`(-45,15)`, the sharpness of 15, the control
+counts `q4 (1,6), q5 (1,6), q6 (1,4,6), a=1, b=4`, the classes and exhausted
+tables of the six vectors, and the 14 verified certificates are all unchanged** -
+they come from code (`core.py`, `classes.py`, `audit15.py`, `certs.py`) that the
+chain relaxation never touches. Re-run after the fix: `t_tau2.py`,
+`fixtures.py`, `certs.py` (14/14), `link_check.py`, `classes.py`, `chain6.py` all
+pass.

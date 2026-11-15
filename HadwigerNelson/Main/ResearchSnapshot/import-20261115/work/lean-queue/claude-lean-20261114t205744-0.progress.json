@@ -1,0 +1,42 @@
+{
+  "leanExe": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\elan\\toolchains\\leanprover--lean4---v4.34.1\\bin\\lean.exe",
+  "expectedVersion": "4.34.1",
+  "expectedCommit": "5045d0056413266e57c625dcd7c365b10e377c52",
+  "mathlibRoot": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4",
+  "requiredMathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "leanPath": "C:/Users/jarom/Documents/Codex/2026-11-13/i/work/lean-queue/threecentre-r1/build;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\mathlib4\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean",
+  "id": "claude-lean-20261114t205744-0",
+  "status": "failed",
+  "source": "claude-admissions\\claude-lean-20261114t205744-0\\Candidate.lean",
+  "output": "claude-admissions\\claude-lean-20261114t205744-0\\Candidate.olean",
+  "workingDirectory": "claude-admissions\\claude-lean-20261114t205744-0",
+  "expectedSourceSha256": "081d89537f0548148f25a6790f975cdf75863bb977150bbf156b1ff665ff1c01",
+  "timeoutSeconds": 480,
+  "purpose": "Validate the repaired generic even-walk reachability and the finite list/parity obstruction, which the A5 consumer chain uses. I reviewed it: pure source, no sorry, axiom or native_decide; the hnear and hAclosed binders are correct. It imports Rigidity and States from the R1 tree. If those modules are absent from the pinned tree, report an import failure rather than a math failure.",
+  "dependsOn": "threecentre-r1-27-transfer",
+  "reviewedBy": "Claude supervisor plus conservative source gate",
+  "reconciliation": {
+    "at": "2026-11-14T21:16:33.212929+00:00",
+    "reason": "Verified only Windows newline translation caused the hash mismatch; exact originally pinned LF bytes restored. No Lean process had started."
+  },
+  "startedUtc": "2026-11-14T21:18:59.011878+00:00",
+  "sourceSha256": "081d89537f0548148f25a6790f975cdf75863bb977150bbf156b1ff665ff1c01",
+  "actualVersion": "Lean (version 4.34.1, x86_64-w64-windows-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "runner": "python",
+  "command": [
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-env\\elan\\toolchains\\leanprover--lean4---v4.34.1\\bin\\lean.exe",
+    "-o",
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\claude-admissions\\claude-lean-20261114t205744-0\\Candidate.olean",
+    "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\claude-admissions\\claude-lean-20261114t205744-0\\Candidate.lean"
+  ],
+  "processId": 52616,
+  "elapsedSeconds": 149.05,
+  "availableMiB": 10929.20703125,
+  "workingSetMiB": 766.98046875,
+  "privateMiB": 1911.63671875,
+  "peakWorkingSetMiB": 3262.43359375,
+  "peakPrivateMiB": 8068.34375,
+  "exitCode": 1,
+  "finishedUtc": "2026-11-14T21:21:28.066788+00:00",
+  "log": "C:\\Users\\jarom\\Documents\\Codex\\2026-11-13\\i\\work\\lean-queue\\claude-lean-20261114t205744-0.python.log"
+}

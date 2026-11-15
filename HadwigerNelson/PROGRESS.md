@@ -1,32 +1,79 @@
-# Progress — 14 November 2026
+# Progress — 15 November 2026
 
-This entry imports the existing Hadwiger–Nelson research into the shared repository.
-It reports the status supported by the archived local checks and reviews. It does
-not treat every downloaded worker report as an accepted result.
+**No global chromatic result.** The bounds 6 ≤ χ(ℝ²) ≤ 7 come from the supplied
+proof and the classical seven-colouring. Nothing the team has added changes them.
+The only recorded route to χ ≥ 7 is conditional on two open lemmas, L6 and F6.
+
+The canonical, sourced list of every result is the
+[results ledger](RESULTS-LEDGER.md) ([JSON](results-ledger.json)). Each ledger
+entry gives the exact statement with its hypotheses, a single status, artifact
+paths with SHA-256, provenance, the correction history, and what the results desk
+re-checked. This page summarises it. Status words are the ledger's:
+`LEAN_VERIFIED` (local Lean 4.34.1, Mathlib `d13f23b`, printed axiom list),
+`PROVED_PAPER_REVIEWED` (named referee file), `TESTED_FINITE` (exact computation),
+`CANDIDATE`, `UNAUDITED_NUMBER`, `RETRACTED_OR_REFUTED` and `OPEN`.
+
+## Simplification of the supplied proof
+
+| Result | Status and evidence | Line change / scope |
+| --- | --- | --- |
+| Common-encoding refactor ([ENC-R4](RESULTS-LEDGER.md#enc-r4)) | `LEAN_VERIFIED`: [R4 validation](Main/ResearchSnapshot/local/outputs/ENCODING-REFACTOR-VALIDATION.txt), [sources](Main/ResearchSnapshot/local/outputs/encoding-refactor/) | **−126 lines** (ConditionalSpectrum 497→530, ConditionalLimits 701→542). 82-module closure; nine root theorems on standard axioms. |
+| Three-centre integration ([R1](RESULTS-LEDGER.md#r1)) | `LEAN_VERIFIED`; accepted by Jarom ~23:25Z on 14 Nov: [frozen manifest](Main/ResearchSnapshot/local/work/lean-queue/threecentre-r1/frozen-manifest.json), [line accounting](Main/ResearchSnapshot/local/work/lean-queue/threecentre-r1/line-accounting.json), [root axiom log](Main/ResearchSnapshot/import-20261115/work/lean-queue/threecentre-r1-axiomroots.python.log) | **−24 lines net** (States 764→566, FourContinuity 551→509, FiveSupport 376→354, Interfaces +1, new AvoidingTrace +237). All 27 modules compile, and the nine roots (including `no_proper_five_coloring`) use standard axioms only. The results desk re-hashed all 27 sources and recounted the lines. Follow-ups: contract and dependency gates were not re-run, and PaletteTransport (unchanged since R4) is missing from the manifest. |
+| Branch-free step ban and its consumer ([STEPBAN-V2](RESULTS-LEDGER.md#stepban-v2), [STEPBAN-CONSUMER](RESULTS-LEDGER.md#stepban-consumer)) | `LEAN_VERIFIED` standalone: jobs 220720-0 and 232057-0 ([import notes](Main/ResearchSnapshot/import-20261115/IMPORT-NOTES.md)) | Same statements as manuscript Lemma 6.7 and its consumer (identical `#check` output). The proof body shrinks from 21 to 15 lines and `five_forced_label` becomes unused. **No lines saved yet:** the same-name swap is still pending. |
+| Fixed/moving three-centre theorems and the joint-pair support theorem | `LEAN_VERIFIED` and paper-refereed: [three-centre](Main/ResearchSnapshot/local/outputs/three-centre/), [joint support](Main/ResearchSnapshot/local/outputs/joint-support/) | The three-centre theorems are now integrated by R1. The joint-pair support theorem stays standalone. Lemma 6.7 (`five_support_step_ban`) is retained. |
+
+The integrated tree is **−150 lines** in total (−126 and −24).
+
+## New mathematics (all local, conditional, or finite)
 
 | Result | Status and evidence | Scope / outstanding work |
 | --- | --- | --- |
-| Closed 60-degree cone obstruction (CC60), including the equality case | `LEAN_VERIFIED`: [validation manifest](Main/ResearchSnapshot/local/outputs/cone/VALIDATION.json), [axiom audit](Main/ResearchSnapshot/local/outputs/cone/cone-audit-v3.log), and three source modules | Under the actual same-centre approaching-continuum and support-exclusion hypotheses, at least three labels remain. The concrete six-colour consumer also passed. The printed axioms are `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx`. This is a local obstruction, not a plane-colouring solution. |
-| Common-encoding refactor | `LEAN_VERIFIED`: [R4 validation](Main/ResearchSnapshot/local/outputs/ENCODING-REFACTOR-VALIDATION.txt), [final sources](Main/ResearchSnapshot/local/outputs/encoding-refactor/), and [compiler/fidelity records](Main/ResearchSnapshot/local/work/lean-queue/encoding-r4/) | Net reduction of 126 lines; 82-module affected closure, nine root axiom checks, statement/fresh-context checks, and 133 binders across six declarations. This simplifies the supplied proof; it is not a new bound. |
-| Fixed and moving three-centre replacements | `LEAN_VERIFIED`: [sources and logs](Main/ResearchSnapshot/local/outputs/three-centre/) | Exact types/binder flags and transitive forbidden-dependency gates passed. Full consumer integration and deletion of the old branch remain pending. Keep manuscript Lemma 6.7 (`five_support_step_ban`). |
-| Joint-pair support theorem | `LEAN_VERIFIED`: [source and validation](Main/ResearchSnapshot/local/outputs/joint-support/) | The standalone theorem passed; this does not establish a complete deletion of the original States development. |
-| Translated Heule union | `TESTED_FINITE`: [exact certificate](Main/ResearchSnapshot/local/outputs/HEULE-UNION-CERTIFICATE.json), [independent verifier](Main/ResearchSnapshot/local/outputs/Verify-HeuleUnion.mjs), [validation](Main/ResearchSnapshot/local/outputs/HEULE-UNION-VALIDATION.txt) | 1,048 vertices, 5,487 edges, 58 overlapping vertices, 184 new connecting edges. All 548,628 unordered pairs were checked with exact arithmetic and a proper five-colouring verified. The verifier does not rerun a four-colour UNSAT proof for the embedded Heule graph. |
-| No forced-equal pairs in the two studied Heule graphs | `TESTED_FINITE`: [553-vertex certificate](Main/ResearchSnapshot/local/outputs/HEULE553-NO-FORCING-CERTIFICATE.json), [1,048-vertex certificate](Main/ResearchSnapshot/local/outputs/HEULE-UNION-NO-FORCING.json) | Each graph has 34 proper five-colourings giving every vertex a distinct colour signature. Every distinct pair is separated in at least one witness. This closes these specific forcing-pair searches. |
-| Generic sharpness above 60 degrees | `PROVED` at paper-review level: [construction and novelty audit](Main/ResearchSnapshot/scale-up/ULTRA-CONE-NOVELTY-AUDIT.txt), [independent referee](Main/ResearchSnapshot/scale-up/ULTRA-SHARPNESS-REFEREE.txt) | An accepted 20-colour construction prevents widening CC60 for arbitrary finite palettes. Six-colour sharpness and novelty priority are not established. |
-| Discrete direction filtering | `TESTED_FINITE`: [independent audit and certificates](Main/ResearchSnapshot/local/work/checkin-artifacts/20261114T172056Z/) | The corrected counts are 7,776 grid vectors, 1,420 after aligned constraints, 174 after orbit constraints, and six after conditional CC60 filtering. The old count of 95 was a reconstruction bug. Grid exhaustion is not a classification of arbitrary directions. |
-| Continuous cone/list-field investigations | Paper results and candidates: [continuous classification](Main/ResearchSnapshot/local/outputs/ASTRA-CONTINUOUS-SIX-A4.txt), [list-field report](Main/ResearchSnapshot/local/outputs/ASTRA-LIST-FIELD-A4.txt) | The original status report distinguishes completed paper arguments from outstanding independent reviews. No full-disk extension or global six-colouring is inferred. |
+| Closed 60° cone obstruction ([CC60](RESULTS-LEDGER.md#cc60)) | `LEAN_VERIFIED`: [validation](Main/ResearchSnapshot/local/outputs/cone/VALIDATION.json), [axiom audit](Main/ResearchSnapshot/local/outputs/cone/cone-audit-v3.log) | Under the same-centre approaching-continuum and support-exclusion hypotheses, at least three labels remain. Local obstruction only. |
+| Generic sharpness of CC60 ([SHARPNESS-20](RESULTS-LEDGER.md#sharpness-20)) | `PROVED_PAPER_REVIEWED`: [construction](Main/ResearchSnapshot/scale-up/ULTRA-CONE-NOVELTY-AUDIT.txt), [referee](Main/ResearchSnapshot/scale-up/ULTRA-SHARPNESS-REFEREE.txt) | 20 colours. Six-colour sharpness and priority are not established. |
+| Canonical paired palette excluded at one centre ([A5-FOUR-LIST](RESULTS-LEDGER.md#a5-four-list)) | `PROVED_PAPER_REVIEWED`: [proof](Main/ResearchSnapshot/import-20261115/outputs/ASTRA-FOUR-LIST-A5.txt), [referee](Main/ResearchSnapshot/import-20261115/outputs/ASTRA-FOUR-LIST-REFEREE.txt) | Finite existence only (walk coordinates not enumerated); not in Lean. The [sliver interval certificate](RESULTS-LEDGER.md#a5-sliver) is `TESTED_FINITE`. |
+| A6 producer chain ([A6-FORCING](RESULTS-LEDGER.md#a6-forcing), [A6-BRIDGE-R2](RESULTS-LEDGER.md#a6-bridge-r2), [G1-R2](RESULTS-LEDGER.md#g1-r2), [G3-R2](RESULTS-LEDGER.md#g3-r2)) | `LEAN_VERIFIED` pieces: [import notes](Main/ResearchSnapshot/import-20261115/IMPORT-NOTES.md) | The bridge still takes `SignTable`, `ForcingLemma` and `ArcCover` as hypotheses; the glued file is `OPEN`. The forcing job printed no axiom list. The paper producer ([A6-PAIRED-PRODUCER](RESULTS-LEDGER.md#a6-paired-producer)) is a `CANDIDATE` (parent-checked, no referee file). |
+| Even-walk reachability and list/parity obstructions ([EVENWALK-R6](RESULTS-LEDGER.md#evenwalk-r6)) | `LEAN_VERIFIED` (desk compile, standard axioms) | For weak measurable k-colourings. Revisions r1–r5 failed and were superseded. |
+| Six six-direction configurations excluded ([SIX-ORBIT](RESULTS-LEDGER.md#six-orbit)) | `TESTED_FINITE`: [certificates](Main/ResearchSnapshot/import-20261115/work/openmath-supervisor/checkins/20261114T191820Z/inner-outer-orbit-certificates.json) | Relaxation level, with an open 15° exclusion neighbourhood. The exact global radius is open. |
+| Fixed-phase census and staircase census ([FIXED-PHASE-CENSUS](RESULTS-LEDGER.md#fixed-phase-census), [STAIRCASE-CENSUS](RESULTS-LEDGER.md#staircase-census)) | `TESTED_FINITE`: two independent implementations each | 177 SAT / 7,599 UNSAT. 76,283 of 36,415,008 staircases survive, which is a necessary condition only. The earlier total 36,415,608 was a typo. |
+| Discrete direction filtering ([DIR-FILTER](RESULTS-LEDGER.md#dir-filter)) | `TESTED_FINITE`, re-run by the results desk: [audit](Main/ResearchSnapshot/local/work/checkin-artifacts/20261114T172056Z/) | 7,776 → 1,420 → 174 → 6. The old count of 95 came from a reconstruction bug. Grid only. |
+| Heule union and no-forcing ([HEULE-UNION](RESULTS-LEDGER.md#heule-union), [HEULE-NO-FORCING](RESULTS-LEDGER.md#heule-no-forcing)) | `TESTED_FINITE`, re-verified at 23:50Z on 14 Nov | 1,048 vertices, exact geometry. No forced-equal pair in either graph. |
+| All-phase SAT measure 1/648 ([RELAX-1-648](RESULTS-LEDGER.md#relax-1-648)) | `UNAUDITED_NUMBER` | 1,440 of 933,120 cells; 16 of 3,840 sign cells. Not to be cited as established. |
+
+## Negative results
+
+[MC120-ENDPOINT](RESULTS-LEDGER.md#mc120-endpoint): the closed-120° MC120 is false,
+shown by a refereed 19-colour counterexample. Other refereed local countermodels are
+[ANNULUS-3COL](RESULTS-LEDGER.md#annulus-3col),
+[SUPPORT-FLIP](RESULTS-LEDGER.md#support-flip),
+[FOUR-STATE-ANGULAR](RESULTS-LEDGER.md#four-state-angular) and
+[VARIABLE-TRIANGLE](RESULTS-LEDGER.md#variable-triangle). The ledger also lists the
+refuted claims (AC-axis, two-triangle classification, alternating triple, the
+Claude05 verdict, overnight withdrawals) and every failed Lean revision.
+
+## Main open gaps
+
+The glued A6 producer; the step-ban swap; the R1 contract/dependency gates; a
+referee for strict MC120 (A6 corollaries and the continuous classification depend
+on it); the 1/648 audit; palette rigidity; the staircase converse; and L6/F6.
 
 The original [progress log](Main/ResearchSnapshot/local/outputs/PROGRESS-LOG.txt),
 [consolidated findings](Main/ResearchSnapshot/local/outputs/CONSOLIDATED-FINDINGS.txt),
 and [research status](Main/ResearchSnapshot/local/outputs/RESEARCH-STATUS.txt)
-retain the sequence of corrections and handoffs. Historical policy, quota, and
-deadline statements in those reports describe their original times.
+keep the sequence of corrections and handoffs. Newer copies are in
+[import-20261115](Main/ResearchSnapshot/import-20261115/IMPORT-NOTES.md). Historical
+policy, quota and deadline statements in those reports describe their original
+times.
 
 ## Import validation
 
 The repository import checks exact file hashes, the stated cone and R4 source
 hashes, certificate structure, and graph-colouring witnesses. Results and the
 reproduction command are recorded in
-[Main/IMPORT-VALIDATION.json](Main/IMPORT-VALIDATION.json). Existing Lean compiler
-logs are preserved as prior verification evidence; the import does not claim a
-fresh complete Lean rebuild or integration into the repository's 4.35.0 target.
+[Main/IMPORT-VALIDATION.json](Main/IMPORT-VALIDATION.json). On 15 November the
+results desk added `Main/ResearchSnapshot/import-20261115/`: the Lean sources,
+compile logs and axiom checks banked after the first capture, together with the
+census, sliver and six-orbit evidence and the newer reports. After that import,
+`node HadwigerNelson/Main/verify-snapshot.mjs` passes on 11,698 files. Existing
+Lean compiler logs are kept as prior verification evidence. The import does not
+claim a fresh complete Lean rebuild, or integration into the repository's 4.35.0
+target.

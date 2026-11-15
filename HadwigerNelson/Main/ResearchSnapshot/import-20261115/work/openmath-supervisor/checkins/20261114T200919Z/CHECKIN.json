@@ -1,0 +1,23 @@
+{
+  "at": "2026-11-14T20:41:59.061Z",
+  "role": "Claude primary; Codex45minuteoversight",
+  "codexAgents": 0,
+  "console": "http://127.0.0.1:8765/",
+  "census": {
+    "at": "2026-11-14T20:11:45.467Z",
+    "classes": 7776,
+    "sat": 177,
+    "unsat": 7599,
+    "unsatNonemptySides": 862,
+    "propagationIncomplete": 0,
+    "mismatches": 0,
+    "elapsedMs": 1916,
+    "scope": "ALL fixed-phase sign classes, NOT every direction configuration. Each actual direction vector must traverse only SAT classes at every positive phase interval."
+  },
+  "pythonSmoke": "PASS",
+  "leanIntegrationPassed": 22,
+  "claudeCoordinatorPid": 44888,
+  "leanPid": 40432,
+  "consolePid": 11312,
+  "sourceTests": "Syntax,nativeexclusivelock,atomicJSON,pathandplanvalidation,HTTPauth+promptqueuePASS"
+}

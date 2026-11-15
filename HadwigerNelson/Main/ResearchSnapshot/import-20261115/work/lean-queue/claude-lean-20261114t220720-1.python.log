@@ -1,0 +1,4 @@
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\claude-admissions\claude-lean-20261114t220720-1\Candidate.lean:160:11: error(lean.unknownIdentifier): Unknown identifier `le_or_lt`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\claude-admissions\claude-lean-20261114t220720-1\Candidate.lean:160:29: error: Tactic `rcases` failed: `x✝ : ?m.300` is not an inductive datatype
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\claude-admissions\claude-lean-20261114t220720-1\Candidate.lean:168:11: error(lean.unknownIdentifier): Unknown identifier `le_or_lt`
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-queue\claude-admissions\claude-lean-20261114t220720-1\Candidate.lean:168:29: error: Tactic `rcases` failed: `x✝ : ?m.319` is not an inductive datatype

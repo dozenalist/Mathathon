@@ -1,0 +1,5 @@
+[table] recomputed 7776 classes: SAT=177  UNSAT=7599
+[spot] DP, backtracking DFS and unrestricted-64-mask rule agree on 11 sampled classes
+[census] surviving staircases by number of blocks k=1..6: [177, 2576, 12762, 26928, 25200, 8640]
+[census] total surviving = 76283  of  7776*4683 = 36415008
+[time] 2.06s
