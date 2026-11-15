@@ -1,0 +1,43 @@
+{
+ "baselineCount": 3124,
+ "r1Count": 3122,
+ "common": 3116,
+ "removed": [
+  "OAI.EuclideanFiveColor.nonparallel_neighborhood",
+  "OAI.EuclideanFiveColor.positive_state_support_point",
+  "OAI.EuclideanFiveColor.strict_state_no_unit_support",
+  "OAI.EuclideanFiveColor.strict_state_sequence_false",
+  "OAI.EuclideanFiveColor.strict_state_sequence_local_false",
+  "OAI.EuclideanFiveColor.strict_state_uniform_on_compact",
+  "OAI.EuclideanFiveColor.support_density_direction",
+  "OAI.EuclideanFiveColor.support_density_sequence"
+ ],
+ "added": [
+  "OAI.EuclideanFiveColor.avoidingTraceCentre",
+  "OAI.EuclideanFiveColor.avoidingTraceCentre_seqClosed",
+  "OAI.EuclideanFiveColor.fixed_state_no_unit_three_centres",
+  "OAI.EuclideanFiveColor.isClosed_avoidingTraceCentre",
+  "OAI.EuclideanFiveColor.strict_state_sequence_no_unit_three_centres",
+  "OAI.EuclideanFiveColor.triangle_no_unit_of_avoiding_traces"
+ ],
+ "changed": [
+  {
+   "name": "OAI.EuclideanFiveColor.palette_neighbor_disjoint",
+   "fields": {
+    "module": [
+     "OAI.Geometry.PlaneColoring.FiveSupport",
+     "OAI.Geometry.PlaneColoring.AvoidingTrace"
+    ]
+   }
+  },
+  {
+   "name": "OAI.EuclideanFiveColor.palette_neighbor_real",
+   "fields": {
+    "module": [
+     "OAI.Geometry.PlaneColoring.FiveSupport",
+     "OAI.Geometry.PlaneColoring.AvoidingTrace"
+    ]
+   }
+  }
+ ]
+}

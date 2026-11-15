@@ -1,0 +1,23 @@
+started 2026-11-15T02:01:31.228633+00:00
+src C:/Users/jarom/Documents/Codex/2026-11-13/i/work/simplification-desk/s1/AxiomRoots.lean
+sha256 4dda63592232d24a6da91e045980d93e2761c14488fcd427c82c3baa7d3842f5
+LEAN_PATH C:/Users/jarom/Documents/Codex/2026-11-13/i/work/simplification-desk/s1/build;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\Qq\.lake\build\lib\lean
+exit 1
+elapsed 31.8
+--- stdout
+C:/Users/jarom/Documents/Codex/2026-11-13/i/work/simplification-desk/s1/AxiomRoots.lean:28:0: error: unknown module prefix 'OAI'
+
+No directory 'OAI' or file 'OAI.olean' in the search path entries:
+C:/Users/jarom/Documents/Codex/2026-11-13/i/work/simplification-desk/s1/build
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\build\lib\lean
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\aesop\.lake\build\lib\lean
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\batteries\.lake\build\lib\lean
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\importGraph\.lake\build\lib\lean
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\LeanSearchClient\.lake\build\lib\lean
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\plausible\.lake\build\lib\lean
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\proofwidgets\.lake\build\lib\lean
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\Qq\.lake\build\lib\lean
+c:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\elan\toolchains\leanprover--lean4---v4.34.1\lib\lean
+
+--- stderr
+

@@ -1,6 +1,6 @@
 # Import 2026-11-15 (results desk)
 
-Captured 2026-11-15T01:24:03.008Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
+Captured 2026-11-15T02:50:38.549Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
 
 ## Banked Lean results: exit code and `#print axioms` excerpts
 
@@ -245,7 +245,7 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/lean-queue/threecentre-r1-axiomroots.progress.json` | 3345 | `ca4b961283a98933d08ccfdd6ca490e05945bbd4f6a12c065b1c2dbd52f173a9` |
 | `work/lean-queue/threecentre-r1-axiomroots.python.log` | 3506 | `85aaef1671d5777e50378e07a2f2c94cedd630c610fbe9fc7c4d0601c8d6df29` |
 | `work/research-desk/BANKED.md` | 4475 | `ac15718a338165c8851bfd501c2d59918ddde43c142b32ff01a02b591ecdb2f1` |
-| `work/research-desk/LOG.md` | 7650 | `c8f38e99171cadc6202de0ab3a6eed8ad84d56801a8c9e7b4090ae56a005ebd2` |
+| `work/research-desk/LOG.md` | 8469 | `1e383cc5c3f9ff32ca4dd48af345a464846a045ed8d160f3ce0737e7f5f232ad` |
 | `work/research-desk/G3-r2/G3-ArcCover-r2.lean` | 9476 | `39a02e68c878c0d0df0493d53114679ffd6cb01c3354329cd33f3867b9558c6e` |
 | `work/research-desk/G3-r2/compile.log` | 96 | `e1a47fad00213af7a5bfff1a1a8db0403e6d941814cc164b7dc6b8177767203a` |
 | `work/research-desk/EvenWalk-rev6/EvenWalkReachability-rev6.lean` | 19063 | `4439cf5dd4088ea6765337286399f5af462fd1c3f4976c82c99d77019bfb9904` |
@@ -318,7 +318,57 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/automation-supervisor/replies/20261115T002122.json` | 3871 | `d3add921516ef36bb467c50447e99339f7432904ce0994a3e9d79cb71f883b76` |
 | `work/automation-supervisor/replies/20261115T005413.json` | 3303 | `a29f684e3e0e6c68328d15fd182a9ac46052ed3e6597228da44686e740fa511d` |
 | `work/automation-supervisor/replies/20261115T010921.json` | 3579 | `52bb62e86a146f7035cc6b6a11544b683765384540a018ab60f9cfde5b9fb1d5` |
-| `work/automation-supervisor/research-plan.json` | 1447 | `58f926192df76e85f799ee32c8cbda983f593378ddb7f3047e6530b8ee850c1c` |
+| `work/automation-supervisor/replies/20261115T012427.json` | 2621 | `6146088cd60058d62d5f7ade9e1199c178b4b229d1bd4e3c6e25ab8280e9467f` |
+| `work/automation-supervisor/replies/20261115T014638.json` | 2536 | `b6f73b2d2d4d8626119f0ca92829f4926f33268c1534be96970a63a4201ca51a` |
+| `work/automation-supervisor/replies/20261115T021643.json` | 3149 | `45a527743b0025032633efeb0bb7cd406aad3640babce6d692c5cb4a446dbb0e` |
+| `work/automation-supervisor/replies/20261115T024133.json` | 3454 | `bb174bcb83faaff428201fefd877b3032c4f1674440f6d1f2f70f715a726b598` |
+| `work/automation-supervisor/research-plan.json` | 1073 | `7f991002ea31d54893d8ccf444c59a952fb9d9f25d23178509028997bcc97751` |
+| `work/simplification-desk/s1/logs/01-States.log` | 1250 | `dd82f0b2a9712e7059fb82e748346594d2c6b441782f07389899abcd7a45eba3` |
+| `work/simplification-desk/s1/logs/02-BoundaryTrace.log` | 1257 | `0d94aaaf275e19626c107e8b0fcacc0668f3f36cd3897eb5e7da933e8095b029` |
+| `work/simplification-desk/s1/logs/03-AngularBoundary.log` | 1259 | `53844dfe64b3bd7b29d3ea921ec358982420d7c1303955aa8cbccc7371712382` |
+| `work/simplification-desk/s1/logs/04-Exclusion.log` | 1253 | `08bf68e58f381f2049d57ed7c6c6a93195deeded7b908f76f4edb67c4f683dd2` |
+| `work/simplification-desk/s1/logs/05-AvoidingTrace.log` | 1509 | `895472595e785005df7a380cf6f2f377883aea250073d1cc18abfad83e597857` |
+| `work/simplification-desk/s1/logs/06-FourContinuity.log` | 1258 | `a573d901e27306c89b027118c9b345f90f134026f0c120935bb2dc3f0188dc49` |
+| `work/simplification-desk/s1/logs/07-FourTransport.log` | 1257 | `8d49dce72eb5436b479ed6022d646132c0525891a69c9922c3974f9edcb1b973` |
+| `work/simplification-desk/s1/logs/08-Accumulation.log` | 1257 | `08af7b758b670cf94c4294af52febec0107bd71fe4bcd983b3ea4c4bd7d7cf3a` |
+| `work/simplification-desk/s1/logs/09-FiveSupport.log` | 1255 | `319b31eb5f8cf98b3288edd1815fc264aebfb4ccc3ae5501ade17676503ab47c` |
+| `work/simplification-desk/s1/logs/10-CyclicCore.log` | 1254 | `942e4c93f3b7bd12902c2b6221a4ce6a32a166f61d05b0f1e9c10e51d11f2e05` |
+| `work/simplification-desk/s1/logs/11-DiskAverages.log` | 1256 | `602a072ec85a65576f5a52a54937a1dc8e941433a12198b83b011e2c9a9248cf` |
+| `work/simplification-desk/s1/logs/12-PlanarCovers.log` | 1256 | `5884b0d5f990b2da69fc64ea6341ae09a0cee172a68c623aed80111ff2f4ad54` |
+| `work/simplification-desk/s1/logs/13-GraphRealization.log` | 1260 | `9b1ba1d9507a11198114256e8c5e57e872e7075f438c2ac73bdd6083a2339705` |
+| `work/simplification-desk/s1/logs/14-Interfaces.log` | 1254 | `afebc1fe57c7ef37e2086a7697759c309ac10a28fbf7e253d5e033e7721b0849` |
+| `work/simplification-desk/s1/logs/15-Sectors.log` | 1251 | `f28a11f4285919bc9f9dd42a16265f8826c3df3c6e795067f137a08c30781e97` |
+| `work/simplification-desk/s1/logs/16-ContinuumLimits.log` | 1259 | `8f426d8486f3176821468f78cdad5c7ee4673b6592fdf0a781dee62eb0b99859` |
+| `work/simplification-desk/s1/logs/17-DiskExtension.log` | 1257 | `9eed6a8c46a3db467cb2d2602ea2996299b29aade2e11274a7fa18c43dfc5038` |
+| `work/simplification-desk/s1/logs/18-GraphCuts.log` | 1253 | `2c27ac781182f78c8740a6a1fe4ec56d72511e535df7743150668f5498b4d56a` |
+| `work/simplification-desk/s1/logs/19-HoleApproximation.log` | 1261 | `0f328da0543eeba38e4b3f3eea02d8777f93882d4457573c0ed233b2deb98fe9` |
+| `work/simplification-desk/s1/logs/20-GraphPatches.log` | 1256 | `ef11d689c6e33e65b7841ebe6bc712058672dc1c9a22e71f36cc1b46ef708c73` |
+| `work/simplification-desk/s1/logs/21-FullApproximation.log` | 1261 | `4a3acafdb00ac3688cecf6a91442b49f0f685949c60c62b41df67658ad7ec038` |
+| `work/simplification-desk/s1/logs/22-Mesh.log` | 1248 | `0e8a51377f1ed3c6d52a95142e8aa5e8b786c91d084b7c984147ebbfc9d3ed98` |
+| `work/simplification-desk/s1/logs/23-Five.log` | 1248 | `56bdb08ad010dc1e4168c6317b0b4b26ce2bc90868da6d6301c5b8669486c9ab` |
+| `work/simplification-desk/s1/logs/24-Chromatic.log` | 1833 | `8483a2fb429796c9641e05cc346971cf865dc28ba6d3c8dcb47d2e718078ba58` |
+| `work/simplification-desk/s1/logs/25-Converse.log` | 1252 | `0b22a1ad5f137636cc1eb56c73123bcab9111d38410e35c7302f3d0b07d1dbda` |
+| `work/simplification-desk/s1/logs/26-NullSetRobust.log` | 1257 | `5af64331611e64aef194f6b50faa3961cf814dd561e0f8ab2ba6fd895715db1e` |
+| `work/simplification-desk/s1/logs/27-Transfer.log` | 1252 | `4909e50f091fccfa75eb533375c90d254c7a04e8d685e41b5f949ba64ba9e8f7` |
+| `work/simplification-desk/s1/logs/axiomroots.STALE-RUN-0201Z-failed.log` | 2506 | `522675612c257677c2d5a35ba1c7e231cbe4406ee4b17f2e567e3c3911707729` |
+| `work/simplification-desk/s1/logs/deadaudit14-s1.STALE-RUN-0201Z-failed.log` | 2513 | `87cb0d40aa98eec6741777809529e6c36fb03ba3974ecc7e2fd099b081286e12` |
+| `work/simplification-desk/s1/logs/sigdump-s1.STALE-RUN-0201Z-failed.log` | 2505 | `6eed4e4eafb7e29bf66a11bbc66eaec54594e9e090b339b719e8a72b5f055f0c` |
+| `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/States.lean` | 25612 | `7b411cc583485431fa957070a8d4c678ed35ba8cc7cec8b465925a0e03744520` |
+| `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/BoundaryTrace.lean` | 18356 | `6bb884aa073edd320672ede4145b8488af533c82550606603ea3da49683ab017` |
+| `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/CyclicCore.lean` | 13402 | `d55a1601a3d9d3679cc2ae6d16302f1eac71d71ace20a21c276c81e2e3d164ab` |
+| `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/FiveSupport.lean` | 19132 | `b12dad93faddcbaf07dcb6e92a86c36ffb1e3a80f62192e64916ae936599eb65` |
+| `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/ContinuumLimits.lean` | 17828 | `cfa79b5f6d8e9449b0ef6beb8a8d40265cec5a9d939dfb14979389fed5081ca0` |
+| `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/Interfaces.lean` | 30004 | `c3348acdd555cc4196de9c9f14f1f32cb37f2f59dbfd54fccf591a3303b88e02` |
+| `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/DiskExtension.lean` | 29141 | `ef64358d8261d6a96c8b03469bee12f2ab0abd4647a9f1230b41059fc914ac64` |
+| `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/AngularBoundary.lean` | 25509 | `796414de07e4fb2ce5ae862530bc85742e6ba318ce6c12307644265d08e6c663` |
+| `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/FourContinuity.lean` | 29242 | `46efa82aa091fd03ebe10a4d61142f96ad4f8a8533d7c84fa2d8117d5e18c6c9` |
+| `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/GraphRealization.lean` | 20835 | `def12054e6260a4b85dfd13d19a06dc6355f39fb8cbeadbfe1ef1fa45f2e2d7a` |
+| `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/HoleApproximation.lean` | 16915 | `cbee4d2ae2fcf691333a7d21b274ddbb549cc30d39d00918f873e75b2c50176e` |
+| `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/GraphCuts.lean` | 15270 | `9aa4f41d6e5ffc105ef0d1e416491e0c7dce2fd59735179545730098a4f06830` |
+| `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/Exclusion.lean` | 8799 | `1613d1543f72813e05301a0e141e684bb4289e65a8d4905cc4f47b32057c8b67` |
+| `work/simplification-desk/s1/OAI/Geometry/PlaneColoring/Sectors.lean` | 23972 | `8acd47b52ea091d61506b8cbf529be6f59626812e90dddec6c7c1de7430e9e62` |
+| `work/automation-supervisor/inbox/20261115T021643-download-4-R1-1-BASELINE.md` | 8557 | `8501a0a088af9e7fcd122c21561dee55005f0c0adc8fcfaa472edeafb9770aee` |
+| `work/automation-supervisor/inbox/20261115T021643-download-5-r11_baseline.py` | 14250 | `93847c7b6703154a4a57699d88096de135c8e038f303b1ae0a6905c3135a201b` |
 | `work/results-desk/L-R1/L-R1-QUEUE.md` | 2300 | `3ce1e9cb5dbbd5312697a9205763e64117a180a82c31f23d7158d9c5080cae9d` |
 | `work/results-desk/L-R1/R1-1.txt` | 3964 | `8a68f825005a91644cb3363627eb25a41ee0c9d0441279a2222c43ce174a9ac9` |
 | `work/results-desk/L-R1/R1-2.txt` | 3572 | `b3ae2032ed83e40c417222310b770e75a6bfb9ec0303b8ba650bd8226c829ede` |
@@ -326,14 +376,29 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/results-desk/L-R1/R1-4.txt` | 3961 | `796478a36119a6cbddabb51a3ac2dc44a5c17ab172ac977ee813e28347828e60` |
 | `work/results-desk/L-R1/R1-3-referee-lane.txt` | 4341 | `c30a87cb7080fd17ea112aa0df6079a4c7bc3f515df92b36f68d3ce91e0249b8` |
 | `work/results-desk/L-R1/R1-4-referee-lane.txt` | 4100 | `c3fdb4aa3af347f7517c64a67bf63888fa330884b05cc02af54cb91ceab3a7c1` |
-| `work/results-desk/L-R1/SENT.log` | 88 | `42bdf9ab79bf66de5eef56ab6e1642afd94a4e5ffea3f9f4c6ddabf18a5ea29f` |
+| `work/results-desk/L-R1/R1-1-followup-d.txt` | 1699 | `05cc55baf8a2086c1c5c829a057428e5936d0ddf6dcaf4c4dda71868ba9f0e6e` |
+| `work/results-desk/L-R1/SENT.log` | 190 | `26cddb450d579b0f9bbcf1b02ce595d7bca537fafd6ee2cf9241bc1d1c37e563` |
 | `work/results-desk/allphase/allphase_desk.py` | 4155 | `07c89fab37168a9e5df855f65319ae5c0ae311eea148be100de9aeacba9ea110` |
 | `work/results-desk/allphase/allphase_desk.out` | 463 | `81f5c38f9adb36a5774810c442551463ade3ced4fd931564f4a75a62a1735d53` |
+| `work/results-desk/allphase/mc_signcells.py` | 2426 | `1e8b0525aa995d6d4de9ce2ae9234e7456ff9a1b12c95bd9bb0503708d27523c` |
+| `work/results-desk/allphase/mc_signcells.out` | 700 | `1be8f3f562a606b2fa6bfbf828224398fc8c558c30cd20bfe3d0ff4817dac1d5` |
 | `work/simplification-desk/r1-gates/MANIFEST-COMPLETENESS.md` | 2437 | `5521b496101778f1e400b704160c6e1c61c5e411743a822954c0f99ab1e4012d` |
 | `work/simplification-desk/r1-gates/manifest-complete.json` | 58066 | `4c24ee676e79c450d0167fe326ea2e384bb97d41511ae388b967d6b239fb9d46` |
 | `work/simplification-desk/r1-gates/line-accounting-r1-desk.json` | 2363 | `2233250bae3b9a2b973d3b7c865bad0f6eab738e56a515439126bfeb27f622fd` |
 | `work/simplification-desk/jointpair/JOINT-PAIR-DECISION.md` | 2118 | `1c45c20940c3c23e71cc24a6e3927583455bee61b02b8c34f973a0761c18934d` |
 | `work/simplification-desk/lean435/FEASIBILITY.md` | 3236 | `03a835b6307b8cdaee67867f6f9dae4d7ca34608971e417d68c80ad6c426711c` |
+| `work/simplification-desk/r1-gates/R1-GATES.md` | 4736 | `a5df90aa838611f76d4af8fb9a2451a20fbe5b11c6d6418c5e74d8cd78da947d` |
+| `work/simplification-desk/r1-gates/sig-compare-r4-r1.json` | 1379 | `62c8e7ef17fb446e3c0fe90b9378687c33ffaef1488588bbcb200840f4489265` |
+| `work/simplification-desk/r1-gates/sigdump-r1.log` | 1882 | `405ab9a40ed32a27ca2a05dba515303538d289e81874957a6d9a42a460882897` |
+| `work/simplification-desk/r1-gates/sigdump-r4.log` | 1888 | `496d94c0e5b78ff745395701667827aaa1cdc75dbd336b752f9538cf4d121f90` |
+| `work/simplification-desk/r1-gates/sigs-r1.tsv` | 429981 | `87804fe988c547dff4e5b6b7480cc932a3624b0f38669e17584f1b0f1c408a60` |
+| `work/simplification-desk/r1-gates/sigs-r4.tsv` | 430321 | `fa93e701a42a680bf3ee9e23b9aad9ac855199a564232a4aeff06382c567e4e1` |
+| `work/simplification-desk/s1/BANKED-S1.json` | 3753 | `e6b9527d16b371e7fb0ae8b9bac56be54c3045ac9962feb68a2f8e5bb46dacf3` |
+| `work/simplification-desk/s1/line-accounting-s1.json` | 6390 | `79162e51db570a51e1fd1005dd800d42f7162961c28b560e56d92a1bae5d1997` |
+| `work/simplification-desk/s1/dead-deletions.json` | 3027 | `bf403ef34c40414d3445b0d017085c13ae5c36755f1ad52b87a3aaa1c92409ce` |
+| `work/simplification-desk/s1/sigs-s1.tsv` | 426665 | `8a93cff3eedb4fa3ebd67b8294d3b8bd567b07cbec91e19ee0a0baf396a819d7` |
+| `work/simplification-desk/s1/AxiomRoots.lean` | 3814 | `4dda63592232d24a6da91e045980d93e2761c14488fcd427c82c3baa7d3842f5` |
+| `work/simplification-desk/LOG.md` | 6729 | `7d35e8d465bcd279901afd808d03091babbced4131a8ddeb21ff05d4ce46510b` |
 | `outputs/ASTRA-DISJUNCTIVE-PALETTE-A8.txt` | 15221 | `d292fa5a44fa857d957ed8eeb4895b192d4ca505f6f872c1ba5e644b80a6b437` |
 | `outputs/ASTRA-FOUR-LIST-A5.txt` | 15053 | `799cef0737b23deb8e17d1cb5ca197b394c4e9a19e3c5a79acebed2671f3955e` |
 | `outputs/ASTRA-FOUR-LIST-REFEREE.txt` | 15430 | `29e3800ecb740d9699254787d5a5b8689372d505b69a178eb08e447eada7548f` |
@@ -350,4 +415,4 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `outputs/RunLeanQueue.py` | 9451 | `c063969225cec881cdb63ebea165434a2fdc7d3d381528cc6d8e870dd286b2b6` |
 | `outputs/LeanSourceGate.py` | 2246 | `721e47d80c4459e9125a9b66fe880ab31c37260e9797d23669a9a228c8f4e721` |
 | `work/cloud-supervisor/RESEARCH-STATUS.md` | 3506 | `461dfcc8d25a2971038bbff6a6d691701008009583c04f8c8f7cca030ff3de50` |
-| `work/cloud-supervisor/LOG.md` | 9378 | `6191baaaa7e773d757d38a93d2c965a73f7c27a8a032b7ff817eb8f37f1adaef` |
+| `work/cloud-supervisor/LOG.md` | 9840 | `1113d4fae85599bf54da99370272faf55dfb298d6de56021bb7a70d0e49f0e16` |

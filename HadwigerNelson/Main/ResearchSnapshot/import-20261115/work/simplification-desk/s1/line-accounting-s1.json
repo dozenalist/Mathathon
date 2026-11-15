@@ -1,0 +1,319 @@
+{
+ "files": [
+  {
+   "module": "OAI.Geometry.PlaneColoring.AngularBoundary",
+   "old": {
+    "physical": 503,
+    "nonblank": 493,
+    "code": 483,
+    "audit": 0
+   },
+   "new": {
+    "physical": 497,
+    "nonblank": 487,
+    "code": 477,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -6,
+    "nonblank": -6,
+    "code": -6,
+    "audit": 0
+   },
+   "newSha256": "796414de07e4fb2ce5ae862530bc85742e6ba318ce6c12307644265d08e6c663"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.BoundaryTrace",
+   "old": {
+    "physical": 367,
+    "nonblank": 360,
+    "code": 352,
+    "audit": 0
+   },
+   "new": {
+    "physical": 313,
+    "nonblank": 307,
+    "code": 303,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -54,
+    "nonblank": -53,
+    "code": -49,
+    "audit": 0
+   },
+   "newSha256": "6bb884aa073edd320672ede4145b8488af533c82550606603ea3da49683ab017"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.ContinuumLimits",
+   "old": {
+    "physical": 353,
+    "nonblank": 339,
+    "code": 324,
+    "audit": 0
+   },
+   "new": {
+    "physical": 337,
+    "nonblank": 323,
+    "code": 310,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -16,
+    "nonblank": -16,
+    "code": -14,
+    "audit": 0
+   },
+   "newSha256": "cfa79b5f6d8e9449b0ef6beb8a8d40265cec5a9d939dfb14979389fed5081ca0"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.CyclicCore",
+   "old": {
+    "physical": 280,
+    "nonblank": 272,
+    "code": 272,
+    "audit": 0
+   },
+   "new": {
+    "physical": 256,
+    "nonblank": 248,
+    "code": 248,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -24,
+    "nonblank": -24,
+    "code": -24,
+    "audit": 0
+   },
+   "newSha256": "d55a1601a3d9d3679cc2ae6d16302f1eac71d71ace20a21c276c81e2e3d164ab"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.DiskExtension",
+   "old": {
+    "physical": 611,
+    "nonblank": 590,
+    "code": 580,
+    "audit": 0
+   },
+   "new": {
+    "physical": 603,
+    "nonblank": 582,
+    "code": 572,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -8,
+    "nonblank": -8,
+    "code": -8,
+    "audit": 0
+   },
+   "newSha256": "ef64358d8261d6a96c8b03469bee12f2ab0abd4647a9f1230b41059fc914ac64"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.Exclusion",
+   "old": {
+    "physical": 165,
+    "nonblank": 160,
+    "code": 154,
+    "audit": 0
+   },
+   "new": {
+    "physical": 163,
+    "nonblank": 158,
+    "code": 152,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -2,
+    "nonblank": -2,
+    "code": -2,
+    "audit": 0
+   },
+   "newSha256": "1613d1543f72813e05301a0e141e684bb4289e65a8d4905cc4f47b32057c8b67"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.FiveSupport",
+   "old": {
+    "physical": 354,
+    "nonblank": 342,
+    "code": 341,
+    "audit": 0
+   },
+   "new": {
+    "physical": 337,
+    "nonblank": 326,
+    "code": 325,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -17,
+    "nonblank": -16,
+    "code": -16,
+    "audit": 0
+   },
+   "newSha256": "b12dad93faddcbaf07dcb6e92a86c36ffb1e3a80f62192e64916ae936599eb65"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.FourContinuity",
+   "old": {
+    "physical": 509,
+    "nonblank": 498,
+    "code": 498,
+    "audit": 0
+   },
+   "new": {
+    "physical": 503,
+    "nonblank": 493,
+    "code": 493,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -6,
+    "nonblank": -5,
+    "code": -5,
+    "audit": 0
+   },
+   "newSha256": "46efa82aa091fd03ebe10a4d61142f96ad4f8a8533d7c84fa2d8117d5e18c6c9"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.GraphCuts",
+   "old": {
+    "physical": 314,
+    "nonblank": 304,
+    "code": 299,
+    "audit": 0
+   },
+   "new": {
+    "physical": 310,
+    "nonblank": 300,
+    "code": 295,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -4,
+    "nonblank": -4,
+    "code": -4,
+    "audit": 0
+   },
+   "newSha256": "9aa4f41d6e5ffc105ef0d1e416491e0c7dce2fd59735179545730098a4f06830"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.GraphRealization",
+   "old": {
+    "physical": 415,
+    "nonblank": 404,
+    "code": 388,
+    "audit": 0
+   },
+   "new": {
+    "physical": 410,
+    "nonblank": 399,
+    "code": 383,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -5,
+    "nonblank": -5,
+    "code": -5,
+    "audit": 0
+   },
+   "newSha256": "def12054e6260a4b85dfd13d19a06dc6355f39fb8cbeadbfe1ef1fa45f2e2d7a"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.HoleApproximation",
+   "old": {
+    "physical": 328,
+    "nonblank": 320,
+    "code": 315,
+    "audit": 0
+   },
+   "new": {
+    "physical": 323,
+    "nonblank": 315,
+    "code": 310,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -5,
+    "nonblank": -5,
+    "code": -5,
+    "audit": 0
+   },
+   "newSha256": "cbee4d2ae2fcf691333a7d21b274ddbb549cc30d39d00918f873e75b2c50176e"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.Interfaces",
+   "old": {
+    "physical": 528,
+    "nonblank": 515,
+    "code": 504,
+    "audit": 0
+   },
+   "new": {
+    "physical": 517,
+    "nonblank": 504,
+    "code": 493,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -11,
+    "nonblank": -11,
+    "code": -11,
+    "audit": 0
+   },
+   "newSha256": "c3348acdd555cc4196de9c9f14f1f32cb37f2f59dbfd54fccf591a3303b88e02"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.Sectors",
+   "old": {
+    "physical": 453,
+    "nonblank": 445,
+    "code": 436,
+    "audit": 0
+   },
+   "new": {
+    "physical": 451,
+    "nonblank": 443,
+    "code": 434,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -2,
+    "nonblank": -2,
+    "code": -2,
+    "audit": 0
+   },
+   "newSha256": "8acd47b52ea091d61506b8cbf529be6f59626812e90dddec6c7c1de7430e9e62"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.States",
+   "old": {
+    "physical": 566,
+    "nonblank": 556,
+    "code": 556,
+    "audit": 0
+   },
+   "new": {
+    "physical": 461,
+    "nonblank": 452,
+    "code": 452,
+    "audit": 0
+   },
+   "delta": {
+    "physical": -105,
+    "nonblank": -104,
+    "code": -104,
+    "audit": 0
+   },
+   "newSha256": "7b411cc583485431fa957070a8d4c678ed35ba8cc7cec8b465925a0e03744520"
+  }
+ ],
+ "netDelta": {
+  "physical": -265,
+  "nonblank": -261,
+  "code": -255,
+  "audit": 0
+ },
+ "netCodeExclAudit": -255
+}

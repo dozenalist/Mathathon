@@ -34,3 +34,7 @@
 - 01:17Z Slides 14 frames + speaker-notes.md published e6e1d87 (slides.pdf byte-exact).
 - 01:20Z Jarom: may pause exposition/results when idle. Told both to pause after in-flight work (exposition: QA+newcomer read+commit list; results: batch 3). Heartbeat now event-driven for those two; research+simplification stay busy. No local PDF renderer (no fitz/pypdfium2/poppler); slide visual check deferred to final package via browser pane.
 - 01:23Z SLOWDOWN (Jarom near 5h Claude limit): research+simplification check in every 20 min only, exposition+results paused, coordinator interval 900->1800 s, heartbeat 10->20 min, hourly usage cron paused. Disk audit: drop = pagefile (overlapping lean.exe, ~9.5-10.4 GiB) + Claude desktop VM bundle 9.3 GiB (created 13:09 local); 00:49 'power loss' likely memory hang (commit 47.2/48.1 GiB with 2 lean.exe). Deleted 13.5 MB only. Cleanup script work/cloud-supervisor/cleanup_lean_outputs.py.
+- 01:25Z Results batch 3 published ffb982f (rebased from 1c1f98f) (95 entries, 1/648 exact, consistency audit).
+- 01:35Z slowdown check-in: research busy (not pinged), simplification pinged; services alive; 1 lean.exe.
+- 02:41Z SLOWDOWN LIFTED by Jarom (usage reset): coordinator interval 900 + WAKE; heartbeat 10 min + hourly usage restored; all four desks resumed.
+- 02:42Z usage week $108.78 (21.8%), $6.98/h, projected $213 -> swarms 14 members / 350 steps.

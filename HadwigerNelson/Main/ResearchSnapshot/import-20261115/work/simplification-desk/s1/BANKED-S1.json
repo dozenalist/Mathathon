@@ -1,0 +1,112 @@
+{
+ "id": "S1",
+ "at": "2026-11-15",
+ "basis": "R1 tree (threecentre-r1/src)",
+ "lean": "4.34.1 / Mathlib d13f23b",
+ "compile": "desk rebuild of the 27-module R1 closure, s1/logs/01..27 all exit 0; AxiomRoots s1/logs/axiomroots.log 14 roots standard axioms; SigDump s1/logs/sigdump-s1.log",
+ "statements": "3094 common declarations identical to R1 (type hash, binder flags, levels, def value hash); five_support_step_ban, no_measurable_weak_five_coloring, no_proper_five_coloring identical",
+ "removed": "26 unreachable/replaced declarations (+2 auto eq lemmas), all FORBIDDEN_ABSENT; five_forced_label replaced by five_state_forced_label (Exclusion, disjunction form)",
+ "netPhysical": -265,
+ "netCode": -255,
+ "files": [
+  {
+   "module": "OAI.Geometry.PlaneColoring.AngularBoundary",
+   "old": 503,
+   "new": 497,
+   "delta": -6,
+   "sha256": "796414de07e4fb2ce5ae862530bc85742e6ba318ce6c12307644265d08e6c663"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.BoundaryTrace",
+   "old": 367,
+   "new": 313,
+   "delta": -54,
+   "sha256": "6bb884aa073edd320672ede4145b8488af533c82550606603ea3da49683ab017"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.ContinuumLimits",
+   "old": 353,
+   "new": 337,
+   "delta": -16,
+   "sha256": "cfa79b5f6d8e9449b0ef6beb8a8d40265cec5a9d939dfb14979389fed5081ca0"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.CyclicCore",
+   "old": 280,
+   "new": 256,
+   "delta": -24,
+   "sha256": "d55a1601a3d9d3679cc2ae6d16302f1eac71d71ace20a21c276c81e2e3d164ab"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.DiskExtension",
+   "old": 611,
+   "new": 603,
+   "delta": -8,
+   "sha256": "ef64358d8261d6a96c8b03469bee12f2ab0abd4647a9f1230b41059fc914ac64"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.Exclusion",
+   "old": 165,
+   "new": 163,
+   "delta": -2,
+   "sha256": "1613d1543f72813e05301a0e141e684bb4289e65a8d4905cc4f47b32057c8b67"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.FiveSupport",
+   "old": 354,
+   "new": 337,
+   "delta": -17,
+   "sha256": "b12dad93faddcbaf07dcb6e92a86c36ffb1e3a80f62192e64916ae936599eb65"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.FourContinuity",
+   "old": 509,
+   "new": 503,
+   "delta": -6,
+   "sha256": "46efa82aa091fd03ebe10a4d61142f96ad4f8a8533d7c84fa2d8117d5e18c6c9"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.GraphCuts",
+   "old": 314,
+   "new": 310,
+   "delta": -4,
+   "sha256": "9aa4f41d6e5ffc105ef0d1e416491e0c7dce2fd59735179545730098a4f06830"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.GraphRealization",
+   "old": 415,
+   "new": 410,
+   "delta": -5,
+   "sha256": "def12054e6260a4b85dfd13d19a06dc6355f39fb8cbeadbfe1ef1fa45f2e2d7a"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.HoleApproximation",
+   "old": 328,
+   "new": 323,
+   "delta": -5,
+   "sha256": "cbee4d2ae2fcf691333a7d21b274ddbb549cc30d39d00918f873e75b2c50176e"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.Interfaces",
+   "old": 528,
+   "new": 517,
+   "delta": -11,
+   "sha256": "c3348acdd555cc4196de9c9f14f1f32cb37f2f59dbfd54fccf591a3303b88e02"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.Sectors",
+   "old": 453,
+   "new": 451,
+   "delta": -2,
+   "sha256": "8acd47b52ea091d61506b8cbf529be6f59626812e90dddec6c7c1de7430e9e62"
+  },
+  {
+   "module": "OAI.Geometry.PlaneColoring.States",
+   "old": 566,
+   "new": 461,
+   "delta": -105,
+   "sha256": "7b411cc583485431fa957070a8d4c678ed35ba8cc7cec8b465925a0e03744520"
+  }
+ ],
+ "status": "CANDIDATE: 27/27 module logs exit 0 kept; root-axiom and signature-dump logs were overwritten by a stale re-run (see LOG 02:4xZ); fresh re-verification queued (s1/logs-r2). Do not cite as LEAN_VERIFIED until those logs pass."
+}
