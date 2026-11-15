@@ -611,7 +611,7 @@ established. The bound remains $6\le\chi(\mathbb R^2)\le7$.
 %   TESTED_FINITE          -> checked by computation
 %   CANDIDATE              -> not claimed (listed once, in the candidates sentence)
 %   OPEN / RETRACTED_OR_REFUTED -> Open problems / Retracted or refuted lists
-% RELAX-1-648: upgraded to TESTED_FINITE by the results desk (~01:30Z, independent exact recomputation); deliberately not cited, because the report does not define the all-phase relaxation it concerns.
+% RELAX-1-648: TESTED_FINITE; batch 5 settles 1/648 and 16 of 3,840 sign cells; deliberately not cited, because the report does not define the all-phase relaxation it concerns.
 % Plain LaTeX; uses \mathbb (amssymb). No \input, no figures.
 % ======================================================================
 
@@ -876,6 +876,7 @@ Translated Heule union (HEULE-UNION) & Exact induced unit graph of $H\cup(H+(3/2
 No forcing (HEULE-NO-FORCING) & 34 proper 5-colourings give distinct signatures, so every pair is separated & 553/2{,}722 and 1{,}048/5{,}487 & \texttt{Verify-\allowbreak{}Heule\allowbreak{}No\allowbreak{}Forcing\allowbreak{}.\allowbreak{}py}; re-checked here & Anything beyond these two graphs \\
 Direction grid (DIR-FILTER) & AC, orbit relaxation, cone filter (above) & 7{,}776 vectors $\to$1{,}420$\to$174$\to$6 & \texttt{ac\_\allowbreak{}filter\_\allowbreak{}enum.\allowbreak{}py}, \texttt{audit\_\allowbreak{}ac\_\allowbreak{}filter.\allowbreak{}py}; referee recheck & Arbitrary directions; actual weak 6-colourings. The filters are conditional on AC and CC60 \\
 Fixed-phase census (FIXED-PHASE-CENSUS) & SAT/UNSAT of the six-direction palette CSP per sign class & 7{,}776 classes: 177 SAT, 7{,}599 UNSAT & Parent JS + independent Python; desk transfer matrix & Whole configurations (fixed phase only) \\
+Symmetries of the SAT classes (LN1-ORBITS) & Orbits of the 177 SAT classes; which admit an all-SAT decrement staircase & 89 / 35 / 18 orbits under index reversal / rotation / both (13 with negation); 126 classes with a generic staircase, 51 without; orbit 65 has none (0 of 720) & Results desk & Anything beyond the relaxation \\
 Staircase census (STAIRCASE-CENSUS) & Survival of staircases & 76{,}283 of $7{,}776\cdot4{,}683=36{,}415{,}008$ & \texttt{census.py}, desk reimplementation & Sufficiency; the converse is open \\
 Six configurations (SIX-ORBIT) & UNSAT in the inner/outer-hit relaxation on one phase cell; $15^\circ$ $\ell^\infty$ neighbourhood & 6 configurations & Parent JS; graph lane & Actual-interface exclusion (needs an A6-type producer) \\
 A5 sliver (A5-SLIVER) & $R\ge0$ on three uncovered pieces (outward-rounded interval arithmetic) & 3 pieces & \texttt{certify\_\allowbreak{}sliver.\allowbreak{}py} & The 1{,}469+889 boxes (certified elsewhere) \\
@@ -884,7 +885,7 @@ Historic list models (HISTORIC-8) & None of 8 models is a countermodel to JOINT-
 \hline
 \end{tabular}
 \end{table}
-% LEDGER: HEULE-UNION = TESTED_FINITE ; HEULE-NO-FORCING = TESTED_FINITE ; FIXED-PHASE-CENSUS = TESTED_FINITE ; STAIRCASE-CENSUS = TESTED_FINITE ; SIX-ORBIT = TESTED_FINITE ; A5-SLIVER = TESTED_FINITE ; HONEYCOMB-73 = TESTED_FINITE ; HONEYCOMB-K16 = TESTED_FINITE ; HISTORIC-8 = TESTED_FINITE
+% LEDGER: LN1-ORBITS = TESTED_FINITE (batch 5) ; HEULE-UNION = TESTED_FINITE ; HEULE-NO-FORCING = TESTED_FINITE ; FIXED-PHASE-CENSUS = TESTED_FINITE ; STAIRCASE-CENSUS = TESTED_FINITE ; SIX-ORBIT = TESTED_FINITE ; A5-SLIVER = TESTED_FINITE ; HONEYCOMB-73 = TESTED_FINITE ; HONEYCOMB-K16 = TESTED_FINITE ; HISTORIC-8 = TESTED_FINITE
 % SOURCE: Main/ResearchSnapshot/local/outputs/HEULE-UNION-CERTIFICATE.json:2-4,13,16-19 (construction, tau, field, overlap 58, n 1048, m 5487, new_edges 184)
 % SOURCE: Main/ResearchSnapshot/local/outputs/HEULE-UNION-VALIDATION.txt:13-43 (pairsTested 548628; scope: Heule553 4-UNSAT not rechecked)
 % SOURCE: Main/ResearchSnapshot/local/outputs/Verify-\allowbreak{}Heule\allowbreak{}Union\allowbreak{}.mjs:47-49,52-59,64-65,71
@@ -1130,7 +1131,7 @@ Branch-free step ban and its consumers (STEPBAN-V2, STEPBAN-CONSUMER, STEPBAN-CY
 Four-list obstruction and other local lemmas (A5-FOUR-LIST, AC-ALIGNED, NR-TC, RESIDUAL-GRAPH, STRAIGHT-NEEDLE) & \st{proved} & Section 5; referee reports\\
 Even-walk parity obstructions (EVENWALK-R6) & \st{Lean 4.34.1} & Section 5\\
 Six-colour producer pieces (A6-FORCING, A6-BRIDGE-R2, A6-BRIDGE-R2-G3, G1-R2, G3-R2); still conditional on SignTable and ForcingLemma (A6-GLUE open) & \st{Lean 4.34.1}, conditional & Section 5\\
-Censuses and certificates (HEULE-UNION, HEULE-NO-FORCING, DIR-FILTER, FIXED-PHASE-CENSUS, STAIRCASE-CENSUS, SIX-ORBIT, A5-SLIVER, HONEYCOMB-73, HONEYCOMB-K16, HISTORIC-8) & \st{computation} & Section 5, Table~\ref{tab:finite}\\
+Censuses and certificates (HEULE-UNION, HEULE-NO-FORCING, DIR-FILTER, FIXED-PHASE-CENSUS, STAIRCASE-CENSUS, SIX-ORBIT, A5-SLIVER, HONEYCOMB-73, HONEYCOMB-K16, HISTORIC-8, LN1-ORBITS) & \st{computation} & Section 5, Table~\ref{tab:finite}\\
 Counterexamples and negative results (MC120-ENDPOINT, ANNULUS-3COL, SUPPORT-FLIP, FOUR-STATE-ANGULAR, VARIABLE-TRIANGLE, A7-CONTACT, LOCAL-TRANSITIONS) & \st{proved} & Section 5\\
 A route to $\chi\ge7$ (L6-F6) & open; not claimed & Section 5\\
 Lesson 3--6 figures match their stated regions & \st{computation} & Section 6; archived scripts and outputs in \texttt{HadwigerNelson/\allowbreak{}Exposition/\allowbreak{}Figures/\allowbreak{}checks/\allowbreak{}}\\
