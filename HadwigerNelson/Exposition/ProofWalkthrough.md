@@ -712,17 +712,18 @@ So some single direction $t$ satisfies all of these at once. At that $t$, Sectio
 
 **The manuscript's proof** is different. Support points need not be density-one directions, so it uses nearby density-one directions $b'$, $d'$ of $B$, whose chord is only close to 1. For a density-one direction $a$ of $A$, the point $x+a+b'$ is robustly inside colour $X$ (Lemma 6.3's first assertion, via Lemma 5.2). The implicit function theorem turns $a$ slightly into $c(a)$ so that $x+a+b'$ and $x+c(a)+d'$ are exactly one unit apart. An $L^1$ argument then finds such an $a$ with $c(a)$ also a density-one direction of $A$. Both points are robustly inside $X$, contradicting Lesson 2 (Section 13; manuscript Lemma 4.3). The three-centre proof adds no new analysis: it reuses Sections 27–28, whose proofs already rest on Lemma 5.2, plus the counting step.
 
-## 31. What the replacement would change, and what it does not
+## 31. What the replacement changes, and what it does not
 
 **Lean status.** The team's file [`FixedStateThreeCentres.lean`](../Main/ResearchSnapshot/local/outputs/three-centre/FixedStateThreeCentres.lean) proves `fixed_state_no_unit_three_centres`. Its statement is identical, including binder order, to the supplied `strict_state_no_unit_support`, and its proof calls none of the original strict-state lemmas. Its [recorded check](../Main/ResearchSnapshot/local/outputs/three-centre/VALIDATION.txt) passed under Lean 4.34.1 with standard axioms and no admissions. A second file, [`MovingThreeCentres.lean`](../Main/ResearchSnapshot/local/outputs/three-centre/MovingThreeCentres.lean), lets the centres converge. It proves that centres carrying a $K$-avoiding trace form a closed set, so the limiting corners keep such traces, and it runs the triangle argument at the limit centre with a $J$-state there instead of the manuscript's $L^1$ convergence. It reproves the four-cycle lemma `four_support_sequence_no_unit` with an identical statement. Its [record](../Main/ResearchSnapshot/local/outputs/three-centre/MOVING-VALIDATION.txt) lists axioms `propext`, `Classical.choice` and `Quot.sound`, statement and binder checks, and a transitive check that no original strict-state lemma is reached. This walkthrough has not rebuilt these files.
 
 **Where the lemma is used.** The supplied development calls the strict-state lemma in the five-cycle argument (`five_support_no_sixty`: if a direction lies in the support of a state, the direction $60^\circ$ further on does not lie in the support of that same state), in the four-cycle continuity argument, and in the interface argument.
 
+**Integration.** The replacement is integrated into the team's full local Lean build, called R1, which the team accepted on 14 November 2026. All 27 affected modules and the root axiom check pass on Lean 4.34.1 with the pinned mathlib, and the old strict-state lemmas are removed (`States.lean` shrinks from 764 to 566 lines). Independent re-runs of the contract and dependency checks, and one file missing from the build manifest, are still being followed up. The supplied OpenAI files themselves are unchanged.
+
 **What it does not change.**
 
 - **It proves the same statement.** The manuscript's theorem and the plane bound $6\le\chi(\mathbb R^2)\le7$ are unchanged. There is no global chromatic result here.
 - **It does not replace everything.** The manuscript's Lemma 6.7, the support-contact angular-step ban (`five_support_step_ban`), is still used. So is Lemma 6.3's first assertion (density one of $X$; `states_densityOne`), which the replacement does not reprove.
-- **Integration status:** not integrated. The supplied files are unchanged; the replacements are separate validation modules, and full consumer integration and deletion of the old proof remain pending (PROGRESS.md, 14 November 2026).
 
 ## A fifth place to stop and respond
 
@@ -740,6 +741,75 @@ So some single direction $t$ satisfies all of these at once. At that $t$, Sectio
 </details>
 
 **Feedback on Lesson 5:** name the first sentence where you had to take something on trust.
+
+## Lesson 6: the whole proof on one page
+
+The earlier lessons each opened one step of the supplied proof. This lesson puts the steps in order, so that you can say what each one contributes and what would break without it. Nothing here is new mathematics. Every step below is the supplied manuscript's, except the classical seven-colour upper bound and Section 35, which says where our team's results attach.
+
+## 32. A bridge and a contradiction
+
+The manuscript proves **Theorem 1.1: the plane has no proper five-colouring**, with no regularity assumed on the colour classes. It does so in two moves.
+
+1. **Bridge to measurability (Theorem 1.3, forward direction: Proposition 4.2).** If a proper $k$-colouring exists, then a weak measurable $k$-colouring exists. This is the analytic part, outlined in the technical map below. Lesson 1 explains what "weak" means.
+2. **No weak measurable five-colouring (Theorem 1.4).** This is Lemma 4.3 and Sections 5–8 of the manuscript. The technical map calls its central step, the construction of interfaces, "bridge two".
+
+Together these prove Theorem 1.1. The classical hexagon colouring (due to John Isbell; the manuscript recalls it after Theorem 1.1, and Lesson 1, Section 5 uses it) gives a proper seven-colouring, so $5<\chi(\mathbb R^2)\le 7$, that is, $6\le\chi(\mathbb R^2)\le 7$.
+
+## 33. The chain inside Theorem 1.4
+
+Assume a weak measurable five-colouring, and follow it to a contradiction.
+
+| Step | Manuscript | What it contributes | Where we met it |
+| --- | --- | --- | --- |
+| 1. Density | Lemma 4.3 | Two points robustly inside the same colour are never exactly one unit apart. Turns "almost never" into "never". | Lesson 2 |
+| 2. Palettes | Definition 5.1, Lemma 5.2, Remark 5.3, Corollary 5.4 | Limiting angular data at each centre. At one centre, palettes at directions $60^\circ$ apart are disjoint (Corollary 5.4). At two centres one unit apart, palettes in a common direction are disjoint (Remark 5.3). Both hold for almost every direction. | Lesson 4, Section 21; Lesson 5, Sections 26–27 |
+| 3. Two labels at most | Lemma 5.5, Proposition 5.6 | At every centre, the palette has one or two labels in almost every direction. The proof uses Lemma 5.5: distinct centres where one fixed pair of labels alternates every $60^\circ$ are at least a fixed distance apart. | — |
+| 4. Transitions and states | Lemmas 6.2–6.4, Theorem 6.5 | Join labels $i,j$ in the transition graph $\Gamma_x$ when $i$–$j$ colour changes are frequent near $x$. Each such edge gives a trace avoiding both labels (Lemma 6.2). If a complementary state has positive measure, the support of a state contains no two directions exactly $60^\circ$ apart (Lemma 6.3). A singleton state and a pair state cannot alternate every $60^\circ$ (Lemma 6.4). Centres whose transition graph has a cycle form a closed, locally finite set: only finitely many lie in any bounded region (Theorem 6.5). | Lesson 5 (Lemma 6.3) |
+| 5. Interfaces | Proposition 7.1 | A cycle of 3, 4 or 5 labels and a common centre $x$, one of step 4's cyclic centres. For each edge there is a compact connected set $K_j$ through $x$. It reaches a fixed circle around $x$, and some of its points approach $x$ from a limiting direction $v_j$. Both labels of the edge occupy zero area of $\Delta(K_j)$. The cycle need not consist of transition-graph edges. | Lessons 3–4 |
+| 6. One-sided strips | Lemma 8.1 | Just outside the unit circle around $x$, near direction $e$, only labels not excluded by the interfaces with $e\cdot v_j>0$ can appear; just inside, the same for the interfaces with $e\cdot v_j<0$. In almost every direction the palette contains an allowed label for each side (equation 8.1). | Lesson 4, Sections 22–23 |
+| 7. No cycle survives | Propositions 8.2, 8.5, 8.10 | A five-cycle forces a palette pattern on six directions $60^\circ$ apart that cannot close up (Proposition 8.2). A four-cycle forces its interface directions into two antipodal pairs and an impossible parity rule (Proposition 8.5). Both cases combine steps 2–4 with the strips of step 6. A three-cycle forces the two outside labels into six alternating $60^\circ$ sectors. That leaves an open region with only the three cycle labels, and an exact rational certificate places the Moser spindle there: a seven-point unit-distance graph that cannot be three-coloured (Proposition 8.10, Section 8.6). | — |
+
+Step 7 rules out every cycle length that step 5 can produce. So no weak measurable five-colouring exists.
+
+![A top box, weak measurable five-colouring assumed, has one arrow down to a box for step 5, Proposition 7.1: a cycle of length 3, 4 or 5. Exactly three arrows leave that box, labelled length 5, length 4 and length 3, to boxes for Proposition 8.2 (six-direction pattern), Proposition 8.5 (antipodal pairs and parity) and Proposition 8.10 (Moser spindle). Each of the three has an arrow into one shared box marked contradiction. A grey bracket on the left marks steps 1 to 4 and 6 as inputs used inside the branches.](Figures/proof-casefan.svg)
+
+The inference to take from the diagram is that step 5 has no fourth outgoing arrow, so every way the argument can continue ends in the same contradiction.
+
+## 34. Remove a step and see what breaks
+
+A good test of a proof map is to delete one step.
+
+- **Without step 1**, the almost-everywhere exclusions of a weak colouring never become exact. Nothing later could say "this point is not robustly inside colour $i$" (Lesson 2, Section 14).
+- **Without step 3**, palettes could hold three or more labels. The counting in the five-cycle case (Proposition 8.2) uses the bound of two.
+- **Without step 5**, step 7 has nothing to refute. Steps 2–4 only restrict palettes and say where cycles could sit. They never produce a cycle of labels, a common centre, or the strips of step 6. A list of arrows and label pairs is no substitute: the sets and their exclusions must be constructed (Lesson 4, Section 25).
+- **Without the connectedness in step 5**, a straddling point need not be one unit from the interface (Lesson 3, Section 17). The manuscript uses connectedness to put every point of $\Delta(K_j)$ at unit distance from $K_j$. It uses connectedness again to find points of $K_j$ at every small distance from $x$, which gives the directions $v_j$.
+
+## 35. Where our team's results attach
+
+These results are ours, not the manuscript's. None of them changes the bound: **there is no global chromatic result here.**
+
+- **Three-centre proof of Lemma 6.3 (steps 4 and 7).** A different proof of its separation part, using three centres on a unit triangle (Lesson 5). Checked in Lean 4.34.1 as fixed- and moving-centre modules, and integrated into the team's local Lean build (R1, accepted 14 November 2026). Lemma 6.3's density assertion and Lemma 6.7 are still used.
+- **Joint-pair support theorem (the five-cycle branch of step 4).** A standalone theorem checked in Lean 4.34.1. It is not by itself a deletion of the supplied state machinery.
+- **CC60 (about the configuration of steps 5–6; not used by the manuscript).** A local obstruction about interfaces at one common centre whose directions fit in a closed $60^\circ$ arc, for any finite number of labels. Checked in Lean 4.34.1 (Lesson 4). A 20-colour construction, proved at paper-review level, shows that the $60^\circ$ cannot be widened for arbitrary finite label sets. Six-colour sharpness is open.
+- **Common-encoding refactor (the transfer of Section 32).** A Lean simplification of the supplied spectral modules, net 126 lines shorter, checked in Lean 4.34.1. It passed a full build of the 82 affected modules, root axiom checks, and checks that the public theorem statements match the originals.
+- **Finite computations.** Exact certificates about two specific unit-distance graphs derived from Heule's, and an enumeration over one finite grid of directions. They test those objects only.
+
+## A sixth place to stop and respond
+
+1. Which step turns a statement that holds almost everywhere into one that holds at every point of a set?
+2. Which step supplies connected sets, and which earlier lesson explains why connectedness matters?
+3. Does CC60, or anything in this walkthrough, show that the plane cannot be six-coloured?
+
+<details>
+<summary>Compare your reading</summary>
+
+1. Step 1, the density lemma (Lesson 2). Later steps call it repeatedly: in the palette transfer of step 2, the state lemmas of step 4, the disk inequality behind step 5, and the placement of the Moser spindle in step 7.
+2. Step 5, Proposition 7.1. Lesson 3 explains that straddling a connected set forces an exact unit contact.
+3. No. CC60 forbids one kind of local configuration, and nothing shows that every six-colouring must produce it (Lesson 4, Section 25). The walkthrough leaves the bound $6\le\chi(\mathbb R^2)\le 7$ unchanged.
+
+</details>
+
+**Feedback on Lesson 6:** name the step in Section 33 whose contribution you could not state in your own words.
 
 ---
 
@@ -798,7 +868,7 @@ The Lean assembly packages this geometry through continuous full approximations 
 
 ## What our team adds, and what remains open
 
-Our simplification work replaces part of the strict-state machinery by three-centre arguments. The latest inspected [research status](../Main/ResearchSnapshot/local/outputs/RESEARCH-STATUS.txt), saved at 10:25 Pacific on 14 November, reports separate fixed- and moving-centre passes but an ongoing integrated rebuild. It does not yet justify declaring the full replacement integrated.
+Our simplification work replaces the strict-state separation proof by a three-centre argument (Lesson 5). Standalone fixed- and moving-centre passes were followed by an integrated local build, R1, which the team accepted on 14 November 2026: all 27 affected modules and the root axiom check pass on Lean 4.34.1, with the old strict-state lemmas removed. Independent re-runs of the contract and dependency checks are still being followed up, and nothing here has been rebuilt under Lean 4.35.0.
 
 The team's local **CC60** theorem says that a finite family of actual approaching continua at one common centre, with signed approach directions in a closed cone of width at most $60^\circ$, cannot jointly exclude all but two labels. It assumes the actual spatial-support exclusions and a weak measurable colouring. It is generic in the number of colours and includes equality at $60^\circ$. The [cone packet](../Main/ResearchSnapshot/local/outputs/cone/REPORT.txt) records successful Lean checks and standard-only axiom audits; its [independent referee report](../Main/ResearchSnapshot/local/outputs/ASTRA-CONE-REFEREE.txt) explains the geometric hypotheses.
 
@@ -814,12 +884,12 @@ The [manuscript](../Main/ResearchSnapshot/remote/attachments/here-are-three-file
 How to read the claims in this walkthrough:
 
 - **Inherited manuscript results.** The steps of the supplied proof taught in Lessons 1–3, Section 21, Sections 26–28 and the technical map are the supplied manuscript's, with its supplied Lean development.
-- **Team results checked in Lean.** CC60 (Section 24) and the three-centre proof of Lemma 6.3 (Sections 29–31) have recorded Lean 4.34.1 checks with axioms `propext`, `Classical.choice` and `Quot.sound` only. The three-centre proof is a standalone replacement whose full integration is pending. This walkthrough has not rebuilt these files.
+- **Team results checked in Lean.** CC60 (Section 24) and the three-centre proof of Lemma 6.3 (Sections 29–31) have recorded Lean 4.34.1 checks with axioms `propext`, `Classical.choice` and `Quot.sound` only. The three-centre proof is integrated into the team's local Lean build (R1, accepted 14 November 2026); follow-up re-checks are listed in Section 31. This walkthrough has not rebuilt these files.
 - **Finite computations.** Statements about specific finite graphs or grids (listed in [PROGRESS.md](../PROGRESS.md)) test those objects only.
 - **Illustrations.** Worked examples, models and figures (the half-plane example, Lesson 3's single-colour model, the interface model of Section 20, the shadow pictures of Sections 22–23, the six-colour instance and the five-label example) show how a statement works; they are not part of any proof.
 
 **There is no global chromatic result here.** The bound remains $6\le\chi(\mathbb R^2)\le7$: the manuscript's lower bound and the classical hexagon upper bound. Nothing in this walkthrough rules out six colours or constructs a six-colouring.
 
-The exposition director prepared the initial lesson with an [Astra source audit](Reviews/WeakColouringLesson-Astra.md). Claude then led the final editorial integration, using focused reader reviews and two independent Claude checks. Lesson 2 was rewritten by the Claude exposition editor from a research-worker draft; its proof was checked by an independent Claude referee and the integrated text by a separate Claude reviewer. Lesson 3 was drafted by the Claude exposition editor and checked by an independent Claude referee. Lesson 4 was drafted by the Claude exposition editor, checked by an independent Claude referee against the cone Lean sources and their recorded checks, and corrected before integration. Lesson 5 was drafted by the Claude exposition editor from the manuscript and the supplied and team Lean sources, checked by an independent Claude referee, and corrected before integration. These are bounded checks of this explanation, not independent verification of the entire supplied proof. Figures illustrate: in Lesson 1, the explicit half-plane example and the sampling definition; in Lesson 2, the slide-and-turn argument (drawn to scale, with one unit equal to 360 pixels); in Lesson 3, the band, the exact contact and the missing contact without connectedness; in Lesson 4, the interface model, the shadow of a short interface and two interfaces in a narrow cone (straddle regions drawn exactly, with segment lengths exaggerated); in Lesson 5, the unit triangle of centres and the label bookkeeping. Each Lesson 3–5 figure was checked by script against the exact region or distances it depicts. No figure depicts a valid colouring.
+The exposition director prepared the initial lesson with an [Astra source audit](Reviews/WeakColouringLesson-Astra.md). Claude then led the final editorial integration, using focused reader reviews and two independent Claude checks. Lesson 2 was rewritten by the Claude exposition editor from a research-worker draft; its proof was checked by an independent Claude referee and the integrated text by a separate Claude reviewer. Lesson 3 was drafted by the Claude exposition editor and checked by an independent Claude referee. Lesson 4 was drafted by the Claude exposition editor, checked by an independent Claude referee against the cone Lean sources and their recorded checks, and corrected before integration. Lesson 5 was drafted by the Claude exposition editor from the manuscript and the supplied and team Lean sources, checked by an independent Claude referee, and corrected before integration. Lesson 6 was drafted by the Claude exposition editor from the manuscript, checked step by step by an independent Claude referee, and corrected before integration. These are bounded checks of this explanation, not independent verification of the entire supplied proof. Figures illustrate: in Lesson 1, the explicit half-plane example and the sampling definition; in Lesson 2, the slide-and-turn argument (drawn to scale, with one unit equal to 360 pixels); in Lesson 3, the band, the exact contact and the missing contact without connectedness; in Lesson 4, the interface model, the shadow of a short interface and two interfaces in a narrow cone (straddle regions drawn exactly, with segment lengths exaggerated); in Lesson 5, the unit triangle of centres and the label bookkeeping; in Lesson 6, the case fan of Theorem 1.4. Each Lesson 3–6 figure was checked by script against the exact region or distances it depicts. No figure depicts a valid colouring.
 
 </details>
