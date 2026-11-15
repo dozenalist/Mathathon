@@ -127,7 +127,11 @@ The symmetric square-root normalization, eigenvalue product, real-root assertion
 
 ## Work division and review
 
-Use one coordinator, a functional-algebra worker, a matrix worker, and an independent reviewer if delegation is available. Workers own separate modules. The coordinator owns shared definitions and build integration. If delegation is unavailable, execute those stages sequentially and report that fact.
+Use the existing coordinator and **DeepSeek workers through SAIR Ultramath**, as requested by the user. Explicitly select `deepseek/deepseek-v4.1-flash` in `ultramath_start`; verify the current model catalog and returned model/reasoning settings. Record the actual swarm and member IDs. If the tool is unavailable or refuses the request, report that blocker rather than claiming a swarm has launched.
+
+Assign four bounded roles in the current early-first phase: the terminating polynomial Euler–Maclaurin identity; forward-difference and reflection identities; simple-pole extension and harmonic identities followed by the first μ–τ bridge; and independent mathematical/build review. Workers own separate modules or candidate files. The coordinator freezes shared definitions, collects reports, and owns integration. Keep Git operations and root build changes serialized. Use DeepSeek for subsequent workers unless the user changes that preference.
+
+The current block's worker instruction allows at most 35 minutes and 60 member steps per worker, subject to smaller platform limits, while retaining the original approximately 4:41 p.m. PST checkpoint on 14 November 2026. Keep the existing later matrix work, but allocate new proof effort to the earlier dependencies first.
 
 Complete transport and affine-parameter lemmas before expanding the scope. Record precise later obligations for the Hurwitz/Stieltjes samples and asymptotic moments, cotangent/Eisenstein kernel, Volkenborn completion and distribution, Andréief integral, periodic Bernoulli primitives, primitive-normalization invariant, and energy certificates.
 
