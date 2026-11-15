@@ -256,3 +256,50 @@ silently tidied, so the record shows the candidates are unedited.
    3 × `[propext, Quot.sound]`, **0 outside the allowed set**.
    Note `M2.L_ne_zero`/`tau_ne_zero`/`mu_poly_ne_zero` prove the functionals are
    nonzero; that is **not** nondegeneracy of a bilinear form, which is unproved.
+
+## Block report — 2026-11-15 (swarm `smwh667lj`)
+
+**Outcome: no new mathematical result this block.** The four DeepSeek members
+(`deepseek/deepseek-v4.1-flash`, reasoning `max`, 4 × 80 steps, 40 min) all ran
+to the deadline and **submitted nothing**: no `Cand*.lean` was written, their
+transcript directories are empty, and the swarm ended `deadline` with
+`accepted: 0`. From the transcripts, the time went into reading the reviewed
+note, the frozen modules and grepping the v4.35.0 Mathlib source
+(`iterate_add_apply`, `aeval_zero`, `coeff_zero_eq_eval_zero`, …). Roles were
+registered correctly (m1→Euler–Maclaurin, m2→transport, m3→ℚ[X] parameters,
+m4→reviewer only), so the failure was **task sizing, not role confusion**: three
+independent implementer directions plus a review, each with a multi-lemma proof,
+does not fit in one 40-minute/80-step run from a cold start.
+
+**Repo state at end of block:** merge of `origin/main` (ffb982f) into
+`codex/zeta5-correspondences-2026-11-14`; `lake build ZetaFive` clean-rebuild
+→ exit 0, 9059 jobs under pinned Lean 4.35.0; full audit 111/111 declarations,
+0 outside `{propext, Classical.choice, Quot.sound}`; no sorry/admit/native_decide.
+
+### Source-ordered checklist after this block
+
+| # | Claim | Status |
+| --- | --- | --- |
+| 1 | `eq:difference` (polynomial) | proved (`M1.τ_comp_X_add_one_sub`) |
+| 2 | `eq:reflection` (polynomial + `XRep`) | proved (`M3.τ_reflect`, `M3.tauX_reflect`) |
+| 3 | pole recursion + sequence uniqueness | proved for sequences (`M4.eq_sub_H5Z`) |
+| 4 | **`eq:EM` finite Euler–Maclaurin** | **OPEN — earliest gap, and the single next dependency** |
+| 5 | `eq:symbol` | OPEN (behind #4) |
+| 6 | representation-level transport `τ_X(x⁵R(−x²)) = μ_X(R)` | OPEN (polynomial case only) |
+| 7 | `ℚ[X]`/`ℝ` parameter bridge | OPEN (`OBL-parameter`) |
+| 8 | Gram-form domain membership | OPEN (`OBL-weight`, `OBL-encoding`) |
+| 9 | `RatFunc` descent / encoding well-definedness | OPEN (`OBL-encoding`) |
+
+**Scope kept explicit:** targets 1–3 are incomplete. The current `Matrix`
+results are array-level identities, not the manuscript's Gram pencil;
+`M4.pole_values_unique` is a theorem about sequences `ℤ → ℚ`, not a functional on
+rational functions; nonzero functionals ≠ a nondegenerate bilinear form.
+
+**Next block plan.** One narrow task per implementer, no source-reading budget
+needed since the context is now written down: (a) m1 finishes `eq:EM` alone with
+a concrete skeleton supplied by the coordinator (statement + the two Mathlib
+identities it needs, `iterate_add_apply` and `aeval_zero`/`coeff_eq_zero_of_natDegree_lt`,
+both already located in the transcripts); (b) m2 alone does `transportRep`;
+(c) m3 alone does the `ℚ[X]` specialisation bridge; (d) reviewer audits whatever
+actually landed, or the ledger if nothing did. Smaller steps, one lemma per
+submission rather than one module per member.
