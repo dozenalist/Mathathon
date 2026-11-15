@@ -69,3 +69,134 @@ completed in this VM (toolchain v4.35.0 absent, full Mathlib build required) and
 the log records the attempted command and its output. All six modules were
 elaborated with `lean` against the pinned-API Mathlib 4.33.1 snapshot in
 `/opt/mathlib`; exit status 0 for each.
+
+## Corrections to the first (provisional) checkpoint — 2026-11-14, supervisor review
+
+The first checkpoint overstated three things and omitted the earliest source gaps.
+The statements themselves are unchanged; these scope notes are binding.
+
+**Overstated: representation encoding.** `XRep` (Transport.lean) and `Rep`
+(AffineParameter.lean) are *polynomial-plus-association-list* data with an
+explicitly defined evaluation (`XRep.tauX`, `Rep.mu`, `Rep.Lambda`). There is no
+`RatFunc ℚ` evaluation of them, and no theorem that the evaluation is
+independent of the chosen representation (e.g. that `[(j,c)]` and `[(j,c/2),(j,c/2)]`
+agree, or that a repeated or out-of-order list gives the same value). Theorems
+about these structures are theorems about the *encoding*; descending them to
+rational functions is (new obligation) `OBL-encoding`:
+
+* `OBL-encoding` — decide a normal form for `Rep`/`XRep` (e.g. `Finsupp ℕ ℚ` for
+  coefficients, no duplicate indices), prove the evaluation well-defined on it,
+  and prove it agrees with evaluation in `RatFunc ℚ` under the map
+  `t ↦ RatFunc.X`, `(j,c) ↦ c/(X+j²)` away from the poles.
+
+**Overstated: general transport.** `μ_X(R) = τ_X(x^5 R(-x²))` for general `R` is
+**not** proved. Proved are the polynomial case (`μpoly_eq_τ_pull`) and a single
+simple pole (`τX_single_pole_transport`); the list-induction assembly is
+`OBL-assembly`, unchanged.
+
+**Overstated: parameter type and Gram form.**
+`mu_affine` and `gramMatrix_affine` are stated over `u v : ℚ`. The source writes
+`X` as an indeterminate and works in `ℚ[X]` with a subsequent real evaluation.
+The discrete data (pole values, `Λ`) are `ℚ`-linear in the parameter, so the
+polynomial statement is `mu_affine_poly : ℚ[X]`-affine — proved as
+`mu_affine_polynomial` in `AffineParameter.lean`, using `Polynomial.aeval`-free
+coefficient linearity. Passed to `ℝ` by `Polynomial.eval` at a real point; no
+real-analytic statement is made.
+
+Second: `gramMatrix_affine` takes an *arbitrary* `ι → ι → Rep` array. It is not
+the concrete bilinear Gram form of `eq:twoobjects`, `G_K(X)_{ij} = μ_X(W_K p_i p_j / T_K)`,
+because that requires (i) `W_K p_i p_j / T_K` to lie in the domain
+(`OBL-weight`) and (ii) `μ_X` evaluated on that particular rational function
+(`OBL-encoding`). Until those, read `gramMatrix_affine` as an abstract affineness
+statement about domain-valued arrays, **not** as the manuscript's Gram pencil.
+
+**Convention fix (comment only).** `τ(x³) = 1/4` tests `B₀ = 1` only; it is
+`τ(x⁴) = -1/2` that tests the sign convention `B₁ = -1/2`. The docstrings in
+`Transport.lean` were corrected accordingly; both theorems and their proofs are
+unchanged.
+
+**Earliest gaps omitted by the first checkpoint.** The ledger began at the
+monomial calculus, but the source's *first* claims (§2.1, `eq:EM`, `eq:symbol`,
+`eq:difference`, `eq:reflection`, before `eq:poles`) were missing from it:
+
+| Id | Source claim | Status |
+| --- | --- | --- |
+| `EARLY-1` | `eq:EM`: the terminating polynomial identity `τ(P) = (1/24)Σ_k B_k/k!·P^{(k+3)}(0)` and its equivalence with the frozen `L(P''')/24` | see early-block ledger below |
+| `EARLY-2` | `eq:difference`: `τ(P(x+1) − P(x)) = P''''(0)/24` for `P ∈ ℚ[x]` | see below |
+| `EARLY-3` | `eq:reflection`: `τ(P(−1−x)) = −τ(P(x))` | see below |
+| `EARLY-4` | `eq:symbol`: `τ(e^{ux}) = u⁴/(24(e^u−1))` as a generating identity | see below |
+| `EARLY-5` | Prop. 1 uniqueness/existence: the pole values are *derived* from `eq:difference` + `eq:reflection` + `eq:basepole`, not postulated | see below |
+| `EARLY-6` | Simple-pole extension: `a_{r−1} − a_r = −r^{-5}`, `a_r = H_r^{(5)} − X` for `r ≥ 0` | see below |
+
+## Early-block ledger (source-ordered) — swarm `smwh2nngu`, 2026-11-14
+
+Authoritative source: `formalization_inputs/2026-11-14-parallel-01a1dc21/reviewed/`
+(hash-verified against its own `source-manifest.json`:
+tex `31748e32…`, pdf `a5d7a775…`, checks `6e2aeb24…`).
+
+Build: **Lean/Mathlib v4.35.0, repository pin unchanged**, task-local elan at
+`.scratch/elan` (former from `releases.lean-lang.org`), Mathlib artifacts from
+the official cache (`lake exe cache get`, 9031 files). `lake build ZetaFive`
+→ **exit 0, 9058 jobs**. Axiom audit `ZetaFive/Main/early-axioms.txt`: 22
+declarations, 21 with `[propext, Classical.choice, Quot.sound]`, 1 with
+`[propext, Quot.sound]`. No sorry/admit/native_decide/new axiom anywhere.
+
+### Source-ordered checklist (earliest first)
+
+| # | Source claim (§2.1 unless noted) | Declaration | Status |
+| --- | --- | --- | --- |
+| 1 | `eq:difference` polynomial case: `τ(P(x+1) − P(x)) = P⁗(0)/24` | `M1.τ_comp_X_add_one_sub` | **PROVED** |
+| 2 | core law `L(Q(x+1) − Q(x)) = Q'(0)` | `M1.L_comp_X_add_one_sub` | **PROVED** |
+| 3 | binomial–Bernoulli sum `Σ_{k≤n} C(n,k)B_k − B_n = [n=1]` | `M1.sum_range_choose_bernoulli_sub` | **PROVED** (from Mathlib `sum_bernoulli`) |
+| 4 | `eq:reflection` `τ(P(−1−x)) = −τ(P)` | `M3.τ_reflect` | **PROVED** |
+| 5 | `L(P(−1−x)) = L(P)` (invariance) | `M3.L_reflect`, `M3.L_neg_one_sub_X_pow` | **PROVED** |
+| 6 | reflection on pole data `τ_X(g(−1−x)) = −τ_X(g(x))` | `M3.tauX_reflect`, `M3.d_neg_one_sub` | PROVED **on `XRep` representation** (inherits `OBL-encoding`) |
+| 7 | Prop. 1 derivation: `a_{r−1} − a_r = −r⁻⁵` on ℤ | `M4.H5Z_diff` | **PROVED** |
+| 8 | Prop. 1: `a` with `a₀ = c` + recursion + reflection ⟹ `a_r = c + H^{(5)}_{d(r)}` | `M4.eq_sub_H5Z`, `M4.pole_values_unique` | **PROVED** |
+| 9 | consistency of those hypotheses (existence) | `M4.H5Z_satisfies_diff`, `M4.H5Z_satisfies_refl` | **PROVED** |
+| 10 | harmonic increments `H_j − H_{j−1} = j⁻⁵` | `H5_increment` (committed earlier) | PROVED |
+| 11 | harmonic bounds `1 ≤ H5 j < 2`, Cauchy tail | `M4.H5_ge_one`, `M4.H5_lt_two`, `M4.H5_cauchy` | PROVED |
+| 12 | **`eq:EM` terminating series** `τ(P) = (1/24)Σ_k B_k/k!·P^{(k+3)}(0)` | — | **OPEN — EARLIEST GAP** |
+| 13 | `eq:symbol` `τ(e^{ux}) = u⁴/(24(e^u−1))` | — | OPEN |
+| 14 | `eq:poles` as a *derived* theorem for a functional on `RatFunc` | — | OPEN (blocked on `OBL-encoding`) |
+| 15 | weighted transport `μ_X(R) = τ_X(x⁵R(−x²))`, general `R` | — | OPEN (polynomial case proved: `μpoly_eq_τ_pull`) |
+
+**Earliest unproved step: #12, `eq:EM`.** Its prerequisites are *not*
+substantial infrastructure: the derivative factors `B_k/k!` and the falling
+factorial `P^{(k+3)}(0)` are elementary and every input (`L`, `τ`,
+`derivative`, `Polynomial.sum`) already exists. The gap is that no one has yet
+connected the frozen `τ = L(P‴)/24` to the operator form; this is the natural
+first task of the next block. #14 is the one claim that genuinely needs new
+infrastructure (`OBL-encoding`).
+
+### Distinguishing reused Mathlib results from new correspondence lemmas
+
+Reused, not reproved: `sum_bernoulli`, `bernoulli_zero`, `bernoulli_one`,
+`bernoulli_eq_zero_of_odd`, `bernoulli_eq_sum_choose_bernoulli'`,
+`coeff_X_add_one_pow`, `Polynomial.induction_on'`, `sum_eq_of_subset`,
+`derivative_comp`, `derivative_C_mul_X_pow_succ`-analogue via `derivative_pow`,
+`Finset.sum_range_succ`, `Matrix.det_mul`/`det_transpose`/`mul_nonsing_inv`,
+`monotone_nat_of_le_succ`, `strictMono_nat_of_lt_succ`.
+
+New here (manuscript-specific): the frozen functionals `L`, `τ`, `μ`, `pull`,
+`H5`, `d`, `XRep`, `Rep`; the transport theorems; the pole recursion and its
+uniqueness; the reflection and difference laws *for these functionals*; the
+affine pencil and determinant corollaries.
+
+### Swarm record
+
+`smwh2nngu`, model `deepseek/deepseek-v4.1-flash`, reasoning effort `max`,
+4 members × 60 steps, 35-minute budget, ended solved with 4/4 accepted.
+m1 → `Candm1.lean` (`M1`: eq:difference), m2 → `Candm2.lean` (`M2`:
+nondegeneracy), m3 → `Candm3.lean` (`M3`: reflection), m4 → `Candm4.lean`
+(`M4`: H5 calculus, pole recursion, uniqueness). Coordinator compiled each
+under the pinned 4.35.0 toolchain and read each proof before accepting.
+Modules were namespaced `M1`–`M4` on integration because m1 and m3 independently
+defined `L_X_add_one_pow` in a shared `Cand` namespace — a real collision caught
+by the pinned build, not by the members' 4.33.1 prototypes.
+
+**Reviewer limitation, stated plainly:** m4 was assigned as reviewer *and* as a
+worker, so the independent-review role was not cleanly separated this block; the
+coordinator performed the review of all four submissions. Also, m4's file
+carries the `Cand` namespace as delivered; the coordinator rewrote only the
+namespace lines, not the proofs.

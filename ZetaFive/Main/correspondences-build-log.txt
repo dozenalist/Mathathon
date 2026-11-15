@@ -1,40 +1,38 @@
 # Build evidence — ZetaFive correspondence lemmas
-# Date: 2026-11-14
-# Checkout: dozenalist/Mathathon @ 5f20e2fac14d7f38a56459a2e69d1dd406efaa5e (folder ZetaFive)
-# Machine: SAIR VM; Lean 4.33.1 at /opt/lean, prebuilt Mathlib 4.33.1 at /opt/mathlib (LEAN_PATH).
+# Updated 2026-11-14 after the `smwh2nngu` early-block integration.
 #
-# The checkout pins leanprover/lean4:v4.35.0 with Mathlib v4.35.0. Neither is
-# present in this VM, and building Mathlib from source is a matter of hours, so
-# `lake build ZetaFive` could not complete (see the last section). The modules
-# were therefore elaborated directly with `lean`, with the repository root added
-# to LEAN_PATH so that the project modules import one another.
-
-$ export LEAN_PATH="$LEAN_PATH:$(pwd)"
-
-$ lean -o ZetaFive/Lean/Correspondences/Basic.olean           ZetaFive/Lean/Correspondences/Basic.lean            # exit 0
-$ lean -o ZetaFive/Lean/Correspondences/Transport.olean       ZetaFive/Lean/Correspondences/Transport.lean        # exit 0
-$ lean -o ZetaFive/Lean/Correspondences/AffineParameter.olean ZetaFive/Lean/Correspondences/AffineParameter.lean  # exit 0
-$ lean -o ZetaFive/Lean/Correspondences/Matrix.olean          ZetaFive/Lean/Correspondences/Matrix.lean           # exit 0
-$ lean -o ZetaFive/Lean/Correspondences.olean                 ZetaFive/Lean/Correspondences.lean                  # exit 0
-$ lean -o ZetaFive.olean                                      ZetaFive.lean                                       # exit 0
-
-# Axiom audit: a driver importing ZetaFive and issuing #print axioms for the 20
-# exported declarations (output kept in correspondences-axioms.txt)
-$ lean <driver>.lean > ZetaFive/Main/correspondences-axioms.txt    # exit 0
-$ grep -c "depends on axioms" ZetaFive/Main/correspondences-axioms.txt
-20
-# every entry: depends on axioms: [propext, Classical.choice, Quot.sound]
-
-# Forbidden-device audit
-$ grep -rn "sorry\|admit\|native_decide\|^axiom" ZetaFive/Lean ZetaFive.lean
-# no matches
-
-# lake build section
-$ lake --version
-Lake version 5.0.0-src+819816b (Lean version 4.33.1)
-$ lake build ZetaFive
-info: mathlib: cloning https://github.com/leanprover-community/mathlib4.git
-# stopped after 60 s: it must first clone and then build Mathlib v4.35.0.
-# BLOCKER: the pinned toolchain v4.35.0 is not installed in this VM and
-# /opt/mathlib is a 4.33.1 build. `lake build ZetaFive` must be re-run on a
-# machine with the pinned toolchain and a built Mathlib v4.35.0.
+# TOOLCHAIN: the repository pin (lean-toolchain: leanprover/lean4:v4.35.0,
+# lakefile: mathlib v4.35.0) is UNCHANGED. The pinned toolchain was installed
+# task-locally, NOT into /opt:
+#   .scratch-elan-setup.sh  (committed at repository root)
+#     ELAN_HOME=<repo>/.scratch/elan
+#     elan toolchain install leanprover/lean4:v4.35.0   # official release
+#     lake exe cache get                                # official Mathlib cache
+#
+# $ export ELAN_HOME="<repo>/.scratch/elan"; export PATH="$ELAN_HOME/bin:$PATH"
+# $ lean --version
+# Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8b..., Release)
+# $ elan show
+# leanprover/lean4:v4.35.0 (overridden by '<repo>/lean-toolchain')
+#
+# $ lake exe cache get
+# Attempting to download 9031 file(s) from leanprover-community/mathlib4 cache
+# Downloaded: 9031 file(s) [attempted 9031/9031 = 100%]
+# Decompressed 9031 file(s)                                  # exit 0
+#
+# $ lake build ZetaFive
+# Build completed successfully (9058 jobs).                  # exit 0
+#
+# $ lake env lean ZetaFive/Main/early-axioms-driver.lean
+# #print axioms for 22 declarations                          # exit 0
+#   21 x [propext, Classical.choice, Quot.sound]
+#    1 x [propext, Quot.sound]
+# output: ZetaFive/Main/early-axioms.txt
+#
+# $ grep -rn "\bsorry\b\|\badmit\b\|native_decide\|^axiom " ZetaFive/Lean/*.lean \
+#       ZetaFive/Lean/Correspondences/*.lean ZetaFive.lean
+# (no matches)
+#
+# EARLIER EVIDENCE, SUPERSEDED: the first checkpoint's elaboration used this
+# VM's Lean 4.33.1 against /opt/mathlib. It is retained only as history; every
+# claim above now rests on the pinned 4.35.0 build.

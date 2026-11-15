@@ -6,6 +6,10 @@ import ZetaFive.Lean.Correspondences.Basic
 import ZetaFive.Lean.Correspondences.Transport
 import ZetaFive.Lean.Correspondences.AffineParameter
 import ZetaFive.Lean.Correspondences.Matrix
+import ZetaFive.Lean.Correspondences.Candm1
+import ZetaFive.Lean.Correspondences.Candm2
+import ZetaFive.Lean.Correspondences.Candm3
+import ZetaFive.Lean.Correspondences.Candm4
 
 /-!
 # Correspondence lemmas for the ζ(5) argument

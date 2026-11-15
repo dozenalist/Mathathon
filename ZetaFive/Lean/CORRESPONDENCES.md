@@ -128,3 +128,18 @@ module was elaborated with `lean` against that snapshot with the repository root
 on `LEAN_PATH`. Re-running `lake build ZetaFive` where the pinned toolchain and
 a built Mathlib v4.35.0 exist is the outstanding build step. An API name could
 differ between 4.33.1 and 4.35.0; the proofs themselves are version-independent.
+
+## Early block (`smwh2nngu`) — §2.1 foundations
+
+Source: the **reviewed** note (`formalization_inputs/2026-11-14-parallel-01a1dc21/reviewed/`).
+
+| Module | New content | Namespace |
+| --- | --- | --- |
+| `Candm1.lean` | `eq:difference`: `L(Q(x+1)−Q(x)) = Q'(0)`; `τ_comp_X_add_one_sub`; binomial–Bernoulli sum | `M1` |
+| `Candm2.lean` | nondegeneracy: `L`, `τ`, `μ` nonzero; `B_{2n} ≠ 0` as an explicit hypothesis, not assumed | `M2` |
+| `Candm3.lean` | `eq:reflection`: `τ(P(−1−x)) = −τ(P)`; `L`-invariance; pole-level reflection | `M3` |
+| `Candm4.lean` | H5 calculus (`1 ≤ H5 j < 2`, Cauchy tail); `H5Z_diff` (`−r⁻⁵`); `eq_sub_H5Z`, `pole_values_unique` | `M4` |
+
+**Earliest unproved step: `eq:EM`**, the terminating series
+`τ(P) = (1/24)Σ_k (B_k/k!)·P^{(k+3)}(0)`. It is elementary and every input
+exists; it is merely not yet connected to `eq:symbol` and the operator form.

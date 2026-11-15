@@ -69,15 +69,20 @@ theorem μpoly_eq_τ_pull (P : PolyT) : μpoly P = τ (X ^ 5 * pull P) := by
       push_cast
       ring
 
-/-! ## Sanity checks with the stated Bernoulli convention -/
+/-! ## Sanity checks
+`τ(x³) = 1/4` tests `B₀ = 1`; `τ(x⁴) = -1/2` is the one that tests `B₁ = -1/2`;
+`μ(1) = 5/12` (in `Transport.lean`) tests `B₂ = 1/6` together with the
+`μ` normalisation. -/
 
-/-- `τ(x^3) = 1/4`. Requires `B_1 = -1/2` only through `B_0 = 1`. -/
+/-- `τ(x^3) = 1/4`. This uses only `B_0 = 1`; it does **not** test the sign
+convention for `B_1`. -/
 theorem τ_X_pow_three : τ ((X : PolyX) ^ 3) = 1 / 4 := by
   have h := τ_C_mul_X_pow (c := 1) 0
   norm_num at h
   simpa using h
 
-/-- `τ(x^4) = -1/2`. This is the explicit check of the `B_1 = -1/2` convention. -/
+/-- `τ(x^4) = 4·3·2·B_1/24 = -1/2`. This is the declaration that pins the
+`B_1 = -1/2` convention: with `B_1 = +1/2` the value would be `+1/2`. -/
 theorem τ_X_pow_four : τ ((X : PolyX) ^ 4) = -1 / 2 := by
   have h : τ ((X : PolyX) ^ 4) = -2⁻¹ := by
     have h' := τ_C_mul_X_pow (c := 1) 1

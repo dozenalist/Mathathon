@@ -57,3 +57,28 @@ worker, matrix worker and reviewer roles were executed sequentially by one
 agent. Signs, the Bernoulli convention, zero denominators, the `1 ≤ j`
 restriction, and variable naming were re-checked by hand; the transport theorem
 is not definitional in `μ`, and `pull` never occurs in a definition.
+
+## 2026-11-14 (later) — Early §2.1 foundations, DeepSeek swarm, pinned 4.35.0 build
+
+**Environment discrepancy resolved.** Mathathon pins Lean/Mathlib v4.35.0, which
+was absent from this VM. It is now installed **task-locally** (`.scratch/elan`,
+official release; Mathlib v4.35.0 oleans from the official cache via
+`lake exe cache get`), with `/opt` untouched and the pins unchanged.
+`lake build ZetaFive` → **exit 0, 9058 jobs**. Setup script:
+`.scratch-elan-setup.sh`. The earlier "full Mathlib source build required"
+conclusion was wrong: the cache supplies all 9031 artifacts in ~100 s.
+
+**Early-order results (swarm `smwh2nngu`, DeepSeek `deepseek-v4.1-flash`, 4
+members × 60 steps × 35 min, reasoning `max`, ended solved 4/4 accepted):**
+the polynomial `eq:difference` law `τ(P(x+1)−P(x)) = P⁗(0)/24` (m1); the
+reflection law `τ(P(−1−x)) = −τ(P)` (m3); the pole recursion
+`a_{r−1} − a_r = −r⁻⁵` on ℤ and **uniqueness** `a_r = c + H^{(5)}_{d(r)}` from
+the three Prop. 1 laws (m4); nondegeneracy of `L`, `τ`, `μ` (m2).
+
+**Earliest unproved step: `eq:EM`**, the terminating series
+`τ(P) = (1/24)Σ_k (B_k/k!)P^{(k+3)}(0)` — still open, elementary prerequisites,
+next block's first task. `eq:symbol` and the representation-level transport are
+behind it; the `RatFunc` bridge remains `OBL-encoding`.
+
+Axiom audit: 22 declarations, only `propext`, `Classical.choice`, `Quot.sound`.
+No sorry/admit/native_decide/new axiom. No irrationality claim is made.
