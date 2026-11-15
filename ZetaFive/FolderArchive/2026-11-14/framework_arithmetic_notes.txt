@@ -1,0 +1,656 @@
+COMMON FRAMEWORK FOR THE LOCAL ARITHMETIC CONSTRUCTIONS
+Research notes, 14 November 2026
+
+Scope and status
+These notes reorganize Sections 3--5 of Aabir Fauzan, "zeta(5) is
+irrational", manuscript dated 17 September 2026, as supplied in
+sources/Fauzan_2026_zeta5.txt and .pdf. They explain exact identities and
+derive a common framework. They do not independently certify every estimate
+or the manuscript's claimed irrationality theorem. The Volkenborn and
+determinant-line language below is a reinterpretation, not terminology the
+manuscript itself consistently uses.
+
+Main conclusion
+The local arithmetic can be organized around one object:
+
+  a one-parameter rational moment pairing, together with its lattices at
+  each prime and the induced pairing on its one-dimensional determinant
+  line.
+
+Its scalar functional is a singular extension of a differentiated
+Bernoulli/Volkenborn functional. Integer-valued bases, CRT/jet bases,
+vanishing orders, row weights, and bounded-rank corrections are different
+ways of estimating the same pairing over Q_p with X still indeterminate.
+The limiting profiles and prime integrals summarize those local estimates;
+they are not additional moment functionals. The periodic tail corrections
+are Bernoulli polynomials again, now doing the usual summation-to-integration
+work of Euler--Maclaurin theory.
+
+1. THE EXACT BERNOULLI/VOLKENBORN CORE
+
+Write I_p for the Volkenborn integral, initially on polynomials:
+
+  I_p(f) = lim_{m -> infinity} p^{-m} sum_{a=0}^{p^m-1} f(a),
+
+where the limit is in Q_p. For every k >= 0,
+
+  I_p(x^k) = B_k,     B_1 = -1/2.
+
+Consequently the manuscript's polynomial functional is exactly
+
+  tau(P) = I_p(P''')/24.                              [manuscript Sec.3]
+
+This value is rational and independent of p when P has rational
+coefficients. The p-adic realization is used to estimate it, not to define
+a different rational functional at every prime. The Bernoulli moment
+identity and translation law are recorded in the primary research sources
+[V], [HKK], and [L]
+below; the identification with this manuscript's tau is our direct
+substitution into its definition.
+
+There is also a purely formal, prime-independent description. If D=d/dx,
+then on polynomials
+
+  L(P) = [ D/(exp(D)-1) P ](0),
+  tau(P) = [ D^4/(24(exp(D)-1)) P ](0).
+
+The quotients are interpreted as formal power series in D. They terminate
+when applied to a polynomial; D^4/(exp(D)-1) starts with D^3. Equivalently,
+
+  tau(exp(sx)) = s^4/(24(exp(s)-1))
+
+as an identity of formal power series. This one expression explains the
+specific derivative order, finite-difference law, and Bernoulli moments.
+
+Let Delta g(x)=g(x+1)-g(x). The standard Volkenborn identity
+
+  I_p(f(x+1))-I_p(f(x)) = f'(0)
+
+gives
+
+  tau(Delta P) = P''''(0)/24.                         [(3.3) on polynomials]
+
+The Bernoulli reflection identity gives I_p(P(-1-x))=I_p(P(x)). Three
+differentiations introduce a minus sign, so
+
+  tau(P(-1-x)) = -tau(P(x)).                          [(3.2)]
+
+Splitting the defining finite sum into the p residue classes gives
+
+  I_p(f) = p^{-1} sum_{a=0}^{p-1} I_p(f(a+px)).
+
+Since (d/dx)^3 P(a+px)=p^3 P'''(a+px),
+
+  tau(P) = p^{-4} sum_{a=0}^{p-1} tau(P(a+px)).
+
+Thus p^{-4} is forced by one p^{-1} from averaging and p^{-3} from the
+three derivatives. It is not an isolated normalization chosen in Sec.3.2.
+
+Caveat: this is not ordinary real integration and is not a bounded
+translation-invariant Q_p-valued Haar measure on all continuous functions.
+For instance I_p(x)=-1/2, and its translation defect is explicit above.
+The functions 1/(x-r), r an integer, have poles on Z_p, so the ordinary
+Volkenborn integral of such a function is not what the manuscript defines.
+
+2. A ONE-PARAMETER SINGULAR EXTENSION
+
+Every rational function with polynomial part and simple integer poles has
+a unique decomposition
+
+  g(x)=P(x)+sum_r c_r/(x-r),
+
+with only finitely many c_r nonzero. Put
+
+  beta_r(X)=H^{(5)}_{d(r)}-X,
+  d(r)=r if r>=0, and d(r)=-r-1 if r<0.
+
+The manuscript's definition is exactly
+
+  tau_X(g)=tau(P)+sum_r c_r beta_r(X).
+
+This is an algebraic extension of tau. Among extensions satisfying its
+reflection and regular-at-zero difference laws, the whole pole family is
+determined by one value, beta_0=-X. Indeed, applying the difference identity
+to 1/(x-r), with r>0, gives
+
+  beta_{r-1}-beta_r = -r^{-5},
+  beta_r=beta_0+H_r^{(5)}.
+
+Reflection gives beta_{-r-1}=beta_r. Thus the one free parameter propagates
+to every integer pole. The fifth-order harmonic increments are forced by
+the fourth derivative in the difference law:
+
+  (1/24) (d/dx)^4 (1/(x-r))|_{x=0} = -r^{-5}.
+
+Another useful exact formula is
+
+  tau_X(g) = tau_0(g) - X sum_r c_r.
+
+Hence [X]tau_X(g)=-sum_r Res_{x=r}(g dx)=Res_infinity(g dx).
+This makes its affine dependence on X transparent. The phrase "singular
+extension" is descriptive here; no canonical p-adic finite-part integral
+at integer poles is being asserted. The free parameter is a formal
+coordinate, not an identification of real zeta(5) with a p-adic zeta value.
+
+3. mu_X IS THE SAME FUNCTIONAL IN WEIGHTED SQUARE COORDINATES
+
+The exact identity is
+
+  mu_X(R(t)) = tau_X(x^5 R(-x^2)).                    [(3.1), p.6]
+
+It is essential to retain the factor x^5. On monomials this gives
+
+  tau((-1)^e x^{2e+5})
+    = (-1)^e (2e+3)(2e+4)(2e+5) B_{2e+2}/24,
+
+which is (2.2). For simple poles,
+
+  x^5/(j^2-x^2)
+    = -x^3-j^2 x-(j^4/2)(1/(x-j)+1/(x+j)).
+
+Using tau(x^3)=1/4, tau(x)=0, beta_j=H_j^{(5)}-X,
+beta_{-j}=H_{j-1}^{(5)}-X, and H_j-H_{j-1}=j^{-5}, one obtains
+
+  mu_X(1/(t+j^2)) = j^4(X-H_j^{(5)})-1/4+1/(2j).
+
+Thus the square-pole functional, the integer-pole functional, the
+Bernoulli moments, and the harmonic pole data really belong to the same
+construction. The coordinate transformation makes local residue classes
+accessible: t=-a^2 corresponds to x=a or -a mod p. At a=0, a zero in t has
+twice the order in x, explaining the doubled orders in (4.3).
+
+4. COMPLETION AND THE PARAMETER CHANGE UNDER DILATION
+
+For p>=7, write
+
+  kappa_d=d(d-1)(d-2)B_{d-3}/24,   kappa_0=kappa_1=kappa_2=0.
+
+The bounds v_p(kappa_d)>=-1 and v_p(kappa_d)>=0 for d<=p+1
+allow tau to extend to Q_p<z> by its convergent moment sum. If T has
+distinct near roots r_nu in Z_p with unit pairwise differences, the natural
+space is
+
+  B_T = Q_p<z> direct-sum (direct-sum_nu Q_p/(z-r_nu)).
+
+The second expression denotes the one-dimensional span of 1/(z-r_nu),
+not a quotient ring. On it the manuscript defines
+
+  tau_Y^ext(f+sum c_nu/(z-r_nu))
+     = tau(f)+sum c_nu(H_{d(r_nu)}^{(5)}-Y).
+
+The analytic and principal-part decomposition is unique. A far pole s,
+v_p(s)<0, is analytic on the unit disc. Its geometric expansion yields
+
+  tau^an(1/(z-s))
+    = -(1/4) sum_{k>=0} binom(k+3,3) B_k s^{-k-4}.    [(3.5)]
+
+This is the same tau evaluated on a convergent series, not another
+arbitrarily chosen function. The geometric series and moment bound justify
+termwise evaluation here. Lemma 3.1 additionally uses a low-degree leading
+numerator to avoid the possible loss of one power of p in the analytic
+part; factors p^j absorb that loss in subsequent terms. Merely naming the
+functional does not eliminate this integrality check.
+
+Set
+
+  C_p=sum_{a=1}^{p-1} tau^an(1/(x+a/p)),
+  Y=p^5 X+C_p.                                      [(3.6)]
+
+This parameter is forced, not guessed. For g=1/x, the right side of the
+desired distribution law is
+
+  p^{-4} sum_a tau_Y^ext(1/(a+px))
+     = p^{-5}(-Y+C_p).
+
+Equating this with tau_X(1/x)=-X gives exactly Y=p^5X+C_p. The fifth power
+comes from the p^{-4} functional scaling and the additional p^{-1} of a
+simple pole. The reflection and difference recurrences then establish the
+law at every integer pole; the polynomial part was handled above. This
+proves the mechanism behind (3.7).
+
+For p>=7, C_p is in p^5 Z_p: its k=0 contribution has p^4 times
+sum_{a=1}^{p-1}a^{-4}, which vanishes modulo p; the other terms have the
+valuations stated in Sec.3.2. Therefore Y is integral (in fact divisible by
+p^5) when X is integral. This is why the formal change of parameter fits
+the integral local estimates.
+
+5. THE COMMON BILINEAR FORM AND ITS DETERMINANT LINE
+
+Let E_K=Q[t]_{<h}, h=K-N, and define
+
+  B_{K,X}(f,g)=mu_X(D_N(t)^6 f(t)g(t)/D_K(t)).
+
+Then G_K is its Gram matrix in 1,t,...,t^{h-1}, and Delta_K=det G_K.
+Canceling the first N denominator factors gives the identical expression
+
+  D_N^6/D_K = W/D_tail,   W=D_N^5,   D_tail=D_K/D_N.
+
+This is why the sixth power in one section becomes a fifth power in
+another. It is the same rational weight after cancellation.
+
+There is an additional exact finite-algebra description of the coefficient
+of X. If [t^{-3}] means Laurent coefficient at infinity, then
+
+  [X]mu_X(R)=[t^{-3}]R,
+
+because (t+j^2)^{-1}=t^{-1}-j^2 t^{-2}+j^4 t^{-3}+...,
+while the polynomial part contributes no negative powers. Let
+
+  A_K=Q[t]/D_tail(t),
+  rho(P mod D_tail)=[t^{h-1}](remainder of P modulo D_tail).
+
+Equivalently rho(P)=[t^{-1}]P(t)/D_tail(t). The slope form is
+
+  [X]B_{K,X}(f,g)=rho(t^2 W f g).
+
+Thus it is a residue pairing on the finite algebra A_K, with multiplier
+t^2 W=t^2D_N^5. Over Q, D_tail is separable and the multiplier is nonzero
+at every root -j^2, N<j<=K. The slope pairing is nondegenerate. Evaluation
+at those roots turns it into the diagonal weights
+
+  j^4 D_N(-j^2)^5 / D_tail'(-j^2),
+
+exactly as in Sec.2.3. This is another explanation of the full determinant
+degree h. Over Z_p, however, the roots may collide modulo p; resolving
+those collisions is the reason for the residue-class bases.
+
+Crucial limitation: the full B_{K,X} does not reduce to this slope pairing.
+Its constant term also has the Bernoulli polynomial-quotient contribution.
+Replacing the whole functional by the finite residue algebra would lose
+precisely the terms controlled by the outer rank correction.
+
+A symmetric bilinear form on E_K induces a bilinear form on the
+one-dimensional line det(E_K)=exterior-power^h E_K:
+
+  (f_1 wedge ... wedge f_h, g_1 wedge ... wedge g_h)
+     |-> det[B_{K,X}(f_i,g_j)].
+
+Under a basis change T its matrix determinant changes by (det T)^2.
+This elementary identity is the precise meaning of "the same determinant
+line" here. It explains both the exact normalization scalar in Sec.3.3
+and the invariance under the unimodular local bases of Sec.4.
+
+At a prime p, keep X indeterminate. The Gauss valuation is
+
+  v_p^G(sum a_j X^j)=min_j v_p(a_j).
+
+It extends to Q_p(X), so one may view the problem as estimating this form
+over the associated valuation ring. This keeps every coefficient,
+including the constant one, under control. Evaluating at a favorable X
+would lose that information.
+
+6. THREE FAMILIES OF BASES, ONE LOCAL INTEGRALITY PROBLEM
+
+(a) Small primes: an integer-valued polynomial lattice.
+
+The q_i of Sec.3.3 obey
+
+  q_i(-x^2)=binom(x+i,2i)+binom(x+i-1,2i),
+  D_N(-x^2)/(N!)^2=binom(N-x,N)binom(N+x,N).
+
+They therefore lie in an integer-valued polynomial lattice after pullback.
+This does not assert that the displayed q_i form a basis of every possible
+even integer-valued lattice; their integrality and triangular leading
+coefficients suffice. Put
+
+  f_i=(D_N/(N!)^2)^3 q_i.
+
+Then the manuscript's exact determinant identity is
+
+  F_K=det[(K!)^2 mu_X(f_i f_j/D_K)].                  [(3.11)]
+
+If C is the change from monomials to q_i, this is
+
+  F_K = [(K!)^2/(N!)^12]^h (det C)^2 Delta_K.
+
+The leading coefficients q_0=1 and lc(q_i)=(-1)^i 2/(2i)!, i>=1,
+give precisely S_K. The scalar is the coordinate cost of the chosen
+integral structure. Lemma 3.3 controls all polynomial and pole pieces with
+a coarse estimate adequate for small primes.
+
+(b) Inner primes: local jets and Chinese remainders.
+
+For pairwise distinct square classes c, the ideals (t+c^2)^{L_c} are
+pairwise comaximal over Z_p[t]. Their quotient algebra decomposes into
+the product of the corresponding local jet algebras. The basis
+
+  E_{a,i}(t)=product_{c != a}(t+c^2)^{L_c}(t+a^2)^i,
+  0<=i<L_a,
+
+is triangular with unit diagonal in each local factor. It is thus a
+Z_p-unimodular basis of the h-dimensional polynomial lattice, not a new
+moment construction. Its job is to make all but one block vanish to high
+order at a given source. Distribution then converts the jet orders into
+valuation contributions (4.2)--(4.3).
+
+The allocation L_a balances these local requirements. The extra-row rule
+in decreasing order of pole count prevents another residue class from
+giving a worse bound than the assigned row weight. This is a genuine
+finite optimization/verification step; CRT alone does not prove it.
+
+(c) Outer primes: exact pole cancellation within the same CRT picture.
+
+When each class has few poles, use the exact class factors Q_a of D_tail
+and P_a=D_tail/Q_a. The rows P_a q_{a,i} localize to one pole class, while
+the factor E_a in the later q_{a,i} cancels every dangerous pole j>p.
+Their remaining factors are monic of successive degrees, so the same
+unit-resultant/CRT argument proves unimodularity. The split at i=ell-2
+records when pole cancellation becomes complete.
+
+These inner and outer constructions share a local-jet principle, but
+they are not the same basis and need different estimates. The small-prime
+basis is also not unimodular in the original monomial lattice: its
+determinant is explicitly accounted for by S_K.
+
+More precisely, the outer CRT is the exact decomposition of the pole
+order Z_p[t]/D_tail into Z_p[t]/Q_a. The inner CRT instead uses the
+auxiliary algebra Z_p[t]/product_a(t+a^2)^{L_a}. Its modulus generally
+differs from D_tail. Both identify the same coefficient lattice of
+polynomials of degree <h, but they are not literally the same algebra.
+
+7. WEIGHTS AND RANK CORRECTIONS AS DETERMINANT ESTIMATES
+
+Suppose a basis e_i satisfies
+
+  v_p^G(B(e_i,e_j)) >= w_i+w_j.
+
+Every permutation term in the determinant then has valuation at least
+2 sum_i w_i. This is the common mechanism behind the inner and outer row
+weights. It can be interpreted as making the pairing integral on a
+weighted lattice. For half-integral weights, that literal lattice may
+require adjoining a square root of p; alternatively keep the entirely
+elementary inequality above, or use doubled valuations. Do not pretend
+that p^{1/2} belongs to Q_p.
+
+In the outer range, the polynomial moments are first made integral:
+
+  mu_0(t^e)=mu(t^e)-c_e/p,
+  G_K=A+p^{-1}L,   rank_{Q_p} L <= r_p.              [(4.10)]
+
+The correction is supported on sufficiently high polynomial degrees, so
+it has bounded rank. This is another filtration: the nonintegral
+polynomial moments only see a small high-degree portion of the space.
+It is not permissible to throw them away and estimate only residues.
+
+For nonpositive half-integral row weights and z zero weights,
+
+  v det(A+p^{-1}L) >= 2 sum_i w_i - min(r,z).        [(4.13)]
+
+Reason: expand by complementary minors. A term with k rows/columns from
+L pays p^{-k}; terms k>r vanish. Replacing a row or column with a negative
+weight recovers enough valuation to offset that loss, whereas zero
+weights do not. Sorting the weights gives the maximum loss min(r,z).
+Thus the rank correction is an exterior-power statement: exterior powers
+of L above its rank vanish. Its exact rank is over Q_p, as in the
+manuscript, not merely a claimed rank modulo p.
+
+Notation caution: the correction matrix L here has no relation to the
+Bernoulli functional named L at the start of Sec.3.
+
+8. LIMITING PROFILES ARE BOOKKEEPING FOR THE SAME LATTICE COST
+
+The discrete counts have the exact relation
+
+  ell_A(a)=ell(A/p,a/p),
+  ell(x,z)=floor(x-z)+floor(x+z)+1.
+
+The local determinant bound and the change-of-basis scalar then satisfy
+
+  gamma_p^in=p Gamma(K/p)+O_M(1),
+  v_p(S_K)=p N(K/p)+O_M(1).                         [(5.7)]
+
+Thus R(x)=-Gamma(x)-N(x) is the limiting signed cost of normalization,
+not an unrelated external field. In the outer range,
+
+  -gamma_p^out=K(R_0(p/K)-d(p/K))+O(1).
+
+Here d is exactly the limiting saving due to the restriction by the
+number of zero weights in the rank lemma. The variables x=K/p and y=p/K
+are reciprocal coordinates chosen to keep the respective intervals
+convenient; they do not make the inner and outer estimates identical.
+
+The prime number theorem turns sums of these costs into integrals:
+
+  K^{-2} sum_{K/M<p<=K/3} p f(K/p) log p
+      -> integral_3^M f(x) x^{-3} dx.
+
+The power x^{-3} comes from p=K/x and the Jacobian dp=-K x^{-2}dx.
+This is a limiting sum of local determinant estimates. It is not the
+real equilibrium-energy integral appearing in Sec.6.
+
+9. THE TAIL FUNCTIONS ARE PERIODIC BERNOULLI PRIMITIVES
+
+The paper writes R(x)=xF(x)+Q(x), where
+
+  F(x)=4 lambda+2 lambda {x}-12 lambda {alpha x},
+  alpha=3/40, lambda=37/40.
+
+Put Btilde_n(u)=B_n({u}), with endpoint conventions immaterial for the
+almost-everywhere derivative/integral identities below. Since
+
+  B_1(v)=v-1/2,
+  B_2(v)=v^2-v+1/6,
+  B_3(v)=v^3-(3/2)v^2+v/2,
+
+and 6 lambda/alpha=74, one obtains exactly
+
+  F(x)+lambda
+    =2 lambda Btilde_1(x)-12 lambda Btilde_1(alpha x),
+
+  P(x)-Pbar
+    =lambda Btilde_2(x)-74 Btilde_2(alpha x),
+
+  C(x)
+    =(lambda/3)Btilde_3(x)-(74/(3 alpha))Btilde_3(alpha x),
+
+  Pbar=(74-lambda)/6=2923/240.
+
+Indeed the paper's G_0(v)=v(1-v)(2v-1)/6 equals -B_3(v)/3.
+The derivative law B_n'=n B_{n-1} therefore yields
+
+  P'=F+lambda,       C'=P-Pbar,
+
+away from breakpoints. Btilde_2 and Btilde_3 have matching endpoint values,
+so the primitives needed in the integration-by-parts argument are
+continuous and no omitted jump term is introduced. Both are periodic
+with common period 40. P has mean Pbar and C has mean zero.
+
+This is a precise instance of Bernoulli/Euler--Maclaurin machinery:
+center a sawtooth, integrate it by periodic Bernoulli polynomials, and
+bound the remaining integral. It makes P and C predictable rather than
+ad hoc. It does not identify them with tau: tau is a linear functional
+on polynomials/rational functions, whereas P and C are functions of the
+prime-sum scaling variable.
+
+10. GLOBAL NORMALIZATION AND THE PRODUCT-FORMULA VIEWPOINT
+
+The local calculations produce explicit integers L_p with
+
+  v_p^G(F_K)>=L_p.
+
+Define m=product_p p^{-L_p}; the finite support is as in (5.2). Then
+
+  v_p^G(m F_K)>=0 for every p,
+
+so Q=mF_K has integer coefficients. Positive L_p represent divisibility
+that can be divided out; negative L_p represent denominators to clear.
+The signs cannot be discarded. The exact logarithmic normalization cost
+is
+
+  log m = -sum_p L_p log p.
+
+This is a local-to-global determinant normalization. It has the same
+structure as product-formula bookkeeping: rational scalar multiplication
+transfers local p-adic valuation to real size. However L_p are certified
+lower bounds, not asserted exact determinant valuations, so this is not
+an exact computation of the determinant's arithmetic size or content.
+
+The final irrationality contradiction can itself be phrased by the
+rational product formula, but needs no machinery: for a/b rational,
+
+  Z=b^h Q(a/b)
+
+is an integer. Positivity makes Z nonzero, so |Z|>=1. Equivalently all
+finite absolute values of this integer are <=1, and the product formula
+forces its real absolute value to be >=1. The paper's real decay aims to
+contradict this. At the irrational number zeta(5), Q(zeta(5)) is not a
+rational number to which one may directly apply that product formula.
+
+11. WHAT THIS REORGANIZATION DOES AND DOES NOT ELIMINATE
+
+It reduces the list of seemingly unrelated objects to four layers:
+
+  (i) one differentiated Bernoulli functional and its singular extension;
+  (ii) one rational moment pairing, studied on useful local lattices;
+  (iii) one determinant pairing, estimated by weights and exterior powers;
+  (iv) signed prime-sum bookkeeping, with Bernoulli tail corrections.
+
+The exact formulas support those identifications. It remains necessary to
+prove: analytic completion/integrality; low-degree restrictions; all-class
+comparisons for inner weights; divided-difference integrality for outer
+classes; the polynomial correction rank; uniform errors in the limiting
+profiles; and quantitative prime-sum/tail estimates. None follows merely
+from saying "Volkenborn", "CRT", "lattice", or "determinant line".
+
+PRIMARY AND OFFICIAL SOURCES CHECKED
+
+[F] Fauzan manuscript, local source above. Principal locations:
+    (2.2)--(2.5), pp.3--4; (3.1)--(3.7), pp.6--7;
+    (3.8)--(3.12), pp.8--9; Sec.4, pp.10--13;
+    (5.1)--(5.21), pp.13--17.
+
+[V] Arnt Volkenborn, "On generalized p-adic integration", Memoires de la
+    Societe Mathematique de France 39--40 (1974), 375--384.
+    https://www.numdam.org/book-part/MSMF_1974__39-40__375_0/
+    https://www.numdam.org/article/MSMF_1974__39-40__375_0.pdf
+    Original source for the generalized integral and its non-translation-
+    invariant transformation laws. Theorem 2, printed p.378, supplies
+    scaling and translation properties.
+
+[HKK] Su Hu, Daeyeoul Kim, Min-Soo Kim, "New identities involving
+    Bernoulli, Euler and Genocchi numbers", Advances in Difference
+    Equations 2013, 74.
+    https://link.springer.com/article/10.1186/1687-1847-2013-74
+    Sec.2, (2.1)--(2.5): Volkenborn definition, translation law, Bernoulli
+    moment identities. (2.21): Bernoulli reflection.
+
+[L] Li Lai, Cezar Lupu, Johannes Sprang, "On the irrationality of certain
+    p-adic zeta values", Research in the Mathematical Sciences 12, 77
+    (2025), DOI 10.1007/s40687-025-00559-x.
+    https://link.springer.com/article/10.1007/s40687-025-00559-x
+    Sec.2.2: Volkenborn integrals and the Bernoulli functional; Lemmas
+    2.2--2.4 distinguish integration and related Bernoulli functionals.
+    Used only for standard p-adic facts, not as evidence for the real
+    zeta(5) manuscript's claim.
+
+[D] NIST DLMF, Sec.24.4, Bernoulli identities.
+    https://dlmf.nist.gov/24.4
+    Difference (24.4.1), reflection (24.4.3), multiplication (24.4.18),
+    derivative (24.4.34). These underlie both local distribution and
+    the periodic-tail primitive identities.
+
+[CRT] Stacks Project, Lemma 10.15.4, tag 00DT, Chinese remainder.
+    https://stacks.math.columbia.edu/tag/00DT
+    Official statement of the comaximal-ideal decomposition used in
+    the jet interpretation. The particular triangular bases and their
+    weights come from [F], not from the general CRT alone.
+
+All claims labeled as derivations or reinterpretations above were checked
+algebraically against the manuscript definitions; they are not quotations
+from these external sources.
+
+ADDENDUM: FINITE PRODUCTS, GAMMA, NEWTON INTERPOLATION, AND TWO PLACES
+
+The product data itself also has a common classical interpretation. For
+every nonnegative integer m,
+
+  D_m(-x^2)/(m!)^2
+    = product_{j=1}^m (1-x^2/j^2)
+    = binom(m-x,m) binom(m+x,m).
+
+Here generalized binomial coefficients are polynomial expressions, so
+the identity is valid for every complex x without exceptions caused by
+gamma-function poles. Euler's sine product then gives, for fixed x,
+
+  lim_{m->infinity} D_m(-x^2)/(m!)^2=sin(pi x)/(pi x),
+
+with the value 1 at x=0. This finite sine product is simultaneously the
+integer-valued binomial factor used at small primes. The fixed-x limit
+must not be substituted unchanged into the determinant's scaling regime
+x of order K; that is a different asymptotic regime.
+
+For real y, the gamma recurrence gives the exact identity
+
+  D_m(y^2)
+    = Gamma(m+1+iy) Gamma(m+1-iy)
+      /[Gamma(1+iy) Gamma(1-iy)].
+
+Equivalently D_m(-x^2)=(1-x)_m(1+x)_m in rising-factorial notation.
+The normalized q_i are Newton interpolation polynomials on the ordered
+nodes 0,-1^2,-2^2,...:
+
+  q_i(t)=(-1)^i 2/(2i)! product_{j=0}^{i-1}(t+j^2), i>=1.
+
+Their pullbacks are symmetric central products
+
+  q_i(-x^2)=2x^2 product_{j=1}^{i-1}(x^2-j^2)/(2i)!.
+
+Thus "central-factorial/Newton type" is a useful descriptive term. No
+orthogonality or identification with a special named family is needed.
+The displayed node products and binomial formula prove exactly the
+interpolation and integrality properties that are used.
+
+The real logarithmic field is the continuum profile of these same finite
+products. There is a particularly clean error estimate, which avoids
+any difficulty at t=0. For m>=1 define
+
+  E_m(t)=sum_{j=1}^m log(t+(j/K)^2)
+           -K integral_0^{m/K}log(t+u^2)du,   t>=0.
+
+The integrable logarithmic singularity at u=0 is allowed when t=0.
+Right Riemann sums give E_m(t)>=0, because log(t+u^2) is increasing in u.
+For t>0,
+
+  E_m'(t)=sum_{j=1}^m 1/(t+(j/K)^2)
+           -K integral_0^{m/K}1/(t+u^2)du <=0,
+
+because the new integrand is decreasing. Continuity as t decreases to 0
+therefore yields the uniform bound
+
+  0<=E_m(t)<=E_m(0)
+    =2log(m!)-2m log m+2m=O(log(m+1)).
+
+Consequently, for m=aK an integer with a>0 fixed,
+
+  log D_m(K^2t)
+    =2m log K+K integral_0^a log(t+u^2)du+O(log K),
+
+uniformly for every t>=0. This proof uses only product identities,
+monotonicity and the elementary factorial Stirling estimate. Applying
+large-argument Stirling separately to Gamma(1+-iK sqrt(t)) would require
+care near t=0, where those arguments need not become large; the direct
+sum proof has already handled that endpoint uniformly.
+
+For D_N^6/D_K, this produces the field contribution
+
+  integral_0^1 log(t+u^2)du -6 integral_0^alpha log(t+u^2)du.
+
+The exponential decay of the positive weight contributes 2pi sqrt(t),
+giving the V(t) in (6.1). On the arithmetic side, the same factorial and
+finite-product data are evaluated by v_p: Legendre's exact formula
+
+  v_p(m!)=sum_{r>=1}floor(m/p^r)
+
+produces the scalar floor profile N(x), while counting poles in residue
+classes produces Gamma(x). Thus real logarithmic integrals and arithmetic
+floor profiles are two different evaluations of the same underlying
+product data. They are not equal functions and do not have identical
+error analyses.
+
+Additional official sources checked:
+  Gamma recurrence, DLMF (5.5.1): https://dlmf.nist.gov/5.5
+  Euler sine product, DLMF (4.22.1): https://dlmf.nist.gov/4.22
+  Stirling expansion, DLMF (5.11.1): https://dlmf.nist.gov/5.11
+
+The uniform E_m estimate above is a direct derivation included here,
+not a theorem attributed to these references.

@@ -1,0 +1,51 @@
+{
+  "method": "Exact BigInt rational arithmetic; not a uniform asymptotic proof",
+  "results": [
+    {
+      "M": "40",
+      "K": "320000",
+      "p": "8009",
+      "admissible": true,
+      "discrete_T": "91",
+      "E": "3460",
+      "dimension_sum": "296000",
+      "h": "296000",
+      "minimum_L": "73",
+      "limiting_T": "91",
+      "breakpoints": [
+        "0",
+        "27/8009",
+        "360/8009",
+        "1/2"
+      ],
+      "Gamma": "7389902/8009",
+      "gamma_in": "7390051",
+      "p_Gamma": "7389902",
+      "difference": "149",
+      "Lai_printed_p_Gamma": "7661701"
+    },
+    {
+      "M": "40",
+      "K": "640000",
+      "p": "16001",
+      "admissible": true,
+      "discrete_T": "91",
+      "E": "7824",
+      "dimension_sum": "592000",
+      "h": "592000",
+      "minimum_L": "73",
+      "limiting_T": "91",
+      "breakpoints": [
+        "0",
+        "3/16001",
+        "40/16001",
+        "1/2"
+      ],
+      "Gamma": "14798878/16001",
+      "gamma_in": "14799027",
+      "p_Gamma": "14798878",
+      "difference": "149",
+      "Lai_printed_p_Gamma": "15342855"
+    }
+  ]
+}

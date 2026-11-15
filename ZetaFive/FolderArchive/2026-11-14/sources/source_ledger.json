@@ -1,0 +1,44 @@
+{
+  "access_date_local": "2026-11-14",
+  "timezone": "America/Los_Angeles",
+  "primary_source": {
+    "author": "Aabir Fauzan",
+    "title": "ζ(5) is irrational",
+    "date_on_manuscript": "2026-09-17",
+    "version": "v1",
+    "pages": 32,
+    "record_url": "https://zenodo.org/records/22826419",
+    "pdf_url": "https://zenodo.org/records/22826419/files/ZETA5_IS_IRRATIONAL.pdf?download=1",
+    "doi": "10.5281/zenodo.22826419",
+    "local_pdf": "sources/Fauzan_2026_zeta5.pdf",
+    "local_text_extraction": "sources/Fauzan_2026_zeta5.txt",
+    "sha256": "a42c05ccc46b9a7c36428913453c4617202c59109713ba20f464ab9ec640d0da",
+    "md5": "30dafe4adbb13a79f202e94a046c8c8d",
+    "use": "Source proof, parameters, equations, arithmetic bounds, comparison measure, and constants. The new seventh-order derivations are the work of this exploration.",
+    "audit_scope": "Opening construction followed equation by equation; Sections 3-7 audited for transfer; original Appendix A interval certificate used as input rather than independently re-proved; Appendix B equation 5.18 reproduced exactly; Appendix C not needed."
+  },
+  "supporting_primary_references": [
+    {"id":"D1","url":"https://dlmf.nist.gov/25.6.E2","use":"Euler formula for even zeta values"},
+    {"id":"D2","url":"https://dlmf.nist.gov/25.11.E29","use":"Hermite integral representation of Hurwitz zeta"},
+    {"id":"D3","url":"https://dlmf.nist.gov/24.4","equations":["24.4.1","24.4.3","24.4.18"],"use":"Bernoulli difference, reflection, and multiplication identities"},
+    {"id":"D4","url":"https://dlmf.nist.gov/24.10.i","use":"von Staudt-Clausen theorem and Bernoulli denominators"}
+  ],
+  "background_and_transcription_checks": [
+    {"url":"https://github.com/domino14/zeta5","use":"Identification of the paper and formalization structure; no build performed"},
+    {"url":"https://isa-afp.org/entries/Zeta_5_Irrational.html","use":"Identification of the proof construction; no Isabelle verification performed"},
+    {"url":"https://raw.githubusercontent.com/domino14/zeta5/main/Zeta5/Zeta5/Defs.lean","use":"Early equation-transcription cross-check before PDF download"},
+    {"url":"https://raw.githubusercontent.com/domino14/zeta5/main/Zeta5/Zeta5/Functionals.lean","use":"Functional transcription cross-check"},
+    {"url":"https://raw.githubusercontent.com/domino14/zeta5/main/Zeta5/Zeta5/Prop22.lean","use":"Positive-integral transcription cross-check"},
+    {"url":"https://raw.githubusercontent.com/domino14/zeta5/main/Zeta5/Zeta5/Section2.lean","use":"Opening construction cross-check"},
+    {"url":"https://raw.githubusercontent.com/domino14/zeta5/main/Zeta5/Zeta5/Degree29.lean","use":"Degree calculation cross-check"}
+  ],
+  "followup_sources": [
+    {"url":"https://wstein.org/books/modform/modform/level_one.html","use":"Classical level-one Eisenstein lattice sums, Fourier coefficients and odd-weight vanishing; consulted for weight/Eisenstein and zeta(9) parity followups","locators":["Proposition 2.7","Corollary 2.16"]},
+    {"url":"https://arminstraub.com/downloads/pub/ramanujanzeta.pdf","authors":"Bruce C. Berndt and Armin Straub","title":"Ramanujan's Formula for zeta(2n+1)","use":"Distinguishes genuine modulo-four behavior of the self-dual modular transformation from the positivity of the integration weight","locators":["Theorem 1.1, equation (1.2)","equation (2.13)","Section 5, equation (5.4)"]}
+  ],
+  "discovery_queries": [
+    "zeta(5) irrationality proof 2026 2025 preprint",
+    "zeta 5 irrationality argument zeta 7 proof"
+  ],
+  "source_policy": "Search-result snippets and unrelated secondary reports were used only for discovery, not as mathematical evidence. The preserved PDF hash matches the MD5 on the Zenodo record. No earlier chat was consulted."
+}

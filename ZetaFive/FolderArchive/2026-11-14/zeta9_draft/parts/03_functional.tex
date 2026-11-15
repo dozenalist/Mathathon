@@ -1,0 +1,217 @@
+\section{The local rational functional}
+\label{s3-functional}
+
+This section translates the rational-functional calculation in Fauzan,
+Section~3, pp.~5--9, including (3.1)--(3.12).  The parameter $X$ remains
+indeterminate: a valuation estimate must control every coefficient, including
+the constant coefficient.  Write $v_p^G(A)$ for the minimum valuation of the
+coefficients of $A\in\mathbb Q_p[X]$, with $v_p^G(0)=+\infty$.
+
+\paragraph{\textnormal{[Derived] Pullback, reflection, and difference.}}
+Let $L(x^d)=B_d$, with $B_1=-1/2$, and define
+\begin{equation}
+ \tau_9(P)=\frac{L(P^{(7)})}{8!},\qquad
+ \tau_{9,X}\!\left(\frac1{x-r}\right)=H_{d(r)}^{(9)}-X,
+ \qquad
+ d(r)=\begin{cases}r,&r\geq0,\\-r-1,&r<0.\end{cases}
+ \label{s3-tau}
+\end{equation}
+Extend by polynomial division and simple partial fractions.  The analogue
+of (3.1) is
+\begin{equation}
+ \mu_{9,X}(R)=\tau_{9,X}\bigl(x^9R(-x^2)\bigr).
+ \label{s3-pullback}
+\end{equation}
+Indeed, seven differentiations of $(-1)^e x^{2e+9}$ give
+$(-1)^e B_{2e+2}\prod_{r=3}^{9}(2e+r)/8!$.  At a pole, division gives
+\[
+ \frac{x^9}{j^2-x^2}
+ =-x^7-j^2x^5-j^4x^3-j^6x
+  -\frac{j^8}{2}\left(\frac1{x-j}+\frac1{x+j}\right).
+\]
+Only $-x^7$ contributes to the polynomial functional, with value $-1/8$.
+Using $H_j^{(9)}-H_{j-1}^{(9)}=j^{-9}$ therefore recovers
+$j^8(X-H_j^{(9)})-1/8+1/(2j)$, including the easily missed constant term.
+
+The Bernoulli identities $L(P(-1-x))=L(P(x))$ and
+$L(P(x+1)-P(x))=P'(0)$ yield the analogues of (3.2)--(3.3):
+\begin{align}
+ \tau_{9,X}(g(-1-x))&=-\tau_{9,X}(g(x)),
+ \label{s3-reflection}\\
+ \tau_{9,X}(g(x+1)-g(x))&=\frac{g^{(8)}(0)}{8!}.
+ \label{s3-difference}
+\end{align}
+The second identity requires $g$ to be regular at zero.  For integer poles,
+reflection uses $d(-r-1)=d(r)$; the difference identity uses the same
+harmonic increment, whose value for $g=1/(x-r)$ is $-r^{-9}$.
+
+\subsection{Completion at a prime}
+
+\paragraph{\textnormal{[Derived] Analytic and principal-part pieces.}}
+Fix $p\geq11$.  Put
+\[
+ \kappa_d=\frac{d(d-1)\cdots(d-6)}{8!}B_{d-7}\quad(d\geq7),
+ \qquad \kappa_0=\cdots=\kappa_6=0.
+\]
+Since $p\nmid8!$, von Staudt--Clausen gives $v_p(\kappa_d)\geq-1$.
+Also $\kappa_d\in\mathbb Z_p$ for $d\leq p+5$, because then the relevant
+Bernoulli index is at most $p-2$.  This is a sufficient degree cutoff;
+no optimal cutoff is needed here.  Consequently
+\[
+ \tau_9\!\left(\sum_{d\geq0}f_dz^d\right)=\sum_{d\geq0}f_d\kappa_d,
+ \qquad \|\tau_9\|\leq p,
+ \qquad \mathcal A=\mathbb Q_p\langle z\rangle .
+\]
+Thus the analytic part can lose one power of $p$.
+
+Let $T(z)=\prod_\nu(z-r_\nu)$, where the integer roots have pairwise
+unit differences and $d(r_\nu)<p$.  Polynomial division and partial
+fractions have norm at most one, since
+$c_\nu=U(r_\nu)/T'(r_\nu)$ and $T'(r_\nu)$ is a unit.  They extend to
+the direct sum
+\[
+ \mathcal B_T=\mathcal A\oplus\bigoplus_\nu
+       \mathbb Q_p\frac1{z-r_\nu},\qquad
+ \tau^{\mathrm{ext}}_{9,Y}\!\left(f+\sum_\nu\frac{c_\nu}{z-r_\nu}\right)
+ =\tau_9(f)+\sum_\nu c_\nu(H_{d(r_\nu)}^{(9)}-Y).
+\]
+For $Y\in\mathbb Z_p[X]$, the principal-part values are integral.
+Accordingly, the analogue of (3.4) is
+\begin{equation}
+ \tau^{\mathrm{ext}}_{9,Y}
+ \!\left(\sum_{j\geq0}\frac{p^jU_j(z)}{T(z)}\right)
+ \in\mathbb Z_p[X],\qquad
+ U_j\in\mathbb Z_p[z],\quad\deg U_0\leq p+5.
+ \label{s3-completion}
+\end{equation}
+The initial quotient has integral functional value by its degree; every
+later term carries the extra $p$ needed to absorb the analytic loss.
+Convergence follows in the maximum norm on $\mathcal B_T$.
+
+For a far pole, $v_p(s)<0$, expand $1/(z-s)=-\sum_{d\geq0}z^ds^{-d-1}$.
+Applying $\tau_9$ termwise gives the explicit analogue of (3.5):
+\begin{equation}
+ \tau_9^{\mathrm{an}}\!\left(\frac1{z-s}\right)
+ =-\frac18\sum_{k\geq0}\binom{k+7}{7}B_k\,s^{-k-8}.
+ \label{s3-far-pole}
+\end{equation}
+The series converges because $v_p(s^{-1})>0$ and the Bernoulli valuations
+are bounded below.  The decomposition into analytic functions and the
+specified principal parts is unique.  Hence expanding far factors first
+and taking global partial fractions first produce the same value.
+
+\subsection{Distribution}
+
+\paragraph{\textnormal{[Derived] The new scale is $p^{-8}$.}}
+Define the analogues of the constants in (3.6) by
+\begin{equation}
+ C_{p,9}=\sum_{a=1}^{p-1}\tau_9^{\mathrm{an}}
+                  \!\left(\frac1{z+a/p}\right),
+ \qquad Y=p^9X+C_{p,9}.
+ \label{s3-distribution-constant}
+\end{equation}
+Here $C_{p,9}\in p^9\mathbb Z_p$.  In fact, the $k=0$ part of
+\eqref{s3-far-pole} is $-p^8\sum_{a=1}^{p-1}a^{-8}/8$, and its residue
+vanishes because $p-1\nmid8$ for $p\geq11$.  The $k=1$ part already
+has valuation at least $9$; for $k\geq2$ the bound is $k+7\geq9$.
+The condition $p\geq11$ also makes $8!$ a unit.  Smaller primes are
+handled separately below.
+
+The analogue of (3.7), for rational $g$ with simple integer poles, is
+\begin{equation}
+ \tau_{9,X}(g)=p^{-8}\sum_{a=0}^{p-1}
+        \tau^{\mathrm{ext}}_{9,Y}\bigl(g(a+pz)\bigr).
+ \label{s3-distribution}
+\end{equation}
+Bernoulli multiplication contributes $p^{-1}$ and the seven derivatives
+contribute $p^{-7}$, proving the polynomial identity.  At $g=1/x$ the
+right side is $p^{-9}(-Y+C_{p,9})=-X$, which explains the parameter choice.
+The substitutions $a\mapsto p-1-a$, $z\mapsto-1-z$ preserve reflection.
+Translation telescopes to
+\[
+ p^{-8}\tau^{\mathrm{ext}}_{9,Y}
+       \bigl(g(p(z+1))-g(pz)\bigr)=\frac{g^{(8)}(0)}{8!}.
+\]
+The analytic identities extend by continuity.  Starting with the pole
+at zero, translation determines positive integer poles and reflection
+determines negative ones.  This establishes the whole rational identity,
+including its polynomial contribution.
+
+\subsection{Small primes and the integer-valued basis}
+
+\paragraph{\textnormal{[Derived] A uniform, deliberately coarse bound.}}
+For any prime $p$, an integer-valued polynomial $A$ of degree at most $d$
+has integral coefficients in the basis $\binom{x}{k}$, given by forward
+differences.  Vandermonde's identity gives the unchanged analogue of (3.8):
+\[
+ v_p(A(x)-A(y))\geq v_p(x-y)-\lfloor\log_p\max(1,d)\rfloor.
+\]
+Its $r$th derivative loses at most $r\lfloor\log_p\max(1,d)\rfloor$:
+the coefficient of $z^r$ in $\binom{z}{j}$ is a sum of products of $r$
+reciprocals of integers at most $j$.  Moreover
+$L(\binom{x}{k})=(-1)^k/(k+1)$, from
+$L((1+z)^x)=\log(1+z)/z$.  Seven derivatives followed by $L$ therefore
+give the analogue of (3.9):
+\begin{equation}
+ P(\mathbb Z_p)\subset p^{-A}\mathbb Z_p,\quad\deg P\leq d
+ \quad\Longrightarrow\quad
+ v_p(\tau_9(P))\geq-A-8\lfloor\log_p(d+1)\rfloor-v_p(8!).
+ \label{s3-small-polynomial}
+\end{equation}
+
+For integer-valued $A$, $\deg A\leq d$, set
+\[
+ g(x)=\frac{(K!)^2A(x)}{\prod_{-K\leq r\leq K,\ r\ne0}(x-r)},
+ \qquad L_0=\lfloor\log_p(2K)\rfloor,
+ \qquad M=\lfloor\log_p\max(2K,d+1)\rfloor.
+\]
+Its residue at $r$ is
+$c_r=(-1)^{K-r}(K!)^2rA(r)/((K+r)!(K-r)!)$, of valuation at least
+$-L_0$.  The root-counting and inverse-product estimates of source
+Lemma~3.3 are independent of the zeta index.  Outside the balls
+$r+p^{L_0+1}\mathbb Z_p$ they bound the rational terms by $-2L_0$;
+inside a ball, subtracting its principal part and using the preceding
+difference estimate bounds the polynomial quotient $P$ by $-2M$.
+Applying \eqref{s3-small-polynomial} gives a loss at most $10M+v_p(8!)$.
+The pole terms have the same bound, since
+$v_p(H_{d(r)}^{(9)})\geq-9\lfloor\log_pK\rfloor$.
+Thus the analogue of (3.10) is
+\begin{equation}
+ v_p^G(\tau_{9,X}(g))\geq-10M-v_p(8!).
+ \label{s3-small-rational}
+\end{equation}
+
+Keep exactly the source basis and normalization:
+\[
+ q_0=1,\qquad q_i(t)=\frac{(-1)^i2tD_{i-1}(t)}{(2i)!}\ (i\geq1),
+ \qquad f_i(t)=\left(\frac{D_N(t)}{(N!)^2}\right)^3q_i(t).
+\]
+Both identities
+\[
+ q_i(-x^2)=\binom{x+i}{2i}+\binom{x+i-1}{2i},\qquad
+ \frac{D_N(-x^2)}{(N!)^2}=\binom{N-x}{N}\binom{N+x}{N}
+\]
+show that $f_i(-x^2)$ is integer-valued on $\mathbb Z_p$.
+Squaring the determinant of this triangular basis change gives precisely
+the prescribed $S_K$.  Hence the analogue of (3.11) is
+\begin{equation}
+ F_{9,K}(X)=\det\left[
+ (K!)^2\mu_{9,X}\!\left(\frac{f_i(t)f_j(t)}{D_K(t)}\right)
+ \right]_{0\leq i,j<h}.
+ \label{s3-normalized-basis}
+\end{equation}
+The pullback numerator, up to the harmless sign $(-1)^K$, is
+$x^9f_i(-x^2)f_j(-x^2)$.  Its degree is at most
+$12N+4h+5=23K/5+5$.  For $K\in40\mathbb Z_{>0}$ this gives
+$\max(2K,d+1)\leq5K$.  Entrywise use of
+\eqref{s3-small-rational} and the determinant expansion finally yield
+the analogue of (3.12):
+\begin{equation}
+ \boxed{\displaystyle
+ v_p^G(F_{9,K})\geq
+ -10h\lfloor\log_p(5K)\rfloor-hv_p(8!)
+ \qquad\text{for every prime }p.}
+ \label{s3-small-final}
+\end{equation}
+This accounts for small-prime denominators.  Whether the sharper
+large-prime estimates leave enough real decay is a separate question.

@@ -1,0 +1,65 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=0.95in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,longtable,array,xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,
+ urlcolor=blue!45!black,pdftitle={A formal zeta(9) analogue of Fauzan's construction},
+ pdfauthor={Independent exploration prepared with Codex and GPT-6 Astra}}
+\numberwithin{equation}{section}
+\setlength{\emergencystretch}{2em}
+\setlength{\parskip}{0.25em}
+\allowdisplaybreaks[2]
+\newcommand{\pos}[1]{\left(#1\right)_+}
+\title{A formal $\zeta(9)$ analogue\\of Fauzan's construction}
+\author{A section-by-section working draft}
+\date{14 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We rewrite the algebraic construction in Aabir Fauzan's September 2026
+manuscript for $\zeta(9)$, retaining its determinant size, numerator
+$D_N^6$, and scalar normalization. The ninth-order functional has an
+explicit positive weight; its determinant has the same degree, and the
+leading real energy calculation is unchanged. The local arithmetic is
+more expensive. The normalization calculation in this draft increases
+the quadratic arithmetic bound by exactly $116581/57600$. Its sum with
+the reused real bound is positive, so these estimates supply no decay
+statement from which irrationality would follow. Sections 1--7 and
+Appendices A--C follow the source's organization, with local derivations,
+formal transplants, reused numerical inputs, and blocked conclusions
+identified separately. This is an exploratory analogue, not a proof of
+irrationality or a verification of the source paper.
+\end{abstract}
+
+\smallskip
+\noindent\textbf{How to read this draft.}
+\textbf{[Derived]} means that the displayed local calculation was worked
+out for this draft; it does not certify all surrounding arguments.
+\textbf{[Formal analogue]} identifies a transplanted step whose full
+justification has not been supplied.
+\textbf{[Conditional]} means that the conclusion uses an explicitly
+stated estimate or imported certificate.
+\textbf{[Blocked conclusion]} marks a conclusion for which the required
+sign or hypothesis is missing.
+
+\noindent References such as ``source (4.12)'' refer to Fauzan's equation
+numbers. Other equation references refer to this draft. Numerical
+certificates retained from the source are identified as inputs rather
+than as computations rerun here.
+
+\tableofcontents
+\clearpage
+\input{parts/01_introduction.tex}
+\input{parts/02_construction.tex}
+\input{parts/03_functional.tex}
+\input{parts/04_local_determinant.tex}
+\input{parts/05_normalization.tex}
+\input{parts/06_real_determinant.tex}
+\input{parts/07_completion.tex}
+\appendix
+\input{parts/A_measure.tex}
+\input{parts/B_arithmetic_integrals.tex}
+\input{parts/C_approximation.tex}
+\clearpage
+\input{parts/sources_and_scope.tex}
+\end{document}

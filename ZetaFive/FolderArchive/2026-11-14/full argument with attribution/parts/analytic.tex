@@ -1,0 +1,699 @@
+\section{The real estimate: repulsion balanced against decay}
+\label{analytic:section}
+
+The determinant is positive, but positivity alone says nothing about its
+size. Its integral representation contains two competing effects. The
+Vandermonde factor favours separated integration points; the weight
+penalizes points far from the origin. We now bound that competition
+uniformly, including configurations in which points nearly collide.
+The method, the comparison measure, and its numerical data are due to
+Fauzan \cite[Section 6 and Appendix A]{fauzan}.
+Firsching's formalization supplies an additional detailed implementation
+of these arguments \cite[\texttt{Apery/Energy*.lean},
+\texttt{Apery/RealBound.lean}]{firsching}.
+The proofs below spell out the real-variable argument and independently
+recheck the finite numerical certificate with rational enclosures.
+
+Throughout this section,
+\[
+ \alpha=\frac3{40},\qquad \lambda=\frac{37}{40},\qquad
+ N=\alpha K,\qquad h=\lambda K.
+\]
+Recall that \(F_K=S_K\Delta_K\). We shall prove
+\begin{equation}\label{analytic:goal}
+ 0<F_K(\zeta(5)),\qquad
+ \log F_K(\zeta(5))
+ \leq -\frac{2733991}{2000000}K^2+27K\log K+200K.
+\end{equation}
+All logarithms in this section are natural.
+
+\subsection{From a Gram determinant to a many-variable integral}
+
+Recall \(d\nu_K(y)=A_K(y^2)w(y)\,dy\), where
+\(A_K=D_N^6/D_K\). The already established moment identity gives
+\(G_K(\zeta(5))_{ij}=\int y^{2i+2j}\,d\nu_K(y)\).
+For any integrable products \(f_i g_j\), the relevant form of
+Andr\'eief's identity \cite{andreief} is
+\[
+ \int \det[f_i(y_j)]_{i,j=0}^{h-1}
+       \det[g_i(y_j)]_{i,j=0}^{h-1}
+       \prod_{j=0}^{h-1}d\nu_K(y_j)
+ =h!\det\left[\int f_i g_j\,d\nu_K\right]_{i,j=0}^{h-1}.
+\]
+Here is the proof in the situation we need. Expand both determinants as
+finite sums over permutations. Fubini separates each product into \(h\)
+one-variable integrals. Relabeling the integration variables by the
+permutation in the first determinant leaves \(h!\) identical copies of
+the determinant expansion on the right. All these interchanges are
+legitimate: \(A_K(y^2)\) has polynomial growth and \(w(y)\) has exponential
+decay, so every polynomial moment occurring in the finite expansion is
+absolutely integrable. Taking \(f_i=g_i=y^{2i}\) proves
+\begin{equation}\label{analytic:andreief}
+ \Delta_K(\zeta(5))=
+ \frac1{h!}\int_{(0,\infty)^h}
+ \prod_{i<j}(y_i^2-y_j^2)^2
+ \prod_{i=1}^h A_K(y_i^2)w(y_i)\,dy_1\cdots dy_h .
+\end{equation}
+This is the classical determinant identity used in
+\cite[(6.10)]{fauzan}; its application here is also formalized in
+\cite[\texttt{Apery/Andreief.lean},
+\texttt{Apery/DetIntegral.lean}]{firsching}.
+
+The natural scale is \(y_i=K\sqrt{t_i}\). The finite products explain
+the resulting field:
+\[
+ \log D_m(K^2t)=2m\log K+
+                   \sum_{j=1}^m\log\bigl(t+(j/K)^2\bigr).
+\]
+The sum differs from \(K\int_0^{m/K}\log(t+u^2)\,du\) by
+\(O(\log K)\), uniformly for \(t\geq0\) and \(1\leq m\leq K\);
+\eqref{analytic:riemann} proves the explicit bound, including \(t=0\).
+Applying this to \(D_N^6/D_K\) and including the exponential decay
+of \(w\) produces the external field
+\begin{equation}\label{analytic:field}
+ V(t)=2\pi\sqrt t+\int_0^1\log(t+u^2)\,du
+                   -6\int_0^\alpha\log(t+u^2)\,du,\qquad t\geq0.
+\end{equation}
+The term \(2\pi\sqrt t\) comes from the exponential decay of \(w\); the
+two logarithmic integrals approximate the products in \(D_N^6/D_K\).
+The principal exponent in the rescaled integrand is
+\[
+ 2\sum_{i<j}\log|t_i-t_j|-K\sum_i V(t_i).
+\]
+We first bound this expression. Afterwards we return to all the factors
+discarded in identifying its principal part.
+
+The same product data reappear arithmetically: prime valuations give
+divisibility counts, with Legendre's floors for factorials.
+Each estimate needs its own error bounds
+\cite[Sections 5--6]{fauzan}.
+
+\subsection{An explicit comparison measure}
+\label{analytic:measure}
+
+For a finite measure \(\rho\), write
+\[
+ U^\rho(t)=\int\log|t-u|\,d\rho(u),\qquad
+ I(\rho)=\iint\log|t-u|\,d\rho(t)\,d\rho(u).
+\]
+The sign convention matters: the logarithm appears with a positive sign.
+We need a measure of mass \(\lambda\) satisfying
+\begin{equation}\label{analytic:potential-target}
+ 2U^\rho(t)-V(t)\leq M_0,\qquad
+ M_0=-\frac{1329}{200}=-6.645,\qquad t\geq0.
+\end{equation}
+It is enough to exhibit one suitable measure. No assertion that it is
+the exact equilibrium measure is needed.
+
+To see why, let \(\eta,\rho\) be positive, compactly supported measures
+on \([0,\infty)\), both of mass \(\lambda\), with \(\rho\) satisfying
+\eqref{analytic:potential-target} and
+\(\lvert\log|t-u|\rvert\) integrable against
+\((\eta+\rho)\otimes(\eta+\rho)\).
+Their difference has mass zero, so Lemma~\ref{analytic:zero-mass}
+below gives \(I(\eta-\rho)\leq0\). Expanding yields
+\begin{align*}
+ I(\eta)-\int V\,d\eta
+ &=I(\eta-\rho)+\int(2U^\rho-V)\,d\eta-I(\rho)\\
+ &\leq\lambda M_0-I(\rho).
+\end{align*}
+Thus one explicit potential bounds every admissible configuration's
+energy \cite[Section 6.1]{fauzan}.
+
+For actual points, \(K^{-1}\sum_i\delta_{t_i}\) has the required mass
+\(h/K=\lambda\), but infinite negative self-energy. Spreading its
+atoms over small circles gives the measure \(\sigma\) used below.
+The three roles are distinct: \(\nu_K\) defines the determinant's
+moments, \(\sigma\) describes one smoothed configuration, and \(\rho\)
+certifies a uniform energy bound. Fauzan chooses the latter for its
+tractable potential \cite[after (6.4)]{fauzan}.
+
+Fauzan's measure is
+\[
+ \rho=\sum_{j=1}^{16}c_j\omega_{[a_j,b_j]},\qquad
+ d\omega_{[a,b]}(u)=\frac{\mathbf 1_{(a,b)}(u)\,du}
+                         {\pi\sqrt{(u-a)(b-u)}}.
+\]
+The following integer table specifies the data exactly: each entry in
+the last three columns is divided by \(10^{12}\).
+The data are reproduced from \cite[Table 1]{fauzan}; the transcription
+was checked against \cite[\texttt{Apery/Measure.lean},
+\texttt{scripts/lemma61.py}]{firsching}.
+
+\begin{center}
+\small
+\begin{tabular}{r r r r}
+\(j\)&\(10^{12}a_j\)&\(10^{12}b_j\)&\(10^{12}c_j\)\\ \hline
+1&3906748086&8992695531&10515596180\\
+2&2312248264&15340997855&29471737793\\
+3&1402286665&25730180724&42934365099\\
+4&881725356&41909578246&58204231966\\
+5&578197906&65851089563&69037621310\\
+6&396324613&99481037884&78873099189\\
+7&283911191&144325727458&84856120711\\
+8&212206188&201105762729&88396082127\\
+9&165097686&269345996903&88303382125\\
+10&133347132&347089554156&85472321255\\
+11&111522114&430806704415&78899184238\\
+12&96349355&515561896511&70353471918\\
+13&85815639&595448778546&58838976615\\
+14&78667711&664241383483&44421321106\\
+15&74129565&716160577112&30462865791\\
+16&71741310&746637295669&5959622577
+\end{tabular}
+\end{center}
+
+Integer comparisons and addition give
+\begin{equation}\label{analytic:data-facts}
+ \sum_jc_j=\lambda,\qquad
+ 0<a_{16}<\cdots<a_1<b_1<\cdots<b_{16}<2,\qquad
+ b_j-a_j>\frac1{225}.
+\end{equation}
+Thus the intervals are nested, with the first interval innermost.
+
+We shall use two elementary potential formulas. Normalized arclength
+\(\omega_{z_0,\varepsilon}\) on a circle satisfies
+\begin{equation}\label{analytic:circle}
+ \int\log|z-u|\,d\omega_{z_0,\varepsilon}(z)
+       =\log\max(|z_0-u|,\varepsilon).
+\end{equation}
+For unequal radii this follows by expanding
+\(\log|1-re^{i\theta}|\) for \(0\leq r<1\) and integrating its cosine
+series: every nonconstant term has mean zero. At equality of the radii,
+the remaining identity is the integrable formula
+\(\int_0^{2\pi}\log|1-e^{i\theta}|\,d\theta=0\).
+For example, the latter follows from
+\(\int_0^{\pi/2}\log\sin\theta\,d\theta
+=-\frac\pi2\log2\), obtained by the substitutions
+\(\theta\mapsto\pi/2-\theta\) and \(u=2\theta\).
+
+For a unit arcsine measure, with \(m=(a+b)/2\) and \(r=(b-a)/2\),
+\begin{equation}\label{analytic:arc-potential}
+ U^{\omega_{[a,b]}}(t)=
+ \begin{cases}
+ \log((b-a)/4),&a\leq t\leq b,\\[2mm]
+ \displaystyle\log\frac{|t-m|+\sqrt{(t-a)(t-b)}}2,
+     &t\notin[a,b].
+ \end{cases}
+\end{equation}
+One can obtain this directly from \eqref{analytic:circle}. The change
+\(u=m+r\cos\theta\) turns arcsine averaging into uniform circle
+averaging. With \(z=e^{i\theta}\),
+\[
+ t-m-\frac r2(z+z^{-1})
+   =-\frac r{2z}(z-q_+)(z-q_-),\qquad
+ q_\pm=\frac{t-m}{r}\pm\sqrt{\left(\frac{t-m}{r}\right)^2-1}.
+\]
+The two roots have product one. Inside the interval both have modulus
+one; outside it exactly one has modulus greater than one. Applying the
+circle formula to these two factors gives
+\eqref{analytic:arc-potential}, including its continuous endpoint values.
+This is the classical arcsine calculation used in
+\cite[(A.1)]{fauzan}.
+
+Let \(s_j=\sum_{i\leq j}c_i\), with \(s_0=0\).
+The potential of the \(j\)-th interval is constant on every earlier
+interval. Therefore both the self-energy and the mutual energies can
+be evaluated without quadrature:
+\begin{equation}\label{analytic:energy}
+ I(\rho)=\sum_{j=1}^{16}(s_j^2-s_{j-1}^2)
+                       \log\frac{b_j-a_j}{4}.
+\end{equation}
+Indeed, the coefficient is
+\(c_j^2+2c_j\sum_{i<j}c_i=s_j^2-s_{j-1}^2\).
+This is exactly the use of nesting in \cite[(A.2)]{fauzan}.
+
+\subsection{Verifying the potential bound everywhere}
+\label{analytic:certificate}
+
+The remaining task is a uniform inequality, not an estimate at a
+collection of sample points. We give the reduction to finitely many
+rational comparisons, together with the supplied certificate.
+The partition and reduction below are Fauzan's
+\cite[Appendix A.2--A.3, Table 2]{fauzan};
+the companion verification program is a separate implementation using
+outward-rounded rational intervals. The corresponding Lean certificates
+are in \cite[\texttt{Apery/TableCheck.lean},
+\texttt{Apery/Table/}]{firsching}.
+
+For \(t>0\), elementary integration in \eqref{analytic:field} yields
+\begin{align}
+ V(t)={}&\log(1+t)-6\alpha\log(t+\alpha^2)-2+12\alpha \notag\\
+       &+2\sqrt t\left(\pi+\arctan\frac1{\sqrt t}
+                               -6\arctan\frac{\alpha}{\sqrt t}\right).
+ \label{analytic:field-closed}
+\end{align}
+At \(t=0\), its continuous value is
+\(-12\alpha\log\alpha-2+12\alpha\).
+Writing \(\Phi(y)=V(y^2)\), differentiation gives
+\[
+ \Phi'(y)=2\left(\pi+\arctan(1/y)-6\arctan(\alpha/y)\right),
+ \qquad
+ \Phi''(y)=-\frac2{1+y^2}+\frac{12\alpha}{\alpha^2+y^2}.
+\]
+The second derivative is positive before \(y^2=711/880\) and negative
+afterwards. Since \(\Phi'(0+)=-3\pi\) and
+\(\Phi'(+\infty)=2\pi>0\), the derivative has exactly one zero.
+Consequently \(V\) decreases to a single minimum and then increases.
+
+Set
+\[
+ q_-=\frac{59205077}{10^{10}},\qquad
+ q_+=\frac{59205079}{10^{10}}.
+\]
+The rational series enclosures described below give
+\(\Phi'(\sqrt{q_-})<0<\Phi'(\sqrt{q_+})\).
+Thus the minimum is between these two rational numbers. On that
+short interval a lower bound for \(V\) is
+\begin{align}
+ V_*={}&\log(1+q_-)-6\alpha\log(q_++\alpha^2)-2+12\alpha\notag\\
+ &+2\sqrt{q_+}\left(\pi+\arctan\frac1{\sqrt{q_+}}
+                         -6\arctan\frac{\alpha}{\sqrt{q_-}}\right).
+ \label{analytic:vstar}
+\end{align}
+The parenthesis is negative, as the same certificate verifies.
+Each monotone factor in \eqref{analytic:field-closed} has therefore
+been replaced in the direction needed for a lower bound. In particular,
+using the larger square root in front of the negative parenthesis is
+essential.
+
+The arcsine formula shows that \(U^\rho\) is nonincreasing on
+\([0,a_1]\), constant on \([a_1,b_1]\), and nondecreasing afterwards.
+Its maximum on any interval is therefore attained at an endpoint.
+For \(0\leq l<r\leq2\), put
+\[
+ B(l,r)=2\max(U^\rho(l),U^\rho(r))-
+ \begin{cases}
+ V(r),&r\leq q_-,\\
+ V(l),&l\geq q_+,\\
+ V_*,&\text{otherwise}.
+ \end{cases}
+\]
+The two monotonicity statements prove
+\[
+ 2U^\rho(t)-V(t)\leq B(l,r)\qquad(l\leq t\leq r).
+\]
+The finite calculation concerns these upper bounds.
+
+To specify the partition, define
+\[
+\begin{gathered}
+ A_0=0,\qquad A_j=a_{17-j}\quad(1\leq j\leq16),\\
+ A_{17}=q_-,\qquad A_{18}=q_+,\qquad A_{35}=2,\\
+ A_{18+j}=b_j\quad(1\leq j\leq16).
+\end{gathered}
+\]
+Each triple \((j,d,k)\) in the accompanying data file denotes
+\begin{equation}\label{analytic:partition}
+ \left[A_j+(A_{j+1}-A_j)\frac{k}{2^d},
+       A_j+(A_{j+1}-A_j)\frac{k+1}{2^d}\right].
+\end{equation}
+The complete partition data appear in
+\texttt{checks/\allowbreak analytic\_data.json}.
+This is the 91-row compressed list from Fauzan's Table 2. Expanding its integer
+ranges gives 684 intervals. The verifier sorts their rational endpoints
+and checks that the first is zero, the last is two, and every right
+endpoint equals the next left endpoint exactly. Thus no part of
+\([0,2]\) is omitted.
+
+For clarity, the elementary enclosures used by the verifier are as
+follows. If \(1\leq x\leq2\) and \(z=(x-1)/(x+1)\), then
+\begin{equation}\label{analytic:log-series}
+ 0\leq\log x-2\sum_{j=0}^{m-1}\frac{z^{2j+1}}{2j+1}
+ \leq\frac{2z^{2m+1}}{(2m+1)(1-z^2)}.
+\end{equation}
+This follows by integrating the geometric series for \(2/(1-z^2)\);
+bounding the denominators in its positive tail gives the displayed
+remainder. A general positive argument is reduced by
+\(\log(2^e x)=e\log2+\log x\).
+For \(0\leq x\leq1/2\), the alternating series gives
+\begin{equation}\label{analytic:atan-series}
+ \sum_{j=0}^{2m-1}\frac{(-1)^j x^{2j+1}}{2j+1}
+ \leq \arctan x
+ \leq \sum_{j=0}^{2m-1}\frac{(-1)^j x^{2j+1}}{2j+1}
+                    +\frac{x^{4m+1}}{4m+1}.
+\end{equation}
+Larger arguments are reduced using
+\[
+ \arctan x=\frac\pi2-\arctan(1/x)\ (x>1),\qquad
+ \arctan x=2\arctan\frac{x}{1+\sqrt{1+x^2}}\ (0\leq x\leq1).
+\]
+Finally \(\pi=16\arctan(1/5)-4\arctan(1/239)\); the tangent addition
+formula and the ranges of the angles verify this identity.
+Square-root bounds are obtained by integer square roots: if
+\(a\leq x\leq b\), integers bracketing
+\(\sqrt{a\,2^{224}}\) and \(\sqrt{b\,2^{224}}\) give bounds on
+the grid \(2^{-112}\).
+
+The supplied \texttt{analytic\_certificate.py} uses 48 terms in
+\eqref{analytic:log-series} and 64 terms in the alternating sum in
+\eqref{analytic:atan-series}. Every addition, multiplication, division,
+and square root is rounded outwards to that dyadic grid. The remainder
+bounds are added before any comparison is accepted. Thus rounding
+cannot turn an unproved inequality into a proved one.
+The complete list of interval bounds is written to
+\texttt{analytic\_intervals.csv}; the exact rational endpoints and file
+hashes are recorded in \texttt{analytic\_certificate.json}.
+The checks give, for every interval,
+\begin{equation}\label{analytic:finite-result}
+ B(l,r)<-\frac{6645002}{10^6}<-\,\frac{1329}{200}.
+\end{equation}
+The largest upper bound occurs at \((j,d,k)=(30,6,26)\) and is less than
+\(-6.645002689215588323\). This last decimal is only a readable report
+of the rational comparison; the comparisons themselves use integers.
+Notice the distinction between the strict certificate target
+\(-6.645002\) and the constant \(M_0=-6.645\) used in the proof.
+
+It remains to cover \(t\geq2\). Since \(\rho\) is supported in \((0,2)\),
+\(U^\rho(t)\leq\lambda\log t\). Also
+\[
+ \int_0^1\log(t+u^2)\,du\geq\log t,\qquad
+ \int_0^\alpha\log(t+u^2)\,du
+       \leq\alpha\log t+\frac{\alpha^3}{t};
+\]
+the latter follows from \(\log(1+v)\leq v\) and \(u^2\leq\alpha^2\).
+Consequently
+\begin{equation}\label{analytic:tail}
+ 2U^\rho(t)-V(t)
+ \leq \frac{13}{10}\log t+\frac{6\alpha^3}{t}-2\pi\sqrt t.
+\end{equation}
+The right-hand side is decreasing for \(t\geq2\), and its value at two
+is smaller than \(M_0\). For example, the inequalities
+\(\log2<7/10,\ \pi>3,\ \sqrt2>7/5\) already suffice.
+Together with \eqref{analytic:finite-result}, this proves
+\eqref{analytic:potential-target} on the entire half-line.
+
+\subsection{Why the comparison controls every configuration}
+
+We include the energy argument because it explains both the comparison
+method and the treatment of collisions.
+The proof follows \cite[Lemma 6.2 and Section 6.1]{fauzan};
+the Gaussian-kernel and regularization steps are separately formalized
+in \cite[\texttt{Apery/Gaussian.lean},
+\texttt{Apery/ZeroMass.lean}, \texttt{Apery/EnergyLimit.lean},
+\texttt{Apery/EnergyFinal.lean}]{firsching}.
+
+\begin{lemma}[Zero-mass logarithmic energy]\label{analytic:zero-mass}
+Let \(\eta\) be a finite real signed measure with compact support in
+\(\mathbb C\), total mass zero, and
+\(\iint|\log|z-u||\,d|\eta|(z)\,d|\eta|(u)<\infty\).
+Then \(I(\eta)\leq0\).
+\end{lemma}
+\begin{proof}
+For \(s>0\), completing the square in a planar Gaussian integral gives
+\[
+ e^{-s|z-u|^2}=\frac{4s}{\pi}
+ \int_{\mathbb C}e^{-2s|z-v|^2}e^{-2s|u-v|^2}\,dA(v).
+\]
+Integrating against \(d\eta(z)d\eta(u)\) yields
+\[
+ J(s):=\iint e^{-s|z-u|^2}\,d\eta(z)d\eta(u)
+ =\frac{4s}{\pi}\int_{\mathbb C}
+       \left(\int e^{-2s|z-v|^2}\,d\eta(z)\right)^2dA(v)\geq0.
+\]
+Fubini is valid because the Gaussian convolution is bounded and the
+total variation is finite.
+For \(0<a<b<\infty\), put
+\[
+ L_{a,b}(r)=\frac12\int_a^b\frac{e^{-s}-e^{-sr^2}}s\,ds.
+\]
+Writing \(e^{-s}-e^{-sr^2}=\int_1^{r^2}s e^{-sv}\,dv\)
+shows that \(L_{a,b}(r)\to\log r\) as \(a\downarrow0,b\uparrow\infty\).
+The integrand has one sign for each fixed \(r\), so
+\(|L_{a,b}(r)|\leq|\log r|\).
+The mass-zero condition removes the constant \(e^{-s}\) term:
+\[
+ \iint L_{a,b}(|z-u|)\,d\eta(z)d\eta(u)
+       =-\frac12\int_a^b\frac{J(s)}s\,ds\leq0.
+\]
+The assumed absolute logarithmic integrability makes the diagonal a
+null set for \(|\eta|\otimes|\eta|\). Dominated convergence therefore
+gives the result.
+\end{proof}
+
+For real points \(t_1,\ldots,t_h\geq0\), replace each point mass by
+normalized arclength \(\omega_i\) on the circle of radius
+\(\varepsilon\) centred at \(t_i\), and set
+\(\sigma=K^{-1}\sum_i\omega_i\).
+Both \(\sigma\) and \(\rho\) have mass \(\lambda\).
+The potential bound is on the real axis; using complex circles requires
+the circle-average error estimate below.
+We verify explicitly that the lemma applies to \(\sigma-\rho\).
+The circle potential \eqref{analytic:circle} is finite and continuous.
+For an arcsine measure on an interval of length \(L\), the elementary
+inequality
+\[
+ \frac1{\sqrt{x(L-x)}}\leq
+ \frac1{\sqrt L}\left(\frac1{\sqrt x}+\frac1{\sqrt{L-x}}\right)
+ \qquad(0<x<L)
+\]
+shows that any interval of length \(d\) has mass at most
+\(4\sqrt d/(\pi\sqrt L)\). In particular, the mass within distance \(r\)
+of any point of \(\mathbb C\) is at most
+\(4\sqrt{2r}/(\pi\sqrt L)\).
+Integrating this estimate against \(dr/r\) at zero proves uniform
+integrability of the logarithmic singularity. It also proves continuity
+of the arcsine potential, by first truncating the logarithm and then
+letting the truncation radius tend to zero.
+Thus the potential of the positive measure \(\sigma+\rho\) is bounded
+on its compact support. The positive part of the logarithmic kernel
+is bounded there as well. Its negative part consequently has finite
+double integral. Since
+\(|\sigma-\rho|\leq\sigma+\rho\), the hypothesis of
+Lemma~\ref{analytic:zero-mass} holds.
+
+The same mass estimate controls the effect of smoothing.
+By \eqref{analytic:circle}, Tonelli, and
+\(\log(\varepsilon/d)=\int_d^\varepsilon dr/r\),
+\begin{align*}
+ \int U^\rho\,d\omega_i-U^\rho(t_i)
+ &=\int_{|u-t_i|<\varepsilon}
+                  \log\frac{\varepsilon}{|u-t_i|}\,d\rho(u)\\
+ &\leq \sum_j\frac{8c_j\sqrt{2\varepsilon}}
+                         {\pi\sqrt{b_j-a_j}}
+ \leq60\sqrt\varepsilon.
+\end{align*}
+The final inequality follows from \eqref{analytic:data-facts},
+\(\sum c_j=37/40\), and \(\pi>3,\sqrt2<3/2\).
+The circle identity gives
+\[
+ I(\omega_i)=\log\varepsilon,\qquad
+ \iint\log|z-u|\,d\omega_i(z)d\omega_j(u)
+       \geq\log|t_i-t_j|.
+\]
+For the second inequality, average first over one circle, discard the
+maximum with \(\varepsilon\), and then average over the other.
+
+Expanding \(I(\sigma-\rho)\leq0\), multiplying by \(K^2\), and using
+these estimates now gives
+\begin{align}
+ 2\sum_{i<j}\log|t_i-t_j|-K\sum_iV(t_i)
+ \leq{}&(\lambda M_0-I(\rho))K^2\notag\\
+       &+120Kh\sqrt\varepsilon-h\log\varepsilon.
+ \label{analytic:configuration-raw}
+\end{align}
+To see the factors of \(K\), the cross term is
+\(2K\sum_i\int U^\rho\,d\omega_i\).
+After smoothing and subtracting the field term, it is bounded by
+\[
+ K\sum_i(2U^\rho(t_i)-V(t_i))+120Kh\sqrt\varepsilon.
+\]
+The potential inequality bounds its first part by \(KhM_0\).
+Coincident points are harmless: the left side is then \(-\infty\).
+
+A constant bound on an unbounded integration domain would not suffice.
+We retain a decaying factor by applying the same calculation to the
+field \(V(t)-\sqrt t/K\).
+For \(t\leq2\), \eqref{analytic:potential-target} immediately gives
+\[
+ 2U^\rho(t)-V(t)+\frac{\sqrt t}{K}
+       \leq M_0+\frac{\sqrt2}{K}.
+\]
+For \(t\geq2\) and \(K\geq2\), use \eqref{analytic:tail} with
+\(2\pi\) replaced by \(2\pi-\frac12\).
+Its derivative is negative on this range, and its value at two is
+smaller than \(M_0\): the same elementary bounds give
+\[
+ \frac{13}{10}\log2+3\alpha^3
+       -(2\pi-\tfrac12)\sqrt2
+ <0.91+3(3/40)^3-5.5(1.4)<-6.645.
+\]
+Thus the displayed bound holds for all \(t\geq0\).
+Choose \(\varepsilon=K^{-2}\) in
+\eqref{analytic:configuration-raw}. The result is the required
+integrable version:
+\begin{align}
+ 2\sum_{i<j}\log|t_i-t_j|-K\sum_iV(t_i)+\sum_i\sqrt{t_i}
+ \leq{}&(\lambda M_0-I(\rho))K^2\notag\\
+       &+(120+\sqrt2)h+2h\log K.
+ \label{analytic:configuration}
+\end{align}
+
+\subsection{Restoring all scaling factors}
+
+We now justify the reduction to \(V\), including an explicit error.
+The power-series identity
+\[
+ \sum_{\ell\geq1}\ell^4q^\ell
+       =\frac{q(1+11q+11q^2+q^3)}{(1-q)^5}
+ \qquad(0<q<1)
+\]
+follows by applying \(q\,d/dq\) four times to \((1-q)^{-1}\).
+Since \(1-e^{-u}\geq u/(1+u)\), substitution \(u=2\pi y\) in the
+definition of \(w\) gives
+\[
+ w(y)\leq\frac1\pi(1+2\pi y)^5e^{-2\pi y}
+       \leq8192(1+y)^5e^{-2\pi y}.
+\]
+For the last inequality use \(1+2\pi y\leq2\pi(1+y)\) and \(\pi<4\).
+
+For \(1\leq m\leq K\), the right-endpoint Riemann sum satisfies
+\begin{equation}\label{analytic:riemann}
+ 0\leq \sum_{j=1}^m\log(t+(j/K)^2)
+               -K\int_0^{m/K}\log(t+u^2)\,du
+       \leq2\log K+2,\qquad t\geq0.
+\end{equation}
+The lower bound is monotonicity in \(u\).
+For \(t>0\), differentiating the difference gives the error of a
+right-endpoint sum for the decreasing function \(1/(t+u^2)\);
+that derivative is nonpositive. The largest difference is therefore
+its limit at \(t=0\), namely
+\[
+ 2\log(m!)-2m\log m+2m\leq2\log m+2\leq2\log K+2.
+\]
+Here \(\log(m!)\leq m\log m-m+\log m+1\), obtained by comparison
+with \(\int_1^m\log u\,du\).
+The continuous limit at zero follows either by integrating
+\(\log(t+u^2)\) explicitly or by its integrable logarithmic limit.
+
+Apply \eqref{analytic:riemann} to the numerator and denominator
+products. Because the denominator logarithm is subtracted, only the
+numerator's upper error is needed:
+\[
+ A_K(K^2t)\leq K^{12N-2K+12}e^{12}
+  \exp\left(K\left[6\int_0^\alpha\log(t+u^2)\,du
+                         -\int_0^1\log(t+u^2)\,du\right]\right).
+\]
+Under \(y_i=K\sqrt{t_i}\), each differential contributes
+\(K/(2\sqrt{t_i})\), each weight contributes at most
+\(8192K^5(1+\sqrt{t_i})^5e^{-2\pi K\sqrt{t_i}}\), and the
+Vandermonde contributes \(K^{2h(h-1)}\).
+Multiplying these factors in \eqref{analytic:andreief} gives
+\begin{align}
+ \Delta_K(\zeta(5))\leq{}&
+ \frac{K^{2h(h+6N-K)+16h}(4096e^{12})^h}{h!}
+ \int_{(0,\infty)^h}\prod_{i<j}(t_i-t_j)^2
+ \prod_i e^{-KV(t_i)}t_i^{-1/2}(1+\sqrt{t_i})^5\,dt_i.
+ \label{analytic:scaled-integral}
+\end{align}
+This keeps every power of \(K\) visible; the derivation is
+\cite[(6.11)--(6.13)]{fauzan}.
+
+By \eqref{analytic:configuration}, the remaining multiple integral is
+at most
+\[
+ \exp\bigl((\lambda M_0-I(\rho))K^2
+                      +(120+\sqrt2)h+2h\log K\bigr)\,652^h,
+\]
+because
+\[
+ \int_0^\infty t^{-1/2}(1+\sqrt t)^5e^{-\sqrt t}\,dt
+ =2\int_0^\infty(1+x)^5e^{-x}\,dx
+ =2\sum_{j=0}^5\binom5j j!=652.
+\]
+Dropping the favourable term \(-\log h!\), and using
+\(\log4096<8.4,\ \log652<7,\ \sqrt2<1.5\), yields
+\begin{equation}\label{analytic:delta-bound}
+ \log\Delta_K(\zeta(5))
+ \leq2h(h+6N-K)\log K+(\lambda M_0-I(\rho))K^2
+                         +18h\log K+160h.
+\end{equation}
+
+\subsection{The factorial normalization and the final constant}
+
+The normalization is
+\[
+ S_K=\frac{(K!)^{2h}4^{h-1}}
+              {(N!)^{12h}\prod_{i=1}^{h-1}((2i)!)^2}.
+\]
+We give enough detail to check the cancellation of the large terms.
+Integral comparisons imply, for every integer \(m\geq1\),
+\[
+ m\log m-m\leq\log(m!)
+       \leq m\log m-m+\log m+1.
+\]
+Also
+\begin{equation}\label{analytic:factorial-sum}
+ \sum_{i=1}^{h-1}\log((2i)!)
+       \geq h^2\log(2h)-\frac32h^2-2h\log(2h).
+\end{equation}
+For a direct proof put \(f(x)=2x\log(2x)-2x\), with \(f(0)=0\).
+The factorial lower bound gives \(\log((2i)!)\geq f(i)\).
+The function \(f\) increases for \(x\geq1/2\), so
+\(\int_{i-1}^{i}f(x)\,dx\leq f(i)\) for \(i\geq2\).
+For \(i=1\), direct integration gives the same inequality because
+\(\log2\geq1/2\). Hence
+\[
+ \sum_{i=1}^{h-1}f(i)
+ \geq\int_0^h f(x)\,dx-f(h)
+ =h^2\log(2h)-\frac32h^2-2h\log(2h)+2h,
+\]
+which proves \eqref{analytic:factorial-sum}.
+
+Substitute the three bounds into \(\log S_K\) and use \(N=\alpha K\),
+\(h=\lambda K\). With
+\begin{equation}\label{analytic:cstar}
+ C_*=-2\lambda+12\alpha\lambda(1-\log\alpha)
+                    +3\lambda^2-2\lambda^2\log(2\lambda),
+\end{equation}
+we obtain
+\begin{align}
+ \log S_K\leq{}&
+ (2\lambda-12\alpha\lambda-2\lambda^2)K^2\log K+C_*K^2
+                       +6h\log K+7h. \label{analytic:s-bound}
+\end{align}
+For the final \(7h\), the remaining constant is at most
+\([2+4\log(2\lambda)+\log4]h\); use
+\(\log(2\lambda)\leq2\lambda-1=0.85\) and \(\log4<1.4\).
+This slightly relaxed linear error avoids any need for sharp Stirling
+constants. The leading terms and normalization calculation are those of
+\cite[(6.3), (6.15)]{fauzan}, also verified in
+\cite[\texttt{Apery/RealBound.lean}, \texttt{log\_S\_le}]{firsching}.
+
+The two coefficients of \(K^2\log K\) cancel exactly:
+\[
+ 2\lambda(\lambda+6\alpha-1)
+       +(2\lambda-12\alpha\lambda-2\lambda^2)=0.
+\]
+Thus \eqref{analytic:delta-bound} and \eqref{analytic:s-bound} imply
+\begin{equation}\label{analytic:combined}
+ \log F_K(\zeta(5))
+ \leq(\lambda M_0-I(\rho)+C_*)K^2+24h\log K+167h.
+\end{equation}
+There is now just one numerical comparison left. Using
+\eqref{analytic:energy}, \eqref{analytic:cstar}, and the logarithm
+enclosures \eqref{analytic:log-series}, the same exact verifier gives
+\[
+ \begin{split}
+ -2.126593445147050404
+       &< I(\rho)<-2.126593445147050403,\\
+  2.653035990340488661
+       &< C_*<2.653035990340488662.
+ \end{split}
+\]
+Using \(\lambda M_0=-49173/8000\), a direct interval computation of
+the combination gives
+\begin{equation}\label{analytic:constant}
+ \lambda M_0-I(\rho)+C_*
+ <-1.366995564512460935
+ <-\frac{2733991}{2000000}=-1.3669955.
+\end{equation}
+These are outward rational bounds, not rounded guesses.
+Fauzan gives this value and margin in Appendix A.4 \cite{fauzan}.
+The independent interval check accompanies this draft.
+The corresponding formal proof is the theorem
+\texttt{energy\_const} in Firsching's \texttt{EnergyConst.lean} \cite{firsching}.
+Finally \(h\leq K\), \(K\geq40\), and \(\log K\geq0\) turn
+\eqref{analytic:combined} into \eqref{analytic:goal}.
+The real estimate is therefore established with the same normalization
+that appears in the arithmetic argument.

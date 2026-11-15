@@ -1,0 +1,58 @@
+[
+  {
+    "draft": "lai_parallel_constructions",
+    "source": "Lai_2026_zeta5_rewrite",
+    "matching_runs": [
+      {
+        "words": 9,
+        "text": "j x x j x j x j x"
+      }
+    ]
+  },
+  {
+    "draft": "lai_parallel_constructions",
+    "source": "Fauzan_2026_zeta5",
+    "matching_runs": [
+      {
+        "words": 12,
+        "text": "e e e e x t j j x h j j"
+      },
+      {
+        "words": 11,
+        "text": "x j x x j x j x j x j"
+      },
+      {
+        "words": 8,
+        "text": "r y w y dy w y y"
+      }
+    ]
+  },
+  {
+    "draft": "zeta5_irrationality_overview",
+    "source": "Lai_2026_zeta5_rewrite",
+    "matching_runs": [
+      {
+        "words": 9,
+        "text": "that a b with a z and b z"
+      }
+    ]
+  },
+  {
+    "draft": "zeta5_irrationality_overview",
+    "source": "Fauzan_2026_zeta5",
+    "matching_runs": [
+      {
+        "words": 17,
+        "text": "x te eb e e e e e x t j j x h j j j"
+      },
+      {
+        "words": 11,
+        "text": "r r y w y dy w y y e y"
+      },
+      {
+        "words": 11,
+        "text": "k h h i j y i y j h i"
+      }
+    ]
+  }
+]

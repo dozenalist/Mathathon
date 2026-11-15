@@ -1,0 +1,127 @@
+\begin{thebibliography}{99}
+\addcontentsline{toc}{section}{References}
+
+\bibitem{persiflage}
+Frank Calegari (Persiflage),
+\emph{\(\zeta(5)\) is irrational}, 24 September 2026.
+\href{https://galoisrepresentations.org/2026/09/24/zeta5-is-irrational/}{Blog post}.
+The guiding exposition for this draft. The displayed post date is earlier
+than Lai's write-up; no dependence of the post on Lai is asserted.
+Calegari identifies Persiflage as his blog on his
+\href{https://math.uchicago.edu/~fcale/research.html}{research page}.
+
+\bibitem{fauzan}
+Aabir Fauzan,
+\emph{\(\zeta(5)\) is irrational}, manuscript dated 17 September 2026,
+32 pages, Zenodo record 22826419.
+\href{https://zenodo.org/records/22826419}{DOI: 10.5281/zenodo.22826419}.
+The determinant, factorial normalization, local arithmetic strategy,
+comparison measure, and analytic certificate originate here.
+
+\bibitem{firsching}
+Moritz Firsching and contributors,
+\emph{Zeta5: Lean formalization of the irrationality of \(\zeta(5)\)}.
+\href{https://github.com/mo271/Zeta5/tree/7fe736760f4b96bfdb4334b68e3b3124ecbe10b0}{Repository at commit
+\texttt{7fe7367}}, 27 September 2026. Apache License 2.0.
+The substantive initial formalization is commit
+\href{https://github.com/mo271/Zeta5/commit/2c80b320d06b4395605edbd413649d19094507af}{\texttt{2c80b32}}.
+The revised local estimates, cutoff 400, full rank loss, and global
+normalization used in this draft are translated from the
+\texttt{Apery/Arith}, \texttt{Apery/Norm.lean}, and
+\texttt{Apery/Growth} files, with exact locations in the source ledger.
+The formal development depends on Lean, Mathlib and
+\href{https://github.com/mo271/PrimeNumberTheoremAnd/tree/04d81b2a68ea3548b9990813fdc463c78511f412}{PrimeNumberTheoremAnd};
+their contributors retain credit for those libraries and formalized
+background theorems. Paul-Lez is recorded as a coauthor of the Comparator
+CI addition. No local rebuild of the complete Lean development is claimed.
+
+\bibitem{lai}
+Chun Wing Lai,
+\emph{On Fauzan's Proof that \(\zeta(5)\) is Irrational},
+v1, 29 September 2026.
+\href{https://ai.vixra.org/pdf/2609.0080v1.pdf}{ai.vixra:2609.0080v1}.
+Used as a later exposition of the construction and as a cross-check;
+its printed arithmetic conclusion is not an input to this draft.
+
+\bibitem{prevost}
+Marc Pr\'evost,
+\emph{Remainder Pad\'e approximants for the Hurwitz zeta function},
+Results in Mathematics \textbf{74} (2019), article 51.
+\href{https://arxiv.org/pdf/1709.05389v1}{arXiv:1709.05389v1},
+15 September 2017. Theorems 1--2, equations (3.1)--(3.4), and Section 4.1
+give the positive representation and moments used here.
+
+\bibitem{prevost1996}
+Marc Pr\'evost,
+\emph{A new proof of the irrationality of \(\zeta(2)\) and \(\zeta(3)\)
+using Pad\'e approximants},
+Journal of Computational and Applied Mathematics \textbf{67} (1996),
+219--235.
+\href{https://doi.org/10.1016/0377-0427(95)00019-4}{DOI: 10.1016/0377-0427(95)00019-4}.
+Historical context; the present proof does not invoke an unproved
+result from this paper.
+
+\bibitem{prevost-rivoal}
+Marc Pr\'evost and Tanguy Rivoal,
+\emph{Diagonal convergence of the remainder Pad\'e approximants for the
+Hurwitz zeta function},
+Journal of Number Theory \textbf{222} (2021), 346--361.
+\href{https://doi.org/10.1016/j.jnt.2020.10.019}{DOI: 10.1016/j.jnt.2020.10.019}.
+Background on approximation; no quantitative bound from this paper is used.
+
+\bibitem{zudilin}
+Wadim Zudilin,
+\emph{A determinantal approach to irrationality},
+Constructive Approximation \textbf{45} (2017), 301--310.
+\href{https://arxiv.org/pdf/1507.05697v2}{arXiv:1507.05697v2},
+especially Proposition 2 and Section 2.
+
+\bibitem{uvarov}
+V.\,B. Uvarov,
+\emph{The connection between systems of polynomials that are orthogonal
+with respect to different distribution functions},
+USSR Computational Mathematics and Mathematical Physics
+\textbf{9}, no.\ 6 (1969), 25--36.
+\href{https://doi.org/10.1016/0041-5553(69)90124-4}{DOI: 10.1016/0041-5553(69)90124-4}.
+Historical attribution through Krattenthaler's discussion \cite{krattenthaler};
+the original article was not used as a proof source.
+
+\bibitem{krattenthaler}
+Christian Krattenthaler,
+\emph{A determinant identity for moments of orthogonal polynomials that
+implies Uvarov's formula for the orthogonal polynomials of rationally
+related densities},
+\href{https://arxiv.org/pdf/2103.03969v1}{arXiv:2103.03969v1}, 2021.
+Introduction and Theorem 1 provide the general setting for rational
+modification of a measure. The theorem itself is not required below.
+
+\bibitem{brown}
+Francis Brown,
+\emph{Mellin transforms, transfinite diameter and rational approximations
+of integrals},
+\href{https://arxiv.org/html/2604.20741v1}{arXiv:2604.20741v1}, 2026.
+Sections 3.1--3.2 and 7.4--7.5 give related pairing and normalization
+frameworks. This is contextual credit, not a claim that Brown states
+the specific estimates proved here.
+
+\bibitem{andreief}
+C. Andr\'eief,
+\emph{Note sur une relation entre les int\'egrales d\'efinies des produits
+des fonctions}, M\'emoires de la Soci\'et\'e des Sciences physiques et
+naturelles de Bordeaux, third series, \textbf{2} (1886), 1--14.
+For the identity and publication history we consulted Peter J. Forrester,
+\emph{Meet Andr\'eief, Bordeaux 1886, and Andreev, Kharkov 1882--83},
+\href{https://arxiv.org/pdf/1806.10411v1}{arXiv:1806.10411v1}, 2018.
+The identity is proved in the text.
+
+\bibitem{dlmf}
+NIST Digital Library of Mathematical Functions,
+\href{https://dlmf.nist.gov/4.36.E3}{4.36.3} (partial fractions of \(\coth\)),
+\href{https://dlmf.nist.gov/25.6.E2}{25.6.2} (Euler's even-zeta formula),
+\href{https://dlmf.nist.gov/25.11.E29}{25.11.29} (Hermite's formula),
+\href{https://dlmf.nist.gov/24.2}{24.2} (Bernoulli generating functions),
+\href{https://dlmf.nist.gov/24.4}{24.4} (Bernoulli identities), and
+\href{https://dlmf.nist.gov/24.10.i}{24.10(i)}
+(von Staudt--Clausen). Consulted 14 November 2026.
+
+\end{thebibliography}

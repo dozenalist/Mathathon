@@ -1,0 +1,65 @@
+ANALYTIC PROOF: SOURCE AND VERIFICATION MAP
+
+Primary mathematical source:
+Aabir Fauzan, "zeta(5) is irrational", manuscript 17 September 2026,
+https://zenodo.org/records/22826419
+Local sources/Fauzan_2026_zeta5.pdf and .txt.
+Section6: comparison external field, zero-mass energy, smoothing,
+configuration bound, scaling and normalization.
+AppendixA Tables1-2: all sixteen rational arcsine components and complete
+684-interval partition. EquationsA.1-A.10: potentials, energy and
+elementary series certificate.
+
+Formal source used as cross-check:
+Moritz Firsching, Zeta5 Lean project,
+https://github.com/mo271/Zeta5
+Fixed revision 7fe736760f4b96bfdb4334b68e3b3124ecbe10b0.
+Apache-2.0. The repository's license is preserved in the source checkout.
+
+Exact files/declarations consulted:
+Apery/Measure.lean: table1, a/b/c data, M0, Cstar, Irho.
+Apery/Andreief.lean and Apery/DetIntegral.lean: determinant integral.
+Apery/Energy.lean: w_le', integral_le_sum_log, sum_log_le_integral.
+Apery/RealBound.lean: log_Δ_le, log_S_le, real_bound'.
+Apery/EnergyConst.lean: log_ge_artanh, log_ge_of_pow_two, energy_const.
+Apery/ArcsinePotential.lean: arcsine potential and continuity.
+Apery/Gaussian.lean, ZeroMass.lean, EnergyLimit.lean,
+EnergyFinal.lean: decomposition described in the repository README.
+Apery/TableCheck.lean and Apery/Table/: finite potential certificate.
+scripts/lemma61.py: literal transcription of Table1 and compressed Table2.
+scripts/gen_table2.py: comparison of certificate design; not executed.
+
+Relation to the new prose:
+The construction, constants, measure, partition, and proof strategy are
+Fauzan's. The added text expands elementary proofs and checks the
+arithmetic operations, integrability and scaling. No claim of a new
+analytic method is made. Firsching's formalization is explicitly credited
+for the detailed implementation and safe final bound with coefficient27.
+The prose uses an elementary upper error7h for log S, rather than source6h;
+this harmless relaxation is derived directly.
+
+Verification supplied with this draft:
+analytic_data.json is transcribed from the data in scripts/lemma61.py,
+with attribution and SHA256 of the source file. The numerical sampling
+in that source script is NOT used.
+analytic_certificate.py is a new standard-library implementation of exact
+outward interval arithmetic on a dyadic grid2^-112; it encloses logarithms
+and arctangents using proved series tails, and square roots using isqrt.
+It checks nesting, masses, minimum-location signs, exact partition
+coverage, all684 interval bounds, the tail at2, and the energy constant.
+analytic_certificate.json contains its exact rational result and hashes.
+analytic_intervals.csv lists every interval and its exact bound.
+No Lean build was run by the analytic author; references to formalization
+are source comparisons, not a claim of a new independent kernel build.
+
+Important distinction:
+M0=-1329/200=-6.645.
+The finite interval target is -6645002/1000000=-6.645002, strictly smaller.
+The energy constant always uses M0, not the stricter interval target.
+
+Classical mathematical facts proved in the prose:
+Andréief determinant identity; circle mean-log identity; arcsine
+potential via factorization; logarithm/arctangent series bounds;
+Gaussian proof of zero-mass energy; local arcsine mass estimate;
+factorial and Riemann-sum comparisons. Routine Fubini/Tonelli/dominated
+convergence are stated with the required integrability checks.

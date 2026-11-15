@@ -1,0 +1,551 @@
+ONE BILINEAR PENCIL BEHIND THE DETERMINANT, ENERGY, AND PERTURBATION CONSTRUCTIONS
+Research note, 14 November 2026
+
+Scope and status
+
+This note reorganizes the constructions in the local manuscript
+sources/Fauzan_2026_zeta5.txt, principally Sections 2 and 6 and Appendix C.
+It is a structural derivation from that manuscript, not an independent audit
+of its numerical certificates or its irrationality claim. Equations below
+labelled "derived" are consequences of its definitions and Proposition 2.2.
+The optional orthogonal-polynomial and Stieltjes viewpoints are not needed
+for the paper's proof. They explain which apparently separate constructions
+really are representations of a common object, and which are additional
+estimates or certificates.
+
+1. THE MASTER OBJECT: A RATIONALLY DEFINED BILINEAR PENCIL
+
+Use the manuscript's K=40n, N=3n, h=K-N=37n, xi=zeta(5). Write
+
+  D_m(t) = product_{j=1}^m (t+j^2),
+  R_K(t) = D_N(t)^6 / D_K(t) = W_K(t)/T_K(t),
+  W_K(t) = D_N(t)^5,       T_K(t) = D_K(t)/D_N(t).
+
+The notation T_K here means the manuscript's D_tail, not a new construction.
+On E_K=Q[t]_{<h}, define
+
+  L_{K,X}(p) = mu_X(R_K p),
+  B_{K,X}(p,q) = L_{K,X}(pq).
+
+Thus B_{K,X} is one symmetric bilinear form with values in Q[X], affine in X.
+Its matrix in the monomial basis 1,t,...,t^{h-1} is exactly G_K(X), and
+Delta_K(X)=det G_K(X). This is the minimal unifying object: not merely the
+functional mu_X, and not merely the value Delta_K(xi), but the twisted
+bilinear pencil on a specified h-dimensional polynomial space.
+
+Why the twist matters: mu_X itself is defined on rational functions with
+the allowed simple poles. Twisting by R_K turns the problem into a polynomial
+moment problem, while retaining the complete rational functional, including
+its polynomial-division contribution. Subsequent bases, residue formulas,
+positive measures, and perturbation matrices all act on this same B_{K,X}.
+
+Reference: manuscript (2.4), p. 4; cancellation in Section 2.3, p. 4.
+
+1A. THE DEFORMATION IS A RESIDUE AT INFINITY
+
+The functional-analysis investigation by the other agent supplies an even
+shorter exact description of the X direction. On the manuscript's rational
+domain,
+
+  mu_X(R)=mu_xi(R)+(X-xi)[t^(-3)]R(t)
+         =mu_xi(R)-(X-xi)Res_infinity(t^2 R(t) dt).
+
+Proof: polynomial terms have no negative Laurent coefficients. A simple
+pole r_j/(t+j^2) contributes j^4 r_j to [t^(-3)]R, exactly its X coefficient
+under mu_X. Thus the deformation is a single coefficient-extraction
+functional, not a separately adjustable value at each pole. Likewise
+tau_X(g)=tau_xi(g)-(X-xi)[x^(-1)]g(x), consistent with the x^5 pullback.
+
+After the R_K twist, the directional bilinear form is therefore
+
+  M_K(p,q)=[t^(-1)] H_K(t)p(t)q(t)/T_K(t),
+  H_K(t)=t^2 W_K(t).
+
+Let A_K=Q[t]/(T_K), and let epsilon(f) be the coefficient of t^{h-1} in
+the degree<h remainder of f modulo T_K. Polynomial division proves
+
+  [t^(-1)] f(t)/T_K(t)=epsilon(f),
+  M_K(p,q)=epsilon(H_K p q).
+
+Thus M_K is a twisted residue (Frobenius) pairing on the finite algebra A_K.
+This description is equivalent to the signed atomic formula below, because
+partial fractions give epsilon(f)=sum_j f(a_j)/T_K'(a_j).
+
+The determinant sign and resultant can be checked without any convention
+ambiguity. In the monomial basis, the untwisted pairing epsilon(pq) has zero
+entries when i+j<h-1 and antidiagonal entries 1. Its determinant is
+(-1)^{h(h-1)/2}. Multiplication by H_K on A_K has determinant
+Res(T_K,H_K)=product_j H_K(a_j), since T_K is monic with distinct roots.
+Consequently
+
+  det M_K=(-1)^{h(h-1)/2} Res(T_K,H_K)
+         =(-1)^{h(h-1)/2} product_{j=N+1}^K j^4 D_N(-j^2)^5.
+
+This is exactly (2.9). Since gcd(H_K,T_K)=1, multiplication by H_K is
+invertible; the pairing is nondegenerate. No analysis is needed for this
+degree assertion. The residue pairing is especially useful for connecting
+the arithmetic bases to the real pencil.
+
+Only the directional form M_K descends intrinsically to A_K. The full
+positive form B_{K,xi} does not annihilate multiples of T_K. It is viewed
+on A_K through its unique representatives of degree<h, or more simply on
+E_K. Conflating these two assertions would be an error.
+
+2. AN EXACT AFFINE SIGNED-MEASURE REALIZATION
+
+Define the positive base measure on (0,infinity)
+
+  dnu_0(t) = w(sqrt(t))/(2 sqrt(t)) dt,
+  dnu_K(t) = R_K(t) dnu_0(t).
+
+All polynomial moments exist, and nu_K has positive density. Proposition 2.2
+and t=y^2 give L_{K,xi}(p)=integral p(t) dnu_K(t).
+
+Set a_j=-j^2 and
+
+  c_j = j^4 W_K(a_j)/T_K'(a_j),       N<j<=K,
+  sigma_K^res = sum_{j=N+1}^K c_j delta_{a_j}.
+
+The superscript "res" distinguishes this signed atomic measure from the
+regularized configuration measure called sigma in Section 6.
+
+MASTER IDENTITY (derived): for every real X and every polynomial p,
+
+  L_{K,X}(p)
+    = integral p(t) dnu_K(t)
+        + (X-xi) sum_{j=N+1}^K c_j p(a_j).
+
+Equivalently, L_{K,X} is integration against
+
+  nu_{K,X} = nu_K + (X-xi) sigma_K^res.
+
+Proof: divide W_K p by T_K. Its simple-pole coefficient at a_j is
+W_K(a_j)p(a_j)/T_K'(a_j). The derivative with respect to X of
+mu_X(1/(t+j^2)) is j^4, whereas polynomial values do not depend on X.
+Therefore d L_{K,X}(p)/dX=sum c_j p(a_j). Evaluate the affine identity at
+X=xi using Proposition 2.2.
+
+This identity is stronger than a loose analogy: the whole real pencil is a
+positive continuous measure plus a specified signed mass perturbation on the
+negative axis. The continuous part, atomic part, and rational description
+are exact presentations of the same functional.
+
+Important limitations:
+* nu_{K,X} is generally signed for X!=xi. Its positivity on the entire
+  polynomial algebra is not asserted. Positivity on E_K is the finite
+  dimensional question controlled in Appendix C.
+* This does not give a positive measure for the original mu_X at arbitrary X.
+* This analytic identity uses xi. Arithmetic estimates must still use the
+  rational formula for mu_X; it is not legitimate to introduce xi into Q_p
+  or to estimate only the atomic term.
+* sigma_K^res represents the X coefficient, not the whole rational
+  functional. Replacing G_K(X) by its residue coefficient matrix would drop
+  the polynomial quotient and most of the constant term.
+
+3. THREE REPRESENTATIONS OF THE SAME DETERMINANT
+
+(a) Gram volume. With v(t)=(1,t,...,t^{h-1})^T,
+
+  G_K(xi) = integral v(t)v(t)^T dnu_K(t).
+
+For any nonzero q in E_K, integral q(t)^2 dnu_K(t)>0. Thus G_K(xi) is
+positive definite and Delta_K(xi)>0. This is ordinary positive definiteness
+of the master form, not a separate nonvanishing mechanism.
+
+(b) Orthogonal-polynomial norms. Fix K and Gram-Schmidt the monomials for
+nu_K. Let p_{r,K}(t) be the resulting monic orthogonal polynomials, and
+d_{r,K}=integral p_{r,K}(t)^2 dnu_K(t)>0. The basis transformation is unit
+triangular, so
+
+  Delta_K(xi) = product_{r=0}^{h-1} d_{r,K}.             [derived]
+
+This is the same Gram determinant diagonalized by a monic basis. The paper
+does not need to construct these polynomials. Their measure depends on K,
+so this is a varying family of orthogonality problems.
+
+(c) Vandermonde/log-gas integral. Expansion of the two determinants gives
+
+  Delta_K(xi)
+    = (1/h!) integral_{(0,infinity)^h}
+        product_{i<j}(t_i-t_j)^2 product_i dnu_K(t_i).
+
+This is exactly the manuscript's (6.10), after t_i=y_i^2. It is the
+continuous Cauchy-Binet/Andreief formula. Positivity, the product of norms,
+and the multiple integral are interchangeable expressions of one Gram
+volume; they are not three independently constructed objects.
+
+In fact the determinant integral is valid for EVERY real X if dnu_K is
+replaced by the finite signed measure dnu_{K,X} from Section 2. Absolute
+integrability follows from the existence of all moments of its total
+variation. At X=xi only the continuous positive part remains. The coefficient
+of (X-xi)^h takes all h measures from the atomic part, and the Vandermonde
+annihilates terms with repeated nodes. Because there are exactly h nodes,
+the surviving h! permutations give (det V)^2 product_j c_j. Thus positivity
+at xi and the degree-h coefficient are literally the continuous and purely
+atomic cases of ONE determinant integral identity. For other coefficients,
+mixed continuous/atomic integrals occur; there is no blanket positivity
+claim because c_j have alternating signs.
+
+The standard orthogonal-polynomial definitions and moment determinant
+formulas can be checked in NIST DLMF Section 18.2(i),(ix):
+https://dlmf.nist.gov/18.2#i
+https://dlmf.nist.gov/18.2#ix
+Andreief's identity and its discrete Cauchy-Binet counterpart are stated and
+derived in P. J. Forrester, "Meet Andreief, Bordeaux 1886, and Andreev,
+Kharkov 1882-83", equations (1.7), (2.2), Section 2.3:
+https://arxiv.org/html/1806.10411
+
+4. THE RESIDUE MATRIX IS THE SAME GRAM CONSTRUCTION WITH DISCRETE MASS
+
+Write M_K=[X]G_K(X) and let V have columns v(a_j). The master identity gives
+
+  M_K = V C V^T,       C=diag(c_{N+1},...,c_K).
+
+There are exactly h distinct nodes, so V is square and invertible. Thus
+det M_K=(det V)^2 product c_j is nonzero. This is the degree calculation
+in (2.9): degree Delta_K=h. It is the discrete, signed version of the same
+Gram/Vandermonde identity used continuously for Delta_K(xi).
+
+This makes the parallel particularly clean:
+
+  continuous positive mass nu_K  --> G_K(xi) --> nonvanishing at xi;
+  discrete signed mass sigma_K^res --> M_K --> nonzero leading coefficient.
+
+Neither Gram matrix equals the other; they are the constant-at-xi and
+directional parts of one pencil.
+
+A useful exact basis is the Lagrange basis
+
+  ell_j(t)=T_K(t)/((t-a_j)T_K'(a_j)),  ell_j(a_i)=delta_{ij}.
+
+In this basis the residue form is diagonal, with diagonal c_j. This basis
+usually has troublesome p-adic denominators. When nodes collide modulo p,
+the p-adic bases/divided differences in the manuscript can be understood
+as integral replacements for naive global Lagrange interpolation. This is
+a conceptual relation, not a claim that those local bases equal ell_j.
+
+5. THE PERTURBATION MATRIX IS THE RESIDUE FORM IN AN ORTHONORMAL FRAME
+
+Let G=G_K(xi)>0 and define the manuscript's
+
+  B_K=G^{-1/2} M_K G^{-1/2}.
+
+Then, exactly,
+
+  G_K(xi+delta)=G^{1/2}(I+delta B_K)G^{1/2},
+  Delta_K(xi+delta)/Delta_K(xi)=det(I+delta B_K).
+
+Thus B_K is not a new functional: it is the residue form measured relative
+to the positive real form. More invariantly it represents the unique
+operator A on E_K satisfying
+
+  B_{K,xi}(Ap,q) = sum_j c_j p(a_j)q(a_j).
+
+The self-adjoint operator A and B_K have the same eigenvalues. Its norm is
+the generalized Rayleigh quotient
+
+  ||B_K|| = sup_{q!=0}
+    |sum_j c_j q(a_j)^2| / integral q(t)^2 dnu_K(t).
+
+Appendix C is precisely an estimate for this quotient: its numerator is
+bounded by residues and polynomial evaluations outside the positive
+support; its denominator is bounded from below by an interval L^2 norm.
+The Legendre expansion is an efficient comparison norm, rather than
+another determinant construction.
+
+If beta_1,...,beta_h are the eigenvalues of B_K, then
+
+  Delta_K(X)=Delta_K(xi) product_r(1+(X-xi)beta_r).
+
+The same identity produces both the nearby-rational nonvanishing argument
+in C.2 and the coefficient height bound in C.3. Multiplying by positive
+normalization factors gives the corresponding identities for Q_K.
+
+Derived consequences worth recording explicitly:
+* All beta_r are real and nonzero, because B_K is real symmetric and M_K
+  is invertible. Therefore all h roots of Delta_K are real, counting
+  multiplicity: x_r=xi-1/beta_r. No simplicity is asserted.
+* dist(xi,{roots of Delta_K})=1/||B_K||. Consequently the matrix-norm bound
+  is exactly a lower bound on the closest root distance.
+* sign(c_j)=(-1)^{j-1}. Indeed W_K(a_j) has sign (-1)^N and T_K'(a_j)
+  has sign (-1)^{j-N-1}. By congruence, M_K and B_K have the same inertia
+  as diag(c_j). Positive c_j count roots below xi, negative c_j roots above
+  xi. This is a structural consequence, not an estimate of their distances.
+
+Manuscript references: coefficient matrix in Section 2.3; Appendix C.1,
+equations (C.2)-(C.5), p. 29; factorization in C.2-C.3, pp. 30-31.
+
+6. A REPRODUCING-KERNEL FORMULATION OF APPENDIX C
+
+Define the degree<h reproducing kernel for nu_K by
+
+  K_K(s,t)=v(s)^T G^{-1}v(t)
+          =sum_{r=0}^{h-1} p_{r,K}(s)p_{r,K}(t)/d_{r,K}.
+
+Cauchy-Schwarz applied to the orthonormal expansion proves
+
+  |q(a)|^2 <= K_K(a,a) integral q(t)^2 dnu_K(t).
+
+The exact best constant in this inequality is K_K(a,a); equality is attained
+by the kernel polynomial K_K(a,t), up to a scalar. Hence
+
+  ||B_K|| <= sum_j |c_j| K_K(a_j,a_j).                 [derived]
+
+Writing the finite node kernel matrix as H_{ij}=K_K(a_i,a_j), the determinant
+identity det(I+AB)=det(I+BA) gives
+
+  Delta_K(xi+delta)/Delta_K(xi)=det(I+delta C H).        [derived]
+
+H is positive definite because evaluation at the h distinct nodes is
+invertible. C H need not be symmetric, but it is similar to the real
+symmetric matrix H^{1/2} C H^{1/2}; its eigenvalues are the beta_r above.
+This is the finite signed-mass perturbation (often discussed under Uvarov
+modifications) behind the appendix. It shows a possible route to improving
+the norm estimate if sufficiently good kernel estimates become available.
+No improvement is established merely by introducing this notation.
+
+For the standard kernel and reproducing property see NIST DLMF
+equations 18.2.12_5 and 18.2.13:
+https://dlmf.nist.gov/18.2#v
+The inequalities and determinant identity specialized here follow directly
+from the displayed finite-dimensional linear algebra.
+
+7. RATIONAL MODIFICATION AND STIELTJES/PADÉ INTERPRETATION
+
+The positive measure nu_K is a rational modification of the fixed measure
+nu_0:
+
+  dnu_K = [D_N^6/D_K] dnu_0 = [W_K/T_K] dnu_0.
+
+Multiplication by a polynomial is customarily called a Christoffel
+modification. Division by factors outside the support is in the
+Geronimus/Uvarov rational-modification family; conventions for these names
+vary, especially about whether masses at the denominator zeros are included.
+In this example every denominator zero lies on the negative axis, outside
+the positive support. Our explicit formula is unambiguous and preferable
+to relying on terminology alone. The X deformation then adds the signed
+masses c_j delta_{a_j} with the single common parameter X-xi.
+
+Primary reference on rational modifications and mass terms:
+C. Alvarez-Fernandez, G. Ariznabarreta, J. C. Garcia-Ardila, M. Manas,
+F. Marcellan, "Transformation theory and Christoffel formulas for matrix
+biorthogonal polynomials on the real line", Sections 2-3:
+https://arxiv.org/html/1605.04617
+An alternative scalar determinant treatment is C. Krattenthaler,
+"A determinant identity for moments of orthogonal polynomials that implies
+Uvarov's formula for the orthogonal polynomials of rationally related
+densities": https://arxiv.org/abs/2103.03969
+
+Define the actual Stieltjes/Markov transform of nu_0 by
+
+  s_0(z)=integral dnu_0(t)/(z-t),   z outside [0,infinity).
+
+Then the manuscript's pole data at xi are its sampled negative values:
+
+  -s_0(-j^2)=mu_xi(1/(t+j^2)).
+
+The polynomial data are the moments of nu_0. Thus mu_X packages moments and
+specified resolvent values into rational arithmetic data; at xi they come
+from one positive measure. Do not claim that mu_X itself is the value of
+this same Stieltjes transform for every X, or define mu_X at arbitrary poles
+without an extension: the original domain only allows the specified simple
+poles.
+
+For fixed K, s_K(z)=integral dnu_K(t)/(z-t) gives an optional Padé viewpoint.
+If p_{h,K} is monic orthogonal of degree h, set
+
+  q_{h-1,K}(z)=integral [p_{h,K}(z)-p_{h,K}(t)]/(z-t) dnu_K(t).
+
+Then
+
+  p_{h,K}(z)s_K(z)-q_{h-1,K}(z)
+    =integral p_{h,K}(t)/(z-t) dnu_K(t).
+
+Orthogonality cancels the first h coefficients of the asymptotic moment
+expansion on the right, explaining the Padé connection. This is a direct
+derivation, not a proposed replacement proof of irrationality. Because the
+support is unbounded and moments grow fast, a moment expansion at infinity
+should be treated as formal/asymptotic, not asserted convergent in a full
+neighborhood of infinity.
+
+Two important distinctions:
+* p_{h,K}(t), orthogonal in the spatial variable t, is NOT Delta_K(X), the
+  determinant polynomial in a deformation parameter. Real-rootedness of
+  Delta_K follows from the symmetric pencil, not from an assertion that
+  Delta_K is an orthogonal polynomial in X.
+* The real orthogonal basis typically contains xi-dependent coefficients.
+  It is excellent for positivity and norms, but is not automatically useful
+  for integral or p-adic estimates.
+
+8. LOGARITHMIC ENERGY IS THE LARGE-K EXPONENT OF THE SAME GRAM VOLUME
+
+In the Vandermonde integral set the original spatial coordinate to K^2 t,
+equivalently y=K sqrt(t). The logarithms of the weight factors produce
+
+  V(t)=2 pi sqrt(t)
+       + integral_0^1 log(t+u^2) du
+       - 6 integral_0^alpha log(t+u^2) du,   alpha=N/K.
+
+Thus the large exponent is
+
+  2 sum_{i<j} log|t_i-t_j| - K sum_i V(t_i).
+
+The first term is the logarithm of the squared Vandermonde. The second is
+the large-K negative logarithm of the rationally modified weight. This is
+the mechanism by which a Gram determinant becomes a logarithmic particle
+energy, not a separate model imposed by analogy. The manuscript bounds the
+finite-product/integral replacement errors in (6.12), retains the power
+factors and Jacobian in (6.13), and integrates an explicit residual tail.
+Discarding these terms without control would not be a valid proof.
+
+If eta is a positive measure of mass lambda=h/K and finite logarithmic
+energy, define (with the manuscript's log|t-u| sign convention)
+
+  E_V(eta)=I(eta)-integral V d eta.
+
+The regularized empirical measure sigma=(1/K)sum_i omega_i has this same
+mass lambda. The omega_i spread the particles around tiny complex circles;
+this is needed because point masses have infinite negative self-energy.
+The paper explicitly controls the introduced diagonal and smoothing terms.
+
+9. RHO IS A DUAL CERTIFICATE, NOT THE ORIGINAL MOMENT MEASURE
+
+Let rho have mass lambda and finite energy, and suppose
+
+  2 U_rho(t)-V(t)<=M on [0,infinity).
+
+For any admissible eta of the same mass, the zero-mass negativity statement
+I(eta-rho)<=0 gives
+
+  I(eta)<=2 integral U_rho d eta-I(rho),
+  E_V(eta)<=lambda M-I(rho).                          [derived]
+
+Thus
+
+  D(rho)=lambda sup_t(2U_rho(t)-V(t))-I(rho)
+
+is an explicit upper certificate for the maximal energy. The actual
+equilibrium measure would give a sharp certificate under its usual
+variational equalities. The manuscript needs only a sufficiently good
+certificate, and chooses a rational sum of sixteen arcsine measures because
+their potentials and mutual energies are elementary to bound exactly.
+
+This explains the roles precisely:
+* nu_K is the genuine K-dependent moment measure defining G_K(xi).
+* sigma is a smoothed representation of an arbitrary integration-point
+  configuration after scaling, used to remove infinite diagonal energies.
+* rho is a fixed explicitly chosen comparison measure with the same mass
+  as sigma, used to certify an upper bound for every such configuration.
+
+The equality of masses is essential for I(sigma-rho)<=0. Equality of the
+measures is neither claimed nor needed. Rho need not be the exact equilibrium
+measure, a pushforward of nu_K, or a limit that has been proved for particles
+or orthogonal-polynomial zeros.
+
+Manuscript references: Lemmas 6.1-6.2, (6.6)-(6.9), pp. 17-19; Appendix A.
+General potential-theory background, with an opposite kernel sign to be
+translated carefully, is E. B. Saff, "Logarithmic Potential Theory with
+Applications to Approximation Theory", Section 6:
+https://www.math.vanderbilt.edu/saffeb/texts/230.pdf
+The dual inequality above is derived here directly from the manuscript's
+own zero-mass lemma, so no external equilibrium existence theorem is needed.
+
+10. BASES AND NORMALIZATIONS: WHAT IS ONE OBJECT AND WHAT IS A NEW CHOICE
+
+For a basis change with coefficient matrix C, every matrix of the same
+bilinear form obeys
+
+  G_new(X)=C^T G_old(X) C,
+  det G_new(X)=(det C)^2 det G_old(X).
+
+This one identity covers monic Gram-Schmidt bases, interpolation bases,
+locally integral bases, and real orthonormalization. Their purposes differ:
+an integral unimodular basis preserves p-adic determinant valuation; an
+orthonormal basis reveals a real relative operator; a monic triangular
+basis preserves the determinant exactly. One cannot assume all these
+properties for one convenient basis.
+
+In basis-free language det B is a tensor in (det E_K^*)^{tensor 2}, with
+polynomial dependence on X. This "determinant line" vocabulary records the
+squared basis-change factor. It is optional; the elementary identity above
+is sufficient for an accessible presentation.
+
+The scalars S_K and m_{K,M} are NOT generally basis changes. They multiply
+the determinant itself:
+
+  F_K=S_K Delta_K,
+  Q_{K,M}=m_{K,M} F_K.
+
+S_K is an explicit factorial renormalization whose main analytic effect is
+to cancel the K^2 log K terms in log Delta_K. The arithmetic normalization
+m_{K,M}=product_p p^{-L_p(K,M)} compensates the proved coefficientwise
+valuation bounds. Positive L_p permit division, so m is not just a common
+denominator. These are different steps, even though both are scalar
+renormalizations.
+
+The primitive polynomial P_K=Delta_K/cont_Q(Delta_K) is the canonical
+positive rational scaling with primitive integral coefficients. The explicit
+Q_{K,M} is a positive integer multiple of P_K; it is computable from bounds
+without finding the exact content. They share degree and roots, but neither
+the primitive scale nor an arbitrary basis automatically supplies the
+required quantitative arithmetic cost.
+
+The final comparison is between two costs for the same rational polynomial:
+
+  log m_{K,M} <= A_M K^2+o(K^2),
+  log F_K(xi) <= U K^2+o(K^2).
+
+If A_M+U<0, an integral polynomial remains small at xi. This resembles a
+local/global norm comparison, but it is not an application of the number-
+field product formula to Delta_K(xi): xi is the number whose irrationality
+is under investigation. The final integer argument is indispensable.
+
+11. A PROPOSED SIMPLER PRESENTATION
+
+A short conceptual prelude could replace many disconnected introductions:
+
+1. Define the single rationally specified form B_{K,X}(p,q).
+2. Prove the master affine identity: positive continuous Gram form at xi
+   plus the residue-at-infinity pairing. Present its discrete evaluation
+   formula and finite quotient-algebra description as equivalent forms.
+3. Derive two nonvanishing facts from continuous/discrete Gram identities:
+   Delta_K(xi)>0 and det([X]G_K)!=0.
+4. State a generic determinant lemma containing the three representations
+   (Gram determinant, product of monic norms, Vandermonde integral). Use the
+   integral version for the real estimate; do not require the optional OPs.
+5. Explain that arithmetic chooses p-integral frames for this same form,
+   while analysis scales its positive moment measure. Prove the separate
+   local valuation and real energy bounds with all existing error control.
+6. Isolate the equal-mass energy certificate lemma once, then supply rho
+   and its certified constants in an appendix.
+7. Normalize and compare the two quadratic costs.
+8. Put all of Appendix C under a generic positive Gram-pencil perturbation
+   lemma. Root exclusion and coefficient height become two consequences
+   of the same relative operator norm estimate.
+
+This would simplify conceptual bookkeeping. It would not remove the hard
+p-adic valuation estimates, the rational numerical certificate for rho, or
+the comparison of constants. Orthogonal polynomials and Stieltjes transforms
+are useful optional interpretations; adding their full theory to the main
+proof could make the exposition longer rather than simpler.
+
+SOURCES CONSULTED
+
+Local primary manuscript:
+sources/Fauzan_2026_zeta5.txt, especially (2.2)-(2.10), (6.1)-(6.16), Appendix C.
+
+External primary/authoritative sources, browsed 14 November 2026:
+* NIST DLMF 18.2, especially moments and kernel identities:
+  https://dlmf.nist.gov/18.2
+* P. J. Forrester, Andreief formula and its relation to Cauchy-Binet:
+  https://arxiv.org/html/1806.10411
+* C. Alvarez-Fernandez et al., rational modifications with mass terms:
+  https://arxiv.org/html/1605.04617
+* C. Krattenthaler, rational-density determinant identities (abstract checked):
+  https://arxiv.org/abs/2103.03969
+* E. B. Saff, logarithmic potential theory with external fields:
+  https://www.math.vanderbilt.edu/saffeb/texts/230.pdf
+
+No external source is being used to certify the local manuscript's claimed
+irrationality theorem or its numerical constants. All special identities
+for this particular pencil above are explicitly derived from its definitions.

@@ -1,0 +1,106 @@
+\section{Adding the prime costs}\label{growth:section}
+
+Fix \(M=400\), \(\alpha=3/40\), and \(\lambda=37/40\).
+For sufficiently large \(K=40n\), the preceding bounds give integers
+\begin{equation}\label{growth:Lp}
+ L_p=
+ \begin{cases}
+ -6h\lfloor\log_p(5K)\rfloor-hv_p(24),&p\le K/400,\\
+ v_p(S_K)+\lfloor2W_p^{\rm in}\rfloor,&K/400<p\le K/3,\\
+ v_p(S_K)+\lfloor2W_p^{\rm out}-r_p\rfloor,&K/3<p\le2h,
+ \end{cases}
+\end{equation}
+with \(L_p\le v_p^{\mathrm G}(F_K)\).
+For \(p>2h\), the same outer calculation has no large-pole rows or
+rank loss, and the factorial scalar is a unit; hence
+\(v_p^{\mathrm G}(F_K)\ge0\).
+This is the normalizer in Firsching's revised argument
+\cite[\texttt{Norm.lean}]{firsching}.
+
+Set
+\begin{equation}\label{growth:normalizer}
+ m_K=\prod_{p\le2h}p^{-L_p}.
+\end{equation}
+Every coefficient of \(m_KF_K\) has nonnegative valuation at every
+prime, so its reduced denominator is one. Consequently
+\begin{equation}\label{growth:integrality}
+ m_KF_K\in\Z[X],\qquad
+ \log m_K=\sum_{p\le2h}(-L_p)\log p.
+\end{equation}
+The multiplier is positive and rational. Positive \(L_p\)'s allow
+common factors to be divided out and contribute \emph{negative} costs;
+discarding those savings would spoil the estimate.
+
+\subsection{From local counts to a fixed budget}
+
+The local formulas still depend on \(K\) and \(p\).
+Writing \(x=K/p\) converts them into bounded, piecewise continuous
+profiles on fixed intervals. First the residue classes \(c/p\)
+are averaged; then the resulting costs are summed over primes.
+The profiles retain both the basis weights and the factorial
+valuation \(v_p(S_K)\), computed by Legendre's formula.
+Their explicit definitions are in companion Sections 7.4 and 7.7.
+For each range above the small-prime cutoff, the corresponding profile
+\(E\) satisfies
+\[
+ -L_p\le pE(K/p)+O_{400}(1).
+\]
+This converts the local divisibility bound into a cost that can be summed.
+
+The prime number theorem,
+\(\vartheta(T)=\sum_{p\le T}\log p=T+o(T)\), gives
+\begin{equation}\label{growth:prime-sum}
+ \frac1{K^2}\sum_{K/b<p\le K/a}p\log p\,E(K/p)
+ \longrightarrow\int_a^b\frac{E(x)}{x^3}\,dx
+\end{equation}
+for a bounded piecewise continuous \(E\) with finitely many
+discontinuities on a fixed \(0<a<b\).
+To see the factor \(x^{-3}\), the prime number theorem replaces
+\(K^{-1}\sum(\log p)\delta_{p/K}\) by length measure; apply this to
+\(tE(1/t)\), then substitute \(x=1/t\).
+An \(O_{400}(1)\) error at each prime contributes only
+\(O_{400}(\vartheta(2h))=O(K)=o(K^2)\).
+This is the prime-summation step of Fauzan and Firsching
+\cite[Section 5]{fauzan}\cite[\texttt{PrimeSumIntegral.lean}]{firsching}.
+
+There are four contributions. Small primes use the coarse bound:
+apart from \(O(\sqrt K)\) primes, the logarithmic floor equals one,
+giving \(6\lambda/400=0.013875\).
+For \(3\le x\le20\), the inner profile has 125 rational pieces,
+integrated exactly. For \(20\le x\le400\), a quadratic bound followed
+by two integrations by parts gives a negative contribution.
+The successive primitives are periodic Bernoulli polynomials: they
+remove the oscillating fractional-part counting error.
+The outer profile has ten merged rational pieces and includes the
+full rank correction. Companion Sections 7.3--7.8 give these calculations;
+the supplied exact-arithmetic checks reproduce their values.
+
+\begin{center}
+\begin{tabular}{l r}
+\toprule
+Prime range & Upper bound for its \(K^2\) coefficient\\
+\midrule
+\(p\le K/400\) & \(0.013875\)\\
+\(K/400<p\le K/20\) & \(-0.05346\)\\
+\(K/20<p\le K/3\) & \(0.04279\)\\
+\(K/3<p\le2h\) & \(1.34481\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+These finite decimals are rational upper bounds, rounded upwards
+from the exact values. Their sum is \(1.348015<1.35\).
+The exact calculation gives the slightly stronger bound
+\[
+ \limsup_{\substack{K\to\infty\\40\mid K}}
+ \frac{\log m_K}{K^2}
+ \le B=1.348003127429204\ldots<1.35.
+\]
+The exact fraction defining \(B\) is recorded with the final comparison
+below and in the companion's Section 7.8.
+Because the gap below \(1.35\) is strict, all sufficiently large
+admissible \(K\) satisfy
+\begin{equation}\label{growth:final}
+ \boxed{m_K>0,\qquad m_KF_K\in\Z[X],\qquad
+        \log m_K\le1.35K^2.}
+\end{equation}
+This is the arithmetic budget to compare with the real decay.

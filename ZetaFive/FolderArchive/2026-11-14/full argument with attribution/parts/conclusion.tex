@@ -1,0 +1,54 @@
+\section{Combining the estimates}\label{sec:conclusion}
+
+Every estimate has been made for the same rational polynomial
+\(F_K=S_K\Delta_K\). The analytic bound gives
+\[
+ \log F_K(\xi)\leq -1.3669955K^2+O(K\log K).
+\]
+Since \(K\log K=o(K^2)\), this implies
+\[
+ 0<F_K(\xi)\leq \exp(-1.36K^2)
+\]
+for all sufficiently large admissible \(K\).
+The arithmetic construction gives \(m_K>0\), \(m_KF_K\in\Z[X]\),
+and
+\[
+ \limsup_{\substack{K\to\infty\\40\mid K}}
+       \frac{\log m_K}{K^2}
+ \leq
+ B=
+ \frac{2031621487545722214389669}{1507134105408387456000000}
+ =1.348003127429\ldots<1.35.
+\]
+The strict gap implies \(\log m_K\leq1.35K^2\) for all sufficiently
+large \(K\). Indeed, take any positive
+\(\varepsilon<1.35-B\) in the defining upper-limit estimate.
+
+Set \(Q_n(X)=m_{40n}F_{40n}(X)\). Its coefficients are integers.
+Both scalar factors are positive, and the determinant was proved positive
+at \(\xi\); hence \(Q_n(\xi)>0\). Its degree is at most \(37n\)
+(and in fact equals \(37n\)).
+For all sufficiently large \(n\),
+\[
+ \log Q_n(\xi)
+ =\log m_{40n}+\log F_{40n}(\xi)
+ \leq (1.35-1.36)(40n)^2=-16n^2.
+\]
+Thus
+\[
+ Q_n\in\Z[X],\qquad
+ \deg Q_n=37n,\qquad
+ 0<Q_n(\zeta(5))\leq e^{-16n^2}.
+\]
+The integer contradiction in Section~\ref{sec:orientation} proves
+that \(\zeta(5)\) is irrational.
+
+Equivalently, \(\mathcal J_\xi(\Delta_K)=\mathcal J_\xi(F_K)\le-0.01K^2\)
+eventually. Rationality would force \(\mathcal J_\xi(F_K)\ge-h\log b\):
+a fixed rational denominator can offset only linear decay.
+
+The constant 16 is a convenient rounding of the estimates established
+here. It is not the original paper's claimed rate, and it is not a claim
+about the stronger \(K=12n\) construction mentioned in Persiflage.
+The revised normalization, the comparison measure, and the finite
+certificates have all been kept consistent throughout.

@@ -1,0 +1,81 @@
+\section{The argument and its sources}\label{sec:orientation}
+
+Write \(\xi=\zeta(5)=\sum_{j\geq1}j^{-5}\).
+The useful starting point in Persiflage's account is a positive measure
+whose polynomial moments are rational, while certain values of its
+Stieltjes transform contain \(\xi\). Multiplying the measure by a
+particular rational function then produces a matrix with two simultaneous
+descriptions: its entries are affine expressions in \(\xi\), and it is
+a Gram matrix. We follow that organizing perspective
+\cite[The formulas of Euler and Hermite; Hankel Determinants]{persiflage}.
+
+The historical distinction matters. Pr\'evost's Theorems 1--2
+\cite{prevost} supply the underlying transform and moments; his earlier
+work on Pad\'e approximation, and subsequent work with Rivoal
+\cite{prevost1996,prevost-rivoal}, explain their role in rational
+approximation. Rationally modifying an orthogonality measure belongs to
+the theory developed by Uvarov, with a determinant formula proved by
+Krattenthaler \cite{uvarov,krattenthaler}. Zudilin's determinantal irrationality
+criterion \cite{zudilin} is a direct methodological antecedent.
+Brown's integral pairings and coefficient-normalization framework
+\cite[Sections 3 and 7.4--7.5]{brown} provide further context.
+We do not need these general determinant formulas as unproved steps:
+the particular identities used here are established below.
+
+The extra work for this construction is quantitative. The numerator
+of the rational modifier improves divisibility, but also changes the
+real integral. Both effects must be estimated for the same determinant.
+Fauzan makes this choice explicit \cite[Sections 2--6]{fauzan}.
+For the local estimates we use Firsching's revised finite
+partial-fraction argument \cite{firsching}. In particular, the correction
+of bounded rank is charged its full rank, and the prime cutoff is 400.
+No inequality with the smaller, disputed rank loss is needed.
+
+\subsection{What the estimates must accomplish}
+
+The desired polynomials have integer coefficients and satisfy
+\begin{equation}\label{eq:goal}
+ \deg Q_n\leq37n,\qquad
+ 0<Q_n(\xi)\leq e^{-cn^2}
+\end{equation}
+for a fixed \(c>0\) and all sufficiently large \(n\).
+This form of the final contradiction is used by Fauzan
+\cite[Section 1.1]{fauzan}; compare Zudilin's determinant argument
+\cite[Section 2]{zudilin}.
+
+Suppose \(\xi=a/b\), where \(a\in\Z\) and \(b\in\Z_{>0}\).
+Writing \(Q_n(X)=\sum_{j=0}^{37n}q_jX^j\), with zero coefficients added
+if necessary, gives
+\[
+ b^{37n}Q_n(a/b)=\sum_{j=0}^{37n}q_j a^j b^{37n-j}\in\Z.
+\]
+It is positive by \eqref{eq:goal}, whereas
+\[
+ 0<b^{37n}Q_n(a/b)
+ \leq\exp(37n\log b-cn^2)\longrightarrow0.
+\]
+The denominator \(b\) is fixed. A positive integer cannot tend to zero.
+This proves irrationality once \eqref{eq:goal} has been established.
+
+We construct a rational polynomial \(F_K\), then a positive rational
+multiplier \(m_K\) such that \(Q_n=m_KF_K\) for \(K=40n\).
+Positivity will follow before any size estimate is used.
+The analytic calculation bounds \(\log F_K(\xi)\) by a negative
+constant times \(K^2\), up to lower-order terms.
+The arithmetic calculation bounds \(\log m_K\) by a smaller positive
+constant times \(K^2\). Their sum is negative.
+
+\subsection{Where the details live}
+
+The integral representation is derived in full. Sections 5--7 then keep
+the main inequalities and the reasons behind them together, so that
+the real decay can be compared directly with the arithmetic cost.
+The supporting calculations are in the separate
+\emph{detailed companion}, supplied as
+\texttt{zeta5\_detailed\_companion.pdf}: its Section 5 proves the analytic
+bounds, Sections 6--7 prove the local and global arithmetic bounds,
+and Appendix C gives the exact arithmetic table.
+Those references supply proofs of the stated estimates, not additional
+assumptions. The unchanged finite certificates and source ledger accompany
+both versions. No formal verification of this prose or local rebuild of
+the complete Lean development is claimed.

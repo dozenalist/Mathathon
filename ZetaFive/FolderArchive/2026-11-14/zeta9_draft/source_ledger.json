@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-14",
+  "title": "A formal zeta(9) analogue of Fauzan's construction",
+  "primary_source": {
+    "author": "Aabir Fauzan",
+    "title": "ζ(5) is irrational",
+    "date_on_manuscript": "2026-09-17",
+    "version": "v1",
+    "pages": 32,
+    "record_url": "https://zenodo.org/records/22826419",
+    "pdf_url": "https://zenodo.org/records/22826419/files/ZETA5_IS_IRRATIONAL.pdf?download=1",
+    "doi": "10.5281/zenodo.22826419",
+    "local_pdf": "sources/Fauzan_2026_zeta5.pdf",
+    "local_text_extraction": "sources/Fauzan_2026_zeta5.txt",
+    "sha256": "a42c05ccc46b9a7c36428913453c4617202c59109713ba20f464ab9ec640d0da",
+    "md5": "30dafe4adbb13a79f202e94a046c8c8d",
+    "use": "Structural source for Sections 1-7 and Appendices A-C of the order-nine analogue.",
+    "audit_scope": "Local ninth-order manipulations drafted section by section. Inner analytic transfer left formal/conditional. Original Appendix A interval certificate reused. Revised Appendix B rational integrals checked exactly. No irrationality claim."
+  },
+  "supporting_primary_references": [
+    {
+      "id": "D1",
+      "url": "https://dlmf.nist.gov/25.6.E2",
+      "use": "Euler formula for even zeta values"
+    },
+    {
+      "id": "D2",
+      "url": "https://dlmf.nist.gov/25.11.E29",
+      "use": "Hermite integral representation of Hurwitz zeta"
+    },
+    {
+      "id": "D3",
+      "url": "https://dlmf.nist.gov/24.4",
+      "equations": [
+        "24.4.1",
+        "24.4.3",
+        "24.4.18"
+      ],
+      "use": "Bernoulli difference, reflection, and multiplication identities"
+    },
+    {
+      "id": "D4",
+      "url": "https://dlmf.nist.gov/24.10.i",
+      "use": "von Staudt-Clausen theorem and Bernoulli denominators"
+    }
+  ],
+  "prior_exploration_context": {
+    "ledger_in_bundle": "sources/original_exploration_source_ledger.json",
+    "notes": "Earlier seventh-order notes and ninth-order finite check informed the draft. Prior web discovery sources are retained in the original ledger; they are not independent proof verification."
+  },
+  "section_agents": {
+    "model": "gpt-6-astra",
+    "reasoning_effort": "xhigh",
+    "count": 6,
+    "assignments": [
+      "Section 2",
+      "Section 3",
+      "Section 4",
+      "Section 5 and Appendix B",
+      "Section 6 and Appendix A",
+      "Section 7 and Appendix C"
+    ]
+  },
+  "checks": {
+    "exact_arithmetic": "checks/section5_exact.mjs and section5_exact_results.json",
+    "prior_finite_example": "prior_checks/exact_checks.py and zeta9_local_check.json",
+    "layout": "30 pages rendered with Poppler and visually reviewed; no unresolved references, duplicate labels, or TeX overflow warnings."
+  },
+  "tooling": {
+    "typesetter": "Tectonic 0.17.0, standard cached LaTeX resources",
+    "official_release": "https://github.com/tectonic-typesetting/tectonic/releases/tag/tectonic@0.17.0",
+    "note": "Executable and resource cache excluded from source bundle."
+  }
+}

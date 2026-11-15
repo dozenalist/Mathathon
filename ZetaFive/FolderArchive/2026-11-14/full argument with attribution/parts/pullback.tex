@@ -1,0 +1,66 @@
+\section{The pullback to integer poles}\label{app:pullback}
+\source{Fauzan \cite[(3.1)]{fauzan}; Lai \cite[Lemma 7.3]{lai};
+Firsching \cite[\texttt{Arith/Pullback.lean}]{firsching}.}
+
+The auxiliary arithmetic functional changes the pole locations from
+negative squares to integers. Here is the complete identity, including
+the weight that accompanies the substitution.
+
+Define $L:\Q[x]\to\Q$ by $L(x^k)=B_k$, and put
+\[
+ \tau(P)=\frac{L(P''')}{24},\qquad
+ d(r)=\begin{cases}r,&r\geq0,\\-r-1,&r<0.\end{cases}
+\]
+On rational functions with only simple integer poles, define $\tau_X$
+by its polynomial restriction $\tau$ and the pole values
+\[
+ \tau_X\!\left(\frac1{x-r}\right)=\Hfive{d(r)}-X,
+ \qquad r\in\Z.
+\]
+Unique partial fractions extend these prescriptions linearly, just as
+in the definition of $\mu_X$.
+
+For every rational function $R$ in the domain of $\mu_X$, the identity is
+\begin{equation}\label{eq:pullback}
+ \boxed{\mu_X(R)=\tau_X\!\left(x^5R(-x^2)\right).}
+\end{equation}
+The right side is defined: a pole at $t=-j^2$ becomes a pair of simple
+poles at $x=j$ and $x=-j$, and a polynomial remains a polynomial after
+substitution and multiplication by $x^5$. Both sides are linear in $R$.
+By \eqref{eq:partial}, it is enough to check monomials and simple poles.
+
+For $R(t)=t^e$, the transformed function is $(-1)^ex^{2e+5}$. Three
+differentiations give
+\[
+ \tau_X\bigl((-1)^ex^{2e+5}\bigr)
+ =\frac{(-1)^e(2e+5)(2e+4)(2e+3)B_{2e+2}}{24},
+\]
+which is exactly \eqref{eq:mu-moment}. This explains the order of the
+derivative: it produces both the three consecutive factors and the
+required Bernoulli index.
+
+For $R(t)=1/(t+j^2)$, polynomial division gives
+\[
+ \frac{x^5}{j^2-x^2}
+ =-x^3-j^2x-\frac{j^4}{2}
+       \left(\frac1{x-j}+\frac1{x+j}\right).
+\]
+One can check the signs by multiplying by $j^2-x^2$. The polynomial
+terms give $x^5-j^4x$, and the pole terms give $+j^4x$.
+Now $\tau(-x^3)=-1/4$, $\tau(-j^2x)=0$, $d(j)=j$, and $d(-j)=j-1$.
+Applying $\tau_X$ therefore gives
+\begin{align*}
+ \tau_X\!\left(\frac{x^5}{j^2-x^2}\right)
+ &=-\frac14-\frac{j^4}{2}
+       \left(\Hfive{j}+\Hfive{j-1}-2X\right)\\
+ &=j^4\bigl(X-\Hfive{j}\bigr)-\frac14+\frac1{2j},
+\end{align*}
+where the last equality uses
+$\Hfive{j}-\Hfive{j-1}=j^{-5}$. This is \eqref{eq:mu-pole}, completing
+the proof by linearity.
+
+Both the substitution $t=-x^2$ and the factor $x^5$ are necessary.
+The identity supplies a second description of the same functional;
+it introduces no new determinant. Integer pole locations make the
+arithmetic calculations by residue class possible, while the original
+$t$-description makes the positive integral representation visible.

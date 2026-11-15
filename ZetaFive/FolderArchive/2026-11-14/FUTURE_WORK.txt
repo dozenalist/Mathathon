@@ -1,0 +1,236 @@
+FUTURE WORK: UNDERSTAND THE BOUNDS, THEN TEST HIGHER ODD ZETA VALUES
+14 November 2026 (America/Los_Angeles)
+
+Purpose
+-------
+Find better expositions of the arithmetic and analytic bounds in the new,
+simplified zeta(5) argument. Use that understanding to determine precisely
+which steps do and do not extend to zeta(7), zeta(9), and higher odd values.
+The aim is a better explanation and a defensible diagnosis of the method's
+limitations. Do not assume in advance that every possible extension fails.
+
+This file is a research handoff, based on the saved workspace. It does not
+certify the manuscripts or add a new irrationality result.
+
+1. Fix the baseline before doing more mathematics
+-------------------------------------------------
+Start with full argument with attribution/zeta5_full_argument.pdf and its
+editable entry point zeta5_full_argument.tex. This is the current 21-page
+concise reading version. Sections 5-7 are the analytic, local arithmetic,
+and global arithmetic estimates. The active source files are:
+
+  full argument with attribution/parts/analytic_concise.tex
+  full argument with attribution/parts/local_arithmetic_concise.tex
+  full argument with attribution/parts/global_arithmetic_concise.tex
+
+The 46-page zeta5_detailed_companion.pdf in the same directory supplies the
+supporting proofs; its source archive is preserved beside it. The longer
+parts/analytic.tex, local_arithmetic.tex, and global_arithmetic.tex are also
+retained. Read README.txt, VERIFICATION.txt, and source_ledger.json there.
+
+This version uses K=40n, N=3n, h=37n, D_N^6/D_K, cutoff M=400, capped inner
+weights, and the full outer rank loss from Firsching's revised argument.
+Its upstream source is mo271/Zeta5 at commit
+7fe736760f4b96bfdb4334b68e3b3124ecbe10b0. The ledger distinguishes this
+revision from Fauzan's original manuscript and Lai's exposition.
+
+The saved version reports an analytic leading coefficient below
+-1.3669955 and arithmetic cost at most 1.348003127429204..., with a rounded
+eventual bound 0 < Q_n(zeta(5)) <= exp(-16 n^2). These are the baseline's
+reported results, with verification scope recorded in VERIFICATION.txt;
+the complete Lean development was not rebuilt locally. Reproduce the
+certificates before using their results in a new derivation.
+
+The older zeta(7) and zeta(9) investigations test Fauzan's original
+construction and estimates. They are valuable evidence, but their
+arithmetic profiles and final constants are not automatically the profiles
+and constants of this revised argument. A shorter exposition also does
+not, by itself, replace the difficult quantitative estimates.
+
+2. Find and develop better expositions of the arithmetic bounds
+--------------------------------------------------------------
+Read the revised local proofs first. Explain one common rational bilinear
+form in three coordinate systems: integer-valued bases for small primes,
+residue-class/jet bases for inner primes, and actual pole-factor bases with
+a polynomial correction for outer primes. Use a small worked example for
+each, then state the uniform lemma and explain every hypothesis.
+
+The exposition should answer the following questions explicitly:
+
+* Why must the bound control the minimum p-adic valuation of ALL polynomial
+  coefficients, with X still indeterminate? Evaluation at one X is not a
+  substitute for coefficientwise integrality.
+* Why does a basis change multiply the determinant by det(C)^2, and when
+  is det(C) a p-adic unit? How do entry bounds w_i+w_j yield the determinant
+  bound 2 sum_i w_i?
+* How does the pullback mu_X(R)=tau_X(x^5 R(-x^2)) connect the rational
+  pairing to tau(P)=L(P''')/24 and Bernoulli moments? Which denominator
+  losses arise from derivatives, harmonic sums, and partial fractions?
+* Why must inner weights be capped so that each row works in every class?
+  Why does the zero class need a separate allocation?
+* Why do polynomial parts remain after pole cancellation? Explain the
+  correction A+p^(-1)UV and pay its full rank loss. The residue algebra
+  alone does not account for the entire bilinear form.
+* How do the factorial scalar and signed local bounds combine? The
+  normalizer m_K=product p^(-L_p) is positive rational, not necessarily an
+  integer. Positive L_p permit division by common factors and save cost.
+* How do finite class counts become profiles E(K/p), and why does summing
+  p log(p) E(K/p) give K^2 integral E(x)/x^3 dx? Keep the cutoff fixed before
+  K tends to infinity and account for uniform error terms.
+* What do the periodic Bernoulli primitives accomplish in the inner tail?
+  Separate exact rational table integration from the asymptotic prime sum.
+
+Use framework_arithmetic_notes.txt and audit_simplification.txt as aids to
+interpretation, while checking all estimates against the revised baseline.
+The latter preserves the user's earlier preference for a better argument,
+not merely a shorter one. A dictionary of related objects is insufficient:
+give precise bridge identities and explain where each is used.
+
+Deliverable: an arithmetic reading guide with a dependency map, worked
+examples, a prime-range budget table, and exact pointers to the general
+proofs and check scripts. A reader should be able to identify the loss
+caused by changing the order of the zeta value before running any optimizer.
+
+3. Find and develop better expositions of the analytic bounds
+-----------------------------------------------------------
+Organize the explanation around the chain
+
+  positive Gram determinant -> Andreief integral -> logarithmic energy
+  -> comparison-measure certificate -> normalized small-value bound.
+
+Explain the following details rather than hiding them in a constant:
+
+* Where positivity and nonvanishing come from, and why the squared
+  Vandermonde is the pair interaction in the determinant integral.
+* How y_i=K sqrt(t_i) and the products D_N^6/D_K produce the external field
+  V(t), with a uniform finite-product error estimate.
+* The different roles of the original moment measure, a configuration
+  measure, and the auxiliary comparison measure rho. They are not the
+  same measure. The configuration and comparison measures have equal
+  mass lambda=h/K.
+* Why I(eta-rho)<=0 for a zero-mass signed measure leads to a bound using
+  2U^rho-V <= M_0. State the integrability assumptions and sign convention.
+* Why atomic configurations cannot be substituted directly into finite
+  logarithmic self-energy, how circle regularization controls this, and
+  why a decaying tail must remain after the uniform configuration bound.
+* How the factorial normalization cancels the K^2 log K term exactly,
+  leaving a K^2 coefficient and controlled O(K log K) errors.
+* What the 684 interval certificates actually prove, including complete
+  interval coverage and the unbounded tail. A sampled numerical plot is
+  not a uniform potential inequality. Explain why the chosen measure
+  need only certify a useful bound; exact equilibrium is unnecessary.
+
+Deliverable: an analytic reading guide with the energy argument written
+in full, a transparent normalization calculation, and an annotated route
+through the exact certificate. Illustrations may aid intuition, but every
+inequality used in the conclusion must have a proof or certified source.
+
+For both guides, search for clearer primary-source treatments and record
+exact versions and theorem locations. Begin with the sources already in
+full argument with attribution/source_ledger.json: Persiflage for the
+organizing narrative; Prevost for the transform and moments; Fauzan for
+the specific determinant and comparison measure; Firsching for revised
+arithmetic and analytic implementations; Zudilin and Brown for the broader
+determinant/normalization perspective. Follow cited classical sources on
+logarithmic energy, integer-valued polynomials, Bernoulli summation, and
+rational modifications of orthogonality where they explain an actual step.
+Do not present these starting points as newly surveyed or as interchangeable
+proofs of the particular estimates. Assess each exposition by what it
+explains, its prerequisites, and what it leaves to imported certificates.
+
+4. Test the NEW simplified argument at higher odd orders
+------------------------------------------------------
+First specify s=2r+1 and derive the honest order-s functional. Keep a table
+for s=5,7,9 and then general s. For each order, record:
+
+  (a) polynomial moments, pole values, pullback and distribution identities;
+  (b) positive measure, integrability, affine dependence on zeta(s), and
+      whether any other zeta values actually occur;
+  (c) matrix size, degree bound, positivity/nonvanishing, and normalizer;
+  (d) small-prime losses, exceptional primes, inner caps/allocations, outer
+      polynomial degree thresholds and full rank correction;
+  (e) resulting global arithmetic profile and its certified integral;
+  (f) analytic external field, comparison certificate, normalization, and
+      error terms for that SAME determinant.
+
+Hold K=40n, N=3n, h=37n and D_N^6 fixed in the first comparison. Separate
+changes caused solely by the order-s kernel from changes to the modifier
+or parameters. Re-derive the revised capped-weight and full-rank estimates;
+do not just transplant old bounds or replace a 5 by a 7 in final formulas.
+
+Use the existing transfer work as a starting point:
+
+  output/zeta7_argument_audit.pdf
+  algebra_notes.txt; arithmetic_notes.txt; arithmetic_variant_notes.txt
+  experiments/exact_checks.py and exact_checks.json
+  experiments/main_measure_certificate.py
+  experiments/single_point_certificate.py
+  zeta9_draft/README.txt, zeta9_formal_analogue.tex, parts/, and checks/
+  output/2026-11-14_research_chat_summary.md
+
+Those records report that the tested order-7 functional retains positivity,
+nonvanishing, and a single zeta value. Thus neither loss of positivity nor
+unavoidable contamination by lower odd zeta values is an established
+explanation of failure here. Test these properties for the chosen extension
+rather than asserting a generic obstruction. If a different construction
+does introduce several zeta values, state the independent elimination and
+nonvanishing obligations it creates.
+
+At K=40, N=3, p=29, the saved exact constant-coefficient valuations are -60,
+-82, and -104 for orders 5, 7, and 9. The order-7 value refutes a copied
+lower bound of -60. Retain this as a regression test of the underlying
+functional and determinant; one finite example does not prove the general
+asymptotic cost. Check the precise normalization before comparing numbers.
+
+The older order-7 audit reports an added arithmetic coefficient 751/768
+and a combined upper-bound coefficient about +0.960456781075 for its
+specified original setup. Its D_N^8 repair has a certified obstruction for
+the fixed original comparison measure. The order-9 draft reports the
+increment 116581/57600 and explicitly labels unresolved/formal steps.
+These are historical results for those setups, not conclusions already
+established for the revised capped-weight argument.
+
+For the revised setup, write the final comparison as
+
+  log F_(s,K)(zeta(s)) <= A_s K^2 + o(K^2),
+  log m_(s,K)          <= B_s K^2 + o(K^2),
+  Q_(s,K)=m_(s,K)F_(s,K) in Z[X],  Q_(s,K)(zeta(s))>0.
+
+The needed certificate is A_s+B_s<0 with degree O(K). Give exact or
+rigorously enclosed constants and identify the first lemma that changes
+or fails. A positive upper-bound coefficient means this certificate does
+not establish decay; it does not prove that the actual values grow or that
+every determinant approach to zeta(s) is impossible.
+
+Only after this fixed-setup diagnosis should repairs be explored: different
+N/K, numerator powers, local bases/allocations, sharper signed arithmetic
+savings, or a new comparison measure. Every change must be charged on both
+the arithmetic and analytic sides. Fixed rational rescaling cannot be
+assumed to remove a quadratic asymptotic gap. Distinguish a failure of a
+chosen comparison measure from an obstruction to the best possible bound.
+
+Deliverable: a side-by-side transfer audit for orders 5, 7, 9, and general
+odd s, with status labels (proved, imported, finite check, conditional,
+open), exact counterexamples where available, and a short statement of
+what genuinely prevents the current certificate from concluding.
+
+5. Reproducibility and completion criteria
+-----------------------------------------
+Run the existing baseline checks from full argument with attribution/:
+
+  python checks/analytic_certificate.py
+  python checks/growth_exact.py
+  python checks/local_checks.py
+
+Inspect their saved JSON/CSV outputs and checks/condensed_budget.json.
+The local finite checks supplement general proofs; they do not replace
+them. Reuse the existing exact transfer checks and interval witnesses, and
+add only checks that test a new mathematical claim. Preserve source hashes,
+versions, attribution, and a record of what was actually rerun. Keep any
+new audit separate from the historical artifacts and chat exports.
+
+The next phase is complete when a reader can follow why each bound holds,
+reproduce the decisive certificate calculations, and locate the precise
+order-dependent loss in the revised method. If the revised transfer has
+not been fully proved, state the missing lemma or computation plainly;
+do not replace an unresolved question by a claimed impossibility result.

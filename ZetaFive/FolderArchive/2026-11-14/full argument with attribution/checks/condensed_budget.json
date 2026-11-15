@@ -1,0 +1,32 @@
+{
+  "method": "exact rational comparison with previously verified arithmetic results",
+  "rows": [
+    {
+      "contribution": "small",
+      "certified_exact_upper_bound": "111/8000",
+      "displayed_upper_bound": "0.013875",
+      "upward_rounding_verified": true
+    },
+    {
+      "contribution": "inner",
+      "certified_exact_upper_bound": "322437603634266857629/7535670527041937280000",
+      "displayed_upper_bound": "0.04279",
+      "upward_rounding_verified": true
+    },
+    {
+      "contribution": "tail_upper_bound",
+      "certified_exact_upper_bound": "-6843153/128000000",
+      "displayed_upper_bound": "-0.05346",
+      "upward_rounding_verified": true
+    },
+    {
+      "contribution": "outer",
+      "certified_exact_upper_bound": "129101/96000",
+      "displayed_upper_bound": "1.34481",
+      "upward_rounding_verified": true
+    }
+  ],
+  "displayed_sum": "269603/200000",
+  "displayed_sum_decimal": "1.348015",
+  "below_1_35": true
+}

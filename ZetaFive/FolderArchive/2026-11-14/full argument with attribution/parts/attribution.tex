@@ -1,0 +1,85 @@
+\section{Attribution, dependencies, and verification}\label{app:attribution}
+
+This draft was prepared with OpenAI Codex at the user's request.
+The earlier drafts in the same chat supplied some of the expanded
+elementary calculations. Their underlying mathematical sources remain
+Fauzan, Lai, Pr\'evost, and the classical identities listed below.
+Reusing those explanations does not make their mathematics original.
+
+This revision also draws on the chat
+\emph{Find parallel constructions in the Zeta(5)\ldots}
+and its corrected explanatory companion.
+They suggested making the common bilinear form, the roles of the local
+bases, the passage from finite products and counts to continuous
+estimates, and the primitive evaluation size explicit.
+The chat's final provenance correction is retained: Fauzan already
+states the underlying connections, including the weighted pullback,
+the local-basis strategy, the periodic primitives, and the comparison
+measure argument. The chat contributes organization and classical
+interpretations. It supplies no new quantitative estimate.
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.65\textwidth}}
+\toprule
+Part of this account & Source and nature of the dependence\\
+\midrule
+\endhead
+Guiding narrative &
+Calegari's Persiflage post: the positive-measure, rational-modifier,
+Hankel-determinant viewpoint and the connection with prior approximation
+theory. It precedes Lai's exposition.\\[3pt]
+Positive measure and transform &
+Pr\'evost, Theorems 1--2. Euler's and Hermite's classical identities
+are also recorded in DLMF. The special fifth-order calculation is
+expanded here, as in Fauzan and Lai.\\[3pt]
+Concrete determinant &
+Fauzan, Section 2: \(D_N^6/D_K\), \(K=40n,N=3n\), affine entries,
+degree, positivity, and the factorial scalar. Lai is a cross-check
+and an exposition used in the preceding drafts.\\[3pt]
+General determinant context &
+Zudilin's irrationality criterion; Brown's integral pairing and
+normalization framework; Uvarov's rational modifications, as discussed
+and extended by Krattenthaler. These are contextual antecedents,
+not additional unproved estimate inputs.\\[3pt]
+Analytic estimate &
+Fauzan, Section 6 and Appendix A: external field, comparison measure,
+configuration inequality, and interval partition. Firsching's analytic
+files supply detailed cross-checks. The finite certificate was re-executed
+for the detailed version; its checked files accompany this condensation.\\[3pt]
+Local arithmetic &
+Fauzan's weighted-basis strategy, in the revised finite
+partial-fraction implementation of Firsching's \texttt{Arith} files.
+The full rank loss and cutoff 400 are retained.\\[3pt]
+Global arithmetic &
+Firsching's \texttt{Norm} and \texttt{Growth} files: allocation,
+prime ranges, continuous profiles and corrected numerical total.
+The rational pieces and integrals were independently regenerated
+for the detailed version; the same data are used here.\\[3pt]
+Parallel-construction explanations &
+The named chat and its revised companion: the common-pairing
+presentation, Euler--Maclaurin language, periodic Bernoulli notation,
+and scale-independent evaluation size. Their mathematical inputs
+are credited to Fauzan, the classical Bernoulli identities, and
+Firsching's revised estimates at the relevant steps.\\[3pt]
+Finite computation &
+The companion files identify which data are transcribed from Fauzan
+or Firsching and which verification code was written for this draft.
+Any adapted repository code retains its license and attribution.\\
+\bottomrule
+\end{longtable}
+
+The local source ledger records URLs, versions, hashes, and precise
+locations. The mathematical proof and its finite checks should be
+distinguished from a complete local rebuild of the formal development:
+no such rebuild is claimed. The source repository's CI results are
+external evidence, not a substitute for the calculations described here.
+
+The uniform potential bound is certified interval by interval, including
+the range beyond the finite partition. The arithmetic tables are checked
+with rational arithmetic on complete intervals. Neither certificate is
+based on testing selected floating-point values.
+
+The background theorems are Tonelli and Fubini, elementary Fourier
+convergence, finite dimensional linear algebra, the prime number theorem,
+and the classical Bernoulli and factorial facts. Argument-specific
+supporting estimates cited in the concise sections are proved in the
+separate detailed companion.

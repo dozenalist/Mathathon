@@ -1,0 +1,34 @@
+\section{Why the degree is exactly \texorpdfstring{\(h\)}{h}}\label{sec:exact-degree}
+\source{Fauzan \cite[(2.9)]{fauzan}; Lai \cite[Proposition 6.1]{lai};
+the same formula is stated in Persiflage \cite{persiflage}.}
+
+The main proof only needs \(\deg\Delta_K\le h\). The residue pairing
+also shows why the highest term survives: there are exactly \(h\)
+remaining poles, matching the dimension of the polynomial space.
+Put \(a_k=-k^2\) and \(V_{ik}=a_k^i\), with \(0\le i<h\) and \(N<k\le K\).
+By \eqref{eq:gram-residue}, if \(G_K(X)=G_0+XG_1\), then
+\[
+ G_1=V\operatorname{diag}(d_k)V^{\mathsf T},\qquad
+ d_k=\frac{k^4D_N(a_k)^5}{T_K'(a_k)}.
+\]
+Every \(d_k\) is nonzero. The nodes \(a_k\) are distinct, so evaluation
+at them is injective on polynomials of degree less than \(h\):
+a nonzero such polynomial cannot have \(h\) roots. Thus \(V\) is
+invertible and \(\det G_1\ne0\). Taking the \(X\) term from every factor
+in the determinant expansion gives
+\[
+ [X^h]\Delta_K(X)=\det G_1\ne0,\qquad \deg\Delta_K=h.
+\]
+For the explicit leading coefficient, the Vandermonde formula and
+pairing the factors in the derivatives give
+\[
+ \det V=\prod_{k<\ell}(a_\ell-a_k),\qquad
+ \prod_k T_K'(a_k)=(-1)^{h(h-1)/2}(\det V)^2.
+\]
+Hence
+\[
+ [X^h]\Delta_K(X)
+ =(-1)^{h(h-1)/2}\prod_{k=N+1}^K k^4D_N(-k^2)^5
+ \in\Z\setminus\{0\}.
+\]
+This concerns one coefficient; the arithmetic must still control them all.

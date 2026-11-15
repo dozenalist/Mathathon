@@ -1,0 +1,55 @@
+VERIFICATION RECORD
+14 November 2026 (America/Los_Angeles)
+
+CURRENT CONCISE VERSION
+zeta5_full_argument.pdf: 21 physical pages.
+The analytic and arithmetic estimates are condensed into Sections 5-7.
+The main text states the supporting bounds and cites their exact locations
+in the preserved detailed companion. It keeps the integral representation,
+normalization, coefficientwise integrality, and final contradiction explicit.
+
+PRESERVED DETAILED VERSION
+zeta5_detailed_companion.pdf: 46 physical pages, unchanged from the
+previous reviewed version. Its exact source archive is supplied beside it.
+The argument uses K=40n, N=3n, h=37n, cutoff M=400, capped inner weights,
+and full outer rank loss. The source development is pinned to commit
+7fe736760f4b96bfdb4334b68e3b3124ecbe10b0 of mo271/Zeta5.
+
+REVIEW OF THE CONDENSATION
+Separate AI review checked the energy identity and its hypotheses, circle
+regularization and retained tail, normalization cancellation, coefficientwise
+valuation bounds, full rank loss, signed rational multiplier, the prime-sum
+profile bridge and x^-3 density, and the final constant comparison.
+Clarifications were incorporated for the fixed comparison measure,
+configuration mass, zero-polynomial valuation, and the profile scaling.
+No unresolved correctness or attribution issue remained after review.
+This review is not a formal verification or a substitute for human review.
+
+The four rounded entries of the new arithmetic-budget table were compared
+with their certified exact rational values. Every rounding is upwards;
+the displayed sum is 1.348015 < 1.35. The exact calculation remains
+1.348003127429204... . See checks/condensed_budget.json.
+
+RETAINED EXECUTED CERTIFICATES
+The earlier complete version executed all three supplied Python scripts:
+- analytic_certificate.py: exact outward interval arithmetic on all 684
+  intervals, their exact coverage, the minimum bracket, and energy constant.
+  Analytic leading coefficient strictly below -1.3669955.
+- growth_exact.py: exact rational profiles and integrals; all 125 inner
+  pieces agree with the pinned Lean table; 10 merged outer pieces.
+- local_checks.py: 168 integer-basis cases, 88 pole congruences, 169 low
+  moments, 9 direct class examples, and 45 inner allocations.
+  These are supplementary finite checks, not proofs of the general lemmas.
+All 15 pre-existing check/data/source-map files were compared byte for byte
+with the detailed companion's source archive and are unchanged. The saved
+results therefore concern the same inputs and verifiers used here.
+
+PRODUCTION AND PROVENANCE
+All 21 pages of the concise PDF were individually inspected after rendering.
+The final build has no LaTeX warnings, unresolved references, or overflows.
+The 46-page companion had already received complete visual review and is
+preserved byte for byte. Credits remain in the front matter, point-of-use
+citations, attribution appendix, bibliography, and source_ledger.json.
+The main document references the detailed companion explicitly rather than
+presenting the omitted supporting derivations as newly proved in place.
+No complete local rebuild of the Lean project is claimed.

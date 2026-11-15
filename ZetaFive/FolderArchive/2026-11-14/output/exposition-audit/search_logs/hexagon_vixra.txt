@@ -1,0 +1,74 @@
+HEXAGON / AI.VIXRA ATTRIBUTION AUDIT
+Audit date: 14 November 2026 (America/Los_Angeles).
+Targets read: six-page parallel constructions PDF and five-page irrationality overview PDF, plus their complete LaTeX sources. The separate chat was expanding the overview during this audit; findings here concern those completed versions.
+
+FINDING
+No confirmed uncredited verbatim or distinctive close-paraphrase source was found in the primary texts inspected. Extensive mathematical overlap with Lai and Fauzan is present and explicitly credited. This is a bounded public-search result, not proof of originality or an exhaustive internet census.
+
+DIRECT SOURCE MATCH
+Chun Wing Lai, On Fauzan's Proof that zeta(5) is Irrational, v1, 29 September 2026, 19 pages:
+https://ai.vixra.org/pdf/2609.0080v1.pdf
+The parallel draft identifies this source/version on page 1, provides section/equation references at every main heading, and repeats the attribution on page 6. Its main constructions track Lai's Lemma 3.1 (p3), functional and moment/pole formulas (pp4-6), positive-definiteness proof (p7), Vandermonde factorization and leading coefficient (pp7-8), and corrected third-derivative pullback (p9). The overview likewise identifies Lai in its subtitle and gives section/proposition references. The same ideas and formulas are therefore credited dependence, not evidence of concealed borrowing. Lai himself attributes the construction and parameters to Fauzan on p1. The Stieltjes interpretation is not named in Lai; see separate Prévost/background investigation.
+
+Aabir Fauzan, zeta(5) is irrational, v1, 17 September 2026:
+https://zenodo.org/records/22826419
+https://zenodo.org/records/22826419/files/ZETA5_IS_IRRATIONAL.pdf?download=1
+The primary record describes the rationally normalized Hankel construction, positive moment representation, energy bound, and local coefficient control. This is the shared architecture of both drafts. The overview explicitly cites the manuscript for its arithmetic estimate and distinguishes it from Lai's printed correction. The existing local source ledger records the source PDF MD5 30dafe4adbb13a79f202e94a046c8c8d, matching the current public record. Web PDF retrieval returned a decoding error; local 32-page PDF was readable.
+
+CLOSEST HEXAGON METHOD PARALLELS (PRIMARY PDF PASSAGES INSPECTED)
+1. Shawn Krisman, Irrationality of chi2(1/q), Ti2(1/q) and chi2(2/q), 13 November 2026, 46 pages:
+https://hexagonmath.org/pdf/2611.00432v1
+Pages 8-9, sections 2.2-2.4 and Proposition 3.1/Theorem 3.2, present rational polynomial/pole decomposition, an affine functional, Hankel determinants, degree <= matrix size, change-of-basis scaling, and a small-integer contradiction. This is a real structural parallel to parallel-draft pp4-6 and overview pp1/3/5. Its poles are half-integers and its constants are chi2/Ti2; its nonvanishing mechanism is different. These are standard or shared determinant techniques. No distinctive prose match was observed. It does not establish that the draft borrowed from this paper, and no citation is demanded merely by these elementary similarities.
+
+2. Sean Litsey, Irrationality measures for L(2,chi_-3) and other differences of trigamma values, PDF dated 1 November 2026, 40 pages:
+https://hexagonmath.org/pdf/2610.00401v2
+Pages 5-6 describe determinant methods, denominator estimates, smallness, and nonvanishing, and expressly cite Fauzan and Li Lai. The method uses Loewner matrices/divided differences and Andreief/energy estimates. Related to overview p4's determinant/energy discussion, but not the same construction or distinctive language. Hexagon landing-page title/version metadata differed from PDF wording, so cite PDF and its printed title.
+
+3. Antti Hippeläinen, On the irrationality of the 3-adic zeta value zeta_3(5), October 2026, 50 pages:
+https://hexagonmath.org/pdf/2610.00408v2
+Pages 1-4 describe a rational-functional/Hankel strategy with arithmetic, size and nonvanishing estimates; p3 explicitly contrasts real positive-measure nonvanishing with its 3-adic case. Pages 6-7 develop harmonic-sum/pole functional expansions; p11 has Gram change-of-basis scaling. This is a related adaptation for a different constant and field, not evidence of copied draft prose. Public landing-page metadata confusingly showed v1 while the PDF identifies v2.
+
+4. Shawn Krisman, One of zeta(7), zeta(9), ..., zeta(21) is irrational, PDF dated 11 November 2026, 34 pages:
+https://hexagonmath.org/pdf/2610.00516v2
+Pages 1-4 use a hypergeometric derivative/saddle-point construction and discuss Fauzan as related work. The source is relevant to the research topic, but is less similar than the determinant papers and contains no observed distinctive match to the audited exposition.
+
+OTHER AI.VIXRA PARALLEL
+Rajat Yadav, Catalan's Constant: Frontier Analysis, Derived Obstruction Theorems, and a Map of the Remaining Terrain, March 2026, 14 pages:
+https://ai.vixra.org/pdf/2603.0059v1.pdf
+Page 3 discusses Stieltjes moments; pp11-12 state a positive-moment Hankel irrationality criterion and changes under triangular transformations. This overlaps with general moment/determinant vocabulary, not Fauzan-specific formulas or the draft's explanatory wording. No distinctive match observed; no correctness validation of that paper was performed.
+
+EXACT-PHRASE QUERIES WITH NO RELEVANT CONFIRMED VERBAL MATCH
+"One functional, one bilinear form" zeta
+"The apparent proliferation of objects"
+"One functional" "positive moments"
+"the functional" "parallel constructions" zeta
+"The two definitions" "integer samples" "transform"
+"continuous positivity" "discrete nondegeneracy"
+"normalization affordable"
+"Fauzan" "weighted pullback"
+Search sometimes returned loose, unrelated matches rather than empty results. Those were excluded; no no-hit result is a plagiarism clearance.
+
+TOPICAL SEARCH LOG
+Hexagon zeta 5 Fauzan Lai irrationality
+site:ai.vixra.org "Fauzan" "Lai"
+"positive moments" "Fauzan"
+site:hexagonmath.org zeta5 Hankel functional exposition
+site:hexagonmath.org "Fauzan" "Stieltjes"
+site:ai.vixra.org "zeta(5)" "functional"
+site:hexagonmath.org "Fauzan"
+site:ai.vixra.org "zeta" "Hankel"
+site:vixra.org "zeta(5)" "Stieltjes"
+site:hexagonmath.org "zeta" "Stieltjes"
+site:hexagonmath.org "Hankel" "positive" "zeta"
+site:hexagonmath.org "irrationality" "moment"
+"Fauzan" "Stieltjes transform"
+"Fauzan" "bilinear form"
+site:ai.vixra.org "Fauzan"
+site:vixra.org "Fauzan"
+site:hexagonmath.org "Lai" "zeta(5)"
+site:hexagonmath.org "mu_X"
+site:hexagonmath.org "Chun Wing Lai"
+site:ai.vixra.org "Hankel" "irrational"
+
+LIMITATIONS
+Domain-restricted search and linked primary PDFs were used. Hexagon's direct q=zeta(5) search URL and ai.vixra abstract URL failed through the web tool; the Hexagon PDF endpoints and Lai PDF worked. Search coverage is neither comprehensive nor stable. Formula extraction and PDF typography can obscure phrase matches. A preliminary automated local comparison discarded single-letter mathematical tokens; because of PDF extraction spacing/font limitations, its zero >=8-word matches were NOT used as audit evidence. No inference about actual copying history can be drawn from semantic overlap alone. This subaudit did not assess proof correctness or the full literature priority of the method.

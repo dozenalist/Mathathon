@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "exportedAt": "2026-11-15T03:31:28.915Z",
+  "scope": {
+    "localProjectId": "442affb8-438f-4d88-afbf-1553f507d740",
+    "chatgptProjectId": "g-p-6af8b2bc0f408191a7b2e6968cd2230c",
+    "activeAndArchivedListingsChecked": true,
+    "archivedProjectChatsFound": 0,
+    "unrelatedChatsExcluded": true
+  },
+  "contentPolicy": {
+    "included": [
+      "Visible user messages",
+      "Visible assistant commentary and final messages",
+      "Turn timestamps, roles, IDs and titles",
+      "Attachment metadata supplied by read_thread"
+    ],
+    "excluded": [
+      "System/developer instructions",
+      "Reasoning and context-compaction records",
+      "Tool calls and outputs",
+      "Subagent internal messages",
+      "Credential values",
+      "Attachment binaries not supplied by read_thread"
+    ]
+  },
+  "source": {
+    "tool": "Codex app read_thread",
+    "allPagesRead": true,
+    "maximumMessageCharactersRequested": 20000,
+    "messageTruncationDetected": false
+  },
+  "limitations": [
+    "The active publishing chat is a snapshot; messages after its snapshot time are not included.",
+    "The text is preserved as returned by read_thread; linked artifacts, images and remote citation rendering are not embedded in the transcript.",
+    "One supplied API credential was replaced with [REDACTED credential].",
+    "Two turns in the linked ChatGPT conversation contain only a user message in the returned source. No assistant reply was fabricated."
+  ],
+  "totals": {
+    "threads": 10,
+    "turns": 54,
+    "messages": 265,
+    "credentialRedactions": 1
+  },
+  "threads": [
+    {
+      "id": "01a1dbb7-ff8f-7883-899a-728e8f321a0a",
+      "title": "Explain the zeta(5) argument",
+      "kind": "codex",
+      "json": "01a1dbb7-ff8f-7883-899a-728e8f321a0a_explain-the-zeta-5-argument.json",
+      "markdown": "01a1dbb7-ff8f-7883-899a-728e8f321a0a_explain-the-zeta-5-argument.md",
+      "turns": 4,
+      "messages": 16,
+      "credentialRedactions": 0,
+      "activeAtSnapshot": false,
+      "snapshotAt": "2026-11-15T03:29:44.668Z",
+      "jsonSha256": "b488296231f17347402e3e382c211d1199c67827d5fb5acb00f316efa08b0f0e",
+      "markdownSha256": "3fc9bd7d4aaa4e9584cead7209b1be012422939f085fc205a4eddf24f43b4248"
+    },
+    {
+      "id": "01a1dbc4-9fc7-7f93-9a49-dbeb3fc00620",
+      "title": "Explore zeta(5) proof for zeta(7)",
+      "kind": "codex",
+      "json": "01a1dbc4-9fc7-7f93-9a49-dbeb3fc00620_explore-zeta-5-proof-for-zeta-7.json",
+      "markdown": "01a1dbc4-9fc7-7f93-9a49-dbeb3fc00620_explore-zeta-5-proof-for-zeta-7.md",
+      "turns": 6,
+      "messages": 35,
+      "credentialRedactions": 0,
+      "activeAtSnapshot": false,
+      "snapshotAt": "2026-11-15T03:29:44.670Z",
+      "jsonSha256": "f27a0758e14c5e14ef31f7808b9dc8974226bb2d297906176cd5022b922eb5c8",
+      "markdownSha256": "d6d42cc263457e9c1224ed76cc52a235762c5216bcbd41e091b957cf69e25790"
+    },
+    {
+      "id": "01a1dc1f-f2bf-7531-976e-7f07e6a19ab0",
+      "title": "Find parallel constructions in the Zeta(5)…",
+      "kind": "codex",
+      "json": "01a1dc1f-f2bf-7531-976e-7f07e6a19ab0_find-parallel-constructions-in-the-zeta-5.json",
+      "markdown": "01a1dc1f-f2bf-7531-976e-7f07e6a19ab0_find-parallel-constructions-in-the-zeta-5.md",
+      "turns": 4,
+      "messages": 23,
+      "credentialRedactions": 0,
+      "activeAtSnapshot": false,
+      "snapshotAt": "2026-11-15T03:29:44.669Z",
+      "jsonSha256": "006c7413953528ccd103b1c8e53ae9208edfda8e3d95c359fc02351967974be9",
+      "markdownSha256": "c70f99ab8890258112c1ce555097730c675e49b7f90ad0bfcb56f92b10ef0545"
+    },
+    {
+      "id": "01a1dc21-5c33-7b31-b7cd-c913a53b5390",
+      "title": "Find how to share a GitHub repo",
+      "kind": "codex",
+      "json": "01a1dc21-5c33-7b31-b7cd-c913a53b5390_find-how-to-share-a-github-repo.json",
+      "markdown": "01a1dc21-5c33-7b31-b7cd-c913a53b5390_find-how-to-share-a-github-repo.md",
+      "turns": 14,
+      "messages": 79,
+      "credentialRedactions": 1,
+      "activeAtSnapshot": false,
+      "snapshotAt": "2026-11-15T03:29:44.663Z",
+      "jsonSha256": "d72833d0b10a3c566b52435337534d480ffc09f9060c5f6a612dab9d34d76f3f",
+      "markdownSha256": "bb940cc69bce832c9f83edd2ba49ddfe45570444b0268849eb39511611b08f0f"
+    },
+    {
+      "id": "01a1dc62-6e6c-73c2-a38a-de232fb0c764",
+      "title": "Draft parallel constructions for sections…",
+      "kind": "codex",
+      "json": "01a1dc62-6e6c-73c2-a38a-de232fb0c764_draft-parallel-constructions-for-sections.json",
+      "markdown": "01a1dc62-6e6c-73c2-a38a-de232fb0c764_draft-parallel-constructions-for-sections.md",
+      "turns": 9,
+      "messages": 51,
+      "credentialRedactions": 0,
+      "activeAtSnapshot": false,
+      "snapshotAt": "2026-11-15T03:29:44.666Z",
+      "jsonSha256": "0f6b0cd5e234951311635c6cdde821e7e7d43e07cf80e23e9eeaba889d95053b",
+      "markdownSha256": "b40e1f7ed70613af29c855779882c459c96709c9863662db4db9e766b5e6e1bf"
+    },
+    {
+      "id": "01a1dc7b-d3e2-7ef0-86db-54685dc36df9",
+      "title": "Explain Lai’s sections 8–11",
+      "kind": "codex",
+      "json": "01a1dc7b-d3e2-7ef0-86db-54685dc36df9_explain-lai-s-sections-8-11.json",
+      "markdown": "01a1dc7b-d3e2-7ef0-86db-54685dc36df9_explain-lai-s-sections-8-11.md",
+      "turns": 4,
+      "messages": 12,
+      "credentialRedactions": 0,
+      "activeAtSnapshot": false,
+      "snapshotAt": "2026-11-15T03:29:44.668Z",
+      "jsonSha256": "2bc21b454e560b276b597020f201edfc69e5f9b260c0c66ac68fc9e404c06c15",
+      "markdownSha256": "c106ac7b36f33606dbff171c201aa89019a7fb83a623dee757b588550ccdc9c2"
+    },
+    {
+      "id": "01a1dc96-0e74-7e93-b593-0f2e9bf019c0",
+      "title": "Organize project chats in Mathathon",
+      "kind": "codex",
+      "json": "01a1dc96-0e74-7e93-b593-0f2e9bf019c0_organize-project-chats-in-mathathon.json",
+      "markdown": "01a1dc96-0e74-7e93-b593-0f2e9bf019c0_organize-project-chats-in-mathathon.md",
+      "turns": 1,
+      "messages": 8,
+      "credentialRedactions": 0,
+      "activeAtSnapshot": false,
+      "snapshotAt": "2026-11-15T03:29:44.668Z",
+      "jsonSha256": "3f998dd859b8475b3b4a1e0b6fc84b5799f44ac799e0a6da884a48e558539340",
+      "markdownSha256": "0807cdc23bb4877cc4eaba3b24b897b2bd32eab4066b4468d07a9b717fa75557"
+    },
+    {
+      "id": "01a1dc9f-3557-7143-85d7-38cfa3bc9de5",
+      "title": "Audit PDF Exposition Sources",
+      "kind": "codex",
+      "json": "01a1dc9f-3557-7143-85d7-38cfa3bc9de5_audit-pdf-exposition-sources.json",
+      "markdown": "01a1dc9f-3557-7143-85d7-38cfa3bc9de5_audit-pdf-exposition-sources.md",
+      "turns": 6,
+      "messages": 30,
+      "credentialRedactions": 0,
+      "activeAtSnapshot": false,
+      "snapshotAt": "2026-11-15T03:29:44.667Z",
+      "jsonSha256": "ee1ca0e60b6d33f4bcec7fdb848d98d3df2658dfeb1607040021dd4d949150d0",
+      "markdownSha256": "ae91c96f1936f50a25350abfe84dac5b19e2067872c55ea4bc2328f52e1a7705"
+    },
+    {
+      "id": "01a1dd3e-9873-7ea0-ab59-74a7f554b384",
+      "title": "Push chats and add future directions",
+      "kind": "codex",
+      "json": "01a1dd3e-9873-7ea0-ab59-74a7f554b384_push-chats-and-add-future-directions.json",
+      "markdown": "01a1dd3e-9873-7ea0-ab59-74a7f554b384_push-chats-and-add-future-directions.md",
+      "turns": 1,
+      "messages": 3,
+      "credentialRedactions": 0,
+      "activeAtSnapshot": true,
+      "snapshotAt": "2026-11-15T03:29:44.632Z",
+      "jsonSha256": "7c1b460be819cfa3d550399c9d147065df57287ecce950835f472e5fbde8f146",
+      "markdownSha256": "4e2a669373781949d9cc4adf9de11ef716ea8a9b272077b88e07a986995ff48b"
+    },
+    {
+      "id": "6af8b2e2-3c04-83e8-8651-43fc243265b9",
+      "title": "Theorem 22 Implies Irrationality",
+      "kind": "chatgpt",
+      "json": "6af8b2e2-3c04-83e8-8651-43fc243265b9_theorem-22-implies-irrationality.json",
+      "markdown": "6af8b2e2-3c04-83e8-8651-43fc243265b9_theorem-22-implies-irrationality.md",
+      "turns": 5,
+      "messages": 8,
+      "credentialRedactions": 0,
+      "activeAtSnapshot": false,
+      "snapshotAt": "2026-11-15T03:29:44.671Z",
+      "jsonSha256": "13fed48c4d1526154ded65209001ef3a722ef24bd276f27bb7ca01809bc3eb7f",
+      "markdownSha256": "2b6f748ac96fd6265348da7a5ec3637b21bd1fbfe795f82a73a6029a82d28c04"
+    }
+  ]
+}

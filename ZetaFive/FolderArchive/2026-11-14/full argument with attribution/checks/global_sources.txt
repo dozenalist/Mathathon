@@ -1,0 +1,87 @@
+GLOBAL ARITHMETIC: SOURCE AND VERIFICATION LEDGER
+Prepared 14 November 2026.
+
+Primary construction source:
+Aabir Fauzan, zeta(5) is irrational, manuscript 17 September 2026,
+https://zenodo.org/records/22826419
+Local sources/Fauzan_2026_zeta5.pdf and .txt.
+Section 5: prime normalization and limiting profiles.
+Equation (5.18): exact finite-inner integral.
+Tail primitives: source of the periodic quadratic/cubic integration scheme.
+The original rank-loss claim is NOT used.
+
+Revised arithmetic route:
+Moritz Firsching and contributors, mo271/Zeta5, Apache-2.0.
+Fixed revision 7fe736760f4b96bfdb4334b68e3b3124ecbe10b0.
+https://github.com/mo271/Zeta5/tree/7fe736760f4b96bfdb4334b68e3b3124ecbe10b0
+
+All following paths are relative to Apery/ at this fixed revision:
+Norm.lean:
+  Mcut, Lsmall, betaI, allocI, WI, WO, Lp, mN
+  GV_F_Lp, GV_F_big, integral_mN
+  Finite support and per-prime normalization.
+Growth/InnerPrime.lean:
+  neg_vSK_le, innerOK_of, inner_Lp_le
+  Scalar factorial bound, inner allocation side conditions,
+  deficit formula with explicit bounded error.
+Growth/ClassSum.lean; Growth/ClassData.lean:
+  class_sum_approx, signed class counts and layer sums.
+Growth/TablePrime.lean:
+  Ein, table_Lp_le
+  Continuous finite-inner profile.
+Growth/TailPrime.lean:
+  psiR_le, popoviciu, two_Jc_eq, tail_Lp_le
+  Quadratic majorant and the constant 27/16.
+Growth/TailIntegral.lean:
+  PT, CT, Pbar, PhiT, abs_CT_le, tail_sum_le
+  Exact endpoint upper bound -6843153/128000000.
+Growth/OuterPrime.lean:
+  GO, sum_wO_class, Eout, outer_Lp_le
+  Full outer rank-loss profile.
+Growth/InnerTable.lean; Growth/InnerSum.lean:
+  125 affine pieces and exact integral.
+Growth/OuterTable.lean; Growth/TableIntegrals.lean:
+  13 source intervals (10 after merging identical adjacent formulas),
+  integral129101/96000.
+PrimeSum.lean; PrimeSumIntegral.lean:
+  Weighted prime-sum limit derived from PNT.
+Growth.lean:
+  Final assembly; source convenient final arithmetic bound1.36+epsilon.
+
+Expository changes:
+- Class-count expressions use direct one-dimensional step-function
+  integrals instead of the source's 3x3 coefficient arrays. The equality
+  follows by partitioning0<z<1/2 at f,1-f,g,1-g.
+- We suppress explicit bounded-error constants only AFTER establishing
+  that M=400 is fixed, q<400 and all class weights/deficits are bounded.
+  The resulting total error is O(K), hence o(K^2).
+- The tail profile is derived in the continuous variables by completing
+  one square and proving the range-seven variance bound; this is a
+  reorganization of the source TailPrime.lean proof, not a new estimate.
+- The exact total B<1.35 is used instead of the source's weaker rounding
+  to1.36+epsilon. All four contributions are those of the source.
+
+Independent finite verification:
+checks/growth_exact.py is a newly written standard-library Python
+implementation of the cited mathematical formulas.
+It derives affine pieces by exact branch ordering; constructs a lower
+envelope with all admissible integer levels; proves each interval's
+dominance with exact endpoint inequalities; and integrates rationally.
+It does not use the source generators' sample-point checks as proof.
+No source code was copied into this new implementation.
+
+Executed successfully:
+  inner125 pieces, integral322437603634266857629/7535670527041937280000
+  outer10 merged pieces, integral129101/96000
+  tail upper bound-6843153/128000000
+  small-prime111/8000
+  total2031621487545722214389669/1507134105408387456000000
+       =1.3480031274292041... <1.35.
+Outputs: growth_inner_table.csv, growth_outer_table.csv,
+growth_exact_result.json.
+
+Scope:
+This mathematical translation and finite check do not claim a fresh
+Lean build. The global section depends on the separately explained
+local valuation lemmas and on the classical prime number theorem.
+No statement that Persiflage used Lai is made or needed.

@@ -1,0 +1,249 @@
+{
+  "purpose": "Document structure and layout preparation, not mathematical validation",
+  "page_count": 30,
+  "unique_labels": 131,
+  "missing_references": [],
+  "duplicate_labels": [],
+  "pages": [
+    {
+      "number": 1,
+      "first_lines": [
+        "A formal \u03b6(9) analogue",
+        "of Fauzan\u2019s construction",
+        "A section-by-section working draft"
+      ]
+    },
+    {
+      "number": 2,
+      "first_lines": [
+        "3 The local rational functional 8",
+        "3.1 Completion at a prime . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9",
+        "3.2 Distribution . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9"
+      ]
+    },
+    {
+      "number": 3,
+      "first_lines": [
+        "1 Introduction and the proposed analogue",
+        "The source manuscript [ 1] constructs rational polynomials in a variable X, uses local estimates to",
+        "clear their coe\ufb00icients, and uses a positive integral to estimate their values at X = \u03b6(5). Here we"
+      ]
+    },
+    {
+      "number": 4,
+      "first_lines": [
+        "both effects: in particular, the outer polynomial correction disappears sooner, even though the total",
+        "denominator-clearing estimate becomes more costly.",
+        "The calculation in Section 5 and Appendix B gives"
+      ]
+    },
+    {
+      "number": 5,
+      "first_lines": [
+        "Define D0(t) = 1 and",
+        "Dm(t) =",
+        "mY"
+      ]
+    },
+    {
+      "number": 6,
+      "first_lines": [
+        "2.2 The polynomial estimates: conditional targets",
+        "Draft analogue of Theorem 2.1 [Conditional]. For fixed M \u0015 40 and K 2 40Z>0 with",
+        "K \u0015 200M 2, the tasks for the later sections are to establish a positive rational normalizer in ( 2.6)"
+      ]
+    },
+    {
+      "number": 7,
+      "first_lines": [
+        "2.4 The positive integral representation",
+        "Analogue of Proposition 2.2 [Derived]. For every rational function in the domain of \u00b59,X ,",
+        "\u00b59,\u03b6(9)(R) ="
+      ]
+    },
+    {
+      "number": 8,
+      "first_lines": [
+        "and the final sum is a finite constant. Thus rational functions in the domain are bounded near the",
+        "integration endpoint zero and have at most polynomial growth at infinity, which the exponential",
+        "decay absorbs."
+      ]
+    },
+    {
+      "number": 9,
+      "first_lines": [
+        "3.1 Completion at a prime",
+        "[Derived] Analytic and principal-part pieces. Fix p \u0015 11. Put",
+        "\u03bad = d(d \u0000 1) \u0001 \u0001 \u0001 (d \u0000 6)8! Bd\u22127 (d \u0015 7), \u03ba 0 = \u0001 \u0001 \u0001 = \u03ba6 = 0."
+      ]
+    },
+    {
+      "number": 10,
+      "first_lines": [
+        "The analogue of (3.7), for rational g with simple integer poles, is",
+        "\u03c49,X (g) = p\u22128",
+        "p\u22121X"
+      ]
+    },
+    {
+      "number": 11,
+      "first_lines": [
+        "show that fi(\u0000x2) is integer-valued on Zp. Squaring the determinant of this triangular basis change",
+        "gives precisely the prescribed SK. Hence the analogue of (3.11) is",
+        "F9,K(X) = det"
+      ]
+    },
+    {
+      "number": 12,
+      "first_lines": [
+        "Here \u03f5a = 1 for the first E classes in decreasing order of \u2113K(a), and is zero otherwise. With x = K/p,",
+        "the unchanged inequalities 2Hx\u000021/20 < T < 2Hx and ba \u0014 6\u03b1x+3 give T \u0000ba > 2\u03bbx\u000081/20 \u0015 3/2.",
+        "Thus the dimensions are nonnegative and sum to h."
+      ]
+    },
+    {
+      "number": 13,
+      "first_lines": [
+        "Choose ce 2 Zp representing p\u00b59(te) modulo p, with ce = 0 below this cutoff. Replace the",
+        "polynomial moments by \u00b509(te) = \u00b59(te) \u0000 ce/p, leaving simple-pole values unchanged. Set W = D5N",
+        "and Dtail = DK/DN ; the rational input is still W ti+j/Dtail. Its polynomial quotient has degree at"
+      ]
+    },
+    {
+      "number": 14,
+      "first_lines": [
+        "4.4 Explicit outer exponent and the primes beyond K",
+        "[Derived] For a removed class, the new table is",
+        "\u2113 2 3 4 5 6"
+      ]
+    },
+    {
+      "number": 15,
+      "first_lines": [
+        "No positive-part operation is applied to \u0000L9,p: the product is a positive rational number, not neces-",
+        "sarily an integer. Legendre\u2019s formula gives",
+        "vp(SK) = 2 h"
+      ]
+    },
+    {
+      "number": 16,
+      "first_lines": [
+        "For example, when K \u0015 2p, the limits of v/K and u/K are 1 \u0000 2y and (1 + \u03b1 \u0000 3y)+; inserting",
+        "these in Section 4 gives the first line. This replaces both R0 \u0000 d in source (5.8)\u2013(5.9). There is no",
+        "additional limiting rank subtraction."
+      ]
+    },
+    {
+      "number": 17,
+      "first_lines": [
+        "Only the mean linear term has changed. Define the same periodic primitives",
+        "P (x) = 74 g(1 \u0000 g) \u0000 \u03bbf (1 \u0000 f ), P = 2923240 ,",
+        "G0(v) = v(1 \u0000 v)(2v \u0000 1)6 , C per(x) = 74\u03b1 G0(g) \u0000 \u03bbG0(f )."
+      ]
+    },
+    {
+      "number": 18,
+      "first_lines": [
+        "Write U\u03c1(t) =",
+        "R",
+        "log jt \u0000 uj d\u03c1(u) and I(\u03c1) ="
+      ]
+    },
+    {
+      "number": 19,
+      "first_lines": [
+        "Moreover I(\u03c9i) = log \u03b5, and the mutual circle energy is at least log jti \u0000 tjj. Expanding I(\u03c3 \u0000 \u03c1) \u0014 0",
+        "and using ( 6.2) proves the analogue of (6.6):",
+        "2"
+      ]
+    },
+    {
+      "number": 20,
+      "first_lines": [
+        "weight bound, and Jacobian are respectively 2h(h \u0000 1), (12N \u0000 2K)h, 9h, and h. Including the",
+        "Riemann-sum loss 12h gives the analogue of (6.13):",
+        "\u22069,K(\u03b6(9)) \u0014 K2h(h+6N \u2212K)+20h(C9e12/2)hh!"
+      ]
+    },
+    {
+      "number": 21,
+      "first_lines": [
+        "The degree is h by the leading-coe\ufb00icient calculation in Section 2. The positive Gram representation",
+        "and the positive scalar factors give Q9,K,M (\u03be) > 0. The normalization changes neither fact. For fixed",
+        "M 2 40Z>0 the input estimates are"
+      ]
+    },
+    {
+      "number": 22,
+      "first_lines": [
+        "[Conditional] The remaining manipulation can still be recorded. Suppose some strengthened esti-",
+        "mates, for a fixed cutoff, gave an \u03b5 > 0 and",
+        "0 < Q 9,K,M (\u03be) \u0014 e\u2212\u03b5K2 for all su\ufb00iciently large K 2 40Z>0. (7.6)"
+      ]
+    },
+    {
+      "number": 23,
+      "first_lines": [
+        "For the exterior branch, differentiate the defining integral and normalize by U (t) \u0000 log jtj ! 0; on",
+        "the interval, the sine-product identity for cos \u03d5 \u0000 cos \u03b8 gives the constant. This proves the algebra of",
+        "(A.1)."
+      ]
+    },
+    {
+      "number": 24,
+      "first_lines": [
+        "The parenthesis is negative, which determines the direction of the square-root bound. Nesting makes",
+        "U\u03c1 nonincreasing up to a1, constant on [a1, b1], and nondecreasing thereafter. Thus (A.7) is",
+        "B(l, r) = 2 max fU\u03c1(l), U\u03c1(r)g \u0000"
+      ]
+    },
+    {
+      "number": 25,
+      "first_lines": [
+        "B.1 Evaluation of the inner integral",
+        "For 0 \u0014 u < 1, set d0(u) = min( u, 1 \u0000 u) and let e(u) equal 1 for u \u0014 1/2 and \u00001 otherwise. For",
+        "f = fxg,"
+      ]
+    },
+    {
+      "number": 26,
+      "first_lines": [
+        "l r b c",
+        "1/3 43 /120 35 /4 \u00008",
+        "43/120 37 /100 76 /5 \u000026"
+      ]
+    },
+    {
+      "number": 27,
+      "first_lines": [
+        "C.1 The relative matrix norm",
+        "Write \u03be = \u03b6(9), G = G9,K(\u03be), and M9,K = [ X]G9,K(X). The positive Gram representation makes",
+        "G positive definite. Consequently the real symmetric matrix BK = G\u22121/2M9,KG\u22121/2 is defined. Its"
+      ]
+    },
+    {
+      "number": 28,
+      "first_lines": [
+        "The middle step uses",
+        "\u0000 m",
+        "j\u2212N \u22121"
+      ]
+    },
+    {
+      "number": 29,
+      "first_lines": [
+        "Choose constants c > \u03bb/\u03b5 and \u03bd > \u03c1c . For a su\ufb00iciently large positive integer b, take K =",
+        "40dc log b/40e, so c log b \u0014 K < c log b + 40. If ja/b \u0000 \u03bej \u0014 b\u2212\u03bd, put \u03b4 = a/b \u0000 \u03be. The relative",
+        "norm bound gives"
+      ]
+    },
+    {
+      "number": 30,
+      "first_lines": [
+        "Sources and drafting record",
+        "The structural source for every numbered section and appendix is Fauzan\u2019s manuscript [ 1], dated 17 September",
+        "2026, version 1, 32 pages. Its equations are cited by their original numbers throughout. The title below records"
+      ]
+    }
+  ]
+}

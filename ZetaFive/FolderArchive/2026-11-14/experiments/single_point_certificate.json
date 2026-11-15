@@ -1,0 +1,35 @@
+{
+  "t": "3/4",
+  "pi_interval": {
+    "lower_exact": "196349540849362077/62500000000000000",
+    "upper_exact": "785398163397448313/250000000000000000",
+    "lower_decimal": 3.141592653589793,
+    "upper_decimal": 3.141592653589793
+  },
+  "potential_value_phi8": {
+    "lower_exact": "-1339052099963122173/200000000000000000",
+    "upper_exact": "-6695260499815610659/1000000000000000000",
+    "lower_decimal": -6.6952604998156104,
+    "upper_decimal": -6.6952604998156104
+  },
+  "real_certificate_coefficient_lower_witness": {
+    "lower_exact": "-83437477686136833/200000000000000000",
+    "upper_exact": "-83437477686136769/200000000000000000",
+    "lower_decimal": -0.41718738843068415,
+    "upper_decimal": -0.41718738843068387
+  },
+  "arithmetic_coefficient": {
+    "lower_exact": "1723096570942415121/1000000000000000000",
+    "upper_exact": "861548285471207561/500000000000000000",
+    "lower_decimal": 1.723096570942415,
+    "upper_decimal": 1.723096570942415
+  },
+  "combined_certificate_lower_witness": {
+    "lower_exact": "326477295627932739/250000000000000000",
+    "upper_exact": "1305909182511731277/1000000000000000000",
+    "lower_decimal": 1.305909182511731,
+    "upper_decimal": 1.3059091825117313
+  },
+  "proved": "For the original measure and the D_N^8 arithmetic certificate at M=200, any valid potential upper constant yields total coefficient >13/10. Other measures and arithmetic estimates are not excluded.",
+  "method": "Rational interval arithmetic; every endpoint rounded outward to 10^-18; rigorous series remainders."
+}

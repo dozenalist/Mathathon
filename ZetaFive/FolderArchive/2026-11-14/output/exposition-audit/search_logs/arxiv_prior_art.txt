@@ -1,0 +1,104 @@
+ARXIV AND PRIMARY-LITERATURE ATTRIBUTION AUDIT
+Audit date: 14 November 2026 (America/Los_Angeles)
+Agent: arxiv_prior_art
+
+Scope and limits
+Read the LaTeX corresponding to lai_parallel_constructions.pdf (six pages) and zeta5_irrationality_overview.pdf (five pages), including their explicit Lai/Fauzan source notes. The other chat is actively expanding its work; conclusions apply to the versions copied into this audit's snapshot directory. This is a targeted public-web/primary-source search, not a complete search of every internet document and not a plagiarism probability. Mathematical equivalence is not evidence of textual copying. Exact and near-phrase queries can miss unindexed sources, OCR errors, changed pages, and paraphrases.
+
+Main finding
+No distinctive verbatim passage was identified in the arXiv sources examined. Several central mathematical structures demonstrably predate these drafts. The most consequential missing antecedent is Marc Prevost's exact Hurwitz-zeta/Stieltjes representation and its Bernoulli moments. Lai and Fauzan are explicitly credited, but the claim that the transform language supplies an organizing interpretation should be accompanied by a citation to Prevost. The general integral-Gram/determinant language also has clear antecedents in Zudilin and Brown. These are recommendations for fuller intellectual attribution, not findings that the drafts copied those authors' words.
+
+1. Marc Prevost, Remainder Pade approximants for the Hurwitz zeta function
+Primary preprint: https://arxiv.org/abs/1709.05389
+Full text examined: https://arxiv.org/pdf/1709.05389
+Journal version: Results in Mathematics 74 (2019), article 51. Preprint v1 is 2017.
+Relevant locations: Theorem 1, equation (3.1), printed pp.5-6; Theorem 2, equations (3.2)-(3.4), p.6; proof in section 4.1, pp.8-9; equation (4.5), p.9. Theorem 1 expresses zeta(s,a) as a^(1-s) times [1/(s-1)+1/(2a)+integral w_s(x)/(a^2+x^2) dx]. At s=5 this is exactly the draft's Phi(a)=a^4*zeta(5,a)-1/(2a)-1/4. Taking m=5 in Prevost's weight, integrating its fifth derivative once, and expanding 1/(exp(2*pi*x)-1) gives w_5(x)=(2*pi)^4*x^5/12 * sum_{l>=1} l^4 exp(-2*pi*l*x), the draft's weight. Theorem 2 gives the same Bernoulli moments after k=2e and s=5. The proof starts from Hermite's formula and uses repeated integration by parts, also relevant to the requested expanded exposition.
+Draft mapping: parallel-constructions p.2; overview section 2/p.2. Exact mathematical identity, not merely generic background. Both drafts cite Lai there; neither names Prevost. Recommended note: 'The positive-measure representation is the s=5 specialization of Prevost, Theorems 1-2, used here in Lai's notation.' The finite geometric expansion and its explicit remainder are routine consequences, so cite the underlying transform rather than claim a novel transform framework.
+
+2. Wadim Zudilin, A determinantal approach to irrationality
+Primary: https://arxiv.org/abs/1507.05697
+Full text: https://arxiv.org/pdf/1507.05697 (v2)
+Relevant locations: Proposition 2 pp.1-2; section 2 pp.2-3, equations (2)-(5). It constructs a degree-n polynomial form as a Hankel determinant of moments, identifies it with a positive squared-Vandermonde multiple integral, obtains exp(O(n^2)) decay through a transfinite-diameter estimate, clears denominators and reaches a positive integer tending to zero. This is a particularly close antecedent to the overview's proof architecture and its arithmetic-cost-versus-analytic-decay explanation. Its specific integrals, hypotheses and constants differ from Fauzan's. The draft correctly credits Lai/Fauzan for the particular construction, but a short historical background citation would be useful. No distinctive wording match identified.
+
+3. Francis Brown, Mellin transforms, transfinite diameter and rational approximations of integrals
+Primary: https://arxiv.org/abs/2604.20741
+Full text: https://arxiv.org/html/2604.20741v1
+Relevant locations: section 3.1 equation (3.1), Definition 3.1; section 3.2 Lemma 3.2; sections 3.3-3.6; section 7.5. Brown defines an integral symmetric bilinear pairing, represents it in a chosen basis as an integral Gram matrix, describes the congruence P^T Q P under basis change, and proves positivity by integrating the square of a linear combination. This matches the organizing language of parallel-constructions pp.4 and 6 and the overview p.3, but these ingredients are also standard linear algebra. Brown's general geometric/Mellin framework is different, and no evidence establishes direct dependence of the drafts on this paper. Recommend 'Related determinant frameworks include Zudilin and Brown' if adding a related-work note, not an accusation.
+
+4. Christian Krattenthaler, A determinant identity for moments of orthogonal polynomials that implies Uvarov's formula for the orthogonal polynomials of rationally related densities
+Primary: https://arxiv.org/abs/2103.03969
+Full text: https://arxiv.org/pdf/2103.03969
+Relevant locations: introduction pp.1-2; Theorem 1 p.2. Studies Hankel determinants of a functional/measure multiplied by a rational function, with both analytic and formal-series interpretations and transforms of orthogonal polynomials. This is the broader setting of A(t)=W(t)/T(t) and the rationally modified moment pairing in the draft. It does not establish that the draft borrowed its exposition or specialized results. Optional historical citation, especially if describing the rational modifier as a new conceptual device.
+
+5. Peter J. Forrester, Meet Andreief, Bordeaux 1886, and Andreev, Kharkov 1882-83
+Primary: https://arxiv.org/abs/1806.10411
+Full text: https://arxiv.org/pdf/1806.10411
+Relevant location: introduction, pp.1-2, determinant-of-integrals identity and Vandermonde specialization. This is a direct bibliographic reference for the overview's named Andreief identity. The draft already attributes it by name, so missing a full reference is a bibliographic improvement rather than uncredited invention. Forrester establishes the original publication year as 1886.
+
+6. Alan Haynes and Wadim Zudilin, Hankel Determinants of Zeta Values
+Primary: https://arxiv.org/abs/1510.01901
+Full text: https://arxiv.org/pdf/1510.01901
+Relevant location: abstract/introduction and main asymptotic/Diophantine results. Uses Hankel determinants of zeta values in arithmetic progressions. This is relevant mathematical background, but not the same affine functional nor the same zeta(5) construction. No distinctive wording match. The draft need not cite every neighboring result to be properly attributed.
+
+7. Michael Coons and Daniel Sutherland, Towards the (ir)rationality of values of Dirichlet series
+Primary: https://arxiv.org/abs/1404.2699
+Full text: https://arxiv.org/pdf/1404.2699
+Relevant location: abstract/introduction and Hankel determinant bounds. Relates nonnegative Dirichlet-series coefficients, small Hankel determinants, and denominator growth. Broad antecedent only; distinct problem and formulas.
+
+8. Timothy Ferguson, Rational Approximations via Hankel Determinants
+Primary: https://arxiv.org/abs/2003.10616
+Full text: https://arxiv.org/pdf/2003.10616
+Relevant location: abstract/introduction and main theorem. Constructs approximations from a linear functional and its integral moments, including zeta values. The paper explicitly says its approximations do not establish arithmetic properties of these constants. Conceptual parallel, not the draft's formulas and not evidence of copying.
+
+9. Li Lai, The linear independence of 1, zeta(3), and zeta(4)
+Primary: https://arxiv.org/abs/2610.06838
+Full text examined: https://arxiv.org/html/2610.06838v1 (5 October 2026)
+Relevant location: introduction and proof outline before section 2. Explicitly credits Fauzan; discusses Hankel determinants, prime residue classes and minors for denominators, Heine's identity and orthogonal polynomials for real decay, and the contradiction between quadratic exponential rates. It cites Haynes-Zudilin, Zudilin and Brown as precursors. This is a later application of the same credited method. Do not confuse Li Lai with Chun Wing Lai, author of the source exposition. It need not be credited as the source of a draft expressly explaining Chun Wing Lai/Fauzan, absent direct borrowing.
+
+10. Stephane Fischler, Li Lai, Johannes Sprang and Wadim Zudilin, Many more odd zeta values are irrational
+Primary: https://arxiv.org/abs/2611.16156
+Full text: https://arxiv.org/html/2611.16156v1 (12 November 2026)
+Relevant location: abstract, introduction, section 5.1. Explicitly credits Fauzan's Hankel method. Section 5.1 handles Hankel matrices of moments of signed discrete measures and their Cauchy-Stieltjes transforms. This resembles the vocabulary of the draft's discrete pairing, but its infinite signed support, functional equations and nonvanishing method are materially different from the finite invertible Vandermonde argument for G_1. This is a relevant parallel, not a demonstrated source.
+
+11. Alex Raymond Hyman, The Irrationality of zeta(5), Archive of Formal Proofs
+Primary formalization entry: https://isa-afp.org/entries/Zeta_5_Irrational.html (26 October 2026)
+Its abstract directly summarizes the same rational functional, positive moment representation, Hankel determinant, arithmetic normalization and logarithmic-energy estimate, explicitly tracing the work to Fauzan and domino14's Lean port. This is an independently published exposition of the same source construction, without evidence of word copying. Root already independently inspected this entry.
+
+Other relevant primary-author exposition discovered
+Bogdan Grechuk, 'Zeta(5) is irrational', 29 September 2026: https://functor.network/user/3333/entry/1997 . Strong high-level parallel to overview: final integer-polynomial contradiction, Hankel positive moments, logarithmic-energy decay and prime-by-prime denominator cost. Forwarded to phrase audit agent for closer comparison. Frank Calegari's Persiflage article https://galoisrepresentations.org/2026/09/24/zeta5-is-irrational/ is being audited independently by the other agents; it identifies Prevost and the rational-Gram framework and should be included in the final source map.
+
+Phrase search results
+The following quoted/combined searches returned no relevant exact match in this pass (some returned irrelevant fuzzy results):
+  "The apparent proliferation of objects" mathematics
+  "continuous positivity" "discrete nondegeneracy"
+  "integer samples" "asymptotic coefficients" Stieltjes
+  "The third derivative is essential" Bernoulli
+  "weighted pullback" "zeta"
+  "One functional" "bilinear form" zeta
+  "coefficient of" "t^{-3}" "Fauzan"
+These are negative search observations, not proof of uniqueness.
+
+Topic query log
+site:arxiv.org zeta(5) Fauzan Hankel determinant
+"Stieltjes transform" "asymptotic coefficients" moments
+"Bernoulli functional" zeta
+"zeta(5)" "Gram" Fauzan
+site:arxiv.org Andreief identity history Forrester
+site:arxiv.org "Hankel determinants" "zeta" irrationality
+site:arxiv.org "Bernoulli" "functional" "Hankel"
+site:arxiv.org "Bernoulli" "functional" Hankel determinant zeta
+site:arxiv.org "Hankel determinants" Zudilin "2021"
+site:arxiv.org "Stieltjes" "finite geometric"
+"Fauzan" "Brown" "determinant" zeta
+Prevost Hurwitz zeta Stieltjes representation Theorem 1 2019
+site:arxiv.org Prevost Hurwitz zeta Stieltjes
+"zeta(5)" "Stieltjes" "Prevost"
+Marc Prevost "Stieltjes" "Hurwitz" "2019"
+Marc Prevost "Rational approximation" "Hurwitz zeta" 2019
+
+Attribution judgment
+Strongly recommended added primary reference: Prevost (exact transform and moments).
+Useful intellectual-history note: Zudilin, Brown, plus Calegari's directly relevant exposition if it informed the reorganizing interpretation.
+Useful named-identity bibliography: Andreief via Forrester or the original.
+Optional neighboring work: Krattenthaler/Uvarov, Haynes-Zudilin, Coons-Sutherland, Ferguson, recent Li Lai and Fischler et al. These are not all required citations in a short exposition.
+No conclusion about copying can be drawn merely from shared equations, standard proof steps, or a similar sequence dictated by the mathematical argument. Evidence of outside exposition being consulted should be considered separately from exact-word searches.

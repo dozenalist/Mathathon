@@ -1,0 +1,107 @@
+LOCAL ARITHMETIC SOURCE MAP
+Prepared 14 November 2026.
+
+Principal source snapshot:
+  Moritz Firsching, mo271/Zeta5, commit
+  7fe736760f4b96bfdb4334b68e3b3124ecbe10b0.
+  Local checkout: sources/mo271-Zeta5.
+  Base URL:
+  https://github.com/mo271/Zeta5/blob/7fe736760f4b96bfdb4334b68e3b3124ecbe10b0/
+  Source is Apache-2.0. No source code is reproduced in the exposition;
+  the mathematical constructions and proofs are translated into prose.
+  This text does not claim an independently rebuilt Lean proof.
+
+Earlier principal source:
+  Aabir Fauzan, zeta(5) is irrational, 17 September 2026.
+  https://zenodo.org/records/22826419
+  Local PDF/text: sources/Fauzan_2026_zeta5.pdf / .txt.
+  Original sections 3--4 provide tau, pullback, integer-valued basis,
+  residue-class bases, weights, and the three-range organization.
+
+Mapping to local_arithmetic.tex:
+
+1. Gauss valuations and weighted determinants:
+   Apery/Arith/Val.lean, det_GV;
+   Apery/Arith/BasisChange.lean, det_basis_change.
+   Standard permutation expansion and bilinear basis change.
+
+2. tau, pole extension and pullback:
+   Fauzan section 3, equation (3.1).
+   Apery/Arith/PoleFun.lean, tauX, dd;
+   Apery/Arith/Pullback.lean, muX_eq_tauX.
+   The full pullback proof is retained in the root appendix.
+
+3. Integer-valued polynomial estimate:
+   Fauzan equation (3.9).
+   Apery/Arith/BinomBasis.lean;
+   Apery/Arith/TauBound.lean, tau_bound;
+   Apery/Arith/SmallPrime.lean, VG_eval_int_of_window.
+   The exposition derives the binomial identities from formal generating
+   functions and gives the valuation proof.
+
+4. Coarse rational-function estimate:
+   Apery/Arith/SmallPrimeTau.lean, crude_tauX.
+   Direct integer-window proof with residues at +/-1,...,+/-K;
+   it replaces the original analytic-ball argument.
+   The factorial ratio and elementary binomial valuation bound are shown.
+
+5. Coarse bound on F:
+   Fauzan (3.11)--(3.12).
+   Apery/Arith/SmallPrimeF.lean, small_prime_bound.
+   Exact q_i basis, integral evaluations, determinant normalization.
+
+6. Direct residue-class lemma including polynomial parts:
+   Apery/Arith/DirectBound.lean, VG_res;
+   Apery/Arith/DirectPoly.lean, VG_polyPart_eval, tauX_direct.
+   The substitution x=m+pz and monic-division argument are reproduced
+   mathematically, not replaced by a code citation.
+
+7. Inner CRT basis and capped row weights:
+   Fauzan section 4.1.
+   Apery/Arith/ClassFrame.lean, class_frame;
+   Apery/Arith/ClassCount.lean, Bse;
+   Apery/Arith/InnerWeights.lean, inner_bound_cap.
+   Zero count has the additional 5 from x^5; s_H(0) is doubled.
+
+8. Water-filling allocation:
+   Apery/Arith/InnerAlloc.lean, kfSel, PhiK_le_kf.
+   Apery/Norm.lean, betaI, kloI, ktopI, L0I, allocI.
+   The exposition proves the uniform O_400(1) version used by the
+   growth section, instead of carrying the formal source's large
+   explicit auxiliary constants. No change in the chosen allocation.
+
+9. Outer basis and nonpositive weights:
+   Fauzan section 4.2.
+   Apery/Arith/OuterBasis.lean, rootsO;
+   Apery/Arith/OuterEntryMain.lean, wO, outer_entry, outer_bound.
+   The exposition writes the root multisets as polynomial products.
+
+10. Pole congruence and two-pole cancellation:
+    Apery/Arith/PoleVal.lean, GV_poleValue_congr;
+    Apery/Arith/OuterEntries.lean, pair_GV;
+    Apery/Arith/OuterEntryMain.lean, pole_case_a, pole_case_b,
+    pole_case_zero.
+    Harmonic congruence, divided differences and both zero-class cases
+    are explained explicitly.
+
+11. Bernoulli high-moment correction and rank loss:
+    Apery/Arith/MomentVal.lean, VG_muMono_int;
+    Apery/Arith/OuterFrame.lean, outer_frame;
+    Apery/Arith/LowRank.lean, det_lowrank_bound.
+    Uses the standard von Staudt--Clausen theorem, stated in text.
+    Full loss r=max(0,52n+2-2p), NOT the original min(r,z).
+    Block determinant proof is included.
+
+12. Uniform conditions:
+    Sufficient conservative threshold K>480000, n>=12001.
+    Then p>K/400 implies p^2>3K, stronger than the source's listed
+    separation and degree conditions. Only eventual bounds are needed.
+
+Coverage:
+  All new argument-specific local inequalities are proved in prose.
+  Standard facts used: finite-difference interpolation, elementary
+  arithmetic of valuations, Chinese remainder theorem, Legendre's
+  factorial valuation formula, von Staudt--Clausen, determinant identities.
+  The source-dependent choices of bases, weights and allocation are
+  explicitly credited. Finite checks are supplementary and do not
+  substitute for the general proofs.

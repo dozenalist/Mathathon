@@ -1,0 +1,131 @@
+\section{The analytic estimate: one bound for every configuration}
+\label{analytic:section}
+
+The real estimate has three steps: express the determinant as a positive
+integral, bound its logarithm by an energy comparison, and restore the
+factorial normalization. Fauzan supplies the method and comparison
+measure \cite[Section 6 and Appendix A]{fauzan}; Firsching's analytic
+files give a further implementation \cite{firsching}.
+The detailed companion, Sections 5.1--5.6, proves the supporting bounds
+and records the finite certificate. Here we keep their role in the
+argument visible.
+Throughout, \(\alpha=N/K=3/40\) and \(\lambda=h/K=37/40\).
+
+\subsection{From the determinant to logarithmic energy}
+
+Applying Andr\'eief's identity to the positive Gram matrix gives
+\begin{equation}\label{analytic:andreief}
+ \Delta_K(\xi)=\frac1{h!}\int_{(0,\infty)^h}
+ \prod_{i<j}(y_i^2-y_j^2)^2
+ \prod_i A_K(y_i^2)w(y_i)\,dy_1\cdots dy_h.
+\end{equation}
+Expanding the two Vandermonde determinants and integrating term by term
+proves the identity: relabeling the variables leaves \(h!\) copies of
+the Gram determinant. Exponential decay makes every term integrable
+\cite{andreief}.
+
+Put \(y_i=K\sqrt{t_i}\). The external field comes directly from the
+finite products:
+\[
+ \log D_m(K^2t)
+ =2m\log K+K\int_0^{m/K}\log(t+u^2)\,du+O(\log K),
+\]
+uniformly for \(t\ge0\) and \(1\le m\le K\).
+The error is between zero and \(2\log K+2\), by comparison with the
+right-endpoint Riemann sum (companion, Section 5.5).
+Including the exponential factor in \(w\) gives
+\begin{equation}\label{analytic:field}
+ V(t)=2\pi\sqrt t+\int_0^1\log(t+u^2)\,du
+                 -6\int_0^\alpha\log(t+u^2)\,du.
+\end{equation}
+Thus the main exponent of the integrand is
+\[
+ E_K(\mathbf t)=2\sum_{i<j}\log|t_i-t_j|-K\sum_i V(t_i).
+\]
+The first term rewards separation; the second confines the points.
+This is the real counterpart of taking valuations of the same products
+in the arithmetic estimate.
+
+\subsection{Why one comparison measure is enough}
+
+Write \(U^\rho(t)=\int\log|t-u|\,d\rho(u)\) and
+\(I(\rho)=\iint\log|t-u|\,d\rho(t)d\rho(u)\).
+Fauzan's explicit positive combination of sixteen arcsine measures
+has mass \(\lambda\), support in \((0,2)\), and satisfies
+\begin{equation}\label{analytic:potential-target}
+ 2U^\rho(t)-V(t)\le M_0=-\frac{1329}{200}
+ \qquad(t\ge0).
+\end{equation}
+Its potential is certified on all 684 intervals of a partition of
+\([0,2]\), using outward rational bounds; a decreasing elementary
+majorant handles \(t\ge2\). The data and verification are in the
+companion, Sections 5.2--5.3, and \texttt{checks/analytic\_certificate.py}.
+This measure is chosen to prove a useful inequality, not to solve
+the exact equilibrium problem.
+
+The reason the inequality works is short. With this \(\rho\), let
+\(\eta\) be positive and compactly supported on \([0,\infty)\), of
+mass \(\lambda\), with absolute logarithmic integrability for
+\((\eta+\rho)\otimes(\eta+\rho)\).
+The zero-mass energy inequality gives \(I(\eta-\rho)\le0\), hence
+\[
+ I(\eta)-\int V\,d\eta
+ =I(\eta-\rho)+\int(2U^\rho-V)\,d\eta-I(\rho)
+ \le\lambda M_0-I(\rho).
+\]
+The Gaussian-kernel proof of the zero-mass inequality is in the
+companion, Section 5.4. The original moment measure defines the
+determinant; \(\eta\) describes a configuration; \(\rho\) bounds all
+configurations at once.
+
+The configuration measure \(\eta=K^{-1}\sum_i\delta_{t_i}\) has mass
+\(\lambda\). With the diagonal omitted,
+\(I(\eta)-\int V\,d\eta=E_K/K^2\).
+Its self-energy is infinite and negative, so it cannot be inserted
+directly. Replace each point mass by arclength
+on a circle of radius \(K^{-2}\). The circle self-energies and the
+change in the real-axis potential produce only \(O(K\log K)\).
+Keeping an extra decaying factor gives the precise usable bound
+\begin{align}\label{analytic:configuration}
+ E_K(\mathbf t)+\sum_i\sqrt{t_i}
+ \le{}&(\lambda M_0-I(\rho))K^2\\
+      &+(120+\sqrt2)h+2h\log K,\notag
+\end{align}
+for every \(t_i\ge0\) and admissible \(K\).
+The companion's Section 5.4 proves the circle-average and tail
+estimates; a real-axis potential inequality alone would not suffice.
+The retained factor \(\exp(-\sum_i\sqrt{t_i})\) makes the bound integrable.
+
+\subsection{The normalization cancels the larger terms}
+
+The remaining factors are elementary. The bound
+\(w(y)\le8192(1+y)^5e^{-2\pi y}\), the Jacobians, and the product
+errors contribute \(O(K\log K)\) to the logarithm. After
+\eqref{analytic:configuration}, the remaining one-variable integral is
+\(\int_0^\infty t^{-1/2}(1+\sqrt t)^5e^{-\sqrt t}\,dt=652\).
+The powers of \(K\) in the Vandermonde and \(A_K\) give
+\(\kappa=2\lambda(\lambda+6\alpha-1)\), so
+\[
+ \log\Delta_K(\xi)
+ \le\kappa K^2\log K+(\lambda M_0-I(\rho))K^2+O(K\log K).
+\]
+The factorial bounds for \(S_K\) give the opposite leading term:
+\begin{align*}
+ \log S_K&\le-\kappa K^2\log K+C_*K^2+O(K\log K),\\
+ C_*&=-2\lambda+12\alpha\lambda(1-\log\alpha)
+             +3\lambda^2-2\lambda^2\log(2\lambda).
+\end{align*}
+Thus normalization cancels the \(K^2\log K\) terms exactly. The
+certificate verifies
+\[
+ \lambda M_0-I(\rho)+C_*<-1.3669955.
+\]
+Keeping the elementary errors explicit yields, for every \(K=40n\),
+\begin{equation}\label{analytic:goal}
+ \boxed{\ \log F_K(\xi)
+ \le-1.3669955K^2+27K\log K+200K.\ }
+\end{equation}
+Sections 5.5--5.6 of the companion carry out this bookkeeping.
+The important margin is the negative quadratic coefficient; the
+arithmetic must make the coefficients integral at a smaller
+quadratic cost.

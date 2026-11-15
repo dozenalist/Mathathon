@@ -1,0 +1,416 @@
+{
+  "created_local": "2026-11-14",
+  "timezone": "America/Los_Angeles",
+  "purpose": "Audit trail for the full exposition requested using Persiflage as a guide.",
+  "attribution_policy": "Credit mathematics, conceptual exposition, proof revisions, data and adapted code separately. Do not infer provenance from similarity alone. Distinguish consulted originals from historical references located indirectly.",
+  "sources": [
+    {
+      "key": "persiflage",
+      "authors": [
+        "Frank Calegari (Persiflage)"
+      ],
+      "title": "zeta(5) is irrational",
+      "url": "https://galoisrepresentations.org/2026/09/24/zeta5-is-irrational/",
+      "role": "Explicitly requested guiding exposition and historical pointers; not the source of the quantitative estimates.",
+      "consulted_locations": [
+        "The formulas of Euler and Hermite",
+        "Hankel Determinants",
+        "The strategy",
+        "Prevost's moments and the introduction of the zeta value"
+      ],
+      "date_displayed": "2026-09-24",
+      "author_identity_source": "https://math.uchicago.edu/~fcale/research.html",
+      "revision_caveat": "The displayed publication date is recorded; the revision history of every paragraph is not established.",
+      "chronology": "This post precedes Lai. No dependence on Lai is asserted."
+    },
+    {
+      "key": "fauzan",
+      "authors": [
+        "Aabir Fauzan"
+      ],
+      "title": "zeta(5) is irrational",
+      "url": "https://zenodo.org/records/22826419",
+      "role": "Concrete determinant construction, original local arithmetic strategy, real-energy argument, comparison measure and certificate data.",
+      "consulted_locations": [
+        "Sections 1.1, 2, 3, 4, 5, 6; Appendix A; Appendix B",
+        "Appendix C.3"
+      ],
+      "date_on_manuscript": "2026-09-17",
+      "local_file": "../sources/Fauzan_2026_zeta5.pdf",
+      "sha256": "a42c05ccc46b9a7c36428913453c4617202c59109713ba20f464ab9ec640d0da",
+      "qualification": "The original M=200 normalization estimate and smaller rank-loss claim are not assumed in this version."
+    },
+    {
+      "key": "firsching",
+      "authors": [
+        "Moritz Firsching",
+        "Zeta5 contributors"
+      ],
+      "title": "Zeta5 Lean formalization",
+      "url": "https://github.com/mo271/Zeta5/tree/7fe736760f4b96bfdb4334b68e3b3124ecbe10b0",
+      "role": "Primary source for the revised finite partial-fraction local estimates, M=400 normalizer, full rank loss, continuous growth profiles and corrected constant. Also cross-checks analytic derivations.",
+      "consulted_locations": [
+        "Apery/Arith",
+        "Apery/Norm.lean",
+        "Apery/Growth.lean",
+        "Apery/Growth",
+        "Apery/RealBound.lean",
+        "Apery/MainEstimate.lean",
+        "Apery/Measure.lean",
+        "Apery/Potential.lean",
+        "Apery/Energy*",
+        "scripts/lemma61.py"
+      ],
+      "revision": "7fe736760f4b96bfdb4334b68e3b3124ecbe10b0",
+      "local_checkout": "../sources/mo271-Zeta5",
+      "license": "Apache-2.0",
+      "initial_substantive_commit": "2c80b320d06b4395605edbd413649d19094507af",
+      "initial_commit_author": "Moritz Firsching",
+      "additional_credit": "Paul-Lez coauthored Comparator CI addition. Lean, Mathlib, PrimeNumberTheoremAnd contributors supply formal infrastructure/background.",
+      "verification_scope": "Relevant source declarations/proofs inspected; complete Lean development not independently rebuilt for this draft."
+    },
+    {
+      "key": "lai",
+      "authors": [
+        "Chun Wing Lai"
+      ],
+      "title": "On Fauzan's Proof that zeta(5) is Irrational",
+      "url": "https://ai.vixra.org/pdf/2609.0080v1.pdf",
+      "role": "Later exposition used to cross-check and expand construction, positivity, exact degree and pullback; earlier chat drafts followed it.",
+      "consulted_locations": [
+        "Sections 3-7",
+        "Theorem 9.3 and equations (106)-(107) checked for source discrepancy"
+      ],
+      "date_on_manuscript": "2026-09-29",
+      "version": "v1",
+      "local_file": "../sources/Lai_2026_zeta5_rewrite.pdf",
+      "sha256": "9afed2159ee98131db3bba7af34714d21515356e7199cafe255d9b9498b1a855",
+      "qualification": "Not a source on which Persiflage depends; literal corrected arithmetic conclusion is not used."
+    },
+    {
+      "key": "prevost",
+      "authors": [
+        "Marc Prevost"
+      ],
+      "title": "Remainder Pade approximants for the Hurwitz zeta function",
+      "url": "https://arxiv.org/pdf/1709.05389v1",
+      "role": "Exact antecedent for the positive measure, Stieltjes transform, Bernoulli moments and orthogonal-polynomial approximation viewpoint.",
+      "consulted_locations": [
+        "Section 2, equations (2.8)-(2.11)",
+        "Theorems 1-2, equations (3.1)-(3.4)",
+        "Section 4.1"
+      ],
+      "preprint_date": "2017-09-15",
+      "journal": "Results in Mathematics 74 (2019), article 51"
+    },
+    {
+      "key": "prevost1996",
+      "authors": [
+        "Marc Prevost"
+      ],
+      "title": "A new proof of the irrationality of zeta(2) and zeta(3) using Pade approximants",
+      "url": "https://doi.org/10.1016/0377-0427(95)00019-4",
+      "role": "Historical context, located through Prevost and Persiflage. No estimate imported.",
+      "consulted_locations": [
+        "Bibliographic identification and description in Prevost's later paper"
+      ],
+      "original_full_text_consulted": false
+    },
+    {
+      "key": "prevost-rivoal",
+      "authors": [
+        "Marc Prevost",
+        "Tanguy Rivoal"
+      ],
+      "title": "Diagonal convergence of the remainder Pade approximants for the Hurwitz zeta function",
+      "url": "https://doi.org/10.1016/j.jnt.2020.10.019",
+      "role": "Background attribution for effective remainder Pade approximation; no theorem is used as an input.",
+      "consulted_locations": [
+        "Publisher abstract and bibliographic metadata"
+      ],
+      "publisher_url": "https://www.sciencedirect.com/science/article/abs/pii/S0022314X20303620"
+    },
+    {
+      "key": "zudilin",
+      "authors": [
+        "Wadim Zudilin"
+      ],
+      "title": "A determinantal approach to irrationality",
+      "url": "https://arxiv.org/pdf/1507.05697v2",
+      "role": "Methodological antecedent: positive Hankel determinants, squared Vandermonde integrals, quadratic decay and coefficient normalization.",
+      "consulted_locations": [
+        "Proposition 2",
+        "Section 2, equations (2)-(5)"
+      ],
+      "qualification": "Its hypotheses differ; the criterion needed here is separately proved."
+    },
+    {
+      "key": "brown",
+      "authors": [
+        "Francis Brown"
+      ],
+      "title": "Mellin transforms, transfinite diameter and rational approximations of integrals",
+      "url": "https://arxiv.org/html/2604.20741v1",
+      "role": "Context for integral bilinear pairings, basis changes and denominator/common-factor savings.",
+      "consulted_locations": [
+        "Sections 3.1-3.2",
+        "Sections 7.4-7.5"
+      ],
+      "qualification": "No claim that the specific zeta(5) estimates occur in this paper."
+    },
+    {
+      "key": "krattenthaler",
+      "authors": [
+        "Christian Krattenthaler"
+      ],
+      "title": "A determinant identity for moments of orthogonal polynomials that implies Uvarov's formula for the orthogonal polynomials of rationally related densities",
+      "url": "https://arxiv.org/pdf/2103.03969v1",
+      "role": "General setting for rational modifications; primary confirmation of historical Uvarov connection.",
+      "consulted_locations": [
+        "Introduction",
+        "Theorem 1",
+        "Section 6",
+        "References 8-9"
+      ],
+      "qualification": "General determinant identity not invoked as an unproved step."
+    },
+    {
+      "key": "uvarov",
+      "authors": [
+        "V. B. Uvarov"
+      ],
+      "title": "The connection between systems of polynomials that are orthogonal with respect to different distribution functions",
+      "url": "https://doi.org/10.1016/0041-5553(69)90124-4",
+      "role": "Historical credit, consulted through Krattenthaler, not a proof input.",
+      "consulted_locations": [
+        "Krattenthaler Introduction, Section 6 and reference 9"
+      ],
+      "original_full_text_consulted": false
+    },
+    {
+      "key": "andreief",
+      "authors": [
+        "C. Andreief",
+        "Peter J. Forrester (consulted account)"
+      ],
+      "title": "Andreief's integration identity",
+      "url": "https://arxiv.org/pdf/1806.10411v1",
+      "role": "Historical attribution and bibliographic confirmation of identity proved in the draft.",
+      "consulted_locations": [
+        "Introduction and identity",
+        "Reference 5"
+      ],
+      "original_reference": "C. Andreief, Mem. Soc. Sci. Phys. Nat. Bordeaux (3) 2 (1886), 1-14",
+      "original_full_text_consulted": false
+    },
+    {
+      "key": "dlmf",
+      "authors": [
+        "NIST DLMF editors and contributors"
+      ],
+      "title": "Digital Library of Mathematical Functions",
+      "url": "https://dlmf.nist.gov/",
+      "role": "Precise classical formula references.",
+      "consulted_locations": [
+        "4.36.3",
+        "25.6.2",
+        "25.11.29",
+        "24.4",
+        "24.10(i)",
+        "24.2"
+      ]
+    }
+  ],
+  "earlier_chat_text_reused": [
+    {
+      "file": "../detailed irrationality argument/zeta5_detailed_argument.tex",
+      "sha256": "a8a52ef4f4c3db97500f5097f907502061629f3ebb9004e5bd12ca17ac3d384c",
+      "role": "Earlier chat exposition expanded/reorganized and reattributed; not an independent mathematical source."
+    },
+    {
+      "file": "../detailed irrationality argument/appendix_classical.tex",
+      "sha256": "8ff48d4be6a4374d9983ec3aa1cb80016debcc2d4c4c02c735c6115f255d6c67",
+      "role": "Earlier chat exposition expanded/reorganized and reattributed; not an independent mathematical source."
+    },
+    {
+      "file": "../detailed irrationality argument/appendix_algebra.tex",
+      "sha256": "b3ffca6c8c9358e0eb30598fbf3bb8560286dc5d13a5c4edc492a9a94aa1150c",
+      "role": "Earlier chat exposition expanded/reorganized and reattributed; not an independent mathematical source."
+    }
+  ],
+  "detailed_source_maps": {
+    "analytic_sources.txt": "ANALYTIC PROOF: SOURCE AND VERIFICATION MAP\n\nPrimary mathematical source:\nAabir Fauzan, \"zeta(5) is irrational\", manuscript 17 September 2026,\nhttps://zenodo.org/records/22826419\nLocal sources/Fauzan_2026_zeta5.pdf and .txt.\nSection6: comparison external field, zero-mass energy, smoothing,\nconfiguration bound, scaling and normalization.\nAppendixA Tables1-2: all sixteen rational arcsine components and complete\n684-interval partition. EquationsA.1-A.10: potentials, energy and\nelementary series certificate.\n\nFormal source used as cross-check:\nMoritz Firsching, Zeta5 Lean project,\nhttps://github.com/mo271/Zeta5\nFixed revision 7fe736760f4b96bfdb4334b68e3b3124ecbe10b0.\nApache-2.0. The repository's license is preserved in the source checkout.\n\nExact files/declarations consulted:\nApery/Measure.lean: table1, a/b/c data, M0, Cstar, Irho.\nApery/Andreief.lean and Apery/DetIntegral.lean: determinant integral.\nApery/Energy.lean: w_le', integral_le_sum_log, sum_log_le_integral.\nApery/RealBound.lean: log_Δ_le, log_S_le, real_bound'.\nApery/EnergyConst.lean: log_ge_artanh, log_ge_of_pow_two, energy_const.\nApery/ArcsinePotential.lean: arcsine potential and continuity.\nApery/Gaussian.lean, ZeroMass.lean, EnergyLimit.lean,\nEnergyFinal.lean: decomposition described in the repository README.\nApery/TableCheck.lean and Apery/Table/: finite potential certificate.\nscripts/lemma61.py: literal transcription of Table1 and compressed Table2.\nscripts/gen_table2.py: comparison of certificate design; not executed.\n\nRelation to the new prose:\nThe construction, constants, measure, partition, and proof strategy are\nFauzan's. The added text expands elementary proofs and checks the\narithmetic operations, integrability and scaling. No claim of a new\nanalytic method is made. Firsching's formalization is explicitly credited\nfor the detailed implementation and safe final bound with coefficient27.\nThe prose uses an elementary upper error7h for log S, rather than source6h;\nthis harmless relaxation is derived directly.\n\nVerification supplied with this draft:\nanalytic_data.json is transcribed from the data in scripts/lemma61.py,\nwith attribution and SHA256 of the source file. The numerical sampling\nin that source script is NOT used.\nanalytic_certificate.py is a new standard-library implementation of exact\noutward interval arithmetic on a dyadic grid2^-112; it encloses logarithms\nand arctangents using proved series tails, and square roots using isqrt.\nIt checks nesting, masses, minimum-location signs, exact partition\ncoverage, all684 interval bounds, the tail at2, and the energy constant.\nanalytic_certificate.json contains its exact rational result and hashes.\nanalytic_intervals.csv lists every interval and its exact bound.\nNo Lean build was run by the analytic author; references to formalization\nare source comparisons, not a claim of a new independent kernel build.\n\nImportant distinction:\nM0=-1329/200=-6.645.\nThe finite interval target is -6645002/1000000=-6.645002, strictly smaller.\nThe energy constant always uses M0, not the stricter interval target.\n\nClassical mathematical facts proved in the prose:\nAndréief determinant identity; circle mean-log identity; arcsine\npotential via factorization; logarithm/arctangent series bounds;\nGaussian proof of zero-mass energy; local arcsine mass estimate;\nfactorial and Riemann-sum comparisons. Routine Fubini/Tonelli/dominated\nconvergence are stated with the required integrability checks.\n",
+    "local_sources.txt": "LOCAL ARITHMETIC SOURCE MAP\nPrepared 14 November 2026.\n\nPrincipal source snapshot:\n  Moritz Firsching, mo271/Zeta5, commit\n  7fe736760f4b96bfdb4334b68e3b3124ecbe10b0.\n  Local checkout: sources/mo271-Zeta5.\n  Base URL:\n  https://github.com/mo271/Zeta5/blob/7fe736760f4b96bfdb4334b68e3b3124ecbe10b0/\n  Source is Apache-2.0. No source code is reproduced in the exposition;\n  the mathematical constructions and proofs are translated into prose.\n  This text does not claim an independently rebuilt Lean proof.\n\nEarlier principal source:\n  Aabir Fauzan, zeta(5) is irrational, 17 September 2026.\n  https://zenodo.org/records/22826419\n  Local PDF/text: sources/Fauzan_2026_zeta5.pdf / .txt.\n  Original sections 3--4 provide tau, pullback, integer-valued basis,\n  residue-class bases, weights, and the three-range organization.\n\nMapping to local_arithmetic.tex:\n\n1. Gauss valuations and weighted determinants:\n   Apery/Arith/Val.lean, det_GV;\n   Apery/Arith/BasisChange.lean, det_basis_change.\n   Standard permutation expansion and bilinear basis change.\n\n2. tau, pole extension and pullback:\n   Fauzan section 3, equation (3.1).\n   Apery/Arith/PoleFun.lean, tauX, dd;\n   Apery/Arith/Pullback.lean, muX_eq_tauX.\n   The full pullback proof is retained in the root appendix.\n\n3. Integer-valued polynomial estimate:\n   Fauzan equation (3.9).\n   Apery/Arith/BinomBasis.lean;\n   Apery/Arith/TauBound.lean, tau_bound;\n   Apery/Arith/SmallPrime.lean, VG_eval_int_of_window.\n   The exposition derives the binomial identities from formal generating\n   functions and gives the valuation proof.\n\n4. Coarse rational-function estimate:\n   Apery/Arith/SmallPrimeTau.lean, crude_tauX.\n   Direct integer-window proof with residues at +/-1,...,+/-K;\n   it replaces the original analytic-ball argument.\n   The factorial ratio and elementary binomial valuation bound are shown.\n\n5. Coarse bound on F:\n   Fauzan (3.11)--(3.12).\n   Apery/Arith/SmallPrimeF.lean, small_prime_bound.\n   Exact q_i basis, integral evaluations, determinant normalization.\n\n6. Direct residue-class lemma including polynomial parts:\n   Apery/Arith/DirectBound.lean, VG_res;\n   Apery/Arith/DirectPoly.lean, VG_polyPart_eval, tauX_direct.\n   The substitution x=m+pz and monic-division argument are reproduced\n   mathematically, not replaced by a code citation.\n\n7. Inner CRT basis and capped row weights:\n   Fauzan section 4.1.\n   Apery/Arith/ClassFrame.lean, class_frame;\n   Apery/Arith/ClassCount.lean, Bse;\n   Apery/Arith/InnerWeights.lean, inner_bound_cap.\n   Zero count has the additional 5 from x^5; s_H(0) is doubled.\n\n8. Water-filling allocation:\n   Apery/Arith/InnerAlloc.lean, kfSel, PhiK_le_kf.\n   Apery/Norm.lean, betaI, kloI, ktopI, L0I, allocI.\n   The exposition proves the uniform O_400(1) version used by the\n   growth section, instead of carrying the formal source's large\n   explicit auxiliary constants. No change in the chosen allocation.\n\n9. Outer basis and nonpositive weights:\n   Fauzan section 4.2.\n   Apery/Arith/OuterBasis.lean, rootsO;\n   Apery/Arith/OuterEntryMain.lean, wO, outer_entry, outer_bound.\n   The exposition writes the root multisets as polynomial products.\n\n10. Pole congruence and two-pole cancellation:\n    Apery/Arith/PoleVal.lean, GV_poleValue_congr;\n    Apery/Arith/OuterEntries.lean, pair_GV;\n    Apery/Arith/OuterEntryMain.lean, pole_case_a, pole_case_b,\n    pole_case_zero.\n    Harmonic congruence, divided differences and both zero-class cases\n    are explained explicitly.\n\n11. Bernoulli high-moment correction and rank loss:\n    Apery/Arith/MomentVal.lean, VG_muMono_int;\n    Apery/Arith/OuterFrame.lean, outer_frame;\n    Apery/Arith/LowRank.lean, det_lowrank_bound.\n    Uses the standard von Staudt--Clausen theorem, stated in text.\n    Full loss r=max(0,52n+2-2p), NOT the original min(r,z).\n    Block determinant proof is included.\n\n12. Uniform conditions:\n    Sufficient conservative threshold K>480000, n>=12001.\n    Then p>K/400 implies p^2>3K, stronger than the source's listed\n    separation and degree conditions. Only eventual bounds are needed.\n\nCoverage:\n  All new argument-specific local inequalities are proved in prose.\n  Standard facts used: finite-difference interpolation, elementary\n  arithmetic of valuations, Chinese remainder theorem, Legendre's\n  factorial valuation formula, von Staudt--Clausen, determinant identities.\n  The source-dependent choices of bases, weights and allocation are\n  explicitly credited. Finite checks are supplementary and do not\n  substitute for the general proofs.\n",
+    "global_sources.txt": "GLOBAL ARITHMETIC: SOURCE AND VERIFICATION LEDGER\nPrepared 14 November 2026.\n\nPrimary construction source:\nAabir Fauzan, zeta(5) is irrational, manuscript 17 September 2026,\nhttps://zenodo.org/records/22826419\nLocal sources/Fauzan_2026_zeta5.pdf and .txt.\nSection 5: prime normalization and limiting profiles.\nEquation (5.18): exact finite-inner integral.\nTail primitives: source of the periodic quadratic/cubic integration scheme.\nThe original rank-loss claim is NOT used.\n\nRevised arithmetic route:\nMoritz Firsching and contributors, mo271/Zeta5, Apache-2.0.\nFixed revision 7fe736760f4b96bfdb4334b68e3b3124ecbe10b0.\nhttps://github.com/mo271/Zeta5/tree/7fe736760f4b96bfdb4334b68e3b3124ecbe10b0\n\nAll following paths are relative to Apery/ at this fixed revision:\nNorm.lean:\n  Mcut, Lsmall, betaI, allocI, WI, WO, Lp, mN\n  GV_F_Lp, GV_F_big, integral_mN\n  Finite support and per-prime normalization.\nGrowth/InnerPrime.lean:\n  neg_vSK_le, innerOK_of, inner_Lp_le\n  Scalar factorial bound, inner allocation side conditions,\n  deficit formula with explicit bounded error.\nGrowth/ClassSum.lean; Growth/ClassData.lean:\n  class_sum_approx, signed class counts and layer sums.\nGrowth/TablePrime.lean:\n  Ein, table_Lp_le\n  Continuous finite-inner profile.\nGrowth/TailPrime.lean:\n  psiR_le, popoviciu, two_Jc_eq, tail_Lp_le\n  Quadratic majorant and the constant 27/16.\nGrowth/TailIntegral.lean:\n  PT, CT, Pbar, PhiT, abs_CT_le, tail_sum_le\n  Exact endpoint upper bound -6843153/128000000.\nGrowth/OuterPrime.lean:\n  GO, sum_wO_class, Eout, outer_Lp_le\n  Full outer rank-loss profile.\nGrowth/InnerTable.lean; Growth/InnerSum.lean:\n  125 affine pieces and exact integral.\nGrowth/OuterTable.lean; Growth/TableIntegrals.lean:\n  13 source intervals (10 after merging identical adjacent formulas),\n  integral129101/96000.\nPrimeSum.lean; PrimeSumIntegral.lean:\n  Weighted prime-sum limit derived from PNT.\nGrowth.lean:\n  Final assembly; source convenient final arithmetic bound1.36+epsilon.\n\nExpository changes:\n- Class-count expressions use direct one-dimensional step-function\n  integrals instead of the source's 3x3 coefficient arrays. The equality\n  follows by partitioning0<z<1/2 at f,1-f,g,1-g.\n- We suppress explicit bounded-error constants only AFTER establishing\n  that M=400 is fixed, q<400 and all class weights/deficits are bounded.\n  The resulting total error is O(K), hence o(K^2).\n- The tail profile is derived in the continuous variables by completing\n  one square and proving the range-seven variance bound; this is a\n  reorganization of the source TailPrime.lean proof, not a new estimate.\n- The exact total B<1.35 is used instead of the source's weaker rounding\n  to1.36+epsilon. All four contributions are those of the source.\n\nIndependent finite verification:\nchecks/growth_exact.py is a newly written standard-library Python\nimplementation of the cited mathematical formulas.\nIt derives affine pieces by exact branch ordering; constructs a lower\nenvelope with all admissible integer levels; proves each interval's\ndominance with exact endpoint inequalities; and integrates rationally.\nIt does not use the source generators' sample-point checks as proof.\nNo source code was copied into this new implementation.\n\nExecuted successfully:\n  inner125 pieces, integral322437603634266857629/7535670527041937280000\n  outer10 merged pieces, integral129101/96000\n  tail upper bound-6843153/128000000\n  small-prime111/8000\n  total2031621487545722214389669/1507134105408387456000000\n       =1.3480031274292041... <1.35.\nOutputs: growth_inner_table.csv, growth_outer_table.csv,\ngrowth_exact_result.json.\n\nScope:\nThis mathematical translation and finite check do not claim a fresh\nLean build. The global section depends on the separately explained\nlocal valuation lemmas and on the classical prime number theorem.\nNo statement that Persiflage used Lai is made or needed.\n",
+    "parallel_revision_sources.txt": "PARALLEL-CONSTRUCTIONS REVISION: EXPLANATORY PROVENANCE\n14 November 2026\n\nRequested chat:\n  Find parallel constructions in the Zeta(5)...\n  App title uses a final ellipsis character.\n  Thread ID: 01a1dc1f-f2bf-7531-976e-7f07e6a19ab0\n  All four turns retrieved through read_thread; hasMore=false.\n  The final provenance correction controls the earlier novelty wording.\n\nCorrected companion:\n  ../zeta5_unified_framework.tex (relative to the document folder)\n  SHA256:\n  aa4d266a6cd21ec515e5290ad1a5f2a3b8734e842e00fcd3ee4ae10c59c91f72\n\nWhat was incorporated:\n  * One bilinear form, viewed through its positive integral and residue\n    slope; this removes a repeated residue calculation in the degree proof.\n    Underlying source: Fauzan Sections 2.3-2.4.\n  * Primitive evaluation size, invariant under rational scaling.\n    Underlying source: Fauzan Appendix C.3; notation/teaching emphasis\n    from the chat.\n  * Three arithmetic coordinate choices: integer values, prescribed\n    residue-class vanishing, and exact cancellation of pole factors.\n    Underlying strategy: Fauzan Sections 3-4; the implementation remains\n    Firsching's revised finite partial-fraction argument.\n  * Polynomial Euler-Maclaurin operator, interpreted as a terminating\n    formal series. Classical input: DLMF 24.2 and 24.4.\n    No p-adic analytic extension is assumed.\n  * Finite products/counts versus their continuous logarithmic/arithmetic\n    profiles. Underlying estimates: Fauzan Sections 5-6, with Firsching's\n    revised arithmetic profiles.\n  * Equal-mass energy identity and distinct moment/configuration/comparison\n    measures. Underlying source: Fauzan Section 6.1; the circle errors\n    and finite potential certificate remain fully included.\n  * Periodic Bernoulli descriptions of the existing tail primitives.\n    Underlying integration argument: Fauzan Section 5.3 and Firsching\n    Growth/TailIntegral.lean. DLMF 24.2-24.4 supplies classical notation.\n\nWhat was shortened:\n  The optional Pade-approximant error proof was condensed to the exact\n  Stieltjes samples and finite moment remainder needed for the perspective.\n  The exact-degree proof now uses the already established residue pairing.\n  Duplicate determinant expansions and explanatory passages were trimmed.\n\nQuantitative boundary:\n  No original min(rank,zero-weight-count) saving or M=200 estimate was\n  imported. The capped inner weights, full rank loss, M=400 arithmetic,\n  comparison-measure data, and finite certificate inputs are unchanged.\n  The chat is an expository source, not a new primary mathematical source.\n"
+  },
+  "finite_checks": {
+    "analytic_certificate.json": {
+      "sha256": "902f63668be8cf82a9a4f5c7a00fa010d7560f61d365e579d4767f3e67030d2c",
+      "results": {
+        "status": "PASS: all comparisons performed with exact integer arithmetic",
+        "bits": 112,
+        "log_terms": 48,
+        "atan_terms": 64,
+        "data_source": "Fauzan, Appendix A, Tables 1-2; transcription from mo271/Zeta5/scripts/lemma61.py",
+        "source_revision": "7fe736760f4b96bfdb4334b68e3b3124ecbe10b0",
+        "data_sha256": "601e1419622167af697a4b67099c80f01ac59180fae6468517d36e2ffe8caa74",
+        "script_sha256": "a52ce48de9f27c9810fb2b9699d00df495783bf07685fc2bbd1f39b5fbf5da0b",
+        "partition_intervals": 684,
+        "partition_exactly_covers": "[0,2]",
+        "worst_interval_j_d_k": [
+          30,
+          6,
+          26
+        ],
+        "maximum_endpoint_bound_decimal_enclosure": [
+          "-6.645002689215588324",
+          "-6.645002689215588323"
+        ],
+        "maximum_endpoint_bound_exact_enclosure": [
+          "-17251413294084790384199880780056851/2596148429267413814265248164610048",
+          "-34502826588169580768399761560109315/5192296858534827628530496329220096"
+        ],
+        "target_potential_bound": "-6645002/1000000 < -1329/200",
+        "phi_derivative_q_minus": [
+          "-0.000000047420631305",
+          "-0.000000047420631304"
+        ],
+        "phi_derivative_q_plus": [
+          "0.000000051304860270",
+          "0.000000051304860271"
+        ],
+        "V_star": [
+          "0.913559526349733583",
+          "0.913559526349733584"
+        ],
+        "energy": [
+          "-2.126593445147050404",
+          "-2.126593445147050403"
+        ],
+        "C_star": [
+          "2.653035990340488661",
+          "2.653035990340488662"
+        ],
+        "quadratic_coefficient": [
+          "-1.366995564512460936",
+          "-1.366995564512460935"
+        ],
+        "quadratic_coefficient_exact": [
+          "-887230846906136776729071005737603/649037107316853453566312041152512",
+          "-3548923387624547106916284022950073/2596148429267413814265248164610048"
+        ],
+        "target_U": "-2733991/2000000",
+        "tail_at_2_with_half_sqrt": [
+          "-7.276302135402256068",
+          "-7.276302135402256067"
+        ],
+        "pi": [
+          "3.141592653589793238",
+          "3.141592653589793239"
+        ]
+      }
+    },
+    "growth_exact_result.json": {
+      "sha256": "228dbae9f89118b8bb2e33014b0d19883951528864c054f81ad932c61d9205c5",
+      "results": {
+        "method": "exact rational affine-branch certificates",
+        "inner_pieces": 125,
+        "outer_pieces": 10,
+        "all_125_rows_equal_pinned_Lean_table": true,
+        "small": "111/8000",
+        "inner": "322437603634266857629/7535670527041937280000",
+        "tail_upper_bound": "-6843153/128000000",
+        "outer": "129101/96000",
+        "total_upper_bound": "2031621487545722214389669/1507134105408387456000000",
+        "gap_below_1_35": "3009554755600851210331/1507134105408387456000000",
+        "decimal_total_for_orientation_only": 1.3480031274292041
+      }
+    },
+    "local_checks.json": {
+      "sha256": "51514cf9d239925137b5931244d071e9ceffbcc5f8c0b23f2ee74d2a4de47e9d",
+      "results": {
+        "integer_basis_cases": 168,
+        "pole_congruences": 88,
+        "low_moments": 169,
+        "direct_class_bound_cases": 9,
+        "inner_allocations_and_all_row_class_inequalities": 45,
+        "status": "PASS; finite consistency checks only"
+      }
+    },
+    "condensed_budget.json": {
+      "sha256": "7057a964df7859af5309e8b2f9323dee6eeaad82856cb58c440c89e870dc5194",
+      "results": {
+        "method": "exact rational comparison with previously verified arithmetic results",
+        "rows": [
+          {
+            "contribution": "small",
+            "certified_exact_upper_bound": "111/8000",
+            "displayed_upper_bound": "0.013875",
+            "upward_rounding_verified": true
+          },
+          {
+            "contribution": "inner",
+            "certified_exact_upper_bound": "322437603634266857629/7535670527041937280000",
+            "displayed_upper_bound": "0.04279",
+            "upward_rounding_verified": true
+          },
+          {
+            "contribution": "tail_upper_bound",
+            "certified_exact_upper_bound": "-6843153/128000000",
+            "displayed_upper_bound": "-0.05346",
+            "upward_rounding_verified": true
+          },
+          {
+            "contribution": "outer",
+            "certified_exact_upper_bound": "129101/96000",
+            "displayed_upper_bound": "1.34481",
+            "upward_rounding_verified": true
+          }
+        ],
+        "displayed_sum": "269603/200000",
+        "displayed_sum_decimal": "1.348015",
+        "below_1_35": true
+      }
+    }
+  },
+  "redistributed_source_excerpts": [
+    {
+      "file": "source-excerpts/InnerSum.lean",
+      "source": "https://github.com/mo271/Zeta5/blob/7fe736760f4b96bfdb4334b68e3b3124ecbe10b0/Apery/Growth/InnerSum.lean",
+      "sha256": "d60a976a2ce4ccedd748d9881208f8259f7951c5e35a152bd4069ea14a648a09",
+      "modification": "None; unmodified copy for exact table comparison.",
+      "license": "Apache-2.0; see LICENSE.upstream.txt"
+    }
+  ],
+  "revised_local": "2026-11-14",
+  "expository_revision": {
+    "chat_title": "Find parallel constructions in the Zeta(5)…",
+    "thread_id": "01a1dc1f-f2bf-7531-976e-7f07e6a19ab0",
+    "coverage": "All four turns; read_thread reported hasMore=false and nextCursor=null.",
+    "controlling_attribution": "Final provenance correction: the common architecture and quantitative machinery are already explicit in Fauzan; the chat supplies organization and classical interpretations.",
+    "companion": "../zeta5_unified_framework.tex",
+    "companion_sha256": "aa4d266a6cd21ec515e5290ad1a5f2a3b8734e842e00fcd3ee4ae10c59c91f72",
+    "base_source_package_sha256": "1ccbc34e3e934a88dfe82d207f49e57bf6bf1dfee6d2b7237694d8b2dba2a8ff",
+    "quantitative_inputs": "All original checks, data, and saved results are byte-identical to the verified base. M=400 and full rank loss retained.",
+    "length": "46 physical pages; condensed optional Pade material and reused the residue identity in the degree proof."
+  },
+  "condensation_revision": {
+    "date": "2026-11-14",
+    "main_pdf_pages": 21,
+    "previous_pdf_pages": 46,
+    "scope": "Concise analytic/arithmetic estimates with explicit supporting-bound references to the preserved detailed companion; full integral representation retained.",
+    "detailed_companion": "zeta5_detailed_companion.pdf",
+    "detailed_companion_sha256": "7a65ee699f5ab58ea447f3914f2027128252ec79b4f86868621411be2401b805",
+    "detailed_sources": "zeta5_detailed_companion_sources.zip",
+    "detailed_sources_sha256": "3262a241fcdc15eaefd623619f7112ad9aff7f6b4d6c4778b3704fee15e959df",
+    "quantitative_changes": "None. Four displayed table entries rounded upwards, with exact rational verification in checks/condensed_budget.json.",
+    "supporting_proof_locations": {
+      "analytic": "Detailed companion Sections 5.1-5.6",
+      "local_arithmetic": "Detailed companion Sections 6.1-6.8",
+      "global_arithmetic": "Detailed companion Sections 7.1-7.8",
+      "exact_inner_table": "Detailed companion Appendix C"
+    },
+    "new_primary_mathematical_sources": []
+  }
+}

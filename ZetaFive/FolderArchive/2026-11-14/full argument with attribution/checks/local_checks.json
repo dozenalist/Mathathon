@@ -1,0 +1,8 @@
+{
+  "integer_basis_cases": 168,
+  "pole_congruences": 88,
+  "low_moments": 169,
+  "direct_class_bound_cases": 9,
+  "inner_allocations_and_all_row_class_inequalities": 45,
+  "status": "PASS; finite consistency checks only"
+}

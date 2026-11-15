@@ -1,0 +1,130 @@
+\newpage
+\heading{Appendix B. Why the degree is exactly $h$}
+{Lai, section 6, Proposition 6.1. Optional for the irrationality argument.}
+
+The main proof only needs $\deg\Delta_K\leq h$. We can also show that
+the highest-degree term does not cancel. The reason is that cancellation
+in $A_K=D_N^6/D_K$ leaves exactly $h=K-N$ distinct poles, matching the
+number of rows of the matrix.
+
+Write $a_k=-k^2$ for $N<k\leq K$ and
+$T_K(t)=\prod_{k=N+1}^K(t-a_k)$. The residue of
+$A_K(t)t^{i+j}=D_N(t)^5t^{i+j}/T_K(t)$ at $a_k$ is
+\[
+ c_k^{ij}=\frac{D_N(a_k)^5a_k^{i+j}}{T_K'(a_k)}.
+\]
+Indeed, multiply by $t-a_k$ and evaluate at $a_k$; the other denominator
+factors multiply to $T_K'(a_k)$. The polynomial part of the partial
+fraction decomposition contributes no $X$ to $\mu_X$. By
+\eqref{eq:mu-pole}, the coefficient of $X$ contributed by this pole
+is $k^4c_k^{ij}$. Thus, writing $G_K(X)=G_0+XG_1$, we have
+\[
+ (G_1)_{ij}=\sum_{k=N+1}^K d_ka_k^ia_k^j,
+ \qquad d_k=\frac{k^4D_N(a_k)^5}{T_K'(a_k)}.
+\]
+
+Let $V$ be the square matrix with entries $V_{ik}=a_k^i$, where
+$0\leq i<h$ and $N<k\leq K$. The preceding equality is the matrix identity
+\[
+ G_1=V\operatorname{diag}(d_k)V^{\mathsf T},\qquad
+ \det V=\prod_{N<k<\ell\leq K}(a_\ell-a_k).
+\]
+For completeness, the Vandermonde formula follows because the determinant
+is an alternating polynomial in the nodes: it vanishes whenever two nodes
+coincide, so every difference $a_\ell-a_k$ divides it. The product of these
+differences has the same total degree $0+1+\cdots+(h-1)$. Comparing the
+coefficient of the monomial whose successive exponents are
+$0,1,\ldots,h-1$ shows that the remaining constant is one.
+
+All nodes are distinct, so $\det V\ne0$. Also $d_k\ne0$: the factors
+of $D_N(a_k)=\prod_{j=1}^N(j^2-k^2)$ are nonzero, as are those of
+$T_K'(a_k)$. Therefore $\det G_1\ne0$. In the determinant expansion,
+the coefficient of $X^h$ is obtained by taking the $X$ term from each of
+the $h$ factors. Consequently
+\[
+ [X^h]\Delta_K(X)=\det G_1\ne0,\qquad \deg\Delta_K=h.
+\]
+
+The leading coefficient has an especially simple form. Pairing the two
+factors belonging to each unordered pair of nodes gives
+\[
+ \prod_{k=N+1}^K T_K'(a_k)
+ =(-1)^{h(h-1)/2}\prod_{N<k<\ell\leq K}(a_\ell-a_k)^2.
+\]
+Using this in $\det G_1=(\det V)^2\prod_k d_k$ cancels the squared
+differences and yields
+\[
+ \boxed{[X^h]\Delta_K(X)
+ =(-1)^{h(h-1)/2}\prod_{k=N+1}^K k^4D_N(-k^2)^5
+ \in\Z\setminus\{0\}.}
+\]
+This concerns one coefficient. It does not assert that all coefficients
+of $\Delta_K$ are integers, and it is separate from the positivity of
+$\Delta_K(\xi)$.
+
+\newpage
+\heading{Appendix C. The same functional in different coordinates}
+{Lai, section 7, Lemma 7.3. Optional once the arithmetic estimate is assumed.}
+
+The auxiliary functional in section 7 changes the pole locations from
+negative squares to integers. Here is the complete identity, including
+the weight that accompanies the substitution.
+
+Define $L:\Q[x]\to\Q$ by $L(x^k)=B_k$, and put
+\[
+ \tau(P)=\frac{L(P''')}{24},\qquad
+ d(r)=\begin{cases}r,&r\geq0,\\-r-1,&r<0.\end{cases}
+\]
+On rational functions with only simple integer poles, define $\tau_X$
+by its polynomial restriction $\tau$ and the pole values
+\[
+ \tau_X\!\left(\frac1{x-r}\right)=\Hfive{d(r)}-X,
+ \qquad r\in\Z.
+\]
+Unique partial fractions extend these prescriptions linearly, just as
+in the definition of $\mu_X$.
+
+For every rational function $R$ in the domain of $\mu_X$, the identity is
+\[
+ \boxed{\mu_X(R)=\tau_X\!\left(x^5R(-x^2)\right).}
+\]
+The right side is defined: a pole at $t=-j^2$ becomes a pair of simple
+poles at $x=j$ and $x=-j$, and a polynomial remains a polynomial after
+substitution and multiplication by $x^5$. Both sides are linear in $R$.
+By \eqref{eq:partial}, it is enough to check monomials and simple poles.
+
+For $R(t)=t^e$, the transformed function is $(-1)^ex^{2e+5}$. Three
+differentiations give
+\[
+ \tau_X\bigl((-1)^ex^{2e+5}\bigr)
+ =\frac{(-1)^e(2e+5)(2e+4)(2e+3)B_{2e+2}}{24},
+\]
+which is exactly \eqref{eq:mu-moment}. This explains the order of the
+derivative: it produces both the three consecutive factors and the
+required Bernoulli index.
+
+For $R(t)=1/(t+j^2)$, polynomial division gives
+\[
+ \frac{x^5}{j^2-x^2}
+ =-x^3-j^2x-\frac{j^4}{2}
+       \left(\frac1{x-j}+\frac1{x+j}\right).
+\]
+One can check the signs by multiplying by $j^2-x^2$. The polynomial
+terms give $x^5-j^4x$, and the pole terms give $+j^4x$.
+Now $\tau(-x^3)=-1/4$, $\tau(-j^2x)=0$, $d(j)=j$, and $d(-j)=j-1$.
+Applying $\tau_X$ therefore gives
+\begin{align*}
+ \tau_X\!\left(\frac{x^5}{j^2-x^2}\right)
+ &=-\frac14-\frac{j^4}{2}
+       \left(\Hfive{j}+\Hfive{j-1}-2X\right)\\
+ &=j^4\bigl(X-\Hfive{j}\bigr)-\frac14+\frac1{2j},
+\end{align*}
+where the last equality uses
+$\Hfive{j}-\Hfive{j-1}=j^{-5}$. This is \eqref{eq:mu-pole}, completing
+the proof by linearity.
+
+Both the substitution $t=-x^2$ and the factor $x^5$ are necessary.
+The identity supplies a second description of the same functional;
+it introduces no new determinant. Integer pole locations make the
+arithmetic calculations by residue class possible, while the original
+$t$-description makes the positive integral representation visible.

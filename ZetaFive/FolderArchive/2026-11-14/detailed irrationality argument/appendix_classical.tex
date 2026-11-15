@@ -1,0 +1,132 @@
+\newpage
+\heading{Appendix A. A common source for the two integral formulas}
+{A Fourier-series calculation supplies the classical identities used in the proof.}
+
+The moment and pole calculations use two familiar facts: Euler's formula
+for even zeta values and a special Hurwitz zeta integral. Both follow from
+one elementary identity. Put $f(y)=(e^{2\pi y}-1)^{-1}$. For $u>0$,
+\begin{equation}\label{eq:kernel}
+ \frac1{1-e^{-u}}=\frac12+\frac1u
+       +2\int_0^\infty f(y)\sin(uy)\dd y.
+\end{equation}
+
+To prove it, periodically extend
+$F_u(x)=\cosh(u(x-\tfrac12))$ from $[0,1]$. Its endpoints agree,
+and its Fourier coefficients satisfy
+\[
+ c_n=\int_0^1 F_u(x)e^{-2\pi\mathrm i nx}\dd x
+     =\frac{2u\sinh(u/2)}{u^2+4\pi^2n^2},\qquad n\in\Z.
+\]
+Indeed, integrate $F_u''=u^2F_u$ twice by parts. The equal endpoint
+values cancel, and the endpoint derivative difference is
+$2u\sinh(u/2)$, giving
+$(u^2+4\pi^2n^2)c_n=2u\sinh(u/2)$.
+The periodic function is continuous and piecewise smooth. The Fourier
+convergence theorem at $x=0$ therefore gives
+$\cosh(u/2)=c_0+2\sum_{n\geq1}c_n$. Dividing by $2\sinh(u/2)$ yields
+\[
+ \frac12\coth(u/2)=\frac1u
+      +2u\sum_{n\geq1}\frac1{u^2+4\pi^2n^2}.
+\]
+Expanding $f$ as a geometric series and integrating each exponential gives
+\[
+ \int_0^\infty f(y)\sin(uy)\dd y
+ =\sum_{n\geq1}\int_0^\infty e^{-2\pi ny}\sin(uy)\dd y
+ =\sum_{n\geq1}\frac{u}{u^2+4\pi^2n^2}.
+\]
+This interchange is justified by $|\sin(uy)|\leq uy$:
+the sum of the absolute integrals is at most
+$u\sum_{n\geq1}(2\pi n)^{-2}<\infty$.
+Together with $1/(1-e^{-u})=\tfrac12+\tfrac12\coth(u/2)$,
+this proves \eqref{eq:kernel}.
+
+\textbf{Euler's formula.}
+The same partial fractions give, for $0<u<2\pi$,
+\begin{align*}
+ \frac{u}{e^u-1}
+ &=1-\frac u2+2u^2\sum_{n\geq1}\frac1{u^2+4\pi^2n^2}\\
+ &=1-\frac u2+
+   2\sum_{r\geq0}\frac{(-1)^r\zeta(2r+2)}{(2\pi)^{2r+2}}u^{2r+2}.
+\end{align*}
+For the second equality, expand each denominator geometrically. The
+resulting double series converges absolutely whenever $|u|<2\pi$, so
+the order of summation may be exchanged. Compare with the defining
+series $u/(e^u-1)=\sum_{k\geq0}B_ku^k/k!$. Equality of coefficients gives
+\[
+ \boxed{\zeta(2e+2)=
+ \frac{(-1)^eB_{2e+2}(2\pi)^{2e+2}}{2(2e+2)!}},
+ \qquad e\in\Z_{\geq0}.
+\]
+This is the identity used to turn the polynomial integrals into the
+rational Bernoulli values defining $\mu$.
+
+\newpage
+\heading{Appendix A, continued. The Hurwitz integral}
+{Deriving the fifth-order formula, including the interchange of integrals.}
+
+Fix $a>0$. The definition
+$\zeta(5,a)=\sum_{n\geq0}(a+n)^{-5}$ and the elementary exponential
+integral give
+\[
+ \frac1{(a+n)^5}=\frac1{24}
+       \int_0^\infty u^4e^{-(a+n)u}\dd u.
+\]
+The integrands are nonnegative, so Tonelli's theorem allows the sum and
+integral to be exchanged. Summing the geometric series gives
+\[
+ \zeta(5,a)=\frac1{24}
+       \int_0^\infty\frac{u^4e^{-au}}{1-e^{-u}}\dd u.
+\]
+Insert \eqref{eq:kernel}. The first two terms can be evaluated immediately:
+\[
+ \frac1{24}\int_0^\infty u^4e^{-au}
+       \left(\frac12+\frac1u\right)\dd u
+       =\frac1{2a^5}+\frac1{4a^4}.
+\]
+The remaining term is a double integral. Although the sine can change
+sign, Fubini's theorem applies because
+\begin{align*}
+ &\int_0^\infty\!\int_0^\infty
+       u^4e^{-au}f(y)|\sin(uy)|\dd y\dd u\\
+ &\hspace{12mm}\leq
+       \left(\int_0^\infty u^5e^{-au}\dd u\right)
+       \left(\int_0^\infty yf(y)\dd y\right)<\infty.
+\end{align*}
+The first factor is $5!/a^6$. For the second, $yf(y)$ tends to
+$1/(2\pi)$ at zero and decays exponentially at infinity. Thus the bound
+also justifies subtracting and rearranging the integrals in the preceding
+calculation.
+
+After exchanging the integrations, evaluate the inner integral by taking
+the imaginary part of an exponential integral:
+\[
+ \int_0^\infty u^4e^{-au}\sin(uy)\dd u
+ =\operatorname{Im}\int_0^\infty
+       u^4e^{-(a-\mathrm i y)u}\dd u
+ =24\operatorname{Im}(a-\mathrm i y)^{-5}.
+\]
+The last equality follows by four integrations by parts; every boundary
+term vanishes because the real part of $a-\mathrm i y$ is positive.
+Keeping the factor $2/24$ from \eqref{eq:kernel}, we obtain
+\[
+ \boxed{\zeta(5,a)=\frac1{2a^5}+\frac1{4a^4}
+ +2\int_0^\infty
+   \frac{\operatorname{Im}(a-\mathrm i y)^{-5}}{e^{2\pi y}-1}\dd y.}
+\]
+This is precisely the special Hermite formula \eqref{eq:hermite} used in
+the pole calculation. In particular, it holds for every positive integer
+$a=j$, where the Hurwitz zeta value is the tail of the series for
+$\zeta(5)$.
+
+The two classical identities have now been derived from the same kernel.
+The remaining passage to the positive weight $w$ is the integration by
+parts carried out in the main text. Together, these calculations justify
+the integral representation on both parts of the partial-fraction basis.
+
+\bigskip
+{\small\textbf{Classical references.}
+The identities derived here are also recorded in the NIST Digital Library
+of Mathematical Functions:
+\href{https://dlmf.nist.gov/4.36.E3}{the partial fractions for $\coth$ (4.36.3)},
+\href{https://dlmf.nist.gov/25.6.E2}{Euler's even-zeta formula (25.6.2)}, and
+\href{https://dlmf.nist.gov/25.11.E29}{Hermite's Hurwitz integral (25.11.29)}.}

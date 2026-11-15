@@ -1,0 +1,222 @@
+--- PAGE 1 ---
+Why the determinant construction proves
+ζ(5) irrational
+An overview following Chun Wing Lai’s exposition
+Draft · 14 November 2026
+The argument constructs integer polynomials whose values at ζ(5) become extraordinarily small.
+Their degrees grow only linearly, while their values shrink exponentially in the square of the size
+parameter. If ζ(5) were rational, clearing its fixed denominator would then produce a positive
+integer tending to zero.
+We explain the construction and this final contradiction, taking two precise estimates as inputs.
+The analytic estimate is Lai’s Proposition 11.7. The arithmetic estimate is Fauzan’s original
+bound, assumed separately: it does not follow from Lai’s sections 8–11 as literally printed. The
+source note at the end explains this qualification. Both estimates are stated before being used.
+1. What would be enough?
+Lai, section 3, Lemma 3.1.
+Write ξ = ζ(5). Suppose that, for every suﬀiciently large positive integer n, we can find a
+polynomial Qn ∈ Z[X] satisfying
+deg Qn ≤ 37n, 0 < Q n(ξ) ≤ e−cn2, c > 0 fixed.
+The number 37 will come from the size of a matrix. Its particular value does not matter to the
+contradiction; what matters is linear growth.
+Assume for a moment that ξ = a/b, with a ∈ Z and b ∈ Z>0. If Qn(X) = ∑37nj=0 qjX j, then
+b37nQn(a/b) =
+37n∑
+j=0
+qjajb37n−j ∈ Z.
+This integer is positive, but the small-value estimate gives
+0 < b 37nQn(a/b) ≤ exp(37n log b − cn2) − →0.
+Eventually it would lie strictly between zero and one. That is impossible.
+The construction must therefore accomplish two things simultaneously. It must produce a poly-
+nomial with integer coeﬀicients, and it must keep the value of that polynomial at ξ small without
+letting it vanish. These demands pull in different directions: multiplying by a large integer clears
+denominators, but also enlarges the value we are trying to make small.
+A determinant gives enough room to satisfy both demands. Its entries will be linear expressions in
+X with rational coeﬀicients. At X = ξ, the same entries become moments of a positive measure.
+The first description provides arithmetic structure; the second makes nonvanishing visible and
+opens the way to an analytic estimate. The rest of the proof is the passage between these two
+descriptions.
+1
+
+--- PAGE 2 ---
+2. One rule connects rational coeﬀicients and a positive integral
+Lai, section 4, Definition 4.2 and Lemmas 4.5–4.6.
+For j ≥ 1, let
+H (5)j =
+j∑
+v=1
+1
+v5 , H (5)0 = 0.
+Consider rational functions R ∈ Q(t) with simple poles only at −12, −22, −32, . . .. Partial fractions
+write each one uniquely as
+R(t) = P (t) +
+∑
+j
+cj
+t + j2 ,
+where P is a polynomial, all coeﬀicients are rational, and the sum is finite. A linear rule on these
+functions is determined once we specify it on powers of t and on the simple fractions.
+Use Bernoulli numbers with B1 = −1/2, and define
+µX (te) = (−1)eB2e+2(2e + 3)(2e + 4)(2e + 5)24 , e ≥ 0,
+µX
+( 1
+t + j2
+)
+= j4(X − H (5)j ) − 14 + 12j , j ≥ 1.
+Extend by linearity. Every value µX (R) is an aﬀine polynomial in X with rational coeﬀicients.
+The polynomial part of R contributes no X; all dependence on X comes from its poles. For
+example,
+µX (1) = 512 , µ X
+( 1
+t + 1
+)
+= X − 34 .
+The reason for these formulas is that at X = ξ they describe integration:
+µξ(R) =
+∫ ∞
+0
+R(y2)w(y) dy , w (y) = (2π)4y5
+12
+∑
+ℓ≥1
+ℓ4e−2πℓy > 0.
+The weight is bounded near zero and decays exponentially at infinity, so these integrals converge.
+To check the identity, it is enough to check the same two types of building block.
+For powers of t, integrate each exponential and then use Euler’s formula for even zeta values:
+∫ ∞
+0
+y2ew(y) dy = (2e + 5)!12(2π)2e+2 ζ(2e + 2) = µX (te).
+For a simple pole, the Hurwitz zeta integral gives
+∫ ∞
+0
+w(y)
+y2 + j2 dy = j4ζ(5, j) − 12j − 14 = j4(ξ − H (5)j ) − 14 + 12j .
+Here ζ(5, j) = ∑∞v=0(j + v)−5 = ξ − H (5)j + j−5. Linearity completes the check.
+Thus X has a specific role: it stands in for the one zeta value occurring in the pole integrals.
+Keeping X symbolic gives rational algebra; putting X = ξ gives a positive integral. We will use
+both descriptions of the same rule.
+2
+
+--- PAGE 3 ---
+3. The determinant is a polynomial, and its value cannot vanish
+Lai, sections 5–6; especially Corollary 5.5 and Proposition 5.6.
+For a positive integer n, set
+K = 40n, N = 3n, h = K − N = 37n, D m(t) =
+m∏
+j=1
+(t + j2).
+Introduce the rational multiplier
+AK(t) = DN (t)6DK(t) = DN (t)5K∏
+k=N +1
+(t + k2)
+.
+The cancellation shows that its remaining poles are simple. Also, AK(y2) > 0 for y > 0. These
+two observations let us apply both the algebraic and the integral descriptions of µ.
+Build the h by h matrix and its determinant:
+GK(X) =
+[
+µX (AK(t)ti+j)]0≤i,j<h, ∆K(X) = det GK(X).
+The entries depend only on i + j, which is why the matrix is called Hankel. Each entry is aﬀine
+in X. Every term in the determinant is a product of h such entries, so
+∆K ∈ Q[X], deg ∆K ≤ h = 37n.
+This elementary degree bound is all the irrationality argument needs. Lai proves the stronger
+equality using a Vandermonde determinant on the h remaining pole locations.
+Now evaluate at X = ξ. The entries become
+GK(ξ)ij =
+∫ ∞
+0
+y2iy2jAK(y2)w(y) dy.
+This is a Gram matrix : it records inner products of 1, y2, . . . , y2h−2 for a positive weight. More
+explicitly, if q(t) = ∑h−1i=0 viti is a nonzero real polynomial, then
+vTGK(ξ)v =
+∫ ∞
+0
+q(y2)2AK(y2)w(y) dy > 0.
+The inequality is strict because the weight is positive and a nonzero polynomial has only finitely
+many zeros. Thus GK(ξ) is positive definite, and ∆K(ξ) > 0. This is the key safeguard against
+a determinant that is small merely because it vanishes.
+The estimates we will borrow are written for an explicitly rescaled determinant:
+FK(X) = SK∆K(X), S K = (K!)2h4h−1
+(N !)12h
+h−1∏
+i=1
+((2i)!)2
+> 0.
+Since SK is a positive rational number independent of X, we still have FK ∈ Q[X], deg FK ≤ 37n,
+and FK(ξ) > 0. The factorial expression puts the arithmetic and analytic estimates on a common
+scale. It does not, by itself, make every coeﬀicient integral.
+3
+
+--- PAGE 4 ---
+4. The two estimates we take as inputs
+We now state the quantitative facts supplied by the arithmetic and analytic parts of the argu-
+ment. We use slightly weaker, rounded constants so that the final comparison is transparent.
+Throughout, K tends to infinity through positive multiples of 40.
+Arithmetic estimate. For all suﬀiciently large K, there is a positive rational number mK such
+that
+mKFK ∈ Z[X], log mK ≤ 1.35K2.
+This is the normalization estimate underlying Lai’s sections 8–10, with the cutoff fixed at M =
+200. We take its precise arithmetic form from Fauzan’s Proposition 5.1 and equation (5.21); the
+source note explains why this specification matters.
+The content is the bound on the cost, not just the existence of a common denominator. For
+each prime, the arithmetic argument bounds its exponent in every coeﬀicient. Negative expo-
+nents require clearing denominators; positive exponents allow common factors to be divided out.
+This explains why mK is positive and rational, but need not be an integer. Summing the local
+contributions controls log mK.
+Section 7 prepares that calculation by rewriting the same functional as µX (R) = τX (x5R(−x2)).
+The substitution replaces poles at negative squares by poles at integers. It makes residue classes
+modulo a prime available for the divisibility argument. For the present overview, all the resulting
+arithmetic is contained in the estimate just stated.
+Analytic estimate. For all suﬀiciently large K,
+0 < F K(ξ) ≤ exp(−1.36K2).
+This is a weakened form of Lai’s Proposition 11.7. Its stronger statement is
+log FK(ξ) ≤ −1.3669955K2 + 24K log K + 200K.
+After division by K2, the last two terms tend to zero. The strict gap between 1.3669955 and 1.36
+therefore gives the displayed estimate.
+One identity explains why the determinant is suited to this scale of decay. Andréief’s identity, in
+the form needed here, states
+∆K(ξ) = 1h! ∫(0,∞)h ∏i<j(y2i − y2j )2 h∏i=1 AK(y2i )w(yi) dy1 · · · dyh.
+Taking logarithms turns the pairwise factors into a sum of logarithmic distances. There are on the
+order of h2 such pairs. The remaining weights contribute a competing penalty. Section 11 bounds
+this balance by a logarithmic-energy argument and combines it with the factorial rescaling SK.
+The analytic estimate above is the output we need; its proof is being taken as given.
+4
+
+--- PAGE 5 ---
+5. The arithmetic cost is smaller than the analytic decay
+Define
+Qn(X) = m40nF40n(X).
+The arithmetic estimate gives Qn ∈ Z[X]. The positive scalar m40n preserves both the degree
+bound and positivity, so
+deg Qn ≤ 37n, Q n(ξ) > 0.
+For suﬀiciently large n, put K = 40n and add the two logarithmic estimates:
+log Qn(ξ) = log mK + log FK(ξ)
+≤ 1.35K2 − 1.36K2 = − K2
+100 = −16n2.
+Consequently
+Qn ∈ Z[X], deg Qn ≤ 37n, 0 < Q n(ξ) ≤ e−16n2.
+These are exactly the properties sought at the beginning. If ξ = a/b, then b37nQn(a/b) is a
+positive integer and
+0 < b 37nQn(a/b) ≤ exp(37n log b − 16n2) − →0.
+The contradiction proves that ζ(5) is irrational, subject to the two stated estimates.
+The construction works because the determinant has modest algebraic degree but enough analytic
+decay to survive integer normalization. The positive moment representation prevents vanishing;
+the arithmetic estimate keeps the normalization affordable. The numerical margin need only
+be strictly positive. There is no need to retain the sharper decay constant, or to control the
+polynomial near ξ, for this irrationality conclusion.
+Source note: the arithmetic input. This overview follows Chun Wing Lai, On Fauzan ’s Proof
+that ζ(5) is Irrational , v1, 29 September 2026. The arithmetic input used above is the statement
+lim sup
+K→∞
+40|K
+log mK,200
+K2 ≤ A200 = 1.3495876977 . . . < 1.35,
+from Aabir Fauzan’s 17 September 2026 manuscript , equation (5.21), with the constant evaluated
+in Appendix B. The strict inequality implies the eventual bound used on the preceding page.
+Lai’s Theorem 9.3 and equations (106)–(107) instead include an additional +EM . His following
+prose treats that positive term as a subtraction. The two formulations cannot be used interchange-
+ably. Keeping the printed correction would require a further bound E200 < 0.017407802258 . . . to
+obtain a negative total exponent and hence some decay constant c > 0, not necessarily 16. The
+original arithmetic estimate is an additional assumed input; citing it does not verify or repair the
+disputed arithmetic. With Lai’s literal corrected statement alone, the final numerical comparison
+remains conditional on the additional bound.
+5

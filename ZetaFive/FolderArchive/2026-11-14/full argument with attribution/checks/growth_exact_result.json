@@ -1,0 +1,13 @@
+{
+  "method": "exact rational affine-branch certificates",
+  "inner_pieces": 125,
+  "outer_pieces": 10,
+  "all_125_rows_equal_pinned_Lean_table": true,
+  "small": "111/8000",
+  "inner": "322437603634266857629/7535670527041937280000",
+  "tail_upper_bound": "-6843153/128000000",
+  "outer": "129101/96000",
+  "total_upper_bound": "2031621487545722214389669/1507134105408387456000000",
+  "gap_below_1_35": "3009554755600851210331/1507134105408387456000000",
+  "decimal_total_for_orientation_only": 1.3480031274292041
+}

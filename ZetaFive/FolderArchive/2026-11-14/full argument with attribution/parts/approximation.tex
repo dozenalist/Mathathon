@@ -1,0 +1,37 @@
+\subsection{One transform, two kinds of data}
+\source{This perspective is guided by Persiflage \cite{persiflage}.
+The underlying transform and orthogonal-polynomial identities are
+Pr\'evost's \cite[Section 2 and Theorems 1--2]{prevost}.}
+
+It is helpful to see where the zeta value enters.
+Change variables \(t=y^2\) and write
+\[
+ d\nu(t)=\frac{w(\sqrt t)}{2\sqrt t}\,dt,\qquad
+ \Phi(z)=\int_0^\infty\frac{d\nu(t)}{z+t}\quad(z>0).
+\]
+The moments \(m_j=\int t^j\,d\nu(t)=\mu_X(t^j)\) are rational.
+On the other hand, the pole formula gives
+\[
+ \Phi(a^2)=a^4\bigl(\xi-H_a^{(5)}\bigr)-\frac14+\frac1{2a}
+ \qquad(a\in\Z_{>0}).
+\]
+Thus rational approximation to a transform value gives rational
+approximation to \(\xi\).
+
+The moments also describe \(\Phi\) for large \(z\).
+The finite geometric identity gives
+\[
+ \Phi(z)=\sum_{j=0}^{m-1}\frac{(-1)^jm_j}{z^{j+1}}
+  +\frac{(-1)^m}{z^m}\int_0^\infty\frac{t^m}{z+t}\,d\nu(t).
+\]
+The last term has absolute value at most \(m_m z^{-m-1}\).
+This is an asymptotic expansion for each fixed \(m\); we have not asserted
+convergence of the infinite moment series.
+
+At \(X=\xi\), the two clauses defining \(\mu_X\) describe samples and
+asymptotic coefficients of one transform. This is the bridge to
+Pr\'evost's Pad\'e approximation, emphasized by Persiflage.
+Our proof uses a rationally modified measure and its determinant;
+no quantitative Pad\'e estimate is needed. The question is how much
+real smallness survives when the determinant's coefficients are made
+integral.

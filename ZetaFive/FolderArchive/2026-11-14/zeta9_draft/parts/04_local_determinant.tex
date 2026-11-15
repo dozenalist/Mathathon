@@ -1,0 +1,282 @@
+\section{Local estimates for the determinant}
+\label{s4-local}
+
+This section follows Section~4 of the source, pp.~9--13, with
+$D_N^6$, $h=K-N$, and the scalar $S_K$ unchanged.  Write $v_p^G$ for
+the minimum valuation of the coefficients of a polynomial in $X$.
+The object estimated here is $\Delta_{9,K}$ before multiplication by
+$S_K$.  Fix $M\geq40$.  The inner and outer bases serve different
+purposes: the first spreads vanishing among residue classes, while the
+second cancels the poles whose harmonic sums contain multiples of $p$.
+
+\subsection{The inner range and its new row weights}
+\label{s4-inner}
+
+Assume, as in source (4.1), that
+\begin{equation}
+ K\in40\mathbb Z_{>0},\qquad K\geq200M^2,
+ \qquad K/M<p\leq K/3.
+ \label{s4-inner-range}
+\end{equation}
+Then $p>200M$ and $p^2>5K$.  Put
+\[
+ m_A=\lfloor A/p\rfloor,\qquad
+ \ell_A(a)=\#\{1\leq j\leq A:j\equiv\pm a\pmod p\},
+ \qquad 1\leq a\leq m=(p-1)/2.
+\]
+If a row polynomial vanishes to order $\nu_i(a)$ at $t=-a^2$,
+the ordinary-class bound replacing source (4.2) is
+\begin{equation}
+ \nu_i(a)+\nu_j(a)+6\ell_N(a)-\ell_K(a)-8.
+ \label{s4-ordinary-source}
+\end{equation}
+At zero the bound replacing (4.3) is unchanged:
+\begin{equation}
+ 2\nu_i(0)+2\nu_j(0)+12m_N-2m_K+1.
+ \label{s4-zero-source}
+\end{equation}
+\textbf{[Derived]}
+Indeed, the distribution factor is now $p^{-8}$.  At an ordinary
+source $x=a+pz$, $x^9$ is a unit to leading order, giving the loss
+$-8$.  At $x=pz$, its factor $p^9$ compensates for that distribution
+factor and leaves $+1$.
+\textbf{[Formal analogue]} Applying these counts to the entire rational
+summand, including its polynomial quotient, requires the analytic
+completion estimate from Section~3.  We keep that transplant explicit.
+
+Retain the source allocation, namely
+\begin{equation}
+ \begin{gathered}
+ L_0=4M+10,\qquad b_a=3\ell_N(a),\\
+ mT+E=h-L_0+3(N-m_N),\qquad 0\leq E<m,\\
+ L_a=T-b_a+\epsilon_a,\qquad Z_a=L_a+b_a=T+\epsilon_a.
+ \end{gathered}
+ \label{s4-allocation}
+\end{equation}
+Here $\epsilon_a=1$ for the first $E$ classes in decreasing order of
+$\ell_K(a)$, and is zero otherwise.  With $x=K/p$, the unchanged
+inequalities
+$2Hx-21/20<T<2Hx$ and $b_a\leq6\alpha x+3$ give
+$T-b_a>2\lambda x-81/20\geq3/2$.  Thus the dimensions are
+nonnegative and sum to $h$.
+
+Use the polynomials from source (4.5):
+\begin{equation}
+ E_{a,i}(t)=\prod_{\substack{0\leq c\leq m\\c\ne a}}
+ (t+c^2)^{L_c}(t+a^2)^i,
+ \qquad 0\leq i<L_a.
+ \label{s4-inner-basis}
+\end{equation}
+Their degrees are less than $h$.  Distinct factors are coprime modulo
+$p$, and their local Taylor-coordinate matrices are triangular with
+unit diagonals.  Hence this is a $\mathbb Z_p$-unimodular basis.
+The weights replacing source (4.6)--(4.8) are
+\begin{align}
+ w^{(9)}_{a,i}&=i+b_a-\frac{\ell_K(a)+8}{2},\qquad a>0,
+ \label{s4-inner-weights}\\
+ w^{(9)}_{0,i}&=\min\left\{
+ 2i+6m_N-m_K+\frac12,
+ \min_{1\leq c\leq m}\left(Z_c-\frac{\ell_K(c)+8}{2}\right)
+ \right\},
+ \label{s4-inner-zero-weight}\\
+ \gamma^{\mathrm{in}}_{9,p}&=
+ 2\sum_{a=0}^{m}\sum_{i=0}^{L_a-1}w^{(9)}_{a,i}.
+ \label{s4-inner-gamma}
+\end{align}
+
+The comparison between two ordinary blocks reduces, just as before,
+to
+$Z_c-Z_a+1+(\ell_K(a)-\ell_K(c))/2\geq0$.
+The counts take two consecutive values, and the ordering of the
+extras resolves the only potentially adverse case.  At zero the
+half-weight of an ordinary row is at least $7M+41/2$, comfortably
+above its assigned weight.  Formula~\eqref{s4-inner-zero-weight}
+handles the zero-block rows at every source.
+
+The local degree checks also survive.  At an ordinary source the
+leading numerator degree is at most $2(T+1)<23M/5+2$; at zero it is
+at most
+\[
+ 9+4L_0+12m_N\leq169M/10+49<p+1.
+\]
+\textbf{[Conditional]}
+Subject to the Section~3 analytic completion estimate, every matrix
+entry in this basis has valuation at least the sum of its row
+weights.  Expanding the determinant therefore gives
+\begin{equation}
+ v_p^G(\Delta_{9,K})\geq\gamma^{\mathrm{in}}_{9,p}.
+ \label{s4-inner-bound}
+\end{equation}
+Relative to the source weights, every ordinary weight decreases by
+two; every zero-block weight decreases by an amount between zero
+and two.  Consequently the useful exact comparison is
+\begin{equation}
+ -4h\leq\gamma^{\mathrm{in}}_{9,p}-\gamma^{\mathrm{in}}_{5,p}
+ \leq-4h+4L_0.
+ \label{s4-inner-shift}
+\end{equation}
+Thus the limiting inner cost numerator changes by $4\lambda x$,
+with only an $O_M(1)$ error in the finite exponent.
+
+\subsection{Removing the outer polynomial correction}
+\label{s4-rank-correction}
+
+Use the source outer hypotheses, with the harmless strengthened
+threshold $p\geq11$:
+\begin{equation}
+ p\leq K<3p,\qquad p^2>2K,\qquad 2N<p,
+ \qquad5N\leq2p-2.
+ \label{s4-outer-range}
+\end{equation}
+\textbf{[Derived]}
+The denominator $40320$ is a $p$-adic unit.  Von Staudt--Clausen
+therefore gives $v_p(\mu_9(t^e))\geq-1$.
+If $e<4p-5$ and a Bernoulli denominator contains $p$, then
+$2e+2=j(p-1)$ for some $1\leq j\leq7$.
+The factor $2e+2+j=jp$ occurs among $2e+3,\ldots,2e+9$ and
+cancels that denominator.  Hence
+\begin{equation}
+ \mu_9(t^e)\in\mathbb Z_p\qquad(e<4p-5).
+ \label{s4-moment-cutoff}
+\end{equation}
+
+Choose $c_e\in\mathbb Z_p$ representing $p\mu_9(t^e)$ modulo $p$,
+with $c_e=0$ below this cutoff.  Replace the polynomial moments by
+$\mu_9^0(t^e)=\mu_9(t^e)-c_e/p$, leaving simple-pole values
+unchanged.  Set $W=D_N^5$ and $D_{\mathrm{tail}}=D_K/D_N$;
+the rational input is still $Wt^{i+j}/D_{\mathrm{tail}}$.
+Its polynomial quotient has degree at most $i+j+6N-K$.  Therefore
+\begin{equation}
+ G_{9,K}=A+p^{-1}L,\qquad
+ \operatorname{rank}_{\mathbb Q_p}L\leq
+ r_{9,p}:=\max(0,K+4N-4p+4),
+ \label{s4-matrix-rank}
+\end{equation}
+where $L$ is integral.  Indeed,
+$L_{ij}=0$ if $i+j<K-6N+4p-5$, so its first $h-r_{9,p}$
+rows and columns vanish exactly.  This is a rank bound over
+$\mathbb Q_p$, rather than only after reduction modulo $p$.
+For our fixed parameters and $p>K/3$,
+$K+4N-4p+4<4-K/30$; thus $r_{9,p}=0$ throughout the outer
+range once $K\geq120$.
+
+\subsection{The outer basis, class costs, and rank lemma}
+\label{s4-outer-basis}
+
+For an ordinary square class put $\ell=\ell_K(a)$ and
+$\delta=\mathbf1_{a\leq N}$.  Let $Q_a$ contain its remaining
+$\ell-\delta$ factors, $P_a=D_{\mathrm{tail}}/Q_a$, and let
+$E_a$ contain its $\ell-2$ factors with $j>p$.  The rows are
+$P_aq_{a,i}$, with
+\begin{equation}
+ q_{a,i}(t)=
+ \begin{cases}
+ (t+a^2)^i,&0\leq i<\ell-2,\\
+ E_a(t)(t+a^2)^{i-(\ell-2)},&\ell-2\leq i<\ell-\delta.
+ \end{cases}
+ \label{s4-outer-polynomials}
+\end{equation}
+Together with the zero-class rows these form a unimodular basis:
+each local sequence is monic of successive degrees, and distinct
+classes have unit resultants.  Cross-class entries of $A$ are
+integral because their quotients are integral polynomials.
+
+\textbf{[Derived]}
+For two low indices, the row factors supply $i+j$, $W$ supplies
+$5\delta$, the node derivative loses $\ell-\delta-1$, and the
+harmonic value loses at most nine powers of $p$.  The resulting
+bound is $i+j+6\delta-\ell-8$.  A high-index row cancels all
+poles with $j>p$.  The remaining values at $a,p-a$ are integral
+and congruent modulo $p$: use
+$H_{p-a}^{(9)}\equiv H_{a-1}^{(9)}\pmod p$ and the displayed
+simple-pole formula for $\mu_{9,X}$.  The $X$ coefficients agree
+because $(p-a)^8\equiv a^8$.  The constant-coefficient difference
+also vanishes: the extra $a^{-9}$ in $H_a^{(9)}$ cancels the
+change in $1/(2a)$.  The divided difference is consequently
+integral, including after multiplication by polynomial numerators.
+
+Thus the analogue of source (4.12) is
+\begin{equation}
+ w^{(9)}_{a,i}=
+ \begin{cases}
+ \min\{0,i+3\delta-(\ell+8)/2\},&i<\ell-2,\\
+ 0,&i\geq\ell-2.
+ \end{cases}
+ \label{s4-outer-weights}
+\end{equation}
+At zero a single pole has weight $-1/2$; for $p,2p$, rows
+$1,t+p^2$ give entry bounds $-3,-1,0$, so weights $-2,0$
+remain valid.  Here each pole value has valuation at least $-1$
+because $j^8H_j^{(9)}$ loses only one power when $p\mid j$.
+The spacing of the two squared nodes costs two further powers.
+
+For reference, the elementary rank lemma from source (4.13)
+is unchanged.  If $v(A_{ij})\geq w_i+w_j$, the $w_i$ are
+nonpositive half-integers, $L$ is integral of rank at most $r$,
+and exactly $z$ weights are zero, then
+\begin{equation}
+ v\det(A+p^{-1}L)\geq2\sum_iw_i-\min(r,z).
+ \label{s4-rank-lemma}
+\end{equation}
+A complementary-minor term using $k$ rows and columns of $L$
+has valuation at least
+$2\sum_iw_i-k-\sum_{i\in I}w_i-\sum_{j\in J}w_j$.
+Terms with $k>r$ vanish.  Ordering weights decreasingly, the
+largest possible loss is
+$\max_{0\leq k\leq\min(r,h)}(k+2\sum_{i=1}^kw_{(i)})$:
+each zero weight increases it by one, and every subsequent
+increment is nonpositive.  This proves the lemma, also for
+Gauss valuations.  Unimodular changes of basis preserve the
+integrality and rank of $L$.
+
+\subsection{Explicit outer exponent and the primes beyond \texorpdfstring{$K$}{K}}
+\label{s4-outer-formula}
+
+\textbf{[Derived]}
+For a removed class, the new table is
+\[
+\begin{array}{c|rrrrr}
+ \ell&2&3&4&5&6\\\hline
+ -2\sum_iw^{(9)}_{a,i}&0&5&10&15&20\\
+ \#\{i:w^{(9)}_{a,i}=0\}&1&1&1&1&1
+\end{array}
+\]
+An unremoved class costs $11(\ell-2)$ and has two zero weights.
+Put
+\[
+ q=\lfloor K/p\rfloor\in\{1,2\},\quad v=K-qp,\quad
+ u=\max(0,N+v-p+1),\quad t_p=\min(N,v)+u.
+\]
+Over all ordinary classes,
+$\sum(\ell-2)=K-p-q+1$.  Over the $N$ removed classes it is
+$2(q-1)N+t_p$: the two indicators $a\leq v$ and $a\geq p-v$
+account for $t_p$.  Each removed class saves $6(\ell-2)$ from
+the unremoved cost.  Adding the zero-class costs $1,4$ yields
+\begin{equation}
+ \gamma^{\mathrm{out}}_{9,p}=
+ \begin{cases}
+ -11(K-p)+6t_p-1-\min(r_{9,p},p-1-N),&K<2p,\\
+ -11(K-p)+7+12N+6t_p-\min(r_{9,p},p-N),&K\geq2p.
+ \end{cases}
+ \label{s4-outer-gamma}
+\end{equation}
+The zero counts are $p-1-N$ and $p-N$, respectively.  Unlike
+the source table, the removed classes never acquire additional
+zero weights as $\ell$ increases.  Applying
+\eqref{s4-rank-lemma} gives
+$v_p^G(\Delta_{9,K})\geq\gamma^{\mathrm{out}}_{9,p}$.
+As a finite consistency check, $K=40,N=3,p=29$ gives $-104$,
+matching the independently computed constant-coefficient
+valuation; this check does not establish the general estimate.
+
+For $p>K$, every pole is below $p$ and each square class has at
+most two poles.  The same congruence and divided-difference
+argument makes its contribution integral.  The largest possible
+polynomial quotient degree is $K+4N-2<4p-5$, so no polynomial
+correction remains.  Consequently
+\begin{equation}
+ v_p^G(\Delta_{9,K})\geq0\qquad(p>K).
+ \label{s4-large-prime-integrality}
+\end{equation}
+These local statements supply normalization exponents.  They do
+not by themselves supply the final decay inequality.

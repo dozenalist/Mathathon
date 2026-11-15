@@ -1,0 +1,194 @@
+EXPOSITION AND ATTRIBUTION AUDIT
+14 November 2026, America/Los_Angeles
+
+Conclusion
+
+No confirmed unattributed extended verbatim passage was found in the public sources examined. This is not an originality certificate. The PDFs explicitly credit their main mathematical sources, Chun Wing Lai and Aabir Fauzan. However, the references omit an exact earlier mathematical antecedent (Marc Prevost's Stieltjes representation and moments) and a particularly close related exposition (Persiflage). Those should be acknowledged before the drafts are circulated as a polished exposition. Similarity does not establish that either source was actually copied or consulted.
+
+The strongest conclusion is therefore: credited reconstruction of Lai/Fauzan, with incomplete historical and related-exposition references; no demonstrated textual plagiarism in this search.
+
+Scope and versions
+
+Chat inspected: "Draft parallel constructions for sections…"
+Chat ID: 01a1dc62-6e6c-73c2-a38a-de232fb0c764.
+
+A. Parallel constructions in Lai's sections 1–7, six pages.
+Original: parallel constructions for sections 1-7/lai_parallel_constructions.pdf
+SHA-256: 64539202cd89acd04ee9d3694c8e3d822e67994eb719dadcc3c8a1bebd827e95
+
+B. Why the determinant construction proves zeta(5) irrational, five pages.
+Original: irrationality argument overview/zeta5_irrationality_overview.pdf
+SHA-256: f916b22535d40bf045f7bae01bed5f8588cad279535eb34e9eea5c98ca92d9c0
+
+Both PDFs and their corresponding LaTeX were read; rendered source-note pages and embedded source links were checked. Exact audited copies are in snapshots/ beside this report. The source chat was actively preparing a longer exposition during the audit. This report covers the completed six- and five-page PDFs above, not an unfinished expansion or subsequent revisions. Earlier overwritten iterations cannot be reconstructed merely from the present PDF files.
+
+The earlier chat "Find parallel constructions in the Zeta(5)…" was also inspected for the provenance of zeta5_unified_framework.tex, which the target chat read. That earlier document is contextual evidence, not an additional PDF fully audited here. The visible parent-chat tool histories identify Lai, Fauzan and DLMF, and the target chat's reuse of the earlier local framework. They do not show Persiflage or Prevost being opened. This is limited evidence: some outputs are truncated and every subordinate-agent history was not reconstructed. The audit cannot determine model-training influence or rule out undocumented indirect influence.
+
+Page-by-page attribution map
+
+A p1, organizing picture:
+  Names Lai, links his exact v1 PDF, and distinguishes the organizing interpretation from the construction. The source's mathematical attribution is explicit. The claim about interpretive packaging would benefit from the related-exposition note below.
+A p2, algebraic values, positive moments, Phi(a), Stieltjes transform:
+  Cites Lai section 4, equations (11)–(26). Add Prevost Theorems 1–2 for the exact representation and moments. The transform-samples/asymptotic-moments framing also has a close parallel in Persiflage.
+A p3, Bernoulli functional and weighted pullback:
+  Cites Lai section 7, equations (49)–(59). The substitution identity is already part of the credited construction. The formal Bernoulli operator follows from the classical generating function; a DLMF link would be useful.
+A p4, modifier and bilinear form:
+  Cites Lai section 5. Cancellation, the Hankel/Gram interpretation, affine dependence and positivity are source-derived or standard. Persiflage uses a notably similar bilinear-map presentation. Brown is useful broader background.
+A p5, continuous/discrete pairings and exact degree:
+  Cites Lai sections 5–6. The Vandermonde argument and coefficient formula belong to the credited construction. The Laurent-coefficient observation is a direct calculation from partial fractions. No separate hidden source was identified for its wording.
+A p6, normalization and criterion:
+  Cites Lai sections 5 and 3, repeats the full source, and credits Fauzan for the construction. A direct Fauzan bibliographic link would improve the existing indirect credit. Basis-change scaling and integer contradiction are standard. The closing statement that explanations are derived reorganizations does not assert research novelty, but a related-work note would remove ambiguity.
+B p1, integer contradiction:
+  Subtitle names Lai and the section cites Lemma 3.1. The opening identifies the two borrowed estimates and the arithmetic qualification. Grechuk has a related high-level narrative.
+B p2, functional and integral:
+  Cites Lai Definition 4.2 and Lemmas 4.5–4.6. Add Prevost and a precise classical Hermite reference.
+B p3, affine Hankel determinant and positive Gram form:
+  Cites Lai sections 5–6, especially Corollary 5.5/Proposition 5.6. Similar presentations exist in Persiflage, Brown and other determinant literature. No distinctive copied paragraph was established.
+B p4, arithmetic and analytic inputs:
+  Explicitly identifies Fauzan Proposition 5.1/equation (5.21) and Lai Proposition 11.7. Andreief is named; a bibliographic reference to Forrester or the original identity would improve traceability. The general determinant/decay strategy has an antecedent in Zudilin.
+B p5, comparison and source note:
+  Links both Lai and Fauzan, states the conditional nature of the argument, and identifies the source discrepancy. This audit does not independently validate those arithmetic bounds or resolve the mathematical dispute.
+
+Most important additional sources
+
+1. Marc Prevost, Remainder Pade approximants for the Hurwitz zeta function.
+   Preprint 2017; journal version Results in Mathematics 74 (2019), article 51.
+   https://arxiv.org/abs/1709.05389
+   https://arxiv.org/pdf/1709.05389
+   Theorems 1–2, equations (3.1)–(3.4), pp5–6; proof section 4.1, pp8–9.
+   At s=5 the representation yields exactly
+     integral_0^infinity w(y)/(a^2+y^2) dy
+       = a^4 zeta(5,a) - 1/(2a) - 1/4,
+   with the weight and Bernoulli moments used in A p2 and B p2. This is an exact mathematical antecedent, not just shared terminology. A specific citation is strongly recommended. The elementary finite geometric remainder may still be explained directly; its derivation does not make the underlying representation new.
+
+2. Persiflage, "zeta(5) is irrational", displayed 24 September 2026.
+   https://galoisrepresentations.org/2026/09/24/zeta5-is-irrational/
+   Sections "The formulas of Euler and Hermite", "Hankel Determinants", and "Prevost's moments and the introduction of the zeta value".
+   This is the closest additional exposition found: functional, positive measure, Stieltjes interpretation, symmetric bilinear map, Hankel/Gram presentation, exact degree and normalization. It also relates transform evaluations to zeta and asymptotic coefficients to moments. Compare A pp2,4–6 and B pp2–3. A related-exposition citation is warranted; actual borrowing is unproved. The displayed post date was checked, but the revision history of every current paragraph was not.
+
+3. Bogdan Grechuk, "Zeta(5) is irrational", 29 September 2026.
+   https://functor.network/user/3333/entry/1997
+   Paragraphs beginning with the final irrationality argument through denominator normalization.
+   The sequence integer contradiction -> affine Hankel determinant -> positive moments -> energy estimate -> normalization cost resembles B pp1,3–5. This is a synopsis of the same credited proof. No distinctive extended wording match was confirmed. Useful further reading; similarity alone does not make this a required source citation. Formula extraction on this page was incomplete.
+
+4. Wadim Zudilin, A determinantal approach to irrationality.
+   https://arxiv.org/pdf/1507.05697
+   v2; Proposition 2 and section 2, pp1–3, equations (2)–(5).
+   A close methodological antecedent combines Hankel determinants, positive squared-Vandermonde integrals, quadratic exponential estimates and denominator clearing. Cite as historical context for B's proof architecture; the hypotheses and concrete construction differ. No wording-copy conclusion follows.
+
+5. Francis Brown, Mellin transforms, transfinite diameter and rational approximations of integrals.
+   https://arxiv.org/html/2604.20741v1
+   Sections 3.1–3.2, especially Definition 3.1 and Lemma 3.2; also section 7.5.
+   Integral bilinear forms, their Gram matrices, positivity and basis-change scaling match the language of A pp4,6 and B p3. These are standard tools within a broader framework. A background citation is useful; no evidence of direct dependence was established.
+
+6. Christian Krattenthaler, A determinant identity for moments of orthogonal polynomials that implies Uvarov's formula for the orthogonal polynomials of rationally related densities.
+   https://arxiv.org/pdf/2103.03969
+   Introduction pp1–2; Theorem 1 p2.
+   Rational modifications of measures and their moment determinants provide a historical setting for A(t)=W(t)/T(t). This is optional context, not a demonstrated source of draft prose.
+
+7. Peter J. Forrester, Meet Andreief, Bordeaux 1886, and Andreev, Kharkov 1882–83.
+   https://arxiv.org/pdf/1806.10411
+   Introduction pp1–2.
+   A direct reference for the determinant-of-integrals identity and its Vandermonde specialization on B p4. Since the draft already names Andreief, this is a bibliographic improvement rather than a missing attribution of the identity's name.
+
+Sources already credited
+
+8. Chun Wing Lai, On Fauzan's Proof that zeta(5) is Irrational, v1, 29 September 2026.
+   https://ai.vixra.org/pdf/2609.0080v1.pdf
+   Lemma 3.1 p3; moment/pole formulas pp4–6; positivity p7; degree pp7–8; pullback p9.
+   These are extensive and expected mathematical matches. Both drafts cite this exposition and identify source locations. Lai also credits Fauzan on his first page. This is openly acknowledged dependence.
+
+9. Aabir Fauzan, zeta(5) is irrational, v1, 17 September 2026.
+   https://zenodo.org/records/22826419
+   Local source PDF: sources/Fauzan_2026_zeta5.pdf, 32 pages.
+   Sections 2–3 supply the construction/functional; Proposition 5.1 and equation (5.21) supply B's explicitly assumed arithmetic input. B links the manuscript. A names Fauzan indirectly through Lai. The source record's MD5 agrees with the local source ledger. Public PDF retrieval failed in one web-tool pass; the local text/PDF was available.
+
+Hexagon and additional ai.vixra matches
+
+10. Shawn Krisman, Irrationality of chi2(1/q), Ti2(1/q) and chi2(2/q).
+    https://hexagonmath.org/pdf/2611.00432v1
+    pp8–9, sections 2.2–2.4; Proposition 3.1/Theorem 3.2.
+    The closest Hexagon structural match found: polynomial/pole decomposition, affine moment functional, Hankel determinant, basis change and small-integer criterion. Half-integer poles and different constants distinguish it. No distinctive verbal match observed.
+
+11. Sean Litsey, Irrationality measures for L(2,chi_-3) and other differences of trigamma values (printed PDF title).
+    https://hexagonmath.org/pdf/2610.00401v2
+    pp5–7 and related determinant/energy discussion.
+    Related denominator, nonvanishing and analytic estimates, using Loewner matrices/divided differences and expressly citing Fauzan. No evidence of copied exposition. Landing-page title/date differed from the PDF; this locator identifies the text compared.
+
+12. Antti Hippelainen, On the irrationality of the 3-adic zeta value zeta_3(5).
+    https://hexagonmath.org/pdf/2610.00408v2
+    pp1–4,6–7,11.
+    Rational-functional/Hankel strategy and basis-change parallels, but in a different field with different nonvanishing requirements. No distinctive match found. Version metadata on the landing page was inconsistent; use the explicit PDF version.
+
+13. Shawn Krisman, One of zeta(7), zeta(9), ..., zeta(21) is irrational.
+    https://hexagonmath.org/pdf/2610.00516v2
+    pp1–4.
+    Relevant subject, but a hypergeometric derivative/saddle-point construction rather than the same exposition. No meaningful distinctive wording overlap found.
+
+14. Rajat Yadav, Catalan's Constant: Frontier Analysis, Derived Obstruction Theorems, and a Map of the Remaining Terrain.
+    https://ai.vixra.org/pdf/2603.0059v1.pdf
+    p3; pp11–12.
+    Stieltjes moments, a positive-moment Hankel criterion and triangular transformations are conceptual parallels. No Fauzan-specific formula or distinctive prose match identified. The paper's correctness was not evaluated.
+
+Other arXiv and formalization parallels inspected
+
+15. Alan Haynes and Wadim Zudilin, Hankel Determinants of Zeta Values.
+    https://arxiv.org/pdf/1510.01901
+    Abstract, introduction and main asymptotic/Diophantine results. Hankel determinants of zeta values in arithmetic progressions; broader background, not the same affine-functional construction.
+
+16. Michael Coons and Daniel Sutherland, Towards the (ir)rationality of values of Dirichlet series.
+    https://arxiv.org/pdf/1404.2699
+    Introduction and determinant bounds. Nonnegative coefficients, small Hankel determinants and denominator growth; conceptual background only.
+
+17. Timothy Ferguson, Rational Approximations via Hankel Determinants.
+    https://arxiv.org/pdf/2003.10616
+    Introduction/main theorem. Rational approximation using linear functionals and integral moments, including zeta values; a different result, with no identified wording match.
+
+18. Li Lai, The linear independence of 1, zeta(3), and zeta(4).
+    https://arxiv.org/html/2610.06838v1
+    Introduction/proof outline. Explicitly builds on Fauzan's determinant method. Li Lai is not Chun Wing Lai. This is a related later application, not an established source of the drafts.
+
+19. Stephane Fischler, Li Lai, Johannes Sprang and Wadim Zudilin, Many more odd zeta values are irrational.
+    https://arxiv.org/html/2611.16156v1
+    Introduction and section 5.1; submitted 12 November 2026.
+    Explicit Fauzan-method connection. Signed discrete moments and Cauchy-Stieltjes transforms resemble some vocabulary of A p5, but differ from its finite Vandermonde computation. No direct dependence established.
+
+20. Alex Raymond Hyman, The Irrationality of zeta(5), Archive of Formal Proofs, 26 October 2026.
+    https://isa-afp.org/entries/Zeta_5_Irrational.html
+    The entry's abstract describes the same positive-moment, Hankel, arithmetic-normalization and energy architecture, citing Fauzan and a Lean formalization. It is evidence of a common credited source, not copying. No formal proof was rebuilt in this audit.
+
+21–23. NIST DLMF classical formulas.
+    https://dlmf.nist.gov/25.11.E29 — Hermite representation.
+    https://dlmf.nist.gov/25.6.E2 — even zeta values.
+    https://dlmf.nist.gov/24.2.E1 — Bernoulli generating function.
+    Appropriate precise references for classical identities named or used in A pp2–3/B p2. The visible chat histories show DLMF consultation. Naming Euler/Hurwitz and citing Lai already supplies some context, but these links improve source traceability.
+
+Suggested attribution changes (not applied to the PDFs)
+
+Priority 1: Add Prevost at A p2 and B p2, immediately following the positive-measure/Hurwitz transform formula. Cite Theorems 1–2 and retain Lai's section references. This gives credit for the exact earlier representation without suggesting the whole zeta(5) proof is Prevost's.
+
+Priority 2: Add a related-exposition note to A's introduction/source note, and optionally B's source note. Suggested wording:
+  "This exposition follows Lai's presentation of Fauzan's construction. The Stieltjes representation and moment formulas have an earlier treatment in Prevost, Theorems 1–2. A closely related presentation through functionals, bilinear forms and Hankel/Gram matrices appears in the Persiflage post of 24 September 2026. The present organization makes no claim of novelty."
+Use 'related presentation' rather than claiming that a source was consulted during drafting when that has not been established.
+
+Priority 3: Add full bibliographic entries for the classical formulas actually used and for Andreief's identity. Add Zudilin/Brown in a short historical note if the intended scope extends beyond an exposition of Lai. Add a direct Fauzan link to A.
+
+There is no need to cite every merely similar Hexagon paper or every work involving a Gram matrix. Those items document search coverage and context; they are not all missing mandatory references.
+
+Method, negative results and limits
+
+Three parallel searches covered distinctive prose, arXiv/primary antecedents, and Hexagon/ai.vixra. A dedicated phrase pass tested 20 distinctive quoted phrases, eight broader or near-phrase queries and one shortened follow-up. Additional mathematical and domain-restricted queries are recorded in the accompanying logs. No extended exact wording match was confirmed for the sampled distinctive sentences. Search engines sometimes relaxed quotes and returned unrelated matches; those were not treated as matches or as evidence of absence.
+
+An exploratory local normalized-text comparison was also performed against Lai/Fauzan. Formula tokens and PDF spacing/font artifacts limit such comparisons; its results are not a plagiarism score or an originality test. The conclusions rely on source reading, visible credits, and the specific comparisons above.
+
+Hexagon's direct search endpoint and one ai.vixra abstract endpoint were unavailable to the web tool. Domain-restricted web search and explicit primary PDF links worked. Unindexed PDFs, paywalled/unavailable material, changed pages, books, and close paraphrases can be missed. The displayed dates of blog posts do not establish the dates of all subsequent edits. No finite search can find literally everything online or prove a text was never influenced by another source.
+
+This is an attribution audit, not legal advice, a proof-validity certification, or a complete priority history. The useful action is to improve the references above while preserving the distinction between exact mathematical antecedents, related exposition, and demonstrated textual borrowing.
+
+Evidence files
+
+snapshots/manifest.json: exact PDF identities and original paths.
+search_logs/phrase_audit.txt: 29-query dedicated prose-search log.
+search_logs/arxiv_prior_art.txt: primary-source locators and arXiv/topic queries.
+search_logs/hexagon_vixra.txt: domain searches, PDF locators and access limitations.
+search_logs/chat_provenance.json: visible parent-chat web activity and relevant local-read commands.

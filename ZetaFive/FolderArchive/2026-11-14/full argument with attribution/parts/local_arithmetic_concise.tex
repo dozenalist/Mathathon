@@ -1,0 +1,107 @@
+\section{Arithmetic: choosing coordinates at each prime}
+\label{sec:local-arithmetic}
+
+The arithmetic must control every coefficient of \(F_K=S_K\Delta_K\).
+For \(A(X)=\sum_j a_jX^j\), write
+\[
+ v_p^{\mathrm G}(A)=\min_{a_j\ne0}v_p(a_j),\qquad
+ v_p^{\mathrm G}(0)=+\infty.
+\]
+Thus \(v_p^{\mathrm G}(A)\ge L\) means that \(p^L\) divides all its
+coefficients, with negative \(L\) allowing denominators. Evaluating
+at a particular \(X\) would not give this information.
+The strategy is Fauzan's; the bounds used here are Firsching's revised
+finite partial-fraction estimates
+\cite[Sections 3--4]{fauzan}\cite[\texttt{Arith/}, \texttt{Norm.lean}]{firsching}.
+
+Two elementary facts organize the calculation. A basis change with
+coefficient matrix \(C\) replaces \(G_K\) by \(C^{\mathsf T}G_KC\);
+its determinant is multiplied by \((\det C)^2\).
+Hence a basis whose determinant is a \(p\)-adic unit preserves the
+valuation. Also,
+\begin{equation}\label{arith:detweights}
+ v_p^{\mathrm G}(B_{ij})\ge w_i+w_j
+ \quad\Longrightarrow\quad
+ v_p^{\mathrm G}(\det B)\ge2\sum_iw_i.
+\end{equation}
+Every product in the determinant expansion has that lower bound.
+The task is therefore to choose coordinates in which useful row
+weights are visible.
+
+\subsection{Three bases for the same form}
+
+All three constructions estimate
+\(\mathcal B_{K,X}(f,g)=\mu_X(A_Kfg)\).
+Their difference is the arithmetic information they expose.
+
+\emph{Small primes: integer values.}
+The identity
+\[
+ \mu_X(R)=\tau_X\bigl(x^5R(-x^2)\bigr),\qquad
+ \tau(P)=\frac1{24}\mathcal L(P'''),\qquad \mathcal L(x^j)=B_j,
+\]
+puts the poles at integers and expresses the polynomial contribution
+through the same Bernoulli data as the real moments
+\cite[(3.1)]{fauzan}. Appendix~\ref{app:pullback} defines \(\tau_X\)
+and proves the identity.
+In a binomial basis, integer values give integral finite differences.
+The identities for differentiating \(\binom{x}{j}\) and
+\(\mathcal L(\binom{x}{j})=(-1)^j/(j+1)\) then bound the loss of
+divisibility. Applied to the specially chosen integer-valued basis,
+whose determinant accounts for \(S_K\), this gives the uniform bound
+\begin{equation}\label{arith:small}
+ v_p^{\mathrm G}(F_K)\ge
+ -6h\lfloor\log_p(5K)\rfloor-hv_p(24).
+\end{equation}
+The proof, including the polynomial parts of partial fractions, is
+in the detailed companion, Sections 6.2--6.3.
+
+\emph{Inner primes: distribute vanishing among residue classes.}
+For \(K/400<p\le K/3\), several poles can occupy one class.
+Choose polynomials with prescribed orders of vanishing at
+\(t=-c^2\pmod p\). The Chinese remainder theorem makes them a basis
+with unit determinant. Allocating the \(h\) basis vectors among these
+classes balances zeros against poles.
+
+Each row's weight must be valid in \emph{every} class. This is why the
+raw vanishing-order weights are capped at a common level; the zero
+class also needs a small reserve of rows because \(t=-x^2\) doubles
+its vanishing orders. If \(W_p^{\rm in}\) is the sum of the resulting
+capped weights, the entry bounds and \eqref{arith:detweights} give
+\[
+ v_p^{\mathrm G}(\Delta_K)\ge2W_p^{\rm in}.
+\]
+The explicit allocation and its uniform error bound occupy companion
+Sections 6.4--6.6. They implement Fauzan's class basis with Firsching's
+capped weights \cite[\texttt{InnerWeights.lean},
+\texttt{InnerAlloc.lean}]{firsching}.
+
+\emph{Outer primes: cancel poles, then restore the polynomial part.}
+For \(K/3<p\le2h\), a basis built from the actual pole factors cancels
+most troublesome denominators. The remaining low-order part has
+nonpositive row weights with sum \(W_p^{\rm out}\).
+The polynomial terms not covered by this estimate form a correction
+of rank at most
+\[
+ r_p=\max(0,52n+2-2p).
+\]
+In the chosen basis the full matrix has the form \(A+p^{-1}UV\),
+where \(U,V\) are integral and factor through \(r_p\) coordinates.
+Indeed,
+\[
+ \det(A+p^{-1}UV)=
+ \det\begin{pmatrix}A&-U\\p^{-1}V&I_{r_p}\end{pmatrix}.
+\]
+Applying the row-and-column version of \eqref{arith:detweights}
+to this block matrix gives
+\begin{equation}\label{arith:outer}
+ v_p^{\mathrm G}(\Delta_K)\ge2W_p^{\rm out}-r_p.
+\end{equation}
+This pays the \emph{full} rank loss. The pole cancellations and the rank
+calculation are in companion Section 6.7
+\cite[\texttt{OuterFrame.lean}, \texttt{LowRank.lean}]{firsching}.
+
+These are coefficient bounds for one determinant, in three coordinate
+systems. The inner and outer constructions apply uniformly once
+\(K>480000\); a finite initial range is irrelevant to the asymptotic
+contradiction. The remaining task is to add their costs over primes.

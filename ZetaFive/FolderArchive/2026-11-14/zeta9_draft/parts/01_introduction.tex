@@ -1,0 +1,123 @@
+\section{Introduction and the proposed analogue}
+\label{s1-introduction}
+
+The source manuscript \cite{F} constructs rational polynomials in a
+variable $X$, uses local estimates to clear their coefficients, and uses
+a positive integral to estimate their values at $X=\zeta(5)$. Here we
+carry out the corresponding manipulations with $\zeta(9)$. The question
+is what the individual formulas become, including the formulas at the
+end that cease to give the desired conclusion.
+
+We make one choice at the outset: retain the source's
+$K=40n$, $N=3n$, $h=37n$, and numerator $D_N^6$. Replace the functional
+and all harmonic sums, moments, and residues that depend on the zeta
+order. A construction with $D_N^{10}$ would be a different experiment:
+it changes the degree bookkeeping, local weights, normalization, and
+real field together. It is not part of the main calculation below.
+
+\subsection{What the final step would require}
+
+The mechanism behind the source's main theorem can be stated without
+assuming any of its estimates. Suppose integer polynomials $Q_K$ have
+degree $h=\lambda K$, where $\lambda=37/40$, and satisfy
+\begin{equation}
+ 0<Q_K(\zeta(9))\leq \exp(-\varepsilon K^2+o(K^2))
+ \quad\text{for some }\varepsilon>0.
+ \label{s1-target}
+\end{equation}
+If $\zeta(9)=a/b$ with integers $a,b$ and $b>0$, then
+$b^hQ_K(a/b)$ is a positive integer. But its logarithm is at most
+$\lambda K\log b-\varepsilon K^2+o(K^2)$, which tends to $-\infty$.
+That is the contradiction one would seek. Positivity, integrality, and
+quadratic decay have distinct jobs in this short final argument.
+
+Our analogue writes $Q_{9,K,M}=m_{9,K,M}F_{9,K}$, with $F_{9,K}$ the
+real-normalized determinant and $m_{9,K,M}>0$ the arithmetic multiplier.
+For fixed $M$, the two proposed bounds are
+\begin{equation}
+ \log m_{9,K,M}\leq A_{9,M}K^2+o_M(K^2),\qquad
+ \log F_{9,K}(\zeta(9))\leq UK^2+O(K\log K).
+ \label{s1-two-bounds}
+\end{equation}
+The sign that matters is therefore $A_{9,M}+U$. An upper bound with a
+positive coefficient does not imply that the determinant values grow;
+it simply fails to prove the decay needed in \eqref{s1-target}.
+
+\subsection{The changes to expect}
+
+The following dictionary records the principal substitutions. The
+entries in the right column are derived or qualified in the indicated
+sections; the table is a guide to the calculations, not an additional
+theorem.
+\begin{center}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.35\textwidth}>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}p{0.29\textwidth}@{}}
+\toprule
+Object & Source order five & Draft order nine\\
+\midrule
+Simple-pole coefficient of $X$ & $j^4$ & $j^8$\\
+Polynomial functional & $L(P^{(3)})/4!$ & $L(P^{(7)})/8!$\\
+Real weight series & $y^5\sum \ell^4e^{-2\pi\ell y}$ & $y^9\sum \ell^8e^{-2\pi\ell y}$\\
+Large-prime distribution & $p^{-4}$ & $p^{-8}$\\
+Ordinary-class exponent loss & $-4$ & $-8$\\
+Zero-class net contribution & $+1$ & $+1$\\
+First possible nonintegral moment, $p\geq11$ & $e\geq2p-3$ & $e\geq4p-5$\\
+Outer unremoved-class cost & $7(\ell-2)$ & $11(\ell-2)$\\
+Degree of the determinant & $h$ & $h$\\
+Leading real bound $U$ & $-1.3669955$ & $-1.3669955$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Two effects compete in the arithmetic. Higher harmonic sums increase
+the pole denominators. Extra factors in the polynomial moments cancel
+more Bernoulli denominators. Section~4 keeps both effects: in particular,
+the outer polynomial correction disappears sooner, even though the
+total denominator-clearing estimate becomes more costly.
+
+The calculation in Section~5 and Appendix~B gives
+\begin{equation}
+ A_{9,M}=A_{5,M}+\frac{116581}{57600},\qquad
+ \frac{116581}{57600}=2.0239756944\ldots .
+ \label{s1-cost-shift}
+\end{equation}
+Here $A_{5,M}$ denotes the source's particular arithmetic bound. It is
+not a claimed minimum among all normalizations. Combining the draft's
+bound with $U$ leaves approximately $2.00657$ at $M=200$, and approaches
+$1.97449$ as $M\to\infty$. Thus this version of the estimates has already
+lost its final negative sign. Section~7 nevertheless writes out the
+completion, and Appendix~C carries the perturbation and height algebra
+as far as its hypotheses permit.
+
+There is no additional restriction $9\equiv1\pmod4$ in the positive
+weight calculation used here. For every odd $s\geq3$, the corresponding
+weight has the positive series
+\[
+ \frac{2(2\pi)^{s-1}}{(s-1)!}y^s
+       \sum_{\ell\geq1}\ell^{s-1}e^{-2\pi\ell y}.
+\]
+Both the seventh and ninth orders fit that identity. The relevant
+obstruction in this draft is the numerical arithmetic cost, not a
+change of sign in that series. This statement concerns the present
+functional; it makes no assertion about separate modular transformation
+formulas in which congruence modulo four can matter.
+
+\subsection{Organization and limits of the exercise}
+
+Sections~2 and 3 construct the functional and translate its local
+identities. Section~4 supplies the proposed determinant exponents.
+Section~5 converts them to a multiplier and a prime-sum cost.
+Section~6 preserves the real energy calculation while changing the
+weight and its subquadratic errors. Section~7 displays the failed sign
+comparison. Appendix~A shows how the source's comparison measure is
+reused; Appendix~B gives the new rational arithmetic totals;
+Appendix~C develops perturbation, rational-approximation, and height
+formulas, retaining a hypothetical decay parameter only where needed.
+
+The inner completion step remains marked as a formal transplant. The
+source's real interval certificate is reused, not reverified. These
+qualifications do not prevent one from examining the substitutions,
+but they do prevent treating the draft as a checked theorem. The
+positive combined upper bound is also specific to this construction
+and these estimates; it rules out neither improved estimates nor a
+different construction.

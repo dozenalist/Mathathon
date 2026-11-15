@@ -1,0 +1,350 @@
+\section{A rational functional and a positive measure}\label{sec:functional}
+\source{Construction: Fauzan \cite[(2.2)--(2.3)]{fauzan} and Lai
+\cite[Definition 4.2]{lai}. The presentation follows the functional
+viewpoint in Persiflage \cite{persiflage}.}
+\subsection{Defining the functional carefully}
+The notation involves three different variables. The letter $t$ is the
+argument of a rational function. The letter $X$ is a parameter that will
+eventually be set equal to $\xi$. The letter $y$ will be an integration
+variable. Keeping these roles separate makes the later matrix calculation
+much easier to follow.
+
+Let $\mathcal R$ be the vector space over $\Q$ of rational functions in
+$\Q(t)$ whose finite poles, if any, are simple and belong to
+$\{-1^2,-2^2,-3^2,\ldots\}$. Every $R\in\mathcal R$ has a unique expression
+\begin{equation}\label{eq:partial}
+ R(t)=\sum_{e=0}^{d}p_et^e+\sum_{j\in J}\frac{c_j}{t+j^2},
+ \qquad p_e,c_j\in\Q,
+\end{equation}
+where $J$ is finite. Polynomial division gives the polynomial part.
+At a pole, its coefficient is
+$c_j=\left.(t+j^2)R(t)\right|_{t=-j^2}$.
+Subtracting these simple fractions leaves a rational function with no finite
+poles, hence a polynomial. These observations also prove uniqueness
+(with zero terms omitted).
+
+Define the Bernoulli numbers by
+\[
+ \frac{u}{e^u-1}=\sum_{k\geq0}B_k\frac{u^k}{k!}.
+\]
+Multiplication by the exponential series determines the $B_k$ recursively
+as rational numbers. In particular $B_0=1$, $B_1=-1/2$, $B_2=1/6$,
+and $B_4=-1/30$. Also put
+\[
+ \Hfive{j}=\sum_{v=1}^j v^{-5},\qquad \Hfive{0}=0.
+\]
+Prescribe a $\Q$-linear functional $\mu_X:\mathcal R\to\Q[X]$ by
+\begin{align}
+ \mu_X(t^e)&=
+ \frac{(-1)^eB_{2e+2}(2e+3)(2e+4)(2e+5)}{24},
+ &&e\in\Z_{\geq0},\label{eq:mu-moment}\\
+ \mu_X\!\left(\frac1{t+j^2}\right)&=
+ j^4\bigl(X-\Hfive{j}\bigr)-\frac14+\frac1{2j},
+ &&j\in\Z_{>0}.\label{eq:mu-pole}
+\end{align}
+For a general $R$, apply these formulas to its decomposition and add with
+the coefficients $p_e,c_j$. This is the meaning of extending by linearity.
+It gives a well-defined affine polynomial in $X$: only the simple
+fractions contribute a term involving $X$.
+
+For example,
+\[
+ \mu_X(1)=\frac5{12},\qquad
+ \mu_X\!\left(\frac1{t+1}\right)=X-\frac34.
+\]
+Since $t/(t+1)=1-1/(t+1)$, linearity gives
+$\mu_X(t/(t+1))=7/6-X$. There is no rule allowing us to multiply
+functional values; $\mu_X$ is linear, not multiplicative.
+
+Finally, $\mu_\xi(R)$ means evaluate the polynomial $\mu_X(R)$ at $X=\xi$.
+It does not mean substitute $\xi$ for $t$ in the rational function.
+
+\subsection{Why the polynomial values are moments}
+\source{Pr\'evost \cite[Theorems 1--2]{prevost};
+Fauzan \cite[Proposition 2.2]{fauzan}; Lai \cite[Lemma 4.5]{lai}.}
+Define, for $y>0$,
+\begin{equation}\label{eq:weight}
+ w(y)=\frac{(2\pi)^4y^5}{12}
+       \sum_{\ell\geq1}\ell^4e^{-2\pi\ell y}.
+\end{equation}
+Every summand is positive. The series converges for each $y>0$, so
+$w(y)>0$. We will prove
+\begin{equation}\label{eq:representation}
+ \boxed{\mu_\xi(R)=\int_0^\infty R(y^2)w(y)\dd y
+        \quad(R\in\mathcal R).}
+\end{equation}
+This is the bridge between rational algebra and real integration.
+First we check that the integrals make sense.
+
+Put $f(y)=(e^{2\pi y}-1)^{-1}$. Its geometric series may be differentiated
+term by term on $y\geq\varepsilon>0$, where the derivative series converge
+uniformly. Four differentiations show that
+\[
+ w(y)=\frac{y^5}{12}f^{(4)}(y).
+\]
+Near zero, $f(y)=1/(2\pi y)+g(y)$ with $g$ analytic at zero. Consequently
+$f^{(4)}(y)=24/(2\pi y^5)+O(1)$ and $w(y)\to1/\pi$.
+For $y\geq1$, factor $e^{-2\pi y}$ out of the series in \eqref{eq:weight};
+the remaining sum is bounded by
+$\sum_{\ell\geq1}\ell^4e^{-2\pi(\ell-1)}<\infty$.
+Thus $w(y)=O(y^5e^{-2\pi y})$ at infinity.
+
+An admissible $R(y^2)$ is bounded near zero, because its poles lie away from
+$[0,\infty)$. It grows at most polynomially as $y\to\infty$.
+These two bounds on $w$ prove absolute convergence in
+\eqref{eq:representation}.
+
+For $R(t)=t^e$, the summands of the integral are nonnegative. Tonelli's
+theorem allows us to interchange the sum and integral:
+\begin{align*}
+ \int_0^\infty y^{2e}w(y)\dd y
+ &=\frac{(2\pi)^4}{12}\sum_{\ell\geq1}\ell^4
+      \int_0^\infty y^{2e+5}e^{-2\pi\ell y}\dd y\\
+ &=\frac{(2e+5)!}{12(2\pi)^{2e+2}}
+      \sum_{\ell\geq1}\frac1{\ell^{2e+2}}.
+\end{align*}
+Here $\int_0^\infty y^m e^{-by}\dd y=m!/b^{m+1}$ for $b>0$:
+substitution reduces this to $b=1$, and repeated integration by parts gives
+$m!$. Euler's formula, proved in Appendix A, is
+\[
+ \zeta(2e+2)=
+ \frac{(-1)^eB_{2e+2}(2\pi)^{2e+2}}{2(2e+2)!}.
+\]
+Substituting it above yields
+\[
+ \int_0^\infty y^{2e}w(y)\dd y
+ =\frac{(-1)^eB_{2e+2}}{24}\,
+       \frac{(2e+5)!}{(2e+2)!}
+ =\mu_X(t^e).
+\]
+The factorial quotient is exactly $(2e+3)(2e+4)(2e+5)$.
+The equality is independent of $X$, as the definition requires.
+
+\subsection{Why the pole values are the same integrals}
+\source{The Stieltjes representation is Pr\'evost's \cite[Theorem 1]{prevost}.
+The fifth-order calculation is also in Fauzan \cite[Proposition 2.2]{fauzan}
+and Lai \cite[Lemma 4.6]{lai}.}
+The simple fractions need a different calculation. We do it for a real
+number $a>0$, then specialize to a positive integer. Define
+\[
+ q_a(y)=\frac{y^5}{y^2+a^2}
+       =y^3-a^2y+a^4\frac{y}{y^2+a^2}.
+\]
+The polynomial terms disappear after four derivatives. Since
+$y/(y^2+a^2)=\operatorname{Im}(a-iy)^{-1}$, and
+$\frac{d^4}{dy^4}(a-iy)^{-1}=24(a-iy)^{-5}$, we obtain
+\[
+ q_a^{(4)}(y)=24a^4\operatorname{Im}(a-iy)^{-5}.
+\]
+Using $w=y^5f^{(4)}/12$, four integrations by parts give
+\begin{align*}
+ \int_0^\infty\frac{w(y)}{y^2+a^2}\dd y
+ &=\frac1{12}\int_0^\infty q_a(y)f^{(4)}(y)\dd y\\
+ &=\frac1{12}\int_0^\infty q_a^{(4)}(y)f(y)\dd y\\
+ &=2a^4\int_0^\infty
+     \frac{\operatorname{Im}(a-iy)^{-5}}{e^{2\pi y}-1}\dd y.
+\end{align*}
+There are no missing boundary terms. First work on $[\varepsilon,L]$;
+the boundary expression is
+$q_af'''-q_a'f''+q_a''f'-q_a'''f$.
+For $0\leq r\leq3$, at zero we have
+\[
+ q_a^{(r)}(y)=O(y^{5-r}),\qquad
+ f^{(3-r)}(y)=O(y^{r-4}),
+\]
+so every boundary product is $O(y)$ and tends to zero. At infinity the
+derivatives of $f$ decay exponentially and the other factors have at most
+polynomial growth. Also $q_a^{(4)}(y)=O(y)$ at zero, so
+$q_a^{(4)}(y)f(y)=O(1)$ there. The final integral converges at both ends,
+and we may let $\varepsilon\downarrow0$ and $L\to\infty$.
+
+For $a>0$, define $\zeta(5,a)=\sum_{v=0}^\infty(a+v)^{-5}$.
+The particular Hurwitz identity needed here is
+\begin{equation}\label{eq:hermite}
+ \zeta(5,a)=\frac1{2a^5}+\frac1{4a^4}
+ +2\int_0^\infty
+     \frac{\operatorname{Im}(a-iy)^{-5}}{e^{2\pi y}-1}\dd y.
+\end{equation}
+Appendix A derives this directly from an elementary kernel identity.
+It gives
+\[
+ \int_0^\infty\frac{w(y)}{y^2+a^2}\dd y
+ =a^4\zeta(5,a)-\frac1{2a}-\frac14.
+\]
+For an integer $j\geq1$, the series gives
+$\zeta(5,j)=\xi-\Hfive{j}+j^{-5}$. Therefore
+\[
+ \int_0^\infty\frac{w(y)}{y^2+j^2}\dd y
+ =j^4(\xi-\Hfive{j})-\frac14+\frac1{2j}
+ =\mu_\xi\!\left(\frac1{t+j^2}\right).
+\]
+We have checked both types of term in \eqref{eq:partial}.
+Applying the formulas to its finitely many terms and using linearity
+of integration proves \eqref{eq:representation} for every $R\in\mathcal R$.
+
+\input{parts/approximation.tex}
+\section[Modifying the measure and its determinant]{Modifying the measure and taking its determinant}\label{sec:determinant}
+\source{Fauzan \cite[Section 2.1]{fauzan}; Persiflage
+\cite[Hankel Determinants]{persiflage}; Lai \cite[Section 5]{lai}.}
+\subsection{The modifier and its affine moments}
+For a positive integer $n$, choose
+\[
+ K=40n,\qquad N=3n,\qquad h=K-N=37n,
+ \qquad D_m(t)=\prod_{j=1}^m(t+j^2).
+\]
+The parameters have been chosen to make the later estimates work.
+For now, the features that matter are positivity and cancellation. Define
+\[
+ A_K(t)=\frac{D_N(t)^6}{D_K(t)}
+       =\frac{D_N(t)^5}{T_K(t)},\qquad
+ T_K(t)=\prod_{k=N+1}^K(t+k^2).
+\]
+The cancellation removes the first $N$ possible poles. The $h$ remaining
+roots of $T_K$ are distinct negative integer squares, so multiplying
+$A_K$ by any polynomial leaves a function in $\mathcal R$.
+Moreover, $A_K(y^2)>0$ for every $y>0$.
+
+It is useful to name the pairing before choosing its coordinates:
+\begin{equation}\label{eq:bilinear-form}
+ \mathcal B_{K,X}(p,q)=\mu_X(A_Kpq),
+ \qquad p,q\in\Q[t]_{<h}.
+\end{equation}
+The monomials below and the later bases adapted to each prime are
+coordinates for this one form. The real estimate uses its integral
+representation. This common starting point is explicit in
+Fauzan \cite[Sections 2.3--2.4]{fauzan}.
+
+For $0\leq i,j<h$ put $R_{ij}(t)=A_K(t)t^{i+j}$ and define
+\begin{equation}\label{eq:G}
+ G_K(X)=\bigl[\mu_X(R_{ij})\bigr]_{0\leq i,j<h},
+ \qquad \Delta_K(X)=\det G_K(X).
+\end{equation}
+The dependence on $i+j$ makes this a Hankel matrix: its entries are constant
+along each anti-diagonal.
+To see explicitly why these are affine entries, take partial fractions:
+\[
+ R_{ij}(t)=P_{ij}(t)+\sum_{k=N+1}^K\frac{c_k^{ij}}{t+k^2},
+ \qquad
+ c_k^{ij}=\frac{D_N(-k^2)^5(-k^2)^{i+j}}{T_K'(-k^2)}.
+\]
+The polynomial part may be zero; it must not otherwise be discarded.
+Applying the functional gives
+\[
+ G_K(X)_{ij}=\mu_X(P_{ij})+
+ \sum_{k=N+1}^K c_k^{ij}
+ \left[k^4(X-\Hfive{k})-\frac14+\frac1{2k}\right].
+\]
+Thus every entry is $a_{ij}X+b_{ij}$ with rational $a_{ij},b_{ij}$.
+Each term of the determinant expansion is a product of \(h\) affine
+entries. Hence $\Delta_K\in\Q[X]$ and $\deg\Delta_K\leq37n$.
+Section~\ref{sec:exact-degree} proves exact degree $h$, but the upper bound suffices.
+
+\subsection{Evaluating the matrix at \texorpdfstring{\(\xi\)}{xi}}
+\source{The positive Gram interpretation is explicit in Fauzan
+\cite[Proposition 2.2]{fauzan}, Persiflage \cite{persiflage},
+and Lai \cite[Proposition 5.6]{lai}.}
+We can now pass from a symbolic matrix to a matrix of integrals one entry
+at a time. With $R_{ij}$ as above,
+\begin{align*}
+ G_K(\xi)_{ij}
+ &=\left.\mu_X(R_{ij})\right|_{X=\xi}\\
+ &=\mu_\xi(R_{ij})\\
+ &=\int_0^\infty R_{ij}(y^2)w(y)\dd y\\
+ &=\int_0^\infty y^{2i}y^{2j}A_K(y^2)w(y)\dd y.
+\end{align*}
+The third equality is the representation proved in Section~\ref{sec:functional}.
+The last is substitution: $(y^2)^{i+j}=y^{2i}y^{2j}$.
+Absolute convergence was already checked for every admissible rational
+function, including these particular $R_{ij}$.
+
+For a compact description, set
+\[
+ \dd\nu_K(y)=A_K(y^2)w(y)\dd y,\qquad
+ v(y)=(1,y^2,\ldots,y^{2h-2})^{\mathsf T}.
+\]
+Then $G_K(\xi)=\int_0^\infty v(y)v(y)^{\mathsf T}\dd\nu_K(y)$,
+where the integral is taken \emph{entry by entry}. Its $(i,j)$ entry is
+exactly the last integral above.
+
+Let $c=(c_0,\ldots,c_{h-1})^{\mathsf T}\in\R^h$ and
+$q(t)=\sum_i c_it^i$. Distributing the finite sums gives
+\[
+ c^{\mathsf T}G_K(\xi)c
+ =\int_0^\infty\left(\sum_i c_iy^{2i}\right)^2\dd\nu_K(y)
+ =\int_0^\infty q(y^2)^2\dd\nu_K(y).
+\]
+Only finite linearity is used here. Real coefficients $c_i$ cause no
+difficulty with the originally $\Q$-linear definition of $\mu_X$.
+
+If $c\ne0$, then $q$ is a nonzero polynomial. Choose $y_0>0$ that is not
+a root of $q(y^2)$. By continuity, $q(y^2)^2$ is bounded below by a positive
+number on a small interval about $y_0$. The density of $\nu_K$ is positive
+and continuous there, so the integral is strictly positive.
+
+Thus $G_K(\xi)$ is positive definite. To see why its determinant is positive,
+orthogonalize $1,y^2,\ldots,y^{2h-2}$ by Gram--Schmidt without normalizing.
+The resulting orthogonal functions are monic polynomials in $y^2$, so each
+is nonzero and has positive squared norm. The change of basis is triangular
+with diagonal entries one. The determinant is therefore the product of
+these positive squared norms: $\Delta_K(\xi)>0$.
+
+The matrix integral is not a rule for moving a determinant inside an
+integral. Each $v(y)v(y)^{\mathsf T}$ has rank one. The multiple integral
+for the determinant comes from Andr\'eief's identity, proved in the analytic section.
+
+The integral and the affine dependence can now be displayed together.
+For rational polynomials \(p,q\) of degree less than \(h\), put
+\[
+ d_k=\frac{k^4D_N(-k^2)^5}{T_K'(-k^2)}
+ \qquad(N<k\le K).
+\]
+The partial fractions already computed give the exact identity
+\begin{equation}\label{eq:gram-residue}
+ \mathcal B_{K,X}(p,q)
+ =\int_0^\infty p(y^2)q(y^2)\dd\nu_K(y)
+ +(X-\xi)\sum_{k=N+1}^K d_kp(-k^2)q(-k^2).
+\end{equation}
+Indeed the polynomial part is independent of \(X\), while the change
+in the value at the pole \(-k^2\) is \(k^4(X-\xi)\).
+The residue sum is the slope; polynomial quotients still contribute to
+the constant part. This explains the later arithmetic correction.
+The identity combines Fauzan's Gram and residue formulas
+\cite[Sections 2.3--2.4]{fauzan}.
+
+\subsection{Putting both estimates on the same scale}
+Fauzan uses the positive rational scalar
+\begin{equation}\label{eq:normalization}
+ S_K=\frac{(K!)^{2h}4^{h-1}}
+ {(N!)^{12h}\prod_{i=1}^{h-1}((2i)!)^2},
+ \qquad F_K(X)=S_K\Delta_K(X).
+\end{equation}
+This is his equation (2.5) \cite{fauzan}, also retained in
+\texttt{Apery/Construction.lean} \cite{firsching}.
+It follows at once that
+\[
+ F_K\in\Q[X],\qquad \deg F_K\leq h,\qquad F_K(\xi)>0.
+\]
+The rescaling is useful because factorial valuations admit exact formulas,
+and factorial sizes admit Stirling estimates. It does not, on its own,
+make every coefficient integral.
+
+The goal itself is independent of rational scale. Let \(c(A)>0\)
+be the rational content of a nonzero \(A\in\Q[X]\): dividing by \(c(A)\)
+makes its coefficients integers with greatest common divisor one.
+If \(v_p^{\mathrm G}(A)\) denotes the minimum coefficient valuation,
+then \(c(A)=\prod_p p^{v_p^{\mathrm G}(A)}\), by taking a common
+denominator and then the greatest common divisor. For \(A(\xi)\ne0\), set
+\begin{equation}\label{eq:primitive-size}
+ \mathcal J_\xi(A)
+ =\log|A(\xi)|-\sum_p v_p^{\mathrm G}(A)\log p
+ =\log\left|\frac{A(\xi)}{c(A)}\right|.
+\end{equation}
+For \(r\in\Q^\times\), the identity
+\(\log|r|=\sum_p v_p(r)\log p\) proves
+\(\mathcal J_\xi(rA)=\mathcal J_\xi(A)\).
+The real change in size caused by a rational rescaling is exactly
+balanced by its change at the finite primes.
+Fauzan already uses primitive normalization
+\cite[Appendix C.3]{fauzan}. We choose \(S_K\) for convenient estimates,
+then construct an explicit multiplier from certified prime bounds.
+Together those estimates bound \(\mathcal J_\xi\).

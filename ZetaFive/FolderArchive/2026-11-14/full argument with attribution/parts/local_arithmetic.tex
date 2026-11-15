@@ -1,0 +1,720 @@
+\section{Arithmetic: estimating every coefficient at once}\label{sec:local-arithmetic}
+
+The real integral makes the determinant positive and small. Arithmetic has
+a different task: it must control \emph{all} coefficients of the polynomial,
+including the constant coefficient contributed by polynomial parts in
+partial fractions. Controlling only the residues is not sufficient.
+
+This section follows Fauzan's choice of bases and local organization
+\cite[\S\S3--4]{fauzan}, with the direct partial-fraction proofs, capped
+inner weights, and full outer rank loss in Firsching's formalization
+\cite[\texttt{Apery/Arith/} and \texttt{Norm.lean}]{firsching}.
+These are source-derived constructions. We give their mathematical
+proofs here rather than using the existence of formal code as a substitute
+for the estimates.
+
+Throughout this section,
+\[
+ K=40n,\qquad N=3n,\qquad h=37n,\qquad
+ A_K(t)=D_N(t)^6/D_K(t),\qquad F_K=S_K\Delta_K.
+\]
+All valuation statements concern rational numbers, so no completion of
+$\Q$ is needed. Write $\Z_{(p)}$ for rationals whose denominators are
+prime to $p$, put $v_p(0)=+\infty$, and define
+\[
+ v_p^G\!\left(\sum_j a_jX^j\right)=\min_j v_p(a_j).
+\]
+Thus $v_p^G(P)\ge b$ means that \emph{each} coefficient has valuation
+at least $b$. The superscript distinguishes this coefficient bound from
+evaluation at a numerical value of $X$.
+
+All three bases estimate the same form \(\mathcal B_{K,X}\) from
+\eqref{eq:bilinear-form}. The small-prime basis exposes integer values,
+the inner basis prescribes vanishing orders at residue classes, and
+the outer basis cancels actual poles. Their coordinate costs are
+accounted for by the following rule.
+
+\subsection{Two elementary determinant rules}
+
+If a matrix $B(X)$ satisfies
+$v_p^G(B_{ij})\ge u_i+v_j$, then
+\begin{equation}\label{arith:detweights}
+ v_p^G(\det B)\ge\sum_i u_i+\sum_j v_j.
+\end{equation}
+Indeed, each permutation product has this lower bound, and addition
+cannot lower it. The weights may be half-integers; the coefficients
+themselves still have integer valuations.
+
+If $E_0,\ldots,E_{h-1}$ is another basis of $\Q[t]_{<h}$ with
+coefficient matrix $C$ defined by $E_i(t)=\sum_j C_{ji}t^j$,
+bilinearity gives
+\[
+ \bigl[\mu_X(A_KE_iE_j)\bigr]=C^{\mathsf T}G_K(X)C.
+\]
+Consequently its determinant is $(\det C)^2\Delta_K(X)$.
+When $C$ has entries in $\Z_{(p)}$ and determinant a unit there, the
+valuation of the determinant is unchanged. Choosing such a basis
+separately at each prime is the principal freedom in the argument.
+These identities are the basis-change and weighted-determinant steps
+used throughout \cite[\S\S3.3--4]{fauzan};
+see also \cite[\texttt{BasisChange.lean}, \texttt{Val.lean}]{firsching}.
+
+\subsection{The Bernoulli functional and integer-valued polynomials}
+
+Let $\mathcal L(x^j)=B_j$ and
+\[
+ \tau(P)=\frac1{24}\mathcal L(P''').
+\]
+The same Bernoulli data supplied the real moments. With
+\(\partial=d/dx\), their generating function gives the
+Euler--Maclaurin operator
+\[
+ \tau(P)=
+ \left[\frac{\partial^4}{24(e^\partial-1)}P\right](0).
+\]
+The series starts with \(\partial^3/24\) and terminates on each
+polynomial \cite[24.2 and 24.4]{dlmf}. Since \(e^\partial-1\)
+acts as forward difference, multiplication gives
+\[
+ \tau\bigl(P(x+1)-P(x)\bigr)=P^{(4)}(0)/24.
+\]
+This explains the use of finite differences below. The operator formula
+is asserted only on polynomials.
+
+For rational functions with simple integer poles, define
+\[
+ \tau_X\left(P(x)+\sum_r\frac{c_r}{x-r}\right)
+ =\tau(P)+\sum_r c_r\bigl(H_{d(r)}^{(5)}-X\bigr),\qquad
+ d(r)=
+ \begin{cases}r,&r\ge0,\\-r-1,&r<0.\end{cases}
+\]
+The pullback identity, proved in Appendix~\ref{app:pullback}, is
+\begin{equation}\label{arith:pullback}
+ \mu_X(R(t))=\tau_X\bigl(x^5R(-x^2)\bigr).
+\end{equation}
+It turns square poles into integer poles. This identity and the
+functional $\tau$ are Fauzan's, not new definitions introduced to repair
+the proof \cite[\S3, (3.1)]{fauzan}.
+For an odd prime, a class \(t=-c^2\) with \(c\ne0\) gives the two classes
+\(x=\pm c\); at zero, vanishing orders double.
+
+The useful basis for estimating $\tau$ is
+$\binom{x}{j}=x(x-1)\cdots(x-j+1)/j!$.
+For a polynomial $P$ of degree at most $d$, Newton's identity reads
+\[
+ P(x)=\sum_{j=0}^d(\Delta^jP)(0)\binom{x}{j},
+ \qquad \Delta P(x)=P(x+1)-P(x).
+\]
+It follows by evaluating successively at $0,1,\ldots,d$, since the
+evaluation matrix is triangular with diagonal one.
+If $v_p(P(m))\ge\beta$ for $0\le m\le d$, then every coefficient
+$(\Delta^jP)(0)$ has valuation at least $\beta$: it is an integer
+linear combination of those values.
+
+Two generating-function identities quantify the cost of differentiation
+and of applying $\mathcal L$:
+\begin{align}
+ \frac{d}{dx}\binom{x}{j}
+ &=\sum_{\ell=1}^j\frac{(-1)^{\ell-1}}{\ell}
+                   \binom{x}{j-\ell},\label{arith:bin-deriv}\\
+ \mathcal L\!\left(\binom{x}{j}\right)&=\frac{(-1)^j}{j+1}.
+ \label{arith:bin-bernoulli}
+\end{align}
+For the first, differentiate
+$(1+z)^x=\sum_j\binom{x}{j}z^j$ in $x$ and use the series for
+$\log(1+z)$. For the second, apply $\mathcal L$ formally to
+$(1+z)^x=e^{x\log(1+z)}$ and use
+$\mathcal L(e^{ux})=u/(e^u-1)$.
+Each fixed coefficient involves finitely many terms, so these are
+identities of formal series, with no convergence issue.
+
+Set $\Lambda=\lfloor\log_p(d+1)\rfloor$.
+Equation~\eqref{arith:bin-deriv} loses at most $\Lambda$ in valuation
+at each differentiation, and \eqref{arith:bin-bernoulli} loses at most
+another $\Lambda$. Division by $24$ gives
+\begin{equation}\label{arith:taupoly}
+ v_p(\tau(P))\ge
+ \beta-4\lfloor\log_p(d+1)\rfloor-v_p(24).
+\end{equation}
+The same statement holds if the hypotheses are known on
+\emph{any} $d+1$ consecutive integers. Newton expansion based at the
+left endpoint first shows the bound at every integer: the numbers
+$\binom{m}{j}$ are integers for every integer $m$, including negative
+$m$. Then apply the displayed estimate in its original form.
+This proves the polynomial estimate (3.9) of
+\cite[\S3.3]{fauzan}; the direct finite-difference implementation is
+\cite[\texttt{BinomBasis.lean}, \texttt{TauBound.lean},
+\texttt{SmallPrime.lean}]{firsching}.
+
+\subsection{A bound valid at every prime}
+
+We first prove a deliberately coarse bound. Its role is to handle
+the small primes and any finite exceptional cases.
+
+\begin{lemma}\label{arith:crude-tau}
+Let $A(x)$ be integer-valued on $\Z$, with $\deg A\le d$ and
+$d\ge2K\ge2$. Put
+\[
+ g(x)=\frac{(K!)^2A(x)}
+             {\prod_{r\in\{-K,\ldots,-1,1,\ldots,K\}}(x-r)}.
+\]
+Then, for every prime $p$,
+\[
+ v_p^G(\tau_X(g))
+ \ge-6\lfloor\log_p(d+1)\rfloor-v_p(24).
+\]
+\end{lemma}
+
+\begin{proof}
+Write $\Lambda=\lfloor\log_p(d+1)\rfloor$ and decompose
+$g=P+\sum_r c_r/(x-r)$. For $r=\pm j$, direct multiplication of the
+differences between the poles gives
+\[
+ \frac{(K!)^2}
+ {\prod_{s\ne r}(r-s)}
+ =\pm j\,\frac{(K!)^2}{(K-j)!(K+j)!}
+ =\pm j\,\frac{\binom{2K}{K+j}}{\binom{2K}{K}}.
+\]
+For $0\le v\le u$, Legendre's formula implies
+\[
+ v_p\binom uv
+ =\sum_{a\ge1}\left(
+ \left\lfloor\frac u{p^a}\right\rfloor
+ -\left\lfloor\frac v{p^a}\right\rfloor
+ -\left\lfloor\frac{u-v}{p^a}\right\rfloor\right)
+ \le\lfloor\log_p u\rfloor;
+\]
+each summand is zero or one and vanishes for $p^a>u$.
+Thus $v_p(c_r)\ge-\Lambda$.
+
+For an integer $m>K$,
+\[
+ \frac{(K!)^2}{\prod_r(m-r)}
+ =\frac1{\binom{m-1}{K}\binom{m+K}{K}}.
+\]
+Take $m=K+1,\ldots,d-K+1$. Here $m+K\le d+1$, so
+$v_p(g(m))\ge-2\Lambda$. Also $1\le m-r\le d+1$ for every pole,
+giving $v_p(c_r/(m-r))\ge-2\Lambda$. Therefore
+$v_p(P(m))\ge-2\Lambda$ on these $d-2K+1$ consecutive integers.
+Since $\deg P\le d-2K$, the window form of
+\eqref{arith:taupoly} yields
+$v_p(\tau(P))\ge-6\Lambda-v_p(24)$.
+
+Finally $d(r)\le K\le d+1$, so
+$v_p^G(H_{d(r)}^{(5)}-X)\ge-5\Lambda$.
+Each residue term in $\tau_X(g)$ has valuation at least $-6\Lambda$.
+Adding the polynomial and pole contributions proves the result.
+\end{proof}
+
+This proof is the integer-window argument in
+\cite[\texttt{SmallPrimeTau.lean}, \texttt{crude\_tauX}]{firsching},
+replacing the local analytic discussion in Fauzan's Lemma~3.3.
+
+Now use
+\[
+ q_0(t)=1,\qquad
+ q_i(t)=\frac{(-1)^i\,2tD_{i-1}(t)}{(2i)!}\quad(i\ge1).
+\]
+Two product identities explain this otherwise rather special basis:
+\begin{align*}
+ q_i(-z^2)&=\binom{z+i}{2i}+\binom{z+i-1}{2i}\quad(i\ge1),\\
+ \frac{D_N(-z^2)}{(N!)^2}
+ &=\binom{N+z}{N}\binom{N-z}{N}.
+\end{align*}
+The identities follow by expanding the products on both sides. In
+particular both expressions are integers for every integer $z$.
+Put $c=(K!)^2/(N!)^{12}$. By the pullback formula,
+$c\,\mu_X(A_Kq_iq_j)$ is the $\tau_X$-value in
+Lemma~\ref{arith:crude-tau} with integer-valued numerator
+\[
+ (-1)^Kx^5
+ \left(\frac{D_N(-x^2)}{(N!)^2}\right)^6
+ q_i(-x^2)q_j(-x^2).
+\]
+Its degree is at most
+$5+12N+4(h-1)=184n+1$, whose successor is at most $5K=200n$.
+Every matrix entry consequently has valuation at least
+$-6\lfloor\log_p(5K)\rfloor-v_p(24)$.
+
+The coefficient matrix of the $q_i$ is triangular, with leading
+coefficients $1,(-1)^i2/(2i)!$. Hence
+\[
+ \det\bigl[c\,\mu_X(A_Kq_iq_j)\bigr]
+ =c^h\frac{4^{h-1}}{\prod_{i=1}^{h-1}((2i)!)^2}\Delta_K
+ =F_K.
+\]
+We have proved
+\begin{equation}\label{arith:small}
+ \boxed{\quad v_p^G(F_K)\ge
+ -6h\lfloor\log_p(5K)\rfloor-hv_p(24).\quad}
+\end{equation}
+This is Fauzan's (3.12), with its direct proof in
+\cite[\texttt{SmallPrimeF.lean}, \texttt{small\_prime\_bound}]{firsching}.
+
+\subsection{A direct bound from residue-class counts}
+
+For larger primes a coarse common denominator wastes too much
+divisibility. We now count zeros and poles in each residue class.
+The following finite argument is the key replacement for a
+$p$-adic extension of the functional.
+
+\begin{lemma}\label{arith:direct}
+Let $p\ge5$, and let
+\[
+ g(x)=\kappa\frac{\prod_{\zeta\in Z}(x-\zeta)}
+                         {\prod_{r\in P}(x-r)},\qquad
+ \kappa\in\Z_{(p)},
+\]
+where $Z$ is a multiset of integers and $P$ is a finite set of distinct
+integers. For a residue class $c$, let $e_c$ and $\ell_c$ count its
+zeros and poles. Assume that distinct poles congruent modulo $p$
+are not congruent modulo $p^2$, that $d(r)<p^2$ for all poles, and that
+the polynomial part has degree at most $d$ with $d+1<p^2$.
+Then
+\[
+ v_p^G(\tau_X(g))\ge\min_c(e_c-\ell_c)-4.
+\]
+\end{lemma}
+
+\begin{proof}
+Write $g=P_0+\sum_r c_r/(x-r)$ and
+$\beta=\min_c(e_c-\ell_c)$.
+The residue formula gives
+\begin{equation}\label{arith:residuecount}
+ v_p(c_r)\ge e_c-\ell_c+1,\qquad c=r\bmod p.
+\end{equation}
+Indeed, each numerator factor in class $c$ contributes at least one
+power of $p$; the $\ell_c-1$ denominator factors in that class
+contribute exactly one each, and all other denominator factors are units.
+
+We need a bound on the polynomial part as well. Fix an integer $m$
+in class $c$, and write the pole denominator as $\Pi_c\Pi_o$,
+where $\Pi_c$ contains the poles in $c$ and $\Pi_o$ the other poles.
+If $A$ denotes the numerator, the partial fractions give
+\[
+ A=\Pi_c H+\Pi_o I,
+\]
+where
+\[
+ H=P_0\Pi_o+\sum_{r\notin c}c_r\frac{\Pi_o}{x-r},
+ \qquad
+ I=\sum_{r\in c}c_r\frac{\Pi_c}{x-r}.
+\]
+Substitute $x=m+pz$. The coefficients of $A(m+pz)$ are divisible
+by $p^{e_c}$ in $\Z_{(p)}$.
+By \eqref{arith:residuecount}, the same is true of $I(m+pz)$:
+its residue supplies $e_c-\ell_c+1$ powers and its remaining
+$\ell_c-1$ factors supply the rest. Also
+\[
+ \Pi_c(m+pz)=p^{\ell_c}
+       \prod_{r\in c}\left(z-\frac{r-m}{p}\right)=p^{\ell_c}T(z),
+\]
+with $T$ monic and integral. It follows that
+$T(z)\,p^{\ell_c-e_c}H(m+pz)$ has integral coefficients.
+Division by a monic integral polynomial preserves integral
+coefficients, so $p^{\ell_c-e_c}H(m+pz)$ is integral. At $z=0$
+this gives $v_p(H(m))\ge e_c-\ell_c$.
+
+Since $\Pi_o(m)$ is a unit, the identity
+\[
+ P_0(m)=\frac{H(m)}{\Pi_o(m)}
+              -\sum_{r\notin c}\frac{c_r}{m-r}
+\]
+now proves $v_p(P_0(m))\ge\beta$. This holds for every integer $m$.
+Estimate~\eqref{arith:taupoly}, with $d+1<p^2$ and $p\nmid24$,
+therefore gives $v_p(\tau(P_0))\ge\beta-4$.
+The harmonic bound $d(r)<p^2$ gives
+$v_p^G(H_{d(r)}^{(5)}-X)\ge-5$; together with
+\eqref{arith:residuecount} it gives the same $\beta-4$ bound
+for every pole term.
+\end{proof}
+
+This is the argument of
+\cite[\texttt{DirectBound.lean}, \texttt{DirectPoly.lean},
+\texttt{tauX\_direct}]{firsching}. The count measures the whole
+rational function; the polynomial-part paragraph is essential.
+
+\subsection{Inner primes: distributing vanishing among the classes}
+
+Write $p=2m+1$ and represent classes up to sign by
+$c=0,1,\ldots,m$. Put
+\begin{align*}
+ s_H(c)=\#\{1\le j\le H:j\equiv c\pmod p\}
+       &+\#\{1\le j\le H:j\equiv-c\pmod p\},\\
+ \beta_c&=6s_N(c)-s_K(c)-4.
+\end{align*}
+The two counts coincide when $c=0$, so $s_H(0)=2\lfloor H/p\rfloor$.
+This doubled convention is intentional.
+
+Choose nonnegative integers $L_c$ with $\sum_cL_c=h$ and define
+\[
+ E_{c,i}(t)=(t+c^2)^i\prod_{a\ne c}(t+a^2)^{L_a},
+ \qquad 0\le i<L_c.
+\]
+These form a basis with coefficient determinant a $p$-adic unit.
+To see this, reduce modulo $p$ and work in
+$\mathbf F_p[t]/\prod_c(t+c^2)^{L_c}$.
+The factors for different $c$ are coprime. In the $c$-component,
+the rows belonging to $c$ are $(t+c^2)^i$ times a unit, while
+all other rows vanish. They are therefore a basis in each component,
+and the Chinese remainder theorem proves the assertion.
+This auxiliary modulus prescribes Taylor coefficients at each class;
+it need not equal the pole denominator \(D_K/D_N\). The allocation
+\(L_c\) distributes the same \(h\) polynomial coordinates among classes.
+
+For a row $u=(c,i)$ let
+$\nu_u(a)=i$ if $a=c$ and $\nu_u(a)=L_a$ otherwise.
+In the pullback of $A_KE_uE_v$, the count of zeros minus poles in
+either residue class represented by $a$ is
+\[
+ \begin{cases}
+ 6s_N(a)-s_K(a)+\nu_u(a)+\nu_v(a),&a\ne0,\\
+ 5+6s_N(0)-s_K(0)+2\nu_u(0)+2\nu_v(0),&a=0.
+ \end{cases}
+\]
+The extra $5$ comes from $x^5$; the factor $2$ comes from
+$t=-x^2$ at the zero class.
+All hypotheses of Lemma~\ref{arith:direct} hold, for example, if
+$p^2>3K$: distinct integer poles lie between $-K$ and $K$,
+the harmonic indices are at most $K$, and the polynomial-part
+degree plus one is at most $104n+2<3K$.
+
+Set
+\[
+ T=\min_{a\ne0}\left(L_a+\frac{\beta_a}{2}\right)
+\]
+and assign row weights
+\begin{equation}\label{arith:innerweights}
+ w_{c,i}=
+ \begin{cases}
+ \min\{i+\beta_c/2,T\},&c\ne0,\\
+ \min\{2i+(\beta_0+5)/2,T\},&c=0.
+ \end{cases}
+\end{equation}
+Assume the zero-class condition
+\begin{equation}\label{arith:zero-condition}
+ T\le2L_0+\frac{\beta_0+5}{2}.
+\end{equation}
+For a nonzero class $a$, a row belonging to $a$ has weight at most
+$i+\beta_a/2$; any other row has weight at most
+$T\le L_a+\beta_a/2$. At $a=0$ the analogous bounds follow from
+\eqref{arith:zero-condition}. Adding the bounds for the two rows
+shows, class by class, that the minimum in
+Lemma~\ref{arith:direct}, less $4$, is at least $w_u+w_v$.
+The basis-change and determinant rules therefore give
+\begin{equation}\label{arith:inner}
+ \boxed{\quad v_p^G(\Delta_K)\ge2\sum_{c=0}^m\sum_{i=0}^{L_c-1}w_{c,i}.\quad}
+\end{equation}
+This is the capped-weight bound proved as \texttt{inner\_bound\_cap}
+in \cite[\texttt{InnerWeights.lean}]{firsching}. Its basis is
+Fauzan's class basis \cite[\S4.1]{fauzan}.
+
+\subsection{Choosing the inner allocation}
+
+The allocation can be specified without an optimization oracle.
+Put $q=\lfloor K/p\rfloor$ and
+\[
+ k_{\rm lo}=-2q-6,\qquad k_{\rm top}=8q+20,\qquad L_{\rm reserve}=3q+6.
+\]
+For an integer $k$ define
+\[
+ \ell(k,\beta)=\max\left(0,\left\lceil\frac{k-\beta}{2}\right\rceil\right),
+ \qquad R(k)=\sum_{c=1}^m\ell(k,\beta_c).
+\]
+The number $\ell(k,\beta_c)$ counts the row weights
+$i+\beta_c/2$ that are strictly below $k/2$.
+Choose the largest integer $k_*$ in $[k_{\rm lo},k_{\rm top}]$
+such that $R(k_*)\le h-L_{\rm reserve}$, and set
+\[
+ L_c=\ell(k_*,\beta_c)\ (c\ne0),\qquad L_0=h-R(k_*).
+\]
+For sufficiently large $K$, uniformly when $K/400<p\le K/3$,
+this choice exists. In fact $\beta_c\ge-2q-6=k_{\rm lo}$, so
+$R(k_{\rm lo})=0$, and $L_{\rm reserve}\le3\cdot399+6<h$.
+All parameters depending on $q$ are bounded absolutely in this range.
+
+The zero-class condition also follows directly. Since $N\le K$,
+\[
+ -2q-4\le\beta_0,\qquad
+ \beta_c\le10q+8\quad(c\ne0).
+\]
+The ceiling formula implies
+$L_c+\beta_c/2\le\max(\beta_c,k_*+1)/2$, whence
+$T\le5q+21/2$.
+On the other hand,
+$2L_0+(\beta_0+5)/2\ge5q+25/2$.
+Thus \eqref{arith:zero-condition} holds with room to spare.
+
+Here is the useful quantitative interpretation. Define
+\[
+ \psi(k,\beta)=\sum_{i\ge0}\frac{(k-\beta-2i)_+}{2},
+ \qquad
+ \Phi(k)=\frac{hk}{2}-\sum_{c=1}^m\psi(k,\beta_c),
+ \qquad x_+=\max(x,0).
+\]
+Each sum defining $\psi$ is finite. Ordinary rows are not truncated
+by the cap: their raw weights are below $k_*/2$, whereas $T\ge k_*/2$.
+The zero rows contribute at least $L_0k_*/2-B$, where
+\[
+ B\le \sum_{i\ge0}
+ \left(\frac{k_*-\beta_0-5}{2}-2i\right)_+.
+\]
+Because $q$, $k_*$ and $\beta_0$ are bounded in the inner range,
+$B=O_{400}(1)$, independently of $K$ and $p$. Consequently
+\[
+ \sum_{c,i}w_{c,i}\ge\Phi(k_*)-O_{400}(1).
+\]
+Finally,
+\[
+ \Phi(k+1)-\Phi(k)=\frac{h-R(k+1)}2.
+\]
+For $k<k_*$ the increments are nonnegative. After $k_*$,
+maximality implies $R(k+1)>h-L_{\rm reserve}$, so each increment
+is less than $L_{\rm reserve}/2$. Therefore every integer
+$k\in[k_{\rm lo},k_{\rm top}]$ satisfies
+\begin{equation}\label{arith:inner-comparison}
+ 2\sum_{c,i}w_{c,i}
+ \ge hk-2\sum_{c=1}^m\psi(k,\beta_c)-O_{400}(1).
+\end{equation}
+The constant is uniform: one may bound the additional loss by
+$(k-k_{\rm lo})L_{\rm reserve}+2B$, and every factor here is
+bounded in terms of $400$.
+
+This is the water-filling argument of
+\cite[\texttt{InnerAlloc.lean}, \texttt{PhiK\_le\_kf}]{firsching}.
+It explains why the global calculation may try several convenient
+levels $k$, although the normalizing factor itself uses one fixed,
+explicit allocation.
+
+\subsection{Outer primes: separate the large poles from a small correction}
+
+Assume
+\[
+ p\ge7,\qquad p>K/3,\qquad p^2>2K.
+\]
+Then $N<p/2$ and $K<3p$. The class basis now uses the actual remaining
+poles. For $c=0,\ldots,m$ put
+\[
+ J_c=\{j:N<j\le K,\ j\equiv\pm c\pmod p\},\quad
+ L_c=|J_c|,\quad
+ B_c=\{j\in J_c:j>p\},\quad b_c=|B_c|.
+\]
+Define
+\begin{align*}
+ R_c(t)&=\prod_{\substack{N<j\le K\\j\notin J_c}}(t+j^2),\\
+ q_{c,i}(t)&=
+ \begin{cases}
+ (t+c^2)^i,&i<b_c,\\
+ \displaystyle\prod_{j\in B_c}(t+j^2)(t+c^2)^{i-b_c},&i\ge b_c,
+ \end{cases}\\
+ E_{c,i}(t)&=R_c(t)q_{c,i}(t),\qquad 0\le i<L_c.
+\end{align*}
+Modulo $p$, these have the same Chinese-remainder form as the inner
+basis, so their coefficient determinant is again a unit.
+The distinction between $i<b_c$ and $i\ge b_c$ has an exact purpose:
+the latter rows cancel every pole $j>p$ in their own class.
+This basis is Fauzan's \cite[\S4.2]{fauzan}; its precise use below follows
+\cite[\texttt{OuterBasis.lean}, \texttt{OuterEntryMain.lean}]{firsching}.
+
+Let
+\[
+ \ell_c=\#\{1\le j\le K:j\equiv\pm c\pmod p\},
+ \qquad \delta_c=\mathbf1_{\{c\le N\}}\quad(c\ne0).
+\]
+Here, unlike $s_H(0)$ above, $\ell_0$ counts each multiple of $p$
+only once. Use the following nonpositive weights:
+\begin{equation}\label{arith:outerweights}
+ w_{c,i}=
+ \begin{cases}
+ \min\{0,i+3\delta_c-(\ell_c+4)/2\},&c\ne0,\ i<b_c,\\
+ 0,&c\ne0,\ i\ge b_c,\\
+ -2,&c=0,\ i<b_0,\\
+ -1/2,&c=0,\ b_0=0,\\
+ 0,&c=0,\ i\ge b_0>0.
+ \end{cases}
+\end{equation}
+The cases concern existing rows $i<L_c$; empty classes contribute nothing.
+Since $K<3p$, the zero class has $b_0=0$ or $1$.
+
+\subsubsection*{The polynomial moments that can fail to be integral}
+
+The von Staudt--Clausen theorem states, for $r\ge1$, that
+$B_{2r}+\sum_{q-1\mid2r}1/q$ is an integer, the sum being over
+primes $q$ \cite[24.10(i)]{dlmf}.
+Thus $v_p(B_{2r})\ge-1$ and it is nonnegative unless
+$p-1\mid2r$. For our moments
+\[
+ \mu(t^e)=\frac{(-1)^eB_{2e+2}(2e+3)(2e+4)(2e+5)}{24},
+\]
+this gives $v_p(\mu(t^e))\ge-1$. In fact
+\begin{equation}\label{arith:low-moments}
+ v_p(\mu(t^e))\ge0\qquad(e<2p-3).
+\end{equation}
+To verify the stronger assertion, if $p-1\mid2e+2$ in this range,
+write $2e+2=j(p-1)$. Necessarily $j=1,2,$ or $3$, and
+$2e+2+j=jp$ is one of the three consecutive factors in the numerator.
+It cancels the possible denominator $p$.
+
+For an integral polynomial $Q$, let $\mu_{\ge}(Q)$ be the sum of
+the terms of $\mu(Q)$ arising from its monomials of degree at least
+$2p-3$. Then
+$\mu(Q)-\mu_{\ge}(Q)\in\Z_{(p)}$ and
+$p\mu_{\ge}(Q)\in\Z_{(p)}$.
+For each matrix entry, subtract $\mu_{\ge}$ of its polynomial part,
+and denote the resulting matrix by $A(X)$. We shall prove
+\begin{equation}\label{arith:outer-entry}
+ v_p^G(A_{uv})\ge w_u+w_v.
+\end{equation}
+The omitted polynomial part will then be restored with its full
+rank cost. The moment argument is
+\cite[\texttt{MomentVal.lean}, \texttt{OuterFrame.lean}]{firsching}.
+
+\subsubsection*{Pole estimates, including the cancellation between two poles}
+
+Write
+$\varphi_j(X)=j^4(X-H_j^{(5)})-\tfrac14+\tfrac1{2j}$.
+Directly from the denominators in the harmonic sum,
+\[
+ v_p^G(\varphi_j)\ge
+ \begin{cases}
+ 0,&1\le j<p,\\
+ -5,&1\le j<p^2,\\
+ -1,&j=pu,\ 1\le u<p.
+ \end{cases}
+\]
+In the last case the factor $j^4$ recovers four of the five possible
+powers lost in the harmonic denominator.
+We also need
+\begin{equation}\label{arith:pole-congruence}
+ \varphi_{p-a}(X)\equiv\varphi_a(X)\pmod p
+ \quad(1\le a<p).
+\end{equation}
+Indeed, pairing $u$ with $p-u$ gives $H_{p-1}^{(5)}\equiv0$.
+Thus $H_{p-a}^{(5)}\equiv H_{a-1}^{(5)}\pmod p$.
+Now $(p-a)^4\equiv a^4$, and the difference in the harmonic terms
+contributes $a^{-1}$, exactly canceled by
+$1/(2(p-a))-1/(2a)\equiv-a^{-1}$.
+These are the pole estimates of
+\cite[\texttt{PoleVal.lean}]{firsching}.
+
+Consider the rational function $A_KE_{c,i}E_{d,j}$.
+If $c\ne d$, every denominator factor is canceled by the numerator,
+so its pole sum is zero. Its polynomial part has integer coefficients
+because division by the monic $D_K$ preserves integrality.
+After removal of the high moments, \eqref{arith:low-moments}
+therefore proves \eqref{arith:outer-entry} for different classes.
+
+For a common nonzero class $c$, let $r_s$ be the residue at $t=-s^2$.
+Since $p^2>2K$, for $p\nmid s$ each denominator factor
+$u^2-s^2=(u-s)(u+s)$ has valuation one when $u\equiv\pm s$,
+and zero otherwise. It cannot have two powers of $p$:
+$|u-s|,u+s<p^2$, and $p$ cannot divide both $u-s$ and $u+s$.
+The numerator has at least $6\delta_c+i+j$ such factors, hence
+\begin{equation}\label{arith:outer-residue}
+ v_p(r_s)\ge6\delta_c+i+j-\ell_c+1.
+\end{equation}
+If both $i,j<b_c$, adding the bound $-5$ for $\varphi_s$ gives
+$6\delta_c+i+j-\ell_c-4$, which is at least the sum of the
+two weights in \eqref{arith:outerweights}.
+
+Suppose instead that $i\ge b_c$. All poles above $p$ disappear.
+At most $c$ and $p-c$ remain. If $\delta_c=1$, the six numerator
+factors in \eqref{arith:outer-residue} make each remaining residue
+integral: $\ell_c\le b_c+2$ and $i\ge b_c$, so the lower bound
+is at least $5$. If $\delta_c=0$ and at most one small pole occurs, then
+$\ell_c\le b_c+1$, so the same is true. The only delicate case
+has $\delta_c=0$ and both small poles $a=c$, $b=p-c$.
+Then \eqref{arith:outer-residue} gives $v_p(r_a),v_p(r_b)\ge-1$.
+
+All other denominator factors cancel exactly. Thus the rational
+function is $S(t)/((t+a^2)(t+b^2))$ for an integral polynomial $S$,
+and
+\[
+ r_a=\frac{S(-a^2)}{b^2-a^2},\qquad
+ r_b=\frac{S(-b^2)}{a^2-b^2}.
+\]
+The sum $r_a+r_b$ is an integral divided difference of $S$.
+Using \eqref{arith:pole-congruence},
+\[
+ r_a\varphi_a+r_b\varphi_b
+ =(r_a+r_b)\varphi_a+r_b(\varphi_b-\varphi_a)
+\]
+is integral too. This is the needed cancellation; it is stronger
+than separate bounds on the two residues.
+It proves \eqref{arith:outer-entry} whenever one row has $i\ge b_c$,
+because that row has weight zero and every other weight is nonpositive.
+The argument is the pairing lemma and mixed case in
+\cite[\texttt{OuterEntries.lean}, \texttt{pair\_GV};
+\texttt{OuterEntryMain.lean}, \texttt{pole\_case\_b}]{firsching}.
+
+In the zero class the poles are among $p,2p$. A factor $u^2-s^2$
+between two distinct multiples of $p$ has valuation exactly two.
+The numerator has at least $i+j$ such factors, and there are at most
+$b_0$ denominator factors of this kind besides the pole under
+consideration. Therefore
+\[
+ v_p(r_s\varphi_s)\ge2(i+j)-2b_0-1.
+\]
+For $b_0=0$ this is at least the sum of the two weights $-1/2$.
+For $b_0=1$, the weights are $-2$ at $i=0$ and $0$ thereafter;
+checking whether zero, one or both indices vanish proves the same
+inequality. This completes \eqref{arith:outer-entry}.
+
+\subsubsection*{Restoring the high moments and paying the rank cost}
+
+In the original monomial basis, let
+\[
+ B_{ij}=\mu_{\ge}\left(
+       \text{polynomial part of }D_N(t)^6t^{i+j}/D_K(t)\right).
+\]
+Its polynomial part has degree at most $i+j+6N-K=i+j-22n$.
+Consequently $B_{ij}=0$ whenever $i+j<2p+22n-3$.
+In particular the first
+$k_0=\max(0,2p-15n-2)$ rows vanish, or all rows if $k_0\ge h$.
+There are therefore at most
+\[
+ r_p=\max(0,h-k_0)=\max(0,52n+2-2p)
+\]
+remaining rows in the outer range.
+Also $pB$ is integral. After the integral change of basis the
+correction consequently has a factorization $p^{-1}UV$, where
+$U$ is $h$ by $r_p$, $V$ is $r_p$ by $h$, and both are integral.
+For example, factor $B$ through the projection onto its last
+$r_p$ rows, and absorb the two basis-change matrices into the factors.
+
+For completeness the determinant bound used here is
+\[
+ v_p^G\det(A+p^{-1}UV)\ge2\sum_u w_u-r_p
+ \quad\text{if }w_u\le0,\quad v_p^G(A_{uv})\ge w_u+w_v.
+\]
+Indeed,
+\[
+ \det(A+p^{-1}UV)=
+ \det\begin{pmatrix}A&-U\\p^{-1}V&I_{r_p}\end{pmatrix}.
+\]
+Apply \eqref{arith:detweights} with row weights $(w_u,-1,\ldots,-1)$
+and column weights $(w_u,0,\ldots,0)$. Integrality of $U,V$ and
+$w_u\le0$ check each block immediately.
+This proves
+\begin{equation}\label{arith:outer}
+ \boxed{\quad
+ v_p^G(\Delta_K)\ge
+ 2\sum_{c=0}^m\sum_{i=0}^{L_c-1}w_{c,i}-r_p.\quad}
+\end{equation}
+The full loss $r_p$ is the one used in
+\cite[\texttt{LowRank.lean}, \texttt{OuterFrame.lean},
+\texttt{OuterEntryMain.lean}]{firsching}. We do not replace it by
+the stronger, disputed loss in the original manuscript.
+
+\subsection{The local bounds are uniform}
+
+Equations \eqref{arith:small}, \eqref{arith:inner}, and
+\eqref{arith:outer} concern the same determinant and its normalization.
+The inner and outer arguments apply uniformly for $p>K/400$ once
+$K>480000$: then $p^2>3K$, the primes are at least $7$, and
+$h>1203$ accommodates all reserved zero-class rows.
+For smaller $K$ the coarse bound remains valid at every prime.
+Thus a finite number of exceptional indices can be discarded, or handled
+by the coarse bound, without changing any asymptotic argument.
+The next section uses these explicitly defined weights to construct
+the multiplier and bound its growth.

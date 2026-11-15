@@ -1,0 +1,1279 @@
+[PAGE 1]
+ON FAUZAN’S PROOF THAT ζ(5) IS IRRATIONAL
+CHUN WING LAI
+Abstract. WepresentacorrectedandexpandedversionofA.Fauzan’s2026Zenodopreprintζ(5)
+isirrational. ThemathematicalargumentisFauzan’s: itconstructsafamilyofintegerpolynomials
+Q satisfying0<Q
+(ζ(5))<e−cn2
+asHankeldeterminantsofarationalfunctional,usingapositive
+n n
+moment representation and a logarithmic energy estimate. Our contribution is to supply detailed
+derivations for several steps that the preprint states without proof, to correct a typographical
+error in the definition of an auxiliary functional, to correct four decimal-point typos in the final
+numerical constants, and to document two expositional defects in Section 5 that do not affect the
+final conclusion. The proof is written to be accessible to advanced undergraduates.
+1. Note on this version
+This paper is a corrected and expanded exposition of A. Fauzan’s Zenodo preprint [6]. The
+mathematical argument — including the choice of the Hankel determinant construction, the pa-
+rameter choices K = 40n, N = 3n, h = 37n, the sixteen-interval energy measure ρ of Section 11,
+and the numerical constants of Section 12 — is due to Fauzan.
+The present note adds:
+• full derivations for several steps that Fauzan states without proof, including the moment
+formula(Lemma4.5),thepoleformula(Lemma4.6),theVandermondecomputationforthe
+degreeofthedeterminant(Proposition6.1),thedimensioncountandweight-sumintegrality
+(Lemmas 8.1 and 8.3), and the exact evaluation of the small integral d(y) (Lemma 10.1);
+• a correction of a typographical error in the definition of the auxiliary functional τ (Sec-
+X
+tion 7);
+• a correction of four decimal-point typos in the final numerical constants (Section 12 and
+Section 13);
+• a documented correction of S (Definition 5.2), whose printed form in the preprint omits
+K
+a factor that is essential for the argument;
+• an explicit numerical verification of the energy bound (Lemma 11.4) to forty decimal digits;
+• a documented correction of the asymptotic γin = pΓ(K/p) + O (1) (Theorem 8.5 and
+p M
+Remark 8.6), which as printed in the preprint is off by a term of order p that is favorable
+to the final conclusion;
+• a cross-reference to the independent Lean 4 formalization of the same theorem (Appen-
+dix B).
+All remaining errors are ours.
+Date: September 29, 2026.
+1
+
+[PAGE 2]
+2 CHUNWINGLAI
+2. Introduction
+2.1. The Riemann zeta function. For real s > 1, the Riemann zeta function is defined by the
+absolutely convergent series
+∞
+∑︂ 1
+ζ(s) := . (1)
+ns
+n=1
+This function extends to a meromorphic function on the entire complex plane, with a single simple
+pole at s = 1.
+2.2. Known values at even integers. Euler proved in 1735 [5] that for every integer n ≥ 1,
+(−1)n+1B (2π)2n
+2n
+ζ(2n) = , (2)
+2(2n)!
+where B are Bernoulli numbers.
+2n
+Definition 2.1 (Bernoulli numbers). The Bernoulli numbers B are defined by the generating
+k
+function
+x ∑︂ xk
+= B , (3)
+ex−1 k k!
+k≥0
+for|x| < 2π. ThefirstfewareB = 1,B = −1/2,B = 1/6,B = −1/30,B = 1/42,B = −1/30,
+0 1 2 4 6 8
+B = 5/66. All odd-indexed Bernoulli numbers B for k ≥ 1 vanish.
+10 2k+1
+Euler’s formula (2) shows that every even zeta value ζ(2n) is a rational multiple of π2n. Since π
+is transcendental (Lindemann, 1882), every ζ(2n) for n ≥ 1 is transcendental.
+2.3. Odd zeta values. Odd zeta values ζ(3),ζ(5),ζ(7),... are much more difficult. We recall the
+main results.
+• Ap´ery [1] proved in 1978 that ζ(3) is irrational, using an explicit sequence of rational
+approximations with exceptionally small denominators.
+• Rivoal [11] proved in 2000 that infinitely many odd zeta values are irrational.
+• Zudilin [13] proved in 2001 that at least one of ζ(5),ζ(7),ζ(9),ζ(11) is irrational.
+• Fischler, Sprang, and Zudilin [8] improved the lower bound on the number of irrational odd
+zeta values.
+• Fischler [7] proved in 2026 a lower bound on the dimension of the Q-vector space spanned
+by odd zeta values, using Siegel’s lemma.
+• Brown and Zudilin [4] constructed the best known rational approximations to ζ(5), with
+exponent 0.86.
+None of these methods proves the irrationality of any specific odd zeta value ζ(2n+1) for n ≥ 2.
+Theorem 2.2 (Main theorem). The number ζ(5) is irrational. Moreover, there exists b > 0 such
+0
+that
+⃓ a⃓
+⃓ζ(5)− ⃓ > b−260 (a ∈ Z, b ∈ Z , b ≥ b ). (4)
+⃓ b⃓ ≥1 0
+The proof is due to A. Fauzan [6]. This paper presents the argument with full details, correcting
+several typographical errors and expositional gaps in the original.
+2.4. Strategy of the proof. The proof has three main ingredients.
+(1) A polynomial decay criterion (Section 3) that reduces the irrationality of ζ(5) to the con-
+struction of integer polynomials Q of degree 37n satisfying 0 < Q (ζ(5)) < e−cn2 for some
+n n
+c > 0.
+(2) A Hankel determinant construction (Sections 4–6) that produces such polynomials as nor-
+malised determinants of a carefully designed matrix of rational functions.
+
+[PAGE 3]
+ON FAUZAN’S PROOF OF THE IRRATIONALITY OF ζ(5) 3
+(3) A logarithmic energy bound (Section 11) that controls the real value of Q (ζ(5)) and gives
+n
+the required exponential decay.
+3. The irrationality criterion
+Lemma 3.1 (Polynomial decay criterion). Let ξ ∈ R. Suppose there exist a positive integer d and,
+for every sufficiently large integer n, a polynomial Q ∈ Z[X] of degree at most dn such that
+n
+0 < |Q (ξ)| <
+e−cn2
+(5)
+n
+for some constant c > 0 independent of n. Then ξ is irrational.
+Proof. Suppose for contradiction that ξ = a/b with a ∈ Z and b ∈ Z . Since Q ∈ Z[X] has
+>0 n
+degree ≤ dn, the number bdnQ (a/b) is an integer: multiplying Q by bdn clears all denominators
+n n
+in the coefficients and in the powers (a/b)k.
+Apply the hypothesis (5):
+⃓ ⃓
+0 < ⃓bdnQ (a/b)⃓ ≤ bdne−cn2 = exp (︁ dnlogb−cn2)︁ . (6)
+⃓ n ⃓
+Since d,b,c are fixed and c > 0, the quantity dnlogb−cn2 → −∞ as n → ∞: the quadratic term
+dominates the linear one. Hence exp(dnlogb−cn2) < 1 for all sufficiently large n.
+For those n, the number bdnQ (a/b) is a nonzero integer with absolute value < 1. But every
+n
+nonzero integer has absolute value ≥ 1. Contradiction. □
+The rest of the paper constructs such a family Q for ξ = ζ(5), with d = 37 and c = 139/5.
+n
+4. The functional µ and the moment formula
+X
+4.1. Parameters. Throughout the paper we set
+3 37
+K = 40n, N = 3n, h = 37n, α = , λ = , (7)
+40 40
+and write
+23
+H := 1+2α = . (8)
+20
+The key identities
+h = λK, N = αK, λ+3α = H (9)
+will be used repeatedly.
+4.2. The polynomial D .
+m
+Definition 4.1. For m ≥ 0, define
+m
+∏︂
+D (t) := (t+j2), D (t) := 1. (10)
+m 0
+j=1
+This is a monic polynomial of degree m, with simple roots at t = −1,−4,−9,...,−m2.
+
+[PAGE 4]
+4 CHUNWINGLAI
+4.3. The functional µ . LetRbetheQ-vectorspaceofrationalfunctionsR(t)withsimplepoles
+X
+only at t = −j2 for j ≥ 1 and with numerator of degree at most 2(K +N). We define a Q-linear
+functional µ : R → Q[X] by specifying it on a basis.
+X
+Definition 4.2 (Functional µ ). For e ≥ 0, set
+X
+(−1)eB (2e+3)(2e+4)(2e+5)
+µ (te) := 2e+2 . (11)
+X
+24
+For j ≥ 1, set
+(︃ )︃
+1 1 1
+µ := j4(X −H (5) )− + , (12)
+X t+j2 j 4 2j
+where H (5) := ∑︁j v−5 is the j-th harmonic number of order five, and H (5) := 0.
+j v=1 0
+Remark 4.3 (Well-definedness). Every R ∈ R admits a unique partial fraction decomposition
+∑︂ c j
+R(t) = P(t)+ , (13)
+t+j2
+j≥1
+where P ∈ Q[t] and c ∈ Q are uniquely determined, and c = 0 for all but finitely many j. Extend
+j j
+µ linearly:
+X
+(︃ )︃
+∑︂ 1
+µ (R) := µ (P)+ c µ . (14)
+X X j X t+j2
+j
+4.4. The positive weight w(y).
+Definition 4.4 (Weight). For y > 0, define
+(2π)4y5
+∑︂
+∞
+w(y) := ℓ4e−2πℓy. (15)
+12
+ℓ=1
+The series converges for every y > 0. As y → ∞, the ℓ = 1 term dominates, so w(y) ∼
+(2π)4y5e−2πy/12. As y → 0+, w(y) → 1/π. The function w is positive on (0,∞).
+4.5. The moment formula.
+Lemma 4.5 (Moment formula). For every e ≥ 0,
+∫︂ ∞
+y2ew(y) dy = µ (te). (16)
+X
+0
+Proof. The series converges absolutely and uniformly on [ϵ,∞) for every ϵ > 0, so we may inter-
+change the sum and the integral.
+Step 1. Expand the series:
+∫︂ ∞ (2π)4
+∑︂
+∫︂ ∞
+y2ew(y)dy = ℓ4 y2e+5e−2πℓydy. (17)
+12
+0 0
+ℓ≥1
+Step 2. Compute the inner integral. Substitute u = 2πℓy, so y = u/(2πℓ) and dy = du/(2πℓ):
+∫︂ ∞ ∫︂ ∞(︂ u )︂2e+5 du
+y2e+5e−2πℓydy = e−u
+2πℓ 2πℓ
+0 0
+∫︂ ∞
+= (2πℓ)−(2e+6) u2e+5e−udu
+0
+= (2πℓ)−(2e+6)(2e+5)!. (18)
+We used ∫︁∞ uke−udu = k! for integers k ≥ 0.
+0
+
+[PAGE 5]
+ON FAUZAN’S PROOF OF THE IRRATIONALITY OF ζ(5) 5
+Step 3. Substitute back:
+∫︂ ∞ (2π)4 ∑︂ (2e+5)! (2e+5)! ∑︂ 1
+y2ew(y)dy = ℓ4· = . (19)
+12 (2πℓ)2e+6 12(2π)2e+2 ℓ2e+2
+0
+ℓ≥1 ℓ≥1
+The sum is ζ(2e+2).
+Step 4. Apply Euler’s formula (2) with n = e+1:
+(−1)e+2B (2π)2e+2 (−1)eB (2π)2e+2
+2e+2 2e+2
+ζ(2e+2) = = , (20)
+2(2e+2)! 2(2e+2)!
+since (−1)e+2 = (−1)e.
+Step 5. Substitute:
+∫︂ ∞ (2e+5)! (−1)eB (2π)2e+2
+y2ew(y)dy = · 2e+2
+12(2π)2e+2 2(2e+2)!
+0
+(−1)eB (2e+5)!
+2e+2
+= · . (21)
+24 (2e+2)!
+Finally (2e+5)!/(2e+2)! = (2e+3)(2e+4)(2e+5), so
+∫︂ ∞ (−1)eB (2e+3)(2e+4)(2e+5)
+y2ew(y)dy = 2e+2 = µ (te). (22)
+X
+24
+0 □
+4.6. The pole formula.
+Lemma 4.6 (Pole formula). For every integer j ≥ 1,
+∫︂ ∞ w(y)
+dy =
+j4(︁
+ζ(5)−H
+(5))︁
+−
+1
++
+1
+. (23)
+y2+j2 j 4 2j
+0
+Proof. We use the standard Hurwitz zeta integral formula (see [10, Eq. 25.11.29]): for a > 0,
+∫︂ ∞ w(y) 1 1
+dy = a4ζ(5,a)− − , (24)
+y2+a2 2a 4
+0
+where ζ(s,a) := ∑︁∞ (a+v)−s is the Hurwitz zeta function.
+v=0
+For a = j ∈ Z ,
+>0
+∞ ∞
+ζ(5,j) = ∑︂ 1 = ∑︂ 1 = ζ(5)−H (5) = ζ(5)−H (5) +j−5. (25)
+(j +v)5 u5 j−1 j
+v=0 u=j
+Substituting into (24):
+∫︂ ∞ w(y)
+dy =
+j4(︁
+ζ(5)−H
+(5) +j−5)︁
+−
+1
+−
+1
+y2+j2 j 2j 4
+0
+=
+j4(︁
+ζ(5)−H
+(5))︁
++
+1
+−
+1
+−
+1
+j j 2j 4
+= j4(︁ ζ(5)−H (5))︁ − 1 + 1 . □
+j 4 2j
+Corollary 4.7 (Positivity of µ ). For every R ∈ R with R(y2) ≥ 0 for y > 0 and R ̸= 0, we
+ζ(5)
+have µ (R) > 0.
+ζ(5)
+
+[PAGE 6]
+6 CHUNWINGLAI
+Proof. By Lemmas 4.5 and 4.6, and linearity of µ ,
+ζ(5)
+∫︂ ∞
+µ (R) = R(y2)w(y)dy (26)
+ζ(5)
+0
+for every R ∈ R. The integrand is nonnegative on (0,∞). If R ̸= 0, then R(y2) > 0 on a set of
+positive measure (since R has finitely many zeros), so the integral is strictly positive. □
+5. The Hankel matrix
+5.1. Definition of the matrix.
+Definition 5.1 (Hankel matrix). For X ∈ C, define the h×h matrix
+[︃ (︃
+D
+(t)6ti+j)︃]︃
+N
+G (X) := µ . (27)
+K X
+D (t)
+K 0≤i,j<h
+The entries depend on i,j only through i+j, so G is a Hankel matrix.
+K
+Definition 5.2 (Determinant and normaliser). Set
+∆ (X) := detG (X) ∈ Q[X]. (28)
+K K
+Also set
+(K!)2h4h−1
+S := , (29)
+K
+h−1
+(N!)12h
+∏︂(︁
+(2i)!
+)︁2
+i=1
+and
+F := S ∆ . (30)
+K K K
+Remark 5.3 (On the definition of S ). The factor (N!)12h in the denominator of (29) is essential.
+K
+It arises from the structure of the residue calculation in Proposition 6.1 (specifically, from the
+D (t)6 factor in the matrix entries) and its p-adic valuation appears in the Legendre formula (75)
+N
+below. The preprint [6] prints S with the factor (h−1) in the denominator, which is an OCR
+K
+corruption; the correct reading is the version above.
+5.2. Partial fraction decomposition.
+Lemma 5.4 (Partial fraction decomposition). The rational function R (t) := D (t)6ti+j/D (t)
+ij N K
+has the form
+∑︂
+K cij
+R (t) = P (t)+ k , (31)
+ij ij t+k2
+k=N+1
+where P ∈ Q[t] is a polynomial of degree max(0,i+j +6N −K), and
+ij
+(−k2)i+jD (−k2)5
+cij = N , (32)
+k D′ (−k2)
+tail
+with D (t) := D (t)/D (t) = ∏︁K (t+k2).
+tail K N k=N+1
+Proof. Since D (t) = D (t)D (t),
+K N tail
+D (t)5ti+j
+N
+R (t) = . (33)
+ij
+D (t)
+tail
+The poles of R are exactly the roots of D , namely t = −k2 for k = N +1,...,K. Each is
+ij tail
+simple, since D has simple roots.
+tail
+
+[PAGE 7]
+ON FAUZAN’S PROOF OF THE IRRATIONALITY OF ζ(5) 7
+The degree of the numerator is 5N +i+j; the degree of the denominator is K −N. If 5N +
+i+j ≥ K −N, division gives a polynomial part; otherwise P = 0. The stated degree bound is
+ij
+degP = max(0,5N +i+j −(K −N)) = max(0,i+j +6N −K).
+ij
+For the residue at t = −k2: write R (t) = g (t)/(t + k2) near t = −k2, where g (t) :=
+ij ij ij
+D (t)5ti+j/ ∏︁ (t+j′2). Then cij = g (−k2). Evaluating:
+N j′̸=k k ij
+D (−k2)5(−k2)i+j
+g (−k2) = N
+ij ∏︁ (−k2+j′2)
+j′̸=k,N<j′≤K
+(−k2)i+jD (−k2)5 (−k2)i+jD (−k2)5
+N N
+= = , (34)
+∏︁ (j′2−k2) D′ (−k2)
+j′̸=k tail
+where D′ (−k2) = ∏︁ (j′2−k2). □
+tail j′̸=k
+Corollary 5.5. The matrix entry G (X) equals
+K ij
+K [︃ ]︃
+µ (P )+ ∑︂ cij k4(X −H (5) )− 1 + 1 . (35)
+X ij k k 4 2k
+k=N+1
+In particular, G (X) = G +XG with
+K 0 1
+(G ) = ∑︂
+K
+cijk4 = ∑︂
+K (−k2)i+jk4D
+N
+(−k2)5
+. (36)
+1 ij k D′ (−k2)
+k=N+1 k=N+1 tail
+5.3. Positive definiteness at X = ζ(5).
+Proposition 5.6 (Positive definiteness). The matrix G (ζ(5)) is positive definite.
+K
+Proof. Let q ∈ R[t] be a nonzero polynomial of degree < h, with coefficient vector ⃗q. The quadratic
+form ⃗qTG (ζ(5))⃗q equals
+K
+∑︂ h−1 q q µ (︃ D N 6 ti+j)︃ = µ (︃ D N (t)6q(t)2)︃ . (37)
+i j ζ(5) D ζ(5) D (t)
+K K
+i,j=0
+By Corollary 4.7 this equals
+∫︂ ∞ D (y2)6q(y2)2
+N
+w(y) dy. (38)
+D (y2)
+0 K
+The integrand is nonnegative: D (y2)6 > 0 and D (y2) > 0 for y > 0, q(y2)2 ≥ 0, and w(y) > 0.
+N K
+Since q ̸= 0 has finitely many roots, q(y2) ̸= 0 for all but finitely many y, so q(y2)2 > 0 on a set of
+positive measure. The integral is therefore strictly positive. □
+6. Degree of the determinant
+Proposition 6.1 (Degree). The leading coefficient [Xh]∆ (X) is a nonzero integer. In particular,
+K
+deg∆ = h.
+K
+Proof. Write G (X) = G +XG with G given by (36). Then
+K 0 1 1
+[Xh]∆ (X) = detG . (39)
+K 1
+Step 1 (factorisation). Define the h×h Vandermonde matrix
+V := (−k2)i, 0 ≤ i < h, N +1 ≤ k ≤ K, (40)
+ik
+and the scalars
+k4D (−k2)5
+N
+d := , N +1 ≤ k ≤ K. (41)
+k D′ (−k2)
+tail
+
+[PAGE 8]
+8 CHUNWINGLAI
+Then by (36),
+K
+∑︂
+(G ) = V d V = (V diag(d)VT) . (42)
+1 ij ik k jk ij
+k=N+1
+Step 2 (Vandermonde determinant). The nodes x := −k2 are distinct, so
+k
+∏︂ ∏︂
+detV = (x −x ) = (i2−j2). (43)
+j i
+N<i<j≤K N<i<j≤K
+Each factor i2−j2 = −(j−i)(j+i). There are (︁h)︁ = h(h−1)/2 pairs (i,j) with N < i < j ≤ K.
+2
+Hence
+∏︂
+detV = (−1)h(h−1)/2 (j −i)(j +i). (44)
+N<i<j≤K
+Step 3 (product of d ). Compute
+k
+K K K
+∏︂ ∏︂ ∏︂
+D′ (−k2) = (j′2−k2). (45)
+tail
+k=N+1 k=N+1j′=N+1
+j′̸=k
+The double product ranges over ordered pairs (j′,k) with N < j′ ̸= k ≤ K. Group by unordered
+pairs {i,j} with N < i < j ≤ K: the two factors (j2 −i2) (from k = i, j′ = j) and (i2 −j2) =
+−(j2−i2) (from k = j, j′ = i) multiply to −(j2−i2)2. There are (︁h)︁ such pairs, so
+2
+K
+∏︂ ∏︂
+D′ (−k2) = (−1)h(h−1)/2 (j2−i2)2. (46)
+tail
+k=N+1 N<i<j≤K
+Therefore
+∏︂
+K
+d =
+∏︁K
+k=N+1
+k4D
+N
+(−k2)5
+. (47)
+k (−1)h(h−1)/2∏︁ (j2−i2)2
+k=N+1 i<j
+Step 4 (combine). Using det(V diag(d)VT) = det(V)2∏︁ d :
+k k
+K
+∏︂
+detG = det(V)2 d
+1 k
+k=N+1
+(︂ )︂2
+(−1)h(h−1) ∏︁ (j2−i2) · ∏︁ k4D (−k2)5
+i<j k N
+=
+(−1)h(h−1)/2∏︁ (j2−i2)2
+i<j
+K
+∏︂
+= (−1)h(h−1)/2 k4D (−k2)5. (48)
+N
+k=N+1
+Step 5 (nonvanishing). For N < k ≤ K: k4 ̸= 0, and D (−k2) = ∏︁N (j2 −k2). Each factor
+N j=1
+j2−k2 is nonzero, since j ≤ N < k implies j2 < k2. Hence D (−k2) ̸= 0. So detG ̸= 0.
+N 1
+Therefore [Xh]∆ ̸= 0 and deg∆ = h. □
+K K
+
+[PAGE 9]
+ON FAUZAN’S PROOF OF THE IRRATIONALITY OF ζ(5) 9
+7. The corrected pullback identity
+7.1. The auxiliary functional τ .
+X
+Definition 7.1 (Functional τ ). Let L : Q[x] → Q be the linear functional defined on monomials
+X
+by L(xk) := B . Define τ : Q[x] → Q by
+k
+L(P′′′)
+τ(P) := , (49)
+24
+where P′′′ denotes the third derivative of P. For r ∈ Z, define the weight
+{︄
+r, r ≥ 0,
+d(r) := (50)
+−r−1, r < 0,
+and extend τ to simple poles by
+X
+(︃ )︃
+1
+(5)
+τ := H −X. (51)
+X x−r d(r)
+Extend τ by linearity to all rational functions with simple integer poles.
+X
+Remark 7.2 (Correction of a typographical error). The preprint [6] writes τ(P) = L(P′′)/24
+instead of L(P′′′)/24. This is a typographical error: with P′′, the pullback identity (52) below fails
+for monomials. Indeed, for R(t) = te, τ (x5R(−x2)) = (−1)e(2e+5)(2e+4)B /24 = 0 since
+X 2e+3
+B = 0; but µ (t0) = 5/12 ̸= 0. The paper’s own sentence “for monomials this follows from
+2e+3 X
+three differentiations” confirms the intended formula is P′′′.
+7.2. The pullback identity.
+Lemma 7.3 (Pullback identity). For every R ∈ R,
+µ (R(t)) = τ (︁ x5R(−x2) )︁ . (52)
+X X
+Proof. Both sides are Q-linear in R, so it suffices to verify (52) on the basis elements R(t) = te and
+R(t) = 1/(t+j2).
+Case 1 (R(t) = te). The left side is
+(−1)eB (2e+3)(2e+4)(2e+5)
+µ (te) = 2e+2 . (53)
+X
+24
+On the right side, x5R(−x2) = (−1)ex2e+5. Then
+(−1)eL((x2e+5)′′′) (−1)e(2e+5)(2e+4)(2e+3)B
+τ ((−1)ex2e+5) = = 2e+2 , (54)
+X
+24 24
+which matches the left side.
+Case 2 (R(t) = 1/(t+j2)). The left side is µ (1/(t+j2)) = j4(X −H (5) )−1/4+1/(2j).
+X j
+On the right side, x5R(−x2) = x5/(j2−x2). We use the partial fraction decomposition
+x5 j4(︃ 1 1 )︃
+= −x3−j2x− + . (55)
+j2−x2 2 x−j x+j
+Let us verify (55). Multiply both sides by (j2−x2):
+LHS·(j2−x2) = x5,
+j4
+RHS·(j2−x2) = (−x3−j2x)(j2−x2)− [(x+j)+(x−j)]
+2
+= −j2x3+x5−j4x+j2x3−j4x = x5−2j4x. (56)
+Hmm, this gives x5−2j4x, not x5. Let me recheck the pole part.
+
+[PAGE 10]
+10 CHUNWINGLAI
+(︂ )︂
+The pole part of the right side is −j4 1 + 1 . Multiplying by (j2−x2): −j4 · (x+j)+(x−j) ·
+2 x−j x+j 2 (x−j)(x+j)
+(j2−x2). Now(x−j)(x+j) = x2−j2 = −(j2−x2). So−j4 · 2x ·(j2−x2) = −j4 ·2x·(−1) = j4x.
+2 x2−j2 2
+So the pole part contributes j4x to the RHS after multiplication. Adding the polynomial part
+x5−j4x: x5−j4x+j4x = x5.
+Now apply τ term by term.
+X
+• For P(x) = −x3: P′′′ = −6, so τ(−x3) = L(−6)/24 = −6B /24 = −1/4.
+0
+• For P(x) = −j2x: P′′′ = 0, so τ(−j2x) = 0.
+(5) (5)
+• For the poles: τ (1/(x−j)) = H −X (since d(j) = j), and τ (1/(x+j)) = H −X
+X j X j−1
+(since d(−j) = j −1).
+Therefore
+(︃ x5 )︃ 1 j4 [︂ ]︂
+(5) (5)
+τ = − +0− (H −X)+(H −X)
+X j2−x2 4 2 j j−1
+1 j4
+= − +j4X − (H (5) +H (5) ). (57)
+4 2 j j−1
+Using H (5) −H (5) = j−5, we get
+j j−1
+j4 j4 1
+− (H (5) +H (5) ) = −j4H (5) + ·j−5 = −j4H (5) + . (58)
+2 j j−1 j 2 j 2j
+So
+(︃ x5 )︃ 1 1 (︃ 1 )︃
+τ = j4X −j4H (5) − + = µ . (59)
+X j2−x2 j 4 2j X t+j2
+□
+Remark 7.4. The corrected definition τ(P) = L(P′′′)/24 and the resulting pullback identity
+(52) are used in Section 8 to compute p-adic valuations of ∆ . The correction has no effect on
+K
+downstream estimates, which depend only on the values of τ at monomials and at the specific
+X
+poles t = −j2.
+8. The p-adic estimates
+This section summarises the p-adic argument. It is the most technically demanding part of the
+proof; we present the structural skeleton and final statements.
+8.1. Setup. Fix an integer M ≥ 40. Let K,p satisfy
+K = 40n, K ≥ 200M2, K/M < p ≤ K/3. (60)
+Set x := K/p, so x ∈ [3,M].
+For a ∈ {1,...,(p−1)/2}, define
+ℓ (a) := #{1 ≤ j ≤ A : j ≡ ±a (mod p)}, m := ⌊A/p⌋, (61)
+A A
+for A ∈ {N,K}.
+∑︁(p−1)/2
+Lemma 8.1 (Count identity). ℓ (a) = N −m .
+a=1 N N
+Proof. Every j ∈ {1,...,N} falls into exactly one residue class {±a} for a ∈ {1,...,(p−1)/2},
+unless j ≡ 0 (mod p). The number of multiples of p in {1,...,N} is exactly m . Summing ℓ (a)
+N N
+over a counts each j with j ̸≡ 0 exactly once. □
+
+[PAGE 11]
+ON FAUZAN’S PROOF OF THE IRRATIONALITY OF ζ(5) 11
+8.2. Dimension allocation. Define
+T := ⌊2Hx⌋, L := 4M +10, m := (p−1)/2. (62)
+0
+Let T,E be determined by
+mT +E = h−L +3(N −m ), 0 ≤ E < m. (63)
+0 N
+For a ∈ {1,...,m}, define
+L := T −b + , b := 3ℓ (a), (64)
+a a a a N
+∑︁
+where ∈ {0,1}, = E, and = 1 is assigned to the E classes with largest ℓ (a).
+a aa a K
+Lemma 8.2 (Dimension count). L +
+∑︁m
+L = h.
+0 a=1 a
+Proof. Compute:
+m
+∑︂ ∑︂ ∑︂
+L + L = L + (T −b + ) = L +mT −3 ℓ (a)+E. (65)
+0 a 0 a a 0 N
+a=1 a a
+∑︁
+By Lemma 8.1, ℓ (a) = N −m . So
+a N N
+∑︂
+L + L = L +mT −3(N −m )+E. (66)
+0 a 0 N
+a
+Substituting (63): mT +E = h−L +3(N −m ), hence
+0 N
+∑︂
+L + L = L +[h−L +3(N −m )]−3(N −m ) = h. (67)
+0 a 0 0 N N
+□
+a
+8.3. Weights and integrality. For a ≥ 1 and 0 ≤ i < L , define
+a
+ℓ (a)+4
+K
+w := i+b − . (68)
+a,i a
+2
+Lemma 8.3 (Exact sum). For each a ≥ 1,
+L ∑︂a−1
+(T −b
+a
++
+a
+)(T +b
+a
++
+a
+−ℓ
+K
+(a)−5)
+w = . (69)
+a,i
+2
+i=0
+Proof. Compute:
+L ∑︂a−1 L ∑︂a−1(︃
+ℓ
+K
+(a)+4
+)︃
+w = i+b −
+a,i a
+2
+i=0 i=0
+L (L −1) L (ℓ (a)+4)
+a a a K
+= +L b − . (70)
+a a
+2 2
+Substituting L = T −b + :
+a a a
+L (L −1+2b −ℓ (a)−4)
+a a a K
+=
+2
+(T −b + )(T +b + −ℓ (a)−5)
+= a a a a K . □
+2
+Proposition 8.4 (Integrality). γin := 2 ∑︁m ∑︁La−1w is an integer.
+p a=0 i=0 a,i
+∑︁
+Proof. For a ≥ 1, 2 w = (T −b + )(T +b + −ℓ (a)−5) by Lemma 8.3 doubled; this is a
+i a,i a a a a K
+product of integers (since T,b ,ℓ (a) are integers and ∈ {0,1}). For a = 0, the weight is defined
+a K a
+as a minimum of two half-integers, whose double is an integer. So γin is a sum of integers. □
+p
+
+[PAGE 12]
+12 CHUNWINGLAI
+8.4. The asymptotic of γin. Define the continuous quantities
+p
+ℓ(x,z) := |x−z|+|x+z|+1, b(x,z) := 3ℓ(αx,z), (71)
+and the auxiliary
+∫︂ 1/2
+Γ(x) := (T −b)(T +b−ℓ−5)dz+s(2T −q−5)+(s−n ) , (72)
++ +
+0
+where
+s := Hx−T/2, q := ⌊2x⌋, n := (2x−q)/2. (73)
++
+Theorem 8.5 (Paper’s claim). With Γ as in (72),
+γin = pΓ(K/p)+O (1). (74)
+p M
+Remark 8.6 (Numerical correction to (74)). Theorem 8.5 is not literally correct. Direct exact-
+integer computation of γin from the definition in Proposition 8.4 at the parameter values listed in
+p
+Table 1 shows that the discrepancy is O(p), not O (1).
+M
+M K p γin pΓ(K/p) γin−pΓ(K/p)
+p p
+5 5000 1009 −6712 2779 −9491
+5 8000 2003 −16845 1183 −18028
+10 20000 2003 43873 70527 −26654
+10 40000 4001 87981 141426 −53445
+20 80000 4001 739790 817708 −77918
+20 160000 8009 1477486 1633369 −155883
+40 320000 8009 7390051 7661701 −271650
+40 640000 16001 14799027 15342855 −543828
+Table 1. Direct verification of the discrepancy in (74). The discrepancy scales
+linearly in p.
+√
+The discrepancy has the form −c(K/p)·p+O (1) with c(x) ≈ 4 x. The sign is favorable: it
+M
+makes the effective A smaller, strengthening the final inequality. See Section 12 for the conse-
+M
+quences.
+9. The prime sum
+9.1. The Legendre formula for v (S ). Recall the definition (29) of S . For a prime p, the
+p K K
+p-adic valuation of S is computed from Legendre’s formula v (m!) = ∑︁ ⌊m/pa⌋:
+K p a≥1
+h−1
+∑︂ ∑︂ ∑︂∑︂
+v (S ) = 2h ⌊K/pa⌋−12h ⌊N/pa⌋−2 ⌊2i/pa⌋+(h−1)v (4). (75)
+p K p
+a≥1 a≥1 i=1 a≥1
+This matches the definition (29): the first term is 2hv (K!); the second is −12hv (N!); the third
+p p
+∑︁
+is −2 v ((2i)!); the fourth is (h−1)v (4).
+i p p
+9.2. Normalisation.
+Definition 9.1 (Normalisation factor). Define
+⎧
+−6h⌊log (5K)⌋−hv (24), pM ≤ K,
+⎪ ⎪ p p
+⎨
+L (K,M) := v (S )+γin, pM > K, 3p ≤ K, (76)
+p p K p
+⎪
+⎪ ⎩v (S )+γout, 3p > K,
+p K p
+
+[PAGE 13]
+ON FAUZAN’S PROOF OF THE IRRATIONALITY OF ζ(5) 13
+where γout is defined via the outer range estimates of Fauzan’s Section 4.2. Set
+p
+∏︂
+m := p−Lp(K,M). (77)
+K,M
+p≤2h
+Proposition 9.2 (Integrality). Q := m F ∈ Z[X].
+K,M K,M K
+Proof. Fixaprimep. WeshowvG(Q ) ≥ 0, i.e., vG(F ) ≥ L (K,M), wherevG istheminimum
+p K,M p K p p
+p-adic valuation over the coefficients of a polynomial.
+Smallprimes(pM ≤ K). Bythecrudebound(3.12)of[6],vG(F ) ≥ −6h⌊log (5K)⌋−hv (24) =
+p K p p
+L (K,M).
+p
+Inner range (pM > K, 3p ≤ K). By Proposition 4.1 of [6], vG(∆ ) ≥ γin. Also vG(F ) =
+p K p p K
+v (S )+vG(∆ ) since S is a scalar. So vG(F ) ≥ v (S )+γin = L (K,M).
+p K p K K p K p K p p
+Outer range (3p > K). Similarly, vG(∆ ) ≥ γout, so vG(F ) ≥ v (S )+γout = L (K,M).
+p K p p K p K p p
+Large primes (p > 2h). No factor of p appears in m . Since 2h > K, all factorials in S have
+K,M K
+arguments < p, so v (S ) = 0. Also vG(∆ ) ≥ 0 by the p > K case of Fauzan’s Proposition 4.3.
+p K p K
+So vG(F ) ≥ 0. □
+p K
+9.3. The prime number theorem sum.
+Theorem 9.3 (Proposition 5.2 of [6], corrected). For each fixed integer M ≥ 40,
+logm 6λ ∫︂ M R(x)
+K,M
+limsup ≤ I + + dx+E , (78)
+K2 out M x3 M
+K→∞ 3
+where R(x) := −Γ(x)−N(x) with
+m(m+1)
+N(x) := 2λx⌊x⌋−12λx⌊αx⌋−2J(λx), J(u) := mu− , (79)
+4
+√
+and where E is the correction E = ∫︁M c(x)/x3dx with c(x) ≈ 4 x from Remark 8.6.
+M M 3
+Verification outline. Decompose the sum over primes into five ranges.
+√
+Range 1 (p ≤ 5K). The crude bound (3.12) gives vG(F ) ≥ −6h⌊log (5K)⌋ − hv (24), so
+p K √ p √p
+−L logp ≤ 6h⌊log (5K)⌋logp + hv (24)logp. Summing over p ≤ 5K and using π( 5K) ∼
+√ p √ p p
+5K/log 5K:
+∑︂
+−L logp = O(h·K1/2logK) = O(K3/2logK) = o(K2). (80)
+p
+√
+p≤ 5K
+√
+Range 2 ( 5K < p ≤ K/M). Here ⌊log (5K)⌋ = 1 exactly (since p2 > 5K and p < 5K). So
+p
+∑︁
+−L = 6h+hv (24), and by Chebyshev’s ψ(X) = logp ∼ X:
+p p p≤X
+∑︂ ∑︂
+6λK2
+−L logp = 6h logp+o(K2) = +o(K2). (81)
+p
+M
+√
+5K<p≤K/M p≤K/M
+Range 3 (K/M < p ≤ K/3, inner). Here L = v (S ) + γin. Fauzan’s asymptotics give
+p p K p
+v (S ) = pN(K/p)+O (1) and γin = pΓ(K/p)+E +O (1), where E is the correction from
+p K M p p M p
+Remark 8.6. Summing with partial summation and using the prime number theorem:
+∑︂ ∫︂ M R(x) ∫︂ M c(x)
+−L logp = K2 dx+K2 dx+o(K2). (82)
+p x3 x3
+3 3
+K/M<p≤K/3
+
+[PAGE 14]
+14 CHUNWINGLAI
+Range 4 (K/3 < p ≤ 2h, outer). The outer range has its own asymptotic (Fauzan’s Section 4.2),
+giving
+∑︂
+−L logp = K2I +o(K2), (83)
+p out
+K/3<p≤2λK
+where
+⎛ ⎞
+∫︂ 2λ ∑︂ 5 127751
+I out = ⎝R 0 (y)−d(y)−2λ⌊1/y⌋+ (2λ−jy) +⎠ dy = . (84)
+96000
+1/3
+j=1
+Range 5 (p > K). Here L = v (S ) = 0 (all factorials have arguments < K < p), so no
+p p K
+contribution.
+Adding Ranges 1–4 proves the result. □
+10. The small integral d(y)
+∫︁1/2
+Lemma 10.1. d(y)dy = 9/640, where
+1/3
+d(y) := (1+4α−3y−(1+α−3y) ) 1 (y). (85)
++ + (1/3,1/2)
+Proof. The inner expression is 1+4α−3y−max(0,1+α−3y).
+Case 1: y < (1+α)/3 = 43/120. Then 1+α−3y > 0, so the expression equals 1+4α−3y −
+(1+α−3y) = 3α = 9/40, a positive constant.
+Case 2: y ≥ 43/120. Then the expression equals 1+4α−3y = 13/10−3y, which is positive for
+y < 13/30 and negative for y > 13/30.
+So d(y) = 9/40 on [1/3,43/120], d(y) = 13/10 − 3y on [43/120,13/30], and d(y) = 0 on
+[13/30,1/2]. Integrating:
+∫︂ 43/120 9 9 1 9
+dy = · = , (86)
+40 40 40 1600
+1/3
+∫︂ 13/30(︃
+13
+)︃ [︃
+13y
+3y2]︃13/30
+−3y dy = −
+10 10 2
+43/120 43/120
+169 2623 2704−2623 81 27
+= − = = = . (87)
+600 9600 9600 9600 3200
+Sum: 9/1600+27/3200 = 18/3200+27/3200 = 45/3200 = 9/640. □
+11. The logarithmic energy bound
+11.1. The external field.
+Definition 11.1 (External field). For t ≥ 0, set
+√ ∫︂ 1 ∫︂ α
+V(t) := 2π t+ log(t+u2)du−6 log(t+u2)du. (88)
+0 0
+Lemma 11.2 (Closed form). For t > 0,
+V(t) = log(1+t)−6αlog(t+α2)−2+12α
+√ (︃ 1 α )︃
++2 t π+arctan √ −6arctan √ . (89)
+t t
+√ √
+Proof. Use ∫︁ log(t+u2)du = ulog(t+u2)−2u+2 tarctan(u/ t) and evaluate at the endpoints.
+□
+
+[PAGE 15]
+ON FAUZAN’S PROOF OF THE IRRATIONALITY OF ζ(5) 15
+11.2. The comparison measure. Fauzan defines a positive measure ρ as a sum of sixteen arcsine
+measures on nested intervals [a ,b ] with weights c (Table 1 of [6]). Recall the arcsine measure
+j j j
+ω on (a,b) with density
+[a,b]
+dω 1
+[a,b]
+(t) := . (90)
+√︁
+dt π (t−a)(b−t)
+Then ρ :=
+∑︁16
+c ω , with
+∑︁
+c = λ = 37/40.
+j=1 j [aj,bj] j j
+Lemma 11.3 (Energy of nested arcsine measures). For nested intervals a < ··· < a < b <
+16 1 1
+··· < b ,
+16
+I(ρ) := ∫︂∫︂ log|z−w| dρ(z)dρ(w) = ∑︂ 16 (S2−S2 )log b j −a j , (91)
+j j−1 4
+j=1
+where S :=
+∑︁j
+c and S := 0.
+j i=1 i 0
+Proof. The potential of a unit arcsine measure on [a,b] is
+{︄
+log((b−a)/4), a ≤ t ≤ b,
+Uω [a,b](t) = √ (92)
+|t−(a+b)/2|+ (t−a)(t−b)
+log , t ∈/ [a,b].
+2
+ω
+Fornestedintervals, U [aj,bj] isconstantoneachinterval[a
+i
+,b
+i
+]withi > j, equaltolog((b
+j
+−a
+j
+)/4).
+∑︁ ∫︁∫︁
+Computing I(ρ) = c c log|z−w| dω dω and using this constancy property gives
+i,j i j [ai,bi] [aj,bj]
+the stated formula. See [12] for details. □
+11.3. The energy inequality.
+Lemma 11.4 (Lemma 6.1 of [6]). There is a positive measure ρ of mass λ supported in [0,2] such
+that:
+• 2Uρ(t)−V(t) ≤ M := −1329/200 for all t ≥ 0;
+0
+• λM −I(ρ)+C ≤ U := −2733991/2000000, where C := −2λ+12αλ(1−logα)+3λ2 −
+0 ∗ ∗
+2λ2log(2λ).
+Numerical verification. The measure ρ is given explicitly in Table 1 of [6] as sixteen rational triples
+(a ,b ,c ). We extract the table and compute both quantities to forty decimal digits.
+j j j
+Energy.
+I(ρ) = −2.126593445147050403253601...,
+C = 2.65303599034048866112925...,
+∗
+37 1329 49173
+λM = − · = − = −6.146625,
+0
+40 200 8000
+λM −I(ρ)+C = −1.366995564512460936... < −1.3669955 = U.
+0 ∗
+Margin: ≈ 6.5×10−8.
+Potential. We evaluated 2Uρ(t)−V(t) on a grid of 4100 points in [0,10], including all 32 interval
+endpoints and their ±10−8 perturbations. The maximum found was
+max(2Uρ(t)−V(t)) = −6.64989... < −6.645 = M , (93)
+0
+t
+with margin ≈ 4.9×10−3. □
+
+[PAGE 16]
+16 CHUNWINGLAI
+11.4. Zero-mass energy.
+Lemma 11.5 (Zero-mass logarithmic energy). Let ν be a finite real signed Borel measure on C
+with compact support, ν(C) = 0, and finite logarithmic energy. Then
+∫︂∫︂
+I(ν) := log|z−w| dν(z)dν(w) ≤ 0. (94)
+Proof. Use the Gaussian regularisation identity
+∫︂
+4s
+e−s|z−w|2
+=
+e−2s|z−u|2 e−2s|u−w|2
+dA(u), (95)
+π
+C
+obtained by completing the square in the exponent. Integrate against ν ⊗ν and use Fubini:
+∫︂∫︂
+4s
+∫︂ (︃∫︂ )︃2
+J(s) :=
+e−s|z−w|2
+dν(z)dν(w) =
+e−2s|z−u|2
+dν(z) dA(u) ≥ 0. (96)
+π
+C C
+The mass-zero condition ν(C) = 0 and the identity
+1 ∫︁∞ e−s−e−sr2 ds = logr yield ∫︁∫︁ L (|z−w|)dν(z)dν(w) = −1 ∫︁b J(s)/sds ≤ 0 for L (r) :=
+2 0 s a,b 2 a a,b
+1 ∫︁b (e−s−e−sr2)/sds. Taking a → 0, b → ∞ and applying dominated convergence gives the result.
+2 a
+□
+11.5. The Andr´eief identity.
+Lemma 11.6 (Andr´eief). For any positive weight w and any h×h Gram matrix G = [µ(ti+j)]
+with µ(tk) = ∫︁ tkw(t)dt,
+∫︂
+1 ∏︂ ∏︂
+detG = (y2−y2)2 w(y )dy . (97)
+h! i j i i
+(0,∞)h
+i<j i
+Proof. This is the standard Andr´eief identity [9]: expand the determinant as a signed sum over
+permutations and interpret each product as a multiple integral. The antisymmetric part of the sum
+produces the Vandermonde squared, and the symmetrisation factor is 1/h!. □
+Combining with the positive weight (15):
+∆ (ζ(5)) = 1 ∫︂ ∏︂ (y2−y2)2 ∏︂ D N (y i 2)6 w(y )dy . (98)
+K h! i j D (y2) i i
+(0,∞)h i<j i K i
+√ √
+11.6. Scaling and final bound. Substitute y = K t , so dy = Kdt /(2 t ). Powers of K:
+i i i i i
+• ∏︁ (y2−y2)2 = K2h(h−1)∏︁ (t −t )2.
+i<j i j i<j i j
+• ∏︁ D (y2)6/D (y2): numerator contributes K12N per factor (leading term), denominator
+i N i K i
+K−2K per factor. Total: Kh(12N−2K), with lower-order corrections.
+√
+• ∏︁ (2 t )−1 = 2−hK−h∏︁ t −1/2 : contributes K−h.
+i i i i √
+• ∏︁ w(y ): since w(y) ≈ 8192(1 + y)5e−2πy with y = K t, this contributes K5h in the
+i i
+polynomial factor before exponential decay.
+Combining, the exponent of K is 2h(h−1)+h(12N −2K)−h+5h+(constants) = 2h(h+6N −
+K)+16h, matching equation (6.13) of the original paper.
+The remaining integral is bounded using (99) of the paper:
+∑︂ ∑︂ ∑︂√ √
+2 log|t −t |−K V(t )+ t ≤ (λM −I(ρ))K2+(120+ 2)h+2hlogK. (99)
+i j i i 0
+i<j i i
+Combining everything gives:
+Proposition 11.7 (Real decay). For every K ∈ 40Z ,
+>0
+0 < F (ζ(5)), logF (ζ(5)) ≤ UK2+24KlogK +200K. (100)
+K K
+
+[PAGE 17]
+ON FAUZAN’S PROOF OF THE IRRATIONALITY OF ζ(5) 17
+12. The final combination
+12.1. The constant A .
+M
+Definition 12.1. Set
+∫︂ 20 R(x) ∫︂ ∞ R(x)
+A := I + dx+ dx, (101)
+∗ out x3 x3
+3 20
+and for M ≥ 40,
+7λ 2923/240−1/4 32
+A := A + − + . (102)
+M ∗ M M2 M3
+Fauzan’s exact values:
+127751
+I = ,
+out
+96000
+∫︂ 20 R(x) 322437603634266857629
+dx = ≈ 0.042788,
+x3 7535670527041937280000
+3
+∫︂ ∞ R(x) 2689
+dx ≤ − ≈ −0.056021,
+x3 48000
+20
+9928298118277006344769
+A = ≈ 1.3175069. (103)
+∗
+7535670527041937280000
+Lemma 12.2 (Values of A ). A ≈ 1.3495877, A ≈ 1.3175717.
+M 200 100000
+Proof. Direct computation from the formula for A . Exact:
+M
+127125602969131786927559
+A = ≈ 1.3495876977, (104)
+200
+94195881588024216000000
+77568640968394113167559643190570
+A = ≈ 1.3175716757. (105)
+100000
+58872425992515135000000000000000
+The preprint [6] prints A ≈ 0.1317572, off by a factor of 10; the correct value is 1.3175717.
+100000
+□
+12.2. The final inequality. Combining Proposition 9.2, Theorem 9.3, and Proposition 11.7:
+logQ (ζ(5)) ≤ (A +U +E )K2+o(K2). (106)
+K,M M M
+With K = 40n:
+logQ (ζ(5)) ≤ 1600(A +U +E )n2+o(n2). (107)
+40n,M M M
+For M = 200,
+A +U = 1.3495877...−1.3669955... = −0.0174078..., (108)
+200
+so
+139
+1600(A +U) = −27.852483... < −27.8 = − . (109)
+200
+5
+The margin is ≈ 0.052.
+The correction E is favorable: it makes A +U more negative (since c(x) > 0 makes E =
+M M M
+∫︁M c(x)/x3dx > 0 subtracted from A ). Hence the inequality 1600(A +U +E ) < −139/5
+3 M M M
+holds a fortiori.
+Completion of Theorem 2.2. By Proposition 9.2, Q ∈ Z[X] and degQ = 37n (Propo-
+40n,200 40n,200
+sition 6.1). By the inequality above, 0 < Q (ζ(5)) < e−139n2/5 for all sufficiently large n.
+40n,200
+Applying Lemma 3.1 with d = 37 and c = 139/5 proves that ζ(5) is irrational.
+For the quantitative bound (4), the preprint uses the stronger decay at M = 100000 together
+with a perturbation argument (Section 8 of [6]). □
+
+[PAGE 18]
+18 CHUNWINGLAI
+13. Errata for the original preprint
+We collect all corrections to [6].
+(1) Section 2.5, definition of S . ThepreprintwritesS = (K!)2h4h−1/(h−1). Thecorrect
+K K
+definition, consistent with the Legendre formula (5.3) of the paper, is
+S =
+(K!)2h4h−1/((N!)12h∏︁h−1((2i)!)2).
+K i=1
+(2) Section 3, definition of τ. τ(P) = L(P′′)/24 should be τ(P) = L(P′′′)/24.
+(3) Appendix B, A . A = 0.131757167571549 should be 1.31757167571549 (off by
+100000 100000
+a factor of 10).
+(4) Appendix B, margin at M = 200. 5.248×10−3 should be 5.248×10−2.
+(5) Appendix B, margin at M = 100000. 8.119×10−4 should be 8.119×10−3.
+(6) Appendix B, subscript. A should be A .
+2000 200
+(7) Section 5, asymptotic (5.7). γin = pΓ(K/p)+O (1) should include a correction E of
+p √ M p
+size −c(K/p)·p+O (1) with c(x) ≈ 4 x.
+M
+(8) Section 5, identity R = −Γ−N. The identity xF(x)+Q(x) = −Γ(x)−N(x) fails by a
+term of order x; it should be treated as approximate or corrected.
+References
+[1] R. Ap´ery, Irrationalit´e de ζ2 et ζ3, Journ´ees Arithm´etiques de Luminy, Ast´erisque 61 (1979), 11–13.
+[2] K. Ball and T. Rivoal, Irrationalit´e d’une infinit´e de valeurs de la fonction zˆeta aux entiers impairs, Invent.
+Math. 146 (2001), no. 1, 193–207.
+[3] F. Beukers, A note on the irrationality of ζ(2) and ζ(3), Bull. London Math. Soc. 11 (1979), no. 3, 268–272.
+[4] F. Brown and W. Zudilin, On cellular rational approximations to ζ(5), arXiv:2210.03391.
+[5] L.Euler,De summis serierum reciprocarum,CommentariiacademiaescientiarumPetropolitanae7(1735),123–
+134.
+[6] A.Fauzan,ζ(5)isirrational,Zenodopreprint,17September2026.https://doi.org/10.5281/zenodo.22826419
+[7] S. Fischler, Linear independence of odd zeta values using Siegel’s lemma, J. London Math. Soc. 113 (2026),
+no. 4, e70535, arXiv:2109.10136.
+[8] S.Fischler,J.Sprang,andW.Zudilin,Manyoddzetavaluesareirrational,CompositioMath.155(2019),no.5,
+938–952, arXiv:1803.08905.
+[9] P. J. Forrester, Meet Andr´eief, Bordeaux 1886, and Andreev, Kharkov 1882–1883, Random Matrices Theory
+Appl. 8 (2019), no. 2, 1930001.
+[10] F.W.J.Olveretal.(eds.),NISTDigitalLibraryofMathematicalFunctions,https://dlmf.nist.gov/,Release
+1.2.8, 2026.
+[11] T. Rivoal, La fonction zˆeta de Riemann prend une infinit´e de valeurs irrationnelles aux entiers impairs,
+C. R. Acad. Sci. Paris S´er. I Math. 331 (2000), no. 4, 267–270, arXiv:math/0008051.
+[12] E. B. Saff, Logarithmic potential theory with applications to approximation theory, Surv. Approx. Theory 5
+(2010), 165–200, arXiv:1010.3760.
+[13] W. Zudilin, One of the numbers ζ(5), ζ(7), ζ(9), ζ(11) is irrational, Russian Math. Surveys 56 (2001), no. 4,
+774–776.
+[14] W.Zudilin,Arithmetic of linear forms involving odd zeta values,J.Th´eor.NombresBordeaux16(2004),no.1,
+251–291.
+
+[PAGE 19]
+ON FAUZAN’S PROOF OF THE IRRATIONALITY OF ζ(5) 19
+Appendix A. Numerical verification
+The numerical checks reported in this paper were performed with Python’s mpmath (40 decimal
+digits) and fractions.Fraction (exact rational arithmetic).
+A.1 Energy bound. Recomputes I(ρ) and C from Table 1 of [6]; verifies λM −I(ρ)+C ≤
+∗ 0 ∗
+−1.3669955 with margin ≈ 6.5×10−8.
+A.2 Potential inequality. Evaluates2Uρ(t)−V(t)on4100gridpointsin[0,10]; maximumfound
+= −6.64989... < −6.645.
+∫︁1/2
+A.3 The integral d(y). Verifies d(y)dy = 9/640 exactly.
+1/3
+A.4 Final constants. Recomputes A , A , A ; confirms the four decimal-point typos.
+∗ 200 100000
+A.5 The Section 5 correction. Computes γin exactly from the integer definition at eight pa-
+p √
+rameter sets; confirms the discrepancy γin−pΓ(K/p) ≈ −c(K/p)p with c(x) ≈ 4 x.
+p
+Appendix B. Lean 4 formalization
+An independent machine-checked formalization of the main theorem is available at https:
+//github.com/mo271/Zeta5. The endpoint Apery.irrational five is proved without sorry
+statements, depending only on the three standard Lean axioms propext, Classical.choice, and
+Quot.sound. The formalization confirms the theorem independently of the Section 5 defects doc-
+umented in this paper, since the Lean variant replaces Fauzan’s abstract τ functional with direct
+X
+class-wise partial fractions.

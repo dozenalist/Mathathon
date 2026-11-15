@@ -1,0 +1,535 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=24mm]{geometry}
+\usepackage{amsmath,amssymb,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{2em}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\dd}{\,d}
+\newcommand{\Hfive}[1]{H_{#1}^{(5)}}
+\newcommand{\source}[1]{{\small\color{blue!45!black}#1}\par}
+\newcommand{\heading}[2]{\section*{#1}\source{#2}}
+\pagestyle{plain}
+\begin{document}
+\begin{center}
+{\LARGE The determinant argument for\\[3pt]
+the irrationality of $\zeta(5)$}\\[9pt]
+{\large A detailed exposition following Chun Wing Lai}\\[5pt]
+Draft \enspace$\cdot$\enspace 14 November 2026
+\end{center}
+
+The argument constructs integer polynomials whose values at $\zeta(5)$
+become extraordinarily small. Their degrees grow only linearly, while
+their values shrink exponentially in the square of the size parameter.
+If $\zeta(5)$ were rational, clearing its fixed denominator would produce
+a positive integer tending to zero.
+
+This account supplies the details of the construction and that contradiction.
+The substantial arithmetic and energy estimates are stated explicitly and
+taken as inputs. As in the shorter overview, the arithmetic input is
+Fauzan's original bound, assumed separately from Lai's sections 8--11 as
+literally printed; the source note explains the distinction. The classical
+identities used in the integral calculation are proved in Appendix A.
+Appendices B and C give the exact-degree and pullback arguments, which
+clarify the construction but are not needed once the two estimates are given.
+
+\heading{1. The contradiction we are aiming for}{Lai, section 3, Lemma 3.1.}
+Write $\xi=\zeta(5)$. It is enough to find, for every sufficiently large
+positive integer $n$, a polynomial $Q_n\in\Z[X]$ such that
+\[
+ \deg Q_n\leq37n,\qquad 0<Q_n(\xi)\leq e^{-cn^2},
+ \qquad c>0\text{ fixed}.
+\]
+To see why, suppose $\xi=a/b$, with $a\in\Z$ and $b\in\Z_{>0}$.
+Write $Q_n(X)=\sum_{j=0}^{37n}q_jX^j$, adding zero coefficients if necessary.
+Then
+\[
+ b^{37n}Q_n(a/b)=\sum_{j=0}^{37n}q_j a^j b^{37n-j}\in\Z.
+\]
+This integer is positive. On the other hand,
+\[
+ 0<b^{37n}Q_n(a/b)
+ \leq\exp\bigl(37n\log b-cn^2\bigr)\longrightarrow0.
+\]
+Here $b$ is fixed: the quadratic term eventually dominates the linear term.
+A positive integer cannot tend to zero, so the assumed rational expression
+for $\xi$ is impossible. The fraction need not be in lowest terms.
+
+The construction must therefore keep a polynomial value both nonzero and
+small while making every coefficient integral. Clearing denominators alone
+is easy, but a large multiplier can destroy smallness. The determinant is
+designed to provide enough decay to pay that arithmetic cost.
+
+\newpage
+\heading{2. Defining the functional carefully}{Lai, section 4, Definition 4.2.}
+The notation involves three different variables. The letter $t$ is the
+argument of a rational function. The letter $X$ is a parameter that will
+eventually be set equal to $\xi$. The letter $y$ will be an integration
+variable. Keeping these roles separate makes the later matrix calculation
+much easier to follow.
+
+Let $\mathcal R$ be the vector space over $\Q$ of rational functions in
+$\Q(t)$ whose finite poles, if any, are simple and belong to
+$\{-1^2,-2^2,-3^2,\ldots\}$. Every $R\in\mathcal R$ has a unique expression
+\begin{equation}\label{eq:partial}
+ R(t)=\sum_{e=0}^{d}p_et^e+\sum_{j\in J}\frac{c_j}{t+j^2},
+ \qquad p_e,c_j\in\Q,
+\end{equation}
+where $J$ is finite. Polynomial division gives the polynomial part.
+At a pole, its coefficient is
+$c_j=\left.(t+j^2)R(t)\right|_{t=-j^2}$.
+Subtracting these simple fractions leaves a rational function with no finite
+poles, hence a polynomial. These observations also prove uniqueness
+(with zero terms omitted).
+
+Define the Bernoulli numbers by
+\[
+ \frac{u}{e^u-1}=\sum_{k\geq0}B_k\frac{u^k}{k!}.
+\]
+Multiplication by the exponential series determines the $B_k$ recursively
+as rational numbers. In particular $B_0=1$, $B_1=-1/2$, $B_2=1/6$,
+and $B_4=-1/30$. Also put
+\[
+ \Hfive{j}=\sum_{v=1}^j v^{-5},\qquad \Hfive{0}=0.
+\]
+Prescribe a $\Q$-linear functional $\mu_X:\mathcal R\to\Q[X]$ by
+\begin{align}
+ \mu_X(t^e)&=
+ \frac{(-1)^eB_{2e+2}(2e+3)(2e+4)(2e+5)}{24},
+ &&e\in\Z_{\geq0},\label{eq:mu-moment}\\
+ \mu_X\!\left(\frac1{t+j^2}\right)&=
+ j^4\bigl(X-\Hfive{j}\bigr)-\frac14+\frac1{2j},
+ &&j\in\Z_{>0}.\label{eq:mu-pole}
+\end{align}
+For a general $R$, apply these formulas to its decomposition and add with
+the coefficients $p_e,c_j$. This is the meaning of extending by linearity.
+It gives a well-defined affine polynomial in $X$: only the simple
+fractions contribute a term involving $X$.
+
+For example,
+\[
+ \mu_X(1)=\frac5{12},\qquad
+ \mu_X\!\left(\frac1{t+1}\right)=X-\frac34.
+\]
+Since $t/(t+1)=1-1/(t+1)$, linearity gives
+$\mu_X(t/(t+1))=7/6-X$. There is no rule allowing us to multiply
+functional values; $\mu_X$ is linear, not multiplicative.
+
+Finally, $\mu_\xi(R)$ means evaluate the polynomial $\mu_X(R)$ at $X=\xi$.
+It does not mean substitute $\xi$ for $t$ in the rational function.
+
+\newpage
+\heading{3. Why the polynomial values are moments}{Lai, section 4, Lemma 4.5.}
+Define, for $y>0$,
+\begin{equation}\label{eq:weight}
+ w(y)=\frac{(2\pi)^4y^5}{12}
+       \sum_{\ell\geq1}\ell^4e^{-2\pi\ell y}.
+\end{equation}
+Every summand is positive. The series converges for each $y>0$, so
+$w(y)>0$. We will prove
+\begin{equation}\label{eq:representation}
+ \boxed{\mu_\xi(R)=\int_0^\infty R(y^2)w(y)\dd y
+        \quad(R\in\mathcal R).}
+\end{equation}
+This is the bridge between rational algebra and real integration.
+First we check that the integrals make sense.
+
+Put $f(y)=(e^{2\pi y}-1)^{-1}$. Its geometric series may be differentiated
+term by term on $y\geq\varepsilon>0$, where the derivative series converge
+uniformly. Four differentiations show that
+\[
+ w(y)=\frac{y^5}{12}f^{(4)}(y).
+\]
+Near zero, $f(y)=1/(2\pi y)+g(y)$ with $g$ analytic at zero. Consequently
+$f^{(4)}(y)=24/(2\pi y^5)+O(1)$ and $w(y)\to1/\pi$.
+For $y\geq1$, factor $e^{-2\pi y}$ out of the series in \eqref{eq:weight};
+the remaining sum is bounded by
+$\sum_{\ell\geq1}\ell^4e^{-2\pi(\ell-1)}<\infty$.
+Thus $w(y)=O(y^5e^{-2\pi y})$ at infinity.
+
+An admissible $R(y^2)$ is bounded near zero, because its poles lie away from
+$[0,\infty)$. It grows at most polynomially as $y\to\infty$.
+These two bounds on $w$ prove absolute convergence in
+\eqref{eq:representation}.
+
+For $R(t)=t^e$, the summands of the integral are nonnegative. Tonelli's
+theorem allows us to interchange the sum and integral:
+\begin{align*}
+ \int_0^\infty y^{2e}w(y)\dd y
+ &=\frac{(2\pi)^4}{12}\sum_{\ell\geq1}\ell^4
+      \int_0^\infty y^{2e+5}e^{-2\pi\ell y}\dd y\\
+ &=\frac{(2e+5)!}{12(2\pi)^{2e+2}}
+      \sum_{\ell\geq1}\frac1{\ell^{2e+2}}.
+\end{align*}
+Here $\int_0^\infty y^m e^{-by}\dd y=m!/b^{m+1}$ for $b>0$:
+substitution reduces this to $b=1$, and repeated integration by parts gives
+$m!$. Euler's formula, proved in Appendix A, is
+\[
+ \zeta(2e+2)=
+ \frac{(-1)^eB_{2e+2}(2\pi)^{2e+2}}{2(2e+2)!}.
+\]
+Substituting it above yields
+\[
+ \int_0^\infty y^{2e}w(y)\dd y
+ =\frac{(-1)^eB_{2e+2}}{24}\,
+       \frac{(2e+5)!}{(2e+2)!}
+ =\mu_X(t^e).
+\]
+The factorial quotient is exactly $(2e+3)(2e+4)(2e+5)$.
+The equality is independent of $X$, as the definition requires.
+
+\newpage
+\heading{4. Why the pole values are the same integrals}{Lai, section 4, Lemma 4.6.}
+The simple fractions need a different calculation. We do it for a real
+number $a>0$, then specialize to a positive integer. Define
+\[
+ q_a(y)=\frac{y^5}{y^2+a^2}
+       =y^3-a^2y+a^4\frac{y}{y^2+a^2}.
+\]
+The polynomial terms disappear after four derivatives. Since
+$y/(y^2+a^2)=\operatorname{Im}(a-iy)^{-1}$, and
+$\frac{d^4}{dy^4}(a-iy)^{-1}=24(a-iy)^{-5}$, we obtain
+\[
+ q_a^{(4)}(y)=24a^4\operatorname{Im}(a-iy)^{-5}.
+\]
+Using $w=y^5f^{(4)}/12$, four integrations by parts give
+\begin{align*}
+ \int_0^\infty\frac{w(y)}{y^2+a^2}\dd y
+ &=\frac1{12}\int_0^\infty q_a(y)f^{(4)}(y)\dd y\\
+ &=\frac1{12}\int_0^\infty q_a^{(4)}(y)f(y)\dd y\\
+ &=2a^4\int_0^\infty
+     \frac{\operatorname{Im}(a-iy)^{-5}}{e^{2\pi y}-1}\dd y.
+\end{align*}
+There are no missing boundary terms. First work on $[\varepsilon,L]$;
+the boundary expression is
+$q_af'''-q_a'f''+q_a''f'-q_a'''f$.
+For $0\leq r\leq3$, at zero we have
+\[
+ q_a^{(r)}(y)=O(y^{5-r}),\qquad
+ f^{(3-r)}(y)=O(y^{r-4}),
+\]
+so every boundary product is $O(y)$ and tends to zero. At infinity the
+derivatives of $f$ decay exponentially and the other factors have at most
+polynomial growth. Also $q_a^{(4)}(y)=O(y)$ at zero, so
+$q_a^{(4)}(y)f(y)=O(1)$ there. The final integral converges at both ends,
+and we may let $\varepsilon\downarrow0$ and $L\to\infty$.
+
+For $a>0$, define $\zeta(5,a)=\sum_{v=0}^\infty(a+v)^{-5}$.
+The particular Hurwitz identity needed here is
+\begin{equation}\label{eq:hermite}
+ \zeta(5,a)=\frac1{2a^5}+\frac1{4a^4}
+ +2\int_0^\infty
+     \frac{\operatorname{Im}(a-iy)^{-5}}{e^{2\pi y}-1}\dd y.
+\end{equation}
+Appendix A derives this directly from an elementary kernel identity.
+It gives
+\[
+ \int_0^\infty\frac{w(y)}{y^2+a^2}\dd y
+ =a^4\zeta(5,a)-\frac1{2a}-\frac14.
+\]
+For an integer $j\geq1$, the series gives
+$\zeta(5,j)=\xi-\Hfive{j}+j^{-5}$. Therefore
+\[
+ \int_0^\infty\frac{w(y)}{y^2+j^2}\dd y
+ =j^4(\xi-\Hfive{j})-\frac14+\frac1{2j}
+ =\mu_\xi\!\left(\frac1{t+j^2}\right).
+\]
+We have checked both types of term in \eqref{eq:partial}.
+Applying the formulas to its finitely many terms and using linearity
+of integration proves \eqref{eq:representation} for every $R\in\mathcal R$.
+
+\newpage
+\heading{5. Building a polynomial from the functional}{Lai, section 5, Definitions 5.1--5.2 and Lemma 5.4.}
+For a positive integer $n$, choose
+\[
+ K=40n,\qquad N=3n,\qquad h=K-N=37n,
+ \qquad D_m(t)=\prod_{j=1}^m(t+j^2).
+\]
+The parameters have been chosen to make the later estimates work.
+For now, the features that matter are positivity and cancellation. Define
+\[
+ A_K(t)=\frac{D_N(t)^6}{D_K(t)}
+       =\frac{D_N(t)^5}{T_K(t)},\qquad
+ T_K(t)=\prod_{k=N+1}^K(t+k^2).
+\]
+The cancellation removes the first $N$ possible poles. The $h$ remaining
+roots of $T_K$ are distinct negative integer squares, so multiplying
+$A_K$ by any polynomial leaves a function in $\mathcal R$.
+Moreover, $A_K(y^2)>0$ for every $y>0$.
+
+For $0\leq i,j<h$ put $R_{ij}(t)=A_K(t)t^{i+j}$ and define
+\begin{equation}\label{eq:G}
+ G_K(X)=\bigl[\mu_X(R_{ij})\bigr]_{0\leq i,j<h},
+ \qquad \Delta_K(X)=\det G_K(X).
+\end{equation}
+The dependence on $i+j$ makes this a Hankel matrix: its entries are constant
+along each anti-diagonal. The first few entries have the pattern
+\[
+ \begin{pmatrix}
+ \mu_X(A_K)&\mu_X(tA_K)&\mu_X(t^2A_K)&\cdots\\
+ \mu_X(tA_K)&\mu_X(t^2A_K)&\mu_X(t^3A_K)&\cdots\\
+ \mu_X(t^2A_K)&\mu_X(t^3A_K)&\mu_X(t^4A_K)&\cdots\\
+ \vdots&\vdots&\vdots&\ddots
+ \end{pmatrix}.
+\]
+To see explicitly why these are affine entries, take partial fractions:
+\[
+ R_{ij}(t)=P_{ij}(t)+\sum_{k=N+1}^K\frac{c_k^{ij}}{t+k^2},
+ \qquad
+ c_k^{ij}=\frac{D_N(-k^2)^5(-k^2)^{i+j}}{T_K'(-k^2)}.
+\]
+The polynomial part may be zero; it must not otherwise be discarded.
+Applying the functional gives
+\[
+ G_K(X)_{ij}=\mu_X(P_{ij})+
+ \sum_{k=N+1}^K c_k^{ij}
+ \left[k^4(X-\Hfive{k})-\frac14+\frac1{2k}\right].
+\]
+Thus every entry is $a_{ij}X+b_{ij}$ with rational $a_{ij},b_{ij}$.
+The determinant formula is
+\[
+ \Delta_K(X)=\sum_{\sigma\in S_h}\operatorname{sgn}(\sigma)
+       \prod_{i=0}^{h-1}(a_{i,\sigma(i)}X+b_{i,\sigma(i)}).
+\]
+Here $S_h$ permutes the indices $0,\ldots,h-1$.
+Each product has degree at most $h$, and a finite sum cannot increase that
+bound. Hence $\Delta_K\in\Q[X]$ and $\deg\Delta_K\leq37n$.
+Appendix B proves exact degree $h$, but the upper bound suffices here.
+
+\newpage
+\heading{6. Evaluating the matrix at $\xi$}{Lai, section 5, Proposition 5.6.}
+We can now pass from a symbolic matrix to a matrix of integrals one entry
+at a time. With $R_{ij}$ as above,
+\begin{align*}
+ G_K(\xi)_{ij}
+ &=\left.\mu_X(R_{ij})\right|_{X=\xi}\\
+ &=\mu_\xi(R_{ij})\\
+ &=\int_0^\infty R_{ij}(y^2)w(y)\dd y\\
+ &=\int_0^\infty y^{2i}y^{2j}A_K(y^2)w(y)\dd y.
+\end{align*}
+The third equality is the theorem proved in sections 3--4 of this account.
+The last is substitution: $(y^2)^{i+j}=y^{2i}y^{2j}$.
+Absolute convergence was already checked for every admissible rational
+function, including these particular $R_{ij}$.
+
+For a compact description, set
+\[
+ \dd\nu_K(y)=A_K(y^2)w(y)\dd y,\qquad
+ v(y)=(1,y^2,\ldots,y^{2h-2})^{\mathsf T}.
+\]
+Then $G_K(\xi)=\int_0^\infty v(y)v(y)^{\mathsf T}\dd\nu_K(y)$,
+where the integral is taken \emph{entry by entry}. Its $(i,j)$ entry is
+exactly the last integral above.
+
+Let $c=(c_0,\ldots,c_{h-1})^{\mathsf T}\in\R^h$ and
+$q(t)=\sum_i c_it^i$. Distributing the finite sums gives
+\begin{align*}
+ c^{\mathsf T}G_K(\xi)c
+ &=\sum_{i,j}c_ic_j\int_0^\infty y^{2i+2j}\dd\nu_K(y)\\
+ &=\int_0^\infty\left(\sum_{i,j}c_ic_jy^{2i+2j}\right)\dd\nu_K(y)\\
+ &=\int_0^\infty\left(\sum_i c_iy^{2i}\right)^2\dd\nu_K(y)
+ =\int_0^\infty q(y^2)^2\dd\nu_K(y).
+\end{align*}
+Only finite linearity is used here. Real coefficients $c_i$ cause no
+difficulty with the originally $\Q$-linear definition of $\mu_X$.
+
+If $c\ne0$, then $q$ is a nonzero polynomial. Choose $y_0>0$ that is not
+a root of $q(y^2)$. By continuity, $q(y^2)^2$ is bounded below by a positive
+number on a small interval about $y_0$. The density of $\nu_K$ is positive
+and continuous there, so the integral is strictly positive.
+
+Thus $G_K(\xi)$ is positive definite. To see why its determinant is positive,
+orthogonalize $1,y^2,\ldots,y^{2h-2}$ by Gram--Schmidt without normalizing.
+The resulting orthogonal functions are monic polynomials in $y^2$, so each
+is nonzero and has positive squared norm. The change of basis is triangular
+with diagonal entries one. The determinant is therefore the product of
+these positive squared norms: $\Delta_K(\xi)>0$.
+
+The matrix integral is not a rule for moving a determinant inside an
+integral. Each $v(y)v(y)^{\mathsf T}$ has rank one. The multiple integral
+for the determinant comes from a separate identity, stated in section 8 below.
+
+\newpage
+\heading{7. Making the coefficients integral at a controlled cost}
+{The arithmetic output of Lai's sections 8--10, with the source qualification below.}
+The estimates use a fixed explicit rescaling of the determinant:
+\[
+ F_K(X)=S_K\Delta_K(X),\qquad
+ S_K=\frac{(K!)^{2h}4^{h-1}}
+ {(N!)^{12h}\displaystyle\prod_{i=1}^{h-1}((2i)!)^2}>0.
+\]
+All factors are nonzero integers, so $S_K$ is a positive rational number
+independent of $X$. Therefore
+\[
+ F_K\in\Q[X],\qquad \deg F_K\leq h,\qquad F_K(\xi)>0.
+\]
+The factorial rescaling puts the arithmetic and analytic bounds on a common
+scale. It does not by itself assert that all coefficients are integers.
+
+\textbf{Arithmetic input.} Fix $M=200$. There are positive rational
+numbers $m_{K,200}$, for all sufficiently large $K\in40\Z_{>0}$, such that
+\begin{equation}\label{eq:arith-input}
+ m_{K,200}F_K\in\Z[X],\qquad
+ \limsup_{\substack{K\to\infty\\40\mid K}}
+ \frac{\log m_{K,200}}{K^2}\leq A_{200},
+\end{equation}
+where
+\[
+ A_{200}=\frac{127125602969131786927559}
+                 {94195881588024216000000}
+        =1.349587697741\ldots<1.35.
+\]
+We assume this arithmetic statement in the form of Fauzan's Proposition 5.1
+and equation (5.21), with Appendix B's evaluation. It is not the literal
+corrected statement of Lai's Theorem 9.3; the final source note explains why.
+The original restrictions $40\mid M$ and $K\geq200M^2$ hold for $M=200$
+and sufficiently large $K$. The cutoff stays fixed as $K$ grows.
+
+Here is what the arithmetic assertion accomplishes. For a nonzero rational
+number, $v_p$ counts the power of $p$ in the numerator minus its power in
+the denominator. A rational number is an integer exactly when all these
+exponents are nonnegative. If $L_p$ is an integer lower bound for $v_p$ of
+every nonzero coefficient of $F_K$, then multiplying by $p^{-L_p}$ removes
+any denominator at $p$; when $L_p>0$, it instead divides out a common factor.
+The local estimates justify these bounds and their use for all primes.
+Their sum controls the size of the total positive rational multiplier.
+We do not re-prove those local estimates here.
+
+Abbreviate $m_K=m_{K,200}$. The strict inequality $A_{200}<1.35$ turns the
+limiting bound into an eventual bound. Indeed, let
+$\varepsilon=(1.35-A_{200})/2>0$. By the definition of the upper limit,
+\[
+ \frac{\log m_K}{K^2}\leq A_{200}+\varepsilon<1.35
+\]
+for all sufficiently large admissible $K$. Consequently we may use
+\begin{equation}\label{eq:arith-rounded}
+ \boxed{m_KF_K\in\Z[X],\qquad \log m_K\leq1.35K^2.}
+\end{equation}
+
+\newpage
+\heading{8. The analytic estimate and its integral meaning}{Lai, section 11, Lemma 11.6 and Proposition 11.7.}
+The second substantial input concerns the same normalized determinant
+$F_K=S_K\Delta_K$.
+
+\textbf{Analytic input.} For every positive multiple $K$ of $40$,
+\begin{equation}\label{eq:analytic-input}
+ \log F_K(\xi)\leq UK^2+24K\log K+200K,
+ \qquad U=-\frac{2733991}{2000000}=-1.3669955.
+\end{equation}
+Positivity of $F_K(\xi)$ was proved above, so its logarithm is defined.
+This is Lai's Proposition 11.7, taken as given with its required uniform
+energy bounds. We are not replacing those bounds by numerical sampling.
+
+Dividing by $K^2$ gives
+\[
+ \frac{\log F_K(\xi)}{K^2}
+ \leq-1.3669955+\frac{24\log K}{K}+\frac{200}{K}.
+\]
+The last two terms tend to zero. Since
+$1.3669955-1.36=0.0069955>0$, they are eventually smaller than this gap.
+Exponentiating yields
+\begin{equation}\label{eq:analytic-rounded}
+ \boxed{0<F_K(\xi)\leq\exp(-1.36K^2)}
+\end{equation}
+for all sufficiently large $K$. No explicit threshold is needed for an
+irrationality proof.
+
+To explain what is being estimated, we also state the appropriate form of
+Andr\'eief's identity from section 11. For the Gram matrix already constructed,
+\begin{equation}\label{eq:andreief}
+ \Delta_K(\xi)=\frac1{h!}\int_{(0,\infty)^h}
+ \prod_{i<j}(y_i^2-y_j^2)^2
+ \prod_{i=1}^h A_K(y_i^2)w(y_i)\dd y_1\cdots\dd y_h.
+\end{equation}
+This is an $h$-fold integral, not a determinant moved inside the one-variable
+matrix integral. The pairwise product is the square of the Vandermonde
+determinant $\det[y_j^{2i}]$, with $0\leq i<h$ and $1\leq j\leq h$.
+It is nonnegative and vanishes when two integration points coincide.
+
+The scale $K^2$ becomes natural in this expression. Away from coincident
+points, taking the logarithm of the integrand gives
+\[
+ 2\sum_{i<j}\log|y_i^2-y_j^2|
+ +\sum_i\log A_K(y_i^2)+\sum_i\log w(y_i).
+\]
+There are $h(h-1)/2$ pairwise terms, with $h$ proportional to $K$.
+After rescaling the variables, these interactions compete with the decay
+of the weights. Section 11 controls that balance by comparison with a
+carefully chosen measure, then combines the bound with $S_K$.
+Equation \eqref{eq:analytic-input} is the quantitative result of that work.
+
+The arithmetic and analytic estimates must concern the same $F_K$.
+Changing its scalar normalization changes both costs. Their sum, which
+bounds the final integer polynomial, is what matters.
+
+\newpage
+\heading{9. Combining the estimates and finishing the proof}{The final implication, corresponding to Lai's section 12.}
+For all sufficiently large positive integers $n$, define
+\[
+ Q_n(X)=m_{40n}F_{40n}(X).
+\]
+The arithmetic input gives integer coefficients. Both scalar multipliers
+$S_{40n}$ and $m_{40n}$ are positive and independent of $X$, so
+\[
+ Q_n\in\Z[X],\qquad \deg Q_n\leq37n,
+ \qquad Q_n(\xi)>0.
+\]
+Take $n$ large enough that both eventual bounds
+\eqref{eq:arith-rounded} and \eqref{eq:analytic-rounded} hold at $K=40n$.
+Then
+\begin{align*}
+ \log Q_n(\xi)
+ &=\log m_K+\log F_K(\xi)\\
+ &\leq1.35K^2-1.36K^2
+ =-\frac{K^2}{100}=-16n^2.
+\end{align*}
+Thus $0<Q_n(\xi)\leq e^{-16n^2}$. The opening criterion applies with
+$c=16$. More explicitly, if $\xi=a/b$, then the positive integer
+$b^{37n}Q_n(a/b)$ satisfies
+\[
+ 0<b^{37n}Q_n(a/b)
+ \leq\exp(37n\log b-16n^2).
+\]
+For $n\geq37\log b/8$, the exponent is at most $-8n^2$, and the upper
+bound is smaller than one. This is the contradiction. Subject to the two
+stated quantitative inputs, $\zeta(5)$ is irrational.
+
+The determinant's degree grows linearly, while the small-value estimate
+has a quadratic exponent. Positivity prevents vanishing, and the arithmetic
+bound leaves enough of that decay after the coefficients become integral.
+The particular constant $16$ is only a convenient consequence of rounding;
+any fixed positive decay constant would finish the proof.
+
+\bigskip
+\textbf{Source note and scope of the conclusion.}
+Lai's Theorem 9.3 and equations (106)--(107) include an additional term
+$+E_M$ in the arithmetic cost. His following prose instead treats that
+positive term as a subtraction. Keeping the printed formulation would give
+\[
+ \limsup_{n\to\infty}\frac{\log Q_n(\xi)}{(40n)^2}
+ \leq A_{200}+U+E_{200}
+\]
+for the polynomials of that formulation. To infer irrationality from that
+bound requires the additional inequality
+\[
+ E_{200}<-A_{200}-U=0.017407802258295\ldots.
+\]
+It would yield some positive decay constant, not necessarily $16$.
+This account assumes Fauzan's original arithmetic bound explicitly.
+That source choice does not verify or repair the disputed arithmetic, and
+the conclusion is not claimed to follow solely from Lai's literal corrected
+sections 8--11.
+
+\source{Sources: Chun Wing Lai,
+\href{https://ai.vixra.org/pdf/2609.0080v1.pdf}{\emph{On Fauzan's Proof that $\zeta(5)$ is Irrational}},
+v1, 29 September 2026; Aabir Fauzan,
+\href{https://zenodo.org/records/22826419}{\emph{$\zeta(5)$ is irrational}},
+17 September 2026, especially Proposition 5.1, (5.21), and Appendix B.
+The sections of this account have their own numbering.}
+
+\input{appendix_classical.tex}
+\input{appendix_algebra.tex}
+\end{document}

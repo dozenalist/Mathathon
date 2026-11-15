@@ -1,0 +1,35 @@
+ZETA(9) AND THE TWO PARITY QUESTIONS
+
+The integration weight extends to s=9:
+w9(y)=(2*pi)^8*y^9/20160 * sum_{l>=1} l^8 exp(-2*pi*l*y).
+It is positive. For S_s(z)=sum_{n in Z}(z+n)^(-s),
+w_s(y)=(-1)^((s-1)/2)*i*y^s*S_s(iy)/pi for odd s>=3.
+The sign changes between residue classes 1 and 3 modulo 4, but it is
+absorbed in the conversion from an imaginary row sum to a positive weight.
+The full level-one odd-weight lattice sum cancels for every odd s.
+
+There is a different, genuine modulo-four distinction in the periods of
+even-weight Eisenstein series. The period construction for zeta(s) uses
+weight s+1: E6 for zeta5, E8 for zeta7, E10 for zeta9.
+Ramanujan's transformation at alpha=beta=pi contains the factor
+1-(-1)^m, where s=2m+1. It vanishes for s=5,9 and survives for s=7.
+This special-point cancellation does not obstruct the positive moment
+representation, nor does it prove irrationality in the surviving case.
+
+Primary sources, checked 2026-11-14:
+William Stein, Modular Forms, A Computational Approach, Level One,
+https://wstein.org/books/modform/modform/level_one.html
+Bruce C. Berndt and Armin Straub, Ramanujan's Formula for zeta(2n+1),
+https://arminstraub.com/downloads/pub/ramanujanzeta.pdf
+Theorem 1.1 (equation1.2), equation2.13, and Section5 (equation5.4).
+
+Independent finite calculation:
+Keep K=40,N=3,h=37 and D_N^6/D_K, replace the functional by mu9.
+The exact constant-coefficient valuations at p29 are:
+s5: -60; s7: -82; s9: -104.
+The s9 determinant was computed by rational Gaussian elimination and by
+modular elimination with tracked precision; they agree. Results are in
+experiments/zeta9_local_check.json. The matrix builder and both algorithms
+are in experiments/exact_checks.py (call matrix_affine(9,40,3)).
+This disproves reusing the old local bound at s9; no full s9 asymptotic
+denominator/decay budget has been established in this followup.

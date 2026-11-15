@@ -1,0 +1,43 @@
+{
+  "t": "3/4",
+  "M": 200,
+  "inner_intervals": 1430,
+  "refined_arithmetic_coefficient": {
+    "lower_exact": "2323379348180366491/1000000000000000000",
+    "upper_exact": "580844837045091623/250000000000000000",
+    "lower_decimal": 2.3233793481803664,
+    "upper_decimal": 2.3233793481803664
+  },
+  "original_arithmetic_coefficient": {
+    "lower_exact": "2327452281075037549/1000000000000000000",
+    "upper_exact": "46549045621500751/20000000000000000",
+    "lower_decimal": 2.3274522810750375,
+    "upper_decimal": 2.3274522810750375
+  },
+  "phi6_at_three_quarters": {
+    "lower_exact": "-1330496469639623471/200000000000000000",
+    "upper_exact": "-266099293927924687/40000000000000000",
+    "lower_decimal": -6.6524823481981175,
+    "upper_decimal": -6.6524823481981175
+  },
+  "real_certificate_coefficient_lower_witness": {
+    "lower_exact": "-10733724504654059/7812500000000000",
+    "upper_exact": "-1373916736595719257/1000000000000000000",
+    "lower_decimal": -1.3739167365957194,
+    "upper_decimal": -1.3739167365957192
+  },
+  "refined_combined_coefficient_lower_witness": {
+    "lower_exact": "949462611584646939/1000000000000000000",
+    "upper_exact": "189892522316929447/200000000000000000",
+    "lower_decimal": 0.949462611584647,
+    "upper_decimal": 0.9494626115846473
+  },
+  "original_combined_coefficient_lower_witness": {
+    "lower_exact": "953535544479317997/1000000000000000000",
+    "upper_exact": "953535544479318293/1000000000000000000",
+    "lower_decimal": 0.953535544479318,
+    "upper_decimal": 0.9535355444793183
+  },
+  "proved": "For D_N^6 at zeta(7), M=200, and the original comparison measure, every valid potential upper constant yields total coefficient >9/10 even with exact finite integration of the proposed local valuation bounds. This rules out rescuing this certificate merely by sharpening its finite-integral and potential enclosures. Better local estimates, other measures and actual determinant behavior are not excluded.",
+  "method": "Rational interval arithmetic, with exact rational piecewise integration."
+}

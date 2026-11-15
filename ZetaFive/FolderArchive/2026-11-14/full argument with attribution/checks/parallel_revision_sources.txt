@@ -1,0 +1,50 @@
+PARALLEL-CONSTRUCTIONS REVISION: EXPLANATORY PROVENANCE
+14 November 2026
+
+Requested chat:
+  Find parallel constructions in the Zeta(5)...
+  App title uses a final ellipsis character.
+  Thread ID: 01a1dc1f-f2bf-7531-976e-7f07e6a19ab0
+  All four turns retrieved through read_thread; hasMore=false.
+  The final provenance correction controls the earlier novelty wording.
+
+Corrected companion:
+  ../zeta5_unified_framework.tex (relative to the document folder)
+  SHA256:
+  aa4d266a6cd21ec515e5290ad1a5f2a3b8734e842e00fcd3ee4ae10c59c91f72
+
+What was incorporated:
+  * One bilinear form, viewed through its positive integral and residue
+    slope; this removes a repeated residue calculation in the degree proof.
+    Underlying source: Fauzan Sections 2.3-2.4.
+  * Primitive evaluation size, invariant under rational scaling.
+    Underlying source: Fauzan Appendix C.3; notation/teaching emphasis
+    from the chat.
+  * Three arithmetic coordinate choices: integer values, prescribed
+    residue-class vanishing, and exact cancellation of pole factors.
+    Underlying strategy: Fauzan Sections 3-4; the implementation remains
+    Firsching's revised finite partial-fraction argument.
+  * Polynomial Euler-Maclaurin operator, interpreted as a terminating
+    formal series. Classical input: DLMF 24.2 and 24.4.
+    No p-adic analytic extension is assumed.
+  * Finite products/counts versus their continuous logarithmic/arithmetic
+    profiles. Underlying estimates: Fauzan Sections 5-6, with Firsching's
+    revised arithmetic profiles.
+  * Equal-mass energy identity and distinct moment/configuration/comparison
+    measures. Underlying source: Fauzan Section 6.1; the circle errors
+    and finite potential certificate remain fully included.
+  * Periodic Bernoulli descriptions of the existing tail primitives.
+    Underlying integration argument: Fauzan Section 5.3 and Firsching
+    Growth/TailIntegral.lean. DLMF 24.2-24.4 supplies classical notation.
+
+What was shortened:
+  The optional Pade-approximant error proof was condensed to the exact
+  Stieltjes samples and finite moment remainder needed for the perspective.
+  The exact-degree proof now uses the already established residue pairing.
+  Duplicate determinant expansions and explanatory passages were trimmed.
+
+Quantitative boundary:
+  No original min(rank,zero-weight-count) saving or M=200 estimate was
+  imported. The capped inner weights, full rank loss, M=400 arithmetic,
+  comparison-measure data, and finite certificate inputs are unchanged.
+  The chat is an expository source, not a new primary mathematical source.

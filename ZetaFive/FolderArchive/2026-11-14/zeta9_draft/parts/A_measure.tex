@@ -1,0 +1,169 @@
+\section{The comparison measure and its elementary bounds}
+\label{appa-measure}
+
+This is the analogue of source Appendix~A, pp.~21--26.  The measure and
+the numerical enclosures are \textbf{[Formal analogue: reused source
+input]}; their defining algebra is displayed below.  No new search for
+an equilibrium measure or independent verification of the source's
+684 partition intervals is claimed.
+
+\subsection{The sixteen intervals}
+
+Let $d\omega_{[a,b]}(t)=dt/(\pi\sqrt{(t-a)(b-t)})$ on $(a,b)$ and set
+$\rho=\sum_{j=1}^{16}c_j\omega_{[a_j,b_j]}$.  The following integers,
+each divided by $10^{12}$, reproduce source Table~1:
+\begin{center}
+\begin{tabular}{r|r|r|r}
+$j$&$10^{12}a_j$&$10^{12}b_j$&$10^{12}c_j$\\\hline
+1&3906748086&8992695531&10515596180\\
+2&2312248264&15340997855&29471737793\\
+3&1402286665&25730180724&42934365099\\
+4&881725356&41909578246&58204231966\\
+5&578197906&65851089563&69037621310\\
+6&396324613&99481037884&78873099189\\
+7&283911191&144325727458&84856120711\\
+8&212206188&201105762729&88396082127\\
+9&165097686&269345996903&88303382125\\
+10&133347132&347089554156&85472321255\\
+11&111522114&430806704415&78899184238\\
+12&96349355&515561896511&70353471918\\
+13&85815639&595448778546&58838976615\\
+14&78667711&664241383483&44421321106\\
+15&74129565&716160577112&30462865791\\
+16&71741310&746637295669&5959622577
+\end{tabular}
+\end{center}
+Direct rational arithmetic gives $\sum c_j=37/40$,
+$0<a_{16}<\cdots<a_1<b_1<\cdots<b_{16}<2$, and
+$b_j-a_j>1/225$.  With $m=(a+b)/2$, the substitution
+$u=m+(b-a)\cos\theta/2$ gives
+\begin{equation}
+ U_{\omega_{[a,b]}}(t)=
+ \begin{cases}
+ \log((b-a)/4),&a\le t\le b,\\
+ \displaystyle\log\frac{|t-m|+\sqrt{(t-a)(t-b)}}2,&t\notin[a,b].
+ \end{cases}
+ \label{appa-arcsine}
+\end{equation}
+For the exterior branch, differentiate the defining integral and
+normalize by $U(t)-\log|t|\to0$; on the interval, the sine-product
+identity for $\cos\phi-\cos\theta$ gives the constant.  This proves
+the algebra of (A.1).
+
+Put $S_j=\sum_{i\le j}c_i$, $S_0=0$.  An outer interval's potential
+is constant on every inner interval, so the self and cross terms combine
+as $c_j^2+2c_jS_{j-1}=S_j^2-S_{j-1}^2$.  Hence (A.2) becomes
+\begin{equation}
+ I(\rho)=\sum_{j=1}^{16}(S_j^2-S_{j-1}^2)
+                          \log\frac{b_j-a_j}{4}.
+ \label{appa-energy}
+\end{equation}
+
+\subsection{Elementary enclosures}
+
+For $1\le x\le2$, $z=(x-1)/(x+1)$, the logarithmic series gives (A.3):
+\[
+ 0\le\log x-2\sum_{k=0}^{m-1}\frac{z^{2k+1}}{2k+1}
+       \le\frac{2z^{2m+1}}{(2m+1)(1-z^2)}.
+\]
+Reduce a general argument as $x=2^er$, $1\le r<2$.  For
+$0\le z\le1/2$, the alternating series gives (A.4):
+\[
+ \left|\arctan z-\sum_{k=0}^{m-1}
+                  \frac{(-1)^kz^{2k+1}}{2k+1}\right|
+       \le\frac{z^{2m+1}}{2m+1}.
+\]
+Use $\arctan x=\pi/2-\arctan(1/x)$ for $x>1$ and
+$\arctan x=2\arctan(x/(1+\sqrt{1+x^2}))$ for $0\le x\le1$;
+enclose $\pi$ through $16\arctan(1/5)-4\arctan(1/239)$.
+The source chooses $m=64$ for logarithms, $m=80$ for arctangents,
+and adjacent dyadic multiples of $2^{-144}$ for square roots.
+The reduced series errors are below $2^{-144}$; interval arithmetic
+must also propagate the rounding errors through each expression.
+
+\subsection{The potential inequality on the half-line}
+
+Integrating the field in \eqref{s6-field} gives (A.5):
+\begin{align}
+ V(t)&=\log(1+t)-6\alpha\log(t+\alpha^2)-2+12\alpha\notag\\
+ &\quad+2\sqrt t\left(\pi+\arctan\frac1{\sqrt t}
+                                -6\arctan\frac\alpha{\sqrt t}\right),
+ \label{appa-field-explicit}
+\end{align}
+with $V(0)=-12\alpha\log\alpha-2+12\alpha$.
+For $\Phi(y)=V(y^2)$,
+\[
+ \Phi'(y)=2\left(\pi+\arctan(1/y)-6\arctan(\alpha/y)\right),
+ \qquad \Phi''(y)=-\frac2{1+y^2}+\frac{12\alpha}{\alpha^2+y^2}.
+\]
+The latter changes sign at $y^2=711/880$, while
+$\Phi'(0+)=-3\pi$ and $\Phi'(\infty)=2\pi$.  Thus $V$ has one minimum.
+The source encloses it between
+$q_-=59205077/10^{10}$ and $q_+=59205079/10^{10}$ by opposite
+signs of $\Phi'(\sqrt{q_\pm})$.
+On this small interval a lower bound, as in (A.6), is
+\begin{align*}
+ V_*={}&\log(1+q_-)-6\alpha\log(q_++\alpha^2)-2+12\alpha\\
+ &+2\sqrt{q_+}\left(\pi+\arctan\frac1{\sqrt{q_+}}
+                              -6\arctan\frac\alpha{\sqrt{q_-}}\right).
+\end{align*}
+The parenthesis is negative, which determines the direction of the
+square-root bound.  Nesting makes $U_\rho$ nonincreasing up to $a_1$,
+constant on $[a_1,b_1]$, and nondecreasing thereafter.  Thus (A.7) is
+\[
+ B(l,r)=2\max\{U_\rho(l),U_\rho(r)\}
+ -\begin{cases}V(r),&r\le q_-,\\V(l),&l\ge q_+,\\V_*,&\text{otherwise},\end{cases}
+ \qquad 2U_\rho(t)-V(t)\le B(l,r)\quad(l\le t\le r).
+\]
+For completeness, the partition rule (A.8) is
+\[
+ A_0=0,\quad A_j=a_{17-j}\ (1\le j\le16),\quad
+ A_{17}=q_-,\quad A_{18}=q_+,\quad
+ A_{18+j}=b_j\ (1\le j\le16),\quad A_{35}=2,
+\]
+where a source Table~2 row $(j,d,k)$ specifies
+\[
+ \left[A_j+(A_{j+1}-A_j)\frac{k}{2^d},\quad
+       A_j+(A_{j+1}-A_j)\frac{k+1}{2^d}\right].
+\]
+Use exactly the row list in source Table~2, pp.~24--25.  Its claimed
+rational certificate (A.9) is
+\[
+ B(l,r)<-\frac{6645002}{10^6}<-\frac{1329}{200}
+\]
+on every listed interval.  The tail estimate \eqref{s6-tail} treats
+$t\ge2$.  Because both $\rho$ and $V$ are unchanged, these are the same
+numerical inputs in the $\zeta(9)$ draft, not new checks.
+
+\subsection{Energy and the norm constant}
+
+Applying the stated logarithmic enclosures to \eqref{appa-energy} and
+$C_*$ gives the source input (A.10):
+\[
+ -\frac{2126593445148}{10^{12}}<I(\rho)
+              <-\frac{2126593445147}{10^{12}},\qquad
+ \frac{2653035990340}{10^{12}}<C_*
+              <\frac{2653035990341}{10^{12}}.
+\]
+Since $\lambda M_0=-49173/8000$, the directions of the bounds give
+\[
+ \lambda M_0-I(\rho)+C_*<-
+ \frac{1366995564511}{10^{12}}<-
+ \frac{2733991}{2000000}=U.
+\]
+Finally, (A.11) encloses the source's norm exponent
+\[
+ \kappa=\frac{2\pi}{\sqrt3}+\log\frac43+\frac9{20}\log18
+ +\frac{37}{40}\left(1+\log\frac{1600}{111}\right)
+ +\frac{37}{20}\log\frac{43+4\sqrt{114}}5
+\]
+by
+\[
+ \frac{2773171335773}{200000000000}<\kappa
+ <\frac{6932928339433}{500000000000}<\frac{6933}{500}.
+\]
+These rational enclosures remain source input.  The reason the same
+leading norm exponent is available for the fixed-shape analogue is that
+the lower bound from the $\ell=1$ term of $w_9$ changes powers and
+constants, whereas its exponential factor remains $e^{-2\pi y}$;
+the separate norm manipulation belongs to Appendix~C.

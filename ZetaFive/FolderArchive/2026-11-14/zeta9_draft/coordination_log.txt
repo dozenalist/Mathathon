@@ -1,0 +1,51 @@
+COORDINATION RECORD
+14 November 2026
+
+MODEL ASSIGNMENTS (all GPT-6 Astra, reasoning xhigh, fresh context)
+z9_s2: Section 2
+z9_s3: Section 3
+z9_s4: Section 4
+z9_s5: Section 5 and Appendix B
+z9_s6: Section 6 and Appendix A
+z9_s7_appc: Section 7 and Appendix C
+Root: introduction, editorial contract, interfaces, sources, assembly, layout.
+
+CHOICES SHARED BEFORE DRAFTING
+Retain D_N^6, K=40n, N=3n, h=37n, and S_K. Change the functional
+consistently to order nine. Do not claim irrationality. Distinguish
+derived formulas, formal transplants, conditional implications, and
+the blocked final conclusion. Preserve source equation locators.
+
+INTERFACES RECONCILED
+- Seventh derivative / 8! and the pole constant -1/8.
+- Distribution p^-8, x^9 pullback, zero-class contribution +1.
+- Small-prime loss 10h plus h*v_p(40320).
+- Outer moment cutoff e<4p-5 and correction rank max(0,K+4N-4p+4).
+- Explicit outer class costs and inner shift R9=R5+4lambda*x.
+- A9,M=A5,M+116581/57600, with positive combined coefficient.
+- Real bound U K^2+28K log K+200K, using the source's Appendix A input.
+- Appendix C rho=6933/500=13.866 and changed K^10 scaling.
+- Arithmetic remainder corrected to o_M(K^2), the strength actually
+  supplied by the prime-sum limit. No O_M(K log K) rate is claimed there.
+- Residue dummy index clarified; source locator C.1-C.8 confirmed.
+
+CHECKS
+Section 4 agent enumerated outer formulas at 278 admissible (K,p) pairs.
+Section 5 preserved dependency-free exact BigInt rational code and output,
+including 143 finite-inner intervals and the revised outer table.
+The prior finite K=40,N=3,p=29 check gives v_p Delta9(0)=-104;
+its script/result are preserved in the source bundle as prior work.
+These checks are examples and arithmetic checks, not a global proof.
+
+LIMITS KEPT VISIBLE
+The inner analytic application remains a formal/conditional transplant.
+The original 684-interval real certificate was not independently rerun.
+The positive combined upper bound is neither a lower bound on the values
+nor a proof that every possible normalization fails. No estimate for the
+size of the content is claimed that could restore negative decay.
+
+LAYOUT REVIEW
+Compiled with Tectonic 0.17.0. All pages rendered with Poppler; contact
+sheets and selected full-size pages visually inspected. Reference and
+label checks are recorded in build/document_check.json. The source
+bundle omits the large tool executable/cache and preview images.

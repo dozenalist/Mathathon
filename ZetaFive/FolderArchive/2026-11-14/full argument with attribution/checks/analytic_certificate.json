@@ -1,0 +1,63 @@
+{
+  "status": "PASS: all comparisons performed with exact integer arithmetic",
+  "bits": 112,
+  "log_terms": 48,
+  "atan_terms": 64,
+  "data_source": "Fauzan, Appendix A, Tables 1-2; transcription from mo271/Zeta5/scripts/lemma61.py",
+  "source_revision": "7fe736760f4b96bfdb4334b68e3b3124ecbe10b0",
+  "data_sha256": "601e1419622167af697a4b67099c80f01ac59180fae6468517d36e2ffe8caa74",
+  "script_sha256": "a52ce48de9f27c9810fb2b9699d00df495783bf07685fc2bbd1f39b5fbf5da0b",
+  "partition_intervals": 684,
+  "partition_exactly_covers": "[0,2]",
+  "worst_interval_j_d_k": [
+    30,
+    6,
+    26
+  ],
+  "maximum_endpoint_bound_decimal_enclosure": [
+    "-6.645002689215588324",
+    "-6.645002689215588323"
+  ],
+  "maximum_endpoint_bound_exact_enclosure": [
+    "-17251413294084790384199880780056851/2596148429267413814265248164610048",
+    "-34502826588169580768399761560109315/5192296858534827628530496329220096"
+  ],
+  "target_potential_bound": "-6645002/1000000 < -1329/200",
+  "phi_derivative_q_minus": [
+    "-0.000000047420631305",
+    "-0.000000047420631304"
+  ],
+  "phi_derivative_q_plus": [
+    "0.000000051304860270",
+    "0.000000051304860271"
+  ],
+  "V_star": [
+    "0.913559526349733583",
+    "0.913559526349733584"
+  ],
+  "energy": [
+    "-2.126593445147050404",
+    "-2.126593445147050403"
+  ],
+  "C_star": [
+    "2.653035990340488661",
+    "2.653035990340488662"
+  ],
+  "quadratic_coefficient": [
+    "-1.366995564512460936",
+    "-1.366995564512460935"
+  ],
+  "quadratic_coefficient_exact": [
+    "-887230846906136776729071005737603/649037107316853453566312041152512",
+    "-3548923387624547106916284022950073/2596148429267413814265248164610048"
+  ],
+  "target_U": "-2733991/2000000",
+  "tail_at_2_with_half_sqrt": [
+    "-7.276302135402256068",
+    "-7.276302135402256067"
+  ],
+  "pi": [
+    "3.141592653589793238",
+    "3.141592653589793239"
+  ]
+}

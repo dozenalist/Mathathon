@@ -1,0 +1,259 @@
+\section{Rational approximation and coefficient height}
+\label{c-approximation}
+
+This appendix follows source Appendix~C, pp.~28--31, including all steps
+of its (C.1)--(C.8).  The matrix perturbation calculation survives the
+change of moment order.  We first derive its relative norm estimate,
+then show exactly where a negative completion budget would be required.
+Throughout, $K=40n$, $N=3n$, $h=37n$, $\alpha=3/40$, and $\lambda=37/40$.
+
+\subsection{The relative matrix norm}
+\label{c-relative-norm}
+
+Write $\xi=\zeta(9)$, $G=G_{9,K}(\xi)$, and
+$M_{9,K}=[X]G_{9,K}(X)$.  The positive Gram representation makes $G$
+positive definite.  Consequently the real symmetric matrix
+$B_K=G^{-1/2}M_{9,K}G^{-1/2}$ is defined.  Its Euclidean operator norm
+measures a change of $X$ relative to the size of the unperturbed matrix.
+The analogue of source (C.1) is
+\begin{equation}
+ \|B_K\|\leq e^{\rho K},\qquad
+ \rho=\frac{6933}{500}=13.866,
+ \quad K\in40\mathbb Z_{>0}\text{ sufficiently large}.
+ \label{c-norm-bound}
+\end{equation}
+The value of $\rho$ is the source's fraction $6933/500$; its decimal is
+$13.866$.
+
+\noindent\textbf{[Derived]} Let $q$ be a nonzero real polynomial of
+degree less than $h$, write $\mathbf q$ for its coefficient vector, and
+put $p(t)=q(K^2t)$.  For fixed $0<a<b$, retain just the $\ell=1$ term in
+the positive weight
+\[
+ w_9(y)=\frac{(2\pi)^8y^9}{20160}
+          \sum_{\ell\geq1}\ell^8e^{-2\pi\ell y}.
+\]
+With $y=K\sqrt t$, this term contributes
+$K^{10}(2\pi)^8t^4e^{-2\pi K\sqrt t}\,dt/40320$.
+On $[a,b]$ the scaled numerator is at least $a^{6N}$ and the scaled
+denominator at most $(1+b)^K$.  The analogue of source (C.2) is therefore
+\begin{equation}
+ \mathbf q^TG\mathbf q\geq
+ A_Kc_a e^{-F(a,b)K}\int_a^b p(t)^2\,dt,
+ \quad
+ \begin{aligned}
+ A_K&=K^{12N-2K+10},&
+ c_a&=\frac{(2\pi)^8a^4}{40320},\\
+ F(a,b)&=2\pi\sqrt b+\log(1+b)-6\alpha\log a.
+ \end{aligned}
+ \label{c-gram-lower}
+\end{equation}
+The extra four powers of $K$ relative to the source occur in both
+quadratic forms below, so they cancel from their ratio.
+Restricting the positive integral is useful even though it discards
+most of the measure: it controls the entire coefficient vector through
+the squared norm of $p$ on one fixed interval.  No cancellation enters
+this lower bound.  The later Legendre estimate converts that interval
+norm into control of the evaluations at the negative pole locations.
+
+Only pole terms contribute to $M_{9,K}$, since polynomial moments do
+not depend on $X$.  Cancel one factor $D_N$ from $D_N^6/D_K$ and take
+the residues at $-j^2$, $N<j\leq K$.  With $u_j=j/K$, source (C.3)
+becomes
+\begin{equation}
+ \begin{aligned}
+ \mathbf q^TM_{9,K}\mathbf q
+    &=A_K\sum_{j=N+1}^{K}r_jp(-u_j^2)^2,\\
+ r_j&=\frac{u_j^8\displaystyle\prod_{\ell=1}^{N}
+                      (u_\ell^2-u_j^2)^5}
+                 {\displaystyle\prod_{\substack{N<k\leq K\\k\ne j}}
+                      (u_k^2-u_j^2)}.
+ \end{aligned}
+ \label{c-residues}
+\end{equation}
+For clarity, before scaling the residue multiplier is
+$j^8D_N(-j^2)^5/\prod_{N<k\leq K,\,k\ne j}(k^2-j^2)$.
+Its power of $K$ is
+$8+10N-2(h-1)=12N-2K+10$, confirming the same $A_K$ as in the integral.
+The factor $u_j^8$ is the sole change in this scaled residue formula
+from the fourth power appearing in the source.
+The numerator has absolute value at most one.  For each denominator
+factor, $u_k+u_j\geq2\alpha$ and
+$|u_k-u_j|=|k-j|/K$.  Setting $m=h-1$ gives the analogue of source (C.4):
+\begin{equation}
+ \begin{aligned}
+ |r_j|&\leq
+ \frac{(K/(2\alpha))^{h-1}}{(j-N-1)!(K-j)!}
+ \leq\frac{(K/\alpha)^{h-1}}{(h-1)!}\\
+ &\leq\exp\{\lambda K(1-\log(\alpha\lambda))\}.
+ \end{aligned}
+ \label{c-residue-bound}
+\end{equation}
+The middle step uses $\binom m{j-N-1}\leq2^m$.  For the last step,
+$m!\geq(m/e)^m$ and the function $x\log(eK/(\alpha x))$ is increasing
+on $0<x\leq h$.
+
+Expand $p$ in the Legendre polynomials for $[a,b]$.  At $-1\leq t\leq0$
+their transformed argument has absolute value at most
+$Y=(2+a+b)/(b-a)$.  The source's Legendre bound $|P_j(s)|\leq R^j$,
+where $R=Y+\sqrt{Y^2-1}$, and Cauchy--Schwarz give
+\begin{equation}
+ \max_{-1\leq t\leq0}|p(t)|^2\leq
+ \frac{h^2R^{2h}}{b-a}\int_a^b p(t)^2\,dt,
+ \qquad Y=\frac{2+a+b}{b-a},\quad R=Y+\sqrt{Y^2-1}.
+ \label{c-legendre}
+\end{equation}
+Indeed, the squared norms are $(b-a)/(2j+1)$ and
+$\sum_{j=0}^{h-1}(2j+1)=h^2$.  This is exactly the step in source (C.5).
+There are $h$ residues, so \eqref{c-gram-lower}--\eqref{c-legendre} imply
+\begin{equation}
+ \begin{aligned}
+ \|B_K\|&=
+  \sup_{\mathbf q\ne0}
+  \frac{|\mathbf q^TM_{9,K}\mathbf q|}{\mathbf q^TG\mathbf q}
+  \leq\frac{h^3}{c_a(b-a)}e^{\kappa(a,b)K},\\
+ \kappa(a,b)&=F(a,b)+\lambda(1-\log(\alpha\lambda))+2\lambda\log R.
+ \end{aligned}
+ \label{c-kappa-bound}
+\end{equation}
+For the source choice $a=1/18$, $b=1/3$, we have $Y=43/5$ and
+$R=(43+4\sqrt{114})/5$.  Thus source (C.6) is unchanged:
+\begin{equation}
+ \begin{aligned}
+ \kappa={}&\frac{2\pi}{\sqrt3}+\log\frac43
+       +\frac9{20}\log18
+       +\frac{37}{40}\left(1+\log\frac{1600}{111}\right)
+       +\frac{37}{20}\log\frac{43+4\sqrt{114}}5\\
+   &\simeq13.865856678865<\frac{6933}{500}.
+ \end{aligned}
+ \label{c-kappa-value}
+\end{equation}
+\noindent\textbf{[Conditional]} Using the elementary enclosure from
+source Appendix~A for this strict numerical inequality, its positive
+margin absorbs $h^3/(c_a(b-a))$ for all sufficiently large $K$, proving
+\eqref{c-norm-bound}.  The exponent is unchanged; the threshold need
+not be the source's threshold.
+More precisely, the retained enclosure is
+$\kappa<6932928339433/500000000000<6933/500$ from source (A.11).
+Absorption uses only $\log(h^3/(c_a(b-a)))=O(\log K)$, whereas the
+positive gap between the two exponents is multiplied by $K$.
+
+\subsection{Perturbation and the conditional approximation statement}
+\label{c-approximation-conditional}
+
+Fix a cutoff $M$ and abbreviate $Q_K=Q_{9,K,M}$.  Affine dependence
+$G_{9,K}(\xi+\delta)=G+\delta M_{9,K}$ gives the exact identity
+\begin{equation}
+ Q_K(\xi+\delta)=Q_K(\xi)\det(I+\delta B_K)
+      =Q_K(\xi)\prod_{j=1}^{h}(1+\delta\beta_j),
+ \label{c-determinant-perturbation}
+\end{equation}
+where $\beta_j$ are the real eigenvalues of $B_K$.  If
+$|\delta|\|B_K\|<1$, every factor is positive.  Moreover
+\[
+ \det(I+\delta B_K)
+ \leq(1+|\delta|\|B_K\|)^h
+ \leq\exp\{h|\delta|\|B_K\|\}.
+\]
+This explains how a polynomial that is small at $\xi$ can be kept
+nonzero at a sufficiently close rational number.
+The scalar $m_{9,K,M}S_K$ cancels in this relative comparison; it is
+independent of $X$.  Thus the analytic radius of control comes from
+$B_K$, while the arithmetic normalization is needed later to turn the
+rational evaluation into an integer.  These are separate uses of the
+same determinant identity.
+
+\noindent\textbf{[Conditional]} To continue as in source (C.7), assume
+the additional input
+\begin{equation}
+ 0<Q_K(\xi)\leq e^{-\varepsilon K^2},\qquad \varepsilon>0,
+ \quad\text{for all sufficiently large allowed }K.
+ \label{c-negative-hypothesis}
+\end{equation}
+Choose constants $c>\lambda/\varepsilon$ and $\nu>\rho c$.  For a
+sufficiently large positive integer $b$, take
+$K=40\lceil c\log b/40\rceil$, so $c\log b\leq K<c\log b+40$.
+If $|a/b-\xi|\leq b^{-\nu}$, put $\delta=a/b-\xi$.  The relative norm
+bound gives
+\[
+ |\delta|\|B_K\|\leq e^{40\rho}b^{\rho c-\nu}=o(K^{-1}).
+\]
+The determinant in \eqref{c-determinant-perturbation} is consequently
+positive and at most two eventually, uniformly in $a$.  Integrality
+and degree $h$ would then force
+\begin{equation}
+ \begin{aligned}
+ 0<b^hQ_K(a/b)
+ &\leq2\exp\{\lambda K\log b-\varepsilon K^2\}\\
+ &\leq2\exp\{-(\varepsilon-\lambda/c)K^2\}<1,
+ \qquad b^hQ_K(a/b)\in\mathbb Z,
+ \end{aligned}
+ \label{c-rational-contradiction}
+\end{equation}
+an impossibility.  Under the stated hypotheses this excludes such
+approximations for every $\nu>\rho\lambda/\varepsilon$, after choosing
+$c$ between $\lambda/\varepsilon$ and $\nu/\rho$.
+
+\noindent\textbf{[Blocked conclusion]} Section~7 supplies
+$B_{9,100000}\simeq1.974551870160>0$, not the negative hypothesis
+\eqref{c-negative-hypothesis}.  The source's choices
+$\varepsilon=79/1600$, $c=75/4$, and $\nu=260$ therefore do not follow
+for this ninth-order construction.  The calculation above describes
+the consequence of a future negative budget, not an approximation
+bound obtained here.
+
+\subsection{Coefficient height and primitive normalization}
+\label{c-height-content}
+
+\noindent\textbf{[Derived]} For $Q\in\mathbb R[X]$, let $H(Q)$ be the
+largest absolute value of its coefficients.  Since
+$1<\xi<2$ and \eqref{c-determinant-perturbation} is a polynomial
+identity, the sum of the absolute coefficient values is bounded by
+\[
+ H(Q_K)\leq Q_K(\xi)
+       \prod_{j=1}^{h}\bigl(1+(1+|\xi|)|\beta_j|\bigr)
+ \leq Q_K(\xi)(1+3e^{\rho K})^h.
+\]
+\noindent\textbf{[Conditional]} With the arithmetic and real estimates
+already stated, this gives the analogue of source (C.8), without
+requiring any additional negative-budget assumption:
+\begin{equation}
+ \begin{aligned}
+ \log H(Q_{9,K,M})
+     &\leq(B_{9,M}+\lambda\rho)K^2+o_M(K^2),
+       &\lambda\rho&=\frac{256521}{20000}=12.82605,\\
+ \log H(Q_K)&\leq(\lambda\rho-\varepsilon)K^2+o(K^2)
+       &&\text{if \eqref{c-negative-hypothesis} holds}.
+ \end{aligned}
+ \label{c-height-bound}
+\end{equation}
+For $M=100000$ the coefficient in the first line is approximately
+$14.800601870160$.  Thus a height estimate remains available, although
+the source's height coefficient based on its negative margin is not
+transferred.
+
+For nonzero $A\in\mathbb Q[X]$, define $\operatorname{cont}_{\mathbb Q}(A)>0$
+so that $A/\operatorname{cont}_{\mathbb Q}(A)$ is an integer polynomial
+whose coefficients have greatest common divisor one.  Put
+\begin{equation}
+ P_K=\frac{\Delta_{9,K}}{\operatorname{cont}_{\mathbb Q}(\Delta_{9,K})},
+ \qquad Q_{9,K,M}=a_{K,M}P_K,\qquad a_{K,M}\in\mathbb Z_{>0}.
+ \label{c-primitive-normalization}
+\end{equation}
+The last assertion requires the integrality of $Q_{9,K,M}$ from
+Section~5.  To see it, the multiplier is initially a positive rational
+number.  A denominator in lowest terms would have to divide every
+coefficient of the primitive polynomial $P_K$, so that denominator is
+one.  Equivalently, a Bezout combination of its coefficients equals
+one and forces the multiplier to be integral.  Hence
+\begin{equation}
+ 0<P_K(\xi)=\frac{Q_{9,K,M}(\xi)}{a_{K,M}}
+       \leq Q_{9,K,M}(\xi),\qquad
+ H(P_K)=\frac{H(Q_{9,K,M})}{a_{K,M}}\leq H(Q_{9,K,M}).
+ \label{c-primitive-bounds}
+\end{equation}
+The primitive polynomial is independent of the cutoff $M$.  All
+available upper bounds descend to it, including any hypothetical
+small-value bound.  This removal of content does not itself produce a
+negative quadratic coefficient; no size estimate for $a_{K,M}$ has
+been obtained that would supply the missing decay.

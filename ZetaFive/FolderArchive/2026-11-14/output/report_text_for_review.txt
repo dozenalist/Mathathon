@@ -1,0 +1,341 @@
+Why the ζ(5) argumentdoes not directly prove ζ(7)
+
+Independent exploration of Aabir Fauzan’s September 2026 construction14 November 2026
+
+The positive determinant survives. The arithmetic estimate does not. A faithful ζ(7) version still gives rational polynomials, the expected degree, and a positive value at ζ(7). It even retains the same leading real-decay estimate. What changes is the cost of making every coefficient integral.
+
+There are two separate findings. First, an unchanged local denominator bound is demonstrably false: a concrete coefficient needs 22 more powers of 29 than that bound permits. Second, after repairing the estimates, the final upper bound has the wrong sign to finish the irrationality argument.
+
+The comparison that decides the proof
+
+Write F for the rational determinant after the paper’s factorial scaling, and multiply it by a positive rational number m to obtain an integer polynomial Q. The proof needs the decay of F to outweigh the growth of m:
+
+log Q(ζ(s)) = log m + log F(ζ(s)) ≤ (A + U)K2 + o(K2).
+
+At the paper’s cutoff M = 200 | ζ(5) | Transferred ζ(7)
+
+Real-decay coefficient U | −1.3669955000 | −1.3669955000
+
+Normalization bound A | 1.3495876977 | 2.3274522811
+
+Sum A + U | −0.0174078023 | +0.9604567811
+
+A negative sum proves that the positive integer-polynomial values tend to zero fast enough. A positive upper bound proves no such decay. It also does not prove that the actual values grow.
+
+What “the same argument” means here
+
+The main audit keeps K = 40n, N = 3n, h = 37n, the numerator DN6, and the paper’s factorial scaling. It replaces the entire ζ(5) functional by its correct ζ(7) analogue. A separate experiment tests DN8. The conclusion concerns these specific transfers; it is not an impossibility theorem for all Hankel-determinant approaches.
+
+Reading route: pages 2–4 follow the opening equations in order; pages 5–8 locate and quantify the failure; pages 9–10 explain the real bound and the attempted repair; page 11 records sources and verification.
+
+The opening equations, in order
+
+References such as (2.2) refer to Fauzan’s original 32-page PDF [F]. The statements about ζ(7) below are derived in this exploration.
+
+1. Parameters and elementary factors — (2.1), page 3
+
+K = 40n,  N = 3n,  h = K − N = 37n,α = N/K = 3/40,  λ = h/K = 37/40,Dm(t) = ∏j=1m(t + j2),  Hj(s) = ∑v=1j v−s.
+
+Works: retain the parameters and Dm. Replace H(5) by H(7). These choices define a concrete test, although the original numerical optimization need not be optimal for ζ(7).
+
+2. Polynomial moments — (2.2), page 3
+
+μ5(te) = (−1)eB2e+2(2e+3)(2e+4)(2e+5)/24,μ7(te) = (−1)eB2e+2∏r=37(2e+r)/720.
+
+Requires a real change: merely replacing the symbol ζ(5) by ζ(7) is insufficient. The moments change too. They remain rational. Here Bm denotes a Bernoulli number, with B1 = −1/2.
+
+Moment | μ₅ | μ₇
+
+1 | 5/12 | 7/12
+
+t | 7/24 | 7/10
+
+t² | 1/2 | 11/6
+
+3. Simple poles — (2.3), page 3
+
+μ5,X(1/(t+j2)) = j4(X−Hj(5)) − 1/4 + 1/(2j),μ7,X(1/(t+j2)) = j6(X−Hj(7)) − 1/6 + 1/(2j).
+
+Works after correction: polynomial division and simple partial fractions still define the functional uniquely. It is affine in X. There are no extra unknown ζ(3) or ζ(5) terms.
+
+The formulas are justified by the positive integral on the next page, using Euler’s even-zeta formula and the same integration-by-parts/Hermite mechanism as [F, Proposition 2.2]. See [D1–D2].
+
+The matrix, its degree, and positivity
+
+4. The matrix and scaling — (2.4)–(2.6), page 4
+
+G7,K(X)ij = μ7,X(DN(t)6ti+j/DK(t)),  0 ≤ i,j &lt; h,Δ7,K(X) = det G7,K(X),  F7,K = SKΔ7,K,SK = (K!)2h4h−1 / [(N!)12h∏i=1h−1((2i)!)2].
+
+Works: use the same matrix shape and scalar. The prime-dependent normalization m must be rebuilt; its original values are not automatically valid.
+
+5. Exact degree — (2.9), page 4
+
+After cancellation there are exactly h possible poles, at −j² for N &lt; j ≤ K. Their X-coefficients change from j⁴ to j⁶. The same Vandermonde calculation gives
+
+[Xh]Δ7,K = (−1)h(h−1)/2∏j=N+1Kj6DN(−j2)5 ≠ 0.
+
+Works: the degree is still h. The exponent 5 on DN comes from cancellation of DN6/DK; it does not become 7 just because the zeta argument changes.
+
+6. Positive integral — Proposition 2.2, page 5
+
+w7(y) = [(2π)6/360] y7∑ℓ≥1ℓ6e−2πℓy &gt; 0,μ7,ζ(7)(R) = ∫0∞R(y2)w7(y) dy.
+
+For monomials, integrate the exponential series term by term. The result is (2e+7)! ζ(2e+2)/[360(2π)2e+2], which is exactly the rational moment on page 2. For poles, six integrations by parts give a6ζ(7,a) − 1/(2a) − 1/6; at a = j this is the displayed pole formula. The boundary terms vanish: at zero each is O(y), and at infinity they decay exponentially.
+
+For any nonzero polynomial q of degree less than h, the integral of DN(y²)6q(y²)2w7(y)/DK(y²) is strictly positive. Thus G7,K(ζ(7)) is positive definite and Δ7,K(ζ(7)) &gt; 0. Nonvanishing is not the obstruction.
+
+A small successful example, then the first cost
+
+A determinant small enough to inspect
+
+Set K = 2, N = 0, h = 2 just to see the construction. Direct partial fractions give the symmetric matrix with entries
+
+G00 = −21X + 85/4,G01 = G10 = 85X − 257/3,G11 = −341X + 4127/12.
+
+Its determinant and one integer normalization are
+
+Δ(X) = −64X2 + (569/6)X − 4399/144,144Δ(X) = −9216X2 + 13656X − 4399.
+
+The positive-integral argument proves Δ(ζ(7)) &gt; 0. This example shows that the transfer is not empty. A single positive integer-polynomial value, however, supplies no irrationality proof. We need a whole sequence with sufficiently rapid decay. These small parameters are illustrative, outside the paper’s global asymptotic setup.
+
+7. Pullback to integer poles — (3.1)–(3.3), pages 5–6
+
+The substitution t = −x² turns poles at negative squares into integer poles. Let L(xk) = Bk. The original functional uses three derivatives; ζ(7) needs five:
+
+τ5(P) = L(P(3))/24,  τ7(P) = L(P(5))/720,μ7,X(R) = τ7,X(x7R(−x2)).
+
+On a simple pole, set τ7,X(1/(x−r)) = Hd(r)(7)−X, where d(r) = r for r ≥ 0 and d(r) = −r−1 otherwise. Reflection still changes the sign. The translation difference becomes g(6)(0)/720 instead of g(4)(0)/24.
+
+8. Distribution among residue classes — (3.7), page 7
+
+τ5,X(g) = p−4∑a=0p−1τ5,Yext(g(a+px)),τ7,X(g) = p−6∑a=0p−1τ7,Yext(g(a+px)).
+
+In the s-th formula, Y = psX + Cp,s; the constant Cp,s makes the identity hold at g(x) = 1/x.
+
+This is the first consequential arithmetic change: two extra derivatives require two extra powers of p in the denominator. At nonzero residue classes x7 is a p-adic unit, so it cannot pay back this loss. At the zero class its two extra powers of p do pay it back.
+
+An unchanged local lemma is actually false
+
+Here is a finite check that distinguishes a false transferred claim from a bound we merely failed to prove. For a rational number r, vp(r) counts numerator powers of p minus denominator powers. Thus v29(r) = −82 means that its reduced denominator contains exactly 2982. For a polynomial, vpG is the minimum over its coefficients.
+
+The local test
+
+K = 40,  N = 3,  h = 37,  p = 29.
+
+All hypotheses of the original outer-range lemma (4.9) hold: p ≥ 7, p ≤ K &lt; 3p, p² &gt; 2K, 2N &lt; p, and 5N ≤ 2p−2. The old formula (4.14) gives
+
+γ29out = −7(40−29) + 6·3 − 1 = −60.
+
+If that bound carried over unchanged, every coefficient of Δ7,40 would have 29-adic valuation at least −60. But exact arithmetic gives
+
+v29(Δ5,40(0)) = −60,v29(Δ7,40(0)) = −82.
+
+Evaluation at X = 0 extracts the constant coefficient. Consequently v29G(Δ7,40) ≤ −82 &lt; −60. The copied local estimate is false. This conclusion does not require guessing any asymptotic behavior.
+
+Prime p | Old bound | vₚ(Δ₅(0)) | vₚ(Δ₇(0))
+
+23 | −110 | −110 | −136
+
+29 | −60 | −60 | −82
+
+31 | −46 | −46 | −64
+
+37 | −4 | −4 | −10
+
+The scaling does not repair this: v29(SK) = 14, so the old prescription supplies 2946 while the new F constant coefficient needs 2968. Reusing that local prescription leaves 22 denominator powers of 29.
+
+How the check was verified
+
+The supplied script constructs each entry as an exact rational number using Bernoulli moments and partial fractions. It then computes the full rational determinant by Gaussian elimination and separately computes its valuation by modular elimination with tracked precision. The two algorithms agree for both functionals and all six primes.
+
+K = 40 is below the later global requirement K ≥ 200M². That does not invalidate this local counterexample: the tested lemma has the separate hypotheses (4.9), all checked above. No asymptotic claim is inferred from the example.
+
+Repairing the small and intermediate primes
+
+9. Completion and small primes — pages 6–9
+
+The analytic completion still works for large primes. Its coefficients lose at most one power of p, and the original degree restrictions remain sufficient. There is one small exception worth recording: the analogue of Cp ∈ p5ℤp is Cp,7 ∈ p7ℤp for p ≥ 11, but v7(C7,7) = 6. Treating 7 among the small primes handles this without an asymptotic cost.
+
+The integer-valued basis survives. Five derivatives and seventh-order harmonic denominators change the coarse bound (3.12) to
+
+vpG(F7,K) ≥ −8h⌊logp(5K)⌋ − h vp(720),
+
+in place of −6h⌊logp(5K)⌋ − h vp(24). The leading normalization cost over p ≤ K/M therefore changes from 6λ/M to 8λ/M. Fixed primes and higher prime powers contribute only o(K²).
+
+A simple pole already shows the mechanism. At j = p+1, Hj(s) contains the term 1/ps and j is a p-unit, so the pole’s constant coefficient has valuation −s. The change −5 to −7 is real. At j = p, the factor js−1 cancels all but one denominator power, independently of s.
+
+10. Intermediate primes — (4.2)–(4.8), pages 10–11
+
+For K/M &lt; p ≤ K/3, retain the paper’s basis, which prescribes zeros at residue classes. Let ℓA(a) count j ≤ A with j ≡ ±a (mod p), and νi(a) be the order of vanishing of row i at t = −a². The ordinary-source entry bound changes as follows:
+
+ζ(5): νi + νj + 6ℓN − ℓK − 4,ζ(7): νi + νj + 6ℓN − ℓK − 6.
+
+The basis is still unimodular: changing basis introduces no p-denominator. Its ordinary row weights each decrease by 1, so the determinant bound decreases by 2 per ordinary row. The reserved zero block has only OM(1) rows, while the full matrix has h = λK rows.
+
+γ7,pin = γ5,pin − 2h + OM(1),Γ7(x) = Γ5(x) − 2λx,  x = K/p.
+
+This gives an additional normalization coefficient 2λ(1/3−1/M). The small-prime increase contributes 2λ/M, so their sum is 2λ/3 = 37/60. Moving the cutoff does not remove this combined loss.
+
+The formula concerns the explicit bounds produced by this basis. It is not a claim that the determinant’s true coefficient content has exactly that size.
+
+The outer primes include a genuine improvement
+
+11. Polynomial moments — (4.10), pages 11–12
+
+The higher-order functional has five consecutive factors in its polynomial moment, rather than three. These cancel more Bernoulli denominators. For p ≥ 11, the guaranteed p-integral range improves from e &lt; 2p−3 to e &lt; 3p−4.
+
+Why: if 2e+2 = m(p−1), with 1 ≤ m ≤ 5, one of 2e+3, …, 2e+7 is a multiple of p. It cancels the possible denominator supplied by B2e+2. This is the von Staudt–Clausen mechanism [D4].
+
+r5,p = max(0, K+4N−2p+2),r7,p = max(0, K+4N−3p+3).
+
+These are rank bounds for the nonintegral polynomial correction. The smaller ζ(7) rank helps. Any explanation that counts only worse harmonic denominators misses this compensation.
+
+12. Pole-class weights — (4.11)–(4.14), pages 12–13
+
+Let ℓ count the original poles in an ordinary class before cancellation, and δ = 1 if a pole was removed by DN, otherwise 0. There are ℓ−δ remaining poles. For the low-index rows i &lt; ℓ−2, the repaired weights are
+
+w7,a,i = min(0, i+3δ−(ℓ+6)/2).
+
+The higher-index rows retain weight 0. Their cancellation still works because seventh powers have the same odd-exponent reflection congruence as fifth powers. For a removed class, the total denominator cost becomes:
+
+Number of poles ℓ | 2 | 3 | 4 | 5 | 6
+
+ζ(5) cost | 0 | 1 | 2 | 4 | 6
+
+ζ(7) cost | 0 | 3 | 6 | 9 | 12
+
+ζ(7) zero weights | 1 | 1 | 1 | 1 | 2
+
+An unremoved class costs 9(ℓ−2), in place of 7(ℓ−2). The zero-class costs remain 1 or 4. Using the unchanged rank lemma 4.2 with the improved r7,p accounts for both effects.
+
+Exact piecewise integration of the resulting outer-prime cost gives an increase of 1387/3840 = 0.3611979167. The scalar SK is unchanged, so its contribution cancels in this comparison. The formulas and rational integration are supplied in arithmetic_notes.txt and arithmetic_costs.py.
+
+The final inequality loses its negative sign
+
+The prime number theorem converts local valuation costs into K²-scale coefficients, just as in [F, Section 5]. The repaired estimates give the following additional cost:
+
+Prime range | Added coefficient
+
+Small: p ≤ K/M | 2λ/M
+
+Intermediate: K/M &lt; p ≤ K/3 | 2λ(1/3−1/M)
+
+Outer: p &gt; K/3 | 1387/3840
+
+Total | 751/768 = 0.9778645833
+
+A7,M = A5,M + 751/768.
+
+Here A5,M is the paper’s explicit upper bound, not the unknown minimal normalization cost. Its exact formula is
+
+A5,M = A* + 7λ/M − (2923/240−1/4)/M2 + 32/M3,A* = 9928298118277006344769 / 7535670527041937280000,U = −2733991/2000000.
+
+For M = 200 the original proof has A5,200 + U = −0.0174078022583. Our repaired transfer has
+
+A7,200 + U = +0.9604567810750.
+
+Even the formal limit M → ∞ leaves A* + U + 751/768 = +0.9283760102417. The displayed formula has A5,M &gt; A* for every allowed M ≥ 40. Thus changing the fixed cutoff alone cannot rescue this certificate. This compares explicit constants; it does not interchange the K and M limits.
+
+Why that sign matters
+
+If ζ(7) = a/b and QK has integer coefficients and degree h, then bhQK(a/b) is an integer. Positivity makes it nonzero. To obtain a contradiction, the proof needs its value to tend to zero:
+
+0 &lt; bhQK(a/b) ≤ exp[h log b − cK2 + o(K2)] → 0.
+
+The linear term h log b cannot compete with negative quadratic decay. But the transferred estimate supplies no c &gt; 0. The final integer contradiction therefore cannot be drawn.
+
+Logical boundary: a positive upper bound is inconclusive. It does not show that QK(ζ(7)) fails to decay, and it does not rule out stronger bounds or a different construction.
+
+Why the real-decay estimate still works
+
+This part is useful because it identifies what does not break. With the same DN6/DK, Andréief’s identity still expresses the determinant as a positive multiple integral:
+
+Δ7,K(ζ(7)) = (1/h!) ∫ ∏i&lt;j(yi2−yj2)2         × ∏i[DN(yi2)6/DK(yi2)]w7(yi) dyi.
+
+The only new ingredient is the weight. Its exponential tail is still e−2πy; the power of y changes from 5 to 7. An explicit bound is
+
+w7(y) ≤ 219(1+y)7e−2πy.
+
+For example, this follows from ∑ℓ6qℓ = q(1+57q+302q²+302q³+57q⁴+q⁵)/(1−q)7, together with 1−e−u ≥ u/(1+u).
+
+The leading field is unchanged
+
+After yi = K√ti, the same K²-scale logarithmic-energy problem appears:
+
+V(t) = 2π√t + ∫01log(t+u²) du − 6∫0αlog(t+u²) du.
+
+The squared Vandermonde rewards separation between the t-points, while V penalizes their locations. A comparison measure ρ bounds this competition. Its potential is Uρ(t) = ∫log|t−u| dρ(u), and its energy is I(ρ) = ∫Uρ(t) dρ(t).
+
+The additional polynomial weight contributes only O(K log K), below the K² scale. The original comparison measure and energy inequality therefore apply without changing V or U. Keeping the constants explicit, the ζ(7) version gives
+
+0 &lt; F7,K(ζ(7)),log F7,K(ζ(7)) ≤ UK2 + 26K log K + 200K.
+
+The original bound (6.16) has 24K log K instead of 26K log K. One can check the remaining integral directly: ∫0∞t−1/2(1+√t)7e−√tdt = 27400.
+
+Thus the analytic part supplies essentially the same amount of decay, while the arithmetic part asks it to cover a substantially larger cost. The underlying issue is the mismatch between these two changes.
+
+The original rigorous comparison-measure certificate in [F, Lemma 6.1 and Appendix A] is used as an established input here. This audit does not claim to have independently rechecked all 684 interval enclosures in that appendix.
+
+A separate rational interval check sharpens the diagnosis: even exact finite integration of the same local cost and a perfect potential bound for this same measure leave the final certificate coefficient above 0.9. Thus the failure cannot be repaired merely by tightening the old numerical enclosures. See experiments/main_measure_certificate.py.
+
+A further attempted repair and its limits
+
+Adding two more numerator factors
+
+A natural response to the extra denominator loss is to replace DN6 by DN8. I tested this separately, keeping α = 3/40 and λ = 37/40. It changes the construction, so the previous real bound cannot simply be copied.
+
+This repair helps the arithmetic. At a removed pole class, the additional zeros restore the original ζ(5) row-weight table. But unremoved classes still cost more, and the scalar normalization changes from (N!)12h to (N!)16h in the denominator.
+
+V8(t) = V6(t) − 2∫0αlog(t+u²) du,C8 − C6 = 4αλ(1−log α) ≈ 0.9962991384.
+
+The new arithmetic coefficient at M = 200 is A8,200 = 1.723096570942415… . This is an exact rational integral, evaluated over 1,508 intervals. A numerical potential search suggested failure with the old comparison measure ρ. A subsequent interval calculation certifies that limited conclusion using just one point.
+
+One point is enough to reject this measure and cost
+
+Any valid potential upper bound M8 for the original measure must satisfy M8 ≥ 2Uρ(3/4) − V8(3/4). Substituting this lower requirement into the final coefficient gives
+
+A8,200 + λM8 − I(ρ) + C8≥ A8,200 + λ[2Uρ(3/4)−V8(3/4)] − I(ρ) + C8&gt; 1.3.
+
+The value on the second line is enclosed between 1.305909182511730956 and 1.305909182511731277. The supplied certificate uses rational intervals, integer square roots, and logarithm/arctangent series with explicit remainders. Thus improving the potential search alone cannot make this particular measure-and-arithmetic certificate succeed.
+
+There is also an exact tradeoff: passing from DN6 to DN8 multiplies the normalized positive integrand by ∏i[DN(yi²)/(N!)²]2 &gt; 1. Thus F itself becomes larger, even before estimating it. More numerator zeros help divisibility while increasing the real value.
+
+This rules out the specified DN8 certificate with the old measure, not every DN8 construction. Other measures, parameters, or stronger arithmetic bounds remain untested.
+
+Sources, reproducibility, and scope
+
+Source equation numbers and page numbers throughout refer to the version listed below. No previous chat analysis was used. The source paper was identified from the task context because the workspace initially contained no manuscript.
+
+Primary mathematical sources
+
+[F] Aabir Fauzan, ζ(5) is irrational, 17 September 2026, version 1, 32 pages. Zenodo record and PDF. Main audit: Sections 2–7; Appendix A supplies the existing energy certificate; Appendix B supplies exact constants. Appendix C concerns the additional irrationality-exponent result and is not needed here.
+
+[D1] NIST DLMF, 25.6.2, Euler’s formula for even zeta values. [D2] 25.11.29, Hermite’s integral for Hurwitz zeta. These explain the rational moments and the simple-pole integral.
+
+[D3] NIST DLMF, 24.4.1, 24.4.3, and 24.4.18, Bernoulli difference, reflection, and multiplication identities. [D4] 24.10(i), von Staudt–Clausen. These support the local distribution and denominator arguments.
+
+Background sources consulted
+
+The domino14 Lean formalization (README and definition/functional files) and the Archive of Formal Proofs entry helped identify and cross-check the construction. Their reported verification status is not a substitute for the ζ(7) derivations. No Lean or Isabelle build was run. Web sources were accessed 14 November 2026.
+
+Files accompanying the report
+
+File | Purpose
+
+sources/Fauzan_2026_zeta5.pdf | Primary manuscript; hash and URLs in source_ledger.json.
+
+experiments/exact_checks.py<br/>and .json | Exact matrices and two-method determinant checks.
+
+arithmetic_notes.txt;<br/>algebra_notes.txt | Detailed derivations and source equation references.
+
+arithmetic_costs.py;<br/>arithmetic_exact_inner.py | Exact outer and inner cost integrals.
+
+arithmetic_variant_notes.txt<br/>and arithmetic_variant_results.json | D⁸ arithmetic derivation and exact constants.
+
+experiments/single_point_certificate.py;<br/>experiments/main_measure_certificate.py | Rational interval checks for the specified D⁸ and D⁶ certificates.
+
+Run python experiments/exact_checks.py for the finite counterexample, python arithmetic_costs.py for the main cost comparison, and python arithmetic_exact_inner.py followed by python experiments/single_point_certificate.py for the D⁸ check. These use standard-library Python. The PDF source is build_report.py.
+
+Verification record
+
+Identities were checked on exact examples; outer weights on 1,975 parameter pairs. The determinant used two exact methods. Exact integration reproduces [F, (5.18)]. The initial potential search is exploratory; the final single-point D⁸ rejection uses rigorous rational intervals.

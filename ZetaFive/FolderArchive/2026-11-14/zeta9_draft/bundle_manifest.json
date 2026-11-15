@@ -1,0 +1,134 @@
+{
+  "zeta9_formal_analogue.pdf": {
+    "bytes": 234935,
+    "sha256": "4dee692c837924f6537e9db488a53ea5de9e4647568f5dada837668f2c2c04db"
+  },
+  "zeta9_formal_analogue.tex": {
+    "bytes": 2857,
+    "sha256": "e01d3fb7f000494999ea97f4cdd59b6d29e43198e15872d66800048544d8edda"
+  },
+  "README.txt": {
+    "bytes": 2460,
+    "sha256": "3de20e4cdba73efbb8ca32556311eebbc0b31e13a59df4af843dcf8583c58e0d"
+  },
+  "editorial_contract.txt": {
+    "bytes": 3390,
+    "sha256": "53fe999f88d40e0b94c69eeb35ac1a699157f26bb3b135eaaad49acb3276a5ec"
+  },
+  "coordination_log.txt": {
+    "bytes": 2436,
+    "sha256": "9b28a8f79d8808f953939b5f93419fb13703afe51eb6fdc7935722cac4519017"
+  },
+  "source_ledger.json": {
+    "bytes": 3016,
+    "sha256": "3d97d18b4999bb7a8b0709e5b40bc8a60a06f772e58a85149d1a246f4f18f095"
+  },
+  "sources/Fauzan_2026_zeta5.pdf": {
+    "bytes": 476337,
+    "sha256": "a42c05ccc46b9a7c36428913453c4617202c59109713ba20f464ab9ec640d0da"
+  },
+  "sources/Fauzan_2026_zeta5.txt": {
+    "bytes": 61982,
+    "sha256": "9d9732161cdd1bc94f6c6858843fb17977b297d6486dfb2853548efb4857222c"
+  },
+  "sources/original_exploration_source_ledger.json": {
+    "bytes": 3761,
+    "sha256": "72ed5ac766528e5b052885ec588c9fffa162e29b66600b8645498db6a6e9631f"
+  },
+  "prior_checks/exact_checks.py": {
+    "bytes": 10092,
+    "sha256": "0ff63fb4ff049b6a0ee46ff4868689faf4ce6e6d588fd7620f2783b7b1d72691"
+  },
+  "prior_checks/zeta9_local_check.json": {
+    "bytes": 547,
+    "sha256": "3982541359e0d6b7e8d3d6427e01671b85a883e7e3af63916981c97b5a3bf90d"
+  },
+  "prior_checks/zeta9_parity_notes.txt": {
+    "bytes": 1878,
+    "sha256": "d407a51d8bf11551d9a28977574fb43eecf5bd294e9838ee667374d66f6e79b1"
+  },
+  "validation/document_check.json": {
+    "bytes": 9116,
+    "sha256": "7a13b5690960a364382894dbe5c169fc7f0549606ceeb91aadde01f90547bb32"
+  },
+  "validation/compile.log": {
+    "bytes": 13673,
+    "sha256": "29f1c3e41f76a93e8d5179c97a3a8229cacab3ab9a80a3f516448485d2306733"
+  },
+  "checks/section5_exact.mjs": {
+    "bytes": 6144,
+    "sha256": "2743eaf065322b9c9e8aafb1a64781b6816121b5b2c289e66db5a3c8a1d59356"
+  },
+  "checks/section5_exact_results.json": {
+    "bytes": 2095,
+    "sha256": "5ebce4d1633ca1e6ccaaa7835858db4e6b4dfeb97aaedcdbe14df5e393284f59"
+  },
+  "parts/01_introduction.tex": {
+    "bytes": 5893,
+    "sha256": "e37aa353bea637b90d720d0089adf6bc891eb65616ea42a968cfac5d0add6f06"
+  },
+  "parts/02_construction.tex": {
+    "bytes": 10169,
+    "sha256": "95412a0e1a170c90f4ffec9972ba6984b84307ebc2ee4bad0db3955477232c39"
+  },
+  "parts/02_handoff.txt": {
+    "bytes": 1954,
+    "sha256": "6608918681387b51c2374de80187f5c6202007abacf6632a94bcd9dcdc8aea53"
+  },
+  "parts/03_functional.tex": {
+    "bytes": 8801,
+    "sha256": "5b3eef76b8a29ad421d478cd70055e4a3cd2bbe088d7c7bccb61f6b5cddc868e"
+  },
+  "parts/03_handoff.txt": {
+    "bytes": 1720,
+    "sha256": "ef609cf8bbdcae9a4796aa85d83576bd9e217e4f7ce9205107de476b4d5ac34c"
+  },
+  "parts/04_handoff.txt": {
+    "bytes": 2933,
+    "sha256": "d82ce72cc7f26ca54521db848bd34db342a75e5514e92b9596b99f2d2d098cb3"
+  },
+  "parts/04_local_determinant.tex": {
+    "bytes": 10693,
+    "sha256": "f1848f001103ce1356086737be0f2da46b23411a177a0d7c39b0c141c14b99e9"
+  },
+  "parts/05_handoff.txt": {
+    "bytes": 2949,
+    "sha256": "0f4b40a296a99e85d4c6defdc535136eb1d41f3d753c3ae2b97344d88b7bab25"
+  },
+  "parts/05_normalization.tex": {
+    "bytes": 8418,
+    "sha256": "314cd453c8ff54c3649e9c4167fe4491c21f9c6ada6732b105c43adca92d3c63"
+  },
+  "parts/06_handoff.txt": {
+    "bytes": 2383,
+    "sha256": "6e4cfe0cb1b9e286d291952f2dc7e3c5b5968d9fd55bd2f7909f245875fe000c"
+  },
+  "parts/06_real_determinant.tex": {
+    "bytes": 7395,
+    "sha256": "789b291caf6fe03e0f0dc6a3b6931d02f9f3c41e8abda9226d5d97663923f7fc"
+  },
+  "parts/07_completion.tex": {
+    "bytes": 4729,
+    "sha256": "51759a9c88c1d4f2bf098ea6e9425da95bace529c67a17d81cce97424f4f8ba1"
+  },
+  "parts/07_handoff.txt": {
+    "bytes": 3081,
+    "sha256": "286ab794b06699bd71225f5fadadae0d906672f9e52b0a6084f9215a78df6be3"
+  },
+  "parts/A_measure.tex": {
+    "bytes": 6425,
+    "sha256": "cefc1332d203409f2b898b64f739815a2e0704f2e9dae5e404502131297d6556"
+  },
+  "parts/B_arithmetic_integrals.tex": {
+    "bytes": 4692,
+    "sha256": "25d2987fb5ea00ad4525121c2f9f0a2f6e4c544721593c7e864485991627d2cf"
+  },
+  "parts/C_approximation.tex": {
+    "bytes": 10819,
+    "sha256": "58ab31169ea1427f23dc7714aa4a2b3c0c198e06b151692fa0b87df0be5e9107"
+  },
+  "parts/sources_and_scope.tex": {
+    "bytes": 3866,
+    "sha256": "af4c7eb941110e634721d2920f7b5a1204d8f52b5e4786f3f2d4bf56e3716a34"
+  }
+}

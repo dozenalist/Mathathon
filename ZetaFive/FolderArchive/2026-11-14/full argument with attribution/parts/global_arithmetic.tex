@@ -1,0 +1,569 @@
+\section{From local divisibility to a global arithmetic bound}
+\label{growth:section}
+
+The preceding section controls each prime separately. We now add those
+contributions and show that making the coefficients integral costs less
+than the real decay can afford. This is Fauzan's normalization strategy,
+with the revised local estimates and cutoff used in Firsching's
+formalization. In particular, the outer range uses the full rank loss;
+we do not discard the correction discussed in Lai's write-up.
+\cite[Section 5]{fauzan}
+\cite[\texttt{Norm.lean}, \texttt{Growth.lean}]{firsching}
+
+Throughout this section,
+\[
+ K=40n,\qquad N=3n,\qquad h=37n,\qquad
+ \alpha=\frac3{40},\qquad \lambda=\frac{37}{40},\qquad M=400.
+\]
+The cutoff \(M\) is fixed while \(n\) tends to infinity. This matters:
+an error bounded in terms of \(M\) is independent of \(n\).
+
+The profiles below summarize the local valuation bounds. There are two
+passages from sums to integrals: averaging residue classes \(z=c/p\),
+then summing the resulting costs over primes \(p\). The variable
+\(x=K/p\) keeps track of the number of poles in each class.
+
+\subsection{The multiplier and the primes that occur}
+
+Recall that \(F_K=S_K\Delta_K\), where
+\[
+ S_K=\frac{(K!)^{2h}4^{h-1}}
+ {(N!)^{12h}\prod_{i=1}^{h-1}((2i)!)^2}.
+\]
+Write \(v_p^G(F_K)\) for the minimum valuation of its nonzero
+coefficients. For all sufficiently large \(n\), define the following
+integer lower bound for \(v_p^G(F_K)\):
+\begin{equation}\label{growth:Lp}
+ L_p=
+ \begin{cases}
+ -6h\lfloor\log_p(5K)\rfloor-hv_p(24),&p\le K/400,\\
+ v_p(S_K)+\lfloor 2W_p^{\rm in}\rfloor,&K/400<p\le K/3,\\
+ v_p(S_K)+\lfloor W_p^{\rm out}\rfloor,&K/3<p\le 2h.
+ \end{cases}
+\end{equation}
+Here \(W_p^{\rm in}\) is the sum of the capped inner weights constructed
+in the preceding section, and \(W_p^{\rm out}\) is twice the sum of the
+outer weights minus the full rank loss. These are precisely the
+quantities denoted \texttt{WI} and \texttt{WO} in
+\cite[\texttt{Norm.lean}]{firsching}. The local results give
+\[
+ v_p^G(F_K)\ge L_p.
+\]
+The hypotheses of those results hold uniformly in the last two ranges
+once \(n\) is sufficiently large. Indeed \(p>K/400=n/10\), so
+\(p^2>n^2/100>104n+6\) for \(n\ge12001\). This implies the pole-separation
+and degree conditions; it also implies \(p\ge7\). The bounded reserve of
+rows in the zero class fits into \(h=37n\).
+
+No prime larger than \(2h\) is needed. At such a prime all factorial
+arguments in \(S_K\) are smaller than \(p\), so \(v_p(S_K)=0\).
+Every pole index \(j\le K\) is also smaller than \(p\). In the outer
+local bound there are therefore no large-pole rows, every outer weight
+is zero, and the rank loss is zero. Consequently
+\begin{equation}\label{growth:big}
+ v_p^G(F_K)\ge0\qquad(p>2h).
+\end{equation}
+This is the argument recorded as \texttt{GV\_F\_big} in
+\cite[\texttt{Norm.lean}]{firsching}.
+
+Set
+\begin{equation}\label{growth:normalizer}
+ m_K=\prod_{\substack{p\le2h\\p\ {\rm prime}}}p^{-L_p}.
+\end{equation}
+It is a positive rational number. For each coefficient \(a\) of \(F_K\),
+\[
+ v_p(m_Ka)\ge0
+\]
+at every prime, by \eqref{growth:Lp} and \eqref{growth:big}. A reduced
+rational number with this property has denominator one: any prime
+dividing a denominator would give a negative valuation. Thus
+\begin{equation}\label{growth:integrality}
+ m_KF_K\in\mathbb Z[X],\qquad
+ \log m_K=\sum_{p\le2h}(-L_p)\log p.
+\end{equation}
+Positive \(L_p\)'s contribute negative terms to this logarithm. They
+record common factors of the coefficients that can be divided out.
+The calculation controls both clearing denominators and removing such
+common factors.
+
+\subsection{Why sums over primes become integrals}
+
+We use the prime number theorem in the standard form
+\[
+ \vartheta(T):=\sum_{p\le T}\log p=T+o(T).
+\]
+The following consequence explains the factor \(x^{-3}\) in all the
+integrals below. It is the prime-summation step of
+\cite[Section 5]{fauzan}; the formalization supplies it in
+\cite[\texttt{PrimeSum.lean}, \texttt{PrimeSumIntegral.lean}]{firsching}.
+
+\begin{lemma}\label{growth:prime-sum}
+If \(0<a<b\) are fixed and \(E\) is bounded and piecewise continuous on
+\([a,b]\), with only finitely many discontinuities, then
+\[
+ \frac1{K^2}\sum_{K/b<p\le K/a}p\log p\,E(K/p)
+ \longrightarrow \int_a^b\frac{E(x)}{x^3}\,dx .
+\]
+\end{lemma}
+\begin{proof}
+The prime number theorem implies, for every fixed \(s<t\),
+\[
+ \frac1K\sum_{sK<p\le tK}\log p\longrightarrow t-s.
+\]
+Hence the measures
+\(K^{-1}\sum_p(\log p)\delta_{p/K}\), restricted to the compact interval
+\([1/b,1/a]\), converge against step functions to ordinary length
+measure. Approximating a continuous function uniformly by step functions
+gives the same assertion for continuous functions. A bounded function
+with finitely many discontinuities is treated by isolating those points
+in intervals of arbitrarily small total length and approximating on
+the complement. The mass of these exceptional intervals has the
+corresponding small limiting upper bound, again by the displayed
+prime-number-theorem limit.
+
+Apply this to \(t\mapsto tE(1/t)\). The resulting integral is
+\(\int_{1/b}^{1/a}tE(1/t)\,dt\). The substitution \(x=1/t\) gives the
+asserted integral.
+\end{proof}
+
+In particular, a per-prime estimate
+\[
+ -L_p\le pE(K/p)+O_M(1)
+\]
+can be summed with no quadratic cost from its error:
+\[
+ \sum_{p\le2h}O_M(1)\log p=O_M(\vartheta(2h))=O_M(K)=o(K^2).
+\]
+Values at the finitely many breakpoints of a profile do not affect
+the limit. For a fixed breakpoint \(x_0\), the equation \(K/p=x_0\)
+holds for at most one prime, whose contribution is \(O(K\log K)\).
+
+\subsection{Small primes}
+
+For \(p\le K/400\), the first line of \eqref{growth:Lp} gives
+\[
+ \sum_{p\le K/400}(-L_p)\log p
+ =
+ 6h\sum_{p\le K/400}\lfloor\log_p(5K)\rfloor\log p
+ +h\sum_{p\le K/400}v_p(24)\log p.
+\]
+The second sum is at most \(\log24\). In the first sum, primes larger
+than \(\sqrt{5K}\) have \(\lfloor\log_p(5K)\rfloor=1\). For the
+remaining primes the summand is at most \(\log(5K)\), and there are
+at most \(\sqrt{5K}\) such primes. Therefore
+\[
+ \sum_{p\le K/400}\lfloor\log_p(5K)\rfloor\log p
+ \le\vartheta(K/400)+O(\sqrt K\log K).
+\]
+Since \(h=\lambda K\), the prime number theorem yields
+\begin{equation}\label{growth:small}
+ \limsup_{K\to\infty}\frac1{K^2}
+ \sum_{p\le K/400}(-L_p)\log p
+ \le\frac{6\lambda}{400}=\frac{111}{8000}.
+\end{equation}
+
+\subsection{The continuous inner profile}
+
+We next turn the residue-class calculation into a fixed function of
+\(x=K/p\). This step follows
+\cite[\texttt{Growth/ClassSum.lean}, \texttt{ClassData.lean},
+\texttt{InnerPrime.lean}, \texttt{TablePrime.lean}]{firsching}.
+Put
+\[
+ x=\frac Kp,\quad u=\lambda x,\quad
+ q=\lfloor x\rfloor,\quad q'=\lfloor\alpha x\rfloor,\quad
+ f=\{x\},\quad g=\{\alpha x\}.
+\]
+For \(0<z<1/2\), define
+\begin{equation}\label{growth:af}
+ a_f(z)=\mathbf1_{z\le f}+\mathbf1_{z\ge1-f}.
+\end{equation}
+If \(1\le c\le(p-1)/2\), the number of integers \(1\le j\le K\)
+with \(j\equiv c\) or \(-c\pmod p\) is exactly
+\[
+ 2q+a_f(c/p).
+\]
+The analogous count for \(N\) is \(2q'+a_g(c/p)\). Thus the nonzero
+class offsets in the inner bound are
+\[
+ \beta_c=B+6a_g(c/p)-a_f(c/p),\qquad B=12q'-2q-4.
+\]
+
+For integers \(k,\beta\), write
+\begin{equation}\label{growth:psi}
+ \psi(k,\beta)=
+ \sum_{i\ge0}\frac{(k-\beta-2i)_+}{2}
+ =\frac{\ell(k-\beta-\ell+1)}2,\qquad
+ \ell=\max\!\left(0,\left\lfloor\frac{k-\beta+1}{2}\right\rfloor\right).
+\end{equation}
+Here \(t_+=\max(0,t)\), and the displayed sum has finitely many
+nonzero terms. This function measures the total deficit below the
+level \(k/2\) in a class with raw weights \(i+\beta/2\).
+The water-filling estimate \eqref{arith:inner-comparison} says that,
+for every integer
+\[
+ -2q-6\le k\le8q+20,
+\]
+\begin{equation}\label{growth:WI}
+ 2W_p^{\rm in}\ge
+ hk-2\sum_{c=1}^{(p-1)/2}\psi(k,\beta_c)-O_M(1).
+\end{equation}
+The error is bounded by the product of the level range and the reserve,
+plus twice the deficit of the initial zero-class rows below the selected
+level \(k_*/2\).
+Because \(q<400\), both quantities are bounded independently of \(K\).
+The total number of zero-class rows need not be bounded; all subsequent
+zero-class rows contribute at least \(k_*/2\) each and cause no deficit.
+This is the bounded-error form of \texttt{inner\_Lp\_le} in the cited
+source.
+
+The factorial normalization contributes another elementary function.
+Define
+\begin{equation}\label{growth:J}
+ J(u)=\sum_{j\ge1}(u-j/2)_+
+ =\mu u-\frac{\mu(\mu+1)}4,\qquad \mu=\lfloor2u\rfloor.
+\end{equation}
+Legendre's formula, and \(p^2>2h\), give
+\begin{align*}
+ -v_p(S_K)
+ &=-2hq+12hq'+2\sum_{i=1}^{h-1}\left\lfloor\frac{2i}{p}\right\rfloor\\
+ &\le -2hq+12hq'+2pJ(h/p).
+\end{align*}
+For the inequality, count the layers
+\(\lfloor2i/p\rfloor=\sum_{j\ge1}\mathbf1_{jp\le2i}\).
+For fixed \(j\), fewer than or equal to \((h-jp/2)_+\) indices
+\(1\le i<h\) occur. Summing over \(j\) gives \(pJ(h/p)\).
+
+Combining this inequality with \eqref{growth:WI}, and allowing one unit
+for the floor in \eqref{growth:Lp}, gives
+\begin{equation}\label{growth:inner-discrete}
+ -L_p\le -2hq+12hq'+2pJ(u)-hk
+       +2\sum_{c=1}^{(p-1)/2}\psi(k,\beta_c)+O_M(1).
+\end{equation}
+The function of \(z\) inside the class sum is constant between the at
+most four breakpoints \(f,1-f,g,1-g\). Counting mesh points \(c/p\)
+on each of these intervals differs from its length times \(p\)
+by a bounded number. Its heights are bounded in terms of \(M\), since
+\(q,q'\), \(k\), and \(\beta_c\) are. Hence
+\[
+ \sum_{c=1}^{(p-1)/2}\psi(k,\beta_c)
+ =
+ p\int_0^{1/2}\psi(k,B+6a_g(z)-a_f(z))\,dz+O_M(1).
+\]
+Dividing the principal terms of \eqref{growth:inner-discrete} by \(p\)
+therefore produces the explicit profile
+\begin{align}
+ E_{\rm in}(x,k)
+ ={}&-2uq+12uq'+2J(u)-uk \notag\\
+ &+2\int_0^{1/2}\psi(k,B+6a_g(z)-a_f(z))\,dz,
+ \label{growth:Ein}\\
+ -L_p\le{}&pE_{\rm in}(K/p,k)+O_M(1).
+ \label{growth:inner-profile-bound}
+\end{align}
+The integral in \eqref{growth:Ein} is a finite sum of interval lengths,
+not an integral requiring numerical quadrature.
+The first three terms record the factorial normalization; \(-uk\)
+subtracts the common row level, and the integral restores the deficits.
+Legendre's floors and the real logarithmic estimate thus examine the
+same finite products by counting prime powers and summing logarithms,
+respectively.
+
+\subsection{The finite inner range \texorpdfstring{\(3\le x\le20\)}{3 <= x <= 20}}
+
+Choose, on each interval, the admissible integer \(k\) that minimizes
+\eqref{growth:Ein}. Denote the resulting piecewise affine function by
+\(R_{\rm in}(x)\). The exact calculation gives
+\begin{equation}\label{growth:inner-integral}
+ \int_3^{20}\frac{R_{\rm in}(x)}{x^3}\,dx
+ =\frac{322437603634266857629}{7535670527041937280000}
+ =0.042788\ldots.
+\end{equation}
+This is the rational value in Fauzan's equation (5.18). The revised
+formalization derives it from its own class bounds, in
+\cite[\texttt{Growth/InnerTable.lean}, \texttt{InnerSum.lean}]{firsching}.
+
+Here are complete instructions for the finite calculation, including
+why it is exact. Partition \([3,20]\) at all points in the five families
+\begin{equation}\label{growth:grid}
+ \frac{\mathbb Z}{2},\qquad
+ \frac{20\mathbb Z}{3},\qquad
+ \frac{20\mathbb Z}{37},\qquad
+ \frac{40\mathbb Z}{37},\qquad
+ \frac{40\mathbb Z}{43}.
+\end{equation}
+The first two families fix the integer parts of \(x,\alpha x\)
+and the positions of their fractional parts relative to \(1/2\).
+The third fixes \(\mu=\lfloor2\lambda x\rfloor\). The last two
+include every crossing between \(f,1-f,g,1-g\). On each open interval
+of the partition, these four functions and the endpoints \(0,1/2\)
+have a fixed order. Their successive differences are affine functions
+of \(x\); the values of \(a_f,a_g\) in each resulting strip are fixed
+integers. Formula \eqref{growth:Ein} consequently gives an affine
+function \(A_kx+B_k\) for each of the finitely many admissible \(k\)'s.
+
+Take the lower envelope of these lines by inserting their relevant
+pairwise intersections. A proposed line is the minimum throughout
+an interval if it is no larger than every competitor at both
+endpoints: their differences are affine. Finally integrate each
+piece using
+\begin{equation}\label{growth:affine-integral}
+ \int_a^b\frac{Ax+B}{x^3}\,dx
+ =A\left(\frac1a-\frac1b\right)
+  +\frac B2\left(\frac1{a^2}-\frac1{b^2}\right).
+\end{equation}
+The resulting table has 125 pieces. Its full rational data are
+printed in Appendix~\ref{growth:table-appendix} and supplied in
+\texttt{checks/growth\_inner\_table.csv};
+the accompanying \texttt{growth\_exact.py} implements the branch
+construction and checks all endpoint inequalities with rational
+arithmetic. Thus \eqref{growth:inner-integral} is reproducible by
+finite exact arithmetic. No grid sampling or floating-point
+optimization is used to certify it.
+
+\subsection{The inner tail \texorpdfstring{\(20\le x\le400\)}{20 <= x <= 400}}
+
+For this longer interval, a quadratic upper bound is more convenient
+than a large table. We give the calculation, which is the continuous
+form of \cite[\texttt{Growth/TailPrime.lean}]{firsching}.
+Completing the square in \eqref{growth:psi} shows
+\[
+ \psi(k,\beta)\le\frac{(k-\beta+1)^2}{8}.
+\]
+Indeed its finite-sum expression is
+\(\ell(k-\beta-\ell+1)/2\), a concave quadratic in \(\ell\)
+whose maximum over the real line is the right-hand side.
+
+Put \(\phi(z)=6a_g(z)-a_f(z)\) and
+\(\tau=k-B+1\). For fixed \(f\), the values of \(a_f\) on
+\((0,1/2)\) differ by at most one. Thus the values of \(\phi\)
+lie in an interval of length seven. Also
+\[
+ \int_0^{1/2}a_f(z)\,dz=f,\qquad
+ T:=\int_0^{1/2}\phi(z)\,dz=6g-f.
+\]
+For a function taking values in an interval of length seven, its
+variance is at most \(49/4\). To see this directly, if the interval
+is \([a,a+7]\), average the nonnegative product
+\((\phi-a)(a+7-\phi)\); rearrangement bounds the variance by
+\((\bar\phi-a)(a+7-\bar\phi)\le49/4\).
+Since our interval of integration has length \(1/2\), this gives
+\[
+ \int_0^{1/2}\phi(z)^2\,dz-2T^2\le\frac{49}{8}.
+\]
+Now
+\begin{align*}
+ -u\tau+\frac14\int_0^{1/2}(\tau-\phi(z))^2\,dz
+ ={}&\frac18(\tau-2T-4u)^2-2uT-2u^2\\
+ &+\frac14\left(\int_0^{1/2}\phi(z)^2\,dz-2T^2\right).
+\end{align*}
+Choose the integer \(\tau\) nearest \(2T+4u\). The square contributes
+at most \(1/32\), and the variance contributes at most \(49/32\).
+This choice makes \(k\) an integer nearest
+\[
+ 2T+4u+B-1=\frac{13}{5}x-5.
+\]
+It lies in the admissible range \(-2q-6\le k\le8q+20\)
+for \(x\ge3\).
+
+Writing \(\eta=\{2u\}\), direct substitution in \eqref{growth:J} gives
+\[
+ 2J(u)=2u^2-u+\frac{\eta(1-\eta)}2
+ \le2u^2-u+\frac18.
+\]
+Insert these bounds into \eqref{growth:Ein}. The quadratic terms
+cancel, and the three constant costs are
+\(1/32+49/32+1/8=27/16\). Therefore
+\begin{equation}\label{growth:tail-profile}
+ -L_p\le p\left(x\mathcal F(x)+\frac{27}{16}\right)+O_M(1),
+ \qquad
+ \mathcal F(x)=4\lambda+2\lambda\{x\}
+                       -12\lambda\{\alpha x\}.
+\end{equation}
+
+The remaining integral has a useful elementary bound. The following
+calculation is from
+\cite[\texttt{Growth/TailIntegral.lean}]{firsching}; its periodic
+primitives are the ones used in Fauzan's tail analysis
+\cite[Section 5.3]{fauzan}.
+They are successive periodic Bernoulli primitives of the counting
+error, as in Euler--Maclaurin summation. Put
+\(\widetilde B_j(x)=B_j(\{x\})\), where
+\[
+ B_1(v)=v-\frac12,\qquad
+ B_2(v)=v^2-v+\frac16,\qquad
+ B_3(v)=v^3-\frac32v^2+\frac12v.
+\]
+Since \(6\lambda/\alpha=74\),
+\[
+ \mathcal F(x)+\lambda
+ =2\lambda\widetilde B_1(x)
+       -12\lambda\widetilde B_1(\alpha x).
+\]
+Define \(\overline P=(74-\lambda)/6=2923/240\) and
+\begin{align*}
+ P(x)-\overline P
+   &=\lambda\widetilde B_2(x)-74\widetilde B_2(\alpha x),\\
+ C(x)&=\frac{\lambda}{3}\widetilde B_3(x)
+           -\frac{74}{3\alpha}\widetilde B_3(\alpha x).
+\end{align*}
+The identities \(B_2'=2B_1\), \(B_3'=3B_2\)
+\cite[24.4]{dlmf} give, between breakpoints,
+\[
+ P'(x)=\mathcal F(x)+\lambda,\qquad
+ C'(x)=P(x)-\overline P.
+\]
+All terms have common period \(40\). The Bernoulli polynomials have
+zero mean, explaining the constants removed at each integration.
+Moreover \(B_2\) and \(B_3\) have matching endpoint values, so \(P,C\)
+are continuous and piecewise integration by parts introduces no jump
+terms. For the bounds below it is useful to write
+\[
+ G_0(v)=-\frac{B_3(v)}3=\frac{v(1-v)(2v-1)}6,\qquad
+ C(x)=\frac{74}{\alpha}G_0(\{\alpha x\})-\lambda G_0(\{x\}).
+\]
+
+For explicit bookkeeping put
+\[
+ \Psi(x)=\frac{P(x)}{x^2}+\frac{2C(x)}{x^3}
+       -\frac{\overline P}{x^2}+\frac{\lambda}{x}
+       -\frac{27}{32x^2}.
+\]
+Its derivative between breakpoints is
+\[
+ \Psi'(x)=\frac{x\mathcal F(x)+27/16}{x^3}
+                -\frac{6C(x)}{x^4}.
+\]
+On \(0\le v\le1\), \(|G_0(v)|\le1/60\). For example, setting
+\(w=v(1-v)\), the identity
+\[
+ w^2(1-4w)-\frac1{108}
+ =-\left(w-\frac16\right)^2\left(4w+\frac13\right)
+\]
+bounds \(36G_0(v)^2\) by \(1/108<1/100\).
+Consequently \(|C(x)|\le(74/\alpha+\lambda)/60<17\).
+It follows that
+\begin{align}
+ \int_{20}^{400}\frac{x\mathcal F(x)+27/16}{x^3}\,dx
+ &\le\Psi(400)-\Psi(20)
+             +34\left(\frac1{20^3}-\frac1{400^3}\right)\notag\\
+ &=-\frac{6843153}{128000000}.
+ \label{growth:tail-integral}
+\end{align}
+For the last equality one only needs
+\[
+ P(20)=\frac{37}{2},\quad C(20)=0,\quad
+ P(400)=C(400)=0.
+\]
+These endpoint substitutions are also checked exactly by the
+accompanying script.
+
+\subsection{The outer profile and its rank loss}
+
+For \(K/3<p\le2h\), we have \(20/37\le x<3\), \(q=\lfloor x\rfloor\),
+and \(\lfloor\alpha x\rfloor=0\). For a nonzero residue class with
+\(a=a_f(c/p)\), \(d=a_g(c/p)\), the sum of its outer weights is
+\begin{equation}\label{growth:GO}
+ G_q(a,d)=
+ \sum_{i=0}^{(2q+a-2)_+-1}
+ \min\left(0,i+3d-\frac{2q+a+4}{2}\right).
+\end{equation}
+An empty sum is zero. This is the local weight formula after counting
+the indices in the class: \(2q+a\) indices up to \(K\), \(d\) up to
+\(N\), and \((2q+a-2)_+\) above \(p\). The last count determines
+which rows can have a nonzero negative weight. The zero class
+contributes a bounded amount, since it contains at most two pole
+indices in this range.
+\cite[\texttt{Growth/OuterPrime.lean}, \texttt{sum\_wO\_class}]{firsching}
+
+The full rank loss is
+\[
+ r_p=\max(0,52n+2-2p)
+    =p\max\left(0,\frac{13}{10}x-2\right)+O(1).
+\]
+Using the same factorial and class-count estimates as before gives
+\begin{align}
+ E_{\rm out}(x)
+ ={}&-2\lambda x\lfloor x\rfloor+2J(\lambda x)
+ -2\int_0^{1/2}G_{\lfloor x\rfloor}(a_f(z),a_g(z))\,dz\notag\\
+ &+\max\left(0,\frac{13}{10}x-2\right),\label{growth:Eout}\\
+ -L_p\le{}&pE_{\rm out}(K/p)+O(1).\label{growth:outer-profile-bound}
+\end{align}
+The last term is retained in full. This is the revised profile of
+\cite[\texttt{Growth/OuterPrime.lean}, \texttt{outer\_Lp\_le}]{firsching}.
+
+The profile is affine on finitely many intervals. The following table
+gives \(E_{\rm out}(x)=Ax+B\); neighboring intervals with the same
+formula have been combined. Endpoint values are immaterial for the
+prime-sum limit.
+\begin{center}
+\begin{tabular}{c c r r}
+\hline
+Left endpoint&Right endpoint&\(A\)&\(B\)\\ \hline
+\(20/37\)&\(1\)&\(37/20\)&\(-1\)\\
+\(1\)&\(40/37\)&\(1\)&\(-2\)\\
+\(40/37\)&\(20/13\)&\(42/5\)&\(-10\)\\
+\(20/13\)&\(60/37\)&\(97/10\)&\(-12\)\\
+\(60/37\)&\(80/43\)&\(231/20\)&\(-15\)\\
+\(80/43\)&\(2\)&\(51/10\)&\(-3\)\\
+\(2\)&\(80/37\)&\(17/4\)&\(-5\)\\
+\(80/37\)&\(100/37\)&\(429/40\)&\(-19\)\\
+\(100/37\)&\(120/43\)&\(503/40\)&\(-24\)\\
+\(120/43\)&\(3\)&\(36/5\)&\(-9\)\\ \hline
+\end{tabular}
+\end{center}
+To reproduce the table, use the partition \eqref{growth:grid}, adding
+the rank-loss breakpoint \(20/13\), and substitute the fixed class
+counts into \eqref{growth:GO}--\eqref{growth:Eout}.
+Integrating the ten rows with \eqref{growth:affine-integral} gives
+\begin{equation}\label{growth:outer-integral}
+ \int_{20/37}^{3}\frac{E_{\rm out}(x)}{x^3}\,dx
+ =\frac{129101}{96000}
+ =\frac{127751}{96000}+\frac9{640}.
+\end{equation}
+The extra \(9/640\) is the cost of the revised full rank loss relative
+to the original outer integral. The table and this equality are checked
+in \cite[\texttt{Growth/OuterTable.lean},
+\texttt{TableIntegrals.lean}]{firsching} and independently reproduced
+by the accompanying rational-arithmetic script.
+
+\subsection{The arithmetic budget}
+
+Apply Lemma~\ref{growth:prime-sum} to the finite inner range, the inner
+tail, and the outer range. Combine
+\eqref{growth:small}, \eqref{growth:inner-integral},
+\eqref{growth:tail-integral}, and \eqref{growth:outer-integral}.
+Every bounded per-prime error contributes \(o(K^2)\), as shown above.
+We obtain
+\begin{equation}\label{growth:limsup}
+ \limsup_{\substack{K\to\infty\\40\mid K}}
+ \frac{\log m_K}{K^2}\le B,
+\end{equation}
+where the four contributions are
+\[
+\begin{array}{c|c}
+\text{Prime range}&\text{Upper bound for the coefficient of }K^2\\ \hline
+p\le K/400&111/8000\\
+K/400<p\le K/20&-6843153/128000000\\
+K/20<p\le K/3&322437603634266857629/7535670527041937280000\\
+K/3<p\le2h&129101/96000
+\end{array}
+\]
+and their exact sum is
+\begin{equation}\label{growth:B}
+ B=\frac{2031621487545722214389669}{1507134105408387456000000}
+  =1.348003127429204\ldots<1.35.
+\end{equation}
+In particular, \eqref{growth:integrality} and the strict inequality in
+\eqref{growth:B} imply, for all sufficiently large admissible \(K\),
+\begin{equation}\label{growth:final}
+ \boxed{\quad m_KF_K\in\mathbb Z[X],\qquad
+               m_K>0,\qquad \log m_K\le1.35K^2.\quad}
+\end{equation}
+Indeed, choose any positive \(\varepsilon<1.35-B\) in the definition
+of the upper limit.
+
+The source formalization rounds its arithmetic bound more generously
+to \(1.36+\varepsilon\). We have retained its four explicit
+contributions and checked their exact sum; this justifies the sharper
+eventual rounding used in \eqref{growth:final}. The difference is
+only a choice of numerical margin, not a new local divisibility result.
