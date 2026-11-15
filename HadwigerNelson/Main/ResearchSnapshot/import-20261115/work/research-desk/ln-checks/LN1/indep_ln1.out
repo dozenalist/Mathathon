@@ -1,0 +1,65 @@
+checker: C:\Users\jarom\Documents\Codex\2026-11-13\i\work\research-desk\ln-checks\LN1\indep_ln1.py
+sha256 : b6c3e7b4fc59fc05632a3c148c7006c73803b3f3a14f2bd647216a0beb73ef4e
+python : 3.12.10  flags isolated=1
+PASS 7776 canonical classes :: 7776
+[time] sat_A on 7776 classes + sat_B on 46656 raw tuples: 1.2s
+PASS method A == method B on all 7776 classes
+PASS 177 census-SAT classes :: 177
+
+=== (a) group actions: invariance of SAT, brute force ===
+PASS constant shift tau->tau+1: SAT(raw) invariant on all 46656 raw tuples (classes well-defined)
+PASS SAT invariant under rot (tau_i -> tau_{i-1}) on all 7776 classes :: counterexamples=0
+PASS SAT invariant under rho (tau_i -> tau_{5-i}) on all 7776 classes :: counterexamples=0
+PASS SAT invariant under neg (tau -> -tau) [extra, not claimed] on all 7776 classes :: counterexamples=0
+orders on the 7776 classes: rot=6 rho=2 neg=2
+PASS relation rho.rot.rho = rot^-1 on classes (so <rot,rho> is dihedral of order 12 on indices)
+orbits on the 177 SAT classes  (size: count)
+  <rho>            : 89 {1: 1, 2: 88}
+  <rot>            : 35 {1: 2, 2: 2, 3: 5, 6: 26}
+  <rot,rho>  (D6)  : 18 {2: 1, 3: 1, 4: 1, 6: 2, 12: 13}
+  extra <neg>      : 90 {1: 3, 2: 87}
+  extra <rho,neg>  : 50 {1: 1, 2: 10, 4: 39}
+  extra <rot,rho,neg>: 13 {2: 1, 3: 1, 4: 1, 12: 6, 24: 4}
+PASS 89 rho-orbits, sizes {1,2} :: 89
+PASS 35 rot-orbits :: 35
+PASS 18 dihedral orbits, sizes {2,3,4,6,12} :: (18, [2, 3, 4, 6, 12])
+scan: maps tau -> canon(a * tau o pi^-1), pi in S6, a in {1,-1}, preserving the 177-set
+  stabiliser size: 24 ; index perms occurring: 12 ; all of them dihedral (i -> +-i + c): True ; value maps occurring: [1, 5]
+
+=== (b) m1 shard ===
+PASS 22 listed, all distinct, all canonical (tau_0=0)
+PASS all 22 census-SAT :: []
+PASS listed as 11 rho-pairs (each |-group in the .md is {tau, rho tau})
+PASS = union of rho-orbits with 0-based index k = 1 mod 8 (orbits ordered by min element) :: 11 orbits, 22 classes
+  alt reading (1-based index = 1 mod 8): 23 classes, equal to m1 list: False
+PASS {013542,023154} is rho-orbit #65 (0-based) :: [65]
+  distribution of the 22 over dihedral orbits (D-orbit#[size]: #shard classes):
+    D1 [12]: 2  001234 054322
+    D3 [12]: 2  022445 055331
+    D6 [ 6]: 2  013340 043310
+    D7 [12]: 2  004332 011244
+    D9 [12]: 4  001344 005322 011334 055332
+    D13[ 6]: 4  002335 044311 005332 011344
+    D14[12]: 4  012335 044321 023450 054320
+    D17[12]: 2  013542 023154
+PASS the 22 classes lie in exactly 8 dihedral orbits :: 8
+  (for reference: they meet 16 rot-orbits)
+
+=== (c) orbit-65 obstruction ===
+PASS 013542 census-SAT
+PASS 013542 level 1 (tau - e_j): exactly one SAT coordinate, j*=3 :: SAT j's = [3]; classes {0: '024053', 1: '003542', 2: '012542', 3: '013442', 4: '013532', 5: '013541'}
+PASS 013542 level 2 (tau - e_j* - e_j, j != j*): all five UNSAT :: {0: ('024553', False), 1: ('003442', False), 2: ('012442', False), 4: ('013432', False), 5: ('013441', False)}
+PASS 013542 exhaustive: none of 720 decrement staircases is all-SAT :: max SAT steps survived: 1; histogram {0: 600, 1: 120}
+  info, increment direction (tau + e_j): level-1 SAT j's = [0]; all-SAT +staircases = 0
+  info, surviving ordered-partition staircases by #blocks k: {1: 1, 2: 2, 3: 1}
+PASS 023154 census-SAT
+PASS 023154 level 1 (tau - e_j): exactly one SAT coordinate, j*=2 :: SAT j's = [2]; classes {0: '034205', 1: '013154', 2: '022154', 3: '023054', 4: '023144', 5: '023153'}
+PASS 023154 level 2 (tau - e_j* - e_j, j != j*): all five UNSAT :: {0: ('033205', False), 1: ('012154', False), 3: ('022054', False), 4: ('022144', False), 5: ('022153', False)}
+PASS 023154 exhaustive: none of 720 decrement staircases is all-SAT :: max SAT steps survived: 1; histogram {0: 600, 1: 120}
+  info, increment direction (tau + e_j): level-1 SAT j's = [5]; all-SAT +staircases = 0
+  info, surviving ordered-partition staircases by #blocks k: {1: 1, 2: 2, 3: 1}
+
+info (outside scope): SAT classes with >=1 all-SAT generic staircase: 126 ; without: 51
+
+VERDICTS: (a) CONFIRMED  (b) CONFIRMED  (c) CONFIRMED   (d) UNDETERMINED: certificate JSONs not available
+[time] total 2.2s

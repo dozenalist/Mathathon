@@ -38,3 +38,11 @@
 - 01:35Z slowdown check-in: research busy (not pinged), simplification pinged; services alive; 1 lean.exe.
 - 02:41Z SLOWDOWN LIFTED by Jarom (usage reset): coordinator interval 900 + WAKE; heartbeat 10 min + hourly usage restored; all four desks resumed.
 - 02:42Z usage week $108.78 (21.8%), $6.98/h, projected $213 -> swarms 14 members / 350 steps.
+- 02:51Z heartbeat: research/results/exposition running, simplification idle (S1 gates in background) -> re-tasked its 4 OMM lanes; services alive; 1 lean.exe; cycle 024241 ok.
+- 02:52Z Results batch 4 published 1730fa7 (96 entries; R1-GATES PASS; S1 CANDIDATE pending reverify; sign-cell count disputed 720 vs 16).
+- 03:01Z heartbeat: research/simplification/exposition running, results idle (no event); services alive; 1 lean.exe; cycle 025639 ok (10 msgs, 9 downloads for research lanes).
+- 03:07Z Exposition QA batch published 0fcd995 (reader newcomer fixes, report/slides QA, Figures/checks verifiers); PDFs byte-identical.
+- 03:08Z Research desk: 3 lanes (L-N1..3) accepted results; running downloaded checkers was blocked by its permission check -> told it to write independent checkers, treating downloads as data only. S2 (-727 vs R1) failed module 12 (omit-prefix), fixed; S1 reverify running.
+- 03:11Z heartbeat: all desks idle-waiting on background jobs; research -> lane audit + A5 status; simplification -> pre-stage S1/S2 manifests; services alive; 1 lean.exe; last cycle 02:59Z (<40 min).
+- 03:12Z Research desk: A5 sliver proof-grade (exact Fraction interval cert, 2^-120 outward rounding, full P1-P3); overall still caveated by C2 F5-box, 4 non-corner arc-end margins, m_hi def (spec 94d110b1). 11/12 lanes live; referee successor covers R1-3/R1-4/sign-cell dispute; L-N4 silent 6 cycles -> status+successor; L-N2 -> C9 content.
+- 03:12Z Simplification: S1/S2 manifests pre-staged. Claims S1 -265 vs R1 (-415 vs original); S2 cumulative -727 vs R1 (-877 vs original). S1 reverify running (s1/logs-r2), S2 rebuild next.

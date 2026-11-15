@@ -15,7 +15,7 @@ a global chromatic result. No document cites an `UNAUDITED_NUMBER` or a `CANDIDA
 | 1 | report:226, 618, 1158; slides:54, 215; walkthrough:725, 789, 891 | headline | "No global chromatic result"; 6 ≤ χ ≤ 7 inherited | headline | MATCH |
 | 2 | report:73, 144; slides:49 | THREE-CENTRE | proved; Lean 4.34.1 | LEAN_VERIFIED (+ referee) | MATCH |
 | 3 | walkthrough:717 | THREE-CENTRE | identical statement and binders; recorded pass | LEAN_VERIFIED | MATCH |
-| 4 | walkthrough:721, 791, 871, 887; slides:155; report:1161 | R1 | integrated, accepted 14 Nov; 27 modules + roots; gates are follow-ups | LEAN_VERIFIED; R1-GATES OPEN | MATCH |
+| 4 | walkthrough:721, 791, 871, 887; slides:155; report:1161 | R1 | integrated, accepted 14 Nov; 27 modules + roots; gates are follow-ups | LEAN_VERIFIED; R1-GATES was OPEN at audit time, now TESTED_FINITE (PASS, 02:50Z) | MATCH at audit time; the "follow-ups" wording is now stale (report.tex already cites the gates as passed) |
 | 5 | walkthrough:721 | R1 | States 764 → 566 | 764 → 566 | MATCH |
 | 6 | report:74, 286–298; slides:50, 177; walkthrough:573, 793, 873 | CC60 | proved (refereed); Lean 4.34.1 | LEAN_VERIFIED | MATCH |
 | 7 | report:330–339 | CC60 (OA120 part) | proved; Lean 4.34.1 | LEAN_VERIFIED | MATCH |

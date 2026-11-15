@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "builtAtUtc": "2026-11-15T02:51Z",
+  "builtAtUtc": "2026-11-15T03:15Z",
   "workspaceRoot": "I = C:/Users/jarom/Documents/Codex/2026-11-13/i (research workspace, outside the repo)",
   "statusVocabulary": [
     "LEAN_VERIFIED",
@@ -88,7 +88,6 @@
       "**No global chromatic result.** No reviewed proof changes any bound on χ(ℝ²) or on the measurable chromatic number.",
       "[A6-GLUE](#a6-glue): ArcCover is now discharged (A6-BRIDGE-R2-G3), but no compiled file discharges `SignTable` and `ForcingLemma` together with it; hsupp, the pairing hypothesis and the A5 obstruction (no Lean declaration) remain.",
       "[S1](#s1): −265 more lines on top of R1 (recounted; rebuild and signatures check out); still CANDIDATE until the root-axiom print is re-archived after a stray failed rerun overwrote it.",
-      "[RELAX-1-648](#relax-1-648): the measure 1/648 is settled (three implementations), but the number of sign cells it meets is disputed (results desk 16, L-R1 judge 720).",
       "[PALETTE-RIGIDITY](#palette-rigidity), [STAIRCASE-CONVERSE](#staircase-converse), [K6-PRODUCER](#k6-producer): the missing lemmas for the six-colour programme.",
       "[SHARPNESS-20](#sharpness-20): six-colour sharpness of CC60 and novelty priority are not established.",
       "[MC120-STRICT](#mc120-strict): strict MC120 is called \"accepted paper\" in the status file but has no referee file; [A6-COROLLARIES](#a6-corollaries) and [CONTINUOUS-SIX](#continuous-six) depend on it.",
@@ -323,7 +322,7 @@
         "ENC-R4",
         "THREE-CENTRE"
       ],
-      "caveats": "See [R1-GATES](#r1-gates): contract and dependency gates not independently re-run; PaletteTransport not listed in frozen-manifest.json.",
+      "caveats": "Contract and dependency gates now PASS (see [R1-GATES](#r1-gates), whole-closure signature comparison with R4). PaletteTransport is absent from frozen-manifest.json only because it is an unchanged baseline module (byte-identical source and olean to R4); manifest completeness passed.",
       "artifacts": [
         {
           "role": "frozen manifest (27 modules)",
@@ -1354,7 +1353,7 @@
         {
           "role": "import validation record",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "963b1931f60d27e194127eb25c321f50c58bd905a2d901d51c9efeadf7368a6d"
+          "sha256": "e6c17419c2c90bc4f4efc1bf022ff8d6c7b9fd71aa92713b0dbee92496c4acf8"
         }
       ]
     },
@@ -1390,17 +1389,56 @@
       ]
     },
     {
+      "id": "LN1-ORBITS",
+      "theme": "New mathematics",
+      "status": "TESTED_FINITE",
+      "title": "Symmetries of the 177 SAT classes; the orbit-65 staircase obstruction",
+      "statement": "For the six-direction relaxation (fixed-phase census, classes tau in (Z/6)^6 modulo a constant shift): SAT is invariant under the index rotation rot (tau_i -> tau_{i-1}), the index reversal rho (tau_i -> tau_{5-i}) and negation neg (tau -> -tau), on all 7,776 classes. The 177 SAT classes form 89 rho-orbits, 35 rot-orbits and 18 dihedral <rot,rho>-orbits (sizes 2,3,4,6,12); adding neg (a group of order 24, the full stabiliser of the SAT set among signed index permutations) leaves 13 orbits. The L-N1 m1 shard of 22 classes is exactly 8 dihedral orbits. Orbit 65 = {013542, 023154}: each class is SAT, has exactly one SAT level-1 decrement (j* = 3, resp. 2), all five level-2 decrements are UNSAT, so none of its 720 decrement staircases is all-SAT. Of the 177 SAT classes, 126 have at least one all-SAT generic staircase and 51 have none.",
+      "hypotheses": "Relaxation level only; the \"realised generic\" certificates of the L-N1 swarm (20 JSONs) were not available and are not covered (item (d) UNDETERMINED).",
+      "evidence": "Independent checker written by the research desk (indep_ln1.py, two SAT deciders agreeing on all 7,776 classes; cross-check against the desk independent_census.py SAT set: identical 177).",
+      "checked": "2026-11-15 ~03:18Z: hashed the three files (checker sha = BANKED.md value); re-ran indep_ln1.py from a scratch copy (python -I, exit 0): every line identical to the archived output apart from paths and timing, 0 FAIL lines, verdicts (a) (b) (c) CONFIRMED, (d) UNDETERMINED.",
+      "provenance": "L-N1 lane (chat-8cf5afe743, swarm smwh3vfw7, owner research desk); independent checker by a research-desk subagent, banked 03:12:57Z.",
+      "corrections": [
+        "new beyond the lane claim: the negation symmetry reduces 18 dihedral orbits to 13"
+      ],
+      "dependsOn": [
+        "FIXED-PHASE-CENSUS",
+        "STAIRCASE-CENSUS"
+      ],
+      "artifacts": [
+        {
+          "role": "independent checker",
+          "workspacePath": "I/work/research-desk/ln-checks/LN1/indep_ln1.py",
+          "sha256": "b6c3e7b4fc59fc05632a3c148c7006c73803b3f3a14f2bd647216a0beb73ef4e",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/ln-checks/LN1/indep_ln1.py",
+          "hashMatchesExpected": true
+        },
+        {
+          "role": "output (24 s)",
+          "workspacePath": "I/work/research-desk/ln-checks/LN1/indep_ln1.out",
+          "sha256": "401c98a9a9fe8af4a936f4625c0cd12154660c0f30d8dc4be45f58990f4452e7",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/ln-checks/LN1/indep_ln1.out"
+        },
+        {
+          "role": "output with census cross-check",
+          "workspacePath": "I/work/research-desk/ln-checks/LN1/indep_ln1_xcheck.out",
+          "sha256": "79391329868fdfbc0e59b7c19edfd40bde48f6641298ae5faa996c16bca3cf74",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/ln-checks/LN1/indep_ln1_xcheck.out"
+        }
+      ]
+    },
+    {
       "id": "RELAX-1-648",
       "theme": "New mathematics",
       "status": "TESTED_FINITE",
-      "title": "All-phase relaxation: the field set has measure exactly 1/648 (1,440 of 933,120 resonance cells); sign-cell count disputed",
-      "statement": "For alpha in (R/360Z)^6 with alpha_0 = 0, call a resonance cell a component of the complement of {alpha_i - alpha_j in 60Z}: integer parts floor(alpha_i/60) and the order of the parts alpha_i mod 60, so 6^5 x 5! = 933,120 congruent cells. Exactly 1,440 cells admit a relaxation field (R(t,alpha) SAT for every t); 919,512 fail because some arc has an empty side (Rp or Rn empty) and 12,168 fail by the cyclic disjointness system alone. Hence the field set has Lebesgue measure exactly 1440/933120 = 1/648. With sign cells = components of the complement of {alpha_i - alpha_j in 180Z} (2^5 x 5! = 3,840): the results desk finds the field set meets 16 sign cells (16 of the 120 mod-180 orders; all 120 mod-60 orders occur), while the L-R1 judge baseline reports 720. The TESTED_FINITE status covers the 1/648 measure and the cell partition (three implementations agree); the sign-cell count is DISPUTED.",
+      "title": "All-phase relaxation: the field set has measure exactly 1/648 (1,440 of 933,120 resonance cells) and meets 16 of 3,840 sign cells",
+      "statement": "For alpha in (R/360Z)^6 with alpha_0 = 0, call a resonance cell a component of the complement of {alpha_i - alpha_j in 60Z}: integer parts floor(alpha_i/60) and the order of the parts alpha_i mod 60, so 6^5 x 5! = 933,120 congruent cells. Exactly 1,440 cells admit a relaxation field (R(t,alpha) SAT for every t); 919,512 fail because some arc has an empty side (Rp or Rn empty) and 12,168 fail by the cyclic disjointness system alone. Hence the field set has Lebesgue measure exactly 1440/933120 = 1/648. With sign cells = components of the complement of {alpha_i - alpha_j in 180Z} (2^5 x 5! = 3,840): the results desk finds the field set meets 16 sign cells (16 of the 120 mod-180 orders; all 120 mod-60 orders occur), confirmed by the L-R1 judge after it corrected a sign-cell key bug (its first report said 720); each met sign cell holds 90 field cells.",
       "hypotheses": "Relaxation level only (inner/outer hits and 60-degree disjointness; palettes of size <= 2 WLOG). Says nothing directly about colourings.",
       "evidence": "Two independent implementations agree: the discovery m2 scripts (referee6.py, run and reproduced by the all-phase referee, unaudited) and an exact implementation written by the results desk from the model definitions (allphase_desk.py, integer angles in units of 1/14 degree, one interior representative per cell, all six arcs tested).",
-      "checked": "2026-11-15 ~01:20Z: wrote and ran allphase_desk.py (python -I, 92.6 s): cells 933,120; field 1,440; empty side 919,512; cyclic-disjointness only 12,168; measure 1/648; sign cells meeting the field set 16 of 3,840; mod-180 orders 16 of 120; mod-60 orders 120 of 120. Cells are congruent simplices (fixed integer parts and a fixed order of five fractional parts), so the measure is the cell fraction. THIRD IMPLEMENTATION (L-R1 judge baseline, delivered 02:16Z; read, script not run by the desk): reproduces 933,120 / 1,440 / 919,512 / 12,168 and 1/648 exactly, but reports that 720 of 3,840 sign cells meet the field set (2 field cells each) and 120 of 120 base chambers. DISPUTE on the sign-cell count, resolved for now in favour of 16: (i) my exact enumeration, with sign cells recomputed directly from the representative angles, gives 16 sign cells holding 90 field cells each; (ii) an independent Monte Carlo (150,000 uniform random exact configurations, no cell enumeration) gave 225 field hits (rate 0.0015 ≈ 1/648) spread over 207 distinct resonance cells but only 16 distinct sign cells, whereas 720 sign cells would give about 190 distinct sign cells for 225 hits. The L-R1 lane has been asked to recheck its sign-cell extraction. The 1/648 measure itself is not in dispute.",
+      "checked": "2026-11-15 ~01:20Z: wrote and ran allphase_desk.py (python -I, 92.6 s): cells 933,120; field 1,440; empty side 919,512; cyclic-disjointness only 12,168; measure 1/648; sign cells meeting the field set 16 of 3,840; mod-180 orders 16 of 120; mod-60 orders 120 of 120. Cells are congruent simplices (fixed integer parts and a fixed order of five fractional parts), so the measure is the cell fraction. THIRD IMPLEMENTATION (L-R1 judge baseline, delivered 02:16Z; read, script not run by the desk): reproduces 933,120 / 1,440 / 919,512 / 12,168 and 1/648 exactly, but reports that 720 of 3,840 sign cells meet the field set (2 field cells each) and 120 of 120 base chambers. DISPUTE on the sign-cell count, resolved for now in favour of 16: (i) my exact enumeration, with sign cells recomputed directly from the representative angles, gives 16 sign cells holding 90 field cells each; (ii) an independent Monte Carlo (150,000 uniform random exact configurations, no cell enumeration) gave 225 field hits (rate 0.0015 ≈ 1/648) spread over 207 distinct resonance cells but only 16 distinct sign cells, whereas 720 sign cells would give about 190 distinct sign cells for 225 hits. The L-R1 lane was asked to recheck its sign-cell extraction; its corrected run reproduces 16 of 3,840 (cycle 031143).",
       "provenance": "Discovery m2 (smwgui6l9 d1, unsubmitted) via the all-phase referee 20:57Z; adversarial final wording cycle 001250; results desk recount 01:20Z.",
       "corrections": [
-        "L-R1 judge baseline (02:16Z) reports 720 of 3,840 sign cells; contradicted by the results-desk enumeration and Monte Carlo (16); open with the lane",
+        "sign-cell dispute RESOLVED: the L-R1 judge baseline first reported 720 of 3,840 (02:16Z); the coordinator traced this to a sign-cell key bug in that baseline (mod-60 order and n mod 2 used instead of the mod-180 order and floor(alpha/180)) (cycle 025639), and the corrected L-R1 run reproduces 16 of 3,840 with 90 field cells each (cycle 031143); the graph lane is consistent (1440 = 120 x 12 = 16 x 90)",
         "(e) correction from the L-R1 baseline: (0,30,90,150,240,300) lies on walls of the mod-60 arrangement (fractional parts not distinct), so the claim that the two example vectors lie in one sign cell is ill-posed; the example still illustrates that the field property is constant on resonance cells, not on sign cells",
         "RECONCILED (was UNRECONCILED): \"16 of the 3840 sign cells\" (referee addendum) and \"16 of 120 base chambers\" (adversarial lane, cycle 001250) are both true. The 16 met sign cells map to 16 distinct mod-180 orders. Read \"base chamber\" as an order of the parts mod 180; with orders mod 60 the count would be 120 of 120",
         "the referee note called sign cells \"finer\" than resonance cells; they are coarser (each sign cell contains 243 resonance cells on average)",
@@ -1725,6 +1763,9 @@
       "evidence": "Swarm smwh11ydr: proved twice independently, 0.75 s certificate, 12/12 live mutation controls (coordinator report). No local artifact yet.",
       "provenance": "Discovery swarm smwh11ydr (5/6 members accepted); cycles 001250, 002122.",
       "checked": "Read the STATUS.json: route B claims rank r(sigma) <= 2 on J and strictly decreasing on J->J steps, so a J-run has at most 3 states; depth 3 attained at (2,2,4,0,5,3); four finite lemmas machine-checked (FL1-prime 1836 cases, FL2 18 sinks, FL3, FL4); all 51,840 full chains inside W contain a circulant state. Not reproduced by the desk; route A independence check was still running. Queued for L-R1 (R1-6).",
+      "corrections": [
+        "related but separate: the synthesis lane (L-N3) T3 run length at (m,w) = (7,3) was reported as at least 13, not 8 (cycle 024133), then retracted; the T3 target is 8 (cycle 031143; research desk 03:05Z). Unsettled, not entered as a result"
+      ],
       "dependsOn": [
         "RELAX-CIRCULANT"
       ],
@@ -2594,7 +2635,7 @@
         {
           "role": "recorded run (18:58Z)",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "963b1931f60d27e194127eb25c321f50c58bd905a2d901d51c9efeadf7368a6d"
+          "sha256": "e6c17419c2c90bc4f4efc1bf022ff8d6c7b9fd71aa92713b0dbee92496c4acf8"
         }
       ]
     },

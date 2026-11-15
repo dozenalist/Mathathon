@@ -44,3 +44,8 @@
 2026-11-15T02:42:15Z slowdown lifted (supervisor 02:42Z); full mode; guarded desk_compile.sh added
 2026-11-15T02:42:40Z L-N1/2/3 accepted results noted; requested checker downloads + lane steering via user-inbox
 2026-11-15T02:44:04Z re-supplied R1-3/R1-4 verbatim + answered admission-writer question
+2026-11-15T02:54:31Z simplification desk: S1 is CANDIDATE (not banked), re-verify ~04:00Z; keep citing R1
+2026-11-15T03:05:44Z answered needs_parent: J-depth 8 (retract 13), six-orbit part 2 resupplied, SHA256SUMS ext, requested L-N1 cert JSONs. Running downloaded lane checkers locally was DENIED by permission classifier; not attempted further
+2026-11-15T03:08:46Z per supervisor: not running lane scripts; launched 3 subagents writing independent checkers for L-N1 (orbits/orbit65), L-N2 (counter-model/ladder), L-N3 (T1 counts) under research-desk/ln-checks/LN*/
+2026-11-15T03:12:05Z lane audit: specs sent for referee successor (R1-3, R1-4, sign-cell dispute), L-N4 status+successor, L-N2 successor (C9 colouring-level), verifier A5 caveat closure
+2026-11-15T03:12:57Z BANKED L-N1 independent check (indep_ln1.py b6c3e7b4): orbits 89/35/18 confirmed, 13 with negation; shard 22=8 orbits; orbit-65 confirmed; 126/51 reproduced
