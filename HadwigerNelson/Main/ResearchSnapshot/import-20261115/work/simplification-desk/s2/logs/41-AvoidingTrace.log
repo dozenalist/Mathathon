@@ -1,0 +1,14 @@
+started 2026-11-15T04:52:14.487352+00:00
+src C:\Users\jarom\Documents\Codex\2026-11-13\i\work\simplification-desk\s2\OAI\Geometry\PlaneColoring\AvoidingTrace.lean
+sha256 442686edc8e5b95c9e6781a8ec6b3e84faa07597f8ec168c6635bd6e04e9c786
+LEAN_PATH C:\Users\jarom\Documents\Codex\2026-11-13\i\work\simplification-desk\s2\build;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\Qq\.lake\build\lib\lean
+exit 0
+elapsed 50.5
+--- stdout
+'OAI.EuclideanFiveColor.fixed_state_no_unit_three_centres' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.strict_state_sequence_no_unit_three_centres' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+--- stderr
+

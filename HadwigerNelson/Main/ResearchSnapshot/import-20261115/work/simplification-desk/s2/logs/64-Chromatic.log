@@ -1,0 +1,16 @@
+started 2026-11-15T05:18:30.473278+00:00
+src C:\Users\jarom\Documents\Codex\2026-11-13\i\work\simplification-desk\s2\OAI\Geometry\PlaneColoring\Chromatic.lean
+sha256 55a2f2bef340156617f0679f65813d952f19c876e975399463b5bdcd4002127b
+LEAN_PATH C:\Users\jarom\Documents\Codex\2026-11-13\i\work\simplification-desk\s2\build;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\Qq\.lake\build\lib\lean
+exit 0
+elapsed 53.6
+--- stdout
+C:\Users\jarom\Documents\Codex\2026-11-13\i\work\simplification-desk\s2\OAI\Geometry\PlaneColoring\Chromatic.lean:40:8: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'OAI.Problem160.chromaticNumber_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.six_le_planeChromaticNumber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.not_properColoring_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+--- stderr
+

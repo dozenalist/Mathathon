@@ -1,6 +1,6 @@
 # Results ledger — Hadwiger–Nelson Mathathon entry
 
-Built 2026-11-15T05:01Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
+Built 2026-11-15T05:33Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
 
 **No global chromatic result. The bounds 6 ≤ χ(ℝ²) ≤ 7 come from the supplied proof ("The Euclidean plane is not five-colorable") and the classical 7-colouring; nothing the team has added changes them. Every entry below is a simplification of the supplied proof, a local or conditional lemma, a finite computation, or a negative result. The only route to χ ≥ 7 on record is conditional on the open lemmas L6 and F6 (see L6-F6).**
 
@@ -19,14 +19,14 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 | [STEPBAN-CYCLICCORE](#stepban-cycliccore) CyclicCore consumer on v2 | `LEAN_VERIFIED` (desk) | 0 realised (swap pending) | identical `#check` telescope |
 | [FIVESUPPORT-SWAP](#fivesupport-swap) same-name swap in FiveSupport (R1 port) | `LEAN_VERIFIED` (desk) | **+61 as ported** (v1 kept); **measured +33** with v1 deleted (354→387 physical; code lines only 341→350, +9) | 30/30 signatures identical after deleting v1; structural, not a length, simplification |
 | [S1](#s1) dead-code deletion + in-place branch-free step ban (simplification desk) | `LEAN_VERIFIED` (re-verified 03:3x–03:44Z) | **−265** (14 files; recounted) | 27-module rebuild, 14 roots standard axioms, 3,094 signatures unchanged |
-| [S2](#s2) S1 + 52 more unreachable declarations in the spectral, compact-factor and palette layers | `CANDIDATE`: gates not yet run (first build attempt failed and was fixed) | **−717 vs R1 claimed and recounted** (41 files; −452 beyond S1) | would make the realised total −867 (−126 −24 −717, S2 includes S1); not counted until its gates pass |
+| [S2](#s2) S1 + 52 more unreachable declarations in the spectral, compact-factor and palette layers | `LEAN_VERIFIED` (gates ~05:20Z) | **−717 vs R1** (41 files; −452 beyond S1) | 67-module rebuild, 14 roots standard axioms, 3,038 signatures unchanged (aux-name renames only) |
 | [JOINT-SUPPORT](#joint-support) joint-pair support theorem | `LEAN_VERIFIED` (standalone) | not measured | does not by itself delete the original States development |
-| **Total realised (LEAN_VERIFIED chain)** |  | **−126 + −24 + −265 = −415 lines** vs the supplied original | S2 (−717 vs R1, CANDIDATE) would make it −867 |
+| **Total realised (LEAN_VERIFIED chain)** |  | **−126 + −24 + −265 + −452 = −867 lines** vs the supplied original | S2 includes S1; −908 code lines |
 
 ### Strongest new results
 
 - [CC60](#cc60) — closed 60° cone obstruction (equality case included), Lean-verified with standard axioms; sharp for arbitrary finite palettes by the reviewed 20-colour construction [SHARPNESS-20](#sharpness-20).
-- [ENC-R4](#enc-r4), [R1](#r1) and [S1](#s1) — the supplied proof now compiles in a simplified form 415 lines shorter, with Lemma 6.7 branch-free under its original name, every surviving statement unchanged, and the root theorems (incl. `no_proper_five_coloring`, `weakMeasurableColoring_seven`) on standard axioms only.
+- [ENC-R4](#enc-r4), [R1](#r1) and [S1](#s1) — the supplied proof now compiles in a simplified form 867 lines shorter (with [S2](#s2)), with Lemma 6.7 branch-free under its original name, every surviving statement unchanged, and the root theorems (incl. `no_proper_five_coloring`, `weakMeasurableColoring_seven`) on standard axioms only.
 - A6 six-colour producer chain in Lean: [A6-FORCING](#a6-forcing), [A6-BRIDGE-R2](#a6-bridge-r2) (with [G1-R2](#g1-r2)), [G3-R2](#g3-r2), and [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) with the arc cover discharged; SignTable and ForcingLemma are still hypotheses there ([A6-GLUE](#a6-glue) open).
 - [A5-FOUR-LIST](#a5-four-list) — refereed: no centre of a weak measurable 6-colouring has an actual palette containing the canonical paired palette; with the paired producer [A6-PAIRED-PRODUCER](#a6-paired-producer) (paper, its finite core Lean-verified) this excludes the paired interface configuration.
 - [MC120-ENDPOINT](#mc120-endpoint) — refereed 19-colour counterexample: the closed-120° version of MC120 is false; [SIX-ORBIT](#six-orbit) — six direction configurations that pass every cone test are excluded by the exact relaxation.
@@ -37,7 +37,6 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 
 - **No global chromatic result.** No reviewed proof changes any bound on χ(ℝ²) or on the measurable chromatic number.
 - [A6-GLUE](#a6-glue): ArcCover is now discharged (A6-BRIDGE-R2-G3), but no compiled file discharges `SignTable` and `ForcingLemma` together with it; hsupp, the pairing hypothesis and the A5 obstruction (no Lean declaration) remain.
-- [S2](#s2): a further −452 lines beyond S1 (−717 vs R1, recounted), CANDIDATE until its 67-module rebuild and gates pass.
 - [PALETTE-RIGIDITY](#palette-rigidity), [STAIRCASE-CONVERSE](#staircase-converse), [K6-PRODUCER](#k6-producer): the missing lemmas for the six-colour programme.
 - [SHARPNESS-20](#sharpness-20): six-colour sharpness of CC60 and novelty priority are not established.
 - [MC120-STRICT](#mc120-strict): strict MC120 is called "accepted paper" in the status file but has no referee file; [A6-COROLLARIES](#a6-corollaries) and [CONTINUOUS-SIX](#continuous-six) depend on it.
@@ -47,14 +46,14 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 
 | Theme | LEAN_VERIFIED | PROVED_PAPER_REVIEWED | TESTED_FINITE | CANDIDATE | UNAUDITED_NUMBER | RETRACTED_OR_REFUTED | OPEN |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Simplification of the supplied proof | 13 | 1 | 1 | 1 |  |  |  |
+| Simplification of the supplied proof | 14 | 1 | 1 |  |  |  |  |
 | New mathematics | 9 | 8 | 10 | 18 |  |  | 6 |
 | Negative results and counterexamples | 1 | 7 | 6 | 7 |  | 8 |  |
 | Infrastructure | 1 |  | 1 |  |  | 1 | 1 |
 
 ## Index
 
-- **Simplification of the supplied proof**: [DIAMOND](#diamond) `LEAN_VERIFIED`, [ENC-R4](#enc-r4) `LEAN_VERIFIED`, [FIVE-CYCLE-RESIDUES](#five-cycle-residues) `LEAN_VERIFIED`, [FIVESUPPORT-SWAP](#fivesupport-swap) `LEAN_VERIFIED`, [JOINT-SUPPORT](#joint-support) `LEAN_VERIFIED`, [R1](#r1) `LEAN_VERIFIED`, [S1](#s1) `LEAN_VERIFIED`, [STEPBAN-CONSUMER](#stepban-consumer) `LEAN_VERIFIED`, [STEPBAN-CYCLICCORE](#stepban-cycliccore) `LEAN_VERIFIED`, [STEPBAN-SWAP](#stepban-swap) `LEAN_VERIFIED`, [STEPBAN-V2](#stepban-v2) `LEAN_VERIFIED`, [STEPBAN-V3](#stepban-v3) `LEAN_VERIFIED`, [THREE-CENTRE](#three-centre) `LEAN_VERIFIED`, [LEMMA67-IDENTITY](#lemma67-identity) `PROVED_PAPER_REVIEWED`, [R1-GATES](#r1-gates) `TESTED_FINITE`, [S2](#s2) `CANDIDATE`
+- **Simplification of the supplied proof**: [DIAMOND](#diamond) `LEAN_VERIFIED`, [ENC-R4](#enc-r4) `LEAN_VERIFIED`, [FIVE-CYCLE-RESIDUES](#five-cycle-residues) `LEAN_VERIFIED`, [FIVESUPPORT-SWAP](#fivesupport-swap) `LEAN_VERIFIED`, [JOINT-SUPPORT](#joint-support) `LEAN_VERIFIED`, [R1](#r1) `LEAN_VERIFIED`, [S1](#s1) `LEAN_VERIFIED`, [S2](#s2) `LEAN_VERIFIED`, [STEPBAN-CONSUMER](#stepban-consumer) `LEAN_VERIFIED`, [STEPBAN-CYCLICCORE](#stepban-cycliccore) `LEAN_VERIFIED`, [STEPBAN-SWAP](#stepban-swap) `LEAN_VERIFIED`, [STEPBAN-V2](#stepban-v2) `LEAN_VERIFIED`, [STEPBAN-V3](#stepban-v3) `LEAN_VERIFIED`, [THREE-CENTRE](#three-centre) `LEAN_VERIFIED`, [LEMMA67-IDENTITY](#lemma67-identity) `PROVED_PAPER_REVIEWED`, [R1-GATES](#r1-gates) `TESTED_FINITE`
 - **New mathematics**: [A6-BRIDGE-R2](#a6-bridge-r2) `LEAN_VERIFIED`, [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) `LEAN_VERIFIED`, [A6-FORCING](#a6-forcing) `LEAN_VERIFIED`, [CC60](#cc60) `LEAN_VERIFIED`, [CONNECTED-SET](#connected-set) `LEAN_VERIFIED`, [EVENWALK-R6](#evenwalk-r6) `LEAN_VERIFIED`, [G1-R2](#g1-r2) `LEAN_VERIFIED`, [G3-R2](#g3-r2) `LEAN_VERIFIED`, [NULL-TRANSFER](#null-transfer) `LEAN_VERIFIED`, [A5-FOUR-LIST](#a5-four-list) `PROVED_PAPER_REVIEWED`, [A6-PAIRED-PRODUCER](#a6-paired-producer) `PROVED_PAPER_REVIEWED`, [AC-ALIGNED](#ac-aligned) `PROVED_PAPER_REVIEWED`, [MC120-STRICT](#mc120-strict) `PROVED_PAPER_REVIEWED`, [NR-TC](#nr-tc) `PROVED_PAPER_REVIEWED`, [RESIDUAL-GRAPH](#residual-graph) `PROVED_PAPER_REVIEWED`, [SHARPNESS-20](#sharpness-20) `PROVED_PAPER_REVIEWED`, [STRAIGHT-NEEDLE](#straight-needle) `PROVED_PAPER_REVIEWED`, [A5-SLIVER](#a5-sliver) `TESTED_FINITE`, [DIR-FILTER](#dir-filter) `TESTED_FINITE`, [FIXED-PHASE-CENSUS](#fixed-phase-census) `TESTED_FINITE`, [HEULE-UNION](#heule-union) `TESTED_FINITE`, [HONEYCOMB-73](#honeycomb-73) `TESTED_FINITE`, [LN1-ORBITS](#ln1-orbits) `TESTED_FINITE`, [LN3-T1-T3](#ln3-t1-t3) `TESTED_FINITE`, [RELAX-1-648](#relax-1-648) `TESTED_FINITE`, [SIX-ORBIT](#six-orbit) `TESTED_FINITE`, [STAIRCASE-CENSUS](#staircase-census) `TESTED_FINITE`, [A5-ODD-WALK](#a5-odd-walk) `CANDIDATE`, [A6-COROLLARIES](#a6-corollaries) `CANDIDATE`, [A7-PARTIAL-INDEPENDENT](#a7-partial-independent) `CANDIDATE`, [AMPLIFIER](#amplifier) `CANDIDATE`, [CENSUS-COMPLETE-60Z](#census-complete-60z) `CANDIDATE`, [CLAUDE-LEMMA-A](#claude-lemma-a) `CANDIDATE`, [CONTINUOUS-SIX](#continuous-six) `CANDIDATE`, [HONEYCOMB-RESTRICTED](#honeycomb-restricted) `CANDIDATE`, [J-DEPTH](#j-depth) `CANDIDATE`, [K6-M3-DOOR](#k6-m3-door) `CANDIDATE`, [LIST-FIELD-A4](#list-field-a4) `CANDIDATE`, [Q4Q5-PINNING](#q4q5-pinning) `CANDIDATE`, [R0-CHI4](#r0-chi4) `CANDIDATE`, [RELAX-CIRCULANT](#relax-circulant) `CANDIDATE`, [T6-B2](#t6-b2) `CANDIDATE`, [THM-BPRIME](#thm-bprime) `CANDIDATE`, [TRANSLATION-CRITERION](#translation-criterion) `CANDIDATE`, [WILD-LAW](#wild-law) `CANDIDATE`, [A6-GLUE](#a6-glue) `OPEN`, [K6-PRODUCER](#k6-producer) `OPEN`, [L6-F6](#l6-f6) `OPEN`, [LOCALIZED-TWO-STATE](#localized-two-state) `OPEN`, [PALETTE-RIGIDITY](#palette-rigidity) `OPEN`, [STAIRCASE-CONVERSE](#staircase-converse) `OPEN`
 - **Negative results and counterexamples**: [A6-CONTAINMENT](#a6-containment) `LEAN_VERIFIED`, [A7-CONTACT](#a7-contact) `PROVED_PAPER_REVIEWED`, [ANNULUS-3COL](#annulus-3col) `PROVED_PAPER_REVIEWED`, [FOUR-STATE-ANGULAR](#four-state-angular) `PROVED_PAPER_REVIEWED`, [LOCAL-TRANSITIONS](#local-transitions) `PROVED_PAPER_REVIEWED`, [MC120-ENDPOINT](#mc120-endpoint) `PROVED_PAPER_REVIEWED`, [SUPPORT-FLIP](#support-flip) `PROVED_PAPER_REVIEWED`, [VARIABLE-TRIANGLE](#variable-triangle) `PROVED_PAPER_REVIEWED`, [HEULE-NO-FORCING](#heule-no-forcing) `TESTED_FINITE`, [HISTORIC-8](#historic-8) `TESTED_FINITE`, [HONEYCOMB-K16](#honeycomb-k16) `TESTED_FINITE`, [LN2-COUNTERMODEL](#ln2-countermodel) `TESTED_FINITE`, [Q4Q5-CONTROLS](#q4q5-controls) `TESTED_FINITE`, [RELAX-WITNESSES](#relax-witnesses) `TESTED_FINITE`, [A8-PALETTE](#a8-palette) `CANDIDATE`, [ALPHA-SHARP](#alpha-sharp) `CANDIDATE`, [FOURWAY-SPLIT](#fourway-split) `CANDIDATE`, [GEOM-Q4Q5](#geom-q4q5) `CANDIDATE`, [GEOM-TWO-STEP](#geom-two-step) `CANDIDATE`, [Q4Q5-APEX](#q4q5-apex) `CANDIDATE`, [TERNARY-COUNTERMODEL](#ternary-countermodel) `CANDIDATE`, [A5-FAR-APEX](#a5-far-apex) `RETRACTED_OR_REFUTED`, [A5-M5-TEMPLATE](#a5-m5-template) `RETRACTED_OR_REFUTED`, [AC-AXIS](#ac-axis) `RETRACTED_OR_REFUTED`, [ALT-TRIPLE](#alt-triple) `RETRACTED_OR_REFUTED`, [CLAUDE05-VERDICT](#claude05-verdict) `RETRACTED_OR_REFUTED`, [OVERNIGHT-WITHDRAWN](#overnight-withdrawn) `RETRACTED_OR_REFUTED`, [PALETTE-EQ-F](#palette-eq-f) `RETRACTED_OR_REFUTED`, [TWO-TRIANGLE](#two-triangle) `RETRACTED_OR_REFUTED`
 - **Infrastructure**: [ENC-R4-AUX](#enc-r4-aux) `LEAN_VERIFIED`, [SNAPSHOT-VALIDATION](#snapshot-validation) `TESTED_FINITE`, [LEAN-FAILED-REVISIONS](#lean-failed-revisions) `RETRACTED_OR_REFUTED`, [LEAN-435](#lean-435) `OPEN`
@@ -191,6 +190,34 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Used for:** Brings the realised simplification to −415 lines vs the supplied original (ENC-R4 −126, R1 −24, S1 −265); −463 code lines.
 - **Depends on:** [R1](#r1), [R1-GATES](#r1-gates), [STEPBAN-V3](#stepban-v3)
 
+### S2
+
+**S2: S1 plus 52 more unreachable declarations deleted outside the R1 closure (−717 physical lines vs R1; −867 vs the supplied original)** — `LEAN_VERIFIED`
+
+- **Statement:** Cumulative on S1: 52 further declarations that no root theorem reaches are deleted from 27 modules outside the R1 closure (spectral, compact-factor and palette layers), each with any `omit/include .. in` prefix. 41 files change versus R1 (e.g. PhaseCollision 537→471, InvariantMean 1078→1031, Compactness 379→353); in total 77 unreachable declarations plus `five_forced_label` are removed and `five_state_forced_label` is added. Net −717 physical lines versus R1; −867 versus the supplied original (manifest of 03:39Z).
+- **Hypotheses:** Every surviving declaration keeps its exact statement (signature gate below).
+- **Evidence:** Simplification desk (run by the research desk), Lean 4.34.1 / Mathlib d13f23b, one Lean at a time: 67/67 module rebuild exit 0 (s2/logs/01–67, each logging the current source sha256); axiomroots-s2.log exit 0, 14/14 roots on [propext, Classical.choice, Quot.sound], no sorryAx; sigdump-s2.log exit 0 writing sigs-s2.tsv: 3,038 common declarations vs R1, 1 added (five_state_forced_label), 84 removed (the deletions, five_forced_label, auto eq/congr lemmas). The dump flagged 4 value-hash differences in RelativeProducts (Family.avg, Family.l2Linear, Family.toL2, pairSequence); AuxCheck.lean (compiled against both builds) shows identical types, identical normalised values and identical aux-proof type multisets: only the auto-generated _proof_N constants are renamed (they were named after the deleted projectCLM). Two Open Math lanes grep-reviewed the deletions (L-S3 36/36 PASS; L-S1 47 PASS, 5 conditional, 0 FAIL).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/MANIFEST.md` — S2 manifest (claim, per-file sha256, expected gate outputs) — `c6316d7dd9e60952…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/line-accounting-s2-vs-r1.json` — line accounting vs R1 — `e9755b05fdd423ef…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/line-accounting-s2-vs-s1.json` — line accounting vs S1 — `49f95959fef349ec…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/dead-deletions.json` — deleted declarations — `9c25a6e0604a51a1…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/changed-modules.txt` — the 41 changed modules — `b536c876c4733000…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/logs/axiomroots-s2.log` — root-axiom log (exit 0, 14 roots standard) — `b01833ec872ccabb…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/logs/sigdump-s2.log` — signature-dump log (exit 0) — `11ee8fc62f59bba5…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/sigs-s2.tsv` — S2 signature table — `44bdbeea5d12cf9f…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/AUXCHECK-NOTE.md` — aux-name rename analysis of the 4 value-hash differences — `233c5a30deeb671a…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/AuxCheck.lean` — aux check source — `7c6a12adae47dbf7…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/auxcheck-s2.log` — aux check vs S2 build — `8e05f1ca231fe9d2…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/auxcheck-r1.log` — aux check vs R1 build — `3d5ac560d832dd46…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/logs/01-WeakColoring.log` — first module compile log (exit 0) — `dd083ec889c1078d…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/logs/67-Transfer.log` — last module compile log (exit 0) — `d02888c1aac9da08…`
+- **Checked by the results desk:** 2026-11-15 ~03:45Z, on the CORRECTED tree: the 41 changed S2 sources hash to the sha256 values in the 03:39Z MANIFEST.md; their physical lines recount to exactly −717 against the R1 tree; still 41 changed files (changed-modules.txt equals the manifest set); the other 42 S2 modules are byte-identical to R1. (The earlier 03:30Z recount of −727 matched the previous manifest.) ~05:40Z (exposition desk, ledger owner): re-ran verify_s2.py (41 manifest rows hash-match, recount −717 vs R1, 42 other modules byte-identical to R1); verify_s2_gates.py: all 67 module logs end with `exit 0` and contain no error; axiomroots 14 roots all standard, no sorryAx; sigs-s2.tsv vs sigs-r1.tsv: 3,038 common, 1 added, 84 removed, 5 rows differ: the 4 RelativeProducts value hashes (explained by AUXCHECK-NOTE; aux logs read, not re-run) and palette.congr_simp, an auto-generated congruence lemma whose type hash and binder flags are identical and only its recorded module moved (PaletteDensity → BinaryPalettes). 0 substantive statement changes.
+- **Provenance:** Simplification desk, 01:32–03:12Z (s2/, LOG.md; manifest generated 03:12Z).
+- **Correction history:** ~03:40Z: an Open Math review (lane L-S3) found two S2 deletions still referenced by qualified name in simp lists; the simplification desk restored them: 55 → 52 deletions beyond S1, −727 → −717 vs R1 (−877 → −867 vs the original); carried into the ledger by the supervisor (commit 49f745d) and recounted by the results desk; attempt 1 failed (12/67 modules) on a dangling omit prefix; logs kept in s2/logs-attempt1-failed-omit-prefix/
+- **Used for:** Brings the realised simplification to −867 lines vs the supplied original (ENC-R4 −126, R1 −24, S1 −265, S2 −452 beyond S1); code lines −908.
+- **Depends on:** [S1](#s1)
+
 ### STEPBAN-CONSUMER
 
 **Consumer `five_opposite_contacts_false_from_v2` rebuilt on the v2 step ban** — `LEAN_VERIFIED`
@@ -310,25 +337,6 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Provenance:** Simplification desk, 01:13–01:29Z (R1-GATES.md); manifest completeness 00:26Z.
 - **Correction history:** was OPEN (caveats recorded with the acceptance of R1 at 23:25Z)
 - **Depends on:** [R1](#r1)
-
-### S2
-
-**S2: S1 plus 52 more unreachable declarations deleted outside the R1 closure (−717 physical lines vs R1; gates pending)** — `CANDIDATE`
-
-- **Statement:** Cumulative on S1: 52 further declarations that no root theorem reaches are deleted from 27 modules outside the R1 closure (spectral, compact-factor and palette layers), each with any `omit/include .. in` prefix. 41 files change versus R1 (e.g. PhaseCollision 537→471, InvariantMean 1078→1031, Compactness 379→353); in total 77 unreachable declarations plus `five_forced_label` are removed and `five_state_forced_label` is added. Net −717 physical lines versus R1; −867 versus the supplied original (manifest of 03:39Z).
-- **Hypotheses:** Claimed: every surviving declaration keeps its exact statement (to be checked by the signature gate).
-- **Evidence:** None yet beyond source accounting: the first 67-module rebuild attempt failed at RelativeCenters (a dangling `omit .. in` prefix left by a deletion); the deletion tool was fixed and the rebuild re-queued. No axiom-root or signature-dump log exists yet.
-- **Artifacts:**
-  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/MANIFEST.md` — S2 manifest (claim, per-file sha256, expected gate outputs) — `1ce5d245e687c015…`
-  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/line-accounting-s2-vs-r1.json` — line accounting vs R1 — `e9755b05fdd423ef…`
-  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/line-accounting-s2-vs-s1.json` — line accounting vs S1 — `49f95959fef349ec…`
-  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/dead-deletions.json` — deleted declarations — `9c25a6e0604a51a1…`
-  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/s2/changed-modules.txt` — the 41 changed modules — `b536c876c4733000…`
-- **Checked by the results desk:** 2026-11-15 ~03:45Z, on the CORRECTED tree: the 41 changed S2 sources hash to the sha256 values in the 03:39Z MANIFEST.md; their physical lines recount to exactly −717 against the R1 tree; still 41 changed files (changed-modules.txt equals the manifest set); the other 42 S2 modules are byte-identical to R1. (The earlier 03:30Z recount of −727 matched the previous manifest.) No compile evidence checked (none passing exists yet).
-- **Provenance:** Simplification desk, 01:32–03:12Z (s2/, LOG.md; manifest generated 03:12Z).
-- **Correction history:** ~03:40Z: an Open Math review (lane L-S3) found two S2 deletions still referenced by qualified name in simp lists; the simplification desk restored them: 55 → 52 deletions beyond S1, −727 → −717 vs R1 (−877 → −867 vs the original); carried into the ledger by the supervisor (commit 49f745d) and recounted by the results desk; attempt 1 failed (12/67 modules) on a dangling omit prefix; logs kept in s2/logs-attempt1-failed-omit-prefix/
-- **Used for:** Would bring the realised simplification to −867 lines (ENC-R4 −126, R1 −24, S2 −717 including S1).
-- **Depends on:** [S1](#s1)
 
 ## New mathematics
 
@@ -652,7 +660,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-CERTIFICATE.json` — certificate — `cd3f9ff3a47f93d5…`
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/Verify-HeuleUnion.mjs` — verifier — `ca9510a2dfd81fbb…`
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-VALIDATION.txt` — validation — `e611fb63e2086a00…`
-  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `61264ca9e5d1d53a…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `7238725f26019c08…`
 - **Checked by the results desk:** 2026-11-14 23:50Z: re-ran `node HadwigerNelson/Main/verify-snapshot.mjs` (exit 0, 11 s), which re-runs Verify-HeuleUnion.mjs: passed, 548,628 pairs, 1,048 vertices, 5,487 edges, proper 5-colouring.
 - **Provenance:** Graph lanes (graph-union-audit), 2026-11-14; import validation 18:58Z.
 - **Correction history:** 17 colourings reduced candidate pairs 110,015 → 1,145, then 34 colourings separated all 543,141 nonadjacent pairs; unreconciled wording: 177 survivor pairs inside the original H locally vs 112 in remote wording (HEULE-UNION-VALIDATION.txt records remainingPairsInsideOriginalH 177); moot after the full separation certificate
@@ -1351,7 +1359,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Statement:** All 11,556 archived files (358,349,948 bytes) match MANIFEST.json, the frozen Lean source hashes match their validation records, and the finite graph certificates verify.
 - **Artifacts:**
   - `HadwigerNelson/Main/verify-snapshot.mjs` — verifier — `eb40b4b59188cd81…`
-  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `61264ca9e5d1d53a…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `7238725f26019c08…`
 - **Checked by the results desk:** Re-ran 2026-11-14 23:50Z: status passed, exit 0, 11 s.
 - **Provenance:** Supervisor import, 2026-11-14 18:57Z.
 

@@ -1,0 +1,10 @@
+started 2026-11-15T04:11:34.108359+00:00
+src C:\Users\jarom\Documents\Codex\2026-11-13\i\work\simplification-desk\s2\OAI\MeasureTheory\CompactFactors\RelativeCenters.lean
+sha256 40010491b6e6f343d1b4191471f930fb5b18817a29a072c4180fbbfa8e03eb13
+LEAN_PATH C:\Users\jarom\Documents\Codex\2026-11-13\i\work\simplification-desk\s2\build;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\Qq\.lake\build\lib\lean
+exit 0
+elapsed 141.1
+--- stdout
+
+--- stderr
+

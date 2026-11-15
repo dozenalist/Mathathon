@@ -1,0 +1,10 @@
+started 2026-11-15T04:41:19.193741+00:00
+src C:\Users\jarom\Documents\Codex\2026-11-13\i\work\simplification-desk\s2\OAI\Geometry\PlaneColoring\Transitions.lean
+sha256 f12a35efaefe92d2c898a69830c26d1d90647bf6c49161c2e0beccbde5e5d1f9
+LEAN_PATH C:\Users\jarom\Documents\Codex\2026-11-13\i\work\simplification-desk\s2\build;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\Qq\.lake\build\lib\lean
+exit 0
+elapsed 51.5
+--- stdout
+
+--- stderr
+

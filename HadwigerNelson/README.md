@@ -6,12 +6,12 @@
 
 Each status label comes from [RESULTS-LEDGER.md](RESULTS-LEDGER.md), which gives every result its hypotheses, file paths and SHA-256 hashes. `LEAN_VERIFIED` there means a local Lean 4.34.1 compile using only the standard axioms. Nothing has yet been rebuilt under the event's Lean 4.35.0 ([LEAN-435](RESULTS-LEDGER.md#lean-435), open).
 
-- **A shorter Lean proof of the supplied theorem.** The proof is 415 lines shorter in total, `LEAN_VERIFIED`:
+- **A shorter Lean proof of the supplied theorem.** The proof is 867 lines shorter in total, `LEAN_VERIFIED`:
   - the encoding refactor removes 126 lines ([ENC-R4](RESULTS-LEDGER.md#enc-r4));
   - the three-centre integration removes 24 more ([R1](RESULTS-LEDGER.md#r1)); its contract and dependency gates pass ([R1-GATES](RESULTS-LEDGER.md#r1-gates), `TESTED_FINITE`);
   - a dead-code pass removes 265 more ([S1](RESULTS-LEDGER.md#s1)). It also proves manuscript Lemma 6.7 branch-free in place, under its original name.
   
-  A further pass, [S2](RESULTS-LEDGER.md#s2), is S1 plus more deletions (−717 lines against R1). It is `CANDIDATE` with gates pending and is not counted.
+  A further pass, [S2](RESULTS-LEDGER.md#s2), deletes 52 more unreachable declarations (−717 lines against R1, so −867 in total), `LEAN_VERIFIED`.
 - **CC60, a closed $60^\circ$ cone obstruction** ([CC60](RESULTS-LEDGER.md#cc60), `LEAN_VERIFIED`). Suppose sets meet at one centre in a weak measurable colouring, their approach directions fit in a closed $60^\circ$ arc, and each set excludes some labels from its straddle region. Then at least three labels are excluded by none of them.
 - **Refereed paper results** (`PROVED_PAPER_REVIEWED`):
   - CC60 cannot be widened for arbitrary finite palettes ([SHARPNESS-20](RESULTS-LEDGER.md#sharpness-20), a 20-colour construction).

@@ -18,7 +18,7 @@ Timing: about 65 seconds per main slide. Slides 4, 11, 13 and 15 deserve more ti
 12. **CC60 [§4].** Read the hypotheses slowly: signed directions, closed 60° arc, zero-area exclusions. The sets need not be connected.
 13. **CC60 key step [§4].** Walk the five steps. End on where 60° is used: the 120° arc in step 2, and γ < 60° in step 4.
 14. **Sharpness [§4].** A 20-colour construction defeats every wider cone. Six-colour sharpness and novelty are *not* established.
-15. **415-line shorter Lean proof [§5].** Point to the two biggest bars, States −303 and ConditionalLimits −159, and the one new module, AvoidingTrace +237. S2 is not counted.
+15. **867-line shorter Lean proof [§5].** Point to the two biggest bars, States −303 and ConditionalLimits −159, and the one new module, AvoidingTrace +237. S2 is not counted.
 16. **Further local results [§5].** The four-list obstruction (refereed), even walks (Lean), and the producer pieces (still conditional).
 17. **Computations and corrections [§5].** Exact certificates, the 95 → 174 recount, and the false closed-120° claim (a 19-colour counterexample).
 18. **Honest status [§7–10].** The Lean 4.34.1 vs 4.35.0 gap, AI use, and how sure we are.

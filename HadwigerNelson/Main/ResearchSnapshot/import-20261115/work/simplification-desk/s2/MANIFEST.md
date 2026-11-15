@@ -1,6 +1,6 @@
 # S2 banking manifest (simplification desk)
 
-Generated 2026-11-15T03:39Z by `tools/make_manifest.py s2`. Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; all desk runs are local, one Lean process at a time.
+Generated 2026-11-15T05:24Z by `tools/make_manifest.py s2`. Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; all desk runs are local, one Lean process at a time.
 
 ## Claim
 
@@ -72,4 +72,6 @@ The deleted declarations are listed in `s1/dead-deletions.json`, `s2/dead-deleti
 
 ## Results
 
-PENDING: no gate logs yet.
+- Rebuild: 67/67 module logs have exit 0 with a sha256 that matches the current source (67 logs present).
+- Root axioms (s2/logs/axiomroots-s2.log): exit 0; 14/14 roots standard-only; sorryAx present: False.
+- Signature dump (s2/logs/sigdump-s2.log): exit 0; common 3038, changed 4 ['OAI.EuclideanFiveColor.BoundedMeasurable.Family.avg', 'OAI.EuclideanFiveColor.BoundedMeasurable.Family.l2Linear', 'OAI.EuclideanFiveColor.BoundedMeasurable.Family.toL2', 'OAI.EuclideanFiveColor.BoundedMeasurable.pairSequence'], removed 84, added ['OAI.EuclideanFiveColor.five_state_forced_label']; FORBIDDEN_ABSENT 78, FORBIDDEN_PRESENT 0.

@@ -1,0 +1,71 @@
+started 2026-11-15T05:21:59.595840+00:00
+src C:/Users/jarom/Documents/Codex/2026-11-13/i/work/simplification-desk/s2/AxiomRoots.lean
+sha256 4dda63592232d24a6da91e045980d93e2761c14488fcd427c82c3baa7d3842f5
+LEAN_PATH C:/Users/jarom/Documents/Codex/2026-11-13/i/work/simplification-desk/s2/build;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\jarom\Documents\Codex\2026-11-13\i\work\lean-env\mathlib4\.lake\packages\Qq\.lake\build\lib\lean
+exit 0
+elapsed 57.6
+--- stdout
+'OAI.PlaneFiveColor.Spectral.uniform_precision_contradiction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.PlaneFiveColor.Spectral.finite_uniform_precision_contradiction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.PlaneFiveColor.Spectral.finite_uniform_successor_contradiction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.PlaneFiveColor.Spectral.relative_singularity_successor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.PlaneFiveColor.Spectral.relative_singularity_approximation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.EuclideanFiveColor.no_proper_five_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.properColoring_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.Problem160.weakMeasurableColoring_seven' depends on axioms: [propext, Classical.choice, Quot.sound]
+@OAI.PlaneFiveColor.Spectral.EncodingApproximationAt : {X : Type u_1} →
+  {Y : Type u_2} →
+    {W : Type u_3} →
+      [inst : MeasurableSpace X] →
+        [MeasurableSpace Y] →
+          (μ : MeasureTheory.Measure X) →
+            [MeasureTheory.IsProbabilityMeasure μ] →
+              (X → Y) → (X → W) → {Z : Type u_4} → (X → Z) → (X → OAI.PlaneFiveColor.Spectral.D) → ℕ → ℝ → Prop
+@OAI.PlaneFiveColor.Spectral.FiniteEncodingApproximationAt : {X : Type u_1} →
+  {Y : Type u_2} →
+    {W : Type u_3} →
+      [inst : MeasurableSpace X] →
+        [MeasurableSpace Y] →
+          (μ : MeasureTheory.Measure X) →
+            [MeasureTheory.IsProbabilityMeasure μ] →
+              (X → Y) → (Y → W) → (X → OAI.PlaneFiveColor.Spectral.D) → ℕ → ℝ → Prop
+@OAI.PlaneFiveColor.Spectral.ambient_uniform_precision_contradiction : ∀ {X : Type u_1} {Y : Type u_2} {W : Type u_3}
+  [inst : MeasurableSpace X] [StandardBorelSpace X] [Nonempty X] [inst_3 : MeasurableSpace Y]
+  [inst_4 : MeasurableSpace W] [StandardBorelSpace W] [Nonempty W] (μ : MeasureTheory.Measure X)
+  [inst_7 : MeasureTheory.IsProbabilityMeasure μ] (p : X → Y) (q : X → W) (b : X → OAI.PlaneFiveColor.Spectral.D),
+  Measurable p →
+    Measurable q →
+      Measurable b →
+        ∀ (m : ℕ),
+          0 < m →
+            ∀ (g : Y → Fin m → OAI.PlaneFiveColor.Spectral.D),
+              (∀ᵐ (y : Y) ∂MeasureTheory.Measure.map p μ,
+                  (ProbabilityTheory.condDistrib b p μ) y = (↑m)⁻¹ • ∑ i, MeasureTheory.Measure.dirac (g y i)) →
+                OAI.PlaneFiveColor.Spectral.IsWild
+                    (OAI.EuclideanFiveColor.DifferenceFourier.differenceLaw (MeasureTheory.Measure.map q μ)
+                      (ProbabilityTheory.condDistrib b q μ)) →
+                  ∀ (ρ c : ℝ) (N : ℕ),
+                    0 < ρ →
+                      0 < c →
+                        0 < N →
+                          (∀ (ω : MeasureTheory.Measure Circle) [MeasureTheory.IsProbabilityMeasure ω],
+                              (∀ (n : ℕ), 0 < n → n ≤ N → ‖∫ (w : Circle), ↑w ^ n ∂ω‖ < c) →
+                                ω.real {w | ‖↑w - 1‖ ≤ 4 * ρ} < 1 / (4 * ↑m ^ 2)) →
+                            OAI.PlaneFiveColor.Spectral.AmbientEncodingAt μ p q b m (ρ ^ m / ↑m / 100 / 100) → False
+'OAI.EuclideanFiveColor.no_measurable_weak_five_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.no_proper_five_coloring_algebraic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.five_support_step_ban' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.five_state_forced_label' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.five_opposite_contacts_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+--- stderr
+

@@ -33,3 +33,5 @@
 2026-11-15T04:06:44Z S1 published (-415) per supervisor; report draft S1 numbers finalized and sent to exposition desk (sha bf079bbb); S2 corrected rebuild 9/67 done (only own lean running, 12 GB free); S2 = top priority (presentation headline -867)
 2026-11-15T04:29:25Z per Jarom/supervisor: no new deletion passes; lanes re-pointed to independent grep review of the 52 S2 deletions (S2-REVIEW.md by 05:30Z); S2 outcome goes to exposition desk (ledger owner)
 2026-11-15T04:32:05Z HANDOVER.md written; sent to research desk and supervisor; desk merged into research desk per Jarom; S2 rebuild left running (22/67)
+2026-11-15T05:24:32Z S2-DONE: 67/67 sha-matched exit 0; axiomroots-s2 14/14 standard no sorryAx; sigdump-s2 common 3038, removed 84, added 1, FORBIDDEN_ABSENT 78/0 present; BUT 4 changed: value hash only (type+binders identical) of RelativeProducts defs Family.avg/l2Linear/toL2/pairSequence. NOT a PASS as specified; handed to research desk
+2026-11-15T05:30:31Z [research desk, inheriting] S2 PASSED all gates; 4 changed defs = aux-proof renames (s2/AUXCHECK-NOTE.md); REPORT draft finalized; sent to exposition desk

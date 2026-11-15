@@ -85,3 +85,7 @@
 - 04:38Z usage: week $124.60 (24.9%), $7.25/h, projected $218.6; swarms already at max 16/400; research deliberately narrowed, no change.
 - 04:44Z heartbeat: desks waiting (S2 rebuild running, research reported <20 min); no collaborator commits; services alive; 1 lean.exe; coordinator cycle running.
 - 04:54Z heartbeat: desks waiting on S2 (research reported ~04:50); no collaborator commits; services alive; 1 lean.exe; cycle 04:44Z.
+- 05:04Z R1-3/R1-4 referee upgrades (MC120-STRICT, A6-PAIRED-PRODUCER -> PROVED_PAPER_REVIEWED) + presentation swaps pushed 01ce30b; verify passed; PDFs ok. Flag: R1-4 referee contradicts A6-COROLLARIES eps0-neighbourhood claim; exposition checking it isn't presented.
+- 05:05Z heartbeat: exposition checking eps0 claim; research waiting on S2; no collaborator commits; services alive; 1 lean.exe; cycle 04:58Z.
+- 05:14Z heartbeat: S2 ~58 logs; desks waiting; no collaborator commits; services alive; 1 lean.exe; cycle 05:13Z.
+- 05:24Z heartbeat: S2 finishing; desks waiting; no collaborator commits; services alive; 1 lean.exe.

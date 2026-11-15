@@ -19,7 +19,7 @@ For Jarom, Andrew and Carter. It covers what you must be able to say without the
 | Three-centre proof of Lemma 6.3 [§3] | proved; Lean 4.34.1; in R1 | Two support directions $60^\circ$ apart give centres $x$, $x+e^{ib}$, $x+e^{id}$, all one unit apart, so their palettes are disjoint. Each outer palette needs a label outside $K$, and $J$ is already used at $x$. So both outer palettes contain the single leftover label $X$: contradiction. |
 | CC60 [§4] | Lean 4.34.1 | If only labels $a,b$ survived, $W=\bigcap\Delta(K_i)$ would be two-coloured. Outer strips over a $120^\circ$ arc give one arc $S$ of radius $r\in(1,2)$ inside $W$. Turning by $\arccos(r/2)<60^\circ$ gives unit neighbours, so binary rigidity makes $S$ one colour. The ends of $S$ are $r>1$ apart, so there is a same-colour unit pair: contradiction. **The $60^\circ$ is used twice:** the arc is $180^\circ-60^\circ$, and $\arccos(r/2)<60^\circ$. |
 | Sharpness [§4] | proved (refereed), not Lean | For any cone wider than $60^\circ$, two short segments and an explicit 20-colouring leave only two labels. So $60^\circ$ is sharp for *arbitrary* palettes, though not shown for six colours. |
-| 415-line shorter Lean proof [§5] | Lean 4.34.1 | The total is the encoding refactor ($-126$), plus R1, the three-centre integration ($-24$), plus S1, the dead-code deletion with Lemma 6.7 made branch-free ($-265$). The root theorems are unchanged and use only the standard axioms. S2 is not counted until its gates pass. |
+| 867-line shorter Lean proof [§5] | Lean 4.34.1 | The total is the encoding refactor ($-126$), plus R1, the three-centre integration ($-24$), plus S1, dead-code deletion with Lemma 6.7 made branch-free ($-265$), plus S2, a second dead-code pass ($-452$). The root theorems are unchanged and use only the standard axioms. The chart on slide 15 shows the build after S1. |
 | Canonical paired palette excluded [§5] | proved (refereed) | A finite unit-distance configuration in the list field has no proper list colouring, so no centre carries that palette. |
 | Closed-$120^\circ$ MC120 is false [§5] | proved (refereed) | A 19-colour counterexample. |
 
@@ -30,7 +30,7 @@ For Jarom, Andrew and Carter. It covers what you must be able to say without the
 3. **What is new versus known?** The five-colour theorem is OpenAI's. Ours:
    - the three-centre proof;
    - CC60 and its sharpness;
-   - the 415-line shorter Lean proof;
+   - the 867-line shorter Lean proof;
    - the refereed lemmas and counterexamples;
    - the checked reader.
    CC60's novelty is **not** established: a bounded literature search found it only as a new candidate.
@@ -51,4 +51,4 @@ For Jarom, Andrew and Carter. It covers what you must be able to say without the
 - "We proved six colours fail." We did not.
 - "CC60 rules out six colours." It forbids a kind of local configuration.
 - "Lean-verified."
-- Adding the S1 and S2 line counts together: S2 *includes* S1.
+- Saying S2 removed 717 lines on top of S1: S2's −717 is measured against R1 and *includes* S1's −265.

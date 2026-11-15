@@ -50,7 +50,7 @@ Colour the plane so that any two points at distance exactly $1$ get different co
 \item A six-lesson reader of the second move: refereed, with checked figures.
 \item A three-centre proof of the manuscript's strict-state separation (Lemma 6.3) \st{proved; Lean 4.34.1}
 \item CC60, a closed $60^\circ$ cone obstruction \st{Lean 4.34.1}, and its sharpness above $60^\circ$ for arbitrary finite palettes \st{proved}
-\item A Lean proof of the supplied theorem that is 415 lines shorter \st{Lean 4.34.1}
+\item A Lean proof of the supplied theorem that is 867 lines shorter \st{Lean 4.34.1}
 \item Refereed local lemmas, finite certificates and corrections.
 \end{itemize}
 \medskip
@@ -210,10 +210,10 @@ Suppose only two labels $a,b$ survive. Let $W=\bigcap_i\Delta(K_i)$, an open set
 \src{\S4}
 \end{frame}
 
-\begin{frame}{A 415-line shorter Lean proof}
+\begin{frame}{An 867-line shorter Lean proof}
 \centering\includegraphics[height=0.66\textheight,width=\linewidth,keepaspectratio]{slide-figures/simplification-modules.png}
 \par\smallskip\raggedright\footnotesize
-Encoding refactor $-126$; three-centre integration R1 $-24$ (gates pass); dead-code pass S1 $-265$, which also proves Lemma 6.7 branch-free under its own name. The root theorems are unchanged and use only the standard axioms \st{Lean 4.34.1}. A further pass, S2, is a candidate and is not counted.
+Chart: the build after S1 ($-415$). Encoding refactor $-126$; three-centre integration R1 $-24$ (gates pass); dead-code pass S1 $-265$, which also proves Lemma 6.7 branch-free under its own name. The root theorems are unchanged and use only the standard axioms \st{Lean 4.34.1}. A further dead-code pass, S2, removes $452$ more lines \st{Lean 4.34.1}.
 \src{\S5}
 \end{frame}
 

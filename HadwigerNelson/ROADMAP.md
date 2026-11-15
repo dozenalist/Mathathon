@@ -6,9 +6,8 @@
    - Done:
      - The three-centre integration is complete ([R1](RESULTS-LEDGER.md#r1), `LEAN_VERIFIED`).
      - Its contract and dependency gates pass ([R1-GATES](RESULTS-LEDGER.md#r1-gates)).
-     - The dead-code pass [S1](RESULTS-LEDGER.md#s1) (`LEAN_VERIFIED`, −265 lines) also puts the branch-free step ban in place ([STEPBAN-SWAP](RESULTS-LEDGER.md#stepban-swap)). The realised total is now −415 lines against the supplied original.
+     - The dead-code pass [S1](RESULTS-LEDGER.md#s1) (`LEAN_VERIFIED`, −265 lines) also puts the branch-free step ban in place ([STEPBAN-SWAP](RESULTS-LEDGER.md#stepban-swap)). A second dead-code pass, [S2](RESULTS-LEDGER.md#s2) (`LEAN_VERIFIED`, −717 against R1), brings the realised total to −867 lines against the supplied original.
    - Remaining:
-     - Pass the gates for [S2](RESULTS-LEDGER.md#s2) (`CANDIDATE`, −717 lines against R1).
      - **Lean 4.35.0 port: Carter.** Rebuild the S1 tree, CC60 and the headline roots under the event's Lean 4.35.0, and re-run the axiom and signature gates ([LEAN-435](RESULTS-LEDGER.md#lean-435), open; handoff notes in [Lean/PORT-4.35.0-NOTES.md](Lean/PORT-4.35.0-NOTES.md)).
    - Keep `five_support_step_ban` (manuscript Lemma 6.7). Keep `state_support_avoiding_trace` (Lemma 6.2) too.
 2. **Continue the geometric obstruction problem beyond CC60.** The open items are:

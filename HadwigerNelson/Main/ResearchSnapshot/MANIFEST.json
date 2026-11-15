@@ -92374,11 +92374,11 @@
     },
     {
       "path": "import-20261115/work/research-desk/LOG.md",
-      "bytes": 12779,
-      "sha256": "5c69241d5ec43338a67bd88a44c36e1d7978f0c23a6d4a829e26b00d6b14d5e7",
+      "bytes": 13648,
+      "sha256": "3b2678ad92918ff0aac45f18cf28da6a1609f158e96e0258ebc5c200518cae7e",
       "source": "research-workspace/work/research-desk/LOG.md",
-      "sourceModifiedUtc": "2026-11-15T04:59:36.157Z",
-      "capturedAtUtc": "2026-11-15T05:01:11.636Z"
+      "sourceModifiedUtc": "2026-11-15T05:31:49.476Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
     },
     {
       "path": "import-20261115/work/research-desk/G3-r2/G3-ArcCover-r2.lean",
@@ -92694,11 +92694,11 @@
     },
     {
       "path": "import-20261115/work/automation-supervisor/research-plan.json",
-      "bytes": 1404,
-      "sha256": "a5abb93f51e84e8640dcef4f53016870f27f3d3a8750ba053eb83da33c5421e8",
+      "bytes": 1328,
+      "sha256": "6acbaa5e815efc42414c5cc2190d2a3d706a098920bbcddb7f27467e05b37073",
       "source": "research-workspace/work/automation-supervisor/research-plan.json",
-      "sourceModifiedUtc": "2026-11-15T04:58:50.200Z",
-      "capturedAtUtc": "2026-11-15T05:01:11.636Z"
+      "sourceModifiedUtc": "2026-11-15T05:28:28.520Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
     },
     {
       "path": "import-20261115/outputs/ASTRA-DISJUNCTIVE-PALETTE-A8.txt",
@@ -92830,18 +92830,18 @@
     },
     {
       "path": "import-20261115/work/cloud-supervisor/LOG.md",
-      "bytes": 17403,
-      "sha256": "fc1def8be87f075e1558e93b928a8f9774cc1dc0b908682805c0b8383001a1d3",
+      "bytes": 18032,
+      "sha256": "9130836f64655d335c762555e5f0276b4de457ca073299656fae1091c9093c9c",
       "source": "research-workspace/work/cloud-supervisor/LOG.md",
-      "sourceModifiedUtc": "2026-11-15T04:54:15.899Z",
-      "capturedAtUtc": "2026-11-15T05:01:11.636Z"
+      "sourceModifiedUtc": "2026-11-15T05:24:07.876Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
     },
     {
       "path": "import-20261115/IMPORT-NOTES.md",
-      "bytes": 62676,
-      "sha256": "6c8310d3babb3b88eba8c16533fe8914016323777001b37ce60372338e2c1edb",
+      "bytes": 72543,
+      "sha256": "468f5a54efec5561093bf60f79a423d00aef04a38c1d3ec075d33d34ea780b72",
       "source": "results-desk (generated)",
-      "capturedAtUtc": "2026-11-15T05:01:11.636Z"
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
     },
     {
       "path": "import-20261115/work/openmath-supervisor/checkins/20261114T191820Z/inner-outer-orbit-certificates.json",
@@ -93733,11 +93733,11 @@
     },
     {
       "path": "import-20261115/work/simplification-desk/LOG.md",
-      "bytes": 9349,
-      "sha256": "93acedec76b9920aecad5028c9579b2c4da18b45d0943ae07fcdfbbca13160a9",
+      "bytes": 9867,
+      "sha256": "a1e531d408810fed203e5fb145e497ee61f88566d05f319ada934c60bfd6e645",
       "source": "research-workspace/work/simplification-desk/LOG.md",
-      "sourceModifiedUtc": "2026-11-15T04:32:05.098Z",
-      "capturedAtUtc": "2026-11-15T05:01:11.636Z"
+      "sourceModifiedUtc": "2026-11-15T05:30:31.259Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
     },
     {
       "path": "import-20261115/work/results-desk/L-R1/R1-1-followup-d.txt",
@@ -94021,11 +94021,11 @@
     },
     {
       "path": "import-20261115/work/simplification-desk/s2/MANIFEST.md",
-      "bytes": 7823,
-      "sha256": "1ce5d245e687c015c0b97d3729a5699870a92c1d5ae9d4916e74f338d13b252e",
+      "bytes": 8422,
+      "sha256": "c6316d7dd9e609524a3464ac3aecea072f6db8affa313046e68801025e45bf90",
       "source": "research-workspace/work/simplification-desk/s2/MANIFEST.md",
-      "sourceModifiedUtc": "2026-11-15T03:39:01.710Z",
-      "capturedAtUtc": "2026-11-15T03:43:21.162Z"
+      "sourceModifiedUtc": "2026-11-15T05:24:15.179Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
     },
     {
       "path": "import-20261115/work/simplification-desk/s2/AxiomRoots.lean",
@@ -94714,6 +94714,614 @@
       "source": "research-workspace/work/automation-supervisor/inbox/20261115T045717-download-1-R1-4-REFEREE.md",
       "sourceModifiedUtc": "2026-11-15T04:58:50.186Z",
       "capturedAtUtc": "2026-11-15T05:01:11.636Z"
+    },
+    {
+      "path": "import-20261115/work/automation-supervisor/replies/20261115T051222.json",
+      "bytes": 2310,
+      "sha256": "0a56680724587f16c03295e1286d5de95b692a74efe51dd8a66e8c7d721ca0e6",
+      "source": "research-workspace/work/automation-supervisor/replies/20261115T051222.json",
+      "sourceModifiedUtc": "2026-11-15T05:13:34.565Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/automation-supervisor/replies/20261115T052726.json",
+      "bytes": 3789,
+      "sha256": "b0711c2e2d0f875e1a70558a12e9bc96d408eebcce8d1f9d499e3346d021a69e",
+      "source": "research-workspace/work/automation-supervisor/replies/20261115T052726.json",
+      "sourceModifiedUtc": "2026-11-15T05:28:28.549Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/01-WeakColoring.log",
+      "bytes": 1257,
+      "sha256": "dd083ec889c1078d61f778c363d937fec8f44c8dc418f9ed0f93325cfe96b348",
+      "source": "research-workspace/work/simplification-desk/s2/logs/01-WeakColoring.log",
+      "sourceModifiedUtc": "2026-11-15T03:47:01.368Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/02-Compactness.log",
+      "bytes": 1256,
+      "sha256": "aacb3ab6d6c62a8c613ef519d3dbe7396c49bd58af0bb4659f4a2dacfcc38a4e",
+      "source": "research-workspace/work/simplification-desk/s2/logs/02-Compactness.log",
+      "sourceModifiedUtc": "2026-11-15T03:49:06.866Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/03-CircleOperator.log",
+      "bytes": 1259,
+      "sha256": "b175676ef191d9f78d8ef96f23094df8bee7b692a3c3c5a127ff202a71164c55",
+      "source": "research-workspace/work/simplification-desk/s2/logs/03-CircleOperator.log",
+      "sourceModifiedUtc": "2026-11-15T03:51:19.601Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/04-InvariantMean.log",
+      "bytes": 1258,
+      "sha256": "947cc7b55c4a7299b53063e2f9bf6abdc5489318d2b80613f2d2646f6e0ccfa5",
+      "source": "research-workspace/work/simplification-desk/s2/logs/04-InvariantMean.log",
+      "sourceModifiedUtc": "2026-11-15T03:55:35.989Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/05-Multipliers.log",
+      "bytes": 1256,
+      "sha256": "42150487731b369eac05c87bdbeb7dd41bc22037de080f00b9f64e1f7925ccd9",
+      "source": "research-workspace/work/simplification-desk/s2/logs/05-Multipliers.log",
+      "sourceModifiedUtc": "2026-11-15T03:57:37.899Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/06-FourierTests.log",
+      "bytes": 1256,
+      "sha256": "a6fc883dae337ced66b2499fa238121acb9003a36c7f3d608499f19a2f5afd57",
+      "source": "research-workspace/work/simplification-desk/s2/logs/06-FourierTests.log",
+      "sourceModifiedUtc": "2026-11-15T03:59:01.258Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/07-PhaseCollision.log",
+      "bytes": 1258,
+      "sha256": "84f2eef28dd5ff69038be11641f7354514869222df089eea8704b1fcae67205b",
+      "source": "research-workspace/work/simplification-desk/s2/logs/07-PhaseCollision.log",
+      "sourceModifiedUtc": "2026-11-15T04:00:40.845Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/08-ConditionalSelection.log",
+      "bytes": 1271,
+      "sha256": "8a7fbd8d2701bc22bf841f5e75680c20ed36ef48f263dd4486ba7f2298e49f13",
+      "source": "research-workspace/work/simplification-desk/s2/logs/08-ConditionalSelection.log",
+      "sourceModifiedUtc": "2026-11-15T04:02:27.521Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/09-ConditionalSpectrum.log",
+      "bytes": 1264,
+      "sha256": "ffc62acf0f57da33d1effae57ada49438be8decbc04c0e1fb1cd68c97d60fd59",
+      "source": "research-workspace/work/simplification-desk/s2/logs/09-ConditionalSpectrum.log",
+      "sourceModifiedUtc": "2026-11-15T04:05:47.330Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/10-Amenability.log",
+      "bytes": 1262,
+      "sha256": "d8de0fbf2d1b96bc75dc60b2c0662a7fb96853f01b7b659993d6ebc1ecd1a72e",
+      "source": "research-workspace/work/simplification-desk/s2/logs/10-Amenability.log",
+      "sourceModifiedUtc": "2026-11-15T04:09:06.666Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/11-Centers.log",
+      "bytes": 1258,
+      "sha256": "b715be65e94f150ec161c8dc53a25c4e9720cf1d4fb1b4f7fa02bb132e66e6a1",
+      "source": "research-workspace/work/simplification-desk/s2/logs/11-Centers.log",
+      "sourceModifiedUtc": "2026-11-15T04:11:33.360Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/12-RelativeCenters.log",
+      "bytes": 1266,
+      "sha256": "972ba52d275e6810000d01427863b88b65f62e72f64ba6928253f102d60b6268",
+      "source": "research-workspace/work/simplification-desk/s2/logs/12-RelativeCenters.log",
+      "sourceModifiedUtc": "2026-11-15T04:13:55.184Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/13-Approximation.log",
+      "bytes": 1263,
+      "sha256": "c810693d79a9a07726071dbdd734718ed28d318f87232f72abc8397a0c1aab05",
+      "source": "research-workspace/work/simplification-desk/s2/logs/13-Approximation.log",
+      "sourceModifiedUtc": "2026-11-15T04:15:28.243Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/14-ConditionalLimits.log",
+      "bytes": 1268,
+      "sha256": "a3864a6a5a75b853d3e0f2970ae92dbb52da9212e7ab96bb68b1d043b2792d0e",
+      "source": "research-workspace/work/simplification-desk/s2/logs/14-ConditionalLimits.log",
+      "sourceModifiedUtc": "2026-11-15T04:17:11.188Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/15-Kernels.log",
+      "bytes": 1258,
+      "sha256": "c2134d114af262ffd76f7875597eda122405a687dc4e90132172b3693cd45b52",
+      "source": "research-workspace/work/simplification-desk/s2/logs/15-Kernels.log",
+      "sourceModifiedUtc": "2026-11-15T04:19:51.050Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/16-BoundedFunctions.log",
+      "bytes": 1267,
+      "sha256": "5d257c6549d8bee71c9be224bedeb8b15db32771c3d7fc5e1ecc52b579a607f5",
+      "source": "research-workspace/work/simplification-desk/s2/logs/16-BoundedFunctions.log",
+      "sourceModifiedUtc": "2026-11-15T04:21:46.892Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/17-RelativeProducts.log",
+      "bytes": 1266,
+      "sha256": "dcb626077a3131c87637661e96e8a6bf11dafe8c01e152854d547cb0d1914226",
+      "source": "research-workspace/work/simplification-desk/s2/logs/17-RelativeProducts.log",
+      "sourceModifiedUtc": "2026-11-15T04:23:08.773Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/18-Separability.log",
+      "bytes": 1263,
+      "sha256": "4c748c020478c257d61b0d4265c43ebc9a96f5454b87692a22747a040c3726e4",
+      "source": "research-workspace/work/simplification-desk/s2/logs/18-Separability.log",
+      "sourceModifiedUtc": "2026-11-15T04:24:55.484Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/19-AlgebraModels.log",
+      "bytes": 1263,
+      "sha256": "7a9b9d932c2df88ae9eb506e2e2ba0c7a7b58d317ef04a94c4f0a516d5c56e4b",
+      "source": "research-workspace/work/simplification-desk/s2/logs/19-AlgebraModels.log",
+      "sourceModifiedUtc": "2026-11-15T04:26:20.761Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/20-Functions.log",
+      "bytes": 1259,
+      "sha256": "6a5d695ba9233962d113faa5718599a15135e10fccbb0776e77730c883a0073c",
+      "source": "research-workspace/work/simplification-desk/s2/logs/20-Functions.log",
+      "sourceModifiedUtc": "2026-11-15T04:27:36.652Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/21-Factors.log",
+      "bytes": 1257,
+      "sha256": "918c9691d6d56d2f9a74210813e570b04a4171936cde2a008e1cd203aa98a228",
+      "source": "research-workspace/work/simplification-desk/s2/logs/21-Factors.log",
+      "sourceModifiedUtc": "2026-11-15T04:29:06.213Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/22-Stationary.log",
+      "bytes": 1260,
+      "sha256": "a45a07ee7d046dd676016c3999ff5530a8d5492c52a4a6557fb0e62afde4b1e3",
+      "source": "research-workspace/work/simplification-desk/s2/logs/22-Stationary.log",
+      "sourceModifiedUtc": "2026-11-15T04:30:38.566Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/23-Representations.log",
+      "bytes": 1260,
+      "sha256": "28dec03921eff749b3653ebbc65e13ea71a094ab3ce28e4139030c99ea16a8b1",
+      "source": "research-workspace/work/simplification-desk/s2/logs/23-Representations.log",
+      "sourceModifiedUtc": "2026-11-15T04:33:14.217Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/24-Energy.log",
+      "bytes": 1250,
+      "sha256": "22489eae3d3b532f2b1aceabac9e13ae7d38fecaba4dc1fc9ca6947a419f4dc1",
+      "source": "research-workspace/work/simplification-desk/s2/logs/24-Energy.log",
+      "sourceModifiedUtc": "2026-11-15T04:34:36.795Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/25-RadialEnergy.log",
+      "bytes": 1256,
+      "sha256": "b0ae444069a5cec9ff521d6f4b9f6dc1774597f96b6c2dbbad8cc99b3bca0aff",
+      "source": "research-workspace/work/simplification-desk/s2/logs/25-RadialEnergy.log",
+      "sourceModifiedUtc": "2026-11-15T04:35:55.736Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/26-SpectralMeasure.log",
+      "bytes": 1259,
+      "sha256": "fcceeb28c90c287136901c6d5752bdd607261a24f04e8bcaa7224e5df7bc5a8f",
+      "source": "research-workspace/work/simplification-desk/s2/logs/26-SpectralMeasure.log",
+      "sourceModifiedUtc": "2026-11-15T04:37:14.630Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/27-Ergodicity.log",
+      "bytes": 1254,
+      "sha256": "55581bf2e17139d7633071c0bd028590e33c879ee6cc2a083b6268b3952343e9",
+      "source": "research-workspace/work/simplification-desk/s2/logs/27-Ergodicity.log",
+      "sourceModifiedUtc": "2026-11-15T04:38:23.966Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/28-Expansion.log",
+      "bytes": 1253,
+      "sha256": "e0f46e6ef0e7067a48d13c8b426cab8e50e1f7f760981fa74abeccde0bf39ff5",
+      "source": "research-workspace/work/simplification-desk/s2/logs/28-Expansion.log",
+      "sourceModifiedUtc": "2026-11-15T04:39:23.552Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/29-BinaryDynamics.log",
+      "bytes": 1258,
+      "sha256": "ff1c5e9e5d7648f0ba0a6534dd8f442e2fbba437f0c95d531dd5bbf1c5983772",
+      "source": "research-workspace/work/simplification-desk/s2/logs/29-BinaryDynamics.log",
+      "sourceModifiedUtc": "2026-11-15T04:40:20.123Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/30-CircleTransport.log",
+      "bytes": 1259,
+      "sha256": "1ec150beb1eddb01cbc7f793a80d6b6e58bab129f42d63d2d206d28f6a3d5808",
+      "source": "research-workspace/work/simplification-desk/s2/logs/30-CircleTransport.log",
+      "sourceModifiedUtc": "2026-11-15T04:41:18.523Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/31-Transitions.log",
+      "bytes": 1255,
+      "sha256": "95db59e5b3662290bd94293a0a7932f32db996bc1a593e55b89a527203b5230e",
+      "source": "research-workspace/work/simplification-desk/s2/logs/31-Transitions.log",
+      "sourceModifiedUtc": "2026-11-15T04:42:10.739Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/32-Palettes.log",
+      "bytes": 1252,
+      "sha256": "0fe0c0b1ae9b66b4e0d3ff409c69d80570701c5035f96c0bb564aaf6057a9d61",
+      "source": "research-workspace/work/simplification-desk/s2/logs/32-Palettes.log",
+      "sourceModifiedUtc": "2026-11-15T04:43:09.676Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/33-PaletteDensity.log",
+      "bytes": 1258,
+      "sha256": "53097cef1c216509cd48b5655938e21a7d7e36150b3c237b657ec9f664853146",
+      "source": "research-workspace/work/simplification-desk/s2/logs/33-PaletteDensity.log",
+      "sourceModifiedUtc": "2026-11-15T04:44:31.008Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/34-PaletteTransport.log",
+      "bytes": 1260,
+      "sha256": "fd7dfa2d33459037136026a0597e261803df37fb77993f87b11a5a0322030d70",
+      "source": "research-workspace/work/simplification-desk/s2/logs/34-PaletteTransport.log",
+      "sourceModifiedUtc": "2026-11-15T04:45:42.480Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/35-Rigidity.log",
+      "bytes": 1252,
+      "sha256": "4227fefcca89f9c01fa71e5ae01cea18c5aa591e838b180cdf15d2b75976ff3d",
+      "source": "research-workspace/work/simplification-desk/s2/logs/35-Rigidity.log",
+      "sourceModifiedUtc": "2026-11-15T04:46:41.793Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/36-BinaryPalettes.log",
+      "bytes": 1258,
+      "sha256": "7b5fd0efcc6674139e81ce212dd32714753a6a138214b227b3c7a67ea678dbf6",
+      "source": "research-workspace/work/simplification-desk/s2/logs/36-BinaryPalettes.log",
+      "sourceModifiedUtc": "2026-11-15T04:47:36.573Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/37-States.log",
+      "bytes": 1250,
+      "sha256": "c21bf2248f204199325f6be574ad9e0201ef3071f17d4784a9f707555aba9dd7",
+      "source": "research-workspace/work/simplification-desk/s2/logs/37-States.log",
+      "sourceModifiedUtc": "2026-11-15T04:48:47.387Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/38-BoundaryTrace.log",
+      "bytes": 1257,
+      "sha256": "40fdad2136f03096d6964d888524307e4559f888df18853de5b4e578f460561d",
+      "source": "research-workspace/work/simplification-desk/s2/logs/38-BoundaryTrace.log",
+      "sourceModifiedUtc": "2026-11-15T04:49:48.135Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/39-AngularBoundary.log",
+      "bytes": 1259,
+      "sha256": "a71f88d63610cec51f3874248988ba16a1060628747a73681651227b1aae8c87",
+      "source": "research-workspace/work/simplification-desk/s2/logs/39-AngularBoundary.log",
+      "sourceModifiedUtc": "2026-11-15T04:51:14.328Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/40-Exclusion.log",
+      "bytes": 1253,
+      "sha256": "0885b3ef594d849a6b48663cc2450367323d444552da4e17ddb7aac73ba51f19",
+      "source": "research-workspace/work/simplification-desk/s2/logs/40-Exclusion.log",
+      "sourceModifiedUtc": "2026-11-15T04:52:13.993Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/41-AvoidingTrace.log",
+      "bytes": 1509,
+      "sha256": "cba163eedd53e0550dfc23d28f1097dd91e50031b3a14636310a4211d14d152a",
+      "source": "research-workspace/work/simplification-desk/s2/logs/41-AvoidingTrace.log",
+      "sourceModifiedUtc": "2026-11-15T04:53:04.959Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/42-FourContinuity.log",
+      "bytes": 1258,
+      "sha256": "b65259f5eca9be959c7022e24475572f6d54f5a381cdc392d9b1cc11974f98d3",
+      "source": "research-workspace/work/simplification-desk/s2/logs/42-FourContinuity.log",
+      "sourceModifiedUtc": "2026-11-15T04:54:19.443Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/43-FourTransport.log",
+      "bytes": 1257,
+      "sha256": "8489cd889241a0f8ef82f7575c30797b4d6cdf4c2854827b3a63f549f3c6c022",
+      "source": "research-workspace/work/simplification-desk/s2/logs/43-FourTransport.log",
+      "sourceModifiedUtc": "2026-11-15T04:55:13.395Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/44-Accumulation.log",
+      "bytes": 1256,
+      "sha256": "d362c123600dca1e66361bd3a1fd25d93d42e02e384d744f07078d73b28efe26",
+      "source": "research-workspace/work/simplification-desk/s2/logs/44-Accumulation.log",
+      "sourceModifiedUtc": "2026-11-15T04:56:03.539Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/45-BorelTransfer.log",
+      "bytes": 1257,
+      "sha256": "51cc4aeb7df3753b2e66db38ba0a2d5fa502962f70ba85aa72c46d9bc646f2dc",
+      "source": "research-workspace/work/simplification-desk/s2/logs/45-BorelTransfer.log",
+      "sourceModifiedUtc": "2026-11-15T04:57:15.533Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/46-FiveSupport.log",
+      "bytes": 1255,
+      "sha256": "74c56487e00d722177f28882515268d1de29ba74a4d0fbd9ded64a30bcf43b2f",
+      "source": "research-workspace/work/simplification-desk/s2/logs/46-FiveSupport.log",
+      "sourceModifiedUtc": "2026-11-15T04:58:19.924Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/47-CyclicCore.log",
+      "bytes": 1254,
+      "sha256": "62b89a39d6eb9c80ff2e2b9d2299d40f1d6d3c4e996257255a38ad1d0d1e97d9",
+      "source": "research-workspace/work/simplification-desk/s2/logs/47-CyclicCore.log",
+      "sourceModifiedUtc": "2026-11-15T04:59:27.572Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/48-DiskAverages.log",
+      "bytes": 1256,
+      "sha256": "95d10a81c769cfcefd5c7401b414f321a642b118e6257eabe3faed4a6a12609e",
+      "source": "research-workspace/work/simplification-desk/s2/logs/48-DiskAverages.log",
+      "sourceModifiedUtc": "2026-11-15T05:00:40.261Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/49-PlanarCovers.log",
+      "bytes": 1256,
+      "sha256": "cdbbb51c5b6253960aedeff703f7636fb6dfe168772ae34830ef3bc31cef3871",
+      "source": "research-workspace/work/simplification-desk/s2/logs/49-PlanarCovers.log",
+      "sourceModifiedUtc": "2026-11-15T05:02:17.009Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/50-GraphRealization.log",
+      "bytes": 1260,
+      "sha256": "9ce397aa8f6a22f9d9ca6890872bba10a81fdc97a91343ac15c60e5c60ec896a",
+      "source": "research-workspace/work/simplification-desk/s2/logs/50-GraphRealization.log",
+      "sourceModifiedUtc": "2026-11-15T05:03:31.660Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/51-Interfaces.log",
+      "bytes": 1254,
+      "sha256": "93818dedeb848d41d0666095cdec169472b4b6497ee32e6be1717c35155d7207",
+      "source": "research-workspace/work/simplification-desk/s2/logs/51-Interfaces.log",
+      "sourceModifiedUtc": "2026-11-15T05:04:59.613Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/52-Moser.log",
+      "bytes": 1250,
+      "sha256": "59fa5fa92c8c93e6ab4632e8d4a5b7218d819b05969366e36e418dd890d37e84",
+      "source": "research-workspace/work/simplification-desk/s2/logs/52-Moser.log",
+      "sourceModifiedUtc": "2026-11-15T05:07:04.470Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/53-Sectors.log",
+      "bytes": 1251,
+      "sha256": "61368d0c0c955e75c4c05a57fb86270f60a2c51cd592778449486ab50caf5f77",
+      "source": "research-workspace/work/simplification-desk/s2/logs/53-Sectors.log",
+      "sourceModifiedUtc": "2026-11-15T05:08:07.953Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/54-ContinuumLimits.log",
+      "bytes": 1259,
+      "sha256": "4fe8cf7ec792bd08d6f47a130a91baae2c7f92c758ae809f730ad95b8f1fd9bd",
+      "source": "research-workspace/work/simplification-desk/s2/logs/54-ContinuumLimits.log",
+      "sourceModifiedUtc": "2026-11-15T05:09:07.513Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/55-DiskExtension.log",
+      "bytes": 1257,
+      "sha256": "eae23f4f3dff7592680b46add4345fdf72359ee87c6664787f53c2583d35affd",
+      "source": "research-workspace/work/simplification-desk/s2/logs/55-DiskExtension.log",
+      "sourceModifiedUtc": "2026-11-15T05:10:17.146Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/56-GraphCuts.log",
+      "bytes": 1253,
+      "sha256": "415cefd3058d916fe8a96c1d9224c6f7c0976c5653581cfb1c2b0168684786a7",
+      "source": "research-workspace/work/simplification-desk/s2/logs/56-GraphCuts.log",
+      "sourceModifiedUtc": "2026-11-15T05:11:24.291Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/57-HoleApproximation.log",
+      "bytes": 1261,
+      "sha256": "389a389ed49f8ae9727f831d5b4ce982363ee3a9d031c4e58c269396c4a93ef0",
+      "source": "research-workspace/work/simplification-desk/s2/logs/57-HoleApproximation.log",
+      "sourceModifiedUtc": "2026-11-15T05:12:26.143Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/58-GraphPatches.log",
+      "bytes": 1256,
+      "sha256": "009822ed1b90aa637ed643637b6e22147a1f5f05343860a09c0e829325886b1f",
+      "source": "research-workspace/work/simplification-desk/s2/logs/58-GraphPatches.log",
+      "sourceModifiedUtc": "2026-11-15T05:13:36.084Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/59-FullApproximation.log",
+      "bytes": 1261,
+      "sha256": "50240d8d267ecbe15cebd8a5140f4cbb63c6ac876982a73a90f78d504156be9c",
+      "source": "research-workspace/work/simplification-desk/s2/logs/59-FullApproximation.log",
+      "sourceModifiedUtc": "2026-11-15T05:14:56.950Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/60-Mesh.log",
+      "bytes": 1248,
+      "sha256": "80b2a53522a94c15cf459fe56c5a4002da89fc57ab5ba16bc2a35179ec12690d",
+      "source": "research-workspace/work/simplification-desk/s2/logs/60-Mesh.log",
+      "sourceModifiedUtc": "2026-11-15T05:15:51.833Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/61-Five.log",
+      "bytes": 1248,
+      "sha256": "b2db1273ac1a06c5a42831a920d4ccdf6fa651a446ee04c8200e744c57edca1a",
+      "source": "research-workspace/work/simplification-desk/s2/logs/61-Five.log",
+      "sourceModifiedUtc": "2026-11-15T05:16:44.488Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/62-Lattice.log",
+      "bytes": 1251,
+      "sha256": "c88e330034eb064b1ff66095c3827ab4624f197ad77ca105a2c86849cec22a4a",
+      "source": "research-workspace/work/simplification-desk/s2/logs/62-Lattice.log",
+      "sourceModifiedUtc": "2026-11-15T05:17:36.934Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/63-Seven.log",
+      "bytes": 1249,
+      "sha256": "6f5e331cd39055a6ac82cc38b8a9ed197ddbd67cc66be1e231e2743415946f8d",
+      "source": "research-workspace/work/simplification-desk/s2/logs/63-Seven.log",
+      "sourceModifiedUtc": "2026-11-15T05:18:29.896Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/64-Chromatic.log",
+      "bytes": 1833,
+      "sha256": "667af56c10147fcfb592426df8075f4a8db3d48bc6316ac8d9430ae14cffbb68",
+      "source": "research-workspace/work/simplification-desk/s2/logs/64-Chromatic.log",
+      "sourceModifiedUtc": "2026-11-15T05:19:24.064Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/65-Converse.log",
+      "bytes": 1252,
+      "sha256": "b4ba2f163539b1327a4bbb58fe3140204f7fe018dc47c3f20fcc6ee3e695e00b",
+      "source": "research-workspace/work/simplification-desk/s2/logs/65-Converse.log",
+      "sourceModifiedUtc": "2026-11-15T05:20:17.701Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/66-NullSetRobust.log",
+      "bytes": 1257,
+      "sha256": "598fb0353cf73a18ec33d06068f573a3af3cb034b872d223a85c6d065b10007f",
+      "source": "research-workspace/work/simplification-desk/s2/logs/66-NullSetRobust.log",
+      "sourceModifiedUtc": "2026-11-15T05:21:08.465Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/67-Transfer.log",
+      "bytes": 1252,
+      "sha256": "d02888c1aac9da083701106d3ea40dd3a1d68b249358e0940c2d7adcc9cb5bdc",
+      "source": "research-workspace/work/simplification-desk/s2/logs/67-Transfer.log",
+      "sourceModifiedUtc": "2026-11-15T05:21:58.709Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/axiomroots-s2.log",
+      "bytes": 5356,
+      "sha256": "b01833ec872ccabb102ea9df70ae45a37e2019d2a3b27aeed51f9dbf1c490962",
+      "source": "research-workspace/work/simplification-desk/s2/logs/axiomroots-s2.log",
+      "sourceModifiedUtc": "2026-11-15T05:22:57.184Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/logs/sigdump-s2.log",
+      "bytes": 6669,
+      "sha256": "11ee8fc62f59bba5dcabd9c30d26a4b6709178751423ce2439f99d2c26fd28f2",
+      "source": "research-workspace/work/simplification-desk/s2/logs/sigdump-s2.log",
+      "sourceModifiedUtc": "2026-11-15T05:24:03.655Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/sigs-s2.tsv",
+      "bytes": 418092,
+      "sha256": "44bdbeea5d12cf9f5590908e3741e009c3c57c2f3358ee5e605a853423b17102",
+      "source": "research-workspace/work/simplification-desk/s2/sigs-s2.tsv",
+      "sourceModifiedUtc": "2026-11-15T05:24:01.654Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/AUXCHECK-NOTE.md",
+      "bytes": 1660,
+      "sha256": "233c5a30deeb671a2c5f844326bc5110f43a1b1b23d08bded73dba8e35393dca",
+      "source": "research-workspace/work/simplification-desk/s2/AUXCHECK-NOTE.md",
+      "sourceModifiedUtc": "2026-11-15T05:30:10.586Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/AuxCheck.lean",
+      "bytes": 1424,
+      "sha256": "7c6a12adae47dbf7f72477c187180b5f1d4a739e7f91fa7a051d733eb7f1871d",
+      "source": "research-workspace/work/simplification-desk/s2/AuxCheck.lean",
+      "sourceModifiedUtc": "2026-11-15T05:30:10.515Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/auxcheck-s2.log",
+      "bytes": 4966,
+      "sha256": "8e05f1ca231fe9d286c4c6542796f8245402939d2a5d8eb8527a4027b6470bf5",
+      "source": "research-workspace/work/simplification-desk/s2/auxcheck-s2.log",
+      "sourceModifiedUtc": "2026-11-15T05:30:10.522Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/s2/auxcheck-r1.log",
+      "bytes": 4950,
+      "sha256": "3d5ac560d832dd4687e03be427ebbde7325864ea476f569f3e354743d10347c4",
+      "source": "research-workspace/work/simplification-desk/s2/auxcheck-r1.log",
+      "sourceModifiedUtc": "2026-11-15T05:30:10.529Z",
+      "capturedAtUtc": "2026-11-15T05:32:26.153Z"
     }
   ]
 }

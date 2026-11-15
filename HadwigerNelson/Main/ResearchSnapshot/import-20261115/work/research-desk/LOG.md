@@ -68,3 +68,8 @@
 2026-11-15T04:33:20Z took over simplification desk (merged): S2 rebuild 22/67 running (chain tools/s2_run.sh in simp-desk session); stopped my waiting r2/Bridge-v4 wrappers to avoid stealing gaps between S2 modules; relaunched them chained after S2 chain ends
 2026-11-15T04:33:44Z read simplification-desk/HANDOVER.md; plan: on S2-DONE run make_manifest.py s2, check PASS criteria (67/67, 14/14 std roots no sorryAx, sig changed 0/added only five_state_forced_label/FORBIDDEN_PRESENT 0), send to exposition desk, update REPORT draft, delete s2/build
 2026-11-15T04:59:36Z TARGET (a) RESOLVED: R1-3 MC120 strict ACCEPT w/ 6 corrections, Corollary P ACCEPT; R1-4 A6 producer ACCEPT w/ 5 corrections (exact pairing only). Sent to exposition desk. S2-REVIEW (L-S3) 36/36 PASS
+2026-11-15T05:14:31Z L-S1 S2-REVIEW: 47 PASS/5 cond/0 FAIL; its 4 'dangling omit' warnings checked: decls gone and S2 has NO modifier stacks absent from R1 (tools/omit_stacks.py: 0 new). R1-3 update: verdict unchanged (expanded step 3a)
+2026-11-15T05:25:36Z S2 open item: 4 RelativeProducts defs value-hash changed; running AuxCheck (aux-normalised value hash) vs s2/build then R1 build via desk_lean --wait
+2026-11-15T05:30:31Z S2 PASS: AuxCheck shows 4 'changed' RelativeProducts defs identical modulo aux _proof_N renaming (projectCLM->toL2); report draft finalized; sent to exposition desk
+2026-11-15T05:30:43Z deleted simplification-desk/s2/build after recording (disk rule); R1 build intact
+2026-11-15T05:31:49Z A6-GLUE: Hsupp (8a94424e, has (c := c) fix), SignTable (09622e1a), ForcingLemma (249c21d7) staged in research-desk/A6-glue; chained after r2/Bridge-v4
