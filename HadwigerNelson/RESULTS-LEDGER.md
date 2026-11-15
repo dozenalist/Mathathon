@@ -1,6 +1,6 @@
 # Results ledger — Hadwiger–Nelson Mathathon entry
 
-Built 2026-11-15T01:06Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
+Built 2026-11-15T01:24Z by the results desk. Machine-readable copy: [results-ledger.json](results-ledger.json). Every artifact hash below was recomputed when the ledger was built. A 16-character prefix is shown here; the JSON has the full SHA-256. Paths starting `I/` are in the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i`, outside the repository; other paths are repository-relative from the repository root.
 
 **No global chromatic result. The bounds 6 ≤ χ(ℝ²) ≤ 7 come from the supplied proof ("The Euclidean plane is not five-colorable") and the classical 7-colouring; nothing the team has added changes them. Every entry below is a simplification of the supplied proof, a local or conditional lemma, a finite computation, or a negative result. The only route to χ ≥ 7 on record is conditional on the open lemmas L6 and F6 (see L6-F6).**
 
@@ -17,7 +17,8 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 | [STEPBAN-V2](#stepban-v2) branch-free step ban | `LEAN_VERIFIED` (standalone) | proof body 21→15 lines; but the module grows (see FIVESUPPORT-SWAP) | jobs 220720-0, 232057-0 |
 | [STEPBAN-CONSUMER](#stepban-consumer) consumer on v2 | `LEAN_VERIFIED` (standalone) | 0 realised (swap pending) | job 232057-0; identical `#check` telescopes |
 | [STEPBAN-CYCLICCORE](#stepban-cycliccore) CyclicCore consumer on v2 | `LEAN_VERIFIED` (desk) | 0 realised (swap pending) | identical `#check` telescope |
-| [FIVESUPPORT-SWAP](#fivesupport-swap) same-name swap in FiveSupport (R1 port) | `LEAN_VERIFIED` (desk) | **+61 as ported** (v1 kept); ≈ +23 even after deleting v1 and `five_forced_label` | 31/31 signatures identical; a structural, not a length, simplification |
+| [FIVESUPPORT-SWAP](#fivesupport-swap) same-name swap in FiveSupport (R1 port) | `LEAN_VERIFIED` (desk) | **+61 as ported** (v1 kept); **measured +33** with v1 deleted (354→387 physical; code lines only 341→350, +9) | 30/30 signatures identical after deleting v1; structural, not a length, simplification |
+| [STEPBAN-V3](#stepban-v3) simplification-desk step ban (staged) | `CANDIDATE` (not compiled) | FiveSupport −15 staged | branch-free and shorter than v1; compile tests r1, r2 failed, r3 queued |
 | [JOINT-SUPPORT](#joint-support) joint-pair support theorem | `LEAN_VERIFIED` (standalone) | not measured | does not by itself delete the original States development |
 | **Total realised in the integrated tree** |  | **−126 + −24 = −150 lines** (a coincidence with the rejected R4-only "−150" projection; see ENC-R4) | the step-ban work removes a case split but adds lines; R1 has an optional further 104 unused-helper lines pending a separate build |
 
@@ -37,7 +38,6 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - [A6-GLUE](#a6-glue): ArcCover is now discharged (A6-BRIDGE-R2-G3), but no compiled file discharges `SignTable` and `ForcingLemma` together with it; hsupp, the pairing hypothesis and the A5 obstruction (no Lean declaration) remain.
 - [STEPBAN-SWAP](#stepban-swap): the verified step-ban v2 has not been swapped in place, so its line savings are not realised.
 - [R1-GATES](#r1-gates): R1 contract and dependency gates were not independently re-run after acceptance.
-- [RELAX-1-648](#relax-1-648): the 1/648, 933,120 / 1,440 / 3,840 figures remain unaudited.
 - [PALETTE-RIGIDITY](#palette-rigidity), [STAIRCASE-CONVERSE](#staircase-converse), [K6-PRODUCER](#k6-producer): the missing lemmas for the six-colour programme.
 - [SHARPNESS-20](#sharpness-20): six-colour sharpness of CC60 and novelty priority are not established.
 - [MC120-STRICT](#mc120-strict): strict MC120 is called "accepted paper" in the status file but has no referee file; [A6-COROLLARIES](#a6-corollaries) and [CONTINUOUS-SIX](#continuous-six) depend on it.
@@ -47,17 +47,17 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 
 | Theme | LEAN_VERIFIED | PROVED_PAPER_REVIEWED | TESTED_FINITE | CANDIDATE | UNAUDITED_NUMBER | RETRACTED_OR_REFUTED | OPEN |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Simplification of the supplied proof | 10 | 1 |  |  |  |  | 2 |
-| New mathematics | 9 | 6 | 7 | 20 | 1 |  | 6 |
+| Simplification of the supplied proof | 10 | 1 |  | 1 |  |  | 2 |
+| New mathematics | 9 | 6 | 8 | 20 |  |  | 6 |
 | Negative results and counterexamples | 1 | 7 | 5 | 7 |  | 8 |  |
-| Infrastructure | 1 |  | 1 |  |  | 1 |  |
+| Infrastructure | 1 |  | 1 |  |  | 1 | 1 |
 
 ## Index
 
-- **Simplification of the supplied proof**: [DIAMOND](#diamond) `LEAN_VERIFIED`, [ENC-R4](#enc-r4) `LEAN_VERIFIED`, [FIVE-CYCLE-RESIDUES](#five-cycle-residues) `LEAN_VERIFIED`, [FIVESUPPORT-SWAP](#fivesupport-swap) `LEAN_VERIFIED`, [JOINT-SUPPORT](#joint-support) `LEAN_VERIFIED`, [R1](#r1) `LEAN_VERIFIED`, [STEPBAN-CONSUMER](#stepban-consumer) `LEAN_VERIFIED`, [STEPBAN-CYCLICCORE](#stepban-cycliccore) `LEAN_VERIFIED`, [STEPBAN-V2](#stepban-v2) `LEAN_VERIFIED`, [THREE-CENTRE](#three-centre) `LEAN_VERIFIED`, [LEMMA67-IDENTITY](#lemma67-identity) `PROVED_PAPER_REVIEWED`, [R1-GATES](#r1-gates) `OPEN`, [STEPBAN-SWAP](#stepban-swap) `OPEN`
-- **New mathematics**: [A6-BRIDGE-R2](#a6-bridge-r2) `LEAN_VERIFIED`, [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) `LEAN_VERIFIED`, [A6-FORCING](#a6-forcing) `LEAN_VERIFIED`, [CC60](#cc60) `LEAN_VERIFIED`, [CONNECTED-SET](#connected-set) `LEAN_VERIFIED`, [EVENWALK-R6](#evenwalk-r6) `LEAN_VERIFIED`, [G1-R2](#g1-r2) `LEAN_VERIFIED`, [G3-R2](#g3-r2) `LEAN_VERIFIED`, [NULL-TRANSFER](#null-transfer) `LEAN_VERIFIED`, [A5-FOUR-LIST](#a5-four-list) `PROVED_PAPER_REVIEWED`, [AC-ALIGNED](#ac-aligned) `PROVED_PAPER_REVIEWED`, [NR-TC](#nr-tc) `PROVED_PAPER_REVIEWED`, [RESIDUAL-GRAPH](#residual-graph) `PROVED_PAPER_REVIEWED`, [SHARPNESS-20](#sharpness-20) `PROVED_PAPER_REVIEWED`, [STRAIGHT-NEEDLE](#straight-needle) `PROVED_PAPER_REVIEWED`, [A5-SLIVER](#a5-sliver) `TESTED_FINITE`, [DIR-FILTER](#dir-filter) `TESTED_FINITE`, [FIXED-PHASE-CENSUS](#fixed-phase-census) `TESTED_FINITE`, [HEULE-UNION](#heule-union) `TESTED_FINITE`, [HONEYCOMB-73](#honeycomb-73) `TESTED_FINITE`, [SIX-ORBIT](#six-orbit) `TESTED_FINITE`, [STAIRCASE-CENSUS](#staircase-census) `TESTED_FINITE`, [A5-ODD-WALK](#a5-odd-walk) `CANDIDATE`, [A6-COROLLARIES](#a6-corollaries) `CANDIDATE`, [A6-PAIRED-PRODUCER](#a6-paired-producer) `CANDIDATE`, [A7-PARTIAL-INDEPENDENT](#a7-partial-independent) `CANDIDATE`, [AMPLIFIER](#amplifier) `CANDIDATE`, [CENSUS-COMPLETE-60Z](#census-complete-60z) `CANDIDATE`, [CLAUDE-LEMMA-A](#claude-lemma-a) `CANDIDATE`, [CONTINUOUS-SIX](#continuous-six) `CANDIDATE`, [HONEYCOMB-RESTRICTED](#honeycomb-restricted) `CANDIDATE`, [J-DEPTH](#j-depth) `CANDIDATE`, [K6-M3-DOOR](#k6-m3-door) `CANDIDATE`, [LIST-FIELD-A4](#list-field-a4) `CANDIDATE`, [MC120-STRICT](#mc120-strict) `CANDIDATE`, [Q4Q5-PINNING](#q4q5-pinning) `CANDIDATE`, [R0-CHI4](#r0-chi4) `CANDIDATE`, [RELAX-CIRCULANT](#relax-circulant) `CANDIDATE`, [T6-B2](#t6-b2) `CANDIDATE`, [THM-BPRIME](#thm-bprime) `CANDIDATE`, [TRANSLATION-CRITERION](#translation-criterion) `CANDIDATE`, [WILD-LAW](#wild-law) `CANDIDATE`, [RELAX-1-648](#relax-1-648) `UNAUDITED_NUMBER`, [A6-GLUE](#a6-glue) `OPEN`, [K6-PRODUCER](#k6-producer) `OPEN`, [L6-F6](#l6-f6) `OPEN`, [LOCALIZED-TWO-STATE](#localized-two-state) `OPEN`, [PALETTE-RIGIDITY](#palette-rigidity) `OPEN`, [STAIRCASE-CONVERSE](#staircase-converse) `OPEN`
+- **Simplification of the supplied proof**: [DIAMOND](#diamond) `LEAN_VERIFIED`, [ENC-R4](#enc-r4) `LEAN_VERIFIED`, [FIVE-CYCLE-RESIDUES](#five-cycle-residues) `LEAN_VERIFIED`, [FIVESUPPORT-SWAP](#fivesupport-swap) `LEAN_VERIFIED`, [JOINT-SUPPORT](#joint-support) `LEAN_VERIFIED`, [R1](#r1) `LEAN_VERIFIED`, [STEPBAN-CONSUMER](#stepban-consumer) `LEAN_VERIFIED`, [STEPBAN-CYCLICCORE](#stepban-cycliccore) `LEAN_VERIFIED`, [STEPBAN-V2](#stepban-v2) `LEAN_VERIFIED`, [THREE-CENTRE](#three-centre) `LEAN_VERIFIED`, [LEMMA67-IDENTITY](#lemma67-identity) `PROVED_PAPER_REVIEWED`, [STEPBAN-V3](#stepban-v3) `CANDIDATE`, [R1-GATES](#r1-gates) `OPEN`, [STEPBAN-SWAP](#stepban-swap) `OPEN`
+- **New mathematics**: [A6-BRIDGE-R2](#a6-bridge-r2) `LEAN_VERIFIED`, [A6-BRIDGE-R2-G3](#a6-bridge-r2-g3) `LEAN_VERIFIED`, [A6-FORCING](#a6-forcing) `LEAN_VERIFIED`, [CC60](#cc60) `LEAN_VERIFIED`, [CONNECTED-SET](#connected-set) `LEAN_VERIFIED`, [EVENWALK-R6](#evenwalk-r6) `LEAN_VERIFIED`, [G1-R2](#g1-r2) `LEAN_VERIFIED`, [G3-R2](#g3-r2) `LEAN_VERIFIED`, [NULL-TRANSFER](#null-transfer) `LEAN_VERIFIED`, [A5-FOUR-LIST](#a5-four-list) `PROVED_PAPER_REVIEWED`, [AC-ALIGNED](#ac-aligned) `PROVED_PAPER_REVIEWED`, [NR-TC](#nr-tc) `PROVED_PAPER_REVIEWED`, [RESIDUAL-GRAPH](#residual-graph) `PROVED_PAPER_REVIEWED`, [SHARPNESS-20](#sharpness-20) `PROVED_PAPER_REVIEWED`, [STRAIGHT-NEEDLE](#straight-needle) `PROVED_PAPER_REVIEWED`, [A5-SLIVER](#a5-sliver) `TESTED_FINITE`, [DIR-FILTER](#dir-filter) `TESTED_FINITE`, [FIXED-PHASE-CENSUS](#fixed-phase-census) `TESTED_FINITE`, [HEULE-UNION](#heule-union) `TESTED_FINITE`, [HONEYCOMB-73](#honeycomb-73) `TESTED_FINITE`, [RELAX-1-648](#relax-1-648) `TESTED_FINITE`, [SIX-ORBIT](#six-orbit) `TESTED_FINITE`, [STAIRCASE-CENSUS](#staircase-census) `TESTED_FINITE`, [A5-ODD-WALK](#a5-odd-walk) `CANDIDATE`, [A6-COROLLARIES](#a6-corollaries) `CANDIDATE`, [A6-PAIRED-PRODUCER](#a6-paired-producer) `CANDIDATE`, [A7-PARTIAL-INDEPENDENT](#a7-partial-independent) `CANDIDATE`, [AMPLIFIER](#amplifier) `CANDIDATE`, [CENSUS-COMPLETE-60Z](#census-complete-60z) `CANDIDATE`, [CLAUDE-LEMMA-A](#claude-lemma-a) `CANDIDATE`, [CONTINUOUS-SIX](#continuous-six) `CANDIDATE`, [HONEYCOMB-RESTRICTED](#honeycomb-restricted) `CANDIDATE`, [J-DEPTH](#j-depth) `CANDIDATE`, [K6-M3-DOOR](#k6-m3-door) `CANDIDATE`, [LIST-FIELD-A4](#list-field-a4) `CANDIDATE`, [MC120-STRICT](#mc120-strict) `CANDIDATE`, [Q4Q5-PINNING](#q4q5-pinning) `CANDIDATE`, [R0-CHI4](#r0-chi4) `CANDIDATE`, [RELAX-CIRCULANT](#relax-circulant) `CANDIDATE`, [T6-B2](#t6-b2) `CANDIDATE`, [THM-BPRIME](#thm-bprime) `CANDIDATE`, [TRANSLATION-CRITERION](#translation-criterion) `CANDIDATE`, [WILD-LAW](#wild-law) `CANDIDATE`, [A6-GLUE](#a6-glue) `OPEN`, [K6-PRODUCER](#k6-producer) `OPEN`, [L6-F6](#l6-f6) `OPEN`, [LOCALIZED-TWO-STATE](#localized-two-state) `OPEN`, [PALETTE-RIGIDITY](#palette-rigidity) `OPEN`, [STAIRCASE-CONVERSE](#staircase-converse) `OPEN`
 - **Negative results and counterexamples**: [A6-CONTAINMENT](#a6-containment) `LEAN_VERIFIED`, [A7-CONTACT](#a7-contact) `PROVED_PAPER_REVIEWED`, [ANNULUS-3COL](#annulus-3col) `PROVED_PAPER_REVIEWED`, [FOUR-STATE-ANGULAR](#four-state-angular) `PROVED_PAPER_REVIEWED`, [LOCAL-TRANSITIONS](#local-transitions) `PROVED_PAPER_REVIEWED`, [MC120-ENDPOINT](#mc120-endpoint) `PROVED_PAPER_REVIEWED`, [SUPPORT-FLIP](#support-flip) `PROVED_PAPER_REVIEWED`, [VARIABLE-TRIANGLE](#variable-triangle) `PROVED_PAPER_REVIEWED`, [HEULE-NO-FORCING](#heule-no-forcing) `TESTED_FINITE`, [HISTORIC-8](#historic-8) `TESTED_FINITE`, [HONEYCOMB-K16](#honeycomb-k16) `TESTED_FINITE`, [Q4Q5-CONTROLS](#q4q5-controls) `TESTED_FINITE`, [RELAX-WITNESSES](#relax-witnesses) `TESTED_FINITE`, [A8-PALETTE](#a8-palette) `CANDIDATE`, [ALPHA-SHARP](#alpha-sharp) `CANDIDATE`, [FOURWAY-SPLIT](#fourway-split) `CANDIDATE`, [GEOM-Q4Q5](#geom-q4q5) `CANDIDATE`, [GEOM-TWO-STEP](#geom-two-step) `CANDIDATE`, [Q4Q5-APEX](#q4q5-apex) `CANDIDATE`, [TERNARY-COUNTERMODEL](#ternary-countermodel) `CANDIDATE`, [A5-FAR-APEX](#a5-far-apex) `RETRACTED_OR_REFUTED`, [A5-M5-TEMPLATE](#a5-m5-template) `RETRACTED_OR_REFUTED`, [AC-AXIS](#ac-axis) `RETRACTED_OR_REFUTED`, [ALT-TRIPLE](#alt-triple) `RETRACTED_OR_REFUTED`, [CLAUDE05-VERDICT](#claude05-verdict) `RETRACTED_OR_REFUTED`, [OVERNIGHT-WITHDRAWN](#overnight-withdrawn) `RETRACTED_OR_REFUTED`, [PALETTE-EQ-F](#palette-eq-f) `RETRACTED_OR_REFUTED`, [TWO-TRIANGLE](#two-triangle) `RETRACTED_OR_REFUTED`
-- **Infrastructure**: [ENC-R4-AUX](#enc-r4-aux) `LEAN_VERIFIED`, [SNAPSHOT-VALIDATION](#snapshot-validation) `TESTED_FINITE`, [LEAN-FAILED-REVISIONS](#lean-failed-revisions) `RETRACTED_OR_REFUTED`
+- **Infrastructure**: [ENC-R4-AUX](#enc-r4-aux) `LEAN_VERIFIED`, [SNAPSHOT-VALIDATION](#snapshot-validation) `TESTED_FINITE`, [LEAN-FAILED-REVISIONS](#lean-failed-revisions) `RETRACTED_OR_REFUTED`, [LEAN-435](#lean-435) `OPEN`
 
 ## Simplification of the supplied proof
 
@@ -116,13 +116,15 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Artifacts:**
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/FiveSupportSwapR1.lean` — R1 port source — `e531cf133a213e52…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/swapR1.log` — compile log: 31 #check outputs + axioms — `7bbaece10131d754…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/FiveSupportSwapR1-noV1.lean` — variant with the old step ban deleted — `0aaee265081c94ba…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/noV1.log` — compile log of the v1-deleted variant: 30 #check outputs + axioms — `4d9e0814064756a2…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/orig.log` — 31 #check outputs of the R1 FiveSupport module — `749c21cfff0461ad…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/swap.log` — first compile of the swarm file (failed on R1) — `41d849c3929bf37b…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261115T002122-download-1-FiveSupport-swap.lean` — swarm source (targets encoding-r4) — `3291ad95a0c3cc82…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261115T002122-download-3-REFEREE.md` — swarm referee report (m5) — `4aa0931aefc47eb1…`
-- **Checked by the results desk:** 2026-11-15 ~01:05Z: parsed the 31 `#check` blocks in swapR1.log and orig.log and compared them: 31 common names, 0 differences, none missing on either side; read both axiom lines. Line accounting (desk diff against R1 FiveSupport.lean, 354 lines): the port is 415 lines without #check/#print lines = 2 call lines changed + 3-line comment + 58-line v2 block inserted; nothing deleted. Deleting the old step ban (FiveSupport.lean:68–99, 32 lines) and `five_forced_label` (Exclusion.lean:26–28, 3 lines) would still leave about +23 lines, because the new block carries long docstrings and two helper lemmas. So this is a structural simplification (the case split and one finite lemma go away), not a line saving. Exit code from the desk LOG.md 01:01:32Z.
+- **Checked by the results desk:** 2026-11-15 ~01:05Z: parsed the 31 `#check` blocks in swapR1.log and orig.log and compared them: 31 common names, 0 differences, none missing on either side; read both axiom lines. Line accounting (desk diff against R1 FiveSupport.lean, 354 lines): the port is 415 lines without #check/#print lines = 2 call lines changed + 3-line comment + 58-line v2 block inserted; nothing deleted. Deleting the old step ban (FiveSupport.lean:68–99, 32 lines) and `five_forced_label` (Exclusion.lean:26–28, 3 lines) would still leave about +23 lines, because the new block carries long docstrings and two helper lemmas. So this is a structural simplification (the case split and one finite lemma go away), not a line saving. Exit code from the desk LOG.md 01:01:32Z. UPDATE 01:21Z: the variant with the old step ban deleted (FiveSupportSwapR1-noV1, desk compile exit 0, 181 s) passes. I compared its 30 `#check` outputs with R1: 30 identical, only `five_support_step_ban` is gone (the desk grep found no other R1 consumer). Measured: 354 → 387 physical lines (+33, excluding the 3-line provenance comment and #check/#print lines), non-blank +26, code lines excluding comments 341 → 350 (+9, desk metric). The earlier +23 estimate is superseded.
 - **Provenance:** Architecture swarm smwh11dth (m1 swap, m5 referee); research desk R1 port and compile 00:40Z, rerun after the power loss 00:55–01:01Z.
-- **Correction history:** the swarm file targets encoding-r4 and fails on R1 (palette_neighbor_* redeclared; `strict_state_no_unit_support` unknown, removed by R1); the desk ported it; the "21→15 lines" figure is the proof body only; with the helper lemmas and docstrings the module grows
+- **Correction history:** the swarm file targets encoding-r4 and fails on R1 (palette_neighbor_* redeclared; `strict_state_no_unit_support` unknown, removed by R1); the desk ported it; the "21→15 lines" figure is the proof body only; with the helper lemmas and docstrings the module grows; line estimate after deleting v1: about +23 (results desk, 01:05Z), measured +33 (01:21Z)
 - **Depends on:** [STEPBAN-V2](#stepban-v2), [STEPBAN-CONSUMER](#stepban-consumer), [R1](#r1)
 - **Caveats:** m4 branch-free `hdis` reconstruction (FiveSupport:205–216) is NOT in this port; still a swarm candidate. Not yet substituted into the tree or re-checked against downstream modules.
 
@@ -139,7 +141,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-REBOOT-REFEREE.txt` — paper referee ("ACCEPT the finite pair-support theorem and its proposed application") — `ceab2e0167e9fc5d…`
 - **Checked by the results desk:** Hash recomputed at build; referee quote confirmed verbatim. Did not recompile.
 - **Provenance:** Astra joint lead derivation, independent Astra referee + OS review; Codex local validation (before 18:39Z snapshot).
-- **Caveats:** Standalone; does not by itself delete the original States development; not validated against the competition 4.35 target.
+- **Caveats:** Standalone; NOT integrated, by decision of the simplification desk: after R1, five_support_no_sixty is 8 lines and the joint-pair route is 41 (+33), and fixed_state_no_unit_three_centres stays live via Interfaces:278 (simplification-desk/jointpair/JOINT-PAIR-DECISION.md). Not validated against the competition 4.35 target.
 
 ### R1
 
@@ -158,7 +160,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `I/work/lean-queue/threecentre-r1-05-avoidingtrace.log` — AvoidingTrace log with axioms — `144a25e58697f00d…`
 - **Checked by the results desk:** 2026-11-15 ~00:00Z: recomputed SHA-256 of all 27 frozen sources — 27/27 match frozen-manifest.json; module logs 01–14 carry matching "Source SHA256" and "Exit code: 0"; progress records 15–27 have exitCode 0 and sourceSha256 equal to the manifest; axiomroots log prints 9 roots, all [propext, Classical.choice, Quot.sound], no sorryAx; recounted physical lines of the five changed files against encoding-r4/src — matches line-accounting.json exactly (−24). PaletteTransport.lean in the R1 tree is byte-identical to encoding-r4 (same SHA-256), so its absence from the frozen manifest is a manifest gap, not an unverified change. The workspace R1 sources equal the repo snapshot copies (404 files compared, 0 differ). Did not recompile.
 - **Provenance:** Lean queue jobs threecentre-r1-01…27 and -axiomroots, 2026-11-14 ~19:00–20:48Z; accepted by Jarom in the research-desk chat ~23:25Z (research-desk LOG.md 23:25:36Z).
-- **Correction history:** a private packet claim of "net −66" was rejected (it omitted 236 new-module lines); the accepted accounting is net −24 (check-ins 17:20:56Z, 18:15:21Z); optional further 104 unused-helper lines pending a separate build (check-in 18:35:22Z); Module 15 (Sectors) first .log run did not pass; re-run via the Python runner passed 20:32Z (sectors.progress.json); PROGRESS.md (snapshot 18:39Z) said "full consumer integration and deletion of the old branch remain pending"; R1 is that integration and is now accepted
+- **Correction history:** alternative metrics (simplification desk recount, r1-gates/line-accounting-r1-desk.json): physical −24 (matches), non-blank −41, code excluding comments −67; the ledger quotes the physical count; a private packet claim of "net −66" was rejected (it omitted 236 new-module lines); the accepted accounting is net −24 (check-ins 17:20:56Z, 18:15:21Z); optional further 104 unused-helper lines pending a separate build (check-in 18:35:22Z); Module 15 (Sectors) first .log run did not pass; re-run via the Python runner passed 20:32Z (sectors.progress.json); PROGRESS.md (snapshot 18:39Z) said "full consumer integration and deletion of the old branch remain pending"; R1 is that integration and is now accepted
 - **Used for:** Formal baseline pin for every later queue job (StepBan, A6 bridge, EvenWalk import R1 oleans).
 - **Depends on:** [ENC-R4](#enc-r4), [THREE-CENTRE](#three-centre)
 - **Caveats:** See [R1-GATES](#r1-gates): contract and dependency gates not independently re-run; PaletteTransport not listed in frozen-manifest.json.
@@ -241,20 +243,32 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Provenance:** Check-in 16:32:26Z.
 - **Used for:** STEPBAN-V2 re-proves this lemma with the same statement.
 
+### STEPBAN-V3
+
+**Simplification desk step ban v3: branch-free and shorter than v1 (staged, not compiled)** — `CANDIDATE`
+
+- **Statement:** A desk-written branch-free step ban, shorter than v1. The staged S1 tree (vs R1) has FiveSupport −15 physical lines, deletes five_forced_label and adds five_state_forced_label (3 lines, Exclusion). Not a result until compiled.
+- **Checked by the results desk:** Not checked. Compile tests: r1 failed (one rewrite elaboration error; the statement/binder Expr.equal check passed), r2 failed (Decidable synthesis), r3 queued.
+- **Provenance:** Simplification desk report 01:20Z (work/simplification-desk/s1, stepban).
+- **Depends on:** [STEPBAN-V2](#stepban-v2)
+
 ### R1-GATES
 
 **R1 follow-ups: contract/dependency gates and manifest completeness** — `OPEN`
 
-- **Statement:** Re-run the R1 contract and dependency gates after acceptance, and add PaletteTransport.lean to frozen-manifest.json (or record it as an unchanged baseline module).
-- **Checked by the results desk:** PaletteTransport.lean is byte-identical to encoding-r4 (desk hash check), so the manifest gap does not hide a change.
-- **Provenance:** Caveats recorded with Jarom's acceptance (research desk, 23:25Z; coordinator cycle 232732).
+- **Statement:** Re-run the R1 contract and dependency gates after acceptance. PART DONE (simplification desk, no Lean run): manifest completeness. frozen-manifest.json is exactly the 27-module downstream closure of the 5 changed files; the other 56 modules, including PaletteTransport, are byte-identical in source and olean to the R4 build (PaletteTransport sha256 2d9b3869…, raw = LF, identical in original, R4 and R1). STILL PENDING: the exact-type/binder gate (whole-closure signature, binder and value hash dump, R1 vs R4) and the forbidden-name check for the 7 deleted strict_state declarations.
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/r1-gates/MANIFEST-COMPLETENESS.md` — manifest completeness note — `5521b496101778f1…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/r1-gates/manifest-complete.json` — 83-module completeness table — `4c24ee676e79c450…`
+- **Checked by the results desk:** PaletteTransport.lean is byte-identical to encoding-r4 (results-desk hash check, confirmed by the simplification desk), so the manifest gap does not hide a change. The type/binder gate result is not yet available.
+- **Provenance:** Caveats recorded with the acceptance by Jarom (research desk, 23:25Z; coordinator cycle 232732); simplification desk report 01:20Z.
 - **Depends on:** [R1](#r1)
 
 ### STEPBAN-SWAP
 
 **In-place swap of the step ban into the CyclicCore/FiveSupport consumer** — `OPEN`
 
-- **Statement:** Substitute FiveSupportSwapR1 (compiled, 31/31 signatures identical) for FiveSupport in the tree, delete the old `five_support_step_ban` and `five_forced_label`, rebuild the downstream modules (incl. CyclicCore with the _from_v2 consumer) and re-run the root axiom check. Expected net line change ≈ +23 (structural simplification only).
+- **Statement:** Substitute FiveSupportSwapR1 (compiled, 31/31 signatures identical) for FiveSupport in the tree, delete the old `five_support_step_ban` and `five_forced_label`, rebuild the downstream modules (incl. CyclicCore with the _from_v2 consumer) and re-run the root axiom check. Measured for FiveSupport after deleting v1: +33 physical lines (structural simplification only); deleting five_forced_label would save 3 more. The v1 deletion is verified in FiveSupportSwapR1-noV1 (30/30 signatures), but the module is not yet substituted into the tree.
 - **Provenance:** Coordinator cycles 231544, 232732 (architecture lane; hd/he capture unresolved).
 - **Depends on:** [STEPBAN-V2](#stepban-v2), [STEPBAN-CONSUMER](#stepban-consumer)
 
@@ -304,11 +318,12 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-admissions/claude-lean-20261114t212205-0/Candidate.lean` — source — `27e45caf4c793897…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t212205-0.progress.json` — job record — `729f92a0cf31b8e5…`
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t212205-0.python.log` — compile log (empty) — `e3b0c44298fc1c14…`
-- **Checked by the results desk:** Recomputed source hash = record; exitCode 0; log is empty, so no sorry warning. **The source contains no `#print axioms`, so no axiom list was printed for this job.** Every proof is `decide`/`fin_cases … <;> decide` per the file header (no native_decide); an axiom print has been requested from the research desk. Status is LEAN_VERIFIED with this caveat.
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/spotcheck/A6Forcing-axioms.lean` — desk spot-check: job source plus #print axioms lines only — `83e6dfa36be80807…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/spotcheck/A6Forcing-axioms.log` — spot-check log: 7 axiom lines — `31518f332044b24f…`
+- **Checked by the results desk:** Recomputed source hash = record; exitCode 0; the job log is empty (no sorry warning) because the source has no `#print axioms`. Flag CLOSED 01:20Z: the research desk recompiled the same source with axiom prints appended. I diffed the spot-check file against the job source: the only changes are 8 added `#print` lines. Its log lists 7 endpoints (a6_canonical_pairs, a6_canonical_pairs_add_three, a6_containment_unsatisfiable, a6_hypotheses_satisfiable, disjointness_necessary, outer_hit_necessary, A6canonical_hypotheses), each [propext, Classical.choice, Quot.sound].
 - **Provenance:** Formal lane A (swarm smwgviqtr m1, "A6-Forcing-m1"); coordinator cycle 212205; finished 21:25:32Z.
 - **Correction history:** A6 finite check corrected to "exactly one model P=[{1,4},{2,5},{0,3}]×2, with no cardinality premise" (cycle 204019)
 - **Used for:** Discharges `ForcingLemma` in the A6 bridge once glued; it is the finite core of A6-PAIRED-PRODUCER.
-- **Caveats:** Axiom list not printed (see Checked).
 
 ### CC60
 
@@ -549,7 +564,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-CERTIFICATE.json` — certificate — `cd3f9ff3a47f93d5…`
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/Verify-HeuleUnion.mjs` — verifier — `ca9510a2dfd81fbb…`
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/HEULE-UNION-VALIDATION.txt` — validation — `e611fb63e2086a00…`
-  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `bbea46640a0139f8…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — import validation record — `f96ec33ea8f235eb…`
 - **Checked by the results desk:** 2026-11-14 23:50Z: re-ran `node HadwigerNelson/Main/verify-snapshot.mjs` (exit 0, 11 s), which re-runs Verify-HeuleUnion.mjs: passed, 548,628 pairs, 1,048 vertices, 5,487 edges, proper 5-colouring.
 - **Provenance:** Graph lanes (graph-union-audit), 2026-11-14; import validation 18:58Z.
 - **Correction history:** 17 colourings reduced candidate pairs 110,015 → 1,145, then 34 colourings separated all 543,141 nonadjacent pairs; unreconciled wording: 177 survivor pairs inside the original H locally vs 112 in remote wording (HEULE-UNION-VALIDATION.txt records remainingPairsInsideOriginalH 177); moot after the full separation certificate
@@ -569,6 +584,23 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Checked by the results desk:** Not re-run by the results desk.
 - **Provenance:** Overnight 13–14 Nov graph lane (CONSOLIDATED-FINDINGS).
 - **Correction history:** a handwritten checker had a counting bug (superseded by drat-trim)
+
+### RELAX-1-648
+
+**All-phase relaxation: the field set has measure exactly 1/648 (1,440 of 933,120 resonance cells; 16 of 3,840 sign cells)** — `TESTED_FINITE`
+
+- **Statement:** For alpha in (R/360Z)^6 with alpha_0 = 0, call a resonance cell a component of the complement of {alpha_i - alpha_j in 60Z}: integer parts floor(alpha_i/60) and the order of the parts alpha_i mod 60, so 6^5 x 5! = 933,120 congruent cells. Exactly 1,440 cells admit a relaxation field (R(t,alpha) SAT for every t); 919,512 fail because some arc has an empty side (Rp or Rn empty) and 12,168 fail by the cyclic disjointness system alone. Hence the field set has Lebesgue measure exactly 1440/933120 = 1/648. With sign cells = components of the complement of {alpha_i - alpha_j in 180Z} (2^5 x 5! = 3,840), the field set meets exactly 16 sign cells; these lie in 16 distinct orders of the parts alpha_i mod 180 ("base chambers", 5! = 120), while all 120 orders of the parts mod 60 occur.
+- **Hypotheses:** Relaxation level only (inner/outer hits and 60-degree disjointness; palettes of size <= 2 WLOG). Says nothing directly about colourings.
+- **Evidence:** Two independent implementations agree: the discovery m2 scripts (referee6.py, run and reproduced by the all-phase referee, unaudited) and an exact implementation written by the results desk from the model definitions (allphase_desk.py, integer angles in units of 1/14 degree, one interior representative per cell, all six arcs tested).
+- **Artifacts:**
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/results-desk/allphase/allphase_desk.py` — results-desk independent implementation — `07c89fab37168a9e…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/results-desk/allphase/allphase_desk.out` — command and output (92.6 s) — `81f5c38f9adb36a5…`
+  - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261114T205744-download-5-ALL-PHASE-REFEREE.md` — all-phase referee note, section 8 (m2 figures) — `087e6efc55b766cd…`
+- **Checked by the results desk:** 2026-11-15 ~01:20Z: wrote and ran allphase_desk.py (python -I, 92.6 s): cells 933,120; field 1,440; empty side 919,512; cyclic-disjointness only 12,168; measure 1/648; sign cells meeting the field set 16 of 3,840; mod-180 orders 16 of 120; mod-60 orders 120 of 120. Cells are congruent simplices (fixed integer parts and a fixed order of five fractional parts), so the measure is the cell fraction. L-R1 task R1-1 is an independent third implementation (pending).
+- **Provenance:** Discovery m2 (smwgui6l9 d1, unsubmitted) via the all-phase referee 20:57Z; adversarial final wording cycle 001250; results desk recount 01:20Z.
+- **Correction history:** RECONCILED (was UNRECONCILED): "16 of the 3840 sign cells" (referee addendum) and "16 of 120 base chambers" (adversarial lane, cycle 001250) are both true. The 16 met sign cells map to 16 distinct mod-180 orders. Read "base chamber" as an order of the parts mod 180; with orders mod 60 the count would be 120 of 120; the referee note called sign cells "finer" than resonance cells; they are coarser (each sign cell contains 243 resonance cells on average); status history: UNAUDITED_NUMBER until 01:20Z (coordinator cycle 213711 had called it "confirmed by three lanes" without an audit artifact); the 8640/(7776*720) "fully split rate" equals 1/648 exactly, consistent with the staircase k=6 count
+- **Used for:** Quantifies how rare relaxation fields are; explains the 0/400 and 1/900 random-sample observations.
+- **Depends on:** [FIXED-PHASE-CENSUS](#fixed-phase-census)
 
 ### SIX-ORBIT
 
@@ -813,16 +845,6 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/local/outputs/ASTRA-WILD-LAW-REVIEW.txt` — review — `1cd50f017d08e779…`
 - **Provenance:** Overnight 13–14 Nov.
 
-### RELAX-1-648
-
-**All-phase relaxation SAT measure 1/648 (1,440 of 933,120 resonance cells; 16 of 3,840 sign cells)** — `UNAUDITED_NUMBER`
-
-- **Statement:** The SAT set of the all-phase relaxation has measure 1/648: 1,440 of 933,120 resonance cells, meeting 16 of 3,840 sign cells.
-- **Hypotheses:** Relaxation level only.
-- **Checked by the results desk:** Arithmetic only: 933,120 / 1,440 = 648 exactly; the fully split rate 8,640 / (7,776·720) = 1/648 exactly, consistent with the staircase k=6 count. No artifact audited.
-- **Provenance:** Referee6 output reproduced by discovery m1; coordinator cycles 205744 ("reproduced output, not yet audited"), 213711 ("confirmed by three lanes"), 231544 (adversarial swarm still reconciling 933120/1440/3840).
-- **Correction history:** UNRECONCILED: the 20:57Z referee addendum says the field set meets "16 of the 3840 sign cells"; the final wording of the adversarial lane (cycle 001250) says "16 of 120 base chambers". Desk arithmetic: 933,120 = 7,776 × 120 and 3,840 = 32 × 120, so 120 plausibly counts orderings of the fractional parts (α_i mod 60°) and 3,840 a finer mod-180° refinement; the two statements may both hold but are not the same claim. Assigned to L-R1 task R1-1(d) and the graphs swarm smwh366oi; coordinator cycle 213711 called it "confirmed by three lanes"; later cycles revert to UNAUDITED — the ledger keeps UNAUDITED until an audit artifact exists
-
 ### A6-GLUE
 
 **Glued A6 producer (WITH_G3): discharge SignTable, ForcingLemma and ArcCover in one compiled file** — `OPEN`
@@ -884,7 +906,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Evidence:** Same file and job as A6-FORCING.
 - **Artifacts:**
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-admissions/claude-lean-20261114t212205-0/Candidate.lean` — source — `27e45caf4c793897…`
-- **Checked by the results desk:** As A6-FORCING (axiom list not printed).
+- **Checked by the results desk:** As A6-FORCING: `a6_containment_unsatisfiable` is [propext, Classical.choice, Quot.sound] in the desk spot-check log (01:20Z).
 - **Provenance:** As A6-FORCING.
 - **Depends on:** [A6-FORCING](#a6-forcing)
 
@@ -1210,7 +1232,7 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
 - **Statement:** All 11,556 archived files (358,349,948 bytes) match MANIFEST.json, the frozen Lean source hashes match their validation records, and the finite graph certificates verify.
 - **Artifacts:**
   - `HadwigerNelson/Main/verify-snapshot.mjs` — verifier — `eb40b4b59188cd81…`
-  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `bbea46640a0139f8…`
+  - `HadwigerNelson/Main/IMPORT-VALIDATION.json` — recorded run (18:58Z) — `f96ec33ea8f235eb…`
 - **Checked by the results desk:** Re-ran 2026-11-14 23:50Z: status passed, exit 0, 11 s.
 - **Provenance:** Supervisor import, 2026-11-14 18:57Z.
 
@@ -1232,3 +1254,11 @@ Status vocabulary (exactly one per entry): `LEAN_VERIFIED`, `PROVED_PAPER_REVIEW
   - `HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261115t001551-0.python.log` — log — `4b676e02a8b63d91…`
 - **Checked by the results desk:** Read every record: exitCode 1 and recorded source hash = recomputed hash for each.
 - **Provenance:** Local Lean queue, 2026-11-14 21:21–23:24Z.
+
+### LEAN-435
+
+**Rebuild under the event Lean 4.35.0 toolchain** — `OPEN`
+
+- **Statement:** No team Lean result has been rebuilt under Lean 4.35.0. The simplification desk reports that the 4.35.0 toolchain and Mathlib v4.35.0 sources are present but without oleans or a cache, so a rebuild is infeasible without a download.
+- **Checked by the results desk:** Not checked.
+- **Provenance:** Simplification desk, work/simplification-desk/lean435/FEASIBILITY.md (01:20Z).

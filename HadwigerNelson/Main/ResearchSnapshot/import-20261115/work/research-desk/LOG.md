@@ -34,3 +34,6 @@
 2026-11-15T00:55:44Z [resume after power loss] rerunning FiveSupportSwapR1 compile (no -o)
 2026-11-15T01:01:32Z FiveSupportSwapR1 PASSED exit 0 323 s; five_opposite_contacts_false + five_support_step_ban_v2 std axioms; 31/31 public #check signatures identical to R1 FiveSupport. Deleted desk .olean/.ilean outputs (disk rule)
 2026-11-15T01:01:59Z reported Bridge-r2-G3, CyclicCore-r2, FiveSupportSwapR1 passes to coordinator; ledger updated
+2026-11-15T01:14:02Z v1 step_ban consumers in R1: only FiveSupport:198-199 (replaced by swap). Compiling FiveSupportSwapR1-noV1 (v1 lemma deleted)
+2026-11-15T01:17:25Z FiveSupportSwapR1-noV1 PASSED 181 s; 30/30 signatures identical; v1 deletion verified; ledger updated
+2026-11-15T01:20:33Z HOURLY SPOT-CHECK: A6-Forcing-m1 (job 212205-0) recompiled with axiom prints: 7 endpoints std axioms; banked claim confirmed (research-desk/spotcheck/)

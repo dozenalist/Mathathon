@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "builtAtUtc": "2026-11-15T01:06Z",
+  "builtAtUtc": "2026-11-15T01:24Z",
   "workspaceRoot": "I = C:/Users/jarom/Documents/Codex/2026-11-13/i (research workspace, outside the repo)",
   "statusVocabulary": [
     "LEAN_VERIFIED",
@@ -53,8 +53,14 @@
       [
         "[FIVESUPPORT-SWAP](#fivesupport-swap) same-name swap in FiveSupport (R1 port)",
         "`LEAN_VERIFIED` (desk)",
-        "**+61 as ported** (v1 kept); ≈ +23 even after deleting v1 and `five_forced_label`",
-        "31/31 signatures identical; a structural, not a length, simplification"
+        "**+61 as ported** (v1 kept); **measured +33** with v1 deleted (354→387 physical; code lines only 341→350, +9)",
+        "30/30 signatures identical after deleting v1; structural, not a length, simplification"
+      ],
+      [
+        "[STEPBAN-V3](#stepban-v3) simplification-desk step ban (staged)",
+        "`CANDIDATE` (not compiled)",
+        "FiveSupport −15 staged",
+        "branch-free and shorter than v1; compile tests r1, r2 failed, r3 queued"
       ],
       [
         "[JOINT-SUPPORT](#joint-support) joint-pair support theorem",
@@ -83,7 +89,6 @@
       "[A6-GLUE](#a6-glue): ArcCover is now discharged (A6-BRIDGE-R2-G3), but no compiled file discharges `SignTable` and `ForcingLemma` together with it; hsupp, the pairing hypothesis and the A5 obstruction (no Lean declaration) remain.",
       "[STEPBAN-SWAP](#stepban-swap): the verified step-ban v2 has not been swapped in place, so its line savings are not realised.",
       "[R1-GATES](#r1-gates): R1 contract and dependency gates were not independently re-run after acceptance.",
-      "[RELAX-1-648](#relax-1-648): the 1/648, 933,120 / 1,440 / 3,840 figures remain unaudited.",
       "[PALETTE-RIGIDITY](#palette-rigidity), [STAIRCASE-CONVERSE](#staircase-converse), [K6-PRODUCER](#k6-producer): the missing lemmas for the six-colour programme.",
       "[SHARPNESS-20](#sharpness-20): six-colour sharpness of CC60 and novelty priority are not established.",
       "[MC120-STRICT](#mc120-strict): strict MC120 is called \"accepted paper\" in the status file but has no referee file; [A6-COROLLARIES](#a6-corollaries) and [CONTINUOUS-SIX](#continuous-six) depend on it.",
@@ -201,11 +206,12 @@
       "statement": "FiveSupportSwapR1.lean = the accepted R1 FiveSupport.lean plus the block `five_outsider_unique`, `five_pair_meet`, `five_support_step_ban_v2` inserted before `five_opposite_contacts_false`, whose two callees are switched from `five_support_step_ban` to `_v2`. All 31 public declarations keep their exact statements.",
       "hypotheses": "Unchanged statements (31/31 `#check` outputs identical to the R1 FiveSupport module). The old `five_support_step_ban` is still present (not deleted).",
       "evidence": "Desk compile (research desk) exit 0, 323 s; `five_opposite_contacts_false` and `five_support_step_ban_v2` [propext, Classical.choice, Quot.sound].",
-      "checked": "2026-11-15 ~01:05Z: parsed the 31 `#check` blocks in swapR1.log and orig.log and compared them: 31 common names, 0 differences, none missing on either side; read both axiom lines. Line accounting (desk diff against R1 FiveSupport.lean, 354 lines): the port is 415 lines without #check/#print lines = 2 call lines changed + 3-line comment + 58-line v2 block inserted; nothing deleted. Deleting the old step ban (FiveSupport.lean:68–99, 32 lines) and `five_forced_label` (Exclusion.lean:26–28, 3 lines) would still leave about +23 lines, because the new block carries long docstrings and two helper lemmas. So this is a structural simplification (the case split and one finite lemma go away), not a line saving. Exit code from the desk LOG.md 01:01:32Z.",
+      "checked": "2026-11-15 ~01:05Z: parsed the 31 `#check` blocks in swapR1.log and orig.log and compared them: 31 common names, 0 differences, none missing on either side; read both axiom lines. Line accounting (desk diff against R1 FiveSupport.lean, 354 lines): the port is 415 lines without #check/#print lines = 2 call lines changed + 3-line comment + 58-line v2 block inserted; nothing deleted. Deleting the old step ban (FiveSupport.lean:68–99, 32 lines) and `five_forced_label` (Exclusion.lean:26–28, 3 lines) would still leave about +23 lines, because the new block carries long docstrings and two helper lemmas. So this is a structural simplification (the case split and one finite lemma go away), not a line saving. Exit code from the desk LOG.md 01:01:32Z. UPDATE 01:21Z: the variant with the old step ban deleted (FiveSupportSwapR1-noV1, desk compile exit 0, 181 s) passes. I compared its 30 `#check` outputs with R1: 30 identical, only `five_support_step_ban` is gone (the desk grep found no other R1 consumer). Measured: 354 → 387 physical lines (+33, excluding the 3-line provenance comment and #check/#print lines), non-blank +26, code lines excluding comments 341 → 350 (+9, desk metric). The earlier +23 estimate is superseded.",
       "provenance": "Architecture swarm smwh11dth (m1 swap, m5 referee); research desk R1 port and compile 00:40Z, rerun after the power loss 00:55–01:01Z.",
       "corrections": [
         "the swarm file targets encoding-r4 and fails on R1 (palette_neighbor_* redeclared; `strict_state_no_unit_support` unknown, removed by R1); the desk ported it",
-        "the \"21→15 lines\" figure is the proof body only; with the helper lemmas and docstrings the module grows"
+        "the \"21→15 lines\" figure is the proof body only; with the helper lemmas and docstrings the module grows",
+        "line estimate after deleting v1: about +23 (results desk, 01:05Z), measured +33 (01:21Z)"
       ],
       "caveats": "m4 branch-free `hdis` reconstruction (FiveSupport:205–216) is NOT in this port; still a swarm candidate. Not yet substituted into the tree or re-checked against downstream modules.",
       "dependsOn": [
@@ -226,6 +232,19 @@
           "workspacePath": "I/work/research-desk/FiveSupport-swap/swapR1.log",
           "sha256": "7bbaece10131d754ed62845653384de4a7534b9a8b9e0a7c07b25a319cc09092",
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/swapR1.log"
+        },
+        {
+          "role": "variant with the old step ban deleted",
+          "workspacePath": "I/work/research-desk/FiveSupport-swap/FiveSupportSwapR1-noV1.lean",
+          "sha256": "0aaee265081c94ba692f3d0c91ca9a58770108c99013942ab81ac390f7daea86",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/FiveSupportSwapR1-noV1.lean",
+          "hashMatchesExpected": true
+        },
+        {
+          "role": "compile log of the v1-deleted variant: 30 #check outputs + axioms",
+          "workspacePath": "I/work/research-desk/FiveSupport-swap/noV1.log",
+          "sha256": "4d9e0814064756a20ab550cfed7e58e6d8f5152b03e8e17b88fb17926a366be2",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/FiveSupport-swap/noV1.log"
         },
         {
           "role": "31 #check outputs of the R1 FiveSupport module",
@@ -263,7 +282,7 @@
       "evidence": "Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; two statements, [propext, Classical.choice, Quot.sound]; log joint-pair-support-v2.log.",
       "checked": "Hash recomputed at build; referee quote confirmed verbatim. Did not recompile.",
       "provenance": "Astra joint lead derivation, independent Astra referee + OS review; Codex local validation (before 18:39Z snapshot).",
-      "caveats": "Standalone; does not by itself delete the original States development; not validated against the competition 4.35 target.",
+      "caveats": "Standalone; NOT integrated, by decision of the simplification desk: after R1, five_support_no_sixty is 8 lines and the joint-pair route is 41 (+33), and fixed_state_no_unit_three_centres stays live via Interfaces:278 (simplification-desk/jointpair/JOINT-PAIR-DECISION.md). Not validated against the competition 4.35 target.",
       "artifacts": [
         {
           "role": "source",
@@ -293,6 +312,7 @@
       "checked": "2026-11-15 ~00:00Z: recomputed SHA-256 of all 27 frozen sources — 27/27 match frozen-manifest.json; module logs 01–14 carry matching \"Source SHA256\" and \"Exit code: 0\"; progress records 15–27 have exitCode 0 and sourceSha256 equal to the manifest; axiomroots log prints 9 roots, all [propext, Classical.choice, Quot.sound], no sorryAx; recounted physical lines of the five changed files against encoding-r4/src — matches line-accounting.json exactly (−24). PaletteTransport.lean in the R1 tree is byte-identical to encoding-r4 (same SHA-256), so its absence from the frozen manifest is a manifest gap, not an unverified change. The workspace R1 sources equal the repo snapshot copies (404 files compared, 0 differ). Did not recompile.",
       "provenance": "Lean queue jobs threecentre-r1-01…27 and -axiomroots, 2026-11-14 ~19:00–20:48Z; accepted by Jarom in the research-desk chat ~23:25Z (research-desk LOG.md 23:25:36Z).",
       "corrections": [
+        "alternative metrics (simplification desk recount, r1-gates/line-accounting-r1-desk.json): physical −24 (matches), non-blank −41, code excluding comments −67; the ledger quotes the physical count",
         "a private packet claim of \"net −66\" was rejected (it omitted 236 new-module lines); the accepted accounting is net −24 (check-ins 17:20:56Z, 18:15:21Z)",
         "optional further 104 unused-helper lines pending a separate build (check-in 18:35:22Z)",
         "Module 15 (Sectors) first .log run did not pass; re-run via the Python runner passed 20:32Z (sectors.progress.json)",
@@ -525,24 +545,50 @@
       ]
     },
     {
+      "id": "STEPBAN-V3",
+      "theme": "Simplification of the supplied proof",
+      "status": "CANDIDATE",
+      "title": "Simplification desk step ban v3: branch-free and shorter than v1 (staged, not compiled)",
+      "statement": "A desk-written branch-free step ban, shorter than v1. The staged S1 tree (vs R1) has FiveSupport −15 physical lines, deletes five_forced_label and adds five_state_forced_label (3 lines, Exclusion). Not a result until compiled.",
+      "provenance": "Simplification desk report 01:20Z (work/simplification-desk/s1, stepban).",
+      "checked": "Not checked. Compile tests: r1 failed (one rewrite elaboration error; the statement/binder Expr.equal check passed), r2 failed (Decidable synthesis), r3 queued.",
+      "dependsOn": [
+        "STEPBAN-V2"
+      ],
+      "artifacts": []
+    },
+    {
       "id": "R1-GATES",
       "theme": "Simplification of the supplied proof",
       "status": "OPEN",
       "title": "R1 follow-ups: contract/dependency gates and manifest completeness",
-      "statement": "Re-run the R1 contract and dependency gates after acceptance, and add PaletteTransport.lean to frozen-manifest.json (or record it as an unchanged baseline module).",
-      "provenance": "Caveats recorded with Jarom's acceptance (research desk, 23:25Z; coordinator cycle 232732).",
-      "checked": "PaletteTransport.lean is byte-identical to encoding-r4 (desk hash check), so the manifest gap does not hide a change.",
+      "statement": "Re-run the R1 contract and dependency gates after acceptance. PART DONE (simplification desk, no Lean run): manifest completeness. frozen-manifest.json is exactly the 27-module downstream closure of the 5 changed files; the other 56 modules, including PaletteTransport, are byte-identical in source and olean to the R4 build (PaletteTransport sha256 2d9b3869…, raw = LF, identical in original, R4 and R1). STILL PENDING: the exact-type/binder gate (whole-closure signature, binder and value hash dump, R1 vs R4) and the forbidden-name check for the 7 deleted strict_state declarations.",
+      "provenance": "Caveats recorded with the acceptance by Jarom (research desk, 23:25Z; coordinator cycle 232732); simplification desk report 01:20Z.",
+      "checked": "PaletteTransport.lean is byte-identical to encoding-r4 (results-desk hash check, confirmed by the simplification desk), so the manifest gap does not hide a change. The type/binder gate result is not yet available.",
       "dependsOn": [
         "R1"
       ],
-      "artifacts": []
+      "artifacts": [
+        {
+          "role": "manifest completeness note",
+          "workspacePath": "I/work/simplification-desk/r1-gates/MANIFEST-COMPLETENESS.md",
+          "sha256": "5521b496101778f1e400b704160c6e1c61c5e411743a822954c0f99ab1e4012d",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/r1-gates/MANIFEST-COMPLETENESS.md"
+        },
+        {
+          "role": "83-module completeness table",
+          "workspacePath": "I/work/simplification-desk/r1-gates/manifest-complete.json",
+          "sha256": "4c24ee676e79c450d0167fe326ea2e384bb97d41511ae388b967d6b239fb9d46",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/simplification-desk/r1-gates/manifest-complete.json"
+        }
+      ]
     },
     {
       "id": "STEPBAN-SWAP",
       "theme": "Simplification of the supplied proof",
       "status": "OPEN",
       "title": "In-place swap of the step ban into the CyclicCore/FiveSupport consumer",
-      "statement": "Substitute FiveSupportSwapR1 (compiled, 31/31 signatures identical) for FiveSupport in the tree, delete the old `five_support_step_ban` and `five_forced_label`, rebuild the downstream modules (incl. CyclicCore with the _from_v2 consumer) and re-run the root axiom check. Expected net line change ≈ +23 (structural simplification only).",
+      "statement": "Substitute FiveSupportSwapR1 (compiled, 31/31 signatures identical) for FiveSupport in the tree, delete the old `five_support_step_ban` and `five_forced_label`, rebuild the downstream modules (incl. CyclicCore with the _from_v2 consumer) and re-run the root axiom check. Measured for FiveSupport after deleting v1: +33 physical lines (structural simplification only); deleting five_forced_label would save 3 more. The v1 deletion is verified in FiveSupportSwapR1-noV1 (30/30 signatures), but the module is not yet substituted into the tree.",
       "provenance": "Coordinator cycles 231544, 232732 (architecture lane; hd/he capture unresolved).",
       "dependsOn": [
         "STEPBAN-V2",
@@ -640,13 +686,12 @@
       "statement": "`A6Forcing.a6_canonical_pairs_add_three`: for any palettes `P : Fin 6 → Finset (Fin 6)` with an inner hit `(P j ∩ {f j}).Nonempty`, an outer hit `(P j ∩ H j).Nonempty` and cyclic adjacent disjointness `Disjoint (P j) (P (j+1))`, every `P j` contains `f j` and `f j + 3`. Here f = source table, H = ({3,4,5},{1,2,3},{0,1,5},…), g = f+3 = (4,2,0,4,2,0). The same file proves the hypotheses satisfiable (`a6_hypotheses_satisfiable`) and that disjointness and the outer hit are each necessary.",
       "hypotheses": "Purely finite (Mathlib only); no cardinality premise. The link to geometry is via the A6 bridge hypotheses `ForcingLemma` (see A6-GLUE).",
       "evidence": "Lean 4.34.1 (commit 5045d005), Mathlib d13f23b; job claude-lean-20261114t212205-0 exit 0, 62.7 s, empty compiler output.",
-      "checked": "Recomputed source hash = record; exitCode 0; log is empty, so no sorry warning. **The source contains no `#print axioms`, so no axiom list was printed for this job.** Every proof is `decide`/`fin_cases … <;> decide` per the file header (no native_decide); an axiom print has been requested from the research desk. Status is LEAN_VERIFIED with this caveat.",
+      "checked": "Recomputed source hash = record; exitCode 0; the job log is empty (no sorry warning) because the source has no `#print axioms`. Flag CLOSED 01:20Z: the research desk recompiled the same source with axiom prints appended. I diffed the spot-check file against the job source: the only changes are 8 added `#print` lines. Its log lists 7 endpoints (a6_canonical_pairs, a6_canonical_pairs_add_three, a6_containment_unsatisfiable, a6_hypotheses_satisfiable, disjointness_necessary, outer_hit_necessary, A6canonical_hypotheses), each [propext, Classical.choice, Quot.sound].",
       "provenance": "Formal lane A (swarm smwgviqtr m1, \"A6-Forcing-m1\"); coordinator cycle 212205; finished 21:25:32Z.",
       "corrections": [
         "A6 finite check corrected to \"exactly one model P=[{1,4},{2,5},{0,3}]×2, with no cardinality premise\" (cycle 204019)"
       ],
       "usedFor": "Discharges `ForcingLemma` in the A6 bridge once glued; it is the finite core of A6-PAIRED-PRODUCER.",
-      "caveats": "Axiom list not printed (see Checked).",
       "artifacts": [
         {
           "role": "source",
@@ -666,6 +711,18 @@
           "workspacePath": "I/work/lean-queue/claude-lean-20261114t212205-0.python.log",
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261114t212205-0.python.log"
+        },
+        {
+          "role": "desk spot-check: job source plus #print axioms lines only",
+          "workspacePath": "I/work/research-desk/spotcheck/A6Forcing-axioms.lean",
+          "sha256": "83e6dfa36be808073a9591eb5fca67d01390c00cde2a5374c1c9c6a6dc5e8178",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/spotcheck/A6Forcing-axioms.lean"
+        },
+        {
+          "role": "spot-check log: 7 axiom lines",
+          "workspacePath": "I/work/research-desk/spotcheck/A6Forcing-axioms.log",
+          "sha256": "31518f332044b24f412eca03b4ae710202f65becab8ad488b423c93be2a43357",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/research-desk/spotcheck/A6Forcing-axioms.log"
         }
       ]
     },
@@ -1191,7 +1248,7 @@
         {
           "role": "import validation record",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "bbea46640a0139f823a4bf693b1892ce9c9a2eb99435ce4f7582f707fd942e92"
+          "sha256": "f96ec33ea8f235eb373fafbaf1adb5c9da9dd119732c0311a7fe80f0b82bd7d4"
         }
       ]
     },
@@ -1223,6 +1280,47 @@
           "role": "a=1/4 audit",
           "path": "HadwigerNelson/Main/ResearchSnapshot/local/work/patch25-audit/A-QUARTER-AUDIT.md",
           "sha256": "adf745d81fc93870d37ae9c6eda3f0f1603673ee4c6f04573c993504e5ee8282"
+        }
+      ]
+    },
+    {
+      "id": "RELAX-1-648",
+      "theme": "New mathematics",
+      "status": "TESTED_FINITE",
+      "title": "All-phase relaxation: the field set has measure exactly 1/648 (1,440 of 933,120 resonance cells; 16 of 3,840 sign cells)",
+      "statement": "For alpha in (R/360Z)^6 with alpha_0 = 0, call a resonance cell a component of the complement of {alpha_i - alpha_j in 60Z}: integer parts floor(alpha_i/60) and the order of the parts alpha_i mod 60, so 6^5 x 5! = 933,120 congruent cells. Exactly 1,440 cells admit a relaxation field (R(t,alpha) SAT for every t); 919,512 fail because some arc has an empty side (Rp or Rn empty) and 12,168 fail by the cyclic disjointness system alone. Hence the field set has Lebesgue measure exactly 1440/933120 = 1/648. With sign cells = components of the complement of {alpha_i - alpha_j in 180Z} (2^5 x 5! = 3,840), the field set meets exactly 16 sign cells; these lie in 16 distinct orders of the parts alpha_i mod 180 (\"base chambers\", 5! = 120), while all 120 orders of the parts mod 60 occur.",
+      "hypotheses": "Relaxation level only (inner/outer hits and 60-degree disjointness; palettes of size <= 2 WLOG). Says nothing directly about colourings.",
+      "evidence": "Two independent implementations agree: the discovery m2 scripts (referee6.py, run and reproduced by the all-phase referee, unaudited) and an exact implementation written by the results desk from the model definitions (allphase_desk.py, integer angles in units of 1/14 degree, one interior representative per cell, all six arcs tested).",
+      "checked": "2026-11-15 ~01:20Z: wrote and ran allphase_desk.py (python -I, 92.6 s): cells 933,120; field 1,440; empty side 919,512; cyclic-disjointness only 12,168; measure 1/648; sign cells meeting the field set 16 of 3,840; mod-180 orders 16 of 120; mod-60 orders 120 of 120. Cells are congruent simplices (fixed integer parts and a fixed order of five fractional parts), so the measure is the cell fraction. L-R1 task R1-1 is an independent third implementation (pending).",
+      "provenance": "Discovery m2 (smwgui6l9 d1, unsubmitted) via the all-phase referee 20:57Z; adversarial final wording cycle 001250; results desk recount 01:20Z.",
+      "corrections": [
+        "RECONCILED (was UNRECONCILED): \"16 of the 3840 sign cells\" (referee addendum) and \"16 of 120 base chambers\" (adversarial lane, cycle 001250) are both true. The 16 met sign cells map to 16 distinct mod-180 orders. Read \"base chamber\" as an order of the parts mod 180; with orders mod 60 the count would be 120 of 120",
+        "the referee note called sign cells \"finer\" than resonance cells; they are coarser (each sign cell contains 243 resonance cells on average)",
+        "status history: UNAUDITED_NUMBER until 01:20Z (coordinator cycle 213711 had called it \"confirmed by three lanes\" without an audit artifact)",
+        "the 8640/(7776*720) \"fully split rate\" equals 1/648 exactly, consistent with the staircase k=6 count"
+      ],
+      "usedFor": "Quantifies how rare relaxation fields are; explains the 0/400 and 1/900 random-sample observations.",
+      "dependsOn": [
+        "FIXED-PHASE-CENSUS"
+      ],
+      "artifacts": [
+        {
+          "role": "results-desk independent implementation",
+          "workspacePath": "I/work/results-desk/allphase/allphase_desk.py",
+          "sha256": "07c89fab37168a9e5df855f65319ae5c0ae311eea148be100de9aeacba9ea110",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/results-desk/allphase/allphase_desk.py"
+        },
+        {
+          "role": "command and output (92.6 s)",
+          "workspacePath": "I/work/results-desk/allphase/allphase_desk.out",
+          "sha256": "81f5c38f9adb36a5774810c442551463ade3ced4fd931564f4a75a62a1735d53",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/results-desk/allphase/allphase_desk.out"
+        },
+        {
+          "role": "all-phase referee note, section 8 (m2 figures)",
+          "workspacePath": "I/work/automation-supervisor/inbox/20261114T205744-download-5-ALL-PHASE-REFEREE.md",
+          "sha256": "087e6efc55b766cdf07bd4a8abd9c4f77896a300bcc6010a6d87ad72783c33e2",
+          "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/automation-supervisor/inbox/20261114T205744-download-5-ALL-PHASE-REFEREE.md"
         }
       ]
     },
@@ -1660,21 +1758,6 @@
       ]
     },
     {
-      "id": "RELAX-1-648",
-      "theme": "New mathematics",
-      "status": "UNAUDITED_NUMBER",
-      "title": "All-phase relaxation SAT measure 1/648 (1,440 of 933,120 resonance cells; 16 of 3,840 sign cells)",
-      "statement": "The SAT set of the all-phase relaxation has measure 1/648: 1,440 of 933,120 resonance cells, meeting 16 of 3,840 sign cells.",
-      "hypotheses": "Relaxation level only.",
-      "provenance": "Referee6 output reproduced by discovery m1; coordinator cycles 205744 (\"reproduced output, not yet audited\"), 213711 (\"confirmed by three lanes\"), 231544 (adversarial swarm still reconciling 933120/1440/3840).",
-      "checked": "Arithmetic only: 933,120 / 1,440 = 648 exactly; the fully split rate 8,640 / (7,776·720) = 1/648 exactly, consistent with the staircase k=6 count. No artifact audited.",
-      "corrections": [
-        "UNRECONCILED: the 20:57Z referee addendum says the field set meets \"16 of the 3840 sign cells\"; the final wording of the adversarial lane (cycle 001250) says \"16 of 120 base chambers\". Desk arithmetic: 933,120 = 7,776 × 120 and 3,840 = 32 × 120, so 120 plausibly counts orderings of the fractional parts (α_i mod 60°) and 3,840 a finer mod-180° refinement; the two statements may both hold but are not the same claim. Assigned to L-R1 task R1-1(d) and the graphs swarm smwh366oi",
-        "coordinator cycle 213711 called it \"confirmed by three lanes\"; later cycles revert to UNAUDITED — the ledger keeps UNAUDITED until an audit artifact exists"
-      ],
-      "artifacts": []
-    },
-    {
       "id": "A6-GLUE",
       "theme": "New mathematics",
       "status": "OPEN",
@@ -1764,7 +1847,7 @@
       "statement": "`A6Forcing.a6_containment_unsatisfiable`: if `f j ∈ P j`, `H j ⊆ P j` and `Disjoint (P j) (P (j+1))` for all j, then False. So a forcing lemma stated with containment would be vacuous; the hit form is the right one.",
       "hypotheses": "Finite statement over `Fin 6`.",
       "evidence": "Same file and job as A6-FORCING.",
-      "checked": "As A6-FORCING (axiom list not printed).",
+      "checked": "As A6-FORCING: `a6_containment_unsatisfiable` is [propext, Classical.choice, Quot.sound] in the desk spot-check log (01:20Z).",
       "provenance": "As A6-FORCING.",
       "dependsOn": [
         "A6-FORCING"
@@ -2385,7 +2468,7 @@
         {
           "role": "recorded run (18:58Z)",
           "path": "HadwigerNelson/Main/IMPORT-VALIDATION.json",
-          "sha256": "bbea46640a0139f823a4bf693b1892ce9c9a2eb99435ce4f7582f707fd942e92"
+          "sha256": "f96ec33ea8f235eb373fafbaf1adb5c9da9dd119732c0311a7fe80f0b82bd7d4"
         }
       ]
     },
@@ -2459,6 +2542,16 @@
           "path": "HadwigerNelson/Main/ResearchSnapshot/import-20261115/work/lean-queue/claude-lean-20261115t001551-0.python.log"
         }
       ]
+    },
+    {
+      "id": "LEAN-435",
+      "theme": "Infrastructure",
+      "status": "OPEN",
+      "title": "Rebuild under the event Lean 4.35.0 toolchain",
+      "statement": "No team Lean result has been rebuilt under Lean 4.35.0. The simplification desk reports that the 4.35.0 toolchain and Mathlib v4.35.0 sources are present but without oleans or a cache, so a rebuild is infeasible without a download.",
+      "provenance": "Simplification desk, work/simplification-desk/lean435/FEASIBILITY.md (01:20Z).",
+      "checked": "Not checked.",
+      "artifacts": []
     }
   ]
 }

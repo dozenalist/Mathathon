@@ -1,6 +1,6 @@
 # Import 2026-11-15 (results desk)
 
-Captured 2026-11-15T01:03:16.687Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
+Captured 2026-11-15T01:24:03.008Z from the research workspace `C:/Users/jarom/Documents/Codex/2026-11-13/i` by the results desk. Files keep their workspace-relative paths under this folder; MANIFEST.json records each one with `source`, `sourceModifiedUtc` and `capturedAtUtc`. Compiled objects (.olean) are excluded, as in the original import. Nothing here was recompiled by the results desk: the excerpts below are copied from the existing compile records. See [../../../RESULTS-LEDGER.md](../../../RESULTS-LEDGER.md) for the reviewed status of each result.
 
 ## Banked Lean results: exit code and `#print axioms` excerpts
 
@@ -111,6 +111,33 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 'OAI.EuclideanFiveColor.five_support_step_ban_v2' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
 
+### FIVESUPPORT-SWAP (v1 deleted)
+
+- Desk compile (research desk, same toolchain). Source `work/research-desk/FiveSupport-swap/FiveSupportSwapR1-noV1.lean` sha256 `0aaee265081c94ba692f3d0c91ca9a58770108c99013942ab81ac390f7daea86`
+- Desk log line: `2026-11-15T01:17:25Z FiveSupportSwapR1-noV1 PASSED 181 s; 30/30 signatures identical; v1 deletion verified; ledger updated`
+- Axioms from `work/research-desk/FiveSupport-swap/noV1.log`
+
+```
+'OAI.EuclideanFiveColor.five_opposite_contacts_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.EuclideanFiveColor.five_support_step_ban_v2' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+### A6-FORCING (axiom spot-check)
+
+- Desk compile (research desk, same toolchain). Source `work/research-desk/spotcheck/A6Forcing-axioms.lean` sha256 `83e6dfa36be808073a9591eb5fca67d01390c00cde2a5374c1c9c6a6dc5e8178`
+- Desk log line: `not found`
+- Axioms from `work/research-desk/spotcheck/A6Forcing-axioms.log`
+
+```
+'A6Forcing.a6_canonical_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A6Forcing.a6_canonical_pairs_add_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A6Forcing.a6_containment_unsatisfiable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A6Forcing.a6_hypotheses_satisfiable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A6Forcing.disjointness_necessary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A6Forcing.outer_hit_necessary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A6Forcing.A6canonical_hypotheses' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
 ### EVENWALK-R6
 
 - Desk compile (research desk, same toolchain). Source `work/research-desk/EvenWalk-rev6/EvenWalkReachability-rev6.lean` sha256 `4439cf5dd4088ea6765337286399f5af462fd1c3f4976c82c99d77019bfb9904`
@@ -217,8 +244,8 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/lean-queue/threecentre-r1-27-transfer.python.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `work/lean-queue/threecentre-r1-axiomroots.progress.json` | 3345 | `ca4b961283a98933d08ccfdd6ca490e05945bbd4f6a12c065b1c2dbd52f173a9` |
 | `work/lean-queue/threecentre-r1-axiomroots.python.log` | 3506 | `85aaef1671d5777e50378e07a2f2c94cedd630c610fbe9fc7c4d0601c8d6df29` |
-| `work/research-desk/BANKED.md` | 4117 | `4b808ce3b38631d3ca13769909522087455dfbbcca4b14510c172d342ec506b3` |
-| `work/research-desk/LOG.md` | 7207 | `9d59092dd3e19302af52029b7c83be60e7b7056f0e9dfa48d32b0bedb32d51e1` |
+| `work/research-desk/BANKED.md` | 4475 | `ac15718a338165c8851bfd501c2d59918ddde43c142b32ff01a02b591ecdb2f1` |
+| `work/research-desk/LOG.md` | 7650 | `c8f38e99171cadc6202de0ab3a6eed8ad84d56801a8c9e7b4090ae56a005ebd2` |
 | `work/research-desk/G3-r2/G3-ArcCover-r2.lean` | 9476 | `39a02e68c878c0d0df0493d53114679ffd6cb01c3354329cd33f3867b9558c6e` |
 | `work/research-desk/G3-r2/compile.log` | 96 | `e1a47fad00213af7a5bfff1a1a8db0403e6d941814cc164b7dc6b8177767203a` |
 | `work/research-desk/EvenWalk-rev6/EvenWalkReachability-rev6.lean` | 19063 | `4439cf5dd4088ea6765337286399f5af462fd1c3f4976c82c99d77019bfb9904` |
@@ -241,6 +268,10 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/research-desk/FiveSupport-swap/orig.log` | 10103 | `749c21cfff0461ad92f6640ad7e8c82a18386f9b625cc9ef3feeb75d928012a9` |
 | `work/research-desk/FiveSupport-swap/OrigChecks.lean` | 1697 | `235cefcf2e8c0923843244e49d0849a24eac8d42ff56d2da32e8ec05d84f6e11` |
 | `work/research-desk/FiveSupport-swap/FiveSupportSwap.lean` | 28320 | `aa0c4cb692f6e8e8a131825050e02bc433dd9d201b3bdc1b0eadf099de933e7e` |
+| `work/research-desk/FiveSupport-swap/FiveSupportSwapR1-noV1.lean` | 23780 | `0aaee265081c94ba692f3d0c91ca9a58770108c99013942ab81ac390f7daea86` |
+| `work/research-desk/FiveSupport-swap/noV1.log` | 9437 | `4d9e0814064756a20ab550cfed7e58e6d8f5152b03e8e17b88fb17926a366be2` |
+| `work/research-desk/spotcheck/A6Forcing-axioms.lean` | 12512 | `83e6dfa36be808073a9591eb5fca67d01390c00cde2a5374c1c9c6a6dc5e8178` |
+| `work/research-desk/spotcheck/A6Forcing-axioms.log` | 666 | `31518f332044b24f412eca03b4ae710202f65becab8ad488b423c93be2a43357` |
 | `work/cloud-supervisor/a5-sliver/CERTIFICATE.md` | 4646 | `b6ac39dd14d55157abb05a593a775bf84362b71da007e1edf3d3c71eb9e5ca33` |
 | `work/cloud-supervisor/a5-sliver/README.md` | 1427 | `ed053b8bcbf63e10111957f57b9a61a73183b7d7b8c30284303b5b30bd28adba` |
 | `work/cloud-supervisor/a5-sliver/certify_sliver.py` | 11877 | `63e84a36bfa95ea99103e314530dbaf38a9fa42667a8ac85b960882ff351e341` |
@@ -286,13 +317,23 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `work/automation-supervisor/replies/20261115T001551.json` | 4227 | `43534fdb10bbb9e1086dba16298839aa9ab097a3be3e0cf85344033cf48fdee7` |
 | `work/automation-supervisor/replies/20261115T002122.json` | 3871 | `d3add921516ef36bb467c50447e99339f7432904ce0994a3e9d79cb71f883b76` |
 | `work/automation-supervisor/replies/20261115T005413.json` | 3303 | `a29f684e3e0e6c68328d15fd182a9ac46052ed3e6597228da44686e740fa511d` |
-| `work/automation-supervisor/research-plan.json` | 1294 | `2d2caa285e21446eab02b463fca39dea7c02685482ccce0e87d2d06e0f502525` |
-| `work/results-desk/L-R1/L-R1-QUEUE.md` | 2065 | `685ea860f1a2f695b709d6e1d86f77e220c26c5bd661468c6f8b827dbc708f99` |
+| `work/automation-supervisor/replies/20261115T010921.json` | 3579 | `52bb62e86a146f7035cc6b6a11544b683765384540a018ab60f9cfde5b9fb1d5` |
+| `work/automation-supervisor/research-plan.json` | 1447 | `58f926192df76e85f799ee32c8cbda983f593378ddb7f3047e6530b8ee850c1c` |
+| `work/results-desk/L-R1/L-R1-QUEUE.md` | 2300 | `3ce1e9cb5dbbd5312697a9205763e64117a180a82c31f23d7158d9c5080cae9d` |
 | `work/results-desk/L-R1/R1-1.txt` | 3964 | `8a68f825005a91644cb3363627eb25a41ee0c9d0441279a2222c43ce174a9ac9` |
 | `work/results-desk/L-R1/R1-2.txt` | 3572 | `b3ae2032ed83e40c417222310b770e75a6bfb9ec0303b8ba650bd8226c829ede` |
 | `work/results-desk/L-R1/R1-3.txt` | 4202 | `94b2f187c4151e6659a11543db6d1284d2a39a7d9d2eb36209a0829b97732822` |
 | `work/results-desk/L-R1/R1-4.txt` | 3961 | `796478a36119a6cbddabb51a3ac2dc44a5c17ab172ac977ee813e28347828e60` |
+| `work/results-desk/L-R1/R1-3-referee-lane.txt` | 4341 | `c30a87cb7080fd17ea112aa0df6079a4c7bc3f515df92b36f68d3ce91e0249b8` |
+| `work/results-desk/L-R1/R1-4-referee-lane.txt` | 4100 | `c3fdb4aa3af347f7517c64a67bf63888fa330884b05cc02af54cb91ceab3a7c1` |
 | `work/results-desk/L-R1/SENT.log` | 88 | `42bdf9ab79bf66de5eef56ab6e1642afd94a4e5ffea3f9f4c6ddabf18a5ea29f` |
+| `work/results-desk/allphase/allphase_desk.py` | 4155 | `07c89fab37168a9e5df855f65319ae5c0ae311eea148be100de9aeacba9ea110` |
+| `work/results-desk/allphase/allphase_desk.out` | 463 | `81f5c38f9adb36a5774810c442551463ade3ced4fd931564f4a75a62a1735d53` |
+| `work/simplification-desk/r1-gates/MANIFEST-COMPLETENESS.md` | 2437 | `5521b496101778f1e400b704160c6e1c61c5e411743a822954c0f99ab1e4012d` |
+| `work/simplification-desk/r1-gates/manifest-complete.json` | 58066 | `4c24ee676e79c450d0167fe326ea2e384bb97d41511ae388b967d6b239fb9d46` |
+| `work/simplification-desk/r1-gates/line-accounting-r1-desk.json` | 2363 | `2233250bae3b9a2b973d3b7c865bad0f6eab738e56a515439126bfeb27f622fd` |
+| `work/simplification-desk/jointpair/JOINT-PAIR-DECISION.md` | 2118 | `1c45c20940c3c23e71cc24a6e3927583455bee61b02b8c34f973a0761c18934d` |
+| `work/simplification-desk/lean435/FEASIBILITY.md` | 3236 | `03a835b6307b8cdaee67867f6f9dae4d7ca34608971e417d68c80ad6c426711c` |
 | `outputs/ASTRA-DISJUNCTIVE-PALETTE-A8.txt` | 15221 | `d292fa5a44fa857d957ed8eeb4895b192d4ca505f6f872c1ba5e644b80a6b437` |
 | `outputs/ASTRA-FOUR-LIST-A5.txt` | 15053 | `799cef0737b23deb8e17d1cb5ca197b394c4e9a19e3c5a79acebed2671f3955e` |
 | `outputs/ASTRA-FOUR-LIST-REFEREE.txt` | 15430 | `29e3800ecb740d9699254787d5a5b8689372d505b69a178eb08e447eada7548f` |
@@ -309,4 +350,4 @@ Environment for all rows: Lean 4.34.1 (commit 5045d0056413266e57c625dcd7c365b10e
 | `outputs/RunLeanQueue.py` | 9451 | `c063969225cec881cdb63ebea165434a2fdc7d3d381528cc6d8e870dd286b2b6` |
 | `outputs/LeanSourceGate.py` | 2246 | `721e47d80c4459e9125a9b66fe880ab31c37260e9797d23669a9a228c8f4e721` |
 | `work/cloud-supervisor/RESEARCH-STATUS.md` | 3506 | `461dfcc8d25a2971038bbff6a6d691701008009583c04f8c8f7cca030ff3de50` |
-| `work/cloud-supervisor/LOG.md` | 7720 | `397340290552e9ec736bbf6c58d4a8c453d86ea5eb8506016d9f7efd7738d442` |
+| `work/cloud-supervisor/LOG.md` | 9378 | `6191baaaa7e773d757d38a93d2c965a73f7c27a8a032b7ff817eb8f37f1adaef` |

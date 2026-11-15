@@ -1,0 +1,7 @@
+'A6Forcing.a6_canonical_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A6Forcing.a6_canonical_pairs_add_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A6Forcing.a6_containment_unsatisfiable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A6Forcing.a6_hypotheses_satisfiable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A6Forcing.disjointness_necessary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A6Forcing.outer_hit_necessary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'A6Forcing.A6canonical_hypotheses' depends on axioms: [propext, Classical.choice, Quot.sound]

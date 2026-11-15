@@ -92366,19 +92366,19 @@
     },
     {
       "path": "import-20261115/work/research-desk/BANKED.md",
-      "bytes": 4117,
-      "sha256": "4b808ce3b38631d3ca13769909522087455dfbbcca4b14510c172d342ec506b3",
+      "bytes": 4475,
+      "sha256": "ac15718a338165c8851bfd501c2d59918ddde43c142b32ff01a02b591ecdb2f1",
       "source": "research-workspace/work/research-desk/BANKED.md",
-      "sourceModifiedUtc": "2026-11-15T01:01:44.229Z",
-      "capturedAtUtc": "2026-11-15T01:03:16.687Z"
+      "sourceModifiedUtc": "2026-11-15T01:20:33.285Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
     },
     {
       "path": "import-20261115/work/research-desk/LOG.md",
-      "bytes": 7207,
-      "sha256": "9d59092dd3e19302af52029b7c83be60e7b7056f0e9dfa48d32b0bedb32d51e1",
+      "bytes": 7650,
+      "sha256": "c8f38e99171cadc6202de0ab3a6eed8ad84d56801a8c9e7b4090ae56a005ebd2",
       "source": "research-workspace/work/research-desk/LOG.md",
-      "sourceModifiedUtc": "2026-11-15T01:01:59.054Z",
-      "capturedAtUtc": "2026-11-15T01:03:16.687Z"
+      "sourceModifiedUtc": "2026-11-15T01:20:33.164Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
     },
     {
       "path": "import-20261115/work/research-desk/G3-r2/G3-ArcCover-r2.lean",
@@ -92694,11 +92694,11 @@
     },
     {
       "path": "import-20261115/work/automation-supervisor/research-plan.json",
-      "bytes": 1294,
-      "sha256": "2d2caa285e21446eab02b463fca39dea7c02685482ccce0e87d2d06e0f502525",
+      "bytes": 1447,
+      "sha256": "58f926192df76e85f799ee32c8cbda983f593378ddb7f3047e6530b8ee850c1c",
       "source": "research-workspace/work/automation-supervisor/research-plan.json",
-      "sourceModifiedUtc": "2026-11-15T00:57:12.192Z",
-      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+      "sourceModifiedUtc": "2026-11-15T01:12:47.787Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
     },
     {
       "path": "import-20261115/outputs/ASTRA-DISJUNCTIVE-PALETTE-A8.txt",
@@ -92830,18 +92830,18 @@
     },
     {
       "path": "import-20261115/work/cloud-supervisor/LOG.md",
-      "bytes": 7720,
-      "sha256": "397340290552e9ec736bbf6c58d4a8c453d86ea5eb8506016d9f7efd7738d442",
+      "bytes": 9378,
+      "sha256": "6191baaaa7e773d757d38a93d2c965a73f7c27a8a032b7ff817eb8f37f1adaef",
       "source": "research-workspace/work/cloud-supervisor/LOG.md",
-      "sourceModifiedUtc": "2026-11-15T01:01:29.023Z",
-      "capturedAtUtc": "2026-11-15T01:03:16.687Z"
+      "sourceModifiedUtc": "2026-11-15T01:23:01.033Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
     },
     {
       "path": "import-20261115/IMPORT-NOTES.md",
-      "bytes": 32393,
-      "sha256": "ef0f388c9b05c5a58a418daae3f2c40f8c76ec62ecc273a8619e0fe27f4c54a0",
+      "bytes": 35925,
+      "sha256": "e66f5207030561b70a9a25318d05b5acb5915d0355e705906de313cc09bf9816",
       "source": "results-desk (generated)",
-      "capturedAtUtc": "2026-11-15T01:03:16.687Z"
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
     },
     {
       "path": "import-20261115/work/openmath-supervisor/checkins/20261114T191820Z/inner-outer-orbit-certificates.json",
@@ -93029,11 +93029,11 @@
     },
     {
       "path": "import-20261115/work/results-desk/L-R1/L-R1-QUEUE.md",
-      "bytes": 2065,
-      "sha256": "685ea860f1a2f695b709d6e1d86f77e220c26c5bd661468c6f8b827dbc708f99",
+      "bytes": 2300,
+      "sha256": "3ce1e9cb5dbbd5312697a9205763e64117a180a82c31f23d7158d9c5080cae9d",
       "source": "research-workspace/work/results-desk/L-R1/L-R1-QUEUE.md",
-      "sourceModifiedUtc": "2026-11-15T00:58:53.392Z",
-      "capturedAtUtc": "2026-11-15T01:00:05.151Z"
+      "sourceModifiedUtc": "2026-11-15T01:08:02.731Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
     },
     {
       "path": "import-20261115/work/results-desk/L-R1/R1-1.txt",
@@ -93114,6 +93114,118 @@
       "source": "research-workspace/work/research-desk/FiveSupport-swap/FiveSupportSwap.lean",
       "sourceModifiedUtc": "2026-11-15T00:35:08.219Z",
       "capturedAtUtc": "2026-11-15T01:03:16.687Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/FiveSupport-swap/FiveSupportSwapR1-noV1.lean",
+      "bytes": 23780,
+      "sha256": "0aaee265081c94ba692f3d0c91ca9a58770108c99013942ab81ac390f7daea86",
+      "source": "research-workspace/work/research-desk/FiveSupport-swap/FiveSupportSwapR1-noV1.lean",
+      "sourceModifiedUtc": "2026-11-15T01:13:26.667Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/FiveSupport-swap/noV1.log",
+      "bytes": 9437,
+      "sha256": "4d9e0814064756a20ab550cfed7e58e6d8f5152b03e8e17b88fb17926a366be2",
+      "source": "research-workspace/work/research-desk/FiveSupport-swap/noV1.log",
+      "sourceModifiedUtc": "2026-11-15T01:17:02.769Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/spotcheck/A6Forcing-axioms.lean",
+      "bytes": 12512,
+      "sha256": "83e6dfa36be808073a9591eb5fca67d01390c00cde2a5374c1c9c6a6dc5e8178",
+      "source": "research-workspace/work/research-desk/spotcheck/A6Forcing-axioms.lean",
+      "sourceModifiedUtc": "2026-11-15T01:17:51.687Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
+    },
+    {
+      "path": "import-20261115/work/research-desk/spotcheck/A6Forcing-axioms.log",
+      "bytes": 666,
+      "sha256": "31518f332044b24f412eca03b4ae710202f65becab8ad488b423c93be2a43357",
+      "source": "research-workspace/work/research-desk/spotcheck/A6Forcing-axioms.log",
+      "sourceModifiedUtc": "2026-11-15T01:20:26.421Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
+    },
+    {
+      "path": "import-20261115/work/automation-supervisor/replies/20261115T010921.json",
+      "bytes": 3579,
+      "sha256": "52bb62e86a146f7035cc6b6a11544b683765384540a018ab60f9cfde5b9fb1d5",
+      "source": "research-workspace/work/automation-supervisor/replies/20261115T010921.json",
+      "sourceModifiedUtc": "2026-11-15T01:12:47.859Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
+    },
+    {
+      "path": "import-20261115/work/results-desk/L-R1/R1-3-referee-lane.txt",
+      "bytes": 4341,
+      "sha256": "c30a87cb7080fd17ea112aa0df6079a4c7bc3f515df92b36f68d3ce91e0249b8",
+      "source": "research-workspace/work/results-desk/L-R1/R1-3-referee-lane.txt",
+      "sourceModifiedUtc": "2026-11-15T01:07:42.453Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
+    },
+    {
+      "path": "import-20261115/work/results-desk/L-R1/R1-4-referee-lane.txt",
+      "bytes": 4100,
+      "sha256": "c3fdb4aa3af347f7517c64a67bf63888fa330884b05cc02af54cb91ceab3a7c1",
+      "source": "research-workspace/work/results-desk/L-R1/R1-4-referee-lane.txt",
+      "sourceModifiedUtc": "2026-11-15T01:07:42.457Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
+    },
+    {
+      "path": "import-20261115/work/results-desk/allphase/allphase_desk.py",
+      "bytes": 4155,
+      "sha256": "07c89fab37168a9e5df855f65319ae5c0ae311eea148be100de9aeacba9ea110",
+      "source": "research-workspace/work/results-desk/allphase/allphase_desk.py",
+      "sourceModifiedUtc": "2026-11-15T01:19:38.730Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
+    },
+    {
+      "path": "import-20261115/work/results-desk/allphase/allphase_desk.out",
+      "bytes": 463,
+      "sha256": "81f5c38f9adb36a5774810c442551463ade3ced4fd931564f4a75a62a1735d53",
+      "source": "research-workspace/work/results-desk/allphase/allphase_desk.out",
+      "sourceModifiedUtc": "2026-11-15T01:19:38.851Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/r1-gates/MANIFEST-COMPLETENESS.md",
+      "bytes": 2437,
+      "sha256": "5521b496101778f1e400b704160c6e1c61c5e411743a822954c0f99ab1e4012d",
+      "source": "research-workspace/work/simplification-desk/r1-gates/MANIFEST-COMPLETENESS.md",
+      "sourceModifiedUtc": "2026-11-15T00:26:25.264Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/r1-gates/manifest-complete.json",
+      "bytes": 58066,
+      "sha256": "4c24ee676e79c450d0167fe326ea2e384bb97d41511ae388b967d6b239fb9d46",
+      "source": "research-workspace/work/simplification-desk/r1-gates/manifest-complete.json",
+      "sourceModifiedUtc": "2026-11-14T23:48:32.703Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/r1-gates/line-accounting-r1-desk.json",
+      "bytes": 2363,
+      "sha256": "2233250bae3b9a2b973d3b7c865bad0f6eab738e56a515439126bfeb27f622fd",
+      "source": "research-workspace/work/simplification-desk/r1-gates/line-accounting-r1-desk.json",
+      "sourceModifiedUtc": "2026-11-15T00:27:47.956Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/jointpair/JOINT-PAIR-DECISION.md",
+      "bytes": 2118,
+      "sha256": "1c45c20940c3c23e71cc24a6e3927583455bee61b02b8c34f973a0761c18934d",
+      "source": "research-workspace/work/simplification-desk/jointpair/JOINT-PAIR-DECISION.md",
+      "sourceModifiedUtc": "2026-11-15T00:28:21.331Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
+    },
+    {
+      "path": "import-20261115/work/simplification-desk/lean435/FEASIBILITY.md",
+      "bytes": 3236,
+      "sha256": "03a835b6307b8cdaee67867f6f9dae4d7ca34608971e417d68c80ad6c426711c",
+      "source": "research-workspace/work/simplification-desk/lean435/FEASIBILITY.md",
+      "sourceModifiedUtc": "2026-11-15T01:05:26.596Z",
+      "capturedAtUtc": "2026-11-15T01:24:03.008Z"
     }
   ]
 }

@@ -16,3 +16,6 @@ downloads in automation-supervisor/inbox/; the ledger status changes only after 
 
 Acceptance for every task: two independent checks or a line-by-line referee against quoted definitions;
 explicit certificates; nothing marked proved without a written argument; no chromatic-number claims.
+
+Update 01:07Z (supervisor): keep L-R1 serial (send R1-2 when R1-1's swarm ends). R1-3 and R1-4 are referee jobs and go to a free
+referee lane via the research desk: lane-neutral copies R1-3-referee-lane.txt and R1-4-referee-lane.txt.

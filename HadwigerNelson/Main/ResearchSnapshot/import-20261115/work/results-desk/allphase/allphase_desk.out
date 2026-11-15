@@ -1,0 +1,6 @@
+command: python -I allphase_desk.py   (Python 3.12, no packages; run 2026-11-15 ~01:20Z by the results desk; 92.6 s)
+{'cells': 933120, 'field': 1440, 'empty_side': 919512, 'c2_only': 12168} measure = 1/648
+sign cells (mod 180: 2^5 x 5! = 3840) meeting field set: 16
+base chambers, mod-60 fractional orders (5! = 120) meeting field set: 120
+base chambers, mod-180 orders (5! = 120) meeting field set: 16
+distinct fixed-phase row patterns cached: 15520  time 92.6s
