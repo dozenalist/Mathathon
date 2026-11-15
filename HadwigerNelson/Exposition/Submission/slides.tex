@@ -15,7 +15,7 @@
 
 \title{Five colours are not enough}
 \subtitle{A guided reading of the supplied proof, and two local results about interfaces at a common centre}
-\author{[TEAM]}
+\author{[TEAM: names]\\[2pt]{\footnotesize\url{https://github.com/dozenalist/Mathathon}}}
 \date{15 November 2026}
 
 \begin{document}
@@ -190,7 +190,17 @@ Sets need not be connected or compact. Equality at $60^\circ$ is included.
 \src{\S4}
 \end{frame}
 
-\begin{frame}{12. Computations and corrections}
+\begin{frame}{12. Further local results}
+\begin{itemize}
+\item \textbf{Canonical paired palette excluded.} In a weak measurable six-colouring, no centre has a palette containing the canonical paired palette $P(t)$ for almost every $t$. The reason is a finite unit-distance configuration with no proper list colouring. \st{proved, refereed}
+\item \textbf{Even walks.} In an open set where every point of a connected piece has a unit neighbour, any two points are joined by an even unit walk. This gives finite list and parity obstructions for weak measurable $k$-colourings. \st{Lean 4.34.1}
+\item \textbf{Six-colour producer pieces.} Each piece compiles, but the glued statement still assumes two hypotheses (SignTable, ForcingLemma). \st{Lean 4.34.1, conditional}
+\item None of these is a global chromatic result. The open lemmas behind a route to $\chi\ge7$ are listed in the report.
+\end{itemize}
+\src{\S5}
+\end{frame}
+
+\begin{frame}{13. Computations and corrections}
 \begin{itemize}
 \item Exact certificates for a translated union of Heule graphs (1,048 vertices) and for no forced-equal pairs \st{computation}
 \item Direction filtering on a grid: 7,776 $\to$ 1,420 $\to$ 174 $\to$ 6 (an earlier count of 95 was a bug) \st{computation}
@@ -200,7 +210,7 @@ Sets need not be connected or compact. Equality at $60^\circ$ is included.
 \src{\S5}
 \end{frame}
 
-\begin{frame}{13. Honest status}
+\begin{frame}{14. Honest status}
 \begin{itemize}
 \item \textbf{No global chromatic result.} $6\le\chi(\R^2)\le7$ is unchanged.
 \item Lean checks ran under 4.34.1; the event's Lean track needs 4.35.0, which has not been rebuilt.
