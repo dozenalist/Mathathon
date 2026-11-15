@@ -1,23 +1,37 @@
-# Remaining work — snapshot of 14 November 2026
+# Remaining work (updated 15 November 2026)
 
-1. Finish the three-centre integration in an isolated Lean 4.34.1 environment.
-   Rebuild the affected consumers, compare public types and binders, inspect
-   transitive dependencies and axioms, and count every added module before
-   claiming a net line reduction. Preserve `five_support_step_ban`, ordinary
-   support/L1 continuity, and `indicator_inter_positive`.
-2. Continue the actual geometric obstruction problem beyond CC60. Establish
-   source-compatible cross-centre constraints for the surviving direction
-   configurations. Finite direction-grid results alone do not close this step.
-3. Independently review the strict-120-degree obstruction and the explicit
-   colouring of the two-list locus. Resolve the equilateral paired configuration
-   and the four-list extension without assuming an unproved palette producer.
-4. Compare the generic sharpness theorem with the literature before making a
-   novelty-priority claim. Separate arbitrary finite palettes from six colours.
-5. Import later completed research with sources, independent checks, failure
-   records, and a new snapshot manifest. Reconcile newer evidence with the
-   archived status instead of promoting every worker-labelled success.
+**No global chromatic result.** Each status below is taken from [RESULTS-LEDGER.md](RESULTS-LEDGER.md).
 
-The existing [research status](Main/ResearchSnapshot/local/outputs/RESEARCH-STATUS.txt)
-and [reboot plan](Main/ResearchSnapshot/local/outputs/RESEARCH-REBOOT-2026-11-14.txt)
-give the underlying contracts. This repository import launches no new research
-jobs and changes no running coordinator or reporting schedule.
+1. **Finish the Lean simplification.**
+   - Done:
+     - The three-centre integration is complete ([R1](RESULTS-LEDGER.md#r1), `LEAN_VERIFIED`).
+     - Its contract and dependency gates pass ([R1-GATES](RESULTS-LEDGER.md#r1-gates)).
+   - Remaining:
+     - Re-archive the root-axiom print for [S1](RESULTS-LEDGER.md#s1). S1 is `CANDIDATE`, −265 lines.
+     - Finish S2.
+     - Adopt the branch-free step-ban swap into the integrated tree ([STEPBAN-SWAP](RESULTS-LEDGER.md#stepban-swap), open). It adds lines, so it is a structural simplification only.
+     - Rebuild under the event's Lean 4.35.0 ([LEAN-435](RESULTS-LEDGER.md#lean-435), open).
+   - Keep `five_support_step_ban` (manuscript Lemma 6.7). Keep `state_support_avoiding_trace` (Lemma 6.2) too.
+2. **Continue the geometric obstruction problem beyond CC60.** The open items are:
+   - discharge `SignTable` and `ForcingLemma` in the glued six-colour bridge ([A6-GLUE](RESULTS-LEDGER.md#a6-glue));
+   - [PALETTE-RIGIDITY](RESULTS-LEDGER.md#palette-rigidity);
+   - [STAIRCASE-CONVERSE](RESULTS-LEDGER.md#staircase-converse);
+   - [K6-PRODUCER](RESULTS-LEDGER.md#k6-producer);
+   - [LOCALIZED-TWO-STATE](RESULTS-LEDGER.md#localized-two-state);
+   - the conditional route to $\chi\ge7$ ([L6-F6](RESULTS-LEDGER.md#l6-f6)).
+   
+   Finite direction-grid results alone do not close this step.
+3. **Outstanding independent reviews.**
+   - Done: the four-list extension ([A5-FOUR-LIST](RESULTS-LEDGER.md#a5-four-list), `PROVED_PAPER_REVIEWED`).
+   - Still `CANDIDATE`, each needing a referee:
+     - the strict-$120^\circ$ obstruction ([MC120-STRICT](RESULTS-LEDGER.md#mc120-strict)), which has no referee file;
+     - the explicit colouring of the two-list locus ([LIST-FIELD-A4](RESULTS-LEDGER.md#list-field-a4));
+     - the paired-configuration producer ([A6-PAIRED-PRODUCER](RESULTS-LEDGER.md#a6-paired-producer)).
+4. **Novelty of the sharpness theorem.** [SHARPNESS-20](RESULTS-LEDGER.md#sharpness-20) is refereed for arbitrary finite palettes. Still not established:
+   - six-colour sharpness;
+   - novelty priority against the literature.
+5. **Imports.**
+   - Done: the 15 November import (`Main/ResearchSnapshot/import-20261115/`), recorded in the results ledger.
+   - Ongoing: import later results with their sources, independent checks and failure records. Reconcile newer evidence with the recorded status rather than promoting every worker-labelled success.
+
+The original [research status](Main/ResearchSnapshot/local/outputs/RESEARCH-STATUS.txt) and [reboot plan](Main/ResearchSnapshot/local/outputs/RESEARCH-REBOOT-2026-11-14.txt) give the underlying contracts as of 14 November. This file launches no research jobs and changes no running coordinator or reporting schedule.
